@@ -5,19 +5,21 @@ author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24f321e3c3c0fe8e85633edb505879874e8c772f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b0760b86012504ea86e4a0cde36ae878e8ff3b26
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019234"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685739"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB のメトリックを使用した監視とデバッグ
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB には、スループット、ストレージ、整合性、可用性、および待機時間のメトリックが用意されています。 Azure portal では、これらのメトリックの集計ビューが提供されます。 Azure Monitor API から Azure Cosmos DB メトリックを表示することもできます。 メトリックのディメンション値 (コンテナー名など) は、大文字と小文字が区別されません。 そのため、これらのディメンション値に対して文字列比較を行う場合は、大文字と小文字を区別しない比較を使用する必要があります。 Azure Monitor からメトリックを表示する方法の詳細については、[Azure Monitor からのメトリックの取得](cosmos-db-azure-monitor-metrics.md)に関する記事を参照してください。
+Azure Cosmos DB には、スループット、ストレージ、整合性、可用性、および待機時間のメトリックが用意されています。 Azure portal では、これらのメトリックの集計ビューが提供されます。 Azure Monitor API から Azure Cosmos DB メトリックを表示することもできます。 メトリックのディメンション値 (コンテナー名など) は、大文字と小文字が区別されません。 そのため、これらのディメンション値に対して文字列比較を行う場合は、大文字と小文字を区別しない比較を使用する必要があります。 Azure Monitor からメトリックを表示する方法の詳細については、[Azure Monitor からのメトリックの取得](./monitor-cosmos-db.md)に関する記事を参照してください。
 
 この記事では、一般的なユース ケースと、Azure Cosmos DB メトリックを使用してこれらの問題を分析およびデバッグする手順について説明します。 メトリックは 5 分間隔で収集され、7 日間保持されます。
 
@@ -41,7 +43,7 @@ Azure Cosmos DB には、スループット、ストレージ、整合性、可�
 
 * **整合性メトリック** - このメトリックでは、選択した整合性モデルの最終的な整合性が示されます。 マルチリージョン アカウントでは、このメトリックには、選択したリージョン間でのレプリケーションの待機時間も示されます。
 
-* **システム メトリック** - このメトリックでは、マスター パーティションによって処理されているメタデータ要求の数が示されます。 スロットルされた要求を識別するためにも役立ちます。
+* **システム メトリック** - このメトリックでは、プライマリ パーティションによって処理されているメタデータ要求の数が示されます。 スロットルされた要求を識別するためにも役立ちます。
 
 次のセクションで、Azure Cosmos DB のメトリックを使用する一般的なシナリオについて説明します。 
 
@@ -59,7 +61,7 @@ Azure Cosmos DB には、スループット、ストレージ、整合性、可�
 
 :::image type="content" source="media/use-metrics/metrics-17.png" alt-text="1 つのパーティションの使用率が高い":::
 
-スループット分散が不均一の場合、*ホット* パーティションが発生します。また、その結果、要求が調整され、再パーティションが必要になる可能性があります。 Azure Cosmos DB でのパーティション分割の詳細については、「[Azure Cosmos DB でのパーティション分割とスケーリング](./partition-data.md)」を参照してください。
+スループット分散が不均一の場合、*ホット* パーティションが発生します。また、その結果、要求が調整され、再パーティションが必要になる可能性があります。 Azure Cosmos DB でのパーティション分割の詳細については、「[Azure Cosmos DB でのパーティション分割とスケーリング](./partitioning-overview.md)」を参照してください。
 
 ## <a name="determine-the-storage-distribution-across-partitions"></a>パーティション全体のストレージの分散を決める
 
@@ -71,11 +73,11 @@ Azure Cosmos DB には、スループット、ストレージ、整合性、可�
 
 :::image type="content" source="media/use-metrics/metrics-05.png" alt-text="パーティション キーによる分散の偏り":::
 
-分散の偏りの原因となっているパーティション キーを特定した後は、必要に応じて、より分散されたパーティション キーでコンテナーを再パーティションします。 Azure Cosmos DB でのパーティション分割の詳細については、「[Azure Cosmos DB でのパーティション分割とスケーリング](./partition-data.md)」を参照してください。
+分散の偏りの原因となっているパーティション キーを特定した後は、必要に応じて、より分散されたパーティション キーでコンテナーを再パーティションします。 Azure Cosmos DB でのパーティション分割の詳細については、「[Azure Cosmos DB でのパーティション分割とスケーリング](./partitioning-overview.md)」を参照してください。
 
 ## <a name="compare-data-size-against-index-size"></a>データ サイズとインデックス サイズを比較する
 
-Azure Cosmos DB の合計使用ストレージは、データ サイズとインデックス サイズ両方の組み合わせです。 通常、インデックス サイズは、データ サイズよりもはるかに小さいサイズです。 [Azure Portal](https://portal.azure.com) の [メトリック] ブレードの [ストレージ] タブには、データとインデックスに基づくストレージ使用量の内訳が表示されます。
+Azure Cosmos DB の合計使用ストレージは、データ サイズとインデックス サイズ両方の組み合わせです。 通常、インデックス サイズは、データ サイズよりもはるかに小さいサイズです。 詳細については、[インデックス サイズ](index-policy.md#index-size)に関する記事を参照してください。 [Azure Portal](https://portal.azure.com) の [メトリック] ブレードの [ストレージ] タブには、データとインデックスに基づくストレージ使用量の内訳が表示されます。
 
 ```csharp
 // Measure the document size usage (which includes the index size)  
@@ -112,6 +114,6 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 Azure portal で提供されているメトリックを使用して、問題の監視とデバッグを行う方法について説明しました。 データベースのパフォーマンスを改善する方法については、次の記事を参照してください。
 
-* Azure Monitor からメトリックを表示する方法の詳細については、[Azure Monitor からのメトリックの取得](cosmos-db-azure-monitor-metrics.md)に関する記事を参照してください。 
+* Azure Monitor からメトリックを表示する方法の詳細については、[Azure Monitor からのメトリックの取得](./monitor-cosmos-db.md)に関する記事を参照してください。 
 * [Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)
 * [Azure Cosmos DB のパフォーマンスに関するヒント](performance-tips.md)

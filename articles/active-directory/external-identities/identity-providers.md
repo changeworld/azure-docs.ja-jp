@@ -1,22 +1,22 @@
 ---
 title: 外部 ID に対する ID プロバイダー - Azure AD
-description: Azure Active Directory B2B コラボレーションでは、会社のアプリケーションへの選択的なアクセスのために、多要素認証 (MFA) をサポートしています
+description: Azure AD を外部ユーザーと共有するための既定の ID プロバイダーとして使用する方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2284d015b451872753dd0855cac42e6f1926545c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 42ed42a1fc9a2750cc928b5fd03eb4b32f770276
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907472"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644087"
 ---
 # <a name="identity-providers-for-external-identities"></a>外部 ID に対する ID プロバイダー
 
@@ -25,8 +25,8 @@ ms.locfileid: "87907472"
 ただし、ユーザーがさまざまな ID プロバイダーを使用してサインインできるようにすることができます。
 
 - **Google**: Google フェデレーションでは、外部ユーザーが自分の Gmail アカウントでアプリにサインインすることにより、あなたからの招待を利用することができます。 Google フェデレーションは、セルフサービスのサインアップ ユーザー フローでも使用できます。
-   > [!NOTE]
-   > 現在のセルフサービス サインアップ プレビューでは、ユーザー フローがアプリに関連付けられていて、そのアプリへの招待をユーザーに送信した場合、そのユーザーは Gmail アカウントを使用してその招待を利用することができません。 回避策として、ユーザーはセルフサービスのサインアップ プロセスを実行できます。 または、別のアプリにアクセスするか、 https://myapps.microsoft.com でマイ アプリ ポータルを使用して、招待を利用することができます。
+   > [!IMPORTANT]
+   > **2021 年 1 月 4 日以降**、Google は [WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 Gmail で Google フェデレーションまたはセルフサービス サインアップを使用している場合は、[基幹業務ネイティブ アプリケーションの互換性をテストする](google-federation.md#deprecation-of-webview-sign-in-support)必要があります。
 
 - **Facebook**: アプリを構築するときに、セルフサービス サインアップを構成し、Facebook フェデレーションを有効にすることで、ユーザーが自分の Facebook アカウントを使用してアプリにサインアップできるようにすることが可能です。 Facebook は、セルフサービス サインアップ ユーザー フローにのみ使用でき、ユーザーがあなたからの招待を利用するときにサインイン オプションとして使用することはできません。
 

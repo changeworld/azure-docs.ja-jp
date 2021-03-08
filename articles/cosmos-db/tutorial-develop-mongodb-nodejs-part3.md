@@ -8,16 +8,17 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jopapa
-ms.custom: seodec18, devx-track-javascript
+ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: e9cb30ca64fe697f9b8304f55381709083b8fbd2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 181af5cf26d19a9f51e8d456e777badf7efa224d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424241"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097823"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Azure Cosmos DB の MongoDB 用 API を使用して Angular アプリを作成する - Angular を使用して UI を構築する
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 複数のパートから成るこのチュートリアルでは、Express と Angular を使用して Node.js で新しいアプリを作成した後、[Cosmos DB の MongoDB 用 API を使用して構成された Cosmos アカウント](mongodb-introduction.md)にそれを接続する方法を紹介します。
 
@@ -58,7 +59,7 @@ ms.locfileid: "87424241"
 3. Visual Studio Code の **[エクスプローラー]** ウィンドウで新しい **src\app** フォルダーに移動し、app フォルダー内に生成された新しい **heroes.component.ts** ファイルを開きます。 この TypeScript コンポーネント ファイルは、前のコマンドで作成されたものです。
 
     > [!TIP]
-    > Visual Studio Code に app フォルダーが表示されない場合は、CMD + SHIFT P キー (Mac) または Ctrl + Shift + P キー (Windows) を押してコマンド パレットを開き、「*Reload Window*」と入力してシステムの変更を読み込みます。
+    > Visual Studio Code に app フォルダーが表示されない場合は、CMD + SHIFT P キー (Mac) または Ctrl + Shift + P キー (Windows) を押してコマンド パレットを開き、「 *Reload Window* 」と入力してシステムの変更を読み込みます。
 
 4. 同じフォルダーの **app.module.ts** ファイルを開き、`HeroesComponent` が 5 行目の宣言に追加され、10 行目でもインポートされていることを確認します。
 
@@ -103,7 +104,7 @@ ms.locfileid: "87424241"
     </div>
     ```
 
-7. HTML の準備が整ったら、それを **heroes.component.ts** ファイルに追加する必要があります。そうすることで、テンプレートを対話的に操作できるようになります。 次のコードは、コンポーネント ファイルにテンプレートを追加します。 いくつかのヒーローを取得し、ヒーロー サービス コンポーネントを初期化してすべてのデータを取得するためのコンストラクターが追加されています。 また、UI でのイベント処理に必要なメソッドもすべてこのコードによって追加されます。 次のコードは、**heroes.component.ts** の既存のコードに上書きする形でコピーしてください。 Hero および HeroService 領域では、まだ対応するコンポーネントがインポートされていないため、エラーが発生することが予想されます。これらのエラーは、次のセクションで修正します。 
+7. HTML の準備が整ったら、それを **heroes.component.ts** ファイルに追加する必要があります。そうすることで、テンプレートを対話的に操作できるようになります。 次のコードは、コンポーネント ファイルにテンプレートを追加します。 いくつかのヒーローを取得し、ヒーロー サービス コンポーネントを初期化してすべてのデータを取得するためのコンストラクターが追加されています。 また、UI でのイベント処理に必要なメソッドもすべてこのコードによって追加されます。 次のコードは、 **heroes.component.ts** の既存のコードに上書きする形でコピーしてください。 Hero および HeroService 領域では、まだ対応するコンポーネントがインポートされていないため、エラーが発生することが予想されます。これらのエラーは、次のセクションで修正します。 
 
     ```ts
     import { Component, OnInit } from '@angular/core';
@@ -171,7 +172,7 @@ ms.locfileid: "87424241"
     }
     ```
 
-8. **エクスプローラー**で **app/app.module.ts** ファイルを開き、インポート セクションを更新し、さらに 14 行目を更新して、`FormsModule` のインポートを追加します。 インポート セクションは次のようになります。
+8. **エクスプローラー** で **app/app.module.ts** ファイルを開き、インポート セクションを更新し、さらに 14 行目を更新して、`FormsModule` のインポートを追加します。 インポート セクションは次のようになります。
 
     ```
     imports: [
@@ -353,7 +354,7 @@ ms.locfileid: "87424241"
 
 必要なコンポーネントは揃いましたが、それを画面に表示する手段がまだありません。 **app.component.ts** で既定のコンポーネントを変更しましょう。
 
-1. [エクスプローラー] ウィンドウで **/app/app.component.ts** を開き、タイトルを Heroes に変更します。さらに、**heroes.components.ts** に作成したコンポーネントの名前 (app-heroes) を配置して、その新しいコンポーネントを参照します。 ファイルの内容は次のようになります。 
+1. [エクスプローラー] ウィンドウで **/app/app.component.ts** を開き、タイトルを Heroes に変更します。さらに、 **heroes.components.ts** に作成したコンポーネントの名前 (app-heroes) を配置して、その新しいコンポーネントを参照します。 ファイルの内容は次のようになります。 
 
     ```ts
     import { Component } from '@angular/core';
@@ -408,7 +409,7 @@ ms.locfileid: "87424241"
 
 ## <a name="create-the-service"></a>サービスの作成
 
-1. Angular CLI のコマンド プロンプトに次のコマンドを入力して、**app.module.ts** に hero サービスを作成します。g は生成 (generate) を、s はサービス (service) を、hero はサービスの名前を表します。また、-m で、app.module を作成先に指定します。
+1. Angular CLI のコマンド プロンプトに次のコマンドを入力して、 **app.module.ts** に hero サービスを作成します。g は生成 (generate) を、s はサービス (service) を、hero はサービスの名前を表します。また、-m で、app.module を作成先に指定します。
 
     ```bash
     ng g s hero -m app.module

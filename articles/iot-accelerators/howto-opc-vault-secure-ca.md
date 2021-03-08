@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 88f8188779c5fb6b3cd07c67e9f35a6b8f9ad97d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f54467c03a67797d52ac499ca9ba455c0f75e240
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687074"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071457"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>OPC Vault 証明書管理サービスを安全に実行する
+
+> [!IMPORTANT]
+> この記事は更新される予定ですが、最新の内容については、[Azure 産業用 IoT](https://azure.github.io/Industrial-IoT/) に関するページを参照してください。
 
 この記事では、Azure 上で OPC Vault 証明書管理サービスを安全に実行する方法について説明したうえで、考慮すべきその他のセキュリティ ガイドラインについて確認します。
 
@@ -91,10 +94,10 @@ OPC Vault マイクロサービスでは、次のロールを定義します。
 
 ### <a name="security-monitoring"></a>セキュリティの監視
 
-適切なセキュリティ監視をサブスクライブまたは実装します。 たとえば、中央監視ソリューション (Azure Security Center、O365 監視ソリューションなど) にサブスクライブして、セキュリティ イベントが監視ソリューションに確実に送信されるように適切な構成を行います。
+適切なセキュリティ監視をサブスクライブまたは実装します。 たとえば、中央監視ソリューション (Azure Security Center や Microsoft 365 監視ソリューションなど) にサブスクライブして、セキュリティ イベントが監視ソリューションに確実に送信されるように適切な構成を行います。
 
 > [!IMPORTANT]
-> 既定では、OPC Vault サービスが、[Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/devops) と共に監視ソリューションとしてデプロイされます。 [Azure Security Center](https://azure.microsoft.com/services/security-center/) のようなセキュリティ ソリューションを追加することを強くお勧めします。
+> 既定では、OPC Vault サービスが、[Azure Application Insights](../azure-monitor/app/devops.md) と共に監視ソリューションとしてデプロイされます。 [Azure Security Center](https://azure.microsoft.com/services/security-center/) のようなセキュリティ ソリューションを追加することを強くお勧めします。
 
 ### <a name="assess-the-security-of-open-source-software-components"></a>オープン ソース ソフトウェア コンポーネントのセキュリティを評価する
 
@@ -142,7 +145,7 @@ CA 階層ドキュメントには、操作されているすべての CA が含�
 
 ### <a name="document-the-standard-operating-procedure-for-securely-deleting-cryptographic-keys"></a>暗号化キーを安全に削除するための標準の操作手順を文書化する
 
-CA の有効期間中に、ごくまれにキーの削除が発生することがあります。 KeyVault 証明書の削除権限が割り当てられているユーザーがいない、また、発行者 CA 証明書を削除するための API が公開されていないのは、このためです。 証明機関の暗号化キーを安全に削除するための手動による標準的な操作手順は、Azure portal 上で Key Vault に直接アクセスすることによってのみ利用できます。 Key Vault にある証明書グループを削除することも可能です。 確実にすぐに削除するには、[Key Vault の論理的な削除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)の機能を無効にします。
+CA の有効期間中に、ごくまれにキーの削除が発生することがあります。 KeyVault 証明書の削除権限が割り当てられているユーザーがいない、また、発行者 CA 証明書を削除するための API が公開されていないのは、このためです。 証明機関の暗号化キーを安全に削除するための手動による標準的な操作手順は、Azure portal 上で Key Vault に直接アクセスすることによってのみ利用できます。 Key Vault にある証明書グループを削除することも可能です。 確実にすぐに削除するには、[Key Vault の論理的な削除](../key-vault/general/soft-delete-overview.md)の機能を無効にします。
 
 ## <a name="certificates"></a>証明書
 

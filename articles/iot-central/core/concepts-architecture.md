@@ -3,21 +3,19 @@ title: Azure IoT Central でのアーキテクチャの概念 | Microsoft Docs
 description: この記事では、Azure IoT Central のアーキテクチャに関連する主要な概念を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/27/2019
+ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: c2d5310d1a664aa2e22d4241d8066e41d9c82bd1
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337145"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796722"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central のアーキテクチャ
-
-
 
 この記事では、Microsoft Azure IoT Central のアーキテクチャの概要について説明します。
 
@@ -54,7 +52,7 @@ IoT Central により、IoT Edge デバイスで次の機能を使用できる�
   - 各モジュールが送信するテレメトリ。
   - 各モジュールによって報告されるプロパティ。
   - 各モジュールが応答するコマンド。
-  - IoT Edge ゲートウェイ デバイス機能モデルとダウンストリーム デバイス機能モデル間の関係。
+  - IoT Edge ゲートウェイ デバイスとダウンストリーム デバイス間の関係。
   - IoT Edge デバイスに格納されていないクラウド プロパティ。
   - カスタマイズ、ダッシュボード、およびフォーム: ご利用の IoT Central アプリケーションの一部を成します。
 
@@ -104,7 +102,7 @@ Azure IoT Central は、デバイス接続を可能にするクラウド ゲー�
 - デバイスの管理。
 - セキュリティ保護されたデバイス接続。
 
-IoT Hub の詳細については、[Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) に関するページを参照してください。
+IoT Hub の詳細については、[Azure IoT Hub](../../iot-hub/index.yml) に関するページを参照してください。
 
 Azure IoT Central でのデバイス接続の詳細については、[デバイス接続](concepts-get-connected.md)に関するページを参照してください。
 
@@ -133,12 +131,12 @@ Azure IoT Central アプリケーションでは、デバイス テンプレー�
 
 ![テンプレートのアーキテクチャ](media/concepts-architecture/template-architecture.png)
 
-IoT Central アプリケーションのデバイス テンプレートには、次のものが含まれます。
+IoT Central の[デバイス テンプレート](concepts-device-templates.md)には、次のものが含まれます。
 
-- **デバイス機能モデル**では、デバイスの機能 (送信するテレメトリ、デバイスの状態を定義するプロパティ、デバイスが応答するコマンドなど) を指定します。 デバイスの機能は、1つ以上のインターフェイスに編成されています。
-- **クラウド プロパティ**では、IoT Central がデバイス用に格納するプロパティを指定します。 これらのプロパティは IoT Central にのみ格納され、デバイスに送信されることはありません。
-- **ビュー**では、オペレーターがデバイスを監視および管理できるように、ビルダーが作成するダッシュボードとフォームを指定します。
-- **カスタマイズ**により、ビルダーはデバイス機能モデルの定義の一部をオーバーライドして、IoT Central アプリケーションに対する関連性を高めることができます。
+- **デバイス モデル** では、デバイスの機能 (送信するテレメトリ、デバイスの状態を定義するプロパティ、デバイスが応答するコマンドなど) を指定します。 デバイスの機能は、1つ以上のインターフェイスに編成されています。
+- **クラウド プロパティ** では、IoT Central がデバイス用に格納するプロパティを指定します。 これらのプロパティは IoT Central にのみ格納され、デバイスに送信されることはありません。
+- **ビュー** では、オペレーターがデバイスを監視および管理できるように、ビルダーが作成するダッシュボードとフォームを指定します。
+- **カスタマイズ** により、ビルダーはデバイス モデルの定義の一部をオーバーライドして、IoT Central アプリケーションに対する関連性を高めることができます。
 
 アプリケーションには、各デバイス テンプレートに基づいて 1 つ以上のシミュレートされた実デバイスを割り当てることができます。
 
@@ -152,7 +150,7 @@ Azure IoT Central アプリケーションでは、接続されたデバイス�
 
 ## <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
 
-事前定義済みロールの 1 つを使用して、あるいはカスタム ロールを作成することで、Azure IoT Central アプリケーションの[アクセス ルールを管理者は定義できます](howto-manage-users-roles.md)。 ユーザーにアクセスが許可されるアプリケーションの領域とユーザーが実行できるアクションがロールにより決定されます。
+すべての IoT Central アプリケーションには、独自の RBAC システムが組み込まれています。 事前定義済みロールの 1 つを使用して、あるいはカスタム ロールを作成することで、Azure IoT Central アプリケーションの[アクセス ルールを管理者は定義できます](howto-manage-users-roles.md)。 ユーザーにアクセスが許可されるアプリケーションの領域とユーザーが実行できるアクションがロールにより決定されます。
 
 ## <a name="security"></a>セキュリティ
 

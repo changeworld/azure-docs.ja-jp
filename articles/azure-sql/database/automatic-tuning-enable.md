@@ -6,29 +6,29 @@ ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
+ms.reviewer: wiassaf, sstein
 ms.date: 12/03/2019
-ms.openlocfilehash: 94ffe2852380d238e9829a8ab0cc69ebe82b74fe
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 35e2a73b0cfae104cee417e7d4a159e7fd169a17
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373506"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500905"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>クエリの監視とワークロード パフォーマンスの向上のために Azure portal で自動チューニングを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 
-Azure SQL Database では、データ サービスが自動的に管理されます。データ サービスが常にクエリを監視し、ワークロードのパフォーマンスを向上させるために実行できるアクションを識別します。 推奨事項を確認し、手動で適用できます。また、Azure SQL Database で自動的に是正措置を適用することもできます (**自動チューニング モード**ともいう)。
+Azure SQL Database では、データ サービスが自動的に管理されます。データ サービスが常にクエリを監視し、ワークロードのパフォーマンスを向上させるために実行できるアクションを識別します。 推奨事項を確認し、手動で適用できます。また、Azure SQL Database で自動的に是正措置を適用することもできます (**自動チューニング モード** ともいう)。
 
 サーバーまたはデータベース レベルで自動チューニングを有効にすることができます。次の方法があります。
 
 - [Azure Portal](automatic-tuning-enable.md#azure-portal)
 - [REST API](automatic-tuning-enable.md#rest-api) 呼び出し
-- [T-SQL](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) コマンド
+- [T-SQL](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true) コマンド
 
 > [!NOTE]
 > Azure SQL Managed Instance でサポートされているオプション FORCE_LAST_GOOD_PLAN は、[T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management) を使用してのみ構成できます。 この記事で説明している Azure portal ベースの構成とインデックスの自動チューニング オプションは、Azure SQL Managed Instance には適用されません。
@@ -49,9 +49,9 @@ Azure SQL Database では、データ サービスが自動的に管理されま
 
 ### <a name="azure-portal"></a>Azure portal
 
-Azure SQL Database の[サーバー](logical-servers.md)で自動チューニングを有効にするには、Azure portal でサーバーに移動し、メニューで **[自動チューニング]** を選択します。
+Azure SQL Database の [サーバー](logical-servers.md)で自動チューニングを有効にするには、Azure portal でサーバーに移動し、メニューで **[自動チューニング]** を選択します。
 
-![サーバー](./media/automatic-tuning-enable/server.png)
+![スクリーンショットには、サーバーのオプションを適用できる、Azure portal での自動チューニングが示されています。](./media/automatic-tuning-enable/server.png)
 
 > [!NOTE]
 > **DROP_INDEX** オプションは、現時点では、パーティションの切り替えとインデックス ヒントを使うアプリケーションと互換性がなく、このような場合は有効にしてはならないことに注意してください。 Premium および Business Critical サービスレベルでは、使われていないインデックスの削除はサポートされていません。
@@ -62,22 +62,22 @@ Azure SQL Database の[サーバー](logical-servers.md)で自動チューニン
 
 ### <a name="rest-api"></a>REST API
 
-REST API を使用して**サーバー**の自動チューニングを有効にする方法については、[サーバーの自動チューニングの UPDATE メソッドと GET HTTP メソッド](/rest/api/sql/serverautomatictuning)に関するページを参照してください。
+REST API を使用して **サーバー** の自動チューニングを有効にする方法については、[サーバーの自動チューニングの UPDATE メソッドと GET HTTP メソッド](/rest/api/sql/serverautomatictuning)に関するページを参照してください。
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>個々のデータベースで自動チューニングを有効にする
 
 Azure SQL Database では、各データベースの自動チューニング構成を個別に指定することができます。 自動チューニングの構成を親サーバーから継承するか、[Azure の既定値] から継承するか、または構成を継承しないかをデータベース レベルで選択できます。 Azure の既定値では、FORCE_LAST_GOOD_PLAN が有効に、CREATE_INDEX が無効に、DROP_INDEX が無効に設定されています。
 
 > [!TIP]
-> 一般的な推奨事項は、すべてのデータベースで同じ構成設定を自動的に適用できるように、**サーバー レベル**で自動チューニング構成を管理することです。 個々のデータベースの設定が、同じサーバーから設定を継承している他のデータベースの設定と異なるようにする必要がある場合にのみ、個々のデータベースで自動チューニングを構成します。
+> 一般的な推奨事項は、すべてのデータベースで同じ構成設定を自動的に適用できるように、**サーバー レベル** で自動チューニング構成を管理することです。 個々のデータベースの設定が、同じサーバーから設定を継承している他のデータベースの設定と異なるようにする必要がある場合にのみ、個々のデータベースで自動チューニングを構成します。
 
 ### <a name="azure-portal"></a>Azure portal
 
-**単一データベース**で自動チューニングを有効にするには、Azure portal でデータベースに移動し、 **[自動チューニング]** を選択します。
+**単一データベース** で自動チューニングを有効にするには、Azure portal でデータベースに移動し、 **[自動チューニング]** を選択します。
 
 個々の自動チューニング設定は、データベースごとに個別に構成できます。 個々の自動チューニング オプションを手動で構成したり、オプションがサーバーから設定を継承するように指定したりできます。
 
-![データベース](./media/automatic-tuning-enable/database.png)
+![スクリーンショットには、単一データベースのオプションを適用できる、Azure portal での自動チューニングを示されています。](./media/automatic-tuning-enable/database.png)
 
 DROP_INDEX オプションは、現時点では、パーティションの切り替えとインデックス ヒントを使うアプリケーションと互換性がなく、このような場合は有効にしてはならないことに注意してください。
 
@@ -109,7 +109,7 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 > [アクティブ geo レプリケーション](auto-failover-group-overview.md)の場合、プライマリ データベースのみで自動チューニングを構成する必要があります。 インデックスの作成や削除など、自動的に適用されるチューニング アクションは、読み取り専用のセカンダリに自動的にレプリケートされます。 読み取り専用のセカンダリで T-SQL を使用して自動チューニングを有効にしようとすると、その読み取り専用のセカンダリで別のチューニング構成を使用することはサポートされていないため、失敗します。
 >
 
-自動チューニングを構成する T-SQL のオプションの詳細については、[ALTER DATABASE SET オプション (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) に関するページを参照してください。
+自動チューニングを構成する T-SQL のオプションの詳細については、[ALTER DATABASE SET オプション (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true) に関するページを参照してください。
 
 ## <a name="disabled-by-the-system"></a>システムによる無効化
 

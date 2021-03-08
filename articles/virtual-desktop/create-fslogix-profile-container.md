@@ -7,11 +7,11 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 6a9f2c62d8e7f17f6ea8377982c79fef3dfbb97c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002817"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016830"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Azure NetApp Files および AD DS を使用してプロファイル コンテナーを作成する
 
@@ -45,7 +45,7 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 使用するアカウントに、共同作成者または管理者の権限があることを確認してください。
 
-2. 検索バーの右側にある **Azure Cloud Shell のアイコン**をクリックして、Azure Cloud Shell を開きます。
+2. 検索バーの右側にある **Azure Cloud Shell のアイコン** をクリックして、Azure Cloud Shell を開きます。
 
 3. Azure Cloud Shell が開いたら、 **[PowerShell]** を選択します。
 
@@ -178,7 +178,7 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
 11.  名前が **Enabled** で種類が **REG_DWORD** である値を作成し、データの値を **1** に設定します。
 
-12. 名前が **VHDLocations** で種類が**複数の文字列**である値を作成し、データの値を Azure NetApp Files 共有の URI に設定します。
+12. 名前が **VHDLocations** で種類が **複数の文字列** である値を作成し、データの値を Azure NetApp Files 共有の URI に設定します。
 
 13. サインインする前に既存のローカル プロファイルの問題を回避するために、**DeleteLocalProfileWhenVHDShouldApply** という値を作成し、DWORD 値を 1 にします。
 
@@ -225,7 +225,7 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
 5. **[概要]** タブに移動して、FSLogix プロファイル コンテナーにより領域が消費されていることを確認します。
 
-6. ホスト プールに属している任意の VM にリモート デスクトップを使用して直接接続し、**エクスプローラー**を開きます。 次に、**マウント パス** (次の例では、マウント パスは \\\\anf-SMB-3863.gt1107.onmicrosoft.com\\anf-VOL) に移動します。
+6. ホスト プールに属している任意の VM にリモート デスクトップを使用して直接接続し、**エクスプローラー** を開きます。 次に、**マウント パス** (次の例では、マウント パスは \\\\anf-SMB-3863.gt1107.onmicrosoft.com\\anf-VOL) に移動します。
 
    このフォルダー内に、次の例のようなプロファイル VHD (または VHDX) があるはずです。
 

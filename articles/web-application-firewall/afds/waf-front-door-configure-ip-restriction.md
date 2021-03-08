@@ -5,34 +5,34 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 03/26/2020
+ms.date: 12/22/2020
 ms.author: tyao
-ms.openlocfilehash: f41dc688996b2431060a3cde209ca1ed4a21fe8c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 60a4ef47bc30955c918983d54f613cbdb5cbed73
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005618"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746764"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Azure Front Door 用の Web アプリケーション ファイアウォールで IP 制限規則を構成する
 
 この記事では、Azure portal、Azure CLI、Azure PowerShell、または Azure Resource Manager テンプレートを使って、Azure Front Door 用の Web アプリケーション ファイアウォール (WAF) で IP 制限規則を構成する方法を示します。
 
-IP アドレス ベースのアクセス制御規則は、Web アプリケーションへのアクセスの制御を可能にするカスタム WAF 規則です。 これは、Classless Inter-Domain Routing (CIDR) 形式で IP アドレスまたは IP アドレス範囲の一覧を指定することによって行われます。
+IP アドレス ベースのアクセス制御規則は、Web アプリケーションへのアクセスの制御を可能にするカスタム WAF 規則です。 これは、Classless Inter-Domain Routing (CIDR) 形式で IP アドレスまたは IP アドレス範囲の一覧を指定することによって行われます。 IP アドレスの一致には、**RemoteAddr** と **SocketAddr** という 2 種類の一致変数があります。 RemoteAddr は、通常 X-Forwarded-For 要求ヘッダーを介して送信される元のクライアント IP です。 SocketAddr は、WAF が認識する発信元 IP アドレスです。 ユーザーがプロキシの内側にある場合、SocketAddr は通常、プロキシ サーバーのアドレスです。
 
 既定では、Web アプリケーションにはインターネットからアクセスできます。 既知の IP アドレスまたは IP アドレス範囲の一覧からクライアントへのアクセスを制限する場合、照合値として IP アドレスの一覧が含まれ、演算子が "Not" (否定が true) に、アクションが **[ブロック]** に設定する IP 照合ルールを作成する必要があります。 IP 制限規則が適用されると、この許可リストに含まれていないアドレスからの要求は、403 (禁止) 応答を受け取ります。
 
 ## <a name="configure-a-waf-policy-with-the-azure-portal"></a>Azure portal で WAF ポリシーを構成する
 
-### <a name="prerequisites"></a>前提条件
+### <a name="prerequisites"></a>[前提条件]
 
 Azure Front Door プロファイルを作成するには、「[クイック スタート:高可用性グローバル Web アプリケーション向けのフロント ドアを作成する](../../frontdoor/quickstart-create-front-door.md)」で説明されている手順に従ってください。
 
 ### <a name="create-a-waf-policy"></a>WAF ポリシーを作成する
 
-1. Azure portal で、 **[Create a resource]\(リソースの作成\)** を選択し、検索ボックスに「**Web application firewall**」と入力して、 **[Web Application Firewall (WAF)]\(Web アプリケーション ファイアウォール (WAF)\)** を選択します。
+1. Azure portal で、 **[Create a resource]/(リソースの作成/)** を選択し、検索ボックスに「**Web application firewall**」と入力して、 **[Web Application Firewall (WAF)]/(Web アプリケーション ファイアウォール (WAF)/)** を選択します。
 2. **［作成］** を選択します
-3. **[Create a WAF policy]\(WAF ポリシーの作成\)** ページで、次の値を使用して **[基本]** タブを完成させます。
+3. **[Create a WAF policy]/(WAF ポリシーの作成/)** ページで、次の値を使用して **[基本]** タブを完成させます。
    
    |設定  |値  |
    |---------|---------|
@@ -42,11 +42,11 @@ Azure Front Door プロファイルを作成するには、「[クイック ス�
    |ポリシー名     |ポリシーの名前を入力します|
    |[ポリシーの状態]     |Enabled|
 
-   **[Next: Policy settings]\(次へ: ポリシー設定\)** を選択します
+   **Next:[Next: Policy settings]/(次へ: ポリシー設定/)** を選択します
 
-1. **[ポリシー設定]** タブで、 **[防止]** を選択します。 **ブロックの応答本文**には、「*You've been blocked!* 」と入力します そうすると、カスタム ルールが有効になっていることを確認できます。
-2. **[Next: Managed rules]\(次へ: マネージド ルール\)** を選択します。
-3. **[Next: Custom rules]\(次へ: カスタム ルール\)** を選択します。
+1. **[ポリシー設定]** タブで、 **[防止]** を選択します。 **ブロックの応答本文** には、「*You've been blocked!* 」と入力します そうすると、カスタム ルールが有効になっていることを確認できます。
+2. **Next:[Next: Managed rules]/(次へ: マネージド ルール/)** を選択します。
+3. **Next:[Next: Custom rules]/(次へ: カスタム ルール/)** を選択します。
 4. **[カスタム ルールの追加]** を選択します。
 5. **[カスタム ルールの追加]** ページで、次のテスト値を使用してカスタム ルールを作成します。
 
@@ -54,19 +54,19 @@ Azure Front Door プロファイルを作成するには、「[クイック ス�
    |---------|---------|
    |カスタム ルール名     |FdWafCustRule|
    |Status     |Enabled|
-   |規則の種類     |一致する|
+   |規則の種類     |一致したもの|
    |Priority    |100|
    |一致の種類     |IP アドレス|
    |一致変数|RemoteAddr|
-   |Operation|[次の値を含まない]|
+   |操作|[次の値を含まない]|
    |IP アドレスまたは範囲|10.10.10.0/24|
    |THEN|トラフィックを拒否する|
 
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="カスタム規則":::
 
    **[追加]** を選択します。
-6. **[Next: Association]\(次へ: 関連付け\)** を選択します。
-7. **[Add frontend host]\(フロントエンド ホストの追加\)** を選択します。
+6. **Next:[Next: Association]/(次へ: 関連付け/)** を選択します。
+7. **[Add frontend host]/(フロントエンド ホストの追加/)** を選択します。
 8. **[フロントエンド ホスト]** では、フロントエンド ホストを選択し、 **[追加]** を選択します。
 9. **[Review + create]\(レビュー + 作成\)** を選択します。
 10. ポリシー検証に合格した後、 **[作成]** を選択します。
@@ -79,11 +79,11 @@ Azure Front Door プロファイルを作成するには、「[クイック ス�
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/waf-rule-test.png" alt-text="WAF 規則のテスト":::
 
    > [!NOTE]
-   > プライベート IP アドレスは、必ずルールがトリガーされるように、カスタム ルールで意図的に使用されていました。 実際の展開では、特定の状況に対して IP アドレスを使用して、*許可*および*拒否*ルールを作成します。
+   > プライベート IP アドレスは、必ずルールがトリガーされるように、カスタム ルールで意図的に使用されていました。 実際の展開では、特定の状況に対して IP アドレスを使用して、*許可* および *拒否* ルールを作成します。
 
 ## <a name="configure-a-waf-policy-with-the-azure-cli"></a>Azure CLI で WAF ポリシーを構成する
 
-### <a name="prerequisites"></a>前提条件
+### <a name="prerequisites"></a>[前提条件]
 IP 制限ポリシーの構成を始める前に、ご自分の CLI 環境をセットアップして、Azure Front Door プロファイルを作成します。
 
 #### <a name="set-up-the-azure-cli-environment"></a>Azure CLI 環境をセットアップする
@@ -162,13 +162,13 @@ az network front-door waf-policy rule match-condition add \
 
 ## <a name="configure-a-waf-policy-with-azure-powershell"></a>Azure PowerShell を使用して WAF ポリシーを構成する
 
-### <a name="prerequisites"></a>前提条件
+### <a name="prerequisites"></a>[前提条件]
 IP 制限ポリシーの構成を始める前に、PowerShell 環境をセットアップして、Azure Front Door プロファイルを作成します。
 
 #### <a name="set-up-your-powershell-environment"></a>PowerShell 環境をセットアップする
-Azure PowerShell には、Azure リソースを管理するために [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) モデルを使用する一連のコマンドレットが用意されています。
+Azure PowerShell には、Azure リソースを管理するために [Azure Resource Manager](../../azure-resource-manager/management/overview.md) モデルを使用する一連のコマンドレットが用意されています。
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) をローカル コンピューターにインストールして、すべての PowerShell セッションで使用することができます。 ページの手順に従い、Azure の資格情報を使用して PowerShell にサインインし、次に Az モジュールをインストールします。
+[Azure PowerShell](/powershell/azure/) をローカル コンピューターにインストールして、すべての PowerShell セッションで使用することができます。 ページの手順に従い、Azure の資格情報を使用して PowerShell にサインインし、次に Az モジュールをインストールします。
 
 1. 次のコマンドを使用して Azure に接続し、次に対話型ダイアログを使用してサインインします。
     ```

@@ -1,14 +1,16 @@
 ---
 title: リスト エンティティ型 - LUIS
 description: リスト エンティティは、固定かつ限定された関連単語セットとそのシノニムを表します。 LUIS では、リスト エンティティの追加の値は検出されません。 現在のリストに基づいて新しい単語の候補を表示するには、[Recommend] (推奨) 機能を使用します。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.openlocfilehash: 339fb832ef4af069b6f040c5264426002189f93f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 410b33b5c6078d096fa4b2acaa7b49bc14c95e31
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588889"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608274"
 ---
 # <a name="list-entity"></a>リスト エンティティ
 
@@ -83,7 +85,6 @@ ms.locfileid: "83588889"
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
-
 これは、クエリ文字列で `verbose=false` が設定されている場合の JSON です。
 
 ```json
@@ -128,7 +129,6 @@ ms.locfileid: "83588889"
 |データ オブジェクト|エンティティ名|値|
 |--|--|--|
 |リスト エンティティ|`Cities`|`paris`|
-
 
 ## <a name="next-steps"></a>次のステップ
 

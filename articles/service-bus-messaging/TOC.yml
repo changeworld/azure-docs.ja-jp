@@ -7,7 +7,7 @@
     - name: メッセージング サービスの比較
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
-    - name: Service Bus と Java Message Service (JMS) 2.0 を使用する (プレビュー)
+    - name: Service Bus と Java Message Service (JMS) 2.0 を使用する
       href: how-to-use-java-message-service-20.md
 - name: クイックスタート
   items:
@@ -26,18 +26,24 @@
               href: service-bus-resource-manager-namespace-queue.md
         - name: メッセージを送受信する
           items:
-            - name: .NET
+            - name: .NET (Azure.Messaging.ServiceBus)
               href: service-bus-dotnet-get-started-with-queues.md
-            - name: Java
+            - name: Java (azure-messaging-servicebus)
               href: service-bus-java-how-to-use-queues.md
-            - name: Node.js
-              href: service-bus-nodejs-how-to-use-queues-new-package.md
+            - name: Python (azure-servicebus)
+              href: service-bus-python-how-to-use-queues.md
+            - name: JavaScript (@azure/service-bus)
+              href: service-bus-nodejs-how-to-use-queues.md
             - name: PHP
               href: service-bus-php-how-to-use-queues.md
-            - name: Python
-              href: service-bus-python-how-to-use-queues.md
             - name: Ruby
               href: service-bus-ruby-how-to-use-queues.md
+        - name: メッセージの送受信 (古いバージョン/パッケージ)
+          items:
+            - name: .NET (Microsoft.Azure.ServiceBus)
+              href: service-bus-dotnet-get-started-with-queues-legacy.md
+            - name: Java (azure-servicebus)
+              href: service-bus-java-how-to-use-queues-legacy.md
     - name: Service Bus トピックとサブスクリプション
       items:
         - name: トピックとサブスクリプションを作成する
@@ -50,36 +56,66 @@
               href: service-bus-resource-manager-namespace-topic.md
         - name: メッセージの発行とサブスクライブ
           items:
-            - name: .NET
+            - name: .NET (Azure.Messaging.ServiceBus)
               href: service-bus-dotnet-how-to-use-topics-subscriptions.md
-            - name: Java
+            - name: Java (azure-messaging-servicebus)
               href: service-bus-java-how-to-use-topics-subscriptions.md
-            - name: Node.js
-              href: service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md
+            - name: Python (azure-servicebus)
+              href: service-bus-python-how-to-use-topics-subscriptions.md
+            - name: JavaScript (@azure/service-bus)
+              href: service-bus-nodejs-how-to-use-topics-subscriptions.md
             - name: PHP
               href: service-bus-php-how-to-use-topics-subscriptions.md
-            - name: Python
-              href: service-bus-python-how-to-use-topics-subscriptions.md
             - name: Ruby
               href: service-bus-ruby-how-to-use-topics-subscriptions.md
+        - name: メッセージの発行とサブスクライブ (古いバージョン/パッケージ)
+          items:
+            - name: .NET (Microsoft.Azure.ServiceBus)
+              href: service-bus-dotnet-how-to-use-topics-subscriptions-legacy.md
+            - name: Java (azure-servicebus)
+              href: service-bus-java-how-to-use-topics-subscriptions-legacy.md
 - name: チュートリアル
   items:
     - name: インベントリを更新する
       href: service-bus-tutorial-topics-subscriptions-portal.md
-    - name: Event Grid を使用したイベントへの応答
-      href: service-bus-to-event-grid-integration-example.md
+    - name: Event Grid を介した Service Bus イベントの処理
+      items:
+        - name: Azure Logic Apps
+          href: service-bus-to-event-grid-integration-example.md
+        - name: Azure Functions
+          href: service-bus-to-event-grid-integration-function.md
 - name: サンプル
   items:
     - name: Service Bus サンプル
       href: service-bus-samples.md
 - name: 概念
   items:
+    - name: キュー、トピック、サブスクリプション
+      href: service-bus-queues-topics-subscriptions.md
+    - name: トピック フィルターとアクション
+      href: topic-filters.md
     - name: Premium メッセージング
       href: service-bus-premium-messaging.md
     - name: Azure キューと Service Bus キューを比較する
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
     - name: パフォーマンスを最適化する
       href: service-bus-performance-improvements.md
+    - name: フェデレーション
+      items:
+        - name: メッセージ レプリケーションとリージョン間フェデレーション
+          href: service-bus-federation-overview.md
+        - name: メッセージ レプリケーションのタスクとアプリケーション
+          href: service-bus-federation-replicator-functions.md
+        - name: メッセージ レプリケーション タスクのパターン
+          href: service-bus-federation-patterns.md
+        - name: 構成されたレプリケーション タスク
+          href: service-bus-federation-configuration.md
+        - name: Service Bus エンティティ間でイベントをレプリケートする
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopy'
+        - name: メッセージを Event Hubs にレプリケートする
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
+        - name: Event Hubs からのメッセージの取得
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
     - name: geo ディザスター リカバリーと geo レプリケーション
       href: service-bus-geo-dr.md
     - name: 非同期メッセージングと高可用性
@@ -88,8 +124,10 @@
       href: service-bus-outages-disasters.md
     - name: Throttling
       href: service-bus-throttling.md
-    - name: セキュリティ
+    - name: Security
       items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
         - name: 認証と権限承認
           href: service-bus-authentication-and-authorization.md
           items:
@@ -105,13 +143,15 @@
                   href: service-bus-managed-service-identity.md
                 - name: アプリケーションからの認証
                   href: authenticate-application.md
-        - name: 組み込みのセキュリティ制御
-          href: service-bus-messaging-security-controls.md
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: ネットワークのセキュリティ
           href: network-security.md
+    - name: 他のサービスとの統合
+      items:
+        - name: Azure Service Bus と Azure Event Grid の統合
+          href: service-bus-to-event-grid-integration-concept.md
 - name: 操作方法ガイド
   items:
     - name: リージョン間で移動する
@@ -122,12 +162,16 @@
       href: service-bus-create-namespace-portal.md
     - name: 開発
       items:
+        - name: サブスクリプションのフィルターとアクションを設定する
+          href: service-bus-filter-examples.md
         - name: メッセージの処理
           items:
             - name: キュー、トピック、サブスクリプション
               href: service-bus-queues-topics-subscriptions.md
-            - name: Java Message Service (JMS) 2.0 のエンティティ (プレビュー)
+            - name: Java Message Service (JMS) 2.0 のエンティティ
               href: java-message-service-20-entities.md
+            - name: Java Message Service (JMS) Developer guide.md
+              href: jms-developer-guide.md
             - name: メッセージ、ペイロード、およびシリアル化
               href: service-bus-messages-payloads.md
             - name: メッセージの転送、ロック、および解決
@@ -136,10 +180,6 @@
               href: message-sequencing.md
             - name: メッセージの有効期限 (Time to Live)
               href: message-expiration.md
-            - name: Azure Event Grid を使用したメッセージの処理
-              href: service-bus-to-event-grid-integration-concept.md
-        - name: トピック フィルターとアクション
-          href: topic-filters.md
         - name: Standard 名前空間から Premium 名前空間への移行
           href: service-bus-migrate-standard-premium.md
         - name: パーティション分割されたキューとトピック
@@ -178,18 +218,20 @@
               href: service-bus-auto-forwarding.md
             - name: トランザクション処理
               href: service-bus-transactions.md
-        - name: エンドツーエンドのトレースと診断
-          href: service-bus-end-to-end-tracing.md
         - name: 多層 Service Bus アプリケーションを構築する
           href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
-        - name: キューからのメッセージの送受信 (レガシ azure-sb)
-          href: service-bus-nodejs-how-to-use-queues.md
-        - name: メッセージの発行とサブスクライブ (レガシ azure-sb)
-          href: service-bus-nodejs-how-to-use-topics-subscriptions.md
     - name: 移行
       items:
         - name: ActiveMQ から Azure Service Bus への移行
           href: migrate-jms-activemq-to-servicebus.md
+    - name: モニター
+      items:
+        - name: エンドツーエンドのトレースと診断
+          href: service-bus-end-to-end-tracing.md
+        - name: 診断ログ
+          href: service-bus-diagnostic-logs.md
+        - name: Azure Monitor のメトリック
+          href: service-bus-metrics-azure-monitor.md
     - name: 統合
       items:
         - name: RabbitMQ との統合
@@ -200,12 +242,8 @@
           href: automate-update-messaging-units.md
         - name: Azure PowerShell を使用したエンティティのプロビジョニング
           href: service-bus-manage-with-ps.md
-        - name: Azure Monitor による Service Bus の監視
-          href: service-bus-metrics-azure-monitor.md
         - name: Service Bus 管理ライブラリ
           href: service-bus-management-libraries.md
-        - name: リソース ログ
-          href: service-bus-diagnostic-logs.md
         - name: メッセージ エンティティの一時停止と再アクティブ化
           href: entity-suspend.md
         - name: Service Bus Explorer を使用して Service Bus に対するデータ操作を実行する
@@ -241,16 +279,38 @@
   items:
     - name: .NET
       items:
-        - name: Microsoft.ServiceBus.Messaging (.NET Framework)
-          href: /dotnet/api/microsoft.servicebus.messaging
+        - name: Microsoft.Azure.ServiceBus から Azure.Messaging.ServiceBus への移行
+          href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/MigrationGuide.md'
+        - name: Azure.Messaging.ServiceBus (.NET Standard - 最新)
+          href: /dotnet/api/azure.messaging.servicebus
         - name: Microsoft.Azure.ServiceBus (.NET Standard)
           href: /dotnet/api/microsoft.azure.servicebus
+        - name: Microsoft.ServiceBus.Messaging (.NET Framework)
+          href: /dotnet/api/microsoft.servicebus.messaging
     - name: Java
-      href: /java/api/overview/azure/servicebus
+      items:
+        - name: azure-servicebus から azure-messaging-servicebus への移行
+          href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/migration-guide.md'
+        - name: azure-messaging-servicebus (最新)
+          href: /java/api/overview/azure/servicebus?view=azure-java-preview
+        - name: azure-servicebus
+          href: /java/api/overview/azure/servicebus
     - name: Python
-      href: /python/api/overview/azure/servicebus?view=azure-python
-    - name: Node.js
-      href: /javascript/api/overview/azure/service-bus
+      items:
+        - name: azure-servicebus バージョン 0.50 からバージョン 7 への移行
+          href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/servicebus/azure-servicebus/migration_guide.md'
+        - name: azure-servicebus バージョン 7
+          href: /python/api/overview/azure/servicebus?view=azure-python-preview
+        - name: azure-servicebus バージョン 0.50
+          href: /python/api/overview/azure/servicebus
+    - name: JavaScript
+      items:
+        - name: バージョン 1 からバージョン 7 への移行
+          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/migrationguide.md'
+        - name: azure/service-bus バージョン 7
+          href: /javascript/api/overview/azure/service-bus?view=azure-node--preview
+        - name: azure/service-bus バージョン 1
+          href: /javascript/api/overview/azure/service-bus?view=azure-node-latest
     - name: PHP
       href: 'https://github.com/Azure/azure-sdk-for-php'
     - name: Ruby
@@ -265,9 +325,9 @@
       href: /azure/templates/microsoft.servicebus/allversions
     - name: Quotas (クォータ)
       href: service-bus-quotas.md
-    - name: SQLFilter 構文
+    - name: サブスクリプション ルールの SQL フィルター構文
       href: service-bus-messaging-sql-filter.md
-    - name: SQLRuleAction 構文
+    - name: サブスクリプション ルールの SQL アクション構文
       href: service-bus-messaging-sql-rule-action.md
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'

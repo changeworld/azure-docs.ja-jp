@@ -1,17 +1,15 @@
 ---
 title: Azure で Service Fabric 上に .NET アプリをすばやく作成する
 description: このクイック スタートでは、Service Fabric Reliable Services サンプル アプリケーションを使用して、Azure 用の .NET アプリケーションを作成します。
-author: mikkelhegn
 ms.topic: quickstart
 ms.date: 06/26/2019
-ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: b88dfedd5454d708386afa6912a26dac41c6d6b4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 15e2180e44acaa5ebefb403b2da3755396a45ba4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258574"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575892"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>クイック スタート: Service Fabric に .NET Reliable Services アプリケーションをデプロイする
 
@@ -34,7 +32,7 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 
 このクイック スタートを完了するには、以下が必要です。
 
-1. **Azure 開発**および **ASP.NET と Web 開発**ワークロードと共に [Visual Studio 2019 をインストール](https://www.visualstudio.com/)する
+1. **Azure 開発** および **ASP.NET と Web 開発** ワークロードと共に [Visual Studio 2019 をインストール](https://www.visualstudio.com/)する
 2. [Git をインストールする](https://git-scm.com/)
 3. [Microsoft Azure Service Fabric SDK をインストールする](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK)
 4. 次のコマンドを実行して Visual Studio からローカル Service Fabric クラスターへのデプロイを有効にする
@@ -160,7 +158,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 6. たとえば **VotingWebPkg** の **Code** 要素のバージョンを "2.0.0" に変更し、 **[保存]** をクリックします。
 
     ![バージョンの変更ダイアログ](./media/service-fabric-quickstart-dotnet/change-version.png)
-7. **[Service Fabric アプリケーションの発行]** ダイアログで、 **[アプリケーションをアップグレードする] チェック ボックス**をオンにします。
+7. **[Service Fabric アプリケーションの発行]** ダイアログで、 **[アプリケーションをアップグレードする] チェック ボックス** をオンにします。
 8.  **[ターゲット プロファイル]** を **[PublishProfiles\Local.5Node.xml]** に変更し、 **[接続のエンドポイント]** を **[ローカル クラスター]** に設定します。 
 9. **[アプリケーションをアップグレードする]** を選択します。
 

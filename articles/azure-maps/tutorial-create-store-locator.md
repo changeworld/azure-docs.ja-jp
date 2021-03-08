@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Azure Maps を使用してストア ロケーター アプリケーションを作成する | Microsoft Azure Maps
-description: ストア ロケーター Web アプリケーションを作成する方法について説明します。 Azure Maps Web SDK を使用して Web ページを作成し、検索サービスに対してクエリを実行して結果をマップに表示します。
+description: ストア ロケーター Web アプリケーションを作成する方法に関するチュートリアル。 Azure Maps Web SDK を使用して Web ページを作成し、検索サービスに対してクエリを実行して結果をマップに表示します。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 08/11/2020
@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 1ec4dbb1ce55919fda6c73d198100db34f5f57ea
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 801c2fe1710952a12584bf10dd8e5c77de3b839c
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121257"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625100"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してストア ロケーターを作成する
 
 このチュートリアルでは、Azure Maps を使用してシンプルなストア ロケーターを作成する手順を紹介します。 ストア ロケーターは広く一般的に使用されています。 この種のアプリケーションで使われている概念の多くは、他のさまざまな種類のアプリケーションに当てはまります。 コンシューマーに商品を直接販売するほとんどの企業にとって、ストア ロケーターを顧客に提供することは必要不可欠になっています。 このチュートリアルでは、以下の内容を学習します。
-    
+
 > [!div class="checklist"]
 > * Azure マップ コントロール API を使用して新しい Web ページを作成する。
 > * ファイルからカスタム データを読み込んで地図上に表示する。
@@ -81,7 +81,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 * その他いくつかの列に、コーヒー ショップに関連したメタデータが格納されています。電話番号、ブール型列、店舗の開店時間と閉店時間 (24 時間形式) です。 ブール型列は、Wi-Fi と車椅子の利用の可否に使用されます。 実際の場所データとの関係がより強いメタデータを格納する列を独自に作成してもかまいません。
 
 > [!NOTE]
-> Azure Maps は、球面メルカトル図法 "EPSG:3857" でデータをレンダリングしますが、WGS84 測地系を使用する "EPSG:4325" のデータを読み取ります。
+> Azure Maps は、球面メルカトル図法 "EPSG:3857" でデータをレンダリングしますが、WGS84 測地系を使用する "EPSG:4326" のデータを読み取ります。
 
 データセットをアプリケーションに公開する方法は数多く存在します。 その 1 つが、データベースにデータを読み込んだうえで、そのデータを照会する Web サービスを公開する方法です。 その結果をユーザーのブラウザーに返すことができます。 この方法は、データセットが大きい場合や更新頻度が高い場合に最適です。 ただし、この方法は開発作業が増え、コストも大きくなります。
 
@@ -385,7 +385,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. *index.js* にコードを追加します。 以下のコードで地図を初期化します。 ページの読み込みが完了するまで待機する[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)を追加しました。 さらに、地図の読み込みを監視するイベントを接続し、検索ボタンと [My location]\(現在位置\) ボタンに機能を追加します。
+1. *index.js* にコードを追加します。 以下のコードで地図を初期化します。 ページの読み込みが完了するまで待機する[イベント リスナー](/javascript/api/azure-maps-control/atlas.map#events)を追加しました。 さらに、地図の読み込みを監視するイベントを接続し、検索ボタンと [My location]\(現在位置\) ボタンに機能を追加します。
 
    ユーザーが検索ボタンを選択するか、検索ボックスに場所を入力して Enter キーを押すと、ユーザーのクエリに対するあいまい検索が開始されます。 検索結果を特定の国または地域に限定するために、それらの国または地域の ISO 2 値の配列を `countrySet` オプションに渡します。 検索の国/地域を限定することで、返される結果の精度向上につながります。 
   
@@ -432,7 +432,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
             }
         };
 
-        //If the user selects the My Location button, use the Geolocation API to get the user's location. Center and zoom the map on that location.
+        //If the user selects the My Location button, use the Geolocation API (Preview) to get the user's location. Center and zoom the map on that location.
         document.getElementById('myLocationBtn').onclick = setMapToUserLocation;
 
         //Wait until the map resources are ready.
@@ -472,7 +472,7 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
     function setMapToUserLocation() {
         //Request the user's location.
         navigator.geolocation.getCurrentPosition(function(position) {
-            //Convert the Geolocation API position to a longitude and latitude position value that the map can interpret and center the map over it.
+            //Convert the Geolocation API (Preview) position to a longitude and latitude position value that the map can interpret and center the map over it.
             map.setCamera({
                 center: [position.coords.longitude, position.coords.latitude],
                 zoom: maxClusterZoomLevel + 1
@@ -924,34 +924,25 @@ Azure Maps での認証の詳細については、「[Azure Maps での認証の
 
 ![小画面バージョンのストア ロケーターのスクリーンショット](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)
 
-## <a name="next-steps"></a>次のステップ
+このチュートリアルでは、Azure Maps を使用して基本的なストア ロケーターを作成する方法を学習しました。 このチュートリアルで作成するストア ロケーターには、必要な機能がすべて備わっているものと思われます。 次のように、ストア ロケーターに機能を追加したり、より高度な機能を使用したりすれば、ユーザー エクスペリエンスの独自性を高めることができます。 
 
-このチュートリアルでは、Azure Maps を使用して基本的なストア ロケーターを作成する方法を紹介しています。 このチュートリアルで作成するストア ロケーターには、必要な機能がすべて備わっているものと思われます。 次のように、ストア ロケーターに機能を追加したり、より高度な機能を使用したりすれば、ユーザー エクスペリエンスの独自性を高めることができます。 
+ * 検索ボックスの[入力補完](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI)を有効にする。  
+ * [多言語のサポート](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization)を追加する。 
+ * ユーザーが[ルートに沿って場所をフィルター処理](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route)できるようにする。 
+ * [フィルターを設定](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)する機能を追加する。 
+ * クエリ文字列を使用して検索の初期値を指定できるようにする。 このオプションをストア ロケーターに実装すれば、ユーザーが検索をブックマークに登録したり共有したりできます。 このページに対し、別のページから検索を渡す簡単な方法としても利用できます。  
+ * ストア ロケーターを [Azure App Service Web アプリ](../app-service/quickstart-html.md)としてデプロイする。 
+ * データベースにデータを格納して、付近の所在地を検索する。 詳細については、[SQL Server の空間データ型の概要](/sql/relational-databases/spatial/spatial-data-types-overview?preserve-view=true&view=sql-server-2017)と[空間データに対するニアレストネイバーのクエリ](/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?preserve-view=true&view=sql-server-2017)に関するページを参照してください。
 
-> [!div class="checklist"]
-> * 検索ボックスの[入力補完](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI)を有効にする。  
-> * [多言語のサポート](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization)を追加する。 
-> * ユーザーが[ルートに沿って場所をフィルター処理](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route)できるようにする。 
-> * [フィルターを設定](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)する機能を追加する。 
-> * クエリ文字列を使用して検索の初期値を指定できるようにする。 このオプションをストア ロケーターに実装すれば、ユーザーが検索をブックマークに登録したり共有したりできます。 このページに対し、別のページから検索を渡す簡単な方法としても利用できます。  
-> * ストア ロケーターを [Azure App Service Web アプリ](https://docs.microsoft.com/azure/app-service/quickstart-html)としてデプロイする。 
-> * データベースにデータを格納して、付近の所在地を検索する。 詳細については、[SQL Server の空間データ型の概要](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017)と[空間データに対するニアレストネイバーのクエリ](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017)に関するページを参照してください。
+[完全なソース コード](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)や[ライブ サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)を見たり、[ズーム レベルとタイル グリッド](zoom-levels-and-tile-grid.md)を使用して Azure Maps の対象範囲と機能について詳しく理解したりできます。 また、[データドリブンのスタイルの式を使用](data-driven-style-expressions-web-sdk.md)して、ビジネス ロジックに適用することもできます。
 
-> [!div class="nextstepaction"]
-> [ソース コード全体を見る](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-> [!div class="nextstepaction"]
-> [ライブ サンプルを見る](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
+クリーンアップが必要なリソースはありません。
 
-Azure Maps の対象範囲と機能について詳しくは、以下を参照してください。
-
-> [!div class="nextstepaction"]
-> [ズーム レベルとタイル グリッド](zoom-levels-and-tile-grid.md)
+## <a name="next-steps"></a>次の手順
 
 他のコード例や対話型のコーディング エクスペリエンスについては、以下を参照してください。
 
 > [!div class="nextstepaction"]
 > [マップ コントロールの使用方法](how-to-use-map-control.md)
-
-> [!div class="nextstepaction"]
-> [データドリブンのスタイルの式を使用する](data-driven-style-expressions-web-sdk.md)

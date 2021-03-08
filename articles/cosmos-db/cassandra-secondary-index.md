@@ -3,18 +3,20 @@ title: Azure Cosmos DB Cassandra API アカウントでのインデックス作�
 description: Azure Cosmos DB Cassandra API アカウントでのセカンダリ インデックス作成のしくみについて説明します。
 author: TheovanKraay
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 04/04/2020
 ms.author: thvankra
 ms.reviewer: sngun
-ms.openlocfilehash: 7de38097acdbfa1f9c9b90f3051c68dec5465b32
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 98e8f713ad2e4eef47e40d89a23dbf49a98ad67c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757975"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339895"
 ---
 # <a name="secondary-indexing-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API でのセカンダリ インデックス作成
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Azure Cosmos DB の Cassandra API は、基になるインデックス作成インフラストラクチャを利用して、プラットフォームに固有のインデックス作成の長所を公開します。 ただし、コア SQL API とは異なり、Azure Cosmos DB の Cassandra API では、既定ですべての属性にインデックスが付けられるわけではありません。 その代わりとして、特定の属性に対してインデックスを作成するセカンダリ インデックス作成機能をサポートしており、この機能は Apache Cassandra と同じように動作します。  
 

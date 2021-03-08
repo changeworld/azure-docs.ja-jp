@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: jeedes
-ms.openlocfilehash: dba77045f8aef1799717c6f6af91046b3ca6119e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 92b068ee9b8aaf4c462002354bbb6490f4888a80
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520313"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455903"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-claromentis"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Claromentis の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88520313"
 * ユーザーが自分の Azure AD アカウントを使用して Claromentis に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Claromentis では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Claromentis では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* Claromentis では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Claromentis では、 **Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-claromentis-from-the-gallery"></a>ギャラリーからの Claromentis の追加
 
@@ -50,7 +50,7 @@ Azure AD への Claromentis の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Claromentis**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Claromentis** 」と入力します。
 1. 結果のパネルから **[Claromentis]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-claromentis"></a>Claromentis の Azure AD シングル サインオンの構成とテスト
@@ -136,21 +136,21 @@ Claromentis で Azure AD SSO を構成してテストするには、次の構成
 
 1. 別のブラウザー ウィンドウで、Claromentis Web サイトに管理者としてサインインします。
 
-1. **アプリケーション アイコン**をクリックし、 **[Admin]\(管理者\)** を選択します。
+1. **アプリケーション アイコン** をクリックし、 **[Admin]\(管理者\)** を選択します。
 
-    ![Claromentis の構成](./media/claromentis-tutorial/config1.png)
+    ![スクリーンショットは、[Admin]\(管理者\) が選択されている Claromentis Web サイトを示します。](./media/claromentis-tutorial/config1.png)
 
 1. **[Custom Login Handler]\(カスタム ログイン ハンドラー\)** タブを選択します。
 
-    ![Claromentis の構成](./media/claromentis-tutorial/config2.png)
+    ![スクリーンショットは、[Custom Login Handler]\(カスタム ログイン ハンドラー\) が選択されている [管理者] ページを示します。](./media/claromentis-tutorial/config2.png)
 
 1. **[SAML Config]\(SAML 構成\)** を選択します。
 
-    ![Claromentis の構成](./media/claromentis-tutorial/config3.png)
+    ![スクリーンショットは、SAML の構成ページを示します。](./media/claromentis-tutorial/config3.png)
 
 1. **[SAML Config]\(SAML 構成\)** タブで **[Config]\(構成\)** セクションまで下へスクロールし、以下の手順を実行します。
 
-    ![Claromentis の構成](./media/claromentis-tutorial/config4.png)
+    ![スクリーンショットは、この手順で説明されている情報を入力できるページの [Config]\(構成\) セクションを示します。](./media/claromentis-tutorial/config4.png)
 
     a. **[Technical Contact Name]\(技術部連絡先名\)** ボックスに、技術部連絡先担当者の名前を入力します。
 
@@ -160,19 +160,19 @@ Claromentis で Azure AD SSO を構成してテストするには、次の構成
 
 1. **[Auth Sources]\(認証ソース\)** まで下へスクロールし、以下の手順を実行します。
 
-    ![Claromentis の構成](./media/claromentis-tutorial/config5.png)
+    ![スクリーンショットは、この手順で説明されている情報を入力できる [Auth Sources]\(認証ソース\) セクションを示します。](./media/claromentis-tutorial/config5.png)
 
     a. **[IDP]** ボックスに、Azure portal からコピーした **Azure AD ID** の値を入力します。
 
     b. **[Entity ID]\(エンティティ ID\)** ボックスに、エンティティ ID 値を入力します。
 
-    c. Azure portal からダウンロードした**フェデレーション メタデータ XML** ファイルをアップロードします。
+    c. Azure portal からダウンロードした **フェデレーション メタデータ XML** ファイルをアップロードします。
 
     d. **[保存]** をクリックします。
 
 1. これで、すべての URL が **[SAML Config]\(SAML 構成\)** セクションの **[Identity Provider]\(ID プロバイダー\)** セクション内に設定されたことになります。
 
-    ![Claromentis の構成](./media/claromentis-tutorial/config6.png)
+    ![スクリーンショットは、URL が設定されている [Identity Provider]\(ID プロバイダー\) ページを示します。](./media/claromentis-tutorial/config6.png)
 
     a. **[Identifier (Entity ID)]\(識別子 (エンティティ ID)\)** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションにある **[識別子]** ボックスに貼り付けます。
 
@@ -188,14 +188,14 @@ Claromentis で Azure AD SSO を構成してテストするには、次の構成
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Claromentis] タイルをクリックすると、SSO を設定した Claromentis に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Claromentis] タイルをクリックすると、SSO を設定した Claromentis に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Claromentis を試す](https://aad.portal.azure.com/)

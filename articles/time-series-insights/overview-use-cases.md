@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 12/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: d2d3c94985f099c7a0ab92efab564415f5cd81bb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d97958c5fd1274495da88c064b63e59e354f691
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095415"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606965"
 ---
 # <a name="azure-time-series-insights-gen2-use-cases"></a>Azure Time Series Insights Gen2 のユース ケース
 
@@ -52,13 +52,13 @@ Azure Time Series Insights Gen2 は、直感的で使い方は簡単です。 �
 
 Azure Time Series Insights Gen2 に格納されたデータを操作する方法は主に 3 つあります。
 
-* 1 つ目の最も簡単な開始方法は、Azure Time Series Insights Gen2 エクスプローラーを使用することです。 それを使用することで、1 か所ですべての IoT データをすばやく可視化できます。 データの異常の特定に役立つヒートマップなどのツールを備えています。 パースペクティブ ビューも提供されています。 それを使用して、単一のダッシュボードで 1 つまたは複数の Azure Time Series Insights Gen2 環境からの最大 4 つのビューを比較できます。 ダッシュボードでは、すべての場所の時系列データを表示できます。 [Azure Time Series Insights Gen2 エクスプローラー](./time-series-insights-update-explorer.md)について参照してください。 環境を計画するには、[Azure Time Series Insights Gen2 の計画](./time-series-insights-update-plan.md)に関するページを参照してください。
+* 1 つ目の最も簡単な開始方法は、Azure Time Series Insights Gen2 エクスプローラーを使用することです。 それを使用することで、1 か所ですべての IoT データをすばやく可視化できます。 データの異常の特定に役立つヒートマップなどのツールを備えています。 パースペクティブ ビューも提供されています。 それを使用して、単一のダッシュボードで 1 つまたは複数の Azure Time Series Insights Gen2 環境からの最大 4 つのビューを比較できます。 ダッシュボードでは、すべての場所の時系列データを表示できます。 [Azure Time Series Insights Gen2 エクスプローラー](./concepts-ux-panels.md)について参照してください。 環境を計画するには、[Azure Time Series Insights Gen2 の計画](./how-to-plan-your-environment.md)に関するページを参照してください。
 
 * 2 つ目の開始方法は、JavaScript SDK を使用して、Web アプリケーションに強力なチャートやグラフをすばやく埋め込むことです。 数行のコードで、強力なクエリを作成できます。 それらを使用して、折れ線グラフ、円グラフ、棒グラフ、ヒートマップ、データ グリッドなどのデータを入力します。 SDK を使用することで、これらのすべての要素がすぐに使用できる状態で存在します。 さらに、SDK は、Azure Time Series Insights Gen2 クエリ API を抽象化します。 それらを使用して、SQL に似た述語を作成して、ダッシュボードに表示するデータをクエリできます。 プレゼンテーション レイヤーのハイブリッド ソリューションに対して、Azure Time Series Insights Gen2 は、パラメーター化 URL を提供します。 それらは、データを深く探索するための Azure Time Series Insights Gen2 エクスプローラーとのシームレスな接続ポイントを提供します。
 
   * JavaScript SDK の詳細については、[JS クライアント ライブラリ](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)と[クライアントの例](https://github.com/Microsoft/tsiclient)のドキュメントを参照してください。
 
-  * URL と新しい UI の共有の詳細について、[Azure Time Series Insights Gen2 エクスプローラーでのデータ視覚化](time-series-insights-update-explorer.md)に関するページを確認してください。
+  * URL と新しい UI の共有の詳細について、[Azure Time Series Insights Gen2 エクスプローラーでのデータ視覚化](./concepts-ux-panels.md)に関するページを確認してください。
 
 * 3 つ目の開始方法は、Azure Time Series Insights Gen2 に格納されているデータをクエリするために強力な API を使用することです。 Azure Time Series Insights Gen2 には、`from`、`to`、`first`、`last` などのテンポラル演算子があります。 `average`、`sum`、`min`、`max`、`time-weighted average`、`time-weighted sum` などの集計および変換があります。また、フィルター処理、算術演算子、ブール演算子、スカラー関数なども使用できます。これらすべての演算子により、ダウンストリーム アプリケーションではデータ内の興味のある傾向やパターンをすばやく見つけることができます。 それらを使用して、異常を検出するための独自の視覚化を設定します。
 
@@ -66,7 +66,7 @@ Azure Time Series Insights Gen2 に格納されたデータを操作する方法
 
 Azure Time Series Insights Gen2 を使用すると、大規模に機器の正常性、使用状況、パフォーマンスを監視したり、運用効率を測定したりすることができます。 Azure Time Series Insights Gen2 を使用すると、取り込みやクエリのパフォーマンスを損なうことなく予測不能な各種 IoT ワークロードを管理するのに役立ちます。
 
-[![概要](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
+[![IoT デバイス、アプリケーション データ、ストリーム処理、操作効率性、インテリジェンス、Azure Time Series Insights Gen2 の分析情報と高度な分析のスクリーンショット。](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 運用プロセスからのデータのストリーミングと継続的処理により、適切なテクノロジやソリューションと組み合わせた場合に、あらゆるビジネスを適切に変換できます。 多くの場合、これらのソリューションは、複数のシステムの組み合わせになります。 これらにより、特に IoT 領域内の、絶えず変更され、共通のパターンを共有するデータの探索と分析が可能になります。
 
@@ -100,6 +100,6 @@ Azure Time Series Insights Gen2 では、2 つの簡単なコスト効率の高�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Time Series Insights Gen2 エクスプローラー](./time-series-insights-update-explorer.md)について参照してください。
-* 環境を計画するには、[Azure Time Series Insights Gen2 のベスト プラクティス](./time-series-insights-update-plan.md)に関するページを参照してください。
+* [Azure Time Series Insights Gen2 エクスプローラー](./concepts-ux-panels.md)について参照してください。
+* 環境を計画するには、[Azure Time Series Insights Gen2 のベスト プラクティス](./how-to-plan-your-environment.md)に関するページを参照してください。
 * [クライアントの例](https://github.com/Microsoft/tsiclient)のドキュメントを参照してください。

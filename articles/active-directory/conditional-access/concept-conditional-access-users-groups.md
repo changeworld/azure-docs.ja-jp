@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba1fc856ee9093b628bd86b9847f8fc70b7189c2
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: c4c654f70af2188264465d97abded9cae95e9275
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552902"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364581"
 ---
 # <a name="conditional-access-users-and-groups"></a>条件付きアクセス:ユーザーとグループ
 
-条件付きアクセス ポリシーには、決定プロセスのシグナルの 1 つとしてユーザー割り当てが含まれている必要があります。 ユーザーは条件付きアクセス ポリシーに含めることも除外することもできます。 
+条件付きアクセス ポリシーには、決定プロセスのシグナルの 1 つとしてユーザー割り当てが含まれている必要があります。 ユーザーは条件付きアクセス ポリシーに含めることも除外することもできます。 すべてのポリシーが Azure Active Directory によって評価され、すべての要件が満たされていることを確認したうえで、ユーザーのアクセスが許可されます。
 
 ![条件付きアクセスによって下される決定のシグナルとしてのユーザー](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
 
@@ -42,17 +42,20 @@ ms.locfileid: "87552902"
    - ユーザーとグループ
       - 特定のユーザーのセットを対象にできます。 たとえば組織で人事部アプリがクラウド アプリとして選択されている場合は、人事部のすべてのメンバーを含むグループを選択できます。 Azure AD 内の任意の種類のグループを指定できます。これには、動的なグループや、割り当て済みのセキュリティ グループおよび配布グループが含まれます。 ポリシーは、入れ子になったユーザーおよびグループに適用されます。
 
+> [!IMPORTANT]
+> 条件付きアクセス ポリシーに含めるユーザーとグループを選択する際には、条件付きアクセス ポリシーに直接追加できるユーザーの数に制限があります。 条件付きアクセス ポリシーに直接追加する必要があるユーザーの数が多い場合は、それらのユーザーを 1 つのグループに配置し、そのグループを条件付きアクセス ポリシーに割り当てることをお勧めします。
+
 > [!WARNING]
 > ユーザーまたはグループが 2048 を超えるグループのメンバーである場合、そのアクセスはブロックされる可能性があります。 この制限は、直接と入れ子の両方のグループ メンバーシップに適用されます。
 
 > [!WARNING]
-> 条件付きアクセス ポリシーは、[管理単位にスコープ指定されている](../users-groups-roles/roles-admin-units-assign-roles.md)ディレクトリ ロール、または ([カスタム ロール](../users-groups-roles/roles-create-custom.md)経由などで) オブジェクトに直接スコープ指定されているディレクトリ ロールが割り当てられているユーザーをサポートしません。
+> 条件付きアクセス ポリシーは、[管理単位にスコープ指定されている](../roles/admin-units-assign-roles.md)ディレクトリ ロール、または ([カスタム ロール](../roles/custom-create.md)経由などで) オブジェクトに直接スコープ指定されているディレクトリ ロールが割り当てられているユーザーをサポートしません。
 
 ## <a name="exclude-users"></a>ユーザーを除外する
 
 組織がユーザーまたはグループの追加と除外の両方を実行すると、ポリシーでは除外アクションが追加よりも優先されるため、ユーザーまたはグループがポリシーから除外されます。 除外は一般的に、緊急アクセス アカウントや非常用アカウントのために使用されます。 緊急アクセス アカウントとそれが重要である理由の詳細については、以下の記事を参照してください。 
 
-* [Azure AD で緊急アクセス用アカウントを管理する](../users-groups-roles/directory-emergency-access.md)
+* [Azure AD で緊急アクセス用アカウントを管理する](../roles/security-emergency-access.md)
 * [Azure Active Directory で回復性があるアクセス制御管理戦略を作成する](../authentication/concept-resilient-controls.md)
 
 条件付きアクセス ポリシーの作成時には、除外するために以下のオプションを使用できます。
@@ -66,13 +69,15 @@ ms.locfileid: "87552902"
 
 ### <a name="preventing-administrator-lockout"></a>管理者のロックアウトを防ぐ
 
-**すべてのユーザー**および**すべてのアプリ**に適用されるポリシーを作成するときに、管理者自身が自分のディレクトリからロックアウトされるのを防ぐために、次の警告が表示されます。
+**すべてのユーザー** および **すべてのアプリ** に適用されるポリシーを作成するときに、管理者自身が自分のディレクトリからロックアウトされるのを防ぐために、次の警告が表示されます。
 
 > 自分自身をロックアウトしないでください。 まずは少数のユーザーにポリシーを適用して、想定どおりに動作するかどうかを確認することをお勧めします。 また、このポリシーから少なくとも 1 人の管理者を除外することをお勧めします。 こうすることで、アクセス権を保持し、変更が必要な場合にポリシーを更新できます。 影響を受けるユーザーとアプリを確認してください。
 
 既定では、ポリシーには現在のユーザーをポリシーから除外するオプションが用意されていますが、次の図に示すように、管理者はこの既定値を上書きできます。 
 
 ![警告。自分自身をロックアウトしないでください。](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
+
+[Azure portal からロックアウトされた場合はどのように対処すればよいですか。](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
 
 ## <a name="next-steps"></a>次のステップ
 

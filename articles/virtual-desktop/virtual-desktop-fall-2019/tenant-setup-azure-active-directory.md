@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e2858daaa834552da5a85063fd9973d2c35209d7
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f41584194f8f5e8afde630405116b8b169cb5656
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005620"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91542038"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>チュートリアル:Windows Virtual Desktop (クラシック) でテナントを作成する
 
@@ -126,7 +126,7 @@ Azure サブスクリプション ID を検索するには:
 1. 同じ [Azure portal](https://portal.azure.com) セッションで、**サブスクリプション**を検索して選択します。
 
    > [!div class="mx-imgBorder"]
-   > ![Azure portal で "Azure Active Directory" を検索した結果のスクリーンショット。 [サービス] の下の検索結果が強調表示されています。](../media/tenant-search-subscription.png)
+   > ![Azure portal で "Azure Active Directory" を検索した結果のスクリーンショット。 [サービス] の検索結果が強調表示されています。](../media/tenant-search-subscription.png)
 
 2. Windows Virtual Desktop サービスの通知を受け取るために使用する Azure サブスクリプションを選択します。
 3. **サブスクリプション ID** を探し、その値にマウス ポインターを合わせてクリップボード アイコンを表示します。 クリップボード アイコンを選択し、この値を後で **AzureSubscriptionId** 値として使用できるように便利な場所に貼り付けます。

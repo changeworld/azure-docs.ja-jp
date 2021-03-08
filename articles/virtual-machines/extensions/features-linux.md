@@ -1,6 +1,6 @@
 ---
 title: Linux 用の Azure VM 拡張機能とその機能
-description: Azure 仮想マシンに使用できる拡張機能について、提供または改善される内容ごとにまとめて説明します。
+description: Linux 上の Azure 仮想マシンで使用できる拡張機能について、提供または改善される内容ごとにまとめて説明します。
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -9,17 +9,18 @@ editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 52f5d0ec-8f75-49e7-9e15-88d46b420e63
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: bc29a62f469b0b9d091fcdef2488afba764a09fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 66687f5954894d962a67767669081de15a30c7c3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080354"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672619"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
@@ -32,7 +33,7 @@ Azure 仮想マシン (VM) 拡張機能は、Azure VM でのデプロイ後の�
 さまざまな Azure VM 拡張機能が存在しますが、そのユース ケースはそれぞれ異なります。 次に例をいくつか示します。
 
 - Linux 用の DSC 拡張機能を使って、VM に PowerShell Desired State Configuration を適用します。 詳細については、「[Azure Desired State configuration extension](https://github.com/Azure/azure-linux-extensions/tree/master/DSC)」(Azure Desired State Configuration 拡張機能) を参照してください。
-- Microsoft Monitoring Agent の VM 拡張機能を使用して VM の監視を構成します。 詳細については、[Linux VM の監視方法](../linux/tutorial-monitor.md)に関する記事を参照してください。
+- Microsoft Monitoring Agent の VM 拡張機能を使用して VM の監視を構成します。 詳細については、[Linux VM の監視方法](/previous-versions/azure/virtual-machines/linux/tutorial-monitor)に関する記事を参照してください。
 - Chef または Datadog 拡張機能を使って Azure インフラストラクチャの監視を構成します。 詳細については、[Chef のドキュメント](https://docs.chef.io/azure_portal.html)または [Datadog のブログ](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)を参照してください。
 
 プロセス固有の拡張機能のほか、カスタム スクリプト拡張機能を Windows と Linux の両方の仮想マシンで使用できます。 Linux 用カスタム スクリプト拡張機能では、VM で実行する任意の Bash スクリプトを使用できます。 カスタム スクリプトは、ネイティブの Azure ツールが提供可能な構成以上の構成を必要とする Azure のデプロイを設計する場合に役立ちます。 詳細については、[Linux VM カスタム スクリプト拡張機能](custom-script-linux.md)に関するページを参照してください。
@@ -65,7 +66,7 @@ Linux エージェントは複数の OS で実行されますが、拡張機能�
 > [!IMPORTANT]
 > ゲスト ファイアウォールを使用して *168.63.129.16* へのアクセスをブロックした場合、上記のアクセス許可とは関係なく、拡張機能はエラーになります。
 
-エージェントは、拡張機能パッケージおよびレポート ステータスをダウンロードするためだけに使用できます。 たとえば、拡張機能のインストール時に GitHub からスクリプトをダウンロードする必要がある場合 (カスタム スクリプト)、または Azure Storage へのアクセスが必要な場合 (Azure Backup) は、追加のファイアウォール/ネットワーク セキュリティ グループ ポートが開かれている必要があります。 拡張機能はそれぞれ、独自のアプリケーションになっているため、要件も異なります。 たとえば、拡張機能が Azure Storage へのアクセスを必要とする場合、[ストレージ](../../virtual-network/security-overview.md#service-tags)の Azure NSG サービス タグを使用してアクセスを許可できます。
+エージェントは、拡張機能パッケージおよびレポート ステータスをダウンロードするためだけに使用できます。 たとえば、拡張機能のインストール時に GitHub からスクリプトをダウンロードする必要がある場合 (カスタム スクリプト)、または Azure Storage へのアクセスが必要な場合 (Azure Backup) は、追加のファイアウォール/ネットワーク セキュリティ グループ ポートが開かれている必要があります。 拡張機能はそれぞれ、独自のアプリケーションになっているため、要件も異なります。 たとえば、拡張機能が Azure Storage へのアクセスを必要とする場合、[ストレージ](../../virtual-network/network-security-groups-overview.md#service-tags)の Azure NSG サービス タグを使用してアクセスを許可できます。
 
 エージェントのトラフィック要求をリダイレクトするために、Linux エージェントはプロキシ サーバーのサポートを備えています。 ただし、このプロキシ サーバーのサポートは拡張機能には適用されません。 プロキシを使用するには、個々の拡張機能を構成する必要があります。
 
@@ -231,11 +232,11 @@ VM 拡張機能の実行時には、資格情報、ストレージ アカウン�
 
 #### <a name="agent-updates"></a>エージェントの更新プログラム
 
-Linux VM エージェントには、分離できない 1 つのパッケージに*プロビジョニング エージェント コード*と*拡張機能処理コード*が含まれています。 Azure 上で cloud-init を使用してプロビジョニングを行いたい場合、*プロビジョニング エージェント*を無効化できます。 これを行うには、「[cloud-init を使用する](../linux/using-cloud-init.md)」を参照してください。
+Linux VM エージェントには、分離できない 1 つのパッケージに *プロビジョニング エージェント コード* と *拡張機能処理コード* が含まれています。 Azure 上で cloud-init を使用してプロビジョニングを行いたい場合、*プロビジョニング エージェント* を無効化できます。 これを行うには、「[cloud-init を使用する](../linux/using-cloud-init.md)」を参照してください。
 
-エージェントのサポートされているバージョンでは自動更新を使用できます。 更新可能な唯一のコードは*拡張機能処理コード*であり、プロビジョニング コードではありません。 *プロビジョニング エージェント コードは*一度だけ実行されるコードです。
+エージェントのサポートされているバージョンでは自動更新を使用できます。 更新可能な唯一のコードは *拡張機能処理コード* であり、プロビジョニング コードではありません。 *プロビジョニング エージェント コードは* 一度だけ実行されるコードです。
 
-*拡張機能処理コード*は、Azure ファブリックとの通信を担い、インストール、ステータスのレポート、個々の拡張機能の更新と削除などの VM 拡張機能の操作を処理します。 更新プログラムには、*拡張機能処理コード*に対するセキュリティ修正プログラム、バグ修正プログラム、および拡張機能が含まれます。
+*拡張機能処理コード* は、Azure ファブリックとの通信を担い、インストール、ステータスのレポート、個々の拡張機能の更新と削除などの VM 拡張機能の操作を処理します。 更新プログラムには、*拡張機能処理コード* に対するセキュリティ修正プログラム、バグ修正プログラム、および拡張機能が含まれます。
 
 エージェントがインストールされると、親デーモンが作成されます。 この親はその後、拡張機能の処理に使用される子プロセスを生成します。 エージェントの更新プログラムがある場合、更新プログラムがダウンロードされ、親は子プロセスを停止し、アップグレードし、再起動します。 更新プログラムに問題がある場合、親プロセスは前の子のバージョンにロール バックします。
 

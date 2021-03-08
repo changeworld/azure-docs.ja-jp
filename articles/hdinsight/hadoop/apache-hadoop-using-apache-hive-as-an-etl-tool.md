@@ -1,19 +1,16 @@
 ---
 title: ETL ツールとして Apache Hive を使用する - Azure HDInsight
 description: Apache Hive を使用し、Azure HDInsight でデータの抽出、変換、読み込み (ETL) を行います。
-author: ashishthaps
-ms.author: ashishth
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 1627fccb49f0ddbf7a3a0a42f5a483059101dae2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e2b76fbc2afaad465773860ff45f18261edad138
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076064"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933433"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>抽出、変換、読み込み (ETL) ツールとして Apache Hive を使用する
 
@@ -69,7 +66,7 @@ Hive を使用して ETL を実行する一般的な手順は次のとおりで�
 Hive を使用して、次に示すようなあらゆる種類のターゲットにデータを出力することができます。
 
 * SQL Server または Azure SQL Database などのリレーショナル データベース。
-* Azure SQL Data Warehouse などのデータ ウェアハウス。
+* Azure Synapse Analytics などのデータ ウェアハウス。
 * Excel。
 * Azure テーブルと BLOB ストレージ。
 * データが特定の形式に処理される、または特定の種類の情報構造体を含むファイルとしてデータが処理される必要があるアプリケーションまたはサービス。

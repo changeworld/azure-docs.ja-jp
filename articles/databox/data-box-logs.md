@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 50dbbe3a6a1af1e73cdf1ee7f5bd3a63cf2f6a50
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a9304936f746b82b59550d62e8b60a9e0035d188
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498805"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147936"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Azure Data Box と Azure Data Box Heavy のインポート注文の追跡とイベント ログ記録
 
@@ -23,7 +23,7 @@ Data Box または Data Box Heavy のインポート注文は、注文、設定�
 
 | Data Box インポート注文の段階       | 追跡と監査のためのツール                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| 注文の作成               | [RBAC を使用して注文へのアクセス制御を設定する](#set-up-access-control-on-the-order)                                                    |
+| 注文の作成               | [Azure RBAC を使用して注文へのアクセス制御を設定する](#set-up-access-control-on-the-order)                                                    |
 | 処理された注文            | 以下を通じて[注文を追跡する](#track-the-order) <ul><li> Azure portal </li><li> 運送業者の Web サイト </li><li>メール通知</ul> |
 | デバイスを設定する              | [アクティビティ ログ](#query-activity-logs-during-setup)に記録されたデバイスの資格情報へのアクセス                                              |
 | デバイスへのデータのコピー        | データのコピー用の [*error.xml* ファイルを確認する](#view-error-log-during-data-copy)                                                             |
@@ -40,14 +40,14 @@ Data Box または Data Box Heavy のインポート注文は、注文、設定�
 Azure Data Box サービスに対して定義できる 2 つのロールは次のとおりです。
 
 - **Data Box 閲覧者** - スコープによって定義されている、注文に対する読み取り専用アクセス権を持ちます。 表示できるのは注文の詳細のみです。 ストレージ アカウントに関連するその他の詳細にアクセスしたり、住所などの注文の詳細を編集したりすることはできません。
-- **Data Box 共同作成者** - *既にストレージ アカウントへの書き込みアクセス権を持っている場合は*、特定のストレージ アカウントにデータを転送するためにのみ注文を作成できます。 ストレージ アカウントへのアクセス権がない場合は、アカウントにデータをコピーするために Data Box の注文を作成することもできません。 このロールは、ストレージ アカウントに関連するアクセス許可を定義することも、ストレージ アカウントにアクセス権を付与することもありません。  
+- **Data Box 共同作成者** - *既にストレージ アカウントへの書き込みアクセス権を持っている場合は* 、特定のストレージ アカウントにデータを転送するためにのみ注文を作成できます。 ストレージ アカウントへのアクセス権がない場合は、アカウントにデータをコピーするために Data Box の注文を作成することもできません。 このロールは、ストレージ アカウントに関連するアクセス許可を定義することも、ストレージ アカウントにアクセス権を付与することもありません。  
 
 注文へのアクセスを制限するためには、次のようにすることができます。
 
 - 注文レベルでロールを割り当てます。 その特定の Data Box の注文のみを操作し、その他は何も操作しないように、ユーザーはロールによって定義されているアクセス許可のみを持ちます。
 - リソース グループ レベルのロールを割り当てます。ユーザーはリソース グループ内のすべての Data Box の注文へのアクセス権を持ちます。
 
-推奨される RBAC の使用の詳細については、「[Azure RBAC のベスト プラクティス](../role-based-access-control/best-practices.md)」を参照してください。
+推奨される Azure RBAC の使用方法の詳細については、「[Azure RBAC のベスト プラクティス](../role-based-access-control/best-practices.md)」を参照してください。
 
 ## <a name="track-the-order"></a>注文を追跡する
 
@@ -360,7 +360,7 @@ The authentication information fields provide detailed information about this sp
 
 - デバイスの運送業者の追跡情報。
 - *SecureErase* アクティビティのイベント。 これらのイベントは、ディスク上のデータの消去に対応します。
-- Data Box ログのリンク。 *監査ログ*、*コピー ログ*、および *BOM* ファイルのパスが表示されます。
+- Data Box ログのリンク。 *監査ログ* 、 *コピー ログ* 、および *BOM* ファイルのパスが表示されます。
 
 次に、Azure portal からの注文履歴ログのサンプルを示します。
 

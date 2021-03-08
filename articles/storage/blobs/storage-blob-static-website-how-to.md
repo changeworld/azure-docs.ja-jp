@@ -7,19 +7,22 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: bac476cfbe78ad6fcf73b6a2319581cc60524a57
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: a90251097f2b4cced5b30f5d6eea03b6ca0b1c61
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432570"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664751"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure Storage で静的 Web サイトをホストする
 
 Azure Storage GPv2 アカウントのコンテナーから静的コンテンツ (HTML、CSS、JavaScript、および画像ファイル) を直接提供できます。 詳細については、「[Static website hosting in Azure Storage (Azure Storage での静的 Web サイト ホスティング)](storage-blob-static-website.md)」を参照してください。
 
 この記事では、Azure portal、Azure CLI、または PowerShell を使用して、静的 Web サイトのホスティングを有効にする方法を示します。
+
+> [!NOTE]
+> 必ず汎用 v2 Standard ストレージ アカウントを作成してください。 静的 Web サイトは、他の種類のストレージ アカウントでは使用できません。
 
 ## <a name="enable-static-website-hosting"></a>静的な Web サイトのホスティングを有効にします
 
@@ -39,7 +42,7 @@ Azure Storage GPv2 アカウントのコンテナーから静的コンテンツ 
 
    既定のインデックス ページは、ユーザーが静的な Web サイトのルートに移動したときに表示されます。  
 
-6. **[エラー ドキュメントのパス]** フィールドで、既定のエラー ページを指定します。（*404 .html*など)。 
+6. **[エラー ドキュメントのパス]** フィールドで、既定のエラー ページを指定します。（*404 .html* など)。 
 
    既定のエラー ページは、ユーザーが静的な Web サイトに存在しないページに移動しようとしたときに表示されます。
 
@@ -51,9 +54,9 @@ Azure Storage GPv2 アカウントのコンテナーから静的コンテンツ 
 
 <a id="cli"></a>
 
-[Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用して、静的な Web サイトのホスティングを有効にすることができます。
+[Azure コマンド ライン インターフェイス (CLI)](/cli/azure/) を使用して、静的な Web サイトのホスティングを有効にすることができます。
 
-1. まず、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) を開きます。または、Azure CLI をローカルに[インストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)した場合は、Windows PowerShell などのコマンド コンソール アプリケーションを開きます。
+1. まず、[Azure Cloud Shell](../../cloud-shell/overview.md) を開きます。または、Azure CLI をローカルに[インストール](/cli/azure/install-azure-cli)した場合は、Windows PowerShell などのコマンド コンソール アプリケーションを開きます。
 
 2. 自分の ID が複数のサブスクリプションに関連付けられている場合は、アクティブなサブスクリプションを、静的 Web サイトをホストするストレージ アカウントのサブスクリプションに設定します。
 
@@ -133,7 +136,7 @@ Azure PowerShell モジュールを使用して、静的な Web サイトのホ�
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-次の手順では、Azure portal に表示される Storage Explorer のバージョンを使用してファイルをアップロードする方法について説明します。 ただし、Azure portal の外部で実行される [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) のバージョンを使用することもできます。 [AzCopy](../common/storage-use-azcopy-v10.md)、PowerShell、CLI、またはお使いのアカウントの **$web** コンテナーにファイルをアップロードできる任意のカスタムアプリケーションを使用できます。 Visual Studio コードを使用してファイルをアップロードする詳細なチュートリアルについては、[ チュートリアルを参照してください。Host a static website on Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)」 (チュートリアル: Blob Storage で静的な Web サイトをホストする) を完了します。
+次の手順では、Azure portal に表示される Storage Explorer のバージョンを使用してファイルをアップロードする方法について説明します。 ただし、Azure portal の外部で実行される [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) のバージョンを使用することもできます。 [AzCopy](../common/storage-use-azcopy-v10.md)、PowerShell、CLI、またはお使いのアカウントの **$web** コンテナーにファイルをアップロードできる任意のカスタムアプリケーションを使用できます。 Visual Studio Code を使用してファイルをアップロードする詳細なチュートリアルについては、[ チュートリアルを参照してください。Host a static website on Blob Storage](./storage-blob-static-website-host.md)」 (チュートリアル: Blob Storage で静的な Web サイトをホストする) を完了します。
 
 1. **ストレージ エクスプローラー (プレビュー)** を選択します。
 
@@ -170,7 +173,7 @@ az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-
 > [!NOTE]
 > Azure CLI のローカル インストールを使用している場合は、ローカル コンピューターの任意の場所へのパスを使用できます (例: `C:\myFolder`)。
 >
-> Azure Cloud Shell を使用している場合は、Cloud Shell が認識できるファイル共有を参照する必要があります。 この場所は、クラウド共有自体のファイル共有、または Cloud Shell からマウントする既存のファイル共有にすることができます。 そうする方法については、「[Persist files in Azure Cloud Shell (Azure Cloud Shell でファイルを永続化する)](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)」を参照してください。
+> Azure Cloud Shell を使用している場合は、Cloud Shell が認識できるファイル共有を参照する必要があります。 この場所は、クラウド共有自体のファイル共有、または Cloud Shell からマウントする既存のファイル共有にすることができます。 そうする方法については、「[Persist files in Azure Cloud Shell (Azure Cloud Shell でファイルを永続化する)](../../cloud-shell/persisting-shell-storage.md)」を参照してください。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -256,7 +259,7 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
 4. メトリックとして **[エグレス]** を選択します。
 
-   ![Azure Storage 静的 Web サイトのメトリック: メトリック](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
+   ![Azure Storage 静的 Web サイトのエグレス メトリックを示すスクリーンショット。](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
 
 5. *[集計]* セレクターから **[合計]** を選択します。
 
@@ -276,4 +279,3 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 ## <a name="next-steps"></a>次のステップ
 
 * 静的な Web サイトでカスタム ドメインを構成する方法を学習します。 「[カスタム ドメインを Azure Blob Storage エンドポイントにマップする](storage-custom-domain-name.md)」を確認します。
-

@@ -1,22 +1,24 @@
 ---
-title: チュートリアル:Azure Spring Cloud でアプリケーションをスケーリングする | Microsoft Docs
+title: Azure Spring Cloud でアプリケーションをスケーリングする | Microsoft Docs
 description: Azure portal で Azure Spring Cloud を使用してアプリケーションをスケーリングする方法について説明します
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: c3c660c5e301081ee82a12275b6e9125f0fc781b
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 5632f9a6126615255306cc89425bd08a9ffa9753
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89289819"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531804"
 ---
-# <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>チュートリアル:Azure Spring Cloud でアプリケーションをスケーリングする
+# <a name="scale-an-application-in-azure-spring-cloud"></a>Azure Spring Cloud でアプリケーションをスケーリングする
 
-このチュートリアルでは、Azure portal で Azure Spring Cloud ダッシュボードを使用して、マイクロサービス アプリケーションをスケーリングする方法を示します。
+**この記事の適用対象:** ✔️ Java ✔️ C#
+
+このドキュメントでは、Azure portal で Azure Spring Cloud ダッシュボードを使用して、マイクロサービス アプリケーションをスケーリングする方法を示します。
 
 アプリケーションをスケールアップおよびスケールダウンするには、仮想 CPU (vCPU) の数とメモリの量を変更します。 アプリケーションをスケールインおよびスケールアウトするには、アプリケーション インスタンスの数を変更します。
 
@@ -65,7 +67,7 @@ Basic レベルをご利用の場合で、かつ、少なくとも 1 つの[制�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Spring Cloud アプリケーションを手動でスケーリングする方法について学習しました。 アラートを設定してアプリケーションを監視する方法については、次のチュートリアルに進みます。
+この例では、Azure Spring Cloud アプリケーションを手動でスケーリングする方法について説明しました。 アラートを設定してアプリケーションを監視する方法については、[自動スケーリングの設定](spring-cloud-tutorial-setup-autoscale.md)に関するページをご覧ください。
 
 > [!div class="nextstepaction"]
 > [アラートを設定する方法](spring-cloud-tutorial-alerts-action-groups.md)

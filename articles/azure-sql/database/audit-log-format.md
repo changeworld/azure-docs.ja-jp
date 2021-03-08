@@ -4,18 +4,18 @@ description: Azure SQL Database 監査ログの構成方法について説明し
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: reference
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
-ms.openlocfilehash: 17d985681ab7a547bf715b1f8bb8d37cbf7ab662
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f5c176db4f679c79bb42c6ceb46b3588e9440874
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954113"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572218"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database 監査ログの形式
 
@@ -42,7 +42,7 @@ Azure BLOB ストレージに格納されている監査ログは、Azure スト
 
 ### <a name="log-analytics"></a>Log Analytics
 
-監査イベントは、監査の構成中に定義された Log Analytics ワークスペースである `AzureDiagnostics` カテゴリを持つテーブル `SQLSecurityAuditEvents`に書き込まれます。 Log Analytics 検索言語およびコマンドに関する有用な追加情報については、[Log Analytics 検索リファレンス](../../azure-monitor/log-query/log-query-overview.md)に関するページをご覧ください。
+監査イベントは、監査の構成中に定義された Log Analytics ワークスペースである `AzureDiagnostics` カテゴリを持つテーブル `SQLSecurityAuditEvents`に書き込まれます。 Log Analytics 検索言語およびコマンドに関する有用な追加情報については、[Log Analytics 検索リファレンス](../../azure-monitor/logs/log-query-overview.md)に関するページをご覧ください。
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>監査ログのフィールド
 
@@ -89,8 +89,8 @@ Azure BLOB ストレージに格納されている監査ログは、Azure スト
 | target_server_principal_name | target_server_principal_name_s | アクションの対象ログイン。 該当しない場合は NULL です。 | sysname | string |
 | target_server_principal_sid | target_server_principal_sid_s | 対象ログインのセキュリティ ID。 該当しない場合は NULL です。 | varbinary | string |
 | transaction_id | transaction_id_d | SQL Server のみ (2016 年以降) - Azure SQL Database の場合は 0 | bigint | INT |
-| user_defined_event_id | user_defined_event_id_d | sp_audit_write に引数として渡されたユーザー定義のイベント ID。 システム イベントの場合は NULL (既定値) で、ユーザー定義のイベントの場合は 0 以外です。 詳細については、「[sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql)」を参照してください。 | smallint | INT |
-| user_defined_information | user_defined_information_s | sp_audit_write に引数として渡されたユーザー定義の情報。 システム イベントの場合は NULL (既定値) で、ユーザー定義のイベントの場合は 0 以外です。 詳細については、「[sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql)」を参照してください。 | nvarchar(4000) | string |
+| user_defined_event_id | user_defined_event_id_d | sp_audit_write に引数として渡されたユーザー定義のイベント ID。 システム イベントの場合は NULL (既定値) で、ユーザー定義のイベントの場合は 0 以外です。 詳細については、「[sp_audit_write (Transact-SQL)](/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql)」を参照してください。 | smallint | INT |
+| user_defined_information | user_defined_information_s | sp_audit_write に引数として渡されたユーザー定義の情報。 システム イベントの場合は NULL (既定値) で、ユーザー定義のイベントの場合は 0 以外です。 詳細については、「[sp_audit_write (Transact-SQL)](/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql)」を参照してください。 | nvarchar(4000) | string |
 
 ## <a name="next-steps"></a>次のステップ
 

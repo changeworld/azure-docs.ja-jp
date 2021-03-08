@@ -2,36 +2,40 @@
 title: Apache Kafka MirrorMaker を使用する - Azure Event Hubs | Microsoft Docs
 description: この記事では、Kafka MirrorMaker を使用して Azure Event Hubs で Kafka クラスターをミラーリングする方法について説明します。
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: aea8ebcfa65d5f4c90aa1908d03f0fcde8906bba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 01/04/2021
+ms.openlocfilehash: 654e9e19dfde0d0c58d00e41cf8ab0ba8e1484d7
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320192"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97860999"
 ---
-# <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Apache Kafka 用の Event Hubs で Kafka MirrorMaker を使用する
+# <a name="use-apache-kafka-mirrormaker-with-event-hubs"></a>Event Hubs で Apache Kafka MirrorMaker を使用する
 
-このチュートリアルでは、Kafka MirrorMaker を使用してイベント ハブ内の Kafka ブローカーをミラーリングする方法について説明します。
+このチュートリアルでは、Kafka MirrorMaker を使用して Azure Event Hub に Kafka ブローカーをミラーリングする方法について説明します。 CNCF Strimzi オペレーターを使用して Kubernetes で Apache Kafka をホストしている場合は、[こちらのブログ記事](https://strimzi.io/blog/2020/06/09/mirror-maker-2-eventhub/)に記載されているチュートリアルを参照してください。そこでは、Strimzi と Mirror Maker 2 を使用して Kafka を設定する方法について説明しています。 
 
    ![Kafka MirrorMaker とイベント ハブ](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
 > [!NOTE]
 > このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker) で入手できます。
 
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * Event Hubs 名前空間を作成します
-> * サンプル プロジェクトをクローンする
+> * サンプル プロジェクトを複製する
 > * Kafka クラスターを設定する
 > * Kafka MirrorMaker を構成する
 > * Kafka MirrorMaker を実行する
 
 ## <a name="introduction"></a>はじめに
-最新のクラウド スケール アプリに関する 1 つの主要な考慮事項は、サービスを中断することなくインフラストラクチャを更新、強化、変更できることです。 このチュートリアルでは、イベント ハブと Kafka MirrorMaker を使用し、Kafka 入力ストリームを Event Hubs サービスに "ミラーリング" することで Azure に Kafka の既存のパイプラインを統合する方法について説明します。 
+このチュートリアルでは、イベント ハブと Kafka MirrorMaker を使用し、Kafka 入力ストリームを Event Hubs サービスに "ミラーリング" することで、Azure に既存の Kafka パイプラインを統合する方法について説明します。この方法により、いくつかの[フェデレーション パターン](event-hubs-federation-overview.md)を使用した、Apache Kafka ストリームの統合が可能になります。 
 
-Azure Event Hubs Kafka エンドポイントでは、Kafka プロトコル (つまり Kafka クライアント) を使って Azure Event Hubs に接続できます。 Kafka アプリケーションに最小限の変更を行うことで、Azure Event Hubs に接続し、Azure エコシステムの利点を活用することができます。 Event Hubs は現在、Kafka バージョン 1.0 以降をサポートしています。
+Azure Event Hubs Kafka エンドポイントでは、Kafka プロトコル (つまり Kafka クライアント) を使って Azure Event Hubs に接続できます。 Kafka アプリケーションに最小限の変更を行うことで、Azure Event Hubs に接続し、Azure エコシステムの利点を活用することができます。 Event Hubs は現在、Apache Kafka バージョン 1.0 以降のプロトコルをサポートしています。
+
+Apache Kafka の MirrorMaker 1 は、Apache Kafka から Event Hubs に一方向で使用することができます。 MirrorMaker 2 は双方向で使用できますが、[MirrorMaker 2 で構成可能な `MirrorCheckpointConnector` と `MirrorHeartbeatConnector`](https://cwiki.apache.org/confluence/display/KAFKA/KIP-382%3A+MirrorMaker+2.0) は、両方とも、Event Hubs ではなく、Apache Kafka ブローカーをポイントするように構成する必要があります。 このチュートリアルでは、MirrorMaker 1 の構成について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +43,7 @@ Azure Event Hubs Kafka エンドポイントでは、Kafka プロトコル (つ�
 
 * [Apache Kafka 用の Event Hubs](event-hubs-for-kafka-ecosystem-overview.md) に関する記事を読む。 
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
-* [Java Development Kit (JDK) 1.7 以降](https://aka.ms/azure-jdks)
+* [Java Development Kit (JDK) 1.7 以降](/azure/developer/java/fundamentals/java-jdk-long-term-support)
     * Ubuntu で `apt-get install default-jdk` を実行して JDK をインストールします。
     * 必ず、JDK のインストール先フォルダーを指すように JAVA_HOME 環境変数を設定してください。
 * Maven バイナリ アーカイブの[ダウンロード](https://maven.apache.org/download.cgi)と[インストール](https://maven.apache.org/install.html)
@@ -51,9 +55,9 @@ Azure Event Hubs Kafka エンドポイントでは、Kafka プロトコル (つ�
 
 Event Hubs サービスとの間で送受信を行うには、イベント ハブの名前空間が必要です。 名前空間とイベント ハブを作成する手順については、[イベント ハブの作成](event-hubs-create.md)に関するページを参照してください。 後で使うので、イベント ハブの接続文字列をコピーしておきます。
 
-## <a name="clone-the-example-project"></a>サンプル プロジェクトをクローンする
+## <a name="clone-the-example-project"></a>サンプル プロジェクトを複製する
 
-Event Hubs の接続文字列が用意できたので、Kafka 用 Azure Event Hubs リポジトリをクローンし、`mirror-maker` サブフォルダーに移動します。
+Event Hubs の接続文字列が用意できたので、Kafka 用 Azure Event Hubs リポジトリを複製し、`mirror-maker` サブフォルダーに移動します。
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -100,6 +104,9 @@ sasl.mechanism=PLAIN
 security.protocol=SASL_SSL
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
+
+> [!IMPORTANT]
+> `{YOUR.EVENTHUBS.CONNECTION.STRING}` を Event Hubs 名前空間への接続文字列に置き換えます。 接続文字列を取得する手順については、「[Event Hubs の接続文字列の取得](event-hubs-get-connection-string.md)」を参照してください。 構成の例には、`sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";` などがあります。
 
 ## <a name="run-kafka-mirrormaker"></a>Kafka MirrorMaker を実行する
 

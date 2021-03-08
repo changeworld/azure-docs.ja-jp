@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: 58b991f5b229d924bc933ff34987db24bc895e10
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1f82cab1172e7293e2a5910d35280eefb30ed49e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88529867"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357455"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>チュートリアル:Cerner Central を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -45,7 +45,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 * 1 人のユーザーが初期テストを完了すると、Cerner ソリューション (Cerner Central ではない) にアクセスし、Cerner のユーザー リストにプロビジョニングされる予定のユーザーについて、ユーザー リストのすべてを割り当てることを Cerner Central が推奨します。  その他の Cerner ソリューションでは、ユーザー リスト内のユーザーのこのリストを利用します。
 
-* ユーザーを Cerner Central に割り当てるときに、割り当てのダイアログで**ユーザー** ロールを選択する必要があります。 "既定のアクセス" ロールのユーザーは、プロビジョニングから除外されます。
+* ユーザーを Cerner Central に割り当てるときに、割り当てのダイアログで **ユーザー** ロールを選択する必要があります。 "既定のアクセス" ロールのユーザーは、プロビジョニングから除外されます。
 
 ## <a name="configuring-user-provisioning-to-cerner-central"></a>Cerner Central へのユーザー プロビジョニングの構成
 
@@ -127,4 +127,4 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)

@@ -1,27 +1,25 @@
 ---
 title: 起動しないロールのトラブルシューティング | Microsoft Docs
 description: クラウド サービス ロールが起動に失敗する一般的な原因をいくつか取り上げます。 これらの問題に対する解決策も紹介します。
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2453fa2d9b4e78b60d4922e09347799266a84cff
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71122725"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743221"
 ---
-# <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>クラウド サービス ロールが起動しないときのトラブルシューティング
+# <a name="troubleshoot-azure-cloud-service-classic-roles-that-fail-to-start"></a>起動できない Azure クラウド サービス (クラシック) ロールをトラブルシューティングする
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 ここでは、Azure Cloud Services ロールの起動失敗に関連した一般的な問題と解決法を取り上げます。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -47,7 +45,7 @@ Web ロールの web.config でカスタム エラー モードをオフに設�
 リモート デスクトップを使用せずに詳細なエラーを表示するには
 
 1. Microsoft Visual Studio でソリューションを開きます。
-2. **ソリューション エクスプローラー**で、web.config ファイルを探して開きます。
+2. **ソリューション エクスプローラー** で、web.config ファイルを探して開きます。
 3. web.config ファイルの system.web セクションを探し、次の行を追加します。
 
     ```xml
@@ -82,7 +80,7 @@ Web サイトにアクセスすると、詳しいエラー メッセージが表
 ![Explicit Server Error in '/' Application](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
 ## <a name="diagnose-issues-by-using-the-compute-emulator"></a>コンピューティング エミュレーターを使用した問題の診断
-依存コンポーネントの不足や web.config エラーに関する問題の診断とトラブルシューティングは、Microsoft Azure コンピューティング エミュレーターを使って行うことができます。
+依存コンポーネントの不足や web.config エラーに関する問題の診断とトラブルシューティングは、Microsoft Azure コンピューティング エミュレーターを使用して行うことができます。
 
 この診断方法の効果を最大限に高めるには、Windows がクリーン インストールされたコンピューターまたは仮想マシンを使用する必要があります。 Azure 環境のシミュレーションには、Windows Server 2008 R2 x64 が最適です。
 
@@ -101,7 +99,7 @@ IntelliTrace を有効にしてサービスをデプロイするには、以下�
 
 1. Azure SDK 1.3 以上がインストールされていることを確認します。
 2. Visual Studio を使用してソリューションをデプロイします。 デプロイメント中は、 **[.NET 4 のロールに対して IntelliTrace を有効にします]** チェック ボックスをオンにしてください。
-3. インスタンスが起動したら、 **サーバー エクスプローラー**を開きます。
+3. インスタンスが起動したら、 **サーバー エクスプローラー** を開きます。
 4. **Azure\\Cloud Services** ノードを展開し、対象のデプロイを特定します。
 5. ロール インスタンスが表示されるまでデプロイメントを展開します。 いずれかのインスタンスを右クリックします。
 6. **[IntelliTrace ログの表示]** を選択します。 **[IntelliTrace の概要]** が表示されます。
@@ -114,7 +112,7 @@ IntelliTrace を有効にしてサービスをデプロイするには、以下�
 不足している DLL とアセンブリのエラーを解決するには、次の手順を実行します。
 
 1. Visual Studio でソリューションを開きます。
-2. **ソリューション エクスプローラー**で **[参照]** フォルダーを開きます。
+2. **ソリューション エクスプローラー** で **[参照]** フォルダーを開きます。
 3. エラーに表示されているアセンブリをクリックします。
 4. **[プロパティ]** ウィンドウで **[ローカル コピー]** プロパティを探し、その値を **[True]** に設定します。
 5. クラウド サービスを再デプロイします。
@@ -122,6 +120,6 @@ IntelliTrace を有効にしてサービスをデプロイするには、以下�
 すべてのエラーを修正済みであることが確認できたら、 **[.NET 4 のロールに対して IntelliTrace を有効にします]** チェック ボックスをオフにしてサービスをデプロイできます。
 
 ## <a name="next-steps"></a>次のステップ
-クラウド サービスの他の [トラブルシューティングに関する記事](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) を参照します。
+クラウド サービスの他の [トラブルシューティングに関する記事](../index.yml?product=cloud-services&tag=top-support-issue) を参照します。
 
-Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、 [Kevin Williamson によるブログ シリーズ](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。
+Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、 [Kevin Williamson によるブログ シリーズ](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)をご覧ください。

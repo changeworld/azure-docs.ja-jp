@@ -1,0 +1,50 @@
+### YamlMime:Landing
+title: Azure AD Connect クラウド同期のドキュメント
+summary: Azure AD Connect クラウド同期は、クラウドで管理されるルールを使って既存の AD フォレストから Azure AD ユーザーを同期することができ、Azure AD ユーザーの管理の簡素化と自動化に役立ちます。
+metadata:
+  author: billmath
+  description: クラウド同期は、クラウドで管理されるルールを使って既存の AD フォレストから Azure AD ユーザーを同期することができ、Azure AD ユーザーの管理の簡素化と自動化に役立ちます。
+  ms.author: billmath
+  ms.collection: na
+  ms.date: 09/05/2019
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 52032c39e77fb4ebd6488f25d660428ba59dfbd3
+  ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 01/20/2021
+  ms.locfileid: "98611755"
+landingContent:
+- title: クラウド同期について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD Connect クラウド同期とは
+      url: what-is-cloud-sync.md
+- title: ユーザーとグループのライフサイクルを管理するための最適なソリューションを実装する方法について学ぶ
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 単一の AD フォレストを単一の Azure AD テナントに統合する
+      url: tutorial-single-forest.md
+    - text: 既存のフォレストと新しいフォレストを単一の Azure AD テナントに統合する
+      url: tutorial-existing-forest.md
+    - text: 同期済み AD フォレストに対するクラウド同期のパイロット
+      url: tutorial-pilot-aadc-aadccp.md
+- title: クラウド同期の概要
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure AD Connect クラウド同期の前提条件
+      url: how-to-prerequisites.md
+    - text: Azure AD Connect クラウド同期のインストール
+      url: how-to-install.md
+    - text: Azure AD Connect プロビジョニング エージェントの構成
+      url: how-to-configure.md
+  - linkListType: reference
+    links:
+    - text: サポートされるトポロジとシナリオ
+      url: plan-cloud-sync-topologies.md

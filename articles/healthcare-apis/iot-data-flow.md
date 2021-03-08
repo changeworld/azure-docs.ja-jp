@@ -6,18 +6,18 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 43b7bcba97617d6931fd5c191e62e833a25bf89d
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 310be095af10f5ed5860c4f627caa0373be55835
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513377"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629667"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>Azure IoT Connector for FHIR (プレビュー) のデータ フロー
 
-この記事では、Azure IoT Connector for FHIR* のデータ フローの概要について説明します。 デバイス データを FHIR ベースの [Observation](https://www.hl7.org/fhir/observation.html) リソースに変換する、Azure IoT Connector for FHIR 内のさまざまなデータ処理段階について説明します。
+この記事では、Azure IoT Connector for Fast Healthcare Interoperability Resources (FHIR&#174;)* のデータ フローの概要について説明します。 デバイス データを FHIR ベースの [Observation](https://www.hl7.org/fhir/observation.html) リソースに変換する、Azure IoT Connector for FHIR 内のさまざまなデータ処理段階について説明します。
 
 ![Azure IoT Connector for FHIR のデータ フロー](media/concepts-iot-data-flow/iot-connector-data-flow.png)
 
@@ -26,7 +26,7 @@ ms.locfileid: "87513377"
 以下は、Azure IoT Connector for FHIR によって受信されたデータが経由するさまざまな段階です。
 
 ## <a name="ingest"></a>取り込み
-取り込みは、デバイス データが Azure IoT Connector for FHIR に受信される最初の段階です。 デバイス データのインジェスト エンドポイントは、[Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) でホストされます。 Azure Event Hubs プラットフォームは、1 秒あたり数百万件のメッセージを受信して処理する機能により、高いスケールおよびスループットを実現します。 また、これを使用すると、Azure IoT Connector for FHIR でメッセージを非同期に使用できるようになり、デバイス データの処理中にデバイスの待機が不要になります。
+取り込みは、デバイス データが Azure IoT Connector for FHIR に受信される最初の段階です。 デバイス データのインジェスト エンドポイントは、[Azure Event Hubs](../event-hubs/index.yml) でホストされます。 Azure Event Hubs プラットフォームは、1 秒あたり数百万件のメッセージを受信して処理する機能により、高いスケールおよびスループットを実現します。 また、これを使用すると、Azure IoT Connector for FHIR でメッセージを非同期に使用できるようになり、デバイス データの処理中にデバイスの待機が不要になります。
 
 > [!NOTE]
 > 現時点でデバイス データの形式としてサポートされているは JSON のみです。
@@ -64,6 +64,4 @@ ms.locfileid: "87513377"
 >[!div class="nextstepaction"]
 >[Azure IoT Connector for FHIR のマッピング テンプレート](iot-mapping-templates.md)
 
-*Azure portal では、Azure IoT Connector for FHIR は IoT コネクタ (プレビュー) と呼ばれています。
-
-FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。
+*Azure portal では、Azure IoT Connector for FHIR は IoT Connector (プレビュー) と呼ばれています。 FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。 

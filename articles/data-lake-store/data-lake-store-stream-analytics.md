@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: 8ef3d7400b64617df8d81c7b84e680496776b5bd
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 4c289ecb1d8471a7b99f1d4c85a0163de4d0c593
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192147"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91576219"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Azure Stream Analytics を使用した Azure Storage Blob から Azure Data Lake Storage Gen1 へのデータ ストリーム
 この記事では、Azure Data Lake Storage Gen1 を Azure Stream Analytics ジョブの出力として使用する方法について説明します。 ここでは、Azure Storage BLOB (入力) からデータを読み取り、そのデータを Azure Data Lake Storage Gen1 (出力) に書き込む簡単なシナリオを紹介します。
@@ -42,11 +42,11 @@ ms.locfileid: "88192147"
 
 1. Stream Analytics ジョブのページを開き、左側のウィンドウで **[入力]** タブをクリックし、 **[追加]** をクリックします。
 
-    ![ジョブへの入力の追加](./media/data-lake-store-stream-analytics/create.input.1.png "入力をジョブに追加")
+    ![[入力] オプションと [ストリーム入力の追加] オプションが強調表示されている [Stream Analytics ジョブ] ブレードのスクリーンショット。](./media/data-lake-store-stream-analytics/create.input.1.png "入力をジョブに追加")
 
 2. **[新しい入力]** ブレードで、次の値を指定します。
 
-    ![ジョブへの入力の追加](./media/data-lake-store-stream-analytics/create.input.2.png "入力をジョブに追加")
+    ![[BLOB ストレージ - 新しい入力] ブレードのスクリーンショット。](./media/data-lake-store-stream-analytics/create.input.2.png "入力をジョブに追加")
 
    * **[入力のエイリアス]** で、このジョブ入力の一意の名前を入力します。
    * **[ソースの種類]** で、 **[データ ストリーム]** を選択します。
@@ -65,18 +65,18 @@ ms.locfileid: "88192147"
 
 1. Stream Analytics ジョブのページを開き、 **[出力]** タブをクリックしてから **[追加]** をクリックし、 **[Data Lake Storage Gen1]** を選択します。
 
-    ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.1.png "出力をジョブに追加")
+    ![[出力] オプション、[追加] オプション、[Data Lake Storage Gen1] オプションが強調表示されている [Stream Analytics ジョブ] ブレードのスクリーンショット。](./media/data-lake-store-stream-analytics/create.output.1.png "出力をジョブに追加")
 
 2. **[新しい出力]** ブレードで、次の値を指定します。
 
-    ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.2.png "出力をジョブに追加")
+    ![[承認] オプションが強調表示されている [Data Lake Storage Gen1 - 新しい出力] ブレードのスクリーンショット。](./media/data-lake-store-stream-analytics/create.output.2.png "出力をジョブに追加")
 
     * **[出力のエイリアス]** で、このジョブ出力の一意名を入力します。 クエリの出力をこの Data Lake Storage Gen1 アカウントに出力するためにクエリで使用されるわかりやすい名前です。
     * Data Lake Storage Gen1 アカウントへのアクセスを承認することを求められます。 **[承認]** をクリックします。
 
 3. **[新しい出力]** ブレードで、引き続き次の値を指定します。
 
-    ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.3.png "出力をジョブに追加")
+    ![[Data Lake Storage Gen1 - 新しい出力] ブレードのスクリーンショット。](./media/data-lake-store-stream-analytics/create.output.3.png "出力をジョブに追加")
 
    * **[アカウント名]** で、ジョブ出力の送信先として作成済みの Data Lake Storage Gen1 アカウントを選択します。
    * **[パス プレフィックスのパターン]** で、指定した Data Lake Storage Gen1 アカウント内にファイルを書き込むために使用するファイル パスを入力します。

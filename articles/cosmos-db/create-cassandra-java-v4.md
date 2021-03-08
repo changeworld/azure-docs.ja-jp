@@ -1,6 +1,6 @@
 ---
 title: Java 4.0 SDK を使用した Azure Cosmos DB Cassandra API による Java アプリ
-description: このクイックスタートでは、Azure Cosmos DB Cassandra API を使用して Azure Portal と Java でプロファイル アプリケーションを作成する方法を示します
+description: このクイックスタートでは、Azure Cosmos DB Cassandra API を使用して Azure portal と Java 4.0 SDK でプロファイル アプリケーションを作成する方法を示します。
 ms.service: cosmos-db
 author: TheovanKraay
 ms.author: thvankra
@@ -9,14 +9,15 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 4411c2d3b540423c1086fe8b45bd343870a72f5b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ee30af3f07c8b350393822f01833feec6e3b52e2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319203"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099812"
 ---
-# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v4-driver"></a>クイック スタート:Azure Cosmos DB Cassandra API データを管理する Java アプリを作成する (v4 ドライバー)
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v4-driver"></a>Azure Cosmos DB Cassandra API データを管理する Java アプリを作成する (v4 ドライバー)
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -66,7 +67,7 @@ ms.locfileid: "87319203"
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コードでデータベース リソースを作成する方法に関心がある場合は、次のスニペットで確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 これらのスニペットはすべて、*src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java* ファイルから取得されます。  
+この手順は省略可能です。 コードでデータベース リソースを作成する方法に関心がある場合は、次のスニペットで確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 これらのスニペットはすべて、 *src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java* ファイルから取得されます。  
 
 * `CqlSession` は Azure Cosmos DB Cassandra API に接続し、アクセスするセッションを返します (v3 ドライバーの `Cluster` オブジェクトは現在使用できません)。 Cassandra のホスト、ポート、ユーザー名、およびパスワードは、Azure portal の接続文字列ページを使って設定します。
 
@@ -77,7 +78,7 @@ ms.locfileid: "87319203"
     ```
 
 
-次のスニペットは、*src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java* ファイルからのものです。
+次のスニペットは、 *src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java* ファイルからのものです。
 
 * 以前の実行のキースペースが既に存在する場合は、削除します。
 

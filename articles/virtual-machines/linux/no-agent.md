@@ -6,15 +6,15 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 07/06/2020
+ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: d177e7fd7d18b24f9d8fd7f3e6662abe16bba317
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 1c9ac872587804adbd9e62a3dc3ef3daed9e0c25
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045333"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223053"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>プロビジョニング エージェントを使用せずに一般化されたイメージを作成する
 
@@ -154,7 +154,7 @@ wireserver_conn.close()
 
 VM に Python がインストールされていないか使用できない場合は、次の手順に従って、このスクリプト ロジックをプログラムで再現できます。
 
-1. WireServer: `curl -X GET -H 'x-ms-version: 2012-11-30' http://$168.63.129.16/machine?comp=goalstate` からの応答を解析することによって、`ContainerId` と `InstanceId` を取得します。
+1. WireServer: `curl -X GET -H 'x-ms-version: 2012-11-30' http://168.63.129.16/machine?comp=goalstate` からの応答を解析することによって、`ContainerId` と `InstanceId` を取得します。
 
 2. 次の XML データを作成し、上記の手順で解析された `ContainerId` と `InstanceId` を挿入します。
    ```xml
@@ -180,7 +180,7 @@ VM に Python がインストールされていないか使用できない場合
 
 このデモでは、最新の Linux ディストリビューションの最も一般的な init システムである systemd を使用します。 そのため、この準備完了の報告メカニズムを適切なタイミングで実行するための最も簡単でネイティブな方法は、systemd サービス ユニットを作成することです。 次のユニット ファイルを `/etc/systemd/system` に追加できます (この例では、ユニット ファイル `azure-provisioning.service`)。
 
-```
+```bash
 [Unit]
 Description=Azure Provisioning
 
@@ -199,12 +199,12 @@ WantedBy=multi-user.target
 この systemd サービスは、基本的なプロビジョニングに関して次の 3 つの処理を行います。
 
 1. Azure に準備完了を報告する (正常に完了したことを示すため)。
-1. IMDS からこのデータを取得することによって、ユーザーが指定した VM 名に基づいて VM の名前を変更する。
+1. [Azure Instance Metadata Service (IMDS)](./instance-metadata-service.md) からこのデータを取得することによって、ユーザーが指定した VM 名に基づいて VM の名前を変更する。 **注** IMDS では、SSH 公開キーなどの他の [インスタンス メタデータ](./instance-metadata-service.md#access-azure-instance-metadata-service)も提供されるため、ホスト名以外の名前を設定することができます。
 1. 最初の起動時にのみ実行され、その後の再起動では実行されないように、自身を無効にする。
 
 filesystem のユニットで、次を実行して有効にします。
 
-```
+```bash
 $ sudo systemctl enable azure-provisioning.service
 ```
 
@@ -214,14 +214,14 @@ $ sudo systemctl enable azure-provisioning.service
 
 開発用マシンに戻り、次を実行して、ベース VM からイメージを作成できるように準備します。
 
-```
+```bash
 $ az vm deallocate --resource-group demo1 --name demo1
 $ az vm generalize --resource-group demo1 --name demo1
 ```
 
 この VM からイメージを作成します。
 
-```
+```bash
 $ az image create \
     --resource-group demo1 \
     --source demo1 \
@@ -231,7 +231,7 @@ $ az image create \
 
 これで、イメージから新しい VM (または複数の VM) を作成する準備ができました。
 
-```
+```bash
 $ IMAGE_ID=$(az image show -g demo1 -n demo1img --query id -o tsv)
 $ az vm create \
     --resource-group demo12 \
@@ -249,7 +249,7 @@ $ az vm create \
 
 この VM は正常にプロビジョニングするはずです。 新しくプロビジョニングする VM にログインすると、準備完了の報告を行う systemd サービスの出力を確認できるようになります。
 
-```
+```bash
 $ sudo journalctl -u azure-provisioning.service
 -- Logs begin at Thu 2020-06-11 20:28:45 UTC, end at Thu 2020-06-11 20:31:24 UTC. --
 Jun 11 20:28:49 thstringnopa systemd[1]: Starting Azure Provisioning...

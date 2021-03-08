@@ -1,21 +1,25 @@
 ---
-title: クラウド サービスを作成してデプロイする方法 | Microsoft Docs
+title: クラウド サービス (クラシック) を作成してデプロイする方法 | Microsoft Docs
 description: 簡易作成の方法を使用してクラウド サービスを作成し、その後、[アップロード] を使用して Azure にクラウド サービス パッケージをアップロードしてデプロイする方法について説明します。
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: fca14ed4e3b338f9b49f949af7498dfd49990d3b
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 879b86714adf50b5a4da4398389405063ac046dc
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142385"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743408"
 ---
-# <a name="how-to-create-and-deploy-a-cloud-service"></a>クラウド サービスを作成してデプロイする方法
+# <a name="how-to-create-and-deploy-an-azure-cloud-service-classic"></a>Azure Cloud Service (クラシック) を作成してデプロイする方法
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 Azure Portal には、クラウド サービスを作成してデプロイする方法が 2 つ用意されています。"*簡易作成*" と "*カスタム作成*" です。
 
 このトピックでは、簡易作成の方法を使って新しいクラウド サービスを作成し、その後、 **[アップロード]** を使用して Azure にクラウド サービス パッケージをアップロードしてデプロイする方法について説明します。 この方法を使うと、Azure Portal に、必要な事項をすべて完了するのに便利なリンクが操作の進行につれて表示されます。 クラウド サービスの作成時にデプロイする準備が整っている場合は、[カスタム作成] を使用して作成とデプロイを同時に実行できます。
@@ -56,7 +60,8 @@ Web ロールまたは worker ロールのデプロイを伴うクラウド サ�
 1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. **[Create a resource > Compute] (リソースの作成 > 計算)** をクリックし、下へスクロールして **[クラウド サービス]** をクリックします。
 
-    ![クラウド サービスの発行](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+    ![クラウド サービスの発行 1](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+
 3. 新しい **[クラウド サービス]** ウィンドウで、 **[DNS 名]** の値を入力します。
 4. 新しい **リソース グループ** を作成するか、または既存のリソース グループを選択します。
 5. **[場所]** を選択します。
@@ -65,7 +70,7 @@ Web ロールまたは worker ロールのデプロイを伴うクラウド サ�
 8. **[OK]** をクリックして、 **[パッケージのアップロード]** ウィンドウを閉じます。
 9. 追加する証明書がない場合は、 **[作成]** をクリックします。
 
-    ![クラウド サービスの発行](media/cloud-services-how-to-create-deploy-portal/select-package.png)
+    ![クラウド サービスの発行 2](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 
 ## <a name="upload-a-certificate"></a>証明書のアップロード
 デプロイメント パッケージが [証明書を使用するように構成](cloud-services-configure-ssl-certificate-portal.md#modify)されている場合は、ここで証明書をアップロードできます。
@@ -74,23 +79,20 @@ Web ロールまたは worker ロールのデプロイを伴うクラウド サ�
 2. **[証明書のアタッチ]** をクリックし、 **[証明書の追加]** ウィンドウで **[OK]** をクリックします。
 3. **[クラウド サービス]** ウィンドウで **[作成]** をクリックします。 デプロイの状態が **[準備完了]** になったら、次の手順に進むことができます。
 
-    ![クラウド サービスの発行](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+    ![クラウド サービスの発行 3](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
 ## <a name="verify-your-deployment-completed-successfully"></a>デプロイが正常に完了したことを確認する
 1. クラウド サービス インスタンスをクリックします。
 
-    サービスのステータスが、 **実行中**になっていることを確認します。
+    サービスのステータスが、 **実行中** になっていることを確認します。
 2. **[要点]** で **[サイトの URL]** をクリックして、Web ブラウザーでクラウド サービスを開きます。
 
     ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 
-[TFSTutorialForCloudService]: https://go.microsoft.com/fwlink/?LinkID=251796
+[TFSTutorialForCloudService]: ./cloud-services-choose-me.md
 
 ## <a name="next-steps"></a>次のステップ
 * [クラウド サービスの一般的な構成](cloud-services-how-to-configure-portal.md)
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
 * [クラウド サービスを管理する](cloud-services-how-to-manage-portal.md)
 * [TLS/SSL 証明書](cloud-services-configure-ssl-certificate-portal.md)を構成する
-
-
-

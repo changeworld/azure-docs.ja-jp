@@ -3,23 +3,21 @@ title: 感情分析 - LUIS
 titleSuffix: Azure Cognitive Services
 description: センチメント分析が構成されている場合、LUIS の json 応答には、センチメント分析が含まれます。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/01/2020
-ms.author: diberry
-ms.openlocfilehash: 2d15170e3785d8978b9cb21eae3b94b002f9172e
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 2e8e5a127741625fde7910aaabd421836148fc35
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857174"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018669"
 ---
 # <a name="sentiment-analysis"></a>センチメント分析
-センチメント分析が構成されている場合、LUIS の json 応答には、センチメント分析が含まれます。 センチメント分析の詳細については、[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) のドキュメントを参照してください。
+センチメント分析が構成されている場合、LUIS の json 応答には、センチメント分析が含まれます。 センチメント分析の詳細については、[Text Analytics](../text-analytics/index.yml) のドキュメントを参照してください。
 
 LUIS では Text Analytics V2 を使用します。 
 
@@ -52,4 +50,3 @@ LUIS では Text Analytics V2 を使用します。
 ## <a name="next-steps"></a>次のステップ
 
 [V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
-

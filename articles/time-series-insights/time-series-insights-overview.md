@@ -8,16 +8,19 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: overview
-ms.date: 07/07/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1ab17e2c24d106e1aec0b546a6efd05ac4c3e32f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cebe0e018b4483a9de1771fb3171effbbd5ca59c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020527"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020063"
 ---
 # <a name="what-is-azure-time-series-insights-gen1"></a>Azure Time Series Insights Gen1 とは
+
+> [!CAUTION]
+> これは Gen1 の記事です。
 
 Azure Time Series Insights は、IoT デバイスによって生成されたデータなどの大量の時系列データの格納、視覚化、クエリ実行のために構築されています。 クラウドの時系列データを保存、管理、照会、または視覚化する場合は、Azure Time Series Insights が適しています。
 
@@ -30,7 +33,7 @@ Azure Time Series Insights には 4 つの主要な仕事があります。
 - Azure Time Series Insights は、Azure Time Series Insights Explorer 経由ですぐに使用できる視覚化を提供します。
 - Azure Time Series Insights ではクエリ サービスが提供されます。これは、Azure Time Series Insights Explorer と、時系列データをカスタム アプリケーションに埋め込むために簡単に統合できる API の両方で使用できます。
 
-社内使用向け、または外部の顧客が使用するアプリケーションをビルドする場合は、バックエンドとして Azure Time Series Insights を使用できます。 これを使用して、時系列データのインデックス作成、格納、集計を行うことができます。 ここでカスタムの視覚化機能やユーザー エクスペリエンスを構築するには、[クライアント SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) を使用します。 また、Azure Time Series Insights には、これらのカスタマイズされたシナリオを可能にするための[クエリ API シリーズ](how-to-shape-query-json.md)も用意されています。
+社内使用向け、または外部の顧客が使用するアプリケーションをビルドする場合は、バックエンドとして Azure Time Series Insights を使用できます。 これを使用して、時系列データのインデックス作成、格納、集計を行うことができます。 ここでカスタムの視覚化機能やユーザー エクスペリエンスを構築するには、[クライアント SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) を使用します。 また、Azure Time Series Insights には、これらのカスタマイズされたシナリオを可能にするための[クエリ API シリーズ](./concepts-json-flattening-escaping-rules.md)も用意されています。
 
 時系列データは、資産やプロセスの経時的な変化を表します。 時系列データにはタイムスタンプでインデックスが付けられ、最も重要な軸である時間に沿ってデータが整理されます。 一般に時系列データは時間順に到着するので、データベースに対する更新ではなく挿入として扱われます。
 

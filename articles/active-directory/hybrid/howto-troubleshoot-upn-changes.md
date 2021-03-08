@@ -11,16 +11,16 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: caf0fdf5fd167987ea0fd7111a05b04bd5bf848f
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 19e40d135316c1c7cd270d2804fff1f487937685
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279790"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858537"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Azure Active Directory でのユーザー プリンシパル名の変更の計画とトラブルシューティング
 
-ユーザー プリンシパル名 (UPN) は、ユーザー アカウントのインターネット通信標準である属性です。 UPN は、UPN プレフィックス (ユーザー アカウント名) と UPN サフィックス (DNS ドメイン名) とから成ります。 プレフィックスとサフィックスは、"@" 記号を使用して結合されます。 たとえば、「 someone@example.com 」のように入力します。 UPN は、ディレクトリ フォレスト内のすべてのセキュリティ プリンシパル オブジェクトの中で一意であることが必要です。 
+ユーザー プリンシパル名 (UPN) は、ユーザー アカウントのインターネット通信標準である属性です。 UPN は、UPN プレフィックス (ユーザー アカウント名) と UPN サフィックス (DNS ドメイン名) とから成ります。 プレフィックスとサフィックスは、"\@" 記号を使用して結合されます。 たとえば、「 someone@example.com 」のように入力します。 UPN は、ディレクトリ フォレスト内のすべてのセキュリティ プリンシパル オブジェクトの中で一意であることが必要です。 
 
 **この記事では、ユーザー識別子として UPN を使用していることを前提としています。UPN の変更の計画と、UPN の変更によって発生する可能性がある問題からの復旧について説明します。**
 
@@ -94,7 +94,7 @@ username@labs.contoso.com.
 
 ユーザー アカウントを Active Directory から Azure AD に同期するときは、Active Directory の UPN が Azure AD 内の検証済みドメインにマップされていることを確認します。
 
-![検証済みドメインのスクリーンショット](./media/howto-troubleshoot-upn-changes/verified-domains.png)
+![検証済みの Azure AD ドメインにマップされた UPN の例を示すスクリーンショット。](./media/howto-troubleshoot-upn-changes/verified-domains.png)
 
 userPrincipalName 属性の値が Azure AD の検証済みドメインに対応しない場合は、同期プロセスによってサフィックスが既定値 .onmicrosoft.com に置き換えられます。
 
@@ -135,7 +135,7 @@ UPN の一括変更については、[パイロットのベスト プラクテ�
 この項で説明した問題は、2020 年 5 月の Windows 10 更新プログラム (2004) で修正されました。
 
 **回避策** <br>
-UPN の変更が Azure AD に同期されるのに十分な時間を確保します。 新しい UPN が Azure AD ポータルに反映されたことを確認した後、[その他のユーザー] タイルを選択して新しい UPN でサインインするようにユーザーに依頼します。 [PowerShell](/powershell/module/azuread/get-azureaduser?view=azureadps-2.0) を使用して確認することもできます。 新しい UPN でサインインした後も、古い UPN への参照により、[職場または学校へのアクセス] という Windows の設定が表示される場合があります。
+UPN の変更が Azure AD に同期されるのに十分な時間を確保します。 新しい UPN が Azure AD ポータルに反映されたことを確認した後、[その他のユーザー] タイルを選択して新しい UPN でサインインするようにユーザーに依頼します。 [PowerShell](/powershell/module/azuread/get-azureaduser) を使用して確認することもできます。 新しい UPN でサインインした後も、古い UPN への参照により、[職場または学校へのアクセス] という Windows の設定が表示される場合があります。
 
 ![検証済みドメインのスクリーンショット](./media/howto-troubleshoot-upn-changes/other-user.png)
 
@@ -174,7 +174,7 @@ Windows Hello for Business が使用されている場合、ユーザーは[再�
 
 * プッシュ通知または確認コードを使用した多要素認証
 
-* [ブローカー認証](../develop/brokered-auth.md)を使用するアプリケーションにシングル サインオンを提供するための、iOS および Android デバイスでの認証ブローカーとしての機能
+* [ブローカー認証](../develop/msal-android-single-sign-on.md)を使用するアプリケーションにシングル サインオンを提供するための、iOS および Android デバイスでの認証ブローカーとしての機能
 
 * Intune App Protection やデバイスの登録と管理などの他の機能に対する要件である、Azure AD へのデバイスの登録 (Workplace Join とも呼ばれます)
 

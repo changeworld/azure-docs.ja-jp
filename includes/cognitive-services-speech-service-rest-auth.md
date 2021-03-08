@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/29/2019
+ms.date: 01/08/2021
 ms.author: erhopf
-ms.openlocfilehash: b5a3ec1d6e33c08b460088c9aeb4fd18f6bf29ff
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 22127f81d871fe333750020196540db17e7544f7
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88864932"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033452"
 ---
 ## <a name="authentication"></a>認証
 
@@ -17,7 +17,7 @@ ms.locfileid: "88864932"
 
 | サポートされている Authorization ヘッダー | 音声テキスト変換 | テキスト読み上げ |
 |------------------------|----------------|----------------|
-| Ocp-Apim-Subscription-Key | はい | いいえ |
+| Ocp-Apim-Subscription-Key | はい | はい |
 | Authorization: Bearer | はい | はい |
 
 `Ocp-Apim-Subscription-Key` ヘッダーを使用する場合、指定する必要があるのはサブスクリプション キーだけです。 次に例を示します。
@@ -151,7 +151,7 @@ def get_token(subscription_key):
 
 このサービスには、アクセス トークンを `Authorization: Bearer <TOKEN>` ヘッダーとして送信する必要があります。 各アクセス トークンは 10 分間有効です。 新しいトークンはいつでも取得できますが、ネットワークのトラフィックと待ち時間を最小限に抑えるために、同じトークンを 9 分間使用することをお勧めします。
 
-次に示したのは、Text to Speech REST API に対するサンプル HTTP 要求です。
+次の例では、短いオーディオ用の音声テキスト変換 REST API への HTTP 要求を示します。
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1

@@ -2,17 +2,17 @@
 title: ユーザー VPN 接続用に Azure AD 認証を構成する:Virtual WAN
 description: ユーザー VPN 用に Azure Active Directory 認証を構成する方法について説明します。
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/17/2020
+ms.date: 10/14/2020
 ms.author: alzam
-ms.openlocfilehash: 21c2cba1d67ba415849b20dedf9ba157ca191d05
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9cc68eb60096c4431acfc988c87ca9bf99f1f045
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832520"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043398"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>ユーザー VPN 用に Azure Active Directory 認証を構成する
 
@@ -22,15 +22,14 @@ ms.locfileid: "87832520"
 
 この記事では、次のことについて説明します。
 
-> [!div class="checklist"]
-> * Virtual WAN を作成する
-> * 仮想ハブを作成する
-> * ユーザー VPN 構成を作成する
-> * Virtual WAN ユーザー VPN プロファイルをダウンロードする
-> * ユーザー VPN 構成を仮想ハブへ適用する
-> * VNet を仮想ハブに接続する
-> * ユーザー VPN クライアント構成をダウンロードして適用する
-> * Virtual WAN を表示する
+* Virtual WAN を作成する
+* 仮想ハブを作成する
+* ユーザー VPN 構成を作成する
+* Virtual WAN ユーザー VPN プロファイルをダウンロードする
+* ユーザー VPN 構成を仮想ハブへ適用する
+* VNet を仮想ハブに接続する
+* ユーザー VPN クライアント構成をダウンロードして適用する
+* Virtual WAN を表示する
 
 ![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwanp2s.png)
 
@@ -50,7 +49,7 @@ ms.locfileid: "87832520"
 
 ブラウザーから [Azure ポータル](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 
-1. [仮想 WAN] ページに移動します。 ポータルで **+ [リソースの作成]** をクリックします。 検索ボックスに「**Virtual WAN**」と入力し、Enter キーを押します。
+1. [仮想 WAN] ページに移動します。 ポータルで **+ [リソースの作成]** をクリックします。 検索ボックスに「 **Virtual WAN** 」と入力し、Enter キーを押します。
 2. 結果から **[Virtual WAN]** を選択します。 [Virtual WAN] (仮想 WAN) ページで、 **[作成]** をクリックして [WAN の作成] ページを開きます。
 3. **[WAN の作成]** ページの **[基本]** タブで、次のフィールドに入力します。
 
@@ -68,7 +67,7 @@ ms.locfileid: "87832520"
 
 1. Virtual WAN で [ハブ] を選択し、 **[+ 新しいハブ]** をクリックします。
 
-   ![新しいサイト](media/virtual-wan-point-to-site-azure-ad/hub1.jpg)
+   ![[Hubs configuration]\(ハブの構成\) ダイアログ ボックスを示すスクリーンショット。[新しいハブ] が選択されています。](media/virtual-wan-point-to-site-azure-ad/hub1.jpg)
 2. [仮想ハブを作成する] ページで、次のフィールドに入力します。
 
    **[リージョン]** - 仮想ハブをデプロイするリージョンを選択します。
@@ -77,7 +76,7 @@ ms.locfileid: "87832520"
 
    **[ハブ プライベート アドレス空間]** - CIDR 表記のハブのアドレス範囲。
 
-   ![新しいサイト](media/virtual-wan-point-to-site-azure-ad/hub2.jpg)  
+   ![[仮想ハブを作成する] ウィンドウを示すスクリーンショット。ここでは、値を入力できます。](media/virtual-wan-point-to-site-azure-ad/hub2.jpg)  
 3. **[Review + create]\(レビュー + 作成\)** をクリックします。
 4. **[検証に成功しました]** ページで **[作成]** をクリックします。
 
@@ -87,35 +86,33 @@ ms.locfileid: "87832520"
 
 1. 仮想 WAN の下で、 **[User VPN configurations]\(ユーザー VPN の構成\)** を選択します。
 
-   ![新しい構成](media/virtual-wan-point-to-site-azure-ad/aadportal1.jpg)
+   ![[ユーザー VPN 構成] メニュー項目が選択されていることを示すスクリーンショット。](media/virtual-wan-point-to-site-azure-ad/aadportal1.jpg)
 
 2. **[+Create user VPN config]\(+ ユーザー VPN 構成の作成\)** をクリックします。
 
-   ![新しい構成](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
+   ![[Create user VPN config]\(ユーザー VPN 構成の作成\) リンクを示すスクリーンショット。](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
 
 3. 情報を入力して **[作成]** をクリックします。
 
    * **構成名** - ユーザー VPN 構成に付ける名前を入力します。
    * **トンネルの種類** - OpenVPN を選択します。
-   * **認証方法**: [Azure Active Directory] を選択します。
+   * **認証方法** : [Azure Active Directory] を選択します。
    * **対象ユーザー** - Azure AD テナントに登録されている [Azure VPN](openvpn-azure-ad-tenant.md) エンタープライズ アプリケーションのアプリケーション ID を入力します。 
    * **発行者** - `https://sts.windows.net/<your Directory ID>/`
    * **AAD テナント** - `https://login.microsoftonline.com/<your Directory ID>`
   
-
-
-   ![新しい構成](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
+   ![[Create new user VPN config]\(新しいユーザー VPN 構成の作成\) ウィンドウを示すスクリーンショット。ここでは、値を入力できます。](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
 ## <a name="edit-hub-assignment"></a><a name="hub"></a>ハブの割り当てを編集する
 
 1. 仮想 WAN の下にある **[ハブ]** ブレードに移動します。
 2. VPN サーバーの構成を関連付けるハブを選択し、省略記号 (...) をクリックします。
 
-   ![新しいサイト](media/virtual-wan-point-to-site-azure-ad/p2s4.jpg)
+   ![メニューで [仮想ハブを編集する] が選択されていることを示すスクリーンショット。](media/virtual-wan-point-to-site-azure-ad/p2s4.jpg)
 3. **[仮想ハブを編集する]** をクリックします。
 4. **[ポイント対サイト ゲートウェイを含める]** チェック ボックスをオンにし、必要な **[ゲートウェイ スケール ユニット]** を選択します。
 
-   ![新しいサイト](media/virtual-wan-point-to-site-azure-ad/p2s2.jpg)
+   ![[仮想ハブを編集する] ダイアログ ボックスを示すスクリーンショット。ここでは、ゲートウェイのスケール ユニットを選択できます。](media/virtual-wan-point-to-site-azure-ad/p2s2.jpg)
 5. VPN クライアントの IP アドレスの割り当て元となる **[アドレス プール]** を入力します。
 6. **[Confirm]\(確認\)** をクリックします。
 7. この操作は、完了するまで最大 30 分かかることがあります。
@@ -145,51 +142,51 @@ VPN プロファイルを使用してクライアントを構成します。
 
 1. ページ上で、 **[インポート]** を選択します。
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import1.jpg)
+    ![プラスのメニューで [インポート] が選択されていることを示すスクリーンショット。](./media/virtual-wan-point-to-site-azure-ad/import/import1.jpg)
 
 2. プロファイル xml ファイルを参照し、選択します。 ファイルが選択された状態で、 **[開く]** を選択します。
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import2.jpg)
+    ![[開く] ダイアログ ボックスを示すスクリーンショット。ここでは、ファイルを選択できます。](./media/virtual-wan-point-to-site-azure-ad/import/import2.jpg)
 
 3. プロファイルの名前を指定し、 **[保存]** を選択します。
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import3.jpg)
+    ![[接続名] が追加され、[保存] ボタンが選択されていることを示すスクリーンショット。](./media/virtual-wan-point-to-site-azure-ad/import/import3.jpg)
 
 4. **[接続]** を選択して VPN に接続します。
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import4.jpg)
+    ![作成したばかりの接続用の [接続] ボタンを示すスクリーンショット。](./media/virtual-wan-point-to-site-azure-ad/import/import4.jpg)
 
 5. 接続されると、アイコンが緑色に変わり、 **[接続済み]** と表示されます。
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import5.jpg)
+    ![[接続済み] 状態の接続と [切断] オプションを示すスクリーンショット。](./media/virtual-wan-point-to-site-azure-ad/import/import5.jpg)
 
 #### <a name="to-delete-a-client-profile"></a><a name="delete"></a>クライアント プロファイルを削除するには
 
 1. 削除するクライアント プロファイルの横にある省略記号 (...) を選択します。 **[削除]** を選択します。
 
-    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
+    ![メニューで [削除] が選択されていることを示すスクリーンショット。](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
 
 2. **[削除]** を選択して削除します。
 
-    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
+    ![[確認] ダイアログ ボックスと [削除] オプションまたは [キャンセル] オプションを示すスクリーンショット。](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
 
 #### <a name="diagnose-connection-issues"></a><a name="diagnose"></a>接続の問題を診断する
 
-1. 接続の問題を診断するには、**診断**ツールを使用します。 診断する VPN 接続の横にある省略記号 (...) を選択して、メニューを表示します。 次に、 **[診断]** を選択します。
+1. 接続の問題を診断するには、 **診断** ツールを使用します。 診断する VPN 接続の横にある省略記号 (...) を選択して、メニューを表示します。 次に、 **[診断]** を選択します。
 
-    ![診断](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose1.jpg)
+    ![メニューで [診断] が選択されていることを示すスクリーンショット。](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose1.jpg)
 
 2. **[接続プロパティ]** ページで、 **[Run Diagnosis]\(診断の実行\)** を選択します。
 
-    ![診断](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose2.jpg)
+    ![接続の [Run Diagnosis]\(診断の実行\) ボタンを示すスクリーンショット。](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose2.jpg)
 
 3. 自分の資格情報でサインインします。
 
-    ![診断](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose3.jpg)
+    ![このアクションの [サインイン] ダイアログ ボックスを示すスクリーンショット。](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose3.jpg)
 
 4. 診断結果を確認します。
 
-    ![診断](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose4.jpg)
+    ![診断の結果を示すスクリーンショット。](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose4.jpg)
 
 ## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>仮想 WAN を表示する
 

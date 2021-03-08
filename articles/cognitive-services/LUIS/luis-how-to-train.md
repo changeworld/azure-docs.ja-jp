@@ -3,20 +3,18 @@ title: アプリをトレーニングする - LUIS
 titleSuffix: Azure Cognitive Services
 description: トレーニングは、自然言語の理解を向上させるために、Language Understanding (LUIS) アプリ バージョンを教育するプロセスです。 エンティティ、意図、発話の追加、編集、ラベル付け、削除など、モデルを更新した後に、LUIS アプリをトレーニングします。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.author: diberry
-ms.openlocfilehash: 7511d7379e7b51b19e3436ed7cef53fb914b80ac
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 47b006932aace3149dd94e136e334c1b6e5bfcef
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343073"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762691"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>LUIS アプリのアクティブなバージョンをトレーニングする
 
@@ -42,9 +40,15 @@ ms.locfileid: "84343073"
 
 ## <a name="train-with-all-data"></a>すべてのデータでトレーニングする
 
-トレーニングでは、ネガティブ サンプリングのごく一部を使用します。 小規模なネガティブ サンプリングではなくすべてのデータを使用する場合は、[API](#version-settings-api-use-of-usealltrainingdata) を使用します。
+トレーニングでは、ネガティブ サンプリングのごく一部を使用します。 代わりにポータルまたは API を使用すれば、使用可能なすべてのデータを使用できます。 
 
-### <a name="version-settings-api-use-of-usealltrainingdata"></a>バージョン設定 API の UseAllTrainingData の使用
+### <a name="using-the-luis-portal"></a>LUIS ポータルを使用する
+
+[LUIS ポータル](https://www.luis.ai/)にログインし、お使いのアプリをクリックします。 画面の上部にある **[管理]** を選択し、 **[設定]** を選択して、 **[決定論的トレーニングを使用する]** オプションを有効または無効にします。 無効にすると、利用可能なすべてのデータがトレーニングで使用されます。
+
+![非決定論的トレーニングを有効または無効にするためのボタン](./media/non-determinstic-training.png)
+
+### <a name="using-the-version-settings-api"></a>バージョン設定 API の使用
 
 `UseAllTrainingData` を true に設定してこの機能を無効にし、[バージョン設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) を使用します。
 
@@ -54,11 +58,11 @@ ms.locfileid: "84343073"
 
 ## <a name="training-with-the-rest-apis"></a>REST API によるトレーニング
 
-LUIS ポータルでのトレーニングは、 **[トレーニング]** ボタンをクリックする 1 ステップだけです。 REST API によるトレーニングは、2 ステップのプロセスです。 最初に、HTTP POST で[トレーニングを要求](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45)します。 次に、HTTP Get で[トレーニングの状態](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46)を要求します。
+LUIS ポータルでのトレーニングは、**[トレーニング]** ボタンをクリックする 1 ステップだけです。 REST API によるトレーニングは、2 ステップのプロセスです。 最初に、HTTP POST で[トレーニングを要求](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45)します。 次に、HTTP Get で[トレーニングの状態](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46)を要求します。
 
 トレーニングが完了したことを知るには、すべてのモデルが正常にトレーニングされるまで状態をポーリングする必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [対話型テスト](luis-interactive-test.md)
 * [バッチ テスト](luis-how-to-batch-test.md)

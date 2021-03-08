@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 198b87d0a458108ce76934217c651d613ab5d75e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18b34ff466f3935cb5cd18d46e6d26e36e756a9b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512079"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91774462"
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>StorSimple Cloud Appliance にフェールオーバーする
 
@@ -46,15 +46,15 @@ StorSimple 物理デバイスを別の物理デバイスにフェールオーバ
     ![デバイスの選択](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev1.png)
 3. ソース デバイスを選択し、クリックします。 ソース デバイスには、フェールオーバーするボリューム コンテナーがあります。 **[設定]、[ボリューム コンテナー]** の順に移動します。
 
-    ![デバイスの削除](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev2.png)
+    ![デバイス 2 を選択する](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev2.png)
     
 4. 別のデバイスにフェールオーバーするボリューム コンテナーを選択します。 ボリューム コンテナーをクリックし、このコンテナー内のボリュームの一覧を表示します。 ボリュームを選択して右クリックし、 **[オフラインにする]** をクリックしてボリュームをオフラインにします。
 
-    ![デバイスの削除](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev5.png)
+    ![デバイスの選択 3](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev5.png)
 
 5. ボリューム コンテナーのすべてのボリュームでこのプロセスを繰り返します。
 
-     ![デバイスの削除](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev7.png)
+     ![デバイスの選択 4](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev7.png)
 
 6. 別のデバイスにフェールオーバーするすべてのボリューム コンテナーで前の手順を繰り返します。
 
@@ -81,7 +81,7 @@ StorSimple 物理デバイスを別の物理デバイスにフェールオーバ
 
     1. フェールオーバーのターゲットとして使用されたデバイスを選択します。
 
-       ![デバイスの削除](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
+       ![デバイスの選択 5](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
     2. **[ボリューム コンテナー]** をクリックします。 すべてのボリューム コンテナーと古いデバイスのボリュームの一覧が表示されます。
 

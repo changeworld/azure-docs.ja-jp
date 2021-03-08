@@ -3,12 +3,12 @@ title: エンタープライズ シナリオにおける Azure Lighthouse
 description: Azure Lighthouse の機能を使用すると、複数の Azure AD テナントを使用するエンタープライズ内のクロステナント管理を簡略化できます。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3f452e6810fa6809b5ba1b83b664f8b38d82a895
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ca3d73a6c5b88f7531c3d76eb3bd348fdfe8fa39
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167351"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573011"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>エンタープライズ シナリオにおける Azure Lighthouse
 
@@ -38,7 +38,7 @@ ms.locfileid: "88167351"
 
 Azure Lighthouse では、データやリソースを物理的に移動するのではなく、管理側テナントと管理対象テナントの間に論理的なリンクのみを提供します。 さらに、アクセスは、常に管理側テナントから管理対象テナントへの一方向のみです。  管理対象テナントのリソースに対して管理操作を実行する場合は、管理側テナントのユーザーとグループが引き続き多要素認証を使用する必要があります。
 
-内部または外部のガバナンスとコンプライアンスのガードレールを持つ企業の場合、[Azure アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)を使用して透過性の要件を満たすことができます。 エンタープライズのテナントが管理側と管理対象のテナントのリレーションシップを確立すると、各テナントのユーザーは、ログに記録されたアクティビティを表示することで、管理側テナントのユーザーが実行したアクションを確認できます。
+内部または外部のガバナンスとコンプライアンスのガードレールを持つ企業の場合、[Azure アクティビティ ログ](../../azure-monitor/essentials/platform-logs-overview.md)を使用して透過性の要件を満たすことができます。 エンタープライズのテナントが管理側と管理対象のテナントのリレーションシップを確立すると、各テナントのユーザーは、ログに記録されたアクティビティを表示することで、管理側テナントのユーザーが実行したアクションを確認できます。
 
 ## <a name="onboarding-considerations"></a>オンボードの考慮事項
 
@@ -54,7 +54,7 @@ Azure Lighthouse では、データやリソースを物理的に移動するの
 
 たとえば、上記の例では、テナント A はサービス プロバイダー テナント (管理側テナント)、テナント B とテナント C は顧客テナントと考えることができます。
 
-この例では、適切なアクセス許可を持つテナント A のユーザーは、Azure portal の **[マイ カスタマー]** ページで、[委任されたリソースを表示および管理](../how-to/view-manage-customers.md)できます。 同様に、適切なアクセス許可を持つテナント B とテナント C のユーザーは、Azure portal の **[サービス プロバイダー]** ページで、テナント A に[委任されたリソースを表示および管理](../how-to/view-manage-service-providers.md)できます。
+この例では、適切なアクセス許可を持つテナント A のユーザーは、Azure portal の **[マイ カスタマー]** ページで、[委任されたリソースを表示および管理](../how-to/view-manage-customers.md)できます。 同様に、適切なアクセス許可を持つテナント B とテナント C のユーザーは、Azure portal の **[サービス プロバイダー]** ページで、テナント A に [委任されたリソースを表示および管理](../how-to/view-manage-service-providers.md)できます。
 
 ## <a name="next-steps"></a>次のステップ
 

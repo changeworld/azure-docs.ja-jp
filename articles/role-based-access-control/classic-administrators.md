@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/22/2020
+ms.date: 11/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 76b41e25a95f23b66edfbd4715037074537221f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b61636d6048f63ae962d4f755a29c02e6785d5e1
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076439"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557541"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure の従来のサブスクリプション管理者
 
@@ -58,7 +58,7 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azu
 
 - ゲスト ユーザーは、ディレクトリ内に存在している必要があります。 これは、ユーザーがディレクトリに招待され、招待を受け入れたことを意味します。
 
-ゲスト ユーザーを自分のディレクトリに追加する方法の詳細については、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/b2b/add-users-administrator.md)」を参照してください。
+ゲスト ユーザーを自分のディレクトリに追加する方法の詳細については、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/external-identities/add-users-administrator.md)」を参照してください。
 
 ### <a name="differences-for-guest-users"></a>ゲスト ユーザーの違い
 
@@ -71,9 +71,9 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azu
 
 想定とは異なり、ユーザー B はすべてを管理できるわけではありません。 この違いの理由は、Microsoft アカウントはメンバー ユーザーとしてではなく、ゲスト ユーザーとしてサブスクリプションに追加されるためです。 Azure AD でゲスト ユーザーに割り当てられる既定のアクセス許可は、メンバー ユーザーとは異なります。 たとえば、メンバー ユーザーは Azure AD の他のユーザーを読み取ることができますが、ゲスト ユーザーには他のユーザーの読み取りは許可されていません。 メンバー ユーザーは新しいサービス プリンシパルを Azure AD に登録できますが、ゲスト ユーザーにはサービス プリンシパルの登録は許可されていません。
 
-ゲスト ユーザーがこれらのタスクを実行できるようにする必要がある場合、考えられるソリューションは、ゲスト ユーザーに必要な特定の Azure AD ロールを割り当てることです。 たとえば前のシナリオで他のユーザーの読み取りを許可するには[ディレクトリ リーダー](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)のロールを割り当て、サービス プリンシパルを作成できるようにするには[アプリケーション開発者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer)のロールを割り当てます。 メンバー ユーザーとゲスト ユーザーおよびそれぞれのアクセス許可の詳細については、「[Azure Active Directory の既定のユーザー アクセス許可とは](../active-directory/fundamentals/users-default-permissions.md)」をご覧ください。 ゲスト ユーザーにアクセス権を付与する方法の詳細については、「[Azure portal を使用して外部ゲスト ユーザーの Azure ロール割り当てを追加または削除する](role-assignments-external-users.md)」を参照してください。
+ゲスト ユーザーがこれらのタスクを実行できるようにする必要がある場合、考えられるソリューションは、ゲスト ユーザーに必要な特定の Azure AD ロールを割り当てることです。 たとえば前のシナリオで他のユーザーの読み取りを許可するには[ディレクトリ リーダー](../active-directory/roles/permissions-reference.md#directory-readers)のロールを割り当て、サービス プリンシパルを作成できるようにするには[アプリケーション開発者](../active-directory/roles/permissions-reference.md#application-developer)のロールを割り当てます。 メンバー ユーザーとゲスト ユーザーおよびそれぞれのアクセス許可の詳細については、「[Azure Active Directory の既定のユーザー アクセス許可とは](../active-directory/fundamentals/users-default-permissions.md)」をご覧ください。 ゲスト ユーザーにアクセス権を付与する方法の詳細については、「[Azure portal を使用して Azure ロールを外部のゲスト ユーザーに割り当てる](role-assignments-external-users.md)」を参照してください。
 
-[Azure 組み込みロール](../role-based-access-control/built-in-roles.md)は [Azure AD ロール](../active-directory/users-groups-roles/directory-assign-admin-roles.md)とは異なることに注意してください。 組み込みロールは Azure AD に対するアクセス許可を一切付与しません。 詳細については、「[各種ロールについて](../role-based-access-control/rbac-and-directory-admin-roles.md)」をご覧ください。
+[Azure 組み込みロール](../role-based-access-control/built-in-roles.md)は [Azure AD ロール](../active-directory/roles/permissions-reference.md)とは異なることに注意してください。 組み込みロールは Azure AD に対するアクセス許可を一切付与しません。 詳細については、「[各種ロールについて](../role-based-access-control/rbac-and-directory-admin-roles.md)」をご覧ください。
 
 メンバー ユーザーとゲスト ユーザーの比較情報については、「[Azure Active Directory の既定のユーザー アクセス許可とは](../active-directory/fundamentals/users-default-permissions.md)」を参照してください。
 
@@ -99,25 +99,25 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azu
 
 サブスクリプションのサービス管理者を変更できるのは、アカウント管理者のみです。 既定の設定では、Azure サブスクリプションにサインアップした時点では、サービス管理者とアカウント管理者は同じです。 アカウント管理者ロールのユーザーには、Azure portal へのアクセス権が与えられません。 サービス管理者ロールのユーザーには、Azure portal へのフル アクセス権が与えられます。 アカウント管理者とサービス管理者が同じユーザーの場合、サービス管理者を別のユーザーに変更すると、アカウント管理者は Azure portal にアクセスできなくなります。 ただし、アカウント管理者はいつでもアカウント センターを使用して、サービス管理者を自身に戻すことができます。
 
-**Account Center** でサービス管理者を変更するには、次の手順に従います。
-
-### <a name="account-center"></a>アカウント センター
+Azure portal でサービス管理者を変更するには、次の手順に従います。
 
 1. [サービス管理者を変更するための制限事項](#limitations-for-changing-the-service-administrator)を確認して、使用するシナリオがサポートされていることを確認してください。
 
-1. アカウント管理者として [Azure センター](https://account.windowsazure.com/subscriptions)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
 
-1. サブスクリプションをクリックします。
+1. **Cost Management + Billing** を開き、サブスクリプションを選択します。
 
-1. 右側にある **[サブスクリプション詳細の編集]** をクリックします。
+1. 次に、左側のナビゲーションで、 **[プロパティ]** をクリックします。
 
-    ![アカウント センターの [サブスクリプションの編集] ボタンを示すスクリーン ショット](./media/classic-administrators/editsub.png)
+1. **[サービス管理者]** をクリックします。
 
-1. **[サービス管理者]** ボックスに、新しいサービス管理者の電子メール アドレスを入力します。
+    ![Azure portal でサブスクリプションの [プロパティ] を示すスクリーンショット](./media/classic-administrators/service-admin.png)
 
-    ![サービス管理者の電子メールを変更する、ボックスを示すスクリーン ショット](./media/classic-administrators/change-service-admin.png)
+1. **[サービス管理者の編集]** ページで、新しいサービス管理者のメール アドレスを入力します。
 
-1. チェックマークをクリックして、変更を保存します。
+    ![[サービス管理者の編集] ページを示すスクリーンショット](./media/classic-administrators/service-admin-edit.png)
+
+1. **[OK]** をクリックして変更を保存します。
 
 ### <a name="limitations-for-changing-the-service-administrator"></a>サービス管理者の変更に関する制限事項
 
@@ -140,9 +140,9 @@ Microsoft アカウントと Azure AD アカウントの詳細については、
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-1. [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) を開き、サブスクリプションを選択します。
+1. **Cost Management + Billing** を開き、サブスクリプションを選択します。
 
-1. **[プロパティ]** をクリックします。
+1. 次に、左側のナビゲーションで、 **[プロパティ]** をクリックします。
 
     サブスクリプションのアカウント管理者が、 **[アカウント管理者]** ボックスに表示されます。
 
@@ -151,5 +151,5 @@ Microsoft アカウントと Azure AD アカウントの詳細については、
 ## <a name="next-steps"></a>次のステップ
 
 * [各種ロールについて](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Azure portal を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)
+* [Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)
 * [Azure サブスクリプション管理者を追加または変更する](../cost-management-billing/manage/add-change-subscription-administrator.md)

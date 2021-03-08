@@ -1,27 +1,24 @@
 ---
-title: AAD と API Management で OAuth 2.0 を使用して API を保護する
+title: OAuth 2.0 および Azure AD を使用して API Management の API バックエンドを保護する
 titleSuffix: Azure API Management
-description: Azure Active Directory と API Management で Web API バックエンドを保護する方法について説明します。
+description: OAuth 2.0 ユーザー承認および Azure Active Directory を使用して、Azure API Management で Web API バックエンドへのアクセスをセキュリティで保護する方法について説明します
 services: api-management
-documentationcenter: ''
 author: miaojiang
-manager: dcscontentpm
-editor: ''
 ms.service: api-management
-ms.workload: mobile
 ms.topic: article
-ms.date: 06/24/2020
+ms.date: 09/23/2020
 ms.author: apimpm
-ms.openlocfilehash: 455444fe78171e3e2b37a309fd5708f283121ed6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: face4beab450e92be76b2bb90e45625e025de6ee
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243411"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027919"
 ---
-# <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する
+# <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>Azure AD で OAuth 2.0 認証を使用して、Azure API Management で Web API バックエンドを保護する 
 
-このガイドでは、Azure API Management インスタンスを構成して、Azure Active Directory (Azure AD) で OAuth 2.0 プロトコルを使用して API を保護する方法について説明します。 
+このガイドでは、[Azure API Management](api-management-key-concepts.md) インスタンスを構成して、[Azure Active Directory (Azure AD) で OAuth 2.0 プロトコル](../active-directory/develop/active-directory-v2-protocols.md)を使用して API を保護する方法について説明します。 
 
 > [!NOTE]
 > この機能は、API Management の **Developer**、**Basic**、**Standard**、**Premium** の各レベルで使用できます。
@@ -46,7 +43,7 @@ ms.locfileid: "86243411"
 
 ## <a name="register-an-application-in-azure-ad-to-represent-the-api"></a>API を表すアプリケーションを Azure AD に登録する
 
-Azure AD で API を保護するには、まず API を表すアプリケーションを Azure AD に登録します。 
+Azure AD で API を保護するには、まず API を表すアプリケーションを Azure AD に登録します。 次の手順では、Azure portal を使用してアプリケーションを登録します。 アプリの登録の詳細については、次を参照してください。「[クイックスタート:Web API を公開するようにアプリケーションを構成する](../active-directory/develop/quickstart-configure-app-expose-web-apis.md)」。
 
 1. [Azure portal](https://portal.azure.com) にアクセスして、アプリケーションを登録します。 **[アプリの登録]** を検索して選択します。
 
@@ -79,7 +76,7 @@ Developer Console を表すように別のアプリケーションを Azure AD �
 
 1. [Azure portal](https://portal.azure.com) にアクセスして、アプリケーションを登録します。
 
-1.  **[アプリの登録]** を検索して選択します。
+1. **[アプリの登録]** を検索して選択します。
 
 1. **[新規登録]** を選択します。
 
@@ -144,13 +141,13 @@ API と Developer Console を表す 2 つのアプリケーションを登録し
    >[!IMPORTANT]
    > **v1** エンドポイント、または **v2** エンドポイントを使用します。 ただし、選択するバージョンによって以下の手順は異なります。 v2 エンドポイントの使用をお勧めします。 
 
-1. **v1** エンドポイントを使用する場合は、**resource** という名前の本文パラメーターを追加します。 このパラメーターの値には、バックエンド アプリの**アプリケーション ID** を使用します。 
+1. **v1** エンドポイントを使用する場合は、**resource** という名前の本文パラメーターを追加します。 このパラメーターの値には、バックエンド アプリの **アプリケーション ID** を使用します。 
 
 1. **v2** エンドポイントを使用する場合は、 **[既定のスコープ]** フィールドでバックエンド アプリ用に作成したスコープを使用します。 また、必ず [アプリケーション マニフェスト](../active-directory/develop/reference-app-manifest.md)で [`accessTokenAcceptedVersion`](../active-directory/develop/reference-app-manifest.md#accesstokenacceptedversion-attribute) プロパティの値を `2` に設定します。
 
 1. 次に、クライアントの資格情報を指定します。 これらはクライアントアプリの資格情報です。
 
-1. **[クライアント ID]** には、クライアントアプリの**アプリケーション ID** を使用します。
+1. **[クライアント ID]** には、クライアントアプリの **アプリケーション ID** を使用します。
 
 1. **[クライアント シークレット]** には、先ほどクライアントアプリ用に作成したキーを使用します。 
 
@@ -179,7 +176,7 @@ OAuth 2.0 承認サーバーを設定したので、Developer Console で Azure 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>開発者ポータルから適切に API を呼び出す
 
 > [!NOTE]
-> このセクションは、開発者ポータルをサポートしていない**従量課金**レベルには適用されません。
+> このセクションは、開発者ポータルをサポートしていない **従量課金** レベルには適用されません。
 
 ご使用の API で OAuth 2.0 ユーザー承認が有効になると、Developer Console は API を呼び出す前にユーザーの代理でアクセス トークンを取得するようになります。
 

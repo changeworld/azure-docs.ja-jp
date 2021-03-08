@@ -1,15 +1,15 @@
 ---
 title: Recovery Services コンテナーを作成して構成する
-description: この記事では、バックアップと復旧ポイントを格納する Recovery Services コンテナーを作成して構成する方法について説明します。
+description: この記事では、バックアップと復旧ポイントを格納する Recovery Services コンテナーを作成して構成する方法について説明します。 リージョンをまたがる復元を使用してセカンダリ リージョンで復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 0c0b7b25eeecad8e8c519d37139551590a51a29e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 1a20cd2b1245febea5fd18a9f6fe6e7a7bb6f04b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892356"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716756"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services コンテナーを作成して構成する
 
@@ -20,7 +20,7 @@ ms.locfileid: "88892356"
 Azure Backup では、コンテナーのストレージが自動的に処理されます。 ストレージをレプリケートする方法を指定する必要があります。
 
 > [!NOTE]
-> Recovery Services コンテナーの**ストレージ レプリケーションの種類** (ローカル冗長/geo 冗長) を変更する場合は、コンテナー内にバックアップを構成する前に行う必要があります。 バックアップを構成すると、変更するオプションは無効になります。
+> Recovery Services コンテナーの **ストレージ レプリケーションの種類** (ローカル冗長/geo 冗長) を変更する場合は、コンテナー内にバックアップを構成する前に行う必要があります。 バックアップを構成すると、変更するオプションは無効になります。
 >
 >- まだバックアップを構成していない場合は、[こちらの手順に従って](#set-storage-redundancy)設定を確認および変更してください。
 >- 既にバックアップを構成しており、GRS から LRS に移行する必要がある場合は、[こちらの回避策を確認](#how-to-change-from-grs-to-lrs-after-configuring-backup)してください。
@@ -30,35 +30,48 @@ Azure Backup では、コンテナーのストレージが自動的に処理さ�
 
 1. ストレージのレプリケーションの種類を選択し、 **[保存]** を選択します。
 
-     ![新しいコンテナーのストレージ構成を設定する](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+     ![新しいコンテナーのストレージ構成を設定する](./media/backup-create-rs-vault/recovery-services-vault-backup-configuration.png)
 
-   - プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合は、引き続き既定の **geo 冗長**設定を使用することをお勧めします。
+   - プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合は、引き続き既定の **geo 冗長** 設定を使用することをお勧めします。
    - プライマリ バックアップ ストレージ エンドポイントとして Azure を使用しない場合、 **[ローカル冗長]** を選択します。これにより、Azure ストレージのコストを削減できます。
-   - [geo](../storage/common/storage-redundancy.md) 冗長と[ローカル](../storage/common/storage-redundancy.md)冗長の詳細をご確認ください。
+   - [geo](../storage/common/storage-redundancy.md#geo-redundant-storage) 冗長と[ローカル](../storage/common/storage-redundancy.md#locally-redundant-storage)冗長の詳細をご確認ください。
+   - リージョン内でダウンタイムのないデータの可用性が必要で、データ所在地を保証する場合、[ゾーン冗長ストレージ](../storage/common/storage-redundancy.md#zone-redundant-storage)を選択します。
 
 >[!NOTE]
 >現在のソリューションはスナップショット ベースであり、コンテナーに転送されるデータがないため、コンテナーのストレージ レプリケーション設定は、Azure ファイル共有のバックアップには関係ありません。 スナップショットは、バックアップされたファイル共有と同じストレージ アカウントに格納されます。
 
 ## <a name="set-cross-region-restore"></a>リージョンをまたがる復元の設定
 
-復元オプションの 1 つである、リージョンをまたがる復元 (CRR) を使用すると、Azure VM をセカンダリ リージョン ([Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)) で復元できます。 このオプションを使用すると、次のことができます。
+**リージョンをまたがる復元 (CRR)** の復元オプションを使用すると、データをセカンダリ リージョン ([Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)) に復元できます。
+
+これは次のデータソースをサポートしています。
+
+- Azure VM (一般提供)
+- Azure VM 上でホストされている SQL データベース (プレビュー)
+- Azure VM 上でホストされている SAP HANA データベース (プレビュー)
+
+リージョンをまたがる復元を使用すると、次のことができます。
 
 - 監査またはコンプライアンスの必要がある場合にドリルを行う
-- プライマリ リージョンで障害が発生した場合に、VM またはそのディスクを復元する。
+- プライマリ リージョンで障害が発生した場合にデータを復元する
+
+VM を復元する場合は、VM またはそのディスクを復元できます。 Azure VM 上にホストされている SQL/SAP HANA データベースから復元する場合は、データベースまたはそのファイルを復元できます。
 
 この機能を選択するには、 **[バックアップ構成]** ウィンドウから **[Enable Cross Region Restore]\(リージョンをまたがる復元を有効にする\)** を選択します。
 
-このプロセスは、ストレージ レベルでの料金に影響します。
+このプロセスはストレージ レベルであるため、[料金に影響します](https://azure.microsoft.com/pricing/details/backup/)。
 
 >[!NOTE]
 >作業を開始する前に、次のことを行います。
 >
 >- サポートされているマネージド型とリージョンの一覧については、[サポート マトリックス](backup-support-matrix.md#cross-region-restore)を参照してください。
->- リージョンをまたがる復元 (CRR) 機能は、現在すべての Azure パブリック リージョンでプレビュー段階となっています。
+>- Azure VM のリージョンをまたがる復元 (CRR) 機能は、現在、すべての Azure パブリック リージョンで一般提供されています。
+>- SQL と SAP HANA データベースのリージョンをまたがる復元は、すべての Azure パブリック リージョンでプレビュー段階にあります。
 >- CRR は、任意の GRS コンテナーのためのコンテナー レベルのオプトイン機能です (既定ではオフになっています)。
 >- オプトイン後にセカンダリ リージョンでバックアップ項目が利用可能になるまでに、最大 48 時間かかることがあります。
->- 現在 CRR は、バックアップ管理の種類「ARM Azure VM」でのみサポートされています (クラシック Azure VM はサポートされません)。  追加の管理の種類が CRR をサポートすると、それらは自動的に**登録**されます。
->- 初めて保護を開始した後は、現在、リージョンをまたがる復元を GRS または LRS に戻すことはできません。
+>- 現在、Azure VM の CRR は、Azure Resource Manger の Azure VM でのみサポートされています。 クラシック Azure VM はサポートされません。  追加の管理の種類が CRR をサポートすると、それらは自動的に **登録** されます。
+>- 初めて保護を開始した後は、現在、リージョンをまたがる復元を GRS または LRS に **戻すことはできません**。
+>- 現在、[読み取りアクセス geo 冗長ストレージ (RA GRS)](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) のレプリケーションは 15 分ですが、セカンダリ リージョンの [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) は、プライマリ リージョンから最大 12 時間です。
 
 ### <a name="configure-cross-region-restore"></a>リージョンをまたがる復元の構成
 
@@ -66,18 +79,17 @@ GRS 冗長性を使用して作成されたコンテナーには、リージョ�
 
  ![バックアップ構成のバナー](./media/backup-azure-arm-restore-vms/banner.png)
 
-1. ポータルから [Recovery Services コンテナー] > [設定] > [プロパティ] にアクセスします。
-2. **[Enable Cross Region Restore in this vault]\(このコンテナーでリージョンをまたがる復元を有効にする\)** を選択して、機能を有効にします。
+1. ポータルから、Recovery Services コンテナー > **[プロパティ]** ( **[設定]** の下) にアクセスします。
+1. **[バックアップ構成]** で **[更新]** を選択します。
+1. **[Enable Cross Region Restore in this vault]\(このコンテナーでリージョンをまたがる復元を有効にする\)** を選択して、機能を有効にします。
 
-   ![[Enable Cross Region Restore in this vault]\(このコンテナーでリージョンをまたがる復元を有効にする\) を選択する前](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+   ![リージョンをまたがる復元を有効にする](./media/backup-azure-arm-restore-vms/backup-configuration.png)
 
-   ![[Enable Cross Region Restore in this vault]\(このコンテナーでリージョンをまたがる復元を有効にする\) を選択した後](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+CRR を使用したバックアップと復元の詳細については、次の記事を参照してください。
 
-[セカンダリ リージョンのバックアップ項目を表示する](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region)方法について学習します。
-
-[セカンダリ リージョンで復元する](backup-azure-arm-restore-vms.md#restore-in-secondary-region)方法について学習します。
-
-[セカンダリ リージョンの復元ジョブを監視する](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs)方法について説明します。
+- [Azure VM 用のリージョンをまたがる復元](backup-azure-arm-restore-vms.md#cross-region-restore)
+- [SQL データベース用のリージョンをまたがる復元](restore-sql-database-azure-vm.md#cross-region-restore)
+- [SAP HANA データベース用のリージョンをまたがる復元](sap-hana-db-restore.md#cross-region-restore)
 
 ## <a name="set-encryption-settings"></a>暗号化設定の設定
 

@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 699b3d9c9799b9d3a4ec148cbf395b212715f536
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 390a8b421a7b34391bde689e4b968fa98cdbaf76
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686090"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599165"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>事前購入を利用して Azure Databricks のコストを最適化する
 
@@ -48,7 +48,7 @@ Databricks プランは [Azure portal](https://portal.azure.com/#blade/Microsoft
 **購入方法:**
 
 1. [Azure ポータル](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D)にアクセスします。
-1. サブスクリプションを選択します。 **[サブスクリプション]** リストを使用して、予約容量の支払いに使用するサブスクリプションを選択します。 サブスクリプションの支払方法に対して、予約容量の初期コストが課金されます。 登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。
+1. サブスクリプションを選択します。 **[サブスクリプション]** リストを使用して、予約容量の支払いに使用するサブスクリプションを選択します。 サブスクリプションの支払方法に対して、予約容量の初期コストが課金されます。 加入契約の Azure 前払い (旧称: 年額コミットメント) 残高から料金が差し引かれるか、超過料金として課金されます。
 1. スコープを選択します。 **[スコープ]** リストを使用して、サブスクリプション スコープを選択します。
     - **単一のリソース グループのスコープ** - 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。
     - **単一サブスクリプション** - 選択されたサブスクリプションの一致するリソースに予約割引を適用します。
@@ -63,7 +63,7 @@ Databricks プランは [Azure portal](https://portal.azure.com/#blade/Microsoft
 購入後に予約に次の種類の変更を加えることができます。
 
 - 予約スコープの更新
-- ロールベースのアクセス
+- Azure ロールベースのアクセス制御 (Azure RBAC)
 
 Databricks コミット ユニットの事前購入を分割またはマージすることはできません。 予約の管理について詳しくは、[購入後の予約の管理](manage-reserved-vm-instance.md)に関する記事をご覧ください。
 

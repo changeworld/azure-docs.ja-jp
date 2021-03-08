@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: b82b79d076871b961d5c496bc70beac1b5067b2d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2a5204be638f108b40e431b148c9cb97788c4a52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288116"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91400759"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Azure Logic Apps における Google コネクタのデータ セキュリティとプライバシー ポリシー
 
@@ -40,7 +40,7 @@ Gmail コネクタを使用するロジック アプリがある場合は、影�
 
 * Google サービス:Gmail、Google カレンダー、Google コンタクト、Google Drive、Google スプレッドシート、および Google Tasks
 
-* 承認された Microsoft サービス:Dynamics 365、Excel Online、Microsoft Teams、Office 365、OneDrive、および SharePoint Online
+* 承認された Microsoft サービス:Dynamics 365、Excel Online、Microsoft Teams、Microsoft 365、OneDrive、および SharePoint Online
 
 * カスタマー マネージド データ ソースのコネクタ:FTP、RSS、SFTP、SMTP、および SQL Server
 

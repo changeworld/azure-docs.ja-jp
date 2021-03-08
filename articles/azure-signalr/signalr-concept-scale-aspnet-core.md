@@ -7,22 +7,22 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: d104e0f1f2c6a978a5fce2c046a36e50a7056970
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 90853b5ff769b710c6c95e4f6e62b3a4aa19fadf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928502"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151082"
 ---
 # <a name="scale-aspnet-core-signalr-applications-with-azure-signalr-service"></a>Azure SignalR サービスによる ASP.NET Core SignalR アプリケーションのスケーリング
 
 ## <a name="developing-signalr-apps"></a>SignalR のアプリの開発
 
-現時点では、Web アプリケーションで使用できる SignalR には [2 つのバージョン](https://docs.microsoft.com/aspnet/core/signalr/version-differences)があります。SignalR for ASP.NET と、最新バージョンの ASP.NET Core SignalR です。 Azure SignalR サービスは、ASP.NET Core SignalR 上に構築された Azure のマネージド サービスです。
+現時点では、Web アプリケーションで使用できる SignalR には [2 つのバージョン](/aspnet/core/signalr/version-differences)があります。SignalR for ASP.NET と、最新バージョンの ASP.NET Core SignalR です。 Azure SignalR サービスは、ASP.NET Core SignalR 上に構築された Azure のマネージド サービスです。
 
 ASP.NET Core SignalR は、以前のバージョンのリライトです。 そのため、ASP.NET Core SignalR は、以前のバージョンの SignalR と下位互換性がありません。 API および動作が異なります。 ASP.NET Core SignalR SDK は .NET Standard を対象としているため、.NET Framework と共に使用することができます。 ただし、以前の API ではなく新しい API を使用する必要があります。 SignalR を使用していて、ASP.NET Core SignalR または Azure SignalR サービスに移行する場合は、API の違いを処理するためにコードを変更する必要があります。
 
-Azure SignalR サービスでは、ASP.NET Core SignalR のサーバー側コンポーネントは Azure にホストされます。 ただし、テクノロジは ASP.NET Core 上に組み込まれているので、[Azure App Service](../app-service/overview.md)、[IIS](https://docs.microsoft.com/aspnet/core/host-and-deploy/iis/index)、[Nginx](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-nginx)、[Apache](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-apache)、[Docker](https://docs.microsoft.com/aspnet/core/host-and-deploy/docker/index) でホストしているときに、複数のプラットフォーム (Windows、Linux、MacOS) で実際の Web アプリケーションを実行できます。 独自のプロセスで自己ホストを使用することもできます。
+Azure SignalR サービスでは、ASP.NET Core SignalR のサーバー側コンポーネントは Azure にホストされます。 ただし、テクノロジは ASP.NET Core 上に組み込まれているので、[Azure App Service](../app-service/overview.md)、[IIS](/aspnet/core/host-and-deploy/iis/index)、[Nginx](/aspnet/core/host-and-deploy/linux-nginx)、[Apache](/aspnet/core/host-and-deploy/linux-apache)、[Docker](/aspnet/core/host-and-deploy/docker/index) でホストしているときに、複数のプラットフォーム (Windows、Linux、MacOS) で実際の Web アプリケーションを実行できます。 独自のプロセスで自己ホストを使用することもできます。
 
 アプリケーションの目標に、リアルタイムでのコンテンツ更新により Web クライアントを更新するための最新機能のサポート、複数のプラットフォーム (Azure、Windows、Linux、macOS) での実行、異なる環境へのホストが含まれる場合は、Azure SignalR サービスの利用が最適な選択肢である可能性があります。
 
@@ -34,7 +34,7 @@ Azure SignalR サービスを使用する主な理由の 1 つは、シンプル
 
 また、WebSocket は、通常はリアルタイムのコンテンツ更新をサポートするための優先手法です。 ただし、多数の永続的な WebSocket 接続の負荷分散は、スケーリングの際に解決するのが複雑な問題になります。 一般的なソリューションでは、DNS 負荷分散、ハードウェア ロード バランサー、ソフトウェア負荷分散を利用します。 Azure SignalR サービスがこの問題を処理します。
 
-別の理由は、Web アプリケーションを実際にホストする必要がまったくない可能性があることです。 Web アプリケーションのロジックでは、[サーバーレス コンピューティング](https://azure.microsoft.com/overview/serverless-computing/)を利用できます。 たとえば、[Azure Functions](https://docs.microsoft.com/azure/azure-functions/) トリガーでコードをオンデマンドでのみホストおよび実行できる可能性があります。 このシナリオは、コードがオンデマンドでのみ実行され、クライアントとの接続が長時間維持されないため、注意が必要になる可能性があります。 Azure SignalR サービスでは、サービスが既に接続を管理しているため、このような状況に対処できます。 詳細は、 [Azure Functions を使用して SignalR サービスを使用する方法の概要](signalr-concept-azure-functions.md)を参照してください。
+別の理由は、Web アプリケーションを実際にホストする必要がまったくない可能性があることです。 Web アプリケーションのロジックでは、[サーバーレス コンピューティング](https://azure.microsoft.com/overview/serverless-computing/)を利用できます。 たとえば、[Azure Functions](../azure-functions/index.yml) トリガーでコードをオンデマンドでのみホストおよび実行できる可能性があります。 このシナリオは、コードがオンデマンドでのみ実行され、クライアントとの接続が長時間維持されないため、注意が必要になる可能性があります。 Azure SignalR サービスでは、サービスが既に接続を管理しているため、このような状況に対処できます。 詳細は、 [Azure Functions を使用して SignalR サービスを使用する方法の概要](signalr-concept-azure-functions.md)を参照してください。
 
 ## <a name="how-does-it-scale"></a>スケーリングの方法
 

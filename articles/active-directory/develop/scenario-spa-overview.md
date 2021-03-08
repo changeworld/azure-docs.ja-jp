@@ -1,5 +1,6 @@
 ---
-title: JavaScript シングルページ アプリのシナリオ - Microsoft ID プラットフォーム | Azure
+title: JavaScript シングルページ アプリのシナリオ
+titleSuffix: Microsoft identity platform
 description: Microsoft ID プラットフォームを使用してシングルページ アプリケーションを構築する方法 (シナリオの概要) について説明します。
 services: active-directory
 author: navyasric
@@ -10,36 +11,37 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3ead0ea58c6860519f027eb6a7450df37396bd89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, identityplatformtop40, devx-track-js
+ms.openlocfilehash: 47b8c8c074a5e0ce3ed73a2a9a4b06aa307cdff3
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885176"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756425"
 ---
 # <a name="scenario-single-page-application"></a>シナリオ:シングルページ アプリ
 
 シングルページ アプリケーション (SPA) の構築に必要なすべてのことについて説明します。
 
-## <a name="prerequisites"></a>前提条件
-
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
 ## <a name="getting-started"></a>作業の開始
 
-JavaScript SPA のクイック スタートに従って、最初のアプリケーションを作成できます。
+初めてのアプリケーションをまだ作成していない場合は、次の JavaScript SPA クイック スタートを完了して作成してください:
 
-> [!div class="nextstepaction"]
-> [クイック スタート: シングルページ アプリケーション](./quickstart-v2-javascript.md)
+[クイック スタート: シングルページ アプリケーション](./quickstart-v2-javascript.md)
 
 ## <a name="overview"></a>概要
 
-多くの最新の Web アプリケーションは、クライアント側のシングル ページ アプリケーションとして構築されています。 開発者は、JavaScript または SPA フレームワーク (Angular、Vue.js、React.js など) を使用してそれらを作成します。 これらのアプリケーションは Web ブラウザーで実行され、その認証には、従来のサーバー側 Web アプリケーションとは異なる特性があります。 
+多くの最新の Web アプリケーションは、クライアント側のシングル ページ アプリケーションとして構築されています。 開発者は、JavaScript または SPA フレームワーク (Angular、Vue、React など) を使用してそれらを作成します。 これらのアプリケーションは Web ブラウザーで実行され、その認証には、従来のサーバー側 Web アプリケーションとは異なる特性があります。
 
-Microsoft ID プラットフォームにより、シングルページ アプリケーションでユーザーをサインインさせ、[OAuth 2.0 暗黙的フロー](./v2-oauth2-implicit-grant-flow.md)を使用してバックエンド サービスまたは Web API にアクセスするトークンを取得できます。 暗黙的フローにより、アプリケーションから、認証されたユーザーを表す ID トークンを取得し、保護された API の呼び出しに必要なトークンにもアクセスできます。
+Microsoft ID プラットフォームにより、シングルページ アプリケーションでユーザーをサインインさせ、バックエンド サービスまたは Web API にアクセスするトークンを取得するための **2 つ** のオプションが提供されます。
 
-![シングルページ アプリケーション](./media/scenarios/spa-app.svg)
+- [OAuth 2.0 認証コード フロー (PKCE あり)](./v2-oauth2-auth-code-flow.md)。 この認証コード フローでは、認証されたユーザーを表す **ID** トークンと保護されている API を呼び出すために必要な **アクセス** トークンの認証コードを交換することをアプリケーションに許可します。 また、ユーザーが操作しなくてもユーザーの代わりにリソースへの長期間アクセスを提供する **更新** トークンが返されます。 これが **推奨される** 方法です。
+
+![シングルページ アプリケーション認証](./media/scenarios/spa-app-auth.svg)
+
+- [OAuth 2.0 暗黙的フロー](./v2-oauth2-implicit-grant-flow.md)。 暗黙的な許可フローでは、**ID** と **アクセス** トークンを取得することがアプリケーションに許可されます。 認証コード フロートは異なり、暗黙的な許可フローでは **更新トークン** が返されません。
+
+![シングルページ アプリケーション暗黙的](./media/scenarios/spa-app.svg)
 
 この認証フローには、Electron や React-Native などのクロスプラットフォーム JavaScript フレームワークを使用するアプリケーション シナリオは含まれません。 それらでは、ネイティブ プラットフォームと対話するための追加の機能が必要になります。
 
@@ -47,11 +49,14 @@ Microsoft ID プラットフォームにより、シングルページ アプリ
 
 アプリケーションでこのシナリオを有効にするには、次のことが必要です。
 
-* Azure Active Directory (Azure AD) へのアプリケーションの登録。 この登録では、暗黙的フローを有効にし、トークンが返されるリダイレクト URI を設定する必要があります。
+* Azure Active Directory (Azure AD) へのアプリケーションの登録。 登録手順は、暗黙的な許可フローと認証コード フローの間で異なります。
 * アプリケーション ID などの登録済みアプリケーション プロパティを使用したアプリケーション構成。
-* Microsoft Authentication Library (MSAL) を使用した、サインインしてトークンを取得するための認証フローの実行。
+* Microsoft Authentication Library for JavaScript (MSAL.js) を使用した、サインインしてトークンを取得するための認証フローの実行。
+
+## <a name="recommended-reading"></a>推奨資料
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [アプリの登録](scenario-spa-app-registration.md)
+このシナリオの次の記事「[アプリの登録](scenario-spa-app-registration.md)」に進みます。

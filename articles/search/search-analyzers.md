@@ -7,18 +7,18 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/20/2020
+ms.date: 12/18/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f9db8a50e670e3c6af7adce0a8efcf3ce569ac89
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bbda4268ca00d1c12f851517e2b35add7fba7f9b
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009629"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694291"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure Cognitive Search でのテキスト処理のためのアナライザー
 
-*アナライザー*は、クエリ文字列内のテキストとインデックス付きドキュメントを処理する[フル テキスト検索エンジン](search-lucene-query-architecture.md)のコンポーネントです。 テキスト処理 (字句解析とも呼ばれます) は変形力を備えていて、以下のようなアクションを通して文字列に変更を加えます。
+*アナライザー* は、クエリ文字列内のテキストとインデックス付きドキュメントを処理する [フル テキスト検索エンジン](search-lucene-query-architecture.md)のコンポーネントです。 テキスト処理 (字句解析とも呼ばれます) は変形力を備えていて、以下のようなアクションを通して文字列に変更を加えます。
 
 + 重要でない単語 (ストップワード) と句読点を削除します
 + フレーズやハイフンでつながれた単語を構成部分に分割します
@@ -57,7 +57,7 @@ Azure Cognitive Search の既定では、["Unicode テキストのセグメン�
 
 アナライザーの設定は省略可能です。 一般的な規則として、どれだけ意図したように機能するかを確認するため、最初に既定の標準 Lucene アナライザーを使用してみます。 クエリで期待した結果が返されない場合は、異なるアナライザーに切り替えることが正しい解決策であることがよくあります。
 
-1. [インデックス](/rest/api/searchservice/create-index)にフィールド定義を作成する場合は、**analyzer** プロパティを次のいずれかに設定します。`keyword` などの[定義済みアナライザー](index-add-custom-analyzers.md#AnalyzerTable)、`en.microsoft` などの[言語アナライザー](index-add-language-analyzers.md)、またはカスタム アナライザー (同じインデックス スキーマで定義されたもの) です。  
+1. [インデックス](/rest/api/searchservice/create-index)にフィールド定義を作成する場合は、**analyzer** プロパティを次のいずれかに設定します。`keyword` などの [定義済みアナライザー](index-add-custom-analyzers.md#AnalyzerTable)、`en.microsoft` などの [言語アナライザー](index-add-language-analyzers.md)、またはカスタム アナライザー (同じインデックス スキーマで定義されたもの) です。  
  
    ```json
      "fields": [
@@ -111,7 +111,7 @@ Azure Cognitive Search の既定では、["Unicode テキストのセグメン�
 
 ### <a name="one-analyzer-for-read-write-unless-you-have-specific-requirements"></a>特定の要件がない場合は読み取り/書き込みに 1 つのアナライザー
 
-Azure Cognitive Search では、追加の **indexAnalyzer** および **searchAnalyzer** フィールド プロパティにより、インデックス作成用と検索用に異なるアナライザーを指定できます。 指定しなかった場合、**analyzer** プロパティで設定されたアナライザーが、インデックス作成と検索の両方に使用されます。 **アナライザー**が指定されなかった場合は、標準の Lucene アナライザーが使用されます。
+Azure Cognitive Search では、追加の **indexAnalyzer** および **searchAnalyzer** フィールド プロパティにより、インデックス作成用と検索用に異なるアナライザーを指定できます。 指定しなかった場合、**analyzer** プロパティで設定されたアナライザーが、インデックス作成と検索の両方に使用されます。 **アナライザー** が指定されなかった場合は、標準の Lucene アナライザーが使用されます。
 
 一般的な規則は、特定の要件で別に指示がない場合は、インデックスとクエリの両方に同じアナライザーを使用することです。 テストは徹底的に行ってください。 検索時とインデックス作成時にテキスト処理が異なると、検索アナライザーの構成とインデックス作成アナライザーの構成が揃っていない場合、クエリ用語とインデックス用語に不一致が生じるおそれがあります。
 
@@ -147,7 +147,7 @@ Azure Cognitive Search では、追加の **indexAnalyzer** および **searchAn
 * この例で、カスタム アナライザーは "my_analyzer" です。このアナライザーはカスタマイズされた標準トークナイザー "my_standard_tokenizer" と、小文字とカスタマイズされた asciifolding フィルターである "my_asciifolding" という 2 つのトークン フィルターを使用しています。
 * 2 つのカスタム文字フィルター "map_dash" および "remove_whitespace" も定義します。 1 つ目はすべてのダッシュをアンダースコアに置き換え、2 つ目はすべてのスペースを削除します。 マッピング規則でスペースを UTF-8 エンコードする必要があります。 文字フィルターはトークン化よりも先に適用され、結果のトークンに影響を及ぼします (標準トークナイザーはダッシュとスペースで区切りますが、アンダースコアでは区切りません)。
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -206,7 +206,7 @@ Azure Cognitive Search では、追加の **indexAnalyzer** および **searchAn
         }
      ]
   }
-~~~~
+```
 
 <a name="Per-field-analyzer-assignment-example"></a>
 
@@ -216,7 +216,7 @@ Azure Cognitive Search では、追加の **indexAnalyzer** および **searchAn
 
 "analyzer" 要素は、フィールドごとに標準アナライザーをオーバーライドします。 グローバルなオーバーライドはありません。 この例で、`text1` はパターン アナライザーと `text2` を使用します。これはアナライザーを指定せず、既定値を使用します。
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -239,7 +239,7 @@ Azure Cognitive Search では、追加の **indexAnalyzer** および **searchAn
         }
      ]
   }
-~~~~
+```
 
 <a name="Mixing-analyzers-for-indexing-and-search-operations"></a>
 
@@ -248,7 +248,7 @@ Azure Cognitive Search では、追加の **indexAnalyzer** および **searchAn
 API には、インデックス作成と検索に別のアナライザーを指定するための追加のインデックス属性が含まれています。 **searchAnalyzer** 属性と **indexAnalyzer** 属性をペアで指定し、1 つの **analyzer** 属性を置き換える必要があります。
 
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -267,7 +267,7 @@ API には、インデックス作成と検索に別のアナライザーを指�
         },
      ],
   }
-~~~~
+```
 
 <a name="Language-analyzer-example"></a>
 
@@ -275,7 +275,7 @@ API には、インデックス作成と検索に別のアナライザーを指�
 
 複数言語の文字列を含むフィールドでは、言語アナライザーを使用できますが、他のフィールドは既定値のままです (または、他の定義済みまたはカスタム アナライザーを使用します)。 言語アナライザーを使用する場合、インデックス作成と検索操作の両方に使用する必要があります。 言語アナライザーを使用するフィールドでは、インデックス作成と検索に別のアナライザーを使用することはできません。
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -300,7 +300,7 @@ API には、インデックス作成と検索に別のアナライザーを指�
         }
      ],
   }
-~~~~
+```
 
 ## <a name="c-examples"></a>C# の例
 
@@ -315,55 +315,61 @@ API には、インデックス作成と検索に別のアナライザーを指�
 
 構成なしでそのまま使用されるすべてのアナライザーは、フィールド定義で指定します。 インデックスの **[analyzers]** セクションにエントリを作成する必要はありません。 
 
-この例では、Microsoft の英語およびフランス語のアナライザーを説明フィールドに割り当てます。 これは、[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) サンプルの hotels.cs ファイルの Hotel クラスを使用して作成した、hotels インデックスのより大きな定義から抜粋されたスニペットです。
+言語アナライザーはそのままで使用されます。 それらを使用するには、Azure Cognitive Search でサポートされているテキスト アナライザーを提供する [LexicalAnalyzerName](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) 型を指定して、[LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) を呼び出します。
 
-Azure Cognitive Search でサポートされているテキスト アナライザーを提供する [AnalyzerName](/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) 型を指定して、[Analyzer](/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) を呼び出します。
+カスタム アナライザーも、フィールド定義に同じように指定されますが、これを機能させるには、次のセクションで説明するように、インデックス定義にアナライザーを指定する必要があります。
 
 ```csharp
     public partial class Hotel
     {
        . . . 
-
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
-        [JsonProperty("description")]
+        [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.EnLucene)]
         public string Description { get; set; }
 
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.FrLucene)]
-        [JsonProperty("description_fr")]
+        [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.FrLucene)]
+        [JsonPropertyName("Description_fr")]
         public string DescriptionFr { get; set; }
 
+        [SearchableField(AnalyzerName = "url-analyze")]
+        public string Url { get; set; }
       . . .
     }
 ```
+
 <a name="Define-a-custom-analyzer"></a>
 
 ### <a name="define-a-custom-analyzer"></a>カスタム アナライザーを定義する
 
-カスタマイズまたは構成が必要な場合は、アナライザーのコンストラクトをインデックスに追加する必要があります。 定義したら、前の例で示したようにそれをフィールド定義に追加できます。
+カスタマイズまたは構成が必要な場合は、アナライザー コンストラクトをインデックスに追加します。 定義したら、前の例で示したようにそれをフィールド定義に追加できます。
 
-[CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) オブジェクトを作成します。 その他の例については、[CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs) に関するページを参照してください。
+[CustomAnalyzer](/dotnet/api/azure.search.documents.indexes.models.customanalyzer) オブジェクトを作成します。 カスタム アナライザーは、既知のトークナイザー、0 個以上のトークン フィルター、および 0 個以上の文字フィルター名のユーザー定義の組み合わせです。
+
++ [CustomAnalyzer.Tokenizer](/dotnet/api/microsoft.azure.search.models.customanalyzer.tokenizer)
++ [CustomAnalyzer.TokenFilters](/dotnet/api/microsoft.azure.search.models.customanalyzer.tokenfilters)
++ [CustomAnalyzer.CharFilters](/dotnet/api/microsoft.azure.search.models.customanalyzer.charfilters)
+
+次の例では、[uax_url_email トークナイザー](/dotnet/api/microsoft.azure.search.models.customanalyzer.tokenizer)と[小文字トークン フィルター](/dotnet/api/microsoft.azure.search.models.tokenfiltername.lowercase)を使用する "url-analyze" という名前のカスタム アナライザーを作成します。
 
 ```csharp
+private static void CreateIndex(string indexName, SearchIndexClient adminClient)
 {
-   var definition = new Index()
+   FieldBuilder fieldBuilder = new FieldBuilder();
+   var searchFields = fieldBuilder.Build(typeof(Hotel));
+
+   var analyzer = new CustomAnalyzer("url-analyze", "uax_url_email")
    {
-         Name = "hotels",
-         Fields = FieldBuilder.BuildForType<Hotel>(),
-         Analyzers = new[]
-            {
-               new CustomAnalyzer()
-               {
-                     Name = "url-analyze",
-                     Tokenizer = TokenizerName.UaxUrlEmail,
-                     TokenFilters = new[] { TokenFilterName.Lowercase }
-               }
-            },
+         TokenFilters = { TokenFilterName.Lowercase }
    };
 
-   serviceClient.Indexes.Create(definition);
+   var definition = new SearchIndex(indexName, searchFields);
+
+   definition.Analyzers.Add(analyzer);
+
+   adminClient.CreateOrUpdateIndex(definition);
+}
 ```
+
+その他の例については、[CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs) に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

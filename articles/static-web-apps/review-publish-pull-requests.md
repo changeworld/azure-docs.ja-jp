@@ -1,28 +1,28 @@
 ---
-title: Azure Static Web Apps における実稼働前環境での Pull request の確認
-description: Azure Static Web Apps で実稼働前環境を使用して Pull request の変更を確認する方法について説明します。
+title: Azure Static Web Apps における実稼働前環境での pull request の確認
+description: Azure Static Web Apps で実稼働前環境を使用して pull request の変更を確認する方法について説明します。
 services: static-web-apps
 author: sinedied
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: 61c5917c1e4cb9dbf96e90af9a30777ea7c2e66c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f8f2e352ae458e3e2825c9701437ea652ba07375
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594111"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825654"
 ---
-# <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューにおける実稼働前環境での Pull request の確認
+# <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューにおける実稼働前環境での pull request の確認
 
 この記事では、[Azure Static Web Apps](overview.md) を使用してデプロイされたアプリケーションに対する変更を、実稼働前環境を使用して確認する方法を示します。
 
 実稼働前 (ステージング) 環境は、運用環境で使用できない変更を含む、完全に機能するステージング バージョンのアプリケーションです。
 
-Azure Static Web Apps では、リポジトリに GitHub Actions ワークフローが生成されます。 ワークフローによって監視されるブランチに対して Pull request が作成されると、実稼働前環境が構築されます。 実稼働前環境ではアプリがステージされるため、運用環境にプッシュする前にレビューを実行できます。
+Azure Static Web Apps では、リポジトリに GitHub Actions ワークフローが生成されます。 ワークフローによって監視されるブランチに対して pull request が作成されると、実稼働前環境が構築されます。 実稼働前環境ではアプリがステージされるため、運用環境にプッシュする前にレビューを実行できます。
 
-Azure Static Web Apps を使用する場合は、複数の実稼働前環境を同時に共存させることができます。 監視対象のブランチに対して Pull request を作成するたびに、変更を含むステージング バージョンが個別の実稼働前環境にデプロイされます。
+Azure Static Web Apps を使用する場合は、複数の実稼働前環境を同時に共存させることができます。 監視対象のブランチに対して pull request を作成するたびに、変更を含むステージング バージョンが個別の実稼働前環境にデプロイされます。
 
 実稼働前環境を使用することには多くの利点があります。 たとえば、次のように操作できます。
 
@@ -51,54 +51,52 @@ Azure Static Web Apps を使用する場合は、複数の実稼働前環境を�
 
 1. _app_ フォルダーに移動して、テキストの内容を一部変更します。 たとえば、タイトルや段落を変更できます。 編集するファイルが見つかったら、 **[Edit]\(編集\)** をクリックして変更を加えます。
 
-    :::image type="content" source="./media/review-publish-pull-requests/edit-file.png" alt-text="GitHub インターフェイスのファイルの編集ボタン":::
+    :::image type="content" source="./media/review-publish-pull-requests/edit-file.png" alt-text="GitHub インターフェイスを使用して新しいブランチを作成する":::
 
 1. 変更が完了したら、 **[Commit changes]\(変更のコミット\)** をクリックして、変更内容をブランチにコミットします。
 
-    :::image type="content" source="./media/review-publish-pull-requests/commit-changes.png" alt-text="GitHub インターフェイスの [Commit changes]\(変更のコミット\) ボタン":::
+    :::image type="content" source="./media/review-publish-pull-requests/commit-changes.png" alt-text="GitHub インターフェイスを使用して新しいブランチを作成する":::
 
-## <a name="create-a-pull-request"></a>Pull request を作成する
+## <a name="create-a-pull-request"></a>pull request を作成する
 
-次に、この変更から Pull request を作成します。
+次に、この変更から pull request を作成します。
 
 1. GitHub でプロジェクトの **[Pull request]** タブを開きます。
 
-    :::image type="content" source="./media/review-publish-pull-requests/tab.png" alt-text="GitHub リポジトリの [Pull request] タブ":::
+    :::image type="content" source="./media/review-publish-pull-requests/tab.png" alt-text="GitHub インターフェイスを使用して新しいブランチを作成する":::
 
 1. ブランチの **[Compare & pull request]\(比較と pull request\)** ボタンをクリックします。
 
 1. 必要に応じて変更に関する詳細情報を入力し、 **[Create pull request]\(pull request の作成\)** をクリックします。
 
-    :::image type="content" source="./media/review-publish-pull-requests/open.png" alt-text="GitHub での Pull request の作成":::
+    :::image type="content" source="./media/review-publish-pull-requests/open.png" alt-text="GitHub インターフェイスを使用して新しいブランチを作成する":::
 
 必要に応じて、レビュー担当者を割り当てたり、変更内容について説明するコメントを追加したりできます。
 
 > [!NOTE]
-> ブランチに新しいコミットをプッシュすることで、複数の変更を行うことができます。 そうすると、Pull request は自動的に更新され、すべての変更内容が反映されます。
+> ブランチに新しいコミットをプッシュすることで、複数の変更を行うことができます。 そうすると、pull request は自動的に更新され、すべての変更内容が反映されます。
 
 ## <a name="review-changes"></a>変更の確認
 
-Pull request が作成されると、[GitHub Actions](https://github.com/features/actions) デプロイ ワークフローが実行され、実稼働前環境に変更がデプロイされます。
+pull request が作成されると、[GitHub Actions](https://github.com/features/actions) デプロイ ワークフローが実行され、実稼働前環境に変更がデプロイされます。
 
-ワークフローでアプリのビルドとデプロイが完了すると、GitHub ボットによって実稼働前環境の URL を含むコメントが Pull request に追加されます。 このリンクをクリックすると、ステージされた変更を確認できます。
+ワークフローでアプリのビルドとデプロイが完了すると、GitHub ボットによって実稼働前環境の URL を含むコメントが pull request に追加されます。 このリンクをクリックすると、ステージされた変更を確認できます。
 
-:::image type="content" source="./media/review-publish-pull-requests/bot-comment.png" alt-text="実稼働前 URL を含む Pull request コメント":::
+:::image type="content" source="./media/review-publish-pull-requests/bot-comment.png" alt-text="GitHub インターフェイスを使用して新しいブランチを作成する":::
 
 生成された URL をクリックして、変更内容を確認します。
 
 この URL を詳しく確認すると、次のように構成されていることがわかります: `https://<SUBDOMAIN-PULL_REQUEST_ID>.<AZURE_REGION>.azurestaticapps.net`。
 
-指定された Pull request に対して、この URL は新しい更新をプッシュしても変わりません。 URL が一定であることに加えて、Pull request が有効な限り同じ運用前環境が再利用されます。
+指定された pull request に対して、この URL は新しい更新をプッシュしても変わりません。 URL が一定であることに加えて、pull request が有効な限り同じ運用前環境が再利用されます。
 
 ## <a name="publish-changes"></a>変更を発行する
 
-変更が承認されたら、Pull request をマージすることによって、変更内容を運用環境に発行できます。
+変更が承認されたら、pull request をマージすることによって、変更内容を運用環境に発行できます。
 
 **[Merge pull request]\(pull request のマージ\)** をクリックします。
 
-:::image type="content" source="./media/review-publish-pull-requests/merge.png" alt-text="GitHub インターフェイスの [Merge pull request]\(pull request のマージ\) ボタン":::
-
-マージによって、変更内容が追跡対象のブランチ ("運用" ブランチ) にコピーされます。 その後、追跡対象のブランチでデプロイ ワークフローが開始され、アプリケーションが再構築された後に変更内容が反映されます。
+:::image type="content" source="./media/review-publish-pull-requests/merge.png" alt-text="GitHub インターフェイスを使用して新しいブランチを作成する" ブランチ) にコピーされます。 その後、追跡対象のブランチでデプロイ ワークフローが開始され、アプリケーションが再構築された後に変更内容が反映されます。
 
 運用環境の変更を確認するには、運用環境の URL を開いて、ライブ バージョンの Web サイトを読み込みます。
 

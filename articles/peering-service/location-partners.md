@@ -5,17 +5,17 @@ services: peering-service
 author: derekolo
 ms.service: peering-service
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
-ms.date: 05/29/2020
+ms.date: 11/06/2020
 ms.author: derekol
-ms.openlocfilehash: 012468ea16a9d1125bbcc93333eb8dad586aa502
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da6c53675378fcf9d395debe750bb97738763a09
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871422"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059519"
 ---
 # <a name="peering-service-partners"></a>Peering Service パートナー
 
@@ -30,18 +30,22 @@ Microsoft は、世界中のインターネット サービス プロバイダ�
 
 | **パートナー** | **市場**|
 |-----------|---------|
-| [CenturyLink](https://www.ctl.io/microsoft-azure-peering-services/) |United States|
+| [Lumen Technologies](https://www.ctl.io/microsoft-azure-peering-services/) |北米、ヨーロッパ|
 | [BBIX](https://www.bbix.net/en/service/) |日本 |
 | [CCL](https://concepts.co.nz/news/general-news/) |オセアニア |
-| [Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/)|ヨーロッパ|
+| [Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/)|ヨーロッパ、アジア|
 | [DE-CIX](https://www.de-cix.net/microsoft)|ヨーロッパ、北米 |
 | [IIJ](https://www.iij.ad.jp/en/) | 日本 |
 | [Intercloud](https://intercloud.com/microsoft-saas-applications/)|ヨーロッパ  |
 | [Kordia](https://www.kordia.co.nz/cloudconnect) |オセアニア  |
-| [Liquid Telecom](https://liquidcloud.africa/365-direct) | アフリカ  |
+| [Liquid Telecom](https://liquidcloud.africa/keep-expanding-365-direct/) | アフリカ  |
 | [NTT Communications](https://www.ntt.com/en/services/network/software-defined-network.html) | 日本 |
 | [PCCW](https://www.pccwglobal.com/en/enterprise/products/network/ep-global-internet-access) |アジア |
 | [Singtel](https://www.singtel.com/business/campaign/singnet-cloud-connect-microsoft-direct) |アジア |
+| [NAP アフリカ](https://www.napafrica.net/technical/microsoft-azure-peering-service/) |アフリカ|
+| [Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/wireline/ip-plus.html) |ヨーロッパ|
+| [CMC Networks](https://www.cmcnetworks.net/products/microsoft-azure-peering-services.html) |アフリカ|
+| [MainOne](https://www.mainone.net/connectivity-services/microsoft-azure-peering-service/) |アフリカ|
 
 > [!NOTE]
 >Peering Service パートナー プログラムへの参加の詳細については、peeringservice@microsoft.com にアクセスしてください。

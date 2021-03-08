@@ -3,16 +3,13 @@ title: Azure HDInsight での Apache Spark の OutOfMemoryError 例外
 description: Azure HDInsight での Apache Spark クラスターのさまざまな OutOfMemoryError 例外
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/15/2019
-ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a15d79f2ae9c3d20a73ec557c57a5c189b18111b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709047"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946346"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight での Apache Spark の OutOfMemoryError 例外
 
@@ -56,7 +53,7 @@ java.lang.OutOfMemoryError
 
 この例外の最も可能性が高い原因として考えられるのは、Java 仮想マシン (JVM) に割り当てられたヒープ メモリの不足です。 これらの JVM は、Apache Spark アプリケーションの一部として、Executor またはドライバーとして起動されます。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 1. Spark アプリケーションによって処理されるデータの最大サイズを決定します。 入力データ、入力データの変換によって生成される中間データ、および中間データの変換によって生成される出力データの各最大サイズに基づいてサイズを推測します。 最初の推定値が十分でない場合は、サイズを少し増やし、メモリ エラーが治まるまで繰り返します。
 
@@ -114,7 +111,7 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 **2.1 G**  wasb:///hdp/spark2-events/application_1503957839788_0264_1
 ```
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 Spark 構成の `SPARK_DAEMON_MEMORY` プロパティを編集し、すべてのサービスを再起動することで、Spark History Server のメモリを増やすことができます。
 
@@ -200,7 +197,7 @@ Livy Server が予期せず終了すると、Spark クラスターへの接続�
 
 Livy から大量のジョブが送信されると、Livy Server の高可用性の一環として、これらのセッション状態が ZK (HDInsight クラスター上) に格納され、Livy サービスの再起動時にそれらのセッションが復旧されます。 予期しない終了後に再起動すると、Livy では、セッションごとに 1 つのスレッドが作成されます。このため、復旧対象の一定数のセッションが累積され、作成されるスレッドの数が非常に多くなります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 後で詳しく説明する手順を使用して、すべてのエントリを削除します。
 
@@ -249,10 +246,10 @@ Livy から大量のジョブが送信されると、Livy Server の高可用性
 
 * [Spark のメモリ管理の概要](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
 
-* [HDInsight クラスターでの Spark アプリケーションのデバッグ](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
+* [HDInsight クラスターでの Spark アプリケーションのデバッグ](/archive/blogs/azuredatalake/spark-debugging-101)
 
 * [Azure コミュニティのサポート](https://azure.microsoft.com/support/community/)を通じて Azure エキスパートから回答を得る。
 
 * [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
 
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。

@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 9ffa35e158d34a1fc6945ee2730dcf136d13edb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a15ebd43861e2116ddbb2d9055b289645962e203
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504340"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573920"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>定期的なデータの転送用のソリューション
  
@@ -57,7 +57,7 @@ ms.locfileid: "85504340"
 | フォーム ファクター                                   | 仮想デバイス             | 物理デバイス          | Azure portal のサービス、オンプレミス エージェント                                                            |
 | ハードウェア                                      | ハイパーバイザー            | Microsoft により提供    | NA                                                            |
 | 初期セットアップ作業                          | 短時間 (< 30 分)            | 中程度 (から数時間) | 長時間 (から数日間)                                                 |
-| データ形式                                   | Azure BLOB、Azure Files   | Azure BLOB、Azure Files | [データ ストアと形式について、70 個を超えるデータ コネクタをサポート](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
+| データ形式                                   | Azure BLOB、Azure Files   | Azure BLOB、Azure Files | [データ ストアと形式について、70 個を超えるデータ コネクタをサポート](../../data-factory/copy-activity-overview.md#supported-data-stores-and-formats)|
 | データの前処理                           | いいえ                         | はい、Edge コンピューティング経由    | はい                                                           |
 | ローカル キャッシュ<br>(オンプレミス データを格納)    | はい                        | はい                      | いいえ                                                            |
 | その他のクラウドからの転送                    | いいえ                         | いいえ                       | はい                                                           |
@@ -65,9 +65,9 @@ ms.locfileid: "85504340"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [AzCopy を使用してデータを転送する](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
-- [Storage REST API を使用したデータ転送の詳細](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)。
+- [AzCopy を使用してデータを転送する](./storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
+- [Storage REST API を使用したデータ転送の詳細](/dotnet/api/overview/azure/storage)。
 - 以下の方法を理解します。
-    - [Data Box Gateway を使用してデータを転送する](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares)します。
-    - [Azure に送信する前に Data Box Edge を使用してデータを変換する](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute)。
-- [Azure Data Factory を使用してデータを転送する方法を学習します](https://docs.microsoft.com/azure/data-factory/tutorial-bulk-copy-portal)。
+    - [Data Box Gateway を使用してデータを転送する](../../databox-gateway/data-box-gateway-deploy-add-shares.md)します。
+    - [Azure に送信する前に Data Box Edge を使用してデータを変換する](../../databox-online/azure-stack-edge-deploy-configure-compute.md)。
+- [Azure Data Factory を使用してデータを転送する方法を学習します](../../data-factory/tutorial-bulk-copy-portal.md)。

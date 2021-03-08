@@ -1,22 +1,18 @@
 ---
 title: 互換性のない行をスキップすることで、Azure Data Factory のコピー アクティビティにフォールト トレランスを追加する
 description: 互換性のない行をスキップすることで、Azure Data Factory のコピー アクティビティにフォールト トレランスを追加する方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8ffaee75154fd5fe025bdb683c89f16799d6e86b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10e4bedae5b7c429152a3503fff2cb2769d66eb5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74926148"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377178"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>互換性のない行をスキップすることによるコピー アクティビティへのフォールト トレランスの追加
 
@@ -48,7 +44,7 @@ Azure Data Factory の[コピー アクティビティ](data-factory-data-moveme
     例: データを SQL サーバーから SQL データベースにコピーします。 シンクの SQL データベースでは主キーが定義されていますが、ソースの SQL サーバーではそのような主キーは定義されていません。 ソースに存在する重複している行は、シンクにはコピーできません。 コピー アクティビティでは、ソース データの最初の行のみがシンクにコピーされます。 それ以降のソース行に重複している主キーの値が含まれている場合、互換性のないものとして検出され、スキップされます。
 
 >[!NOTE]
->この機能は、コピー アクティビティが [Azure SQL Data Warehouse PolyBase](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) や [Amazon Redshift Unload](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift) などの外部データ読み込みメカニズムを呼び出すように構成されている場合は適用されません。 PolyBase を使用して SQL Data Warehouse にデータを読み込むには、コピー アクティビティで "[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)" を指定して PolyBase のネイティブ フォールト トレランス サポートを使用します。
+>この機能は、コピー アクティビティが [Azure Synapse Analytics の PolyBase](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) や [Amazon Redshift Unload](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift) などの外部データ読み込みメカニズムを呼び出すように構成されている場合は適用されません。 PolyBase を使用して Azure Synapse Analytics にデータを読み込むには、コピー アクティビティで "[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)" を指定して PolyBase のネイティブ フォールト トレランス サポートを使用します。
 
 ## <a name="configuration"></a>構成
 次の例では、コピー アクティビティで互換性のない行をスキップするように構成する JSON 定義について説明します。

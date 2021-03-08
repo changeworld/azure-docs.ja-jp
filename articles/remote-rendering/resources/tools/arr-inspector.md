@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
-ms.openlocfilehash: e3acfc15b0c12822e48009bef4aabadac701fb2d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 300e0ff26d643ae0263d21e604cb26da37a18841
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80678857"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723827"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>ArrInspector 検査ツール
 
@@ -29,7 +29,7 @@ ARR サーバーのホスト名 (末尾が `mixedreality.azure.com`) を取得�
 
 アプリが HoloLens で実行されている場合:
 
-1. [Windows デバイス ポータル](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)を使用して HoloLens にアクセスします。
+1. [Windows デバイス ポータル](/windows/mixed-reality/using-the-windows-device-portal)を使用して HoloLens にアクセスします。
 1. *[System]\(システム\) > [File Explorer]\(エクスプローラー\)* にアクセスします。
 1. *User Folders\\LocalAppData\\[your_app]\\AC\\Temp* に移動します。
 1. *StartArrInspector.html* をお使いの PC に保存します。
@@ -108,17 +108,3 @@ Azure Remote Rendering チームは、デバッグ情報を使用することで
 ![一時停止モード](./media/pause-mode.png)
 
 ライブ更新を再度有効にすると、すべてのパネルがリセットされます。
-
-## <a name="host-configuration"></a>ホストの構成
-
-既定では、このツールは、ArrInspector を提供しているのと同じホスト上で実行されている ARR サーバーに接続されます。 ただし、別のサーバーでも、ARR インスタンスが実行されていてツールのポートが開かれていれば、検査対象として構成できます。
-
-そのためには、ヘッダー バーの左側にあるメイン メニューにアクセスし、 *[Host configuration]\(ホストの構成\)* を選択します。 **[Add new host]\(新しいホストの追加\)** をクリックして、名前とホスト名を入力します。 "*ホスト名*" については、末尾が `.mixedreality.azure.com` のホスト名のみを使用し、`http://` またはポートを含めないでください。
-
-![ホストの構成](./media/host-configuration.png)
-
-あるホストから別のホストにすばやく切り替えるには、右上にあるドロップダウンを使用します。
-
-![ホスト コンボ](./media/host-switch-combo.png)
-
-ホストの一覧がブラウザーのローカル ストレージに格納されるので、同じブラウザーを再び開いたときに維持されます。

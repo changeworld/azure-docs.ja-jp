@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: overview
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 3d9d1240e31d40a3d9c75d56314acc1721d90b99
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2512092c69390ce604c26ab6c5dd000afafc7c05
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73488138"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360890"
 ---
 # <a name="what-is-internet-analyzer-preview"></a>Internet Analyzer とは (プレビュー)
 
@@ -90,7 +90,7 @@ Internet Analyzer を使用するには、Microsoft Azure portal で Internet An
 
 ユーザーが Web アプリケーションにアクセスすると、JavaScript クライアントは、構成されたすべてのテストにわたって測定を行う 2 つのエンドポイントを選択します。 クライアントは、エンドポイントごとに _コールド_ と _ウォーム_ の測定を実行します。 _コールド_ の測定では、DNS の解決、TCP 接続ハンドシェイク、SSL/TLS ネゴシエーションといった、ユーザーとエンドポイント間の純粋なネットワーク待機時間の他に追加の待機時間が発生します。 _ウォーム_ の測定は、_コールド_ の測定が完了した直後に実行され、最新のブラウザーの永続的な TCP 接続管理を利用して、エンドツーエンドの待機時間の正確な測定値を取得します。 ユーザーのブラウザーでサポートされている場合は、W3C リソース タイミング API が正確な測定タイミングに使用されます。 現時点では、分析にはウォームの待機時間測定のみが使用されます。
 
-![アーキテクチャ](./media/ia-overview/architecture.png)
+![図は、いくつかのオプションから、クライアントが埋め込まれたアプリケーション サーバーと、インターネット上の 2 つのエンドポイントに接続するエンド ユーザーを示しています。 ユーザーは、測定値を Internet Analyzer にアップロードします。](./media/ia-overview/architecture.png)
 
 
 ## <a name="scorecards"></a>スコアカード 
@@ -104,7 +104,7 @@ Internet Analyzer を使用するには、Microsoft Azure portal で Internet An
 スコアカードの詳細については、「[スコアカードの解釈](internet-analyzer-scorecard.md)」のページを参照してください。 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Internet Analyzer の最初のリソースを作成する](internet-analyzer-create-test-portal.md)方法を学習する。
 * [Internet Analyzer の FAQ](internet-analyzer-faq.md) を読む。 

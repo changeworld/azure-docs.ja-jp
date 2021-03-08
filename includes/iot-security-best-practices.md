@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 4fdb891d668d99644d8a9ed9c15d158e65d53ba5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72793119"
 ---
 モノのインターネット (IoT) インフラストラクチャを保護するには、緻密なセキュリティ戦略が必要です。 この戦略では、クラウドでのデータの保護、パブリック インターネット経由で転送しているときのデータの整合性の保護、およびデバイスの安全なプロビジョニングを実行する必要があります。 各レイヤーのセキュリティがインフラストラクチャ全体のセキュリティを構築します。

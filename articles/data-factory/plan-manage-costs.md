@@ -1,23 +1,21 @@
 ---
 title: Azure Data Factory のコストを計画および管理する
 description: この記事では、Azure Data Factory のコストを計画および管理できる方法について説明します
-documentationcenter: ''
 author: shirleywangmsft
 ms.author: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: ca76563475dfbf8d35595c1de3cdee37f80e3ce1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d89275acdb8e13a792ea3166d874fabf911bb686
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83690238"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372894"
 ---
 # <a name="plan-and-manage-costs-for-azure-data-factory"></a>Azure Data Factory のコストを計画および管理する
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory は、クラウド規模用に構築されたサーバーレスのエラスティック データ統合サービスです。  これは、ピーク時の負荷に対して計画する必要がある固定サイズのコンピューティングがないことを意味します。代わりに、必要に応じて操作ごとに割り当てるリソースの量を指定します。これにより、非常にスケーラブルに ETL プロセスを設計できます。 さらに、ADF は使用量ベースのプランに対して課金されます。これは、使用した分だけを支払うことを意味します。
 
@@ -56,13 +54,13 @@ Azure Data Factory は、クラウド規模用に構築されたサーバーレ�
 
 ## <a name="use-budgets-and-cost-alerts"></a>予算とコストのアラートを使用する
 
-[予算](https://docs.microsoft.com/azure/cost-management/tutorial-acm-create-budgets)を作成してコストを管理し、異常な支出や超過出費のリスクについて関係者に自動的に通知するアラートを作成できます。  アラートは、予算とコストのしきい値と比較した支出に基づきます。  予算を作成する場合は、サブスクリプションレベルで作成することも、リソース ID やメーター名などのフィルターを追加することで細分性を低くして作成することもできます。  ただし、ファクトリ内の個々のパイプラインの予算は作成できません。
+[予算](../cost-management-billing/costs/tutorial-acm-create-budgets.md)を作成してコストを管理し、異常な支出や超過出費のリスクについて関係者に自動的に通知するアラートを作成できます。  アラートは、予算とコストのしきい値と比較した支出に基づきます。  予算を作成する場合は、サブスクリプションレベルで作成することも、リソース ID やメーター名などのフィルターを追加することで細分性を低くして作成することもできます。  ただし、ファクトリ内の個々のパイプラインの予算は作成できません。
 
 ## <a name="monitor-costs-at-factory-level"></a>ファクトリ レベルでコストを監視する
 
-Azure Data Factory の使用を開始すると、Azure portal の [[コスト分析]](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis) ウィンドウに、発生したコストが表示されます。
+Azure Data Factory の使用を開始すると、Azure portal の [[コスト分析]](../cost-management-billing/costs/quick-acm-cost-analysis.md) ウィンドウに、発生したコストが表示されます。
 
-1. [[コスト分析]](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis) を表示するには、 **[Cost Management + Billing]\(コストの管理と請求\)** ウィンドウを開き、メニューから **[Cost management]\(コスト管理\)** を選択し、 **[コスト分析を開く]** を選択します。
+1. [[コスト分析]](../cost-management-billing/costs/quick-acm-cost-analysis.md) を表示するには、 **[Cost Management + Billing]\(コストの管理と請求\)** ウィンドウを開き、メニューから **[Cost management]\(コスト管理\)** を選択し、 **[コスト分析を開く]** を選択します。
 2. 既定のビューには、当月の累積コストが表示されます。  別の時間範囲と、日単位や月単位などのさまざまな細分性に切り替えることができます。
 3. Azure Data Factory など、1 つのサービスのコストを絞り込むには、 **[フィルターの追加]** を選択してから、 **[サービス名]** を選択します。  続いて、一覧から **[Azure Data Factory V2]** を選択します。
 4. 特定のファクトリ インスタンスおよび特定の ADF メーター細分性のコストを分析する追加のフィルターを追加できます。
@@ -81,12 +79,12 @@ Azure Data Factory の使用を開始すると、Azure portal の [[コスト分
 
 ![パイプライン使用量の詳細](media/plan-manage-costs/pipeline-consumption-details.png)
 
-[pipeline run consumption]\(パイプラインの実行使用量\) ビューには、特定のパイプライン実行の ADF メーターごとに消費された量は表示されますが、課金される実際の料金は表示されません。課金される金額は、所有している Azure アカウントの種類と使用されている通貨の種類によって異なります。  サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data)」を参照してください。
+[pipeline run consumption]\(パイプラインの実行使用量\) ビューには、特定のパイプライン実行の ADF メーターごとに消費された量は表示されますが、課金される実際の料金は表示されません。課金される金額は、所有している Azure アカウントの種類と使用されている通貨の種類によって異なります。  サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](../cost-management-billing/costs/understand-cost-mgt-data.md)」を参照してください。
 
 ## <a name="monitor-consumption-at-activity-run-level"></a>アクティビティ実行レベルでの使用量を監視する
 パイプライン実行レベルでの集計された使用量を把握した後、シナリオによっては、さらにドリルダウンして、パイプライン内で最もコストのかかるアクティビティを特定する必要があります。
 
-アクティビティ実行レベルでの使用量を表示するには、データ ファクトリの **[作成と監視]** UI に移動します。 パイプライン実行の一覧が表示される **[監視]** タブから、**パイプライン名**のリンクをクリックして、パイプライン実行でのアクティビティの実行の一覧にアクセスします。  アクティビティ名の横にある **[出力]** ボタンをクリックし、JSON 出力で **billableDuration** プロパティを探します。
+アクティビティ実行レベルでの使用量を表示するには、データ ファクトリの **[作成と監視]** UI に移動します。 パイプライン実行の一覧が表示される **[監視]** タブから、**パイプライン名** のリンクをクリックして、パイプライン実行でのアクティビティの実行の一覧にアクセスします。  アクティビティ名の横にある **[出力]** ボタンをクリックし、JSON 出力で **billableDuration** プロパティを探します。
 
 コピー アクティビティの実行のサンプルを次に示します。
 
@@ -101,5 +99,5 @@ Azure Data Factory の使用を開始すると、Azure portal の [[コスト分
 Azure Data Factory での課金のしくみの詳細については、以下の記事をご覧ください。
 
 - [Azure Data Factory の価格ページ](https://azure.microsoft.com/pricing/details/data-factory/ssis/)
-- [Azure Data Factory を実例から理解する](https://docs.microsoft.com/azure/data-factory/pricing-concepts)
+- [Azure Data Factory を実例から理解する](./pricing-concepts.md)
 - [Azure Data Factory の領域計算ツール](https://azure.microsoft.com/pricing/calculator/?service=data-factory)

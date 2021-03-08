@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 7079ffd5cb2fe643d93dea0f5c9384a7931dc8a6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a248718d12abf90abd80c9210b994e7d74ab111b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550662"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92448726"
 ---
 # <a name="tutorial-integrate-ey-globalone-with-azure-active-directory"></a>チュートリアル:EY GlobalOne と Azure Active Directory との統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88550662"
 * ユーザーが自分の Azure AD アカウントを使用して EY GlobalOne に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,9 +38,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
-* EY GlobalOne では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます 
-* EY GlobalOne では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
-* EY GlobalOne を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* EY GlobalOne では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます 
+* EY GlobalOne では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます。
+* EY GlobalOne を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-ey-globalone-from-the-gallery"></a>ギャラリーからの EY GlobalOne の追加
 
@@ -50,7 +50,7 @@ Azure AD への EY GlobalOne の統合を構成するには、ギャラリーか
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**EY GlobalOne**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **EY GlobalOne** 」と入力します。
 1. 結果のパネルから **[EY GlobalOne]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-ey-globalone"></a>EY GlobalOne の Azure AD SSO の構成とテスト
@@ -80,7 +80,7 @@ EY GlobalOne に対する Azure AD SSO を構成してテストするには、�
 
 1. EY GlobalOne アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 [ユーザー属性] ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![[編集] アイコンが選択されている [ユーザー属性] セクションを示すスクリーンショット。](common/edit-attribute.png)
 
 1. その他に、EY GlobalOne アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
@@ -93,7 +93,7 @@ EY GlobalOne に対する Azure AD SSO を構成してテストするには、�
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![image](common/new-save-attribute.png)
+    ![[新しい要求の追加] および [保存] アクションが強調表示されている [ユーザーの要求] セクションを示すスクリーンショット。](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
@@ -149,7 +149,7 @@ EY GlobalOne に対する Azure AD SSO を構成してテストするには、�
 
 ## <a name="configure-ey-globalone"></a>EY GlobalOne の構成
 
-**EY GlobalOne** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (未加工)** と Azure portal からコピーした適切な URL を [EY GlobalOne サポート チーム](mailto:globalone.support@ey.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**EY GlobalOne** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (未加工)** と Azure portal からコピーした適切な URL を [EY GlobalOne サポート チーム](mailto:globalone.support@ey.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-ey-globalone-test-user"></a>EY GlobalOne のテスト ユーザーの作成
 
@@ -157,12 +157,12 @@ EY GlobalOne に対する Azure AD SSO を構成してテストするには、�
 
 ## <a name="test-sso"></a>SSO のテスト
 
-アクセス パネルで [EY GlobalOne] タイルを選択すると、SSO を設定した EY GlobalOne に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [EY GlobalOne] タイルを選択すると、SSO を設定した EY GlobalOne に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

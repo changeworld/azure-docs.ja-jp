@@ -15,6 +15,8 @@
   items:
     - name: Time Series Insights Gen2 環境を設定する
       href: tutorials-set-up-tsi-environment.md
+    - name: Azure Digital Twins と Time Series Insights Gen2 間のモデルの同期
+      href: tutorials-model-sync.md
 - name: 概念
   items:
     - name: Azure Time Series Insights Gen2
@@ -71,7 +73,7 @@
           href: time-series-insights-update-query-data-csharp.md
         - name: C# を使用してデータのクエリを実行する - Gen1
           href: time-series-insights-query-data-csharp.md
-        - name: C# での参照データの管理
+        - name: C# での参照データの管理 - Gen1
           href: time-series-insights-manage-reference-data-csharp.md
         - name: カスタム ビューの共有
           href: time-series-insights-parameterized-urls.md
@@ -80,9 +82,11 @@
     - name: データ アクセスの許可
       href: concepts-access-policies.md
     - name: Event Hubs への接続
-      href: time-series-insights-how-to-add-an-event-source-eventhub.md
+      href: ./how-to-ingest-data-event-hub.md
     - name: IoT Hub への接続
-      href: time-series-insights-how-to-add-an-event-source-iothub.md
+      href: ./how-to-ingest-data-iot-hub.md
+    - name: Azure Time Series Insights の監視
+      href: ./how-to-monitor-tsi.md
     - name: テンプレートを使用したリソースの管理
       href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
     - name: Azure Time Series Insights Gen2
@@ -95,12 +99,10 @@
           items:
             - name: プロビジョニングと管理の方法
               href: how-to-provision-manage.md
-            - name: 診断とトラブルシューティングの方法
-              href: how-to-diagnose-troubleshoot.md
-        - name: イングレスとストレージ
-          items:
             - name: TSID を選択する方法
               href: how-to-select-tsid.md
+            - name: 診断とトラブルシューティングの方法
+              href: how-to-diagnose-troubleshoot.md
         - name: モデル
           items:
             - name: モデルを編集する方法
@@ -129,8 +131,6 @@
           href: time-series-insights-send-events.md
         - name: 環境のスケーリング
           href: time-series-insights-how-to-scale-your-environment.md
-        - name: イングレスとクエリに対する JSON の調整
-          href: how-to-shape-query-json.md
         - name: 調整の緩和
           href: time-series-insights-environment-mitigate-latency.md
         - name: 診断とトラブルシューティング
@@ -140,45 +140,47 @@
     - name: Time Series Insights
       items:
         - name: REST API の概要
-          href: 'https://docs.microsoft.com/rest/api/time-series-insights/'
+          href: /rest/api/time-series-insights/
         - name: データ アクセス Gen2
           items:
             - name: 概要
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-data-access-overview'
+              href: /rest/api/time-series-insights/reference-data-access-overview
             - name: 環境 API
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-environments-apis'
+              href: /rest/api/time-series-insights/reference-environments-apis
             - name: モデル API
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis'
+              href: /rest/api/time-series-insights/reference-model-apis
             - name: クエリ API
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis'
+              href: /rest/api/time-series-insights/reference-query-apis
             - name: Time Series 式 (TSX)
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax'
+              href: /rest/api/time-series-insights/reference-time-series-expression-syntax
             - name: API の制限
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits'
+              href: /rest/api/time-series-insights/reference-api-limits
         - name: データ アクセス Gen1
           items:
             - name: 概要
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1'
+              href: /rest/api/time-series-insights/gen1
             - name: クエリ
               items:
                 - name: クエリ
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-query'
+                  href: /rest/api/time-series-insights/gen1-query
                 - name: API
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api'
+                  href: /rest/api/time-series-insights/gen1-query-api
                 - name: 構文
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-syntax'
+                  href: /rest/api/time-series-insights/gen1-query-syntax
             - name: 参照データ API
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api'
+              href: /rest/api/time-series-insights/gen1-reference-data-api
     - name: クライアント SDK
       items:
         - name: JavaScript クライアント SDK
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
+    - name: データ参照を監視する
+      href: how-to-monitor-tsi-reference.md
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/timeseriesinsights?view=azure-cli-latest'
+      href: /cli/azure/ext/timeseriesinsights/timeseriesinsights?view=azure-cli-latest
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
-      href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
+      href: ../iot-fundamentals/iot-support-help.md
     - name: 顧客データ要求
       href: time-series-insights-customer-data-requests.md
     - name: 開発者向けリソース
@@ -190,7 +192,7 @@
         - name: ホストされているクライアントのサンプル
           href: 'https://tsiclientsample.azurewebsites.net/'
         - name: Azure IoT のコード サンプル
-          href: 'https://docs.microsoft.com/samples/browse/?term=iot'
+          href: /samples/browse/?term=iot
     - name: 価格と可用性
       items:
         - name: 価格
@@ -204,7 +206,7 @@
         - name: Azure のサポート オプション
           href: 'https://azure.microsoft.com/support/options/'
         - name: Azure IoT のサポートとヘルプのオプション
-          href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
+          href: ../iot-fundamentals/iot-support-help.md
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
         - name: MSDN フォーラム

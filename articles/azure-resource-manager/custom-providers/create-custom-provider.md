@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: 541d140716e52b4fe1db4bc999682914a380a5f0
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 23ae69f49d37a210dd9fa1bfeedeca6c1b461e20
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368109"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888863"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>クイック スタート:カスタム プロバイダーの作成とカスタム リソースのデプロイ
 
@@ -23,8 +23,11 @@ ms.locfileid: "85368109"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-- [custom-providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider) コマンドには拡張機能が必要です。 詳細については、「[Azure CLI で拡張機能を使用する](/cli/azure/azure-cli-extensions-overview)」を参照してください。
-- Azure CLI の例では、`REST` 要求に `az rest` を使用しています。 詳細については、「[az rest](/cli/azure/reference-index#az-rest)」を参照してください。
+Azure CLI の環境を準備します。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Azure CLI の例では、`REST` 要求に `az rest` を使用しています。 詳細については、「[az rest](/cli/azure/reference-index#az-rest)」を参照してください。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -33,8 +36,6 @@ ms.locfileid: "85368109"
 - **ARMClient** のインストール後は、PowerShell コマンド プロンプトから「`armclient.exe`」と入力することによって、使用法についての情報を表示できます。 または、[ARMClient wiki](https://github.com/projectkudu/ARMClient/wiki) にアクセスしてください。
 
 ---
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="deploy-custom-provider"></a>カスタム プロバイダーをデプロイする
 

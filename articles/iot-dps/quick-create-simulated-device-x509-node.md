@@ -1,5 +1,5 @@
 ---
-title: シミュレートされた X.509 デバイスを Node.js を使用して Azure IoT Hub にプロビジョニングする
+title: クイックスタート - シミュレートされた X.509 デバイスを Node.js を使用して Azure IoT Hub にプロビジョニングする
 description: Azure IoT Hub Device Provisioning Service (DPS) 対応の Node.js デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングします。このクイックスタートでは、個別登録を使用します。
 author: wesmc7777
 ms.author: wesmc
@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 844a174e8cd3208e071db165a31d6c82dd1af3b1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: fe5279725a3d01001b44074eca8656e88d778cab
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422115"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968164"
 ---
 # <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>クイック スタート:IoT Hub Device Provisioning Service 対応の Node.js device SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングする
 
@@ -24,7 +24,7 @@ ms.locfileid: "87422115"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [自動プロビジョニングの概念](concepts-auto-provisioning.md)の確認。
+- [プロビジョニング](about-iot-dps.md#provisioning-process)の概念を理解していること。
 - [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)が完了していること。
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Node.js v4.0 以上](https://nodejs.org)。
@@ -76,7 +76,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
     npm install
     ```
 
-3. 独自の _certificate-name_ を使用してスクリプトを実行し、"_リーフ_" X.509 証明書を作成します。 リーフ証明書の共通名は[登録 ID](https://docs.microsoft.com/azure/iot-dps/concepts-device#registration-id) になるため、必ず小文字の英数字とハイフンのみを使用してください。
+3. 独自の _certificate-name_ を使用してスクリプトを実行し、"_リーフ_" X.509 証明書を作成します。 リーフ証明書の共通名は[登録 ID](./concepts-service.md#registration-id) になるため、必ず小文字の英数字とハイフンのみを使用してください。
 
     ```cmd/sh
     node create_test_cert.js device {certificate-name}
@@ -101,7 +101,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 ## <a name="simulate-the-device"></a>デバイスをシミュレートする
 
-[Azure IoT Hub Node.js device SDK](https://github.com/Azure/azure-iot-sdk-node) を使用すれば、デバイスを簡単にシミュレートできます。 詳細については、[デバイスの概念](https://docs.microsoft.com/azure/iot-dps/concepts-device)に関するページを参照してください。
+[Azure IoT Hub Node.js device SDK](https://github.com/Azure/azure-iot-sdk-node) を使用すれば、デバイスを簡単にシミュレートできます。 詳細については、[デバイスの概念](./concepts-service.md)に関するページを参照してください。
 
 1. Azure portal で、Device Provisioning サービスの **[概要]** ブレードを選択し、 **_[グローバル デバイス エンドポイント]_** と **_[ID スコープ]_** の値を書き留めます。
 
@@ -122,10 +122,10 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
     ```
 
 4. **register\_x509.js** ファイルを編集します。 次の変更を行った後に、ファイルを保存します。
-    - `provisioning host` を、上記の**手順 1** で書き留めた " **_グローバル デバイス エンドポイント_** " に置き換えます。
-    - `id scope` を、上記の**手順 1** で書き留めた " **_ID スコープ_** " に置き換えます。 
+    - `provisioning host` を、上記の **手順 1** で書き留めた " **_グローバル デバイス エンドポイント_** " に置き換えます。
+    - `id scope` を、上記の **手順 1** で書き留めた " **_ID スコープ_** " に置き換えます。 
     - `registration id` を、前のセクションで書き留めた " **_登録 ID_** " に置き換えます。
-    - `cert filename` と `key filename` を、上記の**手順 2** でコピーしたファイルに置き換えます。 
+    - `cert filename` と `key filename` を、上記の **手順 2** でコピーしたファイルに置き換えます。 
 
 5. スクリプトを実行し、デバイスが正常にプロビジョニングされたことを確認します。
 

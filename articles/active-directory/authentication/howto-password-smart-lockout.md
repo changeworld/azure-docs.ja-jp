@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/20/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5734cb76e4ed018778c6858597ec8efe3019bf9
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: a5f501c19da3c2ddc06ad89fe5649789477af7ec
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065983"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255375"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Azure Active Directory スマート ロックアウトを使用してユーザー アカウントを攻撃から保護する
 
@@ -44,7 +44,7 @@ AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイ�
 
 [パススルー認証](../hybrid/how-to-connect-pta.md)を使用する場合、次の考慮事項が適用されます。
 
-* Azure AD のロックアウトしきい値が、AD DS アカウント ロックアウトしきい値より**小さい**。 AD DS アカウント ロックアウトしきい値が Azure AD のロックアウトしきい値より少なくとも 2 から 3 倍長くなるように値を設定します。
+* Azure AD のロックアウトしきい値が、AD DS アカウント ロックアウトしきい値より **小さい**。 AD DS アカウント ロックアウトしきい値が Azure AD のロックアウトしきい値より少なくとも 2 から 3 倍長くなるように値を設定します。
 * Azure AD のロックアウト期間は、AD DS のロックアウト カウンターのリセットの期間より長い期間を設定する必要があります。 AD の期間は分単位で設定しますが、Azure AD の期間は秒単位で設定します。
 
 たとえば、Azure AD のカウンターが AD DS よりも高くなるようにしたい場合は、オンプレミス AD が 1 分 (60 秒) に設定されていても、Azure AD は 120 秒 (2 分) にします。
@@ -57,7 +57,7 @@ AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイ�
 オンプレミス AD DS アカウントのロックアウト ポリシーを検証するには、ドメインに参加しているシステムから管理者特権で次の手順を実行します。
 
 1. グループ ポリシー管理ツールを開きます。
-2. 組織のアカウント ロックアウト ポリシーを含む、グループ ポリシー (**デフォルト ドメイン ポリシー**など) を編集します。
+2. 組織のアカウント ロックアウト ポリシーを含む、グループ ポリシー (**デフォルト ドメイン ポリシー** など) を編集します。
 3. **[コンピューターの構成]**  >  **[ポリシー]**  >  **[Windows 設定]**  >  **[セキュリティ設定]**  >  **[アカウント ポリシー]**  >  **[アカウント ロックアウト ポリシー]** の順に移動します。
 4. **[アカウント ロックアウトのしきい値]** と **[ロックアウト カウンターのリセット]** の値を確認します。
 
@@ -89,6 +89,8 @@ AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイ�
 スマート ロックアウトのしきい値がトリガーされると、アカウントがロックされているときに次のメッセージが表示されます。
 
 *ご使用のアカウントは、不正使用を防ぐために一時的にロックされています。後でもう一度お試しください。問題が解決しない場合は管理者にお問い合わせください。*
+
+スマート ロックアウトをテストする際、Azure AD 認証サービスの地理的分散および負荷分散の性質により、サインイン要求はさまざまなデータセンターによって処理される可能性があります。 そのシナリオでは、ロックアウトはそれぞれの Azure AD データセンターによって個別に追跡されるため、ロックアウトを発生させるために、定義されたロックアウトしきい値よりも多くの試行回数が必要になる場合があります。 ロックアウトが発生する前にユーザーが各データ センターにアクセスする場合、そのユーザーの不正試行回数は (*threshold_limit * datacenter_count*) です。
 
 ## <a name="next-steps"></a>次のステップ
 

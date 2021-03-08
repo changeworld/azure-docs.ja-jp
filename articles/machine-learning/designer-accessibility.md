@@ -1,5 +1,5 @@
 ---
-title: デザイナーでユーザー補助機能を使用する (プレビュー)
+title: デザイナーでユーザー補助機能を使用する
 titleSuffix: Azure Machine Learning
 description: デザイナーで使用できるキーボード ショートカットとスクリーン リーダーのユーザー補助機能について説明します。
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
 ms.custom: designer
-ms.openlocfilehash: 5d91dc212eb2f856f0252261f2ddfc8a5a4d70ee
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 86cb5260a59f864658fbb7ac1c1da2d943c6253e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210370"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90893430"
 ---
-# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>キーボードを使用して Azure Machine Learning デザイナーを使用する (プレビュー)
+# <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>キーボードを使用して Azure Machine Learning デザイナーを使用する
 
 キーボード ショートカットとスクリーン リーダーのユーザー補助機能を使用して Azure Machine Learning デザイナーを使用する方法について説明します。 Azure portal のすべての場所で使用できるキーボード ショートカットの一覧については、「[Azure Portal のキーボード ショートカット](../azure-portal/azure-portal-keyboard-shortcuts.md)」を参照してください。
 

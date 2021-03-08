@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e7bae2ad19aaf4f1c93d8d2bdefa7fa9f0414860
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 66f077028b9f9f7a7644a318d4447eeaaab19e98
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923689"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919932"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Azure Key Vault の証明書について
 
@@ -44,8 +44,17 @@ Key Vault 証明書が作成されるとき、秘密キーと共にアドレス�
 
 アドレス指定可能なキーは、エクスポート不可能な KV 証明書との関連性が高くなります。 アドレス指定可能な KV キーの操作は、KV 証明書の作成に使用された KV 証明書ポリシーの *keyusage* フィールドからマップされます。  
 
- - サポートされているキーの種類: RSA、RSA-HSM、EC、EC-HSM、oct (一覧は[こちら](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype))。エクスポート可能にできるのは、RSA、EC のみです。 HSM キーはエクスポートできません。
+証明書でサポートされるキー ペアの種類
 
+ - サポートされているキーの種類: RSA、RSA-HSM、EC、EC-HSM、oct (一覧は[こちら](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype))。エクスポート可能にできるのは、RSA、EC のみです。 HSM キーはエクスポートできません。
+
+|キーの種類|詳細|セキュリティ|
+|--|--|--|
+|**RSA**| "ソフトウェアで保護される" RSA キー|FIPS 140-2 レベル 1|
+|**RSA-HSM**| "HSM で保護された" RSA キー (Premium SKU のみ)|FIPS 140-2 レベル 2 HSM|
+|**EC**| "ソフトウェアで保護される" 楕円曲線キー|FIPS 140-2 レベル 1|
+|**EC-HSM**| "HSM で保護された" 楕円曲線キー (Premium SKU のみ)|FIPS 140-2 レベル 2 HSM|
+|||
 
 ## <a name="certificate-attributes-and-tags"></a>証明書の属性とタグ
 
@@ -82,11 +91,11 @@ Key Vault 証明書には次の属性があります。
 
 Key Vault 証明書を最初から作成するときは、ポリシーを提供する必要があります。 ポリシーでは、この Key Vault 証明書バージョンまたは次の Key Vault 証明書バージョンを作成する方法を指定します。 ポリシーが確立された後は、将来のバージョンに対する後続の作成操作では必要はありません。 Key Vault 証明書のすべてのバージョンに対して、ポリシーのインスタンスは 1 つだけ存在します。  
 
-大まかに言えば、証明書ポリシーには次の情報が含まれています (それらの定義は[こちら](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)から見つけることができます)。  
+大まかに言えば、証明書ポリシーには次の情報が含まれています (それらの定義は[こちら](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)から見つけることができます)。  
 
 -   X509 証明書のプロパティ:サブジェクト名、サブジェクト代替名、および x509 証明書要求の作成に使用される他のプロパティが含まれます。  
 -   キーのプロパティ: キーの種類、キーの長さ、エクスポート可能、ReuseKeyOnRenewal フィールドが含まれています。 これらのフィールドは、キー コンテナーにキーの生成方法を示します。 
-     - サポートされているキーの種類: RSA、RSA-HSM、EC、EC-HSM、oct (一覧は[こちら](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)にあります) 
+     - サポートされているキーの種類: RSA、RSA-HSM、EC、EC-HSM、oct (一覧は[こちら](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)にあります) 
 -   シークレットのプロパティ: 証明書をシークレットとして取得するための、シークレット値を生成するアドレス指定可能なシークレットのコンテンツの種類などの、シークレットのプロパティが含まれます。  
 -   有効期間アクション: KV 証明書の有効期間アクションが含まれます。 各有効期間アクションには次のものが含まれています。  
 
@@ -133,7 +142,7 @@ Key Vault で証明書発行者を作成するには、その前に、次の前�
 
     -   キー コンテナー内のプロバイダーの発行者オブジェクトの作成に使用される構成を提供します  
 
-証明書ポータルから発行者オブジェクトを作成する方法について詳しくは、[Key Vault 証明書のブログ](https://aka.ms/kvcertsblog)をご覧ください  
+証明書ポータルから発行者オブジェクトを作成する方法について詳しくは、[Key Vault 証明書のブログ](/archive/blogs/kv/manage-certificates-via-azure-key-vault)をご覧ください  
 
 Key Vault では、異なる発行者プロバイダー構成で複数の発行者オブジェクトを作成できます。 発行者オブジェクトが作成されたら、その名前を 1 つまたは複数の証明書ポリシーで参照できます。 発行者オブジェクトを参照することで、証明書の作成と更新中に CA プロバイダーに X509 証明書を要求するときに、発行者オブジェクトで指定されている構成を使用するよう Key Vault に指示します。  
 
@@ -141,42 +150,11 @@ Key Vault では、異なる発行者プロバイダー構成で複数の発行�
 
 ## <a name="certificate-contacts"></a>証明書の連絡先
 
-証明書の連絡先には、証明書有効期間イベントによってトリガーされる通知を送信する連絡先情報が含まれています。 連絡先情報は、キー コンテナー内のすべての証明書によって共有されます。 通知は、キー コンテナー内の任意の証明書のイベントに指定されているすべての連絡先に送信されます。  
-
-証明書のポリシーが自動更新に設定されている場合は、次のイベントで通知が送信されます。  
-
-- 証明書更新の前
-- 証明書更新の後。証明書が正常に更新されたかどうか、またはエラーが発生して証明書の手動更新が必要かどうかを示します。  
-
-  証明書のポリシーが手動更新に設定されている場合 (メールのみ)、証明書を更新する必要があるときに通知が送信されます。  
+証明書の連絡先には、証明書有効期間イベントによってトリガーされる通知を送信する連絡先情報が含まれています。 連絡先情報は、キー コンテナー内のすべての証明書によって共有されます。 通知は、キー コンテナー内の任意の証明書のイベントに指定されているすべての連絡先に送信されます。 証明書の連絡先を設定する方法については、[こちら](overview-renew-certificate.md#steps-to-set-certificate-notifications)を参照してください。  
 
 ## <a name="certificate-access-control"></a>証明書のアクセス制御
 
- 証明書のアクセス制御は Key Vault によって管理され、それらの証明書を格納している Key Vault によって提供されます。 証明書のアクセス制御ポリシーは、同じキー コンテナー内のキーとシークレットに対するアクセス制御ポリシーとは別です。 ユーザーは、1 つまたは複数のコンテナーを作成して証明書を保持し、証明書のセグメント化と管理に適切なシナリオを維持することができます。  
-
- 次のアクセス許可は、キー コンテナーのシークレット アクセス制御エントリでプリンシパルごとに使用でき、シークレット オブジェクトに対して許可される操作を厳密に反映します。  
-
-- 証明書管理操作に対するアクセス許可
-  - *get*:証明書の現在のバージョンまたは証明書の任意のバージョンを取得します 
-  - *list*:現在の証明書または証明書のバージョンの一覧表示します  
-  - *update*:証明書を更新します
-  - *create*:Key Vault 証明書を作成します
-  - *import*:Key Vault 証明書に証明書マテリアルをインポートします
-  - *delete*:証明書、そのポリシー、およびそのすべてのバージョンを削除します  
-  - *recover*:削除された証明書を復旧します
-  - *backup*:キー コンテナー内の証明書をバックアップします
-  - *restore*:バックアップした証明書をキー コンテナーに復元します
-  - *managecontacts*:Key Vault 証明書の連絡先を管理します  
-  - *manageissuers*:Key Vault 証明書の機関/発行者を管理します
-  - *getissuers*:証明書の機関/発行者を取得します
-  - *listissuers*:証明書の機関/発行者を一覧表示します  
-  - *setissuers*:Key Vault 証明書の機関/発行者を作成または更新します  
-  - *deleteissuers*:Key Vault 証明書の機関/発行者を削除します  
- 
-- 特権操作に対するアクセス許可
-  - *purge*:削除された証明書をパージ (完全に削除) します
-
-詳しくは、[Key Vault REST API リファレンス内の証明書の操作](/rest/api/keyvault)の説明をご覧ください。 アクセス許可の設定については、「[Vaults - Create or Update](/rest/api/keyvault/vaults/createorupdate)」(コンテナー - 作成または更新) および「[Vaults - Update Access Policy](/rest/api/keyvault/vaults/updateaccesspolicy)」(コンテナー -アクセス ポリシーの更新) をご覧ください。
+ 証明書のアクセス制御は Key Vault によって管理され、それらの証明書を格納している Key Vault によって提供されます。 証明書のアクセス制御ポリシーは、同じキー コンテナー内のキーとシークレットに対するアクセス制御ポリシーとは別です。 ユーザーは、1 つまたは複数のコンテナーを作成して証明書を保持し、証明書のセグメント化と管理に適切なシナリオを維持することができます。  証明書のアクセスの制御について詳しくは、[こちら](certificate-access-control.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

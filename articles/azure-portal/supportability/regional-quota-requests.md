@@ -5,21 +5,20 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
 ms.topic: how-to
-ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: bd4a770aee43709c46ab4c1baf965941d8d2c3ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eadf740c6b5caccbf678a1238f993d4ec0b34095
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763858"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745419"
 ---
 # <a name="standard-quota-increase-limits-by-region"></a>標準クォータ: リージョンごとの制限の引き上げ
 
 Azure Resource Manager は、仮想マシンの次の 2 種類の vCPU クォータをサポートしています。
 
-* *従量課金制 VM* と*予約 VM インスタンス*には、*標準 vCPU クォータ*が適用されます。
-* *スポット VM* には、*スポット vCPU クォータ*が適用されます。
+* *従量課金制 VM* と *予約 VM インスタンス* には、*標準 vCPU クォータ* が適用されます。
+* *スポット VM* には、*スポット vCPU クォータ* が適用されます。
 
 従量課金制の標準 vCPU クォータと予約仮想マシン インスタンスは、各リージョンのサブスクリプションごとに 2 つのレベルで適用されます。
 

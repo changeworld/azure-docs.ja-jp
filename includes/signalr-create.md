@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/17/2018
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: ba46d4dbe90b696398ed4c78383e127861c1a066
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e5cfc9beb5473917a76f822862ce3d61675d6493
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050314"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93406736"
 ---
 1. Azure SignalR Service のリソースを作成するには、まず [Azure portal](https://portal.azure.com) にサインインします。 ページの左上にある **[+ リソースの作成]** を選択します。 **[Marketplace を検索]** テキスト ボックスに「**SignalR Service**」と入力します。
 
@@ -30,9 +30,11 @@ ms.locfileid: "86050314"
     | Pricing tier | *Free* | 現時点では、**Free** と **Standard** のオプションを利用できます。 |
     | [ダッシュボードにピン留めする] | ✔ | リソースが探しやすくなるようにダッシュボードにピン留めするには、このボックスをオンにします。 |
 
-4. **作成** を選択します。 デプロイが完了するまでに数分かかることがあります。
+4. **[Review + create]\(レビュー + 作成\)** を選択します。 検証の完了を待ちます。 
 
-5. デプロイが完了したら、 **[設定]** の下の **[キー]** を選択します。 主キーの接続文字列をコピーします。 この文字列は、後でお使いのアプリがその Azure SignalR Service のリソースを使用するように構成するために使用します。
+5. **［作成］** を選択します デプロイが完了するまでに数分かかることがあります。
+
+6. デプロイが完了したら、**[設定]** の下の **[キー]** を選択します。 主キーの接続文字列をコピーします。 この文字列は、後でお使いのアプリがその Azure SignalR Service のリソースを使用するように構成するために使用します。
 
     接続文字列は、次の形式になります。
     

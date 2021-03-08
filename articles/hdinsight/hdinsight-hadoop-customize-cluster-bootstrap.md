@@ -1,19 +1,16 @@
 ---
 title: ブートストラップを使用して Azure HDInsight クラスター構成をカスタマイズする
 description: .NET、PowerShell、および Resource Manager テンプレートを使用して、HDInsight クラスター構成をプログラムでカスタマイズする方法を説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: eaddae04c198742007947831046139d80828534b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 306ebcf7db3c11f783af8cf4c1779bd3d1a013a4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006587"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945745"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>ブートストラップを使って HDInsight クラスターをカスタマイズする
 
@@ -48,14 +45,14 @@ HDInsight クラスターの作成時に構成ファイル設定を指定する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/)が必要になります。
+* PowerShell を使用している場合は、[AZ モジュール](/powershell/azure/)が必要になります。
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell の使用
 
 次の PowerShell コードでは、[Apache Hive](https://hive.apache.org/) 構成をカスタマイズします。
 
 > [!IMPORTANT]  
-> [Add-Add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue) と共にパラメーター `Spark2Defaults` を使うことが必要な場合があります。 以下のコード例に示すように、パラメーターに空の値を渡すことができます。
+> [Add-Add-AzHDInsightConfigValue](/powershell/module/az.hdinsight/add-azhdinsightconfigvalue) と共にパラメーター `Spark2Defaults` を使うことが必要な場合があります。 以下のコード例に示すように、パラメーターに空の値を渡すことができます。
 
 ```powershell
 # hive-site.xml configuration
@@ -108,7 +105,7 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 
 ## <a name="use-net-sdk"></a>.NET SDK の使用
 
-「[Azure HDInsight SDK for .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)」を参照してください。
+「[Azure HDInsight SDK for .NET](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)」を参照してください。
 
 ## <a name="use-resource-manager-template"></a>Resource Manager テンプレートの使用
 
@@ -143,7 +140,7 @@ Resource Manager テンプレートでは、ブートストラップを使用で
 * [HDInsight での Apache Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関する記事では、その他のカスタム オプションを使用して HDInsight クラスターを作成する方法について説明しています。
 * [HDInsight 用の Script Action スクリプトの開発](hdinsight-hadoop-script-actions-linux.md)
 * [HDInsight クラスターで Apache Spark をインストールして使用する](spark/apache-spark-jupyter-spark-sql-use-portal.md)
-* [HDInsight クラスターに Apache Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)。
+* [HDInsight クラスターに Apache Giraph をインストールして使用する](./hdinsight-hadoop-hue-linux.md)。
 
 ## <a name="appendix-powershell-sample"></a>付録: PowerShell のサンプル
 

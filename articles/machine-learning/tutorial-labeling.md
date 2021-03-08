@@ -10,15 +10,16 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 60dd9631df0b997ce39134002bdb6ed9f69336ed
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: data4ml
+ms.openlocfilehash: 238801171d19191bcac505f0c95395320f96d75c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319271"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882468"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>チュートリアル:多クラス画像分類のラベル付けプロジェクトを作成する 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 このチュートリアルでは、機械学習モデルを構築するためのデータとして使用する画像にラベルを付ける (タグ付けとも呼ばれます) プロセスを管理する方法について説明します。 Azure Machine Learning でのデータのラベル付けは、パブリック プレビュー段階にあります。
 
@@ -42,7 +43,7 @@ ms.locfileid: "87319271"
 
 Azure Machine Learning ワークスペースは、機械学習モデルを実験、トレーニング、およびデプロイするために使用する、クラウドでの基本的なリソースです。 ワークスペースは、Azure サブスクリプションとリソース グループを、サービス内の簡単に使用できるオブジェクトに結び付けます。
 
-ワークスペースを作成するには、Azure リソースを管理するための Web ベースのコンソールである Azure portal を使用します。
+[ワークスペースを作成する方法](how-to-manage-workspace.md)は多数あります。 このチュートリアルでは、Azure リソースを管理するための Web ベースのコンソールである Azure portal を使用してワークスペースを作成します。
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
@@ -103,7 +104,8 @@ Azure Machine Learning データストアは、サブスクリプション ID �
 1. **[Create dataset from datastore]\(データストアからデータセットを作成\)** フォームで次の情報を入力します。
 
     1. **[基本情報]** フォームで名前を追加します。ここでは **images-for-tutorial** を使用します。  必要に応じて説明を追加します。  **[次へ]** を選択します。
-    1. **[データストアの選択]** フォームで、ドロップダウンから**以前に作成したデータストア** (例: **tutorial_images (Azure Blob Storage)** ) を選択します。
+    1. **[データストアの選択]** フォームの **[以前に作成されたデータストア]** を選択してデータストア名をクリックし、 **[データストアの選択]** を選択します。
+    1. 次のページで、現在選択されているデータストアが正しいことを確認します。 正しくない場合は、 **[以前に作成されたデータストア]** を選択して、前の手順を繰り返します。
     1. 引き続き **[データストアの選択]** フォームで、 **[参照]** を選択し、 **[MultiClass - DogsCats]** を選択します。  **[保存]** を選択して **/MultiClass - DogsCats** をパスとして使用します。
     1. **[次へ]** を選択して詳細を確認し、 **[作成]** を選択してデータセットを作成します。
     1. リスト内のデータセット名 (例: **images-for-tutorial**) の横にある円を選択します。
@@ -130,7 +132,7 @@ Azure Machine Learning データストアは、サブスクリプション ID �
 
 1. **[次へ]** を選択します。
 
-1. Enterprise ワークスペースを使用している場合は、 **[ML によるラベル付け]** セクションが表示されます。  チェック ボックスはオフのままにします。 ML によるラベル付けでは、このチュートリアルで使用するものよりも多くのデータが必要です。
+1. **[ML によるラベル付け]** セクションで、チェックボックスをオフのままにします。 ML によるラベル付けでは、このチュートリアルで使用するものよりも多くのデータが必要です。
 
 1. **[プロジェクトの作成]** を選択します。
 

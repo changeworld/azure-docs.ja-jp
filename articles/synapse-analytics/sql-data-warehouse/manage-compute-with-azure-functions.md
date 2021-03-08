@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Azure Functions を使用してコンピューティングを管理する
-description: Azure 関数を使用し、Azure Synapse Analytics で SQL プールのコンピューティングを管理する方法。
+description: Azure Functions を使用して Azure Synapse Analytics で専用 SQL プール (旧称 SQL DW) のコンピューティングを管理する方法。
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 60e79ecd4148829c38b237c0e28d60796e84ac01
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: f0731f0deaf46ec419cfe43037804e10f2b73fd4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543658"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448377"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure Synapse Analytics SQL プールで Azure Functions を使用してコンピューティング リソースを管理します
+# <a name="use-azure-functions-to-manage-compute-resources-for-your-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Functions を使用して Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のコンピューティング リソースを管理する
 
-このチュートリアルでは、Azure Synapse Analytics で Azure Functions を使用し、SQL プールのコンピューティング リソースを管理します。
+このチュートリアルでは、Azure Synapse Analytics で Azure Functions を使用し、専用 SQL プール (旧称 SQL DW) のコンピューティング リソースを管理します。
 
-Azure Function App を SQL プールと組み合わせて使用するためには、ご利用の SQL プール インスタンスと同じサブスクリプションに、共同作成者のアクセス権を持った[サービス プリンシパル アカウント](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を作成する必要があります。
+専用 SQL プール (旧称 SQL DW) で Azure Function App を使用するには、[サービス プリンシパル アカウント](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を作成する必要があります。 サービス プリンシパル アカウントには、専用 SQL プール (旧称 SQL DW) インスタンスと同じサブスクリプションで共同作成者のアクセス権が必要です。
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用してタイマーベースのスケーリングを展開する
 
 このテンプレートを展開するには、次の情報が必要です。
 
-- SQL プール インスタンスが存在するリソース グループの名前
-- SQL プール インスタンスが存在するサーバーの名前
-- SQL プール インスタンスの名前
+- 専用 SQL プール (旧称 SQL DW) インスタンスが存在するリソース グループの名前
+- 専用 SQL プール (旧称 SQL DW) インスタンスがあるサーバーの名前
+- 専用 SQL プール (旧称 SQL DW) インスタンスの名前
 - Azure Active Directory のテナント ID (ディレクトリ ID)
 - サブスクリプション ID
 - サービス プリンシパルのアプリケーション ID
@@ -48,13 +48,13 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
    ![テンプレートでデプロイされる関数](./media/manage-compute-with-azure-functions/five-functions.png)
 
-2. 変更の対象がスケールアップ時刻であるかスケールダウン時刻であるかに応じて、 *[DWScaleDownTrigger]* または *[DWScaleUpTrigger]* を選択します。 ドロップダウン メニューで [統合] を選択します。
+2. *DWScaleDownTrigger* または *DWScaleUpTrigger* のいすれかを選択して、スケールアップまたはスケールダウンします。 ドロップダウン メニューで [統合] を選択します。
 
    ![関数の統合を選択](./media/manage-compute-with-azure-functions/select-integrate.png)
 
 3. この時点で表示される値は、 *%ScaleDownTime%* と *%ScaleUpTime%* のどちらかです。 これらの値は、スケジュールが [[アプリケーション設定]](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) に定義された値に基づいていることを示します。 差し当たり、この値は無視してかまいません。以降の手順に基づき、必要な時刻に合わせてスケジュールを変更してください。
 
-4. SQL Data Warehouse のスケールアップ頻度を表す時刻 (CRON 式) をスケジュール領域に追加します。
+4. Azure Synapse Analytics のスケールアップ頻度を表す CRON 式をスケジュール領域に追加します。
 
    ![関数のスケジュールを変更](./media/manage-compute-with-azure-functions/change-schedule.png)
 
@@ -70,11 +70,11 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 1. ご利用の Function App サービスに移動します。 テンプレートを既定値のままデプロイした場合、このサービスの名前は *DWOperations* になります。 Function App を開くと、Function App サービスに 5 つの関数がデプロイされていることがわかります。
 
-2. 変更の対象がスケールアップのコンピューティング値であるかスケールダウンのコンピューティング値であるかに応じて、 *[DWScaleDownTrigger]* または *[DWScaleUpTrigger]* を選択します。 関数を選択すると、ウィンドウに *index.js* ファイルが表示されます。
+2. *DWScaleDownTrigger* または *DWScaleUpTrigger* のいすれかを選択して、コンピューティング値をスケールアップまたはスケールダウンします。 関数を選択すると、ウィンドウに *index.js* ファイルが表示されます。
 
    ![関数のトリガー コンピューティング レベルを変更](././media/manage-compute-with-azure-functions/index-js.png)
 
-3. *ServiceLevelObjective* の値を目的のレベルに変更し、保存ボタンをクリックします。 この値は、[統合] セクションで定義されたスケジュールに基づいてデータ ウェアハウス インスタンスをスケーリングする際の目標となるコンピューティング レベルです。
+3. *ServiceLevelObjective* の値を目的のレベルに変更し、[保存] を選択します。 *ServiceLevelObjective* は、[統合] セクションで定義されたスケジュールに基づいてデータ ウェアハウス インスタンスをスケーリングする際の目標となるコンピューティング レベルです。
 
 ## <a name="use-pause-or-resume-instead-of-scale"></a>スケールではなく一時停止または再開を使用する
 
@@ -84,7 +84,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
    ![[関数] ウィンドウ](./media/manage-compute-with-azure-functions/functions-pane.png)
 
-2. 有効にするトリガーに対応するスライド式のトグル ボタンをクリックします。
+2. 有効にするトリガーに対応するスライド式のトグル ボタンを選択します。
 
 3. それぞれのトリガーの *[統合]* タブに移動して、そのスケジュールを変更します。
 
@@ -97,7 +97,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 1. 新しく空の関数を作成します。 [関数] の横にある *+* ボタンを選択して、関数テンプレート ウィンドウを表示します。
 
-   ![新しい関数の作成](./media/manage-compute-with-azure-functions/create-new-function.png)
+   ![[関数アプリ] メニューを示すスクリーンショット。[関数] の横にあるプラス アイコンが選択されています。](./media/manage-compute-with-azure-functions/create-new-function.png)
 
 2. [言語] から *[JavaScript]* を選択し、 *[TimerTrigger]* を選択します。
 
@@ -114,20 +114,20 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 5. 次のように operation 変数を目的の動作に設定します。
 
    ```JavaScript
-   // Resume the SQL pool instance
+   // Resume the dedicated SQL pool (formerly SQL DW) instance
    var operation = {
        "operationType": "ResumeDw"
    }
 
-   // Pause the SQL pool instance
+   // Pause the dedicated SQL pool (formerly SQL DW) instance
    var operation = {
        "operationType": "PauseDw"
    }
 
-   // Scale the SQL pool instance to DW600
+   // Scale the dedicated SQL pool (formerly SQL DW)l instance to DW600c
    var operation = {
        "operationType": "ScaleDw",
-       "ServiceLevelObjective": "DW600"
+       "ServiceLevelObjective": "DW600c"
    }
    ```
 
@@ -137,36 +137,36 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 ### <a name="example-1"></a>例 1
 
-毎日午前 8 時に DW600 にスケールアップし、午後 8 時に DW200 にスケールダウンします。
+毎日午前 8 時に DW600c にスケールアップし、午後 8 時に DW200c にスケールダウンします。
 
 | 機能  | スケジュール     | 操作                                |
 | :-------- | :----------- | :--------------------------------------- |
-| Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600"}` |
-| Function2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
+| Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600c"}` |
+| Function2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200c"}` |
 
 ### <a name="example-2"></a>例 2
 
-毎日午前 8 時に DW1000 にスケールアップし、午後 4 時に DW600 にスケールダウンします。さらに、午後 10 時に DW200 にスケールダウンします。
+毎日午前 8 時に DW1000c にスケールアップし、午後 4 時に DW600 にスケールダウンします。さらに、午後 10 時に DW200c にスケールダウンします。
 
 | 機能  | スケジュール     | 操作                                |
 | :-------- | :----------- | :--------------------------------------- |
-| Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
-| Function2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
-| Function3 | 0 0 22 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
+| Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000c"}` |
+| Function2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600c"}` |
+| Function3 | 0 0 22 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200c"}` |
 
 ### <a name="example-3"></a>例 3
 
-平日の午前 8 時に DW1000 にスケールアップし、午後 4 時に 1 回 DW600 にスケールダウンします。 金曜日の午後 11 時に一時停止し、月曜朝の午前 7 時に再開します。
+平日の午前 8 時に DW1000c にスケールアップし、午後 4 時に 1 回 DW600c にスケールダウンします。 金曜日の午後 11 時に一時停止し、月曜朝の午前 7 時に再開します。
 
 | 機能  | スケジュール       | 操作                                |
 | :-------- | :------------- | :--------------------------------------- |
-| Function1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
-| Function2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
+| Function1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000c"}` |
+| Function2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600c"}` |
 | Function3 | 0 0 23 * * 5   | `var operation = {"operationType": "PauseDw"}` |
-| Function4 | 0 0 7 * * 0    | `var operation = {"operationType": "ResumeDw"}` |
+| Function4 | 0 0 7 * * 1    | `var operation = {"operationType": "ResumeDw"}` |
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Functions を[タイマーでトリガーする方法](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)について確認します。
+[タイマー トリガー](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Azure Functions について確認します。
 
-SQL プールの[サンプル リポジトリ](https://github.com/Microsoft/sql-data-warehouse-samples)を確認します。
+専用 SQL プール (旧称 SQL DW) の[サンプル レポジトリ](https://github.com/Microsoft/sql-data-warehouse-samples)を参照してください。

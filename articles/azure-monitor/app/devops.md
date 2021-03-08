@@ -3,12 +3,12 @@ title: Web アプリのパフォーマンスの監視 - Azure Application Insigh
 description: 開発運用サイクルへの Application Insights の組み込み
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: d2c3326c3f655d4bdfeaa42ac272658b251b7f82
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bc897cc0259894964e0b6164219b1e5459e824b6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324490"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579572"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Application Insights を使用した Web アプリおよびサービスの詳細な診断
 ## <a name="why-do-i-need-application-insights"></a>Application Insights が必要な理由
@@ -110,7 +110,7 @@ Application Insights は、実行中の Web アプリを監視します。 こ�
 ![アプリケーション マップ](./media/devops/0050.png)
 
 ## <a name="application-insights-analytics"></a>Application Insights Analytics
-[Analytics](../log-query/log-query-overview.md)を使用すれば、強力な SQL に似た言語で任意のクエリを記述することができます。  さまざまなパースペクティブが接続されるため、アプリ スタック全体を診断するのが簡単で、ビジネス メトリックおよび顧客満足度とサービスのパフォーマンスを関連付ける適切な質問をすることができます。 
+[Analytics](../logs/log-query-overview.md)を使用すれば、強力な SQL に似た言語で任意のクエリを記述することができます。  さまざまなパースペクティブが接続されるため、アプリ スタック全体を診断するのが簡単で、ビジネス メトリックおよび顧客満足度とサービスのパフォーマンスを関連付ける適切な質問をすることができます。 
 
 ポータルに格納されているすべてのテレメトリ インスタンスとメトリックの生データを照会できます。 言語には、フィルター、結合、集計などの操作が含まれています。 フィールドを計算し、統計的な分析を実行できます。 テーブルとグラフ両方の視覚エフェクトがあります。
 

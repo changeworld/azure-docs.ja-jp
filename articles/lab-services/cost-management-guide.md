@@ -5,12 +5,12 @@ author: rbest
 ms.author: rbest
 ms.date: 08/16/2020
 ms.topic: article
-ms.openlocfilehash: 98e04ba6bb1310935c4893a3616dfd68c2e99a55
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 29f6be5319c5a142ad3ea0d73deb2f95d8cb0d7a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797634"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659728"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Azure Lab Services のコスト管理
 
@@ -18,7 +18,7 @@ Azure Lab Services のコスト管理は、コストの見積もりとコスト�
 
 ## <a name="estimate-the-lab-costs"></a>ラボのコストを見積もる
 
-各ラボ ダッシュボードには、**コストと課金**のセクションがあり、その月のラボのコストの概算見積りが提示されます。 コストの見積もりでは、最大ユーザー数での時間の使用量が、時間ごとの推定コストで要約されています。 最も正確な見積もりを取得するには、[スケジュール](how-to-create-schedules.md)を含むラボを設定します。 ダッシュボードには推定コストが反映されます。 
+各ラボ ダッシュボードには、**コストと課金** のセクションがあり、その月のラボのコストの概算見積りが提示されます。 コストの見積もりでは、最大ユーザー数での時間の使用量が、時間ごとの推定コストで要約されています。 最も正確な見積もりを取得するには、[スケジュール](how-to-create-schedules.md)を含むラボを設定します。 ダッシュボードには推定コストが反映されます。 
 
 この見積もりには表示されないコストもあります。 次のようなリソースは含まれていません。
 
@@ -31,7 +31,7 @@ Azure Lab Services のコスト管理は、コストの見積もりとコスト�
 
 ## <a name="analyze-the-previous-months-usage"></a>以前の月の使用状況を分析する
 
-コストの分析は、以前の月の使用状況を確認して、ラボの調整の決定に役立てるために行われます。 過去のコストの内訳については、[サブスクリプションのコスト分析](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis)に関するページを参照してください。 Azure portal では、検索ボックスに「**サブスクリプション**」と入力してから、 **[サブスクリプション]** オプションを選択します。 
+コストの分析は、以前の月の使用状況を確認して、ラボの調整の決定に役立てるために行われます。 過去のコストの内訳については、[サブスクリプションのコスト分析](../cost-management-billing/costs/quick-acm-cost-analysis.md)に関するページを参照してください。 Azure portal では、検索ボックスに「**サブスクリプション**」と入力してから、 **[サブスクリプション]** オプションを選択します。 
 
 > [!div class="mx-imgBorder"]
 > ![検索ボックスと [サブスクリプション] オプションを示すスクリーンショット。](./media/cost-management-guide/subscription-search.png)
@@ -46,7 +46,7 @@ Azure Lab Services のコスト管理は、コストの見積もりとコスト�
 > [!div class="mx-imgBorder"]
 > ![グラフ上にサブスクリプションのコスト分析を示すスクリーンショット。](./media/cost-management-guide/subscription-cost-analysis.png)
 
-このダッシュボードでは、スケジュールに基づいてさまざまな種類のファイルにエクスポートする機能など、詳細なコスト分析を行うことができます。 詳細については、[コストの管理と請求の概要](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview)に関するページを参照してください。
+このダッシュボードでは、スケジュールに基づいてさまざまな種類のファイルにエクスポートする機能など、詳細なコスト分析を行うことができます。 詳細については、[コストの管理と請求の概要](../cost-management-billing/cost-management-billing-overview.md)に関するページを参照してください。
 
 リソースの種類でフィルター処理できます。 `microsoft.labservices/labaccounts` を使用すると、Lab Services に関連付けられているコストのみが表示されます。
 
@@ -70,7 +70,7 @@ Azure Lab Services のコスト管理は、コストの見積もりとコスト�
 
 一部の大学では、クラスを分離する方法としてラボ アカウントとリソース グループを使用してきました。 各クラスには、独自のラボ アカウントとリソース グループがあります。 
 
-[コスト分析] ペインで、クラスの適切なリソース グループ名を使用して、リソース グループ名に基づくフィルターを追加します。 そうすると、そのクラスのコストのみが表示されます。 これにより、コストを表示するときにクラス間のより明確な描写が可能になります。 コスト分析の[スケジュールされたエクスポート](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data)機能を使用すると、各クラスのコストを別々のファイルとしてダウンロードできます。
+[コスト分析] ペインで、クラスの適切なリソース グループ名を使用して、リソース グループ名に基づくフィルターを追加します。 そうすると、そのクラスのコストのみが表示されます。 これにより、コストを表示するときにクラス間のより明確な描写が可能になります。 コスト分析の[スケジュールされたエクスポート](../cost-management-billing/costs/tutorial-export-acm-data.md)機能を使用すると、各クラスのコストを別々のファイルとしてダウンロードできます。
 
 ## <a name="manage-costs"></a>コストを管理する
 
@@ -90,7 +90,7 @@ Azure Lab Services のコスト管理は、コストの見積もりとコスト�
 > [!NOTE]
 > この設定は、Windows 仮想マシンでのみ使用できます。
 
-**[仮想マシンがアイドル状態のときにユーザーを切断する]** の設定が有効になっている場合、Windows OS がそのセッションをアイドル状態と見なすと、ユーザーはラボ内のすべてのコンピューター (テンプレート仮想マシンを含む) から切断されます。 [Windows OS のアイドル状態の定義](https://docs.microsoft.com/windows/win32/taskschd/task-idle-conditions#detecting-the-idle-state)では、次の 2 つの条件が使用されます。 
+**[仮想マシンがアイドル状態のときにユーザーを切断する]** の設定が有効になっている場合、Windows OS がそのセッションをアイドル状態と見なすと、ユーザーはラボ内のすべてのコンピューター (テンプレート仮想マシンを含む) から切断されます。 [Windows OS のアイドル状態の定義](/windows/win32/taskschd/task-idle-conditions#detecting-the-idle-state)では、次の 2 つの条件が使用されます。 
 
 * ユーザーが不在: キーボードまたはマウスの入力がない。
 * リソース消費がない:すべてのプロセッサとすべてのディスクが時間の一定の割合 (%) の間アイドル状態であった。
@@ -122,7 +122,7 @@ Windows 仮想マシンは、ユーザーがその使用を停止してから 20
 * Linux の場合は、SSH 接続が切断されている。
  
 > [!NOTE]
-> [特定のディストリビューションとバージョンの Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux#supported-linux-distributions) のみがサポートされています。
+> [特定のディストリビューションとバージョンの Linux](../virtual-machines/extensions/diagnostics-linux.md#supported-linux-distributions) のみがサポートされています。
  
 自動シャットダウンの前に、仮想マシンがユーザーの再接続を待つ時間の長さを指定できます。 
 

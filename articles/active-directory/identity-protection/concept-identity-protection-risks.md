@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 01/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 629173612f091319f6dec57b1cdfcfea41033bfc
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 18e504579c750caf452ef74844c4a388ec96448a
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047107"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954487"
 ---
 # <a name="what-is-risk"></a>リスクとは
 
@@ -26,9 +26,14 @@ Identity Protection を使用すると、組織は、強力なリソースにア
 
 ![危険なユーザーとサインインを示しているセキュリティの概要](./media/concept-identity-protection-risks/identity-protection-security-overview.png)
 
+> [!NOTE]
+> Identity Protection では、正しい資格情報が使用されている場合にのみ、リスク検出を生成します。 サインイン時に間違った資格情報が使用されている場合に、資格情報の侵害のリスクを示すものではありません。
+
 ## <a name="risk-types-and-detection"></a>リスクの種類と検出
 
-2 種類のリスク (**ユーザー**と**サインイン**) と、2 種類の検出または計算 (**リアルタイム**と**オフライン**) があります。
+2 種類のリスク (**ユーザー** と **サインイン**) と、2 種類の検出または計算 (**リアルタイム** と **オフライン**) があります。
+
+リアルタイム検出は、5 から 10 分間レポートに表示されない場合があります。 オフライン検出は、2 から 24 時間レポートに表示されない場合があります。
 
 ### <a name="user-risk"></a>ユーザー リスク
 
@@ -58,6 +63,9 @@ Identity Protection を使用すると、組織は、強力なリソースにア
 | 受信トレイに対する疑わしい操作ルール | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules) によって検出されます。 ユーザーの受信トレイでメッセージまたはフォルダーを削除または移動する疑わしいルールが設定されている場合、この検出によって環境がプロファイルされ、アラートがトリガーされます。 この検出は、ユーザー アカウントが侵害されていること、メッセージが意図的に非表示にされていること、組織内でスパムまたはマルウェアを配信するためにメールボックスが使用されていることを示唆している可能性があります。 |
 | パスワード スプレー | オフライン | パスワード スプレー攻撃とは、複数のユーザー名に対し、よく使われるパスワードを片っ端から試して不正アクセスしようとする攻撃です。 このリスク検出は、パスワード スプレー攻撃が実行されたときにトリガーされます。 |
 | あり得ない移動 | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel) によって検出されます。 この検出は、(1 つまたは複数のセッションにおける) 2 つのユーザー アクティビティが地理的に離れている場所で、最初の場所から 2 回目の場所にユーザーが移動するのに要する時間より短い時間内に発生したことを示します。これは、別のユーザーが同じ資格情報を使用していることを示唆します。 |
+| 初めての国 | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country) によって検出されます。 この検出では、新しい場所や頻度の低い場所を判断する際に、過去にアクティビティが発生した場所が考慮されます。 異常検出エンジンにより、組織内のユーザーが以前に使用したことのある場所に関する情報が格納されます。 |
+| 匿名 IP アドレスからのアクティビティ | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses) によって検出されます。 この検出は、匿名プロキシ IP アドレスとして識別された IP アドレスからユーザーがアクティブだったことを示します。 |
+| 受信トレイからの疑わしい転送 | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding) によって検出されます。 この検出は、ユーザーがすべてのメールのコピーを外部のアドレスに転送する受信トレイ ルールを作成した場合などの疑わしいメール転送ルールを探します。 |
 
 ### <a name="other-risk-detections"></a>その他のリスク検出
 
@@ -69,9 +77,13 @@ Identity Protection を使用すると、組織は、強力なリソースにア
 
 ### <a name="risk-levels"></a>リスク レベル
 
-Identity Protection では、リスクを低、中、高の 3 つのレベルに分類します。 
+Identity Protection では、リスクを低、中、高の 3 つのレベルに分類します。 [カスタム ID 保護ポリシー](./concept-identity-protection-policies.md#custom-conditional-access-policy)を構成する場合に、**リスクなし** レベルでトリガーされるように構成することもできます。 リスクなしは、ユーザーの ID が侵害されたことを示すアクティブな通知がないことを意味します。
 
 Microsoft ではリスクの計算方法に関する具体的な詳細を公開していませんが、各レベルごとに、ユーザーまたはサインインが侵害されたという信頼度は高くなります。 たとえば、見慣れないサインイン プロパティのインスタンスが 1 つあるといったことは、資格情報の漏洩ほど脅威的ではない可能性があります。
+
+### <a name="password-hash-synchronization"></a>パスワード ハッシュの同期
+
+資格情報漏洩やパスワード スプレーなどのリスク検出では、検出を行うため、パスワード ハッシュが存在する必要があります。 パスワード ハッシュ同期について詳しくは、「[Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装](../hybrid/how-to-connect-password-hash-synchronization.md)」の記事をご覧ください。
 
 ### <a name="leaked-credentials"></a>漏洩した資格情報
 

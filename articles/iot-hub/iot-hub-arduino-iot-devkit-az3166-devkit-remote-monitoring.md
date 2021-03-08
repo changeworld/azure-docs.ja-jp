@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: d75e7e7b4870f46c978fd70039441c8851844082
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 6912124ce8d1741731d625dccfea445417b2488d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337961"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785018"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>MXChip IoT DevKit を Azure IoT リモート監視ソリューション アクセラレータに接続する
 
@@ -24,7 +24,7 @@ ms.locfileid: "87337961"
 
 ## <a name="what-you-need"></a>必要なもの
 
-[ファースト ステップ ガイド](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)に従って以下のことを行います。
+[ファースト ステップ ガイド](./iot-hub-arduino-iot-devkit-az3166-get-started.md)に従って以下のことを行います。
 
 * DevKit をWi-Fi に接続
 * 開発環境の準備
@@ -66,7 +66,7 @@ ms.locfileid: "87337961"
   
    ![ID を使用したデバイスの作成](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-device-configuration.png)
 
-8. **IoT Hub ホスト名**をメモし、 **[完了]** をクリックします。
+8. **IoT Hub ホスト名** をメモし、 **[完了]** をクリックします。
 
 ## <a name="open-the-remotemonitoring-sample"></a>RemoteMonitoring サンプルを開く
 
@@ -120,7 +120,7 @@ DevKit が再起動され、コードの実行が開始されます。
 
 ## <a name="change-device-id"></a>デバイス ID の変更
 
-ハードコードされた **AZ3166** をコード内のカスタマイズされたデバイス ID に変更したい場合は、[リモート監視の例](../iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md)に示されているコード行を変更します。
+ハードコードされた **AZ3166** をコード内のカスタマイズされたデバイス ID に変更したい場合は、[リモート監視の例](/previous-versions/azure/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2)に示されているコード行を変更します。
 
 ## <a name="problems-and-feedback"></a>問題とフィードバック
 
@@ -133,6 +133,6 @@ DevKit が再起動され、コードの実行が開始されます。
 
 ここでは、DevKit デバイスを Azure IoT リモート監視ソリューション アクセラレータに接続して、センサー データを視覚化する方法を説明しました。推奨する次の手順は、以下のとおりです。
 
-* [Azure IoT ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-suite/)
+* [Azure IoT ソリューション アクセラレータの概要](/azure/iot-suite/)
 
-* [IoT Developer Kit](https://microsoft.github.io/azure-iot-developer-kit/) 
+* [IoT Developer Kit](https://microsoft.github.io/azure-iot-developer-kit/)

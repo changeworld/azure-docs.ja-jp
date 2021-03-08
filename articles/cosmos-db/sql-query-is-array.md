@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の IS_ARRAY
 description: Azure Cosmos DB での SQL システム関数 IS_ARRAY について学習します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: f5867850db6eb3d6552bc129cca3708ef7747072
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb78e6c1481cbf8958b064f316ac1e20be2a6440
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78303887"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338766"
 ---
 # <a name="is_array-azure-cosmos-db"></a>IS_ARRAY (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  指定した式の型が配列であるかどうかを示すブール値を返します。  
   
 ## <a name="syntax"></a>構文

@@ -8,18 +8,18 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: 6eecaaff836d3253d382fdf0280f9a15c3a7b00b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 2ac7c3c2149ce43c860c7726381733ef377de8d3
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050864"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530741"
 ---
 # <a name="examine-the-video-indexer-output"></a>Video Indexer の出力を調べる
 
-ビデオにインデックスを付けると、Video Indexer によって、指定された動画の分析情報の詳細を含む JSON コンテンツが生成されます。 分析情報には、トランスクリプト、OCR、顔、トピック、ブロックなどが含まれます。各種の分析情報には、その分析情報がビデオにいつ現れたかを示す時間範囲のインスタンスが含まれます。 
+ビデオにインデックスを付けると、Video Indexer によって、指定されたビデオの分析情報の詳細を含む JSON コンテンツが生成されます。 分析情報には、トランスクリプト、OCR、顔、トピック、ブロックなどが含まれます。各種の分析情報には、その分析情報がビデオにいつ現れたかを示す時間範囲のインスタンスが含まれます。 
 
 [Video Indexer](https://www.videoindexer.ai/) の Web サイト上にあるビデオの **[再生]** ボタンを押して、ビデオの要約された分析情報を視覚的に確認できます。 
 
@@ -97,14 +97,14 @@ ms.locfileid: "89050864"
 |---|---|
 |name|ビデオの名前 Azure Monitor など|
 |id|ビデオの ID 63c6d532ff など|
-|privacyMode|内訳に含めることができるモードは、**秘密**、**公開**のいずれかです。 **公開** - アカウント内のすべてのユーザーと、ビデオへのリンクを持っているユーザーがビデオを見ることができます。 **秘密** - ビデオは、アカウント内のすべてのユーザーに表示されます。|
+|privacyMode|内訳に含めることができるモードは、**秘密**、**公開** のいずれかです。 **公開** - アカウント内のすべてのユーザーと、ビデオへのリンクを持っているユーザーがビデオを見ることができます。 **秘密** - ビデオは、アカウント内のすべてのユーザーに表示されます。|
 |duration|分析情報が発生した時刻を示す 1 つの期間が含まれます。 期間は秒単位です。|
 |thumbnailVideoId|サムネイルの取得元のビデオの ID。
 |thumbnailId|ビデオのサムネイル ID。 実際のサムネイルを取得するには、[Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) を呼び出し、thumbnailVideoId と thumbnailId に渡します。|
 |faces/animatedCharacters|0 以上の顔を含めることができます。 詳細については、「[faces/animatedCharacters](#facesanimatedcharacters)」を参照してください。|
 |keywords|0 個以上のキーワードを含めることができます。 詳しくは、「[キーワード](#keywords)」をご覧ください。|
 |sentiments|0 個以上のセンチメントを含めることができます。 詳しくは、「[センチメント](#sentiments)」をご覧ください。|
-|audioEffects| 0 個以上の audioEffects を含めることができます。 詳しくは、「[audioEffects](#audioeffects)」をご覧ください。|
+|audioEffects| 0 個以上の audioEffects を含めることができます。 詳しくは、「[audioEffects](#audioeffects-public-preview)」をご覧ください。|
 |labels| 0 以上のラベルを含めることができます。 詳細については、「[ラベル](#labels)」をご覧ください。|
 |brands| 0 以上のブランドを含めることができます。 詳しくは、「[ブランド](#brands)」をご覧ください。|
 |statistics | 詳しくは、「[統計](#statistics)」をご覧ください。|
@@ -181,12 +181,13 @@ ms.locfileid: "89050864"
 |labels|[labels](#labels) 分析情報。|
 |shots|[shots](#shots) 分析情報。|
 |brands|[brands](#brands) 分析情報。|
-|audioEffects|[audioEffects](#audioeffects) 分析情報。|
+|audioEffects|[audioEffects](#audioeffects-public-preview) 分析情報。|
 |sentiments|[sentiments](#sentiments) 分析情報。|
 |visualContentModeration|[visualContentModeration](#visualcontentmoderation) 分析情報。|
 |textualContentModeration|[textualContentModeration](#textualcontentmoderation) 分析情報。|
 |emotions| [emotions](#emotions) 分析情報。|
 |topics|[topics](#topics) 分析情報。|
+|speakers|[speakers](#speakers) 分析情報。|
 
 例:
 
@@ -222,36 +223,45 @@ instances|このブロックの時間範囲の一覧|
 |---|---|
 |id|行 ID。|
 |text|トランスクリプトそのもの。|
+|confidence|トランスクリプトの精度の信頼性。|
+|speakerId|話者の ID。|
 |language|トランスクリプトの言語。 各行の言語が異なる可能性があるトランスクリプトをサポートすることを目的としています。|
 |instances|この行が出現する時間範囲の一覧。 インスタンスがトランスクリプトの場合、instance は 1 つだけあります。|
 
 例:
 
 ```json
-"transcript": [
+"transcript":[
 {
-    "id": 0,
-    "text": "Hi I'm Doug from office.",
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:00.5100000",
-        "end": "00:00:02.7200000"
-    }
-    ]
+  "id":1,
+  "text":"Well, good morning everyone and welcome to",
+  "confidence":0.8839,
+  "speakerId":1,
+  "language":"en-US",
+  "instances":[
+     {
+    "adjustedStart":"0:00:10.21",
+    "adjustedEnd":"0:00:12.81",
+    "start":"0:00:10.21",
+    "end":"0:00:12.81"
+     }
+  ]
 },
 {
-    "id": 1,
-    "text": "I have a guest. It's Michelle.",
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:02.7200000",
-        "end": "00:00:03.9600000"
-    }
-    ]
-}
-] 
+  "id":2,
+  "text":"ignite 2016. Your mission at Microsoft is to empower every",
+  "confidence":0.8944,
+  "speakerId":2,
+  "language":"en-US",
+  "instances":[
+     {
+    "adjustedStart":"0:00:12.81",
+    "adjustedEnd":"0:00:17.03",
+    "start":"0:00:12.81",
+    "end":"0:00:17.03"
+     }
+  ]
+},
 ```
 
 #### <a name="ocr"></a>ocr
@@ -580,26 +590,28 @@ instances|このブロックの時間範囲の一覧|
 |SpeakerLongestMonolog|話者の最も長いモノローグ。 モノローグでの話者の沈黙がある場合、それも含まれます。 モノローグの先頭と末尾の無音は削除されます。| 
 |SpeakerTalkToListenRatio|計算は、ビデオの合計時間で割られた話者のモノローグに費やされた時間に基づきます (間の無音は含みません)。 時間は、小数点第 3 位に丸められます。|
 
-#### <a name="audioeffects"></a>audioEffects
+#### <a name="audioeffects-public-preview"></a>audioEffects (パブリック プレビュー)
 
-|名前|説明|
+|名前|説明
 |---|---|
-|id|オーディオ エフェクト ID。|
-|type|オーディオ エフェクトの種類 (例: 拍手、発話、無音)。|
-|instances|このオーディオ エフェクトが出現する時間範囲の一覧。|
+|id|オーディオ エフェクト ID|
+|type|オーディオ エフェクトの種類|
+|instances|このオーディオ エフェクトが出現する時間範囲の一覧。 各インスタンスに confidence フィールドがあります。|
 
 ```json
 "audioEffects": [
 {
     "id": 0,
-    "type": "Clapping",
+    "type": "Siren",
     "instances": [
     {
+       "confidence": 0.87,
         "start": "00:00:00",
         "end": "00:00:03"
     },
     {
-        "start": "00:01:13",
+       "confidence": 0.87,
+       "start": "00:01:13",
         "end": "00:01:21"
     }
     ]
@@ -827,6 +839,42 @@ Video Indexer では、トランスクリプトから主なトピックを推論
 . . .
 ```
 
+#### <a name="speakers"></a>speakers
+
+|名前|説明|
+|---|---|
+|id|話者の ID。|
+|name|"Speaker # *<number>* " の形式の話者の名前。例えば、"Speaker #1" です。|
+|instances |この話者が出現した時間範囲の一覧。|
+
+```json
+"speakers":[
+{
+  "id":1,
+  "name":"Speaker #1",
+  "instances":[
+     {
+    "adjustedStart":"0:00:10.21",
+    "adjustedEnd":"0:00:12.81",
+    "start":"0:00:10.21",
+    "end":"0:00:12.81"
+     }
+  ]
+},
+{
+  "id":2,
+  "name":"Speaker #2",
+  "instances":[
+     {
+    "adjustedStart":"0:00:12.81",
+    "adjustedEnd":"0:00:17.03",
+    "start":"0:00:12.81",
+    "end":"0:00:17.03"
+     }
+  ]
+},
+` ` `
+```
 ## <a name="next-steps"></a>次のステップ
 
 [Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai)

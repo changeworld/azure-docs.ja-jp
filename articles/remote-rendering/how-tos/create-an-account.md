@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: cf74322725c6e86ee455f83aadc4aade07000835
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 83bd4a7ae0082d24f7ac617719e628f4db4baeb9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057672"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197636"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Azure Remote Rendering アカウントを作成する
 
@@ -71,35 +71,28 @@ Azure Remote Rendering サービスのアカウントを作成するには、次
 
 この段落では、ストレージ アカウントを Remote Rendering アカウントにリンクする方法について説明します。 ストレージ アカウントがリンクされている場合は、アカウント内のデータを操作するたびに SAS URI を生成する必要はありません。たとえば、モデルを読み込む場合などです。 代わりに、[モデルの読み込み](../concepts/models.md#loading-models)に関するセクションの説明に従って、ストレージ アカウント名を直接使用できます。
 
-この代替アクセス方法を使用する必要があるストレージ アカウントごとに、この段落の手順を実行する必要があります。 ストレージ アカウントをまだ作成していない場合は、[レンダリング用のモデルの変換に関するクイックスタート](../quickstarts/convert-model.md#storage-account-creation)の各手順に従ってください。
+このアクセス方法を使用する必要があるストレージ アカウントごとに、この段落の手順を実行する必要があります。 ストレージ アカウントをまだ作成していない場合は、[レンダリング用のモデルの変換に関するクイックスタート](../quickstarts/convert-model.md#storage-account-creation)の各手順に従ってください。
 
 ここでは、ストレージ アカウントがあることを前提としています。 ポータルでストレージ アカウントに移動し、そのストレージ アカウントの **[アクセス制御 (IAM)]** タブに移動します。
 
 ![ストレージ アカウントの IAM](./media/azure-storage-account.png)
 
- このストレージ アカウントに対する所有者のアクセス許可があることを確認して、ロールの割り当てを確実に追加できるようにします。 アクセス許可がない場合、 **[ロールの割り当てを追加する]** オプションは無効になります。
+このストレージ アカウントに対する所有者のアクセス許可があることを確認して、ロールの割り当てを確実に追加できるようにします。 アクセス許可がない場合、 **[ロールの割り当てを追加する]** オプションは無効になります。
 
- 次の手順で説明するように、3 つの異なるロールを追加する必要があります。 3 つのアクセス レベルをすべて指定しないと、ストレージ アカウントにアクセスしようとするときにアクセス許可の問題が発生します。
+[ロールの割り当てを追加する] タイルの **[追加]** をクリックして、ロールを追加します。
 
- [ロールの割り当てを追加する] タイルの **[追加]** をクリックして、最初のロールを追加します。
+![ストレージ アカウントの IAM のロール割り当て追加](./media/azure-add-role-assignment.png)
 
-![ストレージ アカウントの IAM](./media/azure-add-role-assignment.png)
-
-* 前のスクリーンショットに示すように、割り当てる最初のロールは **[所有者]** です。
-* **[アクセスの割り当て先]** ドロップダウンから、 **[Remote Rendering アカウント]** を選択します。
+* 上のスクリーンショットに示すように、**ストレージ BLOB データ共同作成者** ロールを割り当てます。
+* **[アクセスの割り当て先]** ドロップダウンから、 **[Remote Rendering アカウント]** システムによって割り当てられたマネージド ID を選択します。
 * 最後のドロップダウンで、サブスクリプションと Remote Rendering アカウントを選択します。
+* [保存] をクリックして変更を保存します。
 
 > [!WARNING]
 > Remote Rendering アカウントが表示されない場合は、この[トラブルシューティングに関するセクション](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account)を参照してください。
 
-**[ロール]** ドロップダウンから、それぞれの選択項目について新しいロールの追加をさらに 2 回繰り返します。
-
-* **Storage Account Contributor**
-* **ストレージ BLOB データ共同作成者**
-
-その他のドロップダウンは、最初の手順のように選択されます。
-
-3 つのロールをすべて追加した場合、Azure Remote Rendering アカウントは、システムによって割り当てられたマネージド サービス ID を使用してストレージ アカウントにアクセスできます。
+> [!IMPORTANT]
+> Azure ロールの割り当ては Azure Storage によってキャッシュされるため、Remote Rendering アカウントへのアクセスを許可してから、ストレージ アカウントへのアクセスに使用できるようになるまでに、最大 30 分の遅延が発生する場合があります。 詳細については、[Azure ロールベースのアクセス制御 (Azure RBAC) に関するドキュメント](../../role-based-access-control/troubleshooting.md#role-assignment-changes-are-not-being-detected)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

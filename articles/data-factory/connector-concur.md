@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して Concur からデータをコピーする (プレビュー)
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Concur のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 6699178e514f4d25666305f3251e8eaf9d28e6dc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 974682aa9e9bebd6e2d17237decd8389174ff28d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417454"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383672"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Concur からデータをコピーする (プレビュー)
 
@@ -36,8 +31,6 @@ ms.locfileid: "81417454"
 
 Concur から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-Azure Data Factory では接続を有効にする組み込みのドライバーが提供されるので、このコネクタを使用してドライバーを手動でインストールする必要はありません。
-
 > [!NOTE]
 > 現在、パートナー アカウントはサポートされていません。
 
@@ -54,14 +47,53 @@ Concur のリンクされたサービスでは、次のプロパティがサポ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**Concur** | はい |
-| clientId | Concur App Management によって提供されるアプリケーションの client_id。  | はい |
-| username | Concur サービスへのアクセスに使用するユーザー名。  | はい |
+| connectionProperties | Concur への接続方法を定義するプロパティのグループ。 | はい |
+| ***`connectionProperties` の下:*** | | |
+| authenticationType | 使用できる値は `OAuth_2.0_Bearer` と `OAuth_2.0` です (レガシ)。 OAuth 2.0 認証オプションは、2017 年 2 月から非推奨となった古い Concur API で動作します。 | はい |
+| host | Concur サーバーのエンドポイント (例: `implementation.concursolutions.com`)。  | はい |
+| baseUrl | Concur の認可 URL のベース URL。 | `OAuth_2.0_Bearer` 認証の場合、はい |
+| clientId | Concur App Management によって提供されるアプリケーション クライアント ID。  | はい |
+| clientSecret | クライアント ID に対応するクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | `OAuth_2.0_Bearer` 認証の場合、はい |
+| username | Concur サービスへのアクセスに使用するユーザー名。 | はい |
 | password | username フィールドに指定したユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は、true です。  | いいえ |
-| useHostVerification | TLS 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は、true です。  | いいえ |
+| useHostVerification | TLS 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうか指定します。 既定値は、true です。  | いいえ |
 | usePeerVerification | TLS 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は、true です。  | いいえ |
 
 **例:**
+
+```json
+{ 
+    "name": "ConcurLinkedService", 
+    "properties": {
+        "type": "Concur",
+        "typeProperties": {
+            "connectionProperties": {
+                "host":"<host e.g. implementation.concursolutions.com>",
+                "baseUrl": "<base URL for authorization e.g. us-impl.api.concursolutions.com>",
+                "authenticationType": "OAuth_2.0_Bearer",
+                "clientId": "<client id>",
+                "clientSecret": {
+                    "type": "SecureString",
+                    "value": "<client secret>"
+                },
+                "username": "fakeUserName",
+                "password": {
+                    "type": "SecureString",
+                    "value": "<password>"
+                },
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
+        }
+    }
+} 
+```
+
+**例 (レガシ):**
+
+次に示すのは、`connectionProperties` なしで、`OAuth_2.0` 認証を使用するレガシのリンクされたサービス モデルであるので注意してください。
 
 ```json
 {

@@ -10,14 +10,14 @@ metadata:
   ms.topic: landing-page
   author: MashaMSFT
   ms.author: mathoma
-  ms.reviewer: carlrab
+  ms.reviewer: sstein
   ms.date: 05/27/2020
-  ms.openlocfilehash: 2a7690f4587f9f113bed35e3a30b294b7bd8b5d4
-  ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+  ms.openlocfilehash: f8be335fed98d404687002f8c826e881d93e3a10
+  ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/19/2020
-  ms.locfileid: "88587907"
+  ms.lasthandoff: 11/12/2020
+  ms.locfileid: "94556490"
 landingContent:
 - title: Azure VM 上の SQL Server
   linkLists:
@@ -58,7 +58,7 @@ landingContent:
     - text: Azure portal を使用した管理
       url: windows/manage-sql-vm-portal.md
     - text: SQL VM リソースプロバイダーに登録する
-      url: windows/sql-vm-resource-provider-register.md
+      url: windows/sql-agent-extension-manually-register-single-vm.md
     - text: 自動修正
       url: windows/automated-patching.md
     - text: ライセンスの種類を変更する
@@ -82,7 +82,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 可用性グループ (Az CLI)
-      url: windows/availability-group-az-cli-configure.md
+      url: ./windows/availability-group-az-commandline-configure.md
     - text: クラスターを使用しない可用性グループ
       url: windows/availability-group-clusterless-workgroup-configure.md
     - text: FCI (記憶域スペース ダイレクト)
@@ -104,7 +104,7 @@ landingContent:
     - text: 初心者向け Azure SQL
       url: https://aka.ms/azuresql4beginners
     - text: Azure SQL の基礎
-      url: https://docs.microsoft.com/learn/paths/azure-sql-fundamentals/
+      url: /learn/paths/azure-sql-fundamentals/
     - text: Azure SQL のハンズオン ラボ
       url: https://aka.ms/asqlworkshop
     - text: Azure SQL の短期集中講座
@@ -140,8 +140,8 @@ landingContent:
     - text: Transact-SQL (T-SQL)
       url: /sql/t-sql/language-reference
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/sql
+      url: /cli/azure/sql
     - text: PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.sql
+      url: /powershell/module/az.sql
     - text: REST API
-      url: https://docs.microsoft.com/rest/api/sql/
+      url: /rest/api/sql/

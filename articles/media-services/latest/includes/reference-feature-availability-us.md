@@ -1,0 +1,26 @@
+---
+author: IngridAtMicrosoft
+ms.service: media-services
+ms.topic: include
+ms.date: 10/28/2020
+ms.author: inhenkel
+ms.openlocfilehash: 8dd84a0c4eb1fd74ef850cb6de4530f50b3bb409
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331106"
+---
+<!--Feature availability in region-->
+
+## <a name="united-states"></a>アメリカ合衆国
+
+| 機能 | 米国中部 | 米国東部 | 米国東部 2 | 米国中北部 | 米国中南部 | 米国西部 | 米国西部 2 | 米国中西部|
+| --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| [Azure EventGrid](../reacting-to-media-services-events.md) | ![Azure EventGrid 米国中部一般提供](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid 米国東部一般提供](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid 米国東部 2 一般提供](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid 米国中北部一般提供](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid 米国中南部一般提供](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid 米国西部一般提供](../media/azure-clouds-regions/ga.svg) | ![Azure EventGrid 米国西部 2 一般提供](../media/azure-clouds-regions/ga.svg) |  ![Azure EventGrid 米国中西部一般提供](../media/azure-clouds-regions/ga.svg) |
+| [VideoAnalyzerPreset](../analyzing-video-audio-files-concept.md) | ![VideoAnalyzerPreset 米国中部一般提供](../media/azure-clouds-regions/ga.svg) | ![VideoAnalyzerPreset 米国東部一般提供](../media/azure-clouds-regions/ga.svg) | ![VideoAnalyzerPreset 米国東部 2 一般提供](../media/azure-clouds-regions/ga.svg) | ![VideoAnalyzerPreset 米国中北部一般提供](../media/azure-clouds-regions/ga.svg) | ![VideoAnalyzerPreset 米国中南部一般提供](../media/azure-clouds-regions/ga.svg) | ![VideoAnalyzerPreset 米国西部一般提供](../media/azure-clouds-regions/ga.svg) | ![VideoAnalyzerPreset 米国西部 2 一般提供](../media/azure-clouds-regions/ga.svg) |  ![VideoAnalyzerPreset 米国中西部一般提供](../media/azure-clouds-regions/ga.svg) |
+| [AudioAnalyzerPreset](../analyzing-video-audio-files-concept.md) | ![AudioAnalyzerPreset 米国中部一般提供](../media/azure-clouds-regions/ga.svg) | ![AudioAnalyzerPreset 米国東部一般提供](../media/azure-clouds-regions/ga.svg) | ![AudioAnalyzerPreset 米国東部 2 一般提供](../media/azure-clouds-regions/ga.svg) | ![AudioAnalyzerPreset 米国中北部一般提供](../media/azure-clouds-regions/ga.svg) | ![AudioAnalyzerPreset 米国中南部一般提供](../media/azure-clouds-regions/ga.svg) |  ![AudioAnalyzerPreset 米国西部一般提供](../media/azure-clouds-regions/ga.svg) | ![AudioAnalyzerPreset 米国西部 2 一般提供](../media/azure-clouds-regions/ga.svg) |  ![AudioAnalyzerPreset 米国中西部一般提供](../media/azure-clouds-regions/ga.svg) |
+| [StandardEncoderPreset](../encoding-concept.md) | ![StandardEncoderPreset 米国中部一般提供](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset 米国東部一般提供](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset 米国東部 2 一般提供](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset 米国中北部一般提供](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset 米国中南部一般提供](../media/azure-clouds-regions/ga.svg) |  ![StandardEncoderPreset 米国西部一般提供](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset 米国西部 2 一般提供](../media/azure-clouds-regions/ga.svg) |  ![StandardEncoderPreset 米国中西部一般提供](../media/azure-clouds-regions/ga.svg) |
+| [LiveEvents](../live-streaming-overview.md) | ![Azure LiveEvents 米国中部一般提供](../media/azure-clouds-regions/ga.svg) | ![Azure LiveEvents 米国東部一般提供](../media/azure-clouds-regions/ga.svg) | ![Azure LiveEvents 米国東部 2 一般提供](../media/azure-clouds-regions/ga.svg) | ![Azure LiveEvents 米国中北部一般提供](../media/azure-clouds-regions/ga.svg) | ![Azure LiveEvents 米国中南部一般提供](../media/azure-clouds-regions/ga.svg) |  ![Azure LiveEvents 米国西部一般提供](../media/azure-clouds-regions/ga.svg) | ![Azure LiveEvents 米国西部 2 一般提供](../media/azure-clouds-regions/ga.svg) |  ![Azure LiveEvents 米国中西部一般提供](../media/azure-clouds-regions/ga.svg) |
+| [StreamingEndpoints](../streaming-endpoint-concept.md) | ![StreamingEndpoints 米国中部一般提供](../media/azure-clouds-regions/ga.svg) | ![StreamingEndpoints 米国東部一般提供](../media/azure-clouds-regions/ga.svg) | ![StreamingEndpoints 米国東部 2 一般提供](../media/azure-clouds-regions/ga.svg) | ![StreamingEndpoints 米国中北部一般提供](../media/azure-clouds-regions/ga.svg) | ![StreamingEndpoints 米国中南部一般提供](../media/azure-clouds-regions/ga.svg) |![StreamingEndpoints 米国西部一般提供](../media/azure-clouds-regions/ga.svg) | ![StreamingEndpoints 米国西部 2 一般提供](../media/azure-clouds-regions/ga.svg) |  ![StreamingEndpoints 米国中西部一般提供](../media/azure-clouds-regions/ga.svg) |
+| [LiveTranscription](../live-transcription.md) | ![LiveTranscription 米国中部一般提供](../media/azure-clouds-regions/ga.svg) | ![LiveTranscription 米国東部一般提供](../media/azure-clouds-regions/ga.svg) | ![LiveTranscription 米国東部 2 一般提供](../media/azure-clouds-regions/ga.svg) | ![LiveTranscription 米国中北部一般提供](../media/azure-clouds-regions/ga.svg) | ![LiveTranscription 米国中南部一般提供](../media/azure-clouds-regions/ga.svg) |![LiveTranscription 米国西部一般提供](../media/azure-clouds-regions/ga.svg) | ![LiveTranscription 米国西部 2 一般提供](../media/azure-clouds-regions/ga.svg) |  ![LiveTranscription 米国中西部一般提供](../media/azure-clouds-regions/ga.svg) |

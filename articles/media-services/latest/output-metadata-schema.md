@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services 出力メタデータのスキーマ | Microsoft Docs
-description: この記事では、Azure Media Services 出力メタデータのスキーマの概要を説明します。
+title: Azure Media Services 出力メタデータのスキーマ
+description: この記事では、Azure Media Services v3 出力メタデータのスキーマの概要を説明します。
 author: IngridAtMicrosoft
 manager: femila
 editor: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 66f4e426ee6d77b9faa1efab3deb3d7ee4baf47d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 1a27db81866760bff56c900a908162f356c01a66
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89289373"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895205"
 ---
 # <a name="output-metadata"></a>出力メタデータ
 

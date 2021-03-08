@@ -4,8 +4,7 @@ titleSuffix: Azure App Configuration
 description: このチュートリアルでは、Azure App Configuration を使用して、お使いのアプリケーションとは別に機能フラグを管理する方法について説明します。
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -13,18 +12,18 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/19/2019
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: dd816ebcf2a40e6a0b7febcc3fe5c1006dac20bb
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 0410a1cde12b9ef762d348a286d78b35f7b14bfd
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209945"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932304"
 ---
 # <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>チュートリアル:Azure App Configuration で機能フラグを管理する
 
-すべての機能フラグを Azure App Configuration に保存して、1 つの場所から管理できます。 App Configuration には、機能フラグ専用に設計された、**機能マネージャー**と呼ばれるポータル UI があります。 さらに、App Configuration は .NET Core 機能フラグのデータ スキーマをネイティブにサポートしています。
+すべての機能フラグを Azure App Configuration に保存して、1 つの場所から管理できます。 App Configuration には、機能フラグ専用に設計された、**機能マネージャー** と呼ばれるポータル UI があります。 さらに、App Configuration は .NET Core 機能フラグのデータ スキーマをネイティブにサポートしています。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -56,6 +55,7 @@ Azure portal 内の App Configuration 用の機能マネージャーは、お使
     |---|---|
     | Microsoft.Percentage | {"Value":0 - 100 パーセント} |
     | Microsoft.TimeWindow | {"Start":UTC 時間, "End":UTC 時間} |
+    | Microsoft.Targeting | { "Audience": ユーザー、グループ、ロールアウトの割合を定義する JSON BLOB。 [こちらの設定ファイル](https://github.com/microsoft/FeatureManagement-Dotnet/blob/master/examples/FeatureFlagDemo/appsettings.json)の `EnabledFor` 要素の下の例を参照してください}
 
     ![機能フラグのフィルター](./media/azure-app-configuration-feature-flag-filter.png)
 
@@ -65,7 +65,7 @@ Azure portal 内の App Configuration 用の機能マネージャーは、お使
 
 1. **[Feature Manager]\(機能マネージャー\)** を選択します。
 
-1. 変更する機能フラグの右側にある省略記号 ( **...** ) を選択し、次に **[編集]** を選択します。
+1. 変更する機能フラグの右側にある省略記号 (**...**) を選択し、次に **[編集]** を選択します。
 
 1. 機能フラグの新しい状態を設定します。
 

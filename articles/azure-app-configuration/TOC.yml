@@ -7,7 +7,7 @@
     - name: ベスト プラクティス
       href: howto-best-practices.md
     - name: よく寄せられる質問
-      href: faq.md
+      href: faq.yml
 - name: クイックスタート
   expanded: true
   items:
@@ -23,6 +23,8 @@
           href: quickstart-azure-functions-csharp.md
         - name: Java Spring
           href: quickstart-java-spring-app.md
+        - name: Python
+          href: quickstart-python.md
         - name: ARM テンプレート
           href: quickstart-resource-manager.md
           displayName: 'ARM, azure resource manager template'
@@ -32,11 +34,13 @@
           href: quickstart-feature-flag-aspnet-core.md
         - name: .NET Framework
           href: quickstart-feature-flag-dotnet.md
+        - name: .NET Core における Azure Functions
+          href: quickstart-feature-flag-azure-functions-csharp.md
         - name: Java Spring
           href: quickstart-feature-flag-spring-boot.md
 - name: チュートリアル
   items:
-    - name: 動的な構成の有効化
+    - name: ポーリング モデルを使用して動的な構成を有効にする
       items:
         - name: ASP.NET Core
           href: enable-dynamic-configuration-aspnet-core.md
@@ -48,9 +52,13 @@
           href: enable-dynamic-configuration-azure-functions-csharp.md
         - name: Spring Boot
           href: enable-dynamic-configuration-java-spring-app.md
-    - name: 機能フラグの使用
+    - name: プッシュ モデルを使用して動的な構成を有効にする
       items:
         - name: .NET Core
+          href: enable-dynamic-configuration-dotnet-core-push-refresh.md
+    - name: 機能フラグの使用
+      items:
+        - name: ASP.NET Core
           href: use-feature-flags-dotnet-core.md
         - name: Spring Boot
           href: use-feature-flags-spring-boot.md
@@ -66,6 +74,8 @@
       items:
         - name: Azure Pipelines を使用したプッシュ
           href: push-kv-devops-pipeline.md
+        - name: Azure Pipelines を使用したプル
+          href: pull-key-value-devops-pipeline.md
         - name: GitHub Actions を使用したプッシュ
           href: concept-github-action.md
         - name: エクスポートした構成を使用したプロジェクトのビルド
@@ -86,7 +96,7 @@
       href: concept-feature-management.md
     - name: イベント処理
       href: concept-app-configuration-event.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: カスタマー マネージド キーの暗号化
           href: concept-customer-managed-keys.md
@@ -96,34 +106,42 @@
           href: concept-enable-rbac.md
         - name: Azure マネージド ID を割り当てる
           href: overview-managed-identity.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
+        - name: Azure Policy によるセキュリティ制御
+          href: ./security-controls-policy.md
     - name: 高可用性
       items:
         - name: 回復性とディザスター リカバリー
           href: concept-disaster-recovery.md
 - name: 操作方法ガイド
   items:
-    - name: ユーザーのサブセットに対して機能を有効にする
+    - name: 件付き機能フラグを使用する
       href: howto-feature-filters-aspnet-core.md
+    - name: 指定したユーザー/グループの機能を有効にする
+      href: howto-targetingfilter-aspnet-core.md
     - name: 環境ごとの構成にラベルを使用する
       href: howto-labels-aspnet-core.md
     - name: 構成データのインポートまたはエクスポート
       href: howto-import-export-data.md
     - name: キー値に JSON コンテンツ タイプを使用する
       href: howto-leverage-json-content-type.md
-    - name: カスタム エンドポイントへのイベントのルーティング
+    - name: データ変更通知に Event Grid を使用する
       href: howto-app-configuration-event.md
     - name: 構成ストアの自動バックアップ
       href: howto-backup-config-store.md
     - name: マネージド ID を使用して App Configuration にアクセスする
       href: howto-integrate-azure-managed-service-identity.md
+    - name: Visual Studio での App Configuration の統合
+      href: /visualstudio/azure/vs-azure-tools-connected-services-app-configuration
 - name: リファレンス
   items:
     - name: 構成
       items:
         - name: Azure CLI
-          href: 'https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest'
+          href: /cli/azure/appconfig
         - name: .NET Core プロバイダー
-          href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
+          href: /dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration
         - name: .NET Framework ビルダー
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
         - name: Azure SDK for .NET
@@ -136,22 +154,66 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
         - name: Azure SDK for JavaScript
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
-        - name: REST API
-          href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
     - name: 機能の管理
       items:
         - name: .NET Core ライブラリ
-          href: 'https://go.microsoft.com/fwlink/?linkid=2091700'
+          href: /dotnet/api/microsoft.featuremanagement
         - name: .NET Core フィルター ライブラリ
-          href: 'https://go.microsoft.com/fwlink/?linkid=2091601'
+          href: /dotnet/api/microsoft.featuremanagement.featurefilters
     - name: 構成ストアの管理
       items:
         - name: REST API
-          href: 'https://docs.microsoft.com/rest/api/appconfiguration/'
+          href: /rest/api/appconfiguration/
         - name: PowerShell
-          href: 'https://docs.microsoft.com/powershell/module/az.appconfiguration/'
+          href: /powershell/module/az.appconfiguration/
         - name: Terraform
           href: 'https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html'
+    - name: REST API
+      items:
+        - name: 概要
+          href: rest-api.md
+        - name: リソース
+          items:
+            - name: '[キー]'
+              href: ./rest-api-keys.md
+            - name: キー値
+              href: ./rest-api-key-value.md
+            - name: ラベル
+              href: ./rest-api-labels.md
+            - name: Locks
+              href: ./rest-api-locks.md
+            - name: リビジョン
+              href: ./rest-api-revisions.md
+        - name: Protocol
+          items:
+            - name: 認証
+              href: ./rest-api-authentication-index.md
+              items:
+                - name: Azure Active Directory 認証
+                  href: rest-api-authentication-azure-ad.md
+                - name: HMAC 認証
+                  href: rest-api-authentication-hmac.md
+            - name: 承認
+              href: ./rest-api-authorization-index.md
+              items:
+                - name: Azure Active Directory 認可
+                  href: rest-api-authorization-azure-ad.md
+                - name: HMAC 認可
+                  href: rest-api-authorization-hmac.md
+            - name: 整合性モデル
+              href: ./rest-api-consistency.md
+            - name: 共通のヘッダー
+              href: ./rest-api-headers.md
+            - name: Throttling
+              href: ./rest-api-throttling.md
+            - name: バージョン管理
+              href: ./rest-api-versioning.md
+        - name: 開発
+          items:
+            - name: Fiddler
+              href: ./rest-api-fiddler.md
+            - name: postman
+              href: ./rest-api-postman.md
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

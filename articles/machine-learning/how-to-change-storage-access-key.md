@@ -11,28 +11,29 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: c6b8f9d7f99d49f65a45d0e09623ef2f0e1217f2
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 78829ae52d74cf6ec58c12779c51bca9a98e0af1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387066"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450791"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>ストレージ アカウント キーの再生成
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning で使用される Azure ストレージ アカウントのアクセス キーを変更する方法について説明します。 Azure Machine Learning では、ストレージ アカウントを使用してデータまたはトレーニング済みモデルを保存できます。
 
 セキュリティ上の理由から、Azure ストレージ アカウントのアクセス キーを変更することが必要になる場合があります。 アクセス キーを再生成した場合は、その新しいキーを使用するように Azure Machine Learning を更新する必要があります。 Azure Machine Learning では、ストレージ アカウントはモデル ストレージ用に使用される場合とデータストアとして使用される場合の両方があります。
 
 > [!IMPORTANT]
-> データストアに登録された資格情報は、ワークスペースに関連付けられている Azure キー コンテナーに保存されます。 キー コンテナーで[論理的な削除](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)を有効にしている場合は、必ずこの記事に従って資格情報を更新してください。 データストアの登録を解除し、同じ名前で再登録すると失敗します。
+
+> データストアに登録された資格情報は、ワークスペースに関連付けられている Azure キー コンテナーに保存されます。 キー コンテナーで[論理的な削除](../key-vault/general/soft-delete-overview.md)を有効にしている場合は、この記事に資格情報を更新する手順が記載されています。 データストアの登録を解除し、同じ名前で再登録しようとすると、この操作は失敗します。 このシナリオでの論理的な削除を有効にする方法については、「[既存のキー コンテナーの論理的な削除を有効にする]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure Machine Learning ワークスペース。 詳細については、「[ワークスペースの作成](how-to-manage-workspace.md)を参照してください。
 
-* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+* [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
 
 * [Azure Machine Learning CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 
@@ -110,7 +111,7 @@ for name, ds in datastores.items():
         このコマンドにより、ワークスペースで使用する Azure ストレージ アカウントの新しいキーが自動的に同期されます。
 
 1. SDK または [Azure Machine Learning Studio](https://ml.azure.com) を使用して、ストレージ アカウントを使用するデータストアを再登録することができます。
-    1. **Python SDK を介してデータストアを再登録する**には、「[更新する必要があるもの](#whattoupdate)」セクションの値とステップ 1 でのキーを次のコードで使用します。 
+    1. **Python SDK を介してデータストアを再登録する** には、「[更新する必要があるもの](#whattoupdate)」セクションの値とステップ 1 でのキーを次のコードで使用します。 
     
         このコードでは `overwrite=True` が指定されているため、既存の登録が上書きされて、新しいキーを使用するように更新されます。
     
@@ -132,13 +133,13 @@ for name, ds in datastores.items():
         
         ```
     
-    1. **Studio を使用してデータ ストアを再登録する**には、Studio の左側のペインから **[データストア]** を選択します。 
+    1. **Studio を使用してデータ ストアを再登録する** には、Studio の左側のペインから **[データストア]** を選択します。 
         1. 更新するデータストアを選択します。
         1. 左上にある **[資格情報の更新]** ボタンを選択します。 
         1. ステップ 1 の新しいアクセス キーを使用してフォームに入力し、 **[保存]** をクリックします。
         
-            **既定のデータストア**の資格情報を更新する場合は、このステップを完了し、ステップ 2b を繰り返して、新しいキーをワークスペースの既定のデータストアと再同期します。 
+            **既定のデータストア** の資格情報を更新する場合は、このステップを完了し、ステップ 2b を繰り返して、新しいキーをワークスペースの既定のデータストアと再同期します。 
 
 ## <a name="next-steps"></a>次のステップ
 
-データストアの登録について詳しくは、[`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) クラスのリファレンスを参照してください。
+データストアの登録について詳しくは、[`Datastore`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py) クラスのリファレンスを参照してください。

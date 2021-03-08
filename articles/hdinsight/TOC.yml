@@ -8,6 +8,7 @@
         - name: Azure HDInsight とは
           href: ./hdinsight-overview.md
     - name: チュートリアル
+      expanded: true
       items:
         - name: HDInsight クラスターの作成
           href: ./hdinsight-hadoop-provision-linux-clusters.md
@@ -39,8 +40,18 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: 概念
       items:
-        - name: HDInsight の Apache コンポーネント
-          href: ./hdinsight-component-versioning.md
+        - name: バージョン管理
+          items:
+            - name: バージョン管理の概要
+              href: ./hdinsight-overview-versioning.md
+            - name: HDInsight のバージョン
+              href: ./hdinsight-component-versioning.md
+            - name: HDInsight バージョン 4.0
+              href: ./hdinsight-40-component-versioning.md
+            - name: HDInsight Version 3.6
+              href: ./hdinsight-36-component-versioning.md
+            - name: 廃止された HDInsight のバージョン
+              href: ./hdinsight-retired-versions.md
         - name: Enterprise セキュリティ パッケージ
           href: ./enterprise-security-package.md
         - name: Hortonworks リリース ノート
@@ -63,8 +74,14 @@
           href: ./hdinsight-capacity-planning.md
         - name: クラスター管理のベスト プラクティス
           href: ./cluster-management-best-practices.md
-        - name: 高可用性と信頼性
-          href: ./hdinsight-high-availability-linux.md
+        - name: ビジネス継続性
+          items:
+            - name: ビジネス継続性の概要
+              href: hdinsight-business-continuity.md
+            - name: ビジネス継続性のアーキテクチャ
+              href: ./hdinsight-business-continuity-architecture.md
+            - name: 高可用性のケース スタディ
+              href: ./hdinsight-high-availability-case-study.md
         - name: マネージド ID とは
           href: ./hdinsight-managed-identities.md
         - name: ストレージ オプションの比較
@@ -99,12 +116,16 @@
               iconUrl: null
         - name: クラスター ストレージの使用
           items:
-            - name: Azure Storage を使用する
+            - name: Azure Storage の使用
               href: hdinsight-hadoop-use-blob-storage.md
-            - name: Azure Data Lake Storage Gen2 の使用
+            - name: Data Lake Storage Gen2 の使用
               href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-            - name: Azure Data Lake Storage Gen1 の使用
-              href: hdinsight-hadoop-use-data-lake-store.md
+            - name: ポータルでの Data Lake Storage Gen2 の使用
+              href: hdinsight-hadoop-use-data-lake-storage-gen2-portal.md
+            - name: Azure CLI での Data Lake Storage Gen2 の使用
+              href: hdinsight-hadoop-use-data-lake-storage-gen2-azure-cli.md
+            - name: Data Lake Storage Gen1 の使用
+              href: hdinsight-hadoop-use-data-lake-storage-gen1.md
         - name: クラスターを拡張する
           items:
             - name: HDInsight アプリをインストールする
@@ -126,7 +147,7 @@
                 - name: カスタム アプリをインストールする
                   href: hdinsight-apps-install-custom-applications.md
                 - name: REST を使用してアプリをインストールする
-                  href: 'https://msdn.microsoft.com/library/mt706515.aspx'
+                  href: /rest/api/hdinsight/hdinsight-application
                 - name: HDInsight アプリを Azure Marketplace に発行する
                   href: hdinsight-apps-publish-applications.md
         - name: セキュリティで保護
@@ -252,11 +273,11 @@
         - name: Azure PowerShell
           href: /powershell/module/az.hdinsight
         - name: .NET 用 SDK
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true
         - name: Python 用 SDK
-          href: 'https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python'
+          href: /python/api/overview/azure/hdinsight?view=azure-python&preserve-view=true
         - name: SDK for Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable'
+          href: /java/api/overview/azure/hdinsight
         - name: Go 用 SDK
           href: ./hdinsight-go-sdk-overview.md
         - name: .NET (Apache HBase)
@@ -267,6 +288,8 @@
           href: /rest/api/hdinsightspark/
         - name: Resource Manager テンプレート
           href: /azure/templates/microsoft.hdinsight/allversions
+        - name: Azure Policy の組み込み
+          href: ./policy-reference.md
     - name: リソース
       items:
         - name: リリース
@@ -290,7 +313,7 @@
         - name: Apache Hadoop サービスのヒープ ダンプの有効化
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
         - name: Microsoft Q&A 質問ページのヘルプの表示
-          href: 'https://docs.microsoft.com/answers/topics/azure-hdinsight.html'
+          href: /answers/topics/azure-hdinsight.html
         - name: 料金計算ツール
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: HDInsight 用の Windows ツール
@@ -344,6 +367,8 @@
               href: ./spark/optimize-cluster-configuration.md
         - name: Spark 2.3 または 2.4 に移行する
           href: ./spark/migrate-versions.md
+        - name: .NET for Apache Spark を 1.0 に更新する
+          href: ./spark/spark-dotnet-version-update.md
     - name: 操作方法ガイド
       items:
         - name: ツールの使用
@@ -392,14 +417,20 @@
                   href: ./spark/apache-spark-analyze-application-insight-logs.md
         - name: 管理する
           items:
+            - name: 依存関係の管理
+              items:
+                - name: Spark アプリケーションの依存関係を管理する
+                  href: ./spark/apache-spark-manage-dependencies.md
+                - name: jar の依存関係を安全に管理する
+                  href: ./spark/safely-manage-jar-dependency.md
+                - name: Python 環境を安全に管理する
+                  href: ./spark/apache-spark-python-package-installation.md
             - name: クラスター リソースの管理
               href: ./spark/apache-spark-resource-manager.md
             - name: 拡張された History Server を使用して Apache Spark アプリケーションを管理する
               href: ./spark/apache-azure-spark-history-server.md
             - name: IO キャッシュによるキャッシュを有効にする
               href: ./spark/apache-spark-improve-performance-iocache.md
-            - name: Jar 依存関係の管理
-              href: ./spark/manage-jar-dependency.md
             - name: Apache Spark での Notebook の使用
               items:
                 - name: ローカルの Jupyter Notebook を使用する
@@ -408,8 +439,6 @@
                   href: ./spark/apache-spark-jupyter-notebook-kernels.md
                 - name: cell magic を使用して Jupyter で外部のパッケージを使用する
                   href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
-                - name: スクリプト アクションを使用して Azure HDInsight で Python 環境を安全に管理する
-                  href: ./spark/apache-spark-python-package-installation.md
                 - name: Apache Zeppelin Notebook を使用する
                   href: ./spark/apache-spark-zeppelin-notebook.md
             - name: 他の Azure サービスの使用
@@ -418,13 +447,11 @@
                   href: ./spark/apache-spark-use-with-data-lake-store.md
                 - name: Azure SQL Database に接続する
                   href: ./spark/apache-spark-connect-to-sql-database.md
-                - name: Apache Spark と Cosmos DB を使用してラムダ アーキテクチャを実装する
-                  href: ../cosmos-db/lambda-architecture.md
                 - name: AutoML を使用して Azure ML ワークロードを実行する
                   href: ./spark/apache-spark-run-machine-learning-automl.md
         - name: トラブルシューティング
           items:
-            - name: Jupyter ノートブックを作成できない
+            - name: Jupyter Notebook を作成できない
               href: ./spark/troubleshoot-jupyter-notebook-convert.md
             - name: OutOfMemoryError 例外
               href: ./spark/apache-spark-troubleshoot-outofmemory.md
@@ -487,7 +514,7 @@
           items:
             - name: Apache Hadoop と MapReduce を使用する
               items:
-                - name: MapReduce の概要
+                - name: MapReduce の使用
                   href: ./hadoop/hdinsight-use-mapreduce.md
                 - name: SSH の使用
                   href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md
@@ -632,6 +659,8 @@
               href: ./kafka/apache-kafka-auto-create-topics.md
             - name: IoT Hub と共に Apache Kafka を使用する
               href: ./kafka/apache-kafka-connector-iot-hub.md
+            - name: Confluent スキーマ レジストリ
+              href: ./kafka/apache-kafka-producer-consumer-api.md
             - name: ストリーミング パイプラインを作成する
               items:
                 - name: Apache Spark、Apache Kafka、Azure Cosmos DB
@@ -673,6 +702,10 @@
       items:
         - name: HDInsight での Apache HBase の使用
           href: ./hbase/apache-hbase-tutorial-get-started-linux.md
+    - name: 概念
+      items:
+        - name: Advisor の推奨事項に合わせて最適化する
+          href: ./hbase/apache-hbase-advisor.md
     - name: 操作方法ガイド
       items:
         - name: 開発
@@ -752,6 +785,8 @@
           href: ./interactive-query/gateway-best-practices.md
         - name: サイズ変更のガイドライン
           href: ./interactive-query/sizing-guidelines.md
+        - name: Hive レプリケーション
+          href: ./interactive-query/apache-hive-replication.md
     - name: 操作方法ガイド
       items:
         - name: 開発
@@ -792,6 +827,10 @@
               href: ./interactive-query/apache-hive-query-odbc-driver-powershell.md
         - name: 管理する
           items:
+            - name: ストレージ アカウント間で Hive テーブルをコピーする
+              href: ./interactive-query/hive-migration-across-storage-accounts.md
+            - name: Azure HDInsight で既定の Hive メタストアを外部メタストアに移行する
+              href: ./interactive-query/hive-default-metastore-export-import.md
             - name: Hive ワークロードを HDInsight 4.0 に移行する
               href: ./interactive-query/apache-hive-migrate-workloads.md
             - name: Apache Hive クエリの最適化
@@ -828,6 +867,8 @@
               href: ./hdinsight-troubleshoot-hive.md
             - name: Apache Hive ログによってヘッド ノードのディスク領域全体が占有される
               href: ./interactive-query/interactive-query-troubleshoot-hive-logs-diskspace-full-headnodes.md
+            - name: Hive のセキュリティ オプション
+              href: ./interactive-query/hdinsight-security-options-for-hive.md
 - name: ML サービス
   items:
     - name: 概要
@@ -937,6 +978,8 @@
           href: ./domain-joined/apache-domain-joined-architecture.md
         - name: HDInsight 仮想ネットワーク アーキテクチャ
           href: ./hdinsight-virtual-network-architecture.md
+        - name: プライベート リンク
+          href: ./hdinsight-private-link.md
         - name: トランスポート層セキュリティ
           href: ./transport-layer-security.md
         - name: HDInsight 用の VNET の計画

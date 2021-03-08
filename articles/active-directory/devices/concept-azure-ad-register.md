@@ -1,6 +1,6 @@
 ---
 title: Azure AD 登録済みデバイスとは
-description: デバイス ID 管理を活用して、環境内のリソースにアクセスしているデバイスを管理する方法について説明します。
+description: Azure AD 登録済みデバイスからは、Bring Your Own Device (BYOD) またはモバイル デバイス シナリオのサポートがユーザーに提供されます。そのしくみについて説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1ce0723c0064cee711e851d16f4080a722e7539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72c40b7962090492f8b4b85e555a947130c3628d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554873"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256440"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD 登録済みデバイス
 

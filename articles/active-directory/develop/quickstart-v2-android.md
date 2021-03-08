@@ -1,6 +1,7 @@
 ---
-title: Microsoft ID プラットフォーム Android のクイック スタート | Azure
-description: Android アプリケーションから、Microsoft ID プラットフォーム エンドポイントによるアクセス トークンを必要とする API を呼び出す方法を説明します。
+title: 'クイックスタート: Android アプリへの "Microsoft アカウントでサインイン" の追加 | Azure'
+titleSuffix: Microsoft identity platform
+description: このクイックスタートでは、Microsoft ID プラットフォーム エンドポイントによって発行されるアクセス トークンを必要とする API を、Android アプリケーションから呼び出す方法について説明します。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -11,47 +12,46 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: a46cd1b916edeae8a24fb997db46e5a0651567cb
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 49c69a79b4841f13623c9e6ab3daea72dd7fde26
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115273"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583656"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>クイック スタート:Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
-このクイックスタートでは、コード サンプルを使用して、Android アプリケーションから Microsoft ID プラットフォームを使用することによって個人、仕事、または学校のアカウントへのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを行う方法を示します。 (図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください)。
+このクイックスタートでは、Android アプリケーションでユーザーをサインインし、アクセス トークンを取得して Microsoft Graph API を呼び出す方法を示すコード サンプルをダウンロードして実行します。 
+
+図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 
 アプリケーションは、Microsoft ID プラットフォームがアプリケーションにトークンを提供できるように、Azure Active Directory 内のアプリ オブジェクトによって表現される必要があります。
 
-> [!div renderon="docs"]
-> 便宜上、コード サンプルには、`AndroidManifest.xml` ファイルで事前に構成された既定の `redirect_uri` が付属しているため、最初に独自のアプリ オブジェクトを登録する必要はありません。 `redirect_uri` は、アプリの署名キーに一部基づいています。 サンプル プロジェクトは、指定された `redirect_uri` が機能するように署名キーを使用して事前に構成されています。 アプリ オブジェクトの登録とアプリケーションとの統合の詳細については、「[Android アプリケーションからユーザーにサインインし、Microsoft Graph を呼び出す](tutorial-v2-android.md)」のチュートリアルを参照してください。
+## <a name="prerequisites"></a>前提条件
 
-
-> [!NOTE]
-> **前提条件**
-> * Android Studio 
-> * Android 16 以降
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* Android Studio
+* Android 16 以降
 
 > [!div class="sxs-lookup" renderon="portal"]
-> ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成 
->  このクイック スタートのコード サンプルを動作させるには、Auth ブローカーと互換性があるリダイレクト URI を追加する必要があります。
+> ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
+> このクイックスタートのコード サンプルを動作させるには、Auth ブローカーと互換性のある **リダイレクト URI** を追加します。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [これらの変更を行います]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![構成済み](media/quickstart-v2-android/green-check.png) アプリケーションはこれらの属性で構成されています
 >
-> ### <a name="step-2-download-the-project"></a>手順 2:プロジェクトのダウンロード 
+> ### <a name="step-2-download-the-project"></a>手順 2:プロジェクトのダウンロード
 > [!div class="sxs-lookup" renderon="portal"]
 > Android Studio を使用してプロジェクトを実行します。
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div class="sxs-lookup" renderon="portal" id="autoupdate" class="nextstepaction"]
 > [コード サンプルをダウンロードします](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
-> アプリのプロパティの値を使用してプロジェクトを構成したら、実行する準備は完了です。 
-> このサンプル アプリは、**単一アカウント モード**画面で開始します。 既定のスコープである **user.read** は既定で指定されます。これは、Microsoft Graph API 呼び出し時にご自分のプロファイル データを読み取るときに使用します。 Microsoft Graph API 呼び出しの URL は、既定で指定されます。 このどちらも必要に応じて変更できます。
+> アプリのプロパティの値を使用してプロジェクトを構成したら、実行する準備は完了です。
+> このサンプル アプリは、**単一アカウント モード** 画面で開始します。 既定のスコープである **user.read** は既定で指定されます。これは、Microsoft Graph API 呼び出し時にご自分のプロファイル データを読み取るときに使用します。 Microsoft Graph API 呼び出しの URL は、既定で指定されます。 このどちらも必要に応じて変更できます。
 >
 > ![単一および複数アカウントの使用状況を示す MSAL サンプル アプリ](./media/quickstart-v2-android/quickstart-sample-app.png)
 >
@@ -77,7 +77,7 @@ ms.locfileid: "88115273"
 >
 > Android Studio の **[available devices]\(使用可能なデバイス\)** ドロップダウンからエミュレーターまたは物理デバイスを選択し、アプリを実行します。
 >
-> このサンプル アプリは、**単一アカウント モード**画面で開始します。 既定のスコープである **user.read** は既定で指定されます。これは、Microsoft Graph API 呼び出し時にご自分のプロファイル データを読み取るときに使用します。 Microsoft Graph API 呼び出しの URL は、既定で指定されます。 このどちらも必要に応じて変更できます。
+> このサンプル アプリは、**単一アカウント モード** 画面で開始します。 既定のスコープである **user.read** は既定で指定されます。これは、Microsoft Graph API 呼び出し時にご自分のプロファイル データを読み取るときに使用します。 Microsoft Graph API 呼び出しの URL は、既定で指定されます。 このどちらも必要に応じて変更できます。
 >
 > ![単一および複数アカウントの使用状況を示す MSAL サンプル アプリ](./media/quickstart-v2-android/quickstart-sample-app.png)
 >
@@ -112,8 +112,8 @@ ms.locfileid: "88115273"
 
 MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) はユーザーをサインインし、Microsoft ID プラットフォームによって保護されている API へのアクセス用のトークンを要求するために使用するライブラリです。 Gradle 3.0 以降では、**Gradle Scripts** > **build.gradle (Module: app)** の **Dependencies** に以下を追加すると、ライブラリがインストールされます。
 
-```gradle  
-implementation 'com.microsoft.identity.client:msal:1.+'
+```gradle
+implementation 'com.microsoft.identity.client:msal:2.+'
 ```
 
 これは、サンプル プロジェクトの build.gradle (Module: app) で確認できます。
@@ -121,7 +121,7 @@ implementation 'com.microsoft.identity.client:msal:1.+'
 ```java
 dependencies {
     ...
-    implementation 'com.microsoft.identity.client:msal:1.+'
+    implementation 'com.microsoft.identity.client:msal:2.+'
     ...
 }
 ```
@@ -384,9 +384,9 @@ private void loadAccounts() {
 ユーザーは、自分のアカウントの選択、自分の資格情報の入力、またはアプリから要求されたアクセス許可への同意を要求される場合があります。
 
 * ユーザーが初めてアプリケーションにサインインした場合
-* ユーザーが自分のパスワードをリセットした場合、ユーザーは自分の資格情報を入力する必要がある 
-* 同意が取り消された場合 
-* アプリが明示的に同意を要求する場合 
+* ユーザーが自分のパスワードをリセットした場合、ユーザーは自分の資格情報を入力する必要がある
+* 同意が取り消された場合
+* アプリが明示的に同意を要求する場合
 * アプリケーションがリソースへのアクセスを初めて要求している場合
 * MFA またはその他の条件付きアクセス ポリシーが必要な場合
 
@@ -476,20 +476,11 @@ mMultipleAccountApp.removeAccount(accountList.get(accountListSpinner.getSelected
 }
 ```
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>このクイック スタートで使用されているアプリケーションを作成する手順
-
-アクセス トークンを取得し、それを使用して Microsoft Graph API を呼び出すことができる Android アプリを構築するためのステップバイステップ ガイドについては、「[Android アプリケーションからユーザーにサインインし、Microsoft Graph を呼び出す](tutorial-v2-android.md)」チュートリアルを参照してください。
+Microsoft ID プラットフォームからアクセス トークンを取得し、これを使用して Microsoft Graph API を呼び出す Android アプリを作成する Android チュートリアルに進みます。
 
 > [!div class="nextstepaction"]
-> [Graph API 呼び出し Android チュートリアル](./tutorial-v2-android.md)
-
-### <a name="msal-for-android-library-wiki"></a>Android 用 MSAL ライブラリ Wiki
-
-Android 用 MSAL ライブラリの詳細をご覧ください。
-
-> [!div class="nextstepaction"]
-> [Android 用 MSAL ライブラリ Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [チュートリアル: Android アプリケーションからユーザーをサインインさせて、Microsoft Graph を呼び出す](tutorial-v2-android.md)

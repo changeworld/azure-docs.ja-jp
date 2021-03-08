@@ -4,22 +4,22 @@ description: デプロイ マニフェストを使ってデプロイするモジ
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/26/2020
+ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dd2b9bc462a9d4bc11f49a7e3294e52f88a926fb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 406420fcd517ceda8ea6eedfc955f54b15541f74
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511842"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366604"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge にモジュールをデプロイしてルートを確立する方法について説明します。
 
 各 IoT Edge デバイスでは、$edgeAgent と $edgeHub という少なくとも 2 つのモジュールが実行されます。これらは IoT Edge ランタイムに含まれています。 IoT Edge デバイスは、任意の数のプロセスに対して複数の追加モジュールを実行できます。 インストールするモジュールとそれらを連携させるための構成方法をデバイスに伝えるには、配置マニフェストを使用します。
 
-*デプロイ マニフェスト*は、次の内容が記述された JSON ドキュメントです。
+*デプロイ マニフェスト* は、次の内容が記述された JSON ドキュメントです。
 
 * 3 つのコンポーネントを含む **IoT Edge エージェント** モジュール ツイン。
   * デバイスで実行される各モジュールのコンテナー イメージ。
@@ -38,7 +38,7 @@ Azure IoT Edge チュートリアルでは、Azure IoT Edge ポータルでウ�
 
 すべての配置マニフェストに、`$edgeAgent` と `$edgeHub` という 2 つのモジュールが必要です。 これらのモジュールは、IoT Edge デバイスとそこで実行されるモジュールを管理する IoT Edge ランタイムの構成要素です。 これらのモジュールの詳細については、[IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)に関するページを参照してください。
 
-この 2 つのランタイム モジュールに加え、独自のモジュールを 30 個まで追加して、IoT Edge デバイス上で動作させることができます。
+この 2 つのランタイム モジュールに加え、独自のモジュールを 50 個まで追加して、IoT Edge デバイス上で動作させることができます。
 
 IoT Edge ランタイム (edgeAgent と edgeHub) さえ含まれていれば配置マニフェストは有効です。
 
@@ -46,32 +46,31 @@ IoT Edge ランタイム (edgeAgent と edgeHub) さえ含まれていれば配�
 
 ```json
 {
-    "modulesContent": {
-        "$edgeAgent": { // required
-            "properties.desired": {
-                // desired properties of the Edge agent
-                // includes the image URIs of all modules
-                // includes container registry credentials
-            }
-        },
-        "$edgeHub": { //required
-            "properties.desired": {
-                // desired properties of the Edge hub
-                // includes the routing information between modules, and to IoT Hub
-            }
-        },
-        "module1": {  // optional
-            "properties.desired": {
-                // desired properties of module1
-            }
-        },
-        "module2": {  // optional
-            "properties.desired": {
-                // desired properties of module2
-            }
-        },
-        ...
+  "modulesContent": {
+    "$edgeAgent": { // required
+      "properties.desired": {
+        // desired properties of the IoT Edge agent
+        // includes the image URIs of all deployed modules
+        // includes container registry credentials
+      }
+    },
+    "$edgeHub": { //required
+      "properties.desired": {
+        // desired properties of the IoT Edge hub
+        // includes the routing information between modules, and to IoT Hub
+      }
+    },
+    "module1": {  // optional
+      "properties.desired": {
+        // desired properties of module1
+      }
+    },
+    "module2": {  // optional
+      "properties.desired": {
+        // desired properties of module2
+      }
     }
+  }
 }
 ```
 
@@ -79,40 +78,101 @@ IoT Edge ランタイム (edgeAgent と edgeHub) さえ含まれていれば配�
 
 デプロイに含まれるモジュールを IoT Edge ランタイムでどのようにインストールするかを定義します。 IoT Edge エージェントは、IoT Edge デバイスのインストール、更新、状態レポートを管理するランタイム コンポーネントです。 そのため、$edgeAgent モジュール ツインには、すべてのモジュールの構成情報と管理情報が含まれます。 この情報には、IoT Edge エージェント自体の構成パラメーターが含まれます。
 
-含めることができるプロパティおよび必須プロパティの完全な一覧については、[IoT Edge エージェントおよび IoT Edge ハブのプロパティ](module-edgeagent-edgehub.md)に関するページをご覧ください。
-
 $EdgeAgent プロパティは次の構造に従います。
 
 ```json
-"$edgeAgent": {
-    "properties.desired": {
-        "schemaVersion": "1.0",
+{
+  "modulesContent": {
+    "$edgeAgent": {
+      "properties.desired": {
+        "schemaVersion": "1.1",
         "runtime": {
-            "settings":{
-                "registryCredentials":{ // give the edge agent access to container images that aren't public
-                    }
-                }
+          "settings":{
+            "registryCredentials":{
+              // give the IoT Edge agent access to container images that aren't public
             }
+          }
         },
         "systemModules": {
-            "edgeAgent": {
-                // configuration and management details
-            },
-            "edgeHub": {
-                // configuration and management details
-            }
+          "edgeAgent": {
+            // configuration and management details
+          },
+          "edgeHub": {
+            // configuration and management details
+          }
         },
         "modules": {
-            "module1": { // optional
-                // configuration and management details
-            },
-            "module2": { // optional
-                // configuration and management details
-            }
+          "module1": {
+            // configuration and management details
+          },
+          "module2": {
+            // configuration and management details
+          }
         }
-    }
-},
+      }
+    },
+    "$edgeHub": { ... },
+    "module1": { ... },
+    "module2": { ... }
+  }
+}
 ```
+
+IoT Edge エージェント スキーマ バージョン 1.1 は IoT Edge バージョン 1.0.10 と共にリリースされ、モジュールの起動順序機能を使用可能にします。 バージョン 1.0.10 以降を実行している IoT Edge デプロイでは、スキーマ バージョン 1.1 の使用をお勧めします。
+
+### <a name="module-configuration-and-management"></a>モジュールの構成と管理
+
+IoT Edge エージェントの必要なプロパティの一覧では、IoT Edge デバイスにデプロイするモジュールと、その構成と管理の方法を定義します。
+
+含めることが可能または必須のプロパティの完全な一覧については、[IoT Edge エージェントおよび IoT Edge ハブのプロパティ](module-edgeagent-edgehub.md)に関するページをご覧ください。
+
+次に例を示します。
+
+```json
+{
+  "modulesContent": {
+    "$edgeAgent": {
+      "properties.desired": {
+        "schemaVersion": "1.1",
+        "runtime": { ... },
+        "systemModules": {
+          "edgeAgent": { ... },
+          "edgeHub": { ... }
+        },
+        "modules": {
+          "module1": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "startupOrder": 2,
+            "settings": {
+              "image": "myacr.azurecr.io/module1:latest",
+              "createOptions": "{}"
+            }
+          },
+          "module2": { ... }
+        }
+      }
+    },
+    "$edgeHub": { ... },
+    "module1": { ... },
+    "module2": { ... }
+  }
+}
+```
+
+すべてのモジュールには、**settings** プロパティがあり、これにはモジュールの **image** (コンテナー レジストリ内のコンテナー イメージのアドレス)、および起動時にイメージを構成する任意の **createOptions** が含まれます。 詳細については、「[IoT Edge モジュールのコンテナー作成オプションを構成する方法](how-to-use-create-options.md)」を参照してください。
+
+edgeHub モジュールとカスタム モジュールには、IoT Edge エージェントに管理方法を指示する 3 つのプロパティもあります。
+
+* **状態**: 最初のデプロイ時にモジュールを実行中にするか、停止するか。 必須です。
+* **restartPolicy**:モジュールが停止する場合は、IoT Edge エージェントがモジュールを再起動する必要があるか、およびそのタイミング。 必須です。
+* **startupOrder**:*IoT Edge バージョン 1.0.10 で導入されました。* IoT Edge エージェントが最初にデプロイされたときにモジュールを起動する順序。 順序は整数で宣言され、スタートアップ値が 0 であるモジュールが最初に起動し、より大きい数値のものが続きます。 edgeAgent モジュールは、常に最初に起動するため、スタートアップ値がありません。 任意。
+
+  IoT Edge エージェントはスタートアップ値の順にモジュールを起動しますが、各モジュールの起動が終了するのを待ってから次に移ります。
+
+  スタートアップ順序は、一部のモジュールが他のモジュールに依存している場合に便利です。 たとえば、edgeHub モジュールを最初に起動して、他のモジュールが開始されたときにメッセージがルーティングされるよう準備を整えることができます。 または、ストレージ モジュールにデータを送信するモジュールより前に、ストレージ モジュールを開始することもできます。 ただし、他のモジュールの障害を処理するようにモジュールを設計する必要があります。 これは、いつでも停止したり再起動したりする可能性が任意の回数あるというコンテナーの性質によるものです。
 
 ## <a name="declare-routes"></a>ルートの宣言
 
@@ -121,17 +181,36 @@ IoT Edge ハブは、モジュール、IoT ハブ、リーフ デバイス間の
 ルートは、 **$edgeHub** の必要なプロパティで、次の構文を使用して宣言します。
 
 ```json
-"$edgeHub": {
-    "properties.desired": {
+{
+  "modulesContent": {
+    "$edgeAgent": { ... },
+    "$edgeHub": {
+      "properties.desired": {
+        "schemaVersion": "1.1",
         "routes": {
-            "route1": "FROM <source> WHERE <condition> INTO <sink>",
-            "route2": "FROM <source> WHERE <condition> INTO <sink>"
+          "route1": "FROM <source> WHERE <condition> INTO <sink>",
+          "route2": {
+            "route": "FROM <source> WHERE <condition> INTO <sink>",
+            "priority": 0,
+            "timeToLiveSecs": 86400
+          }
         },
-    }
+        "storeAndForwardConfiguration": {
+          "timeToLiveSecs": 10
+        }
+      }
+    },
+    "module1": { ... },
+    "module2": { ... }
+  }
 }
 ```
 
-ソースとシンクはすべてのルートに必要ですが、条件は、メッセージをフィルター処理するために使用できる省略可能な部分です。
+IoT Edge ハブ スキーマ バージョン 1.1 は IoT Edge バージョン 1.0.10 と共にリリースされ、ルートの優先順位付け機能と有効期限を使用可能にします。 バージョン 1.0.10 以降を実行している IoT Edge デプロイでは、スキーマ バージョン 1.1 の使用をお勧めします。
+
+各ルートには、メッセージの送信元である *ソース* と、メッセージの送信先である *シンク* が必要です。 *条件* は、メッセージをフィルター処理するために使用できる省略可能な部分です。
+
+メッセージが最初に処理されるようにする *優先順位* をルートに割り当てることができます。 この機能は、アップストリーム接続が脆弱または制限付きであり、標準のテレメトリ メッセージより優先される重要なデータがある場合に役立ちます。
 
 ### <a name="source"></a>source
 
@@ -186,6 +265,32 @@ IoT Edge は、At-Least-Once 保証を提供します。 IoT Edge ハブは、�
 
 IoT Edge ハブでは、[IoT Edge ハブの必要なプロパティ](module-edgeagent-edgehub.md)の `storeAndForwardConfiguration.timeToLiveSecs` プロパティで指定した時間まで、メッセージが格納されます。
 
+### <a name="priority-and-time-to-live"></a>優先順位と有効期限
+
+ルートは、ルートを定義する文字列として、またはルート文字列、優先順位の整数、および有効期限の整数を使用するオブジェクトとして宣言できます。
+
+オプション 1: 
+
+   ```json
+   "route1": "FROM <source> WHERE <condition> INTO <sink>",
+   ```
+
+オプション 2、IoT Edge バージョン 1.0.10 と IoT Edge ハブ スキーマ バージョン 1.1 で導入:
+
+   ```json
+   "route2": {
+     "route": "FROM <source> WHERE <condition> INTO <sink>",
+     "priority": 0,
+     "timeToLiveSecs": 86400
+   }
+   ```
+
+**priority** の値は 0 ～ 9 にすることができます (0 と 9 を含む)。ここで、0 が最も高い優先順位です。 メッセージは、エンドポイントに基づいてキューに登録されます。 特定のエンドポイントを対象とするすべての優先度 0 メッセージは、同じエンドポイントを対象とする優先度 1 メッセージが処理される前にすべて処理されます。 同じエンドポイントに対して複数のルートが同じ優先順位を持つ場合、そのメッセージは先着順で処理されます。 優先順位が指定されていない場合、そのルートは最も低い優先順位に割り当てられます。
+
+**timeToLiveSecs** プロパティは、明示的に設定されていない限り、IoT Edge ハブの **storeAndForwardConfiguration** からその値を継承します。 値には正の整数を指定できます。
+
+優先キューを管理する方法の詳細については、[ルートの優先順位と有効期限](https://github.com/Azure/iotedge/blob/master/doc/Route_priority_and_TTL.md)に関するリファレンス ページをご覧ください。
+
 ## <a name="define-or-update-desired-properties"></a>必要なプロパティの定義または更新
 
 配置マニフェストでは、IoT Edge デバイスにデプロイされるモジュールごとに、必要なプロパティを指定します。 現時点でモジュール ツインにある必要なプロパティは、配置マニフェストにある必要なプロパティによってすべて上書きされます。
@@ -203,7 +308,7 @@ IoT Edge ハブでは、[IoT Edge ハブの必要なプロパティ](module-edge
   "modulesContent": {
     "$edgeAgent": {
       "properties.desired": {
-        "schemaVersion": "1.0",
+        "schemaVersion": "1.1",
         "runtime": {
           "type": "docker",
           "settings": {
@@ -222,7 +327,7 @@ IoT Edge ハブでは、[IoT Edge ハブの必要なプロパティ](module-edge
           "edgeAgent": {
             "type": "docker",
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+              "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
               "createOptions": ""
             }
           },
@@ -230,8 +335,9 @@ IoT Edge ハブでは、[IoT Edge ハブの必要なプロパティ](module-edge
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
+            "startupOrder": 0,
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+              "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
             }
           }
@@ -242,6 +348,7 @@ IoT Edge ハブでは、[IoT Edge ハブの必要なプロパティ](module-edge
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
+            "startupOrder": 2,
             "settings": {
               "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
               "createOptions": "{}"
@@ -252,6 +359,7 @@ IoT Edge ハブでは、[IoT Edge ハブの必要なプロパティ](module-edge
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
+            "startupOrder": 1,
             "env": {
               "tempLimit": {"value": "100"}
             },
@@ -265,13 +373,21 @@ IoT Edge ハブでは、[IoT Edge ハブの必要なプロパティ](module-edge
     },
     "$edgeHub": {
       "properties.desired": {
-        "schemaVersion": "1.0",
+        "schemaVersion": "1.1",
         "routes": {
-          "sensorToFilter": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
-          "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
+          "sensorToFilter": {
+            "route": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
+            "priority": 0,
+            "timeToLiveSecs": 1800
+          },
+          "filterToIoTHub": {
+            "route": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream",
+            "priority": 1,
+            "timeToLiveSecs": 1800
+          }
         },
         "storeAndForwardConfiguration": {
-          "timeToLiveSecs": 10
+          "timeToLiveSecs": 100
         }
       }
     }

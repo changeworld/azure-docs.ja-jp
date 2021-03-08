@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a6c455f3702433398035a2eb6398c39b609ce9
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 366d68be1a7f115980973015e363da6095876754
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337451"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997632"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>方法:リスク ポリシーを構成して有効にする
 
@@ -33,7 +33,7 @@ ms.locfileid: "87337451"
 
 ## <a name="prerequisites"></a>前提条件 
 
-リスクが検出されたときにユーザーが自己修復を実行できるようにする場合は、セルフサービス パスワード リセット と Azure Multi-Factor Authentication の両方にユーザーが登録されている必要があります。 最適なエクスペリエンスを実現するには、[統合されたセキュリティ情報の登録エクスペリエンス](../authentication/howto-registration-mfa-sspr-combined.md)を有効にすることをお勧めします。 ユーザーに自己修復を許可すると、管理者の介入を必要とせずに、生産的な状態に迅速に戻ることができます。 管理者は、事後にこれらのイベントを表示して調査することができます。 
+リスクが検出されたときにユーザーが自己修復を実行できるようにする場合は、セルフサービス パスワード リセット と Azure AD Multi-Factor Authentication の両方にユーザーが登録されている必要があります。 最適なエクスペリエンスを実現するには、[統合されたセキュリティ情報の登録エクスペリエンス](../authentication/howto-registration-mfa-sspr-combined.md)を有効にすることをお勧めします。 ユーザーに自己修復を許可すると、管理者の介入を必要とせずに、生産的な状態に迅速に戻ることができます。 管理者は、事後にこれらのイベントを表示して調査することができます。 
 
 ## <a name="choosing-acceptable-risk-levels"></a>許容されるリスク レベルの選択
 
@@ -45,7 +45,7 @@ Microsoft で推奨しているのは、ユーザー リスク ポリシーの�
 
 ## <a name="exclusions"></a>除外
 
-すべてのポリシーで、[緊急時の管理者アカウント](../users-groups-roles/directory-emergency-access.md)などのユーザーを除外できます。 組織は、アカウントの使用方法に基づいて、特定のポリシーから他のアカウントを除外する必要があると判断できます。 すべての除外を定期的に見直して、適用を続行するかどうかを確認する必要があります。
+すべてのポリシーで、[緊急時の管理者アカウント](../roles/security-emergency-access.md)などのユーザーを除外できます。 組織は、アカウントの使用方法に基づいて、特定のポリシーから他のアカウントを除外する必要があると判断できます。 すべての除外を定期的に見直して、適用を続行するかどうかを確認する必要があります。
 
 Identity Protection で構成済みのセキュリティで保護された[ネットワークの場所](../conditional-access/location-condition.md)を使用することで、リスクを検出して偽陽性を減らすことができます。
 
@@ -76,7 +76,7 @@ Identity Protection で構成済みのセキュリティで保護された[ネ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Multi-Factor Authentication 登録ポリシーを有効にする](howto-identity-protection-configure-mfa-policy.md)
+- [Azure AD Multi-Factor Authentication 登録ポリシーを有効にする](howto-identity-protection-configure-mfa-policy.md)
 
 - [リスクとは](concept-identity-protection-risks.md)
 

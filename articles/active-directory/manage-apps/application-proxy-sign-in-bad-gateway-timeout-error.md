@@ -4,7 +4,7 @@ description: Azure AD アプリケーション プロキシ アプリケーシ�
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18c3b0397a0ad3e9e368d1a14e20a999ced5545b
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0b9fb68643c48c685194fa7ba1f1e5050d2d3cc7
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690274"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254933"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーション使用時の "この企業アプリケーションにアクセスできない" というエラー
 
@@ -87,7 +87,7 @@ ms.locfileid: "88690274"
 
 ## <a name="check-for-other-connector-errors"></a>その他のコネクタ エラーを確認する
 
-上記のどの解決策でも問題が解決されない場合は、次の手順として、コネクタ自体の問題またはエラーを調べます。 いくつかの一般的なエラーは、[トラブルシューティング ドキュメント](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors)で確認できます。
+上記のどの解決策でも問題が解決されない場合は、次の手順として、コネクタ自体の問題またはエラーを調べます。 いくつかの一般的なエラーは、[トラブルシューティング ドキュメント](./application-proxy-troubleshoot.md#connector-errors)で確認できます。
 
 また、コネクタのログを直接確認して、エラーを識別することもできます。 多くのエラー メッセージは、解決策のためのより具体的な推奨事項を共有しています。 ログを表示するには、[コネクタのドキュメント](application-proxy-connectors.md#under-the-hood)を参照してください。
 

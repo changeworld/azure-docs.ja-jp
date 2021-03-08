@@ -1,30 +1,30 @@
 ---
-title: Azure Stack Edge の共有管理 | Microsoft Docs
-description: Azure portal を使用して Azure Stack Edge の共有を管理する方法について説明します。
+title: Azure Stack Edge Pro - FPGA の共有管理 | Microsoft Docs
+description: Azure portal を使用して Azure Stack Edge Pro - FPGA の共有を管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/25/2019
+ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 1aceb9d2fb1d9b5890bc0859d432bc1c5e7e4db4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fbb5ca43d2877e2e14914b71df7cc1bcdf27f88
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339841"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898379"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge"></a>Azure portal を使用して Azure Stack Edge の共有を管理する
+# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro-fpga"></a>Azure portal を使用して Azure Stack Edge Pro FPGA の共有を管理する 
 
-この記事では、Azure Stack Edge の共有を管理する方法について説明します。 Azure Stack Edge の管理は、Azure portal またはローカル Web UI を通じて行えます。 Azure portal を使用し、共有に関連付けられているストレージ アカウントの共有を追加、削除、更新したり、ストレージ キーを同期したりすることができます。
+この記事では、Azure Stack Edge Pro FPGA デバイスの共有を管理する方法について説明します。 Azure Stack Edge Pro FPGA デバイスは、Azure portal またはローカル Web UI を使用して管理できます。 Azure portal を使用し、共有に関連付けられているストレージ アカウントの共有を追加、削除、更新したり、ストレージ キーを同期したりすることができます。
 
 ## <a name="about-shares"></a>共有について
 
-データを Azure に転送するには、Azure Stack Edge で共有を作成する必要があります。 Azure Stack Edge デバイスで追加する共有は、ローカル共有か、クラウドにデータをプッシュする共有になります。
+データを Azure に転送するには、Azure Stack Edge Pro FPGA で共有を作成する必要があります。 Azure Stack Edge Pro デバイスで追加する共有は、ローカル共有か、クラウドにデータをプッシュする共有になります。
 
  - **ローカル共有**:デバイス上でデータをローカル処理するとき、ローカル共有を使用します。
- - **共有**:デバイス データがクラウドのご利用のストレージ アカウントに自動的にプッシュされるようにする場合は、クラウド共有を使用します。 共有には、すべてのクラウド機能 (**更新**、**ストレージ キーの同期**など) が適用されます。
+ - **共有**:デバイス データがクラウドのご利用のストレージ アカウントに自動的にプッシュされるようにする場合は、クラウド共有を使用します。 共有には、すべてのクラウド機能 (**更新**、**ストレージ キーの同期** など) が適用されます。
 
 この記事では、次のことについて説明します。
 
@@ -39,7 +39,7 @@ ms.locfileid: "84339841"
 
 共有を作成するには、Azure portal で次の手順を実行します。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[ゲートウェイ] > [共有]** に移動します。 コマンド バーの **+ [共有の追加]** を選択します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\)** に移動します。 **[共有]** に移動し、コマンド バーの **[+ 共有の追加]** を選択します。
 
     ![[共有の追加] を選択する](media/azure-stack-edge-manage-shares/add-share-1.png)
 
@@ -49,20 +49,20 @@ ms.locfileid: "84339841"
 
 3. 共有の **[種類]** を選択します。 種類には **SMB** (既定値) または **NFS** を選択することができます。 SMB は Windows クライアントの場合に標準です。また、Linux クライアントの場合は NFS が使用されます。 SMB 共有と NFS 共有のどちらを選択するかに応じて、表示されるオプションの一部が変わります。
 
-4. 共有を配置する**ストレージ アカウント**を指定します。 コンテナーがまだ存在しない場合は、ストレージ アカウントに共有名を持つコンテナーが作成されます。 コンテナーが既に存在する場合は、既存のコンテナーが使用されます。
+4. 共有を配置する **ストレージ アカウント** を指定します。 コンテナーがまだ存在しない場合は、ストレージ アカウントに共有名を持つコンテナーが作成されます。 コンテナーが既に存在する場合は、既存のコンテナーが使用されます。
 
 5. ドロップダウン リストのブロック BLOB、ページ BLOB、またはファイルから **[ストレージ サービス]** を選択します。 選択されるサービスの種類は、Azure に存在するデータの形式によって変わります。 たとえば、このインスタンスでは、ブロック BLOB として Azure にデータを配置するため、 **[ブロック BLOB]** を選択します。 **[ページ BLOB]** を選択する場合は、データに 512 バイトが確実に割り当てられているようにする必要があります。 常に 512 バイトが割り当てられる VHD または VHDX には **[ページ BLOB]** を使用します。
 
    > [!IMPORTANT]
-   > Azure Stack Edge または Data Box Gateway デバイスで Azure Storage アカウントをご使用の場合、その Azure Storage アカウントで不変ポリシーが有効になっていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)」を参照してください。
+   > Azure Stack Edge Pro または Data Box Gateway デバイスで Azure Storage アカウントを使用する場合、その Azure Storage アカウントに不変ポリシーが設定されていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](../storage/blobs/storage-blob-immutability-policies-manage.md)」を参照してください。
 
 6. この手順は、SMB 共有と NFS 共有のどちらを作成するかに応じて変わります。
-   - **SMB 共有を作成する場合** - **[すべての権限を持つローカル ユーザー]** フィールドで、 **[新規作成]** または **[既存のものを使用]** を選択します。 新しいローカル ユーザーを作成する場合は、**ユーザー名**、**パスワード**を指定し、パスワードの確認を入力します。 これで、ローカル ユーザーにアクセス許可が割り当てられます。 ここで割り当てたアクセス許可は、ファイル エクスプローラーを使用して変更できます。
+   - **SMB 共有を作成する場合** - **[すべての権限を持つローカル ユーザー]** フィールドで、 **[新規作成]** または **[既存のものを使用]** を選択します。 新しいローカル ユーザーを作成する場合は、**ユーザー名**、**パスワード** を指定し、パスワードの確認を入力します。 これで、ローカル ユーザーにアクセス許可が割り当てられます。 ここで割り当てたアクセス許可は、ファイル エクスプローラーを使用して変更できます。
 
       ![SMB 共有を追加する](media/azure-stack-edge-manage-shares/add-smb-share.png)
 
         この共有データに対して [読み取り操作のみを許可する] をオンにすると、読み取り専用ユーザーを指定することができます。
-   - **NFS 共有を作成する場合** - 共有へのアクセスが**許可されたクライアントの IP アドレス**を指定する必要があります。
+   - **NFS 共有を作成する場合** - 共有へのアクセスが **許可されたクライアントの IP アドレス** を指定する必要があります。
 
       ![NFS 共有を追加する](media/azure-stack-edge-manage-shares/add-nfs-share.png)
 
@@ -72,9 +72,9 @@ ms.locfileid: "84339841"
 
 ## <a name="add-a-local-share"></a>ローカル共有を追加する
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[ゲートウェイ] > [共有]** に移動します。 コマンド バーの **+ [共有の追加]** を選択します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\) > [共有]** に移動します。 コマンド バーの **+ [共有の追加]** を選択します。
 
-   ![[共有の追加] を選択する](media/azure-stack-edge-manage-shares/add-local-share-1.png)
+   ![[共有の追加] を選択する 2](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
 2. **[共有の追加]** で共有設定を指定します。 共有の一意の名前を指定します。
     
@@ -96,17 +96,15 @@ ms.locfileid: "84339841"
 
    ![[共有] ブレードの更新の表示](media/azure-stack-edge-manage-shares/add-local-share-3.png)
     
-    共有を選択すると、この共有の Edge コンピューティング モジュールのローカル マウント ポイントが表示されます。
 
-   ![ローカル共有の詳細の表示](media/azure-stack-edge-manage-shares/add-local-share-4.png)
 
 ## <a name="mount-a-share"></a>共有のマウント
 
-Azure Stack Edge デバイス上でコンピューティングを構成する前に共有を作成した場合、その共有をマウントする必要があります。 共有をマウントするには、次の手順を行います。
+Azure Stack Edge Pro デバイス上でコンピューティングを構成する前に共有を作成した場合、その共有をマウントする必要があります。 共有をマウントするには、次の手順を行います。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[ゲートウェイ] > [共有]** に移動します。 共有の一覧からマウントする共有を選択します。 **[コンピューティングに使用]** 列で、選択した共有の状態に**無効**と表示されます。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\) > [共有]** に移動します。 共有の一覧からマウントする共有を選択します。 **[コンピューティングに使用]** 列で、選択した共有の状態に **無効** と表示されます。
 
-   ![共有を選択する](media/azure-stack-edge-manage-shares/select-share-mount.png)
+   ![共有を選択する 3](media/azure-stack-edge-manage-shares/select-share-mount.png)
 
 2. **[マウント]** を選択します。
 
@@ -116,21 +114,21 @@ Azure Stack Edge デバイス上でコンピューティングを構成する前
 
    ![マウントを確認する](media/azure-stack-edge-manage-shares/confirm-mount.png)
 
-4. 共有がマウントされたら、共有の一覧に移動します。 **[コンピューティングに使用]** 列の共有の状態が**有効**と表示されていることを確認できます。
+4. 共有がマウントされたら、共有の一覧に移動します。 **[コンピューティングに使用]** 列の共有の状態が **有効** と表示されていることを確認できます。
 
    ![マウントされた共有](media/azure-stack-edge-manage-shares/share-mounted.png)
 
 5. もう一度共有を選択し、共有に使用するローカル マウント ポイントを表示します。 Edge コンピューティング モジュールでは、共有にこのローカル マウント ポイントを使用します。
 
-   ![共有用のローカル マウント ポイント](media/azure-stack-edge-manage-shares/share-mountpoint.png)
+   ![共有用のローカル マウント ポイント](media/azure-stack-edge-manage-shares/share-mountpoint.png) 
 
 ## <a name="unmount-a-share"></a>共有のマウントの解除
 
 共有のマウントを解除するには、Azure portal で次の手順を行います。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[ゲートウェイ] > [共有]** に移動します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\) > [共有]** に移動します。
 
-   ![共有を選択する](media/azure-stack-edge-manage-shares/select-share-unmount.png)
+   ![共有を選択する 4](media/azure-stack-edge-manage-shares/select-share-unmount.png)
 
 2. 共有の一覧で、マウントを解除する共有を選択します。 マウントを解除する共有がどのモジュールからも使用されていないことを確認する必要があります。 共有がモジュールによって使用されている場合、該当するモジュールで問題が発生します。 **[マウント解除]** を選択します。
 
@@ -140,7 +138,7 @@ Azure Stack Edge デバイス上でコンピューティングを構成する前
 
    ![マウント解除を確認する](media/azure-stack-edge-manage-shares/confirm-unmount.png)
 
-4. 共有のマウントが解除されたら、共有の一覧に移動します。 **[コンピューティングに使用]** 列の共有の状態に**無効**と表示されることを確認できます。
+4. 共有のマウントが解除されたら、共有の一覧に移動します。 **[コンピューティングに使用]** 列の共有の状態に **無効** と表示されることを確認できます。
 
    ![マウントが解除された共有](media/azure-stack-edge-manage-shares/share-unmounted.png)
 
@@ -148,13 +146,13 @@ Azure Stack Edge デバイス上でコンピューティングを構成する前
 
 共有を削除するには、Azure portal で次の手順を実行します。
 
-1. 共有の一覧で、削除したい共有を選択してクリックします。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\) > [共有]** に移動します。 共有の一覧で、削除したい共有を選択してクリックします。
 
-   ![共有を選択する](media/azure-stack-edge-manage-shares/delete-share-1.png)
+   ![共有を選択する 5](media/azure-stack-edge-manage-shares/delete-share-1.png)
 
-2. **[削除]** をクリックします。
+2. **[削除]** を選択します。
 
-   ![[削除] をクリック](media/azure-stack-edge-manage-shares/delete-share-2.png)
+   ![[削除] の選択](media/azure-stack-edge-manage-shares/delete-share-2.png)
 
 3. 確認を求められたら、 **[はい]** をクリックします。
 
@@ -173,15 +171,15 @@ Azure Stack Edge デバイス上でコンピューティングを構成する前
 
 共有を更新するには、Azure portal で次の手順を実行します。
 
-1. Azure portal で **[共有]** に移動します。 更新したい共有を選択してクリックします。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\) > [共有]** に移動します。 更新したい共有を選択してクリックします。
 
-   ![共有を選択する](media/azure-stack-edge-manage-shares/refresh-share-1.png)
+   ![共有を選択する 6](media/azure-stack-edge-manage-shares/refresh-share-1.png)
 
-2. **[最新の情報に更新]** をクリックします。
+2. **[最新のデータに更新]** を選択します。
 
-   ![[最新の情報に更新] をクリックする](media/azure-stack-edge-manage-shares/refresh-share-2.png)
+   ![更新を選択する](media/azure-stack-edge-manage-shares/refresh-share-2.png)
  
-3. 確認を求められたら、 **[はい]** をクリックします。 オンプレミスの共有の内容を更新するジョブが開始されます。
+3. 確認を求められたら、 **[はい]** を選択します。 オンプレミスの共有の内容を更新するジョブが開始されます。
 
    ![更新を確認する](media/azure-stack-edge-manage-shares/refresh-share-3.png)
 
@@ -199,7 +197,7 @@ Azure Stack Edge デバイス上でコンピューティングを構成する前
 
 ストレージ アクセス キーを同期するには、Azure portal で次の手順を実行してください。
 
-1. リソースの **[概要]** に移動します。 共有の一覧で、同期する必要があるストレージ アカウントに関連付けられている共有を選択してクリックします。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\) > [共有]** に移動します。 共有の一覧で、同期する必要があるストレージ アカウントに関連付けられている共有を選択してクリックします。
 
     ![ストレージ アカウントに関連付けられている共有を選択する](media/azure-stack-edge-manage-shares/sync-storage-key-1.png)
 

@@ -1,19 +1,16 @@
 ---
 title: チュートリアル - Azure HDInsight で Apache HBase を使用する
 description: この Apache HBase のチュートリアルに従って、HDInsight で Hadoop を使い始めることができます。 HBase シェルからテーブルを作成し、Hive を使用したクエリを実行します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 04/14/2020
-ms.openlocfilehash: a19e2c6647f1ff072c61044e8e5777d5d3f8d2db
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 01/22/2021
+ms.openlocfilehash: 5de98f5bf57626a408dd5bec8575856074f434c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85958363"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705672"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache HBase を使用する
 
@@ -32,7 +29,7 @@ ms.locfileid: "85958363"
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-* Bash。 この記事の例では、curl コマンドのために Windows 10 上で Bash シェルを使用します。 インストール手順については、「[Windows Subsystem for Linux Installation Guide for Windows 10 (Windows 10 用 Windows Subsystem for Linux インストール ガイド)](https://docs.microsoft.com/windows/wsl/install-win10)」をご覧ください。  他の [Unix シェル](https://www.gnu.org/software/bash/)も動作します。  これらの curl の例は、少し変更すれば、Windows コマンド プロンプトで動作できます。  または、Windows PowerShell コマンドレット [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod) を使用できます。
+* Bash。 この記事の例では、curl コマンドのために Windows 10 上で Bash シェルを使用します。 インストール手順については、「[Windows Subsystem for Linux Installation Guide for Windows 10 (Windows 10 用 Windows Subsystem for Linux インストール ガイド)](/windows/wsl/install-win10)」をご覧ください。  他の [Unix シェル](https://www.gnu.org/software/bash/)も動作します。  これらの curl の例は、少し変更すれば、Windows コマンド プロンプトで動作できます。  または、Windows PowerShell コマンドレット [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) を使用できます。
 
 ## <a name="create-apache-hbase-cluster"></a>Apache HBase クラスターを作成する
 
@@ -136,7 +133,7 @@ HBase ([クラウド BigTable](https://cloud.google.com/bigtable/) の実装) �
 
 HBase では、いくつかの方法でテーブルにデータを読み込ことができます。  詳細については、 [一括読み込み](https://hbase.apache.org/book.html#arch.bulk.load)に関するページを参照してください。
 
-サンプルのデータ ファイルは、パブリック BLOB コンテナー `wasb://hbasecontacts\@hditutorialdata.blob.core.windows.net/contacts.txt` にあります。  このデータ ファイルの内容は次のとおりです。
+サンプルのデータ ファイルは、パブリック BLOB コンテナー `wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt` にあります。  このデータ ファイルの内容は次のとおりです。
 
 `8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.`
 
@@ -207,9 +204,51 @@ HBase では、いくつかの方法でテーブルにデータを読み込こ�
 
 1. ssh 接続を終了するには、`exit` を使用します。
 
+### <a name="separate-hive-and-hbase-clusters"></a>Hive クラスターと HBase クラスターを分離する
+
+HBase データにアクセスする Hive クエリは、HBase クラスターから実行する必要はありません。 次の手順が完了していれば、Hive に付属する任意のクラスター (Spark、Hadoop、HBase、Interactive Query など) を使用して、HBase データに対するクエリを実行できます。
+
+1. 両方のクラスターが同じ仮想ネットワークとサブネットに接続されている必要があります
+2. HBase クラスター ヘッドノードから Hive クラスター ヘッドノードに `/usr/hdp/$(hdp-select --version)/hbase/conf/hbase-site.xml` をコピーします
+
+### <a name="secure-clusters"></a>クラスターをセキュリティで保護する
+
+HBase データには、ESP 対応の HBase を使用している Hive からクエリを実行することもできます。 
+
+1. マルチクラスター パターンに従う場合、両方のクラスターで ESP が有効になっている必要があります。 
+2. Hive で HBase データに対するクエリを実行できるようにするには、Hbase Apache Ranger プラグインを介して HBase データにアクセスするためのアクセス許可が `hive` ユーザーに付与されていることを確認します
+3. 個別の ESP 対応クラスターを使用する場合は、HBase クラスター ヘッドノードの `/etc/hosts` の内容を、Hive クラスター ヘッドノードの `/etc/hosts` に追加する必要があります。 
+> [!NOTE]
+> いずれかのクラスターをスケーリングした後、`/etc/hosts` を再度追加する必要があります
+
 ## <a name="use-hbase-rest-apis-using-curl"></a>Curl を使用して HBase REST API を使用する
 
 REST API のセキュリティは、 [基本認証](https://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。 資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
+
+1. HDInsight クラスターで HBase REST API を有効にするには、次のカスタム スタートアップ スクリプトを **Script Action** セクションに追加します。 クラスターを作成するとき、またはクラスターを作成した後に、スタートアップ スクリプトを追加できます。 **[ノードの種類]** では、 **[Region Servers]\(リージョン サーバー\)** を選択して、HBase リージョン サーバーだけでスクリプトが実行されるようにします。
+
+
+    ```bash
+    #! /bin/bash
+
+    THIS_MACHINE=`hostname`
+
+    if [[ $THIS_MACHINE != wn* ]]
+    then
+        printf 'Script to be executed only on worker nodes'
+        exit 0
+    fi
+
+    RESULT=`pgrep -f RESTServer`
+    if [[ -z $RESULT ]]
+    then
+        echo "Applying mitigation; starting REST Server"
+        sudo python /usr/lib/python2.7/dist-packages/hdinsight_hbrest/HbaseRestAgent.py
+    else
+        echo "Rest server already running"
+        exit 0
+    fi
+    ```
 
 1. 使いやすさのために環境変数を設定します。 下のコマンドを編集して `MYPASSWORD` をクラスター ログイン パスワードに置き換えます。 `MYCLUSTERNAME` を HBase クラスターの名前に置き換えます。 その後、これらのコマンドを入力します。
 
@@ -302,12 +341,18 @@ HDInsight の HBase には、クラスターを監視するための Web UI が�
    - tasks
    - ソフトウェア属性
 
+## <a name="cluster-recreation"></a>クラスターの再作成
+
+HBase クラスターを削除したら、同じ既定の BLOB コンテナーを使用して別の HBase クラスターを作成できます。 新しいクラスターでは、元のクラスターで作成した HBase テーブルを選択します。 ただし、不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。 
+
+HBase コマンド `disable 'Contacts'` を使用できます。 
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。 HBase コマンド `disable 'Contacts'` を使用できます。 このアプリケーションを引き続き使用しない場合は、次の手順で作成した HBase クラスターを削除します。
+このアプリケーションを引き続き使用しない場合は、次の手順で作成した HBase クラスターを削除します。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. 上部の**検索**ボックスに「**HDInsight**」と入力します。
+1. 上部の **検索** ボックスに「**HDInsight**」と入力します。
 1. **[サービス]** の下の **[HDInsight クラスター]** を選択します。
 1. 表示される HDInsight クラスターの一覧で、このチュートリアル用に作成したクラスターの横にある **[...]** をクリックします。
 1. **[削除]** をクリックします。 **[はい]** をクリックします。

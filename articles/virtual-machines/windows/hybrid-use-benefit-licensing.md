@@ -2,17 +2,19 @@
 title: Windows Server 向け Azure Hybrid Benefit
 description: Windows ソフトウェア アシュアランスの特典を最大限利用してオンプレミスのライセンスを Azure で使用する方法について説明します。
 author: xujing-ms
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: azure-hybrid-benefit
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 1c87c517a0013fa31ba63ef1f78677fe85f5d287
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c5a9386540f418c8f490ca146e250e780737e478
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074259"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668062"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Benefit
 ソフトウェア アシュアランスを取得したお客様は、Windows Server 向け Azure Hybrid Benefit により、オンプレミスの Windows Server ライセンスを使用し、Azure で Windows 仮想マシンを低コストで実行することができます。 Windows Server 向け Azure ハイブリッド特典を使用して、Windows OS 搭載の新しい仮想マシンをデプロイすることができます。 この記事では、Windows Server 向け Azure ハイブリッド特典での新しい VM のデプロイ方法と、既存の稼働中 VM を更新する方法について説明します。 Windows Server 向け Azure Hybrid Benefit のライセンスとコスト削減について詳しくは、[Windows Server 向け Azure Hybrid Benefit のライセンス ページ](https://azure.microsoft.com/pricing/hybrid-use-benefit/)をご覧ください。
@@ -42,10 +44,9 @@ Azure Hybrid Benefit で Windows 仮想マシンを使用する方法はいく�
 Windows Server 向け Azure ハイブリッド特典では、Windows Server OS ベースのすべてのイメージがサポートされます。 Azure プラットフォーム サポートのイメージを使用したり、独自のカスタム Windows Server イメージをアップロードしたりできます。 
 
 ### <a name="portal"></a>ポータル
-Windows Server 向け Azure ハイブリッド特典で VM を作成するには、[Save money]\(コストの削減) セクションの切り替えを使用します。
+Windows Server 向け Azure ハイブリッド特典を使用して VM を作成するには、作成プロセス中に **[基本]** タブの一番下までスクロールし、 **[ライセンス]** で、既存の Windows Server ライセンスを使用するためのチェック ボックスをオンにします。 
 
 ### <a name="powershell"></a>PowerShell
-
 
 ```powershell
 New-AzVm `

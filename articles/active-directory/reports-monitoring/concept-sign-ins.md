@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e84fb04d967311fede3be7f20b45f01fb442e69e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: d61962667953b20f4b542874e902411bb579b9c3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228768"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122845"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -31,6 +31,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 - **アクティビティ** 
     - **サインイン** – マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報。
     - **監査ログ** - [監査ログ](concept-audit-logs.md)は、ユーザーとグループの管理や、マネージド アプリケーションとディレクトリのアクティビティに関するシステム アクティビティ情報を提供します。
+    - **プロビジョニング ログ** - [プロビジョニング ログ](./concept-provisioning-logs.md)によって、プロビジョニング サービスによるアクティビティの監視 (ServiceNow のグループや Workday からインポートされたユーザーの作成など) が可能になります。 
 - **Security** 
     - **リスクの高いサインイン** - [リスクの高いサインイン](../identity-protection/overview-identity-protection.md)は、ユーザー アカウントの正当な所有者ではないユーザーによるサインイン試行の指標です。
     - **リスクのフラグ付きユーザー** - [リスクの高いユーザー](../identity-protection/overview-identity-protection.md)は、侵害された可能性があるユーザー アカウントの指標です。
@@ -61,14 +62,14 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 ![[Azure Active Directory] を選択する](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
 
-**[監視]** で **[サインイン]** を選択して、[サインイン レポート](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)を開きます。
+**[監視]** で **[サインイン]** を選択して、 [サインイン レポート](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)を開きます。
 
-![サインイン アクティビティ](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "サインイン アクティビティ")
+![スクリーンショットには、[監視] メニューから選択された [サインイン] が示されています。](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "サインイン アクティビティ")
 
 一部のサインイン レコードがポータルに表示されるまでに、最大 2 時間かかることがあります。
 
 > [!IMPORTANT]
-> サインイン レポートには、**対話型**のサインイン、つまりユーザーがユーザー名とパスワードを使用して手動で行うサインインのみが表示されます。 サービス間の認証のような対話型ではないサインインは、サインイン レポートに表示されません。 
+> サインイン レポートには、 **対話型** のサインイン、つまりユーザーがユーザー名とパスワードを使用して手動で行うサインインのみが表示されます。 サービス間の認証のような対話型ではないサインインは、サインイン レポートに表示されません。 
 
 サインイン ログには、次のものを示す既定のリスト ビューがあります。
 
@@ -79,19 +80,19 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 - リスク検出の状態
 - 多要素認証 (MFA) の要件の状態
 
-![サインイン アクティビティ](./media/concept-sign-ins/sign-in-activity.png "サインイン アクティビティ")
+![スクリーンショットには、Office 365 SharePoint Online のサインインが示されています。](./media/concept-sign-ins/sign-in-activity.png "サインイン アクティビティ")
 
 リスト ビューをカスタマイズするには、ツール バーの **[列]** をクリックします。
 
-![サインイン アクティビティ](./media/concept-sign-ins/19.png "サインイン アクティビティ")
+![スクリーンショットには、[サインイン] ページの [列] オプションが示されています。](./media/concept-sign-ins/19.png "サインイン アクティビティ")
 
 **[列]** ダイアログでは、選択可能な属性にアクセスできます。 サインイン レポートでは、特定のサインイン要求に対して複数の値を持つフィールドを列として使用することはできません。 これは、認証の詳細、条件付きアクセス データ、ネットワークの場所などが該当します。   
 
-![サインイン アクティビティ](./media/concept-sign-ins/columns.png "サインイン アクティビティ")
+![スクリーンショットには、属性を選択できる [列] ダイアログ ボックスが示されています。](./media/concept-sign-ins/columns.png "サインイン アクティビティ")
 
 詳細な情報を取得するには、リスト ビューで項目を選択します。
 
-![サインイン アクティビティ](./media/concept-sign-ins/basic-sign-in.png "サインイン アクティビティ")
+![スクリーンショットには、詳細情報ビューが示されています。](./media/concept-sign-ins/basic-sign-in.png "サインイン アクティビティ")
 
 > [!NOTE]
 > すべてのサインイン レポートで、条件付きアクセス ポリシーのトラブルシューティングを実行できるようになりました。 サインイン レコードの **[条件付きアクセス]** タブをクリックして、条件付きアクセスの状態を確認し、サインインに適用されたポリシーの詳細と各ポリシーの結果を調べることができます。
@@ -103,7 +104,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 まず、報告されたデータを、自分に適したレベルまで絞り込みます。 次に、既定のフィルターとして [日付] フィールドを使用したサインイン データをフィルター処理します。 Azure AD では、さまざまな追加のフィルターを設定できます。
 
-![サインイン アクティビティ](./media/concept-sign-ins/04.png "サインイン アクティビティ")
+![スクリーンショットには、[フィルターの追加] オプションが示されています。](./media/concept-sign-ins/04.png "サインイン アクティビティ")
 
 **要求 ID** - 確認したい要求の ID です。
 
@@ -147,13 +148,13 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 |認証済み SMTP| |電子メール メッセージを送信するために POP および IMAP のクライアントで使用されます。|
 |自動検出| |Exchange Online でメールボックスを検索して接続するために Outlook および EAS のクライアントで使用されます。|
 |Exchange ActiveSync| |このフィルターは、EAS プロトコルが試行されたすべてのサインイン試行を表示します。|
-|Browser|![○](./media/concept-sign-ins/check.png)|Web ブラウザーを使用したユーザーのすべてのサインイン試行を表示します|
-|Exchange ActiveSync| | Exchange ActiceSync を使用して Exchange Online に接続するクライアント アプリでのユーザーのすべてのサインイン試行を表示します|
+|Browser|![青のチェックマーク。](./media/concept-sign-ins/check.png)|Web ブラウザーを使用したユーザーのすべてのサインイン試行を表示します|
+|Exchange ActiveSync| | Exchange ActiveSync を使用して Exchange Online に接続するクライアント アプリでのユーザーのすべてのサインイン試行を表示します|
 |Exchange Online PowerShell| |リモート PowerShell を使用して Exchange Online に接続するために使用されます。 Exchange Online PowerShell の基本認証をブロックする場合は、Exchange Online PowerShell モジュールを使用して接続する必要があります。 手順については、「[多要素認証を使用して Exchange Online PowerShell に接続する](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)」を参照してください。|
 |Exchange Web サービス| |Outlook、Outlook for Mac、およびサードパーティ製アプリによって使用されるプログラミング インターフェイスです。|
 |IMAP4| |IMAP を使用して電子メールを取得する従来のメール クライアント。|
 |MAPI over HTTP| |Outlook 2010 以降で使用されます。|
-|モバイル アプリとデスクトップ クライアント|![○](./media/concept-sign-ins/check.png)|モバイル アプリとデスクトップ クライアントを使用したユーザーのすべてのサインイン試行を表示します。|
+|モバイル アプリとデスクトップ クライアント|![青のチェックマーク。](./media/concept-sign-ins/check.png)|モバイル アプリとデスクトップ クライアントを使用したユーザーのすべてのサインイン試行を表示します。|
 |オフライン アドレス帳| |Outlook によってダウンロードおよび使用されるアドレス一覧コレクションのコピーです。|
 |Outlook Anywhere (RPC over HTTP)| |Outlook 2016 以降で使用されます。|
 |Outlook サービス| |Windows 10 用のメール/カレンダー アプリで使用されます。|
@@ -176,11 +177,11 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 **条件付きアクセス** - 適用されている条件付きアクセス規則の状態です
 
-- **適用されていません**:サインイン中にポリシーがユーザーとアプリケーションに適用されていません。
+- **適用されていません** :サインイン中にポリシーがユーザーとアプリケーションに適用されていません。
 
-- **成功**:サインイン中に 1 つ以上の条件付きアクセス ポリシーがユーザーとアプリケーションに適用されました (ただし、必ずしも他の条件が適用されたとは限りません)。 
+- **成功** :サインイン中に 1 つ以上の条件付きアクセス ポリシーがユーザーとアプリケーションに適用されました (ただし、必ずしも他の条件が適用されたとは限りません)。 
 
-- **失敗**:サインインによって少なくとも 1 つの条件付きアクセス ポリシーのユーザーとアプリケーションの条件が満たされたうえで、制御の許可が満たされていないか、またはアクセスをブロックするように設定されています。
+- **失敗** :サインインによって少なくとも 1 つの条件付きアクセス ポリシーのユーザーとアプリケーションの条件が満たされたうえで、制御の許可が満たされていないか、またはアクセスをブロックするように設定されています。
 
 
 
@@ -213,7 +214,7 @@ Azure AD と Azure portal には両方とも、サインイン データへの�
 
 **[ID のセキュリティ保護]** の概要ページのユーザー サインイン グラフは、サインインの週単位の集計を示します。期間の既定値は 30 日です。
 
-![サインイン アクティビティ](./media/concept-sign-ins/06.png "サインイン アクティビティ")
+![スクリーンショットには、1 か月のサインインのグラフが表示されています。](./media/concept-sign-ins/06.png "サインイン アクティビティ")
 
 サインイン グラフ内の日付をクリックすると、その日のサインイン アクティビティの概要が表示されます。
 
@@ -243,7 +244,7 @@ Azure AD と Azure portal には両方とも、サインイン データへの�
 
 **[ユーザー]** ページの **[アクティビティ]** セクションの **[サインイン]** をクリックすると、すべてのユーザー サインインの完全な概要が表示されます。
 
-![サインイン アクティビティ](./media/concept-sign-ins/08.png "サインイン アクティビティ")
+![スクリーンショットには、[サインイン] を選択できる [アクティビティ] セクションが示されています。](./media/concept-sign-ins/08.png "サインイン アクティビティ")
 
 ## <a name="usage-of-managed-applications"></a>マネージド アプリケーションの使用状況
 
@@ -255,11 +256,11 @@ Azure AD と Azure portal には両方とも、サインイン データへの�
 
 このデータへのエントリ ポイントとなるのは、組織内の上位 3 つのアプリケーションです。 データは **[エンタープライズ アプリケーション]** の下の **[概要]** セクションにある、過去 30 日間のレポートに含まれています。
 
-![サインイン アクティビティ](./media/concept-sign-ins/10.png "サインイン アクティビティ")
+![スクリーンショットには、[概要] を選択できる場所が示されています。](./media/concept-sign-ins/10.png "サインイン アクティビティ")
 
 アプリ使用状況グラフは、特定の期間の上位 3 つのアプリケーションのサインインを週単位で集計します。 期間の既定値は 30 日です。
 
-![サインイン アクティビティ](./media/concept-sign-ins/graph-chart.png "サインイン アクティビティ")
+![スクリーンショットには、1 か月間のアプリの使用状況が示されています。](./media/concept-sign-ins/graph-chart.png "サインイン アクティビティ")
 
 必要に応じて、特定のアプリケーションにフォーカスを設定できます。
 
@@ -269,11 +270,11 @@ Azure AD と Azure portal には両方とも、サインイン データへの�
 
 **[サインイン]** オプションを使用すると、アプリケーションへのすべてのサインイン イベントの完全な概要を表示できます。
 
-## <a name="office-365-activity-logs"></a>Office 365 のアクティビティ ログ
+## <a name="microsoft-365-activity-logs"></a>Microsoft 365 のアクティビティ ログ
 
-Office 365 のアクティビティ ログは、[Microsoft 365 管理センター](/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Office 365 アクティビティ ログと Azure AD アクティビティ ログでは、多くのディレクトリ リソースが共有される点について考えてみましょう。 Office 365 のアクティビティ ログを完全に表示できるのは、Microsoft 365 管理センターだけです。 
+Microsoft 365 のアクティビティ ログは、[Microsoft 365 管理センター](/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Microsoft 365 アクティビティ ログと Azure AD アクティビティ ログで多くのディレクトリ リソースが共有される点について考えてみましょう。 Microsoft 365 のアクティビティ ログがすべて表示されるのは、Microsoft 365 管理センターだけです。 
 
-[Office 365 Management API](/office/office-365-management-api/office-365-management-apis-overview) を使用すると、Office 365 のアクティビティ ログにプログラムでアクセスすることもできます。
+また、[Office 365 Management API](/office/office-365-management-api/office-365-management-apis-overview) を使用すると、Microsoft 365 のアクティビティ ログにプログラムでアクセスすることもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

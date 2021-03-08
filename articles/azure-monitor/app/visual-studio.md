@@ -2,17 +2,14 @@
 title: Azure Application Insights を使用して Visual Studio でデバッグする
 description: デバッグ中および運用環境の Web アプリのパフォーマンス分析と診断。
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
-ms.date: 07/07/2017
-ms.reviewer: mbullwin
+ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: 1bb18cc43ef306a208500ff49ec41dbfb74b788e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d2de29d897c84496fd44d74d88d58decbc64b7f8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323470"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532904"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Visual Studio の Azure Application Insights でアプリケーションをデバッグする
 Visual Studio (2015 以降) では、[Azure Application Insights](./app-insights-overview.md) からのテレメトリを使用して、ASP.NET Web アプリのパフォーマンスの分析と問題の診断を、デバッグ中と運用環境の両方において実行できます。
@@ -56,12 +53,12 @@ Web アプリに対する要求では、クリックしてコードを表示で�
 
 スタック トレースを取得するには、例外をクリックします。 Visual Studio でアプリのコードが開かれている場合は、コードの該当する行をスタック トレースからクリックできます。
 
-![Exception stack trace](./media/visual-studio/17.png)
+![スクリーンショットは、スタック トレース内の About オブジェクトを示しています。](./media/visual-studio/17.png)
 
 ## <a name="view-request-and-exception-summaries-in-the-code"></a>コードに要求と例外の概要を表示する
 各ハンドラー メソッドの上にある CodeLens 行には、Application Insights によってログに記録された過去 24 時間の要求と例外の数が表示されます。
 
-![Exception stack trace](./media/visual-studio/21.png)
+![スクリーンショットは、コンテキスト ダイアログ ボックスの例外を示しています。](./media/visual-studio/21.png)
 
 > [!NOTE] 
 > CodeLens に Application Insights のデータが表示されるのは、[テレメトリを Application Insights ポータルに送信するようアプリを構成した](./asp-net.md)場合のみです。
@@ -94,8 +91,6 @@ Visual Studio 2015 Update 2 以降、Application Insights ポータルにテレ�
 
 
 ## <a name="next-steps"></a>次のステップ
-|  |  |
-| --- | --- |
-| **[データの追加](./asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外の監視。 ログ記録フレームワークからのトレースを統合します。 カスタム テレメトリを記述します。 |![Visual studio](./media/visual-studio/64.png) |
-| **[Application Insights ポータルの操作](./overview-dashboard.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、エクスポートされたテレメトリ データを表示します。 |![Visual studio](./media/visual-studio/62.png) |
+
+ * **[Application Insights ポータルの操作](./overview-dashboard.md)** 。 ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、エクスポートされたテレメトリ データを表示します。 
 

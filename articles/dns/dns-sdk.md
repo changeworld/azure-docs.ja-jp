@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: rohink
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 92509ff96af0ed2a7d77799edca8447ff6839ab6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8e116096afbd01af4914be49d5675881724d5069
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019659"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015062"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>.NET SDK を使用した DNS ゾーンとレコード セットの作成
 
@@ -43,7 +43,7 @@ DNS ゾーン、レコード セット、レコードを作成、削除、更新
 
 Azure DNS .NET SDK を使用するには、 **Azure DNS 管理ライブラリ** NuGet パッケージとその他の必要な Azure パッケージをインストールする必要があります。
 
-1. **Visual Studio**で、プロジェクトを開くか、新規作成します。
+1. **Visual Studio** で、プロジェクトを開くか、新規作成します。
 2. **[ツール]** **>** **[NuGet パッケージ マネージャー]** **>** **[ソリューションの NuGet パッケージの管理]** の順に移動します。
 3. **[参照]** をクリックし、 **[プレリリースを含める]** チェック ボックスをオンにして、検索ボックスに「**Microsoft.Azure.Management.Dns**」と入力します。
 4. パッケージを選択し、 **[インストール]** をクリックして Visual Studio プロジェクトに追加します。
@@ -79,7 +79,7 @@ Azure DNS でゾーンを実際に作成または更新するには、ゾーン 
 > [!NOTE]
 > DnsManagementClient は、同期 ("CreateOrUpdate")、非同期 ("CreateOrUpdateAsync")、および HTTP 応答へのアクセスを使用した非同期 ("CreateOrUpdateWithHttpMessagesAsync") の 3 つの操作モードをサポートします。  アプリケーションのニーズに応じていずれかのモードを選択できます。
 
-Azure DNS では、 [Etag](dns-getstarted-create-dnszone.md)と呼ばれるオプティミスティック コンカレンシーがサポートされます。 この例では、"If-None-Match" ヘッダーに "*" を指定して、DNS ゾーンが存在しない場合は DNS ゾーンを作成することを Azure DNS に通知します。  指定したリソース グループ内に指定した名前を持つゾーンが既に存在する場合、呼び出しは失敗します。
+Azure DNS では、 [Etag](./dns-getstarted-powershell.md)と呼ばれるオプティミスティック コンカレンシーがサポートされます。 この例では、"If-None-Match" ヘッダーに "*" を指定して、DNS ゾーンが存在しない場合は DNS ゾーンを作成することを Azure DNS に通知します。  指定したリソース グループ内に指定した名前を持つゾーンが既に存在する場合、呼び出しは失敗します。
 
 ```cs
 // Create zone parameters

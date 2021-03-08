@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 32fd40ec4827c2995d156b0e238b48ff8cc24e65
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5c42102c0704d7212411d6b86f4210ad8ecd885c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545116"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96347499"
 ---
 # <a name="tutorial-configure-soloinsight-cloudgate-sso-for-automatic-user-provisioning"></a>チュートリアル:Soloinsight-CloudGate SSO を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -58,7 +58,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Soloinsight-CloudGate SSO の SCIM 追加](media/soloinsight-cloudgate-sso-provisioning-tutorial/config.png)
 
-3.  下にスクロールし、ページの終わりにある **[テナント URL]** と **[シークレット トークン]** を表示します。 **シークレット トークン**をコピーします。 この値は、Azure portal で Soloinsight-CloudGate SSO アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力されます。
+3.  下にスクロールし、ページの終わりにある **[テナント URL]** と **[シークレット トークン]** を表示します。 **シークレット トークン** をコピーします。 この値は、Azure portal で Soloinsight-CloudGate SSO アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力されます。
 
     ![Soloinsight-CloudGate SSO のトークン作成](media/soloinsight-cloudgate-sso-provisioning-tutorial/token.png)
 
@@ -89,7 +89,7 @@ Azure AD での自動ユーザー プロビジョニング用に Soloinsight-Clo
 このセクションでは、Azure AD プロビジョニング サービスを構成し、Azure AD でのユーザーやグループの割り当てに基づいて Soloinsight-CloudGate SSO のユーザーやグループを作成、更新、無効化する手順について説明します。
 
 > [!TIP]
-> Soloinsight-CloudGate SSO で SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Soloinsight-CloudGate SSO シングル サインオンのチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/soloinsight-cloudgate-sso-tutorial)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> Soloinsight-CloudGate SSO で SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Soloinsight-CloudGate SSO シングル サインオンのチュートリアル](./soloinsight-cloudgate-sso-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-soloinsight-cloudgate-sso-in-azure-ad"></a>Azure AD で Soloinsight-CloudGate SSO の自動ユーザー プロビジョニングを構成するには、次の操作を実行します。
 
@@ -103,13 +103,13 @@ Azure AD での自動ユーザー プロビジョニング用に Soloinsight-Clo
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://sigateway.com/scim/v2/sync/serviceproviderconfig`」と入力します。 **[シークレット トークン]** に先ほど取得した**SCIM 認証トークン**の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Soloinsight-CloudGate SSO への接続を確保します。 接続に失敗する場合は、使用中の Soloinsight-CloudGate SSO アカウントに管理者アクセス許可があることを確認してから、もう一度お試しください。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://sigateway.com/scim/v2/sync/serviceproviderconfig`」と入力します。 **[シークレット トークン]** に先ほど取得した **SCIM 認証トークン** の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Soloinsight-CloudGate SSO への接続を確保します。 接続に失敗する場合は、使用中の Soloinsight-CloudGate SSO アカウントに管理者アクセス許可があることを確認してから、もう一度お試しください。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -161,4 +161,3 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="next-steps"></a>次のステップ
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
-

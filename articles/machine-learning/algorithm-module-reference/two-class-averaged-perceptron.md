@@ -1,7 +1,7 @@
 ---
 title: 2 クラス平均化パーセプトロン:モジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning の 2 クラス平均化パーセプトロン モジュールを使用し、平均化パーセプトロン アルゴリズムに基づいて機械学習モデルを作成する方法について説明します。
+description: デザイナーの 2 クラス平均化パーセプトロン モジュールを使用して、二項分類器を作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: daa0cfdedfe634acd2039cd4ec87606d30f7e76f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f1161dc99b84026bcc830c08b63b95d0bf3b0994
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520580"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421143"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>2 クラス平均化パーセプトロン モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 平均化パーセプトロン アルゴリズムに基づいて機械学習モデルを作成するには、このモジュールを使用します。  
   
@@ -26,7 +26,7 @@ ms.locfileid: "86520580"
 
 ### <a name="about-averaged-perceptron-models"></a>平均化パーセプトロン モデルについて
 
-*平均化パーセプトロンの手法*は、ニューラル ネットワークの初期の単純なバージョンです。 この手法では、線形関数に基づいて入力がいくつかの可能な出力に分類され、特徴ベクターから得られる重みのセットと結合されます。このため、"パーセプトロン" と呼ばれます。
+*平均化パーセプトロンの手法* は、ニューラル ネットワークの初期の単純なバージョンです。 この手法では、線形関数に基づいて入力がいくつかの可能な出力に分類され、特徴ベクターから得られる重みのセットと結合されます。このため、"パーセプトロン" と呼ばれます。
 
 単純なパーセプトロン モデルは線形分離可能なパターンを学習するのに適しています。一方、ニューラル ネットワーク (特にディープ ニューラル ネットワーク) は、より複雑なクラス境界をモデル化できます。 ただし、パーセプトロンはより高速であり、ケースを順次処理するため、継続的なトレーニングで使用できます。
 
@@ -40,7 +40,7 @@ ms.locfileid: "86520580"
 
     -   **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからず、パラメーター スイープを実行する場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。  
   
-3.  **[Learning rate]\(学習速度\)** に*学習速度*の値を指定します。 学習速度の値は、モデルがテストされて修正される度に確率的勾配降下法で使用されるステップのサイズを制御します。
+3.  **[Learning rate]\(学習速度\)** に *学習速度* の値を指定します。 学習速度の値は、モデルがテストされて修正される度に確率的勾配降下法で使用されるステップのサイズを制御します。
   
      速度の値を小さくすると、モデルのテストが頻繁に実行されますが、ローカルで停滞する可能性があります。 ステップのサイズを大きくすることで収束速度は速くなりますが、真の極小値から離れていってしまうおそれがあります。
   
@@ -52,7 +52,7 @@ ms.locfileid: "86520580"
   
 1.  トレーニング データセットを接続し、モデルをトレーニングします。
 
-    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](train-model.md) モジュールを接続します。  
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと [モデルのトレーニング](train-model.md) モジュールを接続します。  
   
     + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Parameter Range]\(パラメーター範囲\)** に設定した場合は、[[Tune Model Hyperparameters]\(モデルのハイパーパラメーターの調整\)](tune-model-hyperparameters.md) を使用して、タグ付けしたデータセットを接続してモデルをトレーニングします。  
   

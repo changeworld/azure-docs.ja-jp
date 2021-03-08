@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: c11fd7a9cb6fdd3eb976d0b9e6a91fdc69bf9fba
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 74403365fe48584fa5d1db0e349c9dfc3772d874
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136653"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652856"
 ---
 # <a name="system-tables-and-views"></a>システム テーブルとビュー
 
@@ -27,7 +27,7 @@ Hyperscale (Citus) では、ディストリビューション列に基づいて�
 
 > [!NOTE]
 >
-> 以前のバージョンの Citus Engine を実行している Hyperscale サーバー グループでは、後に一覧表示されているテーブルの一部が提供されない可能性があります。
+> 以前のバージョンの Citus Engine を実行している Hyperscale (Citus) サーバー グループによって提供されるテーブルは、この後で示される一覧に、すべてが表示されているわけではない場合もあります。
 
 ### <a name="partition-table"></a>パーティション テーブル
 
@@ -524,5 +524,5 @@ blocking_node_port                    | 5432
 
 ## <a name="next-steps"></a>次の手順
 
-* 一部の [Hyperscale 関数](reference-hyperscale-functions.md)がシステム テーブルを変更する方法を学習する
+* 一部の [Hyperscale (Citus) 関数](reference-hyperscale-functions.md)によるシステム テーブルの変更方法を学習する
 * [ノードとテーブル](concepts-hyperscale-nodes.md)の概念を確認する

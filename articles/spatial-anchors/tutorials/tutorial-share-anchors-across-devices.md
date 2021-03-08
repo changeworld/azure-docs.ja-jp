@@ -1,40 +1,42 @@
 ---
 title: チュートリアル:セッションやデバイス間でアンカーを共有する
 description: このチュートリアルでは、バックエンド サービスを使用して、Unity で Azure Spatial Anchors 識別子を Android/iOS デバイス間で共有する方法について説明します。
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 07/31/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 12a15a2d0cd45207b4adefc7315e48c6d642c0f7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 3048eb1ca7f9312a43bc1ab5885bf19d4c2e7931
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810177"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185389"
 ---
-# <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>チュートリアル:セッションやデバイス間での Azure Spatial Anchors の共有
+# <a name="tutorial-share-spatial-anchors-across-sessions-and-devices"></a>チュートリアル:セッションやデバイス間で空間アンカーを共有する
 
-このチュートリアルでは、[Azure Spatial Anchors](../overview.md) を使用してあるセッション中にアンカーを作成した後、同じデバイスまたは異なるデバイス上でそれらを探知する方法について学習します。 これらの同じアンカーは、同じ場所にある複数のデバイスが同時に探知することもできます。
+Azure Spatial Anchors は、クロスプラットフォーム対応の開発者向けサービスです。このサービスを使用すると、時間が経過した後でも複数のデバイス間で位置情報を保持するオブジェクトを使用して複合現実エクスペリエンスを作成できます。 
 
-![永続化](./media/persistence.gif)
+このチュートリアルでは、[Azure Spatial Anchors](../overview.md) を使用してあるセッション中にアンカーを作成した後、同じデバイスまたは異なるデバイス上でそれらを探知します。 同じアンカーを、同じ場所にある複数のデバイスで同時に探知することもできます。
 
-Azure Spatial Anchors は、クロスプラットフォーム対応の開発者向けサービスです。このサービスを使用すると、時間が経過した後でも複数のデバイス間で位置情報を保持するオブジェクトを使用して複合現実エクスペリエンスを作成できます。 完了すると、2 つ以上のデバイスにデプロイ可能なアプリが完成します。 1 つのインスタンスによって作成された Azure 空間アンカーは、他のインスタンスに共有できます。
+![モバイル デバイスで作成され、数日にわたって別のデバイスで使用される空間アンカーを示すアニメーション。](./media/persistence.gif)
 
-学習内容は次のとおりです。
+
+このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * アンカーを一定期間メモリに格納して共有するための ASP.NET Core Web アプリを Azure にデプロイする。
+> * アンカーを共有するために使用できる ASP.NET Core Web アプリを Azure にデプロイし、指定した期間、メモリ内にアンカーを格納する。
 > * クイック スタートで提供されている Unity サンプルの AzureSpatialAnchorsLocalSharedDemo シーンを構成して、アンカー共有 Web アプリを利用する。
-> * 1 つ以上のデバイスにデプロイして実行する。
+> * 1 つまたは複数のデバイスにアンカーをデプロイして実行する。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-share-sample-prereqs.md)]
 
-このチュートリアルでは Unity と ASP.NET Core Web App を使用しますが、これは Azure Spatial Anchors 識別子を複数デバイス間で共有する方法の一例に過ぎないことに注意してください。 同じ目的を実現するために、他の言語やバックエンド テクノロジを使用することもできます。
+> [!NOTE]
+> このチュートリアルでは、Unity と ASP.NET Core Web アプリを使用しますが、ここでのアプローチは Azure Spatial Anchors 識別子を他の複数デバイス間で共有する方法の一例を示しているに過ぎません。 同じ目的を実現するために、他の言語やバックエンド テクノロジを使用することもできます。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -42,21 +44,21 @@ Azure Spatial Anchors は、クロスプラットフォーム対応の開発者�
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-## <a name="deploy-your-sharing-anchors-service"></a>アンカー共有サービスのデプロイ
+## <a name="deploy-the-sharing-anchors-service"></a>アンカー共有サービスをデプロイする
 
 ## <a name="visual-studio"></a>[Visual Studio](#tab/VS)
 
-Visual Studio を開き、`Sharing\SharingServiceSample` フォルダーのプロジェクトを開きます。
+Visual Studio を開いてから、*Sharing\SharingServiceSample* フォルダー内のプロジェクトを開きます。
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 
 ## <a name="visual-studio-code"></a>[Visual Studio Code](#tab/VSC)
 
-VS Code でサービスをデプロイする前に、リソース グループと App Service プランを作成する必要があります。
+Visual Studio Code でサービスをデプロイする前に、リソース グループと App Service プランを作成する必要があります。
 
-### <a name="sign-in-to-azure"></a>Azure にサインインする
+### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-<a href="https://portal.azure.com/" target="_blank">Azure portal</a> に移動し、Azure サブスクリプションにサインインします。
+<a href="https://portal.azure.com/" target="_blank">Azure portal</a> に移動して、Azure サブスクリプションにサインインします。
 
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -64,7 +66,7 @@ VS Code でサービスをデプロイする前に、リソース グループ�
 
 **[リソース グループ]** の横にある **[新規]** をクリックします。
 
-リソース グループに **myResourceGroup** という名前を付けて、**[OK]** をクリックします。
+リソース グループに **myResourceGroup** という名前を付けて、 **[OK]** をクリックします。
 
 ### <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
@@ -72,17 +74,19 @@ VS Code でサービスをデプロイする前に、リソース グループ�
 
 **[ホスティング プラン]** の隣にある **[新規]** を選択します。
 
-**[ホスティング プランの構成]** ダイアログ ボックスで、以下の設定を使用します。
+**[ホスティング プランの構成]** ウィンドウで、以下の設定を使用します。
 
 | 設定 | 推奨値 | 説明 |
 |-|-|-|
-|App Service プラン| MySharingServicePlan | App Service プランの名前です。 |
-| 場所 | 米国西部 | Web アプリがホストされているデータ センターです。 |
-| サイズ | Free | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)によって、ホスティング機能が決まります。 |
+|App Service プラン| MySharingServicePlan | App Service プランの名前 |
+| 場所 | 米国西部 | Web アプリがホストされているデータセンター |
+| サイズ | Free | ホスティング機能を決める[価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
 
 **[OK]** を選択します。
 
-Visual Studio Code を開き、`Sharing\SharingServiceSample` フォルダーのプロジェクトを開きます。 Visual Studio Code を使用して共有サービスをデプロイするには、<a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">こちらのチュートリアル</a>に従ってください。 「Visual Studio Code でプロジェクトを開く」セクションから手順を実行できます。 デプロイして公開する必要があるプロジェクト SharingServiceSample が既に存在しているため、前の手順で説明されているように別の ASP.NET プロジェクトを作成しないでください。
+Visual Studio Code を開いてから、*Sharing\SharingServiceSample* フォルダーでプロジェクトを開きます。 
+
+Visual Studio Code を介して共有サービスをデプロイするには、「<a href="/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">Visual Studio Code で ASP.NET Core アプリを Azure に公開する</a>」の手順に従ってください。 "Visual Studio Code で開く" セクションから開始します。 デプロイおよび発行するプロジェクトは既にあるので、前の手順の説明に従って別の ASP.NET プロジェクトを作成することは行わないでください。SharingServiceSample。
 
 ---
 
@@ -94,10 +98,9 @@ Visual Studio Code を開き、`Sharing\SharingServiceSample` フォルダーの
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、ASP.NET Core Web アプリを Azure にデプロイした後、Unity アプリを構成してデプロイしました。 そのアプリで空間アンカーを作成し、ASP.NET Core Web アプリを使用して他のデバイスと共有しました。
+このチュートリアルでは、ASP.NET Core Web アプリを Azure にデプロイし、Unity アプリを構成してデプロイしました。 そのアプリで空間アンカーを作成し、ASP.NET Core Web アプリを使用して他のデバイスと共有しました。
 
-Azure Cosmos DB を使用して共有済みの空間アンカー識別子のストレージを永続化するように、ASP.NET Core Web アプリを改良できます。 Azure Cosmos DB のサポートを追加することにより、ASP.NET Core Web アプリでは、今日作成したアンカーを、Web アプリに保存されているアンカー識別子を使用して数日後に再度探知できるようになります。
+Azure Cosmos DB を使用して共有済みの空間アンカー識別子のストレージを永続化するように、ASP.NET Core Web アプリを改良できます。 Azure Cosmos DB サポートを追加すれば、ASP.NET Core Web アプリでアンカーを今日にも作成できるようになります。 次に、Web アプリに格納されているアンカー識別子を使用して、数日後再びアンカーを検索するようにアプリを設定できます。
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB を使用したアンカーの格納](./tutorial-use-cosmos-db-to-store-anchors.md)
-

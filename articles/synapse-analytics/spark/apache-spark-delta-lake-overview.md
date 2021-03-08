@@ -11,12 +11,12 @@ ms.date: 07/28/2020
 ms.author: euang
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 655daeb0149228d78d5288b0e5d0d705a5743d28
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1e0dfd597e7f445eeba6cef332d8ea12b27dc3a2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008643"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676307"
 ---
 # <a name="linux-foundation-delta-lake-overview"></a>Linux Foundation Delta Lake の概要
 
@@ -996,5 +996,5 @@ DeltaTable.isDeltaTable(parquetPath)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [.NET for Apache Spark ドキュメント](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-* [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+* [.NET for Apache Spark ドキュメント](/dotnet/spark)
+* [Azure Synapse Analytics](../index.yml)

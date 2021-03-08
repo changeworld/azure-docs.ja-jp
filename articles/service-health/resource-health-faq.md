@@ -3,12 +3,12 @@ title: Azure Resource Health の FAQ
 description: Azure Resource Health の概要
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 345724a28441e5a6b20863da8d2fd47be0a8d6f9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dc24688d8393b7a13e8c93d3f4d0171cce4c213c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518947"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570061"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health の FAQ
 Azure Resource Health についてよく寄せられる質問の回答を説明します。
@@ -46,13 +46,12 @@ Resource Health では、[リソースの種類](resource-health-checks-resource
 ポータルでは、ユーザーが開始したアクションは青の通知アイコンを使用して表示されますが、計画的および計画外のイベントは赤色の警告アイコンを使用して表示されます。 詳細については、[Resource Health の概要](Resource-health-overview.md)に関するページを参照してください。  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Resource Health をユーザー固有の監視ツールと統合できますか。
-Resource Health では、アクティビティ ログ ベースのアラートに対して[プレビュー サポート](resource-health-alert-arm-template-guide.md)が提供されます。 アクティビティ ログ アラートでは、[アクション グループ](../azure-monitor/platform/action-groups.md)を使用して、アラートがトリガーされたことをユーザーに通知します。 アクション グループでは、メール、SMS、Webhook、ITSM アクションなどのさまざまな通知チャネルがサポートされています。
+Resource Health は、アクティビティ ログ ベースのアラートを[サポートしています](resource-health-alert-arm-template-guide.md)。 アクティビティ ログ アラートでは、[アクション グループ](../azure-monitor/alerts/action-groups.md)を使用して、アラートがトリガーされたことをユーザーに通知します。 アクション グループでは、メール、SMS、Webhook、ITSM アクションなどのさまざまな通知チャネルがサポートされています。
 
 ## <a name="where-do-i-find-resource-health"></a>Resource Health はどこにありますか。
 Azure Portal にログインした後、複数の方法で Resource Health にアクセスできます。
 - 対象のリソースに移動します。 左側のナビゲーションで、 **[リソース正常性]** を選択します。
 - [Azure Service Health] ブレードに移動します。  左側のナビゲーションで、 **[リソース正常性]** を選択します。
-- ポータルの右上隅の疑問符を選択し、 **[ヘルプ + サポート]** を選択して **[ヘルプ + サポート]** ブレードを表示します。 ブレードが開いたら、 **[リソース正常性]** を選択します。
 
 Resource Health API を使用してリソースの正常性に関する情報を取得することもできます。
 
@@ -69,8 +68,6 @@ Resource Health はすべての Azure geo で利用できます。
 Resource Health の方が、Azure の状態や Service Health ダッシュボードと比べて具体的な細かい情報が得られます。
 
 [Azure の状態](https://status.azure.com)と Service Health ダッシュボードでは広範な顧客 (Azure リージョンなど) に影響するサービスの問題に関する情報を通知しますが、Resource Health では特定のリソースのみに関連するより詳細なイベントを公開します。 たとえば、ホストが予期せず再起動するとき、Resource Health はそのホスト上で仮想マシンが実行されている顧客のみに警告します。
-
-リソースに影響を与えるイベントを完全に可視化することが重要であるため、Resource Health には、Service Health ダッシュボードで発行されたイベントも表示されます。
 
 ## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>リソースごとに Resource Health をアクティブにする必要がありますか。
 いいえ。正常性情報は、Resource Health からすべてのリソースの種類に対して利用できます。 

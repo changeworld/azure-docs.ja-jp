@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 02481d5dcbaba15c9b17a27348207d9af64f3355
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 43c201150ab0b2d5d350aa228a4ade5e2faf3461
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982040"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123115"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Azure IoT Central アプリケーションを CSP ポータルから作成して管理する
 
@@ -35,7 +35,7 @@ Azure IoT Central の [Application Manager]\(アプリケーション マネー�
 
 Azure IoT Central アプリケーションを作成するには、左側のメニューの **[Build]\(ビルド\)** を選択します。 いずれかの業界テンプレートを選択するか、 **[カスタム アプリ]** を選択して最初からアプリケーションを作成します。 これによって、[Application Creation]\(アプリケーションの作成\) ページが読み込まれます。 このページのすべてのフィールドに入力してから、 **[作成]** を選択する必要があります。 詳しくは、以下の各フィールドを参照してください。
 
-![CSP 用のアプリケーションの作成ページ](media/howto-create-and-manage-applications-csp/image4.png)
+![[IoT アプリケーションをビルドする] ページを示すスクリーンショット。[ビルド] ボタンが選択されています。](media/howto-create-and-manage-applications-csp/image4.png)
 
 ![CSP 用のアプリケーションの作成ページ](media/howto-create-and-manage-applications-csp/image4-1.png)
 
@@ -63,7 +63,7 @@ Azure IoT Central では、ユーザーが Microsoft パートナー ポータ�
 
 Azure Active Directory テナントには、ユーザー ID、資格情報、およびその他の組織情報が含まれています。 1 つの Azure Active Directory テナントに複数の Azure サブスクリプションを関連付けることができます。
 
-詳細については、[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) に関するページを参照してください。
+詳細については、[Azure Active Directory](../../active-directory/index.yml) に関するページを参照してください。
 
 ## <a name="azure-subscription"></a>Azure サブスクリプション
 
@@ -71,7 +71,7 @@ Azure サブスクリプションを使用すると、Azure サービスのイ�
 
 Azure サブスクリプションがない場合は、Microsoft パートナー センターで作成できます。 Azure サブスクリプションを作成したら、 **[アプリケーションの作成]** ページに戻ります。 新しいサブスクリプションが **[Azure サブスクリプション]** ドロップダウンに表示されます。
 
-詳細については、[Azure サブスクリプション](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) に関するページを参照してください。
+詳細については、[Azure サブスクリプション](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing) に関するページを参照してください。
 
 ## <a name="location"></a>場所
 

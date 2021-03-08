@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 7572e5c5621b514c375e44ca44ddfc4102f5d714
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0cb27a8dc5685ce295c2ce30820734c4301e9dc6
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87298821"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109409"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,14 +41,14 @@ ms.locfileid: "87298821"
 このコードを `quickstart.py` に挿入します。 次の値を必ず更新してください。
 
 * `"YourLanguageUnderstandingSubscriptionKey"` を LUIS 予測キーで置き換えます。
-* `"YourLanguageUnderstandingServiceRegion"` を LUIS の場所で置き換えます。 [リージョン](https://aka.ms/speech/sdkregion)の**リージョン識別子**を使用してください。
+* `"YourLanguageUnderstandingServiceRegion"` を LUIS の場所で置き換えます。 [リージョン](../../../../regions.md)の **リージョン識別子** を使用してください。
 
 >[!TIP]
 > これらの値を見つける方法については、「[意図認識用の LUIS アプリを作成する](#create-a-luis-app-for-intent-recognition)」を参照してください。
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=12)]
 
-このサンプルでは、LUIS キーとリージョンを使用して `SpeechConfig` オブジェクトを構築します。 使用可能なメソッドの完全な一覧については、[SpeechConfig クラス](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)に関する記事を参照してください。
+このサンプルでは、LUIS キーとリージョンを使用して `SpeechConfig` オブジェクトを構築します。 使用可能なメソッドの完全な一覧については、[SpeechConfig クラス](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)に関する記事を参照してください。
 
 Speech SDK では、既定で認識される言語が en-us です。ソース言語の選択については、「[音声テキスト変換のソース言語を指定する](../../../../how-to-specify-source-language.md)」を参照してください。
 
@@ -70,6 +70,13 @@ Speech SDK では、既定で認識される言語が en-us です。ソース�
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=19-27)]
 
 この例では `add_intents()` 関数を使用して、明示的に定義された意図の一覧を追加します。 モデルのすべての意図を追加する場合は、`add_all_intents(model)` を使用し、モデルを渡します。
+
+> [!NOTE]
+> Speech SDK では、LUIS v2.0 エンドポイントのみがサポートされています。
+> V2.0 URL パターンを使用するには、例のクエリ フィールドにある v3.0 エンドポイントの URL を手動で変更する必要があります。
+> LUIS v2.0 エンドポイントは、常に次の 2 つのパターンのいずれかに従います。
+> * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+> * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 
 ## <a name="recognize-an-intent"></a>意図を認識する
 

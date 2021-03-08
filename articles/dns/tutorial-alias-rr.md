@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76939246"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>チュートリアル:ゾーン内のリソース レコードを参照するエイリアス レコードを作成する
@@ -52,7 +52,7 @@ Azure DNS 内でドメインをホストする手順については、「[チュ
 3. **[名前]** テキスト ボックスに「**test**」と入力します。
 4. **[種類]** で **[A]** を選択します。
 5. **[Alias Record Set]\(エイリアス レコード セット\)** チェック ボックスで **[はい]** を選択します。 続けて、 **[Zone record set]\(ゾーン レコード セット\)** オプションを選択します。
-6. **[Zone record set]\(ゾーン レコード セット\)** で、 **[server]** レコードを選択します。
+6. **[Zone record set]/(ゾーン レコード セット/)** で、 **[server]** レコードを選択します。
 7. **[OK]** を選択します。
 
 ## <a name="test-the-alias-record"></a>エイリアス レコードをテストする

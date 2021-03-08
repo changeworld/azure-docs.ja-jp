@@ -2,24 +2,24 @@
 title: トレーニングとモデルとは - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: モデルは、特定の言語ペアの翻訳を提供するシステムです。 適切なトレーニングの成果がモデルです。 モデルをトレーニングする際は、互いに重複のない 3 つのデータ セットが必要となります。トレーニング データセット、チューニング データセット、テスト データセットです。
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.author: swmachan
-ms.openlocfilehash: d8713d20503dc788175a408f5ec652505090396e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.author: lajanuar
+ms.openlocfilehash: 62a444b66d50579c601077751b0700aa954b34c0
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510829"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897936"
 ---
 # <a name="what-are-trainings-and-models"></a>トレーニングとモデルとは
 
 モデルは、特定の言語ペアの翻訳を提供するシステムです。
-適切なトレーニングの成果がモデルです。 モデルをトレーニングする場合、互いに重複しない 3 種類のドキュメント (トレーニング、チューニング、テスト) が必要です。 ディクショナリ ドキュメント タイプを提供することもできます。 [文のアライン](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)に関するページを参照してください。
+適切なトレーニングの成果がモデルです。 モデルをトレーニングする場合、互いに重複しない 3 種類のドキュメント (トレーニング、チューニング、テスト) が必要です。 ディクショナリ ドキュメント タイプを提供することもできます。 [文のアライン](./sentence-alignment.md#suggested-minimum-number-of-sentences)に関するページを参照してください。
 
 トレーニングをキューに追加するときにトレーニング データのみ入力した場合、チューニングとテストのデータは、Custom Translator によって自動的にアセンブルされます。 トレーニング ドキュメントから文のランダムなサブセットが使用され、これらの文がトレーニング データ自体から除外されます。
 

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 403a5b68e3320700e275c744210f480be2c88e84
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b1bcba264589d6cbe9b4f671e1e4f2c9b1dbf2c5
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021325"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594250"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>チュートリアル:Azure Remote Rendering とモデル ストレージのセキュリティ保護
 
@@ -41,16 +41,16 @@ Azure Remote Rendering は、正しく構成されていれば、Azure Blob Stor
 
 リンクされた Blob Storage を使用する場合、モデルの読み込みには若干異なる方法を使用します。
 
-```csharp
-var loadModelParams = new LoadModelFromSASParams(modelPath, modelEntity);
-var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelFromSASAsync(loadModelParams);
+```cs
+var loadModelParams = new LoadModelFromSasOptions(modelPath, modelEntity);
+var task = ARRSessionService.CurrentActiveSession.Connection.LoadModelFromSasAsync(loadModelParams);
 ```
 
-上記の行では、`FromSAS` バージョンのパラメーターとセッション アクションが使用されています。 これらを非 SAS バージョンに変換する必要があります。
+上記の行では、`FromSas` バージョンのパラメーターとセッション アクションが使用されています。 これらを非 SAS バージョンに変換する必要があります。
 
-```csharp
-var loadModelParams = new LoadModelParams(storageAccountPath, blobContainerName, modelPath, modelEntity);
-var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsync(loadModelParams);
+```cs
+var loadModelParams = new LoadModelOptions(storageAccountPath, blobContainerName, modelPath, modelEntity);
+var task = ARRSessionService.CurrentActiveSession.Connection.LoadModelAsync(loadModelParams);
 ```
 
 リンクされた Blob Storage アカウントからカスタム モデルを読み込むように、**RemoteRenderingCoordinator** を変更してみましょう。
@@ -58,7 +58,7 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
 1. [ストレージ アカウントをリンクする方法](../../../how-tos/create-an-account.md#link-storage-accounts)に関するセクションの作業がまだ完了していない場合は、その作業を完了させて、Blob Storage インスタンスへのアクセス許可を ARR インスタンスに付与します。
 1. **RemoteRenderingCoordinator** の、現在の **LoadModel** メソッドのすぐ下に、以下に示す変更済みの **LoadModel** メソッドを追加します。
 
-    ```csharp
+    ```cs
     /// <summary>
     /// Loads a model from blob storage that has been linked to the ARR instance
     /// </summary>
@@ -68,10 +68,10 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
     /// <param name="parent">The parent Transform for this remote entity</param>
     /// <param name="progress">A call back method that accepts a float progress value [0->1]</param>
     /// <returns></returns>
-    public async Task<Entity> LoadModel(string storageAccountName, string blobContainerName, string modelPath, Transform parent = null, ProgressHandler progress = null)
+    public async Task<Entity> LoadModel(string storageAccountName, string blobContainerName, string modelPath, Transform parent = null, Action<float> progress = null)
     {
         //Create a root object to parent a loaded model to
-        var modelEntity = ARRSessionService.CurrentActiveSession.Actions.CreateEntity();
+        var modelEntity = ARRSessionService.CurrentActiveSession.Connection.CreateEntity();
 
         //Get the game object representation of this entity
         var modelGameObject = modelEntity.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
@@ -100,11 +100,9 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
     #endif
 
         //Load a model that will be parented to the entity
-        var loadModelParams = new LoadModelParams($"{storageAccountName}.blob.core.windows.net", blobContainerName, modelPath, modelEntity);
-        var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsync(loadModelParams);
-        if (progress != null)
-            loadModelAsync.ProgressUpdated += progress;
-        var result = await loadModelAsync.AsTask();
+        var loadModelParams = new LoadModelOptions($"{storageAccountName}.blob.core.windows.net", blobContainerName, modelPath, modelEntity);
+        var loadModelAsync = ARRSessionService.CurrentActiveSession.Connection.LoadModelAsync(loadModelParams, progress);
+        var result = await loadModelAsync;
         return modelEntity;
     }
     ```
@@ -115,7 +113,7 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
 
 1. **RemoteRenderingCoordinator** の **LoadTestModel** の直後に、次のメソッドを追加します。
 
-    ```csharp
+    ```cs
     private bool loadingLinkedCustomModel = false;
 
     [SerializeField]
@@ -163,7 +161,7 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
     ```
 
     このコードでは、**RemoteRenderingCoordinator** コンポーネントに、さらに 3 つの文字列変数が追加されます。
-    ![リンクされたモデル](./media/storage-account-linked-model.png)
+    ![RemoteRenderingCoordinator コンポーネントのストレージ アカウント名、BLOB コンテナー名、モデル パスが強調表示されているスクリーンショット。](./media/storage-account-linked-model.png)
 
 1. **RemoteRenderingCoordinator** コンポーネントに実際の値を追加します。 [モデル変換のクイックスタート](../../../quickstarts/convert-model.md)に従った場合、実際の値は次のようになります。
 
@@ -188,11 +186,11 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
 
 ## <a name="azure-active-directory-azure-ad-authentication"></a>Azure Active Directory (Azure AD) 認証
 
-AAD 認証を使用すると、ARR を使用している個人またはグループをより制御された方法で特定することができます。 ARR には、アカウント キーを使用する代わりに、[アクセス トークン](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)を受け入れるためのサポートが組み込まれています。 アクセス トークンは、期限付きのユーザー固有キーと考えることができます。そのキーによって解放されるのは、それを必要とする特定のリソースの特定の領域に限られます。
+AAD 認証を使用すると、ARR を使用している個人またはグループをより制御された方法で特定することができます。 ARR には、アカウント キーを使用する代わりに、[アクセス トークン](../../../../active-directory/develop/access-tokens.md)を受け入れるためのサポートが組み込まれています。 アクセス トークンは、期限付きのユーザー固有キーと考えることができます。そのキーによって解放されるのは、それを必要とする特定のリソースの特定の領域に限られます。
 
-**RemoteRenderingCoordinator** スクリプトには、**ARRCredentialGetter** という名前のデリゲートがあり、**AzureFrontendAccountInfo** オブジェクトを返すメソッドを保持しています。これは、リモート セッション管理の構成に使用されます。 **ARRCredentialGetter** に別のメソッドを割り当て、Azure サインイン フローを使用できるようにすることで、Azure アクセス トークンを含んだ **AzureFrontendAccountInfo** オブジェクトを生成できます。 このアクセス トークンは、サインインするユーザーに固有の情報です。
+**RemoteRenderingCoordinator** スクリプトには、**ARRCredentialGetter** という名前のデリゲートがあり、**SessionConfiguration** オブジェクトを返すメソッドを保持しています。これは、リモート セッション管理の構成に使用されます。 **ARRCredentialGetter** に別のメソッドを割り当て、Azure サインイン フローを使用できるようにすることで、Azure アクセス トークンを含んだ **SessionConfiguration** オブジェクトを生成できます。 このアクセス トークンは、サインインするユーザーに固有の情報です。
 
-1. [認証の構成方法に関するページの「デプロイされたアプリケーションの認証」](../../../how-tos/authentication.md#authentication-for-deployed-applications)に従います。具体的には、Azure Spatial Anchors のドキュメント「[Azure AD ユーザー認証](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication)」に記載された手順に従うことになります。 これには、新しい Azure Active Directory アプリケーションの登録や、ARR インスタンスへのアクセスの構成が含まれます。
+1. [認証の構成方法に関するページの「デプロイされたアプリケーションの認証」](../../../how-tos/authentication.md#authentication-for-deployed-applications)に従います。具体的には、Azure Spatial Anchors のドキュメント「[Azure AD ユーザー認証](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication)」に記載された手順に従うことになります。 これには、新しい Azure Active Directory アプリケーションの登録や、ARR インスタンスへのアクセスの構成が含まれます。
 1. 新しい AAD アプリケーションを構成したら、AAD アプリケーションが次の画像のようになっていることを確認します。
 
     **[AAD アプリケーション] -> [認証]** ![アプリの認証](./media/app-authentication-public.png)
@@ -204,13 +202,13 @@ AAD 認証を使用すると、ARR を使用している個人またはグルー
     **[AAR] -> [アクセス制御 (IAM)]** ![ARR ロール](./media/azure-remote-rendering-role-assignment-complete.png)
 
     >[!NOTE]
-    > クライアント アプリケーションを介してセッションを管理する場合、"*所有者*" ロールでは不十分です。 セッションの管理権限を付与したい各ユーザーに対して、**Remote Rendering クライアント** ロールを指定する必要があります。 セッションの管理とモデルの変換を行う各ユーザーに対して、**Remote Rendering 管理者**ロールを指定する必要があります。
+    > クライアント アプリケーションを介してセッションを管理する場合、"*所有者*" ロールでは不十分です。 セッションの管理権限を付与したい各ユーザーに対して、**Remote Rendering クライアント** ロールを指定する必要があります。 セッションの管理とモデルの変換を行う各ユーザーに対して、**Remote Rendering 管理者** ロールを指定する必要があります。
 
-Azure 側の設定が済んだら、AAR サービスへの接続方法に関する変更をコードに加える必要があります。 そのためには、新しい **AzureFrontendAccountInfo** オブジェクトを返す、**BaseARRAuthentication** のインスタンスを実装します。 この場合は、Azure アクセス トークンを使用してアカウント情報が構成されます。
+Azure 側の設定が済んだら、AAR サービスへの接続方法に関する変更をコードに加える必要があります。 そのためには、新しい **SessionConfiguration** オブジェクトを返す、**BaseARRAuthentication** のインスタンスを実装します。 この場合は、Azure アクセス トークンを使用してアカウント情報が構成されます。
 
 1. **AADAuthentication** という名前の新しいスクリプトを作成し、そのコードを次のように置き換えます。
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -255,6 +253,14 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
             get => azureRemoteRenderingAccountID.Trim();
             set => azureRemoteRenderingAccountID = value;
         }
+    
+        [SerializeField]
+        private string azureRemoteRenderingAccountAuthenticationDomain;
+        public string AzureRemoteRenderingAccountAuthenticationDomain
+        {
+            get => azureRemoteRenderingAccountAuthenticationDomain.Trim();
+            set => azureRemoteRenderingAccountAuthenticationDomain = value;
+        }
 
         public override event Action<string> AuthenticationInstructions;
 
@@ -262,7 +268,7 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
 
         string redirect_uri = "https://login.microsoftonline.com/common/oauth2/nativeclient";
 
-        string[] scopes => new string[] { "https://sts.mixedreality.azure.com/mixedreality.signin" };
+        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountAuthenticationDomain + "/mixedreality.signin" };
 
         public void OnEnable()
         {
@@ -270,7 +276,7 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
             this.gameObject.AddComponent<ExecuteOnUnityThread>();
         }
 
-        public async override Task<AzureFrontendAccountInfo> GetAARCredentials()
+        public async override Task<SessionConfiguration> GetAARCredentials()
         {
             var result = await TryLogin();
             if (result != null)
@@ -279,7 +285,7 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
 
                 var AD_Token = result.AccessToken;
 
-                return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+                return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -361,15 +367,15 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
 
 このコードはまず、**AquireTokenSilent** を使用してサイレントにトークンを取得しようと試みます。 ユーザーが以前にこのアプリケーションに対する認証が完了していれば、成功となります。 成功しなかった場合、よりユーザーを巻き込んだ手法がとられます。
 
-このコードでは、[デバイス コード フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code)を使用してアクセス トークンを取得します。 このフローによって、ユーザーはその Azure アカウントにコンピューターまたはモバイル デバイスでサインインし、得られたトークンを HoloLens アプリケーションに送り返すことができます。
+このコードでは、[デバイス コード フロー](../../../../active-directory/develop/v2-oauth2-device-code.md)を使用してアクセス トークンを取得します。 このフローによって、ユーザーはその Azure アカウントにコンピューターまたはモバイル デバイスでサインインし、得られたトークンを HoloLens アプリケーションに送り返すことができます。
 
 ARR の観点から見て、このクラスの最も重要な部分は次の行です。
 
-```csharp
-return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+```cs
+return await Task.FromResult(new SessionConfiguration(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
-ここでは、アカウント ドメイン、アカウント ID、アクセス トークンを使用して新しい **AzureFrontendAccountInfo** オブジェクトを作成します。 その後、このトークンは、前に構成したロールベースのアクセス許可に基づいてユーザーが承認されている限り、ARR サービスでリモート レンダリング セッションの各種の処理 (クエリ、作成、参加) を行う際に使用されます。
+ここでは、アカウント ドメイン、アカウント ID、アカウント認証ドメイン、アクセス トークンを使用して新しい **SessionConfiguration** オブジェクトを作成します。 その後、このトークンは、前に構成したロールベースのアクセス許可に基づいてユーザーが承認されている限り、ARR サービスでリモート レンダリング セッションの各種の処理 (クエリ、作成、参加) を行う際に使用されます。
 
 この変更により、アプリケーションの現在の状態とその Azure リソースへのアクセスは次のようになります。
 
@@ -390,19 +396,21 @@ Unity エディターでは、AAD 認証がアクティブである場合、ア�
     * **[Account Domain]\(アカウント ドメイン\)** は、**RemoteRenderingCoordinator** の [Account Domain]\(アカウント ドメイン\) で使用しているものと同じドメインです。
     * **[Active Directory Application Client ID]\(Active Directory アプリケーション クライアント ID\)** は、AAD アプリの登録にある *[アプリケーション (クライアント) ID]* です (下図参照)。
     * **[Azure Tenant ID]\(Azure テナント ID\)** は、AAD アプリの登録にある *[ディレクトリ (テナント) ID]* です (下図参照)。
-    * **[Azure Remote Rendering Account ID]\(Azure Remote Rendering アカウント ID\)** は、**RemoteRenderingCoordinator** に使用しているものと同じ**アカウント ID** です。
+    * **[Azure Remote Rendering Account ID]\(Azure Remote Rendering アカウント ID\)** は、**RemoteRenderingCoordinator** に使用しているものと同じ **アカウント ID** です。
+    * **[Account Authentication Domain]\(アカウント認証ドメイン\)** は、**RemoteRenderingCoordinator** の **[Account Authentication Domain]\(アカウント認証ドメイン\)** で使用しているものと同じです。
 
-    ![AAD 認証コンポーネント](./media/app-overview-data.png)
+    ![アプリケーション (クライアント) ID とディレクトリ (テナント) ID が強調表示されているスクリーンショット。](./media/app-overview-data.png)
 
 1. Unity エディターの [Play]\(再生\) を押し、セッションの実行に同意します。
     **AADAuthentication** コンポーネントはビュー コントローラーを備えているため、セッション承認のモーダル パネルの後にプロンプトを表示するように自動的にフックアップされます。
 1. **AppMenu** の右側のパネルに表示される手順に従います。
-    次のように表示されます。![AAD 認証コンポーネント](./media/device-flow-instructions.png) 指定されたコードをセカンダリ デバイス (または同じデバイス上のブラウザー) に入力した後、自分の資格情報を使用してログインすると、要求元のアプリケーション (この場合は Unity エディター) にアクセス トークンが返されます。
+    次のように表示されます。![AppMenu の右側に表示されるインストラクション パネルを示す図。](./media/device-flow-instructions.png)
+    指定されたコードをセカンダリ デバイス (または同じデバイス上のブラウザー) に入力した後、自分の資格情報を使用してログインすると、要求元のアプリケーション (この場合は Unity エディター) にアクセス トークンが返されます。
 1. その後は、アプリケーションのすべての処理が通常どおりに続行されます。 想定したとおりに一連のステージが進行しない場合は、何かエラーが発生していないか Unity コンソールで確認してください。
 
 ## <a name="build-to-device"></a>デバイスにビルドする
 
-MSAL を使用してアプリケーションをデバイスにビルドする場合、プロジェクトの **Assets** フォルダーにファイルを追加する必要があります。 そうすることで、**チュートリアル アセット**に含まれている *Microsoft.Identity.Client.dll* を使用して、アプリケーションがコンパイラによって適切にビルドされます。
+MSAL を使用してアプリケーションをデバイスにビルドする場合、プロジェクトの **Assets** フォルダーにファイルを追加する必要があります。 そうすることで、**チュートリアル アセット** に含まれている *Microsoft.Identity.Client.dll* を使用して、アプリケーションがコンパイラによって適切にビルドされます。
 
 1. **Assets** に、**link.xml** という名前の新しいファイルを追加します。
 1. そのファイルに次の内容を追加します。

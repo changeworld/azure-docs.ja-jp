@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
-ms.openlocfilehash: 164e5a8c107f445b376d26f9be7db92a7983b0d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00dadf8a91b7ed01ab9f91933d296744305a95af
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73743077"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518808"
 ---
 # <a name="face-recognition-concepts"></a>顔認識の概念
 
@@ -58,7 +58,7 @@ ms.locfileid: "73743077"
 次のヒントを使用して、確実に入力画像から最も正確な認識結果が得られるようにします。
 
 * サポートされている入力画像形式は、JPEG、PNG、GIF (最初のフレーム)、BMP です。
-* 画像ファイル サイズは 4 MB 以内であることが必要です。
+* 画像ファイル サイズは 6 MB 以内であることが必要です。
 * Person オブジェクトを作成するときに、さまざまな種類の角度と照明を備えた写真を使用します。
 * 次のような技術的な課題のために、一部の顔を認識できない場合があります。
   * 強すぎる照明を含む画像 (強烈な逆光照明など)
@@ -69,6 +69,6 @@ ms.locfileid: "73743077"
 
 ## <a name="next-steps"></a>次のステップ
 
-顔認識の概念を理解したので、トレーニング済みの PersonGroup に対して顔を識別するスクリプトを作成する方法について説明します。
+顔認識の概念を理解したので、トレーニング済みの PersonGroup に対して顔を識別するスクリプトを作成します。
 
-* [画像内の顔を識別する](../Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md)
+* [Face クライアント ライブラリのクイックスタート](../Quickstarts/client-libraries.md)

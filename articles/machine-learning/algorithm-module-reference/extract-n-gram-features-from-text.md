@@ -1,24 +1,24 @@
 ---
 title: テキストからの N gram 特徴抽出モジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で N-gram の抽出モジュールを使用して、テキスト データの特徴を抽出する方法について説明します。
+description: Azure Machine Learning デザイナーで N-gram の抽出モジュールを使用して、テキスト データの特徴を抽出する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/01/2019
-ms.openlocfilehash: efe09c1d516b37c23b024e07ae387772fa7e5992
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 12/08/2019
+ms.openlocfilehash: 37a10d90fa0e277fbe45d9f1377e365cb3d42996
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477614"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861462"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>テキストからの N gram 特徴抽出モジュール リファレンス
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。 テキストからの N-gram 特徴抽出モジュールを使用して、非構造化テキスト データの "*特徴を抽出*" します。 
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。 テキストからの N-gram 特徴抽出モジュールを使用して、非構造化テキスト データの "*特徴を抽出*" します。 
 
 ## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>テキストからの N-gram 特徴抽出モジュールの構成
 
@@ -28,17 +28,17 @@ ms.locfileid: "79477614"
 
 * [既存のテキストの特徴のセットを使用](#use-an-existing-n-gram-dictionary)して、フリー テキスト列の特徴を抽出する。
 
-* N-gram を使用する[モデルのスコア付けや発行を行う](#score-or-publish-a-model-that-uses-n-grams)。
+* n-gram を使用する[モデルのスコア付けまたはデプロイ](#build-inference-pipeline-that-uses-n-grams-to-deploy-a-real-time-endpoint)を行う。
 
 ### <a name="create-a-new-n-gram-dictionary"></a>新しい N-gram 辞書を作成する
 
 1.  テキストからの N-gram 特徴抽出モジュールをパイプラインに追加し、処理するテキストが含まれているデータセットを接続します。
 
-1.  **テキスト列**を使用して、抽出するテキストを含む string 型の列を選択します。 結果は詳細であるため、一度に処理できるのは 1 列だけです。
+1.  **テキスト列** を使用して、抽出するテキストを含む string 型の列を選択します。 結果は詳細であるため、一度に処理できるのは 1 列だけです。
 
 1. **[Vocabulary mode]\(ボキャブラリ モード\)** を **[Create]\(作成\)** に設定して、新しい N-gram の特徴リストを作成していることを示します。 
 
-1. **[N-Grams size]\(N-gram のサイズ\)** を設定して、抽出して格納する N-gram の*最大*サイズを示します。 
+1. **[N-Grams size]\(N-gram のサイズ\)** を設定して、抽出して格納する N-gram の *最大* サイズを示します。 
 
     たとえば、3 を入力すると、unigram、bigram、trigram が作成されます。
 
@@ -54,9 +54,9 @@ ms.locfileid: "79477614"
  
     *  **TF-IDF ウェイト (TF-IDF Weight)** :抽出された N-gram に、用語頻度/逆ドキュメント頻度 (TF/IDF) スコアを割り当てます。 各 N-gram の値は、その TF スコアを IDF スコアで乗算したものです。
 
-1. **[Minimum word length]\(単語の最小長\)** を、N-gram 内の任意の *1 つの単語*に使用できる最小文字数に設定します。
+1. **[Minimum word length]\(単語の最小長\)** を、N-gram 内の任意の *1 つの単語* に使用できる最小文字数に設定します。
 
-1. **[Maximum word length]\(単語の最大長\)** を使用して、N-gram 内の任意の *1 つの単語*に使用できる最大文字数を設定します。
+1. **[Maximum word length]\(単語の最大長\)** を使用して、N-gram 内の任意の *1 つの単語* に使用できる最大文字数を設定します。
 
     既定では、単語またはトークンごとに最大 25 文字を使用できます。
 
@@ -94,17 +94,23 @@ ms.locfileid: "79477614"
 
 1.  パイプラインを送信します。
 
-### <a name="score-or-publish-a-model-that-uses-n-grams"></a>N-gram を使用するモデルのスコア付けまたは発行を行う
+### <a name="build-inference-pipeline-that-uses-n-grams-to-deploy-a-real-time-endpoint"></a>n-gram を使用してリアルタイム エンドポイントをデプロイする推論パイプラインを構築する
 
-1.  **テキストからの N-gram 特徴抽出**モジュールをトレーニング データフローからスコアリング データフローにコピーします。
+テスト データセットに対して予測を行うための **[Extract N-Grams Feature From Text]\(テキストから N-Grams 特徴を抽出する\)** および **[モデルのスコア付け]** が含まれるトレーニング パイプラインは、以下のような構造で構築されています。
 
-1.  **[Result Vocabulary]\(結果のボキャブラリ\)** 出力を、トレーニング データフローからスコアリング データフローの **[Input Vocabulary]\(入力ボキャブラリ\)** に接続します。
+:::image type="content" source="./media/module/extract-n-gram-training-pipeline-score-model.png" alt-text="N-Gram の抽出のトレーニング パイプラインの例" border="true":::
 
-1.  スコアリング ワークフローで、テキストからの N-gram 特徴抽出モジュールを変更し、 **[Vocabulary mode]\(ボキャブラリ モード\)** パラメーターを **[ReadOnly]\(読み取り専用\)** に設定します。 それ以外はすべて同じままにします。
+囲まれている **[Extract N-Grams Feature From Text]\(テキストから N-Grams 特徴を抽出する\)** モジュールの **[Vocabulary mode]\(ボキャブラリ モード\)** は **[Create]\(作成\)** であり、 **[モデルのスコア付け]** モジュールに接続されているモジュールの **[Vocabulary mode]\(ボキャブラリ モード\)** は **[ReadOnly]\(読み取り専用\)** です。
 
-1.  パイプラインを発行するには、 **[結果のボキャブラリ]** をデータセットとして保存します。
+上記のトレーニング パイプラインを正常に送信した後、囲まれたモジュールの出力をデータセットとして登録できます。
 
-1.  スコアリング グラフで、保存したデータセットをテキストからの N-gram 特徴抽出モジュールに接続します。
+:::image type="content" source="./media/module/extract-n-gram-output-voc-register-dataset.png" alt-text="データセットの登録" border="true":::
+
+次に、リアルタイムの推論パイプラインを作成できます。 推論パイプラインを作成したら、次のように手動で推論パイプラインを調整する必要があります。
+
+:::image type="content" source="./media/module/extract-n-gram-inference-pipeline.png" alt-text="推論パイプライン" border="true":::
+
+次に、推論パイプラインを送信し、リアルタイム エンドポイントをデプロイします。
 
 ## <a name="results"></a>結果
 

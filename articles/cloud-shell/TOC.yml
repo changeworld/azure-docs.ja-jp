@@ -13,13 +13,19 @@
     - name: Ansible
       items:
         - name: Ansible プレイブックの実行
-          href: /azure/developer/ansible/getting-started-cloud-shell?bc=%252fazure%252fbread%252ftoc.json&toc=%252fazure%252fcloud-shell%252ftoc.json
+          href: /azure/developer/ansible/getting-started-cloud-shell?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2fcloud-shell%2ftoc.json
         - name: Azure の動的インベントリの管理
-          href: /azure/developer/ansible/dynamic-inventory-configure?bc=%252fazure%252fbread%252ftoc.json&toc=%252fazure%252fcloud-shell%252ftoc.json
+          href: /azure/developer/ansible/dynamic-inventory-configure?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2fcloud-shell%2ftoc.json
     - name: Terraform
       items:
         - name: 実行プランの作成
           href: example-terraform-bash.md
+- name: 概念
+  items:
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
 - name: 操作方法ガイド
   items:
     - name: Windows ユーザー向けの PowerShell Cloud Shell

@@ -4,12 +4,12 @@ description: このチュートリアルでは、Event Grid サービスがリ�
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27cc64eee31755bcefc9d0d82b7d06e52efcf183
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e37cb6a0679ee2e249de4ed8fa31c40d5082ea4a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004546"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020145"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Event Grid のカスタム トピック用に独自のディザスター リカバリーを構築する
 ディザスター リカバリーは、アプリケーションの機能の深刻な損失からの復旧に重点を置きます。 このチュートリアルでは、Event Grid サービスが特定のリージョンで異常な状態になった場合に復旧するためのイベント処理アーキテクチャを設定する方法について説明します。
@@ -72,7 +72,7 @@ ms.locfileid: "89004546"
    * [エンドポイントの種類] で [webhook] を選択します。
    * エンドポイントをお客様のイベント レシーバーのイベント URL に設定します。これは `https://<your-event-reciever>.azurewebsites.net/api/updates` のようになります。
 
-     ![Event Grid のプライマリ イベント サブスクリプション](./media/custom-disaster-recovery/create-primary-es.png)
+     ![[イベント サブスクリプションの作成] の [基本] ページのスクリーンショット。[名前]、[エンドポイントの種類]、および [エンドポイント] の値が強調表示されています。](./media/custom-disaster-recovery/create-primary-es.png)
 
 1. 同じフローを繰り返して、セカンダリのトピックとサブスクリプションを作成します。 今回は、"-primary" サフィックスを "-secondary" に置き換えて追跡しやすくします。 最後に、別の Azure リージョンにそれを配置してください。 これは好きな場所に配置できますが、[Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)の使用が推奨されます。 セカンダリのトピックとサブスクリプションを別のリージョンに配置すると、プライマリ リージョンがダウンしてもお客様の新しいイベントが流れるようになります。
 

@@ -3,21 +3,23 @@ title: Azure Cosmos DB ストアド プロシージャとトリガーで JavaScr
 description: この記事では、Azure Cosmos DB でストアド プロシージャとトリガーを作成するための JavaScript 言語統合クエリ API の概念について説明します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 56fbcc3950a739c4c9fc3df86468301e2e2ff4d8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: b2563a9af0e0ca6943059698e29d139143780d93
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421129"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340976"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB の JavaScript クエリ API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB の SQL API を使用してクエリを発行することに加えて、[Cosmos DB のサーバー側の SDK](https://azure.github.io/azure-cosmosdb-js-server/) を使用すると、JavaScript インターフェイスを使用して Cosmos DB ストアド プロシージャやトリガーで最適化されたクエリを実行できます。 この JavaScript インターフェイスの使用では、SQL 言語を意識する必要はありません。 JavaScript クエリ API では、述語関数を一連の関数呼び出しに渡すことでクエリをプログラムで構築できます。構文は ECMAScript5 のアレイ ビルトインや Lodash のような人気の JavaScript ライブラリでおなじみのものです。 クエリは JavaScript ランタイムによって解析され、Azure Cosmos DB のインデックスを使用して効率的に実行されます。
+Azure Cosmos DB の SQL API を使用してクエリを発行することに加えて、[Cosmos DB のサーバー側の SDK](https://github.com/Azure/azure-cosmosdb-js-server/) を使用すると、JavaScript インターフェイスを使用して Cosmos DB ストアド プロシージャやトリガーで最適化されたクエリを実行できます。 この JavaScript インターフェイスの使用では、SQL 言語を意識する必要はありません。 JavaScript クエリ API では、述語関数を一連の関数呼び出しに渡すことでクエリをプログラムで構築できます。構文は ECMAScript5 のアレイ ビルトインや Lodash のような人気の JavaScript ライブラリでおなじみのものです。 クエリは JavaScript ランタイムによって解析され、Azure Cosmos DB のインデックスを使用して効率的に実行されます。
 
 ## <a name="supported-javascript-functions"></a>サポートされている JavaScript 関数
 
@@ -43,7 +45,7 @@ Azure Cosmos DB の SQL API を使用してクエリを発行することに加�
 - 制御フロー (if、for、while など)
 - 関数呼び出し
 
-詳細については、[Cosmos DB のサーバー側 JavaScript のドキュメント](https://azure.github.io/azure-cosmosdb-js-server/)を参照してください。
+詳細については、[Cosmos DB のサーバー側 JavaScript のドキュメント](https://github.com/Azure/azure-cosmosdb-js-server/)を参照してください。
 
 ## <a name="sql-to-javascript-cheat-sheet"></a>SQL と JavaScript のチート シート
 

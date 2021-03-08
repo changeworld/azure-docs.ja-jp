@@ -1,18 +1,23 @@
 ---
 title: Service Fabric Mesh 用の Windows 開発環境を設定する
 description: Windows 開発環境を設定して、Service Fabric Mesh アプリケーションを作成し、Azure Service Fabric Mesh にデプロイします。
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 12/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1040218795b824728e144697247bb070e164da22
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fc234f6954cf263423cc517bb3dda2ba2efa3358
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248278"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625737"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Service Fabric Mesh アプリをビルドするための Windows 開発環境の設定
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 新しいデプロイは、Service Fabric Mesh API では許可されません。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)に関する記事を参照してください。
 
 Windows 開発コンピューターで Azure Service Fabric Mesh アプリケーションをビルドして実行するには、次のものが必要です。
 
@@ -78,7 +83,7 @@ Service Fabric Mesh ランタイム、SDK、ツールを次の順序でインス
 ## <a name="build-a-cluster"></a>クラスターの構築
 
 > [!IMPORTANT]
-> Docker は、クラスターを構築する前に実行しておく**必要があります**。
+> Docker は、クラスターを構築する前に実行しておく **必要があります**。
 > Docker が実行中であるかどうかをテストするには、ターミナル ウィンドウを開いて `docker ps` を実行し、エラーが発生するかどうか確認します。 応答でエラーが表示されない場合は、Docker は実行中になっており、クラスターを構築する準備ができています。
 
 > [!Note]

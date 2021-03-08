@@ -3,22 +3,26 @@ title: Azure Maps の実行時間の長い操作 API
 description: Azure Maps での実行時間の長い非同期バックグラウンド処理について説明します
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 360fc4af688e393bb8639ee773f0bf0de603a425
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f5fb7c8059c8b98e8ec514a4159e96f48db7b1ad
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596051"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906201"
 ---
-# <a name="creator-long-running-operation-api"></a>Creator の実行時間の長い操作 API
+# <a name="creator-preview-long-running-operation-api"></a>Creator (プレビュー) の実行時間の長い操作 API
 
-Azure Maps の一部の API では、[非同期の要求-応答パターン](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)が使用されます。 このパターンにより、Azure Maps で高可用性と応答性の高いサービスを提供できます。 この記事では、実行時間の長い非同期バックグラウンド処理の Azure Map 固有の実装について説明します。
+> [!IMPORTANT]
+> Azure Maps Creator サービスは、現在パブリック プレビューの段階にあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+Azure Maps の一部の API では、[非同期の要求-応答パターン](/azure/architecture/patterns/async-request-reply)が使用されます。 このパターンにより、Azure Maps で高可用性と応答性の高いサービスを提供できます。 この記事では、実行時間の長い非同期バックグラウンド処理の Azure Map 固有の実装について説明します。
 
 ## <a name="submitting-a-request"></a>要求の送信
 

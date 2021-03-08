@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric アプリケーションの設計に関するベスト プラクティス
 description: Azure Service Fabric を使用してアプリケーションとサービスを開発するためのベストプラクティスと設計上の考慮事項。
-author: markfussell
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.author: mfussell
-ms.openlocfilehash: 742cd9b1e7480fcc510b61d8987e42b499a1ff20
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ddf846e9e3ac6add7cf3f584b702de5accfb22af
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261188"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91538500"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Azure Service Fabric アプリケーションの設計に関するベスト プラクティス
 

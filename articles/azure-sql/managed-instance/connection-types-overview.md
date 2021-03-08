@@ -11,12 +11,12 @@ ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e46c6d1c14d226522a1d534418b91076efeaaccf
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f1c4fe8268d24026609f55d76a102a5c9a4e8295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070719"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91356318"
 ---
 # <a name="azure-sql-managed-instance-connection-types"></a>Azure SQL Managed Instance の接続の種類
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,7 +34,7 @@ Azure SQL Managed Instance では、次の 2 種類の接続をサポートし�
 
 リダイレクトの接続の種類では、TCP セッションが SQL エンジンに対して確立された後、クライアント セッションによってロード バランサーから仮想クラスター ノードの接続先の仮想 IP が取得されます。 後続のパケットは、ゲートウェイを使用せずに、仮想クラスター ノードに直接送信されます。 次の図にこのトラフィックの流れを示します。
 
-![redirect.png](./media/connection-types-overview/redirect.png)
+![redirect-find-db が Azure 仮想ネットワーク内のゲートウェイに接続され、redirect-query が仮想ネットワーク内のデータベース プライマリ ノードに接続されているオンプレミス ネットワークを示す図。](./media/connection-types-overview/redirect.png)
 
 > [!IMPORTANT]
 > 現在、リダイレクトの接続の種類は、プライベート エンドポイントに対してのみ機能します。 接続の種類の設定に関係なく、パブリック エンドポイント経由の接続はプロキシを介して行われます。
@@ -43,7 +43,7 @@ Azure SQL Managed Instance では、次の 2 種類の接続をサポートし�
 
 プロキシの接続の種類では、TCP セッションがゲートウェイを使用して確立され、すべての後続パケットがゲートウェイ経由で送信されます。 次の図にこのトラフィックの流れを示します。
 
-![proxy.png](./media/connection-types-overview/proxy.png)
+![プロキシが Azure 仮想ネットワーク内のゲートウェイに接続されているオンプレミス ネットワークを示す図。その後、ゲートウェイから仮想ネットワーク内のデータベース プライマリ ノードに接続されています。](./media/connection-types-overview/proxy.png)
 
 ## <a name="changing-connection-type"></a>接続の種類を変更する
 

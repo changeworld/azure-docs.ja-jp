@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: d833a4cf26ee8ab69d16cbd1d776ca49a2df4bc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af671996722524de9af1a90ae8dfde27f814c8c2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738217"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011814"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Network Watcher のトラブルシューティングを使用した VPN ゲートウェイの監視
 
@@ -42,7 +42,7 @@ VPN トンネルの接続状態を確認するスクリプトが含まれた Run
 
 - Azure の Azure Automation アカウント。 Automation アカウントに最新のモジュールがあり、AzureRM.Network モジュールもあることを確認します。 AzureRM.Network モジュールを Automation アカウントに追加する必要がある場合は、モジュール ギャラリーで入手できます。
 - Azure Automation で構成された一連の資格情報が必要です。 詳細については、[Azure Automation のセキュリティ](../automation/automation-security-overview.md)に関するページを参照してください。
-- 有効な SMTP サーバー (Office 365、オンプレミスの電子メールなど) と Azure Automation で定義した資格情報。
+- 有効な SMTP サーバー (Microsoft 365、オンプレミスの電子メールなど) と Azure Automation で定義した資格情報。
 - Azure で構成済みの仮想ネットワーク ゲートウェイ。
 - ログを格納するための既存のコンテナーがある既存のストレージ アカウント。
 
@@ -51,7 +51,7 @@ VPN トンネルの接続状態を確認するスクリプトが含まれた Run
 
 ### <a name="create-the-runbook"></a>Runbook の作成
 
-この例を構成する最初の手順は、Runbook の作成です。 ここでは実行アカウントを使用します。 実行アカウントについては、「[Azure 実行アカウントを使用した Runbook の認証](../automation/automation-create-runas-account.md)」を参照してください。
+この例を構成する最初の手順は、Runbook の作成です。 ここでは実行アカウントを使用します。 実行アカウントについては、「[Azure 実行アカウントを使用した Runbook の認証](../automation/manage-runas-account.md)」を参照してください。
 
 ### <a name="step-1"></a>手順 1
 
@@ -85,7 +85,7 @@ VPN トンネルの接続状態を確認するスクリプトが含まれた Run
 
 ```powershell
 # Set these variables to the proper values for your environment
-$o365AutomationCredential = "<Office 365 account>"
+$automationCredential = "<work or school account>"
 $fromEmail = "<from email address>"
 $toEmail = "<to email address>"
 $smtpServer = "<smtp.office365.com>"
@@ -99,8 +99,8 @@ $storageAccountName = "<storage account name>"
 $storageAccountResourceGroup = "<resource group name>"
 $storageAccountContainer = "<container name>"
 
-# Get credentials for Office 365 account
-$cred = Get-AutomationPSCredential -Name $o365AutomationCredential
+# Get credentials for work or school account
+$cred = Get-AutomationPSCredential -Name $automationCredential
 
 # Get the connection "AzureRunAsConnection "
 $servicePrincipalConnection=Get-AutomationConnection -Name $runAsConnectionName

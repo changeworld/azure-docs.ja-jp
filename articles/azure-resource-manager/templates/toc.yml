@@ -4,12 +4,16 @@
   items:
     - name: ARM テンプレートとは
       href: overview.md
+    - name: Bicep の概要
+      href: bicep-overview.md
 - name: クイックスタート
   items:
     - name: テンプレートの作成 - ポータル
       href: quickstart-create-templates-use-the-portal.md
     - name: テンプレートの作成 - VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
+    - name: Bicep の作成 - VS Code
+      href: quickstart-create-bicep-use-visual-studio-code.md
     - name: テンプレート スペックの作成とデプロイ
       href: quickstart-create-template-specs.md
     - name: Azure サービス
@@ -19,7 +23,7 @@
             - name: Cognitive Search
               href: ../../search/search-get-started-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Cognitive Services
-              href: ../../cognitive-services/resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+              href: ../../cognitive-services/create-account-resource-manager-template.md?toc=%2fazure%2fazure-resource-manager%2ftemplates%2ftoc.json
             - name: データ サイエンス仮想マシン
               href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Machine Learning
@@ -48,7 +52,7 @@
               href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Stream Analytics
               href: ../../stream-analytics/quick-create-azure-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Synapse Analytics
+            - name: 専用 SQL プール (旧称 SQL DW)
               href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: ブロックチェーン
           items:
@@ -80,14 +84,20 @@
               href: ../../service-fabric/quickstart-cluster-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: データベース
           items:
+            - name: Cache for Redis
+              href: ../../azure-cache-for-redis/cache-redis-cache-arm-provision.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Cosmos DB
               href: ../../cosmos-db/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Database for MariaDB
               href: ../../mariadb/quickstart-create-mariadb-server-database-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Database for MySQL
               href: ../../mysql/quickstart-create-mysql-server-database-using-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Database for MySQL - フレキシブル サーバー
+              href: ../../mysql/flexible-server/quickstart-create-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Database for PostgreSQL
               href: ../../postgresql/quickstart-create-postgresql-server-database-using-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Database for PostgreSQL - フレキシブル サーバー
+              href: ../../postgresql/flexible-server/quickstart-create-server-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Database Migration Service
               href: ../../dms/create-dms-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: SQL Database
@@ -98,12 +108,16 @@
               href: ../../azure-sql/virtual-machines/windows/create-sql-vm-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: DevOps
           items:
+            - name: App Configuration
+              href: ../../azure-app-configuration/quickstart-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: DevTest Labs
               href: ../../devtest-labs/create-lab-windows-vm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: パイプライン
               href: /azure/devops/pipelines/apps/cd/azure/deploy-arm-template?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 統合
           items:
+            - name: API for FHIR
+              href: ../../healthcare-apis/fhir-paas-arm-template-quickstart.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Event Grid
               href: ../../event-grid/blob-event-quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Logic Apps
@@ -114,6 +128,10 @@
           items:
             - name: IoT Edge
               href: ../../iot-edge/how-to-install-iot-edge-ubuntuvm.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: IoT Hub
+              href: ../../iot-hub/horizontal-arm-route-messages.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: IoT Hub Device Provisioning Service
+              href: ../../iot-dps/quick-setup-auto-provision-rm.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 管理とガバナンス
           items:
             - name: Advisor
@@ -127,14 +145,16 @@
             - name: Managed Applications
               href: ../managed-applications/publish-service-catalog-app.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: モニター
-              href: ../../azure-monitor/learn/quick-collect-activity-log-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
+              href: ../../azure-monitor/essentials/quick-collect-activity-log-arm.md?toc=%2fazure%2fazure-resource-manager%2ftemplates%2ftoc.json
             - name: ポリシー
               href: ../../governance/policy/assign-policy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: ポータル
               href: ../../azure-portal/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: リソース グラフ
               href: ../../governance/resource-graph/shared-query-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: ロール ベースのアクセス制御 (RBAC)
+            - name: ロールベースのアクセス制御 - カスタム ロール
+              href: ../../role-based-access-control/custom-roles-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: ロールベースのアクセス制御 - ロールの割り当て
               href: ../../role-based-access-control/quickstart-role-assignments-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: サービス正常性
               href: ../../service-health/alerts-activity-log-service-notifications-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
@@ -146,6 +166,12 @@
               href: ../../application-gateway/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Content Delivery Network
               href: ../../cdn/create-profile-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: DDoS Protection
+              href: ../../ddos-protection/manage-ddos-protection-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: DNS
+              href: ../../dns/dns-get-started-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: ExpressRoute
+              href: ../../expressroute/quickstart-create-expressroute-vnet-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: ファイアウォール - Availability Zones
               href: ../../firewall/deploy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: ファイアウォール - IP グループ
@@ -154,29 +180,51 @@
               href: ../../firewall/quick-create-multiple-ip-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Firewall Manager
               href: ../../firewall-manager/quick-secure-virtual-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Load Balancer
+            - name: Front Door
+              href: ../../frontdoor/quickstart-create-front-door-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Load Balancer - 内部
+              href: ../../load-balancer/quickstart-load-balancer-standard-internal-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Load Balancer - パブリック
               href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Private Link エンドポイント
+            - name: NAT Gateway
+              href: ../../virtual-network/quickstart-create-nat-gateway-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: プライベート エンドポイント
               href: ../../private-link/create-private-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Private Link サービス
               href: ../../private-link/create-private-link-service-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Traffic Manager
+              href: ../../traffic-manager/quickstart-create-traffic-manager-profile-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Web アプリケーション ファイアウォール
               href: ../../web-application-firewall/ag/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: セキュリティ
           items:
-            - name: Key Vault
+            - name: 構成証明
+              href: ../../attestation/quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Key Vault - キー
+              href: ../../key-vault/keys/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Key Vault - シークレット
               href: ../../key-vault/secrets/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Security Center
+              href: ../../security-center/quickstart-automation-alert.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: ストレージ
           items:
+            - name: Data Share
+              href: ../../data-share/share-your-data-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: ストレージ アカウント
               href: ../../storage/common/storage-account-create.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Web
           items:
+            - name: API Management
+              href: ../../api-management/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: App Service
+              href: ../../app-service/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Notification Hubs
               href: ../../notification-hubs/create-notification-hub-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: SignalR Service
+              href: ../../azure-signalr/signalr-quickstart-azure-signalr-service-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
 - name: チュートリアル
   items:
-    - name: 初心者向けテンプレート
+    - name: 初心者向け JSON テンプレート
       items:
         - name: 1 - 最初のテンプレートを作成する
           href: template-tutorial-create-first-template.md
@@ -198,6 +246,28 @@
           href: template-tutorial-add-tags.md
         - name: 10 - パラメーター ファイルを使用する
           href: template-tutorial-use-parameter-file.md
+    - name: 初心者向け Bicep
+      items:
+        - name: 1 - 最初のテンプレートを作成する
+          href: bicep-tutorial-create-first-bicep.md
+        - name: 2 - パラメーターを追加する
+          href: bicep-tutorial-add-parameters.md
+        - name: 3 - テンプレート関数を追加する
+          href: bicep-tutorial-add-functions.md
+        - name: 4 - 変数を追加する
+          href: bicep-tutorial-add-variables.md
+        - name: 5 - 出力を追加する
+          href: bicep-tutorial-add-outputs.md
+        - name: 6 - エクスポートしたテンプレートを使用する
+          href: bicep-tutorial-export-template.md
+        - name: 7 - クイックスタート テンプレートを使用する
+          href: bicep-tutorial-quickstart-template.md
+        - name: 8 - タグを追加する
+          href: bicep-tutorial-add-tags.md
+        - name: 9 - パラメーター ファイルを使用する
+          href: bicep-tutorial-use-parameter-file.md
+        - name: 10 - モジュールを追加する
+          href: bicep-tutorial-add-modules.md
     - name: デプロイ
       items:
         - name: 1 - ローカル テンプレートをデプロイする
@@ -248,14 +318,20 @@
         - name: Deployment Manager の正常性チェックの使用
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
+    - name: テンプレートに関する Microsoft Learn パス
+      href: /learn/paths/deploy-manage-resource-manager-templates/
 - name: 概念
   items:
     - name: テンプレートのベスト プラクティス
       href: template-best-practices.md
+    - name: Bicep
+      items:
+        - name: JSON と Bicep の比較
+          href: compare-template-syntax.md
+    - name: データ型
+      href: data-types.md
     - name: よく寄せられる質問
       href: frequently-asked-questions.md
-    - name: Template Specs
-      href: template-specs.md
     - name: クラウドの一貫性を実現するテンプレート
       href: templates-cloud-consistency.md
     - name: デプロイ モード
@@ -289,6 +365,8 @@
           href: template-user-defined-functions.md
         - name: リソース
           items:
+            - name: リソースの宣言
+              href: resource-declaration.md
             - name: 子リソースの名前と種類
               href: child-resource-name-type.md
             - name: 条件付きデプロイ
@@ -323,36 +401,42 @@
             - name: 出力
               displayName: 'iteration,copy'
               href: copy-outputs.md
-    - name: テンプレートのプロパティの確認
-      items:
-        - name: テンプレートをエクスポートする
-          href: export-template-portal.md
-        - name: リソースを探索する
-          href: view-resources.md
-    - name: テンプレートの検証
-      items:
-        - name: what-if のデプロイ
-          href: template-deploy-what-if.md
-        - name: ツールキットのテスト
-          href: test-toolkit.md
-        - name: テスト ケース
-          href: test-cases.md
     - name: テンプレートのデプロイ
       items:
-        - name: デプロイ - ポータル
-          displayName: deployment
-          href: deploy-portal.md
-        - name: デプロイ - CLI
-          displayName: deployment
-          href: deploy-cli.md
-        - name: デプロイ - PowerShell
-          displayName: deployment
-          href: deploy-powershell.md
-        - name: デプロイ - REST API
-          displayName: deployment
-          href: deploy-rest.md
-        - name: GitHub からのデプロイ
-          href: deploy-to-azure-button.md
+        - name: デプロイ操作
+          items:
+            - name: デプロイ - ポータル
+              displayName: deployment
+              href: deploy-portal.md
+            - name: デプロイ - CLI
+              displayName: deployment
+              href: deploy-cli.md
+            - name: デプロイ - PowerShell
+              displayName: deployment
+              href: deploy-powershell.md
+            - name: デプロイ - REST API
+              displayName: deployment
+              href: deploy-rest.md
+            - name: デプロイ - GitHub
+              href: deploy-to-azure-button.md
+            - name: デプロイ - Cloud Shell
+              href: deploy-cloud-shell.md
+        - name: スコープ
+          items:
+            - name: Resource group
+              href: deploy-to-resource-group.md
+            - name: サブスクリプション
+              href: deploy-to-subscription.md
+            - name: 管理グループ
+              href: deploy-to-management-group.md
+            - name: Tenant
+              href: deploy-to-tenant.md
+            - name: 拡張リソース
+              href: scope-extension-resources.md
+            - name: 複数のスコープにまたがる関数
+              href: scope-functions.md
+        - name: what-if のデプロイ
+          href: template-deploy-what-if.md
         - name: エラー発生時の再デプロイ
           displayName: rollback
           href: rollback-on-error.md
@@ -360,16 +444,6 @@
           href: secure-template-with-sas-token.md
         - name: デプロイ履歴を表示する
           href: deployment-history.md
-    - name: スコープ付きのデプロイ
-      items:
-        - name: サブスクリプション
-          href: deploy-to-subscription.md
-        - name: 管理グループ
-          href: deploy-to-management-group.md
-        - name: Tenant
-          href: deploy-to-tenant.md
-        - name: スコープをまたいだデプロイ
-          href: cross-scope-deployment.md
     - name: パラメーターを指定する
       items:
         - name: パラメーター ファイルを作成する
@@ -377,12 +451,30 @@
         - name: 機密性の高い値を渡す
           displayname: key vault
           href: key-vault-parameter.md
+    - name: テンプレートのテスト
+      items:
+        - name: ツールキットのテスト
+          href: test-toolkit.md
+        - name: テスト ケース
+          href: test-cases.md
+    - name: テンプレート スペック
+      items:
+        - name: テンプレート スペックの作成とデプロイ
+          href: template-specs.md
+        - name: ポータルのテンプレート ギャラリーを変換する
+          href: convert-to-template-spec.md
     - name: CI/CD
       items:
-        - name: パイプラインを使用した VS プロジェクト
+        - name: パイプラインを使用したリソース マネージャー テンプレート
           href: add-template-to-azure-pipelines.md
         - name: デプロイ - GitHub Actions
           href: deploy-github-actions.md
+    - name: テンプレートのプロパティの確認
+      items:
+        - name: テンプレートをエクスポートする
+          href: export-template-portal.md
+        - name: リソースを探索する
+          href: view-resources.md
     - name: オーサリング ツールを使用する
       items:
         - name: "Visual\_Studio"
@@ -401,6 +493,8 @@
           href: deployment-quota-exceeded.md
         - name: InvalidTemplate
           href: error-invalid-template.md
+        - name: JobSizeExceeded
+          href: error-job-size-exceeded.md
         - name: Linux デプロイの問題
           href: ../../virtual-machines/troubleshooting/troubleshoot-deploy-vm-linux.md
         - name: NoRegisteredProviderFound
@@ -431,6 +525,8 @@
       items:
         - name: すべての関数
           href: template-functions.md
+        - name: Any 関数 (Bicep)
+          href: template-functions-any.md
         - name: 配列関数
           href: template-functions-array.md
         - name: 比較関数
@@ -463,6 +559,8 @@
       href: /python/api/overview/azure/resources?view=azure-python
 - name: リソース
   items:
+    - name: Microsoft Learn でスキルを身に付ける
+      href: /learn/paths/deploy-manage-resource-manager-templates/
     - name: Azure のクイック スタート テンプレート
       href: 'https://azure.microsoft.com/resources/templates/'
     - name: Azure のロードマップ

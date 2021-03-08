@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd1d03edad2e13d3460fb2e7a635bb198ac5c1bf
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 3365a58a0c667ca55b74a5120cdd7a78ad0abc79
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279620"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997785"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect ユーザーのサインイン オプション
 Azure Active Directory (Azure AD) Connect では、ユーザーは同じパスワードを使用して、クラウドとオンプレミス両方のリソースにサインインできます。 この記事では、Azure AD へのサインインに使用する ID を選択できるようにするために、各 ID モデルの主要な概念について説明します。
@@ -47,7 +47,7 @@ Azure AD は、次の認証方法をサポートします。
    * **パススルー認証 (PTA)** - このオプションは、パスワード ハッシュ同期と似ていますが、セキュリティとコンプライアンスに関して厳格なポリシーを導入している組織のために、オンプレミスのソフトウェア エージェントを使用したシンプルなパスワード検証が提供されます。
 * **フェデレーション認証** - この認証方法を選ぶと、信頼のおける別のシステム (AD FS やサードパーティのフェデレーション システムなど) が Azure AD から認証プロセスを引き継いでユーザーのサインインを検証します。 
 
-Office 365、SaaS アプリケーション、およびその他の Azure AD ベースのリソースへのユーザー サインインのみを有効にするほとんどの組織では、既定のパスワード ハッシュの同期オプションをお勧めします。
+Microsoft 365、SaaS アプリケーション、およびその他の Azure AD ベースのリソースへのユーザー サインインのみを有効にするほとんどの組織では、既定のパスワード ハッシュの同期オプションをお勧めします。
  
 認証方法の選択の詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](./choose-ad-authn.md)」を参照してください。
 
@@ -139,12 +139,12 @@ Azure AD サインイン ページには、オンプレミス Active Directory �
 更新ボタンをクリックすると、カスタム ドメインの最新の状態を Azure AD から再取得することができます。
 
 ### <a name="selecting-the-attribute-for-the-user-principal-name-in-azure-ad"></a>Azure AD でのユーザー プリンシパル名の属性の選択
-userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にサインインするときに使用する属性です。 ユーザーを同期できるようにするには、まず Azure AD で使用するドメイン (UPN サフィックス) を確認する必要があります。
+userPrincipalName 属性は、ユーザーが Azure AD と Microsoft 365 にサインインするときに使用する属性です。 ユーザーを同期できるようにするには、まず Azure AD で使用するドメイン (UPN サフィックス) を確認する必要があります。
 
 サインインには、既定の userPrincipalName 属性をそのまま使用することを強くお勧めします。 ただし、この属性がルーティング不可能で確認できない場合には、サインイン ID を保持する属性として、別の属性 (電子メールなど) を選択することができます。 これを代替 ID といいます。 代替 ID の属性値は、RFC822 標準に従う必要があります。 代替 ID は、サインイン ソリューションとして、パスワード SSO とフェデレーション SSO の両方で使用できます。
 
 > [!NOTE]
-> 代替 ID の使用は、すべての Office 365 ワークロードと互換性があるわけではありません。 詳しくは、「[Configuring Alternate Login ID (代替ログイン ID の構成)](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)」をご覧ください。
+> 代替 ID の使用は、すべての Microsoft 365 ワークロードに対応しているわけではありません。 詳しくは、「[Configuring Alternate Login ID (代替ログイン ID の構成)](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)」をご覧ください。
 >
 >
 
@@ -179,7 +179,7 @@ Azure AD ディレクトリのカスタム ドメインの状態と、オンプ�
 
 次のページで、Azure AD の資格情報の入力を求められます。
 
-![Azure への接続](./media/plan-connect-user-signin/changeusersignin2.png)
+![Azure AD の資格情報を入力する場所を示すスクリーンショット。](./media/plan-connect-user-signin/changeusersignin2.png)
 
 「**ユーザーのサインイン**」ページで、目的のユーザーのサインインを選択します。
 

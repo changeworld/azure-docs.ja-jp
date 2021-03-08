@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 7117ffcbaf4eba8d83a6e968f4fed7422673610b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: aec1967f0652e18c4a24ca258c14a103355b22af
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844242"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219317"
 ---
 # <a name="api-management-policy-expressions"></a>API Management ポリシー式
 この記事では、C# 7 のポリシー式の構文について説明します。 それぞれの式は、暗黙的に指定された[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数と、許可されている .NET Framework の型の[サブセット](api-management-policy-expressions.md#CLRTypes)にアクセスできます。
@@ -220,7 +220,7 @@ ms.locfileid: "87844242"
 |<a id="ref-context-request-headers"></a>string context.Request.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName: 文字列<br /><br /> defaultValue: 文字列<br /><br /> コンマ区切りの要求ヘッダー値、またはヘッダーが見つからない場合は `defaultValue` を返します。|
 |<a id="ref-context-response"></a>context.Response|本文は次のようになります。[IMessageBody](#ref-imessagebody)<br /><br /> [Headers](#ref-context-response-headers):IReadOnlyDictionary<string, string[]><br /><br /> StatusCode: 整数<br /><br /> StatusReason: 文字列|
 |<a id="ref-context-response-headers"></a>string context.Response.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName: 文字列<br /><br /> defaultValue: 文字列<br /><br /> コンマ区切りの応答ヘッダー値、またはヘッダーが見つからない場合は `defaultValue` を返します。|
-|<a id="ref-context-subscription"></a>context.Subscription|CreatedTime:DateTime<br /><br /> EndDate:DateTime?<br /><br /> Id: 文字列<br /><br /> Key: 文字列<br /><br /> Name: 文字列<br /><br /> PrimaryKey: 文字列<br /><br /> SecondaryKey: 文字列<br /><br /> StartDate:DateTime?|
+|<a id="ref-context-subscription"></a>context.Subscription|CreatedDate:DateTime<br /><br /> EndDate:DateTime?<br /><br /> Id: 文字列<br /><br /> Key: 文字列<br /><br /> Name: 文字列<br /><br /> PrimaryKey: 文字列<br /><br /> SecondaryKey: 文字列<br /><br /> StartDate:DateTime?|
 |<a id="ref-context-user"></a>context.User|Email: 文字列<br /><br /> FirstName: 文字列<br /><br /> Groups:IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id: 文字列<br /><br /> Identities:IEnumerable<[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: 文字列<br /><br /> Note: 文字列<br /><br /> RegistrationDate:DateTime|
 |<a id="ref-iapi"></a>IApi|Id: 文字列<br /><br /> Name: 文字列<br /><br /> Path: 文字列<br /><br /> Protocols:IEnumerable<string\><br /><br /> ServiceUrl:[IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames:[ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>IGroup|Id: 文字列<br /><br /> Name: 文字列|
@@ -253,4 +253,4 @@ ms.locfileid: "87844242"
 + [API Management のポリシー](api-management-howto-policies.md)
 + [API を変換する](transform-api.md)
 + ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
-+ [ポリシーのサンプル](policy-samples.md)
++ [ポリシーのサンプル](./policy-reference.md)

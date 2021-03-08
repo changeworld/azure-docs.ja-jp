@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: a995460793686d8293d77965e74e2cbf916925a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8fc6e71494df36cd6f823661b18e4a3d8ce2938c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005601"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563683"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>Azure Web アプリケーション ファイアウォール (WAF) に対するカスタム応答を構成する
 
-既定では、規則が一致したために WAF で要求がブロックされると、403 状態コードと "**要求はブロックされました**" というメッセージが返されます。 既定のメッセージには、要求の[ログ エントリ](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-monitor)へのリンクに使用できる追跡参照文字列も含まれています。  ユース ケースの参照文字列を使用して、カスタム応答状態コードとカスタム メッセージを構成することができます。 この記事では、要求が WAF によってブロックされたときのカスタム応答ページを構成する方法について説明します。
+既定では、規則が一致したために WAF で要求がブロックされると、403 状態コードと "**要求はブロックされました**" というメッセージが返されます。 既定のメッセージには、要求の[ログ エントリ](./waf-front-door-monitor.md)へのリンクに使用できる追跡参照文字列も含まれています。  ユース ケースの参照文字列を使用して、カスタム応答状態コードとカスタム メッセージを構成することができます。 この記事では、要求が WAF によってブロックされたときのカスタム応答ページを構成する方法について説明します。
 
 ## <a name="configure-custom-response-status-code-and-message-use-portal"></a>カスタム応答状態コードとメッセージ使用ポータルを構成する
 
@@ -35,9 +35,9 @@ WAF ポータルの [ポリシー設定] で、カスタム応答状態コード
 
 ### <a name="set-up-your-powershell-environment"></a>PowerShell 環境をセットアップする
 
-Azure PowerShell には、Azure リソースの管理に [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) モデルを使う一連のコマンドレットが用意されています。 
+Azure PowerShell には、Azure リソースの管理に [Azure Resource Manager](../../azure-resource-manager/management/overview.md) モデルを使う一連のコマンドレットが用意されています。 
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) をローカル コンピューターにインストールして、すべての PowerShell セッションで使用することができます。 リンク先のページの手順に従って Azure の資格情報でサインインし、Az PowerShell モジュールをインストールします。
+[Azure PowerShell](/powershell/azure/) をローカル コンピューターにインストールして、すべての PowerShell セッションで使用することができます。 リンク先のページの手順に従って Azure の資格情報でサインインし、Az PowerShell モジュールをインストールします。
 
 ### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>サインインのための対話型ダイアログを使用して Azure に接続する
 

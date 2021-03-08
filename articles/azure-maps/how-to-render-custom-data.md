@@ -3,24 +3,24 @@ title: ラスター マップ上にカスタム データをレンダリング�
 description: ラスター マップにプッシュピン、ラベル、幾何学図形を追加する方法について説明します。 この目的のために Azure Maps で静的画像サービスを使用する方法を確認してください。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/23/2020
-ms.topic: conceptual
+ms.date: 12/07/2020
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d5dcc2701a0b77509868471ec97c45917b2ccf42
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 5c70835c11bafb3fd06645ba51099b33d1eb6149
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037373"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906082"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>ラスター マップ上にカスタム データをレンダリングする
 
-この記事では、[静的画像サービス](https://docs.microsoft.com/rest/api/maps/render/getmapimage)と画像コンポジション機能を使用して、ラスター マップの上にオーバーレイを作成する方法について説明します。 画像コンポジションには、カスタムのプッシュピン、ラベル、ジオメトリのオーバーレイなどのデータが追加されたラスター タイルを戻す機能があります。
+この記事では、[静的画像サービス](/rest/api/maps/render/getmapimage)と画像コンポジション機能を使用して、ラスター マップの上にオーバーレイを作成する方法について説明します。 画像コンポジションには、カスタムのプッシュピン、ラベル、ジオメトリのオーバーレイなどのデータが追加されたラスター タイルを戻す機能があります。
 
-カスタムのプッシュピン、ラベル、ジオメトリをレンダリングするには、Postman アプリケーションを使用できます。 オーバーレイの格納とレンダリングには、Azure Maps [Data Service API](https://docs.microsoft.com/rest/api/maps/data) を使用できます。
+カスタムのプッシュピン、ラベル、ジオメトリをレンダリングするには、Postman アプリケーションを使用できます。 オーバーレイの格納とレンダリングには、Azure Maps [Data Service API](/rest/api/maps/data) を使用できます。
 
 > [!Tip]
 > 多くの場合、静的イメージ サービスを使用するよりも、Azure Maps Web SDK を使用して Web ページ上に単純なマップを表示した方が、ずっとコスト効率に優れています。 Web SDK では、マップタイルを使用します。ユーザーがマップをパンしたりズームしたりしない限り、多くの場合、マップの読み込みごとにトランザクションのごく一部のみが生成されます。 Azure Maps Web SDK には、パンとズームを無効にするオプションがあることに注意してください。 さらに、Azure Maps Web SDK には、静的なマップの Web サービスよりも豊富なデータ視覚化オプションが用意されています。  
@@ -62,7 +62,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
 > [!Note]
 > このセクションの手順には、S1 価格レベルの Azure Maps アカウントが必要です。
 
-[Data Upload API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) を使用し、パスとピンの場所情報を取得することもできます。 パスとピンのデータをアップロードするには、次の手順を実行します。
+[Data Upload API](/rest/api/maps/data/uploadpreview) を使用し、パスとピンの場所情報を取得することもできます。 パスとピンのデータをアップロードするには、次の手順を実行します。
 
 1. Postman アプリで、前のセクションで作成したコレクションの新しいタブを開きます。 [builder]\(ビルダー\) タブで POST HTTP メソッドを選択し、次の URL を入力して POST 要求を行います。
 
@@ -172,7 +172,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
 > このセクションの手順には、S1 価格レベルの Azure Maps アカウントが必要です。
 
 
-多角形の外観は、[path パラメーター](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters)のスタイル修飾子を使用して変更できます。
+多角形の外観は、[path パラメーター](/rest/api/maps/render/getmapimage#uri-parameters)のスタイル修飾子を使用して変更できます。
 
 1. Postman アプリで、先ほど作成したコレクションの新しいタブを開きます。 [builder]\(ビルダー\) タブで GET HTTP メソッドを選択し、GET 要求を構成する次の URL を入力し、色と不透明度を指定した多角形をレンダリングします。
     
@@ -192,7 +192,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
 > このセクションの手順には、S1 価格レベルの Azure Maps アカウントが必要です。
 
 
-ピンの外観を変更するには、スタイル修飾子を追加します。 たとえば、プッシュピンとそのラベルを大きくまたは小さくするには、`sc` "スケール スタイル" 修飾子を使用します。 この修飾子は 0 より大きい値を受け取ります。 1 の値が標準のスケールです。 1 より大きい値にするとピンが大きくなり、1 より小さい値にすると小さくなります。 スタイル修飾子の詳細については、[静的画像サービス パスのパラメーター](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters)に関するページを参照してください。
+ピンの外観を変更するには、スタイル修飾子を追加します。 たとえば、プッシュピンとそのラベルを大きくまたは小さくするには、`sc` "スケール スタイル" 修飾子を使用します。 この修飾子は 0 より大きい値を受け取ります。 1 の値が標準のスケールです。 1 より大きい値にするとピンが大きくなり、1 より小さい値にすると小さくなります。 スタイル修飾子の詳細については、[静的画像サービス パスのパラメーター](/rest/api/maps/render/getmapimage#uri-parameters)に関するページを参照してください。
 
 
 次の手順でカスタム ラベルが付いた円とプッシュピンをレンダリングします。
@@ -222,6 +222,5 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
 ## <a name="next-steps"></a>次の手順
 
 
-* [Azure Maps Get Map Image API](https://docs.microsoft.com/rest/api/maps/render/getmapimage) のドキュメントを確認します。
-* Azure Maps Data Service の詳細については、[サービスのドキュメント](https://docs.microsoft.com/rest/api/maps/data)を参照してください。
-
+* [Azure Maps Get Map Image API](/rest/api/maps/render/getmapimage) のドキュメントを確認します。
+* Azure Maps Data Service (プレビュー) の詳細については、[サービス ドキュメント](/rest/api/maps/data)を参照してください。

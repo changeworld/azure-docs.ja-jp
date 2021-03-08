@@ -1,19 +1,19 @@
 ---
 title: よく寄せられる質問
 description: Azure Spatial Anchors サービスに関する FAQ。
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 05/18/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9457836a3048ff08b228bf9d5b84400af15d6cc5
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 01eb0ce83efa54366e027d35d9c3c3bbf86eff7b
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854944"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95487369"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure Spatial Anchors についてよく寄せられる質問
 
@@ -128,4 +128,4 @@ Azure Spatial Anchors は、[Azure サービス契約条件](https://go.microsof
 
 **Q:Azure Spatial Anchors ではどのポートとプロトコルが使用されますか?**
 
-**A:** Azure Spatial Anchors は、暗号化プロトコルを使用して TCP ポート 443 を介して通信します。 認証には、ポート 443 経由で HTTPS を使用して通信する [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) が使用されます。
+**A:** Azure Spatial Anchors は、暗号化プロトコルを使用して TCP ポート 443 を介して通信します。 認証には、ポート 443 経由で HTTPS を使用して通信する [Azure Active Directory](../active-directory/index.yml) が使用されます。

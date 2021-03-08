@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 2a95aa9e9fccdb7047c2c0901f4349fecfbab672
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5de4e1b465cfc3ced59f8fe34a7f397324b4a225
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009581"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537628"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>Azure Cache for Redis への移行
 この記事では、オンプレミスまたは別のクラウド サービスで実行されている既存の Redis キャッシュを Azure Cache for Redis に移行するためのさまざまな方法について説明します。
@@ -34,7 +34,7 @@ ms.locfileid: "88009581"
    | ------------ | ---------- | ------------- |
    | 新しいキャッシュを作成する | 実装が非常に簡単です。 | 新しいキャッシュにデータを再入力する必要があります。多くのアプリケーションで動作しない可能性があります。 |
    | RDB ファイルを使用してデータをエクスポートおよびインポートする | 一般に、Redis キャッシュとの互換性があります。 | RDB ファイルの生成後に既存のキャッシュに書き込まれると、一部のデータが失われる可能性があります。 | 
-   | 2 つのキャッシュにデータを二重に書き込む | データの損失やダウンタイムはありません。 既存のキャッシュが中断されない操作です。 新しいキャッシュのテストが簡単になります。 | 長期間にわたって 2 つのキャッシュが必要です。 | 
+   | 2 つのキャッシュにデータを二重に書き込む | データの損失やダウンタイムはありません 既存のキャッシュが中断されない操作です。 新しいキャッシュのテストが簡単になります。 | 長期間にわたって 2 つのキャッシュが必要です。 | 
    | プログラムでデータを移行する | データの移動方法を完全に制御できます。 | カスタム コードが必要です。 | 
 
 ### <a name="create-a-new-azure-cache-for-redis"></a>新しい Azure Cache for Redis を作成する
@@ -64,12 +64,12 @@ ms.locfileid: "88009581"
 2. 既存の Redis キャッシュのスナップショットを保存します。 [スナップショット](https://redis.io/topics/persistence)が定期的に保存されるように Redis を構成することも、[SAVE](https://redis.io/commands/save) または [BGSAVE](https://redis.io/commands/bgsave) コマンドを使用して手動でプロセスを実行することもできます。 既定の RDB ファイル名は "dump.rdb" であり、このファイルは *redis.conf* 構成ファイルで指定されたパスに配置されています。
 
     > [!NOTE]
-    > Azure Cache for Redis 内でデータを移行する場合は、[RDB ファイルをエクスポートするための手順](cache-how-to-import-export-data.md)を参照するか、代わりに [PowerShell エクスポート コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.rediscache/export-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0)を使用してください。
+    > Azure Cache for Redis 内でデータを移行する場合は、[RDB ファイルをエクスポートするための手順](cache-how-to-import-export-data.md)を参照するか、代わりに [PowerShell エクスポート コマンドレット](/powershell/module/azurerm.rediscache/export-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0)を使用してください。
     >
 
 3. RDB ファイルを新しいキャッシュが配置されているリージョンの Azure ストレージ アカウントにコピーします。 このタスクでは、AzCopy を使用できます。
 
-4. これらの[インポート手順](cache-how-to-import-export-data.md)または [PowerShell インポート コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.rediscache/import-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0)を使用して、RDB ファイルを新しいキャッシュにインポートします。
+4. これらの[インポート手順](cache-how-to-import-export-data.md)または [PowerShell インポート コマンドレット](/powershell/module/azurerm.rediscache/import-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0)を使用して、RDB ファイルを新しいキャッシュにインポートします。
 
 5. 新しいキャッシュ インスタンスが使用されるようにアプリケーションを更新します。
 

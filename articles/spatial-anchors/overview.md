@@ -1,19 +1,19 @@
 ---
 title: Azure Spatial Anchors の概要
 description: Azure Spatial Anchors がクロスプラットフォーム対応の複合現実エクスペリエンスの開発にどのように役立つかについて説明します。
-author: craigktreasure
-manager: aliemami
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 361a75c2e5951dc540830efd6be057753402daf1
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: a422371bacddf049365562fce9af7e61f35089a1
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006106"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95487386"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Azure Spatial Anchors の概要
 

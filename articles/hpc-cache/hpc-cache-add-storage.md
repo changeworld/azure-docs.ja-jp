@@ -4,14 +4,14 @@ description: Azure HPC Cache で長期的なファイルの保管にオンプレ
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 01/28/2021
 ms.author: v-erkel
-ms.openlocfilehash: 585ea3b5ddd16acb9af83c1c1e0e4aa6ca9e631a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b4df5863cc746490f13685a8d412232217af3bc8
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826706"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054367"
 ---
 # <a name="add-storage-targets"></a>ストレージ ターゲットを追加する
 
@@ -19,65 +19,21 @@ ms.locfileid: "87826706"
 
 1 つのキャッシュに対して最大 10 個の異なるストレージ ターゲットを定義できます。 このキャッシュでは、すべてのストレージ ターゲットが 1 つの集約された名前空間で提供されます。
 
+名前空間パスは、ストレージ ターゲットを追加した後に個別に構成されます。 一般に、NFS ストレージ ターゲットには、最大 10 個の名前空間パスを指定できますが、一部の大規模構成ではさらに多く指定できます。 詳細については、「[NFS 名前空間パス](add-namespace-paths.md#nfs-namespace-paths)」を参照してください。
+
 キャッシュの仮想ネットワークからストレージのエクスポートにアクセスできなければならないことに注意してください。 オンプレミスのハードウェア ストレージの場合、NFS ストレージへのアクセスに使用されるホスト名を解決できる DNS サーバーの設定が必要になることがあります。 詳細については、「[DNS アクセス](hpc-cache-prerequisites.md#dns-access)」を参照してください。
 
-キャッシュを作成した後で、ストレージ ターゲットを追加します。 この手順は、追加するのが Azure Blob Storage であるか NFS エクスポートであるかによって若干異なります。 それぞれの詳細を以下に示します。
+キャッシュを作成した後で、ストレージ ターゲットを追加します。 次のプロセスに従います。
+
+1. [キャッシュを作成する](hpc-cache-create.md)
+1. ストレージ ターゲットを定義する (この記事の情報)
+1. [ クライアント側のパスを作成する](add-namespace-paths.md) ([集約された名前空間](hpc-cache-namespace.md)用)
+
+ストレージ ターゲットを追加する手順は、追加するのが Azure Blob Storage であるか NFS エクスポートであるかによって若干異なります。 それぞれの詳細を以下に示します。
 
 Azure portal からのキャッシュの作成とストレージ ターゲットの追加に関する[ビデオ デモ](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)を視聴するには、次の画像をクリックしてください。
 
 [![ビデオのサムネイル:Azure HPC Cache: セットアップ (クリックしてビデオ ページにアクセス)](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
-
-## <a name="view-storage-targets"></a>ストレージ ターゲットを表示する
-
-### <a name="portal"></a>[ポータル](#tab/azure-portal)
-
-Azure portal からキャッシュ インスタンスを開き、左側のサイド バーにある **[ストレージ ターゲット]** をクリックします。 ストレージ ターゲットのページには、既存のターゲットがすべて表示されるほか、新たに追加するためのリンクが表示されます。
-
-![サイドバーの [ストレージ ターゲット] リンクのスクリーンショット。[設定] と [監視] というカテゴリ見出しの間にある [構成] という見出しの下にあります](media/hpc-cache-storage-targets-sidebar.png)
-
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
-
-[az hpc-cache storage-target list](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) オプションを使用すると、キャッシュ用の既存のストレージ ターゲットを表示することができます。 キャッシュ名とリソース グループを指定します (それがグローバルに設定している場合は除きます)。
-
-```azurecli
-az hpc-cache storage-target list --resource-group "scgroup" --cache-name "sc1"
-```
-
-特定のストレージ ターゲットに関する詳細を表示するには、[az hpc-cache storage-target show](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) を使用します (ストレージ ターゲットを名前で指定します)。
-
-例:
-
-```azurecli
-$ az hpc-cache storage-target show --cache-name doc-cache0629 --name nfsd1
-
-{
-  "clfs": null,
-  "id": "/subscriptions/<subscription_ID>/resourceGroups/scgroup/providers/Microsoft.StorageCache/caches/doc-cache0629/storageTargets/nfsd1",
-  "junctions": [
-    {
-      "namespacePath": "/nfs1/data1",
-      "nfsExport": "/datadisk1",
-      "targetPath": ""
-    }
-  ],
-  "location": "eastus",
-  "name": "nfsd1",
-  "nfs3": {
-    "target": "10.0.0.4",
-    "usageModel": "WRITE_WORKLOAD_15"
-  },
-  "provisioningState": "Succeeded",
-  "resourceGroup": "scgroup",
-  "targetType": "nfs3",
-  "type": "Microsoft.StorageCache/caches/storageTargets",
-  "unknown": null
-}
-$
-```
-
----
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>新しい Azure Blob Storage ターゲットを追加する
 
@@ -86,6 +42,14 @@ $
 Azure portal の **[ストレージ ターゲットの追加]** ページには、追加する直前に新しい BLOB コンテナーを作成するオプションが含まれています。
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+Azure portal からキャッシュ インスタンスを開き、左側のサイド バーにある **[ストレージ ターゲット]** をクリックします。
+
+![テーブルに 2 つの既存のストレージ ターゲットがあり、テーブルの上の [+ ストレージターゲットの追加] ボタンの周囲が強調表示された [設定] > [ストレージ ターゲット] ページのスクリーンショット](media/add-storage-target-button.png)
+
+**[ストレージ ターゲット]** ページには、既存のターゲットがすべて表示されるほか、新たに追加するためのリンクが表示されます。
+
+**[ストレージ ターゲットの追加]** ボタンをクリックします。
 
 ![新しい Azure Blob Storage ターゲットの情報が事前設定されている [ストレージ ターゲットの追加] ページのスクリーンショット](media/hpc-cache-add-blob.png)
 
@@ -103,8 +67,6 @@ Azure BLOB コンテナーを定義するには、次の情報を入力します
 
   ![新しいコンテナーの名前とアクセス レベル (プライベート) を指定するダイアログのスクリーンショット](media/add-blob-new-container.png)
 
-* **[Virtual namespace path]\(仮想名前空間パス\)** - このストレージ ターゲットに使用するクライアント側のファイル パスを設定します。 仮想名前空間の機能の詳細については、「[集約された名前空間を構成する](hpc-cache-namespace.md)」を参照してください。
-
 完了したら、 **[OK]** をクリックしてストレージ ターゲットを追加します。
 
 > [!NOTE]
@@ -112,9 +74,9 @@ Azure BLOB コンテナーを定義するには、次の情報を入力します
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>アクセス制御ロールをアカウントに追加する
 
-Azure HPC Cache では、Azure Blob Storage ターゲットのストレージ アカウントにキャッシュ サービスがアクセスすることを承認する場合、[Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) が使用されます。
+Azure HPC Cache では、Azure Blob Storage ターゲットのストレージ アカウントにキャッシュ サービスがアクセスすることを承認する場合、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/index.yml) が使用されます。
 
-ストレージ アカウント所有者は、"HPC Cache リソース プロバイダー" ユーザーの[ストレージ アカウント共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)ロールと[ストレージ BLOB データ共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)ロールを明示的に追加する必要があります。
+ストレージ アカウント所有者は、"HPC Cache リソース プロバイダー" ユーザーの[ストレージ アカウント共同作成者](../role-based-access-control/built-in-roles.md#storage-account-contributor)ロールと[ストレージ BLOB データ共同作成者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを明示的に追加する必要があります。
 
 この作業は事前に行えるほか、Blob Storage ターゲットを追加するページ上のリンクをクリックして行うこともできます。 ロールの設定を Azure 環境経由で反映させるとき、最大 5 分かかる場合があることにご留意ください。ロールの追加後、少し待ってからストレージ ターゲットを作成してください。
 
@@ -141,9 +103,9 @@ Azure ロールを追加する手順:
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
-
 ### <a name="prerequisite-storage-account-access"></a>前提条件:ストレージ アカウント アクセス
+
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
 BLOB ストレージ ターゲットを追加する前に、ストレージ アカウントにアクセスするための適切なロールをキャッシュが備えていること、ファイアウォール設定によってストレージターゲットの作成が許可されることを確認してください。
 
@@ -162,6 +124,9 @@ Azure HPC Cache では、Azure Blob Storage ターゲットのストレージ �
 ### <a name="add-a-blob-storage-target-with-azure-cli"></a>Azure CLI を使用して BLOB ストレージ ターゲットを追加する
 
 Azure Blob ストレージ ターゲットを定義するには、[az hpc-cache blob-storage-target add](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-add) インターフェイスを使用します。
+
+> [!NOTE]
+> 現在、Azure CLI コマンドでは、ストレージ ターゲットを追加するときに、名前空間パスを作成する必要があります。 これは、Azure portal インターフェイスで使用されるプロセスとは異なります。
 
 標準のリソース グループおよびキャッシュ名のパラメーターに加えて、ストレージ ターゲットに対して次のオプションを指定する必要があります。
 
@@ -188,7 +153,7 @@ az hpc-cache blob-storage-target add --resource-group "hpc-cache-group" \
 
 ## <a name="add-a-new-nfs-storage-target"></a>新しい NFS ストレージ ターゲットを追加する
 
-NFS ストレージ ターゲットには、BLOB ストレージ ターゲットよりも多くのフィールドがあります。 これらのフィールドでは、ストレージ エクスポートへの到達方法やそのデータを効率的にキャッシュする方法を指定します。 また、NFS ストレージ ターゲットでは、利用できるエクスポートが NFS ホストに複数ある場合、複数の名前空間パスを作成できます。
+NFS ストレージ ターゲットの設定は、Blob Storage ターゲットとは異なります。 使用モデルの設定は、キャッシュでこのストレージ システムからのデータを効率的にキャッシュするのに役立ちます。
 
 ![NFS ターゲットが定義されている [ストレージ ターゲットの追加] ページのスクリーンショット](media/add-nfs-target.png)
 
@@ -200,19 +165,21 @@ NFS ストレージ ターゲットには、BLOB ストレージ ターゲット
 
 NFS ストレージ システムを指すストレージ ターゲットを作成するときは、そのターゲットの使用モデルを選択する必要があります。 どのようにデータがキャッシュされるかは、このモデルによって決まります。
 
+組み込みの使用モデルでは、迅速な応答と古いデータを取得するリスクとのバランスを取る方法を選択できます。 ファイルの読み取り速度を最適化する場合、キャッシュ内のファイルがバックエンド ファイルと照合されるかどうかは重要でなないかもしれません。 一方、リモート ストレージでファイルが常に最新の状態になっていることを確認する場合は、頻繁にチェックを行うモデルを選択します。
+
 次の 3 つのオプションがあります。
 
 * **負荷が高く、頻度の低い書き込みを読み取ります** - 静的、またはほとんど変更されないファイルへの読み取りアクセスを速くする場合にこのオプションを使用します。
 
-  このオプションを選択すると、クライアントにより読み取られるファイルがキャッシュされますが、書き込みは直後にバックエンド ストレージに渡されます。 キャッシュに格納されているファイルが NFS ストレージ ボリューム上のファイルと比較されることはありません。
+  このオプションを選択すると、クライアントにより読み取られるファイルがキャッシュされますが、書き込みは直後にバックエンド ストレージに渡されます。 キャッシュに格納されているファイルが NFS ストレージ ボリューム上のファイルと自動的に比較されることはありません (詳細については、バックエンドの検証に関する以下の注意事項を参照してください)。
 
-  最初にキャッシュに書き込まず、ストレージ システムで直接、ファイルが変更されるリスクがある場合、このオプションは使用しないでください。 直接変更されてしまうと、キャッシュされたバージョンのファイルはバック エンドからの変更で更新されず、データ セットに整合性がなくなります。
+  最初にキャッシュに書き込まず、ストレージ システムで直接、ファイルが変更されるリスクがある場合、このオプションは使用しないでください。 これが発生すると、キャッシュされたバージョンのファイルは、バックエンド ファイルと非同期になります。
 
 * **書き込みが 15% を超えています** - このオプションを使用すると、書き込みと読み取りの両方が速くなります。 このオプションを使用するとき、クライアントでは、バックエンド ストレージを直接マウントするのではなく、Azure HPC Cache 経由でファイルにアクセスする必要があります。 キャッシュされたファイルでは、バック エンドで格納されていない最近の変更が反映されます。
 
-  この使用モデルでは、キャッシュのファイルがバックエンド ストレージのファイルに対して照合されることはありません。 キャッシュされたバージョンのファイルの方が新しいと見なされます。 キャッシュに存在する変更後のファイルは、追加の変更なしでキャッシュに 1 時間留まった後にバックエンド ストレージ システムに書き込まれます。
+  この使用モデルでは、8 時間ごとに、キャッシュ内のファイルがバックエンド ストレージのファイルと照合されます。 キャッシュされたバージョンのファイルの方が新しいと見なされます。 キャッシュに存在する変更後のファイルは、追加の変更なしでキャッシュに 1 時間留まった後にバックエンド ストレージ システムに書き込まれます。
 
-* **クライアントは、キャッシュをバイパスして NFS ターゲットに書き込みます** - ワークフローのクライアントで、先にキャッシュに書き込まず、ストレージ システムにデータが直接書き込まれる場合にこのオプションを選択します。 クライアントによって要求されたファイルがキャッシュされますが、クライアントからのそれらのファイルの変更は、直後にバックエンド ストレージ システムに戻されます。
+* **クライアントは、キャッシュをバイパスして NFS ターゲットに書き込みます** - ワークフローのクライアントで、先にキャッシュに書き込まずにストレージ システムにデータが直接書き込まれる場合、またはデータの整合性を最適化する場合、このオプションを選択します。 クライアントによって要求されたファイルがキャッシュされますが、クライアントからのそれらのファイルの変更は、直後にバックエンド ストレージ システムに戻されます。
 
   この使用モデルでは、キャッシュに存在するファイルの更新がないか、バックエンド バージョンが頻繁に確認されます。 この検証によって、キャッシュの外でファイルを変更することが可能になり、同時にデータの整合性が維持されます。
 
@@ -221,12 +188,23 @@ NFS ストレージ システムを指すストレージ ターゲットを作�
 | 使用モデル                   | キャッシュ モード | バックエンド検証 | ライトバックの最大遅延 |
 |-------------------------------|--------------|-----------------------|--------------------------|
 | 負荷が高く、頻度の低い書き込みを読み取ります | Read         | なし                 | なし                     |
-| 書き込みが 15% を超えています       | 読み取り/書き込み   | なし                 | 1 時間                   |
+| 書き込みが 15% を超えています       | 読み取り/書き込み   | 8 時間               | 1 時間                   |
 | クライアントはキャッシュをバイパス      | Read         | 30 秒            | なし                     |
+
+> [!NOTE]
+> **バックエンド検証** の値は、キャッシュ内のファイルとリモート ストレージ内のソース ファイルとの自動比較がどの時点で行われるかを示します。 ただし、readdirplus 要求を含むディレクトリ操作を実行すると、Azure HPC Cache でファイルを強制的に比較できます。 readdirplus は、ディレクトリ メタデータを返す標準的な NFS API です (拡張読み取りとも呼ばれます)。これにより、キャッシュでファイルが比較され更新されます。
 
 ### <a name="create-an-nfs-storage-target"></a>NFS ストレージ ターゲットを作成する
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+Azure portal からキャッシュ インスタンスを開き、左側のサイド バーにある **[ストレージ ターゲット]** をクリックします。
+
+![テーブルに 2 つの既存のストレージ ターゲットがあり、テーブルの上の [+ ストレージターゲットの追加] ボタンの周囲が強調表示された [設定] > [ストレージ ターゲット] ページのスクリーンショット](media/add-storage-target-button.png)
+
+**[ストレージ ターゲット]** ページには、既存のターゲットがすべて表示されるほか、新たに追加するためのリンクが表示されます。
+
+**[ストレージ ターゲットの追加]** ボタンをクリックします。
 
 ![NFS ターゲットが定義されている [ストレージ ターゲットの追加] ページのスクリーンショット](media/add-nfs-target.png)
 
@@ -240,29 +218,18 @@ NFS を使用したストレージ ターゲットについて次の情報を入
 
 * **[使用モデル]** - ワークフローに基づいていずれかのデータ キャッシュ プロファイルを選択します ([前述の「使用モデルを選択する」](#choose-a-usage-model)を参照)。
 
-### <a name="nfs-namespace-paths"></a>NFS 名前空間パス
-
-各パスが同じストレージ システム上の別のエクスポートまたはサブディレクトリを表している限り、1 つの NFS ストレージ ターゲットに複数の仮想パスを使用できます。
-
-1 つのストレージ ターゲットからすべてのパスを作成します。
-
-ストレージ ターゲットではいつでも、[名前空間パスを追加したり、編集したり](hpc-cache-edit-storage.md)できます。
-
-各名前空間パスに対して、次の値を入力します。
-
-* **[Virtual namespace path]\(仮想名前空間パス\)** - このストレージ ターゲットに使用するクライアント側のファイル パスを設定します。 仮想名前空間の機能の詳細については、「[集約された名前空間を構成する](hpc-cache-namespace.md)」を参照してください。
-
-* **[NFS export path]\(NFS エクスポート パス\)** - NFS エクスポートのパスを入力します。
-
-* **[Subdirectory path]\(サブディレクトリ パス\)** - エクスポートの特定のサブディレクトリをマウントしたい場合は、ここに入力します。 それ以外の場合、このフィールドは空白のままにしてください。
-
 完了したら、 **[OK]** をクリックしてストレージ ターゲットを追加します。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
-ストレージ ターゲットを作成するには、Azure CLI コマンド [az hpc-cache nfs-storage-target add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add) を使用します。 キャッシュ名とキャッシュ リソース グループに加えて、次の値を指定します。
+ストレージ ターゲットを作成するには、Azure CLI コマンド [az hpc-cache nfs-storage-target add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add) を使用します。
+
+> [!NOTE]
+> 現在、Azure CLI コマンドでは、ストレージ ターゲットを追加するときに、名前空間パスを作成する必要があります。 これは、Azure portal インターフェイスで使用されるプロセスとは異なります。
+
+キャッシュ名とキャッシュ リソース グループに加えて、次の値を指定します。
 
 * ``--name`` - Azure HPC Cache 内でこのストレージ ターゲットを識別する名前を設定します。
 * ``--nfs3-target`` - NFS ストレージ システムの IP アドレス (名前を解決できる DNS サーバーへのアクセス権がキャッシュにある場合、ここでは完全修飾ドメイン名を使用できます)。
@@ -274,7 +241,7 @@ NFS を使用したストレージ ターゲットについて次の情報を入
 
   各パスが同じストレージ システム上の別のエクスポートまたはサブディレクトリを表している限り、1 つの NFS ストレージ ターゲットに複数の仮想パスを使用できます。 1 つのストレージ ターゲット上の 1 つのストレージ システムに対するすべてのパスを作成します。
 
-  ストレージ ターゲットではいつでも、[名前空間パスを追加したり、編集したり](hpc-cache-edit-storage.md)できます。
+  ストレージ ターゲットではいつでも、[名前空間パスを追加したり、編集したり](add-namespace-paths.md)できます。
 
   ``--junction`` パラメーターでは次の値が使用されます。
 
@@ -325,10 +292,67 @@ az hpc-cache nfs-storage-target add --resource-group "hpc-cache-group" --cache-n
 
 ---
 
+## <a name="view-storage-targets"></a>ストレージ ターゲットを表示する
+
+Azure portal または Azure CLI を使用して、キャッシュにすでに定義されているストレージ ターゲットを表示できます。
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+Azure portal からキャッシュ インスタンスを開き、左側のサイド バーの [設定] 見出しの下にある **[ストレージ ターゲット]** をクリックします。 ストレージ ターゲットのページには、既存のすべてのターゲットと、それらを追加または削除するためのコントロールが表示されます。
+
+ストレージ ターゲットの名前をクリックして、その詳細ページを開きます。
+
+詳細については、「[ストレージ ターゲットを編集する](hpc-cache-edit-storage.md)」を参照してください。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
+
+[az hpc-cache storage-target list](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) オプションを使用すると、キャッシュ用の既存のストレージ ターゲットを表示することができます。 キャッシュ名とリソース グループを指定します (それがグローバルに設定している場合は除きます)。
+
+```azurecli
+az hpc-cache storage-target list --resource-group "scgroup" --cache-name "sc1"
+```
+
+特定のストレージ ターゲットに関する詳細を表示するには、[az hpc-cache storage-target show](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) を使用します (ストレージ ターゲットを名前で指定します)。
+
+例:
+
+```azurecli
+$ az hpc-cache storage-target show --cache-name doc-cache0629 --name nfsd1
+
+{
+  "clfs": null,
+  "id": "/subscriptions/<subscription_ID>/resourceGroups/scgroup/providers/Microsoft.StorageCache/caches/doc-cache0629/storageTargets/nfsd1",
+  "junctions": [
+    {
+      "namespacePath": "/nfs1/data1",
+      "nfsExport": "/datadisk1",
+      "targetPath": ""
+    }
+  ],
+  "location": "eastus",
+  "name": "nfsd1",
+  "nfs3": {
+    "target": "10.0.0.4",
+    "usageModel": "WRITE_WORKLOAD_15"
+  },
+  "provisioningState": "Succeeded",
+  "resourceGroup": "scgroup",
+  "targetType": "nfs3",
+  "type": "Microsoft.StorageCache/caches/storageTargets",
+  "unknown": null
+}
+$
+```
+
+---
+
 ## <a name="next-steps"></a>次のステップ
 
-ストレージ ターゲットの作成後は、次のいずれかのタスクを検討してください。
+ストレージ ターゲットを作成したら、次のタスクを続行して、キャッシュを使用できるように準備します。
 
+* [集約された名前空間を設定する](add-namespace-paths.md)
 * [Azure HPC キャッシュをマウントする](hpc-cache-mount.md)
 * [Azure Blob Storage にデータを移動する](hpc-cache-ingest.md)
 

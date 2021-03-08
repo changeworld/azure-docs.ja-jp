@@ -1,14 +1,16 @@
 ---
 title: データのインポートとエクスポートのリファレンス - QnA Maker
-description: QnA ペアのインポートおよび作成で URL の種類がどのように使用されるのかについて理解します。
+description: ナレッジ ベースのバックアップ、ストレージ、および置換に最適な結果を得るには、このインポートおよびエクスポートのリファレンスを使用してください。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: e4a423ef9478cd39181c6440801f9fe954dc896c
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: d73fd6c7f49c10c8aca1060e91fc69b0e581738b
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804245"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707505"
 ---
 # <a name="import-and-export-data-reference"></a>データのインポートとエクスポートのリファレンス
 
@@ -16,4 +18,6 @@ ms.locfileid: "80804245"
 
 ## <a name="import-and-export-knowledge-base"></a>ナレッジ ベースのインポートとエクスポート
 
-エクスポートされたナレッジ ベースからの **TSV ファイルと XLS ファイル**は、QnA Maker ポータルの **[設定]** ページからファイルをインポートすることによってのみ使用できます。 ナレッジベースの作成中に、または **[設定]** ページの **[+ ファイルの追加]** 機能または **[+ URL の追加]** 機能から、それらをデータ ソースとして使用することはできません。
+エクスポートされたナレッジ ベースからの **TSV ファイルと XLS ファイル** は、QnA Maker ポータルの **[設定]** ページからファイルをインポートすることによってのみ使用できます。 ナレッジベースの作成中に、または **[設定]** ページの **[+ ファイルの追加]** 機能または **[+ URL の追加]** 機能から、それらをデータ ソースとして使用することはできません。 
+
+これらの **TSV および XLS ファイル** を通じてナレッジ ベースをインポートする場合、QnA ペアは、エクスポートされたナレッジ ベースでの QnA の抽出元のソースではなく、編集ソースに追加されます。 

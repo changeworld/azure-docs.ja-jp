@@ -4,16 +4,16 @@ description: この記事では、REST API を使用して Azure VM Backup の�
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: c4aa88399bfbdd7814864170d9861a7b7d14dc58
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: a37808548ec58977b7d6af16c75b94b7b5efe446
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757253"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002938"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>REST API を使用して Azure Recovery Services コンテナーを作成する
 
-REST API を使用して Azure Recovery Services コンテナーを作成する手順の概要は、[コンテナー作成 REST API](/rest/api/recoveryservices/vaults/createorupdate) に関するドキュメントで説明されています。 このドキュメントを参考にして、"West US" に "testVault" という名前のコンテナーを作成します。
+REST API を使用して Azure Recovery Services コンテナーを作成する手順の概要は、[コンテナー作成 REST API](/rest/api/recoveryservices/vaults/createorupdate) に関するドキュメントで説明されています。 このドキュメントを参考にして、"West US" に "testVault" という名前のコンテナーを作成しましょう。
 
 Azure Recovery Services コンテナーを作成または更新するには、次の *PUT* 操作を使用します。
 
@@ -23,7 +23,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-a-request"></a>要求を作成する
 
-*PUT* 要求を作成するには、`{subscription-id}` パラメーターが必要です。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)を参照してください｡ リソースの `{resourceGroupName}` と `{vaultName}` を `api-version` パラメーターと共に定義します。 この記事では、`api-version=2016-06-01` を使用します。
+*PUT* 要求を作成するには、`{subscription-id}` パラメーターが必要です。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](/cli/azure/manage-azure-subscriptions-azure-cli)を参照してください｡ リソースの `{resourceGroupName}` と `{vaultName}` を `api-version` パラメーターと共に定義します。 この記事では、`api-version=2016-06-01` を使用します。
 
 次のヘッダーは必須です｡
 

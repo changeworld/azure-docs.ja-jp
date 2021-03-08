@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 512776f2498a88f1fda9b5e7f0e2db0ddd32b955
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 36dfbf0fda060a8f273fee64098d6234b575088c
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962330"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831841"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure の Web アプリのオープン ソース テクノロジに関する FAQ
 
@@ -169,9 +169,9 @@ The process cannot access the file because it is being used by another process.
 
 ## <a name="where-do-i-find-the-log-files-for-jetty"></a>Jetty のログ ファイルはどこにありますか?
 
-Marketplace とカスタム デプロイでは、ログ ファイルは D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs フォルダーにあります。 フォルダーの場所は、使用している Jetty のバージョンによって異なります。 たとえば、ここで示したパスは Jetty 9.1.2 用です。 jetty_*YYYY_MM_DD*.stderrout.log を探してください。
+Marketplace とカスタム デプロイでは、ログ ファイルは D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs フォルダーにあります。 フォルダーの場所は、使用している Jetty のバージョンによって異なります。 たとえば、ここで示したパスは Jetty 9.1.2 用です。 jetty_ *YYYY_MM_DD*.stderrout.log を探してください。
 
-ポータルのアプリ設定デプロイでは、ログ ファイルは D:\home\LogFiles にあります。 jetty_*YYYY_MM_DD*.stderrout.log を探してください。
+ポータルのアプリ設定デプロイでは、ログ ファイルは D:\home\LogFiles にあります。 jetty_ *YYYY_MM_DD*.stderrout.log を探してください。
 
 ## <a name="can-i-send-email-from-my-azure-web-app"></a>Azure Web アプリから電子メールを送信できますか?
 
@@ -181,24 +181,24 @@ App Service には組み込みの電子メール機能はありません。 ア�
 
 Azure に最近移行した場合は、WordPress が古いドメイン URL にリダイレクトする可能性があります。 これは、MySQL データベースの設定が原因です。
 
-WordPress Buddy + は、データベースで直接リダイレクト URL の更新に使用できる、Azure サイトの拡張機能です。 WordPress Buddy + の使用に関する詳細については、[WordPress Buddy + を使用した WordPress ツールおよび MySQL の移行](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)に関するページを参照してください。
+WordPress Buddy + は、データベースで直接リダイレクト URL の更新に使用できる、Azure サイトの拡張機能です。 WordPress Buddy + の使用に関する詳細については、[WordPress Buddy + を使用した WordPress ツールおよび MySQL の移行](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows)に関するページを参照してください。
 
 また、SQL クエリや PHPMyAdmin を使用してリダイレクト URL を手動で更新する場合、[WordPress: 間違った URL へのリダイレクト](/archive/blogs/azureossds/wordpress-redirecting-to-wrong-url)に関するページを参照してください。
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>WordPress のサインイン パスワードを変更する方法を教えてください?
 
-WordPress のサインイン パスワードを忘れた場合、WordPress Buddy + を使用して更新できます。 パスワードをリセットするには、WordPress Buddy + Azure サイト拡張機能をインストールし、[WordPress Buddy + を使用した WordPress ツールおよび MySQL の移行](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)に関するページに記載されている手順を実行します。
+WordPress のサインイン パスワードを忘れた場合、WordPress Buddy + を使用して更新できます。 パスワードをリセットするには、WordPress Buddy + Azure サイト拡張機能をインストールし、[WordPress Buddy + を使用した WordPress ツールおよび MySQL の移行](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows)に関するページに記載されている手順を実行します。
 
 ## <a name="i-cant-sign-in-to-wordpress-how-do-i-resolve-this"></a>WordPress にサインインできません。 解決するにはどうすればよいですか?
 
-プラグインを最近インストールした後に WordPress からロックアウトされた場合、そのプラグインに欠陥がある可能性があります。 WordPress Buddy + は、WordPress のプラグインを無効化できる Azure のサイトの拡張機能です。 詳細については、[WordPress Buddy + を使用した WordPress ツールおよび MySQL の移行](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)に関するページを参照してください。
+プラグインを最近インストールした後に WordPress からロックアウトされた場合、そのプラグインに欠陥がある可能性があります。 WordPress Buddy + は、WordPress のプラグインを無効化できる Azure のサイトの拡張機能です。 詳細については、[WordPress Buddy + を使用した WordPress ツールおよび MySQL の移行](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows)に関するページを参照してください。
 
 ## <a name="how-do-i-migrate-my-wordpress-database"></a>WordPress データベースを移行する方法は?
 
 WordPress Web サイトに接続されている MySQL データベースを移行する方法は複数あります。
 
 * 開発者 : [コマンド プロンプトまたは PHPMyAdmin](/archive/blogs/azureossds/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service) を使用
-* 開発者以外 : [WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) を使用
+* 開発者以外 : [WordPress Buddy +](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows) を使用
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>WordPress をより安全にする方法を教えてください?
 

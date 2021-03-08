@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: e75dde14cf7182f5153b3a42b26f1c7e8a4e78ac
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 180965942285e99300c8aa054e638f2f0a2c0580
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258029"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695960"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services の概念
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 このトピックでは、Media Services の最も重要な概念の概要を説明します。
 
@@ -103,12 +103,11 @@ Media Services には動的パッケージ化機能があり、アダプティ�
 
 [ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)を活用するには、mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート Smooth Streaming ファイルにエンコードし、少なくとも 1 つの標準またはプレミアム ストリーミング エンドポイントを開始済み状態にする必要があります。
 
-Media Services は次のオンデマンド エンコーダーをサポートしてます。これらについてはこの記事で説明します。
+Media Services により次のオンデマンド エンコーダーがサポートされています。これについてはこの記事で説明します。
 
 * [メディア エンコーダー スタンダード](media-services-encode-asset.md#media-encoder-standard)
-* [メディア エンコーダー Premium ワークフロー](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-サポートさえるエンコーダーについては、「 [エンコーダー](media-services-encode-asset.md)」をご覧ください
+サポートされているエンコーダーの詳細については、[エンコーダー](media-services-encode-asset.md)に関するページを参照してください。
 
 ## <a name="live-streaming"></a>ライブ ストリーミング
 Azure Media Services では、チャネルは、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。 チャネルは、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
@@ -173,7 +172,7 @@ Standard ストリーミング エンドポイントはほとんどのストリ�
 ダイナミック パッケージや動的暗号化の使用をお勧めします。
 
 >[!NOTE]
->AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
+>AMS アカウントの作成時に、**既定** のストリーミング エンドポイントが自分のアカウントに追加され、**停止** 状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが **実行中** 状態である必要があります。 
 
 詳細については、 [こちらの](media-services-portal-manage-streaming-endpoints.md) トピックを参照してください。
 

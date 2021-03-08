@@ -1,16 +1,14 @@
 ---
 title: Cloud Services と Service Fabric の違い
 description: アプリケーションを Cloud Services から Service Fabric に移行する際の概念の概要。
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: c98aeaff3ba39a28fad68454d76f6f4d33f44e5d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c7e7d346b5a39a262d1d55265becadb1c718cc04
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836736"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575773"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>アプリケーションの移行前に、Cloud Services と Service Fabric の違いについて学習する。
 Microsoft Azure Service Fabric は、拡張性、信頼性の高い分散アプリケーションのための次世代クラウド アプリケーション プラットフォームです。 分散クラウド アプリケーションのパッケージ化、デプロイ、アップグレード、および管理用に、多数の新機能が導入されています。 
@@ -69,10 +67,10 @@ Service Fabric アプリケーションの完全なアプリケーションで�
 
 Service Fabric には、サービスのエンドポイント アドレスを解決するために使用できる、命名サービスというサービス検出メカニズムがあります。 
 
-![Service Fabric の直接的な通信][6]
+![Service Fabric によって、サービスのエンドポイント アドレスを解決するために使用できる、Naming Service というサービス検出メカニズムが提供されることを示す図。][6]
 
 ### <a name="queues"></a>キュー
-Cloud Services などのステートレスな環境での階層間の一般的な通信メカニズムでは、1 つの階層から別の階層に作業タスクを持続的に保存する外部ストレージ キューが使用されます。 一般的なシナリオは、Azure キューまたは Service Bus にジョブを送信する Web 層です。これでは Worker ロール インスタンスが、ジョブをキューから削除し、処理します。
+Cloud Services などのステートレスな環境での階層間の一般的な通信メカニズムでは、1 つの階層から別の階層に作業タスクを持続的に保存する外部ストレージ キューが使用されます。 一般的なシナリオは、Azure Queue または Service Bus にジョブを送信する Web 層です。これでは Worker ロール インスタンスが、ジョブをキューから削除し、処理します。
 
 ![Cloud Services のキューの通信][7]
 

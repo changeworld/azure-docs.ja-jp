@@ -5,18 +5,18 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/18/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: f955b5347bc5a2c0fe1fd8a93e14badab1f354c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05502b344b1224dff5d12f95b96b05baace98970
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753276"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491003"
 ---
 # <a name="configure-an-openvpn-client-for-azure-virtual-wan"></a>Azure Virtual WAN 用に OpenVPN クライアントを構成する
 
-この記事では、**OpenVPN &reg; プロトコル** クライアントの構成方法について説明します。
+この記事では、**OpenVPN &reg; プロトコル** クライアントの構成方法について説明します。 Windows 10 用の Azure VPN クライアントを使用して、OpenVPN プロトコル経由で接続することもできます。 詳しい手順については、[こちら](openvpn-azure-ad-client.md)をご覧ください
 
 ## <a name="before-you-begin"></a>開始する前に
 

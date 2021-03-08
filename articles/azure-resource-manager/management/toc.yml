@@ -14,12 +14,16 @@
       href: deployment-models.md
     - name: サービスごとのリソース プロバイダー
       href: azure-services-resource-providers.md
+    - name: コントロール プレーンとデータ プレーン
+      href: control-plane-and-data-plane.md
     - name: 拡張リソースの種類
       href: extension-resource-types.md
     - name: リソース インスタンスの制限
       href: resources-without-resource-group-limit.md
     - name: セキュリティ
       items:
+        - name: セキュリティ ベースライン
+          href: ./security-baseline.md
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -53,8 +57,10 @@
               href: ./move-limitations/virtual-machines-move-limitations.md
     - name: 移動 - リージョン
       items:
-        - name: リージョン間で移動する
+        - name: 概要
           href: move-region.md
+        - name: リージョン間での移動 (リソース グループから)
+          href: ../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json
         - name: サポートされているサービス
           href: region-move-support.md
         - name: サービス
@@ -69,6 +75,8 @@
               href: ../../batch/best-practices.md?toc=/azure/azure-resource-manager/management/toc.json#moving-batch-accounts-across-regions
             - name: Azure Cognitive Search
               href: ../../search/search-howto-move-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: Azure Cosmos DB
+              href: ../../cosmos-db/how-to-move-regions.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: Azure Dev Spaces
               href: ../../dev-spaces/faq.md?toc=/azure/azure-resource-manager/management/toc.json#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region
             - name: Azure Event Hubs
@@ -82,19 +90,21 @@
             - name: Azure SQL
               href: ../../azure-sql/database/move-resources-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: Azure VM
-              href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/azure-resource-manager/management/toc.json
+              href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: ロジック アプリ
               href: ../../logic-apps/move-logic-app-resources.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: メンテナンス コントロール構成
               href: ../../virtual-machines/move-region-maintenance-configuration.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: ネットワーク セキュリティ グループ (NSG)
-              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+              href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: パブリック IP アドレス
-              href: ../../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+              href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: Site Recovery (Recovery Services コンテナー)
               href: ../../site-recovery/move-vaults-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: 仮想ネットワーク
-              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+              href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: ネットワーク インターフェイス (NIC)
+              href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: Azure Database for PostgreSQL サーバー
               href: ../../postgresql/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: Azure Database for MariaDB サーバー
@@ -136,7 +146,7 @@
     - name: EA サブスクリプション
       items:
         - name: 作成
-          href: ../../cost-management-billing/manage/programmatically-create-subscription.md?toc=/azure/azure-resource-manager/management/toc.json
+          href: ../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md?toc=/azure/azure-resource-manager/management/toc.json
         - name: 作成のアクセス権を付与する
           href: ../../cost-management-billing/manage/grant-access-to-create-subscription.md?toc=/azure/azure-resource-manager/management/toc.json
     - name: リソース プロバイダーと種類
@@ -172,6 +182,8 @@
       href: ./policy-reference.md
 - name: リソース
   items:
+    - name: Microsoft Learn でスキルを身に付ける
+      href: /learn/browse/?products=azure-resource-manager
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
     - name: 料金計算ツール

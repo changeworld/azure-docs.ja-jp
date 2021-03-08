@@ -3,13 +3,13 @@ title: Azure Functions 用 Java 開発者向けリファレンス
 description: Java を使用して関数を開発する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.custom: devx-track-java
-ms.openlocfilehash: ffdb6ee9747c76e7f4a6ff3e2f7b65ae96f53fb4
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 1ffbd760ae75605d75652b29d379420d6946aa8f
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810090"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326456"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
@@ -19,7 +19,7 @@ Java 開発者が、Azure Functions を初めて使用する場合は、まず�
 
 | 作業の開始 | 概念| 
 | -- | -- |  
-| <ul><li>[Visual Studio Code を使用した Java 関数](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[ターミナル/コマンド プロンプトによる Java/Maven 関数](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[Gradle を使用した Java 関数](functions-create-first-java-gradle.md)</li><li>[Eclipse を使用した Java 関数](functions-create-maven-eclipse.md)</li><li>[IntelliJ アイデアを使用した Java 関数](functions-create-maven-intellij.md)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[パフォーマンス&nbsp;に関する考慮事項](functions-best-practices.md)</li></ul> |
+| <ul><li>[Visual Studio Code を使用した Java 関数](./create-first-function-vs-code-java.md)</li><li>[ターミナル/コマンド プロンプトによる Java/Maven 関数](./create-first-function-cli-java.md)</li><li>[Gradle を使用した Java 関数](functions-create-first-java-gradle.md)</li><li>[Eclipse を使用した Java 関数](functions-create-maven-eclipse.md)</li><li>[IntelliJ アイデアを使用した Java 関数](functions-create-maven-intellij.md)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[パフォーマンス&nbsp;に関する考慮事項](functions-best-practices.md)</li></ul> |
 
 ## <a name="java-function-basics"></a>Java 関数の基礎
 
@@ -49,13 +49,25 @@ Java の関数を作成しやすくするために、Maven ベースのツール
 
 次のコマンドを使用すると、このアーキタイプを使用して新しい Java 関数プロジェクトが生成されます。
 
-```
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```bash
 mvn archetype:generate \
     -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-archetype 
+    -DarchetypeArtifactId=azure-functions-archetype
 ```
 
-このアーキタイプの基本的な使い方については、[Java クイックスタート](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)を参照してください。 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+mvn archetype:generate ^
+    -DarchetypeGroupId=com.microsoft.azure ^
+    -DarchetypeArtifactId=azure-functions-archetype
+```
+
+---
+
+このアーキタイプの基本的な使い方については、[Java クイックスタート](./create-first-function-cli-java.md)を参照してください。
 
 ## <a name="folder-structure"></a>フォルダー構造
 
@@ -134,8 +146,6 @@ public class Function {
 
 ## <a name="java-versions"></a>Java のバージョン
 
-_Java 11 のサポートは現在プレビュー段階です_
-
 Azure で関数を実行する関数アプリを作成する場合に使用する Java のバージョンは、pom.xml ファイルに指定します。 Maven アーキタイプでは現在、Java 8 用の pom.xml が生成され、これは、発行前に変更できます。 pom.xml の Java バージョンは、アプリをローカルで開発してテストしたバージョンと一致している必要があります。 
 
 ### <a name="supported-versions"></a>サポートされているバージョン
@@ -144,14 +154,16 @@ Azure で関数を実行する関数アプリを作成する場合に使用す�
 
 | Functions バージョン | Java バージョン (Windows) | Java バージョン (Linux) |
 | ----- | ----- | --- |
-| 3.x | 11 (プレビュー)<br/>8<sup>\*</sup> | 11 (プレビュー)<br/>8 |
+| 3.x | 11 <br/>8 | 11 <br/>8 |
 | 2.x | 8 | 該当なし |
 
-<sup>\*</sup> これは、Maven アーキタイプによって生成される pom.xml の現在の既定値です。
+デプロイのための Java バージョンを指定しない限り、Azure へのデプロイ中、Maven アーキタイプは既定で Java 8 になります。
 
 ### <a name="specify-the-deployment-version"></a>デプロイ バージョンを指定する
 
-現在、Maven アーキタイプでは、Java 8 を対象とする pom.xml が生成されます。 Java 11 を実行する関数アプリを作成するには、pom.xml の次の要素を更新する必要があります。
+Maven アーキタイプが対象とする Java のバージョンは、`-DjavaVersion` パラメーターを使用して制御できます。 このパラメーターの値には `8` または `11` を指定できます。 
+
+Maven アーキタイプでは、指定された Java バージョンを対象とする pom.xml が生成されます。 pom.xml 内の次の要素は、使用する Java バージョンを示しています。
 
 | 要素 |  Java 8 の値 | Java 11 の値 | 説明 |
 | ---- | ---- | ---- | --- |
@@ -210,19 +222,40 @@ JKD および関数アプリに関する問題に対する [Azure サポート](
 
 次の例のように、[az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) コマンドを使用して `JAVA_OPTS` を設定できます。
 
-#### <a name="consumption-plan"></a>[従量課金プラン](#tab/consumption)
+# <a name="consumption-plan"></a>[従量課金プラン](#tab/consumption/bash)
+
 ```azurecli-interactive
 az functionapp config appsettings set \
---settings "JAVA_OPTS=-Djava.awt.headless=true" \
-"WEBSITE_USE_PLACEHOLDER=0" \
---name <APP_NAME> --resource-group <RESOURCE_GROUP>
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" \
+    "WEBSITE_USE_PLACEHOLDER=0" \
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
-#### <a name="dedicated-plan--premium-plan"></a>[専用プラン/Premium プラン](#tab/dedicated+premium)
+
+# <a name="consumption-plan"></a>[従量課金プラン](#tab/consumption/cmd)
+
+```azurecli-interactive
+az functionapp config appsettings set ^
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" ^
+    "WEBSITE_USE_PLACEHOLDER=0" ^
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
+```
+
+# <a name="dedicated-plan--premium-plan"></a>[専用プラン/Premium プラン](#tab/dedicated+premium/bash)
+
 ```azurecli-interactive
 az functionapp config appsettings set \
---settings "JAVA_OPTS=-Djava.awt.headless=true" \
---name <APP_NAME> --resource-group <RESOURCE_GROUP>
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" \
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
+
+# <a name="dedicated-plan--premium-plan"></a>[専用プラン/Premium プラン](#tab/dedicated+premium/cmd)
+
+```azurecli-interactive
+az functionapp config appsettings set ^
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" ^
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
+```
+
 ---
 
 この例では、ヘッドレス モードが有効になります。 `<APP_NAME>` をお使いの関数アプリ名に置き換え、`<RESOURCE_GROUP>` をリソース グループに置き換えます。 
@@ -274,8 +307,8 @@ public class Function {
     @FunctionName("echo")
     public static String echo(
         @HttpTrigger(name = "req", methods = { HttpMethod.PUT }, authLevel = AuthorizationLevel.ANONYMOUS, route = "items/{id}") String inputReq,
-        @TableInput(name = "item", tableName = "items", partitionKey = "Example", rowKey = "{id}", connection = "AzureWebJobsStorage") TestInputData inputData
-        @TableOutput(name = "myOutputTable", tableName = "Person", connection = "AzureWebJobsStorage") OutputBinding<Person> testOutputData,
+        @TableInput(name = "item", tableName = "items", partitionKey = "Example", rowKey = "{id}", connection = "AzureWebJobsStorage") TestInputData inputData,
+        @TableOutput(name = "myOutputTable", tableName = "Person", connection = "AzureWebJobsStorage") OutputBinding<Person> testOutputData
     ) {
         testOutputData.setValue(new Person(httpbody + "Partition", httpbody + "Row", httpbody + "Name"));
         return "Hello, " + inputReq + " and " + inputData.getKey() + ".";
@@ -460,15 +493,36 @@ Java の stdout と stderr ログ、その他の各種アプリケーション �
 
 Azure CLI を使用して、アプリケーション ログを書き込むように関数アプリを構成する方法を次に示します。
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli-interactive
 az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli-interactive
+az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
+```
+
+---
+
 Azure CLI を使って関数アプリのログ出力をストリーム配信するには、コマンド プロンプト、Bash、ターミナルのいずれかのセッションを新たに開いて、次のコマンドを入力します。
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 az webapp log tail --name webappname --resource-group myResourceGroup
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli-interactive
+az webapp log tail --name webappname --resource-group myResourceGroup
+```
+
+---
+
 [az webapp log tail](/cli/azure/webapp/log) コマンドには、`--provider` オプションを使って出力をフィルター処理するオプションが用意されています。 
 
 Azure CLI を使ってログ ファイルを単一の ZIP ファイルとしてダウンロードするには、コマンド プロンプト、Bash、ターミナルのいずれかのセッションを新たに開いて、次のコマンドを入力します。

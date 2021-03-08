@@ -1,18 +1,18 @@
 ---
 title: 読み取りレプリカを管理する - Azure CLI、REST API - Azure Database for PostgreSQL - Single Server
 description: Azure CLI と REST API から Azure Database for PostgreSQL - Single Server の読み取りレプリカを管理する方法について説明します
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 12/17/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 491b3ecfc950fa5f76bfe78eec52e81433294c23
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7e74a58a14bdcc2a6fe1e9f86305aae415c6abf7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500080"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674516"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Azure CLI、REST API から読み取りレプリカを作成および管理する
 
@@ -27,20 +27,22 @@ ms.locfileid: "87500080"
 * **レプリカ** - **[オフ]** よりも冗長です。 これは、[読み取りレプリカ](concepts-read-replicas.md)を機能させるために必要な最小レベルのログです。 ほとんどのサーバーでは、この設定が既定値です。
 * **論理** - **[レプリカ]** よりも冗長です。 これは、論理デコードを機能させるための最小レベルのログです。 読み取りレプリカはこの設定でも機能します。
 
-このパラメーターを変更した後、サーバーを再起動する必要があります。 内部的には、このパラメーターによって、Postgres のパラメーター `wal_level`、`max_replication_slots`、および `max_wal_senders` が設定されます。
+
+> [!NOTE]
+> 書き込み集中型の永続的で大量のプライマリのワークロードのために読み取りレプリカをデプロイする場合、レプリケーションの遅延が増加し続け、プライマリに追いつくことができない可能性があります。 これにより、レプリカで受信されるまで WAL ファイルが削除されないため、プライマリでのストレージの使用量も増加する可能性があります。
 
 ## <a name="azure-cli"></a>Azure CLI
 Azure CLI を使用して、読み取りレプリカを作成して管理できます。
 
 ### <a name="prerequisites"></a>前提条件
 
-- [Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- マスター サーバーになる [Azure Database for PostgreSQL サーバー](quickstart-create-server-up-azure-cli.md)。
+- [Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)
+- プライマリ サーバーになる [Azure Database for PostgreSQL サーバー](quickstart-create-server-up-azure-cli.md)。
 
 
-### <a name="prepare-the-master-server"></a>マスター サーバーの準備
+### <a name="prepare-the-primary-server"></a>プライマリ サーバーを準備する
 
-1. マスター サーバーの `azure.replication_support` 値を確認します。 読み取りレプリカを機能させるには、少なくともレプリカである必要があります。
+1. プライマリ サーバーの `azure.replication_support` 値を確認します。 読み取りレプリカを機能させるには、少なくともレプリカである必要があります。
 
    ```azurecli-interactive
    az postgres server configuration show --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support
@@ -60,13 +62,13 @@ Azure CLI を使用して、読み取りレプリカを作成して管理でき�
 
 ### <a name="create-a-read-replica"></a>読み取りレプリカを作成します
 
-[az postgres server replica create](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) コマンドには、次のパラメーターが必要です。
+[az postgres server replica create](/cli/azure/postgres/server/replica#az-postgres-server-replica-create) コマンドには、次のパラメーターが必要です。
 
 | 設定 | 値の例 | 説明  |
 | --- | --- | --- |
 | resource-group | myresourcegroup |  レプリカ サーバーが作成されるリソース グループ。  |
 | name | mydemoserver-replica | 作成する新しいレプリカ サーバーの名前。 |
-| source-server | mydemoserver | レプリケート元の既存のマスター サーバーの名前またはリソース ID。 レプリカとマスターのリソース グループを異なるものにする場合は、リソース ID を使用します。 |
+| source-server | mydemoserver | レプリケート元の既存のプライマリ サーバーの名前またはリソース ID。 レプリカとマスターのリソース グループを異なるものにする場合は、リソース ID を使用します。 |
 
 以下の CLI の例では、レプリカはマスターと同じリージョンに作成されます。
 
@@ -83,33 +85,33 @@ az postgres server replica create --name mydemoserver-replica --source-server my
 > [!NOTE]
 > レプリカを作成できるリージョンの詳細については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。 
 
-汎用またはメモリ最適化マスター サーバーで `azure.replication_support` パラメーターを **[REPLICA]** に設定しておらず、サーバーを再起動していないと、エラーが返されます。 レプリカを作成する前に、この 2 つの手順を済ませておいてください。
+汎用またはメモリ最適化プライマリ サーバーで `azure.replication_support` パラメーターを **[REPLICA]** に設定しておらず、サーバーを再起動していないと、エラーが返されます。 レプリカを作成する前に、この 2 つの手順を済ませておいてください。
 
 > [!IMPORTANT]
 > [読み取りレプリカの概要に関するページの考慮事項セクション](concepts-read-replicas.md#considerations)を確認してください。
 >
-> マスター サーバーの設定が新しい値に更新される前に、レプリカの設定をそれと同等以上の値に更新します。 このアクションは、レプリカがマスターに対するあらゆる変更に追従できるようにするのに役立ちます。
+> プライマリ サーバーの設定が新しい値に更新される前に、レプリカの設定をそれと同等以上の値に更新します。 このアクションは、レプリカがマスターに対するあらゆる変更に追従できるようにするのに役立ちます。
 
 ### <a name="list-replicas"></a>レプリカの一覧表示
-マスター サーバーのレプリカの一覧を表示するには、[az postgres server replica list](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-list) コマンドを使用します。
+プライマリ サーバーのレプリカの一覧を表示するには、[az postgres server replica list](/cli/azure/postgres/server/replica#az-postgres-server-replica-list) コマンドを使用します。
 
 ```azurecli-interactive
 az postgres server replica list --server-name mydemoserver --resource-group myresourcegroup 
 ```
 
 ### <a name="stop-replication-to-a-replica-server"></a>レプリカ サーバーへのレプリケーションを停止します。
-マスター サーバーと読み取りレプリカの間のレプリケーションを停止するには、[az postgres server replica stop](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-stop) コマンドを使用します。
+プライマリ サーバーと読み取りレプリカの間のレプリケーションを停止するには、[az postgres server replica stop](/cli/azure/postgres/server/replica#az-postgres-server-replica-stop) コマンドを使用します。
 
-マスター サーバーと読み取りレプリカへのレプリケーションを停止した後、それを元に戻すことはできません。 読み取りレプリカは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。 スタンドアロン サーバーをもう一度レプリカにすることはできません。
+プライマリ サーバーと読み取りレプリカへのレプリケーションを停止した後、それを元に戻すことはできません。 読み取りレプリカは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。 スタンドアロン サーバーをもう一度レプリカにすることはできません。
 
 ```azurecli-interactive
 az postgres server replica stop --name mydemoserver-replica --resource-group myresourcegroup 
 ```
 
-### <a name="delete-a-master-or-replica-server"></a>マスター サーバーまたはレプリカ サーバーの削除
-マスター サーバーまたはレプリカ サーバーを削除するには、[az postgres server delete](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-delete) コマンドを使用します。
+### <a name="delete-a-primary-or-replica-server"></a>プライマリ サーバーまたはレプリカ サーバーを削除する
+プライマリ サーバーまたはレプリカ サーバーを削除するには、[az postgres server delete](/cli/azure/postgres/server#az-postgres-server-delete) コマンドを使用します。
 
-マスター サーバーを削除すると、すべての読み取りレプリカへのレプリケーションが停止されます。 読み取りレプリカは、読み取りと書き込みの両方をサポートするようになったスタンドアロン サーバーになります。
+プライマリ サーバーを削除すると、すべての読み取りレプリカへのレプリケーションが停止されます。 読み取りレプリカは、読み取りと書き込みの両方をサポートするようになったスタンドアロン サーバーになります。
 
 ```azurecli-interactive
 az postgres server delete --name myserver --resource-group myresourcegroup
@@ -118,9 +120,9 @@ az postgres server delete --name myserver --resource-group myresourcegroup
 ## <a name="rest-api"></a>REST API
 [Azure REST API](/rest/api/azure/) を使用して、読み取りレプリカを作成して管理できます。
 
-### <a name="prepare-the-master-server"></a>マスター サーバーの準備
+### <a name="prepare-the-primary-server"></a>プライマリ サーバーを準備する
 
-1. マスター サーバーの `azure.replication_support` 値を確認します。 読み取りレプリカを機能させるには、少なくともレプリカである必要があります。
+1. プライマリ サーバーの `azure.replication_support` 値を確認します。 読み取りレプリカを機能させるには、少なくともレプリカである必要があります。
 
    ```http
    GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/configurations/azure.replication_support?api-version=2017-12-01
@@ -166,28 +168,28 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 > [!NOTE]
 > レプリカを作成できるリージョンの詳細については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。 
 
-汎用またはメモリ最適化マスター サーバーで `azure.replication_support` パラメーターを **[REPLICA]** に設定しておらず、サーバーを再起動していないと、エラーが返されます。 レプリカを作成する前に、この 2 つの手順を済ませておいてください。
+汎用またはメモリ最適化プライマリ サーバーで `azure.replication_support` パラメーターを **[REPLICA]** に設定しておらず、サーバーを再起動していないと、エラーが返されます。 レプリカを作成する前に、この 2 つの手順を済ませておいてください。
 
-レプリカは、マスターと同じコンピューティングとストレージの設定を使用して作成されます。 レプリカが作成されたら、マスター サーバーとは独立にいくつかの設定 (コンピューティング世代、仮想コア、ストレージ、およびバックアップ保持期間) を変更できます。 価格レベルも独立して変更できます (Basic レベルへの変更や Basic レベルからの変更を除く)。
+レプリカは、マスターと同じコンピューティングとストレージの設定を使用して作成されます。 レプリカが作成されたら、プライマリ サーバーとは独立にいくつかの設定 (コンピューティング世代、仮想コア、ストレージ、およびバックアップ保持期間) を変更できます。 価格レベルも独立して変更できます (Basic レベルへの変更や Basic レベルからの変更を除く)。
 
 
 > [!IMPORTANT]
-> マスター サーバーの設定が新しい値に更新される前に、レプリカの設定をそれと同等以上の値に更新します。 このアクションは、レプリカがマスターに対するあらゆる変更に追従できるようにするのに役立ちます。
+> プライマリ サーバーの設定が新しい値に更新される前に、レプリカの設定をそれと同等以上の値に更新します。 このアクションは、レプリカがマスターに対するあらゆる変更に追従できるようにするのに役立ちます。
 
 ### <a name="list-replicas"></a>レプリカの一覧表示
-[レプリカ一覧表示 API](/rest/api/postgresql/replicas/listbyserver) を使用して、マスター サーバーのレプリカの一覧を表示できます。
+[レプリカ一覧表示 API](/rest/api/postgresql/replicas/listbyserver) を使用して、プライマリ サーバーのレプリカの一覧を表示できます。
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/Replicas?api-version=2017-12-01
 ```
 
 ### <a name="stop-replication-to-a-replica-server"></a>レプリカ サーバーへのレプリケーションを停止します。
-[更新 API](/rest/api/postgresql/servers/update) を使用して、マスター サーバーと読み取りレプリカの間のレプリケーションを停止できます。
+[更新 API](/rest/api/postgresql/servers/update) を使用して、プライマリ サーバーと読み取りレプリカの間のレプリケーションを停止できます。
 
-マスター サーバーと読み取りレプリカへのレプリケーションを停止した後、それを元に戻すことはできません。 読み取りレプリカは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。 スタンドアロン サーバーをもう一度レプリカにすることはできません。
+プライマリ サーバーと読み取りレプリカへのレプリケーションを停止した後、それを元に戻すことはできません。 読み取りレプリカは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。 スタンドアロン サーバーをもう一度レプリカにすることはできません。
 
 ```http
-PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}?api-version=2017-12-01
+PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{replicaServerName}?api-version=2017-12-01
 ```
 
 ```json
@@ -198,10 +200,10 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-### <a name="delete-a-master-or-replica-server"></a>マスター サーバーまたはレプリカ サーバーの削除
-マスター サーバーまたはレプリカ サーバーを削除するには、[削除 API](/rest/api/postgresql/servers/delete) を使用します。
+### <a name="delete-a-primary-or-replica-server"></a>プライマリ サーバーまたはレプリカ サーバーを削除する
+プライマリ サーバーまたはレプリカ サーバーを削除するには、[削除 API](/rest/api/postgresql/servers/delete) を使用します。
 
-マスター サーバーを削除すると、すべての読み取りレプリカへのレプリケーションが停止されます。 読み取りレプリカは、読み取りと書き込みの両方をサポートするようになったスタンドアロン サーバーになります。
+プライマリ サーバーを削除すると、すべての読み取りレプリカへのレプリケーションが停止されます。 読み取りレプリカは、読み取りと書き込みの両方をサポートするようになったスタンドアロン サーバーになります。
 
 ```http
 DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{serverName}?api-version=2017-12-01

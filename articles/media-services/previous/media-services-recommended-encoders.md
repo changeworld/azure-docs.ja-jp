@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 91ccc4395bf328d14698e7fe5db634a773197660
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 11456a8dc55a98778bf44225bf659e506e2d3a3f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259525"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510058"
 ---
 # <a name="recommended-on-premises-encoders"></a>推奨のオンプレミス エンコーダー
 
@@ -76,7 +76,7 @@ Media Services は、Azure Media Services オンプレミス エンコーダー 
 
 ライブ エンコード チャネルの検証
 1. Azure Media Services アカウントを作成するか、またはアカウントにアクセスします
-2. **ライブ エンコード**チャネルを作成し、起動します
+2. **ライブ エンコード** チャネルを作成し、起動します
 3. シングルビット レートのライブ ストリームをプッシュするようにエンコーダーを構成します。
 4. 公開済みのライブ イベントを作成します
 5. ライブ エンコーダーを約 10 分間実行します

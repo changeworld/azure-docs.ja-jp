@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c57ab03f72f0f59dd18a873ddc7cd98d3c36ef9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 128303cb51b39db8442fdda71f949db17923bfa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356663"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90088972"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect 同期サービスのシャドウ属性
 Azure AD のほとんどの属性は、オンプレミスの Active Directory の場合と同じように表現されます。 ただし、一部の属性には特別な処理が必要であるため、Azure AD の属性値が Azure AD Connect で同期された値と異なる場合があります。
@@ -32,7 +32,7 @@ Azure AD の一部の属性には、2 つの表現があります。 オンプ�
 Azure Portal または PowerShell を使用してシャドウ属性を確認することはできません。 ただし、この概念を理解することは、属性の値がオンプレミスとクラウドで異なるという特定のシナリオのトラブルシューティングに役立ちます。
 
 この動作を理解するには、次の Fabrikam の例をご覧ください。  
-![ドメイン](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
+![対応する Azure AD ドメインの値が "Not Added"、"Not Verified"、および "Verified" である、Active Directory UPN サフィックスのいくつかの例を示すスクリーンショット。](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
 オンプレミスの Active Directory 内に複数の UPN サフィックスがありますが、確認済みなのは 1 つのみです。
 
 ### <a name="userprincipalname"></a>userPrincipalName

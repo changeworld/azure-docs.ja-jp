@@ -4,12 +4,12 @@ description: Azure Service Fabric で初めての Windows コンテナー アプ
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 6303e37eaa8fa7ad45677d551b89337d20b1b604
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 197423670ffe05f15fdc5bfd351efdfba33b53cd
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844441"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533776"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 
@@ -36,20 +36,15 @@ ms.locfileid: "87844441"
 
   この記事では、クラスター ノードで実行されている Windows Server with Containers のバージョン (ビルド) を、お使いの開発コンピューターのバージョンと一致させる必要があります。 これは、お使いの開発用コンピューターで Docker イメージをビルドしており、コンテナー OS のバージョンとデプロイ先のホスト OS のバージョンとの間に互換性の制約があるからです。 詳細については、「[Windows Server コンテナーの OS とホスト OS の互換性](#windows-server-container-os-and-host-os-compatibility)」を参照してください。 
   
-クラスターに必要な Windows Server with Containers のバージョンを確認するには、開発用コンピューターで Windows コマンド プロンプトから `ver` コマンドを実行します。
-
-* バージョンに *x.x.14323.x* が含まれている場合は、[クラスターの作成](service-fabric-cluster-creation-via-portal.md) 時にオペレーティング システムに *WindowsServer 2016-Datacenter-with-Containers* を選択します。
-  * バージョンに *x.x.16299.x* が含まれている場合は、[クラスターの作成](service-fabric-cluster-creation-via-portal.md) 時にオペレーティング システムに *WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers* を選択します。
+    クラスターに必要な Windows Server with Containers のバージョンを確認するには、開発用コンピューターで Windows コマンド プロンプトから `ver` コマンドを実行します。 [クラスターを作成する](service-fabric-cluster-creation-via-portal.md)前に、「[Windows Server コンテナーの OS とホスト OS 互換性](#windows-server-container-os-and-host-os-compatibility)」を参照してください。
 
 * Azure Container Registry のレジストリ。Azure サブスクリプションに[コンテナー レジストリを作成します](../container-registry/container-registry-get-started-portal.md)。
 
 > [!NOTE]
 > Windows 10 上で実行されている Service Fabric クラスターへのコンテナーのデプロイは、サポートされていません。  Windows コンテナーを実行するように Windows 10 を構成する方法については、[こちらの記事](service-fabric-how-to-debug-windows-containers.md)を参照してください。
->   
 
 > [!NOTE]
-> Service Fabric バージョン 6.2 以降では、Windows Server バージョン 1709 上で実行されているクラスターにコンテナーをデプロイすることができます。  
-> 
+> Service Fabric バージョン 6.2 以降では、Windows Server バージョン 1709 上で実行されているクラスターにコンテナーをデプロイすることができます。
 
 ## <a name="define-the-docker-container"></a>Docker コンテナーを定義する
 
@@ -109,10 +104,18 @@ if __name__ == "__main__":
 ```
 
 <a id="Build-Containers"></a>
-## <a name="build-the-image"></a>イメージをビルドする
-`docker build` コマンドを実行して、Web アプリケーションを実行するイメージを作成します。 PowerShell ウィンドウを開き、Dockerfile が格納されているディレクトリに移動します。 次のコマンドを実行します。
+
+## <a name="login-to-docker-and-build-the-image"></a>Docker にログインしてイメージをビルドする
+
+次に、Web アプリケーションを実行するイメージを作成します。 Docker からパブリック イメージをプルする場合は (Dockerfile の `python:2.7-windowsservercore` など)、匿名のプル要求を行うのではなく、Docker Hub アカウントで認証することをお勧めします。
+
+> [!NOTE]
+> 匿名のプル要求を頻繁に行うと、`ERROR: toomanyrequests: Too Many Requests.` や `You have reached your pull rate limit.` のような Docker エラーが発生することがあります。このようなエラーを防ぐには、Docker Hub に対して認証を行います。 詳細については、「[Azure Container Registry を使用してパブリック コンテンツを管理する](../container-registry/buffer-gate-public-content.md)」を参照してください。
+
+PowerShell ウィンドウを開き、Dockerfile が格納されているディレクトリに移動します。 次のコマンドを実行します。
 
 ```
+docker login
 docker build -t helloworldapp .
 ```
 
@@ -284,13 +287,13 @@ Windows では、コンテナーの 2 つの分離モード (プロセスおよ�
 ```
 ## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK を構成する 
 
-Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、*health_status* が "*正常*" のときに、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に表示され、**警告**は、*health_status* が "*異常*" のときに表示されます。 
+Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、*health_status* が "*正常*" のときに、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に表示され、**警告** は、*health_status* が "*異常*" のときに表示されます。 
 
-v6.4 の最新の更新リリース以降、Docker の HEALTHCHECK 評価をエラーとしてレポートするかどうかの選択肢ができました。 このオプションを有効にすると、*health_status* が*正常*の場合、**OK** 正常性レポートが表示され、*health_status* が*異常*の場合、**ERROR** が表示されます。
+v6.4 の最新の更新リリース以降、Docker の HEALTHCHECK 評価をエラーとしてレポートするかどうかの選択肢ができました。 このオプションを有効にすると、*health_status* が *正常* の場合、**OK** 正常性レポートが表示され、*health_status* が *異常* の場合、**ERROR** が表示されます。
 
 コンテナーの正常性の監視のために実行される実際のチェックを指す **HEALTHCHECK** 命令は、コンテナー イメージを生成するときに使用される Dockerfile に存在する必要があります。
 
-![HealthCheckHealthy][3]
+![スクリーンショットからは、デプロイされたサービス パッケージ NodeServicePackage の詳細を確認できます。][3]
 
 ![HealthCheckUnhealthyApp][4]
 
@@ -314,7 +317,7 @@ ApplicationManifest の **ContainerHostPolicies** の一部として **HealthCon
 
 *RestartContainerOnUnhealthyDockerHealthStatus* を **true** に設定すると、異常を繰り返し報告するコンテナーが (おそらく他のノードで) 再起動されます。
 
-*TreatContainerUnhealthyStatusAsError* が **true** に設定されている場合、コンテナーの *health_status* が*異常*のとき、**ERROR** 正常性レポートが表示されます。
+*TreatContainerUnhealthyStatusAsError* が **true** に設定されている場合、コンテナーの *health_status* が *異常* のとき、**ERROR** 正常性レポートが表示されます。
 
 Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する場合、[EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) を **false** に設定する必要があります。
 
@@ -534,7 +537,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
           },
           {
                 "name": "ContainerImagesToSkip",
-                "value": "microsoft/windowsservercore|microsoft/nanoserver|microsoft/dotnet-frameworku|..."
+                "value": "mcr.microsoft.com/windows/servercore|mcr.microsoft.com/windows/nanoserver|mcr.microsoft.com/dotnet/framework/aspnet|..."
           }
           ...
           }

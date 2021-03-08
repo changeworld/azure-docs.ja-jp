@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 07/16/2020
 ms.author: jingwang
 ms.openlocfilehash: 54487cc8992149e6d8b599bb2a4b35e2c252404d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522442"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023188"
 ---
 <!--
     Common for all ADF file-based connectors

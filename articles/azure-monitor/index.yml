@@ -8,12 +8,12 @@ metadata:
   author: rboucher
   ms.author: robb
   ms.date: 10/08/2019
-  ms.openlocfilehash: 16b17dcebf305059b9a0710798e1ea0a9b6f51a6
-  ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+  ms.openlocfilehash: 4753e4bb7fca1dadf0266c8fae11313872b29a3b
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/11/2020
-  ms.locfileid: "86249157"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101725715"
 landingContent:
 - title: Azure Monitor について
   linkLists:
@@ -22,7 +22,7 @@ landingContent:
     - text: Azure Monitor とは
       url: overview.md
     - text: Azure Monitor ログ/Log Analytics とは
-      url: platform/data-platform-logs.md
+      url: ./logs/data-platform-logs.md
     - text: Application Insights とは何か?
       url: app/app-insights-overview.md
     - text: Application Insights のコンテンツ ハブ ページ
@@ -32,37 +32,37 @@ landingContent:
   - linkListType: concept
     links:
     - text: データ ソースの概要
-      url: platform/data-sources.md
+      url: agents/data-sources.md
     - text: データ プラットフォームの概要
-      url: platform/data-platform.md
+      url: ./data-platform.md
 - title: 10 分間のクイック スタート
   linkLists:
   - linkListType: quickstart
     links:
     - text: メトリックの監視とアラート
-      url: platform/alerts-metric.md
+      url: alerts/alerts-metric.md
     - text: ログの分析
-      url: log-query/get-started-portal.md
+      url: ./logs/log-analytics-tutorial.md
     - text: Log Analytics での Azure VM
-      url: learn/quick-collect-azurevm.md
+      url: ./vm/quick-collect-azurevm.md
     - text: Log Analytics での Linux VM
-      url: learn/quick-collect-linux-computer.md
+      url: ./vm/quick-collect-linux-computer.md
     - text: Log Analytics での Windows VM
-      url: learn/quick-collect-windows-computer.md
+      url: ./vm/quick-collect-windows-computer.md
     - text: サブスクリプションのイベントに基づくアラート
-      url: platform/alerts-activity-log.md
+      url: ./alerts/alerts-activity-log.md
 - title: アプリケーションの監視
   linkLists:
   - linkListType: get-started
     links:
     - text: .NET
-      url: learn/quick-monitor-portal.md
+      url: app/asp-net.md
     - text: .NET Core
-      url: learn/dotnetcore-quick-start.md
+      url: app/asp-net-core.md
     - text: Node.js
-      url: learn/nodejs-quick-start.md
+      url: ./app/nodejs-quick-start.md
     - text: モバイル
-      url: learn/mobile-center-quickstart.md
+      url: ./app/mobile-center-quickstart.md
     - text: Web サイト
       url: app/website-monitoring.md
 - title: トレーニング

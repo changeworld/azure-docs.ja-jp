@@ -1,20 +1,20 @@
 ---
 title: テンプレートをデプロイする - IntelliJ IDEA
-description: IntelliJ IDEA を使用して最初の Azure Resource Manager テンプレートを作成する方法とテンプレートをデプロイする方法を説明します。
+description: IntelliJ IDEA を使用して最初の Azure Resource Manager テンプレート (ARM テンプレート) を作成する方法とテンプレートをデプロイする方法を説明します。
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: devx-track-java
-ms.openlocfilehash: 4039a70bf90bc8f4b7932dbf40d8369e9773abf3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f0e007fe8930b30cee1c95159d7e964e3792449f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321821"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905963"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>IntelliJ IDEA を使用して ARM テンプレートを作成およびデプロイする
 
-IntelliJ IDEA を使用して Azure Resource Manager (ARM) テンプレートを Azure にデプロイする方法と、IDE から直接テンプレートを編集および更新するプロセスについて説明します。 ARM テンプレートとは、ソリューションに対してデプロイが必要なリソースを定義した JSON ファイルのことをいいます。 Azure ソリューションのデプロイと管理に関する概念について理解を深めるには、[テンプレートのデプロイの概要](overview.md)に関するページを参照してください。
+IntelliJ IDEA を使用して Azure Resource Manager テンプレート (ARM テンプレート) を Azure にデプロイする方法と、IDE から直接テンプレートを編集および更新するプロセスについて説明します。 ARM テンプレートとは、ソリューションに対してデプロイが必要なリソースを定義した JSON ファイルのことをいいます。 Azure ソリューションのデプロイと管理に関する概念について理解を深めるには、[テンプレートのデプロイの概要](overview.md)に関するページを参照してください。
 
 ![Resource Manager テンプレート ポータルの図](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Resource Manager テンプレートでデプロイを作成するファイルを選択する](./media/create-templates-use-intellij/resource-manager-create-deployment-select-files.png)
 
-1. [OK] をクリックすると、デプロイが開始されます。 デプロイが完了するまで、下部にある IntelliJ IDEA の**ステータ スバー**から進行状況を確認できます。
+1. [OK] をクリックすると、デプロイが開始されます。 デプロイが完了するまで、下部にある IntelliJ IDEA の **ステータ スバー** から進行状況を確認できます。
 
     ![Resource Manager テンプレートのデプロイの状態](./media/create-templates-use-intellij/resource-manager-create-deployment-status.png)
 
@@ -66,13 +66,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. このページで 2 つのファイルを編集し、変更を Azure にデプロイすることができます。 ここでは、パラメーター ファイルの **storageAccountType** の値を `Standard_LRS` から `Standard_GRS` に変更します。 次に、下部にある **[更新プログラムの展開]** をクリックし、更新プログラムを確認します。
 
-    ![Resource Manager テンプレートのデプロイの編集](./media/create-templates-use-intellij/resource-manager-edit-deployment-update.png)
+    ![スクリーンショットには、[更新プログラムの展開] プロンプトが表示された Resource Manager テンプレートが示されています。](./media/create-templates-use-intellij/resource-manager-edit-deployment-update.png)
 
 1. 更新プログラムのデプロイが完了したら、作成されたストレージ アカウントが `Standard_GRS` に変更されたことをポータルで確認できます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-1. Azure リソースが不要になったら、リソース グループを削除して、デプロイしたリソースをクリーンアップします。 これは、Azure portal または Azure CLI から行うことができます。 IntelliJ IDEA から Azure Explorer で、作成した**リソース グループ**を右クリックし、削除を選択します。
+1. Azure リソースが不要になったら、リソース グループを削除して、デプロイしたリソースをクリーンアップします。 これは、Azure portal または Azure CLI から行うことができます。 IntelliJ IDEA から Azure Explorer で、作成した **リソース グループ** を右クリックし、削除を選択します。
 
     ![IntelliJ IDEA から Azure Explorer のリソース グループを削除する](./media/create-templates-use-intellij/delete-resource-group.png)
 

@@ -1,6 +1,6 @@
 ---
 title: メモリと同時実行の制限
-description: Azure Synapse Analytics のさまざまなパフォーマンス レベルとリソース クラスに割り当てられたメモリおよびコンカレンシーの制限を表示します。
+description: Azure Synapse Analytics の専用 SQL プールのさまざまなパフォーマンス レベルとリソース クラスに割り当てられたメモリおよびコンカレンシーの制限を示します。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 443ac9ee1c2f05cf90e866793449220d71e37b89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb0ad93fb4a1269b4cca02b114c0427f0c44a31b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210663"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455351"
 ---
-# <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure Synapse Analytics のメモリと同時実行の制限
+# <a name="memory-and-concurrency-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールのメモリおよびコンカレンシーの制限
 
 Azure Synapse Analytics のさまざまなパフォーマンス レベルとリソース クラスに割り当てられたメモリおよびコンカレンシーの制限を表示します。  
 
@@ -125,7 +125,7 @@ Azure Synapse Analytics のさまざまなパフォーマンス レベルとリ�
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-クエリの実行を開始するのに十分な数のコンカレンシー スロットが空いていない場合、クエリはキューに入れられ、重要度に基づいて実行されます。  重要度が同じ場合、クエリは先入れ先出しで実行されます。  クエリが完了してクエリおよびスロットの数が制限値を下回ると、キューに入れられていたクエリは解放されます。
+クエリの実行を開始するのに十分な数のコンカレンシー スロットが空いていない場合、クエリはキューに入れられ、重要度に基づいて実行されます。  重要度が同じ場合、クエリは先入れ先出しで実行されます。  クエリが完了してクエリおよびスロットの数が制限値を下回ると、Azure Synapse Analytics では、キューに入れられていたクエリが解放されます。
 
 ## <a name="next-steps"></a>次のステップ
 

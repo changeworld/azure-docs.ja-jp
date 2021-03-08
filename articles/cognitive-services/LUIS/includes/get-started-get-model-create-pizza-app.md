@@ -2,20 +2,21 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: cognitive-services
-author: roy-har
-manager: diberry
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.date: 06/04/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
-ms.author: roy-har
-ms.openlocfilehash: 9965e4c856fdef2af17b116264ad5344ebc97eb2
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.author: aahi
+ms.reviewer: roy-har
+ms.openlocfilehash: a021b7c5b26e1bca1e3f623ad762c2f3ee8d6020
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84466940"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97820621"
 ---
 pizza アプリを作成します。
 
@@ -59,7 +60,7 @@ pizza アプリを作成します。
 
 ## <a name="record-the-access-values-for-your-pizza-app"></a>Pizza アプリのアクセス値を記録する
 
-新しい Pizza アプリを使用するには、Pizza アプリのアプリ ID、オーサリング キー、作成エンドポイントが必要です。
+新しい Pizza アプリを使用するには、Pizza アプリのアプリ ID、オーサリング キー、作成エンドポイントが必要です。 予測を取得するには、個別の予測エンドポイントと予測キーが必要です。
 
 これらの値を見つけるには:
 
@@ -67,5 +68,5 @@ pizza アプリを作成します。
 1. **[アプリケーション設定]** ページから **[アプリ ID]** を記録します。
 1. **[Azure リソース]** を選択します。
 1. **[Authoring Resource]\(作成リソース\)** を選択します。
-1. **[Authoring Resource]\(作成リソース\)** タブで、 **[プライマリ キー]** を記録します。 この値が、オーサリング キーです。
+1. **[Authoring Resource]\(作成リソース\)** と **[予測リソース]** タブで、**主キー** を記録します。 この値が、オーサリング キーです。
 1. **[エンドポイント URL]** を記録します。 この値が、作成エンドポイントです。

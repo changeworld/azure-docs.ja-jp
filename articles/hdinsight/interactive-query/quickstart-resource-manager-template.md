@@ -1,19 +1,16 @@
 ---
 title: クイック スタート:テンプレートを使用した Interactive Query クラスターの作成 - Azure HDInsight
 description: このクイックスタートでは、Resource Manager テンプレートを使用し、Azure HDInsight に Interactive Query クラスターを作成します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 19bf43cfd305e74aadaf16dddc7bce318e193c84
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 4872dd29442a1503e04672a7c42fd7b49a0c506c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640244"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945233"
 ---
 # <a name="quickstart-create-interactive-query-cluster-in-azure-hdinsight-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure HDInsight に Interactive Query クラスターを作成する
 
@@ -59,13 +56,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |SSH ユーザー名|ユーザー名を指定します。既定値は sshuser です。|
     |SSH パスワード|パスワードを指定します。|
 
-    ![Resource Manager テンプレート HBase](./media/quickstart-resource-manager-template/resource-manager-template-hive.png)
+    ![Resource Manager テンプレート HBase をデプロイする](./media/quickstart-resource-manager-template/resource-manager-template-hive.png)
 
 1. 「**使用条件**」をご確認ください。 次に **[上記の使用条件に同意する]** を選択し、 **[購入]** を選択します。 ご自分のデプロイの進行状況が通知されます。 クラスターの作成には約 20 分かかります。
 
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
-クラスターが作成されると、 **[リソースに移動]** リンクを含む**デプロイ成功**通知を受け取ります。 ご自分の [リソース グループ] ページに、ご自分の新しい HDInsight クラスターと、そのクラスターに関連付けられている既定のストレージが一覧表示されます。 各クラスターには、[Azure Storage アカウント](../hdinsight-hadoop-use-blob-storage.md)または [Azure Data Lake Storage アカウント](../hdinsight-hadoop-use-data-lake-store.md)との依存関係があります。 このアカウントを、既定のストレージ アカウントと呼びます。 HDInsight クラスターとその既定のストレージ アカウントは、同じ Azure リージョンに配置されている必要があります。 クラスターを削除しても、ストレージ アカウントは削除されません。
+クラスターが作成されると、 **[リソースに移動]** リンクを含む **デプロイ成功** 通知を受け取ります。 ご自分の [リソース グループ] ページに、ご自分の新しい HDInsight クラスターと、そのクラスターに関連付けられている既定のストレージが一覧表示されます。 各クラスターには、[Azure Blob Storage](../hdinsight-hadoop-use-blob-storage.md) アカウント、[Azure Data Lake Storage Gen1](../hdinsight-hadoop-use-data-lake-storage-gen1.md)、または [`Azure Data Lake Storage Gen2`](../hdinsight-hadoop-use-data-lake-storage-gen2.md) との依存関係があります。 このアカウントを、既定のストレージ アカウントと呼びます。 HDInsight クラスターとその既定のストレージ アカウントは、同じ Azure リージョンに配置されている必要があります。 クラスターを削除しても、ストレージ アカウントは削除されません。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -73,7 +70,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure portal からお使いのクラスターに移動し、 **[削除]** を選択します。
 
-![Resource Manager テンプレート HBase](./media/quickstart-resource-manager-template/azure-portal-delete-hive.png)
+[Resource Manager テンプレート HBase を削除する](./media/quickstart-resource-manager-template/azure-portal-delete-hive.png)
 
 リソース グループ名を選び、リソース グループ ページを開いて、 **[リソース グループの削除]** を選ぶこともできます。 リソース グループを削除すると、HDInsight クラスターと既定のストレージ アカウントの両方が削除されます。
 

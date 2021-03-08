@@ -5,14 +5,14 @@ author: alkohli
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
 ms.service: storsimple
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 32781a83aec996b23f161f5fe695f39a0de38685
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af48e1f415e0ca0b1027d277f70c3f0f1a11e687
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76273868"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526767"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple Virtual Array の概要
 
@@ -37,7 +37,7 @@ StorSimple Virtual Array の重要な機能を次の表にまとめます。
 | インストール要件 |仮想化インフラストラクチャ (Hyper-V または VMware) を使用 |
 | 可用性 |単一ノード |
 | 総容量 (クラウドを含む) |使用可能容量は仮想アレイあたり最大 64 TB |
-| ローカル容量 |使用可能容量は仮想アレイあたり 390 GB ～ 6.4 TB (500 GB ～ 8 TB のディスク領域のプロビジョニングが必要) |
+| ローカル容量 |使用可能容量は仮想アレイあたり 390 GB から 6.4 TB (500 GB から 8 TB のディスク領域のプロビジョニングが必要) |
 | ネイティブ プロトコル |iSCSI または SMB |
 | 目標復旧時間 (RTO) |iSCSI: サイズに関係なく、2 分未満 |
 | 目標復旧時点 (RPO) |日次バックアップとオンデマンド バックアップ |
@@ -62,8 +62,10 @@ StorSimple Virtual Array ソリューションの主なメリットを次の表�
 | 透過的な統合 |仮想アレイは、iSCSI プロトコルまたは SMB プロトコルをサポートします。 ローカル層とクラウド層間でデータの移動は、シームレスで、ユーザーに対して透過的です。 |
 | ストレージ コストの削減 |StorSimple では、最もよく使用されるホットデータの現在の需要を満たす十分なローカル ストレージをプロビジョニングします。 ストレージのニーズが増加すると、データはコスト効率の良いクラウド ストレージに階層化されます。 クラウドでは、重複除去と圧縮を使用することで、ストレージ要件とコストがさらに削減されます。 |
 | ストレージ管理の単純化 |StorSimple では、StorSimple Device Manager を使用して、複数のデバイスをクラウドで一元管理します。 |
-| ディザスター リカバリーとコンプライアンスの強化 |StorSimple はディザスター リカバリーに長い時間を費やすことはありません。メタデータがすぐに復元され、必要に応じて保存済みのデータが復元されます。 つまり、最小限の中断で通常の業務を継続することができます。 |
+| ディザスター リカバリーとコンプライアンスの強化 |StorSimple はディザスター リカバリーに長い時間を費やすことはありません。メタデータがすぐに復元され、必要に応じて保存済みのデータが復元されます。 通常の業務を最小限の中断で継続できます。 |
 | データのモビリティ |クラウドに階層化されたデータには、復旧と移行の目的で他のサイトからアクセスできます。 データは元の仮想アレイにのみ復元できます。 ただし、ディザスター リカバリー機能を使用して、仮想アレイ全体を別の仮想アレイに復元できます。 |
+
+
 
 ## <a name="storsimple-workload-summary"></a>StorSimple ワークロードの概要
 
@@ -78,7 +80,7 @@ StorSimple Virtual Array は、アクセス頻度の低いデータに最適で�
 
 ![クラウド アーカイブ](./media/storsimple-ova-overview/cloud-archiving.png)
 
-複数の同時実行ユーザーが、仮想アレイにアクセスする場合、そのユーザーすべてが Azure への接続を共有するため、パフォーマンスが低下します。 ユーザーごとのパフォーマンスの保証はなく、要求を受信すると、デバイスは要求を個別に処理します。
+複数の同時実行ユーザーが仮想アレイにアクセスすると、それらのユーザーすべてが Azure への接続を共有するため、パフォーマンスが低下します。 ユーザーごとのパフォーマンスの保証がなく、デバイスは受信した要求を個別に処理します。
 
 StorSimple Virtual Array は、高可用性を必要とするワークロードには適していません。 仮想アレイは、ソフトウェア更新プログラムがインストールされるときに、ダウンタイムが発生する単一ノードのデバイスです。 管理者は、30 分のメンテナンス時間を 1 年あたり 3 ～ 4 回計画する必要があります。
 
@@ -91,7 +93,7 @@ StorSimple Virtual Array は、次のワークフローに特に適してしま�
 * [データ保護とディザスター リカバリー](#data-protection-and-disaster-recovery)
 
 ### <a name="cloud-based-storage-management"></a>クラウドベースのストレージ管理
-Azure Portal で実行されている StorSimple Device Manager サービスを使用して、複数のデバイスや複数の場所に保存されたデータを管理できます。 これは、分散型ブランチ シナリオで特に役立ちます。 仮想アレイと StorSimple 物理デバイスを管理する StorSimple Device Manager サービスのインスタンスを個別に作成する必要があります。 また、仮想アレイでは、Azure クラシック ポータルではなく、新しい Azure Portal を使用するようになりました。
+Azure Portal で実行されている StorSimple Device Manager サービスを使用して、複数のデバイスや複数の場所に保存されたデータを管理できます。 これが特に役立つのが分散型ブランチ シナリオです。 仮想アレイと StorSimple 物理デバイスを管理する StorSimple Device Manager サービスのインスタンスを個別に作成する必要があります。 仮想アレイでは、Azure クラシック ポータルではなく、新しい Azure portal を使用するようになりました。<!--Is the "now" element still in date? Could it go at this point? Just checking.-->
 
 ![クラウドベースのストレージ管理](./media/storsimple-ova-overview/cloud-based-storage-management.png)
 
@@ -111,13 +113,13 @@ Azure Portal で実行されている StorSimple Device Manager サービスを�
 
 * [仮想アレイ](#virtual-array) - 仮想化環境またはハイパーバイザーにプロビジョニングされた仮想マシンに基づくハイブリッド クラウド ストレージ デバイス。
 * [StorSimple Device Manager サービス](#storsimple-device-manager-service) - さまざまな地理的場所からアクセスできる単一の Web インターフェイスから、1 つ以上の StorSimple デバイスを管理できる、Azure Portal の拡張機能。 StorSimple Device Manager サービスを使用して、サービスの作成と管理、デバイスやアラートの表示と管理、ボリューム、共有、既存のスナップショットの管理を行うことができます。
-* [ローカル Web ユーザー インターフェイス](#local-web-user-interface) - デバイスの構成に使用する Web ベースの UI。この UI を使用して、ローカル ネットワークに接続し、デバイスを StorSimple Device Manager サービスに登録できます。 
+* [ローカル Web ユーザー インターフェイス](#local-web-user-interface) - Web ベースの UI。この UI を使用してデバイスを構成してローカル ネットワークに接続できるようにして、デバイスを StorSimple Device Manager サービスに登録します。 
 * [コマンド ライン インターフェイス](#command-line-interface) - StorSimple Virtual Array でサポート セッションを開始する際に使用できる Windows PowerShell インターフェイス。
-  以降のセクションでは、これらのコンポーネントについてそれぞれ説明します。また、このソリューションでデータを整理し、ストレージを割り当て、ストレージ管理とデータ保護を容易にする方法について説明します。
+  以降のセクションでは、各コンポーネントについて詳細に説明します。また、このソリューションでデータを整理し、ストレージを割り当て、ストレージ管理とデータ保護を容易にする方法について説明します。
 
 ### <a name="virtual-array"></a>仮想アレイ
 
-仮想アレイは、プライマリ ストレージを提供し、クラウド ストレージとの通信を管理する単一ノード ストレージ ソリューションです。仮想アレイでは、デバイス上に保存されたすべてのデータのセキュリティと機密性も確保されます。
+仮想アレイは、プライマリ ストレージを提供し、クラウド ストレージとの通信を管理する単一ノード ストレージ ソリューションです。仮想アレイでは、デバイス上に保存されるすべてのデータのセキュリティと機密性も確保されます。
 
 仮想アレイは、ダウンロード可能な 1 つのモデルで使用できます。 仮想アレイの最大容量は、デバイス上が 6.4 TB (基になるストレージ要件は 8 TB)、クラウド ストレージを含めると 64 TB です。
 
@@ -134,7 +136,7 @@ Azure Portal で実行されている StorSimple Device Manager サービスを�
 
 ### <a name="storsimple-device-manager-service"></a>StorSimple デバイス マネージャー サービス
 
-Microsoft Azure StorSimple には Web ベースのユーザー インターフェイス (StorSimple Device Manager サービス) があり、クラウド ストレージを一元管理できます。 StorSimple Device Manager サービスを使用して、次のタスクを実行できます。
+Microsoft Azure StorSimple には Web ベースのユーザー インターフェイス (StorSimple Device Manager サービス) があり、StorSimple ストレージを一元管理できます。 StorSimple Device Manager サービスを使用して、次のタスクを実行できます。
 
 * 1 つのサービスから複数の StorSimple Virtual Array を管理する。
 * StorSimple Virtual Array のセキュリティ設定を構成、管理する (クラウドでの暗号化には、Microsoft Azure API を利用)。
@@ -156,7 +158,7 @@ Web ベースの UI の使用方法については、「 [Web UI を使用した
 
 ### <a name="command-line-interface"></a>コマンド ライン インターフェイス
 
-付属の Windows PowerShell インターフェイスを使用して、Microsoft サポートとのサポート セッションを開始できます。サポート セッションは、Microsoft サポートが仮想アレイで発生する問題のトラブルシューティングを行い、解決するのに役立ちます。
+付属の Windows PowerShell インターフェイスを使用して Microsoft サポートとのサポート セッションを開始すると、仮想アレイで発生した問題のトラブルシューティングと解決を Microsoft サポートが支援します。
 
 ## <a name="storage-management-technologies"></a>ストレージ管理テクノロジ
 
@@ -179,6 +181,9 @@ iSCSI 用に作成された階層型ボリュームは、ボリュームのサ�
 > [!NOTE]
 > ボリュームをローカル固定として指定できます。この場合、データは仮想アレイ上に保持され、クラウドに階層化されることはありません。 詳細については、「 [ローカル固定共有/ボリューム](#locally-pinned-shares-and-volumes)」をご覧ください。
 
+> [!IMPORTANT]
+> StorSimple を使用しているときは、デバイスを段階的に廃止する場合でも、BLOB をアーカイブに変換しないでください。データをデバイスから取得するために、BLOB をアーカイブからホットまたはクール タイプに復元する必要があり、結果として大幅なコスト増となります。
+
 
 ### <a name="locally-pinned-shares-and-volumes"></a>ローカル固定共有/ボリューム
 
@@ -198,6 +203,7 @@ StorSimple では、重複除去とデータ圧縮を使用して、クラウド
 > [!NOTE]
 > 仮想アレイに保存されたデータは、重複除去も圧縮もされません。 すべての重複除去と圧縮は、データがクラウドに送信される直前に実行されます。
 
+
 ### <a name="scheduled-and-on-demand-backups"></a>スケジュールされたバックアップとオンデマンド バックアップ
 
 StorSimple のデータ保護機能を使用すると、オンデマンド バックアップを作成できます。 また、既定のバックアップ スケジュールにより、データが毎日バックアップされます。 バックアップは増分スナップショットの形で作成され、クラウドに保存されます。 前回のバックアップ以降の変更だけを記録するスナップショットを作成し、すばやく復元できます。 これらのスナップショットは、セカンダリ ストレージ システム (テープ バックアップなど) に代わるものであり、必要に応じてデータセンターまたは代替サイトにデータを復元することが可能となるため、ディザスター リカバリー シナリオで非常に重要になります。
@@ -206,7 +212,7 @@ StorSimple のデータ保護機能を使用すると、オンデマンド バ�
 
 仮想シリーズの StorSimple デバイス マネージャーは、2 つのキー インスタンスに個人情報を収集します。
  - ユーザーのメール アドレスが構成されているアラート ユーザー設定。 この情報は、管理者がクリアできます。 
- - 共有に存在するデータにアクセスできるユーザー。 共有データにアクセスできるユーザーの一覧が表示され、エクスポートできるようになります。 共有が削除されると、この一覧も削除されます。
+ - 共有上のデータにアクセスできるユーザー。 共有データにアクセスできるユーザーの一覧が表示され、エクスポートできるようになります。 この一覧は、共有が削除されると削除されます。
 
 詳細については、[セキュリティ センターにある Microsoft のプライバシー ポリシー](https://www.microsoft.com/trustcenter)を確認してください。
 

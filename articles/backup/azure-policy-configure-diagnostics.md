@@ -3,12 +3,12 @@ title: 大規模なコンテナーの診断設定を構成する
 description: Azure Policy を使用して、特定のスコープ内のすべてのコンテナーに対してログ分析診断設定を構成します
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 17a5ee5a541c3317c9ec9a6cfbed57d85f5116b4
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 55461937381f7551c42714c835d4755ab65f175b
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892237"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171530"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>大規模なコンテナーの診断設定を構成する
 
@@ -28,13 +28,15 @@ Azure Backup によって提供されるレポート作成ソリューション�
 
 * 組み込みのポリシーは、現在、国内のクラウドでは使用できません。
 
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
+
 ## <a name="assigning-the-built-in-policy-to-a-scope"></a>組み込みポリシーをスコープに割り当てる
 
 必要なスコープのコンテナーにポリシーを割り当てるには、次の手順に従ってください。
 
 1. Azure Portal にサインインし、 **[ポリシー]** ダッシュボードに移動します。
 2. 左側のメニューの **[定義]** を選択して、Azure リソース全体にわたるすべての組み込みポリシーの一覧を取得します。
-3. **[カテゴリ] = [監視]** のリストをフィルター処理します。 **[プレビュー] という名前のポリシーを検索します。リソース固有のカテゴリの Log Analytics ワークスペースに Recovery Services コンテナーの診断設定をデプロイします**。
+3. **[カテゴリ] = [バックアップ]** の一覧をフィルター処理します。 **[プレビュー] という名前のポリシーを検索します。リソース固有のカテゴリの Log Analytics ワークスペースに Recovery Services コンテナーの診断設定をデプロイします**。
 
     ![[ポリシー定義] ペイン](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 

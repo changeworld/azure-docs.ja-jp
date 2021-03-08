@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.author: metan
-ms.openlocfilehash: 6461cc60a237cf834226b07db5e1ea6fbbea7a92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: metang
+ms.openlocfilehash: b24a9dcb7a369708b1374f367186dc4d9a6ce475
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75946066"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146877"
 ---
 # <a name="how-to-customize-the-immersive-reader-button"></a>イマーシブ リーダーのボタンをカスタマイズする方法
 
@@ -41,7 +41,7 @@ ms.locfileid: "75946066"
 
 これは次のようにレンダリングされます。
 
-![アイコン ボタン](./media/button-icon.png)
+![これはレンダリングされた [テキスト] ボタンです](./media/button-icon.png)
 
 ### <a name="text-button"></a>テキスト ボタン
 
@@ -51,7 +51,7 @@ ms.locfileid: "75946066"
 
 これは次のようにレンダリングされます。
 
-![アイコン ボタン](./media/button-text.png)
+![これはレンダリングされた [イマーシブ リーダー] ボタンです。](./media/button-text.png)
 
 ### <a name="icon-and-text-button"></a>アイコンとテキスト ボタン
 

@@ -3,12 +3,12 @@ title: VM の設定から Azure VM をバックアップする
 description: この記事では、Azure Backup サービスを使用して単一の Azure VM または複数の Azure VM をバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: a8d1c29c894663da76b5882ef7ba249356ba3e6d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 55b71d2a2901cdde984df3ebfd68a2a643b78b74
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531848"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89667521"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>VM の設定から Azure VM をバックアップする
 
@@ -76,7 +76,7 @@ Azure VM をバックアップするため、Azure Backup によって、マシ�
 
 ## <a name="back-up-from-the-recovery-services-vault"></a>Recovery Services コンテナーからバックアップする
 
-この記事の手順に従って、Azure Backup Recovery Services コンテナーを設定することによって Azure VM のバックアップを有効にし、コンテナーでバックアップを有効にします。
+[この記事](backup-azure-arm-vms-prepare.md)の手順に従って、Azure Backup Recovery Services コンテナーを設定することによって Azure VM のバックアップを有効にし、コンテナーでバックアップを有効にします。
 
 ## <a name="next-steps"></a>次のステップ
 

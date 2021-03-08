@@ -1,0 +1,28 @@
+- name: Azure Managed Instance for Apache Cassandra のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Managed Instance for Apache Cassandra とは
+      href: introduction.md
+- name: 概念
+  items:
+    - name: よく寄せられる質問
+      href: faq.md
+    - name: マネージド インスタンスと Azure Cosmos DB Cassandra API
+      href: compare-cosmosdb-managed-instance.md
+- name: クイックスタート
+  items:
+    - name: クラスターの作成 - ポータル
+      href: create-cluster-portal.md
+    - name: クラスターの作成 - CLI
+      href: create-cluster-cli.md
+    - name: ハイブリッド クラスターを構成する
+      href: configure-hybrid-cluster.md
+    - name: Databricks を使用して Spark クラスターをデプロイする
+      href: deploy-cluster-databricks.md
+- name: 操作方法ガイド
+  items:
+    - name: Azure CLI で管理する
+      href: manage-resources-cli.md
+    - name: Grafana を使用して Prometheus のメトリックを視覚化する
+      href: visualize-prometheus-grafana.md

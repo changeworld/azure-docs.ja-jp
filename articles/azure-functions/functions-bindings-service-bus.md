@@ -6,12 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 46660a0c8d20ab82c994a62b1c781108ea1070c1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: fasttrack-edit
+ms.openlocfilehash: b32f16d170df9963960862bc82aef1a4baf13896
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111203"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104446"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
@@ -23,6 +24,9 @@ Azure Functions は[トリガーとバインド](./functions-triggers-bindings.m
 | Azure Service Bus メッセージを送信する |[出力バインド](./functions-bindings-service-bus-output.md) |
 
 ## <a name="add-to-your-functions-app"></a>Functions アプリに追加する
+
+> [!NOTE]
+> Service Bus バインドでは現在、マネージド ID を利用した認証がサポートされていません。 代わりに、[Service Bus の共有アクセス シグネチャ](../service-bus-messaging/service-bus-authentication-and-authorization.md#shared-access-signature)を利用してください。
 
 ### <a name="functions-2x-and-higher"></a>Functions 2.x 以降
 
@@ -37,7 +41,7 @@ Azure Functions は[トリガーとバインド](./functions-triggers-bindings.m
 [NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/
 [core tools]: ./functions-run-local.md
 [拡張機能バンドル]: ./functions-bindings-register.md#extension-bundles
-[拡張機能の更新]: ./install-update-binding-extensions-manual.md
+[拡張機能の更新]: ./functions-bindings-register.md
 [Azure Tools 拡張機能]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>Functions 1.x

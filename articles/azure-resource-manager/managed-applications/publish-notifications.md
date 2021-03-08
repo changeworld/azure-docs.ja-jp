@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: 3632a34678c7a0f0e6fa93e5ce8000b07bb413a6
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 2a2e9d429d494c35c49a5b0a3e10b291fd8f24a6
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054527"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633939"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Azure Managed Applications と通知
 
@@ -61,7 +61,7 @@ Azure Managed Application の通知を使用することで、パブリッシャ
 
 ```
 ## <a name="add-azure-marketplace-managed-application-notifications"></a>Azure Marketplace マネージド アプリケーション通知の追加
-詳細については、「[Azure アプリケーション オファーを作成する](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)」を参照してください。
+詳細については、「[Azure アプリケーション オファーを作成する](../../marketplace/create-new-azure-apps-offer.md)」を参照してください。
 
 ![Azure portal での Azure Marketplace マネージド アプリケーション通知の追加](./media/publish-notifications/marketplace-notifications.png)
 ## <a name="event-triggers"></a>Event triggers (イベント トリガー)
@@ -86,10 +86,10 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 {
     "eventType": "PUT",
-    "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
+    "applicationId": "/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Succeeded",
-    "applicationDefinitionId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applicationDefinitions/<appDefName>"    
+    "applicationDefinitionId": "/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applicationDefinitions/<appDefName>"    
 }
 
 ```
@@ -104,7 +104,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
     "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Failed",
-    "applicationDefinitionId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applicationDefinitions/<appDefName>",
+    "applicationDefinitionId": "/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applicationDefinitions/<appDefName>",
     "error": {
         "code": "ErrorCode",
         "message": "error message",
@@ -127,7 +127,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 {
     "eventType": "PUT",
-    "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
+    "applicationId": "/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Succeeded",
     "billingDetails": {
@@ -150,7 +150,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 {
     "eventType": "PUT",
-    "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
+    "applicationId": "/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Failed",
     "billingDetails": {

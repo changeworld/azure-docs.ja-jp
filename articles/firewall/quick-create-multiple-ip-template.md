@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 282ce16c926c61008d0ebd70106b161425a15c9e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 33d110f327a381241fd9dbf55996a6e3f9fd3a43
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079083"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92057979"
 ---
 # <a name="quickstart-create-an-azure-firewall-with-multiple-public-ip-addresses---arm-template"></a>クイック スタート:複数のパブリック IP アドレスを使用した Azure Firewall の作成 - ARM テンプレート
 
-このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、複数のパブリック IP アドレスを持つ Azure Firewall をデプロイします。 デプロイ後のファイアウォールには、2 つの Windows Server 2019 仮想マシンへの RDP 接続を許可する NAT 規則コレクション ルールが割り当てられます。
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、1 つのパブリック IP アドレス プレフィックスから、複数のパブリック IP アドレスがある Azure Firewall をデプロイします。 デプロイ後のファイアウォールには、2 つの Windows Server 2019 仮想マシンへの RDP 接続を許可する NAT 規則コレクション ルールが割り当てられます。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -42,6 +42,7 @@ ms.locfileid: "89079083"
 このテンプレートには、次の複数の Azure リソースが定義されています。
 
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft.Network/publicIPPrefix**](/azure/templates/microsoft.network/publicipprefixes)
 - [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)

@@ -1,18 +1,18 @@
 ---
 title: PowerShell を使用して接続文字列を生成する - Azure Database for PostgreSQL
 description: この記事では、Azure Database for PostgreSQL に接続するための接続文字列を生成する Azure PowerShell の例を提供します。
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 8/6/2020
-ms.openlocfilehash: a8e82c1863fde7a7580300606949e00a34c4e58c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 29641bdc3696f0722ca430dde912768071fd9b16
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907871"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708171"
 ---
 # <a name="how-to-generate-an-azure-database-for-postgresql-connection-string-with-powershell"></a>PowerShell を使用して Azure Database for PostgreSQL 接続文字列を生成する方法
 

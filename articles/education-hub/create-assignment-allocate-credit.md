@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: a850e5ea851ee539c663b00ecc7f2053eae8dc34
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 7904efb92aa8362605f1f68ee0b39f4241339031
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534092"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332469"
 ---
 # <a name="create-an-assignment-and-allocate-credit"></a>割り当てを作成してクレジットを割り当てる
 
@@ -26,12 +26,12 @@ Microsoft Azure Education Hub でコースを設定し、クラスルームを�
 
 ### <a name="accounts"></a>アカウント
 
-Azure Education Hub では、_____@___.___ という形式の任意のメール アドレスが受け入れられます。 ( 現在、組織内で有効なアカウントがあるかどうか、または Microsoft アカウントが現在のものかまたは有効であるかはチェック "*されません*"。 続行する前に、各メール アドレスを慎重に確認してください。
+Azure Education Hub では、_____@ ___.___ という形式の任意のメール アドレスが受け入れられます。 ( 現在、組織内で有効なアカウントがあるかどうか、または Microsoft アカウントが現在のものかまたは有効であるかはチェック " *されません* "。 続行する前に、各メール アドレスを慎重に確認してください。
 
 > [!IMPORTANT]
 > 職場および学校アカウントには、その組織以外のドメインからのメール アドレスを許可するかどうかなど、独自のポリシーが適用されます (たとえば、student2@outlook.com を @school.edu ドメインに追加するなど)。 新しいユーザーを追加する前に、必ずこれらのポリシーを確認してください。
 
-職場または学校アカウント (student1@school.edu など) が、Educator Sponsor Portal または [Azure portal](https://portal.azure.com) でロールベースのアクセス制御 (RBAC) として追加されると、Azure は自動的に受信者に電子メールを送信します。 この電子メールでは、サブスクリプションへのアクセス権を受け取る前に、ユーザーは新しいアカウントと Azure ロールを受け入れる必要があります。 あなたがコースの補助教員 (TA) または教授の場合は、サブスクリプションが想定どおりに Azure portal に表示されるように、学生にこのことを必ず伝えてください。 電子メールは次のようになります。
+職場または学校アカウント (student1@school.edu など) が、Educator Sponsor Portal または [Azure portal](https://portal.azure.com) で Azure ロールベースのアクセス制御 (Azure RBAC) を使用して追加されると、Azure は自動的に受信者に電子メールを送信します。 この電子メールでは、サブスクリプションへのアクセス権を受け取る前に、ユーザーは新しいアカウントと Azure ロールを受け入れる必要があります。 あなたがコースの補助教員 (TA) または教授の場合は、サブスクリプションが想定どおりに Azure portal に表示されるように、学生にこのことを必ず伝えてください。 電子メールは次のようになります。
 
 :::image type="content" source="media/create-assignment-allocate-credit/azure-active-directory-get-started.png" alt-text="Azure Active Directory の開始" border="false":::
 

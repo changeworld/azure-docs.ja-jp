@@ -3,18 +3,20 @@ title: Azure Cosmos DB クエリ言語の文字列関数
 description: Azure Cosmos DB での文字列 SQL システム関数について説明します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/13/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 192f015b37eadb57b8e4a5c83ce3adf94c8bf038
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e84a679f0bc26b701dc1d51db3605c452675ea3
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549518"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545283"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>文字列関数 (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 文字列関数を使用すると、Azure Cosmos DB 内の文字列に対して操作を実行できます。
 
@@ -30,6 +32,7 @@ ms.locfileid: "85549518"
 * [LENGTH](sql-query-length.md)
 * [LOWER](sql-query-lower.md)
 * [LTRIM](sql-query-ltrim.md)
+* [REGEXMATCH](sql-query-regexmatch.md)
 * [REPLACE](sql-query-replace.md)
 * [REPLICATE](sql-query-replicate.md)
 * [REVERSE](sql-query-reverse.md)
@@ -51,4 +54,4 @@ ms.locfileid: "85549518"
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)
 - [Azure Cosmos DB の概要](introduction.md)
 - [ユーザー定義関数](sql-query-udfs.md)
-- [集計](sql-query-aggregates.md)
+- [集計](sql-query-aggregate-functions.md)

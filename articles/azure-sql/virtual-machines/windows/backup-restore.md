@@ -8,17 +8,18 @@ editor: ''
 tags: azure-resource-management
 ms.assetid: 95a89072-0edf-49b5-88ed-584891c0e066
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.subservice: backup
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 6a03a91eeb9296e60aa147f97634a15e8d344209
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2fcba81bcd20db321d791fcda589f40fb0699702
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293045"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733075"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM における SQL Server のバックアップと復元
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +35,7 @@ ms.locfileid: "87293045"
 | 戦略 | SQL のバージョン | 説明 |
 |---|---|---|
 | [自動化されたバックアップ](#automated) | 2014<br/> 2016<br/> 2017 | 自動バックアップを使用すると、SQL Server VM 上にあるすべてのデータベースの定期的なバックアップをスケジュールできます。 バックアップは Azure Storage に最大 30 日間保存されます。 SQL Server 2016 以降では、自動バックアップ v2 により、手動でのスケジュール設定の構成や完全バックアップとログ バックアップの頻度などの追加オプションが利用できます。 |
-| [SQL VM の Azure Backup](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017 | Azure Backup は、Azure VM 上の SQL Server 向けのエンタープライズ クラスのバックアップ機能を提供します。 このサービスを使用すると、複数のサーバーと数千のデータベースのバックアップを一元的に管理できます。 データベースは、ポータルで特定の時点に復元することができます。 これにより、数年間バックアップを維持できるカスタマイズ可能な保持ポリシーが提供されます。 |
+| [SQL VM の Azure Backup](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017<br/> 2019 | Azure Backup は、Azure VM 上の SQL Server 向けのエンタープライズ クラスのバックアップ機能を提供します。 このサービスを使用すると、複数のサーバーと数千のデータベースのバックアップを一元的に管理できます。 データベースは、ポータルで特定の時点に復元することができます。 これにより、数年間バックアップを維持できるカスタマイズ可能な保持ポリシーが提供されます。 |
 | [手動バックアップ](#manual) | All | Azure VM 上の SQL Server を手動でバックアップおよび復元する方法は、SQL Server のバージョンによってさまざまです。 このシナリオでは、あなたがデータベースのバックアップ方法に加え、そうしたバックアップの保存場所と管理を担当しているとします。 |
 
 以下のセクションでは、各オプションについて詳しく説明します。 この記事の最後のセクションでは、機能マトリックスの形式でまとめています。
@@ -60,7 +61,7 @@ SQL VM の自動バックアップを構成する方法の詳細については�
 
 ## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a> SQL VM の Azure Backup
 
-[Azure Backup](/azure/backup/) は、Azure VM 上の SQL Server 向けのエンタープライズ クラスのバックアップ機能を提供します。 すべてのバックアップは、Recovery Services コンテナーに格納され、管理されます。 このソリューションにはいくつかの利点があります (特に企業向け)。
+[Azure Backup](../../../backup/index.yml) は、Azure VM 上の SQL Server 向けのエンタープライズ クラスのバックアップ機能を提供します。 すべてのバックアップは、Recovery Services コンテナーに格納され、管理されます。 このソリューションにはいくつかの利点があります (特に企業向け)。
 
 - **ゼロインフラストラクチャでのバックアップ**:バックアップ サーバーまたは保存場所を管理する必要がありません。
 - **スケール**:多くの SQL VM と数千のデータベースを保護します。
@@ -71,7 +72,7 @@ SQL VM の自動バックアップを構成する方法の詳細については�
 - **15 分の復旧ポイント目標 (RPO)** :SQL トランザクション ログのバックアップを最大 15 分ごとに構成できます。
 - **ポイントインタイム リストア**:ポータルを使用して、データベースを特定の時点に復元できます。複数の完全バックアップ、差分バックアップ、およびログ バックアップを手動で復元する必要はありません。
 - **エラーが発生した場合の統合電子メール アラート**:エラーが発生した場合の統合電子メール通知を構成できます。
-- **ロールベースのアクセス制御**:ポータルを介してバックアップと復元の操作を管理できるユーザーを決定できます。
+- **Azure ロールベースのアクセス制御**: ポータルを介してバックアップと復元の操作を管理できるユーザーを決定できます。
 
 機能の簡単な概要とデモについては、次のビデオをご覧ください。
 
@@ -83,19 +84,19 @@ SQL VM のこの Azure Backup ソリューションは現在一般提供の段�
 
 SQL VM のバックアップと復元の操作を手動で管理する場合は、使用している SQL Server のバージョンに応じていくつかのオプションがあります。 バックアップと復元の概要については、SQL Server のバージョンに応じて、次のいずれかの記事をご覧ください。
 
-- [SQL Server 2016 以降のバックアップと復元](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)
-- [SQL Server 2014 のバックアップと復元](https://msdn.microsoft.com/library/ms187048%28v=sql.120%29.aspx)
-- [SQL Server 2012 のバックアップと復元](https://msdn.microsoft.com/library/ms187048%28v=sql.110%29.aspx)
-- [SQL Server 2008 R2 のバックアップと復元](https://msdn.microsoft.com/library/ms187048%28v=sql.105%29.aspx)
-- [SQL Server 2008 のバックアップと復元](https://msdn.microsoft.com/library/ms187048%28v=sql.100%29.aspx)
+- [SQL Server 2016 以降のバックアップと復元](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)
+- [SQL Server 2014 のバックアップと復元](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases?viewFallbackFrom=sql-server-2014)
+- [SQL Server 2012 のバックアップと復元](/previous-versions/sql/sql-server-2012/ms187048(v=sql.110))
+- [SQL Server 2008 R2 のバックアップと復元](/previous-versions/sql/sql-server-2008-r2/ms187048(v=sql.105))
+- [SQL Server 2008 のバックアップと復元](/previous-versions/sql/sql-server-2008/ms187048(v=sql.100))
 
 以下のセクションでは、いくつかの手動バックアップと復元のオプションについて詳しく説明します。
 
 ### <a name="backup-to-attached-disks"></a>接続されているディスクへのバックアップ
 
-Azure VM 上の SQL Server では、バックアップ ファイルの保存先として VM に接続されているディスクを使用するネイティブなバックアップおよび復元手法を使用できます。 ただし、[仮想マシンのサイズ](../../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に基づいて、Azure 仮想マシンに接続できるディスク数には制限があります。 また、ディスク管理のオーバーヘッドも考慮する必要があります。
+Azure VM 上の SQL Server では、バックアップ ファイルの保存先として VM に接続されているディスクを使用するネイティブなバックアップおよび復元手法を使用できます。 ただし、[仮想マシンのサイズ](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に基づいて、Azure 仮想マシンに接続できるディスク数には制限があります。 また、ディスク管理のオーバーヘッドも考慮する必要があります。
 
-SQL Server Management Studio (SSMS) または Transact-SQL を使用してデータベースの完全バックアップを手動で作成する方法の例については、「[データベースの完全バックアップの作成](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server)」をご覧ください。
+SQL Server Management Studio (SSMS) または Transact-SQL を使用してデータベースの完全バックアップを手動で作成する方法の例については、「[データベースの完全バックアップの作成](/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server)」をご覧ください。
 
 ### <a name="backup-to-url"></a>Backup to URL
 
@@ -104,13 +105,13 @@ SQL Server 2012 SP1 CU2 以降では、Microsoft Azure Blob ストレージに�
 | 2016 の拡張機能 | 詳細 |
 | --- | --- |
 | **ストライピング** |Microsoft Azure Blob ストレージにバックアップする場合、SQL Server 2016 では、複数の BLOB へのバックアップをサポートしているので、最大 12.8 TB の大規模なデータベースをバックアップできます。 |
-| **スナップショット バックアップ** |Azure のスナップショットを使用することで、SQL Server ファイル スナップショット バックアップでは、Azure Blob ストレージ サービスを使用して保存されたデータベース ファイルをほぼ瞬時にバックアップし、迅速に復元できます。 この機能により、バックアップと復元のポリシーを簡素化することができます。 ファイル スナップショット バックアップでは、ポイントインタイム リストアもサポートしています。 詳細については、「 [Snapshot Backups for Database Files in Azure (Azure でのデータベース ファイルのスナップショット バックアップ)](https://docs.microsoft.com/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure)」をご覧ください。 |
+| **スナップショット バックアップ** |Azure のスナップショットを使用することで、SQL Server ファイル スナップショット バックアップでは、Azure Blob ストレージ サービスを使用して保存されたデータベース ファイルをほぼ瞬時にバックアップし、迅速に復元できます。 この機能により、バックアップと復元のポリシーを簡素化することができます。 ファイル スナップショット バックアップでは、ポイントインタイム リストアもサポートしています。 詳細については、「 [Snapshot Backups for Database Files in Azure (Azure でのデータベース ファイルのスナップショット バックアップ)](/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure)」をご覧ください。 |
 
 詳細については、SQL Server のバージョンに応じて、次のいずれかの記事をご覧ください。
 
-- **SQL Server 2016/2017**:[SQL Server Backup to URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
-- **SQL Server 2014**:[SQL Server 2014 Backup to URL](https://msdn.microsoft.com/library/jj919148%28v=sql.120%29.aspx)
-- **SQL Server 2012**:[SQL Server 2012 Backup to URL](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)
+- **SQL Server 2016/2017**:[SQL Server Backup to URL](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
+- **SQL Server 2014**:[SQL Server 2014 Backup to URL](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service?viewFallbackFrom=sql-server-2014)
+- **SQL Server 2012**:[SQL Server 2012 Backup to URL](/previous-versions/sql/sql-server-2012/jj919148(v=sql.110))
 
 ### <a name="managed-backup"></a>管理対象のバックアップ
 
@@ -120,8 +121,8 @@ SQL Server 2016 以降では、マネージド バックアップに、スケジ
 
 詳細については、SQL Server のバージョンに応じて、次のいずれかの記事をご覧ください。
 
-- [SQL Server 2016 以降の Microsoft Azure へのマネージド バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure)
-- [SQL Server 2014 の Microsoft Azure へのマネージド バックアップ](https://msdn.microsoft.com/library/dn449496%28v=sql.120%29.aspx)
+- [SQL Server 2016 以降の Microsoft Azure へのマネージド バックアップ](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure)
+- [SQL Server 2014 の Microsoft Azure へのマネージド バックアップ](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?viewFallbackFrom=sql-server-2014)
 
 ## <a name="decision-matrix"></a>デシジョン マトリックス
 
@@ -129,23 +130,23 @@ SQL Server 2016 以降では、マネージド バックアップに、スケジ
 
 | オプション | 自動バックアップ | SQL の Azure Backup | 手動バックアップ |
 |---|---|---|---|
-| 追加の Azure サービスが必要 |   | ![はい](./media/backup-restore/yes.png) |   |
-| Azure portal でのバックアップ ポリシーの構成 | ![はい](./media/backup-restore/yes.png) | ![はい](./media/backup-restore/yes.png) |   |
-| Azure portal でのデータベースの復元 |   | ![はい](./media/backup-restore/yes.png) |   |
-| 1 つのダッシュボードでの複数のサーバーの管理 |   | ![はい](./media/backup-restore/yes.png) |   |
-| ポイントインタイム リストア | ![はい](./media/backup-restore/yes.png) | ![はい](./media/backup-restore/yes.png) | ![はい](./media/backup-restore/yes.png) |
-| 15 分の復旧ポイント目標 (RPO) | ![はい](./media/backup-restore/yes.png) | ![はい](./media/backup-restore/yes.png) | ![はい](./media/backup-restore/yes.png) |
-| 短期間のバックアップ保持ポリシー (日) | ![はい](./media/backup-restore/yes.png) | ![はい](./media/backup-restore/yes.png) |   |
-| 長期間のバックアップ保持ポリシー (月、年) |   | ![はい](./media/backup-restore/yes.png) |   |
-| SQL Server Always On の組み込みサポート |   | ![はい](./media/backup-restore/yes.png) |   |
-| Azure Storage アカウントへのバックアップ | ![はい](./media/backup-restore/yes.png)(自動) | ![はい](./media/backup-restore/yes.png)(自動) | ![はい](./media/backup-restore/yes.png)(ユーザーが管理) |
-| ストレージとバックアップ ファイルの管理 | | ![はい](./media/backup-restore/yes.png) |  |
-| VM に接続されているディスクへのバックアップ |   |   | ![はい](./media/backup-restore/yes.png) |
-| 一元化されたカスタマイズ可能なバックアップ レポート |   | ![はい](./media/backup-restore/yes.png) |   |
-| エラーが発生した場合の統合電子メール アラート |   | ![はい](./media/backup-restore/yes.png) |   |
-| Azure Monitor ログに基づいた監視のカスタマイズ |   | ![はい](./media/backup-restore/yes.png) |   |
-| SSMS または Transact-SQL スクリプトを使用したバックアップ ジョブの監視 | ![はい](./media/backup-restore/yes.png) | ![はい](./media/backup-restore/yes.png) | ![はい](./media/backup-restore/yes.png) |
-| SSMS または Transact-SQL スクリプトを使用したデータベースの復元 | ![はい](./media/backup-restore/yes.png) |   | ![はい](./media/backup-restore/yes.png) |
+| 追加の Azure サービスが必要 |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| Azure portal でのバックアップ ポリシーの構成 | ![緑のチェックマーク。](./media/backup-restore/yes.png) | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| Azure portal でのデータベースの復元 |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| 1 つのダッシュボードでの複数のサーバーの管理 |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| ポイントインタイム リストア | ![緑のチェックマーク。](./media/backup-restore/yes.png) | ![緑のチェックマーク。](./media/backup-restore/yes.png) | ![緑のチェックマーク。](./media/backup-restore/yes.png) |
+| 15 分の復旧ポイント目標 (RPO) | ![緑のチェックマーク。](./media/backup-restore/yes.png) | ![緑のチェックマーク。](./media/backup-restore/yes.png) | ![緑のチェックマーク。](./media/backup-restore/yes.png) |
+| 短期間のバックアップ保持ポリシー (日) | ![緑のチェックマーク。](./media/backup-restore/yes.png) | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| 長期間のバックアップ保持ポリシー (月、年) |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| SQL Server Always On の組み込みサポート |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| Azure Storage アカウントへのバックアップ | ![緑のチェックマーク。](./media/backup-restore/yes.png)(自動) | ![緑のチェックマーク。](./media/backup-restore/yes.png)(自動) | ![緑のチェックマーク。](./media/backup-restore/yes.png)(ユーザーが管理) |
+| ストレージとバックアップ ファイルの管理 | | ![緑のチェックマーク。](./media/backup-restore/yes.png) |  |
+| VM に接続されているディスクへのバックアップ |   |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |
+| 一元化されたカスタマイズ可能なバックアップ レポート |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| エラーが発生した場合の統合電子メール アラート |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| Azure Monitor ログに基づいた監視のカスタマイズ |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   |
+| SSMS または Transact-SQL スクリプトを使用したバックアップ ジョブの監視 | ![緑のチェックマーク。](./media/backup-restore/yes.png) | ![緑のチェックマーク。](./media/backup-restore/yes.png) | ![緑のチェックマーク。](./media/backup-restore/yes.png) |
+| SSMS または Transact-SQL スクリプトを使用したデータベースの復元 | ![緑のチェックマーク。](./media/backup-restore/yes.png) |   | ![緑のチェックマーク。](./media/backup-restore/yes.png) |
 
 ## <a name="next-steps"></a>次のステップ
 

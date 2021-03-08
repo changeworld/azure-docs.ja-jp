@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ebadaf51a7dfbb286dac0bbdb0c3c8437ae2356f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3a278b6e725488d6107e6b0819e002d1dafe4774
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022226"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99591665"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>チュートリアル:インターフェイスとカスタム モデル
 
@@ -30,25 +30,25 @@ ms.locfileid: "89022226"
 
 ## <a name="get-started-with-the-mixed-reality-toolkit-mrtk"></a>Mixed Reality Toolkit (MRTK) の概要
 
-Mixed Reality Toolkit (MRTK) は、Mixed Reality エクスペリエンスを構築するためのクロスプラットフォームのツールキットです。 ここでは、そのインタラクションとビジュアル化の機能に MRTK 2.3 を使用します。
+Mixed Reality Toolkit (MRTK) は、Mixed Reality エクスペリエンスを構築するためのクロスプラットフォームのツールキットです。 ここでは、その操作と視覚化機能に MRTK 2.5.1 を使用します。
 
-MRTK を追加するには、「[MRTK の概要](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html)」に記載されている[必須の手順](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#required)に従います。
+MRTK を追加するには、[MRTK インストール ガイド](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html)に記載されている[必須の手順](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#required)に従います。
 
 次のような手順です。
- - [最新の MRTK Unity パッケージを取得する](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#get-the-latest-mrtk-unity-packages)
-     - "最新" と書かれていますが、バージョン 2.3 のことです。
+ - [最新の MRTK Unity パッケージを取得する](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#1-get-the-latest-mrtk-unity-packages)
+     - "最新" と書かれていますが、MRTK リリース ページのバージョン 2.5.1 をお使いください。
      - このチュートリアルで使用するのは *Foundation* パッケージのみです。 *Extensions*、*Tools*、*Examples* の各パッケージは必要ありません。
- - [MRTK パッケージを Unity プロジェクトにインポートする](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#import-mrtk-packages-into-your-unity-project)
- - [Unity プロジェクトをターゲット プラットフォームに切り替える](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#switch-your-unity-project-to-the-target-platform)
+ - [MRTK パッケージを Unity プロジェクトにインポートする](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#2-import-mrtk-packages-into-your-unity-project)
+ - [Unity プロジェクトをターゲット プラットフォームに切り替える](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#3-switch-your-unity-project-to-the-target-platform)
      - この手順は既に最初の章で完了しているはずですが、ここでもう一度確認するとよいでしょう。
- - [新しいシーンまたは新しいプロジェクトに MRTK を追加する](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#add-mrtk-to-a-new-scene-or-new-project)
+ - [新しいシーンまたは新しいプロジェクトに MRTK を追加する](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#4-add-and-configure-mrtk-with-a-new-scene)
      - 新しいシーンに MRTK を追加してコーディネーターとモデル オブジェクトまたはスクリプトを再度追加することも、 *[Mixed Reality Toolkit] -> [Add to Scene and Configure]\(シーンに追加して構成\)* メニュー コマンドを使用して既存のシーンに MRTK を追加することもできます。
 
 ## <a name="import-assets-used-by-this-tutorial"></a>このチュートリアルで使用するアセットをインポートする
 
 この章からは、取り上げられる素材の多くに簡単な [Model-View-Controller パターン](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)を実装します。 このパターンの *Model* 部分は、Azure Remote Rendering 固有のコードと、Azure Remote Rendering に関連した状態管理です。 パターンの *View* 部分と *Controller* 部分は、MRTK アセットといくつかのカスタム スクリプトを使用して実装します。 このチュートリアルの *Model* は、ここで実装する *View-Controller* がなくても使用できます。 このように分離されているので、このチュートリアルにあるコードを独自のアプリケーションに容易に統合することができます。このアプリケーションは、設計パターンの *View-Controller* 部分を引き継ぐことになります。
 
-MRTK の導入により、インタラクションとビジュアル フィードバックをサポートするためにプロジェクトに追加できるようになったスクリプト、プレハブ、アセットが多数存在します。 これらのアセット (**チュートリアル アセット**といいます) は、[Azure Remote Rendering GitHub](https://github.com/Azure/azure-remote-rendering) の "\Unity\TutorialAssets\TutorialAssets.unitypackage" にある [Unity アセット パッケージ](https://docs.unity3d.com/Manual/AssetPackages.html)にバンドルされています。
+MRTK の導入により、インタラクションとビジュアル フィードバックをサポートするためにプロジェクトに追加できるようになったスクリプト、プレハブ、アセットが多数存在します。 これらのアセット (**チュートリアル アセット** といいます) は、[Azure Remote Rendering GitHub](https://github.com/Azure/azure-remote-rendering) の "\Unity\TutorialAssets\TutorialAssets.unitypackage" にある [Unity アセット パッケージ](https://docs.unity3d.com/Manual/AssetPackages.html)にバンドルされています。
 
 1. Git リポジトリ [Azure Remote Rendering](https://github.com/Azure/azure-remote-rendering) をクローンまたはダウンロードします。ダウンロードした場合は、zip を既知の場所に展開します。
 1. Unity プロジェクトで、 *[Assets]\(アセット\) -> [Import Package]\(パッケージのインポート\) -> [Custom Package]\(カスタム パッケージ\)* を選択します。
@@ -90,11 +90,11 @@ MRTK とチュートリアル アセットがプロジェクトに追加され�
 
 次に、状態の追跡、イベントへの応答、イベントの生成、構成を行うための新しいスクリプト、**RemoteRenderedModel** を実装します。 基本的に、**RemoteRenderedModel** はモデル データのリモート パスを `modelPath` に格納します。 **RemoteRenderingCoordinator** で状態の変化をリッスンし、定義されているモデルを自動的に読み込む (またはアンロードする) 必要があるかどうかを判断します。 **RemoteRenderedModel** がアタッチされている GameObject が、リモート コンテンツのローカルにおける親になります。
 
-**RemoteRenderedModel** スクリプトには、**チュートリアル アセット**にある **BaseRemoteRenderedModel** が実装されていることに注目してください。 これによって、リモート モデル ビュー コントローラーをスクリプトにバインドすることができます。
+**RemoteRenderedModel** スクリプトには、**チュートリアル アセット** にある **BaseRemoteRenderedModel** が実装されていることに注目してください。 これによって、リモート モデル ビュー コントローラーをスクリプトにバインドすることができます。
 
 1. **RemoteRenderingCoordinator** と同じフォルダーに、**RemoteRenderedModel** という名前の新しいスクリプトを作成します。 内容全体を次のコードに置き換えます。
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 

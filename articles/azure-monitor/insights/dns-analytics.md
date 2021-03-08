@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor の DNS Analytics ソリューション | Microsoft Docs
 description: Azure Monitor の DNS Analytics ソリューションをセットアップして使用し、DNS インフラストラクチャのセキュリティ、パフォーマンス、操作に関する分析情報を収集します。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 947b509468857b98b868881bdd48adf67a5d60db
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: df9efef1000ab6a824c869e6684ab1424e8462f4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499003"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708103"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -35,10 +34,10 @@ DNS 分析ソリューションは、Windows DNS の分析ログと監査ログ�
 
 | **接続先ソース** | **サポート** | **説明** |
 | --- | --- | --- |
-| [Windows エージェント](../platform/agent-windows.md) | はい | ソリューションでは、Windows エージェントから DNS 情報を収集します。 |
-| [Linux エージェント](../learn/quick-collect-linux-computer.md) | いいえ | ソリューションでは、ダイレクト Linux エージェントから DNS 情報は収集しません。 |
-| [System Center Operations Manager 管理グループ](../platform/om-agents.md) | はい | ソリューションでは、接続された Operations Manager 管理グループ内のエージェントから DNS 情報が収集されます。 Operations Manager エージェントから Azure Monitor への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
-| [Azure Storage アカウント](../platform/resource-logs.md#send-to-log-analytics-workspace) | いいえ | ソリューションでは、Azure Storage は使用されません。 |
+| [Windows エージェント](../agents/agent-windows.md) | はい | ソリューションでは、Windows エージェントから DNS 情報を収集します。 |
+| [Linux エージェント](../vm/quick-collect-linux-computer.md) | いいえ | ソリューションでは、ダイレクト Linux エージェントから DNS 情報は収集しません。 |
+| [System Center Operations Manager 管理グループ](../agents/om-agents.md) | はい | ソリューションでは、接続された Operations Manager 管理グループ内のエージェントから DNS 情報が収集されます。 Operations Manager エージェントから Azure Monitor への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
+| [Azure Storage アカウント](../essentials/resource-logs.md#send-to-log-analytics-workspace) | いいえ | ソリューションでは、Azure Storage は使用されません。 |
 
 ### <a name="data-collection-details"></a>データ収集の詳細
 
@@ -48,7 +47,7 @@ DNS 分析ソリューションでは、Log Analytics エージェントがイ�
 
 次の情報を使用して、ソリューションを構成します。
 
-- 監視対象の各 DNS サーバーに [Windows](../platform/agent-windows.md) エージェントまたは [Operations Manager](../platform/om-agents.md) エージェントが必要です。
+- 監視対象の各 DNS サーバーに [Windows](../agents/agent-windows.md) エージェントまたは [Operations Manager](../agents/om-agents.md) エージェントが必要です。
 - [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace) から、DNS Analytics ソリューションを Log Analytics ワークスペースに追加できます。 [Solutions Gallery からの Azure Monitor ソリューションの追加](solutions.md)に関するページで説明されている手順も使用できます。
 
 さらに構成を行わなくても、ソリューションはデータの収集を開始します。 ただし、次の構成を使用してデータ収集をカスタマイズできます。
@@ -57,13 +56,13 @@ DNS 分析ソリューションでは、Log Analytics エージェントがイ�
 
 ソリューション ダッシュボードで **[構成]** をクリックして、[DNS 分析構成] ページを開きます。 次の 2 種類の構成変更を行うことができます。
 
-- **ホワイトリストに含まれるドメイン名**。 ソリューションでは、すべてのルックアップ クエリが処理されるわけではありません。 ドメイン名サフィックスのホワイトリストが保持されています。 このホワイトリストのドメイン名のサフィックスと一致するドメイン名を解決するルックアップ クエリは、ソリューションでは処理されません。 ホワイトリストに含まれるドメイン名を処理しないことで、Azure Monitor に送信されるデータを最適化できます。 既定のホワイトリストには、よく使用されるパブリック ドメイン名 (www.google.com や www.facebook.com など) が含まれています。 スクロールすると、既定のリスト全体を確認できます。
+- **許可リストに含まれるドメイン名**。 ソリューションでは、すべてのルックアップ クエリが処理されるわけではありません。 ドメイン名サフィックスの許可リストが保持されています。 この許可リストのドメイン名のサフィックスと一致するドメイン名に解決されるルックアップ クエリは、ソリューションでは処理されません。 許可リストに含まれるドメイン名を処理しないことで、Azure Monitor に送信されるデータを最適化できます。 既定の許可リストには、よく使用されるパブリック ドメイン名 (www.google.com や www.facebook.com など) が含まれています。 スクロールすると、既定のリスト全体を確認できます。
 
   このリストを変更して、ルックアップの洞察の対象にするドメイン名のサフィックスを追加できます。 ルックアップの洞察の対象にしないドメイン名のサフィックスを削除することもできます。
 
 - **話好きなクライアントのしきい値**。 ルックアップ要求数のしきい値を超えた DNS クライアントは、 **[DNS クライアント]** ブレードで強調表示されます。 既定のしきい値は 1,000 です。 しきい値は編集できます。
 
-    ![ホワイトリストに含まれるドメイン名](./media/dns-analytics/dns-config.png)
+    ![許可リストに含まれるドメイン名](./media/dns-analytics/dns-config.png)
 
 ## <a name="management-packs"></a>管理パック
 
@@ -76,7 +75,7 @@ Operations Manager 管理グループが Log Analytics ワークスペースに�
 - Microsoft DNS Data Collector Intelligence Pack (Microsoft.IntelligencePacks.Dns)
 - Microsoft System Center Advisor DNS Analytics Configuration (Microsoft.IntelligencePack.Dns.Configuration)
 
-ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](../platform/om-agents.md)」を参照してください。
+ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](../agents/om-agents.md)」を参照してください。
 
 ## <a name="use-the-dns-analytics-solution"></a>DNS 分析ソリューションを使用する
 
@@ -89,7 +88,7 @@ DNS タイルには、データ収集中の DNS サーバーの数が含まれ�
 
 ### <a name="solution-dashboard"></a>ソリューションのダッシュボード
 
-ソリューション ダッシュボードには、ソリューションのさまざまな機能の集計情報が表示されます。 また、フォレンジック分析と診断の詳細ビューへのリンクも含まれています。 既定では、過去 7 日間のデータが表示されます。 次の図に示すように、**日時選択コントロール**を使用して日付と時間の範囲を変更できます。
+ソリューション ダッシュボードには、ソリューションのさまざまな機能の集計情報が表示されます。 また、フォレンジック分析と診断の詳細ビューへのリンクも含まれています。 既定では、過去 7 日間のデータが表示されます。 次の図に示すように、**日時選択コントロール** を使用して日付と時間の範囲を変更できます。
 
 ![日時選択コントロール](./media/dns-analytics/dns-time.png)
 
@@ -110,14 +109,14 @@ DNS タイルには、データ収集中の DNS サーバーの数が含まれ�
 - そのドメイン名の解決先の IP アドレス。
 - 悪意のある IP アドレス。
 - 問題の重大度。
-- 悪意のある IP をブラックリストに含める理由。
+- 悪意のある IP をブロックリストに含める理由。
 - 検出時刻。
 
 **[クエリ対象のドメイン]** 。 環境内の DNS クライアントによるクエリの対象になる頻度が最も高いドメイン名が表示されます。 クエリ対象のすべてのドメイン名の一覧を確認できます。 また、ログ検索で特定のドメイン名のルックアップ要求の詳細にドリルダウンできます。
 
 ![[クエリ対象のドメイン] ブレード](./media/dns-analytics/domains-queried-blade.png)
 
-**[DNS クライアント]** 。 選択した期間内のクエリの数に対して*しきい値に違反した*クライアントを報告します。 すべての DNS クライアントの一覧を表示し、ログ検索で各クライアントによって実行されたクエリの詳細を確認できます。
+**[DNS クライアント]** 。 選択した期間内のクエリの数に対して *しきい値に違反した* クライアントを報告します。 すべての DNS クライアントの一覧を表示し、ログ検索で各クライアントによって実行されたクエリの詳細を確認できます。
 
 ![[DNS クライアント] ブレード](./media/dns-analytics/dns-clients-blade.png)
 
@@ -159,7 +158,7 @@ DNS タイルには、データ収集中の DNS サーバーの数が含まれ�
 
 [ログ検索] ページで、クエリを作成できます。 ファセット コントロールを使用して検索結果をフィルター処理できます。 検索結果に対して変換やフィルター処理、レポート作成などを実行する高度なクエリを作成することもできます。 まず、以下のクエリを使用します。
 
-1. **検索クエリ ボックス**に「`DnsEvents`」と入力して、ソリューションによって管理されている DNS サーバーで生成されたすべての DNS イベントを表示します。 結果には、ルックアップ クエリ、動的登録、構成変更に関連するすべてのイベントのログ データが表示されます。
+1. **検索クエリ ボックス** に「`DnsEvents`」と入力して、ソリューションによって管理されている DNS サーバーで生成されたすべての DNS イベントを表示します。 結果には、ルックアップ クエリ、動的登録、構成変更に関連するすべてのイベントのログ データが表示されます。
 
     ![DnsEvents ログ検索](./media/dns-analytics/log-search-dnsevents.png)  
 
@@ -169,7 +168,7 @@ DNS タイルには、データ収集中の DNS サーバーの数が含まれ�
 
     c. 構成変更のログ データを表示するには、左側のファセット コントロールから **[ConfigurationChange]** を選択して **[サブタイプ]** をフィルター処理します。 選択した期間の構成変更イベントが一覧になったテーブルが表示されます。
 
-1. **検索クエリ ボックス**に「`DnsInventory`」と入力して、ソリューションによって管理されている DNS サーバーのすべての DNS インベントリ関連データを表示します。 結果には、DNS サーバー、DNS ゾーン、リソース レコードのログ データが表示されます。
+1. **検索クエリ ボックス** に「`DnsInventory`」と入力して、ソリューションによって管理されている DNS サーバーのすべての DNS インベントリ関連データを表示します。 結果には、DNS サーバー、DNS ゾーン、リソース レコードのログ データが表示されます。
 
     ![DnsInventory ログ検索](./media/dns-analytics/log-search-dnsinventory.png)
     
@@ -185,4 +184,4 @@ DNS タイルには、データ収集中の DNS サーバーの数が含まれ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[ログをクエリ](../log-query/log-query-overview.md)して、詳細な DNS ログ レコードを確認します。
+[ログをクエリ](../logs/log-query-overview.md)して、詳細な DNS ログ レコードを確認します。

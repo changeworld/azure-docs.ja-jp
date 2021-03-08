@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 6f2b7ec07583859e12711237c6a899d61335c969
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 889fa9b026b741cef438791daf136e0da7cecc24
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545476"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318671"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amplitude"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Amplitude の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88545476"
 * ユーザーが自分の Azure AD アカウントを使用して Amplitude に自動的にサインインできるようにします。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -141,15 +141,15 @@ Amplitude に対する Azure AD SSO を構成してテストするには、次�
 
 1. 左側のナビゲーション バーから **[Plan Admin]\(プラン管理者\)** をクリックします。
 
-    ![Configure single sign-on](./media/amplitude-tutorial/configure1.png)
+    ![このスクリーンショットは、[Plan Admin]\(プラン管理者\) が選択された状態の Amplitude メニューを示しています。](./media/amplitude-tutorial/configure1.png)
 
 1. **[SSO Integration]\(SSO の統合\)** から **[Microsoft Azure Active Directory Metadata]\(Microsoft Azure Active Directory のメタデータ\)** を選択します。
 
-    ![Configure single sign-on](./media/amplitude-tutorial/configure2.png)
+    ![このスクリーンショットは、[Microsoft Azure Active Directory Metadata]\(Microsoft Azure Active Directory のメタデータ\) リンクがコールアウトされた状態の [Plan Admin]\(プラン管理者\) ペインを示しています。](./media/amplitude-tutorial/configure2.png)
 
 1. **[Setup Single Sign-On]\(シングル サインオンの設定\)** セクションで、次の手順を実行します。
 
-    ![Configure single sign-on](./media/amplitude-tutorial/configure3.png)
+    ![このスクリーンショットは、この手順で説明されている値が表示された状態の [Setup Single Sign-On]\(シングル サインオンの設定\) セクションを示しています。](./media/amplitude-tutorial/configure3.png)
 
     a. Azure Portal からダウンロードした**メタデータ XML** をメモ帳で開き、内容を **[Microsoft Azure Active Directory Metadata]\(Microsoft Azure Active Directory のメタデータ\)** テキストボックスに貼り付けます。
 
@@ -168,14 +168,14 @@ Amplitude に対する Azure AD SSO を構成してテストするには、次�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル内の [Amplitude] タイルをクリックすると、SSO を設定した Amplitude に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル内の [Amplitude] タイルをクリックすると、SSO を設定した Amplitude に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Amplitude を試す](https://aad.portal.azure.com/)

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: da89bf6cb336087f97341ca57a9b2545c966a053
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a42790e079985b003776b381c74f837b0ba619b1
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533441"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359206"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>チュートリアル: Tableau Online を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -53,15 +53,15 @@ Marketplace から Tableau Online を追加するには、次の手順に従い�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Tableau Online**」と入力し、結果パネルから **[Tableau Online]** を選択します。 アプリケーションを追加するには、 **[追加]** を選択します。
+4. 検索ボックスに「 **Tableau Online** 」と入力し、結果パネルから **[Tableau Online]** を選択します。 アプリケーションを追加するには、 **[追加]** を選択します。
 
     ![結果一覧の Tableau Online](common/search-new-app.png)
 
 ## <a name="assign-users-to-tableau-online"></a>Tableau Online にユーザーを割り当てる
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD でアプリケーションに割り当てられているユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD でアプリケーションに割り当てられているユーザーとグループのみが同期されます。
 
-自動ユーザー プロビジョニングを構成して有効にする前に、Tableau Online にアクセスする必要がある Azure AD のユーザーまたはグループを決定しておく必要があります。 これらのユーザーまたはグループを Tableau Online に割り当てるには、「[エンタープライズ アプリにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)」の指示に従います。
+自動ユーザー プロビジョニングを構成して有効にする前に、Tableau Online にアクセスする必要がある Azure AD のユーザーまたはグループを決定しておく必要があります。 これらのユーザーまたはグループを Tableau Online に割り当てるには、「[エンタープライズ アプリにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)」の指示に従います。
 
 ### <a name="important-tips-for-assigning-users-to-tableau-online"></a>ユーザーを Tableau Online に割り当てる際の重要なヒント
 
@@ -98,7 +98,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
    * **[ドメイン]** ボックスに、手順 6 に基づいてサブドメインを入力します。
 
-   * **[管理ユーザー名]** ボックスに、Clarizen テナントの管理者アカウントのユーザー名を入力します。 たとえば admin@contoso.com です。
+   * **[管理ユーザー名]** ボックスに、Tableau Online テナントの管理者アカウントのユーザー名を入力します。 たとえば admin@contoso.com です。
 
    * **[管理パスワード]** ボックスに、管理者ユーザー名に対応する管理者アカウントのパスワードを入力します。
 
@@ -115,7 +115,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
         ![Tableau Online のコンテンツの URL](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
 
         > [!NOTE]
-        > 実際の**ドメイン**は、ここに示したものとは異なる場合があります。
+        > 実際の **ドメイン** は、ここに示したものとは異なる場合があります。
 
 7. 手順 5 に示されているボックスに入力したら、 **[テスト接続]** を選択して、Azure AD が Tableau Online に接続できることを確認します。 接続できない場合は、使用中の Tableau Online アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
@@ -133,7 +133,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 11. **[属性マッピング]** セクションで、Azure AD から Tableau Online に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Tableau Online のユーザー アカウントとの照合に使用されます。 すべての変更を保存するために、 **[保存]** を選択します。
 
-    ![Tableau Online の一致するユーザー属性](./media/tableau-online-provisioning-tutorial/UserAttributeMapping.png)
+    ![Tableau Online の一致するユーザー属性](./media/tableau-online-provisioning-tutorial/attribute.png)
 
 12. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to Tableau]\(Azure Active Directory グループを Tableau に同期する\)** を選択します。
 
@@ -163,7 +163,10 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 Azure AD プロビジョニング ログの見方について詳しくは、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」を参照してください。
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="change-log"></a>ログの変更
+* 09/30/2020 - ユーザー用の "authSetting" 属性のサポートを追加。
+
+## <a name="additional-resources"></a>その他の技術情報
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)

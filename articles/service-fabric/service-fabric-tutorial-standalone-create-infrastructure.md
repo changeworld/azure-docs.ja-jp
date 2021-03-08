@@ -1,17 +1,15 @@
 ---
 title: AWS にクラスター用のインフラストラクチャを作成する
 description: このチュートリアルでは、Service Fabric クラスターを実行するための AWS インフラストラクチャをセットアップする方法を学習します。
-author: dkkapur
 ms.topic: tutorial
 ms.date: 05/11/2018
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: b6348d9fdcd4133a4fa69aac3ccf5494e904094e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c7a18b0dcdc04bdf66ac4b36ce7376ee018eb238
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75613977"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842905"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>チュートリアル: Service Fabric クラスターをホストする AWS インフラストラクチャを作成する
 

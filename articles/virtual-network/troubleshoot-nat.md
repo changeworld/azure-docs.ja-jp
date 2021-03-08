@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: d75f13f6a0621158bdb9a2f1682d0c85eaacb59d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 70410e58acb30c7694e6fe4a6dcaff57bee98607
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836107"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223433"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Azure Virtual Network NAT 接続のトラブルシューティング
 
@@ -68,10 +68,10 @@ _**解決方法:**_ 適切なパターンとベスト プラクティスを使�
 SNAT 枯渇は、基礎となるアプリケーションのその他のアンチパターンによって増幅することもあります。 ご自分のサービスの規模や信頼性を改善するため、こうした追加のパターンやベスト プラクティスをご確認ください。
 
 - SNAT ポート インベントリをもっと早く解放するために、[TCP アイドル タイムアウト](nat-gateway-resource.md#timers)を、より小さい値 (既定のアイドル タイムアウトである 4 分など) に変更した場合の効果を詳しく調べます。
-- 実行時間の長い操作に対しては、[非同期ポーリング パターン](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)を使用して他の操作のために接続リソースを解放することを検討します。
+- 実行時間の長い操作に対しては、[非同期ポーリング パターン](/azure/architecture/patterns/async-request-reply)を使用して他の操作のために接続リソースを解放することを検討します。
 - 有効期間の長いフロー (たとえば、再利用された TCP 接続) では、中間システムのタイムアウトを回避するために、TCP キープアライブまたはアプリケーション レイヤー キープアライブを使用する必要があります。アイドル タイムアウトを増やすことは最後の手段であり、根本原因が解決されるとは限りません。 タイムアウトが長いと、タイムアウトの終了時、低い率でエラーが発生し、遅延や不要な障害を引き起こす可能性があります。
-- 一時的な障害または障害復旧中の積極的な再試行またはバーストを回避するには、グレースフルな[再試行パターン](https://docs.microsoft.com/azure/architecture/patterns/retry)を使用する必要があります。
-すべての HTTP 操作に対して新しい TCP 接続を作成することはアンチパターンです ("アトミック接続" とも呼ばれます)。  アトミック接続は、アプリケーションのスケーリングを妨げ、リソースを浪費します。  常に複数の操作をパイプラインで同じ接続に渡してください。  アプリケーションにとっては、トランザクション速度とリソース コストの面でメリットがあります。  アプリケーションでトランスポート レイヤー暗号化 (TLS など) を使用する場合、新しい接続の処理に関連する多大なコストがかかります。  その他のベスト プラクティス パターンについては、[Azure のクラウド設計パターン](https://docs.microsoft.com/azure/architecture/patterns/)に関するページを確認してください。
+- 一時的な障害または障害復旧中の積極的な再試行またはバーストを回避するには、グレースフルな[再試行パターン](/azure/architecture/patterns/retry)を使用する必要があります。
+すべての HTTP 操作に対して新しい TCP 接続を作成することはアンチパターンです ("アトミック接続" とも呼ばれます)。  アトミック接続は、アプリケーションのスケーリングを妨げ、リソースを浪費します。  常に複数の操作をパイプラインで同じ接続に渡してください。  アプリケーションにとっては、トランザクション速度とリソース コストの面でメリットがあります。  アプリケーションでトランスポート レイヤー暗号化 (TLS など) を使用する場合、新しい接続の処理に関連する多大なコストがかかります。  その他のベスト プラクティス パターンについては、[Azure のクラウド設計パターン](/azure/architecture/patterns/)に関するページを確認してください。
 
 #### <a name="additional-possible-mitigations"></a>可能な追加の軽減策
 
@@ -96,7 +96,7 @@ _**解決方法:**_ 代わりに、TCP 接続テスト ("TCP ping" など) と U
 | オペレーティング システム | 汎用 TCP 接続テスト | TCP アプリケーション レイヤー テスト | UDP |
 |---|---|---|---|
 | Linux | nc (汎用接続テスト) | curl (TCP アプリケーション レイヤー テスト) | アプリケーション固有 |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | アプリケーション固有 |
+| Windows | [PsPing](/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) | アプリケーション固有 |
 
 ### <a name="connectivity-failures"></a>接続エラー
 
@@ -113,7 +113,7 @@ _**解決方法:**_ 代わりに、TCP 接続テスト ("TCP ping" など) と U
 | オペレーティング システム | 汎用 TCP 接続テスト | TCP アプリケーション レイヤー テスト | UDP |
 |---|---|---|---|
 | Linux | nc (汎用接続テスト) | curl (TCP アプリケーション レイヤー テスト) | アプリケーション固有 |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | アプリケーション固有 |
+| Windows | [PsPing](/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) | アプリケーション固有 |
 
 #### <a name="configuration"></a>構成
 
@@ -196,18 +196,9 @@ NAT ゲートウェイ リソースのサブネットを構成する仮想マシ
 
 それでも問題が解決しない場合は、さらにトラブルシューティングを行うためにサポート ケースを開いてください。
 
-### <a name="connection-setup-time"></a>接続のセットアップ時間
-
-ロード バランサーのアウトバウンド規則では SNAT ポートのプールが特定の仮想マシンに静的に割り当てられるため、Virtual Network NAT を使用するよりも新しいアウトバウンド フローを作成する方が高速です。 このため、ロード バランサーのアウトバウンド規則から切り替えると、新しいアウトバウンド接続を作成するときの待機時間が長くなることがあります。 前に説明したように、アプリケーションのパフォーマンスを最大化するには、有効期間が長いフロー (TCP 接続を再利用するなど) を使用する必要があります。
-
-_**解決方法:**_
-
-接続セットアップの待ち時間を最小限にすることが重要な場合は、ロード バランサーのアウトバウンド規則を使用します。
-
 ## <a name="next-steps"></a>次のステップ
 
 * [Virtual Network NAT](nat-overview.md) について学習する。
 * [NAT ゲートウェイ リソース](nat-gateway-resource.md)について学習する
 * [NAT ゲートウェイ リソースのメトリックとアラート](nat-metrics.md)について学習する。
 * [UserVoice で Virtual Network NAT の新機能の構築を提案する](https://aka.ms/natuservoice)。
-

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 02/28/2020
+ms.date: 09/25/2020
 ms.author: victorh
-ms.openlocfilehash: 008274c86944b06b168bf52ca501c655bbe78434
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b8fbc47b46f8be6e4ad7636a1d7552445501f0f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610627"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653166"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Azure Firewall と Azure Standard Load Balancer を統合する
 
@@ -65,6 +65,10 @@ TCP 正常性プローブをポート 80 に使用する場合、または HTTP/
 
 そのため、このシナリオはパブリック ロード バランサーのシナリオと同じようにデプロイできますが、ファイアウォールのパブリック IP アドレスのホスト ルートは必要ありません。
 
+>[!NOTE]
+>バックエンド プール内の仮想マシンは、この構成ではアウトバウンド インターネット接続を持ちません。 </br> アウトバウンド接続の提供の詳細については、以下を参照してください。 </br> **[Azure の送信接続](../load-balancer/load-balancer-outbound-connections.md)**</br> 接続を提供するためのオプション: </br> **[送信専用のロード バランサーの構成](../load-balancer/egress-only.md)** </br> [**Virtual Network NAT とは**](../virtual-network/nat-overview.md)
+
+
 ## <a name="additional-security"></a>追加のセキュリティ
 
 負荷分散シナリオのセキュリティを強化するために、ネットワーク セキュリティ グループ (NSG) を使用できます。
@@ -73,7 +77,7 @@ TCP 正常性プローブをポート 80 に使用する場合、または HTTP/
 
 ![ネットワーク セキュリティ グループ](media/integrate-lb/nsg-01.png)
 
-NSG について詳しくは、「[セキュリティ グループ](../virtual-network/security-overview.md)」をご覧ください。
+NSG について詳しくは、「[セキュリティ グループ](../virtual-network/network-security-groups-overview.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

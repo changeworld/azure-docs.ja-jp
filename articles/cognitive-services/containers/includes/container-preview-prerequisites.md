@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 01df991e469c35f171d89b99ca9054ee620ebcca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 28bf55f1289929c059e3f16d70b880d2e4245593
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80875126"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102193842"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -22,5 +22,5 @@ ms.locfileid: "80875126"
 * [Docker エンジン][docker-engine]。Docker CLI がコンソール ウィンドウで動作することを確認します。
 
 [free-account]: https://azure.microsoft.com/free
-[azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli]: /cli/azure/install-azure-cli
 [docker-engine]: https://www.docker.com/products/docker-engine

@@ -1,23 +1,18 @@
 ---
 title: データ パイプラインを監視および管理する - Azure
 description: 監視と管理アプリを使用して Azure のデータ ファクトリとパイプラインを監視および管理する方法について説明します。
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
-ms.assetid: f3f07bc4-6dc3-4d4d-ac22-0be62189d578
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be11f742eb99d25cb0e41a3dd0888d62417837dd
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846908"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380374"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -47,7 +42,7 @@ ms.locfileid: "85846908"
 ![監視と管理アプリ](./media/data-factory-monitor-manage-app/AppLaunched.png)
 
 > [!NOTE]
-> 承認中であることを示すメッセージが表示されたまま Web ブラウザーが固まってしまう場合は、**サード パーティの Cookie とサイト データをブロック**するチェック ボックスをオフにします。または、チェック ボックスはオンにしたままにし、**login.microsoftonline.com** に対する例外を作成してから、もう一度アプリを開いてください。
+> 承認中であることを示すメッセージが表示されたまま Web ブラウザーが固まってしまう場合は、**サード パーティの Cookie とサイト データをブロック** するチェック ボックスをオフにします。または、チェック ボックスはオンにしたままにし、**login.microsoftonline.com** に対する例外を作成してから、もう一度アプリを開いてください。
 
 
 中央のウィンドウの [アクティビティ ウィンドウ] 一覧で、アクティビティの実行ごとにアクティビティ ウィンドウを確認できます。 たとえば、1 時間ごとに 5 時間実行するようにアクティビティをスケジュールした場合、5 つのデータ スライスに関連付けられた 5 つのアクティビティ ウィンドウが表示されます。 下部にある一覧でアクティビティ ウィンドウを確認できない場合は、以下の手順を実行します。
@@ -64,7 +59,7 @@ ms.locfileid: "85846908"
 次のように表示されます。
 
 * 左側のウィンドウにリソース エクスプローラーの **ツリー ビュー**
-* 中央のウィンドウの上部に**ダイアグラム ビュー**
+* 中央のウィンドウの上部に **ダイアグラム ビュー**
 * 中央のウィンドウの下部に **[アクティビティ ウィンドウ]** 一覧
 * 右側のウィンドウに **[プロパティ]** 、 **[アクティビティ ウィンドウ エクスプローラー]** 、 **[スクリプト]** の各タブ
 
@@ -124,9 +119,9 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 
 右側のウィンドウで、 **[アクティビティ ウィンドウ エクスプローラー]** タブに切り替えると、さらに詳しい情報が表示されます。
 
-![[Activity Window Explorer (アクティビティ ウィンドウ エクスプローラー)]](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
+![[アクティビティ ウィンドウ エクスプローラー] タブへのアクセス方法を示すスクリーンショット。](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
 
-アクティビティが試行されるたびに、 **[試行]** セクションに**解決された変数**も表示されます。
+アクティビティが試行されるたびに、 **[試行]** セクションに **解決された変数** も表示されます。
 
 ![解決された変数](./media/data-factory-monitor-manage-app/ResolvedVariables.PNG)
 
@@ -217,7 +212,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 
 一覧でアクティビティ ウィンドウをクリックすると、右側にある **[アクティビティ ウィンドウ エクスプローラー]** または **[プロパティ]** ウィンドウに詳細が表示されます。
 
-![[Activity Window Explorer (アクティビティ ウィンドウ エクスプローラー)]](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
+![アクティビティ ウィンドウの詳細の表示方法を示すスクリーンショット。](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
 ### <a name="refresh-activity-windows"></a>アクティビティ ウィンドウの更新
 詳細は自動的に更新されないので、コマンド バーの 更新ボタン (2 番目のボタン) を使用して、アクティビティ ウィンドウの一覧を手動で更新します。  
@@ -252,7 +247,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 
 現在、3 つのシステム ビューがサポートされています。 (中央のウィンドウの下部にある) [アクティビティ ウィンドウ] 一覧に最近のアクティビティ ウィンドウ、失敗したアクティビティ ウィンドウ、または進行中のアクティビティ ウィンドウを表示するオプションを選択します。
 
-**[最近のアクティビティ ウィンドウ]** を選択すると、最近のアクティビティ ウィンドウが**最終試行時刻**の降順ですべて表示されます。
+**[最近のアクティビティ ウィンドウ]** を選択すると、最近のアクティビティ ウィンドウが **最終試行時刻** の降順ですべて表示されます。
 
 **[失敗したアクティビティ ウィンドウ]** ビューを使用すると、失敗したアクティビティ ウィンドウすべてを一覧に表示できます。 一覧で失敗したアクティビティ ウィンドウを選択すると、その詳細が **[プロパティ]** ウィンドウまたは **[アクティビティ ウィンドウ エクスプローラー]** に表示されます。 また、失敗したアクティビティ ウィンドウのログをダウンロードすることもできます。
 

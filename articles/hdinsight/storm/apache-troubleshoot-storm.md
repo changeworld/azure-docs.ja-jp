@@ -2,19 +2,16 @@
 title: Azure HDInsight を使用した Storm のトラブルシューティング
 description: Azure HDInsight での Apache Storm の使用についてよく寄せられる質問とその回答を示します。
 keywords: Azure HDInsight, Storm, FAQ, トラブルシューティング ガイド, よくある質問
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c81084c77b355a5d60c72564c58a98e08da14312
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700367"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946304"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Storm のトラブルシューティング
 
@@ -95,7 +92,7 @@ lib フォルダーには、エクスポート/インポート操作の実装を
 
 /usr/hdp には、特定の HDP バージョンの複数のバイナリが存在する可能性があります (`/usr/hdp/2.5.0.1233/storm` など)。 `/usr/hdp/current/storm-client` フォルダーは、クラスター上で実行されている最新バージョンにシンボリック リンクされます。
 
-詳しくは、[SSH を使用した HDInsight クラスターへの接続](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)に関する記事および [Apache Storm](https://storm.apache.org/) のページをご覧ください。
+詳しくは、[SSH を使用した HDInsight クラスターへの接続](../hdinsight-hadoop-linux-use-ssh-unix.md)に関する記事および [Apache Storm](https://storm.apache.org/) のページをご覧ください。
 
 ## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Storm クラスターのデプロイ トポロジを特定する方法
 
@@ -141,7 +138,7 @@ Storm ワーカー ノードは、次のサービスを実行します。
 
 ### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C# ベースのトポロジ (HDInsight 3.4 以降の Linux Storm クラスター上の Mono)
 
-[HDInsight 上の Apache Storm で Azure Event Hubs からのイベントを処理する (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[HDInsight 上の Apache Storm で Azure Event Hubs からのイベントを処理する (C#)](./apache-storm-develop-csharp-event-hub-topology.md)
 
 ### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>HDInsight 3.5 以降の Linux Storm クラスター用の最新の Apache Storm イベント ハブ スパウト バイナリ
 
@@ -186,4 +183,4 @@ Nimbus Log4J 構成は、`/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml` か�
 
 - [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
 
-- さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+- さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。

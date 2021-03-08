@@ -1,22 +1,18 @@
 ---
 title: 初めてのデータ ファクトリを作成する (REST)
 description: このチュートリアルでは、Data Factory REST API を使用して、サンプルの Azure Data Factory パイプラインを作成します。
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.openlocfilehash: 32705c37685ab03ffa68f805dedb64411d8d9c46
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9aa3e7f2b5f382e1212955479d8e35f91b458bf0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543131"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392019"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>チュートリアル: Data Factory REST API を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -50,9 +46,9 @@ ms.locfileid: "87543131"
 * コンピューターに [Curl](https://curl.haxx.se/dlwiz/) をインストールします。 データ ファクトリを作成するには、CURL ツールと REST コマンドを使用します。
 * [この記事](../../active-directory/develop/howto-create-service-principal-portal.md) の手順に従って、次の操作を行います。
   1. Azure Active Directory に、 **ADFGetStartedApp** という名前の Web アプリケーションを作成します。
-  2. **クライアント ID** と**秘密キー**を取得します。
-  3. **テナント ID**を取得します。
-  4. **ADFGetStartedApp** アプリケーションを **Data Factory 共同作成者**ロールに割り当てます。
+  2. **クライアント ID** と **秘密キー** を取得します。
+  3. **テナント ID** を取得します。
+  4. **ADFGetStartedApp** アプリケーションを **Data Factory 共同作成者** ロールに割り当てます。
 * [Azure PowerShell](/powershell/azure/)をインストールします。
 * **PowerShell** を起動し、次のコマンドを実行します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
   1. **Connect-AzAccount** を実行し、Azure portal へのサインインに使用するユーザー名とパスワードを入力します。
@@ -130,9 +126,9 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 * Data Factory は、上記の JSON で **Linux ベース** の HDInsight クラスターを自動的に作成します。 詳細については、 [オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) に関するセクションを参照してください。
 * オンデマンド HDInsight クラスターの代わりに、 **独自の HDInsight クラスター** を使用できます。 詳細については、 [HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) に関するセクションを参照してください。
-* HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに**既定のコンテナー**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。
+* HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに **既定のコンテナー** を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。
 
-    処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf**データ ファクトリ名**-**リンクされたサービス名**-日時スタンプ" というパターンに従います。 Azure Blob Storage 内のコンテナーを削除するには、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
+    処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf **データ ファクトリ名**-**リンクされたサービス名**-日時スタンプ" というパターンに従います。 Azure Blob Storage 内のコンテナーを削除するには、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用します。
 
 詳細については、 [オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) に関するセクションを参照してください。
 
@@ -292,16 +288,16 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 
 ## <a name="create-data-factory"></a>データ ファクトリの作成
-この手順では、 **FirstDataFactoryREST**という名前の Azure Dデータ ファクトリを作成します。 データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインには、1 つまたは複数のアクティビティを含めることができます。 たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行してデータを変換する HDInsight Hive アクティビティなどを含めることができます。 以下のコマンドを実行して、データ ファクトリを作成します。
+この手順では、 **FirstDataFactoryREST** という名前の Azure Dデータ ファクトリを作成します。 データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインには、1 つまたは複数のアクティビティを含めることができます。 たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行してデータを変換する HDInsight Hive アクティビティなどを含めることができます。 以下のコマンドを実行して、データ ファクトリを作成します。
 
-1. コマンドを **cmd**という名前の変数に割り当てます。
+1. コマンドを **cmd** という名前の変数に割り当てます。
 
-    ここで指定するデータ ファクトリの名前 (ADFCopyTutorialDF) が、 **datafactory.json**で指定した名前と一致することを確認します。
+    ここで指定するデータ ファクトリの名前 (ADFCopyTutorialDF) が、 **datafactory.json** で指定した名前と一致することを確認します。
 
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@datafactory.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/FirstDataFactoryREST?api-version=2015-10-01};
     ```
-2. **Invoke-Command**を使用して、コマンドを実行します。
+2. **Invoke-Command** を使用して、コマンドを実行します。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
@@ -342,12 +338,12 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 ### <a name="create-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成する
 この手順では、Azure ストレージ アカウントをデータ ファクトリにリンクします。 このチュートリアルでは、同じ Azure ストレージ アカウントを使用して、入力/出力データと HQL スクリプト ファイルを格納します。
 
-1. コマンドを **cmd**という名前の変数に割り当てます。
+1. コマンドを **cmd** という名前の変数に割り当てます。
 
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@azurestoragelinkedservice.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureStorageLinkedService?api-version=2015-10-01};
     ```
-2. **Invoke-Command**を使用して、コマンドを実行します。
+2. **Invoke-Command** を使用して、コマンドを実行します。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
@@ -361,12 +357,12 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 ### <a name="create-azure-hdinsight-linked-service"></a>Azure HDInsight のリンクされたサービスを作成する
 この手順では、オンデマンド HDInsight クラスターをデータ ファクトリにリンクします。 HDInsight クラスターは、実行時に自動的に作成されます。また、処理が終わり、アイドル状態が一定時間続くと削除されます。 オンデマンド HDInsight クラスターの代わりに、独自の HDInsight クラスターを使用できます。 コピー アクティビティでサポートされているすべてのソースとシンクについては、 [Compute Linked Services](data-factory-compute-linked-services.md) に関するセクションを参照してください。
 
-1. コマンドを **cmd**という名前の変数に割り当てます。
+1. コマンドを **cmd** という名前の変数に割り当てます。
 
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@hdinsightondemandlinkedservice.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/hdinsightondemandlinkedservice?api-version=2015-10-01};
     ```
-2. **Invoke-Command**を使用して、コマンドを実行します。
+2. **Invoke-Command** を使用して、コマンドを実行します。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
@@ -383,12 +379,12 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 ### <a name="create-input-dataset"></a>入力データセットの作成
 この手順では、Azure BLOB ストレージに格納される入力データを表す入力データセットを作成します。
 
-1. コマンドを **cmd**という名前の変数に割り当てます。
+1. コマンドを **cmd** という名前の変数に割り当てます。
 
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@inputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobInput?api-version=2015-10-01};
     ```
-2. **Invoke-Command**を使用して、コマンドを実行します。
+2. **Invoke-Command** を使用して、コマンドを実行します。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
@@ -402,12 +398,12 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 ### <a name="create-output-dataset"></a>出力データセットの作成
 この手順では、Azure BLOB ストレージに格納される出力データを表す出力データセットを作成します。
 
-1. コマンドを **cmd**という名前の変数に割り当てます。
+1. コマンドを **cmd** という名前の変数に割り当てます。
 
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@outputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobOutput?api-version=2015-10-01};
     ```
-2. **Invoke-Command**を使用して、コマンドを実行します。
+2. **Invoke-Command** を使用して、コマンドを実行します。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
@@ -423,12 +419,12 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 Azure Blob Storage の **adfgetstarted/inputdata** フォルダーに **input.log** ファイルがあることを確認し、次のコマンドを実行してパイプラインをデプロイします。 **start** と **end** が過去の日時に設定され、**isPaused** が false に設定されているため、パイプライン (パイプラインのアクティビティ) はデプロイするとすぐに実行されます。
 
-1. コマンドを **cmd**という名前の変数に割り当てます。
+1. コマンドを **cmd** という名前の変数に割り当てます。
 
     ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@pipeline.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datapipelines/MyFirstPipeline?api-version=2015-10-01};
     ```
-2. **Invoke-Command**を使用して、コマンドを実行します。
+2. **Invoke-Command** を使用して、コマンドを実行します。
 
     ```powershell
     $results = Invoke-Command -scriptblock $cmd;
@@ -462,7 +458,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 >
 >
 
-**準備完了**状態または**失敗**状態のスライスが見つかるまで、順番に Invoke-Command を実行します。 スライスが準備完了状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  オンデマンド HDInsight クラスターの作成には、通常はしばらく時間がかかります。
+**準備完了** 状態または **失敗** 状態のスライスが見つかるまで、順番に Invoke-Command を実行します。 スライスが準備完了状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  オンデマンド HDInsight クラスターの作成には、通常はしばらく時間がかかります。
 
 ![output data](./media/data-factory-build-your-first-pipeline-using-rest-api/three-ouptut-files.png)
 
@@ -476,12 +472,12 @@ Azure ポータルを使用して、スライスを監視し、問題のトラ�
 ## <a name="summary"></a>まとめ
 このチュートリアルでは、HDInsight Hadoop クラスター上で Hive スクリプトを実行してデータを処理するために、Azure データ ファクトリを作成しました。 以下の手順を実行するために、Azure ポータルで Data Factory エディターを使用しました。
 
-1. Azure **データ ファクトリ**を作成しました。
-2. 次の 2 つの **リンクされたサービス**を作成しました。
+1. Azure **データ ファクトリ** を作成しました。
+2. 次の 2 つの **リンクされたサービス** を作成しました。
    1. **Azure Storage** のリンクされたサービス。
    2. **Azure HDInsight** オンデマンドのリンクされたサービス。 Azure Data Factory は、入力データを処理し、出力データを生成するために、HDInsight Hadoop クラスターをジャストインタイムで作成します。
-3. パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する 2 つの **データセット**を作成しました。
-4. **HDInsight Hive** アクティビティを持つ**パイプライン**を作成しました。
+3. パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する 2 つの **データセット** を作成しました。
+4. **HDInsight Hive** アクティビティを持つ **パイプライン** を作成しました。
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、オンデマンド Azure HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「 [チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。

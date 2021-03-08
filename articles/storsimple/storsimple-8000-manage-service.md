@@ -1,6 +1,6 @@
 ---
 title: Azure で StorSimple デバイス マネージャー サービスをデプロイする | Microsoft Docs
-description: Azure Portal で StorSimple デバイス マネージャー サービスを作成および削除する方法と、サービス登録キーを管理する方法について説明します。
+description: サービスの作成、削除、および移行と、サービス登録キーの管理のために必要な手順について説明します。
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66244bd8e24ff62be41df72f7a39c0ce0ed13135
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847113"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360701"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>StorSimple 8000 シリーズ デバイスの StorSimple デバイス マネージャー サービスをデプロイする
 
@@ -58,7 +58,7 @@ StorSimple デバイス マネージャー サービスを作成するには、�
 それぞれの StorSimple デバイス マネージャー サービスに対して、以下の属性が存在します。
 
 * **[名前]** – StorSimple Manager デバイス マネージャー サービスの作成時に割り当てられた名前。 **サービス名は、サービスの作成後に変更することはできません。これは、Azure Portal で名前を変更できない他のエンティティ (デバイス、ボリューム、ボリューム コンテナー、バックアップ ポリシーなど) も同様です。**
-* **[状態]** – サービスの状態。**アクティブ**、**作成中**、または**オンライン**のいずれか。
+* **[状態]** – サービスの状態。**アクティブ**、**作成中**、または **オンライン** のいずれか。
 * **[場所]** – StorSimple デバイスがデプロイされる地理的な場所。
 * **[サブスクリプション]** – サービスに関連付けられている課金サブスクリプション。
 
@@ -105,7 +105,7 @@ StorSimple デバイス マネージャー サービスを作成するには、�
 ### <a name="to-regenerate-the-service-registration-key"></a>サービス登録キーを再生成するには
 1. **[StorSimple デバイス マネージャー]** ブレードで、 **[管理]&gt;** **[キー]** の順に移動します。
     
-    ![キー ブレード](./media/storsimple-8000-manage-service/regenregkey2.png)
+    ![[キー] ブレードに移動する](./media/storsimple-8000-manage-service/regenregkey2.png)
 
 2. **[キー]** ブレードで、 **[再生成]** をクリックします。
 

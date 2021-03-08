@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 729150188e918d4964f8abe729c66032d8e6c9c0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: fc9b6c4edc5d08c30b1eadb5084155b10d0e55a3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689152"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601517"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Azure Cost Management を使用してクラウドへの投資を最適化する方法
 
@@ -53,7 +53,7 @@ Azure Cost Management には、クラウドへの投資を最大化するため�
 
 #### <a name="visibility"></a>表示
 
-適切に構造化されている場合、Cost Management は、担当者に自分が責任を負うべき Azure のコストや自分の支出について知らせるのに役立ちます。 Azure には、コストのかかる*部分* に関する分析情報を得るために設計されているサービスがあります。 これらのツールを利用します。 これらは、使用されていないリソースを見つけ、無駄をなくし、コスト削減の機会を最大化するのに役立ちます。
+適切に構造化されている場合、Cost Management は、担当者に自分が責任を負うべき Azure のコストや自分の支出について知らせるのに役立ちます。 Azure には、コストのかかる *部分* に関する分析情報を得るために設計されているサービスがあります。 これらのツールを利用します。 これらは、使用されていないリソースを見つけ、無駄をなくし、コスト削減の機会を最大化するのに役立ちます。
 
 #### <a name="accountability"></a>アカウンタビリティ
 
@@ -103,7 +103,7 @@ Cost Management 内でのエクスペリエンスを最大化する最初の手�
 
 #### <a name="enterprise-agreement"></a>[マイクロソフトエンタープライズ契約](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
-- 前払いの年額コミットメントに関するオプション
+- Azure 前払い (旧称: 年額コミットメント) のオプション
 - Azure の割引価格を利用
 
 #### <a name="azure-in-csp"></a>[Azure in CSP](https://azure.microsoft.com/offers/ms-azr-0145p/)
@@ -126,7 +126,7 @@ Azure 料金計算ツールを使用することで、さまざまな Azure サ�
 
 Azure Migrate は、オンプレミス データセンターでの組織の現在のワークロードを評価するサービスです。 Azure の代替ソリューションに求められることについての分析情報が得られます。 最初に、Migrate ではオンプレミス コンピューターを分析して、移行が可能かどうかを判断します。 次に、パフォーマンスを最大化するために Azure での VM のサイズ変更を推奨します。 最後に、Azure ベースのソリューションに関するコスト見積もりも作成します。
 
-詳細については、[Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview) に関するページを参照してください。
+詳細については、[Azure Migrate](../../migrate/migrate-services-overview.md) に関するページを参照してください。
 
 ## <a name="analyze-and-manage-your-costs"></a>コストを分析して管理する
 

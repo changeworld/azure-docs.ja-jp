@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 1b51e2338dabd34ec69d311a9eb1a5c4a644f628
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 56bb179c50862f09f1b789c359db97976017bbb5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322756"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142758"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT デバイスを Azure に接続する: IoT Hub と Event Hubs
 
@@ -26,7 +26,7 @@ Azure では、データとクラウドの機能をつなぐ助けとなるよ�
 
 Azure IoT Hub は、IoT デバイスを接続してデータを収集し、ビジネスの分析情報と自動化を推進するためのクラウド ゲートウェイです。 さらに、IoT Hub には、デバイスとバックエンド システム間のリレーションシップを強化する機能が含まれています。 双方向通信機能は、デバイスからデータを受信している間でも、デバイスにコマンドとポリシーを返送できることを意味します。 たとえば、cloud-to-device メッセージングを使用して、プロパティを更新したりデバイス管理操作を起動したりします。 cloud-to-device 通信では、Azure IoT Edge を使ってクラウド インテリジェンスをエッジ デバイスに送信することも可能です。 IoT Hub によって提供されるデバイス レベルの一意の ID は、潜在的な攻撃からの IoT ソリューションのセキュリティ保護を強化する助けになります。 
 
-[Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) は、Azure のビッグ データ ストリーミング サービスです。 これは、ユーザーが 1 日あたり何十億もの要求を送信する可能性がある高スループットのデータ ストリーミング シナリオに向けて設計されています。 Event Hubs は、パーティション分割されたコンシューマー モデルを使用してストリームをスケールアウトし、ビッグ データと、Databricks、Stream Analytics、ADLS、HDInsight を含む Azure の分析サービスに統合されます。 Event Hubs Capture や自動インフレのような機能を備えたこのサービスは、ビッグ データのアプリとソリューションをサポートするために設計されています。 さらに、IoT Hub ではテレメトリ フロー パスのために Event Hubs を利用するので、IoT ソリューションでも、Event Hubs の強力な処理機能のメリットを享受できます。
+[Azure Event Hubs](../event-hubs/event-hubs-about.md) は、Azure のビッグ データ ストリーミング サービスです。 これは、ユーザーが 1 日あたり何十億もの要求を送信する可能性がある高スループットのデータ ストリーミング シナリオに向けて設計されています。 Event Hubs は、パーティション分割されたコンシューマー モデルを使用してストリームをスケールアウトし、ビッグ データと、Databricks、Stream Analytics、ADLS、HDInsight を含む Azure の分析サービスに統合されます。 Event Hubs Capture や自動インフレのような機能を備えたこのサービスは、ビッグ データのアプリとソリューションをサポートするために設計されています。 さらに、IoT Hub ではテレメトリ フロー パスのために Event Hubs を利用するので、IoT ソリューションでも、Event Hubs の強力な処理機能のメリットを享受できます。
 
 要約すると、どちらのソリューションも大量のデータ インジェストに対応する設計になっています。 IoT Hub のみが、IoT デバイスを Azure クラウドに接続するというビジネス価値を最大化するように設計された、IoT 固有の豊富な機能を備えています。  IoT への取り組みを開始したばかりの場合は、データ インジェストのシナリオをサポートするために IoT Hub から着手することで、ビジネス面や技術面のニーズによって必要になり次第、確実に、多彩な IoT 機能をすばやく利用できるようになります。
 

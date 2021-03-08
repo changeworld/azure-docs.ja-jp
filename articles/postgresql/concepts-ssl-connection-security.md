@@ -1,23 +1,30 @@
 ---
 title: SSL/TLS - Azure Database for PostgreSQL (単一サーバー)
 description: Azure Database for PostgreSQL - 単一サーバーの TLS 接続を構成する方法について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 615e8c80d194bb37feac1c09af22d2aa5d4aa3fc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c98ee8f747975d4237c2906be2060eddbc7b9990
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142709"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000948"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) で TLS 接続を構成する
 
 Azure Database for PostgreSQL では、トランスポート層セキュリティ (TLS) (旧称 Secure Sockets Layer (SSL)) を使用してクライアント アプリケーションを PostgreSQL サービスに接続することが推奨されます。 お使いのデータベース サーバーとクライアント アプリケーション間に TLS 接続を強制すると、サーバーとお使いのアプリケーション間のデータ ストリームを暗号化することにより、中間者 (man in the middle) 攻撃から保護するのに役立ちます。
 
 既定では、PostgreSQL データベース サービスは TLS 接続を要求するように構成されます。 クライアント アプリケーションで TLS 接続がサポートされていない場合は、TLS の要求を無効にすることもできます。
+
+>[!NOTE]
+> お客様からのフィードバックに基づいて、既存の Baltimore Root CA のルート証明書の非推奨を、2021 年 2 月 15 日 (02/15/2021) まで延長しました。
+
+> [!IMPORTANT] 
+> SSL ルート証明書は、2021 年 2 月 15 日 (02/15/2021) から期限切れになるように設定されています。 [新しい証明書](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)が使用されるようにアプリケーションを更新してください。 詳細については、[証明書の計画的な更新](concepts-certificate-rotation.md)に関するページをご覧ください
+
 
 ## <a name="enforcing-tls-connections"></a>TLS 接続の適用
 
@@ -33,7 +40,7 @@ Azure portal や CLI を使用してプロビジョニングされたすべて�
 
 Azure Database for PostgreSQL サーバーにアクセスし、 **[接続のセキュリティ]** をクリックします。 トグル ボタンを使用して、 **[Enforce SSL connection] \(SSL 接続の適用)** 設定を有効または無効にします。 その後、 **[保存]** をクリックします。
 
-![接続のセキュリティ ‐ TLS/SSL 適用の無効化](./media/concepts-ssl-connection-security/1-disable-ssl.png)
+:::image type="content" source="./media/concepts-ssl-connection-security/1-disable-ssl.png" alt-text="接続のセキュリティ ‐ TLS/SSL 適用の無効化":::
 
 この設定は、 **[概要]** ページの **SSL 適用ステータス** インジケーターで確認できます。
 
@@ -92,6 +99,17 @@ Azure Database for PostgreSQL (単一サーバー) には、クライアント�
 > 最小の TLS バージョンを強制すると、後で最小バージョンの強制を無効にすることはできません。
 
 Azure Database for PostgreSQL (単一サーバー) の TLS 設定を行う方法については、[TLS 設定の構成方法](howto-tls-configurations.md)に関するページを参照してください。
+
+## <a name="cipher-support-by-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 単一サーバーでサポートされる暗号
+
+SSL/TLS 通信の一部として、暗号スイートが検証され、サポートされている暗号スイートのみがデータベース サーバーとの通信を許可されます。 暗号スイートの検証は、[ゲートウェイ レイヤー](concepts-connectivity-architecture.md#connectivity-architecture)で制御され、ノード自体では明示的には行われません。 暗号スイートが以下の一覧に示されているスイートのいずれかと一致しない場合、受信クライアント接続は拒否されます。
+
+### <a name="cipher-suite-supported"></a>サポートされている暗号スイート
+
+*   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+*   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="next-steps"></a>次のステップ
 

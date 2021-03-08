@@ -2,14 +2,14 @@
 title: サービスのクォータと制限
 description: 既定の Azure Batch のクォータ、制限、および制約と、クォータの引き上げを要求する方法について説明します
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 01/28/2021
 ms.custom: seodec18
-ms.openlocfilehash: 4c13df8b537d701400a22cd2871e7f8362f02455
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 433272c76b9ff27d9cad542cf65a8ec0d8fc0378
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417278"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052382"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -23,15 +23,21 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 
 ## <a name="resource-quotas"></a>リソース クォータ
 
-クォータは、容量の保証ではなく、クレジット制限です。 大規模な容量が必要な場合は、Azure サポートにお問い合わせください。
+クォータは、容量の保証ではなく、制限です。 大規模な容量が必要な場合は、Azure サポートにお問い合わせください。
 
 また、クォータは保証された値でないことに注意してください。 クォータは、Batch サービスからの変更や、クォータ値を変更するユーザー要求によって異なる場合があります。
 
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
+## <a name="core-quotas"></a>コア クォータ
+
+### <a name="cores-quotas-in-batch-service-mode"></a>Batch サービス モードでのコア クォータ
+
+コア クォータは、Batch でサポートされる各 VM シリーズに存在し、ポータルの **クォータ** ページに表示されます。 次に説明するように、VM シリーズのクォータ制限はサポート要求で更新できます。 専用ノードの場合、Batch では、各 VM シリーズに対してコア クォータ制限が適用されます。また、Batch アカウント全体に対して合計のコア クォータ制限も適用されます。 優先順位の低いノードの場合、Batch では、異なる VM シリーズを区別せずに、Batch アカウントに対して合計のコア クォータのみ適用されます。
+
 ### <a name="cores-quotas-in-user-subscription-mode"></a>ユーザー サブスクリプション モードでのコア クォータ
 
-プール割り当てモードを**ユーザー サブスクリプション**に設定した [Batch アカウント](accounts.md)を作成した場合、クォータの適用が異なります。 このモードでは、プールの作成時に、Batch VM とその他のリソースがサブスクリプションに直接作成されます。 このモードで作成されたアカウントには、Azure Batch のコア クォータは適用されません。 代わりに、リージョンのコンピューティング コアとその他のリソースにはサブスクリプションのクォータが適用されます。
+プール割り当てモードを **ユーザー サブスクリプション** に設定して [Batch アカウント](accounts.md)を作成した場合、Batch VM とその他のリソースは、プールの作成時またはサイズ変更時に直接サブスクリプションに作成されます。 Azure Batch コア クォータは適用されず、リージョンのコンピューティング コア、シリーズごとのコンピューティング コア、およびその他のリソースに対するサブスクリプションのクォータが使用され、適用されます。
 
 これらのクォータの詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
 
@@ -44,7 +50,7 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 | **[ノード間通信に対応するプール](batch-mpi.md)内の計算ノード**  ||
 | バッチ サービス プール割り当てモード | 100 |
 | バッチ サブスクリプション プール割り当てモード | 80 |
-| **マネージド イメージ リソースで作成されたプール[内の計算ノード](batch-custom-images.md)** <sup>1</sup> ||
+| **マネージド イメージ リソースで作成されたプール [内の計算ノード](batch-custom-images.md)** <sup>1</sup> ||
 | 専用ノード | 2000 |
 | 優先順位の低いノード | 1000 |
 
@@ -52,7 +58,7 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 
 ## <a name="other-limits"></a>その他の制限
 
-Batch サービスによって設定される追加の制限。 [リソース クォータ](#resource-quotas)と異なり、これらの値は変更できません。
+これらの追加制限は Batch サービスによって設定されます。 [リソース クォータ](#resource-quotas)と異なり、これらの値は変更できません。
 
 | **リソース** | **上限** |
 | --- | --- |
@@ -62,6 +68,7 @@ Batch サービスによって設定される追加の制限。 [リソース �
 | プールあたりのアプリケーション パッケージ数 | 10 |
 | タスクの最長有効期間 | 180 日<sup>1</sup> |
 | コンピューティング ノードあたりの[マウント](virtual-file-mount.md)数 | 10 |
+| プールあたりの証明書数 | 12 |
 
 <sup>1</sup> タスクの最長有効期間 (ジョブに追加されてから完了するまで) は、180 日間です。 完了したタスクは 7 日間保持されます。最長有効期間内に完了しなかったタスクのデータにはアクセスできません。
 
@@ -73,7 +80,7 @@ Batch アカウントのクォータを [Azure portal](https://portal.azure.com)
 1. Batch アカウントのメニューで **[クォータ]** を選びます。
 1. Batch アカウントに現在適用されているクォータを確認します。
 
-    ![Batch アカウントのクォータ][account_quotas]
+:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Azure portal の Batch アカウント クォータを示すスクリーンショット。":::
 
 ## <a name="increase-a-quota"></a>クォータを増やす
 
@@ -82,26 +89,26 @@ Batch アカウントのクォータを [Azure portal](https://portal.azure.com)
 1. ポータルのダッシュボードで **[ヘルプとサポート]** タイルを選択します。または、ポータルの右上隅にある疑問符 ( **[?]** ) を選択します。
 1. **[新しいサポート要求]**  >  **[基本]** の順にクリックします。
 1. **[基本]** で次のようにします。
-   
+
     1. **[問題の種類]**  >  **[サービスとサブスクリプションの制限 (クォータ)]**
-   
+
     1. サブスクリプションを選択します。
-   
+
     1. **[クォータの種類]**  > **バッチ**
-      
+
        **[次へ]** を選択します。
-    
+
 1. **[Details (詳細)]** には次の項目があります。
-      
+
     1. **[詳細の指定]** で、場所、クォータの種類、Batch アカウントを指定します。
-    
-       ![Batch によるクォータの増加][quota_increase]
+
+       :::image type="content" source="media/batch-quota-limit/quota-increase.png" alt-text="クォータ増加を要求したときのクォータ詳細画面のスクリーンショット。":::
 
        クォータの種類には次のものが含まれます。
 
        * **Batch アカウントあたり**  
          1 つの Batch アカウントに固有の値。専用コアと優先順位の低いコア、およびジョブとプールの数を含みます。
-        
+
        * **リージョンあたり**  
          リージョン内のすべての Batch アカウントに適用される値。各サブスクリプションのリージョンごとの Batch アカウント数を含みます。
 
@@ -112,11 +119,11 @@ Batch アカウントのクォータを [Azure portal](https://portal.azure.com)
        **[次へ]** を選択します。
 
 1. **[連絡先情報]** で次のようにします。
-   
-    1. **希望連絡方法**を選択します。
-   
+
+    1. **希望連絡方法** を選択します。
+
     1. 必要な連絡先情報を確認および入力します。
-   
+
        **[作成]** を選択してサポート リクエストを送信します。
 
 サポート要求を送信した後は、Azure サポートからの連絡を待ちます。 クォータ要求の処理が完了するには、数分または最大で 2 営業日かかる場合があります。
@@ -125,7 +132,7 @@ Batch アカウントのクォータを [Azure portal](https://portal.azure.com)
 
 Azure 仮想ネットワークにデプロイされている仮想マシンの構成の Batch プールによって、追加の Azure ネットワーク リソースが自動的に割り当てられます。 仮想ネットワークでは、50 プール ノードごとに次のリソースが必要になります。
 
-- 1 つの[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md#network-security-groups)
+- 1 つの[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#network-security-groups)
 - 1 つの[パブリック IP アドレス](../virtual-network/public-ip-addresses.md)
 - 1 つの[ロード バランサー](../load-balancer/load-balancer-overview.md)
 

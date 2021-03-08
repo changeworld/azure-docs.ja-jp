@@ -9,19 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 2ce38add-1078-4bb9-a1da-6f407a9bc910
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 14ffcbf2e111e052f4b45259b0b25664049d3b3d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f539a63907bb7cbe9d04dc3249427357d79d7c87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855363"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673596"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します
 
@@ -259,9 +259,9 @@ Azure インフラストラクチャを準備するには、以下を完了し�
 * Windows Server 2016 を使用するときは [Azure クラウド監視][deploy-cloud-witness]を構成することをお勧めします。
 
 
-## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>スケールアウト ファイル サーバー クラスターを手動でデプロイする 
+## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>スケールアウト ファイル サーバー クラスターを手動でデプロイする 
 
-ブログ「[Storage Spaces Direct in Azure][ms-blog-s2d-in-azure]」 (Azure における記憶域スペース ダイレクト) に説明されているように、次のコードを実行することによって、Microsoft スケールアウト ファイル サーバー クラスターを手動でデプロイできます。  
+ブログ「[Storage Spaces Direct in Azure][ms-blog-s2d-in-azure]」 (Azure における記憶域スペース ダイレクト) に説明されているように、次のコードを実行することによって、Microsoft スケールアウト ファイル サーバー クラスターを手動でデプロイできます。  
 
 
 ```powershell

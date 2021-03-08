@@ -1,20 +1,20 @@
 ---
 title: 依存リソースを含むテンプレート
-description: 複数のリソースを含む Azure Resource Manager テンプレートを作成し、Azure Portal を使用してデプロイする方法を説明します。
+description: 複数のリソースを含む Azure Resource Manager テンプレート (ARM テンプレート) を作成し、Azure portal を使用してデプロイする方法を説明します。
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3ed653c511dbd775d124e1abd6f4bb02923edb25
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: a77f64e51a26e1f916f9f96704c55412a870a509
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102074"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673938"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>チュートリアル:依存リソースを含む ARM テンプレートを作成する
 
-Azure Resource Manager (ARM) テンプレートを作成して、複数のリソースをデプロイしたりデプロイ順序を構成したりする方法を説明します。 テンプレートを作成したら、Azure portal から Cloud Shell を使用してテンプレートをデプロイします。
+Azure Resource Manager テンプレート (ARM テンプレート) を作成して、複数のリソースをデプロイしたりデプロイ順序を構成したりする方法を説明します。 テンプレートを作成したら、Azure portal から Cloud Shell を使用してテンプレートをデプロイします。
 
 このチュートリアルでは、ストレージ アカウント、仮想マシン、仮想ネットワーク、およびその他の依存リソースを作成します。 別のリソースが存在するまではデプロイできないリソースもあります。 たとえば、仮想マシンを作成するには、そのストレージ アカウントとネットワーク インターフェイスが存在している必要があります。 このリレーションシップは、一方のリソースと他方のリソースに依存関係を持たせることにより定義します。 Resource Manager により、リソース間の依存関係が評価され、リソースは依存する順にデプロイされます。 相互依存していないリソースは、平行してデプロイされます。 詳細については、「[Azure Resource Manager テンプレートでのリソース デプロイ順序の定義](./define-resource-dependency.md)」を参照してください。
 
@@ -29,11 +29,13 @@ Azure Resource Manager (ARM) テンプレートを作成して、複数のリソ
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
+リソースの依存関係について取り上げた Microsoft Learn モジュールについては、「[高度な ARM テンプレート機能を使用して複雑なクラウド デプロイを管理する](/learn/modules/manage-deployments-advanced-arm-template-features/)」を参照してください。
+
 ## <a name="prerequisites"></a>前提条件
 
 この記事を完了するには、以下が必要です。
 
-* Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使用して ARM テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 * セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
 
     ```console
@@ -46,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure クイックスタート テンプレートは、ARM テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」(単純な Windows VM をデプロイする) と呼ばれます。
 
-1. Visual Studio Code から、 **[ファイル]** > **[ファイルを開く]** を選択します。
+1. Visual Studio Code から、 **[ファイル]**  >  **[ファイルを開く]** を選択します。
 2. **[ファイル名]** に以下の URL を貼り付けます。
 
     ```url
@@ -54,20 +56,20 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
     ```
 
 3. **[開く]** を選択して、ファイルを開きます。
-4. **[ファイル]** > **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
+4. **[ファイル]**  >  **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを _azuredeploy.json_ という名前でローカル コンピューターに保存します。
 
 ## <a name="explore-the-template"></a>テンプレートを調べる
 
 このセクションでテンプレートを調べるときは、次の質問に回答するようにしてください。
 
 * このテンプレートに定義されている Azure リソースの数はいくつか。
-* リソースの 1 つは、Azure Storage アカウントです。  定義は前回のチュートリアルで使用されたものと同じか。
+* リソースの 1 つは、Azure Storage アカウントです。 定義は前回のチュートリアルで使用されたものと同じか。
 * このテンプレートに定義されているリソースのテンプレート 参照を見つけることができるか。
 * リソースの依存関係を見つけることができるか。
 
-1. Visual Studio Code で、**resources** 内の最初のレベルの要素と 2 番目のレベルの要素のみが表示されるまで要素を折り畳みます。
+1. Visual Studio Code で、`resources` 内の最初のレベルの要素と 2 番目のレベルの要素のみが表示されるまで要素を折り畳みます。
 
-    ![Visual Studio Code Azure Resource Manager テンプレート](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
+    ![Visual Studio Code ARM テンプレート](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
     テンプレートによって定義されたリソースは、6 つあります。
 
@@ -82,21 +84,21 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
 1. 最初のリソースを展開します。 それはストレージ アカウントです。 リソース定義と[テンプレート リファレンス](/azure/templates/Microsoft.Storage/storageAccounts)を比較します。
 
-    ![Visual Studio Code の Azure Resource Manager テンプレートのストレージ アカウント定義](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
+    ![Visual Studio Code ARM テンプレートのストレージ アカウント定義](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
 1. 2 番目のリソースを展開します。 リソースの種類は `Microsoft.Network/publicIPAddresses` です。 リソース定義と[テンプレート リファレンス](/azure/templates/microsoft.network/publicipaddresses)を比較します。
 
-    ![Visual Studio Code の Azure Resource Manager テンプレートのパブリック IP アドレス定義](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
+    ![Visual Studio Code ARM テンプレートのパブリック IP アドレス定義](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
 
 1. 3 番目のリソースを展開します。 リソースの種類は `Microsoft.Network/networkSecurityGroups` です。 リソース定義と[テンプレート リファレンス](/azure/templates/microsoft.network/networksecuritygroups)を比較します。
 
-    ![Visual Studio Code の Azure Resource Manager テンプレートのネットワーク セキュリティ グループ定義](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
+    ![Visual Studio Code ARM テンプレートのネットワーク セキュリティ グループ定義](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
 
 1. 4 番目のリソースを展開します。 リソースの種類は `Microsoft.Network/virtualNetworks` です。
 
-    ![Visual Studio Code Azure Resource Manager テンプレートの仮想ネットワークの dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
+    ![Visual Studio Code ARM テンプレートの仮想ネットワークの dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
 
-    dependsOn 要素を使用すると、1 つのリソースが 1 つ以上のリソースに依存していることを定義できます。 このリソースは、もう 1 つのリソースに依存しています。
+    `dependsOn` 要素を使用すると、1 つのリソースが 1 つ以上のリソースに依存していることを定義できます。 このリソースは、もう 1 つのリソースに依存しています。
 
     * `Microsoft.Network/networkSecurityGroups`
 
@@ -112,7 +114,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
 次の図は、このテンプレートのリソースと依存関係の情報を示しています。
 
-![Visual Studio Code Azure Resource Manager テンプレートの依存関係図](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependency-diagram.png)
+![Visual Studio Code ARM テンプレートの依存関係図](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependency-diagram.png)
 
 依存関係を指定することにより、Resource Manager は、ソリューションを効率的にデプロイします。 ストレージ アカウント、パブリック IP アドレス、および仮想ネットワークは、依存関係がないため、同時にデプロイされます。 パブリック IP アドレスと仮想ネットワークがデプロイされると、ネットワーク インターフェイスが作成されます。 その他のすべてのリソースがデプロイされると、Resource Manager は、仮想マシンをデプロイします。
 
@@ -124,7 +126,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
     ![Azure portal の Cloud Shell のファイルのアップロード](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。 先のスクリーンショットをご覧ください。 前に保存したファイルを選択します。 ファイルをアップロードした後、**ls** コマンドと **cat** コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
+1. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。 先のスクリーンショットをご覧ください。 前に保存したファイルを選択します。 ファイルをアップロードした後、`ls` コマンドと `cat` コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
 
 1. 次の PowerShell スクリプトを実行してテンプレートをデプロイします。
 

@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.subservice: hadr
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 7e62e414182d95a445f37c1c97cdef8aff6a587a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 10f01fd5943928eda1f1e4518f30c8e3ccf56b46
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965370"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737797"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>FCI 用に仮想マシンを準備する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -43,26 +44,31 @@ ms.locfileid: "85965370"
 
 ## <a name="configure-vm-availability"></a>VM の可用性を構成する 
 
-フェールオーバー クラスター機能を使用するには、仮想マシンを[可用性セット](../../../virtual-machines/linux/tutorial-availability-sets.md)または[可用性ゾーン](../../../availability-zones/az-overview.md#availability-zones)に配置する必要があります。 可用性セットを選択する場合は、[近接配置グループ](../../../virtual-machines/windows/co-location.md#proximity-placement-groups)を使用して、VM を近くに配置することができます。 実際、近接配置グループは、Azure 共有ディスクを使用するための前提条件です。 
+フェールオーバー クラスター機能を使用するには、仮想マシンを[可用性セット](../../../virtual-machines/linux/tutorial-availability-sets.md)または[可用性ゾーン](../../../availability-zones/az-overview.md#availability-zones)に配置する必要があります。 可用性セットを選択する場合は、[近接配置グループ](../../../virtual-machines/co-location.md#proximity-placement-groups)を使用して、VM を近くに配置することができます。 実際、近接配置グループは、Azure 共有ディスクを使用するための前提条件です。 
 
 目的のクラスター構成に適した VM 可用性オプションを慎重に選択します。 
 
- - **Azure 共有ディスク**: 障害ドメインが構成され、更新ドメインが 1 に設定され、[近接配置グループ](../../../virtual-machines/windows/proximity-placement-groups-portal.md)の内部に配置された[可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)。
- - **Premium ファイル共有**: [可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)または[可用性ゾーン](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)。 VM の可用性構成として可用性ゾーンを選択した場合は、Premium ファイル共有が唯一の共有ストレージ オプションです。 
- - **記憶域スペース ダイレクト**: [可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)。
+- **Azure 共有ディスク**: Premium SSD または UltraDisk を使用している場合、使用可能なオプションは異なります。
+   - Premium SSD:[近接配置グループ](../../../virtual-machines/windows/proximity-placement-groups-portal.md)内に配置された Premium SSD のさまざまな異なる障害/更新ドメインにある[可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)。
+   - Ultra Disk:[可用性ゾーン](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)ですが、VM を同じ可用性ゾーンに配置する必要があり、これによりクラスターの可用性が 99.9% に低下します。 
+- **Premium ファイル共有**: [可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)または [可用性ゾーン](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)。
+- **記憶域スペース ダイレクト**: [可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)。
 
->[!IMPORTANT]
->仮想マシンを作成した後に可用性セットを設定または変更することはできません。
+> [!IMPORTANT]
+> 仮想マシンを作成した後に可用性セットを設定または変更することはできません。
 
 ## <a name="create-the-virtual-machines"></a>仮想マシンの作成
 
 VM の可用性の構成が済むと、仮想マシンを作成する準備が整います。 SQL Server が既にインストールされている、またはインストールされていない、Azure Marketplace のイメージを使用できます。 ただし、Azure VM に SQL Server が付属するイメージを選択する場合は、フェールオーバー クラスター インスタンスを構成する前に、仮想マシンから SQL Server をアンインストールする必要があります。 
 
+### <a name="considerations"></a>考慮事項
+
+Azure VM ゲスト フェールオーバー クラスターでは、サーバー (クラスター ノード) ごとに 1 つの NIC、および 1 つのサブネットを推奨しています。 Azure ネットワークは物理的な冗長性を備えているので、Azure IaaS VM ゲスト クラスターで NIC とサブネットを追加する必要はありません。 クラスター検証レポートでは、1 つのネットワークでしかノードに到達できないという警告が出ますが、Azure IaaS VM ゲスト フェールオーバー クラスターではこの警告を無視しても安全です。
 
 両方の仮想マシンを配置します。
 
 - 可用性セットを使用している場合は、可用性セットと同じ Azure リソース グループ内。
-- ドメイン コントローラーと同じ仮想ネットワーク上。
+- ドメイン コントローラーと同じ仮想ネットワーク上、またはドメイン コントローラーへの適切な接続がある仮想ネットワーク上。
 - 両方の仮想マシン、およびこのクラスター上で最終的に使用するすべての FCI 用に十分な IP アドレス空間を持つサブネット内。
 - Azure 可用性セット内または可用性ゾーン内。
 
@@ -71,15 +77,15 @@ SQL Server がプレインストールされて[いる](sql-vm-create-portal-qui
 
 ## <a name="uninstall-sql-server"></a>SQL Server のアンインストール
 
-FCI 作成プロセスの一環として、SQL Server をクラスター化されたインスタンスとしてフェールオーバー クラスターにインストールします。 "*SQL Server のない Azure Marketplace イメージを使用して仮想マシンをデプロイした場合は、このステップを省略できます。* " SQL Server がプレインストールされたイメージをデプロイした場合は、SQL VM リソース プロバイダーから SQL Server VM の登録を解除し、SQL Server をアンインストールする必要があります。 
+FCI 作成プロセスの一環として、SQL Server をクラスター化されたインスタンスとしてフェールオーバー クラスターにインストールします。 "*SQL Server のない Azure Marketplace イメージを使用して仮想マシンをデプロイした場合は、このステップを省略できます。* " SQL Server がプレインストールされたイメージをデプロイした場合は、SQL IaaS Agent 拡張機能から SQL Server VM の登録を解除し、SQL Server をアンインストールする必要があります。 
 
-### <a name="unregister-from-the-sql-vm-resource-provider"></a>SQL VM リソース プロバイダーから登録解除する
+### <a name="unregister-from-the-sql-iaas-agent-extension"></a>SQL IaaS Agent 拡張機能からの登録解除
 
-Azure Marketplace の SQL Server VM イメージは、SQL VM リソース プロバイダーに自動的に登録されます。 プレインストールされた SQL Server インスタンスをアンインストールする前に、まず [SQL VM リソース プロバイダーから各 SQL Server VM の登録を解除する](sql-vm-resource-provider-register.md#unregister-from-rp)必要があります。 
+Azure Marketplace の SQL Server VM イメージは、SQL IaaS Agent 拡張機能に自動的に登録されます。 プレインストールされている SQL Server インスタンスをアンインストールする前に、まず [SQL IaaS Agent 拡張機能から各 SQL Server VM を登録解除する](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension)必要があります。 
 
 ### <a name="uninstall-sql-server"></a>SQL Server のアンインストール
 
-リソース プロバイダーから登録を解除した後、SQL Server をアンインストールできます。 各仮想マシンで、次の手順のようにします。 
+拡張機能から登録を解除した後、SQL Server をアンインストールできます。 各仮想マシンで、次の手順のようにします。 
 
 1. RDP を使用して仮想マシンに接続します。
 
@@ -101,14 +107,14 @@ Azure Marketplace の SQL Server VM イメージは、SQL VM リソース プロ
 
 各仮想マシンで、SQL Server で使用されている Windows ファイアウォール TCP ポートを開きます。 既定では、このポートは 1433 です。 ただし、Azure VM のデプロイで SQL Server のポートを変更できるので、お使いの環境で使用している SQL Server ポートを開きます。 このポートは、Azure Marketplace からデプロイされた SQL Server イメージでは自動的に開かれます。 
 
-[ロード バランサー](hadr-vnn-azure-load-balancer-configure.md)を使用する場合は、正常性プローブで使用されるポートも開く必要があります。 既定では、このポートは 59999 です。 ただし、ロード バランサーの作成時に指定する任意の TCP ポートを使用できます。 
+[ロード バランサー](failover-cluster-instance-vnn-azure-load-balancer-configure.md)を使用する場合は、正常性プローブで使用されるポートも開く必要があります。 既定では、このポートは 59999 です。 ただし、ロード バランサーの作成時に指定する任意の TCP ポートを使用できます。 
 
 次の表では、FCI の構成に応じて、開くことが必要になる場合があるポートについて詳しく説明します。 
 
    | 目的 | Port | Notes
    | ------ | ------ | ------
    | SQL Server | TCP 1433 | SQL Server の既定のインスタンスの通常のポートです。 ギャラリーからイメージを使用した場合、このポートが自動的に開きます。 </br> </br> **使用元**: すべての FCI 構成。 |
-   | 正常性プローブ | TCP 59999 | 開いている任意の TCP ポートです。 このポートを使用するように、ロード バランサーの[正常性プローブ](hadr-vnn-azure-load-balancer-configure.md#configure-health-probe)とクラスターを構成します。 </br> </br> **使用元**: FCI とロード バランサー。 |
+   | 正常性プローブ | TCP 59999 | 開いている任意の TCP ポートです。 このポートを使用するように、ロード バランサーの[正常性プローブ](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe)とクラスターを構成します。 </br> </br> **使用元**: FCI とロード バランサー。 |
    | ファイル共有 | UDP 445 | ファイル共有サービスによって使用されるポート。 </br> </br> **使用元**: FCI と Premium ファイル共有。 |
 
 ## <a name="join-the-domain"></a>ドメインに参加する

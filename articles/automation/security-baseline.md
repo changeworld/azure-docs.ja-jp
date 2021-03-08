@@ -4,15 +4,15 @@ description: Automation 用の Azure セキュリティ ベースライン
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 01/07/2021
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: e78f4133e7f722870f6c84de2ab7e784cd151d79
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 4be9b802f5284663c2834f9d9c59fb709269bd53
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562686"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572593"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Automation 用の Azure セキュリティ ベースライン
 
@@ -76,15 +76,15 @@ NSG ルールとユーザー定義ルートはプライベート エンドポイ
 
 **ガイダンス**:Azure Automation には現在、プライベート ネットワークの仮想ネットワーク統合として Hybrid Runbook Worker のサポートを超えるものはありません。 Hybrid Runbook Worker なしですぐに使用できるサービスを使用している場合、この制御は適用されません。
 
-Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合は、Hybrid Runbook Worker をホストしている仮想ネットワークで分散型サービス拒否 (DDoS) Standard 保護を有効にして、DDoS 攻撃から保護します。 Azure Security Center の統合された脅威インテリジェンスを使用することにより、既知の悪意のある IP アドレスとの通信を拒否できます。 各 Virtual Network セグメントの Azure Firewall を構成して、脅威インテリジェンスを有効にし、悪意のあるネットワーク トラフィックに対して**警告して拒否**するように構成します。
+Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合は、Hybrid Runbook Worker をホストしている仮想ネットワークで分散型サービス拒否 (DDoS) Standard 保護を有効にして、DDoS 攻撃から保護します。 Azure Security Center の統合された脅威インテリジェンスを使用することにより、既知の悪意のある IP アドレスとの通信を拒否できます。 各 Virtual Network セグメントの Azure Firewall を構成して、脅威インテリジェンスを有効にし、悪意のあるネットワーク トラフィックに対して **警告して拒否** するように構成します。
 
 Azure Security Center の Just In Time ネットワーク アクセスを使用すると、限られた期間について、承認された IP アドレスへの Windows 仮想マシンの公開を制限できます。 また、実際のトラフィックと脅威インテリジェンスに基づいてポートとソース IP を制限するために、NSG 構成に Azure Security Center のアダプティブ ネットワーク強化の推奨事項を使用します。
 
-* [DDoS 保護を構成する方法](../virtual-network/manage-ddos-protection.md)
+* [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
 * [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/threat-protection.md)
+* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/azure-defender.md)
 
 * [Azure Security Center のアダプティブ ネットワークのセキュリティ強化について](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -146,11 +146,11 @@ Azure 仮想マシン上でホストされる Hybrid Runbook Worker を使用し
 
 **ガイダンス**: Azure Policy を使用して、Azure Automation によって使用されるネットワーク リソースの標準的なセキュリティ構成を定義し、実装します。
 
-Azure Blueprints を使用して、Azure Resource Manager テンプレート、RBAC コントロール、ポリシーなどの主要な環境アーティファクトを単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションに適用し、バージョン管理によって制御と管理を微調整できます。
+Azure Blueprints を使用して、Azure Resource Manager テンプレート、Azure RBAC コントロール、ポリシーなどの主要な環境アーティファクトを単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションに適用し、バージョン管理によって制御と管理を微調整できます。
 
 * [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [ネットワークに関する Azure Policy のサンプル](/azure/governance/policy/samples/#network)
+* [ネットワークに関する Azure Policy のサンプル](../governance/policy/samples/built-in-policies.md#network)
 
 * [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
@@ -180,9 +180,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Azure アクティビティ ログを使用して、リソース構成を監視し、ネットワーク リソースに対する変更を検出します。 重要なリソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -210,7 +210,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 * [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
 * [Azure Monitor とサードパーティの SIEM 統合を開始する方法](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -220,7 +220,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 * [リンクされた Log Analytics ワークスペースでサポートされるリージョン](./how-to/region-mappings.md)
 
-* [Update Management ログにクエリを実行する](./update-management/update-mgmt-query-logs.md)
+* [Update Management ログにクエリを実行する](./update-management/query-logs.md)
 
 **Azure Security Center の監視**: はい
 
@@ -230,9 +230,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**:監査およびアクティビティのログ (イベント ソース、日付、ユーザー、タイムスタンプ、送信元アドレス、送信先アドレス、その他の役立つ要素を含みます) にアクセスするために、Azure Monitor を有効にします。
 
-* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Azure アクティビティ ログ イベントを表示および取得する](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure アクティビティ ログ イベントを表示および取得する](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Azure Security Center の監視**: はい
 
@@ -254,7 +254,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 **ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
-* [Log Analytics でデータ保持期間を変更する](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 * [Automation アカウントのデータ保持の詳細](./automation-managing-data.md#data-retention)
 
@@ -270,9 +270,9 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 * [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-* [Azure Monitor のログ クエリについて](../azure-monitor/log-query/get-started-portal.md)
+* [Azure Monitor のログ クエリについて](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
+* [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -288,7 +288,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 * [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Azure Monitor ログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md)
+* [Azure Monitor ログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -336,11 +336,11 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 **ガイダンス**: 明示的な割り当てとクエリの実行が可能である Azure Active Directory 組み込みの管理者ロールを使用します。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。 Automation アカウントの実行アカウントを Runbook に使用する場合は常に、これらのサービス プリンシパルもインベントリ内で追跡されるようにします。多くの場合、それらは管理者特権のアクセス許可を持つためです。 未使用の実行アカウントを削除して、攻撃にさらされる領域を最小限にします。
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-* [実行アカウントまたはクラシック実行アカウントの削除](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [実行アカウントまたはクラシック実行アカウントの削除](./delete-run-as-account.md)
 
 * [Azure Automation の実行アカウントを管理する](./manage-runas-account.md)
 
@@ -364,7 +364,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 * [Privileged Identity Management について](../active-directory/privileged-identity-management/index.yml)
 
-* [実行アカウントまたはクラシック実行アカウントの削除](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [実行アカウントまたはクラシック実行アカウントの削除](./delete-run-as-account.md)
 
 * [Azure Automation の実行アカウントを管理する](./manage-runas-account.md)
 
@@ -402,7 +402,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 **ガイダンス**: 多要素認証が構成されている PAW を使用して、運用環境で Azure Automation アカウント リソースにログインして構成します。
 
-* [特権アクセス ワークステーションについて](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -418,7 +418,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 * [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [カスタムのアラートおよび通知用にアクション グループを構成する方法](../azure-monitor/platform/action-groups.md)
+* [カスタムのアラートおよび通知用にアクション グループを構成する方法](../azure-monitor/alerts/action-groups.md)
 
 **Azure Security Center の監視**: はい
 
@@ -454,7 +454,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 * [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
-* [実行アカウントまたはクラシック実行アカウントの削除](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [実行アカウントまたはクラシック実行アカウントの削除](./delete-run-as-account.md)
 
 * [Azure Automation の実行アカウントを管理する](./manage-runas-account.md)
 
@@ -520,7 +520,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 * [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](../governance/management-groups/create.md)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 * [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
@@ -556,7 +556,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 * [Azure での転送中の暗号化の概要](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Azure Automation の TLS 1.2 の適用](https://azure.microsoft.com/updates/azure-automation-tls12-enforcement/)
+* [Azure Automation の TLS 1.2 の適用](../active-directory/hybrid/reference-connect-tls-enforcement.md)
 
 **Azure Security Center の監視**: はい
 
@@ -570,11 +570,11 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **責任**: Customer
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure AD RBAC を使用して、組み込みのロール定義を利用して Azure Automation リソースへのアクセスを制御し、最小特権または ' 必要最低限' のアクセス モデルに従って Automation リソースにアクセスするユーザーにアクセス権を割り当てます。 Hybrid Runbook Worker を使用する場合は、これらの仮想マシンのマネージド ID を利用して、サービス プリンシパルの使用を回避します。マルチテナントまたは Hybrid Runbook Worker の両方を使用する場合は、runbook worker の ID に対して、適切なスコープが設定された RBAC アクセス許可を確実に適用してください。
+**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、組み込みのロール定義を利用して Azure Automation リソースへのアクセスを制御し、最小特権または ' 必要最低限' のアクセス モデルに従って Automation リソースにアクセスするユーザーにアクセス権を割り当てます。 Hybrid Runbook Worker を使用する場合は、これらの仮想マシンのマネージド ID を利用して、サービス プリンシパルの使用を回避します。マルチテナントまたは Hybrid Runbook Worker の両方を使用する場合は、runbook worker の ID に対して、適切なスコープが設定された Azure RBAC アクセス許可を確実に適用してください。
 
-* [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
+* [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
 * [Hybrid Runbook Worker に対する Runbook のアクセス許可](./automation-hybrid-runbook-worker.md#runbook-permissions-for-a-hybrid-runbook-worker)
 
@@ -600,7 +600,7 @@ Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合
 
 Hybrid Runbook Worker を使用する場合、仮想マシン上の仮想ディスクは、サーバー側の暗号化または Azure Disk Encryption (ADE) を使用して、保存時に暗号化されます。 Azure Disk Encryption では、Windows の BitLocker 機能を利用して、ゲスト VM 内のカスタマー マネージド キーを使用してマネージド ディスクを暗号化します。 カスタマー マネージド キーを使用したサーバー側の暗号化では、ストレージ サービス内のデータを暗号化することで、VM に対して任意の OS の種類とイメージを使用できるため、ADE がさらに向上します。
 
-* [Azure Managed Disks のサーバー側暗号化](../virtual-machines/windows/disk-encryption.md)
+* [Azure Managed Disks のサーバー側暗号化](../virtual-machines/disk-encryption.md)
 
 * [Windows VM 用の Azure Disk Encryption](../virtual-machines/windows/disk-encryption-overview.md)
 
@@ -618,7 +618,7 @@ Hybrid Runbook Worker を使用する場合、仮想マシン上の仮想ディ�
 
 * [ネットワーク セキュリティ グループの診断ログ](../private-link/private-link-overview.md#logging-and-monitoring)
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -646,9 +646,9 @@ Hybrid Runbook Worker を使用する場合、仮想マシン上の仮想ディ�
 
 Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合は、Azure Update Management を使用して、仮想マシンの更新プログラムおよび修正プログラムを管理します。 Update Management は、サポート対象の Windows システムへの修正プログラムの適用を、ローカルに構成された更新リポジトリに依存しています。 System Center Updates Publisher (Updates Publisher) などのツールを使用して、カスタム更新プログラムを Windows Server Update Services (WSUS) に公開できます。 このシナリオでは、サード パーティ製ソフトウェアで Configuration Manager を更新リポジトリとして使用するマシンに、Update Management で修正プログラムを適用できます。
 
-* [Azure における Update Management](./update-management/update-mgmt-overview.md)
+* [Azure における Update Management](./update-management/overview.md)
 
-* [VM の更新プログラムと修正プログラムの管理](./update-management/update-mgmt-manage-updates-for-vm.md)
+* [VM の更新プログラムと修正プログラムの管理](./update-management/manage-updates-for-vm.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -660,9 +660,9 @@ Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合
 
 Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合は、Azure Update Management を使用して、仮想マシンの更新プログラムおよび修正プログラムを管理できます。 Update Management は、サポート対象の Windows システムへの修正プログラムの適用を、ローカルに構成された更新リポジトリに依存しています。 System Center Updates Publisher (Updates Publisher) などのツールを使用して、カスタム更新プログラムを Windows Server Update Services (WSUS) に公開できます。 このシナリオでは、サード パーティ ソフトウェアで Configuration Manager を更新リポジトリとして使用するマシンに、Update Management で修正プログラムを適用できます。
 
-* [Azure の Update Management ソリューション](./update-management/update-mgmt-overview.md)
+* [Azure の Update Management ソリューション](./update-management/overview.md)
 
-* [Azure VM の更新プログラムとパッチの管理](./update-management/update-mgmt-manage-updates-for-vm.md)
+* [Azure VM の更新プログラムとパッチの管理](./update-management/manage-updates-for-vm.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -696,7 +696,7 @@ Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合
 
 * [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription)
 
 * [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -720,11 +720,11 @@ Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合
 
 * [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](../governance/management-groups/create.md)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 * [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [実行アカウントまたはクラシック実行アカウントの削除](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [実行アカウントまたはクラシック実行アカウントの削除](./delete-run-as-account.md)
 
 * [Azure Automation の実行アカウントを管理する](./manage-runas-account.md)
 
@@ -752,7 +752,7 @@ Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合
 
 * [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-samples.md)
+* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-reference.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -836,7 +836,7 @@ Azure Virtual Machines による Hybrid Runbook Worker を使用している場�
 
 **ガイダンス**: Hybrid Runbook Worker 機能を使用する場合は、スクリプトの種類に基づき、オペレーティング システム固有の構成またはサードパーティのリソースを使用して、ユーザーの Azure コンピューティング リソース内でスクリプトを実行する機能を制限できます。 また、Azure Security Center の適応型アプリケーション制御を利用して、Azure Virtual Machines 上で承認されたソフトウェアのみを実行し、すべての承認されていないソフトウェアが実行されないようにすることもできます。
 
-* [Windows 環境で PowerShell スクリプトの実行を制御する方法](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [Windows 環境で PowerShell スクリプトの実行を制御する方法](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 * [Azure Security Center の適応型アプリケーション制御を使用する方法](../security-center/security-center-adaptive-application.md)
 
@@ -854,7 +854,7 @@ Azure Virtual Machines による Hybrid Runbook Worker を使用している場�
 
 * [Azure Web アプリケーション ファイアウォールの概要 ](../web-application-firewall/overview.md)
 
-* [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)
+* [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)
 
 * [Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)
 
@@ -878,11 +878,11 @@ Azure Virtual Machines による Hybrid Runbook Worker を使用している場�
 
 また、ご利用の Azure リソース用の安全な構成基準として Azure Security Center からの推奨事項を使用することもできます。
 
-* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias)
 
 * [チュートリアル:コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-samples.md)
+* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-reference.md)
 
 * [Azure portal のテンプレートへの単一および複数リソースのエクスポート](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -920,7 +920,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center の
 
 * [Azure Resource Manager テンプレートを使用して Automation アカウントをデプロイする](./quickstart-create-automation-account-template.md#deploy-the-template)
 
-* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-samples.md)
+* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-reference.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -938,11 +938,11 @@ Hybrid Runbook Worker 機能を使用する場合は、デプロイ用に Azure 
 
 ほとんどのシナリオで、Microsoft ベース VM テンプレートと Azure Automation State Configuration を組み合わせると、セキュリティ要件を満たして維持することができます。
 
-* [VM テンプレートをダウンロードする方法に関する情報](../virtual-machines/windows/download-template.md)
+* [VM テンプレートをダウンロードする方法に関する情報](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [Resource Manager テンプレートの作成に関する情報](../virtual-machines/windows/ps-template.md)
 
-* [カスタム VM VHD を Azure にアップロードする方法](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [カスタム VM VHD を Azure にアップロードする方法](/azure-stack/operator/azure-stack-add-vm-image)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -952,7 +952,7 @@ Hybrid Runbook Worker 機能を使用する場合は、デプロイ用に Azure 
 
 **ガイダンス**: カスタム Azure ポリシー、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなどのコードを安全に格納して管理するには、Azure DevOps を使用します。 Azure DevOps で管理するリソースにアクセスするために、アクセス許可の付与または拒否を、特定のユーザー、組み込みのセキュリティ グループ、または Azure Active Directory (Azure DevOps に統合されている場合) あるいは Active Directory (TFS に統合されている場合) で定義されたグループに対して行えます。 ソース管理の統合機能を使用して、ソース管理リポジトリ内のスクリプトで Automation アカウントの Runbook を最新の状態に維持します。
 
-* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
 
 * [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 
@@ -968,9 +968,9 @@ Hybrid Runbook Worker 機能を使用する場合は、デプロイ用に Azure 
 
 Hybrid Runbook Worker 機能を使用する場合は、ストレージ アカウントにあるカスタム OS イメージへのアクセスが、承認されたユーザーのみがアクセスできるように適切に制限されていることを確認してください。
 
-* [Azure での RBAC の概要](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Azure RBAC について](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Azure で RBAC を構成する方法](../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [Azure RBAC を構成する方法](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -984,7 +984,7 @@ Hybrid Runbook Worker 機能を使用する場合は、ストレージ アカウ
 
 * [エイリアスを使用する方法](../governance/policy/concepts/definition-structure.md#aliases)
 
-* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-samples.md)
+* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-reference.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1014,7 +1014,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center を
 
 * [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-samples.md)
+* [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-reference.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1040,9 +1040,11 @@ Hybrid Runbook Worker 機能を使用する場合は、任意のクラウドま�
 
 * [マネージド ID で Runbook 認証を使用する](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities)
 
-* [キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md)
+* [キー コンテナーを作成する方法](../key-vault/general/quick-create-portal.md)
 
-* [マネージド ID で Key Vault の認証を提供する方法](../key-vault/general/managed-identity.md)
+* [Key Vault に対して認証を行う方法](../key-vault/general/authentication.md)
+
+* [Key Vault のアクセス ポリシーを割り当てる方法](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1132,7 +1134,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure 向けの Microsoft
 
 * [Azure Automation の概要](./automation-intro.md)
 
-* [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 * [Automation アカウントのカスタマー マネージド キーの使用](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1158,7 +1160,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure 向けの Microsoft
 
 * [Azure Automation の概要](./automation-intro.md)
 
-* [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 * [Automation アカウントのカスタマー マネージド キーの使用](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1174,7 +1176,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure 向けの Microsoft
 
 * [ARM テンプレートと Azure portal でリソースをデプロイする](../azure-resource-manager/templates/deploy-portal.md)
 
-* [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 * [Automation アカウントのカスタマー マネージド キーの使用](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1188,7 +1190,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure 向けの Microsoft
 
 ソース管理の統合機能を使用して、ソース管理リポジトリ内のスクリプトで Automation アカウントの Runbook を最新の状態に維持します。
 
-* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
 
 * [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 

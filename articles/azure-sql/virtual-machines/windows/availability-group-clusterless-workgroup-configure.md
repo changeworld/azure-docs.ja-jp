@@ -8,17 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.subservice: hadr
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 93819332def05022272eabc130e0f2240938f244
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 0f194101720481f71434709c467d0e3130a0f1f9
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955507"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359457"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>ワークグループ可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -62,11 +63,11 @@ DNS サフィックスを構成するには、次の手順に従います。
 1. **[詳細...]** を選択して、 **[DNS サフィックスと NetBIOS コンピューター名]** ダイアログ ボックスを開きます。 
 1. **[このコンピュータのプライマリ DNS サフィックス]** の下に DNS サフィックスの名前 (`ag.wgcluster.example.com` など) を入力し、 **[OK]** を選択します。 
 
-   ![DNS サフィックスを追加する](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
+   ![スクリーンショットには、[DNS サフィックス] ダイアログ ボックスと [NetBIOS コンピュータ名] ダイアログ ボックスが表示されています。このダイアログ ボックスで値を入力できます。](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
 
 1. **[フル コンピューター名]** に DNS サフィックスが表示されていることを確認した後、 **[OK]** を選択して変更を保存します。 
 
-   ![DNS サフィックスを追加する](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
+   ![スクリーンショットは、完全なコンピューター名を表示する場所を示しています。](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
 
 1. 再起動を求めるメッセージが表示されたら、サーバーを再起動します。 
 1. 可用性グループに使用する他のすべてのノードで、これらの手順を繰り返します。 
@@ -78,7 +79,7 @@ Active Directory がないため、Windows 接続を認証する方法はあり�
 ホスト ファイルを編集するには、次の手順を実行します。
 
 1. お使いの仮想マシンに RDP 接続します。 
-1. **エクスプローラー**を使用して、`c:\windows\system32\drivers\etc` に移動します。 
+1. **エクスプローラー** を使用して、`c:\windows\system32\drivers\etc` に移動します。 
 1. **hosts** ファイルを右クリックし、**メモ帳** (またはその他のテキスト エディター) を使用してファイルを開きます。
 1. ファイルの末尾に、次のように、各ノード、可用性グループ、およびリスナーのエントリを `IP Address, DNS Suffix #comment` の形式で追加します。 
 
@@ -115,7 +116,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 クラスターが作成されたら、静的なクラスター IP アドレスを割り当てます。 これを行うには、次のステップに従います。
 
-1. いずれかのノードで、**フェールオーバー クラスター マネージャー**を開いてクラスターを選択し、 **[クラスター コア リソース]** の下にある **[名前: \<ClusterNam>]** を右クリックしてから、 **[プロパティ]** を選択します。 
+1. いずれかのノードで、**フェールオーバー クラスター マネージャー** を開いてクラスターを選択し、 **[クラスター コア リソース]** の下にある **[名前: \<ClusterNam>]** を右クリックしてから、 **[プロパティ]** を選択します。 
 
    ![クラスター名のプロパティの起動](./media/availability-group-clusterless-workgroup-configure/5-launch-cluster-name-properties.png)
 
@@ -179,7 +180,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
    GO  
    ```
 
-1. **エクスプローラー**を使用して、証明書があるファイルの場所 (`c:\certs` など) に移動します。 
+1. **エクスプローラー** を使用して、証明書があるファイルの場所 (`c:\certs` など) に移動します。 
 1. 最初のノードから証明書のコピーを手動で作成し (`AGNode1Cert.crt` など)、それを 2 番目のノードの同じ場所に転送します。 
 
 2 番目のノードを構成するには、次の手順に従います。 
@@ -220,7 +221,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
    GO  
    ```
 
-1. **エクスプローラー**を使用して、証明書があるファイルの場所 (`c:\certs` など) に移動します。 
+1. **エクスプローラー** を使用して、証明書があるファイルの場所 (`c:\certs` など) に移動します。 
 1. 2 番目のノードからの証明書のコピーを手動で作成し (`AGNode2Cert.crt` など)、それを最初のノードと同じ場所に転送します。 
 
 クラスターに他のノードがある場合は、それぞれの証明書の名前を変更しながら、これらの手順を繰り返します。 
@@ -291,6 +292,4 @@ GO
 
 ## <a name="next-steps"></a>次のステップ
 
-[Az SQL VM CLI](availability-group-az-cli-configure.md) を使用して、可用性グループを構成することもできます。 
-
-
+[Az SQL VM CLI](./availability-group-az-commandline-configure.md) を使用して、可用性グループを構成することもできます。

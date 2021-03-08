@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2806ce18cc9febfdf15d48052d301da48b3c226f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9ee7116efe931d101a1505bc2d9d866d8ea5b92a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934465"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943430"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>チュートリアル:Speech SDK を使用して音声でボットを有効にする
 
@@ -59,7 +59,7 @@ Microsoft Bot Framework を使用してボットを作成し、それを Azure �
 このチュートリアルを完了するには、以下が必要になります。
 
 - マイクとスピーカー (またはヘッドホン) が動作している Windows 10 PC
-- **ASP.NET および Web 開発**ワークロードがインストールされている [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 以降
+- **ASP.NET および Web 開発** ワークロードがインストールされている [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 以降
 - [.NET Framework ランタイム 4.6.1](https://dotnet.microsoft.com/download) 以降
 - Azure アカウント。 [無料試用版にサインアップします](https://azure.microsoft.com/free/cognitive-services/)
 - [GitHub](https://github.com/) アカウント
@@ -67,12 +67,12 @@ Microsoft Bot Framework を使用してボットを作成し、それを Azure �
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-このチュートリアルで作成するクライアント アプリでは、いくつかの Azure サービスを使用します。 ボットからの応答のラウンドトリップ時間を短縮するには、これらのサービスが同じ Azure リージョンに配置されていることを確認します。 ここでは、リソース グループを**米国西部**リージョンに作成します。 このリソース グループは、Bot Framework、Direct Line Speech チャネル、および音声サービスの個別のリソースを作成するときに使用されます。
+このチュートリアルで作成するクライアント アプリでは、いくつかの Azure サービスを使用します。 ボットからの応答のラウンドトリップ時間を短縮するには、これらのサービスが同じ Azure リージョンに配置されていることを確認します。 ここでは、リソース グループを **米国西部** リージョンに作成します。 このリソース グループは、Bot Framework、Direct Line Speech チャネル、および音声サービスの個別のリソースを作成するときに使用されます。
 
 1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">リソース グループを作成する <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 1. いくつかの情報を指定するよう求められます。
    * **[サブスクリプション]** を **[無料試用版]** に設定します (既存のサブスクリプションを使用することもできます)。
-   * **リソース グループ**の名前を入力します。 **SpeechEchoBotTutorial-ResourceGroup** をお勧めします。
+   * **リソース グループ** の名前を入力します。 **SpeechEchoBotTutorial-ResourceGroup** をお勧めします。
    * **[リージョン]** ドロップダウンから、 **[米国西部]** を選択します。
 1. **[確認と作成]** をクリックします。 "**検証に成功しました**" というバナーが表示されます。
 1. **Create** をクリックしてください。 リソース グループの作成には数分かかる場合があります。
@@ -97,7 +97,7 @@ Speech リソースを作成するには、以下の手順に従います。
 
 1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">音声サービスのリソースを作成する <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 4. いくつかの情報を指定するよう求められます。
-   * リソースに**名前**を付けます。 **SpeechEchoBotTutorial-Speech** をお勧めします
+   * リソースに **名前** を付けます。 **SpeechEchoBotTutorial-Speech** をお勧めします
    * **[サブスクリプション]** で、 **[無料試用版]** が選択されていることを確認します。
    * **[場所]** では **[米国西部]** を選択します。
    * **[価格レベル]** では **[F0]** を選択します。 これは Free レベルです。
@@ -119,7 +119,7 @@ Speech リソースを作成するには、以下の手順に従います。
 4. いくつかの情報を指定するよう求められます。
    * **[サブスクリプション]** を **[無料試用版]** に設定します (既存のサブスクリプションを使用することもできます)。
    * **[リソース グループ]** で、 **[SpeechEchoBotTutorial-ResourceGroup]** を選択します。
-   * リソースに**名前**を付けます。 **SpeechEchoBotTutorial-AppServicePlan** をお勧めします
+   * リソースに **名前** を付けます。 **SpeechEchoBotTutorial-AppServicePlan** をお勧めします
    * **[オペレーティング システム]** では **[Windows]** を選択します。
    * **[リージョン]** では **[米国西部]** を選択します。
    * **[価格レベル]** で、 **[Standard S1]** が選択されていることを確認します。 これは既定値です。 そうでない場合は、前述のように **[オペレーティング システム]** を **[Windows]** に設定してください。
@@ -158,7 +158,7 @@ Speech リソースを作成するには、以下の手順に従います。
 4. プロジェクトが読み込まれたら、<kbd>F5</kbd> キーを押してプロジェクトをビルドして実行します。
 5. ブラウザーが起動し、このような画面が表示されます。
     > [!div class="mx-imgBorder"]
-    > [![echobot-running-on-localhost](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "localhost で実行されている EchoBot")](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png#lightbox)
+    > [![スクリーンショットに、ボットの準備ができましたというメッセージが表示されたエコー ボット ページが示されています。](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "localhost で実行されている EchoBot")](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png#lightbox)
 
 ### <a name="test-the-bot-sample-with-the-bot-framework-emulator"></a>Bot Framework Emulator を使用してボット サンプルをテストする
 
@@ -174,14 +174,14 @@ Speech リソースを作成するには、以下の手順に従います。
    ```
    [接続] を押します。
 4. ボットにより、"Hello and welcome!" というあいさつが行われます。 メッセージが表示されます。 任意のテキスト メッセージを入力し、ボットからの応答を受け取ることを確認します。
-5. エコー ボット インスタンスとの交信の様子は、次のようになります。[![bot-framework-emulator](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Bot Framework Emulator")](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png#lightbox)
+5. エコー ボット インスタンスとの交信の様子は、次のようになります。[![スクリーンショットに、Bot Framework Emulator が示されています。](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Bot Framework Emulator")](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png#lightbox)
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>ボットを Azure App Service にデプロイする
 
 次の手順は、Azure へのエコー ボットのデプロイです。 ボットをデプロイするにはいくつかの方法がありますが、このチュートリアルでは、Visual Studio から直接発行する方法に重点を置いて説明します。
 
 > [!NOTE]
-> または、[Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) と[デプロイ テンプレート](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/adaptive-dialog/03.core-bot)を使用してボットをデプロイすることもできます。
+> または、[Azure CLI](/azure/bot-service/bot-builder-deploy-az-cli) と[デプロイ テンプレート](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/adaptive-dialog/03.core-bot)を使用してボットをデプロイすることもできます。
 
 > [!NOTE]
 > 以下の手順の実行時に **[発行]** が表示されない場合は、Visual Studio インストーラーを使用して **[ASP.NET と Web 開発]** ワークロードを追加してください。
@@ -192,7 +192,7 @@ Speech リソースを作成するには、以下の手順に従います。
    samples\csharp_dotnetcore\02.echo-bot\EchoBot.sln
    ```
 
-1. **ソリューション エクスプローラー**で、 **[EchoBot]** プロジェクトを右クリックし、 **[発行...]** を選択します。
+1. **ソリューション エクスプローラー** で、 **[EchoBot]** プロジェクトを右クリックし、 **[発行...]** を選択します。
 1. **[発行]** という新しいウィンドウが開きます。
 1. **[Azure]** を選択して **[次へ]** をクリックし、 **[Azure App Service (Windows)]** を選択して **[次へ]** をクリックします。次に、緑色のプラス記号の近くの **[Create a new Azure App Service]\(新しい Azure App Service の作成\)** をクリックします。
 1. **[App Service (Windows)]** ウィンドウが表示されたら、
@@ -234,17 +234,17 @@ Web ソケットを使用してボットと Direct Line Speech チャネルが�
 
 ## <a name="create-a-channel-registration"></a>チャネル登録を作成する
 
-ボットをホストするための Azure App Service を作成したので、次の手順は**ボット チャネル登録**の作成です。 チャネル登録の作成は、ボットを Direct Line Speech チャネルなどの Bot Framework チャネルに登録するための前提条件です。 ボットがチャネルを使用する方法の詳細については、「[ボットをチャネルに接続する](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)」を参照してください。
+ボットをホストするための Azure App Service を作成したので、次の手順は **ボット チャネル登録** の作成です。 チャネル登録の作成は、ボットを Direct Line Speech チャネルなどの Bot Framework チャネルに登録するための前提条件です。 ボットがチャネルを使用する方法の詳細については、「[ボットをチャネルに接続する](/azure/bot-service/bot-service-manage-channels)」を参照してください。
 
 1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Azure ボット チャンネル登録を作成します <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 2. いくつかの情報を指定するよう求められます。
-   * **[ボット ハンドル]** には「**SpeechEchoBotTutorial-BotRegistration-####** 」と入力し、 **####** を任意の数に置き換えます。 ボット ハンドルはグローバルに一意である必要があることに注意してください。 ボット ハンドルを入力しても、_要求されたボット ID は使用できません_というエラー メッセージが表示された場合は、別の番号を選択します。 次の例では、8726 を使用しました
+   * **[ボット ハンドル]** には「**SpeechEchoBotTutorial-BotRegistration-####** 」と入力し、 **####** を任意の数に置き換えます。 ボット ハンドルはグローバルに一意である必要があることに注意してください。 ボット ハンドルを入力しても、_要求されたボット ID は使用できません_ というエラー メッセージが表示された場合は、別の番号を選択します。 次の例では、8726 を使用しました
    * **[サブスクリプション]** では **[無料試用版]** を選択します。
    * **[リソース グループ]** で、 **[SpeechEchoBotTutorial-ResourceGroup]** を選択します。
    * **[場所]** では **[米国西部]** を選択します。
      * **[価格レベル]** では **[F0]** を選択します。
      * **[Messaging endpoint]\(メッセージング エンドポイント\)** では、末尾に `/api/messages` パスを追加して Web アプリの URL を入力します。 たとえば、グローバルに一意のアプリ名が **EchoBot20190805125647** だった場合、メッセージング エンドポイントは `https://EchoBot20190805125647.azurewebsites.net/api/messages/` のようになります。
-     * **Application Insights** では、これを **[Off]** に設定できます。 詳細については、「[ボットの分析](https://docs.microsoft.com/azure/bot-service/bot-service-manage-analytics?view=azure-bot-service-4.0)」をご覧ください。
+     * **Application Insights** では、これを **[Off]** に設定できます。 詳細については、「[ボットの分析](/azure/bot-service/bot-service-manage-analytics)」をご覧ください。
      * **[アプリ ID とパスワードの自動作成]** は無視します。
 5. **[ボット チャネル登録]** ブレードの下部にある **[作成]** をクリックします。
 
@@ -298,11 +298,11 @@ Azure ボット チャネル登録ページには、 **[ボット管理]** の�
    * **[保存]** をクリックします。
 
 > [!TIP]
-> 詳細については、「[ボットを Direct Line Speech に接続する](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)」をご覧ください。 このページには、追加情報と既知の問題が記載されています。
+> 詳細については、「[ボットを Direct Line Speech に接続する](/azure/bot-service/bot-service-channel-connect-directlinespeech)」をご覧ください。 このページには、追加情報と既知の問題が記載されています。
 
 ## <a name="run-the-windows-voice-assistant-client"></a>Windows 音声アシスタント クライアントを実行する
 
-この手順では、Windows 音声アシスタント クライアントを実行します。 クライアントは、C# で作成された Windows Presentation Foundation (WPF) アプリであり、[Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk) を使用して、Direct Line Speech チャネルを使用したボットとの通信を管理します。 これを使用して、カスタム クライアント アプリを作成する前にボットと対話し、テストします。 これはオープン ソースであるため、実行可能ファイルをダウンロードして実行するか、または自分でビルドすることができます。
+この手順では、Windows 音声アシスタント クライアントを実行します。 クライアントは、C# で作成された Windows Presentation Foundation (WPF) アプリであり、[Speech SDK](./speech-sdk.md) を使用して、Direct Line Speech チャネルを使用したボットとの通信を管理します。 これを使用して、カスタム クライアント アプリを作成する前にボットと対話し、テストします。 これはオープン ソースであるため、実行可能ファイルをダウンロードして実行するか、または自分でビルドすることができます。
 
 Windows 音声アシスタント クライアントには、ボットへの接続の構成、テキストでの会話の表示、JSON 形式での Bot Framework アクティビティの表示、およびアダプティブ カードの表示を行える単純な UI が用意されています。 カスタム キーワードの使用もサポートされます。 このクライアントを使用して、ボットとの対話を行い、音声応答を受信します。
 
@@ -328,7 +328,7 @@ Windows 音声アシスタント クライアントには、ボットへの接�
 |エラー (AuthenticationFailure) :認証エラー (401) で WebSocket をアップグレードできませんでした。 Check for correct subscription key (or authorization token) and region name (正しいサブスクリプション キー (または認証トークン) とリージョン名があることを確認してください)| アプリの [設定] ページで、Speech サブスクリプション キーとそのリージョンが正しく入力されていることを確認します。<br>音声キーとキーのリージョンが正しく入力されていることを確認します。 |
 |エラー (ConnectionFailure) :Connection was closed by the remote host. (リモート ホストにより、接続が切断されました。) エラー コード:1011。 エラーの詳細:We could not connect to the bot before sending a message (メッセージを送信する前にボットに接続できませんでした) | [[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\) ボックスをオンにした](#register-the-direct-line-speech-channel)か、[ **[Web ソケット]** を [オン] に切り替えた](#enable-web-sockets)ことを確認します。<br>Azure App Service が実行されていることを確認します。 その場合は、App Service を再起動してみてください。|
 |エラー (ConnectionFailure) :Connection was closed by the remote host. (リモート ホストにより、接続が切断されました。) エラー コード:1002。 エラーの詳細:サーバーが状態コード '101' を返すはずが、状態コード '503' を返しました | [[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\) ボックスをオンにした](#register-the-direct-line-speech-channel)か、[ **[Web ソケット]** を [オン] に切り替えた](#enable-web-sockets)ことを確認します。<br>Azure App Service が実行されていることを確認します。 その場合は、App Service を再起動してみてください。|
-|エラー (ConnectionFailure) :Connection was closed by the remote host. (リモート ホストにより、接続が切断されました。) エラー コード:1011。 エラーの詳細:応答状態コードは成功を示していません:500 (InternalServerError)| ボットによって、出力アクティビティ [[音声入力]](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) フィールドにニューラル音声が指定されましたが、Speech サブスクリプション キーに関連付けられている Azure リージョンではニューラル音声がサポートされていません。 「[標準およびニューラル音声](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)」をご覧ください。|
+|エラー (ConnectionFailure) :Connection was closed by the remote host. (リモート ホストにより、接続が切断されました。) エラー コード:1011。 エラーの詳細:応答状態コードは成功を示していません:500 (InternalServerError)| ボットによって、出力アクティビティ [[音声入力]](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) フィールドにニューラル音声が指定されましたが、Speech サブスクリプション キーに関連付けられている Azure リージョンではニューラル音声がサポートされていません。 「[標準およびニューラル音声](./regions.md#standard-and-neural-voices)」をご覧ください。|
 
 発生している問題が表に記載されていない場合は、「[音声アシスタント: よく寄せられる質問](faq-voice-assistants.md)」をご覧ください。 このチュートリアルのすべての手順を実行しても問題が解決しない場合は、[Voice Assistant の GitHub ページ](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues)で新しい問題を入力してください。
 
@@ -337,7 +337,7 @@ Windows 音声アシスタント クライアントには、ボットへの接�
 ボットに接続していて、最後の 5 分間にアクティビティが発生していない場合、サービスはクライアントおよびボットとの websocket 接続を自動的に閉じます。 これは仕様です。 下部のバーにメッセージが表示されます。 *"Active connection timed out but ready to reconnect on demand (アクティブな接続がタイムアウトしましたが、必要に応じて再接続できます)"* . [再接続] ボタンを押す必要はありません。マイクのボタンを押して会話を開始するか、テキスト メッセージを入力するか、キーワード (有効になっている場合) を発声してください。 接続は自動的に再確立されます。  
 ### <a name="view-bot-activities"></a>ボット アクティビティの表示
 
-すべてのボットでは、**アクティビティ** メッセージが送受信されます。 Windows 音声アシスタント クライアントの **[Activity Log]\(アクティビティ ログ\)** ウィンドウには、クライアントがボットから受信した各アクティビティのタイムスタンプ付きログが表示されます。 [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync) メソッドを使用して、クライアントからボットに送信されたアクティビティを確認することもできます。 ログ項目を選択すると、関連付けられているアクティビティの詳細が JSON として表示されます。
+すべてのボットでは、**アクティビティ** メッセージが送受信されます。 Windows 音声アシスタント クライアントの **[Activity Log]\(アクティビティ ログ\)** ウィンドウには、クライアントがボットから受信した各アクティビティのタイムスタンプ付きログが表示されます。 [`DialogServiceConnector.SendActivityAsync`](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync) メソッドを使用して、クライアントからボットに送信されたアクティビティを確認することもできます。 ログ項目を選択すると、関連付けられているアクティビティの詳細が JSON として表示されます。
 
 クライアントで受信されたアクティビティの json のサンプルを次に示します。
 
@@ -380,8 +380,8 @@ JSON 出力で返される内容について詳しくは、[アクティビテ�
 ### <a name="view-client-source-code-for-calls-to-the-speech-sdk"></a>Speech SDK に対する呼び出しのクライアント ソース コードの表示
 
 Windows 音声アシスタント クライアントでは、Speech SDK を含む NuGet パッケージ [Microsoft.CognitiveServices.Speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) が使用されます。 サンプル コードの確認を開始するのに適した場所は、次の 2 つの Speech SDK オブジェクトを作成する、ファイル [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) 内の InitSpeechConnector() メソッドです。
-- [`DialogServiceConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconfig) -構成設定 (たとえば、Speech のサブスクリプション キーやキーのリージョン) 用
-- [`DialogServiceConnector`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.-ctor) - 認識された音声とボットの応答を処理するためのチャネル接続イベントとクライアント サブスクリプション イベントの管理用。
+- [`DialogServiceConfig`](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconfig) -構成設定 (たとえば、Speech のサブスクリプション キーやキーのリージョン) 用
+- [`DialogServiceConnector`](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.-ctor) - 認識された音声とボットの応答を処理するためのチャネル接続イベントとクライアント サブスクリプション イベントの管理用。
 
 ## <a name="add-custom-keyword-activation"></a>カスタム キーワードのアクティブ化を追加する
 
@@ -394,11 +394,11 @@ Speech SDK では、カスタム キーワードのアクティブ化がサポ�
 
 これらの手順に従って、キーワード モデルを作成し、このモデルを使用するように Windows 音声アシスタント クライアントを構成して、最後にボットを使用してテストします。
 
-1. これらの手順に従い、[Speech Service を使用してキーワードを作成](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)します。
+1. これらの手順に従い、[Speech Service を使用してキーワードを作成](./custom-keyword-basics.md)します。
 2. 前の手順でダウンロードしたモデル ファイルを解凍します。 これには、キーワードに由来する名前が付けられています。 `kws.table` という名前のファイルを探しています。
 3. Windows 音声アシスタント クライアント内で、 **[Settings]\(設定\)** メニューを見つけます (右上にある歯車アイコンを探します)。 **[Model file path]\(モデル ファイルのパス\)** を特定して、手順 2. の `kws.table` ファイルの完全なパス名を入力します。
 4. **[有効]** というラベルの付いたボックスをオンにしてください。 チェック ボックスの横に、次のメッセージが表示されます:"Will listen for the keyword upon next connection" (次の接続時にキーワードをリッスンする)。 間違ったファイルまたは無効なパスを指定した場合は、エラー メッセージが表示されます。
-5. Speech **サブスクリプション キー**、**サブスクリプション キーのリージョン**を入力し、 **[OK]** をクリックして **[設定]** メニューを閉じます。
+5. Speech **サブスクリプション キー**、**サブスクリプション キーのリージョン** を入力し、 **[OK]** をクリックして **[設定]** メニューを閉じます。
 6. **[再接続]** をクリックします。 次のようなメッセージが表示されます:"New conversation started - type, press the microphone button, or say the keyword" (新しい会話が開始しました - 入力するか、マイク ボタンを押すか、キーワードを話してください)。 これで、アプリは継続的にリッスンします。
 7. キーワードで始まる任意の語句を発声します。 たとえば、" **{自分のキーワード}** 、今何時?" などです。 キーワードを発した後に間を置く必要はありません。 完了すると、次の 2 つの処理が行われます。
    * 話した内容についての音声テキストが表示されます
@@ -412,8 +412,8 @@ Speech SDK では、カスタム キーワードのアクティブ化がサポ�
 
 Windows 音声アシスタント クライアントのソース コード内で、これらのファイルを調べて、キーワード検出を有効にするために使用されているコードを確認します。
 
-1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) には、ディスク上のローカル ファイルからモデルをインスタンス化するために使用される Speech SDK メソッド [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-) の呼び出しが含まれています。
-1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) には、継続的なキーワード検出をアクティブにする Speech SDK メソッド [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) の呼び出しが含まれています。
+1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) には、ディスク上のローカル ファイルからモデルをインスタンス化するために使用される Speech SDK メソッド [`KeywordRecognitionModel.fromFile()`](/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel#fromfile-string-) の呼び出しが含まれています。
+1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) には、継続的なキーワード検出をアクティブにする Speech SDK メソッド [`DialogServiceConnector.StartKeywordRecognitionAsync()`](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) の呼び出しが含まれています。
 
 ## <a name="optional-change-the-language-and-bot-voice"></a>(省略可能) 言語とボットの音声を変更する
 
@@ -470,15 +470,15 @@ Windows 音声アシスタント クライアントのソース コード内で�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Speech SDK を使用して独自のクライアント アプリを構築する](quickstart-voice-assistant-csharp-uwp.md)
+> [Speech SDK を使用して独自のクライアント アプリを構築する](./quickstarts/voice-assistants.md?pivots=programming-language-csharp)
 
 ## <a name="see-also"></a>関連項目
 
 * ボットの応答時間を向上させるために、[近くの Azure リージョン](https://azure.microsoft.com/global-infrastructure/locations/)にデプロイする
-* [高品質なニューラル TTS 音声をサポートする Azure リージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)にデプロイする
+* [高品質なニューラル TTS 音声をサポートする Azure リージョン](./regions.md#standard-and-neural-voices)にデプロイする
 * Direct Line Speech チャネルに関連付けられている価格:
   * [Bot Service pricing](https://azure.microsoft.com/pricing/details/bot-service/)
   * [Speech サービス](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * 独自の音声対応ボットの構築とデプロイ:
-  * [Bot Framework ボット](https://dev.botframework.com/)を構築します。 [Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)に登録し、[音声用にボットをカスタマイズ](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0)します
+  * [Bot Framework ボット](https://dev.botframework.com/)を構築します。 [Direct Line Speech チャネル](/azure/bot-service/bot-service-channel-connect-directlinespeech)に登録し、[音声用にボットをカスタマイズ](/azure/bot-service/directline-speech-bot)します
   * 既存の [Bot Framework ソリューション](https://microsoft.github.io/botframework-solutions/index)を調べます。[仮想アシスタント](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/)を構築し、[それを Direct Line Speech に拡張します](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)

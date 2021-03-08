@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 3beefb467f7875e6bc76765811c6525f5dab9393
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0e5d67e00ee56b5c4006a8422c713e3cabb32bfc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536200"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454764"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-discovery-benefits-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Discovery Benefits SSO の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88536200"
 * ユーザーが自分の Azure AD アカウントを使用して Discovery Benefits SSO に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Discovery Benefits SSO では、**IDP** Initiated SSO がサポートされます
+* Discovery Benefits SSO では、 **IDP** Initiated SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -52,7 +52,7 @@ Azure AD への Discovery Benefits SSO の統合を構成するには、ギャ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Discovery Benefits SSO**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Discovery Benefits SSO** 」と入力します。
 1. 結果のパネルから **[Discovery Benefits SSO]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-discovery-benefits-sso"></a>Discovery Benefits SSO の Azure AD シングル サインオンの構成とテスト
@@ -78,7 +78,7 @@ Discovery Benefits SSO で Azure AD SSO を構成してテストするには、�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1.  **[基本的な SAML 構成]**  セクションでは、アプリケーションは **IDP** Initiated モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 ユーザーは、 **[保存]**  ボタンをクリックして構成を保存する必要があります。
+1. **[基本的な SAML 構成]** セクションでは、アプリケーションは **IDP** 開始モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]** ボタンをクリックします。
 
 1. Discovery Benefits SSO アプリケーションは特定の形式の SAML アサーションを予測しているため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
@@ -86,13 +86,13 @@ Discovery Benefits SSO で Azure AD SSO を構成してテストするには、�
 
     a. **[編集]** アイコンをクリックして、 **[一意のユーザー識別子 (名前 ID)]** ダイアログを開きます。
 
-    ![Discovery Benefits SSO の構成](./media/discovery-benefits-sso-tutorial/attribute01.png)
+    ![[必要な要求] の右側の省略記号が選択された [ユーザー属性と要求] セクションを示すスクリーンショット。](./media/discovery-benefits-sso-tutorial/attribute01.png)
 
     ![Discovery Benefits SSO の構成](./media/discovery-benefits-sso-tutorial/attribute02.png)
 
     b. **[編集]** アイコンをクリックして、 **[変換の管理]** ダイアログを開きます。
 
-    c. **[変換]** ボックスに、その行に対して表示される「**ToUppercase()** 」を入力します。
+    c. **[変換]** ボックスに、その行に対して表示される「 **ToUppercase()** 」を入力します。
 
     d. **[パラメーター 1]** ボックスに、`<Name Identifier value>`のようなパラメーターを入力します。
 
@@ -103,7 +103,7 @@ Discovery Benefits SSO で Azure AD SSO を構成してテストするには、�
 
     f. SSO の構成に必要な追加の要求 (`SSOInstance` および `SSOID`) が自動的に設定されました。 **[編集]** アイコンを使用して、組織に応じて値をマップします。
 
-    ![Discovery Benefits SSO の構成](./media/discovery-benefits-sso-tutorial/attribute03.png)
+    !["S S O Instance" と "S S O I D" の値が強調表示された [ユーザー属性と要求] を示すスクリーンショット。](./media/discovery-benefits-sso-tutorial/attribute03.png)
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -145,25 +145,24 @@ Discovery Benefits SSO で Azure AD SSO を構成してテストするには、�
 
 ## <a name="configure-discovery-benefits-sso-sso"></a>Discovery Benefits SSO の SSO の構成
 
-**Discovery Benefits SSO** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Discovery Benefits SSO のサポート チーム](mailto:Jsimpson@DiscoveryBenefits.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Discovery Benefits SSO** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Discovery Benefits SSO のサポート チーム](mailto:Jsimpson@DiscoveryBenefits.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-discovery-benefits-sso-test-user"></a>Discovery Benefits SSO テスト ユーザーの作成
 
-このセクションでは、Discovery Benefits SSO で Britta Simon というユーザーを作成します。  [Discovery Benefits SSO のサポート チーム](mailto:Jsimpson@DiscoveryBenefits.com)と連携し、Discovery Benefits SSO プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Discovery Benefits SSO で Britta Simon というユーザーを作成します。 [Discovery Benefits SSO のサポート チーム](mailto:Jsimpson@DiscoveryBenefits.com)と連携して、Discovery Benefits SSO プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Discovery Benefits SSO] タイルをクリックすると、SSO を設定した Discovery Benefits SSO に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Discovery Benefits SSO] タイルをクリックすると、SSO を設定した Discovery Benefits SSO に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Discovery Benefits SSO を試す](https://aad.portal.azure.com/)
-

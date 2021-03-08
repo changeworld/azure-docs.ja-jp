@@ -3,13 +3,13 @@ title: 一般的な問題のトラブルシューティング
 description: Azure Container Instances をデプロイ、実行、または管理する際の一般的な問題をトラブルシューティングする方法を学習します。
 ms.topic: article
 ms.date: 06/25/2020
-ms.custom: mvc
-ms.openlocfilehash: 46d3ad6afb1761ca9503676ad2176482b7e4530e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: d8e7fb85e369f5f278436370944eafeb1fb6a50e
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260750"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779517"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
 
@@ -99,7 +99,7 @@ Azure ではリージョンによってリソースの読み込みに変化が�
 ## <a name="issues-during-container-group-runtime"></a>コンテナー グループの実行時に発生する問題
 ### <a name="container-continually-exits-and-restarts-no-long-running-process"></a>コンテナーが絶えず終了して再起動する (長時間実行されるプロセスがない)
 
-コンテナー グループは[再起動ポリシー](container-instances-restart-policy.md)が既定で **Always** に設定されるため、コンテナー グループ内のコンテナーは実行完了後に必ず再起動します。 タスクベースのコンテナーを実行する場合は、これを **OnFailure** または **Never** に変更することが必要になることがあります。 **OnFailure** を指定してもそのまま再起動された場合、お使いのコンテナーで実行されるアプリケーションまたはスクリプトに問題が生じている可能性があります。
+コンテナー グループは [再起動ポリシー](container-instances-restart-policy.md)が既定で **Always** に設定されるため、コンテナー グループ内のコンテナーは実行完了後に必ず再起動します。 タスクベースのコンテナーを実行する場合は、これを **OnFailure** または **Never** に変更することが必要になることがあります。 **OnFailure** を指定してもそのまま再起動された場合、お使いのコンテナーで実行されるアプリケーションまたはスクリプトに問題が生じている可能性があります。
 
 Ubuntu や Alpine などのイメージを使用した場合、長時間実行されるプロセスのないコンテナー グループを実行していると、終了と再起動が繰り返されることがあります。 コンテナーを実行したままにするプロセスがないため、[EXEC](container-instances-exec.md) を使った接続は機能しません。 この問題を解決するには、コンテナー グループのデプロイに次のような起動コマンドを含め、コンテナーを実行したままにします。
 
@@ -187,7 +187,7 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 #### <a name="cached-images"></a>キャッシュ イメージ
 
-Azure Container Instances では、キャッシュ メカニズムを使用して、`nanoserver:1809`、`servercore:ltsc2019`、`servercore:1809` など、一般的な [Windows ベースのイメージ](container-instances-faq.md#what-windows-base-os-images-are-supported)に基づいて構築されたイメージに対するコンテナーの起動時間を高速化します。 `ubuntu:1604` や `alpine:3.6` など、よく使用される Linux イメージもキャッシュされます。 キャッシュされたイメージとタグの最新の一覧については、[List Cached Images][list-cached-images] API を使用してください。
+Azure Container Instances では、キャッシュ メカニズムを使用して、`nanoserver:1809`、`servercore:ltsc2019`、`servercore:1809` など、一般的な [Windows ベースのイメージ](container-instances-faq.md#what-windows-base-os-images-are-supported)に基づいて構築されたイメージに対するコンテナーの起動時間を高速化します。 `ubuntu:1604` や `alpine:3.6` など、よく使用される Linux イメージもキャッシュされます。 Windows と Linux の両方のイメージには、`latest` タグを使用しないようにしてください。 ガイダンスについては、Container Registry の[イメージ タグのベスト プラクティス](../container-registry/container-registry-image-tag-version.md)に関する記事を参照してください。 キャッシュされたイメージとタグの最新の一覧については、[List Cached Images][list-cached-images] API を使用してください。
 
 > [!NOTE]
 > Azure Container Instances での Windows Server 2019 ベースのイメージの使用は、プレビュー段階です。
@@ -198,7 +198,7 @@ Azure Container Instances では、キャッシュ メカニズムを使用し�
 
 ### <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>基になる Docker API に接続できないか、特権コンテナーを実行できない
 
-Azure Container Instances は、コンテナー グループをホストする、基になるインフラストラクチャへの直接アクセスを公開しません。 これには、コンテナーのホストで実行されている Docker API へのアクセスと、実行中の特権コンテナーへのアクセスが含まれます。 Docker の相互作用が必要な場合は、[REST リファレンス ドキュメント](https://aka.ms/aci/rest)を参照して、ACI API でサポートされるものをご確認ください。 不足しているものがある場合は、[ACI フィードバック フォーラム](https://aka.ms/aci/feedback)に要求を送信します。
+Azure Container Instances は、コンテナー グループをホストする、基になるインフラストラクチャへの直接アクセスを公開しません。 これには、コンテナーのホストで実行されている Docker API へのアクセスと、実行中の特権コンテナーへのアクセスが含まれます。 Docker の相互作用が必要な場合は、[REST リファレンス ドキュメント](/rest/api/container-instances/)を参照して、ACI API でサポートされるものをご確認ください。 不足しているものがある場合は、[ACI フィードバック フォーラム](https://aka.ms/aci/feedback)に要求を送信します。
 
 ### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>ポートが一致しないため、コンテナー グループの IP アドレスにアクセスできない
 

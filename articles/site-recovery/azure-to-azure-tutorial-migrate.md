@@ -1,27 +1,27 @@
 ---
-title: Azure Site Recovery を使用して Azure IaaS VM を別のリージョンに移動する
-description: Azure Site Recovery を使用して、異なる Azure リージョン間で Azure IaaS VM を移動します。
+title: Azure Site Recovery を使用して Azure VM を別の Azure リージョンに移動する
+description: Azure Site Recovery を使用して、Azure VM を異なる Azure リージョン間で移動します。
 services: site-recovery
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.author: rajanaki
+ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: 3cbf3eda97bd1ba6b71c4bc7910e942e39224e30
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 076adbfd4cecf7dae9ffc490e911fcb7ffce48e6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076102"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394834"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移動する
+# <a name="move-vms-to-another-azure-region"></a>VM を別の Azure リージョンに移動する
 
-既存の Azure IaaS 仮想マシン (VM) を別のリージョンに移動するシナリオには、さまざまなケースがあります。 たとえば、既存の VM の信頼性と可用性を高めるケースや、管理を容易にするケース、またガバナンス上の理由で移動するケースも考えられます。 詳細については、[Azure VM の移動の概要](azure-to-azure-move-overview.md)に関するページを参照してください。 
+既存の Azure IaaS 仮想マシン (VM) を異なるリージョン間で移動する必要が生じるさまざまなシナリオがあります。 たとえば、既存の VM の信頼性と可用性を高めるケースや、管理を容易にするケース、またガバナンス上の理由で移動するケースも考えられます。 詳細については、[Azure VM の移動の概要](azure-to-azure-move-overview.md)に関するページを参照してください。 
 
-[Azure Site Recovery](site-recovery-overview.md) サービスを使用すれば、オンプレミス マシンと Azure VM のディザスター リカバリーを管理および調整して、事業継続とディザスター リカバリー (BCDR) を実現できます。 Site Recovery を使用して、セカンダリ リージョンへの Azure VM の移動を管理することもできます。
+[Azure Site Recovery](site-recovery-overview.md) サービスを使用すると、Azure VM をセカンダリ リージョンに移動できます。
 
-このチュートリアルでは、次のことについて説明します。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > 
@@ -30,7 +30,19 @@ ms.locfileid: "87076102"
 > * データをコピーしてレプリケーションを有効にする
 > * 構成をテストして移動を実行する
 > * ソース リージョンのリソースを削除する
-> 
+
+
+> [!IMPORTANT]
+> Azure VM を別のリージョンに移動する場合、[Azure Resource Mover](../resource-mover/tutorial-move-region-virtual-machines.md) を使用することをお勧めします。 Resource Mover は、現在、パブリック プレビュー段階にあり、以下を実現します。
+> - 単一のハブを使用してリージョン間でリソースを移動できます。
+> - 移動時間と複雑さを軽減できます。 必要なものをすべて 1 か所にまとめることができます。
+> - シンプルかつ一貫性のあるエクスペリエンスによって、さまざまな種類の Azure リソースを移動できます。
+> - 移動するリソース間の依存関係を簡単に識別できます。 これにより、関連リソースをまとめて移動することができるため、移動後にすべてのリソースがターゲット リージョンで期待どおりに動作します。
+> - 移動後にソース リージョンのリソースを削除する場合は、自動的にクリーンアップされます。
+> - テスト。 移動を試してみて、完全に移動することは望まない場合は破棄することができます。
+
+
+
 > [!NOTE]
 > このチュートリアルでは、Azure VM をそのまま別のリージョンに移動する方法を説明しています。 可用性セット内の VM を別のリージョンのゾーン固定 VM に移動することによって可用性を高める必要がある場合は、[Azure VM を Availability Zones に移動するチュートリアル](move-azure-vms-avset-azone.md)を参照してください。
 
@@ -56,7 +68,7 @@ ms.locfileid: "87076102"
 - Linux VM の場合は、Linux ディストリビューターから提供されるガイダンスに従って、VM で最新の信頼されたルート証明書と証明書失効リストを取得します。
 - 移動したい VM のネットワーク接続を制御するために認証プロキシを使用していないことを確認します。
 
-- 移動しようとしている VM にインターネットへのアクセスが存在しない場合や、ファイアウォール プロキシを使用してアウトバウンド アクセスを制御している場合は、[要件を確認](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms)してください。
+- 移動しようとしている VM にインターネットへのアクセスが存在しない場合や、ファイアウォール プロキシを使用してアウトバウンド アクセスを制御している場合は、[要件を確認](azure-to-azure-tutorial-enable-replication.md#set-up-vm-connectivity)してください。
 
 - ソース ネットワーク レイアウトと現在使用しているすべてのリソースを特定します。 これにはロード バランサー、ネットワーク セキュリティ グループ (NSG)、パブリック IP が含まれますが、それらに限定されません。
 
@@ -88,10 +100,10 @@ ms.locfileid: "87076102"
 1. **[名前]** に、フレンドリ名 **ContosoVMVault** を指定します。 複数のサブスクリプションがある場合は、適切なものを選択します。
 1. リソース グループ **ContosoRG** を作成します。
 1. Azure リージョンを指定します。 サポートされているリージョンを確認するには、[Azure Site Recovery の価格の詳細](https://azure.microsoft.com/pricing/details/site-recovery/)に関するページでご利用可能な地域を参照してください。
-1. **[Recovery Services コンテナー]** で、 **[概要]**  >  **[ContosoVMVault]**  >  **[+ レプリケート]** の順に選択します。
-1. **[ソース]** で **[Azure]** を選択します。
+1. **[Recovery Services コンテナー]** で、 **[ContosoVMVault]** 、 **[レプリケートされたアイテム]** 、 **[+ 複製]** の順に選択します。
+1. ドロップダウンで、 **[Azure Virtual Machines]** を選択します。
 1. **[ソースの場所]** で、現在 VM が実行されているソースの Azure リージョンを選択します。
-1. Resource Manager デプロイ モデルを選択します。 次に、**ソース サブスクリプション**と**ソース リソース グループ**を選択します。
+1. Resource Manager デプロイ モデルを選択します。 次に、 **ソース サブスクリプション** と **ソース リソース グループ** を選択します。
 1. **[OK]** を選択して設定を保存します。
 
 ### <a name="enable-replication-for-azure-vms-and-start-copying-the-data"></a>Azure VM のレプリケーションを有効にしてデータのコピーを開始する
@@ -104,7 +116,7 @@ Site Recovery は、サブスクリプションとリソース グループに�
 1. このチュートリアルでは、他の既定の設定をそのまま使用します。
 1. **[レプリケーションを有効にする]** を選択します。 この手順により VM レプリケーションを有効にするジョブが開始されます。
 
-    ![レプリケーションを有効にする](media/tutorial-migrate-azure-to-azure/settings.png)
+
 
 ## <a name="move"></a>[詳細ビュー]
 

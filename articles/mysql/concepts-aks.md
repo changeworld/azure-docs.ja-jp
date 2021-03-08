@@ -1,17 +1,17 @@
 ---
 title: Azure Kubernetes Service への接続 - Azure Database for MySQL
 description: Azure Kubernetes Service と Azure Database for MySQL を接続する方法について説明します
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 712bf702ba355ec3b2ca6184c33da8489f8a178e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5c4a5f5d792a60ed3fef07797fdbdfa0c9cfb8fe
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519866"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534332"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Azure Kubernetes Service と Azure Database for MySQL を接続する
 
@@ -44,4 +44,4 @@ az network nic list --resource-group nodeResourceGroup -o table
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Kubernetes Service クラスターを作成する](../aks/kubernetes-walkthrough.md)
-- [OSBA と Azure Database for MySQL を使用して Helm チャートから WordPress をインストールする](../aks/integrate-azure.md)方法を学習する
+- [OSBA と Azure Database for MySQL を使用して Helm チャートから WordPress をインストールする](../aks/index.yml)方法を学習する

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 5c76e45f09a0f432d2775eb19d3dcaa668294e6f
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672665"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002345"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Language Understanding (LUIS) コンテナーの制限
 
@@ -31,7 +31,7 @@ LUIS コンテナーには、いくつかの注目すべき制限があります
 
 [[Export for container]\(コンテナー用にエクスポート\)](luis-container-howto.md#export-packaged-app-from-luis) するには、LUIS アプリからサポートされていない依存関係を削除する必要があります。 コンテナー用にエクスポートしようとすると、LUIS ポータルで、削除する必要があるサポートされていない機能が報告されます。
 
-LUIS アプリケーションは、次の依存関係を一切**含んでいない**場合に使用できます。
+LUIS アプリケーションは、次の依存関係を一切 **含んでいない** 場合に使用できます。
 
 サポートされていないアプリ構成|詳細|
 |--|--|
@@ -56,14 +56,14 @@ LUIS コンテナーは、LUIS によって適切に[サポートされる言語
 | ドイツ語 |`de-DE` | ✔️ | ✔️ | ✔️ | ✔️ |
 | ヒンディー語 | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
 | イタリア語 |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
-| 韓国語 |`ko-KR` | ✔️ | ❌ | ❌ | *キー フレーズ*のみ |
+| 韓国語 |`ko-KR` | ✔️ | ❌ | ❌ | *キー フレーズ* のみ |
 | マラーティー語 | `mr-IN`|❌|❌|❌|❌|
 | ポルトガル語 (ブラジル) |`pt-BR` | ✔️ | ✔️ | ✔️ | 一部のサブカルチャのみ |
 | スペイン語 (スペイン) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
 | スペイン語 (メキシコ)|`es-MX` | ❌ | ❌ |✔️|✔️|
 | タミル語 | `ta-IN`|❌|❌|❌|❌|
 | テルグ語 | `te-IN`|❌|❌|❌|❌|
-| トルコ語 | `tr-TR` |✔️| ❌ | ❌ | *センチメント*のみ |
+| トルコ語 | `tr-TR` |✔️| ❌ | ❌ | *センチメント* のみ |
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 

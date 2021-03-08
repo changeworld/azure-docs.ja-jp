@@ -12,13 +12,13 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
-- devx-track-javascript
-ms.openlocfilehash: b424ea01d8283963c49d899a97120c9132d862f8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-js
+ms.openlocfilehash: 58891bdb4601744129c97454f43202d3ba07b709
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422540"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852559"
 ---
 # <a name="create-an-advanced-device-model"></a>高度なデバイス モデルを作成する
 
@@ -30,15 +30,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この攻略ガイドの手順に従うには、Azure サブスクリプションにデプロイされたデバイス シミュレーションのインスタンスが必要です。
 
-デバイス シミュレーションをまだデプロイしていない場合は、[Azure での IoT デバイス シミュレーションのデプロイと実行](quickstart-device-simulation-deploy.md)に関するクイック スタートを完了する必要があります。
+まだデバイス シミュレーションをデプロイしていない場合は、GitHub の[デバイス シミュレーションのデプロイ](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)に関する記事を参照してください。
 
 ### <a name="open-device-simulation"></a>デバイス シミュレーションを開く
 
-ご利用のブラウザーでデバイス シミュレーションを実行するには、まず、[Microsoft Azure IoT Solution Accelerators](https://www.azureiotsolutions.com) に移動します。
-
-Azure サブスクリプションの資格情報を使用してサインインするように求められる場合があります。
-
-次に、[Azure での IoT デバイス シミュレーションのデプロイと実行](quickstart-device-simulation-deploy.md)に関するクイック スタートでデプロイしたデバイス シミュレーションのタイルの **[起動]** をクリックします。
+まだデバイス シミュレーションをデプロイしていない場合は、GitHub の[デバイス シミュレーションのデプロイ](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)に関する記事を参照してください。
 
 ## <a name="device-models"></a>デバイス モデル
 
@@ -520,4 +516,4 @@ function main(context, state) {
 
 ## <a name="next-steps"></a>次のステップ
 
-この攻略ガイドでは、デバイス シミュレーションで使用するデバイス モデル ファイルについてと、高度なデバイス モデルの作成方法を学習しました。 次は、[Time Series Insights を使用して、デバイス シミュレーション ソリューション アクセラレータから送信されたテレメトリを視覚化する](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights)方法を確認できます。
+この攻略ガイドでは、デバイス シミュレーションで使用するデバイス モデル ファイルについてと、高度なデバイス モデルの作成方法を学習しました。 次は、[Time Series Insights を使用して、デバイス シミュレーション ソリューション アクセラレータから送信されたテレメトリを視覚化する](./iot-accelerators-device-simulation-time-series-insights.md)方法を確認できます。

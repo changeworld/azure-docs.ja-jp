@@ -1,19 +1,24 @@
 ---
 title: ローカルで実行されている Azure Service Fabric Mesh Web アプリをデバッグする
 description: このチュートリアルでは、ローカル クラスター上で実行している Azure Service Fabric Mesh アプリケーションをデバッグします。
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 10/31/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 586641d721d0c29bcd6d7b42fc8ca9141df96c66
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9e3dc16481340c0266cd398d0970e2147648e17f
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261307"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625451"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>チュートリアル: ローカル開発クラスター内で実行している Service Fabric Mesh アプリケーションをデバッグする
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 Service Fabric Mesh API による新しいデプロイは許可されなくなります。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、「[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)」を参照してください。
 
 このチュートリアルはシリーズの第 2 部です。ローカル開発クラスター上の Azure Service Fabric Mesh アプリをビルドしてデバッグする方法について説明します。
 
@@ -72,10 +77,10 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 現在、ある問題が原因で、`using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` の呼び出しがサービスへの接続に失敗します。 この問題は、ホストの IP アドレスが変わるたびに発生します。 それを解決するには、次のようにします。
 
 1. ローカル クラスターからアプリを削除します (Visual Studio で **[ビルド]**  >  **[ソリューションのクリーン]** を選択します)。
-2. Service Fabric ローカル クラスター マネージャーから **[Stop Local CLuster]\(ローカル クラスターの停止\)** を選択し、 **[Start Local Cluster]\(ローカル クラスターを起動する\)** を選択します。
+2. Service Fabric ローカル クラスター マネージャーから **[Stop Local CLuster]\(ローカル クラスターの停止\)** を選択し、**[Start Local Cluster]\(ローカル クラスターを起動する\)** を選択します。
 3. アプリを再デプロイします (Visual Studio で **F5** キーを押します)。
 
-"**No Service Fabric local cluster is running**" (Service Fabric のローカル クラスターが実行されていません) というエラーが表示された場合、Service Fabric のローカル クラスター マネージャー (LCM) が実行中になっていることを確認し、タスク バーの LCM アイコンを右クリックして、 **[Start Local Cluster]\(ローカル クラスターを起動する\)** をクリックします。 起動したら、Visual Studio に戻り、**F5** キーを押します。
+"**No Service Fabric local cluster is running**" (Service Fabric のローカル クラスターが実行されていません) というエラーが表示された場合、Service Fabric のローカル クラスター マネージャー (LCM) が実行中になっていることを確認し、タスク バーの LCM アイコンを右クリックして、**[Start Local Cluster]\(ローカル クラスターを起動する\)** をクリックします。 起動したら、Visual Studio に戻り、**F5** キーを押します。
 
 アプリの起動時に **404** エラーが表示された場合には、**service.yaml** 内の環境変数が正しくない可能性があります。 `ApiHostPort` と `ToDoServiceName` が「[環境変数を作成する](./service-fabric-mesh-tutorial-create-dotnetcore.md#create-environment-variables)」の手順に従って正しく設定されていることを確認します。
 
@@ -84,7 +89,7 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 ### <a name="debug-in-visual-studio"></a>Visual Studio でのデバッグ
 
 Visual Studio で Service Fabric Mesh アプリケーションをデバッグするときは、ローカルの Service Fabric 開発クラスターを使用します。 バックエンド サービスから To Do 項目が取得される方法を表示するには、OnGet() メソッドをデバッグします。
-1. **WebFrontEnd** プロジェクト内で **[Pages]**  >  **[Index.cshtml]**  >  **[Index.cshtml.cs]** の順に開き、**OnGet** メソッド (17 行目) 内にブレークポイントを設定します。
+1. **WebFrontEnd** プロジェクト内で **[Pages]** > **[Index.cshtml]** > **[Index.cshtml.cs]** の順に開き、**OnGet** メソッド (17 行目) 内にブレークポイントを設定します。
 2. **ToDoService** プロジェクト内で **[TodoController.cs]** を開き、**Get** メソッド (15 行目) 内にブレークポイントを設定します。
 3. ブラウザーに戻り、ページを更新します。 Web フロントエンドの `OnGet()` メソッドでブレークポイントに到達します。 `backendUrl` 変数を検査すると、**service.yaml** ファイル内で定義した環境変数が、バックエンド サービスに接続するために使用する URL にどのように組み込まれているかを確認できます。
 4. `client.GetAsync(backendUrl).GetAwaiter().GetResult())` の呼び出しをステップ オーバー (F10) し、コントローラーの `Get()` ブレークポイントに到達します。 このメソッドでは、メモリ内のリストから To Do 項目のリストがどのように取得されているかを確認できます。

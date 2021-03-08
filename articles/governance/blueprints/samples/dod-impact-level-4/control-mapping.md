@@ -1,14 +1,14 @@
 ---
 title: DoD 影響レベル 4 ブループリント サンプルのコントロール
-description: DoD 影響レベル 4 ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
-ms.date: 06/30/2020
+description: DoD 影響レベル 4 ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: a704731f4fe8e810235507fd84c90b17571a8442
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4345cd67cda5b00d89d9eae1f8abaedb40228759
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923290"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035106"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>DoD 影響レベル 4 ブループリント サンプルのコントロール マッピング
 
@@ -17,8 +17,7 @@ ms.locfileid: "87923290"
 以下のマッピングは、**DoD 影響レベル 4** のコントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 続いて、次を探して選択します: **[\[Preview\]:DoD Impact Level 4]** 組み込みのポリシー イニシアチブ。
 
 > [!IMPORTANT]
-> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールに対する[コンプライアンスを評価](../../../policy/how-to/get-compliance-data.md)するのに役立つ場合があります。ただし、多くの場合、コントロールと 1 つまたは複数のポリシーとの間に 1:1 または完全な一致はありません。 そのため、Azure Policy での**準拠**は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。
-> 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-4/control-mapping.md)に関するページを参照してください。
+> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールに対する[コンプライアンスの評価](../../../policy/how-to/get-compliance-data.md)に役立つ場合があります。ただし、多くの場合、コントロールと 1 つ以上のポリシーとの間には、一対一での一致、または完全な一致はありません。 そのため、Azure Policy での **準拠** は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-4/control-mapping.md)に関するページを参照してください。
 
 ## <a name="ac-2-account-management"></a>AC-2 アカウント管理
 
@@ -32,7 +31,7 @@ ms.locfileid: "87923290"
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) アカウント管理 | ロールベースのスキーム
 
-Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../../../role-based-access-control/overview.md) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 また、このブループリントでは、SQL Server と Service Fabric に対する Azure Active Directory 認証の使用状況を監査するための [Azure Policy](../../../policy/overview.md) 定義も割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。 さらに、このブルー プリントでは、カスタム RBAC ルールの使用状況を監査するための Azure Policy 定義が割り当てられます。 カスタム RBAC ルールの実装状況を把握することで、それらの実装ニーズや実装の適切性を確認することができます (カスタム RBAC ルールはエラーを起こしやすいので、これは非常に重要です)。
+Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../../../role-based-access-control/overview.md) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 また、このブループリントでは、SQL Server と Service Fabric に対する Azure Active Directory 認証の使用状況を監査するための [Azure Policy](../../../policy/overview.md) 定義も割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。 さらに、このブループリントでは、カスタム Azure RBAC 規則の使用状況を監査するための Azure Policy 定義が割り当てられます。 カスタム Azure RBAC 規則ではエラーが発生しやすいため、カスタム Azure RBAC 規則の実装状況を把握しておくと、実装の必要性や適切性の確認に役立ちます。
 
 - SQL Server に対して Azure Active Directory 管理者をプロビジョニングする必要がある
 - カスタム RBAC 規則の使用監査
@@ -85,28 +84,28 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 
 ## <a name="ac-23-data-mining"></a>AC-23 データ マイニング
 
-このブループリントでは、データ セキュリティ通知が適切に有効になっていることの確認に役立つポリシー定義を提供します。 さらに、このブループリントでは、SQL サーバーで監査と Advanced Data Security が構成されるようにします。
+このブループリントでは、データ セキュリティ通知が適切に有効になっていることの確認に役立つポリシー定義を提供します。 さらに、このブループリントでは、SQL Server で監査と Advanced Data Security が構成されるようにします。
 
-- Advanced Data Security を、SQL サーバー上で有効にする必要がある
-- Advanced Data Security を SQL マネージド インスタンス上で有効にする必要がある
+- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- Advanced Data Security を SQL Managed Instance 上で有効にする必要がある
 - SQL Server の Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
-- SQL マネージド インスタンスの Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
+- SQL Managed Instance の Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
 - SQL Server の高度なデータ セキュリティ設定で監査を有効にする必要がある
 - SQL Server の Advanced Data Security 設定で、管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある
-- SQL マネージド インスタンスの Advanced Data Security 設定で管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある
+- SQL Managed Instance の Advanced Data Security 設定で管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある
 - SQL Server の高度なデータ セキュリティ設定に、セキュリティ アラートを受信するためのメール アドレスが含まれている必要がある
-- SQL マネージド インスタンスの高度なデータ セキュリティ設定に、セキュリティ アラートを受信するためのメール アドレスが含まれている必要がある
+- SQL Managed Instance の高度なデータ セキュリティ設定に、セキュリティ アラートを受信するためのメール アドレスが含まれている必要がある
 
 ## <a name="au-3-2-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>AU-3 (2) 監査レコードの内容 | 計画的な監査レコードの内容の集中管理
 
 Azure Monitor で収集されたログ データは、Log Analytics ワークスペースに保存されるので、集中的に構成と管理が可能です。 このブループリントは、Azure 仮想マシンに対する Log Analytics エージェントのデプロイを監査および強制するための [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、イベントのログ記録の徹底を支援するものです。
 
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- Virtual Machine Scale Sets における Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
 - \[プレビュー\]:VM 用 Audit Log Analytics ワークスペース - 不一致の報告
-- \[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ
+- Linux 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
-- \[プレビュー\]:Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ
+- Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-5 監査処理エラーへの対応
@@ -116,18 +115,18 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 - 診断設定の監査
 - SQL Server の高度なデータ セキュリティ設定で監査を有効にする必要がある
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
-- Advanced Data Security を、SQL サーバー上で有効にする必要がある
+- Advanced Data Security を、SQL Server 上で有効にする必要がある
 
 ## <a name="au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>AU-6 (4) 監査の確認、分析、およびレポート | 集中的な確認と分析
 
 Azure Monitor で収集されたログ データは、Log Analytics ワークスペースに保存されるので、集中的にレポートと分析が可能です。 このブループリントは、Azure 仮想マシンに対する Log Analytics エージェントのデプロイを監査および強制するための [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、イベントのログ記録の徹底を支援するものです。
 
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- Virtual Machine Scale Sets における Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
 - \[プレビュー\]:VM 用 Audit Log Analytics ワークスペース - 不一致の報告
-- \[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ
+- Linux 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
-- \[プレビュー\]:Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ
+- Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) 監査の確認、分析、および報告 | 統合/スキャンおよび監視機能
@@ -135,35 +134,35 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 このブループリントは、仮想マシン、仮想マシン スケール セット、SQL Database サーバー、SQL Managed Instance サーバーの脆弱性評価分析を含んだ記録を監査するポリシー定義を提供します。 また、これらのポリシー定義では、診断ログの構成も監査され、Azure リソース内で実行された処理に関する分析情報が提供されます。 これらの分析情報には、デプロイされたリソースのセキュリティ状態に関するリアルタイムな情報が含まれます。これらの情報は、修復アクションの優先度を決定するのに役立ちます。 詳細な脆弱性スキャンと監視については、Azure Sentinel および Azure Security Center も活用することをお勧めします。
 
 - \[プレビュー\]:Virtual Machines で脆弱性評価を有効にする必要がある
-- 脆弱性評価を SQL サーバー上で有効にする必要がある
+- 脆弱性評価を SQL Server 上で有効にする必要がある
 - 診断設定の監査
-- 脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある
-- 脆弱性評価を SQL サーバー上で有効にする必要がある
+- 脆弱性評価を SQL Managed Instance 上で有効にする必要がある
+- 脆弱性評価を SQL Server 上で有効にする必要がある
 - 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
 - SQL データベースの脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- Virtual Machine Scale Sets における Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
 
 ## <a name="au-12-audit-generation"></a>AU-12 監査の生成
 
 このブループリントは、Azure 仮想マシンにおける Log Analytics エージェントのデプロイのほか、他の Azure リソース タイプの監査設定の構成を監査および実施するポリシー定義を提供します。
-また、これらのポリシー定義では、診断ログの構成も監査され、Azure リソース内で実行された処理に関する分析情報が提供されます。 さらに、SQL サーバーには監査と Advanced Data Security が構成されます。
+また、これらのポリシー定義では、診断ログの構成も監査され、Azure リソース内で実行された処理に関する分析情報が提供されます。 さらに、SQL Server には監査と Advanced Data Security が構成されます。
 
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- Virtual Machine Scale Sets における Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
 - \[プレビュー\]:VM 用 Audit Log Analytics ワークスペース - 不一致の報告
-- \[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ
+- Linux 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
-- \[プレビュー\]:Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ
+- Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 - 診断設定の監査
 - SQL Server の高度なデータ セキュリティ設定で監査を有効にする必要がある
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
-- Advanced Data Security を、SQL サーバー上で有効にする必要がある
-- SQL サーバーに対する Advanced Data Security のデプロイ
-- SQL サーバーでの監査のデプロイ
+- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- SQL Server に対する Advanced Data Security のデプロイ
+- SQL Server での監査のデプロイ
 - ネットワーク セキュリティ グループの診断設定のデプロイ
 
 ## <a name="au-12-01-audit-generation--system-wide--time-correlated-audit-trail"></a>AU-12 (01) 監査の生成 | システム全体/時間相関の監査証跡
@@ -250,7 +249,7 @@ Azure Site Recovery では、仮想マシンで実行中のワークロードが
 
 ## <a name="ir-6-2-incident-reporting--vulnerabilities-related-to-incidents"></a>IR-6 (2) インシデント レポート | インシデントに関連する脆弱性
 
-このブループリントは、仮想マシン、仮想マシン スケール セット、および SQL サーバーの脆弱性評価分析を含んだ記録を監査するポリシー定義を提供します。 これらの分析情報には、デプロイされたリソースのセキュリティ状態に関するリアルタイムな情報が含まれます。これらの情報は、修復アクションの優先度を決定するのに役立ちます。
+このブループリントは、仮想マシン、仮想マシン スケール セット、および SQL Server の脆弱性評価分析を含んだ記録を監査するポリシー定義を提供します。 これらの分析情報には、デプロイされたリソースのセキュリティ状態に関するリアルタイムな情報が含まれます。これらの情報は、修復アクションの優先度を決定するのに役立ちます。
 
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
@@ -260,11 +259,11 @@ Azure Site Recovery では、仮想マシンで実行中のワークロードが
 
 ## <a name="ra-5-vulnerability-scanning"></a>RA-5 脆弱性のスキャン
 
-このブループリントは、オペレーティング システムの脆弱性、SQL の脆弱性、仮想マシンの脆弱性を Azure Security Center で監視する [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、情報システムの脆弱性管理を支援するものです。 Azure Security Center では、デプロイされた Azure リソースのセキュリティ状態をリアルタイムに分析するためのレポート機能が提供されます。 このブループリントでは、他にも、SQL サーバー上で Advanced Data Security を監査および強制するポリシー定義が割り当てられます。 Advanced Data Security には、脆弱性の評価機能と高度な脅威に対する保護機能が含まれており、デプロイ済みのリソースに存在する脆弱性について理解を深めるうえで役立ちます。
+このブループリントは、オペレーティング システムの脆弱性、SQL の脆弱性、仮想マシンの脆弱性を Azure Security Center で監視する [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、情報システムの脆弱性管理を支援するものです。 Azure Security Center では、デプロイされた Azure リソースのセキュリティ状態をリアルタイムに分析するためのレポート機能が提供されます。 このブループリントでは、他にも、SQL Server 上で Advanced Data Security を監査および強制するポリシー定義が割り当てられます。 Advanced Data Security には、脆弱性の評価機能と高度な脅威に対する保護機能が含まれており、デプロイ済みのリソースに存在する脆弱性について理解を深めるうえで役立ちます。
 
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
-- Advanced Data Security を、SQL サーバー上で有効にする必要がある
-- SQL サーバーに対する Advanced Data Security のデプロイ
+- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- SQL Server に対する Advanced Data Security のデプロイ
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - 使用している仮想マシン上のセキュリティ構成の脆弱性を修復する必要がある
 - SQL データベースの脆弱性を修復する必要がある
@@ -315,8 +314,8 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 このブループリントは、特定の暗号化コントロールを適用し、脆弱な暗号化設定の使用を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、保存情報の保護のための暗号化コントロールの使用に関するポリシーの実施を支援するものです。 最適でない暗号化構成が Azure リソースのどこに存在しているかを把握することにより、適切な是正措置を実施し、リソースの構成を情報セキュリティ ポリシーに準拠させることができます。 具体的には、このブループリントにより割り当てられるポリシー定義では、Data Lake Storage アカウントの暗号化と SQL データベースでの Transparent Data Encryption が必須になるほか、SQL データベース、仮想マシン ディスク、Automation アカウント変数の暗号化に漏れがないかどうかが監査されます。
 
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
-- Advanced Data Security を、SQL サーバー上で有効にする必要がある
-- SQL サーバーに対する Advanced Data Security のデプロイ
+- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- SQL Server に対する Advanced Data Security のデプロイ
 - SQL DB Transparent Data Encryption のデプロイ
 - 仮想マシンでディスク暗号化を適用する必要がある
 - Data Lake Store アカウントの暗号化を要求する
@@ -336,11 +335,8 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 
 ## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06) 欠陥の修復 | 以前のバージョンのソフトウェアおよびファームウェアの削除
 
-このブループリントでは、最新バージョンの .NET Framework、HTTP、Java、PHP、Python、および TLS がアプリに使用されていることの確認に役立つポリシー定義を割り当てます。 また、このブループリントは、Kubernetes サービスが脆弱性のないバージョンにアップグレードされることを保証するポリシー定義も割り当てます。
+このブループリントでは、最新バージョンの HTTP、Java、PHP、Python、および TLS がアプリに使用されていることの確認に役立つポリシー定義を割り当てます。 また、このブループリントは、Kubernetes サービスが脆弱性のないバージョンにアップグレードされることを保証するポリシー定義も割り当てます。
 
-- API アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
-- 関数アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
-- Web アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
 - API アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
 - 関数アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
 - Web アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
@@ -348,7 +344,6 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - 関数アプリの一部として使用された "Java のバージョン" が最新であることを確認する
 - Web アプリの一部として使用された "Java のバージョン" が最新であることを確認する
 - API アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
-- 関数アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
 - Web アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
 - API アプリの一部として使用された "Python のバージョン" が最新であることを確認する
 - 関数アプリの一部として使用された "Python のバージョン" が最新であることを確認する
@@ -356,7 +351,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - API アプリでは最新の TLS バージョンを使用する必要がある
 - 関数アプリでは最新の TLS バージョンを使用する必要がある
 - Web アプリでは最新の TLS バージョンを使用する必要がある
-- \[プレビュー\]:Kubernetes Service を脆弱性のない Kubernetes バージョンにアップグレードする必要がある
+- Kubernetes Service を脆弱性のない Kubernetes バージョンにアップグレードする必要がある
 
 ## <a name="si-3-malicious-code-protection"></a>SI-3 悪意のあるコードからの保護
 
@@ -378,19 +373,19 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 このブループリントは、さまざまな Azure リソースを対象にログ記録とデータ セキュリティを監査および適用することによって、システムの監視を支援するものです。 具体的には、割り当てられるポリシーによって、Log Analytics エージェントのデプロイが監査および実施されるほか、SQL データベース、ストレージ アカウント、ネットワーク リソースの高度なセキュリティ設定が監査および適用されます。 これらの機能は、異常な動作や攻撃の兆候の検出に役立つので、適切な措置を講じることができるようになります。
 
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- Virtual Machine Scale Sets における Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
 - \[プレビュー\]:VM 用 Audit Log Analytics ワークスペース - 不一致の報告
-- \[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ
+- Linux 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
-- \[プレビュー\]:Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ
+- Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
-- Advanced Data Security を、SQL サーバー上で有効にする必要がある
-- SQL サーバーに対する Advanced Data Security のデプロイ
+- Advanced Data Security を、SQL Server 上で有効にする必要がある
+- SQL Server に対する Advanced Data Security のデプロイ
 - ストレージ アカウントに対する Advanced Threat Protection のデプロイ
-- SQL サーバーでの監査のデプロイ
+- SQL Server での監査のデプロイ
 - 仮想ネットワーク作成時の Network Watcher のデプロイ
-- SQL サーバーでの脅威検出のデプロイ
+- SQL Server での脅威検出のデプロイ
 - 許可される場所
 - リソース グループが許可される場所
 
@@ -400,7 +395,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 
 - サブスクリプション所有者に対する重要度 - 高のアラートのメール通知を有効にする必要がある
 - 自分のサブスクリプションに対し、セキュリティ連絡先のメール アドレスを指定する必要がある 
-- SQL マネージド インスタンスの Advanced Data Security 設定で管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある 
+- SQL Managed Instance の Advanced Data Security 設定で管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある 
 - SQL Server の Advanced Data Security 設定で、管理者とサブスクリプションの所有者に対するメール通知を有効にする必要がある 
 - 自分のサブスクリプションに対し、セキュリティ連絡先の電話番号を指定する必要がある
 - SQL Server の高度なデータ セキュリティ設定に、セキュリティ アラートを受信するためのメール アドレスが含まれている必要がある

@@ -1,21 +1,21 @@
 ---
 title: チュートリアル - テンプレートのリソースにタグを追加する
-description: Azure Resource Manager テンプレートでデプロイするリソースにタグを追加します。 タグを使用すると、リソースを論理的に整理できます。
+description: Azure Resource Manager テンプレート (ARM テンプレート) でデプロイするリソースにタグを追加します。 タグを使用すると、リソースを論理的に整理できます。
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: ce25047ae93a332b62b7e785b23da5794031a98b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: ''
+ms.openlocfilehash: 625a88c0ee946b1ca67737d9cc67b638699d12f0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497513"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107007"
 ---
 # <a name="tutorial-add-tags-in-your-arm-template"></a>チュートリアル:ARM テンプレートにタグを追加する
 
-このチュートリアルでは、Azure Resource Manager (ARM) テンプレートでリソースにタグを追加する方法について説明します。 [タグ](../management/tag-resources.md)は、リソースを論理的に整理するために役立ちます。 タグ値はコスト レポートに表示されます。 このチュートリアルの所要時間は **8 分**です。
+このチュートリアルでは、Azure Resource Manager テンプレート (ARM テンプレート) でリソースにタグを追加する方法について説明します。 [タグ](../management/tag-resources.md)は、リソースを論理的に整理するために役立ちます。 タグ値はコスト レポートに表示されます。 このチュートリアルの所要時間は **8 分** です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,7 +43,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 次はテンプレートをデプロイし、結果を確認します。
 
-まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、**templateFile** 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
+まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、`templateFile` 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -72,7 +72,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> デプロイに失敗した場合は、デプロイ コマンドで **debug** スイッチを使用してデバッグ ログを表示します。  **verbose** スイッチを使用して、詳細なデバッグ ログを表示することもできます。
+> デプロイに失敗した場合は、`verbose` スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、`debug` スイッチを使用してください。
 
 ## <a name="verify-deployment"></a>デプロイの確認
 

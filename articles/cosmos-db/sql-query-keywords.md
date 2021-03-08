@@ -3,17 +3,19 @@ title: Azure Cosmos DB の SQL キーワード
 description: Azure Cosmos DB の SQL キーワードについて説明します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 01/20/2021
 ms.author: tisande
-ms.openlocfilehash: f00e757f9b51da850c49924f6ae49bf00c9c53d1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4711401172c4a2b224c231db4a773e0c4219d3a7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496683"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659836"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB でのキーワード
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、Azure Cosmos DB の SQL クエリで使用できるキーワードについて説明します。
 
@@ -105,6 +107,73 @@ FROM f
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 ```
+
+## <a name="like"></a>LIKE
+
+特定の文字列が指定されたパターンに一致するかどうかによって、ブール値を返します。 パターンは、標準の文字とワイルドカード文字を含むことができます。 `LIKE` キーワードまたは [RegexMatch](sql-query-regexmatch.md) システム関数のいずれかを使用して、論理的に等価のクエリを記述できます。 どちらを選択しても、インデックスの使用率は同じになります。 したがって、正規表現よりも構文を選ぶ場合は、`LIKE` を使用する必要があります。
+
+> [!NOTE]
+> `LIKE` はインデックスを利用できるため、`LIKE` を使用して比較するプロパティの[範囲インデックスを作成](./index-policy.md)する必要があります。
+
+LIKE で使用できるワイルドカード文字は次のとおりです。
+
+| ワイルドカード文字 | 説明                                                  | 例                                     |
+| -------------------- | ------------------------------------------------------------ | ------------------------------------------- |
+| %                    | 0 個以上の文字で構成される任意の文字列                      | WHERE   c.description LIKE   “%SO%PS%”      |
+| _ (アンダースコア)     | 任意の 1 文字                                       | WHERE   c.description LIKE   “%SO_PS%”      |
+| [ ]                  | 指定した範囲 ([a-f]) またはセット ([abcdef]) 内にある任意の 1 文字。 | WHERE   c.description LIKE   “%SO[t-z]PS%”  |
+| [^]                  | 指定した範囲 ([^a-f]) またはセット ([^abcdef]) 内にない任意の 1 文字。 | WHERE   c.description LIKE   “%SO[^abc]PS%” |
+
+
+### <a name="using-like-with-the--wildcard-character"></a>LIKE を % ワイルドカード文字と共に使用する
+
+`%` 文字は、0 個以上の文字で構成される任意の文字列と一致します。 たとえば、パターンの先頭と末尾に `%` を配置すると、次のクエリでは、説明に `fruit` が含まれているすべての項目が返されます。
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE "%fruit%"
+```
+
+パターンの先頭にのみ `%` 文字を使用した場合は、説明が `fruit` で始まる項目のみが返されます。
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE "fruit%"
+```
+
+
+### <a name="using-not-like"></a>NOT LIKE を使用する
+
+次の例では、説明に `fruit` が含まれないすべての項目が返されます。
+
+```sql
+SELECT *
+FROM c
+WHERE c.description NOT LIKE "%fruit%"
+```
+
+### <a name="using-the-escape-clause"></a>ESCAPE 句を使用する
+
+ESCAPE 句を使用して、1 つまたは複数のワイルドカード文字を含むパターンを検索できます。 たとえば、文字列 `20-30%` が含まれている説明を検索する場合は、`%` をワイルドカード文字として解釈するのは望ましくありません。
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE '%20-30!%%' ESCAPE '!'
+```
+
+### <a name="using-wildcard-characters-as-literals"></a>ワイルドカード文字をリテラルとして使用する
+
+ワイルドカード文字を角かっこで囲むと、リテラル文字として扱うことができます。 ワイルドカード文字を角かっこで囲む場合は、特殊な属性が削除されます。 次に例をいくつか示します。
+
+| パターン           | 説明 |
+| ----------------- | ------- |
+| LIKE   “20-30[%]” | 20-30%  |
+| LIKE   “[_]n”     | _n      |
+| LIKE   “[ [ ]”    | [       |
+| LIKE   “]”        | ]       |
 
 ## <a name="in"></a>IN
 

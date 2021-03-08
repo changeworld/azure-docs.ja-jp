@@ -5,14 +5,14 @@ author: sakthi-vetrivel
 ms.custom: fasttrack-edit
 ms.author: suvetriv
 ms.topic: tutorial
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.date: 04/24/2020
-ms.openlocfilehash: ae2c1072b9490931609dd61f1cac2a47f1cffef3
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 61347d052aeb5d563f49275d8f072d1079b94f26
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469951"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634806"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターを削除する
 
@@ -44,13 +44,13 @@ az login
 
 ```bash
 CLUSTER=yourclustername
-RESOURCE_GROUP=yourresourcegroup
+RESOURCEGROUP=yourresourcegroup
 ```
 
 これらの値を使用して、次のようにクラスターを削除します。
 
 ```bash
-az aro delete --resource-group $RESOURCE_GROUP --name $CLUSTER
+az aro delete --resource-group $RESOURCEGROUP --name $CLUSTER
 ```
 
 次に、クラスターを削除するかどうかを確認するメッセージが表示されます。 `y` で確認した後、クラスターが削除されるまでに数分かかります。 コマンドが終了すると、リソース グループ全体とそれに含まれているすべてのリソース (クラスターなど) が削除されます。
@@ -61,4 +61,4 @@ az aro delete --resource-group $RESOURCE_GROUP --name $CLUSTER
 > [!div class="checklist"]
 > * Azure Red Hat OpenShift 4 クラスターを削除する
 
-OpenShift の使用の詳細については、公式の [Red Hat OpenShift ドキュメント](https://www.openshift.com/try)を参照してください
+OpenShift の使用の詳細については、公式の [Red Hat OpenShift ドキュメント](https://docs.openshift.com/container-platform/4.6/welcome/index.html)を参照してください

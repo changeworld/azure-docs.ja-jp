@@ -9,20 +9,19 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 05/20/2020
+ms.date: 01/27/2021
 ms.author: curtand
-ms.openlocfilehash: 795c68fc063d98bdee6ccf59dba6ee718dc92d03
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: d499417414e560bdaa3fcd0a12255946aca413d9
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323027"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054841"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>中国のパブリック クラウドでの Android の Microsoft Authenticator
 
 Android 用の Microsoft Authenticator アプリは、中国でダウンロードが可能です。 中国では Google Play ストアが利用できないため、アプリを他の中国のアプリ マーケットプレースからダウンロードする必要があります。 Android 用の Microsoft Authenticator アプリは、現在、中国の次のストアでご利用いただけます。
 
-- [Baidu](https://shouji.baidu.com/software/26638379.html)
 - [Lenovo](https://www.lenovomm.com/appdetail/com.azure.authenticator/20197724)
 - [Huawei](https://appgallery.cloud.huawei.com/uowap/index.html#/detailApp/C100262999?source=appshare&subsource=C100262999&shareTo=weixin&locale=zh_CN)
 - [Samsung Galaxy Store](http://apps.samsung.com/appquery/appDetail.as?appId=com.azure.authenticator)
@@ -57,6 +56,7 @@ TOTP/確認コードのみを使用した MFA の登録/認証 | はい
 電話によるサインインの登録 | いいえ
 プッシュ通知を使用した既存の電話によるサインイン | いいえ
 認証要求に対して手動チェックを実行することによる、既存の電話によるサインインの確認 | はい
+個人用 Microsoft アカウント用の認証アプリのサポート | いいえ
 
 ## <a name="next-steps"></a>次のステップ
 

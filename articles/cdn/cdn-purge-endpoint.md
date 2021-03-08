@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: allensu
-ms.openlocfilehash: cc09c35ba5499c6e911ebd7dd23482ef30f931da
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 4fe4b99f9635ff254f1a75e03f13d7e6ffcb3c49
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192537"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366519"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Azure CDN エンドポイントの消去
 ## <a name="overview"></a>概要
@@ -57,7 +57,7 @@ Azure CDN エッジ ノードは、アセットの Time-to-Live (TTL) が期限�
     3. **ルート ドメインの消去**: パスに "/" を付けてエンドポイントのルートを削除します。
    
    > [!TIP]
-   > 消去にはパスの指定が必要であり、パスは次の[正規表現](/dotnet/standard/base-types/regular-expression-language-quick-reference)に準拠する相対 URL にする必要があります。 **すべての消去**および**ワイルドカードによる消去**は、現在 **Azure CDN from Akamai** ではサポートされていないので注意してください。
+   > 消去にはパスの指定が必要であり、パスは次の[正規表現](/dotnet/standard/base-types/regular-expression-language-quick-reference)に準拠する相対 URL にする必要があります。 **すべての消去** および **ワイルドカードによる消去** は、現在 **Azure CDN from Akamai** ではサポートされていないので注意してください。
    > > 単一 URL の消去 `@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
    > > クエリ文字列 `@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
    > > ワイルドカードによる消去 `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";` 
@@ -69,11 +69,11 @@ Azure CDN エッジ ノードは、アセットの Time-to-Live (TTL) が期限�
     ![[消去] ボタン](./media/cdn-purge-endpoint/cdn-purge-button.png)
 
 > [!IMPORTANT]
-> 消去要求の処理にかかる時間は、**Microsoft の Azure CDN** で約 10 分、**Verizon の Azure CDN** (Standard と Premium) で約 2 分、**Akamai の Azure CDN** で約 10 秒です。  Azure CDN には、プロファイル レベルで常に同時の消去要求が 50 件という上限があります。 
+> 消去要求の処理にかかる時間は、**Microsoft の Azure CDN** で約 10 分、**Verizon の Azure CDN** (Standard と Premium) で約 2 分、**Akamai の Azure CDN** で約 10 秒です。  Azure CDN には、どの時点においても、プロファイル レベルでの同時消去要求が 100 件という上限があります。 
 > 
 > 
 
 ## <a name="see-also"></a>関連項目
 * [Azure CDN エンドポイント上のアセットを事前に読み込む](cdn-preload-endpoint.md)
-* [Azure CDN REST API リファレンス - エンドポイントの消去または事前読み込み](/rest/api/cdn/endpoints)
+* [Azure CDN REST API リファレンス - エンドポイントの消去または事前読み込み](/rest/api/cdn/cdn/endpoints)
 

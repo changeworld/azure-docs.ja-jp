@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: b963cc459094e823499e962736550dcea2345ba2
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 59329fccda77f16e4a595e9b1789ef684c5cbf95
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854113"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98256425"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager
 次の制限は、サブスクリプションごとにリージョン単位で **Azure Resource Manager** デプロイ モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
@@ -34,7 +34,7 @@ ms.locfileid: "88854113"
 | 仮想マシンごとのプライベート IP アドレス |256 |
 | ネットワーク インターフェイスごとのパブリック IP アドレス |256 |
 | 仮想マシンごとのパブリック IP アドレス |256 |
-| [仮想マシンまたはロール インスタンスの NIC ごとの同時 TCP または UDP フロー数](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500,000 |
+| [仮想マシンまたはロール インスタンスの NIC ごとの同時 TCP または UDP フロー数](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-active-connections-recommendations) |500,000 |
 | ネットワーク インターフェイス カード |65,536 |
 | ネットワーク セキュリティ グループ |5,000 |
 | NSG あたりの NSG ルール数 |1,000 |
@@ -55,6 +55,7 @@ ms.locfileid: "88854113"
 | パブリック IP アドレス<sup>1</sup> | Basic で 10。 | サポートにお問い合せください。 |
 | 静的パブリック IP アドレス<sup>1</sup> | Basic で 10。 | サポートにお問い合せください。 |
 | 標準パブリック IP アドレス<sup>1</sup> | 10 | サポートにお問い合せください。 |
+| [リソース グループあたりのパブリック IP アドレス数](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md#microsoftnetwork) | 800 | サポートにお問い合せください。 | 
 | パブリック IP プレフィックス | サブスクリプション内の標準パブリック IP の数によって制限されます | サポートにお問い合せください。 |
 | パブリック IP プレフィックス長 | /28 | サポートにお問い合せください。 |
 
@@ -69,13 +70,13 @@ ms.locfileid: "88854113"
 |-----------------------------------------|-------------------------------|
 | ロード バランサー                          | 1,000                         |
 | リソースあたりのルール数                      | 1,500                         |
-| NIC あたりのルール数 (1 つの NIC のすべての IP にわたる) | 該当なし                           |
+| NIC あたりのルール数 (1 つの NIC のすべての IP にわたる) | 300                           |
 | フロントエンド IP 構成              | 600                           |
 | バックエンド プールのサイズ                       | 1,000 IP 構成、単一仮想ネットワーク |
-| ロード バランサーあたりのバックエンド リソース数 <sup>1<sup> | 150                   |
+| ロード バランサーあたりのバックエンド リソース数 <sup>1<sup> | 250                   |
 | 高可用性ポート                 | 内部フロント エンドごとに 1 個       |
 | Load Balancer あたりのアウトバウンド規則数        | 600                           |
-| [TCP アイドル タイムアウト](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 分 / 30 分          |
+| VM ごとのロード バランサー                   | 2 (パブリックに 1 つおよび内部に 1 つ)   |
 
 <sup>1</sup>制限は、最大 150 のリソース (スタンドアロンの仮想マシン リソース、可用性セット リソース、仮想マシン スケール セット配置グループの任意の組み合わせ) です。
 
@@ -85,12 +86,13 @@ ms.locfileid: "88854113"
 |-----------------------------------------|------------------------------|
 | ロード バランサー                          | 1,000                        |
 | リソースあたりのルール数                      | 250                          |
-| NIC あたりのルール数 (1 つの NIC のすべての IP にわたる) | 該当なし                          |
+| NIC あたりのルール数 (1 つの NIC のすべての IP にわたる) | 300                          |
 | フロントエンド IP 構成              | 200                          |
 | バックエンド プールのサイズ                       | 300 IP 構成、単一の可用性セット |
-| Load Balancer あたりの可用性セット数     | 150                          |
+| Load Balancer あたりの可用性セット数     | 1                            |
+| VM ごとのロード バランサー                   | 2 (パブリックに 1 つおよび内部に 1 つ)  |
 
-<a name="virtual-networking-limits-classic"></a>次の制限は、サブスクリプションごとに**クラシック** デプロイ モデルを通じて管理されるネットワーク リソースのみに適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
+<a name="virtual-networking-limits-classic"></a>次の制限は、サブスクリプションごとに **クラシック** デプロイ モデルを通じて管理されるネットワーク リソースのみに適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
@@ -105,6 +107,6 @@ ms.locfileid: "88854113"
 | ルート テーブルあたりのユーザー定義ルート |400 |400 |
 | パブリック IP アドレス (動的) |500 |500 |
 | 予約済みパブリック IP アドレス |500 |500 |
-| デプロイあたりのパブリック VIP |5 |サポートにお問い合せください |
-| 展開あたりのプライベート VIP (内部負荷分散) |1 |1 |
+| デプロイあたりのパブリック IP |5 |サポートにお問い合せください |
+| デプロイあたりのプライベート IP (内部負荷分散) |1 |1 |
 | エンドポイント アクセス制御リスト (ACL) |50 |50 |

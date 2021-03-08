@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/07/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: fbf45ff2268c81a45bbbe844ffe8a7a2069793cd
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 60bdc5564726a44344f4a49654725a0c4c1249ab
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231007"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96993073"
 ---
 現在のところ、次のリージョンでのみ使用できます。
 
@@ -22,5 +22,12 @@ ms.locfileid: "86231007"
 - 米国東部
 - 米国東部 2
 - 米国中南部
+- カナダ中部 
+- カナダ東部
+- フランス中部
+- 西ヨーロッパ
+- 北ヨーロッパ
+- 東日本
+- 西日本
 - US Gov バージニア州
 - US Gov アリゾナ

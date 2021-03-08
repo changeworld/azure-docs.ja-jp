@@ -3,15 +3,15 @@ title: Durable Functions の概要 - Azure
 description: Azure Functions の Durable Functions 拡張機能の概要です。
 author: cgillum
 ms.topic: overview
-ms.date: 03/12/2020
+ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: d1c4f62f19a36867ebc85a98b0cd38bbbf8ce757
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 2079a3a7c9ce6817186e743bb09d31facdecf0e7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660684"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97931723"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions とは
 
@@ -21,11 +21,13 @@ ms.locfileid: "88660684"
 
 Durable Functions では、現在次の言語をサポートしています。
 
-* **C#** : [プリコンパイル済みクラス ライブラリ](../functions-dotnet-class-library.md)と [C# スクリプト](../functions-reference-csharp.md)の両方。
+* **C#**: [プリコンパイル済みクラス ライブラリ](../functions-dotnet-class-library.md)と [C# スクリプト](../functions-reference-csharp.md)の両方。
 * **JavaScript**: Azure Functions ランタイムのバージョン 2.x でのみサポートされています。 Durable Functions 拡張機能のバージョン 1.7.0 以降が必要です。 
-* **Python**: Durable Functions 拡張機能のバージョン 1.8.5 以降が必要です。 
-* **F#** : プリコンパイル済みクラス ライブラリと F# スクリプト。 F# スクリプトは、Azure Functions ランタイムのバージョン 1.x でのみサポートされています。
+* **Python**: Durable Functions 拡張機能のバージョン 2.3.1 以降が必要です。 Durable Functions のサポートは、現在パブリック プレビューの段階です。
+* **F#**: プリコンパイル済みクラス ライブラリと F# スクリプト。 F# スクリプトは、Azure Functions ランタイムのバージョン 1.x でのみサポートされています。
 * **PowerShell**: Durable Functions のサポートは、現在パブリック プレビューの段階です。 Azure Functions ランタイムのバージョン 3.x と PowerShell 7 でのみサポートされています。 Durable Functions 拡張機能のバージョン 2.2.2 以降が必要です。 現在サポートされているパターンは次のとおりです。[関数チェーン](#chaining)、[ファンアウトおよびファンイン](#fan-in-out)、[非同期 HTTP API](#async-http)。
+
+最新の機能と更新プログラムにアクセスするには、最新バージョンの Durable Functions 拡張機能と言語固有の Durable Functions ライブラリを使用することをお勧めします。 [Durable Functions のバージョン](durable-functions-versions.md)の詳細情報を参照してください。
 
 Durable Functions では、すべての [Azure Functions 言語](../supported-languages.md)をサポートすることを目標としています。 追加言語をサポートするための最新の作業状況については、[Durable Functions の問題の一覧](https://github.com/Azure/azure-functions-durable-extension/issues)を参照してください。
 
@@ -42,7 +44,7 @@ Durable Functions の主なユース ケースは、サーバーレス アプリ
 * [人による操作](#human)
 * [アグリゲーター (ステートフル エンティティ)](#aggregator)
 
-### <a name="pattern-1-function-chaining"></a><a name="chaining"></a>パターン #1: 関数チェーン
+### <a name="pattern-1-function-chaining"></a>パターン #1: 関数チェーン
 
 関数チェーン パターンでは、一連の関数が特定の順序で実行されます。 このパターンでは、ある関数の出力が、別の関数の入力に適用されます。
 
@@ -135,7 +137,7 @@ Invoke-ActivityFunction -FunctionName 'F4' -Input $Z
 
 ---
 
-### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>パターン #2: ファンアウト/ファンイン
+### <a name="pattern-2-fan-outfan-in"></a>パターン #2: ファンアウト/ファンイン
 
 ファンアウト/ファンイン パターンでは、複数の関数を並列で実行し、すべての関数が完了するまで待機します。 複数の関数から返される結果に基づいて集計作業が行われることは、よくあることです。
 
@@ -255,13 +257,13 @@ Invoke-ActivityFunction -FunctionName 'F3' -Input $Total
 > [!NOTE]
 > まれな状況ですが、アクティビティ関数の完了後、完了がオーケストレーション履歴に保存される前の時間帯にクラッシュが発生する可能性があります。 この場合、アクティビティ関数は、プロセス復旧後に最初から再実行されます。
 
-### <a name="pattern-3-async-http-apis"></a><a name="async-http"></a>パターン #3: 非同期 HTTP API
+### <a name="pattern-3-async-http-apis"></a>パターン #3: 非同期 HTTP API
 
 非同期 HTTP API パターンでは、外部クライアントとの間の実行時間の長い操作の状態を調整するという問題に対処します。 このパターンを実装する一般的な方法は、HTTP エンドポイントによって実行時間の長いアクションをトリガーすることです。 その後、ポーリングによって操作が完了したことを認識できる状態エンドポイントにクライアントをリダイレクトします。
 
 ![HTTP API パターンの図](./media/durable-functions-concepts/async-http-api.png)
 
-Durable Functions には、このパターン向けの**組み込みサポート**が用意されており、長時間の関数の実行を操作するために記述する必要があるコードを簡略化できます。または、そのようなコードの記述が不要になります。 たとえば、Durable Functions のクイック スタート サンプル ([C#](durable-functions-create-first-csharp.md) と [JavaScript](quickstart-js-vscode.md)) に、新しいオーケストレーター関数のインスタンスを開始するために使用できる、シンプルな REST コマンドが示されています。 インスタンスが開始されると、この拡張機能によって、オーケストレーター関数の状態をクエリする Webhook HTTP API が公開されます。 
+Durable Functions には、このパターン向けの **組み込みサポート** が用意されており、長時間の関数の実行を操作するために記述する必要があるコードを簡略化できます。または、そのようなコードの記述が不要になります。 たとえば、Durable Functions のクイック スタート サンプル ([C#](durable-functions-create-first-csharp.md) と [JavaScript](quickstart-js-vscode.md)) に、新しいオーケストレーター関数のインスタンスを開始するために使用できる、シンプルな REST コマンドが示されています。 インスタンスが開始されると、この拡張機能によって、オーケストレーター関数の状態をクエリする Webhook HTTP API が公開されます。 
 
 次の例は、オーケストレーターを開始し、その状態をクエリする REST コマンドを示しています。 わかりやすくするため、この例ではプロトコルの細部をいくらか省略しています。
 
@@ -403,7 +405,7 @@ main = df.Orchestrator.create(orchestrator_function)
 
 要求が受信されると、そのジョブ ID 用の新しいオーケストレーション インスタンスが作成されます。 インスタンスは、条件が満たされてループが終了するまで、状態をポーリングします。 ポーリング間隔は、永続タイマーによって制御されます。 その後、さらに作業を実行するか、オーケストレーションを終了できます。 `nextCheck` が `expiryTime` を超えると、モニターが終了します。
 
-### <a name="pattern-5-human-interaction"></a><a name="human"></a>パターン #5: 人による操作
+### <a name="pattern-5-human-interaction"></a>パターン #5: 人による操作
 
 多くの自動化されたプロセスには、何らかの人による操作が含まれます。 自動化されたプロセスに人による操作が含まれる場合に問題になるのが、人は必ずしもクラウド サービスのように可用性と応答性が高くないということです。 自動化されたプロセスでは、タイムアウトと補正ロジックを使用して、この操作を許容する必要があります。
 
@@ -556,7 +558,7 @@ async def main(client: str):
 
 ### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>パターン #6:アグリゲーター (ステートフル エンティティ)
 
-6 番目のパターンは、ある期間のイベント データを 1 つのアドレス可能な*エンティティ* に集計することに関連しています。 このパターンでは、集計されるデータは、複数のソースから取得されるか、バッチで配信されるか、または長期間にわたって分散される可能性があります。 アグリゲーターがイベント データの到着時にイベント データに対してアクションを行ったり、外部クライアントが集計されたデータをクエリする必要が生じたりする場合があります。
+6 番目のパターンは、ある期間のイベント データを 1 つのアドレス可能な *エンティティ* に集計することに関連しています。 このパターンでは、集計されるデータは、複数のソースから取得されるか、バッチで配信されるか、または長期間にわたって分散される可能性があります。 アグリゲーターがイベント データの到着時にイベント データに対してアクションを行ったり、外部クライアントが集計されたデータをクエリする必要が生じたりする場合があります。
 
 ![アグリゲーターの図](./media/durable-functions-concepts/aggregator.png)
 
@@ -639,7 +641,7 @@ module.exports = df.entity(function(context) {
 
 ---
 
-クライアントは、[エンティティ クライアント バインディング](durable-functions-bindings.md#entity-client)を使用して、エンティティ関数の*操作*をエンキューすることができます ("シグナル通知" とも呼ばれる)。
+クライアントは、[エンティティ クライアント バインディング](durable-functions-bindings.md#entity-client)を使用して、エンティティ関数の *操作* をエンキューすることができます ("シグナル通知" とも呼ばれる)。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -695,7 +697,7 @@ Durable Functions 拡張機能の背後には、コードでワークフロー�
 
 ## <a name="billing"></a>課金
 
-Durable Functions は Azure Functions と同じように課金されます。 詳細については、[Azure Functions の価格](https://azure.microsoft.com/pricing/details/functions/)に関するページを参照してください。 Azure Functions の[従量課金プラン](../functions-scale.md#consumption-plan)でオーケストレーター関数を実行する場合は、注意する必要がある課金動作がいくつかあります。 これらの動作の詳細については、「[Durable Functions の課金](durable-functions-billing.md)」の記事を参照してください。
+Durable Functions は Azure Functions と同じように課金されます。 詳細については、[Azure Functions の価格](https://azure.microsoft.com/pricing/details/functions/)に関するページを参照してください。 Azure Functions の[従量課金プラン](../consumption-plan.md)でオーケストレーター関数を実行する場合は、注意する必要がある課金動作がいくつかあります。 これらの動作の詳細については、「[Durable Functions の課金](durable-functions-billing.md)」の記事を参照してください。
 
 ## <a name="jump-right-in"></a>すぐに始める
 

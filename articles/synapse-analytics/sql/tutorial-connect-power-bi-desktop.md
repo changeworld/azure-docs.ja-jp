@@ -1,30 +1,30 @@
 ---
-title: SQL オンデマンドを Power BI Desktop に接続してレポートを作成する
-description: このチュートリアルでは、Azure Synapse Analytics の SQL オンデマンドを Power BI Desktop に接続し、ビューに基づいてデモ レポートを作成する方法について説明します。
+title: チュートリアル:サーバーレス SQL プールを Power BI Desktop に接続してレポートを作成する
+description: このチュートリアルでは、Azure Synapse Analytics のサーバーレス SQL プールを Power BI Desktop に接続し、ビューに基づいてデモ レポートを作成する方法について説明します。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 325a2015e4107a20dfaec22e904cf3cc6ce3085d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: stefanazaric
+ms.reviewer: jrasnick
+ms.openlocfilehash: 8dd3edd25d21bfcd0fde1bc8b5f103877d968c8a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089177"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119987"
 ---
-# <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>チュートリアル:SQL オンデマンドを Power BI Desktop で使用してレポートを作成する
+# <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>チュートリアル:Power BI Desktop でサーバーレス SQL プールを使用してレポートを作成する
 
-このチュートリアルでは、以下の内容を学習します。
+このチュートリアルでは、次の作業を行う方法について説明します。
 
 > [!div class="checklist"]
 >
 > - デモ データベースの作成
 > - レポートに使用するビューの作成
-> - SQL オンデマンドへの Power BI Desktop の接続
+> - サーバーレス SQL プールへの Power BI Desktop の接続
 > - ビューに基づくレポートの作成
 
 ## <a name="prerequisites"></a>前提条件
@@ -32,7 +32,7 @@ ms.locfileid: "87089177"
 このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
 - [Power BI Desktop](https://powerbi.microsoft.com/downloads/) - データを視覚化してレポートを作成するために必要です。
-- [Azure Synapse ワークスペース](https://docs.microsoft.com/azure/synapse-analytics/quickstart-synapse-studio) - データベース、外部データ ソース、およびビューを作成するために必要です。
+- [Azure Synapse ワークスペース](../get-started-create-workspace.md) - データベース、外部データ ソース、およびビューを作成するために必要です。
 
 省略可能:
 
@@ -42,8 +42,8 @@ ms.locfileid: "87089177"
 
 | パラメーター                                 | 説明                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL オンデマンド サービス エンドポイント アドレス    | サーバー名として使用されます                                   |
-| SQL オンデマンド サービス エンドポイント リージョン     | サンプルで使用されるストレージを決定するために使用されます |
+| サーバーレス SQL プール サービス エンドポイント アドレス    | サーバー名として使用されます                                   |
+| サーバーレス SQL プール サービス エンドポイント リージョン     | サンプルで使用されるストレージを決定するために使用されます |
 | エンドポイント アクセスのユーザー名とパスワード | エンドポイントへのアクセスに使用されます                               |
 | ビューの作成に使用するデータベース     | サンプルの開始点として使用されるデータベース       |
 
@@ -65,7 +65,7 @@ GO
 
 ## <a name="2---create-data-source"></a>2 - データ ソースの作成
 
-SQL オンデマンド サービスがストレージ内のファイルにアクセスするにはデータ ソースが必要です。 エンドポイントと同じリージョンにあるストレージ アカウントのデータ ソースを作成します。 SQL オンデマンドは異なるリージョンからストレージ アカウントにアクセスできますが、ストレージとエンドポイントを同じリージョンに配置するとパフォーマンスが向上します。
+サーバーレス SQL プール サービスがストレージ内のファイルにアクセスするにはデータ ソースが必要です。 エンドポイントと同じリージョンにあるストレージ アカウントのデータ ソースを作成します。 サーバーレス SQL プールはさまざまなリージョンからストレージ アカウントにアクセスできますが、ストレージとエンドポイントを同じリージョンに配置するとパフォーマンスが向上します。
 
 次の Transact-SQL (T-SQL) スクリプトを実行して、データ ソースを作成します。
 
@@ -158,7 +158,7 @@ FROM
 1. ストレージ アカウントの資格情報を削除します。
 
    ```sql
-   DROP EXTENAL DATA SOURCE AzureOpenData
+   DROP EXTERNAL DATA SOURCE AzureOpenData
    ```
 
 2. ビューを削除します。

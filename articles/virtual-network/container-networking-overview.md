@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: bd86b2ec803b2327d3daa2d4274f13328fec8c27
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 727e79cede9319cb7aae701082d5842ad895a61d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283216"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223518"
 ---
 # <a name="enable-containers-to-use-azure-virtual-network-capabilities"></a>コンテナーで Azure Virtual Network の機能を使用できるようにする
 
@@ -35,7 +35,7 @@ ms.locfileid: "87283216"
 - ポッドにはパブリック IP アドレスを割り当てることができ、インターネットから直接アクセスできます。 ポッド自体もインターネットにアクセスできます。
 - サービス、イングレス コントローラー、Kube DNS など、Kubernetes リソースとシームレスに連携します。 Azure Load Balancer を使用して、Kubernetes サービスを外部または内部に公開できます。
 
-次の図では、プラグインが Azure 仮想ネットワークの機能をポッドに提供する方法を示します。
+次の図では、プラグインが Azure Virtual Network の機能をポッドに提供する方法を示します。
 
 ![コンテナー ネットワークの概要](./media/container-networking/container-networking-overview.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "87283216"
 
 プラグインを次の方法で使用して、ポッドまたは Docker コンテナーに基本的な仮想ネットワーク接続を提供できます。
 
-- **Azure Kubernetes Service**:プラグインは Azure Kubernetes Service (AKS) に統合されており、 *[Advanced Networking]\(高度ネットワーク\)* オプションを選択することで使用できます。 高度ネットワークを使用すると、既存または新規の仮想ネットワークに Kubernetes クラスターを展開できます。 高度ネットワークの詳細とその設定手順については、[Azure Kubernetes Service (AKS) のネットワーク構成](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。
+- **Azure Kubernetes Service**:プラグインは Azure Kubernetes Service (AKS) に統合されており、 *[Advanced Networking]\(高度ネットワーク\)* オプションを選択することで使用できます。 高度ネットワークを使用すると、既存または新規の仮想ネットワークに Kubernetes クラスターを展開できます。 高度ネットワークの詳細とその設定手順については、[Azure Kubernetes Service (AKS) のネットワーク構成](../aks/configure-azure-cni.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。
 - **AKS エンジン**:AKS エンジンは、Azure での Kubernetes クラスター デプロイ用 Azure Resource Manager テンプレートを生成するツールです。 詳しくは、[AKS エンジン Kubernetes クラスター用プラグインのデプロイ](deploy-container-networking.md#deploy-the-azure-virtual-network-container-network-interface-plug-in)に関する記事をご覧ください。
 - **Azure で独自の Kubernetes クラスターを作成する**:プラグインを使用すると、AKS や、AKS エンジンなどのツールに頼ることなく、ご自身でデプロイした Kubernetes クラスター内のポッドに対する基本ネットワークを提供できます。 この場合、プラグインはクラスター内のすべての仮想マシンにインストールされて有効にされます。 詳細については、[自身でデプロイした Kubernetes クラスター用プラグインのデプロイ](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster)に関するページをご覧ください。
 - **Azure 内の Docker コンテナーに対する仮想ネットワークのアタッチ**:Kubernetes クラスターを作成したくなく、仮想マシン内に Docker コンテナーと仮想ネットワーク アタッチを作成したい場合は、プラグインを使用できます。 詳しくは、「[Docker コンテナー用プラグインのデプロイ](deploy-container-networking.md#deploy-plug-in-for-docker-containers)」をご覧ください。

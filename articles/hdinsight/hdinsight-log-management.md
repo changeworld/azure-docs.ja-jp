@@ -1,19 +1,16 @@
 ---
 title: HDInsight クラスターのログを管理する - Azure HDInsight
 description: HDInsight アクティビティ ログ ファイルの種類、サイズ、およびリテンション期間ポリシーを決定します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: e279f0ba5186ae4e4ad4b403ad823a59ee085170
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0a6e837284917129bb56c6230e68927b79e95dac
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997559"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945269"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight クラスターのログを管理する
 
@@ -42,7 +39,7 @@ HDInsight クラスターのログ管理戦略作成の最初のステップで�
 * クラスターの状態、最後の状態変化の詳細を含む
 * マスター、コア、タスクの各ノードに指定されている HDInsight インスタンスの種類と数
 
-この最上位レベルの情報のほとんどは、Azure Portal を使って取得できます。  代わりに、[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用して HDInsight クラスターに関する情報を取得することもできます。
+この最上位レベルの情報のほとんどは、Azure Portal を使って取得できます。  代わりに、[Azure CLI](/cli/azure/) を使用して HDInsight クラスターに関する情報を取得することもできます。
 
 ```azurecli
 az hdinsight list --resource-group <ResourceGroup>
@@ -109,7 +106,7 @@ log4j.logger.alerts=DEBUG,alerts
 
 ### <a name="access-the-hadoop-log-files"></a>Hadoop のログ ファイルにアクセスする
 
-HDInsight では、クラスター ファイル システムと Azure Storage の両方にログ ファイルが格納されます。 クラスター内のログ ファイルは、クラスターへの [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 接続を開いてファイル システムを参照するか、リモート ヘッド ノード サーバー上の Hadoop YARN Status ポータルを使うことで確認できます。 Azure Storage のログ ファイルは、Azure Storage にアクセスしてデータをダウンロードできるツールを使って確認できます。 たとえば、[AzCopy](../storage/common/storage-use-azcopy.md)、[CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)、Visual Studio サーバー エクスプローラーなどがあります。 また、PowerShell と Azure Storage クライアント ライブラリ、または Azure .NET SDK を使って、Azure Blob Storage 内のデータにアクセスすることもできます。
+HDInsight では、クラスター ファイル システムと Azure Storage の両方にログ ファイルが格納されます。 クラスター内のログ ファイルは、クラスターへの [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 接続を開いてファイル システムを参照するか、リモート ヘッド ノード サーバー上の Hadoop YARN Status ポータルを使うことで確認できます。 Azure Storage のログ ファイルは、Azure Storage にアクセスしてデータをダウンロードできるツールを使って確認できます。 たとえば、[AzCopy](../storage/common/storage-use-azcopy-v10.md)、[CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)、Visual Studio サーバー エクスプローラーなどがあります。 また、PowerShell と Azure Storage クライアント ライブラリ、または Azure .NET SDK を使って、Azure Blob Storage 内のデータにアクセスすることもできます。
 
 Hadoop は、クラスターのさまざまなノードでジョブの作業を "*タスク試行*" として実行します。 HDInsight は、予測タスク試行を開始して、最初に完了していない他のすべてのタスク試行を終了することがあります。 これにより、コントローラー、stderr、syslog のログ ファイルに即座に記録される大量のアクティビティが生成されます。 さらに、複数のタスク試行が同時に実行しますが、ログ ファイルでは結果を順番にしか表示できません。
 
@@ -150,15 +147,15 @@ YARN ResourceManager UI は、クラスターのヘッド ノード上で実行�
 
 ここまでの手順を完了すると、HDInsight クラスターが生成するログ ファイルの種類とボリュームがわかっています。
 
-次に、一定の期間にわたって、重要なログ ストレージ場所のログ データのボリュームを分析します。 たとえば、30、60、90 日間にわたりボリュームや増加を分析します。  この情報をスプレッドシートに記録するか、Visual Studio、Azure Storage Explorer、Power Query for Excel などの他のツールを使います。 詳しくは、「[HDInsight ログの分析](hdinsight-debug-jobs.md)」をご覧ください。  
+次に、一定の期間にわたって、重要なログ ストレージ場所のログ データのボリュームを分析します。 たとえば、30、60、90 日間にわたりボリュームや増加を分析します。  この情報をスプレッドシートに記録するか、Visual Studio、Azure Storage Explorer、Power Query for Excel などの他のツールを使います。 ```
 
 重要なログのログ管理戦略を作成するのに十分な情報が手に入ります。  スプレッドシート (または選んだツール) を使って、ログ サイズの増加量と、ログ ストレージの Azure サービスのコストを予測します。  調べているログ セットのログ リテンション期間要件も検討します。  削除できるファイル (ある場合) および低コストの Azure Storage に保持してアーカイブする必要のあるログを決定した後、将来のログ ストレージ コストを再予測できます。
 
-## <a name="step-5-determine-log-archive-policies-and-processes"></a>手順 5:ログのアーカイブ ポリシーとプロセスを決定する
+## <a name="step-5-determine-log-archive-policies-and-processes"></a>ステップ 5: ログのアーカイブ ポリシーとプロセスを決定する
 
 削除できるログ ファイルを決定した後は、さまざまな Hadoop サービスのログ パラメーターを調整して、指定期間後にログ ファイルを自動的に削除できます。
 
-一部のログ ファイルについては、低コストのログ ファイル アーカイブ方法を使うことができます。 Azure Resource Manager のアクティビティ ログの場合、Azure portal を使ってこの方法を調べることができます。  HDInsight インスタンスの Azure portal で **[アクティビティ ログ]** リンクを選んで、Resource Manager ログのアーカイブを設定します。  アクティビティ ログ検索ページの上部にある **[エクスポート]** メニュー項目を選んで、 **[アクティビティ ログのエクスポート]** ウィンドウを開きます。  サブスクリプション、リージョン、ストレージ アカウントにエクスポートするかどうか、ログを保持する日数を入力します。 この同じウィンドウで、イベント ハブにエクスポートするかどうかを指定することもできます。
+一部のログ ファイルについては、低コストのログ ファイル アーカイブ方法を使うことができます。 Azure Resource Manager のアクティビティ ログの場合、Azure portal を使ってこの方法を調べることができます。  HDInsight インスタンスの Azure portal で **[アクティビティ ログ]** リンクを選んで、Resource Manager ログのアーカイブを設定します。  アクティビティ ログ検索ページの上部にある **[エクスポート]** メニュー項目を選んで、**[アクティビティ ログのエクスポート]** ウィンドウを開きます。  サブスクリプション、リージョン、ストレージ アカウントにエクスポートするかどうか、ログを保持する日数を入力します。 この同じウィンドウで、イベント ハブにエクスポートするかどうかを指定することもできます。
 
 ![Azure portal の [アクティビティ ログのエクスポート] (プレビュー)](./media/hdinsight-log-management/hdi-export-log-files.png)
 
@@ -186,6 +183,6 @@ YARN ResourceManager UI は、クラスターのヘッド ノード上で実行�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [HDInsight の監視とログの方法](https://msdn.microsoft.com/library/dn749790.aspx)
+* [HDInsight の監視とログの方法](/previous-versions/msp-n-p/dn749790(v=pandp.10))
 * [Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [さまざまな Apache Hadoop コンポーネントのログ ファイルのサイズを制御する方法](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)

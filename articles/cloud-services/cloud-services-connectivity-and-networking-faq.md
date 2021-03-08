@@ -1,28 +1,24 @@
 ---
 title: 接続とネットワークの問題
-titleSuffix: Azure Cloud Services
 description: この記事では、Microsoft Azure Cloud Services の接続とネットワークについてよくあるご質問を紹介します。
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/23/2018
-ms.author: genli
-ms.openlocfilehash: 7caeba0e88f63106eae80f7142b5d65463f8d7a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: c7b83c615e4ac19e10b5c4f6cc1a102206b1a39a
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77019402"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742422"
 ---
-# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の接続とネットワークの問題についてよくあるご質問 (FAQ)
+# <a name="connectivity-and-networking-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure Cloud Services (クラシック) の接続とネットワークの問題:よく寄せられる質問 (FAQ)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
 
 この記事では、[Azure Cloud Services](https://azure.microsoft.com/services/cloud-services) の接続とネットワークの問題についてよくあるご質問を紹介します。 サイズについては、[Cloud Services VM サイズのページ](cloud-services-sizes-specs.md)を参照してください。
 
@@ -40,7 +36,7 @@ ms.locfileid: "77019402"
 
 接続をテストするには、ポートの ping を実行することをお勧めします。 Ping.exe は ICMP を使用しますが、他のツール (PSPing、Nmap、telnet など) を使用して特定の TCP ポートへの接続をテストできます。
 
-詳細については、「[Use port pings instead of ICMP to test Azure VM connectivity](https://blogs.msdn.microsoft.com/mast/2014/06/22/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity/) (ICMP の代わりにポート ping を使用して Azure VM の接続をテストする)」を参照してください。
+詳細については、「[Use port pings instead of ICMP to test Azure VM connectivity](/archive/blogs/mast/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity) (ICMP の代わりにポート ping を使用して Azure VM の接続をテストする)」を参照してください。
 
 ## <a name="how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service"></a>クラウド サービスへの悪意のある攻撃の可能性がある不明な IP アドレスからの数千件に上るヒットを受信するのを防止するにはどうすればよいですか。
 Azure では、分散型サービス拒否 (DDoS) 攻撃からプラットフォーム サービスを保護するために複数層のネットワーク セキュリティを実装しています。 Azure の DDoS 防御システムは、Azure の継続的な監視プロセスの一部であり、侵入テストを通して継続的に強化されています。 この DDoS 防御システムは、外部からの攻撃だけではなく、他の Azure テナントからの攻撃にも耐えられるように設計されています。 詳細については、[Azure ネットワークのセキュリティ](https://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf)に関するドキュメントを参照してください。
@@ -67,7 +63,7 @@ RDP の設定で構成されている有効期限の日付を無視すると、"
 
 IIS の URL の書き換えモジュールを使って、クラウド サービスの既定の URL (例: \*.cloudapp.net) への着信トラフィックをカスタムの名前または URL にリダイレクトすることができます。 URL の書き換えモジュールは Web ロール上で既定で有効になっており、そのルールはアプリケーションの web.config に構成されているので、再起動や再イメージ化にかかわりなく、いつでも VM で使用可能です。詳細については、次を参照してください。
 
-- [URL の書き換えモジュールの書き換えルールを作成する](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
+- [URL の書き換えモジュールの書き換えルールを作成する](/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [既定のリンクを削除する](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>自分のクラウド サービスの既定の URL への着信トラフィックをブロックまたは無効にするにはどうすればよいですか。
@@ -99,7 +95,7 @@ IIS の URL の書き換えモジュールを使って、クラウド サービ�
 
 ## <a name="how-can-i-make-sure-the-public-facing-ip-address-of-a-cloud-service-never-changes"></a>クラウド サービスのパブリックに公開された IP アドレスが変更されないようにするにはどうすればよいですか。
 
-クラウド サービスのパブリックに公開された IP アドレス (別名、VIP) が変わらないようにして、いくつかの特定のクライアントで習慣的にホワイトリストに登録できるようにするには、予約済み IP を関連付けることをお勧めします。 それ以外の場合、Azure によって提供される仮想 IP は、デプロイを削除するとサブスクリプションから割り当て解除されます。 VIP スワップ操作を成功させるには、運用スロットとステージング スロットの両方について個々の予約済み IP が必要です。 これがないと、スワップ操作は失敗します。 IP アドレスを予約してクラウド サービスに関連付けるには、次の記事を参照してください。
+対象のクラウド サービスのパブリックに公開された IP アドレス (別名、VIP) が変わらないようにして、いくつかの特定のクライアントでこれを習慣的に許可できるようにするには、予約済み IP を関連付けることをお勧めします。 それ以外の場合、Azure によって提供される仮想 IP は、デプロイを削除するとサブスクリプションから割り当て解除されます。 VIP スワップ操作を成功させるには、運用スロットとステージング スロットの両方について個々の予約済み IP が必要です。 これがないと、スワップ操作は失敗します。 IP アドレスを予約してクラウド サービスに関連付けるには、次の記事を参照してください。
 
 - [既存のクラウド サービスの IP アドレスを予約する](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
 - [サービス構成ファイルを使用してクラウド サービスに予約済み IP を関連付ける](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)

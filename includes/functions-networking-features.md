@@ -1,16 +1,16 @@
 ---
-ms.openlocfilehash: 8d5c3fff2646536ffe5c593e13ccdab23397d44b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e92d150851c74a84f785d1f5f0ebe2e5870a54e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906722"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936764"
 ---
 
 
-| 特徴量 |[従量課金プラン](../articles/azure-functions/functions-scale.md#consumption-plan)|[Premium プラン](../articles/azure-functions/functions-scale.md#premium-plan)|[専用プラン](../articles/azure-functions/functions-scale.md#app-service-plan)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/azure-functions/functions-kubernetes-keda.md) |
+| 特徴量 |[従量課金プラン](../articles/azure-functions/consumption-plan.md)|[Premium プラン](../articles/azure-functions/functions-premium-plan.md)|[専用プラン](../articles/azure-functions/dedicated-plan.md)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/azure-functions/functions-kubernetes-keda.md) |
 |----------------|-----------|----------------|---------|-----------------------| ---|
-|[受信 IP の制限とプライベート サイト アクセス](../articles/azure-functions/functions-networking-options.md#inbound-ip-restrictions)|✅はい|✅はい|✅はい|✅はい|✅はい|
+|[受信 IP の制限とプライベート サイト アクセス](../articles/azure-functions/functions-networking-options.md#inbound-access-restrictions)|✅はい|✅はい|✅はい|✅はい|✅はい|
 |[仮想ネットワークの統合](../articles/azure-functions/functions-networking-options.md#virtual-network-integration)|❌いいえ|✅はい (リージョン)|✅はい (リージョンとゲートウェイ)|✅はい| ✅はい|
 |[仮想ネットワーク トリガー (非 HTTP)](../articles/azure-functions/functions-networking-options.md#virtual-network-triggers-non-http)|❌いいえ| ✅はい |✅はい|✅はい|✅はい|
 |[ハイブリッド接続](../articles/azure-functions/functions-networking-options.md#hybrid-connections) (Windows のみ)|❌いいえ|✅はい|✅はい|✅はい|✅はい|

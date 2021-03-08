@@ -1,29 +1,26 @@
 ---
-title: Azure Blob Storage の変更フィードを処理する (プレビュー) | Microsoft Docs
+title: Azure Blob Storage の変更フィードを処理する | Microsoft Docs
 description: .NET クライアント アプリケーションで変更フィード ログを処理する方法を学習します
 author: normesta
 ms.author: normesta
-ms.date: 06/18/2020
+ms.date: 09/08/2020
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cc70204a56c3a853c6c6c7f0e1573c71854c0f19
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f0e89fdfba852fc056cf48efd1b92daabb272cf0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018962"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89568253"
 ---
-# <a name="process-change-feed-in-azure-blob-storage-preview"></a>Azure Blob Storage の変更フィードを処理する (プレビュー)
+# <a name="process-change-feed-in-azure-blob-storage"></a>Azure Blob Storage の変更フィードを処理する
 
 変更フィードでは、ストレージ アカウント内の BLOB と BLOB メタデータに対して行われるすべての変更のトランザクション ログが提供されます。 この記事では、BLOB 変更フィード プロセッサ ライブラリを使用して、変更フィード レコードを読み取る方法を示します。
 
-変更フィードの詳細については、[Azure Blob Storage の変更フィード (プレビュー)](storage-blob-change-feed.md) に関するページを参照してください。
-
-> [!NOTE]
-> 変更フィードはパブリック プレビュー段階にあり、限られたリージョンで利用できます。 この機能の詳細および既知の問題と制限事項については、「[Azure Blob Storage の変更フィードのサポート](storage-blob-change-feed.md)」を参照してください。 変更フィード プロセッサ ライブラリは、このライブラリが一般公開されるまでの間に変更される可能性があります。
+変更フィードの詳細については、[Azure Blob Storage の変更フィード](storage-blob-change-feed.md)に関するページを参照してください。
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>BLOB 変更フィード プロセッサ ライブラリを取得する
 
@@ -219,4 +216,4 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedBetweenDatesAsync(string 
 
 ## <a name="next-steps"></a>次のステップ
 
-変更フィード ログについて、さらに学習します。 [Azure Blob Storage の変更フィード (プレビュー)](storage-blob-change-feed.md) に関するページを参照してください
+変更フィード ログについて、さらに学習します。 [Azure Blob Storage の変更フィード](storage-blob-change-feed.md) に関するページを参照してください。

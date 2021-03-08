@@ -1,22 +1,18 @@
 ---
 title: 検索インデックスにデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure Search インデックスにデータをコピーまたはプッシュする方法について説明します。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
-ms.openlocfilehash: dfa1ad318ccc9e891b646ec050f6a0776e108206
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c0fe30961e8ca0f31374bfdb5c5f17d58cb7673
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418237"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385797"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cognitive Search インデックスにデータをコピーする
 
@@ -127,7 +123,7 @@ AzureSearchSink で提供される upsert 動作 (AzureSearch SDK の使用に�
 - **マージ**: 新しいドキュメントのすべての列を既存の列と結合します。 新しいドキュメント内に null 値を持つ列がある場合は、既存の列の値が保持されます。
 - **アップロード**: 既存のドキュメントが新しいドキュメントで置き換えられます。 新しいドキュメントで指定されていない列の場合は、既存のドキュメントに null 以外の値があるかどうかに関係なく、値は null に設定されます。
 
-既定の動作は**マージ**です。
+既定の動作は **マージ** です。
 
 ### <a name="writebatchsize-property"></a>WriteBatchSize プロパティ
 
@@ -180,7 +176,7 @@ Azure Cognitive Search サービスは、バッチとしてのドキュメント
 | String Array | N |
 | GeographyPoint | N |
 
-現在、ComplexType などの他のデータ型はサポートされていません。 Azure Cognitive Search でサポートされているデータ型の完全な一覧については、「[サポートされているデータ型 (Azure Cognitive Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)」を参照してください。
+現在、ComplexType などの他のデータ型はサポートされていません。 Azure Cognitive Search でサポートされているデータ型の完全な一覧については、「[サポートされているデータ型 (Azure Cognitive Search)](/rest/api/searchservice/supported-data-types)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

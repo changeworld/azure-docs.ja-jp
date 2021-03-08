@@ -3,20 +3,18 @@ title: 言語サポート - LUIS
 titleSuffix: Azure Cognitive Services
 description: LUIS はサービス内にさまざまな機能を備えています。 すべての機能の言語パリティが同じであるわけではありません。 関心のある機能が、自分の対象とする言語カルチャでサポートされていることをご確認ください。 LUIS アプリはカルチャ固有で、一度設定したら変更できません。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.author: diberry
-ms.openlocfilehash: b60a777960f3c6f8a2415ca551217d35b7f3497d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 9363a2dacd91d3868e69e47381eea528e358935c
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588024"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845460"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -30,14 +28,14 @@ LUIS はサービス内にさまざまな機能を備えています。 すべ�
 
 LUIS が理解する発話の言語を次に示します。
 
-| Language |Locale  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | \**[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(センチメントと<br>キーワード)|
+| Language |Locale  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | \**[テキスト分析](../text-analytics/language-support.md)<br>(センチメントと<br>キーワード)|
 |--|--|:--:|:--:|:--:|:--:|
-| 英語 (米国) |`en-US` | ✔ | ✔  |✔|✔|
 | アラビア語 (プレビュー - 現代標準アラビア語) |`ar-AR`|-|-|-|-|
 | *[中国語](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | オランダ語 |`nl-NL` |✔|-|-|✔|
-| フランス語 (フランス) |`fr-FR` |✔| ✔ |✔ |✔|
+| 英語 (米国) |`en-US` | ✔ | ✔  |✔|✔|
 | フランス語 (カナダ) |`fr-CA` |-|-|-|✔|
+| フランス語 (フランス) |`fr-FR` |✔| ✔ |✔ |✔|
 | ドイツ語 |`de-DE` |✔| ✔ |✔ |✔|
 | グジャラート語 | `gu-IN`|-|-|-|-|
 | ヒンディー語 | `hi-IN`|-|✔|-|-|
@@ -46,8 +44,8 @@ LUIS が理解する発話の言語を次に示します。
 | 韓国語 |`ko-KR` |✔|-|-|キー フレーズのみ|
 | マラーティー語 | `mr-IN`|-|-|-|-|
 | ポルトガル語 (ブラジル) |`pt-BR` |✔| ✔ |✔ |一部のサブカルチャのみ|
-| スペイン語 (スペイン) |`es-ES` |✔| ✔ |✔|✔|
 | スペイン語 (メキシコ)|`es-MX` |-|-|✔|✔|
+| スペイン語 (スペイン) |`es-ES` |✔| ✔ |✔|✔|
 | タミル語 | `ta-IN`|-|-|-|-|
 | テルグ語 | `te-IN`|-|-|-|-|
 | トルコ語 | `tr-TR` |✔|✔|-|センチメントのみ|
@@ -71,7 +69,7 @@ LUIS が理解する発話の言語を次に示します。
 Speech ディクテーション モードの言語については、Speech の「[Supported language (サポートされている言語)](../speech-service/speech-to-text.md)」を参照してください。
 
 ### <a name="bing-spell-check-supported-languages"></a>Bing Spell Check のサポートされている言語
-サポートされている言語と状態の一覧については、Bing Spell Check の[サポートされている言語](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages)に関するページをご覧ください。
+サポートされている言語と状態の一覧については、Bing Spell Check の[サポートされている言語](../bing-spell-check/language-support.md)に関するページをご覧ください。
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>アプリケーションの珍しい単語または外国の単語
 `en-us` カルチャの LUIS では、学習によって英語の単語のほとんど (スラングを含む) が区別されます。 `zh-cn` カルチャの LUIS では、学習によってほとんどの中国語の文字が区別されます。 `en-us` で珍しい単語を使用するか、`zh-cn` で珍しい文字を使用する場合、LUIS で単語または文字を区別できない可能性があるときは、その単語または文字を[フレーズ リスト機能](luis-how-to-add-features.md)に追加できます。 たとえば、アプリケーションのカルチャ以外の単語、つまり外国の単語は、フレーズ リスト機能に追加する必要があります。

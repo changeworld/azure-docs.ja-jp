@@ -1,22 +1,22 @@
 ---
 title: Azure IoT Hub 用の組み込みポリシー定義
 description: Azure IoT Hub 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 07/10/2020
+ms.date: 02/09/2021
 ms.topic: reference
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 ms.custom: subject-policy-reference
-ms.openlocfilehash: c82fe0fe6fbe1fa0a4627fbee0752468c67d242e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: e20975957de429741d773112fe94f4dfc1324fc8
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300728"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091153"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-iot-hub"></a>Azure IoT Hub 用の Azure Policy 組み込み定義
 
-共通 IoT シナリオの実装方法を示す IoT Hub サンプル コードについては、[IoT Hub クイックスタート](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-cli)を参照してください。 C、Node.js、Python など、複数のプログラミング言語用のクイックスタートがあります。
+共通 IoT シナリオの実装方法を示す IoT Hub サンプル コードについては、[IoT Hub クイックスタート](./quickstart-send-telemetry-cli.md)を参照してください。 C、Node.js、Python など、複数のプログラミング言語用のクイックスタートがあります。
 
 このページは、Azure IoT Hub 用の [Azure Policy](../governance/policy/overview.md) 組み込みポリシー定義のインデックスです。 他のサービス用の Azure Policy 組み込みについては、[Azure Policy 組み込み定義](../governance/policy/samples/built-in-policies.md)に関するページをご覧ください。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Media Player での再生 - Azure | Microsoft Docs
+title: Azure Media Player を使用して再生する - Azure
 description: Azure Media Player は、さまざまなブラウザーやデバイス上で Microsoft Azure Media Services からメディア コンテンツを再生できる組み込みの Web ビデオ プレーヤーです。
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: inhenkel
-ms.openlocfilehash: a3b32110a7236d47946c3a1f901aaedf51b47775
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: cf4916341a97868de757804b570212f1cc1105b2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89253983"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898123"
 ---
 # <a name="playback-with-azure-media-player"></a>Azure Media Player を使用した再生
 

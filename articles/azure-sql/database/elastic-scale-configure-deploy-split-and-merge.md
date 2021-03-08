@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 1cd03814e1590abebb74db490a2692d492a9207d
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 71aad7699c5af6ce2a1b9d82a340138200cfb5e1
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064946"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792074"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>split-merge サービスをデプロイして、シャード化されたデータベース間でデータを移動する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,11 +35,11 @@ split-merge ツールを使用すると、シャード化されたデータベ�
    nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge
    ```  
 
-ファイルは、**Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** という名前のディレクトリに配置されます。*x.x.xxx.x* はバージョン番号です。 **content\splitmerge\service** サブディレクトリに Split-Merge サービス ファイル、**content\splitmerge\powershell** サブディレクトリに Split-Merge PowerShell スクリプト (および必要なクライアント DLL) が格納されています。
+ファイルは、 **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** という名前のディレクトリに配置されます。 *x.x.xxx.x* はバージョン番号です。 **content\splitmerge\service** サブディレクトリに Split-Merge サービス ファイル、 **content\splitmerge\powershell** サブディレクトリに Split-Merge PowerShell スクリプト (および必要なクライアント DLL) が格納されています。
 
 ## <a name="prerequisites"></a>前提条件
 
-1. Split-Merge ステータス データベースとして使用する Azure SQL Database データベースを作成します。 [Azure ポータル](https://portal.azure.com)にアクセスします。 新しい **SQL Database**を作成します。 データベースに名前を付けて、新しい管理者とパスワードを作成します。 今後の使用のために、パスワードと名前を必ず記録しておいてください。
+1. Split-Merge ステータス データベースとして使用する Azure SQL Database データベースを作成します。 [Azure ポータル](https://portal.azure.com)にアクセスします。 新しい **SQL Database** を作成します。 データベースに名前を付けて、新しい管理者とパスワードを作成します。 今後の使用のために、パスワードと名前を必ず記録しておいてください。
 
 1. サーバーで Azure サービスからの接続が許可されていることを確認します。 ポータルの **[ファイアウォール設定]** で、 **[Azure サービスへのアクセスを許可する]** 設定が **[オン]** に設定されていることを確認してください。 [保存] アイコンをクリックします。
 
@@ -51,14 +51,14 @@ split-merge ツールを使用すると、シャード化されたデータベ�
 
 ### <a name="split-merge-service-configuration"></a>Split-Merge サービスの構成
 
-1. Split-Merge アセンブリをダウンロードしたフォルダーで、*SplitMergeService.cspkg* に付属の *ServiceConfiguration.Template.cscfg* ファイルのコピーを作成し、*ServiceConfiguration.cscfg* という名前に変更します。
+1. Split-Merge アセンブリをダウンロードしたフォルダーで、 *SplitMergeService.cspkg* に付属の *ServiceConfiguration.Template.cscfg* ファイルのコピーを作成し、 *ServiceConfiguration.cscfg* という名前に変更します。
 
 1. 証明書の拇印の形式などの入力値を検証する Visual Studio などのテキスト エディターで、 *ServiceConfiguration.cscfg* を開きます。
 
 1. 新しいデータベースを作成するか、または Split-Merge 操作用のステータス データベースとして使用する既存のデータベースを選択し、そのデータベースの接続文字列を取得します。
 
    > [!IMPORTANT]
-   > 現時点では、状態データベースでラテン語の照合順序 (SQL\_Latin1\_General\_CP1\_CI\_AS) を使用する必要があります。 詳細については、「[Windows 照合順序名 (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx)」を参照してください。
+   > 現時点では、状態データベースでラテン語の照合順序 (SQL\_Latin1\_General\_CP1\_CI\_AS) を使用する必要があります。 詳細については、「[Windows 照合順序名 (Transact-SQL)](/sql/t-sql/statements/windows-collation-name-transact-sql)」を参照してください。
 
    Azure SQL Database では、通常、接続文字列の形式は次のようになります。
 
@@ -66,7 +66,7 @@ split-merge ツールを使用すると、シャード化されたデータベ�
 
 1. ElasticScaleMetadata 設定の **SplitMergeWeb** ロールと **SplitMergeWorker** ロールの両方のセクションに *.cscfg* ファイルの接続文字列を入力します。
 
-1. **SplitMergeWorker** ロールの場合は、**WorkerRoleSynchronizationStorageAccountConnectionString** 設定として Azure Storage への有効な接続文字列を入力します。
+1. **SplitMergeWorker** ロールの場合は、 **WorkerRoleSynchronizationStorageAccountConnectionString** 設定として Azure Storage への有効な接続文字列を入力します。
 
 ### <a name="configure-security"></a>セキュリティを構成する
 
@@ -76,7 +76,7 @@ split-merge ツールを使用すると、シャード化されたデータベ�
 
 ### <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 
-新しいディレクトリを作成し、そのディレクトリから [[Visual Studio 開発者コマンド プロンプト]](https://msdn.microsoft.com/library/ms229859.aspx) ウィンドウを使用して次のコマンドを実行します。
+新しいディレクトリを作成し、そのディレクトリから [[Visual Studio 開発者コマンド プロンプト]](/dotnet/framework/tools/developer-command-prompt-for-vs) ウィンドウを使用して次のコマンドを実行します。
 
    ```cmd
    makecert ^
@@ -99,8 +99,8 @@ makecert を実行した同じウィンドウから次のコマンドを実行�
 
 ### <a name="import-the-client-certificate-into-the-personal-store"></a>個人用ストアへのクライアント証明書のインポート
 
-1. Windows エクスプローラーで、 *MyCert.pfx*をダブルクリックします。
-2. **証明書のインポート ウィザード**で **[現在のユーザー]** を選択し、 **[次へ]** をクリックします。
+1. Windows エクスプローラーで、 *MyCert.pfx* をダブルクリックします。
+2. **証明書のインポート ウィザード** で **[現在のユーザー]** を選択し、 **[次へ]** をクリックします。
 3. ファイルのパスを確認し、 **[次へ]** をクリックします。
 4. パスワードを入力します。 **[すべての拡張プロパティを含める]** はオンのままにして **[次へ]** をクリックします。
 5. **[自動的に証明書ストアを選択する]** をオンのままにして、 **[次へ]** をクリックします。
@@ -145,7 +145,7 @@ Web ロール:
 2. 前に作成したクラウド サービスを選択します。
 3. **[Overview]** をクリックします。
 4. ステージング環境を選択し、 **[アップロード]** をクリックします。
-5. ダイアログ ボックスにデプロイ ラベルを入力します。 [パッケージ] と [構成] の両方で [ローカルから] をクリックし、*SplitMergeService.cspkg* ファイルと、先ほど構成した cscfg ファイルを選択します。
+5. ダイアログ ボックスにデプロイ ラベルを入力します。 [パッケージ] と [構成] の両方で [ローカルから] をクリックし、 *SplitMergeService.cspkg* ファイルと、先ほど構成した cscfg ファイルを選択します。
 6. **[1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイします。]** チェック ボックスがオンになっていることを確認します。
 7. 右下のチェック マークをクリックしてデプロイを開始します。 完了には数分かかります。
 
@@ -168,7 +168,7 @@ worker ロールのオンライン化に失敗した場合に最も考えられ�
 
 ### <a name="connect-with-a-web-browser"></a>Web ブラウザーへの接続
 
-Split-Merge サービスの Web エンドポイントを決定します。 これをポータルで見つけるには、クラウド サービスの **[概要]** に移動し、右側の **[サイトの URL]** を検索します。 既定のセキュリティ設定では HTTP エンドポイントは無効であるため、**http://** を **https://** に置き換えます。 この URL のページをブラウザーに読み込みます。
+Split-Merge サービスの Web エンドポイントを決定します。 これをポータルで見つけるには、クラウド サービスの **[概要]** に移動し、右側の **[サイトの URL]** を検索します。 既定のセキュリティ設定では HTTP エンドポイントは無効であるため、 **http://** を **https://** に置き換えます。 この URL のページをブラウザーに読み込みます。
 
 ### <a name="test-with-powershell-scripts"></a>PowerShell スクリプトでのテスト
 
@@ -324,7 +324,7 @@ Split-Merge サービスの Web エンドポイントを決定します。 こ�
 1. シャード テーブルごとに、テーブルの親のスキーマ名 (オプション、既定値は "dbo")、テーブル名、およびシャード キーが含まれているテーブル内の列名を記述する **ShardedTableInfo** オブジェクトを作成します。
 2. 参照テーブルごとに、テーブルの親のスキーマ名 (オプション、既定値は "dbo") とテーブル名を記述する **ReferenceTableInfo** オブジェクトを作成します。
 3. 新しい **SchemaInfo** オブジェクトに、前の TableInfo オブジェクトを追加します。
-4. **ShardMapManager** オブジェクトへの参照を取得し、**GetSchemaInfoCollection** を呼び出します。
+4. **ShardMapManager** オブジェクトへの参照を取得し、 **GetSchemaInfoCollection** を呼び出します。
 5. **SchemaInfoCollection** に **SchemaInfo** を追加し、シャード マップ名を入力します。
 
 この例は、SetupSampleSplitMergeEnvironment.ps1 スクリプトで確認できます。
@@ -343,7 +343,7 @@ Split-Merge サービスはターゲット データベース (またはデー�
 
    `[Exception] System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'dbo.InsertRequest'.`
 
-この例外が表示された場合は、構成ファイルの、特に、 **WorkerRoleSynchronizationStorageAccountConnectionString**の設定値が適切であるか確認してください。 このエラーは、通常、Worker ロールがメタデータ データベースを初回使用時に正常に初期化できなかったことを示しています。
+この例外が表示された場合は、構成ファイルの、特に、 **WorkerRoleSynchronizationStorageAccountConnectionString** の設定値が適切であるか確認してください。 このエラーは、通常、Worker ロールがメタデータ データベースを初回使用時に正常に初期化できなかったことを示しています。
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]
 

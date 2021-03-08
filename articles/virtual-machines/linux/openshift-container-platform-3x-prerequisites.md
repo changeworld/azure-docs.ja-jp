@@ -3,18 +3,19 @@ title: Azure での OpenShift Container Platform 3.11 の前提条件
 description: Azure に OpenShift Container Platform 3.11 をデプロイする前提条件 | Microsoft Docs。
 author: haroldwongms
 manager: mdotson
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: openshift
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 68bd748e890659e4b79d76e4ccab038f251a937a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 645402d6c6b1fe744938ef5597098f46bc80c78e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368185"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672360"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Azure に OpenShift Container Platform 3.11 をデプロイする一般的な前提条件 | Microsoft Docs
 
@@ -47,7 +48,7 @@ Ansible でリモート ホストへの SSH 接続を行う場合、パスワー
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン 
-[az login](/cli/azure/reference-index) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従うか、 **[使ってみる]** をクリックして Cloud Shell を使用します。
+[az login](/cli/azure/reference-index) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従うか、**[使ってみる]** をクリックして Cloud Shell を使用します。
 
 ```azurecli
 az login
@@ -134,13 +135,13 @@ az ad sp create-for-rbac --name openshiftsp \
  > [!WARNING] 
  > このパスワードは再度取得できないため、セキュリティで保護されたパスワードを必ず書き留めておいてください。
 
-サービス プリンシパルについて詳しくは、「[Azure CLI で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)」をご覧ください。
+サービス プリンシパルについて詳しくは、「[Azure CLI で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli)」をご覧ください。
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Resource Manager テンプレートにのみ適用される前提条件
 
 SSH 秘密キー (**sshPrivateKey**)、Azure AD クライアント シークレット (**aadClientSecret**)、OpenShift 管理パスワード (**openshiftPassword**)、および Red Hat Subscription Manager パスワード、またはアクティブ化キー (**rhsmPasswordOrActivationKey**) 用のシークレットを作成する必要があります。  さらに、カスタム TLS/SSL 証明書が使用される場合は、6 つのシークレット (**routingcafile**、**routingcertfile**、**routingkeyfile**、**mastercafile**、**mastercertfile**、および **masterkeyfile**) を追加で作成する必要があります。  これらのパラメーターの詳細を説明します。
 
-テンプレートでは特定のシークレット名が参照されるため、前述の太字で示されている名前を使用する**必要があります** (大文字小文字の区別があります)。
+テンプレートでは特定のシークレット名が参照されるため、前述の太字で示されている名前を使用する **必要があります** (大文字小文字の区別があります)。
 
 ### <a name="custom-certificates"></a>カスタム証明書
 

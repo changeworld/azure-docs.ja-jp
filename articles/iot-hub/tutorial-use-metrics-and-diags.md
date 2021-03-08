@@ -1,81 +1,92 @@
 ---
-title: メトリックと診断ログを設定して Azure IoT ハブと連携させる
-description: メトリックと診断ログを設定して Azure IoT Hub で使用する方法について説明します。 これにより、ハブで発生している可能性がある問題の診断に役立つ分析のためのデータが提供されます。
+title: チュートリアル - Azure IoT ハブでメトリックとログを設定して使用する
+description: チュートリアル - Azure IoT ハブでメトリックとログを設定して使用する方法について説明します。 これにより、ハブで発生している可能性がある問題の診断に役立つ分析のためのデータが提供されます。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 3/13/2019
+ms.date: 10/29/2020
 ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: b24d9e1cbbcf875d7b4bde3981b28d8999ba8d47
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bf834a6dd648ffc8f4b1633dbb383f33cd99335f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019132"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625201"
 ---
-# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>チュートリアル:メトリックと診断ログを設定して IoT ハブと連携させる
+# <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>チュートリアル:IoT ハブでメトリックとログを設定して使用する
 
-IoT Hub ソリューションを運用環境で稼働させる場合、なんらかのメトリックを設定して、診断ログを有効にしたいと考えるでしょう。 そうすれば、問題が発生した場合に、着目すべきデータが手元にあり、問題を診断してそれをより速やかに修正するのに役立ちます。 この記事では、診断ログを有効にする方法と、それらにエラーが含まれていないかを確認する方法について説明します。 また、監視するいくつかのメトリックのほか、メトリックが一定の限度に達したときに作動するアラートも設定します。 たとえば、テレメトリ メッセージの数が特定の上限を超えたときや、使用されたメッセージの数が IoT ハブで 1 日に許容されるメッセージのクォータに近づいたときに自分宛てに電子メールを送信することができます。 
+Azure Monitor を使用して、IoT ハブのメトリックとログを収集できます。これらは、ソリューションの操作の監視と、発生した問題のトラブルシューティングに役立ちます。 この記事では、メトリックに基づいてグラフを作成する方法、メトリックに対してトリガーされるアラートを作成する方法、IoT Hub の操作とエラーを Azure Monitor ログに送信する方法、ログでエラーを確認する方法について説明します。
 
-ユース ケースとして、IoT デバイスであるポンプから IoT ハブへの通信が行われるガソリン スタンドを一例に挙げます。 クレジット カードが確認されて、最終的な取引がデータ ストアに書き込まれます。 IoT デバイスによるハブとの通信およびメッセージの送信が停止した場合、何が起きているかを把握できなければ、解決は非常に困難になります。
+このチュートリアルでは、[.NET でのテレメトリの送信に関するクイックスタート](quickstart-send-telemetry-dotnet.md)の Azure サンプルを使用して、IoT ハブにメッセージを送信します。 デバイスまたは別のサンプルを使用していつでもメッセージを送信できますが、いくつかの手順を適宜変更することが必要な場合があります。
 
-このチュートリアルでは、[IoT Hub ルーティング](tutorial-routing.md)に関するページの Azure サンプルを使用して、IoT ハブにメッセージを送信します。
+このチュートリアルを開始する前に、Azure Monitor の概念をある程度理解しておくと役立つものと思われます。 詳細については、[IoT Hub の監視](monitor-iot-hub.md)に関する記事を参照してください。 IoT Hub によって出力されるメトリックとリソース ログの詳細については、[監視データのリファレンス](monitor-iot-hub-reference.md)に関する記事をご覧ください。
 
 このチュートリアルでは、以下のタスクを実行します。
 
 > [!div class="checklist"]
-> * Azure CLI を使用して、IoT ハブ、シミュレートされたデバイス、ストレージ アカウントを作成する。  
-> * 診断ログを有効にする。
-> * メトリックを有効にする。
-> * それらのメトリックのアラートを設定する。 
-> * IoT デバイスをシミュレートするアプリをダウンロードして実行し、ハブにメッセージを送信する。 
-> * アラートが作動し始めるまでアプリを実行する。 
-> * メトリックの結果を表示して診断ログを確認する。 
+>
+> * Azure CLI を使用して IoT ハブを作成し、シミュレートされたデバイスを登録して、Log Analytics ワークスペースを作成する。  
+> * IoT Hub の接続およびデバイス テレメトリ リソース ログを、Log Analytics ワークスペース内の Azure Monitor ログに送信する。
+> * メトリックス エクスプローラーを使用して、選択したメトリックに基づいてグラフを作成し、ダッシュボードにピン留めする。
+> * 重要性の高い状態が生じたときに電子メールで通知を受け取ることができるように、メトリック アラートを作成する。
+> * IoT ハブにメッセージを送信する IoT デバイスをシミュレートするアプリをダウンロードして実行する。
+> * 特定の条件に合致したときにアラートを表示する。
+> * メトリックのグラフをダッシュボード上に表示する。
+> * Azure Monitor ログに IoT Hub のエラーと操作を表示する。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-- [Visual Studio](https://www.visualstudio.com/) のインストール。 
+- 開発用マシン上に .NET Core SDK 2.1 以上が必要です。 複数のプラットフォームに対応する .NET Core SDK を [.NET](https://www.microsoft.com/net/download/all) からダウンロードできます。
+
+  開発コンピューターに現在インストールされている C# のバージョンは、次のコマンドを使って確認できます。
+
+  ```cmd/sh
+  dotnet --version
+  ```
 
 - メールを受信できる電子メール アカウント。
 
 - ポート 8883 がファイアウォールで開放されていることを確認してください。 このチュートリアルのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="set-up-resources"></a>リソースを設定する
 
-このチュートリアルには、IoT ハブ、ストレージ アカウント、シミュレートされた IoT デバイスが必要です。 これらのリソースは、Azure CLI または Azure PowerShell を使って作成できます。 すべてのリソースに同じリソース グループと場所を使います。 最後に、リソース グループを削除することによって、すべてのものを一度に削除できます。
+このチュートリアルには、IoT ハブ、Log Analytics ワークスペース、シミュレートされた IoT デバイスが必要です。 これらのリソースは、Azure CLI または Azure PowerShell を使って作成できます。 すべてのリソースに同じリソース グループと場所を使います。 このチュートリアルを完了したら、リソース グループを削除することによって、すべてのものを一度に削除できます。
 
-必要な手順は以下のとおりです。
+必要な手順は次のとおりです。
 
-1. [リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 
+1. [リソース グループ](../azure-resource-manager/management/overview.md)を作成します。
 
 2. IoT Hub を作成します。
 
-3. Standard_LRS レプリケーションで Standard V1 ストレージ アカウントを作成します。
+3. Log Analytics ワークスペースを作成します。
 
-4. ハブにメッセージを送信するシミュレートされたデバイスのデバイス ID を作成します。 テスト フェーズ用にキーを保存します。
+4. IoT ハブにメッセージを送信するシミュレートされたデバイスのデバイス ID を登録します。 シミュレートされたデバイスの構成に使用するデバイス接続文字列を保存します。
 
 ### <a name="set-up-resources-using-azure-cli"></a>Azure CLI を使用してリソースを設定する
 
-次のスクリプトをコピーして Cloud Shell に貼り付けます。 既にログインしているものとすると、スクリプトが 1 行ずつ実行されます。 リソース グループ ContosoResources に新しいリソースが作成されます。
+次のスクリプトをコピーして Cloud Shell に貼り付けます。 既にログインしているものとすると、スクリプトが 1 行ずつ実行されます。 一部のコマンドは、実行に時間がかかる場合があります。 リソース グループ *ContosoResources* に新しいリソースが作成されます。
 
-グローバルに一意でなければならない変数には `$RANDOM` が連結されています。 スクリプトが実行され、変数が設定されるときに、ランダムな数値文字列が生成され、固定文字列の末尾に連結されて一意の変数を作ります。
+一部のリソースの名前は、Azure 全体で一意である必要があります。 このスクリプトでは、`$RANDOM` 関数を使用してランダム値が生成され、変数に格納されます。 これらのリソースでは、スクリプトによってこのランダム値がリソースのベース名に追加され、リソース名が一意になります。
+
+サブスクリプションごとに許可される無料の IoT ハブは 1 つだけです。 自分のサブスクリプションに無料の IoT ハブが既にある場合は、スクリプトを実行する前に削除するか、その無料の IoT ハブか、Standard または Basic レベルを使用する IoT ハブを使用するようにスクリプトを変更してください。
+
+スクリプトでは、IoT ハブの名前、Log Analytics ワークスペースの名前、登録するデバイスの接続文字列が出力されます。 この記事で後ほど必要になるため、これらを必ず書き留めておいてください。
 
 ```azurecli-interactive
 
 # This is the IOT Extension for Azure CLI.
 # You only need to install this the first time.
-# You need it to create the device identity. 
+# You need it to create the device identity.
 az extension add --name azure-iot
 
 # Set the values for the resource names that don't have to be globally unique.
@@ -84,7 +95,8 @@ az extension add --name azure-iot
 #   run this script, and it will work with no conflicts.
 location=westus
 resourceGroup=ContosoResources
-iotDeviceName=Contoso-Test-Device 
+iotDeviceName=Contoso-Test-Device
+randomValue=$RANDOM
 
 # Create the resource group to be used
 #   for all the resources for this tutorial.
@@ -92,31 +104,31 @@ az group create --name $resourceGroup \
     --location $location
 
 # The IoT hub name must be globally unique, so add a random number to the end.
-iotHubName=ContosoTestHub$RANDOM
+iotHubName=ContosoTestHub$randomValue
 echo "IoT hub name = " $iotHubName
 
-# Create the IoT hub in the Free tier.
+# Create the IoT hub in the Free tier. Partition count must be 2.
 az iot hub create --name $iotHubName \
     --resource-group $resourceGroup \
+    --partition-count 2 \
     --sku F1 --location $location
 
-# The storage account name must be globally unique, so add a random number to the end.
-storageAccountName=contosostoragemon$RANDOM
-echo "Storage account name = " $storageAccountName
+# The Log Analytics workspace name must be globally unique, so add a random number to the end.
+workspaceName=contoso-la-workspace$randomValue
+echo "Log Analytics workspace name = " $workspaceName
 
-# Create the storage account.
-az storage account create --name $storageAccountName \
-    --resource-group $resourceGroup \
-    --location $location \
-    --sku Standard_LRS
+
+# Create the Log Analytics workspace
+az monitor log-analytics workspace create --resource-group $resourceGroup \
+    --workspace-name $workspaceName --location $location
 
 # Create the IoT device identity to be used for testing.
 az iot hub device-identity create --device-id $iotDeviceName \
-    --hub-name $iotHubName 
+    --hub-name $iotHubName
 
-# Retrieve the information about the device identity, then copy the primary key to
+# Retrieve the primary connection string for the device identity, then copy it to
 #   Notepad. You need this to run the device simulation during the testing phase.
-az iot hub device-identity show --device-id $iotDeviceName \
+az iot hub device-identity show-connection-string --device-id $iotDeviceName \
     --hub-name $iotHubName
 
 ```
@@ -124,269 +136,299 @@ az iot hub device-identity show --device-id $iotDeviceName \
 >[!NOTE]
 >デバイス ID の作成時に、次のエラーが発生する場合があります: *No keys found for policy iothubowner of IoT Hub ContosoTestHub (IoT Hub ContosoTestHub のポリシー iothubowner のキーが見つかりません)* 。 このエラーを解決するには、Azure CLI IoT 拡張機能を更新したうえで、スクリプトにある最後の 2 つのコマンドをもう一度実行します。 
 >
->拡張機能を更新するコマンドを次に示します。 これをご自分の Cloud Shell インスタンスで実行してください。
+>拡張機能を更新するコマンドを次に示します。 このコマンドを Cloud Shell インスタンスで実行してください。
 >
 >```cli
 >az extension update --name azure-iot
 >```
 
-## <a name="enable-the-diagnostic-logs"></a>診断ログを有効にする 
+## <a name="collect-logs-for-connections-and-device-telemetry"></a>接続とデバイス テレメトリのログを収集する
 
-新しい IoT ハブを作成すると、既定では[診断ログ](../azure-monitor/platform/platform-logs-overview.md)が無効になっています。 このセクションでは、ご自分のハブの診断ログを有効にします。
+IoT Hub は、操作の複数のカテゴリに対応するリソース ログを出力します。ただし、これらのログを表示するには、送信先に送るための診断設定を作成する必要があります。 そのような送信先の 1 つが、Log Analytics ワークスペースで収集される Azure Monitor ログです。 IoT Hub リソース ログは、さまざまなカテゴリにグループ化されます。 Azure Monitor ログに送信するカテゴリを診断設定で選択できます。 この記事では、接続とデバイス テレメトリに関連して発生する操作とエラーのログを収集します。 IoT Hub でサポートされているカテゴリの完全な一覧については、[IoT Hub リソース ログ](monitor-iot-hub-reference.md#resource-logs)に関するセクションをご覧ください。
 
-1. まず、ご自分のハブがポータルに表示されていない場合は、 **[リソース グループ]** をクリックし、Contoso-Resources というリソース グループをクリックしてください。 表示されたリソースの一覧からハブを選択します。 
+IoT Hub リソース ログを Azure Monitor ログに送信するための診断設定を作成するには、次の手順に従います。
 
-2. [IoT Hub] ブレードの **[監視]** セクションを探します。 **[診断設定]** をクリックします。 
+1. まず、対象のハブがポータルにまだ表示されていない場合は、 **[リソース グループ]** を選択し、ContosoResources リソース グループを選択します。 表示されたリソースの一覧から対象の IoT ハブを選択します。
 
-   ![[IoT Hub] ブレードの診断設定領域を示すスクリーンショット](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
+1. [IoT Hub] ブレードの **[監視]** セクションを探します。 **[診断設定]** を選択します。 次に **[診断設定を追加する]** を選択します。
 
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/open-diagnostic-settings.png" alt-text="[モニター] セクションの [診断設定] が強調表示されているスクリーンショット。":::
 
-3. サブスクリプションとリソース グループが正しいことを確認します。 **[リソースの種類]** の **[すべて選択]** チェック ボックスをオフにし、 **[IoT Hub]** チェック ボックスをオンにします。 ( *[すべて選択]* の横に再びチェックマークが表示されますが、無視してください。) **[リソース]** でハブの名前を選択します。 実際の画面は、次の画像のようになります。 
+1. **[診断設定]** ペインで、設定にわかりやすい名前を付けます (例: "Send connections and telemetry to logs")。
 
-   ![[IoT Hub] ブレードの診断設定領域を示すスクリーンショット](./media/tutorial-use-metrics-and-diags/02-diagnostic-settings-start.png)
+1. **[カテゴリの詳細]** で、 **[Connections]** と **[DeviceTelemetry]** を選択します。
 
-4. 次に、 **[診断をオンにする]** をクリックします。 [診断設定] ウィンドウが表示されます。 ご自分の診断ログ設定の名前に「diags-hub」と指定します。
+1. **[宛先の詳細]** で **[Log Analytics への送信]** を選択し、Log Analytics ワークスペース ピッカーを使用して、前に書き留めておいたワークスペースを選択します。 完了すると、診断設定は次のスクリーンショットのようになります。
 
-5. **[ストレージ アカウントへのアーカイブ]** をオンにします。 
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/add-diagnostic-setting.png" alt-text="最終的な診断ログ設定を示すスクリーンショット":::
 
-   ![ストレージ アカウントに診断をアーカイブするための設定を示すスクリーンショット。](./media/tutorial-use-metrics-and-diags/03-diagnostic-settings-storage.png)
+1. **[保存]** を選択して設定を保存します。 **[診断設定]** ペインを閉じます。 診断設定の一覧に新しい設定が表示されます。
 
-    **[構成]** をクリックして **[ストレージ アカウントの選択]** 画面を表示します。次に、右側の項目 (*contosostoragemon*) を選択し、 **[OK]** をクリックして [診断設定] ウィンドウに戻ります。 
+## <a name="set-up-metrics"></a>メトリックを設定する
 
-   ![ストレージ アカウントに診断ログをアーカイブするための設定を示すスクリーンショット](./media/tutorial-use-metrics-and-diags/04-diagnostic-settings-after-storage.png)
+次に、メトリックス エクスプローラーを使用して、追跡するメトリックを表示するグラフを作成します。Azure portal の既定のダッシュボードにこのグラフをピン留めします。
 
-6. **[ログ]** の **[接続]** チェック ボックスと **[デバイス テレメトリ]** チェック ボックスをオンにし、それぞれ **[保有期間 (日)]** を 7 日に設定します。 ご自分の [診断設定] 画面は、次の画像のようになります。
+1. IoT ハブの左ペインで、 **[監視]** セクションの **[メトリック]** を選択します。
 
-   ![最終的な診断ログ設定を示すスクリーンショット](./media/tutorial-use-metrics-and-diags/05-diagnostic-settings-done.png)
+1. 画面の上部にある **[Last 24 hours (Automatic)]\(過去 24 時間 (自動)\)** を選択します。 表示されるドロップダウンでは、 **[時間の範囲]** で **[過去 4 時間]** を選択し、 **[時間の粒度]** を **[1 分]** に設定します。また、 **[時刻の表示形式]** で **[ローカル]** を選択します。 **[適用]** を選択して、これらの設定を保存します。 設定に、 **[Local Time: Last 4 hours (1 minute)]\(ローカル時刻: 過去 4 時間 (1 分)\)** と表示されます。
 
-7. **[保存]** をクリックして設定を保存します。 [診断設定] ウィンドウを閉じます。
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-select-time-range.png" alt-text="メトリックの時間設定を示すスクリーンショット":::
 
-後で診断ログを見ると、デバイスに関する接続と切断のログを確認できます。 
+1. グラフには、IoT ハブをスコープとする部分的なメトリック設定が表示されます。 **[スコープ]** と **[メトリック名前空間]** の値は既定値のままにしておきます。 **[メトリック]** 設定を選択して「Telemetry」と入力し、ドロップダウンから **[Telemetry messages sent]\(送信済みテレメトリ メッセージ\)** を選択します。 **[集計]** は、自動的に **[合計]** に設定されます。 グラフのタイトルも変更されることに注意してください。
 
-## <a name="set-up-metrics"></a>メトリックを設定する 
+   グラフへの :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-telemetry-messages-sent.png" alt-text="[Telemetry messages sent]\(送信済みテレメトリ メッセージ\) メトリックの追加を示すスクリーンショット。":::
 
-次に、メッセージをハブに送信するタイミングを監視するメトリックをいくつか設定します。 
-
-1. IoT ハブの設定ウィンドウで、 **[監視]** セクションの **[メトリック]** オプションをクリックします。
-
-2. 画面の上部にある **[Last 24 hours (Automatic)]\(過去 24 時間 (自動)\)** をクリックします。 表示されるドロップダウンで **[時間の範囲]** に **[過去 4 時間]** を選択し、 **[時間の粒度]** を **[1 分]** (ローカル時刻) に設定します。 **[適用]** をクリックしてこれらの設定を保存してください。 
-
-   ![メトリックの時間設定を示すスクリーンショット](./media/tutorial-use-metrics-and-diags/06-metrics-set-time-range.png)
-
-3. 既定では、メトリック項目が 1 つ存在します。 リソース グループとメトリックの名前空間は、既定値のままにしてください。 **[メトリック]** ドロップダウン リストで **[Telemetry messages sent]\(送信済みテレメトリ メッセージ\)** を選択します。 **[集計]** を **[合計]** に設定します。
-
-   ![送信済みテレメトリ メッセージのメトリックを追加する画面のスクリーンショット。](./media/tutorial-use-metrics-and-diags/07-metrics-telemetry-messages-sent.png)
-
-
-4. 次に **[メトリックの追加]** をクリックして、グラフにもう 1 つメトリックを追加します。 ご自分のリソース グループ (**ContosoTestHub**) を選択します。 **[メトリック]** で、 **[Total number of messages used]\(使用されているメッセージの合計数\)** を選択します。 **[集計]** で **[平均]** を選択します。 
+1. 次に、 **[メトリックの追加]** を選択して、グラフに別のメトリックを追加します。 **[メトリック]** で、 **[Total number of messages used]\(使用されているメッセージの合計数\)** を選択します。 **[集計]** は、動的に **[平均]** に設定されます。ここでも、このメトリックが含まれるようにグラフのタイトルが変更されたことがわかります。
 
    これで画面には、最小化された *[Telemetry messages sent]\(送信済みテレメトリ メッセージ\)* のメトリックに加え、新しく *[Total number of messages used]\(使用されているメッセージの合計数\)* のメトリックが表示されます。
 
-   ![送信済みテレメトリ メッセージのメトリックを追加する画面のスクリーンショット。](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
+   グラフへの :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-total-number-of-messages-used.png" alt-text="[Total number of messages used]\(使用されているメッセージの合計数\) メトリックの追加を示すスクリーンショット。":::
 
-   **[ダッシュボードにピン留め]** をクリックします。 これで、再度アクセスできるように、ご自分の Azure portal のダッシュボードにピン留めされます。 ダッシュボードにピン留めしなかった場合、ご自分の設定は保持されません。
+1. グラフの右上にある **[ダッシュボードにピン留め]** を選択します。
 
-## <a name="set-up-alerts"></a>アラートを設定する
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-total-number-of-messages-used-pin.png" alt-text="[ダッシュボードにピン留め] ボタンが強調表示されているスクリーンショット。":::
 
-ポータルのハブに移動します。 **[リソース グループ]** をクリックし、*ContosoResources* を選択して、IoT ハブ (*ContosoTestHub*) を選択します。 
+1. **[ダッシュボードにピン留め]** ペインで、 **[既存]** タブを選択します。 **[プライベート]** を選択し、[ダッシュボード] ドロップダウンから **[ダッシュボード]** を選択します。 最後に、 **[ピン留め]** を選択して、Azure portal の既定のダッシュボードにグラフをピン留めします。 グラフをダッシュボードにピン留めしていない場合、メトリックス エクスプローラーを終了すると、設定は保持されません。
 
-IoT Hub はまだ [Azure Monitor のメトリック](/azure/azure-monitor/platform/data-collection#metrics)に移行されていないため、[クラシック アラート](/azure/azure-monitor/platform/alerts-classic.overview)を使用する必要があります。
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/pin-to-dashboard.png" alt-text="[ダッシュボードにピン留め] の設定を示すスクリーンショット。":::
 
-1. **[監視]** の **[アラート]** をクリックします。これでメインのアラート画面が表示されます。 
+## <a name="set-up-metric-alerts"></a>メトリック アラートを設定する
 
-   ![クラシック アラートの見つけ方を示すスクリーンショット。](./media/tutorial-use-metrics-and-diags/08-find-classic-alerts.png)
+次に、"*Telemetry messages sent (送信済みテレメトリ メッセージ)* " と "*Total number of messages used (使用されているメッセージの合計数)* " の 2 つのメトリックに対してトリガーするアラートを設定します。
 
-2. ここからクラシック アラートにたどり着くには、 **[クラシック アラートの表示]** をクリックします。 
+"*Telemetry messages sent (送信済みテレメトリ メッセージ)* " は、メッセージ スループットを追跡し、調整を回避するために監視するのに適したメトリックです。 Free レベルの IoT ハブの場合、調整制限は 1 秒あたり 100 メッセージです。単一のデバイスでは、そのようなスループットを達成できないため、代わりに、5 分間でメッセージ数が 1000 を超えた場合にトリガーするアラートを設定します。 運用環境では、IoT ハブのレベル、エディション、ユニット数に基づいて、このシグナルをより大きな値に設定できます。
 
-    ![クラシック アラート画面を示すスクリーンショット。](./media/tutorial-use-metrics-and-diags/09-view-classic-alerts.png)
+"*Total number of messages used (使用されているメッセージの合計数)* " では、使用されているメッセージの 1 日あたりの数を追跡します。 このメトリックは、毎日 00:00 UTC にリセットされます。 1 日あたりのクォータが特定のしきい値を超えると、IoT ハブはメッセージを受け入れなくなります。 Free レベルの IoT ハブの場合、1 日あたりのメッセージ クォータは 8000 です。 メッセージの合計数が 4000 (クォータの 50%) を超えた場合にトリガーするアラートを設定します。 実際には、この割合をより大きな値に設定すると考えられます。 1 日あたりのクォータ値は、IoT ハブのレベル、エディション、ユニット数によって異なります。
 
-    フィールドに入力します。 
+IoT Hub のクォータと調整制限の詳細については、[クォータと調整](iot-hub-devguide-quotas-throttling.md)に関する記事をご覧ください。
 
-    **サブスクリプション**:このフィールドはご自分の現在のサブスクリプションに設定しておきます。
+メトリック アラートを設定するには、次の手順に従います。
 
-    **ソース**:このフィールドは *[メトリック]* に設定します。
+1. Azure portal で IoT ハブに移動します。
 
-    **[リソース グループ]** :このフィールドは、ご自分の現在のリソース グループ *ContosoResources* に設定します。 
+1. **[監視]** で **[アラート]** を選択します。 次に、 **[新しいアラート ルール]** を選択します。  **[アラート ルールの作成]** ペインが開きます。
 
-    **[リソースの種類]** :このフィールドは [IoT Hub] に設定します。 
+    :::image type="content" source="media/tutorial-use-metrics-and-diags/create-alert-rule-pane.png" alt-text="[アラート ルールの作成] ペインを示すスクリーンショット。":::
 
-    **リソース**:ご自分の IoT ハブ *ContosoTestHub* を選択します。
+    **[アラート ルールの作成]** ペインには、次の 4 つのセクションがあります。
 
-3. 新しいアラートを設定するために、 **[メトリック アラートの追加 (クラシック)]** をクリックします。
+    * **スコープ** は IoT ハブに既に設定されているため、このセクションはそのままにしておきます。
+    * **[条件]** では、アラートをトリガーするシグナルと条件を設定します。
+    * **[アクション]** では、アラートがトリガーされたときの動作を構成します。
+    * **[アラート ルールの詳細]** では、アラートの名前と説明を設定できます。
 
-    フィールドに入力します。
+1. まず、アラートがトリガーされる条件を構成します。
 
-    **Name**:ご自分のアラート ルールの名前を指定します (*telemetry-messages* など)。
+    1. **[条件]** で、 **[条件の選択]** を選択します。 **[シグナル ロジックの構成]** ペインで、検索ボックスに「telemetry」と入力し、 **[Telemetry messages sent]\(送信済みテレメトリ メッセージ\)** を選択します。
 
-    **説明**:ご自分のアラートの説明を入力します (「*送信済みテレメトリ メッセージが 1,000 件に達したときのアラート*」など)。 
+       :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-telemetry-messages-sent.png" alt-text="メトリックの選択を示すスクリーンショット。":::
 
-    **ソース**:これは *[メトリック]* に設定します。
+    1. **[シグナル ロジックの構成]** ペインで、 **[アラート ロジック]** の次のフィールドを設定または確認します (グラフは無視してかまいません)。
 
-    **[サブスクリプション]** 、 **[リソース グループ]** 、 **[リソース]** は、お客様が **[クラシック アラートの表示]** 画面で選択した値に設定する必要があります。 
+       **しきい値**: *静的*。
 
-    **[メトリック]** を *[Telemetry messages sent]\(送信済みテレメトリ メッセージ\)* に設定します。
+       **オペレーター**:*より大きい*。
 
-    ![送信済みテレメトリ メッセージのクラシック アラートを設定する画面のスクリーンショット。](./media/tutorial-use-metrics-and-diags/10-alerts-add-rule-telemetry-top.png)
+       **集計の種類**: *合計*。
 
-4. グラフの後にある次のフィールドを設定します。
+       **しきい値**: 1000。
 
-   **条件**: *[次の値より大きい]* に設定します。
+       **集約粒度 (期間)** : *5 分*。
 
-   **しきい値**: 「1000」に設定します。
+       **評価の頻度**: *1 分ごと*。
 
-   **期間**: *[直近 5 分]* に設定します。
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-set-conditions.png" alt-text="アラートの条件設定を示すスクリーンショット。":::
 
-   **通知メールの受信者**: ここにはご自分の電子メール アドレスを入力します。 
+       これらの設定により、5 分間のメッセージの数を合計するようにシグナルが設定されます。 この合計が 1 分ごとに評価され、前の 5 分間の合計が 1000 メッセージを超えると、アラートがトリガーされます。
 
-   ![アラート画面の下半分を示すスクリーンショット。](./media/tutorial-use-metrics-and-diags/11-alerts-add-rule-bottom.png)
+       **[完了]** を選択して、シグナル ロジックを保存します。
 
-   **[OK]** をクリックして、アラートを保存します。 
+1. 次に、アラートのアクションを構成します。
 
-5. 次は、 *[Total number of messages used]\(使用されているメッセージの合計数\)* 用に、もう 1 つアラートを設定します。 このメトリックは、使用されたメッセージの数が IoT ハブのクォータに近づきつつあるときにアラートを送信したい場合に役立ちます。これにより、ハブで間もなくメッセージの拒否が開始されることを把握できます。
+    1. **[アラート ルールの作成]** ペインに戻り、 **[アクション]** で **[アクション グループの選択]** を選択します。 **[このアラート ルールにアタッチするアクション グループを選択する]** ペインで、 **[アクション グループの作成]** を選択します。
 
-   **[クラシック アラートの表示]** 画面で、 **[メトリック アラートの追加 (クラシック)]** をクリックし、 **[ルールの追加]** ウィンドウで次のフィールドを設定します。
+    1. **[アクション グループの作成]** ペインの **[基本]** タブで、アクション グループの名前と表示名を指定します。
 
-   **Name**:ご自分のアラート ルールの名前を指定します (*number-of-messages-used* など)。
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-basics.png" alt-text="[アクション グループの作成] ペインの [基本] タブを示すスクリーンショット。":::
 
-   **説明**:ご自分のアラートの説明を入力します (「*クォータに近づきつつあるときのアラート*」など)。
+    1. **[通知]** タブを選択します。 **[通知の種類]** で、ドロップダウンから **[Email/SMS message/Push/Voice]\(メール/SMS メッセージ/プッシュ/音声\)** を選択します。 **[Email/SMS message/Push/Voice]\(メール/SMS メッセージ/プッシュ/音声\)** ペインが開きます。
 
-   **ソース**:このフィールドは *[メトリック]* に設定します。
+    1. **[Email/SMS message/Push/Voice]\(メール/SMS メッセージ/プッシュ/音声\)** ペインで、メールを選択し、メール アドレスを入力して、 **[OK]** を選択します。
 
-    **[サブスクリプション]** 、 **[リソース グループ]** 、 **[リソース]** は、お客様が **[クラシック アラートの表示]** 画面で選択した値に設定する必要があります。 
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/set-email-address.png" alt-text="メール アドレスの設定を示すスクリーンショット。":::
 
-    **[メトリック]** を *[Total number of messages used]\(使用されているメッセージの合計数\)* に設定します。
+    1. **[通知]** ペインに戻り、通知の名前を入力します。
 
-6. グラフの下にある次のフィールドを設定します。
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-notification-complete.png" alt-text="入力が完了した [通知] ペインを示すスクリーンショット。":::
 
-   **条件**: *[次の値より大きい]* に設定します。
+    1. (省略可能) **[アクション]** タブを選択し、 **[アクションの種類]** ドロップダウンを選択すると、アラートでトリガーできるアクションの種類が表示されます。 この記事では通知のみを使用するため、このタブの設定は無視してかまいません。
 
-   **しきい値**: 「1000」に設定します。
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/action-types.png" alt-text="[アクション] ペインで使用可能なアクションの種類を示すスクリーンショット。":::
 
-   **期間**: このフィールドは、 *[直近 5 分]* に設定します。 
+    1. **[確認および作成]** タブを選択し、設定を確認して、 **[作成]** を選択します。
 
-   **通知メールの受信者**: ここにはご自分の電子メール アドレスを入力します。 
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-review-and-create.png" alt-text="[確認および作成] ペインを示すスクリーンショット。":::
 
-   **[OK]** をクリックして、ルールを保存します。 
+    1. **[アラート ルールの作成]** ペインに戻ると、アラートのアクションに新しいアクション グループが追加されていることがわかります。  
 
-5. これで、クラシック アラート ウィンドウに 2 つのアラートが表示されます。 
+1. 最後に、アラート ルールの詳細を構成し、アラート ルールを保存します。
 
-   ![新しいアラート ルールを含んだクラシック アラート画面を示すスクリーンショット。](./media/tutorial-use-metrics-and-diags/12-alerts-done.png)
+    1. **[アラート ルールの作成]** ペインの [アラート ルールの詳細] で、アラートの名前と説明 (例: "Alert if more than 1000 messages over 5 minutes") を入力します。 **[Enable alert rule upon creation]\(作成時にアラート ルールを有効にする\)** がオンになっていることを確認します。 完成したアラート ルールは、次のスクリーンショットのようになります。
 
-6. アラート ウィンドウを閉じます。 
-    
-    これらの設定により、送信済みメッセージの数が 400 件を超えたときと、使用されているメッセージの合計数がしきい値を超えたときにアラートが作動します。
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-alert-rule-final.png" alt-text="入力が完了した [アラート ルールの作成] ペインを示すスクリーンショット。":::
 
-## <a name="run-simulated-device-app"></a>シミュレートされたデバイス アプリを実行する
+    1. **[アラート ルールの作成]** を選択して、新しいルールを保存します。
 
-スクリプト設定セクションの前半では、IoT デバイスを使ってシミュレートするようにデバイスを設定しました。 このセクションでは、デバイスからクラウドへのメッセージを IoT ハブに送信するデバイスをシミュレートする .NET コンソール アプリをダウンロードします。  
+1. 次は、 *[Total number of messages used]\(使用されているメッセージの合計数\)* 用に、もう 1 つアラートを設定します。 このメトリックは、使用されているメッセージの数が IoT ハブの 1 日あたりのクォータ (IoT ハブがメッセージを拒否し始める時点) に近づきつつあるときにアラートを送信したい場合に役立ちます。 次の違いを除き、前に行った手順に従います。
 
-[IoT デバイス シミュレーション](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)のソリューションをダウンロードします。 このリンクにより、いくつかのアプリケーションを含むリポジトリがダウンロードされます。探しているソリューションは、iot-hub/Tutorials/Routing/ にあります。
+    * **[シグナル ロジックの構成]** ペインのシグナルでは、 **[Total number of messages used]\(使用されているメッセージの合計数\)** を選択します。
 
-ソリューション ファイル (SimulatedDevice.sln) をダブルクリックしてコードを Visual Studio で開いた後、Program.cs を開きます。 `{iot hub hostname}` を、IoT ハブのホスト名で置き換えます。 IoT ハブのホスト名の形式は、 **{iot-hub-name}.azure-devices.net** です。 このチュートリアルでのハブのホスト名は、**ContosoTestHub.azure-devices.net** です。 次に、`{device key}` を、シミュレートされたデバイスを設定するときに保存したデバイス キーに置き換えます。 
+    * **[シグナル ロジックの構成]** ペインで、次のフィールドを設定または確認します (グラフは無視してかまいません)。
 
-   ```csharp
-        static string myDeviceId = "contoso-test-device";
-        static string iotHubUri = "ContosoTestHub.azure-devices.net";
-        // This is the primary key for the device. This is in the portal. 
-        // Find your IoT hub in the portal > IoT devices > select your device > copy the key. 
-        static string deviceKey = "{your device key here}";
-   ```
+       **しきい値**: *静的*。
 
-## <a name="run-and-test"></a>実行してテストする 
+       **オペレーター**:*より大きい*。
 
-Program.cs で、`Task.Delay` を 1000 から 10 に変更します。これでメッセージの送信間隔が 1 秒から 0.01 秒に短縮されます。 この待ち時間を短くすることで、送信されるメッセージの数が増えます。
+       **集計の種類**: *最大値*。
 
-```csharp
-await Task.Delay(10);
-```
+       **しきい値**: 4000。
 
-コンソール アプリケーションを実行します。 数分待ちます (10 分から 15 分)。 シミュレートされたデバイスからハブにメッセージが送信されていることを、アプリケーションのコンソール画面で確認できます。
+       **集約粒度 (期間)** : *1 分*。
 
-### <a name="see-the-metrics-in-the-portal"></a>ポータルでメトリックを確認する
+       **評価の頻度**: *1 分ごと*。
 
-ダッシュボードでご自分のメトリックを開きます。 時間の値を *[過去 30 分間]* (時間の粒度は "*1 分*") に変更します。 送信済みテレメトリ メッセージと、使用されているメッセージの合計数がグラフに示され、最新の数値がグラフの一番下に表示されます。
+       これらの設定により、メッセージ数が 4000 に達したときにシグナルを発するように設定されます。 メトリックは 1 分ごとに評価されます。
 
-   ![メトリックを示すスクリーンショット。](./media/tutorial-use-metrics-and-diags/13-metrics-populated.png)
+    * アラート ルールのアクションを指定するときは、前に作成したアクション グループを選択するだけです。
 
-### <a name="see-the-alerts"></a>アラートを確認する
+    * アラートの詳細では、前とは異なる名前と説明を使用します。
 
-アラートに戻ります。 **[リソース グループ]** をクリックし、*ContosoResources* を選択して、ハブ *ContosoTestHub* を選択します。 ハブについて表示されたプロパティ ページで、 **[アラート]** 、 **[クラシック アラートの表示]** の順に選択します。 
+1. IoT ハブの左ペインの **[監視]** で、 **[アラート]** を選択します。 次に、 **[アラート]** ペインの上部にあるメニューで、 **[アラート ルールの管理]** を選択します。 **[ルール]** ペインが開きます。 次のように、2 つのアラートが表示されます。
 
-送信されたメッセージの数が上限を超えると、電子メール アラートが届き始めます。 アクティブなアラートがあるかどうかを確認するには、ご自分のハブに移動して **[アラート]** を選択します。 アクティブなアラートと共に、警告があるかどうかが表示されます。 
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/rules-management.png" alt-text="新しいアラート ルールが含まれた [ルール] ペインを示すスクリーンショット。":::
 
-   ![作動したアラートを示すスクリーンショット](./media/tutorial-use-metrics-and-diags/14-alerts-firing.png)
+1. **[ルール]** ペインを閉じます。
 
-テレメトリ メッセージのアラートをクリックします。 メトリックの結果と、その結果に関するグラフが表示されます。 また、アラートの作動をお客様に警告するために送信された電子メールは、次の図のようになります。
+これらの設定により、5 分以内に 1000 件を超えるメッセージが送信されたときと、使用されているメッセージの合計数が 4000 (Free レベルの IoT ハブの、1 日あたりのクォータの 50%) を超えたときに、アラートがトリガーされ、電子メール通知が送信されます。
 
-   ![アラートが作動したことを示す電子メールのスクリーンショット](./media/tutorial-use-metrics-and-diags/15-alert-email.png)
+## <a name="run-the-simulated-device-app"></a>シミュレーション済みデバイス アプリを実行する
 
-### <a name="see-the-diagnostic-logs"></a>診断ログを確認する
+「[リソースを設定する](#set-up-resources)」で、IoT デバイスの使用をシミュレートするために使用するデバイス ID を登録しました。 このセクションでは、device-to-cloud メッセージを IoT ハブに送信するデバイスをシミュレートする .NET コンソール アプリをダウンロードし、これらのメッセージを IoT ハブに送信するようにアプリを構成して実行します。 
 
-ご自分の診断ログのエクスポート先は Blob Storage に設定します。 ご自分のリソース グループに移動して、ご自分のストレージ アカウント *contosostoragemon* を選択します。 [BLOB] を選択し、コンテナー *insights-logs-connections* を開きます。 現在の日付に到達するまでドリルダウンし、最新のファイルを選択します。 
+> [!IMPORTANT]
+>
+> アラートが IoT Hub によって完全に構成され、有効になるまでに最大 10 分かかることがあります。 最後のアラートを構成してから、シミュレートされたデバイス アプリを実行するまで、少なくとも 10 分お待ちください。
 
-   ![診断ログを表示するためにストレージ コンテナーをドリルダウンする画面のスクリーンショット。](./media/tutorial-use-metrics-and-diags/16-diagnostics-logs-list.png)
+[IoT デバイス シミュレーション](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)のソリューションをダウンロードします。 このリンクにより、複数のアプリケーションを含むリポジトリがダウンロードされます。探しているものは、iot-hub/Quickstarts/simulated-device/ にあります。
 
-**[ダウンロード]** をクリックしてそれをダウンロードし、開きます。 デバイスがハブにメッセージを送信する際に行われた接続と切断のログが表示されます。 サンプルを次に示します。
+1. ローカル ターミナル ウィンドウで、ソリューションのルート フォルダーに移動します。 **iot-hub\Quickstarts\simulated-device** フォルダーに移動します。
 
-``` json
-{ 
-  "time": "2018-12-17T18:11:25Z", 
-  "resourceId": 
-    "/SUBSCRIPTIONS/your-subscription-id/RESOURCEGROUPS/CONTOSORESOURCES/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/CONTOSOTESTHUB", 
-  "operationName": "deviceConnect", 
-  "category": "Connections", 
-  "level": "Information", 
-  "properties": 
-      {"deviceId":"Contoso-Test-Device",
-       "protocol":"Mqtt",
-       "authType":null,
-       "maskedIpAddress":"73.162.215.XXX",
-       "statusCode":null
-       }, 
-  "location": "westus"
-}
-{ 
-   "time": "2018-12-17T18:19:25Z", 
-   "resourceId": 
-     "/SUBSCRIPTIONS/your-subscription-id/RESOURCEGROUPS/CONTOSORESOURCES/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/CONTOSOTESTHUB", 
-    "operationName": "deviceDisconnect", 
-    "category": "Connections", 
-    "level": "Error", 
-    "resultType": "404104", 
-    "resultDescription": "DeviceConnectionClosedRemotely", 
-    "properties": 
-        {"deviceId":"Contoso-Test-Device",
-         "protocol":"Mqtt",
-         "authType":null,
-         "maskedIpAddress":"73.162.215.XXX",
-         "statusCode":"404"
-         }, 
-    "location": "westus"
-}
-```
+1. 適当なテキスト エディターで **SimulatedDevice.cs** ファイルを開きます。
 
-## <a name="clean-up-resources"></a>リソースをクリーンアップする 
+    1. `s_connectionString` 変数の値を、スクリプトを実行してリソースを設定したときに書き留めておいたデバイス接続文字列に置き換えます。
 
-このチュートリアルで作成したリソースをすべて削除するには、リソース グループを削除します。 これにより、そのグループ内に含まれているすべてのリソースも削除されます。 この場合は、IoT ハブ、ストレージ アカウント、リソース グループ自体が削除されます。 ダッシュボードにメトリックをピン留めした場合は、それらを手動で削除する必要があります。それぞれの右上隅にある 3 つのドットをクリックして、 **[削除]** を選択してください。
+    1. `SendDeviceToCloudMessagesAsync` メソッドで、`Task.Delay` を 1000 から 1 に変更します。これにより、メッセージの送信間隔が 1 秒から 0.001 秒に短縮されます。 この待ち時間を短くすることで、送信されるメッセージの数が増えます。 (1 秒あたり 100 メッセージのメッセージ レートは得られない可能性があります。)
 
-リソース グループを削除するには、[az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを使います。
+        ```csharp
+        await Task.Delay(1);
+        ```
+
+    1. 変更を **SimulatedDevice.cs** に保存します。
+
+1. ローカル ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションに必要なパッケージをインストールします。
+
+    ```cmd/sh
+    dotnet restore
+    ```
+
+1. ローカル ターミナル ウィンドウで次のコマンドを実行し、シミュレートされたデバイス アプリケーションをビルドして実行します。
+
+    ```cmd/sh
+    dotnet run
+    ```
+
+    次のスクリーンショットは、シミュレートされたデバイス アプリケーションが IoT Hub にテレメトリを送信したときの出力を示しています。
+
+    :::image type="content" source="media/tutorial-use-metrics-and-diags/simulated-device-output.png" alt-text="シミュレートされたデバイスの出力を示すスクリーンショット。":::
+
+アプリケーションを少なくとも 10 から 15 分間実行します。 メッセージの送信を停止するまで実行するのが理想的です (約 20 から 30 分)。 これは、IoT ハブの 1 日あたりのメッセージ クォータを超え、それ以上のメッセージの受け入れを停止したときに発生します。
+
+> [!NOTE]
+> メッセージの送信を停止した後、デバイス アプリを長時間実行したままにすると、例外が発生する場合があります。 この例外を無視し、アプリ ウィンドウを閉じてかまいません。
+
+## <a name="view-metrics-chart-on-your-dashboard"></a>ダッシュボードにメトリックのグラフを表示する
+
+1. Azure portal の左上隅にあるポータル メニューを開き、 **[ダッシュボード]** を選択します。
+
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/select-dashboard.png" alt-text="ダッシュボードを選択する方法を示すスクリーンショット。":::
+
+1. 以前にピン留めしたグラフを見つけ、グラフ データの外側のタイル上の任意の場所をクリックして展開します。 送信済みテレメトリ メッセージと、使用されているメッセージの合計数がグラフに示されます。 グラフの下部に最新の数値が表示されます。 グラフ内でカーソルを移動して、特定の時間のメトリック値を確認できます。 グラフの上部にある時間値と粒度を変更して、データを関心がある期間に絞り込んだり拡大したりすることもできます。
+
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-on-dashboard-last-hour.png" alt-text="メトリックのグラフを示すスクリーンショット。":::
+
+   このシナリオでは、シミュレートされたデバイスのメッセージ スループットは、IoT Hub によるメッセージ数の調整が発生するほど大きくありません。 実際に調整を伴うシナリオでは、限られた期間、送信済みテレメトリ メッセージが IoT ハブの調整制限を超える場合があります。 これは、バースト トラフィックに対応するためです。 詳細については、「[トラフィック シェイプ](iot-hub-devguide-quotas-throttling.md#traffic-shaping)」をご覧ください。
+
+## <a name="view-the-alerts"></a>アラートを表示する
+
+送信されたメッセージの数がアラート ルールで設定した上限を超えると、電子メール アラートが届き始めます。
+
+アクティブなアラートがあるかどうかを確認するには、IoT ハブの左ペインの **[監視]** で **[アラート]** を選択します。 **[アラート]** ペインには、指定した時間範囲に発生したアラートの数が重大度順に表示されます。
+
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/view-alerts.png" alt-text="アラートの概要を示すスクリーンショット。":::
+
+重大度 3 の行を選択します。 **[すべてのアラート]** ペインが開き、発生した重大度 3 のアラートが一覧表示されます。
+
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/view-all-alerts.png" alt-text="[すべてのアラート] ペインを示すスクリーンショット。":::
+
+アラートのいずれかを選択すると、そのアラートの詳細が表示されます。
+
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/view-individual-alert.png" alt-text="アラートの詳細を示すスクリーンショット。":::
+
+受信トレイで Microsoft Azure からの電子メールを確認します。 件名にトリガーされたアラートが記載されています (例: *Azure: Activated Severity:3 Alert if more than 1000 messages over 5 minutes*)。 本文は次の画像のようになります。
+
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/alert-mail.png" alt-text="アラートが作動したことを示す電子メールのスクリーンショット":::
+
+## <a name="view-azure-monitor-logs"></a>Azure Monitor ログを表示する
+
+「[接続とデバイス テレメトリのログを収集する](#collect-logs-for-connections-and-device-telemetry)」で、接続とデバイス テレメトリの操作について、IoT ハブによって出力されたリソース ログを Azure Monitor ログに送信するための診断設定を作成しました。 このセクションでは、Azure Monitor ログに対して Kusto クエリを実行して、発生したエラーを監視します。
+
+1. Azure portal の IoT ハブの左ペインにある **[監視]** で **[ログ]** を選択します。 最初の **[クエリ]** ウィンドウが開いた場合は閉じます。
+
+1. [新しいクエリ] ペインで、 **[クエリ]** タブを選択し、 **[IoT Hub]** を展開して既定のクエリの一覧を表示します。
+
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/new-query-pane.png" alt-text="IoT Hub の既定のクエリのスクリーンショット。":::
+
+1. *[エラーの概要]* クエリを選択します。 クエリ エディター ペインにクエリが表示されます。 エディター ペインで **[実行]** を選択し、クエリ結果を確認します。 行のいずれかを展開すると、詳細が表示されます。
+
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/logs-errors.png" alt-text="[エラーの概要] クエリで返されたログのスクリーンショット。":::
+
+   > [!NOTE]
+   > エラーが表示されない場合は、 *[Recently connected devices]\(最近接続されたデバイス\)* クエリを実行してみてください。 これにより、シミュレートされたデバイスの行が返されます。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このチュートリアルで作成したリソースをすべて削除するには、リソース グループを削除します。 これにより、そのグループ内に含まれているすべてのリソースも削除されます。 ここでは、IoT ハブ、Log Analytics ワークスペース、およびリソース グループ自体が削除されます。 メトリックのグラフをダッシュボードにピン留めしている場合は、それらを手動で削除する必要があります。各グラフの右上隅にある 3 つのドットをクリックし、 **[削除]** を選択します。 グラフを削除したら、必ず変更を保存してください。
+
+リソース グループを削除するには、[az group delete](/cli/azure/group#az-group-delete) コマンドを使います。
 
 ```azurecli-interactive
-az group delete --name $resourceGroup
+az group delete --name ContosoResources
 ```
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、以下のタスクを実行することにより、メトリックと診断ログの使用方法を学習しました。
+このチュートリアルでは、次のタスクを実行することで、IoT Hub のメトリックとログの使用方法を学習しました。
 
 > [!div class="checklist"]
-> * Azure CLI を使用して、IoT ハブ、シミュレートされたデバイス、ストレージ アカウントを作成する。  
-> * 診断ログを有効にする。 
-> * メトリックを有効にする。
-> * それらのメトリックのアラートを設定する。 
-> * IoT デバイスをシミュレートするアプリをダウンロードして実行し、ハブにメッセージを送信する。 
-> * アラートが作動し始めるまでアプリを実行する。 
-> * メトリックの結果を表示して診断ログを確認する。 
+>
+> * Azure CLI を使用して IoT ハブを作成し、シミュレートされたデバイスを登録して、Log Analytics ワークスペースを作成する。  
+> * IoT Hub の接続およびデバイス テレメトリ リソース ログを、Log Analytics ワークスペース内の Azure Monitor ログに送信する。
+> * メトリックス エクスプローラーを使用して、選択したメトリックに基づいてグラフを作成し、ダッシュボードにピン留めする。
+> * 重要性の高い状態が生じたときに電子メールで通知を受け取ることができるように、メトリック アラートを作成する。
+> * IoT ハブにメッセージを送信する IoT デバイスをシミュレートするアプリをダウンロードして実行する。
+> * 特定の条件に合致したときにアラートを表示する。
+> * メトリックのグラフをダッシュボード上に表示する。
+> * Azure Monitor ログに IoT Hub のエラーと操作を表示する。
 
 次のチュートリアルに進み、IoT デバイスの状態を管理する方法を学習してください。 
 

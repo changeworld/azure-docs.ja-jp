@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a92c6789723dc42ac8f3a9c471e494079dc19328
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67672174"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233442"
 ---
 # <a name="network-monitoring-solutions"></a>ネットワーク監視ソリューション 
 
@@ -52,10 +52,10 @@ Performance Monitor は NPM の一部であり、クラウド、ハイブリッ�
 詳しくは、次の記事をご覧ください。
 
 * [Azure Monitor ログで Network Performance Monitor ソリューションを構成する](../azure-monitor/insights/network-performance-monitor.md) 
-* [ユース ケース](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
+* [ユース ケース](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor)
 * 製品の更新:
-  * [2017 年 2 月](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
-  * [2017 年 8 月](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
+  * [2017 年 2 月](/archive/blogs/msoms/oms-network-performance-monitor-is-now-generally-available)
+  * [2017 年 8 月](/archive/blogs/msoms/improvements-to-oms-network-performance-monitor)
 
 ## <a name="expressroute-monitor"></a>ExpressRoute モニター
 
@@ -65,7 +65,7 @@ ExpressRoute 用の NPM は、Azure Private ピアリングおよび Microsoft �
 * オンプレミスからクラウド アプリケーションへのネットワーク トポロジの検出
 * 容量計画、帯域幅の使用率分析
 * プライマリ パスとセカンダリ パス両方の監視とアラート
-* ExpressRoute を介した Office 365 や Dynamics 365 などの Azure サービスへの接続の監視
+* ExpressRoute を介した Microsoft 365 や Dynamics 365 などの Azure サービスへの接続の監視
 * VNet への接続性の低下の検出
 
 ![リージョン間のトラフィックを示すマップ](./media/network-monitoring-overview/expressroute-topology-map.png) 
@@ -84,7 +84,7 @@ ExpressRoute 用の NPM は、Azure Private ピアリングおよび Microsoft �
 * 世界中の複数のユーザーの場所からアプリケーションへの到達可能性をテストする
 * 基幹業務アプリケーションと SaaS アプリケーションのネットワーク待機時間とパケット損失を特定する
 * アプリケーション パフォーマンス低下の原因になっている可能性があるネットワーク上のホット スポットを特定する
-* Microsoft Office 365、Dynamics 365、Skype for Business、その他の Microsoft サービス用の組み込みテストを使って、Office 365 アプリケーションへの到達可能性を監視する
+* Microsoft 365、Dynamics 365、Skype for Business、その他の Microsoft サービス用の組み込みテストを使って、Microsoft 365 アプリケーションへの到達可能性を監視する
 
 詳細については、次の記事を参照してください。
 
@@ -103,10 +103,10 @@ Traffic Analytics は、クラウド ネットワーク上のユーザとアプ�
 
 Traffic Analytics は、組織のネットワーク アクティビティを監査し、アプリケーションとデータをセキュリティで保護し、ワークロードのパフォーマンスを最適化し、コンプライアンスを維持するために役立つ実用的な情報を提供します。
 
-![リージョン間のトラフィックを示すマップ](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
+![リージョン間のトラフィックを示すマップ 2](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
 関連リンク:
-* [ブログ記事](https://aka.ms/trafficanalytics)、[ドキュメント](https://aka.ms/trafficanalyticsdocs)、[FAQ](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
+* [ブログ記事](https://aka.ms/trafficanalytics)、[ドキュメント](../network-watcher/traffic-analytics.md)、[FAQ](../network-watcher/traffic-analytics-faq.md)
 
 ## <a name="dns-analytics"></a>DNS Analytics
 DNS 管理者用に開発されたこのソリューションは、DNS ログの収集、分析、および相互の関連付けを行って、セキュリティ、運用、およびパフォーマンスに関する分析情報を提供します。  いくつかの機能を次に示します。
@@ -120,8 +120,8 @@ DNS 管理者用に開発されたこのソリューションは、DNS ログの
 ![DNS Analytics ダッシュボード](./media/network-monitoring-overview/dns-analytics-overview.png) 
 
 関連リンク:
-* [ブログ記事](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/)、[ドキュメント](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
+* [ブログ記事](/archive/blogs/msoms/introducing-oms-dns-analytics)、[ドキュメント](../azure-monitor/insights/dns-analytics.md)
 
 ## <a name="miscellaneous"></a>その他
 
-* [新しい価格](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)
+* [新しい価格](../azure-monitor/insights/network-performance-monitor-pricing-faq.md)

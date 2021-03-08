@@ -1,25 +1,21 @@
 ---
 title: macOS で開発環境をセットアップする
 description: ランタイム、SDK、およびツールをインストールし、ローカル開発クラスターを作成します。 このセットアップを完了すると、macOS でアプリケーションを構築する準備が整います。
-author: suhuruli
 ms.topic: conceptual
-ms.date: 11/17/2017
-ms.author: suhuruli
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 74dfe54bf5f842aea59bf6cb35a00aeef81766f1
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 10/16/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: d08046c8f29901dd9650a1edc886efa2ff226e00
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429009"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086779"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md)
 > * [Linux](service-fabric-get-started-linux.md)
-> * [OSX](service-fabric-get-started-mac.md)
->
->  
+> * [Mac OS X](service-fabric-get-started-mac.md)
 
 Linux クラスターで実行される Azure Service Fabric アプリケーションを Mac OS X を使用して構築できます。このドキュメントでは、開発用に Mac をセットアップする方法について説明します。
 
@@ -45,7 +41,7 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    これらの設定は、Docker インストール パスの daemon.json ファイルで直接更新できます。 Docker でデーモン構成設定を直接変更できます。 **Docker アイコン**を選択し、 **[Preferences]\(環境設定\)**  >  **[Daemon]\(デーモン\)**  >  **[Advanced]\(詳細設定\)** の順に選択します。
+    これらの設定は、Docker インストール パスの daemon.json ファイルで直接更新できます。 Docker でデーモン構成設定を直接変更できます。 **Docker アイコン** を選択し、 **[Preferences]\(環境設定\)**  >  **[Daemon]\(デーモン\)**  >  **[Advanced]\(詳細設定\)** の順に選択します。
     
     >[!NOTE]
     >
@@ -53,33 +49,43 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
     >
 
     >[!TIP]
-    >大規模なアプリケーションをテストする際は、Docker に割り当てられたリソースを増やすことをお勧めします。 **Docker アイコン**を選択し、 **[詳細]** を選択して、コア数やメモリを調整してください。
+    >大規模なアプリケーションをテストする際は、Docker に割り当てられたリソースを増やすことをお勧めします。 **Docker アイコン** を選択し、 **[詳細]** を選択して、コア数やメモリを調整してください。
 
-2. 新しいディレクトリに、Service Fabric イメージを構築する `Dockerfile` というファイルを作成します。
-
-    ```Dockerfile
-    FROM mcr.microsoft.com/service-fabric/onebox:latest
-    WORKDIR /home/ClusterDeployer
-    RUN ./setup.sh
-    #Generate the local
-    RUN locale-gen en_US.UTF-8
-    #Set environment variables
-    ENV LANG=en_US.UTF-8
-    ENV LANGUAGE=en_US:en
-    ENV LC_ALL=en_US.UTF-8
-    EXPOSE 19080 19000 80 443
-    #Start SSH before running the cluster
-    CMD /etc/init.d/ssh start && ./run.sh
+2. クラスターを起動します。<br/>
+    <b>Ubuntu 18.04 LTS:</b>
+    ```bash
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u18
     ```
 
+    <b>Ubuntu 16.04 LTS:</b>
+    ```bash
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u16
+    ```
+
+    >[!TIP]
+    > 既定では、最新バージョンの Service Fabric を含んだイメージがプルされます。 特定のリビジョンについては、Docker Hub の [Service Fabric Onebox](https://hub.docker.com/_/microsoft-service-fabric-onebox) のページを参照してください。
+
+
+
+3. 省略可能:拡張 Service Fabric イメージをビルドします。
+
+    新しいディレクトリに、`Dockerfile` という名前のファイルを作成して、カスタマイズしたイメージをビルドします。
+
     >[!NOTE]
-    >実際のコンテナーには、このファイルを応用して他のプログラムや依存関係を追加することができます。
+    >Dockerfile を使用して上記のイメージを調整すれば、さらにプログラムまたは依存関係をコンテナーに追加することができます。
     >たとえば、「`RUN apt-get install nodejs -y`」を追加すれば、ゲスト実行可能ファイルとして `nodejs` アプリケーションに対応することができます。
+    ```Dockerfile
+    FROM mcr.microsoft.com/service-fabric/onebox:u18
+    RUN apt-get install nodejs -y
+    EXPOSE 19080 19000 80 443
+    WORKDIR /home/ClusterDeployer
+    CMD ["./ClusterDeployer.sh"]
+    ```
     
     >[!TIP]
     > 既定では、最新バージョンの Service Fabric を含んだイメージがプルされます。 特定のリビジョンについては、[Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) のページをご覧ください。
 
-3. 再利用可能なイメージを `Dockerfile` から構築するには、ターミナルを開き、`cd` で `Dockerfile` の格納場所に移動して次のコマンドを実行します。
+    再利用可能なイメージを `Dockerfile` から構築するには、ターミナルを開き、`cd` で `Dockerfile` の格納場所に移動して次を実行します。
 
     ```bash 
     docker build -t mysfcluster .
@@ -88,7 +94,7 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
     >[!NOTE]
     >この操作にはしばらく時間がかかりますが、実行するのは 1 回でかまいません。
 
-4. これで、Service Fabric のローカル コピーを、必要なときにいつでも、次のコマンドを実行することですぐに起動することができます。
+    これで、Service Fabric のローカル コピーを、必要なときにいつでも、次を実行することですぐに起動することができます。
 
     ```bash 
     docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
@@ -99,18 +105,17 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
     >
     >アプリケーションが特定のポートでリッスンしている場合は、追加の `-p` タグを使用してポートを指定する必要があります。 たとえば、アプリケーションがポート 8080 でリッスンしている場合は、次の `-p` タグを追加します。
     >
-    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
+    >`docker run -itd -p 19000:19000 -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:u18`
     >
 
-5. クラスターが起動するには少し時間がかかります。 実行状態になると、次のコマンドを使用してログを表示したり、ダッシュボードに移動してクラスターの正常性を確認したりすることができます (`http://localhost:19080`)。
+4. クラスターが起動するには少し時間がかかります。 実行状態になると、次のコマンドを使用してログを表示したり、ダッシュボードに移動してクラスターの正常性を確認したりすることができます (`http://localhost:19080`)。
 
     ```bash 
     docker logs sftestcluster
     ```
 
 
-
-6. コンテナーを停止してクリーンアップするには、次のコマンドを使用します。 ただし、次のステップでこのコンテナーを使用します。
+5. コンテナーを停止してクリーンアップするには、次のコマンドを使用します。 ただし、次のステップでこのコンテナーを使用します。
 
     ```bash 
     docker rm -f sftestcluster
@@ -120,7 +125,8 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
  
  Mac 用のコンテナーで実行されているローカル クラスターの既知の制限は、次のとおりです。 
  
- * DNS サービスが実行されず、サポートされていない [問題 #132](https://github.com/Microsoft/service-fabric/issues/132)
+ * DNS サービスは実行されません。現在、コンテナー内ではサポートされていません。 [問題 #132](https://github.com/Microsoft/service-fabric/issues/132)
+ * コンテナーベースのアプリを実行するには、Linux ホスト上で SF を実行する必要があります。 入れ子になったコンテナー アプリは現在サポートされていません。
 
 ## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>Mac に Service Fabric CLI (sfctl) をセットアップする
 
@@ -187,9 +193,9 @@ Service Fabric アプリケーションを作成して構築したら、[Service
     bash install.sh
     ```
 
-## <a name="set-up-net-core-20-development"></a>.NET Core 2.0 開発環境をセットアップする
+## <a name="set-up-net-core-31-development"></a>.NET Core 3.1 開発環境を設定する
 
-[.NET Core 2.0 SDK for Mac](https://www.microsoft.com/net/core#macos) をインストールして、[C# Service Fabric アプリケーションの作成](service-fabric-create-your-first-linux-application-with-csharp.md)を開始します。 .NET Core 2.0 Service Fabric アプリケーション用のパッケージは、現在プレビューの段階で NuGet.org でホストされています。
+[.NET Core 3.1 SDK for Mac](https://www.microsoft.com/net/core#macos) をインストールして、[C# Service Fabric アプリケーションの作成](service-fabric-create-your-first-linux-application-with-csharp.md)を開始します。 .NET Core Service Fabric アプリケーション用のパッケージは、NuGet.org でホストされています。
 
 ## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>Eclipse 用の Service Fabric プラグインを Mac にインストールする
 

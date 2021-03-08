@@ -4,19 +4,19 @@ description: Linux Ruby アプリを Azure App Service で動作させて、Azur
 ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
-ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 77892cc9a05c569e431fb9c66c2f6eb92068b3af
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
+ms.openlocfilehash: de8f0e64189014b303463dd8bd6c827990b88f9a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082422"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178475"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Ruby および Postgres のアプリを構築する
 
 [Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、Ruby アプリを作成し、PostgreSQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、App Service on Linux で実行される [Ruby on Rails](https://rubyonrails.org/) アプリが完成します。
 
-![Azure App Service で動作している Ruby on Rails アプリ](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
+:::image type="content" source="./media/tutorial-ruby-postgres-app/complete-checkbox-published.png" alt-text="Tasks という Ruby on Rails サンプル アプリのスクリーンショット。":::
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -34,10 +34,12 @@ ms.locfileid: "88082422"
 
 このチュートリアルを完了するには、以下が必要です。
 
-* [Git をインストールする](https://git-scm.com/)
-* [Ruby 2.6 をインストールする](https://www.ruby-lang.org/en/documentation/installation/)
-* [Ruby on Rails 5.1 をインストールする](https://guides.rubyonrails.org/v5.1/getting_started.html)
-* [PostgreSQL をインストールして実行する](https://www.postgresql.org/download/)
+- [Git をインストールする](https://git-scm.com/)
+- [Ruby 2.6 をインストールする](https://www.ruby-lang.org/en/documentation/installation/)
+- [Ruby on Rails 5.1 をインストールする](https://guides.rubyonrails.org/v5.1/getting_started.html)
+- [PostgreSQL をインストールして実行する](https://www.postgresql.org/download/)
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="prepare-local-postgres"></a>ローカル Postgres を準備する
 
@@ -104,11 +106,9 @@ rails server
 
 Rails サーバーを停止するには、ターミナルで「`Ctrl + C`」と入力します。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="create-postgres-in-azure"></a>Azure で Postgres を作成する
 
-この手順では、Postgres データベースを [Azure Database for PostgreSQL](/azure/postgresql/) に作成します。 後で、このデータベースに接続するように Ruby on Rails アプリケーションを構成します。
+この手順では、Postgres データベースを [Azure Database for PostgreSQL](../postgresql/index.yml) に作成します。 後で、このデータベースに接続するように Ruby on Rails アプリケーションを構成します。
 
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -117,7 +117,7 @@ Rails サーバーを停止するには、ターミナルで「`Ctrl + C`」と�
 ## <a name="create-postgres-database-in-azure"></a>Azure で Postgres データベースを作成する
 
 <!-- > [!NOTE]
-> Before you create an Azure Database for PostgreSQL server, check which [compute generation](/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
+> Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
 
 このセクションでは、Azure Database for PostgreSQL サーバーとデータベースを作成します。 まず、次のコマンドを使用して `db-up` 拡張機能をインストールします。
 
@@ -255,7 +255,7 @@ git commit -m "database.yml updates"
 
 ### <a name="configure-database-settings"></a>データベース設定を構成する
 
-App Service では、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
+App Service では、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
 
 次の Cloud Shell コマンドでは、アプリ設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、および `DB_PASSWORD` を構成します。 プレースホルダーの _&lt;appname>_ と _&lt;postgres-server-name>_ を置き換えます。
 
@@ -292,7 +292,7 @@ git remote add azure <paste-copied-url-here>
 Azure リモートにプッシュして、Ruby on Rails アプリケーションをデプロイします。 デプロイ ユーザーの作成時に指定したパスワードを入力するように求めるメッセージが表示されます。
 
 ```bash
-git push azure master
+git push azure main
 ```
 
 デプロイ中、Azure App Service は進行状況について Git と通信します。
@@ -303,7 +303,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -316,7 +316,7 @@ remote: Running deployment command...
 
 `http://<app-name>.azurewebsites.net` を参照し、一覧にいくつかのタスクを追加します。
 
-![Azure App Service で動作している Ruby on Rails アプリ](./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png)
+:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="リストに追加されたタスクを表示する Tasks という Azure アンプル アプリのスクリーンショット。":::
 
 データ主導型の Ruby on Rails アプリが Azure App Service で実行されるようになりました。
 
@@ -422,7 +422,7 @@ rake db:migrate RAILS_ENV=production
 ```bash
 git add .
 git commit -m "added complete checkbox"
-git push azure master
+git push azure main
 ```
 
 `git push` が完了したら、Azure アプリに移動し、新機能を試します。

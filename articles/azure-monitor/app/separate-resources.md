@@ -3,12 +3,12 @@ title: Application Insights のデプロイを設計する方法 - 1 つまた�
 description: 開発、テスト、および運用スタンプのテレメトリを異なるリソースに送信します。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 3964cddcf27a4b2c7397b508ccb3cc8928bd04ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258724"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589523"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>デプロイする必要がある Application Insights リソースの数
 
@@ -18,7 +18,7 @@ Web アプリケーションの次のバージョンを開発する際に、新�
 
 ## <a name="about-resources-and-instrumentation-keys"></a>リソースとインストルメンテーション キーについて
 
-Web アプリに対する Application Insights の監視を設定するときは、Microsoft Azure 内に Application Insights *リソース*を作成します。 アプリから収集されたテレメトリを表示して分析するには、Azure ポータルでこのリソースを開きます。 リソースは、*インストルメンテーション キー* (iKey) によって識別されます。 アプリを監視するために Application Insights パッケージをインストールするとき、インストルメンテーション キーを構成して、テレメトリの送信先を認識できるようにします。
+Web アプリに対する Application Insights の監視を設定するときは、Microsoft Azure 内に Application Insights *リソース* を作成します。 アプリから収集されたテレメトリを表示して分析するには、Azure ポータルでこのリソースを開きます。 リソースは、*インストルメンテーション キー* (iKey) によって識別されます。 アプリを監視するために Application Insights パッケージをインストールするとき、インストルメンテーション キーを構成して、テレメトリの送信先を認識できるようにします。
 
 各 Application Insights リソースには、すぐに使用できるメトリックが付属しています。 完全に分離されたコンポーネントが同じ Application Insights リソースに報告している場合は、これらのメトリックがダッシュボードまたはアラートにとって意味がない場合があります。
 
@@ -26,7 +26,7 @@ Web アプリに対する Application Insights の監視を設定するときは
 
 -   一緒にデプロイされるアプリケーション コンポーネントの場合。 通常は、1 つのチームによって開発され、同じ DevOps/ITOps ユーザーのセットによって管理されます。
 -   それらすべてにわたって既定で応答時間、ダッシュボードの失敗率などの主要業績評価指標 (KPI) を集計することが理にかなっている場合 (メトリックス エクスプローラー エクスペリエンスでロール名でセグメント化することを選択できます)。
--   アプリケーション コンポーネント間で異なる方法でロールベースのアクセス制御 (RBAC) を管理する必要がない場合。
+-   アプリケーション コンポーネント間で異なる方法で Azure ロールベースのアクセス制御 (Azure RBAC) を管理する必要がない場合。
 -   コンポーネント間で異なるメトリック アラート条件が必要ない場合。
 -   コンポーネント間で異なる方法で連続エクスポートを管理する必要がない場合。
 -   コンポーネント間で異なる方法で請求先またはクォータを管理する必要がない場合。
@@ -86,7 +86,7 @@ Application Insights リソースを作成するには、[リソース作成ガ�
 ## <a name="filter-on-build-number"></a>ビルド番号でのフィルター処理
 新しいバージョンのアプリを発行するときは、異なるビルドのテレメトリを区別する必要があります。
 
-アプリケーション バージョン プロパティを設定することで、[検索](../../azure-monitor/app/diagnostic-search.md)と[メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md)の結果をフィルター処理できます。
+アプリケーション バージョン プロパティを設定することで、[検索](../../azure-monitor/app/diagnostic-search.md)と[メトリックス エクスプローラー](../../azure-monitor/essentials/metrics-charts.md)の結果をフィルター処理できます。
 
 アプリケーション バージョン プロパティを設定するには複数の方法があります。
 
@@ -132,7 +132,7 @@ Application Insights リソースを作成するには、[リソース作成ガ�
 </PropertyGroup>
 ```
 
-ビルド情報がある場合、Application Insights Web モジュールは、 **アプリケーションのバージョン** をプロパティとしてテレメトリのすべての項目に自動的に追加します。 これにより、[診断の検索](../../azure-monitor/app/diagnostic-search.md)を実行するとき、または[メトリックを調べる](../../azure-monitor/platform/metrics-charts.md)ときに、バージョンによってフィルター処理できます。
+ビルド情報がある場合、Application Insights Web モジュールは、 **アプリケーションのバージョン** をプロパティとしてテレメトリのすべての項目に自動的に追加します。 これにより、[診断の検索](../../azure-monitor/app/diagnostic-search.md)を実行するとき、または[メトリックを調べる](../../azure-monitor/essentials/metrics-charts.md)ときに、バージョンによってフィルター処理できます。
 
 ただし、Visual Studio の開発者向けのビルドではなく、Microsoft Build Engine でのみビルド バージョン番号が生成されることに注意してください。
 

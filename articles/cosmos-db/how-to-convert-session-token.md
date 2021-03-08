@@ -3,18 +3,20 @@ title: .NET SDK でセッション トークン形式を変換する方法 - Azu
 description: 異なる .NET SDK バージョン間での互換性を保証するためにセッション トークン形式を変換する方法について説明します。
 author: vinhms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: vitrinh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 787c39681d0e9aff25d205c7b195be00b8c0bc9c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7ed06eeb7330989b4a251dc77e516eb8ac578bff
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020016"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342047"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>.NET SDK でセッション トークン形式を変換する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、SDK バージョン間での互換性を保証するために、異なるセッション トークン形式間で変換を行う方法について説明します。
 
@@ -26,7 +28,7 @@ ms.locfileid: "89020016"
 
 ## <a name="session-token-formats"></a>セッション トークン形式
 
-セッション トークン形式には、**シンプル**と**ベクター**の 2 つがあります。  これらの 2 つの形式は互換性がないため、バージョンが異なるクライアント アプリケーションに渡すときに形式を変換する必要があります。
+セッション トークン形式には、 **シンプル** と **ベクター** の 2 つがあります。  これらの 2 つの形式は互換性がないため、バージョンが異なるクライアント アプリケーションに渡すときに形式を変換する必要があります。
 - **シンプル** セッション トークン形式は、.NET SDK V1 (Microsoft.Azure.DocumentDB バージョン 1.x) で使用されます。
 - **ベクター** セッション トークン形式は、.NET SDK V2 (Microsoft.Azure.DocumentDB バージョン 2.x) で使用されます。
 
@@ -40,7 +42,7 @@ ms.locfileid: "89020016"
 
 ## <a name="convert-to-simple-session-token"></a>シンプル セッション トークンに変換する
 
-.NET SDK V1 を使用してセッション トークンをクライアントに渡すには、**シンプル** セッション トークン形式を使用します。  たとえば、次のサンプル コードを使用して変換します。
+.NET SDK V1 を使用してセッション トークンをクライアントに渡すには、 **シンプル** セッション トークン形式を使用します。  たとえば、次のサンプル コードを使用して変換します。
 
 ```csharp
 private static readonly char[] SegmentSeparator = (new[] { '#' });
@@ -74,7 +76,7 @@ else
 
 ## <a name="convert-to-vector-session-token"></a>ベクター セッション トークンに変換する
 
-.NET SDK V2 を使用してセッション トークンをクライアントに渡すには、**ベクター** セッション トークン形式を使用します。  たとえば、次のサンプル コードを使用して変換します。
+.NET SDK V2 を使用してセッション トークンをクライアントに渡すには、 **ベクター** セッション トークン形式を使用します。  たとえば、次のサンプル コードを使用して変換します。
 
 ```csharp
 
@@ -111,6 +113,6 @@ else
 次の記事を参照してください。
 
 * [セッション トークンを使用して Azure Cosmos DB で一貫性を管理する](how-to-manage-consistency.md#utilize-session-tokens)
-* [Azure Cosmos DB で適切な一貫性レベルを選択する](consistency-levels-choosing.md)
-* [Azure Cosmos DB の一貫性、可用性、パフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)
-* [さまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)
+* [Azure Cosmos DB で適切な一貫性レベルを選択する](./consistency-levels.md)
+* [Azure Cosmos DB の一貫性、可用性、パフォーマンスのトレードオフ](./consistency-levels.md)
+* [さまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ](./consistency-levels.md)

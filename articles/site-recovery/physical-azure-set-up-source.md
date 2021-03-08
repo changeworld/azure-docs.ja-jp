@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
-ms.openlocfilehash: d2cc3627222bcd8de5a5cb1b5c83b04c5d4ef880
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 327e995a8fe2f66903548fba054804768d2538ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130205"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001561"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>物理サーバーの Azure へのディザスター リカバリーのために構成サーバーを設定する
 
@@ -36,9 +36,9 @@ ms.locfileid: "86130205"
 ## <a name="choose-your-protection-goals"></a>保護の目標を選択する
 
 1. Azure Portal で、**Recovery Services** コンテナー ブレードに移動し、コンテナーを選択します。
-2. コンテナーの**リソース** メニューで、 **[作業の開始]**  >  **[Site Recovery]**  >  **[手順 1:インフラストラクチャを準備する]**  >  **[保護の目標]** の順にクリックします。
+2. コンテナーの **リソース** メニューで、 **[作業の開始]**  >  **[Site Recovery]**  >  **[手順 1:インフラストラクチャを準備する]**  >  **[保護の目標]** の順にクリックします。
 
-    ![Choose goals](./media/physical-azure-set-up-source/choose-goals.png)
+    ![どこで保護の目標を選択するかを示したスクリーンショット。](./media/physical-azure-set-up-source/choose-goals.png)
 3. **[保護の目標]** で、 **[To Azure (Azure へ)]** を選択し、 **[非仮想化/その他]** を選択し、 **[OK]** をクリックします。
 
     ![Choose goals](./media/physical-azure-set-up-source/physical-protection-goal.png)
@@ -47,13 +47,13 @@ ms.locfileid: "86130205"
 
 1. **[ソースの準備]** で、構成サーバーがない場合は **[+ 構成サーバー]** をクリックして追加します。
 
-   ![Set up source](./media/physical-azure-set-up-source/plus-config-srv.png)
+   ![構成サーバーを選択する方法を示すスクリーンショット。](./media/physical-azure-set-up-source/plus-config-srv.png)
 2. **[サーバーの追加]** ブレードで、 **[サーバーの種類]** に **[構成サーバー]** が表示されていることを確認します。
 4. Site Recovery 統合セットアップ インストール ファイルをダウンロードします。
 5. コンテナー登録キーをダウンロードします。 統合セットアップを実行する際には、登録キーが必要です。 キーは生成後 5 日間有効です。
 
     ![Set up source](./media/physical-azure-set-up-source/set-source2.png)
-6. 構成サーバーとして使用するマシンで**Azure Site Recovery 統合セットアップ**を実行して、構成サーバー、プロセス サーバー、マスター ターゲット サーバーをインストールします。
+6. 構成サーバーとして使用するマシンで **Azure Site Recovery 統合セットアップ** を実行して、構成サーバー、プロセス サーバー、マスター ターゲット サーバーをインストールします。
 
 #### <a name="run-azure-site-recovery-unified-setup"></a>Azure Site Recovery 統合セットアップを実行する
 

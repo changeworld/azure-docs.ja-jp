@@ -2,7 +2,7 @@
 title: Azure AD Domain Services の一般的なデプロイ シナリオ | Microsoft Docs
 description: Azure Active Directory Domain Services が価値を提供し、ビジネス ニーズを満たすいくつかの一般的なシナリオとユースケースについて説明します。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: c5216ec9-4c4f-4b7e-830b-9d70cf176b20
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.author: iainfou
-ms.openlocfilehash: a27d97e7e030da216b2296f11b6876ccf28c8ad0
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: justinha
+ms.openlocfilehash: d33698ed2f9ac53aae3c836acd54f19a4b72ceef
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722757"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619030"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の一般的なユースケースとシナリオ
 

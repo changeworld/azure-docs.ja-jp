@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 48a1e50d451abb429e9bc33308909b368283644f
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 181d58baf128c4848a538e776aea0e43213994dc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661454"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458610"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Lenses.io DataOps ポータルの統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88661454"
 * ユーザーが自分の Azure AD アカウントを使用して Lenses に自動的にサインインできるようにします。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、[Azure AD のアプリケーション アクセスとシングル サインオンの概要](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)に関する記事を参照してください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、[Azure AD のアプリケーション アクセスとシングル サインオンの概要](../manage-apps/what-is-single-sign-on.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,7 +42,7 @@ ms.locfileid: "88661454"
 
 * Lenses.io では、サービス プロバイダー (SP) Initiated SSO がサポートされます。
 
-* Lenses.io を構成した後で、セッション制御を適用できます。 セッション制御により、組織の機密データを流出と侵入からリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Lenses.io を構成した後で、セッション制御を適用できます。 セッション制御により、組織の機密データを流出と侵入からリアルタイムで保護することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="add-lensesio-from-the-gallery"></a>ギャラリーからの Lenses.io の追加
 
@@ -52,7 +52,7 @@ Azure AD への Lenses.io の統合を構成するには、マネージド SaaS 
 1. 左側のペインで、 **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Lenses.io**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Lenses.io** 」と入力します。
 1. 結果のパネルから **[Lenses.io]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso-for-lensesio"></a>Lenses.io の Azure AD SSO の構成とテスト
@@ -80,11 +80,11 @@ Azure AD への Lenses.io の統合を構成するには、マネージド SaaS 
 
 1. **[基本的な SAML 構成]** セクションで、次のテキスト入力ボックスに値を入力します。
 
-    a. **サインオン URL**: `https://<CUSTOMER_LENSES_BASE_URL>` の形式で URL を入力します。 たとえば `https://lenses.my.company.com` です。
+    a. **サインオン URL** : `https://<CUSTOMER_LENSES_BASE_URL>` の形式で URL を入力します。 たとえば `https://lenses.my.company.com` です。
 
     b. **識別子 (エンティティ ID)** : `https://<CUSTOMER_LENSES_BASE_URL>` の形式で URL を入力します。 たとえば `https://lenses.my.company.com` です。
 
-    c. **応答 URL**:`https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client` の形式で URL を入力します。 たとえば `https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client` です。
+    c. **応答 URL** :`https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client` の形式で URL を入力します。 たとえば `https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client` です。
 
     > [!NOTE]
     > これらは実際の値ではありません。 これらは、お使いの Lenses ポータル インスタンスのベース URL を使用した実際のサインオン URL、応答 URL、および識別子で更新します。 詳細については、[Lenses.io SSO のドキュメント](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)を参照してください。
@@ -106,7 +106,7 @@ Lenses でグループ メンバーシップのマッピングを使用して認
 1. Azure portal の左側のペインで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** ボックスに「**B.Simon**」と入力します。  
+   1. **[名前]** ボックスに「 **B.Simon** 」と入力します。  
    1. **[ユーザー名]** ボックスに、「username@companydomain.extension」と入力します。 たとえば、「 B.Simon@contoso.com 」のように入力します。
    1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示されるパスワードを書き留めます。
    1. **［作成］** を選択します
@@ -117,9 +117,9 @@ Lenses でグループ メンバーシップのマッピングを使用して認
 1. 画面の上部で、 **[新しいグループ]** を選択します。
 1. **[グループのプロパティ]** で、以下の手順を実行します。
    1. **[グループの種類]** ボックスで **[セキュリティ]** を選択します。
-   1. **[グループ名]** ボックスに、「**LensesUsers**」と入力します。
+   1. **[グループ名]** ボックスに、「 **LensesUsers** 」と入力します。
    1. **［作成］** を選択します
-1. グループ **LensesUsers** を選択し、**オブジェクト ID** (たとえば、f8b5c1ec-45de-4abd-af5c-e874091fb5f7) をコピーします。 この ID は、このグループのユーザーを[適切なアクセス許可](https://docs.lenses.io/install_setup/configuration/security.html#id3)にマップするために、Lenses で使用します。  
+1. グループ **LensesUsers** を選択し、 **オブジェクト ID** (たとえば、f8b5c1ec-45de-4abd-af5c-e874091fb5f7) をコピーします。 この ID は、このグループのユーザーを[適切なアクセス許可](https://docs.lenses.io/install_setup/configuration/security.html#id3)にマップするために、Lenses で使用します。  
 
 **テスト ユーザーにグループを割り当てるには、次のようにします。**
 
@@ -151,11 +151,11 @@ Lenses でグループ メンバーシップのマッピングを使用して認
 
 ## <a name="configure-lensesio-sso"></a>Lenses.io の SSO の構成
 
-**Lenses.io** ポータルで SSO を構成するには、ダウンロードした**フェデレーション メタデータ XML** を Lenses インスタンスにインストールし、[SSO が有効になるように Lenses を構成します](https://docs.lenses.io/install_setup/configuration/security.html#configure-lenses)。
+**Lenses.io** ポータルで SSO を構成するには、ダウンロードした **フェデレーション メタデータ XML** を Lenses インスタンスにインストールし、 [SSO が有効になるように Lenses を構成します](https://docs.lenses.io/install_setup/configuration/security.html#configure-lenses)。
 
 ### <a name="create-lensesio-test-group-permissions"></a>Lenses.io テスト グループのアクセス許可を作成する
 
-1. Lenses でグループを作成するには、**LensesUsers** グループの**オブジェクト ID** を使用します。 これは、ユーザーの[作成セクション](#create-an-azure-ad-test-user-and-group)でコピーした ID です。
+1. Lenses でグループを作成するには、 **LensesUsers** グループの **オブジェクト ID** を使用します。 これは、ユーザーの[作成セクション](#create-an-azure-ad-test-user-and-group)でコピーした ID です。
 1. B.Simon に必要なアクセス許可を割り当てます。
 
 詳細については、[Azure - Lenses グループ マッピング](https://docs.lenses.io/install_setup/configuration/security.html#azure-groups)に関する記述を参照してください。
@@ -164,20 +164,20 @@ Lenses でグループ メンバーシップのマッピングを使用して認
 
 このセクションでは、アクセス パネルを使用して Azure AD SSO の構成をテストします。
 
-アクセス パネル上で [Lenses.io] タイルを選択すると、Lenses.io ポータルに自動的にサインインします。 詳細については、「[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」を参照してください。
+アクセス パネル上で [Lenses.io] タイルを選択すると、Lenses.io ポータルに自動的にサインインします。 詳細については、「[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他の技術情報
 
 - [Lenses.io インスタンスで SSO をセットアップする](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
 
-- [SaaS アプリと Azure AD を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure AD を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure AD のアプリケーション アクセスと SSO とは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure AD のアプリケーション アクセスと SSO とは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure AD の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure AD の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Lenses.io を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって Lenses.io を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって Lenses.io を保護する方法](/cloud-app-security/proxy-intro-aad)

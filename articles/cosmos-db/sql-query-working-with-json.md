@@ -3,17 +3,19 @@ title: Azure Cosmos DB での JSON の使用
 description: 入れ子になった JSON プロパティに対するクエリの実行とアクセス、および Azure Cosmos DB での特殊文字の使用について説明します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 09/19/2020
 ms.author: tisande
-ms.openlocfilehash: a569b0122f9122b141b64ded21dbd9be1d766a41
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 9a9300db1adc3ff238c44887012400702690b0e8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699124"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337831"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>Azure Cosmos DB での JSON の使用
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB の SQL (Core) API では、項目は JSON として保存されます。 型システムおよび式は、JSON 型のみを扱うように制限されます。 詳細については、[JSON の仕様](https://www.json.org/)に関する記事を参照してください。
 
@@ -138,6 +140,34 @@ WHERE EXISTS(
     WHERE n.checkingAccount < 0
 )
 ```
+
+## <a name="difference-between-null-and-undefined"></a>null 値と未定義の違い
+
+項目内でプロパティが定義されていない場合、その値は `undefined` になります。 `null` 値を持つプロパティを明示的に定義し、`null` 値を割り当てる必要があります。
+
+たとえば、このサンプル項目について考えてみます。
+
+```json
+{
+  "id": "AndersenFamily",
+  "lastName": "Andersen",
+  "address": {
+      "state": "WA",
+      "county": "King",
+      "city": "Seattle"
+      },
+  "creationDate": null
+}
+```
+
+この例では、プロパティ `isRegistered` に値 `undefined` が与えられています。項目から省略されているためです。 プロパティ `creationDate` には `null` 値が与えられています。
+
+Azure Cosmos DB では、`null` プロパティと `undefined` プロパティに対して便利な型チェック システム関数が 2 つサポートされています。
+
+* [IS_NULL](sql-query-is-null.md) - プロパティ値が `null` かどうかを確認します
+* [IS_DEFINED](sql-query-is-defined.md) - プロパティ値が定義されているかどうかを確認します
+
+`null` 値と `undefined` 値で[サポートされている演算子](sql-query-operators.md)とその動作について学習できます。
 
 ## <a name="reserved-keywords-and-special-characters-in-json"></a>JSON での予約キーワードと特殊文字
 

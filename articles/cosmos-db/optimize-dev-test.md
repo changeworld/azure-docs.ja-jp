@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 9390f8a2ab9372927b434ea94d7545c9ec540c58
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 3ddae808fbb2e3dcfe20909c8b3d0c5a20bb04bd
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606269"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247524"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Azure Cosmos DB での開発とテストのコストを最適化する
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 この記事では、開発およびテスト用に Azure Cosmos DB を無料で使用するさまざまなオプションと、開発またはテスト アカウントでのコストを最適化する手法について説明します。
 
@@ -28,7 +29,7 @@ Azure Cosmos DB の Free レベルを使用すると、アプリケーション�
 > [!NOTE]
 > Free レベルは、プロビジョニングされたスループット モードでのみ使用できます。
 
-Free レベルは、アカウントの有効期間中は無期限に存続し、無制限のストレージとスループット (RU/秒)、SLA、高可用性、すべての Azure リージョンでのターンキー グローバル分散など、通常の Azure Cosmos DB アカウントの[利点と機能](introduction.md#key-benefits)をすべて備えます。 Azure サブスクリプションごとに所有できる Free レベル アカウントは 1 つまでです。また、アカウントの作成時に選択する必要があります。 開始するには、[Free レベルで有効化されている Azure portal で新しいアカウントを作成する](create-cosmosdb-resources-portal.md)か、[ARM テンプレート](manage-sql-with-resource-manager.md#free-tier)を使用します。 詳しくは、[料金に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)をご覧ください。
+Free レベルは、アカウントの有効期間中は無期限に存続し、無制限のストレージとスループット (RU/秒)、SLA、高可用性、すべての Azure リージョンでのターンキー グローバル分散など、通常の Azure Cosmos DB アカウントの[利点と機能](introduction.md#key-benefits)をすべて備えます。 Azure サブスクリプションごとに所有できる Free レベル アカウントは 1 つまでです。また、アカウントの作成時に選択する必要があります。 開始するには、[Free レベルで有効化されている Azure portal で新しいアカウントを作成する](create-cosmosdb-resources-portal.md)か、[ARM テンプレート](./manage-with-templates.md#free-tier)を使用します。 詳しくは、[料金に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)をご覧ください。
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Azure Cosmos DB を無料で試す
 
@@ -36,7 +37,7 @@ Free レベルは、アカウントの有効期間中は無期限に存続し、
 
 ## <a name="azure-free-account"></a>Azure 無料アカウント
 
-Azure Cosmos DB が含まれる [Azure 無料アカウント](https://azure.microsoft.com/free)では、Azure クレジットとリソースが一定の期間無料で提供されています。 具体的には、Azure Cosmos DB の場合、この無料アカウントでは、5 GB のストレージと 400 RU のプロビジョニング済みスループットが 1 年間提供されます。 このエクスペリエンスでは、すべての開発者が簡単に無料で、Azure Cosmos DB の機能をテストしたり、他の Azure サービスと統合したりできます。 Azure の無料アカウントでは、最初の 30 日間使用できる 200 ドルのクレジットが手に入ります。 サービスの利用を開始した後でも、アップグレードするまでは無料で利用できます。 始めるには、[Azure 無料アカウント](https://azure.microsoft.com/free)のページをご覧ください。
+Azure Cosmos DB が含まれる [Azure 無料アカウント](https://azure.microsoft.com/free)では、Azure クレジットとリソースが一定の期間無料で提供されています。 具体的には、Azure Cosmos DB の場合、この無料アカウントでは、25 GB のストレージと 400 RU のプロビジョニング済みスループットが 1 年間提供されます。 このエクスペリエンスでは、すべての開発者が簡単に無料で、Azure Cosmos DB の機能をテストしたり、他の Azure サービスと統合したりできます。 Azure の無料アカウントでは、最初の 30 日間使用できる 200 ドルのクレジットが手に入ります。 サービスの利用を開始した後でも、アップグレードするまでは無料で利用できます。 始めるには、[Azure 無料アカウント](https://azure.microsoft.com/free)のページをご覧ください。
 
 ## <a name="azure-cosmos-db-serverless"></a>Azure Cosmos DB サーバーレス
 
@@ -57,5 +58,5 @@ Azure Cosmos DB が含まれる [Azure 無料アカウント](https://azure.micr
 * [スループット コストの最適化](optimize-cost-throughput.md)の詳細について学習します
 * [ストレージ コストの最適化](optimize-cost-storage.md)の詳細について学習します
 * [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)の詳細について学習します
-* [クエリ コストの最適化](optimize-cost-queries.md)の詳細について学習します
+* [クエリ コストの最適化](./optimize-cost-reads-writes.md)の詳細について学習します
 * [複数リージョンの Azure Cosmos アカウント コストの最適化](optimize-cost-regions.md)の詳細について学習します

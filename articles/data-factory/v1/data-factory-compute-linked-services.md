@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory バージョン 1 でサポートされるコンピューティング環境
 description: Azure Data Factory パイプライン (Azure HDInsight など) でデータの変換または処理に使うことができるコンピューティング環境について説明します。
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ac92e45e69522fe3de8abdb3afcf6049e5f07ac8
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 07e13036a427ff7ff4f0cbbd2dfd6fbe272bf915
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563502"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377195"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Azure Data Factory バージョン 1 でサポートされるコンピューティング環境
 > [!NOTE]
@@ -30,9 +26,9 @@ ms.locfileid: "87563502"
 | ---------------------------------------- | ---------------------------------------- |
 | [オンデマンド Azure HDInsight クラスター](#azure-hdinsight-on-demand-linked-service)または[独自の HDInsight クラスター](#azure-hdinsight-linked-service) | [DotNet](data-factory-use-custom-activities.md)、[Hive](data-factory-hive-activity.md)、[Pig](data-factory-pig-activity.md)、[MapReduce](data-factory-map-reduce.md)、[Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Machine Learning アクティビティ:バッチ実行とリソースの更新](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning Studio (クラシック)](#azure-machine-learning-studio-classic-linked-service) | [スタジオ (クラシック) アクティビティ:バッチ実行とリソースの更新](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
-| [Azure SQL](#azure-sql-linked-service)、[Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service)、[SQL Server](#sql-server-linked-service) | [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) |
+| [Azure SQL](#azure-sql-linked-service)、[Azure Synapse Analytics](#azure-synapse-analytics-linked-service)、[SQL Server](#sql-server-linked-service) | [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) |
 
 ## <a name="hdinsight-versions-supported-in-data-factory"></a><a name="supported-hdinsight-versions-in-azure-data-factory"></a>Data Factory でサポートされる HDInsight バージョン
 Azure HDInsight では、いつでもデプロイできる Hadoop クラスター バージョンが複数サポートされます。 サポートされる各バージョンにより、特定のバージョンの Hortonworks Data Platform (HDP) ディストリビューションと、そのディストリビューションの一連のコンポーネントが作成されます。 
@@ -49,19 +45,19 @@ Microsoft では、HDInsight のサポートされるバージョンの一覧を
 2017 年 12 月 15 日以降:
 
 - Data Factory バージョン 1 のオンデマンド HDInsight のリンクされたサービスを使用して、Linux ベースの HDInsight バージョン 3.3 以前のクラスターを作成できなくなります。 
-- 既存の Data Factory バージョン 1 のオンデマンド HDInsight のリンクされたサービスの JSON 定義で、[**osType** や **Version** のプロパティ](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)が明示的に指定されていない場合、既定値は **Version=3.1, osType=Windows** から **Version=\<latest HDI default version\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) , osType=Linux** に変更されます。
+- 既存の Data Factory バージョン 1 のオンデマンド HDInsight のリンクされたサービスの JSON 定義で、[**osType** や **Version** のプロパティ](#azure-hdinsight-on-demand-linked-service)が明示的に指定されていない場合、既定値は **Version=3.1, osType=Windows** から **Version=\<latest HDI default version\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) , osType=Linux** に変更されます。
 
 2018 年 7月 31 日以降:
 
 - Data Factory バージョン 1 のオンデマンド HDInsight のリンクされたサービスを使用して、任意のバージョンの Windows ベースの HDInsight クラスターを作成できなくなります。 
 
-### <a name="recommended-actions"></a>推奨アクション 
+### <a name="recommended-actions"></a>推奨アクション
 
-- 最新の Hadoop エコシステム コンポーネントと修正プログラムを確実に使用可能にするには、影響を受ける Data Factory バージョン 1 オンデマンド HDInsight のリンクされたサービス定義の [**osType** および **Version** プロパティ](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)を、新しい Linux ベースの HDInsight バージョン (HDInsight 3.6) に更新します。 
+- 最新の Hadoop エコシステム コンポーネントと修正プログラムを確実に使用可能にするには、影響を受ける Data Factory バージョン 1 オンデマンド HDInsight のリンクされたサービス定義の [**osType** および **Version** プロパティ](#azure-hdinsight-on-demand-linked-service)を、新しい Linux ベースの HDInsight バージョン (HDInsight 3.6) に更新します。 
 - 2017 年 12 月 15 日より前に、影響を受けるリンクされたサービスを参照する Data Factory バージョン 1 Hive、Pig、MapReduce、および Hadoop ストリーミング アクティビティをテストします。 これが新しい **osType** と **Version** の既定値 (**Version=3.6**、**osType=Linux**) またはアップグレード後の明示的な HDInsight バージョンおよび OS タイプと互換性があることを確認します。 
-  互換性の詳細については、「[Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-from-windows-to-linux)」および「[HDInsight で使用可能な Hadoop コンポーネントとバージョンとは](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hortonworks-release-notes-associated-with-hdinsight-versions)」を参照してください。 
+  互換性の詳細については、「[Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行](../../hdinsight/index.yml)」および「[HDInsight で使用可能な Hadoop コンポーネントとバージョンとは](../../hdinsight/hdinsight-component-versioning.md)」を参照してください。 
 - Data Factory バージョン 1 オンデマンド HDInsight のリンクされたサービスを引き続き使用して、Windows ベースの HDInsight クラスターを作成するには、2017 年 12 月 15 日より前に **osType** を **Windows** に明示的に設定します。 2018 年 7 月 31日より前に、Linux ベースの HDInsight クラスターに移行することをお勧めします。 
-- オンデマンド HDInsight のリンクされたサービスを使用して、Data Factory バージョン 1 DotNet カスタム アクティビティを実行している場合は、Azure Batch のリンクされたサービスを使用するように DotNet カスタム アクティビティ JSON 定義を更新します。 詳細については、[Data Factory パイプラインでのカスタム アクティビティの使用](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)に関する記事をご覧ください。 
+- オンデマンド HDInsight のリンクされたサービスを使用して、Data Factory バージョン 1 DotNet カスタム アクティビティを実行している場合は、Azure Batch のリンクされたサービスを使用するように DotNet カスタム アクティビティ JSON 定義を更新します。 詳細については、[Data Factory パイプラインでのカスタム アクティビティの使用](./data-factory-use-custom-activities.md)に関する記事をご覧ください。 
 
 > [!Note]
 > Data Factory バージョン 1 で既存の Bring Your Own クラスター HDInsight のリンクされたデバイスを使用する場合、または Azure Data Factory で Bring Your Own デバイスおよびオンデマンド HDInsight のリンクされたサービスを使用する場合、操作は不要です。 こうしたシナリオでは、HDInsight クラスターの最新バージョンのサポート ポリシーが既に強制されています。 
@@ -124,7 +120,7 @@ Data Factory では、データを処理するための Windows ベースまた�
 | type                         | type プロパティを **HDInsightOnDemand** に設定します。 | はい      |
 | clusterSize                  | クラスターの worker とデータ ノードの数です。 HDInsight クラスターは、このプロパティで指定した worker ノードの数に加え、2 つのヘッド ノードを使用して作成されます。 ノードのサイズは Standard_D3 (4 コア) です。 4 worker ノード クラスターのコアは 24 個になります (worker ノード用に 4\*4 = 16 個のコアと、ヘッド ノード用に 2\*4 = 8 個のコア)。 Standard_D3 レベルの詳細については、[HDInsight での Linux ベースの Hadoop クラスターの作成](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関するページをご覧ください。 | はい      |
 | timeToLive                   | オンデマンド HDInsight クラスターに許可されるアイドル時間です。 他のアクティブなジョブがクラスターにない場合、アクティビティの実行が完了したときに、オンデマンド HDInsight クラスターが起動状態を維持する時間を指定します。<br /><br />たとえば、アクティビティ実行に 6 分かかるときに **timeToLive** が 5 分に設定されている場合、アクティビティの実行の 6 分間の処理の後、クラスターが起動状態を 5 分間維持します。 別のアクティビティの実行が 6 分の時間枠で実行される場合、それは同じクラスターで処理されます。<br /><br />オンデマンド HDInsight クラスターの作成は高額な作業です (時間がかかる場合もあります)。 この設定を必要に応じて使用し、オンデマンド HDInsight クラスターを再利用することで、データ ファクトリのパフォーマンスを改善します。<br /><br />**timeToLive** 値を **0** に設定した場合、クラスターは、アクティビティの実行の完了直後に削除されます。 一方、高い値を設定すると、クラスターでは不必要にアイドル状態が維持され、コストの上昇を招きます。 重要なのは、ニーズに合わせて適切な値を設定することです。<br /><br />**timeToLive** 値が適切に設定されている場合、複数のパイプラインでオンデマンド HDInsight クラスターのインスタンスを共有できます。 | はい      |
-| version                      | HDInsight クラスターのバージョン。 許可されている HDInsight バージョンについては、「[サポートされる HDInsight のバージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)」を参照してください。 この値が指定されていない場合は、[最新 HDI の既定のバージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)が使用されます。 | いいえ       |
+| version                      | HDInsight クラスターのバージョン。 許可されている HDInsight バージョンについては、「[サポートされる HDInsight のバージョン](../../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions)」を参照してください。 この値が指定されていない場合は、[最新 HDI の既定のバージョン](../../hdinsight/hdinsight-component-versioning.md)が使用されます。 | いいえ       |
 | linkedServiceName            | データを保存し、処理するためにオンデマンド クラスターで使用される Azure Storage のリンクされたサービスです。 HDInsight クラスターは、このストレージ アカウントと同じリージョンに作成されます。<p>現時点では、Azure Data Lake Store をストレージとして使用するオンデマンド HDInsight クラスターを作成することはできません。 HDInsight 処理の結果データを Data Lake Store に保存する必要がある場合は、コピー アクティビティを使用して、Blob Storage から Data Lake Store にデータをコピーします。 </p> | はい      |
 | additionalLinkedServiceNames | HDInsight のリンクされたサービスの追加ストレージ アカウントを指定します。 ストレージ アカウントは、Data Factory によって自動的に登録されます。 こうしたストレージ アカウントは、HDInsight クラスターと同じリージョンに存在する必要があります。 HDInsight クラスターは、**linkedServiceName** プロパティで指定されているストレージ アカウントと同じリージョンで作成されます。 | いいえ       |
 | osType                       | オペレーティング システムの種類。 使用可能な値は **Linux** と **Windows** です。 この値を指定しない場合は、**Linux** が使用されます。  <br /><br />Linux ベースの HDInsight クラスターを使用することを強くお勧めします。 Windows 向けの HDInsight の提供終了日は 2018 年 7 月 31 日です。 | いいえ       |
@@ -202,7 +198,7 @@ Data Factory では、データを処理するための Windows ベースまた�
 | zookeeperNodeSize | ZooKeeper ノードのサイズを設定します。 既定値は **Standard_D3** です。 | いいえ       |
 
 #### <a name="specify-node-sizes"></a>ノード サイズの指定
-前のセクションで説明したプロパティに対して指定する必要がある文字列値については、[仮想マシンのサイズ](../../virtual-machines/linux/sizes.md)に関するページをご覧ください。 値は、[仮想マシンのサイズ](../../virtual-machines/linux/sizes.md)に関するページで参照されているコマンドレットおよび API に準拠している必要があります。 Large (既定値) データ ノードのサイズは 7 GB のメモリ容量です。 これはシナリオによっては不十分な場合があります。 
+前のセクションで説明したプロパティに対して指定する必要がある文字列値については、[仮想マシンのサイズ](../../virtual-machines/sizes.md)に関するページをご覧ください。 値は、[仮想マシンのサイズ](../../virtual-machines/sizes.md)に関するページで参照されているコマンドレットおよび API に準拠している必要があります。 Large (既定値) データ ノードのサイズは 7 GB のメモリ容量です。 これはシナリオによっては不十分な場合があります。 
 
 D4 サイズのヘッド ノードと worker ノードを作成する場合は、**headNodeSize** プロパティと **dataNodeSize** プロパティの値として **Standard_D4** を指定します。 
 
@@ -215,7 +211,7 @@ D4 サイズのヘッド ノードと worker ノードを作成する場合は�
 
   クラスターを作成できませんでした。 例外:クラスター作成操作を完了できません。 コード '400' で操作が失敗しました。 取り残されたクラスターの状態:'Error'。 メッセージ:'PreClusterCreationValidationFailure'。 
   
-このメッセージが表示された場合は、[仮想マシンのサイズ](../../virtual-machines/linux/sizes.md)に関するページの表に記載されているコマンドレットと API 名を使用していることを確認してください。  
+このメッセージが表示された場合は、[仮想マシンのサイズ](../../virtual-machines/sizes.md)に関するページの表に記載されているコマンドレットと API 名を使用していることを確認してください。  
 
 > [!NOTE]
 > 現時点では、Data Factory は、Data Lake Store をプライマリ ストアとして使用する HDInsight クラスターをサポートしていません。 HDInsight クラスターのプライマリ ストアとして Azure Storage を使用してください。 
@@ -230,9 +226,9 @@ D4 サイズのヘッド ノードと worker ノードを作成する場合は�
 
 * Azure HDInsight
 * Azure Batch
-* Azure Machine Learning
+* Azure Machine Learning Studio (クラシック)
 * Azure Data Lake Analytics
-* Azure SQL Database、Azure SQL Data Warehouse、SQL Server
+* Azure SQL Database、Azure Synapse Analytics、SQL Server
 
 ## <a name="azure-hdinsight-linked-service"></a>Azure HDInsight のリンクされたサービス
 HDInsight のリンクされたサービスを作成し、独自の HDInsight クラスターを Data Factory に登録できます。
@@ -269,8 +265,8 @@ Batch のリンクされたサービスを作成し、仮想マシン (VM) の B
 Batch サービスを初めて利用する場合:
 
 * [Azure Batch の基本](../../azure-sql/database/sql-database-paas-overview.md)についてご確認ください。
-* [New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) コマンドレットについてご確認ください。 このコマンドレットを使用して、Batch アカウントを作成します。 また、[Azure Portal](../../batch/batch-account-create-portal.md) を使用して、Batch アカウントを作成することもできます。 このコマンドレットの使用の詳細については、[PowerShell を使用した Batch アカウントの管理](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)に関するページをご覧ください。
-* [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx) コマンドレットについてご確認ください。 このコマンドレットを使用して、Batch プールを作成します。
+* [New-AzureBatchAccount](/previous-versions/azure/mt125880(v=azure.100)) コマンドレットについてご確認ください。 このコマンドレットを使用して、Batch アカウントを作成します。 また、[Azure Portal](../../batch/batch-account-create-portal.md) を使用して、Batch アカウントを作成することもできます。 このコマンドレットの使用の詳細については、[PowerShell を使用した Batch アカウントの管理](/archive/blogs/windowshpc/using-azure-powershell-to-manage-azure-batch-account)に関するページをご覧ください。
+* [New-AzureBatchPool](/previous-versions/azure/mt125936(v=azure.100)) コマンドレットについてご確認ください。 このコマンドレットを使用して、Batch プールを作成します。
 
 ### <a name="example"></a>例
 
@@ -311,8 +307,8 @@ Batch サービスを初めて利用する場合:
 | poolName          | VM のプールの名前。    | はい      |
 | linkedServiceName | この Batch のリンクされたサービスに関連付けられている、ストレージのリンクされたサービスの名前。 このリンクされたサービスは、アクティビティの実行およびアクティビティの実行ログの保存に必要なステージング ファイルに使用されます。 | はい      |
 
-## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning のリンクされたサービス
-Machine Learning のリンクされたサービスを作成して、Machine Learning のバッチ スコアリング エンドポイントをデータ ファクトリに登録できます。
+## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure Machine Learning Studio (classic) のリンクされたサービス
+Azure Machine Learning スタジオ (クラシック) のリンクされたサービスを作成し、スタジオ (クラシック) のバッチ スコアリング エンドポイントをデータ ファクトリに登録できます。
 
 ### <a name="example"></a>例
 
@@ -353,7 +349,7 @@ Data Lake Analytics のリンクされたサービスを作成して、Data Lake
 Data Lake Analytics のリンクされたサービスについては、サービス プリンシパルまたはユーザー資格情報のいずれかを使用した認証を選択できます。
 
 #### <a name="service-principal-authentication-recommended"></a>サービス プリンシパル認証 (推奨)
-サービス プリンシパル認証を使用するには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録します。 その後、Data Lake Store へのアクセス権を Azure AD に付与します。 詳細な手順については、「[サービス間認証](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md)」を参照してください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
+サービス プリンシパル認証を使用するには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録します。 その後、Data Lake Store へのアクセス権を Azure AD に付与します。 詳細な手順については、「[サービス間認証](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md)」を参照してください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
 * アプリケーション ID
 * アプリケーション キー 
 * テナント ID
@@ -453,18 +449,17 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ```
 
 このコード例で使用されている Data Factory クラスの詳細については、次を参照してください。
-* [AzureDataLakeStoreLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)
-* [AzureDataLakeAnalyticsLinkedService クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)
-* [AuthorizationSessionGetResponse クラス](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)
+* [AzureDataLakeStoreLinkedService クラス](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice)
+* [AzureDataLakeAnalyticsLinkedService クラス](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice)
+* [AuthorizationSessionGetResponse クラス](/dotnet/api/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse)
 
 **WindowsFormsWebAuthenticationDialog** クラスの Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll に参照を追加します。 
 
 ## <a name="azure-sql-linked-service"></a>Azure SQL のリンクされたサービス
 SQL のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動できます。 詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#linked-service-properties)に関するページをご覧ください。
 
-## <a name="azure-sql-data-warehouse-linked-service"></a>Azure SQL Data Warehouse のリンクされたサービス
-SQL Data Warehouse のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動できます。 詳細については、[Azure SQL Data Warehouse コネクタ](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties)に関する記事をご覧ください。
+## <a name="azure-synapse-analytics-linked-service"></a>Azure Synapse Analytics のリンクされたサービス
+Azure Synapse Analytics のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)で使用して、Data Factory パイプラインからストアド プロシージャを起動できます。 詳細については、[Azure Synapse Analytics のコネクタ](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ## <a name="sql-server-linked-service"></a>SQL Server のリンクされたサービス
 SQL Server のリンクされたサービスを作成し、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動できます。 詳細については、[SQL Server コネクタ](data-factory-sqlserver-connector.md#linked-service-properties)に関する記事を参照してください。
-

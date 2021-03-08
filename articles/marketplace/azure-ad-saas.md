@@ -7,25 +7,25 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 0d8e2ee684bc08ec23e052229d50b7e9d62c0ecb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/04/2020
+ms.openlocfilehash: 674f267d3d99dd22c1ae06b6d32587761d5983ce
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328077"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124919"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースにおける Azure AD と取引可能な SaaS オファー
 
-[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) は Microsoft クラウドベース ID およびアクセス管理サービスであり、ユーザーはこれを利用して、内部および外部リソースにサインインしてアクセスできます。 Microsoft コマーシャル マーケットプレースでは、Azure AD によって、発行元、購入者、ユーザーなどの誰にとっても、取引可能な SaaS オファーをより簡単かつセキュアに利用できるようになります。 Azure AD を使用すると、発行元は、サービスとしてのソフトウェア (SaaS) アプリへのユーザーのプロビジョニングを自動化できます。また、購入者自身が、これらのプロビジョニングされたユーザーを管理できます。 
+[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) は Microsoft クラウドベース ID およびアクセス管理サービスであり、ユーザーはこれを利用して、内部および外部リソースにサインインしてアクセスできます。 Microsoft コマーシャル マーケットプレースでは、Azure AD によって、発行元、購入者、ユーザーなどの誰にとっても、取引可能な SaaS オファーをより簡単かつセキュアに利用できるようになります。 Azure AD を使用すると、発行元は、サービスとしてのソフトウェア (SaaS) アプリへのユーザーのプロビジョニングを自動化できます。また、購入者自身が、これらのプロビジョニングされたユーザーを管理できます。 
 
-さらに、[Azure AD シングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (SSO) を使用すると、ユーザーが Azure AD でアプリにサインインする際のセキュリティと利便性が向上します。 また、より迅速なエンゲージメントと最適化されたエクスペリエンスによって、発行元の SaaS アプリの最初の操作から、購入者とユーザーの信頼関係を向上させることができます。 これにより、可視性を築き、取引のリピートを促すポジティブな印象を与えます。
+さらに、[Azure AD シングル サインオン](../active-directory/manage-apps/what-is-single-sign-on.md) (SSO) を使用すると、ユーザーが Azure AD でアプリにサインインする際のセキュリティと利便性が向上します。 また、より迅速なエンゲージメントと最適化されたエクスペリエンスによって、発行元の SaaS アプリの最初の操作から、購入者とユーザーの信頼関係を向上させることができます。 これにより、可視性を築き、取引のリピートを促すポジティブな印象を与えます。
 
-この記事のガイダンスに従うことで、コマーシャル マーケットプレースでの SaaS オファーを認定できます。 認定資格の詳細については、[コマーシャル マーケットプレースの認定資格ポリシー](https://aka.ms/commercial-marketplace-certification-policies#100-general)に関する記事で、これらの[ SaaS に固有](https://aka.ms/commercial-marketplace-certification-policies#1000-software-as-a-service-saas)の記述を含む詳しい説明を確認してください。
+この記事のガイダンスに従うことで、コマーシャル マーケットプレースでの SaaS オファーを認定できます。 認定資格の詳細については、[コマーシャル マーケットプレースの認定資格ポリシー](/legal/marketplace/certification-policies#100-general)に関する記事で、これらの[ SaaS に固有](/legal/marketplace/certification-policies#1000-software-as-a-service-saas)の記述を含む詳しい説明を確認してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-パートナー センターで [SaaS オファーを作成する](./partner-center-portal/create-new-saas-offer.md)場合、オファーのリスト登録に表示されるアクション オプションに対する特定の呼び出しのセットから選択します。 選択することで、コマーシャル マーケットプレースでオファーがどのように処理されるかが決まります。 Microsoft を通じて販売されたオファーは、取引可能なオファーと呼ばれます。 すべての取引可能なオファーに対して、Microsoft が顧客に代わって請求を行います。 Microsoft を通して販売し、Microsoft が代理で取引をホストすることを選んだ場合は ( **[はい]** オプション)、取引可能なオファーを作成することを選択しており、この記事が参考になります。 全体を読むことをお勧めします。
+パートナー センターで [SaaS オファーを作成する](./create-new-saas-offer.md)場合、オファーのリスト登録に表示される特定のリスト オプションのセットから選択します。 選択することで、コマーシャル マーケットプレースでオファーがどのように処理されるかが決まります。 Microsoft を通じて販売されたオファーは、取引可能なオファーと呼ばれます。 すべての取引可能なオファーに対して、Microsoft が顧客に代わって請求を行います。 Microsoft を通して販売し、Microsoft が代理で取引をホストすることを選んだ場合は ( **[はい]** オプション)、取引可能なオファーを作成することを選択しており、この記事が参考になります。 全体を読むことをお勧めします。
 
 コマーシャル マーケットプレース経由で単にオファーを一覧に表示するだけで、取引は別個に処理することを選んだ場合は ( **[なし]** オプション)、潜在顧客がオファーにアクセスする方法として、次の 3 つのオプションがあります: [今すぐ入手する] (無料)、[お試し]、[連絡してください]。 **[今すぐ入手する] (無料)** または **[お試し]** を選んだ場合は、この記事は参考になりません。 代わりに、「[コマーシャル マーケットプレースで無料または試用版 SaaS オファーのランディング ページを構築する](./azure-ad-free-or-trial-landing-page.md)」を参照してください。 **[連絡してください]** を選んだ場合は、発行元に直接の責任はありません。 パートナー センターでのオファーの作成を継続してください。
 
@@ -35,7 +35,7 @@ Azure AD を利用すると、コマーシャル マーケットプレースの�
 
 図1 に示すように、購入者がオファーを選択すると、購入、サブスクリプション、およびユーザー管理を含むワークフローのチェーンが開始されます。 このチェーン内では、Microsoft が重要なポイントでサポートを提供したうえで、発行元が特定の要件に対して責任を担います。
 
-"***図 1:コマーシャル マーケットプレースで SaaS オファーに Azure AD を使用する***
+**_図 1:コマーシャル マーケットプレースで SaaS オファーに Azure AD を使用する_* _
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow.png" alt-text="購入管理、サブスクリプション管理、および省略可能なユーザー管理プロセスの手順を示します。":::
 
@@ -51,10 +51,10 @@ Azure AD を利用すると、コマーシャル マーケットプレースの�
 
 | プロセスの手順 | 発行元のアクション | 発行元での推奨または必須 |
 | ------------ | ------------- | ------------- |
-| 1.購入者は、Azure AD の ID を使用してコマーシャル マーケットプレースにログインし、SaaS オファーを選択します。 | 発行元には、必要な操作はありません。 | 適用なし |
-| 2.購入後、購入者は Azure Marketplace の **[アカウントの構成]** または AppSource の **[今すぐ構成]** を選択します。これにより、購入者はこのオファー用の発行元のランディング ページへ誘導されます。 購入者は Azure AD SSO を使用して発行元の SaaS アプリケーションにログインできる必要があり、Azure AD 管理者の承認を必要としない最小限の同意のみが必ず求められます。 | Azure AD または Microsoft アカウント (MSA) ID でユーザーを受信し、必要な追加のプロビジョニングやセットアップが容易になるように、オファーの[ランディング ページ](azure-ad-transactable-saas-landing-page.md)を設計します。 | 必須 |
+| 1.購入者は、Azure AD の ID を使用してコマーシャル マーケットプレースにサインインし、SaaS オファーを選択します。 | 発行元には、必要な操作はありません。 | 適用なし |
+| 2. 購入後、購入者は Azure Marketplace の _ *[アカウントの構成]* * または AppSource の **[今すぐ構成]** を選択します。これにより、購入者はこのオファー用の発行元のランディング ページへ誘導されます。 購入者は Azure AD SSO を使用して発行元の SaaS アプリケーションにサインインできる必要があり、Azure AD 管理者の承認を必要としない最小限の同意のみが必ず求められます。 | Azure AD または Microsoft アカウント (MSA) ID でユーザーを受信し、必要な追加のプロビジョニングやセットアップが容易になるように、オファーの[ランディング ページ](azure-ad-transactable-saas-landing-page.md)を設計します。 | 必須 |
 | 3.発行元は、SaaS フルフィルメント API からの購入の詳細情報を要求します。 | ランディング ページのアプリケーション ID から生成された[アクセス トークン](./partner-center-portal/pc-saas-registration.md)を使用し、[解決エンドポイントを呼び出して](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)購入に関する詳細情報を取得します。 | 必須 |
-| 4.発行者は、Azure AD と Microsoft Graph API を通して、発行元の SaaS アプリケーションで購入者をプロビジョニングするために必要な会社とユーザーの詳細を収集します。  | Azure AD ユーザー トークンを分解して、名前と電子メールを調べます。または、[Microsoft Graph API を呼び出し](https://docs.microsoft.com/graph/use-the-api)、委任されたアクセス許可を使用して、ログインしているユーザーに関する[情報を取得](https://docs.microsoft.com/graph/api/user-get)します。 | 必須 |
+| 4.発行者は、Azure AD と Microsoft Graph API を通して、発行元の SaaS アプリケーションで購入者をプロビジョニングするために必要な会社とユーザーの詳細を収集します。  | Azure AD ユーザー トークンを分解して、名前と電子メールを調べます。または、[Microsoft Graph API を呼び出し](/graph/use-the-api)、委任されたアクセス許可を使用して、ログインしているユーザーに関する[情報を取得](/graph/api/user-get)します。 | 必須 |
 ||||
 
 ## <a name="process-steps-for-subscription-management"></a>サブスクリプション管理のプロセスの手順
@@ -82,11 +82,12 @@ Azure AD を利用すると、コマーシャル マーケットプレースの�
 | プロセスの手順 | 発行元のアクション | 発行元での推奨または必須 |
 | ------------ | ------------- | ------------- |
 | 7.購入者の会社の Azure AD 管理者は、必要に応じて Azure AD を使用して、ユーザーとグループのアクセスを管理できます。 | ユーザーに対して Azure AD SSO が設定されている場合 (手順 9)、これを有効にするには発行元の操作は必要ありません。 | 適用なし |
-| 8.Azure AD プロビジョニング サービスによって、Azure AD と発行元の SaaS アプリケーション間の変更の通信が行われます。 | ユーザーが追加および削除されたときに Azure AD から更新を受信するために、[SCIM エンドポイントを実装](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)します。 | 推奨 |
-| 9.アプリがアクセス許可され、プロビジョニングされた後、購入者の会社のユーザーは Azure AD SSO を使用して発行元の SaaS アプリケーションにログインできます。 | [Azure AD SSO を利用して](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)、発行元の SaaS アプリケーションに対して 1 つのアカウントを使用して、ユーザーが 1 回サインインできるようにします。 | 推奨 |
+| 8.Azure AD プロビジョニング サービスによって、Azure AD と発行元の SaaS アプリケーション間の変更の通信が行われます。 | ユーザーが追加および削除されたときに Azure AD から更新を受信するために、[SCIM エンドポイントを実装](../active-directory/app-provisioning/use-scim-to-provision-users-and-groups.md)します。 | 推奨 |
+| 9.アプリがアクセス許可され、プロビジョニングされた後、購入者の会社のユーザーは Azure AD SSO を使用して発行元の SaaS アプリケーションにログインできます。 | [Azure AD SSO を利用して](../active-directory/manage-apps/what-is-single-sign-on.md)、発行元の SaaS アプリケーションに対して 1 つのアカウントを使用して、ユーザーが 1 回サインインできるようにします。 | 推奨 |
 ||||
 
 ## <a name="next-steps"></a>次のステップ
 
-- [コマーシャル マーケットプレースで SaaS オファーを作成する](./partner-center-portal/create-new-saas-offer.md)
-- [取引可能な SaaS オファー用のランディング ページをコマーシャル マーケットプレースに作成する](./azure-ad-transactable-saas-landing-page.md)
+- [取引可能な SaaS オファー用のランディング ページをコマーシャル マーケットプレースに作成する](azure-ad-transactable-saas-landing-page.md)
+- [コマーシャル マーケットプレースで無料または試用版 SaaS オファーのランディング ページを構築する](azure-ad-free-or-trial-landing-page.md)
+- [コマーシャル マーケットプレースでの SaaS オファーの作成方法](create-new-saas-offer.md)

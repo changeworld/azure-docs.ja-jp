@@ -3,44 +3,44 @@ title: Azure Cosmos DB を使用して地理空間データのインデックス
 description: Azure Cosmos DB を使用して空間データのインデックスを付ける
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/03/2020
+ms.date: 11/03/2020
 ms.author: tisande
-ms.openlocfilehash: b06a8737c1ceb538417f966a989ccb39069f4d4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47eedf1ddbb155180d364c42ec179b3e01279e44
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116300"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336216"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Azure Cosmos DB を使用して地理空間データのインデックスを付ける
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB のデータベース エンジンは、本当にスキーマに依存しないように設計されており、JSON のファースト クラスのサポートを実現しています。 書き込みに最適化された Azure Cosmos DB のデータベース エンジンは、GeoJSON 標準で表された空間データをネイティブに認識できるようになっています。
 
-簡単に言えば、ジオメトリは、測地座標系から 2D 平面に投影された後、**4 分木**を使用して段階的にセルに分割されます。 これらのセルは、その位置に基づき、**ヒルベルト空間充填曲線**内で一次元にマッピングされ、ポイントの局所性が維持されます。 さらに、位置情報データのインデックスを作成するとき、そのデータに、**テセレーション**と呼ばれるプロセスが適用されます。つまり、特定の位置と交差するすべてのセルが特定され、キーとして Azure Cosmos DB のインデックスに保存されます。 クエリの実行時、ポイントや Polygon などの引数は、同様にテセレーションを経て関連するセル ID 範囲が抽出された後、インデックスからデータを取得するために使用されます。
+簡単に言えば、ジオメトリは、測地座標系から 2D 平面に投影された後、 **4 分木** を使用して段階的にセルに分割されます。 これらのセルは、その位置に基づき、 **ヒルベルト空間充填曲線** 内で一次元にマッピングされ、ポイントの局所性が維持されます。 さらに、位置情報データのインデックスを作成するとき、そのデータに、 **テセレーション** と呼ばれるプロセスが適用されます。つまり、特定の位置と交差するすべてのセルが特定され、キーとして Azure Cosmos DB のインデックスに保存されます。 クエリの実行時、ポイントや Polygon などの引数は、同様にテセレーションを経て関連するセル ID 範囲が抽出された後、インデックスからデータを取得するために使用されます。
 
-/* (すべてのパス) の空間インデックスを含むインデックス ポリシーを指定すると、効率的な空間クエリのために、コンテナー内で見つかったすべてのデータにインデックスが付けられます。
+`/*` (すべてのパス) の空間インデックスを含むインデックス ポリシーを指定すると、効率的な空間クエリのために、コンテナー内で見つかったすべてのデータにインデックスが付けられます。
 
 > [!NOTE]
-> Azure Cosmos DB は、Point、LineString、Polygon、および MultiPolygon のインデックス作成をサポートしています
->
->
+> Azure Cosmos DB は、Point、LineString、Polygon、および MultiPolygon のインデックス作成をサポートしています。 これらの型のいずれかにインデックスを設定すると、他のすべての型にインデックスが自動的に設定されます。 つまり、Polygon にインデックスを設定すると、Point、LineString、MultiPolygon にもインデックスが設定されます。 新しい空間型にインデックスを設定しても、その型の有効な GeoJSON データがない限り、書き込み RU 使用量やインデックスのサイズには影響しません。
 
-## <a name="modifying-geospatial-data-type"></a>地理空間データ型の変更
+## <a name="modifying-geospatial-configuration"></a>地理空間構成の変更
 
-コンテナーでは、**地理空間構成**によって、空間データのインデックスの作成方法が指定されます。 コンテナーごとに 1 つの**地理空間構成** (geography または geometry) を指定します。
+コンテナーでは、 **地理空間構成** によって、空間データのインデックスの作成方法が指定されます。 コンテナーごとに 1 つの **地理空間構成** (geography または geometry) を指定します。
 
-Azure portal で、**geography** と **geometry** の間で空間型を切り替えることができます。 geometry 空間型に切り替える前に、[境界ボックスを使用した有効な空間 geometry インデックス作成ポリシー](#geometry-data-indexing-examples)を作成することが重要です。
+Azure portal で、 **geography** と **geometry** の間で空間型を切り替えることができます。 geometry 空間型に切り替える前に、[境界ボックスを使用した有効な空間 geometry インデックス作成ポリシー](#geometry-data-indexing-examples)を作成することが重要です。
 
-Azure portal 内の **Data Explorer** で**地理空間構成**を設定する方法を次に示します。
+Azure portal 内の **Data Explorer** で **地理空間構成** を設定する方法を次に示します。
 
 :::image type="content" source="./media/sql-query-geospatial-index/geospatial-configuration.png" alt-text="地理空間構成の設定":::
 
-.NET SDK で `geospatialConfig` を変更して、**地理空間構成**を調整することもできます。
+.NET SDK で `geospatialConfig` を変更して、 **地理空間構成** を調整することもできます。
 
 指定しない場合、`geospatialConfig` は既定で geography データ型になります。 `geospatialConfig` を変更すると、コンテナー内のすべての既存の地理空間データのインデックスが再作成されます。
 
-次の例では、`geospatialConfig` プロパティを設定し、**boundingBox** を追加することで、地理空間データ型を `geometry` に変更しています。
+次の例では、`geospatialConfig` プロパティを設定し、 **boundingBox** を追加することで、地理空間データ型を `geometry` に変更しています。
 
 ```csharp
     //Retrieve the container's details
@@ -72,20 +72,20 @@ Azure portal 内の **Data Explorer** で**地理空間構成**を設定する�
 
 ## <a name="geography-data-indexing-examples"></a>geography データのインデックス付けの例
 
-次の JSON スニペットは、**geography** データ型に対して空間インデックスが有効なインデックス ポリシーを示しています。 これは、geography データの種類の空間データに対して有効であり、空間クエリのためにドキュメント内で見つかった GeoJSON の Point、Polygon、MultiPolygon、または LineString のインデックスが付けられます。 Azure portal を使用してインデックス作成ポリシーを変更する場合、インデックス作成ポリシーで以下の JSON を指定するとコンテナーの空間インデックスを有効にすることができます。
+次の JSON スニペットは、 **geography** データ型に対して空間インデックスが有効なインデックス ポリシーを示しています。 これは、geography データの種類の空間データに対して有効であり、空間クエリのためにドキュメント内で見つかった GeoJSON の Point、Polygon、MultiPolygon、または LineString のインデックスが付けられます。 Azure portal を使用してインデックス作成ポリシーを変更する場合、インデックス作成ポリシーで以下の JSON を指定するとコンテナーの空間インデックスを有効にすることができます。
 
 **geography 空間インデックスを使用したコンテナー インデックス作成ポリシー JSON**
 
 ```json
-    {
-       "automatic":true,
-       "indexingMode":"Consistent",
-        "includedPaths": [
+{
+    "automatic": true,
+    "indexingMode": "Consistent",
+    "includedPaths": [
         {
             "path": "/*"
         }
-        ],
-        "spatialIndexes": [
+    ],
+    "spatialIndexes": [
         {
             "path": "/*",
             "types": [
@@ -96,8 +96,8 @@ Azure portal 内の **Data Explorer** で**地理空間構成**を設定する�
             ]
         }
     ],
-       "excludedPaths":[]
-    }
+    "excludedPaths": []
+}
 ```
 
 > [!NOTE]
@@ -111,19 +111,19 @@ Azure CLI、PowerShell、または任意の SDK を使用して、[インデッ�
 
 境界ボックスは、次のプロパティで構成されます。
 
-- **xmin**: インデックスを作成する領域の最小 x 座標
-- **ymin**: インデックスを作成する領域の最小 y 座標
-- **xmax**: インデックスを作成する領域の最大 x 座標
-- **ymax**: インデックスを作成する領域の最大 x 座標
+- **xmin** : インデックスを作成する領域の最小 x 座標
+- **ymin** : インデックスを作成する領域の最小 y 座標
+- **xmax** : インデックスを作成する領域の最大 x 座標
+- **ymax** : インデックスを作成する領域の最大 x 座標
 
 幾何データで用いられる平面は無限に広がっている可能性があるため、境界ボックスが必要です。 ただし、空間インデックスでは、有限の空間が必要です。 **geography** データ型では、地球が境界であり、境界ボックスを設定する必要はありません。
 
 データのすべて (またはほとんど) を含む境界ボックスを作成します。 空間インデックスを利用できるのは、完全に境界ボックスの内側にあるオブジェクトに対する計算を行う操作だけです。 境界ボックスを必要以上に大きくすると、クエリのパフォーマンスが低下します。
 
-次に示すのは、**geospatialConfig** を `geometry` に設定して、**幾何**データのインデックスを作成するインデックス作成ポリシーの例です。
+次に示すのは、 **geospatialConfig** を `geometry` に設定して、 **幾何** データのインデックスを作成するインデックス作成ポリシーの例です。
 
 ```json
- {
+{
     "indexingMode": "consistent",
     "automatic": true,
     "includedPaths": [
@@ -156,7 +156,7 @@ Azure CLI、PowerShell、または任意の SDK を使用して、[インデッ�
 }
 ```
 
-上記のインデックス作成ポリシーには、x 座標 (-10, 10)、y 座標 (-20, 20) の**境界ボックス**が使用されています。 上記のインデックス作成ポリシーが指定されているコンテナーでは、この領域内にあるすべてのポイント、ポリゴン、マルチポリゴン、およびラインストリングのインデックスが作成されます。
+上記のインデックス作成ポリシーには、x 座標 (-10, 10)、y 座標 (-20, 20) の **境界ボックス** が使用されています。 上記のインデックス作成ポリシーが指定されているコンテナーでは、この領域内にあるすべてのポイント、ポリゴン、マルチポリゴン、およびラインストリングのインデックスが作成されます。
 
 > [!NOTE]
 > **boundingBox** を含むインデックス作成ポリシーを `geography` データ型のコンテナーに追加する操作は失敗します。 **boundingBox** を追加する前に、コンテナーの **geospatialConfig** を `geometry` に変更する必要があります。 コンテナーの地理空間データ型を選択する前または後に、データの追加や、インデックス作成ポリシーの残りの部分 (パスや種類など) の変更を行うことができます。

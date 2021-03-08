@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 09/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578f1e97c8a53604edca7b803933139362a763a7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c6592add5e33ba240c0f1d9fdbd23d82adfe5229
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419735"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258610"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスのサービス依存関係の概要 
 
@@ -25,7 +25,7 @@ ms.locfileid: "87419735"
 サイトまたはサービスに直接アクセスすると、通常、関連するポリシーの影響を簡単に確認できます。 たとえば、SharePoint Online に Multi-Factor Authentication (MFA) を必要とするポリシーを構成すると、SharePoint Web ポータルにサインインするたびに MFA が適用されます。 ただし、他のクラウド アプリとの依存関係があるクラウド アプリがあるため、ポリシーの影響が常に簡単に確認できるとは限りません。 たとえば、Microsoft Teams では SharePoint Online のリソースへのアクセスを提供できます。 そのため、現在のシナリオで Microsoft Teams にアクセスすると、SharePoint MFA ポリシーの対象にもなります。 
 
 > [!TIP]
-> [Office 365 (プレビュー)](concept-conditional-access-cloud-apps.md#office-365-preview) アプリの使用は、Office スタック内のサービスの依存関係に関する問題を回避するために、すべての Office アプリが対象となります。
+> [Office 365](concept-conditional-access-cloud-apps.md#office-365) アプリの使用は、Office スタック内のサービスの依存関係に関する問題を回避するために、すべての Office アプリが対象となります。
 
 ## <a name="policy-enforcement"></a>ポリシーの適用 
 
@@ -40,7 +40,7 @@ ms.locfileid: "87419735"
 
 ベスト プラクティスとして、可能な場合には常に、関連するアプリおよびサービスに対して共通のポリシーを設定することをお勧めします。 一貫性のあるセキュリティ体制によって、最適なユーザー エクスペリエンスが実現します。 たとえば、業務のための Exchange Online、SharePoint Online、Microsoft Teams、Skype に対して共通のポリシーを設定すると、ダウンストリーム サービスに適用されるさまざまなポリシーからのプロンプトが予期せずに生成される回数が大幅に減少します。 
 
-Office スタックでアプリケーションを使用してこれを実現する優れた方法は、個々のアプリケーションを対象にするのではなく、[Office 365 (プレビュー)](concept-conditional-access-cloud-apps.md#office-365-preview) を使用することです。
+Office スタックでアプリケーションを使用してこれを実現する優れた方法は、個々のアプリケーションを対象にするのではなく、[Office 365 アプリ](concept-conditional-access-cloud-apps.md#office-365)を使用することです。
 
 次の表には、クライアント アプリが満たす必要があるその他のサービス依存関係を示します。  
 

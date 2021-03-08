@@ -1,17 +1,17 @@
 ---
-title: Azure Lab Services のクラスルーム ラボ — FAQ | Microsoft Docs
-description: この記事では、Azure Lab Services のクラスルーム ラボについてよく寄せられる質問 (FAQ) への回答を示します。
+title: Azure Lab Services のラボ — FAQ | Microsoft Docs
+description: この記事では、Azure Lab Services のラボについてよく寄せられる質問 (FAQ) への回答を示します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ca35d70bc1106e46df4e3c68889b03679fd54b86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 757af8f30e9a71a3889d9f625c87a002af2e1302
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443300"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437186"
 ---
-# <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure Lab Services のクラスルーム ラボ — よく寄せられる質問 (FAQ)
-Azure Lab Services のクラスルーム ラボについて特に多く寄せられる質問にお答えします。 
+# <a name="labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure Lab Services のラボ — よく寄せられる質問 (FAQ)
+Azure Lab Services のラボについて特に多く寄せられる質問にお答えします。 
 
 ## <a name="quotas"></a>Quotas (クォータ)
 
@@ -29,13 +29,14 @@ Azure Lab Services のクラスルーム ラボについて特に多く寄せら
 ## <a name="lab-accounts"></a>ラボ アカウント
 
 ### <a name="why-am-i-not-able-to-create-a-lab-because-of-unavailability-of-the-address-range"></a>アドレス範囲が利用できないためにラボを作成できないのはなぜですか。 
-クラスルーム ラボでは、Azure portal でラボ アカウントを作成するときに指定する IP アドレス範囲内にラボ VM を作成できます。 アドレス範囲が指定されている場合、各ラボは、ラボ VM 用に 512 個の IP アドレスが割り当てられた後に作成されます。 ラボ アカウントのアドレス範囲は、ラボ アカウントで作成するすべてのラボを格納するのに十分な大きさである必要があります。 
+
+ラボでは、Azure portal でラボ アカウントを作成するときに指定する IP アドレス範囲内にラボ VM を作成できます。 アドレス範囲が指定されている場合、各ラボは、ラボ VM 用に 512 個の IP アドレスが割り当てられた後に作成されます。 ラボ アカウントのアドレス範囲は、ラボ アカウントで作成するすべてのラボを格納するのに十分な大きさである必要があります。 
 
 たとえば、/19 - 10.0.0.0/19 のブロックがある場合、このアドレス範囲は、8192 個の IP アドレスと 16 個のラボ (8192/512 = 16 個のラボ) に対応します。 この場合、ラボの作成は 17 個目のラボの作成で失敗します。
 
 ### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>RDP/SSH 経由でラボ仮想マシンに接続するために組織のファイアウォール設定で開く必要があるのは、どのポート範囲ですか。
 
-ポートは、49152 ～ 65535 です。 クラスルーム ラボは、ロード バランサーの背後にあります。 各ラボには 1 つのパブリック IP アドレスがあり、ラボ内の各仮想マシンには一意のポートがあります。 
+ポートは、49152 ～ 65535 です。 ラボは、ロード バランサーの背後にあります。 各ラボには 1 つのパブリック IP アドレスがあり、ラボ内の各仮想マシンには一意のポートがあります。 
 
 各仮想マシンのプライベート IP アドレスは、Azure portal のラボのホームページの **[仮想マシンプール]** タブにも表示されます。 ラボを再発行しても、ラボのパブリック IP アドレスは変更されませんが、ラボ内の各仮想マシンのプライベート IP とポート番号は変更される可能性があります。 詳細については、次の記事を参照してください。[Azure Lab Services のファイアウォール設定](how-to-configure-firewall-settings.md)。
 

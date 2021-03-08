@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: tomfitz
 ms.openlocfilehash: fa5e59b96aada06c2dd486094d9be6a52c79e43e
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84260685"
 ---
 # <a name="use-existing-virtual-network-with-azure-managed-applications"></a>Azure Managed Applications で既存の仮想ネットワークを使用する

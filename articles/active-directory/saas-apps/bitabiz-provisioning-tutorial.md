@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 4f3e01147e44b495a666d11a3927eabbbe0dec0e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8eccc3be7da201ee1e2af046c6b515871ef05adc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547282"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350774"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>チュートリアル:BitaBIZ を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -54,11 +54,11 @@ Azure AD での自動ユーザー プロビジョニング用に BitaBIZ を構�
 
 1. [BitaBIZ 管理コンソール](https://www.bitabiz.com/login?lang=en)にサインインします。 **[SETUP ADMIN]\(管理設定\)** をクリックします。
 
-    ![BitaBIZ 管理コンソール](media/bitabiz-provisioning-tutorial/setup-admin.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/setup-admin.png" alt-text="BitaBIZ 管理コンソールのスクリーンショット。[Setup admin]\(管理設定\) が強調表示されています。" border="false":::
 
 2.  **[INTEGRATION]\(統合\)** に移動します。
 
-    ![BitaBIZ 管理コンソール](media/bitabiz-provisioning-tutorial/integration.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/integration.png" alt-text="BitaBIZ 管理コンソールのスクリーンショット。[Integration]\(統合\) が強調表示されています。" border="false":::
 
 2.  **[Microsoft Azure AD Provisioning]\(Microsoft Azure AD のプロビジョニング\)** に移動します。  自動ユーザー プロビジョニングで **[Enabled]\(有効\)** を選択します。 **[SCIM Provisioning endpoint URL]\(SCIM プロビジョニング エンドポイント URL\)** および **[Bearer Token]\(ベアラー トークン\)** の値をコピーします。 これらの値を、Azure portal の BitaBIZ アプリケーションの [プロビジョニング] タブの [テナント URL] および [シークレット トークン] フィールドに入力します。
 
@@ -92,7 +92,7 @@ Azure AD で自動ユーザー プロビジョニング用に BitaBIZ を構成�
 このセクションでは、Azure AD でのユーザーやグループの割り当てに基づいて BitaBIZ のユーザーやグループを作成、更新、無効化するように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!TIP]
-> BitaBIZ では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[BitaBIZ シングル サインオンのチュートリアル](BitaBIZ-tutorial.md)に関するページで説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> BitaBIZ で SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[BitaBIZ シングル サインオンのチュートリアル](BitaBIZ-tutorial.md)に関するページで説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-bitabiz-in-azure-ad"></a>Azure AD で BitaBIZ の自動ユーザー プロビジョニングを構成するには:
 
@@ -106,11 +106,11 @@ Azure AD で自動ユーザー プロビジョニング用に BitaBIZ を構成�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. [管理者資格情報] セクションの [テナント URL] および [シークレット トークン] に、先ほど取得した **[SCIM Provisioning endpoint URL]\(SCIM プロビジョニング エンドポイント URL\)** および **[Bearer Token]\(ベアラー トークン\)** の値をそれぞれ入力します。 **[接続テスト]** をクリックして、Azure AD から BitaBIZ に接続できることを確認します。 接続できない場合は、使用中の BitaBIZ アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

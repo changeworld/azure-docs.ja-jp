@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Anomaly Detector API と Azure Databricks を使用して、データ内の異常を監視する方法について説明します。
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
-ms.author: aahi
-ms.openlocfilehash: 95ab400d645a2a2761e39c191cdb85e49e1c7a27
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.author: mbullwin
+ms.openlocfilehash: f42d294dec4dd2c92fe08498a7bce3c1eabae4b3
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245606"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519135"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用した、ストリーミング データの異常検出
 
@@ -47,7 +47,7 @@ ms.locfileid: "88245606"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Azure Event Hubs 名前空間](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)とイベント ハブ。
+- [Azure Event Hubs 名前空間](../../../event-hubs/event-hubs-create.md)とイベント ハブ。
 
 - Event Hubs 名前空間にアクセスするための[接続文字列](../../../event-hubs/event-hubs-get-connection-string.md)。 接続文字列は次のような形式になります。
 
@@ -63,7 +63,7 @@ ms.locfileid: "88245606"
 
 1. Azure portal で、 **[リソースの作成]**  >  **[分析]**  >  **[Azure Databricks]** の順に選択します。
 
-    ![Azure portal での Databricks](../media/tutorials/azure-databricks-on-portal.png "Azure portal での Databricks")
+    ![ポータルの Azure Databricks](../media/tutorials/azure-databricks-on-portal.png "Azure portal での Databricks")
 
 3. **[Azure Databricks サービス]** で次の値を指定して、Databricks ワークスペースを作成します。
 
@@ -73,7 +73,7 @@ ms.locfileid: "88245606"
     |**ワークスペース名**     | Databricks ワークスペースの名前を指定します        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
     |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../../azure-resource-manager/management/overview.md)に関するページをご覧ください。 |
-    |**場所**     | **米国東部 2**またはその他の利用可能なリージョンのいずれかを選択します。 使用可能なリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。        |
+    |**場所**     | **米国東部 2** またはその他の利用可能なリージョンのいずれかを選択します。 使用可能なリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。        |
     |**価格レベル**     |  **Standard** と **Premium** のいずれかを選択します。 **[Trial]\(試用版\)** を選択しないでください。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。       |
 
     **［作成］** を選択します
@@ -115,7 +115,7 @@ ms.locfileid: "88245606"
 
 3. アプリケーションのページで **[Keys and Access Tokens]\(キーとアクセス トークン\)** タブを選択し、 **[Consumer Key]\(コンシューマー キー\)** と **[Consumer Secret]\(コンシューマー シークレット\)** の値をコピーします。 さらに、 **[Create my access token]\(アクセス トークンの作成\)** を選択してアクセス トークンを生成します。 **[Access Token]\(アクセス トークン\)** と **[Access Token Secret]\(アクセス トークン シークレット\)** の値をコピーします。
 
-    ![Twitter アプリケーションの詳細](../media/tutorials/twitter-app-key-secret.png "Twitter アプリケーションの詳細")
+    ![Twitter アプリケーションの詳細 2](../media/tutorials/twitter-app-key-secret.png "Twitter アプリケーションの詳細")
 
 Twitter アプリケーションについて取得した値を保存します。 値は、このチュートリアルの後の方で必要になります。
 
@@ -193,7 +193,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
 2. **[Create Notebook]\(ノートブックの作成\)** ダイアログ ボックスに、名前として「**SendTweetsToEventHub**」と入力し、言語として **[Scala]** を選択し、前に作成した Spark クラスターを選択します。
 
-    ![Databricks でノートブックを作成する](../media/tutorials/databricks-notebook-details.png "Databricks でノートブックを作成する")
+    ![ノートブックの詳細](../media/tutorials/databricks-notebook-details.png "Databricks でノートブックを作成する")
 
     **［作成］** を選択します
 
@@ -586,7 +586,7 @@ groupTime                       average
 
 次に、集計された出力結果を Delta に取得します。 異常検出には長期間の履歴が必要であるため、検出するポイントに対する履歴データを保持するために Delta を使用します。
 "[Placeholder: table name]" を、作成される修飾された Delta テーブル名に置き換えます ("tweets" など)。 "[Placeholder: folder name for checkpoints]" を、このコードを実行するたびに固有となる文字列値に置き換えます ("etl-from-eventhub-20190605" など)。
-Azure Databricks の Delta Lake に関する詳細については、[Delta Lake ガイド](https://docs.azuredatabricks.net/delta/index.html)を参照してください
+Azure Databricks の Delta Lake に関する詳細については、[Delta Lake ガイド](/databricks/delta/)を参照してください
 
 
 ```scala

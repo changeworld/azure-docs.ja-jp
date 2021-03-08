@@ -1,18 +1,17 @@
 ---
-title: スポット仮想マシンのクォータ - Azure
+title: スポット仮想マシン クォータ
 description: Azure が必要に応じて VM を削除できるようにする代わりに、コストの削減を想定できる Azure 使用モデルを提供するスポット VM のクォータ制限を増やします。
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
 ms.topic: how-to
-ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 513bde930f9c7c8892164c50c3866ff6e948ed4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8b9a2251d7923fe1919b7b934f6c97877cd5b37
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763875"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745487"
 ---
 # <a name="spot-quota-increase-limits-for-all-vm-series"></a>スポット クォータ: すべての VM シリーズの制限を増やす
 
@@ -20,8 +19,8 @@ ms.locfileid: "84763875"
 
 Azure Resource Manager は、仮想マシンの次の 2 種類の vCPU クォータをサポートしています。
 
-* *従量課金制 VM* と*予約 VM インスタンス*には、*標準 vCPU クォータ*が適用されます。
-* *スポット VM* には、*スポット vCPU クォータ*が適用されます。
+* *従量課金制 VM* と *予約 VM インスタンス* には、*標準 vCPU クォータ* が適用されます。
+* *スポット VM* には、*スポット vCPU クォータ* が適用されます。
 
 スポット vCPU クォータの種類の場合、Resource Manager の vCPU クォータは、単一のリージョン制限として使用可能なすべての仮想マシン シリーズにわたって適用されます。
 
@@ -56,7 +55,7 @@ Azure Resource Manager は、仮想マシンの次の 2 種類の vCPU クォー
 
    ![クォータを引き上げるサブスクリプションを選択する](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
-1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]\(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ\)** を選択します。
+1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]/(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ/)** を選択します。
 
    ![クォータの種類を選択する](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
@@ -66,7 +65,7 @@ Azure Resource Manager は、仮想マシンの次の 2 種類の vCPU クォー
 
 1. **[クォータの詳細]** で次の手順を実行します。
 
-   1. **[Deployment model]\(デプロイ モデル\)** で適切なモデルを選択し、 **[Locations]\(場所\)** で場所を選択します。
+   1. **[Deployment model]/(デプロイ モデル/)** で適切なモデルを選択し、 **[Locations]/(場所/)** で場所を選択します。
 
       ![追加のクォータの詳細を指定する](./media/resource-manager-core-quotas-request/quota-details-deployment-locations.png)
 
@@ -82,7 +81,7 @@ Azure Resource Manager は、仮想マシンの次の 2 種類の vCPU クォー
 
       ![スポット VM の新しいクォータを選択する](./media/resource-manager-core-quotas-request/spot-set-new-quota.png)
 
-1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]\(場所\)** で追加の場所を選択してから、適切な VM の種類を選択します。 その後に、追加の場所に適用する制限を入力できます。
+1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]/(場所/)** で追加の場所を選択してから、適切な VM の種類を選択します。 その後に、追加の場所に適用する制限を入力できます。
 
    ![クォータの詳細で追加の場所を指定する](./media/resource-manager-core-quotas-request/quota-details-multiple-locations.png)
 
@@ -111,13 +110,13 @@ Azure Resource Manager は、仮想マシンの次の 2 種類の vCPU クォー
 
    ![クォータを引き上げるために選択する](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
 
-1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]\(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ\)** を選択します。
+1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]/(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ/)** を選択します。
 
    ![クォータの種類を選択する](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
 1. **ソリューション** を選択して **問題の詳細** を開きます。 **[詳細の指定]** を選択して、追加情報を入力します。 **[クォータの詳細]** で次の情報を入力します。
 
-   1. **[Deployment model]\(デプロイ モデル\)** で適切なモデルを選択し、 **[Locations]\(場所\)** で場所を選択します。
+   1. **[Deployment model]/(デプロイ モデル/)** で適切なモデルを選択し、 **[Locations]/(場所/)** で場所を選択します。
 
       ![クォータの詳細を入力する](./media/resource-manager-core-quotas-request/quota-details-deployment-locations.png)
 
@@ -131,7 +130,7 @@ Azure Resource Manager は、仮想マシンの次の 2 種類の vCPU クォー
 
       ![vCPU 制限の新しい値を入力する](./media/resource-manager-core-quotas-request/spot-set-new-quota.png)
 
-1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]\(場所\)** で追加の場所を選択してから、適切な VM の種類を選択します。 その後に、追加の場所に適用する制限を入力できます。
+1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]/(場所/)** で追加の場所を選択してから、適切な VM の種類を選択します。 その後に、追加の場所に適用する制限を入力できます。
 
    ![クォータの詳細で追加の場所を選択する](./media/resource-manager-core-quotas-request/quota-details-multiple-locations.png)
 

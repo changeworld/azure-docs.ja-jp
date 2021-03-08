@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: ba53fb786b1d1f61535168cda2152049a12dfb99
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 595ec1aaa4aedc3916d1b4d46986dcabae887aaf
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535651"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93076403"
 ---
 # <a name="quickstart-build-a-go-app-with-the-gocql-client-to-manage-azure-cosmos-db-cassandra-api-data"></a>クイック スタート:`gocql` クライアントを使用して Azure Cosmos DB Cassandra API データを管理する Go アプリを構築する
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -85,7 +86,7 @@ func GetSession(cosmosCassandraContactPoint, cosmosCassandraPort, cosmosCassandr
 }
 ```
 
-Azure Cosmos DB Cassandra ホストが [`gocql.NewCluster`](https://godoc.org/github.com/gocql/gocql#NewCluster) 関数に渡されて [`*gocql.ClusterConfig`](https://godoc.org/github.com/gocql/gocql#ClusterConfig) 構造体が取得され、ユーザー名、パスワード、ポート、および適切な TLS バージョン ([HTTPS、SSL、TLS 暗号化のセキュリティ要件](https://docs.microsoft.com/azure/cosmos-db/database-security?WT.mc_id=cassandrago-docs-abhishgu#how-does-azure-cosmos-db-secure-my-database)) を使用するように構成されます
+Azure Cosmos DB Cassandra ホストが [`gocql.NewCluster`](https://godoc.org/github.com/gocql/gocql#NewCluster) 関数に渡されて [`*gocql.ClusterConfig`](https://godoc.org/github.com/gocql/gocql#ClusterConfig) 構造体が取得され、ユーザー名、パスワード、ポート、および適切な TLS バージョン ([HTTPS、SSL、TLS 暗号化のセキュリティ要件](./database-security.md?WT.mc_id=cassandrago-docs-abhishgu#how-does-azure-cosmos-db-secure-my-database)) を使用するように構成されます
 
 次に、`GetSession` 関数が `main` 関数 (`main.go`) から呼び出されます。
 

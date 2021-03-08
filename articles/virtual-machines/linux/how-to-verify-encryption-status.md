@@ -2,17 +2,18 @@
 title: Linux の暗号化状態の確認 - Azure Disk Encryption
 description: この記事では、プラットフォームおよび OS レベルの暗号化の状態を確認する手順について説明します。
 author: kailashmsft
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: how-to
 ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e39a230c71cf48422220768adfa8de91cbaa6692
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 42b1aed2f6c66dbfc0f04759b232855f3b7f0a2a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072844"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676820"
 ---
 # <a name="verify-encryption-status-for-linux"></a>Linux の暗号化の状態を確認する 
 
@@ -69,7 +70,7 @@ Azure portal の **[拡張機能]** セクションで、一覧から Azure Disk
 ### <a name="single-pass"></a>シングル パス
 シングル パスでは、各ディスク (OS とデータ) に暗号化設定がスタンプされます。 シングル パスの OS ディスクの暗号化設定は、次のようにして取得できます。
 
-``` powershell
+```powershell
 $RGNAME = "RGNAME"
 $VMNAME = "VMNAME"
 
@@ -159,7 +160,7 @@ Write-Host "====================================================================
 
 暗号化された VM の "*全体的な*" 暗号化の状態は、次の Azure CLI コマンドを使用して確認できます。
 
-```bash
+```azurecli
 VMNAME="VMNAME"
 RGNAME="RGNAME"
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "substatus"
@@ -169,7 +170,7 @@ az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "subst
 ### <a name="single-pass"></a>シングル パス
 各ディスクの暗号化の設定を確認するには、次の Azure CLI コマンドを使用します。
 
-```bash
+```azurecli
 az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuses[*].displayStatus]"  -o table
 ```
 
@@ -202,7 +203,7 @@ done
 
 データ ディスク:
 
-```bash
+```azurecli
 RGNAME="RGNAME"
 VMNAME="VMNAME"
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "substatus"
@@ -222,7 +223,7 @@ done
 
 ### <a name="dual-pass"></a>デュアル パス
 
-``` bash
+```azurecli
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} -o table
 ```
 
@@ -275,7 +276,7 @@ echo "==========================================================================
 
 次のコマンドは、すべてのストレージ アカウントの ID を一覧表示するものです。
 
-```bash
+```azurecli
 az storage account list --query [].[id] -o tsv
 ```
 ストレージ アカウントの ID が、次の形式で一覧表示されます。
@@ -294,7 +295,7 @@ ConnectionString=$(az storage account show-connection-string --ids $id --query c
 ```
 
 次のコマンドは、ストレージ アカウントにあるすべてのコンテナーを一覧表示するものです。
-```bash
+```azurecli
 az storage container list --connection-string $ConnectionString --query [].[name] -o tsv
 ```
 ディスクに使用されるコンテナーには通常、"vhds" という名前が付けられます。
@@ -305,7 +306,7 @@ ContainerName="name of the container"
 ```
 
 特定のコンテナーにあるすべての BLOB を一覧表示するには、次のコマンドを使用します。
-```bash 
+```azurecli 
 az storage blob list -c ${ContainerName} --connection-string $ConnectionString --query [].[name] -o tsv
 ```
 照会したいディスクを選んで、その名前を変数に格納します。
@@ -313,7 +314,7 @@ az storage blob list -c ${ContainerName} --connection-string $ConnectionString -
 DiskName="diskname.vhd"
 ```
 ディスクの暗号化設定を照会します。
-```bash
+```azurecli
 az storage blob show -c ${ContainerName} --connection-string ${ConnectionString} -n ${DiskName} --query metadata.DiskEncryptionSettings
 ```
 
@@ -322,7 +323,7 @@ az storage blob show -c ${ContainerName} --connection-string ${ConnectionString}
 
 暗号化されているパーティションまたはディスクは、 **"crypt"** タイプとして表示されます。 暗号化されていない場合は、 **"part" または "disk"** タイプとして表示されます。
 
-``` bash
+```bash
 lsblk
 ```
 
@@ -339,11 +340,11 @@ lsblk -o NAME,TYPE,FSTYPE,LABEL,SIZE,RO,MOUNTPOINT
 
 さらに、データ ディスクにキーが読み込まれているかどうかも確認できます。
 
-``` bash
+```bash
 cryptsetup luksDump /dev/VGNAME/LVNAME
 ```
 
-``` bash
+```bash
 cryptsetup luksDump /dev/sdd1
 ```
 

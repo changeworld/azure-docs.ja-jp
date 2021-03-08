@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3a6ce5860704e6fd16b79fc253650dd45ec743e7
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cdfeb2fdeefabb0d2d4af2fb63222adda5d023fb
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852618"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576027"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>チュートリアル:ML 実験を運用 Python コードに変換する
 
@@ -67,7 +67,7 @@ args = {
 }
 
 reg_model = Ridge(**args)
-reg.fit(data["train"]["X"], data["train"]["y"])
+reg_model.fit(data["train"]["X"], data["train"]["y"])
 
 preds = reg_model.predict(data["test"]["X"])
 mse = mean_squared_error(preds, y_test)
@@ -353,7 +353,7 @@ print("Test result: ", prediction)
 コマンド プロンプトで、`nbconvert` パッケージと `experimentation/Diabetes Ridge Regression Training.ipynb` のパスを使用する次のステートメントを実行して、ノートブックを実行可能スクリプトに変換します。
 
 ```
-jupyter nbconvert -- to script "Diabetes Ridge Regression Training.ipynb" –output train
+jupyter nbconvert "Diabetes Ridge Regression Training.ipynb" --to script --output train
 ```
 
 ノートブックが `train.py` に変換されたら、不要なコメントをすべて削除します。 ファイルの最後にある `main()` の呼び出しは、次のコードのように条件付き呼び出しに置き換えます。
@@ -441,7 +441,7 @@ MLOpsPython リポジトリの `diabetes_regression/training` ディレクトリ
 コマンド プロンプトで、`nbconvert` パッケージと `experimentation/Diabetes Ridge Regression Scoring.ipynb` のパスを使用する次のステートメントを実行して、ノートブックを実行可能スクリプトに変換します。
 
 ```
-jupyter nbconvert -- to script "Diabetes Ridge Regression Scoring.ipynb" –output score
+jupyter nbconvert "Diabetes Ridge Regression Scoring.ipynb" --to script --output score
 ```
 
 ノートブックが `score.py` に変換されたら、不要なコメントをすべて削除します。 `score.py` ファイルは次のコードのようになります。
@@ -527,5 +527,5 @@ def test_train_model():
 ここでは、実験コードから運用環境のコードへの変換方法について説明しました。さらに詳しい情報と次のステップについては、次のリンクを参照してください。
 
 + [MLOpsPython](https://github.com/microsoft/MLOpsPython/blob/master/docs/custom_model.md): Azure Pipelines と Azure Machine Learning を使用して独自のモデルをトレーニング、評価、デプロイする CI/CD パイプラインを作成します。
-+ [Azure ML の実験の実行とメトリックを監視する](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
-+ [ML Web サービス エンドポイントからのデータを監視および収集する](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)
++ [Azure ML の実験の実行とメトリックを監視する](./how-to-track-experiments.md)
++ [ML Web サービス エンドポイントからのデータを監視および収集する](./how-to-enable-app-insights.md)

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
 ms.openlocfilehash: 5d73337c25c812363b7a542bf42372ca3baa10e8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88605416"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>チュートリアル:難しい設定なしで脅威を検出する
@@ -65,7 +65,7 @@ Azure Sentinel に[データ ソースを接続](quickstart-onboard.md) した�
 
 1. 組み込みのテンプレートを使用するには、テンプレート名をクリックしてから、詳細ウィンドウの **[規則の作成]** ボタンをクリックし、そのテンプレートに基づく新しいアクティブな規則を作成します。 各テンプレートには、必要なデータ ソースの一覧があります。 テンプレートを開くと、データ ソースの可用性が自動的にチェックされます。 可用性の問題がある場合は、 **[規則の作成]** ボタンが無効にされていたり、その影響に対する警告が表示されたりすることがあります。
   
-    :::image type="content" source="media/tutorial-detect-built-in/use-built-in-template.png" alt-text="検出規則のプレビュー パネル":::
+    :::image type="content" source="media/tutorial-detect-built-in/use-built-in-template.png" alt-text="Azure Sentinel の組み込みの検出機能を利用して脅威を検出する":::
  
 1. **[規則の作成]** ボタンをクリックすると、選択したテンプレートに基づいて規則の作成ウィザードが開かれます。 すべての詳細が自動的に入力されます。**スケジュール付き**テンプレートや **Microsoft セキュリティ** テンプレートを使用する場合は、特定のニーズに合わせてロジックやその他の規則の設定をカスタマイズできます。 この手順を繰り返して、組み込みテンプレートに基づく追加の規則を作成できます。 最後まで規則の作成ウィザードの手順に従うと、テンプレートに基づく規則の作成が完了します。 **[アクティブな規則]** タブに新しい規則が表示されます。
 

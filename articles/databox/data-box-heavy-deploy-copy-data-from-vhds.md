@@ -9,12 +9,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 01031159d1894c7cb5f36b48f268186dff21fd22
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 335b564225bc2b7a4c2217c1d912f952239ecf24
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77471331"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127201"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>チュートリアル:Data Box Heavy を使用して Azure のマネージド ディスクとしてデータをインポートする
 
@@ -38,7 +38,7 @@ ms.locfileid: "77471331"
 4. 次の事項を確認済みであること。
 
     - [「Azure オブジェクトのサイズ制限」のマネージド ディスク サイズ](data-box-heavy-limits.md#azure-object-size-limits)のサポート状況。
-    - [Azure マネージド ディスクの概要](/azure/virtual-machines/windows/managed-disks-overview)。 
+    - [Azure マネージド ディスクの概要](../virtual-machines/managed-disks-overview.md)。 
 
 ## <a name="connect-to-data-box-heavy"></a>Data Box Heavy に接続する
 
@@ -75,11 +75,11 @@ Windows Server ホスト コンピューターを使用している場合は、�
     > [!NOTE]
     > マネージド ディスクのすべての共有の資格情報は同じです。
 
-    ![共有の資格情報を取得する 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
+    ![共有の資格情報を取得する](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
 2. [共有にアクセスしてデータをコピーする] ダイアログ ボックスで、共有の **[ユーザー名]** と **[パスワード]** をコピーします。 **[OK]** をクリックします。
     
-    ![共有の資格情報を取得する 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
+    ![共有の資格情報を取得する 2](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
 3. ご自分のリソースに関連付けられている共有 (以下の例の場合は、*mydbmdrg1*) にホスト コンピューターからアクセスするため、コマンド ウィンドウを開きます。 コマンド プロンプトに、次のコマンドを入力します。
 
@@ -101,7 +101,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
 
 4. Windows キーを押しながら R キーを押します。 **[ファイル名指定して実行]** ウィンドウで、「`\\<device IP address>\<ShareName>`」と入力します。 **[OK]** をクリックして、エクスプローラーを開きます。
     
-    ![エクスプローラーで共有に接続する 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
+    ![エクスプローラーで共有に接続する](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
     各共有内に、事前に作成された次のフォルダーが表示されます。
     
@@ -114,7 +114,7 @@ Linux ホスト コンピューターを使用している場合は、次の手�
 
 1. 共有にアクセスできる許可するクライアントの IP アドレスを指定します。 ローカル Web UI で、 **[接続とコピー]** ページに移動します。 **[NFS の設定]** で、 **[NFS のクライアント アクセス]** をクリックします。
 
-    ![NFS のクライアント アクセスを構成する 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
+    ![NFS のクライアント アクセスを構成する](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
 2. NFS クライアントの IP アドレスを指定して、 **[追加]** をクリックします。 この手順を繰り返すことにより、複数の NFS クライアントに対するアクセスを構成できます。 **[OK]** をクリックします。
 
@@ -182,4 +182,3 @@ SMB と NFS のどちらを経由して接続するかに応じて、次の方�
 
 > [!div class="nextstepaction"]
 > [Azure Data Box Heavy を Microsoft に発送する](./data-box-heavy-deploy-picked-up.md)
-

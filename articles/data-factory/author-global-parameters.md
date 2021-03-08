@@ -1,19 +1,17 @@
 ---
 title: グローバル パラメーター
 description: Azure Data Factory 環境ごとにグローバル パラメーターを設定する
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-author: djpmsft
-ms.author: daperlov
-ms.date: 08/05/2020
-ms.openlocfilehash: 052f502ed27db9ade0fd2916f91d6922c52a5a98
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+author: dcstwh
+ms.author: weetok
+ms.date: 08/31/2020
+ms.openlocfilehash: fb9439bc37fcecf1cb5299a09916ebe21c5bc1cb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854146"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393821"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Data Factory のグローバル パラメーター
 
@@ -25,11 +23,11 @@ ms.locfileid: "87854146"
 
 グローバル パラメーターを作成するには、 *[管理]* セクションの *[グローバル パラメーター]* タブに移動します。 **[新規]** を選択して作成サイド ナビゲーションを開きます。
 
-![グローバル パラメーターを作成する](media/author-global-parameters/create-global-parameter-1.png)
+![グローバルパラメーターを作成するために選択した [新規] ボタンを強調表示しているスクリーンショット。](media/author-global-parameters/create-global-parameter-1.png)
 
 サイド ナビゲーションで、名前を入力し、データ型を選択して、パラメーターの値を指定します。
 
-![グローバル パラメーターを作成する](media/author-global-parameters/create-global-parameter-2.png)
+![新しいグローバル パラメーターの名前、データ型、値を追加する場所を示すスクリーンショット。](media/author-global-parameters/create-global-parameter-2.png)
 
 グローバル パラメーターが作成されたら、パラメーターの名前をクリックすると編集できます。 複数のパラメーターを一度に変更するには、 **[すべて編集]** を選択します。
 
@@ -43,7 +41,22 @@ ms.locfileid: "87854146"
 
 ## <a name="global-parameters-in-cicd"></a><a name="cicd"></a> CI/CD でのグローバル パラメーター
 
-グローバル パラメーターには、Azure Data Factory 内の他のエンティティと比べて独特な CI/CD プロセスがあります。 グローバル パラメーターを使用してファクトリを発行したり、Resource Manager テンプレートをエクスポートしたりすると、*your-factory-name_GlobalParameters.json* という名前のファイルが含まれる *globalParameters* という名前のフォルダーが作成されます。 このファイルは、発行されたファクトリ内の各グローバル パラメーターの型と値を含む JSON オブジェクトです。
+継続的インテグレーションとデプロイ ソリューションにグローバル パラメーターを統合するには、次の 2 つの方法があります。
+
+* ARM テンプレートにグローバル パラメーターを含める
+* PowerShell スクリプトを使用してグローバル パラメーターをデプロイする
+
+ほとんどのユース ケースでは、ARM テンプレートにグローバル パラメーターを含めることをお勧めします。 これは、[CI/CD ドキュメント](continuous-integration-deployment.md)に記載されているソリューションとネイティブに統合されます。グローバル パラメーターは、環境によって変わることが多いため、既定で ARM テンプレート パラメーターとして追加されます。 管理ハブから有効にして、ARM テンプレートにグローバル パラメーターを含めることができます。
+
+![ARM テンプレートに含める](media/author-global-parameters/include-arm-template.png)
+
+ARM テンプレートにグローバル パラメーターを追加すると、他の環境でのカスタマー マネージド キーや git 構成など、その他のファクトリレベル設定をオーバーライドできるファクトリレベル設定が追加されます。 UAT や PROD などの管理者特権環境でこれらの設定を有効にしている場合は、以下で説明する手順で、PowerShell スクリプトを使用してグローバル パラメーターをデプロイすることをお勧めします。
+
+### <a name="deploying-using-powershell"></a>PowerShell を使用したデプロイ
+
+以下の手順では、PowerShell を使用してグローバル パラメーターをデプロイする方法を説明します。 これは、ターゲット ファクトリに、カスタマー マネージド キーなどのファクトリレベル設定がある場合に便利です。
+
+グローバル パラメーターを使用してファクトリを発行したり、Resource Manager テンプレートをエクスポートしたりすると、*your-factory-name_GlobalParameters.json* という名前のファイルが含まれる *globalParameters* という名前のフォルダーが作成されます。 このファイルは、発行されたファクトリ内の各グローバル パラメーターの型と値を含む JSON オブジェクトです。
 
 ![グローバル パラメーターの発行](media/author-global-parameters/global-parameters-adf-publish.png)
 

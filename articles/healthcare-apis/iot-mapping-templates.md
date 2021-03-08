@@ -8,17 +8,17 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: da5eb43f8bc2fc8b4ac213f6ff90464de5995a47
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: f348a8d8755402d6426f19eabc432f54e3fb8e42
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553649"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659660"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Azure IoT Connector for FHIR (プレビュー) のマッピング テンプレート
-この記事では、マッピング テンプレートを使用して Azure IoT Connector for FHIR* を構成する方法について詳しく説明します。
+この記事では、マッピング テンプレートを使用して、Azure IoT Connector for FHIR&#174; (高速ヘルスケア相互運用性リソース)* を構成する方法について詳しく説明します。
 
-Azure IoT Connector for FHIR には、JSON ベースのマッピング テンプレートが 2 種類必要です。 1 種類目の**デバイス マッピング**は、`devicedata` Azure Event Hub エンドポイントに送信されるデバイス ペイロードのマッピングを担います。 型、デバイス識別子、測定日時、測定値を抽出します。 2 種類目の **FHIR マッピング**は、FHIR リソースのマッピングを制御します。 これにより、観察期間の長さ、値の格納に使用される FHIR データ型、用語コードを構成できます。 
+Azure IoT Connector for FHIR には、JSON ベースのマッピング テンプレートが 2 種類必要です。 1 種類目の **デバイス マッピング** は、`devicedata` Azure Event Hub エンドポイントに送信されるデバイス ペイロードのマッピングを担います。 型、デバイス識別子、測定日時、測定値を抽出します。 2 種類目の **FHIR マッピング** は、FHIR リソースのマッピングを制御します。 これにより、観察期間の長さ、値の格納に使用される FHIR データ型、用語コードを構成できます。 
 
 マッピング テンプレートは、その種類に基づいた JSON ドキュメント内に構成されます。 その後これらの JSON ドキュメントは、Azure portal を通じて Azure IoT Connector for FHIR に追加されます。 デバイス マッピング ドキュメントは **[Configure Device mapping]\(デバイス マッピングの構成\)** ページで、FHIR マッピング ドキュメントは **[Configure FHIR mapping]\(FHIR マッピングの構成\)** ページで追加されます。
 
@@ -60,7 +60,7 @@ Azure IoT Connector for FHIR には、JSON ベースのマッピング テンプ
 ```
 
 ### <a name="mapping-with-json-path"></a>JSON パスを使用したマッピング
-現在サポートされている 2 つのデバイス コンテンツ テンプレートの種類は、必要なテンプレートと抽出された値の両方に一致する JSON パスに依存しています。 JSON パスの詳細については、[こちら](https://goessner.net/articles/JsonPath/)を参照してください。 どちらのテンプレートの種類でも、JSON パス式を解決するために、[JSON .NET 実装](https://www.newtonsoft.com/json/help/html/QueryJsonSelectTokenJsonPath.htm)が使用されます。
+現在サポートされている 3 つのデバイス コンテンツ テンプレートの種類は、必要なテンプレートと抽出された値の両方に一致する JSON パスに依存しています。 JSON パスの詳細については、[こちら](https://goessner.net/articles/JsonPath/)を参照してください。 3 種類のテンプレートすべてで、JSON パス式を解決するために、[JSON .NET 実装](https://www.newtonsoft.com/json/help/html/QueryJsonSelectTokenJsonPath.htm)が使用されます。
 
 #### <a name="jsonpathcontenttemplate"></a>JsonPathContentTemplate
 JsonPathContentTemplate では、JSON パスを使用して、イベント ハブ メッセージの値の照合と抽出を行うことができます。
@@ -251,10 +251,12 @@ JsonPathContentTemplate では、JSON パスを使用して、イベント ハ�
     }
 }
 ```
+
 #### <a name="iotjsonpathcontenttemplate"></a>IotJsonPathContentTemplate
+
 IotJsonPathContentTemplate は JsonPathContentTemplate に似ていますが、DeviceIdExpression と TimestampExpression は必要ありません。
 
-このテンプレートを使用する場合、評価する対象のメッセージが [Azure IoT Hub デバイス SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks) を使用して送信されたことが前提になります。 これらの SDK を使用する場合、デバイス ID (Azure Iot Hub/Central からのデバイス識別子が宛先 FHIR サーバー上のデバイス リソースの識別子として登録されていることを前提としています) とメッセージのタイムスタンプは既知です。 Azure IoT Hub デバイス SDK を使用しているが、メッセージ本文でデバイス ID または測定タイムスタンプにカスタム プロパティを使用している場合でも、JsonPathContentTemplate を使用できます。
+このテンプレートを使用する場合、評価対象メッセージが [Azure IoT Hub デバイス SDK](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) または [Azure IoT Central](../iot-central/core/overview-iot-central.md) の[データのエクスポート (レガシ)](../iot-central/core/howto-export-data-legacy.md) 機能を使用して送信されたことが前提になります。 これらの SDK を使用する場合、デバイス ID (Azure Iot Hub/Central からのデバイス識別子が宛先 FHIR サーバー上のデバイス リソースの識別子として登録されていることを前提としています) とメッセージのタイムスタンプは既知です。 Azure IoT Hub デバイス SDK を使用しているが、メッセージ本文でデバイス ID または測定タイムスタンプにカスタム プロパティを使用している場合でも、JsonPathContentTemplate を使用できます。
 
 *注意事項: IotJsonPathContentTemplate を使用する場合は、TypeMatchExpression でメッセージ全体を JToken として解決する必要があります。以下の例を参照してください。* 
 ##### <a name="examples"></a>例
@@ -332,6 +334,101 @@ IotJsonPathContentTemplate は JsonPathContentTemplate に似ていますが、D
 }
 ```
 
+#### <a name="iotcentraljsonpathcontenttemplate"></a>IotCentralJsonPathContentTemplate
+
+IotCentralJsonPathContentTemplate も DeviceIdExpression と TimestampExpression を必要とせず、これは、評価対象メッセージが [Azure IoT Central](../iot-central/core/overview-iot-central.md) の[データのエクスポート](../iot-central/core/howto-export-data.md)機能を使用して送信されるときに使用されます。 この機能を使用する場合、デバイス ID (Azure Iot Central からのデバイス識別子が宛先 FHIR サーバー上のデバイス リソースの識別子として登録されていることを前提としています) とメッセージのタイムスタンプは既知です。 Azure IoT Central のデータ エクスポート機能を使用しているが、メッセージ本文でデバイス ID または測定タイムスタンプにカスタム プロパティを使用している場合でも、JsonPathContentTemplate を使用できます。
+
+*注: IotCentralJsonPathContentTemplate を使用する場合は、TypeMatchExpression でメッセージ全体を JToken として解決する必要があります。以下の例を参照してください。* 
+##### <a name="examples"></a>例
+---
+**心拍数**
+
+*メッセージ*
+```json
+{
+    "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+    "messageSource": "telemetry",
+    "deviceId": "1vzb5ghlsg1",
+    "schema": "default@v1",
+    "templateId": "urn:qugj6vbw5:___qbj_27r",
+    "enqueuedTime": "2020-08-05T22:26:55.455Z",
+    "telemetry": {
+        "HeartRate": "88",
+    },
+    "enrichments": {
+      "userSpecifiedKey": "sampleValue"
+    },
+    "messageProperties": {
+      "messageProp": "value"
+    }
+}
+```
+*テンプレート*
+```json
+{
+    "templateType": "IotCentralJsonPathContent",
+    "template": {
+        "typeName": "heartrate",
+        "typeMatchExpression": "$..[?(@telemetry.HeartRate)]",
+        "values": [
+            {
+                "required": "true",
+                "valueExpression": "$.telemetry.HeartRate",
+                "valueName": "hr"
+            }
+        ]
+    }
+}
+```
+---
+**血圧**
+
+*メッセージ*
+```json
+{
+    "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+    "messageSource": "telemetry",
+    "deviceId": "1vzb5ghlsg1",
+    "schema": "default@v1",
+    "templateId": "urn:qugj6vbw5:___qbj_27r",
+    "enqueuedTime": "2020-08-05T22:26:55.455Z",
+    "telemetry": {
+        "BloodPressure": {
+            "Diastolic": "87",
+            "Systolic": "123"
+        }
+    },
+    "enrichments": {
+      "userSpecifiedKey": "sampleValue"
+    },
+    "messageProperties": {
+      "messageProp": "value"
+    }
+}
+```
+*テンプレート*
+```json
+{
+    "templateType": "IotCentralJsonPathContent",
+    "template": {
+        "typeName": "bloodPressure",
+        "typeMatchExpression": "$..[?(@telemetry.BloodPressure.Diastolic && @telemetry.BloodPressure.Systolic)]",
+        "values": [
+            {
+                "required": "true",
+                "valueExpression": "$.telemetry.BloodPressure.Diastolic",
+                "valueName": "bp_diastolic"
+            },
+            {
+                "required": "true",
+                "valueExpression": "$.telemetry.BloodPressure.Systolic",
+                "valueName": "bp_systolic"
+            }
+        ]
+    }
+}
+```
+
 ## <a name="fhir-mapping"></a>FHIR マッピング
 デバイス コンテンツが正規化されたモデルに抽出されると、デバイス識別子、測定の種類、期間に従ってデータが収集され、グループ化されます。 このグループの出力は、FHIR リソース (現在は [Observation](https://www.hl7.org/fhir/observation.html)) に変換するために送信されます。 ここで、FHIR マッピング テンプレートによって、データを FHIR Observation にマップする方法を制御します。 特定の時点または 1 時間という期間にわたって観察を作成する必要がありますか。 観察にどのようなコードを追加する必要がありますか。 値を [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) として、または [Quantity](https://www.hl7.org/fhir/datatypes.html#Quantity) として表す必要がありますか。 これらのデータ型はすべて、FHIR マッピング構成コントロールのオプションです。
 
@@ -342,13 +439,13 @@ CodeValueFhirTemplate は、FHIR マッピングで現在サポートされて�
 | --- | ---
 |**TypeName**| このテンプレートのバインド先となる測定の種類。 この種類を出力するデバイス マッピング テンプレートが少なくとも 1 つ存在する必要があります。
 |**PeriodInterval**|作成された観察が表す期間。 サポートされている値は、0 (1 インスタンス)、60 (1 時間)、1440 (1 日) です。
-|**カテゴリ**|作成される観察の種類を分類する任意の数の [CodeableConcepts](http://hl7.org/fhir/datatypes-definitions.html#codeableconcept)。
+|**Category**|作成される観察の種類を分類する任意の数の [CodeableConcepts](http://hl7.org/fhir/datatypes-definitions.html#codeableconcept)。
 |**Codes**|作成された観察に適用する 1 つ以上の [Codings](http://hl7.org/fhir/datatypes-definitions.html#coding)。
 |**Codes[].Code**|[Coding](http://hl7.org/fhir/datatypes-definitions.html#coding) のコード。
 |**Codes[].System**|[Coding](http://hl7.org/fhir/datatypes-definitions.html#coding) のシステム。
 |**Codes[].Display**|[Coding](http://hl7.org/fhir/datatypes-definitions.html#coding) の表示。
 |**Value**|観察で抽出して表す値。 詳細については、「[値の型テンプレート](#valuetypes)」を参照してください。
-|**コンポーネント**|*省略可能:* 観察に対して作成する 1 つ以上のコンポーネント。
+|**Components**|*省略可能:* 観察に対して作成する 1 つ以上のコンポーネント。
 |**Components[].Codes**|コンポーネントに適用する 1 つ以上の [Codings](http://hl7.org/fhir/datatypes-definitions.html#coding)。
 |**Components[].Value**|コンポーネントで抽出して表す値。 詳細については、「[値の型テンプレート](#valuetypes)」を参照してください。
 
@@ -360,23 +457,23 @@ CodeValueFhirTemplate は、FHIR マッピングで現在サポートされて�
 | プロパティ | 説明 
 | --- | ---
 |**DefaultPeriod**|使用する既定の時間 (ミリ秒単位)。 
-|**単位**|SampledData の原点に設定する単位。 
+|**Unit**|SampledData の原点に設定する単位。 
 
 #### <a name="quantity"></a>Quantity
 FHIR データ型の [Quantity](http://hl7.org/fhir/datatypes.html#Quantity) を表します。 グループ内に複数の値が存在する場合は、最初の値のみが使用されます。 同じ観察にマップされる新しい値が到着すると、古い値が上書きされます。
 
 | プロパティ | 説明 
 | --- | --- 
-|**単位**| 単位の表記。
-|**コード**| 単位のコード化された形式。
-|**システム**| コード化された単位の形式を定義するシステム。
+|**Unit**| 単位の表記。
+|**Code**| 単位のコード化された形式。
+|**System**| コード化された単位の形式を定義するシステム。
 
 ### <a name="codeableconcept"></a>CodeableConcept
 FHIR データ型 [CodeableConcept](http://hl7.org/fhir/datatypes.html#CodeableConcept) を表します。 実際の値は使用されません。
 
 | プロパティ | 説明 
 | --- | --- 
-|**[テキスト]**|プレーンテキスト表現。 
+|**Text**|プレーンテキスト表現。 
 |**Codes**|作成された観察に適用する 1 つ以上の [Codings](http://hl7.org/fhir/datatypes-definitions.html#coding)。
 |**Codes[].Code**|[Coding](http://hl7.org/fhir/datatypes-definitions.html#coding) のコード。
 |**Codes[].System**|[Coding](http://hl7.org/fhir/datatypes-definitions.html#coding) のシステム。
@@ -565,8 +662,6 @@ FHIR データ型 [CodeableConcept](http://hl7.org/fhir/datatypes.html#CodeableC
 Azure IoT Connector for FHIR (プレビュー) についてよく寄せられる質問を確認してください。
 
 >[!div class="nextstepaction"]
->[Azure IoT Connector for FHIR についてよく寄せられる質問](fhir-faq.md#azure-iot-connector-for-fhir-preview)
+>[Azure IoT Connector for FHIR についてよく寄せられる質問](fhir-faq.md)
 
-*Azure portal では、Azure IoT Connector for FHIR は IoT コネクタ (プレビュー) と呼ばれています。
-
-FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。
+*Azure portal では、Azure IoT Connector for FHIR は IoT Connector (プレビュー) と呼ばれています。 FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。

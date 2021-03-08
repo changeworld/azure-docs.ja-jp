@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a60683b8dbf809bc3e91ffd8720b545db4c361d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 71b1f3cfa1df86b417c468d56f67cd7fe8d71d73
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008677"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004706"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Table Storage のパフォーマンスとスケーラビリティのチェックリスト
 
@@ -153,7 +153,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 
 他のプログラミング言語については、対象の言語のドキュメントで接続数の上限の設定方法を確認してください。  
 
-詳細については、ブログ記事「[Web Services:Concurrent Connections (Web サービス: コンカレント接続数)](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/)」を参照してください。  
+詳細については、ブログ記事「[Web Services:Concurrent Connections (Web サービス: コンカレント接続数)](/archive/blogs/darrenj/web-services-concurrent-connections)」を参照してください。  
 
 ### <a name="increase-minimum-number-of-threads"></a>スレッドの最小数を増やす
 
@@ -171,7 +171,7 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 ## <a name="client-libraries-and-tools"></a>クライアント ライブラリとツール
 
-パフォーマンスを最大限に引き出すためには必ず、Microsoft から提供される最新のクライアント ライブラリとツールを使用してください。 Azure Storage のクライアント ライブラリは、さまざまな言語に対応しています。 また、Azure Storage は PowerShell と Azure CLI をサポートします。 Microsoft はパフォーマンスに留意してこれらのクライアント ライブラリとツールを積極的に開発し、最新のサービス バージョンに遅れることなく対応して、数多くのパフォーマンスの実証済みプラクティスを内部で確実に処理できるように取り組んでいます。 詳細については、[Azure Storage のリファレンス ドキュメント](/azure/storage/#reference)を参照してください。
+パフォーマンスを最大限に引き出すためには必ず、Microsoft から提供される最新のクライアント ライブラリとツールを使用してください。 Azure Storage のクライアント ライブラリは、さまざまな言語に対応しています。 また、Azure Storage は PowerShell と Azure CLI をサポートします。 Microsoft はパフォーマンスに留意してこれらのクライアント ライブラリとツールを積極的に開発し、最新のサービス バージョンに遅れることなく対応して、数多くのパフォーマンスの実証済みプラクティスを内部で確実に処理できるように取り組んでいます。
 
 ## <a name="handle-service-errors"></a>サービス エラーの処理
 
@@ -197,7 +197,7 @@ Azure Storage のエラー コードの詳細については、「[状態コー�
 
 ストレージ サービス Version 2013-08-15 より、Table service では、テーブル データの転送用に、XML ベースの AtomPub 形式に代えて JSON を使用できるようになりました。 JSON を使用することにより、ペイロード サイズが 75% 程度に抑えられ、アプリケーションのパフォーマンスを大幅に引き上げることができます。
 
-詳しくは、投稿「[Microsoft Azure Tables: Introducing JSON (Microsoft Azure テーブル: JSON の紹介)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx)」と、「[テーブル サービス操作のペイロード形式](https://msdn.microsoft.com/library/azure/dn535600.aspx)」をご覧ください。
+詳しくは、投稿「[Microsoft Azure Tables: Introducing JSON (Microsoft Azure テーブル: JSON の紹介)](/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json)」と、「[テーブル サービス操作のペイロード形式](/rest/api/storageservices/Payload-Format-for-Table-Service-Operations)」をご覧ください。
 
 ### <a name="disable-nagle"></a>Nagle の無効化
 
@@ -273,9 +273,9 @@ Azure Storage では、バッチ トランザクションがエンティティ �
 
 #### <a name="upsert"></a>Upsert
 
-可能な場合は、常にテーブルの **アップサート** 操作を使用します。 **アップサート**には 2 種類あり、いずれも従来の**挿入**操作と**更新**操作に比べて効率的です。  
+可能な場合は、常にテーブルの **アップサート** 操作を使用します。 **アップサート** には 2 種類あり、いずれも従来の **挿入** 操作と **更新** 操作に比べて効率的です。  
 
-- **InsertOrMerge**: エンティティ プロパティのサブセットをアップロードする必要があるものの、エンティティが既に存在するかどうかが明らかでない場合には、この操作を使用します。 エンティティが存在する場合、この呼び出しは**アップサート**操作に含まれるプロパティを更新し、既存のプロパティはすべてそのまま残します。エンティティが存在しない場合は、新しいエンティティを挿入します。 変更するプロパティのアップロードだけが必要とされる点が、クエリにおけるプロジェクションの使用に類似しています。
+- **InsertOrMerge**: エンティティ プロパティのサブセットをアップロードする必要があるものの、エンティティが既に存在するかどうかが明らかでない場合には、この操作を使用します。 エンティティが存在する場合、この呼び出しは **アップサート** 操作に含まれるプロパティを更新し、既存のプロパティはすべてそのまま残します。エンティティが存在しない場合は、新しいエンティティを挿入します。 変更するプロパティのアップロードだけが必要とされる点が、クエリにおけるプロジェクションの使用に類似しています。
 - **InsertOrReplace**: まったく新しいエンティティをアップロードする必要があるものの、エンティティが既に存在するかどうかが明らかでない場合には、この操作を使用します。 この操作は、以前のエンティティを全面的に上書きするため、新たにアップロードするエンティティに誤りのないことが確実な場合に使用してください。 たとえば、アプリケーションが以前にユーザーの場所データを保存しているかどうかにかかわらず、ユーザーの現在の場所を格納しているエンティティを更新する必要があり、その新しい場所エンティティに問題がなく、かつ以前のすべてのエンティティが持つあらゆる情報を必要としない場合などです。
 
 #### <a name="storing-data-series-in-a-single-entity"></a>単一エンティティでのデータ シリーズの格納

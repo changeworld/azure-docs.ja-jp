@@ -12,12 +12,12 @@ metadata:
   ms.date: 07/08/2020
   ms.custom: seo-azure-migrate
   keywords: azure migrate, azure migration, azure migrate assessment tool, azure migrate tool, azure migrate documentation, azure migration documentation
-  ms.openlocfilehash: b38df4b4a9c9cd0741e9bc4d69e42ebaf2feefb7
-  ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+  ms.openlocfilehash: 40a510aa30ad76f4d6007bad337415c133d667e0
+  ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/01/2020
-  ms.locfileid: "89228343"
+  ms.lasthandoff: 10/21/2020
+  ms.locfileid: "92318156"
 landingContent:
 - title: Azure Migrate について
   linkLists:
@@ -34,13 +34,13 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Server Assessment による VMware VM の評価
-      url: ./tutorial-prepare-vmware.md
+      url: ./tutorial-discover-vmware.md
     - text: Server Assessment による Hyper-V VM の評価
-      url: ./tutorial-prepare-hyper-v.md
+      url: ./tutorial-discover-hyper-v.md
     - text: Server Assessment による物理サーバーの評価
-      url: ./tutorial-prepare-physical.md
+      url: ./tutorial-discover-physical.md
     - text: インポートされたデータを使用してサーバーを評価する
-      url: tutorial-assess-import.md
+      url: ./tutorial-discover-import.md
     - text: Server Migration による VMware VM の移行
       url: ./server-migrate-overview.md
     - text: Server Migration による Hyper-V VM の移行

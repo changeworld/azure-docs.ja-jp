@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: v-mamcge
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0630e4dfcfc01e5c20fa6fcc3a516dbea6f6f53b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 15f2ff5aaa1d731c13125d0a3ab4ac32acb9276c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046448"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023277"
 ---
 # <a name="diagnose-and-solve-issues-in-your-azure-time-series-insights-gen1-environment"></a>Azure Time Series Insights Gen1 環境の問題を診断して解決する
+
+> [!CAUTION]
+> これは Gen1 の記事です。
 
 この記事では、Azure Time Series Insights 環境で発生する可能性がある問題について説明します。 この記事では、考えられる原因と解決のためのソリューションを示します。
 
@@ -34,7 +37,7 @@ ms.locfileid: "87046448"
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>原因 A:イベント ソース データが JSON 形式でない
 
-Azure Time Series Insights は JSON データのみをサポートしています。 JSON のサンプルについては、「[サポートされている JSON 構造](./how-to-shape-query-json.md)」を参照してください。
+Azure Time Series Insights は JSON データのみをサポートしています。 JSON のサンプルについては、「[サポートされている JSON 構造](./concepts-json-flattening-escaping-rules.md)」を参照してください。
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>原因 B:イベント ソース キーに必要なアクセス許可がない
 
@@ -42,13 +45,13 @@ Azure Time Series Insights は JSON データのみをサポートしていま�
 
    [![IoT Hub サービス接続のアクセス許可](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
-* Azure Event Hubs のイベント ハブの場合は、リッスン アクセス許可があるキーを指定する必要があります。 **読み取り**ポリシーと**管理**ポリシーは両方ともリッスン アクセス許可があるため、どちらも機能します。
+* Azure Event Hubs のイベント ハブの場合は、リッスン アクセス許可があるキーを指定する必要があります。 **読み取り** ポリシーと **管理** ポリシーは両方ともリッスン アクセス許可があるため、どちらも機能します。
 
    [![イベント ハブのリッスン アクセス許可](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
 ### <a name="cause-c-the-provided-consumer-group-isnt-exclusive-to-azure-time-series-insights"></a>原因 C:指定したコンシューマー グループが Azure Time Series Insights 専用ではない
 
-IoT Hub またはイベント ハブを登録するときに、データの読み取りに使用するコンシューマー グループを設定する必要があります。 このコンシューマー グループは*共有できません*。 コンシューマー グループを共有すると、基盤となる IoT Hub またはイベント ハブによってリーダーのいずれかが自動的にランダムに切断されます。 Azure Time Series Insights が読み取る一意のコンシューマー グループを指定します。
+IoT Hub またはイベント ハブを登録するときに、データの読み取りに使用するコンシューマー グループを設定する必要があります。 このコンシューマー グループは *共有できません*。 コンシューマー グループを共有すると、基盤となる IoT Hub またはイベント ハブによってリーダーのいずれかが自動的にランダムに切断されます。 Azure Time Series Insights が読み取る一意のコンシューマー グループを指定します。
 
 ### <a name="cause-d-the-environment-has-just-been-provisioned"></a>原因 D:環境がプロビジョニングされた直後である
 
@@ -66,8 +69,8 @@ Azure Time Series Insights Explorer にデータが表示されるのは、環�
 
 イベント ソースに古いイベントがある場合、次の 2 つのうちいずれかの方法で調整にアプローチできます。
 
-- イベント ソースのリテンション期間を変更して、Azure Time Series Insights に表示したくない古いイベントが除去されるようにします。
-- プロビジョニングする環境サイズを大きくして (ユニット数)、古いイベントのスループットを増やします。 前の例では、同じ S1 環境を 1 日あたり 5 ユニットに増やすと、その環境で 1 日以内に追いつくはずです。 安定状態でのイベント生成が 1 日あたり 100 万イベント以下である場合は、Azure Time Series Insights で追いついた後、イベント容量を 1 ユニットに減らすことができます。
+* イベント ソースのリテンション期間を変更して、Azure Time Series Insights に表示したくない古いイベントが除去されるようにします。
+* プロビジョニングする環境サイズを大きくして (ユニット数)、古いイベントのスループットを増やします。 前の例では、同じ S1 環境を 1 日あたり 5 ユニットに増やすと、その環境で 1 日以内に追いつくはずです。 安定状態でのイベント生成が 1 日あたり 100 万イベント以下である場合は、Azure Time Series Insights で追いついた後、イベント容量を 1 ユニットに減らすことができます。
 
 適用される調整制限は、環境の SKU のタイプと容量に基づきます。 環境内のすべてのイベント ソースで、この容量が共有されます。 IoT Hub またはイベント ハブのイベント ソースが適用される制限を超えるデータをプッシュする場合は、調整が行われ、タイム ラグが発生します。
 
@@ -82,7 +85,7 @@ Azure Time Series Insights Explorer にデータが表示されるのは、環�
 
 容量 3 の S1 SKU 環境は、毎分 2,100 イベントしか受信できません (100 万イベント/日 = 700 イベント/分 × 3 ユニット = 2,100 イベント/分)。
 
-フラット化ロジックのしくみについては、「[クエリのパフォーマンスを最大化するための JSON の調整](./how-to-shape-query-json.md)」を参照してください。
+フラット化ロジックのしくみについては、「[クエリのパフォーマンスを最大化するための JSON の調整](./concepts-json-flattening-escaping-rules.md)」を参照してください。
 
 #### <a name="recommended-resolutions-for-excessive-throttling"></a>調整が過剰な場合の推奨される解決
 
@@ -128,12 +131,12 @@ Azure Time Series Insights でデータが取り込まれなくなったのに�
 
 次の値は表示されません。
 
-- *(abc)* :Azure Time Series Insights がデータ値を文字列として読み取っていることを示します。
-- *カレンダー アイコン*:Azure Time Series Insights がデータ値を日時値として読み取っていることを示します。
-- *#* :Azure Time Series Insights がデータ値を整数として読み取っていることを示します。
+* *(abc)* :Azure Time Series Insights がデータ値を文字列として読み取っていることを示します。
+* *カレンダー アイコン*:Azure Time Series Insights がデータ値を日時値として読み取っていることを示します。
+* *#* :Azure Time Series Insights がデータ値を整数として読み取っていることを示します。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Time Series Insights で待機時間を緩和する方法](time-series-insights-environment-mitigate-latency.md)を確認します。
+* [Azure Time Series Insights で待機時間を緩和する方法](time-series-insights-environment-mitigate-latency.md)を確認します。
 
-- [Azure Time Series Insights 環境をスケーリングする方法](time-series-insights-how-to-scale-your-environment.md)を確認します。
+* [Azure Time Series Insights 環境をスケーリングする方法](time-series-insights-how-to-scale-your-environment.md)を確認します。

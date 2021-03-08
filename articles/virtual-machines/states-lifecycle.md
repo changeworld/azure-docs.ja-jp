@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: cd104a31fdba932481889db198ae3cc4998a4466
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 7f91d5eebfae990f60b47f2c98f364046bafbf04
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261890"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594361"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>仮想マシンのライフサイクルと状態
 
@@ -164,7 +164,7 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
    :::column-end:::
    :::column span="":::
 
-   過渡的な状態です。 完了すると、VM は**割り当て解除済み**と表示されます。
+   過渡的な状態です。 完了すると、VM は **割り当て解除済み** と表示されます。
 
    ```json
    "statuses": [
@@ -365,7 +365,7 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
    :::column-end:::
    :::column span="2":::
    
-   有効期間の短い状態。 何らかの拡張機能をインストールする必要が生じない限り、VM の状態はすぐに**成功**に遷移します。 拡張機能のインストールには時間がかかる場合があります。
+   有効期間の短い状態。 何らかの拡張機能をインストールする必要が生じない限り、VM の状態はすぐに **成功** に遷移します。 拡張機能のインストールには時間がかかる場合があります。
    
    ```json
    "statuses": [
@@ -377,7 +377,7 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
    [
    ```
    
-   **注**: OS でエラーが発生するか、時間内に OS をインストールできない場合、OS のプロビジョニングが**失敗**に移行する場合があります。 お客様は、インフラストラクチャ上にデプロイした VM に対して課金されます。
+   **注**: OS でエラーが発生するか、時間内に OS をインストールできない場合、OS のプロビジョニングが **失敗** に移行する場合があります。 お客様は、インフラストラクチャ上にデプロイした VM に対して課金されます。
 
    :::column-end:::
 
@@ -418,14 +418,14 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
 
 ## <a name="vm-instance-view"></a>VM インスタンス ビュー
 
-インスタンス ビュー API によって、VM の実行状態に関する情報が提供されます。 詳細については、「[Virtual Machines - Instance View](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview)」(仮想マシン - インスタンス ビュー) の API ドキュメントをご覧ください。
+インスタンス ビュー API によって、VM の実行状態に関する情報が提供されます。 詳細については、「[Virtual Machines - Instance View](/rest/api/compute/virtualmachines/instanceview)」(仮想マシン - インスタンス ビュー) の API ドキュメントをご覧ください。
 
 Azure リソース エクスプローラーは、VM の実行状態を表示するためのシンプルな UI を備えています ([リソース エクスプローラー](https://resources.azure.com/))。
 
 プロビジョニング状態は、VM のプロパティとインスタンス ビューから確認できます。 電源の状態は、VM のインスタンス ビューから確認できます。
 
-自分のサブスクリプション内のすべての VM の電源状態を取得するには、**statusOnly** パラメーターを *true* に設定して[Virtual Machines の List All API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) を使用します。
+自分のサブスクリプション内のすべての VM の電源状態を取得するには、**statusOnly** パラメーターを *true* に設定して [Virtual Machines の List All API](/rest/api/compute/virtualmachines/listall) を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 
-VM の監視について詳しくは、[Azure で仮想マシンを監視する方法](../azure-monitor/insights/monitor-vm-azure.md)に関するページをご覧ください。
+VM の監視について詳しくは、[Azure で仮想マシンを監視する方法](../azure-monitor/vm/monitor-vm-azure.md)に関するページをご覧ください。

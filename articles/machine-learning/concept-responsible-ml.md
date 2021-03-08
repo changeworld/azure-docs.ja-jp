@@ -1,20 +1,21 @@
 ---
 title: 信頼できる機械学習とは (プレビュー)
 titleSuffix: Azure Machine Learning
-description: 信頼できる機械学習とはどのようなものか、および Azure Machine Learning でそれを使用する方法について説明します
+description: 信頼できる機械学習とはどのようなものか、および Azure Machine Learning でそれを使用してモデルを理解し、データを保護し、モデルのライフサイクルを管理する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 08/05/2020
-ms.openlocfilehash: 689b90fc1f45faad72640f47e5eebe936d2dc8b7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 12/21/2020
+ms.custom: responsible-ml
+ms.openlocfilehash: 7124fdd6e7d137e21234ff40426e13dc65b4f9e0
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829392"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223110"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>信頼できる機械学習とは (プレビュー)
 
@@ -62,10 +63,7 @@ AI システムにおける不公平性を減らすための 2 つの重要な�
 
 従来のシナリオでは、生データはファイルとデータベースに保存されます。 データを分析する場合、ユーザーは通常、生データを使用します。 しかし、この方法では個人のプライバシーを侵害する可能性があるため、問題があります。 差分プライバシーは、データに "ノイズ" やランダム性を追加し、ユーザーが個々のデータ ポイントを識別できないようにすることで、この問題に対処しようとするものです。
 
-差分プライバシー システムを実装することは簡単ではありません。 [WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-core) は、グローバルな差分プライバシー システムを構築するためのさまざまなコンポーネントを含んだ、オープンソース プロジェクトです。 差分プライバシーと WhiteNoise プロジェクトの詳細については、[差分プライバシーと WhiteNoise を使用し たデータ プライバシーの保持](./concept-differential-privacy.md)に関する記事を参照してください。
-
-> [!NOTE]
-> ツールキットの名前は変更予定で、今後数週間で新しい名前が導入されることにご注意ください。 
+差分プライバシー システムを実装することは簡単ではありません。 [SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-core) は、グローバルな差分プライバシー システムを構築するためのさまざまなコンポーネントを含んだ、オープンソース プロジェクトです。 差分プライバシーと SmartNoise プロジェクトの詳細については、[差分プライバシーと SmartNoise を使用したデータ プライバシーの保持](./concept-differential-privacy.md)に関する記事を参照してください。
 
 ## <a name="work-on-encrypted-data-with-homomorphic-encryption"></a>準同型暗号を使用して暗号化されたデータを処理する
 
@@ -73,7 +71,7 @@ AI システムにおける不公平性を減らすための 2 つの重要な�
 
 準同型暗号では、暗号化されたデータで計算を行う際に秘密 (復号化) キーを利用する必要がありません。 計算の結果は暗号化され、秘密キーの所有者だけに開示されます。 準同型暗号を使用すると、クラウド オペレーターは、格納および計算するデータに、暗号化されていないアクセスを使用することが一切できなくなります。 計算は、暗号化されたデータに対して直接実行されます。 データ プライバシーは最先端の暗号化に依存し、データ所有者はすべての情報リリースを制御します。 Microsoft での準同型暗号の詳細については、[Microsoft Research](https://www.microsoft.com/research/project/homomorphic-encryption/) に関するページを参照してください。
 
-Azure Machine Learning で準同型暗号の使用を開始するには、[Microsoft SEAL](https://github.com/microsoft/SEAL) の [encrypted-inference](https://pypi.org/project/encrypted-inference/) Python バインドを使用します。 Microsoft SEAL は、オープンソースの準同型暗号化ライブラリであり、ここでは暗号化された整数または実数に対して加算と乗算を行うことができます。 Microsoft SEAL の詳細については、[Azure アーキテクチャ センター](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal)、または [Microsoft Research プロジェクトのページ](https://www.microsoft.com/research/project/microsoft-seal/)を参照してください。
+Azure Machine Learning で準同型暗号の使用を開始するには、[Microsoft SEAL](https://github.com/microsoft/SEAL) の [encrypted-inference](https://pypi.org/project/encrypted-inference/) Python バインドを使用します。 Microsoft SEAL は、オープンソースの準同型暗号化ライブラリであり、ここでは暗号化された整数または実数に対して加算と乗算を行うことができます。 Microsoft SEAL の詳細については、[Azure アーキテクチャ センター](/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal)、または [Microsoft Research プロジェクトのページ](https://www.microsoft.com/research/project/microsoft-seal/)を参照してください。
 
 [Azure Machine Learning で暗号化された推論の Web サービスをデプロイする方法](how-to-homomorphic-encryption-seal.md)については、次のサンプルを参照してください。
 
@@ -96,5 +94,5 @@ Azure Machine Learning SDK を使用して[モデル用のデータシート](ht
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- 詳細については、[責任あるイノベーションのツールキット](https://docs.microsoft.com/azure/architecture/guide/responsible-innovation/)を参照して、ベスト プラクティスを確認します。
+- 詳細については、[責任あるイノベーションのツールキット](/azure/architecture/guide/responsible-innovation/)を参照して、ベスト プラクティスを確認します。
 - 詳細については、機械学習システムのドキュメントに関するガイドラインの [ABOUT ML](https://www.partnershiponai.org/about-ml/) のセットを参照してください。

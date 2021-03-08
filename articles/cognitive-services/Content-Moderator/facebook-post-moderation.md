@@ -8,18 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 05/27/2020
+ms.date: 01/29/2021
 ms.author: pafarley
-ms.openlocfilehash: 9d8801037be55a262268afcd6e8f5751d158c76e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f3b43ed6a86276b308599f9091d581423b0f363c
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548516"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220992"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator で Facebook の投稿とコマンドをモデレートする
 
 このチュートリアルでは、Azure Content Moderator を使用して Facebook ページの投稿とコメントをモデレートする方法について説明します。 訪問者が投稿したコンテンツは Facebook から Content Moderator サービスに送信されるようになります。 その後、コンテンツのスコアとしきい値に応じて、Content Moderator のワークフローは、コンテンツを公開するか、レビュー ツール内にレビューを作成します。 このシナリオの例が動作しているところは、[Build 2017 のデモ ビデオ](https://channel9.msdn.com/Events/Build/2017/T6033)でご覧いただけます。
+
+> [!IMPORTANT]
+> 2018 年に、Facebook は Facebook アプリのより厳密な審査ポリシーを実装しました。 お客様のアプリが Facebook のレビュー チームによってレビューおよび承認されていない場合は、このチュートリアルの手順を完了できません。
 
 このチュートリアルでは、次の操作方法について説明します。
 
@@ -34,12 +37,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 !["FBListener" を介して Facebook から情報を受信し、"CMListener" を介して情報を送信する、Content Moderator の図](images/tutorial-facebook-moderation.png)
 
-> [!IMPORTANT]
-> 2018 年に、Facebook は Facebook アプリのより厳密な審査ポリシーを実装しました。 お客様のアプリが Facebook のレビュー チームによってレビューおよび承認されていない場合は、このチュートリアルの手順を完了できません。
-
 ## <a name="prerequisites"></a>前提条件
 
-- Content Moderator のサブスクリプション キー。 [Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Content Moderator サービスをサブスクライブし、お客様のキーを取得してください。
+- Content Moderator のサブスクリプション キー。 [Cognitive Services アカウントの作成](../cognitive-services-apis-create-account.md)に関するページの手順に従って、Content Moderator サービスをサブスクライブし、お客様のキーを取得してください。
 - [Facebook アカウント](https://www.facebook.com/)。
 
 ## <a name="create-a-review-team"></a>レビュー チームを作成する
@@ -48,11 +48,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="configure-image-moderation-workflow"></a>画像モデレーション ワークフローを構成する
 
-「[ワークフローの定義、テスト、使用](review-tool-user-guide/workflows.md)」ガイドを参考にして、カスタム画像ワークフローを作成します。 Content Moderator では、このワークフローを使用して自動的に Facebook 上の画像を確認し、一部をレビュー ツールに送信します。 ワークフローの**名前**を記録しておきます。
+「[ワークフローの定義、テスト、使用](review-tool-user-guide/workflows.md)」ガイドを参考にして、カスタム画像ワークフローを作成します。 Content Moderator では、このワークフローを使用して自動的に Facebook 上の画像を確認し、一部をレビュー ツールに送信します。 ワークフローの **名前** を記録しておきます。
 
 ## <a name="configure-text-moderation-workflow"></a>テキスト モデレーション ワークフローを構成する
 
-もう一度、[ワークフローの定義、テスト、使用](review-tool-user-guide/workflows.md)に関するガイドを参照して、今度はカスタム テキスト ワークフローを作成します。 Content Moderator では、このワークフローを使用して、テキスト コンテンツを自動的に確認します。 ワークフローの**名前**を記録しておきます。
+もう一度、[ワークフローの定義、テスト、使用](review-tool-user-guide/workflows.md)に関するガイドを参照して、今度はカスタム テキスト ワークフローを作成します。 Content Moderator では、このワークフローを使用して、テキスト コンテンツを自動的に確認します。 ワークフローの **名前** を記録しておきます。
 
 ![テキスト ワークフローを構成する](images/text-workflow-configure.PNG)
 
@@ -64,14 +64,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [Azure portal](https://portal.azure.com/) にサインインして、次の手順を実行します。
 
-1. [[Azure Functions]](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal) ページの表示に従って Azure Function アプリを作成します。
+1. [[Azure Functions]](../../azure-functions/functions-create-function-app-portal.md) ページの表示に従って Azure Function アプリを作成します。
 1. 新しく作成した Function アプリに移動します。
 1. アプリ内で **[プラットフォーム機能]** タブに移動し、 **[構成]** を選択します。 次のページの **[アプリケーション設定]** セクションで、 **[新しいアプリケーション設定]** を選択し、次のキー/値ペアを追加します。
     
     | アプリ設定の名前 | value   | 
     | -------------------- |-------------|
     | `cm:TeamId`   | Content Moderator のチーム ID  | 
-    | `cm:SubscriptionKey` | Content Moderator のサブスクリプション キー - [資格情報](review-tool-user-guide/credentials.md)に関するページを参照してください |
+    | `cm:SubscriptionKey` | Content Moderator のサブスクリプション キー - [資格情報](./review-tool-user-guide/configure.md#credentials)に関するページを参照してください |
     | `cm:Region` | Content Moderator のリージョン名 (スペースなし)。 この名前は、Azure リソースの **[概要]** タブの **[場所]** ボックスで確認できます。|
     | `cm:ImageWorkflow` | 画像に対して実行するワークフローの名前 |
     | `cm:TextWorkflow` | テキストに対して実行するワークフローの名前 |
@@ -92,7 +92,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]
 
-1. **CMListener** という名前の新しい **Http トリガー**関数を作成します。 この関数は Content Moderator からイベントを受け取ります。 **run.csx** の内容を **CMListener/run.csx** の内容で置き換えます
+1. **CMListener** という名前の新しい **Http トリガー** 関数を作成します。 この関数は Content Moderator からイベントを受け取ります。 **run.csx** の内容を **CMListener/run.csx** の内容で置き換えます
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/CmListener/run.csx?range=1-110)]
 
@@ -105,26 +105,26 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![Facebook 開発者ページ](images/facebook-developer-app.png)
 
     1. [Facebook 開発者向けサイト](https://developers.facebook.com/)に移動します。
-    1. **[My Apps]\(マイ アプリ\)** をクリックします。
+    1. **[マイ アプリ]** に移動します。
     1. 新しいアプリを追加します。
-    1. 適当な名前を付けます
+    1. 名前を指定します
     1. **[Webhooks] > [設定]** を選択します
     1. ドロップダウン メニューで **[ページ]** を選択し、 **[Subscribe to this object]\(このオブジェクトをサブスクライブする\)** を選択します
-    1. [Callback URL]\(コールバック URL\) に **FBListener Url** を入力し、 **[Function App Settings]\(Function アプリの設定\)** で構成した**トークンを確認**します。
+    1. [Callback URL]\(コールバック URL\) に **FBListener Url** を入力し、 **[Function App Settings]\(Function アプリの設定\)** で構成した **トークンを確認** します。
     1. サブスクライブが完了したら、フィードまで下にスクロールして、 **[Subscribe]\(サブスクライブ\)** を選択します。
-    1. **フィード**行の **[テスト]** ボタンをクリックして、テスト メッセージを FBListener Azure 関数に送信してから、 **[Send to My Server]\(マイ サーバーに送信\)** ボタンをクリックします。 FBListener で受信される要求が表示されます。
+    1. **フィード** 行の **[テスト]** ボタンを選択して、テスト メッセージを FBListener Azure 関数に送信してから、 **[Send to My Server]\(マイ サーバーに送信\)** ボタンをクリックします。 FBListener で受信される要求が表示されます。
 
 1. Facebook ページを作成します。
 
     > [!IMPORTANT]
     > 2018 年に、Facebook は Facebook アプリのより厳密な審査を実装しました。 お客様のアプリが Facebook のレビュー チームによってレビューおよび承認されていない場合は、セクション 2、3、4 を実行できません。
 
-    1. [Facebook](https://www.facebook.com/bookmarks/pages) に移動し、**新しい Facebook ページ**を作成します。
+    1. [Facebook](https://www.facebook.com/bookmarks/pages) に移動し、**新しい Facebook ページ** を作成します。
     1. Facebook アプリがこのページにアクセスできるようにするには、次の手順を実行します。
         1. [Graph API Explorer](https://developers.facebook.com/tools/explorer/) に移動します。
         1. **[Application]\(アプリケーション\)** を選択します。
         1. **[Page Access Token]\(ページ アクセス トークン\)** を選択し、**Get** 要求を送信します。
-        1. 応答の **[Page ID]\(ページ ID\)** をクリックします。
+        1. 応答の **[Page ID]\(ページ ID\)** を選択します。
         1. URL に **/subscribed_apps** を付加し、**Get** (空の応答) 要求を送信します。
         1. **Post** 要求を送信します。 **success: true** という応答を受け取ります。
 
@@ -134,11 +134,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     2. **[Application]\(アプリケーション\)** オプションを選択します。
     3. **[Get User Access Token]\(ユーザー アクセス トークンの取得\)** オプションを選択します。
     4. **[Select Permissions]\(アクセス許可の選択\)** で **manage_pages** および **publish_pages** オプションを選択します。
-    5. この**アクセス トークン** (短命トークン) は、次の手順で使用します。
+    5. この **アクセス トークン** (短命トークン) は、次の手順で使用します。
 
 4. 次のいくつかの手順では Postman を使用します。
 
-    1. **Postman** を開きます (または[こちら](https://www.getpostman.com/)で入手します)。
+    1. **Postman** を開きます (または [こちら](https://www.getpostman.com/)で入手します)。
     2. 以下の 2 つのファイルをインポートします。
         1. [Postman コレクション](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/Facebook%20Permanant%20Page%20Access%20Token.postman_collection.json)
         2. [Postman 環境](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json)       
@@ -159,7 +159,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、製品の種類別にタグを付けてレビュー チームがコンテンツ モデレーションに関して情報に基づいた決定を行えるようにすることを目的として、製品画像を分析するプログラムを設定しました。 次は、画像のモデレーションの詳細について学習してください。
+このチュートリアルでは、製品画像を分析し、製品の種類別にタグを付け、レビュー チームがコンテンツ モデレーションに関して情報に基づいた決定を行えるようにするプログラムを設定しました。 次は、画像のモデレーションの詳細について学習してください。
 
 > [!div class="nextstepaction"]
 > [Image moderation](./image-moderation-api.md)

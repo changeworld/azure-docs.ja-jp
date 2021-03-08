@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) でのアプリケーションの構
 services: container-service
 ms.topic: article
 ms.date: 12/07/2018
-ms.openlocfilehash: 1278a03d3ffc7ccb11b0e3c4c84f6c213648440b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e8f9c1946567ac3c3ea1045a216d6b0486fd959a
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008782"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686261"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションの構築および管理のためのクラスター オペレーターと開発者のベスト プラクティス
 
@@ -30,7 +30,7 @@ Azure Kubernetes Service (AKS) でのアプリケーションを構築して実�
 * [スケジューラの高度な機能に関するベスト プラクティス](operator-best-practices-advanced-scheduler.md)
     * テイントと容認、ノード セレクターとノード アフィニティ、ポッド間アフィニティと非アフィニティの使用が含まれます。
 * [認証と認可に関するベスト プラクティス](operator-best-practices-identity.md)
-    * Azure Active Directory との統合、ロールベースのアクセス制御 (RBAC) の使用、およびポッド ID が含まれます。
+    * Azure Active Directory との統合、Kubernetes ロールベースのアクセス制御 (Kubernetes RBAC) の使用、Azure RBAC の使用、およびポッド ID が含まれます。
 
 **Security**
 

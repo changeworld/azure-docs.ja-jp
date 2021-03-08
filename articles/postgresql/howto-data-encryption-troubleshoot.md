@@ -1,17 +1,17 @@
 ---
 title: データ暗号化のトラブルシューティング - Azure Database for PostgreSQL (単一サーバー)
 description: Azure Database for PostgreSQL (単一サーバー) でデータ暗号化のトラブルシューティングを行う方法を学習する
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 02/13/2020
-ms.openlocfilehash: ee0a1ebe483dd4719fd1a84fec37906329116eba
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c315e1df473f3d23bab7e2a78ce166f22272ee70
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117901"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242247"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) でのデータ暗号化のトラブルシューティング
 
@@ -19,7 +19,7 @@ ms.locfileid: "86117901"
 
 ## <a name="introduction"></a>はじめに
 
-Azure Key Vault でカスタマー マネージド キーを使用するようにデータ暗号化を構成する場合、サーバーにはキーへの継続的なアクセスが必要となります。 サーバーが Azure Key Vault のカスタマー マネージド キーにアクセスできなくなると、すべての接続が拒否され、該当するエラー メッセージが表示され、Azure portal でその状態が ***[アクセス不可]*** に変わります。
+Azure Key Vault でカスタマー マネージド キーを使用するようにデータ暗号化を構成する場合、サーバーにはキーへの継続的なアクセスが必要となります。 サーバーが Azure Key Vault のカスタマー マネージド キーにアクセスできなくなると、すべての接続が拒否され、該当するエラー メッセージが表示され、Azure portal でその状態が * **[アクセス不可]** _ に変わります。
 
 アクセスできない Azure Database for PostgreSQL サーバーが不要になった場合は、それを削除してコストを発生させないようにすることができます。 キー コンテナーへのアクセスが復元され、サーバーが使用できるようになるまで、サーバーに対する他のすべての操作は許可されません。 また、アクセスできないサーバーがカスタマー マネージド キーで暗号化されている場合は、そのサーバーで `Yes` (カスタマー マネージド) から `No` (サービス マネージド) にデータ暗号化オプションを変更することもできません。 サーバーに再度アクセスできるようにするには、キーを手動で再検証する必要があります。 このアクションは、カスタマー マネージド キーへのアクセス許可が取り消されている間、データを不正アクセスから保護するために必要です。
 

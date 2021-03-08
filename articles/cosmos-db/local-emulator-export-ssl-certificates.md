@@ -1,81 +1,76 @@
 ---
 title: Azure Cosmos DB Emulator 証明書をエクスポートする
-description: Windows 証明書ストアを使用しない言語とランタイムで開発する場合は、TLS/SSL 証明書をエクスポートして管理する必要があります。 この記事では詳しい手順について説明します。
+description: Java、Python、および Node.js アプリで使用する Azure Cosmos DB エミュレーター証明書をエクスポートする方法について説明します。 証明書をエクスポートし、Windows 証明書ストアを使用しない言語およびランタイム環境で使用する必要があります。
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
-ms.custom: devx-track-python, devx-track-java
-ms.openlocfilehash: e1321c0d5b1f83ffcfd3f46384dfb3af792c9b8b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-python, devx-track-java, contperf-fy21q1
+ms.openlocfilehash: 6c144f33f32422e27916e1987e0b2e8693f97945
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373098"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656480"
 ---
-# <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Java、Python、および Node.js で使用する Azure Cosmos DB Emulator 証明書のエクスポート
+# <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>Java、Python、および Node.js アプリで使用する Azure Cosmos DB エミュレーター証明書のエクスポート
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-[**Emulator をダウンロードする**](https://aka.ms/cosmosdb-emulator)
+Azure Cosmos DB Emulator では、Azure Cosmos DB サービスを開発目的でエミュレートするローカル環境を利用できます。 Azure Cosmos DB エミュレーターでは、TLS 接続経由のセキュリティで保護された通信のみがサポートされます。
 
-Azure Cosmos DB Emulator には、開発の目的で Azure Cosmos DB サービスをエミュレートするローカル環境 (TLS 接続の使用を含む) が用意されています。 この記事では、独自の[証明書ストア](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)を使用する Java、[ソケット ラッパー](https://docs.python.org/2/library/ssl.html)を使用する Python、[tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback) を使用する Node.js など、Windows 証明書ストアと統合されていない言語とランタイムで使用するために TLS/SSL 証明書をエクスポートする方法について説明します。 このエミュレーターの詳細については、「[開発とテストでの Azure Cosmos DB Emulator の使用](./local-emulator.md)」をご覧ください。
+Azure Cosmos DB ローカル エミュレーターの証明書は、エミュレーターを初めて実行したときに生成されます。 証明書は 2 つあります。 その 1 つはローカル エミュレーターへの接続に使用され、もう 1 つはエミュレーター内のエミュレーター データの既定の暗号化を管理するために使用されます。 エクスポートする証明書は、"DocumentDBEmulatorCertificate" というフレンドリ名の接続証明書です。
 
-このチュートリアルに含まれるタスクは次のとおりです。
+エミュレーターを使用して Java、Python、Node.js などのさまざまな言語でアプリを開発する場合は、エミュレーター証明書をエクスポートして、必要な証明書ストアにインポートする必要があります。
 
-> [!div class="checklist"]
-> * 証明書のローテーション
-> * TLS/SSL 証明書のエクスポート
-> * Java、Python、および Node.js の証明書を使用する方法の学習
+.NET 言語とランタイムは、アプリケーションが Windows OS ホスト上で実行されている場合、Windows 証明書ストアを使用して Azure Cosmos DB ローカル エミュレーターに安全に接続されます。 その他の言語では、証明書の管理と使用について独自の方法があります。 たとえば、Java には独自の[証明書ストア](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)が使用され、Python には[ソケット ラッパー](https://docs.python.org/2/library/ssl.html)が使用され、Node.js には [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback) が使用されます。
 
-## <a name="certification-rotation"></a>証明書のローテーション
+この記事では、Windows 証明書ストアと統合されていないさまざまな言語およびランタイム環境で使用できるように TLS/SSL 証明書をエクスポートする方法について説明します。 このエミュレーターの詳細については、「[開発とテストでの Azure Cosmos DB Emulator の使用](./local-emulator.md)」をご覧ください。
 
-Azure Cosmos DB ローカル エミュレーターの証明書は、エミュレーターを初めて実行したときに生成されます。 証明書は 2 つあります。 1 つはローカル エミュレーターに接続するために使用し、もう 1 つはエミュレーター内のシークレットを管理するために使用します。 エクスポートする証明書は、"DocumentDBEmulatorCertificate" というフレンドリ名の接続証明書です。
+## <a name="export-the-azure-cosmos-db-tlsssl-certificate"></a><a id="export-emulator-certificate"></a>Azure Cosmos DB TLS/SSL 証明書をエクスポートする
 
-どちらの証明書も、Windows トレイで実行されている Azure Cosmos DB エミュレーターから、次に示す **[データのリセット]** をクリックすることで生成し直すことができます。 証明書を Java 証明書ストアにインストールしたり、その他の場所で使用したりしていた場合に、証明書を生成し直したときは、元の証明書を更新する必要があります。更新を行わないと、アプリケーションはローカル エミュレーターに接続しなくなります。
-
-:::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Azure Cosmos DB ローカル エミュレーターの [データのリセット]":::
-
-## <a name="how-to-export-the-azure-cosmos-db-tlsssl-certificate"></a>Azure Cosmos DB TLS/SSL 証明書をエクスポートする方法
+Windows 証明書ストアと統合されていない言語およびランタイム環境からエミュレーター エンドポイントを正常に使用するには、エミュレーター証明書をエクスポートする必要があります。 Windows 証明書マネージャーを使用して証明書をエクスポートできます。 次の手順に従って、"DocumentDBEmulatorCertificate" 証明書を BASE-64 でエンコードされた X.509 (.cer) ファイルとしてエクスポートします。
 
 1. certlm.msc を実行して Windows 証明書マネージャーを起動します。次に、Personal フォルダー、Certificates フォルダーの順に移動して、**DocumentDbEmulatorCertificate** というフレンドリ名の証明書を開きます。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 1":::
 
-2. **[詳細]** 、 **[OK]** の順にクリックします。
+1. **[詳細]** 、 **[OK]** の順にクリックします。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 2":::
 
-3. **[ファイルへコピー...]** をクリックします。
+1. **[ファイルへコピー...]** をクリックします。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 3":::
 
-4. **[次へ]** をクリックします。
+1. **[次へ]** をクリックします。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 4":::
 
-5. **[No, do not export private key (いいえ、秘密キーをエクスポートしません)]** をクリックしてから、 **[次へ]** をクリックします。
+1. **[No, do not export private key (いいえ、秘密キーをエクスポートしません)]** をクリックしてから、 **[次へ]** をクリックします。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 5":::
 
-6. **[Base 64 encoded X.509 (.CER)]** をクリックしてから、 **[次へ]** をクリックします。
+1. **[Base 64 encoded X.509 (.CER)]** をクリックしてから、 **[次へ]** をクリックします。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 6":::
 
-7. 証明書に名前を付けます。 ここでは「**documentdbemulatorcert**」と入力し、 **[次へ]** をクリックします。
+1. 証明書に名前を付けます。 ここでは「**documentdbemulatorcert**」と入力し、 **[次へ]** をクリックします。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 7":::
 
-8. **[完了]** をクリックします。
+1. **[完了]** をクリックします。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png" alt-text="Azure Cosmos DB ローカル エミュレーターのエクスポート手順 8":::
 
-## <a name="how-to-use-the-certificate-in-java"></a>Java で証明書を使用する方法
+## <a name="use-the-certificate-with-java-apps"></a>Java アプリで証明書を使用する
 
-Java クライアントが使用される Java アプリケーションまたは MongoDB アプリケーションを実行している場合は、`-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` フラグを渡すよりも、既定の Java 証明書ストアに証明書をインストールする方が簡単です。 たとえば、付属の Java デモ アプリケーション (`https://localhost:8081/_explorer/index.html`) では、既定の証明書ストアを使用します。
+Java ベースのクライアントが使用される Java アプリケーションまたは MongoDB アプリケーションを実行している場合は、`-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` フラグを渡すよりも、既定の Java 証明書ストアに証明書をインストールする方が簡単です。 たとえば、付属の Java デモ アプリケーション (`https://localhost:8081/_explorer/index.html`) では、既定の証明書ストアを使用します。
 
-X.509 証明書を既定の Java 証明書ストアにインポートする場合は、「[証明書を Java CA 証明書ストアに追加する方法](https://docs.microsoft.com/azure/java-add-certificate-ca-store)」の手順に従ってください。 keytool を実行する際には %JAVA_HOME% ディレクトリで作業することに注意してください。
+X.509 証明書を既定の Java 証明書ストアにインポートする場合は、[証明書を Java 証明書ストアに追加する方法](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store)に関するページの手順に従ってください。 keytool を実行する際には *%JAVA_HOME%* ディレクトリで作業することに注意してください。 証明書を証明書ストアにインポートすると、SQL API および Azure Cosmos DB の MongoDB 用 API のクライアントは、Azure Cosmos DB Emulator に接続できるようになります。
 
-または、これを自動的に行う "bash" スクリプトを作成して実行することもできます。
+また、次の bash スクリプトを実行して証明書をインポートすることもできます。
+
 ```bash
 #!/bin/bash
 
@@ -90,26 +85,25 @@ sudo $JAVA_HOME/bin/keytool -cacerts -delete -alias cosmos_emulator
 sudo $JAVA_HOME/bin/keytool -cacerts -importcert -alias cosmos_emulator -file $EMULATOR_CERT_PATH
 ```
 
-"CosmosDBEmulatorCertificate" TLS/SSL 証明書がインストールされると、アプリケーションはローカルの Azure Cosmos DB Emulator に接続し、それを使用できるようになります。 依然として問題がある場合は、記事「[Debugging SSL/TLS Connections (SSL/TLS 接続のデバッグ)](https://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html)」に従ってください。 多くの場合、証明書が %JAVA_HOME%/jre/lib/security/cacerts ストアにインストールされていません。 たとえば、複数のバージョンの Java をインストールしてある場合、更新したストアとは異なる cacerts ストアがアプリケーションによって使用されている可能性があります。
+"CosmosDBエミュレーターCertificate" TLS/SSL 証明書がインストールされると、アプリケーションはローカルの Azure Cosmos DB エミュレーターに接続し、それを使用できるようになります。 問題が発生した場合は、[SSL/TLS 接続のデバッグ](https://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html)に関する記事を参照してください。 ほとんどの場合、証明書は *%JAVA_HOME%/jre/lib/security/cacerts* ストアにインストールされないことがあります。 たとえば、複数のバージョンの Java をインストールしてある場合、更新したストアとは異なる cacerts ストアがアプリケーションによって使用されている可能性があります。
 
-## <a name="how-to-use-the-certificate-in-python"></a>Python で証明書を使用する方法
+## <a name="use-the-certificate-with-python-apps"></a>Python アプリで証明書を使用する
 
-既定では、SQL API 用の [Python SDK (バージョン 2.0.0 以降)](sql-api-sdk-python.md) は、ローカル エミュレーターに接続するときに TLS/SSL 証明書を使用しようとしません。 ただし、TLS 検証を使用したい場合は、[Python ソケット ラッパー](https://docs.python.org/2/library/ssl.html) のドキュメントの例に従うことができます。
+Python アプリからエミュレーターに接続すると、TLS 検証が無効になります。 既定では、SQL API 用の [Python SDK (バージョン 2.0.0 以降)](sql-api-sdk-python.md) は、ローカル エミュレーターに接続するときに TLS/SSL 証明書を使用しようとしません。 ただし、TLS 検証を使用したい場合は、[Python ソケット ラッパー](https://docs.python.org/2/library/ssl.html) のドキュメントの例に従うことができます。
 
 ## <a name="how-to-use-the-certificate-in-nodejs"></a>Node.js で証明書を使用する方法
 
-既定では、SQL API 用の [Node.js SDK (バージョン 1.10.1 以降)](sql-api-sdk-node.md) は、ローカル エミュレーターに接続するときに TLS/SSL 証明書を使用しようとしません。 ただし、TLS 検証を使用したい場合は、[Node.js のドキュメント](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)の例に従うことができます。
+Node.js SDK からエミュレーターに接続すると、TLS 検証が無効になります。 既定では、SQL API 用の [Node.js SDK (バージョン 1.10.1 以降)](sql-api-sdk-node.md) は、ローカル エミュレーターに接続するときに TLS/SSL 証明書を使用しようとしません。 ただし、TLS 検証を使用したい場合は、[Node.js のドキュメント](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)の例に従うことができます。
+
+## <a name="rotate-emulator-certificates"></a>エミュレーターの証明書のローテーション
+
+Windows トレイで実行されている Azure Cosmos DB エミュレーターから **[データのリセット]** を選択すると、エミュレーター証明書を強制的に再生成することができます。 この操作を実行すると、エミュレーターによってローカルに保存されたすべてのデータも消去されることに注意してください。
+
+:::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Azure Cosmos DB ローカル エミュレーターの [データのリセット]":::
+
+証明書を Java 証明書ストアにインストールした場合、または他の場所で使用した場合は、現在の証明書を使用して証明書を再インポートする必要があります。 証明書を更新するまで、アプリケーションはローカル エミュレーターに接続できません。
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、次の手順を行いました。
-
-> [!div class="checklist"]
-> * 証明書のローテーション
-> * TLS/SSL 証明書のエクスポート
-> * Java、Python、および Node.js の証明書を使用する方法の学習
-
-これで、概念セクションに進み、Azure Cosmos DB の詳細について学習できるようになりました。 
-
-> [!div class="nextstepaction"]
->[Azure Cosmos DB の調整可能なデータの一貫性レベル](../cosmos-db/consistency-levels.md)
+* [コマンド ライン パラメーターと PowerShell コマンドを使用してエミュレーターを制御する](emulator-command-line-parameters.md)
+* [エミュレーターに関する問題をデバッグする](troubleshoot-local-emulator.md)

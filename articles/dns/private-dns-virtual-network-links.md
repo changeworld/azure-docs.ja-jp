@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: 9181ef93dfedbc28b297bef48a0bc37ba6d69798
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e43ad35cdaad89d5b9f43007bad8782f358c1a6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75646763"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954343"
 ---
 # <a name="what-is-a-virtual-network-link"></a>仮想ネットワーク リンクとは
 
@@ -23,7 +23,7 @@ Azure にプライベート DNS ゾーンを作成したら、どの仮想ネッ
 
 ## <a name="registration-virtual-network"></a>登録仮想ネットワーク
 
-プライベート DNS ゾーンと仮想ネットワークの間の[リンクを作成する](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)ときに、仮想マシンの DNS レコードの[自動登録](./private-dns-autoregistration.md)をオンにすることができます。 このオプションを選択すると、仮想ネットワークはプライベート DNS ゾーンの登録仮想ネットワークになります。 ネットワークにデプロイする仮想マシンに対して、DNS レコードが自動的に作成されます。 DNS レコードは、仮想ネットワークに既にデプロイ済みの仮想マシンに対して作成されます。 仮想ネットワークの観点からは、プライベート DNS ゾーンはその仮想ネットワークの登録ゾーンになります。
+プライベート DNS ゾーンと仮想ネットワークの間の[リンクを作成する](./private-dns-getstarted-portal.md#link-the-virtual-network)ときに、仮想マシンの DNS レコードの[自動登録](./private-dns-autoregistration.md)をオンにすることができます。 このオプションを選択すると、仮想ネットワークはプライベート DNS ゾーンの登録仮想ネットワークになります。 ネットワークにデプロイする仮想マシンに対して、DNS レコードが自動的に作成されます。 DNS レコードは、仮想ネットワークに既にデプロイ済みの仮想マシンに対して作成されます。 仮想ネットワークの観点からは、プライベート DNS ゾーンはその仮想ネットワークの登録ゾーンになります。
 1 つのプライベート DNS ゾーンは複数の登録仮想ネットワークを持つことができますが、各仮想ネットワークに関連付けることができるのは、1 つの登録ゾーンだけになります。
 
 ## <a name="resolution-virtual-network"></a>解決仮想ネットワーク
@@ -33,7 +33,7 @@ Azure にプライベート DNS ゾーンを作成したら、どの仮想ネッ
 
 ## <a name="limits"></a>制限
 
-プライベート DNS ゾーンにリンクできる登録ネットワークと解決ネットワークの数を把握するには、「[Azure DNS の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)」を参照してください。
+プライベート DNS ゾーンにリンクできる登録ネットワークと解決ネットワークの数を把握するには、「[Azure DNS の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits)」を参照してください。
 
 ## <a name="other-considerations"></a>その他の考慮事項
 
@@ -49,7 +49,7 @@ Azure にプライベート DNS ゾーンを作成したら、どの仮想ネッ
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure portal](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) を使用して仮想ネットワークをプライベート DNS ゾーンにリンクする方法について確認します。
+* [Azure portal](./private-dns-getstarted-portal.md#link-the-virtual-network) を使用して仮想ネットワークをプライベート DNS ゾーンにリンクする方法について確認します。
 
 * [Azure PowerShell](./private-dns-getstarted-powershell.md) または [Azure CLI](./private-dns-getstarted-cli.md) を使用して Azure DNS のプライベート ゾーンを作成する方法を確認します。
 

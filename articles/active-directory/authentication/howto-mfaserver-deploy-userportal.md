@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccd1192c7597b5a088b1c50b5367030a616b9d77
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 61cefacc4147ab1eb105af9cb21365129dd1950e
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919592"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742461"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server のユーザー ポータル
 
@@ -29,9 +29,9 @@ ms.locfileid: "88919592"
 ユーザー ポータルは、ご利用の環境に応じて、Azure Multi-Factor Authentication Server と同じサーバーにデプロイするか、またはインターネットに接続された別のサーバーにデプロイしてもかまいません。
 
 > [!IMPORTANT]
-> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなりました。 サインイン イベント時に多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication (MFA) を使用していただく必要があります。
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなりました。 サインイン イベント時に多要素認証が必要な新しいお客様は、クラウドベースの Azure AD Multi-Factor Authentication (MFA) を使用していただく必要があります。
 >
-> クラウドベースの MFA の使用を開始するには、「[チュートリアル: Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
+> クラウドベースの MFA の使用を開始するには、「[チュートリアル: Azure AD Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
 >
 > 2019 年 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
 
@@ -42,7 +42,7 @@ ms.locfileid: "88919592"
 
 ## <a name="install-the-web-service-sdk"></a>Web サービス SDK のインストール
 
-どちらのシナリオにおいても、Azure Multi-Factor Authentication (MFA) Server に Azure Multi-Factor Authentication Web サービス SDK がまだインストールされて**いない**場合は、以下の手順を実行してください。
+どちらのシナリオにおいても、Azure Multi-Factor Authentication (MFA) Server に Azure Multi-Factor Authentication Web サービス SDK がまだインストールされて **いない** 場合は、以下の手順を実行してください。
 
 1. Multi-Factor Authentication Server コンソールを開きます。
 2. **[Web Service SDK]** に移動し、 **[Web サービス SDK のインストール]** を選択します。
@@ -57,7 +57,7 @@ Web サービス SDK は、TLS/SSL 証明書で保護されている必要があ
 
 ## <a name="deploy-the-user-portal-on-the-same-server-as-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server と同じサーバーにユーザー ポータルをデプロイする
 
-Azure Multi-Factor Authentication Server と**同じサーバー**にユーザー ポータルをインストールするには、前提条件となる次のものが必要です。
+Azure Multi-Factor Authentication Server と **同じサーバー** にユーザー ポータルをインストールするには、前提条件となる次のものが必要です。
 
 * ASP.NET と IIS 6 メタベース互換性を含む IIS (IIS 7 以降の場合)
 * コンピューターとドメイン (該当する場合) に対する管理者権限が付与されたアカウント。 このアカウントには Active Directory セキュリティ グループを作成するためのアクセス許可が必要です。
@@ -81,7 +81,7 @@ IIS サーバーに TLS/SSL 証明書を構成する方法についてご不明�
 
 ## <a name="deploy-the-user-portal-on-a-separate-server"></a>ユーザー ポータルを別のサーバーにデプロイする
 
-Azure Multi-Factor Authentication Server が実行されているサーバーがインターネットに接続していない場合、ユーザー ポータルは**インターネットに接続している別のサーバー**にインストールする必要があります。
+Azure Multi-Factor Authentication Server が実行されているサーバーがインターネットに接続していない場合、ユーザー ポータルは **インターネットに接続している別のサーバー** にインストールする必要があります。
 
 認証方法の 1 つとして Microsoft Authenticator アプリが組織で使用されていて、ユーザー ポータルを独自のサーバーにデプロイしたい場合、次の要件を満たす必要があります。
 

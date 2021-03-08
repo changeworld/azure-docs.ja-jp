@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 37e09612491d41887c5945920488569d3620bf0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2c88091072921f1ca674868e401c34d354418de
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052021"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746511"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web アプリケーション ファイアウォールの CRS 規則グループと規則
 
@@ -259,7 +259,7 @@ WAF は、次の Web の脆弱性から保護します。
 |941150|XSS フィルター - カテゴリ 5 = 許可されていない HTML 属性|
 |941160|NoScript XSS InjectionChecker: HTML インジェクション|
 |941170|NoScript XSS InjectionChecker: 属性インジェクション|
-|941180|ノード検証コントロールのブラックリスト キーワード|
+|941180|ノード検証コントロールのブロックリスト キーワード|
 |941190|スタイル シートを使用する XSS|
 |941200|VML フレームを使用する XSS|
 |941210|難読化 Javascript を使用する XSS|
@@ -487,7 +487,7 @@ WAF は、次の Web の脆弱性から保護します。
 |941130|XSS フィルター - カテゴリ 3 = 属性ベクター|
 |941140|XSS フィルター - カテゴリ 4 = Javascript URI ベクター|
 |941150|XSS フィルター - カテゴリ 5 = 許可されていない HTML 属性|
-|941180|ノード検証コントロールのブラックリスト キーワード|
+|941180|ノード検証コントロールのブロックリスト キーワード|
 |941190|スタイル シートを使用する XSS|
 |941200|VML フレームを使用する XSS|
 |941210|難読化 Javascript を使用する XSS|

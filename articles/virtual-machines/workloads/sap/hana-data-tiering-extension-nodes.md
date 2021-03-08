@@ -6,26 +6,26 @@ documentationcenter: ''
 author: msjuergent
 manager: bburns
 editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c3553ac9704ac26d0bdaae0f93b89f41a87ac716
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb780d10996cb22f5e6fe5bc8889e897e8c3854d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617159"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666771"
 ---
 # <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>SAP HANA のデータ階層化と拡張ノードの使用
 
 SAP では、さまざまな SAP NetWeaver リリースの SAP BW および SAP BW/4HANA のデータ階層化モデルをサポートしています。 データ階層化モデルの詳細については、SAP ドキュメントの「[SAP BW/4HANA and SAP BW on HANA with SAP HANA extension nodes (SAP HANA 拡張ノードを持つ SAP BW/4HANA および SAP BW-on-HANA)](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#)」をご覧ください。
 HANA L インスタンスを使用すると、FAQ および SAP ブログ ドキュメントで説明する SAP HANA 拡張ノードのオプション 1 の構成をご利用いただけます。 オプション 2 の構成は次の HANA L インスタンス SKU を使用して設定できます: S72m、S192、S192m、S384、S384m。 
 
-ドキュメントを参照しても、すぐには利点を確認できないかもしれません。 しかし、SAP のサイズ変更ガイドラインを見ると、オプション 1 およびオプション 2 の SAP HANA 拡張ノードを使用することによる利点を確認できます。 次に例を示します。
+ドキュメントを参照しても、すぐには利点を確認できないかもしれません。 しかし、SAP のサイズ変更ガイドラインを見ると、オプション 1 およびオプション 2 の SAP HANA 拡張ノードを使用することによる利点を確認できます。 以下に例を示します。
 
 - SAP HANA のサイズ変更ガイドラインでは通常、メモリの 2 倍のデータ ボリュームが必要です。 ホット データで SAP HANA インスタンスを実行した場合、メモリの 50% 以下しかデータが入っていません。 残りのメモリは、SAP HANA が作業を実行するために残しておくのが理想です。
 - つまり、2 TB のメモリを持つ HANA L インスタンス S192 ユニットで SAP BW データベースを実行すると、データ ボリュームとしては 1 TB しかありません。

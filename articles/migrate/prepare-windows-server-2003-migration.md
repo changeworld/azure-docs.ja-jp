@@ -1,18 +1,26 @@
 ---
 title: Azure Migrate での移行に向けた Windows Server 2003 サーバーの準備
 description: Azure Migrate での移行に向けて Windows Server 2003 サーバーを準備する方法について説明します。
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 5e33742d59972d491c1efb8d0f1453c1226d4625
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f8d3dea970d07d951467a44661e12000ba413f72
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103944"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753751"
 ---
 # <a name="prepare-windows-server-2003-machines-for-migration"></a>移行に向けた Windows Server 2003 コンピューターの準備
 
 この記事では、Azure への移行のために Windows Server 2003 を実行するコンピューターを準備する方法について説明します。 
+
+
+> [!NOTE]
+> [Windows Server 2003 の延長サポート](/troubleshoot/azure/virtual-machines/run-win-server-2003#microsoft-windows-server-2003-end-of-support)は、2015 年 7 月 14 日に終了しました。  Azure サポート チームでは、Azure での Windows Server 2003 の実行に関係する問題のトラブルシューティングを引き続き支援します。 ただし、このサポートは、OS レベルのトラブルシューティングや修正プログラムを必要としない問題に限定されます。 Azure クラウドの柔軟性と信頼性を効果的に活用できるようにするため、新しいバージョンの Windows Server が動作している Azure インスタンスにアプリケーションを移行することをお勧めします。 それでも、Windows Server 2003 を Azure に移行することを選択した場合は、Azure Migrate: Server Migration ツールを使用できます (Windows Server が VMware または Hyper-V で実行されている VM の場合)。
+
 
 - エージェントレスの移行を使用して [Hyper-V VM](tutorial-migrate-hyper-v.md) と [VMware VM](tutorial-migrate-vmware.md) を Azure に移行できます。
 - 移行後に Azure VM に接続するには、Hyper-V 統合サービスを Azure VM にインストールする必要があります。 既定では、Windows Server 2003 コンピューターにはインストールされていません。

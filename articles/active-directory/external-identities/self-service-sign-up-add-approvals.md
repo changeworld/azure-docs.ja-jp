@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: article
-ms.date: 06/16/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d664d7cd169593924917bb02a0220e4047eb0cdb
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: b447873df882847f052125254ea52b5ae6ab9ec4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165246"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644869"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>カスタム承認ワークフローをセルフサービス サインアップに追加する
 
@@ -27,20 +27,23 @@ ms.locfileid: "88165246"
 - ユーザーを自動的に承認し、Azure AD にユーザー アカウントの作成を許可します。
 - 手動レビューをトリガーします。 要求が承認された場合、承認システムは Microsoft Graph を使用してユーザー アカウントをプロビジョニングします。 承認システムは、アカウントが作成されたことをユーザーに通知することもできます。
 
+> [!IMPORTANT]
+>**2021 年 1 月 4 日以降**、Google は [WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 Gmail で Google フェデレーションまたはセルフサービス サインアップを使用している場合は、[基幹業務ネイティブ アプリケーションの互換性をテストする](google-federation.md#deprecation-of-webview-sign-in-support)必要があります。
+
 ## <a name="register-an-application-for-your-approval-system"></a>承認システム用のアプリケーションを登録する
 
-承認システムをアプリケーションとして Azure AD テナントに登録することで、承認システムを Azure AD で認証し、承認システムがユーザーを作成するアクセス許可を持つようにすることができます。 詳しくは、[Microsoft Graph 用の認証および承認の基本](https://docs.microsoft.com/graph/auth/auth-concepts)に関する記事をご覧ください。
+承認システムをアプリケーションとして Azure AD テナントに登録することで、承認システムを Azure AD で認証し、承認システムがユーザーを作成するアクセス許可を持つようにすることができます。 詳しくは、[Microsoft Graph 用の認証および承認の基本](/graph/auth/auth-concepts)に関する記事をご覧ください。
 
 1. [Azure Portal](https://portal.azure.com) に Azure AD 管理者としてサインインします。
 2. **[Azure サービス]** で **[Azure Active Directory]** を選択します。
 3. 左のメニューで、 **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
-4. アプリケーションの**名前**を入力します (_Sign-up Approvals_ など)。
+4. アプリケーションの **名前** を入力します (_Sign-up Approvals_ など)。
 
    <!-- ![Register an application for the approval system](./self-service-sign-up-add-approvals/approvals/register-an-approvals-application.png) -->
 
 5. **[登録]** を選択します。 他のすべてのフィールドは既定値のままにすることができます。
 
-   ![[アプリケーションの登録] ページ](media/self-service-sign-up-add-approvals/register-approvals-app.png)
+   ![[登録] ボタンが強調表示されているスクリーンショット。](media/self-service-sign-up-add-approvals/register-approvals-app.png)
 
 6. 左のメニューの **[管理]** で、 **[API のアクセス許可]** を選択してから、 **[アクセス許可の追加]** を選択します。
 7. **[API アクセス許可の要求]** ページで、 **[Microsoft Graph]** を選択し、 **[アプリケーションのアクセス許可]** を選択します。
@@ -50,12 +53,12 @@ ms.locfileid: "88165246"
 
 9. **[API のアクセス許可]** ページで、 **[(テナント名) に管理者の同意を与えます]** を選択し、 **[はい]** を選択します。
 10. 左のメニューの **[管理]** で **[証明書とシークレット]** を選択してから、 **[新しいクライアント シークレット]** を選択します。
-11. シークレットの **[説明]** を入力し (たとえば、_Approvals client secret (承認クライアント シークレット)_ )、クライアント シークレットが**期限切れになる**までの期間を選択します。 その後、 **[追加]** を選択します。
+11. シークレットの **[説明]** を入力し (たとえば、_Approvals client secret (承認クライアント シークレット)_ )、クライアント シークレットが **期限切れになる** までの期間を選択します。 その後、 **[追加]** を選択します。
 12. クライアント シークレットの値をコピーします。
 
     ![承認システムで使用するクライアント シークレットをコピーする](media/self-service-sign-up-add-approvals/client-secret-value-copy.png)
 
-13. クライアント ID としての**アプリケーション ID** と、Azure AD で認証するために生成した **クライアント シークレット**を使用するように承認システムを構成します。
+13. クライアント ID としての **アプリケーション ID** と、Azure AD で認証するために生成した **クライアント シークレット** を使用するように承認システムを構成します。
 
 ## <a name="create-the-api-connectors"></a>API コネクタを作成する
 
@@ -78,7 +81,7 @@ ms.locfileid: "88165246"
 1. [Azure Portal](https://portal.azure.com/) に Azure AD 管理者としてサインインします。
 2. **[Azure サービス]** で **[Azure Active Directory]** を選択します。
 3. 左側のメニューで、 **[External Identities]** を選択します。
-4. **[User flows (Preview)]\(ユーザー フロー (プレビュー)\)** を選択し、API コネクタを有効にするユーザー フローを選択します。
+4. **[ユーザー フロー]** を選択し、API コネクタを有効にするユーザー フローを選択します。
 5. **[API connectors]\(API コネクタ\)** を選択し、ユーザー フローの次の手順で呼び出す API エンドポイントを選択します。
 
    - **ID プロバイダーを使用してサインインした後**:承認状態 API コネクタを選択します。たとえば、 _[Check approval status]\(承認状態の確認\)_ を選択します。
@@ -207,7 +210,7 @@ API に送信される正確な要求は、ユーザーから収集される情�
 
 **要求の承認** API エンドポイントは、次の場合に継続応答を返す必要があります。
 
-- ユーザーを**_自動的に承認_** できる。
+- ユーザーを **_自動的に承認_** できる。
 
 継続応答の例:
 
@@ -263,14 +266,14 @@ Content-type: application/json
 
 ## <a name="user-account-creation-after-manual-approval"></a>手動承認後のユーザー アカウントの作成
 
-手動による承認を取得した後、カスタム承認システムでは [Microsoft Graph](https://docs.microsoft.com/graph/use-the-api) を使用して[ユーザー](https://docs.microsoft.com/graph/azuread-users-concept-overview) アカウントを作成します。 承認システムがユーザー アカウントをプロビジョニングする方法は、ユーザーによって使用された ID プロバイダーによって異なります。
+手動による承認を取得した後、カスタム承認システムでは [Microsoft Graph](/graph/use-the-api) を使用して[ユーザー](/graph/azuread-users-concept-overview) アカウントを作成します。 承認システムがユーザー アカウントをプロビジョニングする方法は、ユーザーによって使用された ID プロバイダーによって異なります。
 
 ### <a name="for-a-federated-google-or-facebook-user"></a>Google または Facebook のフェデレーション ユーザーの場合
 
 > [!IMPORTANT]
 > この方法を使用するには、承認システムは、`identities`、`identities[0]`、および `identities[0].issuer` が存在し、 `identities[0].issuer` が 'facebook' または 'google' に一致することを明示的に確認する必要があります。
 
-ユーザーが Google または Facebook アカウントを使用してサインインした場合は、[ユーザー作成 API](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http) を使用できます。
+ユーザーが Google または Facebook アカウントを使用してサインインした場合は、[ユーザー作成 API](/graph/api/user-post-users?tabs=http) を使用できます。
 
 1. 承認システムはユーザー フローから HTTP 要求を受信します。
 
@@ -330,7 +333,7 @@ Content-type: application/json
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>フェデレーション Azure Active Directory ユーザーの場合
 
-ユーザーがフェデレーション Azure Active Directory アカウントを使用してサインインする場合は、[招待 API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-1.0) を使用してユーザーを作成し、必要に応じて[ユーザー更新 API](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0) を使用してユーザーに追加の属性を割り当てる必要があります。
+ユーザーがフェデレーション Azure Active Directory アカウントを使用してサインインする場合は、[招待 API](/graph/api/invitation-post) を使用してユーザーを作成し、必要に応じて[ユーザー更新 API](/graph/api/user-update) を使用してユーザーに追加の属性を割り当てる必要があります。
 
 1. 承認システムはユーザー フローから HTTP 要求を受信します。
 
@@ -354,8 +357,8 @@ POST https://graph.microsoft.com/v1.0/invitations
 Content-type: application/json
 
 {
-    "invitedUserEmailAddress":"johnsmith@fabrikam.onmicrosoft.com",
-    "inviteRedirectUrl" : "https://myapp.com"
+    "invitedUserEmailAddress": "johnsmith@fabrikam.onmicrosoft.com",
+    "inviteRedirectUrl" : "https://myapp.com"
 }
 ```
 
@@ -367,9 +370,9 @@ Content-type: application/json
 
 {
     ...
-    "invitedUser": {
-        "id": "<generated-user-guid>"
-    }
+    "invitedUser": {
+        "id": "<generated-user-guid>"
+    }
 }
 ```
 
@@ -389,4 +392,4 @@ Content-type: application/json
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Function クイックスタート サンプル](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)を使用します。
-- [手動承認を使用したゲスト ユーザーのセルフサービス サインアップのサンプル](code-samples-self-service-sign-up.md#custom-approval-workflows)をチェックアウトします。 
+- [手動承認を使用したゲスト ユーザーのセルフサービス サインアップのサンプル](code-samples-self-service-sign-up.md#custom-approval-workflows)をチェックアウトします。

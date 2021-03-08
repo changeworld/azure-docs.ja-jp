@@ -3,21 +3,21 @@ title: Azure Functions を Azure 仮想ネットワークに統合する
 description: 関数を Azure 仮想ネットワークに接続する方法を説明するステップ バイ ステップ チュートリアル
 ms.topic: article
 ms.date: 4/23/2020
-ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: efc936111d162d73b1cc5465ae6b677c9006ab32
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387525"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937020"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>チュートリアル: Functions を Azure 仮想ネットワークに統合する
 
 このチュートリアルでは、Azure Functions を使用して Azure 仮想ネットワーク内のリソースに接続する方法について説明します。 インターネットと、仮想ネットワークで WordPress を実行している VM の両方へのアクセス権を持つ関数を作成します。
 
 > [!div class="checklist"]
-> * Premium プランの関数アプリを作成する
+> * Premium プランの Function App を作成する
 > * 仮想ネットワーク内の VM に WordPress サイトをデプロイする
-> * 関数アプリを仮想ネットワークに接続する
+> * Function App を仮想ネットワークに接続する
 > * WordPress リソースにアクセスする関数プロキシを作成する
 > * 仮想ネットワーク内から WordPress ファイルを要求する
 
@@ -35,13 +35,13 @@ Premium プランで実行されている関数には、VNet 統合機能を含�
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-## <a name="create-a-function-app-in-a-premium-plan"></a>Premium プランの関数アプリを作成する
+## <a name="create-a-function-app-in-a-premium-plan"></a>Premium プランの Function App を作成する
 
-まず、[Premium プラン]で関数アプリを作成します。 このプランはサーバーレス スケールを提供しながら、仮想ネットワーク統合をサポートします。
+まず、[Premium プラン]で Function App を作成します。 このプランはサーバーレス スケールを提供しながら、仮想ネットワーク統合をサポートします。
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]  
 
-右上隅のピン アイコンを選択して、ダッシュ ボードに関数アプリをピン留めすることができます。 ピン留めすると、VM の作成後に、この関数アプリに戻るのが容易になります。
+右上隅のピン アイコンを選択して、ダッシュ ボードに Function App をピン留めすることができます。 ピン留めすると、VM の作成後に、この Function App に戻るのが容易になります。
 
 ## <a name="create-a-vm-inside-a-virtual-network"></a>仮想ネットワーク内に VM を作成する
 
@@ -49,7 +49,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. ポータルで、左側のナビゲーション ウィンドウで **[+ リソースの作成]** を選択し、検索フィールドに「`WordPress LEMP7 Max Performance`」と入力して Enter キーを押します。
 
-1. 検索結果で **[Wordpress LEMP Max Performance]** を選択します。 **ソフトウェア プラン**として **Wordpress LEMP Max Performance for CentOS** のソフトウェア プランを選択し、 **[作成]** を選択します。
+1. 検索結果で **[Wordpress LEMP Max Performance]** を選択します。 **ソフトウェア プラン** として **Wordpress LEMP Max Performance for CentOS** のソフトウェア プランを選択し、 **[作成]** を選択します。
 
 1. **[基本]** タブで、画像の下の表で指定されているように VM 設定を使用します。
 
@@ -81,27 +81,27 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. **[ネットワーク]** タブに戻り、 **[パブリック IP]** に **[なし]** を選択します。
 
-1. **[管理]** タブを選択し、続いて **[診断ストレージ アカウント]** で、関数アプリで作成したストレージ アカウントを選択します。
+1. **[管理]** タブを選択し、続いて **[診断ストレージ アカウント]** で、Function App で作成したストレージ アカウントを選択します。
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 検証が完了した後、 **[作成]** を選択します。 VM 作成プロセスには数分かかります。 作成した VM は、仮想ネットワークにのみアクセスできます。
 
 1. VM が作成された後、 **[リソースに移動]** を選択して新しい VM のページを表示し、続いて **[設定]** の下で **[ネットワーク]** を選択します。
 
-1. **パブリック IP** がないことを確認します。 **プライベート IP** を書き留めます。これは関数アプリから VM に接続するために使用します。
+1. **パブリック IP** がないことを確認します。 **プライベート IP** を書き留めます。これは Function App から VM に接続するために使用します。
 
     ![VM でのネットワーク設定](./media/functions-create-vnet/vm-networking.png)
 
 これで、完全に仮想ネットワーク内にデプロイされた WordPress サイトが表示されます。 このサイトにはパブリック インターネットからはアクセスできません。
 
-## <a name="connect-your-function-app-to-the-virtual-network"></a>関数アプリを仮想ネットワークに接続する
+## <a name="connect-your-function-app-to-the-virtual-network"></a>Function App を仮想ネットワークに接続する
 
-仮想ネットワーク内の VM で実行している WordPress サイトでは、その仮想ネットワークに関数アプリを接続できるようになりました。
+仮想ネットワーク内の VM で実行している WordPress サイトでは、その仮想ネットワークに Function App を接続できるようになりました。
 
-1. 新しい関数アプリで、左側のメニューの **[ネットワーク]** を選択します。
+1. 新しい Function App で、左側のメニューの **[ネットワーク]** を選択します。
 
 1. **[VNet 統合]** の下の **[ここをクリックして構成]** を選択します。
 
-    :::image type="content" source="./media/functions-create-vnet/networking-0.png" alt-text="関数アプリで [ネットワーク] を選択する":::
+    :::image type="content" source="./media/functions-create-vnet/networking-0.png" alt-text="Function App で [ネットワーク] を選択する":::
 
 1. **[VNET 統合]** ページで、 **[VNet の追加]** を選択します。
 
@@ -114,20 +114,20 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     | 設定      | 推奨値  | 説明      |
     | ------------ | ---------------- | ---------------- |
     | **Virtual Network** | MyResourceGroup-vnet | この仮想ネットワークは前に作成したものです。 |
-    | **サブネット** | 新しいサブネットを作成します | 使用する関数アプリ用の仮想ネットワークにサブネットを作成します。 VNet 統合は、空のサブネットを使用するように構成する必要があります。 関数が VM とは異なるサブネットを使用していても問題ありません。 仮想ネットワークは、2 つのサブネット間のトラフィックを自動的にルーティングします。 |
+    | **サブネット** | 新しいサブネットを作成します | 使用する Function App 用の仮想ネットワークにサブネットを作成します。 VNet 統合は、空のサブネットを使用するように構成する必要があります。 関数が VM とは異なるサブネットを使用していても問題ありません。 仮想ネットワークは、2 つのサブネット間のトラフィックを自動的にルーティングします。 |
     | **サブネット名** | Function-Net | 新しいサブネットの名前です。 |
     | **仮想ネットワーク アドレス ブロック** | 10.10.0.0/16 | WordPress サイトで使用される、同じアドレス ブロックを選択します。 1 つのアドレス ブロックだけを定義してください。 |
-    | **アドレス範囲** | 10.10.2.0/24   | サブネット サイズは、Premium プランの関数アプリがスケールアウトできるインスタンスの合計数を制限します。 この例では、254 のホスト アドレスが使用可能な `/24` サブネットを使用します。 このサブネットはオーバープロビジョニングされていますが、計算は簡単です。 |
+    | **アドレス範囲** | 10.10.2.0/24   | サブネット サイズは、Premium プランの Function App がスケールアウトできるインスタンスの合計数を制限します。 この例では、254 のホスト アドレスが使用可能な `/24` サブネットを使用します。 このサブネットはオーバープロビジョニングされていますが、計算は簡単です。 |
 
-1. **[OK]** を選択して、サブネットを追加します。 **[VNet 統合]** ページおよび **[ネットワーク機能の状態]** ページを閉じ、関数アプリのページに戻ります。
+1. **[OK]** を選択して、サブネットを追加します。 **[VNet 統合]** ページおよび **[ネットワーク機能の状態]** ページを閉じ、Function App のページに戻ります。
 
 関数アプリから WordPress サイトが実行している仮想ネットワークにアクセスできるようになりました。 次に、[Azure Functions プロキシ](functions-proxies.md)を使用して、WordPress サイトからファイルを返します。
 
 ## <a name="create-a-proxy-to-access-vm-resources"></a>VM リソースにアクセスするためのプロキシを作成する
 
-VNet 統合を有効にすると、仮想ネットワークで実行している VM に要求を転送するプロキシを、関数アプリで作成できます。
+VNet 統合を有効にすると、仮想ネットワークで実行している VM に要求を転送するプロキシを、Function App で作成できます。
 
-1. 関数アプリで、左側のメニューから **[プロキシ]** を選択し、次に **[追加]** を選択します。 画像の下の表に示したプロキシ設定を使用してください。
+1. Function App で、左側のメニューから **[プロキシ]** を選択し、次に **[追加]** を選択します。 画像の下の表に示したプロキシ設定を使用してください。
 
     :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="プロキシ設定を定義する":::
 
@@ -137,7 +137,7 @@ VNet 統合を有効にすると、仮想ネットワークで実行している
     | **ルート テンプレート** | /plant | VM リソースにマップするルート。 |
     | **バックエンド URL** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | `<YOUR_VM_IP>` を、以前に作成した WordPress VM の IP アドレスに置き換えます。 このマッピングは、サイトから 1 つのファイルを返します。 |
 
-1. **[作成]** を選択して、関数アプリにプロキシを追加します。
+1. **[作成]** を選択して、Function App にプロキシを追加します。
 
 ## <a name="try-it-out"></a>試してみる
 
@@ -147,17 +147,17 @@ VNet 統合を有効にすると、仮想ネットワークで実行している
 
     ![WordPress サイトから返された植物の画像ファイル](./media/functions-create-vnet/plant.png)
 
-関数アプリは、インターネットと仮想ネットワークの両方に接続されています。 プロキシはパブリック インターネット経由で要求を受信し、その要求を接続された仮想ネットワークに転送するシンプルな HTTP プロキシとして機能します。 その後、プロキシによって中継された応答がインターネット経由でパブリックに返されます。
+Function App は、インターネットと仮想ネットワークの両方に接続されています。 プロキシはパブリック インターネット経由で要求を受信し、その要求を接続された仮想ネットワークに転送するシンプルな HTTP プロキシとして機能します。 その後、プロキシによって中継された応答がインターネット経由でパブリックに返されます。
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、WordPress サイトは、関数アプリでプロキシを使用して呼び出される API として機能します。 このシナリオは設定および視覚化が簡単なので、適切なチュートリアルになります。 仮想ネットワーク内にデプロイされた他の任意の API を使用できます。 仮想ネットワーク内にデプロイされた API を呼び出すコードで関数を作成することもできます。 より現実的なシナリオは、仮想ネットワーク内にデプロイされた SQL Server インスタンスを呼び出すためにデータ クライアント API を使用する関数です。
+このチュートリアルでは、WordPress サイトは、Function App でプロキシを使用して呼び出される API として機能します。 このシナリオは設定および視覚化が簡単なので、適切なチュートリアルになります。 仮想ネットワーク内にデプロイされた他の任意の API を使用できます。 仮想ネットワーク内にデプロイされた API を呼び出すコードで関数を作成することもできます。 より現実的なシナリオは、仮想ネットワーク内にデプロイされた SQL Server インスタンスを呼び出すためにデータ クライアント API を使用する関数です。
 
 Premium プランで実行されている関数は、PremiumV2 プラン上の Web Apps と同じ基盤となる App Service インフラストラクチャを共有します。 [Azure App Service 内の Web アプリ](../app-service/overview.md)のドキュメントはすべて、Premium プランの関数に適用されます。
 
 > [!div class="nextstepaction"]
 > [関数のネットワーク オプションに関する詳細情報](./functions-networking-options.md)
 
-[Premium プラン]: functions-scale.md#premium-plan
+[Premium プラン]: functions-premium-plan.md

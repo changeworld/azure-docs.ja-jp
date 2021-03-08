@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 54d92da469625a3b81d0027558ec14166d916b80
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9612a26d7ac2e7a059655636fc1a2a7a43e3b8d7
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163188"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526240"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーの概要
 
@@ -41,18 +41,18 @@ ms.locfileid: "88163188"
 ### <a name="create-the-signing-key"></a>署名キーを作成します。
 
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-1. **オプション**については、`Generate`を選択します。
-1. **名前**に`TokenSigningKeyContainer`を入力します。 プレフィックス `B2C_1A_` が自動的に追加される場合があります。
-1. **キー タイプ**については、**RSA** を選択します。
+1. **オプション** については、`Generate`を選択します。
+1. **名前** に`TokenSigningKeyContainer`を入力します。 プレフィックス `B2C_1A_` が自動的に追加される場合があります。
+1. **キー タイプ** については、**RSA** を選択します。
 1. **[キー使用法]** には **[署名]** を選択します。
 1. **［作成］** を選択します
 
 ### <a name="create-the-encryption-key"></a>暗号化キーを作成します。
 
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-1. **オプション**については、`Generate`を選択します。
-1. **名前**に`TokenEncryptionKeyContainer`を入力します。 プレフィックス `B2C_1A`_ が自動的に追加される場合があります。
-1. **キー タイプ**については、**RSA** を選択します。
+1. **オプション** については、`Generate`を選択します。
+1. **名前** に`TokenEncryptionKeyContainer`を入力します。 プレフィックス `B2C_1A`_ が自動的に追加される場合があります。
+1. **キー タイプ** については、**RSA** を選択します。
 1. **[キー使用法]** には **[暗号化]** を選択します。
 1. **［作成］** を選択します
 
@@ -61,9 +61,9 @@ ms.locfileid: "88163188"
 ポリシー キーとして、Facebook アプリケーションの [[アプリ シークレット]](identity-provider-facebook.md)を追加します。 この記事の前提条件の一部として作成したアプリケーションのアプリ シークレットを使用できます。
 
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-1. **オプション**については、`Manual`を選択します。
-1. **名前**には、`FacebookSecret`を入力します。 プレフィックス `B2C_1A_` が自動的に追加される場合があります。
-1. **シークレット**で、developers.facebook.com から Facebook アプリケーションの*アプリ シークレット*を入力します。 この値はシークレットであり、アプリケーション ID ではありません。
+1. **オプション** については、`Manual`を選択します。
+1. **名前** には、`FacebookSecret`を入力します。 プレフィックス `B2C_1A_` が自動的に追加される場合があります。
+1. **シークレット** で、developers.facebook.com から Facebook アプリケーションの *アプリ シークレット* を入力します。 この値はシークレットであり、アプリケーション ID ではありません。
 1. **[キー使用法]** には **[署名]** を選択します。
 1. **［作成］** を選択します
 
@@ -75,10 +75,10 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 
 ### <a name="register-the-identityexperienceframework-application"></a>IdentityExperienceFramework アプリケーションを登録します
 
-Azure AD B2C テナントにアプリケーションを登録するには、**アプリの登録**エクスペリエンスを使用できます。
+Azure AD B2C テナントにアプリケーションを登録するには、**アプリの登録** エクスペリエンスを使用できます。
 
 1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
-1. **名前**には、`IdentityExperienceFramework`を入力します。
+1. **名前** には、`IdentityExperienceFramework`を入力します。
 1. **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
 1. **[リダイレクト URI]** で **[Web]** を選択し、「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`」と入力します。`your-tenant-name` は、Azure AD B2C テナント ドメイン名です。
 1. **[アクセス許可]** で、 *[openid と offline_access アクセス許可に対して管理者の同意を付与します]* チェック ボックスをオンにします。
@@ -100,7 +100,7 @@ Azure AD B2C テナントにアプリケーションを登録するには、**�
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>ProxyIdentityExperienceFramework アプリケーションを登録する
 
 1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
-1. **名前**には、`ProxyIdentityExperienceFramework`を入力します。
+1. **名前** には、`ProxyIdentityExperienceFramework`を入力します。
 1. **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
 1. **[リダイレクト URI]** で、ドロップダウンを使用して **[パブリック クライアント/ネイティブ (モバイルとデスクトップ)]** を選択します。
 1. **[リダイレクト URI]** に「`myapp://auth`」と入力します。
@@ -111,7 +111,7 @@ Azure AD B2C テナントにアプリケーションを登録するには、**�
 次に、アプリケーションをパブリック クライアントとして扱うよう指定します。
 
 1. 左側のメニューの **[管理]** セクションで、 **[認証]** を選択します。
-1. **[詳細設定]** で、 **[アプリケーションは、パブリック クライアントとして扱います]** を有効にします ( **[はい]** を選択します)。 **"allowPublicClient": true** がアプリケーション マニフェストで確実に設定されているようにします。 
+1. **[詳細設定]** の **[パブリック クライアント フローを許可する]** セクションで、 **[次のモバイルとデスクトップのフローを有効にする]** を **[はい]** に設定します。 **"allowPublicClient": true** がアプリケーション マニフェストで確実に設定されているようにします。 
 1. **[保存]** を選択します。
 
 次に、*IdentityExperienceFramework* 登録で前に公開した API スコープに、アクセス許可を付与します。
@@ -122,7 +122,7 @@ Azure AD B2C テナントにアプリケーションを登録するには、**�
 1. **[アクセス許可]** で、前に定義した **[user_impersonation]** スコープを選択します。
 1. **[アクセス許可の追加]** を選択します. 指示に従って、数分待ってから次の手順に進みます。
 1. **[<テナント名> に管理者の同意を与えます]** を選択します。
-1. 現在サインインしているお使いの管理者アカウントを選択するか、少なくとも*クラウド アプリケーション管理者* ロールが割り当てられているお使いの Azure AD B2C テナントのアカウントでサインインします。
+1. 現在サインインしているお使いの管理者アカウントを選択するか、少なくとも *クラウド アプリケーション管理者* ロールが割り当てられているお使いの Azure AD B2C テナントのアカウントでサインインします。
 1. **[Accept]\(承認\)** を選択します。
 1. **[最新の情報に更新]** を選択した後、スコープの **[状態]** に、"... に付与されました" が表示されることを確認します (offline_access、openid、および user_impersonation)。 アクセス許可が反映されるまでに数分かかる場合があります。
 
@@ -157,7 +157,7 @@ GitHub からカスタム ポリシー スターター パックを取得し、S
 
 1. **SocialAndLocalAccounts** ディレクトリ内のすべてのファイルで、`yourtenant` 文字列を Azure AD B2C テナントの名前に置き換えます。
 
-    たとえば、B2C テナントの名前が *contosotenant*であれば、`yourtenant.onmicrosoft.com` のすべてのインスタンスは `contosotenant.onmicrosoft.com` になります。
+    たとえば、B2C テナントの名前が *contosotenant* であれば、`yourtenant.onmicrosoft.com` のすべてのインスタンスは `contosotenant.onmicrosoft.com` になります。
 
 ### <a name="add-application-ids-to-the-custom-policy"></a>カスタム ポリシーにアプリケーション ID を追加します。
 
@@ -213,6 +213,6 @@ GitHub からカスタム ポリシー スターター パックを取得し、S
 
 ## <a name="next-steps"></a>次のステップ
 
-次に、ID プロバイダーとしての Azure Active Directory (Azure AD) の追加を試してください。 このファースト ステップ ガイドで使用したベース ファイルには、Azure AD などの他の ID プロバイダーを追加するために必要な内容の一部が既に含まれています。 ID プロバイダーとしての Azure AD の設定については、「[カスタム ポリシーを使用して Azure Active Directory B2C に Azure Active Directory アカウントでサインインするように設定する](identity-provider-azure-ad-single-tenant-custom.md)」を参照してください。 
+次に、ID プロバイダーとしての Azure Active Directory (Azure AD) の追加を試してください。 このファースト ステップ ガイドで使用したベース ファイルには、Azure AD などの他の ID プロバイダーを追加するために必要な内容の一部が既に含まれています。 ID プロバイダーとしての Azure AD の設定については、「[カスタム ポリシーを使用して Azure Active Directory B2C に Azure Active Directory アカウントでサインインするように設定する](identity-provider-azure-ad-single-tenant.md)」を参照してください。 
 
 カスタム ポリシーを使用して ISV 統合を実装する方法の詳細については、Microsoft の[パートナー ギャラリー](partner-gallery.md)をご覧ください。 

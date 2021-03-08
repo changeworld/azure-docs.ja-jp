@@ -191,6 +191,8 @@
           href: use-managed-identities-environments.md
         - name: 環境のセキュリティ アラート
           href: environment-security-alerts.md
+        - name: アプリケーション中心の環境を作成
+          href: create-application-centric-environment.md
     - name: 再利用可能なテンプレートの管理
       items:
         - name: カスタム イメージと数式
@@ -211,7 +213,7 @@
               href: devtest-lab-upload-vhd-using-azcopy.md
             - name: PowerShell を使用して VHD ファイルをアップロードする
               href: devtest-lab-upload-vhd-using-powershell.md
-            - name: ストレージ エクスプローラーを使用して VHD ファイルをアップロードする
+            - name: Storage Explorer を使用して VHD ファイルをアップロードする
               href: devtest-lab-upload-vhd-using-storage-explorer.md
         - name: 数式を管理する
           href: devtest-lab-manage-formulas.md

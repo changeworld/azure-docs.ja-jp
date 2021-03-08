@@ -1,20 +1,20 @@
 ---
-title: Media Services で推奨されるライブ ストリーミング エンコーダー - Azure | Microsoft Docs
+title: Media Services で推奨されるライブ ストリーミング エンコーダー
 description: Media Services で推奨されるライブ ストリーミング オンプレミス エンコーダーについて知る
 services: media-services
 keywords: エンコード;エンコーダー;メディア
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 08/31/2020
+ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: media-services
-ms.openlocfilehash: 3532032f8fd3ac6e673d3913fd13f7f83ae7759e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: bf282b3fbba0f22cd41c0420014c46ddb7c958eb
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89295361"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955141"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>検証済みのオンプレミス ライブ ストリーミング エンコーダー
 
@@ -22,7 +22,7 @@ ms.locfileid: "89295361"
 
 Azure Media Services では、[ライブ イベント](/rest/api/media/liveevents) (チャネル) は、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。 ライブ イベントは、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
 
-* オンプレミスのライブ エンコーダーは、マルチビットレート RTMP またはスムーズ ストリーミング (フラグメント化 MP4) のストリームを、Media Services によるライブ エンコードの実行が無効な Live Event に送信します。 取り込んだストリームは、追加の処理なしで Live Event を通過します。 この方式は、 **パススルー**と呼ばれます。 ライブ エンコーダーの場合は、シングルビットレートのストリームではなく、マルチビットレートのストリームをパススルー ライブ イベントに送信して、クライアントへのアダプティブ ビットレート ストリーミングを可能にすることをお勧めします。 
+* オンプレミスのライブ エンコーダーは、マルチビットレート RTMP またはスムーズ ストリーミング (フラグメント化 MP4) のストリームを、Media Services によるライブ エンコードの実行が無効な Live Event に送信します。 取り込んだストリームは、追加の処理なしで Live Event を通過します。 この方式は、 **パススルー** と呼ばれます。 ライブ エンコーダーの場合は、シングルビットレートのストリームではなく、マルチビットレートのストリームをパススルー ライブ イベントに送信して、クライアントへのアダプティブ ビットレート ストリーミングを可能にすることをお勧めします。 
 
     パススルー ライブ イベントにマルチビットレートのストリームを使用している場合は、再生側での予期しない動作を避けるために、異なるビットレートでのビデオの GOP サイズおよびビデオ フラグメントを同期する必要があります。
 
@@ -44,12 +44,13 @@ HTTPS または RTMPS プロトコルを使用する場合、エンコーダー�
 Media Services では、RTMP を使用した、次のいずれかのライブ エンコーダーを出力として使用することを推奨しています。 サポートされる URL スキームは `rtmp://` または `rtmps://` です。
 
 RTMP を使用してデータをストリーミングしている場合は、ファイアウォールまたはプロキシ、あるいはその両方の設定で、送信 TCP ポート 1935 と 1936 が開いていることを確認します。<br/><br/>
-RTMP を使用してデータをストリーミングしている場合は、ファイアウォールまたはプロキシ、あるいはその両方の設定で、送信 TCP ポート 2935 と 2936 が開いていることを確認します。
+RTMPS を使用してデータをストリーミングしている場合は、ファイアウォールまたはプロキシ、あるいはその両方の設定で、送信 TCP ポート 2935 と 2936 が開いていることを確認します。
 
 > [!NOTE]
 > RTMPS プロトコルを使用する場合、エンコーダーによって TLS 1.2 がサポートされている必要があります。
 
 - Adobe Flash Media Live Encoder 3.2
+- [Antix Digital](http://www.antixdigital.com/) StreamZ Live (以前は Imagine Communication SelenioFlex Live)
 - [Blackmagic ATEM Mini および ATEM Mini PRO](https://www.blackmagicdesign.com/products/atemmini)
 - [Cambria Live 4.3](https://www.capellasystems.net/products/cambria-live/)
 - Elemental Live (バージョン 2.14.15 以降)
@@ -78,11 +79,11 @@ Media Services では、マルチビットレートのスムーズ ストリー�
 > HTTPS プロトコルを使用する場合、エンコーダーで TLS 1.2 がサポートされている必要があります。
 
 - Ateme TITAN Live
+- [Antix Digital](http://www.antixdigital.com/) StreamZ Live (以前は Imagine Communication SelenioFlex Live)
 - Cisco Digital Media Encoder 2200
 - Elemental Live (TLS 1.2 の要件により 2.14.15 以降)
 - Envivio 4Caster C4 Gen III 
 - [Ffmpeg](https://www.ffmpeg.org)
-- Imagine Communications Selenio MCP3
 - Media Excel Hero Live と Hero 4K (UHD/HEVC)
 
 > [!TIP]

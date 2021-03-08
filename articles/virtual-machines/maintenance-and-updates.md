@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 5dcf4ad7acb3becd2ca04407bc8e5b3ac45701f1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3cf126caaaa0c518574418aca194ebd82cc4d6b9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501706"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972069"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure での仮想マシンのメンテナンス
 
@@ -23,7 +23,7 @@ Azure では、定期的にそのプラットフォームを更新して、仮�
 - 更新で再起動を必要としない場合、VM は、ホストの更新中に一時停止されるか、または既に更新済みのホストにライブ移行されます。 
 - メンテナンスで再起動が必要な場合は、計画メンテナンスが通知されます。 Azure により、都合の良いときに自分でメンテナンスを開始できる時間枠も与えられます。 セルフ メンテナンスの時間枠は、そのメンテナンスが緊急でない限り、通常は 35 日間です。 Azure は、計画されたプラットフォーム メンテナンスで VM の再起動を必要とするケースの数を減らすためのテクノロジに投資しています。 計画メンテナンスを管理する方法については、Azure [CLI](maintenance-notifications-cli.md)、[PowerShell](maintenance-notifications-powershell.md)、または[ポータル](maintenance-notifications-portal.md)を使用した計画済みメンテナンスの通知の処理に関する記事を参照してください。
 
-このページでは、2 種類のメンテナンスが Azure でどのように実行されるかについて説明します。 計画外のイベント (停止) の詳細については、 [Windows 向けの VM の可用性の管理](./windows/manage-availability.md)に関する記事または [Linux](./linux/manage-availability.md) 向けの該当する記事をご覧ください。
+このページでは、2 種類のメンテナンスが Azure でどのように実行されるかについて説明します。 計画外のイベント (停止) の詳細については、 [Windows 向けの VM の可用性の管理](./manage-availability.md)に関する記事または [Linux](./manage-availability.md) 向けの該当する記事をご覧ください。
 
 VM 内で、[Linux](./linux/scheduled-events.md) または [Windows 向けの Scheduled Events を使用](./windows/scheduled-events.md)して、今後のメンテナンスに関する通知を受け取ることができます。
 
@@ -41,7 +41,7 @@ VM 内で、[Linux](./linux/scheduled-events.md) または [Windows 向けの Sc
 
 こうした種類の更新が、一部のアプリケーションに影響を与える可能性があります。 VM を別のホストにライブ移行する場合、影響を受けやすい一部のワークロードでは、VM の一時停止に至るまでの数分間にわずかなパフォーマンスの低下が見られることがあります。 VM のメンテナンスに対する準備をして Azure のメンテナンスの影響を減らすには、そのようなアプリケーションに [Linux](./linux/scheduled-events.md) または [Windows 向けの Scheduled Events を使用](./windows/scheduled-events.md)してみてください。 
 
-ゼロインパクトやリブートレスの更新を含むすべてのメンテナンス アクティビティをより詳細に制御するには、メンテナンス管理機能を使用できます。 [Azure Dedicated Host](./linux/dedicated-hosts.md) または[分離された VM](../security/fundamentals/isolation-choices.md) を使用している必要があります。 メンテナンス管理では、すべてのプラットフォーム更新をスキップし、35 日間のローリング期間内の都合のよいときに、それらの更新を適用することを選択できます。 詳細については、[メンテナンス管理と Azure CLI を使用した更新の制御](maintenance-control.md)に関するページを参照してください。
+ゼロインパクトやリブートレスの更新を含むすべてのメンテナンス アクティビティをより詳細に制御するには、メンテナンス管理機能を使用できます。 [Azure Dedicated Host](./dedicated-hosts.md) または[分離された VM](../security/fundamentals/isolation-choices.md) を使用している必要があります。 メンテナンス管理では、すべてのプラットフォーム更新をスキップし、35 日間のローリング期間内の都合のよいときに、それらの更新を適用することを選択できます。 詳細については、[メンテナンス管理と Azure CLI を使用した更新の制御](maintenance-control.md)に関するページを参照してください。
 
 
 ### <a name="live-migration"></a>ライブ マイグレーション
@@ -87,7 +87,7 @@ Azure VM にワークロードをデプロイするとき、*可用性セット*
 
 仮想マシン *スケール セット*は、同一の VM のセットを単一のリソースとしてデプロイして管理するために使用できる Azure コンピューティング リソースです。 スケール セットは、可用性セット内の VM と同じように、UD をまたがって自動的にデプロイされます。 可用性セットと同様に、スケール セットを使用する場合、予定メンテナンス中に更新される UD は一度に 1 つだけです。
 
-高可用性のための VM の設定の詳細については、 [Windows 向けの VM の可用性の管理](./windows/manage-availability.md)に関する記事または [Linux](./linux/manage-availability.md) 向けの該当する記事をご覧ください。
+高可用性のための VM の設定の詳細については、 [Windows 向けの VM の可用性の管理](./manage-availability.md)に関する記事または [Linux](./manage-availability.md) 向けの該当する記事をご覧ください。
 
 #### <a name="availability-zones"></a>可用性ゾーン
 
@@ -99,4 +99,4 @@ Azure VM にワークロードをデプロイするとき、*可用性セット*
 
 ## <a name="next-steps"></a>次のステップ 
 
-計画メンテナンスを管理するために、[Azure CLI](maintenance-notifications-cli.md)、[Azure PowerShell](maintenance-notifications-powershell.md)、または[ポータル](maintenance-notifications-portal.md)を使用できます。 
+計画メンテナンスを管理するために、[Azure CLI](maintenance-notifications-cli.md)、[Azure PowerShell](maintenance-notifications-powershell.md)、または[ポータル](maintenance-notifications-portal.md)を使用できます。

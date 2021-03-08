@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用して Azure Stack VM を Azure にレプリ
 description: Azure Site Recovery サービスを使用して Azure Stack VM の Azure へのディザスター リカバリーを設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 873b9c5efc2a89d3cda1bfe14a7518e6786a6870
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 36e11bfe5354644f9ef6603ffe20cb2e86074323
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131603"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016908"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM を Azure にレプリケートする
 
@@ -36,7 +36,7 @@ Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦
 
 ## <a name="architecture"></a>Architecture
 
-![Architecture](./media/azure-stack-site-recovery/architecture.png)
+![図は、どちらも共通の Azure Stack インフラストラクチャ上にあるテナント サブスクリプションに関連付けられている、クラウド上にある 2 つのテナントの Recovery Services コンテナーを示しています。](./media/azure-stack-site-recovery/architecture.png)
 
 **場所** | **コンポーネント** |**詳細**
 --- | --- | ---
@@ -101,7 +101,7 @@ VM を実行中のオペレーティング システムが、表にまとめら�
         - 値を 1 に設定します。
         - コマンド プロンプトで、次を入力します。**REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1**.
 - レプリケートする VM 上の Windows ファイアウォールで、ファイルとプリンターの共有、および WMI を許可します。
-    - これを行うには、**wf.msc**を実行して、Windows ファイアウォール コンソールを開きます。 **[受信の規則]**  >  **[新しい規則]** を右クリックします。 **[定義済み]** を選択し、一覧から **[ファイルとプリンターの共有]** を選択します。 ウィザードを完了し、 **[終了]** を選択して接続を許可します。
+    - これを行うには、**wf.msc** を実行して、Windows ファイアウォール コンソールを開きます。 **[受信の規則]**  >  **[新しい規則]** を右クリックします。 **[定義済み]** を選択し、一覧から **[ファイルとプリンターの共有]** を選択します。 ウィザードを完了し、 **[終了]** を選択して接続を許可します。
     - ドメイン コンピューターの場合は、 GPO を使用してこれを行うことができます。
 
 
@@ -164,13 +164,13 @@ VM を実行中のオペレーティング システムが、表にまとめら�
 1. **[インフラストラクチャの準備]** 、 >  **[ソース]** の順にクリックします。
 2. **[ソースの準備]** で、 **[+ 構成サーバー]** をクリックします。
 
-    ![Set up source](./media/azure-stack-site-recovery/plus-config-srv.png)
+    ![[Click on +Configuration Server in the command bar above to setup one…] (上のコマンド バーにある [+ 構成サーバー] をクリックしてセットアップします...) というメッセージが表示されている [+ 構成サーバー] ダイアログのスクリーンショット。](./media/azure-stack-site-recovery/plus-config-srv.png)
 
 3. **[サーバーの追加]** で、 **[サーバーの種類]** に **[構成サーバー]** が表示されていることを確認します。
 5. Site Recovery 統合セットアップ インストール ファイルをダウンロードします。
 6. コンテナー登録キーをダウンロードします。 統合セットアップを実行する際には、登録キーが必要です。 キーは生成後 5 日間有効です。
 
-    ![Set up source](./media/azure-stack-site-recovery/set-source2.png)
+    ![[サーバーの種類] が [構成サーバー] に設定され、[コンテナー登録キーをダウンロードする] ボタンが強調表示されている [サーバーの追加] ダイアログのスクリーンショット。](./media/azure-stack-site-recovery/set-source2.png)
 
 
 ### <a name="run-azure-site-recovery-unified-setup"></a>Azure Site Recovery 統合セットアップを実行する
@@ -186,7 +186,7 @@ VM を実行中のオペレーティング システムが、表にまとめら�
 > [!NOTE]
 > 構成サーバーは、コマンド ラインからインストールすることもできます。 [詳細については、こちらを参照してください](physical-manage-configuration-server.md#install-from-the-command-line)。
 >
-> アカウント名がポータルに表示されるまでに 15 分以上かかることがあります。 すぐに更新するには、 **[構成サーバー]**  > ***[<サーバー名>]*** >  **[サーバーを最新の情報に更新する]** の順に選択します。
+> アカウント名がポータルに表示されるまでに 15 分以上かかることがあります。 すぐに更新するには、 **[構成サーバー]**  > **_[<サーバー名>]_ *_ > _* [サーバーを最新の情報に更新する]** の順に選択します。
 
 ## <a name="step-4-set-up-the-target-environment"></a>手順 4:ターゲット環境をセットアップする
 
@@ -240,7 +240,7 @@ VM を実行中のオペレーティング システムが、表にまとめら�
 10. **[プロパティ]**  >  **[プロパティの構成]** で、モビリティ サービスをマシンに自動的にインストールするためにプロセス サーバーが使用するアカウントを選択します。
 11. **[レプリケーションの設定]**  >  **[レプリケーション設定の構成]** で、正しいレプリケーション ポリシーが選択されていることを確認します。
 12. **[レプリケーションを有効にする]** をクリックします。
-13. **保護の有効化**ジョブの進行状況を、 **[設定]**  >  **[ジョブ]**  >  **[Site Recovery ジョブ]** で追跡します。 **保護の最終処理**ジョブが実行されると、マシンはフェールオーバーできる状態になります。
+13. **保護の有効化** ジョブの進行状況を、 **[設定]**  >  **[ジョブ]**  >  **[Site Recovery ジョブ]** で追跡します。 **保護の最終処理** ジョブが実行されると、マシンはフェールオーバーできる状態になります。
 
 > [!NOTE]
 > VM のレプリケーションを有効にすると、Site Recovery がモビリティ サービスをインストールします。
@@ -314,26 +314,7 @@ Azure へのテスト フェールオーバーを実行して、すべて想定�
 
 ### <a name="fail-back-to-azure-stack"></a>Azure Stack にフェールバックする
 
-プライマリ サイトが再稼働したら、Azure から Azure Stack にフェールバックできます。 これを行うには、Azure VM VHD をダウンロードして、Azure Stack にアップロードする必要があります。
-
-1. VHD をダウンロードできるように、Azure VM をシャットダウンします。
-2. VHD のダウンロードを開始するには、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) をインストールします。
-3. Azure portal で VM に移動します (VM 名を使用します)。
-4. **[ディスク]** で、ディスク名をクリックして設定を収集します。
-
-    - 例として、ここで実行するテストでは、次の VHD の URI が使用されます。`https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd` を分割して、VHD をダウンロードするために使用されるパラメーターを取得できます。
-        - ストレージ アカウント: 502055westcentralus
-        - コンテナー: wahv9b8d2ceb284fb59287
-        - VHD 名: copied-3676553984.vhd
-
-5. 次に、Azure Storage Explorer を使用して、VHD をダウンロードします。
-6. [こちらの手順](/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm)に従って、VHD を Azure Stack にアップロードします。
-7. 既存の VM または新しい VM で、アップロードした VHD をアタッチします。
-8. OS ディスクが正しいことを確認し、VM を起動します。
-
-
-この段階で、フェールバックが完了します。
-
+プライマリ サイトが再稼働したら、Azure から Azure Stack にフェールバックできます。 これを行うには、[こちら](/azure-stack/operator/site-recovery-failback?view=azs-2005)に記載されている手順に従います。
 
 ## <a name="conclusion"></a>まとめ
 
@@ -342,4 +323,3 @@ Azure へのテスト フェールオーバーを実行して、すべて想定�
 ## <a name="next-steps"></a>次のステップ
 
 フェールバックした後、VM を再び保護し、Azure へのレプリケートを再び開始できます。これを行うには、この記事の手順を繰り返します。
-

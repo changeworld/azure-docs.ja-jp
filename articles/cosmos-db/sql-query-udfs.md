@@ -3,18 +3,20 @@ title: Azure Cosmos DB でのユーザー定義関数 (UDF)
 description: Azure Cosmos DB でのユーザー定義関数について説明します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 9be2a6c4497806370c4c53cbd41d9f48779f8472
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 98698264f0beb25a8b4f74861f1150ae889d7115
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419752"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546337"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB でのユーザー定義関数 (UDF)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 SQL API ではユーザー定義関数 (UDF) のサポートを提供しています。 スカラー UDF を使用して、0 個またはいくつかの引数を渡し、1 つの引数を結果として返すことができます。 API によって、引数のそれぞれが有効な JSON 値であることがチェックされます。  
 
@@ -142,4 +144,4 @@ UDF のパラメーターに参照されるプロパティを JSON 値で利用�
 
 - [Azure Cosmos DB の概要](introduction.md)
 - [システム関数](sql-query-system-functions.md)
-- [集計](sql-query-aggregates.md)
+- [集計](sql-query-aggregate-functions.md)

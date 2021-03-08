@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: bf51f39a789b91a4cb0b88eb8bb1f2989bec7358
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 23ba50a6eca1e398b9d459153b84719909f2ecac
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165823"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583741"
 ---
 # <a name="using-web-browsers-msalnet"></a>Web ブラウザーを使用する (MSAL.NET)
 
@@ -41,7 +41,7 @@ ms.locfileid: "88165823"
 
 MSAL.NET はマルチフレームワーク ライブラリであり、UI コントロールでブラウザーをホストできるようにフレームワーク固有のコードが用意されています (たとえば、.NET Classic では WinForms が使用され、Xamarin ではネイティブのモバイル コントロールなどが使用されます)。 このコントロールは、`embedded` Web UI と呼ばれます。 また、MSAL.NET ではシステム OS ブラウザーを開始することもできます。
 
-通常は、プラットフォームの既定値を使用することをお勧めします。これは、一般的にはシステム ブラウザーです。 システム ブラウザーは、以前にログインしたことのあるユーザーを記憶するのに適しています。 この動作を変更する必要がある場合は、`WithUseEmbeddedWebView(bool)` を使用します
+通常は、プラットフォームの既定値を使用することをお勧めします。これは、一般的にはシステム ブラウザーです。 システム ブラウザーは、以前にログインしたことのあるユーザーを記憶するのに適しています。 この動作を変更するには、`WithUseEmbeddedWebView(bool)` を使用します
 
 ### <a name="at-a-glance"></a>概略
 
@@ -59,7 +59,7 @@ MSAL.NET はマルチフレームワーク ライブラリであり、UI コン�
 
 ## <a name="system-web-browser-on-xamarinios-xamarinandroid"></a>Xamarin.iOS および Xamarin.Android でのシステム Web ブラウザー
 
-MSAL.NET では、Xamarin.iOS、Xamarin.Android、および .NET Core に対するシステム Web ブラウザーが既定でサポートされています。 UI を提供するすべてのプラットフォームでは (つまり、.NET Core 以外)、Web ブラウザー コントロールを埋め込むダイアログがライブラリによって提供されます。 また、MSAL.NET では、.NET デスクトップ用の埋め込み Web ビューおよび UWP プラットフォーム用の WAB も使用されます。 ただし、Xamarin iOS および Xamarin.Android アプリケーションに対しては既定で**システム Web ブラウザー**が利用されます。 iOS では、オペレーティング システムのバージョン (iOS12、iOS11、それより前) に応じて、使用する Web ビューさえ選択されます。
+MSAL.NET では、Xamarin.iOS、Xamarin.Android、および .NET Core に対するシステム Web ブラウザーが既定でサポートされています。 UI を提供するすべてのプラットフォームでは (つまり、.NET Core 以外)、Web ブラウザー コントロールを埋め込むダイアログがライブラリによって提供されます。 また、MSAL.NET では、.NET デスクトップ用の埋め込み Web ビューおよび UWP プラットフォーム用の WAB も使用されます。 ただし、Xamarin iOS および Xamarin.Android アプリケーションに対しては既定で **システム Web ブラウザー** が利用されます。 iOS では、オペレーティング システムのバージョン (iOS12、iOS11、それより前) に応じて、使用する Web ビューさえ選択されます。
 
 システム ブラウザーを使うと、ブローカー (会社ポータル/Authenticator) の必要なしに、SSO の状態を他のアプリケーションや Web アプリケーションと共有できるという大きな利点があります。 Xamarin.iOS および Xamarin.Android プラットフォーム用の MSAL.NET では、既定でシステム ブラウザーが使用されていました。その理由は、これらのプラットフォーム上で、システム Web ブラウザーは画面全体を占め、ユーザー エクスペリエンスがよくなることにありました。 システム Web ビューはダイアログと区別できません。 ただし、iOS では、ユーザーはブラウザーがアプリケーションに対してコールバックするのに同意することが必要な場合があり、面倒なことがあります。
 
@@ -137,11 +137,11 @@ var options = new SystemWebViewOptions()
 
 ## <a name="enable-embedded-webviews-on-ios-and-android"></a>iOS と Android で埋め込みの WebView を有効にする
 
-Xamarin.iOS および Xamarin.Android アプリで、埋め込みの WebView を有効にすることもできます。 MSAL.NET 2.0.0 プレビュー以降では、MSAL.NET でも**埋め込み** WebView オプションの使用がサポートされています。 ADAL.NET では、埋め込み WebView がサポートされる唯一のオプションです。
+Xamarin.iOS および Xamarin.Android アプリで、埋め込みの WebView を有効にすることもできます。 MSAL.NET 2.0.0 プレビュー以降では、MSAL.NET でも **埋め込み** WebView オプションの使用がサポートされています。 ADAL.NET では、埋め込み WebView がサポートされる唯一のオプションです。
 
 Xamarin を対象として MSAL.NET を使用する開発者は、埋め込み WebView またはシステム ブラウザーどちらかの使用を選択できます。 これは、目標とするユーザー エクスペリエンスとセキュリティの懸念事項に応じて選択します。
 
-現在、MSAL.NET では、Android および iOS のブローカーはまだサポートされていません。 そのため、シングル サインオン (SSO) を提供する必要がある場合は、システム ブラウザーの方がまだより適切なオプションである可能性があります。 埋め込み Web ブラウザーでのブローカーのサポートは、MSAL.NET のバックログになっています。
+現在、MSAL.NET では、Android および iOS のブローカーはまだサポートされていません。 そのため、シングル サインオン (SSO) を提供するには、システム ブラウザーの方がまだより適切なオプションである可能性があります。 埋め込み Web ブラウザーでのブローカーのサポートは、MSAL.NET のバックログになっています。
 
 ### <a name="differences-between-embedded-webview-and-system-browser"></a>埋め込み WebView とシステム ブラウザーの違い
 MSAL.NET での埋め込み WebView とシステム ブラウザーの間には、ビジュアルに関していくつか違いがあります。

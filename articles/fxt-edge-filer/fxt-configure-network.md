@@ -6,29 +6,30 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 9b0154889544e0054e309cc5f43851b73b4396b4
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 4ce7ffc66e0b6164b2e4ca9725b3f26403292a4a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754694"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220773"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>チュートリアル:クラスターのネットワーク設定を構成する
 
-新しく作成した Azure FXT Edge Filer クラスターを使用する前に、いくつかのネットワーク設定を確認し、実際のワークフローに合わせてカスタマイズする必要があります。 
+新しく作成した Azure FXT Edge Filer クラスターを使用する前に、いくつかのネットワーク設定を確認し、実際のワークフローに合わせてカスタマイズする必要があります。
 
-このチュートリアルでは、新しいクラスターのために調整することが必要な場合があるネットワーク設定について説明します。 
+このチュートリアルでは、新しいクラスターのために調整することが必要な場合があるネットワーク設定について説明します。
 
-学習内容: 
+学習内容:
 
 > [!div class="checklist"]
+>
 > * クラスターの作成後に更新が必要な可能性のあるネットワーク設定
-> * AD サーバーまたは DNS サーバーが必要な Azure FXT Edge Filer のユース ケース 
+> * AD サーバーまたは DNS サーバーが必要な Azure FXT Edge Filer のユース ケース
 > * FXT クラスターへのクライアント要求を自動的に負荷分散するようラウンド ロビン DNS (RRDNS) を構成する方法
 
 これらの手順を完了するまでの時間は、ご使用のシステムに必要な構成の変更の数によって異なります。
 
-* このチュートリアルを最後まで読み、いくつかの設定を確認する必要があるだけの場合は、10 分から 15 分かかります。 
+* このチュートリアルを最後まで読み、いくつかの設定を確認する必要があるだけの場合は、10 分から 15 分かかります。
 * ラウンド ロビン DNS を構成する必要がある場合、そのタスクに 1 時間以上かかることがあります。
 
 ## <a name="adjust-network-settings"></a>ネットワーク設定を調整する
@@ -78,20 +79,20 @@ FXT Edge Filer クラスターでは、これらの機能に対して X.509 証�
 
 クラスター管理の通信を暗号化するには、 **[クラスター]**  >  **[全般設定]** 設定ページを使用して、管理向けの TLS に使用する証明書を選択します。
 
-> [!Note] 
-> クラウド サービスのアクセス キーは、 **[Cloud Credentials]\(クラウド資格情報\)** 構成ページを使用して格納します。 上の「[コア ファイラーを追加する](fxt-add-storage.md#add-a-core-filer)」セクションでは例を示しています。詳細については、クラスター構成ガイドの[クラウド資格情報](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html)に関するセクションをお読みください。 
+> [!Note]
+> クラウド サービスのアクセス キーは、 **[Cloud Credentials]\(クラウド資格情報\)** 構成ページを使用して格納します。 上の「[コア ファイラーを追加する](fxt-add-storage.md#add-a-core-filer)」セクションでは例を示しています。詳細については、クラスター構成ガイドの[クラウド資格情報](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html)に関するセクションをお読みください。
 
 ## <a name="configure-dns-for-load-balancing"></a>負荷分散のために DNS を構成する
 
-このセクションでは、ご自分の FXT Edge Filer クラスター内のすべてのクライアント側 IP アドレスに対してクライアントの負荷を分散するためのラウンド ロビン DNS (RRDNS) システムの構成の基礎について説明します。 
+このセクションでは、ご自分の FXT Edge Filer クラスター内のすべてのクライアント側 IP アドレスに対してクライアントの負荷を分散するためのラウンド ロビン DNS (RRDNS) システムの構成の基礎について説明します。
 
 ### <a name="decide-whether-or-not-to-use-dns"></a>DNS を使用するかどうかを決定する
 
-常に負荷分散をお勧めしますが、必ずしも DNS を使用する必要はありません。 たとえば、クライアント ワークフローの種類によっては、クラスターをマウントするときに、スクリプトを使用して、クライアントに対して均等にクラスター IP アドレスを割り当てることが理にかなっている場合があります。 「[クラスターのマウント](fxt-mount-clients.md)」に、いくつかの方法が記載されています。 
+常に負荷分散をお勧めしますが、必ずしも DNS を使用する必要はありません。 たとえば、クライアント ワークフローの種類によっては、クラスターをマウントするときに、スクリプトを使用して、クライアントに対して均等にクラスター IP アドレスを割り当てることが理にかなっている場合があります。 「[クラスターのマウント](fxt-mount-clients.md)」に、いくつかの方法が記載されています。
 
-DNS サーバーを使用するかどうかを決定する際は、以下の点に注意してください。 
+DNS サーバーを使用するかどうかを決定する際は、以下の点に注意してください。
 
-* ご使用のシステムにアクセスするのが NFS クライアントのみの場合、DNS は必要ありません。 数値 IP アドレスを使用して、すべてのネットワーク アドレスを指定できます。 
+* ご使用のシステムにアクセスするのが NFS クライアントのみの場合、DNS は必要ありません。 数値 IP アドレスを使用して、すべてのネットワーク アドレスを指定できます。
 
 * システムが SMB (CIFS) アクセスをサポートする場合、Active Directory サーバーの DNS ドメインを指定する必要があるため DNS が必要になります。
 
@@ -110,7 +111,7 @@ DNS サーバーを使用するかどうかを決定する際は、以下の点�
 
 クライアントに接続する IP アドレスには、クラスターによる内部使用のための一意の名前がそれぞれ必要です。 (この図では、わかりやすくするためにクライアント IP に vs1-client-IP-* という名前が付いていますが、運用環境では client* のような簡潔なものがおそらく使用されます。)
 
-クライアントはサーバーの引数として vserver 名を使用してクラスターをマウントします。 
+クライアントはサーバーの引数として vserver 名を使用してクラスターをマウントします。
 
 DNS サーバーの ``named.conf`` ファイルを変更して、vserver へのクエリの循環の順序を設定します。 このオプションにより、使用可能なすべての値が循環して使用されます。 次のようなステートメントを追加します。
 
@@ -136,7 +137,7 @@ update add 11.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-11.example.com
 update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 ```
 
-### <a name="enable-dns-in-the-cluster"></a>クラスター内で DNS を有効にする 
+### <a name="enable-dns-in-the-cluster"></a>クラスター内で DNS を有効にする
 
 クラスターが使用する DNS サーバーを、 **[クラスター]**  >  **[Administrative Network]\(管理ネットワーク\)** 設定ページで指定します。 このページでは、以下の内容を設定します。
 
@@ -148,8 +149,8 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="next-steps"></a>次のステップ
 
-これは、Azure FXT Edge Filer クラスターの基本的な構成の最後の手順です。 
+これは、Azure FXT Edge Filer クラスターの基本的な構成の最後の手順です。
 
 * システムの LED およびその他のインジケーターについては、[ハードウェアの状態の監視](fxt-monitor.md)に関するページを参照してください。
-* クライアントが FXT Edge Filer クラスターをマウントする方法の詳細については、「[クラスターのマウント](fxt-mount-clients.md)」を参照してください。 
-* FXT Edge Filer クラスターの運用と管理の詳細については、[クラスター構成ガイド](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html)を参照してください。 
+* クライアントが FXT Edge Filer クラスターをマウントする方法の詳細については、「[クラスターのマウント](fxt-mount-clients.md)」を参照してください。
+* FXT Edge Filer クラスターの運用と管理の詳細については、[クラスター構成ガイド](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html)を参照してください。

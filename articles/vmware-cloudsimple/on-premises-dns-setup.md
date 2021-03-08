@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - CloudSimple プライベート クラウド用の DNS を構成する
 description: オンプレミスのワークステーションから、CloudSimple プライベート クラウド上の vCenter サーバーにアクセスするための DNS 名前解決を設定する方法について説明します
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63822050512421895b0cfed08fb141f77da20b03
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225511"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899254"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>オンプレミスのワークステーションからのプライベート クラウドの vCenter にアクセスするための名前解決用に DNS を構成する
 
@@ -45,6 +45,9 @@ DNS の構成には、次のどちらかのオプションを使用します。
 
 たとえば、既定の BIND サーバー構成の場合、DNS サーバー上の /etc/named.conf ファイルを編集し、次のゾーン情報を追加します。
 
+> [!NOTE]
+>この記事には、Microsoft が使用しなくなった "スレーブ" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+
 ```
 zone "az.cloudsimple.io"
 {
@@ -58,19 +61,19 @@ zone "az.cloudsimple.io"
 
 1. DNS サーバーを右クリックして **[新しいゾーン]** を選択します。 
   
-    ![新しいゾーン](media/DNS01.png)
+    ![[New Zone]\(新規ゾーン\) メニュー オプションが強調表示されているスクリーンショット。](media/DNS01.png)
 2. **[スタブ ゾーン]** を選択して **[次へ]** をクリックします。
 
-    ![新しいゾーン](media/DNS02.png)
-3. 環境に応じて適切なオプションを選択し、 **[次へ]** をクリックします。
+    ![[スタブ ゾーン] オプションが強調表示されているスクリーンショット。](media/DNS02.png)
+3. 環境に応じて適切なオプションを選択し、**[次へ]** をクリックします。
 
-    ![新しいゾーン](media/DNS03.png)
+    ![ゾーン データのレプリケーション オプションを示すスクリーンショット。](media/DNS03.png)
 4. **[前方参照ゾーン]** を選択し、 **[次へ]** をクリックします。
 
-    ![新しいゾーン](media/DNS01.png)
+    ![[前方参照] ゾーン オプションが強調表示されているスクリーンショット。](media/DNS01.png)
 5. ゾーン名を入力して **[次へ]** をクリックします。
 
-    ![新しいゾーン](media/DNS05.png)
+    ![ゾーン名の入力場所を示すスクリーンショット。](media/DNS05.png)
 6. CloudSimple ポータルから取得した、プライベート クラウドの DNS サーバーの IP アドレスを入力します。
 
     ![新しいゾーン](media/DNS06.png)

@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory での反復可能なコピー
 description: データをコピーするスライスが複数回実行されたときに重複を回避する方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7188cb5774699fc6e31fc3b8c78068bb33c6f552
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c427cd90412121e896738ca43f4c66dd24b096dc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707295"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387089"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure Data Factory での反復可能なコピー
 
@@ -25,7 +20,7 @@ ms.locfileid: "84707295"
 リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み込まれることを確認する必要があります。  
  
 > [!NOTE]
-> 以下の例は Azure SQL 向けですが、四角形のデータセットをサポートする任意のデータ ストアに適用できます。 ソースの**種類**とデータ ストアの **query** プロパティ (例: sqlReaderQuery の代わりに query) の調整が必要になる場合があります。   
+> 以下の例は Azure SQL 向けですが、四角形のデータセットをサポートする任意のデータ ストアに適用できます。 ソースの **種類** とデータ ストアの **query** プロパティ (例: sqlReaderQuery の代わりに query) の調整が必要になる場合があります。   
 
 通常は、リレーショナル ストアからの読み取り時に、そのスライスに対応するデータのみを読み込む必要があります。 これを行うには、Azure Data Factory で使用可能な、WindowStart と WindowEnd システム変数を使用します。 Azure Data Factory の変数と関数については、「[Azure Data Factory - 関数およびシステム変数](data-factory-functions-variables.md)」を参照してください。 例: 
 
@@ -59,7 +54,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    2            2015-05-01 00:00:00
 ```
 
-たとえば、ソース ファイルにエラーが見つかり、Down Tube の数を 2 から 4 に更新したとします。 その期間のデータ スライスを手動で再実行すると、Azure SQL/SQL Server データベースに 2 つの新しいレコードが付加されます。 この例では、テーブルには主キーの制約がある列がないと想定しています。
+たとえば、ソース ファイルにエラーが見つかり、Down Tube の数を 2 から 4 に更新したとします。 その期間のデータ スライスを手動で再実行すると、Azure SQL または SQL Server データベースに 2 つの新しいレコードが追加されます。 この例では、テーブルには主キーの制約がある列がないと想定しています。
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -104,7 +99,7 @@ ID    Product        Quantity    ModifiedDate
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>メカニズム 2: sliceIdentifierColumnName の使用
 > [!IMPORTANT]
-> 現在、Azure SQL Data Warehouse では sliceIdentifierColumnName はサポートされていません。 
+> 現在、sliceIdentifierColumnName は Azure Synapse Analytics ではサポートされていません。 
 
 再現性を実現するための 2 つ目のメカニズムは、対象のテーブルに専用の列 (sliceIdentifierColumnName) を用意する方法です。 この列は、Azure Data Factory がソースと対象の同期状態を保つために使用されます。 この手法は、対象の SQL テーブル スキーマを変更または定義する際に柔軟性がある場合に機能します。 
 
@@ -151,5 +146,5 @@ ID    Product        Quantity    ModifiedDate
 完全な JSON の例については、次のコネクタに関する記事を参照してください。 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)
-- [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)
+- [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md)
 - [SQL Server](data-factory-sqlserver-connector.md)

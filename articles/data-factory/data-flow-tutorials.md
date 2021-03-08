@@ -1,17 +1,17 @@
 ---
 title: マッピング データ フローのビデオ チュートリアル
 description: マッピング データ フローの概念を説明するビデオ チュートリアルの一覧
-author: djpmsft
-ms.author: daperlov
+author: kromerm
+ms.author: makromer
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 08/11/2020
-ms.openlocfilehash: c1527161948a6312fc0877748b2818b3ccc2143e
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.date: 12/14/2020
+ms.openlocfilehash: f1171bdd087d6ca72a09a2e3efb7f4767a575d21
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322621"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517792"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>マッピング データ フローのビデオ チュートリアル
 
@@ -82,6 +82,16 @@ ms.locfileid: "89322621"
 [動的な結合と動的ルックアップ](https://youtu.be/CMOPPie9bXM)
 
 [フラット化変換](https://youtu.be/VY2tFQJoAXE)
+
+[階層データの変換](https://youtu.be/oAEh21NFgWQ)
+
+[ランク変換](https://youtu.be/6XvgkbMtws0)
+
+[キャッシュされた検索](https://www.youtube.com/watch?v=HqCn42FaRJs)
+
+[ウィンドウ変換による行コンテキスト](http://youtu.be/jqt1gmX2XUg)
+
+[解析変換](https://www.youtube.com/watch?v=r7O7AJcuqoY)
 
 ## <a name="source-and-sink"></a>ソースとシンク
 
@@ -170,3 +180,7 @@ ms.locfileid: "89322621"
 [データ品質の式](https://www.youtube.com/watch?v=O8gmv5-lXhs)
 
 [収集の集計関数](https://www.youtube.com/watch?v=zneE18EHJSE)
+
+## <a name="metadata"></a>Metadata
+
+[メタデータ検証規則](https://www.youtube.com/watch?v=E_UD3R-VpYE)

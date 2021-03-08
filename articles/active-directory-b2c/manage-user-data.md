@@ -11,22 +11,22 @@ ms.date: 05/06/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b7cc772e2a2e44a72af5e47a794c8b0f36aa9786
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9bdf7258296b82e65e03f6b8af8021b9a7be0f0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387645"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952473"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー データの管理
 
- この記事では、[Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) によって提供される操作を使用して、Azure Active Directory B2C (Azure AD B2C) 内のユーザー データを管理する方法について説明します。 ユーザー データの管理には、監査ログからのデータの削除またはエクスポートがあります。
+ この記事では、[Microsoft Graph API](/graph/use-the-api) によって提供される操作を使用して、Azure Active Directory B2C (Azure AD B2C) 内のユーザー データを管理する方法について説明します。 ユーザー データの管理には、監査ログからのデータの削除またはエクスポートがあります。
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="delete-user-data"></a>ユーザー データを削除する
 
-ユーザー データは、Azure AD B2C ディレクトリおよび監査ログに格納されます。 すべてのユーザー監査データは、Azure AD B2C に 7 日間保持されます。 その 7 日の期間内にユーザー データを削除する場合は、[ユーザーの削除](https://docs.microsoft.com/graph/api/user-delete)操作を使用できます。 データが存在する Azure AD B2C テナントごとに、DELETE 操作を行う必要があります。
+ユーザー データは、Azure AD B2C ディレクトリおよび監査ログに格納されます。 すべてのユーザー監査データは、Azure AD B2C に 7 日間保持されます。 その 7 日の期間内にユーザー データを削除する場合は、[ユーザーの削除](/graph/api/user-delete)操作を使用できます。 データが存在する Azure AD B2C テナントごとに、DELETE 操作を行う必要があります。
 
 Azure AD B2C 内のすべてのユーザーには、オブジェクト ID が割り当てられています。 オブジェクト ID は、Azure AD B2C 内のユーザー データの削除に使用する明確な識別子を提供します。 アーキテクチャによっては、オブジェクト ID は、他のサービス (財務データベース、マーケティング データベース、顧客関係管理データベースなど) との間の便利な相関関係識別子になる可能性があります。
 
@@ -52,7 +52,7 @@ Azure AD B2C のユーザー データは以下に限定されます。
 
 エクスポート データ フローの次の例において、アプリケーションによって実行されると説明されている手順は、ディレクトリの管理者ロールを持つユーザーまたはバックエンド プロセスが実行することもできます。
 
-1. ユーザーがアプリケーションにサインインします。 必要な場合は、Azure Multi-Factor Authentication による認証が Azure AD B2C によって強制されます。
+1. ユーザーがアプリケーションにサインインします。 必要な場合は、Azure AD Multi-Factor Authentication による認証が Azure AD B2C によって強制されます。
 2. ユーザー属性を取得する Microsoft Graph API 操作を呼び出すために、アプリケーションによってユーザーの資格情報が使用されます。 Microsoft Graph API は、JSON 形式で属性データを提供します。 スキーマによっては、ユーザーに関するすべての個人データが含まれるよう、ID トークンの内容を設定できます。
 3. アプリケーションによってユーザーの監査アクティビティが取得されます。 Microsoft Graph API によってイベント データがアプリケーションに提供されます。
 4. アプリケーションによってデータが集計され、ユーザーがそのデータを使用できるようになります。

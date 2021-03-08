@@ -1,23 +1,20 @@
 ---
 title: チュートリアル:Azure CLI を使用して Apache Kafka REST プロキシ対応のクラスターを HDInsight に作成する
 description: Azure HDInsight で Kafka REST プロキシを使用して Apache Kafka 操作を実行する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 44951fc19f36bb6652caf79ded96484bcc4b38f1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ff11b8461b483f5a66df19bb1b108a1fe1168fb9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503142"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944019"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Apache Kafka REST プロキシ対応のクラスターを HDInsight に作成する
 
-このチュートリアルでは、Azure コマンド ライン インターフェイス (CLI) を使って Apache Kafka の [REST プロキシ対応](./rest-proxy.md)クラスターを Azure HDInsight に作成する方法を説明します。 Azure HDInsight は、全範囲に対応した、オープンソースのエンタープライズ向けマネージド分析サービスです。 Apache Kafka は、オープンソースの分散ストリーミング プラットフォームです。 発行/サブスクライブ メッセージ キューと同様の機能を備えているため、メッセージ ブローカーとして多く使われています。 Kafka REST プロキシを使用すると、HTTP 経由の [REST API](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) を使用して Kafka クラスターを操作することができます。 Azure CLI は、Azure リソースを管理するための、Microsoft のクロスプラットフォーム コマンド ライン エクスペリエンスです。
+このチュートリアルでは、Azure コマンド ライン インターフェイス (CLI) を使って Apache Kafka の [REST プロキシ対応](./rest-proxy.md)クラスターを Azure HDInsight に作成する方法を説明します。 Azure HDInsight は、全範囲に対応した、オープンソースのエンタープライズ向けマネージド分析サービスです。 Apache Kafka は、オープンソースの分散ストリーミング プラットフォームです。 発行/サブスクライブ メッセージ キューと同様の機能を備えているため、メッセージ ブローカーとして多く使われています。 Kafka REST プロキシを使用すると、HTTP 経由の [REST API](/rest/api/hdinsight-kafka-rest-proxy/) を使用して Kafka クラスターを操作することができます。 Azure CLI は、Azure リソースを管理するための、Microsoft のクロスプラットフォーム コマンド ライン エクスペリエンスです。
 
 Apache Kafka API は、同じ仮想ネットワーク内のリソースによってのみアクセスできます。 SSH を使って直接クラスターにアクセスできます。 他のサービス、ネットワーク、または仮想マシンを Apache Kafka に接続するには、まず、仮想ネットワークを作成してから、ネットワーク内にリソースを作成する必要があります。 詳細については、[仮想ネットワークを使用した Apache Kafka への接続](./apache-kafka-connect-vpn-gateway.md)に関するページを参照してください。
 
@@ -27,7 +24,7 @@ Apache Kafka API は、同じ仮想ネットワーク内のリソースによっ
 > * Kafka REST プロキシの前提条件
 > * Azure CLI を使用して Apache Kafka クラスターを作成する
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +32,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * 登録済みのアプリケーションをメンバーとして含む Azure AD セキュリティ グループ。 このセキュリティ グループは、REST プロキシの操作を許可するアプリケーションを制御するために使用されます。 Azure AD グループの作成方法の詳細については、「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
-* Azure CLI。 バージョンは 2.0.79 以上であることが必要です。 「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+* Azure CLI。 バージョンは 2.0.79 以上であることが必要です。 「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka クラスターを作成する
 
@@ -85,7 +82,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     export componentVersion=kafka=2.1
     ```
 
-1. 次のコマンドを入力して、[リソース グループを作成します](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create)。
+1. 次のコマンドを入力して、[リソース グループを作成します](/cli/azure/group#az-group-create)。
 
     ```azurecli
      az group create \
@@ -93,7 +90,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
         --name $resourceGroupName
     ```
 
-1. 次のコマンドを入力して、[Azure ストレージ アカウントを作成します](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)。
+1. 次のコマンドを入力して、[Azure ストレージ アカウントを作成します](/cli/azure/storage/account#az-storage-account-create)。
 
     ```azurecli
     # Note: kind BlobStorage is not available as the default storage account.
@@ -106,7 +103,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
         --sku Standard_LRS
     ```
 
-1. 次のコマンドを入力して、[Azure Storage アカウントからプライマリ キーを抽出し](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list)、それを変数に保存します。
+1. 次のコマンドを入力して、[Azure Storage アカウントからプライマリ キーを抽出し](/cli/azure/storage/account/keys#az-storage-account-keys-list)、それを変数に保存します。
 
     ```azurecli
     export storageAccountKey=$(az storage account keys list \
@@ -115,7 +112,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
         --query [0].value -o tsv)
     ```
 
-1. 次のコマンドを入力して、[Azure ストレージ コンテナーを作成します](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create)。
+1. 次のコマンドを入力して、[Azure ストレージ コンテナーを作成します](/cli/azure/storage/container#az-storage-container-create)。
 
     ```azurecli
     az storage container create \
@@ -124,7 +121,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
         --account-name $storageAccount
     ```
 
-1. [HDInsight クラスターを作成します](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)。 コマンドを入力する前に、次のパラメーターに注意してください。
+1. [HDInsight クラスターを作成します](/cli/azure/hdinsight#az-hdinsight-create)。 コマンドを入力する前に、次のパラメーターに注意してください。
 
     1. Kafka クラスターに必要なパラメーターは次のとおりです。
 

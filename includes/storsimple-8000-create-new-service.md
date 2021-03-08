@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 88f275016bad72122ebd195449b9af88086bdc7b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 746198f87e23cd7aca2a3177c23974917cb4b12a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507180"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027233"
 ---
 #### <a name="to-create-a-new-service"></a>新しいサービスを作成するには
 
@@ -21,15 +21,15 @@ ms.locfileid: "87507180"
 
     "_StorSimple 物理_" を検索します。 **[StorSimple 物理デバイス シリーズ]** を選択してクリックし、 **[作成]** をクリックします。 または、Azure Portal で **+** をクリックし、 **[ストレージ]** で **[StorSimple 物理デバイス シリーズ]** をクリックします。
 
-    ![StorSimple デバイス マネージャーの作成](./media/storsimple-8000-create-new-service/createssdevman11.png)
+    ![StorSimple デバイス マネージャーの作成 2](./media/storsimple-8000-create-new-service/createssdevman11.png)
 
 3. **[StorSimple デバイス マネージャー]** ブレードで、次の操作を実行します。
 
-   1. サービスの一意の**リソース名**を指定します。 この名前は、サービスの識別に使用できる表示名です。 名前の長さは 2 ～ 50 文字とし、文字、数字、ハイフンを含めることができます。 名前の最初と最後は、文字か数字とする必要があります。
+   1. サービスの一意の **リソース名** を指定します。 この名前は、サービスの識別に使用できる表示名です。 名前の長さは 2 ～ 50 文字とし、文字、数字、ハイフンを含めることができます。 名前の最初と最後は、文字か数字とする必要があります。
 
    2. **[サブスクリプション]** ボックスの一覧で、サブスクリプションを選択します。 サブスクリプションは、課金アカウントにリンクされます。 このフィールドは、保有するサブスクリプションが 1 つだけの場合は表示されません。
 
-   3. **リソース グループ**は、**既存のグループを使用**するか、**新しいグループを作成**します。 詳細については、[Azure のリソース グループ](/azure/azure-resource-manager/management/manage-resource-groups-portal)に関する記事をご覧ください。
+   3. **リソース グループ** は、**既存のグループを使用** するか、**新しいグループを作成** します。 詳細については、[Azure のリソース グループ](../articles/azure-resource-manager/management/manage-resource-groups-portal.md)に関する記事をご覧ください。
 
    4. サービスの **[場所]** を指定します。 一般的に、デバイスをデプロイする地理的リージョンに最も近い場所を選択します。 次の点についても考慮してください。
 
@@ -42,8 +42,8 @@ ms.locfileid: "87507180"
 
    7. **[作成]** をクリックして、StorSimple デバイス マネージャーを作成します。
 
-       ![StorSimple デバイス マネージャーの作成](./media/storsimple-8000-create-new-service/createssdevman2.png)
+       ![StorSimple デバイス マネージャーの作成 3](./media/storsimple-8000-create-new-service/createssdevman2.png)
 
 サービスの作成には数分かかります。 サービスが正常に作成されると、通知が表示され、新しいサービス ブレードが開きます。
 
-![StorSimple デバイス マネージャーの作成](./media/storsimple-8000-create-new-service/createssdevman5.png)
+![StorSimple デバイス マネージャーの作成 4](./media/storsimple-8000-create-new-service/createssdevman5.png)

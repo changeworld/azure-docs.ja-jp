@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 2ee9d1edefb0e248d0eba13e2d0b9f1c651fdd42
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 81dee0c63db711b39ff8fd2123623a16b2b9cb91
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924514"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122791"
 ---
 # <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Azure にデータをインポートするために Azure Data Box の使用を開始する
 
@@ -40,7 +40,7 @@ ms.locfileid: "87924514"
 
 - Data Box サービスで使用するサブスクリプションが、次のいずれかの種類であることを確認します。
     - Microsoft Enterprise Agreement (EA)。 [EA サブスクリプション](https://azure.microsoft.com/pricing/enterprise-agreement/)に関する詳細をご覧ください。
-    - Cloud Solution Provider (CSP)。 Azure CSP プログラムの詳細は[こちら](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)です。
+    - Cloud Solution Provider (CSP)。 Azure CSP プログラムの詳細は[こちら](/azure/cloud-solution-provider/overview/azure-csp-overview)です。
     - Microsoft Azure スポンサー プラン。 Azure スポンサー プラン プログラムの詳細は[こちら](https://azure.microsoft.com/offers/ms-azr-0036p/)です。 
 
 - Data Box の注文を作成するサブスクリプションに対して、所有者または共同作成者アクセス権があることを確認します。
@@ -131,7 +131,7 @@ Data Box を入手したら、次の手順に従ってデバイスのケーブ�
 
 この工程にかかる時間は、実際のデータのサイズおよびネットワークの速度によって異なります。
  
-1. Windows ホストを使用する場合は、Robocopy などの SMB 互換のファイル コピー ツールを使用します。 NFS のホストの場合、`cp` コマンドまたは `rsync` を使用してデータをコピーします。 ツールをデバイスに接続し、共有へのデータのコピーを開始します。 Robocopy を使用してデータをコピーする方法の詳細については、[Robocopy](https://technet.microsoft.com/library/ee851678.aspx) を参照してください。
+1. Windows ホストを使用する場合は、Robocopy などの SMB 互換のファイル コピー ツールを使用します。 NFS のホストの場合、`cp` コマンドまたは `rsync` を使用してデータをコピーします。 ツールをデバイスに接続し、共有へのデータのコピーを開始します。 Robocopy を使用してデータをコピーする方法の詳細については、[Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10)) を参照してください。
 2. パス `\\<IP address of your device>\ShareName` を使用して共有に接続します。 共有アクセス資格情報を取得するには、Data Box のローカル Web UI にある **[接続とコピー]** ページに移動します。
 3. 共有およびフォルダー名、およびデータが、 [Azure Storage と Data Box サービスの制限](data-box-limits.md)に記載されているガイドラインに従っていることを確認します。
 
@@ -170,5 +170,3 @@ Data Box を入手したら、次の手順に従ってデバイスのケーブ�
 > [Azure portal を使用して Data Box を管理する](data-box-portal-admin.md)
 
 ::: zone-end
-
-

@@ -1,19 +1,19 @@
 ---
-title: ローカライズのサポート | Microsoft Azure Maps
+title: Microsoft Azure Maps でのローカライズのサポート
 description: Azure Maps では、マップ、検索、ルーティング、天気、交通事故などのサービスが、どのリージョンでサポートされているかを確認してください。 View パラメーターの設定方法について説明します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/20/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a6664b5a2c0c6b4de2435ee5c8bb29f63560c342
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 50e5d0721eb14d1fcdfad26aaf081bfa370e954e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037696"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904518"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure Maps でのローカライズのサポート
 
@@ -22,7 +22,7 @@ Azure Maps は、さまざまな言語および国/地域に基づくビュー�
 
 ## <a name="azure-maps-supported-languages"></a>Azure Maps でサポートされている言語
 
-Azure Maps は、そのサービス全体にわたってさまざまな言語にローカライズされています。 次の表は、各サービスでサポートされている言語コードを示しています。  
+Azure Maps は、そのサービス全体にわたってさまざまな言語にローカライズされています。 次の表は、各サービスでサポートされている言語コードを示しています。  
   
 
 | id         | 名前                   |  マップ | 検索 | ルーティング | Weather | トラフィック インシデント | JS マップ コントロール |
@@ -129,10 +129,10 @@ Azure Maps は、そのサービス全体にわたってさまざまな言語に
  * Get Search Address Reverse
  * Get Search Address Reverse Cross Street
  * Post Search Inside Geometry
- * Post Search Address Batch Preview
- * Post Search Address Reverse Batch Preview
+ * Post Search Address Batch
+ * Post Search Address Reverse Batch
  * Post Search Along Route
- * Post Search Fuzzy Batch Preview
+ * Post Search Fuzzy Batch
 
  
 ### <a name="sdks"></a>SDK

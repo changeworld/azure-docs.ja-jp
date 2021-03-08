@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
-ms.openlocfilehash: 83ae2fdea2ffe586a626f8a45cba74a22c07ae7b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3151da4375c440bec44523711448149f51440d5c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101124"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676534"
 ---
 # <a name="setting-up-access-for-azure-dev-tools"></a>Azure Dev tools のアクセスを設定する
 
@@ -30,7 +30,7 @@ Visual Studio Subscription へのアクセスは、[管理ポータル](https://
 ## <a name="for-students-faculty-and-administrators"></a>学生、教職員、管理者
 学生は、[Education Hub](https://aka.ms/devtoolsforteaching) を通じて Azure Dev Tools にアクセスします。
 
-学生と教職員はどちらも Education Hub を通じて、すべてのソフトウェアのダウンロード ベネフィットを利用できます。 Education Hub は Azure portal 内に構築されており、学生は Education Hub を通じて、ソフトウェアのカタログ全体、および [Microsoft Learn](https://docs.microsoft.com/learn/) のカタログ全体に容易にアクセスすることができます。
+学生と教職員はどちらも Education Hub を通じて、すべてのソフトウェアのダウンロード ベネフィットを利用できます。 Education Hub は Azure portal 内に構築されており、学生は Education Hub を通じて、ソフトウェアのカタログ全体、および [Microsoft Learn](/learn/) のカタログ全体に容易にアクセスすることができます。
 
 ## <a name="next-steps"></a>次のステップ
 - [学生のアカウントを管理する](manage-students.md)

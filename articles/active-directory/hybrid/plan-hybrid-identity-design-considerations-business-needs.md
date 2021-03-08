@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 074c203a0a5688855d4f7607a877b25ce6ee6ad7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65950896"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89660568"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションの ID 要件の決定
 ハイブリッド ID ソリューションを設計する上で最初の手順は、このソリューションを利用するビジネス組織の要件を決定することです。  ハイブリッド ID は脇役から始まり (認証を提供することでその他すべてのクラウド ソリューションをサポートします)、ユーザーに対して新しいワークロードを解除するという、新しく興味深い機能を提供するようになります。  こうしたユーザー向けに採用する予定のワークロードまたはサービスは、ハイブリッド ID の設計の要件に影響があります。  これらのサービスとワークロードは、オンプレミスとクラウドの両方でハイブリッド ID を利用する必要があります。  
@@ -72,10 +72,10 @@ ms.locfileid: "65950896"
   * SAML または同様のフェデレーション機能を使用するオンプレミス アプリケーション (社内製またはサードパーティ製) があります。
   * スマート カードによる MFA。 RSA SecurID など。
   * 次のチェック項目に対応するクライアント アクセス規則があります。
-    1. クライアントの IP アドレスに基づいて、Office 365 に対する外部アクセスをすべてブロックできますか。
-    2. Exchange ActiveSync を除き、Office 365 に対する外部アクセスをすべてブロックできますか。
-    3. ブラウザーベースのアプリケーション (OWA、SPO) を除き、Office 365 に対する外部アクセスをすべてブロックできますか。
-    4. 指定した AD グループのメンバーについて、Office 365 に対する外部アクセスをすべてブロックできますか。
+    1. クライアントの IP アドレスに基づいて、Microsoft 365 に対する外部アクセスをすべてブロックできますか。
+    2. Exchange ActiveSync を除き、Microsoft 365 に対する外部アクセスをすべてブロックできますか。
+    3. ブラウザーベースのアプリケーション (OWA、SPO) を除き、Microsoft 365 に対する外部アクセスをすべてブロックできますか。
+    4. 指定した AD グループのメンバーについて、Microsoft 365 に対する外部アクセスをすべてブロックできますか。
 * セキュリティと監査に関する問題
 * フェデレーション認証に既に投資しています
 * 組織がクラウドのドメインに使用するのはどのような名前ですか。
