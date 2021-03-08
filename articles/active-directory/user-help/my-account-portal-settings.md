@@ -9,22 +9,31 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: 7dcaae80842f06714759cb5c933a62ccd85aac63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 249b013a35df8978a7296086b4e5ada3b78b2c52
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798093"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093830"
 ---
 # <a name="view-or-change-your-settings-in-the-my-account-portal"></a>マイ アカウント ポータルで設定を表示または変更する
 
 マイ アカウント ポータルでアカウントの設定 (言語やタイム ゾーンなど) を表示または変更するには、 **[マイ アカウント]** ポータルの **[Settings & Privacy]\(設定とプライバシー\)** ページを開きます。
 
+>[!Note]
+> 個人用 Microsoft アカウントでのサインイン時にエラーが発生した場合でも、組織のドメイン名 (contoso.com など) または組織の **テナント ID** (管理者から入手) を使用して、次のいずれかの URL でサインインできます。
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+
 ## <a name="view-and-manage-your-language-and-regional-settings"></a>言語と地域の設定を表示および管理する
 
-1. 職場または学校アカウントにサインインした後、、 https://myaccount.microsoft.com/ ページに移動します。
+1. 職場または学校アカウントにサインインした後、、 https://myaccount.microsoft.com/ ページに移動します。 個人用 Microsoft アカウントでサインインしている場合でも、組織のドメイン名 (contoso.com など) または組織の **テナント ID** (管理者から入手) を使用して、次のいずれかの URL でサインインできます。
+
+   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
 
 1. 左側のナビゲーション ウィンドウから **[Settings & Privacy]\(設定とプライバシー\)** を選択するか、 **[Settings & Privacy]\(設定とプライバシー\)** ブロックから **[View Settings and Privacy]\(設定とプライバシーの表示\)** リンクを選択します。
 

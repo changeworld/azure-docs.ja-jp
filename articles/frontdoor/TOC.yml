@@ -36,7 +36,9 @@
       href: front-door-quickstart-template-samples.md
 - name: 概念
   items:
-    - name: セキュリティ
+    - name: Standard/Premium SKU
+      href: standard-premium/overview.md
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md

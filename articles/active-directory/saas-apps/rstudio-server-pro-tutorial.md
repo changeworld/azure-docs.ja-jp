@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と RStudio Server Pro SAML Authentication の統合 | Microsoft Docs
-description: Azure Active Directory と RStudio Server Pro SAML Authentication の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と RStudio Server Pro の統合 | Microsoft Docs
+description: Azure Active Directory と RStudio Server Pro の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ecefc7c585f2f556e76efe6a3a272e38de98e297
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 490ecb201b91cdbdcdddceecdd2d145d2f9bb815
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181562"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390047"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rstudio-server-pro-saml-authentication"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と RStudio Server Pro SAML Authentication の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rstudio-server-pro"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と RStudio Server Pro の統合
 
-このチュートリアルでは、RStudio Server Pro SAML Authentication と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と RStudio Server Pro SAML Authentication を統合すると、次のことが可能になります。
+このチュートリアルでは、RStudio Server Pro (RSP) と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と RSP を統合すると、次のことが可能になります。
 
-* RStudio Server Pro SAML Authentication にアクセスできるユーザーを Azure AD で管理できます。
-* ユーザーが自分の Azure AD アカウントで RStudio Server Pro SAML Authentication に自動的にサインインするように設定できます。
+* RSP にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して RSP に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -31,17 +31,17 @@ ms.locfileid: "96181562"
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* RStudio Server Pro SAML Authentication でのシングル サインオン (SSO) が有効なサブスクリプション。
+* RSP (バージョン 1.4 以上) のインストール。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* RStudio Server Pro SAML Authentication では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* RSP では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
-## <a name="adding-rstudio-server-pro-saml-authentication-from-the-gallery"></a>ギャラリーからの RStudio Server Pro SAML Authentication の追加
+## <a name="adding-rstudio-server-pro-from-the-gallery"></a>ギャラリーからの RStudio Server Pro の追加
 
-Azure AD への RStudio Server Pro SAML Authentication の統合を構成するには、マネージド SaaS アプリの一覧にギャラリーから RStudio Server Pro SAML Authentication を追加する必要があります。
+Azure AD への RSP の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に RStudio Server Pro SAML Authentication を追加する必要があります。
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
@@ -51,17 +51,17 @@ Azure AD への RStudio Server Pro SAML Authentication の統合を構成する�
 1. 結果のパネルから **[RStudio Server Pro SAML Authentication]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
-## <a name="configure-and-test-azure-ad-sso-for-rstudio-server-pro-saml-authentication"></a>RStudio Server Pro SAML Authentication の Azure AD SSO の構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-rstudio-server-pro"></a>RStudio Server Pro の Azure AD SSO の構成とテスト
 
-**B.Simon** というテスト ユーザーを使用して、RStudio Server Pro SAML Authentication に対する Azure AD SSO を構成してテストします。 SSO を機能させるためには、Azure AD ユーザーと RStudio Server Pro SAML Authentication の関連ユーザーとの間にリンク関係を確立する必要があります。
+**B.Simon** というテスト ユーザーを使用して、RSP に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと RSP の関連ユーザーとの間にリンク関係を確立する必要があります。
 
 RStudio Server Pro SAML Authentication に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[RStudio Server Pro SAML Authentication の SSO の構成](#configure-rstudio-server-pro-saml-authentication-sso)** - アプリケーション側でシングル サインオンを構成します。
-    1. **[RStudio Server Pro SAML Authentication のテスト ユーザーの作成](#create-rstudio-server-pro-saml-authentication-test-user)** - RStudio Server Pro SAML Authentication で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[RStudio Server Pro の SSO の構成](#configure-rstudio-server-pro-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[RStudio Server Pro のテスト ユーザーの作成](#create-rstudio-server-pro-test-user)** - RStudio Server Pro で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -76,16 +76,16 @@ RStudio Server Pro SAML Authentication に対して Azure AD SSO を構成して
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、`https://<SUBDOMAIN>.rstudioservices.com/<PATH>/saml/metadata` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<RSP-SERVER>/<PATH>/saml/metadata` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.rstudioservices.com/<PATH>/saml/acs` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://<RSP-SERVER>/<PATH>/saml/acs` のパターンを使用して URL を入力します
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.rstudioservices.com` という形式で URL を入力します。
+    **[サインオン URL]** ボックスに、`https://<RSP-SERVER>/<PATH>/` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[RStudio Server Pro SAML Authentication クライアント サポート チーム](mailto:support@rstudio.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値は、実際の RSP インストールの URI で更新してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
@@ -115,13 +115,27 @@ RStudio Server Pro SAML Authentication に対して Azure AD SSO を構成して
 1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-rstudio-server-pro-saml-authentication-sso"></a>RStudio Server Pro SAML Authentication の SSO の構成
+## <a name="configure-rstudio-server-pro-sso"></a>RStudio Server Pro の SSO の構成
 
-**RStudio Server Pro SAML Authentication** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [RStudio Server Pro SAML Authentication サポート チーム](mailto:support@rstudio.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. RSP 構成ファイル `/etc/rstudio/rserver.conf` を次の内容で更新します。
 
-### <a name="create-rstudio-server-pro-saml-authentication-test-user"></a>RStudio Server Pro SAML Authentication のテスト ユーザーの作成
+    ```
+    auth-saml=1
+    auth-saml-metadata-url=<federation-metadata-URI>
+    auth-saml-sp-name-id-format=emailaddress
+    auth-saml-sp-attribute-username=NameID
+    auth-saml-sp-base-uri=<RSP-Server-URI>
+    ```
 
-このセクションでは、RStudio Server Pro SAML Authentication で B.Simon というユーザーを作成します。 [RStudio Server Pro SAML Authentication サポート チーム](mailto:support@rstudio.com)と連携して、RStudio Server Pro SAML Authentication プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+2. 次のコマンドを実行して RSP を再起動します。
+
+    ```
+    sudo rstudio-server restart
+    ```
+
+### <a name="create-rstudio-server-pro-test-user"></a>RStudio Server Pro のテスト ユーザーの作成
+
+サーバーには、RSP を使用する予定のあるすべてのユーザーをプロビジョニングする必要があります。 ユーザーは、`useradd` コマンドまたは `adduser` コマンドを使用して作成できます。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2020
 ms.author: memildin
-ms.openlocfilehash: 34d2e8116b7b914803d1bb68b350c9aadd78439f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: ca3a1083b512709ad5ef070b6f5bd0e363baf80b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792067"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720751"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>Azure Security Center 上の SQL 情報保護ポリシー
  
@@ -58,7 +58,7 @@ Security Center 内の情報保護ポリシー オプションには、ラベル
 Security Center の **[価格と設定]** ページで、 **[SQL information protection]** を選択します。
 
 > [!NOTE]
-> このオプションは、テナントレベルのアクセス許可を持つユーザーに対してのみ表示されます。 [テナント全体のアクセス許可を自分に付与します](https://docs.microsoft.com/azure/security-center/security-center-management-groups#grant-tenant-wide-permissions-to-yourself)。
+> このオプションは、テナントレベルのアクセス許可を持つユーザーに対してのみ表示されます。 [テナント全体のアクセス許可を自分に付与します](./security-center-management-groups.md#grant-tenant-wide-permissions-to-yourself)。
 
 :::image type="content" source="./media/security-center-info-protection-policy/pricing-settings-link-to-information-protection.png" alt-text="Azure Security Center の [価格と設定] ページから SQL 情報保護ポリシーへのアクセス":::
 

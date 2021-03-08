@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 33f5314c80dc33dbec50dc21a71f4cb507979e12
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: f62a07ef7109c669c6abc90d4e1b4a2ee83ece23
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427430"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530248"
 ---
 # <a name="limitations"></a>制限事項
 
@@ -19,8 +19,8 @@ ms.locfileid: "94427430"
 ## <a name="azure-frontend"></a>Azure フロントエンド
 
 フロントエンド API (C++ および C#) には次の制限事項が適用されます。
-* プロセスあたりの [AzureFrontend](/dotnet/api/microsoft.azure.remoterendering.azurefrontend) インスタンスの合計数: 16。
-* [AzureFrontend](/dotnet/api/microsoft.azure.remoterendering.azurefrontend) あたりの [AzureSession](/dotnet/api/microsoft.azure.remoterendering.azuresession) インスタンスの合計数: 16。
+* プロセスあたりの [RemoteRenderingClient](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient) インスタンスの合計数:16。
+* [RemoteRenderingClient](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient) あたりの [RenderingSession](/dotnet/api/microsoft.azure.remoterendering.renderingsession) インスタンスの合計数:16。
 
 ## <a name="objects"></a>オブジェクト
 
@@ -36,7 +36,7 @@ ms.locfileid: "94427430"
 
 ### <a name="overall-number-of-polygons"></a>多角形の全体数
 
-読み込まれたすべてのモデルに対して許容される多角形の数は、[セッション管理 REST API](../how-tos/session-rest-api.md#create-a-session) に渡される VM のサイズによって異なります。
+読み込まれたすべてのモデルに対して許容される多角形の数は、[セッション管理 REST API](../how-tos/session-rest-api.md) に渡される VM のサイズによって異なります。
 
 | サーバーのサイズ | 多角形の最大数 |
 |:--------|:------------------|

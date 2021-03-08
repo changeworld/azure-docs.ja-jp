@@ -1,23 +1,18 @@
 ---
 title: コピー アクティビティのパフォーマンスとスケーラビリティに関するガイド
 description: コピー アクティビティを使用する場合に、Azure Data Factory でのデータ移動のパフォーマンスに影響する主な要因について説明します。
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/15/2020
-ms.openlocfilehash: a6e89883ec0e1e493bad9572876af86f4a0d3853
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1c166b99243e5a6ee576100b8470aa38b9535c7a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324445"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387667"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>コピー アクティビティのパフォーマンスとスケーラビリティに関するガイド
 
@@ -155,7 +150,7 @@ Azure Data Factory には、次のパフォーマンス最適化機能があり�
 
 増加する同時実行ワークロードをホストすることもできます。 または、現在のワークロード レベルでパフォーマンスを向上させることもできます。 次の方法で、処理のスケーリングを強化できます。
 
-* 1 つのノードで実行できる[同時実行ジョブ](create-self-hosted-integration-runtime.md#scale-up)の数を増やすことで、セルフホステッド IR をスケール "_アップ_" できます。  
+* 1 つのノードで実行できる [同時実行ジョブ](create-self-hosted-integration-runtime.md#scale-up)の数を増やすことで、セルフホステッド IR をスケール "_アップ_" できます。  
 スケールアップは、ノードのプロセッサとメモリが完全に使用されていない場合にのみ機能します。
 * ノード (マシン) をさらに追加することで、セルフホステッド IR をスケール "_アウト_" できます。
 

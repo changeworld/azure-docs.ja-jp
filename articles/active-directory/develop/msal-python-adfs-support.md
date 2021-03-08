@@ -13,12 +13,12 @@ ms.date: 11/23/2019
 ms.author: abpati
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 161bcb2a4276b39765361e97a4516812c26ef580
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: d847e38a6114b0e5f8d56f6e994aa47dfbe929e7
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064472"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583707"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>MSAL for Python での Active Directory フェデレーション サービスのサポート
 
@@ -57,7 +57,7 @@ AD FS に直接接続する場合、アプリケーションの構築に使用�
 
 MSAL Python は、ADFS 2019 をサポートしています。
 
-ADFS 2016 または ADFS v2 への直接接続はサポートされていません。 AD FS 2016 への直接接続が必要なシナリオをサポートする必要がある場合は、最新バージョンの ADAL Python を使用してください。 オンプレミスのシステムを ADFS 2019 にアップグレードすると、MSAL Python を使用できるようになります。
+ADFS 2016 または ADFS v2 への直接接続はサポートされていません。 ADFS 2016 への直接接続が必要なシナリオをサポートする場合は、最新バージョンの ADAL Python を使用してください。 オンプレミスのシステムを ADFS 2019 にアップグレードすると、MSAL Python を使用できるようになります。
 
 ## <a name="next-steps"></a>次のステップ
 

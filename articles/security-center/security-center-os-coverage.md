@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: 31ff3620bcab6b10b59582daa255ff1f259ab0d3
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 4cc8130d34b5f51728fb2e7fb47c1fb0717d2138
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852644"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595124"
 ---
 # <a name="supported-platforms"></a>サポートされているプラットフォーム 
 
@@ -37,10 +37,10 @@ Azure サブスクリプションでアクティブ化された Azure 環境で�
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
-Security Center は [Log Analytics エージェント](../azure-monitor/platform/agents-overview.md#log-analytics-agent)に依存します。 次のページの説明に従って、このエージェントでサポートされているオペレーティング システムのいずれかがマシンで実行されていることを確認してください。
+Security Center は [Log Analytics エージェント](../azure-monitor/agents/agents-overview.md#log-analytics-agent)に依存します。 次のページの説明に従って、このエージェントでサポートされているオペレーティング システムのいずれかがマシンで実行されていることを確認してください。
 
-* [Windows 用の Log Analytics エージェントでサポートされているオペレーティング システム ](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
-* [Linux 用の Log Analytics エージェントでサポートされているオペレーティング システム](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Windows 用の Log Analytics エージェントでサポートされているオペレーティング システム ](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
+* [Linux 用の Log Analytics エージェントでサポートされているオペレーティング システム](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
 また、Log Analytics エージェントが [Security Center にデータを送信するように適切に構成されている](security-center-enable-data-collection.md#manual-agent)ことを確認してください
 

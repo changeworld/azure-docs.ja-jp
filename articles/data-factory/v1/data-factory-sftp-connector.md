@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory を使用して SFTP サーバーからデータを移動する
 description: Azure Data Factory を使用してオンプレミスまたはクラウド SFTP サーバーからデータを移動する方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/12/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3f78934fb11dd4f9e34bf27d565d471d47f250b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b40e9dc83629362da899d2b5ff29ad42e21c4e32
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847687"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382652"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Azure Data Factory を使用した SFTP サーバーからのデータ移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -34,14 +30,14 @@ Data Factory が現在サポートしているのは、SFTP サーバーから�
 > コピー アクティビティでは、コピー先にコピーされた後にソース ファイルが削除されることはありません。 コピー後にソース ファイルを削除する必要がある場合、カスタム アクティビティを作成してファイルを削除し、パイプラインのアクティビティを使用します。
 
 ## <a name="supported-scenarios-and-authentication-types"></a>サポートされているシナリオと認証の種類
-この SFTP コネクタを使用すると、データをコピーする**クラウド SFTP サーバーとオンプレミスの SFTP サーバーの両方**からデータをコピーできます。 SFTP サーバーに接続するときにサポートされる認証の種類は、**基本**認証と **SshPublicKey** 認証です。
+この SFTP コネクタを使用すると、データをコピーする **クラウド SFTP サーバーとオンプレミスの SFTP サーバーの両方** からデータをコピーできます。 SFTP サーバーに接続するときにサポートされる認証の種類は、**基本** 認証と **SshPublicKey** 認証です。
 
 オンプレミスの SFTP サーバーからデータをコピーする場合は、オンプレミスの環境/Azure VM に Data Management Gateway をインストールする必要があります。 ゲートウェイについて詳しくは、[Data Management Gateway に関する記事](data-factory-data-management-gateway.md)をご覧ください。 ゲートウェイの設定手順とその使用方法については、[オンプレミスの場所とクラウド間のデータ移動に関する記事](data-factory-move-data-between-onprem-and-cloud.md)を参照してください。
 
 ## <a name="getting-started"></a>作業の開始
 さまざまなツール/API を使用して、SFTP ソースからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
+- パイプラインを作成する最も簡単な方法は、**コピー ウィザード** を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
 - また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 SFTP サーバーから Azure Blob Storage にデータをコピーする JSON サンプルについては、この記事の「[JSON の使用例:SFTP サーバーから Azure BLOB にデータをコピーする](#json-example-copy-data-from-sftp-server-to-azure-blob)」セクションを参照してください。
 
@@ -175,7 +171,7 @@ SSH 公開キー認証を使用するには、`authenticationType` を `SshPubli
 | fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |いいえ |
 | fileFilter |すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。<br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/><br/>例 1: `"fileFilter": "*.log"`<br/>例 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> fileFilter は FileShare 入力データセットに適用されます。 このプロパティは、HDFS ではサポートされません。 |いいえ |
 | partitionedBy |partitionedBy を使用して時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ |
-| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
 | compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 | useBinaryTransfer |バイナリ転送モードを使用するかどうかを指定します。 バイナリ モードの場合は true、ASCII モードの場合は false です。 既定値:True。 このプロパティを使用できるのは、関連するリンクされたサービスの種類が FtpServer の場合のみです。 |いいえ |
 

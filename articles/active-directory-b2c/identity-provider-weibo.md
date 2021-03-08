@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 26c4e154deec02b0642e6c131ced50acb02f9899
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: d69675d7ab07e4097556d269c97c3ecb66dc2fc6
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98951533"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545836"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Weibo アカウントでのサインアップおよびサインインを設定する
 
@@ -32,19 +32,19 @@ ms.locfileid: "98951533"
 
 ## <a name="create-a-weibo-application"></a>Weibo アプリケーションを作成する
 
-Azure Active Directory B2C (Azure AD B2C) で Weibo アカウントを持つユーザーのサインインを有効にするには、[Weibo 開発者ポータル](https://open.weibo.com/)でアプリケーションを作成する必要があります。 まだ Weibo アカウントを持っていない場合は、[https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) でサインアップできます。
+Azure Active Directory B2C (Azure AD B2C) で Weibo アカウントを持つユーザーのサインインを有効にするには、Weibo 開発者ポータルでアプリケーションを作成する必要があります。 まだ Weibo アカウントを持っていない場合は、[https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) でサインアップできます。
 
-1. Weibo アカウントの資格情報を使用して[Weibo 開発者ポータル](https://open.weibo.com/)にサインインします。
+1. Weibo アカウントの資格情報を使用してWeibo 開発者ポータルにサインインします。
 1. サインインしたら、右上隅にある表示名を選択します。
 1. ドロップダウンで **[编辑开发者信息 (開発者情報の編集)]** を選択します。
 1. 必要な情報を入力し、 **[提交 (送信)]** を選択します。
 1. 電子メールによる確認プロセスを完了します。
-1. [ID の確認ページ](https://open.weibo.com/developers/identity/edit)に移動します。
+1. ID の確認ページに移動します。
 1. 必要な情報を入力し、 **[提交 (送信)]** を選択します。
 
 ### <a name="register-a-weibo-application"></a>Weibo アプリケーションを登録する
 
-1. [新しい Weibo アプリの登録ページ](https://open.weibo.com/apps/new)に移動します。
+1. 新しい Weibo アプリの登録ページに移動します。
 1. 必要なアプリケーション情報を入力します。
 1. **[创建 (作成)]** を選択します。
 1. **アプリ キー** と **アプリケーション シークレット** の値をコピーします。 ID プロバイダーをテナントに追加するには、これらの両方が必要です。

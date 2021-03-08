@@ -4,12 +4,12 @@ description: プログラミング言語とバインドを問わず、Azure で�
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: dd9a517749030f9f99731d36947c4d4ff2f13b01
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: fdc898c02cfd20ecfdd72dece4fb1e92d803dbb0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936738"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386902"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 開発者ガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインド固有の詳細を学習する前に、それらすべてに当てはまるこの概要をお読みください。
@@ -40,11 +40,11 @@ function.json ファイルには、関数のトリガー、バインド、その
 
 `bindings` プロパティで、トリガーとバインドの両方を構成します。 各バインドは、いくつかの一般的な設定と、バインドの特定の種類に固有の設定を共有します。 すべてのバインドには次の設定が必要です。
 
-| プロパティ | 値/型 | 説明 |
-| --- | --- | --- |
-| `type` |string |バインドの種類。 たとえば、「 `queueTrigger` 」のように入力します。 |
-| `direction` |"in"、"'out" |バインドが関数への受信データか、関数からの送信データかを示します。 |
-| `name` |string |関数のバインドされたデータに使用される名前。 C# の場合は引数の名前です。JavaScript の場合はキー/値リストのキーです。 |
+| プロパティ    | 値 | Type | 説明|
+|---|---|---|---|
+| type  | バインドの名前。<br><br>たとえば、「 `queueTrigger` 」のように入力します。 | string | |
+| 方向 | `in`, `out`  | string | バインドが関数への受信データか、関数からの送信データかを示します。 |
+| name | 関数識別子。<br><br>たとえば、「 `myQueue` 」のように入力します。 | string | 関数のバインドされたデータに使用される名前。 C# の場合は引数の名前です。JavaScript の場合はキー/値リストのキーです。 |
 
 ## <a name="function-app"></a>関数アプリ
 関数アプリからは、関数が実行される、Azure における実行コンテキストが提供されます。 そのため、これが関数のデプロイと管理の単位となります。 関数アプリは、まとめて管理、デプロイ、およびスケールされる 1 つまたは複数の個々の関数で構成されます。 関数アプリ内のすべての関数は、同じ料金プラン、デプロイ方法、およびランタイム バージョンを共有します。 関数を整理し、まとめて管理する方法として関数アプリを考えてください。 詳しくは、[関数アプリの管理方法](functions-how-to-use-azure-function-app-settings.md)に関する記事をご覧ください。 
@@ -91,6 +91,83 @@ Azure Functions のコードはオープン ソースであり、GitHub リポ�
 [!INCLUDE [dynamic compute](../../includes/functions-bindings.md)]
 
 バインドが原因のエラーが発生している場合は、 [Azure Functions のバインド エラー コード](functions-bindings-error-pages.md)に関するドキュメントを参照してください。
+
+
+## <a name="connections"></a>接続
+
+関数プロジェクトでは、接続情報を構成プロバイダーからの名前で参照しています。 接続の詳細を直接受け入れないため、環境間で変更できます。 たとえば、トリガー定義に `connection` プロパティが含まれるとします。 これは接続文字列が参照されている場合がありますが、接続文字列を `function.json` に直接設定することはできません。 代わりに、`connection` を、接続文字列を含む環境変数の名前に設定します。
+
+既定の構成プロバイダーでは環境変数を使用します。 これらは、Azure Functions サービスで実行している場合は [[アプリケーションの設定]](./functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings)、ローカルでの開発時には[ローカル設定ファイル](functions-run-local.md#local-settings-file)で設定できます。
+
+### <a name="connection-values"></a>接続値
+
+接続名が 1 つの正確な値に解決されると、ランタイムでは、値を _接続文字列_ として識別します。これには通常、シークレットが含まれます。 接続文字列の詳細は、接続先のサービスによって定義されます。
+
+ただし、接続名では複数の構成アイテムのコレクションを参照することもできます。 2 つのアンダースコア `__` で終わる共有プレフィックスを使用して、環境変数をコレクションとして扱うことができます。 このプレフィックスに接続名を設定することによって、グループを参照できます。
+
+たとえば、Azure Blob トリガー定義の `connection` プロパティが `Storage1` であるとします。 名前を `Storage1` として構成された 1 つの文字列値がない限り、`Storage1__serviceUri` は接続の `serviceUri` プロパティに使用されます。 接続のプロパティはサービスによって異なります。 接続を使用する拡張機能のドキュメントを参照してください。
+
+### <a name="configure-an-identity-based-connection"></a>ID ベースの接続を構成する
+
+Azure Functions の一部の接続は、シークレットの代わりに ID を使用するように構成されています。 サポートは、接続を使用する拡張機能によって異なります。 場合によっては、接続先のサービスで ID ベースの接続がサポートされている場合でも、Functions で接続文字列が必要になることがあります。
+
+> [!IMPORTANT]
+> バインド拡張機能が ID ベースの接続をサポートしている場合でも、その構成は従量課金プランではまだサポートされていない可能性があります。 以下のサポート表を参照してください。
+
+ID ベースの接続は、次のトリガーおよびバインド拡張機能でサポートされています。
+
+| 拡張機能の名前 | 拡張機能のバージョン                                                                                     | 従量課金プランでの ID ベースの接続をサポートします。 |
+|----------------|-------------------------------------------------------------------------------------------------------|---------------------------------------|
+| Azure BLOB     | [バージョン 5.0.0-beta1 以降](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  | いいえ                                    |
+| Azure Queue    | [バージョン 5.0.0-beta1 以降](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) | いいえ                                    |
+
+> [!NOTE]
+> 主な動作に対して Functions ランタイムによって使用されるストレージ接続では、ID ベースの接続のサポートはまだ利用できません。 これは、`AzureWebJobsStorage` 設定が接続文字列である必要があることを意味します。
+
+#### <a name="connection-properties"></a>接続のプロパティ
+
+Azure サービスに対する ID ベースの接続では、次のプロパティを使用できます。
+
+| プロパティ    | 環境変数 | 必須 | 説明 |
+|---|---|---|---|
+| サービス URI | `<CONNECTION_NAME_PREFIX>__serviceUri` | はい | 接続先サービスのデータ プレーン URI。 |
+
+特定の接続の種類に対して、追加のオプションがサポートされている場合があります。 接続を確立するコンポーネントのドキュメントを参照してください。
+
+Azure Functions サービスでホストされている場合、ID ベースの接続では、[マネージド ID](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json) が使用されます。 既定では、システム割り当て ID が使用されます。 ローカル開発などの他のコンテキストで実行する場合は、代わりに開発者 ID が使用されます。ただし、代替接続パラメーターを使用してカスタマイズすることもできます。
+
+##### <a name="local-development"></a>ローカル開発
+
+ローカルで実行している場合、上記の構成によって、ローカルの開発者 ID を使用するようにランタイムに指示します。 接続では次の場所から順番にトークンを取得しようとします。
+
+- Microsoft アプリケーション間で共有されるローカル キャッシュ
+- Visual Studio の現在のユーザー コンテキスト
+- Visual Studio Code の現在のユーザー コンテキスト
+- Azure CLI の現在のユーザー コンテキスト
+
+これらのオプションのいずれも成功しなかった場合は、エラーが発生します。
+
+場合によっては、別の ID の使用を指定したい場合があります。 代替 ID を指す接続の構成プロパティを追加できます。
+
+> [!NOTE]
+> Azure Functions サービスでホストされている場合、次の構成オプションはサポートされません。
+
+クライアント ID とシークレットを指定して Azure Active Directory サービス プリンシパルを使用して接続するには、次のプロパティを使用して接続を定義します。
+
+| プロパティ    | 環境変数 | 必須 | 説明 |
+|---|---|---|---|
+| サービス URI | `<CONNECTION_NAME_PREFIX>__serviceUri` | はい | 接続先サービスのデータ プレーン URI。 |
+| テナント ID | `<CONNECTION_NAME_PREFIX>__tenantId` | はい | Azure Active Directory のテナント (ディレクトリ) ID。 |
+| クライアント ID | `<CONNECTION_NAME_PREFIX>__clientId` | はい |  テナント内のアプリの登録のクライアント (アプリケーション) ID。 |
+| クライアント シークレット | `<CONNECTION_NAME_PREFIX>__clientSecret` | はい | アプリの登録で生成されたクライアント シークレット。 |
+
+#### <a name="grant-permission-to-the-identity"></a>ID にアクセス許可を付与する
+
+使用されている ID が何であれ、目的のアクションを実行するためのアクセス許可が必要です。 これは通常、接続先のサービスに応じて、Azure RBAC でロールを割り当てるか、アクセスポリシーで ID を指定することによって行われます。 必要なアクセス許可とその設定方法については、各サービスのドキュメントを参照してください。
+
+> [!IMPORTANT]
+> すべてのコンテキストに必要ではない一部のアクセス許可がサービスによって公開される場合があります。 可能であれば、**最小限の特権の原則** に従い、必要な特権だけを ID に付与します。 たとえば、アプリが BLOB からの読み取りのみを必要とする場合、[ストレージ BLOB データ所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)では読み取り操作に対して過剰なアクセス許可が含まれるため、[ストレージ BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)ロールを使用します。
+
 
 ## <a name="reporting-issues"></a>問題の報告
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]

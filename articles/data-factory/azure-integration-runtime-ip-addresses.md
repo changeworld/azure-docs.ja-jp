@@ -1,28 +1,24 @@
 ---
 title: Azure Integration Runtime の IP アドレス
 description: データ ストアへのネットワーク アクセスをセキュリティで保護するためにファイアウォールを適切に構成するには、どの IP アドレスからの受信トラフィックを許可する必要があるかについて説明します。
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: fb83be59a3ccb11ea8bbd88307596937caa2b354
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 7b663c8d6e5849d39bb8366c82f45e0fd66d77dd
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638297"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371398"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime の IP アドレス
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Integration Runtime によって使用される IP アドレスは、Azure Integration Runtime が配置されているリージョンによって異なります。 同じリージョン内の " *すべての* " Azure Integration Runtime は、同じ IP アドレス範囲を使用します。
+Azure Integration Runtime によって使用される IP アドレスは、Azure Integration Runtime が配置されているリージョンによって異なります。 同じリージョン内の "*すべての*" Azure Integration Runtime は、同じ IP アドレス範囲を使用します。
 
 > [!IMPORTANT]  
 > マネージド仮想ネットワークを有効にするデータ フローと Azure Integration Runtime では、固定 IP 範囲の使用はサポートされていません。
@@ -31,7 +27,7 @@ Azure Integration Runtime によって使用される IP アドレスは、Azure
 
 ## <a name="azure-integration-runtime-ip-addresses-specific-regions"></a>Azure Integration Runtime の IP アドレス: 特定のリージョン
 
-リソースが配置されている特定の Azure リージョンの Azure Integration Runtime 用として一覧に示されている IP アドレスからのトラフィックを許可します。 [サービス タグの IP 範囲のダウンロード リンク](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)から、サービス タグの IP 範囲の一覧を取得できます。 たとえば、Azure リージョンが **AustraliaEast** の場合、 **DataFactory.AustraliaEast** から IP 範囲の一覧を取得できます。
+リソースが配置されている特定の Azure リージョンの Azure Integration Runtime 用として一覧に示されている IP アドレスからのトラフィックを許可します。 [サービス タグの IP 範囲のダウンロード リンク](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)から、サービス タグの IP 範囲の一覧を取得できます。 たとえば、Azure リージョンが **AustraliaEast** の場合、**DataFactory.AustraliaEast** から IP 範囲の一覧を取得できます。
 
 
 ## <a name="known-issue-with-azure-storage"></a>Azure Storage に関する既知の問題

@@ -413,7 +413,7 @@
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 暗号化
-      href: luis-encryption-of-data-at-rest.md
+      href: encrypt-data-at-rest.md
     - name: 仮想ネットワークを構成する
       maintainContext: true
       href: ../cognitive-services-virtual-networks.md

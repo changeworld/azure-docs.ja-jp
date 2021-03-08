@@ -8,16 +8,16 @@ ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 153ffd699b22a6379758bf66b896a2b37a19fdf3
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d75b60c715a758684e6f3a4b331c0b12d17eaf21
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883284"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705111"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Files に対する Azure Active Directory Domain Services 認証を有効にする
 
-[Azure Files](storage-files-introduction.md)  では、オンプレミスの Active Directory Domain Services (AD DS) と Azure Active Directory Domain Services (Azure AD DS) という 2 種類のドメイン サービスを介した、サーバー メッセージ ブロック (SMB) 経由の ID ベースの認証がサポートされます。[「しくみ」セクション](./storage-files-active-directory-overview.md#how-it-works)を参照して、認証用の適切なドメイン サービスを選択することを強くお勧めします。 選択するドメイン サービスによって設定は異なります。 この記事では、Azure ファイル共有での認証用に Azure AD DS を有効にして構成する方法に重点を置いて説明します。
+[Azure Files](storage-files-introduction.md)  では、オンプレミスの Active Directory Domain Services (AD DS) と Azure Active Directory Domain Services (Azure AD DS) という 2 種類のドメイン サービスを介した、サーバー メッセージ ブロック (SMB) 経由の ID ベースの認証がサポートされます。[「しくみ」セクション](./storage-files-active-directory-overview.md#how-it-works)を参照して、認証用の適切なドメイン サービスを選択することを強くお勧めします。 設定は、選択するドメイン サービスによって異なります。 この記事では、Azure ファイル共有での認証用に Azure AD DS を有効にして構成する方法に重点を置いて説明します。
 
 Azure ファイル共有を初めて使用する場合は、次の一連の記事を読む前に、[計画ガイド](storage-files-planning.md)に目を通すことをお勧めします。
 

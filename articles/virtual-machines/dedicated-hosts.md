@@ -3,17 +3,18 @@ title: 仮想マシン用 Azure 専用ホストの概要
 description: Azure 専用ホストを使用して仮想マシンをデプロイする方法の詳細について説明します。
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: dedicated-hosts
 ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 4e29bb0fee496af6a8c0fd30d5559bf865123c39
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 46de182c7acfaf75b2e65fa318717348dd1c4b73
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007893"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667340"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 専用ホスト
 

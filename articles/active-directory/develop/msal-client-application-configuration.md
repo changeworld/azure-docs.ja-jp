@@ -13,12 +13,12 @@ ms.date: 11/20/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 46626c3ebe9d70600be1cc5f73c43677f67bcd09
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 00768f363d08bc476350e57a8eac69eafd9c3589
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761368"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580940"
 ---
 # <a name="application-configuration-options"></a>アプリケーション構成オプション
 
@@ -73,7 +73,7 @@ Azure AD クラウド機関には、2 つの部分があります。
 
 サインイン対象ユーザーは、アプリのビジネス ニーズによって異なります。
 
-- 基幹業務 (LOB) 開発者であれば、ご自分の組織内でのみ使用されるシングル テナント アプリケーションを作成することになると思われます。 その場合、テナント ID (Azure AD インスタンスの ID) か、Azure AD インスタンスに関連付けられたドメイン名で組織を指定する必要があります。
+- 基幹業務 (LOB) 開発者であれば、ご自分の組織内でのみ使用されるシングル テナント アプリケーションを作成することになると思われます。 その場合、テナント ID (Azure AD インスタンスの ID) か、Azure AD インスタンスに関連付けられたドメイン名で組織を指定します。
 - ISV の方であれば、ユーザーに、すべての組織または一部の組織で職場および学校アカウントを使用してサインインしてもらうケースが考えられます (マルチテナント アプリ)。 ただし、ユーザーに個人用 Microsoft アカウントでサインインしてもらうこともあります。
 
 ### <a name="how-to-specify-the-audience-in-your-codeconfiguration"></a>コード/構成で対象ユーザーを指定する方法
@@ -122,9 +122,9 @@ MSAL を使用してパブリック クライアント アプリを開発して�
   | UWP | `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` の値。 これは、登録する必要がある WebAuthenticationBroker.GetCurrentApplicationCallbackUri() の結果に値を設定することによって、ブラウザーでの SSO を有効にします |
   | .NET Core | `https://localhost`. 今のところ、埋め込み Web ビュー用の UI が .NET Core には存在しないため、これによって、ユーザーはシステム ブラウザーを使用して対話型認証を実行できるようになります。 |
 
-- ブローカーをサポートしていない Xamarin Android および iOS アプリケーションを構築している場合は、リダイレクト URI を追加する必要はありません (Xamarin Android および iOS では、リダイレクト URI は自動的に `msal{ClientId}://auth` に設定されます)
+- ブローカーのリダイレクト URI をサポートしていない Xamarin Android および iOS アプリケーションを構築する場合は、リダイレクト URI を追加する必要はありません。 Xamarin Android および iOS では、自動的に `msal{ClientId}://auth` に設定されます。
 
-- [アプリの登録](https://aka.ms/appregistrations)でリダイレクト URI を構成する必要があります。
+- [アプリの登録](https://aka.ms/appregistrations)でリダイレクト URI を構成します。
 
    ![アプリの登録でのリダイレクト URI](media/msal-client-application-configuration/redirect-uri.png)
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: e895640daeb3fbbba2f2708969ee4cf856bf1033
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 17c31bbe54326962c26ab53f702cbd28d1e36c6d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621183"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092793"
 ---
 # <a name="connect-your-f5-big-ip-appliance"></a>F5 BIG-IP アプライアンスを接続する 
 
@@ -42,7 +42,7 @@ F5 BIG-IP では、ログを統合して、Azure Sentinel に直接エクスポ�
 
 ## <a name="validate-connectivity"></a>接続の検証
 
-ログが Log Analytics に表示され始めるまで、20 分以上かかる場合があります。 
+ログが Log Analytics に表示され始めるまで、最大 20 分かかることがあります。 
 
 
 

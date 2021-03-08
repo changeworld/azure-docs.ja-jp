@@ -3,18 +3,18 @@ title: 'ML Studio (classic): Web サービスの再トレーニング - Azure'
 description: Azure Machine Learning Studio (クラシック) で新しくトレーニングされた機械学習モデルを使用するように Web サービスを更新する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: ff0378871139a038f096a44b9ee0c6af2cb67d73
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a4fe9e54e5e03a8dbf2a727b22f784c36d6c65f9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325814"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517588"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>機械学習モデルの再トレーニングとデプロイ
 
@@ -96,7 +96,7 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
 1. 左側のナビゲーション列で、 **[BLOB]** をクリックします。
 1. 既存のコンテナーを選択するか、コンテナーを新規作成して、名前を保存します。
 
-*StorageAccountName* 、 *StorageAccountKey* 、および *StorageContainerName* 宣言を見つけて、ポータルから保存した値を更新します。
+*StorageAccountName*、*StorageAccountKey*、および *StorageContainerName* 宣言を見つけて、ポータルから保存した値を更新します。
 
 ```csharp
 const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
@@ -108,7 +108,7 @@ const string StorageContainerName = "mycontainer"; // Replace this with your Azu
 
 ### <a name="specify-the-output-location"></a>出力場所の指定
 
-要求ペイロードで出力場所を指定する場合は、 *RelativeLocation* で指定されたファイルの拡張子を `ilearner` として指定する必要があります。
+要求ペイロードで出力場所を指定する場合は、*RelativeLocation* で指定されたファイルの拡張子を `ilearner` として指定する必要があります。
 
 ```csharp
 Outputs = new Dictionary<string, AzureBlobDataReference>() {
@@ -130,11 +130,11 @@ Outputs = new Dictionary<string, AzureBlobDataReference>() {
 
 アプリケーションを実行すると、評価結果へのアクセスに必要な URL と Shared Access Signature トークンが出力に示されます。
 
-再トレーニング済みモデルのパフォーマンス結果を確認するには、 *output2* の出力結果の *BaseLocation* 、 *RelativeLocation* 、 *SasBlobToken* を組み合わせて、ブラウザーのアドレス バーに完全な URL を貼り付けます。
+再トレーニング済みモデルのパフォーマンス結果を確認するには、*output2* の出力結果の *BaseLocation*、*RelativeLocation*、*SasBlobToken* を組み合わせて、ブラウザーのアドレス バーに完全な URL を貼り付けます。
 
 この結果で、新しくトレーニングされたモデルのパフォーマンスが、既存のモデルよりも優れているかどうかを確認します。
 
-出力結果の *BaseLocation* 、 *RelativeLocation* 、 *SasBlobToken* を保存します。
+出力結果の *BaseLocation*、*RelativeLocation*、*SasBlobToken* を保存します。
 
 ## <a name="update-the-predictive-experiment"></a>予測実験を更新する
 

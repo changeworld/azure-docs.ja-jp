@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 18a3216855516156792524dc577ecef725d3119d
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 76dcb9aec935dd4ea4f57a1362953d9741d8eaf0
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99218776"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095801"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーに関する開発者向けのメモ
 
@@ -70,7 +70,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | [OAuth2 暗黙的フロー](implicit-flow-single-page-application.md) |  |  | X |  |
 | [OAuth2 リソース所有者のパスワード資格情報](ropc-custom.md) |  | X |  |  |
 | [OIDC Connect](openid-connect.md) |  |  | X |  |
-| [SAML2](connect-with-saml-service-providers.md)  |  |  |X  | POST とリダイレクトのバインディング。 |
+| [SAML2](saml-service-provider.md)  |  |  |X  | POST とリダイレクトのバインディング。 |
 | OAuth1 |  |  |  | サポートされていません。 |
 | WSFED | X |  |  |  |
 
@@ -81,7 +81,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | 例: Google+。  |
 | [OAuth2](oauth2-technical-profile.md) |  |  | X | 例: Facebook。  |
 | [OAuth1](oauth1-technical-profile.md) |  | X |  | 例: Twitter。 |
-| [SAML2](saml-identity-provider-technical-profile.md) |  |   | X | 例: Salesforce、ADFS。 |
+| [SAML2](identity-provider-generic-saml.md) |  |   | X | 例: Salesforce、ADFS。 |
 | WSFED| X |  |  |  |
 
 

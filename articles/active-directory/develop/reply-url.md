@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: 30ea74b249937544a0bf9811cad60f02c1ca45c7
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 91df89a69368056c1967e641562cf8515f44ade0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95752790"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582810"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>リダイレクト URI (応答 URL) に関する制約と制限
 
@@ -45,7 +45,7 @@ ms.locfileid: "95752790"
 
 現在、Azure Active Directory (Azure AD) アプリケーション モデルでは、任意の組織の Azure AD テナントで Microsoft の職場または学校アカウントにサインインするアプリに対して、HTTP と HTTPS の両方のスキームがサポートされています。 これらのアカウントの種類は、アプリケーション マニフェストの `signInAudience` フィールドの `AzureADMyOrg` および `AzureADMultipleOrgs` の値によって指定されます。 個人用の Microsoft アカウント (MSA) *に加えて* 職場と学校のアカウントにサインインするアプリ (つまり、`signInAudience` が `AzureADandPersonalMicrosoftAccount` に設定されている) の場合、HTTPS スキームのみが許可されます。
 
-職場または学校のアカウントにサインインするアプリの登録に、HTTP スキームを使用するリダイレクト URI を追加するには、Azure portal の [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) で、アプリケーション マニフェスト エディターを使用する必要があります。 ただし、マニフェスト エディターを使用して HTTP ベースのリダイレクト URI を設定することは可能ですが、リダイレクト URI には HTTPS スキームを使用することが *強く* 推奨されます。
+職場または学校のアカウントにサインインするアプリの登録に、HTTP スキームを使用するリダイレクト URI を追加するには、Azure portal の [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) で、アプリケーション マニフェスト エディターを使用します。 ただし、マニフェスト エディターを使用して HTTP ベースのリダイレクト URI を設定することは可能ですが、リダイレクト URI には HTTPS スキームを使用することが *強く* 推奨されます。
 
 ## <a name="localhost-exceptions"></a>Localhost の例外
 
@@ -65,7 +65,7 @@ ms.locfileid: "95752790"
 * ポートのみが異なる複数のリダイレクト URI を登録しないでください。 ログイン サーバーでは任意のものが選択され、そのリダイレクト URI に関連付けられている動作が使用されます (たとえば、リダイレクトが `web` 型か、`native` 型か、`spa` 型か)。
 
     これは、同じアプリケーションの登録で異なる認証フロー (認可コードの付与と暗黙のフローなど) を使用する場合に特に重要です。 各リダイレクト URI に適切な応答動作を関連付けるには、ログイン サーバーがリダイレクト URI を区別できる必要があります。また、ポートのみが異なる場合は、リダイレクト URI を区別できません。
-* 複数のリダイレクト URI を localhost に登録して開発中にさまざまなフローをテストする必要がある場合は、URI の "*パス*" コンポーネントを使用してそれらを区別します。 たとえば、`http://localhost/MyWebApp` は `http://localhost/MyNativeApp` と一致しません。
+* 複数のリダイレクト URI を localhost に登録して開発中にさまざまなフローをテストする場合は、URI の "*パス*" コンポーネントを使用してそれらを区別します。 たとえば、`http://localhost/MyWebApp` は `http://localhost/MyNativeApp` と一致しません。
 * IPv6 ループバック アドレス (`[::1]`) は、現在サポートされていません。
 
 #### <a name="prefer-127001-over-localhost"></a>127.0.0.1 以上の localhost が推奨されています
@@ -84,7 +84,7 @@ ms.locfileid: "95752790"
 
 ワイルドカード URI は、現在、個人用 Microsoft アカウントと職場または学校のアカウントにサインインするように構成されているアプリの登録ではサポートされていません。 ただし、組織の Azure AD テナントで、職場または学校のアカウントにのみサインインするように構成されているアプリの場合は、ワイルドカード URI が許可されます。
 
-職場または学校のアカウントにサインインするアプリの登録に、ワイルドカードを含むリダイレクト URI を追加するには、Azure portal の [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) で、アプリケーション マニフェスト エディターを使用する必要があります。 マニフェスト エディターを使用して、ワイルドカードを含むリダイレクト URI を設定することも可能ですが、[RFC 6749 のセクション 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2) に準拠し、絶対 URI のみを使用することが *強く* 推奨されます。
+職場または学校のアカウントにサインインするアプリの登録に、ワイルドカードを含むリダイレクト URI を追加するには、Azure portal の [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) で、アプリケーション マニフェスト エディターを使用します。 マニフェスト エディターを使用して、ワイルドカードを含むリダイレクト URI を設定することも可能ですが、[RFC 6749 のセクション 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2) に準拠し、絶対 URI のみを使用することが *強く* 推奨されます。
 
 シナリオ上、許可される最大制限を超えるリダイレクト URI が必要な場合は、ワイルドカードを含むリダイレクト URI を追加する代わりに、[次の状態パラメーター アプローチ](#use-a-state-parameter)を検討してください。
 

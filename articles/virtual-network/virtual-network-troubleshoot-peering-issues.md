@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: cb5ce421b6a38edcb8d92866f749a544eff927d6
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: f3e1ea8861646490875667f6238b3f8813bd6c4b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096391"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518166"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>仮想ネットワーク ピアリングの問題をトラブルシューティングする
 
@@ -233,7 +233,7 @@ NVA デバイスの設定とルーティングのトラブルシューティン�
 
 ### <a name="failed-to-peer-a-databricks-virtual-network"></a>Databricks 仮想ネットワークをピアリングできませんでした
 
-この問題を解決するには、 **[Azure Databricks]** から仮想ネットワーク ピアリングを構成し、 **[リソース ID]** を使用してターゲット仮想ネットワークを指定します。 詳細については、「[Databricks 仮想ネットワークからリモート仮想ネットワークへのピアリング](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2)」を参照してください。
+この問題を解決するには、 **[Azure Databricks]** から仮想ネットワーク ピアリングを構成し、 **[リソース ID]** を使用してターゲット仮想ネットワークを指定します。 詳細については、「[Databricks 仮想ネットワークからリモート仮想ネットワークへのピアリング](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering#id2)」を参照してください。
 
 ### <a name="the-remote-virtual-network-lacks-a-gateway"></a>リモート仮想ネットワークにゲートウェイがありません
 

@@ -2,20 +2,21 @@
 title: Azure でのセキュリティの技術的な機能 | Microsoft Azure
 description: クラウド内のデータ、リソース、およびアプリケーションの保護に役立つ、Azure でのセキュリティ サービスの概要。
 services: security
-author: terrylanfear
+author: TerryLanfear
+manager: rkarlin
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2020
+ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 353b1708a1c6014f9108ad2be62f22c1e0b0604c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 6e0642a2124d58bb3af483313ac824568b6bbb39
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092770"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99585145"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 この記事では、クラウド内のデータ、リソース、アプリケーションを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つ Azure のセキュリティ サービスの概要を提供します。
@@ -431,20 +432,6 @@ Security Center は、Azure リソース、ネットワーク、パートナー 
 > [!Note]
 > リソース マネージャーには、ソリューションをデプロイして管理するための新しい方法が用意されています。 以前のデプロイメント モデルを使用していて、変更の詳細を確認する場合は、[Resource Manager デプロイメントとクラシック デプロイメント](../../azure-resource-manager/management/deployment-models.md)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-step"></a>次のステップ
 
-セキュリティについて詳しくは、セキュリティについて掘り下げた次のトピックをご覧ください。
-
-- [監査とログ記録](https://www.microsoft.com/en-us/trustcenter/security/auditingandlogging)
-
-- [サイバー犯罪](https://www.microsoft.com/en-us/trustcenter/security/cybercrime)
-
-- [設計および運用面のセキュリティ](https://www.microsoft.com/en-us/trustcenter/security/designopsecurity)
-
-- [暗号化](https://www.microsoft.com/en-us/trustcenter/security/encryption)
-
-- [ID 管理とアクセス管理](https://www.microsoft.com/en-us/trustcenter/security/identity)
-
-- [ネットワークのセキュリティ](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
-
-- [脅威管理](https://www.microsoft.com/en-us/trustcenter/security/threatmanagement)
+[Azure セキュリティ ベンチマーク](../benchmarks/introduction.md) プログラムには、Azure で使用するサービスをセキュリティで保護するために使用できる、セキュリティに関する推奨事項のコレクションが含まれています。

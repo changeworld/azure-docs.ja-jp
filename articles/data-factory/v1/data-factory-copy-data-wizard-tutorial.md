@@ -1,23 +1,18 @@
 ---
 title: 'チュートリアル:コピー ウィザードを使用してパイプラインを作成する '
 description: このチュートリアルでは、Data Factory でサポートされているコピー ウィザードを使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: b87afb8e-53b7-4e1b-905b-0343dd096198
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 93360e48dad13b9ec57175d31ecb61d32974f066
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 60a575fc211c512c8657bffd567c96f98cc3d69a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128404"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377008"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>チュートリアル:コピー アクティビティがあるパイプラインを Data Factory コピー ウィザードで作成する
 > [!div class="op_single_selector"]
@@ -52,7 +47,7 @@ Azure Data Factory の **コピー ウィザード** を使用すると、サポ
 2. **[新しいデータ ファクトリ]** ブレードで以下の手順を実行します。
    
    1. **[名前]** に「**ADFTutorialDataFactory**」と入力します。
-       Azure Data Factory の名前はグローバルに一意にする必要があります。 `Data factory name “ADFTutorialDataFactory” is not available` エラーが発生した場合は、データ ファクトリの名前を (yournameADFTutorialDataFactoryYYYYMMDD などに) 変更して作成し直してください。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。  
+       Azure Data Factory の名前はグローバルに一意にする必要があります。 `Data factory name "ADFTutorialDataFactory" is not available` エラーが発生した場合は、データ ファクトリの名前を (yournameADFTutorialDataFactoryYYYYMMDD などに) 変更して作成し直してください。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。  
       
        ![使用できない Data Factory 名](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-not-available.png)    
    2. Azure **サブスクリプション** を選択します。

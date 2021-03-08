@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/28/2020
 ms.author: jgao
-ms.openlocfilehash: 574dcf50111c14f4924f009a74ed6f2ac2bb31e9
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 9d045fb75838ac016f3e9b04cd2519d8a8530a4b
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733842"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175653"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>ARM テンプレートでデプロイ スクリプトを使用する
 
@@ -141,7 +141,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
 - `azPowerShellVersion`/`azCliVersion`:使用するモジュールのバージョンを指定します。 [サポートされている Azure PowerShell バージョン](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)の一覧を参照してください。 [サポートされている Azure CLI バージョン](https://mcr.microsoft.com/v2/azure-cli/tags/list)の一覧を参照してください。
 
   >[!IMPORTANT]
-  > デプロイ スクリプトでは、Microsoft Container Registry (MCR) から入手可能な CLI イメージが使用されます。 デプロイ スクリプトに対する CLI イメージの認定には、1 か月ほどかかります。 30 日以内にリリースされた CLI バージョンは使用しないでください。 イメージのリリース日を確認するには、「[Azure CLI リリース ノート](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true)」を参照してください。 サポートされていないバージョンが使用されている場合、サポートされているバージョンがエラー メッセージに一覧表示されます。
+  > デプロイ スクリプトでは、Microsoft Container Registry (MCR) から入手可能な CLI イメージが使用されます。 デプロイ スクリプトに対する CLI イメージの認定には、1 か月ほどかかります。 30 日以内にリリースされた CLI バージョンは使用しないでください。 イメージのリリース日を確認するには、「[Azure CLI リリース ノート](/cli/azure/release-notes-azure-cli)」を参照してください。 サポートされていないバージョンが使用されている場合、サポートされているバージョンがエラー メッセージに一覧表示されます。
 
 - `arguments`:パラメーター値を指定します。 値はスペースで区切ります。
 
@@ -377,10 +377,10 @@ Timeout             : PT1H
 
 Azure CLI を使用すると、サブスクリプションまたはリソース グループのスコープでデプロイ スクリプトを管理できます。
 
-- [az deployment-scripts delete](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-delete):デプロイ スクリプトを削除します。
-- [az deployment-scripts list](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-list):すべてのデプロイ スクリプトを一覧表示します。
-- [az deployment-scripts show](/cli/azure/deployment-scripts?view=azure-cli-latest&preserve-view=true#az-deployment-scripts-show):デプロイ スクリプトを取得します。
-- [az deployment-scripts show-log](/cli/azure/deployment-scripts?view=azure-cli-lates&preserve-view=truet#az-deployment-scripts-show-log):デプロイ スクリプトのログを表示します。
+- [az deployment-scripts delete](/cli/azure/deployment-scripts#az-deployment-scripts-delete):デプロイ スクリプトを削除します。
+- [az deployment-scripts list](/cli/azure/deployment-scripts#az-deployment-scripts-list):すべてのデプロイ スクリプトを一覧表示します。
+- [az deployment-scripts show](/cli/azure/deployment-scripts#az-deployment-scripts-show):デプロイ スクリプトを取得します。
+- [az deployment-scripts show-log](/cli/azure/deployment-scripts#az-deployment-scripts-show-log):デプロイ スクリプトのログを表示します。
 
 list コマンドの出力は次のようになります。
 

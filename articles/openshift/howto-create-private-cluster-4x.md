@@ -1,19 +1,19 @@
 ---
 title: Azure Red Hat OpenShift 4 のプライベート クラスターを作成する
 description: OpenShift 4 を実行する Azure Red Hat OpenShift のプライベート クラスターを作成する方法について説明します
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: article
 ms.date: 03/12/2020
 author: sakthi-vetrivel
 ms.author: suvetriv
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 6daeb617e7d1922427fe1889b41512a61c5067cf
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 633b8e6b0d9694119b5371f921af90c524936926
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740926"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633616"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Azure Red Hat OpenShift 4 のプライベート クラスターを作成する
 

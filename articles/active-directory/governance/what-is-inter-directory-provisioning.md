@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df199afd85c788299334087321c3edac8482698d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4246bc4c62fd8e5e73ff18e383b8bf115d25ede8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168510"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643839"
 ---
 # <a name="what-is-inter-directory-provisioning"></a>ディレクトリ間のプロビジョニングとは
 
@@ -33,7 +33,7 @@ ms.locfileid: "96168510"
 
 - [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) - ハイブリッド ID に対応し、それを達成するように設計された Microsoft のツールです。たとえば、Active Directory から Azure AD へのディレクトリ間のプロビジョニングに対応します。
 
-- [Azure AD Connect クラウド プロビジョニング](../cloud-provisioning/what-is-cloud-provisioning.md) - ハイブリッド ID の目標に適合し、それを達成するように設計された Microsoft の新しいエージェントです。  Active Directory と Azure AD との間でディレクトリ間のプロビジョニングを実現する軽量の環境となっています。
+- [Azure AD Connect クラウド プロビジョニング](../cloud-sync/what-is-cloud-sync.md) - ハイブリッド ID の目標に適合し、それを達成するように設計された Microsoft の新しいエージェントです。  Active Directory と Azure AD との間でディレクトリ間のプロビジョニングを実現する軽量の環境となっています。
 
 - [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) - ID とアクセス管理を意図した Microsoft のオンプレミス ソリューションです。組織内のユーザー、資格情報、ポリシー、アクセスを効率的に管理できます。 また、Active Directory や Azure AD などのディレクトリのためのハイブリッド ID 環境を実現する高度なディレクトリ間のプロビジョニングを利用できます。
 

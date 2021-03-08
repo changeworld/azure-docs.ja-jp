@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/22/2020
-  ms.openlocfilehash: 087ffde0f4a4c3509f6538029ba3cedafe25c622
-  ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+  ms.openlocfilehash: 4f93df526275e55524a9a4b67462e47eaa1a73d0
+  ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/05/2021
-  ms.locfileid: "99575891"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102182011"
 landingContent:
 - title: Computer Vision について
   linkLists:
@@ -112,6 +112,8 @@ landingContent:
   linkLists:
   - linkListType: get-started
     links:
+    - text: 空間分析の概要
+      url: intro-to-spatial-analysis-public-preview.md
     - text: コンテナーのインストールと実行
       url: spatial-analysis-container.md
     - text: 操作を構成する
@@ -146,6 +148,18 @@ landingContent:
       url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Go SDK の使用
       url: quickstarts-sdk/client-library.md?pivots=programming-language-go
+- title: AI の責任ある使用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 空間分析の透明性に関するメモ
+      url: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+  - linkListType: concept
+    links:
+    - text: AI デプロイでの責任ある使用
+      url: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+    - text: データ、プライバシー、セキュリティ
+      url: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
 - title: リファレンス
   linkLists:
   - linkListType: reference
@@ -169,7 +183,7 @@ landingContent:
     - text: Azure PowerShell
       url: /powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure コマンド ライン インターフェイス (CLI)
-      url: /cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+      url: /cli/azure/cognitiveservices#az-cognitiveservices-list
 - title: ヘルプとフィードバック
   linkLists:
   - linkListType: reference

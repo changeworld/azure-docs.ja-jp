@@ -9,13 +9,13 @@ ms.custom: sqldbrb=1
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 05/28/2020
-ms.openlocfilehash: aa236ecaaa9c38c68e66d1813280cd98b85b9463
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 02/09/2021
+ms.openlocfilehash: 332a2273a377268a425619a0cdaa5f4780b46e73
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790391"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361657"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>Azure SQL Database を DTU ベースのモデルから仮想コア ベースのモデルに移行する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ DTU ベースの購入モデルから仮想コア ベースの購入モデルに
 
 DTU から仮想コアへの移行のほとんどのシナリオでは、Basic および Standard サービス レベルのデータベースとエラスティック プールは、[General Purpose](service-tier-general-purpose.md) サービス レベルにマップされます。 Premium サービス レベルのデータベースとエラスティック プールは、[Business Critical](service-tier-business-critical.md) サービス レベルにマップされます。 アプリケーションのシナリオや要件に応じて、[Hyperscale](service-tier-hyperscale.md) サービス レベルは、多くの場合、すべての DTU サービス レベルで単一データベースの移行先として使用できます。
 
-仮想コア モデル内の移行されたデータベースのサービス目標 (コンピューティング サイズ) を選択するために、シンプルではあるが、大まかな目安を使用できます。Basic または Standard レベルでは 100 DTU ごとに " *少なくとも* " 1 つの仮想コア、Premium レベルでは 125 DTU ごとに " *少なくとも* " 1 つの仮想コアが必要になります。 
+仮想コア モデル内の移行されたデータベースのサービス目標 (コンピューティング サイズ) を選択するために、シンプルではあるが、大まかな目安を使用できます。Basic または Standard レベルでは 100 DTU ごとに "*少なくとも*" 1 つの仮想コア、Premium レベルでは 125 DTU ごとに "*少なくとも*" 1 つの仮想コアが必要になります。 
 
 > [!TIP]
 > DTU データベースまたはエラスティック プールに使用されるハードウェアの世代は考慮されないため、この目安は大まかなものです。 
@@ -52,24 +52,33 @@ DTU モデルでは、使用可能な任意の[ハードウェアの世代](purc
 ```SQL
 WITH dtu_vcore_map AS
 (
-SELECT TOP (1) rg.slo_name,
-               CASE WHEN rg.slo_name LIKE '%SQLG4%' THEN 'Gen4'
-                    WHEN rg.slo_name LIKE '%SQLGZ%' THEN 'Gen4'
-                    WHEN rg.slo_name LIKE '%SQLG5%' THEN 'Gen5'
-                    WHEN rg.slo_name LIKE '%SQLG6%' THEN 'Gen5'
-               END AS dtu_hardware_gen,
-               s.scheduler_count * CAST(rg.instance_cap_cpu/100. AS decimal(3,2)) AS dtu_logical_cpus,
-               CAST((jo.process_memory_limit_mb / s.scheduler_count) / 1024. AS decimal(4,2)) AS dtu_memory_per_core_gb
+SELECT rg.slo_name,
+       DATABASEPROPERTYEX(DB_NAME(), 'Edition') AS dtu_service_tier,
+       CASE WHEN rg.slo_name LIKE '%SQLG4%' THEN 'Gen4'
+            WHEN rg.slo_name LIKE '%SQLGZ%' THEN 'Gen4'
+            WHEN rg.slo_name LIKE '%SQLG5%' THEN 'Gen5'
+            WHEN rg.slo_name LIKE '%SQLG6%' THEN 'Gen5'
+            WHEN rg.slo_name LIKE '%SQLG7%' THEN 'Gen5'
+       END AS dtu_hardware_gen,
+       s.scheduler_count * CAST(rg.instance_cap_cpu/100. AS decimal(3,2)) AS dtu_logical_cpus,
+       CAST((jo.process_memory_limit_mb / s.scheduler_count) / 1024. AS decimal(4,2)) AS dtu_memory_per_core_gb
 FROM sys.dm_user_db_resource_governance AS rg
 CROSS JOIN (SELECT COUNT(1) AS scheduler_count FROM sys.dm_os_schedulers WHERE status = 'VISIBLE ONLINE') AS s
 CROSS JOIN sys.dm_os_job_object AS jo
 WHERE dtu_limit > 0
       AND
       DB_NAME() <> 'master'
+      AND
+      rg.database_id = DB_ID()
 )
 SELECT dtu_logical_cpus,
        dtu_hardware_gen,
        dtu_memory_per_core_gb,
+       dtu_service_tier,
+       CASE WHEN dtu_service_tier = 'Basic' THEN 'General Purpose'
+            WHEN dtu_service_tier = 'Standard' THEN 'General Purpose or Hyperscale'
+            WHEN dtu_service_tier = 'Premium' THEN 'Business Critical or Hyperscale'
+       END AS vcore_service_tier,
        CASE WHEN dtu_hardware_gen = 'Gen4' THEN dtu_logical_cpus
             WHEN dtu_hardware_gen = 'Gen5' THEN dtu_logical_cpus * 0.7
        END AS Gen4_vcores,
@@ -97,7 +106,7 @@ FROM dtu_vcore_map;
 - 同じハードウェアの世代および同じ数の仮想コアについては、多くの場合、仮想コア データベースの IOPS とトランザクション ログのスループット リソース制限が DTU データベースよりも高くなります。 IO にバインドされたワークロードでは、同じレベルのパフォーマンスを実現するために、仮想コア モデルの仮想コア数を減らせる場合があります。 DTU および仮想コア データベースの絶対値のリソース制限は、[sys. dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) ビューで公開されています。 ほぼ一致するサービス目標を使用する仮想コア データベースと、移行される DTU データベースとの間でのこれらの値の比較は、仮想コア サービスの目標をより正確に選択するのに役立ちます。
 - また、マッピング クエリでは、移行される DTU データベースまたはエラスティック プール、および仮想コア モデルの各ハードウェアの、コアあたりのメモリ量を返します。 十分なパフォーマンスを実現するために大量のメモリ データ キャッシュを必要とするワークロード、またはクエリ処理に大量のメモリ許可を必要とするワークロードでは、仮想コアへの移行後に、同様のあるいはそれ以上の合計メモリを確保することが重要です。 このようなワークロードでは、実際のパフォーマンスに応じて、十分な合計メモリを得るために仮想コアの数を増やすことが必要になる場合があります。
 - 仮想コア サービスの目標を選択する際には、DTU データベースの[リソース使用率の履歴](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)を考慮する必要があります。 CPU リソースの使用率が常に低い DTU データベースでは、マッピング クエリで返されるよりも少ない仮想コアが必要になることがあります。 逆に、CPU 使用率が常に高いためにワークロードのパフォーマンスが不十分になる DTU データベースでは、クエリで返されるよりも多い仮想コアが必要になることがあります。
-- 使用パターンが間欠的または予測できないデータベースを移行する場合は、[サーバーレス](serverless-tier-overview.md) コンピューティング レベルの使用を検討してください。  サーバーレスでの同時実行ワーカー (要求) の最大数は、構成されている同じ最大仮想コア数に対してプロビジョニングされたコンピューティングの上限の 75% であることに注意してください。  また、サーバーレスで使用できる最大メモリは、構成されている最大仮想コア数に 3 GB を乗算したものになります。たとえば、構成されている最大コア数が 40 のとき、最大メモリは 120 GB になります。   
+- 使用パターンが間欠的または予測できないデータベースを移行する場合は、[サーバーレス](serverless-tier-overview.md) コンピューティング レベルの使用を検討してください。 サーバーレスでの同時実行ワーカー (要求) の最大数は、構成されている同じ最大仮想コア数に対してプロビジョニングされたコンピューティングの上限の 75% であることに注意してください。 また、サーバーレスで使用できる最大メモリは、構成されている最大仮想コア数に 3 GB を乗算したものになります。たとえば、構成されている最大コア数が 40 のとき、最大メモリは 120 GB になります。   
 - 仮想コア モデルでは、サポートされるデータベースの最大サイズが、ハードウェアの世代によって異なる場合があります。 大規模なデータベースの場合は、[単一データベース](resource-limits-vcore-single-databases.md)と[エラスティック プール](resource-limits-vcore-elastic-pools.md)の仮想コア モデルでサポートされる最大サイズを確認してください。
 - エラスティック プールの場合、[DTU](resource-limits-dtu-elastic-pools.md) および[仮想コア](resource-limits-vcore-elastic-pools.md) モデルでは、プールあたりのデータベースの最大サポート数が異なります。 多くのデータベースがあるエラスティック プールを移行する場合は、このことを考慮する必要があります。
 - ハードウェアの世代によっては、すべてのリージョンで使用できないものもあります。 「[ハードウェアの世代](service-tiers-vcore.md#hardware-generations)」で使用できるかどうかを確認してください。
@@ -122,7 +131,7 @@ FROM dtu_vcore_map;
 |----------------|----------------|----------------------|-----------|-----------------------|-----------|-----------------------|
 |24.00|第 5 世代|5.40|16.800|7|24.000|5.05|
 
-DTU データベースには 24 個の論理 CPU (仮想コア) があり、仮想コアあたり 5.4 GB のメモリが備わっており、Gen5 ハードウェアが使用されていることがわかります。 その直接一致は、Gen5 ハードウェア上の General Purpose の 24 個の仮想コア データベース、つまり、 **GP_Gen5_24** 仮想コア サービス目標です。
+DTU データベースには 24 個の論理 CPU (仮想コア) があり、仮想コアあたり 5.4 GB のメモリが備わっており、Gen5 ハードウェアが使用されていることがわかります。 その直接一致は、Gen5 ハードウェア上の General Purpose の 24 個の仮想コア データベース、つまり、**GP_Gen5_24** 仮想コア サービス目標です。
 
 **Standard S0 データベースの移行**
 
@@ -132,7 +141,7 @@ DTU データベースには 24 個の論理 CPU (仮想コア) があり、仮�
 |----------------|----------------|----------------------|-----------|-----------------------|-----------|-----------------------|
 |0.25|Gen4|0.42|0.250|7|0.425|5.05|
 
-DTU データベースには 0.25 個に相当する論理 CPU (仮想コア) があり、仮想コアあたり 0.42 GB のメモリが備わっており、Gen4 ハードウェアが使用されていることがわかります。 Gen4 および Gen5 ハードウェア世代の最小の仮想コア サービス目標 ( **GP_Gen4_1** および **GP_Gen5_2** ) では、Standard S0 データベースよりも多くのコンピューティング リソースが提供されるため、直接一致させることはできません。 Gen4 ハードウェアは [使用停止](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/)になるため、 **GP_Gen5_2** オプションをお勧めします。 さらに、ワークロードが [サーバーレス](serverless-tier-overview.md) コンピューティング レベルに最適である場合は、 **GP_S_Gen5_1** がより近い一致になります。
+DTU データベースには 0.25 個に相当する論理 CPU (仮想コア) があり、仮想コアあたり 0.42 GB のメモリが備わっており、Gen4 ハードウェアが使用されていることがわかります。 Gen4 および Gen5 ハードウェア世代の最小の仮想コア サービス目標 (**GP_Gen4_1** および **GP_Gen5_2**) では、Standard S0 データベースよりも多くのコンピューティング リソースが提供されるため、直接一致させることはできません。 Gen4 ハードウェアは [使用停止](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/)になるため、**GP_Gen5_2** オプションをお勧めします。 さらに、ワークロードが [サーバーレス](serverless-tier-overview.md) コンピューティング レベルに最適である場合は、**GP_S_Gen5_1** がより近い一致になります。
 
 **Premium P15 データベースの移行**
 
@@ -142,7 +151,7 @@ DTU データベースには 0.25 個に相当する論理 CPU (仮想コア) �
 |----------------|----------------|----------------------|-----------|-----------------------|-----------|-----------------------|
 |42.00|第 5 世代|4.86|29.400|7|42.000|5.05|
 
-DTU データベースには 42 個の論理 CPU (仮想コア) があり、仮想コアあたり 4.86 GB のメモリが備わっており、Gen5 ハードウェアが使用されていることがわかります。 42 コアの仮想コア サービス目標はありませんが、 **BC_Gen5_40** サービス目標は、CPU とメモリ容量の両方において非常に近いものであり、適切な一致となります。
+DTU データベースには 42 個の論理 CPU (仮想コア) があり、仮想コアあたり 4.86 GB のメモリが備わっており、Gen5 ハードウェアが使用されていることがわかります。 42 コアの仮想コア サービス目標はありませんが、**BC_Gen5_40** サービス目標は、CPU とメモリ容量の両方において非常に近いものであり、適切な一致となります。
 
 **Basic 200 eDTU エラスティック プールの移行**
 
@@ -152,7 +161,7 @@ DTU データベースには 42 個の論理 CPU (仮想コア) があり、仮�
 |----------------|----------------|----------------------|-----------|-----------------------|-----------|-----------------------|
 |4.00|第 5 世代|5.40|2.800|7|4.000|5.05|
 
-DTU エラスティック プールには 4 個の論理 CPU (仮想コア) があり、仮想コアあたり 5.4 GB のメモリが備わっており、Gen5 ハードウェアが使用されていることがわかります。 仮想コア モデルでの直接一致は、 **GP_Gen5_4** エラスティック プールです。 しかし、このサービス目標ではプールあたり最大 200 個のデータベースがサポートされますが、Basic 200 eDTU エラスティック プールでは 500 個までのデータベースがサポートされます。 移行されるエラスティック プールに 200 個を超えるデータベースがある場合、一致する仮想コア サービスの目標は **GP_Gen5_6** である必要があります。これにより、500 個までのデータベースがサポートされます。
+DTU エラスティック プールには 4 個の論理 CPU (仮想コア) があり、仮想コアあたり 5.4 GB のメモリが備わっており、Gen5 ハードウェアが使用されていることがわかります。 仮想コア モデルでの直接一致は、**GP_Gen5_4** エラスティック プールです。 しかし、このサービス目標ではプールあたり最大 200 個のデータベースがサポートされますが、Basic 200 eDTU エラスティック プールでは 500 個までのデータベースがサポートされます。 移行されるエラスティック プールに 200 個を超えるデータベースがある場合、一致する仮想コア サービスの目標は **GP_Gen5_6** である必要があります。これにより、500 個までのデータベースがサポートされます。
 
 ## <a name="migrate-geo-replicated-databases"></a>geo レプリケーション対応データベースを移行する
 

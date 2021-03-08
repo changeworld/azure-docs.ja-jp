@@ -4,14 +4,14 @@ description: この記事では、Azure Automation アカウントの認証に�
 keywords: Automation のセキュリティ, セキュリティで保護された Automation; Automation の認証
 services: automation
 ms.subservice: process-automation
-ms.date: 02/01/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: e3ed14a0845d90a1b9b951dd5175acf6233f8718
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: c559a81b17b92f48b2d51b7c2d26325d6a1b1cca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255001"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708902"
 ---
 # <a name="automation-account-authentication-overview"></a>Automation アカウントの認証の概要
 
@@ -44,6 +44,8 @@ Azure Resource Manager とクラシック デプロイ モデルの詳細につ�
 >Azure Cloud Solution Provider (CSP) サブスクリプションでは、Azure Resource Manager モデルのみがサポートされます。 Azure Resource Manager 以外のサービスは、プログラムでは使用できません。 CSP サブスクリプションを使用する場合、Azure クラシック実行アカウントは作成されませんが、Azure 実行アカウントは作成されます。 CSP サブスクリプションの詳細については、[CSP サブスクリプションで利用可能なサービス](/azure/cloud-solution-provider/overview/azure-csp-available-services)に関するページを参照してください。
 
 Automation アカウントを作成するとき、Azure 実行アカウントは既定では同時に作成されます。 Automation アカウントと共に作成しないことを選択した場合は、後で個別に作成できます。 Azure クラシック実行アカウントはオプションです。クラシック リソースを管理する必要がある場合は、個別に作成されます。
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWwtF3]
 
 ### <a name="run-as-account"></a>実行アカウント
 

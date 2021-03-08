@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: sttsinar
 ms.custom: include file
-ms.openlocfilehash: bd31152c6742271658cf4fd7ac2a5e2957651c84
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e22c2b7cb561e30e84ea5ede5481fbdc35be8cdf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96478477"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515114"
 ---
 Azure Compute では、特定のハードウェアの種類に分離される、単一顧客専用の仮想マシン サイズを提供します。 分離されたサイズは、特定のハードウェア世代上に存続して動作し、そのハードウェア世代が廃止されると非推奨となります。
 
@@ -23,14 +23,14 @@ Azure Compute では、特定のハードウェアの種類に分離される、
 お客様は、[入れ子になった仮想マシンの Azure サポート](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)を使用して、これらの VM のリソースを再分割することも選択できます。
 
 現在の分離された仮想マシンのプランには、以下が含まれます。
-* Standard_E64is_v3
-* Standard_E64i_v3
 * Standard_E80ids_v4
 * Standard_E80is_v4
+* Standard_F72s_v2
+* Standard_E64is_v3
+* Standard_E64i_v3
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
-* Standard_F72s_v2
 
 
 > [!NOTE]
@@ -38,7 +38,7 @@ Azure Compute では、特定のハードウェアの種類に分離される、
 
 ## <a name="deprecation-of-isolated-vm-sizes"></a>分離された VM サイズの非推奨化
 
-分離された VM サイズはハードウェアにしばられたサイズであるため、サイズが正式に非推奨となる 12 か月前に、Azure から通知が送付されます。  Azure では、次のハードウェア バージョンでも、お客様がワークロードを移動することを検討できる分離されたサイズの更新されたものが提供されます。
+分離された VM サイズには、ハードウェアによって限定される有効期間があります。 そのサイズの正式な廃止日の 12 か月前に Azure からリマインダーを出し、お客様の検討用に、更新された分離オファリングを提供します。
 
 | サイズ | 分離の廃止日 | 
 | --- | --- |
@@ -49,7 +49,7 @@ Azure Compute では、特定のハードウェアの種類に分離される、
 
 
 ## <a name="faq"></a>よく寄せられる質問
-### <a name="q-is-the-size-going-to-get-retired-or-only-isolation-feature-is"></a>Q:廃止される予定なのはサイズですか、それとも "分離" 機能のみですか?
+### <a name="q-is-the-size-going-to-get-retired-or-only-its-isolation-feature"></a>Q:廃止される予定なのはサイズですか、それともその "分離" 機能のみですか?
 **A**: 仮想マシン サイズに添字の "i" がない場合は、"分離" 機能のみが廃止されます。 分離が不要な場合、する必要のあるアクションはなく、VM は予期したとおり機能し続けます。 例として、Standard_DS15_v2、Standard_D15_v2、Standard_M128ms などが挙げられます。仮想マシン サイズに添字の "i" が含まれる場合、そのサイズは廃止されます。
 
 ### <a name="q-is-there-a-downtime-when-my-vm-lands-on-a-non-isolated-hardware"></a>Q:分離されていないハードウェアに VM がある場合、ダウンタイムは発生しますか?

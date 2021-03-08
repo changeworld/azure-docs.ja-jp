@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: bf92765431ea6b0f80b96ab7d61e8e830220dc82
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b589f98ee78d0709b2a74ba4e364cec0e486e968
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934533"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547164"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Twins をセキュリティで保護する
 
@@ -54,11 +54,6 @@ Azure には、Azure Digital Twins [データ プレーン API](how-to-use-apis-
 | Azure Digital Twins Data Owner (Azure Digital Twins データ所有者) | Azure Digital Twins リソースへのフル アクセス権が付与されます | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
 | Azure Digital Twins Data Reader (Azure Digital Twins データ閲覧者) | Azure Digital Twins リソースへの読み取り専用アクセス権が付与されます | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 
->[!NOTE]
-> これらのロールは、最近、プレビューで以前の名前から変更されました。
-> * *"Azure Digital Twins Data Owner" (Azure Digital Twins データ所有者)* の旧称は *"Azure Digital Twins Owner (Preview)" (Azure Digital Twins 所有者 (プレビュー))* です。
-> * *"Azure Digital Twins Data Reader" (Azure Digital Twins データ閲覧者)* の旧称は *"Azure Digital Twins Reader (Preview)" (Azure Digital Twins 閲覧者 (プレビュー))* です。
-
 ロールを割り当てるには、次の 2 つの方法があります。
 * Azure portal で Azure Digital Twins のアクセス制御 (IAM) ペインを使用する (「[*Azure portal を使用して Azure ロールの割り当てを追加または削除する*](../role-based-access-control/role-assignments-portal.md)」を参照してください)
 * CLI コマンドを使用してロールを追加または削除する
@@ -97,7 +92,7 @@ Azure では、システム割り当てとユーザー割り当てという 2 �
 
 Azure Digital インスタンスのシステム割り当てマネージド ID を使用して、[カスタム定義エンドポイント](concepts-route-events.md#create-an-endpoint)に対する認証を行うことができます。 Azure Digital Twins では、[Event Hub](../event-hubs/event-hubs-about.md) と  [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)  の送信先用のエンドポイントと[配信不能イベント](concepts-route-events.md#dead-letter-events)用の [Azure Storage コンテナー](../storage/blobs/storage-blobs-introduction.md)  エンドポイントに対する、システム割り当て ID ベースの認証がサポートされています。 [Event Grid](../event-grid/overview.md)  エンドポイントでは、現時点ではマネージド ID はサポートされていません。
 
-Azure Digital Twins のシステムマネージド ID を有効にし、それを使用してイベントをルーティングする方法については、「[*方法: イベントをルーティングするためにマネージド ID を有効にする (プレビュー)* ](how-to-enable-managed-identities.md)」を参照してください。
+Azure Digital Twins のシステムマネージド ID を有効にし、それを使用してイベントをルーティングする方法については、「[*方法: イベントをルーティングするためにマネージド ID を有効にする (プレビュー)*](how-to-enable-managed-identities.md)」を参照してください。
 
 ## <a name="private-network-access-with-azure-private-link-preview"></a>Azure Private Link を使用したプライベート ネットワーク アクセス (プレビュー)
 
@@ -111,7 +106,7 @@ Azure Digital Twins のシステムマネージド ID を有効にし、それ�
 
 Azure Digital Twins インスタンス用のプライベート エンドポイントを構成することで、Azure Digital Twins インスタンスをセキュリティで保護してパブリックに露出されないようにするだけでなく、VNet からのデータの流出を回避できます。
 
-Azure Digital Twins 用の Private Link を設定する方法については、「[*方法: Private Link を使用してプライベート アクセスを有効にする (プレビュー)* ](how-to-enable-private-link.md)」を参照してください。
+Azure Digital Twins 用の Private Link を設定する方法については、「[*方法: Private Link を使用してプライベート アクセスを有効にする (プレビュー)*](how-to-enable-private-link.md)」を参照してください。
 
 ### <a name="design-considerations"></a>設計上の考慮事項 
 

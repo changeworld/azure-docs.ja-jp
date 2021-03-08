@@ -1,26 +1,26 @@
 ---
 title: Azure Security Center 統合を使用して Azure VMware Solution VM を保護する
-description: Azure Security Center の 1 つのダッシュボードから Azure のネイティブ セキュリティ ツールを使用して Azure VMware Solution VM を保護する方法について説明します。
+description: Azure Security Center のダッシュボードから Azure のネイティブ セキュリティ ツールを使用して Azure VMware Solution VM を保護します。
 ms.topic: how-to
-ms.date: 11/06/2020
-ms.openlocfilehash: 66270c5abef48f9d9f30ed1b262a6b4f2f8144c8
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/12/2021
+ms.openlocfilehash: 7292ea4486a61f5b0cfd8f656d2763a3ce655e79
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061466"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578256"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Azure Security Center 統合を使用して Azure VMware Solution VM を保護する
 
-Azure のネイティブ セキュリティ ツールでは、Azure、Azure VMware Solution、オンプレミスの仮想マシン (VM) から成るハイブリッド環境に向けて、セキュリティで保護されたインフラストラクチャが提供されます。 この記事では、ハイブリッド環境のセキュリティのために Azure のツールを設定する方法を示します。 異なる種類の脅威を特定し、対処するために、さまざまなツールを使用します。
+Azure のネイティブ セキュリティ ツールにより、Azure、Azure VMware Solution、オンプレミスの仮想マシン (VM) から成るハイブリッド環境が保護されます。 この記事では、ハイブリッド環境のセキュリティのために Azure のツールを設定する方法を示します。 これらのツールを使用して、さまざまな脅威を特定して対処します。
 
 ## <a name="azure-native-services"></a>Azure のネイティブ サービス
 
-以下に、Azure の各ネイティブ サービスの簡単な概要を示します。
+Azure ネイティブ サービスの簡単な概要を次に示します。
 
 - **Log Analytics ワークスペース:** Log Analytics ワークスペースは、ログ データを格納するための特有の環境です。 各ワークスペースには、独自のデータ リポジトリと構成があります。 データ ソースとソリューションは、特定のワークスペースにデータを格納するように構成されます。
-- **Azure Security Center:** Azure Security Center は、インフラストラクチャ セキュリティの統合管理システムです。 これにより、データ センターのセキュリティ体制が強化され、クラウドやオンプレミスのハイブリッド ワークロード全体にわたって高度な脅威保護が提供されます。
-- **Azure Sentinel:** Azure Sentinel は、クラウドネイティブのセキュリティ情報イベント管理 (SIEM) およびセキュリティ オーケストレーション自動応答 (SOAR) ソリューションです。 環境全体にわたって、インテリジェントなセキュリティ分析と脅威インテリジェンスを提供します。 これは、アラートの検出、脅威の可視性、予防的なハンティング、脅威への対応のための単一ソリューションです。
+- **Azure Security Center:** Azure Security Center は、インフラストラクチャ セキュリティの統合管理システムです。 これにより、データ センターのセキュリティが強化され、クラウドやオンプレミスのハイブリッド ワークロード全体にわたって高度な脅威保護が提供されます。
+- **Azure Sentinel:** Azure Sentinel は、クラウドネイティブのセキュリティ情報イベント管理 (SIEM) ソリューションです。 環境全体にわたって、セキュリティ分析、アラート検出、自動化された脅威対応を提供します。
 
 ## <a name="topology"></a>トポロジ
 
@@ -30,13 +30,18 @@ Log Analytics エージェントを使用すると、Azure、Azure VMware Soluti
 
 Log Analytics ワークスペースによってログが収集されたら、Azure Security Center を使用して Log Analytics ワークスペースを構成できます。 Azure Security Center では、Azure VMware Solution VM の脆弱性の状態を評価し、重大な脆弱性があればアラートを生成します。 たとえば、オペレーティング システムのパッチの不足、セキュリティの構成の誤り、[エンドポイントの保護](../security-center/security-center-services.md)について評価します。
 
-アラートの検出、脅威の可視性、予防的なハンティング、脅威への対応について、Azure Sentinel を使用して Log Analytics ワークスペースを構成することができます。 前の図では、Azure Security Center コネクタを使用して、Azure Security Center が Azure Sentinel に接続されています。 インシデントを作成し、他の脅威とマップするために、Azure Security Center から Azure Sentinel に環境の脆弱性が転送されます。 スケジュールされたルールのクエリを作成して、望ましくないアクティビティを検出し、それをインシデントに変換することもできます。
+Log Analytics ワークスペースで、Azure Sentinel によるアラートの検出、脅威の可視性、ハンティング、脅威対応を構成できます。 前の図では、Azure Security Center コネクタを使用して、Azure Security Center が Azure Sentinel に接続されています。 インシデントを作成し、他の脅威とマップするために、Azure Security Center から Azure Sentinel に環境の脆弱性が転送されます。 スケジュールされたルールのクエリを作成して、望ましくないアクティビティを検出し、それをインシデントに変換することもできます。
 
 ## <a name="benefits"></a>メリット
 
 - Azure ネイティブ サービスは、Azure、Azure VMware Solution、オンプレミス サービス内にあるハイブリッド環境のセキュリティために使用できます。
 - Log Analytics ワークスペースを使用して、データまたはログを単一ポイントに収集し、同じデータを異なる Azure ネイティブ サービスに提示することができます。
-- Azure Security Center には、ファイル整合性の監視、ファイルレス攻撃の検出、オペレーティング システム パッチの評価、セキュリティに関する誤った構成の評価、エンドポイント保護の評価などのセキュリティ機能が用意されています。
+- Azure Security Center には、次のような多くの機能が用意されています。
+    - ファイルの整合性の監視
+    - ファイルレス攻撃の検出
+    - オペレーティング システムのパッチ評価 
+    - セキュリティの誤った構成の評価
+    - エンドポイント保護の評価
 - Azure Sentinel では、以下のことができます。
     - クラウドの規模でデータを収集します。オンプレミスと複数のクラウド内の両方で、すべてのユーザー、デバイス、アプリケーション、インフラストラクチャが対象です。
     - 以前は検出されなかった脅威を検出します。
@@ -45,7 +50,7 @@ Log Analytics ワークスペースによってログが収集されたら、Azu
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics ワークスペースの作成
 
-さまざまなソースからデータを収集するには、Log Analytics ワークスペースが必要になります。 詳細については、[Azure portal での Log Analytics ワークスペースの作成](../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。 
+さまざまなソースからデータを収集するには、Log Analytics ワークスペースが必要になります。 詳細については、[Azure portal での Log Analytics ワークスペースの作成](../azure-monitor/logs/quick-create-workspace.md)に関するページを参照してください。 
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>Security Center をデプロイして Azure VMware Solution VM を構成する
 
@@ -53,7 +58,7 @@ Azure Security Center は事前に構成済みのツールで、デプロイを�
 
 ### <a name="enable-azure-defender"></a>Azure Defender を有効にする
 
-Azure Defender は、オンプレミスとクラウド内の両方で、ハイブリッド ワークロード全体にわたる Azure Security Center の高度な脅威保護を拡張するものです。 そのため Azure VMware Solution VM を保護するには、Azure Defender を有効にする必要があります。 
+Azure Defender は、オンプレミスとクラウド内の両方で、ハイブリッド ワークロード全体にわたって Azure Security Center の高度な脅威保護を拡張するものです。 そのため Azure VMware Solution VM を保護するには、Azure Defender を有効にする必要があります。 
 
 1. Security Center で、 **[作業の開始]** を選択します。
 
@@ -144,7 +149,7 @@ Azure Sentinel は、Log Analytics ワークスペースの上に構築されて
 
 ## <a name="create-rules-to-identify-security-threats"></a>セキュリティの脅威を特定するためのルールを作成する
 
-データ ソースを Azure Sentinel に接続したら、検出された脅威に基づいてアラートを生成するルールを作成できます。 次の例では、正しくないパスワードを使用した Windows サーバーへのサインインの試みを識別するルールを作成します。
+データ ソースを Azure Sentinel に接続したら、検出された脅威に対するアラートを生成するルールを作成できます。 次の例では、Windows サーバーへのサインイン試行で正しくないパスワードが使用された場合のルールを作成します。
 
 1. Azure Sentinel の概要ページで、[構成] の下の **[Analytics]** を選択します。
 
@@ -183,7 +188,7 @@ Azure Sentinel は、Log Analytics ワークスペースの上に構築されて
 
 6. **[インシデントの設定]** タブで、 **[この分析ルールによってトリガーされるアラートからインシデントを作成する]** を有効にして、 **[次へ:自動応答>]** を選択します。
  
-    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="Azure Sentinel で新しいルールを作成するための分析ルール ウィザードのスクリーンショット。[この分析ルールによってトリガーされるアラートからインシデントを作成する] が有効になっていることを示しています。":::
+    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="Azure Sentinel で新しいルールを作成するための分析ルール ウィザードのスクリーンショット。[この分析ルールによってトリガーされるアラートからインシデントを作成する] が有効として表示されています。":::
 
 7. **Next:確認>** を選択します。
 
@@ -191,7 +196,7 @@ Azure Sentinel は、Log Analytics ワークスペースの上に構築されて
 
 Windows サーバーへのサインインの試みが 3 回失敗すると、作成されたルールにより、失敗した試みすべてに対してインシデントがトリガーされます。
 
-## <a name="view-generated-alerts"></a>生成されたアラートを表示する
+## <a name="view-alerts"></a>アラートを表示する
 
 生成されたインシデントは、Azure Sentinel で表示できます。 インシデントを割り当てて、解決されたら閉じることもできます。これらはすべて Azure Sentinel 内から行えます。
 
@@ -235,6 +240,8 @@ Windows サーバーへのサインインの試みが 3 回失敗すると、作
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Defender ダッシュボード](../security-center/azure-defender-dashboard.md)の使用方法を確認します。
-- [Azure Defender](../security-center/azure-defender.md) によって提供される幅広い保護について確認します。
-- [Azure Sentinel の高度なマルチステージ攻撃の検出](../azure-monitor/learn/quick-create-workspace.md)について確認します。
+Azure VMware Solution VM を保護する方法について説明したので、次のことについて学習します。
+
+- [Azure Defender ダッシュボード](../security-center/azure-defender-dashboard.md)の使用。
+- [Azure Sentinel での高度なマルチステージ攻撃の検出](../azure-monitor/logs/quick-create-workspace.md)。
+- [Azure VMware Solution VM のライフサイクル管理](lifecycle-management-of-azure-vmware-solution-vms.md)。

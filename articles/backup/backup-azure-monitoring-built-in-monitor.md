@@ -4,18 +4,29 @@ description: この記事では、Azure portal を使用した Azure Backup ワ�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 978e98bc623cecd768b1f2dda0a129e0459521da
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 74669a1347fac9f61d028d9cb1f3da174bb71f96
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174009"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550347"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup ワークロードの監視
 
 Azure Backup では、バックアップ要件とインフラストラクチャ トポロジ (オンプレミスと Azure) に基づく複数のバックアップ ソリューションを提供します。 すべてのバックアップ ユーザーまたは管理者は、すべてのソリューション全体で何が起こっているかを確認し、重要なシナリオで通知を受け取ることができます。 この記事では、Azure Backup サービスによって提供される監視と通知の機能について説明します。
 
 [!INCLUDE [backup-center.md](../../includes/backup-center.md)]
+
+## <a name="backup-items-in-recovery-services-vault"></a>Recovery Services コンテナーでのバックアップ項目
+
+Recovery Services コンテナーを使用して、すべてのバックアップ項目を監視できます。 コンテナーの **[バックアップ項目]** セクションに移動すると、コンテナーに関連付けられている各ワークロードの種類のバックアップ項目の数を示すビューが開きます。 任意の行をクリックすると、指定したワークロードの種類のすべてのバックアップ項目が一覧表示され、各項目の最後のバックアップの状態、利用可能な最新の復元ポイントなどの情報が表示されます。
+
+![RS コンテナーのバックアップ項目](media/backup-azure-monitoring-laworkspace/backup-items-view.png)
+
+> [!NOTE]
+> DPM を使用して Azure にバックアップされた項目については、DPM サーバーを使用して保護されているすべてのデータソース (ディスクとオンラインの両方) が一覧に表示されます。 バックアップ データが保持されているデータソースの保護が停止した場合、データソースはポータルに表示されたままになります。 データ ソースの詳細にアクセスして、回復ポイントがディスク、オンライン、またはその両方に存在するかどうかを確認できます。 また、オンラインのデータ保護が停止されていてデータが保持されたデータソースの場合、データが完全に削除されるまで、オンライン回復ポイントの課金が継続されます。
+>
+> バックアップ項目を Recovery Services コンテナー ポータルに表示するには、DPM のバージョンが DPM 1807 (5.1.378.0) または DPM 2019 (バージョン 10.19.58.0 以降) である必要があります。
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>Recovery Services コンテナーでのバックアップ ジョブ
 
@@ -82,8 +93,8 @@ SQL や SAP HANA などの Azure ワークロード バックアップ ソリュ
 アラートは、その重大度に基づいて次の 3 つの種類に定義できます。
 
 - **[高]** :原則として、バックアップまたは回復が失敗すると (スケジュールされたかユーザーがトリガーしたかを問わず)、アラートが生成されて重大アラートとして表示され、バックアップの削除といった破壊的な操作の原因となります。
-- **警告** :バックアップ操作が成功したもののいくつかの警告を伴う場合、これらは警告アラートとして表示されます。 警告アラートは現在、Azure Backup エージェントのバックアップにのみ使用できます。
-- **情報** :現時点では、Azure Backup サービスで情報アラートは生成されません。
+- **警告**:バックアップ操作が成功したもののいくつかの警告を伴う場合、これらは警告アラートとして表示されます。 警告アラートは現在、Azure Backup エージェントのバックアップにのみ使用できます。
+- **情報**:現時点では、Azure Backup サービスで情報アラートは生成されません。
 
 ## <a name="notification-for-backup-alerts"></a>バックアップ アラートの通知
 
@@ -100,7 +111,7 @@ SQL や SAP HANA などの Azure ワークロード バックアップ ソリュ
 
 > [!NOTE]
 >
-> - 破壊的な操作 ( **データを削除して保護を停止** など) が実行されると、アラートが生成され、Recovery Services コンテナー用に通知が構成されていない場合でも、サブスクリプションの所有者、管理者、共同管理者にメールが送信されます。
+> - 破壊的な操作 (**データを削除して保護を停止** など) が実行されると、アラートが生成され、Recovery Services コンテナー用に通知が構成されていない場合でも、サブスクリプションの所有者、管理者、共同管理者にメールが送信されます。
 > - 成功したジョブの通知を構成するには、[Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace) を使用します。
 
 ## <a name="inactivating-alerts"></a>アラートの非アクティブ化

@@ -8,25 +8,25 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
-ms.openlocfilehash: 422346430e32ccb8745d5a5d829c5d61089a99c6
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: b8881d3fa7ade08da103c5af4b828a12e74cc355
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430430"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509454"
 ---
 # <a name="how-to-index-plain-text-blobs-in-azure-cognitive-search"></a>Azure Cognitive Search でプレーンテキスト BLOB のインデックスを作成する方法
 
-フルテキスト検索のために [BLOB インデクサー](search-howto-indexing-azure-blob-storage.md)を使用して検索可能なテキストを抽出するときには、インデックス作成でより良い結果を得るため、さまざまな解析モードを呼び出ことができます。 既定では、インデクサーによって BLOB コンテンツが 1 つのテキスト チャンクとして解析されます。 ただし、すべての BLOB に同じエンコードのプレーンテキストが含まれている場合、`text` 解析モードを使用してインデックス作成のパフォーマンスを大幅に改善できます。
+フルテキスト検索のために [BLOB インデクサー](search-howto-indexing-azure-blob-storage.md)を使用して検索可能な BLOB テキストを抽出するときには、インデックス作成でより良い結果を得るため、解析モードを割り当てられます。 既定では、インデクサーによって BLOB コンテンツが 1 つのテキスト チャンクとして解析されます。 ただし、すべての BLOB に同じエンコードのプレーンテキストが含まれている場合、`text` 解析モードを使用してインデックス作成のパフォーマンスを大幅に改善できます。
 
-次の場合は、`text` 解析モードを使用する必要があります。
+`text` 解析の使用に関する推奨事項を次に示します。
 
 + ファイルの種類が .txt の場合
 + どの種類のファイルでも、コンテンツそのものがテキストの場合 (プログラムのソース コード、HTML、XML など)。 マークアップ言語のファイルの場合、すべての構文文字が静的テキストとして送信されます。
 
-インデクサーは JSON にシリアル化されることを思い出してください。 テキスト ファイル全体のコンテンツが、1 つの大きなフィールド内で `"content": "<file-contents>"` としてインデックスが作成されます。 改行とリターンの命令は `\r\n\` として表されます。
+すべてのインデクサーは JSON にシリアル化されることを思い出してください。 既定では、テキスト ファイル全体のコンテンツが、1 つの大きなフィールド内で `"content": "<file-contents>"` としてインデックスが作成されます。 すべての改行およびリターン命令は `\r\n\` として表現され、コンテンツ フィールドに埋め込まれます。
 
-より詳細な結果が必要な場合は、次の解決策を検討してください。
+より詳細な結果が必要な場合、およびファイルの種類に互換性がある場合は、次の解決策を検討してください。
 
 + [`delimitedText`](search-howto-index-csv-blobs.md) 解析モード (ソースが CSV の場合)
 + [`jsonArray` または `jsonLines`](search-howto-index-json-blobs.md) (ソースが JSON の場合)

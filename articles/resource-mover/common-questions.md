@@ -5,25 +5,18 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/04/2021
 ms.author: raynew
-ms.openlocfilehash: bb8cfa3e1aa874f807ce46b254a22f3003c2f600
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: a75cd3c5dbf205f49aa606bfe96623a61bce39db
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222817"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007058"
 ---
 # <a name="common-questions"></a>一般的な質問
 
 この記事では、[Azure Resource Mover](overview.md) についてよく寄せられる質問の回答を示します。
-
-## <a name="general"></a>全般
-
-### <a name="is-resource-mover-generally-available"></a>Resource Mover は一般公開されていますか?
-
-Resource Mover は、現在、パブリック プレビュー段階です。 運用ワークロードがサポートされています。
-
 
 
 ## <a name="moving-across-regions"></a>リージョン間での移動
@@ -45,10 +38,21 @@ Resource Mover を使用すると、現在、リージョン間で次のリソ�
 - 内部およびパブリック ロード バランサー 
 - Azure SQL データベースとエラスティック プール
 
+### <a name="can-i-move-disks-across-regions"></a>リージョン間でディスクを移動できますか。
+
+リージョン間移動のリソースとしてディスクを選択することはできません。 ただし、ディスクは VM 移動の一部として移動されます。
+
+### <a name="what-does-it-mean-to-move-a-resource-group"></a>リソース グループを移動することは何を意味しますか。
+
+移動対象としてリソースが選択されると、それに対応するリソース グループが自動的に移動対象として追加されます。 このような動作が必要になるのは、宛先リソースを、ターゲットに置かれていたときと同じように、リソース グループの下に置く必要があるためです。 移動対象として追加された後、既存のリソース グループのカスタマイズと指定を選択できます。 リソース グループを移動しても、ソースのリソース グループに含まれるすべてのリソースが移動するとは **限らない** ことにご注意ください。
 
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>リージョン間でリソースを移動するときに、サブスクリプション間でそれらのリソースを移動できますか?
 
 宛先リージョンにリソースを移動した後、サブスクリプションを変更できます。 別のサブスクリプションへのリソースの移動に関する[詳細](../azure-resource-manager/management/move-resource-group-and-subscription.md)を参照してください。 
+
+### <a name="does-azure-resource-move-service-store-customer-data"></a>Azure Resource Move サービスでは、顧客のデータが保存されますか。 
+いいえ。 Resource Move サービスでは、顧客のデータは保存されません。顧客が移動対象として選択したリソースの追跡と進捗を促進するメタデータ情報だけが格納されます。
+
 
 ### <a name="where-is-the-metadata-for-moving-across-regions-stored"></a>リージョン間で移動するためのメタデータはどこに格納されていますか?
 
@@ -69,7 +73,7 @@ Microsoft サブスクリプションの [Azure Cosmos](../cosmos-db/database-en
 - ポータルでリージョン間でリソースを移動すると、この処理が自動的に行われます。
 - PowerShell を使用してリソースを移動する場合、コマンドレットを実行してシステム割り当て ID をコレクションに割り当ててから、適切なサブスクリプションのアクセス許可があるロールを ID プリンシパルに割り当てます。 
 
-### <a name="what-managed-identity-permissions-does-resource-mover-need"></a>Resource Mover に必要なマネージド ID のアクセス許可は何ですか?
+### <a name="what-managed-identity-permissions-does-resource-mover-need"></a>Resource Mover に必要なマネージド ID のアクセス許可は何ですか? 
 
 Azure Resource Mover マネージド ID には、少なくとも次のアクセス許可が必要です。 
 
@@ -94,6 +98,12 @@ Resource Mover のマネージド ID が *[なし]* にリセットされた。 
 
 ポータルで変更オプションを使用して、必要に応じてソースとターゲットの組み合わせを変更します。
 
-## <a name="next-steps"></a>次の手順
+### <a name="what-happens-when-i-remove-a-resource-from-a-list-of-move-resources"></a>リソース移動の一覧からリソースを削除すると、どうなりますか。
+
+移動一覧に追加したリソースは削除できます。 一覧からリソースを削除したときの動作は、リソースの状態に左右されます。 [詳細については、こちらを参照してください](remove-move-resources.md#vm-resource-state-after-removing)。
+
+
+
+## <a name="next-steps"></a>次のステップ
 
 Resource Mover コンポーネントおよび移動プロセスについて[詳しく学習する](about-move-process.md)。

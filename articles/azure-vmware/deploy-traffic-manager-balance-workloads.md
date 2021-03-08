@@ -2,13 +2,13 @@
 title: Azure VMware Solution ワークロードを分散するために Traffic Manager をデプロイする
 description: Traffic Manager を Azure VMware Solution と統合して、異なるリージョンにある複数のエンドポイント間でアプリケーションのワークロードを分散する方法について説明します。
 ms.topic: how-to
-ms.date: 12/29/2020
-ms.openlocfilehash: 6dbd58f17e29b045bd654bee90b6390f608803ab
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.date: 02/08/2021
+ms.openlocfilehash: 46570c5a61fc0a641d83126fd0f8ef35b3dc42cc
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809736"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988599"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-workloads"></a>Azure VMware Solution ワークロードを分散するために Traffic Manager をデプロイする
 
@@ -130,9 +130,9 @@ ms.locfileid: "97809736"
 
 ## <a name="next-steps"></a>次のステップ
 
-各項目の詳細情報
+Azure Traffic Manager と Azure VMware ソリューションの統合について理解したので、次のことについて確認する必要がある可能性があります。
 
-- [Azure VMware Solution で Azure Application Gateway を使用する](protect-azure-vmware-solution-with-application-gateway.md)
-- [Traffic Manager のルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)
-- [Azure の負荷分散サービスを組み合わせる](../traffic-manager/traffic-manager-load-balancing-azure.md)
-- [Traffic Manager のパフォーマンスを測定する](../traffic-manager/traffic-manager-performance-considerations.md)
+- [Azure VMware Solution で Azure Application Gateway を使用する](protect-azure-vmware-solution-with-application-gateway.md)。
+- [Traffic Manager のルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)。
+- [Azure の負荷分散サービスを組み合わせる](../traffic-manager/traffic-manager-load-balancing-azure.md)。
+- [Traffic Manager のパフォーマンスを測定する](../traffic-manager/traffic-manager-performance-considerations.md)。

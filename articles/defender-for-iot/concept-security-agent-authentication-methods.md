@@ -4,21 +4,21 @@ description: Defender for IoT サービスを使用する際に使用可能な�
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 896baa70fb6e18165a025459a063e33d705261ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/24/2021
+ms.author: shhazam
+ms.openlocfilehash: c72fa87201fb0d7fdd526f0e6f4eeb2c35192fc2
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931446"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521647"
 ---
 # <a name="security-agent-authentication-methods"></a>セキュリティ エージェントの認証方法
 
@@ -32,13 +32,13 @@ IoT ハブの Defender for IoT にオンボードされるデバイスごとに�
 
 ## <a name="authentication-methods"></a>認証方法
 
-AzureIoTSecurity エージェントで認証を実行するための 2 つの方法:
+Defender for IoT AzureIoTSecurity エージェントで認証を実行するための 2 つの方法を次に示します。
 
 - **SecurityModule** 認証モード<br>
 エージェントは、デバイス ID とは無関係にセキュリティモジュール ID を使用して認証されます。
 この認証の種類は、セキュリティ エージェントでセキュリティ モジュールを通して専用の認証方法 (対称キーのみ) を使用する場合に使用します。
 
-- **デバイス**認証モード<br>
+- **デバイス** 認証モード<br>
 この方法では、セキュリティ エージェントは最初にデバイス ID に対して認証します。 初期認証の後、Defender for IoT エージェントによって、REST API とデバイスの認証データを使用した IoT ハブへの **REST** 呼び出しが実行されます。 その後、Defender for IoT エージェントによって、セキュリティ モジュールの認証方法と IoT ハブからのデータが要求されます。 最後の手順では、Defender for IoT エージェントによって、Defender for IoT モジュールに対して認証が実行されます。
 
 この認証の種類は、セキュリティ エージェントで既存のデバイス認証方法 (自己署名証明書または対称キー) を再利用する場合に使用します。
@@ -48,7 +48,7 @@ AzureIoTSecurity エージェントで認証を実行するための 2 つの方
 ## <a name="authentication-methods-known-limitations"></a>認証方法の既知の制限
 
 - **SecurityModule** 認証モードでは、対称キーの認証のみがサポートされています。
-- **デバイス**認証モードでは、証明機関署名付き証明書はサポートされていません。
+- **デバイス** 認証モードでは、証明機関署名付き証明書はサポートされていません。
 
 ## <a name="security-agent-installation-parameters"></a>セキュリティ エージェントのインストール パラメーター
 
@@ -101,8 +101,7 @@ AzureIoTSecurity エージェントで認証を実行するための 2 つの方
     "HostName" : ""
 }
 ```
-
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 - [セキュリティ エージェントの概要](security-agent-architecture.md)
 - [セキュリティ エージェントをデプロイする](how-to-deploy-agent.md)

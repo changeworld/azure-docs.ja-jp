@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 04103de47e82764f7ec4effa84a9b2b7b90b9363
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 5f542b35110a6d967640ad91faead75f6cc0e0c2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034630"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593280"
 ---
 # <a name="monitoring-azure-cosmos-db-data-reference"></a>Azure Cosmos DB データの監視のリファレンス
 
@@ -22,7 +22,7 @@ ms.locfileid: "98034630"
 
 ## <a name="metrics"></a>メトリック
 
-Azure Cosmos DB に対応するすべてのメトリックは、**Cosmos DB 標準メトリック** 名前空間に格納されています。 すべての Azure Monitor サポート メトリック (Azure Cosmos DB を含む) の一覧については、[Azure Monitor でサポートされているメトリック](../azure-monitor/platform/metrics-supported.md)に関するページを参照してください。 このセクションには、Azure Cosmos DB 用に自動的に収集されたすべてのプラットフォーム メトリックが一覧表示されています。  
+Azure Cosmos DB に対応するすべてのメトリックは、**Cosmos DB 標準メトリック** 名前空間に格納されています。 すべての Azure Monitor サポート メトリック (Azure Cosmos DB を含む) の一覧については、[Azure Monitor でサポートされているメトリック](../azure-monitor/essentials/metrics-supported.md)に関するページを参照してください。 このセクションには、Azure Cosmos DB 用に自動的に収集されたすべてのプラットフォーム メトリックが一覧表示されています。  
 
 ### <a name="request-metrics"></a>要求のメトリック
 
@@ -71,7 +71,7 @@ Azure Cosmos DB に対応するすべてのメトリックは、**Cosmos DB 標�
 | CassandraRequestCharges (Cassandra 要求の料金) | カウント (Sum、Min、Max、Avg) | Cassandra API によって使用される要求ユニット数 | DatabaseName、CollectionName、Region、OperationType、ResourceType| All| Cassandra API アカウントによって 1 分あたりで使用される RU を監視するために使用されます。|
 | CassandraConnectionClosures (Cassandra 接続の終了) |カウント (カウント) |終了した Cassandra 接続の数| ClosureReason、Region| All | クライアントと Azure Cosmos DB Cassandra API の間の接続を監視するために使用されます。|
 
-詳細については、[Azure Monitor でサポートされているすべてのプラットフォーム メトリック](../azure-monitor/platform/metrics-supported.md)の一覧を参照してください。
+詳細については、[Azure Monitor でサポートされているすべてのプラットフォーム メトリック](../azure-monitor/essentials/metrics-supported.md)の一覧を参照してください。
 
 ## <a name="resource-logs"></a>リソース ログ
 
@@ -100,7 +100,7 @@ Azure Cosmos DB に対応するすべてのメトリックは、**Cosmos DB 標�
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | [リソース トークン](./secure-access-to-data.md#resource-tokens)が認証に使われると、この値は空ではありません。 値は、ユーザーのリソース ID を示します。 |
 | **responseLength** | **responseLength_s** | 応答の長さ (バイト単位)。|
 
-すべての Azure Monitor ログ カテゴリと関連スキーマのリンクの一覧については、[Azure Monitor のログ カテゴリとスキーマ](../azure-monitor/platform/resource-logs-schema.md)に関するページを参照してください。 
+すべての Azure Monitor ログ カテゴリと関連スキーマのリンクの一覧については、[Azure Monitor のログ カテゴリとスキーマ](../azure-monitor/essentials/resource-logs-schema.md)に関するページを参照してください。 
 
 ## <a name="azure-monitor-logs-tables"></a>Azure Monitor ログ テーブル
 
@@ -109,4 +109,4 @@ Azure Cosmos DB は、Azure Monitor ログの Kusto テーブルを使用しま�
 ## <a name="see-also"></a>参照
 
 - Azure Cosmos DB 監視の詳細については、「[Azure Cosmos DB の監視](monitor-cosmos-db.md)」を参照してください。
-- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。
+- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/essentials/monitor-azure-resource.md)」を参照してください。

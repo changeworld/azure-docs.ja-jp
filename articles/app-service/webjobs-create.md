@@ -8,12 +8,16 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 2743efa5a9067f0667d54be0b7df75a627e60fcd
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+adobe-target: true
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./webjobs-create-ieux
+ms.openlocfilehash: 8afc8ca9b0dedb10ecdb30e8abb22a5d0986de5b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674039"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723879"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service で Web ジョブを使用してバックグラウンド タスクを実行する
 
@@ -31,7 +35,7 @@ Azure Functions は、プログラムとスクリプトを実行する別の方�
 
 ## <a name="webjob-types"></a>Web ジョブの種類
 
-次の表で、 *継続的* Web ジョブと *トリガーされる* Web ジョブの違いを説明します。
+次の表で、*継続的* Web ジョブと *トリガーされる* Web ジョブの違いを説明します。
 
 
 |継続的  |トリガー  |

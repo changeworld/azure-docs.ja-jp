@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5e0c2541c398f2e135b8763cc753ec8c20c3967d
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 8263e0805f48976222e66922be8c04e0902101d6
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953752"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201840"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure Digital Twins インスタンスと認証を設定する (ポータル)
 
@@ -56,8 +56,8 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 
 ここでは、 **[リソースの作成]** プロセスで他のタブを使用して、設定中に構成できる追加のオプションを示します。
 
-* **ネットワーク**:このタブでは、[Azure Private Link](../private-link/private-link-overview.md) でプライベート エンドポイントを有効にして、インスタンスがパブリック ネットワークに露出されないようにすることができます。 手順については、[*方法: Private Link を使用してプライベート アクセスを有効にする (プレビュー)* ](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation)」を参照してください。
-* **[詳細設定]** :このタブでは、[エンドポイント](concepts-route-events.md)にイベントを転送するときに使用できる、インスタンスの[システムマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にすることができます。 手順については、[*方法: イベントをルーティングするためにマネージド ID を有効にする (プレビュー)* ](how-to-enable-managed-identities.md#add-a-system-managed-identity-during-instance-creation)」を参照してください。
+* **ネットワーク**:このタブでは、[Azure Private Link](../private-link/private-link-overview.md) でプライベート エンドポイントを有効にして、インスタンスがパブリック ネットワークに露出されないようにすることができます。 手順については、[*方法: Private Link を使用してプライベート アクセスを有効にする (プレビュー)*](./how-to-enable-private-link-portal.md#add-a-private-endpoint-during-instance-creation)」を参照してください。
+* **[詳細設定]** :このタブでは、[エンドポイント](concepts-route-events.md)にイベントを転送するときに使用できる、インスタンスの [システムマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にすることができます。 手順については、[*方法: イベントをルーティングするためにマネージド ID を有効にする (プレビュー)*](./how-to-enable-managed-identities-portal.md#add-a-system-managed-identity-during-instance-creation)」を参照してください。
 * **タグ**:このタブでは、Azure リソース間での整理に役立てるために、インスタンスにタグを追加できます。 Azure リソース タグの詳細については、[*論理的な組織化のためのリソース、リソース グループ、およびサブスクリプションへのタグ付け*](../azure-resource-manager/management/tag-resources.md)に関する記事を参照してください。
 
 ### <a name="verify-success-and-collect-important-values"></a>正常に実行されたことを確認して重要な値を収集する
@@ -111,7 +111,7 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins CLI コマンドを使用して、インスタンスでの個別の REST API 呼び出しをテストします。 
-* [az dt reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
+* [az dt reference](/cli/azure/ext/azure-iot/dt)
 * [*方法: Azure Digital Twins CLI を使用する*](how-to-use-cli.md)
 
 または、認証コードを使用してクライアント アプリケーションをインスタンスに接続する方法を確認します。

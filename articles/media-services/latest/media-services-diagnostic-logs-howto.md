@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1d9252a5fdf7b1c68c1bb64bd22ede8640184a0c
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 3093d20fbe0a1ded68e34e816b7fc865a237ad92
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953956"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576314"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Media Services 診断ログの監視
 
@@ -183,9 +183,9 @@ az monitor diagnostic-settings create --name amsv3diagnostic \
 
 ## <a name="see-also"></a>関連項目
 
-* [Azure Monitor のメトリック](../../azure-monitor/platform/data-platform.md)
-* [Azure Monitor 診断ログ](../../azure-monitor/platform/platform-logs-overview.md)
-* [Azure リソースからログ データを収集して使用する方法](../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure Monitor のメトリック](../../azure-monitor/data-platform.md)
+* [Azure Monitor 診断ログ](../../azure-monitor/essentials/platform-logs-overview.md)
+* [Azure リソースからログ データを収集して使用する方法](../../azure-monitor/essentials/platform-logs-overview.md)
 
 ## <a name="next-steps"></a>次のステップ
 

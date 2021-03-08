@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0155ed4df9ee2c22d1461633ac9efe225b53f9ca
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 627c6bcd01a11356d1f207aa079c75d4b6194c59
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530512"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093263"
 ---
 # <a name="azure-security-baseline-for-cost-management"></a>Cost Management 用の Azure セキュリティ ベースライン
 
@@ -162,7 +162,7 @@ Azure Privileged Identity Management (PIM) を使用して、Azure リソース�
 
 ### <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7:Just Enough Administration (最小限の特権の原則) に従う 
 
-**ガイダンス**:Azure Cost Management は、リソース (予算、保存したレポートなど) を管理するために、Azure ロールベースのアクセス制御 (RBAC) と統合されています。 Azure RBAC を使用すると、ロールの割り当てによって Azure リソースへのアクセスを管理できます。 これらのロールを、ユーザー、グループ、サービス プリンシパルに割り当てることができます。 特定のリソースに対して定義済みの組み込みロールがあります。これらのロールは、Azure CLI、Azure PowerShell、Azure portal などのツールを使用してインベントリまたは照会できます。 Azure RBAC を使用してリソースに割り当てる特権は、常に、ロールで必要なものに制限する必要があります。 これは、Azure AD Privileged Identity Management (PIM) のジャスト イン タイム (JIT) アプローチを補完するものであり、定期的に見直す必要があります。
+**ガイダンス**:Azure Cost Management は、リソース (予算、保存したレポートなど) を管理するために、Azure ロールベースのアクセス制御 (RBAC) と統合されています。 Azure RBAC を使用すると、ロールの割り当てによって Azure リソースへのアクセスを管理できます。 これらのロールを、ユーザー、グループ、サービス プリンシパルに割り当てることができます。 特定のリソースに対して定義済みの組み込みロールがあります。これらのロールは、Azure CLI、Azure PowerShell、Azure portal などのツールを使用してインベントリまたは照会できます。 Azure RBAC を使用してリソースに割り当てる特権は、常に、ロールで必要なものに制限する必要があります。 これは、Azure Active Directory Privileged Identity Management (PIM) のジャスト イン タイム (JIT) アプローチを補完するものであり、定期的に見直す必要があります。
 
 組み込みのロールを使用してアクセス許可を割り当て、カスタム ロールは必要な場合にのみ作成します。
 
@@ -174,7 +174,7 @@ Azure Cost Management には組み込みロールとして、閲覧者と共同�
 
 Azure ロールベースのアクセス制御 (Azure RBAC) とは../role-based-access-control/overview.md 
 
-- [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md) 
+- [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md) 
 
 - [Azure AD の ID およびアクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 

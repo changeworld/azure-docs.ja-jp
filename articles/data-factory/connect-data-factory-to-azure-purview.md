@@ -1,24 +1,20 @@
 ---
 title: Data Factory を Azure Purview に接続する
 description: Data Factory を Azure Purview に接続する方法について説明します
-services: data-factory
 ms.author: lle
 author: lrtoyou1223
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: ce37e26730fbef9e5e40fd95190727062f9044ac
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 44f093f96d0f4653a6fcca94aaa97264c93e3c7d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428941"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727942"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Data Factory を Azure Purview に接続する (プレビュー)
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -44,10 +40,10 @@ Azure Purview アカウントを Data Factory に登録した後に、Azure Data
 
 :::image type="content" source="./media/data-factory-purview/register-purview-account-tag.png" alt-text="Purview アカウント登録のタグのスクリーンショット。":::
 
-2. Azure Purview アカウントを Data Factory に登録するためのアクセス許可が付与されているかどうかを確認します。 「[Azure Data Factory と Azure Purview を接続する方法](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory#create-new-data-factory-connection)」を参照してください。
+2. Azure Purview アカウントを Data Factory に登録するためのアクセス許可が付与されているかどうかを確認します。 「[Azure Data Factory と Azure Purview を接続する方法](../purview/how-to-link-azure-data-factory.md#create-new-data-factory-connection)」を参照してください。
 
 ### <a name="register-data-factory-in-azure-purview"></a>Azure Purview に Data Factory を登録する
-Azure Purview に Data Factory を登録する方法については、「[Azure Data Factory と Azure Purview を接続する方法](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory)」を参照してください。 
+Azure Purview に Data Factory を登録する方法については、「[Azure Data Factory と Azure Purview を接続する方法](../purview/how-to-link-azure-data-factory.md)」を参照してください。 
 
 ## <a name="report-lineage-data-to-azure-purview"></a>系列データを Azure Purview に報告する
 お客様が Azure Data Factory でコピー、データ フロー、または SSIS パッケージの実行アクティビティを実行すると、お客様は依存関係を取得し、データ ソースと宛先の間のワークフロー プロセス全体の概要を把握できます。

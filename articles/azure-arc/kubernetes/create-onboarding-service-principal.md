@@ -1,31 +1,31 @@
 ---
-title: Azure Arc 対応オンボード サービス プリンシパルの作成 (プレビュー)
+title: Azure Arc 対応 Kubernetes 用のオンボード サービス プリンシパルを作成する
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/19/2020
+ms.date: 03/03/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: 'Azure Arc 対応オンボード サービス プリンシパルを作成します '
+description: 'Azure Arc 対応オンボード サービス プリンシパルの作成 '
 keywords: Kubernetes, Arc, Azure, コンテナー
-ms.openlocfilehash: 8eb38dbc04d964c0ab4869e801099ee9420d6ac2
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 610b355073473f0e492350753a523b7943666f13
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184698"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121747"
 ---
-# <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Azure Arc 対応オンボード サービス プリンシパルの作成 (プレビュー)
+# <a name="create-an-onboarding-service-principal-for-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes 用のオンボード サービス プリンシパルを作成する
 
 ## <a name="overview"></a>概要
 
-Kubernetes クラスターを Azure Arc にオンボードするために、権限が制限されたロールが割り当てられたサービス プリンシパルを使用できます。これは、Azure Pipelines や GitHub Actions などの継続的インテグレーションおよび継続的デプロイ (CI/CD) パイプラインで役立ちます。
+限定された権限のロールの割り当てを持つサービス プリンシパルを使用して、Kubernetes クラスターを Azure Arc に接続できます。 この機能は、Azure Pipelines や GitHub Actions などの継続的インテグレーションおよび継続的デプロイ (CI/CD) パイプラインで役立ちます。
 
-以下の手順では、Kubernetes クラスターを Azure Arc にオンボードするためにサービス プリンシパルを使用する方法について説明します。
+以下の手順を行って、Kubernetes クラスターを Azure Arc に接続するためにサービス プリンシパルを使用する方法について説明します。
 
 ## <a name="create-a-new-service-principal"></a>新しいサービス プリンシパルを作成する
 
-わかりやすい名前で新しいサービス プリンシパルを作成します。 この名前は、Azure Active Directory テナントで一意である必要があります。
+Azure Active Directory テナントに固有のわかりやすい名前で、新しいサービス プリンシパルを作成します。
 
 ```console
 az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onboarding"
@@ -45,16 +45,16 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onb
 
 ## <a name="assign-permissions"></a>アクセス許可の割り当て
 
-新しいサービス プリンシパルを作成したら、新しく作成したプリンシパルに "Kubernetes クラスター - Azure Arc のオンボード" ロールを割り当てます。 これは、アクセス許可が制限された組み込みの Azure ロールであり、プリンシパルはクラスターを Azure に登録することだけが許可されます。 プリンシパルは、サブスクリプション内の他のクラスターまたはリソースを更新、削除、変更することはできません。
+新しく作成したサービス プリンシパルに "Kubernetes クラスター - Azure Arc のオンボード" ロールを割り当てます。 アクセス許可が制限されたこの組み込みの Azure ロールでは、プリンシパルがクラスターを Azure に登録することだけが許可されます。 この割り当て済みのロールを持つプリンシパルは、サブスクリプション内の他のクラスターまたはリソースを更新、削除、変更することはできません。
 
 機能が制限されているため、お客様はこのプリンシパルを再利用して、複数のクラスターを簡単にオンボードできます。
 
-ロールを割り当てるときに適切な `--scope` 引数を渡すことで、アクセス許可をさらに制限できます。 これにより、お客様はクラスターの登録を制限できます。 次のシナリオは、さまざまな `--scope` パラメーターでサポートされています。
+ロールを割り当てるときに適切な `--scope` 引数を渡すことで、アクセス許可をさらに制限できます。 これにより、管理者はクラスターの登録をサブスクリプションまたはリソース グループのスコープに制限できます。 次のシナリオは、さまざまな `--scope` パラメーターでサポートされています。
 
 | リソース  | `scope` 引数| 結果 |
 | ------------- | ------------- | ------------- |
-| サブスクリプション | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | サービス プリンシパルは、指定されたサブスクリプションの既存のリソース グループに任意のクラスターを登録できます。 |
-| リソース グループ | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | サービス プリンシパルは、リソース グループ `myGroup` に __のみ__、クラスターを登録できます。 |
+| サブスクリプション | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | サービス プリンシパルで、そのサブスクリプションの下にある任意のリソース グループにクラスターを登録できます。 |
+| リソース グループ | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | サービス プリンシパルで、リソース グループ `myGroup` に __のみ__、クラスターを登録できます。 |
 
 ```console
 az role assignment create \
@@ -80,7 +80,7 @@ az role assignment create \
 
 ## <a name="use-service-principal-with-the-azure-cli"></a>Azure CLI でサービス プリンシパルを使用する
 
-新しく作成したサービス プリンシパルを参照します。
+次のコマンドを使用して、新しく作成されたサービス プリンシパルを参照します。
 
 ```azurecli
 az login --service-principal -u mySpnClientId -p mySpnClientSecret --tenant myTenantID
@@ -89,4 +89,4 @@ az connectedk8s connect -n myConnectedClusterName -g myResoureGroupName
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Policy を使用してクラスター構成を管理する](./use-azure-policy.md)
+[Azure Policy を使用して](./use-azure-policy.md)クラスター構成を管理します。

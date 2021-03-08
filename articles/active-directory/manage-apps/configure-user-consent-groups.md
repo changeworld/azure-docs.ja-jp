@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: cd1eb98fca9fe25b6672863c02b8a78e57063e5a
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 24b2b8ee6398ef1306aee59b5d7ca7525284f96b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259323"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644549"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>グループ データにアクセスするアプリに対するグループ所有者の同意を構成する
 
@@ -124,4 +124,4 @@ Azure AD PowerShell プレビュー モジュールである [AzureADPreview](/p
 * [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)
 
 ヘルプを表示したり、質問に対する回答を検索したりするには、以下を参照してください。
-* [Microsoft Q&A の Azure AD](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+* [Microsoft Q&A の Azure AD](/answers/topics/azure-active-directory.html)

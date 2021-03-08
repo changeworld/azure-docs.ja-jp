@@ -2,13 +2,13 @@
 title: Azure Monitor での Azure Service Bus メトリック | Microsoft Docs
 description: この記事では、Azure Monitor を使用して Service Bus エンティティ (キュー、トピック、およびサブスクリプション) を監視する方法について説明します。
 ms.topic: article
-ms.date: 11/18/2020
-ms.openlocfilehash: 1f8bd9484bf2a2106818da1d6e4ef21e937d2ac3
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.date: 02/12/2021
+ms.openlocfilehash: 1e57def2ee7409ae62cdbe065c36e8a53a140e18
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916884"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570578"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor での Azure Service Bus メトリック
 
@@ -21,9 +21,9 @@ Azure Monitor には、さまざまな Azure サービスにわたって監視�
 
 ## <a name="access-metrics"></a>メトリックにアクセスする
 
-Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Azure Monitor ログや Event Hubs などの分析ソリューションを使用してアクセスできます。 詳しくは、「[Metrics in Azure Monitor (Azure Monitor のメトリック)](../azure-monitor/platform/data-platform-metrics.md)」をご覧ください。
+Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Azure Monitor ログや Event Hubs などの分析ソリューションを使用してアクセスできます。 詳しくは、「[Metrics in Azure Monitor (Azure Monitor のメトリック)](../azure-monitor/essentials/data-platform-metrics.md)」をご覧ください。
 
-メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 この値は、Azure Monitor の[診断設定](../azure-monitor/platform/diagnostic-settings.md)で構成します。
+メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 この値は、Azure Monitor の[診断設定](../azure-monitor/essentials/diagnostic-settings.md)で構成します。
 
 ## <a name="access-metrics-in-the-portal"></a>ポータルでメトリックにアクセスする
 
@@ -74,7 +74,7 @@ Azure Monitor のメトリックとアラートは、アラート単位で課金
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-|受信メッセージ|指定された期間にわたって Service Bus に送信されたイベントまたはメッセージの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
+|受信メッセージ|指定された期間にわたって Service Bus に送信されたイベントまたはメッセージの数。 このメトリックには、自動的に転送されるメッセージは含まれません。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
 |送信メッセージ|指定された期間にわたって Service Bus から受信されたイベントまたはメッセージの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
 | メッセージ| キュー/トピック内のメッセージの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> ディメンション:エンティティ名 |
 | アクティブなメッセージ| キュー/トピック内のアクティブなメッセージの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> ディメンション:エンティティ名 |
@@ -100,7 +100,7 @@ Azure Monitor のメトリックとアラートは、アラート単位で課金
 > [!NOTE] 
 > 次のメトリックは **プレミアム** 層でのみ使用可能です。 
 > 
-> Premium レベルの名前空間の停止を監視するための重要なメトリックは次のとおりです。**名前空間ごとの CPU 使用率** と **名前空間 1 つあたりのメモリ サイズ**。 Azure Monitor を使用して、これらのメトリックの[アラートを設定](../azure-monitor/platform/alerts-metric.md)します。
+> Premium レベルの名前空間の停止を監視するための重要なメトリックは次のとおりです。**名前空間ごとの CPU 使用率** と **名前空間 1 つあたりのメモリ サイズ**。 Azure Monitor を使用して、これらのメトリックの[アラートを設定](../azure-monitor/alerts/alerts-metric.md)します。
 > 
 > 監視できるもう 1 つのメトリックは、**スロットルされた要求** です。 これは、名前空間がメモリ、CPU、およびブローカー接続の制限内にある限り、問題にはなりません。 詳細については、「[Azure Service Bus Premium レベルでのスロットル](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier)」を参照してください。
 

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/20/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 56751adedfc01b3927acc65f47910c3b1281f09c
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 0738dc7f2b7012002fc6ddf5cc68dd0c8e42b04d
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98811571"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522481"
 ---
 # <a name="sensor-data-mining-queries"></a>センサーのデータ マイニング クエリ
 
@@ -55,11 +55,11 @@ ms.locfileid: "98811571"
 
 クエリを使用して、さまざまなセキュリティ チームの幅広いセキュリティ ニーズに対処できます。
 
-- **SOC インシデント対応**: リアルタイムでレポートを生成して、迅速なインシデント対応を支援します。 たとえば、修正プログラムの適用が必要な可能性があるデバイスの一覧を示すレポートを生成します。
+- **SOC インシデント対応**: リアルタイムでレポートを生成して、迅速なインシデント対応を支援します。 たとえば、データ マイニングでは、修正プログラムの適用が必要な可能性があるデバイスの一覧を示すレポートを生成できます。
 
 - **フォレンジクス**: 調査レポートの履歴データに基づくレポートを生成します。
 
-- **IT ネットワークの整合性**: 全体的なネットワーク セキュリティの向上に役立つレポートを生成します。 たとえば、認証資格情報が弱いデバイスを一覧表示するレポートを生成します。
+- **IT ネットワークの整合性**: 全体的なネットワーク セキュリティの向上に役立つレポートを生成します。 たとえば、認証資格情報が弱いデバイスを一覧表示するレポートを生成できます。
 
 - **可視性**: すべてのクエリ項目を対象として、ネットワークのすべてのベースライン パラメーターが表示されるレポートを生成します。
 
@@ -285,3 +285,7 @@ CVE レポートで手動の変更を行うには、次のようにします。
 3. 右側のドロップダウン リストから、生成するレポートを選択します。
 
 4. レポート結果の PDF を作成するには、:::image type="icon" source="media/how-to-generate-reports/pdf-report-icon.png" border="false"::: を選択します。
+
+## <a name="next-steps"></a>次のステップ
+
+[センサーの傾向と統計のレポート](how-to-create-trends-and-statistics-reports.md)。

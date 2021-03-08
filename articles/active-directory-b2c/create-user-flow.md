@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 418446e0d465b606b8d580297cebd73c466d4841
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 9bd436b972dfb1549232831b1f07c3726ff459dd
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109014"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556498"
 ---
 # <a name="create-a-user-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フローを作成する
 
@@ -27,7 +27,7 @@ Azure Active Directory B2C (Azure AD B2C) テナントにさまざまな種類�
 ## <a name="before-you-begin"></a>開始する前に
 
 - 新しいユーザー フローのテストに使用する **アプリケーションを登録** します。 例については、「[チュートリアル: Azure Active Directory B2C に Web アプリケーションを登録する](tutorial-register-applications.md)」を参照してください。
-- Azure AD、Amazon、Facebook、GitHub、LinkedIn、Microsoft、Twitter などのプロバイダーを使用したユーザー サインインを有効にする場合は、**外部 ID プロバイダーを追加** します。 例については、「[Tutorial:Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する](tutorial-add-identity-providers.md)」を参照してください。
+- Azure AD、Amazon、Facebook、GitHub、LinkedIn、Microsoft、Twitter などのプロバイダーを使用したユーザー サインインを有効にする場合は、**外部 ID プロバイダーを追加** します。 [Azure AD B2C でのアプリケーションへの ID プロバイダーの追加](add-identity-provider.md)に関する記事をご覧ください。
 - **ローカル アカウント ID プロバイダーを構成** して、テナントのローカル アカウントでサポートする ID の種類 (電子メール、ユーザー名、電話番号) を指定します。 個々のユーザー フローを作成するときに、これらのサポートされている ID の種類から選択できます。 ユーザーがユーザー フローを完了すると、Azure AD B2C ディレクトリにローカル アカウントが作成され、**ローカル アカウント** ID プロバイダーによってユーザーの情報が認証されます。 次の手順に従って、テナントのローカル アカウント ID プロバイダーを構成します。
 
    1. [Azure portal](https://portal.azure.com/) にサインインします。 
@@ -66,7 +66,7 @@ Azure Active Directory B2C (Azure AD B2C) テナントにさまざまな種類�
 
    - **[ローカル アカウント]** : ユーザーが Azure AD B2C テナントにローカル アカウントを作成できるようにする場合は、使用する識別子の種類 (電子メール、ユーザー ID、電話など) を選択します。 [ローカル アカウント ID プロバイダー](#before-you-begin)設定で構成されている ID の種類だけが表示されます。
 
-   - **[ソーシャル ID プロバイダー]** : Azure AD、Amazon、Facebook、GitHub、LinkedIn、Microsoft、Twitter など、[追加したソーシャル ID プロバイダー](tutorial-add-identity-providers.md)を使用したユーザー サインインを許可する場合は、一覧からプロバイダーを選択します。
+   - **[ソーシャル ID プロバイダー]** : Azure AD、Amazon、Facebook、GitHub、LinkedIn、Microsoft、Twitter など、[追加したソーシャル ID プロバイダー](add-identity-provider.md)を使用したユーザー サインインを許可する場合は、一覧からプロバイダーを選択します。
 
 9. **[ユーザー属性と要求]** で、サインアップ中にユーザーから収集して送信する要求と属性を選択します。 **[詳細を表示]** を選択します。 属性と要求を選択し、 **[OK]** を選択します。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 025a94cf7d163d41486ef218e70d9eb48e93d31c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 08aa69db90901447297e06cd111b6b0174e6637a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881318"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575086"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure Machine Learning の Azure セキュリティ ベースライン
 
@@ -155,9 +155,9 @@ Azure Machine Learning service では、複雑さが最小限になるように�
 
 **ガイダンス**: Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Machine Learning に関連したネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -193,9 +193,9 @@ Azure Machine Learning service では、複雑さが最小限になるように�
 
 また、セキュリティとコンプライアンスの目的で、Azure Machine Learning service 操作のログを関連付けることもできます。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Azure Machine Learning でログ記録を有効にする](./how-to-track-experiments.md)
 
@@ -211,7 +211,7 @@ Azure Machine Learning service では、複雑さが最小限になるように�
 
 Azure Machine Learning では、さまざまなコンピューティング リソース (ユーザー独自のコンピューティング リソース含む) にわたって、さまざまなサポートが提供されています。 ユーザーの組織がコンピューティング リソースを所有している場合は、Azure Security Center を使用してオペレーティング システムを監視します。 
 
-- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Azure Security Center のデータ収集について](../security-center/security-center-enable-data-collection.md)
 
@@ -223,7 +223,7 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 **ガイダンス**:Azure Monitor で、組織のコンプライアンス規則に従って、Azure Machine Learning インスタンスに関連付けられている Log Analytics ワークスペースのログ保有期間を設定します。
 
-- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用外
 
@@ -241,9 +241,9 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics クエリの使用方法](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics クエリの使用方法](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -257,7 +257,7 @@ Azure Machine Learning では、さまざまなコンピューティング リ�
 
 - [Azure Machine Learning アラートの詳細](monitor-azure-machine-learning.md#alerts)
 
-- [Log Analytics ワークスペースのログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics ワークスペースのログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -565,7 +565,7 @@ Microsoft では、Machine Learning 用の基になるインフラストラク�
 
 **ガイダンス**: Azure Machine Learning の運用インスタンスやその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用外
 

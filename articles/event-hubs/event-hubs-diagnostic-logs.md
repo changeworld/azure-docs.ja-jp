@@ -2,22 +2,22 @@
 title: 診断ログの設定 - Azure Event Hub | Microsoft Docs
 description: Azure のイベント ハブのアクティビティ ログおよび診断ログを設定する方法について説明します。
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: 015814b9a56ec963f5209f971f096ac6c173d7e1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.date: 02/25/2021
+ms.openlocfilehash: 538ff86f1ef4c06bb5400af3fbd2394134aa17f3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131986"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742536"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure イベント ハブの診断ログを設定する
 
 Azure Event Hubs の 2 種類のログを表示できます。
 
-* **[アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)** : これらのログには、ジョブで実行された操作に関する情報が含まれます。 このログは常に有効になっています。 アクティビティ ログ エントリを確認するには、Azure portal のイベント ハブ名前空間の左側のウィンドウで **[アクティビティ ログ]** を選択します。 次に例を示します。"名前空間の作成または更新"、"イベント ハブの作成または更新"。
+* **[アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)** : これらのログには、ジョブで実行された操作に関する情報が含まれます。 このログは常に有効になっています。 アクティビティ ログ エントリを確認するには、Azure portal のイベント ハブ名前空間の左側のウィンドウで **[アクティビティ ログ]** を選択します。 次に例を示します。"名前空間の作成または更新"、"イベント ハブの作成または更新"。
 
     ![Event Hubs 名前空間のアクティビティ ログ](./media/event-hubs-diagnostic-logs/activity-log.png)
-* **[診断ログ](../azure-monitor/platform/platform-logs-overview.md)** : 診断ログでは、API を使用して、または言語 SDK 上の管理クライアントを使用して、名前空間に対して実行された操作とアクションに関する詳細な情報が提供されます。 
+* **[診断ログ](../azure-monitor/essentials/platform-logs-overview.md)** : 診断ログでは、API を使用して、または言語 SDK 上の管理クライアントを使用して、名前空間に対して実行された操作とアクションに関する詳細な情報が提供されます。 
     
     次のセクションでは、Event Hubs 名前空間の診断ログを有効にする方法について説明します。
 
@@ -36,7 +36,7 @@ Azure Event Hubs の 2 種類のログを表示できます。
 
     新しい設定は、10 分ほどで有効になります。 その後、構成されたアーカイブ ターゲットのログが **[診断ログ]** ウィンドウに表示されます。
 
-    診断の構成の詳細については、[Azure 診断ログの概要](../azure-monitor/platform/platform-logs-overview.md)に関するページを参照してください。
+    診断の構成の詳細については、[Azure 診断ログの概要](../azure-monitor/essentials/platform-logs-overview.md)に関するページを参照してください。
 
 ## <a name="diagnostic-logs-categories"></a>診断ログのカテゴリ
 
@@ -207,7 +207,7 @@ Event Hubs 仮想ネットワーク (VNet) 接続イベントの JSON には、�
 | `Count` | 指定されたアクションの発生回数 |
 | `ResourceId` | Azure Resource Manager リソース ID。 |
 
-仮想ネットワーク ログが生成されるのは、名前空間で **選択されたネットワーク** から、または **特定の IP アドレス** (IP フィルター規則) からのアクセスが許可されている場合のみです。 これらの機能を使用して名前空間へのアクセスを制限することを望まず、Event Hubs 名前空間に接続しているクライアントの IP アドレスを追跡するために引き続き仮想ネットワーク ログを取得したい場合は、次の回避策を使用できます。 IP フィルター処理を有効にし、アドレス指定可能な IPv4 の範囲の合計 (1.0.0.0/1 - 255.0.0.0/1) を追加します。 Event Hubs では IPv6 範囲はサポートされていません。 
+仮想ネットワーク ログが生成されるのは、名前空間で **選択されたネットワーク** から、または **特定の IP アドレス** (IP フィルター規則) からのアクセスが許可されている場合のみです。 これらの機能を使用して名前空間へのアクセスを制限することを望まず、Event Hubs 名前空間に接続しているクライアントの IP アドレスを追跡するために引き続き仮想ネットワーク ログを取得したい場合は、次の回避策を使用できます。 [IP フィルター処理を有効](event-hubs-ip-filtering.md)にし、アドレス指定可能な IPv4 の範囲の合計 (1.0.0.0/1 - 255.0.0.0/1) を追加します。 Event Hubs の IP フィルターでは IPv6 範囲はサポートされていません。 ログには、IPv6 形式のプライベート エンドポイント アドレスが表示される場合があることに注意してください。 
 
 ### <a name="example"></a>例
 

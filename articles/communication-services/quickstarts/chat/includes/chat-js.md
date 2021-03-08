@@ -10,20 +10,20 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: d0754ea2d7e8f8f59ec475be8e27fcffd058c11f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 18282bbe902599c471775a853704e459ea44bac1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376868"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661638"
 ---
 ## <a name="prerequisites"></a>前提条件
 開始する前に、必ず次のことを行ってください。
 
-- アクティブなサブスクリプションがある Azure アカウントを作成します。 詳細については、[アカウントの無料作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)に関するページを参照してください。 
+- アクティブなサブスクリプションがある Azure アカウントを作成します。 詳細については、[アカウントの無料作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)に関するページを参照してください。
 - [Node.js](https://nodejs.org/en/download/) アクティブ LTS およびメンテナンス LTS バージョン (8.11.1 および 10.14.1 を推奨) をインストールします。
-- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../../create-communication-resource.md)に関するページを参照してください。 このクイックスタート用に、自分のリソースの**エンドポイント**を記録する必要があります。
-- [ユーザー アクセス トークン](../../access-tokens.md)。 スコープは必ず "chat" に設定し、トークン文字列と userId 文字列をメモしてください。
+- Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../../create-communication-resource.md)に関するページを参照してください。 このクイックスタート用に、自分のリソースの **エンドポイントを記録する** 必要があります。
+- "*3 人*" の ACS ユーザーを作成し、それに対して [ユーザー アクセス トークン](../../access-tokens.md)を発行します。 スコープは必ず **chat** に設定し、**トークン文字列と userId 文字列をメモ** してください。 完全なデモでは、最初の 2 名の参加者でスレッドを作成し、3 人目の参加者をスレッドに追加します。
 
 ## <a name="setting-up"></a>設定
 
@@ -34,14 +34,12 @@ ms.locfileid: "91376868"
 ```console
 mkdir chat-quickstart && cd chat-quickstart
 ```
-   
+
 既定の設定で `npm init -y` を実行して、**package.json** ファイルを作成します。
 
 ```console
 npm init -y
 ```
-
-テキスト エディターを使用して、プロジェクトのルート ディレクトリに **start-chat.js** というファイルを作成します。 このクイックスタートのソース コードはすべて、以降のセクションでこのファイルに追加することになります。
 
 ### <a name="install-the-packages"></a>パッケージのインストール
 
@@ -50,7 +48,7 @@ npm init -y
 ```console
 npm install @azure/communication-common --save
 
-npm install @azure/communication-administration --save
+npm install @azure/communication-identity --save
 
 npm install @azure/communication-signaling --save
 
@@ -70,8 +68,6 @@ npm install webpack webpack-cli webpack-dev-server --save-dev
 
 自分のプロジェクトのルート ディレクトリに、**index.html** ファイルを作成します。 このファイルをテンプレートとして使い、JavaScript 用 Azure Communication チャット クライアント ライブラリを使用してチャット機能を追加します。
 
-次にコードを示します。
-
 ```html
 <!DOCTYPE html>
 <html>
@@ -85,32 +81,36 @@ npm install webpack webpack-cli webpack-dev-server --save-dev
   </body>
 </html>
 ```
-このクイックスタートのアプリケーション ロジックを格納するために、**client.js** という名前のファイルを自分のプロジェクトのルート ディレクトリに作成します。 
+
+このクイックスタートのアプリケーション ロジックを格納するために、**client.js** という名前のファイルを自分のプロジェクトのルート ディレクトリに作成します。
 
 ### <a name="create-a-chat-client"></a>チャット クライアントを作成する
 
-Web アプリにチャット クライアントを作成するには、Communications Service エンドポイントと、前提条件の手順で生成されたアクセス トークンを使用します。 ユーザーのアクセス トークンを使用することで、Azure Communication Services に対して直接認証を行うクライアント アプリケーションを作成できます。 自分のサーバーでこれらのトークンを生成した後、それらをクライアント デバイスに渡します。 チャット クライアントにトークンを渡すには、`Common client library` の `AzureCommunicationUserCredential` クラスを使用する必要があります。
+Web アプリにチャット クライアントを作成するには、Communications Service **エンドポイント** と、前提条件の手順で生成された **アクセス トークン** を使用します。
 
-自分のプロジェクトのルート ディレクトリに、**client.js** ファイルを作成します。 このファイルで、JavaScript 用 Azure Communication チャット クライアント ライブラリを使用してチャット機能を追加します。
+ユーザーのアクセス トークンを使用することで、Azure Communication Services に対して直接認証を行うクライアント アプリケーションを作成できます。 このクイックスタートでは、チャット アプリケーションのトークンを管理するためのサービス レベルの作成については説明しません。 チャット アーキテクチャの詳細については、[チャットの概念](../../../concepts/chat/concepts.md)、アクセス トークンの詳細については、[ユーザー アクセス トークン](../../access-tokens.md)に関するページを参照してください。
+
+**client.js** 内では、下のコードのエンドポイントとアクセス トークンを使用し、JavaScript 用 Azure Communication チャット クライアント ライブラリを使用してチャット機能を追加します。
 
 ```JavaScript
 
 import { ChatClient } from '@azure/communication-chat';
-import { AzureCommunicationUserCredential } from '@azure/communication-common';
+import { AzureCommunicationTokenCredential } from '@azure/communication-common';
 
 // Your unique Azure Communication service endpoint
 let endpointUrl = 'https://<RESOURCE_NAME>.communication.azure.com';
+// The user access token generated as part of the pre-requisites
 let userAccessToken = '<USER_ACCESS_TOKEN>';
 
-let chatClient = new ChatClient(endpointUrl, new AzureCommunicationUserCredential(userAccessToken));
+let chatClient = new ChatClient(endpointUrl, new AzureCommunicationTokenCredential(userAccessToken));
 console.log('Azure Communication Chat client created!');
 ```
-**ENDPOINT** は、[Azure Communication リソースの作成](../../create-communication-resource.md)に関するドキュメントに基づいて前に作成したものに置き換えてください。
-**USER_ACCESS_TOKEN** は、[ユーザー アクセス トークン](../../access-tokens.md)に関するドキュメントに基づいて発行されたトークンに置き換えてください。
-このコードを **client.js** ファイルに追加します
+- **endpointUrl** は、Communication Services リソースのエンドポイントに置き換えます。まだご覧になっていない場合は、[Azure Communication リソースの作成](../../create-communication-resource.md)に関するページを参照してください。
+- **userAccessToken** は、発行したトークンに置き換えます。
 
 
 ### <a name="run-the-code"></a>コードの実行
+
 アプリをビルドして実行するには、`webpack-dev-server` を使用します。 次のコマンドを実行して、ローカルの Web サーバーにアプリケーション ホストをバンドルします。
 ```console
 npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
@@ -122,12 +122,12 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 Azure Communication Chat client created!
 ```
 
-## <a name="object-model"></a>オブジェクト モデル 
+## <a name="object-model"></a>オブジェクト モデル
 JavaScript 用 Azure Communication Services チャット クライアント ライブラリが備える主な機能のいくつかは、以下のクラスとインターフェイスにより処理されます。
 
 | 名前                                   | 説明                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ChatClient | このクラスはチャットの機能に必要です。 サブスクリプション情報を使用してインスタンス化し、それを使用してスレッドを作成、取得、削除します。 |
+| ChatClient | このクラスは、チャット機能に必要となります。 サブスクリプション情報を使用してインスタンス化し、それを使用してスレッドを作成、取得、削除します。 |
 | ChatThreadClient | このクラスはチャット スレッド機能に必要です。 ChatClient を介してインスタンスを取得し、それを使用して、メッセージの送信、受信、更新、削除、ユーザーの追加、削除、取得、入力通知の送信、開封確認、チャット イベントのサブスクライブを行います。 |
 
 
@@ -137,56 +137,55 @@ JavaScript 用 Azure Communication Services チャット クライアント ラ�
 
 スレッド要求は、`createThreadRequest` を使用して記述します。
 
-- このチャットにトピックを指定するには、`topic` を使用します。チャット スレッドの作成後に、`UpdateThread` 関数を使用してトピックを更新することができます。 
-- チャット スレッドに追加するメンバーをリストアップするには、`members` を使用します。
+- このチャットにトピックを指定するには、`topic` を使用します。 チャット スレッドの作成後に、`UpdateThread` 関数を使用してトピックを更新することができます。
+- チャット スレッドに追加する参加者をリストアップするには、`participants` を使用します。
 
-解決すると、`createChatThread` メソッドから `threadId` が返されます。これは、新しく作成されたチャット スレッドに対して操作 (チャット スレッドへのメンバーの追加、メッセージの送信、メッセージの削除など) を実行するために使用されます。
+解決されると、`createChatThread` メソッドから `CreateChatThreadResponse` が返されます。 このモデルには `chatThread` プロパティが含まれており、そこから、新しく作成されたスレッドの `id` にアクセスすることができます。 その後、`id` を使用して `ChatThreadClient` のインスタンスを取得できます。 さらに、`ChatThreadClient` を使用すると、メッセージの送信や参加者の一覧表示など、スレッド内で操作を実行できます。
 
-```Javascript
+```JavaScript
 async function createChatThread() {
-   let createThreadRequest = {
-       topic: 'Preparation for London conference',
-       members: [{
-                   user: { communicationUserId: '<USER_ID_FOR_JACK>' },
-                   displayName: 'Jack'
-               }, {
-                   user: { communicationUserId: '<USER_ID_FOR_GEETA>' },
-                   displayName: 'Geeta'
-               }]
-   };
-   let chatThreadClient= await chatClient.createChatThread(createThreadRequest);
-   let threadId = chatThreadClient.threadId;
-   return threadId;
-}
+    let createThreadRequest = {
+        topic: 'Preparation for London conference',
+        participants: [{
+                    user: { communicationUserId: '<USER_ID_FOR_JACK>' },
+                    displayName: 'Jack'
+                }, {
+                    user: { communicationUserId: '<USER_ID_FOR_GEETA>' },
+                    displayName: 'Geeta'
+                }]
+    };
+    let createThreadResponse = await chatClient.createChatThread(createThreadRequest);
+    let threadId = createThreadResponse.chatThread.id;
+    return threadId;
+    }
 
 createChatThread().then(async threadId => {
-   console.log(`Thread created:${threadId}`);
-   // PLACEHOLDERS
-   // <CREATE CHAT THREAD CLIENT>
-   // <RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>
-   // <SEND MESSAGE TO A CHAT THREAD>
-   // <LIST MESSAGES IN A CHAT THREAD>
-   // <ADD NEW MEMBER TO THREAD>
-   // <LIST MEMBERS IN A THREAD>
-   // <REMOVE MEMBER FROM THREAD>
-});
+    console.log(`Thread created:${threadId}`);
+    // PLACEHOLDERS
+    // <CREATE CHAT THREAD CLIENT>
+    // <RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>
+    // <SEND MESSAGE TO A CHAT THREAD>
+    // <LIST MESSAGES IN A CHAT THREAD>
+    // <ADD NEW PARTICIPANT TO THREAD>
+    // <LIST PARTICIPANTS IN A THREAD>
+    // <REMOVE PARTICIPANT FROM THREAD>
+    });
 ```
 
-**USER_ID_FOR_JACK** と **USER_ID_FOR_GEETA** は、前の手順 (ユーザーの作成と[ユーザー アクセス トークン](../../access-tokens.md)の発行) で取得したユーザー ID に置き換えてください
+**USER_ID_FOR_JACK** と **USER_ID_FOR_GEETA** は、ユーザーとトークンの作成 ([ユーザー アクセス トークン](../../access-tokens.md)に関するページを参照) で取得したユーザー ID に置き換えてください。
 
-ブラウザー タブを最新の情報に更新すると、コンソールに以下が表示されます
+ブラウザー タブを最新の情報に更新すると、コンソールに以下が表示されます。
 ```console
-Thread created: <threadId>
+Thread created: <thread_id>
 ```
 
 ## <a name="get-a-chat-thread-client"></a>チャット スレッド クライアントを取得する
 
-`getChatThreadClient` メソッドは、既に存在するスレッドの `chatThreadClient` を返します。 作成したスレッドに対し、メンバーの追加、メッセージの送信などの操作を実行するために使用できます。threadId は、既存のチャット スレッドの一意の ID です。
+`getChatThreadClient` メソッドは、既に存在するスレッドの `chatThreadClient` を返します。 これは、作成したスレッドに対し、参加者の追加、メッセージの送信などの操作を実行する場合に使用できます。threadId は、既存のチャット スレッドの一意の ID です。
 
 ```JavaScript
-
 let chatThreadClient = await chatClient.getChatThreadClient(threadId);
-console.log(`Chat Thread client for threadId:${chatThreadClient.threadId}`);
+console.log(`Chat Thread client for threadId:${threadId}`);
 
 ```
 **client.js** の `<CREATE CHAT THREAD CLIENT>` コメントをこのコードで置き換え、ブラウザー タブを最新の情報に更新してコンソールを確認すると、以下が表示されます。
@@ -204,10 +203,10 @@ Chat Thread client for threadId: <threadId>
 
 `sendMessageOptions` は、チャット メッセージ要求の省略可能なフィールドを表します。
 
-- "Normal (標準)" や "High (高)" など、チャット メッセージの優先度を指定するには `priority` を使用します。このプロパティを使用して、自分のアプリ内の受信ユーザーにメッセージへの注意を促す UI インジケーターを表示したり、カスタム ビジネス ロジックを実行したりすることができます。   
+- "Normal (標準)" や "High (高)" など、チャット メッセージの優先度を指定するには `priority` を使用します。 このプロパティを使用して、自分のアプリ内の受信ユーザーにメッセージへの注意を促す UI インジケーターを表示したり、カスタム ビジネス ロジックを実行したりすることができます。
 - 送信者の表示名を指定するには、`senderDisplayName` を使用します。
 
-応答である `sendChatMessageResult` には、"id" (そのメッセージの一意の ID) が含まれています。
+応答である `sendChatMessageResult` には、ID (そのメッセージの一意の ID) が含まれています。
 
 ```JavaScript
 
@@ -247,69 +246,71 @@ chatClient.on("chatMessageReceived", (e) => {
 **client.js** の `<RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>` コメントをこのコードで置き換えます。
 ブラウザー タブを最新の情報に更新すると、コンソールに "`Notification chatMessageReceived`" というメッセージが表示されます。
 
-チャット メッセージは、特定の間隔で `listMessages` メソッドをポーリングすることによって取得することもできます。 
+チャット メッセージは、特定の間隔で `listMessages` メソッドをポーリングすることによって取得することもできます。
 
 ```JavaScript
 
 let pagedAsyncIterableIterator = await chatThreadClient.listMessages();
 let nextMessage = await pagedAsyncIterableIterator.next();
- while (!nextMessage.done) {
-     let chatMessage = nextMessage.value;
-     console.log(`Message :${chatMessage.content}`);
-     // your code here
-     nextMessage = await pagedAsyncIterableIterator.next();
- }
+    while (!nextMessage.done) {
+        let chatMessage = nextMessage.value;
+        console.log(`Message :${chatMessage.content}`);
+        // your code here
+        nextMessage = await pagedAsyncIterableIterator.next();
+    }
 
 ```
 **client.js** の `<LIST MESSAGES IN A CHAT THREAD>` コメントをこのコードで置き換えます。
-タブを最新の情報に更新すると、このチャット スレッドに送信したメッセージがコンソールに一覧表示されます。
+タブを最新の情報に更新すると、このチャット スレッドで送信されたメッセージの一覧がコンソールに表示されます。
 
 
 `listMessages` は、メッセージに対して `updateMessage` や `deleteMessage` を使用して行われた編集や削除を含む、最新バージョンのメッセージを返します。
 削除されたメッセージについては、そのメッセージがいつ削除されたかを示す datetime 値が `chatMessage.deletedOn` から返されます。 編集されたメッセージについては、メッセージがいつ編集されたかを示す datetime が `chatMessage.editedOn` から返されます。 メッセージの最初の作成日時には、`chatMessage.createdOn` を使用してアクセスできます。これをメッセージの並べ替えに使用することができます。
 
-`listMessages` は、`chatMessage.type` で識別できるさまざまな種類のメッセージを返します。 これらの種類があります。
+`listMessages` は、`chatMessage.type` で識別できるさまざまな種類のメッセージを返します。 次の種類があります。
 
-- `Text`:スレッド メンバーによって送信された通常のチャット メッセージ。
+- `Text`:スレッド参加者によって送信された通常のチャット メッセージ。
 
 - `ThreadActivity/TopicUpdate`:トピックが更新されたことを示すシステム メッセージ。
 
-- `ThreadActivity/AddMember`:1 つまたは複数のメンバーがチャット スレッドに追加されたことを示すシステム メッセージ。
+- `ThreadActivity/AddParticipant`:1 人以上の参加者がチャット スレッドに追加されたことを示すシステム メッセージ。
 
-- `ThreadActivity/RemoveMember`:メンバーがチャット スレッドから削除されたことを示すシステム メッセージ。
+- `ThreadActivity/RemoveParticipant`:参加者がチャット スレッドから削除されたことを示すシステム メッセージ。
 
 詳細については、「[メッセージの種類](../../../concepts/chat/concepts.md#message-types)」を参照してください。
 
-## <a name="add-a-user-as-member-to-the-chat-thread"></a>チャット スレッドのメンバーとしてユーザーを追加する
+## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>チャット スレッドに参加者としてユーザーを追加する
 
-チャット スレッドの作成後、そこにユーザーを追加したり削除したりすることができます。 追加したユーザーには、チャット スレッドにメッセージを送信したり、他のメンバーを追加、削除したりできるアクセス権が与えられます。 `addMembers` メソッドを呼び出す前に必ず、そのユーザーの新しいアクセス トークンと ID を取得しておいてください。 チャット クライアントを初期化するためには、ユーザーにアクセス トークンが必要となります。
+チャット スレッドの作成後、そこにユーザーを追加したり削除したりすることができます。 追加したユーザーには、チャット スレッドにメッセージを送信したり、他の参加者を追加、削除したりできるアクセス権が与えられます。
 
-`addMembersRequest` は要求オブジェクトを表します。この中では、チャット スレッドに追加するメンバーが `members` を使用してリストアップされます。
+`addParticipants` メソッドを呼び出す前に必ず、そのユーザーの新しいアクセス トークンと ID を取得しておいてください。 チャット クライアントを初期化するためには、ユーザーにアクセス トークンが必要となります。
+
+`addParticipantsRequest` は要求オブジェクトを表します。その中では、チャット スレッドに追加する参加者が `participants` を使用してリストアップされます。
 - `user` (必須) は、チャット スレッドに追加するコミュニケーション ユーザーです。
-- `displayName` (省略可) は、スレッド メンバーの表示名です。
-- `shareHistoryTime` (省略可) は、メンバーとの間でチャット履歴が共有される際の起点となる時刻です。 チャット スレッドの始めから履歴を共有する場合は、スレッドの作成日時と同じかそれ以前の任意の日付にこのプロパティを設定してください。 メンバーが追加された時点よりも前の履歴は共有しない場合は、現在の日付に設定します。 履歴を部分的に共有するには、目的の日付に設定します。
+- `displayName` (省略可) は、スレッド参加者の表示名です。
+- `shareHistoryTime` (省略可) は、参加者との間でチャット履歴が共有される際の起点となる時刻です。 チャット スレッドの始めから履歴を共有する場合は、スレッドの作成日時と同じかそれ以前の任意の日付にこのプロパティを設定してください。 参加者が追加された時点よりも前の履歴は共有しない場合は、現在の日付に設定します。 履歴を部分的に共有するには、目的の日付に設定します。
 
 ```JavaScript
 
-let addMembersRequest =
+let addParticipantsRequest =
 {
-    members: [
+    participants: [
         {
-            user: { communicationUserId: '<NEW_MEMBER_USER_ID>' },
+            user: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
             displayName: 'Jane'
         }
     ]
 };
 
-await chatThreadClient.addMembers(addMembersRequest);
+await chatThreadClient.addParticipants(addParticipantsRequest);
 
 ```
-**NEW_MEMBER_USER_ID** は、[新しいユーザー ID](../../access-tokens.md) に置き換えます。**client.js** の `<ADD NEW MEMBER TO THREAD>` コメントをこのコードで置き換えてください。
+**NEW_PARTICIPANT_USER_ID** は、[新しいユーザー ID](../../access-tokens.md) に置き換えます。このコードは、**client.js** の `<ADD NEW PARTICIPANT TO THREAD>` コメントの代わりに追加してください。
 
 ## <a name="list-users-in-a-chat-thread"></a>チャット スレッド内のユーザーをリストアップする
 ```JavaScript
-async function listThreadMembers() {
-   let pagedAsyncIterableIterator = await chatThreadClient.listMembers();
+async function listParticipants() {
+   let pagedAsyncIterableIterator = await chatThreadClient.listParticipants();
    let next = await pagedAsyncIterableIterator.next();
    while (!next.done) {
       let user = next.value;
@@ -317,20 +318,20 @@ async function listThreadMembers() {
       next = await pagedAsyncIterableIterator.next();
    }
 }
-await listThreadMembers();
+await listParticipants();
 ```
-**client.js** の `<LIST MEMBERS IN A THREAD>` コメントをこのコードで置き換え、ブラウザー タブを最新の情報に更新してコンソールを確認すると、スレッド内のユーザーについての情報が表示されます。
+**client.js** の `<LIST PARTICIPANTS IN A THREAD>` コメントをこのコードで置き換え、ブラウザー タブを最新の情報に更新してコンソールを確認すると、スレッド内のユーザーについての情報が表示されます。
 
 ## <a name="remove-user-from-a-chat-thread"></a>チャット スレッドからユーザーを削除する
 
-メンバーの追加と同様、チャット スレッドからメンバーを削除することもできます。 削除するには、追加したメンバーの ID を追跡する必要があります。
+参加者の追加と同様、チャット スレッドから参加者を削除することもできます。 削除するには、追加した参加者の ID を追跡する必要があります。
 
-`removeMember` メソッドを使用します。`member` は、スレッドから削除するコミュニケーション ユーザーです。
+`removeParticipant` メソッドを使用します。`participant` は、スレッドから削除するコミュニケーション ユーザーです。
 
 ```JavaScript
 
-await chatThreadClient.removeMember({ communicationUserId: <MEMBER_ID> });
-await listThreadMembers();
+await chatThreadClient.removeParticipant({ communicationUserId: <PARTICIPANT_ID> });
+await listParticipants();
 ```
-**MEMBER_ID** は、前の手順で使用したユーザー ID (<NEW_MEMBER_USER_ID>) に置き換えてください。
-**client.js** の `<REMOVE MEMBER FROM THREAD>` コメントをこのコードで置き換えます。
+**PARTICIPANT_ID** は、前の手順で使用したユーザー ID (<NEW_PARTICIPANT_USER_ID>) に置き換えてください。
+**client.js** の `<REMOVE PARTICIPANT FROM THREAD>` コメントをこのコードで置き換えます。

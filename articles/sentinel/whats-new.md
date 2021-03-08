@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 8154e1adff8d8c2bdfe7fedc9309f95e5c5880bd
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.date: 02/04/2021
+ms.openlocfilehash: 9136947767bffb7bea800cdd2a735794baf8f329
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99499459"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007365"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel の新着情報
 
@@ -32,6 +32,7 @@ ms.locfileid: "99499459"
 
 ## <a name="january-2021"></a>2021 年 1 月
 
+- [分析ルール ウィザード:クエリの編集エクスペリエンスの向上 (パブリック プレビュー)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
 - [Az.SecurityInsights PowerShell モジュール (パブリック プレビュー)](#azsecurityinsights-powershell-module-public-preview)
 - [SQL データベース コネクタ](#sql-database-connector)
 - [インシデント コメントの改善](#improved-incident-comments)
@@ -40,13 +41,23 @@ ms.locfileid: "99499459"
 - [分析ルールのプレビュー グラフによるルール調整の改善](#improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview)
 
 
+### <a name="analytics-rule-wizard-improved-query-editing-experience-public-preview"></a>分析ルール ウィザード:クエリの編集エクスペリエンスの向上 (パブリック プレビュー)
+
+Azure Sentinel のスケジュールされた分析ルールウィザードで、クエリの作成と編集に関して次のような機能強化が行われました。
+
+-   拡張可能な編集ウィンドウにより、クエリを表示する画面のスペースが増えました。
+-   クエリ コードでキーワードが強調表示されるようになりました。
+-   オートコンプリートのサポートが拡張されました。
+-   リアルタイムのクエリ検証。 クエリ内のエラーが、スクロール バー上の赤いブロックと、 **[ルールのロジックを設定]** タブ名の赤い点として表示されるようになりました。 また、エラーのあるクエリを保存することはできません。
+
+詳細については、[チュートリアル: 難しい設定なしで脅威を検出する](tutorial-detect-threats-built-in.md)を参照してください。
 ### <a name="azsecurityinsights-powershell-module-public-preview"></a>Az.SecurityInsights PowerShell モジュール (パブリック プレビュー)
 
 Azure Sentinel では、新しい [Az.SecurityInsights](https://www.powershellgallery.com/packages/Az.SecurityInsights/) PowerShell モジュールがサポートされるようになりました。
 
 **Az.SecurityInsights** モジュールでは、状態、重大度、所有者などを変更するためのインシデントとのやり取り、インシデントへのコメントやラベルの追加、ブックマークの作成など、一般的な Azure Sentinel ユース ケースがサポートされます。
 
-CI/CD パイプラインには、[Azure Resource Manager (ARM)](/azure/azure-resource-manager/templates/) の使用をお勧めしますが、**Az.SecurityInsights** モデルは、デプロイ後のタスクに役立ち、特に SOC オートメーションを対象としています。  たとえば、SOC オートメーションには、データ コネクタの構成、分析ルールの作成、分析ルールへのオートメーション アクションの追加などが含まれる場合があります。
+CI/CD パイプラインには、[Azure Resource Manager (ARM)](/azure/azure-resource-manager/templates/) を使用することをお勧めしますが、**Az.SecurityInsights** モデルは、デプロイ後のタスクに役立ち、SOC オートメーションを対象としています。  たとえば、SOC オートメーションには、データ コネクタの構成、分析ルールの作成、分析ルールへのオートメーション アクションの追加などが含まれる場合があります。
 
 使用可能なコマンドレットの完全な一覧と説明、パラメーターの説明、例などの詳細については、[Az.SecurityInsights PowerShell のドキュメント](/powershell/module/az.securityinsights/)を参照してください。
 

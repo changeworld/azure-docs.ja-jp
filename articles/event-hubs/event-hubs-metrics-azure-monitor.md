@@ -2,13 +2,13 @@
 title: Azure Monitor でのメトリック - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Monitoring を使用して Azure Event Hubs を監視する方法について説明します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 74830775a4f31e6f8e486b4d6cc434335b4ee723
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.date: 02/25/2021
+ms.openlocfilehash: 52ab66fe264b85be117eb8e2e21cb89f38d0fcae
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165894"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715583"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Monitor での Azure Event Hubs メトリック
 
@@ -18,9 +18,9 @@ Azure Monitor には、さまざまな Azure サービスにわたって監視�
 
 ## <a name="access-metrics"></a>メトリックにアクセスする
 
-Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure Portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Log Analytics や Event Hubs などの分析ソリューションを使用できます。 詳細については、「[Azure Monitor によって収集された監視データ](../azure-monitor/platform/data-platform.md)」をご覧ください。
+Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure Portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Log Analytics や Event Hubs などの分析ソリューションを使用できます。 詳細については、「[Azure Monitor によって収集された監視データ](../azure-monitor/data-platform.md)」をご覧ください。
 
-メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 この設定は、Azure Monitor の[診断設定](../azure-monitor/platform/diagnostic-settings.md)で構成できます。
+メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 この設定は、Azure Monitor の[診断設定](../azure-monitor/essentials/diagnostic-settings.md)で構成できます。
 
 
 ## <a name="access-metrics-in-the-portal"></a>ポータルでメトリックにアクセスする
@@ -47,7 +47,7 @@ Azure Monitor でのメトリックの使用は現在無料です。 ただし�
 すべてのメトリック値が 1 分ごとに Azure Monitor に送信されます。 時間の粒度は、メトリック値が提供される時間間隔を定義します。 すべての Event Hubs メトリックに対してサポートされる時間間隔は 1 分です。
 
 ## <a name="azure-event-hubs-metrics"></a>Azure Event Hubs メトリック
-サービスでサポートされているメトリックの一覧については、[Azure Event Hubs](../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)に関するセクションを参照してください
+サービスでサポートされているメトリックの一覧については、[Azure Event Hubs](../azure-monitor/essentials/metrics-supported.md#microsofteventhubnamespaces)に関するセクションを参照してください
 
 > [!NOTE]
 > ユーザー エラーが発生すると、Azure Event Hubs によって **ユーザー エラー** メトリックは更新されますが、他の診断情報はログに記録されません。 そのため、アプリケーションのユーザー エラーに関する詳細情報を取り込む必要があります。 または、メッセージが送信または受信されたとき生成されるテレメトリをアプリケーション分析情報に変換することもできます。 例については、「[Application Insights を使用した追跡](../service-bus-messaging/service-bus-end-to-end-tracing.md#tracking-with-azure-application-insights)」を参照してください。
@@ -55,7 +55,7 @@ Azure Monitor でのメトリックの使用は現在無料です。 ただし�
 ## <a name="azure-monitor-integration-with-siem-tools"></a>SIEM ツールとの Azure Monitor 統合
 Azure Monitor を使用して監視データ (アクティビティ ログ、診断ログなど) をイベント ハブにルーティングすると、セキュリティ情報イベント管理 (SIEM) ツールと簡単に統合できます。 詳細については、次の記事/ブログ投稿を参照してください。
 
-- [外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
+- [外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md)
 - [Azure Log Integration の概要](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)
 - [Azure Monitor を使用して SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -76,7 +76,7 @@ Event Hubs の詳細については、次のリンクを参照してください
     - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
     - [Java](event-hubs-java-get-started-send.md)
     - [Python](event-hubs-python-get-started-send.md)
-    - [JavaScript](event-hubs-java-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
 * [Event Hubs を使用するサンプル アプリケーション](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

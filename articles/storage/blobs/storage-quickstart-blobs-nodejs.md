@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: ed3a88dbca1788a5c5a265fe91bdd5e88ae1fe36
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0883fd1546ac3b55ec4211e5048569556858de29
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012767"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179920"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>クイック スタート:Node.js の JavaScript v12 SDK を使用して BLOB を管理する
 
@@ -97,7 +97,7 @@ npm install
 
     ```javascript
     const { BlobServiceClient } = require('@azure/storage-blob');
-    const { v1: uuid} = require('uuid');
+    const { v1: uuidv1} = require('uuid');
 
     async function main() {
         console.log('Azure Blob storage v12 - JavaScript quickstart sample');
@@ -276,7 +276,7 @@ console.log("Container was deleted successfully. requestId: ", deleteContainerRe
 
 このアプリでは、テキスト文字列が作成され、BLOB ストレージにアップロードされます。 例では、コンテナー内の BLOB を一覧表示し、BLOB をダウンロードして、ダウンロードしたデータを表示します。
 
-コンソール プロンプトから、*blob-quickstart-v12.py* ファイルが格納されているディレクトリに移動し、次の `node` コマンドを実行してアプリを実行します。
+コンソール プロンプトから、*blob-quickstart-v12.js* ファイルが格納されているディレクトリに移動し、次の `node` コマンドを実行してアプリを実行します。
 
 ```console
 node blob-quickstart-v12.js
@@ -314,6 +314,6 @@ Done
 > [!div class="nextstepaction"]
 > [JavaScript 開発者センターの Azure](/azure/developer/javascript/)
 
-* Azure BLOB ストレージを使用する Web アプリをデプロイする方法については、「[チュートリアル: Azure Storage を使用してクラウドに画像データをアップロードする](./storage-upload-process-images.md?preserve-view=true&tabs=javascript)」を参照してください。
+* Azure Blob Storage を使用する Web アプリをデプロイする方法については、「[チュートリアル: Azure Storage を使用してクラウドに画像データをアップロードする](./storage-upload-process-images.md?preserve-view=true&tabs=javascript)」を参照してください。
 * Blob Storage のサンプル アプリの詳細については、[Azure Blob Storage クライアント ライブラリ v12 JavaScript サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples) ページを参照してください。
 * 詳細については、[JavaScript 用 Azure Blob Storage クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)に関するページを参照してください。

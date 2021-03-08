@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a249102de6a5bff7354e339e604b7d2efebd4fb
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 747fa3005930414832878757664f4787157302d5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546173"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645825"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>B2B 外部コラボレーションを有効にしてゲストを招待できるユーザーを管理する
 
@@ -45,8 +45,6 @@ Azure AD B2B コラボレーションでは、テナント管理者が次の招�
 
 4. **[ゲスト ユーザーのアクセス制限 (プレビュー)]** で、ゲスト ユーザーに付与するアクセス レベルを選択します。
   
-    ![ゲスト ユーザーのアクセス制限設定](./media/delegate-invitations/guest-user-access.png)
-
    - **Guest users have the same access as members (most inclusive) (ゲスト ユーザーにメンバーと同じアクセス権を付与する (最も包括的))** :このオプションを選択すると、ゲストがメンバー ユーザーと同じように Azure AD リソースとディレクトリ データにアクセスできるようになります。
 
    - **Guest users have limited access to properties and memberships of directory objects (ゲスト ユーザーに対してディレクトリ オブジェクトのプロパティとメンバーシップへのアクセスを制限する)** :(デフォルト) この設定を選択すると、ゲストは、特定のディレクトリ タスク (ユーザー、グループ、またはその他のディレクトリ リソースを列挙するなど) を実行できなくなります。 ゲストは、非表示でないすべてのグループのメンバーシップを表示できます。
@@ -69,24 +67,22 @@ Azure AD B2B コラボレーションでは、テナント管理者が次の招�
 
 6. **[ゲストの電子メール ワンタイム パスコード]** で、適切な設定を選択します (詳細については、「[電子メール ワンタイム パスコード認証](one-time-passcode.md)」を参照してください)。
 
-   ![電子メール ワンタイム パスコードの設定](./media/delegate-invitations/email-otp-settings.png)
-
-   - **[2021 年 3 月にゲストの電子メール ワンタイム パスコードを自動的に有効にする]** 。 (既定値) お使いのテナントで電子メール ワンタイム パスコード機能がまだ有効になっていない場合、2021 年 3 月に自動的に有効になります。 その時点でこの機能が有効になることを希望する場合、これ以上の操作は必要ありません。 この機能を既に有効または無効にしている場合、このオプションは使用できません。
+   - **[2021 年 10 月にゲストの電子メール ワンタイム パスコードを自動的に有効にする]** 。 (既定値) お使いのテナントで電子メール ワンタイム パスコード機能がまだ有効になっていない場合、2021 年 10 月に自動的に有効になります。 その時点でこの機能が有効になることを希望する場合、これ以上の操作は必要ありません。 この機能を既に有効または無効にしている場合、このオプションは使用できません。
 
    - **[ゲストの電子メール ワンタイム パスコードを今すぐ有効にする]** 。 お使いのテナントに対して電子メール ワンタイム パスコード機能を有効にします。
 
-   - **[ゲストの電子メール ワンタイム パスコードを無効にする]** 。 お使いのテナントに対して電子メール ワンタイム パスコード機能を無効にし、2021 年 3 月にこの機能が有効にならないようにします。
+   - **[ゲストの電子メール ワンタイム パスコードを無効にする]** 。 お使いのテナントに対して電子メール ワンタイム パスコード機能を無効にし、2021 年 10 月にこの機能が有効にならないようにします。
 
    > [!NOTE]
    > この機能を有効または無効にしてある場合、またはプレビューに登録済みの場合は、上記のオプションの代わりに、次のトグルが表示されます。
    >
    >![オプトインされた電子メール ワンタイム パスコードを有効にする](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-7. ユーザーがアプリにサインアップできるようにユーザー フローを作成したい場合は、 **[ユーザー フローによるゲストのセルフサービス サインアップを有効にする (プレビュー)]** で **[はい]** を選択します。 この設定の詳細については、「[セルフサービス サインアップのユーザー フローをアプリに追加する (プレビュー)](self-service-sign-up-user-flow.md)」を参照してください。
+7. ユーザーがアプリにサインアップできるようにユーザー フローを作成する場合は、 **[Enable guest self-service sign up via user flows]\(ユーザー フローによるゲスト セルフサービス サインアップを有効にする\)** で **[はい]** を選択します。 この設定の詳細については、[アプリへのセルフサービス サインアップ ユーザー フローの追加](self-service-sign-up-user-flow.md)に関するページを参照してください。
 
     ![ユーザー フローによるセルフサービス サインアップの設定](./media/delegate-invitations/self-service-sign-up-setting.png)
 
-7. **[コラボレーションの制限]** で、指定したドメインへの招待を許可または拒否するかを選択します。 詳細については、「[B2B ユーザーに対する特定組織からの招待を許可またはブロックする](allow-deny-list.md)」を参照してください。
+7. **[コラボレーションの制限]** で、指定したドメインへの招待を許可するか拒否するかを選択し、テキスト ボックスに特定のドメイン名を入力できます。 複数ドメインの場合は、それぞれのドメインを新しい行に入力します。 詳細については、「[B2B ユーザーに対する特定組織からの招待を許可またはブロックする](allow-deny-list.md)」を参照してください。
 
     ![コラボレーションの制限の設定](./media/delegate-invitations/collaboration-restrictions.png)
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>ゲスト招待元ロールをユーザーに割り当てる

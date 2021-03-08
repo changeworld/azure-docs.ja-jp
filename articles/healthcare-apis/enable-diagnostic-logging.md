@@ -9,16 +9,16 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: CaitlinV39
 ms.date: 02/03/2021
-ms.openlocfilehash: 8dc87ae5b296f322d9d5a4d59c0a8c9b1c50d5da
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 220618f93d23ec71ee3246e8bd68bfd724860696
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575443"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581964"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Azure API for FHIR で診断ログを有効にする
 
-この記事では、Azure API for FHIR で診断ログを有効にし、それらのログのサンプル クエリを確認できるようにする方法について説明します。 診断ログへのアクセスは、規制要件 (HIPAA など) への準拠が必須であるすべての医療サービスにとって不可欠です。 診断ログを有効にする Azure API for FHIR の機能は、Azure portal の [**診断設定**](../azure-monitor/platform/diagnostic-settings.md)です。 
+この記事では、Azure API for FHIR で診断ログを有効にし、それらのログのサンプル クエリを確認できるようにする方法について説明します。 診断ログへのアクセスは、規制要件 (HIPAA など) への準拠が必須であるすべての医療サービスにとって不可欠です。 診断ログを有効にする Azure API for FHIR の機能は、Azure portal の [**診断設定**](../azure-monitor/essentials/diagnostic-settings.md)です。 
 
 ## <a name="enable-audit-logs"></a>監査ログを有効にする
 1. Azure API for FHIR で診断ログを有効にするには、Azure portal でお使いの Azure API for FHIR サービスを選択します 
@@ -45,7 +45,7 @@ ms.locfileid: "99575443"
 > [!Note] 
 > 最初のログが Log Analytics に表示されるまでには、最大で 15 分かかることがあります。  
  
-診断ログの使用方法の詳細については、[Azure リソース ログのドキュメント](../azure-monitor/platform/platform-logs-overview.md)を参照してください。
+診断ログの使用方法の詳細については、[Azure リソース ログのドキュメント](../azure-monitor/essentials/platform-logs-overview.md)を参照してください。
 
 ## <a name="audit-log-details"></a>監査ログの詳細
 現時点では、Azure API for FHIR サービスは、監査ログで次のフィールドを返します。 

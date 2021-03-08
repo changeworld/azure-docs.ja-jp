@@ -1,6 +1,6 @@
 - name: 専用 SQL プール (旧称 SQL DW)
   href: sql-data-warehouse-overview-what-is.md
-- name: Azure Synapse に切り替える
+- name: Azure Synapse に切り替える >
   href: ../overview-what-is.md
 - name: 概要
   items:

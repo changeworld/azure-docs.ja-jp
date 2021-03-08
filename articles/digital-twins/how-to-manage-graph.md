@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 037e7fd13f55a0f5de939197f71324221392bd55
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: b713a19cbe572998bb6e5050ab2d7721a844f07a
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601069"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530452"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>リレーションシップを使ってデジタル ツインのグラフを管理する
 
@@ -49,11 +49,11 @@ Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](co
 リレーションシップ ID は、指定されたソース ツイン内で一意である必要があります。 グローバルに一意である必要はありません。
 たとえば、ツイン *foo* の場合、それぞれのリレーションシップ ID は一意である必要があります。 ただし、別のツインである *bar* は、*foo* リレーションシップの同じ ID と一致する発信リレーションシップを持つことができます。
 
-次のコード サンプルは、Azure Digital Twins インスタンスにリレーションシップを作成する方法を示しています。
+次のコード サンプルは、Azure Digital Twins インスタンスにリレーションシップを作成する方法を示しています。 より大きなプログラムのコンテキストで使用される可能性のあるカスタム メソッド内で SDK 呼び出し (強調表示) を使用しています。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="CreateRelationshipMethod":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="CreateRelationshipMethod" highlight="13":::
 
-main メソッドでは、`CreateRelationship()` 関数を呼び出して、次のような _contains_ リレーションシップを作成できます。 
+これで、このカスタム関数を呼び出して、このような "_包含_" 関係を作成できます。 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseCreateRelationship":::
 
@@ -82,11 +82,11 @@ main メソッドでは、`CreateRelationship()` 関数を呼び出して、次�
 
 これによって、呼び出しの同期または非同期のバージョンのどちらを使用するかに応じて、`Azure.Pageable<T>` または `Azure.AsyncPageable<T>` が返されます。
 
-リレーションシップの一覧を取得する例を次に示します。
+リレーションシップの一覧を取得する例を次に示します。 より大きなプログラムのコンテキストで使用される可能性のあるカスタム メソッド内で SDK 呼び出し (強調表示) を使用しています。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod" highlight="8":::
 
-これで、このメソッドを呼び出して、次のようなツインの発信リレーションシップを確認できます。
+これで、このカスタム メソッドを呼び出して、このようなツインの発信リレーションシップを確認できます。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFindOutgoingRelationships":::
 
@@ -96,33 +96,53 @@ main メソッドでは、`CreateRelationship()` 関数を呼び出して、次�
 
 Azure Digital Twins には、特定のツインとのすべての **受信** リレーションシップを検索する API もあります。 これは、逆方向のナビゲーションの場合やツインを削除するときに便利です。
 
-前のコード サンプルは、ツインからの発信リレーションシップの検索に焦点を合わせていました。 次の例は同じような構造になってますが、代わりにツインへの "*受信*" リレーションシップを検索します。
+>[!NOTE]
+> `IncomingRelationship` の呼び出しからは、リレーションシップ全体は返されません。 `IncomingRelationship` クラスの詳細については、その[リファレンス ドキュメント](/dotnet/api/azure.digitaltwins.core.incomingrelationship?view=azure-dotnet&preserve-view=true)を参照してください。
 
-`IncomingRelationship` の呼び出しからは、リレーションシップ全体が返されないことに注意してください。
+前のセクションのコード サンプルは、ツインからの発信リレーションシップの検索に重点を置いていました。 次の例は同じような構造になってますが、代わりにツインへの "*受信*" リレーションシップを検索します。 この例でも、より大きなプログラムのコンテキストで使用される可能性のあるカスタム メソッド内で SDK 呼び出し (強調表示) を使用しています。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindIncomingRelationshipsMethod":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindIncomingRelationshipsMethod" highlight="8":::
 
-これで、このメソッドを呼び出して、次のようなツインの受信リレーションシップを確認できます。
+これで、このカスタム メソッドを呼び出して、このようなツインの受信リレーションシップを確認できます。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFindIncomingRelationships":::
 
 ### <a name="list-all-twin-properties-and-relationships"></a>ツインのすべてのプロパティとリレーションシップを一覧表示する
 
-ツインへの発信と受信のリレーションシップを一覧表示する上記のメソッドを使用すると、ツインのプロパティとその両方の種類のリレーションシップを含む完全なツインの情報を出力するメソッドを作成できます。 この実行方法を示す、`FetchAndPrintTwinAsync()` というメソッドの例を次に示します。
+ツインへの発信と受信のリレーションシップを一覧表示する上記のメソッドを使用すると、ツインのプロパティとその両方の種類のリレーションシップを含む完全なツインの情報を出力するメソッドを作成できます。 この目的のために上記のカスタム メソッドを組み合わせる方法を示すカスタム メソッドの例を次に示します。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FetchAndPrintMethod":::
 
-これで、次のように main メソッドでこの関数を呼び出すことができるようになります。 
+これで、このようにこのカスタム関数を呼び出すことができます。 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFetchAndPrint":::
+
+## <a name="update-relationships"></a>リレーションシップの更新
+
+リレーションシップは、`UpdateRelationship` メソッドを使用して更新します。 
+
+>[!NOTE]
+>このメソッドは、リレーションシップの **プロパティ** を更新するためのものです。 リレーションシップのソース ツインまたはターゲット ツインを変更する必要がある場合は、[リレーションシップを削除](#delete-relationships)し、新しいツインを使用して[再作成](#create-relationships)する必要があります。
+
+クライアント呼び出しに必要なパラメーターは、ソース ツインの ID (リレーションシップが発生したツイン)、更新するリレーションシップの ID、更新するプロパティと新しい値を含む [JSON Patch](http://jsonpatch.com/) ドキュメントです。
+
+このメソッドの使用方法を示すサンプル コードを次に示します。 この例では、より大きなプログラムのコンテキストで使用される可能性のあるカスタム メソッド内で SDK 呼び出し (強調表示) を使用しています。
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod" highlight="6":::
+
+プロパティを更新するための情報を含む JSON Patch ドキュメントを渡して、このカスタム メソッドを呼び出す例を次に示します。
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseUpdateRelationship":::
 
 ## <a name="delete-relationships"></a>リレーションシップの削除
 
 最初のパラメーターには、ソース ツイン (リレーションシップの発生元のツイン) を指定します。 もう一方のパラメーターはリレーションシップ ID です。 リレーションシップ ID はツインのスコープ内でのみ一意であるため、ツイン ID とリレーションシップ ID の両方が必要です。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="DeleteRelationshipMethod":::
+このメソッドの使用方法を示すサンプル コードを次に示します。 この例では、より大きなプログラムのコンテキストで使用される可能性のあるカスタム メソッド内で SDK 呼び出し (強調表示) を使用しています。
 
-これで、このメソッドを呼び出して、次のようなリレーションシップを削除できるようになります。
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="DeleteRelationshipMethod" highlight="5":::
+
+これで、このカスタム メソッドを呼び出して、このようなリレーションシップを削除できます。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseDeleteRelationship":::
 

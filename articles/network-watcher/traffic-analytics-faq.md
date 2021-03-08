@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: a5fdde954d2826f34c671552a88365f9276b89a0
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: f4d97b81bf8f11b8380f04dcbfdb72bd658805ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895225"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579235"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics についてよく寄せられる質問
 
@@ -126,7 +126,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 ## <a name="can-i-use-an-existing-workspace"></a>既存のワークスペースを使用できますか?
 
-はい。 既存のワークスペースを選択する場合は、それが新しいクエリ言語に移行されていることを確認してください。 そのワークスペースのアップグレードを望まない場合は、新しいワークスペースを作成する必要があります。 新しいクエリ言語の詳細については、[新しいログ検索への Azure Monitor ログのアップグレード](../azure-monitor/log-query/log-query-overview.md)に関するページをご覧ください。
+はい。 既存のワークスペースを選択する場合は、それが新しいクエリ言語に移行されていることを確認してください。 そのワークスペースのアップグレードを望まない場合は、新しいワークスペースを作成する必要があります。 新しいクエリ言語の詳細については、[新しいログ検索への Azure Monitor ログのアップグレード](../azure-monitor/logs/log-query-overview.md)に関するページをご覧ください。
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>自分の Azure Storage アカウントと自分の Log Analytics ワークスペースをそれぞれ別のサブスクリプションに置くことができますか?
 
@@ -262,7 +262,7 @@ Traffic Analytics には、アラートに対する組み込みのサポート�
 - Traffic Analytics では Log Analytics への短縮リンクを使用することができます。 
 - [こちらで説明するスキーマ](traffic-analytics-schema.md)を使用して、ご自分のクエリを記述します。 
 - [新しいアラート ルール] をクリックして、アラートを作成します。
-- [ログ アラートのドキュメント](../azure-monitor/platform/alerts-log.md)を参照して、アラートを作成します。
+- [ログ アラートのドキュメント](../azure-monitor/alerts/alerts-log.md)を参照して、アラートを作成します。
 
 ## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>受信するオンプレミス トラフィックが多い VM を確認するにはどうすればよいですか?
 
@@ -403,4 +403,4 @@ geo マップ ページには主に次の 2 つのセクションがあります
 - このようなノードを選択する際は、`Shift+Left arrow` キーを押して、すべての接続に 1 つずつアクセスできます。 フォーカスはその接続の **[Information Tool Box]\(情報ツール ボックス\)** に移動します。 いずれの時点でも、`Shift+Right arrow` を再度押して、フォーカスをノードに戻すことができます。
 
 ## <a name="are-classic-nsgs-supported"></a>従来の NSG はサポートされていますか?
-いいえ。Traffic Analytics は従来の NSG をサポートしていません。 従来のリソースが[非推奨](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation)になるため、IaaS リソースを従来のものから Azure Resource Manager に移行することをお勧めします。 [ツールの実行方法](https://docs.microsoft.com/azure/virtual-machines/migration-classic-resource-manager-overview)については、この記事を参照してください。
+いいえ。Traffic Analytics は従来の NSG をサポートしていません。 従来のリソースが[非推奨](../virtual-machines/classic-vm-deprecation.md)になるため、IaaS リソースを従来のものから Azure Resource Manager に移行することをお勧めします。 [ツールの実行方法](../virtual-machines/migration-classic-resource-manager-overview.md)については、この記事を参照してください。

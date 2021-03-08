@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: ecc2e98d4c6c58e11b2bdc86b623f31d828cabc0
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: b88b36ba8ec1d2d612adbbf19a6cf1e91fbb2cfd
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98985922"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377756"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループの配置
 
@@ -28,13 +28,13 @@ ms.locfileid: "98985922"
 
 :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/1_cluster_portal.png" alt-text="Azure portal の 4 ノード AKS クラスター":::
 
-次のコマンドを実行して、Kubernetes クラスターの物理ノードを一覧表示します。
+Kubernetes クラスターの物理ノードを一覧表示します。 次のコマンドを実行します。
 
 ```console
 kubectl get nodes
 ```
 
-Kubernetes クラスター内の 4 つの物理ノードが表示されます。
+`kubectl` では Kubernetes クラスター内の 4 つの物理ノードが返されます。
 
 ```output
 NAME                                STATUS   ROLES   AGE   VERSION
@@ -55,7 +55,7 @@ Kubernetes クラスターでは、1 つの Azure Arc データ コントロー�
 ```console
 kubectl get pods -n arc3
 ```
-次の出力が生成されます。
+`kubectl` が次のように返します。
 
 ```output
 NAME                 READY   STATUS    RESTARTS   AGE
@@ -64,7 +64,7 @@ postgres01c-0         3/3     Running   0          9h
 postgres01w-0         3/3     Running   0          9h
 postgres01w-1         3/3     Running   0          9h
 ```
-これらのポッドでは、それぞれ PostgreSQL インスタンスをホストしています。 これらは、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを共に形成しています。
+これらのポッドでは、それぞれ PostgreSQL インスタンスをホストしています。 ポッドは、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを共に形成しています。
 
 ```output
 Pod name        Role in the server group
@@ -80,7 +80,7 @@ Kubernetes でサーバー グループのポッドがどのように配置さ�
 kubectl describe pod postgres01c-0 -n arc3
 ```
 
-次の出力が生成されます。
+`kubectl` が次のように返します。
 
 ```output
 Name:         postgres01c-0
@@ -104,7 +104,7 @@ Start Time:   Thu, 17 Sep 2020 00:40:33 -0700
 kubectl describe pod postgres01w-1 -n arc3
 ```
 
-次の出力が生成されます。
+`kubectl` が次のように返します。
 
 ```output
 …
@@ -131,7 +131,7 @@ Azure Arc 対応 PostgreSQL Hyperscale サーバー グループの一部であ�
 
 :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/3_pod_placement.png" alt-text="それぞれが別々のノードに配置された 3 つのポッド":::
 
-つまり、この時点で、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを構成する各 PostgreSQL インスタンスは、Kubernetes コンテナー内の特定の物理ホストでホストされています。 これは、各ロール (コーディネーターとワーカー) で各物理ノードのリソースが使用されるため、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのパフォーマンスを最大限に引き出すために最適な構成です。 これらのリソースが PostgreSQL の複数のロール間で共有されることはありません。
+つまり、この時点で、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを構成する各 PostgreSQL インスタンスは、Kubernetes コンテナー内の特定の物理ホストでホストされています。 この構成では、各ロール (コーディネーターとワーカー) で各物理ノードのリソースが使用されるため、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのパフォーマンスが最大限に引き出されます。 これらのリソースが PostgreSQL の複数のロール間で共有されることはありません。
 
 ## <a name="scale-out-azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale をスケール アウトする
 
@@ -217,19 +217,19 @@ Kubernetes クラスター aks-agentpool-42715708-vmss000003 の残りの物理�
 
 |その他のポッドの名前\* |使用法|ポッドがホストされている Kubernetes 物理ノード
 |----|----|----
-|bootstrapper-jh48b|これは、SQL マネージド インスタンス、PostgreSQL Hyperscale サーバー グループ、データ コントローラーなどのカスタム リソースの作成、編集、および削除を行う受信要求を処理するサービスです|aks-agentpool-42715708-vmss000003
+|bootstrapper-jh48b|SQL マネージド インスタンス、PostgreSQL Hyperscale サーバー グループ、データ コントローラーなどのカスタム リソースの作成、編集、および削除を行う受信要求を処理するサービス|aks-agentpool-42715708-vmss000003
 |control-gwmbs||aks-agentpool-42715708-vmss000002
-|controldb-0|これは、データ コントローラーの構成と状態を格納するために使用されるコントローラー データ ストアです。|aks-agentpool-42715708-vmss000001
-|controlwd-zzjp7|これは、データ コントローラーの可用性を監視するコントローラー "ウォッチドッグ" サービスです。|aks-agentpool-42715708-vmss000000
-|logsdb-0|これは、すべての Arc Data Services ポッドで収集されたすべてのログを格納するために使用される Elastic Search インスタンスです。 Elasticsearch は、各ポッドの `Fluentbit` コンテナーからデータを受信する|aks-agentpool-42715708-vmss000003
-|logsui-5fzv5|これは、Elastic Search データベース上にあり、Log Analytics GUI を表示するための Kibana インスタンスです。|aks-agentpool-42715708-vmss000003
-|metricsdb-0|これはすべての Arc Data Services ポッドで収集されたすべてのメトリックを格納するために使用される InfluxDB インスタンスです。 InfluxDB は、各ポッドの `Telegraf` コンテナーからデータを受信する|aks-agentpool-42715708-vmss000000
-|metricsdc-47d47|これは、ノードに関するノードレベルのメトリックを収集するために、クラスター内のすべての Kubernetes ノードにデプロイされたデーモンセットです。|aks-agentpool-42715708-vmss000002
-|metricsdc-864kj|これは、ノードに関するノードレベルのメトリックを収集するために、クラスター内のすべての Kubernetes ノードにデプロイされたデーモンセットです。|aks-agentpool-42715708-vmss000001
-|metricsdc-l8jkf|これは、ノードに関するノードレベルのメトリックを収集するために、クラスター内のすべての Kubernetes ノードにデプロイされたデーモンセットです。|aks-agentpool-42715708-vmss000003
-|metricsdc-nxm4l|これは、ノードに関するノードレベルのメトリックを収集するために、クラスター内のすべての Kubernetes ノードにデプロイされたデーモンセットです。|aks-agentpool-42715708-vmss000000
-|metricsui-4fb7l|これは、InfluxDB データベースの上に置かれ、監視ダッシュボード GUI を表示する Grafana インスタンスです。|aks-agentpool-42715708-vmss000003
-|mgmtproxy-4qppp|これは、Grafana および Kibana のインスタンスの前に置かれている Web アプリケーション プロキシ レイヤーです。|aks-agentpool-42715708-vmss000002
+|controldb-0|データ コントローラーの構成と状態を格納するために使用されるコントローラー データ ストアです。|aks-agentpool-42715708-vmss000001
+|controlwd-zzjp7|データ コントローラーの可用性を監視するコントローラー "ウォッチドッグ" サービスです。|aks-agentpool-42715708-vmss000000
+|logsdb-0|すべての Arc Data Services ポッドで収集されたすべてのログを格納するために使用される Elastic Search インスタンスです。 Elasticsearch は、各ポッドの `Fluentbit` コンテナーからデータを受信する|aks-agentpool-42715708-vmss000003
+|logsui-5fzv5|Elastic Search データベース上にあり、Log Analytics GUI を表示するための Kibana インスタンスです。|aks-agentpool-42715708-vmss000003
+|metricsdb-0|すべての Arc Data Services ポッドで収集されたすべてのメトリックを格納するために使用される InfluxDB インスタンスです。 InfluxDB は、各ポッドの `Telegraf` コンテナーからデータを受信する|aks-agentpool-42715708-vmss000000
+|metricsdc-47d47|ノードに関するノードレベルのメトリックを収集するために、クラスター内のすべての Kubernetes ノードにデプロイされたデーモンセットです。|aks-agentpool-42715708-vmss000002
+|metricsdc-864kj|ノードに関するノードレベルのメトリックを収集するために、クラスター内のすべての Kubernetes ノードにデプロイされたデーモンセットです。|aks-agentpool-42715708-vmss000001
+|metricsdc-l8jkf|ノードに関するノードレベルのメトリックを収集するために、クラスター内のすべての Kubernetes ノードにデプロイされたデーモンセットです。|aks-agentpool-42715708-vmss000003
+|metricsdc-nxm4l|ノードに関するノードレベルのメトリックを収集するために、クラスター内のすべての Kubernetes ノードにデプロイされたデーモンセットです。|aks-agentpool-42715708-vmss000000
+|metricsui-4fb7l|InfluxDB データベースの上に置かれ、監視ダッシュボード GUI を表示する Grafana インスタンスです。|aks-agentpool-42715708-vmss000003
+|mgmtproxy-4qppp|Grafana および Kibana のインスタンスの前に置かれている Web アプリケーション プロキシ レイヤーです。|aks-agentpool-42715708-vmss000002
 
 > \* ポッド名のサフィックスは、デプロイによって異なります。 また、ここでは、Azure Arc データ コントローラーの Kubernetes 名前空間内でホストされているポッドのみを一覧表示します。
 
@@ -237,7 +237,7 @@ Kubernetes クラスター aks-agentpool-42715708-vmss000003 の残りの物理�
 
 :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/5_full_list_of_pods.png" alt-text="さまざまなノード上の名前空間内のすべてのポッド":::
 
-つまり、Azure Arc 対応 Postgres Hyperscale サーバー グループのコーディネーター ノード (ポッド 1) により、サーバー グループの 3 つ目のワーカー ノード (ポッド 4) と同じ物理リソースが共有されています。 これは、ワーカー ノードの場合と比較して、コーディネーター ノードで使用されているリソースが非常に少ないため、許容されます。 このため、次の項目を慎重に選択する必要があることが推測できます。
+前述のように、Azure Arc 対応 Postgres Hyperscale サーバー グループのコーディネーター ノード (ポッド 1) により、サーバー グループの 3 つ目のワーカー ノード (ポッド 4) と同じ物理リソースが共有されています。 これは、ワーカー ノードの場合と比較して、コーディネーター ノードで使用されているリソースが非常に少ないため、許容されます。 このため、次の項目を慎重に選択してください。
 - Kubernetes クラスターのサイズと、その各物理ノードの特性 (メモリ、仮想コア)
 - Kubernetes クラスター内の物理ノードの数
 - Kubernetes クラスターでホストするアプリケーションまたはワークロード

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: df393f54e7dfa83c8fc0feab3dbf42a156b296b7
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a274e96defa8b6b74c046923d87f198029399dd4
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430464"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098097"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサー
 
@@ -118,6 +118,7 @@ Azure Cognitive Search の "*インデクサー*" は、検索可能なテキス
 概要がわかったので、次に、インデクサーのプロパティとパラメーター、スケジュール、およびインデクサーの監視について確認します。 また、[サポートされているデータ ソース](#supported-data-sources)の一覧に戻り、特定のソースの詳細を確認することもできます。
 
 + [インデクサーを作成する](search-howto-create-indexers.md)
++ [インデクサーのリセットと実行](search-howto-run-reset-indexers.md)
 + [インデクサーのスケジュール設定](search-howto-schedule-indexers.md)
 + [フィールド マッピングの定義](search-indexer-field-mappings.md)
 + [インデクサーの状態を監視する](search-howto-monitor-indexers.md)

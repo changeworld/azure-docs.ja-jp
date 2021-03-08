@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c8a5666d373852da5ff79490f435b2d66d5cc6e0
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: b817cfc347ee79ff7c9cbb4124e3f2b7e4d2b7ee
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090368"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644257"
 ---
 # <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して Keyless を構成する
 
@@ -30,7 +30,7 @@ Keyless のソリューション **Keyless Zero-Knowledge Biometric (ZKB™)** �
 
 - Azure サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 
-- [Azure AD B2C テナント](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。 テナントは Azure サブスクリプションにリンクされている必要があります。
+- [Azure AD B2C テナント](./tutorial-create-tenant.md)。 テナントは Azure サブスクリプションにリンクされている必要があります。
 
 - Keyless クラウド テナント。無料[試用版アカウント](https://keyless.io/go)を取得します。
 
@@ -157,6 +157,6 @@ ID プロバイダーを構成するには、次の手順を実行します。
 
 追加情報については、次の記事を参照してください。
 
-- [Azure AD B2C のカスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)

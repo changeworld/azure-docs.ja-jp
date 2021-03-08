@@ -7,17 +7,20 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: 68c690b9cbd2028f73492550adbe86111f9ec3a7
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 331a7b1bef3621a080fe2fa891cf83565a1e55ac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257948"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702574"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault の論理的な削除の概要
 
 > [!IMPORTANT]
 > 直ちに、キー コンテナーで論理的な削除を有効にする必要があります。 論理的な削除をオプトアウトする機能は、間もなく非推奨になります。 詳細については、[こちら](soft-delete-change.md)を参照してください
+
+> [!IMPORTANT]
+> 論理的に削除されたコンテナーによって、Key Vault との統合サービス (つまり、Azure RBAC ロールの割り当て、Event Grid サブスクリプション、Azure Monitor の診断設定) の設定が削除されます。 論理的に削除されたキー コンテナーの回復後に、統合サービスの設定を手動で作成し直す必要があります。 
 
 Key Vault の論理的な削除機能を使用すると、削除されたコンテナーと削除されたキー コンテナー オブジェクト (キー、シークレット、証明書など) を回復できます (論理的な削除として知られています)。 具体的には、以下のシナリオを扱います。この保護機能では、次の保護が提供されます。
 
@@ -27,7 +30,7 @@ Key Vault の論理的な削除機能を使用すると、削除されたコン�
 
 ## <a name="supporting-interfaces"></a>インターフェイスのサポート
 
-論理的な削除機能は、[REST API](/rest/api/keyvault/)、[Azure CLI](./key-vault-recovery.md)、[Azure PowerShell](./key-vault-recovery.md)、[.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) の各インターフェイスの他に、[ARM テンプレート](/azure/templates/microsoft.keyvault/2019-09-01/vaults)でも使用できます。
+論理的な削除機能は、[REST API](/rest/api/keyvault/)、[Azure CLI](./key-vault-recovery.md)、[Azure PowerShell](./key-vault-recovery.md)、[.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet&preserve-view=true) の各インターフェイスの他に、[ARM テンプレート](/azure/templates/microsoft.keyvault/2019-09-01/vaults)でも使用できます。
 
 ## <a name="scenarios"></a>シナリオ
 
@@ -99,6 +102,6 @@ Azure Key Vault は追跡対象のリソースであり、Azure Resource Manager
 
 次の 2 つのガイドでは、論理的な削除を使用する場合の主な使用シナリオを紹介しています。
 
-- [Portal で Key Vault の論理的な削除を使用する方法](https://docs.microsoft.com/azure/key-vault/general/key-vault-recovery?tabs=azure-portal)
+- [Portal で Key Vault の論理的な削除を使用する方法](./key-vault-recovery.md?tabs=azure-portal)
 - [PowerShell で Key Vault の論理的な削除を使用する方法](./key-vault-recovery.md) 
 - [CLI で Key Vault の論理的な削除を使用する方法](./key-vault-recovery.md)

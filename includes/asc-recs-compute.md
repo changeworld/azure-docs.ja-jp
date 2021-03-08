@@ -2,17 +2,17 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 01-26-2021
+ms.date: 02/16/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 15eef1a9c39a652b40dbb5a53ad1721495646be2
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 8948f7e519f18cb1c3a0fab0ae5de1e6b3af11b8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797210"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574442"
 ---
-このカテゴリには **99 個** の推奨事項があります。
+このカテゴリには **102 個** の推奨事項があります。
 
 |推奨 |Description |重大度 |
 |---|---|---|
@@ -56,6 +56,7 @@ ms.locfileid: "98797210"
 |Web アプリでは FTPS を必須とする |セキュリティを強化するために FTPS 強制を有効にします<br />(関連ポリシー:[Web アプリでは FTPS を必須とする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4d24b6d4-5e53-4a4f-a7f4-618fa573ee4b)) |高 |
 |Function App には HTTPS 経由でのみアクセスできるようにする |HTTPS を使用すると、サーバー/サービスの認証が確実に実行され、転送中のデータがネットワーク層の傍受攻撃から保護されるようになります。<br />(関連ポリシー:[関数アプリに HTTPS を介してのみアクセスできるようにする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6d555dd1-86f2-4f1c-8ed7-5abae7c6cbab)) |中 |
 |関数アプリでクライアント証明書 (着信クライアント証明書) を有効にする必要がある |クライアント証明書を使用すると、アプリは受信要求に対して証明書を要求できます。 有効な証明書を持つクライアントのみが、そのアプリにアクセスできるようになります。<br />(関連ポリシー:[関数アプリで "クライアント証明書 (着信クライアント証明書)" を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2feaebaea7-8013-4ceb-9d14-7eb32271373c)) |中 |
+|ゲスト構成拡張機能をマシンにインストールする必要がある |マシンのゲスト内設定について、セキュリティで保護された構成を確保するには、ゲスト構成拡張機能をインストールします。 この拡張機能によって監視されるゲスト内設定には、オペレーティング システムの構成、アプリケーションの構成またはプレゼンス、環境設定が含まれます。 インストールが完了すると、"Windows Exploit Guard を有効にする必要がある" のようなゲスト内ポリシーを使用できるようになります。 <a href='https://aka.ms/gcpol'>詳細については、こちらを参照してください</a>。<br />(関連ポリシー:[仮想マシンにはゲスト構成拡張機能が必要である](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2fae89ebca-1c92-4898-ac2c-9f63decb045c)) |中 |
 |コンテナーで不変 (読み取り専用) のルート ファイル システムを適用する必要がある |お使いの Kubernetes クラスターでは、読み取り専用のルート ファイル システムを使用してコンテナーを実行してください。 不変のファイル システムは、PATH に追加された悪意のあるバイナリによる実行時の変更から、コンテナーを保護します。<br />(関連ポリシー:[Kubernetes クラスター コンテナーを読み取り専用のルート ファイル システムで実行する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fdf49d893-a74c-421d-bc95-c663042e5b80)) |中 |
 |仮想マシンにエンドポイント保護ソリューションをインストールする |仮想マシンにエンドポイント保護ソリューションをインストールし、脅威と脆弱性から仮想マシンを保護します。<br />(関連ポリシー:[エンドポイント保護の不足を Azure Security Center で監視する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2faf6cd1bd-1635-48cb-bde7-5b15693900b9)) |高 |
 |マシンにエンドポイント保護ソリューションをインストールする |お使いの Windows または Linux マシンにエンドポイント保護ソリューションをインストールし、脅威と脆弱性から仮想マシンを保護します。<br />(関連ポリシーはありません) |Medium |
@@ -105,6 +106,7 @@ ms.locfileid: "98797210"
 |ポッドの HostPath ボリューム マウントの使用を既知のリストに制限して、侵害されたコンテナーからのノード アクセスを制限する必要がある |Kubernetes クラスター内のポッドの HostPath ボリューム マウントを、構成済みの許可されているホスト パスに制限することをお勧めします。 侵害が発生した場合は、コンテナーからのコンテナー ノード アクセスを制限する必要があります。<br />(関連ポリシー:[Kubernetes クラスター ポッドの hostPath ボリュームでは、許可されているホスト パスのみを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f098fc59e-46c7-4d99-9b16-64990e543d75)) |中 |
 |仮想マシンでブート整合性の正常性を証明する必要がある |Security Center では、仮想マシンで署名済みの信頼されたコードが実行されていることを証明できません。 これはブート チェーンの侵害を示している可能性があり、ブートキットまたはルートキットの永続的な感染の結果である場合があります。 VM が安全な状態で実行されていることを確認するには、マシンを調査するか、信頼された OS イメージから再デプロイすることをお勧めします。<br />(関連ポリシーはありません) |Medium |
 |仮想マシンを新しい Azure Resource Manager リソースに移行する必要がある |仮想マシン (クラシック) は非推奨になったので、これらの VM を Azure Resource Manager に移行する必要があります。<br>Azure Resource Manager には現在、完全な IaaS 機能とその他の強化機能が含まれるため、2020 年 2 月 28 日に Azure Service Manager (ASM) を介した IaaS 仮想マシン (VM) の管理を非推奨にしました。 この機能は、2023 年 3 月 1 日に完全に廃止される予定です。<br><br>このツールと移行に関する利用可能なリソースと情報は次のとおりです。<br>1. <a href='https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json'>仮想マシン (クラシック) の非推奨の概要、移行の段階的なプロセス、利用可能な Microsoft リソース。</a><br>2. <a href='https://docs.microsoft.com/azure/virtual-machines/migration-classic-resource-manager-deep-dive?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json'>ARM 移行ツールへの移行に関する詳細情報。</a><br>3. <a href='https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-ps'>PowerShell を使用した ARM 移行ツールへの移行。</a><br />(関連ポリシー:[仮想マシンを新しい Azure Resource Manager リソースに移行する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1d84d5fb-01f6-4d12-ba4f-4a26081d403d)) |高 |
+|仮想マシンのゲスト構成拡張機能はシステム割り当てマネージド ID を使用してデプロイする必要がある |ゲスト構成拡張機能には、システム割り当てマネージド ID が必要です。 このポリシーのスコープ内の Azure 仮想マシンは、ゲスト構成拡張機能がインストールされていても、システム割り当てマネージド ID がなければ非準拠になります。 <a href='https://aka.ms/gcpol'>詳細情報</a><br />(関連ポリシー:[ゲスト構成拡張機能はシステム割り当てマネージド ID を持つ Azure 仮想マシンにデプロイする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fd26f7642-7545-4e18-9b75-8c9bbdee3a9a)) |Medium |
 |Azure Container Registry イメージの脆弱性を修復する必要がある (Qualys を利用) |コンテナー イメージの脆弱性評価では、レジストリをスキャンしてセキュリティの脆弱性を調べ、各イメージの詳細な調査結果を公開します。 脆弱性を解決することで、お使いのコンテナーのセキュリティ体制が大幅に向上し、それらを攻撃から保護できます。<br />(関連ポリシー:[Azure Container Registry イメージの脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5f0f936f-2f01-4bf5-b6be-d423792fa562)) |高 |
 |コンテナーのセキュリティ構成の脆弱性を修復する必要がある |Docker がインストールされているマシンでセキュリティ構成の脆弱性を修復し、コンテナーを攻撃から保護します。<br />(関連ポリシー:[コンテナーのセキュリティ構成の脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fe8cbc669-f12d-49eb-93e7-9273119e9933)) |高 |
 |使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある |マシンでセキュリティ構成の脆弱性を修復し、マシンを攻撃から保護します。<br />(関連ポリシー:[マシンのセキュリティ構成の脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fe1e5fd5d-3e4c-4ce1-8661-7d1873ae6b15)) |低 |
@@ -114,5 +116,6 @@ ms.locfileid: "98797210"
 |脆弱性評価ソリューションを仮想マシンにインストールする必要があります |仮想マシンに脆弱性評価ソリューションをインストールする<br />(関連ポリシー:[脆弱性評価ソリューションによって脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f760a85ff-6162-42b3-8d70-698e268f648c)) |中 |
 |Web アプリケーションには HTTPS を介してのみアクセスできるようにする |HTTPS を使用すると、サーバー/サービスの認証が確実に実行され、転送中のデータがネットワーク層の傍受攻撃から保護されるようになります。<br />(関連ポリシー:[Web アプリケーションには HTTPS を介してのみアクセスできるようにする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa4af4a39-4135-47fb-b175-47fbdf85311d)) |中 |
 |Web アプリではすべての受信要求に対して SSL 証明書を要求する必要がある |クライアント証明書を使用すると、アプリは受信要求に対して証明書を要求できます。<br>有効な証明書を持つクライアントのみがアプリにアクセスできます。<br />(関連ポリシー:[Web アプリで "クライアント証明書 (着信クライアント証明書)" が [オン] に設定されていることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5bb220d9-2698-4ee4-8404-b9c30c9df609)) |中 |
+|マシンで Windows Defender Exploit Guard を有効にする必要がある |Windows Defender Exploit Guard では、Azure Policy ゲスト構成エージェントを使用します。 Exploit Guard には、さまざまな攻撃ベクトルに対してデバイスをロックダウンし、マルウェア攻撃でよく使用される動作をブロックするよう設計された 4 つのコンポーネントがありますが、企業がセキュリティ リスクと生産性の要件のバランスをとれるようになっています (Windows のみ)。<br />(関連ポリシー:[Windows Defender Exploit Guard が有効になっていない Windows マシンを監査する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2fbed48b13-6647-468e-aa2f-1af1d3f4dd40)) |中 |
 |システムの更新プログラムを適用するには、マシンを再起動する必要があります |マシンを再起動してシステムの更新プログラムを適用し、マシンを脆弱性からセキュリティで保護します。<br />(関連ポリシー:[システムの更新プログラムをマシンにインストールする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f86b3d65f-7626-441e-b690-81a8b71cff60)) |中 |
 |||

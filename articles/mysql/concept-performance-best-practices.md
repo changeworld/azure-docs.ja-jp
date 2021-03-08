@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 46c7952247babd528b230dfa0e70b0eb47878912
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 7b5223bc08c470a0e8722b76b80473aaa235b51a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99217756"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727160"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>Azure Database for MySQL のパフォーマンスを最適化するためのベスト プラクティス - 単一サーバー
 
@@ -65,7 +65,7 @@ Azure Database for MySQL サーバーを再起動した後のウォームアッ�
 サーバーのシャットダウン時にバッファー プールの状態を保存するには、サーバー パラメーター `innodb_buffer_pool_dump_at_shutdown` を `ON` に設定します。 同様に、サーバー起動時にバッファー プールの状態を復元するには、サーバー パラメーター `innodb_buffer_pool_load_at_startup` を `ON` に設定します。 サーバー パラメーター `innodb_buffer_pool_dump_pct` の値を下げて微調整すると、起動/再起動時間への影響を制御できます。 既定では、このパラメーターは `25` に設定されます。
 
 > [!Note]
-> InnoDB バッファー プールのウォームアップ パラメーターは、最大 16 TB のストレージを持つ汎用ストレージ サーバーでのみサポートされています。 [Azure Database for MySQL コンピューティングとストレージ](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)に関する詳細情報をご覧ください。
+> InnoDB バッファー プールのウォームアップ パラメーターは、最大 16 TB のストレージを持つ汎用ストレージ サーバーでのみサポートされています。 [Azure Database for MySQL コンピューティングとストレージ](./concepts-pricing-tiers.md#storage)に関する詳細情報をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

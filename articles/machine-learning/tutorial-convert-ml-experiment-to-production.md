@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2f7746f079e740493348731376d0a5a7b1a9e954
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cdfeb2fdeefabb0d2d4af2fb63222adda5d023fb
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317846"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576027"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>チュートリアル:ML 実験を運用 Python コードに変換する
 
@@ -33,7 +33,7 @@ ms.locfileid: "93317846"
 ## <a name="prerequisites"></a>前提条件
 
 - [MLOpsPython テンプレート](https://github.com/microsoft/MLOpsPython/generate)を生成し、`experimentation/Diabetes Ridge Regression Training.ipynb` と `experimentation/Diabetes Ridge Regression Scoring.ipynb` ノートブックを使用します。 これらのノートブックは、実験環境から運用に変換する例として使用されます。 これらのノートブックは、[https://github.com/microsoft/MLOpsPython/tree/master/experimentation](https://github.com/microsoft/MLOpsPython/tree/master/experimentation) にあります。
-- `nbconvert`をインストールする。 [インストール](https://nbconvert.readthedocs.io/en/latest/install.html) ページの「 __nbconvert のインストール__ 」セクションにあるインストール手順のみに従ってください。
+- `nbconvert`をインストールする。 [インストール](https://nbconvert.readthedocs.io/en/latest/install.html) ページの「__nbconvert のインストール__」セクションにあるインストール手順のみに従ってください。
 
 ## <a name="remove-all-nonessential-code"></a>不要なコードをすべて削除する
 
@@ -91,11 +91,11 @@ joblib.dump(value=reg, filename=model_name)
 
 1. データ フレームをテスト データとトレーニング データに分割する `split_data` という関数を作成します。 この関数は、データフレーム `df` をパラメーターとして受け取って、`train` と `test` をキーとするディクショナリを返す必要があります。
 
-    " *Split Data into Training and Validation Sets* " という見出しの下にあるコードを `split_data` 関数に移動し、`data` オブジェクトを返すように変更します。
+    "*Split Data into Training and Validation Sets*" という見出しの下にあるコードを `split_data` 関数に移動し、`data` オブジェクトを返すように変更します。
 
 1. パラメーター `data` および `args` を受け取って、トレーニング済みのモデルを返す、`train_model` という関数を作成します。
 
-    " *Training Model on Training Set* " という見出しの下にあるコードを `train_model` 関数に移動し、`reg_model` オブジェクトを返すように変更します。 `args` ディクショナリは削除してください。この値は `args` パラメーターから渡されます。
+    "*Training Model on Training Set*" という見出しの下にあるコードを `train_model` 関数に移動し、`reg_model` オブジェクトを返すように変更します。 `args` ディクショナリは削除してください。この値は `args` パラメーターから渡されます。
 
 1. `reg_model` および `data` をパラメーターとして受け取ってモデルを評価し、トレーニング済みのモデルのメトリックのディクショナリを返す `get_model_metrics` という関数を作成します。
 
@@ -353,7 +353,7 @@ print("Test result: ", prediction)
 コマンド プロンプトで、`nbconvert` パッケージと `experimentation/Diabetes Ridge Regression Training.ipynb` のパスを使用する次のステートメントを実行して、ノートブックを実行可能スクリプトに変換します。
 
 ```
-jupyter nbconvert -- to script "Diabetes Ridge Regression Training.ipynb" –output train
+jupyter nbconvert "Diabetes Ridge Regression Training.ipynb" --to script --output train
 ```
 
 ノートブックが `train.py` に変換されたら、不要なコメントをすべて削除します。 ファイルの最後にある `main()` の呼び出しは、次のコードのように条件付き呼び出しに置き換えます。
@@ -441,7 +441,7 @@ MLOpsPython リポジトリの `diabetes_regression/training` ディレクトリ
 コマンド プロンプトで、`nbconvert` パッケージと `experimentation/Diabetes Ridge Regression Scoring.ipynb` のパスを使用する次のステートメントを実行して、ノートブックを実行可能スクリプトに変換します。
 
 ```
-jupyter nbconvert -- to script "Diabetes Ridge Regression Scoring.ipynb" –output score
+jupyter nbconvert "Diabetes Ridge Regression Scoring.ipynb" --to script --output score
 ```
 
 ノートブックが `score.py` に変換されたら、不要なコメントをすべて削除します。 `score.py` ファイルは次のコードのようになります。

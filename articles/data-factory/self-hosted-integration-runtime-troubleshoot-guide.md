@@ -1,18 +1,17 @@
 ---
 title: Azure Data Factory でセルフホステッド統合ランタイムのトラブルシューティングを行う
 description: Azure Data Factory でセルフホステッド統合ランタイムの問題をトラブルシューティングする方法について説明します。
-services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: 8a722550d12d019e25ff39de27cc0df2c2762a01
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2cb0e0870b32270340e37d54dc54a43b22ee014a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942046"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376464"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムのトラブルシューティング
 
@@ -83,8 +82,8 @@ Azure Data Factory インターフェイスからコンカレント ジョブの
 コンカレント ジョブ数の制限は、コンピューターの論理コアとメモリによって決まります。 値を 24 などの値に下方に調整して、結果を表示してみてください。
 
 > [!TIP] 
-> - 論理コア数の詳細を確認し、使用するマシンの論理コア数を判別するには、[Windows 10 で CPU のコア数を調べる 4 つの方法](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/)に関するページを参照してください。
-> - math.log を計算する方法については、[対数計算機](https://www.rapidtables.com/calc/math/Log_Calculator.html)のページにアクセスしてください。
+> -    論理コア数の詳細を確認し、使用するマシンの論理コア数を判別するには、[Windows 10 で CPU のコア数を調べる 4 つの方法](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/)に関するページを参照してください。
+> -    math.log を計算する方法については、[対数計算機](https://www.rapidtables.com/calc/math/Log_Calculator.html)のページにアクセスしてください。
 
 
 ### <a name="self-hosted-ir-high-availability-ha-ssl-certificate-issue"></a>セルフホステッド IR 高可用性 (HA) の SSL 証明書の問題
@@ -710,7 +709,7 @@ Azure Data Factory v1 のお客様の場合:
 
 自分に影響があるかどうかを判断する方法:
 
-- [IP アドレスに対するファイアウォールの構成と許可リストの設定](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)に関する記事で説明されている方法が使用される、完全修飾ドメイン名 (FQDN) に基づいたファイアウォール規則を定義している場合は、影響を "*受けません*"。
+- [IP アドレスに対するファイアウォールの構成と許可リストの設定](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-addresses)に関する記事で説明されている方法が使用される、完全修飾ドメイン名 (FQDN) に基づいたファイアウォール規則を定義している場合は、影響を "*受けません*"。
 
 - 企業のファイアウォールで送信 IP の許可リストを明示的に有効にしている場合は、影響を "*受けます*"。
 

@@ -12,12 +12,12 @@ ms.date: 08/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73318d1ee14894f5d22f7c4d2e61418e3b1038c1
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 706f759243fd9edbd5f47633cb2638d6b06beec1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636879"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376362"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -45,17 +45,17 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 詳細については、[自動アップグレード](how-to-connect-install-automatic-upgrade.md)に関するこのリンクを参照してください。
 
 >[!IMPORTANT]
-> 2020 年 11 月 1 日以降、18 か月以上前にリリースされた Azure AD Connect のバージョンが非推奨となる、非推薦プロセスの運用が開始されます。 その時点で、バージョン 1.3.20.0 の Azure AD Connect のすべてのリリース (2019 年 4 月 24 日にリリース) およびそれ以前のバージョンを非推奨にし、このプロセスを開始します。また、新しいバージョンがリリースされるたびに、古いバージョンの Azure AD Connect の非推薦の評価を行います。
+> 2024 年 4 月 1 日以降、2018 年 5 月 1 日より前にリリースされたバージョン 1.1.751.0 以前の Azure AD Connect を廃止します。 
 >
 > 最適なサポートエクスペリエンスを得るには、必ず最新バージョンの Azure AD Connect を実行していることを確認します。 
 >
->非推奨となったバージョンの Azure AD Connect を実行すると、最新のセキュリティ修正、パフォーマンスの向上、トラブルシューティングと診断ツール、およびサービスの機能強化が受けられない可能性があり、またサポートが必要な場合も、組織が必要とするレベルのサービスを受けられない可能性があります。
+>廃止されたバージョンの Azure AD Connect を実行すると、最新のセキュリティ修正、パフォーマンスの向上、トラブルシューティングと診断ツール、およびサービスの機能強化が受けられないおそれがあり、またサポートが必要な場合も、組織が必要とするレベルのサービスを受けられないおそれがあります。
 >
->Azure AD Connect for sync を有効にした場合、以前のバージョンのいずれかを実行していると近々非推薦になる旨について警告する正常性通知の受信が自動的に開始されます。
+
 >
 >Azure AD Connect を最新バージョンにアップグレードする方法の詳細については、[この記事](./how-to-upgrade-previous-version.md)を参照してください。
 >
->非推奨バージョンのバージョン履歴情報については、[Azure AD Connect バージョンのリリース履歴アーカイブ](reference-connect-version-history-archive.md)に関する記事を参照してください。
+>廃止されたバージョンのバージョン履歴情報については、[Azure AD Connect バージョンのリリース履歴アーカイブ](reference-connect-version-history-archive.md)に関する記事を参照してください。
 
 ## <a name="15450"></a>1.5.45.0
 

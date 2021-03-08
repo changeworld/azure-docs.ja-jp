@@ -8,18 +8,18 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3f6c12b892e01aafd5beecdff14751481cf7fc96
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 406420fcd517ceda8ea6eedfc955f54b15541f74
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963399"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366604"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge にモジュールをデプロイしてルートを確立する方法について説明します。
 
 各 IoT Edge デバイスでは、$edgeAgent と $edgeHub という少なくとも 2 つのモジュールが実行されます。これらは IoT Edge ランタイムに含まれています。 IoT Edge デバイスは、任意の数のプロセスに対して複数の追加モジュールを実行できます。 インストールするモジュールとそれらを連携させるための構成方法をデバイスに伝えるには、配置マニフェストを使用します。
 
-*デプロイ マニフェスト*は、次の内容が記述された JSON ドキュメントです。
+*デプロイ マニフェスト* は、次の内容が記述された JSON ドキュメントです。
 
 * 3 つのコンポーネントを含む **IoT Edge エージェント** モジュール ツイン。
   * デバイスで実行される各モジュールのコンテナー イメージ。
@@ -208,9 +208,9 @@ IoT Edge ハブは、モジュール、IoT ハブ、リーフ デバイス間の
 
 IoT Edge ハブ スキーマ バージョン 1.1 は IoT Edge バージョン 1.0.10 と共にリリースされ、ルートの優先順位付け機能と有効期限を使用可能にします。 バージョン 1.0.10 以降を実行している IoT Edge デプロイでは、スキーマ バージョン 1.1 の使用をお勧めします。
 
-各ルートには、メッセージの送信元である*ソース*と、メッセージの送信先である*シンク*が必要です。 *条件*は、メッセージをフィルター処理するために使用できる省略可能な部分です。
+各ルートには、メッセージの送信元である *ソース* と、メッセージの送信先である *シンク* が必要です。 *条件* は、メッセージをフィルター処理するために使用できる省略可能な部分です。
 
-メッセージが最初に処理されるようにする*優先順位*をルートに割り当てることができます。 この機能は、アップストリーム接続が脆弱または制限付きであり、標準のテレメトリ メッセージより優先される重要なデータがある場合に役立ちます。
+メッセージが最初に処理されるようにする *優先順位* をルートに割り当てることができます。 この機能は、アップストリーム接続が脆弱または制限付きであり、標準のテレメトリ メッセージより優先される重要なデータがある場合に役立ちます。
 
 ### <a name="source"></a>source
 
@@ -327,7 +327,7 @@ IoT Edge ハブでは、[IoT Edge ハブの必要なプロパティ](module-edge
           "edgeAgent": {
             "type": "docker",
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+              "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
               "createOptions": ""
             }
           },
@@ -337,7 +337,7 @@ IoT Edge ハブでは、[IoT Edge ハブの必要なプロパティ](module-edge
             "restartPolicy": "always",
             "startupOrder": 0,
             "settings": {
-              "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+              "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
             }
           }

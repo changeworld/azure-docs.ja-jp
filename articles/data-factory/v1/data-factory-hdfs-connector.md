@@ -1,23 +1,18 @@
 ---
 title: オンプレミスの HDFS からデータを移動する
 description: Azure Data Factory を使用してオンプレミスの HDFS からデータを移動する方法を説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 3215b82d-291a-46db-8478-eac1a3219614
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c4393ebeb8b1e287bd881233418a902fc523f7f5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 52e176e0fed85b649d482614667d695db539e5d1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589620"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383077"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの HDFS からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -112,6 +107,7 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
     }
 }
 ```
+
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
@@ -226,7 +222,7 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
 
 **HDFS の入力データセット:** このデータセットは HDFS フォルダー DataTransfer/UnitTest/ を参照します。 パイプラインは、このフォルダー内のすべてのファイルをコピー先にコピーします。
 
-”external” を ”true” に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
+"external" を "true" に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 ```JSON
 {
@@ -357,31 +353,31 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 #### <a name="requirement"></a>要件:
 
-* ゲートウェイ コンピューターは Kerberos 領域に参加している必要があります。Windows ドメインには参加できません。
+* ゲートウェイ マシンは Kerberos 領域に参加している必要があります。Windows ドメインには参加できません。
 
 #### <a name="how-to-configure"></a>構成方法:
 
 **ゲートウェイ コンピューターで以下を実行します。**
 
-1.  **Ksetup** ユーティリティを実行して、Kerberos KDC サーバーと領域を構成します。
+1. **Ksetup** ユーティリティを実行して、Kerberos KDC サーバーと領域を構成します。
 
-    Kerberos 領域は Windows ドメインとは異なるため、コンピューターをワークグループのメンバーとして構成する必要があります。 これは、次のように Kerberos 領域を設定し、KDC サーバーを追加することで実現できます。 *REALM.COM* は、必要に応じて実際の領域に置き換えます。
+   Kerberos 領域は Windows ドメインとは異なるため、コンピューターをワークグループのメンバーとして構成する必要があります。 これは、次のように Kerberos 領域を設定し、KDC サーバーを追加することで実現できます。 *REALM.COM* は、必要に応じて実際の領域に置き換えます。
 
-    ```cmd
-    C:> Ksetup /setdomain REALM.COM
-    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-    ```
+   ```cmd
+   Ksetup /setdomain REALM.COM
+   Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   ```
 
-    これら 2 つのコマンドを実行した後、コンピューターを **再起動** します。
+   これら 2 つのコマンドを実行した後、コンピューターを **再起動** します。
 
-2.  **Ksetup** コマンドを実行して構成を確認します。 出力は次のようになります。
+2. **Ksetup** コマンドを実行して構成を確認します。 出力は次のようになります。
 
-    ```cmd
-    C:> Ksetup
-    default realm = REALM.COM (external)
-    REALM.com:
-        kdc = <your_kdc_server_address>
-    ```
+   ```cmd
+   Ksetup
+   default realm = REALM.COM (external)
+   REALM.com:
+      kdc = <your_kdc_server_address>
+   ```
 
 **Azure Data Factory で以下を実行します。**
 
@@ -390,8 +386,8 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 ### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>オプション 2: Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする
 
 #### <a name="requirement"></a>要件:
-*   ゲートウェイ コンピューターは、Windows ドメインに参加している必要があります。
-*   ドメイン コントローラーの設定を更新するアクセス許可が必要です。
+*    ゲートウェイ コンピューターは、Windows ドメインに参加している必要があります。
+*    ドメイン コントローラーの設定を更新するアクセス許可が必要です。
 
 #### <a name="how-to-configure"></a>構成方法:
 
@@ -450,54 +446,54 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 **ドメイン コントローラーで、以下を実行します。**
 
-1.  次の **Ksetup** コマンドを実行して、領域のエントリを追加します。
+1. 次の **Ksetup** コマンドを実行して、領域のエントリを追加します。
 
-    ```cmd
-    C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-    C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
-    ```
+   ```cmd
+   Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   ```
 
-2.  Windows ドメインから Kerberos 領域への信頼関係を確立します。 [password] は、**krbtgt/REALM.COM\@AD.COM** プリンシパルのパスワードです。
+2. Windows ドメインから Kerberos 領域への信頼関係を確立します。 [password] は、**krbtgt/REALM.COM\@AD.COM** プリンシパルのパスワードです。
 
-    ```cmd
-    C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
-    ```
+   ```cmd
+   netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
+   ```
 
-3.  Kerberos で使用される暗号化アルゴリズムを選択します。
+3. Kerberos で使用される暗号化アルゴリズムを選択します。
 
-    1. サーバー マネージャーに移動し、[グループ ポリシー管理]、[ドメイン]、[グループ ポリシー オブジェクト]、[既定のポリシー] または [Active Domain ポリシー] の順に選択します。
+   1. サーバー マネージャーに移動し、[グループ ポリシー管理]、[ドメイン]、[グループ ポリシー オブジェクト]、[既定のポリシー] または [Active Domain ポリシー] の順に選択します。
 
-    2. **[グループ ポリシー管理エディター]** ポップアップ ウィンドウで、[コンピューターの構成] > [ポリシー] > [Windows の設定] > [セキュリティの設定] > [ローカル ポリシー] > [セキュリティ オプション] に移動し、 **[ネットワーク セキュリティ: Kerberos で許可する暗号化の種類を構成する]** を構成します。
+   2. **[グループ ポリシー管理エディター]** ポップアップ ウィンドウで、[コンピューターの構成] > [ポリシー] > [Windows の設定] > [セキュリティの設定] > [ローカル ポリシー] > [セキュリティ オプション] に移動し、 **[ネットワーク セキュリティ: Kerberos で許可する暗号化の種類を構成する]** を構成します。
 
-    3. KDC に接続するときに使用する暗号化アルゴリズムを選択します。 通常は、単純にすべてのオプションを選択できます。
+   3. KDC に接続するときに使用する暗号化アルゴリズムを選択します。 通常は、単純にすべてのオプションを選択できます。
 
-        ![Kerberos での暗号化の種類の構成](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
+      ![Kerberos での暗号化の種類の構成](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
 
-    4. **Ksetup** コマンドを使用して、特定の領域で使用される暗号化アルゴリズムを指定します。
+   4. **Ksetup** コマンドを使用して、特定の領域で使用される暗号化アルゴリズムを指定します。
 
-       ```cmd
-       C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
-       ```
+      ```cmd
+      ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
+      ```
 
-4.  Windows ドメインで Kerberos プリンシパルを使用するために、ドメイン アカウントと Kerberos プリンシパル間のマッピングを作成します。
+4. Windows ドメインで Kerberos プリンシパルを使用するために、ドメイン アカウントと Kerberos プリンシパル間のマッピングを作成します。
 
-    1. 管理ツールを起動し、**Active Directory ユーザーとコンピュータを選択します**。
+   1. 管理ツールを起動し、**Active Directory ユーザーとコンピュータを選択します**。
 
-    2. **[ビュー]**  >  **[高度な機能]** をクリックして、高度な機能を構成します。
+   2. **[ビュー]**  >  **[高度な機能]** をクリックして、高度な機能を構成します。
 
-    3. マッピングを作成するアカウントを見つけます。そのアカウントをクリックして **名前のマッピング** を表示し、**Kerberos 名** タブをクリックします。
+   3. マッピングを作成するアカウントを見つけます。そのアカウントをクリックして **名前のマッピング** を表示し、**Kerberos 名** タブをクリックします。
 
-    4. 領域からプリンシパルを追加します。
+   4. 領域からプリンシパルを追加します。
 
-        ![マップ セキュリティ ID](media/data-factory-hdfs-connector/map-security-identity.png)
+      ![マップ セキュリティ ID](media/data-factory-hdfs-connector/map-security-identity.png)
 
 **ゲートウェイ コンピューターで以下を実行します。**
 
 * 次の **Ksetup** コマンドを実行して、領域のエントリを追加します。
 
    ```cmd
-   C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
-   C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
+   Ksetup /addkdc REALM.COM <your_kdc_server_address>
+   ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
    ```
 
 **Azure Data Factory で以下を実行します。**
@@ -506,7 +502,6 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 > [!NOTE]
 > ソース データセット列からシンク データセット列へのマッピングについては、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
-
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 8a6189a613c9a6768428a13e35e0e009894b8b3f
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: b09c36f1dce3c394ff24e3e601d773279a6ac510
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988044"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123311"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースのベスト プラクティス
 
@@ -18,7 +18,7 @@ ms.locfileid: "99988044"
 
 ## <a name="extraction"></a>抽出
 
-QnA Maker サービスは継続的に、コンテンツから QnA を抽出するアルゴリズムを改善し、サポートされるファイルおよび HTML 形式のリストを拡大しています。 ドキュメントの種類に応じた、データ抽出の[ガイドライン](../index.yml)に従ってください。
+QnA Maker サービスは継続的に、コンテンツから QnA を抽出するアルゴリズムを改善し、サポートされるファイルおよび HTML 形式のリストを拡大しています。 ドキュメントの種類に応じた、データ抽出の[ガイドライン](../Concepts/data-sources-and-content.md)に従ってください。
 
 一般的に、FAQ ページは独立させ、他の情報と組み合わせないでください。 製品マニュアルにはわかりやすい見出しを付けてください。索引ページを付けることもお勧めします。
 
@@ -147,7 +147,7 @@ QnA Maker では、ユーザーはナレッジ ベースに協力できます。
 
 ## <a name="active-learning"></a>アクティブ ラーニング
 
-[アクティブ ラーニング](../How-to/use-active-learning.md)は、幅広い質と量のユーザー ベースのクエリがある場合に、代替の質問を提案するという最高の仕事をします。 クライアント アプリケーションのユーザー クエリが、検閲なしのアクティブ ラーニングのフィードバック ループに参加できるようにすることが重要です。 QnA Maker ポータルで質問が提案されたら、**[提案によるフィルター処理](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** を行い、それらの提案をレビューして、承認または拒否する必要があります。
+[アクティブ ラーニング](../How-to/use-active-learning.md)は、幅広い質と量のユーザー ベースのクエリがある場合に、代替の質問を提案するという最高の仕事をします。 クライアント アプリケーションのユーザー クエリが、検閲なしのアクティブ ラーニングのフィードバック ループに参加できるようにすることが重要です。 QnA Maker ポータルで質問が提案されたら、**[提案によるフィルター処理](../How-To/improve-knowledge-base.md)** を行い、それらの提案をレビューして、承認または拒否する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

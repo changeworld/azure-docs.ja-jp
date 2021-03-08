@@ -12,12 +12,12 @@ ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f3bf9ffeb8da8e877a27ab8758572b2c8277146d
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: ce4917f968ef1664a1d41f4eaff162df116bda4f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090317"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035086"
 ---
 # <a name="signing-key-rollover-in-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームでの署名キーのロールオーバー
 この記事では、セキュリティ トークンに署名するために Microsoft ID プラットフォームで使用される公開キーに関して、知っておく必要があることについて説明します。 これらのキーは定期的にロールオーバーされ、緊急時にはすぐにロールオーバーされる可能性があることにご注意ください。 Microsoft ID プラットフォームを使用するすべてのアプリケーションは、キーのロールオーバー プロセスをプログラムで処理できる必要があります。 ここではキーのしくみについて説明すると共に、アプリケーションへのロールオーバーの影響を評価する方法について説明します。また、必要に応じてキーのロールオーバーに対処できるよう、アプリケーションを更新したり、定期的な手動ロールオーバー プロセスを確立したりする方法について説明しています。
@@ -297,7 +297,7 @@ WIF v1.0 でアプリケーションを作成した場合、新しいキーを�
 
 FedUtil を使用して構成を更新する手順は、次のようになります。
 
-1. Visual Studio 2008 または 2010 をデプロイしてあるマシンに WIF v1.0 SDK がインストールされていることを確認します。 インストールされていない場合は、[ここからダウンロード](https://www.softpedia.com/get/Programming/Other-Programming-Files/Windows-Identity-Foundation-SDK.shtml) できます。
+1. Visual Studio 2008 または 2010 をデプロイしてあるマシンに WIF v1.0 SDK がインストールされていることを確認します。 インストールされていない場合は、[ここからダウンロード](https://www.microsoft.com/download/details.aspx?id=17331) できます。
 2. Visual Studio でソリューションを開き、該当するプロジェクトを右クリックして、 **[Update federation metadata (フェデレーション メタデータの更新)]** を選択します。 このオプションが表示されない場合は、FedUtil と WIF v1.0 SDK の少なくともどちらかがインストールされていません。
 3. プロンプトで **[更新]** を選択してフェデレーション メタデータの更新を開始します。 アプリケーションがホストされているサーバー環境にアクセスできる場合は、FedUtil の [メタデータの自動更新スケジューラ](/previous-versions/windows-identity-foundation/ee517272(v=msdn.10))を使用することもできます。
 4. **[完了]** をクリックして更新プロセスを完了します。

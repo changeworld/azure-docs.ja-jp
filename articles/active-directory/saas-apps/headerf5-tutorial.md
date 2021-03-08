@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: ba58af8d3d28efcc7f97be01a96202a2203a3459
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 28040a92d713707204f0651773f7edce9f4daf6d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796935"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651775"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>チュートリアル:Azure Active Directory と F5 の間でのシングル サインオン (SSO) の構成
 
@@ -26,7 +26,8 @@ ms.locfileid: "98796935"
 * ユーザーが自分の Azure AD アカウントを使用して F5 に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-シングル サインオンによる SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
+> [!NOTE]
+> F5 BIG-IP APM を[今すぐ購入](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/f5-networks.f5-big-ip-best?tab=Overview)できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -113,18 +114,18 @@ ms.locfileid: "98796935"
 
 Azure AD への F5 の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に F5 を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**F5**」と入力します。
 1. 結果のパネルから **[F5]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>F5 の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-f5"></a>F5 の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、F5 に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと F5 の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-F5 に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+F5 に対する Azure AD SSO を構成してテストするには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -137,7 +138,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **F5** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. Azure portal の **F5** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -183,19 +184,10 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[F5]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
-1. **[条件付きアクセス]** をクリックします。
-1. **[新しいポリシー]** をクリックします。
-1. F5 アプリを条件付きアクセス ポリシーのリソースとして表示し、多要素認証やデバイス ベースのアクセス制御、ID 保護ポリシーなど、任意の条件付きアクセスを適用できます。
 
 ## <a name="configure-f5-sso"></a>F5 SSO の構成
 
@@ -355,9 +347,9 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
     f. **[Matching Source]\(一致するソース\) = %{session.server.landinguri}** 
 
-    g. **[Matching Value]\(一致する値\) = /**
+    g. **[Matching Value]\(一致する値\) = /** *
 
-    h. *[update]\(更新\)* * をクリックします。
+    h. **[update]\(更新\)** をクリックします。
 
     i. **[OK]**
 
@@ -449,26 +441,23 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネルで [F5] タイルをクリックすると、SSO を設定した F5 に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+#### <a name="sp-initiated"></a>SP Initiated:
 
-## <a name="additional-resources"></a>その他のリソース
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる F5 のサインオン URL にリダイレクトされます。  
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* F5 のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP Initiated:
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した F5 に自動的にサインインされます 
 
-- [Azure AD で F5 を試す](https://aad.portal.azure.com/)
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [F5] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した F5 に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
-- [Kerberos アプリケーション用に F5 シングル サインオンを構成する](kerbf5-tutorial.md)
+> [!NOTE]
+> F5 BIG-IP APM を[今すぐ購入](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/f5-networks.f5-big-ip-best?tab=Overview)できます。
 
-- [Advanced Kerberos アプリケーション用に F5 シングル サインオンを構成する](advance-kerbf5-tutorial.md)
+## <a name="next-steps"></a>次の手順
 
-- [F5 BIG-IP APM と Azure AD の統合による安全なハイブリッド アクセス](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
-
-- [セキュリティで保護されたハイブリッド アクセスのために F5 BIG-IP Virtual Edition VM を Azure IaaS にデプロイするチュートリアル](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-bigip-deployment-guide)
-
-- [パスワードレス VPN 用の Azure Active Directory シングル サインオンと F5 BIG-IP の統合](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn) 
+F5 を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

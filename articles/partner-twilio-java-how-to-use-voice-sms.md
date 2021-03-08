@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.custom: devx-track-java
-ms.openlocfilehash: 5e44ae3280d3ca0f8d5052be10d0955ba342352f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: e7ff925534a9cab6523097f84a8ae199e9cb83eb
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652876"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548728"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Java で音声および SMS 機能に Twilio を使用する方法
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
@@ -76,9 +76,9 @@ Twilio アカウントにサインアップすると、アカウント ID と認
 
 ## <a name="create-a-java-application"></a><a id="create_app"></a>Java アプリケーションの作成
 1. Twilio JAR を入手し、Java のビルド パスと WAR デプロイ アセンブリに追加します。 [https://github.com/twilio/twilio-java][twilio_java] では、GitHub ソースをダウンロードして独自の JAR を作成するか、またはビルド済み JAR (依存関係あり、またはなし) をダウンロードできます。
-2. JDK の **cacerts** キーストアに Equifax Secure Certificate Authority 証明書と MD5 フィンガープリント 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 が格納されていることを確認します (シリアル番号は 35:DE:F4:CF、SHA1 フィンガープリントは D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A)。 これは [https://api.twilio.com][twilio_api_service] サービスの証明機関 (CA) 証明書であり、Twilio API を使用するときに呼び出されます。 JDK の **cacerts** キーストアに正しい CA 証明書が含まれていることを確認する方法については、[証明書を Java CA 証明書ストアに追加する方法][add_ca_cert]に関するページを参照してください。
+2. JDK の **cacerts** キーストアに Equifax Secure Certificate Authority 証明書と MD5 フィンガープリント 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 が格納されていることを確認します (シリアル番号は 35:DE:F4:CF、SHA1 フィンガープリントは D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A)。 これは [https://api.twilio.com][twilio_api_service] サービスの証明機関 (CA) 証明書であり、Twilio API を使用するときに呼び出されます。
 
-Java 用の Twilio クライアント ライブラリを使用するための詳細な手順については、「[Azure 上の Java アプリケーションで Twilio を使用して通話する方法][howto_phonecall_java]」を参照してください。
+Java 用 Twilio クライアント ライブラリを使用する手順の詳細については、「[Azure 上の Java アプリケーションで Twilio を使用して通話する方法][howto_phonecall_java]」で確認できます。
 
 ## <a name="configure-your-application-to-use-twilio-libraries"></a><a id="configure_app"></a>Twilio ライブラリを使用するアプリケーションの構成
 コードのソース ファイルの先頭に、アプリケーションで使用する Twilio のパッケージまたはクラスの **import** ステートメントを追加できます。
@@ -156,8 +156,8 @@ Java Server Page (JSP) ソース ファイルの場合:
 
 **Message.creator** メソッドに渡されるパラメーターの詳細については、[https://www.twilio.com/docs/api/rest/sending-sms][twilio_rest_sending_sms] を参照してください。
 
-## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>方法: 独自の Web サイトから TwiML 応答を返す
-アプリケーションで Twilio API の呼び出しをインスタンス化する場合 (たとえば、**CallCreator.create** メソッドを使用した場合)、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。 上の例では、Twilio から提供される URL [https://twimlets.com/message][twimlet_message_url] を使用しています。 (TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。 たとえば、[https://twimlets.com/message][twimlet_message_url] をクリックすると、空の **&lt;Response&gt;** 要素が表示されます。別の例として、[https://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world] をクリックすると、**&lt;Say&gt;** 要素を含む **&lt;Response&gt;** 要素が表示されます。)
+## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>独自の Web サイトから TwiML 応答を返す
+アプリケーションで Twilio API の呼び出しをインスタンス化する場合 (たとえば、**CallCreator.create** メソッドを使用した場合)、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。 上の例では、Twilio から提供される URL [https://twimlets.com/message][twimlet_message_url] を使用しています。 (TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。 たとえば、[https://twimlets.com/message][twimlet_message_url] をクリックすると、空の **&lt; Response&gt;** 要素が表示されます。別の例として、[https://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world] をクリックすると、 **&lt; Say&gt;** 要素を含む **&lt; Response&gt;** 要素が表示されます。)
 
 Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自の URL サイトを作成できます。 HTTP 応答を返すサイトは任意の言語で作成できます。このトピックでは、JSP ページで URL をホストするとします。
 
@@ -184,7 +184,7 @@ Twilio から提供される URL を使用する代わりに、HTTP 応答を返
     </Response>
 ```
 
-**ApiVersion** パラメーターは、SMS 要求ではなく Twilio 音声要求に使用できます。 Twilio の音声と SMS の要求で使用可能な要求パラメーターを表示するには、<https://www.twilio.com/docs/api/twiml/twilio_request> と <https://www.twilio.com/docs/api/twiml/sms/twilio_request> をそれぞれ参照してください。 **RoleName** 環境変数は Azure デプロイの一部として使用できます (カスタム環境変数を追加して **System.getenv** から選択できるようにする場合は、[その他のロール構成設定][misc_role_config_settings]に関するページにある環境変数のセクションを参照してください。)
+**ApiVersion** パラメーターは、SMS 要求ではなく Twilio 音声要求に使用できます。 Twilio の音声と SMS の要求で使用可能な要求パラメーターを表示するには、<https://www.twilio.com/docs/api/twiml/twilio_request> と <https://www.twilio.com/docs/api/twiml/sms/twilio_request> をそれぞれ参照してください。 **RoleName** 環境変数は Azure デプロイの一部として使用できます (カスタム環境変数を追加して **System.getenv** から取得できるようにする場合は、[その他のロール構成設定に関するページ][misc_role_config_settings]の環境変数に関するセクションを参照してください)。
 
 TwiML 応答を提供するように JSP ページを設定したら、**Call.creator** メソッドに渡される URL として JSP ページの URL を使用します。 たとえば、Azure ホステッド サービスにデプロイされた MyTwiML という名前の Web アプリケーションがあり、JSP ページの名前が mytwiml.jsp である場合、次のコード例に示すように URL を **Call.creator** に渡すことができます。
 
@@ -201,10 +201,10 @@ TwiML 応答を提供するように JSP ページを設定したら、**Call.cr
 
 TwiML で応答するための別の方法は **VoiceResponse** クラスを使用することです。このクラスは **com.twilio.twiml** パッケージに含まれています。
 
-Azure の Java での Twilio の使用の詳細については、「[Azure 上の Java アプリケーションで Twilio を使用して通話する方法][howto_phonecall_java]」を参照してください。
+Azure で Java に基づいて Twilio を使用する方法の詳細については、「[Azure 上の Java アプリケーションで Twilio を使用して通話する方法][howto_phonecall_java]」を参照してください。
 
 ## <a name="how-to-use-additional-twilio-services"></a><a id="AdditionalServices"></a>方法: その他の Twilio サービスを使用する
-ここに示す例以外にも、Twilio が提供する Web ベースの API を使用して、Azure アプリケーションからその他の Twilio 機能を利用することができます。 詳細については、[Twilio API のドキュメント][twilio_api_documentation]を参照してください。
+ここに示す例以外にも、Twilio が提供する Web ベースの API を使用して、Azure アプリケーションからその他の Twilio 機能を利用することができます。 詳細については、[Twilio API に関するドキュメント][twilio_api_documentation]を参照してください。
 
 ## <a name="next-steps"></a><a id="NextSteps"></a>次のステップ
 これで、Twilio サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先をご覧ください。
@@ -212,12 +212,11 @@ Azure の Java での Twilio の使用の詳細については、「[Azure 上�
 * [Twilio のセキュリティ ガイドライン][twilio_security_guidelines]
 * [Twilio のハウツー ガイドとコード例][twilio_howtos]
 * [Twilio のクイックスタート チュートリアル][twilio_quickstarts]
-* [GitHub 上の Twilio][twilio_on_github]
-* [Twilio サポートへの問い合わせ][twilio_support]
+* [GitHub 上の Twilio に関するページ][twilio_on_github]
+* [Twilio に関するサポートへの連絡のページ][twilio_support]
 
 [twilio_java]: https://github.com/twilio/twilio-java
 [twilio_api_service]: https://api.twilio.com
-[add_ca_cert]: /azure/developer/java/sdk/java-sdk-add-certificate-ca-store
 [howto_phonecall_java]: partner-twilio-java-phone-call-example.md
 [misc_role_config_settings]: /previous-versions/azure/hh690945(v=azure.100)
 [twimlet_message_url]: https://twimlets.com/message

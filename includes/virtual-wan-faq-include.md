@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 09/02/2020
+ms.date: 02/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b451e2509ee618ac0996fd91191a7d59dcfd9fc9
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: d275f2f4cad83c8f378c471e5a3fa1313d6c0e7d
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99500418"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99624873"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure Virtual WAN は GA ですか。
 
@@ -21,19 +21,25 @@ ms.locfileid: "99500418"
 
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>ユーザーは、Azure Virtual WAN を使用するために、SD-WAN/VPN デバイスを利用したハブとスポークを用意する必要がありますか。
 
-Virtual WAN では、サイト/サイト間 VPN 接続、ユーザー/P2S 接続、ExpressRoute 接続、Virtual Network 接続、VPN ExpressRoute 相互接続、VNet 間の推移的な接続、一元化されたルーティング、Azure Firewall、Firewall Manager のセキュリティ、監視、ExpressRoute 暗号化など、数多くの機能が 1 つの画面に組み込まれています。 Virtual WAN の利用を開始するために、これらのユースケースをすべて用意する必要はありません。 1 つのユース ケースのみで利用を開始できます。 Virtual WAN アーキテクチャは、スケールとパフォーマンスが組み込まれたハブ アンド スポーク アーキテクチャで、ブランチ (VPN/SD-WAN デバイス)、ユーザー (Azure VPN クライアント、openVPN、または IKEv2 クライアント)、ExpressRoute 回線、仮想ネットワークが仮想ハブのスポークとして機能します。 Standard Virtual WAN ではすべてのハブがフル メッシュで接続されるため、ユーザーは Any-to-Any (任意のスポーク) 接続に Microsoft バックボーンを簡単に使用できます。 SD-WAN/VPN デバイスを利用したハブとスポークの場合、ユーザーは Azure Virtual WAN ポータル内で手動で設定するか、Virtual WAN パートナーのCPE (SD-WAN/VPN) を使用して Azure への接続を設定することができます。 Virtual WAN パートナーによって、デバイス情報を Azure にエクスポートし、Azure 構成をダウンロードして、Azure Virtual WAN ハブへの接続を確立できる、接続の自動化が提供されます。 ポイント対サイト (ユーザー VPN) 接続の場合、[Azure VPN クライアント](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN、または IKEv2 クライアントがサポートされています。 
+Virtual WAN では、サイト/サイト間 VPN 接続、ユーザー/P2S 接続、ExpressRoute 接続、Virtual Network 接続、VPN ExpressRoute 相互接続、VNet 間の推移的な接続、一元化されたルーティング、Azure Firewall、Firewall Manager のセキュリティ、監視、ExpressRoute 暗号化など、数多くの機能が 1 つの画面に組み込まれています。 Virtual WAN の利用を開始するために、これらのユースケースをすべて用意する必要はありません。 1 つのユース ケースのみで利用を開始できます。
+
+Virtual WAN アーキテクチャは、スケールとパフォーマンスが組み込まれたハブ アンド スポーク アーキテクチャで、ブランチ (VPN または SD-WAN デバイス)、ユーザー (Azure VPN クライアント、openVPN、または IKEv2 クライアント)、ExpressRoute 回線、仮想ネットワークが仮想ハブのスポークとして機能します。 Standard Virtual WAN ではすべてのハブがフル メッシュで接続されるため、ユーザーは Any-to-Any (任意のスポーク) 接続に Microsoft バックボーンを簡単に使用できます。 SD-WAN/VPN デバイスを利用したハブとスポークの場合、ユーザーは Azure Virtual WAN ポータル内で手動で設定するか、Virtual WAN パートナーのCPE (SD-WAN/VPN) を使用して Azure への接続を設定することができます。
+
+Virtual WAN パートナーによって、デバイス情報を Azure にエクスポートし、Azure 構成をダウンロードして、Azure Virtual WAN ハブへの接続を確立できる、接続の自動化が提供されます。 ポイント対サイト (ユーザー VPN) 接続の場合、[Azure VPN クライアント](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN、または IKEv2 クライアントがサポートされています。
 
 ### <a name="can-you-disable-fully-meshed-hubs-in-a-virtual-wan"></a>Virtual WAN でフル メッシュ ハブを無効にすることはできますか。
 
-Virtual WAN には、次の 2 種類があります。Basic と Standard です。 Basic Virtual WAN では、ハブはメッシュされません。 Standard Virtual WAN では、ハブはメッシュされ、仮想 WAN が最初に設定されるときに自動的に接続されます。 ユーザーは特に何もする必要はありません。 また、ユーザーはフル メッシュ ハブを取得する機能を無効または有効にする必要もありません。 Virtual WAN には、任意のスポーク (VNet、VPN、または ExpressRoute) 間のトラフィックを操作するためのルーティング オプションが多数用意されています。 これにより、フル メッシュ ハブを簡単に利用でき、ニーズに応じてトラフィックをルーティングする柔軟性も得られます。 
+Virtual WAN には、次の 2 種類があります。Basic と Standard です。 Basic Virtual WAN では、ハブはメッシュされません。 Standard Virtual WAN では、ハブはメッシュされ、仮想 WAN が最初に設定されるときに自動的に接続されます。 ユーザーは特に何もする必要はありません。 また、ユーザーはフル メッシュ ハブを取得する機能を無効または有効にする必要もありません。 Virtual WAN には、任意のスポーク (VNet、VPN、または ExpressRoute) 間のトラフィックを操作するためのルーティング オプションが多数用意されています。 これにより、フル メッシュ ハブを簡単に利用でき、ニーズに応じてトラフィックをルーティングする柔軟性も得られます。
 
 ### <a name="how-are-availability-zones-and-resiliency-handled-in-virtual-wan"></a>Virtual WAN では Availability Zones と回復性はどのように処理されますか。
 
-Virtual WAN は、ハブ内で使用可能になったハブとサービスのコレクションです。 ユーザーは、必要な数だけ Virtual WAN を利用できます。 Virtual WAN ハブには、VPN や ExpressRoute などの複数のサービスがあります。Availability Zones リージョンで Availability Zones がサポートされている場合、これらのサービス (Azure Firewall を除く) はそれぞれそのリージョンにデプロイされます。 ハブでの初期デプロイ後にリージョンが可用性ゾーンになった場合、ユーザーはゲートウェイを再作成できます。これにより、可用性ゾーンのデプロイがトリガーされます。 すべてのゲートウェイがアクティブ/アクティブとしてハブにプロビジョニングされます。これは、ハブ内に回復性が組み込まれていることを意味します。 ユーザーは、複数のリージョンにわたって回復性が必要な場合、複数のハブに接続できます。 Virtual WAN の概念はグローバルですが、実際の Virtual WAN リソースは Resource Manager ベースであり、リージョンでデプロイされます。 仮想 WAN リージョン自体に問題がある場合、その仮想 WAN 内のすべてのハブは引き続きそのまま機能しますが、ユーザーは、仮想 WAN リージョンが使用可能になるまで新しいハブを作成することはできません。
+Virtual WAN は、ハブ内で使用可能になったハブとサービスのコレクションです。 ユーザーは、必要な数だけ Virtual WAN を利用できます。 Virtual WAN ハブには、VPN や ExpressRoute などの複数のサービスがあります。Availability Zones リージョンで Availability Zones がサポートされている場合、これらのサービス (Azure Firewall を除く) はそれぞれそのリージョンにデプロイされます。 ハブでの初期デプロイ後にリージョンが可用性ゾーンになった場合、ユーザーはゲートウェイを再作成できます。これにより、可用性ゾーンのデプロイがトリガーされます。 すべてのゲートウェイがアクティブ/アクティブとしてハブにプロビジョニングされます。これは、ハブ内に回復性が組み込まれていることを意味します。 ユーザーは、複数のリージョンにわたって回復性が必要な場合、複数のハブに接続できます。
+
+Virtual WAN の概念はグローバルですが、実際の Virtual WAN リソースは Resource Manager ベースであり、リージョンでデプロイされます。 仮想 WAN リージョン自体に問題がある場合、その仮想 WAN 内のすべてのハブは引き続きそのまま機能しますが、ユーザーは、仮想 WAN リージョンが使用可能になるまで新しいハブを作成することはできません。
 
 ### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Azure Virtual WAN ユーザー VPN (ポイント対サイト) ではどのクライアントがサポートされていますか。
 
-Virtual WAN では [Azure VPN クライアント](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN クライアント、または任意の IKEv2 クライアントがサポートされています。 Azure VPN クライアントでは、Azure AD 認証がサポートされています。少なくとも Windows 10 クライアント OS バージョン 17763.0 以降が必要です。  OpenVPN クライアントでは、証明書ベースの認証をサポートできます。 ゲートウェイで証明書ベースの認証が選択されると、ご利用のデバイスにダウンロードできる *.ovpn* ファイルが表示されます。 IKEv2 では、証明書と RADIUS の両方の認証がサポートされます。 
+Virtual WAN では [Azure VPN クライアント](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN クライアント、または任意の IKEv2 クライアントがサポートされています。 Azure VPN クライアントでは、Azure AD 認証がサポートされています。少なくとも Windows 10 クライアント OS バージョン 17763.0 以降が必要です。  OpenVPN クライアントでは、証明書ベースの認証をサポートできます。 ゲートウェイで証明書ベースの認証が選択されると、ご利用のデバイスにダウンロードできる .ovpn* ファイルが表示されます。 IKEv2 では、証明書と RADIUS の両方の認証がサポートされます。 
 
 ### <a name="for-user-vpn-point-to-site--why-is-the-p2s-client-pool-split-into-two-routes"></a>ユーザー VPN (ポイント対サイト) の場合、P2S クライアント プールが 2 つのルートに分割されるのはなぜですか。
 
@@ -87,7 +93,7 @@ P2S クライアント用の DNS サーバーを追加するには、2つのオ�
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>ユーザー VPN (ポイント対サイト) の場合、サポートされているクライアントの数はいくつですか。
 
-各ユーザー VPN P2S ゲートウェイには 2 つのインスタンスがあり、各インスタンスではスケール ユニットの変更に応じて特定のユーザー数までサポートします。 スケール ユニット 1 から 3 では、500 接続がサポートされます。スケール ユニット 4 から 6 では、1,000 接続がサポートされます。スケール ユニット 7 から 12 では、5,000 接続がサポートされます。スケール ユニット 13 から 18 では最大 10,000 接続がサポートされます。 
+各ユーザー VPN P2S ゲートウェイには 2 つのインスタンスがあり、各インスタンスではスケール ユニットの変更に応じて特定のユーザー数までサポートします。 スケール ユニット 1 から 3 では、500 接続がサポートされます。スケール ユニット 4 から 6 では、1,000 接続がサポートされます。スケール ユニット 7 から 12 では、5,000 接続がサポートされます。スケール ユニット 13 から 18 では最大 10,000 接続がサポートされます。
 
 たとえば、ユーザーが 1 スケール ユニットを選択したとします。 各スケール ユニットはデプロイされた 1 つのアクティブ/アクティブ ゲートウェイを意味し、(この例では 2 つある) インスタンスのそれぞれで最大 500 接続がサポートされます。 ゲートウェイあたり 500 接続 * 2 を取得できますが、このスケール ユニットで 500 ではなく、1,000 を計画することを意味するわけではありません。 推奨される接続数を超えた場合は、余分な 500 の接続が中断される可能性があるため、インスタンスの処理が必要になることがあります。 また、スケール ユニットをスケールアップまたはスケールダウンする場合や、VPN ゲートウェイのポイント対サイト構成を変更する場合に備えて、必ずダウンタイムを計画してください。
 
@@ -101,7 +107,7 @@ Virtual WAN は、VPN と ExpressRoute のどちらについても、最大 20 G
 
 仮想ネットワーク ゲートウェイの VPN は、トンネル数が 30 に制限されています。 大規模な VPN の場合、接続するには、Virtual WAN を使用する必要があります。 各リージョン (仮想ハブ) につき最大 1,000 個の支店接続を、ハブあたり合計 20 Gbps で接続できます。 接続は、オンプレミス VPN デバイスから仮想ハブへのアクティブ/アクティブ型トンネルです。 リージョンごとに 1 つのハブを持つことができます。これは、ハブ全体で 1,000 を超える支店を接続できることを意味します。
 
-### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>Virtual WAN ゲートウェイ スケール ユニットとは何か
+### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>Virtual WAN ゲートウェイ スケール ユニットとは何ですか。
 
 スケール ユニットは、仮想ハブにおけるゲートウェイの総スループットを選択するために定義された単位です。 VPN の 1 スケール ユニットは 500 Mbps です。 ExpressRoute の 1 スケール ユニットは 2 Gbps です。 例:VPN の 10 スケール ユニットは 5 Gbps (= 500 Mbps * 10) を意味します。
 
@@ -139,13 +145,13 @@ Virtual WAN パートナーによって、Azure VPN エンドポイントへの 
 
 ### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Azure Virtual WAN への支店接続とは
 
-ブランチまたは VPN デバイスから Azure Virtual WAN への接続は、仮想ハブ内の VPN サイトと Azure VPN Gateway を仮想的に接続する VPN 接続にすぎません。
+ブランチまたは VPN デバイスから Azure Virtual WAN への接続は、仮想ハブ内の VPN サイトと Azure VPN Gateway を仮想的に接続する VPN 接続です。
 
-### <a name="what-happens-if-the-on-premise-vpn-device-only-has-1-tunnel-to-a-azure-virtual-wan-vpn-gateway"></a>オンプレミスの VPN デバイスに、Azure Virtual WAN VPN ゲートウェイへのトンネルが 1 つしかなかった場合はどうなりますか。
+### <a name="what-happens-if-the-on-premises-vpn-device-only-has-1-tunnel-to-an-azure-virtual-wan-vpn-gateway"></a>オンプレミスの VPN デバイスに Azure Virtual WAN VPN ゲートウェイへのトンネルが 1 つしかない場合はどうなりますか。
 
-Azure Virtual WAN 接続は、2 つのトンネルから成ります。 Virtual WAN VPN ゲートウェイは、アクティブ/アクティブ モードで仮想ハブにデプロイされます。つまり、オンプレミス デバイスから各インスタンスを終点とするトンネルが別々に存在します。すべてのユーザーには、これが推奨されます。 ただし、Virtual WAN VPN ゲートウェイ インスタンス 1 つに対してユーザーがトンネルを 1 つしか確保していない場合、なんらかの理由 (メンテナンス、パッチなど) でゲートウェイ インスタンスがオフラインになると、トンネルはセカンダリ アクティブ インスタンスに移動され、再接続が生じることがあります。 また、BGP セッションはインスタンス間で移動されないことに注意してください。
+Azure Virtual WAN 接続は、2 つのトンネルから成ります。 Virtual WAN VPN ゲートウェイは、アクティブ/アクティブ モードで仮想ハブにデプロイされます。つまり、オンプレミス デバイスから各インスタンスを終点とするトンネルが別々に存在します。 これは、すべてのユーザーに推奨されます。 ただし、Virtual WAN VPN ゲートウェイ インスタンス 1 つに対してユーザーがトンネルを 1 つしか確保していない場合、なんらかの理由 (メンテナンス、パッチなど) でゲートウェイ インスタンスがオフラインになると、トンネルはセカンダリ アクティブ インスタンスに移動され、再接続が生じることがあります。 BGP セッションは、インスタンス間を移動しません。
 
-### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>オンプレミスの VPN デバイスは、複数のハブに接続できますか。
+### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>オンプレミスの VPN デバイスを複数のハブに接続できますか。
 
 はい。 開始時のトラフィック フローは、オンプレミス デバイスから、最も近い Microsoft ネットワーク エッジへ、次に仮想ハブへとなります。
 
@@ -179,19 +185,21 @@ Azure Virtual WAN 接続は、2 つのトンネルから成ります。 Virtual 
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>仮想ハブに接続されているスポーク VNet は相互に通信 (V2V 転送) できますか。
 
-はい。 Standard Virtual WAN では、VNet が接続されている Virtual WAN ハブを介して、VNet 間の推移的な接続がサポートされています。 Virtual WAN の用語では、これらのパスを、VNet が単一のリージョン内の Virtual Wan Hub に接続されている場合は "ローカル Virtual WAN VNet 転送" と呼び、VNet が 2 つ以上のリージョンにまたがる複数の Virtual WAN Hub を通じて接続されている場合は "グローバル Virtual WAN VNet 転送" と呼びます。 一部のシナリオでは、ローカルまたはグローバルの Virtual WAN VNet 転送の他に、[仮想ネットワーク ピアリング](../articles/virtual-network/virtual-network-peering-overview.md)を使用して、スポーク VNet を相互に直接ピアリングすることもできます。 この場合、VNet ピアリングは、Virtual WAN ハブを介した推移的な接続よりも優先されます。
+はい。 Standard Virtual WAN では、VNet が接続されている Virtual WAN ハブを介して、VNet 間の推移的な接続がサポートされています。 Virtual WAN の用語では、これらのパスを、VNet が単一のリージョン内の Virtual WAN ハブに接続されている場合は "ローカル Virtual WAN VNet 転送" と呼び、VNet が 2 つ以上のリージョンにまたがる複数の Virtual WAN ハブを通じて接続されている場合は "グローバル Virtual WAN VNet 転送" と呼びます。
+
+一部のシナリオでは、ローカルまたはグローバルの Virtual WAN VNet 転送に加えて、[仮想ネットワーク ピアリング](../articles/virtual-network/virtual-network-peering-overview.md)を使用して、スポーク VNet を相互に直接ピアリングすることもできます。 この場合、VNet ピアリングは、Virtual WAN ハブを介した推移的な接続よりも優先されます。
 
 ### <a name="is-branch-to-branch-connectivity-allowed-in-virtual-wan"></a>Virtual WAN では、支店間接続を行うことができますか?
 
-はい。Virtual WAN では、支店間接続が利用可能です。 ブランチは、概念的には VPN サイト、ExpressRoute 回線、またはポイント対サイト (ユーザー VPN) ユーザーに適用されます。 ブランチ間の有効化は既定で有効になっており、WAN の構成設定にあります。 これにより、VPN ブランチまたはユーザーが他の VPN ブランチに接続できるようになります。また、VPN および ExpressRoute ユーザーの間での転送接続が有効になります。
+はい。Virtual WAN では、支店間接続が利用可能です。 ブランチは、概念的には VPN サイト、ExpressRoute 回線、またはポイント対サイト (ユーザー VPN) ユーザーに適用されます。 ブランチ間の有効化は既定で有効になっており、WAN の **[構成]** 設定で確認できます。 これにより、VPN ブランチまたはユーザーが他の VPN ブランチに接続できるようになります。また、VPN および ExpressRoute ユーザーの間での転送接続性が有効になります。
 
 ### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>支店間トラフィックは、Azure Virtual WAN を横断しますか。
 
-はい。
+はい。 支店間トラフィックは、Azure Virtual WAN を横断します。
 
 ### <a name="does-virtual-wan-require-expressroute-from-each-site"></a>Virtual WAN では、各サイトからの ExpressRoute が必要ですか。
 
-いいえ。 この Virtual WAN では、各サイトからの ExpressRoute は不要です。 サイトは、ExpressRoute 回線を使用してプロバイダーのネットワークに接続される場合があります。 仮想ハブへの ExpressRoute および同じハブへの IPsec VPN を使用して接続されているサイトの場合、仮想ハブで VPN および ExpressRoute ユーザー間の転送接続が提供されます。
+いいえ。 この Virtual WAN では、各サイトからの ExpressRoute は不要です。 サイトは、ExpressRoute 回線を使用してプロバイダーのネットワークに接続される場合があります。 仮想ハブへの ExpressRoute および同じハブへの IPsec VPN を使用して接続されているサイトの場合、仮想ハブで VPN および ExpressRoute ユーザー間の転送接続性が提供されます。
 
 ### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>Azure Virtual WAN を使用する場合、ネットワーク スループットまたは接続に制限はありますか。
 
@@ -204,7 +212,8 @@ VPN サイトでは、ハブに接続するときに、複数の接続を使用�
 ハブの VPN スループットの合計は、VPN ゲートウェイの選択されたスケール ユニットに基づき、最大で 20 Gbps となります。 スループットはすべての既存の接続によって共有されます。 接続内の各トンネルは最大 1 Gbps をサポートできます。
 
 ### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>VPN 接続で NAT-T を使用できますか。
-はい。NAT トラバーサル (NAT-T) がサポートされています。 Virtual WAN VPN Gateway によって、NAT に類似する機能が、内部パケットで IPsec トンネルに対して実行されることはありません。 この構成では、オンプレミスのデバイスによって IPSec トンネルが開始されるようにします。
+
+はい。NAT トラバーサル (NAT-T) がサポートされています。 Virtual WAN VPN ゲートウェイでは、NAT に類似する機能が IPsec トンネルとの間の内部パケットに対して実行されることはありません。 この構成では、オンプレミスのデバイスによって IPSec トンネルが開始されるようにします。
 
 ### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>仮想ハブの 20 Gbps の設定がポータルに表示されません。 どのように構成すればよいですか。
 
@@ -226,21 +235,23 @@ VPN サイトでは、ハブに接続するときに、複数の接続を使用�
 
 はい。 IPsec をサポートするインターネット接続および物理デバイスが必要です。統合 [Virtual WAN パートナー](../articles/virtual-wan/virtual-wan-locations-partners.md)が提供するものをお勧めします。 必要に応じて、好みのデバイスから、構成と Azure への接続を手動で管理できます。
 
-### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>接続 (VPN、ExpressRoute、または Virtual Network) の既定のルート (0.0.0.0/0) を有効にするにはどうすればよいですか。
+### <a name="how-do-i-enable-default-route-00000-for-a-connection-vpn-expressroute-or-virtual-network"></a>接続 (VPN、ExpressRoute、または Virtual Network) の既定のルート (0.0.0.0/0) を有効にするにはどうすればよいですか。
 
-仮想ハブは、仮想ネットワーク、サイト間 VPN、または ExpressRoute 接続に対し、学習した既定のルートを伝達することができます (対応するフラグが、その接続で "有効" になっている場合)。 このフラグは、ユーザーが仮想ネットワーク接続、VPN 接続、または ExpressRoute 接続を編集するときに表示されます。 サイトまたは ExpressRoute 回線がハブに接続されると、このフラグは既定で無効になります。 VNet を仮想ハブに接続するための仮想ネットワーク接続が追加されたときは、既定で有効になります。 既定のルートの起点は Virtual WAN ハブではありません。Virtual WAN ハブにファイアウォールをデプロイした結果としてそのハブが既定のルートを既に学習している場合、または接続されている別のサイトで強制トンネリングが有効な場合に、既定のルートが伝達されます。 既定のルートはハブ間で伝達されません。
+仮想ハブは、仮想ネットワーク、サイト間 VPN、または ExpressRoute 接続に対し、学習した既定のルートを伝達することができます (対応するフラグが、その接続で "有効" になっている場合)。 このフラグは、ユーザーが仮想ネットワーク接続、VPN 接続、または ExpressRoute 接続を編集するときに表示されます。 サイトまたは ExpressRoute 回線がハブに接続されると、このフラグは既定で無効になります。 VNet を仮想ハブに接続するための仮想ネットワーク接続が追加されたときは、既定で有効になります。
 
-### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Virtual WAN 内の仮想ハブは、どのようにして複数のハブからのルートに最適なパスを選択するのですか
+既定のルートの起点は Virtual WAN ハブではありません。Virtual WAN ハブにファイアウォールをデプロイした結果としてそのハブが既定のルートを既に学習している場合、または接続されている別のサイトで強制トンネリングが有効な場合に、既定のルートが伝達されます。 既定のルートはハブ間で伝達されません。
+
+### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>仮想 WAN 内の仮想ハブは、どのようにして複数のハブからのルートに最適なパスを選択するのですか。
 
 仮想ハブが複数のリモート ハブからの同じルートを学習する場合、次の順序で決定されます。
 
 1. プレフィックスの最長一致。
-2. インターハブ上のローカル ルート (仮想ハブからは 65520-65520 がインターハブ AS に対して割り当てられます)
-3. BGP 経由の静的ルート: これは、仮想ハブ ルーターによって行われる決定に対するコンテキストにあります。 しかし、決定を行うのが VPN ゲートウェイであり、サイトで BGP 経由のルートをアドバタイズする場合、または静的アドレス プレフィックスを指定する場合は、静的ルートが BGP ルートよりも優先されることがあります。
-4. VPN 経由の ExpressRoute (ER): コンテキストがローカル ハブの場合、VPN よりも ER が優先されます。 ExpressRoute 回線間の転送接続は、Global Reach 経由でのみ使用できます。 そのため、ExpressRoute 回線が 1 つのハブに接続されており、VPN 接続を使用して異なるハブに接続されている別の ExpressRoute 回線があるシナリオの場合、ハブ間のシナリオでは VPN が優先される可能性があります。
-5. AS パスの長さ。
+1. インターハブ上のローカル ルート (仮想ハブからは 65520-65520 がインターハブ AS に対して割り当てられます)。
+1. BGP 経由の静的ルート: これは、仮想ハブ ルーターによって行われる決定に対するコンテキストにあります。 しかし、決定を行うのが VPN ゲートウェイであり、サイトで BGP 経由のルートをアドバタイズする場合、または静的アドレス プレフィックスを指定する場合は、静的ルートが BGP ルートよりも優先されることがあります。
+1. VPN 経由の ExpressRoute (ER): コンテキストがローカル ハブの場合、VPN よりも ER が優先されます。 ExpressRoute 回線間の転送接続は、Global Reach 経由でのみ使用できます。 そのため、ExpressRoute 回線が 1 つのハブに接続されており、VPN 接続を使用して異なるハブに接続されている別の ExpressRoute 回線があるシナリオの場合、ハブ間のシナリオでは VPN が優先される可能性があります。
+1. AS パスの長さ。
 
-### <a name="does-virtual-wan-hub-allow-connectivity-between-expressroute-circuits"></a>Virtual WAN ハブで ExpressRoute 回線間の接続は許可されますか。
+### <a name="does-the-virtual-wan-hub-allow-connectivity-between-expressroute-circuits"></a>Virtual WAN ハブで ExpressRoute 回線間の接続性は許可されますか。
 
 ER 間の転送は常に Global Reach 経由で行われます。 仮想ハブ ゲートウェイは、DC または Azure リージョンにデプロイされます。 2 つの ExpressRoute 回線が Global Reach 経由で接続されている場合、トラフィックがエッジ ルーターから仮想ハブ DC まで到達する必要はありません。
 
@@ -250,28 +261,31 @@ ER 間の転送は常に Global Reach 経由で行われます。 仮想ハブ �
 
 ### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>Virtual WAN では、Azure から送信されるトラフィックに対して、VPN より ExpressRoute が優先されますか。
 
-はい。
+はい。 Virtual WAN では、Azure から送信されるトラフィックに対して、VPN より ExpressRoute が優先されます。
 
 ### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-preferred-over-expressroute"></a>Virtual WAN ハブに ExpressRoute 回線と VPN サイトが接続されている場合、VPN 接続ルートが ExpressRoute より優先される原因は何ですか。
 
-ExpressRoute 回線が仮想ハブに接続されている場合、Microsoft エッジ ルーターは、オンプレミスと Azure の間の通信での最初のノードになります。 これらのエッジ ルーターは、Virtual WAN ExpressRoute ゲートウェイと通信します。次に、Virtual WAN のあらゆるゲートウェイの間のルートをすべて制御する仮想ハブ ルーターからルートを学習します。 Microsoft エッジ ルーターは、オンプレミスから学習したルートより高い優先順位である仮想ハブ ExpressRoute ルートを処理します。 VPN サイトの AS パスが長い場合を除き、VPN 接続が仮想ハブのプライマリ メディアとなって、そこからルートが学習される場合は (ExpressRoute と VPN の間のフェールオーバー シナリオなど)、なんらかの理由により、仮想ハブは引き続き ExpressRoute ゲートウェイと VPN 学習ルートを共有します。これにより、Microsoft エッジ ルーターでは、オンプレミス ルートより VPN ルートが優先されます。
+ExpressRoute 回線が仮想ハブに接続されている場合、Microsoft エッジ ルーターは、オンプレミスと Azure の間の通信での最初のノードになります。 これらのエッジ ルーターは、Virtual WAN ExpressRoute ゲートウェイと通信します。次に、Virtual WAN のあらゆるゲートウェイの間のルートをすべて制御する仮想ハブ ルーターからルートを学習します。 Microsoft エッジ ルーターは、オンプレミスから学習したルートより高い優先順位である仮想ハブ ExpressRoute ルートを処理します。
+
+なんらかの理由により、仮想ハブがルートを学習するためのプライマリ メディアに VPN 接続がなった場合は (ExpressRoute と VPN の間のフェールオーバー シナリオなど)、VPN サイトの AS パスが長い場合を除き、仮想ハブは引き続き ExpressRoute ゲートウェイと VPN 学習ルートを共有します。 これにより、Microsoft エッジ ルーターでは、オンプレミス ルートより VPN ルートが優先されます。
 
 ### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>2 つのハブ (ハブ 1 と 2) が接続されていて、両方のハブに対して (蝶ネクタイのような形で) 接続されている ExpressRoute 回線がある場合、ハブ 2 に接続されている VNet に到達するために、ハブ 1 に接続されている VNet のパスはどのようなものですか。
 
 現在の動作では、VNet 対 VNet 接続の場合、ハブ間よりも ExpressRoute 回線パスが優先されます。 しかし、これは仮想 WAN セットアップではお勧めできません。 Virtual WAN チームは、ExpressRoute パスよりハブ間を優先できるようにするための修正に取り組んでいます。 複数の ExpressRoute 回線 (異なるプロバイダー) を 1 つのハブに接続し、リージョン間のトラフィック フローに対して Virtual WAN によって提供されるハブ間接続を使用することをお勧めします。
 
 ### <a name="can-hubs-be-created-in-different-resource-group-in-virtual-wan"></a>ハブは、Virtual WAN 内の別のリソース グループに作成できますか。
-はい。 このオプションは、現在、PowerShell を介してのみ使用可能です。 Virtual WAN ポータルでは、Virtual WAN リソース自体と同じリソース グループ内のハブが必須となります。
+
+はい。 このオプションは、現在、PowerShell を介してのみ使用可能です。 Virtual WAN ポータルでは、ハブが仮想 WAN リソース自体と同じリソース グループに含まれている必要があります。
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Virtual WAN に IPv6 のサポートはありますか。
 
-IPv6 は、Virtual WAN ハブとそのゲートウェイではサポートされていません。 IPv4 および IPv6 をサポートする VNet があり、その VNet を Virtual WAN に接続する必要がある場合、このシナリオは現在サポートされていません。 
+IPv6 は、Virtual WAN ハブとそのゲートウェイではサポートされていません。 IPv4 および IPv6 をサポートする VNet があり、その VNet を Virtual WAN に接続する必要がある場合、このシナリオは現在サポートされていません。
 
-Azure Firewall 経由のインターネット ブレークアウトを使用したポイント対サイトの (ユーザー) VPN シナリオでは、おそらく、仮想 WAN ハブに対してトラフィックを強制するために、クライアント デバイスの IPv6 接続を無効にする必要があります。 最近のデバイスでは、IPv6 アドレスが既定で使用されるためです。
+Azure Firewall 経由のインターネット ブレークアウトを使用したポイント対サイトのユーザー VPN シナリオでは、おそらく、仮想 WAN ハブに対してトラフィックを強制するために、クライアント デバイスの IPv6 接続性を無効にする必要があります。 最近のデバイスでは、IPv6 アドレスが既定で使用されるためです。
 
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>さまざまな Virtual WAN 機能を自動化するスクリプトで使用される、推奨される API バージョンは何ですか。
 
-最小バージョンとして 05-01-2020 (2020 年 5 月 1 日) が必要です。 
+最小バージョンとして 05-01-2020 (2020 年 5 月 1 日) が必要です。
 
 ### <a name="are-there-any-virtual-wan-limits"></a>Virtual WAN には制限がありますか。
 
@@ -281,10 +295,10 @@ Azure Firewall 経由のインターネット ブレークアウトを使用し�
 
 「[Basic および Standard の仮想 WAN](../articles/virtual-wan/virtual-wan-about.md#basicstandard)」を参照してください。 価格については、[価格](https://azure.microsoft.com/pricing/details/virtual-wan/)ページを参照してください。
 
-### <a name="does-virtual-wan-store-customer-data"></a>Virtual WAN に顧客データは格納されますか? 
+### <a name="does-virtual-wan-store-customer-data"></a>Virtual WAN に顧客データは格納されますか?
 
 いいえ。 Virtual WAN にお客様のデータは一切格納されません。
 
-### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>ユーザーに代わって Virtual WAN をサービスとして管理できるマネージド サービス プロバイダーはありますか? 
+### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>ユーザーに代わって Virtual WAN をサービスとして管理できるマネージド サービス プロバイダーはありますか?
 
 はい。 Azure Marketplace から利用できるマネージド サービス プロバイダー (MSP) ソリューションの一覧については、「[Azure ネットワーク MSP パートナーによる Azure Marketplace のオファー](../articles/networking/networking-partners-msp.md#msp)」を参照してください。

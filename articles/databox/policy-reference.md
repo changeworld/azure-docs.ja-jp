@@ -1,18 +1,18 @@
 ---
 title: Azure Data Box 用の組み込みポリシー定義
 description: Azure Data Box 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
 ms.service: databox
 author: alkohli
 ms.author: alkohli
-ms.openlocfilehash: 374ccb0702d81f6c19c7a763a251383fb7cd587d
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: ecfc855d589a51487fb76cfb1534e73c4be9808f
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99556406"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090508"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-data-box"></a>Azure Data Box 用の Azure Policy 組み込み定義
 

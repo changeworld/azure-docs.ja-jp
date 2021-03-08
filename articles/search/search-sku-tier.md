@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 320f02f6ece106b4d0e14293f95533aa5b4e0743
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: df218c2a4c066343ef571c6f24554ecaa806b639
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693453"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987875"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Cognitive Search の価格レベルの選択
 
@@ -60,7 +60,8 @@ ms.locfileid: "98693453"
 | [送信 (インデクサー) アクセス用のマネージド (信頼できる) ID](search-howto-managed-identities-data-sources.md) | Free レベルでは使用できません。|
 | [顧客が管理する暗号化キー](search-security-manage-encryption-keys.md) | Free レベルでは使用できません。 |
 | [IP ファイアウォール アクセス](service-configure-firewall.md) | Free レベルでは使用できません。 |
-| [プライベート エンドポイント (Azure Private Link との統合)](service-create-private-endpoint.md) | 検索サービスへの受信接続の場合、Free レベルでは利用できません。 インデクサーによる他の Azure リソースへの送信接続の場合は、Free または S3 HD では使用できません。 スキルセットを使用するインデクサーの場合、Free、Basic、S1、S3 HD では使用できません。|
+| [プライベート エンドポイント (Azure Private Link との統合)](service-create-private-endpoint.md) | 検索サービスへの受信接続の場合、Free レベルでは利用できません。 インデクサーによる他の Azure リソースへの送信接続の場合は、Free または S3 HD では使用できません。 スキルセットを使用するインデクサーの場合、Free、Basic、S1、S3 HD では使用できません。| 
+| [可用性ゾーン](search-performance-optimization.md) | Free レベルと Basic レベルでは使用できません。 |
 
 リソース集中型の機能は、十分な容量を与えない限り、うまくいかない場合があります。 たとえば、[AI エンリッチメント](cognitive-search-concept-intro.md)には、データセットのサイズが小さい場合を除いて Free サービスではタイムアウトになってしまう、実行時間の長いスキルがあります。
 

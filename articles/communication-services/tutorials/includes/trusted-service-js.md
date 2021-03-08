@@ -8,12 +8,12 @@ ms.author: dademath
 ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: a16846b8859f93a2d376691115e4b2dd0a7163b6
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 6790335e5aa63f515cd125f31a8ccd7877132c10
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633451"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661336"
 ---
 ## <a name="download-code"></a>コードをダウンロードする
 
@@ -23,8 +23,8 @@ ms.locfileid: "98633451"
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 詳細については、[アカウントの無料作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)に関するページを参照してください。
 - [サポートされているプラットフォーム](https://code.visualstudio.com/docs/supporting/requirements#_platforms)のいずれかにインストールされた [Visual Studio Code](https://code.visualstudio.com/)。
-- [Node.js](https://nodejs.org/)。アクティブ LTS およびメンテナンス LTS バージョン (10.14.1 を推奨)。 `node --version` コマンドを使用して、現在のバージョンを確認してください。 
-- Visual Studio Code 用 [Azure Functions 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)。 
+- [Node.js](https://nodejs.org/)。アクティブ LTS およびメンテナンス LTS バージョン (10.14.1 を推奨)。 `node --version` コマンドを使用して、現在のバージョンを確認してください。
+- Visual Studio Code 用 [Azure Functions 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)。
 - アクティブな Communication Services リソースと接続文字列。 [Communication Services リソースを作成します](../../quickstarts/create-communication-resource.md)。
 
 ## <a name="overview"></a>概要
@@ -74,13 +74,13 @@ module.exports = async function (context, req) {
 
 ### <a name="install-communication-services-libraries"></a>Communication Services ライブラリをインストールする
 
-`Administration` ライブラリを使用して `User Access Tokens` を生成します。
+`Identity` ライブラリを使用して `User Access Tokens` を生成します。
 
-`npm install` コマンドを使用して、JavaScript 用の Azure Communication Services 管理クライアント ライブラリをインストールします。
+`npm install` コマンドを使用して、JavaScript 用の Azure Communication Services ID クライアント ライブラリをインストールします。
 
 ```console
 
-npm install @azure/communication-administration --save
+npm install @azure/communication-identity --save
 
 ```
 
@@ -89,7 +89,7 @@ npm install @azure/communication-administration --save
 `index.js` ファイルの先頭で、`CommunicationIdentityClient` のインターフェイスをインポートします。
 
 ```javascript
-const { CommunicationIdentityClient } = require('@azure/communication-administration');
+const { CommunicationIdentityClient } = require('@azure/communication-identity');
 ```
 
 ## <a name="access-token-generation"></a>アクセス トークンの生成
@@ -102,7 +102,7 @@ Azure Functions で `User Access Tokens` を生成できるようにするには
 const connectionString = 'INSERT YOUR RESOURCE CONNECTION STRING'
 ```
 
-次に、元の関数を変更して `User Access Tokens` を生成します。 
+次に、元の関数を変更して `User Access Tokens` を生成します。
 
 `User Access Tokens` は、`createUser` メソッドからユーザーを作成することによって生成されます。 ユーザーが作成されたら、`issueToken` メソッドを使用して、Azure Functions から返されるそのユーザーのトークンを生成できます。
 
@@ -136,7 +136,7 @@ module.exports = async function (context, req) {
 
 Azure 関数をデプロイするには、[ステップ バイ ステップの手順](../../../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-javascript#sign-in-to-azure)に従います。
 
-一般的に、次のことを行う必要があります。
+まとめると、次のことを行う必要があります。
 1. Visual Studio から Azure にサインインする
 2. プロジェクトを Azure アカウントに発行します。 ここでは、既存のサブスクリプションを選択する必要があります。
 3. Visual Studio ウィザードを使用して新しい Azure Functions リソースを作成するか、既存のリソースを使用します。 新しいリソースの場合は、目的のリージョン、ランタイム、一意の識別子に構成する必要があります。

@@ -4,16 +4,16 @@ description: Azure PowerShell モジュールまたは Azure CLI を使用し、
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 03/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: f67113b2e2afa16456321b0ee2a94ce80fab4d81
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 429845aa22b6d069b8d7233132de8eb3b24b2985
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900962"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043679"
 ---
 # <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>Azure PowerShell モジュールまたは Azure CLI を使用してパフォーマンス レベルを変更します
 
@@ -114,6 +114,36 @@ $disk = Get-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName
 $disk.Tier
 ```
 ---
+
+## <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>ダウンタイムなしでディスクのパフォーマンス レベルを変更する (プレビュー)
+
+ダウンタイムなしでパフォーマンス レベルを変更することもできるため、レベルを変更するために VM の割り当てを解除したり、ディスクをデタッチしたりする必要はありません。 詳細とプレビューのサインアップ リンクについては、「[ダウンタイムなしでディスクのパフォーマンス レベルを変更する (プレビュー)](#change-performance-tier-without-downtime-preview)」セクションを参照してください。
+
+
+次のスクリプトは、サンプル テンプレート [CreateUpdateDataDiskWithTier.json](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json) を使用して、ベースライン レベルよりも高いディスクのレベルを更新します。 `<yourSubScriptionID>`、`<yourResourceGroupName>`、`<yourDiskName>`、`<yourDiskSize>`、`<yourDesiredPerformanceTier>` を置き換えてから、スクリプトを実行します。
+
+ ```cli
+subscriptionId=<yourSubscriptionID>
+resourceGroupName=<yourResourceGroupName>
+diskName=<yourDiskName>
+diskSize=<yourDiskSize>
+performanceTier=<yourDesiredPerformanceTier>
+region=EastUS2EUAP
+
+ az login
+
+ az account set --subscription $subscriptionId
+
+ az group deployment create -g $resourceGroupName \
+--template-uri "https://raw.githubusercontent.com/Azure/azure-managed-disks-performance-tiers/main/CreateUpdateDataDiskWithTier.json" \
+--parameters "region=$region" "diskName=$diskName" "performanceTier=$performanceTier" "dataDiskSizeInGb=$diskSize"
+```
+
+パフォーマン スレベルの変更は、完了までに最大 15 分かかる場合があります。 ディスクのレベルが変更されたことを確認するには、次のコマンドを使用します。
+
+```cli
+az resource show -n $diskName -g $resourceGroupName --namespace Microsoft.Compute --resource-type disks --api-version 2020-12-01 --query [properties.tier] -o tsv
+```
 
 ## <a name="next-steps"></a>次のステップ
 

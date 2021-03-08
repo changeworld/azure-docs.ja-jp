@@ -3,12 +3,12 @@ title: 一般的なエラーのトラブルシューティング
 description: ポリシー定義の作成、さまざまな SDK、および Kubernetes のアドオンに関する問題をトラブルシューティングする方法について説明します。
 ms.date: 01/26/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 0a64346188696cc7cc16d832474ec4ee6befdae2
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 6e0e4067f07266bae9c87fd4443d27314cc28c0b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917745"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592608"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Azure Policy の使用に関するエラーをトラブルシューティングする
 
@@ -87,7 +87,7 @@ Resource Manager プロパティのエイリアスが存在しない場合は、
 
 #### <a name="issue"></a>問題
 
-Azure Policy によって処理されると予想されているリソースが処理されておらず、[Azure アクティビティ ログ](../../../azure-monitor/platform/platform-logs-overview.md)にエントリがありません。
+Azure Policy によって処理されると予想されているリソースが処理されておらず、[Azure アクティビティ ログ](../../../azure-monitor/essentials/platform-logs-overview.md)にエントリがありません。
 
 #### <a name="cause"></a>原因
 
@@ -123,7 +123,7 @@ Azure Policy によって処理されると予想されているリソースが�
 
 #### <a name="resolution"></a>解像度
 
-拒否されたポリシー割り当てのエラー メッセージには、ポリシー定義とポリシー割り当て ID が含まれています。 メッセージ内のエラー情報が欠落している場合は、[アクティビティ ログ](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)でも確認できます。 この情報を使用して、リソースの制限を理解し、許可された値に一致するように要求のリソース プロパティを調整します。
+拒否されたポリシー割り当てのエラー メッセージには、ポリシー定義とポリシー割り当て ID が含まれています。 メッセージ内のエラー情報が欠落している場合は、[アクティビティ ログ](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log)でも確認できます。 この情報を使用して、リソースの制限を理解し、許可された値に一致するように要求のリソース プロパティを調整します。
 
 ## <a name="template-errors"></a>テンプレート エラー
 

@@ -7,12 +7,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.topic: how-to
 ms.date: 01/17/2021
-ms.openlocfilehash: 0da38475c0e3c766cabbf765ea89dc5714a5b830
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: b95afe513dba2f1da9556b27ec17bcccc9fe88e1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747554"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173553"
 ---
 # <a name="synchronize-virtual-network-dns-servers-setting-on-sql-managed-instance-virtual-cluster"></a>SQL Managed Instance 仮想クラスター上で仮想ネットワーク DNS サーバーの設定を同期する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -66,7 +66,7 @@ virtualNetworkName="vnet-fog-eastus"
 virtualNetwork=$(az network vnet show -g $resourceGroup -n $virtualNetworkName --query "id" -otsv)
 ```
 
-サブネット内のすべての仮想クラスターの DNS サーバー構成を同期するには、Azure CLI コマンド [az resource invoke-action](/cli/azure/resource?view=azure-cli-latest#az_resource_invoke_action) を使用します。
+サブネット内のすべての仮想クラスターの DNS サーバー構成を同期するには、Azure CLI コマンド [az resource invoke-action](/cli/azure/resource#az_resource_invoke_action) を使用します。
 
 ```Azure CLI
 az sql virtual-cluster list --query "[? contains(subnetId,'$virtualNetwork')].id" -o tsv \

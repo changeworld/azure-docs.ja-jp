@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: justinha
-ms.openlocfilehash: 479cc036ed3231d970d46eef9d89daa39a0b0876
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 48ce982a6d6d7a3ed12d6e3b4711d111dec4d6f8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620190"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174633"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>自己管理型の Active Directory Domain Services、Azure Active Directory、およびマネージド Azure Active Directory Domain Services の比較
 
@@ -78,7 +78,7 @@ Azure AD DS では、機能のより小さいサブセットが従来の自己�
 | **Secure LDAP (LDAPS)**                           | **&#x2713;** | **&#x2713;** |
 | **LDAP の読み取り**                                     | **&#x2713;** | **&#x2713;** |
 | **LDAP の書き込み**                                    | **&#x2713;** (マネージド ドメイン内) | **&#x2713;** |
-| **地理的に分散したデプロイ**                   | **&#x2715;** | **&#x2713;** |
+| **地理的に分散したデプロイ**                   | **&#x2713;** | **&#x2713;** |
 
 ## <a name="azure-ad-ds-and-azure-ad"></a>Azure AD DS と Azure AD
 

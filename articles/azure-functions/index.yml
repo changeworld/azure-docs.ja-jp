@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure Functions のドキュメント
-summary: Azure Functions は、アプリケーションを実行するために必要な継続的に更新されるすべてのインフラストラクチャとリソースを提供する、オンデマンドで利用できるクラウド サービスです。 ユーザーは最も重要なコードに集中でき、残りの部分は Azure Functions が処理します。 Azure Functions では、Web API のビルド、データベースの変更への応答、IoT ストリームの処理、メッセージ キューの管理などを行えます。
+summary: Azure Functions は、アプリケーションを実行するために必要な継続的に更新されるすべてのインフラストラクチャとリソースを提供する、オンデマンドで利用できるクラウド サービスです。 ユーザーは最も重要なコードに集中でき、残りの部分は Functions が処理します。 Functions には、Azure 用のサーバーレス コンピューティングが用意されています。 Functions を使用すると、Web API のビルド、データベースの変更への応答、IoT ストリームの処理、メッセージ キューの管理などを行えます。
 metadata:
   title: Azure Functions のドキュメント
-  description: Azure Functions は、アプリケーションを実行するために必要な継続的に更新されるすべてのインフラストラクチャとリソースを提供する、オンデマンドで利用できるクラウド サービスです。 ユーザーは最も重要なコードに集中でき、残りの部分は Azure Functions が処理します。 Azure Functions では、Web API のビルド、データベースの変更への応答、IoT ストリームの処理、メッセージ キューの管理などを行えます。
+  description: Azure Functions は、アプリケーションを実行するために必要な継続的に更新されるすべてのインフラストラクチャとリソースを提供する、オンデマンドで利用できるクラウド サービスです。 ユーザーは最も重要なコードに集中でき、残りの部分は Azure Functions が処理します。 Functions には、Azure 用のサーバーレス コンピューティングが用意されています。 Azure Functions では、Web API のビルド、データベースの変更への応答、IoT ストリームの処理、メッセージ キューの管理などを行えます。
   ms.service: azure-functions
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: 10c606ab86a577f22167197138e56a14d176b88a
-  ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+  ms.openlocfilehash: 4d856232d2f0780852a1f369548b08012d124834
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/19/2021
-  ms.locfileid: "98570135"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101729166"
 landingContent:
 - title: Azure Functions について
   linkLists:
@@ -128,14 +128,22 @@ landingContent:
       url: functions-how-to-azure-devops.md
     - text: Jenkins プラグインを使用したデプロイ
       url: /azure/developer/jenkins/deploy-to-azure-functions
-- title: パフォーマンスと監視
+- title: パフォーマンスと監視のベスト プラクティス
   linkLists:
   - linkListType: concept
     links:
-    - text: Functions の監視
-      url: functions-monitoring.md
-    - text: パフォーマンスを最適化する
+    - text: パフォーマンスと信頼性
       url: functions-best-practices.md
+    - text: 接続の管理
+      url: manage-connections.md
+    - text: ストレージに関する考慮事項
+      url: storage-considerations.md
+    - text: エラー処理と関数の再試行
+      url: functions-bindings-error-pages.md
+    - text: セキュリティ
+      url: security-concepts.md
+    - text: 関数の監視
+      url: functions-monitoring.md
     - text: ネットワークに関する考慮事項
       url: functions-networking-options.md
   - linkListType: how-to-guide

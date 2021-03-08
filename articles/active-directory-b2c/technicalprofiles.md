@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 66172fc9e258ae99e8ed263342025f5c33f7a168
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: e3d3a41e4100e36ae2400c8076d4c5b713b899d6
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219674"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174871"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -40,8 +40,8 @@ ms.locfileid: "99219674"
 - [OpenID Connect](openid-connect-technical-profile.md) - 任意の OpenID Connect プロトコル ID プロバイダーとのフェデレーション。
 - [電話要素](phone-factor-technical-profile.md) - 電話番号の登録と確認をサポートします。
 - [RESTful プロバイダー](restful-technical-profile.md) - ユーザーの入力の検証、ユーザー データの促進、基幹業務アプリケーションとの統合など、REST API サービスを呼び出します。
-- [SAML ID プロバイダー](saml-identity-provider-technical-profile.md) - 任意の SAML プロトコル ID プロバイダーとのフェデレーション。
-- [SAML トークン発行者](saml-issuer-technical-profile.md) - 証明書利用者アプリケーションに戻された SAML トークンを発行します。
+- [SAML ID プロバイダー](identity-provider-generic-saml.md) - 任意の SAML プロトコル ID プロバイダーとのフェデレーション。
+- [SAML トークン発行者](saml-service-provider.md) - 証明書利用者アプリケーションに戻された SAML トークンを発行します。
 - [セルフアサート](self-asserted-technical-profile.md) - ユーザーとやりとりします。 たとえば、ユーザーの資格情報を収集してサインインし、サインアップ ページまたはパスワードのリセットをレンダリングします。
 - [セッション管理](custom-policy-reference-sso.md) - さまざまな種類のセッションを処理します。
 
@@ -127,7 +127,7 @@ ms.locfileid: "99219674"
 
 **Metadata** 要素には、特定のプロトコルに関連する構成オプションが含まれています。 サポートされているメタデータの一覧は、対応する[技術プロファイル](#type-of-technical-profiles)仕様に記載されています。 **Metadata** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | Description |
+| 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | Item | 0:n | 技術プロファイルに関連するメタデータ。 技術プロファイルの種類ごとに、異なるメタデータ項目のセットがあります。 詳細については、技術プロファイルの種類に関するセクションを参照してください。  |
 
@@ -175,9 +175,9 @@ ms.locfileid: "99219674"
 
 統合対象のサービスとの信頼を確立するため、Azure AD B2C により、シークレットと証明書が[ポリシー キー](policy-keys-overview.md)の形式で保存されます。 技術プロファイルの実行中、Azure AD B2C によって Azure AD B2C ポリシー キーから暗号化キーが取得されます。 その後、そのキーを使用して信頼の確立、トークンの暗号化、または署名が行われます。 これらの信頼は次のもので構成されます。
 
-- [OAuth1](oauth1-technical-profile.md#cryptographic-keys)、[OAuth2](oauth2-technical-profile.md#cryptographic-keys)、および [SAML](saml-identity-provider-technical-profile.md#cryptographic-keys) ID プロバイダーとのフェデレーション
+- [OAuth1](oauth1-technical-profile.md#cryptographic-keys)、[OAuth2](oauth2-technical-profile.md#cryptographic-keys)、および [SAML](identity-provider-generic-saml.md) ID プロバイダーとのフェデレーション
 - [REST API サービス](secure-rest-api.md)との接続のセキュリティ保護
-- [JWT](jwt-issuer-technical-profile.md#cryptographic-keys) トークンと [SAML](saml-issuer-technical-profile.md#cryptographic-keys) トークンの署名と暗号化
+- [JWT](jwt-issuer-technical-profile.md#cryptographic-keys) トークンと [SAML](saml-service-provider.md) トークンの署名と暗号化
 
 **CryptographicKeys** 要素には、次の要素が含まれています。
 
@@ -448,14 +448,14 @@ ms.locfileid: "99219674"
 次の例では、包含の使用方法を示します。
 
 - *REST-API-Common* - 基本構成を含む共通技術プロファイル。
-- *REST-ValidateProfile* - *REST-API-Commom* 技術プロファイルを含み、入力および出力要求を指定します。
-- *REST-UpdateProfile* - *REST-API-Commom* 技術プロファイルを含み、入力要求を指定し、`ServiceUrl` メタデータを上書きします。
+- *REST-ValidateProfile* - *REST-API-Common* 技術プロファイルを含み、入力および出力要求を指定します。
+- *REST-UpdateProfile* - *REST-API-Common* 技術プロファイルを含み、入力要求を指定し、`ServiceUrl` メタデータを上書きします。
 
 ```xml
 <ClaimsProvider>
   <DisplayName>REST APIs</DisplayName>
   <TechnicalProfiles>
-    <TechnicalProfile Id="REST-API-Commom">
+    <TechnicalProfile Id="REST-API-Common">
       <DisplayName>Base REST API configuration</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
@@ -480,7 +480,7 @@ ms.locfileid: "99219674"
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="promoCode" />
       </OutputClaims>
-      <IncludeTechnicalProfile ReferenceId="REST-API-Commom" />
+      <IncludeTechnicalProfile ReferenceId="REST-API-Common" />
     </TechnicalProfile>
 
     <TechnicalProfile Id="REST-UpdateProfile">
@@ -492,7 +492,7 @@ ms.locfileid: "99219674"
         <InputClaim ClaimTypeReferenceId="objectId" />
         <InputClaim ClaimTypeReferenceId="email" />
       </InputClaims>
-      <IncludeTechnicalProfile ReferenceId="REST-API-Commom" />
+      <IncludeTechnicalProfile ReferenceId="REST-API-Common" />
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
@@ -555,7 +555,7 @@ ms.locfileid: "99219674"
 
 ## <a name="enabled-for-user-journeys"></a>ユーザー体験に対して有効
 
-ユーザー体験の [ClaimsProviderSelections](userjourneys.md#claimsproviderselection) は、クレーム プロバイダー選択オプションの一覧とその順序を定義します。 **EnabledForUserJourneys** 要素を使用して、ユーザーが利用できるクレーム プロバイダーをフィルタリングします。 **EnabledForUserJourneys** 要素には、次の値のいずれかが含まれています。
+ユーザー体験の [ClaimsProviderSelections](userjourneys.md#claims-provider-selection) は、クレーム プロバイダー選択オプションの一覧とその順序を定義します。 **EnabledForUserJourneys** 要素を使用して、ユーザーが利用できるクレーム プロバイダーをフィルタリングします。 **EnabledForUserJourneys** 要素には、次の値のいずれかが含まれています。
 
 - **Always**、技術プロファイルを実行します。
 - **Never**、技術プロファイルをスキップします。

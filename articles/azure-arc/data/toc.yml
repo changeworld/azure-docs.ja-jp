@@ -6,6 +6,8 @@
       href: overview.md
     - name: リリース ノート
       href: release-notes.md
+    - name: 既知の問題
+      href: known-issues.md
 - name: クイックスタート
   items:
     - name: データ コントローラーの作成
@@ -180,6 +182,8 @@
               href: configure-managed-instance.md
             - name: 監視、ログ分析、課金情報、Azure portal
               href: monitoring-log-analytics-azure-portal-managed-instance.md
+            - name: 高可用性
+              href: managed-instance-high-availability.md
             - name: 削除
               href: delete-managed-instance.md
         - name: 移行
@@ -230,6 +234,8 @@
           href: /sql/azdata/reference/reference-azdata-arc-resource-kind?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
         - name: arc-sql
           href: /sql/azdata/reference/reference-azdata-arc-sql?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
+        - name: arc-sql-endpoint
+          href: /sql/azdata/reference/reference-azdata-arc-sql-endpoint?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
         - name: arc-sql-mi
           href: /sql/azdata/reference/reference-azdata-arc-sql-mi?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
         - name: arc-sql-mi-config

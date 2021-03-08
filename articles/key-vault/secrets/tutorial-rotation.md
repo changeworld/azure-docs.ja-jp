@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cd90043c8f03361244d3500f83f6df5347f1d867
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 526c3d2d85a3f2877f82b3b764f395c51f7c05c0
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539402"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805232"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>1 セットの認証資格情報を使用したリソースを対象にシークレットのローテーションを自動化する
 
@@ -213,7 +213,7 @@ az keyvault secret set --name sqlPassword --vault-name akvrotation-kv --value "S
 
 シークレットのローテーションが完了したことを確認するために、 **[Key Vault]**  >  **[シークレット]** に移動します。
 
-:::image type="content" source="../media/rotate-8.png" alt-text="[シークレット] に移動する":::
+:::image type="content" source="../media/rotate-8.png" alt-text="[Key Vault] > [シークレット] にアクセスする方法を示すスクリーンショット。":::
 
 **sqlPassword** シークレットを開き、元のバージョンとローテーション後のバージョンを確認します。
 

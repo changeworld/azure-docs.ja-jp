@@ -3,18 +3,18 @@ title: 'ML Studio (classic): Python スクリプトを実行する - Azure'
 description: Python スクリプトの実行モジュールを使用して、Machine Learning Studio (クラシック) の実験や Web サービスで Python コードを使用する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: devx-track-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 822bb43aaeb3cc1cf5914bb1600ef754441c4206
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 374589212b230e6b3ce0abcadbad8aa3eb7271fc
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310203"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519985"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) で Python Machine Learning スクリプトを実行する
 
@@ -81,7 +81,7 @@ Python の実行に使用されるバックエンドは、広く使用されて�
 
 ![ユーザー定義の Python コードを含む zip ファイル](./media/execute-python-scripts/figure5.png)
 
-この zip ファイルをデータセットとして Studio (クラシック) にアップロードします。 次にそれを、次の図に示すように、 **Python スクリプトの実行** モジュールの 3 番目の入力ポートに追加することで、Hello.zip ファイルで Python コードを使用する実験を作成し、実行します。
+この zip ファイルをデータセットとして Studio (クラシック) にアップロードします。 次にそれを、次の図に示すように、**Python スクリプトの実行** モジュールの 3 番目の入力ポートに追加することで、Hello.zip ファイルで Python コードを使用する実験を作成し、実行します。
 
 ![Hello.zip を Python スクリプトの実行モジュールへの入力として使用した実験のサンプル](./media/execute-python-scripts/figure6a.png)
 

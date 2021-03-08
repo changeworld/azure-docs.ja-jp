@@ -2,13 +2,13 @@
 title: テンプレートでのユーザー定義関数
 description: Azure Resource Manager テンプレート (ARM テンプレート) でユーザー定義関数を定義して使用する方法について説明します。
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: f428fa3bc827af3820ad9f928f4f92b881c9c84c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 02/11/2021
+ms.openlocfilehash: 9c7480958e6315c8aea1fd8d12613bcf9d606723
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934681"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379626"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>ARM テンプレートでのユーザー定義関数
 
@@ -44,7 +44,7 @@ ms.locfileid: "97934681"
 
 ## <a name="use-the-function"></a>関数を使用する
 
-次の例は、ユーザー定義関数を含むテンプレートを示しています。 この関数を使用して、ストレージ アカウントの一意の名前を取得します。 このテンプレートには、関数にパラメーターとして渡す `storageNamePrefix` という名前のパラメーターがあります。
+次の例は、ストレージ アカウントの一意の名前を取得するためのユーザー定義関数が含まれているテンプレートを示しています。 このテンプレートには、関数にパラメーターとして渡される `storageNamePrefix` という名前のパラメーターがあります。
 
 ```json
 {
@@ -92,6 +92,12 @@ ms.locfileid: "97934681"
  ]
 }
 ```
+
+デプロイ時に、`storageNamePrefix` パラメーターが関数に渡されます。
+
+* このテンプレートでは、`storageNamePrefix` という名前のパラメーターが定義されます。
+* 関数内で定義されているパラメーターのみを使用できるため、関数では `namePrefix` が使用されます。 詳細については、[制限](#limitations)に関するページを参照してください。
+* テンプレートの `resources` セクションでは、`name` 要素で関数が使用され、`storageNamePrefix` の値が関数の `namePrefix` に渡されます。
 
 ## <a name="limitations"></a>制限事項
 

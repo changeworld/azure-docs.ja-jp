@@ -22,7 +22,7 @@ ms.lasthandoff: 10/17/2020
 ms.locfileid: "92152274"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Azure Cloud Shell でファイルを永続化する
-Cloud Shell では Azure File ストレージを使用してセッション間でファイルを維持します。 Cloud Shell の初回起動時に、セッション間でファイルを維持するために新しいまたは既存のファイル共有を関連付けることを求められます。
+Cloud Shell では Azure File Storage を使用してセッション間でファイルを維持します。 Cloud Shell の初回起動時に、セッション間でファイルを維持するために新しいまたは既存のファイル共有を関連付けることを求められます。
 
 > [!NOTE]
 > Bash と PowerShell は、同じファイル共有を共有します。 Cloud Shell で自動マウントと関連付けることができるのは、1 つのファイル共有のみです。

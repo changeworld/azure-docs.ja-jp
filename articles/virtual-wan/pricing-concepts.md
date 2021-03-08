@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: reyandap
 ms.custom: references_pricing
-ms.openlocfilehash: 8ced9bb33be341d35904967092414676a6ffe3ac
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 13451291544f704000ab61d41ed5014fa69298e4
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905538"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517690"
 ---
 # <a name="about-virtual-wan-pricing"></a>Virtual WAN の価格について
 
@@ -23,8 +23,7 @@ Azure Virtual WAN では、複数のネットワーク サービスとセキュ�
 Virtual WAN の各サービスに価格が設定されています。 そのため、単一の価格提案は Virtual WAN には当てはまりません。 [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)には、Virtual WAN でプロビジョニングするサービスに基づいてコストを導き出すためのメカニズムが用意されています。 この記事では、Virtual WAN の価格に関してよく寄せられる質問について説明します。
 
 >[!NOTE]
->現在の価格に関する情報については、「[Virtual WAN の価格](https://azure.microsoft.com/pricing/details/virtual-wan/)」をご覧ください。
->
+>現在の価格に関する情報については、「[Virtual WAN の価格](https://azure.microsoft.com/pricing/details/virtual-wan/)」をご覧ください。 「Virtual WAN の価格」ページではリージョン間 (大陸内または大陸間) の料金 ([Azure のデータ転送料金](https://azure.microsoft.com/pricing/details/bandwidth/)) が適用されるため、ハブ間 (ハブからハブ) の料金は示されていません。
 
 ## <a name="common-pricing-questions"></a><a name="questions"></a>価格に関する一般的な質問
 

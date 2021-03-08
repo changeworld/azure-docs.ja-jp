@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2444ec28a2618b638f78926e214de468f56c5e52
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2f867fa6d4b7e1d864a85106b5d957a53d38eb76
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "95995483"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732542"
 ---
 # <a name="enable-smb-multichannel-on-a-filestorage-account-preview"></a>FileStorage アカウントで SMB マルチチャネルを有効にする (プレビュー) 
 
@@ -28,7 +28,7 @@ Azure FileStorage アカウントは、SMB マルチチャネル (プレビュ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- [FileStorage アカウントを作成](storage-how-to-create-premium-fileshare.md)します。
+- [FileStorage アカウントを作成](./storage-how-to-create-file-share.md)します。
 - Azure PowerShell モジュールを使用する場合は、[3.0.1-preview バージョンのモジュールをインストール](https://www.powershellgallery.com/packages/Az.Storage/3.0.1-preview)してください。
 
 ## <a name="getting-started"></a>作業の開始
@@ -68,7 +68,7 @@ FileStorage アカウントを作成したら、次の手順に従って、ス�
 
 :::image type="content" source="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png" alt-text="ストレージ アカウントのスクリーンショット、SMB マルチチャネルがオンになっています。":::
 
-[SMB マルチチャネル] オプションが **[ファイル共有の設定]** の下に表示されないか、構成の更新中に設定更新失敗のエラーが発生した場合は、サブスクリプションが登録されていることと、アカウントの種類とレプリケーションがサポートされている[サポート対象リージョン](#regional-availability)のいずれかに自分のアカウントが存在することを確認してください。
+[SMB マルチチャネル] オプションが **[ファイル共有の設定]** の下に表示されないか、構成の更新中に設定更新失敗のエラーが発生した場合は、サブスクリプションが登録されていることと、アカウントの種類とレプリケーションがサポートされている [サポート対象リージョン](#regional-availability)のいずれかに自分のアカウントが存在することを確認してください。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

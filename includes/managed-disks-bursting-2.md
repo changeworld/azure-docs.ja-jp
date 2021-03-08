@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 28c92004fe67de35e5776cd7dc24cf534ec6f8f3
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 801f0f03b49d20c84a4531bd0daad7630a0ed01d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98061248"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585067"
 ---
 ## <a name="common-scenarios"></a>一般的なシナリオ
 バースティングから大きなメリットが得られるシナリオを次に示します。
@@ -37,7 +37,8 @@ ms.locfileid: "98061248"
 - **一定** - リソースのトラフィックがパフォーマンス ターゲットと正確に一致しています。
 
 ## <a name="examples-of-bursting"></a>バーストの例
-次の例では、さまざまな仮想マシンとディスクの組み合わせでバースティングがどのように機能するかを示しています。 例を理解しやすいように、MB/秒に焦点を当てていますが、同じロジックが IOPS に別途適用されます。
+
+次の例では、さまざまな VM とディスクの組み合わせでバーストがどのように機能するかを示しています。 例を理解しやすいように、MB/秒に焦点を当てていますが、同じロジックが IOPS に別途適用されます。
 
 ### <a name="non-burstable-virtual-machine-with-burstable-disks"></a>バースト可能なディスクを備えたバースト不可能な仮想マシン
 **VM とディスクの組み合わせ:** 
@@ -50,17 +51,17 @@ ms.locfileid: "98061248"
     - プロビジョニングされる MB/秒:100
     - 最大バースト MB/秒:170
 
- VM が起動すると、OS ディスクからデータが取得されます。 OS ディスクは起動されている VM の一部であるため、この OS ディスクのバースティング クレジットはいっぱいになります。 これらのクレジットを使用して、下記に示すとおり 170 MB/秒で OS ディスクの起動をバーストできます。
+ VM が起動すると、OS ディスクからデータが取得されます。 OS ディスクは起動されている VM の一部であるため、この OS ディスクのバースト クレジットはいっぱいになります。 これらのクレジットを使用して、170 MB/秒で OS ディスクの起動をバーストできます。
 
-![バースティング非対応 VM のバースティング ディスクの起動](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-startup.jpg)
+![VM は 192 MB のスループットの要求を OS ディスクに送信し、OS ディスクは 170 MB/秒のデータで応答します。](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-startup.jpg)
 
 起動が完了すると、VM 上でアプリケーションが実行され、重要度の低いワークロードが発生します。 このワークロードでは、すべてのディスクに均等に分散される 15 MB/秒が必要です。
 
-![バースティング非対応 VM のバースティング ディスクのアイドル状態](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-idling.jpg)
+![アプリケーションは 15 MB/秒のスループットの要求を VM に送信し、VM は要求を受け取り、各ディスクに 5 MB/秒の要求を送信します。各ディスクは 5 MB/秒を返し、VM は 15 MB/秒をアプリケーションに返します。](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-idling.jpg)
 
 その後、アプリケーションは 192 MB/秒を必要とするバッチ ジョブを処理する必要があります。 2 MB/秒が OS ディスクによって使用され、残りはデータ ディスク間で均等に分割されます。
 
-![バースティング非対応 VM のバースティング ディスクのバースティング](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-bursting.jpg)
+![アプリケーションは 192 MB/秒のスループットの要求を VM に送信し、VM は要求を受け取り、要求を一括でデータ ディスクに送信し (それぞれ 95 MB/秒)、2 MB/秒を OS ディスクに送信します。データ ディスクは需要を満たすためにバーストし、すべてのディスクが要求されたスループットを VM に返し、そこからアプリケーションに返されます。](media/managed-disks-bursting/nonbursting-vm-busting-disk/nonbusting-vm-bursting-disk-bursting.jpg)
 
 ### <a name="burstable-virtual-machine-with-non-burstable-disks"></a>バースト不可能なディスクを備えたバースト可能な仮想マシン
 **VM とディスクの組み合わせ:** 
@@ -72,11 +73,12 @@ ms.locfileid: "98061248"
 - 2 つの P10 データ ディスク 
     - プロビジョニングされる MB/秒:250
 
- 最初の起動の後、VM 上でアプリケーションが実行され、重要度の低いワークロードが発生します。 このワークロードでは、すべてのディスクに均等に分散される 30 MB/秒が必要です。![バースティング VM のバースティング非対応ディスクのアイドル状態](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
+ 最初の起動の後、VM 上でアプリケーションが実行され、重要度の低いワークロードが発生します。 このワークロードでは、すべてのディスクに均等に分散される 30 MB/秒が必要です。
+![アプリケーションは 30 MB/秒のスループットの要求を VM に送信し、VM は要求を受け取り、各ディスクに 10 MB/秒の要求を送信します。各ディスクは 10 MB/秒を返し、VM は 30 MB/秒をアプリケーションに返します。](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
 
 その後、アプリケーションは 600 MB/秒を必要とするバッチ ジョブを処理する必要があります。 この需要を満たすために Standard_L8s_v2 によってバーストが行われ、そのディスクへの要求が P50 ディスクに均等に分散されます。
 
-![バースティング VM のバースティング非対応ディスクのバースティング](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-bursting.jpg)
+![アプリケーションは 600 MB/秒のスループットの要求を VM に送信し、VM はバーストを受けて要求を受け取り、各ディスクに 200 MB/秒の要求を送信します。各ディスクは 200 MB/秒を返し、VM はバーストを実行して 600 MB/秒をアプリケーションに返します。](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-bursting.jpg)
 ### <a name="burstable-virtual-machine-with-burstable-disks"></a>バースト可能なディスクを備えたバースト可能な仮想マシン
 **VM とディスクの組み合わせ:** 
 - Standard_L8s_v2 
@@ -91,12 +93,12 @@ ms.locfileid: "98061248"
 
 VM が起動すると、バーストが実行されて OS ディスクに対して 1,280 MB/秒のバースト制限が要求され、OS ディスクは 170 MB/秒のバースト パフォーマンスで応答します。
 
-![バースティング VM のバースティング ディスクの起動](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-startup.jpg)
+![VM は起動時にバーストを実行して 1280 MB/秒の要求を OS ディスクに送信し、OS ディスクはバーストを実行して 1280 MB/秒を返します。](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-startup.jpg)
 
-起動が完了すると、VM 上でアプリケーションが実行されます。 アプリケーションには、すべてのディスクに均等に分散される 15 MB/秒を必要とする、重要度の低いワークロードがあります。
+起動後に、重要度の低いワークロードを持つアプリケーションを起動してください。 このアプリケーションでは、すべてのディスクに均等に分散される 15 MB/秒が必要です。
 
-![バースティング VM のバースティング ディスクのアイドル状態](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
+![アプリケーションは 15 MB/秒のスループットの要求を VM に送信し、VM は要求を受け取り、各ディスクに 5 MB/秒の要求を送信します。各ディスクは 5 MB/秒を返し、VM は 15 MB/秒をアプリケーションに返します。](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
 
-その後、アプリケーションは 360 MB/秒を必要とするバッチ ジョブを処理する必要があります。 この需要を満たすために Standard_L8s_v2 によってバーストが行われて、要求が行われます。 OS ディスクに必要とされるのは 20 MB/秒のみです。 残りの 340 MB/秒は、バースティング P4 データ ディスクによって処理されます。  
+その後、アプリケーションは 360 MB/秒を必要とするバッチ ジョブを処理する必要があります。 この需要を満たすために Standard_L8s_v2 によってバーストが行われて、要求が行われます。 OS ディスクに必要とされるのは 20 MB/秒のみです。 残りの 340 MB/秒は、バーストする P4 データ ディスクによって処理されます。
 
-![バースティング VM のバースティング ディスクのバースティング](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-bursting.jpg)
+![アプリケーションは 360 MB/秒のスループットの要求を VM に送信し、VM はバーストを受けて要求を取得し、各データ ディスクに 170 MB/秒と 20 MB/秒の要求を OS ディスクから送信します。各ディスクは、要求された MB/秒を返し、VM はバーストを実行して 360 MB/秒をアプリケーションに返します。](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-bursting.jpg)

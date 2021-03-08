@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: terrylan
-ms.openlocfilehash: d85b1fdd433c372bb41adec6e3d33013f19363f0
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: f87ea1e1c9f43de4e9e0f94d1cd855615a0a880c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747175"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712047"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure セキュリティの管理と監視の概要
 この記事では、Azure クラウド サービスと仮想マシンの管理と監視を支援するために Azure が提供するセキュリティ機能とサービスの概要を説明します。
@@ -48,7 +48,7 @@ Symantec Endpoint Protection (SEP) も、Azure でサポートされています
 
 * [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [Azure Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](antimalware.md)
-* [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](../../virtual-machines/extensions/trend.md)
+* [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](/previous-versions/azure/virtual-machines/extensions/trend)
 * [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](../../virtual-machines/extensions/symantec.md)
 * [Azure Virtual Machines を保護するための新しいマルウェア対策オプション](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 

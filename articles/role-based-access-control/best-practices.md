@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 00fd00112dad9efc31cea83f69bb458a8e1ca935
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: d58398c42cdc6faed758e5dba3431e0841fc0b03
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617376"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555565"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC のベスト プラクティス
 
@@ -30,7 +30,7 @@ Azure RBAC を使用して、チーム内で職務を分離し、職務に必要
 
 ![Azure RBAC と最小限の特権](./media/best-practices/rbac-least-privilege.png)
 
-ロールの割り当てを追加する方法の詳細については、[Azure portal を使用した Azure でのロールの割り当ての追加または削除](role-assignments-portal.md)に関する記事を参照してください。
+ロールの割り当て方法について詳しくは、「[Azure portal を使用して Azure ロールを割り当てる](role-assignments-portal.md)」をご覧ください。
 
 ## <a name="limit-the-number-of-subscription-owners"></a>サブスクリプションの所有者の数を制限する
 
@@ -41,6 +41,10 @@ Azure RBAC を使用して、チーム内で職務を分離し、職務に必要
 悪意のあるサイバー攻撃から特権アカウントを保護するために、Azure Active Directory Privileged Identity Management (PIM) を使用して特権の露出時間を短縮し、レポートとアラートによって特権使用の可視性を向上できます。 PIM は、Azure AD と Azure のリソースへの Just-In-Time の特権アクセスを提供することで、特権アカウントを保護するのに役立ちます。 アクセスは、期限を決めて、その期限が過ぎると権限が自動的に取り消されるようにすることができます。 
 
 詳しくは、「[Azure AD Privileged Identity Management とは](../active-directory/privileged-identity-management/pim-configure.md)」をご覧ください。
+
+## <a name="assign-roles-to-groups-not-users"></a>ユーザーではなくグループにロールを割り当てる
+
+ロール割り当てをより管理しやすくするために、ロールをユーザーに直接割り当てないようにします。 代わりに、グループにロールを割り当ててください。 ロールの割り当て数には[サブスクリプションあたり 2,000 までという制限](troubleshooting.md#azure-role-assignments-limit)がありますが、ロールをユーザーでなくグループに割り当てることで、この割り当て数を最小限に抑えることもできます。 
 
 ## <a name="next-steps"></a>次のステップ
 

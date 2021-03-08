@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 506e568f44d8dd5354ed7bd3ec20d0c71d484b85
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 41db671e4ab76dc56dc2c01f4852640acfe3fd83
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475186"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389741"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
@@ -153,6 +153,7 @@ ms.locfileid: "99475186"
 ### <a name="tips"></a>ヒント 
 - ある公開からその次の公開に更新されたかどうかは、JSON ファイル内の *changeNumber* の値の増加に注目することで理解できます。 各サブセクション (たとえば **Storage.WestUS**) には、変更が発生するたびに増えていく固有の *changeNumber* があります。 ファイルの *changeNumber* の最上位レベルは、サブセクションのいずれかが変更されると増加します。
 - サービス タグ情報を解析する方法の例 (WestUS のストレージについてのすべてのアドレス範囲を取得する方法など) については、[Service Tag Discovery API PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag?viewFallbackFrom=azps-2.3.2) のドキュメントを参照してください。
+- 新しい IP アドレスがサービス タグに追加されると、それらは少なくとも 1 週間は Azure で使用されません。 これにより、サービス タグに関連付けられた IP アドレスを追跡する必要がある可能性のあるシステムを更新する時間が得られます。
 
 ## <a name="next-steps"></a>次のステップ
 - [ネットワーク セキュリティ グループの作成](tutorial-filter-network-traffic.md)方法を確認します。

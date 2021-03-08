@@ -10,12 +10,12 @@ ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 14ea98ecc4d9682353038088a124802d60a5dd5d
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: da2e20e333fe499998fff72b175442650f5f1e28
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131447"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595312"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure 仮想マシン用の拡張メトリックを追加する
 
@@ -28,10 +28,10 @@ Cloudyn では、Azure VM からの Azure メトリック データを使って�
 - 使用状況に応じてサイズを調整し、コストを管理します。
 - Cloudyn からコスト効率のよいサイズ設定の最適化に関する推奨事項を取得します。
 
-たとえば、Azure VM の CPU 使用率とメモリ使用率を監視することができます。 Azure VM のメトリックは、 _Percentage CPU_ および _\Memory\% Committed Bytes In Use_ に対応します。
+たとえば、Azure VM の CPU 使用率とメモリ使用率を監視することができます。 Azure VM のメトリックは、_Percentage CPU_ および _\Memory\% Committed Bytes In Use_ に対応します。
 
 > [!NOTE]
-> 拡張メトリック データの収集は、Azure のゲスト レベルの監視でのみサポートされます。 Cloudyn には、[Log Analytics エージェント](../../azure-monitor/platform/agents-overview.md)との互換性はありません。
+> 拡張メトリック データの収集は、Azure のゲスト レベルの監視でのみサポートされます。 Cloudyn には、[Log Analytics エージェント](../../azure-monitor/agents/agents-overview.md)との互換性はありません。
 
 [!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 

@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 3bc24e88368af056e4d4506a5cf688e1172d4930
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: e0c0d18dbb3596733d02430554fd40ec16180c64
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051566"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980662"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>AutoRest を使用して Azure Digital Twins 用のカスタム SDK を作成する
 
@@ -112,6 +112,9 @@ AutoRest では、SDK に対して 2 種類のページング パターンが生
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod":::
 
 2 番目のパターンは、クエリ API に対してのみ生成されます。 `continuationToken` が明示的に使用されます。
+
+>[!TIP]
+> ページを取得する主な理由は、クエリ API 呼び出しの[クエリ ユニットの料金](concepts-query-units.md)を計算するためです。
 
 このパターンの使用例を次に示します。
 

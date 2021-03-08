@@ -252,6 +252,8 @@
           href: automation-solution-vm-management-config.md
         - name: Start/Stop VMs during off-hours からログを照会する
           href: automation-solution-vm-management-logs.md
+        - name: Start/Stop VMs during off-hours を削除する
+          href: automation-solution-vm-management-remove.md
         - name: Start/Stop VMs during off-hours のトラブルシューティング
           href: troubleshoot/start-stop-vm.md
     - name: 更新管理

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/07/2020
-ms.openlocfilehash: 84d98eedb3ea6f3faaeaecf832811f9f4c78c7c5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 445810d5873bb935ded180a969e4612542bde5ed
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880357"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120183"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>OCP GTM からコマーシャル マーケットプレースへの共同販売ソリューションの移行
 
@@ -136,7 +136,7 @@ OCP GTM ソリューション内のソリューションがもう関連しなく
 
     :::image type="content" source="media/co-sell-migrate/offer-setup.png" alt-text="パートナー センター内にあるオファーの概要設定のタブ。":::
 
-3. Microsoft 販売者向けの詳細情報の一部が、OCP GTM ソリューションからコピーされました。 **[Microsoft との共同販売]** タブで残りの必要情報を入力して、オファーを共同販売できるようにします。 完了したら、 **[レビューと公開]** を選択します。 詳細については、「[パートナー センターで共同販売資料を送信する方法](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)」を参照してください。
+3. Microsoft 販売者向けの詳細情報の一部が、OCP GTM ソリューションからコピーされました。 **[Microsoft との共同販売]** タブで残りの必要情報を入力して、オファーを共同販売できるようにします。 完了したら、 **[レビューと公開]** を選択します。 詳細については、「[パートナー センターで共同販売資料を送信する方法](marketplace-co-sell.md)」を参照してください。
 
     :::image type="content" source="media/co-sell-migrate/co-sell-page.png" alt-text="パートナー センター内にあるオファーの共同販売のタブ。":::
 
@@ -154,5 +154,5 @@ OCP GTM ソリューション内のソリューションがもう関連しなく
 ## <a name="next-steps"></a>次のステップ
 
 - [CSP パートナーによる再販](cloud-solution-providers.md)
-- [パートナー センターで共同販売資料を送信する方法](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)
+- [パートナー センターで共同販売資料を送信する方法](marketplace-co-sell.md)
 - これらの [FAQ](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) (PDF) を表示する

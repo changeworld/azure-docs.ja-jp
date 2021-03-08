@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: 154b9f526dd4df6aabaaf24687a534a28ed1a3a3
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: f231b50651764408a516f8e8e3275ea3c86bd388
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99253182"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "100530700"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>SaaS アプリケーションと Azure Active Directory の統合に関するチュートリアル
 
@@ -105,6 +105,7 @@ Azure AD に事前に統合されているすべての SaaS アプリの一覧�
 | ![ロゴ - OneDesk](./media/tutorial-list/active-directory-saas-onedesk-tutorial.png)| [OneDesk](onedesk-tutorial.md)|
 | ![ロゴ - OpsGenie](./media/tutorial-list/active-directory-saas-opsgenie-tutorial.png)| [OpsGenie](opsgenie-tutorial.md)|
 | ![ロゴ - People](./media/tutorial-list/active-directory-saas-people-tutorial.png)| [ユーザー](people-tutorial.md)|
+| ![logo-Perimeter 81](./media/tutorial-list/active-directory-saas-perimeter-81-tutorial.png)| [Perimeter 81](perimeter-81-tutorial.md)|
 | ![ロゴ - productboard](./media/tutorial-list/active-directory-saas-productboard-tutorial.png)| [productboard](productboard-tutorial.md)|
 | ![ロゴ - PurelyHR](./media/tutorial-list/active-directory-saas-purelyhr-tutorial.png)| [PurelyHR](purelyhr-tutorial.md)|
 | ![ロゴ - RingCentral](./media/tutorial-list/active-directory-saas-ringcentral-tutorial.png)| [RingCentral](ringcentral-tutorial.md)|

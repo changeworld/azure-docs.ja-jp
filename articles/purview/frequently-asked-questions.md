@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: eca0b9986c4da30adeeb02bc3d90d1e3d2892df7
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 94b765cbcbdd81505b08052845207ee1d93a28d9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550712"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667806"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-purview"></a>Azure Purview に関してよく寄せられる質問 (FAQ)
 
@@ -36,7 +36,7 @@ Azure Purview は、データ ガバナンス ソリューションです。 こ
 |Azure SQL Managed Instance|SAP ECC (2020 年末まで利用可能)|
 |Azure Data Explorer|AP S/4 HANA (2020 年末まで利用可能)|
 |Azure Data Lake Storage Gen1|Hive メタストア (2020 年末まで利用可能)|
-|Azure Data Lake Storage Gen2|--|
+|Azure Data Lake Storage Gen2|Amazon S3|
 |Azure Files|--|
 |Azure SQL Database|--|
 

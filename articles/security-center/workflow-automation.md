@@ -6,20 +6,20 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 674ba1cf03f48eb1c746b115d981740b5b938aab
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 652986c4850a0b51fc86b84133d7e93813423c9a
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919529"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550321"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>Security Center のトリガーへの応答を自動化する
 
 すべてのセキュリティ プログラムには、インシデント対応のための複数のワークフローが含まれています。 これらのプロセスには、直接の利害関係者への通知、変更管理プロセスの開始、および特定の修復手順の適用が含まれます。 これらのプロシージャの手順をできるだけ多く自動化することがセキュリティの専門家によって推奨されています。 自動化によってオーバーヘッドが削減されます。 また、迅速かつ一貫した方法で、定義済みの要件に従ってプロセスの手順が実行されるようにすることで、セキュリティを向上させることもできます。
 
-この記事では、Azure Security Center のワークフローの自動化機能について説明します。 この機能では、セキュリティ アラートと推奨事項が出されたときにロジック アプリをトリガーできます。 たとえば、アラートが発生したときに Security Center から特定のユーザーに電子メールが送信されるようにすることができます。 また、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用してロジック アプリを作成する方法についても説明します。
+この記事では、Azure Security Center のワークフローの自動化機能について説明します。 この機能を使用すると、セキュリティ アラートや推奨事項、および規制コンプライアンスへの変更があったときに Logic Apps をトリガーできます。 たとえば、アラートが発生したときに Security Center から特定のユーザーに電子メールが送信されるようにすることができます。 また、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用してロジック アプリを作成する方法についても説明します。
 
 
 ## <a name="availability"></a>可用性
@@ -70,10 +70,12 @@ ms.locfileid: "98919529"
 
     ロジック アプリ デザイナーでは、Security Center の次のトリガーがサポートされています。
 
-    * **Azure Security Center 推奨事項が作成またはトリガーされたとき** - ロジック アプリが非推奨または置換された推奨事項に依存している場合、自動化の動作は停止し、トリガーの更新が必要となります。 推奨事項の変更を追跡するには、[Azure Security Center リリース ノート](release-notes.md)に関するページを参照してください。
+    - **Azure Security Center 推奨事項が作成またはトリガーされたとき** - ロジック アプリが非推奨または置換された推奨事項に依存している場合、自動化の動作は停止し、トリガーの更新が必要となります。 推奨事項の変更を追跡するには、[Azure Security Center リリース ノート](release-notes.md)に関するページを参照してください。
 
-    * **Azure Security Center アラートが作成またはトリガーされたとき** - トリガーをカスタマイズして、対象となる重大度レベルのアラートのみが関連付けられるようにすることができます。
+    - **Azure Security Center アラートが作成またはトリガーされたとき** - トリガーをカスタマイズして、対象となる重大度レベルのアラートのみが関連付けられるようにすることができます。
     
+    - **Security Center の規制コンプライアンス評価が作成またはトリガーされたとき** - 規制コンプライアンス評価の更新に基づくトリガーの自動化。
+
     > [!NOTE]
     > レガシ トリガーである [Azure Security Center アラートへの応答がトリガーされるとき] を使用している場合、ロジック アプリはワークフローの自動化機能では起動されません。 代わりに、前述のいずれかのトリガーを使用してください。 
 

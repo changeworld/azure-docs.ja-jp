@@ -8,14 +8,14 @@
       href: whats-new.md
 - name: クイックスタート
   items:
-    - name: QnA Maker ポータルの使用
+    - name: ナレッジベースの作成とクエリ実行
       items:
-        - name: ナレッジ ベースを作成する
+        - name: QnA Maker ポータル
           href: Quickstarts/create-publish-knowledge-base.md
-        - name: ナレッジ ベースにクエリを実行する
-          href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - name: クライアント ライブラリまたは REST API の使用
-      href: Quickstarts/quickstart-sdk.md
+        - name: クライアント ライブラリまたは REST API
+          href: Quickstarts/quickstart-sdk.md
+    - name: REST API を使用してナレッジ ベースにクエリを実行する
+      href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
 - name: チュートリアル
   items:
     - name: Power 仮想エージェントとの統合
@@ -38,6 +38,8 @@
     - name: 開発ライフサイクル
       href: Concepts/development-lifecycle-knowledge-base.md
       displayName: 'version control, test, index, publish, monitor usage, create'
+    - name: 正確な回答
+      href: reference-precise-answering.md
     - name: ベスト プラクティス
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
@@ -48,10 +50,10 @@
     - name: Azure のリソースを管理する
       href: How-To/set-up-qnamaker-service-azure.md
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
+    - name: Azure リソースのためのネットワークの分離
+      href: How-To/network-isolation.md
     - name: QnA Maker のリソース アクセスを管理する
       href: How-To/manage-qna-maker-app.md
-    - name: アクティブ ラーニングを有効にする
-      href: How-To/use-active-learning.md
     - name: ナレッジ ベースの管理
       items:
         - name: ナレッジ ベースを作成する
@@ -72,12 +74,18 @@
         - name: フォローアップ プロンプトの追加
           href: How-To/multiturn-conversation.md
           displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
-        - name: 推奨される代わりの質問の取得
-          href: How-to/improve-knowledge-base.md
-          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
+        - name: 既定の回答の変更
+          href: How-To/change-default-answer.md
     - name: ナレッジ ベースの照会
       href: How-To/metadata-generateanswer-usage.md
       displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+    - name: ナレッジ ベースを強化するようアクティブ ラーニングを設定する
+      items:
+        - name: アクティブ ラーニングを有効にする
+          href: How-To/use-active-learning.md
+        - name: 推奨される代わりの質問の取得
+          href: How-to/improve-knowledge-base.md
+          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
     - name: 分析とテレメトリ
       href: How-To/get-analytics-knowledge-base.md
 - name: リファレンス
@@ -86,21 +94,13 @@
       href: Overview/language-support.md
     - name: 制限
       href: limits.md
-    - name: Azure ロールベースのアクセス制御 (Azure RBAC)
-      href: Concepts/role-based-access-control.md
-    - name: アクティブ ラーニング
-      href: Concepts/active-learning-suggestions.md
     - name: 信頼度スコア
       href: Concepts/confidence-score.md
     - name: トラブルシューティング
       href: troubleshooting.md
-    - name: 正確な回答
-      href: reference-precise-answering.md
     - name: セキュリティで保護された SharePoint ファイルの追加
       href: How-To/add-sharepoint-datasources.md
       displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
-    - name: 既定の回答の変更
-      href: How-To/change-default-answer.md
     - name: サービス構成
       href: reference-app-service.md
     - name: コンテンツ形式のガイドライン
@@ -112,7 +112,7 @@
     - name: Batch のテスト形式
       href: reference-tsv-format-batch-testing.md
     - name: 暗号化
-      href: qna-maker-encryption-of-data-at-rest.md
+      href: encrypt-data-at-rest.md
     - name: REST API リファレンス
       items:
         - name: QnA Maker 4.0

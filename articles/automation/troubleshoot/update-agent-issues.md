@@ -5,12 +5,12 @@ services: automation
 ms.date: 01/25/2020
 ms.topic: troubleshooting
 ms.subservice: update-management
-ms.openlocfilehash: d4fbc566cb82eb3b728b37aa1f1cc20ff92f4fca
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 9516210021ce48f069ae3b3b4e02503527e0db24
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896242"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580895"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Windows Update エージェントの問題をトラブルシューティングする
 
@@ -73,7 +73,7 @@ WMF のチェックでは、必要なバージョンの Windows Management Frame
 
 このチェックでは、エージェントがエージェント サービスと正しく通信できるかどうかを判別します。
 
-Hybrid Runbook Worker エージェントが登録エンドポイントと通信できるように、プロキシとファイアウォールが構成されている必要があります。 アドレスと開くポートの一覧については、「[ネットワークの計画](../automation-hybrid-runbook-worker.md#network-planning)」を参照してください。
+Hybrid Runbook Worker エージェントが登録エンドポイントと通信できるように、プロキシとファイアウォールが構成されている必要があります。 アドレスと開くポートの一覧については、[ネットワーク計画](../automation-hybrid-runbook-worker.md#network-planning)に関する記事を参照してください。
 
 ### <a name="operations-endpoint"></a>操作エンドポイント
 
@@ -87,7 +87,7 @@ Hybrid Runbook Worker エージェントが Job Runtime Data Service と通信�
 
 このチェックでは、Windows 用 Log Analytics エージェント (`healthservice`) がマシン上で実行されているかどうかを確認します。 このサービスのトラブルシューティングの詳細については、「[Windows 用 Log Analytics エージェントが実行されていない](hybrid-runbook-worker.md#mma-not-running)」を参照してください。
 
-Windows 用の Log Analytics エージェントを再インストールする場合、「[Windows 用エージェントをインストールする](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)」を参照してください。
+Windows 用の Log Analytics エージェントを再インストールする場合、「[Windows 用エージェントをインストールする](../../azure-monitor/vm/quick-collect-windows-computer.md#install-the-agent-for-windows)」を参照してください。
 
 ### <a name="monitoring-agent-service-events"></a>エージェント サービス イベントの監視
 

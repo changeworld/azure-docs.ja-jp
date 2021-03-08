@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 05bdbd6c9d5dc3862c3191e4564a79e7a44bc0b8
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: a9f8fe10c5ffa787a6c170a29188cba21427b602
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99494058"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175160"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>チュートリアル:PostgreSQL を使用した Django Web アプリを Azure App Service にデプロイする
 
@@ -81,7 +81,7 @@ az login
 
 サインイン後は、Azure CLI を使用して Azure コマンドを実行して、サブスクリプション内のリソースを操作することができます。
 
-問題がありますか。 [お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
+問題がある場合は、 [お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
 ## <a name="2-clone-or-download-the-sample-app"></a>2.サンプル アプリをクローンまたはダウンロードする
 
@@ -231,7 +231,7 @@ Django データベースの移行によって、Azure データベース上の 
 
     `<app-name>` は、先ほど `az webapp up` コマンドで使用した名前に置き換えます。
 
-    [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) コマンドを使用して SSH セッションに接続することもできます。 Windows では、このコマンドには Azure CLI 2.18.0 以降が必要です。
+    [`az webapp ssh`](/cli/azure/webapp#az_webapp_ssh) コマンドを使用して SSH セッションに接続することもできます。 Windows では、このコマンドには Azure CLI 2.18.0 以降が必要です。
 
     SSH セッションに接続できない場合は、アプリ自体が起動に失敗しています。 詳細については、[診断ログを確認](#6-stream-diagnostic-logs)してください。 たとえば、前のセクションで必要なアプリ設定を作成していない場合、ログには `KeyError: 'DBNAME'` と示されます。
 
@@ -403,7 +403,7 @@ az webapp up
 ```
 cd $APP_PATH
 source /antenv/bin/activate
-pip instal -r requirements.txt
+pip install -r requirements.txt
 python manage.py migrate
 ```
 

@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 09/01/2020
+ms.date: 03/02/2021
 ms.author: chrande
-ms.openlocfilehash: 337341daf0e092def639a4e8f6fc8ee0a9b57c75
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ced795385fdf00e706ea897db80f558b513a9f9d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349420"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656960"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB から Azure Cosmos DB の MongoDB 用 API へのデータ移行の移行前手順
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -71,7 +71,7 @@ Azure Cosmos DB では、スループットは事前にプロビジョニング�
 
 ```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
 
-[診断設定](cosmosdb-monitor-resource-logs.md)を使用して、Azure Cosmos DB に対して実行されるクエリの頻度とパターンを理解することもできます。 診断ログの結果は、ストレージ アカウント、EventHub インスタンスまたは [Azure Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) に送信できます。  
+[診断設定](cosmosdb-monitor-resource-logs.md)を使用して、Azure Cosmos DB に対して実行されるクエリの頻度とパターンを理解することもできます。 診断ログの結果は、ストレージ アカウント、EventHub インスタンスまたは [Azure Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) に送信できます。  
 
 ## <a name="choose-your-partition-key"></a><a id="partitioning"></a>パーティション キーの選択
 パーティション分割 (シャーディングともいう) は、データを移行する前に考慮すべき重要な点です。 Azure Cosmos DB では、フルマネージド パーティション分割を使用して、ストレージとスループットの要件を満たすためにデータベースの容量を増やします。 この機能では、ルーティング サーバーのホストや構成は必要ありません。   
@@ -80,7 +80,7 @@ Azure Cosmos DB では、スループットは事前にプロビジョニング�
 
 ## <a name="index-your-data"></a><a id="indexing"></a>データのインデックス作成
 
-Azure Cosmos DB の MongoDB サーバー バージョン 3.6 用 API では、`_id` フィールドのみ、インデックスが自動的に作成されます。 このフィールドは削除できません。 シャード キーごとに `_id` フィールドの一意性が自動的に適用されます。 その他のフィールドのインデックスを作成するには、MongoDB インデックス管理コマンドを適用します。 この既定のインデックス作成ポリシーは Azure Cosmos DB の SQL API とは異なり、既定ですべてのフィールドのインデックスが作成されます。
+MongoDB サーバー バージョン 3.6 以降を対象とする Azure Cosmos DB の API では、`_id` フィールドのみ、インデックスが自動的に作成されます。 このフィールドは削除できません。 シャード キーごとに `_id` フィールドの一意性が自動的に適用されます。 その他のフィールドのインデックスを作成するには、[MongoDB インデックス管理コマンド](mongodb-indexing.md)を適用します。 この既定のインデックス作成ポリシーは Azure Cosmos DB の SQL API とは異なり、既定ですべてのフィールドのインデックスが作成されます。
 
 Azure Cosmos DB によって提供されるインデックス作成機能には、複合インデックス、一意のインデックス、Time-to-Live (TTL) インデックスの追加が含まれます。 インデックス管理インターフェイスは、`createIndex()` コマンドにマップされます。 詳細については、[Azure Cosmos DB の MongoDB 用 API でのインデックス作成](mongodb-indexing.md)に関する記事を参照してください。
 

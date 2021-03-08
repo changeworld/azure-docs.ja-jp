@@ -1,28 +1,24 @@
 ---
 title: Azure Data Factory のデータセット列のマッピング
 description: ソース列を変換先列にマップする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: af7a1e40f21b6c9af490abe6f58edcaf798818b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fef2c6f120ae25e6aa1846d4971ff707da9bab92
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85318877"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371126"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>ソース データセット列を変換先のデータセット列にマップする
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 
 
-列マッピングは、ソース テーブル マップの “structure” 列を、シンク テーブルの “structure” 列に対し指定するために使用できます。 **columnMapping** プロパティは、コピー アクティビティの **typeProperties** セクションにあります。
+列マッピングは、ソース テーブルの "structure" に指定した列を、シンク テーブルの "structure" に指定した列にどのようにマップするかを指定するために使用できます。 **columnMapping** プロパティは、コピー アクティビティの **typeProperties** セクションにあります。
 
 列マッピングは、次のシナリオをサポートしています。
 
@@ -31,7 +27,7 @@ ms.locfileid: "85318877"
 
 次のエラー状態では例外が発生します。
 
-* シンク テーブルの “structure” の列数が、マッピングの指定数より多いか少ない。
+* シンク テーブルの "structure" の列数が、マッピングの指定数より多いか少ない。
 * 重複したマッピング。
 * SQL クエリの結果に、マッピングで指定されている列名がない。
 
@@ -140,7 +136,7 @@ ms.locfileid: "85318877"
 ![列マッピングのフロー](./media/data-factory-map-columns/column-mapping-flow.png)
 
 ## <a name="sample-2--column-mapping-with-sql-query-from-azure-sql-to-azure-blob"></a>例 2 – SQL クエリを使用した Azure SQL から Azure BLOB への列マッピング
-この例では、“structure” セクションでテーブル名と列名を単純に指定する代わりに、SQL クエリを Azure SQL からデータを抽出するために使用します。 
+このサンプルでは、"structure" セクションでテーブル名と列名を単純に指定する代わりに、SQL クエリを Azure SQL からデータを抽出するために使用しています。 
 
 ```json
 {
@@ -172,7 +168,7 @@ ms.locfileid: "85318877"
         }
 }
 ```
-この場合、クエリの結果は、ソースの “structure” で指定された列に最初にマップされます。 次に、“structure” ソースからの列が、columnMappings で指定した規則によって、シンク"structure"内の列にマップされます。  クエリは 5 つの列、すなわち、ソースの “structure” で指定されている列よりも 2 つ多い列を返しています。
+この場合、クエリの結果は、ソースの "structure" で指定された列に最初にマップされます。 次に、ソース "structure" からの列が、columnMappings で指定した規則によって、シンク "structure" 内の列にマップされます。  たとえばこのクエリは、ソースの "structure" で指定された列よりも 2 つ多い、5 つの列を返しています。
 
 **列マッピングのフロー**
 

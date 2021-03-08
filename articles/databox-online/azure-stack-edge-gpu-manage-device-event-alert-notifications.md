@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: a18937d84b05159626708d577982405d79161a1a
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: c621584fa1dbed06873ac0867e20201e94c4a757
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99499483"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699683"
 ---
 # <a name="manage-device-event-alert-notifications-on-azure-stack-edge-pro-resources"></a>Azure Stack Edge Pro リソースのデバイス イベント アラート通知を管理する
 
@@ -23,7 +23,7 @@ ms.locfileid: "99499483"
 
 アクション ルールを使用して、アラート通知をトリガーまたは非表示にすることができます。 アクション ルールは "*アクション グループ*" に追加されます。これは、リソースまたはリソースのセットに対して異なるコンテキストでトリガーされたアラートに対処する必要があるユーザーに通知するために使用される通知の基本設定のセットです。
 
-アクション ルールの詳細については、「[アクション ルールの構成](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule)」を参照してください。 アクション グループの詳細については、「[Azure portal でのアクション グループの作成および管理](/blob/master/articles/azure-monitor/platform/action-groups)」を参照してください。
+アクション ルールの詳細については、「[アクション ルールの構成](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule)」を参照してください。 アクション グループの詳細については、「[Azure portal でのアクション グループの作成および管理](../azure-monitor/alerts/action-groups.md)」を参照してください。
 
 > [!NOTE]
 > アクション ルール機能はプレビュー段階です。 一部の画面と手順は、プロセスの調整に応じて変わる可能性があります。
@@ -34,7 +34,7 @@ ms.locfileid: "99499483"
 Azure Stack Edge デバイスのアクション ルールを作成するには、Azure portal で次の手順を行います。
 
 > [!NOTE]
-> これらの手順では、アクション グループに通知を送信するアクション ルールを作成します。 通知を非表示にするアクション ルールの作成の詳細については、「[アクション ルールの構成](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule)」を参照してください。
+> これらの手順では、アクション グループに通知を送信するアクション ルールを作成します。 通知を非表示にするアクション ルールの作成の詳細については、「[アクション ルールの構成](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule)」を参照してください。
 
 1. Azure portal で Azure Stack Edge デバイスに移動してから、 **[監視] > [アラート]** の順に移動します。 **[アクションの管理]** を選択します。
 
@@ -72,7 +72,7 @@ Azure Stack Edge デバイスのアクション ルールを作成するには�
 
    2. **[フィルター]** で、適用する各フィルターを追加します。 各フィルターについて、フィルターの種類、**演算子**、および **値** を選択します。
    
-      フィルター オプションの一覧については、「[フィルター条件](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#filter-criteria)」を参照してください。
+      フィルター オプションの一覧については、「[フィルター条件](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#filter-criteria)」を参照してください。
 
       以下のサンプル フィルターは、監視サービスによって Azure Stack Edge リソースに対して発生する重大度レベル 2、3、および 4 のすべてのアラートに適用されます。
 
@@ -85,11 +85,11 @@ Azure Stack Edge デバイスのアクション ルールを作成するには�
    ![通知を送信するアクション ルールを作成するためのアクション グループ オプション](media/azure-stack-edge-gpu-manage-device-event-alert-notifications/new-action-rule-action-group-01.png)
 
    > [!NOTE]
-   > 通知を非表示にするルールを作成するには、 **[抑制]** を選択します。 詳細については、「[アクション ルールの構成](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule)」を参照してください。
+   > 通知を非表示にするルールを作成するには、 **[抑制]** を選択します。 詳細については、「[アクション ルールの構成](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule)」を参照してください。
 
 6. このアクション ルールで使用するアクション グループを選択します。 次に **[選択]** を選択します。 新しいアクション ルールは、選択されたアクション グループの通知の基本設定に追加されます。
 
-   新しいアクション グループを作成する必要がある場合は、 **[+ アクション グループの作成]** を選択し、「[Azure Portal を使用したアクション グループの作成](/azure/azure-monitor/platform/action-groups#create-an-action-group-by-using-the-azure-portal)」の手順に従います。
+   新しいアクション グループを作成する必要がある場合は、 **[+ アクション グループの作成]** を選択し、「[Azure Portal を使用したアクション グループの作成](../azure-monitor/alerts/action-groups.md#create-an-action-group-by-using-the-azure-portal)」の手順に従います。
 
    ![ルールで使用するアクション グループを選択してから、[選択] を選びます。](media/azure-stack-edge-gpu-manage-device-event-alert-notifications/new-action-rule-action-group-02.png)
 
@@ -123,8 +123,8 @@ Azure Stack Edge デバイスのアクション ルールを作成するには�
 
 ## <a name="next-steps"></a>次のステップ
 
-<!-- - See [Create and manage action groups in the Azure portal](/blob/master/articles/azure-monitor/platform/action-groups) for guidance on creating a new action group.
-- See [Configure an action rule](/azure/azure-monitor/platform/alerts-action-rules?tabs=portal#configuring-an-action-rule) for more info about creating action rules that send or suppress alert notifications. -2 bullets referenced above. Making room for local tasks in "Next Steps." --> 
+<!-- - See [Create and manage action groups in the Azure portal](../azure-monitor/alerts/action-groups.md) for guidance on creating a new action group.
+- See [Configure an action rule](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule) for more info about creating action rules that send or suppress alert notifications. -2 bullets referenced above. Making room for local tasks in "Next Steps." --> 
 - デバイス イベント、ハードウェアの状態、およびメトリック グラフの確認に関する情報については、「[Azure Stack Edge Pro を監視する](azure-stack-edge-monitor.md)」を参照してください。 
 - Azure Stack Edge Pro GPU デバイス用の Azure Monitor の最適化に関する情報については、[Azure Monitor の使用](azure-stack-edge-gpu-enable-azure-monitor.md)に関するページを参照してください。
-- 個々のアラートの管理に関する情報については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](/../azure-monitor/platform/alerts-metric.md)」を参照してください。
+- 個々のアラートの管理に関する情報については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../azure-monitor/alerts/alerts-metric.md)」を参照してください。

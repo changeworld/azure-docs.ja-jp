@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 68ff89191a4e9b11c2d84ec016090f76b8ea11b7
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 5b0542bbcc4d1acd37f7eeb333a53fb6826a4eea
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258118"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643594"
 ---
 # <a name="manage-app-consent-policies"></a>アプリ同意ポリシーを管理する
 
@@ -152,4 +152,4 @@ ID が "microsoft-" で始まるアプリ同意ポリシーは、組み込みの
 * [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)
 
 ヘルプを表示したり、質問に対する回答を検索したりするには、以下を参照してください。
-* [Microsoft Q&A の Azure AD](https://docs.microsoft.com/answers/products/)
+* [Microsoft Q&A の Azure AD](/answers/products/)

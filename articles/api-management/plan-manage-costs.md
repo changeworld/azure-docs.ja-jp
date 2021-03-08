@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: api-management
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: e171e642440b7c6c99353169e426a722885f1bcf
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1ebb89ae318e57f1d4e0708a08019515ca43158d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725939"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581331"
 ---
 # <a name="plan-and-manage-costs-for-api-management"></a>API Management のコストを計画および管理する
 
@@ -89,10 +89,10 @@ API Management のコストをコスト分析で表示するには、次のよ�
 
 ### <a name="choose-tier"></a>レベルを選択する
 
-「[Azure API Management レベルの機能に基づく比較](api-management-features.md)」を確認し、シナリオに適したサービス レベルの判断に役立ててください。 さまざまなサービス レベルにおいて、各種のユース ケースに合わせて設計された機能の組み合わせがサポートされており、コストが異なります。 いつでも別のサービス レベルに[アップグレード](upgrade-and-scale.md)できます。
+「[Azure API Management レベルの機能に基づく比較](api-management-features.md)」を確認し、シナリオに適したサービス レベルの判断に役立ててください。 さまざまなサービス レベルにおいて、各種のユース ケースに合わせて設計された機能の組み合わせがサポートされており、コストが異なります。 
 
 * **従量課金** サービス レベルでは、固定費が発生しない、軽量のサーバーレス オプションが提供されます。 特定のしきい値を超える、サービスへの API 呼び出しの数に基づいて課金されます。 また、容量は、サービスの負荷に基づいて自動的にスケーリングされます。
-* その他の API Management レベルでは、月額コストが発生し、評価および運用のワークロードにより高いスループットとより豊富な機能セットが提供されます。
+* **Developer**、**Basic**、**Standard**、**Premium** の各 API Management レベルでは、月額コストが発生し、評価および運用のワークロードにより高いスループットとより豊富な機能セットが提供されます。 いつでも別のサービス レベルに[アップグレード](upgrade-and-scale.md)できます。
 
 ### <a name="scale-using-capacity-units"></a>容量ユニットを使用してスケーリングする
 

@@ -3,12 +3,12 @@ title: Azure VMware Solution 向け vRealize Operations の設定
 description: Azure VMware Solution のプライベート クラウド向けに vRealize Operations を設定する方法について説明します。
 ms.topic: how-to
 ms.date: 01/26/2021
-ms.openlocfilehash: c2470ecde0874b46da1236ca6e99e6b0b3eb990d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3d2617f893c34fde6a154f9f93b5bda520c5a91a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880693"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738431"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Azure VMware Solution 向け vRealize Operations の設定
 
@@ -37,7 +37,7 @@ vRealize Operations Manager は、VMware インフラストラクチャ管理者
 ## <a name="on-premises-vrealize-operations-managing-azure-vmware-solution-deployment"></a>Azure VMware Solution を管理するオンプレミスの vRealize Operations の展開
 ほとんどの顧客には、1 つ以上のオンプレミスの vCenter ドメインを管理するために既存のオンプレミスの vRealize Operations の展開があります。 彼らは、Azure VMware Solution プライベート クラウドをプロビジョニングするときに、Azure ExpressRoute またはレイヤー 3 VPN ソリューションを使用して、オンプレミス環境をプライベート クラウドに接続します。  
 
-:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-1.png" alt-text="Azure VMware Solution を管理するオンプレミスの vRealize Operations の展開"  border="false":::
+:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-1.png" alt-text="Azure VMware Solution を管理するオンプレミスの vRealize Operations の展開" border="false":::
 
 vRealize Operations 機能を Azure VMware Solution プライベート クラウドにまで拡張するには、[プライベート クラウド リソース用のアダプター インスタンス](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.config.doc/GUID-640AD750-301E-4D36-8293-1BFEB67E2600.html)を作成します。 これにより、Azure VMware Solution プライベート クラウドからデータが収集され、オンプレミスの vRealize Operations に取り込まれます。 オンプレミスの vRealize Operations Manager インスタンスは、Azure VMware Solution 上の vCenter および NSX-T Manager に直接接続できます。 必要に応じて、Azure VMware Solution プライベート クラウドに vRealize Operations Remote Collector をデプロイできます。 このコレクターにより、プライベート クラウドから収集したデータが圧縮して暗号化された後、ExpressRoute または VPN ネットワークを経由して、オンプレミスで実行されている vRealize Operations Manager に送信されます。 
 

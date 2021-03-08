@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/02/2020
+ms.date: 02/02/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 228f837a8826612bbbadf2ca8c5ef339ab248397
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 267094ea6a7295a65b93fb7700c97e4280da341d
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99524994"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539113"
 ---
 ::: zone target="docs"
 
@@ -267,6 +267,35 @@ Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 
     ```
 
 問題が発生した場合は、問題の詳細を記載した電子メールを Data Box Operations Asia ([adbo@microsoft.com](mailto:adbo@microsoft.com)) に送ります。件名にはジョブ名を含めます。
+
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
+ 
+
+::: zone-end
+
+## <a name="united-arab-emirates"></a>[アラブ首長国連邦](#tab/in-uae)
+
+1. デバイスを返送する際に使用する元の箱を保管しておきます。
+2. デバイスへのデータ コピーが完了し、 **[発送準備]** の手順が正常に完了したことを確認します。
+3. デバイスのローカル Web UI の **[発送準備]** ページにある参照番号をメモしておきます。
+4. デバイスの電源をオフにし、ケーブルを取り外します。 デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
+6. 返送するデバイスを元の箱に梱包します。
+7. [Azure Data Box Operations](mailto:adbops@microsoft.com) にメールを送って、荷物がデータセンターに届いたときに荷物の識別に使用する ID を入手します。
+8. 印刷された配送先住所ラベルの返送先住所の横に、はっきりと見えるようにこの ID を記載します。  
+9. [DHL Express UAE](https://mydhl.express.dhl/ae/en/home.html#/schedulePickupTab) > 「**Schedule a Pickup (集荷をスケジュールする)** 」にアクセスして、オンラインで集荷を予約します。
+   - デバイスのローカル Web UI の **[発送準備]** ページで確認した参照番号を貨物運送状番号フィールドに入力します。
+   - 予約は、週 6 日 (金曜日と祝日を除く)、午前 9 時から午後 2 時まで受け付けています。
+   - 集荷依頼は、お客様の終業時間の少なくとも 90 分前に行ってください。
+10. DHL 予約ツールで問題が発生した場合は、次のいずれかの方法を使用して DHL に連絡できます。
+    - 04-2924545 に電話します。
+    - 問題の詳細を記載したメールを [ecom.ae@dhl.com](mailto:ecom.ae@dhl.com) に送ります。件名には貨物運送状番号を含めます。
+    - DHL カスタマー サポート (600 567567) に電話します。
 
 ::: zone target="chromeless"
 

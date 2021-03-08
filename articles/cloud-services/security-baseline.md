@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e6a42a39e55e379865332fce8a9aed8dfe78f57b
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 28be34e9323697759b2492d86b968f8e3d47a28e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201333"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572051"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Azure Cloud Services の Azure セキュリティ ベースライン
 
@@ -175,9 +175,9 @@ Azure のプラットフォーム ログであるアクティビティ ログか
 
 診断設定を作成して、Azure Monitor、Azure Event Hubs (Azure の外部に転送するため)、または Azure Storage (アーカイブのため) にアクティビティ ログを送信します。 Azure Cloud Services の重要なリソースが変更されたときに通知アラートが送信されるように、Azure Monitor を構成します。 
 
-- [Azure アクティビティ ログ](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md)
 
-- [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Traffic Manager の監視](../traffic-manager/traffic-manager-monitoring.md)
 
@@ -233,7 +233,7 @@ Azure Cloud Services の可用性、パフォーマンス、障害、および�
 
 - [デプロイ前に Visual Studio で診断を有効にする](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
-- [変更履歴を表示する](../azure-monitor/platform/activity-log.md#view-change-history)
+- [変更履歴を表示する](../azure-monitor/essentials/activity-log.md#view-change-history)
 
 - [Azure クラウド サービス (クラシック) 向けの Application Insights](../azure-monitor/app/cloudservices.md)
 
@@ -465,9 +465,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 さらに、Application Insights を使用すると、Azure Cloud Services アプリの可用性、パフォーマンス、障害、および使用状況を監視できます。 この場合は、Application Insights SDK からのデータと、Azure Cloud Services からの Azure Diagnostics のデータが組み合わせて使用されます。
 
-- [Azure Monitor を使用してクラシック メトリック アラートを作成、表示、および管理する](../azure-monitor/platform/alerts-classic-portal.md)
+- [Azure Monitor を使用してクラシック メトリック アラートを作成、表示、および管理する](../azure-monitor/alerts/alerts-classic-portal.md)
 
-- [メトリック アラートの概要](../azure-monitor/platform/alerts-metric-overview.md) 
+- [メトリック アラートの概要](../azure-monitor/alerts/alerts-metric-overview.md) 
 
 - [Azure クラウド サービス (クラシック) 向けの Application Insights](../azure-monitor/app/cloudservices.md)
 

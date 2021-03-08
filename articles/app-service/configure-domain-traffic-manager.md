@@ -5,12 +5,12 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: e4d4b7e01eb5799bee604c05e1660a7a45188763
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 2910ea3f896ba3920126737965ca9c9dbabcfeb3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223342"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709106"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Traffic Manager 統合を使用して Azure App Service 内のカスタム ドメイン名を構成する
 
@@ -75,7 +75,7 @@ App Service アプリがサポートされている価格レベルになると�
 
 ### <a name="what-about-root-domains"></a>ルート ドメインについて
 
-Traffic Manager では CNAME レコードを使用したカスタム ドメイン マッピングのみがサポートされており、DNS 標準では CNAME レコードがルート ドメインのマッピング (**contoso.com** など) にサポートされていないため、Traffic Manager はルート ドメインへのマッピングをサポートしていません。 この問題を回避するには、アプリ レベルで URL リダイレクトを使用します。 たとえば ASP.NET Core では、[URL の書き換え](/aspnet/core/fundamentals/url-rewriting)を使用できます。 次に、Traffic Manager を使用してサブドメインを負荷分散します (**www.contoso.com**)。 別の方法として、[Azure Traffic Manager プロファイルを参照するためのドメイン名の頂点に対するエイリアス レコードを作成する](https://docs.microsoft.com/azure/dns/tutorial-alias-tm)ことができます。 一例として contoso.com があります。 サービスのリダイレクトを使用する代わりに、ゾーンから直接 Traffic Manager プロファイルを参照するように Azure DNS を構成できます。 
+Traffic Manager では CNAME レコードを使用したカスタム ドメイン マッピングのみがサポートされており、DNS 標準では CNAME レコードがルート ドメインのマッピング (**contoso.com** など) にサポートされていないため、Traffic Manager はルート ドメインへのマッピングをサポートしていません。 この問題を回避するには、アプリ レベルで URL リダイレクトを使用します。 たとえば ASP.NET Core では、[URL の書き換え](/aspnet/core/fundamentals/url-rewriting)を使用できます。 次に、Traffic Manager を使用してサブドメインを負荷分散します (**www.contoso.com**)。 別の方法として、[Azure Traffic Manager プロファイルを参照するためのドメイン名の頂点に対するエイリアス レコードを作成する](../dns/tutorial-alias-tm.md)ことができます。 一例として contoso.com があります。 サービスのリダイレクトを使用する代わりに、ゾーンから直接 Traffic Manager プロファイルを参照するように Azure DNS を構成できます。 
 
 高可用性シナリオでは、ルート ドメインから各アプリのコピーの IP アドレスにポイントする複数の *A レコード* を作成することによって、Traffic Manager を使用せずに負荷分散 DNS セットアップを実装できます。 次に、[同じルート ドメインをすべてのアプリのコピーにマップします](app-service-web-tutorial-custom-domain.md#map-an-a-record)。 同じドメイン名を同じリージョン内の 2 つの異なるアプリにマップすることはできないため、このセットアップは、アプリのコピーが異なるリージョンにある場合にのみ機能します。
 

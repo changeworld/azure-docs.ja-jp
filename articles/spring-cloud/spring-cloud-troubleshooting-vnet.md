@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 8491eb02fd61f291904d57990b3785ce93239964
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b2369a6380c7b74302d32366d0604fca616fc3ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935259"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698231"
 ---
 # <a name="troubleshooting-azure-spring-cloud-in-virtual-networks"></a>仮想ネットワークでの Azure Spring Cloud のトラブルシューティング
 
@@ -24,20 +24,20 @@ Azure Spring Cloud のインスタンスを作成するには、仮想ネット�
 
 Azure portal を使用して Azure Spring Cloud サービス インスタンスを設定すると、Azure portal によってアクセス許可が検証されます。
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用して Azure Spring Cloud サービス インスタンスを設定するには、次のことを確認します。
+[Azure CLI](/cli/azure/get-started-with-azure-cli) を使用して Azure Spring Cloud サービス インスタンスを設定するには、次のことを確認します。
 
 - サブスクリプションがアクティブである。
 - 場所が Azure Spring Cloud でサポートされている。
 - インスタンスのリソース グループが既に作成されている。
 - リソース名が、名前付け規則に準拠している 使用できる文字は小文字、数字、およびハイフンのみです。 先頭の文字は英字にする必要があります。 末尾の文字は、文字または数字にする必要があります。 値は 2 文字以上 32 文字以下にする必要があります。
 
-Resource Manager テンプレートを使用して Azure Spring Cloud サービス インスタンスを設定するには、[Azure Resource Manager テンプレートの構造と構文の詳細](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)に関する記事を参照してください。
+Resource Manager テンプレートを使用して Azure Spring Cloud サービス インスタンスを設定するには、[Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/templates/template-syntax.md)に関する記事を参照してください。
 
 ### <a name="common-creation-issues"></a>作成に関する一般的な問題
 
 | エラー メッセージ | 修正方法 |
 |------|------|
-| Azure Spring Cloud によって作成されたリソースは、ポリシーによって許可されていません。 | ネットワーク リソースは、Azure Spring Cloud を独自の仮想ネットワークにデプロイするときに作成されます。 これらの作成をブロックする [Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview) が定義されているかどうかを確認してください。 作成できなかったリソースがエラー メッセージに表示されます。 |
+| Azure Spring Cloud によって作成されたリソースは、ポリシーによって許可されていません。 | ネットワーク リソースは、Azure Spring Cloud を独自の仮想ネットワークにデプロイするときに作成されます。 これらの作成をブロックする [Azure Policy](../governance/policy/overview.md) が定義されているかどうかを確認してください。 作成できなかったリソースがエラー メッセージに表示されます。 |
 | サブネットにルート テーブルが関連付けられている場合は、関連付けを解除してください。 | 現在、既存のルート テーブルに関連付けられているサブネットに Azure Spring Cloud をデプロイすることはサポートされていません。関連付けを解除してから、もう一度お試しください。 |
 | 必要なトラフィックが許可リストに登録されていません。 | 必要なトラフィックを許可リストに登録するには、「[VNET での Azure Spring Cloud の実行に関するお客様の責任](spring-cloud-vnet-customer-responsibilities.md)」を参照してください。 |
 
@@ -47,4 +47,4 @@ Resource Manager テンプレートを使用して Azure Spring Cloud サービ�
 
 ## <a name="other-issues"></a>その他の問題
 
-[Azure Spring Cloud に関する一般的な問題のトラブルシューティング](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-troubleshoot)。
+[Azure Spring Cloud に関する一般的な問題のトラブルシューティング](./spring-cloud-troubleshoot.md)。

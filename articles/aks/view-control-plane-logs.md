@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で Kubernetes コントロール �
 services: container-service
 ms.topic: article
 ms.date: 01/27/2020
-ms.openlocfilehash: 7fce3db6f3636a5ee984c8be44f877c5636f4e16
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4027b2ca66b4d4319f7df347df6d671e6d48b772
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947073"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735133"
 ---
 # <a name="enable-and-review-kubernetes-control-plane-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Kubernetes コントロール プレーンのログを有効にして表示する
 
@@ -171,8 +171,8 @@ AKS では、次のイベントがログに記録されます。
 <!-- LINKS - internal -->
 [cli-quickstart]: kubernetes-walkthrough.md
 [portal-quickstart]: kubernetes-walkthrough-portal.md
-[log-analytics-overview]: ../azure-monitor/log-query/log-query-overview.md
-[analyze-log-analytics]: ../azure-monitor/log-query/log-analytics-tutorial.md
+[log-analytics-overview]: ../azure-monitor/logs/log-query-overview.md
+[analyze-log-analytics]: ../azure-monitor/logs/log-analytics-tutorial.md
 [kubelet-logs]: kubelet-logs.md
 [aks-ssh]: ssh.md
 [az-feature-register]: /cli/azure/feature#az-feature-register

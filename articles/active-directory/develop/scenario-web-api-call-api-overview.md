@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 03/03/2021
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a66f0a2de1d8239baffbe53dfb5d6f2dd275d448
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 376c61f6a5ba94492cac26950465c61e3d8fe4ed
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756347"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038562"
 ---
 # <a name="scenario-a-web-api-that-calls-web-apis"></a>シナリオ:Web API を呼び出す Web API
 
@@ -30,9 +30,7 @@ Web API を呼び出す Web API を構築するために知っておくべきこ
 ## <a name="overview"></a>概要
 
 - Web、デスクトップ、モバイル、またはシングルページ アプリケーション クライアント (付属図に示されていない) は、保護された Web API を呼び出して、"Authorization" HTTP ヘッダーに JSON Web トークン (JWT) ベアラー トークンを提供します。
-- 保護された Web API はトークンを検証し、Microsoft Authentication Library (MSAL) の `AcquireTokenOnBehalfOf` メソッドを使用して Azure Active Directory (Azure AD) から別のトークンを要求することで、保護された Web API がユーザーに代わって 2 つ目の Web API (ダウンストリーム Web API) を呼び出すことができるようにします。
-- また、保護された Web API は、後で `AcquireTokenSilent` を呼び出して、同じユーザーに代わって他のダウンストリーム API のトークンを要求することもできます。 必要な場合は `AcquireTokenSilent` でトークンを更新します。
-
+- 保護された Web API はトークンを検証し、Microsoft Authentication Library (MSAL) の `AcquireTokenOnBehalfOf` メソッドを使用して Azure Active Directory (Azure AD) から別のトークンを要求することで、保護された Web API がユーザーに代わって 2 つ目の Web API (ダウンストリーム Web API) を呼び出すことができるようにします。 必要な場合は `AcquireTokenOnBehalfOf` でトークンを更新します。
 ![Web API を呼び出す Web API の図](media/scenarios/web-api.svg)
 
 ## <a name="specifics"></a>詳細

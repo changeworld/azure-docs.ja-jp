@@ -4,12 +4,12 @@ description: Azure ポータルで、クラウド内で大規模な並列ワー�
 ms.topic: how-to
 ms.date: 01/26/2021
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 943fd145dbd4964e0d43d91f726ea5a79fda59de
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: bd9dd9b6d6d3a8d6938427b83528746ae5d09318
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896006"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368508"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure Portal で Batch アカウントを作成する
 
@@ -67,6 +67,9 @@ Batch アカウントに適用される [リソース クォータ](batch-quota-
 ## <a name="additional-configuration-for-user-subscription-mode"></a>ユーザー サブスクリプション モードのための追加構成
 
 ユーザー サブスクリプション モードで Batch アカウントを作成することを選択した場合は、アカウントを作成する前に別途、次の手順を実行してください。
+
+> [!IMPORTANT]
+> ユーザー サブスクリプション モードで Batch アカウントを作成するユーザーには、Batch アカウントが作成されるサブスクリプションにおいて共同作成者または所有者ロールが割り当てられている必要があります。
 
 ### <a name="allow-azure-batch-to-access-the-subscription-one-time-operation"></a>Azure Batch によるサブスクリプションへのアクセスを許可する (1 回限りの操作)
 

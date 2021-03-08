@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して Presto からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Presto のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: af05983432c0f76a88ff82a3638d86a971ef77f5
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 33e521d418c219be8eb85b79a0e07d999edb1b08
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680700"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374271"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory"></a>Azure Data Factory を使用して Presto からデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

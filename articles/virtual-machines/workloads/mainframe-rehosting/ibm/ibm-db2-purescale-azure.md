@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 711c1ba49ad0f347d30f2c8c40352ed95c1fd057
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 29150f229f1bd6adbbe6a335fdb91a44f3a2345b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221478"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675679"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 上の IBM DB2 pureScale
 
@@ -96,9 +96,9 @@ DB2 pureScale では、あらゆるものを共有するアーキテクチャを
 
 IBM は、DB2 pureScale クラスター内のすべてのメンバーに対して InfiniBand ネットワークを推奨しています。 DB2 pureScale では、利用可能な場合は CF にリモート ダイレクト メモリ アクセス (RDMA) も使用されます。
 
-セットアップ中に、Azure [リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)を作成してすべての仮想マシンを含めます。 一般には、リソースの有効期間や管理者に基づいて、リソースをグループ化します。 このアーキテクチャ内の仮想マシンには、[高速ネットワーク](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)が必要です。 これは、1 つの仮想マシンに対してシングルルート I/O 仮想化 (SR-IOV) を介して、一貫性のある超低ネットワーク待ち時間を提供する Azure 機能です。
+セットアップ中に、Azure [リソース グループ](../../../../azure-resource-manager/management/overview.md)を作成してすべての仮想マシンを含めます。 一般には、リソースの有効期間や管理者に基づいて、リソースをグループ化します。 このアーキテクチャ内の仮想マシンには、[高速ネットワーク](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)が必要です。 これは、1 つの仮想マシンに対してシングルルート I/O 仮想化 (SR-IOV) を介して、一貫性のある超低ネットワーク待ち時間を提供する Azure 機能です。
 
-どの Azure 仮想マシンも、メイン、Gluster FS フロントエンド (gfsfe)、Gluster FS バックエンド (bfsbe)、DB2 pureScale (db2be)、DB2 pureScale フロントエンド (db2fe) というサブネットを含む仮想ネットワークにデプロイされます。 また、インストール スクリプトは、メイン サブネットの仮想マシン上にプライマリ [NIC](https://docs.microsoft.com/azure/virtual-machines/windows/multiple-nics) を作成します。
+どの Azure 仮想マシンも、メイン、Gluster FS フロントエンド (gfsfe)、Gluster FS バックエンド (bfsbe)、DB2 pureScale (db2be)、DB2 pureScale フロントエンド (db2fe) というサブネットを含む仮想ネットワークにデプロイされます。 また、インストール スクリプトは、メイン サブネットの仮想マシン上にプライマリ [NIC](../../../windows/multiple-nics.md) を作成します。
 
 仮想ネットワーク内のネットワーク トラフィックを制限したり、サブネットを分離したりするには、[ネットワーク セキュリティ グループ](../../../../virtual-network/virtual-network-vnet-plan-design-arm.md)を使用します。
 

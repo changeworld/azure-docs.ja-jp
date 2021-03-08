@@ -6,19 +6,19 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/30/2020
-ms.openlocfilehash: 8257be28344ac7a03738c80a003c1229282ae305
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.date: 02/04/2021
+ms.openlocfilehash: 753f201fbde5d9e7100b6e257f8dc79e4462d7b6
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145712"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584925"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>マッピング データ フローで式を構築する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-マッピング データ フローでは、多くの変換プロパティが式として入力されます。 これらの式は、実行時に Spark データ型に評価される列の値、パラメーター、関数、演算子、リテラルで構成されます。 マッピング データ フローには、これらの式の構築を支援する、 **式ビルダー** と呼ばれる専用のエクスペリエンスがあります。 [IntelliSense](/visualstudio/ide/using-intellisense) のコード補完を利用して、強調表示、構文チェック、オートコンプリートを行うことで、式ビルダーはデータ フローを簡単に構築できるように設計されています。 この記事では、式ビルダーを使用してビジネス ロジックを効率よく構築する方法について説明します。
+マッピング データ フローでは、多くの変換プロパティが式として入力されます。 これらの式は、実行時に Spark データ型に評価される列の値、パラメーター、関数、演算子、リテラルで構成されます。 マッピング データ フローには、これらの式の構築を支援する、**式ビルダー** と呼ばれる専用のエクスペリエンスがあります。 [IntelliSense](/visualstudio/ide/using-intellisense) のコード補完を利用して、強調表示、構文チェック、オートコンプリートを行うことで、式ビルダーはデータ フローを簡単に構築できるように設計されています。 この記事では、式ビルダーを使用してビジネス ロジックを効率よく構築する方法について説明します。
 
 ![式ビルダー](media/data-flow/expresion-builder.png "式ビルダー")
 
@@ -106,6 +106,9 @@ ms.locfileid: "93145712"
 * ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
 
 * ```"{:playerName} is a {:playerRating} player"```
+
+> [!NOTE]
+> SQL ソース クエリで文字列補間構文を使用する場合、クエリ文字列は、'/n' を含まない 1 行にする必要があります。
 
 ## <a name="commenting-expressions"></a>式のコメント化
 

@@ -3,14 +3,14 @@ title: Azure Key Vault とマネージド ID を使用して Azure Batch アカ�
 description: カスタマー マネージド キーを使用して Batch データを暗号化する方法について説明します。
 author: pkshultz
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/11/2021
 ms.author: peshultz
-ms.openlocfilehash: 01dc21f067b03ad8e07a05a18aa6312ed7f7189e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: d3f10436b95aaeb5eb35a873c2a3862c1492bd47
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789415"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385066"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Azure Key Vault とマネージド ID を使用して Azure Batch アカウントのカスタマー マネージド キーを構成する
 
@@ -21,11 +21,6 @@ ms.locfileid: "98789415"
 マネージド ID には、[*システム割り当て* と *ユーザー割り当て*](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)の 2 種類があります。
 
 システム割り当てマネージド ID を使用して Batch アカウントを作成するか、カスタマー マネージド キーへのアクセス権を持つ、ユーザー割り当てマネージド ID を個別に作成できます。 [比較表](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)を確認して違いを理解し、ソリューションに最適なオプションを検討してください。 たとえば、同じマネージド ID を使用して複数の Azure リソースにアクセスする場合は、ユーザー割り当てマネージド ID が必要になります。 それ以外の場合は、Batch アカウントに関連付けられているシステム割り当てマネージド ID で十分である可能性があります。 ユーザー割り当てマネージド ID を使用すると、[次の例](#create-a-batch-account-with-user-assigned-managed-identity-and-customer-managed-keys)に示すように、Batch アカウントの作成時にカスタマー マネージド キーを適用するオプションも提供されます。
-
-> [!IMPORTANT]
-> 現在、Azure Batch でのカスタマー マネージド キーのサポートは、西ヨーロッパ、北ヨーロッパ、スイス北部、米国中部、米国中南部、米国中西部、米国東部、米国東部 2、米国西部 2、US Gov バージニア、US Gov アリゾナの各リージョンでパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="create-a-batch-account-with-system-assigned-managed-identity"></a>システム割り当てマネージド ID を使用して Batch アカウントを作成する
 
@@ -68,7 +63,7 @@ az batch account show \
 ```
 
 > [!NOTE]
-> Batch アカウントで作成されたシステム割り当てマネージド ID は、キー コンテナーからカスタマー マネージド キーを取得するためにのみ使用されます。 この ID は Batch プールでは使用できません。
+> Batch アカウントで作成されたシステム割り当てマネージド ID は、キー コンテナーからカスタマー マネージド キーを取得するためにのみ使用されます。 この ID は Batch プールでは使用できません。 プールでユーザー割り当てマネージド ID を使用するには、「[Batch プールでマネージド ID を構成する](managed-identity-pools.md)」を参照してください。
 
 ## <a name="create-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を作成する
 
@@ -202,7 +197,7 @@ az batch account set \
 - **アクセスを復元した後、Batch アカウントが再び動作するまでどれくらいかかりますか?** アクセスが復元されてから、アカウントに再びアクセスできるようになるまでに、最大で 10 分かかることがあります。
 - **Batch アカウントが使用できない間、リソースはどうなりますか?** カスタマー マネージド キーへの Batch アクセスが失われたときに実行されていたプールは、引き続き実行されます。 ただし、ノードは使用できない状態に遷移し、タスクの実行は停止されます (キューに登録されます)。 アクセスが復元されると、ノードは再び使用可能になり、タスクは再起動されます。
 - **この暗号化メカニズムは、Batch プール内の VM ディスクに適用されますか?** いいえ。 クラウド サービス構成プールでは、OS と一時ディスクに暗号化は適用されません。 仮想マシン構成プールの場合、OS ディスクと指定したすべてのデータ ディスクは、既定では Microsoft プラットフォーム マネージド キーで暗号化されます。 現時点では、これらのディスクに独自のキーを指定することはできません。 Batch プールの VM の一時ディスクを Microsoft プラットフォーム マネージド キーで暗号化するには、[仮想マシン構成](/rest/api/batchservice/pool/add#virtualmachineconfiguration)プールで [diskEncryptionConfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration) プロパティを有効にする必要があります。 機密性の高い環境では、一時ディスクの暗号化を有効にし、OS ディスクとデータ ディスクには機密データを格納しないようにすることをお勧めします。 詳細については、「[ディスク暗号化が有効になっているプールを作成する](./disk-encryption.md)」をご覧ください
-- **Batch アカウントのシステム割り当てマネージド ID は、コンピューティング ノードで使用できますか?** いいえ。 システム割り当てマネージド ID は、現在、カスタマー マネージド キーの Azure Key Vault にアクセスするためにのみ使用されています。
+- **Batch アカウントのシステム割り当てマネージド ID は、コンピューティング ノードで使用できますか?** いいえ。 システム割り当てマネージド ID は、現在、カスタマー マネージド キーの Azure Key Vault にアクセスするためにのみ使用されています。 計算ノードでユーザー割り当てマネージド ID を使用するには、「[Batch プールでマネージド ID を構成する](managed-identity-pools.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

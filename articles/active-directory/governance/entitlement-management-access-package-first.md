@@ -1,6 +1,6 @@
 ---
-title: チュートリアル - アクセス パッケージを作成する - Azure AD エンタイトルメント管理
-description: Azure Active Directory エンタイトルメント管理で最初のアクセス パッケージを作成する方法に関するステップ バイ ステップのチュートリアル。
+title: チュートリアル - Azure AD エンタイトルメント管理でリソースへのアクセスを管理する
+description: Azure Active Directory エンタイトルメント管理で Azure portal を使用して、最初のアクセス パッケージを作成する方法に関するステップ バイ ステップのチュートリアル。
 services: active-directory
 documentationCenter: ''
 author: ajburnle
@@ -16,14 +16,14 @@ ms.date: 09/30/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2625b1e0ccc4c3129f412eff144f47d9dc97b961
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1adbc653c8b698cb7b439b54b0a77d2b8cd4042a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937896"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547402"
 ---
-# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>チュートリアル:Azure AD エンタイトルメント管理で最初のアクセス パッケージを作成する
+# <a name="tutorial-manage-access-to-resources-in-azure-ad-entitlement-management"></a>チュートリアル:Azure AD エンタイトルメント管理でリソースへのアクセスを管理する
 
 グループ、アプリケーション、サイトなど、従業員が必要とするすべてのリソースに対するアクセスを管理することは、組織にとって重要な機能の 1 つです。 生産性を維持するために必要とされる適切なレベルのアクセスを従業員に付与し、不要になったアクセスは削除する必要があります。
 
@@ -41,8 +41,6 @@ ms.locfileid: "98937896"
 最初のアクセス パッケージの作成など、Azure Active Directory のエンタイトルメント管理をデプロイするプロセスのステップバイステップのデモンストレーションについては、次のビデオを参照してください。
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
-
-Microsoft Graph を使用して、プログラムでアクセス パッケージを作成することもできます。 プログラムでアクセス パッケージを作成する方法については、[エンタイトルメント管理 API](/graph/tutorial-access-package-api?view=graph-rest-beta) に関するチュートリアルをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 

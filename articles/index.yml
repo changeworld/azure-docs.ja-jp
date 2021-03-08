@@ -13,12 +13,12 @@ metadata:
   ms.date: 01/29/2021
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 2f792ffb95323444d8666c4c676025995f5db438
-  ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+  ms.openlocfilehash: dbc16f849dd8e0f97c700905fac046edbd0f0c70
+  ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/09/2021
-  ms.locfileid: "99979472"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102179121"
 highlightedContent:
   items:
   - title: Azure 開発者向けファースト ステップ ガイド
@@ -36,6 +36,12 @@ highlightedContent:
 productDirectory:
   title: Azure 製品を参照する
   items:
+  - title: Azure Percept
+    summary: シリコンからサービスへのエッジ インテリジェンス
+    imageSrc: ./media/index/azure-percept.svg
+    azureCategories:
+    - iot
+    url: azure-percept/index.yml
   - title: Anomaly Detector
     summary: アプリに異常検出機能を簡単に追加できます
     imageSrc: https://static.docs.com/ui/media/product/azure/anomaly-detector.svg
@@ -174,7 +180,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/custom-vision.svg
     azureCategories:
     - ai-machine-learning
-    url: cognitive-services/Custom-Vision-Service/index.yml
+    url: cognitive-services/custom-vision-service/index.yml
   - title: データ サイエンス仮想マシン
     summary: AI 開発用の包括的な構成済み環境
     imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
@@ -204,7 +210,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
     - ai-machine-learning
-    url: cognitive-services/ink-recognizer/index.yml
+    url: /previous-versions/azure/cognitive-services/Ink-Recognizer/
   - title: Kinect DK
     summary: 高度な AI センサーと開発者キットを使用して、コンピューターによる視覚と音声のモデルを構築します
     imageSrc: ./media/index/kinect-viewer.svg
@@ -408,6 +414,12 @@ productDirectory:
     - databases
     - iot
     url: cosmos-db/index.yml
+  - title: Azure Managed Instance for Apache Cassandra
+    summary: マネージド オープンソースの Apache Cassandra データセンターのデプロイとスケーリングを自動化する
+    imageSrc: ./media/index/managed-instance-apache-cassandra.svg
+    azureCategories:
+    - databases
+    url: managed-instance-apache-cassandra/index.yml
   - title: Logic Apps
     summary: コードを記述せずに、クラウド全体でデータのアクセスと使用を自動化
     imageSrc: https://static.docs.com/ui/media/product/azure/logic-apps.svg
@@ -507,7 +519,7 @@ productDirectory:
     azureCategories:
     - featured
     - compute
-    url: virtual-machines/linux/index.yml
+    url: ./virtual-machines/index.yml
   - title: Service Fabric
     summary: マイクロサービスを開発し、Windows または Linux のコンテナーを調整
     imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
@@ -557,7 +569,7 @@ productDirectory:
     azureCategories:
     - featured
     - compute
-    url: virtual-machines/windows/index.yml
+    url: ./virtual-machines/index.yml
   - title: Azure Dev Spaces
     summary: Azure AKS でのマイクロサービス アプリのテストと反復開発
     imageSrc: ./media/index/AzureDevSpaceController_50x.svg
@@ -793,7 +805,7 @@ productDirectory:
     azureCategories:
     - hybrid
     url: /azure-stack/
-  - title: Azure Stack HCI (プレビュー)
+  - title: Azure Stack HCI
     summary: ハイパーコンバージド インフラストラクチャと Azure およびハイブリッド サービスを統合して、オンプレミスで仮想ワークロードを実行
     imageSrc: https://static.docs.com/ui/media/product/azure/stack-hci.svg
     azureCategories:
@@ -867,7 +879,7 @@ productDirectory:
     azureCategories:
     - integration
     url: service-bus-messaging/index.yml
-  - title: Azure Digital Twins (プレビュー)
+  - title: Azure Digital Twins
     summary: 次世代の IoT 空間インテリジェンス ソリューションを構築
     imageSrc: https://static.docs.com/ui/media/product/azure/digital-twins.svg
     azureCategories:
@@ -1192,6 +1204,12 @@ productDirectory:
     azureCategories:
     - networking
     url: load-balancer/index.yml
+  - title: Azure Route Server (プレビュー)
+    summary: ネットワーク アプライアンスの操作管理を簡素化する
+    imageSrc: ./media/index/azure-route-server.svg
+    azureCategories:
+    - networking
+    url: route-server/index.yml
   - title: Virtual Network
     summary: プライベート ネットワークをプロビジョニングし、オプションでオンプレミスのデータセンターに接続
     imageSrc: https://static.docs.com/ui/media/product/azure/virtual-networks.svg

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 627196c0a76f1de23f7e5421c47a33356a73967f
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: dacc9ecc28ffa482b60d1e48735fe3620b5b7558
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709442"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363068"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Azure Stack Edge Pro R の安全性のための指示
 
@@ -37,7 +37,7 @@ Azure Stack Edge Pro R Edge デバイスを設定して実行する際に表示�
 | アイコン | 説明 |
 |:--- |:--- |
 | ![最初にすべての手順をお読みください](./media/azure-stack-edge-pro-r-safety/icon-safety-read-all-instructions.png) | 最初にすべての手順をお読みください |
-| ![危険シンボル](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | 危険シンボル |
+| ![注意アイコン](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **注意:** | 重要だが、危険に関連するものではない情報を示します。 || ![危険シンボル](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | 危険シンボル |
 | ![傾け注意を示すアイコン](./media/azure-stack-edge-pro-r-safety/icon-safety-tip-hazard.png)  | 転倒注意|
 | ![大きな重量を示すアイコン](./media/azure-stack-edge-pro-r-safety/icon-safety-heavy-weight.png)  | 重量物の危険|
 | ![感電を示すアイコン](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) | 感電の危険 |
@@ -88,6 +88,7 @@ Azure Stack Edge Pro R Edge デバイスを設定して実行する際に表示�
   * 電源コードにアクセスするための十分な空間がある。これは、電源コードを製品の主電源を切断するのに使用するためです。
 * この製品には、イーサネット ケーブルは付属していません。 電磁干渉を減らすため、Cat 6 シールド付きツイストペア (STP) ケーブルを使用することをお勧めします。
 * 機器の周囲の空気が十分に循環するような作業場に機器を設置してください。機器が動作している間は、フロント カバーとバック カバーが完全に取り外されていることを確認してください。
+* この製品には、イーサネット ケーブルは付属していません。 電磁干渉を減らすため、Cat 6 シールド付き (STP) ケーブルを使用することが推奨されます。
 * 導電性の汚染物質がない温度管理された場所に機器を設置し、機器の周囲の空気が適切に循環できるようにします。
 * 機器を液体の近くや湿度の高い環境に置かないでください。
 * 液体や異物がシステム内に入らないようにしてください。 システムの上や近くに飲料やその他の液体容器を置かないでください。
@@ -133,6 +134,7 @@ Azure Stack Edge Pro R Edge デバイスを設定して実行する際に表示�
 
 * 無停電電源装置 (UPS) のないシステムの場合は、すべての AC 電源コードを抜いて、機器から AC 電源を完全に取り外します。
 * UPS が搭載されているシステムの場合は、すべての AC 電源コードを抜き、UPS 電源スイッチを使用してシステムの電源を切ります。 UPS には、危険なレベルの AC および DC 電圧が含まれています。
+* システムに UPS が含まれている場合、UPS にはシールドされた入力電源ケーブルが付属しています。 シールドされた入力電源ケーブルを使用する必要があります。コードを交換したり、変更したりしないでください。
 
 ![警告のアイコン](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
 ![感電のアイコン](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) **警告:**
@@ -207,23 +209,24 @@ A device that has a UPS installed is designed to operate in the following enviro
 > Maximum corrosive contaminant levels measured at &lt;/= 50% relative humidity. --> 
 
 
-> ![通知のアイコン](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **通知:** &nbsp;Microsoft から明示的な承認を受けずに機器を変更すると、機器を操作するユーザーの権限が無効になる可能性があります。
+> ![通知のアイコン - 2](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **通知:** &nbsp;Microsoft から明示的な承認を受けずに機器を変更すると、機器を操作するユーザーの権限が無効になる可能性があります。
 
-カナダと米国の場合:
+#### <a name="canada-and-usa"></a>カナダと米国の場合:
 
-注意:この装置は、FCC 規則のパート 15 に従ってテストされ、クラス A デジタル デバイスの制限に準拠することが確認されています。 これらの制限は、装置が商用環境で使用されるときに、有害な干渉に対して適切に保護されるように設計されています。 この装置は、無線周波数エネルギーを生成および使用し、また放射する場合があり、取扱説明書に従って設置および使用しないと、無線通信に有害な干渉を及ぼす可能性があります。 住宅地域でこの装置を動作させると、有害な干渉が発生する可能性があり、その場合はユーザーが自費で干渉を是正する必要があります。
+> ![通知のアイコン - 2](./media/azure-stack-edge-pro-r-safety/icon-safety-notice.png) **通知:** &nbsp;この装置は、FCC 規則のパート 15 に従ってテストされ、クラス A デジタル デバイスの制限に準拠することが確認されています。 これらの制限は、装置が商用環境で使用されるときに、有害な干渉に対して適切に保護されるように設計されています。 この装置は、無線周波数エネルギーを生成および使用し、また放射する場合があり、取扱説明書に従って設置および使用しないと、無線通信に有害な干渉を及ぼす可能性があります。 住宅地域でこの装置を動作させると、有害な干渉が発生する可能性があり、その場合はユーザーが自費で干渉を是正する必要があります。
 
 このデバイスは、FCC 規則のパート 15 およびカナダ産業省ライセンス適用外 RSS 標準に準拠しています。 動作は次の 2 つの条件に従います:(1) このデバイスは有害な干渉の原因にならない。(2) このデバイスは、デバイスの望ましくない動作を引き起こす可能性のある障害を含む、受信した任意の干渉を受け入れる必要がある。
 
 ![規制情報に関する警告 1](./media/azure-stack-edge-mini-r-safety/regulatory-information-1.png)
 
 
-CAN ICES-3(A)/NMB-3(A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
-米国:(800) 426-9400 カナダ:(800) 933-4750
+CAN ICES-3(A)/NMB-3(A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA United States:(800) 426-9400 カナダ:(800) 933-4750
 
-欧州連合:EU 適合宣言のコピーを要求します。 
+#### <a name="european-union"></a>欧州連合:
 
-![警告アイコン](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
+EU 適合宣言のコピーを要求します。 [CSI_Compliance@microsoft.com](mailto:CSI_Compliance@microsoft.com) に電子メールを送信します。
+
+![警告アイコン](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) **警告!**
 
 これは、クラス A 製品です。 国内環境では、この製品は無線干渉を起こす可能性があり、その場合はユーザーが適切な対策を講じることが必要な場合があります。
 
@@ -236,7 +239,6 @@ CAN ICES-3(A)/NMB-3(A) Microsoft Corporation, One Microsoft Way, Redmond, WA 980
 この製品には、コイン電池バッテリが含まれています。
 
 Microsoft Ireland Sandyford Ind Est Dublin D18 KX32 IRL 電話番号: +353 1 295 3826 ファックス番号: +353 1 706 4110
-
 
 
 ## <a name="next-steps"></a>次の手順

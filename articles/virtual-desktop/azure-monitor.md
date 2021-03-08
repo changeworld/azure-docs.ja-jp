@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e0be6decf28fcbb2edacd5019f567d26403b1f31
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e9da1071686dafa003a5a49d0864b77644493344
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465711"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594461"
 ---
 # <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment-preview"></a>Windows Virtual Desktop 向けの Azure Monitor を使用してデプロイを監視する (プレビュー)
 
@@ -98,7 +98,7 @@ Windows Virtual Desktop 環境のすべてのオブジェクトに対して診�
 
 ## <a name="configure-log-analytics"></a>Log Analytics の構成
 
-Windows Virtual Desktop 向けの Azure Monitor の使用を開始するには、監視する環境からデータを収集してブックに提供するために、少なくとも 1 つの Log Analytics ワークスペースが必要です。 それが既に設定されている場合は、「[パフォーマンス カウンターを設定する](#set-up-performance-counters)」に進みます。 Windows Virtual Desktop 環境を含む Azure サブスクリプションに対して新しい Log Analytics ワークスペースを設定するには、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)」をご覧ください。
+Windows Virtual Desktop 向けの Azure Monitor の使用を開始するには、監視する環境からデータを収集してブックに提供するために、少なくとも 1 つの Log Analytics ワークスペースが必要です。 それが既に設定されている場合は、「[パフォーマンス カウンターを設定する](#set-up-performance-counters)」に進みます。 Windows Virtual Desktop 環境を含む Azure サブスクリプションに対して新しい Log Analytics ワークスペースを設定するには、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/logs/quick-create-workspace.md)」をご覧ください。
 
 >[!NOTE]
 >Log Analytics に対する通常のデータ ストレージ料金が適用されます。 まず、従量課金制モデルを選択し、より多くのデータを取得するよう、デプロイのスケーリングするときに調整することをお勧めします。 詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」をご覧ください。
@@ -107,7 +107,7 @@ Windows Virtual Desktop 向けの Azure Monitor の使用を開始するには�
 
 Log Analytics ワークスペースの対応するサンプル間隔で、コレクションの特定のパフォーマンス カウンターを有効にする必要があります。 これらのパフォーマンス カウンターは、Windows Virtual Desktop を監視するために必要な唯一のカウンターです。 コストを節約するために、他のすべてを無効にできます。
 
-既にパフォーマンス カウンターが有効になっていて、それらを削除する場合は、「[パフォーマンス カウンターの構成](../azure-monitor/platform/data-sources-performance-counters.md)」の手順に従ってパフォーマンス カウンターを再構成します。 この記事では、カウンターを追加する方法について説明していますが、同じ場所でカウンターを削除することもできます。
+既にパフォーマンス カウンターが有効になっていて、それらを削除する場合は、「[パフォーマンス カウンターの構成](../azure-monitor/agents/data-sources-performance-counters.md)」の手順に従ってパフォーマンス カウンターを再構成します。 この記事では、カウンターを追加する方法について説明していますが、同じ場所でカウンターを削除することもできます。
 
 パフォーマンス カウンターをまだ設定していない場合に、Windows Virtual Desktop 向けの Azure Monitor に対してそれを構成する方法を次に示します。
 
@@ -128,7 +128,7 @@ Log Analytics ワークスペースの対応するサンプル間隔で、コレ
 >[!NOTE]
 >入力遅延のパフォーマンス カウンターは、Windows 10 RS5 以降または Windows Server 2019 以降とのみ互換性があります。
 
-コレクションに対して既に有効になっていないパフォーマンス カウンターを手動で追加する方法の詳細については、「[パフォーマンス カウンターの構成](../azure-monitor/platform/data-sources-performance-counters.md)」をご覧ください。
+コレクションに対して既に有効になっていないパフォーマンス カウンターを手動で追加する方法の詳細については、「[パフォーマンス カウンターの構成](../azure-monitor/agents/data-sources-performance-counters.md)」をご覧ください。
 
 ### <a name="set-up-windows-events"></a>Windows イベントを設定する
 
@@ -171,7 +171,7 @@ Log Analytics エージェントをインストールするには:
 
 ## <a name="optional-configure-alerts"></a>省略可能: アラートを構成する
 
-選択したサブスクリプション内で重大な Azure Monitor アラートが発生した場合に通知するように、Windows Virtual Desktop 向けの Azure Monitor を構成できます。 これを行うには、「[Azure Monitor アラートでイベントに応答する](../azure-monitor/learn/tutorial-response.md)」の手順に従います。
+選択したサブスクリプション内で重大な Azure Monitor アラートが発生した場合に通知するように、Windows Virtual Desktop 向けの Azure Monitor を構成できます。 これを行うには、「[Azure Monitor アラートでイベントに応答する](../azure-monitor/alerts/tutorial-response.md)」の手順に従います。
 
 ## <a name="diagnostic-and-usage-data"></a>診断と使用状況データ
 

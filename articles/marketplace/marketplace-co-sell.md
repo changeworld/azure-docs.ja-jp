@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 1/29/2021
-ms.openlocfilehash: 84d37def6aa519eabf26a72ded7b0ab70994c430
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 2/05/2021
+ms.openlocfilehash: abd47a17392e53770802b61e4ee6561252cc4c1e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063081"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581569"
 ---
 # <a name="co-sell-partner-engagement"></a>共同販売のパートナー エンゲージメント
 
@@ -79,6 +79,9 @@ ms.locfileid: "99063081"
 
 1. 続行する前に、下書きを保存します。
 1. オファーの必須セクションをすべて完了したら、レビューと発行のためにそれを送信することができます。 右上にある **[レビューと公開]** を選択します。 オファーの詳細を確認してから、 **[公開]** を選択します。
+
+> [!NOTE]
+> 共同販売のオファーを申請するために、お問い合わせいただく必要はなくなりました。 お客様が [Microsoft と共同販売する] ページですべての必須フィールドに入力し、オファーを再発行した後、Microsoft はお客様のオファーを確認して、それが共同販売の状態の要件を満たしているかどうかを特定します。
 
 ## <a name="see-your-offers-co-sell-status"></a>オファーの共同販売の状態を確認する
 

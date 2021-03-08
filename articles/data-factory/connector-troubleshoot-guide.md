@@ -1,27 +1,25 @@
 ---
 title: Azure Data Factory コネクタのトラブルシューティング
 description: Azure Data Factory でのコネクタに関する問題のトラブルシューティングを行う方法について説明します。
-services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 01/07/2021
+ms.date: 02/08/2021
 ms.author: jingwang
-ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: fdc4bbd463c45fecfc9e3961e42f81ed93d820ae
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 9d8f940e3900c00b1c6f6623dfeff2d92ca85aa3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054638"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042438"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory コネクタのトラブルシューティング
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory コネクタに関する問題の一般的なトラブルシューティング方法について説明します。
-  
+
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
 
 ### <a name="error-code-azurebloboperationfailed"></a>エラー コード:AzureBlobOperationFailed
@@ -30,7 +28,7 @@ ms.locfileid: "99054638"
 
 - **原因**:Azure Blob Storage 操作に問題があります。
 
-- **推奨事項**:エラーの詳細を確認するには、[Azure Blob Storage エラー コード](https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes)に関する記事を参照してください。 詳細については、Azure Blob Storage チームにお問い合わせください。
+- **推奨事項**:エラーの詳細を確認するには、[Azure Blob Storage エラー コード](/rest/api/storageservices/blob-service-error-codes)に関する記事を参照してください。 詳細については、Azure Blob Storage チームにお問い合わせください。
 
 
 ### <a name="invalid-property-during-copy-activity"></a>コピー アクティビティ中プロパティが無効です
@@ -109,7 +107,7 @@ ms.locfileid: "99054638"
             
 ## <a name="azure-cosmos-db-sql-api"></a>Azure Cosmos DB (SQL API)
 
-### <a name="error-code--cosmosdbsqlapioperationfailed"></a>エラー コード:CosmosDbSqlApiOperationFailed
+### <a name="error-code-cosmosdbsqlapioperationfailed"></a>エラー コード:CosmosDbSqlApiOperationFailed
 
 - **メッセージ**: `CosmosDbSqlApi operation Failed. ErrorMessage: %msg;.`
 
@@ -161,17 +159,13 @@ ms.locfileid: "99054638"
 
 - **メッセージ**: `ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
 
-- **原因**:Azure Data Lake Storage Gen2 がこのエラーをスローした場合、操作は失敗します。
+- **原因と推奨事項**: このエラーはさまざまな原因により発生する可能性があります。 考えられる原因の分析および関連する推奨事項については、以下の一覧を確認してください。
 
-- **推奨事項**:Azure Data Lake Storage Gen2 によってスローされたエラー メッセージの詳細を確認します。 エラーが一時的なエラーである場合は、操作を再試行してください。 さらに支援が必要な場合は、Azure Storage サポートにお問い合わせください。その際、エラー メッセージに含まれる要求 ID をお知らせください。
-
-- **原因**:エラー メッセージに「許可されていません」という文字列が含まれている場合は、使用するサービス プリンシパルまたはマネージド ID に、Azure Data Lake Storage Gen2 にアクセスするための十分なアクセス許可がない可能性があります。
-
-- **推奨事項**:このエラーのトラブルシューティングを行うには、「[Azure Data Factory を使用した Azure Data Lake Storage Gen2 でのデータのコピーと変換](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication)」を参照してください。
-
-- **原因**:エラー メッセージに「InternalServerError」という文字列が含まれている場合は、Azure Data Lake Storage Gen2 によってエラーが返されます。
-
-- **推奨事項**:このエラーは、一時的なエラーが原因で発生している可能性があります。 その場合は、操作を再試行します。 問題が解決しない場合は、Azure Storage サポートにお問い合わせください。その際、エラー メッセージに含まれる要求 ID をお知らせください。
+  | 原因分析                                               | 推奨                                               |
+  | :----------------------------------------------------------- | :----------------------------------------------------------- |
+  | 何らかの操作に失敗したことを示すエラーが Azure Data Lake Storage Gen2 によってスローされた場合。| Azure Data Lake Storage Gen2 によってスローされたエラー メッセージの詳細を確認します。 エラーが一時的なエラーである場合は、操作を再試行してください。 さらに支援が必要な場合は、Azure Storage サポートにお問い合わせください。その際、エラー メッセージに含まれる要求 ID をお知らせください。 |
+  | エラー メッセージに "許可されていません" という文字列が含まれている場合は、使用するサービス プリンシパルまたはマネージド ID に、Azure Data Lake Storage Gen2 にアクセスするための十分なアクセス許可がない可能性があります。 | このエラーのトラブルシューティングを行うには、「[Azure Data Factory を使用した Azure Data Lake Storage Gen2 でのデータのコピーと変換](./connector-azure-data-lake-storage.md#service-principal-authentication)」を参照してください。 |
+  | エラー メッセージに "InternalServerError" という文字列が含まれている場合は、Azure Data Lake Storage Gen2 によってエラーが返されます。 | このエラーは、一時的なエラーが原因で発生している可能性があります。 その場合は、操作を再試行します。 問題が解決しない場合は、Azure Storage サポートにお問い合わせください。その際、エラー メッセージに含まれる要求 ID をお知らせください。 |
 
 ### <a name="request-to-azure-data-lake-storage-gen2-account-caused-a-timeout-error"></a>Azure Data Lake Storage Gen2 アカウントへの要求によりタイムアウト エラーが発生する
 
@@ -204,66 +198,45 @@ ms.locfileid: "99054638"
                   
 ## <a name="azure-files-storage"></a>Azure Files Storage
 
-### <a name="error-code--azurefileoperationfailed"></a>エラー コード:AzureFileOperationFailed
+### <a name="error-code-azurefileoperationfailed"></a>エラー コード:AzureFileOperationFailed
 
 - **メッセージ**: `Azure File operation Failed. Path: %path;. ErrorMessage: %msg;.`
 
 - **原因**:Azure Files ストレージ操作に問題があります。
 
-- **推奨事項**:エラーの詳細を確認するには、[Azure Files のヘルプ](https://docs.microsoft.com/rest/api/storageservices/file-service-error-codes)を参照してください。 詳細については、Azure Files チームにお問い合わせください。
+- **推奨事項**:エラーの詳細を確認するには、[Azure Files のヘルプ](/rest/api/storageservices/file-service-error-codes)を参照してください。 詳細については、Azure Files チームにお問い合わせください。
 
 
 ## <a name="azure-synapse-analytics-azure-sql-database-and-sql-server"></a>Azure Synapse Analytics、Azure SQL Database、および SQL Server
 
-### <a name="error-code--sqlfailedtoconnect"></a>エラー コード:SqlFailedToConnect
+### <a name="error-code-sqlfailedtoconnect"></a>エラー コード:SqlFailedToConnect
 
 - **メッセージ**: `Cannot connect to SQL Database: '%server;', Database: '%database;', User: '%user;'. Check the linked service configuration is correct, and make sure the SQL Database firewall allows the integration runtime to access.`
+- **原因と推奨事項**: このエラーはさまざまな原因により発生する可能性があります。 考えられる原因の分析および関連する推奨事項については、以下の一覧を確認してください。
 
-- **原因**:Azure SQL の場合、エラー メッセージに "SqlErrorNumber=47073" が含まれている場合、接続設定で公衆ネットワーク アクセスが拒否されていることを意味します。
-
-- **推奨事項**:Azure SQL ファイアウォールで、 **[Deny public network access]\(公衆ネットワーク アクセスを拒否する\)** オプションを *[いいえ]* に設定します。 詳細については、「[Azure SQL の接続の設定](https://docs.microsoft.com/azure/azure-sql/database/connectivity-settings#deny-public-network-access)」を参照してください。
-
-- **原因**:Azure SQL の場合、エラー メッセージに "SqlErrorNumber = [エラー コード]" などの SQL エラー コードが含まれている場合は、『Azure SQL DB トラブルシューティング ガイド』を参照してください。
-
-- **推奨事項**:推奨事項については、「[Azure SQL Database および Azure SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング](https://docs.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues)」を参照してください。
-
-- **原因**:ポート 1433 がファイアウォール許可リストに含まれているかどうかを確認します。
-
-- **推奨事項**:詳細については、[SQL Server で使用されるポート](https://docs.microsoft.com/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-)に関する記事を参照してください。
-
-- **原因**:エラー メッセージに文字列 "SqlException" が含まれている場合、SQL Database のエラーは、何らかの特定の操作が失敗したことを示します。
-
-- **推奨事項**:詳細については、「[データベース エンジンのエラー](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors)」の SQL エラー コードを参照してください。 詳細については、Azure SQL サポートにお問い合わせください。
-
-- **原因**:これが一時的な問題 (不安定なネットワーク接続など) の場合は、アクティビティ ポリシーに再試行を追加して軽減します。
-
-- **推奨事項**:詳細については、「[Azure Data Factory のパイプラインとアクティビティ](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities#activity-policy)」を参照してください。
-
-- **原因**:"Client with IP address '...' is not allowed to access the server" (IP アドレスが '...' のクライアントはサーバーへのアクセスが許可されていません) という文字列がエラー メッセージに含まれており、Azure SQL Database に接続しようとしている場合、通常、このエラーの原因は Azure SQL Database のファイアウォールの問題です。
-
-- **推奨事項**:Azure SQL Server のファイアウォールの構成で、 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** オプションを有効にします。 詳細については、[Azure SQL Database と Azure Synapse の IP ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)に関するページを参照してください。
-
-
-### <a name="error-code--sqloperationfailed"></a>エラー コード:SqlOperationFailed
+    | 原因分析                                               | 推奨                                               |
+    | :----------------------------------------------------------- | :----------------------------------------------------------- |
+    | Azure SQL では、エラー メッセージに "SqlErrorNumber=47073" という文字列が含まれている場合、接続設定で公衆ネットワーク アクセスが拒否されていることを意味します。 | Azure SQL ファイアウォールで、 **[Deny public network access]\(公衆ネットワーク アクセスを拒否する\)** オプションを *[いいえ]* に設定します。 詳細については、「[Azure SQL の接続の設定](../azure-sql/database/connectivity-settings.md#deny-public-network-access)」を参照してください。 |
+    | Azure SQL の場合、エラー メッセージに "SqlErrorNumber = [エラー コード]" などの SQL エラー コードが含まれている場合は、『Azure SQL DB トラブルシューティング ガイド』を参照してください。 | 推奨事項については、「[Azure SQL Database および Azure SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング](../azure-sql/database/troubleshoot-common-errors-issues.md)」を参照してください。 |
+    | ポート 1433 がファイアウォール許可リストに含まれているかどうかを確認します。 | 詳細については、[SQL Server で使用されるポート](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-)に関する記事を参照してください。 |
+    | エラー メッセージに "SqlException" という文字列が含まれている場合、SQL Database のエラーは、何らかの特定の操作が失敗したことを示します。 | 詳細については、「[データベース エンジンのエラー](/sql/relational-databases/errors-events/database-engine-events-and-errors)」の SQL エラー コードを参照してください。 詳細については、Azure SQL サポートにお問い合わせください。 |
+    | これが一時的な問題 (不安定なネットワーク接続など) の場合は、アクティビティ ポリシーに再試行を追加して軽減します。 | 詳細については、「[Azure Data Factory のパイプラインとアクティビティ](./concepts-pipelines-activities.md#activity-policy)」を参照してください。 |
+    | "Client with IP address '...' is not allowed to access the server" (IP アドレスが '...' のクライアントはサーバーへのアクセスが許可されていません) という文字列がエラー メッセージに含まれており、Azure SQL Database に接続しようとしている場合、通常、このエラーの原因は Azure SQL Database のファイアウォールの問題です。 | Azure SQL Server のファイアウォールの構成で、 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** オプションを有効にします。 詳細については、[Azure SQL Database と Azure Synapse の IP ファイアウォール規則](../azure-sql/database/firewall-configure.md)に関するページを参照してください。 |
+    
+### <a name="error-code-sqloperationfailed"></a>エラー コード:SqlOperationFailed
 
 - **メッセージ**: `A database operation failed. Please search error to get more details.`
 
-- **原因**:エラー メッセージに "SqlException" という文字列が含まれている場合、SQL Database は、何らかの特定の操作が失敗したことを示すエラーをスローします。
+- **原因と推奨事項**: このエラーはさまざまな原因により発生する可能性があります。 考えられる原因の分析および関連する推奨事項については、以下の一覧を確認してください。
 
-- **推奨事項**:SQL エラーが明確でない場合は、データベースを最新の互換性レベル '150' に変更してみてください。 最新バージョンの SQL エラーをスローすることができます。 詳細については、[ドキュメント](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat)を参照してください。
-
-    SQL の問題のトラブルシューティングの詳細については、「[データベース エンジンのエラー](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors)」の SQL エラー コードを参照してください。 詳細については、Azure SQL サポートにお問い合わせください。
-
-- **原因**:エラー メッセージに "PdwManagedToNativeInteropException" という文字列が含まれている場合は、通常、ソースの列とシンクの列のサイズが一致していないことが原因です。
-
-- **推奨事項**:ソースの列とシンクの列の両方のサイズを確認してください。 詳細については、Azure SQL サポートにお問い合わせください。
-
-- **原因**:エラー メッセージに "InvalidOperationException" という文字列が含まれている場合は、通常、入力データが無効であることが原因です。
-
-- **推奨事項**:問題が発生している行を特定するには、Copy アクティビティでフォールト トレランス機能を有効にしてください。これにより、問題のある行をストレージにリダイレクトして、さらに調査することができます。 詳細については、「[Azure Data Factory のコピー アクティビティのフォールト トレランス](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance)」を参照してください。
+    | 原因分析                                               | 推奨                                               |
+    | :----------------------------------------------------------- | :----------------------------------------------------------- |
+    | エラー メッセージに "SqlException" という文字列が含まれている場合、SQL Database により、何らかの特定の操作が失敗したことを示すエラーがスローされます。 | SQL エラーが明確でない場合は、データベースを最新の互換性レベル '150' に変更してみてください。 最新バージョンの SQL エラーをスローすることができます。 詳細については、[ドキュメント](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat)を参照してください。 <br/> SQL の問題のトラブルシューティングの詳細については、「[データベース エンジンのエラー](/sql/relational-databases/errors-events/database-engine-events-and-errors)」の SQL エラー コードを参照してください。 詳細については、Azure SQL サポートにお問い合わせください。 |
+    | エラー メッセージに "PdwManagedToNativeInteropException" という文字列が含まれている場合は、通常、ソースとシンクの列のサイズが一致していないことが原因です。 | ソースの列とシンクの列の両方のサイズを確認してください。 詳細については、Azure SQL サポートにお問い合わせください。 |
+    | エラー メッセージに "InvalidOperationException" という文字列が含まれている場合は、通常、入力データが無効であることが原因です。 | 問題が発生している行を特定するには、Copy アクティビティでフォールト トレランス機能を有効にしてください。これにより、問題のある行をストレージにリダイレクトして、さらに調査することができます。 詳細については、「[Azure Data Factory のコピー アクティビティのフォールト トレランス](./copy-activity-fault-tolerance.md)」を参照してください。 |
 
 
-### <a name="error-code--sqlunauthorizedaccess"></a>エラー コード:SqlUnauthorizedAccess
+### <a name="error-code-sqlunauthorizedaccess"></a>エラー コード:SqlUnauthorizedAccess
 
 - **メッセージ**: `Cannot connect to '%connectorName;'. Detail Message: '%message;'`
 
@@ -272,7 +245,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:SQL Database にアクセスするための十分なアクセス許可がログイン アカウントにあることを確認します。
 
 
-### <a name="error-code--sqlopenconnectiontimeout"></a>エラー コード:SqlOpenConnectionTimeout
+### <a name="error-code-sqlopenconnectiontimeout"></a>エラー コード:SqlOpenConnectionTimeout
 
 - **メッセージ**: `Open connection to database timeout after '%timeoutValue;' seconds.`
 
@@ -281,7 +254,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:接続タイムアウトの値を大きくして、リンク サービス接続文字列の更新操作を再試行してください。
 
 
-### <a name="error-code--sqlautocreatetabletypemapfailed"></a>エラー コード:SqlAutoCreateTableTypeMapFailed
+### <a name="error-code-sqlautocreatetabletypemapfailed"></a>エラー コード:SqlAutoCreateTableTypeMapFailed
 
 - **メッセージ**: `Type '%dataType;' in source side cannot be mapped to a type that supported by sink side(column name:'%columnName;') in autocreate table.`
 
@@ -290,7 +263,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:"*マッピング*" で列のデータ型を更新するか、ターゲット サーバーで手動でシンク テーブルを作成してください。
 
 
-### <a name="error-code--sqldatatypenotsupported"></a>エラー コード:SqlDataTypeNotSupported
+### <a name="error-code-sqldatatypenotsupported"></a>エラー コード:SqlDataTypeNotSupported
 
 - **メッセージ**: `A database operation failed. Check the SQL errors.`
 
@@ -303,7 +276,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:シンク テーブルで、対応する列の型を *datetime2* 型に更新してください。
 
 
-### <a name="error-code--sqlinvaliddbstoredprocedure"></a>エラー コード:SqlInvalidDbStoredProcedure
+### <a name="error-code-sqlinvaliddbstoredprocedure"></a>エラー コード:SqlInvalidDbStoredProcedure
 
 - **メッセージ**: `The specified Stored Procedure is not valid. It could be caused by that the stored procedure doesn't return any data. Invalid Stored Procedure script: '%scriptName;'.`
 
@@ -312,7 +285,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:SQL ツールを使用してストアド プロシージャを検証してください。 ストアド プロシージャがデータを返せることを確認してください。
 
 
-### <a name="error-code--sqlinvaliddbquerystring"></a>エラー コード:SqlInvalidDbQueryString
+### <a name="error-code-sqlinvaliddbquerystring"></a>エラー コード:SqlInvalidDbQueryString
 
 - **メッセージ**: `The specified SQL Query is not valid. It could be caused by that the query doesn't return any data. Invalid query: '%query;'`
 
@@ -321,7 +294,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:SQL ツールを使用して SQL クエリを検証してください。 クエリがデータを返せることを確認してください。
 
 
-### <a name="error-code--sqlinvalidcolumnname"></a>エラー コード:SqlInvalidColumnName
+### <a name="error-code-sqlinvalidcolumnname"></a>エラー コード:SqlInvalidColumnName
 
 - **メッセージ**: `Column '%column;' does not exist in the table '%tableName;', ServerName: '%serverName;', DatabaseName: '%dbName;'.`
 
@@ -330,7 +303,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:クエリの列、データセットの "*構造*"、およびアクティビティの "*マッピング*" を検証してください。
 
 
-### <a name="error-code--sqlbatchwritetimeout"></a>エラー コード:SqlBatchWriteTimeout
+### <a name="error-code-sqlbatchwritetimeout"></a>エラー コード:SqlBatchWriteTimeout
 
 - **メッセージ**: `Timeouts in SQL write operation.`
 
@@ -339,7 +312,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:操作を再試行してください。 問題が解決しない場合は、Azure SQL サポートにお問い合わせください。
 
 
-### <a name="error-code--sqlbatchwritetransactionfailed"></a>エラー コード:SqlBatchWriteTransactionFailed
+### <a name="error-code-sqlbatchwritetransactionfailed"></a>エラー コード:SqlBatchWriteTransactionFailed
 
 - **メッセージ**: `SQL transaction commits failed.`
 
@@ -352,16 +325,16 @@ ms.locfileid: "99054638"
 - **推奨事項**:アクティビティを再試行し、SQL Database 側のメトリックを確認してください。
 
 
-### <a name="error-code--sqlbulkcopyinvalidcolumnlength"></a>エラー コード:SqlBulkCopyInvalidColumnLength
+### <a name="error-code-sqlbulkcopyinvalidcolumnlength"></a>エラー コード:SqlBulkCopyInvalidColumnLength
 
 - **メッセージ**: `SQL Bulk Copy failed due to receive an invalid column length from the bcp client.`
 
 - **原因**:一括コピー プログラム ユーティリティ (bcp) クライアントから無効な列長を受け取ったため、SQL 一括コピーに失敗しました。
 
-- **推奨事項**:問題が発生した行を特定するには、Copy アクティビティのフォールト トレランス機能を有効にします。 これにより、問題のある行がストレージにリダイレクトされ、さらに調査できるようになります。 詳細については、「[Azure Data Factory のコピー アクティビティのフォールト トレランス](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance)」を参照してください。
+- **推奨事項**:問題が発生した行を特定するには、Copy アクティビティのフォールト トレランス機能を有効にします。 これにより、問題のある行がストレージにリダイレクトされ、さらに調査できるようになります。 詳細については、「[Azure Data Factory のコピー アクティビティのフォールト トレランス](./copy-activity-fault-tolerance.md)」を参照してください。
 
 
-### <a name="error-code--sqlconnectionisclosed"></a>エラー コード:SqlConnectionIsClosed
+### <a name="error-code-sqlconnectionisclosed"></a>エラー コード:SqlConnectionIsClosed
 
 - **メッセージ**: `The connection is closed by SQL Database.`
 
@@ -480,7 +453,7 @@ ms.locfileid: "99054638"
 
 ## <a name="azure-table-storage"></a>Azure Table Storage
 
-### <a name="error-code--azuretableduplicatecolumnsfromsource"></a>エラー コード:AzureTableDuplicateColumnsFromSource
+### <a name="error-code-azuretableduplicatecolumnsfromsource"></a>エラー コード:AzureTableDuplicateColumnsFromSource
 
 - **メッセージ**: `Duplicate columns with same name '%name;' are detected from source. This is NOT supported by Azure Table Storage sink.`
 
@@ -493,18 +466,18 @@ ms.locfileid: "99054638"
 
 ## <a name="db2"></a>DB2
 
-### <a name="error-code--db2driverrunfailed"></a>エラー コード:DB2DriverRunFailed
+### <a name="error-code-db2driverrunfailed"></a>エラー コード:DB2DriverRunFailed
 
 - **メッセージ**: `Error thrown from driver. Sql code: '%code;'`
 
-- **原因**:エラー メッセージに "SQLSTATE=51002 SQLCODE=-805," という文字列が含まれている場合は、「[Azure Data Factory を使用して DB2 からデータをコピーする](https://docs.microsoft.com/azure/data-factory/connector-db2#linked-service-properties)」のヒントに従います。
+- **原因**:エラー メッセージに "SQLSTATE=51002 SQLCODE=-805" という文字列が含まれている場合は、「[Azure Data Factory を使用して DB2 からデータをコピーする](./connector-db2.md#linked-service-properties)」の「ヒント」に従います。
 
 - **推奨事項**:`packageCollection` プロパティで "NULLID" の設定を試みます。
 
 
 ## <a name="delimited-text-format"></a>区切りテキスト形式
 
-### <a name="error-code--delimitedtextcolumnnamenotallownull"></a>エラー コード:DelimitedTextColumnNameNotAllowNull
+### <a name="error-code-delimitedtextcolumnnamenotallownull"></a>エラー コード:DelimitedTextColumnNameNotAllowNull
 
 - **メッセージ**: `The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
 
@@ -513,26 +486,22 @@ ms.locfileid: "99054638"
 - **推奨事項**:最初の行を確認し、値が空の場合は修正します。
 
 
-### <a name="error-code--delimitedtextmorecolumnsthandefined"></a>エラー コード:DelimitedTextMoreColumnsThanDefined
+### <a name="error-code-delimitedtextmorecolumnsthandefined"></a>エラー コード:DelimitedTextMoreColumnsThanDefined
 
 - **メッセージ**: `Error found when processing '%function;' source '%name;' with row number %rowCount;: found more columns than expected column count: %expectedColumnCount;.`
 
-- **原因**:問題のある行の列数が、最初の行の列数を超えています。 データの問題、または列区切り記号や引用符文字の設定が正しくないことが原因である可能性があります。
+- **原因と推奨事項**: このエラーはさまざまな原因により発生する可能性があります。 考えられる原因の分析および関連する推奨事項については、以下の一覧を確認してください。
 
-- **推奨事項**:エラー メッセージから行数を取得し、行の列を確認して、データを修正してください。
-
-- **原因**:エラー メッセージに予想される列数が "1" の場合は、正しくない圧縮やフォーマット設定が指定されている可能性があります。これにより、Azure Data Factory によってファイルが正しく解析されませんでした。
-
-- **推奨事項**:フォーマット設定を確認して、ソース ファイルと一致していることを確認してください。
-
-- **原因**:ソースがフォルダーの場合、指定されたフォルダーの下にあるファイルのスキーマが異なる可能性があります。
-
-- **推奨事項**:指定されたフォルダー内のファイルのスキーマが同じであることを確認します。
+  | 原因分析                                               | 推奨                                               |
+  | :----------------------------------------------------------- | :----------------------------------------------------------- |
+  | 問題のある行の列数が、最初の行の列数を超えています。 データの問題、または列区切り記号や引用符文字の設定が正しくないことが原因である可能性があります。 | エラー メッセージから行数を取得し、行の列を確認して、データを修正してください。 |
+  | エラー メッセージに予想される列数が "1" の場合は、正しくない圧縮やフォーマット設定が指定されている可能性があります。これにより、Azure Data Factory によってファイルが正しく解析されませんでした。 | フォーマット設定を確認して、ソース ファイルと一致していることを確認してください。 |
+  | ソースがフォルダーの場合、指定されたフォルダーの下にあるファイルのスキーマが異なる可能性があります。 | 指定されたフォルダー内のファイルのスキーマが同じであることを確認します。 |
 
 
 ## <a name="dynamics-365-common-data-service-and-dynamics-crm"></a>Dynamics 365、Common Data Service、Dynamics CRM
 
-### <a name="error-code--dynamicscreateserviceclienterror"></a>エラー コード:DynamicsCreateServiceClientError
+### <a name="error-code-dynamicscreateserviceclienterror"></a>エラー コード:DynamicsCreateServiceClientError
 
 - **メッセージ**: `This is a transient issue on Dynamics server side. Try to rerun the pipeline.`
 
@@ -550,7 +519,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:マッピング タブで列を手動で追加します。
 
 
-### <a name="error-code--dynamicsmissingtargetformultitargetlookupfield"></a>エラー コード:DynamicsMissingTargetForMultiTargetLookupField
+### <a name="error-code-dynamicsmissingtargetformultitargetlookupfield"></a>エラー コード:DynamicsMissingTargetForMultiTargetLookupField
 
 - **メッセージ**: `Cannot find the target column for multi-target lookup field: '%fieldName;'.`
 
@@ -561,7 +530,7 @@ ms.locfileid: "99054638"
   2. 列マッピングにターゲット列を追加します。 シンク列が *{fieldName}@EntityReference* の形式であることを確認してください。
 
 
-### <a name="error-code--dynamicsinvalidtargetformultitargetlookupfield"></a>エラー コード:DynamicsInvalidTargetForMultiTargetLookupField
+### <a name="error-code-dynamicsinvalidtargetformultitargetlookupfield"></a>エラー コード:DynamicsInvalidTargetForMultiTargetLookupField
 
 - **メッセージ**: `The provided target: '%targetName;' is not a valid target of field: '%fieldName;'. Valid targets are: '%validTargetNames;'`
 
@@ -570,7 +539,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:複数ターゲット検索フィールドの有効なエンティティ名を指定します。
 
 
-### <a name="error-code--dynamicsinvalidtypeformultitargetlookupfield"></a>エラー コード:DynamicsInvalidTypeForMultiTargetLookupField
+### <a name="error-code-dynamicsinvalidtypeformultitargetlookupfield"></a>エラー コード:DynamicsInvalidTypeForMultiTargetLookupField
 
 - **メッセージ**: `The provided target type is not a valid string. Field: '%fieldName;'.`
 
@@ -579,18 +548,18 @@ ms.locfileid: "99054638"
 - **推奨事項**:複数ターゲット検索フィールドに有効な文字列を指定します。
 
 
-### <a name="error-code--dynamicsfailedtorequetserver"></a>エラー コード:DynamicsFailedToRequetServer
+### <a name="error-code-dynamicsfailedtorequetserver"></a>エラー コード:DynamicsFailedToRequetServer
 
 - **メッセージ**: `The Dynamics server or the network is experiencing issues. Check network connectivity or check Dynamics server log for more details.`
 
 - **原因**:Dynamics サーバーが不安定であるか、アクセスできないか、ネットワークに問題が発生しています。
 
 - **推奨事項**:詳細については、ネットワーク接続または Dynamics サーバーのログを確認してください。 さらに支援が必要な場合は、Dynamics サポートにお問い合わせください。
-    
+  
 
 ## <a name="ftp"></a>FTP
 
-### <a name="error-code--ftpfailedtoconnecttoftpserver"></a>エラー コード:FtpFailedToConnectToFtpServer
+### <a name="error-code-ftpfailedtoconnecttoftpserver"></a>エラー コード:FtpFailedToConnectToFtpServer
 
 - **メッセージ**: `Failed to connect to FTP server. Please make sure the provided server information is correct, and try again.`
 
@@ -601,7 +570,7 @@ ms.locfileid: "99054638"
 
 ## <a name="http"></a>HTTP
 
-### <a name="error-code--httpfilefailedtoread"></a>エラー コード:HttpFileFailedToRead
+### <a name="error-code-httpfilefailedtoread"></a>エラー コード:HttpFileFailedToRead
 
 - **メッセージ**: `Failed to read data from http server. Check the error from http server：%message;`
 
@@ -627,31 +596,20 @@ ms.locfileid: "99054638"
 
 ## <a name="orc-format"></a>ORC 形式
 
-### <a name="error-code--orcjavainvocationexception"></a>エラー コード:OrcJavaInvocationException
+### <a name="error-code-orcjavainvocationexception"></a>エラー コード:OrcJavaInvocationException
 
 - **メッセージ**: `An error occurred when invoking Java, message: %javaException;.`
+- **原因と推奨事項**: このエラーはさまざまな原因により発生する可能性があります。 考えられる原因の分析および関連する推奨事項については、以下の一覧を確認してください。
 
-- **原因**:エラー メッセージに "java.lang.OutOfMemory"、"Java heap space"、および "doubleCapacity" という文字列が含まれている場合は、通常、古いバージョンの Microsoft Integration Runtime でのメモリ管理の問題です。
+    | 原因分析                                               | 推奨                                               |
+    | :----------------------------------------------------------- | :----------------------------------------------------------- |
+    | エラー メッセージに "java.lang.OutOfMemory"、"Java heap space"、および "doubleCapacity" という文字列が含まれている場合は、通常、古いバージョンの Integration Runtime でのメモリ管理の問題です。 | セルフホステッド統合ランタイムを使用している場合は、最新バージョンにアップグレードすることをお勧めします。 |
+    | エラー メッセージに "java.lang.OutOfMemory" という文字列が含まれている場合は、統合ランタイムにファイルを処理するのに十分なリソースがありません。 | 統合ランタイムで同時実行を制限してください。 セルフホステッド IR の場合は、8 GB 以上のメモリを備えた強力なマシンにスケールアップしてください。 |
+    |エラー メッセージに "NullPointerReference" という文字列が含まれている場合、その原因は一時的なエラーである可能性があります。 | 操作を再試行してください。 問題が解決しない場合は、サポートにお問い合わせください。 |
+    | エラー メッセージに "BufferOverflowException" という文字列が含まれている場合、その原因は一時的なエラーである可能性があります。 | 操作を再試行してください。 問題が解決しない場合は、サポートにお問い合わせください。 |
+    | エラー メッセージに "java.lang.ClassCastException:org.apache.hadoop.hive.serde2.io.HiveCharWritable can't be cast to org.apache.hadoop.io.Text" (java.lang.ClassCastException:org.apache.hadoop.hive.serde2.io.HiveCharWritable を org.apache.hadoop.io.Text にキャストできません) という文字列が含まれている場合、その原因は Java ランタイム内の型変換の問題である可能性があります。 通常は、ソース データを Java ランタイムで適切に処理できないことを意味します。 | これはデータの問題です。 ORC 形式のデータで、char または varchar の代わりに string を使用してみてください。 |
 
-- **推奨事項**:セルフホステッド統合ランタイムを使用している場合は、最新バージョンにアップグレードすることをお勧めします。
-
-- **原因**:エラー メッセージに "java.lang.OutOfMemory" という文字列が含まれている場合は、統合ランタイムにファイルを処理するのに十分なリソースがありません。
-
-- **推奨事項**:統合ランタイムで同時実行を制限してください。 セルフホステッド IR の場合は、8 GB 以上のメモリを備えた強力なマシンにスケールアップしてください。
-
-- **原因**:エラー メッセージに "NullPointerReference" という文字列が含まれている場合、その原因は一時的なエラーである可能性があります。
-
-- **推奨事項**:操作を再試行してください。 問題が解決しない場合は、サポートにお問い合わせください。
-
-- **原因**:エラー メッセージに "BufferOverflowException" という文字列が含まれている場合、その原因は一時的なエラーである可能性があります。
-
-- **推奨事項**:操作を再試行してください。 問題が解決しない場合は、サポートにお問い合わせください。
-
-- **原因**:エラー メッセージに "java.lang.ClassCastException:org.apache.hadoop.hive.serde2.io.HiveCharWritable can't be cast to org.apache.hadoop.io.Text" (java.lang.ClassCastException:org.apache.hadoop.hive.serde2.io.HiveCharWritable を org.apache.hadoop.io.Text にキャストできません) という文字列が含まれている場合、これは Java ランタイム内の型変換の問題である可能性があります。 通常は、ソース データを Java ランタイムで適切に処理できないことを意味します。
-
-- **推奨事項**:これはデータの問題です。 ORC 形式のデータで、char または varchar の代わりに string を使用してみてください。
-
-### <a name="error-code--orcdatetimeexceedlimit"></a>エラー コード:OrcDateTimeExceedLimit
+### <a name="error-code-orcdatetimeexceedlimit"></a>エラー コード:OrcDateTimeExceedLimit
 
 - **メッセージ**: `The Ticks value '%ticks;' for the datetime column must be between valid datetime ticks range -621355968000000000 and 2534022144000000000.`
 
@@ -662,24 +620,19 @@ ms.locfileid: "99054638"
 
 ## <a name="parquet-format"></a>Parquet 形式
 
-### <a name="error-code--parquetjavainvocationexception"></a>エラー コード:ParquetJavaInvocationException
+### <a name="error-code-parquetjavainvocationexception"></a>エラー コード:ParquetJavaInvocationException
 
 - **メッセージ**: `An error occurred when invoking java, message: %javaException;.`
 
-- **原因**:エラー メッセージに "java.lang.OutOfMemory"、"Java heap space"、および "doubleCapacity" という文字列が含まれている場合は、通常、古いバージョンの Microsoft Integration Runtime でのメモリ管理の問題です。
+- **原因と推奨事項**: このエラーはさまざまな原因により発生する可能性があります。 考えられる原因の分析および関連する推奨事項については、以下の一覧を確認してください。
 
-- **推奨事項**:セルフホステッド IR を使用していて、バージョンが 3.20.7159.1 よりも前の場合は、最新バージョンにアップグレードすることをお勧めします。
+    | 原因分析                                               | 推奨                                               |
+    | :----------------------------------------------------------- | :----------------------------------------------------------- |
+    | エラー メッセージに "java.lang.OutOfMemory"、"Java heap space"、および "doubleCapacity" という文字列が含まれている場合は、通常、古いバージョンの Integration Runtime でのメモリ管理の問題です。 | セルフホステッド IR を使用していて、バージョンが 3.20.7159.1 よりも前の場合は、最新バージョンにアップグレードすることをお勧めします。 |
+    | エラー メッセージに "java.lang.OutOfMemory" という文字列が含まれている場合は、統合ランタイムにファイルを処理するのに十分なリソースがありません。 | 統合ランタイムで同時実行を制限してください。 セルフホステッド IR の場合は、8 GB 以上のメモリを持つ強力なマシンにスケールアップします。 |
+    | エラー メッセージに "NullPointerReference" という文字列が含まれている場合、一時的なエラーである可能性があります。 | 操作を再試行してください。 問題が解決しない場合は、サポートにお問い合わせください。 |
 
-- **原因**:エラー メッセージに "java.lang.OutOfMemory" という文字列が含まれている場合は、統合ランタイムにファイルを処理するのに十分なリソースがありません。
-
-- **推奨事項**:統合ランタイムで同時実行を制限してください。 セルフホステッド IR の場合は、8 GB 以上のメモリを持つ強力なマシンにスケールアップします。
-
-- **原因**:エラー メッセージに "NullPointerReference" という文字列が含まれている場合、一時的なエラーである可能性があります。
-
-- **推奨事項**:操作を再試行してください。 問題が解決しない場合は、サポートにお問い合わせください。
-
-
-### <a name="error-code--parquetinvalidfile"></a>エラー コード:ParquetInvalidFile
+### <a name="error-code-parquetinvalidfile"></a>エラー コード:ParquetInvalidFile
 
 - **メッセージ**: `File is not a valid Parquet file.`
 
@@ -688,16 +641,16 @@ ms.locfileid: "99054638"
 - **推奨事項**:入力が有効な Parquet ファイルであるかどうかを確認します。
 
 
-### <a name="error-code--parquetnotsupportedtype"></a>エラー コード:ParquetNotSupportedType
+### <a name="error-code-parquetnotsupportedtype"></a>エラー コード:ParquetNotSupportedType
 
 - **メッセージ**: `Unsupported Parquet type. PrimitiveType: %primitiveType; OriginalType: %originalType;.`
 
 - **原因**:Parquet 形式は、Azure Data Factory ではサポートされていません。
 
-- **推奨事項**:「[Azure Data Factory のコピー アクティビティでサポートされているファイル形式と圧縮コーデック](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs)」に移動して、ソース データを再確認します。
+- **推奨事項**:「[Azure Data Factory のコピー アクティビティでサポートされているファイル形式と圧縮コーデック](./supported-file-formats-and-compression-codecs.md)」に移動して、ソース データを再確認します。
 
 
-### <a name="error-code--parquetmisseddecimalprecisionscale"></a>エラー コード:ParquetMissedDecimalPrecisionScale
+### <a name="error-code-parquetmisseddecimalprecisionscale"></a>エラー コード:ParquetMissedDecimalPrecisionScale
 
 - **メッセージ**: `Decimal Precision or Scale information is not found in schema for column: %column;.`
 
@@ -706,7 +659,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:ソースは、正しい有効桁数と小数点以下桁数の情報を返しません。 問題の列で情報を確認します。
 
 
-### <a name="error-code--parquetinvaliddecimalprecisionscale"></a>エラー コード:ParquetInvalidDecimalPrecisionScale
+### <a name="error-code-parquetinvaliddecimalprecisionscale"></a>エラー コード:ParquetInvalidDecimalPrecisionScale
 
 - **メッセージ**: `Invalid Decimal Precision or Scale. Precision: %precision; Scale: %scale;.`
 
@@ -715,7 +668,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:問題の列の有効桁数と小数点以下桁数を確認してください。
 
 
-### <a name="error-code--parquetcolumnnotfound"></a>エラー コード:ParquetColumnNotFound
+### <a name="error-code-parquetcolumnnotfound"></a>エラー コード:ParquetColumnNotFound
 
 - **メッセージ**: `Column %column; does not exist in Parquet file.`
 
@@ -724,16 +677,16 @@ ms.locfileid: "99054638"
 - **推奨事項**:アクティビティのマッピングを確認してください。 ソース列を正しいシンク列にマッピングできることを確認してください。
 
 
-### <a name="error-code--parquetinvaliddataformat"></a>エラー コード:ParquetInvalidDataFormat
+### <a name="error-code-parquetinvaliddataformat"></a>エラー コード:ParquetInvalidDataFormat
 
 - **メッセージ**: `Incorrect format of %srcValue; for converting to %dstType;.`
 
 - **原因**:データは、mappings.source に指定されている型に変換できません。
 
-- **推奨事項**:ソース データを再確認するか、Copy アクティビティの列マッピングでこの列に適切なデータ型を指定してください。 詳細については、「[Azure Data Factory のコピー アクティビティでサポートされているファイル形式と圧縮コーデック](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs)」を参照してください。
+- **推奨事項**:ソース データを再確認するか、Copy アクティビティの列マッピングでこの列に適切なデータ型を指定してください。 詳細については、「[Azure Data Factory のコピー アクティビティでサポートされているファイル形式と圧縮コーデック](./supported-file-formats-and-compression-codecs.md)」を参照してください。
 
 
-### <a name="error-code--parquetdatacountnotmatchcolumncount"></a>エラー コード:ParquetDataCountNotMatchColumnCount
+### <a name="error-code-parquetdatacountnotmatchcolumncount"></a>エラー コード:ParquetDataCountNotMatchColumnCount
 
 - **メッセージ**: `The data count in a row '%sourceColumnCount;' does not match the column count '%sinkColumnCount;' in given schema.`
 
@@ -742,7 +695,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:ソース列数が 'mapping' のシンク列数と同じであることを確認してください。
 
 
-### <a name="error-code--parquetdatatypenotmatchcolumntype"></a>エラー コード:ParquetDataTypeNotMatchColumnType
+### <a name="error-code-parquetdatatypenotmatchcolumntype"></a>エラー コード:ParquetDataTypeNotMatchColumnType
 
 - **メッセージ**: `The data type %srcType; is not match given column type %dstType; at column '%columnIndex;'.`
 
@@ -751,7 +704,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:mapping.sink に正しい型を指定してください。
 
 
-### <a name="error-code--parquetbridgeinvaliddata"></a>エラー コード:ParquetBridgeInvalidData
+### <a name="error-code-parquetbridgeinvaliddata"></a>エラー コード:ParquetBridgeInvalidData
 
 - **メッセージ**: `%message;`
 
@@ -760,7 +713,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:操作を再試行してください。 問題が解決しない場合は、サポートにお問い合わせください。
 
 
-### <a name="error-code--parquetunsupportedinterpretation"></a>エラー コード:ParquetUnsupportedInterpretation
+### <a name="error-code-parquetunsupportedinterpretation"></a>エラー コード:ParquetUnsupportedInterpretation
 
 - **メッセージ**: `The given interpretation '%interpretation;' of Parquet format is not supported.`
 
@@ -769,7 +722,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:'ParquetInterpretFor' を 'sparkSql' にしないでください。
 
 
-### <a name="error-code--parquetunsupportfilelevelcompressionoption"></a>エラー コード:ParquetUnsupportFileLevelCompressionOption
+### <a name="error-code-parquetunsupportfilelevelcompressionoption"></a>エラー コード:ParquetUnsupportFileLevelCompressionOption
 
 - **メッセージ**: `File level compression is not supported for Parquet.`
 
@@ -778,7 +731,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:ペイロード内の 'CompressionType' を削除してください。
 
 
-### <a name="error-code--usererrorjniexception"></a>エラー コード:UserErrorJniException
+### <a name="error-code-usererrorjniexception"></a>エラー コード:UserErrorJniException
 
 - **メッセージ**: `Cannot create JVM: JNI return code [-6][JNI call failed: Invalid arguments.]`
 
@@ -804,7 +757,7 @@ ms.locfileid: "99054638"
 
     この問題は、列名に空白またはサポートされていない特殊文字 (;{}()\n\t= など) があることによって発生する可能性があります。Parquet はこのような形式をサポートしていないためです。 
 
-    たとえば、*contoso(test)* のような列名は[コード](https://github.com/apache/parquet-mr/blob/master/parquet-column/src/main/java/org/apache/parquet/schema/MessageTypeParser.java) `Tokenizer st = new Tokenizer(schemaString, " ;{}()\n\t");` の丸かっこで囲まれた型を解析します。 このような "test" 型がないため、エラーがスローされます。
+    たとえば、*contoso(test)* のような列名は [コード](https://github.com/apache/parquet-mr/blob/master/parquet-column/src/main/java/org/apache/parquet/schema/MessageTypeParser.java) `Tokenizer st = new Tokenizer(schemaString, " ;{}()\n\t");` の丸かっこで囲まれた型を解析します。 このような "test" 型がないため、エラーがスローされます。
 
     サポートされている型を確認するには、GitHub の [apache/parquet-mr サイト](https://github.com/apache/parquet-mr/blob/master/parquet-column/src/main/java/org/apache/parquet/schema/OriginalType.java)にアクセスしてください。
 
@@ -818,7 +771,7 @@ ms.locfileid: "99054638"
 
 ## <a name="rest"></a>REST
 
-### <a name="error-code--restsinkcallfailed"></a>エラー コード:RestSinkCallFailed
+### <a name="error-code-restsinkcallfailed"></a>エラー コード:RestSinkCallFailed
 
 - **メッセージ**: `Rest Endpoint responded with Failure from server. Check the error from server:%message;`
 
@@ -850,7 +803,7 @@ ms.locfileid: "99054638"
 
 ## <a name="sftp"></a>SFTP
 
-#### <a name="error-code--sftpoperationfail"></a>エラー コード:SftpOperationFail
+#### <a name="error-code-sftpoperationfail"></a>エラー コード:SftpOperationFail
 
 - **メッセージ**: `Failed to '%operation;'. Check detailed error from SFTP.`
 
@@ -859,7 +812,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:SFTP からエラーの詳細を確認します。
 
 
-### <a name="error-code--sftprenameoperationfail"></a>エラー コード:SftpRenameOperationFail
+### <a name="error-code-sftprenameoperationfail"></a>エラー コード:SftpRenameOperationFail
 
 - **メッセージ**: `Failed to rename the temp file. Your SFTP server doesn't support renaming temp file, set "useTempFileRename" as false in copy sink to disable uploading to temp file.`
 
@@ -868,7 +821,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:コピー シンクで "useTempFileRename" を false に設定して、一時ファイルへのアップロードを無効にします。
 
 
-### <a name="error-code--sftpinvalidsftpcredential"></a>エラー コード:SftpInvalidSftpCredential
+### <a name="error-code-sftpinvalidsftpcredential"></a>エラー コード:SftpInvalidSftpCredential
 
 - **メッセージ**: `Invalid SFTP credential provided for '%type;' authentication type.`
 
@@ -878,7 +831,7 @@ ms.locfileid: "99054638"
 
     秘密キーのコンテンツが Key Vault からのものである場合、SFTP リンク サービスに直接アップロードすると、元のキー ファイルが機能する可能性があります。
 
-    詳細については、「[Azure Data Factory を使用して SFTP サーバーとの間でデータをコピーする](https://docs.microsoft.com/azure/data-factory/connector-sftp#using-ssh-public-key-authentication)」を参照してください。 秘密キーのコンテンツは、Base64 でエンコードされた SSH 秘密キーのコンテンツです。
+    詳細については、「[Azure Data Factory を使用して SFTP サーバーとの間でデータをコピーする](./connector-sftp.md#use-ssh-public-key-authentication)」を参照してください。 秘密キーのコンテンツは、Base64 でエンコードされた SSH 秘密キーのコンテンツです。
 
     Base64 エンコードを使用して元の秘密キー ファイル "*全体*" をエンコードし、エンコードされた文字列を Key Vault に格納します。 ファイルから **[アップロード]** を選択した場合、元の秘密キー ファイルが、SFTP リンク サービスで使用できるキー ファイルです。
 
@@ -932,15 +885,15 @@ ms.locfileid: "99054638"
 - **解決方法**:"AccMngr" 列が存在するかどうかを判断するには、コピー先のデータセット列をマップして、データセットの構成を再確認します。
 
 
-### <a name="error-code--sftpfailedtoconnecttosftpserver"></a>エラー コード:SftpFailedToConnectToSftpServer
+### <a name="error-code-sftpfailedtoconnecttosftpserver"></a>エラー コード:SftpFailedToConnectToSftpServer
 
 - **メッセージ**: `Failed to connect to SFTP server '%server;'.`
 
-- **原因**:エラー メッセージに "ソケット読み取り操作が 3 万ミリ秒後にタイムアウトしました" という文字列が含まれている場合は、SFTP サーバーに無効なリンク サービス タイプが使用されている可能性があります。 たとえば、SFTP サーバーへの接続に、FTP リンク サービスを使用している可能性があります。
+- **原因**:エラー メッセージに "ソケット読み取り操作が 3 万ミリ秒後にタイムアウトしました" という文字列が含まれている場合、原因の 1 つとして、SFTP サーバーに無効なリンクされたサービス タイプが使用されていることが考えられます。 たとえば、SFTP サーバーへの接続に、FTP リンク サービスを使用している可能性があります。
 
 - **推奨事項**:ターゲット サーバーのポートを確認します。 既定では、SFTP はポート 22 を使用します。
 
-- **原因**:エラー メッセージに "Server response does not contain SSH protocol identification" (サーバーの応答に SSH プロトコルの ID が含まれていません) が含まれている場合、考えられる原因の 1 つは、SFTP サーバーによって接続が調整されたことです。 Data Factory が複数の接続を作成して、SFTP サーバーから並列でダウンロードするため、SFTP サーバーの帯域幅調整が行われる場合があります。 通常、調整が発生すると、サーバーごとに異なるエラーが返されます。
+- **原因**:エラー メッセージに "Server response does not contain SSH protocol identification" (サーバーの応答に SSH プロトコルの ID が含まれていません) という文字列が含まれている場合、原因の 1 つとして、SFTP サーバーによって接続が調整されたことが考えられます。 Data Factory が複数の接続を作成して、SFTP サーバーから並列でダウンロードするため、SFTP サーバーの帯域幅調整が行われる場合があります。 通常、調整が発生すると、サーバーごとに異なるエラーが返されます。
 
 - **推奨事項**:  
 
@@ -949,11 +902,11 @@ ms.locfileid: "99054638"
     低スループットを昇格する場合は、SFTP 管理者に問い合わせて、コンカレント接続数の上限を引き上げるか、次のいずれかを実行できます。
 
     * セルフホステッド IR を使用している場合は、セルフホステッド IR コンピューターの IP を許可リストに追加します。
-    * Azure IR を使用している場合は、[Azure Integration Runtime IP アドレス](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses)を追加します。 SFTP サーバーの許可リストに IP の範囲を追加しない場合は、代わりにセルフホステッド IR を使用してください。
+    * Azure IR を使用している場合は、[Azure Integration Runtime IP アドレス](./azure-integration-runtime-ip-addresses.md)を追加します。 SFTP サーバーの許可リストに IP の範囲を追加しない場合は、代わりにセルフホステッド IR を使用してください。
 
 ## <a name="sharepoint-online-list"></a>SharePoint Online リスト
 
-### <a name="error-code--sharepointonlineauthfailed"></a>エラー コード:SharePointOnlineAuthFailed
+### <a name="error-code-sharepointonlineauthfailed"></a>エラー コード:SharePointOnlineAuthFailed
 
 - **メッセージ**: `The access token generated failed, status code: %code;, error message: %message;.`
 
@@ -964,7 +917,7 @@ ms.locfileid: "99054638"
 
 ## <a name="xml-format"></a>XML 形式
 
-### <a name="error-code--xmlsinknotsupported"></a>エラー コード:XmlSinkNotSupported
+### <a name="error-code-xmlsinknotsupported"></a>エラー コード:XmlSinkNotSupported
 
 - **メッセージ**: `Write data in XML format is not supported yet, choose a different format!`
 
@@ -973,7 +926,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:シンク データセットとは異なる形式のデータセットを使用します。
 
 
-### <a name="error-code--xmlattributecolumnnameconflict"></a>エラー コード:XmlAttributeColumnNameConflict
+### <a name="error-code-xmlattributecolumnnameconflict"></a>エラー コード:XmlAttributeColumnNameConflict
 
 - **メッセージ**: `Column names %attrNames;' for attributes of element '%element;' conflict with that for corresponding child elements, and the attribute prefix used is '%prefix;'.`
 
@@ -982,7 +935,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:"attributePrefix" プロパティに別の値を設定します。
 
 
-### <a name="error-code--xmlvaluecolumnnameconflict"></a>エラー コード:XmlValueColumnNameConflict
+### <a name="error-code-xmlvaluecolumnnameconflict"></a>エラー コード:XmlValueColumnNameConflict
 
 - **メッセージ**: `Column name for the value of element '%element;' is '%columnName;' and it conflicts with the child element having the same name.`
 
@@ -991,7 +944,7 @@ ms.locfileid: "99054638"
 - **推奨事項**:"valueColumn" プロパティに別の値を設定します。
 
 
-### <a name="error-code--xmlinvalid"></a>エラー コード:XmlInvalid
+### <a name="error-code-xmlinvalid"></a>エラー コード:XmlInvalid
 
 - **メッセージ**: `Input XML file '%file;' is invalid with parsing error '%error;'.`
 
@@ -1002,16 +955,16 @@ ms.locfileid: "99054638"
 
 ## <a name="general-copy-activity-error"></a>一般的な Copy アクティビティのエラー
 
-### <a name="error-code--jrenotfound"></a>エラー コード:JreNotFound
+### <a name="error-code-jrenotfound"></a>エラー コード:JreNotFound
 
 - **メッセージ**: `Java Runtime Environment cannot be found on the Self-hosted Integration Runtime machine. It is required for parsing or writing to Parquet/ORC files. Make sure Java Runtime Environment has been installed on the Self-hosted Integration Runtime machine.`
 
 - **原因**:セルフホステッド IR は、Java ランタイムを見つけることができません。 Java ランタイムは、特定のソースを読み取るために必要です。
 
-- **推奨事項**:統合ランタイム環境を確認するには、[セルフホステッド統合ランタイムの使用](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime)に関する記事を参照してください。
+- **推奨事項**:統合ランタイム環境を確認するには、[セルフホステッド統合ランタイムの使用](./format-parquet.md#using-self-hosted-integration-runtime)に関する記事を参照してください。
 
 
-### <a name="error-code--wildcardpathsinknotsupported"></a>エラー コード:WildcardPathSinkNotSupported
+### <a name="error-code-wildcardpathsinknotsupported"></a>エラー コード:WildcardPathSinkNotSupported
 
 - **メッセージ**: `Wildcard in path is not supported in sink dataset. Fix the path: '%setting;'.`
 

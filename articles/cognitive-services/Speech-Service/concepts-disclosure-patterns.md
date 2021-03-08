@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: 425096bf7cb75ae3560c06cbcd32778536dc1952
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: aec553b473e0fb2688224e8a8d027f7e9f3a6025
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537342"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716620"
 ---
 # <a name="disclosure-design-patterns"></a>設計パターンを開示する
 合成音声エクスペリエンスの適切な[開示レベル](concepts-disclosure-guidelines.md#disclosure-assessment)が決定されたので、考えられる設計パターンについて検討するよい機会です。
@@ -245,6 +245,6 @@ Recommendations
 
 ## <a name="see-also"></a>関連項目
 
-* [ボイス タレント向けの開示](https://docs.microsoft.com/legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context)
+* [ボイス タレント向けの開示](/legal/cognitive-services/speech-service/disclosure-voice-talent?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)
 * [合成音声テクノロジの責任あるデプロイのためのガイドライン](concepts-guidelines-responsible-deployment-synthetic.md)
 * [開示する方法](concepts-disclosure-guidelines.md)

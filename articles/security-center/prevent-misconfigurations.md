@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: a3da9cdea543894aa7aec66112e28658beac84b5
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 2607ff3a6c4bb7bf301818925990521572777ab9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558180"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379193"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>適用/拒否の推奨事項を使用した構成ミスの防止
 
@@ -62,40 +62,7 @@ ms.locfileid: "99558180"
 
 これらの推奨事項は **deny** オプションと共に使用できます。
 
-- ファイアウォールと仮想ネットワークの構成があるストレージ アカウントへのアクセスを制限する必要がある
-- Azure Cache for Redis は仮想ネットワーク内に存在しなければならない
-- Azure Cosmos DB アカウントでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある
-- Azure Machine Learning ワークスペースは、カスタマー マネージド キー (CMK) を使用して暗号化する必要がある
-- Azure Spring Cloud でネットワークの挿入を使用する必要がある
-- Cognitive Services アカウントでカスタマー マネージド キー (CMK) によるデータ暗号化を有効にする必要がある
-- コンテナーの CPU とメモリの制限を強制する必要がある
-- コンテナー イメージは信頼されたレジストリからのみデプロイする必要がある
-- コンテナー レジストリは、カスタマー マネージド キー (CMK) を使用して暗号化する必要がある
-- 特権エスカレーションを含むコンテナーは避ける必要がある
-- 機密性の高いホストの名前空間を共有するコンテナーは避ける必要がある
-- コンテナーは許可されたポートでのみリッスンする必要がある
-- コンテナーで不変 (読み取り専用) のルート ファイル システムを適用する必要がある
-- Key Vault キーには有効期限が必要である
-- Key Vault シークレットには有効期限が必要である
-- キー コンテナーで消去保護が有効になっている必要がある
-- キー コンテナーで論理的な削除が有効になっている必要がある
-- コンテナーで最小限の特権を持つ Linux 機能を適用する必要がある
-- Redis Cache に対してセキュリティで保護された接続のみを有効にする必要がある
-- コンテナーの AppArmor プロファイルのオーバーライドまたは無効化を制限する必要がある
-- 特権コンテナーの使用を避ける
-- コンテナーをルート ユーザーとして実行しない
-- ストレージ アカウントへの安全な転送を有効にする必要がある
-- Service Fabric クラスターでは、ClusterProtectionLevel プロパティを EncryptAndSign に設定する必要がある
-- Service Fabric クラスターは、クライアント認証に Azure Active Directory だけを使用する必要がある
-- サービスは許可されたポートでのみリッスンする必要がある
-- ストレージ アカウントを新しい Azure Resource Manager リソースに移行する必要がある
-- ストレージ アカウントは、仮想ネットワーク ルールを使用してネットワーク アクセスを制限する必要がある
-- ホスト ネットワークとポートの使用を制限する必要がある
-- ポッドの HostPath ボリューム マウントの使用を既知のリストに制限して、侵害されたコンテナーからのノード アクセスを制限する必要がある
-- Azure Key Vault に保存されている証明書の有効期間は 12 か月以内にする必要がある
-- 仮想マシンを新しい Azure Resource Manager リソースに移行する必要がある
-- Application Gateway に対して Web アプリケーション ファイアウォール (WAF) を有効にする必要がある
-- Azure Front Door Service サービスに対して Web Application Firewall (WAF) を有効にする必要がある
+[!INCLUDE [azure-security-center-recommendations-deny](../../includes/asc/recommendations-with-deny.md)]
 
 次の推奨事項は、**適用** オプションで使用できます。
 

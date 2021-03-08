@@ -4,12 +4,12 @@ description: Azure Monitor ログを使用してクラスターの正常性と�
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.openlocfilehash: d52cb1c5f3b1dd1b23adb39f2f65d0e66968e482
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 3bc5c659d9871cb8f1d49d2a3bfde2ce03faea86
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946952"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571891"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>HDInsight で Azure Monitor ログを使用してクラスターの可用性を監視する方法
 
@@ -19,7 +19,7 @@ HDInsight クラスターには、クエリ可能なメトリックとログ、�
 
 Azure Monitor ログでは、HDInsight クラスターなどの複数のリソースによって生成されたデータを 1 つの場所に収集して集計し、統合された監視エクスペリエンスを実現できます。
 
-前提条件として、収集されたデータを格納するための Log Analytics ワークスペースが必要になります。 まだ作成していない場合は、次の記事の手順に従います:「[Azure ポータルで Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)」
+前提条件として、収集されたデータを格納するための Log Analytics ワークスペースが必要になります。 まだ作成していない場合は、次の記事の手順に従います:「[Azure ポータルで Log Analytics ワークスペースを作成する](../azure-monitor/logs/quick-create-workspace.md)」
 
 ## <a name="enable-hdinsight-azure-monitor-logs-integration"></a>HDInsight Azure Monitor ログの統合を有効にする
 
@@ -81,7 +81,7 @@ Azure Monitor ログの統合が有効になったら (これには数分かか�
 
 **[評価基準]** セクションで、利用できないノードについてチェックする頻度に基づいて、 **[期間]** および **[頻度]** を設定します。
 
-このアラートの目的に対しては、 **[期間] = [頻度]** となることを確認すべきです。 期間、頻度、およびその他のアラート パラメーターに関する詳細は、[こちら](../azure-monitor/platform/alerts-unified-log.md#alert-logic-definition)で確認できます。
+このアラートの目的に対しては、 **[期間] = [頻度]** となることを確認すべきです。 期間、頻度、およびその他のアラート パラメーターに関する詳細は、[こちら](../azure-monitor/alerts/alerts-unified-log.md#alert-logic-definition)で確認できます。
 
 シグナル ロジックの構成が終わったら、 **[完了]** を選択します。
 
@@ -94,7 +94,7 @@ Azure Monitor ログの統合が有効になったら (これには数分かか�
 これにより、 **[アクション グループの追加]** が開きます。 **[アクション グループ名 ]** 、 **[短い名前]** 、 **[サブスクリプション]** 、および **[リソース グループ]** を選択します。 **[アクション]** セクション下で、 **[アクション名]** を選択して、 **[アクションの種類]** として **[Email/SMS/Push/Voice]\(電子メール/SMS/プッシュ/音声\)** を選択します。
 
 > [!NOTE]
-> [Email/SMS/Push/Voice]\(電子メール/SMS/プッシュ/音声\) 以外にも、Azure Function、LogicApp、Webhook、ITSM、および Automation Runbook など、アラートがトリガーできる他のアクションが複数あります。 [詳細を確認してください。](../azure-monitor/platform/action-groups.md#action-specific-information)
+> [Email/SMS/Push/Voice]\(電子メール/SMS/プッシュ/音声\) 以外にも、Azure Function、LogicApp、Webhook、ITSM、および Automation Runbook など、アラートがトリガーできる他のアクションが複数あります。 [詳細を確認してください。](../azure-monitor/alerts/action-groups.md#action-specific-information)
 
 これにより、 **[Email/SMS/Push/Voice]\(電子メール/SMS/プッシュ/音声\)** が開きます。 受信者の **[名前]** を選択し、 **[電子メール]** チェック ボックスを **オン** にして、アラートの送信先になる電子メール アドレスを入力します。 **[Email/SMS/Push/Voice]\(電子メール/SMS/プッシュ/音声\)** で **[OK]** を選択してから、 **[アクション グループの追加]** でアクション グループの構成を完了します。
 

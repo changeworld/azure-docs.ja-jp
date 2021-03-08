@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 01/25/2021
-ms.openlocfilehash: 8e5b43383e0b49c0fe6fffdd9ffee6667fb540f8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.date: 02/05/2021
+ms.openlocfilehash: 19c7d37d62ec54e57127f5993e8bae4d4e9a2908
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054756"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388534"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -193,19 +193,20 @@ ms.locfileid: "99054756"
 
 ### <a name="integration-service-environment-ise"></a>統合サービス環境 (ISE)
 
-[Premium ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) のスループットの上限は次のとおりです。
+* [Developer ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level):1 分あたり最大 500 回の実行が提供されますが、これらの点に注意してください。
 
-| 名前 | 制限 | Notes |
-|------|-------|-------|
-| 基本単位の実行制限 | インフラストラクチャの容量が 80% に達するとシステムが調整される | 1 分あたり最大 4,000 回のアクション実行 (1 か月あたり最大 1 億 6,000 万回のアクション実行) が提供されます | |
-| スケール ユニットの実行制限 | インフラストラクチャの容量が 80% に達するとシステムが調整される | 各スケール ユニットでは、1 分あたり最大 2,000 回の追加アクション実行 (1 か月あたり最大 8,000 万回の追加アクション実行) を提供できます | |
-| 追加できる最大スケール ユニット | 10 | |
-||||
+  * この SKU は、必ず探索、実験、開発、またはテストにのみ使用し、運用環境やパフォーマンス テストには使用しないでください。 この SKU には、サービス レベル アグリーメント (SLA)、スケールアップ機能、リサイクル中の冗長性がありません。これは、遅延やダウンタイムが発生する可能性があることを意味します。
 
-通常の処理でこれらの制限を超えるか、これらの制限を超える可能性のある負荷テストを実行するには、[Logic Apps チームに問い合わせ](mailto://logicappsemail@microsoft.com)の上、要件についてご相談ください。
+  * バックエンドの更新により、サービスが断続的に中断する場合があります。
 
-> [!NOTE]
-> [開発者 ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) には公開されている制限、スケールアップの機能、サービス レベル アグリーメント (SLA) はありません。 この SKU は、実験、開発、テストにのみ使用し、運用環境やパフォーマンス テストには使用しないでください。
+* [Premium ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level):次の表では、この SKU のスループット制限について説明していますが、通常の処理でこれらの制限を超えるか、これらの制限を超える可能性のあるロード テストを実行するには、[Logic Apps チームに問い合わせ](mailto://logicappsemail@microsoft.com)の上、要件についてご相談ください。
+
+  | 名前 | 制限 | Notes |
+  |------|-------|-------|
+  | 基本単位の実行制限 | インフラストラクチャの容量が 80% に達するとシステムが調整される | 1 分あたり最大 4,000 回のアクション実行 (1 か月あたり最大 1 億 6,000 万回のアクション実行) が提供されます | |
+  | スケール ユニットの実行制限 | インフラストラクチャの容量が 80% に達するとシステムが調整される | 各スケール ユニットでは、1 分あたり最大 2,000 回の追加アクション実行 (1 か月あたり最大 8,000 万回の追加アクション実行) を提供できます | |
+  | 追加できる最大スケール ユニット | 10 | |
+  ||||
 
 <a name="gateway-limits"></a>
 
@@ -388,7 +389,7 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 
 たとえば、米国西部リージョンのロジック アプリが、組み込みのトリガーとアクション ([HTTP トリガーやアクションなど](../connectors/connectors-native-http.md)) を介して送信または受信する呼び出しをサポートする場合、ファイアウォールでは、"*すべて*" の Azure Logic Apps サービスの受信 IP アドレス "*および*" 米国西部リージョンに存在する送信 IP アドレスへのアクセスを許可する必要があります。
 
-また、ロジック アプリが Office 365 Outlook コネクタや SQL コネクタなどの [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)を使用している場合、または [カスタム コネクタ](/connectors/custom-connectors/)を使用している場合、そのファイアウォールでは、ロジック アプリの Azure リージョン内の "*すべて*" の[マネージド コネクタ送信 IP アドレス](#outbound)へのアクセスを許可する必要もあります。 さらに、オンプレミスのリソースにアクセスするカスタム コネクタを [Azure 内のオンプレミス データ ゲートウェイ リソース](logic-apps-gateway-connection.md)を介して使用する場合は、ゲートウェイのインストールをセットアップして、対応する *マネージド コネクタ[送信 IP アドレス](#outbound)* へのアクセスを許可する必要があります。
+また、ロジック アプリが Office 365 Outlook コネクタや SQL コネクタなどの [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)を使用している場合、または [カスタム コネクタ](/connectors/custom-connectors/)を使用している場合、そのファイアウォールでは、ロジック アプリの Azure リージョン内の "*すべて*" の [マネージド コネクタ送信 IP アドレス](#outbound)へのアクセスを許可する必要もあります。 さらに、オンプレミスのリソースにアクセスするカスタム コネクタを [Azure 内のオンプレミス データ ゲートウェイ リソース](logic-apps-gateway-connection.md)を介して使用する場合は、ゲートウェイのインストールをセットアップして、対応する *マネージド コネクタ [送信 IP アドレス](#outbound)* へのアクセスを許可する必要があります。
 
 ゲートウェイでの通信設定の設定の詳細については、次のトピックを参照してください。
 
@@ -427,6 +428,12 @@ IP アドレスを使用してファイアウォールを設定する前に、�
 
 > [!TIP]
 > セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、各リージョンの受信 Logic Apps IP アドレスのプレフィックスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md) **LogicAppsManagement** を使用することもできます。 必要に応じて、各リージョンに対して受信マネージド コネクタの IP アドレス プレフィックスを指定するのでなく、**AzureConnectors** サービス タグを、Logic Apps サービスへの受信 Webhook コールバックを行うマネージド コネクタに対して使用することもできます。 これらのタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。
+>
+> 次のコネクタは、Logic Apps サービスへの受信 Webhook コールバックを行います。
+>
+> Adobe Creative Cloud、Adobe Sign、Adobe Sign Demo、Adobe Sign Preview、Adobe Sign Stage、Azure Sentinel、Business Central、Calendly、Common Data Service、DocuSign、DocuSign Demo、Dynamics 365 for Fin & Ops、LiveChat、Office 365 Outlook、Outlook.com、Parserr、SAP*、Shifts for Microsoft Teams、Teamwork Projects、Typeform
+>
+> \* **SAP**:返される呼び出し元は、デプロイ環境がマルチテナント Azure か ISE かによって異なります。 マルチテナント環境では、オンプレミス データ ゲートウェイによって Logic Apps サービスへのコールバックが行われます。 ISE では、SAP コネクタによって Logic Apps サービスへのコールバックが行われます。
 
 <a name="multi-tenant-inbound"></a>
 

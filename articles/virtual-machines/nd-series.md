@@ -3,16 +3,16 @@ title: ND シリーズ - Azure Virtual Machines
 description: ND シリーズ VM の仕様。
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: hpc
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 15a5b1d9659d33ee6eb56434bbdd4322d53c99c3
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: c800dd47c92ca4d7d30f5726dfc2ee0fabb93083
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094722"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670141"
 ---
 # <a name="nd-series"></a>ND シリーズ
 

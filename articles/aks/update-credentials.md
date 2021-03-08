@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスター用のサービス �
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: c787f172bc03e11c574c4de967aee05da9df18aa
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: ba2c31872ae026cfdfcb7be17d333fb98194dce6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427515"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389010"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 用の資格情報を更新またはローテーションする
 
@@ -32,11 +32,11 @@ AKS クラスターの資格情報を更新するときは、以下のどちら�
 * 新しいサービス プリンシパルを作成し、それらの新しい資格情報を使用するようにクラスターを更新します。 
 
 > [!WARNING]
-> " *新しい* " サービス プリンシパルの作成を選択する場合、これらの資格情報を使用するための大規模な AKS クラスターの更新には、完了までに時間がかかることがあります。
+> "*新しい*" サービス プリンシパルの作成を選択する場合、これらの資格情報を使用するための大規模な AKS クラスターの更新には、完了までに時間がかかることがあります。
 
 ### <a name="check-the-expiration-date-of-your-service-principal"></a>サービス プリンシパルの有効期限を確認する
 
-サービス プリンシパルの有効期限を確認するには、[az ad sp credential list][az-ad-sp-credential-list] コマンドを使用します。 次の例では、 [az aks show][az-aks-show] コマンドを使用して、 *myResourceGroup* リソース グループ内の *myAKSCluster* という名前のクラスターのサービス プリンシパル ID を取得します。 サービス プリンシパル ID は、 [az ad sp credential list][az-ad-sp-credential-list] コマンドで使用するための *SP_ID* という名前の変数として設定されます。
+サービス プリンシパルの有効期限を確認するには、[az ad sp credential list][az-ad-sp-credential-list] コマンドを使用します。 次の例では、[az aks show][az-aks-show] コマンドを使用して、*myResourceGroup* リソース グループ内の *myAKSCluster* という名前のクラスターのサービス プリンシパル ID を取得します。 サービス プリンシパル ID は、[az ad sp credential list][az-ad-sp-credential-list] コマンドで使用するための *SP_ID* という名前の変数として設定されます。
 
 ```azurecli
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
@@ -46,7 +46,10 @@ az ad sp credential list --id $SP_ID --query "[].endDate" -o tsv
 
 ### <a name="reset-the-existing-service-principal-credential"></a>既存のサービス プリンシパルの資格情報をリセットする
 
-既存のサービス プリンシパル資格情報を更新するには、[az aks show][az-aks-show] コマンドを使用して、クラスターのサービス プリンシパル ID を取得します。 以下の例は、 *myResourceGroup* リソース グループにある *myAKSCluster* という名前のクラスターの ID を取得します。 サービス プリンシパル ID は、追加コマンドで使用するための *SP_ID* という名前の変数として設定されます。 これらのコマンドでは Bash 構文を使用します。
+既存のサービス プリンシパル資格情報を更新するには、[az aks show][az-aks-show] コマンドを使用して、クラスターのサービス プリンシパル ID を取得します。 以下の例は、*myResourceGroup* リソース グループにある *myAKSCluster* という名前のクラスターの ID を取得します。 サービス プリンシパル ID は、追加コマンドで使用するための *SP_ID* という名前の変数として設定されます。 これらのコマンドでは Bash 構文を使用します。
+
+> [!WARNING]
+> Azure Virtual Machine Scale Sets を使用する AKS クラスターでクラスターの資格情報をリセットすると、[ノード イメージのアップグレード][node-image-upgrade]が実行され、新しい資格情報でノードが更新されます。
 
 ```azurecli-interactive
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
@@ -82,7 +85,7 @@ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-次に、以下の例に示すように、使用した [az ad sp create-for-rbac][az-ad-sp-create] コマンドの出力を使用して、サービス プリンシパル ID とクライアント シークレットの変数を定義します。 *SP_ID* は *appId* で、 *SP_SECRET* は *パスワード* です。
+次に、以下の例に示すように、使用した [az ad sp create-for-rbac][az-ad-sp-create] コマンドの出力を使用して、サービス プリンシパル ID とクライアント シークレットの変数を定義します。 *SP_ID* は *appId* で、*SP_SECRET* は *パスワード* です。
 
 ```console
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5
@@ -138,3 +141,4 @@ az aks update-credentials \
 [az-ad-sp-create]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
 [az-ad-sp-credential-list]: /cli/azure/ad/sp/credential#az-ad-sp-credential-list
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
+[node-image-upgrade]: ./node-image-upgrade.md

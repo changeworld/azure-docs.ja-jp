@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 28ec6659430cfdbc81533f05863ccb0ddc560e32
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 21f07ed76ef0b900a723677acc2bf576649fe861
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508034"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702013"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Azure Defender for SQL の概要
 
@@ -44,7 +44,7 @@ Azure Defender for SQL には、Azure Security Center の[データ セキュリ
     - [SQL Server on Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/)
     - オンプレミスの SQL サーバー:
         - [Azure Arc 対応 SQL Server (プレビュー)](/sql/sql-server/azure-arc/overview)
-        - [Windows マシン上で実行される SQL Server (Azure Arc なし)](../azure-monitor/platform/agent-windows.md)
+        - [Windows マシン上で実行される SQL Server (Azure Arc なし)](../azure-monitor/agents/agent-windows.md)
 
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-sql"></a>Azure Defender for SQL の利点

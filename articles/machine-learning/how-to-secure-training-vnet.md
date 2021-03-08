@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 9ef339fb0ccd14314a65d03b59e501069446c870
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 9a937336e1628add54ab5f52cdd6ef475d463f7d
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493839"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515990"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning トレーニング環境をセキュリティで保護する
 
@@ -26,7 +26,7 @@ ms.locfileid: "99493839"
 
 このシリーズの他の記事は次のとおりです。
 
-[1.VNet の概要](how-to-network-security-overview.md) > [ワークスペースをセキュリティで保護する](how-to-secure-workspace-vnet.md) > **3. トレーニング環境をセキュリティで保護する** > [4. 推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)  > [5. Studio の機能を有効にする](how-to-enable-studio-virtual-network.md)
+[1.VNet の概要](how-to-network-security-overview.md) > [2.ワークスペースをセキュリティで保護する](how-to-secure-workspace-vnet.md) > **3.トレーニング環境をセキュリティで保護する** > [4.推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)  > [5.Studio の機能を有効にする](how-to-enable-studio-virtual-network.md)
 
 この記事では、仮想ネットワークで次のトレーニング コンピューティング リソースをセキュリティで保護する方法について説明します。
 > [!div class="checklist"]
@@ -163,15 +163,22 @@ Azure Machine Learning コンピューティングで[強制トンネリング](
 
 * [Virtual Network NAT](../virtual-network/nat-overview.md) を使用する。 NAT ゲートウェイにより、お使いの仮想ネットワーク内の 1 つ以上のサブネットからの送信インターネット接続が提供されます。 詳細については、「[NAT ゲートウェイ リソースを使用した仮想ネットワークの設計](../virtual-network/nat-gateway-resource.md)」を参照してください。
 
-* コンピューティング リソースを含むサブネットに[ユーザー定義ルート (UDR)](../virtual-network/virtual-networks-udr-overview.md) を追加します。 自分のリソースが存在するリージョンで Azure Batch サービスによって使用される IP アドレスごとに、UDR を確立します。 これらの UDR により、Batch サービスが、タスクをスケジュールする目的でプールのコンピューティング ノードと通信できるようになります。 コンピューティング インスタンスへのアクセスに必要なため、リソースが存在する Azure Machine Learning service の IP アドレスも追加します。 Batch サービスと Azure Machine Learning service の IP アドレスの一覧を取得するには、次のいずれかの方法を使用します。
+* コンピューティング リソースを含むサブネットに[ユーザー定義ルート (UDR)](../virtual-network/virtual-networks-udr-overview.md) を追加します。 自分のリソースが存在するリージョンで Azure Batch サービスによって使用される IP アドレスごとに、UDR を確立します。 これらの UDR により、Batch サービスが、タスクをスケジュールする目的でプールのコンピューティング ノードと通信できるようになります。 コンピューティング インスタンスへのアクセスに必要なため Azure Machine Learning service の IP アドレスも追加します。 Azure Machine Learning service の IP アドレスを追加する場合は、__プライマリとセカンダリ__ の両方の Azure リージョンに IP を追加する必要があります。 ワークスペースが配置されているプライマリ リージョン。
+
+    セカンダリ リージョンを検索するには、「[Azure のペアになっているリージョンを使用したビジネス継続性とディザスター リカバリー](../best-practices-availability-paired-regions.md#azure-regional-pairs)」を参照してください。 たとえば、Azure Machine Learning service が米国東部 2 にある場合、セカンダリ リージョンは米国中部です。 
+
+    Batch サービスと Azure Machine Learning service の IP アドレスの一覧を取得するには、次のいずれかの方法を使用します。
 
     * [Azure の IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)をダウンロードし、`BatchNodeManagement.<region>` と `AzureMachineLearning.<region>` のファイルを検索する。ここで、`<region>` は Azure リージョンです。
 
-    * [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) を使用して情報をダウンロードする。 次の例では、IP アドレス情報をダウンロードし、米国東部 2 リージョンの情報を除外します。
+    * [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) を使用して情報をダウンロードする。 次の例では、IP アドレス情報をダウンロードし、米国東部 2 リージョン (プライマリ) と米国中部リージョン (セカンダリ) の情報を除外します。
 
         ```azurecli-interactive
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
+        # Get primary region IPs
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
+        # Get secondary region IPs
+        az network list-service-tags -l "Central US" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='centralus']"
         ```
 
         > [!TIP]
@@ -190,7 +197,6 @@ Azure Machine Learning コンピューティングで[強制トンネリング](
     定義する UDR に加えて、Azure Storage への送信トラフィックがオンプレミスのネットワーク アプライアンス経由で許可されている必要があります。 具体的には、このトラフィックの URL は、`<account>.table.core.windows.net`、`<account>.queue.core.windows.net`、および `<account>.blob.core.windows.net` の形式になります。 
 
     詳細については、「[仮想ネットワーク内に Azure Batch プールを作成する](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling)」を参照してください。
-
 
 ### <a name="create-a-compute-cluster-in-a-virtual-network"></a>仮想ネットワーク内にコンピューティング クラスターを作成する
 
@@ -267,7 +273,7 @@ Azure のコンピューティング インスタンスでノートブックを�
 > * 仮想ネットワークでワークスペースの Azure Storage アカウントもセキュリティで保護される場合、それらは Azure Databricks クラスターと同じ仮想ネットワークに存在する必要があります。
 > * Azure Databricks によって使用される __databricks-private__ および __databricks-public__ サブネットに加えて、仮想ネットワーク用に作成された __既定の__ サブネットも必要です。
 
-仮想ネットワークでの Azure Databricks の使用に関する具体的な情報については、「[Azure Virtual Network に Azure Databricks をデプロイする](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html)」を参照してください。
+仮想ネットワークでの Azure Databricks の使用に関する具体的な情報については、「[Azure Virtual Network に Azure Databricks をデプロイする](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)」を参照してください。
 
 <a id="vmorhdi"></a>
 

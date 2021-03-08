@@ -3,12 +3,12 @@ title: チュートリアル - Azure VM での SAP HANA データベースのバ
 description: このチュートリアルでは、Azure VM 上で稼働している SAP HANA データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について学習します。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 31a0a773096ec0f69e87bfd4a05f8ba98185e6cf
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 5548717b25ea3ec027ba5f588e5e28faafbb5d6f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695216"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703683"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>チュートリアル:Azure VM での SAP HANA データベースのバックアップ
 
@@ -98,6 +98,46 @@ Azure Firewall を使用している場合は、*AzureBackup* [Azure Firewall FQ
 ### <a name="use-an-http-proxy-server-to-route-traffic"></a>トラフィックをルーティングするために HTTP プロキシ サーバーを使用する
 
 Azure VM で実行されている SAP HANA データベースをバックアップする場合、VM 上のバックアップ拡張機能によって HTTPS API が使用され、管理コマンドが Azure Backup に送信されてデータが Azure Storage に送信されます。 また、バックアップ拡張機能では、認証に Azure AD を使用します。 HTTP プロキシ経由でこれらの 3 つのサービスのバックアップ拡張機能のトラフィックをルーティングします。 必要なサービスへのアクセスを許可するには、上記で説明した IP と FQDN の一覧を使用します。 認証済みプロキシ サーバーはサポートされません。
+
+## <a name="understanding-backup-and-restore-throughput-performance"></a>バックアップと復元のスループット パフォーマンスについて
+
+SAP HANA Azure VM では、Backint によってバックアップ (ログとそれ以外) が実現されますが、このバックアップは Azure Recovery Services コンテナーへのストリームであるため、このストリーミング手法について理解することが重要となります。
+
+HANA の Backint コンポーネントは、ディスクに接続された "パイプ" (情報を読み取るためのパイプと書き込むためのパイプ) の役割を果たします。基になるディスクには、データベース ファイルが存在します。それらが Azure Backup サービスによって読み取られて、Azure Recovery Services コンテナーに転送されます。 Azure Backup サービスは、backint のネイティブ検証チェックとは別に、チェックサムによってストリームを検証します。 これらの検証によって、Azure Recovery Services コンテナーにあるデータが確かに信頼できるものであり、回復可能であることが確認されます。
+
+ストリームの処理対象になるのは主にディスクであるため、バックアップと復元のパフォーマンスを正確に測定するためには、ディスクのパフォーマンスを把握する必要があります。 Azure VM におけるディスクのスループットとパフォーマンスを深く理解するために、[こちらの記事](../virtual-machines/disks-performance.md)を参照してください。 これらはバックアップと復元のパフォーマンスにも当てはまります。
+
+**Azure Backup サービスは、ログ バックアップ以外 (完全、差分、増分など) で最大約 420 MBps を、HANA のログ バックアップで最大 100 MBps を達成しようと試みます**。 前述のように、これらの速度は保証されているわけではなく、次の要因に左右されます。
+
+* キャッシュ不使用時の VM の最大ディスク スループット
+* 基になるディスクの種類とそのスループット
+* 同じディスクに対して同時に読み取りと書き込みを試行するプロセスの数。
+
+> [!IMPORTANT]
+> キャッシュ不使用時のディスク スループットが 400 MBps を超えないまでも、それに限りなく近いような小さな VM では、ディスク全体の IOPS がバックアップ サービスによって消費されるおそれがあり、ディスクに対する読み取り/書き込みに関連した SAP HANA の動作に影響を及ぼす可能性があります。 そのようなケースで、バックアップ サービスの消費をスロットル (制限) して上限を超えないようにしたい場合は、次のセクションを参照してください。
+
+### <a name="limiting-backup-throughput-performance"></a>バックアップのスループット パフォーマンスを制限する
+
+バックアップ サービスのディスク IOPS 消費をスロットルして上限値を超えないようにしたい場合は、次の手順を実行してください。
+
+1. "opt/msawb/bin" フォルダーに移動します
+2. "ExtensionSettingOverrides.JSON" という名前の新しい JSON ファイルを作成します
+3. JSON ファイルに、次のキーと値のペアを追加します。
+
+    ```json
+    {
+    "MaxUsableVMThroughputInMBPS": 200
+    }
+    ```
+
+4. ファイルのアクセス許可と所有権を次のように変更します。
+    
+    ```bash
+    chmod 750 ExtensionSettingsOverrides.json
+    chown root:msawb ExtensionSettingsOverrides.json
+    ```
+
+5. サービスを再起動する必要はありません。 Azure Backup サービスは、このファイルの記述に従ってスループット パフォーマンスの制限を試みます。
 
 ## <a name="what-the-pre-registration-script-does"></a>事前登録スクリプトで実行される処理
 
@@ -227,10 +267,10 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
    ![差分バックアップ ポリシー](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
    >[!NOTE]
-   >パブリック プレビューでは、増分バックアップが使用できるようになりました。 毎日のバックアップとしては、差分バックアップまたは増分バックアップのどちらかを選択できます。両方を選択することはできません。
-   >
-7. **増分バックアップ ポリシー** で、 **[有効]** を選択して頻度とリテンション期間の制御を開きます。
-    * 最多で、1 日に 1 回の差分バックアップをトリガーできます。
+   >毎日のバックアップとしては、差分バックアップまたは増分バックアップのどちらかを選択できます。両方を選択することはできません。
+
+7. **[増分バックアップ ポリシー]** で、 **[有効]** を選択して頻度と保有期間の制御を開きます。
+    * 最多で、1 日に 1 回の増分バックアップをトリガーできます。
     * 増分バックアップは、最大 180 日間保持できます。 より長いリテンション期間が必要な場合は、完全バックアップを使用する必要があります。
 
     ![増分バックアップ ポリシー](./media/backup-azure-sap-hana-database/incremental-backup-policy.png)

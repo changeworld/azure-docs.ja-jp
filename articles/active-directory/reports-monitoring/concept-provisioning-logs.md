@@ -17,12 +17,12 @@ ms.date: 1/29/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad69df37d2635156873dc59d6fbf700a67ade548
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 284b554581534a8493225fba0b70b074fb7dd982
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091934"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651939"
 ---
 # <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>Azure portal のプロビジョニング ログの概要 (プレビュー)
 
@@ -60,8 +60,8 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 お客様は、次の 4 つの方法を使用してプロビジョニング ログと対話できます。
 
 - 次のセクションの説明に従って、Azure portal からログにアクセスします。
-- プロビジョニング ログを [Azure Monitor](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) にストリーミングします。 この方法を使用すると、データ保持期間を延長でき、カスタムのダッシュボード、アラート、クエリを作成できます。
-- [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) のクエリを実行して、プロビジョニング ログを見つけます。
+- プロビジョニング ログを [Azure Monitor](../app-provisioning/application-provisioning-log-analytics.md) にストリーミングします。 この方法を使用すると、データ保持期間を延長でき、カスタムのダッシュボード、アラート、クエリを作成できます。
+- [Microsoft Graph API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) のクエリを実行して、プロビジョニング ログを見つけます。
 - プロビジョニング ログを CSV または JSON ファイルとしてダウンロードします。
 
 ## <a name="access-the-logs-from-the-azure-portal"></a>Azure portal からログにアクセスする
@@ -207,7 +207,7 @@ JSON ファイルは、ダウンロードのサイズを削減するために、
 
 ここでは、PowerShell を使用して JSON ファイルを操作するためのサンプル コマンドをいくつか紹介します。 使い慣れた任意のプログラミング言語を使用できます。  
 
-まず、このコマンドを実行して [JSON ファイルを読み取ります](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1)。
+まず、このコマンドを実行して [JSON ファイルを読み取ります](/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1)。
 
 ` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
 

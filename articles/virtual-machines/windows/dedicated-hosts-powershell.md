@@ -2,18 +2,19 @@
 title: Azure PowerShell を使用して Azure 専用ホストにデプロイする
 description: Azure PowerShell を使用して専用ホストに VM をデプロイします。
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: dedicated-hosts
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/12/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 2f8f2d9eb14e1272af126c9a6d6663f41aaee33f
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: ed6319d5374db56cfe85e7ef9413480e523d9a34
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005088"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050887"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Azure PowerShell を使用して専用ホストに VM をデプロイする
 
@@ -23,7 +24,6 @@ Azure PowerShell バージョン 2.8.0 以降がインストールされてい�
 
 ## <a name="limitations"></a>制限事項
 
-- 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
 - 専用ホストで使用できるサイズとハードウェアの種類は、リージョンによって異なります。 詳しくは、ホストの[価格のページ](https://aka.ms/ADHPricing) を参照してください。
 
 ## <a name="create-a-host-group"></a>ホスト グループを作成する

@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/01/2021
 ms.author: juliako
-ms.openlocfilehash: c0d332c00635444ab4d694e46486a498b43137f2
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: a6b1fc5adba166aa15a786d3440be1eca7f0a260
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427662"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100560501"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -67,7 +67,7 @@ Video Indexer では、Cognitive Services の Custom Vision との統合によ�
 > [!NOTE]
 > LinkedIn と Facebook に接続されている Video Indexer アカウントには、2021 年 3 月 1 日以降アクセスできなくなります。 
 > 
-> 引き続きアクセスできるよう、所有している Azure AD、Microsoft、Google アカウントを Video Indexer アカウントに[招待](invite-users.md)してください。<br/>
+> 引き続きアクセスできるよう、所有している Azure AD、Microsoft、Google アカウントを Video Indexer アカウントに[招待](invite-users.md)してください。 [招待](invite-users.md)に関するページの説明に従って、サポートされているプロバイダーの追加の所有者を加えることができます。 <br/>
 > あるいは、有料アカウントを作成し、データを移行できます。
 
 ## <a name="august-2020"></a>2020 年 8 月

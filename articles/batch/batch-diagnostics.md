@@ -4,22 +4,22 @@ description: プールやタスクなど Azure Batch アカウント リソー�
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 83411d7018155955f5be71bd41803e510edbc9da
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994113"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592678"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
 
-この記事では、[Azure Monitor](../azure-monitor/overview.md) の機能を使用して、Batch アカウントを監視する方法を説明します。 Azure Monitor は、Batch アカウント内のリソースの[メトリック](../azure-monitor/platform/data-platform-metrics.md)と[診断ログ](../azure-monitor/platform/platform-logs-overview.md)を収集します。 このデータを収集し、さまざまな方法で使用して、Batch アカウントの監視と問題の診断を行います。 [メトリック アラート](../azure-monitor/platform/alerts-overview.md)を構成して、メトリックが指定した値に達したときに通知を受信するように構成することもできます。
+この記事では、[Azure Monitor](../azure-monitor/overview.md) の機能を使用して、Batch アカウントを監視する方法を説明します。 Azure Monitor は、Batch アカウント内のリソースの[メトリック](../azure-monitor/essentials/data-platform-metrics.md)と[診断ログ](../azure-monitor/essentials/platform-logs-overview.md)を収集します。 このデータを収集し、さまざまな方法で使用して、Batch アカウントの監視と問題の診断を行います。 [メトリック アラート](../azure-monitor/alerts/alerts-overview.md)を構成して、メトリックが指定した値に達したときに通知を受信するように構成することもできます。
 
 ## <a name="batch-metrics"></a>Batch メトリック
 
 メトリックは、Azure リソースによって生成され、Azure Monitor サービスによって使用される Azure テレメトリ データです (パフォーマンス カウンターとも呼ばれます)。 Batch アカウントのメトリックスの例として、プール作成イベント、優先順位の低いノードの数、タスク完了イベントがあります。
 
-[サポートされる Batch メトリックの一覧](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts)を参照してください。
+[サポートされる Batch メトリックの一覧](../azure-monitor/essentials/metrics-supported.md#microsoftbatchbatchaccounts)を参照してください。
 
 メトリックは、
 
@@ -68,9 +68,9 @@ Azure portal でメトリック アラートを構成するには:
 5. **[アラート ルールの詳細]** セクションで、 **[アラート ルール名]** および **[説明]** を入力し、 **[重要度]** を選択します
 6. **[アラート ルールの作成]** を選択します。
 
-メトリック アラートの作成の詳細については、「[Azure Monitor でのメトリック アラートのしくみを理解する](../azure-monitor/platform/alerts-metric-overview.md)」および「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../azure-monitor/platform/alerts-metric.md)」を参照してください。
+メトリック アラートの作成の詳細については、「[Azure Monitor でのメトリック アラートのしくみを理解する](../azure-monitor/alerts/alerts-metric-overview.md)」および「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../azure-monitor/alerts/alerts-metric.md)」を参照してください。
 
-リアルタイムに近い通知は、Azure Monitor [REST API](/rest/api/monitor/) を使用して構成することもできます。 詳細については、「[Microsoft Azure のアラートの概要](../azure-monitor/platform/alerts-overview.md)」を参照してください。 ジョブ、タスク、またはプール固有の情報をアラートに含めるには、「[Azure Monitor のアラートを使用してイベントに応答する](../azure-monitor/learn/tutorial-response.md)」の検索クエリに関する情報を参照してください。
+リアルタイムに近い通知は、Azure Monitor [REST API](/rest/api/monitor/) を使用して構成することもできます。 詳細については、「[Microsoft Azure のアラートの概要](../azure-monitor/alerts/alerts-overview.md)」を参照してください。 ジョブ、タスク、またはプール固有の情報をアラートに含めるには、「[Azure Monitor のアラートを使用してイベントに応答する](../azure-monitor/alerts/tutorial-response.md)」の検索クエリに関する情報を参照してください。
 
 ## <a name="batch-diagnostics"></a>Batch 診断
 
@@ -88,7 +88,7 @@ Azure portal でメトリック アラートを構成するには:
 または、次のことも可能です。
 
 - Batch 診断ログ イベントを [Azure Event Hub](../event-hubs/event-hubs-about.md) にストリーミングします。 Event Hubs は、毎秒数百万のイベントを取り込み、任意のリアルタイム分析プロバイダーを使用して変換および格納できます。
-- 診断ログを [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)に送信して分析したり、Power BI または Excel で分析するためにエクスポートしたりできます。
+- 診断ログを [Azure Monitor ログ](../azure-monitor/logs/log-query-overview.md)に送信して分析したり、Power BI または Excel で分析するためにエクスポートしたりできます。
 
 > [!NOTE]
 > Azure サービスで診断ログ データの格納または処理を行うには、追加料金が発生することがあります。
@@ -105,7 +105,7 @@ Azure portal に新しい診断設定を作成するには、次の手順に従�
 6. **[ServiceLog]** 、 **[AllMetrics]** 、またはその両方を選択します。
 7. **[保存]** を選択して診断設定を作成します。
 
-[Azure portal で Azure Monitor を使用して収集を有効にする](../azure-monitor/platform/diagnostic-settings.md)ことで、診断設定を構成することもでき、これを行うには、[Resource Manager テンプレート](../azure-monitor/samples/resource-manager-diagnostic-settings.md)を使用するか、Azure PowerShell または Azure CLI を使用します。 詳細については、「[Azure プラットフォーム ログの概要](../azure-monitor/platform/platform-logs-overview.md)」を参照してください。
+[Azure portal で Azure Monitor を使用して収集を有効にする](../azure-monitor/essentials/diagnostic-settings.md)ことで、診断設定を構成することもでき、これを行うには、[Resource Manager テンプレート](../azure-monitor/essentials/resource-manager-diagnostic-settings.md)を使用するか、Azure PowerShell または Azure CLI を使用します。 詳細については、「[Azure プラットフォーム ログの概要](../azure-monitor/essentials/platform-logs-overview.md)」を参照してください。
 
 ### <a name="access-diagnostics-logs-in-storage"></a>ストレージ内の診断ログにアクセスする
 
@@ -135,7 +135,7 @@ BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
 ```
 
-ストレージ アカウント内の診断ログのスキーマの詳細については、「[Azure リソース ログをストレージ アカウントにアーカイブする](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)」を参照してください。 ストレージ アカウント内のログにプログラムでアクセスするには、Storage API を使用します。
+ストレージ アカウント内の診断ログのスキーマの詳細については、「[Azure リソース ログをストレージ アカウントにアーカイブする](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)」を参照してください。 ストレージ アカウント内のログにプログラムでアクセスするには、Storage API を使用します。
 
 ### <a name="service-log-events"></a>サービス ログ イベント
 

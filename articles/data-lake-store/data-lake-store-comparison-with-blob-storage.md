@@ -17,7 +17,7 @@ ms.locfileid: "92108339"
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)] 
 
-この記事の表には、ビッグ データ処理の重要な側面に沿った Azure Data Lake Storage Gen1 と Azure Blob Storage の違いがまとめられています。 Azure BLOB ストレージは、さまざまなストレージ シナリオ向けに設計されたスケーラブルな汎用オブジェクト ストアです。 Azure Data Lake Storage Gen1 は、ビッグ データ分析ワークロードに最適化されたハイパースケール リポジトリです。
+この記事の表には、ビッグ データ処理の重要な側面に沿った Azure Data Lake Storage Gen1 と Azure Blob Storage の違いがまとめられています。 Azure Blob Storage は、さまざまなストレージ シナリオ向けに設計されたスケーラブルな汎用オブジェクト ストアです。 Azure Data Lake Storage Gen1 は、ビッグ データ分析ワークロードに最適化されたハイパースケール リポジトリです。
 
 | カテゴリ | Azure Data Lake Storage Gen1 | Azure Blob Storage |
 | -------- | ---------------------------- | ------------------ |
@@ -26,7 +26,7 @@ ms.locfileid: "92108339"
 | 主要概念 |Data Lake Storage Gen1 アカウントにはフォルダーが含まれ、フォルダーにはファイルとして保存されたデータが含まれます。 |ストレージ アカウントにはコンテナーが含まれ、コンテナーには BLOB の形でデータが含まれます。 |
 | 構造体 |階層型ファイル システム |フラットな名前空間を使用するオブジェクト ストア |
 | API |HTTPS 経由の REST API |HTTP/HTTPS 経由の REST API |
-| サーバー側 API |[WebHDFS 互換の REST API](/rest/api/datalakestore/) |[Azure BLOB ストレージ REST API](/rest/api/storageservices/Blob-Service-REST-API) |
+| サーバー側 API |[WebHDFS 互換の REST API](/rest/api/datalakestore/) |[Azure Blob Storage REST API](/rest/api/storageservices/Blob-Service-REST-API) |
 | Hadoop ファイル システム クライアント |はい |はい |
 | データ操作 - 認証 |[Azure Active Directory ID](../active-directory/develop/authentication-vs-authorization.md) |共有シークレット ([アカウント アクセス キー](../storage/common/storage-account-keys-manage.md)と [Shared Access Signature](../storage/common/storage-sas-overview.md) キー) に基づきます。 |
 | データ操作 - 認証プロトコル |[OpenID Connect](https://openid.net/connect/)。 呼び出しには、Azure Active Directory によって発行された有効な JWT (JSON Web トークン) が含まれている必要があります。|ハッシュベース メッセージ認証コード (HMAC)。 呼び出しには、HTTP 要求の一部に対する Base64 でエンコードされた SHA-256 ハッシュが含まれている必要があります。 |

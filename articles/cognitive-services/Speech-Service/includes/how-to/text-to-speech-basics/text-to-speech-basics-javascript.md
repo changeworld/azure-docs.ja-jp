@@ -2,15 +2,15 @@
 author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 02/10/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: ba61601ba345d554d4898292cb082f71b829b342
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b06defbdac0f1bddfca13db095799f3158095585
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948368"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515080"
 ---
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
 
@@ -25,7 +25,7 @@ ms.locfileid: "98948368"
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事は、Azure アカウントと Speech Service サブスクリプションをお持ちであることを前提としています。 アカウントとサブスクリプションをお持ちでない場合は、[Speech Service を無料でお試しください](../../../overview.md#try-the-speech-service-for-free)。
+この記事は、Azure アカウントと Speech Service リソースがあることを前提としています。 アカウントとリソースがない場合は、[Speech Service を無料でお試しください](../../../overview.md#try-the-speech-service-for-free)。
 
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
@@ -50,7 +50,7 @@ class="docon docon-navigate-external x-hidden-focus"></span></a>
 # <a name="import"></a>[import](#tab/import)
 
 ```javascript
-import * from "microsoft-cognitiveservices-speech-sdk";
+import * as sdk from "microsoft-cognitiveservices-speech-sdk";
 ```
 
 `import` の詳細については、「<a href="https://javascript.info/import-export" target="_blank">export および import <span class="docon docon-navigate-external x-hidden-focus"></span></a>」を参照してください。
@@ -68,23 +68,23 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 
 ## <a name="create-a-speech-configuration"></a>音声構成を作成する
 
-Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) を作成する必要があります。 このクラスには、キー、関連付けられたリージョン、エンドポイント、ホスト、または認証トークンなど、ご利用のサブスクリプションに関する情報が含まれています。
+Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) を作成する必要があります。 このクラスには、キー、関連付けられたリージョン、エンドポイント、ホスト、認証トークンなど、ご利用のリソースに関する情報が含まれます。
 
 > [!NOTE]
 > 音声認識、音声合成、翻訳、またはインテント認識のどれを実行するのかに関係なく、必ず構成を作成します。
 
 [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) を初期化するには、次に示すようないくつかの方法があります。
 
-* サブスクリプションの場合: キーと、それに関連付けられたリージョンを渡します。
+* リソースの場合: キーと、それに関連付けられたリージョンを渡します。
 * エンドポイントの場合: Speech Service エンドポイントを渡します。 キーまたは認証トークンは省略可能です。
 * ホストの場合: ホスト アドレスを渡します。 キーまたは認証トークンは省略可能です。
 * 認証トークンの場合: 認証トークンと、それに関連付けられたリージョンを渡します。
 
-この例では、サブスクリプション キーとリージョンを使用して [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) を作成します。 「[Speech Service を無料で試す](../../../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。 また、この記事の残りの部分で使用する、基本的な定型コードをいくつか作成します。これを変更して、さまざまなカスタマイズを行います。
+この例では、リソース キーとリージョンを使用して [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) を作成します。 「[Speech Service を無料で試す](../../../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。 また、この記事の残りの部分で使用する、基本的な定型コードをいくつか作成します。これを変更して、さまざまなカスタマイズを行います。
 
 ```javascript
 function synthesizeSpeech() {
-    const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
 }
 
 synthesizeSpeech();
@@ -98,7 +98,7 @@ synthesizeSpeech();
 
 ```javascript
 function synthesizeSpeech() {
-    const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
     const audioConfig = AudioConfig.fromAudioFileOutput("path/to/file.wav");
 }
 ```
@@ -114,10 +114,11 @@ function synthesizeSpeech() {
     synthesizer.speakTextAsync(
         "A simple test to write to a file.",
         result => {
-            if (result) {
-                console.log(JSON.stringify(result));
-            }
             synthesizer.close();
+            if (result) {
+                // return result as stream
+                return fs.createReadStream("path-to-file.wav");
+            }
         },
         error => {
             console.log(error);
@@ -142,9 +143,9 @@ function synthesizeSpeech() {
         "Synthesizing directly to speaker output.",
         result => {
             if (result) {
-                console.log(JSON.stringify(result));
+                synthesizer.close();
+                return result.audioData;
             }
-            synthesizer.close();
         },
         error => {
             console.log(error);
@@ -166,7 +167,9 @@ function synthesizeSpeech() {
 > [!NOTE]
 > 前述のスピーカー出力の例のように省略するのではなく、`AudioConfig` に `undefined` を渡した場合、既定ではオーディオは現在のアクティブな出力デバイスで再生されません。
 
-今回は、結果を [`SpeechSynthesisResult`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult) 変数に保存します。 `SpeechSynthesisResult.audioData` プロパティは、出力データの `ArrayBuffer` を返します。 この `ArrayBuffer` は手動で操作できます。
+今回は、結果を [`SpeechSynthesisResult`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult) 変数に保存します。 `SpeechSynthesisResult.audioData` プロパティは、既定のブラウザー ストリーム型である、出力データの `ArrayBuffer` を返します。 サーバー コードの場合、ArrayBuffer をバッファー ストリームに変換します。 
+
+次のコードは、クライアント側のコードに対して機能します。 
 
 ```javascript
 function synthesizeSpeech() {
@@ -176,11 +179,8 @@ function synthesizeSpeech() {
     synthesizer.speakTextAsync(
         "Getting the response as an in-memory stream.",
         result => {
-            // Interact with the audio ArrayBuffer data
-            const audioData = result.audioData;
-            console.log(`Audio data byte size: ${audioData.byteLength}.`)
-
             synthesizer.close();
+            return result.audioData;
         },
         error => {
             console.log(error);
@@ -189,7 +189,34 @@ function synthesizeSpeech() {
 }
 ```
 
-ここから、結果として得られた `ArrayBuffer` オブジェクトを使用して、任意のカスタム動作を実装できます。
+ここから、結果として得られた `ArrayBuffer` オブジェクトを使用して、任意のカスタム動作を実装できます。 ArrayBuffer は、ブラウザーで受信し、この形式から再生する共通の型です。 
+
+サーバー ベースのコードでは、ArrayBuffer ではなくストリームとしてデータを操作する必要がある場合は、オブジェクトをストリームに変換する必要があります。 
+
+```javascript
+function synthesizeSpeech() {
+    const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    const synthesizer = new sdk.SpeechSynthesizer(speechConfig);
+
+    synthesizer.speakTextAsync(
+        "Getting the response as an in-memory stream.",
+        result => {
+            const { audioData } = result;
+
+            synthesizer.close();
+
+            // convert arrayBuffer to stream
+            // return stream
+            const bufferStream = new PassThrough();
+            bufferStream.end(Buffer.from(audioData));
+            return bufferStream;
+        },
+        error => {
+            console.log(error);
+            synthesizer.close();
+        });
+}
+```
 
 ## <a name="customize-audio-format"></a>オーディオ形式をカスタマイズする
 

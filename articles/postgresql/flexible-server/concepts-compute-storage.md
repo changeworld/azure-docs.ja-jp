@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: ca60c44d1e167367e2c138af1e7bfd4ba1a69417
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3c8c8b2316a206ba837c0b32fd699dc0ed1eeea
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710075"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519390"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーのコンピューティングとストレージのオプション
 
@@ -151,7 +151,10 @@ IOPS は VM の種類によっても制限されることに注意してくだ�
 
 ストレージの上限に達すると、サーバーはエラーを返し始め、それ以上の変更ができなくなります。 これにより、バックアップや WAL アーカイブなどの他の運用アクティビティにも問題が発生する可能性があります。
 
+この状況を回避するために、ストレージの使用率が 95% に達したとき、または使用可能な容量が 5 GiB 未満の場合は、サーバーが **読み取り専用モード** に自動的に切り替わります。
+
 使用中のディスク領域を積極的に監視して、ストレージが不足している場合は事前にディスク サイズを増やすことが推奨されます。 サーバーのストレージがディスク不足に近づいたときに通知するアラートを設定できるため、ディスク不足に陥る問題を回避できます。 詳細については、[アラートの設定方法](howto-alert-on-metrics.md)に関するドキュメントをご覧ください。
+
 
 ### <a name="storage-auto-grow"></a>ストレージの自動拡張
 

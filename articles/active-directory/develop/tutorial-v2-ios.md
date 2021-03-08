@@ -13,12 +13,12 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c9e4997ad08f2dd1d96dd442f80ad4203abf6261
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e273b1c41a9c418bf0121e87e73ec59e65f2242e
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015888"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102956"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>チュートリアル:iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph を呼び出す
 
@@ -71,7 +71,7 @@ ms.locfileid: "98015888"
 
 ## <a name="register-your-application"></a>アプリケーションの登録
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
@@ -155,7 +155,7 @@ var webViewParameters : MSALWebviewParameters?
 var currentAccount: MSALAccount?
 ```
 
-上記で変更する必要がある値は、`kClientID` に割り当てる[アプリケーション ID](./developer-glossary.md#application-id-client-id) の値だけです。 この値は、このチュートリアルの最初の Azure portal でアプリケーションを登録する手順で保存した、MSAL 構成データの一部です。
+上記で変更する値は、`kClientID` に割り当てる[アプリケーション ID](./developer-glossary.md#application-id-client-id) の値だけです。 この値は、このチュートリアルの最初の Azure portal でアプリケーションを登録する手順で保存した、MSAL 構成データの一部です。
 
 ## <a name="configure-xcode-project-settings"></a>Xcode プロジェクト設定の構成
 

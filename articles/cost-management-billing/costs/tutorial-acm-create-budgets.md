@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 5659f3b2d020a97ed2460c55283bb41f2f7606cc
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 16c18d8f86890baaf1882c532c19ff32ab2017da
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943729"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592663"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
@@ -140,7 +140,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 ## <a name="trigger-an-action-group"></a>アクション グループをトリガーする
 
-サブスクリプション スコープまたはリソース グループ スコープの予算を作成または編集するときに、アクション グループを呼び出すように予算を構成できます。 予算しきい値に達すると、アクション グループはさまざまなアクションを実行できます。 アクション グループは現在、サブスクリプションとリソース グループのスコープに対してのみサポートされています。 アクション グループの詳細については、「[Azure portal でのアクション グループの作成および管理](../../azure-monitor/platform/action-groups.md)」をご覧ください。 アクション グループで予算ベースの自動化を使用する方法の詳細については、「[Azure Budgets でのコストの管理](../manage/cost-management-budget-scenario.md)」をご覧ください。
+サブスクリプション スコープまたはリソース グループ スコープの予算を作成または編集するときに、アクション グループを呼び出すように予算を構成できます。 予算しきい値に達すると、アクション グループはさまざまなアクションを実行できます。 アクション グループは現在、サブスクリプションとリソース グループのスコープに対してのみサポートされています。 アクション グループの詳細については、「[Azure portal でのアクション グループの作成および管理](../../azure-monitor/alerts/action-groups.md)」をご覧ください。 アクション グループで予算ベースの自動化を使用する方法の詳細については、「[Azure Budgets でのコストの管理](../manage/cost-management-budget-scenario.md)」をご覧ください。
 
 アクション グループを作成または更新するには、予算の作成または編集時に **[アクション グループの管理]** を選択します。
 
@@ -160,7 +160,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 ![さまざまなアクション グループとアクションの種類で構成されたアラートの条件を示す例](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
 
-予算とアクション グループの統合は、共通アラート スキーマが無効になっているアクション グループに対してのみ機能します。 スキーマの無効化の詳細については、「[共通アラート スキーマを有効にする方法](../../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)」を参照してください。
+予算とアクション グループの統合は、共通アラート スキーマが無効になっているアクション グループに対してのみ機能します。 スキーマの無効化の詳細については、「[共通アラート スキーマを有効にする方法](../../azure-monitor/alerts/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)」を参照してください。
 
 ## <a name="create-and-edit-budgets-with-powershell"></a>PowerShell で予算を作成して編集する
 

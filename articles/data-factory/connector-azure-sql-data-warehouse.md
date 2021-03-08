@@ -1,22 +1,17 @@
 ---
 title: Azure Synapse Analytics のデータをコピーして変換する
 description: Azure Synapse Analytics との間でデータをコピーする方法、および Data Factory を使用して Azure Synapse Analytics のデータを変換する方法について説明します。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 01/29/2021
-ms.openlocfilehash: 386547aa6e815ad6ba7d860c513a3e24c4040cca
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.date: 02/10/2021
+ms.openlocfilehash: 38306b2fb3c0a51aeedbf1ebd9079dd787783093
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223233"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364292"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics のデータをコピーおよび変換する
 
@@ -68,7 +63,7 @@ Azure Synapse Analytics のリンクされたサービスでは、次のプロ�
 | servicePrincipalId  | アプリケーションのクライアント ID を取得します。                         | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | tenant              | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅にマウスを置くことで取得できます。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
-| azureCloudType | サービス プリンシパル認証用に、ご利用の Azure AD アプリケーションが登録されている Azure クラウド環境の種類を指定します。 <br/> 指定できる値は、**AzurePublic**、**AzureChina**、**AzureUsGovernment**、および **AzureGermany** です。 既定では、データ ファクトリのクラウド環境が使用されます。 | いいえ |
+| azureCloudType | サービス プリンシパル認証用に、ご利用の Azure AD アプリケーションが登録されている Azure クラウド環境の種類を指定します。 <br/> 使用できる値は、`AzurePublic`、`AzureChina`、`AzureUsGovernment`、`AzureGermany` です。 既定では、データ ファクトリのクラウド環境が使用されます。 | いいえ |
 | connectVia          | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ                                                           |
 
 さまざまな認証の種類の前提条件と JSON サンプルについては、以下のセクションをご覧ください。
@@ -270,11 +265,11 @@ Azure Synapse Analytics からデータをコピーするには、コピー ア�
 | sqlReaderQuery               | カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`. | いいえ       |
 | sqlReaderStoredProcedureName | ソース テーブルからデータを読み取るストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 | いいえ       |
 | storedProcedureParameters    | ストアド プロシージャのパラメーター。<br/>使用可能な値は、名前または値のペアです。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ       |
-| isolationLevel | SQL ソースのトランザクション ロック動作を指定します。 使用できる値は、次のとおりです。**ReadCommitted**、**ReadUncommitted**、**RepeatableRead**、**Serializable**、**Snapshot**。 指定しなかった場合は、データベースの既定の分離レベルが使用されます。 詳細については[こちらのドキュメント](/dotnet/api/system.data.isolationlevel)をご覧ください。 | いいえ |
+| isolationLevel | SQL ソースのトランザクション ロック動作を指定します。 使用できる値は、次のとおりです。**ReadCommitted**、**ReadUncommitted**、**RepeatableRead**、**Serializable**、**Snapshot**。 指定しなかった場合は、データベースの既定の分離レベルが使用されます。 詳細については、「[system.data.isolationlevel](/dotnet/api/system.data.isolationlevel)」を参照してください。 | いいえ |
 | partitionOptions | Azure Synapse Analytics からのデータの読み込みに使用されるデータ パーティション分割オプションを指定します。 <br>使用できる値は、以下のとおりです。**None** (既定値)、**PhysicalPartitionsOfTable**、および **DynamicRange**。<br>パーティション オプションが有効になっている場合 (つまり、`None` ではない場合)、Azure Synapse Analytics から同時にデータを読み込む並列度は、コピー アクティビティの [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) の設定によって制御されます。 | いいえ |
 | partitionSettings | データ パーティション分割の設定のグループを指定します。 <br>パーティション オプションが `None` でない場合に適用されます。 | いいえ |
-| **_`partitionSettings` の下:_* | | |
-| partitionColumnName | 並列コピーの範囲パーティション分割で使用される *整数型または日付/日時型* (`int`、`smallint`、`bigint`、`date`、`smalldatetime`、`datetime`、`datetime2`、または `datetimeoffset`) のソース列の名前を指定します。 指定されない場合は、テーブルのインデックスまたは主キーが自動検出され、パーティション列として使用されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfDynamicRangePartitionCondition ` をフックします。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
+| ***`partitionSettings` の下:*** | | |
+| partitionColumnName | 並列コピーの範囲パーティション分割で使用される **整数型または日付/日時型** (`int`、`smallint`、`bigint`、`date`、`smalldatetime`、`datetime`、`datetime2`、または `datetimeoffset`) のソース列の名前を指定します。 指定しない場合は、テーブルのインデックスまたは主キーが自動的に検出され、パーティション列として使用されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfDynamicRangePartitionCondition ` をフックします。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
 | partitionUpperBound | パーティション範囲の分割のための、パーティション列の最大値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定されない場合、コピー アクティビティによって値が自動検出されます。  <br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
 | partitionLowerBound | パーティション範囲の分割のための、パーティション列の最小値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定されない場合、コピー アクティビティによって値が自動検出されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
 
@@ -282,7 +277,7 @@ Azure Synapse Analytics からデータをコピーするには、コピー ア�
 
 - ソースのストアド プロシージャを使用してデータを取得する場合、異なるパラメーター値が渡されたときにストアド プロシージャが別のスキーマを返すように設計されていると、UI からスキーマをインポートするとき、または自動テーブル作成を使用して SQL データベースにデータをコピーするときに、エラーが発生したり、予期しない結果が表示されます。
 
-**例: SQL クエリの使用**
+#### <a name="example-using-sql-query"></a>例: SQL クエリの使用
 
 ```json
 "activities":[
@@ -314,7 +309,7 @@ Azure Synapse Analytics からデータをコピーするには、コピー ア�
 ]
 ```
 
-**例: ストアド プロシージャの使用**
+#### <a name="example-using-stored-procedure"></a>例: ストアド プロシージャの使用
 
 ```json
 "activities":[
@@ -350,7 +345,7 @@ Azure Synapse Analytics からデータをコピーするには、コピー ア�
 ]
 ```
 
-**サンプル ストアド プロシージャ:**
+#### <a name="sample-stored-procedure"></a>サンプル ストアド プロシージャ:
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -578,6 +573,9 @@ Azure Synapse Analytics の PolyBase では、Azure Blob、Azure Data Lake Stora
 >- ステージングのリンクされたサービスに対してマネージド ID 認証を使用する場合は [Azure Blob](connector-azure-blob-storage.md#managed-identity) と [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) に必要な各構成について確認してください。
 >- ステージング Azure Storage が VNet サービス エンドポイントを使用して構成されている場合は、ストレージ アカウントで [allow trusted Microsoft service]\(信頼された Microsoft サービスを許可する\) を有効にしたマネージド ID 認証を使用する必要があります。詳細については「[Azure Storage で VNet サービス エンドポイントを使用した場合の影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)」を参照してください。 
 
+>[!IMPORTANT]
+>ステージング Azure Storage がマネージド プライベート エンドポイントで構成され、ストレージ ファイアウォールが有効になっている場合は、マネージド ID 認証を使用し、Synapse SQL Server にストレージ BLOB データ閲覧者のアクセス許可を付与して、PolyBase の読み込み中にステージング ファイルにアクセスできるようにする必要があります。
+
 ```json
 "activities":[
     {
@@ -617,7 +615,7 @@ Azure Synapse Analytics の PolyBase では、Azure Blob、Azure Data Lake Stora
 
 ### <a name="best-practices-for-using-polybase"></a>PolyBase の使用に関するベスト プラクティス
 
-以下のセクションでは、[Azure Synapse Analytics のベスト プラクティス](../synapse-analytics/sql/best-practices-sql-pool.md)に関する記事に記載されているもの以外のベスト プラクティスについて説明します。
+次のセクションでは、[Azure Synapse Analytics のベスト プラクティス](../synapse-analytics/sql/best-practices-sql-pool.md)に関する記事に記載されているもの以外のベスト プラクティスについて説明します。
 
 #### <a name="required-database-permission"></a>必要なデータベース アクセス許可
 
@@ -637,17 +635,17 @@ PolyBase の読み込みは、1 MB 未満の行に制限されます。 VARCHR(M
 
 #### <a name="polybase-troubleshooting"></a>PolyBase に関するトラブルシューティング
 
-**10 進数の列への読み込み**
+#### <a name="loading-to-decimal-column"></a>10 進数の列への読み込み
 
-ソース データがテキスト形式であるか、その他の (ステージング コピーと PolyBase を使用する) PolyBase 非互換ストアにあるときに、その中に Azure Synapse Analytics の 10 進数の列に読み込まれる空の値が含まれている場合は、次のエラーが発生することがあります。
+ソース データがテキスト形式であるか、(ステージング コピーと PolyBase を使用する) その他の PolyBase 非互換ストアにあるときに、その中に Azure Synapse Analytics の 10 進数の列に読み込まれる空の値が含まれている場合は、次のエラーが発生することがあります。
 
-```
+```output
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
 ```
 
 これを解決するには、コピー アクティビティの sink の PolyBase 設定で、(false として) "**型の既定を使用する**" オプションを選択解除します。 "[USE_TYPE_DEFAULT](/sql/t-sql/statements/create-external-file-format-transact-sql#arguments)" は、PolyBase でテキスト ファイルからデータが取得される際に区切りテキスト ファイル内の欠落値を処理する方法を指定する PolyBase ネイティブ構成です。
 
-**Azure Synapse Analytics の `tableName`**
+#### <a name="check-the-tablename-property-in-azure-synapse-analytics"></a>Azure Synapse Analytics で tableName プロパティを確認する
 
 次の表は、JSON データセットで **tableName** プロパティを指定する方法の例です。 スキーマとテーブル名の複数の組み合わせを示します。
 
@@ -660,19 +658,29 @@ ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data typ
 
 次のエラーが表示される場合は、**tableName** プロパティに指定した値に問題がある可能性があります。 **tableName** JSON プロパティの値を指定する正しい方法については、上の表を参照してください。
 
-```
+```output
 Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account_test'.,Source=.Net SqlClient Data Provider
 ```
 
-**既定値を持つ列**
+#### <a name="columns-with-default-values"></a>既定値を持つ列
 
 現在、Data Factory の PolyBase 機能では、ターゲット テーブルと同じ数の列のみを使用できます。 たとえば、4 つの列を含むテーブルがあり、その列の 1 つには既定値が定義されているものとします。 それでも入力データには 4 つの列が必要です。 入力データセットが 3 列の場合は、次のメッセージのようなエラーが発生します。
 
-```
+```output
 All columns of the table must be specified in the INSERT BULK statement.
 ```
 
 null 値は、特殊な形式の既定値です。 列が null 許容の場合、その列に対する BLOB 内の入力データが空になる可能性があります。 ただし、入力データセットから欠落することはできません。 PolyBase では、Azure Synapse Analytics の欠損値に対して null を挿入します。
+
+#### <a name="external-file-access-failed"></a>外部ファイルへのアクセスに失敗する
+
+次のエラーが発生した場合は、マネージド ID 認証を使用していること、および Synapse SQL Server ワークスペースのマネージド ID にストレージ BLOB データ閲覧者のアクセス許可が付与されていることを確認してください。
+
+```output
+Job failed due to reason: at Sink '[SinkName]': shaded.msdataflow.com.microsoft.sqlserver.jdbc.SQLServerException: External file access failed due to internal error: 'Error occurred while accessing HDFS: Java exception raised on call to HdfsBridge_IsDirExist. Java exception message:\r\nHdfsBridge::isDirExist 
+```
+
+詳細については、「[ワークスペースの作成後にマネージド ID にアクセス許可を付与する](../synapse-analytics/security/how-to-grant-workspace-managed-identity-permissions.md#grant-permissions-to-managed-identity-after-workspace-creation)」を参照してください。
 
 ## <a name="use-copy-statement-to-load-data-into-azure-synapse-analytics"></a><a name="use-copy-statement"></a> COPY ステートメントを使用して Azure Synapse Analytics にデータを読み込む
 
@@ -849,14 +857,14 @@ Azure Synapse Analytics との間でデータをコピーする場合、Azure Sy
 | Datetime                              | DateTime                       |
 | datetime2                             | DateTime                       |
 | Datetimeoffset                        | DateTimeOffset                 |
-| Decimal                               | Decimal                        |
+| Decimal                               | Decimal (10 進数型)                        |
 | FILESTREAM attribute (varbinary(max)) | Byte[]                         |
 | Float                                 | Double                         |
 | image                                 | Byte[]                         |
 | INT                                   | Int32                          |
 | money                                 | Decimal                        |
 | nchar                                 | String, Char[]                 |
-| numeric                               | Decimal                        |
+| numeric                               | Decimal (10 進数型)                        |
 | nvarchar                              | String, Char[]                 |
 | real                                  | Single                         |
 | rowversion                            | Byte[]                         |

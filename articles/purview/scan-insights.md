@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/20/2020
-ms.openlocfilehash: 00f72e1de230cdc68f86010b7b25d86debaa5eb5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 7807659a30127f39bb79ad99bdb733c12eb1d25d
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575790"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548687"
 ---
 # <a name="scan-insights-on-your-data-in-azure-purview"></a>Azure Purview 内のデータに関するスキャンの分析情報
 
@@ -51,15 +51,27 @@ Azure Purview では、ソースの種類を登録してスキャンできます
 
 1. **[分析情報]** :::image type="icon" source="media/scan-insights/ico-insights.png" border="false"::: 領域で、 **[スキャン]** を選択して Purview の **[スキャンの分析情報]** レポートを表示します。
 
-### <a name="view-high-level-kpis-to-show-count-of-scans-by-status"></a>高レベルの KPI を表示して状態ごとのスキャンの回数を示す
+### <a name="view-high-level-kpis-to-show-count-of-scans-by-status-and-deep-dive-into-each-scan"></a>状態ごとのスキャンの回数を示す高レベルの KPI を表示して、各スキャンを詳しく調べる
  
-高レベルの KPI は、ある期間内に実行された合計のスキャン回数を示します。 この期間の既定値は過去 30 日間です。 ただし、過去 7 日間も選択できます。 時間フィルターに基づいて、KPI 値にはスキャンの回数が適切に反映されます。
+1. 高レベルの KPI は、ある期間内に実行された合計のスキャン回数を示します。 この期間の既定値は過去 30 日間です。 ただし、過去 7 日間も選択できます。 時間フィルターに基づいて、KPI 値にはスキャンの回数が適切に反映されます。
 
 
-選択した時間フィルターの値に基づいて、週または日ごとの成功したスキャン、失敗したスキャン、取り消されたスキャンの分布をグラフで確認できます。
+1. 選択した時間フィルターの値に基づいて、週または日ごとの成功したスキャン、失敗したスキャン、取り消されたスキャンの分布をグラフで確認できます。
 
-   :::image type="content" source="./media/scan-insights/scan-insights.png" alt-text="スキャンの分析情報を表示する":::
+1. グラフの下部には、さらに詳しく調べるための **[詳細表示]** リンクがあります。 このリンクにより、スキャンの分析情報エクスペリエンス内の **[スキャンの状態]** ページが開きます。 ここで、スキャン名と過去 30 日間にそれが成功、失敗、またはキャンセルされた回数を確認できます。
+
+    :::image type="content" source="./media/scan-insights/main-graph.png" alt-text="時間の経過によるスキャンの状態の表示":::
+
+4. 特定のスキャンをさらに調査するには、**スキャン名** をクリックします。これにより、Azure Purview の **ソース** エクスペリエンス内のスキャン履歴に接続されます。 実行履歴ページからは、エラーのさらなる調査に役立つ実行 ID を取得できます。
+
+    :::image type="content" source="./media/scan-insights/scan-status.png" alt-text="スキャンの詳細の表示":::
+
+5. 最後に、スキャンの分析情報の **[スキャンの状態]** ページに戻るには、実行履歴ページの左上隅にある階層リンクに従います。
+
+    :::image type="content" source="./media/scan-insights/scan-history.png" alt-text="スキャン履歴の表示"::: 
 
 ## <a name="next-steps"></a>次のステップ
 
-[アセットの分析情報](./asset-insights.md)を含む Azure Purview の分析情報レポートの詳細について学習する
+* [データの分析情報](./concept-insights.md)を含む Azure Purview の **分析情報** ついてさらに学習します
+
+* [データ ソースの管理](./manage-data-sources.md)を含む Azure Purview の **ソース** エクスペリエンスついてさらに学習します

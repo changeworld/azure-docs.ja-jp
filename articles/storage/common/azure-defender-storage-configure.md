@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: 0bda32aaab301fe9ed685f0bfd6d4596fab4e5db
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cdfc54b1eca3b07202148b7099884a04f35939ef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789014"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698146"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Azure Defender for Storage を構成する
 
@@ -23,7 +23,7 @@ Azure Defender for Storage では、ストレージ アカウントに対する�
 
 セキュリティ アラートは、アクティビティで異常が発生したときにトリガーされます。 これらのセキュリティ アラートは [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合されます。さらに、不審なアクティビティの詳細と、脅威の調査や修復方法に関する推奨事項と共に、サブスクリプション管理者にメールで送信されます。
 
-このサービスでは、脅威の検出のために、Blob Storage と Azure Files に対する読み取り要求、書き込み要求、削除要求のリソース ログが取り込まれます。 Azure Defender からのアラートを調査するには、Storage Analytics Logging を使用して関連するストレージ アクティビティを確認します。 詳細については、「 [Azure portal でのストレージ アカウントの監視](storage-monitor-storage-account.md#configure-logging)」の「 **ログの構成** 」を参照してください。
+このサービスでは、脅威の検出のために、Blob Storage と Azure Files に対する読み取り要求、書き込み要求、削除要求のリソース ログが取り込まれます。 Azure Defender からのアラートを調査するには、Storage Analytics Logging を使用して関連するストレージ アクティビティを確認します。 詳細については、「[Azure portal でのストレージ アカウントの監視](./manage-storage-analytics-logs.md#configure-logging)」の「**ログの構成**」を参照してください。
 
 ## <a name="availability"></a>可用性
 
@@ -69,7 +69,7 @@ Azure Defender は、このサブスクリプションのすべてのストレ�
 1. ストレージ アカウントに移動します。 **[設定]** で **[高度なセキュリティ]** を選択します。
 1. **[Azure Defender for Storage を有効にする]** を選択します。
 
-    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="セキュリティ センターで Azure Defender for Storage を有効にする方法を示すスクリーンショット":::
+    :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Azure Storage アカウントで Azure Defender を有効にする方法を示すスクリーンショット":::
 
 このストレージ アカウントで Azure Defender が有効になりました。
 
@@ -84,15 +84,15 @@ Azure Resource Manager テンプレートを使用して、Azure Defender が有
 1. Azure の **[ポリシー - 定義]** ページを起動します。
 1. **[Deploy Azure Defender on Storage Accounts]\(ストレージ アカウントに Azure Defender をデプロイする\)** ポリシーを検索します。
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="セキュリティ センターで Azure Defender for Storage を有効にする方法を示すスクリーンショット":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy-definitions.png" alt-text="Azure Defender for Storage アカウントを有効にするポリシーを適用する":::
 
 1. Azure サブスクリプションまたはリソース グループを選択します。
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="セキュリティ センターで Azure Defender for Storage を有効にする方法を示すスクリーンショット":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy2.png" alt-text="ポリシーのスコープのサブスクリプションまたはリソース グループを選択する":::
 
 1. ポリシーを割り当てます。
 
-    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="セキュリティ センターで Azure Defender for Storage を有効にする方法を示すスクリーンショット":::
+    :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Azure Defender for Storage を有効にするポリシーを割り当てる":::
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -125,11 +125,11 @@ Rest API コマンドを使用して、特定のストレージ アカウント�
 
 電子メールには、潜在的な脅威の考えられる原因と調査や緩和のための推奨されるアクションについての詳細も含まれます。
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="セキュリティ センターで Azure Defender for Storage を有効にする方法を示すスクリーンショット":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert-email.png" alt-text="Azure Defender for Storage のアラート メール":::
 
 Azure Security Center の [[セキュリティ アラート] タイル](../../security-center/security-center-managing-and-responding-alerts.md)から、現在のセキュリティ アラートを確認して管理できます。 特定のアラートをクリックすると、詳細な情報と、現在の脅威を調査し、今後の脅威に対処するためのアクションが表示されます。
 
-:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="セキュリティ センターで Azure Defender for Storage を有効にする方法を示すスクリーンショット":::
+:::image type="content" source="media/azure-defender-storage-configure/storage-advanced-threat-protection-alert.png" alt-text="Azure Defender for Storage のアラート":::
 
 ## <a name="security-alerts"></a>セキュリティのアラート
 

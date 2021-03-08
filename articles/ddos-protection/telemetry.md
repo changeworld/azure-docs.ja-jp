@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: a3f6c14b7ed2686a262f28510efb37068cfb9cb3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0be184921ff0bd6b98dd2975acb4e0d5c8b26ba0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787300"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716195"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>DDoS 保護テレメトリの表示と構成
 
@@ -34,12 +34,11 @@ Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、�
 > [!NOTE]
 > Azure portal 上では **[集計]** に複数のオプションが表示されますが、下の表に示す集計の種類のみが各メトリックに対してサポートされます。 紛らわしくて申し訳ありませんが、現在解決に向けて取り組み中です。
 
-Azure DDoS Protection Standard では、次の[メトリック](../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses)を利用できます。 これらのメトリックを、診断設定を使用してエクスポートすることもできます (「[DDoS 診断ログの表示と構成](diagnostic-logging.md)」を参照してください)。
+Azure DDoS Protection Standard では、次の[メトリック](../azure-monitor/essentials/metrics-supported.md#microsoftnetworkpublicipaddresses)を利用できます。 これらのメトリックを、診断設定を使用してエクスポートすることもできます (「[DDoS 診断ログの表示と構成](diagnostic-logging.md)」を参照してください)。
 
 
 | メトリック | メトリックの表示名 | ユニット | 集計の種類 | 説明 |
 | --- | --- | --- | --- | --- |
-| ByteCount | Byte Count (バイト数) | Count | 合計 | 期間内に送信された合計バイト数 |
 | BytesDroppedDDoS | DDoS 受信バイト破棄数 | BytesPerSecond | 最大値 | DDoS 受信バイト破棄数| 
 | BytesForwardedDDoS | DDoS 受信バイト転送数 | BytesPerSecond | 最大値 | DDoS 受信バイト転送数 |
 | BytesInDDoS | DDoS 受信バイト数 | BytesPerSecond | 最大値 | DDoS 受信バイト数 |
@@ -47,11 +46,9 @@ Azure DDoS Protection Standard では、次の[メトリック](../azure-monitor
 | DDoSTriggerTCPPackets | DDoS 軽減をトリガーする受信 TCP パケット数 | CountPerSecond | 最大値 | DDoS 軽減をトリガーする受信 TCP パケット数 |
 | DDoSTriggerUDPPackets | DDoS 軽減をトリガーする受信 UDP パケット数 | CountPerSecond | 最大値 | DDoS 軽減をトリガーする受信 UDP パケット数 |
 | IfUnderDDoSAttack | DDoS 攻撃中かどうか | Count | 最大値 | DDoS 攻撃中かどうか |
-| PacketCount | Packet Count (パケット数) | Count | 合計 | 期間内に送信された合計パケット数 |
 | PacketsDroppedDDoS | DDoS 受信パケット破棄数 | CountPerSecond | 最大値 | DDoS 受信パケット破棄数 |
 | PacketsForwardedDDoS | DDoS 受信パケット転送数 | CountPerSecond | 最大値 | DDoS 受信パケット転送数 |
 | PacketsInDDoS | DDoS 受信パケット数 | CountPerSecond | 最大値 | DDoS 受信パケット数 |
-| SynCount | SYN Count (SYN 数) | Count | 合計 | 期間内に送信された合計 SYN パケット数 |
 | TCPBytesDroppedDDoS | DDoS 受信 TCP バイト破棄数 | BytesPerSecond | 最大値 | DDoS 受信 TCP バイト破棄数 |
 | TCPBytesForwardedDDoS | DDoS 受信 TCP バイト転送数 | BytesPerSecond | 最大値 | DDoS 受信 TCP バイト転送数 |
 | TCPBytesInDDoS | DDoS 受信 TCP バイト数 | BytesPerSecond | 最大値 | DDoS 受信 TCP バイト数 |
@@ -64,7 +61,6 @@ Azure DDoS Protection Standard では、次の[メトリック](../azure-monitor
 | UDPPacketsDroppedDDoS | DDoS 受信 UDP パケット破棄数 | CountPerSecond | 最大値 | DDoS 受信 UDP パケット破棄数 |
 | UDPPacketsForwardedDDoS | Inbound UDP packets forwarded DDoS (DDoS 受信 UDP パケット転送数) | CountPerSecond | 最大値 | Inbound UDP packets forwarded DDoS (DDoS 受信 UDP パケット転送数) |
 | UDPPacketsInDDoS | DDoS 受信 UDP パケット数 | CountPerSecond | 最大値 | DDoS 受信 UDP パケット数 |
-| VipAvailability | データ パスの可用性 | Count | Average | 期間あたりの IP アドレス可用性平均 |
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -74,9 +70,9 @@ Azure DDoS Protection Standard では、次の[メトリック](../azure-monitor
 
 ## <a name="view-ddos-protection-telemetry"></a>DDoS 保護テレメトリを表示する
 
-攻撃のテレメトリは、Azure Monitor 経由でリアルタイムに提供されます。 このテレメトリは、パブリック IP アドレスが軽減策のもとにある期間中のみ使用できます。 攻撃が軽減される前または軽減された後、テレメトリは表示されません。
+攻撃のテレメトリは、Azure Monitor 経由でリアルタイムに提供されます。 テレメトリは、パブリック IP アドレスに軽減策が適用されている場合にのみ使用できます。 
 
-1. [Azure portal](https://portal.azure.com/) にサインインし、DDoS 保護プランに移動します。
+1. [Azure portal](https://portal.azure.com/) にサインインし、DDoS Protection プランに移動します。
 2. **[監視]** で **[メトリック]** を選びます。
 3. **[スコープ]** を選択します。 ログするパブリック IP アドレスを含む **サブスクリプション** を選択し、 **[リソースの種類]** で **[パブリック IP アドレス]** を選択します。メトリックをログする特定のパブリック IP アドレスを選択し、 **[適用]** を選択します。
 4. **集計** の種類として **[最大]** を選択します。

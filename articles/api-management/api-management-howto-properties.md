@@ -6,14 +6,14 @@ documentationcenter: ''
 author: vladvino
 ms.service: api-management
 ms.topic: article
-ms.date: 12/14/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 344500d5635f591b34a45130c7dd6b63659ad84d
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 2bc9b1c5724fa7bab1fdf5ac9332d87ba03a6d11
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491016"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545821"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Azure API Management ポリシーで名前付きの値を使用する
 
@@ -86,6 +86,8 @@ API Management のセキュリティ向上に役立つため、キー コンテ�
 
 ### <a name="add-a-plain-or-secret-value"></a>プレーンまたはシークレットの値を追加する
 
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
 1. [Azure portal](https://portal.azure.com) で、API Management インスタンスに移動します。
 1. **[API]** で、 **[名前付きの値]**  >  **[+追加]** を選択します。
 1. **[名前]** 識別子を入力し、ポリシー内でプロパティを参照するために使用される **[表示名]** を入力します。
@@ -95,6 +97,50 @@ API Management のセキュリティ向上に役立つため、キー コンテ�
 1. **［作成］** を選択します
 
 名前付きの値が作成されたら、名前を選択して編集できます。 表示名を変更すると、その名前付きの値を参照するすべてのポリシーが、その新しい表示名を使用するように自動的に更新されます。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI の使用を開始するには:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+名前付きの値を追加するには、[az apim nv create](/cli/azure/apim/nv#az_apim_nv_create) コマンドを使用します。
+
+```azurecli
+az apim nv create --resource-group apim-hello-word-resource-group \
+    --display-name "named_value_01" --named-value-id named_value_01 \
+    --secret true --service-name apim-hello-world --value test
+```
+
+名前付きの値を作成したら、[az apim nv update](/cli/azure/apim/nv#az_apim_nv_update) コマンドを使用して更新できます。 すべての名前付きの値を表示するには、[az apim nv list](/cli/azure/apim/nv#az_apim_nv_list) コマンドを実行します。
+
+```azurecli
+az apim nv list --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --output table
+```
+
+この例で作成した名前付きの値の詳細を表示するには、[az apim nv show](/cli/azure/apim/nv#az_apim_nv_show) コマンドを実行します。
+
+```azurecli
+az apim nv show --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+この例は、シークレット値です。 上記のコマンドで値は返されません。 値を表示するには、[az apim nv show-secret](/cli/azure/apim/nv#az_apim_nv_show_secret) コマンドを実行します。
+
+```azurecli
+az apim nv show-secret --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+名前付きの値を削除するには、[az apim nv delete](/cli/azure/apim/nv#az_apim_nv_delete) コマンドを使用します。
+
+```azurecli
+az apim nv delete --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+---
 
 ## <a name="use-a-named-value"></a>名前付きの値を使用する
 

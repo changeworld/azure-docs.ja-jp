@@ -13,20 +13,20 @@ metadata:
   author: BlackMist
   ms.date: 09/21/2020
   ms.custom: contperf-fy21q1
-  ms.openlocfilehash: 44f260d5e336433c7366dcbe7ce6f1bb79f92c3c
-  ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+  ms.openlocfilehash: b52e7908d07dcd342be59f9870dece13701f1dc6
+  ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/22/2021
-  ms.locfileid: "98683977"
+  ms.lasthandoff: 02/10/2021
+  ms.locfileid: "100096329"
 landingContent:
 - title: 作業を開始しましょう。コード ファースト
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 概要チュートリアル (Python)
+    - text: Python スクリプトを使ってみる
       url: tutorial-1st-experiment-sdk-setup-local.md
-    - text: Jupyter Notebook のチュートリアルを使用する
+    - text: Jupyter Notebook を使ってみる (Python)
       url: tutorial-1st-experiment-sdk-setup.md
     - text: ML パイプラインを使用したバッチ推論 (Python)
       url: tutorial-pipeline-batch-scoring-classification.md

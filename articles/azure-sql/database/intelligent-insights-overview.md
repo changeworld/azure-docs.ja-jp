@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 0f3dce3ca79b12b05325a1d8284dd3304653d5fa
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 61033e3eb8264c1e462faac3e4553a855a1d06c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488869"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592088"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>AI を使用してデータベース パフォーマンスの監視とトラブルシューティングを行う Intelligent Insights (プレビュー)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -107,7 +107,7 @@ Azure SQL Analytics で表示された Intelligent Insights の例を以下に�
 
 ### <a name="set-up-with-event-hubs"></a>Event Hubs で使用するように設定する
 
-Event Hubs と共に Intelligent Insights を使用する方法と、Event Hubs に Intelligent Insights ログ データがストリーミングされるように構成する方法については、[メトリックと診断のロギング](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)と、[Azure Diagnostics ログを Event Hubs にストリーミングする](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)ことに関するページをご覧ください。
+Event Hubs と共に Intelligent Insights を使用する方法と、Event Hubs に Intelligent Insights ログ データがストリーミングされるように構成する方法については、[メトリックと診断のロギング](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)と、[Azure Diagnostics ログを Event Hubs にストリーミングする](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)ことに関するページをご覧ください。
 
 Event Hubs をカスタムの監視とアラートの設定に使用するには、「[Event Hubs におけるメトリックと診断ログの活用方法](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs)」をご覧ください。
 

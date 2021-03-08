@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3334c5ca300b6dbeb0ad055c7dbd2c15e1c5481a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2a2161fd24ccde596630549163a631626a961773
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677123"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596662"
 ---
 # <a name="monitor-workload---azure-portal"></a>ワークロードを監視する - Azure portal
 
@@ -36,7 +36,7 @@ Log Analytics ワークスペースの参照ブレードに移動し、ワーク
 
 ![スクリーンショットに、値を入力できる Log Analytics ワークスペースが示されています。](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace_2.png)
 
-ワークスペースの詳細については、次の[ドキュメント](../../azure-monitor/learn/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace)を参照してください。
+ワークスペースの詳細については、次の[ドキュメント](../../azure-monitor/logs/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace)を参照してください。
 
 ## <a name="turn-on-resource-logs"></a>リソース ログをオンにする
 

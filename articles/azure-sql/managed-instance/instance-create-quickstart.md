@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 1/29/2021
-ms.openlocfilehash: 95b721f12e4818a77f18d01c99a5c6d60b881169
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: d356cad1b4754875574e19be732fdf6481c61e22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089705"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691214"
 ---
 # <a name="quickstart-create-an-azure-sql-managed-instance"></a>クイック スタート:Azure SQL マネージド インスタンスの作成
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -86,7 +86,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
    | 設定| 推奨値 | 説明 |
    | ------ | --------------- | ----------- |
-   | **仮想ネットワーク** | **[新しい仮想ネットワークの作成]** または有効な仮想ネットワークとサブネットを選択します。| ネットワークまたはサブネットが使用できない場合は、新しいマネージド インスタンスのターゲットとして選択する前に、[ネットワーク要件を満たすように変更する](vnet-existing-add-subnet.md)必要があります。 SQL Managed Instance のネットワーク環境を構成するための要件については、[SQL Managed Instance の仮想ネットワークの構成](connectivity-architecture-overview.md)に関する記事を参照してください。 |
+   | **Virtual Network** | **[新しい仮想ネットワークの作成]** または有効な仮想ネットワークとサブネットを選択します。| ネットワークまたはサブネットが使用できない場合は、新しいマネージド インスタンスのターゲットとして選択する前に、[ネットワーク要件を満たすように変更する](vnet-existing-add-subnet.md)必要があります。 SQL Managed Instance のネットワーク環境を構成するための要件については、[SQL Managed Instance の仮想ネットワークの構成](connectivity-architecture-overview.md)に関する記事を参照してください。 |
    | **接続の種類** | 接続の種類として、プロキシまたはリダイレクトを選択します。|接続の種類の詳細については、[Azure SQL Managed Instance の接続の種類](../database/connectivity-architecture.md#connection-policy)に関するセクションを参照してください。|
    | **パブリック エンドポイント**  | **[無効にする]** を選択します。 | パブリック データ エンドポイントを介してマネージド インスタンスにアクセスできるようにするには、このオプションを有効にする必要があります。 | 
    | **許可するアクセス元** (**パブリック エンドポイント** が有効な場合) | **[アクセスなし]** を選択します。  |ポータルでの操作により、パブリック エンドポイントを使用するセキュリティ グループを構成できます。 </br> </br> 実際のシナリオに基づいて、次のいずれかのオプションを選択します。 </br> <ul> <li>**Azure サービス**:Power BI または別のマルチテナント サービスから接続する場合は、このオプションをお勧めします。 </li> <li> **インターネット**:マネージド インスタンスを迅速に作成する必要がある場合にテスト目的で使用します。 運用環境ではお勧めしません。 </li> <li> **アクセスなし**:このオプションでは **拒否** セキュリティ規則が作成されます。 パブリック エンドポイントを介してマネージド インスタンスにアクセスできるようにするには、この規則を変更します。 </li> </ul> </br> パブリック エンドポイントのセキュリティの詳細については、[パブリック エンドポイントで安全に Azure SQL Managed Instance を使用する](public-endpoint-overview.md)方法に関するページを参照してください。|
@@ -113,7 +113,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ### <a name="tags"></a>タグ
 
-- Azure Resource Manager テンプレート (ARM テンプレート) でリソースにタグを追加します。 [タグ](/azure/azure-resource-manager/management/tag-resources)は、リソースを論理的に整理するために役立ちます。 タグの値はコスト レポートに表示され、タグによる他の管理アクティビティの分類に使用できます。 
+- Azure Resource Manager テンプレート (ARM テンプレート) でリソースにタグを追加します。 [タグ](../../azure-resource-manager/management/tag-resources.md)は、リソースを論理的に整理するために役立ちます。 タグの値はコスト レポートに表示され、タグによる他の管理アクティビティの分類に使用できます。 
 
 - 少なくとも新しい SQL マネージド インスタンスにはタグ付けすることを検討してください。所有者タグを使用して作成者を識別し、環境タグを使用してシステムの用途 (運用、開発など) を識別します。詳細については、「[Azure リソースの名前付けおよびタグ付けの戦略を作成する](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)」を参照してください。
  

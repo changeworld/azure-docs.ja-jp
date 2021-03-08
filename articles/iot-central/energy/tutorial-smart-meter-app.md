@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a95f1befcdc9b59293eb97330ba7ceae3034a74b
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: d9b5af45ab9a1003cc25e8b1ea2059b83bc715c4
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516763"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833305"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>チュートリアル:スマート メーター監視アプリ テンプレートを作成して操作する 
 
@@ -102,8 +102,7 @@ Adatum は、スマート メーターを監視および管理する架空のエ
 
 ## <a name="next-steps"></a>次のステップ
 
-スマート メーター アプリのアーキテクチャの詳細については、 
+スマート メーター アプリのアーキテクチャの詳細については、次の記事を参照してください。
+
 > [!div class="nextstepaction"]
-> [概念に関する記事](./concept-iot-central-smart-meter-app.md)を参照してください
-* スマート メーター アプリケーション テンプレートを無料で作成する: [スマート メーター アプリ](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)
-* IoT Central の詳細について、[IoT Central の概要](../index.yml)を参照する
+> [スマート メーター アプリケーションのアーキテクチャ](./concept-iot-central-smart-meter-app.md)

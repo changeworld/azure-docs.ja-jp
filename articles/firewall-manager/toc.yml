@@ -10,6 +10,9 @@
     - name: 仮想ハブのセキュリティ保護 - ARM テンプレート
       displayName: Resource Manager
       href: quick-secure-virtual-hub.md
+    - name: ポリシー付きのファイアウォールのデプロイ - ARM テンプレート
+      displayName: Resource Manager
+      href: quick-firewall-policy.md
 - name: チュートリアル
   items:
     - name: 仮想ハブのセキュリティ保護 - ポータル
@@ -40,7 +43,7 @@
       href: threat-intelligence-settings.md
     - name: ネットワーク規則内の FQDN
       href: fqdn-filtering-network-rules.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md

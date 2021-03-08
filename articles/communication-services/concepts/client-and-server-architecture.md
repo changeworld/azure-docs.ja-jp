@@ -9,20 +9,18 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 8b63ce25d6839e8672027240099859dc7aad96c5
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 0dbd1770030eeee8768c0b610171f5f27456ed70
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886075"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656229"
 ---
 # <a name="client-and-server-architecture"></a>クライアントとサーバーのアーキテクチャ
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
 <!--
 > [!WARNING]
-> This document is under construction and needs the following items to be addressed: 
+> This document is under construction and needs the following items to be addressed:
 > - Need to add security best practices for token management here
 > - Reference docs:
 > - https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/create-a-token-object
@@ -56,11 +54,11 @@ Azure Communication JavaScript クライアント ライブラリにより、Web
 電話システムを介して通信すると、アプリケーションのリーチを大幅に拡大できます。 PSTN の音声と SMS のシナリオをサポートするために、Azure Communication Services では、 Azure portal から直接、または REST API とクライアント ライブラリを使用して[電話番号を取得する](../quickstarts/telephony-sms/get-phone-number.md)ことができます。 電話番号を取得したら、それを使用して、受信と発信の両方のシナリオで、PSTN の通話と SMS の両方を使用して顧客にリーチできます。 アーキテクチャのフローの例を以下に示します。
 
 > [!Note]
-> パブリック プレビュー期間中は、米国およびカナダ内にある請求先住所を持つお客様が、米国の電話番号のプロビジョニングを利用できます。 
+> パブリック プレビュー期間中は、米国およびカナダ内にある請求先住所を持つお客様が、米国の電話番号のプロビジョニングを利用できます。
 
 :::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="Communication Services の PSTN のアーキテクチャを示す図。":::
 
-PSTN および SMS ソリューションの詳細については、[PSTN および SMS ソリューションの計画に関する記事](../concepts/telephony-sms/plan-solution.md)を参照してください。
+PSTN の電話番号の詳細については、[電話番号の種類](../concepts/telephony-sms/plan-solution.md)に関するページを参照してください。
 
 ## <a name="humans-communicating-with-bots-and-other-services"></a>人とボットやその他のサービスの通信
 
@@ -83,7 +81,7 @@ Azure Communication Services では、Azure Communication Services データ プ
 詳細については、次の記事を参照してください。
 
 - [認証](../concepts/authentication.md)について学習する
-- [PSTN および SMS ソリューション](../concepts/telephony-sms/plan-solution.md)について学習する
+- [電話番号の種類](../concepts/telephony-sms/plan-solution.md)について学習する
 
 - [チャットをアプリに追加する](../quickstarts/chat/get-started.md)
 - [音声通話をアプリに追加する](../quickstarts/voice-video-calling/getting-started-with-calling.md)

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 12/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 636dbf95567f761aee19bd567b0835173ce36ccc
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: dff314f3c9fb72c565a7c2d522694d533c487895
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093623"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572644"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Change Tracking と Inventory の管理
 
@@ -167,7 +167,7 @@ Azure Monitor ログに対して、変更レコードのさまざまな検索を
 ## <a name="next-steps"></a>次のステップ
 
 * スコープ構成の詳細については、「[Change Tracking とインベントリのデプロイのスコープを制限する](manage-scope-configurations.md)」を参照してください。
-* Azure Monitor ログに格納されているログを検索する必要がある場合は、[Azure Monitor ログでのログ検索](../../azure-monitor/log-query/log-query-overview.md)に関する記事を参照してください。
+* Azure Monitor ログに格納されているログを検索する必要がある場合は、[Azure Monitor ログでのログ検索](../../azure-monitor/logs/log-query-overview.md)に関する記事を参照してください。
 * デプロイが終了したら、[変更履歴とインベントリの削除](remove-feature.md)に関する記事を参照してください。
 * Change Tracking とインベントリから VM を削除する方法については、「[Change Tracking とインベントリから VM を削除する](remove-vms-from-change-tracking.md)」を参照してください。
 * 機能のエラーのトラブルシューティングを行うには、「[Change Tracking と Inventory に関する問題のトラブルシューティング](../troubleshoot/change-tracking.md)」を参照してください。

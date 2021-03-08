@@ -4,18 +4,17 @@ description: Machine Learning Studio (クラシック) Web サービスのログ
 services: machine-learning
 author: likebupt
 ms.author: keli19
-editor: cgronlun
 ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 ms.date: 06/15/2017
-ms.openlocfilehash: 154479be1eae01bcc533b556b751ed24aee3da2b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c9ce9b7b0d739301e76abd43b265fe28195ed302
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308579"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518285"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (クラシック) Web サービスのログ記録を有効にする
 
@@ -46,7 +45,7 @@ ms.locfileid: "93308579"
 
 6. **[保存]** をクリックします。
 
-7. クラシック Web サービスの場合は、 **ml-diagnostics** コンテナーを作成します。
+7. クラシック Web サービスの場合は、**ml-diagnostics** コンテナーを作成します。
 
    すべての Web サービス ログは、Web サービスに関連付けられているストレージ アカウントの **ml-diagnostics** という BLOB コンテナーに保存されます。 新しい Web サービスの場合、Web サービスに初めてアクセスしたときに、このコンテナーが作成されます。 クラシック Web サービスの場合、コンテナーが存在しない場合は作成する必要があります。 
 

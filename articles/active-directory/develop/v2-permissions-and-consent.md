@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 570314bcaedb86cc593846ffc1d6846d1d2fe335
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 2658c088304eba457b25bb3dc421b356ba70b57f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99090189"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102480"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームでのアクセス許可と同意
 
@@ -181,7 +181,7 @@ Microsoft のリソースにおける高い特権のアクセス許可には、"
 
 アプリケーションに対して静的に要求されるアクセス許可のリストを構成するには:
 
-1. <a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">Azure portal の [アプリの登録]<span class="docon docon-navigate-external x-hidden-focus"></span></a> クイックスタート エクスペリエンス内のアプリケーションに移動します。
+1. <a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">Azure portal の [アプリの登録]</a> クイックスタート エクスペリエンス内のアプリケーションに移動します。
 1. アプリケーションを選択するか、まだ作成していない場合は[アプリを作成](quickstart-register-app.md)します。
 1. アプリケーションの **[概要]** ページの **[管理]** で、 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。
 1. 利用可能な API の一覧から **[Microsoft Graph]** を選択します。 次に、アプリに必要なアクセス許可を追加します。

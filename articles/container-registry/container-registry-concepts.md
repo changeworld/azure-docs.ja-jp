@@ -3,12 +3,12 @@ title: リポジトリとイメージについて
 description: Azure のコンテナー レジストリ、リポジトリ、およびコンテナー イメージの主要な概念について紹介します。
 ms.topic: article
 ms.date: 06/16/2020
-ms.openlocfilehash: cd2f93c119817c722401f7290064894f3d39dac9
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 0cc7df22236c60bd473385d92c8db563be68f688
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335896"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008521"
 ---
 # <a name="about-registries-repositories-and-images"></a>レジストリ、リポジトリ、イメージについて
 
@@ -16,7 +16,7 @@ ms.locfileid: "94335896"
 
 ## <a name="registry"></a>レジストリ
 
-コンテナー " *レジストリ* " は、コンテナー イメージを格納して配布するサービスです。 Docker Hub は、オープンソース コミュニティをサポートし、一般的なイメージ カタログとしてサービスを提供するパブリック コンテナー レジストリです。 Azure Container Registry では、統合認証、ネットワーク上の近い場所へのデプロイに対応したグローバルな配布と信頼性をサポートする [geo レプリケーション](container-registry-geo-replication.md)、[仮想ネットワークとファイアウォール構成](container-registry-vnet.md)、[タグ ロック](container-registry-image-lock.md)、その他多くの拡張機能を使用して、ユーザーがイメージを直接制御できるようにします。 
+コンテナー "*レジストリ*" は、コンテナー イメージを格納して配布するサービスです。 Docker Hub は、オープンソース コミュニティをサポートし、一般的なイメージ カタログとしてサービスを提供するパブリック コンテナー レジストリです。 Azure Container Registry では、統合認証、ネットワーク上の近い場所へのデプロイに対応したグローバルな配布と信頼性をサポートする [geo レプリケーション](container-registry-geo-replication.md)、[仮想ネットワークとファイアウォール構成](container-registry-vnet.md)、[タグ ロック](container-registry-image-lock.md)、その他多くの拡張機能を使用して、ユーザーがイメージを直接制御できるようにします。 
 
 Docker コンテナー イメージに加え、Azure Container Registry では、Open Container Initiative (OCI) イメージ形式を含む、関連[コンテンツ成果物](container-registry-image-formats.md)がサポートされます。
 
@@ -26,7 +26,7 @@ Azure Container Registry 内の成果物のアドレスには、次の要素が�
 
 `[loginUrl]/[repository:][tag]`
 
-* **loginUrl** - レジストリ ホストの完全修飾名。 Azure Container Registry のレジストリ ホストは、 *myregistry*.azurecr.io (すべて小文字) の形式です。 Docker またはその他のクライアント ツールを使用して Azure Container Registry との間で成果物をプルまたはプッシュするには、loginUrl を指定する必要があります。 
+* **loginUrl** - レジストリ ホストの完全修飾名。 Azure Container Registry のレジストリ ホストは、*myregistry*.azurecr.io (すべて小文字) の形式です。 Docker またはその他のクライアント ツールを使用して Azure Container Registry との間で成果物をプルまたはプッシュするには、loginUrl を指定する必要があります。 
 * **repository** - 1 つまたは複数の関連するイメージまたは成果物の論理グループの名前。たとえば、アプリケーションまたはベース オペレーティング システムのイメージです。 *名前空間* パスを含めることができます。 
 * **tag** - リポジトリに格納されているイメージまたは成果物の特定バージョンの識別子。
 
@@ -38,7 +38,7 @@ Azure Container Registry 内の成果物のアドレスには、次の要素が�
 
 ## <a name="repository-name"></a>リポジトリ名です
 
-" *リポジトリ* " は、名前が同じでタグが異なるコンテナー イメージまたはその他の成果物のコレクションです。 たとえば、次の 3 つのイメージは "acr-helloworld" リポジトリ内にあります。
+"*リポジトリ*" は、名前が同じでタグが異なるコンテナー イメージまたはその他の成果物のコレクションです。 たとえば、次の 3 つのイメージは "acr-helloworld" リポジトリ内にあります。
 
 
 - *acr-helloworld:latest*
@@ -63,7 +63,7 @@ Azure Container Registry 内の成果物のアドレスには、次の要素が�
 
 ### <a name="tag"></a>タグ
 
-イメージまたはその他の成果物の " *タグ* " は、そのバージョンを指定します。 リポジトリ内の 1 つの成果物に、1 つまたは多数のタグを割り当てることができ、"タグを割り当てない" ことも可能です。 つまり、イメージからすべてのタグを削除しながら、イメージのデータ (そのレイヤー) はレジストリに引き続き残しておくことができます。
+イメージまたはその他の成果物の "*タグ*" は、そのバージョンを指定します。 リポジトリ内の 1 つの成果物に、1 つまたは多数のタグを割り当てることができ、"タグを割り当てない" ことも可能です。 つまり、イメージからすべてのタグを削除しながら、イメージのデータ (そのレイヤー) はレジストリに引き続き残しておくことができます。
 
 リポジトリ (またはリポジトリと名前空間) とタグの組み合わせで、イメージの名前が定義されます。 プッシュ操作またはプル操作で名前を指定することにより、イメージをプッシュおよびプルできます。 Docker コマンドにタグが指定されていない場合、既定ではタグ `latest` が使用されます。
 
@@ -73,7 +73,7 @@ Azure Container Registry 内の成果物のアドレスには、次の要素が�
 
 ### <a name="layer"></a>レイヤー
 
-コンテナー イメージは 1 つ以上の " *レイヤー* " で構成されており、各レイヤーはイメージを定義する Dockerfile 内の行に対応しています。 ストレージの効率が良くなるように、レジストリ内のイメージは共通レイヤーを共有しています。 たとえば、異なるリポジトリ内の複数のイメージが同じ Alpine Linux ベース レイヤーを共有している場合がありますが、レジストリに格納されるのはそのレイヤーの 1 つのコピーだけです。
+コンテナー イメージは 1 つ以上の "*レイヤー*" で構成されており、各レイヤーはイメージを定義する Dockerfile 内の行に対応しています。 ストレージの効率が良くなるように、レジストリ内のイメージは共通レイヤーを共有しています。 たとえば、異なるリポジトリ内の複数のイメージが同じ Alpine Linux ベース レイヤーを共有している場合がありますが、レジストリに格納されるのはそのレイヤーの 1 つのコピーだけです。
 
 レイヤーの共有により、共通レイヤーを共有する複数のイメージを含むノードへのレイヤーの配布も最適化されます。 たとえば、ノード上に既に存在するイメージがそのベースとして Alpine Linux レイヤーを含む場合、同じレイヤーを参照する異なるイメージをそれ以降にプルしても、レイヤーはノードに転送されません。 代わりに、ノードに既に存在するレイヤーが参照されます。
 
@@ -81,7 +81,30 @@ Azure Container Registry 内の成果物のアドレスには、次の要素が�
 
 ### <a name="manifest"></a>Manifest
 
-コンテナー レジストリにプッシュされる各コンテナー イメージまたは成果物は、" *マニフェスト* " と関連付けられます。 イメージがプッシュされるときにレジストリによって生成されるマニフェストは、イメージを一意に示し、そのレイヤーを指定します。 Azure CLI コマンド [az acr repository show-manifests][az-acr-repository-show-manifests] を使用して、リポジトリのマニフェストを一覧表示できます。
+コンテナー レジストリにプッシュされる各コンテナー イメージまたは成果物は、"*マニフェスト*" と関連付けられます。 イメージがプッシュされるときにレジストリによって生成されるマニフェストは、イメージを一意に示し、そのレイヤーを指定します。 
+
+Linux `hello-world` イメージの基本的なマニフェストは、次のようになります。
+
+  ```json
+  {
+    "schemaVersion": 2,
+    "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+    "config": {
+        "mediaType": "application/vnd.docker.container.image.v1+json",
+        "size": 1510,
+        "digest": "sha256:fbf289e99eb9bca977dae136fbe2a82b6b7d4c372474c9235adc1741675f587e"
+      },
+    "layers": [
+        {
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+          "size": 977,
+          "digest": "sha256:2c930d010525941c1d56ec53b97bd057a67ae1865eebf042686d2a2d18271ced"
+        }
+      ]
+  }
+  ```
+
+Azure CLI コマンド [az acr repository show-manifests][az-acr-repository-show-manifests] を使用して、リポジトリのマニフェストを一覧表示できます。
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName>
@@ -122,7 +145,7 @@ az acr repository show-manifests --name myregistry --repository acr-helloworld
 
 ### <a name="manifest-digest"></a>マニフェスト ダイジェスト
 
-マニフェストは、一意の SHA-256 ハッシュつまり " *マニフェスト ダイジェスト* " によって識別されます。 各イメージまたは成果物は、タグ付きかどうかにかかわらず、そのダイジェストによって識別されます。 ダイジェストの値は、イメージのレイヤー データが別のイメージと同じ場合であっても一意です。 このメカニズムにより、同じタグが付けられたイメージをレジストリに繰り返しプッシュできます。 たとえば、各イメージはその一意のダイジェストによって識別されるため、`myimage:latest` をレジストリに繰り返しプッシュしてもエラーにはなりません。
+マニフェストは、一意の SHA-256 ハッシュつまり "*マニフェスト ダイジェスト*" によって識別されます。 各イメージまたは成果物は、タグ付きかどうかにかかわらず、そのダイジェストによって識別されます。 ダイジェストの値は、イメージのレイヤー データが別のイメージと同じ場合であっても一意です。 このメカニズムにより、同じタグが付けられたイメージをレジストリに繰り返しプッシュできます。 たとえば、各イメージはその一意のダイジェストによって識別されるため、`myimage:latest` をレジストリに繰り返しプッシュしてもエラーにはなりません。
 
 プル操作ではダイジェストを指定することにより、レジストリからイメージをプルできます。 システムによっては、ダイジェストによってプルするように構成されている場合があります。同じタグが付けられたイメージが後でレジストリにプッシュされた場合でも、ダイジェストによって、プルされているイメージのバージョンが保証されるためです。
 

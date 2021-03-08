@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: ea66bb5bcdd6132809804632919a120f5c93353f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: eb70a31d0fa5f231bd0db8ca27517ce43fe1db28
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132718"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007817"
 ---
 # <a name="container-security-in-security-center"></a>Security Center のコンテナーのセキュリティ
 
@@ -70,11 +70,25 @@ IaaS Linux VM でホストされているアンマネージド コンテナー�
 ### <a name="continuous-monitoring-of-your-kubernetes-clusters"></a>Kubernetes クラスターの継続的な監視
 Security Center は Azure Kubernetes Service (AKS) と連携して機能します。これは、コンテナー化されたアプリケーションを開発、デプロイ、および管理するための Microsoft のマネージド コンテナー オーケストレーション サービスです。
 
-AKS には、クラスターのセキュリティ体制をセキュリティで制御し、把握する機能があります。 Security Center では、次の機能を使用します。
-* AKS クラスターの構成を常に監視する
-* 業界標準に合わせてセキュリティに関する推奨事項を生成する
+AKS には、クラスターのセキュリティ体制をセキュリティで制御し、把握する機能があります。 Security Center では、これらの機能を使用して、AKS クラスターの構成を常に監視し、業界標準に沿ったセキュリティの推奨事項を生成します。
+
+Azure Security Center、Azure Kubernetes Service、Azure Policy 間の相互作用の概要図を次に示します。
+
+:::image type="content" source="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png" alt-text="Azure Security Center、Azure Kubernetes Service、Azure Policy 間の相互作用のアーキテクチャ概要" lightbox="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png":::
+
+Security Center が受信して分析する項目には、以下が含まれていることがわかります。
+
+- API サーバーからの監査ログ
+- Log Analytics エージェントからの生のセキュリティ イベント
+
+    > [!NOTE]
+    > 仮想マシン スケール セットで実行されている Azure Kubernetes Service クラスターへの Log Analytics エージェントのインストールは、現在サポートされていません。
+
+- AKS クラスターからのクラスター構成情報
+- Azure Policy からのワークロード構成 (**Kubernetes 用の Azure Policy アドオン** を使用)
 
 この機能に表示される可能性がある、Security Center の関連する推奨事項の詳細については、推奨事項参照テーブルの[コンピューティング セクション](recommendations-reference.md#recs-compute)をご覧ください。
+
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>Kubernetes 受付制御を使用したワークロード保護のベストプラクティス
 

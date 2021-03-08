@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 209125a5cc8d86c1af07966d52681aa91ea7dc19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 9566560aaebaaa7ba3fc6d963a30637e33118077
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027001"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651061"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Azure AD Multi-Factor Authentication の設定を構成する
 
@@ -65,9 +65,7 @@ Azure portal では、次の Azure AD Multi-Factor Authentication 設定を使�
 
 1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[ユーザーのブロック/ブロック解除]** の順に移動します。
 1. **[追加]** を選択してユーザーをブロックします。
-1. **[レプリケーション グループ]** を選択し、"*Azure Default*" を選択します。
-
-    ブロックされるユーザーのユーザー名を `username\@domain.com` のように入力し、 *[理由]* フィールドにコメントを入力します。
+1. ブロックされるユーザーのユーザー名を `username@domain.com` のように入力し、 *[理由]* フィールドにコメントを入力します。
 1. 準備ができたら、 **[OK]** を選択して、ユーザーをブロックします。
 
 ### <a name="unblock-a-user"></a>ユーザーのブロック解除
@@ -122,8 +120,6 @@ Azure AD では、30 秒または 60 秒ごとにコードを更新する OATH-T
 OATH TOTP ハードウェア トークンには、通常、トークンで事前にプログラミングされた秘密鍵 (シード) が付属しています。 これらのキーは、次の手順に従って Azure AD に入力する必要があります。 秘密鍵は 128 文字に制限されていて、すべてのトークンと互換性があるとは限りません。 秘密キーに含めることができるのは、文字 *a-z* または *A-Z* と数字 *1-7* のみです。また、*Base32* でエンコードする必要があります。
 
 再シードできるプログラミング可能な OATH TOTP ハードウェア トークンは、ソフトウェア トークンのセットアップ フローで Azure AD に設定することもできます。
-
-OATH ハードウェア トークンはパブリック プレビュー段階でサポートされています。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ![OATH トークンの MFA OATH トークン ブレードへのアップロード](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 

@@ -3,18 +3,18 @@ title: Azure Policy を使用して VM 作成時のバックアップを自動�
 description: Azure Policy を使用して、特定のスコープで作成されたすべての VM のバックアップを自動的に有効化する方法を説明する記事
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 7e8195d22f54f29b36549b966322623ed0987d72
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: dfa4364eeaa9f5b60af3f5d6a19aaeb188d4f65e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896869"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101707304"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Azure Policy を使用して VM 作成時のバックアップを自動的に有効にする
 
 組織でのバックアップまたはコンプライアンス管理者の主な役割の 1 つは、ビジネスに重要なすべてのコンピューターが適切なリテンション期間でバックアップされるようにすることです。
 
-現在、Azure Backup には、お使いのAzure 仮想マシンがバックアップ用に構成されていることを自動的に確認できるように、([Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview) を使用した) さまざまな組み込みのポリシーが用意されています。 バックアップ チームとリソースの編成方法に応じて、下のポリシーのいずれかを使用できます。
+現在、Azure Backup には、お使いのAzure 仮想マシンがバックアップ用に構成されていることを自動的に確認できるように、([Azure Policy](../governance/policy/overview.md) を使用した) さまざまな組み込みのポリシーが用意されています。 バックアップ チームとリソースの編成方法に応じて、下のポリシーのいずれかを使用できます。
 
 ## <a name="policy-1---configure-backup-on-vms-without-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location"></a>ポリシー 1 - 特定のタグが付いていない VM の、同じ場所にある既存の Recovery Services コンテナーへのバックアップを構成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "98896869"
 ## <a name="policy-4---preview-configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>ポリシー 4 - [プレビュー] 特定のタグが付いた VM の、既定のポリシーでの新しい Recovery Services コンテナーへのバックアップを構成する
 このポリシーは、上記のポリシー 3 と同様に機能しますが、唯一の違いは、このポリシーを使用すると、特定のタグを含む VM をこのポリシーのスコープに **含める** ことができる点です。 
 
-上記に加えて、Azure Backup には、[監査のみの](https://docs.microsoft.com/azure/governance/policy/concepts/effects#audit)ポリシー (**仮想マシンに対して Azure Backup を有効にする必要がある**) も用意されています。 このポリシーにより、バックアップが有効になっていない仮想マシンが特定されますが、これらの VM のバックアップは自動的には構成されません。 これは、単に VM の全体的なコンプライアンスを評価しようとしていて、すぐに対処する予定はない場合に便利です。
+上記に加えて、Azure Backup には、[監査のみの](../governance/policy/concepts/effects.md#audit)ポリシー (**仮想マシンに対して Azure Backup を有効にする必要がある**) も用意されています。 このポリシーにより、バックアップが有効になっていない仮想マシンが特定されますが、これらの VM のバックアップは自動的には構成されません。 これは、単に VM の全体的なコンプライアンスを評価しようとしていて、すぐに対処する予定はない場合に便利です。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 

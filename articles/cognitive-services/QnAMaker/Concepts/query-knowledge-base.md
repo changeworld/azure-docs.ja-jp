@@ -3,12 +3,12 @@ title: ナレッジ ベースに対してクエリを実行する - QnA Maker
 description: ナレッジ ベースは公開する必要があります。 公開されると、ナレッジ ベースに対するクエリは、generateAnswer API を使用してランタイム予測エンドポイントで実行されます。
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: d8f986299edee46bf5cace7a9f4c805c29b3ce0c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: deefc53fdc94851da0e9e255962fbf85692d1393
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346207"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820383"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>回答を求めてナレッジ ベースに対してクエリを実行する
 
@@ -31,7 +31,7 @@ ms.locfileid: "96346207"
 |1|クライアント アプリケーションがユーザー クエリを [GenerateAnswer API](../how-to/metadata-generateanswer-usage.md) に送信します。|
 |2|QnA Maker が、言語検出、スペル チェック プログラム、およびワード ブレーカーを使用してユーザー クエリを前処理します。|
 |3|この前処理は、最適な検索結果が得られるようユーザー クエリを変更するために行われます。|
-|4|この変更されたクエリが Azure Cognitive Search インデックスに送信され、`top` の数の結果を受け取ります。 正しい回答がこれらの結果にない場合、`top` の値をわずかに増やします。 一般的に、`top` の値が 10 の場合は、90% のクエリで役立ちます。|
+|4|この変更されたクエリが Azure Cognitive Search インデックスに送信され、`top` の数の結果を受け取ります。 正しい回答がこれらの結果にない場合、`top` の値をわずかに増やします。 一般的に、`top` の値が 10 の場合は、90% のクエリで役立ちます。 Azure Search は、この手順で[ストップ ワード](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/STOPWORDS.md)をフィルター処理します。|
 |5|QnA Maker が、構文とセマンティック ベースの特性付けを使用して、ユーザー クエリとフェッチされた QnA の結果の間の類似性を判断します。|
 |6|機械学習されたランカー モデルによって、手順 5 のさまざまな機能が使用され、信頼スコアと新しいランク付け順序が決定されます。|
 |7|新しい結果が、ランク順にクライアント アプリケーションに返されます。|
@@ -54,7 +54,7 @@ ms.locfileid: "96346207"
 |1|クライアント アプリケーションがユーザー クエリを [GenerateAnswer API](../how-to/metadata-generateanswer-usage.md) に送信します。|
 |2|QnA Maker が、言語検出、スペル チェック プログラム、およびワード ブレーカーを使用してユーザー クエリを前処理します。|
 |3|この前処理は、最適な検索結果が得られるようユーザー クエリを変更するために行われます。|
-|4|この変更されたクエリが Azure Cognitive Search インデックスに送信され、`top` の数の結果を受け取ります。 正しい回答がこれらの結果にない場合、`top` の値をわずかに増やします。 一般的に、`top` の値が 10 の場合は、90% のクエリで役立ちます。|
+|4|この変更されたクエリが Azure Cognitive Search インデックスに送信され、`top` の数の結果を受け取ります。 正しい回答がこれらの結果にない場合、`top` の値をわずかに増やします。 一般的に、`top` の値が 10 の場合は、90% のクエリで役立ちます。 Azure Search は、この手順で[ストップ ワード](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/STOPWORDS.md)をフィルター処理します。|
 |5|QnA Maker によって最新のトランスフォーマー ベースのモデルが使用され、ユーザー クエリと、Azure Cognitive Search からフェッチされた候補 QnA 結果の類似性が判断されます。 トランスフォーマー ベースのモデルはディープラーニングの多言語モデルであり、すべての言語で水平方向に動作し、信頼スコアと新しいランク付け順序を決定します。|
 |6|新しい結果が、ランク順にクライアント アプリケーションに返されます。|
 |||

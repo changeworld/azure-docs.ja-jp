@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーする
 description: Azure Data Factory パイプラインで Copy アクティビティを使用して、クラウドまたはオンプレミスの REST ソースからサポートされているシンク データ ストアへ、またはサポートされているデータ ストアから REST シンクへデータをコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 3fc567b7d4b2efab03e5d93adda62839d47f7522
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 972a7b32e6308c3aa8a3b42705038838dae9b2be
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223098"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369885"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -385,7 +380,7 @@ REST API からデータをコピーするとき、通常、REST API では、1 
 
 **例:**
 
-Facebook Graph API によって、次の構造で応答が返されます。この場合、次のページの URL は **_paging.next_* _ で表されます。
+Facebook Graph API によって、次の構造で応答が返されます。この場合、次のページの URL は ***paging.next*** で表されます。
 
 ```json
 {
@@ -440,7 +435,7 @@ Facebook Graph API によって、次の構造で応答が返されます。こ�
 ### <a name="about-the-solution-template"></a>ソリューション テンプレートについて
 
 このテンプレートには、2 つのアクティビティが含まれています。
-- _ *Web** アクティビティでは、ベアラー トークンを取得し、それを後の Copy アクティビティに認証として渡します。
+- **Web** アクティビティでは、ベアラー トークンを取得し、それを後のコピー アクティビティに認証として渡します。
 - **コピー** アクティビティでは、データを REST から Azure Data Lake Storage にコピーします。
 
 このテンプレートには、次の 2 つのパラメーターが定義されています。

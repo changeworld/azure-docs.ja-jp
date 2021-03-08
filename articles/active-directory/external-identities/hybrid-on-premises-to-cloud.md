@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06a6a42724eb172a77079b94f2cf50afb8e9cdf1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 29aeca30e1fbdd28d3f69597d902a9b714056cd5
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357319"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575925"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションを使用してローカルで管理されたパートナーのアカウントにクラウド リソースへのアクセスを許可する
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) 以前は、オンプレミスの ID システ
 オンプレミス ディレクトリに外部パートナーのアカウントを作成する場合 (たとえば、partners.contoso.com ドメイン内に Wendy Moran という外部ユーザー用にサインイン名 "wmoran" のアカウントを作成する場合) これらのアカウントをクラウドと同期することができます。 具体的には、Azure AD Connect を使用して、パートナー アカウントをクラウドと同期させることができます。これにより、UserType = Guest でユーザー アカウントが作成されます。 その結果、パートナー ユーザーは、ローカル アカウントと同じ資格情報を使用してクラウド リソースにアクセスすることができます。
 
 > [!NOTE]
-> [内部ユーザーを B2B コラボレーションに招待する](invite-internal-users.md) (パブリック プレビュー機能) 方法も参照してください。 この機能を使用すると、B2B コラボレーションを使用するように内部ゲスト ユーザーを招待することができます。そのアカウントをオンプレミス ディレクトリからクラウドに同期したかどうかは関係ありません。 ユーザーは、B2B コラボレーションを使用するための招待を受け入れると、自分の ID と資格情報を使用して、アクセスするよう指定されたリソースにサインインできるようになります。 パスワードを維持したり、アカウントのライフサイクルを管理したりする必要はありません。
+> [B2B コラボレーションに内部ユーザーを招待する](invite-internal-users.md)方法に関するページを参照してください。 この機能を使用すると、B2B コラボレーションを使用するように内部ゲスト ユーザーを招待することができます。そのアカウントをオンプレミス ディレクトリからクラウドに同期したかどうかは関係ありません。 ユーザーは、B2B コラボレーションを使用するための招待を受け入れると、自分の ID と資格情報を使用して、アクセスするよう指定されたリソースにサインインできるようになります。 パスワードを維持したり、アカウントのライフサイクルを管理したりする必要はありません。
 
 ## <a name="identify-unique-attributes-for-usertype"></a>UserType の一意の属性を識別する
 

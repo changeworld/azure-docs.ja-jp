@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 13bfd7c602389ff286a80f625829da5924a73bdf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e4043fd8b7c9571b62cbf65d7398754b27375efd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621897"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633973"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Aure IoT Edge を使用した発行とサブスクライブ
 
@@ -366,8 +366,8 @@ TLS を有効にするには、ポートを 1883 (MQTT) から 8883 (MQTTS) に�
 
 テレメトリ データを IoT Hub に送信することは、ユーザー定義のトピックでの発行に似ていますが、特定の IoT Hub トピックを使用します。
 
-- デバイスの場合、テレメトリは次のトピックで送信されます: `devices/<device_name>/messages/events`
-- モジュールの場合、テレメトリは次のトピックで送信されます: `devices/<device_name>/<module_name>/messages/events`
+- デバイスの場合、テレメトリは次のトピックで送信されます: `devices/<device_name>/messages/events/`
+- モジュールの場合、テレメトリは次のトピックで送信されます: `devices/<device_name>/<module_name>/messages/events/`
 
 さらに、IoT Edge MQTT ブローカーから IoT ハブにテレメトリを送信するための `FROM /messages/* INTO $upstream` などのルートを作成します。 ルーティングについては､「[ルートの宣言](module-composition.md#declare-routes)」を参照してください｡
 

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 0b71f7ca3f812de1514612f8b0dd5915f3f81bc4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 528ea5a6b05dea59cb397bf32297f05b6cdc9be2
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97837274"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522735"
 ---
 # <a name="forward-alert-information"></a>アラート情報を転送する
 
@@ -203,6 +203,6 @@ NetWitness の転送パラメーターを定義するには:
 
 これは、ご自身で定義した転送ルールが、管理者によって作成された除外ルールに基づいて無視される可能性があることを意味します。 除外ルールは、オンプレミス管理コンソールで定義されます。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 [アラート ワークフローの高速化](how-to-accelerate-alert-incident-response.md)

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: ca8584d6cce3f5487d84f6647c42274879d610dd
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 647564a9b9ca909d2f45ae66673d8beac168a4aa
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198069"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575976"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>ポータルを利用し、データ ディスクを Linux VM に接続する 
 この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Linux 仮想マシンに接続する方法について示します。 [Azure Portal で Windows VM にデータ ディスクを接続する](../windows/attach-managed-disk-portal.md)こともできます。 
@@ -225,4 +225,7 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
     ```
 
 ## <a name="next-steps"></a>次のステップ
+
+詳細およびディスクの問題のトラブルシューティングについては、「[Linux VM デバイス名の変更のトラブルシューティング](../troubleshooting/troubleshoot-device-names-problems.md)」を参照してください。
+
 Azure CLI を利用し、[データ ディスクを接続する](add-disk.md)こともできます。

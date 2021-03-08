@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 68f3b9f9cfa8ea74a8240fab6e47bf737788081f
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 4793216a12b17c4e4ea03f62d5a0ba512febc232
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094326"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735728"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Azure のネットワーク セキュリティのベスト プラクティス
 この記事では、お使いのネットワーク セキュリティを強化するための Azure のベスト プラクティスについて説明します。 このベスト プラクティスは、Azure のネットワークに関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
@@ -206,7 +206,7 @@ Azure Private Link には次のような利点があります。
 - **グローバルな展開**: 他のリージョンで実行中のサービスにプライベートに接続します。 リージョン A にあるコンシューマーの仮想ネットワークから、リージョン B のサービスに接続することができます。
 - **簡単な設定と管理**:ご利用の仮想ネットワークで予約済みのパブリック IP アドレスを使用することなく、IP ファイアウォールを経由して Azure リソースにアクセスできるようになりました。 プライベート エンドポイントの設定に NAT やゲートウェイ用のデバイスは必要ありません。 プライベート エンドポイントは、単純なワークフローで構成されます。 サービス側では、Azure サービス リソースでの接続要求を簡単に管理することもできます。 Azure Private Link は、異なる Azure Active Directory テナントに属するコンシューマーとサービスに対しても機能します。 
     
-プライベート エンドポイントと、それらのプライベート エンドポイントを利用できる Azure サービスとリージョンの詳細については、[Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview) に関するページを参照してください。
+プライベート エンドポイントと、それらのプライベート エンドポイントを利用できる Azure サービスとリージョンの詳細については、[Azure Private Link](../../private-link/private-link-overview.md) に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

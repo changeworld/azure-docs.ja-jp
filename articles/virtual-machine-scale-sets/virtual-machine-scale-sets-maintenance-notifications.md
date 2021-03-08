@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 11/12/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 2aa589d237a8cfeb8e0dc947896dba82e755631c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 85e4b6a4d0ff1c3bd7e634311a36396a74408419
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564771"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594440"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットに対する計画メンテナンスの通知
 
@@ -28,7 +28,7 @@ Azure は、定期的に更新を行い、仮想マシン (VM) のホスト イ�
 
 再起動が必要な計画メンテナンスは、段階的にスケジュールされます。 各段階のスコープ (リージョン) はそれぞれ異なります。
 
-- 段階はお客様への通知で始まります。 既定では、サブスクリプションの所有者と共同所有者に通知が送信されます。 Azure [アクティビティ ログ アラート](../azure-monitor/platform/platform-logs-overview.md)を使用して、通知の受信者、および電子メール、SMS、webhook などのメッセージング オプションを通知に追加できます。  
+- 段階はお客様への通知で始まります。 既定では、サブスクリプションの所有者と共同所有者に通知が送信されます。 Azure [アクティビティ ログ アラート](../azure-monitor/essentials/platform-logs-overview.md)を使用して、通知の受信者、および電子メール、SMS、webhook などのメッセージング オプションを通知に追加できます。  
 - 通知では、"*セルフサービス期間*" を確認できます。 この期間中 (通常 35 日) は、どの VM がその段階に含まれているかを確認できます。 スケジュールの都合に応じて、メンテナンスを事前に開始することができます。
 - セルフサービス期間が過ぎると、"*予定メンテナンス期間*" が始まります。 この期間のある時点で、Azure は、VM に対して必要なメンテナンスをスケジュールし、適用します。 
 
@@ -89,7 +89,7 @@ Azure Portal、PowerShell、REST API、Azure CLI を使用して、仮想マシ�
 
 ## <a name="notification-and-alerts-in-the-portal"></a>ポータルの通知とアラート
 
-Azure は、サブスクリプション所有者と共同所有者グループに電子メールを送信することで、計画メンテナンスのスケジュールを伝えます。 アクティビティ ログ アラートを作成して、この通信にその他の受信者とチャネルを追加することができます。 詳しくは、「[Azure アクティビティ ログでサブスクリプション アクティビティを監視する](../azure-monitor/platform/platform-logs-overview.md)」をご覧ください。
+Azure は、サブスクリプション所有者と共同所有者グループに電子メールを送信することで、計画メンテナンスのスケジュールを伝えます。 アクティビティ ログ アラートを作成して、この通信にその他の受信者とチャネルを追加することができます。 詳しくは、「[Azure アクティビティ ログでサブスクリプション アクティビティを監視する](../azure-monitor/essentials/platform-logs-overview.md)」をご覧ください。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューで **[モニター]** を選択します。 
@@ -99,7 +99,7 @@ Azure は、サブスクリプション所有者と共同所有者グループ�
    - **サービス**: **[Virtual Machine Scale Sets and Virtual Machines]\(仮想マシン スケール セットおよび仮想マシン\)** を選択します。
    - **[種類]** : **[計画メンテナンス]** を選択します。 
     
-アクティビティ ログ アラートの構成方法については、「[アクティビティ ログ アラートの作成](../azure-monitor/platform/activity-log-alerts.md)」をご覧ください
+アクティビティ ログ アラートの構成方法については、「[アクティビティ ログ アラートの作成](../azure-monitor/alerts/activity-log-alerts.md)」をご覧ください
     
     
 ## <a name="start-maintenance-on-your-virtual-machine-scale-set-from-the-portal"></a>ポータルから仮想マシン スケール セットのメンテナンスを開始する

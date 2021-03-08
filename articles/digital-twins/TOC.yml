@@ -19,8 +19,18 @@
       href: tutorial-end-to-end.md
 - name: 概念
   items:
-    - name: カスタム モデル
+    - name: DTDL モデル
       href: concepts-models.md
+    - name: オントロジ
+      items:
+        - name: オントロジとは
+          href: concepts-ontologies.md
+        - name: 業界標準のオントロジの採用
+          href: concepts-ontologies-adopt.md
+        - name: オントロジの変換
+          href: concepts-ontologies-convert.md
+        - name: オントロジの拡張
+          href: concepts-ontologies-extend.md
     - name: デジタル ツインとツイン グラフ
       href: concepts-twins-graph.md
     - name: クエリ言語
@@ -52,7 +62,11 @@
             - name: スクリプト化バージョン
               href: how-to-set-up-instance-scripted.md
         - name: Private Link でプライベート アクセスを有効にする
-          href: how-to-enable-private-link.md
+          items:
+            - name: ポータルのバージョン
+              href: how-to-enable-private-link-portal.md
+            - name: CLI のバージョン
+              href: how-to-enable-private-link-cli.md
         - name: アプリ認証コードを作成する
           href: how-to-authenticate-client.md
         - name: アプリの登録を作成する
@@ -61,10 +75,8 @@
           href: how-to-move-regions.md
     - name: モデルを設計する
       items:
-        - name: カスタム モデルを管理する
+        - name: DTDL モデルを管理する
           href: how-to-manage-model.md
-        - name: 業界標準モデルを統合する
-          href: how-to-integrate-models.md
         - name: モデルを解析および検証する
           href: how-to-parse-models.md
         - name: タグを追加する
@@ -103,12 +115,16 @@
       items:
         - name: エンドポイントとルートを管理する
           items:
-            - name: API と CLI のバージョン
-              href: how-to-manage-routes-apis-cli.md
             - name: ポータルのバージョン
               href: how-to-manage-routes-portal.md
+            - name: API と CLI のバージョン
+              href: how-to-manage-routes-apis-cli.md
         - name: ルーティング イベントのマネージド ID を有効にする
-          href: how-to-enable-managed-identities.md
+          items:
+            - name: ポータルのバージョン
+              href: how-to-enable-managed-identities-portal.md
+            - name: CLI のバージョン
+              href: how-to-enable-managed-identities-cli.md
         - name: Azure Maps と統合する
           href: how-to-integrate-maps.md
         - name: Azure Time Series Insights と統合する
@@ -140,7 +156,7 @@
             - name: .NET (C#) SDK
               href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet
             - name: Java SDK
-              href: /azure/developer/java/sdk/
+              href: /java/api/overview/azure/digitaltwins/resourcemanagement?view=azure-java-stable
         - name: データ プレーン
           items:
             - name: .NET (C#) SDK
@@ -152,7 +168,7 @@
             - name: Python SDK
               href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python
     - name: Digital Twins CLI
-      href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
+      href: /cli/azure/ext/azure-iot/dt
 - name: リソース
   items:
     - name: Digital Twins サービスに関する制約
@@ -241,6 +257,12 @@
           href: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer/
         - name: DTDL 検証ツール (サンプル)
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
+        - name: モデル アップローダー (サンプル)
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader'
+        - name: モデル ビジュアライザー (サンプル)
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer'
+        - name: OWL2DTDL コンバーター
+          href: 'https://github.com/Azure/opendigitaltwins-building-tools/tree/master/OWL2DTDL'
         - name: DPS と IoT Hub の統合サンプル
           href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
         - name: SignalR 統合のサンプル

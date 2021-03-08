@@ -6,16 +6,16 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.custom: subject-cost-optimization
 ms.date: 01/29/2021
-ms.openlocfilehash: 58e12862cf00b500bced105d67fede8599c2a257
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 44351497ed58c8d49404c094f6800b52186edabb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99179833"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709633"
 ---
 # <a name="plan-and-manage-costs-for-azure-logic-apps"></a>Azure Logic Apps のコストを計画および管理する
 
-この記事は、Azure Logic Apps ストレージのコストを計画および管理するのに役立ちます。 このサービスを使用してリソースを作成または追加する前に、Azure 料金計算ツールを使用してコストを見積もってください。 Logic Apps リソースの使用を開始したら、[Azure Cost Management](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) を使用して予算を設定し、コストを監視できます。 対処した方がよい領域を識別するために、予測コストを確認し、支出の傾向を監視することもできます。
+この記事は、Azure Logic Apps ストレージのコストを計画および管理するのに役立ちます。 このサービスを使用してリソースを作成または追加する前に、Azure 料金計算ツールを使用してコストを見積もってください。 Logic Apps リソースの使用を開始したら、[Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) を使用して予算を設定し、コストを監視できます。 対処した方がよい領域を識別するために、予測コストを確認し、支出の傾向を監視することもできます。
 
 Logic Apps のコストは、Azure の請求にある月額料金の一部でしかないことにご注意ください。 この記事では、Logic Apps のコストを見積もって管理する方法について説明しますが、課金は、Azure サブスクリプションで使用されるすべての Azure サービスとリソース (サードパーティのサービスを含む) に対して行われます。 Logic Apps のコスト管理に慣れたら、同様の方法を適用して、サブスクリプションで使用されているすべての Azure サービスのコストを管理できます。
 
@@ -23,9 +23,9 @@ Logic Apps のコストは、Azure の請求にある月額料金の一部でし
 
 <!--Note for Azure service writer: This section covers prerequisites for the Cost Management's Cost Analysis feature. Add other prerequisites needed for your service after the Cost Management prerequisites. -->
 
-[Azure Cost Management](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) では、ほとんどの Azure アカウントの種類がサポートされます。 サポートされているすべてのアカウントの種類を確認するには、「[Cost Management のデータを理解する](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)」を参照してください。 コスト データを表示するには、少なくとも Azure アカウントの読み取りアクセス許可が必要です。
+[Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) では、ほとんどの Azure アカウントの種類がサポートされます。 サポートされているすべてのアカウントの種類を確認するには、「[Cost Management のデータを理解する](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)」を参照してください。 コスト データを表示するには、少なくとも Azure アカウントの読み取りアクセス許可が必要です。
 
-Azure Cost Management データに対するアクセス権の割り当てについては、[データへのアクセス許可の割り当て](https://docs.microsoft.com/azure/cost-management/assign-access-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)に関するページを参照してください。
+Azure Cost Management データに対するアクセス権の割り当てについては、[データへのアクセス許可の割り当て](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)に関するページを参照してください。
 
 <!--Note for Azure service writer: If you have other prerequisites for your service, add them here -->
 
@@ -101,9 +101,9 @@ Azure Logic Apps を使用してリソースを作成する前に、[Azure 料�
 
 ## <a name="create-budgets-and-alerts"></a>予算とアラートを作成する
 
-Azure アカウントまたはサブスクリプションのコストを事前に管理できるように、[Azure Cost Management and Billing](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) サービスと機能を使用して[予算](https://docs.microsoft.com/azure/cost-management/tutorial-acm-create-budgets?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)と[アラート](https://docs.microsoft.com/azure/cost-management/cost-mgt-alerts-monitor-usage-spending?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を作成できます。  予算とアラートは、Azure サブスクリプションとリソース グループに対して作成されるため、全体的なコスト監視戦略の一環として役立ちます。
+Azure アカウントまたはサブスクリプションのコストを事前に管理できるように、[Azure Cost Management and Billing](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) サービスと機能を使用して[予算](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)と[アラート](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を作成できます。  予算とアラートは、Azure サブスクリプションとリソース グループに対して作成されるため、全体的なコスト監視戦略の一環として役立ちます。
 
-予算とコストのしきい値と比較した支出に基づき、アラートによって自動的に、支出の異常と支出超過のリスクが関係者に通知されます。 監視の粒度をさらに細かくする必要がある場合は、Azure の特定のリソースまたはサービスに対するフィルターを使用した予算を作成することもできます。 フィルターを使用すると、追加のコストがかかる新しいリソースが誤って作成されないようにすることができます。 フィルターのオプションの詳細については、[グループとフィルターのオプション](https://docs.microsoft.com/azure/cost-management-billing/costs/group-filter?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)に関するページを参照してください。
+予算とコストのしきい値と比較した支出に基づき、アラートによって自動的に、支出の異常と支出超過のリスクが関係者に通知されます。 監視の粒度をさらに細かくする必要がある場合は、Azure の特定のリソースまたはサービスに対するフィルターを使用した予算を作成することもできます。 フィルターを使用すると、追加のコストがかかる新しいリソースが誤って作成されないようにすることができます。 フィルターのオプションの詳細については、[グループとフィルターのオプション](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)に関するページを参照してください。
 
 <a name="monitor-costs"></a>
 
@@ -115,7 +115,7 @@ Azure で作成または使用開始したリソースに対するコストの�
 
 * Azure Monitor を使用して、[ロジック アプリの実行とストレージの消費を監視する](#monitor-billing-metrics)
 
-* [Azure Cost Management and Billing](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) を使用して[コスト分析](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を実行する
+* [Azure Cost Management and Billing](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) を使用して[コスト分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を実行する
 
 <a name="monitor-billing-metrics"></a>
 
@@ -170,7 +170,7 @@ Azure Monitor を使用すると、特定のロジック アプリの、これ�
 
 ### <a name="run-cost-analysis-by-using-azure-cost-management-and-billing"></a>Azure Cost Management and Billing を使用してコスト分析を実行する
 
-Azure サブスクリプションなど、特定のスコープに基づいて Logic Apps サービスのコストを確認する場合は、[Azure Cost Management and Billing](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) の[コスト分析](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)機能を使用できます。
+Azure サブスクリプションなど、特定のスコープに基づいて Logic Apps サービスのコストを確認する場合は、[Azure Cost Management and Billing](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) の[コスト分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)機能を使用できます。
 
 1. Azure portal で、Azure サブスクリプションなど、目的のスコープを開きます。 左側のメニューの **[コスト管理]** で、 **[コスト分析]** を選択します。
 
@@ -197,7 +197,7 @@ Azure サブスクリプションなど、特定のスコープに基づいて L
 
 ### <a name="export-cost-data"></a>コスト データのエクスポート
 
-コストに関して追加のデータ分析を行う必要がある場合は、[コスト データをストレージ アカウントにエクスポート](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)することができます。 たとえば、財務チームが Excel や Power BI を使用してこのデータを分析できます。 日単位、週単位、または月単位のスケジュールでコストをエクスポートし、カスタムの日付範囲を設定することができます。 コスト データのエクスポートは、推奨されるコスト データセット取得方法です。
+コストに関して追加のデータ分析を行う必要がある場合は、[コスト データをストレージ アカウントにエクスポート](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)することができます。 たとえば、財務チームが Excel や Power BI を使用してこのデータを分析できます。 日単位、週単位、または月単位のスケジュールでコストをエクスポートし、カスタムの日付範囲を設定することができます。 コスト データのエクスポートは、推奨されるコスト データセット取得方法です。
 
 ## <a name="other-ways-to-manage-and-reduce-costs"></a>コストを管理および削減するその他の方法
 
@@ -228,9 +228,7 @@ Otherwise, if no other cost-saving recommendations or best practices exist to re
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Cost Management でクラウド投資を最適化する](https://docs.microsoft.com/azure/cost-management-billing/costs/cost-mgt-best-practices?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-* [コスト分析を使用してコストを管理する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-* [予想外のコストを防ぐ](https://docs.microsoft.com/azure/cost-management-billing/understand/analyze-unexpected-charges?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-* [Cost Management](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) のガイド付き学習コースを受講する
-
-
+* [Azure Cost Management でクラウド投資を最適化する](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* [コスト分析を使用してコストを管理する](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* [予想外のコストを防ぐ](../cost-management-billing/understand/analyze-unexpected-charges.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* [Cost Management](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) のガイド付き学習コースを受講する

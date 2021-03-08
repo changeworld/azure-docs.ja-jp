@@ -1,22 +1,18 @@
 ---
 title: 継続的インテグレーションおよびデリバリーの自動発行
 description: 継続的インテグレーションおよびデリバリーの自動発行の方法について説明します。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 author: nabhishek
 ms.author: abnarain
 ms.reviewer: maghan
-manager: weetok
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 7b9e07c6bd2cb52858550fe5c34b2660c4d977eb
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 49ec43e59989f3fdad8f5731867953cc7cbb5757
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99431116"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699710"
 ---
 # <a name="automated-publishing-for-continuous-integration-and-delivery"></a>継続的インテグレーションおよびデリバリーの自動発行
 
@@ -123,7 +119,7 @@ npm パッケージはさまざまな方法で使用できますが、主な利�
             "build":"node node_modules/@microsoft/azure-data-factory-utilities/lib/index"
         },
         "dependencies":{
-            "@microsoft/azure-data-factory-utilities":"^0.1.2"
+            "@microsoft/azure-data-factory-utilities":"^0.1.3"
         }
     } 
     ```

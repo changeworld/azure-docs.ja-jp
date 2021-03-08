@@ -7,7 +7,7 @@
     - name: ベスト プラクティス
       href: howto-best-practices.md
     - name: よく寄せられる質問
-      href: faq.md
+      href: faq.yml
 - name: クイックスタート
   expanded: true
   items:
@@ -132,12 +132,14 @@
       href: howto-backup-config-store.md
     - name: マネージド ID を使用して App Configuration にアクセスする
       href: howto-integrate-azure-managed-service-identity.md
+    - name: Visual Studio での App Configuration の統合
+      href: /visualstudio/azure/vs-azure-tools-connected-services-app-configuration
 - name: リファレンス
   items:
     - name: 構成
       items:
         - name: Azure CLI
-          href: /cli/azure/appconfig?view=azure-cli-latest
+          href: /cli/azure/appconfig
         - name: .NET Core プロバイダー
           href: /dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration
         - name: .NET Framework ビルダー

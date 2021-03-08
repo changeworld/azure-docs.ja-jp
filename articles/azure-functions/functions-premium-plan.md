@@ -9,12 +9,12 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: 26dd3f7df5a71c687bfb4935f290e7a54b4e01fe
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 3061329ad9dcb368dab586acc2146e6fb4e23028
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610269"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708715"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions の Premium プラン
 
@@ -154,7 +154,7 @@ az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-inst
 
 たとえば、JavaScript  Function App には、Node.js の既定のメモリ上限の制限があります。 この固定のメモリ制限を増やすには、値に `--max-old-space-size=<max memory in MB>` を使用して `languageWorkers:node:arguments` のアプリ設定を追加します。
 
-4 GB を超えるメモリの場合は、プラットフォームのビット設定が `64 Bit` に設定されていることを [[全般設定]](/azure/app-service/configure-common#configure-general-settings) で確認します。
+4 GB を超えるメモリの場合は、プラットフォームのビット設定が `64 Bit` に設定されていることを [[全般設定]](../app-service/configure-common.md#configure-general-settings) で確認します。
 
 ## <a name="region-max-scale-out"></a>リージョン最大スケール アウト
 

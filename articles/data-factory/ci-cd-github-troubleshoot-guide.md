@@ -5,15 +5,14 @@ author: ssabat
 ms.author: susabat
 ms.reviewer: susabat
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: e5e1a4ff676a6677357638dc4b67dc94926adbd2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 091c0cb20877090453f38ab922cc2bd277e90093
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556309"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393753"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>ADF での CI-CD、Azure DevOps、および GitHub の問題のトラブルシューティング 
 
@@ -78,14 +77,14 @@ CI/CD リリース パイプラインが次のエラーで失敗しています�
 
 #### <a name="cause"></a>原因
 
-これは、ターゲット ファクトリに同じ名前の Integration Runtime があるが、型が異なるためです。 Integration Runtime は、デプロイ時に同じ型である必要があります。
+これは、ターゲット ファクトリに、同じ名前だが、型が異なる統合ランタイムがあるためです。 Integration Runtime は、デプロイ時に同じ型である必要があります。
 
 #### <a name="recommendation"></a>推奨
 
 - 以下の CI/CD のベスト プラクティスを参照してください。
 
     https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd 
-- 統合ランタイムは頻繁に変更されることはなく、CI/CD 内のすべてのステージで類似しているため、Data Factory は CI/CD のすべてのステージで同じ名前と型の統合ランタイムを使用すると想定します。 名前と型およびプロパティが異なる場合は、ソースとターゲットの IR 構成が一致していることを確認してから、リリース パイプラインをデプロイしてください。
+- 統合ランタイムは頻繁に変更されることはなく、CI/CD 内のすべてのステージで類似しているため、Data Factory は CI/CD のすべてのステージで同じ名前と型の統合ランタイムを使用すると想定します。 名前と型およびプロパティが異なる場合は、ソースとターゲットの統合ランタイム構成が一致していることを確認してから、リリース パイプラインをデプロイしてください。
 - すべてのステージで統合ランタイムを共有する場合は、共有の統合ランタイムを含めるためだけに三項ファクトリを使用することを検討してください。 この共有ファクトリは、すべての環境で、リンクされた統合ランタイムの種類として使用できます。
 
 ### <a name="document-creation-or-update-failed-because-of-invalid-reference"></a>参照が無効なため、ドキュメントの作成または更新に失敗しました
@@ -133,7 +132,7 @@ Data Factory をリソース グループ間で移動できないため、次の
 
 #### <a name="resolution"></a>解決方法
 
-移動できるようにするには、SSIS-IR および共有 IR を削除する必要があります。 IR を削除しない場合は、コピーとクローンのドキュメントに従ってコピーを行い、完了後に古いデータ ファクトリを削除することをお勧めします。
+移動できるようにするには、SSIS-IR および共有 IR を削除する必要があります。 統合ランタイムを削除しない場合は、コピーとクローンのドキュメントに従ってコピーを行い、完了後に古い Data Factory を削除することをお勧めします。
 
 ###  <a name="unable-to-export-and-import-arm-template"></a>ARM テンプレートをエクスポートおよびインポートできません
 
@@ -150,6 +149,34 @@ ARM テンプレートをエクスポートおよびインポートできませ�
 #### <a name="resolution"></a>解決方法
 
 この問題を解決するには、ロールに次のアクセス許可を追加する必要があります。*Microsoft.DataFactory/factories/queryFeaturesValue/action* このアクセス許可は、既定で "Data Factory 共同作成者" ロールに含まれている必要があります。
+
+###  <a name="automatic-publishing-for-cicd-without-clicking-publish-button"></a>[発行] ボタンをクリックしない CI/CD での自動発行  
+
+#### <a name="issue"></a>問題
+
+ADF ポータルでのボタン クリックによる手動発行で、自動の CI/CD 操作が有効になりません。
+
+#### <a name="cause"></a>原因
+
+最近まで、ADF パイプラインをデプロイのために発行する唯一の方法は、ADF ポータルでのボタン クリックを使用することでした。 現在は、プロセスを自動で行えるようになりました。 
+
+#### <a name="resolution"></a>解決方法
+
+CI/CD プロセスが拡張されました。 **自動発行** 機能によって、ADF UX からすべての Azure Resource Manager (ARM) テンプレート機能が取得、検証、およびエクスポートされます。 これにより、一般公開されている npm パッケージ [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) を介してそのロジックが使用可能になります。 これにより、ADF UI に移動してボタンをクリックする代わりに、プログラムによってこれらのアクションをトリガーできます。 これにより、CI/CD パイプラインで **真の** 継続的インテグレーション エクスペリエンスを利用できます。 詳細については、[ADF CI/CD 発行の機能強化](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment-improvements)に関する記事に従ってください。 
+
+###  <a name="cannot-publish-because-of-4mb-arm-template-limit"></a>4 MB の ARM テンプレート制限が原因で発行できない  
+
+#### <a name="issue"></a>問題
+
+4 MB の合計テンプレート サイズという Azure Resource Manager の制限に達したため、デプロイできません。 この制限を超えた後にデプロイするための解決策が必要です。 
+
+#### <a name="cause"></a>原因
+
+Azure Resource Manager では、テンプレート サイズは 4 MB に制限されています。 テンプレートのサイズを 4 MB に、各パラメーター ファイルのサイズを 64 KB に制限します。 4 MB の制限は、反復的なリソースの定義と変数およびパラメーターの値で拡張された後のテンプレートの最終的な状態に適用されます。 しかし、その制限を超えています。 
+
+#### <a name="resolution"></a>解決方法
+
+中小規模のソリューションの場合、テンプレートを 1 つにするとわかりやすく、保守も簡単になります。 すべてのリソースと値を 1 つのファイルで参照できます。 高度なシナリオの場合、リンクされたテンプレートを使用することで、対象となるコンポーネントにソリューションを分割することができます。 [リンクされた、およびネストされたテンプレートの使用](https://docs.microsoft.com/azure/azure-resource-manager/templates/linked-templates?tabs=azure-powershell)に関する記事に記載されているベスト プラクティスに従ってください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/09/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7309d9d32eba5cae350bbe8a1df325dfb2ab0c8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 7fafeae02bce001d473b0ed916624046a559a795
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744365"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648800"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Azure Active Directory の認証方法 - Microsoft Authenticator アプリ
 
@@ -23,7 +23,7 @@ Microsoft Authenticator アプリは、Azure AD の職場または学校アカ�
 
 ユーザーは、モバイル アプリから通知を受け取って承認または拒否することも、Authenticator アプリを使用してサインイン インターフェイスに入力できる OATH 確認コードを生成することもできます。 通知コードと確認コードの両方を有効にすると、Authenticator アプリを登録したユーザーはいずれかの方法を使用して本人確認を行うことができます。
 
-ユーザー名とパスワードの組み合わせではなく、サインイン プロンプトで Authenticator アプリを使用する方法については、「[Microsoft Authenticator アプリを使用したパスワードなしのサインインを有効にする (プレビュー)](howto-authentication-passwordless-phone.md)」を参照してください。
+ユーザー名とパスワードの組み合わせではなく、サインイン プロンプトで Authenticator アプリを使用する方法については、「[Microsoft Authenticator アプリを使用したパスワードなしのサインインを有効にする](howto-authentication-passwordless-phone.md)」を参照してください。
 
 > [!NOTE]
 > SSPR を有効にしたときに、ユーザーにモバイル アプリを登録するオプションはありません。 代わりに、ユーザーは、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) で、または統合されたセキュリティ情報の登録の一環として [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) で、モバイル アプリを登録できます。
@@ -34,7 +34,7 @@ Microsoft Authenticator アプリは、Azure AD の職場または学校アカ�
 
 ![サインインを承認するようユーザーに求めている、ブラウザーでのサインインの例](./media/howto-authentication-passwordless-phone/phone-sign-in-microsoft-authenticator-app.png)
 
-この認証方法によって高レベルのセキュリティが実現し、ユーザーがサインイン時にパスワードを入力する必要がなくなります。 Microsoft Authenticator アプリを使用したパスワードなしのサインインは現在プレビュー段階です。
+この認証方法によって高レベルのセキュリティが実現し、ユーザーがサインイン時にパスワードを入力する必要がなくなります。 
 
 パスワードなしのサインインを開始するには、「[Microsoft Authenticator アプリを使用したパスワードなしのサインインを有効にする](howto-authentication-passwordless-phone.md)」を参照してください。
 

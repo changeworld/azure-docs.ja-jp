@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 5b257e45a86a7b22e9064fcfc6092b3c946ae99b
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 13cbc2e9451221fef951eb6fac4c6b2772275122
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757647"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556424"
 ---
 # <a name="organize-management-groups-subscriptions-and-tenant-wide-visibility"></a>管理グループ、サブスクリプション、およびテナント全体の可視性を整理する
 
@@ -81,12 +81,14 @@ Azure の管理グループを使用すると、一連のサブスクリプシ�
 
 ## <a name="grant-tenant-wide-permissions-to-yourself"></a>テナント全体のアクセス許可を自分に付与する
 
-Azure Active Directory ロールが **グローバル管理者** であるユーザーは、テナント全体の責任を持つ場合がありますが、Azure Security Center でその組織全体の情報を表示するための Azure アクセス許可がありません。 
+Azure Active Directory (AD) ロールが **グローバル管理者** であるユーザーは、テナント全体の責任を持つ場合がありますが、Azure Security Center でその組織全体の情報を表示するための Azure アクセス許可がありません。 Azure AD ロールの割り当てでは Azure リソースへのアクセス権が付与されないため、アクセス許可の昇格が必要です。 
 
 > [!TIP]
-> 組織が [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md) またはその他の PIM ツールを使用してリソースへのアクセスを管理している場合は、これらの変更を行うユーザーに対して、グローバル管理者ロールが有効になっている必要があります。
+> グローバル管理者ロールのアクセス許可の昇格の詳細については、「[Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる](../role-based-access-control/elevate-access-global-admin.md)」を参照してください。
 
 テナント レベルのアクセス許可を自分に割り当てるには、次の手順を実行します。
+
+1. 組織が [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md) またはその他の PIM ツールを使用してリソースへのアクセスを管理している場合は、下の手順に従い、ユーザーに対してグローバル管理者ロールが有効になっている必要があります。
 
 1. テナントのルート管理グループに割り当てられていないグローバル管理者ユーザーとして、Security Center の **[概要]** ページを開き、バナーの **[テナント全体の可視性]** リンクを選択します。 
 

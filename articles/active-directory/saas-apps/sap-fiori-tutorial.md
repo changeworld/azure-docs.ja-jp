@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ab21c6dc95ef39e6273dac405ba58e748890fc1a
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 547d96a9591b99318a74977106e99511c9c80507
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968434"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687109"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SAP Fiori の統合
 
@@ -146,7 +146,7 @@ SAP Fiori に対する Azure AD SSO を構成してテストするには、次�
 
     ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
 
-    c. メタデータ ファイルが正常にアップロードされると、 **[基本的な SAML 構成]** ウィンドウの **[識別子]** と **[応答 URL]** の値が自動的に入力されます。 **[サインオン URL]** ボックスに、`https:\//\<your company instance of SAP Fiori\>` 形式で URL を入力します。
+    c. メタデータ ファイルが正常にアップロードされると、 **[基本的な SAML 構成]** ウィンドウの **[識別子]** と **[応答 URL]** の値が自動的に入力されます。 **[サインオン URL]** ボックスに、`https://<your company instance of SAP Fiori>` 形式で URL を入力します。
 
     > [!NOTE]
     > 一部のお客様から、誤って構成された **応答 URL** の値に関連するエラーがレポートされています。 このようなエラーが表示されたら、以下の PowerShell スクリプトを使用して、インスタンスの正しい応答 URL を設定できます。

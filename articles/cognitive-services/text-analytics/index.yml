@@ -11,14 +11,14 @@ metadata:
   ms.service: cognitive-services
   ms.subservice: text-analytics
   ms.topic: landing-page
-  ms.date: 01/29/2019
+  ms.date: 02/09/2019
   ms.author: aahi
-  ms.openlocfilehash: 48d045fb89a4b04826ecb9fd0c7d0b2ac676d64a
-  ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+  ms.openlocfilehash: 962b1278f85ce8d73f43561e7df7b27f7b6b46ad
+  ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/28/2021
-  ms.locfileid: "98944970"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102201959"
 landingContent:
 - title: Text Analytics API について
   linkLists:
@@ -114,26 +114,22 @@ landingContent:
     links:
     - text: エンティティの認識
       url: how-tos/text-analytics-how-to-entity-linking.md
-- title: リファレンス
+- title: AI の責任ある使用
   linkLists:
-  - linkListType: reference
+  - linkListType: overview
     links:
-    - text: REST API
-      url: https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7
-    - text: .NET クライアント ライブラリ
-      url: /dotnet/api/overview/azure/ai.textanalytics-readme?view=azure-dotnet
-    - text: Python クライアント ライブラリ
-      url: /python/api/overview/azure/ai-textanalytics-readme?view=azure-python
-    - text: JavaScript クライアント ライブラリ
-      url: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-latest
-    - text: Java クライアント ライブラリ
-      url: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable
-    - text: Go クライアント ライブラリ
-      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics
-    - text: Azure PowerShell
-      url: /powershell/module/az.cognitiveservices
-    - text: Azure CLI
-      url: /cli/azure/cognitiveservices?view=azure-cli-latest
+    - text: Text Analytics の透明性に関する注意
+      url: /legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context
+    - text: Health の透明性に関する注意
+      url: /legal/cognitive-services/text-analytics/transparency-note-health?context=/azure/cognitive-services/text-analytics/context/context
+    - text: PII の透明性に関する注意
+      url: /legal/cognitive-services/text-analytics/transparency-note-personally-identifiable-information?context=/azure/cognitive-services/text-analytics/context/context
+    - text: 感情分析の透明性に関する注意
+      url: /legal/cognitive-services/text-analytics/transparency-note-sentiment-analysis?context=/azure/cognitive-services/text-analytics/context/context
+  - linkListType: concept
+    links:
+    - text: 統合と責任ある使用
+      url: /legal/cognitive-services/text-analytics/guidance-integration-responsible-use?context=/azure/cognitive-services/text-analytics/context/context
 - title: Docker コンテナーを使用する
   linkLists:
   - linkListType: how-to-guide
@@ -148,6 +144,26 @@ landingContent:
       url: ../containers/azure-container-instance-recipe.md
     - text: コンテナーを Azure Kubernetes Service (AKS) にデプロイする
       url: how-tos/text-analytics-how-to-use-kubernetes-service.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API (v3.1 プレビュー)
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/
+    - text: REST API (v3.0)
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0
+    - text: .NET クライアント ライブラリ
+      url: /dotnet/api/overview/azure/ai.textanalytics-readme?view=azure-dotnet
+    - text: Python クライアント ライブラリ
+      url: /python/api/overview/azure/ai-textanalytics-readme?view=azure-python
+    - text: JavaScript クライアント ライブラリ
+      url: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-latest
+    - text: Java クライアント ライブラリ
+      url: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable
+    - text: Azure PowerShell
+      url: /powershell/module/az.cognitiveservices
+    - text: Azure CLI
+      url: /cli/azure/cognitiveservices
 - title: ヘルプとフィードバック
   linkLists:
   - linkListType: reference

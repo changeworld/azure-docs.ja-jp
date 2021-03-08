@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 03df7db13ebd3ebec407bb046cc735c835e01068
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e85ac58c80e1fd695938bf09b6435dba1f4ee083
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074258"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091348"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM で入れ子になった仮想化を有効にする方法
 
@@ -24,7 +24,7 @@ ms.locfileid: "87074258"
 
 新しい Windows Server 2016 Azure VM を作成します。 入れ子をサポートしている仮想マシンのサイズの完全な一覧については、「[Azure コンピューティング ユニット (ACU)](../acu.md)」をご覧ください。
 
-必ずゲスト仮想マシンの要求をサポートするのに十分な大きさの VM サイズを選択してください。 この例では、D3_v3 サイズの Azure VM を使用しています。 
+必ずゲスト仮想マシンの要求をサポートするのに十分な大きさの VM サイズを選択してください。 この例では、D4_v3 サイズの Azure VM を使用しています。 
 
 Dv3 または Ev3 シリーズの仮想マシンのリージョン別提供状況については、[こちら](https://azure.microsoft.com/regions/services/)をご覧ください。
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 87f592f0cff8504fbafba392d20f405640e2578a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e1a0f4f22411e506cab3b54e955a4cdc16986fe2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682972"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667499"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プール 
 
@@ -75,7 +75,7 @@ ms.locfileid: "98682972"
 
 サポートされている T-SQL:
 
-- SQL 関数の大部分を含む、完全な [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 領域がサポートされます
+- SQL 関数の大部分を含む、完全な [SELECT](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) 領域がサポートされます
 - CETAS - CREATE EXTERNAL TABLE AS SELECT
 - ビューとセキュリティのみに関連する DDL ステートメント
 
@@ -89,7 +89,7 @@ ms.locfileid: "98682972"
 
 ### <a name="extensions"></a>拡張機能
 
-サーバーレス SQL プールでは、データ レイク内のファイルに格納されているデータに対するインプレース クエリをスムーズに実行できるように、次の機能を追加して既存の [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 関数を拡張します。
+サーバーレス SQL プールでは、データ レイク内のファイルに格納されているデータに対するインプレース クエリをスムーズに実行できるように、次の機能を追加して既存の [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?view=azure-sqldw-latest&preserve-view=true) 関数を拡張します。
 
 [複数のファイルまたはフォルダーに対するクエリの実行](query-data-storage.md#query-multiple-files-or-folders)
 
@@ -113,7 +113,7 @@ ms.locfileid: "98682972"
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory との統合と多要素認証
 
-サーバーレス SQL プールでは、[Azure Active Directory との統合](../../azure-sql/database/authentication-aad-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)によって、データベース ユーザーの ID とその他の Microsoft サービスを一元的に管理できます。 この機能は、アクセス許可の管理を簡略化し、セキュリティを強化します。 Azure Active Directory (Azure AD) では、[多要素認証](../../azure-sql/database/authentication-mfa-ssms-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) をサポートしています。これにより、シングル サインオン プロセスをサポートすると同時に、データとアプリケーションのセキュリティが強化されます。
+サーバーレス SQL プールでは、[Azure Active Directory との統合](../../azure-sql/database/authentication-aad-configure.md)によって、データベース ユーザーの ID とその他の Microsoft サービスを一元的に管理できます。 この機能は、アクセス許可の管理を簡略化し、セキュリティを強化します。 Azure Active Directory (Azure AD) では、[多要素認証](../../azure-sql/database/authentication-mfa-ssms-configure.md) (MFA) をサポートしています。これにより、シングル サインオン プロセスをサポートすると同時に、データとアプリケーションのセキュリティが強化されます。
 
 #### <a name="authentication"></a>認証
 
@@ -125,7 +125,7 @@ ms.locfileid: "98682972"
 
 - **Azure Active Directory 認証**:
 
-  この認証方法では、Azure Active Directory によって管理されている ID を使用します。 Azure AD ユーザーの場合、多要素認証を有効にできます。 [可能であれば](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、Active Directory 認証 (統合セキュリティ) を使用します。
+  この認証方法では、Azure Active Directory によって管理されている ID を使用します。 Azure AD ユーザーの場合、多要素認証を有効にできます。 [可能であれば](/sql/relational-databases/security/choose-an-authentication-mode?view=azure-sqldw-latest&preserve-view=true)、Active Directory 認証 (統合セキュリティ) を使用します。
 
 #### <a name="authorization"></a>承認
 

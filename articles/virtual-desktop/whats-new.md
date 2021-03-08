@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: f34a5b957f64558b468c456686f0f86172630135
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 1deec49cfeca65628485ed105e0919f2c2b18b17
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258797"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575315"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows Virtual Desktop の最新情報
 
@@ -38,7 +38,7 @@ Windows Virtual Desktop およびリモート デスクトップ サービスに
 
 ## <a name="fslogix-updates"></a>FSLogix の更新
 
-FSLogix に対して行われた最新の更新については、FSLogix の最新情報に関するページを参照してください。 Check out <bpt id="p1">[</bpt>What's new at FSLogix<ept id="p1">](/fslogix/whats-new)</ept>.
+FSLogix に対して行われた最新の更新については、 [FSLogix の最新情報](/fslogix/whats-new)に関するページを参照してください。
 
 ## <a name="january-2021"></a>2021 年 1 月
 
@@ -56,7 +56,7 @@ Azure Resource Manager の入れ子になったテンプレートで、networkSe
 
 FSLogix バージョン 2009 HF_01 (2.9.7654.46150) をリリースし、以前のリリース (2.9.7621.30127) にあった問題を解決しました。 以前のバージョンの使用は中止し、できるだけ早く FSLogix を更新するようお勧めします。
 
-詳細については、リリース ノートで [FSLogix の最新情報](/fslogix/whats-new.md#fslogix-apps-2009-hf_01-29765446150)を参照してください。
+詳細については、リリース ノートで [FSLogix の最新情報](/fslogix/whats-new#fslogix-apps-2009-hf_01-29765446150)を参照してください。
 
 ### <a name="azure-portal-experience-improvements"></a>Azure portal エクスペリエンスの改善
 

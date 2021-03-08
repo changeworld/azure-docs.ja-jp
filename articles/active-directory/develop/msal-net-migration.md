@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: b437efcfa2b0bb2a725929ae0253f48d97d11552
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 64107c3f667dd7e59fcf6d191e83457029b3a277
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754816"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546348"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET へのアプリケーションの移行
 
@@ -145,7 +145,7 @@ MSAL.NET では、トークン キャッシュがシールド クラスとなり
 
 V1.0 では、`https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーが (組織用の) AAD アカウントでサインインできるようにします。 [ADAL.NET での機関の検証](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)に関するページを参照してください
 
-v2.0 で `https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーが AAD 組織または Microsoft の個人用アカウント (MSA) でサインインできるようにします。 MSAL.NET では、AAD アカウントへのログインを制限する場合 (ADAL.NET の動作と同じ)、`https://login.microsoftonline.com/organizations` を使用する必要があります。 詳細については、[パブリック クライアント アプリケーション](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication)に関するページの `authority` パラメーターについての記事を参照してください。
+v2.0 で `https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーが AAD 組織または Microsoft の個人用アカウント (MSA) でサインインできるようにします。 MSAL.NET では、AAD アカウントへのログインを制限する場合 (ADAL.NET の動作と同じ)、`https://login.microsoftonline.com/organizations` を使用します。 詳細については、[パブリック クライアント アプリケーション](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication)に関するページの `authority` パラメーターについての記事を参照してください。
 
 ## <a name="v10-and-v20-tokens"></a>v1.0 トークンと v2.0 トークン
 
@@ -170,7 +170,7 @@ Microsoft Graph API (https://graph.microsoft.com) など、v1.0 トークンを�
 たとえば、App ID URI が `ResourceId` である v1.0 Web API にユーザーの名前でアクセスするには、以下を使用します。
 
 ```csharp
-var scopes = new [] {  ResourceId+"/user_impersonation"};
+var scopes = new [] { ResourceId+"/user_impersonation" };
 ```
 
 Microsoft Graph API (https://graph.microsoft.com/) を使用して、MSAL.NET Azure Active Directory で読み取りと書き込みを行う場合、次のスニペットのようにスコープのリストを作成します。
@@ -182,7 +182,7 @@ string[] scopes = { ResourceId + "Directory.Read", ResourceId + "Directory.Write
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>警告:v1.0 Web API に対応するスコープに 1 つまたは 2 つのスラッシュがある場合
 
-Azure Resource Manager API (https://management.core.windows.net/) に対応するスコープを書き込む場合は、次のスコープを要求する必要があります (2 つのスラッシュに注意)
+Azure Resource Manager API (https://management.core.windows.net/) ) に対応するスコープを書き込む場合は、次のスコープを要求します (2 つのスラッシュに注意してください)。
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -205,7 +205,7 @@ Azure AD で使用されるロジックは次のとおりです。
 
 ```csharp
 ResourceId = "someAppIDURI";
-var scopes = new [] {  ResourceId+"/.default"};
+var scopes = new [] { ResourceId+"/.default" };
 ```
 
 ### <a name="scopes-to-request-in-the-case-of-client-credential-flow--daemon-app"></a>クライアント資格証明フロー / デーモン アプリの場合に要求するスコープ

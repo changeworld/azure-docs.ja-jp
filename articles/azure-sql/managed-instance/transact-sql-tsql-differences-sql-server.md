@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 11/10/2020
+ms.date: 1/12/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 0a462c7d713ea9285096db48b4a3bb5c5b0d9874
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a182ca3ba70b9faa1ba67fdb6c91a4eaf8e766ef
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737389"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691197"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -277,13 +277,14 @@ SQL Managed Instance はファイルにアクセスできないため、暗号�
 - `SINGLE_USER`
 - `WITNESS`
 
-一部の `ALTER DATABASE` ステートメント (たとえば、[SET CONTAINMENT](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)) は、データベースの自動バックアップ中やデータベースの作成直後などに一時的に失敗することがあります。 この場合、`ALTER DATABASE` ステートメントを再試行する必要があります。 関連するエラー メッセージの詳細については、「[解説](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2)」セクションを参照してください。
+一部の `ALTER DATABASE` ステートメント (たとえば、[SET CONTAINMENT](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#converting-a-database-to-partially-contained-using-transact-sql)) は、データベースの自動バックアップ中やデータベースの作成直後などに一時的に失敗することがあります。 この場合、`ALTER DATABASE` ステートメントを再試行する必要があります。 関連するエラー メッセージの詳細については、「[解説](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&tabs=sqlpool&view=azuresqldb-mi-current#remarks-2)」セクションを参照してください。
 
 詳細については、[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options) に関する記事をご覧ください。
 
 ### <a name="sql-server-agent"></a>SQL Server エージェント
 
 - SQL Managed Instance では現在、SQL Server エージェントの有効化/無効化はサポートされていません。 SQL エージェントは常に実行されています。
+- アイドル状態の CPU に基づくジョブ スケジュール トリガーはサポートされていません。
 - SQL Server エージェントの設定は読み取り専用です。 `sp_set_agent_properties` プロシージャは、SQL Managed Instance ではサポートされていません。 
 - ジョブ
   - T-SQL ジョブ ステップがサポートされています。
@@ -306,13 +307,7 @@ SQL Managed Instance はファイルにアクセスできないため、暗号�
   - プロキシはサポートされていません。
 - EventLog はサポートされていません。
 - SQL Agent ジョブを作成、変更、実行するために、ユーザーは Azure AD サーバー プリンシパル (ログイン) に直接マップされる必要があります。 直接マップされていないユーザー (たとえば、SQL Agent ジョブを作成、変更、または実行する権利を持つ Azure AD グループに属しているユーザー) は、これらの操作を実質的に実行できません。 これは、Managed Instance の借用と [EXECUTE AS の制限事項](#logins-and-users)のためです。
-
-現在、次の SQL エージェント機能はサポートされていません。
-
-- プロキシ
-- アイドル状態の CPU でのジョブのスケジューリング
-- エージェントの有効化または無効化
-- 警告
+- マスター/ターゲット (MSX/TSX) ジョブのマルチサーバー管理機能はサポートされていません。
 
 SQL Server エージェントについては、「[SQL Server エージェント](/sql/ssms/agent/sql-server-agent)」をご覧ください。
 
@@ -400,12 +395,12 @@ In-Database R および Python 外部ライブラリは、限られたパブリ�
 SQL Managed Instance のリンク サーバーがサポートするターゲットの数は限られています。
 
 - サポートされているターゲットは、SQL Managed Instance、SQL Database、Azure Synapse SQL の[サーバーレス](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)と専用プール、および SQL Server インスタンスです。 
-- 分散書き込み可能なトランザクションは、マネージド インスタンス間でのみ可能です。 詳細については、[分散トランザクション](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)に関する記事を参照してください。 ただし、MS DTC はサポートされていません。
+- 分散書き込み可能なトランザクションは、マネージド インスタンス間でのみ可能です。 詳細については、[分散トランザクション](../database/elastic-transactions-overview.md)に関する記事を参照してください。 ただし、MS DTC はサポートされていません。
 - サポートされていないターゲットは、ファイル、Analysis Services、他の RDBMS です。 ファイル インポートの代わりに `BULK INSERT` または `OPENROWSET` を使用して Azure Blob Storage からネイティブ CSV インポートを使用するか、[Azure Synapse Analytics 内のサーバーレス SQL プール](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)を使用してファイルの読み込みを試行します。
 
 操作: 
 
-- [インスタンス間](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)書き込みトランザクションは、マネージド インスタンスでのみサポートされています。
+- [インスタンス間](../database/elastic-transactions-overview.md)書き込みトランザクションは、マネージド インスタンスでのみサポートされています。
 - リンク サーバーの削除で `sp_dropserver` がサポートされています。 [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql) に関する記事をご覧ください。
 - SQL Server インスタンスでのみ、`OPENROWSET` 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
 - SQL Server インスタンスでのみ、`OPENDATASOURCE` 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 プロバイダーとしてサポートされる値は、`SQLNCLI`、`SQLNCLI11`、`SQLOLEDB` だけです。 たとえば `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee` です。 [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql) に関する記事をご覧ください。
@@ -487,9 +482,10 @@ RESTORE ステートメントについては、[RESTORE ステートメント](/
   - `remote access`
   - `remote data archive`
   - `remote proc trans`
+  - `scan for startup procs`
 - `sp_execute_external_scripts` はサポートされていません。 [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples) に関するセクションをご覧ください。
 - `xp_cmdshell` はサポートされていません。 [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql) に関する記事をご覧ください。
-- `Extended stored procedures` はサポートされておらず、これには `sp_addextendedproc` および `sp_dropextendedproc` が含まれます。 [拡張ストアド プロシージャ](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)に関する記事をご覧ください。
+- `Extended stored procedures` はサポートされておらず、これには `sp_addextendedproc` および `sp_dropextendedproc` が含まれます。 この機能は SQL Server では非推奨になる予定のため、サポートされません。 詳細については、[拡張ストアド プロシージャ](/sql/relational-databases/extended-stored-procedures-programming/database-engine-extended-stored-procedures-programming)に関するページを参照してください。
 - `sp_attach_db`、`sp_attach_single_file_db`、`sp_detach_db` はサポートされていません。 [sp_attach_db](/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)、[sp_detach_db](/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql) に関する各記事をご覧ください。
 
 ### <a name="system-functions-and-variables"></a>システム関数とシステム変数

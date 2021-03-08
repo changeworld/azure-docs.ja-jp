@@ -4,15 +4,15 @@ description: Azure Cosmos DB の MongoDB 用 API を使用して、Azure Cosmos 
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 11/25/2020
+ms.date: 03/02/2021
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: ab335c8cc682f6b33dcb30509d682186a178c676
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 5820592bf06cc9427e12aa0cd79c54dc1f0156e6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861059"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657997"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -24,9 +24,9 @@ ms.locfileid: "97861059"
 
 ## <a name="wire-protocol-compatibility"></a>ワイヤ プロトコルの互換性
 
-Azure Cosmos DB には MongoDB 用のワイヤ プロトコルが実装されています。 この実装により、ネイティブの MongoDB クライアント SDK、ドライバー、およびツールとの透過的な互換性が実現されます。 Azure Cosmos DB は、MongoDB データベース エンジンをホストしません。 MongoDB でサポートされている機能の詳細については、次を参照してください。 
-- [Azure Cosmos DB の MongoDB エンジン用 API バージョン 3.6](mongodb-feature-support-36.md)
-- [Azure Cosmos DB の MongoDB エンジン用 API バージョン 3.2](mongodb-feature-support.md)
+Azure Cosmos DB には MongoDB 用のワイヤ プロトコルが実装されています。 この実装により、ネイティブの MongoDB クライアント SDK、ドライバー、およびツールとの透過的な互換性が実現されます。 Azure Cosmos DB では、MongoDB データベース エンジンをホストします。 MongoDB でサポートされている機能の詳細については、次を参照してください。 
+- [Azure Cosmos DB の Mongo DB 用 API バージョン 4.0](mongodb-feature-support-40.md)
+- [Azure Cosmos DB の Mongo DB 用 API バージョン 3.6](mongodb-feature-support-36.md)
 
 既定では、Azure Cosmos DB の MongoDB 用 API を使用して作成された新しいアカウントは、MongoDB ワイヤ プロトコルのバージョン 3.6 と互換性があります。 これらのプロトコル バージョンを認識する MongoDB クライアント ドライバーはすべて、Cosmos DB にネイティブに接続できます。
 

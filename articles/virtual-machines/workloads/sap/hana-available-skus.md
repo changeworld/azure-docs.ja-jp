@@ -7,20 +7,19 @@ author: msjuergent
 manager: juergent
 editor: ''
 keywords: HLI, HANA, SKUs, S896, S224, S448, S672, Optane, SAP
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 886cd57b59bd4103ced9d496021e54ab0bdc99ad
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 25a11bf96ba680608e5bb22835becf80fadee4f3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723288"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668930"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>HANA Large Instances で利用できる SKU
 

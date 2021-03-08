@@ -6,19 +6,19 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/24/2020
-ms.openlocfilehash: dffecb48a8faa869cb3df450cc220e86195bbc87
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/17/2021
+ms.openlocfilehash: bb8ac82b2e59ec86db89c7eba0ce607fcfc0ac2d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199378"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676563"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Azure Purview のデータに関する秘密度ラベルの分析情報
 
 このハウツーガイドでは、データに適用される秘密度ラベルによって提供されるセキュリティ分析情報にアクセスし、これを表示し、フィルター処理する方法について説明します。
 
-サポートされるデータ ソースは次のとおりです。Azure Blob Storage、Azure Data Lake Storage (ADLS) GEN 1、Azure Data Lake Storage (ADLS) GEN 2、SQL Server、Azure SQL Database、Azure SQL Managed Instance
+サポートされるデータ ソースは次のとおりです。Azure Blob Storage、Azure Data Lake Storage (ADLS) GEN 1、Azure Data Lake Storage (ADLS) GEN 2、SQL Server、Azure SQL Database、Azure SQL Managed Instance、Amazon S3 バケット
 
 このハウツーガイドでは、次の方法について説明します。
 
@@ -40,7 +40,7 @@ Purview の分析情報の使用を開始する前に、次の手順を完了し
 
 - [Microsoft 365 の秘密度ラベルが Azure Purview の資産に拡張され](create-sensitivity-label.md)、データに適用するラベルが作成または選択されている。
 
-- 各データ ソースのテスト データに対するスキャンを設定して完了している
+- 各データ ソースのテスト データに対するスキャンを設定して完了している。 詳細については、「[Azure Purview でデータ ソースを管理する (プレビュー)](manage-data-sources.md)」および「[スキャン ルール セットを作成する](create-a-scan-rule-set.md)」を参照してください。
 
 - [データ閲覧者またはデータ キュレーター ロール](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)を持つアカウントを使用して Purview にサインインしている
 

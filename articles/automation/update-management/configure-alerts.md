@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 150269dd2cc6a25a507f03c7d6b47544a89da12a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 74207fe088034ff8d102fb2254d8ab78a6d57671
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221744"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579699"
 ---
 # <a name="how-to-create-alerts-for-update-management"></a>Update Management のアラートを作成する方法
 
@@ -18,7 +18,7 @@ Azure のアラートでは、Runbook ジョブの結果、サービス正常性
 
 ## <a name="available-metrics"></a>使用可能なメトリック
 
-Azure Automation では、Update Management に関連する 2 つの異なるプラットフォーム メトリックが作成、収集されて Azure Monitor に転送されます。 これらのメトリックは、[メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md)を使用した分析、および[メトリック アラート ルール](../../azure-monitor/platform/alerts-metric.md)を使用したアラートに使用できます。
+Azure Automation では、Update Management に関連する 2 つの異なるプラットフォーム メトリックが作成、収集されて Azure Monitor に転送されます。 これらのメトリックは、[メトリックス エクスプローラー](../../azure-monitor/essentials/metrics-charts.md)を使用した分析、および[メトリック アラート ルール](../../azure-monitor/alerts/alerts-metric.md)を使用したアラートに使用できます。
 
 次の 2 つのメトリックが生成されます。
 
@@ -34,7 +34,7 @@ Azure Automation では、Update Management に関連する 2 つの異なるプ
 
 ## <a name="create-alert"></a>アラートを作成する
 
-更新プログラムの展開の状態を通知するアラートを設定するには、次の手順のようにします。 Azure アラートを初めて使用する場合は、[Azure アラートの概要](../../azure-monitor/platform/alerts-overview.md)に関するページを参照してください。
+更新プログラムの展開の状態を通知するアラートを設定するには、次の手順のようにします。 Azure アラートを初めて使用する場合は、[Azure アラートの概要](../../azure-monitor/alerts/alerts-overview.md)に関するページを参照してください。
 
 1. お使いの Automation アカウントで、 **[監視]** の **[アラート]** を選択し、 **[新しいアラート ルール]** を選択します。
 
@@ -62,19 +62,19 @@ Azure Automation では、Update Management に関連する 2 つの異なるプ
 
 ## <a name="configure-action-groups-for-your-alerts"></a>アラートにアクション グループを構成する
 
-アラートを構成したら、アクション グループを設定できます。これは複数のアラートに対して使用するアクションのグループです。 このアクションには、メール通知、Runbook、Webhook など多くのものを含めることができます。 アクション グループの詳細については、[アクション グループの作成および管理](../../azure-monitor/platform/action-groups.md)に関するページを参照してください。
+アラートを構成したら、アクション グループを設定できます。これは複数のアラートに対して使用するアクションのグループです。 このアクションには、メール通知、Runbook、Webhook など多くのものを含めることができます。 アクション グループの詳細については、[アクション グループの作成および管理](../../azure-monitor/alerts/action-groups.md)に関するページを参照してください。
 
 1. アラートを選択し、 **[アクション グループ]** で **[新規作成]** を選択します。
 
 2. アクション グループの完全な名前と短い名前を入力します。 Update Management では、指定のグループを使用して通知を送信する場合に短縮名を使用します。
 
-3. **[アクション]** で、アクションを指定する名前 ( **電子メール通知** など) を入力します。
+3. **[アクション]** で、アクションを指定する名前 (**電子メール通知** など) を入力します。
 
-4. **[アクションの種類]** には、適切な種類 ( **メール、SMS、プッシュ、音声** など) を選択します。
+4. **[アクションの種類]** には、適切な種類 (**メール、SMS、プッシュ、音声** など) を選択します。
 
 5. **[詳細の編集]** を選択します。
 
-6. アクションの種類のペインに入力します。 たとえば、 **メール、SMS、プッシュ、音声** を使用している場合は、アクション名を入力し、 **[電子メール]** チェックボックスをオンにして、有効なメール アドレスを入力し、 **[OK]** を選択します。
+6. アクションの種類のペインに入力します。 たとえば、**メール、SMS、プッシュ、音声** を使用している場合は、アクション名を入力し、 **[電子メール]** チェックボックスをオンにして、有効なメール アドレスを入力し、 **[OK]** を選択します。
 
     ![電子メール アクション グループの構成](./media/manage-updates-for-vm/configure-email-action-group.png)
 
@@ -86,8 +86,8 @@ Azure Automation では、Update Management に関連する 2 つの異なるプ
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Monitor のアラート](../../azure-monitor/platform/alerts-overview.md)について、さらに詳しく学習します。
+* [Azure Monitor のアラート](../../azure-monitor/alerts/alerts-overview.md)について、さらに詳しく学習します。
 
-* Log Analytics ワークスペースからデータを取得して分析する[ログ クエリ](../../azure-monitor/log-query/log-query-overview.md)について説明します。
+* Log Analytics ワークスペースからデータを取得して分析する[ログ クエリ](../../azure-monitor/logs/log-query-overview.md)について説明します。
 
-* 「[Azure Monitor ログで使用量とコストを管理する](../../azure-monitor/platform/manage-cost-storage.md)」では、データ保持期間を変更してコストを管理する方法、およびデータの使用状況を分析してアラートを作成する方法について説明します。
+* 「[Azure Monitor ログで使用量とコストを管理する](../../azure-monitor/logs/manage-cost-storage.md)」では、データ保持期間を変更してコストを管理する方法、およびデータの使用状況を分析してアラートを作成する方法について説明します。

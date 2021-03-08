@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 514ce0a43904048952f38edd6a9d38713f6ef8f3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cb33e11af26d5f5a2676f5b236ac142179bdb550
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936667"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592842"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Azure AD B2C カスタム ポリシーの概要
 
@@ -115,7 +115,7 @@ Web ブラウザーにページを表示してユーザーから情報を収集�
 継承モデルは次のとおりです。
 
 - どのレベルの子ポリシーでも、親ポリシーから継承することができ、新しい要素を追加することによって拡張することができます。
-- より複雑なシナリオでは、継承レベルをさらに追加できます (合計 5 個まで)。
+- より複雑なシナリオでは、継承レベルをさらに追加できます (合計 10 個まで)。
 - 証明書利用者ポリシーをさらに追加できます。 たとえば、アカウントの削除、電話番号の変更、SAML 証明書利用者ポリシーなどです。
 
 次の図は、ポリシー ファイルと証明書利用者アプリケーションの関係を示しています。

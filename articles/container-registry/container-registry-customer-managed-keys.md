@@ -4,12 +4,12 @@ description: Azure コンテナー レジストリの保存時の暗号化、お
 ms.topic: article
 ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: fb30610457e539250c33d7d9726fe10f9c0f8c5a
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: bc692dc8df133aa5fae352a7667062f81ceed350
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062730"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526444"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>カスタマー マネージド キーを使用してレジストリを暗号化する
 
@@ -127,11 +127,11 @@ az keyvault set-policy \
   --key-permissions get unwrapKey wrapKey
 ```
 
-または、[Key Vault 用の Azure RBAC](../key-vault/general/rbac-guide.md) (プレビュー) を使用して、キー コンテナーにアクセスするためのアクセス許可を ID に割り当てます。 たとえば、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) コマンドを使用して、Key Vault Crypto Service Encryption ロールを ID に割り当てます。
+または、[Key Vault 用の Azure RBAC](../key-vault/general/rbac-guide.md) を使用して、キー コンテナーにアクセスするためのアクセス許可を ID に割り当てます。 たとえば、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) コマンドを使用して、Key Vault Crypto Service Encryption ロールを ID に割り当てます。
 
 ```azurecli 
 az role assignment create --assignee $identityPrincipalID \
-  --role "Key Vault Crypto Service Encryption (preview)" \
+  --role "Key Vault Crypto Service Encryption User" \
   --scope $keyvaultID
 ```
 
@@ -267,12 +267,12 @@ ID でキー コンテナーにアクセスできるように、キー コンテ
 
 :::image type="content" source="media/container-registry-customer-managed-keys/add-key-vault-access-policy.png" alt-text="キー コンテナーのアクセス ポリシーを作成する":::
 
-または、[Key Vault 用の Azure RBAC](../key-vault/general/rbac-guide.md) (プレビュー) を使用して、キー コンテナーにアクセスするためのアクセス許可を ID に割り当てます。 たとえば、Key Vault Crypto Service Encryption ロールを ID に割り当てます。
+または、[Key Vault 用の Azure RBAC](../key-vault/general/rbac-guide.md) を使用して、キー コンテナーにアクセスするためのアクセス許可を ID に割り当てます。 たとえば、Key Vault Crypto Service Encryption ロールを ID に割り当てます。
 
 1. お使いのキー コンテナーに移動します。
 1. **[アクセス制御 (IAM)]**  >  **[+ 追加]**  >  **[ロールの割り当ての追加]** の順に選択します。
 1. **[ロールの割り当ての追加]** ウィンドウで、次の手順に従います。
-    1. **[Key Vault Crypto Service Encryption (プレビュー)]** ロールを選択します。 
+    1. **[Key Vault Crypto Service Encryption User]** ロールを選択します。 
     1. **ユーザー割り当てマネージド ID** にアクセス権を割り当てます。
     1. ユーザー割り当てマネージド ID のリソース名を選択し、 **[保存]** を選択します。
 

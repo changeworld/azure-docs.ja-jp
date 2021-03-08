@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: aa0d78d52ec13c91b82e6a8d10720269076f59a1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4cafe9af1eb5a765ab86bafb63cc9ab7d0889dc8
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353546"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627601"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 
@@ -39,16 +39,19 @@ ms.locfileid: "96353546"
 
 ###  <a name="trigger-and-binding-definitions"></a>トリガーとバインドの定義
 
-トリガーとバインドは、開発方法に応じて異なる方法で定義されます。
+トリガーとバインドは、開発言語に応じて異なる方法で定義されます。
 
-| プラットフォーム | トリガーとバインドは、以下を行うことで構成されます |
+| Language | トリガーとバインドは、以下を行うことで構成されます |
 |-------------|--------------------------------------------|
 | C# クラス ライブラリ | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C# 属性でのメソッドとパラメーターの修飾 |
-| 他のすべて (Azure portal を含む) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[function.json](./functions-reference.md) ([スキーマ](http://json.schemastore.org/function)) の更新 |
+| Java | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java 注釈でのメソッドとパラメーターの修飾  | 
+| JavaScript/PowerShell/Python/TypeScript | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[function.json](./functions-reference.md) ([スキーマ](http://json.schemastore.org/function)) の更新 |
 
-ポータルではこの構成のために UI が提供されますが、関数の **[統合]** タブで使用できる **詳細エディター** を開いて直接ファイルを編集できます。
+function.json に依存する言語用に、ポータルの **[統合]** タブには、バインドを追加するための UI が用意されています。また、ポータル内の関数の **[コードとテスト]** タブで、このファイルを直接編集することもできます。 Visual Studio Code では、便利な一連のプロンプトに従って、簡単に [function.json ファイルにバインドを追加](functions-develop-vs-code.md?tabs=nodejs#add-a-function-to-your-project)できます。 
 
-.NET では、パラメーター型で入力データのデータ型が定義されます。 たとえば、キュー トリガーのテキストにバインドするには `string` を、バイナリとして読み取るにはバイト配列を、オブジェクトを逆シリアル化するにはカスタム型を使用します。
+.NET および Java では、パラメーター型で入力データのデータ型が定義されます。 たとえば、キュー トリガーのテキストにバインドするには `string` を、バイナリとして読み取るにはバイト配列を、オブジェクトを逆シリアル化するにはカスタム型を使用します。 .NET クラス ライブラリ関数と Java 関数ではバインドの定義に *function.json* は使用されないため、これらをポータルで作成したり編集したりすることはできません。 C# ポータルの編集は、属性の代わりに *function.json* を使用する C# スクリプトに基づいています。
+
+既存の関数にバインドを追加する方法の詳細については、「[バインドを使用して関数を Azure サービスに接続する](add-bindings-existing-function.md)」を参照してください。
 
 JavaScript などの動的に型指定される言語の場合は、*function.json* ファイルの `dataType` プロパティを使用します。 たとえば、バイナリ形式で HTTP 要求のコンテンツを読み取るには、`dataType` を `binary` に設定します。
 

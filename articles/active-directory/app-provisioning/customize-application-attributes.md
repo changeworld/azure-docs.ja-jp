@@ -8,18 +8,22 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 1/25/2021
+ms.date: 02/08/2021
 ms.author: kenwith
-ms.openlocfilehash: 89b40ac68143c2af0d94434ddedec489a2208839
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 100f66d6217533ff6eba7881f938e877b98c735e
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99256409"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091110"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>チュートリアル - Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングをカスタマイズする
 
 Microsoft Azure AD では、Salesforce、G Suite、およびその他のサードパーティの SaaS アプリケーションへのユーザー プロビジョニングのサポートを提供します。 サード パーティの SaaS アプリケーションでユーザー プロビジョニングを有効にした場合、Azure portal では属性マッピングによってその属性値を管理します。
+
+作業を開始する前に、アプリの管理と **シングル サインオン (SSO)** の概念を理解しておいてください。 次のリンクを参照してください。
+- [Azure AD でのアプリ管理のクイックスタート シリーズ](../manage-apps/view-applications-portal.md)
+- [シングル サインオン (SSO) とは](../manage-apps/what-is-single-sign-on.md)
 
 Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オブジェクトの間には、構成済みの一連の属性と属性マッピングが存在します。 アプリによっては、ユーザーに加えてグループなど他の種類のオブジェクトを管理するものもあります。
 

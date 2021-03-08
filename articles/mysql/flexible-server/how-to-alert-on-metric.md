@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 4a099a9850289a046435b4e1763d7f54a702c0d0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 632aae766e6fd1328dc6e0135a88a942d7ad0910
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545091"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595786"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql---flexible-server"></a>Azure portal を使用して Azure Database for MySQL - フレキシブル サーバーのメトリックのアラートを設定する 
 
@@ -28,8 +28,8 @@ ms.locfileid: "92545091"
 * Webhook を呼び出す
 
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
-* [Azure Portal](../../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure CLI](../../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure Portal](../../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Azure 監視 REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Azure Portal でメトリックのアラート ルールを作成する
@@ -40,18 +40,18 @@ ms.locfileid: "92545091"
 5. **[条件]** セクションで、 **[条件の選択]** を選択します。
 6. サポートされているシグナルの一覧が表示されるので、アラートを作成するメトリックを選択します。 たとえば、[ストレージの割合] を選択します。
 7. 過去 6 時間のメトリックのグラフが表示されます。 **[グラフの期間]** ドロップダウンを使用して、メトリックのより長期間の履歴を確認することを選択します。
-8. **[しきい値]** の種類 (例: [静的] または [動的])、 **演算子** (例: [次の値より大きい])、および **[集計の種類]** (例: 平均) を選択します。 これにより、メトリック アラート ルールによって評価されるロジックが決まります。
+8. **[しきい値]** の種類 (例: [静的] または [動的])、**演算子** (例: [次の値より大きい])、および **[集計の種類]** (例: 平均) を選択します。 これにより、メトリック アラート ルールによって評価されるロジックが決まります。
     - **静的** しきい値を使用している場合は、引き続き **[しきい値]** (例: 85%) を定義します。 メトリック グラフを使用すると、想定される妥当なしきい値を決定できます。
-    - **動的な** しきい値を使用している場合は、引き続き **[しきい値の感度]** を定義します。 メトリック グラフに、最新のデータに基づいて計算されたしきい値が表示されます。 [動的しきい値の条件の種類と秘密度のオプションの詳細については、こちらをご覧ください](../../azure-monitor/platform/alerts-dynamic-thresholds.md)。
+    - **動的な** しきい値を使用している場合は、引き続き **[しきい値の感度]** を定義します。 メトリック グラフに、最新のデータに基づいて計算されたしきい値が表示されます。 [動的しきい値の条件の種類と秘密度のオプションの詳細については、こちらをご覧ください](../../azure-monitor/alerts/alerts-dynamic-thresholds.md)。
 9. データ ポイントをグループ化する **集計の粒度 (期間)** の間隔を調整し、集計の種類の関数 (例: 30 分) と **頻度** (例: 15 分ごと) を使用して、条件を絞り込みます。
 10. **[Done]** をクリックします。
 11. アクション グループを追加します。 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 **[アクション グループ]** セクション内で **[アクション グループの選択]** を選択して、既に存在するアクション グループを選択し、アラート ルールにアタッチします。
-12. アラートに関する通知を受け取るための新しいアクション グループを作成することもできます。 詳細については、[アクション グループの作成と管理](../../azure-monitor/platform/action-groups.md)に関するページを参照してください。
+12. アラートに関する通知を受け取るための新しいアクション グループを作成することもできます。 詳細については、[アクション グループの作成と管理](../../azure-monitor/alerts/action-groups.md)に関するページを参照してください。
 13. 新しいアクション グループを作成するには、 **[+ アクション グループの作成]** を選択します。 **[サブスクリプション]** 、 **[リソース グループ]** 、 **[アクション グループ名]** 、 **[表示名]** を使用して、[アクション グループの作成] フォームに入力します。
 14. アクショングループの **[通知]** を構成します。
     
     **[通知の種類]** で、[電子メールの Azure Resource Manager のロール] を選択して、通知を受信するサブスクリプションの所有者、共同作成者、および閲覧者を選択します。 電子メールを送信するための **Azure Resource Manager ロール** を選択します。
-    また、 **電子メール/SMS メッセージ/プッシュ/音声** を選択して、特定の受信者に通知を送信することもできます。
+    また、**電子メール/SMS メッセージ/プッシュ/音声** を選択して、特定の受信者に通知を送信することもできます。
 
     通知の種類に **[名前]** を指定し、完了したら **[確認および作成]** を選択します。
 
@@ -72,6 +72,6 @@ ms.locfileid: "92545091"
 
 
 ## <a name="next-steps"></a>次のステップ
-- [メトリックへのアラートの設定](../../azure-monitor/platform/alerts-metric.md)に関する詳細を確認する。
+- [メトリックへのアラートの設定](../../azure-monitor/alerts/alerts-metric.md)に関する詳細を確認する。
 - 使用可能な [Azure Database for MySQL フレキシブル サーバーのメトリック](./concepts-monitoring.md)に関する詳細を確認する。
-- [Azure Monitor でのメトリック アラートのしくみを理解する](../../azure-monitor/platform/alerts-metric-overview.md)
+- [Azure Monitor でのメトリック アラートのしくみを理解する](../../azure-monitor/alerts/alerts-metric-overview.md)

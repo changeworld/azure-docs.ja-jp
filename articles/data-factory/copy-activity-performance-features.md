@@ -1,23 +1,18 @@
 ---
 title: コピー アクティビティ パフォーマンス最適化機能
 description: Azure Data Factory のコピー アクティビティのパフォーマンスを最適化するのに役立つ主な機能について説明します。
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/24/2020
-ms.openlocfilehash: 8e46e9b323657b747fd73bad3b25ed66390f3aa9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecb4550b218b069273cba2e3d70a9510c1cc74ca
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324333"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387803"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>コピー アクティビティ パフォーマンス最適化機能
 
@@ -38,7 +33,7 @@ ms.locfileid: "91324333"
 | 非ファイル ストアからファイル ストアへ |- **パーティション オプションが有効なデータ ストア** ([Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Teradata](connector-teradata.md#teradata-as-source)) からコピーします。フォルダーに書き込む場合は 2-256 で、単一のファイルに書き込む場合は 2-4 です。 ソース データ パーティションごとに最大 4 つの DIU を使用できることに注意してください。<br>- **その他のシナリオ**:2-4 |- **REST または HTTP からコピーする**:1<br/>UNLOAD を使用して - **Amazon Redshift からコピーする**:2<br>- **その他のシナリオ**:4 |
 | 非ファイル ストア間 |- **パーティション オプションが有効なデータ ストア** ([Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Teradata](connector-teradata.md#teradata-as-source)) からコピーします。フォルダーに書き込む場合は 2-256 で、単一のファイルに書き込む場合は 2-4 です。 ソース データ パーティションごとに最大 4 つの DIU を使用できることに注意してください。<br/>- **その他のシナリオ**:2-4 |- **REST または HTTP からコピーする**:1<br>- **その他のシナリオ**:4 |
 
-コピー アクティビティの監視ビューまたはアクティビティの出力で、各コピー実行に使用される DIU を確認できます。 詳細については、[コピー アクティビティ監視](copy-activity-monitoring.md)に関するページを参照してください。 この既定の動作をオーバーライドするには、`dataIntegrationUnits` プロパティに次のように値を指定します。 コピー操作が実行時に使用する *DIU の実際の数*は、データ パターンに応じて、構成されている値以下になります。
+コピー アクティビティの監視ビューまたはアクティビティの出力で、各コピー実行に使用される DIU を確認できます。 詳細については、[コピー アクティビティ監視](copy-activity-monitoring.md)に関するページを参照してください。 この既定の動作をオーバーライドするには、`dataIntegrationUnits` プロパティに次のように値を指定します。 コピー操作が実行時に使用する *DIU の実際の数* は、データ パターンに応じて、構成されている値以下になります。
 
 **使用済み DIU の数 \* コピー期間 \* 単価/DIU 時間** が課金されます。 現在の価格については、[こちら](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)を参照してください。 サブスクリプションの種類ごとに、現地通貨と個別の割引が適用される場合があります。
 
@@ -91,7 +86,7 @@ ms.locfileid: "91324333"
 
 | コピー シナリオ | 並列コピー動作 |
 | --- | --- |
-| ファイル ストア間 | `parallelCopies` は、**ファイルレベル**での並列処理を決定します。 それぞれのファイル内でのチャンク化は裏で自動的かつ透過的に行われます。 指定されたソース データ ストアの種類に最適なチャンク サイズを使用し、並行してデータを読み込むよう設計されています。 <br/><br/>実行時にコピー アクティビティが使用する並列コピーの実際の数は、存在するファイルの数以下となります。 コピー動作が **mergeFile** をファイルシンクにマージする場合、コピー アクティビティはファイル レベルでの並列処理を活用できません。 |
+| ファイル ストア間 | `parallelCopies` は、**ファイルレベル** での並列処理を決定します。 それぞれのファイル内でのチャンク化は裏で自動的かつ透過的に行われます。 指定されたソース データ ストアの種類に最適なチャンク サイズを使用し、並行してデータを読み込むよう設計されています。 <br/><br/>実行時にコピー アクティビティが使用する並列コピーの実際の数は、存在するファイルの数以下となります。 コピー動作が **mergeFile** をファイルシンクにマージする場合、コピー アクティビティはファイル レベルでの並列処理を活用できません。 |
 | ファイル ストアから非ファイル ストアへ | - Azure SQL Database または Azure Cosmos DB にデータをコピーする場合、既定の並列コピーはシンク層 (Dtu/Ru の数) にも依存します。<br>- Azure テーブルにデータをコピーする場合、既定の並列コピーは 4 です。 |
 | 非ファイル ストアからファイル ストアへ | - パーティション オプションが有効なデータ ストア ([Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、[SAP テーブル](connector-sap-table.md#sap-table-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Teradata](connector-teradata.md#teradata-as-source) など) からデータをコピーする場合、既定の並列コピーは 4 となります。 実行時のコピーアクティビティで使用される並列コピーの実際の数は、所有しているデータ パーティションの数以下になります。 セルフホステッド統合ランタイムを使用して Azure Blob/ADLS Gen2 にコピーする場合は、IR ノードあたりの最大の有効な並列コピー数が 4 または 5 であることに注意してください。<br>- その他のシナリオでは、並列コピーは有効になりません。 並列処理が指定されても、この場合は適用されません。 |
 | 非ファイル ストア間 | - Azure SQL Database または Azure Cosmos DB にデータをコピーする場合、既定の並列コピーはシンク層 (Dtu/Ru の数) にも依存します。<br/>- パーティション オプションが有効なデータ ストア ([Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、[SAP テーブル](connector-sap-table.md#sap-table-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Teradata](connector-teradata.md#teradata-as-source) など) からデータをコピーする場合、既定の並列コピーは 4 となります。<br>- Azure テーブルにデータをコピーする場合、既定の並列コピーは 4 です。 |
@@ -126,7 +121,7 @@ ms.locfileid: "91324333"
 
 ソース データ ストアからシンク データ ストアにデータをコピーする場合、中間ステージング ストアとして Azure Blob Storage または Azure Data Lake Storage Gen2 を使用することを選択できます。 ステージングは、特に次のような場合に役立ちます。
 
-- **PolyBase を介してさまざまなデータ ストアから Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータを取り込む、Snowflake との間でデータをコピーする、または Amazon Redshift/HDFS からデータを効率的に取り込む。** 詳細については以下を参照してください。
+- **PolyBase を介してさまざまなデータ ストアから Azure Synapse Analytics にデータを取り込む、Snowflake との間でデータをコピーする、または Amazon Redshift および HDFS からデータを効率的に取り込む。** 詳細については以下を参照してください。
   - PolyBase を使用して Azure Synapse Analytics にデータを[読み込む](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)
   - [Snowflake コネクタ](connector-snowflake.md)
   - [Amazon Redshift コネクタ](connector-amazon-redshift.md)

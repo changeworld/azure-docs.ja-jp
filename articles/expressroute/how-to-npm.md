@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 837d1f78a9fde72137383e6c22adb8870997dc9b
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.openlocfilehash: 907c03bd15463368def316e72f55ce214cb3e617
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986041"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571052"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>ExpressRoute に使用する Network Performance Monitor の構成
 
@@ -54,7 +54,7 @@ ExpressRoute 回線への VNet リンクを含んだサブスクリプション�
 1. ExpressRoute 回線に VNET がピアリングされているサブスクリプションを [Azure Portal](https://portal.azure.com) で選択します。 **[Marketplace]** のサービス一覧で "Network Performance Monitor" を検索します。 検索結果で **[Network Performance Monitor]** をクリックしてそのページを開きます。
 
    >[!NOTE]
-   >新しいワークスペースを作成するか、既存のワークスペースを使用することができます。 既存のワークスペースを使用する場合は、ワークスペースが新しいクエリ言語に移行されていることを確認する必要があります。 [詳細情報...](../azure-monitor/log-query/log-query-overview.md)
+   >新しいワークスペースを作成するか、既存のワークスペースを使用することができます。 既存のワークスペースを使用する場合は、ワークスペースが新しいクエリ言語に移行されていることを確認する必要があります。 [詳細情報...](../azure-monitor/logs/log-query-overview.md)
    >
 
    ![ポータル](./media/how-to-npm/3.png)<br><br>
@@ -118,7 +118,7 @@ ExpressRoute 回線への VNet リンクを含んだサブスクリプション�
 
 ### <a name="23-configure-proxy-settings-optional"></a><a name="proxy"></a>2.3: プロキシ設定の構成 (省略可能)
 
-Web プロキシを使用してインターネットにアクセスしている場合、以下の手順を使用して、Microsoft Monitoring Agent のプロキシ設定を構成します。 これらの手順は、各サーバーに対して実行してください。 構成が必要なサーバーの数が多い場合には、このプロセスを自動化するスクリプトを使った方が作業が簡単に済むことも考えられます。 その場合は、「[スクリプトを使って Microsoft Monitoring Agent のプロキシ設定を構成するには](../azure-monitor/platform/agent-windows.md)」を参照してください。
+Web プロキシを使用してインターネットにアクセスしている場合、以下の手順を使用して、Microsoft Monitoring Agent のプロキシ設定を構成します。 これらの手順は、各サーバーに対して実行してください。 構成が必要なサーバーの数が多い場合には、このプロセスを自動化するスクリプトを使った方が作業が簡単に済むことも考えられます。 その場合は、「[スクリプトを使って Microsoft Monitoring Agent のプロキシ設定を構成するには](../azure-monitor/agents/agent-windows.md)」を参照してください。
 
 コントロール パネルを使って Microsoft Monitoring Agent のプロキシ設定を構成するには:
 

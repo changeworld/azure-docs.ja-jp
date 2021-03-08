@@ -26,7 +26,7 @@
           href: hana-operations-model.md
         - name: 互換性のあるオペレーティング システム
           href: os-compatibility-matrix-hana-large-instance.md
-    - name: アーキテクチャ
+    - name: Architecture
       items:
         - name: 全般的なアーキテクチャ
           href: hana-architecture.md
@@ -197,6 +197,8 @@
               href: high-availability-guide-rhel.md
             - name: Azure NetApp Files を使用した (A)SCS インスタンス用の Red Hat Enterprise Linux の HA
               href: high-availability-guide-rhel-netapp-files.md
+            - name: RHEL 上の SAP 用の L インスタンス HA
+              href: large-instance-high-availability-rhel.md
         - name: Azure インフラストラクチャの準備
           items:
             - name: (A)SCS インスタンス用の共有ディスクを使用した Windows

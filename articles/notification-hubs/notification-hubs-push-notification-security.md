@@ -14,14 +14,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 09/23/2019
-ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07600b1fe0cb7420989fbbfbe55c2f1a4197d2fc
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76263763"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548252"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs のセキュリティ
 
@@ -33,7 +33,7 @@ ms.locfileid: "76263763"
 
 Notification Hubs では、*Shared Access Signature* (SAS) と呼ばれるエンティティ レベルのセキュリティ方式が実装されています。 各規則には、名前、キーの値 (共有シークレット)、および権限のセット (「[セキュリティ要求](#security-claims)」で後述) が含まれます。 
 
-ハブを作成すると、2 つの規則が自動的に作成されます。1 つには **Listen** 権限が含まれ (クライアント アプリによって使用されます)、もう 1 つには**すべて**の権限が含まれます (アプリのバックエンドによって使用されます)。
+ハブを作成すると、2 つの規則が自動的に作成されます。1 つには **Listen** 権限が含まれ (クライアント アプリによって使用されます)、もう 1 つには **すべて** の権限が含まれます (アプリのバックエンドによって使用されます)。
 
 - **DefaultListenSharedAccessSignature**: **Listen** アクセス許可のみを付与します。
 - **DefaultFullSharedAccessSignature**: **Listen**、**Manage**、および **Send** の各アクセス許可を付与します。 このポリシーは、アプリのバックエンドでのみ使用してください。 クライアント アプリケーションでは、これを使用せずに、**Listen** アクセス権のみを持つポリシーを使用してください。 新しい SAS トークンを使用して新しいカスタム アクセス ポリシーを作成するには、この記事で後述する「[アクセス ポリシー用の SAS トークン](#sas-tokens-for-access-policies)」を参照してください。
@@ -46,7 +46,7 @@ Notification Hubs では、*Shared Access Signature* (SAS) と呼ばれるエン
 
 ## <a name="security-claims"></a>セキュリティ要求
 
-他のエンティティと同様に、通知ハブの操作は 3 つのセキュリティ要求**Listen**、**Send**、および **Manage** に対して許可されています。
+他のエンティティと同様に、通知ハブの操作は 3 つのセキュリティ要求 **Listen**、**Send**、および **Manage** に対して許可されています。
 
 | 要求   | 説明                                          | 許可される操作 |
 | ------- | ---------------------------------------------------- | ------------------ |

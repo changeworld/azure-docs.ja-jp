@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: f31211c4448ad5bbe8d839b2ec86b0b61970f568
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 6778c8e5e1e4fa83d34141fd13ba21d483ab76e9
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752194"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041350"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Azure Government でアプライアンスを設定する 
 
@@ -71,7 +71,7 @@ VMware 用のアプライアンスを設定するには、Azure portal から ZI
 
 スクリプトを実行するには、次の手順を実行します。
 
-1. アプライアンスをホストするマシン上のフォルダーに ZIP ファイルを展開します。 既存の Azure Migrate アプライアンス マシンでスクリプトを実行しないようご注意ください。
+1. アプライアンスをホストするマシン上のフォルダーに ZIP ファイルを展開します。 既存の Azure Migrate アプライアンス マシンでスクリプトを実行しないよう注意してください。
 2. （昇格した）管理者権限を使用し、マシンで PowerShell を起動します。
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルから抽出したコンテンツが格納されたフォルダーに変更します。
 4. 次のように、スクリプト **AzureMigrateInstaller.ps1** を実行します。 
@@ -126,7 +126,7 @@ Hyper-V のアプライアンスを設定するには、Azure portal から ZIP 
 
 スクリプトを実行するには、次の手順を実行します。
 
-1. アプライアンスをホストするマシン上のフォルダーに ZIP ファイルを展開します。 既存の Azure Migrate アプライアンス マシンでスクリプトを実行しないようご注意ください。
+1. アプライアンスをホストするマシン上のフォルダーに ZIP ファイルを展開します。 既存の Azure Migrate アプライアンス マシンでスクリプトを実行しないよう注意してください。
 2. （昇格した）管理者権限を使用し、マシンで PowerShell を起動します。
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルから抽出したコンテンツが格納されたフォルダーに変更します。
 4. 次のように、スクリプト **AzureMigrateInstaller.ps1** を実行します。 
@@ -180,7 +180,7 @@ VMware 用のアプライアンスを設定するには、Azure portal から ZI
 
 スクリプトを実行するには、次の手順を実行します。
 
-1. アプライアンスをホストするマシン上のフォルダーに ZIP ファイルを展開します。 既存の Azure Migrate アプライアンス マシンでスクリプトを実行しないようご注意ください。
+1. アプライアンスをホストするマシン上のフォルダーに ZIP ファイルを展開します。 既存の Azure Migrate アプライアンス マシンでスクリプトを実行しないよう注意してください。
 2. （昇格した）管理者権限を使用し、マシンで PowerShell を起動します。
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルから抽出したコンテンツが格納されたフォルダーに変更します。
 4. 次のように、スクリプト **AzureMigrateInstaller.ps1** を実行します。 
@@ -196,6 +196,6 @@ VMware 用のアプライアンスを設定するには、Azure portal から ZI
 
 アプライアンスをデプロイしたら、それを最初に構成してから、Azure Migrate プロジェクトに登録する必要があります。
 
-- [VMware](how-to-set-up-appliance-vmware.md#configure-the-appliance) のアプライアンスを設定します。
+- [VMware](how-to-set-up-appliance-vmware.md#4-configure-the-appliance) のアプライアンスを設定します。
 - [Hyper-V](how-to-set-up-appliance-hyper-v.md#configure-the-appliance) のアプライアンスを設定します。
 - [物理サーバー](how-to-set-up-appliance-physical.md)のアプライアンスを設定します。

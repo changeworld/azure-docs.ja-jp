@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e7a4af2c18bfc2b8fbd6149dab12c0bcfc665341
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 7bf71f55e1b49a9280b25cfcc01090afbd0c42db
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878827"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101751036"
 ---
 ## <a name="create-an-image-gallery"></a>イメージ ギャラリーを作成する
 
@@ -93,10 +93,7 @@ ms.locfileid: "98878827"
 
 イメージ ギャラリー レベルでアクセスを共有することをお勧めします。 先ほど作成したギャラリーを共有する手順を以下に示します。
 
-1. [Azure Portal](https://portal.azure.com)を開きます。
-1. 左側のメニューで **[リソース グループ]** を選択します。 
-1. リソース グループの一覧で、 **[myGalleryRG]** を選択します。 自分のリソース グループのブレードが開きます。
-1. **[myGalleryRG]** ページの左側のメニューで、 **[アクセス制御 (IAM)]** を選択します。 
+1. 新しいイメージ ギャラリーのページで、左側のメニューにある **[アクセス制御 (IAM)]** を選択します。 
 1. **[ロールの割り当てを追加する]** で **[追加]** を選択します。 **[ロールの割り当てを追加する]** ウィンドウが開きます。 
 1. **[ロール]** で **[閲覧者]** を選択します。
 1. **[アクセスの割り当て先]** で既定値の **[Azure AD のユーザー、グループ、サービス プリンシパル]** のままにします。

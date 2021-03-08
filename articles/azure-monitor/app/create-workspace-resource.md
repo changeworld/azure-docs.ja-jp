@@ -3,12 +3,12 @@ title: 新しい Azure Monitor Application Insights のワークスペース ベ
 description: 新しい Azure Monitor Application Insights のワークスペース ベースのリソースを有効にするために必要な手順について説明します。
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: 23994190df89b47d9c7e90ed62a724545389b1fe
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 3ec0b25a24af13b29a3568165009f8a6d66e0218
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063368"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578332"
 ---
 # <a name="workspace-based-application-insights-resources"></a>ワークスペース ベースの Application Insights リソース
 
@@ -23,10 +23,10 @@ ms.locfileid: "99063368"
 
 ワークスペースベースの Application Insights を使用すると、次のような、Azure Monitor および Log Analytics の最新の機能を活用できます。
 
-* [カスタマー マネージド キー (CMK)](../platform/customer-managed-keys.md) は、あなたのみがアクセスできる暗号化キーで、保存されているお使いのデータを暗号化します。
-* [Azure Private Link](../platform/private-link-security.md) を使用すると、プライベート エンドポイントを使用して Azure PaaS サービスを仮想ネットワークに安全に接続できます。
+* [カスタマー マネージド キー (CMK)](../logs/customer-managed-keys.md) は、あなたのみがアクセスできる暗号化キーで、保存されているお使いのデータを暗号化します。
+* [Azure Private Link](../logs/private-link-security.md) を使用すると、プライベート エンドポイントを使用して Azure PaaS サービスを仮想ネットワークに安全に接続できます。
 * [Profiler およびスナップショット デバッガー向けの Bring Your Own Storage (BYOS)](./profiler-bring-your-own-storage.md) では、保存時の暗号化ポリシー、有効期間管理ポリシー、および Application Insights Profiler およびスナップショット デバッガーに関連付けられているすべてのデータのネットワーク アクセスを完全に制御できます。 
-* [容量予約レベル](../platform/manage-cost-storage.md#pricing-model)を利用すると、従量課金制の料金と比較して 25% も節約できます。 
+* [容量予約レベル](../logs/manage-cost-storage.md#pricing-model)を利用すると、従量課金制の料金と比較して 25% も節約できます。 
 * Log Analytics ストリーミング インジェストにより、データ インジェストがより高速になります。
 
 ## <a name="create-workspace-based-resource"></a>ワークスペースベースのリソースを作成する
@@ -36,7 +36,7 @@ ms.locfileid: "99063368"
 > [!div class="mx-imgBorder"]
 > ![ワークスペース ベースの Application Insights リソース](./media/create-workspace-resource/create-workspace-based.png)
 
-既存の Log Analytics ワークスペースをまだ持っていない場合は [Log Analytics ワークスペースの作成に関するドキュメント](../learn/quick-create-workspace.md)を参照してください。
+既存の Log Analytics ワークスペースをまだ持っていない場合は [Log Analytics ワークスペースの作成に関するドキュメント](../logs/quick-create-workspace.md)を参照してください。
 
 **ワークスペース ベースのリソースは、現在、すべての商業地域および Azure Government でご利用いただけます。**
 
@@ -212,5 +212,5 @@ Application Insights リソース ウィンドウで **[プロパティ]**  >  *
 
 ## <a name="next-steps"></a>次のステップ
 
-* [メトリックを探索する](../platform/metrics-charts.md)
-* [Analytics クエリを作成する](../log-query/log-query-overview.md)
+* [メトリックを探索する](../essentials/metrics-charts.md)
+* [Analytics クエリを作成する](../logs/log-query-overview.md)

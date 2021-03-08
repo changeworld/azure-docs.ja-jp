@@ -1,5 +1,5 @@
 ---
-title: MS Graph API を使用したクラウド同期の受信同期
+title: MS Graph API を使用してクラウドの同期をプログラムで構成する方法
 description: このトピックでは、Graph API のみを使用して受信同期を有効にする方法について説明します
 services: active-directory
 author: billmath
@@ -11,14 +11,14 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3796b3d86f647e38cf2ff018e8c0c903d9a64e41
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6c84636ea86b3b640aef365c1c5d8e634b9a1f48
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682040"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593162"
 ---
-# <a name="inbound-synchronization-for-cloud-sync-using-ms-graph-api"></a>MS Graph API を使用したクラウド同期の受信同期
+# <a name="how-to-programmatically-configure-cloud-sync-using-ms-graph-api"></a>MS Graph API を使用してクラウドの同期をプログラムで構成する方法
 
 次のドキュメントでは、MSGraph API のみを使用して 0 から同期プロファイルをレプリケートする方法について説明します。  
 これを行う方法の構造は、次の手順で構成されています。  これらは次のとおりです。
@@ -28,6 +28,7 @@ ms.locfileid: "98682040"
 - [同期ジョブを作成する](#create-sync-job)
 - [ターゲット ドメインを更新する](#update-targeted-domain)
 - [パスワード ハッシュの同期を有効にする](#enable-sync-password-hashes-on-configuration-blade)
+- [不注意による削除](#accidental-deletes)
 - [同期ジョブを開始する](#start-sync-job)
 - [状態をレビューする](#review-status)
 
@@ -210,6 +211,71 @@ ObjectId:8895955e-2e6c-4d79-8943-4d72ca36878f AppId:00000014-0000-0000-c000-0000
 ```
 
  要求本文にスキーマを追加します。 
+
+## <a name="accidental-deletes"></a>不注意による削除
+このセクションでは、プログラムによる有効化または無効化、およびプログラムによる[誤削除](how-to-accidental-deletes.md)の使用方法について説明します。
+
+
+### <a name="enabling-and-setting-the-threshold"></a>しきい値の有効化と設定
+ジョブの設定ごとに使用できるものには次の 2 つがあります。
+
+ - DeleteThresholdEnabled - 'true' に設定されている場合は、ジョブの誤削除防止を有効にします。 既定では 'true' に設定されます。
+ - DeleteThresholdValue - 誤削除防止が有効になっている場合は、ジョブの各実行で許可される削除の最大数を定義します。 既定では、値は 500 に設定されています。  したがって、値が 500 に設定されている場合、各実行で許可される削除の最大数は 499 になります。
+
+削除のしきい値の設定は `SyncNotificationSettings` の一部であり、グラフを使用して変更できます。 
+
+この構成の対象となる SyncNotificationSettings を更新する必要があるため、シークレットを更新します。
+
+ ```
+ PUT – https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/secrets
+ ```
+
+ 次のキーと値のペアを、実行しようとしている内容に基づいて、以下の値配列に追加します。
+
+```
+ Request body -
+ {
+   "value":[
+             {
+               "key":"SyncNotificationSettings",
+               "value": "{\"Enabled\":true,\"Recipients\":\"foobar@xyz.com\",\"DeleteThresholdEnabled\":true,\"DeleteThresholdValue\":50}"
+              }
+            ]
+  }
+
+
+```
+
+上記の例にある "Enabled" の設定は、ジョブが検疫されたときに通知メールを有効または無効にするためのものです。
+
+
+現在、シークレットの PATCH 要求はサポートされていないため、他の値を保持するためには、(上記の例のように) PUT 要求の本文ですべての値を追加する必要があります。
+
+すべてのシークレットの既存の値は、以下を使用して取得できます 
+
+```
+GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secrets 
+```
+
+### <a name="allowing-deletes"></a>削除を許可する
+ジョブが検疫された後に削除が通過できるようにするには、スコープとして "ForceDeletes" のみを使用して再起動を発行する必要があります。 
+
+```
+Request:
+POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/restart
+```
+
+```
+Request Body:
+{
+  "criteria": {"resetScope": "ForceDeletes"}
+}
+```
+
+
+
+
+
 
 ## <a name="start-sync-job"></a>同期ジョブを開始する
 ジョブは、次のコマンドを使用して再度取得できます。

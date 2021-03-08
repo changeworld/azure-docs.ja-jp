@@ -39,8 +39,6 @@
       href: access-control.md
     - name: ローカル RBAC の組み込みロール
       href: built-in-roles.md
-- name: 操作方法ガイド
-  items: null
 - name: リファレンス
   items:
     - name: Azure PowerShell

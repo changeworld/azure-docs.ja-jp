@@ -1,24 +1,24 @@
 ---
 title: Microsoft Azure での Oracle ソリューション | Microsoft Docs
 description: Oracle のアプリケーションおよびソリューションを Microsoft Azure にデプロイするためのオプション (全面的に Azure インフラストラクチャ上で実行する、クラウド間接続と Oracle Cloud Infrastructure (OCI) を使用するなど) について学びます。
-services: virtual-machines-linux
 documentationcenter: ''
 author: dbakevlar
 tags: azure-resource-management
 ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: kegorman
-ms.openlocfilehash: d9b032bbd89f8b6d300650ac54567b07ae3307b8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 971f7c919595f915451faf9266ee3bb18b35087e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948393"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677174"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure での Oracle アプリケーションおよびソリューションの概要
 
@@ -102,4 +102,4 @@ Azure での Oracle アプリケーションのデプロイは、「ライセン
 
 * [Azure と OCI を相互接続する](oracle-oci-overview.md)方法について詳しく学びます。
 
-* Ignite 2019 からの [Oracle on Azure の概要セッション](https://myignite.techcommunity.microsoft.com/sessions/82915) を確認してください。 
+* Ignite 2019 からの [Oracle on Azure の概要セッション](https://www.pluralsight.com/courses/microsoft-ignite-session-57) を確認してください。 

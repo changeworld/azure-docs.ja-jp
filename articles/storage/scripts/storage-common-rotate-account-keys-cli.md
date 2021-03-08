@@ -52,4 +52,4 @@ az group delete --name myResourceGroup
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
-その他のストレージ CLI サンプル スクリプトは、[Azure Blob ストレージ用の Azure CLI サンプル](../blobs/storage-samples-blobs-cli.md)のページにあります。
+その他のストレージ CLI サンプル スクリプトは、[Azure Blob Storage 用の Azure CLI サンプル](../blobs/storage-samples-blobs-cli.md)のページにあります。

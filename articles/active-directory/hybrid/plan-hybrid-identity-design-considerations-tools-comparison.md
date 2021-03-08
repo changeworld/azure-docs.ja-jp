@@ -15,12 +15,12 @@ ms.date: 04/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9c8f5a75fea6ddd85026407fe4784c8a4589e33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70e5c7e5fa428d5a71ca1a7468bbaab2fc94078e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89278311"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101643842"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>ハイブリッド ID ディレクトリ統合ツールの比較
 ディレクトリ統合ツールは、長年にわたって成長および進化してきました。  
@@ -28,9 +28,9 @@ ms.locfileid: "89278311"
 
 - [FIM](/previous-versions/windows/desktop/forefront-2010/ff182370(v=vs.100)) と [MIM](/microsoft-identity-manager/microsoft-identity-manager-2016) は引き続きサポートされており、主にオンプレミス システム間の同期が有効になります。   [FIM Windows Azure AD Connector](/previous-versions/mim/dn511001(v=ws.10)) は FIM と MIM の両方でサポートされていますが、新しいデプロイには推奨されません。Notes や SAP HCM などのオンプレミス ソースを使用しているお客様は、MIM を使用して Active Directory Domain Services (AD DS) にデータを入力し、Azure AD Connect 同期または Azure AD Connect クラウド プロビジョニングを使用して AD DS から Azure AD に同期する必要があります。
 - AD DS フォレストと Azure AD 間で同期するために、[Azure AD Connect 同期](how-to-connect-sync-whatis.md)には、以前に DirSync および Azure AD Sync でリリースされたコンポーネントと機能が組み込まれています。  
-- [Azure AD Connect クラウド プロビジョニング](../cloud-provisioning/what-is-cloud-provisioning.md) は、AD DS から Azure AD に同期するための新しい Microsoft エージェントです。買収した会社の AD フォレストが親会社の AD フォレストから分離されている合併や買収などのシナリオに役立ちます。
+- [Azure AD Connect クラウド プロビジョニング](../cloud-sync/what-is-cloud-sync.md) は、AD DS から Azure AD に同期するための新しい Microsoft エージェントです。買収した会社の AD フォレストが親会社の AD フォレストから分離されている合併や買収などのシナリオに役立ちます。
 
-Azure AD Connect 同期と Azure AD Connect クラウド プロビジョニングの違いの詳細については、記事「[Azure AD Connect クラウド プロビジョニングとは](../cloud-provisioning/what-is-cloud-provisioning.md)」を参照してください。
+Azure AD Connect 同期と Azure AD Connect クラウド プロビジョニングの違いの詳細については、記事「[Azure AD Connect クラウド プロビジョニングとは](../cloud-sync/what-is-cloud-sync.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

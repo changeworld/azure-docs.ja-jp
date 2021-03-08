@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 69f0a20bdcba23d947e3d1b573c1a359da245161
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e639762cd1adb7bbbc3fb2ec31f4ce52710e46f9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369422"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711945"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>多層 SAP NetWeaver アプリ デプロイのディザスター リカバリーを設定する
 
@@ -45,7 +45,7 @@ Site Recovery を使用して、次のシナリオのディザスター リカ�
 * SAP システムをオンプレミスの Hyper-V で実行しています。 また、SAP システムを Azure データセンターのディザスター リカバリー サイトにレプリケートしています (Hyper-V から Azure へのディザスター リカバリー)。
    このシナリオでは、いくつかの追加コンポーネントが必要です。 詳細については、「[Hyper-V から Azure へのレプリケーション アーキテクチャ](./hyper-v-azure-architecture.md)」をご覧ください。
 
-この記事では、 **Azure から Azure** へのディザスター リカバリー シナリオを使用します。 このシナリオでは、Site Recovery の SAP ディザスター リカバリー機能について説明します。 Site Recovery レプリケーションはアプリケーション固有ではないため、説明されているプロセスの他のシナリオへの適用も期待できます。
+この記事では、**Azure から Azure** へのディザスター リカバリー シナリオを使用します。 このシナリオでは、Site Recovery の SAP ディザスター リカバリー機能について説明します。 Site Recovery レプリケーションはアプリケーション固有ではないため、説明されているプロセスの他のシナリオへの適用も期待できます。
 
 ### <a name="required-foundation-services"></a>必要な基礎サービス
 この記事で説明するシナリオでは、次の基盤サービスがデプロイされます。
@@ -167,5 +167,5 @@ Azure ディザスター リカバリー データ センターへのすべて�
 詳しくは、「[Site Recovery でのフェールオーバー](site-recovery-failover.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-* Site Recovery を使用して、SAP NetWeaver デプロイ用のディザスター リカバリー ソリューションを構築する方法を確認してください。 [SAP NetWeaver: Site Recovery を使用したディザスター リカバリー ソリューションの構築](https://aka.ms/asr_sap)」に関するダウンロード可能なホワイト ペーパーをご覧ください。 このホワイトペーパーでは、さまざまな SAP アーキテクチャに関する推奨事項について説明しています。 SAP on Azure でサポートされているアプリケーションと VM の種類を確認できます。 ディザスター リカバリー ソリューションをテストするためのプラン オプションもあります。
+* Site Recovery を使用して、SAP NetWeaver デプロイ用のディザスター リカバリー ソリューションを構築する方法を確認してください。 [SAP NetWeaver: Site Recovery を使用したディザスター リカバリー ソリューションの構築](/samples/browse/?redirectedfrom=TechNet-Gallery)」に関するダウンロード可能なホワイト ペーパーをご覧ください。 このホワイトペーパーでは、さまざまな SAP アーキテクチャに関する推奨事項について説明しています。 SAP on Azure でサポートされているアプリケーションと VM の種類を確認できます。 ディザスター リカバリー ソリューションをテストするためのプラン オプションもあります。
 * Site Recovery を使用した[他のワークロードのレプリケート](site-recovery-workload.md)に関する記事をご覧ください。

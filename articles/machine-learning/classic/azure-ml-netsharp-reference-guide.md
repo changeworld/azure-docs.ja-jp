@@ -3,18 +3,18 @@ title: 'ML Studio (classic): Net# カスタム ニューラル ネットワー�
 description: Net# ニューラル ネットワーク仕様言語の構文ガイド。 Azure Machine Learning Studio (クラシック) でカスタム ニューラル ネットワーク モデルを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: a36eb21f681aec1cfc52a000b60bdbc30cab0633
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 5137b633f66088efbee41b96ba715eb3b18961dc
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302786"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519254"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) での Net# ニューラル ネットワーク仕様言語について
 
@@ -266,9 +266,9 @@ hidden P1 [5, 12, 12]
 
 応答正規化バンドルは、**Sharing**、**MapCount**、**Weights** を除くすべての畳み込み属性をサポートします。
 
-+ カーネルが **_x_ *と同じマップにニューロンを含んでいる場合、その正規化スキームを* 同一マップ正規化** と呼びます。 同一マップ正規化を定義するには、**InputShape** の第 1 座標の値が 1 である必要があります。
++ ***x** _ と同じマップのニューロンがカーネルに含まれる場合、その正規化スキームを _*同一マップ正規化** と呼びます。 同一マップ正規化を定義するには、**InputShape** の第 1 座標の値が 1 である必要があります。
 
-+ カーネルが **_x_ *と同じ空間位置にニューロンを含んでいるものの、そのニューロンが他のマップ内にある場合、その正規化スキームを* マップ間正規化** と呼びます。 このタイプの応答正規化では、側方抑制の形式が実装されます。これは、実際のニューロンで検出されたタイプから着想されたもので、異なるマップで計算されたニューロン出力間で大きな活性レベルに対する競合が発生します。 マップ間での正規化を定義するには、第 1 座標が 1 を超える整数で、マップの数以下である必要があります。残りの座標は値 1 を持つ必要があります。
++ ***x** _ と同じ空間位置のニューロンがカーネルに含まれますが、そのニューロンが他のマップ内にある場合、その正規化スキームを _*マップ間正規化** と呼びます。 このタイプの応答正規化では、側方抑制の形式が実装されます。これは、実際のニューロンで検出されたタイプから着想されたもので、異なるマップで計算されたニューロン出力間で大きな活性レベルに対する競合が発生します。 マップ間での正規化を定義するには、第 1 座標が 1 を超える整数で、マップの数以下である必要があります。残りの座標は値 1 を持つ必要があります。
 
 応答正規化バンドルは、事前定義関数をソース ノード値に適用して宛先ノード値を決定するため、トレーニング可能状態 (重みまたはバイアス) はありません。
 

@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 266862a1691387caf1b1ffa9a47b0e60e84970d8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 739e1dea23f87403a4aded50d5c9f254a55c64cc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492133"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737615"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) では、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)および[ネットワーク ファイル システム (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System) (プレビュー) を介してアクセスできる、フル マネージドのファイル共有がクラウド上で提供されます。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -45,7 +45,7 @@ ms.locfileid: "96492133"
 
     Azure Files は、明確にファイル システムです。 Azure Files には、オンプレミスのオペレーティング システムで長年使われてきた、皆さんもおなじみのファイルの概念がすべて備わっています。 Azure Blob Storage と同様、Azure Files にも REST インターフェイスと REST ベースのクライアント ライブラリが用意されています。 Azure Blob Storage とは異なり、Azure Files では Azure ファイル共有に SMB または NFS でアクセスできます。 ファイル共有は、オンプレミスの VM とクラウドの VM のどちらであっても、Windows、Linux、macOS 上で直接マウントできます。コードを記述したり、特別なドライバーをファイル システムにアタッチする必要はありません。 また、Azure File Sync を使用して、データが使用される場所に近接したオンプレミスのファイル サーバーで Azure SMB ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。 
    
-    Azure Files と Azure BLOB ストレージの違いに関する詳細な説明については、「[コア Azure Storage サービスの概要](../common/storage-introduction.md)」を参照してください。 Azure Blob Storage の詳細については、「[Blob Storage の概要](../blobs/storage-blobs-introduction.md)」をご覧ください。
+    Azure Files と Azure Blob Storage の違いに関する詳細な説明については、「[コア Azure Storage サービスの概要](../common/storage-introduction.md)」を参照してください。 Azure Blob Storage の詳細については、「[Blob Storage の概要](../blobs/storage-blobs-introduction.md)」をご覧ください。
 
 * <a id="files-versus-disks"></a>**Azure Disks ではなく Azure ファイル共有を使用する理由を教えてください。**  
     Azure Disks におけるディスクは、ただのディスクに過ぎません。 Azure Disks を有効活用するには、Azure で実行されている仮想マシンにディスクをアタッチする必要があります。 Azure Disks は、オンプレミスのサーバーで使われるディスクとまったく同じ用途で使用することができます。 OS システム ディスクや OS のスワップ領域、アプリケーションの専用ストレージとして使用可能です。 Azure ファイル共有を使用する代わりに Azure Disks を使用してクラウドにファイル サーバーを作成するのも面白い使い方です。 Azure Files では現在サポートされていないデプロイ オプションを必要とする場合、Azure Virtual Machines にファイル サーバーをデプロイすれば、Azure に高パフォーマンスなファイル ストレージを設置できます。 
@@ -73,7 +73,7 @@ ms.locfileid: "96492133"
 
 * <a id="tier-options"></a>
   **Azure Files では、どのストレージ層がサポートされていますか。**  
-    Azure Files は、Premium と Standard という 2 つのストレージ層をサポートしています。 Standard ファイル共有は汎用 (GPv1 または GPv2) ストレージ アカウントで作成され、Premium ファイル共有は FileStorage ストレージ アカウントで作成されます。 [Standard ファイル共有](storage-how-to-create-file-share.md)と[Premium ファイル共有](storage-how-to-create-premium-fileshare.md)の作成方法を参照してください。 
+    Azure Files は、Premium と Standard という 2 つのストレージ層をサポートしています。 Standard ファイル共有は汎用 (GPv1 または GPv2) ストレージ アカウントで作成され、Premium ファイル共有は FileStorage ストレージ アカウントで作成されます。 [Standard ファイル共有](storage-how-to-create-file-share.md)と[Premium ファイル共有](./storage-how-to-create-file-share.md)の作成方法を参照してください。 
     
     > [!NOTE]
     > BLOB ストレージ アカウントまたは *Premium* 汎用 (GPv1 または GPv2) ストレージ アカウントから Azure ファイル共有を作成することはできません。 Standard Azure ファイル共有は *Standard* 汎用アカウントでのみ作成し、Premium Azure ファイル共有は FileStorage ストレージ アカウントでのみ作成する必要があります。 *Premium* 汎用 (GPv1 および GPv2) ストレージ アカウントは、Premium ページ BLOB 専用です。 

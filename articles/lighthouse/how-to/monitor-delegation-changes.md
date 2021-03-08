@@ -3,18 +3,18 @@ title: 管理テナントでの委任変更を監視する
 description: 顧客テナントから管理テナントへの委任アクティビティを監視する方法について説明します。
 ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 9fdf47df4ac37fec44cf53b565b7fe1411540793
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 3bf6cc044d807d0c830b15c6d9c9a6d507f1a54f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089421"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593134"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>管理テナントでの委任変更を監視する
 
 お客様はサービス プロバイダーとして、[Azure Lighthouse](../overview.md) を通して顧客のサブスクリプションまたはリソース グループがご利用のテナントに委任された日時、または以前に委任されているリソースが削除された日時を確認することが必要な場合があります。
 
-管理テナントでは、[Azure アクティビ ティログ](../../azure-monitor/platform/platform-logs-overview.md)によって委任アクティビティがテナント レベルで追跡されます。 このログに記録されるアクティビティには、すべての顧客テナントに対する委任の追加または削除が含まれます。
+管理テナントでは、[Azure アクティビ ティログ](../../azure-monitor/essentials/platform-logs-overview.md)によって委任アクティビティがテナント レベルで追跡されます。 このログに記録されるアクティビティには、すべての顧客テナントに対する委任の追加または削除が含まれます。
 
 このトピックでは、お客様のテナント (お客様のすべての顧客を対象とする) への委任アクティビティを監視するために必要なアクセス許可について説明します。 また、このデータに対してクエリを実行してレポートするための方法の 1 つを示すサンプル スクリプトも示します。
 
@@ -104,7 +104,7 @@ az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role
 - 1 つのデプロイで複数のリソース グループが委任されている場合は、リソース グループごとに個別のエントリが返されます。
 - 以前の委任に加えられた変更 (アクセス許可の構造の更新など) は、追加された委任としてログに記録されます。
 - 前述のように、このテナントレベルのデータにアクセスするために、アカウントには、ルート スコープ (/) で監視閲覧者 Azure 組み込みロールが割り当てられている必要があります。
-- このデータは、独自のワークフローおよびレポートで使用できます。 たとえば、[HTTP データ コレクター API (パブリック プレビュー)](../../azure-monitor/platform/data-collector-api.md) を使用すると、REST API クライアントから Azure Monitor にデータを記録し、次に[アクション グループ](../../azure-monitor/platform/action-groups.md)を使用して通知またはアラートを作成できます。
+- このデータは、独自のワークフローおよびレポートで使用できます。 たとえば、[HTTP データ コレクター API (パブリック プレビュー)](../../azure-monitor/logs/data-collector-api.md) を使用すると、REST API クライアントから Azure Monitor にデータを記録し、次に[アクション グループ](../../azure-monitor/alerts/action-groups.md)を使用して通知またはアラートを作成できます。
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -181,5 +181,5 @@ else {
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Lighthouse](../concepts/azure-delegated-resource-management.md) への顧客のオンボード方法について説明します。
-- [Azure Monitor](../../azure-monitor/index.yml) と [Azure アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)について説明します。
+- [Azure Monitor](../../azure-monitor/index.yml) と [Azure アクティビティ ログ](../../azure-monitor/essentials/platform-logs-overview.md)について説明します。
 - [ドメイン別のアクティビティ ログ](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) サンプル ブックを確認し、ドメイン名でサブスクリプションをフィルター処理するオプションを指定して、サブスクリプションをまたがって Azure アクティビティ ログを表示する方法を把握します。

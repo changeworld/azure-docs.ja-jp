@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b459f44308827308c28687db3c3fc33df470ea8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab64765fc4e329c8edbf7a4db813113d20d476b3
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84790191"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557516"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>REST API を使用して Azure カスタム ロールを作成または更新する
 
@@ -341,5 +341,5 @@ ms.locfileid: "84790191"
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure カスタム ロール](custom-roles.md)
-- [REST API を使用して Azure のロールの割り当てを追加または削除する](role-assignments-rest.md)
+- [REST API を使用して Azure ロールを割り当てる](role-assignments-rest.md)
 - [Azure REST API リファレンス](/rest/api/azure/)

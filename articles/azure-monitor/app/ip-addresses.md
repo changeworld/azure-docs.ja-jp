@@ -3,12 +3,12 @@ title: Azure Monitor で使用される IP アドレス
 description: Application Insights で必要なサーバー ファイアウォール例外
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 0e7028c59b4588ac23424a63f4e3ce240391dfb8
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 72f825630ec94b5c32a949a4395c431318afa87f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220804"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584120"
 ---
 # <a name="ip-addresses-used-by-azure-monitor"></a>Azure Monitor で使用される IP アドレス
 [Azure Monitor](../overview.md) ではたくさんの IP アドレスが使用されます。 Azure Monitor は Log Analytics と Application Insights に加え、中心的なプラットフォーム メトリクスとログで構成されています。 監視しているアプリまたはインフラストラクチャがファイアウォールの背後でホストされているとき、場合によっては、これらのアドレスを知っている必要があります。
@@ -254,21 +254,21 @@ USDoD East
    1. リソース グループ名を追加し、"*インスタンスの詳細*" を入力します。
    1. **[確認および作成]** をクリックして、 *[作成]* をクリックします。
    
-   :::image type="content" source="../platform/media/action-groups/action-group-create-security-group.png" alt-text="ネットワーク セキュリティ グループの作成方法の例。"border="true":::
+   :::image type="content" source="../alerts/media/action-groups/action-group-create-security-group.png" alt-text="ネットワーク セキュリティ グループの作成方法の例。"border="true":::
 
 3. [リソース グループ] にアクセスし、作成した "*ネットワーク セキュリティ グループ*" をクリックします。
 
     1. *[受信セキュリティ規則]* を選択します。
     1. **[追加]** をクリックします。
     
-    :::image type="content" source="../platform/media/action-groups/action-group-add-service-tag.png" alt-text="サービス タグを追加する方法の例。"border="true":::
+    :::image type="content" source="../alerts/media/action-groups/action-group-add-service-tag.png" alt-text="サービス タグを追加する方法の例。"border="true":::
 
 4. 新しいウィンドウが右ペインに表示されます。
     1.  ソースを選択します。"**サービス タグ**"
     1.  [ソース サービス タグ]:**ActionGroup**
     1.  **[追加]** をクリックします。
     
-    :::image type="content" source="../platform/media/action-groups/action-group-service-tag.png" alt-text="サービス タグを追加する方法の例。"border="true":::
+    :::image type="content" source="../alerts/media/action-groups/action-group-service-tag.png" alt-text="サービス タグを追加する方法の例。"border="true":::
 
 
 ## <a name="profiler"></a>プロファイラー

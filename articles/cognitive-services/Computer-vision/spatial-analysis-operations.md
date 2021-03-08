@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 4e389114dc873d067a32389b288e1bb98d497850
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: af220106c415165a0dbe7cda64a31a6068f53164
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226054"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981784"
 ---
 # <a name="spatial-analysis-operations"></a>空間分析操作
 
@@ -965,7 +965,7 @@ GPU のパフォーマンスと使用率を最大限に引き出すには、グ�
   ```
 | 名前 | Type| 説明|
 |---------|---------|---------|
-| `batch_size` | INT | 操作で使用されるカメラの数を示します。 |
+| `batch_size` | INT | すべてのカメラの解像度が同じ場合は、`batch_size` をその操作で使用されるカメラの数に設定します。それ以外の場合は、`batch_size` を 1 に設定するか、既定値 (1) のままにします。これは、バッチがサポートされないことを示します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,22 +2,23 @@
 title: RMAN および Azure Storage を使用して Azure Linux VM で Oracle Database 19c データベースをバックアップする
 description: Oracle Database 19c データベースを Azure クラウド ストレージにバックアップする方法について説明します。
 author: cro27
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 695f151e6d6cc0a677942f60c751567da0cfca7c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: a6ce5446bd6470ef7a829925646d486801b28ebc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064396"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670010"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-storage"></a>Azure Storage を使用して Azure Linux VM で Oracle Database 19c データベースをバックアップおよび復旧する
 
-この記事では、Azure VM で実行されている Oracle データベースをバックアップおよび復元するためのメディアとしての Azure Storage の使用方法について説明します。 SMB プロトコルを使用して VM にマウントされた Azure File ストレージに、Oracle RMAN を使用してデータベースをバックアップします。 バックアップ メディアに Azure ストレージを使用すると、コスト効率とパフォーマンスが非常に高くなります。 ただし、非常に大規模なデータベースの場合は、Azure Backup の方が優れたソリューションとなります。
+この記事では、Azure VM で実行されている Oracle データベースをバックアップおよび復元するためのメディアとしての Azure Storage の使用方法について説明します。 SMB プロトコルを使用して VM にマウントされた Azure File Storage に、Oracle RMAN を使用してデータベースをバックアップします。 バックアップ メディアに Azure ストレージを使用すると、コスト効率とパフォーマンスが非常に高くなります。 ただし、非常に大規模なデータベースの場合は、Azure Backup の方が優れたソリューションとなります。
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -31,19 +32,19 @@ ms.locfileid: "99064396"
    ssh azureuser@<publicIpAddress>
    ```
    
-2. **_root_* _ ユーザーに切り替えます。
+2. ***ルート*** ユーザーに切り替えます。
  
    ```bash
    sudo su -
    ```
     
-3. oracle ユーザーを _*_ /etc/sudoers_*_ ファイルに追加します。
+3. oracle ユーザーを ***/etc/sudoers*** ファイルに追加します。
 
    ```bash
    echo "oracle   ALL=(ALL)      NOPASSWD: ALL" >> /etc/sudoers
    ```
 
-4. この手順では、_vmoracle19c* という仮想マシンで実行されている Oracle インスタンス (test) があることを前提としています。
+4. この手順では、*vmoracle19c* という仮想マシンで実行されている Oracle インスタンス (test) があることを前提としています。
 
    ユーザーを *oracle* ユーザーに切り替えます。
 
@@ -172,7 +173,7 @@ Azure Files にバックアップするには、これらの手順を実行し�
 
 ### <a name="set-up-azure-file-storage"></a>Azure File Storage を設定する
 
-この手順では、Oracle Recovery Manager (RMAN) を使用して Azure File ストレージに Oracle データベースをバックアップします。 Azure ファイル共有は、クラウド内に存在するフル マネージドのファイル共有です。 これらはサーバー メッセージ ブロック (SMB) プロトコルまたはネットワーク ファイル システム (NFS) プロトコルのどちらかを使用してアクセスできます。 この手順では、SMB プロトコルを使用して VM にマウントするファイル共有の作成について説明します。 NFS を使用してマウントする方法の詳細については、[NFS 3.0 プロトコルを使用した Blob Storage のマウント](../../../storage/blobs/network-file-system-protocol-support-how-to.md)に関する記事を参照してください。
+この手順では、Oracle Recovery Manager (RMAN) を使用して Azure File Storage に Oracle データベースをバックアップします。 Azure ファイル共有は、クラウド内に存在するフル マネージドのファイル共有です。 これらはサーバー メッセージ ブロック (SMB) プロトコルまたはネットワーク ファイル システム (NFS) プロトコルのどちらかを使用してアクセスできます。 この手順では、SMB プロトコルを使用して VM にマウントするファイル共有の作成について説明します。 NFS を使用してマウントする方法の詳細については、[NFS 3.0 プロトコルを使用した Blob Storage のマウント](../../../storage/blobs/network-file-system-protocol-support-how-to.md)に関する記事を参照してください。
 
 Azure Files をマウントする場合は、`cache=none` を使用してファイル共有データのキャッシュを無効にします。 また、共有に作成されたファイルが oracle ユーザーによって所有されるようにするには、`uid=oracle` オプションと `gid=oinstall` オプションも設定します。 
 
@@ -182,31 +183,31 @@ Azure Files をマウントする場合は、`cache=none` を使用してファ�
 
 1. Azure portal で File Storage を構成する
 
-    Azure portal で、* **[+ リソースの作成]** _ を選択し、_*_[ストレージ アカウント]_*_ を検索して選択します。
+    Azure portal で、* **[+ リソースの作成]** _ を選択し、_ *_[ストレージ アカウント]_** を検索して選択します。
     
-    ![ストレージ アカウントの追加ページ](./media/oracle-backup-recovery/storage-1.png)
+    ![リソースを作成してストレージ アカウントを選択する場所を示すスクリーンショット。](./media/oracle-backup-recovery/storage-1.png)
     
-2. [ストレージ アカウントの作成] ページで、既存のリソース グループ _*_rg-oracle_*_ を選択し、ストレージ アカウントに _*_oracbkup1_*_ という名前を付けて、[アカウントの種類] として _*_[Storage V2 (generalpurpose v2)]\(Storage V2 (汎用 V2)\)_*_ を選択します。 [レプリケーション] を _*_[ローカル冗長ストレージ (LRS)]_*_ に変更し、[パフォーマンス] を _*_[標準]_*_ に設定します。 [場所] が、リソース グループ内の他のすべてのリソースと同じリージョンに設定されていることを確認します。 
+2. [ストレージ アカウントの作成] ページで、既存のリソース グループ ***rg-oracle** _ を選択し、ストレージ アカウントに _*_oracbkup1_*_ という名前を付けて、[アカウントの種類] として _*_[Storage V2 (generalpurpose v2)]\(Storage V2 (汎用 V2)\)_*_ を選択します。 [レプリケーション] を _*_[ローカル冗長ストレージ (LRS)]_*_ に変更し、[パフォーマンス] を _* _[標準]_ ** に設定します。 [場所] が、リソース グループ内の他のすべてのリソースと同じリージョンに設定されていることを確認します。 
     
-    ![ストレージ アカウントの追加ページ](./media/oracle-backup-recovery/file-storage-1.png)
+    ![既存のリソース グループを選択する場所を示すスクリーンショット。](./media/oracle-backup-recovery/file-storage-1.png)
    
    
-3. _*_[詳細設定]_*_ タブをクリックし、Azure Files で、_*_[大きいファイルの共有]_*_ を _*_[有効]_*_ に設定します。 [確認および作成] をクリックして、 [作成] をクリックします。
+3. * **[詳細設定]** _ タブをクリックし、Azure Files で、_*_[大きいファイルの共有]_*_ を _* _[有効]_ ** に設定します。 [確認および作成] をクリックして、 [作成] をクリックします。
     
-    ![ストレージ アカウントの追加ページ](./media/oracle-backup-recovery/file-storage-2.png)
-    
-    
-4. ストレージ アカウントが作成されたら、リソースに移動し、_*_[ファイル共有]_*_ を選択します。
-    
-    ![ストレージ アカウントの追加ページ](./media/oracle-backup-recovery/file-storage-3.png)
-    
-5. _*_ [+ ファイル共有_] *_ をクリックし、_* _[新しいファイル共有]_ *_ ブレードで、ファイル共有に _* _orabkup1_ *_ という名前を付けます。_* _[クォータ]_ *_ を _* _10240_ *_ GiB に設定し、階層として、_* _[トランザクション最適化]_ *をチェックします。クォータは、ファイル共有を拡張できる上限を反映します。Standard Storage を使用しているため、リソースは従量課金制であり、プロビジョニングされていないことから、10 TiB に設定しても、使用した分を超えるコストは発生しません。バックアップ戦略で、より多くのストレージが必要な場合は、すべてのバックアップを保持する適切なレベルにクォータを設定する必要があります。 [新しいファイル共有] ブレードが完了したら、_* _[作成]_ *_ をクリックします。
-    
-    ![ストレージ アカウントの追加ページ](./media/oracle-backup-recovery/file-storage-4.png)
+    ![大きいファイルの共有を有効に設定する場所を示すスクリーンショット。](./media/oracle-backup-recovery/file-storage-2.png)
     
     
-6. 作成したら、[ファイル共有の設定] ページの _*_[orabkup1]_*_ をクリックします。 
-    _*_[接続]_*_ タブをクリックして [接続] ブレードを開き、_*_[Linux]_*_ タブをクリックします。SMB プロトコルを使用してファイル共有をマウントするために提供されているコマンドをコピーします。 
+4. ストレージ アカウントが作成されたら、リソースに移動し、***[ファイル共有]*** を選択します。
+    
+    ![ファイル共有を選択する場所を示すスクリーンショット。](./media/oracle-backup-recovery/file-storage-3.png)
+    
+5. * **[+ ファイル共有]** _ をクリックし、_*_[新しいファイル共有]_*_ ブレードで、ファイル共有に _*_orabkup1_*_ という名前を付けます。 _*_[クォータ]_*_ を _*_10240_*_ GiB に設定し、階層として、_*_[トランザクション最適化]_*_ をチェックします。 クォータは、ファイル共有を拡張できる上限を反映します。 Standard Storage を使用しているため、リソースは従量課金制であり、プロビジョニングされていないことから、10 TiB に設定しても、使用した分を超えるコストは発生しません。 バックアップ戦略で、より多くのストレージが必要な場合は、すべてのバックアップを保持する適切なレベルにクォータを設定する必要があります。   [新しいファイル共有] ブレードが完了したら、_* _[作成]_ ** をクリックします。
+    
+    ![新しいファイル共有を追加する場所が示されているスクリーンショット。](./media/oracle-backup-recovery/file-storage-4.png)
+    
+    
+6. 作成したら、[ファイル共有の設定] ページの ***[orabkup1]*** をクリックします。 
+    * **[接続]** _ タブをクリックして [接続] ブレードを開き、_ *_[Linux]_** タブをクリックします。SMB プロトコルを使用してファイル共有をマウントするために提供されているコマンドをコピーします。 
     
     ![ストレージ アカウントの追加ページ](./media/oracle-backup-recovery/file-storage-5.png)
 
@@ -353,9 +354,9 @@ Azure Files をマウントする場合は、`cache=none` を使用してファ�
     RMAN> backup as compressed backupset database plus archivelog;
     ```
 
-これで、Oracle RMAN を使用してデータベースがオンラインでバックアップされました。バックアップは Azure File ストレージに配置されています。 この方法は、他の VM からアクセスできる Azure File ストレージにバックアップを格納しながら、RMAN の機能を利用するという利点を備えており、データベースを複製する必要がある場合に役立ちます。  
+これで、Oracle RMAN を使用してデータベースがオンラインでバックアップされました。バックアップは Azure File Storage に配置されています。 この方法は、他の VM からアクセスできる Azure File Storage にバックアップを格納しながら、RMAN の機能を利用するという利点を備えており、データベースを複製する必要がある場合に役立ちます。  
     
-データベース バックアップに RMAN と Azure File ストレージを使用することには多くの利点がありますが、バックアップと復元の時間はデータベースのサイズに関連しているため、非常に大規模なデータベースでは、これらの操作にかなりの時間がかかることがあります。  Azure Backup のアプリケーション整合性 VM バックアップを使用するもう 1 つ別のバックアップ メカニズムは、スナップショット テクノロジを使用してバックアップを実行します。これには、データベースのサイズに関係なく非常に高速なバックアップを実行できるという利点があります。 Recovery Services コンテナーとの統合により、他の VM や Azure リージョンからアクセスできる Azure クラウド ストレージ内で Oracle Database バックアップを安全に保管できます。 
+データベース バックアップに RMAN と Azure File Storage を使用することには多くの利点がありますが、バックアップと復元の時間はデータベースのサイズに関連しているため、非常に大規模なデータベースでは、これらの操作にかなりの時間がかかることがあります。  Azure Backup のアプリケーション整合性 VM バックアップを使用するもう 1 つ別のバックアップ メカニズムは、スナップショット テクノロジを使用してバックアップを実行します。これには、データベースのサイズに関係なく非常に高速なバックアップを実行できるという利点があります。 Recovery Services コンテナーとの統合により、他の VM や Azure リージョンからアクセスできる Azure クラウド ストレージ内で Oracle Database バックアップを安全に保管できます。 
 
 ### <a name="restore-and-recover-the-database"></a>データベースを復元して復旧する
 
@@ -371,7 +372,7 @@ Azure Files をマウントする場合は、`cache=none` を使用してファ�
 
     ```bash
     cd /u02/oradata/TEST
-    rm -f _.dbf
+    rm -f *.dbf
     ```
 
 3. 次のコマンドでは、RMAN を使用して、不足しているデータファイルを復元し、データベースを復旧します。
@@ -405,4 +406,4 @@ az group delete --name rg-oracle
 
 [チュートリアル:高可用性 VM の作成](../../linux/create-cli-complete.md)
 
-[VM デプロイ Azure CLI サンプルを探索する](../../linux/cli-samples.md)
+[VM デプロイ Azure CLI サンプルを探索する](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

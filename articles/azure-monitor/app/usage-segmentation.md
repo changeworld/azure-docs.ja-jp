@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d11b12ba37d543ec21985c52c4ffb3399bfc56d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d1076239938988119d8a9838d0e060d70a22082
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323521"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583372"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Application Insights でのユーザー、セッション、およびイベントの分析
 
@@ -41,15 +41,15 @@ Application Insights ポータルのユーザー、セッション、または�
 * 次を使用した:カスタム イベントとページ ビューを選択します。
 * 期間:時間範囲を選択します。
 * By (フィルター方法):期間またはブラウザーや市などのプロパティごとにデータのバケットする方法を選択します。
-* 次で分割:データの分割またはセグメント化に使用するプロパティを選択します。 
-* フィルターの追加:ブラウザー、市などのプロパティに基づいて特定のユーザー、セッション、またはイベントに対するクエリ実行を制限します。 
- 
-## <a name="saving-and-sharing-reports"></a>レポートの保存と共有 
+* 次で分割:データの分割またはセグメント化に使用するプロパティを選択します。 
+* フィルターの追加:ブラウザー、市などのプロパティに基づいて特定のユーザー、セッション、またはイベントに対するクエリ実行を制限します。 
+ 
+## <a name="saving-and-sharing-reports"></a>レポートの保存と共有 
 [ユーザー] レポートは、個人利用のためだけに [My Reports (マイ レポート)] セクションに保存するか、[共有レポート] セクションのこの Application Insights リソースにアクセスできる他のすべてのユーザーと共有できます。
 
 ユーザー、セッション、またはイベント レポートへのリンクを共有するには、ツールバーの **[共有]** をクリックし、リンクをコピーします。
 
-ユーザー、セッション、またはイベント レポート内のデータのコピーを共有するには、ツールバーの **[共有]** をクリックし、**Word アイコン**をクリックして、データを含む Word 文書を作成します。 または、メイン グラフの上の **Word アイコン**をクリックします。
+ユーザー、セッション、またはイベント レポート内のデータのコピーを共有するには、ツールバーの **[共有]** をクリックし、**Word アイコン** をクリックして、データを含む Word 文書を作成します。 または、メイン グラフの上の **Word アイコン** をクリックします。
 
 ## <a name="meet-your-users"></a>ユーザーを確認する
 
@@ -62,6 +62,6 @@ Application Insights ポータルのユーザー、セッション、または�
     - [ファネル](usage-funnels.md)
     - [保持](usage-retention.md)
     - [ユーザー フロー](usage-flows.md)
-    - [ブック](../platform/workbooks-overview.md)
+    - [ブック](../visualize/workbooks-overview.md)
     - [ユーザー コンテキストの追加](usage-send-user-context.md)
 

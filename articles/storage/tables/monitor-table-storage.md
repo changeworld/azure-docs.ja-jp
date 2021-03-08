@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 6c4d2698cef45d1776ededf0e5281b015ac6725e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 4b27adbbfa68fc3a9b0c017d07580f416674e432
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587624"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591487"
 ---
 # <a name="monitoring-azure-table-storage"></a>Azure Table Storage の監視
 
@@ -30,7 +30,7 @@ Azure リソースに依存するクリティカルなアプリケーション�
 ## <a name="what-is-azure-monitor"></a>Azure Monitor とは
 Azure Table Storage では、Azure のフルスタック監視サービスである [Azure Monitor](../../azure-monitor/overview.md) を使用して監視データが作成されます。 Azure Monitor には、Azure リソースと、他のクラウドおよびオンプレミスのリソースを監視するための完全な機能セットが用意されています。 
 
-まず「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/insights/monitor-azure-resource.md)」の記事にある次の事項の説明をお読みください。
+まず「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/essentials/monitor-azure-resource.md)」の記事にある次の事項の説明をお読みください。
 
 - Azure Monitor とは
 - 監視に関連するコスト
@@ -42,7 +42,7 @@ Azure Table Storage では、Azure のフルスタック監視サービスであ
 
 ## <a name="monitoring-data"></a>データの監視
 
-Azure Table Storage では、他の Azure リソースと同じ種類の監視データが収集されます。これについては、[Azure リソースの監視データ](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)に関するページを参照してください。 
+Azure Table ストレージでは、他の Azure リソースと同じ種類の監視データが収集されます。これについては、[Azure リソースの監視データ](../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)に関するページを参照してください。 
 
 Azure Table Storage によって作成されるメトリックとログの詳細については、「[Azure Table Storage 監視データのリファレンス](monitor-table-storage-reference.md)」を参照してください。
 
@@ -66,7 +66,7 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
 
 診断設定を作成するには、Azure portal、PowerShell、Azure CLI、または Azure Resource Manager テンプレートを使用します。 
 
-一般的なガイダンスについては、[Azure でプラットフォーム ログとメトリックを収集するための診断設定の作成](../../azure-monitor/platform/diagnostic-settings.md)に関するページを参照してください。
+一般的なガイダンスについては、[Azure でプラットフォーム ログとメトリックを収集するための診断設定の作成](../../azure-monitor/essentials/diagnostic-settings.md)に関するページを参照してください。
 
 > [!NOTE]
 > Azure Monitor の Azure Storage ログはパブリック プレビュー段階にあり、すべてのパブリック クラウド リージョンでプレビュー テスト用に使用できます。 このプレビューでは、BLOB (Azure Data Lake Storage Gen2 を含む)、ファイル、キュー、およびテーブルに対してログが有効になります。 この機能は、Azure Resource Manager デプロイ モデルを使用して作成されたすべてのストレージ アカウントで使用できます。 「[ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
@@ -108,7 +108,7 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
 2. **[ストレージ アカウント]** ドロップダウン リストで、ログのアーカイブ先となるストレージ アカウントを選択し、 **[OK]** ボタンをクリックして、 **[保存]** ボタンをクリックします。
 
    > [!NOTE]
-   > ストレージ アカウントをエクスポート先として選択する前に、[Azure リソース ログのアーカイブ](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)に関するページを参照して、ストレージ アカウントに関する前提条件をご確認ください。
+   > ストレージ アカウントをエクスポート先として選択する前に、[Azure リソース ログのアーカイブ](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)に関するページを参照して、ストレージ アカウントに関する前提条件をご確認ください。
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>ログを Azure Event Hubs にストリーミングする
 
@@ -162,7 +162,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccoun
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/tableServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
 
-Azure Storage へのリソース ログのアーカイブの詳細については、[Azure リソース ログ](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)に関するページを参照してください。
+Azure Storage へのリソース ログのアーカイブの詳細については、[Azure リソース ログ](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)に関するページを参照してください。
 
 #### <a name="stream-logs-to-an-event-hub"></a>イベント ハブにログをストリーム配信する
 
@@ -178,7 +178,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAutho
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/tableServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
 
-イベント ハブへのリソース ログの送信の詳細については、[Azure リソース ログ](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)に関するページを参照してください。
+イベント ハブへのリソース ログの送信の詳細については、[Azure リソース ログ](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)に関するページを参照してください。
 
 #### <a name="send-logs-to-log-analytics"></a>ログを Log Analytics に送信する
 
@@ -192,7 +192,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/tableServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
 
-詳しくは、[Azure Monitor の Log Analytics ワークスペースへの Azure リソース ログのストリーム配信](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)に関するページを参照してください。
+詳しくは、[Azure Monitor の Log Analytics ワークスペースへの Azure リソース ログのストリーム配信](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)に関するページを参照してください。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -250,18 +250,18 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 
 `az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/tableServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
 
- 詳しくは、[Azure Monitor の Log Analytics ワークスペースへの Azure リソース ログのストリーム配信](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)に関するページを参照してください。
+ 詳しくは、[Azure Monitor の Log Analytics ワークスペースへの Azure リソース ログのストリーム配信](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)に関するページを参照してください。
 
 ### <a name="template"></a>[テンプレート](#tab/template)
 
-診断設定を作成する Azure Resource Manager テンプレートを表示するには、「[Azure Storage の診断設定](../../azure-monitor/samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage)」を参照してください。
+診断設定を作成する Azure Resource Manager テンプレートを表示するには、「[Azure Storage の診断設定](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage)」を参照してください。
 
 ---
 
 
 ## <a name="analyzing-metrics"></a>メトリックの分析
 
-メトリックス エクスプローラーを使用して、他の Azure サービスのメトリックと共に Azure Storage のメトリックを分析できます。 メトリックス エクスプローラーを開くには、 **[Azure Monitor]** メニューの **[メトリック]** を選択します。 このツールの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/platform/metrics-getting-started.md)」をご覧ください。 
+メトリックス エクスプローラーを使用して、他の Azure サービスのメトリックと共に Azure Storage のメトリックを分析できます。 メトリックス エクスプローラーを開くには、 **[Azure Monitor]** メニューの **[メトリック]** を選択します。 このツールの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/essentials/metrics-getting-started.md)」をご覧ください。 
 
 次の例は、アカウント レベルで **トランザクション** を表示する方法を示しています。
 
@@ -523,22 +523,22 @@ Table ストレージ サービス自体による要求 (ログの作成や削�
 
 ![監査ログ](media/monitor-table-storage/event-hub-log.png)
 
-イベント ハブに送信されるログ データのアクセスと読み取りには、セキュリティ情報とイベント管理のツールと監視ツールを使用します。 詳細については、[Azure リソース ログ](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)に関するページを参照してください。
+イベント ハブに送信されるログ データのアクセスと読み取りには、セキュリティ情報とイベント管理のツールと監視ツールを使用します。 詳細については、[Azure リソース ログ](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)に関するページを参照してください。
 
 ### <a name="accessing-logs-in-a-log-analytics-workspace"></a>Log Analytics ワークスペースのログにアクセスする
 
 Azure Monitor ログ クエリを使用して、Log Analytics ワークスペースに送信されたログにアクセスできます。
 
-詳細については、「[イベント ハブと外部パートナーへの Azure 監視データのストリーム配信](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)」を参照してください。
+詳細については、「[イベント ハブと外部パートナーへの Azure 監視データのストリーム配信](../../azure-monitor/essentials/stream-monitoring-data-event-hubs.md)」を参照してください。
 
 データは **StorageTableLogs** テーブルに格納されます。 
 
 #### <a name="sample-kusto-queries"></a>サンプル Kusto クエリ
 
-ここでは、Table ストレージの監視に役立つ、 **[ログ検索]** バーに入力できるクエリの一部を紹介します。 これらのクエリは[新しい言語](../../azure-monitor/log-query/log-query-overview.md)で使用できます。
+ここでは、Table ストレージの監視に役立つ、 **[ログ検索]** バーに入力できるクエリの一部を紹介します。 これらのクエリは[新しい言語](../../azure-monitor/logs/log-query-overview.md)で使用できます。
 
 > [!IMPORTANT]
-> ストレージ アカウント リソース グループ メニューから **[ログ]** を選択すると、クエリのスコープが現在のリソース グループに設定された状態で Log Analytics が開きます。 つまり、ログ クエリには、そのリソース グループのデータのみが含まれます。 他のリソースのデータや他の Azure サービスのデータを含むクエリを実行する場合は、**Azure Monitor** のメニューから **[ログ]** を選択します。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](../../azure-monitor/log-query/scope.md)」を参照してください。
+> ストレージ アカウント リソース グループ メニューから **[ログ]** を選択すると、クエリのスコープが現在のリソース グループに設定された状態で Log Analytics が開きます。 つまり、ログ クエリには、そのリソース グループのデータのみが含まれます。 他のリソースのデータや他の Azure サービスのデータを含むクエリを実行する場合は、**Azure Monitor** のメニューから **[ログ]** を選択します。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](../../azure-monitor/logs/scope.md)」を参照してください。
 
 これらのクエリを使用すると、Azure Storage アカウントの監視に役立ちます。
 

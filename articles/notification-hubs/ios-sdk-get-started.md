@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: c920c9b3b28df7f5bf3bf169ef88ab967f23649e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c18814230eda6624e8ab1040797c66108f630e30
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001322"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581739"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する
 
@@ -236,7 +236,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-2. 左側のメニューで **[すべてのサービス]** を選択し、**[モバイル]** セクションの **[Notification Hubs]** を選択します。 サービス名の横にある星のアイコンを選択して、左側のメニューにある **[お気に入り]** セクションにサービスを追加します。 **Notification Hubs** を **[お気に入り]** に追加し、それを選択します。
+2. 左側のメニューで **[すべてのサービス]** を選択し、 **[モバイル]** セクションの **[Notification Hubs]** を選択します。 サービス名の横にある星のアイコンを選択して、左側のメニューにある **[お気に入り]** セクションにサービスを追加します。 **Notification Hubs** を **[お気に入り]** に追加し、それを選択します。
 
    :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Azure Portal":::
 
@@ -309,4 +309,4 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 
 このチュートリアルでは、Azure で通知ハブを作成して構成し、それを、Apple Push Notification Service (APNS) を使用してアプリケーションに通知を送信できるように構成しました。 次に、サンプルの iOS アプリケーションを作成し、Azure portal を通じて送信されるプッシュ通知を受信できるように Azure Notification Hubs SDK と統合しします。 選択する言語に基づいた次のチュートリアルに進みます。
 
-- [チュートリアル:Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する](ios-sdk-300.md)
+- [チュートリアル:Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する](ios-sdk-current.md)

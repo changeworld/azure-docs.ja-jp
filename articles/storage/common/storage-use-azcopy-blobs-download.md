@@ -1,6 +1,6 @@
 ---
-title: AzCopy v10 を使用して Azure BLOB ストレージから BLOB をダウンロードする | Microsoft Docs
-description: この記事には、Azure BLOB ストレージから BLOB をダウンロードするために役立つ AzCopy コマンドの例のコレクションが含まれています。
+title: AzCopy v10 を使用して Azure Blob Storage から BLOB をダウンロードする | Microsoft Docs
+description: この記事には、Azure Blob Storage から BLOB をダウンロードするために役立つ AzCopy コマンドの例のコレクションが含まれています。
 author: normesta
 ms.service: storage
 ms.topic: how-to
@@ -15,7 +15,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 01/27/2021
 ms.locfileid: "98880120"
 ---
-# <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy v10 を使用して Azure BLOB ストレージから BLOB をダウンロードする
+# <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy v10 を使用して Azure Blob Storage から BLOB をダウンロードする
 
 AzCopy v10 コマンド ライン ユーティリティを使用して、BLOB ストレージから BLOB やディレクトリをダウンロードできます。 
 

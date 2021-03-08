@@ -269,7 +269,7 @@ Visual Studio Code でまず、Azure Logic Apps (プレビュー) 拡張機能�
 
    Visual Studio Code 内からプロジェクトのルート レベルに **global.json** ファイルを明示的に追加します。 そうしないと、デザイナーは開きません。
 
-1. Windows または Linux で Visual Studio Code を実行している場合は、Azure Storage エミュレーターが実行されていることを確認します。 詳細については、「[前提条件](#prerequisites)」を参照してください。 macOS で Visual Studio Code を実行している場合は、次のステップに進みます。
+1. Windows または Linux で Visual Studio Code を実行している場合は、Azure Storage Emulator が実行されていることを確認します。 詳細については、「[前提条件](#prerequisites)」を参照してください。 macOS で Visual Studio Code を実行している場合は、次のステップに進みます。
 
 1. ワークフローのプロジェクト フォルダーを展開します。 **workflow.json** ファイルのショートカット メニューを開き、 **[デザイナーで開く]** を選択します。
 
@@ -277,7 +277,7 @@ Visual Studio Code でまず、Azure Logic Apps (プレビュー) 拡張機能�
 
    `Workflow design time could not be started` というエラー メッセージが表示される場合は、次の条件を確認します。
 
-   * **Windows または Linux**: Azure Storage エミュレーターが実行されていることを確認します。 そうでない場合は、「[問題とエラーのトラブルシューティング](#troubleshooting)」を参照してください。
+   * **Windows または Linux**: Azure Storage Emulator が実行されていることを確認します。 そうでない場合は、「[問題とエラーのトラブルシューティング](#troubleshooting)」を参照してください。
 
    * **macOS**:次の解決策を試し、うまくいかない場合は「[問題とエラーのトラブルシューティング](#troubleshooting)」を参照してください。
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, contperf-fy21q2
-ms.openlocfilehash: b5f4b6d42d67b69bd8b6be1ada6f5651d0cb8675
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e6971fa129c01fc4cdf64e0dc681ac0fab4f707b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029840"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833815"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central とは
 
@@ -156,9 +156,6 @@ IoT Central アプリケーションは、Microsoft によって完全にホス�
 
 これで IoT Central の概要を把握できました。推奨される次の手順のいくつかを次に示します。
 
-- [IoT ソリューションを作成するための Azure のテクノロジとサービス](../../iot-fundamentals/iot-services-and-technologies.md)を把握する。
 - デバイス開発者がコードの内容を詳しく知りたい場合は、次の手順として、[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](./tutorial-connect-device.md)ことをお勧めします。
 - [Azure IoT Central の UI](overview-iot-central-tour.md) に慣れる。
 - 実際に [Azure IoT Central アプリケーションを作成](quick-deploy-iot-central.md)してみる。
-- [Azure IoT Edge デバイスを接続する](./tutorial-add-edge-as-leaf-device.md)方法について学習する。
-- [Azure IoT のテクノロジとサービス](../../iot-fundamentals/iot-services-and-technologies.md)の詳細を確認する。

@@ -2,18 +2,18 @@
 title: Azure ExpressRoute を Oracle Cloud Infrastructure と接続する | Microsoft Docs
 description: Azure ExpressRoute を Oracle Cloud Infrastructure (OCI) FastConnect と接続して、クロスクラウド Oracle アプリケーション ソリューションを使用できるようにします
 author: dbakevlar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: rogardle
-ms.reviewer: cynthn
-ms.openlocfilehash: 2717ba307cac82465e0c5df996ef3b668af5e7d4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 09264f9f20411e7536eb4a1dbf12ac297e7e3ef9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963710"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675719"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Azure と Oracle Cloud Infrastructure 間の直接相互接続をセットアップする  
 

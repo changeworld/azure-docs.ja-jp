@@ -3,12 +3,12 @@ title: SAP HANA データベースのバックアップ エラーのトラブル
 description: Azure Backup を使用して SAP HANA データベースをバックアップするときに発生する可能性のある一般的なエラーをトラブルシューティングする方法について説明します。
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: b9fa73ee38e337a547816432212bc68d419f40bb
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 22800adc323bda8a60278160f24bc559103fb57e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95411327"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713339"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure での SAP HANA データベースのバックアップをトラブルシューティングする
 
@@ -46,13 +46,6 @@ ms.locfileid: "95411327"
 | エラー メッセージ      | <span style="font-weight:normal">指定された SAP HANA 操作はサポートされていません</span>              |
 | ------------------ | ------------------------------------------------------------ |
 | **考えられる原因**    | SAP HANA 用 Azure Backup は、SAP HANA ネイティブ クライアント (Studio/ Cockpit/ DBA Cockpit) で実行される増分バックアップやアクションをサポートしていません |
-| **推奨される操作** | 詳しくは、[こちら](./sap-hana-backup-support-matrix.md#scenario-support)を参照してください。 |
-
-### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
-
-| エラー メッセージ      | <span style="font-weight:normal">この SAP HANA データベースは、要求されたバックアップの種類をサポートしていません</span>  |
-| ------------------ | ------------------------------------------------------------ |
-| **考えられる原因**    | Azure Backup は、増分バックアップやスナップショットを使用したバックアップをサポートしていません |
 | **推奨される操作** | 詳しくは、[こちら](./sap-hana-backup-support-matrix.md#scenario-support)を参照してください。 |
 
 ### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure

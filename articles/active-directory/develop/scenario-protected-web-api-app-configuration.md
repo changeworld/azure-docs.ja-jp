@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3a26157949ff6ef69c9c009dfdd40781b47bc761
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: bdf74a6d8b6798de8aba33baea5afdf987ce1c34
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753588"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582487"
 ---
 # <a name="protected-web-api-code-configuration"></a>保護された Web API: コード構成
 
-保護された Web API のコードを構成するには、次の点を理解しておく必要があります。
+保護された Web API のコードを構成するには、次の点を理解しておいてください。
 
 - API を保護対象として定義するもの
 - ベアラー トークンの構成方法

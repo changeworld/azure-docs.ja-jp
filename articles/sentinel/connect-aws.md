@@ -1,6 +1,6 @@
 ---
 title: AWS CloudTrail を Azure Sentinel に接続する | Microsoft Docs
-description: AWS コネクタを使用して Azure Sentinel へのアクセスを AWS リソース ログに委任することで、AWS CloudTrail と Sentinel の間の信頼関係が確立されます。
+description: AWS コネクタを使用して Azure Sentinel へのアクセスを AWS リソース ログに委任することで、AWS CloudTrail と Azure Sentinel の間の信頼関係が確立されます。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: a7405824d2477d2d39c45a56ae545e58a090c321
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 3d24fa1ea046a860feb40d09a6d0a57c79371450
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436608"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807599"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Azure Sentinel を AWS CloudTrail に接続する
 

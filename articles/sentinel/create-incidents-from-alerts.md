@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: fabf847b672f4dbf3e680a21bc7015655c612552
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c7c3d69bb26773171e9e0afc9f79ff25909a12a
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906304"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807294"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Microsoft セキュリティ アラートからインシデントを自動的に作成する
 
-Microsoft Cloud App Security や Microsoft Defender for Identity (旧 Azure ATP) など、Azure Sentinel に接続されている Microsoft セキュリティ ソリューションでトリガーされたアラートによって、自動的に Azure Sentinel にインシデントは作成されません。 既定では、Microsoft ソリューションを Azure Sentinel に接続すると、そのサービスで生成されたアラートは、Azure Sentinel の Azure Sentinel ワークスペースのセキュリティ アラート テーブルに生データとして格納されます。 そのデータは、Sentinel に接続する他の生データと同様に使用できます。
+Microsoft Cloud App Security や Microsoft Defender for Identity (旧 Azure ATP) など、Azure Sentinel に接続されている Microsoft セキュリティ ソリューションでトリガーされたアラートによって、自動的に Azure Sentinel にインシデントは作成されません。 既定では、Microsoft ソリューションを Azure Sentinel に接続すると、そのサービスで生成されたアラートは、Azure Sentinel の Azure Sentinel ワークスペースのセキュリティ アラート テーブルに生データとして格納されます。 そのデータは、Azure Sentinel に接続する他の生データと同様に使用できます。
 
 この記事の手順に従って、接続されている Microsoft セキュリティ ソリューションでアラートがトリガーされるたびに自動的にインシデントを作成するように Azure Sentinel を簡単に構成できます。
 
@@ -41,7 +41,7 @@ Azure Sentinel で利用できる組み込みのルールを使用して、ど�
 
     ![ルール テンプレート](media/incidents-from-alerts/rule-templates.png)
 
-1. 使用する **Microsoft セキュリティ**分析ルールテンプレートを選択し、 **[ルールの作成]** をクリックします。
+1. 使用する **Microsoft セキュリティ** 分析ルールテンプレートを選択し、 **[ルールの作成]** をクリックします。
 
     ![セキュリティ分析ルール](media/incidents-from-alerts/security-analytics-rule.png)
 
@@ -51,11 +51,11 @@ Azure Sentinel で利用できる組み込みのルールを使用して、ど�
 
     ![ルールの作成ウィザード](media/incidents-from-alerts/create-rule-wizard.png)
 
-1. また、 **[+ 作成]** をクリックし、 **[Microsoft incident creation rule]\(Microsoft インシデント作成ルール\)** を選択して、別の Microsoft セキュリティ サービスのアラートをフィルター処理する新しい **Microsoft セキュリティ ルール**を作成することもできます。
+1. また、 **[+ 作成]** をクリックし、 **[Microsoft incident creation rule]\(Microsoft インシデント作成ルール\)** を選択して、別の Microsoft セキュリティ サービスのアラートをフィルター処理する新しい **Microsoft セキュリティ ルール** を作成することもできます。
 
     ![インシデント作成ルール](media/incidents-from-alerts/incident-creation-rule.png)
 
-  **Microsoft セキュリティ サービス**の種類ごとに、複数の **Microsoft セキュリティ**分析ルールを作成できます。 これにより、各ルールがフィルターとして使用されるため、重複するインシデントは作成されません。 アラートが複数の **Microsoft セキュリティ**分析ルールと一致する場合でも、1 つの Azure Sentinel インシデントのみが作成されます。
+  **Microsoft セキュリティ サービス** の種類ごとに、複数の **Microsoft セキュリティ** 分析ルールを作成できます。 これにより、各ルールがフィルターとして使用されるため、重複するインシデントは作成されません。 アラートが複数の **Microsoft セキュリティ** 分析ルールと一致する場合でも、1 つの Azure Sentinel インシデントのみが作成されます。
 
 ## <a name="enable-incident-generation-automatically-during-connection"></a>接続時にインシデント生成を自動的に有効にする
  Microsoft セキュリティ ソリューションを接続するときに、セキュリティ ソリューションのアラートによってインシデントが Azure Sentinel に自動的に生成されるようにするかどうかを選択できます。

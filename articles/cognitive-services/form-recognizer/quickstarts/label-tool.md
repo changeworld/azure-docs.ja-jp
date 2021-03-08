@@ -11,12 +11,12 @@ ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: ドキュメントの処理
-ms.openlocfilehash: 813f5a06915ca7f5dfc0f4cc9a3f9b3e232ca31a
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 9642f9ce51cd3eb90344f96bc099da7adea93022
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221093"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364795"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング
 
@@ -176,7 +176,7 @@ Form Recognizer サービスを試すには、Azure サブスクリプション 
 
 ### <a name="apply-labels-to-text"></a>ラベルをテキストに適用する
 
-次に、タグ (ラベル) を作成し、モデルに認識させるテキスト要素に適用します。
+次に、タグ (ラベル) を作成し、モデルに分析させるテキスト要素に適用します。
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)  
 1. まず、タグ エディター ペインを使用して、識別するタグを作成します。
@@ -228,7 +228,7 @@ Form Recognizer サービスを試すには、Azure サブスクリプション 
 必要に応じて、それぞれのタグにしかるべきデータ型を設定できます。 タグの右側にあるコンテキスト メニューを開いて型を選択します。 この機能により、検出アルゴリズムは、テキスト検出精度の向上につながる一定の仮説を立てることができます。 また、最終的な JSON 出力では、検出された値が確実に標準化された形式で返されます。 値の型に関する情報は、ラベル ファイルと同じパスにある *fields.json* ファイルに保存されます。
 
 > [!div class="mx-imgBorder"]
-> ![サンプル ラベル付けツールでの値の型の選択](../media/whats-new/formre-value-type.png)
+> ![サンプル ラベル付けツールでの値の型の選択](../media/whats-new/value-type.png)
 
 現在、次の値の型とバリエーションがサポートされています。
 * `string`

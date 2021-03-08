@@ -14,7 +14,21 @@
 - name: サンプル
   items:
     - name: Azure PowerShell
-      href: powershell-samples.md
+      items:
+        - name: サンプルのスクリプト
+          href: powershell-samples.md
+        - name: VPN ゲートウェイの作成
+          href: scripts/vpn-gateway-sample-create-vpn-gateway-powershell.md
+        - name: VPN ゲートウェイ + P2S RADIUS
+          href: scripts/vpn-gateway-sample-point-to-site-radius-authentication-powershell.md
+        - name: VPN ゲートウェイ + P2S 証明書認証
+          href: scripts/vpn-gateway-sample-point-to-site-certificate-authentication-powershell.md
+        - name: VPN ゲートウェイ + サイト間
+          href: scripts/vpn-gateway-sample-site-to-site-powershell.md
+        - name: VNet 間
+          href: scripts/vpn-gateway-sample-vnet-vnet-powershell.md
+        - name: VPN デバイス テンプレートのダウンロード
+          href: scripts/vpn-gateway-sample-site-to-site-download-devicescript-powershell.md
 - name: 概念
   items:
     - name: リモート作業
@@ -71,7 +85,7 @@
               href: create-routebased-vpn-gateway-cli.md
         - name: VPN ゲートウェイ接続の確認
           href: vpn-gateway-verify-connection-resource-manager.md
-        - name: VPN ゲートウェイのリセット
+        - name: VPN ゲートウェイまたは接続をリセットする
           href: reset-gateway.md
         - name: VPN ゲートウェイの削除
           items:
@@ -101,8 +115,6 @@
           href: ../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
         - name: プライベート ピアリングを介した VPN
           href: site-to-site-vpn-private-peering.md
-    - name: Azure と AWS のサイト間接続
-      href: create-vpn-azure-aws-managed-solutions.md
     - name: VNet 対 VNet 接続
       items:
         - name: VNet 間の接続の構成
@@ -165,6 +177,10 @@
               href: about-vpn-profile-download.md
             - name: Intune - VPN クライアント プロファイルのデプロイ
               href: vpn-profile-intune.md
+        - name: 複数の認証の種類
+          items:
+            - name: Azure portal
+              href: howto-point-to-site-multi-auth.md
         - name: OpenVPN
           items:
             - name: OpenVPN トンネルの種類を構成する
@@ -193,6 +209,8 @@
               href: vpn-gateway-bgp-resource-manager-ps.md
             - name: Azure CLI
               href: bgp-how-to-cli.md
+        - name: BGP の診断
+          href: bgp-diagnostics.md
         - name: 強制トンネリングについて
           items:
             - name: Azure PowerShell

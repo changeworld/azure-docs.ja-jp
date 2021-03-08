@@ -6,14 +6,14 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 02/11/2021
 ms.author: banders
-ms.openlocfilehash: 4cc213db19a567f18c5ff483b64a75e3bbeef892
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 63fbf76b2211e530707f3598d176b646c317cc53
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962112"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100363051"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>サブスクライバーと CSP の間で Azure サブスクリプションを譲渡する
 
@@ -36,6 +36,7 @@ ms.locfileid: "94962112"
 
 他の Azure サブスクリプションを CSP パートナーに譲渡するには、サブスクライバーがソース サブスクリプションから CSP サブスクリプションにリソースを移動する必要があります。 サブスクリプション間でリソースを移動するには、次のガイダンスに従います。
 
+1. 顧客との[リセラー関係](/partner-center/request-a-relationship-with-a-customer)を確立します。 [CSP リージョン承認の概要](/partner-center/regional-authorization-overview)を参照して、顧客とパートナーの両方のテナントが同じ承認リージョン内にあることを確認します。
 1. CSP パートナーと協力して、ターゲットの Azure CSP サブスクリプションを作成します。
 1. ソース サブスクリプションとターゲットの CSP サブスクリプションが同じ Azure Active Directory (Azure AD) テナントにあることを確認します。  
     Azure CSP サブスクリプションの Azure AD テナントを変更することはできません。 その代わりに、ソース サブスクリプションを CSP Azure AD テナントに追加するか、関連付ける必要があります。 詳細については、「[Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。

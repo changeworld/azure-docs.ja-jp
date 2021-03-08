@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e47dad8498c48a5da5307517efe493fa5c1aa590
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: e180ecbf5c68dbd9c179244083a641ac6ed42de0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94748065"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371959"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>データ サイエンス タスクの実行: 探索、モデリング、およびデプロイ
 
@@ -42,7 +42,7 @@ Azure Machine Learning などの製品では、機能作成を含め、データ
 複数のモデルが構築されたら、一般的には、モデルを登録して管理するためのシステムが必要になります。 通常は、スクリプトまたは API とバックエンド データベースまたはバージョン管理システムを組み合わせる必要があります。 これらの管理タスクで検討できるいくつかの選択肢は、次のとおりです。
 
 1. [Azure Machine Learning - モデル管理サービス](../index.yml)
-2. [MIT からの ModelDB](http://modeldb.csail.mit.edu:3000/projects) 
+2. [MIT からの ModelDB](https://people.csail.mit.edu/mvartak/papers/modeldb-hilda.pdf) 
 3. [モデル管理システムとしての SQL サーバー](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](/sql/advanced-analytics/r/r-server-standalone)
 

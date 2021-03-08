@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: a7ee4e205851a751f7a50ac0ddadfb4e4c7eb81a
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 9a0fb8ed8ac54fa866b6db7d8f808c011c0c6758
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247405"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695823"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure Synapse Analytics についてよく寄せられる質問
 
@@ -45,7 +45,7 @@ Synapse ワークスペースをセキュリティで保護するには、RBAC �
 
 さらに、専用 SQL プールでは、使い慣れたすべてのセキュリティ機能を使用できます。
 
-### <a name="q-how-do-i-control-cont-dedicated-sql-pools-serverless-sql-pools-and-serverless-spark-pools"></a>Q:専用 SQL プール、サーバーレス SQL プール、サーバーレス Spark プールのコストを管理するにはどうすればよいですか。
+### <a name="q-how-do-i-control-dedicated-sql-pools-serverless-sql-pools-and-serverless-spark-pools"></a>Q:専用 SQL プール、サーバーレス SQL プール、サーバーレス Spark プールを管理するにはどうすればよいですか。
 
 A:Azure Synapse では、出発点として、Azure サブスクリプション レベルで利用可能な組み込みのコスト分析とコスト アラートを使用します。
 

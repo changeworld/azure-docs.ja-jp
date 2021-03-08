@@ -7,12 +7,12 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 5e9f6ecc733eccf317e3013752ee2f5b0586ea78
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: d3a89e7733cc033792056b8de5232232b8327025
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540417"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580396"
 ---
 # <a name="virtual-machine-and-disk-performance"></a>仮想マシンとディスクのパフォーマンス
 [!INCLUDE [VM and Disk Performance](../../includes/virtual-machine-disk-performance.md)]
@@ -22,6 +22,3 @@ Premium Storage と Premium Storage キャッシュの両方に対応した仮�
 
 [!INCLUDE [VM and Disk Performance](../../includes/virtual-machine-disk-performance-2.md)]
 
-この仮想マシンとディスクの組み合わせで、IO アクティビティを作成するベンチマーク テストを実行してみましょう。 Azure でストレージ IO のベンチマークを行う方法については、「[Azure Disk Storage 上のアプリケーションのベンチマーク](disks-benchmarks.md)」を参照してください。 ベンチマーク ツールから、この VM とディスクの組み合わせで 22,800 IOPS を達成できることがわかります。
-
-[!INCLUDE [VM and Disk Performance](../../includes/virtual-machine-disk-performance-3.md)]

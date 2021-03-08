@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 64fa6c72e3bc37276dd108e3981bbefb5a2021a7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 30744ab97549d585cb6893dc2e2e12009e8cd3fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444519"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595776"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>FAQ - データ収集、エージェント、およびワークスペースに関する質問
 
@@ -43,7 +43,7 @@ Security Center では、セキュリティの脆弱性と脅威を監視する�
 
 ## <a name="what-is-the-log-analytics-agent"></a>Log Analytics エージェントとは
 
-セキュリティの脆弱性と脅威を監視するために、Azure Security Center は [Log Analytics エージェント](../azure-monitor/platform/log-analytics-agent.md)に依存しています。これは、Azure Monitor サービスで使用されるのと同じエージェントです。 
+セキュリティの脆弱性と脅威を監視するために、Azure Security Center は [Log Analytics エージェント](../azure-monitor/agents/log-analytics-agent.md)に依存しています。これは、Azure Monitor サービスで使用されるのと同じエージェントです。 
 
 このエージェントは、Microsoft Monitoring Agent ("MMA") と呼ばれることもあります。 
 
@@ -51,9 +51,9 @@ Security Center では、セキュリティの脆弱性と脅威を監視する�
 
 次のページの説明に従って、このエージェントでサポートされているオペレーティング システムのいずれかがマシンで実行されていることを確認してください。
 
-* [Windows 用の Log Analytics エージェントでサポートされているオペレーティング システム ](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Windows 用の Log Analytics エージェントでサポートされているオペレーティング システム ](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
-* [Linux 用の Log Analytics エージェントでサポートされているオペレーティング システム](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Linux 用の Log Analytics エージェントでサポートされているオペレーティング システム](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
 詳細については、[Log Analytics エージェントによって収集されたデータ](security-center-enable-data-collection.md)に関する記事をご覧ください。
 
@@ -255,7 +255,7 @@ Azure サブスクリプションのデータ収集の有効化は、セキュ�
 
 ## <a name="what-happens-when-data-collection-is-enabled"></a>データ収集を有効にするとどうなりますか。
 
-自動プロビジョニングを有効にすると、Security Center は、サポートされているすべての Azure VM と新しく作成される VM に Log Analytics エージェントをプロビジョニングします。 自動プロビジョニングをお勧めしますが、エージェントを手動でインストールすることもできます。 [Log Analytics エージェントの拡張機能をインストールする方法を確認してください](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。 
+自動プロビジョニングを有効にすると、Security Center は、サポートされているすべての Azure VM と新しく作成される VM に Log Analytics エージェントをプロビジョニングします。 自動プロビジョニングをお勧めしますが、エージェントを手動でインストールすることもできます。 [Log Analytics エージェントの拡張機能をインストールする方法を確認してください](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。 
 
 エージェントで、プロセス作成イベント 4688 とイベント 4688 内の *CommandLine* フィールドが有効になります。 VM に作成された新しいプロセスは EventLog に記録され、Security Center の検出サービスによって監視されます。 新しいプロセスごとに記録される詳細については、[4688 の説明フィールド](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields)を参照してください。 また、エージェントは VM に作成された 4688 イベントも収集し、検索に保存します。
 
@@ -267,7 +267,7 @@ Azure サブスクリプションのデータ収集の有効化は、セキュ�
 ## <a name="will-security-center-work-using-an-oms-gateway"></a>Security Center は OMS ゲートウェイを使用して動作しますか。
 
 はい。 Azure Security Center は、Log Analytics エージェントを使用して、Azure VM およびサーバーからのデータ収集に Azure Monitor を活用します。
-データを収集するには、各 VM とサーバーが HTTPS を使用してインターネットに接続する必要があります。 インターネット接続には、直接接続、プロキシを使用した接続、[OMS ゲートウェイ](../azure-monitor/platform/gateway.md)を介した接続を使用できます。
+データを収集するには、各 VM とサーバーが HTTPS を使用してインターネットに接続する必要があります。 インターネット接続には、直接接続、プロキシを使用した接続、[OMS ゲートウェイ](../azure-monitor/agents/gateway.md)を介した接続を使用できます。
 
 
 ## <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Monitoring Agent はサーバーのパフォーマンスに影響しますか。

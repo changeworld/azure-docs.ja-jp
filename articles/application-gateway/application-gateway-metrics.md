@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: surmb
-ms.openlocfilehash: be629d9f8441ad40fe15f005f4aeb0ec5565a7ec
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 9faa3a284aa7151880526c1ee70cfadc3dbf3089
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437067"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576114"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway のメトリック
 
-Application Gateway からは、ご利用の Application Gateway インスタンスおよびバックエンド インスタンスのパフォーマンスに関する、メトリックと呼ばれるデータ ポイントが [Azure Monitor](../azure-monitor/overview.md) に発行されます。 これらのメトリックは、順序付けられた時系列データ セットに含まれる数値であり、特定の時間におけるご利用のアプリケーション ゲートウェイの一部の側面を記述しています。 Application Gateway を通過する要求がある場合は、それによって 60 秒間隔でメトリックが測定されて送信されます。 Application Gateway を通過する要求がない場合、またはメトリックのデータがない場合、メトリックは報告されません。 詳細については、「[Azure Monitor metrics](../azure-monitor/platform/data-platform-metrics.md)」(Azure Monitor メトリック) を参照してください。
+Application Gateway からは、ご利用の Application Gateway インスタンスおよびバックエンド インスタンスのパフォーマンスに関する、メトリックと呼ばれるデータ ポイントが [Azure Monitor](../azure-monitor/overview.md) に発行されます。 これらのメトリックは、順序付けられた時系列データ セットに含まれる数値であり、特定の時間におけるご利用のアプリケーション ゲートウェイの一部の側面を記述しています。 Application Gateway を通過する要求がある場合は、それによって 60 秒間隔でメトリックが測定されて送信されます。 Application Gateway を通過する要求がない場合、またはメトリックのデータがない場合、メトリックは報告されません。 詳細については、「[Azure Monitor metrics](../azure-monitor/essentials/data-platform-metrics.md)」(Azure Monitor メトリック) を参照してください。
 
 ## <a name="metrics-supported-by-application-gateway-v2-sku"></a>Application Gateway V2 SKU でサポートされるメトリック
 
@@ -200,7 +200,7 @@ Application Gateway に関しては、次のメトリックを利用できます
 
 :::image type="content" source="media/application-gateway-diagnostics/figure5.png" alt-text="メトリック ビュー。" lightbox="media/application-gateway-diagnostics/figure5-lb.png":::
 
-現在のメトリックの一覧を確認するには、「[Azure Monitor のサポートされるメトリック](../azure-monitor/platform/metrics-supported.md)」を参照してください。
+現在のメトリックの一覧を確認するには、「[Azure Monitor のサポートされるメトリック](../azure-monitor/essentials/metrics-supported.md)」を参照してください。
 
 ### <a name="alert-rules-on-metrics"></a>メトリックに基づくアラート ルール
 
@@ -230,9 +230,9 @@ Application Gateway に関しては、次のメトリックを利用できます
 
 ![アラートとルールの一覧][9]
 
-アラート通知の詳細については、「[Microsoft Azure のアラートの概要](../azure-monitor/platform/alerts-overview.md)」を参照してください。
+アラート通知の詳細については、「[Microsoft Azure のアラートの概要](../azure-monitor/alerts/alerts-overview.md)」を参照してください。
 
-webhook の詳細および webhook とアラートを使用する方法については、「[Azure メトリック アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)」を参照してください。
+webhook の詳細および webhook とアラートを使用する方法については、「[Azure メトリック アラートでの webhook の構成](../azure-monitor/alerts/alerts-webhooks.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

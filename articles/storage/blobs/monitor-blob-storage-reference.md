@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: subject-monitoring
-ms.openlocfilehash: 6dd53358b67eef481948d3349afc07086ea26fcd
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: b37586f66106e33b2a8dad034a6e7c131484be73
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584908"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571617"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Azure Blob Storage 監視データのリファレンス
 
@@ -36,7 +36,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 #### <a name="blob-storage"></a>BLOB ストレージ
 
-この表は、[BLOB ストレージのメトリック](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices)を示しています。
+この表は、[BLOB ストレージのメトリック](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsblobservices)を示しています。
 
 | メトリック | 説明 |
 | ------------------- | ----------------- |
@@ -176,4 +176,4 @@ Azure Storage では、Azure Monitor の次のメトリック ディメンショ
 ## <a name="see-also"></a>関連項目
 
 - Azure Storage 監視の詳細については、「[Azure Storage の監視](monitor-blob-storage.md)」を参照してください。
-- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。
+- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/essentials/monitor-azure-resource.md)」を参照してください。
