@@ -3,12 +3,12 @@ title: Azure Resource Health でサポートされるリソースの種類 |Micr
 description: Azure Resource Health でサポートされるリソースの種類
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 2c002ab89b1cae4db6d3337908bb401039cb2295
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 1b0958732a96786b2fb86b2b145f5cb8d36c0c5a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611944"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883369"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Resource Health で利用できるリソースの種類と正常性チェック
 Resource Health で実行されるすべてのチェックをリソースの種類別にまとめた完全な一覧を次に示します。
@@ -22,6 +22,11 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |実行されるチェック|
 |---|
 |<ul><li>API Management サービスが実行しているか</li></ul>|
+
+## <a name="microsoftappplatformspring"></a>Microsoft.AppPlatform/Spring
+|実行されるチェック|
+|---|
+|<ul><li>Azure Spring Cloud インスタンスを使用できるか</li></ul>|
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 |実行されるチェック|
@@ -46,7 +51,7 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 ## <a name="microsoftclassiccomputedomainnames"></a>Microsoft.classiccompute/domainnames
 |実行されるチェック|
 |---|
-|<ul><li>運用スロットのデプロイがすべてのロール インスタンスで正常に実行されているかどうか</li><li>すべての VM インスタンスでロールが正常であるかどうか</li><li>クラウド サービスのロール内の各 VM の正常性状態はどうなっているか</li><li>プラットフォームまたは顧客が開始した操作により、VM の状態が変化したかどうか</li><li>ゲスト OS の起動が完了しているか</li><li>進行中の定期的なメンテナンスはあるか</li><li>ホストのハードウェアの機能が低下し、すぐに障害が起きると予測されるか</li></ul>|
+|<ul><li>運用スロットのデプロイがすべてのロール インスタンスで正常に実行されているかどうか</li><li>すべての VM インスタンスでロールが正常であるかどうか</li><li>クラウド サービスのロール内の各 VM の正常性状態はどうなっているか</li><li>プラットフォームまたは顧客が開始した操作により、VM の状態が変化したかどうか</li><li>ゲスト OS の起動が完了しているか</li><li>進行中の定期的なメンテナンスはあるか</li><li>ホストのハードウェアの機能が低下し、すぐに障害が起きると予測されるか</li><li>実行されるチェックの[詳細](../cloud-services/resource-health-for-cloud-services.md)</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |実行されるチェック|
@@ -62,6 +67,11 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |実行されるチェック|
 |---|
 |<ul><li>この仮想マシンをホストするサーバーは稼働しているか</li><li>ホスト OS の起動が完了しているか</li><li>仮想マシン コンテナーがプロビジョニングされ、オンになっているか</li><li>ホストとストレージ アカウント間のネットワーク接続が存在するか</li><li>ゲスト OS の起動が完了しているか</li><li>進行中の定期的なメンテナンスはあるか</li><li>ホストのハードウェアの機能が低下し、すぐに障害が起きると予測されるか</li></ul>|
+
+## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
+|実行されるチェック|
+|---|
+|<ul><li>クラスターが稼働しているか</li><li>コア サービスはクラスターで使用できるか</li><li>すべてのクラスター ノードの準備ができているか</li><li>サービス プリンシパルは最新の状態で有効であるか</li></ul>|
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/factories
 |実行されるチェック|
@@ -109,6 +119,11 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |---|
 |<ul><li>IoT ハブが稼働しているか</li></ul>|
 
+## <a name="microsoftdigitaltwinsdigitaltwinsinstances"></a>Microsoft.DigitalTwins/DigitalTwinsInstances
+|実行されるチェック|
+|---|
+|<ul><li>Azure Digital Twins インスタンスは稼働しているか</li></ul>|
+
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.documentdb/databaseAccounts
 |実行されるチェック|
 |---|
@@ -124,10 +139,20 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |---|
 |<ul><li>コア サービスは HDInsight クラスターで使用できるか</li><li>HDInsight クラスターは保存中の BYOK 暗号化のキーにアクセスできるか</li></ul>|
 
+## <a name="microsoftiotcentraliotapps"></a>Microsoft.IoTCentral/IoTApps
+|実行されるチェック|
+|---|
+|<ul><li>IoT Central アプリケーションを使用できるか</li></ul>|
+
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 |実行されるチェック|
 |---|
 |<ul><li>Azure KeyVault プラットフォームの問題が原因でキー コンテナーへの要求が失敗するか</li><li>顧客によって行われた要求が多すぎるためにキー コンテナーへの要求がスロットルされているか</li></ul>|
+
+## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/clusters
+|実行されるチェック|
+|---|
+|<ul><li>クラスターのインジェストの成功率が低いか</li><li>クラスターのインジェストの待ち時間が長いか</li><li>クラスターに大量のクエリ エラーが発生しているか</li></ul>|
 
 ## <a name="microsoftmachinelearningwebservices"></a>Microsoft.MachineLearning/webServices
 |実行されるチェック|
@@ -143,6 +168,11 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |実行されるチェック|
 |---|
 |<ul><li>Application Gateway のパフォーマンスが低下しているか</li><li>Application Gateway を利用できるか</li></ul>|
+
+## <a name="microsoftnetworkbastionhosts"></a>Microsoft.network/bastionhosts
+|実行されるチェック|
+|---|
+|<ul><li>bastion ホストが稼働しているか</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |実行されるチェック|
@@ -164,6 +194,11 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |---|
 |<ul><li>負荷分散エンドポイントを利用できるか</li></ul>|
 
+## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft.network/trafficmanagerprofiles
+|実行されるチェック|
+|---|
+|<ul><li>Traffic Manager プロファイルに影響する問題があるか</li></ul>|
+
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
 |実行されるチェック|
 |---|
@@ -182,12 +217,7 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Capacities
 |実行されるチェック|
 |---|
-|<ul><li>キャパシティ リソースが稼働しているか</li><li>すべてのワークロードが稼働しているか</li></ul>|
-
-## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
-|実行されるチェック|
-|---|
-|<ul><li>ホスト OS が稼働しているか</li><li>データ センターの外部から workspaceCollection にアクセスできるか</li><li>Power BI リソース プロバイダーを利用できるか</li><li>Power BI サービスを適切なリージョンで利用できるか</li></ul>|
+|<ul><li>キャパシティ リソースが稼働しているか</li><li>すべてのワークロードが稼働しているか</li></ul>
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.search/searchServices
 |実行されるチェック|
@@ -237,4 +267,4 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 ## <a name="next-steps"></a>次の手順
 -  [Azure Service Health ダッシュボードの概要](service-health-overview.md)に関するページと [Azure Resource Health の概要](resource-health-overview.md)に関するページを読んで、それらについての理解を深めます。 
 -  [Azure Resource Health に関してよく寄せられる質問](resource-health-faq.md)
-- アラートをセットアップして、正常性に関する問題について通知を受け取ります。 詳細については、[サービス正常性イベントのアラートの構成](./alerts-activity-log-service-notifications-portal.md)に関するページを参照してください。 
+- アラートをセットアップして、正常性に関する問題について通知を受け取ります。 詳細については、[サービス正常性イベントのアラートの構成](./alerts-activity-log-service-notifications-portal.md)に関するページを参照してください。

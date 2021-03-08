@@ -3,14 +3,12 @@ title: 静的送信 IP を構成する
 description: イングレスとエグレスにファイアウォールのパブリック IP アドレスを使用する Azure Container Instances ワークロード用の Azure ファイアウォールとユーザー定義ルートを構成する
 ms.topic: article
 ms.date: 07/16/2020
-author: dlepow
-ms.author: danlep
-ms.openlocfilehash: d748e3e6239ba913afc5b8aadd7e85dcd1027c04
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 497645b9fe7f908cc9b8b4d7ed0ba5e201570160
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023706"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89566570"
 ---
 # <a name="configure-a-single-public-ip-address-for-outbound-and-inbound-traffic-to-a-container-group"></a>コンテナー グループへの送信と受信トラフィック用の 1 つのパブリック IP アドレスを構成する
 

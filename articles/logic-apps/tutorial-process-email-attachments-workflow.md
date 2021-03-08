@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 79ce5125283a234530435891044ead3141665433
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bd1715dc0a3767bc5826154616bbdc97c7b61dd3
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002778"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576365"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>チュートリアル:Azure Logic Apps、Azure Functions、Azure Storage を使用してメール処理のタスクを自動化する
 
@@ -36,16 +36,18 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 * Logic Apps がサポートするメール プロバイダー (Office 365 Outlook、Outlook.com、Gmail など) のメール アカウント。 その他のプロバイダーについては、[こちらのコネクタ一覧を参照](/connectors/)してください。
 
-  このロジック アプリでは、Office 365 Outlook アカウントを使います。 別のメール アカウントを使う場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。
+  このロジック アプリでは、職場または学校アカウントを使用します。 別のメール アカウントを使う場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。
 
   > [!IMPORTANT]
   > Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
 
 * [無料の Microsoft Azure Storage Explorer](https://storageexplorer.com/) のダウンロードとインストール。 ストレージ コンテナーが正しく設定されているかどうかをこのツールでチェックすることができます。
+
+* ロジック アプリが特定の IP アドレスへのトラフィックを制限するファイアウォールを経由して通信する必要がある場合、そのファイアウォールは、Logic Apps サービスまたはロジック アプリが存在する Azure リージョンのランタイムが使用する [インバウンド](logic-apps-limits-and-config.md#inbound)と [アウトバウンド](logic-apps-limits-and-config.md#outbound)の IP アドレスの "*両方*" のアクセスを許可する必要があります。 また、ロジック アプリが Office 365 Outlook コネクタや SQL コネクタなどの [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)を使用している場合、または [カスタム コネクタ](/connectors/custom-connectors/)を使用している場合、そのファイアウォールでは、ロジック アプリの Azure リージョン内の "*すべて*" の [マネージド コネクタ アウトバウンド IP アドレス](logic-apps-limits-and-config.md#outbound)へのアクセスを許可する必要もあります。
 
 ## <a name="set-up-storage-to-save-attachments"></a>添付ファイルの保存先ストレージを設定する
 
@@ -53,9 +55,9 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
-1. ストレージ コンテナーを作成する前に、Azure portal の **[基本]** タブで次の設定の[ストレージ アカウントを作成](../storage/common/storage-account-create.md)します。
+1. ストレージ コンテナーを作成する前に、Azure portal の **[基本]** タブで次の設定の [ストレージ アカウントを作成](../storage/common/storage-account-create.md)します。
 
-   | 設定 | 値 | 説明 |
+   | 設定 | 値 | [説明] |
    |---------|-------|-------------|
    | **サブスクリプション** | <*Azure サブスクリプション名*> | Azure サブスクリプションの名前 |  
    | **リソース グループ** | <*Azure-resource-group*> | [Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前。関連するリソースをまとめて管理する目的で使われます。 この例では、"LA-Tutorial-RG" を使用します。 <p>**注:** リソース グループは、特定のリージョン内に存在します。 このチュートリアルで使う項目が、一部のリージョンでは利用できない場合もありますが、可能な限り同じリージョンを使うようにしてください。 |
@@ -86,7 +88,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
       ![ストレージ アカウントの名前とキーをコピーして保存](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   ストレージ アカウントのアクセス キーは、[Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) または [Azure CLI](/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list) を使用して取得することもできます。
+   ストレージ アカウントのアクセス キーは、[Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) または [Azure CLI](/cli/azure/storage/account/keys) を使用して取得することもできます。
 
 1. メールの添付ファイル用の Blob Storage コンテナーを作成します。
 
@@ -102,7 +104,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
       ![完成したストレージ コンテナー](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   ストレージ コンテナーは、[Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) または [Azure CLI](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) を使用して作成することもできます。
+   ストレージ コンテナーは、[Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) または [Azure CLI](/cli/azure/storage/container#az-storage-container-create) を使用して作成することもできます。
 
 次に、このストレージ アカウントに Storage Explorer を接続します。
 
@@ -152,7 +154,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
    | **Application Insights** | Disable | [Application Insights](../azure-monitor/app/app-insights-overview.md) を使ったアプリケーションの監視を有効にします。ただしこのチュートリアルでは、 **[無効]**  >  **[適用]** を選択します。 |
    ||||
 
-   デプロイ後に関数アプリが自動的に表示されない場合は、[Azure portal](https://portal.azure.com) の検索ボックスで、**関数アプリ**を検索して選択してください。 **[関数アプリ]** で、使用する関数アプリを選択します。
+   デプロイ後に関数アプリが自動的に表示されない場合は、[Azure portal](https://portal.azure.com) の検索ボックスで、**関数アプリ** を検索して選択してください。 **[関数アプリ]** で、使用する関数アプリを選択します。
 
    ![関数アプリの選択](./media/tutorial-process-email-attachments-workflow/select-function-app.png)
 
@@ -160,7 +162,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
    ![作成された関数アプリ](./media/tutorial-process-email-attachments-workflow/function-app-created.png)
 
-   関数アプリは、[Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md)、または [PowerShell と Resource Manager テンプレート](../azure-resource-manager/templates/deploy-powershell.md)を使用して作成することもできます。
+   関数アプリは、[Azure CLI](../azure-functions/create-first-function-cli-csharp.md)、または [PowerShell と Resource Manager テンプレート](../azure-resource-manager/templates/deploy-powershell.md)を使用して作成することもできます。
 
 1. **[関数アプリ]** の一覧で、関数アプリをまだ展開していない場合は展開します。 該当する関数アプリの下の **[関数]** を選択します。 関数ツール バーの **[新しい関数]** を選択します。
 
@@ -220,7 +222,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
    {"updatedBody":"{\"name\": \"Testing my function\"}"}
    ```
 
-関数が正しく機能していることが確認できたら、ロジック アプリを作成します。 このチュートリアルでは、メールから HTML を削除する関数の作成方法を紹介していますが、Logic Apps には **HTML をテキストに変換**するコネクタも用意されています。
+関数が正しく機能していることが確認できたら、ロジック アプリを作成します。 このチュートリアルでは、メールから HTML を削除する関数の作成方法を紹介していますが、Logic Apps には **HTML をテキストに変換** するコネクタも用意されています。
 
 ## <a name="create-your-logic-app"></a>ロジック アプリを作成する
 
@@ -236,7 +238,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
    ![ロジック アプリに関する情報の入力](./media/tutorial-process-email-attachments-workflow/create-logic-app-settings.png)
 
-   | 設定 | 値 | 説明 |
+   | 設定 | 値 | [説明] |
    | ------- | ----- | ----------- |
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | 先ほど使用したものと同じ Azure サブスクリプション |
    | **リソース グループ** | LA-Tutorial-RG | 先ほど使用したものと同じ Azure リソース グループ |
@@ -323,7 +325,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
    1. 最初の行の **[And]** の下にある左側のボックス内をクリックします。 表示される動的コンテンツ リストから、 **[Has Attachment]** プロパティを選択します。
 
-      ![条件をビルドする](./media/tutorial-process-email-attachments-workflow/build-condition.png)
+      !["And" プロパティが条件に対して選択され、"Has Attachment" プロパティが選択されていることを示すスクリーンショット。](./media/tutorial-process-email-attachments-workflow/build-condition.png)
 
    1. 中央のボックスでは、演算子を **[is equal to]** のままにしておきます。
 
@@ -389,7 +391,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
    ![[true の場合] 内でアクションを追加する](./media/tutorial-process-email-attachments-workflow/if-true-add-action.png)
 
-1. 検索ボックスで、「azure functions」を検索して、 **[Azure 関数を選択する - Azure Functions]** アクションを選択します。
+1. 検索ボックスで、「Azure functions」を検索して、次のアクションを選択します。 **[Azure 関数を選択する - Azure Functions]** アクションを選択します。
 
    ![アクションとして [Azure 関数を選択する] を選択する](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
@@ -458,7 +460,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
    作業が完了すると、アクションは次の例のようになります。
 
-   ![完成した "BLOB の作成" アクション](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
+   ![完了した [BLOB の作成] アクションの例を示すスクリーンショット。](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
 
 1. ロジック アプリを保存します。
 

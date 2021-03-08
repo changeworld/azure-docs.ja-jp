@@ -4,13 +4,13 @@ description: この記事では、パートナーからセンサー データを
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 3452641b336308ddf46349064345b154e55aa53c
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.author: v-ummehabiba
+ms.openlocfilehash: 474b6f8356724546105d902a15427f483f656317
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649161"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182776"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>センサー パートナーからセンサー データを取得する
 
@@ -44,7 +44,7 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 
 1. https://portal.azure.com/ にサインインします。
 
-2. **FarmBeats バージョン 1.2.7 以降を使用している場合は、手順 a、b、c をスキップし、手順 3 に進みます。** 。 FarmBeats のバージョンを確認するには、FarmBeats UI の右上隅にある**設定**アイコンを選択します。
+2. **FarmBeats バージョン 1.2.7 以降を使用している場合は、手順 a、b、c をスキップし、手順 3 に進みます。** 。 FarmBeats のバージョンを確認するには、FarmBeats UI の右上隅にある **設定** アイコンを選択します。
 
       a.  **[Azure Active Directory]**  >  **[アプリの登録]** の順に進みます。
 
@@ -92,7 +92,7 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 > 1. Datahub API エンドポイント名は、小文字で指定する必要があります。
 > 2. Datahub API エンドポイントの FarmBeats Web サイト名の URL をコピーする場合は、末尾のスラッシュ (/) を付けないでください。
 
-9. 画面の指示に従って、**API エンドポイント**、**テナント ID**、**クライアント ID**、**クライアント シークレット**、および **EventHub 接続文字列**の値をキャプチャします。
+9. 画面の指示に従って、**API エンドポイント**、**テナント ID**、**クライアント ID**、**クライアント シークレット**、および **EventHub 接続文字列** の値をキャプチャします。
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>生成された資格情報を使用してデバイス データを統合する
 
@@ -146,7 +146,7 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 
 センサー データが流れるようになったら、センサーを配置したファームにそれを割り当てることができます。
 
-1. ホーム ページで、メニューから **[ファーム]** を選択します。 **ファーム**の一覧ページが表示されます。
+1. ホーム ページで、メニューから **[ファーム]** を選択します。 **ファーム** の一覧ページが表示されます。
 2. デバイスを割り当てるファームを選択し、 **[デバイスの追加]** を選択します。
 3. **[デバイスの追加]** ウィンドウが表示されます。 ファームに割り当てるデバイスを選択します。
 
@@ -166,7 +166,7 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 次の手順に従います。
 
 1. ホーム ページのメニューから **[Farms]\(ファーム\)** を選択し、 **[Farms]\(ファーム\)** ページを表示します。
-2. センサー データを表示する**ファーム**を選択します。
+2. センサー データを表示する **ファーム** を選択します。
 3. **[Farm]\(ファーム\)** ダッシュボードで、テレメトリ データを確認できます。 ライブ テレメトリを表示したり、 **[ユーザー設定の範囲]** を使用して特定の日付範囲で表示したりできます。
 
     ![ファーム ダッシュボード](./media/get-sensor-data-from-sensor-partner/telemetry-data-1.png)
@@ -178,7 +178,7 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 1. ホーム ページのメニューから **[センサー]** を選択し、 **[センサー]** ページを表示します。
 2. 削除するデバイスを選択し、確認ウィンドウで **[削除]** を選択します。
 
-    ![[削除] ボタン](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
+    ![センサーの削除ページと [削除] ボタンのスクリーンショット。](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
 
 確認メッセージでは、センサーが正常に削除されたことが示されます。
 

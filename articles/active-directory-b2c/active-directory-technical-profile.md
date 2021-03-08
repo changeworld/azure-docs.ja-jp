@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67acf675c6636c5d1066d4fe25310d875fa7c064
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f92bfe98a45117264c957481a75493de652abc9
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201516"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508103"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで Azure Active Directory 検証技術プロファイルを定義します。
 
@@ -64,13 +64,13 @@ InputClaims 要素には、ディレクトリ内のアカウントを検索し�
 
 新しいユーザー アカウントを作成する場合、入力要求はローカルまたはフェデレーション アカウントを一意に識別するキーです。 たとえば、ローカル アカウントの場合、**signInNames.emailAddress** や **signInNames.userName** です。 フェデレーション アカウントの場合は、**alternativeSecurityId** です。
 
-[InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations) 要素には、入力要求を変更したり新しいものを生成するために使用される、入力要求変換の要素のコレクションを含めることができます。
+[InputClaimsTransformations](technicalprofiles.md#input-claims-transformations) 要素には、入力要求を変更したり新しいものを生成するために使用される、入力要求変換の要素のコレクションを含めることができます。
 
 ## <a name="outputclaims"></a>OutputClaims
 
 **OutputClaims** 要素には、Azure AD 技術プロファイルによって返された要求の一覧が含まれています。 ポリシーに定義されている要求の名前を、Azure Active Directory で定義されている名前にマップすることが必要になる場合があります。 また、`DefaultValue` 属性を設定している限り、Azure Active Directory によって返されない要求を含めることもできます。
 
-[OutputClaimsTransformations](technicalprofiles.md#outputclaimstransformations) 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
+[OutputClaimsTransformations](technicalprofiles.md#output-claims-transformations) 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
 たとえば、**AAD-UserWriteUsingLogonEmail**  技術プロファイルはローカル アカウントを作成し、以下の要求を返します。
 
@@ -124,7 +124,7 @@ InputClaims 要素には、ディレクトリ内のアカウントを検索し�
 
 ### <a name="read"></a>Read
 
-**読み取り**操作は、単一のユーザー アカウントに関するデータを読み取ります。 以下の技術プロファイルは、ユーザーの objectId を使用してユーザー アカウントに関するデータを読み取ります。
+**読み取り** 操作は、単一のユーザー アカウントに関するデータを読み取ります。 以下の技術プロファイルは、ユーザーの objectId を使用してユーザー アカウントに関するデータを読み取ります。
 
 ```xml
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
@@ -154,7 +154,7 @@ InputClaims 要素には、ディレクトリ内のアカウントを検索し�
 
 ### <a name="write"></a>Write
 
-**書き込み**操作は、単一のユーザー アカウントを作成または更新します。 以下の技術プロファイルは、新しいソーシャル アカウントを作成します。
+**書き込み** 操作は、単一のユーザー アカウントを作成または更新します。 以下の技術プロファイルは、新しいソーシャル アカウントを作成します。
 
 ```xml
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
@@ -251,9 +251,9 @@ InputClaims 要素には、ディレクトリ内のアカウントを検索し�
 | Operation | はい | 実行する操作。 指定できる値: `Read`、`Write`、`DeleteClaims`、または `DeleteClaimsPrincipal`。 |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | いいえ | ユーザー オブジェクトがディレクトリに存在しない場合、エラーを発生させます。 指定できる値: `true` または `false`。 |
 | RaiseErrorIfClaimsPrincipalAlreadyExists | いいえ | ユーザー オブジェクトが既に存在する場合、エラーを発生させます。 指定できる値: `true` または `false`。|
-| ApplicationObjectId | いいえ | 拡張属性のアプリケーション オブジェクト識別子。 値:アプリケーションの ObjectId。 詳細については、「[カスタム プロファイル編集ポリシーのカスタム属性を使用](custom-policy-custom-attributes.md)」を参照してください。 |
-| ClientId | いいえ | サード パーティとしてテナントにアクセスするためのクライアント識別子。 詳細については、「[カスタム プロファイル編集ポリシーのカスタム属性を使用](custom-policy-custom-attributes.md)」を参照してください。 |
-| IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
+| ApplicationObjectId | いいえ | 拡張属性のアプリケーション オブジェクト識別子。 値:アプリケーションの ObjectId。 詳細については、[カスタム 属性を使用する](user-flow-custom-attributes.md?pivots=b2c-custom-policy)方法に関する記事を参照してください。 |
+| ClientId | いいえ | サード パーティとしてテナントにアクセスするためのクライアント識別子。 詳細については、「[カスタム プロファイル編集ポリシーのカスタム属性を使用](user-flow-custom-attributes.md?pivots=b2c-custom-policy)」を参照してください。 |
+| IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
 
 ### <a name="ui-elements"></a>UI 要素
  
@@ -269,7 +269,7 @@ InputClaims 要素には、ディレクトリ内のアカウントを検索し�
 
 Azure AD 技術プロファイルの使用例については、次の記事を参照してください。
 
-- [Azure Active Directory B2C のカスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ](custom-policy-configure-user-input.md)
+- [Azure Active Directory B2C のカスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ](configure-user-input.md)
 
 
 

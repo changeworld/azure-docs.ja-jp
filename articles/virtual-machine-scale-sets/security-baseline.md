@@ -6,25 +6,25 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 89da86d753f746774737c248ee318c7a377dd7a0
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 2d902bbdc03596fe246fc36813895e72c53da05a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007099"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571409"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Virtual Machine Scale Sets 用の Azure セキュリティ ベースライン
 
 Virtual Machine Scale Sets 用の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するのに役立つ推奨事項が含まれています。
 
-このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) に基づいて作成されています。
+このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview.md) に基づいて作成されています。
 
-詳細については、[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)に関するページを参照してください。
+詳細については、[Azure セキュリティ ベースラインの概要](../security/benchmarks/security-baselines-overview.md)に関するページを参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する
 
@@ -32,13 +32,13 @@ Virtual Machine Scale Sets 用の Azure セキュリティ ベースラインに
 
 あるいは、一元化されたファイアウォールの特定のユース ケースがある場合は、Azure Firewall を使用してこれらの要件を満たすこともできます。
 
-* [Azure 仮想マシン スケール セットのネットワーク](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking)
+* [Azure 仮想マシン スケール セットのネットワーク](./virtual-machine-scale-sets-networking.md)
 
-* [仮想ネットワークを作成する方法](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Azure Firewall をデプロイして構成する方法](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall をデプロイして構成する方法](../firewall/tutorial-firewall-deploy-portal.md)
 
 **Azure Security Center の監視**: はい
 
@@ -48,9 +48,9 @@ Virtual Machine Scale Sets 用の Azure セキュリティ ベースラインに
 
 **ガイダンス**: Azure の Azure 仮想マシン (VM) リソースのセキュリティ保護に役立つようにネットワーク保護に関する推奨事項を識別し、それに従うには、Azure Security Center を使用します。 NSG フロー ログを有効にし、VM の通常とは異なるアクティビティのトラフィック監査のためにログをストレージ アカウントに送信します。
 
-* [NSG フロー ログを有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Azure Security Center によって提供されるネットワークのセキュリティについて](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [Azure Security Center によって提供されるネットワークのセキュリティについて](../security-center/security-center-network-recommendations.md)
 
 **Azure Security Center の監視**: はい
 
@@ -62,9 +62,9 @@ Virtual Machine Scale Sets 用の Azure セキュリティ ベースラインに
 
 また、着信トラフィックの検査を強化するために、重要な Web アプリケーションの前に Azure Web アプリケーション ファイアウォール (WAF) をデプロイすることもできます。 WAF の診断設定を有効にし、ストレージ アカウント、イベント ハブ、または Log Analytics ワークスペースにログを取り込みます。
 
-* [Azure 仮想マシン スケール セットのネットワーク](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking)
+* [Azure 仮想マシン スケール セットのネットワーク](./virtual-machine-scale-sets-networking.md)
 
-* [Azure portal を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する](https://docs.microsoft.com/azure/web-application-firewall/ag/application-gateway-web-application-firewall-portal)
+* [Azure portal を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する](../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md)
 
 **Azure Security Center の監視**: はい
 
@@ -76,15 +76,15 @@ Virtual Machine Scale Sets 用の Azure セキュリティ ベースラインに
 
 Azure Security Center の Just In Time ネットワーク アクセスを使用すると、限られた期間について、承認された IP アドレスへの Windows Virtual Machines の公開を制限できます。 また、実際のトラフィックと脅威インテリジェンスに基づいてポートとソース IP を制限する NSG 構成を推奨する Azure Security Center のアダプティブ ネットワーク強化を使用します。
 
-* [DDoS 保護を構成する方法](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
-* [Azure Firewall をデプロイする方法l](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Security Center の統合された脅威インテリジェンスについて](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/azure-defender.md)
 
-* [Azure Security Center のアダプティブ ネットワークのセキュリティ強化について](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
+* [Azure Security Center のアダプティブ ネットワークのセキュリティ強化について](../security-center/security-center-adaptive-network-hardening.md)
 
-* [Azure Security Center の Just In Time ネットワーク アクセス制御について](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+* [Azure Security Center の Just In Time ネットワーク アクセス制御について](../security-center/security-center-just-in-time.md)
 
 **Azure Security Center の監視**: はい
 
@@ -94,9 +94,9 @@ Azure Security Center の Just In Time ネットワーク アクセスを使用�
 
 **ガイダンス**: Azure Virtual Machines のフロー レコードを生成するために、NSG フロー ログをストレージ アカウントに記録できます。 異常なアクティビティを調査するときに、Network Watcher パケット キャプチャを有効にして、通常とは異なる異常なアクティビティがないかネットワーク トラフィックを確認できるようにすることができます。
 
-* [NSG フロー ログを有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Network Watcher を有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+* [Network Watcher を有効にする方法](../network-watcher/network-watcher-create.md)
 
 **Azure Security Center の監視**: はい
 
@@ -106,11 +106,11 @@ Azure Security Center の Just In Time ネットワーク アクセスを使用�
 
 **ガイダンス**: Network Watcher によって提供されるパケット キャプチャとオープン ソースの IDS ツールを組み合わせることにより、広範囲の脅威に対するネットワーク侵入検出を実行できます。 また、必要に応じて Virtual Network セグメントで Azure Firewall をデプロイして、脅威インテリジェンスを有効にし、悪意のあるネットワーク トラフィックに対して [警告して拒否] を構成することもできます。
 
-* [Network Watcher とオープン ソース ツールを使用してネットワーク侵入検出を実行する](https://docs.microsoft.com/azure/network-watcher/network-watcher-intrusion-detection-open-source-tools)
+* [Network Watcher とオープン ソース ツールを使用してネットワーク侵入検出を実行する](../network-watcher/network-watcher-intrusion-detection-open-source-tools.md)
 
-* [Azure Firewall をデプロイする方法l](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Firewall でアラートを構成する方法](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Azure Firewall でアラートを構成する方法](../firewall/threat-intel.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -120,13 +120,13 @@ Azure Security Center の Just In Time ネットワーク アクセスを使用�
 
 **ガイダンス**: Virtual Machine Scale Sets (VMSS) を使用して Web アプリケーションをホストする場合、信頼できる証明書に対して HTTPS/SSL を有効にした Web アプリケーションの Azure Application Gateway をデプロイできます。 Azure Application Gateway を使用すると、ポートにリスナーを割り当て、ルールを作成し、VMSS などのバックエンド プールにリソースを追加して、アプリケーション Web トラフィックを特定のリソースに転送することができます。
 
-* [Application Gateway をデプロイする方法](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+* [Application Gateway をデプロイする方法](../application-gateway/quick-create-portal.md)
 
-* [HTTPS を使用するように Application Gateway を構成する方法](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+* [HTTPS を使用するように Application Gateway を構成する方法](../application-gateway/create-ssl-portal.md)
 
-* [Application Gateway を参照するスケール セットを作成する](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking#create-a-scale-set-that-references-an-application-gateway)
+* [Application Gateway を参照するスケール セットを作成する](./virtual-machine-scale-sets-networking.md#create-a-scale-set-that-references-an-application-gateway)
 
-* [Azure Web アプリケーション ゲートウェイを使用したレイヤー 7 負荷分散について](https://docs.microsoft.com/azure/application-gateway/overview)
+* [Azure Web アプリケーション ゲートウェイを使用したレイヤー 7 負荷分散について](../application-gateway/overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -136,7 +136,7 @@ Azure Security Center の Just In Time ネットワーク アクセスを使用�
 
 **ガイダンス**:Azure 仮想マシンで構成されているネットワーク セキュリティ グループまたは Azure Firewall でのネットワーク アクセス制御を定義するには、Virtual Network サービス タグを使用します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソースまたは宛先フィールドにサービス タグ名 (ApiManagement など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
 
-* [サービス タグとその使用方法の概要](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [サービス タグとその使用方法の概要](../virtual-network/service-tags-overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -146,13 +146,13 @@ Azure Security Center の Just In Time ネットワーク アクセスを使用�
 
 **ガイダンス**:Azure Policy を使用して、Azure Virtual Machine Scale Sets の標準的なセキュリティ構成を定義して実装します。 また、Azure Blueprints を使用して、Azure Resource Manager テンプレート、ロールの割り当て、Azure Policy 割り当てなどの主要な環境成果物を単一のブループリント定義にパッケージ化することにより、大規模な Azure VM デプロイを簡略化することもできます。 このブループリントをサブスクリプションに適用し、ブループリントのバージョン管理によるリソース管理を有効にすることができます。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [仮想マシン スケール セット テンプレートの詳細情報](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start)
+* [仮想マシン スケール セット テンプレートの詳細情報](./virtual-machine-scale-sets-mvss-start.md)
 
-* [ネットワークに関する Azure Policy のサンプル](https://docs.microsoft.com/azure/governance/policy/samples/#network)
+* [ネットワークに関する Azure Policy のサンプル](../governance/policy/samples/built-in-policies.md#network)
 
-* [Azure Blueprint を作成する方法](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -162,11 +162,11 @@ Azure Security Center の Just In Time ネットワーク アクセスを使用�
 
 **ガイダンス**:Windows 仮想マシン用に構成されている、ネットワーク セキュリティやトラフィック フローに関連するネットワーク セキュリティ グループ (NSG) やその他のリソースのタグを使用できます。 個々の NSG 規則については、[説明] フィールドを使用して、ネットワークとの間のトラフィックを許可するすべての規則のビジネス ニーズや期間を指定します。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [仮想ネットワークを作成する方法](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -178,13 +178,13 @@ Azure Security Center の Just In Time ネットワーク アクセスを使用�
 
 仮想マシン スケール セットに関連するネットワーク リソースの構成を確認 (または修復) するには、Azure Policy を使用します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [ネットワークに関する Azure Policy のサンプル](https://docs.microsoft.com/azure/governance/policy/samples/#network)
+* [ネットワークに関する Azure Policy のサンプル](../governance/policy/samples/built-in-policies.md#network)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -192,15 +192,15 @@ Azure Security Center の Just In Time ネットワーク アクセスを使用�
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、「[セキュリティ コントロール: ログ記録と監視](/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
 **ガイダンス**: Microsoft では Azure リソースのタイム ソースを保持していますが、Virtual Machines の時刻同期設定を管理するためのオプションが用意されています。
 
-* [Azure Windows コンピューティング リソースの時刻同期を構成する方法](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
+* [Azure Windows コンピューティング リソースの時刻同期を構成する方法](../virtual-machines/windows/time-sync.md)
 
-* [Azure Linux コンピューティング リソースの時刻同期を構成する方法](https://docs.microsoft.com/azure/virtual-machines/linux/time-sync)
+* [Azure Linux コンピューティング リソースの時刻同期を構成する方法](../virtual-machines/linux/time-sync.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -216,15 +216,15 @@ Azure Virtual Machines のセキュリティ イベント ログの監視を提�
 
 組織で仮想マシンのセキュリティ イベント ログ データを保持したい場合は、そのデータを Azure Security Center 内に構成された目的のデータ収集レベルの Log Analytics ワークスペース内に格納できます。
 
-* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 * [Azure Monitor とサードパーティの SIEM 統合を開始する方法](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools)
 
-* [Azure Security Center でのデータ収集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
+* [Azure Security Center でのデータ収集](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-* [Azure で仮想マシンを監視する方法](https://docs.microsoft.com/azure/virtual-machines/windows/monitor)
+* [Azure で仮想マシンを監視する方法](../azure-monitor/vm/monitor-vm-azure.md)
 
 **Azure Security Center の監視**: はい
 
@@ -238,13 +238,13 @@ Virtual Machines (VM) に診断拡張機能をデプロイすることによっ�
 
 Azure 仮想マシン スケール セットでサポートされているアプリケーションやサービスの高度な可視性を実現するために、Azure Monitor for VMs と Application Insights の両方を有効にすることができます。 Application Insights を使用すると、アプリケーションを監視して、HTTP 要求や例外などのテレメトリをキャプチャできるため、VM とアプリケーションの間の問題を相互に関連付けることができます。
 
-* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Azure アクティビティ ログ イベントを表示および取得する](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Azure アクティビティ ログ イベントを表示および取得する](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure で仮想マシンを監視する方法](https://docs.microsoft.com/azure/virtual-machines/windows/monitor)
+* [Azure で仮想マシンを監視する方法](../azure-monitor/vm/monitor-vm-azure.md)
 
-* [Application Insights の概要](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
+* [Application Insights の概要](../azure-monitor/app/app-insights-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -256,9 +256,9 @@ Azure 仮想マシン スケール セットでサポートされているアプ
 
 組織で仮想マシンのセキュリティ イベント ログ データを保持したい場合は、そのデータを Azure Security Center 内に構成された目的のデータ収集レベルの Log Analytics ワークスペース内に格納できます。
 
-* [Azure Security Center でのデータ収集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
+* [Azure Security Center でのデータ収集](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-* [Azure で仮想マシンを監視する方法](https://docs.microsoft.com/azure/virtual-machines/windows/monitor)
+* [Azure で仮想マシンを監視する方法](../azure-monitor/vm/monitor-vm-azure.md)
 
 **Azure Security Center の監視**: はい
 
@@ -268,9 +268,9 @@ Azure 仮想マシン スケール セットでサポートされているアプ
 
 **ガイダンス**: 仮想マシン ログを格納するために使用されるすべてのストレージ アカウントまたは Log Analytics ワークスペースに、組織のコンプライアンス規則に従ったログの保有期間が設定されていることを確認します。
 
-* [Azure で仮想マシンを監視する方法](https://docs.microsoft.com/azure/virtual-machines/windows/monitor)
+* [Azure で仮想マシンを監視する方法](../azure-monitor/vm/monitor-vm-azure.md)
 
-* [Log Analytics ワークスペースの保有期間を構成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)
+* [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -282,11 +282,11 @@ Azure 仮想マシン スケール セットでサポートされているアプ
 
 あるいは、データを有効にして Azure Sentinel またはサード パーティの SIEM にオンボードすることにより、ログを監視および確認することもできます。
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-* [Log Analytics ワークスペースについて](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [Log Analytics ワークスペースについて](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Azure Monitor でカスタム クエリを実行する方法](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -298,11 +298,11 @@ Azure 仮想マシン スケール セットでサポートされているアプ
 
 あるいは、データを有効にして Azure Sentinel またはサード パーティの SIEM にオンボードすることにより、異常なアクティビティに関するアラートを設定することもできます。
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-* [Azure Security Center でアラートを管理する方法](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+* [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Log Analytics のログ データに関するアラートを送信する方法](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: はい
 
@@ -312,13 +312,13 @@ Azure 仮想マシン スケール セットでサポートされているアプ
 
 **ガイダンス**: Azure Cloud Services および Virtual Machines 用 Microsoft Antimalware を使用して、Azure ストレージ アカウントにイベントを記録するように Windows 仮想マシンを構成できます。 Storage アカウントからイベントを取り込み、必要に応じてアラートを作成するように、Log Analytics ワークスペースを構成します。 Azure Security Center の"コンピューティングとアプリ" の推奨事項に従います。 Linux 仮想マシンの場合、マルウェア対策の脆弱性の検出にはサードパーティ製ツールが必要になります。
 
-* [Cloud Services と Virtual Machines に対して Microsoft Antimalware を構成する方法](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [Cloud Services と Virtual Machines に対して Microsoft Antimalware を構成する方法](../security/fundamentals/antimalware.md)
 
-* [Virtual Machines のゲストレベルの監視を有効にする方法](https://docs.microsoft.com/azure/cost-management/azure-vm-extended-metrics)
+* [Virtual Machines のゲストレベルの監視を有効にする方法](../cost-management-billing/cloudyn/azure-vm-extended-metrics.md)
 
-* [Linux サーバーを Azure Security Center にオンボードするための手順](https://docs.microsoft.com/azure/security-center/quick-onboard-linux-computer)
+* [Linux サーバーを Azure Security Center にオンボードするための手順](../security-center/quickstart-onboard-machines.md)
 
-* [次のリンクでは、Microsoft 推奨のセキュリティ ガイドラインが提供される。これは、選択された脆弱性ソフトウェアの条件の一覧として使用できる](https://docs.microsoft.com/azure/virtual-machines/linux/security-recommendations)
+* [次のリンクでは、Microsoft 推奨のセキュリティ ガイドラインが提供される。これは、選択された脆弱性ソフトウェアの条件の一覧として使用できる](../virtual-machines/security-recommendations.md)
 
 **Azure Security Center の監視**: はい
 
@@ -338,11 +338,11 @@ Azure 仮想マシン スケール セットでサポートされているアプ
 
 Linux 仮想マシンでは、ノード単位でコンソール ログを手動で構成し、Syslog を使用してデータを格納することができます。 また、ログを確認したり、Azure 仮想マシンの Syslog データにクエリを実行したりするには Azure Monitor の Log Analytics ワークスペースを使用します。
 
-* [Azure Security Center でのデータ収集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
+* [Azure Security Center でのデータ収集](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-* [Azure Monitor でカスタム クエリを実行する方法](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
-* [Azure Monitor の Syslog データ ソース](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-syslog)
+* [Azure Monitor の Syslog データ ソース](../azure-monitor/agents/data-sources-syslog.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -350,15 +350,15 @@ Linux 仮想マシンでは、ノード単位でコンソール ログを手動�
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
 **ガイダンス**:Azure Active Directory はユーザー アクセスを管理するための推奨される方法ですが、Azure Virtual Machines にもローカル アカウントが存在する可能性があります。 ローカル アカウントとドメイン アカウントの両方を、通常、最小の占有領域で、確認して管理する必要があります。 さらに、仮想マシンのリソースにアクセスするために使用される管理者アカウントには Azure Privileged Identity Management を利用します。
 
-* [ローカル アカウントに関する情報を入手できる場所](https://docs.microsoft.com/azure/active-directory/devices/assign-local-admin#manage-the-device-administrator-role)
+* [ローカル アカウントに関する情報を入手できる場所](../active-directory/devices/assign-local-admin.md#manage-the-device-administrator-role)
 
-* [Privileged Identity Manager に関する情報](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Manager に関する情報](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Azure Security Center の監視**: はい
 
@@ -376,9 +376,9 @@ Linux 仮想マシンでは、ノード単位でコンソール ログを手動�
 
 **ガイダンス**:仮想マシンにアクセスできる専用管理者アカウントの使用に関する標準的な操作手順を作成します。 Azure Security Center ID 管理とアクセス管理を使用して、管理者アカウントの数を監視します。 Azure 仮想マシンのリソースにアクセスするために使用される管理者アカウントはすべて、Azure Privileged Identity Management (PIM) でも管理できます。 Azure Privileged Identity Management には、ロールを引き継ぐ前に Multi-Factor Authentication を要求する Just-In-Time 昇格や、アクセス許可を特定の期間のみ使用でき、かつ承認者を要求するようにする委任オプションなどのいくつかのオプションが用意されています。
 
-* [Azure Security Center ID とアクセスについて](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center ID とアクセスについて](../security-center/security-center-identity-access.md)
 
-* [Privileged Identity Manager に関する情報](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Manager に関する情報](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Azure Security Center の監視**: はい
 
@@ -388,9 +388,9 @@ Linux 仮想マシンでは、ノード単位でコンソール ログを手動�
 
 **ガイダンス**: 可能な限り、サービスごとに個別のスタンドアロン資格情報を構成するのではなく、Azure Active Directory で SSO を使用します。 Azure Security Center ID とアクセス管理の推奨事項を使用してください。
 
-* [Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+* [Azure Active Directory でのアプリケーションへのシングル サインオン](../active-directory/manage-apps/what-is-single-sign-on.md)
 
-* [Azure Security Center で ID とアクセスを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -400,9 +400,9 @@ Linux 仮想マシンでは、ノード単位でコンソール ログを手動�
 
 **ガイダンス**:Azure AD MFA を有効にして、Azure Security Center ID とアクセス管理の推奨事項に従います。
 
-* [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Azure Security Center で ID とアクセスを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: はい
 
@@ -412,9 +412,9 @@ Linux 仮想マシンでは、ノード単位でコンソール ログを手動�
 
 **ガイダンス**: MFA が構成されている PAW (特権アクセス ワークステーション) を使用して Azure リソースにログインし、構成します。
 
-* [特権アクセス ワークステーションについて](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -424,13 +424,13 @@ Linux 仮想マシンでは、ノード単位でコンソール ログを手動�
 
 **ガイダンス**: 環境内で疑わしいアクティビティや安全でないアクティビティが発生した場合にログやアラートを生成するには、Azure AD Privileged Identity Management (PIM) を使用します。 Azure AD のリスク検出を使用して、危険なユーザーの行動に関するアラートとレポートを表示します。 必要に応じて、顧客は Azure Security Center のリスク検出アラートを Azure Monitor に取り込み、アクション グループを使用してカスタムのアラート生成/通知を構成できます。
 
-* [Privileged Identity Management (PIM) をデプロイする方法](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Azure Security Center のリスク検出 (疑わしいアクティビティ) について](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Azure Security Center のリスク検出 (疑わしいアクティビティ) について](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Azure アクティビティ ログを Azure Monitor に統合する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [カスタムのアラートおよび通知用にアクション グループを構成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+* [カスタムのアラートおよび通知用にアクション グループを構成する方法](../azure-monitor/alerts/action-groups.md)
 
 **Azure Security Center の監視**: はい
 
@@ -440,7 +440,7 @@ Linux 仮想マシンでは、ノード単位でコンソール ログを手動�
 
 **ガイダンス**:IP アドレス範囲または国/地域の特定の論理グループからのアクセスのみを許可するには、Azure Active Directory の条件付きアクセス ポリシーとネームド ロケーションを使用します。
 
-* [Azure でネームド ロケーションを構成する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure でネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -450,9 +450,9 @@ Linux 仮想マシンでは、ノード単位でコンソール ログを手動�
 
 **ガイダンス**: Azure Active Directory (Azure AD) を中央認証と承認システムとして使用します。 Azure AD でデータを保護するには、保存データと転送中のデータに強力な暗号化を使用します。 また、Azure AD では、ユーザーの資格情報がソルト化およびハッシュされ、安全に格納されます。 マネージド ID を使用すると、コード内に資格情報を記述しなくても、Azure AD 認証をサポートするすべてのサービス (Key Vault を含む) に対して認証できます。 仮想マシン上で実行されているコードで、そのマネージド ID を使用して、Azure AD 認証がサポートされているサービスのアクセス トークンを要求することができます。
 
-* [Azure AD インスタンスを作成して構成する方法](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance)
+* [Azure AD インスタンスを作成して構成する方法](../active-directory-domain-services/tutorial-create-instance.md)
 
-* [Azure リソースのマネージド ID の概要](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+* [Azure リソースのマネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -462,7 +462,7 @@ Linux 仮想マシンでは、ノード単位でコンソール ログを手動�
 
 **ガイダンス**: Azure AD には、古いアカウントの検出に役立つログが用意されています。 さらに、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、ロールの割り当てを効率的に管理するには、Azure Active Directory の ID アクセス レビューを使用します。 ユーザーのアクセスを定期的にレビューすると、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。 Azure 仮想マシンを使用している場合は、ローカル セキュリティ グループとユーザーをレビューして、システムを危険にさらす可能性のある予期しないアカウントが存在しないことを確認する必要があります。
 
-* [Azure ID アクセス レビューの使用方法](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -472,13 +472,13 @@ Linux 仮想マシンでは、ノード単位でコンソール ログを手動�
 
 **ガイダンス**: 監査ログとサインイン ログを Log Analytics ワークスペースに送信するように Azure Active Directory の診断設定を構成します。 また、ログを確認したり、Azure 仮想マシンのログ データにクエリを実行したりするには Azure Monitor を使用します。
 
-* [Log Analytics ワークスペースについて](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [Log Analytics ワークスペースについて](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Azure アクティビティ ログを Azure Monitor に統合する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Azure Monitor でカスタム クエリを実行する方法](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
-* [Azure で仮想マシンを監視する方法](https://docs.microsoft.com/azure/virtual-machines/windows/monitor)
+* [Azure で仮想マシンを監視する方法](../azure-monitor/vm/monitor-vm-azure.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -488,11 +488,11 @@ Linux 仮想マシンでは、ノード単位でコンソール ログを手動�
 
 **ガイダンス**: ストレージ アカウント リソースに関連して検出された疑わしいアクションへの自動応答を構成するには、Azure Active Directory のリスクおよび ID 保護機能を使用します。 組織のセキュリティ対応を実装するには、Azure Sentinel によって自動応答を有効にする必要があります。
 
-* [Azure AD の危険なサインインを表示する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Identity Protection のリスク ポリシーを構成して有効にする方法](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -502,7 +502,7 @@ Linux 仮想マシンでは、ノード単位でコンソール ログを手動�
 
 **ガイダンス**: Microsoft で顧客データにアクセスする必要があるシナリオ (サポート リクエスト中など) では、Azure 仮想マシンのカスタマー ロックボックスを使用して、顧客データへのアクセス要求を確認して承認または拒否します。
 
-* [カスタマー ロックボックスについて](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+* [カスタマー ロックボックスについて](../security/fundamentals/customer-lockbox-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -510,13 +510,13 @@ Linux 仮想マシンでは、ノード単位でコンソール ログを手動�
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、「[セキュリティ コントロール: データ保護](/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
 **ガイダンス**: 機密情報を格納または処理する Azure 仮想マシンを追跡しやすくするには、タグを使用します。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -526,19 +526,19 @@ Linux 仮想マシンでは、ノード単位でコンソール ログを手動�
 
 **ガイダンス**:開発、テスト、および運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 リソースは、仮想ネットワーク/サブネットで分離し、適切にタグ付けして、ネットワーク セキュリティ グループ (NSG) 内または Azure Firewall でセキュリティ保護する必要があります。 機密データを格納または処理する仮想マシンでは、使用されていないときにはオフにするためのポリシーとプロシージャを実装します。
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [仮想ネットワークを作成する方法](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Azure Firewall をデプロイする方法l](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Firewall でアラートまたはアラートと拒否を構成する方法](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Azure Firewall でアラートまたはアラートと拒否を構成する方法](../firewall/threat-intel.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -550,7 +550,7 @@ Linux 仮想マシンでは、ノード単位でコンソール ログを手動�
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客データを損失や漏洩から保護するために、顧客のすべてのコンテンツを機密として扱います。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: はい
 
@@ -562,7 +562,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 Microsoft では、トランスポート層セキュリティ (TLS) プロトコルを使用して、クラウド サービスと顧客の間で転送されているデータを保護します。
 
-* [VM での転送中の暗号化](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#in-transit-encryption-in-vms)
+* [VM での転送中の暗号化](../security/fundamentals/encryption-overview.md#in-transit-encryption-in-vms)
 
 **Azure Security Center の監視**: はい
 
@@ -580,9 +580,9 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**:Azure ロールベースのアクセス制御 (Azure RBAC) を使用すると、チーム内の職務を分離し、仮想マシン (VM) 上のユーザーに自分の職務を実行するために必要な量のアクセスのみを許可することができます。 すべてのユーザーに VM への無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。 Azure CLI または Azure PowerShell を使用して、Azure portal で VM のアクセス制御を構成できます。
 
-* [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC](../role-based-access-control/overview.md)
 
-* [Azure 組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)
+* [Azure 組み込みロール](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -600,7 +600,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**:Virtual Machines (VM) 上の仮想ディスクは、サーバー側暗号化または Azure Disk Encryption (ADE) のどちらかを使用して、保存時に暗号化されます。 Azure Disk Encryption では、Linux の DM-Crypt 機能を利用して、ゲスト VM 内のカスタマー マネージド キーでマネージド ディスクを暗号化します。 カスタマー マネージド キーを使用したサーバー側の暗号化では、ストレージ サービス内のデータを暗号化することで、VM に対して任意の OS の種類とイメージを使用できるため、ADE がさらに向上します。
 
-* [仮想マシン スケール セットの Azure Disk Encryption](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-overview)
+* [仮想マシン スケール セットの Azure Disk Encryption](./disk-encryption-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -610,9 +610,9 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: Virtual Machines Scale Sets や関連リソースにいつ変更が加えられたかに関するアラートを作成するには、Azure Monitor を Azure アクティビティ ログと共に使用します。
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
-* [Azure Storage Analytics のログ](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+* [Azure Storage Analytics のログ](../storage/common/storage-analytics-logging.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -620,13 +620,13 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、「[セキュリティ コントロール: 脆弱性の管理](/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
 **ガイダンス**: Azure 仮想マシンに対する脆弱性評価の実行に関する Azure Security Center の推奨事項に従います。 仮想マシンの脆弱性評価を実行するには、Azure セキュリティの推奨されるソリューションまたはサードパーティ ソリューションを使用します。
 
-* [Azure Security Center の脆弱性評価の推奨事項を実装する方法](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
+* [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -636,7 +636,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: サポートされているオペレーティング システムのバージョン、または Shared Image Gallery に格納されているカスタム イメージに対して、OS の自動アップグレードを有効にします。
 
-* [Azure での仮想マシン スケール セットの OS の自動アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)
+* [Azure での仮想マシン スケール セットの OS の自動アップグレード](./virtual-machine-scale-sets-automatic-upgrade.md)
 
 **Azure Security Center の監視**: はい
 
@@ -646,7 +646,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: Azure Virtual Machine Scale Sets (VMSS) では、OS イメージの自動アップグレードを使用できます。 VMSS の基になる仮想マシンには、Azure Desired State Configuration (DSC) 拡張機能を使用できます。 DSC は、オンラインで必要なソフトウェアを実行できるように VM を構成するときに使用されます。
 
-* [Virtual Machine Scale Sets と Azure DSC 拡張機能の使用](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-dsc)
+* [Virtual Machine Scale Sets と Azure DSC 拡張機能の使用](./virtual-machine-scale-sets-dsc.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -664,7 +664,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: Azure Security Center によって提供される既定のリスク評価 (セキュリティ スコア) を使用します。
 
-* [Azure Security Center のセキュリティ スコアについて](https://docs.microsoft.com/azure/security-center/security-center-secure-score)
+* [Azure Security Center のセキュリティ スコアについて](../security-center/secure-score-security-controls.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -672,17 +672,17 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された資産検出ソリューションを使用する
 
 **ガイダンス**:サブスクリプション内のすべてのリソース (仮想マシンを含む) のクエリや検出を行うには、Azure Resource Graph を使用します。 テナント内の適切な (読み取り) アクセス許可を持っており、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙できることを確認します。
 
-* [Azure Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-* [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC について](../role-based-access-control/overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -692,7 +692,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に応じて論理的に整理されます。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -702,11 +702,11 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: Virtual Machines Scale Sets や関連リソースを整理および追跡するには、必要に応じて、タグ付け、管理グループ、個別のサブスクリプションを使用します。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションから適切なタイミングで削除されるようにします。
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -728,9 +728,9 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 また、Azure Resource Graph を使用すると、サブスクリプション内のリソースのクエリまたは検出を行えます。 これは、ストレージ アカウントを使用する環境など、高セキュリティ ベースの環境に役立ちます。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -742,9 +742,9 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 現在、適応型アプリケーション制御は Virtual Machine Scale Sets では使用できません。
 
-* [Azure Automation の概要](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Azure Automation の概要](../automation/automation-intro.md)
 
-* [Azure VM インベントリを有効にする方法](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
+* [Azure VM インベントリを有効にする方法](../automation/automation-tutorial-installed-software.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -754,11 +754,11 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: Azure Automation は、ワークロードとリソースの展開、運用、および使用停止を完全に制御します。 Change Tracking を使用して、Virtual Machines にインストールされているすべてのソフトウェアを特定できます。 独自のプロセスを実装するか、Azure Automation State Configuration を使用して、承認されていないソフトウェアを削除できます。
 
-* [Azure Automation の概要](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Azure Automation の概要](../automation/automation-intro.md)
 
-* [Change Tracking ソリューションを使用して環境内の変更を追跡する](https://docs.microsoft.com/azure/automation/change-tracking)
+* [Change Tracking ソリューションを使用して環境内の変更を追跡する](../automation/change-tracking/overview.md)
 
-* [Azure Automation State Configuration の概要](https://docs.microsoft.com/azure/automation/automation-dsc-overview)
+* [Azure Automation State Configuration の概要](../automation/automation-dsc-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -778,9 +778,9 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -790,7 +790,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: 現在、適応型アプリケーション制御は Virtual Machine Scale Sets では使用できません。 これが組織の要件を満たしていない場合は、サードパーティ ソリューションを実装します。
 
-* [Azure Security Center の適応型アプリケーション制御を使用する方法](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+* [Azure Security Center の適応型アプリケーション制御を使用する方法](../security-center/security-center-adaptive-application.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -800,7 +800,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**:"Microsoft Azure Management" アプリに対して [アクセスのブロック] を構成することによって、Azure Resource Manager を操作するユーザーの機能を制限するには、Azure 条件付きアクセスを使用します。
 
-* [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center の監視**: はい
 
@@ -810,7 +810,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: スクリプトの種類に基づき、オペレーティング システム固有の構成またはサードパーティのリソースを使用して、ユーザーの Azure コンピューティング リソース内でスクリプトを実行する機能を制限します。
 
-* [Windows 環境で PowerShell スクリプトの実行を制御する方法](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [Windows 環境で PowerShell スクリプトの実行を制御する方法](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -820,19 +820,19 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: Azure 環境にデプロイされた高リスク アプリケーションは、仮想ネットワーク、サブネット、サブスクリプション、管理グループなどを使用して分離し、Azure Firewall、Web アプリケーション ファイアウォール (WAF)、またはネットワーク セキュリティ グループ (NSG) によって十分に保護できます。
 
-* [Azure における仮想ネットワークと仮想マシン](https://docs.microsoft.com/azure/virtual-machines/windows/network-overview)
+* [Azure における仮想ネットワークと仮想マシン](../virtual-machines/network-overview.md)
 
-* [Azure Firewall の概要](https://docs.microsoft.com/azure/firewall/overview)
+* [Azure Firewall の概要](../firewall/overview.md)
 
-* [Web アプリケーション ファイアウォールの概要](https://docs.microsoft.com/azure/web-application-firewall/overview)
+* [Web アプリケーション ファイアウォールの概要](../web-application-firewall/overview.md)
 
-* [ネットワーク セキュリティの概要](https://docs.microsoft.com/azure/virtual-network/security-overview)
+* [ネットワーク セキュリティの概要](../virtual-network/network-security-groups-overview.md)
 
-* [Azure Virtual Network の概要](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+* [Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)
 
-* [Azure 管理グループでリソースを整理する](https://docs.microsoft.com/azure/governance/management-groups/overview)
+* [Azure 管理グループでリソースを整理する](../governance/management-groups/overview.md)
 
-* [サブスクリプション決定ガイド](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/subscriptions/)
+* [サブスクリプション決定ガイド](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
 
 **Azure Security Center の監視**: はい
 
@@ -840,15 +840,15 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
 **ガイダンス**: すべての Azure リソースのセキュリティ構成を維持するには、Azure Policy または Azure Security Center を使用します。 また、Azure Resource Manager には、テンプレートを JavaScript Object Notation (JSON) でエクスポートする機能があります。これは、構成が会社のセキュリティ要件を確実に満たすか、それを超えるようにするために確認する必要があります。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [VM テンプレートをダウンロードする方法に関する情報](https://docs.microsoft.com/azure/virtual-machines/windows/download-template)
+* [VM テンプレートをダウンロードする方法に関する情報](/previous-versions/azure/virtual-machines/windows/download-template)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -858,9 +858,9 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**:すべてのコンピューティング リソースのセキュリティ構成を維持するには、Azure Security Center の推奨事項 [仮想マシンのセキュリティ構成の脆弱性を修復する] を使用します。
 
-* [Azure Security Center の推奨事項を監視する方法](https://docs.microsoft.com/azure/security-center/security-center-recommendations)
+* [Azure Security Center の推奨事項を監視する方法](../security-center/security-center-recommendations.md)
 
-* [Azure Security Center の推奨事項を修復する方法](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
+* [Azure Security Center の推奨事項を修復する方法](../security-center/security-center-remediate-recommendations.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -870,11 +870,11 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: Virtual Machines Scale Sets に関連付けられている Azure リソースを安全に構成するには、Azure Resource Manager テンプレートと Azure Policy を使用します。 Azure Resource Manager テンプレートは、仮想マシンを Azure リソースと共にデプロイするために使用される JSON ベースのファイルであり、カスタム テンプレートは維持される必要があります。 基本テンプレートの管理は、Microsoft が行います。 Azure リソース全体にセキュリティで保護された設定を適用するには、Azure ポリシー [拒否] と [存在する場合はデプロイする] を使用します。
 
-* [Azure Resource Manager テンプレートの作成に関する情報](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
+* [Azure Resource Manager テンプレートの作成に関する情報](../virtual-machines/windows/ps-template.md)
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy の効果について](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Policy の効果について](../governance/policy/concepts/effects.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -892,11 +892,11 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 ほとんどのシナリオで、Microsoft ベース VM テンプレートと Azure Automation Desired State Configuration を組み合わせると、セキュリティ要件を満たし、それを維持するために役立つ可能性があります。
 
-* [VM テンプレートをダウンロードする方法に関する情報](https://docs.microsoft.com/azure/virtual-machines/windows/download-template)
+* [VM テンプレートをダウンロードする方法に関する情報](/previous-versions/azure/virtual-machines/windows/download-template)
 
-* [Resource Manager テンプレートの作成に関する情報](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
+* [Resource Manager テンプレートの作成に関する情報](../virtual-machines/windows/ps-template.md)
 
-* [カスタム VM VHD を Azure にアップロードする方法](https://docs.microsoft.com/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [カスタム VM VHD を Azure にアップロードする方法](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -906,9 +906,9 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: カスタム Azure ポリシー、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなどのコードを安全に格納して管理するには、Azure DevOps を使用します。コード、ビルド、作業の追跡など、Azure DevOps で管理するリソースにアクセスするには、これらの特定のリソースに対するアクセス許可が必要です。 ほとんどのアクセス許可は、アクセス許可とアクセスに関するページで説明されている組み込みのセキュリティ グループを通して付与されます。 Azure DevOps と統合されている場合は Azure Active Directory (Azure AD)、または TFS と統合されている場合は Active Directory で定義されている特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与または拒否できます。
 
-* [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Azure DevOps でのアクセス許可とグループについて](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
+* [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -918,9 +918,9 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: カスタム イメージ (仮想ハード ディスクなど) を使用している場合は、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。
 
-* [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Azure RBAC について](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Azure RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [Azure RBAC を構成する方法](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -930,7 +930,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**:仮想マシンのシステム構成に関するアラート生成、監査、適用を行うには、Azure Policy を利用します。 さらに、ポリシー例外を管理するためのプロセスとパイプラインを作成します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -940,7 +940,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**:Azure Automation State Configuration は、あらゆるクラウドまたはオンプレミスのデータセンターにある Desired State Configuration (DSC) ノードの管理構成サービスです。 これにより、一元化された安全な場所から、何千ものマシンでの迅速かつ簡単なスケーラビリティが可能になります。 マシンのオンボード、宣言型構成の割り当て、指定した必要な状態に準拠した各マシンを示すレポートの表示を簡単に行うことができます。
 
-* [Azure Automation State Configuration による管理のためのマシンのオンボード](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)
+* [Azure Automation State Configuration による管理のためのマシンのオンボード](../automation/automation-dsc-onboarding.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -950,9 +950,9 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: Azure 仮想マシンのベースライン スキャンを実行するには、Azure Security Center を利用します。 自動構成のためのその他の方法として、Azure Automation State Configuration の使用があります。
 
-* [Azure Security Center の推奨事項を修復する方法](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
+* [Azure Security Center の推奨事項を修復する方法](../security-center/security-center-remediate-recommendations.md)
 
-* [Azure Automation State Configuration の使用開始](https://docs.microsoft.com/azure/automation/automation-dsc-getting-started)
+* [Azure Automation State Configuration の使用開始](../automation/automation-dsc-getting-started.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -962,7 +962,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: Azure Automation State Configuration は、あらゆるクラウドまたはオンプレミスのデータセンターにある Desired State Configuration (DSC) ノードの管理構成サービスです。 これにより、一元化された安全な場所から、何千ものマシンでの迅速かつ簡単なスケーラビリティが可能になります。 マシンのオンボード、宣言型構成の割り当て、指定した必要な状態に準拠した各マシンを示すレポートの表示を簡単に行うことができます。
 
-* [Azure Automation State Configuration による管理のためのマシンのオンボード](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)
+* [Azure Automation State Configuration による管理のためのマシンのオンボード](../automation/automation-dsc-onboarding.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -972,11 +972,13 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**: マネージド サービス ID を Azure Key Vault と組み合わせて使用し、クラウド アプリケーションのシークレット管理を簡素化し、セキュリティで保護します。
 
-* [Azure マネージド ID と統合する方法](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
+* [Azure マネージド ID と統合する方法](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-* [キー コンテナーを作成する方法](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
+* [キー コンテナーを作成する方法](../key-vault/general/quick-create-portal.md)
 
-* [マネージド ID で Key Vault の認証を提供する方法](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [Key Vault に対して認証を行う方法](../key-vault/general/authentication.md)
+
+* [Key Vault のアクセス ポリシーを割り当てる方法](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -986,7 +988,7 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**:マネージド ID を使用して、Azure AD で自動的に管理される ID を Azure サービスに提供します。 マネージド ID を使用すると、コードに資格情報を追加しなくても、Azure AD の認証をサポートするさまざまなサービス (Key Vault を含む) に対して認証を行うことができます。
 
-* [マネージド ID を構成する方法](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+* [マネージド ID を構成する方法](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1004,13 +1006,13 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、「[セキュリティ コントロール: マルウェアからの防御](/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されたマルウェア対策ソフトウェアを使用する
 
 **ガイダンス**:Azure Windows Virtual Machines に対して Microsoft Antimalware を使用し、リソースの継続的な監視と防御を行います。 Azure Linux 仮想マシンでのマルウェア対策にはサード パーティ製ツールが必要になります。
 
-* [Cloud Services と Virtual Machines に対して Microsoft Antimalware を構成する方法](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [Cloud Services と Virtual Machines に対して Microsoft Antimalware を構成する方法](../security/fundamentals/antimalware.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1030,11 +1032,11 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 Azure Linux 仮想マシンでのマルウェア対策にはサード パーティ製ツールが必要になります。
 
-* [Azure Cloud Services および Virtual Machines 向けの Microsoft Antimalware をデプロイする方法](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [Azure Cloud Services および Virtual Machines 向けの Microsoft Antimalware をデプロイする方法](../security/fundamentals/antimalware.md)
 
-* [Microsoft Defender Advanced Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/onboard-configure)
+* [Microsoft Defender Advanced Threat Protection](/windows/security/threat-protection/microsoft-defender-atp/onboard-configure)
 
-* [Cloud Services と Virtual Machines に対して Microsoft Antimalware を構成する方法](https://docs.microsoft.com/azure/virtual-machines/linux/security-recommendations)
+* [Cloud Services と Virtual Machines に対して Microsoft Antimalware を構成する方法](../virtual-machines/security-recommendations.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1042,15 +1044,15 @@ Azure Linux 仮想マシンでのマルウェア対策にはサード パーテ�
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、「[セキュリティ コントロール: データの復旧](/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的な自動バックアップを保証する
 
 **ガイダンス**: PowerShell または REST API を使用して、インスタンスに接続されている Azure 仮想マシン スケール セットのインスタンスまたはマネージド ディスクのスナップショットを作成します。 また、Azure Automation を使用して、バックアップ スクリプトを定期的に実行することもできます。
 
-* [仮想マシン スケール セットのインスタンスとマネージド ディスクのスナップショットを取得する方法](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#how-do-i-take-a-snapshot-of-a-virtual-machine-scale-set-instance)
+* [仮想マシン スケール セットのインスタンスとマネージド ディスクのスナップショットを取得する方法](./virtual-machine-scale-sets-faq.md#how-do-i-take-a-snapshot-of-a-virtual-machine-scale-set-instance)
 
-* [Azure Automation の概要](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Azure Automation の概要](../automation/automation-intro.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1062,13 +1064,13 @@ Azure Linux 仮想マシンでのマルウェア対策にはサード パーテ�
 
 Azure Backup を有効にし、Azure Virtual Machines (VM) のほか、目的の頻度と保有期間をターゲットとします。 これには、完全なシステム状態のバックアップが含まれます。 Azure Disk Encryption を使用している場合は、Azure VM バックアップによって、カスタマー マネージド キーのバックアップが自動的に処理されます。
 
-* [暗号化を使用する Azure VM でのバックアップ](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)
+* [暗号化を使用する Azure VM でのバックアップ](../backup/backup-azure-vms-encryption.md)
 
-* [Azure VM バックアップの概要](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
+* [Azure VM バックアップの概要](../backup/backup-azure-vms-introduction.md)
 
-* [仮想マシン スケール セットのインスタンスとマネージド ディスクのスナップショットを取得する方法](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#how-do-i-take-a-snapshot-of-a-virtual-machine-scale-set-instance)
+* [仮想マシン スケール セットのインスタンスとマネージド ディスクのスナップショットを取得する方法](./virtual-machine-scale-sets-faq.md#how-do-i-take-a-snapshot-of-a-virtual-machine-scale-set-instance)
 
-* [Azure 上でキー コンテナーのキーをバックアップする方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center の監視**: はい
 
@@ -1080,13 +1082,13 @@ Azure Backup を有効にし、Azure Virtual Machines (VM) のほか、目的の
 
 Azure Disk Encryption を使用する場合は、ディスク暗号化キーで仮想マシン スケール セットを復元できます。 ディスク暗号化を使用している場合は、ディスク暗号化キーで Azure VM を復元できます。
 
-* [暗号化を使用する Azure VM でのバックアップ](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)
+* [暗号化を使用する Azure VM でのバックアップ](../backup/backup-azure-vms-encryption.md)
 
-* [Azure でディスクを復元し、回復した VM を作成する](https://docs.microsoft.com/azure/backup/tutorial-restore-disk)
+* [Azure でディスクを復元し、回復した VM を作成する](../backup/tutorial-restore-disk.md)
 
-* [Azure でキー コンテナーのキーを復元する方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [Azure Virtual Machine Scale Sets のディスク暗号化を有効にする方法](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-overview)
+* [Azure Virtual Machine Scale Sets のディスク暗号化を有効にする方法](./disk-encryption-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1096,9 +1098,9 @@ Azure Disk Encryption を使用する場合は、ディスク暗号化キーで�
 
 **ガイダンス**: ロックを使用して、マネージド ディスクの削除保護を有効にします。 Key Vault で論理的な削除と消去保護を有効にして、偶発的または悪意のある削除からキーを保護します。
 
-* [リソースのロックによる予期せぬ変更の防止](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)
+* [リソースのロックによる予期せぬ変更の防止](../azure-resource-manager/management/lock-resources.md)
 
-* [Azure Key Vault の論理的な削除と消去保護の概要](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
+* [Azure Key Vault の論理的な削除と消去保護の概要](../key-vault/general/soft-delete-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1106,7 +1108,7 @@ Azure Disk Encryption を使用する場合は、ディスク暗号化キーで�
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、「[セキュリティ コントロール: インシデント対応](/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
@@ -1128,9 +1130,9 @@ Azure Disk Encryption を使用する場合は、ディスク暗号化キーで�
 
 また、サブスクリプション ( 運用、非運用など) をタグを使用して明確にマークし、Azure リソース (特に、機密データを処理するもの) を明確に識別して分類するための命名システムを作成します。 インシデントが発生した Azure リソースと環境の重要度に基づいて、アラートの修復に優先順位を付けることは、お客様の責任です。
 
-* [Security alerts in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Security alerts in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-* [タグを使用した Azure リソースの整理](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1150,7 +1152,7 @@ Azure Disk Encryption を使用する場合は、ディスク暗号化キーで�
 
 **ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) でユーザーのデータが違法または権限のないユーザーによってアクセスされたことが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
 
-* [Azure Security Center のセキュリティ連絡先を設定する方法](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1160,9 +1162,9 @@ Azure Disk Encryption を使用する場合は、ディスク暗号化キーで�
 
 **ガイダンス**: 連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートすると、Azure リソースへのリスクを特定できます。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
-* [連続エクスポートを構成する方法](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 
-* [Azure Sentinel にアラートをストリーミングする方法](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Azure Sentinel にアラートをストリーミングする方法](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1172,7 +1174,7 @@ Azure Disk Encryption を使用する場合は、ディスク暗号化キーで�
 
 **ガイダンス**: Azure Security Center のワークフロー自動化機能を使用すると、セキュリティのアラートと推奨事項に対して "Logic Apps" で自動的に応答をトリガーし、Azure リソースを保護できます。
 
-* [ワークフローの自動化と Logic Apps を構成する方法](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [ワークフローの自動化と Logic Apps を構成する方法](../security-center/workflow-automation.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1180,7 +1182,7 @@ Azure Disk Encryption を使用する場合は、ディスク暗号化キーで�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
@@ -1196,5 +1198,5 @@ Azure Disk Encryption を使用する場合は、ディスク暗号化キーで�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

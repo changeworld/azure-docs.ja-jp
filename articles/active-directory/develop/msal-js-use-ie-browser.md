@@ -13,16 +13,16 @@ ms.date: 05/16/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 633166f3bb46212991920d6720737f8268b3f401
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 73dd7877b399d34a009c9fe479550eb1bf6dc0f1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026856"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583978"
 ---
 # <a name="known-issues-on-internet-explorer-browsers-msaljs"></a>Internet Explorer ブラウザーに関する既知の問題 (MSAL.js)
 
-JavaScript 用 Microsoft Authentication Library (MSAL.js) は、Internet Explorer ブラウザーで実行できるように、[JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) 向けに生成されています。 ただし、いくつかの点について知っておく必要があります。
+JavaScript 用 Microsoft Authentication Library (MSAL.js) は、Internet Explorer で実行できるように、[JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) 向けに生成されています。 ただし、いくつかの点について知っておく必要があります。
 
 ## <a name="run-an-app-in-internet-explorer"></a>Internet Explorer でアプリを実行する
 Internet Explorer で実行できるアプリケーションで MSAL.js を使用する場合は、MSAL.js スクリプトを参照する前に、Promise ポリフィルへの参照を追加する必要があります。
@@ -39,7 +39,7 @@ Internet Explorer で実行できるアプリケーションで MSAL.js を使�
 エンド ユーザーがポップアップを受け入れた場合、運用環境 (たとえば、Azure Web Apps) へのアプリケーションのデプロイは、通常、問題なく機能します。 Microsoft では、Internet Explorer 11 でこのテストを行いました。
 
 ### <a name="running-locally"></a>ローカルでの実行
-Internet Explorer で動作するアプリケーションをローカルで実行およびデバッグする場合は、次の点に注意する必要があります (アプリケーションを *http://localhost:1234* として実行すると想定します)。
+Internet Explorer で動作するアプリケーションをローカルで実行およびデバッグする場合は、次の点に注意してください (アプリケーションを *http://localhost:1234* として実行すると想定します)。
 
 - Internet Explorer には、"保護モード" というセキュリティ メカニズムが備わっています。このため、MSAL.js が正常に動作しません。 また、サインイン後にページが http://localhost:1234/null にリダイレクトされるという現象が発生する可能性もあります。
 

@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512980"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015402"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>StorSimple モニタリング インジケーターを使用してデバイスを管理する
 
@@ -36,7 +36,7 @@ StorSimple デバイスには、StorSimple デバイスの各モジュールお�
 この記事の残りの部分では、各種監視インジケーター LED、StorSimple デバイス上の LED の位置、LED の状態に基づくデバイス状態、関連する可聴アラームについて説明します。
 
 ## <a name="front-panel-indicator-leds"></a>前面パネル インジケーター LED
-前面パネルは*操作パネル* (*OPS パネル*) とも呼ばれ、システム内のすべてのモジュールの情報を集約した状態を表示します。 StorSimple プライマリと EBOD エンクロージャの前面パネルはまったく同じです。次の図に前面パネルを示します。  
+前面パネルは *操作パネル* (*OPS パネル*) とも呼ばれ、システム内のすべてのモジュールの情報を集約した状態を表示します。 StorSimple プライマリと EBOD エンクロージャの前面パネルはまったく同じです。次の図に前面パネルを示します。  
 
    ![デバイスのフロント パネル][1]
 

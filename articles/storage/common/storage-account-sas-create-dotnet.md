@@ -6,25 +6,33 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/06/2019
+ms.date: 11/12/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 102248882e1ec123ee74eedd74730c12a991fb86
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2918b845430a6fc6dc59eca7041c114fc9d06515
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021189"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092212"
 ---
 # <a name="create-an-account-sas-with-net"></a>.NET を使用してアカウント SAS を作成する
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-この記事では、ストレージ アカウント キーを使用して、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage?view=azure-dotnet)でアカウント SAS を作成する方法を示します。
+この記事では、ストレージ アカウント キーを使用して、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage)でアカウント SAS を作成する方法を示します。
 
 ## <a name="create-an-account-sas"></a>アカウント SAS を作成する
+
+### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+アカウント SAS は、アカウント アクセス キーを使用して署名されます。 SAS の署名に使用される資格情報を作成するには、[StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) クラスを使用します。 次に、新しい [AccountSasBuilder](/dotnet/api/azure.storage.sas.accountsasbuilder) オブジェクトを作成し、[ToSasQueryParameters](/dotnet/api/azure.storage.sas.accountsasbuilder.tosasqueryparameters) を呼び出して SAS トークン文字列を取得します。
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetAccountSASToken":::
+
+### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 コンテナーのアカウント SAS を作成するには、[CloudStorageAccount.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature) メソッドを呼び出します。
 
@@ -52,9 +60,19 @@ static string GetAccountSASToken()
 }
 ```
 
+---
+
 ## <a name="use-an-account-sas-from-a-client"></a>クライアントからアカウント SAS を使用する
 
-Blob service 用にサービスレベルの API にアクセスするためにアカウント SAS を使用するには、SAS を使って Blob service クライアント オブジェクトを構築し、ストレージ アカウント用に BLOB ストレージ エンドポイントを構築します。 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
+Blob service 用にサービスレベルの API にアクセスするためにアカウント SAS を使用するには、SAS を使って Blob service クライアント オブジェクトを構築し、ストレージ アカウント用に BLOB ストレージ エンドポイントを構築します。
+
+### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_UseAccountSAS":::
+
+### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+このスニペットでは、`<storage-account>` プレースホルダーを実際のストレージ アカウントの名前に置き換えます。
 
 ```csharp
 static void UseAccountSAS(string sasToken)
@@ -96,7 +114,9 @@ static void UseAccountSAS(string sasToken)
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+---
+
+## <a name="next-steps"></a>次の手順
 
 - [共有アクセス署名 (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](storage-sas-overview.md)
 - [アカウント SAS を作成する](/rest/api/storageservices/create-account-sas)

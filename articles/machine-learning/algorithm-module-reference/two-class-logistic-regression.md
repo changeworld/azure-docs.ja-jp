@@ -1,7 +1,7 @@
 ---
 title: '2 クラスのロジスティック回帰: モジュール リファレンス'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で 2 クラスのロジスティック回帰モジュールを使用し、2 つのみの結果を予測するのに使用できるロジスティック回帰モデルを作成する方法について説明します。
+description: Azure Machine Learning の 2 クラス ロジスティック回帰モジュールを使用して、バイナリ分類器を作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: d746b942f624fc83515ba29b0a092c2e592f1f25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e29a666f4d478e11986f834cff94d9743223f22
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137622"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012648"
 ---
 # <a name="two-class-logistic-regression-module"></a>2 クラスのロジスティック回帰モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 2 つのみの結果を予測するのに使用できるロジスティック回帰モデルを作成するには、このモジュールを使用します。 
 
@@ -36,7 +36,7 @@ ms.locfileid: "82137622"
 
 たとえば、[Voted] というラベル列であれば、その値には "Yes" と "No" が考えられます。 または、[Credit Risk] であれば、"High" と "Low" という値が考えられるでしょう。 
   
-1.  **2 クラスのロジスティック回帰**モジュールをパイプラインに追加します。  
+1.  **2 クラスのロジスティック回帰** モジュールをパイプラインに追加します。  
   
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
@@ -58,7 +58,7 @@ ms.locfileid: "82137622"
      このアルゴリズムは、L1 正則化と L2 正則化の値に対する線形の組み合わせをサポートします。つまり、<code>x = L1</code> かつ <code>y = L2</code> である場合、正則化項の線形包が <code>ax + by = c</code> で定義されます。  
   
     > [!NOTE]
-    >  L1 正則化と L2 正則化について、さらに詳しく知りたい場合は、 次の記事を参照してください。L1 正則化と L2 正則化の違いや、モデルのフィッティングに及ぼす影響が、ロジスティック回帰モデルとニューラル ネットワーク モデルのコード サンプルを使って解説されています: 「[機械学習向けの L1および L2 正規化](https://msdn.microsoft.com/magazine/dn904675.aspx)」  
+    >  L1 正則化と L2 正則化について、さらに詳しく知りたい場合は、 次の記事を参照してください。L1 正則化と L2 正則化の違いや、モデルのフィッティングに及ぼす影響が、ロジスティック回帰モデルとニューラル ネットワーク モデルのコード サンプルを使って解説されています: 「[機械学習向けの L1および L2 正規化](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning)」  
     >
     > ロジスティック回帰モデルには、L1 項と L2 項に対するさまざまな線形結合が考案されてきました ([エラスティック ネット型の正則化](https://wikipedia.org/wiki/Elastic_net_regularization)など)。 こうした結合を参照しながら、自分のモデルに合った効果的な線形結合を定義することをおすすめします。
       
@@ -73,7 +73,7 @@ ms.locfileid: "82137622"
   
 8. ラベル付けされたデータセットをパイプラインに追加し、モデルをトレーニングします。
 
-    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](train-model.md) モジュールを接続します。  
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと [モデルのトレーニング](train-model.md) モジュールを接続します。  
   
     + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Parameter Range]\(パラメーター範囲\)** に設定した場合は、[[Tune Model Hyperparameters]\(モデルのハイパーパラメーターの調整\)](tune-model-hyperparameters.md) を使用して、タグ付けしたデータセットを接続してモデルをトレーニングします。  
   
@@ -97,4 +97,4 @@ ms.locfileid: "82137622"
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。

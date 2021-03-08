@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: b8707b6fb006a45d63f1b2b426530a7e25f5b497
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: a61d6ba1f908a7dae56db066bfae329fc26f1c5c
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512926"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696122"
 ---
 # <a name="register-for-azure-netapp-files"></a>Azure NetApp Files に登録する
 
@@ -30,7 +30,8 @@ ms.locfileid: "87512926"
 
 ## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>サービスにアクセスするための順番待ちリクエストを送信する
 
-1. [Azure NetApp Files の順番待ち送信ページ](https://aka.ms/azurenetappfiles)から、Azure NetApp Files サービスにアクセスするための順番待ちリクエストを送信します。 
+1. 次のページにアクセスして、Azure NetApp Files サービスにアクセスするための waitlist 要求を送信します。  
+    [**Azure NetApp Files の waitlist の送信ページ**](https://aka.ms/azurenetappfiles) 
 
     順番待ちにサインアップしても、すぐにサービスにアクセスできるとは限りません。 
 
@@ -50,13 +51,13 @@ ms.locfileid: "87512926"
 
       ![Azure Cloud Shell アイコン](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
 
-2. お客様の Azure アカウントにサブスクリプションが複数ある場合は、Azure NetApp Files のホワイトリストに登録されているものを選択します。
+2. お客様の Azure アカウントにサブスクリプションが複数ある場合は、Azure NetApp Files に対して承認されているものを選択します。
     
     ```azurepowershell
     az account set --subscription <subscriptionId>
     ```
 
-3. Azure Cloud Shell コンソールで次のコマンドを入力して、お客様のサブスクリプションがホワイトリストに登録されていることを確認します。
+3. Azure Cloud Shell コンソールで次のコマンドを入力して、お客様のサブスクリプションが承認されていることを確認します。
     
     ```azurepowershell
     az feature list | grep NetApp

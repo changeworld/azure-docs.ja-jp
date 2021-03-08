@@ -9,16 +9,16 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: b1b5a344da20bff31f85a2d3cb20a0a35e4c4bde
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f6aad15d70157dda110fce233fbdafb7f3d896ad
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681925"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055061"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>従量課金制料金のサブスクリプションの個別サブスクリプションの Azure 予約の使用状況について
 
-予約の使用状況を評価するには、[[予約] ページ](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) の ReservationId と [Azure アカウント ポータル](https://account.azure.com)の使用状況ファイルを使用します。
+予約の使用状況を評価するには、[[予約] ページ](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) の ReservationId と [Azure portal](https://portal.azure.com) の使用状況ファイルを使用します。
 
 Enterprise Agreement をご利用のお客様は、[エンタープライズ加入契約に適用される Azure の予約の使用状況](understand-reserved-instance-usage-ea.md)に関するページを参照してください。
 
@@ -47,7 +47,7 @@ CSV ファイルのこのセクションには、予約の合計使用量が表�
 
 ### <a name="daily-usage-section-of-csv-file"></a>CSV ファイルの Daily Usage セクション
 
-**Additional Info** にフィルターを適用し、自分の**予約 ID** を入力します。 次のスクリーンショットは、予約に関連したフィールドを示しています。
+**Additional Info** にフィルターを適用し、自分の **予約 ID** を入力します。 次のスクリーンショットは、予約に関連したフィールドを示しています。
 
 ![毎日の使用状況の詳細と料金のスクリーンショット](./media/understand-reserved-instance-usage/billing-payg-reserved-instance-csv-details.png)
 
@@ -72,17 +72,17 @@ SQL Database Gen 4 を米国東部リージョンで実行していて、その�
 
 ### <a name="statement-section-of-csv-file"></a>CSV ファイルの Statement セクション
 
-**[Reserved Instance 使用量]** という測定名でフィルターを適用し、必要な**メーター カテゴリ** (Azure SQL Database または Azure Cosmos DB) を選択します。 次のスクリーンショットのように表示されます。
+**[Reserved Instance 使用量]** という測定名でフィルターを適用し、必要な **メーター カテゴリ** (Azure SQL Database または Azure Cosmos DB) を選択します。 次のスクリーンショットのように表示されます。
 
-![SQL Database の予約容量の CSV ファイル](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
+![[メーター カテゴリ] の入力内容を示すスクリーンショット。](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
 **Reserved Instance Usage** 行には、予約によって充当される合計コア時間が表示されます。 予約によってコストが充当されるため、この行の料金は $0 です。
 
 ### <a name="detail-section-of-csv-file"></a>CSV ファイルの Detail セクション
 
-**Additional Info** にフィルターを適用し、自分の**予約 ID** を入力します。 次のスクリーンショットは、SQL Database 予約容量の予約に関連したフィールドを示しています。
+**Additional Info** にフィルターを適用し、自分の **予約 ID** を入力します。 次のスクリーンショットは、SQL Database 予約容量の予約に関連したフィールドを示しています。
 
-![SQL Database の予約容量の CSV ファイル](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
+![予約容量の CSV ファイルの詳細を示すスクリーンショット。](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
 1. **Additional Info** フィールドの **ReservationId** は、SQL Database リソースに適用された SQL Database 予約容量の予約です。
 2. **ConsumptionMeter** は、SQL データベース リソースの測定 ID です。
@@ -97,7 +97,7 @@ SQL Database Gen 4 を米国東部リージョンで実行していて、その�
 Azure の予約の詳細については、次の記事を参照してください。
 
 - [Azure の予約とは](save-compute-costs-reservations.md)
-- [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../../azure-sql/database/reserved-capacity-overview.md)
 - [Azure の予約の管理](manage-reserved-vm-instance.md)
 - [予約割引の適用方法について](../manage/understand-vm-reservation-charges.md)

@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: ec4103251d27114b8fe40101c0e78c259106a440
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 620f77655f8281919ba0831a7e53af8cd28bc5f2
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120883"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583995"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Java 用 ADAL から MSAL への移行ガイド
 
@@ -29,7 +29,7 @@ Microsoft Authentication Library for Java (MSAL4J) と Azure AD Authentication L
 
 MSAL には、次のような利点があります。
 
-- より新しい Microsoft ID プラットフォーム エンドポイントが使用されているため、より広範な Microsoft ID (Azure AD の ID、Microsoft アカウント、ソーシャル アカウントおよびローカル アカウントなど) を、Azure AD Business to Consumer (B2C) を通じて認証できます。
+- より新しい Microsoft ID プラットフォームが使用されているため、より広範な Microsoft ID (Azure AD の ID、Microsoft アカウント、ソーシャルおよびローカル アカウントなど) を、Azure AD Business to Consumer (B2C) を通じて認証できます。
 - ユーザーは、最高のシングル サインオン エクスペリエンスを得られます。
 - アプリケーションでは、増分同意を有効にできるほか、条件付きアクセスのサポートがより簡単になります。
 
@@ -37,13 +37,13 @@ MSAL for Java は、Microsoft ID プラットフォームで使用すること�
 
 ## <a name="differences"></a>相違点
 
-開発者向け Azure AD (v1.0) エンドポイント (および ADAL4J) を使用している場合は、「[Microsoft ID プラットフォーム (v2.0) エンドポイントの違い](../azuread-dev/azure-ad-endpoint-comparison.md)」に関するページを読むことをお勧めします。
+開発者向け Azure AD (v1.0) エンドポイント (および ADAL4J) を使用している場合は、[Microsoft ID プラットフォームの違い](../azuread-dev/azure-ad-endpoint-comparison.md)に関するページを読むことをお勧めします。
 
 ## <a name="scopes-not-resources"></a>リソースではなくスコープ
 
 ADAL4J はリソースのトークンを取得しますが、MSAL for Java はスコープのトークンを取得します。 多くの MSAL for Java クラスには、スコープ パラメーターが必要です。 このパラメーターは、要求された必要とするアクセス許可とリソースを宣言する文字列のリストです。 スコープの例については、「[Microsoft Graph のスコープ](/graph/permissions-reference)」に関するページを参照してください。
 
-`/.default` スコープ サフィックスをリソースに追加すると、アプリを v1.0 エンドポイント (ADAL) から Microsoft ID プラットフォーム エンドポイント (MSAL) するのに役立ちます。 たとえば、リソース値が `https://graph.microsoft.com`の場合、相当するスコープ値は `https://graph.microsoft.com/.default`になります。  リソースが URL 形式ではなく、リソース ID の形式が `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`である場合でも、スコープ値として `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` を使用できます。
+リソースに `/.default` スコープ サフィックスを追加すると、ADAL から MSAL にアプリを移行するのに役立ちます。 たとえば、リソース値が `https://graph.microsoft.com`の場合、相当するスコープ値は `https://graph.microsoft.com/.default`になります。  リソースが URL 形式ではなく、リソース ID の形式が `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`である場合でも、スコープ値として `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` を使用できます。
 
 さまざまな種類のスコープの詳細については、[Microsoft ID プラットフォームでのアクセス許可と同意](./v2-permissions-and-consent.md)に関する記事および記事「[v1.0 トークンを受け入れる Web API のスコープ](./msal-v1-app-scopes.md)」を参照してください。
 
@@ -80,7 +80,7 @@ MSAL for Java は、可能な場合に自動的に有効期限切れのトーク
 
 V1.0 では、`https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーは任意の Azure Active Directory (AAD) アカウントで (任意の組織に対して) サインインできます。
 
-V2.0 で `https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーは任意の AAD 組織、または Microsoft の個人アカウント (MSA) を使用してサインインできます。 MSAL for Java で、ログインを任意の AAD アカウントに制限したい場合は、`https://login.microsoftonline.com/organizations` 機関 (これは ADAL4J と同じ動作です) を使用する必要があります。 機関を指定するには、`PublicClientApplication` クラスを作成するときに、[PublicClientApplication.Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) メソッドの `authority` パラメーターを設定します。
+V2.0 で `https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーは任意の AAD 組織、または Microsoft の個人アカウント (MSA) を使用してサインインできます。 MSAL for Java で、ログインを任意の AAD アカウントに制限したい場合は、`https://login.microsoftonline.com/organizations` 機関 (これは ADAL4J と同じ動作です) を使用します。 機関を指定するには、`PublicClientApplication` クラスを作成するときに、[PublicClientApplication.Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) メソッドの `authority` パラメーターを設定します。
 
 ## <a name="v10-and-v20-tokens"></a>v1.0 トークンと v2.0 トークン
 
@@ -101,7 +101,7 @@ MSAL for Java には、ADAL4J で取得した更新トークンを ClientApplica
 次のコード スニペットは、機密クライアント アプリケーションでの移行コードを示しています。
 
 ```java
-String rt = GetCachedRefreshTokenForSIgnedInUser(); // Get refresh token from where you have them stored
+String rt = GetCachedRefreshTokenForSignedInUser(); // Get refresh token from where you have them stored
 Set<String> scopes = Collections.singleton("SCOPE_FOR_REFRESH_TOKEN");
 
 RefreshTokenParameters parameters = RefreshTokenParameters.builder(scopes, rt).build();

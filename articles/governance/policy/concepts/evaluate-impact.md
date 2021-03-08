@@ -1,18 +1,18 @@
 ---
 title: 新しい Azure ポリシー定義の影響を評価する
 description: Azure 環境に新しいポリシー定義を導入するときの手順について説明します。
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 243f04cc20e1fb7167306b925a0e494b34cf1267
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cf52d25aa846388bc387430913a733d5206df82e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544704"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590800"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>新しい Azure ポリシー定義の影響を評価する
 
-Azure Policy は、Azure リソースをビジネス標準に合わせて管理し、コンプライアンス ニーズに対応するための強力なツールです。 ユーザー、プロセス、またはパイプラインによってリソースが作成または更新されるときに、Azure Policy によって要求が確認されます。 ポリシー定義の効果が [Append](./effects.md#deny) または [DeployIfNotExists](./effects.md#deployifnotexists) の場合は、ポリシーによって要求が変更されるか、または追加されます。 ポリシー定義の効果が [Audit](./effects.md#audit) または [AuditIfNotExists](./effects.md#auditifnotexists) の場合は、ポリシーによってアクティビティ ログ エントリが作成されます。 また、ポリシー定義の効果が [Deny](./effects.md#deny) の場合は、ポリシーによって要求の作成または変更が停止されます。
+Azure Policy は、Azure リソースをビジネス標準に合わせて管理し、コンプライアンス ニーズに対応するための強力なツールです。 ユーザー、プロセス、またはパイプラインによってリソースが作成または更新されるときに、Azure Policy によって要求が確認されます。 ポリシー定義の効果が [Modify](./effects.md#modify)、[Append](./effects.md#deny)、または [DeployIfNotExists](./effects.md#deployifnotexists) の場合は、ポリシーによって要求が変更されるか、または追加されます。 ポリシー定義の効果が [Audit](./effects.md#audit) または [AuditIfNotExists](./effects.md#auditifnotexists) の場合は、ポリシーによって、新規および更新されたリソースに対してアクティビティ ログ エントリが作成されます。 また、ポリシー定義の効果が [Deny](./effects.md#deny) の場合は、ポリシーによって要求の作成または変更が停止されます。
 
 これらの結果は、ポリシーが正しく定義されていることがわかっている場合にのみ必要です。 ただし、新しいポリシーによって作業が変更されたりブロックされたりする前に、ポリシーが意図したとおりに動作することを検証することが重要です。 検証では、意図したリソースのみが非準拠であると判断され、準拠しているリソースが誤って結果に含まれないことを確認する必要があります ("_擬陽性_" と呼ばれます)。
 
@@ -33,12 +33,12 @@ Azure Policy は、Azure リソースをビジネス標準に合わせて管理�
 
 ## <a name="audit-existing-resources"></a>既存のリソースを監査する
 
-新しいポリシー定義で新しいリソースまたは更新されたリソースを管理する前に、テスト リソース グループなど、既存リソースの限られたサブセットがどのように評価されるか確認することをお勧めします。 ポリシー割り当てに対して[適用モード](./assignment-structure.md#enforcement-mode) "_無効_" (DoNotEnforce) を使用して、[効果](./effects.md)がトリガーされたり、アクティビティ ログ エントリが作成されたりしないようにします。
+新しいポリシー定義で新しいリソースまたは更新されたリソースを管理する前に、テスト リソース グループなど、既存リソースの限られたサブセットがどのように評価されるか確認することをお勧めします。 ポリシー割り当てに対して [適用モード](./assignment-structure.md#enforcement-mode) "_無効_" (DoNotEnforce) を使用して、[効果](./effects.md)がトリガーされたり、アクティビティ ログ エントリが作成されたりしないようにします。
 
 このステップでは、ワークフローに影響を与えずに、既存のリソースに対する新しいポリシーのコンプライアンス結果を評価することができます。 準拠しているリソースが非準拠としてマークされないこと ("_擬陽性_")、非準拠と想定されるすべてのリソースが正しくマークされることを確認します。
 リソースの最初のサブセットが想定どおりに検証された後、評価をすべての既存リソースに徐々に拡大します。
 
-この方法で既存のリソースを評価することで、新しいポリシーを完全に実装する前に、非準拠リソースを修復することもできます。 このクリーンアップは、手動で行うことも、ポリシー定義の効果が _DeployIfNotExists_ である場合は[修復タスク](../how-to/remediate-resources.md)で行うこともできます。
+この方法で既存のリソースを評価することで、新しいポリシーを完全に実装する前に、非準拠リソースを修復することもできます。 このクリーンアップは、手動で行うことも、ポリシー定義の効果が _DeployIfNotExists_ である場合は [修復タスク](../how-to/remediate-resources.md)で行うこともできます。
 
 ## <a name="audit-new-or-updated-resources"></a>新規または更新されたリソースを監査する
 
@@ -63,7 +63,7 @@ Azure Policy は、Azure リソースをビジネス標準に合わせて管理�
 
 ## <a name="monitor-your-policy-and-compliance"></a>ポリシーとコンプライアンスを監視する
 
-ポリシー定義の実装と割り当てが最後のステップではありません。 新しいポリシー定義に対するリソースの[コンプライアンス](../how-to/get-compliance-data.md) レベルを継続的に監視し、非準拠デバイスが識別された場合に対して適切な [Azure Monitor のアラートと通知](../../../azure-monitor/platform/alerts-overview.md)をセットアップします。 また、ポリシー定義および関連する割り当てを定期的に評価し、ポリシー定義がビジネス ポリシーとコンプライアンス ニーズを満たしていることを検証することもお勧めします。 不要になった場合は、ポリシーを削除する必要があります。 また、基になる Azure リソースが発展し、新しいプロパティと機能が追加されたら、ポリシーを更新する必要もあります。
+ポリシー定義の実装と割り当てが最後のステップではありません。 新しいポリシー定義に対するリソースの[コンプライアンス](../how-to/get-compliance-data.md) レベルを継続的に監視し、非準拠デバイスが識別された場合に対して適切な [Azure Monitor のアラートと通知](../../../azure-monitor/alerts/alerts-overview.md)をセットアップします。 また、ポリシー定義および関連する割り当てを定期的に評価し、ポリシー定義がビジネス ポリシーとコンプライアンス ニーズを満たしていることを検証することもお勧めします。 不要になった場合は、ポリシーを削除する必要があります。 また、基になる Azure リソースが発展し、新しいプロパティと機能が追加されたら、ポリシーを更新する必要もあります。
 
 ## <a name="next-steps"></a>次のステップ
 

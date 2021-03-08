@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
-ms.openlocfilehash: 1eaf7413b01bceacbcbf3640bfe654fdad026672
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e10cd91eadd338217845b1504e8e9160bccfc98
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700670"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91537193"
 ---
 # <a name="create-or-modify-an-exchange-peering-with-route-server-in-azure-portal"></a>Azure portal でルート サーバーとの Exchange ピアリングを作成または変更する
 
@@ -74,7 +74,7 @@ ms.locfileid: "84700670"
 1.  **[Direct Peering Connection]\(ダイレクト ピアリング接続\)** で、次の BGP セッションの詳細を入力します。
 
     > [!div class="mx-imgBorder"]
-    > ![ダイレクト ピアリング ルート サーバーを構成する](./media/setup-exchange-conf-tab-direct-route.png)
+    > ![[Direct ピアリング接続] ウィンドウを示すスクリーンショット。詳細が追加されています。](./media/setup-exchange-conf-tab-direct-route.png)
 
 
      * [Peering facility]\(ピアリング ファシリティ\) で、ピアリングに適切な物理的な場所を選択します
@@ -99,19 +99,19 @@ ms.locfileid: "84700670"
 1. [設定] セクションで **[登録された ASN]** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![ダイレクト ピアリング ルート サーバーを構成する](./media/setup-exchange-registered-asn.png)
+    > ![[ピアリング] ウィンドウを示すスクリーンショット。[登録された ASN] メニュー項目が呼び出されています。](./media/setup-exchange-registered-asn.png)
 
 1. 対象の交換サブスクリプションで新しい顧客 ASN を作成するために、 **[Add registered ASN]\(登録された ASN を追加する\)** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![ダイレクト ピアリング ルート サーバーを構成する](./media/setup-exchange-register-new-asn.png)
+    > ![[Register an ASN]\(ASN の登録\) ウィンドウを示すスクリーンショット。[名前] テキスト ボックスと [ASN] テキストボックスが表示されています。](./media/setup-exchange-register-new-asn.png)
 
 1. [Register an ASN]\(ASN の登録\) で名前を選択し、顧客 ASN を入力して、[保存] をクリックします。
 
 1. [登録された ASN] の下に、各 ASN に割り当てられている、関連付けられたプレフィックス キーが表示されます。 交換プロバイダーは、このプレフィックス キーを顧客に提供して、顧客がサブスクリプションに Peering Service を登録できるようにする必要があります。
 
     > [!div class="mx-imgBorder"]
-    > ![ダイレクト ピアリング ルート サーバーを構成する](./media/setup-exchange-register-asn-prefixkey.png)
+    > ![[登録された ASN] ウィンドウを示すスクリーンショット。プレフィックス キーが表示されています。](./media/setup-exchange-register-asn-prefixkey.png)
 
 
 

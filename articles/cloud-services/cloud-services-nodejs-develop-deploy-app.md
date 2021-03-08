@@ -1,23 +1,24 @@
 ---
 title: Node.js ファースト ステップ ガイド
 description: 簡単な Node.js Web アプリケーションを作成して、Azure のクラウド サービスにデプロイする方法について説明します。
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
+ms.topic: article
 ms.service: cloud-services
-ms.devlang: nodejs
-ms.topic: conceptual
-ms.date: 08/17/2017
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 489025d9cfdd6f1bdbc950e2bd1e7e4d835a4fff
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 9889e0e95db84b4dbc5856ba6425f0f303161068
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079211"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741623"
 ---
-# <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ
+# <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service-classic"></a>Node.js アプリケーションのビルドと Azure Cloud Services (クラシック) へのデプロイ
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
 
 このガイドでは、Azure のクラウド サービスで実行される簡単な Node.js アプリケーションを作成します。 Cloud Services は、Azure のスケーラブルなクラウド アプリケーションの構成要素です。 クラウド サービスによって、アプリケーションのフロントエンド コンポーネントとバックエンド コンポーネントの分離および独立した管理とスケールアウトを実現できます。  Cloud Services は、各ロールを信頼性の高い方法でホストするための堅牢な専用仮想マシンを提供します。
 
@@ -36,15 +37,15 @@ Cloud Services の詳細と Azure の Web サイトおよび仮想マシンと�
 > [!NOTE]
 > このチュートリアルは、Windows 上の Azure PowerShell を使用します。
 
-* [Azure Powershell]のインストールおよび構成。
-* [Azure SDK for .NET 2.7]のダウンロードとインストール。 インストールのセットアップ時に、次のいずれかを選択します。
+* [Azure PowerShell] をインストールして構成します。
+* [Azure SDK for .NET 2.7] をダウンロードしてインストールします。 インストールのセットアップ時に、次のいずれかを選択します。
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
 
 ## <a name="create-an-azure-cloud-service-project"></a>Azure クラウド サービス プロジェクトの作成
 新しい Azure クラウド サービス プロジェクトおよび基本的な Node.js スキャフォールディングを作成するには、次のタスクを実行します。
 
-1. **Windows PowerShell** を管理者として実行します。 **[スタート] メニュー**または**スタート画面**で、「**Windows PowerShell**」を検索します。
+1. **Windows PowerShell** を管理者として実行します。 **[スタート] メニュー** または **スタート画面** で、「**Windows PowerShell**」を検索します。
 2. [PowerShell を接続します] 。
 3. 次の PowerShell コマンドレットを入力してプロジェクトを作成します。
 
@@ -179,8 +180,8 @@ Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Laun
 
 [Azure Websites、Cloud Services、および Virtual Machines の比較]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [軽量の Web アプリを使用]: ../app-service/quickstart-nodejs.md
-[Azure Powershell]: /powershell/azure/
-[Azure SDK for .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
+[Azure PowerShell]: /powershell/azure/
+[Azure SDK for .NET 3.0]: https://www.microsoft.com/download/details.aspx?id=54917
 [PowerShell を接続します]: /powershell/azure/
 [nodejs.org]: https://nodejs.org/
 [Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]: https://azure.microsoft.com/documentation/services/cloud-services/

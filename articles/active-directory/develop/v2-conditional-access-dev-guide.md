@@ -14,12 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: b1bfefb3b72c151e7a61068b3c0ad9f3e2bc4a6f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e4021f0ca2c1c9ca9434744a4aebb4b7938315f0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120628"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584232"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
 
@@ -43,9 +43,9 @@ Azure AD のアプリをビルドしている開発者のために、この記�
 
 ### <a name="app-types-impacted"></a>アプリの種類が影響を受ける
 
-最も一般的なケースは、条件付きアクセスによってアプリの動作が変更されない、または開発者からの変更を必要としない場合です。 アプリが間接的、またはサイレントでサービスに対するトークンを要求する特定の場合のみ、アプリで条件付きアクセス "チャレンジ" を処理するためにコードを変更する必要があります。 これは、対話型のサインインを要求するだけで実行できる場合があります。
+最も一般的なケースは、条件付きアクセスによってアプリの動作が変更されない、または開発者からの変更を必要としない場合です。 アプリが間接的、またはサイレントでサービスに対するトークンを要求する特定の場合のみ、アプリで条件付きアクセス チャレンジを処理するためにコードを変更する必要があります。  これは、対話型のサインインを要求するだけで実行できる場合があります。
 
-具体的には、次のシナリオでは、条件付きアクセス "チャレンジ" を処理するために、コードが必要になります。
+具体的には、次のシナリオでは、条件付きアクセス チャレンジを処理するために、コードが必要になります。
 
 * On-Behalf-Of フローを実行するアプリ
 * 複数のサービスとリソースにアクセスするアプリ
@@ -54,7 +54,7 @@ Azure AD のアプリをビルドしている開発者のために、この記�
 
 条件付きアクセス ポリシーは、アプリに適用できますが、アプリがアクセスする Web API にも適用できます。 条件付きアクセス ポリシーを構成する方法の詳細については、「[クイック スタート: Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](../authentication/tutorial-enable-azure-mfa.md)」を参照してください。
 
-シナリオによっては、エンタープライズのお客様は、条件付きアクセス ポリシーをいつでも適用および削除することができます。 新しいポリシーが適用されたときにアプリの機能を継続するためには、"チャレンジ" 処理を実装する必要があります。 チャレンジ処理の例は次のとおりです。
+シナリオによっては、エンタープライズのお客様は、条件付きアクセス ポリシーをいつでも適用および削除することができます。 新しいポリシーが適用されたときにアプリが引き続き機能するように、チャレンジ処理を実装します。 チャレンジ処理の例は次のとおりです。
 
 ### <a name="conditional-access-examples"></a>条件付きアクセスの例
 
@@ -182,6 +182,6 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 * 機能について詳しくは、「[Azure Active Directory の条件付きアクセス](../conditional-access/overview.md)」をご覧ください。
 * その他の Azure AD コード サンプルについては、[サンプル](sample-v2-code.md)のページを参照してください。
-* MSAL SDK の詳細とリファレンス ドキュメントについては、[Microsoft Authentication ライブラリの概要](msal-overview.md)に関する記事を参照してください。
+* MSAL SDK の詳細とリファレンス ドキュメントへのアクセスについては、[Microsoft Authentication Library の概要](msal-overview.md)に関するページを参照してください。
 * マルチテナント シナリオの詳細については、[マルチテナント アプリケーション パターンを使用してすべての Azure Active Directory (AD) ユーザーがサインインできるようにする方法](howto-convert-app-to-be-multi-tenant.md)を参照してください。
 * [「条件付きアクセス」と「IoT アプリへのアクセスのセキュリティ保護」](/azure/architecture/example-scenario/iot-aad/iot-aad)に関する詳細を学習します。

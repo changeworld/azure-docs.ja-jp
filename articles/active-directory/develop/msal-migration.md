@@ -1,7 +1,7 @@
 ---
 title: Microsoft Authentication Library (MSAL) への移行
 titleSuffix: Microsoft identity platform
-description: Microsoft Authentication Library (MSAL) と Azure AD Authentication Library (ADAL) の違いと、MSAL への移行方法について学習します。
+description: Microsoft Authentication Library (MSAL) と Azure AD Authentication Library (ADAL) の違いと、MSAL への移行方法について説明します。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.date: 08/07/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ac9264ea8d6cc71d19d2c9bbd23b2123bdf1f924
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 6517cdd7aafa7ae2fe351b349e62a66104469dcd
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224358"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653781"
 ---
-# <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) へのアプリケーションの移行
+# <a name="migrate-applications-to-the-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) へのアプリケーションの移行
 
 多くの開発者は、Azure Active Directory Authentication Library (ADAL) を使用してアプリケーションをビルドおよびデプロイしてきました。 今後は、Azure AD エンティティの認証と承認には、Microsoft Authentication Library (MSAL) を使用することをお勧めします。
 
@@ -73,7 +73,7 @@ __Q:MSAL と AD FS の連携方法について教えてください。__
 A:MSAL.NET では、AD FS 2019 に対して認証する特定のシナリオがサポートされています。 アプリで以前のバージョンの AD FS から直接トークンを取得する必要がある場合は、ADAL 上に残す必要があります。 [詳細については、こちらを参照してください](msal-net-adfs-support.md)。
 
 __Q:アプリケーションの移行に関するヘルプを受けるにはどうすればよいですか?__  
-A:この記事の「[移行ガイダンス](#migration-guidance)」を参照してください。 アプリのプラットフォームに関するこのガイドを読んだ後も、さらに質問がある場合は、タグ `[adal-deprecation]` を使用して Stack Overflow に投稿するか、ライブラリの GitHub リポジトリで問題を開いてください。 各ライブラリのリポジトリへのリンクについては、MSAL の概要に関する記事の「[言語とフレームワーク](msal-overview.md#languages-and-frameworks)」セクションを参照してください。
+A:この記事の「[移行ガイダンス](#migration-guidance)」を参照してください。 アプリのプラットフォームに関するこのガイドを読んだ後も、さらに質問がある場合は、タグ `[azure-ad-adal-deprecation]` を使用して [Microsoft Q&A](/answers/topics/azure-ad-adal-deprecation.html) に投稿するか、ライブラリの GitHub リポジトリで問題を開いてください。 各ライブラリのリポジトリへのリンクについては、MSAL の概要に関する記事の「[言語とフレームワーク](msal-overview.md#languages-and-frameworks)」セクションを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

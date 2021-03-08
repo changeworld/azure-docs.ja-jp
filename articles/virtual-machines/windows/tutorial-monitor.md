@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 154e4c9421d1c0a54b3d9b5f53424e7640fe62d8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3e7d93d7a1d0e804f340a7ce785ccc1165e93ee5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323572"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570099"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>チュートリアル:Azure で Windows 仮想マシンを監視する
 
@@ -39,7 +39,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-このチュートリアルで Azure の監視と更新管理を構成するには、Azure 内に Windows VM が必要です。 まず、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) を使用して、VM の管理者のユーザー名とパスワードを設定します。
+このチュートリアルで Azure の監視と更新管理を構成するには、Azure 内に Windows VM が必要です。 まず、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) を使用して、VM の管理者のユーザー名とパスワードを設定します。
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -86,18 +86,18 @@ Azure Monitor for VMs を使用した Azure VM の監視を有効にするには
 
 3. **[Insights (プレビュー)]** ページで、 **[今すぐ試す]** を選択します。
 
-    ![VM に対して Azure Monitor for VMs を有効にする](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
+    ![VM に対して Azure Monitor for VMs を有効にする](../../azure-monitor/vm/media/vminsights-enable-portal/enable-vminsights-vm-portal.png)
 
 4. **[Azure Monitor Insights Onboarding]\(Azure Monitor Insights の配布準備\)** ページで、同じサブスクリプションに既存の Log Analytics ワークスペースがある場合は、ドロップダウン リストでそれを選択します。  
 
     この一覧では、サブスクリプションで VM がデプロイされている既定のワークスペースと場所が事前に選択されています。 
 
     >[!NOTE]
-    >VM からの監視データを格納するための新しい Log Analytics ワークスペースを作成するには、[Log Analytics ワークスペースの作成](../../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。 ワークスペースは、[サポートされているリージョン](../../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)のいずれかに属している必要があります。
+    >VM からの監視データを格納するための新しい Log Analytics ワークスペースを作成するには、[Log Analytics ワークスペースの作成](../../azure-monitor/logs/quick-create-workspace.md)に関するページを参照してください。 ワークスペースは、[サポートされているリージョン](../../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions)のいずれかに属している必要があります。
 
 監視を有効にした後、VM のパフォーマンス メトリックが表示されるまでに数分かかることがあります。
 
-![Azure Monitor for VMs の監視デプロイ プロセスを有効にする](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![Azure Monitor for VMs の監視デプロイ プロセスを有効にする](../../azure-monitor/vm/media/vminsights-enable-portal/onboard-vminsights-vm-portal-status.png)
 
 ## <a name="view-vm-performance-metrics"></a>VM のパフォーマンス メトリックを表示する
 

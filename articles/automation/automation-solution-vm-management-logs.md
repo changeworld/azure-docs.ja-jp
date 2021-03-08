@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: de013b6ccd924f50ffe12fcba1285b121eece5f7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 3e9e924d6626d9f0dcd2db8a5e8b8f90a0aa01ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827558"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593856"
 ---
 # <a name="query-logs-from-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours からログを照会する
 
-Azure Automation により、ジョブ ログとジョブ ストリームの 2 種類のレコードが Log Analytics のリンクされたワークスペースに転送されます。 この記事では、Azure Monitor 内で[クエリ](../azure-monitor/log-query/log-query-overview.md)に使用できるデータを確認します。
+Azure Automation により、ジョブ ログとジョブ ストリームの 2 種類のレコードが Log Analytics のリンクされたワークスペースに転送されます。 この記事では、Azure Monitor 内で[クエリ](../azure-monitor/logs/log-query-overview.md)に使用できるデータを確認します。
 
 ## <a name="job-logs"></a>ジョブ ログ
 
@@ -72,5 +72,5 @@ Azure Automation により、ジョブ ログとジョブ ストリームの 2 �
 ## <a name="next-steps"></a>次のステップ
 
 * 機能を設定するには、「[Start/Stop VMs during off-hours を構成する](automation-solution-vm-management-config.md)」を参照してください。
-* 機能のデプロイ中のログ アラートについては、[Azure Monitor を使用したログ アラートの作成](../azure-monitor/platform/alerts-log.md)に関する記事を参照してください。
+* 機能のデプロイ中のログ アラートについては、[Azure Monitor を使用したログ アラートの作成](../azure-monitor/alerts/alerts-log.md)に関する記事を参照してください。
 * 機能のエラーを解決するには、「[Start/Stop VMs during off-hours の問題のトラブルシューティング](troubleshoot/start-stop-vm.md)」を参照してください。

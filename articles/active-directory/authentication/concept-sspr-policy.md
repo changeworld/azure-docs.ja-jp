@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/27/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 01/27/2021
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: b0684735b32e03abe525b19dce6d9d887afe513b
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 80be5ca22f3dfb673f09327108e66fccc9de6ddd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194063"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918045"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーとアカウント制限
 
@@ -41,11 +41,13 @@ Azure AD にサインインする必要があるユーザー アカウントは�
 
 ## <a name="azure-ad-password-policies"></a><a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Azure AD パスワード ポリシー
 
-パスワード ポリシーは、Azure AD で直接作成および管理されるすべてのユーザー アカウントに適用されます。 このパスワード ポリシーを変更することはできませんが、[Azure AD のパスワードを保護するためのカスタムの禁止パスワードを構成する](tutorial-configure-custom-password-protection.md)ことはできます。
+パスワード ポリシーは、Azure AD で直接作成および管理されるすべてのユーザー アカウントに適用されます。 これらのパスワード ポリシー設定の一部は変更できませんが、[Azure AD のパスワード保護用のカスタム禁止パスワード](tutorial-configure-custom-password-protection.md)またはアカウント ロックアウト パラメーターを構成することができます。
 
-Azure AD Connect を使用してオンプレミスの AD DS 環境から同期されたユーザー アカウントに対してパスワード ポリシーは適用されません。
+既定では、間違ったパスワードを使用して 10 回サインインに失敗すると、アカウントはロックアウトされます。 ユーザーは 1 分間ロックされます。 不適切なサインイン試行をさらに行った場合は、ロックアウトの期間が延長されます。 [スマート ロックアウト](howto-password-smart-lockout.md)では、直近 3 つの無効なパスワード ハッシュを追跡して、同じパスワードに対するロックアウト カウンターの増分を回避します。 同じ無効なパスワードが複数回入力された場合、この動作によってアカウントがロック アウトされることはありません。スマート ロックアウトのしきい値と期間を定義できます。
 
-次のパスワード ポリシー オプションが定義されています。
+Azure AD のパスワード ポリシーは、*EnforceCloudPasswordPolicyForPasswordSyncedUsers* を有効にしない限り、Azure AD Connect を使用してオンプレミスの AD DS 環境から同期されたユーザー アカウントに対して適用されません。
+
+次の Azure AD パスワード ポリシー オプションが定義されています。 特に明記されていない場合、これらの設定を変更することはできません。
 
 | プロパティ | 必要条件 |
 | --- | --- |
@@ -55,13 +57,12 @@ Azure AD Connect を使用してオンプレミスの AD DS 環境から同期�
 | パスワードの有効期間 (パスワードの最大有効期間) |<ul><li>既定値:**90** 日。</li><li>値を構成するには、Windows PowerShell 用 Azure Active Directory モジュールから `Set-MsolPasswordPolicy` コマンドレットを使用します。</li></ul> |
 | パスワードの期限切れの通知 (ユーザーにパスワードの有効期限が通知されるタイミング) |<ul><li>既定値:**14** 日 (パスワードの有効期限が切れる前)。</li><li>値を構成するには、`Set-MsolPasswordPolicy` コマンドレットを使用します。</li></ul> |
 | パスワードの有効期限 (パスワードを無期限にします) |<ul><li>既定値: **false** (パスワードの有効期限が指定されていることを示します)。</li><li>各ユーザー アカウントの値を構成するには、`Set-MsolUser` コマンドレットを使用します。</li></ul> |
-| パスワード変更履歴 | ユーザーがパスワードを変更する場合、前回のパスワードを再度使用することは*できません*。 |
+| パスワード変更履歴 | ユーザーがパスワードを変更する場合、前回のパスワードを再度使用することは *できません*。 |
 | パスワード リセット履歴 | ユーザーが忘れたパスワードをリセットする場合、前回のパスワードを再度使用することが ''*できます*''。 |
-| アカウントのロックアウト | 正しくないパスワードでサインイン試行に 10 回失敗すると、ユーザーを 1 分間ロックアウトします。 不適切なサインイン試行をさらに行った場合は、ロックアウトの期間が延長されます。 [スマート ロックアウト](howto-password-smart-lockout.md)では、直近 3 つの無効なパスワード ハッシュを追跡して、同じパスワードに対するロックアウト カウンターの増分を回避します。 同じ無効なパスワードが複数回入力された場合、この動作によってアカウントがロック アウトされることはありません。 |
 
 ## <a name="administrator-reset-policy-differences"></a>管理者リセット ポリシーの相違点
 
-Microsoft では、あらゆる Azure 管理者ロールに強力な既定の *2 ゲート* パスワードのリセット ポリシーを適用します。 このポリシーは、ユーザーに対して定義したものとは異なる場合があります。また、このポリシーを変更することはできません。 パスワードのリセット機能は、必ず Azure 管理者ロールが割り当てられていないユーザーとしてテストする必要があります。
+既定で、管理者アカウントはセルフサービスのパスワード リセットが有効になっており、強力な既定の *2 ゲート* パスワード リセット ポリシーが適用されます。 このポリシーは、ユーザーに対して定義したものとは異なる場合があります。また、このポリシーを変更することはできません。 パスワードのリセット機能は、必ず Azure 管理者ロールが割り当てられていないユーザーとしてテストする必要があります。
 
 2 ゲート ポリシーでは、管理者にはセキュリティの質問を使用する機能がありません。
 
@@ -74,6 +75,7 @@ Microsoft では、あらゆる Azure 管理者ロールに強力な既定の *2
   * パートナー レベル 1 のサポート
   * パートナー レベル 2 のサポート
   * Exchange 管理者
+  * メールボックス管理者
   * Skype for Business 管理者
   * ユーザー管理者
   * ディレクトリ ライター
@@ -84,15 +86,19 @@ Microsoft では、あらゆる Azure 管理者ロールに強力な既定の *2
   * セキュリティ管理者
   * 特権ロール管理者
   * Intune 管理者
+  * Azure AD 参加済みデバイスのローカル管理者
   * アプリケーション プロキシ サービス管理者
   * Dynamics 365 管理者
   * Power BI サービス管理者
   * 認証管理者
+  * パスワード管理者
   * 特権認証管理者
 
 * 試用版サブスクリプションで 30 日が経過している、または
 * Azure AD テナント用に、*contoso.com* のようなカスタム ドメインが構成されている、または
 * Azure AD Connect がオンプレミスのディレクトリからの ID を同期している
+
+[Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings) PowerShell コマンドレットを使用して、管理者アカウントに対する SSPR の使用を無効にすることができます。 `-SelfServePasswordResetEnabled $False` パラメーターを使用すると、管理者の SSPR は無効になります。
 
 ### <a name="exceptions"></a>例外
 
@@ -104,24 +110,24 @@ Microsoft では、あらゆる Azure 管理者ロールに強力な既定の *2
 
 ## <a name="password-expiration-policies"></a><a name="set-password-expiration-policies-in-azure-ad"></a>パスワードの有効期限のポリシー
 
-"*グローバル管理者*" または "*ユーザー管理者*" は、[Windows PowerShell 用 Microsoft Azure AD モジュール](/powershell/module/Azuread/?view=azureadps-2.0)を使用して、ユーザーのパスワード有効期限が切れないように設定できます。
+"*グローバル管理者*" または "*ユーザー管理者*" は、[Windows PowerShell 用 Microsoft Azure AD モジュール](/powershell/module/Azuread/)を使用して、ユーザーのパスワード有効期限が切れないように設定できます。
 
 また、PowerShell コマンドレットを使用すると、期限が切れない構成を削除したり、期限が切れないように設定されているユーザー パスワードを確認したりすることもできます。
 
-このガイダンスは、Intune や Office 365 などの他のプロバイダーに適用され、これらは ID およびディレクトリ サービスについては Azure AD にも依存します。 パスワード有効期限が、ポリシーの変更できる唯一の部分です。
+このガイダンスは、Intune や Microsoft 365 などの他のプロバイダーに適用され、これらは ID およびディレクトリ サービスについては Azure AD にも依存します。 パスワード有効期限が、ポリシーの変更できる唯一の部分です。
 
 > [!NOTE]
 > Azure AD Connect を介して同期されていないユーザー アカウントのパスワードのみ、期限切れにならないように構成できます。 ディレクトリ同期の詳細については、[AD と Azure AD の接続](../hybrid/whatis-hybrid-identity.md)に関するページをご覧ください。
 
 ### <a name="set-or-check-the-password-policies-by-using-powershell"></a>PowerShell を使用したパスワード ポリシーの設定または確認
 
-操作を開始するには、[Azure AD PowerShell モジュールをダウンロードしてインストール](/powershell/module/Azuread/?view=azureadps-2.0)し、[それをお使いの Azure AD テナントに接続](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples)します。
+操作を開始するには、[Azure AD PowerShell モジュールをダウンロードしてインストール](/powershell/module/Azuread/)し、[それをお使いの Azure AD テナントに接続](/powershell/module/azuread/connect-azuread#examples)します。
 
 モジュールがインストールされたら、次の手順を使用して、各タスクを必要に応じて完了します。
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>パスワードの有効期限ポリシーを確認する
 
-1. PowerShell プロンプトを開き、"*グローバル管理者*" アカウントまたは "*ユーザー管理者*" アカウントを使用して [Azure AD テナントに接続](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples)します。
+1. PowerShell プロンプトを開き、"*グローバル管理者*" アカウントまたは "*ユーザー管理者*" アカウントを使用して [Azure AD テナントに接続](/powershell/module/azuread/connect-azuread#examples)します。
 1. 個々のユーザーまたはすべてのユーザーに対して、次のいずれかのコマンドを実行します。
 
    * 1 人のユーザーのパスワードが無期限に設定されているかどうかを確認するには、次のコマンドレットを実行します。 `<user ID>` を、確認したいユーザーのユーザー ID (*driley\@contoso.onmicrosoft.com* など) に置き換えます。
@@ -130,7 +136,7 @@ Microsoft では、あらゆる Azure 管理者ロールに強力な既定の *2
        Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
        ```
 
-   * すべてのユーザーについて**パスワードを無期限にする**設定を表示するには、次のコマンドレットを実行します。
+   * すべてのユーザーについて **パスワードを無期限にする** 設定を表示するには、次のコマンドレットを実行します。
 
        ```powershell
        Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
@@ -138,7 +144,7 @@ Microsoft では、あらゆる Azure 管理者ロールに強力な既定の *2
 
 ### <a name="set-a-password-to-expire"></a>パスワードを期限付きに設定する
 
-1. PowerShell プロンプトを開き、"*グローバル管理者*" アカウントまたは "*ユーザー管理者*" アカウントを使用して [Azure AD テナントに接続](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples)します。
+1. PowerShell プロンプトを開き、"*グローバル管理者*" アカウントまたは "*ユーザー管理者*" アカウントを使用して [Azure AD テナントに接続](/powershell/module/azuread/connect-azuread#examples)します。
 1. 個々のユーザーまたはすべてのユーザーに対して、次のいずれかのコマンドを実行します。
 
    * 1 人のユーザーのパスワードを期限付きに設定するには、次のコマンドレットを実行します。 `<user ID>` を、確認したいユーザーのユーザー ID (*driley\@contoso.onmicrosoft.com* など) に置き換えます。
@@ -155,7 +161,7 @@ Microsoft では、あらゆる Azure 管理者ロールに強力な既定の *2
 
 ### <a name="set-a-password-to-never-expire"></a>パスワードを無期限に設定する
 
-1. PowerShell プロンプトを開き、"*グローバル管理者*" アカウントまたは "*ユーザー管理者*" アカウントを使用して [Azure AD テナントに接続](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples)します。
+1. PowerShell プロンプトを開き、"*グローバル管理者*" アカウントまたは "*ユーザー管理者*" アカウントを使用して [Azure AD テナントに接続](/powershell/module/azuread/connect-azuread#examples)します。
 1. 個々のユーザーまたはすべてのユーザーに対して、次のいずれかのコマンドを実行します。
 
    * 1 人のユーザーのパスワードを無期限に設定するには、次のコマンドレットを実行します。 `<user ID>` を、確認したいユーザーのユーザー ID (*driley\@contoso.onmicrosoft.com* など) に置き換えます。
@@ -177,4 +183,4 @@ Microsoft では、あらゆる Azure 管理者ロールに強力な既定の *2
 
 SSPR の使用を始めるには、「[チュートリアル: Azure Active Directory のセルフサービス パスワード リセットを使用して、ユーザーが自分のアカウントのロック解除またはパスワードのリセットを実行できるようにする](tutorial-enable-sspr.md)」を参照してください。
 
-SSPR で問題が発生した場合は、「[セルフサービス パスワード リセットのトラブルシューティング](active-directory-passwords-troubleshoot.md)」を参照してください
+SSPR で問題が発生した場合は、「[セルフサービス パスワード リセットのトラブルシューティング](./troubleshoot-sspr.md)」を参照してください

@@ -1,24 +1,24 @@
 ---
 title: PyTorch モデルのトレーニング
 titleSuffix: Azure Machine Learning
-description: PyTorch モデルをゼロからトレーニングする方法、または微調整する方法について説明します。
+description: Azure Machine Learning デザイナーの Pytorch モデルのトレーニング モジュールを使用して、モデルを最初からトレーニングする、または既存のモデルを微調整します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: af14d4770d032c23216b805045eb27fadded5954
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 09/26/2020
+ms.openlocfilehash: 2d88069f33995bdbe9dd479afe9a4e72ab9939b6
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170260"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420667"
 ---
 # <a name="train-pytorch-model"></a>PyTorch モデルのトレーニング
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) で **PyTorch モデルのトレーニング** モジュールを使用して、DenseNet などの Pytorch モデルをトレーニングする方法について説明します。 トレーニングは、モデルを定義してそのパラメーターを設定した後に行なわれ、これにはラベル付けされたデータが必要です。 
+この記事では、Azure Machine Learning デザイナーで **PyTorch モデルのトレーニング** モジュールを使用して、DenseNet などの Pytorch モデルをトレーニングする方法について説明します。 トレーニングは、モデルを定義してそのパラメーターを設定した後に行なわれ、これにはラベル付けされたデータが必要です。 
 
 ## <a name="how-to-use-train-pytorch-model"></a>PyTorch モデルのトレーニングを使用する方法 
 
@@ -29,7 +29,7 @@ ms.locfileid: "86170260"
    > [!NOTE]
    > **PyTorch モデルのトレーニング** モジュールは、大規模なデータセットについては **GPU** 型のコンピューティングで実行することが推奨されます。それ以外の場合、パイプラインは失敗します。 モジュールの右側のウィンドウで特定のモジュールを計算するよう選択するには、 **[Use other compute target]\(その他のコンピューティング先を使用する\)** を設定します。
 
-3.  左側の入力に、未トレーニングのモードをアタッチします。 トレーニング データセットと検証データセットを **PyTorch モデルのトレーニング**の中央および右側の入力にアタッチします。
+3.  左側の入力に、未トレーニングのモードをアタッチします。 トレーニング データセットと検証データセットを **PyTorch モデルのトレーニング** の中央および右側の入力にアタッチします。
 
     未トレーニングのモデルでは、DenseNet のような PyTorch モデルを使用する必要があります。それ以外の場合は、'InvalidModelDirectoryError' がスローされます。
 
@@ -41,7 +41,7 @@ ms.locfileid: "86170260"
 
 5.  **[Batch size]\(バッチ サイズ\)** には、バッチでトレーニングするインスタンスの数を指定します。既定値は 16 です。
 
-6.  **[Learning rate]\(学習速度\)** に*学習速度*の値を指定します。 学習率の値は、モデルがテストされて修正されるたびに、SGD のようなオプティマイザーで使用されるステップのサイズを制御します。
+6.  **[Learning rate]\(学習速度\)** に *学習速度* の値を指定します。 学習率の値は、モデルがテストされて修正されるたびに、SGD のようなオプティマイザーで使用されるステップのサイズを制御します。
 
     速度の値を小さくすると、モデルのテストが頻繁に実行されますが、ローカルで停滞する可能性があります。 ステップのサイズを大きくすることで収束速度は速くなりますが、真の極小値から離れていってしまうおそれがあります。 既定値は 0.001 です。
 
@@ -49,7 +49,7 @@ ms.locfileid: "86170260"
 
 8.  **[Patience]\(忍耐\)** には、検証の損失が連続して減少しない場合に、エポックがトレーニングを早期に停止する回数を指定します。 既定値は 3 です。
 
-9.  パイプラインを送信します。 データセットのサイズが大きい場合は、しばらく時間がかかります。
+9.  パイプラインを送信します。 データセットのサイズが大きい場合は、しばらく時間がかかり、GPU コンピューティングが推奨されます。
 
 ## <a name="results"></a>結果
 

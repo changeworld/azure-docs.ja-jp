@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 06/02/2020
 ms.author: allensu
 ms.openlocfilehash: 0ea4f167b992ccfbc4156ac06c8f636d2ef4a355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343202"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020417"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN from Verizon Premium ルール エンジンの機能
 
@@ -59,7 +59,7 @@ ms.locfileid: "84343202"
 | [Bandwidth Throttling (帯域幅調整)](https://docs.vdms.com/cdn/Content/HRE/F/Bandwidth-Throttling.htm) | エッジ サーバーからの応答の帯域幅を調整します。 |
 | [Bypass Cache (キャッシュ バイパス)](https://docs.vdms.com/cdn/Content/HRE/F/Bypass-Cache.htm) | 要求がキャッシュ技術を活用できるかどうかを判断します。 |
 | [Cache Control Header Treatment (Cache-Control ヘッダーの処理)](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Control-Header-Treatment.htm) |  外部最長有効期間機能がアクティブになっているとき、エッジ サーバーでキャッシュ制御ヘッダーの生成を制御します。 |
-| [Cache-Key Query String (キャッシュキー クエリ文字列)](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Query-String.htm) | 要求に関連付けられているクエリ文字列パラメーターを**キャッシュキー***に含めるかどうかを決定します。 <br> _* キャッシュの目的で資産を一意に識別する相対パス。キャッシュされたコンテンツの確認時に、エッジ サーバーはこの相対パスを使用します。既定では、キャッシュキーにはクエリ文字列パラメーターは含まれません。_ |
+| [Cache-Key Query String (キャッシュキー クエリ文字列)](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Query-String.htm) | 要求に関連付けられているクエリ文字列パラメーターを **キャッシュキー** に含めるかどうかを決定します。 <br> キャッシュの目的で資産を一意に識別する相対パス。  キャッシュされたコンテンツの確認時に、エッジ サーバーはこの相対パスを使用します。  既定では、キャッシュキーにはクエリ文字列パラメーターは含まれません。 |
 | [Cache-Key Rewrite (キャッシュキー書き換え)](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Rewrite.htm) | 要求に関連付けられているキャッシュ キーを書き換えます。 |
 | [Complete Cache Fill (完全キャッシュ入力)](https://docs.vdms.com/cdn/Content/HRE/F/Complete-Cache-Fill.htm) | 要求の結果、エッジ サーバーで一部のキャッシュが不足したときの動作を決定します。 |
 | [Compress File Types (圧縮ファイルの種類)](https://docs.vdms.com/cdn/Content/HRE/F/Compress-File-Types.htm) | サーバーで圧縮されるファイル形式を定義します。 | 

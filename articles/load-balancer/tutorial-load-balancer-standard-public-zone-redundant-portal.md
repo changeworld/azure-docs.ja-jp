@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 4e07285eca0fd10b73b386fcf139cdad5b94ddc2
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057009"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696406"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>チュートリアル:Azure Portal と Standard Load Balancer を使用して、可用性ゾーン間で VM の負荷を分散します
 
@@ -37,9 +37,13 @@ ms.locfileid: "86057009"
 
 可用性ゾーンと Standard Load Balancer の使用方法の詳細については、「[Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)」を参照してください。
 
-好みに応じて、[Azure CLI](load-balancer-standard-public-zone-redundant-cli.md) を使ってこのチュートリアルの手順を実行することもできます。
+好みに応じて、[Azure CLI](./quickstart-load-balancer-standard-public-cli.md) を使ってこのチュートリアルの手順を実行することもできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
+
+## <a name="prerequisites"></a>前提条件
+
+* Azure サブスクリプション
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -93,7 +97,7 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
     - *myNetworkSecurityGroup* - ネットワーク セキュリティ グループの名前。
     - *myResourceGroupLBAZ* - 既存のリソース グループの名前。
    
-![仮想ネットワークの作成](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
+![[ネットワーク セキュリティ グループの作成] ペインを示すスクリーンショット。](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
 
 ### <a name="create-network-security-group-rules"></a>ネットワーク セキュリティ グループ規則を作成する
 
@@ -112,7 +116,7 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
     - *HTTP を許可する* - ロード バランサー規則の説明。
 4. **[OK]** をクリックします。
  
-   ![仮想ネットワークの作成](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![[受信セキュリティ規則の追加] ペインを示すスクリーンショット。](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. 手順 2. から 4. を繰り返して、*myRDPRule* という名前で規則をもう 1 つ作成し、ポート 3389 を使用する受信 RDP 接続を許可します。設定には以下の値を使用します。
     - "*サービス タグ*" - **ソース**。
     - "*インターネット*" - **ソース サービス タグ**
@@ -196,8 +200,8 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
     - *myHealthProbe* - 正常性プローブの名前。
     - **HTTP** - プロトコルの種類。
     - *80* - ポート番号。
-    - *15* - プローブの試行の**間隔**を示す秒数。
-    - *2* - **異常しきい値**またはプローブの連続する失敗の回数。この回数を超えると、VM は異常と見なされます。
+    - *15* - プローブの試行の **間隔** を示す秒数。
+    - *2* - **異常しきい値** またはプローブの連続する失敗の回数。この回数を超えると、VM は異常と見なされます。
 4. **[OK]** をクリックします。
 
    ![プローブの追加](./media/load-balancer-standard-public-availability-zones-portal/4-load-balancer-probes.png)
@@ -231,8 +235,10 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-リソース グループ、ロード バランサー、および関連するすべてのリソースは、不要になったら削除します。 これを行うには、ロード バランサーを含むリソース グループを選択し、 **[削除]** をクリックします。
+リソース グループ、ロード バランサー、および関連するすべてのリソースは、不要になったら削除します。 これを行うには、ロード バランサーを含むリソース グループを選択し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する。
+特定の可用性ゾーン内で VM の負荷を分散する方法について学習します。
+> [!div class="nextstepaction"]
+> [可用性ゾーン内での VM の負荷分散](tutorial-load-balancer-standard-public-zonal-portal.md)

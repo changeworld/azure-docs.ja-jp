@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.custom: mvc
-ms.openlocfilehash: b0060c0aff8293ca5748cf8c055ebb2bbfb596e2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cd0d4928d5cd0eb15f4f1372a0a3417fc85d13bb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017449"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91328779"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Azure で仮想マシンをバックアップする
 
@@ -34,7 +34,7 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
 
 Recovery Services コンテナーは、Azure VM などの保護された各リソースのバックアップ データを格納する論理コンテナーです。 保護されたリソースのバックアップ ジョブを実行すると、Recovery Services コンテナー内に復元ポイントが作成されます。 この復元ポイントのいずれかを使用して、データを特定の時点に復元できます。
 
-1. **[新規作成]** を選択し、新しいコンテナーの名前を指定します (*myRecoveryServicesVault*など)。
+1. **[新規作成]** を選択し、新しいコンテナーの名前を指定します (*myRecoveryServicesVault* など)。
 2. まだ選択していない場合は、 **[Use existing]\(既存を使用\)** を選択し、ドロップ ダウン メニューから VM のリソース グループを選択します。
 
     ![Azure Portal で VM のバックアップを有効にする](./media/quick-backup-vm-portal/enable-backup.png)
@@ -75,7 +75,7 @@ VM のデータを復元する方法を説明するバックアップ チュー�
 
 3. ドロップ ダウン メニューから **[バックアップ データを削除]** を選択します。
 
-4. **[Type the name of the Backup item]\(バックアップ項目の名前を入力してください\)** ダイアログで、VM 名を入力します (*myVM*など)。 **[バックアップの停止]** を選択します。
+4. **[Type the name of the Backup item]\(バックアップ項目の名前を入力してください\)** ダイアログで、VM 名を入力します (*myVM* など)。 **[バックアップの停止]** を選択します。
 
     VM のバックアップが停止し、復元ポイントが削除された後リソース グループを削除できます。 既存の VM を使用していた場合は、リソース グループと VM はそのまま残します。
 
@@ -83,7 +83,7 @@ VM のデータを復元する方法を説明するバックアップ チュー�
 6. 一覧からリソース グループを選択します。 サンプルの VM クイック スタート コマンドを使用していた場合、リソース グループの名前は *myResourceGroup* です。
 7. **[リソース グループの削除]** を選択します。 確認のために、リソース グループ名を入力し、 **[削除]** を選択します。
 
-    ![Azure Portal でリソース グループを削除する](./media/quick-backup-vm-portal/delete-resource-group.png)
+    ![Azure Portal でリソース グループを削除する](./media/quick-backup-vm-portal/delete-resource-group-from-portal.png)
 
 ## <a name="next-steps"></a>次のステップ
 

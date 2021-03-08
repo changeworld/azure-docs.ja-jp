@@ -11,18 +11,18 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6f5698c5390a341df505bf5a1f849e121bd754a2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7850763abe2ef40aea4ab3b97187d50f7060fa18
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258781"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388772"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
 IoT Edge ソリューションを開発環境から運用環境に移行する準備ができたら、それが継続的なパフォーマンスのために構成されていることを確認します。
 
-この記事で提供される情報はすべて同等であるとは限りません。 優先順位を付けやすくするために、各セクションの始めに、作業を**重要** (運用環境に移行する前に完了すること) および**有用** (知っておくと便利なこと) という 2 つのセクションに分けたリストが示されています。
+この記事で提供される情報はすべて同等であるとは限りません。 優先順位を付けやすくするために、各セクションの始めに、作業を **重要** (運用環境に移行する前に完了すること) および **有用** (知っておくと便利なこと) という 2 つのセクションに分けたリストが示されています。
 
 ## <a name="device-configuration"></a>デバイス構成
 
@@ -41,7 +41,7 @@ IoT Edge デバイスとして、Raspberry Pi から、ノート PC、サーバ�
 運用環境内のすべての IoT Edge デバイスには、デバイス証明機関 (CA) の証明書をインストールする必要があります。 その CA 証明書は、その後、config.yaml ファイルの IoT Edge ランタイムに宣言されます。 開発とテストのシナリオ用に、IoT Edge ランタイムでは、config.yaml ファイルで証明書が宣言されていない場合に一時証明書が作成されます。 しかし、これらの一時証明書は 3 か月後に有効期限が切れるため、運用環境シナリオでは安全ではありません。 運用環境のシナリオでは、自己署名の証明機関、または商用認証局から購入した自分独自のデバイス CA 証明書を指定する必要があります。
 
 > [!NOTE]
-> 現時点では、libiothsm の制限により、2050 年 1 月 1 日以降に有効期限が切れる証明書は使用できません。
+> 現時点では、libiothsm の制限により、2038 年 1 月 1 日以降に有効期限が切れる証明書は使用できません。
 
 デバイス CA 証明書のロールの詳細については、[Azure IoT Edge での証明書の使用方法](iot-edge-certs.md)に関するページを参照してください。
 
@@ -188,11 +188,11 @@ docker pull コマンドを使用してイメージを取得し、プライベ�
 
 * edgeAgent:
 
-    `"image": "<registry name and server>/azureiotedge-agent:1.0",`
+    `"image": "<registry name and server>/azureiotedge-agent:1.1",`
 
 * edgeHub:
 
-    `"image": "<registry name and server>/azureiotedge-hub:1.0",`
+    `"image": "<registry name and server>/azureiotedge-hub:1.1",`
 
 ## <a name="networking"></a>ネットワーク
 
@@ -215,7 +215,7 @@ Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウ�
 
 これら 3 つのいずれの場合も、DNS 名は \*.azure-devices.net というパターンと一致します。
 
-さらに、**コンテナー エンジン**では、HTTPS 経由でコンテナー レジストリを呼び出します。 IoT Edge ランタイムのコンテナー イメージを取得する場合、DNS 名は mcr.microsoft.com となります。 コンテナー エンジンは、デプロイで構成されているその他のレジストリに接続されます。
+さらに、**コンテナー エンジン** では、HTTPS 経由でコンテナー レジストリを呼び出します。 IoT Edge ランタイムのコンテナー イメージを取得する場合、DNS 名は mcr.microsoft.com となります。 コンテナー エンジンは、デプロイで構成されているその他のレジストリに接続されます。
 
 このチェックリストを使用して、ファイアウォール規則を開始できます。
 
@@ -231,7 +231,7 @@ Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウ�
 これらのファイアウォール規則の一部は Azure Container Registry から継承されます。 詳細については、「[ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する](../container-registry/container-registry-firewall-access-rules.md)」を参照してください。
 
 > [!NOTE]
-> REST エンドポイントとデータ エンドポイント間に一貫性のある FQDN を提供するために、**2020 年 6 月 15 日**以降、Microsoft Container Registry データ エンドポイントは `*.cdn.mscr.io` から `*.data.mcr.microsoft.com` に変更されます  
+> REST エンドポイントとデータ エンドポイント間に一貫性のある FQDN を提供するために、**2020 年 6 月 15 日** 以降、Microsoft Container Registry データ エンドポイントは `*.cdn.mscr.io` から `*.data.mcr.microsoft.com` に変更されます  
 > 詳細については、[Microsoft Container Registry クライアント ファイアウォール規則の構成](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)に関する記事を参照してください
 
 パブリック コンテナー レジストリへのアクセスを許可するようにファイアウォールを構成しない場合は、「[プライベート レジストリにランタイム コンテナーを格納する](#store-runtime-containers-in-your-private-registry)」で説明されているように、イメージをプライベート コンテナー レジストリに格納することができます。
@@ -321,9 +321,9 @@ IoT Edge のデプロイをテストする場合、通常はデバイスにア�
 
 ### <a name="consider-tests-and-cicd-pipelines"></a>テストおよび CI/CD パイプラインを検討する
 
-最も効率的な IoT Edge のデプロイ シナリオの場合は、運用環境のデプロイをテストおよび CI/CD パイプラインに統合することを検討してください。 Azure IoT Edge では、Azure DevOps を含む、複数の CI/CD プラットフォームがサポートされます。 詳細については、「[Azure IoT Edge に対する継続的インテグレーションと継続的配置](how-to-ci-cd.md)」を参照してください。
+最も効率的な IoT Edge のデプロイ シナリオの場合は、運用環境のデプロイをテストおよび CI/CD パイプラインに統合することを検討してください。 Azure IoT Edge では、Azure DevOps を含む、複数の CI/CD プラットフォームがサポートされます。 詳細については、「[Azure IoT Edge に対する継続的インテグレーションと継続的配置](how-to-continuous-integration-continuous-deployment.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * 詳細については、[IoT Edge の自動デプロイ](module-deployment-monitoring.md)に関するページをご覧ください。
-* IoT Edge で[継続的インテグレーションと継続的配置](how-to-ci-cd.md)がどのようにサポートされるのかを確認します。
+* IoT Edge で[継続的インテグレーションと継続的配置](how-to-continuous-integration-continuous-deployment.md)がどのようにサポートされるのかを確認します。

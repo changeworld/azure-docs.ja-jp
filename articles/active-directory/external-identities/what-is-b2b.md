@@ -5,26 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 08/05/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfce0031d912b1611b6810310e56241857821579
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 8bee6a007004253106703ae2c19b940bf3de5d44
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926724"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101649293"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Azure Active Directory B2B のゲスト ユーザー アクセスとは
 
 Azure Active Directory (Azure AD) の企業間 (B2B) コラボレーションは、自分の組織にゲスト ユーザーを招待して共同作業を行うことができる External Identities の機能です。 B2B コラボレーションによって、貴社のデータに対するコントロールを維持した状態で、他の組織からアクセスするゲスト ユーザーとアプリケーションとサービスを安全に共有できます。 外部パートナーの規模に関係なく、Azure AD を所有していない場合や IT 部門が存在していない場合でも、外部パートナーとセキュリティで保護された安全な状態で作業できます。 単純な招待と受諾プロセスによって、パートナーは各自の資格情報を使用して、貴社のリソースにアクセスできます。 開発者は、Azure AD の B2B API を使用して、招待プロセスをカスタマイズしたり、セルフサービス サインアップ ポータルなどのアプリケーションを作成ししたりできます。 ゲスト ユーザーに関連したライセンスと価格情報については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。  
 
-   > [!IMPORTANT]
-   > **2021 年 3 月 31 日以降**、Microsoft は、B2B コラボレーションのシナリオで管理されていない Azure AD アカウントとテナントを作成することによる、招待の引き換えをサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
+> [!IMPORTANT]
+> - **2021 年 1 月 4 日以降**、Google は [WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 Gmail で Google フェデレーションまたはセルフサービス サインアップを使用している場合は、[基幹業務ネイティブ アプリケーションの互換性をテストする](google-federation.md#deprecation-of-webview-sign-in-support)必要があります。
+> - **2021 年 10 月以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
 
 ## <a name="collaborate-with-any-partner-using-their-identities"></a>パートナーの ID を使用してパートナーとコラボレーションする
 
@@ -74,8 +75,8 @@ Azure AD B2B では、パートナーが各自の ID 管理ソリューション
 
 貴社のニーズに応じて、外部のパートナーの受け入れ方法をカスタマイズすることができます。
 
-- [Azure AD のエンタイトルメント管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)を使用して、[外部ユーザーのアクセスを管理するポリシー](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users)を構成します。
-- [B2B コラボレーションの招待 API シリーズ](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)を使用して、オンボード エクスペリエンスをカスタマイズします。
+- [Azure AD のエンタイトルメント管理](../governance/entitlement-management-overview.md)を使用して、[外部ユーザーのアクセスを管理するポリシー](../governance/entitlement-management-external-users.md#how-access-works-for-external-users)を構成します。
+- [B2B コラボレーションの招待 API シリーズ](/graph/api/resources/invitation)を使用して、オンボード エクスペリエンスをカスタマイズします。
 
 ## <a name="integrate-with-identity-providers"></a>ID プロバイダーと統合する
 
@@ -84,7 +85,7 @@ Azure AD は、Facebook、Microsoft アカウント、Google、エンタープ�
 ![ID プロバイダーのページを示すスクリーンショット](media/what-is-b2b/identity-providers.png)
 
 
-## <a name="create-a-self-service-sign-up-user-flow-preview"></a>セルフサービス サインアップのユーザー フローを作成する (プレビュー)
+## <a name="create-a-self-service-sign-up-user-flow"></a>セルフサービス サインアップのユーザー フローを作成する
 
 セルフサービス サインアップ ユーザー フローを使用すると、アプリにアクセスしようとする外部ユーザーのためにサインアップ エクスペリエンスを作成できます。 サインアップ フローの一部として、さまざまなソーシャル ID プロバイダーまたはエンタープライズ ID プロバイダーのオプションを提供したり、ユーザーに関する情報を収集したりすることができます。 セルフサービス サインアップとその設定方法については、[こちら](self-service-sign-up-overview.md)を参照してください。
 
@@ -95,6 +96,6 @@ Azure AD は、Facebook、Microsoft アカウント、Google、エンタープ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure AD B2B コラボレーションのライセンスに関するガイダンス](licensing-guidance.md)
+- [External Identities の価格](external-identities-pricing.md)
 - [ポータルで B2B コラボレーションのゲスト ユーザーを追加する](add-users-administrator.md)
 - [招待の受諾プロセスを理解する](redemption-experience.md)

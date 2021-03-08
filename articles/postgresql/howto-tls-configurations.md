@@ -1,17 +1,17 @@
 ---
 title: TLS の構成 - Azure portal - Azure Database for PostgreSQL - Single Server
 description: Azure portal を使用して Azure Database for PostgreSQL Single Server に対する TLS の構成を設定する方法について説明します
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: 4cf491a27fbe53a5f5bf0e8351e5bb684b3492f1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 25be6b3c4e3172fc8ee14b97fd890b5948c284ba
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101989"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242366"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-postgresql-single---server-using-azure-portal"></a>Azure portal を使用した Azure Database for PostgreSQL Single Server での TLS 設定の構成
 
@@ -35,13 +35,13 @@ PostgreSQL の TLS の最小バージョンを設定するには、次の手順�
 
 1. TLS 1.2 より低い TLS バージョンでの PostgreSQL Single Server への接続を拒否するには、 **[TLS の最小バージョン]** で **[1.2]** を選択します。
 
-    ![Azure Database for PostgreSQL Single Server の TLS 構成](./media/howto-tls-configurations/setting-tls-value.png)
+    :::image type="content" source="./media/howto-tls-configurations/setting-tls-value.png" alt-text="Azure Database for PostgreSQL Single Server の TLS 構成":::
 
 1. **[保存]** をクリックして変更を保存します。
 
 1. 接続のセキュリティの設定が正常に有効化されたことを確認する通知が表示されます。
 
-    ![Azure Database for PostgreSQL Single Server の TLS 構成 (成功)](./media/howto-tls-configurations/setting-tls-value-success.png)
+    :::image type="content" source="./media/howto-tls-configurations/setting-tls-value-success.png" alt-text="Azure Database for PostgreSQL Single Server の TLS 構成 (成功)":::
 
 ## <a name="next-steps"></a>次のステップ
 

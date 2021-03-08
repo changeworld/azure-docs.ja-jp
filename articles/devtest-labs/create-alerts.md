@@ -3,12 +3,12 @@ title: Azure DevTest Labs でラボのアクティビティ ログ アラート�
 description: この記事では、Azure DevTest Labs でラボのアクティビティ ログ アラートを作成する手順について説明します。
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 6c859e70ab8a101c533e16f9cb118e26727baa52
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f774e3291961c58f55a9ed24026535e076235b98
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094938"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588772"
 ---
 # <a name="create-activity-log-alerts-for-labs-in-azure-devtest-labs"></a>Azure DevTest Labs でラボのアクティビティ ログ アラートを作成する
 この記事では Azure DevTest Labs でラボのアクティビティ ログ アラート (VM が作成されたとき、VM が削除されたときなど) を作成する方法について説明します。
@@ -35,7 +35,7 @@ ms.locfileid: "87094938"
 1. **[シグナル ロジックの構成]** ページで、DevTest Labs でサポートされているシグナルを選択します。 
 
     :::image type="content" source="./media/activity-logs/select-signal.png" alt-text="シグナルを選択する":::
-1. **[イベント レベル]** ([詳細]、[情報]、[警告]、[エラー]、[重大]、[すべて])、 **[状態]** ([失敗]、[開始]、[成功])、およびイベントを**開始した主体**によってフィルター処理します。 
+1. **[イベント レベル]** ([詳細]、[情報]、[警告]、[エラー]、[重大]、[すべて])、 **[状態]** ([失敗]、[開始]、[成功])、およびイベントを **開始した主体** によってフィルター処理します。 
 1. **[完了]** を選択して、条件の構成を完了します。 
 
     :::image type="content" source="./media/activity-logs/configure-signal-logic-done.png" alt-text="[シグナル ロジックの構成] - [完了]":::
@@ -46,10 +46,10 @@ ms.locfileid: "87094938"
 
     :::image type="content" source="./media/activity-logs/create-action-group-link.png" alt-text="[アクション グループの作成] リンク":::
 1. **[アクション グループの追加]** ページで、以下の操作を行います。
-    1. アクション グループの**名前**を入力します。
-    1. アクション グループの**短い名前**を入力します。 
+    1. アクション グループの **名前** を入力します。
+    1. アクション グループの **短い名前** を入力します。 
     1. アラートを作成する **[リソース グループ]** を選択します。 
-    1. **アクションの名前**を入力します。 
+    1. **アクションの名前** を入力します。 
     1. **[アクションの種類]** を選択します (この例では、 **[Email Azure Resource Manager Role]** \(Azure Resource Manager ロールに電子メールを送信する\))。 
 
         :::image type="content" source="./media/activity-logs/add-action-group.png" alt-text="[アクション グループの追加] ページ":::
@@ -64,7 +64,7 @@ ms.locfileid: "87094938"
 ## <a name="view-alerts"></a>アラートを表示する 
 1. **[アラート]** に (この例では) すべての管理操作に対するアラートが表示されます。 アラートは、表示されるまでに時間がかかることがあります。 
 
-    :::image type="content" source="./media/activity-logs/alerts.png" alt-text="警告":::
+    :::image type="content" source="./media/activity-logs/alerts.png" alt-text="ダッシュボードのアラートが表示されている画面キャプチャ。":::
 1. 列 ( **[合計アラート数]** など) の数値を選択すると、発生したアラートが表示されます。 
 
     :::image type="content" source="./media/activity-logs/all-alerts.png" alt-text="[すべてのアラート]":::
@@ -76,7 +76,7 @@ ms.locfileid: "87094938"
     :::image type="content" source="./media/activity-logs/alert-email.png" alt-text="アラートの電子メール":::
 
 ## <a name="next-steps"></a>次のステップ
-- さまざまなアクションの種類を使用したアクション グループの作成の詳細については、「[Azure Portal でのアクション グループの作成および管理](../azure-monitor/platform/action-groups.md)」を参照してください。
-- アクティビティ ログの詳細については、「[Azure アクティビティ ログ](../azure-monitor/platform/activity-log.md)」を参照してください。
-- アクティビティ ログ アラートの設定の詳細については、「[アクティビティ ログ アラート](../azure-monitor/platform/activity-log-alerts.md)」を参照してください。
+- さまざまなアクションの種類を使用したアクション グループの作成の詳細については、「[Azure Portal でのアクション グループの作成および管理](../azure-monitor/alerts/action-groups.md)」を参照してください。
+- アクティビティ ログの詳細については、「[Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md)」を参照してください。
+- アクティビティ ログ アラートの設定の詳細については、「[アクティビティ ログ アラート](../azure-monitor/alerts/activity-log-alerts.md)」を参照してください。
 

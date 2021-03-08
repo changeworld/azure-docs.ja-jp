@@ -4,20 +4,20 @@ description: この記事では、Azure Automation を使用して Azure Analysi
 author: chrislound
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 12/01/2020
 ms.author: chlound
-ms.openlocfilehash: 31dc1973af42a1785a2a65cb1887f479e44af162
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 7c801511b6f24cf5ef04d55bb195e3a4c62d7b6d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553905"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491249"
 ---
 # <a name="refresh-with-azure-automation"></a>Azure Automation を使用した更新
 
 Azure Automation および PowerShell Runbook を使用して、Azure Analysis 表形式モデルに対する自動データ更新操作を行うことができます。  
 
-この記事の例では、[SqlServer PowerShell モジュール](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)を使用します。 モデルの更新方法を示す PowerShell Runbook のサンプルは、この記事の後半で提供されます。  
+この記事の例では、[SqlServer PowerShell モジュール](/powershell/module/sqlserver/?view=sqlserver-ps&preserve-view=true)を使用します。 モデルの更新方法を示す PowerShell Runbook のサンプルは、この記事の後半で提供されます。  
 
 ## <a name="authentication"></a>認証
 
@@ -52,17 +52,17 @@ Azure Automation および PowerShell Runbook を使用して、Azure Analysis �
 
 ## <a name="design-the-azure-automation-runbook"></a>Azure Automation Runbook を設計する
 
-1. Automation アカウントで、サービス プリンシパルを安全に保管するために使用される**資格情報**リソースを作成します。
+1. Automation アカウントで、サービス プリンシパルを安全に保管するために使用される **資格情報** リソースを作成します。
 
-    ![資格情報の作成](./media/analysis-services-refresh-azure-automation/6.png)
+    ![[資格情報] ページのスクリーンショット。[資格情報の追加] アクションが選択されています。](./media/analysis-services-refresh-azure-automation/6.png)
 
 2. 資格情報の詳細を入力します。 **[ユーザー名]** にサービス プリンシパルのアプリケーション ID (appid) を入力し、 **[パスワード]** にサービス プリンシパル シークレットを入力します。
 
     ![資格情報の作成](./media/analysis-services-refresh-azure-automation/7.png)
 
-3. Automation Runbook をインポートします
+3. Automation Runbook をインポートします。
 
-    ![Runbook のインポート](./media/analysis-services-refresh-azure-automation/8.png)
+    ![[Runbook] ページのスクリーンショット。[Runbook のインポート] アクションが選択されています。](./media/analysis-services-refresh-azure-automation/8.png)
 
 4. [Refresh-Model.ps1](#sample-powershell-runbook) ファイルを参照し、 **[名前]** および **[説明]** を入力して、次に **[作成]** をクリックします。
 
@@ -80,7 +80,7 @@ Azure Automation および PowerShell Runbook を使用して、Azure Analysis �
 
 6. **[開始]** をクリックして Runbook をテストします。
 
-    ![Runbook を開始する](./media/analysis-services-refresh-azure-automation/11.png)
+    ![[概要] ページのスクリーンショット。[開始] アクションが選択されています。](./media/analysis-services-refresh-azure-automation/11.png)
 
 7. **DATABASENAME**、**ANALYSISSERVER**、および **REFRESHTYPE** パラメーターを入力し、 **[OK]** をクリックします。 **WEBHOOKDATA** パラメーターは、Runbook を手動で実行するときは必要ありません。
 
@@ -132,7 +132,7 @@ Azure Data Factory を使用して Runbook を使用するには、最初に Run
 
     Webhook のパラメーターは空白のままでかまいません。  Azure Data Factory の Web アクティビティを構成するときに、Web 呼び出しの本文にパラメーターを渡すことができます。
 
-3. Data Factory で、**Web アクティビティ**を構成します
+3. Data Factory で、**Web アクティビティ** を構成します
 
 ### <a name="example"></a>例
 
@@ -202,7 +202,7 @@ $_Credential = Get-AutomationPSCredential -Name "ServicePrincipal"
 
 # If runbook was called from Webhook, WebhookData will not be null.
 if ($WebhookData)
-{ 
+{ 
     # Retrieve AAS details from Webhook request body
     $atmParameters = (ConvertFrom-Json -InputObject $WebhookData.RequestBody)
     Write-Output "CredentialName: $($atmParameters.CredentialName)"
@@ -226,4 +226,4 @@ else
 ## <a name="next-steps"></a>次のステップ
 
 [サンプル](analysis-services-samples.md)  
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)
+[REST API](/rest/api/analysisservices/servers)

@@ -1,6 +1,6 @@
 ---
 title: Azure portal - プライベート リンクを使用してマネージド ディスクに対するインポートおよびエクスポート アクセスを制限する
-description: Azure portal を使用して、マネージド ディスクのプライベート リンク (現在プレビュー段階) を有効にします。 これにより、仮想ネットワーク内でディスクを安全にエクスポートおよびインポートできます。
+description: Azure portal を使用して、マネージド ディスクのプライベート リンクを有効にします。 これにより、仮想ネットワーク内でディスクを安全にエクスポートおよびインポートできます。
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
@@ -8,16 +8,16 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b80100216003e91fde54b5e555bafb755c942810
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815863"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682921"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure portal からプライベート リンクを使用してマネージド ディスクに対するインポートおよびエクスポート アクセスを制限する
 
-マネージド ディスクでのプライベート リンクのサポート (現在プレビュー段階) により、マネージド ディスクのエクスポートとインポートを制限して、Azure 仮想ネットワーク内でのみ実行されるようにすることができます。 接続されていないマネージド ディスクおよびスナップショットに対して期限付きの Shared Access Signature (SAS) URI を生成して、リージョン拡張のための他のリージョンへのデータのエクスポート、ディザスター リカバリー、フォレンジック分析のためのデータの読み取りに使用することができます。 SAS URI は、オンプレミスから空のディスクに VHD を直接アップロードするために使用することもできます。 仮想ネットワーク上のクライアントとマネージド ディスク間のネットワーク トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベート リンク経由でのみ送信され、パブリック インターネットに公開されることはなくなります。
+マネージド ディスクでのプライベート リンクのサポートにより、マネージド ディスクのエクスポートとインポートを制限して、Azure 仮想ネットワーク内でのみ実行されるようにすることができます。 接続されていないマネージド ディスクおよびスナップショットに対して期限付きの Shared Access Signature (SAS) URI を生成して、リージョン拡張のための他のリージョンへのデータのエクスポート、ディザスター リカバリー、フォレンジック分析のためのデータの読み取りに使用することができます。 SAS URI は、オンプレミスから空のディスクに VHD を直接アップロードするために使用することもできます。 仮想ネットワーク上のクライアントとマネージド ディスク間のネットワーク トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベート リンク経由でのみ送信され、パブリック インターネットに公開されることはなくなります。
 
 プライベート エンドポイントを作成することによって、ディスク アクセス リソースを作成した後で、それを同じサブスクリプション内の仮想ネットワークにリンクできます。 プライベート リンクを介してデータをエクスポートおよびインポートするには、ディスクまたはスナップショットをディスク アクセスに関連付ける必要があります。 また、ディスクまたはスナップショットの NetworkAccessPolicy プロパティを `AllowPrivate` に設定する必要があります。 
 
@@ -27,15 +27,6 @@ NetworkAccessPolicy プロパティを `DenyAll` に設定すれば、ディス�
 
 [!INCLUDE [virtual-machines-disks-private-links-limitations](../../includes/virtual-machines-disks-private-links-limitations.md)]
 
-## <a name="regional-availability"></a>リージョン別の提供状況
-
-[!INCLUDE [virtual-machines-disks-private-links-regions](../../includes/virtual-machines-disks-private-links-regions.md)]
-
-## <a name="prerequisites"></a>前提条件
-
-マネージド ディスクのエクスポートおよびインポートのためにプライベート エンドポイントを使用するには、ご自分のサブスクリプションでその機能を有効にする必要があります。 ご自分のサブスクリプション ID と共に mdprivatelinks@microsoft.com に電子メールを送信して、ご自分のサブスクリプションに対してこの機能を有効にします。
-
-対象のディスクが接続されている VM の仮想ネットワークを書き留めておく必要があります。 この仮想ネットワークは、プライベート エンドポイントを構成するときに必要です。
 
 ## <a name="create-a-disk-access-resource"></a>ディスク アクセス リソースを作成する
 
@@ -101,4 +92,4 @@ NetworkAccessPolicy プロパティを `DenyAll` に設定すれば、ディス�
 ## <a name="next-steps"></a>次のステップ
 
 - [プライベート リンクに関する FAQ](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
-- [PowerShell を使用して別のリージョンのストレージ アカウントにマネージド スナップショットを VHD としてエクスポートまたはコピーする](scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md)
+- [PowerShell を使用して別のリージョンのストレージ アカウントにマネージド スナップショットを VHD としてエクスポートまたはコピーする](/previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account)

@@ -1,0 +1,127 @@
+### YamlMime:Landing
+title: Azure Front Door Standard/Premium (プレビュー) のドキュメント
+summary: Azure Front Door Standard/Premium (プレビュー) は、グローバル Web アプリケーション用のスケーラブルな CDN、DSA、GLB を提供する最新のセキュリティで保護されたアプリケーション配信ネットワーク プラットフォームです。
+metadata:
+  title: Azure Front Door Standard/Premium のドキュメント
+  description: Azure Front Door Standard/Premium (プレビュー) では、グローバルな Web アプリケーションを高速に配信するためのセキュリティで保護されたスケーラブルなエントリ ポイントが提供されます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Front Door の使用方法を確認してください。
+  services: frontdoor
+  ms.service: frontdoor
+  ms.topic: landing-page
+  author: duongau
+  ms.author: duau
+  ms.date: 02/18/2020
+  ms.openlocfilehash: 0fe35a2e83bb6737b1ff273390e5fb0c4db7bc6d
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101740326"
+landingContent:
+- title: Azure Front Door Standard/Premium (プレビュー) について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Front Door Standard/Premium (プレビュー) とは
+      url: overview.md
+- title: Front Door プロファイルを作成する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Front Door Standard/Premium プロファイルを作成する
+      url: create-front-door-portal.md
+- title: エンドポイント マネージャーを構成する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: エンドポイント マネージャー
+      url: concept-endpoint-manager.md
+    - text: ルート
+      url: concept-route.md
+  - linkListType: how-to-guide
+    links:
+    - text: エンドポイント マネージャーを構成する
+      url: how-to-configure-endpoint-manager.md
+- title: カスタム ドメインを追加する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: カスタム ドメインの追加
+      url: how-to-add-custom-domain.md
+- title: 配信元グループを管理する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 出発地
+      url: concept-origin.md
+    - text: 正常性プローブ
+      url: concept-health-probes.md
+  - linkListType: how-to-guide
+    links:
+    - text: 配信元グループを構成する
+      url: how-to-create-origin.md
+- title: ルール セットを構成する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ルール セットとは
+      url: concept-rule-set.md
+    - text: ルール セットの一致条件
+      url: concept-rule-set-match-conditions.md
+    - text: ルール セットのアクション
+      url: concept-rule-set-actions.md
+  - linkListType: how-to-guide
+    links:
+    - text: ルール セットを構成する
+      url: how-to-configure-rule-set.md
+- title: アプリケーションをセキュリティで保護する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Private Link
+      url: concept-private-link.md
+    - text: Azure Front Door Standard/Premium の WAF
+      url: ../../web-application-firewall/afds/afds-overview.md
+    - text: DDoS 保護
+      url: concept-ddos.md
+  - linkListType: how-to-guide
+    links:
+    - text: Private Link を有効にする
+      url: how-to-enable-private-link-web-app.md
+    - text: WAF ポリシーを構成する
+      url: ../../web-application-firewall/afds/waf-front-door-create-portal.md
+- title: レポート、メトリック、ログ
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: レポート
+      url: how-to-reports.md
+    - text: 監視、メトリック、およびアラート
+      url: how-to-monitor-metrics.md
+    - text: ログの記録
+      url: how-to-logs.md
+- title: キャッシュと最適化
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: キャッシュ
+      url: concept-caching.md
+  - linkListType: how-to-guide
+    links:
+    - text: キャッシュの消去
+      url: how-to-cache-purge.md
+    - text: 圧縮
+      url: how-to-compression.md
+- title: Azure Front Door のトラブルシューティング
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ルーティングに関する一般的な問題
+      url: troubleshoot-route-issues.md
+    - text: 許可された証明機関
+      url: troubleshoot-allowed-certificate-authority.md
+- title: Azure Front Door について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Front Door とは
+      url: ../front-door-overview.md

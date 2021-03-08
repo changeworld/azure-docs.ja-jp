@@ -1,18 +1,17 @@
 ---
 title: Azure Migrate を使用して Azure への移行について多数の物理サーバーを評価する | Microsoft Docs
 description: Azure Migrate サービスを使用して Azure への移行について多数の物理サーバーを評価する方法について説明します。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
-ms.topic: conceptual
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 01/19/2020
-ms.author: hamusa
-ms.openlocfilehash: b84a7b88f700e2ba8e9fbe29099dfcbce8dbf3b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45954a42613fb1716e3b66305c0485a3966b8e37
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85081074"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753690"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Azure への移行について多数の物理サーバーを評価する
 
@@ -30,7 +29,7 @@ ms.locfileid: "85081074"
 
 
 > [!NOTE]
-> 大規模な評価を行う前に、いくつかのサーバーを評価して概念実証を試す場合は、[チュートリアル シリーズ](tutorial-prepare-physical.md)に従ってください。
+> 大規模な評価を行う前に、いくつかのサーバーを評価して概念実証を試す場合は、[チュートリアル シリーズ](./tutorial-discover-physical.md)に従ってください。
 
 ## <a name="plan-for-assessment"></a>評価の計画
 
@@ -64,7 +63,7 @@ ms.locfileid: "85081074"
 2. Azure Migrate とやり取りするために、自分の Azure アカウントのアクセス許可を設定します。
 3. 物理サーバーを準備します。
 
-[このチュートリアル](tutorial-prepare-physical.md)の手順に従って、これらの設定を構成します。
+[このチュートリアル](./tutorial-discover-physical.md)の手順に従って、これらの設定を構成します。
 
 ## <a name="create-a-project"></a>プロジェクトの作成
 
@@ -73,7 +72,7 @@ ms.locfileid: "85081074"
 1. Azure Migrate プロジェクトを作成します。
 2. Azure Migrate Server Assessment ツールをプロジェクトに追加します。
 
-[詳細情報](how-to-add-tool-first-time.md)
+[詳細情報](./create-manage-projects.md)
 
 ## <a name="create-and-review-an-assessment"></a>評価の作成とレビュー
 

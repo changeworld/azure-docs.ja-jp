@@ -1,7 +1,7 @@
 ---
 title: Join Data (データの結合):モジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で Join Data (データの結合) モジュールを使用してデータセットをマージする方法について説明します。
+description: Azure Machine Learning デザイナーのデータの結合モジュールを使用して、2 つのデータセットを結合する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 38606f424e38fc68519181f485b5b698d0705d6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c23dca40d50c5837bd9ff45bc3c3d7fb2581685b
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477580"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420752"
 ---
 # <a name="join-data"></a>データの結合
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) で **Join Data (データの結合)** モジュールを使用し、データベーススタイルの結合操作を使用して 2 つのデータセットをマージする方法について説明します。  
+この記事では、Azure Machine Learning デザイナーの **データの結合** モジュールを使用し、データベーススタイルの結合操作を使用して、2 つのデータセットをマージする方法について説明します。  
 
 ## <a name="how-to-configure-join-data"></a>[Join Data]\(データの結合\) を構成する方法
 

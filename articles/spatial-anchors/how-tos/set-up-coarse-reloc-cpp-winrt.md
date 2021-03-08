@@ -1,19 +1,19 @@
 ---
 title: C++ と WinRT での粗い再局在化
 description: C++ と WinRT で粗い再局在化を使用してアンカーを作成して配置する方法の詳細な説明。
-author: bucurb
-manager: dacoghl
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: bobuc
-ms.date: 09/19/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6d2bb4c563bd7bae186ce9832ff0472f17a8afd3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7068ecb7fcfe888118396523e0e3d997e5a59e9a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76548290"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96005012"
 ---
 # <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cwinrt"></a>C++ と WinRT で粗い再局在化を使用してアンカーを作成して配置する方法
 
@@ -31,7 +31,7 @@ Azure Spatial Anchors では、デバイス上の配置センサー データを
 
 このガイドを完了するには、以下が必要です。
 
-- C++ と <a href="https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows Runtime API</a> に関する基本的な知識
+- C++ と <a href="/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows Runtime API</a> に関する基本的な知識
 - 「[Azure Spatial Anchors の概要](../overview.md)」を読んでいる。
 - [5 分間のクイック スタート](../index.yml)のいずれかを完了している。
 - [アンカーを作成して配置する方法](../create-locate-anchors-overview.md)に関するページを読んでいる。

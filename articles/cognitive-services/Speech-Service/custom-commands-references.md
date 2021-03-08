@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 83725a3839d36fc753bb43803e67acaca7571a6e
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 98510132b2341736664dfafa52e9567df95652be
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851843"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561099"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>カスタム コマンドの概念と定義
 
@@ -49,6 +49,8 @@ ms.locfileid: "85851843"
 ### <a name="required"></a>必須
 このチェック ボックスでは、コマンドの実行または完了に、このパラメーターの値が必要かどうかが示されます。 パラメーターが必須とマークされている場合は、ユーザーに値を指定するように求める応答を構成する必要があります。
 
+**既定値** が含まれるように **必須のパラメーター** を構成した場合も、システムによってパラメーターの値が明示的に求められることにご注意ください。
+
 ### <a name="type"></a>Type
 カスタム コマンドでは、次のパラメーターの型がサポートされています。
 
@@ -57,7 +59,7 @@ ms.locfileid: "85851843"
 * Number
 * String
 
-これらのパラメーターの型すべてで、既定値の構成がサポートされており、Azure portal から構成できます。
+geography を除き、これらのパラメーターの型はすべて、ポータルから構成できる既定値の構成をサポートしています。
 
 ### <a name="configuration"></a>構成
 構成は、String 型に対してのみ定義されるパラメーター プロパティです。 サポートされている値を次に示します。
@@ -75,7 +77,7 @@ ms.locfileid: "85851843"
 * Number
 
 ## <a name="rules-configuration"></a>ルールの構成
-カスタム コマンドのルールは、一連の "*条件*" によって定義され、条件が満たされると、一連の "*アクション*" が実行されます。 ルールを使用すると、*実行後の状態*や次のターンの*期待される回答*を構成することもできます。
+カスタム コマンドのルールは、一連の "*条件*" によって定義され、条件が満たされると、一連の "*アクション*" が実行されます。 ルールを使用すると、*実行後の状態* や次のターンの *期待される回答* を構成することもできます。
 
 ### <a name="types"></a>型
 カスタム コマンドでは、次のルール カテゴリがサポートされています。
@@ -113,11 +115,14 @@ ms.locfileid: "85851843"
 ### <a name="post-execution-state"></a>実行後の状態
 実行後の状態は、現在の入力を処理した後のダイアログの状態です (発話またはアクティビティ)。 次のいずれかの種類になります。
 
-* **[Command completed]\(コマンドが完了)** : コマンドを完了します。これ以上コマンドのルールは処理されません。
+* **[Keep current state]\(現在の状態を維持する\)** :現在の状態のみを維持します。
+* **[Complete the command]\(コマンドを実行する\)** :コマンドを完了します。これ以上コマンドのルールは処理されません。
 * **[Execute completion rules]\(完了ルールの実行\)** : 有効なすべての完了ルールを実行します。
 * **[Wait for user's input]\(ユーザーの入力を待機\)** : 次のユーザー入力を待機します。
+
+
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [GitHub 上のサンプルを参照してください](https://aka.ms/speech/cc-samples)
+> [GitHub のサンプルを参照](https://aka.ms/speech/cc-samples)

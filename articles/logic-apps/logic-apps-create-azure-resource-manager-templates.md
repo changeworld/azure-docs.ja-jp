@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 07fb91f081719a2e51cff45be67bbe9f362123f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4535e6bf11f8c2abf20b1b323925c3fc3299d362
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066063"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90971793"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Logic Apps でのデプロイを自動化するために Azure Resource Manager テンプレートを作成する
 
@@ -60,14 +60,14 @@ Resource Manager テンプレートを作成するには、Azure PowerShell と 
 
 1. [PowerShell ギャラリー](https://www.powershellgallery.com/packages/LogicAppTemplate)から LogicAppTemplate モジュールをインストールする最も簡単な方法は、次のコマンドを実行することです。
 
-   ```text
-   PS> Install-Module -Name LogicAppTemplate
+   ```powershell
+   Install-Module -Name LogicAppTemplate
    ```
 
    最新バージョンに更新するには、次のコマンドを実行します。
 
-   ```text
-   PS> Update-Module -Name LogicAppTemplate
+   ```powershell
+   Update-Module -Name LogicAppTemplate
    ```
 
 または、手動でインストールする場合は、GitHub に示されている [Logic App Template Creator](https://github.com/jeffhollan/LogicAppTemplateCreator) での手順に従ってください。
@@ -80,28 +80,43 @@ LogicAppTemplate モジュールが Azure のテナントとサブスクリプ�
 
 ### <a name="generate-template-with-powershell"></a>PowerShell を使用したテンプレートの生成
 
-LogicAppTemplate モジュールと [Azure CLI](/cli/azure/?view=azure-cli-latest) をインストールした後にテンプレートを生成するには、次の PowerShell コマンドを実行します。
+LogicAppTemplate モジュールと [Azure CLI](/cli/azure/) をインストールした後にテンプレートを生成するには、次の PowerShell コマンドを実行します。
 
-```text
-PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
+```powershell
+$parameters = @{
+    Token = (az account get-access-token | ConvertFrom-Json).accessToken
+    LogicApp = '<logic-app-name>'
+    ResourceGroup = '<Azure-resource-group-name>'
+    SubscriptionId = $SubscriptionId
+    Verbose = $true
+}
+
+Get-LogicAppTemplate @parameters | Out-File C:\template.json
 ```
 
 推奨事項に従って [Azure Resource Manager クライアント ツール](https://github.com/projectkudu/ARMClient)からトークンをパイプ処理するには、代わりに次のコマンドを実行します。この中の `$SubscriptionId` はお使いの Azure サブスクリプション ID です。
 
-```text
-PS> armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
+```powershell
+$parameters = @{
+    LogicApp = '<logic-app-name>'
+    ResourceGroup = '<Azure-resource-group-name>'
+    SubscriptionId = $SubscriptionId
+    Verbose = $true
+}
+
+armclient token $SubscriptionId | Get-LogicAppTemplate @parameters | Out-File C:\template.json
 ```
 
 抽出後に、次のコマンドを実行してテンプレートからパラメーター ファイルを作成できます。
 
-```text
-PS> Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-name>.json'
+```powershell
+Get-ParameterTemplate -TemplateFile $filename | Out-File '<parameters-file-name>.json'
 ```
 
 Azure Key Vault 参照 (静的のみ) を使用して抽出する場合は、次のコマンドを実行します。
 
-```text
-PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
+```powershell
+Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
 | パラメーター | 必須 | 説明 |

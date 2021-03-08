@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 41d2feefc5af1e795520d9b3d90809e625502fa6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a22a0d112671019d73eb4c9a3853462e4e9c8c75
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918402"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937353"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights のテレメトリ チャネル
 
@@ -18,7 +18,7 @@ ms.locfileid: "88918402"
 
 ## <a name="what-are-telemetry-channels"></a>テレメトリ チャネルとは
 
-テレメトリ チャネルは、テレメトリ項目をバッファー処理し、Application Insights サービスに送信する役割を担うものです (テレメトリ項目は、クエリと解析のために Application Insights サービスに保存されます)。 [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) インターフェイスを実装するクラスはいずれも、テレメトリ チャネルです。
+テレメトリ チャネルは、テレメトリ項目をバッファー処理し、Application Insights サービスに送信する役割を担うものです (テレメトリ項目は、クエリと解析のために Application Insights サービスに保存されます)。 [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel) インターフェイスを実装するクラスはいずれも、テレメトリ チャネルです。
 
 テレメトリ チャネルの `Send(ITelemetry item)` メソッドは、テレメトリ初期化子とテレメトリ プロセッサがすべて呼び出された後に呼び出されます。 つまり、テレメトリ プロセッサによって削除された項目はチャネルに到達しません。 通常であれば、`Send()` が項目をすぐにバックエンドに送信することはありません。 通常はメモリ内でバッファー処理されてから、バッチ単位で効率的に送信されます。
 
@@ -153,13 +153,25 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 このチャネルは、パッケージと名前空間の名前に "WindowsServer" という文言が含まれてこそいるものの、次の例外を除き、Windows 以外のシステムでもサポートされます。 Windows 以外のシステムでは、チャネルにより既定でローカル ストレージ フォルダーが作成されることはありません。 ローカル ストレージ フォルダーをご自身で作成したうえで、それを使用するようにチャネルを構成する必要があります。 ローカル ストレージの構成が済んだ後は、チャネルがすべてのシステムで同じように動作します。
 
+> [!NOTE]
+> リリース 2.15.0-beta3 以降、ローカル ストレージは Linux、Mac、および Windows で自動的に作成されるようになりました。 Windows 以外のシステムの場合、SDK は次のロジックに基づいてローカル ストレージ フォルダーを自動的に作成します。
+> - `${TMPDIR}` - `${TMPDIR}` 環境変数が設定されている場合、この場所が使用されます。
+> - `/var/tmp` - 前述の場所が存在しない場合は、`/var/tmp` が試行されます。
+> - `/tmp` - 前述のどちらの場所も存在しない場合は、`tmp` が試行されます。 
+> - これらの場所のいずれも存在しない場合、ローカル ストレージは作成されず、引き続き手動による構成が必要になります。 [完全な実装の詳細については、こちらを参照してください](https://github.com/microsoft/ApplicationInsights-dotnet/pull/1860)。
+
 ### <a name="does-the-sdk-create-temporary-local-storage-is-the-data-encrypted-at-storage"></a>SDK では一時的なローカル ストレージが作成されますか? データはストレージで暗号化されますか?
 
 ネットワークの問題の発生中またはスロットリング中は、SDK によりテレメトリの項目がローカル ストレージに保存されます。 このデータがローカルで暗号化されることはありません。
 
 Windows システムの場合、SDK により自動で %TEMP% または %LOCALAPPDATA% ディレクトリに一時的なローカル フォルダーが作成され、アクセスが管理者と現在のユーザーのみに制限されます。
 
-Windows 以外のシステムの場合、SDK によりローカル ストレージが自動で作成されることはないので、既定ではデータがローカルに保存されません。 ストレージ ディレクトリを作成し、それを使用するようにチャネルを構成できます。 この場合、そのディレクトリのセキュリティ保護については、ご自身の責任となります。
+Windows 以外のシステムの場合、SDK によりローカル ストレージが自動で作成されることはないので、既定ではデータがローカルに保存されません。
+
+> [!NOTE]
+> リリース 2.15.0-beta3 以降、ローカル ストレージは Linux、Mac、および Windows で自動的に作成されるようになりました。 
+
+ ストレージ ディレクトリを作成し、それを使用するようにチャネルを構成できます。 この場合、そのディレクトリのセキュリティ保護については、ご自身の責任となります。
 [データ保護とプライバシー](data-retention-privacy.md#does-the-sdk-create-temporary-local-storage)の詳細をご確認ください。
 
 ## <a name="open-source-sdk"></a>オープンソース SDK

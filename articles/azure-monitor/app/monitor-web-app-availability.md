@@ -2,14 +2,14 @@
 title: Web サイトの可用性と応答性の監視 | Microsoft Docs
 description: Application Insights で Web テストを設定します。 Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 02/14/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 6f9c5fa691456195943f97419c1175fd5b586878
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0ea44aad43a3dd6f11656a45dc7d0e619187fc22
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310278"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729030"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>任意の Web サイトの可用性を監視する
 
@@ -23,9 +23,12 @@ ms.locfileid: "87310278"
 
 * [URL の Ping テスト](#create-a-url-ping-test): Azure Portal で作成できる簡単なテストです。
 * [複数ステップ Web テスト](availability-multistep.md):一連の Web 要求の記録であり、さらに複雑なシナリオをテストするために再生できます。 複数ステップ Web テストは Visual Studio Enterprise で作成され、ポータルにアップロードされて実行されます。
-* [カスタム可用性追跡テスト](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet):可用性テストを実行するカスタム アプリケーションを作成する場合は、`TrackAvailability()` メソッドを使用して Application Insights に結果を送信できます。
+* [カスタム可用性追跡テスト](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability):可用性テストを実行するカスタム アプリケーションを作成する場合は、`TrackAvailability()` メソッドを使用して Application Insights に結果を送信できます。
 
 **Application Insights リソースごとに最大 100 個の可用性テストを作成できます。**
+
+> [!IMPORTANT]
+> [URL の ping テスト](#create-a-url-ping-test)と[複数ステップ Web テスト](availability-multistep.md)ではどちらも、パブリック インターネット DNS インフラストラクチャを使用して、テストされたエンドポイントのドメイン名を解決します。 つまり、プライベート DNS を使用する場合は、自分のテストのドメイン名もすべてパブリック ドメイン ネーム サーバーによって解決できることを確実にするか、それが可能でない場合は、代わりに[カスタム可用性追跡テスト](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)を使用できるようにする必要があります。
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 
@@ -69,8 +72,42 @@ Azure portal で、 **[リソースの作成]**  >  **[開発者ツール]**  > 
 |設定| 説明
 |----|----|----|
 |**準リアルタイム (プレビュー)** | 準リアルタイムのアラートを使用することが推奨されます。 この種類のアラートの構成は、可用性テストの作成後に実行されます。  |
-|**クラシック** | 新しい可用性テストでクラシック アラートを使用することはもう推奨されていません。|
 |**アラートの場所のしきい値**|少なくとも 3/5 の場所にすることをお勧めします。 アラートの場所のしきい値とテストの場所の数の最適な関係は、**アラートの場所のしきい値** = **テストの場所の数** - 2 です。テストの場所は、少なくとも 5 か所にします。|
+
+### <a name="location-population-tags"></a>位置情報の作成タグ
+
+Azure Resource Manager を使用して可用性 URL の ping テストをデプロイするときに、次の作成タグを位置情報属性に使用できます。
+
+#### <a name="azure-gov"></a>Azure Gov
+
+| 表示名   | 作成名     |
+|----------------|---------------------|
+| USGov バージニア州 | usgov-va-azr        |
+| USGov アリゾナ  | usgov-phx-azr       |
+| USGov テキサス    | usgov-tx-azr        |
+| USDoD 東部     | usgov-ddeast-azr    |
+| USDoD 中部  | usgov-ddcentral-azr |
+
+#### <a name="azure"></a>Azure
+
+| 表示名                           | 作成名   |
+|----------------------------------------|-------------------|
+| オーストラリア東部                         | emea-au-syd-edge  |
+| ブラジル南部                           | latam-br-gru-edge |
+| 米国中部                             | us-fl-mia-edge    |
+| 東アジア                              | apac-hk-hkn-azr   |
+| 米国東部                                | us-va-ash-azr     |
+| フランス南部 (旧名フランス中部) | emea-ch-zrh-edge  |
+| フランス中部                         | emea-fr-pra-edge  |
+| 東日本                             | apac-jp-kaw-edge  |
+| 北ヨーロッパ                           | emea-gb-db3-azr   |
+| 米国中北部                       | us-il-ch1-azr     |
+| 米国中南部                       | us-tx-sn1-azr     |
+| 東南アジア                         | apac-sg-sin-azr   |
+| 英国西部                                | emea-se-sto-edge  |
+| 西ヨーロッパ                            | emea-nl-ams-azr   |
+| 米国西部                                | us-ca-sjc-azr     |
+| 英国南部                               | emea-ru-msa-edge  |
 
 ## <a name="see-your-availability-test-results"></a>可用性テストの結果を表示する
 
@@ -78,7 +115,7 @@ Azure portal で、 **[リソースの作成]**  >  **[開発者ツール]**  > 
 
 数分後に、 **[更新]** をクリックすると、テスト結果が表示されます。
 
-![折れ線グラフ](./media/monitor-web-app-availability/availability-refresh-002.png)
+![スクリーンショットには、[更新] ボタンが強調表示された [可用性] ページが示されています。](./media/monitor-web-app-availability/availability-refresh-002.png)
 
 散布図には、診断テスト手順の詳細が含まれたテスト結果のサンプルが表示されます。 テスト エンジンは、失敗したテストの診断の詳細を格納します。 成功したテストの場合、診断の詳細は実行のサブセットに対して格納されます。 緑色/赤色の点の上にポインターを置くと、テスト、テスト名、および場所が表示されます。
 
@@ -113,7 +150,7 @@ Azure portal で、 **[リソースの作成]**  >  **[開発者ツール]**  > 
 
 ![サーバー側診断](./media/monitor-web-app-availability/open-instance-4.png)
 
-生の結果に加えて、[メトリックス エクスプローラー](../platform/metrics-getting-started.md)に 2 つの重要な可用性メトリックを表示することもできます。
+生の結果に加えて、[メトリックス エクスプローラー](../essentials/metrics-getting-started.md)に 2 つの重要な可用性メトリックを表示することもできます。
 
 1. 可用性:すべてのテスト実行にわたる、成功したテストの割合 (%)。
 2. テスト期間:すべてのテスト実行にわたる平均のテスト期間。
@@ -121,7 +158,7 @@ Azure portal で、 **[リソースの作成]**  >  **[開発者ツール]**  > 
 ## <a name="automation"></a>Automation
 
 * [PowerShell スクリプトを使用して、可用性テストを自動的に設定します](./powershell.md#add-an-availability-test)。
-* アラートが発生したときに呼び出される [webhook](../platform/alerts-webhooks.md) を設定する。
+* アラートが発生したときに呼び出される [webhook](../alerts/alerts-webhooks.md) を設定する。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

@@ -7,11 +7,11 @@ ms.date: 2/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a80eea5a50aa7b1e441049eeb2cae381994cd3ec
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018656"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006338"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>EventFlow を使用したイベントの集計と収集
 
@@ -83,7 +83,7 @@ internal sealed class ServiceEventSource : EventSource
 
 `eventFlowConfig.json` ファイルはサービス構成パッケージの一部であることに注意してください。 このファイルに対する変更は、サービスの完全なアップグレードまたは構成のみのアップグレードに含めることができ、Service Fabric アップグレードの正常性チェックの対象にでき、アップグレードが失敗した場合は自動的にロールバックできます。 詳しくは、「[Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)」をご覧ください。
 
-構成の*フィルター* セクションでは、EventFlow パイプラインを通って出力される情報をさらにカスタマイズして、特定の情報を含めたり、または除外したり、イベント データの構造を変更したりできます。 フィルタリングの詳細については、[EventFlow フィルター](https://github.com/Azure/diagnostics-eventflow#filters)に関するページをご覧ください。
+構成の *フィルター* セクションでは、EventFlow パイプラインを通って出力される情報をさらにカスタマイズして、特定の情報を含めたり、または除外したり、イベント データの構造を変更したりできます。 フィルタリングの詳細については、[EventFlow フィルター](https://github.com/Azure/diagnostics-eventflow#filters)に関するページをご覧ください。
 
 最後に、`Program.cs` ファイル内にあるサービスのスタートアップ コードで、EventFlow パイプラインをインスタンス化します。
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 06/15/2020
+ms.date: 11/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: 08e236d798f700a3c48dd41ba61941bc0037d613
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 777fc60f76692734ea34ff3cdf8f6bc6e5e8316b
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055379"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615713"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>条件付きアクセスポリシーでの場所の条件の使用 
 
@@ -41,7 +41,7 @@ ms.locfileid: "88055379"
 
 ![Azure portal 内のネームド ロケーション](./media/location-condition/new-named-location.png)
 
-ロケーションを構成するには、少なくとも**名前**と IP 範囲を指定する必要があります。 
+ロケーションを構成するには、少なくとも **名前** と IP 範囲を指定する必要があります。 
 
 構成できるネームド ロケーションの数は、Azure AD 内の関連するオブジェクトのサイズによって制約されます。 次の制限事項に基づいて場所を構成できます。
 
@@ -64,13 +64,13 @@ ms.locfileid: "88055379"
 一部の組織では、国またはリージョンの IP 境界全体を、条件付きアクセス ポリシーのネームド ロケーションとして定義することがあります。 北朝鮮などの場所から有効なユーザーがアクセスすることがないことがわかっている場合、不要なトラフィックをブロックするときに、これらの場所を使用することがあります。 これらの IP アドレスから国へのマッピングは、定期的に更新されます。 
 
 > [!NOTE]
-> 国には IPv6 アドレス範囲は含まれず、既知の IPv4 アドレス範囲のみが含まれており、信頼済みとしてマークすることはできません。
+> IPv6 アドレス範囲を国にマップすることはできません。 国にマップされるのは IPv4 アドレスのみです。
 
 ![Azure portal で国またはリージョンに基づいた新しい場所を作成する](./media/location-condition/new-named-location-country-region.png)
 
 #### <a name="include-unknown-areas"></a>不明な領域を含める
 
-IP アドレスによっては、特定の国またはリージョンにマップされないことがあります。 これらの IP の場所をキャプチャするには、場所を定義するときに **[不明な領域を含める]** のチェックボックスをオンに ます。 このオプションを使用すると、このような IP アドレスをネームド ロケーションに含めるかどうかを選択できます。 ネームド ロケーションを使用するポリシーを不明な場所に適用する場合は、この設定を使用します。
+すべての IPv6 アドレスなど、IP アドレスによっては、特定の国またはリージョンにマップされないことがあります。 これらの IP の場所をキャプチャするには、場所を定義するときに **[不明な領域を含める]** のチェックボックスをオンに ます。 このオプションを使用すると、このような IP アドレスをネームド ロケーションに含めるかどうかを選択できます。 ネームド ロケーションを使用するポリシーを不明な場所に適用する場合は、この設定を使用します。
 
 ### <a name="configure-mfa-trusted-ips"></a>MFA の信頼できる IP の構成
 
@@ -114,7 +114,7 @@ IP アドレスによっては、特定の国またはリージョンにマッ�
 - **IP 範囲の場所**
 
 > [!NOTE]
-> 国には IPv6 アドレス範囲は含まれず、既知の IPv4 アドレス範囲のみが含まれており、信頼済みとしてマークすることはできません。
+> IPv6 アドレス範囲を国にマップすることはできません。 国にマップされるのは IPv4 アドレスのみです。
 
 ![ネームド ロケーション プレビューのインターフェイス](./media/location-condition/named-location-preview.png)
 
@@ -157,7 +157,7 @@ Azure AD にプロキシされる IPv6 トラフィックの大部分は、Micro
 これらは、ネームド ロケーションに IPv6 の範囲を構成することが必要になる可能性がある最も一般的な理由です。 さらに、Azure VNet を使用している場合は、IPv6 アドレスからのトラフィックが発生します。 条件付きアクセスポリシーによって VNet トラフィックがブロックされている場合は、Azure AD のサインイン ログを確認します。 トラフィックを特定したら、使用されている IPv6 アドレスを確認し、ポリシーから除外することができます。 
 
 > [!NOTE]
-> 1 つのアドレスに対して IP CIDR 範囲を指定する場合は、/32 ビット マスクを適用します。 たとえば IPv6 アドレス 2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a があり、この 1 つのアドレスを範囲として除外する場合は、2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a/32 を使用します。
+> 1 つのアドレスに対して IP CIDR 範囲を指定する場合は、/128 ビット マスクを適用します。 たとえば IPv6 アドレス 2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a があり、この 1 つのアドレスを範囲として除外する場合は、2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a/128 を使用します。
 
 ### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>Azure AD サインイン アクティビティ レポートでの IPv6 トラフィックの特定
 
@@ -195,6 +195,9 @@ Azure AD にプロキシされる IPv6 トラフィックの大部分は、Micro
 ### <a name="api-support-and-powershell"></a>API のサポートと PowerShell
 
 ネームド ロケーションに対して Graph API のプレビュー バージョンを利用できます。詳細については、[namedLocation API](/graph/api/resources/namedlocation?view=graph-rest-beta) を参照してください。
+
+> [!NOTE]
+> PowerShell で作成したネームド ロケーションは、ネームド ロケーションにのみ表示されます (プレビュー)。 以前のビューにはネームド ロケーションが表示されません。  
 
 ## <a name="next-steps"></a>次のステップ
 

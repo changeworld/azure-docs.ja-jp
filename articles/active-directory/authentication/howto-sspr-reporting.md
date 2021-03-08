@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 02/01/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c8557457e3a1dc7d0ed1e50da3070360b1fd76f
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 6a764538ebc73927b1d274b2538e123ec90ce60e
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717729"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741560"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD のパスワード管理に関するレポート オプション
 
@@ -27,7 +27,7 @@ ms.locfileid: "88717729"
 次の質問に対する答えは、[Azure portal](https://portal.azure.com/) に用意されているレポートから得られます。
 
 > [!NOTE]
-> ユーザーは[グローバル管理者](../users-groups-roles/directory-assign-admin-roles.md)であること、および組織の代表としてこのデータを収集できるようにオプトインすることが必要です。 オプトインするには、 **[レポート]** タブまたは監査ログに少なくとも 1 回アクセスする必要があります。 それまでは、ご自分の組織のデータが収集されることはありません。
+> ユーザーは[グローバル管理者](../roles/permissions-reference.md)であること、および組織の代表としてこのデータを収集できるようにオプトインすることが必要です。 オプトインするには、 **[レポート]** タブまたは監査ログに少なくとも 1 回アクセスする必要があります。 それまでは、ご自分の組織のデータが収集されることはありません。
 >
 
 * パスワード リセットを登録した人数
@@ -181,7 +181,7 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 * [SSPR のポリシー オプション](concept-sspr-policy.md)
 * [パスワード ライトバックの概要とその必要性](./tutorial-enable-sspr-writeback.md)
 * [SSPR のすべてのオプションとその意味](concept-sspr-howitworks.md)
-* [不具合が発生していると思われるSSPR のトラブルシューティング方法](active-directory-passwords-troubleshoot.md)
+* [不具合が発生していると思われるSSPR のトラブルシューティング方法](./troubleshoot-sspr.md)
 * [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Azure AD の SSPR アクティビティ監査ログの例"

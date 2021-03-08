@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: cbdc81789fcd996774090f12523e7404c0aa0111
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 41a97c639d9148f2bff3e4f530363ea05a65a7b8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205849"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018251"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Azure API Management インスタンスを自動的にスケーリングする  
 
@@ -25,7 +25,7 @@ Azure API Management サービス インスタンスは、一連の規則に基�
 この記事では、自動スケールの構成手順を説明し、自動スケール規則の最適な構成を提案します。
 
 > [!NOTE]
-> **従量課金**レベルの API Management サービスは、トラフィックに基づいて自動的にスケールされます。追加の構成は必要ありません。
+> **従量課金** レベルの API Management サービスは、トラフィックに基づいて自動的にスケールされます。追加の構成は必要ありません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +46,7 @@ Azure API Management サービス インスタンスは、一連の規則に基�
 + 価格レベルもサービス インスタンスの最大ユニット数を指定します。
 + スケーリング処理には少なくとも 20 分ほどかかります。
 + サービスが別の操作によってロックされている場合、スケーリング要求は失敗し、自動的に再試行します。
-+ マルチリージョン デプロイのサービスの場合、**プライマリの場所**にあるユニットのみスケーリング可能です。 他の場所にあるユニットはスケーリングできません。
++ マルチリージョン デプロイのサービスの場合、**プライマリの場所** にあるユニットのみスケーリング可能です。 他の場所にあるユニットはスケーリングできません。
 
 ## <a name="enable-and-configure-autoscale-for-azure-api-management-service"></a>Azure API Management サービスの自動スケールの有効化と構成
 
@@ -120,16 +120,16 @@ Azure API Management サービスの自動スケーリングを構成するに�
 
     ![Azure Monitor スケールイン規則](media/api-management-howto-autoscale/06.png)
 
-12. Azure API Management ユニットの**最大**数を設定します。
+12. Azure API Management ユニットの **最大** 数を設定します。
 
     > [!NOTE]
     > Azure API Management には、インスタンスをスケールアウトできるユニット数の制限があります。 制限はサービス レベルによって異なります。
 
-    ![Azure Monitor スケールイン規則](media/api-management-howto-autoscale/07.png)
+    ![Azure API Management ユニットの最大数を設定する場所が強調表示されているスクリーンショット。](media/api-management-howto-autoscale/07.png)
 
 13. **[保存]** をクリックします。 自動スケールが構成されました。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法](api-management-howto-deploy-multi-region.md)
-- [クラウドの支出を最適化して節約する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [クラウドの支出を最適化して節約する](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -1,34 +1,29 @@
 ---
 title: Azure-SSIS Integration Runtime パッケージ ストアを使用したパッケージの管理
 description: Azure-SSIS Integration Runtime パッケージ ストアを使用してパッケージを管理する方法について説明します。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
-manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 07/20/2020
-ms.openlocfilehash: 6455c186e05fc98b1ec340c152f9b3e5710f1dd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/29/2020
+ms.openlocfilehash: 66fdd20e66360be7cdaa6d918e18ca09c413da07
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087911"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393838"
 ---
 # <a name="manage-packages-with-azure-ssis-integration-runtime-package-store"></a>Azure-SSIS Integration Runtime パッケージ ストアを使用したパッケージの管理
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-オンプレミスの SQL Server Integration Services (SSIS) ワークロードをクラウドにリフト アンド シフトするには、Azure Data Factory (ADF) で Azure-SSIS Integration Runtime (IR) をプロビジョニングします。 詳細については、[Azure-SSIS IR のプロビジョニング](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)に関するページを参照してください。 Azure-SSIS IR では、次のことがサポートされます。
+オンプレミスの SQL Server Integration Services (SSIS) ワークロードをクラウドにリフト アンド シフトするには、Azure Data Factory (ADF) で Azure-SSIS Integration Runtime (IR) をプロビジョニングします。 詳細については、[Azure-SSIS IR のプロビジョニング](./tutorial-deploy-ssis-packages-azure.md)に関するページを参照してください。 Azure-SSIS IR では、次のことがサポートされます。
 
 - Azure SQL Database サーバーまたは Managed Instance をホストとする SSIS カタログ (SSISDB) にデプロイされたパッケージを実行する (プロジェクト デプロイ モデル)
 - Azure SQL Managed Instance をホストとするファイル システム、Azure Files、SQL Server データベース (MSDB) のいずれかにデプロイされたパッケージを実行する (パッケージ デプロイ モデル)
 
-パッケージ デプロイ モデルを使用する場合、パッケージ ストアを使用して Azure-SSIS IR をプロビジョニングするかどうかを選択できます。 これらには、Azure SQL Managed Instance によってホストされるファイル システム、Azure Files、または MSDB の上にパッケージ管理レイヤーが用意されています。 Azure-SSIS IR パッケージ ストアを使用すると、パッケージのインポート、エクスポート、削除、実行のほか、実行中のパッケージの監視と停止を、[従来の SSIS パッケージ ストア](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017)と同様に SQL Server Management Studio (SSMS) を介して行うことができます。 
+パッケージ デプロイ モデルを使用する場合、パッケージ ストアを使用して Azure-SSIS IR をプロビジョニングするかどうかを選択できます。 これらには、Azure SQL Managed Instance によってホストされるファイル システム、Azure Files、または MSDB の上にパッケージ管理レイヤーが用意されています。 Azure-SSIS IR パッケージ ストアを使用すると、パッケージのインポート、エクスポート、削除、実行のほか、実行中のパッケージの監視と停止を、[従来の SSIS パッケージ ストア](/sql/integration-services/service/package-management-ssis-service)と同様に SQL Server Management Studio (SSMS) を介して行うことができます。 
 
 ## <a name="connect-to-azure-ssis-ir"></a>Azure-SSIS IR への接続
 
@@ -57,13 +52,13 @@ SSMS 上の Azure-SSIS IR に接続すると、任意のパッケージ スト�
       > [!NOTE]
       > Azure-SSIS IR パッケージ ストアへの SSIS パッケージのインポートは 1 つずつ実行する必要があります。これらは、SQL Server/SSIS のバージョンを維持したままで、基になる MSDB、ファイル システム、または Azure Files に単にコピーされます。 
       >
-      > 現在、Azure-SSIS IR の既定の互換性レベルは 140 です。これは **SQL Server 2017** に相当します。それよりも前のバージョンのパッケージを実行すると、実行時に SSIS 2017 パッケージにアップグレードされます。 より新しいバージョンのパッケージの実行はサポートされていません。
+      > 現在、Azure-SSIS IR は **SQL Server 2017** に基づいているため、それよりも前のバージョンのパッケージを実行すると、実行時に SSIS 2017 パッケージにアップグレードされます。 より新しいバージョンのパッケージの実行はサポートされていません。
       >
       > さらに、レガシ SSIS パッケージ ストアは特定の SQL Server バージョンにバインドされ、そのバージョンの SSMS でのみアクセスできるため、レガシ SSIS パッケージ ストアの下位バージョンのパッケージは、SSMS 2019 以降のバージョンを使用して Azure-SSIS IR パッケージ ストアにインポートする前に、まず指定の SSMS バージョンを使用してファイル システムにエクスポートする必要があります。
       >
-      > また、複数の SSIS パッケージを Azure-SSIS IR パッケージ ストアにインポートし、さらに保護レベルを切り替えるには、[dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) コマンド ライン ユーティリティを使用できます。「[dtutil を使用した複数のパッケージのデプロイ](#deploying-multiple-packages-with-dtutil)」を参照してください。
+      > また、複数の SSIS パッケージを Azure-SSIS IR パッケージ ストアにインポートし、さらに保護レベルを切り替えるには、[dtutil](/sql/integration-services/dtutil-utility) コマンド ライン ユーティリティを使用できます。「[dtutil を使用した複数のパッケージのデプロイ](#deploying-multiple-packages-with-dtutil)」を参照してください。
 
-   *  パッケージ ストアから **ファイル システム**、**SQL Server** (MSDB)、または従来の **SSIS パッケージ ストア**にパッケージをエクスポートするには、 **[パッケージのエクスポート]** を選択します。
+   *  パッケージ ストアから **ファイル システム**、**SQL Server** (MSDB)、または従来の **SSIS パッケージ ストア** にパッケージをエクスポートするには、 **[パッケージのエクスポート]** を選択します。
 
       ![パッケージのエクスポート](media/azure-ssis-integration-runtime-package-store/ssms-package-store-export.png)
 
@@ -72,9 +67,9 @@ SSMS 上の Azure-SSIS IR に接続すると、任意のパッケージ スト�
       > [!NOTE]
       > Azure-SSIS IR パッケージ ストアからの SSIS パッケージのエクスポートは、1 つずつ実行する必要があります。保護レベルを切り替えずにこれを行うと、SQL Server/SSIS のバージョンを維持したままで、単にコピーされます。それ以外の場合は、SSIS 2019 以降のバージョンのパッケージにアップグレードされます。
       >
-      > 現在、Azure-SSIS IR の既定の互換性レベルは 140 です。これは **SQL Server 2017** に相当します。それよりも前のバージョンのパッケージを実行すると、実行時に SSIS 2017 パッケージにアップグレードされます。 より新しいバージョンのパッケージの実行はサポートされていません。
+      > 現在、Azure-SSIS IR は **SQL Server 2017** に基づいているため、それよりも前のバージョンのパッケージを実行すると、実行時に SSIS 2017 パッケージにアップグレードされます。 より新しいバージョンのパッケージの実行はサポートされていません。
       >
-      > また、複数の SSIS パッケージを Azure-SSIS IR パッケージ ストアからエクスポートし、さらに保護レベルを切り替えるには、[dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) コマンド ライン ユーティリティを使用できます。「[dtutil を使用した複数のパッケージのデプロイ](#deploying-multiple-packages-with-dtutil)」を参照してください。
+      > また、複数の SSIS パッケージを Azure-SSIS IR パッケージ ストアからエクスポートし、さらに保護レベルを切り替えるには、[dtutil](/sql/integration-services/dtutil-utility) コマンド ライン ユーティリティを使用できます。「[dtutil を使用した複数のパッケージのデプロイ](#deploying-multiple-packages-with-dtutil)」を参照してください。
 
    *  パッケージ ストアから既存のフォルダーまたはパッケージを削除するには、 **[削除]** を選択します。
 
@@ -88,7 +83,7 @@ SSMS 上の Azure-SSIS IR に接続すると、格納されている任意のパ
 
 ![パッケージ実行ユーティリティ ページ 3 & 4](media/azure-ssis-integration-runtime-package-store/ssms-package-store-execute2.png)
 
-**[パッケージ実行ユーティリティ]** ダイアログの **[全般]** 、 **[構成]** 、 **[実行オプション]** 、 **[ログ]** の各ページは、[SSIS パッケージの実行] アクティビティの **[設定]** タブに対応しています。 これらのページでは、パッケージの暗号化パスワードを入力し、パッケージ構成ファイルの情報にアクセスすることができます。 パッケージ実行の資格情報とプロパティだけでなく、ログ フォルダーのアクセス情報を入力することもできます。  **[パッケージ実行ユーティリティ]** ダイアログの **[値の設定]** ページは、[SSIS パッケージの実行] アクティビティの **[プロパティのオーバーライド]** タブに対応しています。ここでは、上書きする既存のパッケージのプロパティを入力できます。 詳細については、[ADF パイプラインで SSIS パッケージ実行アクティビティとして SSIS パッケージを実行する](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)に方法に関するページを参照してください。
+**[パッケージ実行ユーティリティ]** ダイアログの **[全般]** 、 **[構成]** 、 **[実行オプション]** 、 **[ログ]** の各ページは、[SSIS パッケージの実行] アクティビティの **[設定]** タブに対応しています。 これらのページでは、パッケージの暗号化パスワードを入力し、パッケージ構成ファイルの情報にアクセスすることができます。 パッケージ実行の資格情報とプロパティだけでなく、ログ フォルダーのアクセス情報を入力することもできます。  **[パッケージ実行ユーティリティ]** ダイアログの **[値の設定]** ページは、[SSIS パッケージの実行] アクティビティの **[プロパティのオーバーライド]** タブに対応しています。ここでは、上書きする既存のパッケージのプロパティを入力できます。 詳細については、[ADF パイプラインで SSIS パッケージ実行アクティビティとして SSIS パッケージを実行する](./how-to-invoke-ssis-package-ssis-activity.md)に方法に関するページを参照してください。
 
 **[実行]** ボタンを選択すると、SSIS パッケージの実行アクティビティを含む、新しい ADF パイプラインが自動的に生成され、トリガーされます。 同じ設定の ADF パイプラインが既に存在する場合は、再実行され、新しいパイプラインは生成されません。 ADF パイプラインと SSIS パッケージ実行アクティビティには、それぞれ `Pipeline_SSMS_YourPackageName_HashString` および `Activity_SSMS_YourPackageName` という名前が付けられます。
 
@@ -122,9 +117,9 @@ SSMS 上の Azure-SSIS IR に接続すると、右クリックしてメニュー
 
 レガシ パッケージ デプロイ モデルを維持しながら、オンプレミスの SSIS ワークロードを ADF の SSIS にリフト アンド シフトするには、ファイル システム、SQL Server によってホストされている MSDB、またはレガシ SSIS パッケージ ストアから、Azure Files、Azure SQL Managed Instance によってホストされている MSDB、または Azure-SSIS IR パッケージ ストアにパッケージをデプロイする必要があります。 同時に、保護レベルをユーザー キーによる暗号化から非暗号化またはパスワードによる暗号化に切り替える必要もあります (まだ行っていない場合)。
 
-SQL Server/SSIS のインストールに付属している [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) コマンド ライン ユーティリティを使用すると、複数のパッケージをバッチでデプロイすることができます。 これは特定の SSIS バージョンにバインドされているため、保護レベルを切り替えずに下位バージョンのパッケージをデプロイすると、SSIS バージョンを維持したままで、単にコピーされます。 デプロイにこれを使用し、同時に保護レベルを切り替えると、SSIS バージョンにアップグレードされます。
+SQL Server/SSIS のインストールに付属している [dtutil](/sql/integration-services/dtutil-utility) コマンド ライン ユーティリティを使用すると、複数のパッケージをバッチでデプロイすることができます。 これは特定の SSIS バージョンにバインドされているため、保護レベルを切り替えずに下位バージョンのパッケージをデプロイすると、SSIS バージョンを維持したままで、単にコピーされます。 デプロイにこれを使用し、同時に保護レベルを切り替えると、SSIS バージョンにアップグレードされます。
 
- 現在、Azure-SSIS IR の既定の互換性レベルは 140 です。これは **SQL Server 2017** に相当します。それよりも前のバージョンのパッケージを実行すると、実行時に SSIS 2017 パッケージにアップグレードされます。 より新しいバージョンのパッケージの実行はサポートされていません。
+ 現在、Azure-SSIS IR は **SQL Server 2017** に基づいているため、それよりも前のバージョンのパッケージを実行すると、実行時に SSIS 2017 パッケージにアップグレードされます。 より新しいバージョンのパッケージの実行はサポートされていません。
 
 そのため、ランタイム アップグレードを回避するには、パッケージ デプロイ モデルで Azure-SSIS IR で実行するパッケージをデプロイするときに、SQL Server/SSIS 2017 のインストールに付属している dtutil 2017 を使用する必要があります。 この用途のために、無料の [SQL Server/SSIS 2017 Developer Edition](https://go.microsoft.com/fwlink/?linkid=853016) をダウンロードしてインストールすることができます。 インストールが完了すると、`YourLocalDrive:\Program Files\Microsoft SQL Server\140\DTS\Binn` フォルダーで dtutil 2017 を見つけることができます。
 
@@ -148,13 +143,13 @@ for %f in (*.dtsx) do dtutil.exe /FILE %f /ENCRYPT FILE;Z:\%f;2;YourEncryptionPa
 
 上記のコマンドをバッチ ファイルで実行するには、`%f` を `%%f` に置き換えます。
 
-ファイル システム上にあるレガシ SSIS パッケージ ストアから Azure Files に複数のパッケージをデプロイし、同時にそれらの保護レベルを切り替えるには、同じコマンドを使用できますが、`YourLocalDrive:\...\YourPackageFolder` をレガシ SSIS パッケージ ストアで使用されるローカル フォルダーに置き換えます`YourLocalDrive:\Program Files\Microsoft SQL Server\YourSQLServerDefaultCompatibilityLevel\DTS\Packages\YourPackageFolder`。 たとえば、レガシ SSIS パッケージ ストアが SQL Server 2016 にバインドされている場合は、`YourLocalDrive:\Program Files\Microsoft SQL Server\130\DTS\Packages\YourPackageFolder` に移動します。  `YourSQLServerDefaultCompatibilityLevel` の値は、[SQL Server の既定の互換性レベルの一覧](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#arguments)で確認することができます。
+ファイル システム上にあるレガシ SSIS パッケージ ストアから Azure Files に複数のパッケージをデプロイし、同時にそれらの保護レベルを切り替えるには、同じコマンドを使用できますが、`YourLocalDrive:\...\YourPackageFolder` をレガシ SSIS パッケージ ストアで使用されるローカル フォルダーに置き換えます`YourLocalDrive:\Program Files\Microsoft SQL Server\YourSQLServerDefaultCompatibilityLevel\DTS\Packages\YourPackageFolder`。 たとえば、レガシ SSIS パッケージ ストアが SQL Server 2016 にバインドされている場合は、`YourLocalDrive:\Program Files\Microsoft SQL Server\130\DTS\Packages\YourPackageFolder` に移動します。  `YourSQLServerDefaultCompatibilityLevel` の値は、[SQL Server の既定の互換性レベルの一覧](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#arguments)で確認することができます。
 
 Azure Files 上に Azure-SSIS IR パッケージ ストアを構成した場合は、SSMS 2019 以降のバージョンで Azure-SSIS IR に接続すると、デプロイしたパッケージがそれらに表示されます。
 
 ### <a name="deploying-multiple-packages-from-msdb-on-premises-into-msdb-in-azure-with-dtutil"></a>dtutil を使用してオンプレミスの MSDB から Azure の MSDB に複数のパッケージをデプロイする
 
- SQL Server でホストされている MSDB または MSDB 上のレガシ SSIS パッケージ ストアから、Azure SQL Managed Instance でホストされている MSDB に複数のパッケージをデプロイし、同時にそれらの保護レベルを切り替えるには、SSMS 上の SQL Server に接続し、SSMS の**オブジェクト エクスプローラー**で `Databases->System Databases->msdb` ノードを右クリックして **[新しいクエリ]** ウィンドウを開き、次の T-SQL スクリプトを実行します。 お客様のケースに固有の文字列をすべて置き換えてください。  
+ SQL Server でホストされている MSDB または MSDB 上のレガシ SSIS パッケージ ストアから、Azure SQL Managed Instance でホストされている MSDB に複数のパッケージをデプロイし、同時にそれらの保護レベルを切り替えるには、SSMS 上の SQL Server に接続し、SSMS の **オブジェクト エクスプローラー** で `Databases->System Databases->msdb` ノードを右クリックして **[新しいクエリ]** ウィンドウを開き、次の T-SQL スクリプトを実行します。 お客様のケースに固有の文字列をすべて置き換えてください。  
   
 ```sql
 BEGIN
@@ -181,7 +176,7 @@ MSDB 上に Azure-SSIS IR パッケージ ストアを構成した場合は、SS
 
 ### <a name="deploying-multiple-packages-from-msdb-on-premises-into-azure-files-with-dtutil"></a>dtutil を使用してオンプレミスの MSDB から Azure Files へ複数のパッケージをデプロイする
 
- SQL Server でホストされている MSDB または MSDB 上のレガシ SSIS パッケージ ストアから、Azure Files に複数のパッケージをデプロイし、同時にそれらの保護レベルを切り替えるには、SSMS 上の SQL Server に接続し、SSMS の**オブジェクト エクスプローラー**で `Databases->System Databases->msdb` ノードを右クリックして **[新しいクエリ]** ウィンドウを開き、次の T-SQL スクリプトを実行します。 お客様のケースに固有の文字列をすべて置き換えてください。  
+ SQL Server でホストされている MSDB または MSDB 上のレガシ SSIS パッケージ ストアから、Azure Files に複数のパッケージをデプロイし、同時にそれらの保護レベルを切り替えるには、SSMS 上の SQL Server に接続し、SSMS の **オブジェクト エクスプローラー** で `Databases->System Databases->msdb` ノードを右クリックして **[新しいクエリ]** ウィンドウを開き、次の T-SQL スクリプトを実行します。 お客様のケースに固有の文字列をすべて置き換えてください。  
   
 ```sql
 BEGIN
@@ -211,4 +206,4 @@ Azure Files 上に Azure-SSIS IR パッケージ ストアを構成した場合�
 
 ## <a name="next-steps"></a>次のステップ
 
-自動生成された ADF パイプラインを SSIS パッケージの実行アクティビティを使用して再実行または編集することや、ADF ポータルで新たに作成することができます。 詳細については、[ADF パイプラインで SSIS パッケージ実行アクティビティとして SSIS パッケージを実行する](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)に方法に関するページを参照してください。
+自動生成された ADF パイプラインを SSIS パッケージの実行アクティビティを使用して再実行または編集することや、ADF ポータルで新たに作成することができます。 詳細については、[ADF パイプラインで SSIS パッケージ実行アクティビティとして SSIS パッケージを実行する](./how-to-invoke-ssis-package-ssis-activity.md)に方法に関するページを参照してください。

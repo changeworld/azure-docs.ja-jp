@@ -12,12 +12,12 @@ metadata:
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: 4bff55dbc2be4ae34ed9385bc41726919a5e86c4
-  ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+  ms.openlocfilehash: 34ea848a9e376c4babe4fdff27f8693af627c6b7
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/05/2020
-  ms.locfileid: "87798394"
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "100547300"
 landingContent:
 - title: Identity Governance について
   linkLists:
@@ -37,8 +37,10 @@ landingContent:
       url: entitlement-management-overview.md
   - linkListType: tutorial
     links:
-    - text: ユーザーが必要なアクセスを要求できるようにするための、最初のアクセス パッケージを作成する
+    - text: リソースへのアクセスの管理 - Azure portal
       url: entitlement-management-access-package-first.md
+    - text: リソースへのアクセスの管理 - Microsoft Graph
+      url: /graph/tutorial-access-package-api?toc=/azure/active-directory/governance/toc.json&bc=/azure/active-directory/governance/breadcrumb/toc.json
   - linkListType: concept
     links:
     - text: 委任とロール

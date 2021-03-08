@@ -2,19 +2,15 @@
 title: Azure Automation での Windows Update エージェントに関する問題のトラブルシューティング
 description: この記事では、Update Management の使用時に Windows Update エージェントに関する問題をトラブルシューティングして解決する方法について説明します。
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 01/16/2020
-ms.topic: conceptual
-ms.service: automation
+ms.date: 01/25/2020
+ms.topic: troubleshooting
 ms.subservice: update-management
-manager: carmonm
-ms.openlocfilehash: 92020313fccf1b8be0add58a7bafab62b5daa4d5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 9516210021ce48f069ae3b3b4e02503527e0db24
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187134"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580895"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Windows Update エージェントの問題をトラブルシューティングする
 
@@ -27,10 +23,10 @@ Update Management のデプロイ時にマシンが準備完了 (正常) と表�
 > [!NOTE]
 > Azure portal に表示される内容とマシンの現在の状態の間で、わずかに遅延が発生する可能性があります。
 
-この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。 
+この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。
 
 > [!NOTE]
-> トラブルシューティング スクリプトには、Windows Server Update Services (WSUS) のチェック、およびキーの自動ダウンロードとインストールのキーのチェックが新しく組み込まれました。 
+> トラブルシューティング スクリプトには、Windows Server Update Services (WSUS) のチェック、およびキーの自動ダウンロードとインストールのキーのチェックが新しく組み込まれました。
 
 ## <a name="start-the-troubleshooter"></a>トラブルシューティングの開始
 
@@ -77,7 +73,7 @@ WMF のチェックでは、必要なバージョンの Windows Management Frame
 
 このチェックでは、エージェントがエージェント サービスと正しく通信できるかどうかを判別します。
 
-Hybrid Runbook Worker エージェントが登録エンドポイントと通信できるように、プロキシとファイアウォールが構成されている必要があります。 アドレスと開くポートの一覧については、「[ネットワークの計画](../automation-hybrid-runbook-worker.md#network-planning)」を参照してください。
+Hybrid Runbook Worker エージェントが登録エンドポイントと通信できるように、プロキシとファイアウォールが構成されている必要があります。 アドレスと開くポートの一覧については、[ネットワーク計画](../automation-hybrid-runbook-worker.md#network-planning)に関する記事を参照してください。
 
 ### <a name="operations-endpoint"></a>操作エンドポイント
 
@@ -91,7 +87,7 @@ Hybrid Runbook Worker エージェントが Job Runtime Data Service と通信�
 
 このチェックでは、Windows 用 Log Analytics エージェント (`healthservice`) がマシン上で実行されているかどうかを確認します。 このサービスのトラブルシューティングの詳細については、「[Windows 用 Log Analytics エージェントが実行されていない](hybrid-runbook-worker.md#mma-not-running)」を参照してください。
 
-Windows 用の Log Analytics エージェントを再インストールする場合、「[Windows 用エージェントをインストールする](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)」を参照してください。
+Windows 用の Log Analytics エージェントを再インストールする場合、「[Windows 用エージェントをインストールする](../../azure-monitor/vm/quick-collect-windows-computer.md#install-the-agent-for-windows)」を参照してください。
 
 ### <a name="monitoring-agent-service-events"></a>エージェント サービス イベントの監視
 
@@ -110,7 +106,7 @@ Windows 用の Log Analytics エージェントを再インストールする場
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>オフライン トラブルシューティング
 
-スクリプトをローカルに実行することで、Hybrid Runbook Worker のトラブルシューティング ツールをオフラインで使用できます。 PowerShell ギャラリーから次のスクリプトを入手します。[Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration)。 このスクリプトを実行するには、WMF 4.0 以降をインストールしておく必要があります。 最新バージョンの PowerShell をダウンロードするには、「[PowerShell のさまざまなバージョンのインストール](/powershell/scripting/install/installing-powershell)」を参照してください。
+スクリプトをローカルに実行することで、Hybrid Runbook Worker のトラブルシューティング ツールをオフラインで使用できます。 GitHub から次のスクリプトを入手します。[UM_Windows_Troubleshooter_Offline.ps1](https://github.com/Azure/updatemanagement/blob/main/UM_Windows_Troubleshooter_Offline.ps1)。 このスクリプトを実行するには、WMF 4.0 以降をインストールしておく必要があります。 最新バージョンの PowerShell をダウンロードするには、「[PowerShell のさまざまなバージョンのインストール](/powershell/scripting/install/installing-powershell)」を参照してください。
 
 このスクリプトの出力は次の例のようになります。
 

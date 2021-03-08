@@ -3,12 +3,12 @@ title: 認証と承認の問題のトラブルシューティング - Azure Even
 description: この記事では、Azure Event Hubs での認証と承認に関する問題のトラブルシューティングについて説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: bed415c6180953b5a5728032a50d51618c084343
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 368fd8efda1b828f99bc41da0743768989c1a601
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533888"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329612"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>認証と承認の問題のトラブルシューティング - Azure Event Hubs
 [接続の問題のトラブルシューティング](troubleshooting-guide.md)に関する記事では、Azure Event Hubs での接続に関する問題に対してトラブルシューティングを行うためのヒントを提供します。 この記事では、Azure Event Hubs での認証と承認に関する問題のトラブルシューティングに役立つヒントと推奨事項を示します。 
@@ -20,6 +20,8 @@ Azure Active Directory (Azure AD) を使用して Azure Event Hubs で認証お�
 - Event Hubs リソースへの完全なアクセスのための [Azure Event Hubs データ所有者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)。
 - 送信アクセス用の [Azure Event Hubs データ送信者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)。
 - 受信アクセス用の [Azure Event Hubs データ受信者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)。
+
+スキーマ レジストリの組み込みロールについては、[スキーマ レジストリのロール](schema-registry-overview.md#azure-role-based-access-control)に関する記事を参照してください。
 
 ### <a name="resource-scopes"></a>リソース スコープ
 - **コンシューマー グループ**:このスコープでは、ロールの割り当てはこのエンティティにのみ適用されます。 現時点で、Azure portal は、このレベルのセキュリティ プリンシパルに Azure ロールを割り当てることをサポートしていません。 

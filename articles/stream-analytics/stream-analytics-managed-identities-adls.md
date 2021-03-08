@@ -1,20 +1,20 @@
 ---
 title: Azure Data Lake Storage Gen1 に対して Azure Stream Analytics を認証する
 description: この記事では、マネージド ID を使用して、Azure Data Lake Storage Gen1 出力に対してご自身の Azure Stream Analytics ジョブを認証する方法について説明します。
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 551f0065f1547e94d93993a38795234f455b9eef
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: d7e9b1ecef9cfda804b89f0ba1beeb54d7d48b98
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044398"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020351"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>マネージド ID を使用して Azure Data Lake Storage Gen1 に対して Stream Analytics を認証する
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>マネージド ID を使用して Azure Data Lake Storage Gen1 に対して Stream Analytics を認証する (プレビュー)
 
 Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力でのマネージド ID 認証をサポートします。 ID は、特定の Stream Analytics ジョブを表す Azure Active Directory に登録済みのマネージド アプリケーションであり、対象のリソースを認証するために使用できます。 マネージド ID は、パスワードの変更や 90 日ごとに発生するユーザー トークンの有効期限切れによる再認証の必要性などのユーザー ベースの認証方法の制限を排除します。 さらに、マネージド ID は、Azure Data Lake Storage Gen1 に出力する Stream Analytics ジョブのデプロイの自動化で役に立ちます。
 
@@ -82,9 +82,9 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
 
    * Azure Active Directory 内に Stream Analytics ジョブの ID に対応するサービス プリンシパルを自動的に作成します。 新しく作成された ID のライフ サイクルは、Azure によって管理されます。 Stream Analytics ジョブが削除されると、関連付けられた ID (つまりサービス プリンシパル) も Azure によって自動的に削除されます。
 
-   * ジョブ内で使用される ADLS Gen1 プレフィックス パスへの**書き込み**と**実行**のアクセス許可を自動的に設定し、このフォルダーおよびすべての子に割り当てます。
+   * ジョブ内で使用される ADLS Gen1 プレフィックス パスへの **書き込み** と **実行** のアクセス許可を自動的に設定し、このフォルダーおよびすべての子に割り当てます。
 
-5. [Stream Analytics CI.CD Nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) バージョン 1.5.0 以上をビルド コンピューター上 (Visual Studio 外部) で使用して、次のプロパティによって Resource Manager テンプレートを生成できます。 次のセクションの Resource Manager テンプレートのデプロイに関する手順に従って、サービス プリンシパルを取得し、PowerShell によってサービス プリンシパルへのアクセスを付与します。
+5. [Stream Analytics CI.CD NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) バージョン 1.5.0 以上をビルド コンピューター上 (Visual Studio 外部) で使用して、次のプロパティによって Resource Manager テンプレートを生成できます。 次のセクションの Resource Manager テンプレートのデプロイに関する手順に従って、サービス プリンシパルを取得し、PowerShell によってサービス プリンシパルへのアクセスを付与します。
 
 ## <a name="resource-manager-template-deployment"></a>Resource Manager テンプレートの展開
 
@@ -174,6 +174,10 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
    ```
 
    上記の PowerShell コマンドの詳細については、[Set-AzDataLakeStoreItemAclEntry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) のドキュメントを参照してください。
+
+## <a name="remove-managed-identity"></a>マネージド ID の削除
+
+Stream Analytics ジョブに対して作成されたマネージド ID は、ジョブが削除されたときにのみ削除されます。 ジョブを削除せずにマネージド ID を削除することはできません。 マネージド ID を使用する必要がなくなった場合は、出力の認証方法を変更できます。 マネージド ID は、ジョブが削除されるまで存在し続け、マネージド ID の認証を再度使用する場合に使用されます。
 
 ## <a name="limitations"></a>制限事項
 この機能は次をサポートしません。

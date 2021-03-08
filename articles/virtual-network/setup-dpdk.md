@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: 622b7e629a7f5fea77afc18ec5121fe3466716ed
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: ba7c2a37d58f20ac4ff1f49a46a406d1b1f70106
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387559"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704420"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Linux 仮想マシンでの DPDK の設定
 
@@ -50,7 +50,7 @@ Azure Marketplace の次のディストリビューションがサポートさ�
 
 **カスタムのカーネル サポート**
 
-一覧に示されていない Linux カーネルのバージョンについては、[Azure で調整された Linux カーネルを作成するためのパッチ](https://github.com/microsoft/azure-linux-kernel)に関するページを参照してください。 また、詳細情報については、[azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com) にお問い合わせください。 
+一覧に示されていない Linux カーネルのバージョンについては、[Azure で調整された Linux カーネルを作成するためのパッチ](https://github.com/microsoft/azure-linux-kernel)に関するページを参照してください。 また、詳細情報については、[aznetdpdk@microsoft.com](mailto:aznetdpdk@microsoft.com) にお問い合わせください。 
 
 ## <a name="region-support"></a>リージョンのサポート
 
@@ -143,7 +143,7 @@ zypper \
 
 ## <a name="failsafe-pmd"></a>フェールセーフの PMD
 
-DPDK アプリケーションは、Azure で公開されたフェールセーフの PMD 経由で実行される必要があります。 *VF* PMD 経由でアプリケーションが直接実行される場合、一部のパケットは統合インターフェイス経由で表示されるので、VM を宛先とする**すべての**パケットが受信されるわけではありません。 
+DPDK アプリケーションは、Azure で公開されたフェールセーフの PMD 経由で実行される必要があります。 *VF* PMD 経由でアプリケーションが直接実行される場合、一部のパケットは統合インターフェイス経由で表示されるので、VM を宛先とする **すべての** パケットが受信されるわけではありません。 
 
 DPDK アプリケーションをフェールセーフの PMD 経由で実行すると、該当のアプリケーションを宛先とするすべてのパケットが、そのアプリケーションで受信されることが保証されます。 また、ホストがサービス提供されている場合に VF が取り消されたとしても、アプリケーションは確実に、引き続き DPDK モードで実行されます。 フェールセーフの PMD の詳細については、[フェールセーフでのポーリング モードのドライバー ライブラリ](https://doc.dpdk.org/guides/nics/fail_safe.html)を参照してください。
 

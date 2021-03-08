@@ -1,6 +1,6 @@
 ---
 title: Azure AD にサービス アプリを登録する - Azure API for FHIR
-description: トークンの認証と取得に使用できるサービス クライアント アプリケーションを Azure Active Directory に登録する方法について説明します。
+description: サービス クライアント アプリケーションを Azure Active Directory に登録する方法について説明します。
 services: healthcare-apis
 author: matjazl
 ms.service: healthcare-apis
@@ -8,68 +8,72 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 34eec3ad0d2fc193744898b6f08cbe50c261c945
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6f7bf122b292ca144eac406957f19a13c7ba6662
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853026"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975826"
 ---
 # <a name="register-a-service-client-application-in-azure-active-directory"></a>Azure Active Directory にサービス クライアント アプリケーションを登録する
 
 この記事では、サービス クライアント アプリケーションを Azure Active Directory に登録する方法について説明します。 クライアント アプリケーションの登録とは、トークンの認証および取得に使用できるアプリケーションの Azure Active Directory の表現です。 サービス クライアントは、対話型のユーザー認証なしでアクセス トークンを取得するために、アプリケーションから使用されることを目的としています。 アクセス トークンを取得するときには、特定のアプリケーション アクセス許可を持ち、アプリケーション シークレット (パスワード) を使用します。
 
-以下の手順に従って新しいサービス クライアントを作成します。
+新しいサービス クライアントを作成するには、以下の手順に従います。
 
 ## <a name="app-registrations-in-azure-portal"></a>Azure portal でのアプリの登録
 
-1. [Azure portal](https://portal.azure.com) の左側のナビゲーション パネルで、 **[Azure Active Directory]** をクリックします。
+1. [Azure portal](https://portal.azure.com) で、 **[Azure Active Directory]** に移動します。
 
-2. **[Azure Active Directory]** ブレードで、 **[アプリの登録]** をクリックします。
+2. **[アプリの登録]** を選択します。
 
     ![Azure portal。 新しいアプリの登録。](media/how-to-aad/portal-aad-new-app-registration.png)
 
-3. **[新規登録]** をクリックします。
+3. **[新規登録]** を選択します。
 
-## <a name="service-client-application-details"></a>サービス クライアント アプリケーションの詳細
+4. サービス クライアントに表示名を指定します。 サービス クライアント アプリケーションでは、一般に応答 URL を使用しません。
 
-* サービス クライアントには表示名が必要です。また、応答 URL を指定することもできますが、通常は使用されません。
+    :::image type="content" source="media/service-client-app/service-client-registration.png" alt-text="Azure portal。新しいサービス クライアント アプリの登録。":::
 
-    ![Azure portal。 新しいサービス クライアント アプリの登録。](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-NAME.png)
+5. **[登録]** を選択します。
 
 ## <a name="api-permissions"></a>API のアクセス許可
 
-サービス クライアント アプリケーション ロールを付与する必要があります。 
+これでアプリケーションが登録されたので、ユーザーに代わり、このアプリケーションによって要求できる API アクセス許可を選択する必要があります。
 
-1. **[API のアクセス許可]** を開き、[[FHIR API Resource Application Registration]\(FHIR API リソース アプリケーションの登録\)](register-resource-azure-ad-client-app.md) を選択します。 Azure API for FHIR を使用する場合は、 **[所属する組織で使用している API]** の下で Azure Healthcare API を検索して、Azure Healthcare API へのアクセス許可を追加します。
+1. **[API のアクセス許可]** を選択します。
+1. **[アクセス許可の追加]** を選択します。
 
-    ![Azure portal。 サービス クライアント API のアクセス許可](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-API-PERMISSIONS.png)
+    Azure API for FHIR を使用する場合は、 **[所属する組織で使用している API]** で **Azure Healthcare API** を検索し、Azure Healthcare API へのアクセス許可を追加します。 
 
-2. リソース アプリケーションで定義されているアプリケーション ロールから選択します。
+    別のリソース アプリケーションを参照している場合は、 **[自分の API][ で作成済みの ](register-resource-azure-ad-client-app.md)FHIR API リソース アプリケーションの登録**を選択します。
 
-    ![Azure portal。 サービス クライアント アプリケーションのアクセス許可](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-APPLICATION-PERMISSIONS.png)
+    :::image type="content" source="media/service-client-app/service-client-org-api.png" alt-text="Azure portal。新しいサービス クライアント アプリの登録。" lightbox="media/service-client-app/service-client-org-api-expanded.png":::
 
-3. アプリケーションへの同意を許可します。 必要なアクセス許可を持っていない場合は、Azure Active Directory 管理者に確認してください。
+1. ユーザーに代わって Confidential アプリケーションが要求できるスコープ (アクセス許可) を選択します。
 
-    ![Azure portal。 サービス クライアント管理者の同意](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-ADMIN-CONSENT.png)
+    :::image type="content" source="media/service-client-app/service-client-add-permission.png" alt-text="Azure portal。新しいサービス クライアント アプリの登録。":::
+
+1. アプリケーションへの同意を許可します。 必要なアクセス許可を持っていない場合は、Azure Active Directory 管理者に確認してください。
+
+    :::image type="content" source="media/service-client-app/service-client-grant-permission.png" alt-text="Azure portal。新しいサービス クライアント アプリの登録。":::
 
 ## <a name="application-secret"></a>アプリケーション シークレット
 
-サービス クライアントにはシークレット (パスワード) が必要です。これはトークンを取得するときに使用されます。
+サービス クライアントでは、トークンを取得するためにシークレット (パスワード) を必要とします。
 
-1. **[証明書とシークレット]** をクリックします。
-
-2. **[新しいクライアント シークレット]** をクリックします
+1. **[証明書とシークレット]** を選択します。
+2. **[新しいクライアント シークレット]** を選択します。
 
     ![Azure portal。 サービス クライアント シークレット](media/how-to-aad/portal-aad-register-new-app-registration-SERVICE-CLIENT-SECRET.png)
 
-3. シークレットの期間を入力します。
+3. シークレットの説明と期間を指定します (1 年間、2 年間、または [なし])。
 
-4. 生成されると、ポータルに一度だけ表示されます。 メモして、安全に保管してください。
+4. シークレットが生成されると、ポータルに一度だけ表示されます。 メモして、安全に保管してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、サービス クライアント アプリケーションを Azure Active Directory に登録する方法について学習しました。 次に、Azure で FHIR API をデプロイします。
+この記事では、サービス クライアント アプリケーションを Azure Active Directory に登録する方法について学習しました。 次に、Postman を使用して FHIR サーバーへのアクセスをテストします。
  
 >[!div class="nextstepaction"]
->[オープン ソースの FHIR Serverをデプロイする](fhir-oss-powershell-quickstart.md)
+>[Postman を使用して Azure API for FHIR にアクセスする](access-fhir-postman-tutorial.md)

@@ -3,12 +3,12 @@ title: Azure Resource Manager を使用したデプロイとアップグレー�
 description: Azure Resource Manager テンプレートを使用して Service Fabric クラスターにアプリケーションとサービスをデプロイする方法を説明します。
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: a849bdff0d2719f02b6b5f2d7159b87ce664c13f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ed6bc7d96cb3ea0934929e6543c5e637a9f42c1f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256511"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930839"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>アプリケーションとサービスを Azure Resource Manager のリソースとして管理する
 
@@ -17,8 +17,8 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
 これは、クラスターに必要なセットアップ、ガバナンス、またはクラスター管理アプリケーションをデプロイする方法として推奨されます。 これには、[パッチ オーケストレーション アプリケーション](service-fabric-patch-orchestration-application.md)、ウォッチドッグ、または他のアプリケーションやサービスをデプロイする前にクラスターで実行する必要があるすべてのアプリケーションが含まれます。 
 
 該当する場合は、アプリケーションを Resource Manager のリソースとして管理することで次のメリットが得られます。
-* 監査証跡:Resource Manager はすべての操作を監査し、詳細な*アクティビティ ログ* を保存します。このログは、アプリケーションとクラスターに加えられたすべての変更を追跡するのに役立ちます。
-* ロールベースのアクセス制御 (RBAC):同じ Resource Manager テンプレートを使用して、クラスターと、そのクラスターにデプロイされたアプリケーションへのアクセスを管理できます。
+* 監査証跡:Resource Manager はすべての操作を監査し、詳細な *アクティビティ ログ* を保存します。このログは、アプリケーションとクラスターに加えられたすべての変更を追跡するのに役立ちます。
+* Azure ロールベースのアクセス制御 (Azure RBAC):同じ Resource Manager テンプレートを使用して、クラスターと、そのクラスターにデプロイされたアプリケーションへのアクセスを管理できます。
 * Azure Resource Manager (Azure Portal 経由) を使用して、クラスターと重要なアプリケーションのデプロイをすべて 1 か所で管理できます。
 
 次のスニペットは、1 つのテンプレートを使用して管理できるさまざまな種類のリソースを示しています。
@@ -50,13 +50,12 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
 }
 ```
 
-
 ## <a name="add-a-new-application-to-your-resource-manager-template"></a>Resource Manager テンプレートに新しいアプリケーションを追加する
 
 1. クラスターの Resource Manager テンプレートをデプロイ用に準備します。 この手順の詳細については、「[Azure Resource Manager を使用して Service Fabric クラスターを作成する](service-fabric-cluster-creation-via-arm.md)」をご覧ください。
 2. クラスターに展開するいくつかのアプリケーションについて検討します。 他のアプリケーションから依存される、常に実行されるアプリケーションがある場合や、 クラスターのガバナンスまたはセットアップのアプリケーションをデプロイする予定の場合、 そのようなアプリケーションは、前述のように Resource Manager テンプレートを使用して管理するのが最適です。 
-3. この方法でデプロイするアプリケーションを決定したら、それらのアプリケーションをパッケージ化し、圧縮し、ファイル共有に配置する必要があります。 共有には、デプロイ時に使用する Azure Resource Manager の REST エンドポイントを通じてアクセスできる必要があります。
-4. Resource Manager テンプレートのクラスターの宣言の下に、各アプリケーションのプロパティを記述します。 これらのプロパティには、レプリカまたはインスタンスの数と、リソース (他のアプリケーションやサービス) 間の依存関係チェーンが含まれます。 包括的なプロパティの一覧については、[REST API Swagger 仕様](https://aka.ms/sfrpswaggerspec)に関するページをご覧ください。これはアプリケーションやサービスのマニフェストに代わるものではなく、マニフェストに含まれる内容の一部をクラスターの Resource Manager テンプレートの一部として記述します。 次に示すのは、ステートレス サービス *Service1* とステートフル サービス *Service2* を *Application1* の一部としてデプロイするサンプル テンプレートです。
+3. この方法でどのようなアプリケーションをデプロイするかを決定したら、それらのアプリケーションをパッケージ化し、zip 圧縮して、ストレージ共有に配置する必要があります。 共有には、デプロイ時に使用する Azure Resource Manager の REST エンドポイントを通じてアクセスできる必要があります。 詳細については、「[ストレージ アカウントの作成](service-fabric-concept-resource-model.md#create-a-storage-account)」を参照してください。
+4. Resource Manager テンプレートのクラスターの宣言の下に、各アプリケーションのプロパティを記述します。 これらのプロパティには、レプリカまたはインスタンスの数と、リソース (他のアプリケーションやサービス) 間の依存関係チェーンが含まれます。 これはアプリケーションやサービスのマニフェストに代わるものではなく、マニフェストに含まれる内容の一部をクラスターの Resource Manager テンプレートの一部として記述します。 次に示すのは、ステートレス サービス *Service1* とステートフル サービス *Service2* を *Application1* の一部としてデプロイするサンプル テンプレートです。
 
    ```json
    {
@@ -244,7 +243,7 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
    ```
 
    > [!NOTE] 
-   > *apiVersion* は `"2019-03-01"` に設定する必要があります。 クラスターが既にデプロイされている場合は、このテンプレートをクラスターとは別にデプロイすることもできます。
+   > 個々のテンプレート プロパティに関する使用法および詳細を見つけるには、Service Fabric の [Azure Resource Manager リファレンス](/azure/templates/microsoft.servicefabric/clusters/applicationtypes)を参照してください。
 
 5. デプロイします。 
 

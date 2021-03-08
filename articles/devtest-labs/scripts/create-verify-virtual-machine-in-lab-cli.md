@@ -4,12 +4,12 @@ description: この Azure CLI スクリプトは、ラボに仮想マシンを�
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: b64b6fa13bd0d320707dc279cb554d5c23f1d80d
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: c7625f62d7897d61903f864b216ccf9aa13648ea
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136169"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198423"
 ---
 # <a name="use-azure-cli-to-create-and-verify-availability-of-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Azure CLI を使用して Azure DevTest Labs のラボに仮想マシンを作成し、使用できることを確認する
 
@@ -38,8 +38,8 @@ az group delete --name myResourceGroup
 | command | メモ |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az lab vm create](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-create) | ラボに仮想マシン (VM) を作成します。 |
-| [az lab vm show](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-show) | ラボの VM の状態を表示します。 |
+| [az lab vm create](/cli/azure/lab/vm#az-lab-vm-create) | ラボに仮想マシン (VM) を作成します。 |
+| [az lab vm show](/cli/azure/lab/vm#az-lab-vm-show) | ラボの VM の状態を表示します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

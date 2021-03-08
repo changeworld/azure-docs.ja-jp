@@ -8,16 +8,16 @@ ms.date: 07/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 66d09c2faa52cee3e94402be708d654b548c0de1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: af1850f77c1d13c761bfc2a143074b5067b349b4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506997"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013005"
 ---
 # <a name="analysis-services-database-backup-and-restore"></a>Analysis Services データベースのバックアップと復元
 
-Azure Analysis Services の表形式モデル データベースのバックアップは、オンプレミスの Analysis Services の場合とほぼ同じです。 主な違いは、バックアップ ファイルの保存場所です。 バックアップ ファイルは、[Azure ストレージ アカウント](../storage/common/storage-create-storage-account.md)のコンテナーに保存する必要があります。 既存のストレージ アカウントとコンテナーを使用できるほか、ご利用のサーバーのストレージを構成する際にストレージ アカウントとコンテナーを作成することもできます。
+Azure Analysis Services の表形式モデル データベースのバックアップは、オンプレミスの Analysis Services の場合とほぼ同じです。 主な違いは、バックアップ ファイルの保存場所です。 バックアップ ファイルは、[Azure ストレージ アカウント](../storage/common/storage-account-create.md)のコンテナーに保存する必要があります。 既存のストレージ アカウントとコンテナーを使用できるほか、ご利用のサーバーのストレージを構成する際にストレージ アカウントとコンテナーを作成することもできます。
 
 > [!NOTE]
 > ストレージ アカウントを作成すると、新しい課金対象サービスを使用することになる場合があります。 詳細については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
@@ -75,10 +75,10 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
 
 ### <a name="powershell"></a>PowerShell
-[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase) コマンドレットを使用します。
+[Backup-ASDatabase](/powershell/module/sqlserver/backup-asdatabase) コマンドレットを使用します。
 
 ## <a name="restore"></a>復元
-復元の際、バックアップ ファイルは、サーバー用に構成したストレージ アカウントにある必要があります。 バックアップ ファイルをオンプレミスの場所からストレージ アカウントに移動する必要がある場合は、[Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) か、[AzCopy](../storage/common/storage-use-azcopy.md) コマンドライン ユーティリティを使用してください。 
+復元の際、バックアップ ファイルは、サーバー用に構成したストレージ アカウントにある必要があります。 バックアップ ファイルをオンプレミスの場所からストレージ アカウントに移動する必要がある場合は、[Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)か、[AzCopy](../storage/common/storage-use-azcopy-v10.md) コマンドライン ユーティリティを使用してください。 
 
 
 
@@ -102,11 +102,11 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
 ### <a name="powershell"></a>PowerShell
 
-[Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase) コマンドレットを使用します。
+[Restore-ASDatabase](/powershell/module/sqlserver/restore-asdatabase) コマンドレットを使用します。
 
 
 ## <a name="related-information"></a>関連情報
 
-[Azure ストレージ アカウント](../storage/common/storage-create-storage-account.md)  
+[Azure ストレージ アカウント](../storage/common/storage-account-create.md)  
 [高可用性](analysis-services-bcdr.md)      
 [Analysis Services のネットワーク接続に関する FAQ](analysis-services-network-faq.md)

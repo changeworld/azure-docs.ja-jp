@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: eab0a54d30f2cd2829779dbfc6081445f5be0a71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 525635ef40437fe308c52e2d5aba2c97ed8f20e7
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648845"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927534"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>KEDA を使用した Kubernetes での Azure Functions
 
@@ -18,7 +18,7 @@ Azure Functions ランタイムにより、必要な場所と方法でのホス�
 
 ## <a name="how-kubernetes-based-functions-work"></a>Kubernetes ベースの関数の動作
 
-Azure Functions サービスは 2 つの主要コンポーネントで構成されています。ランタイムとスケール コントローラーです。  Functions ランタイムでは、ご自分のコードを実行します。  ランタイムには、関数の実行をトリガー、ログ、および管理する方法のロジックが含まれています。  Azure Functions ランタイムは、*どこでも*実行できます。  もう 1 つのコンポーネントは、スケール コントローラーです。  スケール コントローラーによって、関数をターゲットにしているイベントの割合が監視され、アプリを実行しているインスタンスの数がプロアクティブにスケーリングされます。  詳細については、「[Azure Functions のスケールとホスティング](functions-scale.md)」を参照してください。
+Azure Functions サービスは 2 つの主要コンポーネントで構成されています。ランタイムとスケール コントローラーです。  Functions ランタイムでは、ご自分のコードを実行します。  ランタイムには、関数の実行をトリガー、ログ、および管理する方法のロジックが含まれています。  Azure Functions ランタイムは、 *どこでも* 実行できます。  もう 1 つのコンポーネントは、スケール コントローラーです。  スケール コントローラーによって、関数をターゲットにしているイベントの割合が監視され、アプリを実行しているインスタンスの数がプロアクティブにスケーリングされます。  詳細については、「[Azure Functions のスケールとホスティング](functions-scale.md)」を参照してください。
 
 Kubernetes ベースの Functions では、KEDA によるイベント ドリブン スケーリングを使用して、[Docker コンテナー](functions-create-function-linux-custom-image.md)内に Functions ランタイムが提供されます。  KEDA では、0 インスタンスまでのスケールイン (インスタンスが発生していないとき) と *n* インスタンスまでのスケールアウトが可能です。 これは、Kubernetes 自動スケーラー (ポッドの水平自動スケーラー) 用のカスタム メトリックを公開することによって行われます。  KEDA で Functions のコンテナーを使用すると、任意の Kubernetes クラスターにおいてサーバーレス関数の機能をレプリケートできるようになります。  これらの関数は、サーバーレス インフラストラクチャ用の [Azure Kubernetes Services (AKS) 仮想ノード](../aks/virtual-nodes-cli.md)機能を使用してデプロイすることもできます。
 
@@ -33,6 +33,9 @@ Kubernetes クラスターに KEDA をインストールするには、Helm を�
 ## <a name="deploying-a-function-app-to-kubernetes"></a>Kubernetes への関数アプリのデプロイ
 
 KEDA を実行する Kubernetes クラスターには、あらゆる関数アプリをデプロイできます。  関数は Docker コンテナー内で実行されるため、プロジェクトには `Dockerfile` が必要です。  まだそれがない場合は、Functions プロジェクトのルートで次のコマンドを実行して、Dockerfile を追加できます。
+
+> [!NOTE]
+> コア ツールを使用すると、.NET、Node、Python、または PowerShell で記述された Azure Functions 用の Dockerfile が自動的に作成されます。 Java で記述された関数アプリについては、Dockerfile を手動で作成する必要があります。 Azure Functions の[イメージ リスト](https://github.com/Azure/azure-functions-docker)を使用して、適切なイメージを見つけ、Azure 関数を基礎として使用します。
 
 ```cli
 func init --docker-only
@@ -49,7 +52,10 @@ func kubernetes deploy --name <name-of-function-deployment> --registry <containe
 
 > `<name-of-function-deployment>` をお使いの関数アプリの名前に置き換えます。
 
-これにより、Kubernetes `Deployment` リソース、`ScaledObject` リソース、`local.settings.json` からインポートされる環境変数を含む `Secrets` が作成されます。
+deploy コマンドを使用して、次の一連のアクションを実行します。
+1. 先ほど作成した Dockerfile は、関数アプリのローカル イメージを構築するために使用されます。
+2. ローカル イメージにタグが付けられ、ユーザーがログインしたコンテナー レジストリにプッシュされます。
+3. マニフェストが作成され、Kubernetes `Deployment` リソース、`ScaledObject` リソース、`local.settings.json` からインポートされた環境変数を含む `Secrets` を定義するクラスターに適用されます。
 
 ### <a name="deploying-a-function-app-from-a-private-registry"></a>プライベート レジストリから関数アプリをデプロイする
 
@@ -81,7 +87,7 @@ KEDA は、次の Azure Function トリガーをサポートしています。
 
 ### <a name="http-trigger-support"></a>HTTP トリガーのサポート
 
-HTTP トリガーを公開する Azure Functions は使用することはできますが、KEDA では直接管理されません。  KEDA prometheus トリガーを利用すると、[HTTP Azure Functions を 1 から *n* インスタンスにスケーリングできます](https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-function-app-in-kubernetes-using-keda-4m42)。
+HTTP トリガーを公開する Azure Functions は使用することはできますが、KEDA では直接管理されません。  KEDA prometheus トリガーを利用すると、 [HTTP Azure Functions を 1 から *n* インスタンスにスケーリングできます](https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-function-app-in-kubernetes-using-keda-4m42)。
 
 ## <a name="next-steps"></a>次の手順
 詳細については、次のリソースを参照してください。

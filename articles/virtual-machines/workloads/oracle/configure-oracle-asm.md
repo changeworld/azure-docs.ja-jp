@@ -1,25 +1,19 @@
 ---
 title: Azure Linux 仮想マシンで Oracle ASM をセットアップする | Microsoft Docs
 description: Azure 環境で Oracle ASM をすばやく稼動させます。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: rgardler
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+author: dbakevlar
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogardle
-ms.openlocfilehash: a707081aca4a28743bff8bdd1046a5e9aee285f1
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.author: kegorman
+ms.openlocfilehash: b180a0f148db5222a288958724ad248acd18b565
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224402"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673855"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle ASM をセットアップする  
 
@@ -351,7 +345,7 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
 
 Oracle Grid Infrastructure ソフトウェアをダウンロードして準備するには、次の手順を実行します。
 
-1. [Oracle ASM のダウンロード ページ](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html)から Oracle Grid Infrastructure をダウンロードします。 
+1. [Oracle ASM のダウンロード ページ](https://www.oracle.com/database/technologies/oracle19c-linux-downloads.html)から Oracle Grid Infrastructure をダウンロードします。 
 
    "**Oracle Database 12c Release 1 Grid Infrastructure (12.1.0.2.0) for Linux x86-64**" というダウンロード タイトルの下で、2 つの .zip ファイルをダウンロードします。
 
@@ -534,7 +528,7 @@ Oracle ASM インストールをセットアップするには、次の手順を
    - `ok` をクリックし、ディスク グループを作成します。
    - `ok` をクリックし、確認ウィンドウを閉じます。
 
-   ![[ディスク グループの作成] ダイアログ ボックスのスクリーンショット](./media/oracle-asm/asm04.png)
+   ![[ディスクグループの作成] ダイアログ ボックスのスクリーンショットで、[外部 (なし)] オプションが強調表示されています。](./media/oracle-asm/asm04.png)
 
 6. **[終了]** を選択して ASM コンフィギュレーション アシスタントを閉じます。
 

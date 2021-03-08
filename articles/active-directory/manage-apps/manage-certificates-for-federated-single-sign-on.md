@@ -4,7 +4,7 @@ description: フェデレーション証明書の有効期限をカスタマイ�
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 04/04/2019
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1731d5ea5d8db9ea1c5855a32d2daca0387c0bf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9b6e81fd090a625ec7ac86963cc9d5e66f5010e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763212"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259221"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理
 
@@ -54,7 +54,7 @@ ms.locfileid: "84763212"
 
 最初に、別の有効期限の新しい証明書を作成し、保存します。
 
-1. [Azure Active Directory ポータル](https://aad.portal.azure.com/)にサインインします。 **Azure Active Directory 管理センター**のページが表示されます。
+1. [Azure Active Directory ポータル](https://aad.portal.azure.com/)にサインインします。 **Azure Active Directory 管理センター** のページが表示されます。
 1. 左側のウィンドウで、 **[エンタープライズ アプリケーション]** を選択します。 自分のアカウントのエンタープライズ アプリケーションの一覧が表示されます。
 1. 影響を受けるアプリケーションを選択します。 アプリケーションの概要ページが表示されます。
 1. アプリケーションの概要ページの左側のウィンドウで、 **[シングル サインオン]** を選択します。
@@ -111,4 +111,4 @@ aadnotification@microsoft.com から通知メールを受け取ります。 メ�
 - [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](../saas-apps/tutorial-list.md)
 - [Azure Active Directory によるアプリケーションの管理](what-is-application-management.md)
 - [Azure Active Directory でのアプリケーションへのシングル サインオン](what-is-single-sign-on.md)
-- [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+- [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする](./debug-saml-sso-issues.md)

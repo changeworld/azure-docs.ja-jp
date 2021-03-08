@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 0fa0b0d5e3620fc45a104ea31fd3bcbedd673da1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 69f80856150e461c6edfafdf0aa89de77c4ab0fd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318948"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583816"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>オンプレミス サーバー用に Azure Monitor Application Insights エージェントをデプロイする
 
@@ -67,7 +67,7 @@ Application Insights エージェントは、 https://www.powershellgallery.com/
   - [Get-ApplicationInsightsMonitoringStatus](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringstatus) コマンドレットは、有効化が成功したことを確認するために使用できます。
   - アプリからテレメトリが送信されているかどうかをすばやく判断するには、[Live Metrics](./live-stream.md) を使用することをお勧めします。
 
-  - [Log Analytics](../log-query/get-started-portal.md) を使用して、現在テレメトリを送信しているすべてのクラウド ロールを一覧表示することもできます。
+  - [Log Analytics](../logs/log-analytics-tutorial.md) を使用して、現在テレメトリを送信しているすべてのクラウド ロールを一覧表示することもできます。
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
@@ -76,9 +76,9 @@ Application Insights エージェントは、 https://www.powershellgallery.com/
 
 テレメトリの表示:
 
-* パフォーマンスと使用状況を監視するための[メトリックを探索](../platform/metrics-charts.md)します。
+* パフォーマンスと使用状況を監視するための[メトリックを探索](../essentials/metrics-charts.md)します。
 * 問題を診断するために[イベントとログを検索](./diagnostic-search.md)します。
-* より高度なクエリのために[分析を使用](../log-query/log-query-overview.md)します。
+* より高度なクエリのために[分析を使用](../logs/log-query-overview.md)します。
 * [ダッシュボードを作成](./overview-dashboard.md)します。
 
 テレメトリの追加:
@@ -86,4 +86,3 @@ Application Insights エージェントは、 https://www.powershellgallery.com/
 * サイトがライブの状態であることを確認するために [Web テストを作成](monitor-web-app-availability.md)します。
 * Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](./javascript.md)を追加します。
 * トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](./asp-net.md)します。
-

@@ -1,23 +1,23 @@
 ---
 title: ISO 27001 ASE/SQL ワークロード ブループリント サンプルのコントロール
-description: Azure Policy と RBAC に対する ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルのコントロール マッピング。
-ms.date: 07/13/2020
+description: Azure Policy と Azure RBAC に対する ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルのコントロール マッピング。
+ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 4b15b5407f749eb53e264eb14c5e50b7afc21ee5
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: f4bd340e67547ee22a558a63b56619171a1749c7
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920740"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627469"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 ASE/SQL ワークロード ブループリント サンプルのコントロール マッピング
 
 以下の記事は、Azure Blueprints ISO 27001 ASE/SQL Workload ブループリント サンプルが ISO 27001 コントロールにどのようにマップされているかを説明したものです。 コントロールについて詳しくは、[ISO 27001](https://www.iso.org/isoiec-27001-information-security.html) をご覧ください。
 
-以下のマッピングは、**ISO 27001:2013** コントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 その後、 **\[プレビュー\] Audit ISO 27001:2013 コントロールを選択し、監査要件のビルトイン ポリシー イニシアチブをサポートするための VM 拡張機能をデプロイ**します。
+以下のマッピングは、**ISO 27001:2013** コントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 その後、 **\[プレビュー\] Audit ISO 27001:2013 コントロールを選択し、監査要件のビルトイン ポリシー イニシアチブをサポートするための VM 拡張機能をデプロイ** します。
 
 > [!IMPORTANT]
-> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールに対する[コンプライアンスを評価](../../../policy/how-to/get-compliance-data.md)するのに役立つ場合があります。ただし、多くの場合、コントロールと 1 つまたは複数のポリシーとの間に 1:1 または完全な一致はありません。 そのため、Azure Policy での**準拠**は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001-ase-sql-workload/control-mapping.md)に関するページを参照してください。
+> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールに対する[コンプライアンスの評価](../../../policy/how-to/get-compliance-data.md)に役立つ場合があります。ただし、多くの場合、コントロールと 1 つ以上のポリシーとの間には、一対一での一致、または完全な一致はありません。 そのため、Azure Policy での **準拠** は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001-ase-sql-workload/control-mapping.md)に関するページを参照してください。
 
 ## <a name="a612-segregation-of-duties"></a>A.6.1.2 職務の分離
 
@@ -37,8 +37,6 @@ Azure サブスクリプションの所有者を 1 人しか設定しなかっ�
 Azure では、Azure リソースにアクセスするユーザーを管理するために、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../../../role-based-access-control/overview.md) が実装されています。 このブループリントでは、7 つの [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、Azure リソースへのアクセスを制御できます。 これらのポリシーは、リソースの種類や構成の使用状況を監査することで、リソースへのアクセスをより厳格に制限するためのものです。
 これらのポリシーに違反しているリソースを把握することで、適切な是正措置を実施し、承認済みのユーザーだけが Azure リソースにアクセスできるようにすることができます。
 
-- パスワードなしのアカウントがある Linux VM を監査するための前提条件をデプロイする
-- パスワードなしのアカウントからのリモート接続が許可されている Linux VM を監査する前提条件をデプロイする
 - パスワードなしのアカウントが存在する Linux VM の監査結果を表示する
 - パスワードなしのアカウントからのリモート接続が許可されている Linux VM の監査結果を表示する
 - ストレージ アカウントを新しい Azure Resource Manager リソースに移行する必要がある
@@ -47,7 +45,7 @@ Azure では、Azure リソースにアクセスするユーザーを管理す�
 
 ## <a name="a923-management-of-privileged-access-rights"></a>A.9.2.3 アクセス特権の管理
 
-このブループリントでは、所有者アクセス許可や書き込みアクセス許可を持つ外部アカウントと、所有者アクセス許可や書き込みアクセス許可を持つ、多要素認証が有効になっていないアカウントを監査するための、4 つの [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、アクセス特権を制限および制御することができます。 Azure では、Azure リソースにアクセスするユーザーを管理するために、ロールベースのアクセス制御 (RBAC) が実装されています。 また、このブループリントでは、SQL Server と Service Fabric に対する Azure Active Directory 認証の使用状況を監査するために、3 つの Azure Policy 定義が割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。 また、このブルー プリントでは、カスタム RBAC ルールの使用状況を監査するための Azure Policy 定義も割り当てられます。 カスタム RBAC ルールの実装状況を把握することで、それらの実装ニーズや実装の適切性を確認することができます (カスタム RBAC ルールはエラーを起こしやすいので、これは非常に重要です)。
+このブループリントでは、所有者アクセス許可や書き込みアクセス許可を持つ外部アカウントと、所有者アクセス許可や書き込みアクセス許可を持つ、多要素認証が有効になっていないアカウントを監査するための、4 つの [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、アクセス特権を制限および制御することができます。 Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure リソースにアクセスするユーザーを管理できます。 また、このブループリントでは、SQL Server と Service Fabric に対する Azure Active Directory 認証の使用状況を監査するために、3 つの Azure Policy 定義が割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。 また、このブループリントによって、カスタム Azure RBAC 規則の使用状況を監査するための Azure Policy 定義も割り当てられます。 カスタム Azure RBAC 規則ではエラーが発生しやすいため、カスタム Azure RBAC 規則の実装状況を把握しておくと、実装の必要性や適切性の確認に役立ちます。
 
 - サブスクリプションで所有者アクセス許可を持つアカウントに対して MFA を有効にする必要がある
 - サブスクリプションに対する書き込みアクセス許可を持つアカウントに対して MFA を有効にする必要がある
@@ -65,7 +63,6 @@ Azure では、Azure リソースにアクセスするユーザーを管理す�
 - サブスクリプションに対する読み取りアクセス許可を持つアカウントに対して MFA を有効にする必要がある
 - サブスクリプションに対する書き込みアクセス許可を持つアカウントに対して MFA を有効にする必要がある
 - passwd ファイルのアクセス許可が 0644 に設定されていない Linux VM の監査結果を表示する
-- passwd ファイルへのアクセス許可が 0644 に設定されていない Linux VM を監査するための前提条件をデプロイする
 
 ## <a name="a925-review-of-user-access-rights"></a>A.9.2.5 ユーザー アクセス権のレビュー
 
@@ -78,14 +75,14 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 
 ## <a name="a926-removal-or-adjustment-of-access-rights"></a>A.9.2.6 アクセス権の削除や調整
 
-Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../../../role-based-access-control/overview.md) が実装されています。 [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) と RBAC を使用すれば、ユーザー ロールを更新して組織の変更を反映することができます。 必要な場合は、サインインしようとしているアカウントをブロック (または削除) して、Azure リソースへのアクセス権を直ちに削除することもできます。 このブループリントでは、削除を検討する必要がある非推奨アカウントを監査するための、2 つの [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
+Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../../../role-based-access-control/overview.md) が実装されています。 [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) と Azure RBAC を使用すると、ユーザー ロールを更新して組織の変更を反映できます。 必要な場合は、サインインしようとしているアカウントをブロック (または削除) して、Azure リソースへのアクセス権を直ちに削除することもできます。 このブループリントでは、削除を検討する必要がある非推奨アカウントを監査するための、2 つの [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
 
 - 非推奨のアカウントをサブスクリプションから削除する必要がある
 - 所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある
 
 ## <a name="a942-secure-log-on-procedures"></a>A.9.4.2 安全なログオン手順
 
-このブループリントでは、多要素認証が有効になっていないアカウントを監査するための、3 つの Azure Policy 定義が割り当てられます。 Azure Multi-Factor Authentication は、第 2 の認証形態を要求することでセキュリティを追加し、強力な認証を実現します。 多要素認証が有効になっていないアカウントを監視することで、侵害される可能性が高いアカウントを特定することができます。
+このブループリントでは、多要素認証が有効になっていないアカウントを監査するための、3 つの Azure Policy 定義が割り当てられます。 Azure AD Multi-Factor Authentication は、第 2 の認証形態を要求することでセキュリティを追加し、強力な認証を実現します。 多要素認証が有効になっていないアカウントを監視することで、侵害される可能性が高いアカウントを特定することができます。
 
 - サブスクリプションで所有者アクセス許可を持つアカウントに対して MFA を有効にする必要がある
 - サブスクリプションに対する読み取りアクセス許可を持つアカウントに対して MFA を有効にする必要がある
@@ -100,11 +97,6 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 - パスワードの最短有効期間が 1 日になっていない Windows VM の監査結果を表示する
 - パスワードの最小文字数が 14 文字に制限されていない Windows VM の監査結果を表示する
 - 以前の 24 個のパスワードの再利用が許可されている Windows VM の監査結果を表示する
-- パスワードの複雑さの設定が有効になっていない Windows VM を監査する前提条件をデプロイする
-- パスワードの有効期間が 70 日になっていない Windows VM を監査する前提条件をデプロイする
-- パスワードの最短有効期間が 1 日になっていない Windows VM を監査する前提条件をデプロイする
-- パスワードの最小文字数が 14 文字に制限されていない Windows VM を監査する前提条件をデプロイする
-- 以前の 24 個のパスワードの再利用が許可されている Windows VM を監査する前提条件をデプロイする
 
 ## <a name="a1011-policy-on-the-use-of-cryptographic-controls"></a>A.10.1.1 暗号化コントロールの使用に関するポリシー
 
@@ -114,7 +106,6 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 - Function App には HTTPS 経由でのみアクセスできるようにする
 - Web アプリケーションには HTTPS を介してのみアクセスできるようにする
 - API アプリには HTTPS を介してのみアクセスできるようにする
-- 元に戻せる暗号化を使用してパスワードを格納しない Windows VM を監査する前提条件をデプロイする
 - 元に戻せる暗号化を使用してパスワードを格納しない Windows VM の監査結果を表示する
 - 仮想マシンでディスク暗号化を適用する必要がある
 - Automation アカウント変数は、暗号化する必要がある

@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して HTTP ソースからデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、クラウドまたはオンプレミスの HTTP ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 730efb552ef218cc5a5ce6a984d20b4e23b364ac
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0462dac12d41fff667212902152b420d1460186d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416950"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383638"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP エンドポイントからデータをコピーする
 
@@ -30,9 +25,9 @@ ms.locfileid: "81416950"
 
 この HTTP コネクタ、[REST コネクタ](connector-rest.md)および [Web テーブル コネクタ](connector-web-table.md)の違いは次のとおりです。
 
-- **REST コネクタ**では、具体的には RESTful API からのデータのコピーがサポートされます。 
-- **HTTP コネクタ**では一般的に、HTTP エンドポイントからデータを取得します (たとえば、ファイルをダウンロードします)。 REST コネクタが使用可能になる前に、HTTP コネクタを使用して RESTful API からデータをコピーする場合があります。これはサポートされますが、REST コネクタと比べると機能は低くなります。
-- **Web テーブル コネクタ**では、HTML Web ページからテーブルの内容を抽出します。
+- **REST コネクタ** では、具体的には RESTful API からのデータのコピーがサポートされます。 
+- **HTTP コネクタ** では一般的に、HTTP エンドポイントからデータを取得します (たとえば、ファイルをダウンロードします)。 REST コネクタが使用可能になる前に、HTTP コネクタを使用して RESTful API からデータをコピーする場合があります。これはサポートされますが、REST コネクタと比べると機能は低くなります。
+- **Web テーブル コネクタ** では、HTML Web ページからテーブルの内容を抽出します。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -119,7 +114,7 @@ ClientCertificate 認証を使用するには、**authenticationType** プロパ
 
 認証に **certThumbprint** を使用し、証明書がローカル コンピューターの個人用ストアにインストールされている場合は、セルフホステッド統合ランタイムに読み取りアクセス許可を付与します。
 
-1. Microsoft 管理コンソール (MMC) を開きます。 **ローカル コンピューター**を対象とする **[証明書]** スナップインを追加します。
+1. Microsoft 管理コンソール (MMC) を開きます。 **ローカル コンピューター** を対象とする **[証明書]** スナップインを追加します。
 2. **[証明書]**  >  **[個人]** を展開し、 **[証明書]** を選択します。
 3. 個人用ストアの証明書を右クリックし、 **[すべてのタスク]**  >  **[秘密キーの管理]** の順に選択します。
 3. **[セキュリティ]** タブで、証明書に対する読み取りアクセス権を使用して Integration Runtime Host Service (DIAHostService) を実行しているユーザー アカウントを追加します。

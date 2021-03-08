@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 953f74a18ae7874c8772cdc8179e5e5bdd1a86d2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 10b6b788077eccda522c9e8c6e631939ca1819fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738644"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91530342"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>認証アプリを 2 要素認証方法として設定する
 
@@ -33,7 +33,7 @@ ms.locfileid: "83738644"
 
 2. **[モバイル アプリをどのような用途で使用されますか?]** 領域で **[確認のため通知を受け取る]** を選択し、 **[設定]** を選択します。
 
-    ![[モバイル アプリ] を選択し、[確認のため通知を受け取る] オプションをオンにした [追加のセキュリティ確認] ページ](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
+    ![[追加のセキュリティ確認] ページが表示され、[モバイル アプリ] と [確認のため通知を受け取る] が選択されているスクリーンショット。](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
 
     **[モバイル アプリケーションの構成]** ページが表示されます。
 
@@ -48,7 +48,7 @@ ms.locfileid: "83738644"
 
 5. コンピューターの **[追加のセキュリティ確認]** ページに戻って、構成が正常に完了したというメッセージが表示されていることを確認します。 **[次へ]** を選択します。
 
-    ![正常に終了したことを示すメッセージが表示された [追加のセキュリティ確認] ページ](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
+    ![[モバイルアプリが構成されました...] という成功メッセージが強調表示された [追加のセキュリティ確認] ページを示すスクリーンショット。](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
 
     認証アプリは、テストとしてモバイル デバイスに通知を送信します。
 

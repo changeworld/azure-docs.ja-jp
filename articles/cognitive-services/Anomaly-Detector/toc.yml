@@ -12,14 +12,6 @@
       items:
         - name: Anomaly Detector クライアント ライブラリ
           href: ./quickstarts/client-libraries.md
-    - name: REST API
-      items:
-        - name: 'C# の使用'
-          href: quickstarts/detect-data-anomalies-csharp.md
-        - name: Java の使用
-          href: quickstarts/detect-data-anomalies-java.md
-        - name: Python の使用
-          href: quickstarts/detect-data-anomalies-python.md
 - name: チュートリアル
   items:
     - name: Power BI を使用して異常をバッチとして視覚化する
@@ -30,6 +22,8 @@
   items:
     - name: データの異常を特定する
       href: how-to/identify-anomalies.md
+    - name: IoT Edge にデプロイする
+      href: how-to/deploy-anomaly-detection-on-iot-edge.md
     - name: コンテナーの使用
       items:
         - name: コンテナーのインストールと実行
@@ -40,9 +34,11 @@
           displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
         - name: Container Instances の使用
           href: how-to/deploy-anomaly-detection-on-container-instances.md
+        - name: Cognitive Services コンテナーのドキュメント
+          href: ../containers/index.yml
 - name: 概念
   items:
-    - name: Anomaly Detection API のベスト プラクティス
+    - name: Anomaly Detector API のベスト プラクティス
       href: concepts/anomaly-detection-best-practices.md
 - name: リファレンス
   items:
@@ -69,21 +65,13 @@
         - name: 対話型デモ
           href: 'https://aka.ms/adDemo'
         - name: Jupyter Notebook について
-          href: 'https://aka.ms/adNotebook'
+          href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook'
     - name: KDD 2019 の SR-CNN に関する文書
       href: 'https://arxiv.org/abs/1906.03821'
 - name: リソース
   items:
-    - name: サポート
-      items:
-        - name: サポートを受ける
-          href: 'https://aka.ms/adsupport'
-        - name: Stack Overflow
-          href: 'https://aka.ms/adso'
-        - name: MSDN
-          href: 'https://aka.ms/admsdn'
-        - name: ユーザーの声
-          href: 'https://aka.ms/aduservoice'
+    - name: サポートとヘルプのオプション
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
     - name: 価格
       href: 'https://aka.ms/adpricing'
     - name: リージョン別の提供状況

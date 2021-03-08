@@ -2,16 +2,16 @@
 title: Azure Kubernetes Service (AKS) 用に CoreDNS をカスタマイズする
 description: Azure Kubernetes Service (AKS) を使用して、サブドメインを追加したりカスタム DNS エンドポイントを拡張したりするために CoreDNS をカスタマイズする方法について説明します
 services: container-service
-author: jnoller
+author: palma21
 ms.topic: article
 ms.date: 03/15/2019
-ms.author: jenoller
-ms.openlocfilehash: e99d841dcfb18b41df128283c37f46682e3fa129
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.author: jpalma
+ms.openlocfilehash: 5b13931bc6a13d988c21f728b996c51270769e0c
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257125"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368683"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Azure Kubernetes Service で CoreDNS をカスタマイズする
 
@@ -22,7 +22,7 @@ AKS はマネージド サービスであるため、CoreDNS のメイン構成 
 この記事では、AKS の CoreDNS の基本的なカスタマイズ オプションに ConfigMaps を使用する方法を説明します。 この方法は、CoreFile の使用といった他のコンテキストでの CoreDNS の構成とは異なります。 バージョンによって構成値が変わる可能性があるため、実行している CoreDNS のバージョンを確認してください。
 
 > [!NOTE]
-> `kube-dns` では、Kubernetes 構成マップを介してさまざまな[カスタマイズ オプション][kubednsblog]が提供されていました。 CoreDNS には kube-dns との下位互換性は**ありません**。 以前に使用したカスタマイズはすべて、CoreDNS で使用するために更新する必要があります。
+> `kube-dns` では、Kubernetes 構成マップを介してさまざまな[カスタマイズ オプション][kubednsblog]が提供されていました。 CoreDNS には kube-dns との下位互換性は **ありません**。 以前に使用したカスタマイズはすべて、CoreDNS で使用するために更新する必要があります。
 
 ## <a name="before-you-begin"></a>開始する前に
 

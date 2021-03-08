@@ -2,21 +2,21 @@
 title: Azure AD Domain Services に関してよく寄せられる質問 | Microsoft Docs
 description: Azure Active Directory Domain Services の構成、管理、および可用性に関してよく寄せられる質問をいくつか読んで理解する
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/05/2020
-ms.author: iainfou
-ms.openlocfilehash: 6a18dbf5c00c3f3aba2b2d58f060856aba9fb080
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.date: 02/09/2021
+ms.author: justinha
+ms.openlocfilehash: 3d0f2b44f37cb318be2117b5dc5d8b42b418ff19
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722899"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090991"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) Domain Services に関してよく寄せられる質問 (FAQ)
 
@@ -34,7 +34,7 @@ ms.locfileid: "88722899"
 * [PowerShell を使用して Azure AD Domain Services を有効にできますか。](#can-i-enable-azure-ad-domain-services-using-powershell)
 * [Resource Manager テンプレートを使用して Azure AD Domain Services を有効にできますか。](#can-i-enable-azure-ad-domain-services-using-a-resource-manager-template)
 * [Azure AD Domain Services のマネージド ドメインにドメイン コントローラーを追加することはできますか。](#can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain)
-* [自分のディレクトリに招待したゲスト ユーザーは Azure AD Domain Services を使用できますか。](#can-guest-users-invited-to-my-directory-use-azure-ad-domain-services)
+* [自分のディレクトリに招待したゲスト ユーザーは Azure AD Domain Services を使用できますか。](#can-guest-users-be-invited-to-my-directory-use-azure-ad-domain-services)
 * [既存の Azure AD Domain Services マネージド ドメインを別のサブスクリプション、リソース グループ、リージョン、または仮想ネットワークに移動できますか。](#can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network)
 * [Azure AD Domain Services には高可用性オプションが含まれていますか。](#does-azure-ad-domain-services-include-high-availability-options)
 
@@ -72,7 +72,7 @@ ms.locfileid: "88722899"
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインにドメイン コント ローラーを追加することはできますか。
 いいえ。 マネージド ドメインは Azure AD Domain Services によって提供されるドメインです。 このドメインに対してドメイン コントローラーをプロビジョニング、構成、管理する必要はありません。 これらの管理アクティビティは、Microsoft からサービスとして提供されています。 そのため、マネージド ドメインにドメイン コントローラー (読み取り/書き込みや読み取り専用) をさらに追加することはできません。
 
-### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>自分のディレクトリに招待したゲスト ユーザーは Azure AD Domain Services を使用できますか。
+### <a name="can-guest-users-be-invited-to-my-directory-use-azure-ad-domain-services"></a>自分のディレクトリに招待したゲスト ユーザーは Azure AD Domain Services を使用できますか。
 いいえ。 [Azure AD B2B](../active-directory/external-identities/what-is-b2b.md) 招待プロセスを使用して Azure AD ディレクトリに招待されたゲスト ユーザーは、Azure AD Domain Services の管理対象ドメインに同期されます。 ただし、これらのユーザーのパスワードは Azure AD ディレクトリに格納されません。 そのため、Azure AD Domain Services では、これらのユーザーの NTLM と Kerberos のハッシュをマネージド ドメインに同期することはできません。 このようなユーザーは、サインインすることも、マネージド ドメインにコンピューターを参加させることもできません。
 
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>既存の Azure AD Domain Services マネージド ドメインを別のサブスクリプション、リソース グループ、リージョン、または仮想ネットワークに移動できますか。
@@ -94,6 +94,7 @@ ms.locfileid: "88722899"
 * [マネージド ドメインのパスワード有効期間ポリシーとはどのようなものですか。](#what-is-the-password-lifetime-policy-on-a-managed-domain)
 * [Azure AD Domain Services では、AD アカウントのロックアウトによる保護は提供されていますか。](#does-azure-ad-domain-services-provide-ad-account-lockout-protection)
 * [Azure AD Domain Services 内で分散ファイル システム (DFS) とレプリケーションを構成できますか。](#can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services)
+* [Windows の更新プログラムは Azure AD Domain Services でどのように適用されますか。](#how-are-windows-updates-applied-in-azure-ad-domain-services)
 
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>リモート デスクトップを使用してマネージド ドメインのドメイン コントローラーに接続できますか。
 いいえ。 リモート デスクトップを使用してマネージド ドメインのドメイン コントローラーに接続する権限はありません。 "*AAD DC 管理者*" グループのメンバーは、Active Directory 管理センター (ADAC) や AD PowerShell などの AD 管理ツールを使用して、マネージド ドメインを管理できます。 これらのツールは、"*リモート サーバー管理ツール*" 機能を使用して、マネージド ドメインに参加している Windows サーバーにインストールされます。 詳細については、「[チュートリアル:Azure Active Directory Domain Services のマネージド ドメインを構成および管理するための管理 VM を作成する](tutorial-create-management-vm.md)」を参照してください。
@@ -105,7 +106,7 @@ ms.locfileid: "88722899"
 いいえ。 マネージド ドメインの管理特権は付与されません。 "*ドメイン管理者*" 特権と "*エンタープライズ管理者*" 特権は、ドメイン内では使用できません。 また、オンプレミスの Active Directory 内のドメイン管理者グループまたはエンタープライズ管理者グループのメンバーにも、マネージド ドメインのドメイン/エンタープライズ管理者特権は付与されません。
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>マネージド ドメインで LDAP または他の AD 管理ツールを使用してグループ メンバーシップを変更できますか。
-Azure Active Directory から Azure AD Domain Services に同期されるユーザーとグループは、元のソースが Azure Active Directory であるため変更できません。 マネージド ドメインがソースのユーザーまたはグループは変更できます。
+Azure Active Directory から Azure AD Domain Services に同期されるユーザーとグループは、元のソースが Azure Active Directory であるため変更できません。 これには、AADDC Users のマネージド組織単位からカスタム組織単位へのユーザーまたはグループの移動が含まれます。 マネージド ドメインがソースのユーザーまたはグループは変更できます。  
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Azure AD ディレクトリに対して行った変更がマネージド ドメインに反映されるまで、どのくらいの時間がかかりますか。
 Azure AD UI または PowerShell を使用して Azure AD ディレクトリに対して行った変更は、マネージド ドメインに自動的に同期されます。 この同期プロセスはバック グラウンドで実行されます。 この同期ですべてのオブジェクトの変更を完了するための期間は定義されていません。
@@ -129,13 +130,16 @@ Azure AD Domain Services のマネージド ドメインの既定のパスワー
 ### <a name="can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services"></a>Azure AD Domain Services 内で分散ファイル システムとレプリケーションを構成できますか。
 いいえ。 Azure AD Domain Services を使用する場合、分散ファイル システム (DFS) とレプリケーションは使用できません。
 
+### <a name="how-are-windows-updates-applied-in-azure-ad-domain-services"></a>Windows の更新プログラムは Azure AD Domain Services でどのように適用されますか。
+マネージド ドメインのドメイン コントローラーにより、必須の Windows 更新プログラムが自動的に適用されます。 ユーザー側では何も構成したり、管理したりする必要がありません。 Windows 更新プログラムへの送信トラフィックをブロックするネットワーク セキュリティ グループ規則を作成しないようにしてください。 独自の VM がマネージド ドメインに参加している場合、OS やアプリケーションに必須の更新プログラムがある場合、それを構成したり、適用したりするのはユーザー側の責任となります。
+
 ## <a name="billing-and-availability"></a>課金と可用性
 
 * [Azure AD Domain Services は有料のサービスですか。](#is-azure-ad-domain-services-a-paid-service)
 * [サービスの無料試用版はありますか。](#is-there-a-free-trial-for-the-service)
 * [Azure AD Domain Services のマネージド ドメインを一時停止することはできますか。](#can-i-pause-an-azure-ad-domain-services-managed-domain)
 * [DR イベント時に Azure AD Domain Services を別のリージョンにフェールオーバーできますか。](#can-i-pause-an-azure-ad-domain-services-managed-domain)
-* [Enterprise Mobility Suite (EMS) の一部として Azure AD Domain Services を取得できますか。Azure AD Domain Services を使用するのに Azure AD Premium が必要ですか。](#can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event)
+* [Enterprise Mobility Suite (EMS) の一部として Azure AD Domain Services を取得できますか。Azure AD Domain Services を使用するのに Azure AD Premium が必要ですか。](#can-i-fail-over-azure-ad-domain-services-to-another-region-for-a-dr-event)
 * [このサービスは、どの Azure リージョンで利用できますか。](#can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services)
 
 ### <a name="is-azure-ad-domain-services-a-paid-service"></a>Azure AD Domain Services は有料のサービスですか。
@@ -147,8 +151,8 @@ Azure AD Domain Services は Azure の無料試用版に含まれています。
 ### <a name="can-i-pause-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインを一時停止することはできますか。
 いいえ。 Azure AD Domain Services のマネージド ドメインを有効にすると、マネージド ドメインを削除するまで、選択した仮想ネットワーク内でサービスを使用できます。 サービスを一時停止する方法はありません。 課金は、マネージド ドメインを削除するまで、1 時間ごとに続行されます。
 
-### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>DR イベント時に Azure AD Domain Services を別のリージョンにフェールオーバーできますか。
-いいえ。 Azure AD Domain Services では現在、geo 冗長デプロイ モデルは提供されていません。 Azure リージョン内の 1 つの仮想ネットワークに限定されます。 複数の Azure リージョンを利用する場合、Azure IaaS VM 上で Active Directory ドメイン コントローラーを実行する必要があります。 アーキテクチャのガイダンスについては、「[オンプレミスにある Active Directory ドメインを Azure に拡張する](/azure/architecture/reference-architectures/identity/adds-extend-domain)」を参照してください。
+### <a name="can-i-fail-over-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>DR イベント時に Azure AD Domain Services を別のリージョンにフェールオーバーできますか。
+はい。マネージド ドメインの地理的な回復性を実現するために、Azure AD DS をサポートする任意の Azure リージョン内のピアリングされた仮想ネットワークに対して追加の[レプリカ セット](tutorial-create-replica-set.md)を作成できます。 レプリカ セットとマネージド ドメインとで、同じ名前空間および構成が共有されます。
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Enterprise Mobility Suite (EMS) の一部として Azure AD Domain Services を取得できますか。 Azure AD Domain Services を使用するのに Azure AD Premium が必要ですか。
 いいえ。 Azure AD Domain Services は従量課金制の Azure サービスであり、EMS の一部ではありません。 Azure AD Domain Services は、Azure AD のすべてのエディション (Free および Premium) で使用できます。 使用量に応じて、時間単位で課金されます。

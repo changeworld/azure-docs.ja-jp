@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: zhchia
-ms.openlocfilehash: 68484d2047e09dc82d44e15e86b13c4c54c49b03
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 07c476c0de644ac63c577d466f4691b5cf415334
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533795"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357938"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>チュートリアル:StarLeaf を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -52,15 +52,15 @@ Azure AD での自動ユーザー プロビジョニングのために StarLeaf 
 
 1. [StarLeaf 管理コンソール](https://portal.starleaf.com/#page=login)にサインインします。 **[Integrations]\(統合\)**  >  **[Add integration]\(統合の追加\)** に移動します。
 
-    ![StarLeaf で SCIM を追加する](media/starleaf-provisioning-tutorial/image00.png)
+    ![[Integrations]\(統合\) と [Add integration]\(統合の追加\) のオプションが四角で囲まれている、StarLeaf 管理コンソールのスクリーンショット。](media/starleaf-provisioning-tutorial/image00.png)
 
 2. **[Type]\(種類\)** で Microsoft Azure Active Directory になるように選択します。 **[Name]\(名前\)** に適切な名前を入力します。 **[Apply]** をクリックします。
 
-    ![StarLeaf で SCIM を追加する](media/starleaf-provisioning-tutorial/image01.png)
+    ![[Type]\(種類\) と [Name]\(名前\) のテキスト ボックスが四角で囲まれている、[Add integration]\(統合の追加\) ダイアログ ボックスのスクリーンショット。](media/starleaf-provisioning-tutorial/image01.png)
 
 3.  **[SCIM base URL]\(SCIM ベース URL\)** と **[Access token]\(アクセス トークン\)** の値が表示されます。 これらの値を、Azure portal の StarLeaf アプリケーションの [プロビジョニング] タブの **[テナント URL]** および **[シークレット トークン]** フィールドに入力します。 
 
-    ![StarLeaf でトークンを作成する](media/starleaf-provisioning-tutorial/image02.png)
+    ![[Type]\(種類\)、[Name]\(名前\)、[SCIM base URL]\(SCIM ベース URL\) のテキスト ボックスが四角で囲まれている、[Edit integration]\(統合の編集\) ダイアログ ボックスのスクリーンショット。](media/starleaf-provisioning-tutorial/image02.png)
 
 ## <a name="add-starleaf-from-the-gallery"></a>ギャラリーから StarLeaf を追加する
 
@@ -80,7 +80,7 @@ Azure AD を使用した自動ユーザー プロビジョニング用に StarLe
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**StarLeaf**」と入力し、結果パネルで **[StarLeaf]** を選択します。
+4. 検索ボックスに「 **StarLeaf** 」と入力し、結果パネルで **[StarLeaf]** を選択します。
     ![結果一覧の StarLeaf](common/search-new-app.png)
 
 ## <a name="configure-automatic-user-provisioning-to-starleaf"></a>StarLeaf への自動ユーザー プロビジョニングを構成する
@@ -97,11 +97,11 @@ Azure AD を使用した自動ユーザー プロビジョニング用に StarLe
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. [管理者資格情報] セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど取得した **[SCIM Base URL]\(SCIM ベース URL\)** と **[Access Token]\(アクセス トークン\)** の値をそれぞれ入力します。 **[接続テスト]** をクリックして、Azure AD から StarLeaf に接続できることを確認します。 接続できない場合は、使用中の StarLeaf アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
@@ -115,11 +115,11 @@ Azure AD を使用した自動ユーザー プロビジョニング用に StarLe
 
 8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to StarLeaf]\(Azure Active Directory ユーザーを StarLeaf に同期する\)** を選びます。
 
-    ![StarLeaf でトークンを作成する](media/starleaf-provisioning-tutorial/usermapping.png)
+    ![[Synchronize Azure Active Directory Users to StarLeaf]\(Azure Active Directory ユーザーを StarLeaf に同期する\) オプションが表示されている、[マッピング] セクションのスクリーンショット。](media/starleaf-provisioning-tutorial/usermapping.png)
 
 9. **[属性マッピング]** セクションで、Azure AD から StarLeaf に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で StarLeaf のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![StarLeaf でトークンを作成する](media/starleaf-provisioning-tutorial/userattribute.png)
+    ![9 つのマッピングが表示されている [属性マッピング] セクションのスクリーンショット。](media/starleaf-provisioning-tutorial/userattribute.png)
 
 
 10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。

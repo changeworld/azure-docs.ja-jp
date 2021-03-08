@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 09/18/2019
 ms.author: cephalin
-ms.openlocfilehash: b4234acb2ce32980a268e389cb31de9a57ed18e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7458f6868d7fbee72b55ad002148691a113c269d
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131894"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97532006"
 ---
 別のデプロイ スロットから構成を複製する場合、複製された構成を編集することができます。 構成要素には、スワップを経ても内容が反映される (スロット固有でない) ものもあれば、スワップ後に同じスロットに残されている (スロット固有の) ものもあります。 次の一覧では、スロットのスワップ時に変更される設定を示します。
 
@@ -22,7 +22,6 @@ ms.locfileid: "82131894"
 * パブリック証明書
 * Web ジョブ コンテンツ
 * ハイブリッド接続 *
-* Virtual Network 統合 *
 * サービス エンドポイント *
 * Azure Content Delivery Network *
 
@@ -39,7 +38,10 @@ ms.locfileid: "82131894"
 * 常時接続
 * 診断設定
 * クロスオリジン リソース共有 (CORS)
+* 仮想ネットワークの統合
 
 > [!NOTE]
+> これらの設定をスワップ可能にするには、アプリのすべてのスロットでアプリ設定 `WEBSITE_OVERRIDE_PRESERVE_DEFAULT_STICKY_SLOT_SETTINGS` を追加し、その値を `0` または `false` に設定します。 これらの設定は、すべてがスワップ可能か、まったくスワップ可能でないかのどちらかです。 一部の設定だけをスワップ可能にして、他の設定を不可にすることはできません。
+
 > スワップされていない設定に適用されている特定のアプリ設定もスワップされません。 たとえば、診断の設定はスワップされないため、`WEBSITE_HTTPLOGGING_RETENTION_DAYS` や `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` などの関連するアプリ設定もスワップされません。これは、スロット設定として表示されない場合でも同様です。
 >

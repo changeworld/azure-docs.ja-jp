@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: f3a48e4434588b2eb64637e6f0a454148cad39f2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: 8121ceb68bdea9332316a9508bf6f4731e05b0ba
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036444"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890787"
 ---
 # <a name="interact-with-the-map"></a>マップの操作
 
-この記事では、[マップ イベント クラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events)の使用方法を示します。 プロパティでは、マップ上とマップの異なるレイヤー上のイベントを強調表示します。 また、HTML マーカーを操作すると、イベントを強調表示することもできます。
+この記事では、[マップ イベント クラス](/javascript/api/azure-maps-control/atlas.map#events)の使用方法を示します。 プロパティでは、マップ上とマップの異なるレイヤー上のイベントを強調表示します。 また、HTML マーカーを操作すると、イベントを強調表示することもできます。
 
 ## <a name="interact-with-the-map"></a>マップの操作
 
@@ -26,7 +26,7 @@ ms.locfileid: "88036444"
 
 <br/>
 
-<iframe height='600' scrolling='no' title='マップの連動 – マウス イベント' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>ペンを参照してください <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>マップの連動</a> – <a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) によるマウス イベント。
+<iframe height='600' scrolling='no' title='マップの連動 – マウス イベント' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>ペンを参照してください <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>マップの連動</a> – <a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) によるマウス イベント。
 </iframe>
 
 ## <a name="interact-with-map-layers"></a>マップの連動
@@ -35,7 +35,7 @@ ms.locfileid: "88036444"
 
 <br/>
 
-<iframe height='600' scrolling='no' title='マップの連動 – レイヤー イベント' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/bQRRPE/'>マップの連動 – レイヤー イベント</a>」Pen を表示します。
+<iframe height='600' scrolling='no' title='マップの連動 – レイヤー イベント' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/bQRRPE/'>マップの連動 – レイヤー イベント</a>」Pen を表示します。
 </iframe>
 
 ## <a name="interact-with-html-marker"></a>HTML マーカーの操作
@@ -44,7 +44,7 @@ ms.locfileid: "88036444"
 
 <br/>
 
-<iframe height='500' scrolling='no' title='マップの連動 - HTML マーカー イベント' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/VVzKJY/'>マップの連動 - HTML マーカー イベント</a>」Pen を表示します。
+<iframe height='500' scrolling='no' title='マップの連動 - HTML マーカー イベント' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/VVzKJY/'>マップの連動 - HTML マーカー イベント</a>」Pen を表示します。
 </iframe>
 
 次の表には、サポートされているマップ クラス イベントがすべてリストされています。
@@ -98,11 +98,11 @@ ms.locfileid: "88036444"
 | `sourceremoved`     | `DataSource` または `VectorTileSource` がマップから削除されたときに発生します。|
 | `styledata`         | マップのスタイルが読み込まれたか、変更されたときに発生します。|
 | `styleimagemissing` | 存在しない画像スプライトからレイヤーが画像を読み込もうとしたときに発生します |
-| `tokenacquired`     | AAD アクセス トークンが取得されたときに発生します。|
-| `touchcancel`       | マップ内で touchcancel イベントが発生したときに発生します。|
-| `touchend`          | マップ内で touchend イベントが発生したときに発生します。|
-| `touchmove`         | マップ内で touchmove イベントが発生したときに発生します。|
-| `touchstart`        | マップ内で touchstart イベントが発生したときに発生します。|
+| `tokenacquired`     | Azure Active Directory のアクセス トークンが取得されたときに発生します。|
+| `touchcancel`       | マップ内で `touchcancel` イベントが発生したときに発生します。|
+| `touchend`          | マップ内で `touchend` イベントが発生したときに発生します。|
+| `touchmove`         | マップ内で `touchmove` イベントが発生したときに発生します。|
+| `touchstart`        | マップ内で `touchstart` イベントが発生したときに発生します。|
 | `wheel`             | マップ内でマウスの wheel イベントが発生したときに発生します。|
 | `zoom`              | ユーザーの操作またはメソッドの結果として、ズーム レベル間のアニメーション化された遷移中に繰り返し発生します。|
 | `zoomend`           | ユーザーの操作またはメソッドの結果として、マップでズーム レベル間の遷移が完了した直後に発生します。|
@@ -117,4 +117,4 @@ ms.locfileid: "88036444"
 > [Azure Maps サービス モジュールの使用](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [コード サンプル](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [コード サンプル](/samples/browse/?products=azure-maps)

@@ -5,15 +5,16 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/10/2020
-ms.openlocfilehash: ca4e79977132586c619f323015f9d915e04707f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 12/11/2020
+ms.openlocfilehash: 31b96f03a8519b068eaa816443be0a0f374a4a8c
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449517"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247031"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB の自動スケーリングでプロビジョニングされたスループットについてよく寄せられる質問
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB で自動スケーリング プロビジョニング スループットを使用すると、使用状況に応じてお使いのデータベースまたはコンテナーの RU/秒が自動的に管理およびスケーリングされます。 この記事では、自動スケーリング モードについてよく寄せられる質問に回答します。
 
@@ -27,7 +28,7 @@ Azure Cosmos DB で自動スケーリング プロビジョニング スルー�
 
 たとえば、以前に 400 から 4,000 RU/秒の間でスケーリングされる階層を選択していた場合、データベースまたはコンテナーの最大 RU/秒は 4,000 RU/秒 (400 から 4,000 RU/秒の間でのスケーリング) になります。 これに基づいて、最大 RU/秒をワークロードに合わせてカスタム値に変更できます。 
 
-### <a name="how-quickly-will-autoscale-scale-up-and-down-based-on-spikes-in-traffic"></a>自動スケーリングでは、トラフィックの急増に応じてスケールアップとスケールダウンがどれほど迅速に行われますか?
+### <a name="how-quickly-will-autoscale-scale-up-based-on-spikes-in-traffic"></a>自動スケーリングでは、トラフィックの急増に応じてスケールアップがどれほど迅速に行われますか?
 自動スケーリングでは、スループット (RU/秒) `T` は、受信トラフィックに基づいて、`0.1 * Tmax` と `Tmax` の範囲内でスケールアップおよびスケールダウンされます。 スケーリングは自動的かつ瞬時に行われるため、どの時点でも、プロビジョニングされた `Tmax` まで遅延なく使用できます。 
 
 ### <a name="how-do-i-determine-what-rus-the-system-is-currently-scaled-to"></a>システムが現在どのくらいの RU/秒までスケールアップされているかを判別するにはどうすればよいですか?
@@ -37,22 +38,22 @@ Azure Cosmos DB で自動スケーリング プロビジョニング スルー�
 課金は、1 時間ごとに、その 1 時間内にシステムがスケーリングされた最大スループット `T` に対して行われます。 1 時間の間にリソースに対する要求がなかった場合、または `0.1 * Tmax` を超えてスケーリングされなかった場合は、最小の `0.1 * Tmax` に対して課金されます。 詳細については、Azure Cosmos DB の[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。 
 
 ### <a name="how-does-autoscale-show-up-on-my-bill"></a>自動スケーリングは請求書にどのように表示されますか?
-シングルマスター アカウントの場合、100 RU/秒あたりの自動スケーリングのレートは、Standard (手動) プロビジョニング スループットのレートの 1.5 倍です。 請求書には、既存の Standard プロビジョニング スループット測定が表示されます。 この測定の数量に 1.5 が掛けられます。 たとえば、システムがスケーリングされ、1 時間以内の最大 RU/秒が 6,000 RU/秒であった場合、その 1 時間の測定の 60 * 1.5 = 90 単位が請求されます。
+単一書き込みリージョン アカウントの場合、100 RU/秒あたりの自動スケーリングのレートは、Standard (手動) プロビジョニング スループットのレートの 1.5 倍です。 請求書には、既存の Standard プロビジョニング スループット測定が表示されます。 この測定の数量に 1.5 が掛けられます。 たとえば、システムがスケーリングされ、1 時間以内の最大 RU/秒が 6,000 RU/秒であった場合、その 1 時間の測定の 60 * 1.5 = 90 単位が請求されます。
 
-マルチマスター アカウントの場合、100 RU/秒あたりの自動スケーリングのレートは、Standard (手動) プロビジョニング マルチマスター スループットのレートと同じです。 請求書には、既存のマルチマスター測定が表示されます。 レートは同じであるため、自動スケーリングを使用した場合は、Standard スループットと同じ数量が示されます。
+複数書き込みリージョンのアカウントの場合、100 RU/秒あたりの自動スケーリングのレートは、Standard (手動) プロビジョニングの複数書き込みリージョンのスループットのレートと同じです。 請求書には、既存の複数書き込みリージョンの測定が表示されます。 レートは同じであるため、自動スケーリングを使用した場合は、Standard スループットと同じ数量が示されます。
 
 ### <a name="does-autoscale-work-with-reserved-capacity"></a>自動スケーリングは予約容量で機能しますか?
-はい。 シングルマスター予約容量を購入するときに、自動スケーリング リソースの予約割引が測定の使用量に適用されます。比率は、1.5 * [特定リージョンの比率](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)になります。 
+はい。 単一書き込みリージョンのアカウントに対して予約容量を購入すると、自動スケーリング リソースの予約割引が測定の使用量に適用されます。比率は、1.5 * [特定リージョンの比率](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)になります。 
 
-マルチマスター予約容量は、自動スケーリングと Standard (手動) プロビジョニング スループットに対して同様に機能します。 [Azure Cosmos DB の予約容量](cosmos-db-reserved-capacity.md)に関するページを参照してください
+複数書き込みリージョンの予約容量は、自動スケーリングと Standard (手動) プロビジョニング スループットに対して同様に機能します。 [Azure Cosmos DB の予約容量](cosmos-db-reserved-capacity.md)に関するページを参照してください
 
 ### <a name="does-autoscale-work-with-free-tier"></a>自動スケーリングは Free レベルで機能しますか?
-はい。 Free レベルでは、コンテナーで自動スケーリング スループットを利用できます。 カスタム最大 RU/秒を使用した自動スケーリング Shared スループット データベースのサポートはまだ利用できません。 [Free レベルでの自動スケーリングの請求のしくみ](understand-your-bill.md#billing-examples-with-free-tier-accounts)に関するページを参照してください。
+はい。 Free レベルでは、コンテナーで自動スケーリング スループットを利用できます。 カスタム最大 RU/秒を使用した自動スケーリング Shared スループット データベースのサポートはまだ利用できません。 [Free レベルでの自動スケーリングの請求のしくみ](understand-your-bill.md#azure-free-tier)に関するページを参照してください。
 
 ### <a name="is-autoscale-supported-for-all-apis"></a>すべての API で自動スケーリングがサポートされていますか?
 はい。自動スケーリングは、すべての API でサポートされています: Core (SQL)、Gremlin、Table、Cassandra、および MongoDB 用 API。
 
-### <a name="is-autoscale-supported-for-multi-master-accounts"></a>自動スケーリングはマルチマスター アカウントでサポートされていますか?
+### <a name="is-autoscale-supported-for-multi-region-write-accounts"></a>自動スケーリングは複数リージョン書き込みアカウントに対してサポートされていますか?
 はい。 最大 RU/秒は、Azure Cosmos DB アカウントに追加された各リージョンで利用できます。 
 
 ### <a name="how-do-i-enable-autoscale-on-new-databases-or-containers"></a>新しいデータベースまたはコンテナーに対して自動スケーリングを有効にするにはどうすればよいですか?
@@ -125,7 +126,7 @@ Shared スループット データベースの場合、最大 RU/秒を引き�
 - 時間 1: T=2: コンテナーは、1 秒で 1,000 RU を消費する要求の取得を開始します。 また、発生が不可欠な 200 RU 相当の TTL もあります。 課金対象の RU/秒は、引き続き 1,000 RU/秒です。 TTL がいつ発生しても、自動スケーリングのスケーリング ロジックには影響しません。
 
 ### <a name="what-is-the-mapping-between-the-max-rus-and-physical-partitions"></a>最大 RU/秒と物理パーティション間のマッピングとはどのようなものですか?
-最初に最大 RU/秒を選択すると、Azure Cosmos DB によって次のようにプロビジョニングされます: 最大 RU/秒 / 10,000 RU/秒 = 物理パーティションの数。 各[物理パーティション](partition-data.md#physical-partitions)は、最大 10,000 RU/秒と 50 GB のストレージをサポートできます。 ストレージのサイズが大きくなると、Azure Cosmos DB によってパーティションが自動的に分割され、ストレージの増加に対応するように物理パーティションが追加されます。または、ストレージが[関連付けられた上限を超えている](#what-is-the-storage-limit-associated-with-each-max-rus-option)場合は、最大 RU/秒が引き上げられます。 
+最初に最大 RU/秒を選択すると、Azure Cosmos DB によって次のようにプロビジョニングされます: 最大 RU/秒 / 10,000 RU/秒 = 物理パーティションの数。 各[物理パーティション](partitioning-overview.md#physical-partitions)は、最大 10,000 RU/秒と 50 GB のストレージをサポートできます。 ストレージのサイズが大きくなると、Azure Cosmos DB によってパーティションが自動的に分割され、ストレージの増加に対応するように物理パーティションが追加されます。または、ストレージが[関連付けられた上限を超えている](#what-is-the-storage-limit-associated-with-each-max-rus-option)場合は、最大 RU/秒が引き上げられます。 
 
 データベースまたはコンテナーの最大 RU/秒は、すべての物理パーティション全体で均等に分割されます。 そのため、1 つの物理パーティションでスケーリングできる合計スループットは次のようになります: データベースまたはコンテナーの最大 RU/秒 / 物理パーティションの数。 
 
@@ -147,5 +148,5 @@ Shared スループット データベースの場合、最大 RU/秒を引き�
 
 * [Azure Cosmos DB データベースまたはコンテナーで自動スケーリングを有効にする方法](how-to-provision-autoscale-throughput.md)について学習します。
 * [自動スケーリングを使用したプロビジョニング スループットの利点](provision-throughput-autoscale.md#benefits-of-autoscale)について学習します。
-* [論理および物理パーティション](partition-data.md)の詳細について学習します。
+* [論理および物理パーティション](partitioning-overview.md)の詳細について学習します。
                         

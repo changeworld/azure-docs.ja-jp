@@ -1,21 +1,17 @@
 ---
 title: Azure Data Factory で Azure Integration Runtime を作成する
 description: データのコピーや変換操作のディスパッチに使用される Azure 統合ランタイムを Azure Data Factory で作成する方法を説明します。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.openlocfilehash: c7880fd7fb687483409ce591059e0f5b2d2e2991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ecf2a74a16234084fbac4d1c26157d1703b56a13
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659700"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373064"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure 統合ランタイムを作成して構成する方法
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -48,13 +44,13 @@ Set-AzDataFactoryV2IntegrationRuntime PowerShell コマンドレットを使用�
 ### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Azure Data Factory UI を使用して Azure IR を作成する
 Azure Data Factory UI を使用して Azure IR を作成するには、次の手順を使用します。
 
-1. Azure Data Factory の UI の **[Let's get started]\(始めましょう\)** ページで、左端のペインの [[管理] タブ](https://docs.microsoft.com/azure/data-factory/author-management-hub)を選択します。
+1. Azure Data Factory の UI の **[Let's get started]\(始めましょう\)** ページで、左端のペインの [[管理] タブ](./author-management-hub.md)を選択します。
 
    ![ホーム ページの [管理] ボタン](media/doc-common-process/get-started-page-manage-button.png)
 
 1. 左ペインの **[統合ランタイム]** を選択し、 **[+ 新規]** を選択します。
 
-   ![統合ランタイムの作成](media/doc-common-process/manage-new-integration-runtime.png)
+   ![左側のウィンドウの統合ランタイムと [+ 新規] ボタンが強調表示されているスクリーンショット。](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. **[統合ランタイムのセットアップ]** ページで、 **[Azure, Self-Hosted] (Azure、セルフホステッド)** を選択してから、 **[続行]** を選択します。 
 
@@ -92,4 +88,3 @@ Azure IR が作成されたら、リンクされたサービスの定義でそ�
 
 - [Create self-hosted integration runtime (セルフホステッド統合ランタイムの作成)](create-self-hosted-integration-runtime.md)
 - [Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md)
- 

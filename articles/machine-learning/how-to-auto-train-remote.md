@@ -10,18 +10,18 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, automl
 ms.date: 03/09/2020
-ms.openlocfilehash: 0dcb8f1f484f9c24a6376aef8836b6dc50d5278a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d6d21acc685ba840b585ada43e59230fdd73787f
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321564"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796382"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>クラウドで自動機械学習を使用してモデルをトレーニングする
 
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning では、管理しているさまざまな種類のコンピューティング リソースに対してモデルをトレーニングします。 ローカル コンピューターまたはクラウド内のリソースをコンピューティング ターゲットにすることができます。
 
@@ -43,7 +43,7 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>リソースを作成する
 
-まだ存在しない場合、[`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) ターゲットをワークスペース (`ws`) に作成します。
+まだ存在しない場合、[`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?preserve-view=true&view=azure-ml-py) ターゲットをワークスペース (`ws`) に作成します。
 
 **推定所要時間**: AmlCompute ターゲットの作成には約 5 分かかります。
 
@@ -90,7 +90,7 @@ else:
 
 ## <a name="access-data-using-tabulardataset-function"></a>TabularDataset 関数を使用してデータにアクセスする
 
-training_data ([`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) として) とラベルを定義しました。これらは、[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) で 自動 ML に渡されます。 `TabularDataset` メソッド `from_delimited_files` は既定で `infer_column_types` を true に設定します。これにより、自動的に列の型が推測されます。 
+training_data ([`TabularDataset`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) として) とラベルを定義しました。これらは、[`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) で 自動 ML に渡されます。 `TabularDataset` メソッド `from_delimited_files` は既定で `infer_column_types` を true に設定します。これにより、自動的に列の型が推測されます。 
 
 列の型を手動で設定する場合は、各列の型を手動で設定するように `set_column_types` 引数を設定できます。 次のコード サンプルでは、sklearn パッケージのデータが使用されています。
 
@@ -159,7 +159,7 @@ automl_config = AutoMLConfig(task='classification',
 
 ```python
 from azureml.core.experiment import Experiment
-experiment = Experiment(ws, 'automl_remote')
+experiment = Experiment(ws, 'Tutorial-automl-remote')
 remote_run = experiment.submit(automl_config, show_output=True)
 ```
 
@@ -200,7 +200,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-results"></a>結果を探索する
 
-[トレーニングのチュートリアル](tutorial-auto-train-models.md#explore-the-results)で紹介したものと同じ [Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)を使用して、結果のグラフと表を表示することができます。
+[トレーニングのチュートリアル](tutorial-auto-train-models.md#explore-the-results)で紹介したものと同じ [Jupyter ウィジェット](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)を使用して、結果のグラフと表を表示することができます。
 
 ```python
 from azureml.widgets import RunDetails
@@ -220,7 +220,7 @@ Jupyter Notebook を使用していない場合は、実行自体の URL を表�
 remote_run.get_portal_url()
 ```
 
-ご利用のワークスペースで同じ情報にアクセスすることができます。  これらの結果の詳細については、「[自動機械学習の結果について](how-to-understand-automated-ml.md)」を参照してください。
+ご利用のワークスペースで同じ情報にアクセスすることができます。  これらの結果の詳細については、[自動機械学習の結果の評価](how-to-understand-automated-ml.md)に関する記事を参照してください。
 
 ## <a name="example"></a>例
 

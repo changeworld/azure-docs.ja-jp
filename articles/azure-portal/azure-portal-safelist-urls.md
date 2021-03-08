@@ -1,20 +1,14 @@
 ---
 title: ファイアウォールまたはプロキシ サーバーのセーフリストに Azure portal の URL を追加する
 description: これらの URL をプロキシ サーバー バイパスに追加して、Azure portal やそのサービスと通信を行います
-services: azure-portal
-keywords: ''
-author: mgblythe
-ms.author: mblythe
 ms.date: 04/10/2020
 ms.topic: conceptual
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 67ccf6e2f113c0ec72cfcbccedf88017e452ec4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d9c8222ee85c0c16ec1e1926335ac06e0389797
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361661"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745878"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>ファイアウォールまたはプロキシ サーバーのセーフリストに Azure portal の URL を追加する
 
@@ -34,7 +28,7 @@ Azure portal 用にセーフリストに追加する URL エンドポイント�
 *.applicationinsights.io
 *.azure.com
 *.azure.net
-*.azureafd.net
+*.azurefd.net
 *.azure-api.net
 *.azuredatalakestore.net
 *.azureedge.net

@@ -1,7 +1,7 @@
 ---
 title: アプリ ロールを追加してトークンから取得する | Azure
 titleSuffix: Microsoft identity platform
-description: Azure Active Directory に登録されたアプリケーションにアプリ ロールを追加し、それらのロールにユーザーとグループを割り当てて、トークンの `roles` 要求で受け取る方法について説明します。
+description: Azure Active Directory に登録されたアプリケーションにアプリ ロールを追加し、それらのロールにユーザーとグループを割り当てて、トークンの 'roles' 要求で受け取る方法について説明します。
 services: active-directory
 author: kalyankrishna1
 manager: CelesteDG
@@ -9,62 +9,96 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 11/13/2020
 ms.author: kkrishna
-ms.reviewer: kkrishna, jmprieur
+ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5a2acb08971bc0878c943047c42c9dc2a9525794
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: fce963bd9ffdc6f768d7b3de4a9e4870add06136
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141433"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104248"
 ---
-# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>方法:アプリケーションにアプリ ロールを追加してトークンで受け取る
+# <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>方法: アプリケーションにアプリ ロールを追加してトークンで受け取る
 
 ロールベースのアクセス制御 (RBAC) は、アプリケーションにおいて承認を実施する一般的なメカニズムです。 RBAC を使用するとき、管理者は、個々のユーザーまたはグループではなく、ロールにアクセス許可を付与します。 その後、管理者はロールをさまざまなユーザーやグループに割り当てて、コンテンツや機能にだれがアクセスできるかを制御できます。
 
-RBAC をアプリケーション ロールおよびロール要求と一緒に使用すると、開発者はほとんど手間をかけずにアプリでの承認を確実に行うことができます。
+RBAC をアプリケーション ロールおよびロール要求と一緒に使用すると、開発者はあまり手間をかけずにアプリでの承認を確実に行うことができます。
 
-もう 1 つの方法として、[WebApp-GroupClaims-DotNet](https://github.com/Azure-Samples/WebApp-GroupClaims-DotNet) で説明するように Azure AD グループおよびグループ要求を使用することもできます。 Azure AD グループとアプリケーション ロールは決して相互排他ではありません。一緒に使用することで、さらにきめ細かいアクセス制御を提供することができます。
+もう 1 つの方法として、GitHub 上の [active-directory-aspnetcore-webapp-openidconnect-v2](https://aka.ms/groupssample) コード サンプルで示されているように、Azure AD グループおよびグループ要求を使用することもできます。 Azure AD グループとアプリケーション ロールは相互排他ではありません。一緒に使用することで、さらにきめ細かいアクセス制御を提供することができます。
 
 ## <a name="declare-roles-for-an-application"></a>アプリケーションのロールを宣言する
 
-これらのアプリケーション ロールは [Azure portal](https://portal.azure.com) でアプリケーションの登録マニフェストに定義されます。  ユーザーがアプリケーションにサインインすると、Azure AD は、各ロール (ユーザーに個別に付与されたロール、およびグループ メンバーシップを通じて付与されているロール) の `roles` 要求を生成します。  ユーザーとグループのロールへの割り当ては、ポータルの UI を介して行うか、[Microsoft Graph](/graph/azuread-identity-access-management-concept-overview) を使用してプログラミングによって行うことができます。
+アプリ ロールを定義するには、[Azure portal](https://portal.azure.com) を使用します。 アプリ ロールは通常、サービス、アプリ、または API を表すアプリケーション登録で定義されます。 ユーザーがアプリケーションにサインインすると、Azure AD によって、各ロール (ユーザーまたはサービス プリンシパルに個別に付与されたロール、およびグループ メンバーシップを通じて付与されているロール) の `roles` 要求が生成されます。 これは要求ベースの承認を実装するために使用できます。 アプリ ロールは[ユーザーまたはユーザー グループ](../manage-apps/add-application-portal-assign-users.md#assign-users-to-an-app)に割り当てることができます。 アプリ ロールは、別のアプリケーションのサービス プリンシパルに割り当てたり、[マネージド ID のサービス プリンシパルに](../managed-identities-azure-resources/how-to-assign-app-role-managed-identity-powershell.md)割り当てたりすることもできます。
 
-### <a name="declare-app-roles-using-azure-portal"></a>Azure portal を使用してアプリ ロールを宣言する
+> [!IMPORTANT]
+> 現在のところ、サービス プリンシパルをグループに追加し、その後、アプリ ロールを割り当てる場合、Azure AD では、それが発行するトークンに `roles` 要求が追加されません。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータルツールバーの **[ディレクトリ + サブスクリプション]** アイコンを選択します。
-1. **[お気に入り]** または **[すべてのディレクトリ]** リストで、アプリケーションを登録する Active Directory テナントを選択します。
-1. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
-1. **[Azure Active Directory]** ウィンドウで、 **[アプリの登録]** を選択してすべてのアプリケーションを一覧表示します。
-1. アプリ ロールを定義するアプリケーションを選択します。 次に、 **[マニフェスト]** を選択します。
-1. `appRoles` 設定を見つけたら、すべてのアプリケーション ロールを追加して、アプリケーション マニフェストを編集します。
+Azure portal を使用してアプリ ロールを宣言するには、2 つの方法があります。
 
-     > [!NOTE]
-     > このマニフェストの各アプリ ロール定義には、`id` プロパティに対するマニフェストのコンテキスト内に有効な異なる GUID が含まれている必要があります。
-     >
-     > 各アプリ ロール定義の `value` プロパティは、アプリケーションのコードで使用されている文字列と正確に一致する必要があります。 `value` プロパティにスペースを含めることはできません。 スペースが含まれていると、マニフェストの保存時にエラーが発生します。
+* [アプリ ロール UI](#app-roles-ui--preview) | プレビュー
+* [アプリ マニフェスト エディター](#app-manifest-editor)
 
+追加するロールの数は、Azure Active Directory によって適用されるアプリケーション マニフェストの制限に照らしてカウントされます。 このような制限については、[Azure Active Directory のアプリ マニフェスト リファレンス](reference-app-manifest.md)に関するページの「[マニフェストの制限](./reference-app-manifest.md#manifest-limits)」セクションを参照してください。
+
+### <a name="app-roles-ui--preview"></a>アプリ ロール UI | プレビュー
+
+> [!IMPORTANT]
+> アプリ ロール ポータルの UI 機能 [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
+
+Azure portal のユーザー インターフェイスを使用してアプリ ロールを作成するには:
+
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
+1. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、アプリのロールを追加するアプリ登録を含む Azure Active Directory テナントを選択します。
+1. **Azure Active Directory** を検索して選択します。
+1. **[管理]** で **[アプリの登録]** を選択し、アプリ ロールを定義するアプリケーションを選択します。
+1. **[App roles | Preview]\(アプリ ロール | プレビュー\)** を選択し、 **[Create app role]\(アプリ ロールの作成\)** を選択します。
+
+   :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-overview-pane.png" alt-text="Azure portal の [アプリの登録] の [アプリのロール] ペイン":::
+1. **[Create app role]\(アプリのロールの作成\)** ペインで、ロールの設定を入力します。 図の下の表では、各設定とそのパラメーターについて説明します。
+
+    :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-create-context-pane.png" alt-text="Azure portal の [アプリの登録] のアプリ ロールによって作成されるコンテキスト ペイン":::
+
+    | フィールド | [説明] | 例 |
+    |-------|-------------|---------|
+    | **表示名** | 管理者の同意やアプリの割り当て時に表示されるアプリのロールの表示名です。 この値にはスペースを含めることができます。 | `Survey Writer` |
+    | **Allowed member types (許可されるメンバーの種類)** | このアプリのロールをユーザー、アプリケーション、またはその両方に割り当てることができるかどうかを指定します。<br/><br/>`applications` から使用できる場合、アプリ ロールは、アプリの登録の **[管理]** セクション > **[API のアクセス許可] > [アクセス許可の追加] > [自分の API] > [API を選択する] > [アプリケーションの許可]** の下にアプリケーションのアクセス許可として表示されます。 | `Users/Groups` |
+    | **Value** | アプリケーション側でトークンに想定するロール要求の値を指定します。 この値は、アプリケーションのコードで参照される文字列と正確に一致する必要があります。 値にスペースを含めることはできません。 | `Survey.Create` |
+    | **説明** | 管理者のアプリの割り当てと同意エクスペリエンスの間に表示されるアプリのロールの詳細な説明。 | `Writers can create surveys.` |
+    | **Do you want to enable this app role? (このアプリのロールを有効にしますか?)** | アプリ ロールを有効にするかどうかを指定します。 アプリのロールを削除するには、このチェックボックスをオフにして、変更を適用してから削除操作を試行してください。 | *オン* |
+
+1. **[適用]** を選択して変更を保存します。
+
+### <a name="app-manifest-editor"></a>アプリ マニフェスト エディター
+
+マニフェストを直接編集してロールを追加するには:
+
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
+1. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、アプリのロールを追加するアプリ登録を含む Azure Active Directory テナントを選択します。
+1. **Azure Active Directory** を検索して選択します。
+1. **[管理]** で **[アプリの登録]** を選択し、アプリ ロールを定義するアプリケーションを選択します。
+1. 再び **[管理]** で、 **[マニフェスト]** を選択します。
+1. `appRoles` 設定を見つけ、アプリケーション ロールを追加して、アプリ マニフェストを編集します。 `users` または `applications` (あるいは両方) を対象とするアプリ ロールを定義できます。 次の JSON スニペットでは、両方の例を示します。
 1. マニフェストを保存します。
 
-### <a name="examples"></a>例
+マニフェスト内の各アプリ ロールの定義には、`id` 値として一意の GUID が必要です。
 
-次の例では、`users` に割り当てることができる `appRoles` を示します。
+各アプリ ロール定義の `value` プロパティは、アプリケーションのコードで使用されている文字列と正確に一致する必要があります。 `value` プロパティにスペースを含めることはできません。 スペースが含まれていると、マニフェストの保存時にエラーが発生します。
 
-> [!NOTE]
->`id` は一意の GUID であることが必要です。
+#### <a name="example-user-app-role"></a>例:ユーザーのアプリ ロール
 
-```Json
-"appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
+この例では、`User` に割り当てることができる `Writer` という名前のアプリ ロールを定義します。
+
+```json
+"appId": "8763f1c4-0000-0000-0000-158e9ef97d6a",
 "appRoles": [
     {
       "allowedMemberTypes": [
         "User"
       ],
       "displayName": "Writer",
-      "id": "d1c2ade8-98f8-45fd-aa4a-6d06b947c66f",
+      "id": "d1c2ade8-0000-0000-0000-6d06b947c66f",
       "isEnabled": true,
       "description": "Writers Have the ability to create tasks.",
       "value": "Writer"
@@ -73,20 +107,21 @@ RBAC をアプリケーション ロールおよびロール要求と一緒に�
 "availableToOtherTenants": false,
 ```
 
-> [!NOTE]
->`displayName` にはスペースを含めることができます。
+#### <a name="example-application-app-role"></a>例:アプリケーションのアプリ ロール
 
-`users` または `applications` (あるいは両方) を対象とするアプリ ロールを定義できます。 `applications` から使用できる場合、アプリのロールは、 **[管理]** セクション > **[API のアクセス許可] > [アクセス許可の追加] > [自分の API] > [API を選択する] > [アプリケーションの許可]** の下にアプリケーションのアクセス許可として表示されます。 次の例では、`Application` を対象とするアプリ ロールを示します。
+`applications` から使用できる場合、アプリ ロールは、アプリの登録の **[管理]** セクション > **[API のアクセス許可] > [アクセス許可の追加] > [自分の API] > [API を選択する] > [アプリケーションの許可]** の下にアプリケーションのアクセス許可として表示されます。
 
-```Json
-"appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
+この例では、`Application` を対象とするアプリ ロールを示します。
+
+```json
+"appId": "8763f1c4-0000-0000-0000-158e9ef97d6a",
 "appRoles": [
     {
       "allowedMemberTypes": [
         "Application"
       ],
       "displayName": "ConsumerApps",
-      "id": "47fbb575-859a-4941-89c9-0f7a6c30beac",
+      "id": "47fbb575-0000-0000-0000-0f7a6c30beac",
       "isEnabled": true,
       "description": "Consumer apps have access to the consumer data.",
       "value": "Consumer"
@@ -95,39 +130,85 @@ RBAC をアプリケーション ロールおよびロール要求と一緒に�
 "availableToOtherTenants": false,
 ```
 
-定義するロールの数は、アプリケーション マニフェストの制限に影響します。 詳しい説明については、[マニフェストの制限](./reference-app-manifest.md#manifest-limits)に関するページを参照してください。
+## <a name="assign-users-and-groups-to-roles"></a>ロールにユーザーとグループを割り当てる
 
-### <a name="assign-users-and-groups-to-roles"></a>ロールにユーザーとグループを割り当てる
+アプリケーションにアプリ ロールを追加したら、それらのロールにユーザーとグループを割り当てることができます。 ユーザーとグループのロールへの割り当ては、ポータルの UI を介して行うか、[Microsoft Graph](/graph/api/user-post-approleassignments) を使用してプログラミングによって行うことができます。 さまざまなアプリのロールに割り当てられたユーザーがアプリケーションにサインインすると、`roles` 要求で割り当てられたロールがトークンに付与されます。
 
-アプリケーションにアプリ ロールを追加したら、それらのロールにユーザーとグループを割り当てることができます。
+Azure portal を使用してユーザーとグループをロールに割り当てるには:
 
-1. **[Azure Active Directory]** ウィンドウで、 **[Azure Active Directory]** の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
-1. **[すべてのアプリケーション]** を選択して、すべてのアプリケーションの一覧を表示します。
-
-     必要なアプリケーションが表示されていない場合は、 **[すべてのアプリケーション]** リストの一番上にあるさまざまなフィルターを使用して表示内容を制限するか、一覧表示の下までスクロールしてアプリケーションを探します。
-
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
+1. **Azure Active Directory** の左側のナビゲーション メニューで **[エンタープライズ アプリケーション]** を選択します。
+1. **[すべてのアプリケーション]** を選択して、すべてのアプリケーションの一覧を表示します。 アプリケーションが一覧に表示されない場合は、 **[すべてのアプリケーション]** 一覧の上部にあるフィルターを使用して一覧を制限するか、一覧を下にスクロールしてアプリケーションを見つけます。
 1. ユーザーまたはグループをロールに割り当てるアプリケーションを選択します。
-1. アプリケーションの左側のナビゲーション メニューで、 **[ユーザーとグループ]** ペインを選択します。
-1. **[ユーザーとグループ]** 一覧の上部にある **[ユーザーの追加]** ボタンをクリックして、 **[割り当ての追加]** ウィンドウを開きます。
-1. **[割り当ての追加]** ウィンドウから **[ユーザーとグループ]** セレクターを選択します。
+1. **[管理]** で **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ペインを開きます。
+1. **[割り当ての追加]** ウィンドウから **[ユーザーとグループ]** セレクターを選択します。 ユーザーとセキュリティ グループの一覧が表示されます。 特定のユーザーまたはグループを検索することや、一覧に表示される複数のユーザーやグループを選択することができます。
+1. ユーザーとグループを選択したら、 **[選択]** ボタンを選択して続行します。
+1. **[割り当ての追加]** ペインで **[ロールの選択]** を選択します。 アプリケーションに対して定義されているすべてのロールが表示されます。
+1. ロールを選択し、 **[選択]** ボタンを選択します。
+1. **[割り当て]** ボタンを選択して、アプリへのユーザーとグループの割り当てを完了します。
 
-     ユーザーとセキュリティ グループの一覧と一緒に、特定のユーザーまたはグループを検索して探すためのテキスト ボックスが表示されます。 この画面では、一度に複数のユーザーとグループを選択できます。
+追加したユーザーとグループが **[ユーザーとグループ]** の一覧に表示されることを確認します。
 
-1. ユーザーとグループの選択が終了したら、一番下の **[選択]** ボタンをクリックして次の段階に進みます。
-1. **[割り当ての追加]** ウィンドウで **[ロールの選択]** セレクターを選択します。 アプリケーション マニフェストで前に宣言したすべてのロールが表示されます。
-1. ロールを選択して、 **[選択]** ボタンをクリックします。
-1. 一番下の **[割り当て]** ボタンをクリックすると、ユーザーとグループのアプリへの割り当てが完了します。
-1. 追加したユーザーとグループが、更新された **[ユーザーとグループ]** のリストに表示されていることを確認します。
+## <a name="assign-app-roles-to-applications"></a>アプリケーションへのアプリ ロールの割り当て
 
-### <a name="receive-roles-in-tokens"></a>トークンでロールを受信する
+アプリケーションにアプリ ロールを追加したら、Azure portal を使用するか、[Microsoft Graph](/graph/api/user-post-approleassignments) を使用してプログラムでアプリ ロールをクライアント アプリに割り当てることができます。
 
-さまざまなアプリのロールに割り当てられたユーザーがアプリケーションにサインインすると、`roles` 要求で割り当てられたロールがトークンに付与されます。
+アプリケーションにアプリ ロールを割り当てるときは、"*アプリケーションのアクセス許可*" を作成します。 アプリケーションのアクセス許可は、通常、認証と承認された API 呼び出しをユーザーによる操作なしで行う必要があるデーモン アプリまたはバックエンド サービスによって使用されます。
 
-## <a name="more-information"></a>詳細情報
+Azure portal を使用してアプリケーションにアプリ ロールを割り当てるには:
 
-- [アプリ ロールおよびロール要求を使用して ASP.NET Core Web アプリに承認を追加する](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
-- [Implement authorization in your applications with Microsoft identity platform (Microsoft ID プラットフォームを使用してアプリケーションで承認を実装する) (ビデオ)](https://www.youtube.com/watch?v=LRoc-na27l0)
-- [グループ要求とアプリケーション ロールが追加された Azure Active Directory](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
-- [Azure Active Directory のアプリ マニフェスト](./reference-app-manifest.md)
-- [AAD アクセス トークン](access-tokens.md)
-- [AAD `id_tokens`](id-tokens.md)
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
+1. **Azure Active Directory** の左側のナビゲーション メニューで **[アプリの登録]** を選択します。
+1. **[すべてのアプリケーション]** を選択して、すべてのアプリケーションの一覧を表示します。 アプリケーションが一覧に表示されない場合は、 **[すべてのアプリケーション]** 一覧の上部にあるフィルターを使用して一覧を制限するか、一覧を下にスクロールしてアプリケーションを見つけます。
+1. アプリ ロールを割り当てるアプリケーションを選択します。
+1. **[API のアクセス許可]** 、 **[アクセス許可の追加]** の順に選択します。
+1. **[マイ API]** タブを選択し、アプリ ロールを定義したアプリを選択します。
+1. **[アプリケーションのアクセス許可]** を選択します。
+1. 割り当てるロールを選択します。
+1. ロールの追加を完了するために、 **[アクセス許可の追加]** ボタンを選択します。
+
+新しく追加されたロールは、アプリの登録の **[API のアクセス許可]** ペインに表示されます。
+
+#### <a name="grant-admin-consent"></a>管理者の同意の付与
+
+これらは委任されたアクセス許可ではなく、"*アプリケーションのアクセス許可*" であるため、アプリケーションに割り当てられたアプリ ロールの使用に管理者が同意を付与する必要があります。
+
+1. アプリの登録の **[API のアクセス許可]** ペインで、 **[\<tenant name\> に管理者の同意を与えます]** を選択します。
+1. 要求されたアクセス許可への同意の付与を求めるメッセージが表示されたら、 **[はい]** を選択します。
+
+**[状態]** 列には、同意が **\<tenant name\> に付与された** ことが反映されているはずです。
+
+## <a name="use-app-roles-in-your-web-api"></a>Web API でアプリ ロールを使用する
+
+アプリ ロールを定義してユーザー、グループ、またはアプリケーションに割り当てたら、次の手順は、API が呼び出されたときにこれらのロールの有無を確認するコードを Web API に追加することです。 つまり、承認が必要と決めた API 操作がクライアント アプリから要求された場合、クライアント アプリの呼び出しに示されたアクセス トークン内にスコープがあることを API のコードで確認する必要があります。
+
+Web API に承認を追加する方法については、「[保護された Web API: スコープとアプリのロールを検証する](scenario-protected-web-api-verification-scope-app-roles.md)」を参照してください。
+
+## <a name="app-roles-vs-groups"></a>アプリ ロールとグループ
+
+承認にはアプリ ロールまたはグループを使用できますが、両者の間の重要な違いは、実際のシナリオでどちらを使用するかの決定に影響する可能性があります。
+
+| アプリ ロール                                                                          | グループ                                                      |
+|------------------------------------------------------------------------------------|-------------------------------------------------------------|
+| アプリケーションに固有のものであり、アプリの登録で定義されます。 これらはアプリケーションと共に移動します。 | アプリではなく Azure AD テナントに固有のものです。 |
+| アプリ ロールは、アプリの登録が削除されると削除されます。                      | アプリが削除されても、グループはそのまま残ります。            |
+| `roles` 要求で提供されます。                                                     | `groups` 要求で提供されます。                                 |
+
+開発者はアプリ ロールを使用して、ユーザーがアプリにサインインできるか、Web API のアクセス トークンをアプリで取得できるかを制御できます。 このセキュリティ制御をグループにまで拡張するために、開発者と管理者は、セキュリティ グループをアプリ ロールに割り当てることもできます。
+
+開発者がアプリ自体に承認のパラメーターを記述して制御する必要がある場合は、アプリ ロールをお勧めします。 たとえば、承認にグループを使用するアプリは、グループ ID と名前の両方が異なる可能性があるため、次のテナントで中断されます。 アプリ ロールを使用するアプリは安全なままです。 実際、アプリ ロールにグループを割り当てることは、同じ理由で SaaS アプリでも一般的です。
+
+## <a name="next-steps"></a>次のステップ
+
+アプリ ロールの詳細については、次のリソースを参照してください。
+
+* コード サンプル (GitHub)
+  * [グループおよびグループ要求を使用して ASP.NET Core Web アプリに承認を追加する](https://aka.ms/groupssample)
+  * [.NET Core Web API を呼び出してアプリ ロールとセキュリティ グループを使用する、Angular の単一ページ アプリケーション (SPA)](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups/blob/master/README.md)
+* リファレンス ドキュメント
+  * [Azure AD のアプリ マニフェスト](./reference-app-manifest.md)
+  * [Azure AD のアクセス トークン](access-tokens.md)
+  * [Azure AD の ID トークン](id-tokens.md)
+  * [アプリに省略可能な要求を提供する](active-directory-optional-claims.md)
+* ビデオ:[Microsoft ID プラットフォームを使用してアプリケーションで承認を実装する](https://www.youtube.com/watch?v=LRoc-na27l0) (1:01:15)

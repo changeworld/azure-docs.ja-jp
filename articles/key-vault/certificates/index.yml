@@ -11,12 +11,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: 5a716ad70a31342467eb0944b3e6d1f5d80d5166
-  ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+  ms.openlocfilehash: d988fca2c5eb56484e21b20e088b4331c51bd23b
+  ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/27/2020
-  ms.locfileid: "89000908"
+  ms.lasthandoff: 01/08/2021
+  ms.locfileid: "98028949"
 landingContent:
 - title: 証明書
   linkLists:
@@ -42,8 +42,14 @@ landingContent:
       url: quick-create-powershell.md
     - text: ポータル
       url: quick-create-portal.md
+    - text: .NET
+      url: quick-create-net.md
     - text: Python
       url: quick-create-python.md
+    - text: Node.js
+      url: quick-create-node.md
+    - text: Java
+      url: quick-create-java.md
     - text: Key Vault に証明書をインポートする
       url: tutorial-import-certificate.md
 - title: Key Vault 証明書用クライアント ライブラリ
@@ -66,10 +72,10 @@ landingContent:
       url: ../general/overview.md
     - text: 基本的な概念
       url: ../general/basic-concepts.md
+    - text: セキュリティの概要
+      url: ../general/security-overview.md
     - text: 論理的な削除の概要
       url: ../general/soft-delete-overview.md
-    - text: セキュリティの概要
-      url: ../general/overview-security.md
 - title: Microsoft Learn
   linkLists:
   - linkListType: learn

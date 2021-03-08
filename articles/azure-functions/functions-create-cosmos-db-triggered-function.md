@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: c7dc18d8186d7262154cc0718bb6ad77ebbb5d2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 621773a84db99dbacfaa163f77189974ba102163
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829841"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034817"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB によってトリガーされる関数を作成する
 
@@ -28,6 +28,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 > [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
+
 Azure アカウントで [Azure Portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
@@ -36,7 +37,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="create-an-azure-function-app"></a>Azure Function App の作成
+## <a name="create-a-function-app-in-azure"></a>Azure で関数アプリを作成する
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -58,7 +59,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
     | 設定      | 推奨値  | 説明                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **新規関数** | 既定名値を受け入れる | 関数の名前です。 |
-    | **Cosmos DB アカウント接続** | 既定の新しい名前を受け入れる | **[新規]** 、前に作成した**データベース アカウント**、 **[OK]** の順に選択します。 この操作により、アカウント接続のアプリケーション設定が作成されます。 この設定は、データベースへの接続へのバインディングによって使用されます。 |
+    | **Cosmos DB アカウント接続** | 既定の新しい名前を受け入れる | **[新規]** 、前に作成した **データベース アカウント**、 **[OK]** の順に選択します。 この操作により、アカウント接続のアプリケーション設定が作成されます。 この設定は、データベースへの接続へのバインディングによって使用されます。 |
     | **データベース名** | タスク | 監視対象のコレクションが含まれているデータベースの名前。 |
     | **[コレクション名]** | アイテム | 監視対象のコレクションの名前。 |
     | **リースのコレクション名** | リース | リースを格納するコレクションの名前。 |
@@ -100,7 +101,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
     | ---|---|--- |
     | **データベース ID** | タスク |新しいデータベースの名前。 これは、関数バインドで定義された名前と一致する必要があります。 |
     | **コンテナー ID** | アイテム | 新しいコンテナーの名前。 これは、関数バインドで定義された名前と一致する必要があります。  |
-    | **[[パーティション キー]](../cosmos-db/partition-data.md)** | /category|各パーティションに均等にデータを分散するパーティション キー。 効率の良いコンテナーを作成するためには、正しいパーティション キーを選択することが大切です。 | 
+    | **[[パーティション キー]](../cosmos-db/partitioning-overview.md)** | /category|各パーティションに均等にデータを分散するパーティション キー。 効率の良いコンテナーを作成するためには、正しいパーティション キーを選択することが大切です。 | 
     | **スループット** |400 RU| 既定値を使用します。 待ち時間を短縮する場合、後でスループットをスケールアップできます。 |    
 
 1. **[OK]** をクリックして、Items コンテナーを作成します。 コンテナーが作成されるまで多少時間がかかる場合があります。

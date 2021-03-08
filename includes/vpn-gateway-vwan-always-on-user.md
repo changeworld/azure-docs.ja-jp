@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 17df5dca584b760cc52ddc171e92fb26b418c347
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b68fce603801c7bc1aee2af871df257b5f69197
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500184"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027086"
 ---
 1. こちらの[ポイント対サイト VPN クライアント](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)に関する記事に示されているように、Windows 10 クライアントにクライアント証明書をインストールします。 証明書は、現在のユーザー ストアに存在する必要があります。
 
-1. PowerShell、Configuration Manager、または Intune を使用して Always On VPN を構成するには、「[Windows 10 クライアントの Always On VPN 接続を構成する](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)」の手順に従ってください。
+1. PowerShell、Configuration Manager、または Intune を使用して Always On VPN を構成するには、「[Windows 10 クライアントの Always On VPN 接続を構成する](/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)」の手順に従ってください。
 
 ### <a name="example-configuration-for-the-user-tunnel"></a>ユーザー トンネルの構成例
 

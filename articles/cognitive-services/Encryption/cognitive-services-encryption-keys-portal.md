@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 1369f30c4a3bcb0a391a5f2b2a63191590afd622
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 88a723abc606a527232b7c1949f35c1fedfdba50
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310701"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706845"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>Cognitive Services 用に Azure Key Vault でカスタマー マネージド キーを構成する
 
@@ -21,22 +21,22 @@ Cognitive Services 用に Azure Key Vault でカスタマー マネージド キ
 
 ## <a name="vision"></a>視覚
 
-* [Custom Vision による保存データの暗号化](../Custom-Vision-Service/custom-vision-encryption-of-data-at-rest.md)
-* [Face サービスによる保存データの暗号化](../Face/face-encryption-of-data-at-rest.md)
-* [Form Recognizer による保存データの暗号化](../form-recognizer/form-recognizer-encryption-of-data-at-rest.md)
+* [Custom Vision による保存データの暗号化](../custom-vision-service/encrypt-data-at-rest.md)
+* [Face サービスによる保存データの暗号化](../face/encrypt-data-at-rest.md)
+* [Form Recognizer による保存データの暗号化](../form-recognizer/encrypt-data-at-rest.md)
 
 ## <a name="language"></a>Language
 
-* [Language Understanding サービスでの保存データの暗号化](../LUIS/luis-encryption-of-data-at-rest.md)
-* [QnA Maker での保存データの暗号化](../QnAMaker/qna-maker-encryption-of-data-at-rest.md)
-* [Translator による保存データの暗号化](../translator/translator-encryption-of-data-at-rest.md)
+* [Language Understanding サービスでの保存データの暗号化](../LUIS/encrypt-data-at-rest.md)
+* [QnA Maker での保存データの暗号化](../QnAMaker/encrypt-data-at-rest.md)
+* [Translator による保存データの暗号化](../translator/encrypt-data-at-rest.md)
 
 ## <a name="decision"></a>決定
 
-* [Content Moderator による保存データの暗号化](../Content-Moderator/content-moderator-encryption-of-data-at-rest.md)
-* [Personalizer による保存データの暗号化](../personalizer/personalizer-encryption-of-data-at-rest.md)
+* [Content Moderator による保存データの暗号化](../Content-Moderator/encrypt-data-at-rest.md)
+* [Personalizer による保存データの暗号化](../personalizer/encrypt-data-at-rest.md)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Key Vault とは](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Azure Key Vault とは](../../key-vault/general/overview.md)
 * [Cognitive Services カスタマー マネージド キー要求フォーム](https://aka.ms/cogsvc-cmk)

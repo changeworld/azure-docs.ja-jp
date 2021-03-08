@@ -3,12 +3,12 @@ title: Azure Relay 名前空間に対する IP ファイアウォールを構成
 description: この記事では、ファイアウォール規則を使用して、特定の IP アドレスから Azure Relay 名前空間への接続を許可する方法を説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e47c5071a5fc7207d4eabc162fcb24ab6ad57d28
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: ad8feed5df49dcc4503226a5fae50195bb9d48aa
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141858"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91999503"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>Azure Relay 名前空間に対する IP ファイアウォールを構成する
 既定では、要求に有効な認証と承認がある限り、Relay 名前空間にはインターネットからアクセスできます。 これは IP ファイアウォールを使用して、さらに [CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみに制限できます。
@@ -29,7 +29,7 @@ IP ファイアウォール規則は、名前空間レベルで適用されま�
 1. [Azure portal](https://portal.azure.com) で **[リレー名前空間]** に移動します。
 2. 左側のメニューで、 **[ネットワーク]** オプションを選択します。 **[許可するアクセス元]** セクションで **[すべてのネットワーク]** オプションを選択した場合、Relay 名前空間では任意の IP アドレスからの接続が受け入れられます。 この設定は、IP アドレス範囲 0.0.0.0/0 を受け入れる規則と同じです。 
 
-    ![ファイアウォールで [すべてのネットワーク] のオプションが選択されている](./media/ip-firewall/all-networks-selected.png)
+    ![[すべてのネットワーク] オプションが選択されている [ネットワーク] ページを示すスクリーンショット。](./media/ip-firewall/all-networks-selected.png)
 1. アクセスを特定のネットワークと IP アドレスに制限するには、 **[選択されたネットワーク]** オプションを選択します。 **[ファイアウォール]** セクションで、次の手順のようにします。
     1. 現在のクライアント IP にその名前空間へのアクセスを許可するには、 **[クライアント IP アドレスを追加する]** オプションを選択します。 
     2. **[アドレス範囲]** に、特定の IPv4 アドレスまたは IPv4 アドレスの範囲を CIDR 表記で入力します。 
@@ -76,7 +76,7 @@ IP ファイアウォール規則は、名前空間レベルで適用されま�
       }
     },
     "variables": {
-      "namespaceNetworkRuleSetName": "[concat(parameters('relayNamespaceName'), concat('/', 'default'))]",
+      "namespaceNetworkRuleSetName": "[concat(parameters('relayNamespaceName'), concat('/', 'default'))]"
     },
     "resources": [
       {
@@ -93,7 +93,7 @@ IP ファイアウォール規則は、名前空間レベルで適用されま�
       {
         "apiVersion": "2018-01-01-preview",
         "name": "[variables('namespaceNetworkRuleSetName')]",
-        "type": "Microsoft.Relay/namespaces/networkruleset",
+        "type": "Microsoft.Relay/namespaces/networkrulesets",
         "dependsOn": [
           "[concat('Microsoft.Relay/namespaces/', parameters('relayNamespaceName'))]"
         ],
@@ -109,6 +109,7 @@ IP ファイアウォール規則は、名前空間レベルで適用されま�
                 "action":"Allow"
             }
           ],
+          "virtualNetworkRules": [],
           "trustedServiceAccessEnabled": false,
           "defaultAction": "Deny"
         }

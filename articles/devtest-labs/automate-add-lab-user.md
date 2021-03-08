@@ -3,12 +3,12 @@ title: Azure DevTest Labs でのラボ ユーザーの追加を自動化する |
 description: この記事では、Azure Resource Manager テンプレート、PowerShell、および CLI を使用して、Azure DevTest Labs でのラボへのユーザー追加を自動化する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b016d6edcb75016302cf652f873881008de18abb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61853efacc5974b81d46b2b8cca0f2796672d72d
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483824"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327962"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボへのラボ ユーザーの追加を自動化する
 Azure DevTest Labs によって、Azure portal を使用することにより、セルフサービスの開発テスト環境をすばやく作成できます。 しかし、複数のチームがあり、いくつかの DevTest Labs インスタンスがある場合、作成プロセスの自動化によって時間を節約できます。 [Azure Resource Manager テンプレート](https://github.com/Azure/azure-devtestlab/tree/master/Environments)では、ラボ、ラボ VM、カスタム イメージ、数式を作成し、自動でユーザーを追加できます。 この記事では、DevTest Labs インスタンスにユーザーを追加することに特に焦点を絞って説明します。
@@ -179,7 +179,7 @@ New-AzureRmRoleAssignment -UserPrincipalName <email@company.com> -RoleDefinition
 アクセス許可が付与されているリソースを指定するには、`ResourceName`、`ResourceType`、`ResourceGroup` の組み合わせ、または `scope` パラメーターによって指定できます。 どのパラメーターの組み合わせが使用されていても、Active Directory オブジェクト (ユーザー、グループ、またはサービス プリンシパル)、スコープ (リソース グループまたはリソース)、ロールの定義を一意に識別するために、コマンドレットに十分な情報を提供します。
 
 ## <a name="use-azure-command-line-interface-cli"></a>Azure コマンド ライン インターフェイス (CLI) を使用する
-Azure CLI で、`az role assignment create` コマンドを使用して、ラボ ユーザーをラボに追加します。 Azure CLI コマンドレットの詳細については、「[RBAC と Azure CLI を使用して Azure リソースへのアクセスを管理する](../role-based-access-control/role-assignments-cli.md)」を参照してください。
+Azure CLI で、`az role assignment create` コマンドを使用して、ラボ ユーザーをラボに追加します。 Azure CLI コマンドレットの詳細については、「[Azure CLI を使用して Azure でのロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-cli.md)」を参照してください。
 
 アクセス権が付与されているオブジェクトは、`objectId`、`signInName`、`spn` パラメーターによって指定できます。 オブジェクトにアクセス権が付与されているラボは、`scope` URL または `resource-name`、`resource-type`、`resource-group` パラメーターの組み合わせによって識別できます。
 

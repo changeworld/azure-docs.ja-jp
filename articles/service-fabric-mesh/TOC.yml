@@ -75,7 +75,7 @@
       href: move-across-regions.md
     - name: サンプルを検索する
       href: service-fabric-mesh-howto-find-samples.md
-- name: リファレンス
+- name: 関連項目
   items:
     - name: Service Fabric Mesh リソース プロバイダーの REST API
       href: /rest/api/servicefabric/sfmeshrp-index

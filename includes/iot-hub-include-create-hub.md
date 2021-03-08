@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d7ac494edfb9b1deeceafcac523ac58bccde96b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf651a1a09662e3084a8a9bdb6365b69b6ea52b5
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85365277"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99579748"
 ---
 ここでは、[Azure portal](https://portal.azure.com) を使用して IoT ハブを作成する方法について説明します。
 
@@ -31,37 +31,43 @@ ms.locfileid: "85365277"
 
    - **[リージョン]** :ハブを配置するリージョンを選択します。 ユーザーに最も近い場所を選択します。 一部の機能 ([IoT Hub デバイス ストリーム](../articles/iot-hub/iot-hub-device-streams-overview.md)など) は、特定のリージョンでのみご利用いただけます。 これらの制限のある機能については、サポート対象のいずれかのリージョンを選択する必要があります。
 
-   - **[IoT Hub 名]** : ハブの名前を入力します。 この名前はグローバルに一意である必要があります。 入力した名前が使用可能な場合は、緑色のチェック マークが表示されます。
+   - **[IoT Hub 名]** : ハブの名前を入力します。 この名前はグローバルに一意である必要があります。
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-   ![Azure portal でハブを作成する](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
+   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png" alt-text="Azure portal でハブを作成する。":::
 
-1. **次へ:Size and scale\(次へ: サイズとスケール\)** を選択して、ハブの作成を続けます。
+1. **Next:Networking\(次へ: ネットワーク\)** を選択して、ハブの作成を続けます。
 
-   ![Azure portal を使用して新しいハブのサイズとスケールを設定する](./media/iot-hub-include-create-hub/iot-hub-create-screen-size-scale.png)
+   IoT Hub に接続できるエンドポイントを選択します。 既定の設定である **[パブリック エンドポイント (すべてのネットワーク)]** を選択できるほか、 **[Public endpoint (selected IP ranges)]\(パブリック エンドポイント (選択された IP 範囲)\)** または **[プライベート エンドポイント]** を選択できます。 この例では、既定の設定をそのまま使用しています。
 
-   ここでは、既定の設定をそのまま使用できます。 必要に応じて、次のフィールドに変更を加えることができます。 
+   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-network-screen.png" alt-text="接続できるエンドポイントを選択する。":::
 
-    - **[価格とスケールティア]** : 選択したレベル。 必要な機能およびソリューションで 1 日に送信するメッセージの数に応じて、複数のレベルから適切なものを選びます。 無料レベルは、テストおよび評価用です。 ハブに接続できるデバイスは 500 個で、1 日に許可されるメッセージ数は最大 8,000 件です。 Azure サブスクリプションごとに、Free レベルの IoT ハブを 1 つ作成できます。 
+1. **Next:Management\(次へ: 管理\)** を選択して、ハブの作成を続けます。
+
+   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-management.png" alt-text="Azure portal を使用して新しいハブのサイズとスケールを設定する。":::
+
+    ここでは、既定の設定をそのまま使用できます。 必要に応じて、次のフィールドに変更を加えることができます。
+
+    - **[価格とスケールティア]** : 選択したレベル。 必要な機能およびソリューションで 1 日に送信するメッセージの数に応じて、複数のレベルから適切なものを選びます。 無料レベルは、テストおよび評価用です。 ハブに接続できるデバイスは 500 個で、1 日に許可されるメッセージ数は最大 8,000 件です。 Azure サブスクリプションごとに、Free レベルの IoT ハブを 1 つ作成できます。
 
       IoT Hub デバイス ストリームのクイックスタートに取り組んでいる場合は、Free レベルを選択してください。
 
     - **[IoT Hub ユニット]** : ユニットごとに許可される 1 日あたりのメッセージの数は、ハブの価格レベルによって決まります。 たとえば、ハブで 700,000 件のイングレス メッセージをサポートする場合は、S1 レベルのユニットを 2 つ選択します。
     他のレベルのオプションについて詳しくは、[適切な IoT Hub レベルの選択](../articles/iot-hub/iot-hub-scaling.md)に関するページをご覧ください。
 
-    - **Azure Security Center**:IoT およびお使いのデバイスに、脅威に対する保護のレイヤーを別途追加するには、これをオンにします。 このオプションは、Free レベルのハブでは使用できません。 この機能の詳細については、[Azure Security Center for IoT](https://docs.microsoft.com/azure/asc-for-iot/) に関するページを参照してください。
+    - **[Defender for IoT]** : IoT およびお使いのデバイスに、脅威に対する保護のレイヤーを別途追加するには、これをオンにします。 このオプションは、Free レベルのハブでは使用できません。 この機能の詳細については、[Azure Security Center for IoT](/azure/asc-for-iot/) に関するページを参照してください。
 
     - **[詳細設定]**  >  **[Device-to-cloud パーティション]** : このプロパティでは、device-to-cloud メッセージがそのメッセージの同時閲覧者数に関連付けられます。 ほとんどのハブでは、4 つのパーティションのみが必要となります。
 
-1.  **次へ:[Next]\(次へ\)** を選択して、次の画面に進みます。
+1. **次へ:[Next]\(次へ\)** を選択して、次の画面に進みます。
 
     タグは、名前と値の組です。 複数のリソースおよびリソース グループに同じタグを割り当てることで、リソースを分類したり、課金情報を統合したりすることができます。 詳細については、[タグを使用した Azure リソースの整理](../articles/azure-resource-manager/management/tag-resources.md)に関するページを参照してください。
 
-    ![Azure portal を使用してハブにタグを割り当てる](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
+    :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-tags.png" alt-text="Azure portal を使用してハブにタグを割り当てる。":::
 
-1.  **次へ:次へ: レビューと作成** をクリックして、選択内容を確認します。 次の画面のようになります。ただし、表示されるのはハブの作成時に選択した値です。 
+1. **次へ:次へ: レビューと作成** をクリックして、選択内容を確認します。 次の画面のようになります。ただし、表示されるのはハブの作成時に選択した値です。
 
-    ![新しいハブを作成するための情報を確認する](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
+    :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-review-and-create.png" alt-text="新しいハブを作成するための情報を確認する。":::
 
-1.  **[作成]** を選択して、新しいハブを作成します。 ハブの作成には数分かかります。
+1. **[作成]** を選択して、新しいハブを作成します。 ハブの作成には数分かかります。

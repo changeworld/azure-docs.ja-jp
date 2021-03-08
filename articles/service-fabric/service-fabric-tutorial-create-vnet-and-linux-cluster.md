@@ -3,13 +3,13 @@ title: Azure に Linux Service Fabric クラスターを作成する
 description: Azure CLI を使用して Linux Service Fabric クラスターを既存の Azure 仮想ネットワークにデプロイする方法を学習します。
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.custom: mvc
-ms.openlocfilehash: c4b71328ce59284f8870407c9492d24afe9acd8a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 77cc49c1b79e5c24e78a67a69493aa0b0059d565
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586922"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791073"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Azure 仮想ネットワークに Linux Service Fabric クラスターをデプロイする
 
@@ -106,7 +106,7 @@ Ubuntu 18.04 LTS の 2 つのテンプレートの違い
 
 ### <a name="create-a-cluster-using-an-existing-certificate"></a>既存の証明書を使用したクラスターの作成
 
-次のスクリプトでは、既存の証明書で保護された新しいクラスターをデプロイするために、[az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) コマンドとテンプレートを使用しています。 また、このコマンドを使用して、Azure に新しいキー コンテナーを作成し、証明書をアップロードします。
+次のスクリプトでは、既存の証明書で保護された新しいクラスターをデプロイするために、[az sf cluster create](/cli/azure/sf/cluster) コマンドとテンプレートを使用しています。 また、このコマンドを使用して、Azure に新しいキー コンテナーを作成し、証明書をアップロードします。
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"
@@ -132,7 +132,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location \
 
 ### <a name="create-a-cluster-using-a-new-self-signed-certificate"></a>新しい自己署名証明書を使用したクラスターの作成
 
-次のスクリプトでは、[az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) コマンドとテンプレートを使用して、Azure に新しいクラスターがデプロイされます。 また、このコマンドでは、Azure に新しいキー コンテナーが作成され、新しい自己署名証明書がそのキー コンテナーに追加されて、証明書ファイルがローカルにダウンロードされます。
+次のスクリプトでは、[az sf cluster create](/cli/azure/sf/cluster) コマンドとテンプレートを使用して、Azure に新しいクラスターがデプロイされます。 また、このコマンドでは、Azure に新しいキー コンテナーが作成され、新しい自己署名証明書がそのキー コンテナーに追加されて、証明書ファイルがローカルにダウンロードされます。
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"

@@ -6,13 +6,13 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 1b9603e43541ec1a364e4653caeeafc751f7e4f0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 444fbb08dfa535980c4012858b675e700ffa29d8
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012094"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745089"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>マネージド ID を使用して Azure Database for PostgreSQL に接続する
 
@@ -27,20 +27,20 @@ ms.locfileid: "89012094"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure リソースのマネージド ID 機能に慣れていない場合は、こちらの[概要](../../articles/active-directory/managed-identities-azure-resources/overview.md)を参照してください。 Azure アカウントをお持ちでない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
-- 必要なリソース作成およびロール管理を実行するため、お使いのアカウントには、適切な範囲 (サブスクリプションまたはリソース グループ) を対象とする "所有者" アクセス許可が必要となります。 ロールの割り当てに関するサポートが必要な場合は、「[ロールベースのアクセス制御を使用して Azure サブスクリプション リソースへのアクセスを管理する](../../articles/role-based-access-control/role-assignments-portal.md)」を参照してください。
+- 必要なリソース作成およびロール管理を実行するため、お使いのアカウントには、適切な範囲 (サブスクリプションまたはリソース グループ) を対象とする "所有者" アクセス許可が必要となります。 ロールの割り当てに関するサポートが必要な場合は、「[Azure ロールベースのアクセス制御 (Azure RBAC) を使用して Azure サブスクリプション リソースへのアクセスを管理する](../../articles/role-based-access-control/role-assignments-portal.md)」を参照してください。
 - マネージド ID を使用したデータベースへのアクセスに使用する Azure VM (Ubuntu Linux を実行しているものなど) が必要
 - [Azure AD 認証](howto-configure-sign-in-aad-authentication.md)が構成されている Azure Database for PostgreSQL データベース サーバーが必要
 - C# のサンプルを理解するため、[C# を使用した接続](connect-csharp.md)方法に関するガイドにまず目を通している
 
 ## <a name="creating-a-user-assigned-managed-identity-for-your-vm"></a>VM のユーザー割り当てマネージド ID を作成する
 
-[az identity create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) コマンドを使用して、サブスクリプション内に ID を作成します。 使用している仮想マシンが実行されているのと同じリソース グループを使用することも、別のものを使用することもできます。
+[az identity create](/cli/azure/identity#az-identity-create) コマンドを使用して、サブスクリプション内に ID を作成します。 使用している仮想マシンが実行されているのと同じリソース グループを使用することも、別のものを使用することもできます。
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myManagedIdentity
 ```
 
-後の手順で ID を構成するために、[az identity show](/cli/azure/identity?view=azure-cli-latest#az-identity-show) コマンドを使用して、ID のリソース ID とクライアント ID を変数に格納します。
+後の手順で ID を構成するために、[az identity show](/cli/azure/identity#az-identity-show) コマンドを使用して、ID のリソース ID とクライアント ID を変数に格納します。
 
 ```azurecli
 # Get resource ID of the user-assigned identity
@@ -50,7 +50,7 @@ resourceID=$(az identity show --resource-group myResourceGroup --name myManagedI
 clientID=$(az identity show --resource-group myResourceGroup --name myManagedIdentity --query clientId --output tsv)
 ```
 
-これで、[az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) コマンドを使用して、ユーザー割り当て ID を VM に割り当てることができるようになりました。
+これで、[az vm identity assign](/cli/azure/vm/identity#az-vm-identity-assign) コマンドを使用して、ユーザー割り当て ID を VM に割り当てることができるようになりました。
 
 ```azurecli
 az vm identity assign --resource-group myResourceGroup --name myVM --identities $resourceID

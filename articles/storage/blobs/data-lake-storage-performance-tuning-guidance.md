@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: a1ae0971b016ed226351167cfabfca7d3cafd19f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: f0f64d910d03e42008c5fe6fef28a5b9c0917abd
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905407"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814467"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>パフォーマンス用に Azure Data Lake Storage Gen2 を最適化する
 
@@ -21,13 +21,13 @@ Azure Data Lake Storage Gen2 は、I/O 集中型分析とデータ移動での�
 
 ![Data Lake Storage Gen2 のパフォーマンス](./media/data-lake-storage-performance-tuning-guidance/throughput.png)
 
-Data Lake Storage Gen2 は、あらゆる分析シナリオで必要とされるスループットを提供するようにスケーリングできます。 既定では、Data Lake Storage Gen2 アカウントは、広範なカテゴリのユース ケースのニーズを満たすのに十分なスループットを自動的に提供します。 お客様が既定の制限に達した場合、[Azure サポート](https://azure.microsoft.com/support/faq/)に連絡して、さらに高いスループットを提供するように Data Lake Storage Gen2 アカウントを構成することができます。
+Data Lake Storage Gen2 は、あらゆる分析シナリオで必要とされるスループットを提供するようにスケーリングできます。 既定では、Data Lake Storage Gen2 アカウントは、広範なカテゴリのユース ケースのニーズを満たすのに十分なスループットを既定の構成で提供します。 お客様が既定の制限に達した場合、[Azure サポート](https://azure.microsoft.com/support/faq/)に連絡して、さらに高いスループットを提供するように Data Lake Storage Gen2 アカウントを構成することができます。
 
 ## <a name="data-ingestion"></a>データ インジェスト
 
-ソース システムから Data Lake Storage Gen2 にデータを取り込む場合には、ソース ハードウェア、ソース ネットワーク ハードウェア、および Data Lake Storage Gen2 へのネットワークの接続性がボトルネックとなる可能性があることを考慮することが重要です。  
+ソース システムから Data Lake Storage Gen2 にデータを取り込む場合には、ソース ハードウェア、ソース ネットワーク ハードウェア、または Data Lake Storage Gen2 へのネットワークの接続性がボトルネックとなる可能性があることを考慮することが重要です。  
 
-![Data Lake Storage Gen2 のパフォーマンス](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
+![ソース システムから Data Lake Storage Gen2 にデータを取り込むときに考慮すべき要素を示す図。](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
 これらの要因がデータの移動に影響を与えないようにすることが重要です。
 
@@ -43,11 +43,11 @@ Data Lake Storage Gen2 は、あらゆる分析シナリオで必要とされる
 
 上記のソース ハードウェアとネットワーク接続性のボトルネックに対処したら、次はデータ インジェスト ツールを構成します。 次の表に、一般的なインジェスト ツールの主要な設定の概要と、それらのパフォーマンス チューニングに関する詳細な記事を示します。  ご自身のシナリオで使用すべきツールの詳細については、この[記事](data-lake-storage-data-scenarios.md)をご覧ください。
 
-| ツール               | 設定     | 詳細                                                                 |
+| ツール               | 設定 | 詳細                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (マッパー)   | [リンク](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [リンク](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | fs.azure.block.size、-m (マッパー)    |   [リンク](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| Sqoop           | fs.azure.block.size、-m (マッパー)    |   [リンク](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>データ セットの構成
 
@@ -57,7 +57,7 @@ Data Lake Storage Gen2 は、あらゆる分析シナリオで必要とされる
 
 通常、HDInsight や Azure Data Lake Analytics などの分析エンジンでは、ファイルごとのオーバーヘッドがあります。 データを多数の小さなファイルとして保存すると、パフォーマンスに悪影響を及ぼすことがあります。 一般に、パフォーマンスを向上させるには、データをより大きなサイズ (256 MB から 100 GB) のファイルにまとめます。 エンジンとアプリケーションの中には、サイズが 100 GB を超えるファイルを効率的に処理できないものもあります。
 
-場合によっては、データ パイプラインで小さなファイルを多数含む生データの制御が制限されることがあります。 ダウンストリーム アプリケーションでは、"調理" のプロセスを設けて、より大きいファイルを生成することをお勧めします。
+場合によっては、データ パイプラインで小さなファイルを多数含む生データの制御が制限されることがあります。 一般に、ダウンストリーム アプリケーションで使用できるように小さいファイルを大きなファイルに集約する何らかのプロセスを、お使いのシステムに用意することをお勧めします。
 
 ### <a name="organizing-time-series-data-in-folders"></a>フォルダー内の時系列データの整理
 
@@ -107,7 +107,7 @@ HDInsight クラスター内には 3 つのレイヤーがあります。これ�
 
 **より多くのノードと大きなサイズの VM、またはそのどちらかで、クラスターを実行します。**  次の図に示すように、クラスターを大きくすると、より多くの YARN コンテナーを実行できます。
 
-![Data Lake Storage Gen2 のパフォーマンス](./media/data-lake-storage-performance-tuning-guidance/VM.png)
+![クラスターを大きくすると、より多くの YARN コンテナーを実行できることを示す図。](./media/data-lake-storage-performance-tuning-guidance/VM.png)
 
 **より大きなネットワーク帯域幅を備えた VM を使用します。**  ネットワーク帯域幅が Data Lake Storage Gen2 のスループットよりも小さい場合、ネットワーク帯域幅の容量がボトルネックとなる可能性があります。  VM によって、ネットワーク帯域幅のサイズは異なります。  できる限り大きなネットワーク帯域幅を備えた VM タイプを選択してください。
 
@@ -115,7 +115,7 @@ HDInsight クラスター内には 3 つのレイヤーがあります。これ�
 
 **より小さい YARN コンテナーを使用します。**  各 YARN コンテナーのサイズを小さくして、同じ容量のリソースを備えたコンテナーの数を増やします。
 
-![Data Lake Storage Gen2 のパフォーマンス](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
+![各 YARN コンテナーのサイズを小さくしてコンテナーの数を増やした場合の結果を示す図。](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
 
 ワークロードによっては、YARN コンテナーが常に必要とする最小サイズが存在します。 選択したコンテナーが小さすぎる場合、ジョブでメモリ不足の問題が発生します。 通常、YARN コンテナーは 1 GB 以上にする必要があります。 3 GB の YARN コンテナーを検討するのが一般的です。 一部のワークロードでは、それよりも大きい YARN コンテナーが必要な場合もあります。  
 
@@ -125,7 +125,7 @@ HDInsight クラスター内には 3 つのレイヤーがあります。これ�
 
 **使用可能なすべてのコンテナーを使用します。**  すべてのリソースが使用されるように、タスク数を使用可能なコンテナー数と同じ数、またはそれ以上に設定します。
 
-![Data Lake Storage Gen2 のパフォーマンス](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
+![すべてのコンテナーの使用を示す図。](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
 
 **タスクでエラーが発生するとコストがかかります。** 各タスクで大量のデータを処理すると、タスクでエラーが発生した場合、再試行に高いコストがかかることになります。  そのため、多数のタスクを作成し、各タスクで少量のデータを処理するようにすることをお勧めします。
 

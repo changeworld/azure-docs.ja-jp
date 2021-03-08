@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: azure, kinect, 仕様, ハードウェア, DK, 機能, 深度, 色, RGB, IMU, 配列, 深さ, マルチ, 同期
-ms.openlocfilehash: e22f42a69e7d9b8283ec2f2da478dde0c27ce4ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30961152b31a659cb27e91a99d6806490998d18d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277063"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592281"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>複数の Azure Kinect DK デバイスの同期
 
@@ -26,7 +26,7 @@ ms.locfileid: "85277063"
 
 - オクルージョンの補完。 Azure Kinect DK データ変換では 1 つの画像が生成されますが、実際は、2 つのカメラ (深度と RGB) の間にはわずかな距離があります。 このオフセットにより、オクルージョンが起きます。 オクルージョンは、デバイス上の 2 つのカメラのいずれかにおいて、前景オブジェクトが背景オブジェクトの一部の視界を遮った時に発生します。 生成されたカラー画像では、前景オブジェクトの影が背景オブジェクトに投影されているように見えます。  
    たとえば、次の図では、左側のカメラに灰色のピクセル "P2" が表示されています。 ただし、白い前景オブジェクトは、右側のカメラの IR ビームを遮っています。 右側のカメラに "P2" のデータはありません。  
-   ![オクルージョン](./media/occlusion.png)  
+   ![2 つのカメラが同じポイントに向けられ、そのうちの 1 つが遮られていることを示す図。](./media/occlusion.png)  
    オクルージョンされたデータは、同期された追加のデバイスによって提供されます。
 - オブジェクトを 3 つのディメンションでスキャンします。
 - 有効なフレーム レートを 30 フレーム/秒 (FPS) よりも大きい値に増やします。
@@ -88,6 +88,9 @@ ms.locfileid: "85277063"
 160 &mu;s のオフセットを使用する場合は、他のレーザーがアイドル状態のときに各レーザーが有効になるように、追加の深度カメラを最大 9 個構成できます。
 
 ソフトウェアでは、```depth_delay_off_color_usec``` または ```subordinate_delay_off_master_usec``` を使用して、各 IR レーザーが独自の 160 &mu;s ウィンドウで発射されるか、異なる視野を持っていることを確認してください。
+
+> [!NOTE]  
+> 実際のパルス幅は 125 us ですが、いくらかの余裕を与えるため 160 us とします。 NFOV UNBINNED を例にとると、125 us パルスの後に 1450 us アイドルが続きます。 (9 x 125) + (8 x 1450) で合計を出すと、露出時間は 12.8 ms になります。 2 つのデバイスの露出をインターリーブするには、2 台目のカメラの最初のパルスが、1 台目のカメラの最初のアイドル期間に入るようにします。 1 台目と 2 台目のカメラ間の遅延は 125 us (パルス幅) 程度ですが、いくらか余裕を持って 160 us をお勧めします。 160 us にすることで、最大 10 台のカメラの露出時間をインターリーブできます。
 
 ## <a name="prepare-your-devices-and-other-hardware"></a>デバイスとその他のハードウェアを準備する
 

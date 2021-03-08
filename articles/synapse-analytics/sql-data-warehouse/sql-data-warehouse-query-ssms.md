@@ -1,6 +1,6 @@
 ---
-title: SSMS との接続
-description: SQL Server Management Studio (SSMS) を使用して Azure Synapse Analytics に接続し、クエリを実行します。
+title: SSMS を使用して専用 SQL プール (旧称 SQL DW) に接続する
+description: SQL Server Management Studio (SSMS) を使用して Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) に接続し、クエリを実行します。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,34 +11,34 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 772e4253244f5e13a60f155549d5f5513695e5fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b142c88b0003281237dad125080930c0dd4d3bee
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200751"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673605"
 ---
-# <a name="connect-to-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して Azure Synapse Analytics に接続する
+# <a name="connect-to-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) を使用して Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) に接続する
 
 > [!div class="op_single_selector"]
 >
-> * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+> * [Power BI](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-SQL Server Management Studio (SSMS) を使用して、Azure Synapse 内のデータ ウェアハウスに接続し、クエリを実行します。
+SQL Server Management Studio (SSMS) を使用して専用 SQL プール (旧称 SQL DW) に接続し、クエリを実行します。
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを使用するには、次のものが必要です。
 
-* 既存の SQL プール。 作成するには、[SQL プールの作成](create-data-warehouse-portal.md)に関する記事を参照してください。
-* SQL Server Management Studio (SSMS) をインストールしている。 [SSMS をダウンロード](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)していない場合はダウンロードします (無料)。
-* 完全修飾 SQL サーバー名。 この情報については、[SQL プールへの接続](sql-data-warehouse-connect-overview.md)に関する記事を参照してください。
+* 既存の専用 SQL プール。 作成するには、[専用 SQL プール (旧称 SQL DW) の作成](create-data-warehouse-portal.md)に関するページを参照してください。
+* SQL Server Management Studio (SSMS) をインストールしている。 [SSMS をダウンロード](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)していない場合はダウンロードします (無料)。
+* 完全修飾 SQL サーバー名。 この情報については、[専用 SQL プール (旧称 SQL DW)](sql-data-warehouse-connect-overview.md) に関するページを参照してください。
 
-## <a name="1-connect-to-your-sql-pool"></a>1.SQL プールに接続する
+## <a name="1-connect-to-your-dedicated-sql-pool-formerly-sql-dw"></a>1.専用 SQL プール (旧称 SQL DW) への接続
 
 1. SSMS を開きます。
 2. **[ファイル]**  >  **[オブジェクト エクスプローラーを接続]** を選択してオブジェクト エクスプローラーを開きます。
@@ -48,7 +48,7 @@ SQL Server Management Studio (SSMS) を使用して、Azure Synapse 内のデー
 
    ![[サーバーへの接続]](./media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
 
-   * **[サーバー名]** : 前の手順で特定した**サーバー名**を入力します。
+   * **[サーバー名]** : 前の手順で特定した **サーバー名** を入力します。
    * **[認証]** : **[SQL Server 認証]** または **[Active Directory 統合認証]** を選択します。
    * **[ユーザー名]** と **[パスワード]** : 先ほど [SQL Server 認証] を選択した場合は、ユーザー名とパスワードを入力します。
    * **[Connect]** をクリックします。
@@ -79,4 +79,4 @@ SQL Server Management Studio (SSMS) を使用して、Azure Synapse 内のデー
 
 ## <a name="next-steps"></a>次のステップ
 
-これで接続してクエリを実行することができます。[Power BI でデータを視覚化](sql-data-warehouse-get-started-visualize-with-power-bi.md)してみてください。 Azure Active Directory 認証を使用するために環境を構成する方法については、[SQL プールの認証](sql-data-warehouse-authentication.md)に関するページを参照してください。
+これで接続してクエリを実行することができます。[Power BI でデータを視覚化](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)してみてください。 Azure Active Directory 認証を使用するために環境を構成する方法については、[専用 SQL プールの認証](sql-data-warehouse-authentication.md)に関するページを参照してください。

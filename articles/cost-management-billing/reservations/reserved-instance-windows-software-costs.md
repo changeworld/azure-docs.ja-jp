@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 01/28/2021
 ms.author: banders
-ms.openlocfilehash: e302a8459d3092a5543efda7494c68d6660df39d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 464e129314a369c14dcc6bc6c16eadf5f8bcf01f
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690818"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052991"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances に含まれないソフトウェアのコスト
 
@@ -61,13 +61,13 @@ ms.locfileid: "88690818"
 
 ## <a name="get-rates-for-azure-meters"></a>Azure メーターの料金を取得する
 
-これらのメーターごとのコストは、Azure RateCard API を使用して取得できます。 Azure メーターの料金を取得する方法については、「[Get price and metadata information for resources used in an Azure subscription (Azure サブスクリプションで使用されるリソースの料金とメタデータ情報を取得する)](/previous-versions/azure/reference/mt219004(v=azure.100))」を参照してください。
+Azure Retail Prices API を使用してメーターごとのコストを取得できます。 Azure メーターの料金を取得する方法については、「[Azure 小売価格の概要](/rest/api/cost-management/retail-prices/azure-retail-prices)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 Azure の予約の詳細については、次の記事を参照してください。
 
 - [Azure の予約とは](save-compute-costs-reservations.md)
-- [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [Azure の予約の管理](manage-reserved-vm-instance.md)
 - [予約割引の適用方法について](../manage/understand-vm-reservation-charges.md)
 - [従量課金制サブスクリプションの予約使用量について](understand-reserved-instance-usage.md)

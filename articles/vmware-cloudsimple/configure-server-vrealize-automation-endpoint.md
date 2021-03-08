@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - プライベート クラウド上で vRealize Automation 用の vCenter を設定する
 description: CloudSimple プライベート クラウド上で VMware vRealize Automation 用のエンドポイントとして VMware vCenter サーバーを設定する方法について説明します。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df73acfc469a8b7b5329b61095aefdbd73baafd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b6c6a320e6299808a91214476c8c0460f9f53d9
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024842"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895055"
 ---
 # <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>プライベート クラウド上で VMware vRealize Automation 用の vCenter を設定する
 
@@ -48,14 +48,14 @@ vCenter サーバーを構成する前に、次のタスクを完了します。
 2. vRealize Automation エンドポイント用の vSphere エージェントをデプロイします。
     1. https://*vra-url*:5480/installer にアクセスします。この *vra-url* は、vRealize Automation 管理 UI にアクセスするために使用する URL です。
     2. **[IaaS Installer]\(IaaS のインストーラー\)** をクリックしてインストーラーをダウンロードします。<br>
-    インストーラー ファイルの名前付け規則は setup_*vra-url*@5480.exe です。
+    インストーラー ファイルの名前付け規則は setup_ *vra-url*@5480.exe です。
     3. インストーラーを実行します。 [Welcome]\(ようこそ\) 画面で、 **[Next]\(次へ\)** をクリックします。
     4. EULA に同意し、 **[Next]\(次へ\)** をクリックします。
     5. サインイン情報を入力し、 **[Accept Certificate]\(証明書を受け入れる\)** をクリックして、 **[Next]\(次へ\)** をクリックします。
     ![vRA の資格情報](media/configure-vra-endpoint-login.png)
     6. **[Custom Install]\(カスタム インストール\)** と **[Proxy Agents]\(プロキシ エージェント\)** を選択し、 **[Next]\(次へ\)** をクリックします。
     ![vRA のインストールの種類](media/configure-vra-endpoint-install-type.png)
-    7. IaaS サーバーのサインイン情報を入力し、 **[Next]\(次へ\)** をクリックします。 Active Directory を使用している場合は、**ドメイン\ユーザー**の形式でユーザー名を入力します。 それ以外の場合は、 **user@domain** の形式を使用します。
+    7. IaaS サーバーのサインイン情報を入力し、 **[Next]\(次へ\)** をクリックします。 Active Directory を使用している場合は、**ドメイン\ユーザー** の形式でユーザー名を入力します。 それ以外の場合は、 **user@domain** の形式を使用します。
     ![vRA のログイン情報](media/configure-vra-endpoint-account.png)
     8. プロキシ設定には、 **[Agent type]\(エージェントの種類\)** として「**vSphere**」と入力します。 エージェントの名前を入力します。
     9. **[Manager Service Host]\(マネージャー サービス ホスト\)** フィールドと **[Model Manager Web Service Host]\(モデル マネージャー Web サービス ホスト\)** フィールドに IaaS サーバーの FQDN を入力します。 **[Test]\(テスト\)** をクリックして、各 FQDN 値の接続をテストします。 テストが失敗する場合は、IaaS サーバーのホスト名が解決されるように DNS 設定を変更します。

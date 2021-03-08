@@ -3,19 +3,19 @@ title: Translator Detect メソッド
 titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services Translator Detect メソッドを利用し、一節のテキストの言語を特定します。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: swmachan
-ms.openlocfilehash: adfd91a3f82a83f6bb5e076247f1539029d5a04e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.author: lajanuar
+ms.openlocfilehash: cb6660585b5f2b9ab56eaf863f1ec431e5e85109
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592289"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895528"
 ---
 # <a name="translator-30-detect"></a>Translator 3.0:Detect
 
@@ -49,7 +49,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   <th>説明</th>
   <tr>
     <td>認証ヘッダー</td>
-    <td>"<em>必須の要求ヘッダー</em>" です。<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。</td>
+    <td>"<em>必須の要求ヘッダー</em>" です。<br/><a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
@@ -67,7 +67,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 ## <a name="request-body"></a>要求本文
 
-要求の本文は JSON 配列です。 各配列要素は、`Text` という名前の文字列プロパティを持つ JSON オブジェクトです。 言語の検出は、`Text` プロパティの値に適用されます。 サンプルの要求本文は次のようになります。
+要求の本文は JSON 配列です。 各配列要素は、`Text` という名前の文字列プロパティを持つ JSON オブジェクトです。 言語の検出は、`Text` プロパティの値に適用されます。 言語自動検出は、入力テキストが長いほど、うまく機能します。 サンプルの要求本文は次のようになります。
 
 ```json
 [
@@ -78,7 +78,6 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 次の制限事項が適用されます。
 
 * 配列に含めることができる要素は、最大でも 100 個です。
-* 配列要素のテキスト値は、スペースも含めて 10,000 文字を超えてはなりません。
 * 要求に含めるテキスト全体では、スペースも含めて 50,000 文字を超えてはなりません。
 
 ## <a name="response-body"></a>応答本文
@@ -170,7 +169,7 @@ JSON 応答の例を次に示します。
   </tr>
 </table> 
 
-エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ 一般的なエラー コードは、[v3 Translator のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で確認できます。 
+エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ 一般的なエラー コードは、[v3 Translator のリファレンス ページ](./v3-0-reference.md#errors)で確認できます。 
 
 ## <a name="examples"></a>例
 

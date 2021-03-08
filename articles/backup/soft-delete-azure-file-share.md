@@ -4,12 +4,12 @@ description: 論理的な削除によって Azure ファイル共有を誤削除
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0ec2d3bf84aed19b608a92b6f21cd1674ba5b7cf
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 52a116320e07c25d4ee7f00b8063ca15faeb8560
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282706"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89179914"
 ---
 # <a name="accidental-delete-protection-for-azure-file-shares-using-azure-backup"></a>Azure Backup を使用して Azure ファイル共有を誤削除から保護する
 
@@ -53,7 +53,7 @@ ms.locfileid: "87282706"
 >手順 2. は、ストレージ アカウント内の保護されたファイル共有に対して、次回にスケジュールされているバックアップ ジョブが実行される前に行う必要があります。 バックアップ ジョブが実行されるたびに、ストレージ アカウント内のすべてのファイル共有に対して再度、論理的な削除が有効になります。
 
 >[!WARNING]
->手順 2. で論理的な削除を無効にした後にファイル共有に対して実行する削除操作はすべて、完全な削除操作になります。 つまり、論理的な削除を無効にした後、バックアップ済みのファイル共有を誤って削除した場合、すべてのスナップショットが失われ、データを復旧することはできません。
+>手順 2. で論理的な削除を無効にした後にファイル共有に対して実行する削除操作はすべて、完全な削除操作になります。 そのため、論理的な削除を無効にした後、バックアップ済みのファイル共有を誤って削除した場合、すべてのスナップショットが失われ、データを復旧することはできません。
 
 ### <a name="in-the-context-of-a-file-shares-soft-delete-setting-what-changes-does-azure-backup-do-when-i-unregister-a-storage-account"></a>ストレージ アカウントの登録が解除されたとき、Azure Backup は、ファイル共有の論理削除設定との関連で、どのような変更を行うのでしょうか?
 

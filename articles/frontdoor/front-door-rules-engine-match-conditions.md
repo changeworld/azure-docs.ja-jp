@@ -3,27 +3,27 @@ title: Azure Front Door ルール エンジンの一致条件
 description: この記事では、Azure Front Door ルール エンジンで利用できるさまざまな一致条件の一覧を提供します。
 services: frontdoor
 documentationcenter: ''
-author: megan-beatty
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/30/2020
-ms.author: mebeatty
-ms.openlocfilehash: 311914078f8169a3b48b5559ed58a690c29be83a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/14/2020
+ms.author: duau
+ms.openlocfilehash: 0e874ae3d29f4143a4f8a9275d5ffcde48d08e6d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512165"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91569758"
 ---
-# <a name="azure-front-door-rules-engine-match-conditions"></a>Azure Front Door のルール エンジンの一致条件
+# <a name="azure-front-door-rules-engine-match-conditions"></a>Azure Front Door ルール エンジンの一致条件
 
 [AFD ルール エンジン](front-door-rules-engine.md)では、ルールは 0 個以上の一致条件とアクションで構成されます。 この記事では、AFD ルール エンジンで使用できる一致条件について詳しく説明します。
 
-ルールの最初の部分は、単一の一致条件または一連の一致条件です。 ルールは、最大 10 個の一致条件で構成できます。 一致条件とは、要求の特定の種類を識別するものであり、その種類に対して指定されたアクションが実行されます。 複数の一致条件を使用すると、一致条件は AND ロジックを使用してグループ化されます。 複数の値をサポートするすべての一致条件 (以下、"スペース区切り" と表記します) では、"OR" 演算子が想定されます。
+ルールの最初の部分は、単一の一致条件または一連の一致条件です。 ルールは、最大 10 個の一致条件で構成できます。 一致条件とは、要求の特定の種類を識別するものであり、その種類に対して指定されたアクションが実行されます。 複数の一致条件を使用すると、一致条件は AND ロジックを使用してグループ化されます。 複数の値をサポートするすべての一致条件 ("スペース区切り" と表記します) では、"OR" 演算子が想定されます。
 
 たとえば、以下のような場合に一致条件を使用できます。
 
@@ -84,7 +84,7 @@ IP の一致ではない | IP アドレス (スペース区切り)
   - **IPv6 の例**:*1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* と指定した場合、アドレス 1:2:3:4:5:6:7:8 または 10:20:30:40:50:60:70:80 から配信される要求と一致します。
 - IP アドレス ブロックの構文では、ベース IP アドレスの末尾にスラッシュおよびプレフィックス サイズを付与します。 次に例を示します。
   - **IPv4 の例**:*5.5.5.64/26* と指定した場合、アドレス 5.5.5.64 ～ 5.5.5.127 から配信される要求と一致します。
-  - **IPv6 の例**:*1:2:3:/48* と指定した場合、アドレス 1:2:3:0:0:0:0:0 ～ 1:2:3:ffff:ffff:ffff:ffff:ffff から配信される要求と一致します。
+  - **IPv6 の例**:*1:2:3:/48* と指定した場合、アドレス 1:2:3:0:0:0:0:0 ～ 1:2:3: ffff:ffff:ffff:ffff:ffff から配信される要求と一致します。
 
 ## <a name="request-body"></a>要求本文
 
@@ -204,11 +204,11 @@ String | [標準の演算子一覧](#standard-operator-list) | String、Int | �
 - 次の値より大きくない
 - 次の値以上ではない
 
-*より小さい*または*以上*のような数値演算子の場合、比較は長さに基づいて行われます。 この場合、一致条件の値は、比較する長さと同じ整数である必要があります。 
+*より小さい*または*以上*のような数値演算子の場合、比較は長さに基づいて行われます。 一致条件の値は、比較する長さと同じ整数である必要があります。 
 
 
 ## <a name="next-steps"></a>次のステップ
 
-- 最初の[ルール エンジン構成](front-door-tutorial-rules-engine.md)を設定する方法について学習します。 
+- 最初の[ルール エンジン](front-door-tutorial-rules-engine.md)を構成する方法について確認します。 
 - [ルール エンジンのアクション](front-door-rules-engine-actions.md)の詳細を確認します
 - [Azure Front Door のルール エンジン](front-door-rules-engine.md)の詳細を確認します

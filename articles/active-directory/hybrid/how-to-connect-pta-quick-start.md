@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aefe95f3e78afc4b449539fd683ffc1fe525a15
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 5394a2829af4b0cd7a1c817f6aad4ca5451cc4bc
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89280181"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792434"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory パススルー認証:クイック スタート
 
@@ -51,7 +51,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 
 ### <a name="in-your-on-premises-environment"></a>オンプレミスの環境の場合
 
-1. Azure AD Connect を実行するための、Windows Server 2012 R2 以降を実行しているサーバーを特定します。 まだ有効になっていない場合は、[サーバーで TLS 1.2 を有効](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect)にします。 このサーバーを、パスワードの検証が必要なユーザーと同じ Active Directory フォレストに追加します。
+1. Azure AD Connect を実行するための、Windows Server 2012 R2 以降を実行しているサーバーを特定します。 まだ有効になっていない場合は、[サーバーで TLS 1.2 を有効](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect)にします。 このサーバーを、パスワードの検証が必要なユーザーと同じ Active Directory フォレストに追加します。 Windows Server Core バージョンでのパススルー認証エージェントのインストールはサポートされていないことに注意してください。 
 2. [最新バージョンの Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) を、前の手順で特定したサーバーにインストールします。 Azure AD Connect が既に実行されている場合は、バージョンが 1.1.750.0 以降であることを確認します。
 
     >[!NOTE]
@@ -63,7 +63,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
     >運用環境では、テナントで少なくとも 3 つの認証エージェントを実行することをお勧めします。 認証エージェントの数は、テナントあたり 40 個に制限されています。 また、ベスト プラクティスとして、認証エージェントを実行するすべてのサーバーは Tier 0 システムとして扱うようにしてください ([リファレンス](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)を参照)。
 
 4. サーバーと Azure AD の間にファイアウォールがある場合は、次の項目を構成します。
-   - 認証エージェントが次のポートを使用して Azure AD に*送信*リクエストを送れるようにします。
+   - 認証エージェントが次のポートを使用して Azure AD に *送信* リクエストを送れるようにします。
 
      | ポート番号 | 用途 |
      | --- | --- |
@@ -72,9 +72,9 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
      | **8080** (省略可能) | ポート 443 が使用できない場合、認証エージェントは、ポート 8080 経由で 10 分ごとにその状態を報告します。 この状態は Azure AD ポータルに表示されます。 ポート 8080 は、ユーザー サインインには _使用されません_。 |
      
      ご利用のファイアウォールが送信元ユーザーに応じて規則を適用している場合は、ネットワーク サービスとして実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。
-   - ファイアウォールまたはプロキシで DNS ホワイトリストが許可されている場合は、 **\*.msappproxy.net** と **\*.servicebus.windows.net** への接続を追加します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。
+   - ファイアウォールまたはプロキシで DNS エントリを許可リストに追加できる場合は、 **\*.msappproxy.net** および **\*.servicebus.windows.net** への接続を追加します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。
    - 認証エージェントは初回の登録のために **login.windows.net** と **login.microsoftonline.com** にアクセスする必要があるため、 これらの URL にもファイアウォールを開きます。
-   - 証明書の検証のために、URL **mscrl.microsoft.com:80**、**crl.microsoft.com:80**、**ocsp.msocsp.com:80**、**www\.microsoft.com:80** のブロックを解除します。 他の Microsoft 製品でもこれらの URL を証明書の検証に使用しているので、URL のブロックを既に解除している可能性もあります。
+    - 証明書の検証の場合は、URL (**crl3.digicert.com:80**、**crl4.digicert.com:80**、**ocsp.digicert.com:80**、**www\.d-trust.net:80**、**root-c3-ca2-2009.ocsp.d-trust.net:80**、**crl.microsoft.com:80**、**oneocsp.microsoft.com:80**、**ocsp.msocsp.com:80**) のブロックが解除されます。 他の Microsoft 製品でもこれらの URL を証明書の検証に使用しているので、URL のブロックを既に解除している可能性もあります。
 
 ### <a name="azure-government-cloud-prerequisite"></a>Azure Government クラウドの前提条件
 手順 2 に従って Azure AD Connect を使用したパススルー認証を有効にする前に、Azure portal から PTA エージェントの最新リリースをダウンロードしてください。  エージェントを確実にバージョン **1.5.1742.0** 以降にする必要があります。 以降。  エージェントを確認するには、[認証エージェントのアップグレード](how-to-connect-pta-upgrade-preview-authentication-agents.md)に関する記事を参照してください。
@@ -86,13 +86,13 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 [Azure AD Connect](whatis-hybrid-identity.md) を使用してパススルー認証を有効にします。
 
 >[!IMPORTANT]
->Azure AD Connect のプライマリ サーバーまたはステージング サーバーでパススルー認証を有効にできますが、 プライマリ サーバーから有効することを強くお勧めします。 今後 Azure AD Connect ステージング サーバーをセットアップする場合は、サインイン オプションとして引き続きパススルー認証を選択する**必要があります**。別のオプションを選択すると、テナントのパススルー認証が**無効になり**、プライマリ サーバーの設定が上書きされます。
+>Azure AD Connect のプライマリ サーバーまたはステージング サーバーでパススルー認証を有効にできますが、 プライマリ サーバーから有効することを強くお勧めします。 今後 Azure AD Connect ステージング サーバーをセットアップする場合は、サインイン オプションとして引き続きパススルー認証を選択する **必要があります**。別のオプションを選択すると、テナントのパススルー認証が **無効になり**、プライマリ サーバーの設定が上書きされます。
 
-Azure AD Connect を初めてインストールする場合は、[カスタム インストール パス](how-to-connect-install-custom.md)を選択します。 **[ユーザー サインイン]** ページで、**サインオン方式**として **[パススルー認証]** を選択します。 正常に完了すると、Azure AD Connect と同じサーバーにパススルー認証エージェントがインストールされます。 また、テナントでパススルー認証機能が有効になります。
+Azure AD Connect を初めてインストールする場合は、[カスタム インストール パス](how-to-connect-install-custom.md)を選択します。 **[ユーザー サインイン]** ページで、**サインオン方式** として **[パススルー認証]** を選択します。 正常に完了すると、Azure AD Connect と同じサーバーにパススルー認証エージェントがインストールされます。 また、テナントでパススルー認証機能が有効になります。
 
 ![Azure AD Connect:ユーザーのサインイン](./media/how-to-connect-pta-quick-start/sso3.png)
 
-[高速インストール](how-to-connect-install-express.md) パスまたは[カスタム インストール](how-to-connect-install-custom.md) パスを使用して Azure AD Connect が既にインストールされている場合は、Azure AD Connect で **[ユーザー サインインの変更]** タスクを選択してから **[次へ]** を選択します。 次に、サインイン方式として **[パススルー認証]** を選択します。 正常に完了すると、Azure AD Connect と同じサーバーにパススルー認証エージェントがインストールされ、テナントで機能が有効になります。
+[高速インストール](how-to-connect-install-express.md) パスまたは [カスタム インストール](how-to-connect-install-custom.md) パスを使用して Azure AD Connect が既にインストールされている場合は、Azure AD Connect で **[ユーザー サインインの変更]** タスクを選択してから **[次へ]** を選択します。 次に、サインイン方式として **[パススルー認証]** を選択します。 正常に完了すると、Azure AD Connect と同じサーバーにパススルー認証エージェントがインストールされ、テナントで機能が有効になります。
 
 ![Azure AD Connect:ユーザー サインインの変更](./media/how-to-connect-pta-quick-start/changeusersignin.png)
 
@@ -142,7 +142,7 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
 ![Azure Active Directory 管理センター: [エージェントのダウンロード] ウィンドウ](./media/how-to-connect-pta-quick-start/pta10.png)
 
 >[!NOTE]
->認証エージェント ソフトウェアは[ここ](https://aka.ms/getauthagent)から直接ダウンロードすることもできます。 認証エージェントをインストールする "_前_" に[サービス使用条件](https://aka.ms/authagenteula)を確認して同意してください。
+>認証エージェント ソフトウェアは[ここ](https://aka.ms/getauthagent)から直接ダウンロードすることもできます。 認証エージェントをインストールする "_前_" に [サービス使用条件](https://aka.ms/authagenteula)を確認して同意してください。
 
 スタンドアロン認証エージェントをデプロイする方法は 2 つあります。
 
@@ -159,14 +159,14 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
   $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
   $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
   ```
-3. **C:\Program Files\Microsoft Azure AD Connect 認証エージェント**に移動し、作成済みの `$cred` オブジェクトを使用して次のスクリプトを実行します。
+3. **C:\Program Files\Microsoft Azure AD Connect 認証エージェント** に移動し、作成済みの `$cred` オブジェクトを使用して次のスクリプトを実行します。
 
   ```powershell
   RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
   ```
 
 >[!IMPORTANT]
->仮想マシンに認証エージェントをインストールする場合は、仮想マシンを複製して、別の認証エージェントを設定することはできません。 この方法は**サポートされていません**。
+>仮想マシンに認証エージェントをインストールする場合は、仮想マシンを複製して、別の認証エージェントを設定することはできません。 この方法は **サポートされていません**。
 
 ## <a name="step-5-configure-smart-lockout-capability"></a>手順 5:スマート ロックアウト機能を構成する
 

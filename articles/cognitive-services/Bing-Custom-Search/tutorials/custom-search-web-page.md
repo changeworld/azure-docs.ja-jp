@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a789cb3fde05d12a8793196043f1c246bbab6559
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85921943"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342415"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>チュートリアル:Custom Search Web ページの作成
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 Bing Custom Search を使用すると、関心のあるトピックに合わせてカスタマイズした検索エクスペリエンスを作成できます。 たとえば、検索エクスペリエンスを提供する武術に関する Web サイトを所有している場合は、Bing が検索するドメイン、サブサイト、および Web ページを指定できます。 ユーザーは、関係のないコンテンツが含まれる可能性がある通常の検索結果のページを移動し続けるのではなく、関心のあるコンテンツに合わせてカスタマイズされた検索結果を参照できます。 
 
@@ -35,7 +40,7 @@ Bing Custom Search を使用すると、関心のあるトピックに合わせ�
 ## <a name="prerequisites"></a>前提条件
 
 - チュートリアルを進めるには、Bing Custom Search API のサブスクリプション キーが必要です。  キーを取得するには、Azure portal で [Bing Custom Search リソースを作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch)してください。
-- まだ Visual Studio 2017 以降をインストールしていない場合は、**無料**の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。
+- まだ Visual Studio 2017 以降をインストールしていない場合は、**無料** の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。
 
 ## <a name="create-a-custom-search-instance"></a>カスタム検索インスタンスの作成
 
@@ -118,7 +123,7 @@ Bing Custom Search インスタンスを作成するには:
   
 5. ドロップダウン リストからサブスクリプション キーを選択します。 または、サブスクリプション キーを手動で入力できます。
   
-   ![ホステッド UI のその他の構成手順のスクリーンショット](./media/custom-search-hosted-ui-subscription-key.png)
+   ![ホステッド UI のサブスクリプション キーのスクリーンショット](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
@@ -130,7 +135,7 @@ Bing Custom Search インスタンスを作成するには:
 - オプション 1: 提供される JavaScript スニペットをアプリケーションに統合する。
 - オプション 2:提供される HTML エンドポイントを使用する。
 
-このチュートリアルの残りの部分では、**オプション 1: Javascript スニペット**について説明します。  
+このチュートリアルの残りの部分では、**オプション 1: Javascript スニペット** について説明します。  
 
 ## <a name="set-up-your-visual-studio-solution"></a>Visual Studio ソリューションのセットアップ
 
@@ -144,7 +149,7 @@ Bing Custom Search インスタンスを作成するには:
   
 4. **[新しい ASP.NET Core Web アプリケーション]** ウィンドウで、 **[Web アプリケーション]** を選択して **[OK]** をクリックします。  
   
-   ![新しいプロジェクト ウィンドウのスクリーンショット](./media/custom-search-new-webapp.png)  
+   ![新しい Web アプリ ウィンドウのスクリーンショット](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>index.cshtml の編集
 

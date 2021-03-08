@@ -8,24 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 08/05/2020
+ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 82dc81c540115f08e57f87e63184e1e895c5e4fe
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: cog-serv-seo-aug-2020
+keywords: コンテンツ モデレーター, azure コンテンツ モデレーター, オンライン モデレーター, コンテンツ フィルター ソフトウェア, コンテンツ モデレーション サービス, コンテンツ モデレーション
+ms.openlocfilehash: 57a390a1da1e3a10b9fda4b531a83ee48e91125b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834543"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560375"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator とは
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Content Moderator は、テキスト、画像、ビデオのコンテンツに不快感を与える可能性がある内容、リスクのある内容、その他望ましくない可能性のある内容が含まれているかどうかを確認できる Cognitive Services です。 このサービスでは、そのような素材が検出されると、それに応じたラベル (フラグ) がコンテンツに適用されます。 その後は、法的規制に準拠したり、ユーザーに意図されている環境を維持したりするために、フラグの設定されたコンテンツをアプリで処理することができます。 コンテンツに適用されるフラグがそれぞれどのような意味であるかについての詳細は、「[モデレート API](#moderation-apis)」のセクションを参照してください。
+Azure Content Moderator は、不快感を与える可能性がある内容、リスクのある内容、その他望ましくない可能性のある内容を管理できる AI サービスです。 テキスト、画像、動画をスキャンし、コンテンツ フラグを自動的に適用する AI 搭載コンテンツ モデレーション サービスと、人間のレビュー担当者からなるチーム用のオンライン モデレーター環境であるレビュー ツールが含まれています。
+
+法的規制に準拠したり、ユーザーに意図されている環境を維持したりするために、コンテンツ フィルタリング ソフトウェアをアプリに組み込むことがあります。
 
 ## <a name="where-its-used"></a>使用場所
 
-ソフトウェア開発者またはチームが Content Moderator を使用するシナリオをいくつか次に示します。
+ソフトウェア開発者またはチームがコンテンツ モデレーション サービスを使用するシナリオをいくつか次に示します。
 
 - ユーザーが生成した製品カタログなどのコンテンツをモデレートするオンライン マーケットプレース。
 - ユーザーが生成したゲームの成果物とチャット ルームをモデレートするゲーム会社。
@@ -33,7 +37,7 @@ Azure Content Moderator は、テキスト、画像、ビデオのコンテン�
 - コンテンツに対する一元的なモデレーションを実装するエンタープライズ メディア企業。
 - 学生および教育者にとって不適切なコンテンツをフィルター処理して除外する K-12 教育ソリューション プロバイダー。
 
-> [!NOTE]
+> [!IMPORTANT]
 > Content Moderator を使用して、子どもの搾取に該当する違法な画像を検出することはできません。 ただし、認められた機関は [PhotoDNA Cloud Service](https://www.microsoft.com/photodna "Microsoft PhotoDNA Cloud Service") を使用してこのようなコンテンツを審査できます。
 
 ## <a name="what-it-includes"></a>備えている機能
@@ -77,4 +81,4 @@ Cognitive Services 全般に言えることですが、Content Moderator サー�
 
 ## <a name="next-steps"></a>次のステップ
 
-「[Content Moderator の概要](quick-start.md)」の手順に従って Content Moderator サービスを使ってみましょう。
+Web ポータルで Content Moderator の使用を開始するには、「[Web 上で Content Moderator を試す](quick-start.md)」の手順に従います。 または、[クライアント ライブラリや REST API クイックスタート](client-libraries.md)を完了し、コードに基本シナリオを実装します。

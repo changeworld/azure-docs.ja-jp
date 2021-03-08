@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 7f4849c75b36b1663416ad1a97e3264fabcdaa67
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 095f2c3ed17042bb616fb091d1af52a64c913709
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201736"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460504"
 ---
 # <a name="getting-started"></a>作業の開始
 
@@ -31,11 +31,11 @@ ms.locfileid: "86201736"
 
 ### <a name="cloud-services"></a>クラウド サービス
 
-クラウドベースの Cognitive Services は、Azure でホストされているインテリジェントなアルゴリズムです。 これらのサービスは、トレーニングなしですぐに使用でき、インターネット接続のみが必要です。 [Cognitive Service は Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) で作成できます。
+クラウドベースの Cognitive Services は、Azure でホストされているインテリジェントなアルゴリズムです。 これらのサービスは、トレーニングなしですぐに使用でき、インターネット接続のみが必要です。 [Cognitive Service は Azure portal](../cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows) または [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) で作成できます。
 
 ### <a name="containerized-services-optional"></a>コンテナー化されたサービス (オプション)
 
-アプリケーションまたはワークロードが非常に大規模なデータセットを使用している場合、プライベート ネットワークを必要とする場合、またはクラウドに接続できない場合は、クラウド サービスと通信できない可能性があります。 このような状況で、コンテナー化された Cognitive Services には次のような利点があります。
+アプリケーションまたはワークロードで大規模なデータセットが使用されている場合、プライベート ネットワークが必要な場合、またはクラウドに接続できない場合は、クラウド サービスと通信できない可能性があります。 このような状況で、コンテナー化された Cognitive Services には次のような利点があります。
 
 * **低い接続性**:コンテナー化された Cognitive Services は、クラウド内とクラウド外の両方のコンピューティング環境にデプロイできます。 アプリケーションがクラウドに接続できない場合、コンテナー化された Cognitive Services をアプリケーションにデプロイすることを検討してください。
 
@@ -45,7 +45,7 @@ ms.locfileid: "86201736"
 
 * **高いスケーラビリティ**:コンテナー化されたサービスには "レート制限" がなく、ユーザーが管理するコンピューター上で実行されます。 そのため、より大規模なワークロードを処理するために、Cognitive Services を際限なく拡張できます。
 
-コンテナー化された Cognitive Service を作成するには、[こちらガイド](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support?tabs=luis)に従ってください。
+コンテナー化された Cognitive Service を作成するには、[こちらガイド](../cognitive-services-container-support.md?tabs=luis)に従ってください。
 
 ## <a name="create-an-apache-spark-cluster"></a>Apache Spark クラスターの作成
 
@@ -55,24 +55,24 @@ ms.locfileid: "86201736"
 
 Azure Databricks は、Apache Spark ベースの分析プラットフォームです。ワンクリックでのセットアップと効率的なワークフロー、および対話型ワークスペースを提供します。 多くの場合、データ サイエンティスト、エンジニア、およびビジネス アナリスト間の共同作業に使用されます。 Azure Databricks でビッグ データ向けの Cognitive Services を使用するには、次の手順を実行します。
 
-1. [Azure Databricks ワークスペースを作成します](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)
-1. [Databricks に Spark クラスターを作成する](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-a-spark-cluster-in-databricks)
+1. [Azure Databricks ワークスペースを作成します](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)
+1. [Databricks に Spark クラスターを作成する](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal#create-a-spark-cluster-in-databricks)
 1. ビッグ データ向けの Cognitive Services をインストールする
     * Databricks ワークスペースに新しいライブラリを作成します  
        <img src="media/create-library.png" alt="Create library" width="50%"/>
-    * 次の maven 座標を入力します。`com.microsoft.ml.spark:mmlspark_2.11:1.0.0-rc1` リポジトリ: `https://mmlspark.azureedge.net/maven`  
+    * 次の maven 座標を入力します。`com.microsoft.ml.spark:mmlspark_2.11:1.0.0-rc3` リポジトリ: `https://mmlspark.azureedge.net/maven`  
       <img src="media/library-coordinates.png" alt="Library Coordinates" width="50%"/>
     * ライブラリをクラスターにインストールします  
       <img src="media/install-library.png" alt="Install Library on Cluster" width="50%"/>
 
-### <a name="synapse-analytics-optional"></a>Synapse Analytics (オプション)
+### <a name="azure-synapse-analytics-optional"></a>Azure Synapse Analytics (オプション)
 
-必要に応じて、Synapse Analytics を使用して Spark クラスターを作成できます。 Azure Synapse Analytics では、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられています。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを大規模に使用しながら、各自の条件で自由にデータのクエリを実行できます。 Synapse Analytics の使用を開始するには、次の手順を実行します。
+必要に応じて、Synapse Analytics を使用して Spark クラスターを作成できます。 Azure Synapse Analytics では、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられています。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを大規模に使用しながら、各自の条件で自由にデータのクエリを実行できます。 Azure Synapse Analytics の使用を開始するには、次の手順を行います。
 
-1. [Synapse ワークスペースを作成する (プレビュー)](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)。
-1. [Azure portal を使用して Apache Spark プール (プレビュー) を作成する](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal)。
+1. [Synapse ワークスペースを作成する (プレビュー)](../../synapse-analytics/quickstart-create-workspace.md)。
+1. [Azure portal を使用して、新しいサーバーレス Apache Spark プール (プレビュー) を作成する](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)。
 
-Synapse Analytics では、ビッグ データ向けの Cognitive Services が既定でインストールされています。
+Azure Synapse Analytics には、ビッグ データ向けの Cognitive Services が既定でインストールされています。
 
 ### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
@@ -80,9 +80,9 @@ Synapse Analytics では、ビッグ データ向けの Cognitive Services が�
 
 Azure Kubernetes Service の利用を開始するには、次の手順を実行します。
 
-1. [Azure portal を使用して Azure Kubernetes Service (AKS) クラスターをデプロイする](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal)
+1. [Azure portal を使用して Azure Kubernetes Service (AKS) クラスターをデプロイする](../../aks/kubernetes-walkthrough-portal.md)
 1. [Apache Spark 2.4.0 Helm グラフをインストールする](https://hub.helm.sh/charts/microsoft/spark)
-1. [Helm を使用して Cognitive Service コンテナーをインストールする](https://docs.microsoft.com/azure/cognitive-services/computer-vision/deploy-computer-vision-on-premises)
+1. [Helm を使用して Cognitive Service コンテナーをインストールする](../computer-vision/deploy-computer-vision-on-premises.md)
 
 ## <a name="try-a-sample"></a>サンプルを試す
 
@@ -100,7 +100,7 @@ Spark クラスターと環境を設定した後、短いサンプルを実行�
 
     **［作成］** を選択します
 
-1. 次のコード スニペットを新しいノートブックに貼り付けます。
+1. こちらのコード スニペットを新しいノートブックに貼り付けます。
 
 ```python
 from mmlspark.cognitive import *

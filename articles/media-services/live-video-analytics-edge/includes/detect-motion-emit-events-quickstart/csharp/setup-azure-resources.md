@@ -1,21 +1,23 @@
 ---
-ms.openlocfilehash: 67d90836c382728f989ab2cb4fde4d81bac9eb25
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6b1df49ed0f2c543706d7584a1ade5dc5554a564
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691052"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101749911"
 ---
 このチュートリアルでは、次の Azure リソースが必要です。
 
 * IoT Hub
 * ストレージ アカウント
 * Azure Media Services アカウント
-* Azure 上の Linux VM ([IoT Edge ランタイム](../../../../../iot-edge/how-to-install-iot-edge-linux.md)がインストール済み)
+* Azure 上の Linux VM ([IoT Edge ランタイム](../../../../../iot-edge/how-to-install-iot-edge.md)がインストール済み)
 
 このクイックスタートでは、[Live Video Analytics リソース セットアップ スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)を使用して、ご利用の Azure サブスクリプションに必要なリソースをデプロイすることをお勧めします。 これを行うには、次のステップに従います。
 
-1. [Azure Cloud Shell](https://shell.azure.com) を開きます。
+1. [Azure Cloud Shell](https://ms.portal.azure.com/#cloudshell/) を開きます。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/quickstarts/cloud-shell.png" alt-text="Cloud Shell":::
 1. Cloud Shell の初回使用時には、ストレージ アカウントと Microsoft Azure Files 共有を作成するためのサブスクリプションの選択を求められます。 **[ストレージの作成]** を選択して、Cloud Shell のセッション情報用のストレージ アカウントを作成します。 このストレージ アカウントは、Azure Media Services アカウントで使用するためにスクリプトによって作成されるアカウントとは別のものです。
 1. Cloud Shell ウィンドウの左側にあるドロップダウン メニューから **[Bash]** をご利用の環境として選択します。
 
@@ -26,7 +28,20 @@ ms.locfileid: "88691052"
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-    スクリプトが正常に終了すれば、必要なすべてのリソースがご利用のサブスクリプションに表示されます。
+    スクリプトが正常に完了すると、必要なすべてのリソースがご利用のサブスクリプションに表示されます。 このスクリプトによって合計 12 個のリソースが設定されます。
+    1. **ストリーミング エンドポイント** - 記録された AMS アセットの再生に利用されます。
+    1. **仮想マシン** - エッジ デバイスとして機能する仮想マシンです。
+    1. **ディスク** - メディアや成果物を格納する目的で仮想マシンにアタッチされるストレージ ディスクです。
+    1. **ネットワーク セキュリティ グループ** - Azure 仮想ネットワーク内の Azure リソースが送受信するネットワーク トラフィックにフィルターを適用する目的で使用されます。
+    1. **ネットワーク インターフェイス** - Azure Virtual Machine がインターネットや Azure、その他各種リソースと通信できるようにします。
+    1. **bastion 接続** - ブラウザーと Azure portal を使用して仮想マシンに接続することができます。
+    1. **パブリック IP アドレス** - Azure リソースからインターネットへの通信と、公開されている Azure サービスへの通信が可能になります。
+    1. **Azure ネットワーク** - 仮想マシンなどのさまざまな種類の Azure リソースが、他の Azure リソース、インターネット、およびオンプレミスのネットワークと安全に通信することができます。 詳細については、[仮想ネットワーク](../../../../../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
+    1. **IoT Hub** - IoT アプリケーションと IoT Edge モジュール、さらにそれが管理するデバイスの間の双方向通信に対する中央メッセージ ハブとして機能します。
+    1. **Media Services アカウント** - Azure におけるメディア コンテンツの管理とストリーミングに使用されます。
+    1. **ストレージ アカウント** - 1 つのプライマリ ストレージ アカウントを持つ必要があります。Media Services アカウントに関連付けられた任意の数のセカンダリ ストレージ アカウントを持つことができます。 詳細については、[Azure Storage アカウントの Azure Media Services アカウント](../../../../latest/storage-account-concept.md)に関するページを参照してください。
+    1. **コンテナー レジストリ** - プライベート Docker コンテナー イメージおよび関連する成果物の格納と管理に使用されます。
+
 1. スクリプトが完了したら、中かっこを選択してフォルダー構造を展開します。 *~/clouddrive/lva-sample* ディレクトリに、いくつかのファイルがあるのを確認できます。 このクイックスタートで注目するのは、次のものです。
 
      * ***~/clouddrive/lva-sample/edge-deployment/.env*** - このファイルには、Visual Studio Code がエッジ デバイスにモジュールをデプロイする際に使用するプロパティが格納されています。
@@ -35,4 +50,6 @@ ms.locfileid: "88691052"
     これらのファイルは、次のセクションで Visual Studio Code に開発環境を設定するときに必要になります。 差し当たりローカル ファイルとしてコピーしておいてください。
     
     ![アプリケーション設定](../../../media/quickstarts/clouddrive.png)
-    
+
+> [!TIP]
+> 作成された Azure リソースで問題が発生した場合は、 **[トラブルシューティング ガイド](../../../troubleshoot-how-to.md#common-error-resolutions)** を参照して、よく発生する問題を解決してください。

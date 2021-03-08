@@ -1,33 +1,36 @@
 ---
 title: Azure Spring Cloud でステージング環境を設定する | Microsoft Docs
 description: Azure Spring Cloud でブルーグリーン デプロイを使用する方法について説明します
-author: bmitchell287
+author: MikeDodaro
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 5333dd45cee58821d89cd49c44d3c5bba4cd9115
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 39420afbd2b1dd8a4e239b814c73e17bb258663c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500404"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035205"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Azure Spring Cloud でステージング環境を設定する
 
-この記事では、Azure Spring Cloud でブルーグリーン デプロイ パターンを使ってステージング環境のデプロイを設定する方法について説明します。 ブルー/グリーン デプロイとは、新しい (グリーン) バージョンのデプロイ中に、既存 (ブルー) のバージョンを実行状態のまま保持する、Azure DevOps の継続的デリバリーのパターンです。 この記事では、運用環境デプロイに直接変更を加えることなく、ステージング環境のデプロイを運用環境に移す方法について説明します。
+**この記事の適用対象:** ✔️ Java
+
+この記事では、Azure Spring Cloud でブルーグリーン デプロイ パターンを使ってステージング環境のデプロイを設定する方法について説明します。 ブルーグリーン デプロイとは、新しい (グリーン) バージョンのデプロイ中に、既存 (ブルー) のバージョンを実行状態のまま保持する、Azure DevOps の継続的デリバリーのパターンです。 この記事では、運用環境デプロイに変更を加えることなく、ステージング環境のデプロイを運用環境に移す方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、[Azure Spring Cloud アプリケーションの起動に関するチュートリアル](spring-cloud-quickstart-launch-app-portal.md)の PiggyMetrics アプリケーションを既にデプロイしてあることを前提としています。 PiggyMetrics は、"gateway"、"account-service"、"auth-service" という 3 つのアプリケーションで構成されます。  
+* *Standard* **価格レベル** の Azure Spring Cloud インスタンス。
+* Azure CLI [Azure Spring Cloud 拡張機能](/cli/azure/azure-cli-extensions-overview)。
 
-この例に別のアプリケーションを使用したい場合は、そのアプリケーションの公開部分に簡単な変更を加える必要があります。  その変更により、ステージング環境のデプロイが運用環境と区別されます。
+この記事では、Spring Initializer からビルドされたアプリケーションを使用します。 この例に別のアプリケーションを使用したい場合は、ステージング環境のデプロイを運用環境と区別するために、そのアプリケーションの公開部分に簡単な変更を加える必要があります。
 
 >[!TIP]
 > Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。  最新バージョンの Git、JDK、Maven、Azure CLI など、一般的な Azure ツールがプレインストールされています。 Azure サブスクリプションにサインインしている場合は、[Azure Cloud Shell](https://shell.azure.com) を開始します。  詳細については、[Cloud Shell の概要](../cloud-shell/overview.md)に関するページをご覧ください。
 
-Azure Spring Cloud でステージング環境を設定するには、次のセクションの手順に従います。
+Azure Spring Cloud でブルーグリーン デプロイを設定するには、次のセクションの手順に従います。
 
 ## <a name="install-the-azure-cli-extension"></a>Azure CLI 拡張機能をインストールする
 
@@ -36,35 +39,94 @@ Azure Spring Cloud でステージング環境を設定するには、次のセ�
 ```azurecli
 az extension add --name spring-cloud
 ```
-    
-## <a name="view-all-deployments"></a>すべてのデプロイを表示する
+## <a name="prepare-app-and-deployments"></a>アプリとデプロイを準備する
+アプリケーションをビルドするには、これらの手順に従います。
+1. [この構成](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client)で Spring Initializer を使用して、サンプル アプリのコードを生成します。
 
-Azure portal で自分のサービス インスタンスに移動し、 **[Deployment management]\(デプロイ管理\)** を選択してすべてのデプロイを表示します。 詳細を表示するには、各デプロイを選択します。
+2. コードをダウンロードします。
+3. `\src\main\java\com\example\hellospring\` フォルダーに、次のソース ファイル Hellocontroller.java を追加します。
+```java
+package com.example.hellospring; 
+import org.springframework.web.bind.annotation.RestController; 
+import org.springframework.web.bind.annotation.RequestMapping; 
 
-## <a name="create-a-staging-deployment"></a>ステージング環境のデプロイの作成
+@RestController 
 
-1. ローカル開発環境で、PiggyMetrics のゲートウェイ アプリケーションに小さな変更を加えます。 たとえば、*gateway/src/main/resources/static/css/launch.css* ファイルの色を変更します。 こうすることで、2 つのデプロイを簡単に区別できるようになります。 jar パッケージをビルドするには、次のコマンドを実行します。 
+public class HelloController { 
 
-    ```console
-    mvn clean package
-    ```
+@RequestMapping("/") 
 
-1. Azure CLI で新しいデプロイを作成し、ステージング環境のデプロイの名前を "グリーン" にします。
+  public String index() { 
 
-    ```azurecli
-    az spring-cloud app deployment create -g <resource-group-name> -s <service-instance-name> --app gateway -n green --jar-path gateway/target/gateway.jar
-    ```
+      return "Greetings from Azure Spring Cloud!"; 
+  } 
 
-1. デプロイが正常に完了したら、 **[アプリケーション ダッシュボード]** からゲートウェイのページにアクセスし、左側の **[App Instances]\(アプリ インスタンス\)** タブで自分のインスタンスをすべて表示します。
-  
-> [!NOTE]
-> 検出状態が *OUT_OF_SERVICE* になっているので、確認が完了するまで、このデプロイにはトラフィックがルーティングされません。
+} 
+```
+4. .jar ファイルをビルドします。
+```azurecli
+mvn clean packge -DskipTests
+```
+5. Azure Spring Cloud インスタンスでアプリを作成します。
+```azurecli
+az spring-cloud app create -n demo -g <resourceGroup> -s <Azure Spring Cloud instance> --assign-endpoint
+```
+6. アプリを Azure Spring Cloud にデプロイします。
+```azurecli
+az spring-cloud app deploy -n demo -g <resourceGroup> -s <Azure Spring Cloud instance> --jar-path target\hellospring-0.0.1-SNAPSHOT.jar
+```
+7. ステージング環境のデプロイのコードを変更します。
+```java
+package com.example.hellospring; 
+import org.springframework.web.bind.annotation.RestController; 
+import org.springframework.web.bind.annotation.RequestMapping; 
 
-## <a name="verify-the-staging-deployment"></a>ステージング環境のデプロイを確認する
+@RestController 
 
-1. **[Deployment management]\(デプロイ管理\)** に戻って、新しいデプロイを選択します。 デプロイの状態は *[実行中]* と表示されます。 環境がステージング環境であるため、 **[Assign/Unassign domain]\(ドメインの割り当て/割り当て解除\)** ボタンは淡色表示になります。
+public class HelloController { 
 
-1. **[概要]** ペインには**テスト エンドポイント**が表示されます。 新しいブラウザー ウィンドウにコピーして貼り付けると、新しい PiggyMetrics ページが表示されます。
+@RequestMapping("/") 
+
+  public String index() { 
+
+      return "Greetings from Azure Spring Cloud! THIS IS THE GREEN DEPLOYMENT"; 
+  } 
+
+} 
+```
+8. .jar ファイルをリビルドします。
+```azurecli
+mvn clean packge -DskipTests
+```
+9. グリーン デプロイを作成します。 
+```azurecli
+az spring-cloud app deployment create -n green --app demo -g <resourceGroup> -s <Azure Spring Cloud instance> --jar-path target\hellospring-0.0.1-SNAPSHOT.jar 
+```
+
+## <a name="view-apps-and-deployments"></a>アプリとデプロイを表示する
+
+デプロイされたアプリを表示するには、次の手順を行います。
+
+1. Azure portal で Azure Spring Cloud インスタンスに移動します。
+
+1. 左側のナビゲーション ウィンドウから [アプリ] ブレードを開いて、自分のサービス インスタンスのアプリを表示します。
+
+    [ ![アプリ - ダッシュボード](media/spring-cloud-blue-green-staging/app-dashboard.png)](media/spring-cloud-blue-green-staging/app-dashboard.png)
+
+1. アプリをクリックして詳細を表示できます。
+
+    [ ![アプリ - 概要](media/spring-cloud-blue-green-staging/app-overview.png)](media/spring-cloud-blue-green-staging/app-overview.png)
+
+1. **[デプロイ]** を開いて、アプリのすべてのデプロイを表示します。 グリッドには、運用環境とステージング環境の両方のデプロイが表示されます。
+
+    [ ![[アプリ]/[デプロイ] ダッシュボード](media/spring-cloud-blue-green-staging/deployments-dashboard.png)](media/spring-cloud-blue-green-staging/deployments-dashboard.png)
+
+1. URL をクリックして、現在デプロイされているアプリケーションを開きます。
+    ![デプロイされている URL](media/spring-cloud-blue-green-staging/running-blue-app.png)
+1. **[状態]** 列で **[運用]** をクリックして、既定のアプリを表示します。
+    ![実行中の既定](media/spring-cloud-blue-green-staging/running-default-app.png)
+1. **[状態]** 列で **[ステージング]** をクリックして、ステージング アプリを表示します。
+    ![実行中のステージング](media/spring-cloud-blue-green-staging/running-staging-app.png)
 
 >[!TIP]
 > * テスト エンドポイントの末尾がスラッシュ (/) であり、CSS ファイルが正しく読み込まれていることを確認します。  
@@ -74,14 +136,18 @@ Azure portal で自分のサービス インスタンスに移動し、 **[Deplo
 > 構成サーバーの設定はステージング環境と運用環境の両方に適用されます。 たとえば、構成サーバー内のアプリ ゲートウェイのコンテキスト パス (`server.servlet.context-path`) を *somepath* として設定すると、グリーン デプロイへのパスは "https://\<username>:\<password>@\<cluster-name>.test.azureapps.io/gateway/green/somepath/..." に変更されます。
  
  このポイントで自分の公開アプリ ゲートウェイにアクセスすると、新しい変更が反映されていない古いページが表示されます。
-    
+
 ## <a name="set-the-green-deployment-as-the-production-environment"></a>実稼働環境としてグリーン デプロイを設定する
 
-1. ステージング環境で変更を確認したら、それを運用環境にプッシュすることができます。 **[Deployment management]\(デプロイ管理\)** に戻って、**ゲートウェイ** アプリケーションのチェック ボックスをオンにします。
+1. ステージング環境で変更を確認したら、それを運用環境にプッシュすることができます。 **[アプリ]** / **[デプロイ]** ページで、現在 `Production` にあるアプリケーションを選択します。
 
-2. **[Set deployment]\(デプロイの設定\)** を選択します。
-3. **[運用環境デプロイ]** の一覧で **[グリーン]** を選択し、 **[適用]** を選択します。
-4. 自分のゲートウェイ アプリケーションの **[概要]** ページに移動します。 ゲートウェイ アプリケーションにドメインを既に割り当ててある場合、 **[概要]** ペインに URL が表示されます。 変更された PiggyMetrics ページを表示するには、URL を選択してサイトにアクセスします。
+1. グリーン デプロイの **[登録状態]** の後にある省略記号をクリックして、ステージング ビルドを運用に設定します。 
+
+   [ ![運用をステージングに設定する](media/spring-cloud-blue-green-staging/set-staging-deployment.png)](media/spring-cloud-blue-green-staging/set-staging-deployment.png)
+
+1. これで、アプリの URL で変更が表示されます。
+
+   ![現在デプロイ状態のステージング](media/spring-cloud-blue-green-staging/new-production-deployment.png)
 
 >[!NOTE]
 > グリーン デプロイを運用環境に設定したら、前のデプロイがステージング環境のデプロイになります。
@@ -103,3 +169,7 @@ Azure ポートから自分のステージング環境のデプロイを削除�
 ```azurecli
 az spring-cloud app deployment delete -n <staging-deployment-name> -g <resource-group-name> -s <service-instance-name> --app gateway
 ```
+
+## <a name="next-steps"></a>次の手順
+
+* [Azure Spring Cloud の CI/CD](https://review.docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-cicd?branch=pr-en-us-142929&pivots=programming-language-java)

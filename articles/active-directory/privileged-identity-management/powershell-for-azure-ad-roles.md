@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2020
+ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6792fdc405d539a662c8dc20c04b2891fd036704
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: e7d04a2941888592ffa37acfe6cba52a33fda528
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421911"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365512"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management の Azure AD ロールのための PowerShell
 
@@ -30,7 +30,7 @@ ms.locfileid: "87421911"
 > [!Note]
 > Microsoft の公式 PowerShell は、Azure AD Privileged Identity Management の新しいバージョンを使用している場合にのみサポートされます。 Privileged Identity Management にアクセスして、[クイック スタート] ブレードに次のバナーが表示されていることを確認してください。
 > [![お使いの Privileged Identity Management のバージョンを確認する](media/pim-how-to-add-role-to-user/pim-new-version.png "[Azure AD] > [Privileged Identity Management] を選択する")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox) このバナーが表示されていない場合は、更新されたエクスペリエンスを現在数週間かけて提供するプロセスが進行中のため、しばらくお待ちください。
-> Privileged Identity Management PowerShell コマンドレットは、Azure AD Preview モジュールでサポートされています。 別のモジュールを使用していて、そのモジュールがエラー メッセージを返すようになった場合は、この新しいモジュールの使用を開始してください。 異なるモジュール上に構築された実稼働システムがある場合は、pim_preview@microsoft.com にご連絡ください。
+> Privileged Identity Management PowerShell コマンドレットは、Azure AD Preview モジュールでサポートされています。 別のモジュールを使用していて、そのモジュールがエラー メッセージを返すようになった場合は、この新しいモジュールの使用を開始してください。 異なるモジュール上に構築された実稼働システムがある場合は、[pim_preview@microsoft.com](mailto:pim_preview@microsoft.com) にご連絡ください。
 
 ## <a name="installation-and-setup"></a>インストールとセットアップ
 
@@ -54,7 +54,7 @@ ms.locfileid: "87421911"
     ![Azure AD 組織のプロパティで組織 ID を検索する](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> 次のセクションでは、使用を開始するのに役立つ簡単な例を紹介しています。 次のコマンドレットに関する詳細なドキュメントについては、 https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management を参照してください。 ただし、providerID パラメーターの "azureResources" を "aadRoles" に置き換える必要があります。 また、Azure AD 組織の組織 ID を resourceId パラメーターとして使用する必要もあります。
+> 次のセクションでは、使用を開始するのに役立つ簡単な例を紹介しています。 次のコマンドレットに関する詳細なドキュメントについては、[https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) を参照してください。 ただし、providerID パラメーターの "azureResources" を "aadRoles" に置き換える必要があります。 また、Azure AD 組織のテナント ID を resourceId パラメーターとして使用する必要もあります。
 
 ## <a name="retrieving-role-definitions"></a>ロール定義の取得
 
@@ -135,7 +135,7 @@ Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId
 Azure AD 組織内のすべてのロール設定を取得するには、次のコマンドレットを使用します。
 
 ```powershell
-Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'" 
+Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'"
 ```
 
 この設定には、4 つの主要なオブジェクトがあります。 PIM によって現在使用されているのは、これらのオブジェクトのうち 3 つだけです。 UserMemberSettings はアクティブ化の設定、AdminEligibleSettings は有資格な割り当ての割り当て設定、AdminmemberSettings はアクティブな割り当ての割り当て設定です。
@@ -145,14 +145,16 @@ Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq
 ロールの設定を更新するには、特定のロールの既存の設定オブジェクトを取得し、それに変更を加える必要があります。
 
 ```powershell
-$setting = Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "roleDefinitionId eq 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'"
-$setting.UserMemberSetting.justificationRule = '{"required":false}'
+Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq 'tenant id' and RoleDefinitionId eq 'role id'"
+$settinga = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedRuleSetting
+$settinga.RuleIdentifier = "JustificationRule"
+$settinga.Setting = '{"required":false}'
 ```
 
 その後、次に示すように、特定のロールのオブジェクトのいずれかに設定を適用できます。 ここでの ID は、リスト ロール設定コマンドレットの結果から取得できるロール設定 ID です。
 
 ```powershell
-Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a9-bb32-71916d9aeadf' -ResourceId '3f5887ed-dd6e-4821-8bde-c813ec508cf9' -RoleDefinitionId '2387ced3-4e95-4c36-a915-73d803f93702' -UserMemberSettings $setting 
+Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a9-bb32-71916d9aeadf' -ResourceId '3f5887ed-dd6e-4821-8bde-c813ec508cf9' -RoleDefinitionId '2387ced3-4e95-4c36-a915-73d803f93702' -UserMemberSettings $settinga 
 ```
 
 ## <a name="next-steps"></a>次のステップ
@@ -160,4 +162,4 @@ Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a
 - [Azure AD のカスタム ロールを割り当てる](azure-ad-custom-roles-assign.md)
 - [Azure AD のカスタム ロールの割り当てを削除または更新する](azure-ad-custom-roles-update-remove.md)
 - [Azure AD のカスタム ロールの割り当てを構成する](azure-ad-custom-roles-configure.md)
-- [Azure AD のロールの定義](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure AD のロールの定義](../roles/permissions-reference.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
-ms.openlocfilehash: 0bf9b4d3aa1926343ad25000a05762a31d49617d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4a3b2afd8b1a5ffdbb1fe0db1c3e345a9c99154
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73889851"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94412614"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Azure セキュリティのベスト プラクティスとパターン
 
@@ -28,8 +28,8 @@ ms.locfileid: "73889851"
 
 ベスト プラクティスは、IT プロフェッショナル向けに用意されています。 これには、セキュリティで保護された Azure ソリューションの構築とデプロイを行う設計者、アーキテクト、開発者、テスト担当者が含まれます。
 
-* [Azure の境界セキュリティに関するベスト プラクティス](/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
-* [Azure のデータベース セキュリティに関するベスト プラクティス](database-best-practices.md)
+* [Azure の境界セキュリティに関するベスト プラクティス](./network-best-practices.md#adopt-a-zero-trust-approach)
+* [Azure のデータベース セキュリティに関するベスト プラクティス](../../azure-sql/database/security-best-practice.md)
 * [Azure のデータ セキュリティと暗号化のベスト プラクティス](data-encryption-best-practices.md)
 * [Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス](identity-management-best-practices.md)
 * [Azure のネットワーク セキュリティに関するベスト プラクティス](network-best-practices.md)
@@ -38,7 +38,7 @@ ms.locfileid: "73889851"
 * [Azure Service Fabric のセキュリティに関するベスト プラクティス](service-fabric-best-practices.md)
 * [Azure VM のセキュリティに関するベスト プラクティス](iaas.md)
 * [Azure における安全なハイブリッド ネットワーク アーキテクチャの実装](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid)
-* [モノのインターネットのセキュリティのベスト プラクティス](iot-best-practices.md)
+* [モノのインターネットのセキュリティのベスト プラクティス](../../iot-fundamentals/iot-security-best-practices.md)
 * [Azure で Paas データベースをセキュリティ保護する](paas-applications-using-sql.md)
 * [Azure App Service を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護する](paas-applications-using-app-services.md)
 * [Azure Storage を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護する](paas-applications-using-storage.md)

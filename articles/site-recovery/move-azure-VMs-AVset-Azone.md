@@ -1,5 +1,6 @@
 ---
 title: Azure Site Recovery を使用して可用性ゾーンがある Azure リージョンに VM を移動する
+description: Site Recovery を使用して VM を別のリージョンの可用性ゾーンに移動する方法について説明します
 services: site-recovery
 author: sideeksh
 ms.service: site-recovery
@@ -7,14 +8,18 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: c1a552ba634234ac3b4d4a8eec260c739ce0d846
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 8224ae4a48bb4915492240c414b90edb86a4c258
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425474"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393134"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure VM を Availability Zones に移動する
+
+この記事では、Azure VM を別のリージョンの可用性ゾーンに移動する方法について説明します。 同じリージョン内の別のゾーンに移動する場合は、[こちらの記事をご確認ください](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)。
+
+
 Azure の Availability Zones は、アプリケーションとデータをデータセンターの障害から保護するのに役立ちます。 それぞれの可用性ゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 Availability Zones はリージョン内で物理的に分離されているため、データセンターで障害が発生してもアプリケーションとデータは保護されます。 Availability Zones により、Azure では仮想マシン (VM) の 99.99% のアップタイムというサービス レベル アグリーメント (SLA) が提供されます。 [Availability Zones がサポートされるリージョン](../availability-zones/az-region.md)に関するページで説明されているように、Availability Zones は一部のリージョンでサポートされています。
 
 VM を "*単一インスタンス*" として特定のリージョンにデプロイしてあり、それらの VM を可用性ゾーンに移動することで可用性を強化したい場合、その手段として Azure Site Recovery を使用することができます。 この操作は、さらに次のように分類できます。
@@ -23,7 +28,15 @@ VM を "*単一インスタンス*" として特定のリージョンにデプ�
 - 可用性セット内の VM をターゲット リージョン内の Availability Zones に移動する
 
 > [!IMPORTANT]
-> 現在 Azure Site Recovery では、異なるリージョン間の VM の移動がサポートされます。 同じリージョン内のゾーン間の移動は、いくつかのリージョンでのみサポートされます。 [詳細については、こちらを参照してください](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)。
+> Azure VM を別のリージョンの可用性ゾーンに移動する場合、[Azure Resource Mover](../resource-mover/move-region-availability-zone.md) を使用することをお勧めします。 Resource Mover は、現在、パブリック プレビュー段階にあり、以下を実現します。
+> - 単一のハブを使用してリージョン間でリソースを移動できます。
+> - 移動時間と複雑さを軽減できます。 必要なものをすべて 1 か所にまとめることができます。
+> - シンプルかつ一貫性のあるエクスペリエンスによって、さまざまな種類の Azure リソースを移動できます。
+> - 移動するリソース間の依存関係を簡単に識別できます。 これにより、関連リソースをまとめて移動することができるため、移動後にすべてのリソースがターゲット リージョンで期待どおりに動作します。
+> - 移動後にソース リージョンのリソースを削除する場合は、自動的にクリーンアップされます。
+> - テスト。 移動を試してみて、完全に移動することは望まない場合は破棄することができます。
+
+
 
 ## <a name="check-prerequisites"></a>前提条件を確認する
 
@@ -49,7 +62,7 @@ VM を "*単一インスタンス*" として特定のリージョンにデプ�
 4. Linux VM の場合は、Linux ディストリビューターから提供されるガイダンスに従って、VM で最新の信頼されたルート証明書と証明書失効リストを取得します。
 5. 移動しようとする VM のネットワーク接続を制御するために認証プロキシを使用していないことを確認します。
 
-6. 移動しようとしている VM にインターネットへのアクセスが存在しない場合や、ファイアウォール プロキシを使用してアウトバウンド アクセスを制御している場合は、「[発信ネットワーク接続の構成](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms)」で要件を確認してください。
+6. [VM の発信接続要件](azure-to-azure-tutorial-enable-replication.md#set-up-vm-connectivity)を確認します。
 
 7. ソース ネットワーク レイアウトと確認のために現在使用しているリソースを特定します (ロード バランサー、NSG、パブリック IP など)。
 
@@ -86,16 +99,12 @@ VM を "*単一インスタンス*" として特定のリージョンにデプ�
 1. Azure portal で **[仮想マシン]** を選択して、Availability Zones に移動する VM を選択します。
 2. **[操作]** で、 **[ディザスター リカバリー]** を選択します。
 3. **[ディザスター リカバリーの構成]**  >  **[ターゲット リージョン]** で、レプリケート先のターゲット リージョンを選択します。 このリージョンで Availability Zones が[サポートされている](../availability-zones/az-region.md)ことを確認します。
-
-    ![ターゲット リージョンの選択](media/azure-vms-to-zones/enable-rep-1.PNG)
-
 4. **詳細設定** を選択します。
 5. ターゲット サブスクリプション、ターゲット VM リソース グループ、仮想ネットワークに適切な値を選択します。
 6. **[可用性]** セクションで、VM の移動先となる可用性ゾーンを選択します。 
    > [!NOTE]
    > 可用性セットまたは可用性ゾーンのオプションが表示されない場合は、[前提条件](#prepare-the-source-vms)が満たされていること、またソース VM の[準備](#prepare-the-source-vms)が完了していることを確認します。
   
-    ![可用性ゾーンを選択するための選択](media/azure-vms-to-zones/enable-rep-2.PNG)
 
 7. **[レプリケーションを有効にする]** を選択します。 これにより VM レプリケーションを有効にするジョブが開始されます。
 
@@ -106,7 +115,6 @@ VM を "*単一インスタンス*" として特定のリージョンにデプ�
 1. VM のメニューで、 **[ディザスター リカバリー]** を選択します。
 2. レプリケーションの正常性、作成された復旧ポイント、およびマップ上のソース リージョンとターゲット リージョンを確認できます。
 
-   ![レプリケーションの状態](media/azure-to-azure-quickstart/replication-status.png)
 
 ## <a name="test-the-configuration"></a>構成をテストする
 

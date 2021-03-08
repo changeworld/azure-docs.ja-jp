@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: ab11060924c29dbddc965aa94064d0091a7b348e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 6f089af71e4d32023e9cebd6613872f7db0eed7a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639853"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694961"
 ---
 # <a name="high-availability-ports-overview"></a>高可用性ポートの概要
 
-内部ロード バランサーを使用するときは、Azure Standard Load Balancer によって、すべてのポートで TCP フローと UDP フローの負荷分散を同時に行うことができます。 
+HA ポート経由で内部 Load Balancer を使用しているときは、Azure Standard Load Balancer を利用すると、**すべての** ポートで **すべての** プロトコル フローを同時に負荷分散することができます。
 
-高可用性 (HA) ポート負荷分散規則は負荷分散規則の一種であり、内部 Standard Load Balancer 上に構成されます。 内部 Standard Load Balancer のすべてのポートに到着するすべての TCP フローと UDP フローを負荷分散する単一の規則を指定することで、ロード バランサーの使用を単純化できます。 負荷分散の決定は、フローごとに行われます。 このアクションは、5 タプル接続 (送信元 IP アドレス、送信元ポート、送信先 IP アドレス、送信先ポート、およびプロトコル) に基づいて行われます。
+高可用性 (HA) ポートは負荷分散規則の一種であり、内部 Standard Load Balancer の **すべての** ポートに到着する **すべての** フローの負荷分散を簡単に行う方法を提供します。 負荷分散の決定は、フローごとに行われます。 このアクションは、5 タプル接続 (送信元 IP アドレス、送信元ポート、送信先 IP アドレス、送信先ポート、およびプロトコル) に基づいて行われます。
 
 HA ポート負荷分散規則は、仮想ネットワーク内のネットワーク仮想アプライアンス (NVA) の高可用性と拡張性のような、重要なシナリオで役に立ちます。 この機能は、多数のポートを負荷分散する必要がある場合にも役立ちます。 
 
-HA ポート負荷分散規則は、フロントエンド ポートとバックエンド ポートを **0** に、プロトコルを**すべて**に設定すると構成されます。 その後は、内部 Load Balancer リソースによって、ポート番号に関係なく、すべての TCP フローおよび UDP フローが負荷分散されます。
+HA ポート負荷分散規則は、フロントエンド ポートとバックエンド ポートを **0** に、プロトコルを **すべて** に設定すると構成されます。 その後は、内部 Load Balancer リソースによって、ポート番号に関係なく、すべての TCP フローおよび UDP フローが負荷分散されます。
 
 ## <a name="why-use-ha-ports"></a>HA ポートを使う理由
 
@@ -54,7 +54,7 @@ NVA HA のシナリオでは、HA ポートは次の利点を提供します。
 
 ### <a name="load-balancing-large-numbers-of-ports"></a>多数のポートの負荷分散
 
-多数のポートの負荷分散が必要なアプリケーションにも、HA ポートを使うことができます。 HA ポートで内部 [Standard Load Balancer ](load-balancer-standard-overview.md) を使うことにより、これらのシナリオが簡単になります。 ポートごとに 1 つずつ、複数の負荷分散規則を使う代わりに、1 つの負荷分散規則で済みます。
+多数のポートの負荷分散が必要なアプリケーションにも、HA ポートを使うことができます。 HA ポートで内部 [Standard Load Balancer ](./load-balancer-overview.md) を使うことにより、これらのシナリオが簡単になります。 ポートごとに 1 つずつ、複数の負荷分散規則を使う代わりに、1 つの負荷分散規則で済みます。
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
@@ -74,7 +74,7 @@ HA ポート機能は、すべてのグローバル Azure リージョンで使�
 
 ### <a name="a-single-floating-ip-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>内部 Standard Load Balancer 上の単一のフローティング IP (Direct Server Return) HA ポートの構成
 
-同様に、**HA ポート**と単一フロントエンドの負荷分散規則を使用するようにロード バランサーを構成できます。それには、 **[フローティング IP]** を **[有効]** に設定します。 
+同様に、**HA ポート** と単一フロントエンドの負荷分散規則を使用するようにロード バランサーを構成できます。それには、 **[フローティング IP]** を **[有効]** に設定します。 
 
 この構成を使用することにより、複数のフローティング IP 負荷分散規則またはパブリック ロード バランサー、あるいはその両方を追加できます。 ただし、この構成の上で、非フローティング IP と HA ポートを使用する負荷分散構成は使用できません。
 
@@ -92,12 +92,11 @@ HA ポート機能は、すべてのグローバル Azure リージョンで使�
 ## <a name="limitations"></a>制限事項
 
 - HA ポートの負荷分散規則は、内部 Standard Load Balancer でのみ使用できます。
-- 同じバックエンド ipconfiguration を指す HA ポートの負荷分散規則と非 HA ポートの負荷分散規則の組み合わせは、両方で Floating IP が有効になっている場合を除き、1 つのフロントエンド IP 構成ではサポート**されていません**。
+- 同じバックエンド ipconfiguration を指す HA ポートの負荷分散規則と非 HA ポートの負荷分散規則の組み合わせは、両方で Floating IP が有効になっている場合を除き、1 つのフロントエンド IP 構成ではサポート **されていません**。
 - 既存の IP フラグメントは、HA ポートの負荷分散規則によって、最初のパケットと同じ宛先に転送されます。  UDP または TCP パケットの IP フラグメントはサポートされていません。
 - フロー対称 (主に NVA シナリオの場合) がバックエンド インスタンスと 1 つの NIC (および 1 つの IP 構成) でサポートされるのは、上の図に示すように使用し、HA ポート負荷分散規則が使用されている場合のみです。 これは他のシナリオでは提供されません。 つまり、2 つ以上のロード バランサー リソースと個別の規則を使用した場合、それぞれ独立した意思決定が行われるため調整することはできません。 [ネットワーク仮想アプライアンス](#nva)の説明と図をご覧ください。 複数の NIC を使用しているか、またはパブリック ロード バランサーおよび内部ロード バランサーの間に NVA を配置している場合は、フロー対称を使用できません。  イングレス フローをアプライアンスの IP にソース NAT して、応答が同じ NVA に到着できるようにすることによって、これを回避できる場合があります。  ただし、1 つの NIC を使用し、上の図に示す参照アーキテクチャを使用することを強くお勧めします。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ポータル](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule)、[PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer)、[CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)、または[テンプレート](load-balancer-get-started-ilb-arm-template.md)を利用し、ILB の HA ポートを構成する方法について説明します。
-- [Standard Load Balancer の詳細を確認する](load-balancer-standard-overview.md)
+- [Standard Load Balancer の詳細を確認する](load-balancer-overview.md)

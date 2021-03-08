@@ -1,17 +1,17 @@
 ---
 title: リダイレクトを使用して接続する - Azure Database for MySQL
 description: この記事では、リダイレクトを使用して Azure Database for MySQL に接続するようにアプリケーションを構成する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: be660101a28d5ef289de1b25f8f7d33fbe9f617b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 199810f835924ccbb51948169244622a19c5e8ed
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107820"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201435"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>リダイレクトを使用して Azure Database for MySQL に接続する
 
@@ -21,6 +21,9 @@ ms.locfileid: "86107820"
 [Azure portal](https://portal.azure.com) にサインインします。 エンジン バージョン 5.6、5.7、または 8.0 を使用して、Azure Database for MySQL サーバーを作成します。 
 
 詳細については、[Azure portal](quickstart-create-mysql-server-database-using-azure-portal.md) または [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md) を使用した Azure Database for MySQL サーバーの作成を参照してください。
+
+> [!IMPORTANT]
+> リダイレクトは、[Azure Database for MySQL 用の Private Link](concepts-data-access-security-private-link.md) では現在サポートされていません。
 
 ## <a name="enable-redirection"></a>リダイレクトを有効化する
 
@@ -40,7 +43,7 @@ mysqlnd_azure 拡張機能は、PECL を通じて PHP アプリケーション�
 >[!IMPORTANT]
 > バージョン 1.1.0 以降でリダイレクトのロジック/動作が更新されました。そのため、**バージョン 1.1.0 以降を使用することをお勧めします**。
 
-リダイレクトの動作は、`mysqlnd_azure.enableRedirect` の値によって決まります。 次の表は、**バージョン 1.1.0 以降**のこのパラメーターの値に基づいたリダイレクトの動作の概要を示しています。
+リダイレクトの動作は、`mysqlnd_azure.enableRedirect` の値によって決まります。 次の表は、**バージョン 1.1.0 以降** のこのパラメーターの値に基づいたリダイレクトの動作の概要を示しています。
 
 以前のバージョンの mysqlnd_azure 拡張機能 (バージョン 1.0.0 から 1.0.3) を使用している場合、リダイレクトの動作は `mysqlnd_azure.enabled` の値によって決まります。 有効な値は `off` (次の表に記載されている動作と同様に機能します) と `on` (次の表の `preferred` のように機能します) です。  
 

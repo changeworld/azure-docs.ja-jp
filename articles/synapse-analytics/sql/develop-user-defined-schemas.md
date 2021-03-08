@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: ac4753da1405fe6b8cd209bb4899192e9f317aa1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 6920d6cd190927747a69fc4dc0f0791278665abe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426671"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451701"
 ---
 # <a name="user-defined-schemas-within-synapse-sql"></a>Synapse SQL 内のユーザー定義のスキーマ
 
@@ -27,7 +27,7 @@ ms.locfileid: "81426671"
 その代わりに、Synapse SQL では、分析ワークロード全体を 1 つのデータベース内で実行します。 データベース間の結合は許可されていません。 Synapse SQL では、ウェアハウスで使用されるすべてのテーブルが 1 つのデータベースに格納されていることが求められます。
 
 > [!NOTE]
-> SQL プールでは、どのような種類の複数データベース間のクエリもサポートされていません。 したがって、このパターンを利用する分析の実装は変更する必要があります。 SQL オンデマンド (プレビュー) では、複数データベース間のクエリがサポートされています。
+> 専用 SQL プールは、どのような種類の複数データベース間のクエリもサポートしません。 したがって、このパターンを利用する分析の実装は変更する必要があります。 サーバーレス SQL プールは、複数データベース間のクエリをサポートしています。
 
 ## <a name="user-defined-schema-recommendations"></a>ユーザー定義のスキーマに関する推奨事項
 

@@ -1,21 +1,21 @@
 ---
 title: Azure Stream Analytics JobConfig.json フィールド
 description: この記事では、Visual Studio Code でジョブを作成するときに使用される Azure Stream Analytics JobConfig.json ファイルでサポートされているフィールドを一覧表示します。
-author: mamccrea
-ms.author: mamccrea
+author: su-jie
+ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/14/2020
-ms.openlocfilehash: 0676b987725a33049d9da3256bdd4e6dc8028d00
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0eebd0b62e973572a40b7b141ae908046700ba3c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045180"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020487"
 ---
 # <a name="azure-stream-analytics-jobconfigjson-fields"></a>Azure Stream Analytics JobConfig.json フィールド
 
-[Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-vs-code.md)目的で使用される *JobConfig.json* ファイルでは次のフィールドがサポートされています。
+[Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-visual-studio-code.md)目的で使用される *JobConfig.json* ファイルでは次のフィールドがサポートされています。
 
 ```json
 {
@@ -55,7 +55,7 @@ ms.locfileid: "86045180"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-vs-code.md)
+* [Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-visual-studio-code.md)
 * [Visual Studio Code を使用してサンプル データで Stream Analytics クエリをローカルでテストする](visual-studio-code-local-run.md)
 * [Visual Studio Code を使用してライブ ストリーム入力に対して Stream Analytics クエリをローカルでテストする](visual-studio-code-local-run-live-input.md)
-*[CI/CD npm パッケージを使用して Azure Stream Analytics ジョブをデプロイする](setup-cicd-vs-code.md)
+*[CI/CD npm パッケージを使用して Azure Stream Analytics ジョブをデプロイする](./cicd-overview.md)

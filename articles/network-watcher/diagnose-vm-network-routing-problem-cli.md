@@ -1,7 +1,7 @@
 ---
 title: VM ネットワーク ルーティングの問題を診断する - Azure CLI
 titleSuffix: Azure Network Watcher
-description: この記事では、Azure Network Watcher の次ホップ機能を使用して、仮想マシン ネットワークのルーティングの問題を診断する方法について説明します。
+description: この記事では、Azure CLI を使用して、Azure Network Watcher の次ホップ機能を使用して仮想マシン ネットワークのルーティングの問題を診断する方法について説明します。
 services: network-watcher
 documentationcenter: network-watcher
 author: damendo
@@ -14,25 +14,27 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
-ms.date: 04/20/2018
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 889db5cdcb1807b859339eaf326e3cec7ea64b84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42174ce094242a6e7412deea0bf1f0eed0f3b6ea
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738806"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013177"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>仮想マシン ネットワークのルーティングの問題を診断する - Azure CLI
 
 この記事では、仮想マシン (VM) をデプロイし、IP アドレスおよび URL との通信を確認します。 通信障害の原因と解決方法を特定します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Azure CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.28 以降を実行していることが要件となります。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI のバージョンを確認した後、`az login` を実行して Azure との接続を作成します。 この記事の Azure CLI コマンドは、Bash シェルで実行されることを想定して書式設定されています。
+- この記事では、Azure CLI のバージョン 2.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。 
+
+- この記事の Azure CLI コマンドは、Bash シェルで実行されることを想定して書式設定されています。
 
 ## <a name="create-a-vm"></a>VM の作成
 
@@ -113,7 +115,7 @@ az network nic show-effective-route-table \
 
 返される出力には、次のテキストが含まれます。
 
-```
+```console
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false
@@ -133,7 +135,7 @@ az network nic show-effective-route-table \
 
 ただし、172.31.0.100 への送信通信のテストに `az network watcher show-next-hop` コマンドを使用したときの結果は、次ホップの種類がないことを示しています。 返される出力には、次のテキストも含まれます。
 
-```
+```console
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false

@@ -6,15 +6,15 @@ author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
-ms.date: 04/15/2020
+ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: e8dece3478e00c6f9279767e57e3bb8aca865f45
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4471fed7b423fe05147db30afe57f6c845fe640e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059986"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670689"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>拡張された Apache Spark History Server を使用して Apache Spark アプリケーションのデバッグと診断を行う
 
@@ -30,11 +30,11 @@ Apache Spark History Server は、完了および実行中の Spark アプリケ
 
 1. [Azure Synapse Analytics](https://web.azuresynapse.net/) を開きます。
 
-2. **[モニター]** をクリックし、 **[Apache Spark アプリケーション]** を選択します。
+2. **[モニター]** を選択し、次に **[Apache Spark アプリケーション]** を選択します。
 
-    ![[モニター] をクリックし、[Spark アプリケーション] を選択します。](./media/apache-spark-history-server/click-monitor-spark-application.png)
+    ![[モニター] を選択し、[Spark アプリケーション] を選択します。](./media/apache-spark-history-server/click-monitor-spark-application.png)
 
-3. アプリケーションを選択し、 **[Log query]\(ログ クエリ\)** をクリックして開きます。
+3. アプリケーションを選択し、 **[ログ クエリ]** を選択して開きます。
 
     ![ログ クエリ ウィンドウが開きます。](./media/apache-spark-history-server/open-application-window.png)
 
@@ -46,11 +46,11 @@ Apache Spark History Server は、完了および実行中の Spark アプリケ
 
 1. Azure Synapse Studio ノートブックで、ジョブ実行出力セルから、または ノートブック ドキュメントの下部にある状態パネルから、 **[Spark History Server]** を選択します。 **[セッション詳細]** を選択します。
 
-   ![Spark History Server を起動する](./media/apache-spark-history-server/launch-history-server2.png "Spark History Server の起動")
+   ![Spark History Server の起動 1](./media/apache-spark-history-server/launch-history-server2.png "Spark History Server の起動")
 
 2. スライドアウト パネルから **[Spark History Server]** を選択します。
 
-   ![Spark History Server を起動する](./media/apache-spark-history-server/launch-history-server.png "Spark History Server の起動")
+   ![Spark History Server の起動 2](./media/apache-spark-history-server/launch-history-server.png "Spark History Server の起動")
 
 ## <a name="explore-the-data-tab-in-spark-history-server"></a>Spark History Server の [データ] タブを探索する
 
@@ -102,7 +102,7 @@ Apache Spark History Server は、完了および実行中の Spark アプリケ
 
 ### <a name="overview"></a>概要
 
-生成されたジョブ グラフで、ジョブの概要を表示できます。 既定で、グラフにはすべてのジョブが表示されます。 **ジョブ ID**で、このビューをフィルター処理できます。
+生成されたジョブ グラフで、ジョブの概要を表示できます。 既定で、グラフにはすべてのジョブが表示されます。 **ジョブ ID** で、このビューをフィルター処理できます。
 
 ![Spark アプリケーションとジョブ グラフ、ジョブ ID](./media/apache-spark-history-server/apache-spark-graph-jobid.png)
 
@@ -200,7 +200,7 @@ Apache Spark History Server は、完了および実行中の Spark アプリケ
 
 **[データ スキュー]** タブを選択すると、指定されたパラメーターに基づいて、対応する偏りのあるタスクが表示されます。
 
-* **[パラメーターの指定]** - 最初のセクションには、データ スキューの検出に使用するパラメーターが表示されます。 既定の規則は次のとおりです。読み取られたタスク データが、読み取られたタスク データの平均量の 3 倍を超えており、なおかつ 10 MB を超えていることが指定されています。 偏りのあるタスクに対して独自の規則を定義する場合は、 **[Skewed Stage]\(偏りのあるステージ\)** パラメーターを選択します。それに応じて、 **[Skew Char]\(スキュー グラフ\)** セクションが更新されます。
+* **[パラメーターの指定]** - 最初のセクションには、データ スキューの検出に使用するパラメーターが表示されます。 既定の規則は次のとおりです。読み取られたタスク データが、読み取られたタスク データの平均量の 3 倍を超えており、なおかつ 10 MB を超えていることが指定されています。 傾斜したタスクに独自の規則を定義する場合は、パラメーターを選択できます。 **[傾斜したステージ]** と **[スキュー グラフ]** セクションは、それに応じて更新されます。
 
 * **[傾斜したステージ]** - 2 番目のセクションには、上記で指定した条件を満たす偏りのあるタスクがあるステージが表示されます。 ステージに偏りのあるタスクが複数ある場合、偏りのあるステージ テーブルには、最も偏りの大きなタスク (たとえば、データ スキューの最大データ) のみが表示されます。
 
@@ -239,5 +239,5 @@ Resilient Distributed Datasets (RDD) を使用した入力/出力データは、
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Synapse Analytics](../overview-what-is.md)
-- [.NET for Apache Spark ドキュメント](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [.NET for Apache Spark ドキュメント](/dotnet/spark)
 

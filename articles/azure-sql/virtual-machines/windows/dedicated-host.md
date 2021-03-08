@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -13,25 +14,24 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 40c851e5ff5fc83ccf6b6d67e319bb97bd860bd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 957e458bf21eb4a95b1faba1daf0459271648310
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669105"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358692"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>Azure Dedicated Host で SQL Server VM を実行する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-この記事では、[Azure Dedicated Host](/azure/virtual-machines/windows/dedicated-hosts) での SQL Server 仮想マシン (VM) の使用方法の詳細について説明します。 Azure Dedicated Host の詳細については、ブログ記事「[Azure Dedicated Host の導入](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/)」を参照してください。 
+この記事では、[Azure Dedicated Host](../../../virtual-machines/dedicated-hosts.md) での SQL Server 仮想マシン (VM) の使用方法の詳細について説明します。 Azure Dedicated Host の詳細については、ブログ記事「[Azure Dedicated Host の導入](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/)」を参照してください。 
 
 ## <a name="overview"></a>概要
-[Azure 専用ホスト](/azure/virtual-machines/windows/dedicated-hosts)は、1 つの Azure サブスクリプションに対して専用の物理サーバーを提供するサービスであり、1 つ以上の仮想マシンをホストできます。 専用ホストは Microsoft のデータ センターで使用されるものと同じ物理サーバーであり、リソースとして提供されます。 リージョン、可用性ゾーン、障害ドメイン内に専用ホストをプロビジョニングできます。 次に、プロビジョニングされたホストに VM を直接配置し、ニーズに最も合った構成にすることができます。
+[Azure 専用ホスト](../../../virtual-machines/dedicated-hosts.md)は、1 つの Azure サブスクリプションに対して専用の物理サーバーを提供するサービスであり、1 つ以上の仮想マシンをホストできます。 専用ホストは Microsoft のデータ センターで使用されるものと同じ物理サーバーであり、リソースとして提供されます。 リージョン、可用性ゾーン、障害ドメイン内に専用ホストをプロビジョニングできます。 次に、プロビジョニングされたホストに VM を直接配置し、ニーズに最も合った構成にすることができます。
 
 ## <a name="limitations"></a>制限事項
 
-- 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
-- 次の VM シリーズがサポートされています。DSv3 と ESv3。 
+- すべての VM シリーズが専用ホストでサポートされているわけではありません。VM シリーズの可用性はリージョンによって異なります。 詳細については、[Azure 専用ホストの概要](../../../virtual-machines/dedicated-hosts.md)に関する記事を参照してください。
 
 ## <a name="licensing"></a>ライセンス
 
@@ -55,7 +55,7 @@ Azure Dedicated Host に SQL Server VM を配置する場合は、2 つの異な
 
 
 ## <a name="provisioning"></a>プロビジョニング  
-専用ホストへの SQL Server VM のプロビジョニングは、他の Azure 仮想マシンと何ら変わりはありません。 これは、[Azure PowerShell](../../../virtual-machines/windows/dedicated-hosts-powershell.md)、[Azure portal](../../../virtual-machines/windows/dedicated-hosts-portal.md)、[Azure CLI](../../../virtual-machines/linux/dedicated-hosts-cli.md) を使用して行うことができます。
+専用ホストへの SQL Server VM のプロビジョニングは、他の Azure 仮想マシンと何ら変わりはありません。 これは、[Azure PowerShell](../../../virtual-machines/windows/dedicated-hosts-powershell.md)、[Azure portal](../../../virtual-machines/dedicated-hosts-portal.md)、[Azure CLI](../../../virtual-machines/linux/dedicated-hosts-cli.md) を使用して行うことができます。
 
 既存の SQL Server VM を専用ホストに追加するプロセスにはダウンタイムが必要ですが、データに影響を及ぼすことも、データが失われることもありません。 ただし、システム データベースを含むすべてのデータベースは、移動前にバックアップする必要があります。
 
@@ -79,5 +79,3 @@ A:お客様はソフトウェア アシュアランス付きの既存の Windows
 * [Windows VM 上の SQL Server に関する FAQ](frequently-asked-questions-faq.md)
 * [Windows VM 上の SQL Server の価格ガイダンス](pricing-guidance.md)
 * [Windows VM 上の SQL Server のリリース ノート](doc-changes-updates-release-notes.md)
-
-

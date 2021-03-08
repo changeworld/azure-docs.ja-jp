@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 0a505e5fb11e776a90c8e198b2568e2ac0bd1854
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 1b0fa12aa00165ad4ddd02d36383b41bdf74f4d8
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406378"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386548"
 ---
 Bing Web Search クライアント ライブラリを使用すると、Node.js アプリケーションに Bing Web Search を簡単に統合することができます。 このクイック スタートでは、クライアントをインスタンス化し、要求を送信して、応答を出力する方法を学習します。
 
@@ -49,8 +49,8 @@ Bing Web Search クライアント ライブラリを使用すると、Node.js �
 1. ここで、いくつかの Azure モジュールをインストールし、`package.json` に追加します。
 
     ```console
-    npm install --save azure-cognitiveservices-websearch
-    npm install --save ms-rest-azure
+    npm install --save @azure/cognitiveservices-websearch
+    npm install --save @azure/ms-rest-azure-js
     ```
 
 ## <a name="create-a-project-and-declare-required-modules"></a>プロジェクトの作成と必要なモジュールの宣言
@@ -60,13 +60,13 @@ Bing Web Search クライアント ライブラリを使用すると、Node.js �
 次に、このコードをプロジェクトにコピーします。 前のセクションでインストールしたモジュールが読み込まれます。
 
 ```javascript
-const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-const WebSearchAPIClient = require('azure-cognitiveservices-websearch');
+const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
+const WebSearchAPIClient = require('@azure/cognitiveservices-websearch');
 ```
 
 ## <a name="instantiate-the-client"></a>クライアントのインスタンス化
 
-次のコードは、クライアントをインスタンス化し、`azure-cognitiveservices-websearch` モジュールを使用します。 続行する前に、ご自分の Azure アカウントの有効なサブスクリプション キーを入力してください。
+次のコードは、クライアントをインスタンス化し、`@azure/cognitiveservices-websearch` モジュールを使用します。 続行する前に、ご自分の Azure アカウントの有効なサブスクリプション キーを入力してください。
 
 ```javascript
 let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
@@ -107,4 +107,4 @@ webSearchApiClient.web.search('seahawks').then((result) => {
 
 ## <a name="see-also"></a>参照
 
-* [Azure Node SDK リファレンス](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-websearch/)
+* [Azure Node SDK リファレンス](/javascript/api/@azure/cognitiveservices-websearch/)

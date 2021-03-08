@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
 ms.custom: devx-track-java
-ms.openlocfilehash: 1b07faa5b2540aafafc27a51192d824d4445ce35
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: b8408dde86d1902cf5b4899c4783c9dd185449ee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067156"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515748"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>既存の Java Message Service (JMS) 2.0 アプリケーションを Apache ActiveMQ から Azure Service Bus に移行する
 
@@ -62,7 +62,7 @@ Azure Service Bus を操作するためのクライアント アプリケーシ�
 
 #### <a name="authentication-and-authorization"></a>認証と権限承認
 
-Azure Active Directory によってサポートされるロール ベースのアクセス制御 (RBAC) は、Service Bus に適した認証メカニズムです。 ただし、現在、RBAC またはクレームベースの認証は Apache QPID JMS によってサポートされていないため、認証には SAS キーを使用する必要があります。
+Azure Active Directory によってサポートされる Azure のロール ベースのアクセス制御 (Azure RBAC) は、Service Bus に適した認証メカニズムです。 ただし、現在、Azure RBAC またはクレームベースの認証は Apache QPID JMS によってサポートされていないため、認証には SAS キーを使用する必要があります。
 
 ## <a name="pre-migration"></a>移行前
 

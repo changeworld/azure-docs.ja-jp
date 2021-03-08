@@ -1,17 +1,17 @@
 ---
 title: Microsoft Threat Modeling Tool のリリース 2020 年 7 月 29 日 - Azure
-description: Threat Modeling Tool のリリース ノートです
+description: Threat Modeling Tool リリース 7.3.00729.1 のリリース ノートです。
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 47ffe753d661bb8c9a181148ea235b2a0eb54400
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3e6fcd52ad9cb6c127c14bac2f33223fb921519e
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87839826"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516375"
 ---
 # <a name="threat-modeling-tool-update-release-73007291---07292020"></a>Threat Modeling Tool 更新プログラム リリース 7.3.00729.1 - 2020 年 7 月 29 日
 
@@ -48,7 +48,7 @@ The threat model file '$PATH\TMT7.application' could not be deserialized. File i
 
 ## <a name="documentation-and-feedback"></a>ドキュメントとフィードバック
 
-- Threat Modeling Tool のドキュメントは [docs.microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool) にあり、[ツールの使用について](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started)の情報が含まれます。
+- Threat Modeling Tool のドキュメントは [docs.microsoft.com](./threat-modeling-tool.md) にあり、[ツールの使用について](./threat-modeling-tool-getting-started.md)の情報が含まれます。
 
 ## <a name="next-steps"></a>次のステップ
 

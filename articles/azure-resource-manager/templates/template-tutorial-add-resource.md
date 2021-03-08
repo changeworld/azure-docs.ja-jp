@@ -1,21 +1,21 @@
 ---
 title: チュートリアル - テンプレートにリソースを追加する
-description: Azure Resource Manager テンプレートを初めて作成する際の手順について説明します。 テンプレート ファイルの構文とストレージ アカウントのデプロイ方法について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) を初めて作成する際の手順について説明します。 テンプレート ファイルの構文とストレージ アカウントのデプロイ方法について説明します。
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0163fcc62ea6c813af8e9e5693ca35fa0e650f96
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: ''
+ms.openlocfilehash: 49cee5c98c4099e214a732371269e935db353152
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497530"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106973"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>チュートリアル:ARM テンプレートにリソースを追加する
 
-[前のチュートリアル](template-tutorial-create-first-template.md)では、空のテンプレートを作成してデプロイする方法について説明しました。 これで、実際にリソースをデプロイすることができます。 このチュートリアルでは、ストレージ アカウントを追加します。 このチュートリアルを完了するには約 **9 分**かかります。
+[前のチュートリアル](template-tutorial-create-first-template.md)では、空の Azure Resource Manager テンプレート (ARM テンプレート) を作成してデプロイする方法について説明しました。 これで、実際にリソースをデプロイすることができます。 このチュートリアルでは、ストレージ アカウントを追加します。 このチュートリアルを完了するには約 **9 分** かかります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,7 +27,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 既存のテンプレートにストレージ アカウントの定義を追加するには、次の例で強調表示されている JSON をご覧ください。 テンプレートの一部をコピーするのではなく、ファイル全体をコピーして、既存のテンプレートの内容を置き換えてください。
 
-**{provide-unique-name}** (中かっこを含む) は、一意のストレージ アカウント名に置き換えてください。
+`{provide-unique-name}` と中かっこ `{}` を一意のストレージ アカウント名に置き換えます。
 
 > [!IMPORTANT]
 > ストレージ アカウント名は Azure 内で一意である必要があります。 名前に使用できるのは、小文字と数字だけです。 24 文字以内にする必要があります。 名前付けパターンとして、プレフィックスに **store1** を使用し、自分のイニシャルと今日の日付を追加する形が考えられます。 たとえば、**store1abc09092019** のような名前を使用できます。
@@ -42,15 +42,15 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 デプロイするすべてのリソースには、少なくとも次の 3 つのプロパティがあります。
 
-- **type**: リソースの種類。 この値は、リソースプロバイダーの名前空間と、リソースの種類を組み合わせたものです (例: Microsoft.Storage/storageAccounts)。
-- **apiVersion**: リソースの作成に使用する REST API バージョン。 リソースプロバイダーからは、それぞれ独自の API バージョンが公開されているため、その種類に固有の値となります。
-- **name**:リソースの名前。
+- `type`: リソースの種類。 この値は、リソース プロバイダーの名前空間とリソースの種類を組み合わせたものです (例: `Microsoft.Storage/storageAccounts`)。
+- `apiVersion`: リソースの作成に使用する REST API バージョン。 リソース プロバイダーからは、それぞれ独自の API バージョンが公開されているため、これはその種類に固有の値となります。
+- `name`:リソースの名前。
 
-ほとんどのリソースには、リソースのデプロイ先リージョンを設定する **location** プロパティがあります。
+ほとんどのリソースには、リソースのデプロイ先リージョンを設定する `location` プロパティがあります。
 
 その他のプロパティは、リソースの種類と API バージョンにより異なります。 API バージョンと利用可能なプロパティの関係を理解することが大切ですので、もう少し踏み込んでみましょう。
 
-このチュートリアルでは、テンプレートにストレージ アカウントを追加しました。 その API バージョンは、[storageAccounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts) で確認できます。 すべてのプロパティをテンプレートに追加したわけではないことに注目してください。 プロパティの多くは省略可能です。 Microsoft.Storage リソースプロバイダーから新しい API バージョンがリリースされる可能性もありますが、デプロイするバージョンを変更する必要はありません。 そのバージョンを使い続けることができ、またデプロイの結果に一貫性を確保できます。
+このチュートリアルでは、テンプレートにストレージ アカウントを追加しました。 その API バージョンは、[storageAccounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts) で確認できます。 すべてのプロパティをテンプレートに追加したわけではないことに注目してください。 プロパティの多くは省略可能です。 `Microsoft.Storage` リソース プロバイダーから新しい API バージョンがリリースされる可能性もありますが、デプロイするバージョンを変更する必要はありません。 そのバージョンを使い続けることができ、またデプロイの結果に一貫性を確保できます。
 
 以前の API バージョン ([storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts) など) を表示した場合、用意されているプロパティが少ないことがわかります。
 
@@ -60,7 +60,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 テンプレートをデプロイしてストレージ アカウントを作成できます。 履歴内で見つけやすいよう、実際のデプロイには別の名前を付けてください。
 
-まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、**templateFile** 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
+まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、`templateFile` 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -85,15 +85,15 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> デプロイに失敗した場合は、デプロイ コマンドで **debug** スイッチを使用してデバッグ ログを表示します。  **verbose** スイッチを使用して、詳細なデバッグ ログを表示することもできます。
+> デプロイに失敗した場合は、`verbose` スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、`debug` スイッチを使用してください。
 
 発生する可能性のあるデプロイ エラーとして、次の 2 つが考えられます。
 
-- エラー:Code=AccountNameInvalid; Message={provide-unique-name} は有効なストレージ アカウント名ではありません。 ストレージ アカウント名は、長さが 3 文字から 24 文字で、数字と小文字だけを使用できます。
+- `Error: Code=AccountNameInvalid; Message={provide-unique-name}` は、有効なストレージ アカウント名ではありません。 ストレージ アカウント名は、長さが 3 文字から 24 文字で、数字と小文字だけを使用できます。
 
-    テンプレート内の **{provide-unique-name}** は、一意のストレージ アカウント名に置き換えてください。  「[リソースの追加](#add-resource)」を参照してください。
+    テンプレート内の `{provide-unique-name}` は、一意のストレージ アカウント名に置き換えてください。 「[リソースの追加](#add-resource)」を参照してください。
 
-- エラー:Code=StorageAccountAlreadyTaken; Message=store1abc09092019 という名前のストレージ アカウントは既に取得されています。
+- `Error: Code=StorageAccountAlreadyTaken; Message=The storage account named store1abc09092019` は既に使用されています。
 
     テンプレート内で、別のストレージ アカウント名を試してみてください。
 
@@ -122,7 +122,7 @@ Azure portal からリソース グループを探すことでデプロイを確
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure ストレージ アカウントをデプロイする簡単なテンプレートを作成しました。  後続のチュートリアルでは、パラメーター、変数、リソース、出力をテンプレートに追加する方法について説明します。 それらの機能は、はるかに複雑なテンプレートの構成要素となります。
+Azure ストレージ アカウントをデプロイする簡単なテンプレートを作成しました。 後続のチュートリアルでは、パラメーター、変数、リソース、出力をテンプレートに追加する方法について説明します。 それらの機能は、はるかに複雑なテンプレートの構成要素となります。
 
 > [!div class="nextstepaction"]
 > [パラメーターを追加する](template-tutorial-add-parameters.md)

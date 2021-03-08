@@ -1,28 +1,27 @@
 ---
 title: Workbench はどうなったか
 titleSuffix: Azure Machine Learning
-description: Workbench アプリケーションの廃止に伴う影響とサポート タイムラインについて説明します。
+description: Azure Machine Learning は、ML アプリケーションをクラウド規模でモデル化してデプロイするための統合データ サイエンス ソリューションです。 ワークベンチ機能は廃止されました。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.reviewer: jmartens
-author: j-martens
-ms.author: jmartens
+ms.author: larryfr
+author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: 6be41ab4b172a6d111d9ff648cfd85a2ab026b9a
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: ec99be6082e01ea49e75ff29b5fb3c37d56b6dd5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553667"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683376"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の変更点
 
-Azure Machine Learning Workbench アプリケーションとその他のいくつかの初期機能は、**2018 年 9 月**のリリースで非推奨とされ、改善された[アーキテクチャ](concept-azure-machine-learning-architecture.md)への移行のために置き換えられました。
+Azure Machine Learning Workbench アプリケーションとその他のいくつかの初期機能は、**2018 年 9 月** のリリースで非推奨とされ、改善された [アーキテクチャ](concept-azure-machine-learning-architecture.md)への移行のために置き換えられました。
 
-エクスペリエンスの向上のため、このリリースには、お客様からのフィードバックをきっかけとする重要なアップデートが多く含まれています。 実験の実施からモデルのデプロイに至るまで、コア機能は変更されていません。 ただし、堅牢な <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a>、R SDK、[Azure CLI](reference-azure-machine-learning-cli.md) を使用して、機械学習のタスクとパイプラインを実現できるようになっています。
+エクスペリエンスの向上のため、このリリースには、お客様からのフィードバックをきっかけとする重要なアップデートが多く含まれています。 実験の実施からモデルのデプロイに至るまで、コア機能は変更されていません。 ただし、堅牢な <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a>、R SDK、[Azure CLI](reference-azure-machine-learning-cli.md) を使用して、機械学習のタスクとパイプラインを実現できるようになっています。
 
 以前のバージョンの Azure Machine Learning で作成された成果物のほとんどは、独自のローカル ストレージやクラウド ストレージに保管されています。 これらの成果物が消失することはありません。
 
@@ -37,7 +36,7 @@ Azure Machine Learning Workbench アプリケーションとその他のいく�
 Azure Machine Learning の最新リリースには、次の機能が含まれています。
 + [簡略化された Azure リソースのモデル](concept-azure-machine-learning-architecture.md)。
 + 実験とコンピューティング先を管理するための[新しいポータル UI](how-to-track-experiments.md)。
-+ 新しく、より包括的な Python <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>。
++ 新しく、より包括的な Python <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>。
 + 機械学習のための拡張された新しい [Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 
 [アーキテクチャ](concept-azure-machine-learning-architecture.md)は、使いやすいように再設計されました。 複数の Azure リソースやアカウントは不要で、必要なものは [Azure Machine Learning ワークスペース](concept-workspace.md)だけです。 ワークスペースは、[Azure portal](how-to-manage-workspace.md) ですばやく作成することができます。 ワークスペースを使用することで、複数のユーザーが、トレーニングやコンピューティングターゲットのデプロイ、モデルの実験、Docker イメージ、デプロイされたモデルなどを格納できます。
@@ -50,13 +49,13 @@ Azure Machine Learning の最新リリースには、次の機能が含まれて
 
 Machine Learning Workbench、Azure Machine Learning 実験、Machine Learning モデル管理の各アカウントのサポート、およびそれらに関連する SDK と CLI のサポートは、2019 年 1 月 9 日に終了しました。
 
-この <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md)、[ポータル](how-to-manage-workspace.md)を使用することで利用可能です。
+この <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md)、[ポータル](how-to-manage-workspace.md)を使用することで利用可能です。
 
 ## <a name="what-about-run-histories"></a>実行履歴について教えてください。
 
 最新のバージョンでお客様の実行がまだ表示されていても、以前の実行履歴にはもうアクセスできなくなっています。
 
-実行履歴は**実験**と呼ばれるようになりました。 SDK、CLI、または Azure Machine Learning Studio を使用して、モデルの実験を収集し、それらを表示することができます。
+実行履歴は **実験** と呼ばれるようになりました。 SDK、CLI、または Azure Machine Learning Studio を使用して、モデルの実験を収集し、それらを表示することができます。
 
 ポータルのワークスペース ダッシュボードは、Microsoft Edge、Chrome、および Firefox ブラウザーでのみでサポートされます。
 
@@ -68,7 +67,7 @@ Machine Learning Workbench、Azure Machine Learning 実験、Machine Learning �
 
 コードや作業が失われることはありません。 以前のバージョンでは、プロジェクトは、ローカル ディレクトリのあるクラウド エンティティです。 最新バージョンでは、ローカルの構成ファイルを使用して、ローカル ディレクトリを Azure Machine Learning ワークスペースに接続します。 [最新アーキテクチャの図](concept-azure-machine-learning-architecture.md)をご覧ください。
 
-プロジェクトのコンテンツの多くは、ローカル コンピューター上に既にありました。 そのため、ワークスペースに接続するには、そのディレクトリ内に構成ファイルを作成し、それをコードで参照するだけで済みます。 ファイルとスクリプトを含むローカル ディレクトリを使用し続けるには、ディレクトリの名前を ['experiment.submit'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python コマンドで指定するか、または `az ml project attach` CLI コマンドを使用します。  次に例を示します。
+プロジェクトのコンテンツの多くは、ローカル コンピューター上に既にありました。 そのため、ワークスペースに接続するには、そのディレクトリ内に構成ファイルを作成し、それをコードで参照するだけで済みます。 ファイルとスクリプトを含むローカル ディレクトリを使用し続けるには、ディレクトリの名前を ['experiment.submit'](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) Python コマンドで指定するか、または `az ml project attach` CLI コマンドを使用します。  次に例を示します。
 ```python
 run = exp.submit(source_directory=script_folder,
                  script='train.py', run_config=run_config_system_managed)
@@ -99,8 +98,10 @@ run = exp.submit(source_directory=script_folder,
 サービスの概要については、「[Azure Machine Learning とは](overview-what-is-azure-ml.md)」を参照してください。
 
 任意の方法で最初の実験を作成します。
+
+  + [独自の環境を使用する](tutorial-1st-experiment-sdk-setup-local.md)
   + [Python ノートブックを使用する](tutorial-1st-experiment-sdk-setup.md)
-  + [R Markdown を使用する](tutorial-1st-r-experiment.md) 
+  + [R Markdown を使用する](https://github.com/Azure/azureml-sdk-for-r) 
   + [自動機械学習を使用する](tutorial-designer-automobile-price-train-score.md) 
   + [デザイナーのドラッグ アンド ドロップ機能を使用する](tutorial-first-experiment-automated-ml.md) 
   + [CLI に対する ML 拡張機能を使用する](tutorial-train-deploy-model-cli.md)

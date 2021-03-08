@@ -1,24 +1,27 @@
 ---
 title: チュートリアル - Azure Stream Analytics ジョブで Azure Functions を実行する
 description: このチュートリアルでは、Stream Analytics ジョブへの出力シンクとして Azure Functions を構成する方法を説明します。
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: 70ea5ec9ee91fdba8023b9c6af1ce65b691a17fb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 74e09e61a6132858d716686bdb6687bb670f0d33
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006892"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879513"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>チュートリアル:Azure Stream Analytics ジョブから Azure Functions を実行する 
 
 Azure Stream Analytics から Azure Functions を実行するには、Stream Analytics ジョブへの出力シンクの 1 つとして Functions を構成します。 Functions はイベント ドリブン型コンピューティング オンデマンド エクスペリエンスであり、これにより、Azure またはサード パーティのサービスで発生するイベントによってトリガーされるコードを実装できます。 トリガーに応答する Azure Functions の機能によって、それは Azure Stream Analytics への自然な出力になります。
 
 Stream Analytics では、HTTP トリガーを使用して Functions を呼び出します。 Functions の出力アダプターにより、ユーザーは Functions を Stream Analytics に接続し、Stream Analytics クエリに基づいてイベントをトリガーできるようになります。 
+
+> [!NOTE]
+> マルチテナント クラスターで実行されている Stream Analytics ジョブから仮想ネットワーク (VNet) 内の Azure Functions への接続はサポートされていません。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -44,13 +47,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. 「[Create a cache](../azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)」 (キャッシュを作成する) で説明されている手順を使用して、Azure Cache for Redis でキャッシュを作成します。  
 
-2. キャッシュを作成したら、 **[設定]** にある **[アクセス キー]** を選択します。 **プライマリ接続文字列**をメモします。
+2. キャッシュを作成したら、 **[設定]** にある **[アクセス キー]** を選択します。 **プライマリ接続文字列** をメモします。
 
    ![Azure Cache for Redis の接続文字列のスクリーンショット](./media/stream-analytics-with-azure-functions/image2.png)
 
 ## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>Azure Cache for Redis にデータを書き込むことができる関数を Azure Functions で作成する
 
-1. Functions ドキュメントの[関数アプリの作成](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)に関するセクションを参照してください。 このセクションでは、CSharp 言語を使用して、関数アプリと [HTTP によってトリガーされる関数を Azure Functions で作成](../azure-functions/functions-create-first-azure-function.md#create-function)する方法について説明します。  
+1. Functions ドキュメントの[関数アプリの作成](../azure-functions/functions-get-started.md)に関するセクションを参照してください。 このセクションでは、CSharp 言語を使用して、関数アプリと [HTTP によってトリガーされる関数を Azure Functions で作成](../azure-functions/functions-get-started.md)する方法について説明します。  
 
 2. **run.csx** 関数を参照します。 これを以下のコードで更新します **"\<your Azure Cache for Redis connection string goes here\>"** を、前のセクションで取得した Azure Cache for Redis のプライマリ接続文字列に置き換えます。 
 
@@ -130,11 +133,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
  
 4. Azure Portal に戻ります。 **[プラットフォーム機能]** タブで、目的の関数を参照します。 **[開発ツール]** で **[Azure App Service]** を選択します。 
  
-   ![App Service エディターのスクリーンショット](./media/stream-analytics-with-azure-functions/image3.png)
+   ![[プラットフォーム機能] タブを示すスクリーンショット。[App Service Editor] が選択されています。](./media/stream-analytics-with-azure-functions/image3.png)
 
 5. App Service エディターで、ルート ディレクトリを右クリックし、**project.json** ファイルをアップロードします。 アップロードが成功したら、ページを更新します。 これで、自動生成された **project.lock.json** という名前のファイルが表示されるはずです。 自動生成されたファイルには、project.json ファイルで指定されている .dll ファイルへの参照が含まれています。  
 
-   ![App Service エディターのスクリーンショット](./media/stream-analytics-with-azure-functions/image4.png)
+   ![メニューから選択された [ファイルのアップロード] を示すスクリーンショット。](./media/stream-analytics-with-azure-functions/image4.png)
 
 ## <a name="update-the-stream-analytics-job-with-the-function-as-output"></a>出力としての関数で Stream Analytics ジョブを更新する
 
@@ -192,13 +195,15 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 Azure Functions へのイベントの送信中にエラーが発生した場合、Stream Analytics はほとんどの操作を再試行します。 http エラー 413 (エンティティが大きすぎます) を除き、すべての http 例外は、成功するまで再試行されます。 "エンティティが大きすぎます" エラーは、[再試行またはドロップ ポリシー](stream-analytics-output-error-policy.md)の対象となるデータ エラーとして扱われます。
 
 > [!NOTE]
-> Stream Analytics から Azure Functions への HTTP 要求のタイムアウトは、100 秒に設定されています。 Azure Functions アプリでのバッチ処理に 100 秒以上かかる場合、Stream Analytics でエラーが発生します。
+> Stream Analytics から Azure Functions への HTTP 要求のタイムアウトは、100 秒に設定されています。 Azure Functions アプリでのバッチ処理に 100 秒以上かかる場合、Stream Analytics エラーが出力され、バッチが再試行されます。
+
+タイムアウトを再試行すると、重複するイベントが出力シンクに書き込まれる可能性があります。 Stream Analytics では、失敗したバッチを再試行するときに、バッチ内のすべてのイベントが再試行されます。 たとえば、Stream Analytics から Azure Functions に送信される 20 個のイベントからなるバッチを考えてみます。 Azure Functions によってこのバッチの最初の 10 個のイベントが処理されるのに 100 秒かかるとします。 Stream Analytics は、100 秒が経過した時点で Azure Functions から肯定応答を受信していないため、要求を中断します。さらに、同じバッチに対して別の要求が送信されます。 バッチ内の最初の 10 個のイベントが Azure Functions によって再度処理され、これによって重複が発生します。 
 
 ## <a name="known-issues"></a>既知の問題
 
 Azure Portal では、最大バッチ サイズ/最大バッチ カウントの値を空 (既定値) にリセットしようとしても、保存時には以前に入力した値に戻ります。 この場合は、それらのフィールドに既定値を手動で入力します。
 
-Azure Functions での [HTTP ルーティング](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp)の使用は、現在、Stream Analytics ではサポートされていません。
+Azure Functions での [HTTP ルーティング](/sandbox/functions-recipes/routes?tabs=csharp)の使用は、現在、Stream Analytics ではサポートされていません。
 
 仮想ネットワークでホストされている Azure Functions に接続するためのサポートが、有効になっていません。
 
@@ -211,7 +216,7 @@ Azure Functions での [HTTP ルーティング](https://docs.microsoft.com/sand
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Functions を実行する単純な Stream Analytics ジョブを作成しました。 Stream Analytics ジョブの詳細については、次のチュートリアルに進んでください。
+このチュートリアルでは、Azure 関数を実行する単純な Stream Analytics ジョブを作成しました。 Stream Analytics ジョブの詳細については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [Stream Analytics ジョブ内で JavaScript ユーザー定義関数を実行する](stream-analytics-javascript-user-defined-functions.md)

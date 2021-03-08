@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 00b55e68d0a00310340bcfc488e92ff424f50c97
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bcca3a169a8d50b84a8d62b7812fef21124404b9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86545002"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750379"
 ---
-GitHub で、すべての <a href="https://aka.ms/speech/github-javascript">Speech SDK JavaScript サンプル</a>を表示またはダウンロードできます。 
+GitHub で、すべての <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser/intent-recognition">Speech SDK JavaScript サンプル</a>を表示またはダウンロードできます。 

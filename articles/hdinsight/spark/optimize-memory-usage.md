@@ -1,19 +1,16 @@
 ---
 title: Apache Spark でのメモリ使用量の最適化 - Azure HDInsight
 description: Azure HDInsight 上の Apache Spark で、メモリ使用量を最適化する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 056060f8b94747651c78c757150d5e5a5982c7af
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: d54cf4e9025dfd75d9029dec534fc5dc5dd990a5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757780"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944170"
 ---
 # <a name="memory-usage-optimization-for-apache-spark"></a>Apache Spark のメモリ使用量の最適化
 

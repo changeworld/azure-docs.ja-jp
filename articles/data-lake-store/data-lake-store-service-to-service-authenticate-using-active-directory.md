@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 03a32b37f5ca29c6a0dd6b810b4e097379c6c32e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9dc195f98310e63cbde06885effe86ea3c239249
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515145"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91576100"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory を使用した Azure Data Lake Storage Gen1 に対するサービス間認証
 > [!div class="op_single_selector"]
@@ -65,12 +65,12 @@ Azure Active Directory を使用して Azure Data Lake Storage Gen1 でのサー
     ![グループを追加する](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "グループを追加する")
 6. **[アクセス許可の選択]** をクリックして、アクセス許可を選択するともに、このアクセス許可に既定の ACL、アクセス ACL、またはその両方のいずれを割り当てるか選択します。 **[OK]** をクリックします。
    
-    ![グループにアクセス許可を割り当てる](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "グループにアクセス許可を割り当てる")
+    ![[アクセス許可の選択] オプションが強調表示されている [カスタム アクセスの追加] ブレードと、[OK] オプションが強調表示されている [アクセス許可の選択] ブレードのスクリーンショット。](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "グループにアクセス許可を割り当てる")
    
     Data Lake Storage Gen1 でのアクセス許可と既定/アクセス ACL の詳細については、[Data Lake Storage Gen1 のアクセス制御](data-lake-store-access-control.md)に関するページを参照してください。
 7. **[カスタム アクセスの追加]** ブレードで **[OK]** をクリックします。 新しく追加されたグループは、関連付けられたアクセス許可と一緒に **[アクセス]** ブレードに一覧表示されます。
    
-    ![グループにアクセス許可を割り当てる](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "グループにアクセス許可を割り当てる")
+    ![[カスタム アクセス] セクションで新しく追加されたグループが強調表示されている [アクセス] ブレードのスクリーンショット。](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "グループにアクセス許可を割り当てる")
 
 > [!NOTE]
 > Azure Active Directory アプリケーションを特定のフォルダーに制限する予定の場合は、その同じ Azure Active ディレクトリ アプリケーションに、root に対する**実行**アクセス許可も付与する必要があります。これにより、.NET SDK 経由でファイル作成アクセスが可能になります。
@@ -88,11 +88,11 @@ Azure Active Directory を使用して Azure Data Lake Storage Gen1 でのサー
 
 3. [アプリの登録] ブレードの上部にある **[エンドポイント]** をクリックします。
 
-    ![OAuth トークン エンドポイント](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "OAuth トークン エンドポイント")
+    ![[アプリの登録] オプションと [エンドポイント] オプションが強調表示されている [Active Directory] のスクリーンショット。](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "OAuth トークン エンドポイント")
 
 4. エンドポイントの一覧から、Oauth 2.0 トークン エンドポイントをコピーします。
 
-    ![OAuth トークン エンドポイント](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth トークン エンドポイント")   
+    ![OAuth 2.0 トークン エンドポイントのコピー アイコンが強調表示されている [エンドポイント] ブレードのスクリーンショット。](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth トークン エンドポイント")   
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure AD Web アプリケーションを作成し、.NET SDK、Java、Python、REST API などを使用して作成するクライアント アプリケーションに必要な情報を収集しました。これで、以下の記事に進むことができます。これらの記事では、Azure AD ネイティブ アプリケーションを使用して、Data Lake Storage Gen1 に対し、まず認証を行ってからその他の操作を実行する方法について説明しています。

@@ -2,16 +2,16 @@
 title: JavaScript アプリケーションのソース マップのサポート - Azure Monitor Application Insights
 description: Application Insights を使用して、独自のストレージ アカウントの BLOB コンテナーにソース マップをアップロードする方法について説明します。
 ms.topic: conceptual
-author: markwolff
-ms.author: marwolff
+author: DavidCBerry13
+ms.author: daberry
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: de475cbd7cbb0d8dbcda026109b0387da14bedff
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-js
+ms.openlocfilehash: 79462dcb503e5835254b89f7ebaa7a9ee34946d3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386794"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933935"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>JavaScript アプリケーションに対するソース マップのサポート
 
@@ -67,7 +67,7 @@ Application Insights リソースにリンクされているストレージ ア�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-### <a name="required-role-based-access-control-rbac-settings-on-your-blob-container"></a>BLOB コンテナーで必要なロールベースのアクセス制御 (RBAC) の設定
+### <a name="required-azure-role-based-access-control-azure-rbac-settings-on-your-blob-container"></a>BLOB コンテナーで必要な Azure ロールベースのアクセス制御 (Azure RBAC) の設定
 
 ポータルでこの機能を使用するすべてのユーザーには、少なくとも、BLOB コンテナーに対する[ストレージ BLOB データ閲覧者][storage blob data reader]が割り当てられている必要があります。 この機能を通じてソース マップを使用する他のすべてのユーザーに、このロールを割り当てる必要があります。
 
@@ -83,7 +83,7 @@ Application Insights リソースにリンクされているストレージ ア�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure ファイル コピー タスク](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)
+* [Azure ファイル コピー タスク](/azure/devops/pipelines/tasks/deploy/azure-file-copy)
 
 
 <!-- Remote URLs -->

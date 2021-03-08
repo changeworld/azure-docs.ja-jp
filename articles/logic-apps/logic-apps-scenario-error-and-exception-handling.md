@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fdf5f25ae6f89ccc06c95ee1be021691dab0047a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76902705"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000353"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>シナリオ: ロジックアプリの例外処理とエラーのログ記録
 
@@ -37,7 +37,7 @@ ms.locfileid: "76902705"
 
 ## <a name="how-we-solved-the-problem"></a>問題の解決方法
 
-ここでは、ログおよびエラー レコードのリポジトリとして [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") を選択しました (Cosmos DB では、レコードはドキュメントと呼ばれます)。 Azure Logic Apps にはあらゆる応答の標準テンプレートが用意されています。そのためカスタム スキーマを作成する必要はないだろうと考えました。 場合によっては、エラー レコードとログ レコードの**挿入**と**クエリ**を行う API アプリを作成することもできます。 また、それぞれのスキーマを API アプリ内で定義してもかまいません。  
+ここでは、ログおよびエラー レコードのリポジトリとして [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") を選択しました (Cosmos DB では、レコードはドキュメントと呼ばれます)。 Azure Logic Apps にはあらゆる応答の標準テンプレートが用意されています。そのためカスタム スキーマを作成する必要はないだろうと考えました。 場合によっては、エラー レコードとログ レコードの **挿入** と **クエリ** を行う API アプリを作成することもできます。 また、それぞれのスキーマを API アプリ内で定義してもかまいません。  
 
 もう 1 つの要件は、特定の日付を越えたらレコードを消去するというものでした。 Cosmos DB には、レコードまたはコレクションごとに **Time to Live** 値を設定できる [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) と呼ばれるプロパティがあります。 この機能により、Cosmos DB から手動でレコードを削除する手間が省かれました。
 
@@ -48,11 +48,11 @@ ms.locfileid: "76902705"
 
 最初に行うことは、ロジック アプリを作成し、そのアプリをロジック アプリ デザイナーで開くことです。 この例では、親子のロジック アプリを使用しています。 親の方は、既に作成済みであると仮定して、子のロジック アプリを 1 つ作成します。
 
-Dynamics CRM Online から送信されたレコードのログを記録することになります。最初から順に見ていきましょう。 子のロジック アプリは親のロジック アプリによってトリガーされるので、**要求**トリガーを使用する必要があります。
+Dynamics CRM Online から送信されたレコードのログを記録することになります。最初から順に見ていきましょう。 子のロジック アプリは親のロジック アプリによってトリガーされるので、**要求** トリガーを使用する必要があります。
 
 ### <a name="logic-app-trigger"></a>ロジック アプリのトリガー
 
-**要求**トリガーを次の例のように使用します。
+**要求** トリガーを次の例のように使用します。
 
 ``` json
 "triggers": {
@@ -97,21 +97,21 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 1. まず Dynamics CRM Online から新しい予約レコードを取得する必要があります。
 
    CRM から取得したトリガーによって、**CRM 患者 ID**、**レコード タイプ**、**更新/新規レコード** (新しいレコードか更新されたレコードかを表すブール値)、**Salesforce ID** が得られます。 **Salesforce ID** は更新時にのみ使用されるので、null の場合もあります。
-   CRM レコードは、CRM **患者 ID** と**レコードの種類**を使用して取得します。
+   CRM レコードは、CRM **患者 ID** と **レコードの種類** を使用して取得します。
 
 2. 次に、Azure Cosmos DB SQL API アプリの **InsertLogEntry** 操作を追加する必要があります。下のロジック アプリ デザイナーの画像をご覧ください。
 
    **ログ エントリの挿入**
 
-   ![Insert Log Entry](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
+   ![InsertLogEntry の構成設定を示す、ロジック アプリ デザイナーのスクリーンショット。](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
 
    **エラー エントリの挿入**
 
-   ![Insert Log Entry](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
+   ![CreateErrorRecord の構成設定を示す、ロジック アプリ デザイナーのスクリーンショット。](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
    **レコード作成エラーのチェック**
 
-   ![条件](media/logic-apps-scenario-error-and-exception-handling/condition.png)
+   ![エラー エントリを作成するためのフィールドを示すロジック アプリ デザイナーの [CreateErrorRecord] 画面のスクリーンショット。](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>ロジック アプリのソース コード
 
@@ -396,10 +396,10 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 
 ### <a name="error-management-portal"></a>エラー管理ポータル
 
-エラーを表示するには、Cosmos DB からエラー レコードを取得して表示する MVC Web アプリを作成します。 現在のバージョンでは、**一覧表示**、**詳細表示**、**編集**、**削除**の各操作が含まれます。
+エラーを表示するには、Cosmos DB からエラー レコードを取得して表示する MVC Web アプリを作成します。 現在のバージョンでは、**一覧表示**、**詳細表示**、**編集**、**削除** の各操作が含まれます。
 
 > [!NOTE]
-> 編集操作について: Cosmos DB では、ドキュメント全体が置き換えられます。 **一覧表示**と**詳細表示**に示したレコードは、あくまでサンプルです。 実際の患者予約レコードではありません。
+> 編集操作について: Cosmos DB では、ドキュメント全体が置き換えられます。 **一覧表示** と **詳細表示** に示したレコードは、あくまでサンプルです。 実際の患者予約レコードではありません。
 
 これまでに説明した方法で作成した MVC アプリのサンプルの詳細を以下に示します。
 

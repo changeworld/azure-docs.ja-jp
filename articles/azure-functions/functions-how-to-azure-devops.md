@@ -1,17 +1,17 @@
 ---
-title: Azure DevOps を使用して、関数アプリ コードを継続的に更新する
+title: Azure DevOps を使用して、Function App コードを継続的に更新する
 description: Azure Functions をターゲットとする、Azure DevOps パイプラインを設定する方法について学習します。
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d503d71cf44446f93fab3d292d4c26d9b7b0941d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a3f423a144738fdaa4462606de6ad4a4e34d6775
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210222"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563417"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Azure DevOps を使用した継続的デリバリー
 
@@ -28,7 +28,7 @@ YAML ベースのパイプラインを作成するには、まずアプリをビ
 
 ### <a name="build-your-app"></a>アプリの構築
 
-Azure Pipelines でアプリをビルドする方法は、アプリのプログラミング言語によって異なります。 言語ごとにデプロイ成果物を作成するための固有のビルド ステップがあります。 デプロイ成果物は、Azure で関数アプリをデプロイするために使用されます。
+Azure Pipelines でアプリをビルドする方法は、アプリのプログラミング言語によって異なります。 言語ごとにデプロイ成果物を作成するための固有のビルド ステップがあります。 デプロイ成果物は、Azure でFunction App をデプロイするために使用されます。
 
 # <a name="c"></a>[C\#](#tab/csharp)
 
@@ -91,7 +91,7 @@ steps:
 
 # <a name="python"></a>[Python](#tab/python)
 
-次のサンプルのいずれかを使用して、特定の Python バージョン用のアプリをビルドする YAML ファイルを作成できます。 Python は、Linux で実行されている関数アプリでのみサポートされています。
+次のサンプルのいずれかを使用して、特定の Python バージョン用のアプリをビルドする YAML ファイルを作成できます。 Python は、Linux で実行されている Function App でのみサポートされています。
 
 **バージョン 3.7**
 
@@ -177,9 +177,9 @@ steps:
 
 ホストしている OS によっては、YAML ファイルに次の YAML サンプルのいずれかを含める必要があります。
 
-#### <a name="windows-function-app"></a>Windows 関数アプリ
+#### <a name="windows-function-app"></a>Windows Function App
 
-Windows 関数アプリをデプロイするには、次のスニペットを使用します。
+Windows Function App をデプロイするには、次のスニペットを使用します。
 
 ```yaml
 steps:
@@ -194,9 +194,9 @@ steps:
     #slotName: '<Slot name>'
 ```
 
-#### <a name="linux-function-app"></a>Linux 関数アプリ
+#### <a name="linux-function-app"></a>Linux Function App
 
-Linux 関数アプリをデプロイするには、次のスニペットを使用します。
+Linux Function App をデプロイするには、次のスニペットを使用します。
 
 ```yaml
 steps:
@@ -218,7 +218,7 @@ Azure DevOps ではテンプレートは、アプリをビルドまたはデプ�
 
 ### <a name="build-your-app"></a>アプリの構築
 
-Azure Pipelines でアプリをビルドする方法は、アプリのプログラミング言語によって異なります。 言語ごとにデプロイ成果物を作成するための固有のビルド ステップがあります。 デプロイ成果物は、Azure で関数アプリを更新するために使用されます。
+Azure Pipelines でアプリをビルドする方法は、アプリのプログラミング言語によって異なります。 言語ごとにデプロイ成果物を作成するための固有のビルド ステップがあります。 デプロイ成果物は、Azure でFunction App を更新するために使用されます。
 
 新しいビルド パイプラインを作成するときに、組み込みのビルド テンプレートを使用するには、 **[従来のエディターを使用する]** を選択して、デザイナー テンプレートを使用してパイプラインを作成します。
 
@@ -252,17 +252,17 @@ Azure でビルド パイプラインを作成するには、`az functionapp dev
 
 - コードが GitHub にある場合:
 
-    - サブスクリプションへの**書き込み**アクセス許可が必要です。
+    - サブスクリプションへの **書き込み** アクセス許可が必要です。
 
     - Azure DevOps のプロジェクト管理者である必要があります。
 
-    - 十分なアクセス許可を持つ GitHub 個人用アクセス トークン (PAT) を作成するためのアクセス許可が必要です。 詳細については、[GitHub PAT アクセス許可の要件](https://aka.ms/azure-devops-source-repos)に関するセクションを参照してください。
+    - 十分なアクセス許可を持つ GitHub 個人用アクセス トークン (PAT) を作成するためのアクセス許可が必要です。 詳細については、[GitHub PAT アクセス許可の要件](/azure/devops/pipelines/repos/github#repository-permissions-for-personal-access-token-pat-authentication)に関するセクションを参照してください。
 
-    - 自動生成された YAML ファイルをコミットできるように、GitHub リポジトリのマスター ブランチにコミットするためのアクセス許可が必要です。
+    - 自動生成された YAML ファイルをコミットできるように、GitHub リポジトリのメイン ブランチにコミットするためのアクセス許可が必要です。
 
 - コードが Azure Repos にある場合:
 
-    - サブスクリプションへの**書き込み**アクセス許可が必要です。
+    - サブスクリプションへの **書き込み** アクセス許可が必要です。
 
     - Azure DevOps のプロジェクト管理者である必要があります。
 

@@ -2,7 +2,7 @@
   items:
     - name: 概要
       items:
-        - name: 作業開始
+        - name: はじめに
           href: overview.md
         - name: ワークロード
           href: partner-workloads.md
@@ -39,9 +39,9 @@
         - name: ZD&T で ADCD を設定する
           href: ibm/demo.md
         - name: IBM DB2 pureScale
-          href: ../../linux/ibm-db2-purescale-azure.md?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
+          href: ibm/ibm-db2-purescale-azure.md
         - name: IBM DB2 pureScale のデプロイ
-          href: ../../linux/deploy-ibm-db2-purescale-azure.md?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
+          href: ibm/deploy-ibm-db2-purescale-azure.md
     - name: リソース
       items:
         - name: ホワイト ペーパー

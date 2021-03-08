@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: eebdf053cc3eea1dfc91476bff3817891bec42a3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4a22602dd9638b981cfe3d8bae9b5cdaacbf90dc
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959059"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652042"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
@@ -264,13 +264,13 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. キューの名前として「*キュー*」と入力し、 **[OK]** を選択します。
 
-   ![キューの作成](./media/webjobs-sdk-get-started/create-queue.png)
+   ![キューを作成して "queue" という名前を付けているスクリーンショット。 ](./media/webjobs-sdk-get-started/create-queue.png)
 
 1. 新しいキューのノードを右クリックし、 **[キューの表示]** を選択します。
 
 1. **メッセージの追加**アイコンを選択します。
 
-   ![キューの作成](./media/webjobs-sdk-get-started/create-queue-message.png)
+   ![メッセージの追加アイコンが強調表示されているスクリーンショット。](./media/webjobs-sdk-get-started/create-queue-message.png)
 
 1. **[メッセージの追加]** ダイアログで、「*Hello World!* 」を **[メッセージ テキスト]** として入力し、 **[OK]** を選択します。 これでキューにメッセージが入りました。
 

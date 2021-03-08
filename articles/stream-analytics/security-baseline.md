@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 72a2b24ad8e05943f975f0819d8b2a872b0ab829
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 6e6ad96da5f5c7901fda1f041c55075552edecde
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229006"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720343"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Stream Analytics 用の Azure セキュリティ ベースライン
 
 Stream Analytics 用の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
 
-このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) に基づいて作成されています。
+このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview.md) に基づいて作成されています。
 
-詳細については、「[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)」を参照してください。
+詳細については、「[Azure セキュリティ ベースラインの概要](../security/benchmarks/security-baselines-overview.md)」を参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する
 
@@ -54,7 +54,7 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**: Azure Security Center の脅威の防止を使用して、既知の悪意のある、または未使用のインターネット IP アドレスとの通信に対して検出とアラート通知を行います。
 
-* [Azure Security Center での Azure サービス レイヤーに対する脅威の防止](https://docs.microsoft.com/azure/security-center/threat-protection)
+* [Azure Security Center での Azure サービス レイヤーに対する脅威の防止](../security-center/azure-defender.md)
 
 **Azure Security Center の監視**: はい
 
@@ -72,7 +72,7 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**: Azure Security Center の脅威の防止を使用して、Azure サブスクリプション環境での異常な、または有害な可能性がある操作を検出します。
 
-* [Azure Security Center での Azure サービス レイヤーに対する脅威の防止](https://docs.microsoft.com/azure/security-center/threat-protection)
+* [Azure Security Center での Azure サービス レイヤーに対する脅威の防止](../security-center/azure-defender.md)
 
 **Azure Security Center の監視**: はい
 
@@ -114,9 +114,9 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**: Azure アクティビティ ログを使用してリソース構成を監視し、Stream Analytics リソースに対する変更を検出します。 重要なリソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -124,7 +124,7 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、「[セキュリティ コントロール: ログ記録と監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
@@ -138,7 +138,7 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**:Azure Monitor を介してログを取り込み、監査イベントや要求などのセキュリティ データを集計します。 Azure Monitor 内で Log Analytics ワークスペースを使用してクエリを発行し、分析を実行して、長期またはアーカイブ ストレージには Azure Storage アカウントを使用します。必要に応じて、不変ストレージや保有期間の保持の強制などのセキュリティ機能を使用できます。
 
-* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
 **Azure Security Center の監視**: はい
 
@@ -148,7 +148,7 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**:管理、セキュリティ、診断の各ログにアクセスするため、Azure Stream Analytics の診断設定を有効にします。 また、Azure アクティビティ ログの診断設定を有効にし、同じ Log Analytics ワークスペースまたはストレージ アカウントにログを送信することもできます。
 
-* [Azure Stream Analytics による確認用の診断ログとアクティビティ データの提供](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs)
+* [Azure Stream Analytics による確認用の診断ログとアクティビティ データの提供](./stream-analytics-job-diagnostic-logs.md)
 
 **Azure Security Center の監視**: はい
 
@@ -166,11 +166,11 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**:Azure Storage アカウントまたは Log Analytics ワークスペースにセキュリティ イベント ログを保存する場合は、組織の要件に従ってアイテム保持ポリシーを設定することができます。
 
-* [Azure Stream Analytics による確認用の診断ログとアクティビティ データの提供](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs)
+* [Azure Stream Analytics による確認用の診断ログとアクティビティ データの提供](./stream-analytics-job-diagnostic-logs.md)
 
-* [Azure Storage アカウント ログの保持ポリシーを構成する方法](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging)
+* [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
-* [Log Analytics でデータ保持期間を変更する](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -180,11 +180,11 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**: Stream Analytics のリソースについて、異常な動作がないかログの分析と監視を行い、定期的に結果を確認します。 Azure Monitor の Log Analytics ワークスペースを使用してログを確認し、ログ データに対してクエリを実行します。 または、Azure Sentinel またはサードパーティの SIEM に対してデータを有効にしてオンボードすることもできます。
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-* [Log Analytics ワークスペースの詳細について](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [Log Analytics ワークスペースの詳細について](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Azure Monitor でカスタム クエリを実行する方法](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -194,11 +194,11 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**: Stream Analytics の診断設定を有効にし、Log Analytics ワークスペースにログを送信します。 Log Analytics ワークスペースを Azure Sentinel にオンボードします。これは、セキュリティ オーケストレーション自動応答 (SOAR) ソリューションが提供されるためです。 これにより、プレイブック (自動化されたソリューション) を作成して、セキュリティの問題を修復するために使用できます。
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-* [Log Analytics のログ データに関するアラートを送信する方法](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
-* [Azure Stream Analytics による確認用の診断ログとアクティビティ データの提供](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs)
+* [Azure Stream Analytics による確認用の診断ログとアクティビティ データの提供](./stream-analytics-job-diagnostic-logs.md)
 
 **Azure Security Center の監視**: はい
 
@@ -216,7 +216,7 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**: Azure Monitor の Azure DNS Analytics (プレビュー) ソリューションを使用して、DNS インフラストラクチャのセキュリティ、パフォーマンス、操作に関する分析情報を収集します。 現時点では、Azure Stream Analytics はサポートされていませんが、サードパーティの DNS ログ ソリューションを使用することはできます。
 
-* [DNS Analytics プレビュー ソリューションを使用した DNS インフラストラクチャに関する分析情報の収集](https://docs.microsoft.com/azure/azure-monitor/insights/dns-analytics)
+* [DNS Analytics プレビュー ソリューションを使用した DNS インフラストラクチャに関する分析情報の収集](../azure-monitor/insights/dns-analytics.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -232,15 +232,15 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
 **ガイダンス**: Azure AD には、明示的に割り当てる必要のある組み込みロールがあります。 ロールを照会してメンバーシップを検出できます。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure Security Center の監視**: はい
 
@@ -248,9 +248,9 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: 既定のパスワードを変更する (該当する場合)
 
-**ガイダンス**: Stream Analytics には既定のパスワードの概念がありません。このサービスを管理するための認証は、Azure Active Directory によって提供され、ロールベースのアクセス制御 (RBAC) によってセキュリティ保護されるためです。 インジェクション ストリーム サービスと出力サービスによっては、ジョブで構成された資格情報をローテーションする必要があります。
+**ガイダンス**:Stream Analytics には既定のパスワードの概念がありません。このサービスを管理するための認証は、Azure Active Directory によって提供され、Azure ロールベースのアクセス制御 (Azure RBAC) によってセキュリティ保護されるためです。 インジェクション ストリーム サービスと出力サービスによっては、ジョブで構成された資格情報をローテーションする必要があります。
 
-* [Stream Analytics ジョブの入力と出力のログイン資格情報の交換](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-login-credentials-inputs-outputs)
+* [Stream Analytics ジョブの入力と出力のログイン資格情報の交換](./stream-analytics-login-credentials-inputs-outputs.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -260,7 +260,7 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**: 管理者ロールの最小特権アクセスの原則など、ベスト プラクティスに従って、ID 管理とロールのセキュリティ プランを作成します。 Azure Privileged Identity Management (PIM) を使用して、Azure AD と Azure のリソースへの Just-In-Time の特権アクセスを提供します。 Azure PIM アラートと監査履歴を使用して、管理者アカウントのアクティビティを監視します。 Azure AD セキュリティ レポートを使用して、セキュリティ侵害された可能性がある管理者アカウントを特定します。
 
-* [詳細情報](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
+* [詳細情報](../active-directory/privileged-identity-management/index.yml)
 
 **Azure Security Center の監視**: はい
 
@@ -270,7 +270,7 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**: 可能な限り、サービスごとにスタンドアロン資格情報を構成するのではなく、Azure Active Directory SSO を使用します。 Azure Security Center の ID &amp; アクセスの推奨事項を実装してください。
 
-* [Azure AD を使用した SSO の概要](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+* [Azure AD を使用した SSO の概要](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -280,9 +280,9 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**: Azure Active Directory の多要素認証 (MFA) を有効にし、Stream Analytics リソースを保護するための Azure Security Center ID とアクセス管理の推奨事項に従います。
 
-* [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Azure Security Center で ID とアクセスを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: はい
 
@@ -292,9 +292,9 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**: 多要素認証 (MFA) が構成された PAW (特権アクセス ワークステーション) を使用してログインし、Stream Analytics リソースを構成します。
 
-* [特権アクセス ワークステーションについて](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -304,9 +304,9 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**: 環境内で疑わしいアクティビティまたは安全でないアクティビティが環境で発生したときに、Azure Active Directory セキュリティ レポートを使用して、ログおよびアラートを生成します。 Azure Security Center を使用して ID およびアクセス アクティビティを監視します。
 
-* [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+* [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: はい
 
@@ -316,7 +316,7 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**: 条件付きアクセスのネームド ロケーションを使用して、IP アドレス範囲または国、地域の特定の論理グループからのアクセスのみを許可します。
 
-* [Azure でネームド ロケーションを構成する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure でネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -324,9 +324,9 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory を使用する
 
-**ガイダンス**: Azure Active Directory (Azure AD) を中央認証と承認システムとして使用します。 Azure AD には、Stream Analytics リソースに対するクライアントのアクセスをきめ細かく制御するロールベースのアクセス制御 (RBAC) が用意されています。
+**ガイダンス**: Azure Active Directory (Azure AD) を中央認証と承認システムとして使用します。 Azure AD には、Stream Analytics リソースに対するクライアントのアクセスをきめ細かく制御する Azure ロールベースのアクセス制御 (Azure RBAC) が用意されています。
 
-* [Azure AD インスタンスを作成して構成する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Azure AD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -336,9 +336,9 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**:Azure Active Directory ログを確認して、古いアカウントを検出します。これには、ストレージ アカウントの管理者ロールを使用するアカウントが含まれる可能性があります。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 適切なユーザーのみが継続的なアクセス権を持っていることを確認するために、ユーザー アクセスを定期的に確認する必要があります。
 
-* [Azure AD のレポートの概要](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
-* [Azure ID アクセス レビューの使用方法](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -348,7 +348,7 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**: Azure Stream Analytics および Azure Active Directory の診断設定を有効にし、すべてのログを Log Analytics ワークスペースに送信します。 Log Analytics 内で、目的のアラート (無効なシークレットへのアクセスの試行など) を構成します。
 
-* [Azure AD ログを Azure Monitor ログと統合する](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure AD ログを Azure Monitor ログと統合する](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -358,11 +358,11 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**: Azure Active Directory のリスクおよび ID Protection 機能を使用して、Stream Analytics リソースに関連して検出された疑わしいアクションに対する自動応答を構成します。 組織のセキュリティ対応を実装するには、Azure Sentinel によって自動応答を有効にする必要があります。
 
-* [Azure AD の危険なサインインを表示する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Identity Protection のリスク ポリシーを構成して有効にする方法](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -372,7 +372,7 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**: 適用できません。Azure Stream Analytics ではカスタマー ロックボックスはサポートされていません。
 
-* [一般提供でサポートされるサービスとシナリオ](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [一般提供でサポートされるサービスとシナリオ](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -380,13 +380,13 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、「[セキュリティ コントロール: データ保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
 **ガイダンス**: 機密情報を格納または処理する Stream Analytics リソースを追跡しやすくするには、タグを使用します。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -396,15 +396,15 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 **ガイダンス**: 入力、出力、ストレージ アカウントを同じサブスクリプションに配置して、Stream Analytics ジョブを分離します。 Stream Analytics を制限して、アプリケーションやエンタープライズ環境で必要とされる Stream Analytics リソースへのアクセス レベルを制御できます。 Azure AD RBAC を使用して Azure Stream Analytics へのアクセスを制御できます。
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [Azure Stream Analytics の入力について](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-add-inputs)
+* [Azure Stream Analytics の入力について](./stream-analytics-add-inputs.md)
 
-* [Azure Stream Analytics からの出力を理解する](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs)
+* [Azure Stream Analytics からの出力を理解する](./stream-analytics-define-outputs.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -416,9 +416,9 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft では顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護します。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
-* [Azure Storage アカウントをセキュリティで保護する方法](https://docs.microsoft.com/azure/storage/common/storage-security-guide)
+* [Azure Storage アカウントをセキュリティで保護する方法](../storage/blobs/security-recommendations.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -436,7 +436,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure Stream Analytics リソースでは、データ特定機能をまだ使用できません。 コンプライアンスのために必要な場合は、サードパーティ ソリューションを実装します。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -446,7 +446,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、ユーザーがサービスと対話する方法を制御します。
 
-* [Azure RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -464,7 +464,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**:Stream Analytics では、すべての処理はメモリ内で実行されるため、受信データが格納されることはありません。 Stream Analytics で永続化する必要がある、クエリや関数などのプライベート データは、構成済みのストレージ アカウントに格納されます。 カスタマー マネージド キー (CMK) を使用して、ストレージ アカウントに保存されている出力データを暗号化します。 CMK がなくても、Stream Analytics は、データの暗号化とセキュリティ保護のために、最高クラスの暗号化規格をインフラストラクチャ全体で自動的に使用します。
 
-* [Azure Stream Analytics でのデータ保護](https://docs.microsoft.com/azure/stream-analytics/data-protection)
+* [Azure Stream Analytics でのデータ保護](./data-protection.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -474,7 +474,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure アクティビティ ログで Azure Monitor を使用して、Azure Stream Analytics リソースの実稼働インスタンスに対して変更が行われたときのアラートを作成します。
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -482,7 +482,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、「[セキュリティ コントロール: 脆弱性の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
@@ -490,7 +490,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 Microsoft では、Azure Stream Analytics をサポートしている基になるシステムで脆弱性の管理を行います。
 
-* [Azure Security Center の推奨事項について](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+* [Azure Security Center の推奨事項について](../security-center/recommendations-reference.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -524,7 +524,7 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 
 **ガイダンス**: Azure Security Center によって提供される既定のリスク評価 (セキュリティ スコア) を使用します。
 
-* [Azure Security Center のセキュリティ スコアについて](https://docs.microsoft.com/azure/security-center/security-center-secure-score)
+* [Azure Security Center のセキュリティ スコアについて](../security-center/secure-score-security-controls.md)
 
 **Azure Security Center の監視**: はい
 
@@ -532,19 +532,19 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された Asset Discovery ソリューションを使用する
 
-**ガイダンス**: Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。 テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
+**ガイダンス**:Azure Resource Graph を使用して、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。 テナントで適切な (読み取り) アクセス許可を確認し、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙します。
 
 従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
 
-* [Azure Resource Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-* [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription)
 
-* [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC について](../role-based-access-control/overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -554,7 +554,7 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 
 **ガイダンス**:メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -568,11 +568,11 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -594,9 +594,9 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 
 さらに、Azure Resource Graph を使用して、サブスクリプション内のリソースのクエリまたは検出を行います。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -632,9 +632,9 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -652,7 +652,7 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 
 **ガイダンス**: Azure 条件付きアクセスを使用して Azure Resource Manager とやりとりするユーザーの機能を制限するには、"Microsoft Azure 管理" アプリに対して [アクセスのブロック] を構成します。
 
-* [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -676,17 +676,17 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
 **ガイダンス**: Azure Stream Analytics の構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.StreamAnalytics" 名前空間で Azure Policy エイリアスを使用します。 Azure Stream Analytics に関連する組み込みのポリシー定義を使用することもできます。たとえば、Azure Stream Analytics の診断ログを有効にする必要があります。
 
-* [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias)
 
-* [Azure Policy の組み込みのポリシー定義](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies)
+* [Azure Policy の組み込みのポリシー定義](../governance/policy/samples/built-in-policies.md)
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -704,9 +704,9 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 
 **ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy の効果について](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Policy の効果について](../governance/policy/concepts/effects.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -724,9 +724,9 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 
 **ガイダンス**: カスタム Azure ポリシー、Azure Resource Manager テンプレート、Desired State Configuration スクリプト、ユーザー定義の関数、クエリなど、ご利用のコードを安全に格納して管理するには、Azure Repos を使用します。 Azure DevOps で管理するリソースにアクセスするには、Azure Active Directory (Azure AD) で定義された (Azure DevOps に統合されている場合)、または Active Directory で定義された (TFS に統合されている場合) 特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与したり、そのアクセス許可を拒否したりできます。
 
-* [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
-* [Azure DevOps でのアクセス許可とグループについて](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
+* [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -744,7 +744,7 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 
 **ガイダンス**: システム構成を警告処理、監査、適用するためのカスタム ポリシーを作成するには、"Microsoft.StreamAnalytics" 名前空間で Azure Policy エイリアスを使用します。 さらに、ポリシー例外を管理するためのプロセスとパイプラインを作成します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -762,7 +762,7 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 
 **ガイダンス**: システム構成を警告処理、監査、適用するためのカスタム ポリシーを作成するには、"Microsoft.StreamAnalytics" 名前空間で Azure Policy エイリアスを使用します。 Azure Stream Analytics リソースの構成を自動的に適用するには、Azure Policy の [audit]、[deny]、[deploy if not exist] を使用します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -780,9 +780,9 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 
 **ガイダンス**:Stream Analytics ジョブによって使用される入力または出力リソースの接続の詳細は、構成済みのストレージ アカウントに格納されます。 ストレージ アカウントを暗号化して、すべてのデータを保護します。 また、Stream Analytics ジョブの入力または出力の資格情報を定期的にローテーションします。
 
-* [Azure Stream Analytics でのデータ保護](https://docs.microsoft.com/azure/stream-analytics/data-protection)
+* [Azure Stream Analytics でのデータ保護](./data-protection.md)
 
-* [Stream Analytics ジョブの入力と出力のログイン資格情報の交換](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-login-credentials-inputs-outputs)
+* [Stream Analytics ジョブの入力と出力のログイン資格情報の交換](./stream-analytics-login-credentials-inputs-outputs.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -792,11 +792,11 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 
 **ガイダンス**: 出力にマネージド ID 認証を使用すると、Stream Analytics ジョブで、接続文字列を使用せずに、Power BI などのサービスやストレージ アカウントに直接アクセスできます。
 
-* [マネージド ID を使用して Azure Data Lake Storage Gen1 に対して Stream Analytics を認証する](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-managed-identities-adls)
+* [マネージド ID を使用して Azure Data Lake Storage Gen1 に対して Stream Analytics を認証する](./stream-analytics-managed-identities-adls.md)
 
-* [マネージド ID を使用して、Azure Blob Storage 出力に対して Azure Stream Analytics ジョブを認証する](https://docs.microsoft.com/azure/stream-analytics/blob-output-managed-identity)
+* [マネージド ID を使用して、Azure Blob Storage 出力に対して Azure Stream Analytics ジョブを認証する](./blob-output-managed-identity.md)
 
-* [マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)
+* [マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する](./powerbi-output-managed-identity.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -814,7 +814,7 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、「[セキュリティ コントロール: マルウェアからの防御](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されるマルウェア対策ソフトウェアを使用する
 
@@ -844,7 +844,7 @@ App Service、Stream Analytics、Blob Storage などの Azure リソースにア
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、「[セキュリティ コントロール: データの復旧](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
@@ -854,11 +854,11 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
 
 また、ライフサイクル管理機能を使用して、アーカイブ層にデータをバックアップすることもできます。 さらに、ストレージ アカウントに格納されているバックアップに対する論理的な削除を有効にします。
 
-* [Azure Stream Analytics でのデータ保護](https://docs.microsoft.com/azure/stream-analytics/data-protection#private-data-assets-that-are-stored)
+* [Azure Stream Analytics でのデータ保護](./data-protection.md#private-data-assets-that-are-stored)
 
-* [Azure Storage の冗長性とサービス レベル アグリーメントについて](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+* [Azure Storage の冗長性とサービス レベル アグリーメントについて](../storage/common/storage-redundancy.md)
 
-* [Azure Blob Storage のライフサイクルの管理](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)
+* [Azure Blob Storage のライフサイクルの管理](../storage/blobs/storage-lifecycle-management-concepts.md)
 
 Azure Storage Blob の論理的な削除: https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
@@ -872,15 +872,15 @@ Azure Storage Blob の論理的な削除: https://docs.microsoft.com/azure/stora
 
 ストレージ アカウントでサポートされているサービスからデータをバックアップするには、azcopy やサードパーティ製のツールを使用するなど、複数の方法を使用できます。 Azure Blob Storage の不変ストレージを使用すると、ユーザーはビジネスに不可欠なデータ オブジェクトを WORM (Write Once Read Many) 状態で保存できます。 この状態では、ユーザーが指定した期間、データを消去および変更できなくなります。
 
-* [Azure Stream Analytics でのデータ保護](https://docs.microsoft.com/azure/stream-analytics/data-protection#private-data-assets-that-are-stored)
+* [Azure Stream Analytics でのデータ保護](./data-protection.md#private-data-assets-that-are-stored)
 
-* [AzCopy を使ってみる](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
+* [AzCopy を使ってみる](../storage/common/storage-use-azcopy-v10.md)
 
-* [BLOB ストレージの不変ポリシーを設定および管理する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage?tabs=azure-portal)
+* [BLOB ストレージの不変ポリシーを設定および管理する](../storage/blobs/storage-blob-immutability-policies-manage.md?tabs=azure-portal)
 
 顧客が管理または指定するキーは、Azure CLI または PowerShell を使用して Azure Key Vault 内でサポートできます。
 
-* [Azure 上でキー コンテナーのキーをバックアップする方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -898,9 +898,9 @@ Azure Storage Blob の論理的な削除: https://docs.microsoft.com/azure/stora
 
 **ガイダンス**: Azure Storage 内に格納されている Stream Analytics バックアップは、既定で暗号化をサポートしており、無効にすることはできません。 バックアップを機密データとして扱い、このベースラインの一部として関連するアクセスとデータ保護制御を適用する必要があります。
 
-* [Azure Stream Analytics でのデータ保護](https://docs.microsoft.com/azure/stream-analytics/data-protection#private-data-assets-that-are-stored)
+* [Azure Stream Analytics でのデータ保護](./data-protection.md#private-data-assets-that-are-stored)
 
-* [Azure Storage 内のデータへのアクセスの承認](https://docs.microsoft.com/azure/storage/common/storage-auth)
+* [Azure Storage 内のデータへのアクセスの承認](../storage/common/storage-auth.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -908,7 +908,7 @@ Azure Storage Blob の論理的な削除: https://docs.microsoft.com/azure/stora
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、「[セキュリティ コントロール: インシデント対応](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
@@ -930,9 +930,9 @@ Azure Storage Blob の論理的な削除: https://docs.microsoft.com/azure/stora
 
 また、サブスクリプション ( 運用、非運用など) をタグを使用して明確にマークし、Azure リソース (特に、機密データを処理するもの) を明確に識別して分類するための命名システムを作成します。 インシデントが発生した Azure リソースと環境の重要度に基づいて、アラートの修復に優先順位を付けることは、お客様の責任です。
 
-* [Security alerts in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Security alerts in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-* [タグを使用した Azure リソースの整理](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -940,7 +940,7 @@ Azure Storage Blob の論理的な削除: https://docs.microsoft.com/azure/stora
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
-**ガイダンス**:ご利用のシステムのインシデント対応機能を定期的にテストする演習を実施することで、ご利用の Azure リソースの保護を支援できます。 弱点やギャップを特定し、必要に応じて計画を見直します。
+**ガイダンス**: ご利用のシステムのインシデント対応機能を定期的にテストする演習を実施することで、ご利用の Azure リソースの保護を支援できます。 弱点やギャップを特定し、必要に応じて計画を見直します。
 
 * [NIST の出版物「IT 計画と機能に関するテスト、トレーニング、演習プログラムのガイド」を参照してください。](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
@@ -952,7 +952,7 @@ Azure Storage Blob の論理的な削除: https://docs.microsoft.com/azure/stora
 
 **ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) でユーザーのデータが違法または権限のないユーザーによってアクセスされたことが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
 
-* [Azure Security Center のセキュリティ連絡先を設定する方法](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center の監視**: はい
 
@@ -962,9 +962,9 @@ Azure Storage Blob の論理的な削除: https://docs.microsoft.com/azure/stora
 
 **ガイダンス**: 連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートすると、Azure リソースへのリスクを特定できます。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
-* [連続エクスポートを構成する方法](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 
-* [Azure Sentinel にアラートをストリーミングする方法](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Azure Sentinel にアラートをストリーミングする方法](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -974,7 +974,7 @@ Azure Storage Blob の論理的な削除: https://docs.microsoft.com/azure/stora
 
 **ガイダンス**: Azure Security Center のワークフロー自動化機能を使用すると、セキュリティのアラートと推奨事項に対して "Logic Apps" で自動的に応答をトリガーし、Azure リソースを保護できます。
 
-* [ワークフローの自動化と Logic Apps を構成する方法](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [ワークフローの自動化と Logic Apps を構成する方法](../security-center/workflow-automation.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -982,7 +982,7 @@ Azure Storage Blob の論理的な削除: https://docs.microsoft.com/azure/stora
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
@@ -998,5 +998,5 @@ Azure Storage Blob の論理的な削除: https://docs.microsoft.com/azure/stora
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

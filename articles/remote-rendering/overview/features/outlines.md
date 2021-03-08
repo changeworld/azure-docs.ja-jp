@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3b4ba62072e26f16a0e39416c9ae346d1acefd9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c04f2312926d3b6d668dff712eedb57d816c8bf3
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997525"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592009"
 ---
 # <a name="outline-rendering"></a>アウトライン レンダリング
 
@@ -29,16 +29,16 @@ ms.locfileid: "88997525"
 | `PulseRateHz`    | float   | アウトラインが 1 秒あたりに振動する速度|
 | `PulseIntensity` | float   | アウトラインのパルス効果の強度。 パルスを止める場合は 0.0、最大限に強める場合は 1.0 の間である必要があります。 強度では、アウトラインの最小不透明度を `MinOpacity = 1.0 - PulseIntensity` として暗黙的に設定します。 |
 
-![アウトライン](./media/outlines.png) `color` パラメーターを黄色 (左) からマゼンタ (中央) に、`pulseIntensity` を 0 から 0.8 (右) に変更した場合の効果。
+![さまざまなアウトライン パラメーターを使用して 3 回レンダリングされたオブジェクト](./media/outlines.png) `color` パラメーターを黄色 (左) からマゼンタ (中央) に、`pulseIntensity` を 0 から 0.8 (右) に変更した場合の効果。
 
 ## <a name="example"></a>例
 
 次のコードは、API を使用してアウトラインのパラメーターを設定する例を示しています。
 
 ```cs
-void SetOutlineParameters(AzureSession session)
+void SetOutlineParameters(RenderingSession session)
 {
-    OutlineSettings outlineSettings = session.Actions.OutlineSettings;
+    OutlineSettings outlineSettings = session.Connection.OutlineSettings;
     outlineSettings.Color = new Color4Ub(255, 255, 0, 255);
     outlineSettings.PulseRateHz = 2.0f;
     outlineSettings.PulseIntensity = 0.5f;
@@ -46,9 +46,9 @@ void SetOutlineParameters(AzureSession session)
 ```
 
 ```cpp
-void SetOutlineParameters(ApiHandle<AzureSession> session)
+void SetOutlineParameters(ApiHandle<RenderingSession> session)
 {
-    ApiHandle<OutlineSettings> outlineSettings = session->Actions()->GetOutlineSettings();
+    ApiHandle<OutlineSettings> outlineSettings = session->Connection()->GetOutlineSettings();
     Color4Ub outlineColor;
     outlineColor.channels = { 255, 255, 0, 255 };
     outlineSettings->SetColor(outlineColor);
@@ -60,6 +60,11 @@ void SetOutlineParameters(ApiHandle<AzureSession> session)
 ## <a name="performance"></a>パフォーマンス
 
 アウトライン レンダリングは、レンダリングのパフォーマンスに大きな影響を与える可能性があります。 この影響は、特定のフレームに対する、選択されたオブジェクトと選択されていないオブジェクトの間の画面領域の空間的な比率によって異なります。
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# RenderingConnection.OutlineSettings property](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.outlinesettings)
+* [C++ RenderingConnection::OutlineSettings()](/cpp/api/remote-rendering/renderingconnection#outlinesettings)
 
 ## <a name="next-steps"></a>次のステップ
 

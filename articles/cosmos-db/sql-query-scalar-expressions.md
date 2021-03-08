@@ -3,17 +3,19 @@ title: Azure Cosmos DB の SQL クエリでのスカラー式
 description: Azure Cosmos DB のスカラー式の SQL 構文について説明します。 この記事では、演算子を使用して、スカラー式を複雑な式と組み合わせる方法についても説明します。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34df2d2f4a2209cca93c3f7ac12dcd203bf4a089
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74870736"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339633"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure Cosmos DB の SQL クエリでのスカラー式
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 [SELECT 句](sql-query-select.md)ではスカラー式がサポートされます。 スカラー式は、1 つの値を取得するために評価できるシンボルと演算子の組み合わせです。 スカラー式の例としては、定数、プロパティの参照、配列要素の参照、別名の参照、関数の呼び出しなどがあります。 スカラー式は、演算子を使用して複雑な式に結合できます。
 
@@ -55,7 +57,7 @@ ms.locfileid: "74870736"
 - `input_alias`  
   
    `FROM` 句によって導入された `input_alias` で定義された値を表します。  
-  この値は、**undefined** ではないことが保証されます。入力内の **undefined** 値はスキップされます。  
+  この値は、 **undefined** ではないことが保証されます。入力内の **undefined** 値はスキップされます。  
   
 - `<scalar_expression>.property_name`  
   
@@ -103,7 +105,7 @@ ms.locfileid: "74870736"
   
   オブジェクトを作成するときに、未定義の値が割り当てられているプロパティはすべてスキップされ、作成されたオブジェクトに含まれません。  
   
-  配列を作成するときに、**undefined** 値が割り当てられている要素値はすべてスキップされ、作成されたオブジェクトに含まれません。 この場合、作成される配列にスキップされたインデックスが含まれないようにするために、次の定義済みの要素が代わりに使用されます。  
+  配列を作成するときに、 **undefined** 値が割り当てられている要素値はすべてスキップされ、作成されたオブジェクトに含まれません。 この場合、作成される配列にスキップされたインデックスが含まれないようにするために、次の定義済みの要素が代わりに使用されます。  
 
 ## <a name="examples"></a>例
 

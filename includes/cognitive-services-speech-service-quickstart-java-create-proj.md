@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/10/2020
+ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: be62cb9cd9f9e603e60006d5482b59ed37a516ff
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 68e83ca0fc92247a31e840e76fc8019736b71dd9
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375330"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99215078"
 ---
 1. Eclipse を起動します。
 
@@ -17,7 +17,7 @@ ms.locfileid: "87375330"
 
    ![[Eclipse Launcher] のスクリーンショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-01-create-new-eclipse-workspace.png)
 
-1. しばらくすると、Eclipse IDE のメイン ウィンドウが表示されます。 **ウェルカム**画面が表示される場合は画面を閉じます。
+1. しばらくすると、Eclipse IDE のメイン ウィンドウが表示されます。 **ウェルカム** 画面が表示される場合は画面を閉じます。
 
 1. Eclipse メニュー バーから、 **[File]**  >  **[New]**  >  **[Project]** を選択して新しいプロジェクトを作成します。
 
@@ -45,7 +45,7 @@ ms.locfileid: "87375330"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#repositories)]
 
-   * 依存関係として Speech SDK バージョン 1.13.0 を指定した `dependencies` 要素も追加します。
+   * 依存関係として Speech SDK バージョン 1.15.0 を指定した `dependencies` 要素も追加します。
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#dependencies)]
 

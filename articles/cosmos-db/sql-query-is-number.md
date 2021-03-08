@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の IS_NUMBER
 description: Azure Cosmos DB での SQL システム関数 IS_NUMBER について学習します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c019424241bc07d5a5d2cc19a64685c476f94548
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a2bac51426e6e7fb96fb4e1691bb3d164a1db1e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78303819"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340874"
 ---
 # <a name="is_number-azure-cosmos-db"></a>IS_NUMBER (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  指定した式の型が数値であるかどうかを示すブール値を返します。  
   
 ## <a name="syntax"></a>構文

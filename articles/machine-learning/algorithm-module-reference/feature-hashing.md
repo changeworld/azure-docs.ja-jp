@@ -1,7 +1,7 @@
 ---
 title: 特徴ハッシュ モジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で特徴ハッシュ モジュールを使用して、テキスト データの特徴を抽出する方法について説明します。
+description: Azure Machine Learning デザイナーの特徴ハッシュ モジュールを使用して、テキスト データの特徴を抽出する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 7178417a5c20afe5b1ed02bc526ec174704962df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd48b32afee320aa3d252540d566317c374c73a8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456252"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420786"
 ---
 # <a name="feature-hashing-module-reference"></a>特徴ハッシュ モジュール リファレンス
 
-この記事では Azure Machine Learning デザイナー (プレビュー) に含まれるモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーに含まれるモジュールについて説明します。
 
 特徴ハッシュ モジュールを使用して、英語テキストのストリームを整数の特徴セットに変換します。 その後、このハッシュされた特徴セットを機械学習アルゴリズムに渡して、テキスト分析モデルをトレーニングすることができます。
 
-このモジュールで提供される特徴ハッシュ機能は、NimbusML フレームワークに基づいています。 詳細については、「[NgramHash クラス](https://docs.microsoft.com/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest)」を参照してください。
+このモジュールで提供される特徴ハッシュ機能は、NimbusML フレームワークに基づいています。 詳細については、「[NgramHash クラス](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest&preserve-view=true)」を参照してください。
 
 ## <a name="what-is-feature-hashing"></a>特徴ハッシュとは
 
@@ -131,4 +131,4 @@ N-gram のサイズは、**N-gram** プロパティを使用して制御でき�
 
 ## <a name="next-steps"></a>次のステップ
             
-Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください

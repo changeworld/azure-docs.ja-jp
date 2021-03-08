@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 0fe191ac827c76afd497896611430f6efc6283aa
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c68e01e0eb7c926f47c99b16efa87d23a10b6711
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747240"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537035"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>テキスト メッセージを検証方法として設定する
 
@@ -52,7 +52,7 @@ ms.locfileid: "83747240"
 
 4. **[電話番号]** ページで、モバイル デバイスの電話番号を入力し、 **[コードを SMS 送信する]** を選択して、 **[次へ]** を選択します。
 
-    ![電話番号を追加し、テキスト メッセージを選択する](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
+    ![[電話番号] ページを示すスクリーンショット。[コードを SMS 送信する] が選択されています。](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
 
 5. モバイル デバイスにテキスト メッセージで送信されたコードを入力し、 **[次へ]** を選択します。
 

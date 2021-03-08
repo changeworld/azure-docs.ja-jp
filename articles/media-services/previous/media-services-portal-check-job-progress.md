@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 879b9f965a5ee76131a65bf3151be5c6114cd20c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ec14e59e748e74709b909b0590bc750cf5f075b8
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260885"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695494"
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Azure ポータルを使用したエンコード ジョブの進行状況の監視
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 ## <a name="overview"></a>概要
 
@@ -34,7 +34,7 @@ ms.locfileid: "89260885"
 
 エンコード ジョブの進行状況を監視するには、ページの上部にある **[設定]** をクリックし、 **[ジョブ]** を選択します。
 
-![ジョブ](./media/media-services-portal-vod-get-started/media-services-jobs.png)
+![[設定] メニューから [ジョブ] が選択されていることを示すスクリーンショット。](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
 ジョブをクリックして詳細を確認します。
 

@@ -1,23 +1,20 @@
 ---
 title: 'Azure Toolkit: Apache Spark アプリをリモートでデバッグする - Azure HDInsight'
 description: Azure Toolkit for IntelliJ の HDInsight ツールを使用して、HDInsight クラスター上で VPN を介して実行される Spark アプリケーションをリモートでデバッグする方法について解説します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: 7ec49ee4f07aff6e9b9f9d6fc43e37742d7e163a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1daf59c47bf71ad019011036bf42bf6727754345
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085125"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940359"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Azure Toolkit for IntelliJ を使用して HDInsight 上で VPN を介して Apache Spark アプリケーションをリモートでデバッグする
 
-SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーションをリモートでデバッグすることをお勧めします。 その手順については、[SSH 経由で Azure Toolkit for IntelliJ を使用して、HDInsight クラスター上の Apache Spark アプリケーションをリモートでデバッグする](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh)方法に関するページをご覧ください。
+SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーションをリモートでデバッグすることをお勧めします。 その手順については、[SSH 経由で Azure Toolkit for IntelliJ を使用して、HDInsight クラスター上の Apache Spark アプリケーションをリモートでデバッグする](./apache-spark-intellij-tool-debug-remotely-through-ssh.md)方法に関するページをご覧ください。
 
 この記事では、Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark クラスター上で Spark ジョブを送信し、デスクトップ コンピューターからリモートでデバッグするための詳細な手順を紹介します。 これらの作業を行うために必要な手順の概要は以下のとおりです。
 
@@ -31,9 +28,9 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 
 * **Azure サブスクリプション**。 詳しくは、[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * **HDInsight での Apache Spark クラスター**。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
-* **Oracle Java Development Kit**。 [Oracle Web サイト](https://aka.ms/azure-jdks)からインストールできます。
+* **Oracle Java Development Kit**。 [Oracle Web サイト](/azure/developer/java/fundamentals/java-jdk-long-term-support)からインストールできます。
 * **IntelliJ IDEA**。 この記事では、バージョン 2017.1 を使用します。 [JetBrains Web サイト](https://www.jetbrains.com/idea/download/)からインストールできます。
-* **Azure Toolkit for IntelliJ のHDInsight ツール**。 IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属しています。 Azure Toolkit をインストールする手順については、[Azure Toolkit for IntelliJ のインストール](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation)に関するページをご覧ください。
+* **Azure Toolkit for IntelliJ のHDInsight ツール**。 IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属しています。 Azure Toolkit をインストールする手順については、[Azure Toolkit for IntelliJ のインストール](/java/azure/intellij/azure-toolkit-for-intellij-installation)に関するページをご覧ください。
 * **IntelliJ IDEA から Azure サブスクリプションにサインインします**。 「[Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する](apache-spark-intellij-tool-plugin.md)」の手順に従います。
 * **例外の回避策**。 リモート デバッグを行うために Windows コンピューター上で Spark Scala アプリケーションを実行しているときに、例外が発生する場合があります。 この例外は [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) に説明があり、Windows に WinUtils.exe ファイルがないことが原因で発生します。 このエラーを回避するには、[Winutils.exe](https://github.com/steveloughran/winutils) を **C:\WinUtils\bin** などの場所にダウンロードする必要があります。 **HADOOP_HOME** 環境変数を追加し、この変数の値を **C\WinUtils** に設定します。
 
@@ -41,7 +38,7 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 
 次のリンクの手順に従って Azure 仮想ネットワークを作成し、デスクトップ コンピューターと仮想ネットワークの間の接続を確認します。
 
-* [Azure Portal を使用してサイト間 VPN 接続を持つ VNet を作成する](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Azure Portal を使用してサイト間 VPN 接続を持つ VNet を作成する](../../vpn-gateway/tutorial-site-to-site-portal.md)
 * [PowerShell を使用してサイト間 VPN 接続を持つ VNet を作成する](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * [PowerShell を使用して仮想ネットワークへのポイント対サイト接続を構成する](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
@@ -59,11 +56,11 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 
     ![Apache Ambari で [ホスト] を選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
 
-1. ヘッド ノード、ワーカー ノード、Zookeeper ノードの一覧が表示されます。 ヘッド ノードには **hn*** プレフィックスが付いています。 最初のヘッド ノードを選択します。
+1. ヘッド ノード、ワーカー ノード、Zookeeper ノードの一覧が表示されます。 ヘッド ノードには **hn** _ プレフィックスが付いています。 最初のヘッド ノードを選択します。
 
     ![Apache Ambari でヘッド ノードを見つける](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 
-1. 開いたページの下部にある **[Summary]\(概要\)** ウィンドウから、ヘッド ノードの **IP アドレス**と**ホスト名**をコピーします。
+1. 開いたページの下部にある _ *[Summary]\(概要\)* *ペインから、ヘッド ノードの **IP アドレス** と **ホスト名** をコピーします。
 
     ![Apache Ambari で IP アドレスを見つける](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png)
 
@@ -313,18 +310,18 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 * [Apache Spark と BI:HDInsight と BI ツールで Spark を使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
 * [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
-* [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
+* [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](./apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行
 
-* [Scala を使用してスタンドアロン アプリケーションを作成する](../hdinsight-apache-spark-create-standalone-application.md)
+* [Scala を使用してスタンドアロン アプリケーションを作成する](./apache-spark-create-standalone-application.md)
 * [Apache Livy を使用して Apache Spark クラスターでジョブをリモートから実行する](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 
 * [Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する](apache-spark-intellij-tool-plugin.md)
 * [Azure Toolkit for IntelliJ を使用して SSH 経由で Apache Spark アプリケーションをリモートでデバッグする](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-* [Azure Toolkit for Eclipse 上の HDInsight Tools を使用して Apache Spark アプリケーションを作成する](../hdinsight-apache-spark-eclipse-tool-plugin.md)
+* [Azure Toolkit for Eclipse 上の HDInsight Tools を使用して Apache Spark アプリケーションを作成する](./apache-spark-eclipse-tool-plugin.md)
 * [HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する](apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Apache Spark クラスター内の Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](apache-spark-jupyter-notebook-use-external-packages.md)

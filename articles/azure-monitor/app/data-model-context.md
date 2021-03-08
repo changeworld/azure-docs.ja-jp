@@ -4,12 +4,12 @@ description: Application Insights Telemetry のコンテキスト データ モ�
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 25ff7d92da5ea0a6aba84aad1cfc98e5295e151e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 76f3be510494a1f005b0080ee8f2390a3fbc3622
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322671"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91767843"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>テレメトリ コンテキスト:Application Insights データ モデル
 
@@ -85,7 +85,7 @@ ms.locfileid: "87322671"
 
 ## <a name="authenticated-user-id"></a>認証されたユーザー ID
 
-認証されたユーザー ID。匿名ユーザー ID とは正反対に当たる、このフィールドはフレンドリ名を持つユーザーを表します。 PII 情報であるため、ほとんど SDK では既定で収集されません。
+認証されたユーザー ID。匿名ユーザー ID とは正反対に当たる、このフィールドはフレンドリ名を持つユーザーを表します。 これが既定で収集されるのは、ASP.NET Framework SDK の [`AuthenticatedUserIdTelemetryInitializer`](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/WEB/Src/Web/Web/AuthenticatedUserIdTelemetryInitializer.cs) のみです。  
 
 最大長:1024
 
@@ -113,7 +113,7 @@ ms.locfileid: "87322671"
 
 ## <a name="internal-sdk-version"></a>内部:SDK バージョン
 
-SDK バージョン。 情報については、[こちらの記事](https://github.com/microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md)を参照してください。
+SDK バージョン。 情報については、[こちらの記事](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md)を参照してください。
 
 最大長:64
 

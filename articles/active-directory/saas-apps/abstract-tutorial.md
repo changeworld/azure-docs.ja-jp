@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 3f19733f01cf601c1145d5e2bb5deb58db828dc4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e1c3236c4c1957b4d0daee8d30c71f03fb8674dd
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88538333"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587827"
 ---
 # <a name="tutorial-integrate-abstract-with-azure-active-directory"></a>チュートリアル:Abstract を Azure Active Directory と統合する
 
@@ -26,7 +26,7 @@ ms.locfileid: "88538333"
 * ユーザーが自分の Azure AD アカウントを使用して Abstract に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -130,7 +130,7 @@ Abstract で SSO を構成するために必要になるので、Azure portal �
 1. アプリケーションの一覧で **[Abstract]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
@@ -146,7 +146,7 @@ Abstract で SSO をテストするには:
 
 1. [Abstract Web アプリ](https://app.abstract.com/)を開きます。
 2. 左側のバーにある **[Permissions]\(アクセス許可\)** ページに移動します。
-3. **[Test with my Account]\(自分のアカウントでテストする\)** をクリックします。 テストが失敗する場合は、[Microsoft のサポート チーム](https://www.abstract.com/help/contact/)にお問い合わせください。
+3. **[Test with my Account]\(自分のアカウントでテストする\)** をクリックします。 テストが失敗する場合は、[Microsoft のサポート チーム](https://help.abstract.com/hc/)にお問い合わせください。
 
 >[!Note]
 >Abstract の SSO 設定にアクセスするには、組織の管理者アカウントを使用して認証を行う必要があります。
@@ -156,13 +156,12 @@ Abstract で SSO をテストするには:
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Abstract] タイルをクリックすると、SSO を設定した Abstract に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Abstract] タイルをクリックすると、SSO を設定した Abstract に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

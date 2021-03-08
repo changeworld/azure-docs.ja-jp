@@ -6,14 +6,14 @@ ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 01/11/2021
 ms.author: banders
-ms.openlocfilehash: 27a6f8f0ed0d58deb64f768d2e47bafebc910edb
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 887b7013eb3060020a39d2df0082768b8185bdde
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690427"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575468"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>更新された Azure 課金アカウントの使用を開始する
 
@@ -40,15 +40,15 @@ ms.locfileid: "88690427"
 
 お使いのアカウントが更新されると、課金プロファイルがサブスクリプションごとに自動的に作成されます。 サブスクリプションの料金は、それぞれの課金プロファイルに課金され、その請求書に表示されます。
 
-課金プロファイルでのロールには、請求書と支払方法を表示および管理するアクセス許可があります。 これらのロールは、組織内の会計チームのメンバーなど、請求書の支払いを行うユーザーに割り当てる必要があります。 詳細については、[請求先アカウントのロールとタスク](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks)に関するページを参照してください。 
+課金プロファイルでのロールには、請求書と支払方法を表示および管理するアクセス許可があります。 これらのロールは、組織内の会計チームのメンバーなど、請求書の支払いを行うユーザーに割り当てる必要があります。 詳細については、[請求先アカウントのロールとタスク](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks)に関するページを参照してください。
 
-お使いのアカウントが更新されると、[請求書を表示](download-azure-invoice.md#allow-others-to-download-the-your-subscription-invoice)するアクセス許可を他のユーザーに付与している各サブスクリプションでは、所有者、共同作成者、閲覧者、または課金データ閲覧者の Azure RBAC ロールを持つユーザーに、それぞれの課金プロファイルの閲覧者ロールが付与されます。
+お使いのアカウントが更新されると、[請求書を表示](download-azure-invoice.md#allow-others-to-download-your-subscription-invoice)するアクセス許可を他のユーザーに付与している各サブスクリプションでは、所有者、共同作成者、閲覧者、または課金データ閲覧者の Azure ロールを持つユーザーに、それぞれの課金プロファイルの閲覧者ロールが付与されます。
 
 ## <a name="invoice-sections"></a>請求書セクション
 
 請求書セクションは、請求書のコストを整理するために使用されます。 たとえば、必要なのは 1 つの請求書でも、部門、チーム、またはプロジェクト別にコストを整理したいとします。 このシナリオの場合、部門、チーム、またはプロジェクトごとに請求書セクションを作成する単一の課金プロファイルが与えられます。
 
-お使いのアカウントが更新されると、課金プロファイルごとに請求書セクションが作成され、関連するサブスクリプションがその請求書セクションに割り当てられます。 サブスクリプションをさらに追加する場合は、追加のセクションを作成し、サブスクリプションを請求書セクションに割り当てることができます。 これらのセクションは、課金プロファイルの請求書に表示され、それらに割り当てた各サブスクリプションの使用状況を反映します。
+お使いのアカウントが更新されると、課金プロファイルごとに請求書セクションが作成され、関連するサブスクリプションがその請求書セクションに割り当てられます。 サブスクリプションをさらに追加する場合は、より多くのセクションを作成し、サブスクリプションを請求書セクションに割り当てることができます。 これらのセクションは、課金プロファイルの請求書に表示され、それらに割り当てた各サブスクリプションの使用状況を反映します。
 
 請求書セクションでのロールは、Azure サブスクリプションを作成するユーザーを制御するアクセス許可を持ちます。 これらのロールは、エンジニアリング リードや技術的アーキテクトなど、組織内のチームの Azure 環境を設定するユーザーに割り当てる必要があります。 詳細については、[請求書セクションのロールとタスク](../manage/understand-mca-roles.md#invoice-section-roles-and-tasks)に関するページを参照してください。
 
@@ -80,15 +80,15 @@ ms.locfileid: "88690427"
 
 #### <a name="account-and-subscription-management"></a>アカウントとサブスクリプションの管理
 
-**課金操作を実行する管理者を複数割り当てる** - 自分のアカウントに対する課金を管理するために、複数のユーザーに課金のアクセス許可を割り当てます。 他のユーザーに読み取り、書き込み、またはその両方のアクセス許可を提供することで柔軟性が得られます。
+**課金操作を実行する管理者を複数割り当てる** - 自分のアカウントに対する課金を管理するために、複数のユーザーに課金のアクセス許可を割り当てます。 他のユーザーに読み取り、書き込み、またはその両方のアクセス許可を付与することで柔軟性が得られます。
 
-**追加のサブスクリプションを Azure portal で直接作成する** - Azure portal で 1 回クリックするだけですべてのサブスクリプションを作成します。
+**より多くのサブスクリプションを Azure portal で直接作成する** - Azure portal で 1 回選択するだけですべてのサブスクリプションを作成します。
 
 #### <a name="api-support"></a>API のサポート (API support)
 
-**API、SDK、PowerShell を使用して課金およびコスト管理操作を実行する** - Cost Management、Billing、および Consumption API シリーズを使用して、お使いのデータ分析ツールに課金およびコストのデータをプルします。
+**API、SDK、PowerShell を使用して課金およびコスト管理操作を実行する** - Cost Management、Billing、および Consumption API シリーズを使用して、お使いのデータ分析ツールに課金とコストのデータをプルします。
 
-**API、SDK、PowerShell を使用してすべてのサブスクリプション操作を実行する** - Azure サブスクリプションの API を使用して、サブスクリプションの作成、名前変更、キャンセルなど、Azure サブスクリプションの管理を自動化します。
+**API、SDK、PowerShell を使用してすべてのサブスクリプション操作を実行する** - Azure Subscription API を使用して、サブスクリプションの作成、名前変更、キャンセルなど、Azure サブスクリプションの管理を自動化します。
 
 ## <a name="get-prepared-for-your-new-experience"></a>新しいエクスペリエンスに備える
 
@@ -100,12 +100,63 @@ ms.locfileid: "88690427"
 
 **新しい Billing API シリーズと Cost Management API シリーズ**
 
-Cost Management API シリーズまたは Billing API シリーズを使用して課金またはコストのデータを照会および更新する場合は、新しい API を使用する必要があります。 次の表に、新しい課金アカウントで動作しない API と、新しい課金アカウントで行う必要がある変更を示します。
+Cost Management または Billing API シリーズを使用して課金またはコストのデータを照会および更新する場合は、新しい API を使用する必要があります。 次の表に、新しい課金アカウントで動作しない API と、新しい課金アカウントで行う必要がある変更を示します。
 
 |API | [変更点]  |
 |---------|---------|
-|[Billing Accounts - List](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/billingaccounts/list) | Billing Accounts - List API では、古い課金アカウントの agreementType は **MicrosoftOnlineServiceProgram** でしたが、新しい課金アカウントの agreementType は **MicrosoftCustomerAgreement** になります。 agreementType に依存している場合は、更新してください。 |
-|[Invoices - List By Billing Subscription](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | この API を使用すると、お使いのアカウントが更新される前に生成された請求書のみが返されます。 新しい課金アカウントで生成される請求書を取得するには、[Invoices - List By Billing Account](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) API を使用する必要があります。 |
+|[Billing Accounts - List](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | Billing Accounts - List API では、古い課金アカウントの agreementType は **MicrosoftOnlineServiceProgram** でしたが、新しい課金アカウントの agreementType は **MicrosoftCustomerAgreement** になります。 agreementType に依存している場合は、それを更新してください。 |
+|[Invoices - List By Billing Subscription](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | この API を使用すると、お使いのアカウントが更新される前に生成された請求書のみが返されます。 新しい課金アカウントで生成される請求書を取得するには、[Invoices - List By Billing Account](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) API を使用する必要があります。 |
+
+## <a name="cost-management-updates-after-account-update"></a>アカウントの更新後の Cost Management の更新
+
+Microsoft 顧客契約の更新された Azure 課金アカウントでは、Azure portal で、従量課金制アカウントでは使用できなかった Cost Management の新規および拡張エクスペリエンスにアクセスできます。
+
+### <a name="new-capabilities"></a>新機能
+
+Azure 課金アカウントでは、以下の新機能を使用できます。
+
+#### <a name="new-billing-scopes"></a>新しい課金スコープ
+
+更新されたアカウントの一部として、Cost Management + Billing に新しいスコープが用意されています。 これらは、階層型組織や請求処理を支援するだけでなく、複数の基になるサブスクリプションの合計料金を表示することもできます。 課金スコープの詳細については、「[Microsoft 顧客契約のスコープ](../costs/understand-work-scopes.md#microsoft-customer-agreement-scopes)」を参照してください。
+
+Cost Management API シリーズにアクセスして、上位のスコープで結合されたコスト ビューを利用することもできます。 サブスクリプション スコープを使用するすべての Cost Management API は、スキーマに軽微な変更を加えることで引き続き使用できます。 API の詳細については、[Azure Cost Management API シリーズ](/rest/api/cost-management/)および [Azure Consumption API シリーズ](/rest/api/consumption/)に関する記事を参照してください。
+
+#### <a name="cost-allocation"></a>コストの割り当て
+
+更新されたアカウントでは、コストの割り当て機能を使用して、組織内の共有サービスのコストを配分できます。 コストの割り当ての詳細については、[Azure のコストの割り当てルールの作成と管理](../costs/allocate-costs.md)に関する記事を参照してください。
+
+#### <a name="power-bi"></a>Power BI
+
+Power BI Desktop 用の Azure Cost Management コネクタを使用すると、Azure の使用状況と支出に関するカスタムの視覚化とレポートを作成できます。 更新されたアカウントに接続した後、コストと使用状況のデータにアクセスします。 Power BI Desktop 用の Azure Cost Management コネクタの詳細については、「[Power BI Desktop で Azure Cost Management コネクタを使用してビジュアルとレポートを作成する](/power-bi/connect-data/desktop-connect-azure-cost-management)」を参照してください。
+
+### <a name="updated-capabilities"></a>更新された機能
+
+Azure 課金アカウントでは、以下の更新された機能を使用できます。
+
+#### <a name="cost-analysis"></a>コスト分析
+
+引き続き、前月比の消費コストを表示および追跡できます。また、コスト分析で予約コストと Marketplace での購入コストを表示できるようになりました。
+
+更新されたアカウントでは、Azure のすべての料金に対して 1 つの請求書を受け取ります。 また、以前の請求期間ビューに代わって、簡素化された単一の月単位のカレンダー ビューが提供されるようになりました。
+
+たとえば、古いアカウントの請求期間が 11 月 24 日から 12 月 23 日であった場合、アップグレード後は、期間が 11 月 1 日から 11 月 30 日、12 月 1 日から 12 月 31 日 (以降も同様) になります。
+
+:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="新旧の請求期間の比較を示す画像" lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
+
+#### <a name="budgets"></a>予算
+
+課金アカウントの予算を作成できるようになりました。これにより、複数のサブスクリプションにわたってコストを追跡できます。 また、予算を使用して購入料金を把握することもできます。 予算の詳細については、[Azure の予算の作成と管理](../costs/tutorial-acm-create-budgets.md)に関する記事を参照してください。
+
+#### <a name="exports"></a>Exports
+
+新しい課金アカウントでは、エクスポート機能が強化されています。 たとえば、購入または償却コスト (購入期間に配分された予約購入コスト) を含む実績コストのエクスポートを作成できます。 課金アカウントのエクスポートを作成して、課金アカウントのすべてのサブスクリプションの使用状況と料金のデータを取得することもできます。 エクスポートの詳細については、[エクスポートされたデータの作成と管理](../costs/tutorial-export-acm-data.md)に関する記事を参照してください。
+
+> [!NOTE]
+> 種類として **[Monthly export of last month's costs]\(先月のコストの月単位のエクスポート\)** を使用して、アカウントの更新前に作成されたエクスポートでは、最後の請求期間ではなく、先月 (カレンダー月) のデータがエクスポートされます。
+
+たとえば、請求期間が 12 月 23 日から 1 月 22 日までの場合、エクスポートされた CSV ファイルには、その期間のコストと使用状況のデータが含まれています。 更新後は、エクスポートにカレンダー月のデータが含まれるようになります。 たとえば、1 月 1 日から 1 月 31 日までのデータです (以降も同様)。
+
+:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="新旧のエクスポートの詳細の比較を示す画像" lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
 
 ## <a name="additional-information"></a>関連情報
 
@@ -113,11 +164,11 @@ Cost Management API シリーズまたは Billing API シリーズを使用し�
 
 **サービスのダウンタイムが発生しない** ご利用のサブスクリプションの Azure サービスは、中断することなく引き続き実行されます。 唯一の更新は、課金エクスペリエンスに対するものです。 既存のリソース、リソース グループ、管理グループには影響しません。
 
-**Azure リソースに対する変更はない** Azure RBAC (ロールベースのアクセス制御) を使用して設定された Azure リソースへのアクセスには、この更新による影響がありません。
+**Azure リソースに対する変更がない** Azure ロールベースのアクセス制御 (Azure RBAC) を使用して設定された Azure リソースへのアクセスは、この更新による影響を受けません。
 
 **過去の請求書を新しいエクスペリエンスで利用できる** お使いのアカウントが更新される前に生成された請求書は、引き続き Azure portal で利用できます。
 
-**月の途中で更新されたアカウントの請求書** お使いのアカウントが月の途中で更新された場合、アカウントが更新された日までの累積料金の請求書が 1 つ生成されます。 その月の残りの分については別途請求書が生成されます。 たとえば、お使いのアカウントに 1 つのサブスクリプションがあり、それが 9 月 15 日に更新されたとします。 9 月 15 日までの累積料金の請求書が 1 つ生成されます。 9 月 15 日から 9 月 30 日までの期間に対して別途請求書が生成されます。 10 月以降は、月ごとに 1 つの請求書が生成されます。
+**月の途中で更新されたアカウントの請求書** お使いのアカウントが月の途中で更新された場合、アカウントが更新された日までの累積料金の請求書が 1 つ生成されます。 その月の残りの分については別の請求書が生成されます。 たとえば、お使いのアカウントに 1 つのサブスクリプションがあり、9 月 15 日に更新されたとします。 9 月 15 日までの累積料金の請求書が 1 つ生成されます。 9 月 15 日から 9 月 30 日までの期間に対して別途請求書が生成されます。 10 月以降は、月ごとに 1 つの請求書が生成されます。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 

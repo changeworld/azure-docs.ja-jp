@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/26/2020
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 897e5b58aed9c47e0b94ee47d1883e2b7a28bacb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4773446ec0007ffbed99bc01939d1f92f5823d99
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930803"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95561103"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>ID にアクセス許可を割り当てる
 
@@ -21,9 +21,9 @@ ID ベースの認証を使用して Azure Files リソースにアクセスす�
 
 ユーザーに共有レベルのアクセス許可を付与するための、3 つの Azure 組み込みロールが導入されました。
 
-- **ストレージ ファイル データ SMB 共有閲覧者**では、SMB 経由の Azure Storage ファイル共有での読み取りアクセスが許可されます。
-- **ストレージ ファイル データ SMB 共有共同作成者**では、SMB 経由の Azure Storage ファイル共有での読み取り、書き込み、削除アクセスが許可されます。
-- **ストレージ ファイル データの SMB 共有の管理者特権共同作成者**では、SMB 経由の Azure Storage ファイル共有での NTFS アクセス許可の読み取り、書き込み、削除、および変更が許可されます。
+- **ストレージ ファイル データ SMB 共有閲覧者** では、SMB 経由の Azure Storage ファイル共有での読み取りアクセスが許可されます。
+- **ストレージ ファイル データ SMB 共有共同作成者** では、SMB 経由の Azure Storage ファイル共有での読み取り、書き込み、削除アクセスが許可されます。
+- **ストレージ ファイル データの SMB 共有の管理者特権共同作成者** では、SMB 経由の Azure Storage ファイル共有での NTFS アクセス許可の読み取り、書き込み、削除、および変更が許可されます。
 
 > [!IMPORTANT]
 > ファイルの所有権を引き受ける機能を含めて、ファイル共有を完全に管理制御するには、ストレージ アカウント キーを使用する必要があります。 Azure AD 資格情報を使用した管理制御はサポートされていません。
@@ -77,7 +77,7 @@ az role assignment create --role "<role-name>" --assignee <user-principal-name> 
 
 RBAC に共有レベルのアクセス許可を割り当てたら、ルート、ディレクトリ、またはファイル レベルに適切な NTFS アクセス許可を割り当てる必要があります。 共有レベルのアクセス許可は、ユーザーが共有にアクセスできるかどうかを決定する高レベルのゲートキーパーと考えてください。 一方、NTFS のアクセス許可は、さらに細かなレベルで動作し、ディレクトリまたはファイル レベルでユーザーが実行できる操作を決定します。
 
-Azure Files では、NTFS の基本的なアクセス許可と詳細なアクセス許可で構成される完全なセットをサポートします。 Azure ファイル共有内のディレクトリとファイルの NTFS アクセス許可を表示および構成するには、共有をマウントしてから、Windows エクスプローラーを使用するか、Windows の [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) または [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl) コマンドを実行します。 
+Azure Files では、NTFS の基本的なアクセス許可と詳細なアクセス許可で構成される完全なセットをサポートします。 Azure ファイル共有内のディレクトリとファイルの NTFS アクセス許可を表示および構成するには、共有をマウントしてから、Windows エクスプローラーを使用するか、Windows の [icacls](/windows-server/administration/windows-commands/icacls) または [Set-ACL](/powershell/module/microsoft.powershell.security/set-acl) コマンドを実行します。 
 
 スーパーユーザー アクセス許可を持つ NTFS を構成するには、ドメインに参加している VM からのストレージ アカウント キーを使って共有をマウントする必要があります。 コマンド プロンプトから Azure ファイル共有をマウントし、それに応じて NTFS アクセス許可を構成するには、次のセクションの説明に従ってください。
 
@@ -108,7 +108,7 @@ else
 
 ```
 
-Azure Files への接続で問題が発生した場合は、[Windows での Azure Files マウント エラーに対して発行したトラブルシューティング ツール](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)を参照してください。 また、ポート 445 がブロックされている場合のシナリオを回避するための[ガイダンス](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access)も提供されています。 
+Azure Files への接続で問題が発生した場合は、[Windows での Azure Files マウント エラーに対して発行したトラブルシューティング ツール](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)を参照してください。 また、ポート 445 がブロックされている場合のシナリオを回避するための[ガイダンス](../articles/storage/files/storage-files-faq.md#on-premises-access)も提供されています。 
 
 
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>Windows エクスプローラーを使用して NTFS アクセス許可を構成する
@@ -132,7 +132,7 @@ Windows エクスプローラーを使用して、ルート ディレクトリ�
 icacls <mounted-drive-letter>: /grant <user-email>:(f)
 ```
 
-icacls を使用して NTFS アクセス許可を設定する方法や、サポートされるさまざまな種類のアクセス許可の詳細については、[コマンド ライン リファレンスの icacls ](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)に関する記事を参照してください。
+icacls を使用して NTFS アクセス許可を設定する方法や、サポートされるさまざまな種類のアクセス許可の詳細については、[コマンド ライン リファレンスの icacls ](/windows-server/administration/windows-commands/icacls)に関する記事を参照してください。
 
 ## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>ドメインに参加している VM からファイル共有をマウントする
 
@@ -142,7 +142,7 @@ icacls を使用して NTFS アクセス許可を設定する方法や、サポ�
 
 ![ユーザー認証のための Azure AD サインイン画面を示すスクリーン ショット](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
 
-以下のコマンドを使用して Azure ファイル共有をマウントします。 プレースホルダーをお客様独自の値に置き換えてください。 認証済みなので、ストレージ アカウント キー、オンプレミスの AD DS の資格情報、または Azure AD DS の資格情報を指定する必要はありません。 オンプレミスの AD DS または Azure AD DS のいずれかを使用した認証では、シングル サインオン エクスペリエンスがサポートされています。 AD DS の資格情報を使用したマウントで問題が発生した場合は、「[Windows での Azure Files に関する問題のトラブルシューティング](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)」を参照してください。
+以下のコマンドを使用して Azure ファイル共有をマウントします。 プレースホルダーをお客様独自の値に置き換えてください。 認証済みなので、ストレージ アカウント キー、オンプレミスの AD DS の資格情報、または Azure AD DS の資格情報を指定する必要はありません。 オンプレミスの AD DS または Azure AD DS のいずれかを使用した認証では、シングル サインオン エクスペリエンスがサポートされています。 AD DS の資格情報を使用したマウントで問題が発生した場合は、「[Windows での Azure Files に関する問題のトラブルシューティング](../articles/storage/files/storage-troubleshoot-windows-file-connection-problems.md)」を参照してください。
 
 ```
 $connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445

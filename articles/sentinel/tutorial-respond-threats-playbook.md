@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2019
 ms.author: yelevin
-ms.openlocfilehash: f75731fab9a238ffcac2e620235c9d8c5da97549
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: b6fd26b4965b92f5f06a008d67e2d585fd1b41b7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053492"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652078"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>チュートリアル:Azure Sentinel で脅威への自動対応を設定する
 
@@ -39,7 +39,7 @@ ms.locfileid: "88053492"
 
 ## <a name="what-is-a-security-playbook-in-azure-sentinel"></a>Azure Sentinel のセキュリティ プレイブックとは
 
-セキュリティ プレイブックは、アラートに対する応答として Azure Sentinel から実行できる手順のコレクションです。 セキュリティ プレイブックを利用して、応答を自動化して調整することができます。セキュリティ プレイブックは手動で実行することも、特定のアラートがトリガーされたときに自動的に実行するように設定することもできます。 Azure Sentinel のセキュリティ プレイブックは [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) を基にしているので、Logic Apps のすべての機能と組み込みテンプレートを利用でき、カスタマイズが可能です。 各プレイブックは選択した特定のサブスクリプションに対して作成されますが、[プレイブック] ページには、選択したサブスクリプションのすべてのプレイブックが表示されます。
+セキュリティ プレイブックは、アラートに対する応答として Azure Sentinel から実行できる手順のコレクションです。 セキュリティ プレイブックを利用して、応答を自動化して調整することができます。セキュリティ プレイブックは手動で実行することも、特定のアラートがトリガーされたときに自動的に実行するように設定することもできます。 Azure Sentinel のセキュリティ プレイブックは [Azure Logic Apps](../logic-apps/logic-apps-overview.md) を基にしているので、Logic Apps のすべての機能と組み込みテンプレートを利用でき、カスタマイズが可能です。 各プレイブックは選択した特定のサブスクリプションに対して作成されますが、[プレイブック] ページには、選択したサブスクリプションのすべてのプレイブックが表示されます。
 
 > [!NOTE]
 > プレイブックでは Azure Logic Apps が利用されるため、料金が適用されます。 詳細については、[Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) の価格ページを参照してください。
@@ -72,13 +72,13 @@ Azure Sentinel に新しいセキュリティ プレイブックを作成する�
 
 5. [**ロジック アプリ デザイナー**](../logic-apps/logic-apps-overview.md)で、使用するテンプレートを選択します。 資格情報が必要なテンプレートを選択した場合は、それらを指定する必要があります。 または、新しい空白のプレイブックを一から作成できます。 **[空のロジック アプリ]** を選択します。 
 
-   ![ロジック アプリ デザイナー](./media/tutorial-respond-threats-playbook/playbook-template.png)
+   ![[空のロジック アプリ] パネルを示すスクリーンショット。](./media/tutorial-respond-threats-playbook/playbook-template.png)
 
 6. ロジック アプリ デザイナーが開き、そこでテンプレートを新規作成するか、編集することができます。 [Logic Apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md) でプレイブックを作成する方法の詳細をご確認ください。
 
 7. 空のプレイブックを作成する場合は、 **[すべてのコネクタとトリガーを検索する]** フィールドに「*Azure Sentinel*」と入力し、 **[When a response to an Azure Sentinel alert is triggered]\(Azure Sentinel 通知への応答がトリガーされるとき\)** を選択します。 <br>新しいプレイブックが作成されると、 **[プレイブック]** 一覧に表示されます。 表示されない場合は、 **[更新]** をクリックしてください。
 
-1. **エンティティの取得**用の関数を使用して、アカウント、IP アドレス、ホストなど、**Entities** 一覧内から関連するエンティティを取得できます。 これにより、特定のエンティティに対してアクションを実行できるようになります。
+1. **エンティティの取得** 用の関数を使用して、アカウント、IP アドレス、ホストなど、**Entities** 一覧内から関連するエンティティを取得できます。 これにより、特定のエンティティに対してアクションを実行できるようになります。
 
 7. これで、プレイブックをトリガーしたときの動作を定義できます。 アクション、論理条件、スイッチ ケースの条件、またはループを追加できます。
 
@@ -92,7 +92,7 @@ Azure Sentinel に新しいセキュリティ プレイブックを作成する�
 
 1. **[インシデント]** ページで、インシデントを選択して **[View full details]\(完全な詳細を表示\)** をクリックします。
 
-2. **[アラート]** タブで、プレイブックを実行するアラートをクリックし、右側にスクロールして **[プレイブックの表示]** をクリックし、サブスクリプションで使用可能なプレイブックの一覧から、**実行**するプレイブックを選択します。 
+2. **[アラート]** タブで、プレイブックを実行するアラートをクリックし、右側にスクロールして **[プレイブックの表示]** をクリックし、サブスクリプションで使用可能なプレイブックの一覧から、**実行** するプレイブックを選択します。 
 
 
 
@@ -105,7 +105,7 @@ SIEM や SOC チームには、定期的にセキュリティ アラートが殺
 対応を自動化するには:
 
 1. 対応を自動化するアラートを選択します。
-1. **[アラート ルールの編集]** ページの **[Real-time automation]\(リアルタイム オートメーション\)** で、このアラート ルールが一致したときに実行する**トリガー対象のプレイブック**を選択します。
+1. **[アラート ルールの編集]** ページの **[Real-time automation]\(リアルタイム オートメーション\)** で、このアラート ルールが一致したときに実行する **トリガー対象のプレイブック** を選択します。
 1. **[保存]** を選択します。
 
    ![リアルタイム オートメーション](./media/tutorial-detect-threats/rt-configuration.png)
@@ -118,5 +118,3 @@ SIEM や SOC チームには、定期的にセキュリティ アラートが殺
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Sentinel でプレイブックを実行する方法を学習しました。 Azure Sentinel を使用して[脅威を予防的に捜索する方法](hunting.md)に進んでください。
-
-

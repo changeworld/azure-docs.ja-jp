@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 9d0bfdf4719b4c3a92a0632a1edda63324d700e5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7323ae611431e1d91fd1a8471914be388fcc4712
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072030"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92019513"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services の Fragmented MP4 ライブ インジェスト仕様 
 
@@ -39,7 +39,7 @@ ms.locfileid: "87072030"
 ![インジェスト フロー][image1]
 
 ## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3.ビットストリーム形式 – ISO 14496-12 Fragmented MP4
-このドキュメントで言及するライブ ストリーミング インジェスト用のワイヤ形式は、[ISO-14496-12] に基づきます。 Fragmented MP4 形式、ビデオ オンデマンド ファイルの拡張子、ライブ ストリーミング インジェストの詳細については、[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) に関するページをご覧ください。
+このドキュメントで言及するライブ ストリーミング インジェスト用のワイヤ形式は、[ISO-14496-12] に基づきます。 Fragmented MP4 形式、ビデオ オンデマンド ファイルの拡張子、ライブ ストリーミング インジェストの詳細については、[[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) に関するページをご覧ください。
 
 ### <a name="live-ingest-format-definitions"></a>ライブ インジェスト形式の定義
 Azure Media Services にライブ インジェストを適用する特殊形式の定義の一覧を次に示します。
@@ -70,7 +70,7 @@ Media Services 用 ISO Fragmented MP4 ベースのライブ インジェスト�
 1. ストリームが終了する前に HTTP POST 要求が終了するか、TCP エラーを伴ってタイムアウトが発生する場合、エンコーダーは、新しい接続を使用して新しい POST 要求を発行し、前述の要件に従わなければなりません。 さらに、エンコーダーは、ストリームの各トラックに対する前回の 2 つの MP4 フラグメントを再送信し、メディア タイムラインに不連続性を発生させずに再開しなければなりません。 トラックごとに最後の 2 つの MP4 フラグメントを再送信することで、データが失われることはなくなります。 つまり、オーディオとビデオ トラックの両方が含まれるストリームで現在の POST 要求が失敗した場合、データが失われないように、エンコーダーは再接続して、前回正常に送信されたオーディオ トラックとビデオ トラックの最後の 2 つのフラグメントをぞれぞれ再送信しなければなりません。 エンコーダーは、再接続時に再送するメディア フラグメントの「早送り」バッファーを維持しなければなりません。
 
 ## <a name="5-timescale"></a>5.タイムスケール
-[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) に関するページでは、**SmoothStreamingMedia** (セクション 2.2.2.1)、**StreamElement** (セクション 2.2.2.3)、**StreamFragmentElement**(セクション 2.2.2.6)、**LiveSMIL** (セクション 2.2.7.3.1) のタイムスケールの使用方法について説明します。 タイムスケールの値が存在しない場合、使用される既定値は 10,000, 000 (10 MHz) です。 その他のタイムスケール値の使用は Smooth Streaming 形式の仕様によってブロックされませんが、ほとんどのエンコーダーの実装ではこの既定値 (10 MHz) を使用して Smooth Streaming のインジェスト データを生成します。 [Azure Media ダイナミック パッケージ](./previous/media-services-dynamic-packaging-overview.md)機能により、ビデオ ストリームには 90 kHz、オーディオ ストリームには 44.1 kHz または 48.1 kHz のタイムスケールを使用することをお勧めします。 ストリームによって異なるタイムスケールの値を使用すると、ストリーム レベルのタイムスケールを送信しなければなりません。 詳細については、[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) に関するページを参照してください。     
+[[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) に関するページでは、**SmoothStreamingMedia** (セクション 2.2.2.1)、**StreamElement** (セクション 2.2.2.3)、**StreamFragmentElement**(セクション 2.2.2.6)、**LiveSMIL** (セクション 2.2.7.3.1) のタイムスケールの使用方法について説明します。 タイムスケールの値が存在しない場合、使用される既定値は 10,000, 000 (10 MHz) です。 その他のタイムスケール値の使用は Smooth Streaming 形式の仕様によってブロックされませんが、ほとんどのエンコーダーの実装ではこの既定値 (10 MHz) を使用して Smooth Streaming のインジェスト データを生成します。 [Azure Media ダイナミック パッケージ](./previous/media-services-dynamic-packaging-overview.md)機能により、ビデオ ストリームには 90 kHz、オーディオ ストリームには 44.1 kHz または 48.1 kHz のタイムスケールを使用することをお勧めします。 ストリームによって異なるタイムスケールの値を使用すると、ストリーム レベルのタイムスケールを送信しなければなりません。 詳細については、[[MS-SSTR]](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) に関するページを参照してください。     
 
 ## <a name="6-definition-of-stream"></a>6.「ストリーム」の定義
 「ストリーム」とは、ライブ プレゼンテーションを構成するためのライブ インジェスト操作の基本単位です。ストリーム フェールオーバーや冗長性シナリオを処理します。 「ストリーム」は、1 つ以上のトラックが含まれる 1 つの固有の Fragmented MP4 ビットストリームとして定義されます。 完全なライブ プレゼンテーションには、ライブ エンコーダーの構成に応じて 1 つ以上のストリームが含まれます。 次の例では、ストリームを使用して完全なライブ プレゼンテーションを構成するさまざまなオプションについて説明します。

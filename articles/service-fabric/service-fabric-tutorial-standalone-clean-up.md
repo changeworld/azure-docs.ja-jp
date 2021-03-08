@@ -1,31 +1,29 @@
 ---
-title: スタンドアロン クラスターをクリーンアップする
-description: このチュートリアルでは、スタンドアロンの Service Fabric クラスターで AWS または Azure のリソースをクリーンアップする方法について説明します。
-author: dkkapur
+title: スタンドアロンのクラスターのクリーンアップ
+description: このチュートリアルでは、スタンドアロンの Service Fabric クラスターの AWS または Azure のリソースを削除する方法について説明します。
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bfb23ca5f5eb9540491fbd05efdfd6997db15e6b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0d46e9068a311594f779411c3ccee2b408febb3f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75639022"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842888"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>チュートリアル: スタンドアロン クラスターのクリーンアップ
 
-Service Fabric で採用されている "すべての OS、すべてのクラウド" のアプローチの一環として、Service Fabric スタンドアロン クラスターには、独自の環境を選んでクラスターを作成する選択肢が用意されています。 このチュートリアル シリーズでは、AWS または Azure 上でホストされるスタンドアロンのクラスターを作成し、そこにアプリケーションをインストールします。
+Service Fabric スタンドアロン クラスターには、Service Fabric をホストする独自の環境を選択するためのオプションが用意されています。 このチュートリアル シリーズでは、AWS または Azure 上でホストされるスタンドアロンのクラスターを作成し、そこにアプリケーションをデプロイします。
 
-このチュートリアルは、シリーズの第 4 部です。 このチュートリアル パートでは、Service Fabric クラスターのホストとして作成した AWS または Azure リソースをクリーンアップする方法を紹介します。
+このチュートリアルは、シリーズの第 4 部です。 このチュートリアル パートでは、Service Fabric クラスターのホストとして作成した AWS または Azure リソースを削除する方法を紹介します。
 
-シリーズの第 4 部では、次の方法を学習します。
+この記事では、次の内容について説明します。
 
 > [!div class="checklist"]
-> * Service Fabric クラスターのクリーンアップ
-> * AWS または Azure リソースのクリーンアップ
+> * Service Fabric クラスターを削除する
+> * AWS または Azure リソースを削除する
 
-## <a name="clean-up-service-fabric-cluster"></a>Service Fabric クラスターのクリーンアップ
+## <a name="remove-a-service-fabric-cluster"></a>Service Fabric クラスターを削除する
 
 1. Service Fabric のインストールに使用した VM に RDP で接続します。
 2. PowerShell を開きます。
@@ -36,7 +34,7 @@ Service Fabric で採用されている "すべての OS、すべてのクラウ
   .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
   ```
 
-5. 確認を求められたら、「`Y`」を入力します。成功した場合、次のような出力結果が、実際の IP アドレスで表示されます。
+5. 確認を求められたら「`Y`」と入力します。 成功した場合、次のような出力結果が表示されます (独自の IP アドレスで)。
 
   ```powershell
   Best Practices Analyzer completed successfully.
@@ -49,23 +47,23 @@ Service Fabric で採用されている "すべての OS、すべてのクラウ
   The cluster is successfully removed.
   ```
 
-## <a name="clean-up-aws-resources"></a>AWS リソースのクリーンアップ
+## <a name="delete-aws-resources"></a>AWS リソースの削除
 
 1. AWS アカウントにサインインします。
 2. EC2 コンソールに移動します。
 3. このチュートリアルの第 1 部で作成した 3 つのノードを選択します。
-4. **[Actions]\(操作\)**  >  **[Instance State]\(インスタンスの状態\)**  >  **[Terminate]\(終了\)** をクリックします。
+4. **[Actions]\(操作\)**  >  **[Instance State]\(インスタンスの状態\)**  >  **[Terminate]\(終了\)** の順に選択します。
 
-## <a name="clean-up-azure-resources"></a>Azure リソースをクリーンアップする
+## <a name="delete-azure-resources"></a>Azure リソースを削除する
 
 1. Azure portal にサインインします。
 2. **[仮想マシン]** セクションに移動します。
 3. このチュートリアルの第 1 部で作成した 3 つのノードのチェック ボックスをオンにします。
-4. **[削除]** をクリックします。
+4. **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
-シリーズの第 4 部では、前の手順で作成したリソースをクリーンアップする方法について説明しました。
+このチュートリアルでは、前の手順で作成したリソースを削除する方法について説明しました。
 
 > [!div class="checklist"]
 > * リソースをクリーンアップする

@@ -1,6 +1,6 @@
 ---
-title: Date_Bucket (Transact-SQL) - Azure SQL Edge (プレビュー)
-description: Azure SQL Edge での Date_Bucket の使用について説明します (プレビュー)
+title: Date_Bucket (Transact-SQL) - Azure SQL Edge
+description: Azure SQL Edge での Date_Bucket の使用について説明します
 keywords: Date_Bucket, SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -8,51 +8,52 @@ ms.topic: reference
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2019
-ms.openlocfilehash: c2f63abeb9f935236b4c35decb278eb86e0e2a82
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.date: 09/03/2020
+ms.openlocfilehash: 9d81419721e94a2e181f094c0e0e64b1b23544a8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233288"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073521"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
-この関数からは、既定の基準値 `1900-01-01 00:00:00.000` から各 datetime バケットの開始までに対応する datetime 値が返されます。
+基準のパラメーターが指定されていない場合は、この関数は、`origin` パラメーターまたは `1900-01-01 00:00:00.000` の既定の基準値で定義されたタイムスタンプから、各 datetime バケットの開始に対応する datetime 値を返します。 
 
 Transact-SQL の日付と時刻のデータ型および関数の概要については、「[日付と時刻のデータ型および関数 &#40;Transact-SQL&#41;](/sql/t-sql/functions/date-and-time-data-types-and-functions-transact-sql/)」を参照してください。
 
 [Transact-SQL 構文表記規則](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql/)
 
-`DATE_BUCKET` では、既定の日付の基準値として `1900-01-01 00:00:00.000` つまり 1900 年 1 月 1 日 (月) 午前 0:00 が使用されます。
-
 ## <a name="syntax"></a>構文
 
 ```sql
-DATE_BUCKET (datePart, number, date)
+DATE_BUCKET (datePart, number, date, origin)
 ```
 
 ## <a name="arguments"></a>引数
 
 *datePart*
 
-"number" パラメーターで使用される "*日付*" の部分。 例: Year、month、minute、second など。
+"number" パラメーターで使用される " *日付* " の部分。 例: Year、month、minute、second など。
 
 > [!NOTE]
-> `DATE_BUCKET` では、*datepPart* 引数に対し、ユーザー定義変数に相当するものは受け付けられません。
+> `DATE_BUCKET` では、 *datepPart* 引数に対し、ユーザー定義変数に相当するものは受け付けられません。
   
 |*datePart*|省略形|  
 |---|---|
-|**day**|**dd**、**d**|  
-|**week**|**wk**、**ww**|  
+|**day**|**dd** 、 **d**|  
+|**week**|**wk** 、 **ww**| 
+|**month**|**mm** 、 **m**|
+|**quarter**|**qq** 、 **q**|  
+|**year**|**yy** 、 **yyyy**|  
 |**hour**|**hh**|  
-|**minute**|**mi**、**n**|  
-|**second**|**ss**、**s**|  
+|**minute**|**mi** 、 **n**|  
+|**second**|**ss** 、 **s**|  
 |**millisecond**|**ms**|  
 
 *number*
 
-*datePart* 引数と組み合わされてバケットの幅を決定する整数値。 これは、基準日時からの dataPart バケットの幅を表します。 **`This argument cannot be a negative integer value`** 」を参照してください。 
+*datePart* 引数と組み合わされてバケットの幅を決定する整数値。 これは、基準日時からの dataPart バケットの幅を表します。 **`This argument cannot be a negative integer value`**. 
 
 *date*
 
@@ -66,6 +67,21 @@ DATE_BUCKET (datePart, number, date)
 + **time**
 
 *date* については、上記のデータ型に解決される場合は、列式、式、またはユーザー定義変数が `DATE_BUCKET` で受け付けられます。
+
+**元のドメイン** 
+
+次のいずれかの値に解決できるオプションの式:
+
++ **date**
++ **datetime**
++ **datetimeoffset**
++ **datetime2**
++ **smalldatetime**
++ **time**
+
+`Origin` のデータ型は、`Date` パラメーターのデータ型と一致する必要があります。 
+
+`DATE_BUCKET` では、基準値が関数に指定されていない場合は、既定の日付の基準値として `1900-01-01 00:00:00.000`、つまり 1900 年 1 月 1 日 (月) 午前 0:00 が使用されます。
 
 ## <a name="return-type"></a>戻り値の型
 
@@ -92,20 +108,28 @@ Select DATE_BUCKET(wk, 4, @date)
 Select DATE_BUCKET(wk, 6, @date)
 ```
 
-次の式の出力は、基準の日時から 6275 週です。
+下の式の出力は、既定の基準の日時 `1900-01-01 00:00:00.000` から 6275 週である `2020-04-06 00:00:00.0000000` になります。
 
 ```sql
 declare @date datetime2 = '2020-04-15 21:22:11'
 Select DATE_BUCKET(wk, 5, @date)
 ```
 
+下の式の出力は、指定された基準の日時 `2019-01-01 00:00:00` から 75 週である `2020-06-09 00:00:00.0000000` になります。
+
+```sql
+declare @date datetime2 = '2020-06-15 21:22:11'
+declare @origin datetime2 = '2019-01-01 00:00:00'
+Select DATE_BUCKET(wk, 5, @date, @origin)
+```
+
 ## <a name="datepart-argument"></a>datepart 引数
 
-**dayofyear**、**day**、および **weekday** は同じ値を返します。 *-各日付構成要素とその省略形は、同じ値を返します。*
+**dayofyear** 、 **day** 、および **weekday** は同じ値を返します。 *-各日付構成要素とその省略形は、同じ値を返します。*
   
 ## <a name="number-argument"></a>number 引数
 
-*number* 引数は、正の **int** 値の範囲を超えることはできません。 次のステートメントでは、*number* の引数が **int** の範囲を 1 超えています。 以下のステートメントからは、次のメッセージが返されます: "`Msg 8115, Level 16, State 2, Line 2. Arithmetic overflow error converting expression to data type int."`
+*number* 引数は、正の **int** 値の範囲を超えることはできません。 次のステートメントでは、 *number* の引数が **int** の範囲を 1 超えています。 以下のステートメントからは、次のメッセージが返されます: "`Msg 8115, Level 16, State 2, Line 2. Arithmetic overflow error converting expression to data type int."`
   
 ```sql
 declare @date datetime2 = '2020-04-30 00:00:00'
@@ -126,6 +150,10 @@ Invalid bucket width value passed to date_bucket function. Only positive values 
 ```sql
 Select DATE_BUCKET(dd, 10, SYSUTCDATETIME())
 ```
+
+## <a name="origin-argument"></a>origin 引数  
+
+`origin` と `date` の引数のデータ型は同じである必要があります。 異なるデータ型を使用すると、エラーが生成されます。
 
 ## <a name="remarks"></a>解説
 
@@ -168,11 +196,11 @@ Seconds 2020-04-30 21:21:21.0000000
 
 ### <a name="b-using-expressions-as-arguments-for-the-number-and-date-parameters"></a>B. number パラメーターと date パラメーターの引数として式を使用する
 
-次の例では、*number* パラメーターと *date* パラメーターの引数として、さまざまな種類の式を使用しています。 これらの例は、"AdventureWorksDW2017" データベースを使用して構築されています。
+次の例では、 *number* パラメーターと *date* パラメーターの引数として、さまざまな種類の式を使用しています。 これらの例は、"AdventureWorksDW2017" データベースを使用して構築されています。
   
 #### <a name="specifying-user-defined-variables-as-number-and-date"></a>number および date にユーザー定義変数を指定する  
 
-次の例では、*number* と *date* の引数としてユーザー定義変数を指定しています。
+次の例では、 *number* と *date* の引数としてユーザー定義変数を指定しています。
   
 ```sql
 DECLARE @days int = 365,
@@ -222,7 +250,7 @@ ShippedDateBucket           SumOrderQuantity SumUnitPrice
 
 #### <a name="specifying-scalar-system-function-as-date"></a>スカラー システム関数を date として指定する
 
-この例では、*date* の `SYSDATETIME` を指定しています。 返される厳密な値は、ステートメント実行の日時によって変わります。
+この例では、 *date* の `SYSDATETIME` を指定しています。 返される厳密な値は、ステートメント実行の日時によって変わります。
   
 ```sql
 SELECT Date_Bucket(wk, 10, SYSDATETIME());  
@@ -239,7 +267,7 @@ SELECT Date_Bucket(wk, 10, SYSDATETIME());
 
 #### <a name="specifying-scalar-subqueries-and-scalar-functions-as-number-and-date"></a>number および date にスカラー サブクエリやスカラー関数を指定する
 
-次の例では、*number* と *date* の引数として、スカラー サブクエリ (`MAX(OrderDate)`) を使用しています。 `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` は、値リストから *number* 引数を選択する方法を紹介するために用意した、数値パラメーターの架空の引数です。
+次の例では、 *number* と *date* の引数として、スカラー サブクエリ (`MAX(OrderDate)`) を使用しています。 `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` は、値リストから *number* 引数を選択する方法を紹介するために用意した、数値パラメーターの架空の引数です。
   
 ```sql
 SELECT DATE_BUCKET(week,(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100),  
@@ -256,7 +284,7 @@ SELECT Date_Bucket(week,(10/2), SYSDATETIME());
 
 #### <a name="specifying-an-aggregate-window-function-as-number"></a>number として集計関数を指定する
 
-次の例では、*number* の引数として集計関数を使用しています。
+次の例では、 *number* の引数として集計関数を使用しています。
   
 ```sql
 Select 
@@ -268,6 +296,15 @@ Where ShipDate between '2011-01-03 00:00:00.000' and '2011-02-28 00:00:00.000'
 order by DateBucket
 GO  
 ``` 
+### <a name="c-using-a-non-default-origin-value"></a>C. 既定の基準値以外を使用する
+
+この例では、既定の基準値以外を使用して、日付バケットを生成します。 
+
+```sql
+declare @date datetime2 = '2020-06-15 21:22:11'
+declare @origin datetime2 = '2019-01-01 00:00:00'
+Select DATE_BUCKET(hh, 2, @date, @origin)
+```
 
 ## <a name="see-also"></a>関連項目
 

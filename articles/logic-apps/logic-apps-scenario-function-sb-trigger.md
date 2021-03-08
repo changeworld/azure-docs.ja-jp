@@ -1,22 +1,22 @@
 ---
 title: Azure Functions でロジック アプリを呼び出す
-description: Azure Service Bus をリッスンすることでロジック アプリを呼び出すかトリガーする Azure 関数を作成する
+description: Azure Functions と Azure Service Bus を使用してロジック アプリを呼び出すか、またはトリガーする
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fcf7f1a27633c978c10f541d0a341225fbcb126d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a7df9ba1318f40de8af392cfaedbe51d7a5df755
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013777"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784936"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Azure Functions と Azure Service Bus を使用してロジック アプリを呼び出すか、またはトリガーする
 
-[Azure Functions](../azure-functions/functions-overview.md) を使用すると、実行時間の長いリスナーまたはタスクをデプロイする必要がある場合にロジック アプリをトリガーできます。 たとえば、[Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) キューでリッスンする Azure 関数を作成し、ロジック アプリをプッシュ トリガーとして直ちに起動できます。
+[Azure Functions](../azure-functions/functions-overview.md) を使用すると、実行時間の長いリスナーまたはタスクをデプロイする必要がある場合にロジック アプリをトリガーできます。 たとえば、[Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) キューでリッスンする関数を作成し、ロジック アプリをプッシュ トリガーとして直ちに起動できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -24,7 +24,7 @@ ms.locfileid: "89013777"
 
 * Azure Service Bus 名前空間。 名前空間がない場合は、[最初に名前空間を作成](../service-bus-messaging/service-bus-create-namespace-portal.md)します。
 
-* Azure 関数のコンテナーである Azure 関数アプリ。 関数アプリがない場合は、[最初に関数アプリを作成](../azure-functions/functions-create-first-azure-function.md)し、ランタイム スタックとして .NET を選択するようにしてください。
+* 関数のコンテナーである関数アプリ。 関数アプリがない場合は、[最初に関数アプリを作成](../azure-functions/functions-get-started.md)し、ランタイム スタックとして .NET を選択するようにしてください。
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
@@ -94,7 +94,7 @@ ms.locfileid: "89013777"
 
    ![トリガー用に生成されたコールバック URL](./media/logic-apps-scenario-function-sb-trigger/callback-URL-for-trigger.png)
 
-## <a name="create-azure-function"></a>Azure 関数を作成する
+## <a name="create-a-function"></a>関数を作成する
 
 次に、トリガーとして機能し、キューをリッスンする関数を作成します。
 

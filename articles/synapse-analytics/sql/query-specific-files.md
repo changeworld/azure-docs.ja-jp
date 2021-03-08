@@ -7,26 +7,26 @@ ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 6beda409f03938f471f089bceebaa97c6d02ae7e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: stefanazaric
+ms.reviewer: jrasnick
+ms.openlocfilehash: d24ae1f42c685589309506b2d5e0eab157b2bc42
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496221"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299617"
 ---
-# <a name="use-file-metadata-in-queries"></a>クエリでファイルのメタデータを使用する
+# <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>サーバーレス SQL プール クエリでファイルのメタデータを使用する
 
-SQL オンデマンド クエリ サービスを使用すれば、[フォルダーと複数ファイルに対するクエリ](query-folders-multiple-csv-files.md)に関する記事で説明されているように、複数のファイルとフォルダーに対応できます。 この記事では、クエリ内でファイル名とフォルダー名に関するメタデータ情報を使用する方法について説明します。
+「[クエリ フォルダーと複数のファイル](query-folders-multiple-csv-files.md)」の記事で説明されているように、サーバーレス SQL プールは、複数のファイルとフォルダーに対応できます。 この記事では、クエリ内でファイル名とフォルダー名に関するメタデータ情報を使用する方法について説明します。
 
 場合によっては、結果セット内の特定の行に関連するファイル ソースまたはフォルダー ソースを把握しておく必要があります。
 
-関数 `filepath` および `filename` を使用すれば、結果セット内にファイル名およびそのパスを返すことができます。 また、それらを使用することで、ファイル名やフォルダー パスに基づいてデータをフィルター処理することもできます。 これらの関数については、「[filename 関数](query-data-storage.md#filename-function)」と「[filepath 関数](query-data-storage.md#filepath-function)」の構文セクションで説明されています。 以下で、サンプルに沿って簡単に説明します。
+関数 `filepath` および `filename` を使用すれば、結果セット内にファイル名およびそのパスを返すことができます。 また、それらを使用することで、ファイル名やフォルダー パスに基づいてデータをフィルター処理することもできます。 これらの関数については、「[filename 関数](query-data-storage.md#filename-function)」と「[filepath 関数](query-data-storage.md#filepath-function)」の構文セクションで説明されています。 以降のセクションでは、サンプルに沿って簡単な説明があります。
 
 ## <a name="prerequisites"></a>前提条件
 
-最初の手順は、参照するストレージ アカウントを使用して**データベースを作成**することです。 次に、そのデータベースに対して[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、これらのサンプルで使用されるデータ ソース、データベース スコープの資格情報、および外部ファイル形式が作成されます。
+最初の手順は、参照するストレージ アカウントを使用して **データベースを作成** することです。 次に、そのデータベースに対して[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、これらのサンプルで使用されるデータ ソース、データベース スコープの資格情報、および外部ファイル形式が作成されます。
 
 ## <a name="functions"></a>関数
 
@@ -76,7 +76,7 @@ ORDER BY
 
 filepath 関数からは、完全なパスまたは部分的なパスが返されます。
 
-- パラメーターを指定せずに呼び出した場合、行の生成元である完全なファイル パスが返されます。
+- パラメーターを指定せずに呼び出した場合、行の生成元である完全なファイル パスが返されます。 OPENROWSET で DATA_SOURCE を使用すると、DATA_SOURCE を基準とした相対パスが返されます。 
 - パラメーターを指定して呼び出すと、パラメーターで指定した位置にあるワイルドカードと一致するパスの一部が返されます。 たとえば、パラメーター値 1 の場合は、最初のワイルドカードと一致するパスの一部が返されます。
 
 次のサンプルでは、2017 年の過去 3 か月間について、NYC イエロー タクシーのデータ ファイルが読み取られます。 ファイル パスごとの乗車数が返されます。 クエリの OPENROWSET 部分では、読み取るファイルを指定します。

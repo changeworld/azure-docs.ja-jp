@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 0d72ea23b74137e7e57f892b831b0be1b4a89de5
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: e25db6213c99afaa46732831534956b01adba0b4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735523"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555226"
 ---
 # <a name="tutorial-grant-a-group-access-to-azure-resources-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Azure リソースへのアクセス権をグループに付与する
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このチュートリアルを完了するには、次の要件があります。
 
 - Azure Active Directory でグループを作成する (または既存のグループを所有する) ためのアクセス許可
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart-powershell)
+- [Azure Cloud Shell](../cloud-shell/quickstart-powershell.md)
 
 ## <a name="role-assignments"></a>ロールの割り当て
 
@@ -294,4 +294,4 @@ Azure RBAC でアクセス権を付与するには、ロールの割り当てを
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する](role-assignments-powershell.md)
+> [Azure PowerShell を使用して Azure ロールを割り当てる](role-assignments-powershell.md)

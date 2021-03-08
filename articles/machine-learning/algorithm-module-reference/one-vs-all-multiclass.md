@@ -1,24 +1,24 @@
 ---
 title: One-vs-All Multiclass
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning の One-vs-All Multiclass モジュールを使用して、二項分類モデルのアンサンブルから多クラス分類モデルを作成する方法を説明します。
+description: Azure Machine Learning デザイナーで One-vs-All Multiclass モジュールを使用して二項分類モデルのアンサンブルを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: 29934758ab729e0fb888c10b7f834da3d0bf7fb0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 11/13/2020
+ms.openlocfilehash: 4dfe284a00052cbd1915d62355e1d7772f3712ab
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456082"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591871"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All Multiclass
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) で One-vs-All Multiclass モジュールを使用する方法について説明します。 目標は、*one-versus-all* アプローチを使って複数のクラスを予測できる分類モデルを作成することです。
+この記事では、Azure Machine Learning デザイナーで One-vs-All Multiclass モジュールを使用する方法について説明します。 目標は、*one-versus-all* アプローチを使って複数のクラスを予測できる分類モデルを作成することです。
 
 このモジュールは、結果が連続またはカテゴリ予測変数に依存する場合に、考えられる 3 つ以上の結果を予測するモデルを作成する際に役立ちます。 また、この方法では、複数の出力クラスを必要とする問題に二項分類法を使用することもできます。
 
@@ -26,11 +26,13 @@ ms.locfileid: "79456082"
 
 分類アルゴリズムには、3 つ以上のクラスの使用が仕様で許可されているものもあります。 考えられる結果を 2 つの値のいずれかに制限するもの (バイナリ (2 クラス) モデル) もあります。 ただし、二項分類アルゴリズムでも、さまざまな戦略を使用して多クラス分類タスクに適合させることができます。 
 
-このモジュールは、複数の出力クラスのそれぞれに対してバイナリ モデルが作成される one-versus-all 法を実装しています。 このモジュールでは、個々のクラスのこれらの各バイナリ モデルが、二項分類の問題と同様に、その補集合 (モデルの他のすべてのクラス) に対して評価されます。 次に、これらの二項分類子を実行し、信頼度スコアが最も高い予測を選択することで、予測が行われます。  
+このモジュールは、複数の出力クラスのそれぞれに対してバイナリ モデルが作成される one-versus-all 法を実装しています。 このモジュールでは、個々のクラスのこれらの各バイナリ モデルが、二項分類の問題と同様に、その補集合 (モデルの他のすべてのクラス) に対して評価されます。 その計算効率 (`n_classes` 分類子のみが必要) に加え、このアプローチの利点の 1 つに、解釈能力があります。 各クラスは、分類子別でのみ表されるため、対応する分類子を調べることによって、クラスに関する知識を得ることができます。 これは、多クラス分類で最も一般的に使用される方法であり、これは公正な既定の選択肢です。 次に、これらの二項分類子を実行し、信頼度スコアが最も高い予測を選択することで、予測が行われます。 
 
 このモジュールでは、実質的に、個々のモデルのアンサンブルが作成され、結果がマージされて、すべてのクラスを予測する単一のモデルが作成されます。 任意の二項分類子を one-versus-all モデルの基礎として使用できます。  
 
 たとえば、[2 クラス サポート ベクター マシン](two-class-support-vector-machine.md) モデルを構成し、それを One-vs-All Multiclass モジュールへの入力として提供するとします。 モジュールにより、出力クラスのすべてのメンバーに対して 2 クラス サポート ベクター マシン モデルが作成されます。 その後、one-versus-all 法を適用してすべてのクラスの結果が結合されます。  
+
+このモジュールでは sklearn の OneVsRestClassifier が使用されます。詳細については、[こちら](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html)を参照してください。
 
 ## <a name="how-to-configure-the-one-vs-all-multiclass-classifier"></a>One-vs-All Multiclass 分類子を構成する方法  
 

@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3eec935d0a25f9510cd9a2f6e00b7ac22756e697
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: a5a44b9d27901fcd00f8813096de6bbae5f2310d
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796801"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179947"
 ---
 # <a name="quickstart-deploy-unity-sample-to-hololens"></a>クイック スタート:Unity のサンプルを HoloLens にデプロイする
 
@@ -48,7 +48,7 @@ ms.locfileid: "88796801"
 1. プロジェクト "Quickstart" で、 *[プロパティ] > [デバッグ]* の順に移動します
     1. *[リリース]* という構成がアクティブであることを確認します
     1. *[起動するデバッガー]* を **[リモート マシン]** に設定します
-    1. *マシン名*を**使用する HoleLens の IP** に変更します
+    1. *[コンピューター名]* を、**使用する HoloLens の IP** に変更します
 
 ## <a name="launch-the-sample-project"></a>サンプル プロジェクトを起動する
 

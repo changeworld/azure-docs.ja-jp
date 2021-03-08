@@ -1,19 +1,16 @@
 ---
 title: Open Database Connectivity (ODBC) ドライバーを使用した Excel と Apache Hadoop - Azure HDInsight
 description: Excel 用の Microsoft Hive ODBC ドライバーを使用できるようにセットアップし、Microsoft Excel から HDInsight クラスターのデータを照会する方法を説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: b5499a8c4fd6ee200ca0fac800c8c17c92a1cc0c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2c528859ea5abc6267c10a2ede9c2ca99f84e22f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087845"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946808"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用して Excel を Azure HDInsight 上の Apache Hadoop に接続する
 
@@ -21,7 +18,7 @@ ms.locfileid: "86087845"
 
 Microsoft のビッグ データ ソリューションでは、HDInsight にデプロイされた Apache Hadoop クラスターと Microsoft Business Intelligence (BI) コンポーネントが統合されます。 たとえば、Hadoop クラスターの Hive データ ウェアハウスに Excel を接続する機能があります。 Microsoft Hive Open Database Connectivity (ODBC) ドライバーを使用して接続します。
 
-Microsoft Power Query for Excel アドインを使用して、HDInsight クラスターに関連付けられているデータを Excel から接続できます。 詳細については、[ を使用した Excel と HDInsight の接続](../hdinsight-connect-excel-power-query.md)に関するページを参照してください。
+Microsoft Power Query for Excel アドインを使用して、HDInsight クラスターに関連付けられているデータを Excel から接続できます。 詳細については、[ を使用した Excel と HDInsight の接続](./apache-hadoop-connect-excel-power-query.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,9 +50,9 @@ Microsoft Power Query for Excel アドインを使用して、HDInsight クラ�
    |  データ ソース名 |データ ソースに名前を付けます。 |
    |  ホスト |「`HDInsightClusterName.azurehdinsight.net`」と入力します。 たとえば、「 `myHDICluster.azurehdinsight.net` 」のように入力します。 注: クライアント VM が同じ仮想ネットワークにピアリングされている限り、`HDInsightClusterName-int.azurehdinsight.net` がサポートされます。 |
    |  Port |**443** を使用します。 (このポートは 563 から 443 に変更されました)。 |
-   |  データベース |**既定値**を使用します。 |
+   |  データベース |**既定値** を使用します。 |
    |  メカニズム |**[Microsoft Azure HDInsight Service]** を選択します |
-   |  [ユーザー名] |HDInsight クラスター ユーザーの HTTP ユーザー名を入力します。 既定のユーザー名は **admin**です。 |
+   |  [ユーザー名] |HDInsight クラスター ユーザーの HTTP ユーザー名を入力します。 既定のユーザー名は **admin** です。 |
    |  Password |HDInsight クラスター ユーザーのパスワードを入力します。 **[Save Password (Encrypted)]\(パスワードの保存 (暗号化済み)\)** チェック ボックスをオンにします。|
 
 1. 省略可能: **[詳細オプション]** を選択します。  

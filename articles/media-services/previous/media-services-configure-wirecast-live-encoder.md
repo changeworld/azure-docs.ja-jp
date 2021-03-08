@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: 7b11d7f577f0a2ceb7284d9f78ccf83a64c72fd3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ecab0ee67dd1d5cee3fd9927c00c9f9d827b2f47
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258114"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910051"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Wirecast エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
 
@@ -51,7 +51,7 @@ ms.locfileid: "89258114"
 ## <a name="create-a-channel"></a>チャネルの作成
 1. AMSE ツールで、 **[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]** を選択します。
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
+    ![スクリーンショットは、メニューから選択された [チャネルの作成] を示しています。](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
 
 2. チャネルの名前を指定します。説明フィールドは省略可能です。 [チャネル設定] の [Live Encoding] オプションで入力プロトコルを **[RTMP]** に設定して、 **[Standard]** を選択します。 それ以外の設定はすべてそのままにしておくことができます。
 
@@ -59,7 +59,7 @@ ms.locfileid: "89258114"
 
 3. **[チャネルの作成]** をクリックします。
 
-   ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast2.png)
+   ![スクリーンショットは、[ライブ チャンネルの作成] ダイアログ ボックスを示しています。](./media/media-services-wirecast-live-encoder/media-services-wirecast2.png)
 
 > [!NOTE]
 > チャネルの開始までに 20 分程度かかることがあります。
@@ -76,7 +76,7 @@ ms.locfileid: "89258114"
 ## <a name="configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />Telestream Wirecast エンコーダーを構成する
 このチュートリアルでは、次の出力設定が使用されます。 このセクションの残りの部分では、構成の手順の詳細について説明します。
 
-**ビデオ**:
+**ビデオ** :
 
 * コーデック:H.264
 * プロファイル:高 (レベル 4.0)
@@ -84,7 +84,7 @@ ms.locfileid: "89258114"
 * キーフレーム:2 秒 (60 秒)
 * フレーム レート:30
 
-**オーディオ**:
+**オーディオ** :
 
 * コーデック:AAC (LC)
 * ビットレート:192 kbps
@@ -100,7 +100,7 @@ ms.locfileid: "89258114"
 
     エンコードのプロファイルは、 **Azure H.264 720 p 16:9 (1280 x 720)** に事前に選択されています。 これらの設定をカスタマイズするには、ドロップダウンの右側にある歯車アイコンを選択し、 **[新しいプリセット]** を選択します。
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
+    ![スクリーンショットは、BlobTrigger が選択された [テンプレートを選択] ダイアログ ボックスを示しています。](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
 5. エンコーダー プリセットを構成します。
 
     プリセットに名前を付けて、次の推奨設定を確認します。
@@ -118,30 +118,30 @@ ms.locfileid: "89258114"
    * ターゲットのビットレート:192 kbps
    * サンプル レート:44.100 kHz
 
-     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
+     ![スクリーンショットは、AzureTest1 のエンコーダー プリセットを示しています。](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
 6. **[保存]** をクリックします。
 
     エンコードのフィールドで、新しく作成したプロファイルを選択できるようになりました。
 
     新しいプロファイルが選択されていることを確認します。
-7. Wirecast の **RTMP エンドポイント**に割り当てるために、チャネルの入力 URL を取得します。
+7. Wirecast の **RTMP エンドポイント** に割り当てるために、チャネルの入力 URL を取得します。
 
     AMSE ツールに戻り、チャネルの完了状態を確認します。 状態が **[開始中]** から **[実行中]** に変わったら、入力 URL を取得することができます。
 
     チャネルが実行されている場合、チャネル名を右クリックして、下へ移動して **[入力 URL をクリップボードにコピー]** にマウスを合わせ、 **[プライマリ入力 URL]** を選択します。  
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast6.png)
+    ![スクリーンショットは、プライマリ入力 URL の [クリップボードに URL をコピーする] オプションを示しています。](./media/media-services-wirecast-live-encoder/media-services-wirecast6.png)
 8. Wirecast の **[出力設定]** ウィンドウで、この情報を出力セクションの **[アドレス]** フィールドに貼り付け、ストリーム名を割り当てます。
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
+    ![スクリーンショットに、[出力設定] が示されています。](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
 
 1. **[OK]** を選択します。
 2. メインの **[Wirecast]** 画面で、ビデオとオーディオの入力ソースの準備が整っていることを確認し、左上隅の **[ストリーム]** をクリックします。
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
+    ![スクリーンショットは、Wirecast ストリーム ボタンを示しています。](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 
 > [!IMPORTANT]
-> **[ストリーム]** をクリックする前に、チャネルの準備が整っていることを確認する**必要があります**。
+> **[ストリーム]** をクリックする前に、チャネルの準備が整っていることを確認する **必要があります** 。
 > また、15 分を超える入力投稿フィードがある場合を除き、チャネルを準備可能のままにしないでください。
 >
 >
@@ -150,7 +150,7 @@ ms.locfileid: "89258114"
 
 AMSE ツールに移動し、テストするチャネルを右クリックします。 メニューが表示されたら、 **[プレビューの再生]** にマウスを合わせ、 **[Azure Media Player を使用]** を選択します。  
 
-![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
+![スクリーンショットは、[Azure Media Player を使用した再生] オプションが選択されていることを示しています。](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
 
 ストリームがプレーヤーに表示されている場合は、エンコーダーが AMS に接続するように正しく構成されています。
 
@@ -159,7 +159,7 @@ AMSE ツールに移動し、テストするチャネルを右クリックしま
 ## <a name="create-a-program"></a>プログラムを作成する
 1. チャネルの再生が確認されたら、プログラムを作成します。 AMSE ツールの **[Live]** タブで、プログラム領域内を右クリックし、 **[新しいプログラムの作成]** を選択します。  
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast9.png)
+    ![スクリーンショットは、[プログラムの作成] オプションが選択されていることを示しています。](./media/media-services-wirecast-live-encoder/media-services-wirecast9.png)
 2. 必要に応じてプログラムに名前を付け、 **[アーカイブ ウィンドウの長さ]** (既定では 4 時間) を調整します。 ストレージの場所を指定することも、既定値のままにすることもできます。  
 3. **[プログラムを今すぐ開始]** ボックスを選択します。
 4. **[プログラムの作成]** をクリックします。  

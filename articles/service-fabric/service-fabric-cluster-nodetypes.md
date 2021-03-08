@@ -4,17 +4,16 @@ description: Azure Service Fabric のノードの種類を仮想マシン スケ
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
-ms.custom: sfrev
-ms.openlocfilehash: 4efa8626e80cbd64cd6216faa1869d7210f32cf2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9e30c02de54806006a1881448bcb9f788a57310c
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261104"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095255"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric のノードの種類と仮想マシン スケール セット
 
-[仮想マシン スケール セット](../virtual-machine-scale-sets/index.yml)は、Azure コンピューティング リソースです。 スケール セットを使用すると、仮想マシンのコレクションをセットとしてデプロイおよび管理できます。 Azure Service Fabric クラスターで定義するノードの種類ごとに、正確に 1 つのスケール セットが設定されます。複数のノードの種類は同じスケール セットでサポートできず、1 つのノードの種類は (ほとんどの場合) 複数のスケール セットでサポートすることはできません。 これに対する例外は、レプリカが元のスケール セットからアップグレードされたスケール セットに移行されている間に、同じ `nodeTypeRef` 値を持つ 2 つのスケール セットが一時的に存在する場合に、ノードの種類を[垂直スケーリングする](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)というまれな状況です。
+[仮想マシン スケール セット](../virtual-machine-scale-sets/index.yml)は、Azure コンピューティング リソースです。 スケール セットを使用すると、仮想マシンのコレクションをセットとしてデプロイおよび管理できます。 Azure Service Fabric クラスターで定義するノードの種類ごとに、正確に 1 つのスケール セットが設定されます。複数のノードの種類は同じスケール セットでサポートできず、1 つのノードの種類は複数のスケール セットでサポートできません。
 
 Service Fabric ランタイムは、*Microsoft.Azure.ServiceFabric* 仮想マシン拡張機能によって、スケール セット内の各仮想マシンにインストールされます。 各ノードの種類を個別にスケールアップまたはスケールダウンしたり、各クラスター ノードで実行されている OS SKU を変更したり、異なるポートのセットを開いたり、別の容量メトリックを使用したりできます。
 
@@ -32,7 +31,7 @@ Service Fabric ランタイムは、*Microsoft.Azure.ServiceFabric* 仮想マシ
 
 Azure Portal でクラスターをデプロイした場合、またはサンプル Azure Resource Manager テンプレートを使用した場合、リソース グループのすべてのリソースが一覧に表示されます。 また、各スケール セットまたはノードの種類のロード バランサーを確認できます。 ロード バランサー名には、次の形式が使用されます: **LB-&lt;ノードの種類の名前&gt;** 。 たとえば、次の図で示すように、LB-sfcluster4doc-0 などです。
 
-![リソース][Resources]
+![2 つのロード バランサーが強調表示されているリソース グループを表示するスクリーンショット。][Resources]
 
 ## <a name="service-fabric-virtual-machine-extension"></a>Service Fabric 仮想マシン拡張機能
 

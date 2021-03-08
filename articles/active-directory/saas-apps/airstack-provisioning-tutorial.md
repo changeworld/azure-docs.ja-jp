@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/18/2019
 ms.author: Zhchia
-ms.openlocfilehash: d89107a795c658161c2b543f2aacfb37398efb3c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c1bab9b40766fe22baa94497d71d3f8757e1c210
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542872"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348791"
 ---
 # <a name="tutorial-configure-airstack-for-automatic-user-provisioning"></a>チュートリアル:Airstack を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -58,7 +58,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Airstack の SCIM の追加](media/airstack-provisioning-tutorial/azureconfig.png)
 
-3.  **[生成]** ボタンをクリックします。 **Azure 用のシークレット トークン**をコピーします。 この値を、Azure portal で Airstack アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
+3.  **[生成]** ボタンをクリックします。 **Azure 用のシークレット トークン** をコピーします。 この値を、Azure portal で Airstack アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
 
     ![Airstack の作成トークン](media/airstack-provisioning-tutorial/generatetoken.png)
 
@@ -89,7 +89,7 @@ Azure AD での自動ユーザー プロビジョニング用に Airstack を構
 このセクションでは、Azure AD でのユーザー、グループ、またはその両方の割り当てに基づいて、Airstack でユーザー、グループ、またはその両方が作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!TIP]
-> Airstack では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Airstack シングル サインオンのチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/airstack-tutorial)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> Airstack で SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Airstack シングル サインオンのチュートリアル](./airstack-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-airstack-in-azure-ad"></a>Azure AD で Airstack の自動ユーザー プロビジョニングを構成するには、次の操作を実行します。
 
@@ -103,13 +103,13 @@ Azure AD での自動ユーザー プロビジョニング用に Airstack を構
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://api-as.lenovosoftware.com/0/as/common/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した**SCIM 認証トークン**の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Airstack への接続を確保します。 接続できない場合は、使用中の Airstack アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://api-as.lenovosoftware.com/0/as/common/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した **SCIM 認証トークン** の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Airstack への接続を確保します。 接続できない場合は、使用中の Airstack アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -153,4 +153,3 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="next-steps"></a>次のステップ
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
-

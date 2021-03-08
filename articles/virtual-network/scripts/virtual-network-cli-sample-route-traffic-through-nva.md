@@ -1,6 +1,6 @@
 ---
 title: ネットワーク仮想アプライアンス経由のトラフィックのルーティング - Azure CLI スクリプト サンプル
-description: Azure CLI スクリプト サンプル - ファイアウォール ネットワーク仮想アプライアンス経由のトラフィックのルーティング
+description: ファイアウォール ネットワーク仮想アプライアンス経由のトラフィックのルーティング - Azure CLI スクリプト サンプル。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cc539800cb9cb75ecc69f0d7ae923ed3edfd2ad0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 964fda8168867c115502c7262dc1d41e55075866
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87492294"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91317652"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance---azure-cli-script-sample"></a>ネットワーク仮想アプライアンス経由のトラフィックのルーティング - Azure CLI スクリプト サンプル
 

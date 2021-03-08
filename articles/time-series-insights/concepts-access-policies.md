@@ -9,14 +9,14 @@ manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/25/2020
+ms.date: 12/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 35a2be5c9f418bc423ae56c456db0062677a33c2
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 84b973dfa016b069b18fda47a4336fe952f73b3c
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856124"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780860"
 ---
 # <a name="grant-data-access-to-an-environment"></a>環境へのデータ アクセスの許可
 
@@ -60,7 +60,7 @@ ms.locfileid: "88856124"
 
 ## <a name="provide-guest-access-from-another-azure-ad-tenant"></a>別の Azure AD テナントからのゲスト アクセスの提供
 
-`Guest` ロールは管理ロールではありません。 あるテナントから別のテナントに招待されたアカウントを示す用語として使用されます。 テナントのディレクトリに招待されると、ゲスト アカウントには、他のアカウントと同様に、同じアクセス制御を適用できます。 [アクセス制御 (IAM)] ブレードを使用して、Azure Time Series Insights 環境に管理アクセスを許可できます。 または、[データ アクセス ポリシー] ブレードで、環境内のデータへのアクセスを許可できます。 Azure Active Directory (Azure AD) テナントのゲスト アクセスの詳細については、「[Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)」を参照してください。
+`Guest` ロールは管理ロールではありません。 あるテナントから別のテナントに招待されたアカウントを示す用語として使用されます。 テナントのディレクトリに招待されると、ゲスト アカウントには、他のアカウントと同様に、同じアクセス制御を適用できます。 [アクセス制御 (IAM)] ブレードを使用して、Azure Time Series Insights 環境に管理アクセスを許可できます。 または、[データ アクセス ポリシー] ブレードで、環境内のデータへのアクセスを許可できます。 Azure Active Directory (Azure AD) テナントのゲスト アクセスの詳細については、「[Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/external-identities/add-users-administrator.md)」を参照してください。
 
 別のテナントから Azure AD ユーザーに Azure Time Series Insights 環境へのゲスト アクセスを付与するには、以下の手順を実行します。
 
@@ -124,4 +124,4 @@ ms.locfileid: "88856124"
 
 * Azure Active Directory アプリの登録手順については、[認証と承認](time-series-insights-authentication-and-authorization.md)に関する記事を参照してください。
 
-* [Azure Time Series Insights TSI Explorer で自分の環境](./time-series-insights-update-explorer.md)を表示します。
+* [Azure Time Series Insights Explorer で自分の環境](./concepts-ux-panels.md)を表示します。

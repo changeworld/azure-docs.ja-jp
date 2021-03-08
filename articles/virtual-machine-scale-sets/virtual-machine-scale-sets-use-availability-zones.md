@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: e1c91bf9138e37c6de381ab34ab80413d3040981
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: c5ddd5846be91e9fc99a251d6ad45ade8bde2937
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029316"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016660"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>可用性ゾーンを使用する仮想マシン スケール セットを作成する
 
@@ -22,13 +22,17 @@ ms.locfileid: "87029316"
 
 ## <a name="availability-considerations"></a>可用性に関する考慮事項
 
-API バージョン *2017-12-01* では、1 つ以上のゾーンにスケール セットを展開するときに、"最大拡散" または "5 障害ドメインの固定拡散" のどちらかを選んで展開できます。 最大拡散を選ぶと、スケール セットは各ゾーン内の可能な限り多くの障害ドメインに VM を拡散します。 この拡散では、ゾーンごとの障害ドメインが 5 個より多く、または少なくなる可能性があります。 "5 障害ドメインの固定拡散" では、スケール セットは各ゾーンの正確に 5 個の障害ドメインに VM を拡散します。 割り当て要求を満たすために各ゾーン 5 個の個別障害ドメインを検出できない場合、要求は失敗します。
+リージョン (非ゾーン) スケール セットを API バージョン *2017-12-01* で 1 つ以上のゾーンにデプロイする場合、次のような可用性オプションがあります。
+- 最大拡散 (platformFaultDomainCount = 1)
+- 静的固定拡散 (platformFaultDomainCount = 5)
+- ストレージ ディスクの障害ドメインに適合した拡散 (platforFaultDomainCount = 2 または 3)
+
+最大拡散を選ぶと、スケール セットは各ゾーン内の可能な限り多くの障害ドメインに VM を拡散します。 この拡散では、ゾーンごとの障害ドメインが 5 個より多く、または少なくなる可能性があります。 静的固定拡散を使用すると、スケール セットはゾーンごとに 5 個の障害ドメインに VM を拡散します。 割り当て要求を満たすために各ゾーン 5 個の個別障害ドメインを検出できない場合、要求は失敗します。
 
 この方法ではほとんどの場合に最善の拡散を提供するので、**ほとんどのワークロードでは最大拡散を使って展開することをお勧めします**。 個別のハードウェア分離ユニットにレプリカを拡散する必要がある場合は、複数の可用性ゾーンに拡散し、各ゾーン内では最大拡散を利用することを勧めします。
 
-最大拡散では、VM が拡散される障害ドメインの数に関係なく、スケール セット VM インスタンス ビューおよびインスタンス メタデータには、既定の 1 つのドメインだけが表示されることに注意してください。 各ゾーン内の拡散は暗黙で行われます。
-
-最大拡散を使うには、*platformFaultDomainCount* を *1* に設定します。 5 障害ドメインの固定拡散を使うには、*platformFaultDomainCount* を *5* に設定します。 API バージョン *2017-12-01* では、単一ゾーンおよびクロスゾーンのスケール セットに対する *platformFaultDomainCount* の既定値は *1* です。 現在、リージョン (非ゾーン) スケール セットでは 5 障害ドメインの固定拡散のみがサポートされています。
+> [!NOTE]
+> 最大拡散では、VM が拡散される障害ドメインの数に関係なく、スケール セット VM インスタンス ビューおよびインスタンス メタデータには、既定の 1 つのドメインだけが表示されることに注意してください。 各ゾーン内の拡散は暗黙で行われます。
 
 ### <a name="placement-groups"></a>配置グループ
 
@@ -209,10 +213,10 @@ New-AzVmss `
 }
 ```
 
-パブリック IP アドレスまたはロード バランサーを作成する場合、 *"sku": { "name":"Standard" }"* プロパティを指定してゾーン冗長ネットワーク リソースを作成します。 また、ネットワーク セキュリティ グループとルールを作成して、すべてのトラフィックを許可する必要があります。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-overview.md)」および「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md)」をご覧ください。
+パブリック IP アドレスまたはロード バランサーを作成する場合、ゾーン冗長ネットワーク リソースを作成するには、*"sku": { "name": "Standard" }"* プロパティを指定します。 また、ネットワーク セキュリティ グループとルールを作成して、すべてのトラフィックを許可する必要があります。 詳しくは、「[Azure Load Balancer Standard の概要](../load-balancer/load-balancer-overview.md)」および「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md)」をご覧ください。
 
 ゾーン冗長スケール セットとネットワーク リソースの完全な例については、[こちらのサンプル Resource Manager テンプレート](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)をご覧ください
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 可用性ゾーンにスケール セットを作成したので、次に、[仮想マシン スケール セットにアプリケーションを展開する](tutorial-install-apps-cli.md)方法または[仮想マシン スケール セットで自動スケールを使用する](tutorial-autoscale-cli.md)方法を学習できます。

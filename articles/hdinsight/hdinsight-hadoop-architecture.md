@@ -1,19 +1,16 @@
 ---
 title: Apache Hadoop のアーキテクチャ - Azure HDInsight
 description: Azure HDInsight クラスター上の Apache Hadoop ストレージおよび処理について説明します。
-author: ashishthaps
-ms.author: ashishth
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
-ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f291e5aa440a3e6e45a1dcdb872e18c8d4557ce
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162210"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945905"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight の Apache Hadoop アーキテクチャ
 
@@ -53,12 +50,12 @@ NodeManagers は、アプリケーションを構成するタスクを実行し�
 
 ### <a name="azure-storage"></a>Azure Storage
 
-* [Azure Storage Blob の論理的な削除](../storage/blobs/storage-blob-soft-delete.md)
-* [BLOB の削除の取り消し](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+* [Azure Storage Blob の論理的な削除](../storage/blobs/soft-delete-blob-overview.md)
+* [BLOB の削除の取り消し](/rest/api/storageservices/undelete-blob)
 
 ### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
 
-[Restore-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
+[Restore-AzDataLakeStoreDeletedItem](/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
 
 ### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
 

@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 062b2cac093c3049f65dd485e280776602c06e4b
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 8d3f8e9441064a5d2d1372e3f177534b8dfefb93
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279722"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359834"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect のトポロジ
 この記事では、主な統合ソリューションとして Azure AD Connect 同期を使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。 この記事には、サポートされている構成とサポートされていない構成の両方が含まれています。
@@ -31,14 +31,14 @@ ms.locfileid: "89279722"
 
 | 説明 | Symbol |
 | --- | --- |
-| オンプレミスの Active Directory フォレスト |![オンプレミスの Active Directory フォレスト](./media/plan-connect-topologies/LegendAD1.png) |
-| オンプレミス Active Directory とフィルター処理されたインポート |![Active Directory とフィルター処理されたインポート](./media/plan-connect-topologies/LegendAD2.png) |
-| Azure AD Connect 同期サーバー |![Azure AD Connect 同期サーバー](./media/plan-connect-topologies/LegendSync1.png) |
-| Azure AD Connect 同期サーバー "ステージング モード" |![Azure AD Connect 同期サーバー "ステージング モード"](./media/plan-connect-topologies/LegendSync2.png) |
-| GALSync と Forefront Identity Manager (FIM) 2010 または Microsoft Identity Manager (MIM) 2016 |![GALSync と FIM 2010 または MIM 2016](./media/plan-connect-topologies/LegendSync3.png) |
-| Azure AD Connect 同期サーバー、詳細 |![Azure AD Connect 同期サーバー、詳細](./media/plan-connect-topologies/LegendSync4.png) |
-| Azure AD |![Azure Active Directory](./media/plan-connect-topologies/LegendAAD.png) |
-| サポートされていないシナリオ |![サポートされていないシナリオ](./media/plan-connect-topologies/LegendUnsupported.png) |
+| オンプレミスの Active Directory フォレスト |![オンプレミスの Active Directory フォレスト](./media/plan-connect-topologies/legendad1.png) |
+| オンプレミス Active Directory とフィルター処理されたインポート |![Active Directory とフィルター処理されたインポート](./media/plan-connect-topologies/legendad2.png) |
+| Azure AD Connect 同期サーバー |![Azure AD Connect 同期サーバー](./media/plan-connect-topologies/legendsync1.png) |
+| Azure AD Connect 同期サーバー "ステージング モード" |![Azure AD Connect 同期サーバー "ステージング モード"](./media/plan-connect-topologies/legendsync2.png) |
+| GALSync と Forefront Identity Manager (FIM) 2010 または Microsoft Identity Manager (MIM) 2016 |![GALSync と FIM 2010 または MIM 2016](./media/plan-connect-topologies/legendsync3.png) |
+| Azure AD Connect 同期サーバー、詳細 |![Azure AD Connect 同期サーバー、詳細](./media/plan-connect-topologies/legendsync4.png) |
+| Azure AD |![Azure Active Directory](./media/plan-connect-topologies/legendaad.png) |
+| サポートされていないシナリオ |![サポートされていないシナリオ](./media/plan-connect-topologies/legendunsupported.png) |
 
 
 > [!IMPORTANT]
@@ -46,17 +46,17 @@ ms.locfileid: "89279722"
 
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>単一のフォレスト、単一の Azure AD テナント
-![単一のフォレストと単一のテナントのトポロジ](./media/plan-connect-topologies/SingleForestSingleDirectory.png)
+![単一のフォレストと単一のテナントのトポロジ](./media/plan-connect-topologies/singleforestsingledirectory.png)
 
 最も一般的なトポロジは、1 つのオンプレミス フォレスト (1 つまたは複数のドメイン) と、1 つの Azure AD テナントです。 Azure AD 認証では、パスワード ハッシュ同期が使用されます。 Azure AD Connect の高速インストールでは、このトポロジのみがサポートされます。
 
 ### <a name="single-forest-multiple-sync-servers-to-one-azure-ad-tenant"></a>単一のフォレスト、1 つの Azure AD テナントに対する複数の同期サーバー
-![サポートされていない、単一のフォレストのフィルター処理されたトポロジ](./media/plan-connect-topologies/SingleForestFilteredUnsupported.png)
+![サポートされていない、単一のフォレストのフィルター処理されたトポロジ](./media/plan-connect-topologies/singleforestfilteredunsupported.png)
 
 同じ Azure AD テナントに接続される複数の Azure AD Connect 同期サーバーはサポートされていません ([ステージング サーバー](#staging-server)は除きます)。 これらのサーバーが相互に排他的な一連のオブジェクトと同期するように構成されている場合でもサポートされません。 1 台のサーバーからフォレスト内のすべてのドメインに到達できない場合や、複数のサーバー間で負荷を分散したい場合に、このトポロジを検討したことがあるかもしれません。
 
 ## <a name="multiple-forests-single-azure-ad-tenant"></a>複数のフォレスト、単一の Azure AD テナント
-![複数のフォレストと単一のテナントのトポロジ](./media/plan-connect-topologies/MultiForestSingleDirectory.png)
+![複数のフォレストと単一のテナントのトポロジ](./media/plan-connect-topologies/multiforestsingledirectory.png)
 
 多くの組織の環境には、オンプレミス Active Directory フォレストが複数存在します。 複数のオンプレミス Active Directory フォレストが使用される理由はさまざまです。 一般的な例として、アカウント リソース フォレストのある設計や、合併や買収の結果としての状況があります。
 
@@ -81,16 +81,16 @@ Azure AD Connect 同期の既定の構成では、次のことを前提として
 詳細については、[既定の構成](concept-azure-ad-connect-sync-default-configuration.md)に関するページを参照してください。
 
 ### <a name="multiple-forests-multiple-sync-servers-to-one-azure-ad-tenant"></a>複数のフォレスト、1 つの Azure AD テナントに対する複数の同期サーバー
-![複数のフォレストと複数の同期サーバーのサポートされていないトポロジ](./media/plan-connect-topologies/MultiForestMultiSyncUnsupported.png)
+![複数のフォレストと複数の同期サーバーのサポートされていないトポロジ](./media/plan-connect-topologies/multiforestmultisyncunsupported.png)
 
 1 つの Azure AD テナントに接続する複数の Azure AD Connect 同期サーバーはサポートされていません。 例外として、 [ステージング サーバー](#staging-server)の使用があります。
 
-このトポロジは、1 つの Azure AD テナントに接続された**複数の同期サーバー**がサポートされていない点で、以下とは異なります。
+このトポロジは、1 つの Azure AD テナントに接続された **複数の同期サーバー** がサポートされていない点で、以下とは異なります。
 
 ### <a name="multiple-forests-single-sync-server-users-are-represented-in-only-one-directory"></a>複数のフォレスト、単一の同期サーバー、ユーザーは 1 つのディレクトリだけで表される
-![ユーザーがすべてのディレクトリで 1 度だけ示されるオプション](./media/plan-connect-topologies/MultiForestUsersOnce.png)
+![ユーザーがすべてのディレクトリで 1 度だけ示されるオプション](./media/plan-connect-topologies/multiforestusersonce.png)
 
-![複数のフォレストと分離トポロジの説明図](./media/plan-connect-topologies/MultiForestSeparateTopologies.png)
+![複数のフォレストと分離トポロジの説明図](./media/plan-connect-topologies/multiforestseparatetopologies.png)
 
 この環境では、すべてのオンプレミス フォレストが個別のエンティティとして扱われます。 他のどのフォレストにもユーザーは存在しません。 各フォレストには独自の Exchange 組織があり、フォレスト間に GALSync はありません。 このトポロジは、合併や買収後の組織や、各部署が独立して運営されている組織で見られます。 Azure AD ではこれらのフォレストは同じ組織内にあり、統合された GAL で表示されます。 前の図では、すべてのフォレスト内の各オブジェクトが、一度メタバースに表され、ターゲットの Azure AD テナントに集約されます。
 
@@ -98,9 +98,9 @@ Azure AD Connect 同期の既定の構成では、次のことを前提として
 これらのすべてのシナリオで共通しているのは、配布グループとセキュリティ グループにユーザー、連絡先、および外部セキュリティ プリンシパル (FSP) を組み合わせて含めることができることです。 FSP は、セキュリティ グループ内の他のフォレストのメンバーを表すために、Active Directory Domain Services (ADDS) で使用されます。 すべての FSP は、Azure AD 内の実際のオブジェクトに解決されます。
 
 ### <a name="multiple-forests-full-mesh-with-optional-galsync"></a>複数のフォレスト - オプションの GALSync を使用したフル メッシュ
-![ユーザーの ID が複数のディレクトリに存在する場合の照合にメール属性を使用するオプション](./media/plan-connect-topologies/MultiForestUsersMail.png)
+![ユーザーの ID が複数のディレクトリに存在する場合の照合にメール属性を使用するオプション](./media/plan-connect-topologies/multiforestusersmail.png)
 
-![複数のフォレストのフル メッシュ トポロジ](./media/plan-connect-topologies/MultiForestFullMesh.png)
+![複数のフォレストのフル メッシュ トポロジ](./media/plan-connect-topologies/multiforestfullmesh.png)
 
 フル メッシュ トポロジでは、ユーザーおよびリソースを任意のフォレストに配置することができます。 一般的には、フォレスト間に双方向の信頼があります。
 
@@ -109,28 +109,28 @@ Azure AD Connect 同期の既定の構成では、次のことを前提として
 このシナリオでは、ID オブジェクトはメール属性を通じて結合されます。 あるフォレストのメールボックスを持つユーザーが、他のフォレストの連絡先と結合されます。
 
 ### <a name="multiple-forests-account-resource-forest"></a>複数のフォレスト: アカウント リソース フォレスト
-![ID が複数のディレクトリに存在する場合の照合に ObjectSID および msExchMasterAccountSID 属性を使用するオプション](./media/plan-connect-topologies/MultiForestUsersObjectSID.png)
+![ID が複数のディレクトリに存在する場合の照合に ObjectSID および msExchMasterAccountSID 属性を使用するオプション](./media/plan-connect-topologies/multiforestusersobjectsid.png)
 
-![複数のフォレストのアカウント リソース フォレスト トポロジ](./media/plan-connect-topologies/MultiForestAccountResource.png)
+![複数のフォレストのアカウント リソース フォレスト トポロジ](./media/plan-connect-topologies/multiforestaccountresource.png)
 
-アカウント リソース フォレスト トポロジでは、アクティブなユーザー アカウントを持つ 1 つ以上の "*アカウント*" フォレストが存在します。 また、アカウントが無効になった 1 つ以上の "*リソース*" フォレストも存在します。
+アカウント リソース フォレスト トポロジでは、アクティブなユーザー アカウントを持つ 1 つ以上の " *アカウント* " フォレストが存在します。 また、アカウントが無効になった 1 つ以上の " *リソース* " フォレストも存在します。
 
 このシナリオでは、1 つ (以上) のリソース フォレストがすべてのアカウント フォレストを信頼します。 リソース フォレストには、通常、Exchange および Lync を使用する拡張 Active Directory スキーマがあります。 すべての Exchange および Lync サービスと、他の共有サービスは、このフォレストに配置されます。 ユーザーのユーザー アカウントはこのフォレストで無効になり、メールボックスはアカウント フォレストにリンクされます。
 
-## <a name="office-365-and-topology-considerations"></a>Office 365 とトポロジの考慮事項
-Office 365 の一部のワークロードでは、サポートされるトポロジに一定の制限が生じます。
+## <a name="microsoft-365-and-topology-considerations"></a>Microsoft 365 とトポロジの考慮事項
+Microsoft 365 の一部のワークロードでは、サポートされるトポロジに一定の制限が生じます。
 
 | ワークロード | 制限 |
 | --------- | --------- |
 | Exchange Online | Exchange Online でサポートされているハイブリッド トポロジの詳細については、「[Hybrid deployments with multiple Active Directory forests (複数の Active Directory フォレストを伴うハイブリッド展開)](/Exchange/hybrid-deployment/hybrid-with-multiple-forests)」を参照してください。 |
 | Skype for Business | 複数のオンプレミス フォレストを使用している場合は、アカウント リソース フォレスト トポロジのみがサポートされます。 詳細については、「[Skype for Business Server 2015 の環境要件](/skypeforbusiness/plan-your-deployment/requirements-for-your-environment/environmental-requirements)」を参照してください。 |
 
-大規模な組織の場合は、[Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) 機能を使用することを検討してください。 これにより、ユーザーのリソースが配置されているデータ センターのリージョンを定義できます。
+大規模な組織の場合は、[Microsoft 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) 機能を使用することを検討してください。 これにより、ユーザーのリソースが配置されているデータ センターのリージョンを定義できます。
 
 ## <a name="staging-server"></a>ステージング サーバー
-![トポロジでのステージング サーバー](./media/plan-connect-topologies/MultiForestStaging.png)
+![トポロジでのステージング サーバー](./media/plan-connect-topologies/multiforeststaging.png)
 
-Azure AD Connect では、"*ステージング モード*" でのセカンド サーバーのインストールがサポートされています。 このモードのサーバーは、接続されたすべてのディレクトリからデータを読み取りますが、接続されたディレクトリへの書き込みは行いません。 通常の同期サイクルを使用するため、ID データの更新されたコピーを保持します。
+Azure AD Connect では、" *ステージング モード* " でのセカンド サーバーのインストールがサポートされています。 このモードのサーバーは、接続されたすべてのディレクトリからデータを読み取りますが、接続されたディレクトリへの書き込みは行いません。 通常の同期サイクルを使用するため、ID データの更新されたコピーを保持します。
 
 プライマリ サーバーで障害が発生した場合は、ステージング サーバーにフェールオーバーできます。 この操作は、Azure AD Connect ウィザードで実行します。 このセカンド サーバーは、インフラストラクチャをプライマリ サーバーと共有していないため、別のデータ センターに配置することができます。 プライマリ サーバーで行われたすべての構成の変更をセカンド サーバーに手動でコピーする必要があります。
 
@@ -142,14 +142,14 @@ Azure AD Connect では、"*ステージング モード*" でのセカンド �
 
 ## <a name="multiple-azure-ad-tenants"></a>複数の Azure AD テナント
 組織の Azure AD には 1 つのテナントを置くことをお勧めします。
-複数の Azure AD テナントの使用を計画する前に、[Azure AD の管理単位の管理](../users-groups-roles/directory-administrative-units.md)に関する記事を参照してください。 単一のテナントを使用できる一般的なシナリオを説明しています。
+複数の Azure AD テナントの使用を計画する前に、[Azure AD の管理単位の管理](../roles/administrative-units.md)に関する記事を参照してください。 単一のテナントを使用できる一般的なシナリオを説明しています。
 
-![複数のフォレストと複数のテナントのトポロジ](./media/plan-connect-topologies/MultiForestMultiDirectory.png)
+![複数のフォレストと複数のテナントのトポロジ](./media/plan-connect-topologies/multiforestmultidirectory.png)
 
 Azure AD Connect 同期サーバーと Azure AD テナントには、一対一のリレーションシップがあります。 各 Azure AD テナントに、1 つの Azure AD Connect 同期サーバーをインストールする必要があります。 Azure AD テナントのインスタンスは、分離される設計になっています。 つまり、あるテナントのユーザーは、他のテナントのユーザーを認識することができません。 この分離が望ましい場合、これはサポートされている構成です。 そうでない場合は、単一 Azure AD テナント モデルを使用する必要があります。
 
 ### <a name="each-object-only-once-in-an-azure-ad-tenant"></a>Azure AD テナントでの各オブジェクトの 1 回のみの使用
-![単一のフォレストのフィルター処理されたトポロジ](./media/plan-connect-topologies/SingleForestFiltered.png)
+![単一のフォレストのフィルター処理されたトポロジ](./media/plan-connect-topologies/singleforestfiltered.png)
 
 このトポロジでは、1 つの Azure AD Connect 同期サーバーが各 Azure AD テナントに接続されます。 各 Azure AD Connect 同期サーバーについては、操作対象のオブジェクトのセットが相互排他的になるようなフィルター処理を構成する必要があります。 たとえば、各サーバーのスコープを特定のドメインまたは組織単位に設定できます。
 
@@ -161,7 +161,10 @@ DNS ドメインは 1 つの Azure AD テナントにのみ登録できます。
 
 このトポロジには次の制約があります。その制約を除けば、各シナリオはサポートされます。
 
-* Azure AD テナントのいずれか 1 つのみが、オンプレミスの Active Directory インスタンスを持つ Exchange ハイブリッドを有効にできます。
+* 最大で 5 つの Azure Active Directory テナントで、オンプレミスの Active Directory インスタンスを持つ Exchange ハイブリッドを有効にできます。 このシナリオについては、「[Exchange ハイブリッド構成ウィザードの 2020 年 9 月更新プログラム](https://techcommunity.microsoft.com/t5/exchange-team-blog/september-2020-hybrid-configuration-wizard-update/ba-p/1687698)」を参照してください。
+* ハイブリッド構成ウィザードが実行されている Exchange Server は、2016 CU18 または 2019 CU7 以降である必要があります。
+* 各 Azure AD Connect インスタンスは、ドメインに参加しているコンピューター上で実行されている必要があります。
+* オンプレミスのディレクトリからユーザーをフィルター処理するには、[ドメイン/OU のフィルタリング] オプションを使って Azure AD Connect を構成する必要があります。 このオプションを使用すると、ユーザーが 1 つのオンライン Exchange テナントにのみ表示されるようになります。
 * Windows 10 デバイスは、1 つの Azure AD テナントだけに関連付けることができます。
 * パスワード ハッシュ同期とパススルー認証のシングル サインオン (SSO) オプションは、1 つの Azure AD テナントでのみ使用できます。
 
@@ -171,7 +174,7 @@ DNS ドメインは 1 つの Azure AD テナントにのみ登録できます。
 * デバイスの書き戻し。
 
 ### <a name="each-object-multiple-times-in-an-azure-ad-tenant"></a>Azure AD テナントでの各オブジェクトの複数回の使用
-![単一のフォレストと複数のテナントのサポートされていないトポロジ](./media/plan-connect-topologies/SingleForestMultiDirectoryUnsupported.png) ![単一のフォレストと複数のコネクタのサポートされていないトポロジ](./media/plan-connect-topologies/SingleForestMultiConnectorsUnsupported.png)
+![単一のフォレストと複数のテナントのサポートされていないトポロジ](./media/plan-connect-topologies/singleforestmultidirectoryunsupported.png) ![単一のフォレストと複数のコネクタのサポートされていないトポロジ](./media/plan-connect-topologies/singleforestmulticonnectorsunsupported.png)
 
 次のタスクはサポートされていません。
 
@@ -180,7 +183,7 @@ DNS ドメインは 1 つの Azure AD テナントにのみ登録できます。
 * 複数の Azure AD テナントに接続するような Azure AD Connect 同期の変更。
 
 ### <a name="galsync-by-using-writeback"></a>書き戻しの使用による GALSync
-![複数のフォレストと複数のディレクトリのサポートされていないトポロジ (GALSync は Azure AD に重点を置いている)](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync1Unsupported.png) ![複数のフォレストと複数のディレクトリのサポートされていないトポロジ (GALSync はオンプレミスの Azure AD に重点を置いている)](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync2Unsupported.png)
+![複数のフォレストと複数のディレクトリのサポートされていないトポロジ (GALSync は Azure AD に重点を置いている)](./media/plan-connect-topologies/multiforestmultidirectorygalsync1unsupported.png) ![複数のフォレストと複数のディレクトリのサポートされていないトポロジ (GALSync はオンプレミスの Azure AD に重点を置いている)](./media/plan-connect-topologies/multiforestmultidirectorygalsync2unsupported.png)
 
 Azure AD のテナントは、分離するように設計されています。 次のタスクはサポートされていません。
 
@@ -188,7 +191,7 @@ Azure AD のテナントは、分離するように設計されています。 �
 * Azure AD Connect 同期を使用した、別のオンプレミス Active Directory インスタンスへの、連絡先としてのユーザーのエクスポート。
 
 ### <a name="galsync-with-on-premises-sync-server"></a>GALSync とオンプレミスの同期サーバー
-![複数のフォレストと複数のディレクトリのトポロジにおける GALSync](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync.png)
+![複数のフォレストと複数のディレクトリのトポロジにおける GALSync](./media/plan-connect-topologies/multiforestmultidirectorygalsync.png)
 
 FIM 2010 または MIM 2016 オンプレミスを使用して、2 つの Exchange 組織間でユーザーを同期できます (GALSync 経由)。 1 つの組織内のユーザーは、他の組織では外部ユーザーおよび連絡先として表示されます。 これらの異なるオンプレミス Active Directory インスタンスは、独自の Azure AD テナントと同期できます。
 

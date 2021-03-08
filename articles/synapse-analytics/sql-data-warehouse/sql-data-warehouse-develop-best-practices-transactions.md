@@ -1,6 +1,6 @@
 ---
 title: トランザクションの最適化
-description: ロールバックに長時間かかるリスクを最小限に抑えながら、Synapse SQL でトランザクション コードのパフォーマンスを最適化する方法について説明します。
+description: ロールバックに長時間かかるリスクを最小限に抑えながら、専用 SQL プールでトランザクション コードのパフォーマンスを最適化する方法について説明します。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,22 +11,22 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d7fa9336a7a90ab73d3dc60c6c865ebadfb2af1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f7d6f8ca285fdc024db9ba952af9f7d169e7188
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213501"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678476"
 ---
-# <a name="optimizing-transactions-in-synapse-sql"></a>Synapse SQL でのトランザクションの最適化
+# <a name="optimizing-transactions-in-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールでトランザクションを最適化する
 
-ロールバックに長時間かかるリスクを最小限に抑えながら、Synapse SQL でトランザクション コードのパフォーマンスを最適化する方法について説明します。
+ロールバックに長時間かかるリスクを最小限に抑えながら、専用 SQL プールでトランザクション コードのパフォーマンスを最適化する方法について説明します。
 
 ## <a name="transactions-and-logging"></a>トランザクションとログ記録
 
-トランザクションは、リレーショナル データベース エンジンの重要な要素です。 トランザクションは、データに変更を加える際に使用されます。 これらのトランザクションは、明示的に指定することも、暗黙的に指定することもできます。 INSERT ステートメント、UPDATE ステートメント、および DELETE ステートメントはすべて、暗黙的なトランザクションの例です。 明示的なトランザクションでは、BEGIN TRAN、COMMIT TRAN、または ROLLBACK TRAN を使用します。 明示的なトランザクションは、一般的には、複数の変更ステートメントを関連付けて 1 つのアトミック単位にする必要がある場合に使用します。
+トランザクションは、リレーショナル SQL プール エンジンの重要な要素です。 トランザクションは、データに変更を加える際に使用されます。 これらのトランザクションは、明示的に指定することも、暗黙的に指定することもできます。 INSERT ステートメント、UPDATE ステートメント、および DELETE ステートメントはすべて、暗黙的なトランザクションの例です。 明示的なトランザクションでは、BEGIN TRAN、COMMIT TRAN、または ROLLBACK TRAN を使用します。 明示的なトランザクションは、一般的には、複数の変更ステートメントを関連付けて 1 つのアトミック単位にする必要がある場合に使用します。
 
-データベースに対する変更は、トランザクション ログを使用して追跡されます。 ディストリビューションには、それぞれ独自のトランザクション ログがあります。 トランザクション ログの書き込みは自動で行われるため、 手動で構成する必要はありません。 ただし、このプロセスでは書き込みが保証されず、システムにオーバーヘッドが加わります。 この影響を最小限に抑えるには、トランザクションの効率を考慮してコードを記述してください。 トランザクションの効率が良いコードは、大きく分けて 2 つのカテゴリに分類されます。
+SQL プールに対する変更は、トランザクション ログを使用して追跡されます。 ディストリビューションには、それぞれ独自のトランザクション ログがあります。 トランザクション ログの書き込みは自動で行われるため、 手動で構成する必要はありません。 ただし、このプロセスでは書き込みが保証されず、システムにオーバーヘッドが加わります。 この影響を最小限に抑えるには、トランザクションの効率を考慮してコードを記述してください。 トランザクションの効率が良いコードは、大きく分けて 2 つのカテゴリに分類されます。
 
 * できるだけ、最小ログ記録コンストラクトを使用する
 * 単独で実行時間の長いトランザクションを避けるために、範囲を制限したバッチを使用してデータを処理する
@@ -79,13 +79,13 @@ CTAS と INSERT...SELECT は、どちらも一括読み込み操作です。 た
 セカンダリ インデックスや非クラスター化インデックスを更新するための書き込みは常に完全ログ記録操作である点に注意してください。
 
 > [!IMPORTANT]
-> Synapse SQL プールのデータベースには、60 のディストリビューションがあります。 そのため、すべての行が均等に分散されると仮定すると、1 つのパーティションに格納される場合、クラスター化列ストア インデックスに書き込む際に最小ログ記録が適用されるには、バッチに 6,144,000 行以上を含める必要があります。 テーブルがパーティション分割されていて、行がパーティション境界をまたいで挿入される場合は、すべての行が均等に分散されると仮定すると、パーティション境界あたり 6,144,000 行を含める必要があります。 各ディストリビューション内の各パーティションに含める行は、ディストリビューションへの挿入に対する最小ログ記録のしきい値である 102,400 行を超える必要があります。
+> 専用 SQL プールには、60 個のディストリビューションがあります。 そのため、すべての行が均等に分散されると仮定すると、1 つのパーティションに格納される場合、クラスター化列ストア インデックスに書き込む際に最小ログ記録が適用されるには、バッチに 6,144,000 行以上を含める必要があります。 テーブルがパーティション分割されていて、行がパーティション境界をまたいで挿入される場合は、すべての行が均等に分散されると仮定すると、パーティション境界あたり 6,144,000 行を含める必要があります。 各ディストリビューション内の各パーティションに含める行は、ディストリビューションへの挿入に対する最小ログ記録のしきい値である 102,400 行を超える必要があります。
 
 クラスター化インデックスを持つ空でないテーブルにデータを読み込むと、完全ログ記録の行と最小ログ記録の行が混在する場合がよくあります。 クラスター化インデックスは、ページのバランス木 (B ツリー) です。 既に書き込みが行われているページに別のトランザクションの行が含まれている場合、この書き込みは完全ログ記録になります。 一方、ページが空の場合は、そのページへの書き込みは最小ログ記録になります。
 
 ## <a name="optimizing-deletes"></a>削除の最適化
 
-DELETE は完全ログ記録操作です。  テーブルまたはパーティションから大量のデータを削除する必要がある場合は、残しておきたいデータを `SELECT` する方が合理的です。これは、最小ログ記録操作として実行できます。  データを選択するには、[CTAS](sql-data-warehouse-develop-ctas.md) を使用して新しいテーブルを作成します。  テーブルを作成したら、[RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、古いテーブルを新しく作成したテーブルに置き換えます。
+DELETE は完全ログ記録操作です。  テーブルまたはパーティションから大量のデータを削除する必要がある場合は、残しておきたいデータを `SELECT` する方が合理的です。これは、最小ログ記録操作として実行できます。  データを選択するには、[CTAS](sql-data-warehouse-develop-ctas.md) を使用して新しいテーブルを作成します。  テーブルを作成したら、[RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用して、古いテーブルを新しく作成したテーブルに置き換えます。
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -117,7 +117,7 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 
 ## <a name="optimizing-updates"></a>更新の最適化
 
-UPDATE は完全ログ記録操作です。  テーブルまたはパーティション内の多数の行を更新する必要がある場合は、[CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) などの最小ログ記録操作を使用すると、効率が大幅に向上することがよくあります。
+UPDATE は完全ログ記録操作です。  テーブルまたはパーティション内の多数の行を更新する必要がある場合は、[CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) などの最小ログ記録操作を使用すると、効率が大幅に向上することがよくあります。
 
 次の例では、最小ログ記録ができるように、テーブルの完全更新を CTAS に変換しています。
 
@@ -178,7 +178,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> 大きなテーブルを作成し直す場合は、Synapse SQL プールのワークロード管理機能を使用することが役立ちます。 詳細については、[「ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。
+> 大きなテーブルを作成し直す場合は、専用 SQL プールのワークロード管理機能を使用することが役立ちます。 詳細については、[「ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。
 
 ## <a name="optimizing-with-partition-switching"></a>パーティションの切り替えを使用した最適化
 
@@ -407,16 +407,16 @@ END
 
 ## <a name="pause-and-scaling-guidance"></a>一時停止とスケールのガイダンス
 
-Synapse SQL を使用して、必要に応じて SQL プールの[一時停止、再開、およびスケーリング](sql-data-warehouse-manage-compute-overview.md)を実行できます。 SQL プールの一時停止またはスケーリングを実行すると、実行中のトランザクションは直ちに終了し、開いているトランザクションはすべてロールバックされることを理解しておくことが重要です。 一時停止操作やスケール操作の前にワークロードによって時間のかかるデータ変更が発行されており、完了していない場合は、この作業を元に戻す必要があります。 この元に戻す操作によって、SQL プールの一時停止またはスケーリングの実行時間に影響が出る場合があります。
+専用 SQL プールを使用して、必要に応じて専用 SQL プールの[一時停止、再開、およびスケーリング](sql-data-warehouse-manage-compute-overview.md)を実行できます。 専用 SQL プールの一時停止またはスケーリングを実行すると、実行中のトランザクションは直ちに終了し、開いているトランザクションはすべてロールバックされることを理解しておくことが重要です。 一時停止操作やスケール操作の前にワークロードによって時間のかかるデータ変更が発行されており、完了していない場合は、この作業を元に戻す必要があります。 この元に戻す操作によって、専用 SQL プールの一時停止またはスケーリングの実行時間に影響が出る場合があります。
 
 > [!IMPORTANT]
 > `UPDATE` と `DELETE` はどちらも完全ログ記録操作であるため、これらの元に戻す/再実行操作には、同等の最小ログ記録操作よりもはるかに長い時間のかかることがあります。
 
-最善の策としては、実行中のデータ変更トランザクションが完了してから、SQL プールの一時停止またはスケーリングを実行します。 ただし、このシナリオは、常に実用的であるわけではありません。 ロールバックに長時間かかる可能性を軽減するのに役立つ次のオプションを検討してください。
+最善の策としては、実行中のデータ変更トランザクションが完了してから、専用 SQL プールの一時停止またはスケーリングを実行します。 ただし、このシナリオは、常に実用的であるわけではありません。 ロールバックに長時間かかる可能性を軽減するのに役立つ次のオプションを検討してください。
 
-* 長時間かかる操作を [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して書き換える
+* 長時間かかる操作を [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用して書き換える
 * 操作をチャンクに分割し、行のサブセットに対して実行する
 
 ## <a name="next-steps"></a>次のステップ
 
-分離レベルとトランザクションの制限の詳細については、[Synapse SQL のトランザクション](sql-data-warehouse-develop-transactions.md)に関するページを参照してください。  その他のベスト プラクティスの概要については、「[Azure SQL Data Warehouse のベスト プラクティス](sql-data-warehouse-best-practices.md)」を参照してください。
+分離レベルとトランザクションの制限について詳しくは、[専用 SQL プールのトランザクション](sql-data-warehouse-develop-transactions.md)に関する記事をご覧ください。  その他のベスト プラクティスの概要については、[専用 SQL プールのベスト プラクティス](sql-data-warehouse-best-practices.md)に関する記事を参照してください。

@@ -4,12 +4,12 @@ description: Site Recovery を使用して、Azure に System Center VMM クラ�
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
-ms.openlocfilehash: f32103adce184a67cec9e5a778ac1d1e6f330f4d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: c806f968bc6530879f64ddbf6fd4c7d45aa7a8d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86130226"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89442822"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Azure に VMM クラウドのオンプレミス Hyper-V VM のディザスター リカバリーを設定する
 
@@ -83,7 +83,11 @@ ms.locfileid: "86130226"
 Microsoft Azure Recovery Services Agent セットアップ ウィザードで、次の設定を構成します。
 
 1. **[前提条件の確認]** : **[次へ]** を選択します。 不足している前提条件があると自動的にインストールされます。
-1. **[インストールの設定]** : インストール先とキャッシュの場所の既定値を使用します。 キャッシュ ドライブには 5 GB 以上のストレージが必要です。 600 GB 以上の空き領域があるドライブをお勧めします。 その後、 **[インストール]** を選択します。
+1. **[インストールの設定]** : インストール場所をそのまま使用します。 その後、 **[インストール]** を選択します。
+
+    >[!NOTE]
+    >Azure Site Recovery の場合、**キャッシュの場所**は必要ありません。
+
 1. **[インストール]** : インストールが完了したら、 **[閉じる]** を選択してウィザードを終了します。
 
    ![エージェントのインストール](./media/hyper-v-vmm-azure-tutorial/mars-install.png)
@@ -115,7 +119,7 @@ Site Recovery によって、互換性のある Azure ストレージ アカウ�
    - **[復旧ポイントの保持期間]** は、各復旧ポイントが 2 時間保持されることを示します。
    - **[アプリ整合性スナップショットの頻度]** は、アプリ整合性スナップショットを含む復旧ポイントが 1 時間ごとに作成されるように設定されています。
    - **[初期レプリケーションの開始時刻]** には、初期レプリケーションがすぐに開始されることが示されています。
-   - **[Azure に格納されるデータの暗号化]** は、既定値 ( **[オフ]** ) に設定され、Azure の保存データは暗号化されていないことを示します。
+   - **[Azure に格納されるデータの暗号化]** は、既定値 (**[オフ]**) に設定され、Azure の保存データは暗号化されていないことを示します。
 1. ポリシーが作成されたら、 **[OK]** を選択します。 新しいポリシーを作成すると、自動的に VMM クラウドに関連付けられます。
 
 ## <a name="enable-replication"></a>レプリケーションを有効にする

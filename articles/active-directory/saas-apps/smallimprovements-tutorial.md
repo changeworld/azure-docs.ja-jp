@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c659af83034a2406449e586723341e1ae535934f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6eced120a05ddaca8d8cf426fd2a977891b3e36b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525391"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997139"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>チュートリアル:Azure Active Directory と Small Improvements の統合
 
@@ -27,7 +27,7 @@ Small Improvements と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで Small Improvements に自動的にサインイン (シングル サインオン) されるように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -108,7 +108,7 @@ Small Improvements で Azure AD シングル サインオンを構成するに�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Small Improvements クライアント サポート チーム](mailto:support@small-improvements.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -128,17 +128,17 @@ Small Improvements で Azure AD シングル サインオンを構成するに�
 
 1. メイン ダッシュボード ページで、左側の **[管理]** ボタンをクリックします。
 
-    ![Configure single sign-on](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
+    ![[管理] ボタンが選択された画面のスクリーンショット。](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
 
 1. **[統合]** セクションで、**[SAML SSO]** ボタンをクリックします。
 
-    ![Configure single sign-on](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
+    ![[統合] で SAML S S O アイコンが選択された画面のスクリーンショット。](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
 
 1. [SSO Setup] ページで、次の手順に従います。
 
-    ![Configure single sign-on](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
+    ![[S S O Setup ]\(S S O の設定\) ページを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
-    a. **[HTTP Endpoint]\(HTTP エンドポイント\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    a. **[HTTP Endpoint]\(HTTP エンドポイント\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     b. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、 **[x509 証明書]** ボックスに貼り付けます。 
 
@@ -211,15 +211,15 @@ Azure AD ユーザーが Small Improvements にログインできるようにす
 
 1. [ユーザー管理] セクションで、 **[ユーザー ディレクトリ]** ボタンをクリックします。
 
-    ![Azure AD のテスト ユーザーの作成](./media/smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
+    ![[管理の概要] の [ユーザー ディレクトリ] が選択された画面のスクリーンショット。](./media/smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
 
 1. **[ユーザーの追加]** をクリックします。
 
-    ![Azure AD のテスト ユーザーの作成](./media/smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
+    ![[ユーザーの追加] ボタンのスクリーンショット。](./media/smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
 
 1. **[ユーザーの追加]** ダイアログで、次の手順を実行します。 
 
-    ![Azure AD のテスト ユーザーの作成](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
+    ![[ユーザーの追加] ダイアログ ボックスを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
 
     a. 「**Britta**」のように、ユーザーの **[名]** を入力します。
 
@@ -235,12 +235,12 @@ Azure AD ユーザーが Small Improvements にログインできるようにす
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Small Improvements] タイルをクリックすると、SSO を設定した Small Improvements に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Small Improvements] タイルをクリックすると、SSO を設定した Small Improvements に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

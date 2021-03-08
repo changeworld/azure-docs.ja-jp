@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 624171ffc10a06ac3089b6dceb1683c63c88dbda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12860629d78391ed271306daba29a51aeb326c1d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74975280"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90531595"
 ---
 # <a name="tpm-attestation"></a>TPM の構成証明
 
 Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サービスです。このサービスは、指定された IoT Hub にプロビジョニングするゼロタッチ デバイスの構成に使用されます。 Device Provisioning Service を利用すると、セキュリティで保護された方法で多数のデバイスをプロビジョニングできます。
 
-この記事では、[TPM](./concepts-device.md) を使用した場合の ID 構成証明プロセスについて説明します。 TPM は、トラステッド プラットフォーム モジュールの略で、一種のハードウェア セキュリティ モジュール (HSM) です。 この記事では、ディスクリート TPM、ファームウェア TPM、または統合された TPM を使用していると仮定します。 ソフトウェアでエミュレートされた TPM はプロトタイプの作成やテストには適していますが、ディスクリート TPM、ファームウェア TPM、または統合された TPM と同じレベルのセキュリティを提供することはできません。 実稼働環境でソフトウェア TPM を使用することはお勧めしません。 TPM の種類について詳しくは、[TPM の概要](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf)に関するページをご覧ください。
+この記事では、トラステッド プラットフォーム モジュール (TPM) を使用した場合の ID 構成証明プロセスについて説明します。 TPM は、ハードウェア セキュリティ モジュール (HSM) の一種です。 この記事では、ディスクリート TPM、ファームウェア TPM、または統合された TPM を使用していると仮定します。 ソフトウェアでエミュレートされた TPM はプロトタイプの作成やテストには適していますが、ディスクリート TPM、ファームウェア TPM、または統合された TPM と同じレベルのセキュリティを提供することはできません。 実稼働環境でソフトウェア TPM を使用することはお勧めしません。 TPM の種類について詳しくは、[TPM の概要](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf)に関するページをご覧ください。
 
 この記事は、HMAC キーをサポートする TPM 2.0 を使用したデバイスおよびその保証キーにのみ該当します。 認証に X.509 証明書を使用するデバイスは対象外です。 TPM は、業界で広く採用されている Trusted Computing Group の ISO 標準です。TPM の詳細については、[完全な TPM 2.0 仕様](https://trustedcomputinggroup.org/tpm-library-specification/)または [ISO/IEC 11889 仕様](https://www.iso.org/standard/66510.html)を参照してください。また、この記事は、公開キーおよび秘密キーのペアと、これらを使用して暗号化を行う方法について熟知していることを前提としています。
 
@@ -67,5 +67,5 @@ TPM を装備したデバイスを Device Provisioning Service に初めて接�
 
 これで、デバイスが IoT Hub に接続され、デバイスのキーが安全に格納されていることがわかり安心できます。 Device Provisioning Service で TPM を使用してデバイスの ID を安全に検証する方法を確認しました。詳細について次の記事を参照してください。
 
-* [自動プロビジョニングの概念をすべて確認する](./concepts-auto-provisioning.md)
+* [プロビジョニングの概念を確認する](about-iot-dps.md#provisioning-process)
 * SDK を使用して[自動プロビジョニングの作業を開始](./quick-setup-auto-provision.md)し、フローを処理する。

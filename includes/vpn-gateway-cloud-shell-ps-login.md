@@ -5,32 +5,34 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/10/2020
+ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 50ce8530aca40eed07741f35be1a57bbd7cc1868
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24d146da7946176c92902698d0f52ae01baf79ee
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77133594"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061630"
 ---
-昇格された特権で PowerShell コンソールを開きます。
+PowerShell をローカルで実行している場合は、昇格された特権で PowerShell コンソールを開き、Azure アカウントに接続します。 *Connect-AzAccount* コマンドレットでは、資格情報の入力を求められます。 認証後にアカウント設定がダウンロードされ、Azure PowerShell で使用できるようになります。
 
-Azure PowerShell をローカルで実行している場合は、お使いの Azure アカウントに接続してください。 *Connect-AzAccount* コマンドレットでは、資格情報の入力を求められます。 認証後にアカウント設定がダウンロードされ、Azure PowerShell で使用できるようになります。 代わりに Azure Cloud Shell を使用している場合は、*Connect-AzAccount* を実行する必要はありません。 Azure Cloud Shell によって、Azure アカウントに自動的に接続されます。
+PowerShell をローカルで実行するのではなく Azure Cloud Shell を使用している場合は、 *Connect-AzAccount* を実行する必要はありません。 **[試してみる]** を選択した後、Azure Cloud Shell によって、Azure アカウントに自動的に接続されます。
 
-```azurepowershell
-Connect-AzAccount
-```
+1. PowerShell をローカルで実行している場合は、サインインします。
 
-複数のサブスクリプションがある場合は、Azure サブスクリプションの一覧を取得します。
+   ```azurepowershell
+   Connect-AzAccount
+   ```
 
-```azurepowershell-interactive
-Get-AzSubscription
-```
+1. 複数のサブスクリプションがある場合は、Azure サブスクリプションの一覧を取得します。
 
-使用するサブスクリプションを指定します。
+   ```azurepowershell-interactive
+   Get-AzSubscription
+   ```
 
-```azurepowershell-interactive
-Select-AzSubscription -SubscriptionName "Name of subscription"
-```
+1. 使用するサブスクリプションを指定します。
+
+   ```azurepowershell-interactive
+   Select-AzSubscription -SubscriptionName "Name of subscription"
+   ```

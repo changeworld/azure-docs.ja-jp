@@ -5,19 +5,19 @@ titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
 tag: azure-synpase
-ms.openlocfilehash: 67fef7b192caf064cd7c3b4b6af8923b153ee5b1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: c18d235977f1256a10e813fa8e02aa3590366fe1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985348"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936415"
 ---
 # <a name="conditional-access-with-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics での条件付きアクセス
 
@@ -25,11 +25,11 @@ ms.locfileid: "85985348"
 
 [Azure SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、および [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) では、Microsoft の条件付きアクセスがサポートされています。
 
-次の手順では、条件付きアクセス (CA) ポリシーを適用するように Azure SQL Database、SQL Managed Instance、または Azure Synapse を構成する方法を示します。  
+次の手順では、条件付きアクセス ポリシーを適用するように Azure SQL Database、SQL Managed Instance、または Azure Synapse を構成する方法を示します。  
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure Active Directory (Azure AD) 認証をサポートするように Azure SQL Database、Azure SQL Managed Instance、または Azure Synapse の Azure SQL プールを構成する必要があります。 具体的な手順については、「[SQL Database または Azure Synapse で Azure Active Directory 認証を構成して管理する](authentication-aad-configure.md)」を参照してください。  
+- Azure Active Directory (Azure AD) 認証をサポートするように Azure SQL Database、Azure SQL Managed Instance、または Azure Synapse の専用 SQL プールを構成する必要があります。 具体的な手順については、「[SQL Database または Azure Synapse で Azure Active Directory 認証を構成して管理する](authentication-aad-configure.md)」を参照してください。  
 - 多要素認証が有効になっている場合は、最新の SQL Server Management Studio (SSMS) などのサポートされているツールに接続する必要があります。 詳細については、「[SQL Server Management Studio 用に Azure SQL Database の多要素認証を構成する](authentication-mfa-ssms-configure.md)」を参照してください。  
 
 ## <a name="configure-conditional-access"></a>条件付きアクセスを構成する
@@ -37,7 +37,7 @@ ms.locfileid: "85985348"
 > [!NOTE]
 > 次の例では Azure SQL Database を使用しますが、条件付きアクセスを構成する適切な製品を選択する必要があります。
 
-1. Azure portal にサインインし、 **[Azure Active Directory]** を選択してから **[条件付きアクセス]** を選択します。 詳細については、「[Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference)」を参照してください。  
+1. Azure portal にサインインし、 **[Azure Active Directory]** を選択してから **[条件付きアクセス]** を選択します。 詳細については、「[Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス](../../active-directory/conditional-access/concept-conditional-access-conditions.md)」を参照してください。  
    ![[条件付きアクセス] ブレード](./media/conditional-access-configure/conditional-access-blade.png)
 
 2. **[Conditional Access-Policies]\(条件付きアクセス ポリシー\)** ブレードで、 **[新しいポリシー]** をクリックし、名前を指定してから **[Configure rules]\(規則の構成\)** をクリックします。  

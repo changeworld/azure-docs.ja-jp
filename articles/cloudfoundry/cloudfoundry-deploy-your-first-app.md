@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 793a8f291be4fcca6fad19d486849253dddc089f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8afc4f15f421a7b60b95d09b954e7742c24c66e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84754322"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519678"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Microsoft Azure の Cloud Foundry に最初のアプリをデプロイする
 
@@ -64,7 +64,7 @@ cf target -o testorg -s dev
 これにより、アプリケーションをデプロイすると、新しい org と space に作成されます。 現在、新しい org や space にアプリがないことを確認するには、もう一度「`cf apps`」と入力します。
 
 > [!NOTE] 
-> org や space の詳細、およびそれらをロールベースのアクセス制御 (RBAC) で使用する方法について詳しくは、[Cloud Foundry のドキュメント][cf-orgs-spaces-docs]をご覧ください。
+> org や space の詳細、およびそれらを Cloud Foundry のロールベースのアクセス制御 (Cloud Foundry RBAC) で使用する方法の詳細については、[Cloud Foundry のドキュメント][cf-orgs-spaces-docs]を参照してください。
 
 ## <a name="deploy-an-application"></a>アプリケーションをデプロイする
 
@@ -146,7 +146,7 @@ cf scale -i 2 hello-spring-cloud
 [oss-cf-bosh]: https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs
 [pcf-azuremarketplace-pivotaldocs]: https://docs.pivotal.io/pivotalcf/customizing/pcf_azure.html
 [cf-cli]: https://github.com/cloudfoundry/cli
-[cloudshell-docs]: https://docs.microsoft.com/azure/cloud-shell/overview
+[cloudshell-docs]: ../cloud-shell/overview.md
 [cf-orgs-spaces-docs]: https://docs.cloudfoundry.org/concepts/roles.html
 [spring-boot]: https://projects.spring.io/spring-boot/
 [spring-framework]: https://spring.io

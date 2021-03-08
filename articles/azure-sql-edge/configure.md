@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Edge (プレビュー) の構成
-description: Azure SQL Edge (プレビュー) の構成について説明します。
+title: Azure SQL Edge の構成
+description: Azure SQL Edge の構成について説明します。
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -8,15 +8,15 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 07/28/2020
-ms.openlocfilehash: 722d33e76b6009a44811dfcb8a3238b042ec6918
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/22/2020
+ms.openlocfilehash: 0c49f5ab9f10456c32f7f8516cba0e851fa80e74
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816883"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392335"
 ---
-# <a name="configure-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) の構成
+# <a name="configure-azure-sql-edge"></a>Azure SQL Edge の構成
 
 Azure SQL Edge では、次の 2 つのオプションのいずれかを使用した構成がサポートされています。
 
@@ -30,17 +30,24 @@ Azure SQL Edge では、次の 2 つのオプションのいずれかを使用�
 
 Azure SQL Edge では、SQL Edge コンテナーの構成に使用できるいくつかの異なる環境変数が公開されています。 これらの環境変数は、SQL Server on Linux で使用できる環境変数のサブセットです。 SQL Server on Linux 環境変数の詳細については、[環境変数](/sql/linux/sql-server-linux-configure-environment-variables/)に関する記事をご覧ください。
 
+次の新しい環境変数が Azure SQL Edge に追加されました。 
+
+| 環境変数 | 説明 | 値 |     
+|-----|-----| ---------- | 
+| **PlanId** | 初期化中に使用される Azure SQL Edge SKU を指定します。 この環境変数は、Azure IoT Edge を使用して Azure SQL Edge をデプロイする場合にのみ必要です。 | **sde-developer-on-iot-edge** または **asde-premium-on-iot-edge** | 
+| **MSSQL_TELEMETRY_ENABLED** | 使用状況および診断データの収集を有効または無効にします。 | TRUE または FALSE |  
+| **MSSQL_TELEMETRY_DIR** | 使用状況および診断データ コレクションの監査ファイルのターゲット ディレクトリを設定します。 | SQL Edge コンテナー内のフォルダーの場所。 このフォルダーは、マウント ポイントまたはデータ ボリュームのいずれかを使用してホスト ボリュームにマップできます。 | 
+| **MSSQL_PACKAGE** | デプロイする dacpac または bacpac パッケージの場所を指定します。 | dacpac パッケージまたは bacpac パッケージが格納されているフォルダー、ファイル、または SAS URL。 詳細については、[SQL Edge での SQL Database DACPAC および BACPAC パッケージのデプロイ](deploy-dacpac.md)に関するページをご覧ください。 |
+
+
 次の SQL Server on Linux 環境変数は、Azure SQL Edge ではサポートされていません。 この環境変数を定義しても、コンテナーの初期化中に無視されます。
 
 | 環境変数 | 説明 |
 |-----|-----|
-| **MSSQL_ENABLE_HADR** | 可用性グループを有効にします。 たとえば、**1** は有効、**0** は無効です。 |
+| **MSSQL_ENABLE_HADR** | 可用性グループを有効にします。 たとえば、 **1** は有効、 **0** は無効です。 |
 
 > [!IMPORTANT]
 > SQL Edge の **MSSQL_PID** 環境変数には、有効な値として **Premium** と **Developer** のみを指定できます。 Azure SQL Edge では、プロダクト キーを使用した初期化はサポートされていません。
-
-> [!NOTE]
-> Azure SQL Edge 用の [Microsoft ソフトウェア ライセンス条項](https://go.microsoft.com/fwlink/?linkid=2128283)をダウンロードしてください。
 
 ### <a name="specify-the-environment-variables"></a>環境変数を指定する
 
@@ -53,6 +60,9 @@ Azure SQL Edge では、SQL Edge コンテナーの構成に使用できるい�
 **[コンテナー作成オプション]** に値を追加します。
 
 ![コンテナー作成オプションを使用して設定する](media/configure/set-environment-variables-using-create-options.png)
+
+> [!NOTE]
+> 切断されたデプロイ モードでは、`-e` または `--env`、または `docker run` コマンドの `--env-file` オプションを使用して環境変数を指定できます。
 
 ## <a name="configure-by-using-an-mssqlconf-file"></a>mssql.conf ファイルを使用して構成する
 
@@ -71,6 +81,13 @@ Azure SQL Edge には、SQL Server on Linux に含まれているような [mssq
     }
 ```
 
+次の新しい mssql.conf オプションが Azure SQL Edge 用に追加されました。 
+
+|オプション|説明|
+|:---|:---|
+|**customerfeedback** | SQL Server によって Microsoft にフィードバックが送信されるかどうかを選択します。 詳細については、「[使用状況と診断データの収集を無効にする](usage-and-diagnostics-data-configuration.md#disable-usage-and-diagnostic-data-collection)」を参照してください|      
+|**userrequestedlocalauditdirectory** | 使用状況および診断データ コレクションの監査ファイルのターゲット ディレクトリを設定します。 詳細については、「[使用状況と診断データの収集のローカル監査](usage-and-diagnostics-data-configuration.md#local-audit-of-usage-and-diagnostic-data-collection)」を参照してください |        
+
 次の mssql.conf のオプションは、SQL Edge には適用されません。
 
 |オプション|説明|
@@ -78,11 +95,11 @@ Azure SQL Edge には、SQL Server on Linux に含まれているような [mssq
 |**カスタマー フィードバック** | SQL Server によって Microsoft にフィードバックが送信されるかどうかを選択します。 |
 |**データベース メール プロファイル** | SQL Server on Linux の既定のデータベース メール プロファイルを設定します。 |
 |**高可用性** | 可用性グループを有効にします。 |
-|**Microsoft 分散トランザクション コーディネーター** | Linux で MSDTC の構成とトラブルシューティングを行います。 SQL Edge では、分散トランザクションに関連する追加の構成オプションはサポートされていません。 このような追加の構成オプションの詳細については、「[MSDTC の構成](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#msdtc)」を参照してください。 |
+|**Microsoft 分散トランザクション コーディネーター** | Linux で MSDTC の構成とトラブルシューティングを行います。 SQL Edge では、分散トランザクションに関連する追加の構成オプションはサポートされていません。 このような追加の構成オプションの詳細については、「[MSDTC の構成](/sql/linux/sql-server-linux-configure-mssql-conf#msdtc)」を参照してください。 |
 |**ML サービスの EULA** | Azure Machine Learning パッケージ用の R および Python の EULA に同意します。 これは SQL Server 2019 のみに適用されます。|
 |**outboundnetworkaccess** |[Machine Learning Services](/sql/linux/sql-server-linux-setup-machine-learning/) の R、Python、および Java 拡張機能の送信ネットワーク アクセスを有効にします。|
 
-SQL Edge では次の例の mssql.conf ファイルが機能します。 mssql.conf ファイルの形式の詳細については、「[mssql.conf の書式](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format)」をご覧ください。
+SQL Edge では次の例の mssql.conf ファイルが機能します。 mssql.conf ファイルの形式の詳細については、「[mssql.conf の書式](/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format)」をご覧ください。
 
 ```ini
 [EULA]
@@ -116,7 +133,7 @@ traceflag2 = 1204
 
 ## <a name="run-azure-sql-edge-as-non-root-user"></a>非ルート ユーザーとして Azure SQL Edge を実行する
 
-Azure SQL Edge CTP 2.2 より、ルート以外のユーザーまたはグループを使用して SQL Edge コンテナーを実行できます。 Azure Marketplace を通してデプロイされると、異なるユーザーやグループが指定されていない限り、SQL Edge コンテナーは mssql (非ルート) ユーザーとして起動されます。 デプロイ時に異なる非ルート ユーザーを指定するには、コンテナー作成オプションの下に、キーと値のペア `*"User": "<name|uid>[:<group|gid>]"*` を追加します。 下の例では、SQL Edge はユーザー `*IoTAdmin*` として起動するように構成されています。
+既定では、Azure SQL Edge コンテナーは非ルート ユーザーまたはグループを使用して実行されます。 Azure Marketplace を通して (または docker run を使用して) デプロイされると、異なるユーザーやグループが指定されていない限り、SQL Edge コンテナーは mssql (非ルート) ユーザーとして起動されます。 デプロイ時に異なる非ルート ユーザーを指定するには、コンテナー作成オプションの下に、キーと値のペア `*"User": "<name|uid>[:<group|gid>]"*` を追加します。 下の例では、SQL Edge はユーザー `*IoTAdmin*` として起動するように構成されています。
 
 ```json
 {
@@ -159,7 +176,7 @@ chown -R 10001:0 <database file dir>
 
 ## <a name="persist-your-data"></a> データを保持する
 
-`docker stop` と `docker start` を使用してコンテナーを再起動しても、Azure SQL Edge の構成変更とデータベース ファイルはコンテナーに保持されています。 一方、`docker rm` を使用してコンテナーを削除すると、Azure SQL Edge とデータベースを含め、コンテナーの内容がすべて削除されます。 次のセクションでは、関連付けられているコンテナーが削除された場合でも、**データ ボリューム**を使用してデータベース ファイルを保持する方法について説明します。
+`docker stop` と `docker start` を使用してコンテナーを再起動しても、Azure SQL Edge の構成変更とデータベース ファイルはコンテナーに保持されています。 一方、`docker rm` を使用してコンテナーを削除すると、Azure SQL Edge とデータベースを含め、コンテナーの内容がすべて削除されます。 次のセクションでは、関連付けられているコンテナーが削除された場合でも、 **データ ボリューム** を使用してデータベース ファイルを保持する方法について説明します。
 
 > [!IMPORTANT]
 > Azure SQL Edge の場合、Docker 内でのデータの保持について理解しておくことが重要です。 このセクションの説明に加えて、[Docker コンテナー内でデータを管理する方法](https://docs.docker.com/engine/tutorials/dockervolumes/)については、Docker のドキュメントをご覧ください。
@@ -169,11 +186,11 @@ chown -R 10001:0 <database file dir>
 1 つ目のオプションは、ホスト上のディレクトリをコンテナー内のデータ ボリュームとしてマウントすることです。 これを行うには、`docker run` コマンドを `-v <host directory>:/var/opt/mssql` フラグと共に使用します。 これにより、コンテナーの実行間でデータを復元できます。
 
 ```bash
-docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge
 ```
 
 ```PowerShell
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v <host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets -d mcr.microsoft.com/azure-sql-edge
 ```
 
 この手法では、Docker の外部にあるホスト上のファイルを共有して表示することもできます。
@@ -186,14 +203,14 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 14
 
 ### <a name="use-data-volume-containers"></a>データ ボリューム コンテナーを使用する
 
-2 つ目のオプションは、データ ボリューム コンテナーを使用することです。 `-v` パラメーターを使用してホスト ディレクトリではなくボリューム名を指定して、データ ボリューム コンテナーを作成できます。 次の例では、**sqlvolume** という名前の共有データ ボリュームを作成します。
+2 つ目のオプションは、データ ボリューム コンテナーを使用することです。 `-v` パラメーターを使用してホスト ディレクトリではなくボリューム名を指定して、データ ボリューム コンテナーを作成できます。 次の例では、 **sqlvolume** という名前の共有データ ボリュームを作成します。
 
 ```bash
-docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>' -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge
 ```
 
 ```PowerShell
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge-developer
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong!Passw0rd>" -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/azure-sql-edge
 ```
 
 > [!NOTE]
@@ -210,7 +227,7 @@ docker volume ls
 データ ボリューム コンテナーを削除するには、`docker volume rm` コマンドを使用します。
 
 > [!WARNING]
-> データ ボリューム コンテナーを削除すると、コンテナー内のすべての Azure SQL Edge データが*完全に*削除されます。
+> データ ボリューム コンテナーを削除すると、コンテナー内のすべての Azure SQL Edge データが *完全に* 削除されます。
 
 
 ## <a name="next-steps"></a>次のステップ

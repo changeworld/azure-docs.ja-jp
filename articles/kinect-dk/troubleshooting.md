@@ -7,16 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: トラブルシューティング、更新プログラム、バグ、Kinect、フィードバック、回復、ログ記録、ヒント
-ms.openlocfilehash: 2db7b17ffc8b6595107dbc52fae719aa9f2d15db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6e00b6c5e9e4f82bb668769aade8311896bef32
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277095"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587283"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect の既知の問題とトラブルシューティング
 
-このページには、Azure Kinect DK で Sensor SDK を使用する際の既知の問題とトラブルシューティングのヒントが含まれます。 製品のハードウェア固有の問題については、[製品のサポート ページ](https://aka.ms/kinectsupport)も参照してください。
+このページには、Azure Kinect DK で Sensor SDK を使用する際の既知の問題とトラブルシューティングのヒントが含まれます。 製品のハードウェア固有の問題については、[製品のサポート ページ](./index.yml)も参照してください。
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -165,6 +165,21 @@ PC でどの USB ポートが接続されているかの理解を深めるには
 ## <a name="using-body-tracking-sdk-with-unreal"></a>Unreal での Body Tracking SDK の使用
 
 Unreal で Body Tracking SDK を使用するには、`<SDK Installation Path>\tools` を環境変数 `PATH` に追加しており、`dnn_model_2_0.onnx` と `cudnn64_7.dll` を `Program Files/Epic Games/UE_4.23/Engine/Binaries/Win64` にコピーしていることを確認します。
+
+## <a name="using-azure-kinect-on-headless-linux-system"></a>ヘッドレス Linux システムで Azure Kinect を使用する
+
+Linux 上の Azure Kinect 深度エンジンでは、OpenGL を使用します。 OpenGL には、ウィンドウ インスタンスが必要です。これには、モニターをシステムに接続することが要求されます。 この問題の回避策は次のようになります。
+
+1. 使用する予定のユーザー アカウントに対して自動ログインを有効にします。 自動ログインを有効にする方法については、[この](https://vitux.com/how-to-enable-disable-automatic-login-in-ubuntu-18-04-lts/)記事を参照してください。
+2. システムの電源を切り、モニターを切断し、システムの電源を入れます。 自動ログインでは、x サーバー セッションが強制的に作成されます。
+2. ssh 経由で接続し、DISPLAY 環境変数 `export DISPLAY=:0` を設定します。
+3. Azure Kinect アプリケーションを起動します。
+
+## <a name="missing-c-documentation"></a>C# ドキュメントがない
+
+Sensor SDK C# ドキュメントは、[こちら](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/namespace_microsoft_1_1_azure_1_1_kinect_1_1_sensor.html)から入手できます。
+
+Body Tracking SDK C# ドキュメントは、[こちら](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/namespace_microsoft_1_1_azure_1_1_kinect_1_1_body_tracking.html)から入手できます。
 
 ## <a name="next-steps"></a>次のステップ
 

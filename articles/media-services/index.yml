@@ -1,10 +1,10 @@
 ### YamlMime:Hub
 title: Azure Media Services のドキュメント
-summary: Azure Media Services はクラウドベースのメディアワークフロープラットフォームであり、エンコード・パッケージ化・コンテンツ保護・ライブ配信など必要なソリューションが提供されています。
+summary: Azure Media Services は、クラウドおよびエッジ メディア ワークフロー サービスのコレクションです。これにより、ライブおよびバッチのビデオ分析、コード変換、マルチデバイス配信サービス、コンテンツ保護、および大規模なライブ イベント配信を必要とするソリューションを構築できます。
 brand: azure
 metadata:
   title: Azure Media Services のドキュメント
-  description: Azure Media Services はクラウドベースのメディア ワークフロー プラットフォームで、エンコード、パッケージ化、コンテンツ保護、ライブ イベントの配信を必要とするソリューションを作成できます。
+  description: Azure Media Services は、クラウドおよびエッジ メディア ワークフロー サービスのコレクションです。これにより、ライブおよびバッチのビデオ分析、コード変換、マルチデバイス配信サービス、コンテンツ保護、および大規模なライブ イベント配信を必要とするソリューションを構築できます。
   services: media-services
   ms.service: media-services
   ms.subservice: 
@@ -13,12 +13,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 07//2020
-  ms.openlocfilehash: d6f78b4494a16a0522f93658b063d157819c519e
-  ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+  ms.openlocfilehash: b2fa1520bf73dcd1608c0f3494f4ccc1a3b13be2
+  ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/06/2020
-  ms.locfileid: "87826145"
+  ms.lasthandoff: 01/22/2021
+  ms.locfileid: "98695659"
 highlightedContent:
   items:
   - title: Azure Media Services v3 について
@@ -44,7 +44,7 @@ highlightedContent:
     url: ./previous/media-services-overview.md
   - title: Media Services v2 を v3 に移行する
     itemType: concept
-    url: ./latest/migrate-from-v2-to-v3.md
+    url: ./latest/migrate-v-2-v-3-migration-introduction.md
 conceptualContent:
   items:
   - title: Media Services v3 API を使用した開発

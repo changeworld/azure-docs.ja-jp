@@ -1,25 +1,22 @@
 ---
 title: R Tools for Visual Studio からのジョブの送信 - Azure HDInsight
 description: ローカルの Visual Studio マシンから HDInsight クラスターに R ジョブを送信します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 73d1478ec2d6c90428f22a30ec82634df115d2f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5a0b2d21f7d42b8ce96f72d58e5d0a8ab0c572c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75435251"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943943"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>R Tools for Visual Studio からのジョブの送信
 
-[R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) は、[Visual Studio 2017](https://www.visualstudio.com/downloads/) と [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 以降の両方の Community Edition (無料)、Professional Edition、Enterprise Edition 向けの無料のオープンソース拡張機能です。 RTVS は[Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019) では利用できません。
+[R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) は、[Visual Studio 2017](https://www.visualstudio.com/downloads/) と [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 以降の両方の Community Edition (無料)、Professional Edition、Enterprise Edition 向けの無料のオープンソース拡張機能です。 RTVS は[Visual Studio 2019](/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?preserve-view=true&view=vs-2019) では利用できません。
 
-RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL)、IntelliSense (コード補完)、ggplot2 や ggviz などの R ライブラリを介した[プロットの視覚化](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data)、[R コードのデバッグ](https://docs.microsoft.com/visualstudio/rtvs/debugging)などの多彩なツールを提供することにより、R ワークフローを強化します。
+RTVS は、[R インタラクティブ ウィンドウ](/visualstudio/rtvs/interactive-repl) (REPL)、IntelliSense (コード補完)、ggplot2 や ggviz などの R ライブラリを介した[プロットの視覚化](/visualstudio/rtvs/visualizing-data)、[R コードのデバッグ](/visualstudio/rtvs/debugging)などの多彩なツールを提供することにより、R ワークフローを強化します。
 
 ## <a name="set-up-your-environment"></a>環境の設定方法
 
@@ -32,7 +29,7 @@ RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.c
 3. SSH 認証のための公開キーと秘密キーを用意します。
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. お使いのコンピューターに [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) をインストールします。 ML Server により、[`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) 関数と `RxSpark` 関数が提供されます。
+4. お使いのコンピューターに [ML Server](/previous-versions/machine-learning-server/install/r-server-install-windows) をインストールします。 ML Server により、[`RevoScaleR`](/machine-learning-server/r-reference/revoscaler/revoscaler) 関数と `RxSpark` 関数が提供されます。
 
 5. ローカル クライアントから HDInsight クラスターに対して `RevoScaleR` 関数を実行するための計算コンテキストを提供する、[PuTTY](https://www.putty.org/) をインストールします。
 
@@ -49,7 +46,7 @@ RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.c
 ## <a name="execute-local-r-methods"></a>ローカル R メソッドを実行する
 
 1. HDInsight ML Services クラスターを作成します。
-2. [RTVS 拡張機能](https://docs.microsoft.com/visualstudio/rtvs/installation)をインストールします。
+2. [RTVS 拡張機能](/visualstudio/rtvs/installation)をインストールします。
 3. [サンプル zip ファイル](https://github.com/Microsoft/RTVS-docs/archive/master.zip)をダウンロードします。
 4. `examples/Examples.sln` を開いて、Visual Studio でソリューションを起動します。
 5. `A first look at R` ソリューション フォルダー内の `1-Getting Started with R.R` ファイルを開きます。

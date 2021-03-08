@@ -10,14 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4300860039b76bd076f19acfc252f59ef10d462b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "60499887"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351846"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Bing Search API の利用と表示の要件
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 この使用/表示要件は、次の Bing Search API のコンテンツと関連情報 (リレーションシップ、メタデータ、その他のシグナルを含む) を実装するあらゆる場合に適用されます。
 
@@ -39,7 +44,7 @@ ms.locfileid: "60499887"
 |Answer     | 応答で返される結果のカテゴリ。 たとえば、Bing Web Search API からの応答であれば、回答として返される可能性のあるカテゴリは Web ページの結果、画像、ビデオ、およびニュースになります。 |
 |Response     | Search API の単一の呼び出しにより取得される回答すべてと、その関連データ。 |
 |結果    | 回答に含まれる情報項目。 たとえば、1 つのニュース記事に関連するデータのセットは、ニュース回答の結果です。 |
-|Search API    | Bing Custom Search API、Bing Entity Search API、Bing Image Search API、Bing News Search API、Bing Video Search API、Bing Visual Search API、Local Business Search API、Bing Web Search API の総称。 |
+|検索 API    | Bing Custom Search API、Bing Entity Search API、Bing Image Search API、Bing News Search API、Bing Video Search API、Bing Visual Search API、Local Business Search API、Bing Web Search API の総称。 |
 
 ## <a name="bing-spell-check-and-bing-autosuggest-api-restrictions"></a>Bing Spell Check と Bing Autosuggest API の制限
 
@@ -114,7 +119,7 @@ ms.locfileid: "60499887"
 メッセージング アプリやソーシャル メディアの投稿を通じてユーザーが Search API からの応答を別のユーザーに転送することが許可されている場合は、次の要件が適用されます。 
 
 - 転送される応答は、次の条件を満たす必要があります。
-  - 転送元のユーザーの元に表示された応答のコンテンツに変更を加えていないコンテンツで構成されていること (形式を変更することは問題ありません)。
+  - 転送元のユーザーの元に表示された応答のコンテンツに変更を加えていないコンテンツで構成されていること  (形式を変更することは問題ありません)。
   - メタデータ形式のデータが含まれていないこと。
   - Bing Web Search API、Bing Image Search API、Bing News Search API、Bing Video Search API、Bing Visual Search API からの応答については、その応答が Bing を利用しているインターネット検索エクスペリエンスにより得られたものである旨の文言を表示すること。 たとえば、"Powered by Bing"、"Bing でこの画像の詳細を確認する" などの文言を表示したり、Bing ロゴを使用したりする方法が考えられます。
   - Bing Custom Search API からの応答については、その応答がインターネット検索エクスペリエンスにより得られたものである旨の文言を表示すること。 たとえば、"この検索結果の詳細を確認する" などの文言を表示する方法が考えられます。
@@ -167,5 +172,4 @@ Search API の利用と表示の要件のうち、このセクションよりも
 
 ## <a name="gdpr-compliance"></a>GDPR コンプライアンス  
 
-欧州連合一般データ保護規則 (GDPR) の下で個人データに該当し、Search API、Bing Spell Check API、または Bing Autosuggest API の呼び出しに関連して処理されるデータについては、お客様と Microsoft のどちらも、GDPR に定める独立したデータ管理者となりますのでご了承ください。 お客様は、自己による GDPR の遵守について単独で責任を負うものとします。  
-
+欧州連合一般データ保護規則 (GDPR) の下で個人データに該当し、Search API、Bing Spell Check API、または Bing Autosuggest API の呼び出しに関連して処理されるデータについては、お客様と Microsoft のどちらも、GDPR に定める独立したデータ管理者となりますのでご了承ください。 お客様は、自己による GDPR の遵守について単独で責任を負うものとします。

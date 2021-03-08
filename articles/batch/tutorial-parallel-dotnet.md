@@ -1,16 +1,16 @@
 ---
-title: .NET API を使用して並列ワークロードを実行する
+title: チュートリアル - .NET API を使用して並列ワークロードを実行する
 description: チュートリアル - Batch .NET クライアント ライブラリを使用して、Azure Batch で ffmpeg を使用してメディア ファイルをトランスコードします。
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 09/29/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: f57354a6eb52b3439cf298f66b706f53d101371e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a990a5480a8a6462bb6ef9f84070b78768628fd0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930232"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106548"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>チュートリアル:.NET API を使用して Azure Batch で並列ワークロードを実行する
 
@@ -35,7 +35,7 @@ Azure Batch を使用すると、大規模な並列コンピューティング�
 
 * Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
 
-* [Windows 64 ビット版の ffmpeg 3.4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip)。 この ZIP ファイルをローカル コンピューターにダウンロードします。 このチュートリアルで必要なのは、この ZIP ファイルのみです。 ファイルを解凍したり、ローカルにインストールしたりする必要はありません。
+* [Windows 64 ビット版の ffmpeg 4.3.1](https://github.com/GyanD/codexffmpeg/releases/tag/4.3.1-2020-11-08) (.zip)。 この ZIP ファイルをローカル コンピューターにダウンロードします。 このチュートリアルで必要なのは、この ZIP ファイルのみです。 ファイルを解凍したり、ローカルにインストールしたりする必要はありません。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -47,7 +47,7 @@ Azure Portal を使用して、ffmpeg を[アプリケーション パッケー�
 
 1. Azure Portal で、 **[その他のサービス]**  >  **[Batch アカウント]** の順にクリックし、Batch アカウントの名前をクリックします。
 3. **[アプリケーション]**  >  **[追加]** の順にクリックします。
-4. **[アプリケーション ID]** に「*ffmpeg*」と入力し、パッケージのバージョン「*3.4*」と入力します。 前にダウンロードした ffmpeg の ZIP ファイルを選択し、 **[OK]** をクリックします。 ffmpeg アプリケーション パッケージが Batch アカウントに追加されます。
+4. **[アプリケーション ID]** に「*ffmpeg*」と入力し、パッケージのバージョンは「*4.3.1*」と入力します。 前にダウンロードした ffmpeg の ZIP ファイルを選択し、 **[OK]** をクリックします。 ffmpeg アプリケーション パッケージが Batch アカウントに追加されます。
 
 ![アプリケーション パッケージの追加](./media/tutorial-parallel-dotnet/add-application.png)
 
@@ -84,7 +84,7 @@ private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfw
 
 ```csharp
 const string appPackageId = "ffmpeg";
-const string appPackageVersion = "3.4";
+const string appPackageVersion = "4.3.1";
 ```
 
 ### <a name="build-and-run-the-sample-project"></a>サンプル プロジェクトのビルドと実行
@@ -124,7 +124,7 @@ Elapsed time: 00:09:14.3418742
 
 ![プールのヒート マップ](./media/tutorial-parallel-dotnet/pool.png)
 
-既定の構成でアプリケーションを実行する場合、通常の実行時間は約 **10 分間**です。 プールの作成に最も時間がかかります。
+既定の構成でアプリケーションを実行する場合、通常の実行時間は約 **10 分間** です。 プールの作成に最も時間がかかります。
 
 [!INCLUDE [batch-common-tutorial-download](../../includes/batch-common-tutorial-download.md)]
 
@@ -263,7 +263,7 @@ for (int i = 0; i < inputFiles.Count; i++)
     string outputMediaFile = String.Format("{0}{1}",
         System.IO.Path.GetFileNameWithoutExtension(inputMediaFile),
         ".mp3");
-    string taskCommandLine = String.Format("cmd /c {0}\\ffmpeg-3.4-win64-static\\bin\\ffmpeg.exe -i {1} {2}", appPath, inputMediaFile, outputMediaFile);
+    string taskCommandLine = String.Format("cmd /c {0}\\ffmpeg-4.3.1-2020-09-21-full_build\\bin\\ffmpeg.exe -i {1} {2}", appPath, inputMediaFile, outputMediaFile);
 
     // Create a cloud task (with the task ID and command line)
     CloudTask task = new CloudTask(taskId, taskCommandLine);
@@ -317,7 +317,7 @@ batchClient.JobOperations.TerminateJob(jobId);
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、次の作業を行う方法を学びました。
 
 > [!div class="checklist"]
 > * アプリケーション パッケージを Batch アカウントに追加する
@@ -332,6 +332,3 @@ batchClient.JobOperations.TerminateJob(jobId);
 
 > [!div class="nextstepaction"]
 > [Batch C# のサンプル](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)
-
-
-インスタンス変数 LowPriorityNodeCount=0 と DedicatedNodeCount=5 を設定することによって問題が解決され、ジョブが実行できるようになりました。

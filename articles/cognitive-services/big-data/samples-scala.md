@@ -1,6 +1,6 @@
 ---
 title: ビッグ データ向けの Cognitive Services - Scala サンプル
-description: Azure Databricks 向けに Python で記述された Cognitive Services のサンプルを試して、ビッグ データ向けの MMLSpark パイプラインを実行してみましょう。
+description: Azure Databricks 向けの Cognitive Services を使用して、ビッグ データの MMLSpark パイプラインを実行します。
 services: cognitive-services
 author: mhamilton723
 manager: nitinme
@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 098b59b8de0d0d7e5c3929ce084276350c04810a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: c47aa803774343b39efeabe3452f1b256cc64c0d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189312"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363274"
 ---
 # <a name="quick-examples"></a>簡単な例
 
@@ -30,7 +30,7 @@ ms.locfileid: "86189312"
 ## <a name="prerequisites"></a>前提条件
 
 1. 「[概要](getting-started.md)」の手順に従って、Azure Databricks と Cognitive Services の環境を設定します。 このチュートリアルでは、MMLSpark をインストールする方法と、Databricks で Spark クラスターを作成する方法について説明します。
-1. Azure Databricks で新しいノートブックを作成した後、次の**共有コード**をコピーし、ノートブックの新しいセルに貼り付けます。
+1. Azure Databricks で新しいノートブックを作成した後、次の **共有コード** をコピーし、ノートブックの新しいセルに貼り付けます。
 1. 下のサービス サンプルを選択し、コピーしてノートブックの 2 番目の新しいセルに貼り付けます。
 1. サービス サブスクリプション キーのプレースホルダーをすべて実際のキーに置き換えます。
 1. セルの右上隅にある実行ボタン (三角形のアイコン) を選択し、 **[セルの実行]** を選択します。
@@ -49,7 +49,7 @@ val location = "eastus"
 
 ## <a name="text-analytics"></a>Text Analytics
 
-[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) サービスには、テキストからインテリジェントな分析情報を抽出するためのアルゴリズムがいくつか用意されています。 たとえば、指定された入力テキストのセンチメントを見つけることができます。 このサービスでは、`0.0` と `1.0` の間のスコアが返されます。低いスコアは否定的なセンチメントを示し、高いスコアは肯定的なセンチメントを示します。  次のサンプルでは、3 つの単純な文を使用し、それぞれのセンチメント スコアを返します。
+[Text Analytics](../text-analytics/index.yml) サービスには、テキストからインテリジェントな分析情報を抽出するためのアルゴリズムがいくつか用意されています。 たとえば、指定された入力テキストのセンチメントを見つけることができます。 このサービスでは、`0.0` と `1.0` の間のスコアが返されます。低いスコアは否定的なセンチメントを示し、高いスコアは肯定的なセンチメントを示します。  次のサンプルでは、3 つの単純な文を使用し、それぞれのセンチメント スコアを返します。
 
 ```scala
 import org.apache.spark.sql.functions.col
@@ -81,7 +81,7 @@ display(sentiment.transform(df).select(col("text"), col("sentiment")(0).getItem(
 
 ## <a name="computer-vision"></a>Computer Vision
 
-[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) は、画像を分析して、顔、物体、自然言語による記述などの構造を識別します。
+[Computer Vision](../computer-vision/index.yml) は、画像を分析して、顔、物体、自然言語による記述などの構造を識別します。
 このサンプルでは、一連の画像にタグを付けます。 タグは、認識可能な物体、人物、風景、アクションなど、画像内のものを 1 単語で表したものです。
 
 ```scala
@@ -118,7 +118,7 @@ display(analysis.transform(df).select(col("image"), col("results").getItem("tags
 
 ## <a name="bing-image-search"></a>Bing Image Search
 
-[Bing Image Search](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview) では、Web を検索して、ユーザーの自然言語クエリに関連する画像を取得します。 このサンプルでは、引用付きの画像を検索するテキスト クエリを使用しています。 クエリに関連する写真を含む画像 URL のリストが返されます。
+[Bing Image Search](../bing-image-search/overview.md) では、Web を検索して、ユーザーの自然言語クエリに関連する画像を取得します。 このサンプルでは、引用付きの画像を検索するテキスト クエリを使用しています。 クエリに関連する写真を含む画像 URL のリストが返されます。
 
 
 ```scala
@@ -163,7 +163,7 @@ display(pipeline.fit(df).transform(df))
 
 ## <a name="speech-to-text"></a>音声テキスト変換
 
-[音声テキスト変換](https://docs.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text)サービスでは、音声のストリームまたはファイルをテキストに変換します。 このサンプルでは、2 つのオーディオ ファイルを文字に起こします。 最初のファイルは簡単に理解できますが、2 番目のファイルはより難しくなっています。
+[音声テキスト変換](../speech-service/index-speech-to-text.yml)サービスでは、音声のストリームまたはファイルをテキストに変換します。 このサンプルでは、2 つのオーディオ ファイルを文字に起こします。 最初のファイルは簡単に理解できますが、2 番目のファイルはより難しくなっています。
 
 ```scala
 import org.apache.spark.sql.functions.col
@@ -196,7 +196,7 @@ display(speechToText.transform(df).select(col("url"), col("text").getItem("Displ
 
 ## <a name="anomaly-detector"></a>Anomaly Detector
 
-[Anomaly Detector](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/) は、時系列データ内の不規則性を検出するのに適しています。 このサンプルでは、このサービスを使用して、時系列全体での異常を検出します。
+[Anomaly Detector](../anomaly-detector/index.yml) は、時系列データ内の不規則性を検出するのに適しています。 このサンプルでは、このサービスを使用して、時系列全体での異常を検出します。
 
 ```scala
 import org.apache.spark.sql.functions.{col, lit}

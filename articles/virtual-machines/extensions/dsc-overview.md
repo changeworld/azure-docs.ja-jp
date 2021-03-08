@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 07/13/2020
 ms.author: magoedte
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 900273ec48c71e6f88d28bccff6f1e2abd412c1d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 17ada83f6fa1b57f8dd72d591b6625f25e9a2388
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079576"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955856"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 拡張機能ハンドラーの概要
 
@@ -114,7 +115,7 @@ Resource Manager DSC 拡張機能コマンドレットに関する重要な情�
 
 ### <a name="get-started-with-cmdlets"></a>コマンドレットの概要
 
-Azure DSC 拡張機能は DSC 構成ドキュメントを使用して、デプロイ時に Azure VM を直接構成することができます。 この手順ではノードが Automation に登録されません。 ノードは一元管理*されません*。
+Azure DSC 拡張機能は DSC 構成ドキュメントを使用して、デプロイ時に Azure VM を直接構成することができます。 この手順ではノードが Automation に登録されません。 ノードは一元管理 *されません*。
 
 単純な構成の例を次に示します。 構成を iisInstall.ps1 としてローカルに保存します。
 
@@ -183,7 +184,7 @@ az vm extension set \
 
 このポータルでは次の入力を収集します。
 
-- **[Configuration Modules or Script]\(構成モジュールまたはスクリプト\)** :このフィールドは必須です (フォームは[既定の構成スクリプト](#default-configuration-script)用に更新されていません)。 構成モジュールおよびスクリプトは、構成スクリプトを含む .ps1 ファイルまたは .ps1 構成スクリプトがルートにある .zip ファイルが必要です。 .zip ファイルを使用する場合は、すべての依存リソースを .zip 内のモジュール フォルダーに含める必要があります。 Azure PowerShell SDK に含まれているコマンドレット **Publish-AzureVMDscConfiguration -OutputArchivePath** を使用して、.zip ファイルを作成することができます。 .zip ファイルはユーザーの Blob Storage にアップロードされ、SAS トークンによってセキュリティで保護されます。
+- **[Configuration Modules or Script]\(構成モジュールまたはスクリプト\)** :このフィールドは必須です (フォームは [既定の構成スクリプト](#default-configuration-script)用に更新されていません)。 構成モジュールおよびスクリプトは、構成スクリプトを含む .ps1 ファイルまたは .ps1 構成スクリプトがルートにある .zip ファイルが必要です。 .zip ファイルを使用する場合は、すべての依存リソースを .zip 内のモジュール フォルダーに含める必要があります。 Azure PowerShell SDK に含まれているコマンドレット **Publish-AzureVMDscConfiguration -OutputArchivePath** を使用して、.zip ファイルを作成することができます。 .zip ファイルはユーザーの Blob Storage にアップロードされ、SAS トークンによってセキュリティで保護されます。
 
 - **[Module-qualified Name of Configuration]\(モジュールで修飾された構成の名前\)** :.ps1 ファイルに複数の構成関数を含めることができます。 .ps1 構成スクリプトの名前に続けて \\ と構成関数の名前を入力します。 たとえば、.ps1 スクリプトの名前が configuration.ps1 であり、構成が **IisInstall** であれば、**configuration.ps1\IisInstall** と入力します。
 
@@ -197,7 +198,7 @@ az vm extension set \
 
 - **バージョン**:インストールする DSC 拡張機能のバージョンを指定します。 バージョンの詳細については、[DSC 拡張機能のバージョン履歴](/powershell/scripting/dsc/getting-started/azuredscexthistory)に関するページを参照してください。
 
-- **[自動アップグレードのマイナー バージョン]** :このフィールドは、コマンドレットの **AutoUpdate** スイッチにマップされ、インストール時に拡張機能を最新バージョンに自動的に更新できます。 **[はい]** の場合、利用可能な最新バージョンを使用するように拡張機能ハンドラーに指示します。 **[いいえ]** の場合は、指定された**バージョン**が強制的にインストールされます。 **[はい]** と **[いいえ]** のいずれも選択しないことは、 **[いいえ]** を選択することと同じです。
+- **[自動アップグレードのマイナー バージョン]** :このフィールドは、コマンドレットの **AutoUpdate** スイッチにマップされ、インストール時に拡張機能を最新バージョンに自動的に更新できます。 **[はい]** の場合、利用可能な最新バージョンを使用するように拡張機能ハンドラーに指示します。 **[いいえ]** の場合は、指定された **バージョン** が強制的にインストールされます。 **[はい]** と **[いいえ]** のいずれも選択しないことは、 **[いいえ]** を選択することと同じです。
 
 ## <a name="logs"></a>ログ
 

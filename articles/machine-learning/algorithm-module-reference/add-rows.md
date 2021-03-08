@@ -1,7 +1,7 @@
 ---
 title: 行の追加:モジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で Add Rows (行の追加) モジュールを使用して、2 つのデータセットを連結する方法について説明します。
+description: Azure Machine Learning デザイナーで行の追加モジュールを使用して、2 つのデータセットを連結する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: cd9b5f8f182c4deab746d2c41e516a6ac23fb7aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c2a74ee88e7161ab8dd1701ef4d105df67c0938
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477733"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421942"
 ---
 # <a name="add-rows-module"></a>Add Rows (行の追加) モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 このモジュールを使用して、2 つのデータセットを連結します。 連結では、2 番目のデータセットの行が最初のデータセットの末尾に追加されます。  
   

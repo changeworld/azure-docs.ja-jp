@@ -11,10 +11,10 @@ ms.date: 05/09/2020
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 07234e5f456a5467adde4d899341a6124d128567
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83006116"
 ---
 # <a name="mainframe-workloads-supported-on-azure"></a>Azure でサポートされているメインフレーム ワークロード

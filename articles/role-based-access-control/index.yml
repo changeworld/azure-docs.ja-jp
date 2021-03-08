@@ -11,13 +11,13 @@ metadata:
   ms.collection: na
   author: rolyon
   ms.author: rolyon
-  ms.date: 04/30/2020
-  ms.openlocfilehash: b2661936d82f8d167ec2ef466effcd84d0a972dd
-  ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+  ms.date: 02/15/2021
+  ms.openlocfilehash: c4bc7c34c2985b07e6ae72a2debec9e83e1578b8
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/03/2020
-  ms.locfileid: "82733483"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "100557251"
 landingContent:
 - title: Azure RBAC について
   linkLists:
@@ -35,7 +35,7 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: ユーザーのアクセス権の表示
+    - text: ユーザーのアクセスを確認
       url: check-access.md
   - linkListType: tutorial
     links:
@@ -46,15 +46,15 @@ landingContent:
   - linkListType: learn
     links:
     - text: Azure RBAC による Azure リソースのセキュリティ保護
-      url: https://docs.microsoft.com/learn/modules/secure-azure-resources-with-rbac/
-- title: アクセスを管理する
+      url: /learn/modules/secure-azure-resources-with-rbac/
+- title: ロールを割り当てる
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: ポータル
       url: role-assignments-portal.md
-    - text: ポータル - ゲスト ユーザー
-      url: role-assignments-external-users.md
+    - text: ポータル - サブスクリプション管理者
+      url: role-assignments-portal-subscription-admin.md
     - text: PowerShell
       url: role-assignments-powershell.md
     - text: Azure CLI

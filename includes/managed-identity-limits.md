@@ -9,14 +9,17 @@ ms.topic: include
 ms.date: 05/31/2018
 ms.author: daveba
 ms.custom: include file
-ms.openlocfilehash: 887646c7e0ae87cd5e290a68ccc43b80dfbb109c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e5885e076222cd23ba127f3be41c1218f327ca0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181584"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92379835"
 ---
-| カテゴリ | 制限 |
-| --- | --- |
-| ユーザー割り当て済みマネージド ID | <ul><li>ユーザー割り当て済みマネージド ID を作成するときは、英数字 (0-9、a-z、A-Z) とハイフン (-) のみがサポートされます。 仮想マシンまたは仮想マシン スケール セットへの割り当てが適切に動作するように、名前は 24 文字に制限されています。</li><li>マネージド ID 仮想マシン拡張機能を使用している場合にサポートされるユーザー割り当て済みマネージド ID の制限値は 32 個です。 マネージド ID 仮想マシン拡張機能を使用していない場合にサポートされるユーザー割り当て ID の制限値は 512 個です。</li>|
+- 「[Azure AD サービスの制限と制約](../articles/active-directory/enterprise-users/directory-service-limits-restrictions.md)」で説明されているように、各マネージド ID は、Azure AD テナントにおけるオブジェクトのクォータ制限に加算されます。
+-   マネージド ID の作成速度には、次の制限があります。
 
+    1. 各 Azure リージョンの各 Azure AD テナントについて: 20 秒あたり 200 件の作成操作。
+    2. 各 Azure リージョンの各 Azure サブスクリプションについて: 20 秒あたり 40 件の作成操作。
+
+- ユーザー割り当て済みマネージド ID を作成するときは、英数字 (0-9、a-z、A-Z) とハイフン (-) のみがサポートされます。 仮想マシンまたは仮想マシン スケール セットへの割り当てが適切に動作するように、名前は 24 文字に制限されています。

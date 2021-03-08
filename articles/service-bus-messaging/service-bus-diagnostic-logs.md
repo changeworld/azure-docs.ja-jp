@@ -3,12 +3,12 @@ title: Azure Service Bus 診断ログ | Microsoft Docs
 description: この記事では、Azure Service Bus で使用可能なすべての操作と診断ログの概要について説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f227f5a988ccd51425b4f43e87b4ed4d9af74e1f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: f2672d61285025eadb8f742ca2518297107595ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064436"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585276"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Service Bus の診断ログを有効にする
 
@@ -70,7 +70,7 @@ Azure Service Bus は現在、Azure Service Bus 名前空間上で実行され�
 | サブスクリプション | <ul> <li> サブスクリプションの作成 </li> <li> サブスクリプションの更新 </li> <li> サブスクリプションの削除 </li> <li> サブスクリプションの削除 (自動削除) </li> </ul> |
 
 > [!NOTE]
-> 現在、*読み取り*操作は操作ログで追跡されません。
+> 現在、*読み取り* 操作は操作ログで追跡されません。
 
 ## <a name="enable-operational-logs"></a>操作ログを有効にする
 
@@ -101,7 +101,7 @@ Azure Service Bus は現在、Azure Service Bus 名前空間上で実行され�
 
 新しい設定は、10 分ほどで有効になります。 構成されたアーカイブ ターゲットの **[診断ログ]** ペインにログが表示されます。
 
-診断設定の構成の詳細については、[Azure 診断ログの概要](../azure-monitor/platform/platform-logs-overview.md)に関するページを参照してください。
+診断設定の構成の詳細については、[Azure 診断ログの概要](../azure-monitor/essentials/platform-logs-overview.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

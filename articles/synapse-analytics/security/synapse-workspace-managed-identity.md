@@ -5,17 +5,17 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
+ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 07244f28a345bc3290762c657c2189941009faac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7790bc2895449e8ab21cbd30d7da0e5529eb0562
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077735"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670681"
 ---
-# <a name="azure-synapse-workspace-managed-identity-preview"></a>Azure Synapse ワークスペース マネージド ID (プレビュー)
+# <a name="azure-synapse-workspace-managed-identity"></a>Azure Synapse ワークスペース マネージド ID
 
 この記事では、Azure Synapse ワークスペースのマネージド ID について学習します。
 
@@ -23,7 +23,7 @@ ms.locfileid: "87077735"
 
 Azure リソースのマネージド ID は、Azure Active Directory の機能です。 Azure AD で自動的に管理される ID を Azure サービスに提供する機能となります。 マネージド ID 機能を使用して、Azure AD 認証をサポートする任意のサービスを認証できます。
 
-Azure リソースのマネージド ID は、以前のマネージド サービス ID (MSI) の新しい名前です。 詳細については、[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) に関するページを参照してください。
+Azure リソースのマネージド ID は、以前のマネージド サービス ID (MSI) の新しい名前です。 詳細については、[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。
 
 ## <a name="azure-synapse-workspace-managed-identity"></a>Azure Synapse ワークスペース マネージド ID
 
@@ -32,7 +32,7 @@ Azure リソースのマネージド ID は、以前のマネージド サービ
 >[!NOTE]
 >このワークスペース マネージド ID は、このドキュメントの残りの部分ではマネージド ID と呼ばれます。
 
-Azure Synapse では、マネージド ID を使用してパイプラインを調整します。 マネージド ID のライフサイクルは、Azure Synapse ワークスペースに直接関連付けられています。 Azure Synapse ワークスペースを削除すると、マネージド ID もクリーンアップされます。
+Azure Synapse では、マネージド ID を使用してパイプラインを統合します。 マネージド ID のライフサイクルは、Azure Synapse ワークスペースに直接関連付けられています。 Azure Synapse ワークスペースを削除すると、マネージド ID もクリーンアップされます。
 
 ワークスペース マネージド ID には、パイプラインで操作を実行するためのアクセス許可が必要です。 アクセス許可を付与するときに、オブジェクト ID または Azure Synapse ワークスペース名を使用してマネージド ID を見つけることができます。
 
@@ -52,10 +52,10 @@ Azure portal でマネージド ID を取得できます。 Azure portal で Azu
 
 ![リンクされたサービスの作成 2](./media/synapse-workspace-managed-identity/workspace-managed-identity-3.png)
 
-次のウィンドウで、 **[認証方法]** として **[マネージド ID]** を選択します。 マネージド ID の**名前**と**オブジェクト ID** が表示されます。
+次のウィンドウで、 **[認証方法]** として **[マネージド ID]** を選択します。 マネージド ID の **名前** と **オブジェクト ID** が表示されます。
 
 ![リンクされたサービスの作成 3](./media/synapse-workspace-managed-identity/workspace-managed-identity-4.png)
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Synapse ワークスペース マネージド ID へのアクセス許可の付与](./how-to-grant-workspace-managed-identity-permissions.md)
+[Azure Synapse ワークスペース マネージド ID へのアクセス許可の付与](./how-to-grant-workspace-managed-identity-permissions.md)の詳細情報

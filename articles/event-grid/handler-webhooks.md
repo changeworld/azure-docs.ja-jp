@@ -3,18 +3,19 @@ title: Azure Event Grid イベントに対するイベント ハンドラーと�
 description: Azure Event Grid イベントのイベント ハンドラーとして Webhook を使用する方法について説明します。 Azure Automation Runbook と Logic Apps は、Webhook を介してイベント ハンドラーとしてサポートされます。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 3dc75b15c55c82b6164e77f0ac93a87bced94a64
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: aa20c75789a18b93f787134dffe165e60ff1ab6f
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105610"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91875803"
 ---
 # <a name="webhooks-automation-runbooks-logic-apps-as-event-handlers-for-azure-event-grid-events"></a>Azure Event Grid イベントに対するイベント ハンドラーとしての Webhook、Automation Runbook、Logic Apps
 イベント ハンドラーは、イベントの送信先となる場所です。 ハンドラーは、さらにいくつかのアクションを行ってイベントを処理します。 一部の Azure サービスは、イベントを処理するように自動的に構成されます。 イベント処理のための Webhook を使うこともできます。 Webhook は、イベント処理用に Azure でホストする必要はありません。 Event Grid では、HTTPS Webhook エンドポイントのみがサポートされています。
 
 > [!NOTE]
-> Azure Automation Runbook と Logic Apps は、Webhook を介してイベント ハンドラーとしてサポートされます。 
+> - Azure Automation Runbook と Logic Apps は、Webhook を介してイベント ハンドラーとしてサポートされます。 
+> - Azure 関数をイベント ハンドラーとして構成するための**エンドポイントの種類**として **Webhook** を使用できますが、エンドポイントの種類としては **Azure 関数**を使用してください。 詳細については、[イベント ハンドラーとしての Azure 関数](handler-functions.md)に関する記事を参照してください。
 
 ## <a name="webhooks"></a>Webhooks
 イベント ハンドラーとしての Webhook の使用の概要と例については、次の記事を参照してください。 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 28d5ae1451b97c19576baa3f9760b8f784db3175
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4112bd1d632ec21e2d8cb565027277eeb85452d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736732"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018261"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>ポータルを使用して Azure Network Watcher でパケット キャプチャを管理する
 
@@ -40,7 +40,7 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 
 ## <a name="start-a-packet-capture"></a>パケット キャプチャを開始する
 
-1. ブラウザーで [Azure portal](https://portal.azure.com) に移動し、 **[すべてのサービス]** を選択してから、 **[ネットワーク] セクション**で **[Network Watcher]** を選択します。
+1. ブラウザーで [Azure portal](https://portal.azure.com) に移動し、 **[すべてのサービス]** を選択してから、 **[ネットワーク] セクション** で **[Network Watcher]** を選択します。
 2. **[ネットワーク診断ツール]** で、 **[Packet capture]\(パケット キャプチャ)** を選択します。 状態を問わず、既存のパケット キャプチャがすべて一覧表示されます。
 3. **[追加]** を選択してパケット キャプチャを作成します。 以下のプロパティの値を選択できます。
    - **サブスクリプション**:パケット キャプチャの作成対象となる仮想マシンが属しているサブスクリプション。
@@ -49,7 +49,7 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
    - **[パケット キャプチャ名]** : パケット キャプチャの名前。
    - **[ストレージ アカウント] または [ファイル]** : **[ストレージ アカウント]** 、 **[ファイル]** 、またはその両方を選択します。 **[ファイル]** を選択した場合、キャプチャは仮想マシン内のパスに書き込まれます。
    - **[ローカル ファイル パス]** : パケット キャプチャが保存される仮想マシン上のローカル パス ( *[ファイル]* が選択されている場合にのみ有効)。 このパスは有効なパスである必要があります。 Linux 仮想マシンを使用する予定の場合、パスは */var/captures* で始まる必要があります。
-   - **[ストレージ アカウント]** : *[ストレージ アカウント]* を選択した場合は、既存のストレージ アカウントを選択します。 このオプションを使用できるのは**ストレージ**を選択した場合のみです。
+   - **[ストレージ アカウント]** : *[ストレージ アカウント]* を選択した場合は、既存のストレージ アカウントを選択します。 このオプションを使用できるのは **ストレージ** を選択した場合のみです。
    
      > [!NOTE]
      > Premium Storage アカウントは、現在、パケット キャプチャの格納には対応していません。
@@ -74,7 +74,7 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 > [!NOTE]
 > ポータルは自動で以下を実行します。
 >  * リージョンにまだ Network Watcher がない場合、選択した仮想マシンが存在するリージョンと同じリージョン内に Network Watcher を作成します。
->  * まだインストールされていない場合は、仮想マシンに、[Linux](../virtual-machines/linux/extensions-nwa.md) または [Windows](../virtual-machines/windows/extensions-nwa.md) 用の *AzureNetworkWatcherExtension* 仮想マシン拡張機能を追加します。
+>  * まだインストールされていない場合は、仮想マシンに、[Linux](../virtual-machines/extensions/network-watcher-linux.md) または [Windows](../virtual-machines/extensions/network-watcher-windows.md) 用の *AzureNetworkWatcherExtension* 仮想マシン拡張機能を追加します。
 
 ## <a name="delete-a-packet-capture"></a>パケット キャプチャを削除する
 

@@ -2,20 +2,20 @@
 title: Azure AD Domain Services でのドメイン参加のトラブルシューティング | Microsoft Docs
 description: VM にドメイン参加するか、アプリケーションを Azure Active Directory Domain Services に接続しようとしてマネージド ドメインに対して接続または認証ができないときの、一般的な問題のトラブルシューティングについて説明します。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 4a472f0d1e31faea6b62eec004543b42e6add4fe
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: justinha
+ms.openlocfilehash: 86d6ca79a12e4706f558e92c3c83c5bddaa99b3c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039689"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618605"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインに対するドメイン参加の問題のトラブルシューティング
 

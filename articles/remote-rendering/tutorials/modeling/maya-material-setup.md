@@ -1,16 +1,16 @@
 ---
 title: Maya で物理ベース レンダリング素材を設定する
 description: Maya で物理ベース レンダリング素材を設定し、FBX 形式でエクスポートする方法について説明します。
-author: muxanickms
-ms.author: misams
+author: FlorianBorn71
+ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 72742ff4f6aa19fda092b44d8d2237e7d49dd816
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 56aa0d91372ac2d21a20f28b1044f0811c716b0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373245"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91358034"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-maya"></a>チュートリアル:Maya で物理ベース レンダリング素材を設定する
 
@@ -79,7 +79,7 @@ Maya でのインスタンス化のプロセスは単純です。
 1. **[Duplicate Special Options]\(特殊な複製オプション\)** ダイアログ ボックスの **[Geometry type]\(ジオメトリ タイプ\)** で、 **[Instance]\(インスタンス\)** オプションを選択します。 
 1. **[Duplicate Special]\(特殊な複製\)** を選択します。
 
-   ![インスタンス化](media/instancing.jpg)
+   ![スクリーンショットは、[特殊な複製オプション] ダイアログ ボックスが開き、[特殊な複製] が選択された Maya ウィンドウを示しています。](media/instancing.jpg)
 
 このアクションにより、対象のオブジェクトのインスタンスが作成されます。 これを、その親や、その親の他のインスタンスとは無関係に回転またはスケーリングすることができます。 
 

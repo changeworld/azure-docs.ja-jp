@@ -1,18 +1,16 @@
 ---
 title: Azure Data Lake Analytics のクエリを実行する - Visual Studio
 description: Data Lake Tools for Visual Studio のインストール方法と、U-SQL スクリプトの開発およびテスト方法について説明します。
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: how-to
 ms.date: 08/30/2019
-ms.openlocfilehash: 2f02c16d73ca07c1909bf84bfb7e158b429d3096
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d3812cb27d2d9ea7a49038f566f8b4cc5d779172
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125974"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241694"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用して U-SQL スクリプトを開発する
 
@@ -53,11 +51,11 @@ Azure Data Lake および Stream Analytics ツールには、Azure Data Lake Ana
 
 1. Visual Studio を開きます。
 
-1. **[表示]** > **[サーバー エクスプローラー]** の順に選択して、**サーバー エクスプローラー**を開きます。
+1. **Data Lake Analytics Explorer** を開くには、 **[ビュー]**  >  **[Data Lake Analytics Explorer]** を選択します。
 
 1. **[Azure]** を右クリックして、 **[Microsoft Azure サブスクリプションへの接続]** を選択します。 **[アカウントにサインインする]** で、指示に従います。
 
-1. **サーバー エクスプローラー**で、 **[Azure]**  >  **[Data Lake Analytics]** の順に選択します。 Data Lake Analytics アカウントの一覧が表示されます。
+1. **サーバー エクスプローラー** で、 **[Azure]**  >  **[Data Lake Analytics]** の順に選択します。 Data Lake Analytics アカウントの一覧が表示されます。
 
 ## <a name="write-your-first-u-sql-script"></a>最初の U-SQL スクリプトを記述する
 
@@ -88,7 +86,7 @@ OUTPUT @a
 
 1. 「[最初の U-SQL スクリプトを記述する](#write-your-first-u-sql-script)」からのスクリプトを **[Script.usql]** ウィンドウに貼り付けます。
 
-1. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、 **[スクリプトの送信]** をクリックします。
+1. **ソリューション エクスプローラー** で **Script.usql** を右クリックし、 **[スクリプトの送信]** をクリックします。
 
 1. **[ジョブの送信]** で、ご自分の Data Lake Analytics アカウントを選択し、 **[送信]** を選択します。
 
@@ -110,7 +108,7 @@ OUTPUT @a
 
 ## <a name="check-job-status"></a>ジョブの状態の確認
 
-1. **サーバー エクスプローラー**で、 **[Azure]**  >  **[Data Lake Analytics]** の順に選択します。
+1. **サーバー エクスプローラー** で、 **[Azure]**  >  **[Data Lake Analytics]** の順に選択します。
 
 1. Azure Data Lake Analytics アカウントの名前を展開します。
 
@@ -120,7 +118,7 @@ OUTPUT @a
 
 ## <a name="see-the-job-output"></a>ジョブの出力の表示
 
-1. **サーバー エクスプローラー**で、送信したジョブを参照します。
+1. **サーバー エクスプローラー** で、送信したジョブを参照します。
 
 1. **[データ]** タブをクリックします。
 

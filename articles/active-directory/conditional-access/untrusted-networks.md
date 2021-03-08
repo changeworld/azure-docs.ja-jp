@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b2f9a6e13fdc39ab18a2056fab15982aa9fb0e4
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: e4c020a9be7683bf045dbcc747dad3cb45058dd7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948166"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077678"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>方法:条件付きアクセスを使用して信頼されていないネットワークからのアクセスに対して MFA を必須にする   
 
@@ -26,10 +26,7 @@ Azure Active Directory (Azure AD) を使用すると、任意の場所からデ�
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、次の内容を熟知していることを前提としています。 
-
-- Azure AD の条件付きアクセスの[基本的な概念](overview.md) 
-- Azure portal における条件付きアクセス ポリシーの構成に関する[ベスト プラクティス](best-practices.md)
+この記事では、条件付きアクセスの[基本的な概念](overview.md)を理解していることを前提としています。 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -45,28 +42,28 @@ Azure AD 条件付きアクセスを使用すると、アクセス許可を付�
 
 ## <a name="implementation"></a>実装
 
-このシナリオの課題は、*信頼されていないネットワークの場所からのアクセス*を、条件付きアクセスの条件に変換することです。 条件付きアクセス ポリシーでは、[場所の条件](location-condition.md)を構成して、ネットワークの場所に関連するシナリオに対応できます。 場所の条件を利用して、IP アドレスの範囲、国、およびリージョンの論理グループ化であるネームド ロケーションを選択できます。  
+このシナリオの課題は、 *信頼されていないネットワークの場所からのアクセス* を、条件付きアクセスの条件に変換することです。 条件付きアクセス ポリシーでは、[場所の条件](location-condition.md)を構成して、ネットワークの場所に関連するシナリオに対応できます。 場所の条件を利用して、IP アドレスの範囲、国、およびリージョンの論理グループ化であるネームド ロケーションを選択できます。  
 
 通常、組織では、1 つまたは複数アドレスの範囲 (たとえば、199.30.16.0 から 199.30.16.15) を保持しています。
 ネームド ロケーションは、次の方法で構成できます。
 
 - この範囲 (199.30.16.0/28) を指定する 
-- **企業ネットワーク**など、わかりやすい名前を割り当てる 
+- **企業ネットワーク** など、わかりやすい名前を割り当てる 
 
 信頼されていないすべての場所が何かの定義を試みる代わりに、次のことを実行できます。
 
 - あらゆる場所を含める 
 
-   ![条件付きアクセス](./media/untrusted-networks/02.png)
+   :::image type="content" source="./media/untrusted-networks/02.png" alt-text="[構成] が [はい] に設定され、[含める] タブが表示され、[あらゆる場所] オプションが選択されて強調表示されている [Azure AD の場所] ペインのスクリーンショット。" border="false":::
 
 - すべての信頼できる場所を除外する 
 
-   ![条件付きアクセス](./media/untrusted-networks/01.png)
+   :::image type="content" source="./media/untrusted-networks/01.png" alt-text="[構成] が [はい] に設定され、[除外] タブが表示され、[すべての信頼できる場所] オプションが選択されて強調表示されている [Azure AD の場所] ペインのスクリーンショット。" border="false":::
 
 ## <a name="policy-deployment"></a>ポリシーのデプロイ
 
-この記事で説明した方法を使って、信頼されていない場所に対する条件付きアクセス ポリシーを構成できるようになりました。 ポリシーが期待どおりに機能することを確実にするために推奨されるベスト プラクティスは、運用環境にロールアウトする前にポリシーをテストすることです。 テスト テナントを使用して、新しいポリシーが意図したとおりに機能するかどうかを確認するのが理想的です。 詳細については、[新しいポリシーのデプロイ方法](best-practices.md#how-should-you-deploy-a-new-policy)に関するページを参照してください。 
+この記事で説明した方法を使って、信頼されていない場所に対する条件付きアクセス ポリシーを構成できるようになりました。 ポリシーが期待どおりに機能することを確実にするために推奨されるベスト プラクティスは、運用環境にロールアウトする前にポリシーをテストすることです。 テスト テナントを使用して、新しいポリシーが意図したとおりに機能するかどうかを確認するのが理想的です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 条件付きアクセスの詳細については、[Azure Active Directory の条件付きアクセスの概要](./overview.md)に関するページを参照してください。

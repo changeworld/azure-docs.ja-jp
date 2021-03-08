@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 02/06/2020
+ms.date: 10/19/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: d1059bae047774864868fbe90df50a877f9a3869
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d27e5b22fc0e24850a8c454ef1f07e77341ac15a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798059"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282520"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>マイ アプリ ポータルでコレクションを使用する
 
@@ -32,7 +32,7 @@ ms.locfileid: "88798059"
 
 **マイ アプリ** ポータルのコレクションの一覧には既定で、 **[すべてのアプリ]** という名前のコレクションが表示されます。これには、ユーザーがアクセスできるすべてのアプリが含まれています。
 
-![マイ アプリ ポータルの [すべてのアプリ] ページ](media/my-applications-portal-workspaces/my-apps-all.png)
+![マイ アプリ ポータルの [すべてのアプリ] ページ](media/my-applications-portal-workspaces/my-apps-all-apps.png)
 
 この一覧に表示される他のコレクションは、管理者が作成し、ユーザーと共有したものです。 次の例の *[サポート]* など、いずれかのコレクションを選択すると、表示されるアプリの範囲を絞り込むことができます。
 

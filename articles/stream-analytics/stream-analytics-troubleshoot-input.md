@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics の入力のトラブルシューティング
 description: この記事では、Azure Stream Analytics ジョブの入力接続のトラブルシューティングを行う方法について説明します。
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: f4f79a28dbe8a49e608ca6fae1781a1e19646619
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2d7171c9ec1e60447fb3342caa72098fb2eb9337
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448887"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019909"
 ---
 # <a name="troubleshoot-input-connections"></a>入力接続のトラブルシューティング
 
@@ -25,9 +24,9 @@ ms.locfileid: "87448887"
 
 2.  入力データを確認します。
 
-    1. 各入力の [ **[サンプル データ]** ](stream-analytics-sample-data-input.md) ボタンを使用します。 入力のサンプル データをダウンロードします。
+    1. 各入力の [ **[サンプル データ]**](./stream-analytics-test-query.md) ボタンを使用します。 入力のサンプル データをダウンロードします。
         
-    1. サンプル データを調べて、スキーマと[データ型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)を理解します。
+    1. サンプル データを調べて、スキーマと[データ型](/stream-analytics-query/data-types-azure-stream-analytics)を理解します。
     
     1. [イベント ハブのメトリック](../event-hubs/event-hubs-metrics-azure-monitor.md)を確認して、イベントが送信されていることを確認します。 Event Hubs がメッセージを受信している場合、メッセージ メトリックは 0 より大きい必要があります。
 
@@ -93,11 +92,11 @@ Event Hubs インスタンスに新しいコンシューマー グループを�
 
 パーティションあたりのリーダーの数が Event Hubs の上限である 5 つを上回るシナリオとしては、次のものがあります。
 
-* 複数の SELECT ステートメント:**同じ**イベント ハブ入力を参照する複数の SELECT ステートメントを使用する場合、各 SELECT ステートメントによって新しいレシーバーが作成されます。
+* 複数の SELECT ステートメント:**同じ** イベント ハブ入力を参照する複数の SELECT ステートメントを使用する場合、各 SELECT ステートメントによって新しいレシーバーが作成されます。
 
-* UNION:UNION を使用する場合、**同じ**イベント ハブとコンシューマー グループを参照する複数の入力を使用できます。
+* UNION:UNION を使用する場合、**同じ** イベント ハブとコンシューマー グループを参照する複数の入力を使用できます。
 
-* SELF JOIN:SELF JOIN 操作を使用する場合、**同じ**イベント ハブを複数回参照できます。
+* SELF JOIN:SELF JOIN 操作を使用する場合、**同じ** イベント ハブを複数回参照できます。
 
 次のベスト プラクティスは、パーティションあたりのリーダーの数が 5 つという Event Hubs の制限を超えるシナリオに対処するのに役立ちます。
 
@@ -163,16 +162,16 @@ SELECT foo FROM DataTwo
 
 ## <a name="readers-per-partition-exceeds-iot-hub-limit"></a>パーティションあたりのリーダー数が IoT Hub の上限を上回る
 
-Stream Analytics ジョブでは、IoT Hub に組み込まれた[イベント ハブ互換エンドポイント](../iot-hub/iot-hub-devguide-messages-read-builtin.md)を使用して IoT ハブに接続し、イベントが読み取られます。 パーティションあたりのリーダー数が IoT Hub の上限を上回る場合は、[イベントハブでの解決策](#readers-per-partition-exceeds-event-hubs-limit)を使用して問題を解決できます。 組み込みエンドポイントのコンシューマー グループは、IoT Hub ポータルのエンドポイント セッションまたは [IoT Hub SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup) を使用して作成できます。
+Stream Analytics ジョブでは、IoT Hub に組み込まれた[イベント ハブ互換エンドポイント](../iot-hub/iot-hub-devguide-messages-read-builtin.md)を使用して IoT ハブに接続し、イベントが読み取られます。 パーティションあたりのリーダー数が IoT Hub の上限を上回る場合は、[イベントハブでの解決策](#readers-per-partition-exceeds-event-hubs-limit)を使用して問題を解決できます。 組み込みエンドポイントのコンシューマー グループは、IoT Hub ポータルのエンドポイント セッションまたは [IoT Hub SDK](/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup) を使用して作成できます。
 
 ## <a name="get-help"></a>ヘルプの参照
 
-詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)を参照してください。
+詳細については、[Azure Stream Analytics に関する Microsoft Q&A 質問ページ](/answers/topics/azure-stream-analytics.html)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](/rest/api/streamanalytics/)

@@ -5,21 +5,21 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9c8238e6e0b52a625c76f79fa0dd5a91dd640fb8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2e94191e80d39e28d7ff0ffc9aa22b522fda68c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447847"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576023"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Azure Monitor ログの更新プログラムの展開を Azure portal に移行する
 
-Operations Management Suite (OMS) ポータルは[非推奨](../azure-monitor/platform/oms-portal-transition.md)となっています。 Update Management 用の OMS ポータルで使用できたすべての機能が、Azure Monitor ログを通じて Azure portal で使用できます。 この記事では、Azure portal に移行するために必要な情報を提供しています。
+Operations Management Suite (OMS) ポータルは[非推奨](../azure-monitor/logs/oms-portal-transition.md)となっています。 Update Management 用の OMS ポータルで使用できたすべての機能が、Azure Monitor ログを通じて Azure portal で使用できます。 この記事では、Azure portal に移行するために必要な情報を提供しています。
 
 ## <a name="key-information"></a>重要な情報
 
 * 既存の展開は引き続き機能します。 Azure で展開を再作成したら、以前の展開を削除できます。
-* OMS で使用していた既存の機能はすべて Azure で利用できます。 Update Management の詳細については、[Update Management の概要](update-management/update-mgmt-overview.md)に関する記事を参照してください。
+* OMS で使用していた既存の機能はすべて Azure で利用できます。 Update Management の詳細については、[Update Management の概要](./update-management/overview.md)に関する記事を参照してください。
 
 ## <a name="access-the-azure-portal"></a>Azure portal にアクセスする
 
@@ -33,7 +33,7 @@ Operations Management Suite (OMS) ポータルは[非推奨](../azure-monitor/pl
 
 3. Automation アカウントで、 **[Update Management]** をクリックします。
 
-    ![更新管理](media/migrate-oms-update-deployments/azure-automation.png)
+    :::image type="content" source="media/migrate-oms-update-deployments/azure-automation.png" alt-text="[Update Management] ページのスクリーンショット。":::
 
 4. Azure portal で、 **[すべてのサービス]** の下の **[Automation アカウント]** を選択します。 
 
@@ -41,9 +41,9 @@ Operations Management Suite (OMS) ポータルは[非推奨](../azure-monitor/pl
 
 ## <a name="recreate-existing-deployments"></a>既存の展開を再作成する
 
-OMS ポータルで作成されたすべての更新プログラムの展開には、[保存された検索条件](../azure-monitor/platform/computer-groups.md)があります。これはコンピューター グループとも呼ばれ、存在する更新プログラムの展開と同じ名前を持ちます。 保存された検索条件には、更新プログラムの展開でスケジュールされていたコンピューターの一覧が含まれています。
+OMS ポータルで作成されたすべての更新プログラムの展開には、[保存された検索条件](../azure-monitor/logs/computer-groups.md)があります。これはコンピューター グループとも呼ばれ、存在する更新プログラムの展開と同じ名前を持ちます。 保存された検索条件には、更新プログラムの展開でスケジュールされていたコンピューターの一覧が含まれています。
 
-![更新管理](media/migrate-oms-update-deployments/oms-deployment.png)
+:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="[更新プログラムの展開] ページのスクリーンショット。[名前] と [サーバー] フィールドが強調表示されています。":::
 
 この既存の保存された検索条件を使用するには、次の手順に従います。
 
@@ -59,7 +59,7 @@ OMS ポータルで作成されたすべての更新プログラムの展開に�
     | --- | --- |
     |名前 |更新プログラムの展開を識別する一意の名前。 |
     |オペレーティング システム| **Linux** か **Windows** を選択します。|
-    |更新するマシン |保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。</br> Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください |
+    |更新するマシン |保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。</br> Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../azure-monitor/logs/computer-groups.md)に関するページを参照してください |
     |更新プログラムの分類|必要な更新プログラムの分類をすべて選択します。 CentOS ではこれは既定ではサポートされていません。|
     |除外する更新プログラム|除外する更新プログラムを入力します。 Windows の場合は、KB 記事を **KB** プレフィックスを付けないで入力します。 Linux の場合は、パッケージ名を入力するか、ワイルドカード文字を使用します。  |
     |スケジュール設定|開始する時刻を選択し、繰り返しの設定として、 **[1 回]** または **[定期的]** のいずれかを選択します | 
@@ -74,4 +74,4 @@ OMS ポータルで作成されたすべての更新プログラムの展開に�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Automation の Update Management の詳細については、[Update Management の概要](update-management/update-mgmt-overview.md)に関する記事を参照してください。
+Azure Automation の Update Management の詳細については、[Update Management の概要](./update-management/overview.md)に関する記事を参照してください。

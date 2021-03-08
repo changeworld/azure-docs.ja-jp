@@ -1,23 +1,23 @@
 ---
 title: Azure HPC Cache 設定の構成
-description: キャッシュに MTU や no-root-squash などの追加設定を構成する方法、および Azure Blob ストレージ ターゲットから高速スナップショットにアクセスする方法について説明します。
+description: キャッシュに MTU や no-root-squash などの追加設定を構成する方法、および Azure Blob Storage ターゲットから高速スナップショットにアクセスする方法について説明します。
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 12/21/2020
 ms.author: v-erkel
-ms.openlocfilehash: b01c4d896d5ec600e0fe22e3ca7b7816141776a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 02bf862cdc3b20ef3e5fdb024f474267efa0c70d
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497201"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760505"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Azure HPC Cache の追加設定を構成する
 
 Azure portal の **[構成]** ページには、いくつかの設定をカスタマイズするためのオプションがあります。 ほとんどのユーザーは、これらの設定を既定値から変更する必要はありません。
 
-この記事では、Azure Blob ストレージ ターゲットに対してスナップショット機能を使用する方法についても説明します。 スナップショット機能には、構成可能な設定はありません。
+この記事では、Azure Blob Storage ターゲットに対してスナップショット機能を使用する方法についても説明します。 スナップショット機能には、構成可能な設定はありません。
 
 設定を表示するには、Azure portal でキャッシュの **[構成]** ページを開きます。
 
@@ -43,7 +43,7 @@ Azure portal の **[構成]** ページには、いくつかの設定をカス�
 Azure 仮想ネットワークの MTU 設定の詳細については、「[Azure VM の TCP/IP パフォーマンス チューニング](../virtual-network/virtual-network-tcpip-performance-tuning.md)」をご覧ください。
 
 ## <a name="configure-root-squash"></a>root squash を構成する
-<!-- linked from troubleshoot -->
+<!-- linked from troubleshoot and from access policies -->
 
 **[ルート スカッシュを有効にする]** の設定では、クライアント コンピューター上のルート ユーザーからの要求が Azure HPC Cache によってどのように処理されるかが制御されます。
 
@@ -51,13 +51,16 @@ Azure 仮想ネットワークの MTU 設定の詳細については、「[Azure
 
 ルート スカッシュが無効になっている場合は、クライアント ルート ユーザー (UID 0) からの要求は、バックエンド NFS ストレージ システムにルートとして渡されます。 この構成では、不適切なファイル アクセスが許可される可能性があります。
 
-キャッシュでルート スカッシュを設定すると、ストレージ ターゲットとして使用される NAS システムで必要な ``no_root_squash`` の設定を補うのに役立ちます。 (詳細については [NFS ストレージ ターゲットの前提条件](hpc-cache-prerequisites.md#nfs-storage-requirements)に関するセクションを参照してください)。また、Azure Blob ストレージ ターゲットと共に使用すると、セキュリティを向上させることもできます。
+キャッシュでルート スカッシュを設定すると、ストレージ ターゲットとして使用される NAS システムで必要な ``no_root_squash`` の設定を補うのに役立ちます。 (詳細については [NFS ストレージ ターゲットの前提条件](hpc-cache-prerequisites.md#nfs-storage-requirements)に関するセクションを参照してください)。また、Azure Blob Storage ターゲットと共に使用すると、セキュリティを向上させることもできます。
 
 既定の設定は **[はい]** です (2020 年 4 月より前に作成されたキャッシュでは、既定の設定が **[いいえ]** になっている場合があります)。
 
+> [!TIP]
+> [クライアント アクセス ポリシー](access-policies.md#root-squash)をカスタマイズすることによって、特定のストレージのエクスポートに対してルート スカッシュを設定することもできます。
+
 ## <a name="view-snapshots-for-blob-storage-targets"></a>BLOB ストレージ ターゲットのスナップショットを表示する
 
-Azure HPC Cache では、Azure Blob ストレージ ターゲットのストレージ スナップショットが自動的に保存されます。 スナップショットは、バックエンド ストレージ コンテナーのコンテンツに対してクイック リファレンス ポイントを提供します。
+Azure HPC Cache では、Azure Blob Storage ターゲットのストレージ スナップショットが自動的に保存されます。 スナップショットは、バックエンド ストレージ コンテナーのコンテンツに対してクイック リファレンス ポイントを提供します。
 
 スナップショットは、データ バックアップに代わるものではなく、キャッシュ データの状態に関する情報は含まれていません。
 
@@ -66,7 +69,7 @@ Azure HPC Cache では、Azure Blob ストレージ ターゲットのストレ�
 >
 > 効率を高めるために、Azure HPC Cache スナップショットでは、最初に変更をフラッシュせず、BLOB コンテナーに書き込まれたデータのみが記録されます。 このスナップショットはキャッシュ データの状態を表していないので、最近の変更が含まれていない可能性があります。
 
-この機能は、Azure Blob ストレージ ターゲットでのみ使用でき、その構成を変更することはできません。
+この機能は、Azure Blob Storage ターゲットでのみ使用でき、その構成を変更することはできません。
 
 スナップショットは 8 時間ごと (UTC 0:00、08:00、16:00) に取得されます。
 

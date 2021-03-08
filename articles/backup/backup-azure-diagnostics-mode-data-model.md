@@ -3,12 +3,12 @@ title: Azure Monitor ログのデータ モデル
 description: この記事では、Azure Backup データに使用する Azure Monitor Log Analytics データ モデルの詳細について説明します。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 7822f88c9ea3e0cd83b7e600d63984a8a51becb1
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 1fcb4eb0c584f792132f19c8c4d66289342aa36e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890265"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89020951"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup データの Log Analytics データ モデル
 
@@ -472,7 +472,7 @@ V1 スキーマのみに属する列を特定するには、上記で説明し�
 
 V1 スキーマは非推奨になる予定であるため、Azure Backup 診断データに対するすべてのカスタム クエリで V2 スキーマのみを使用することをお勧めします。 以下に、V1 スキーマへの依存関係を削除するようにクエリを更新する方法の例を示します。
 
-1. V1 スキーマにのみ適用可能なフィールドがクエリで使用されているかどうかを確認します。 次のように、すべてのバックアップ項目とそれに関連付けられている保護されるサーバーを一覧表示するクエリがあるとします。
+1. その V1 スキーマにのみ適用可能なフィールドがクエリで使用されているかどうかを確認します。 次のように、すべてのバックアップ項目とそれに関連付けられている保護されるサーバーを一覧表示するクエリがあるとします。
 
     ````Kusto
     AzureDiagnostics

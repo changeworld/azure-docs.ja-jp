@@ -9,18 +9,18 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba4f67f924455b911d76426231cc71b661faf4a0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 994c2c3124d6822f047af942268ad7a401d5a976
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020339"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90531561"
 ---
 # <a name="symmetric-key-attestation"></a>対称キーの構成証明
 
 この記事では、Device Provisioning Service で対称キーを使用する場合の ID 構成証明プロセスについて説明します。 
 
-対称キーの構成証明は、Device Provisioning Service インスタンスを使用してデバイスを認証する簡単なアプローチです。 この構成証明の方法では、初めてデバイスのプロビジョニングを行う開発者または厳密なセキュリティ要件がない開発者に対して、"Hello world" エクスペリエンスを提示します。 [TPM](concepts-tpm-attestation.md) または [X.509 証明書](concepts-security.md#x509-certificates)を使用するデバイス構成証明は、より安全であり、さらに厳格なセキュリティ要件に対して使用する必要があります。
+対称キーの構成証明は、Device Provisioning Service インスタンスを使用してデバイスを認証する簡単なアプローチです。 この構成証明の方法では、初めてデバイスのプロビジョニングを行う開発者または厳密なセキュリティ要件がない開発者に対して、"Hello world" エクスペリエンスを提示します。 [TPM](concepts-tpm-attestation.md) または [X.509 証明書](concepts-x509-attestation.md)を使用するデバイス構成証明は、より安全であり、さらに厳格なセキュリティ要件に対して使用する必要があります。
 
 対称キーの登録も、セキュリティ機能が限られているレガシ デバイスに対して、Azure IoT を通してクラウドに接続して起動する優れた方法を提供します。 レガシ デバイスでの対称キー構成証明について詳しくは、[レガシ デバイスでの対称キーの使用方法](how-to-legacy-device-symm-key.md)に関するページをご覧ください。
 
@@ -109,12 +109,12 @@ String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(mas
 
 各デバイスの ID は、登録 ID と、工場でインストールされる派生デバイス キーで表されます。 デバイス キーが別の場所にコピーされることはなく、グループ キーがデバイスに格納されることはありません。
 
-デバイス キーが工場でインストールされない場合は、[ハードウェア セキュリティ モジュール HSM](concepts-security.md#hardware-security-module) を使用してデバイス ID を安全に保管する必要があります。
+デバイス キーが工場でインストールされない場合は、[ハードウェア セキュリティ モジュール HSM](concepts-service.md#hardware-security-module) を使用してデバイス ID を安全に保管する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
 対称キー構成証明について理解できたので、以下の記事で詳細を確認してください。
 
 * [クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)
-* [自動プロビジョニングの概念を確認する](./concepts-auto-provisioning.md)
+* [プロビジョニングの概念を確認する](about-iot-dps.md#provisioning-process)
 * [自動プロビジョニングの使用を始める](./quick-setup-auto-provision.md) 

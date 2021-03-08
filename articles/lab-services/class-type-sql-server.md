@@ -5,22 +5,22 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 9fc0a965869207ba8d1b4eb6f45e878ae4b93c3a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 50f71ee1ce59f5809fe8905c58f0399cf484f11a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079024"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659711"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>SQL Server を使用して管理および開発するようにラボを設定する
 
 この記事では、Azure Lab Services で基本的な SQL Server 管理および開発のクラス用にラボを設定する方法について説明します。  データベースの概念は、大学のほとんどのコンピューター サイエンス部門で教えられる入門コースの 1 つです。 構造化照会言語 (SQL) は、国際標準です。  SQL は、データベース内のコンテンツへの追加、アクセス、管理などの、リレーショナル データベース管理のための標準言語です。  これは、迅速な処理、実証された信頼性、使いやすさ、および柔軟性を備えています。
 
-この記事では、[Visual Studio 2019](https://visualstudio.microsoft.com/vs/)、[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)、[Azure Data Studio](https://github.com/microsoft/azuredatastudio) を使用してラボに仮想マシン テンプレートを設定する方法について説明します。  このラボでは、ラボ全体で 1 つの共有 [SQL Server データベース](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)を使用します。 [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview) は、Azure のサービスとしてのプラットフォーム (PaaS) データベース エンジン オファリングです。
+この記事では、[Visual Studio 2019](https://visualstudio.microsoft.com/vs/)、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)、[Azure Data Studio](https://github.com/microsoft/azuredatastudio) を使用してラボに仮想マシン テンプレートを設定する方法について説明します。  このラボでは、ラボ全体で 1 つの共有 [SQL Server データベース](../azure-sql/database/sql-database-paas-overview.md)を使用します。 [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) は、Azure のサービスとしてのプラットフォーム (PaaS) データベース エンジン オファリングです。
 
 ## <a name="lab-configuration"></a>ラボの構成
 
-このラボを設定するには、Azure サブスクリプションとラボ アカウントが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。 Azure サブスクリプションを取得したら、Azure Lab Services で新しいラボ アカウントを作成できます。 新しいラボ アカウントの作成の詳細については、[ラボ アカウントを設定するためのチュートリアル](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)を参照してください。 既存のラボ アカウントを使用することもできます。
+このラボを設定するには、Azure サブスクリプションとラボ アカウントが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。 Azure サブスクリプションを取得したら、Azure Lab Services で新しいラボ アカウントを作成できます。 新しいラボ アカウントの作成の詳細については、[ラボ アカウントを設定するためのチュートリアル](./tutorial-setup-lab-account.md)を参照してください。 既存のラボ アカウントを使用することもできます。
 
 ### <a name="lab-account-settings"></a>ラボ アカウントの設定
 
@@ -35,9 +35,9 @@ ms.locfileid: "88079024"
 Lab Services で共有リソースを使用するには、最初に仮想ネットワークとリソース自体を作成する必要があります。  仮想ネットワークを作成してラボに接続するには、「[Azure Lab Services で共有リソースを使用してラボを作成する方法](how-to-create-a-lab-with-shared-resource.md)」に従ってください。  Lab Services の外部のリソースはすべて別個に課金され、ラボのコストの見積もりには含まれません。
 
 >[!WARNING]
->ラボの共有リソースは、ラボを作成する前に設定する必要があります。  ラボを作成する "*前に*" VNet を[ラボ アカウントにピアリング](how-to-connect-peer-virtual-network.md)していないと、ラボは共有リソースにアクセスできません。
+>ラボの共有リソースは、ラボを作成する前に設定する必要があります。  ラボを作成する "*前に*" VNet を [ラボ アカウントにピアリング](how-to-connect-peer-virtual-network.md)していないと、ラボは共有リソースにアクセスできません。
 
-これでネットワーク面が処理されたので、SQL Server データベースを作成しましょう。  Azure SQL Database の最も迅速なデプロイ オプションであるため、[単一データベース](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)を作成します。  その他のデプロイ オプションでは、[エラスティック プール](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool#creating-a-new-sql-database-elastic-pool-using-the-azure-portal)、[マネージド インスタンス](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)、または [SQL 仮想マシン](https://docs.microsoft.com/azure/virtual-machines/windows/sql/quickstart-sql-vm-create-portal)を作成します。
+これでネットワーク面が処理されたので、SQL Server データベースを作成しましょう。  Azure SQL Database の最も迅速なデプロイ オプションであるため、[単一データベース](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)を作成します。  その他のデプロイ オプションでは、[エラスティック プール](../azure-sql/database/elastic-pool-overview.md#creating-a-new-sql-database-elastic-pool-using-the-azure-portal)、[マネージド インスタンス](../azure-sql/managed-instance/instance-create-quickstart.md)、または [SQL 仮想マシン](../azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart.md)を作成します。
 
 1. Azure portal のメニューから、 **[新しいリソースの作成]** を選択します。
 2. **[SQL Database]** を選択し、 **[作成]** ボタンをクリックします。
@@ -82,17 +82,17 @@ SQL Database のデプロイが正常に完了したら、ラボを作成し、�
 
 ## <a name="visual-studio"></a>Visual Studio
 
-上で選択したイメージには [Visual Studio 2019 Community](https://visualstudio.microsoft.com/vs/community/) が含まれています。  イメージには、すべてのワークロードとツールセットが既にインストールされています。  Visual Studio インストーラーを使用して、必要な[任意のオプション ツールをインストール](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2019)します。  [Visual Studio にサインイン](https://docs.microsoft.com/visualstudio/ide/signing-in-to-visual-studio?view=vs-2019#how-to-sign-in-to-visual-studio)して、Community エディションのロックを解除します。
+上で選択したイメージには [Visual Studio 2019 Community](https://visualstudio.microsoft.com/vs/community/) が含まれています。  イメージには、すべてのワークロードとツールセットが既にインストールされています。  Visual Studio インストーラーを使用して、必要な[任意のオプション ツールをインストール](/visualstudio/install/modify-visual-studio?view=vs-2019)します。  [Visual Studio にサインイン](/visualstudio/ide/signing-in-to-visual-studio?view=vs-2019#how-to-sign-in-to-visual-studio)して、Community エディションのロックを解除します。
 
-Visual Studio には、SQL Server Data Tools (SSDT) を含む**データ ストレージと処理**ツール セットが含まれています。  SSDT の機能の詳細については、[SQL Server Data Tools の概要](https://docs.microsoft.com/sql/ssdt/sql-server-data-tools?view=sql-server-ver15)に関するページを参照してください。  クラスの共有 SQL Server への接続が正常に行われることを確認するには、「[データベースに接続し、既存のオブジェクトを参照する](https://docs.microsoft.com/sql/ssdt/how-to-connect-to-a-database-and-browse-existing-objects?view=sql-server-ver15)」を参照してください。 メッセージが表示されたら、テンプレート マシンの IP を、SQL Server インスタンスに接続できる、[許可されたコンピューターの一覧](https://docs.microsoft.com/azure/azure-sql/database/firewall-configure)に追加します。
+Visual Studio には、SQL Server Data Tools (SSDT) を含む **データ ストレージと処理** ツール セットが含まれています。  SSDT の機能の詳細については、[SQL Server Data Tools の概要](/sql/ssdt/sql-server-data-tools?view=sql-server-ver15)に関するページを参照してください。  クラスの共有 SQL Server への接続が正常に行われることを確認するには、「[データベースに接続し、既存のオブジェクトを参照する](/sql/ssdt/how-to-connect-to-a-database-and-browse-existing-objects?view=sql-server-ver15)」を参照してください。 メッセージが表示されたら、テンプレート マシンの IP を、SQL Server インスタンスに接続できる、[許可されたコンピューターの一覧](../azure-sql/database/firewall-configure.md)に追加します。
 
-Visual Studio では、**Web とクラウド**および**デスクトップとモバイル** ワークロードを含め、いくつかのワークロードがサポートされています。  これらのワークロードはどちらも、データ ソースとして SQL Server をサポートしています。 SQL Server への ASP.NET Core の使用の詳細については、「[Azure App Service での ASP.NET Core および SQL Database アプリの作成](https://docs.microsoft.com/azure/app-service/tutorial-dotnetcore-sqldb-app)」チュートリアルを参照してください。  [System.Data.SqlClient](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) ライブラリを使用して、[Xamarin](https://docs.microsoft.com/xamarin) アプリから SQL Database に接続します。
+Visual Studio では、**Web とクラウド** および **デスクトップとモバイル** ワークロードを含め、いくつかのワークロードがサポートされています。  これらのワークロードはどちらも、データ ソースとして SQL Server をサポートしています。 SQL Server への ASP.NET Core の使用の詳細については、「[Azure App Service での ASP.NET Core および SQL Database アプリの作成](../app-service/tutorial-dotnetcore-sqldb-app.md)」チュートリアルを参照してください。  [System.Data.SqlClient](/dotnet/api/system.data.sqlclient) ライブラリを使用して、[Xamarin](/xamarin) アプリから SQL Database に接続します。
 
 ## <a name="install-azure-data-studio"></a>Azure Data Studio をインストールする
 
 [Azure Data Studio](https://github.com/microsoft/azuredatastudio) は、Windows、macOS、Linux 上でオンプレミスおよびクラウド データ プラットフォームのファミリを使用するデータ プロフェッショナルを対象とした、マルチデータベースのクロスプラットフォーム デスクトップ環境です。
 
-1. [Windows 用の Azure Data Studio *システム* インストーラー](https://go.microsoft.com/fwlink/?linkid=2127432) をダウンロードします。 サポートされているその他のオペレーティング システムのインストーラーについては、[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download) のダウンロード ページにアクセスしてください。
+1. [Windows 用の Azure Data Studio *システム* インストーラー](https://go.microsoft.com/fwlink/?linkid=2127432) をダウンロードします。 サポートされているその他のオペレーティング システムのインストーラーについては、[Azure Data Studio](/sql/azure-data-studio/download) のダウンロード ページにアクセスしてください。
 2. **[使用許諾契約書]** ページで、 **[同意する]** を選択します。 **[次へ]** をクリックします。
 3. **[インストール先の選択]** ページで **[次へ]** をクリックします。
 4. **[スタート メニューのフォルダーの選択]** ページで **[次へ]** をクリックします。
@@ -113,7 +113,7 @@ Visual Studio では、**Web とクラウド**および**デスクトップと�
 
 ## <a name="install-sql-server-management-studio"></a>SQL Server Management Studio をインストールします。
 
-[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15) は、SQL インフラストラクチャを管理するための統合環境です。  SSMS は、データベース管理者がデータ インフラストラクチャのデプロイ、監視、およびアップグレードを行うために使用するツールです。
+[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15) は、SQL インフラストラクチャを管理するための統合環境です。  SSMS は、データベース管理者がデータ インフラストラクチャのデプロイ、監視、およびアップグレードを行うために使用するツールです。
 
 1. [Sql Server Management Studio をダウンロード](https://aka.ms/ssmsfullsetup)します。 ダウンロードが完了したら、インストーラーを起動します。
 2. **[ウェルカム]** ページで **[インストール]** をクリックします。
@@ -121,7 +121,7 @@ Visual Studio では、**Web とクラウド**および**デスクトップと�
 4. SQL Server Management Studio を起動します。  
 5. **[Dependency Configuration process]\(依存関係の構成のプロセス\)** ページで、 **[閉じる]** をクリックします。
 
-SSMS がインストールされたので、[SQL Server に接続してクエリを実行](https://docs.microsoft.com/sql/ssms/tutorials/connect-query-sql-server)することができます。 接続を設定するときは、次の値を使用します。
+SSMS がインストールされたので、[SQL Server に接続してクエリを実行](/sql/ssms/tutorials/connect-query-sql-server)することができます。 接続を設定するときは、次の値を使用します。
 
 - サーバーの種類:データベース エンジン
 - サーバー名: *classlabdbserver.database.windows.net*

@@ -1,17 +1,17 @@
 ---
 title: 制限事項 - Azure Database for MariaDB
 description: この記事では、Azure Database for MariaDB の制限 (接続数やストレージ エンジンのオプションなど) について説明します。
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: conceptual
-ms.date: 6/25/2020
-ms.openlocfilehash: 51aff856aa5bdeb042493d47f100be0ca32dfbbb
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 10/2/2020
+ms.openlocfilehash: de561f0fdea7ea7085a4a1d3ec6f95071c36f57e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032681"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664301"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の制限事項
 以降のセクションでは、容量、ストレージ エンジンのサポート、権限のサポート、データ操作ステートメントのサポート、およびデータベース サービスの機能に関する制限事項について説明します。
@@ -25,6 +25,8 @@ Azure Database for MariaDB では、サーバー パラメーターの値のチ�
 
 初期デプロイの時点で、Azure for MariaDB サーバーにはタイム ゾーン情報のシステム テーブルが含まれていますが、これらのテーブルには値が設定されていません。 タイム ゾーン テーブルには、MySQL コマンド ラインや MySQL Workbench などのツールから `mysql.az_load_timezone` ストアド プロシージャを呼び出すことでデータを入力できます。 ストアド プロシージャを呼び出す方法とグローバル レベルまたはセッション レベルのタイム ゾーンを設定する方法については、[Azure portal](howto-server-parameters.md#working-with-the-time-zone-parameter) または [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) の記事を参照してください。
 
+"validate_password" や "caching_sha2_password" などのパスワード プラグインは、サービスではサポートされていません。
+
 ## <a name="storage-engine-support"></a>ストレージ エンジンのサポート
 
 ### <a name="supported"></a>サポートされています
@@ -36,21 +38,25 @@ Azure Database for MariaDB では、サーバー パラメーターの値のチ�
 - [BLACKHOLE](https://mariadb.com/kb/en/library/blackhole/)
 - [ARCHIVE](https://mariadb.com/kb/en/library/archive/)
 
+## <a name="privileges--data-manipulation-support"></a>特権とデータ操作のサポート
+
+多くのサーバー パラメーターおよび設定によって、誤ってサーバー パフォーマンスを低下させたり、MariaDB サーバーの ACID プロパティを負数にしてしまったりする恐れがあります。 製品レベルでサービスの整合性と SLA を維持するため、このサービスでは複数のロールは公開されていません。 
+
+MariaDB サービスでは、基になるファイル システムに直接アクセスすることはできません。 一部のデータ操作コマンドはサポートされていません。 
+
 ## <a name="privilege-support"></a>権限のサポート
 
 ### <a name="unsupported"></a>サポートされていない
-- DBA ロール:多くのサーバー パラメーターおよび設定によって、誤ってサーバー パフォーマンスを低下させたり、DBMS の ACID プロパティを負数にしてしまったりする恐れがあります。 そのため、製品レベルのサービス整合性と SLA を維持するために、このサービスでは、DBA ロールを公開していません。 新しいデータベース インスタンスの作成時に構成される既定のユーザー アカウントによって、ユーザーは管理データベース インスタンスでほとんどの DDL および DML ステートメントを実行できます。
+
+次のものはサポートされていません。
+- DBA ロール:制限付き。 または、管理者ユーザー (新しいサーバーの作成時に作成されます) を使用して、ほとんどの DDL ステートメントと DML ステートメントを実行できます。 
 - SUPER 権限:同様に、[SUPER 権限](https://mariadb.com/kb/en/library/grant/#global-privileges)も制限されています。
 - DEFINER: 作成するには SUPER 権限が必要であり、制限されています。 バックアップを使用してデータをインポートする場合、mysqldump の実行時に `CREATE DEFINER` コマンドを手動で、または `--skip-definer` コマンドを使用して削除します。
-- システム データベース:Azure Database for MariaDB では、[mysql システム データベース](https://mariadb.com/kb/en/the-mysql-database-tables/)はさまざまな PaaS サービス機能をサポートするために使用されるので読み取り専用です。 `mysql` システム データベースの内容は変更できないことに注意してください。
-
-## <a name="data-manipulation-statement-support"></a>データ操作ステートメントのサポート
+- システム データベース:[mysql システム データベース](https://mariadb.com/kb/en/the-mysql-database-tables/)は読み取り専用であり、さまざまな PaaS 機能をサポートするために使用されます。 `mysql` システム データベースを変更することはできません。
+- `SELECT ... INTO OUTFILE`:サービスではサポートされていません。
 
 ### <a name="supported"></a>サポートされています
 - `LOAD DATA INFILE` はサポートされていますが、`[LOCAL]` パラメーターで UNC パス (SMB を介してマウントされた Azure ストレージ) を指定する必要があります。
-
-### <a name="unsupported"></a>サポートされていない
-- `SELECT ... INTO OUTFILE`
 
 ## <a name="functional-limitations"></a>機能制限
 

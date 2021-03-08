@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 48501a2796f4d826a20af559058490a14785b53e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0503f6910186b42bf381c662c7942e37c28bfdf0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738636"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709514"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>VM の送受信ネットワーク トラフィックのパターンをオープン ソース ツールで視覚化する
 
@@ -35,7 +35,7 @@ Azure 内の VM に単純な Web アプリケーションがデプロイされ�
 
 ### <a name="install-capanalysis"></a>CapAnalysis のインストール
 
-CapAnalysis を仮想マシンにインストールするには、公式のインストラクション (https://www.capanalysis.net/ca/how-to-install-capanalysis ) を参照してください。
+CapAnalysis を仮想マシンにインストールするには、公式のインストラクション (https://www.capanalysis.net/ca/how-to-install-capanalysis) を参照してください。
 CapAnalysis にリモートからアクセスするには、新しい受信セキュリティ規則を追加することによって、VM 上のポート 9877 を開放する必要があります。 ネットワーク セキュリティ グループへの規則の作成について詳しくは、「[既存の NSG に規則を作成する](../virtual-network/manage-network-security-group.md#create-a-security-rule)」をご覧ください。 この規則が正しく追加されていれば、`http://<PublicIP>:9877` で CapAnalysis にアクセスできるようになります。
 
 ### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>Azure Network Watcher を使用してパケット キャプチャ セッションを開始する
@@ -47,7 +47,7 @@ Network Watcher で取得したパケット キャプチャ データは、[URL 
 
 CapAnalysis へのリンクを指定するときは必ず、ストレージ BLOB の URL に SAS トークンを付加してください。  ストレージ アカウントから Shared Access Signature に移動して、付与するアクセス許可を指定し、[SAS の生成] ボタンをクリックしてトークンを作成します。 SAS トークンを、パケット キャプチャ データの格納先となるストレージ BLOB の URL に付加することができます。
 
-結果の URL は、次のようになります。 `http:\//storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
+結果の URL は、次のようになります。`http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
 
 
 ### <a name="analyzing-packet-captures"></a>パケット キャプチャ データの分析
@@ -78,7 +78,7 @@ CapAnalysis には、パケット キャプチャ データを視覚化するた
 
     ![Geomap][8]
 
-1. フィルター
+1. フィルタ
 
     CapAnalysis には、特定のパケットをすばやく分析することを目的とした一連のフィルターが用意されています。 たとえばプロトコルでデータをフィルタリングすれば、該当するプロトコルのトラフィックに絞り込んで洞察を得ることができます。
 

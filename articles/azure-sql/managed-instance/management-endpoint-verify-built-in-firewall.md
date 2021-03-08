@@ -6,22 +6,22 @@ ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: 1d2fffabba3615394bdf96ed487177bf21f3ecec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8d46518415dc56e2792ef090b0be654d538426f
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708707"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853273"
 ---
 # <a name="verify-the-azure-sql-managed-instance-built-in-firewall"></a>Azure SQL Managed Instance のビルトイン ファイアウォールを検証する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-SQL Managed Instance を保護するネットワーク セキュリティ グループ (NSG) では、**すべての発信元**から管理ポート 9000、9003、1438、1440、および 1452 が開放されることが、Azure SQL Managed Instance の[必須のインバウンド セキュリティ規則](connectivity-architecture-overview.md#mandatory-inbound-security-rules)によって義務付けられています。 これらのポートは NSG レベルでは開放されますが、ネットワーク レベルではビルトインのファイアウォールによって保護されます。
+SQL Managed Instance を保護するネットワーク セキュリティ グループ (NSG) では、**すべての発信元** から管理ポート 9000、9003、1438、1440、および 1452 が開放されることが、Azure SQL Managed Instance の [必須のインバウンド セキュリティ規則](connectivity-architecture-overview.md#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)によって義務付けられています。 これらのポートは NSG レベルでは開放されますが、ネットワーク レベルではビルトインのファイアウォールによって保護されます。
 
 ## <a name="verify-firewall"></a>ファイアウォールを検証する
 

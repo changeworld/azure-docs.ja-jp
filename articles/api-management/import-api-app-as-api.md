@@ -1,6 +1,6 @@
 ---
 title: Azure Portal を使用して API アプリを API としてインポートする | Microsoft Docs
-description: このチュートリアルでは、API Management (APIM) を使用して API アプリを API としてインポートする方法を示します。
+description: この記事では、API Management (APIM) を使用して API アプリを API としてインポートする方法を示します。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 28b055cb343b7f894a28eee5fbe452d037fd6b0e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 41209233ec59f578db4ff7fd344bb96aefeb975e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249492"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994742"
 ---
 # <a name="import-an-api-app-as-an-api"></a>API アプリを API としてインポートする
 
@@ -56,7 +56,7 @@ ms.locfileid: "86249492"
 
     * **スターター**
     * **無制限**   
-7. 他の API 設定を入力します。 値は、作成時に設定することも、後で **[設定]** タブに移動して構成することもできます。設定については、「[最初の API のインポートと発行](import-and-publish.md#-import-and-publish-a-backend-api)」のチュートリアルで説明されています。
+7. 他の API 設定を入力します。 値は、作成時に設定することも、後で **[設定]** タブに移動して構成することもできます。設定については、「[最初の API のインポートと発行](import-and-publish.md#import-and-publish-a-backend-api)」のチュートリアルで説明されています。
 8. **［作成］** を選択します
 
 ## <a name="test-the-new-api-in-the-azure-portal"></a>Azure portal での新しい API のテスト

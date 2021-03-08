@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c4314a0dcbbcb907ef4d6de0a2788cf04dfe1641
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: baaa311620f5c10948aa3494002ce359cc5dab28
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68934864"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517174"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Azure での安全な開発のベスト プラクティス
 この一連の記事では、クラウド向けのアプリケーションを開発するときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft セキュリティ開発ライフサイクル (SDL) と、ライフサイクルの各フェーズで考慮すべきセキュリティの質問と概念について説明します。 目標は、ライフサイクルの各フェーズでより安全なアプリケーションの設計、開発、デプロイに使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -37,7 +37,7 @@ ms.locfileid: "68934864"
 
 開発ライフサイクルでの問題の解決が遅くなるほど、その修正にかかるコストが増えます。 セキュリティの問題も例外ではありません。 ソフトウェア開発の初期フェーズでセキュリティの問題を無視すると、前のフェーズの脆弱性がその後の各フェーズに継承される可能性があります。 さまざまなセキュリティの問題と侵害の可能性が、最終製品に累積されることになります。 開発ライフサイクルの各フェーズにセキュリティを組み込むことで、問題を早い段階でキャッチでき、開発コストを削減することができます。
 
-ライフサイクルの各フェーズで安全なソフトウェア開発のプラクティスの実現に使用できるアクティビティと Azure サービスを、Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) のフェーズに従って紹介します。
+ライフサイクルの各フェーズで安全なソフトウェア開発のプラクティスの実現に使用できるアクティビティと Azure サービスを、Microsoft [セキュリティ開発ライフサイクル (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) のフェーズに従って紹介します。
 
 SDL フェーズは次のとおりです。
 
@@ -63,7 +63,7 @@ SDL フェーズは次のとおりです。
 
 次のリソースを使用すると、セキュリティで保護されたアプリケーションの開発の詳細を確認でき、Azure 上のアプリケーションを保護することができます。
 
-[Microsoft セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) – SDL は、Microsoft が提供するソフトウェア開発プロセスであり、開発者がより安全なソフトウェアを構築するのに役立ちます。 これにより、開発コストを削減しながら、セキュリティ コンプライアンス要件に対応することができます。
+[Microsoft セキュリティ開発ライフサイクル (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) – SDL は、Microsoft が提供するソフトウェア開発プロセスであり、開発者がより安全なソフトウェアを構築するのに役立ちます。 これにより、開発コストを削減しながら、セキュリティ コンプライアンス要件に対応することができます。
 
 [Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page) – OWASP は、自由に利用できる Web アプリケーションのセキュリティの分野の記事、方法論、ドキュメント、ツール、およびテクノロジを作り出しているオンライン コミュニティです。
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: bbe813b46b41bf0e2b8bf9c6b3fe3e3e843204ed
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 7fd9e504448d55b4a2ef8c10b4ba1176cb2e3402
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319748"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172637"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>すべてのアプリを Azure AD と統合するための 5 つの手順
 
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) には、簡単に開始できるようにす�
 - [AWS](../saas-apps/amazon-web-service-tutorial.md)
 - [Slack](../saas-apps/slack-tutorial.md)
 
-さらに、組織に既に存在するアプリケーションや、Azure AD ギャラリーにまだ属していないベンダーの任意のサードパーティ アプリケーションなど、[ギャラリーにないアプリケーションを統合する](../manage-apps/view-applications-portal.md)こともできます。 また、[ギャラリーに存在していないアプリを追加する](../azuread-dev/howto-app-gallery-listing.md)こともできます。
+さらに、組織に既に存在するアプリケーションや、Azure AD ギャラリーにまだ属していないベンダーの任意のサードパーティ アプリケーションなど、[ギャラリーにないアプリケーションを統合する](../manage-apps/view-applications-portal.md)こともできます。 また、[ギャラリーに存在していないアプリを追加する](../develop/v2-howto-app-gallery-listing.md)こともできます。
 
 最後に、社内で開発したアプリを統合することもできます。 これについては、このガイドの手順 5 で説明します。
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) には、簡単に開始できるようにす�
 
 次に、従業員が頻繁に使用しているアプリケーションを検出し、それらを Azure AD に統合するための作業に優先順位を付けます。
 
-まず、Microsoft Cloud App Security の [Cloud Discovery ツール](/cloud-app-security/tutorial-shadow-it)を使用して、ネットワークの&quot;シャドウ&quot; IT (つまり、IT 部門で管理されていないアプリ) を検出して管理できます。 [Microsoft Defender Advanced Threat Protection (ATP) を使用](/cloud-app-security/wdatp-integration)して、検出プロセスを簡素化および拡張できます。
+まず、Microsoft Cloud App Security の [Cloud Discovery ツール](/cloud-app-security/tutorial-shadow-it)を使用して、ネットワークの "シャドウ" IT (つまり、IT 部門で管理されていないアプリ) を検出して管理できます。 [Microsoft Defender Advanced Threat Protection (ATP) を使用](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)して、検出プロセスを簡素化および拡張できます。
 
 さらに、Azure portal の [AD FS アプリケーション アクティビティ レポート](../manage-apps/migrate-adfs-application-activity.md)を使用して、組織内のすべての AD FS アプリ、それらにサインインした一意のユーザー数、およびそれらを Azure AD と統合するための互換性を検出できます。
 
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) には、簡単に開始できるようにす�
 
 アプリを Azure AD と統合するビジネス プロセスの管理に関するガイダンスを公開しています。これには、ビジネスおよびアプリケーションの所有者に気付かせ、関心を持ってもらうために使用できる[ポスター](https://aka.ms/AppOnePager)と[プレゼンテーション](https://aka.ms/AppGuideline) が含まれます。 このプロセスの実行を進めながら、それらのサンプルを独自のブランドで変更し、会社のポータル、ニュースレター、またはその他のメディアを通じて、それらを組織に公開できます。
 
-開始点として、Active Directory フェデレーション サービス (AD FS) の使用を評価することが推奨されます。 多くの組織で、SaaS アプリ、カスタム基幹業務アプリ、Office 365、Azure AD ベースのアプリでの認証に ADFS が使われています。
+開始点として、Active Directory フェデレーション サービス (AD FS) の使用を評価することが推奨されます。 多くの組織で、SaaS アプリ、カスタム基幹業務アプリ、Microsoft 365、Azure AD ベースのアプリでの認証に ADFS が使われています。
 
 ![図は、オンプレミスのアプリ、基幹業務アプリ、SaaS アプリ、Azure AD 経由の Office 365 がすべて Active Directory と AD FS に点線で接続されていることを示しています。](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-1.png)
 

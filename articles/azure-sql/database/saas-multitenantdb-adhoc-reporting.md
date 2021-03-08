@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/30/2018
-ms.openlocfilehash: 7564adb6e2e596b95cd138c8e4e2190a4c1e2a57
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 800592b7a8b263fea2883fdd3e030f78f72647dd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042647"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459921"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-databases-azure-sql-database"></a>複数のデータベース (Azure SQL Database) にわたるアドホック分析クエリの実行
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,8 +35,8 @@ ms.locfileid: "86042647"
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
 * Wingtip Tickets SaaS マルチテナント データベース アプリがデプロイされます。 5 分未満でデプロイするには、「[Deploy and explore the Wingtip Tickets SaaS Multi-tenant Database application (Wingtip Tickets SaaS マルチテナント データベース アプリケーションのデプロイと探索)](saas-multitenantdb-get-started-deploy.md)」を参照してください。
-* Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
-* SQL Server Management Studio (SSMS) をインストールしている。 SSMS のダウンロードとインストールについては、[SQL Server Management Studio (SSMS) のダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)に関するページを参照してください。
+* Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](/powershell/azure/get-started-azureps)」をご覧ください。
+* SQL Server Management Studio (SSMS) をインストールしている。 SSMS のダウンロードとインストールについては、[SQL Server Management Studio (SSMS) のダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)に関するページを参照してください。
 
 
 ## <a name="ad-hoc-reporting-pattern"></a>アドホック レポートのパターン
@@ -45,9 +45,9 @@ ms.locfileid: "86042647"
 
 SaaS アプリケーションは、クラウドで一元的に格納されている膨大な量のテナント データを分析できます。 この分析により、アプリケーションの運用と使用状況に関する洞察が取得できます。 このような洞察は、機能の開発、操作性の改良、アプリやサービスへのその他の投資に役立ちます。
 
-単一のマルチテナント データベース内にあるこのデータにアクセスすることは簡単ですが、数千ものデータベースにわたる規模で分散されている場合は簡単ではありません。 1 つのアプローチは[エラスティック クエリ](elastic-query-overview.md)を使用するものであり、この方法では、分散した一連のデータベースにわたって共通スキーマでクエリを行えます。 これらのデータベースは、異なるリソース グループとサブスクリプションに分散できますが、 1 つの共通ログインで、すべてのデータベースからデータを抽出できるアクセス権が必要です。 エラスティック クエリは、分散 (テナント) データベース内のテーブルまたはビューをミラー化する外部テーブルが定義されている単一の "*ヘッド*" データベースを使用します。 このヘッド データベースに送信されたクエリはコンパイルされ、分散クエリ プランが生成されます。このクエリの一部は、必要に応じてテナント データベースにプッシュダウンされます。 エラスティック クエリでは、カタログ データベースのシャード マップを使用して、すべてのテナント データベースの場所を特定します。 セットアップとクエリは、標準的な [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference) を使用して簡単に行うことができ、Power BI や Excel などのツールからのアドホック クエリをサポートしています。
+単一のマルチテナント データベース内にあるこのデータにアクセスすることは簡単ですが、数千ものデータベースにわたる規模で分散されている場合は簡単ではありません。 1 つのアプローチは[エラスティック クエリ](elastic-query-overview.md)を使用するものであり、この方法では、分散した一連のデータベースにわたって共通スキーマでクエリを行えます。 これらのデータベースは、異なるリソース グループとサブスクリプションに分散できますが、 1 つの共通ログインで、すべてのデータベースからデータを抽出できるアクセス権が必要です。 エラスティック クエリは、分散 (テナント) データベース内のテーブルまたはビューをミラー化する外部テーブルが定義されている単一の "*ヘッド*" データベースを使用します。 このヘッド データベースに送信されたクエリはコンパイルされ、分散クエリ プランが生成されます。このクエリの一部は、必要に応じてテナント データベースにプッシュダウンされます。 エラスティック クエリでは、カタログ データベースのシャード マップを使用して、すべてのテナント データベースの場所を特定します。 セットアップとクエリは、標準的な [Transact-SQL](/sql/t-sql/language-reference) を使用して簡単に行うことができ、Power BI や Excel などのツールからのアドホック クエリをサポートしています。
 
-テナント データベース全体でクエリを分散することで、エラスティック クエリはライブ プロダクション データを短時間で洞察できます。 ただし、エラスティック クエリはたくさんのデータベースからデータを引き出すため、1 つのマルチテナント データベースに同じようなクエリを送信する場合と比較し、待機時間が長くなることがあります。 返されるデータを最小限に抑えるように、クエリを設計してください。 頻繁に使用される、あるいは複雑な分析クエリ/レポートとは対照的に、エラスティック クエリは多くの場合、少量のリアルタイム データの問い合わせに最適です。 クエリの動作に問題がある場合は、[実行プラン](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan)を参照して、クエリのどの部分がリモート データベースにプッシュダウンされているかを確認し、 返されるデータの量を評価します。 複雑な分析処理を必要とするクエリは、分析クエリのために最適化された専用のデータベースやデータ ウェアハウスにテナント データを抽出することで、より効果的に機能することがあります。 SQL Database および SQL Data Warehouse では、このような分析データベースをホストできます。
+テナント データベース全体でクエリを分散することで、エラスティック クエリはライブ プロダクション データを短時間で洞察できます。 ただし、エラスティック クエリはたくさんのデータベースからデータを引き出すため、1 つのマルチテナント データベースに同じようなクエリを送信する場合と比較し、待機時間が長くなることがあります。 返されるデータを最小限に抑えるように、クエリを設計してください。 頻繁に使用される、あるいは複雑な分析クエリ/レポートとは対照的に、エラスティック クエリは多くの場合、少量のリアルタイム データの問い合わせに最適です。 クエリの動作に問題がある場合は、[実行プラン](/sql/relational-databases/performance/display-an-actual-execution-plan)を参照して、クエリのどの部分がリモート データベースにプッシュダウンされているかを確認し、 返されるデータの量を評価します。 複雑な分析処理を必要とするクエリは、分析クエリのために最適化された専用のデータベースやデータ ウェアハウスにテナント データを抽出することで、より効果的に機能することがあります。 SQL Database および Azure Synapse Analytics では、このような分析データベースをホストできます。
 
 この分析用のパターンは、[テナント分析のチュートリアル](saas-multitenantdb-tenant-analytics.md)で説明されています。
 
@@ -61,7 +61,7 @@ Wingtip Tickets SaaS マルチテナント データベースのスクリプト�
 
 1. *PowerShell ISE* で、...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReporting.ps1* スクリプトを開き、次の値を設定します。
    * **$DemoScenario** = 1, **すべての会場のイベントのチケットを購入**.
-2. **F5** キーを押してスクリプトを実行し、チケットの売り上げを生成します。 スクリプトが実行されている間、このチュートリアルの手順を続行します。 チケット データは、*アドホック分散クエリの実行*セクションで照会され、チケットジェネレーターが完了するまで待機します。
+2. **F5** キーを押してスクリプトを実行し、チケットの売り上げを生成します。 スクリプトが実行されている間、このチュートリアルの手順を続行します。 チケット データは、*アドホック分散クエリの実行* セクションで照会され、チケットジェネレーターが完了するまで待機します。
 
 ## <a name="explore-the-tenant-tables"></a>テナント テーブルの参照 
 
@@ -73,7 +73,7 @@ Wingtip Tickets SaaS Multi-tenant Database アプリケーションでは、テ�
 
 この演習では、*adhocreporting* データベースをデプロイします。 これは、すべてのテナント データベースに対してクエリを実行する場合に使用されるスキーマが含まれるヘッド データベースです。 このデータベースは既存のカタログ サーバーにデプロイされます。サンプル アプリのすべての管理関連データベースに使用されるサーバーです。
 
-1. *PowerShell ISE*で ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReporting.ps1* を開き、次の値を設定します。
+1. *PowerShell ISE* で ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReporting.ps1* を開き、次の値を設定します。
    * **$DemoScenario** = 2、**アドホック分析データベースをデプロイする**。
 
 2. **F5** キーを押してスクリプトを実行し、*adhocreporting* データベースを作成します。

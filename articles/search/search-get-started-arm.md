@@ -3,18 +3,18 @@ title: Azure Resource Manager テンプレートを使用してサービスを�
 titleSuffix: Azure Cognitive Search
 description: Azure Resource Manager テンプレートを使用すると、Azure Cognitive Search サービス インスタンスをすばやくデプロイすることができます。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 07/15/2020
-ms.openlocfilehash: c7d11b9e699ec4cba59d2af9e411692cbce35278
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.date: 11/17/2020
+ms.openlocfilehash: 88a081f1ebbda52653302384c06403e223128c60
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640176"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668386"
 ---
 # <a name="quickstart-deploy-cognitive-search-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Cognitive Search をデプロイする
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-azure-search-create/)からのものです。
 
-:::code language="json"source="~/quickstart-templates/101-azure-search-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/101-azure-search-create/azuredeploy.json":::
 
 このテンプレートで定義されている Azure リソースは次のとおりです。
 

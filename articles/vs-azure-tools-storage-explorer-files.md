@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 84f6473c25a5be11eeda7cd2b311d93a7226a78c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60456728"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488393"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Azure File Storage での Storage Explorer の使用
 
@@ -31,7 +31,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 - [Storage Explorer をダウンロードしてインストールする](https://www.storageexplorer.com/)
 
-- [Azure ストレージ アカウントまたはサービスに接続する](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
+- [Azure ストレージ アカウントまたはサービスに接続する](./vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-file-share"></a>ファイル共有の作成
 
@@ -47,7 +47,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
     ![ファイル共有の作成](media/vs-azure-tools-storage-explorer-files/image1.png)
 
-1. **[ファイル共有]** フォルダーの下に、テキスト ボックスが表示されます。 ファイル共有の名前を入力します。 ファイル共有の名前付けに関する規則と制限の一覧については、[共有の名前付け規則](https://docs.microsoft.com//azure/storage/storage-dotnet-how-to-use-blobs)に関するセクションをご覧ください。
+1. **[ファイル共有]** フォルダーの下に、テキスト ボックスが表示されます。 ファイル共有の名前を入力します。 ファイル共有の名前付けに関する規則と制限の一覧については、[共有の名前付け規則](./storage/blobs/storage-quickstart-blobs-dotnet.md)に関するセクションをご覧ください。
 
     ![共有の名前付け](media/vs-azure-tools-storage-explorer-files/image2.png)
 
@@ -73,11 +73,11 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 1. ファイル共有の内容がメイン ウィンドウに表示されます。
     
-    ![共有の内容](media/vs-azure-tools-storage-explorer-files/image5.png)
+    ![Storage Explorer のファイル共有のメイン ウィンドウのスクリーンショット。共有の内容を確認できます。](media/vs-azure-tools-storage-explorer-files/image5.png)
 
 ## <a name="delete-a-file-share"></a>ファイル共有の削除
 
-ファイル共有は、必要に応じて簡単に作成したり削除したりすることができます (個々のファイルを削除する方法については、[ファイル共有内のファイル管理](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container)に関するセクションをご覧ください)。
+ファイル共有は、必要に応じて簡単に作成したり削除したりすることができます (個々のファイルを削除する方法については、[ファイル共有内のファイル管理](./vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container)に関するセクションをご覧ください)。
 
 次の手順では、Storage Explorer からファイル共有を削除する方法を説明します。
 
@@ -97,7 +97,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 ## <a name="copy-a-file-share"></a>ファイル共有のコピー
 
-Storage Explorer を使用すると、ファイル共有をクリップボードにコピーし、そのファイル共有を別のストレージ アカウントに貼り付けることができます (個々のファイルをコピーする方法については、[ファイル共有内のファイル管理](https://docs.microsoft.com//azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container)に関するセクションをご覧ください)。
+Storage Explorer を使用すると、ファイル共有をクリップボードにコピーし、そのファイル共有を別のストレージ アカウントに貼り付けることができます (個々のファイルをコピーする方法については、[ファイル共有内のファイル管理](./vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container)に関するセクションをご覧ください)。
 
 次の手順では、あるストレージ アカウントから別のストレージ アカウントにファイル共有をコピーする方法を説明します。
 
@@ -117,7 +117,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 ## <a name="get-the-sas-for-a-file-share"></a>ファイル共有の SAS を取得する
 
-[shared access signature (SAS)](https://docs.microsoft.com//azure/storage/storage-dotnet-shared-access-signature-part-1) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 つまり、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。また、アカウント アクセス キーを共有する必要はありません。
+[shared access signature (SAS)](./storage/common/storage-sas-overview.md) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 つまり、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。また、アカウント アクセス キーを共有する必要はありません。
 
 次の手順では、ファイル共有の SAS を作成する方法を説明します。
 
@@ -191,7 +191,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 1.  ファイル共有の内容がメイン ウィンドウに表示されます。
 
-    ![共有の内容](media/vs-azure-tools-storage-explorer-files/image17.png)
+    ![Storage Explorer のファイル共有 myazurefileshare のメイン ウィンドウのスクリーンショット。共有の内容を確認できます。最初のフォルダーが選択されています。](media/vs-azure-tools-storage-explorer-files/image17.png)
 
 1.  ファイル共有の内容がメイン ウィンドウに表示されます。
 

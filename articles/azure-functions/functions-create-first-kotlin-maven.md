@@ -1,22 +1,22 @@
 ---
-title: Kotlin と Maven を使用して Azure で初めての関数を作成する
-description: Kotlin と Maven を使用して、HTTP によってトリガーされる関数を作成し、Azure に発行します。
+title: Maven を使用して Azure Functions に Kotlin 関数を作成する
+description: Kotlin と Maven を使用して、HTTP によってトリガーされる関数アプリを作成し、Azure Functions に発行します。
 author: dglover
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 526287feb93052d10428971dfd8f660d4265c831
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 721fbaf1a3b2418677d07e8ac39fa733164c1459
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071263"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179563"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>クイック スタート:Kotlin と Maven を使用して初めての関数を作成する
 
-この記事では、Maven コマンド ライン ツールを使用して Kotlin 関数プロジェクトを作成し、Azure Functions に発行する方法を説明します。 完了すると、関数コードは Azure の[従量課金プラン](functions-scale.md#consumption-plan)で実行され、HTTP 要求を使用してトリガーできるようになります。
+この記事では、Maven コマンド ライン ツールを使用して Kotlin 関数プロジェクトを作成し、Azure Functions に発行する方法を説明します。 完了すると、関数コードは Azure の[従量課金プラン](consumption-plan.md)で実行され、HTTP 要求を使用してトリガーできるようになります。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,7 +24,7 @@ ms.locfileid: "89071263"
 
 Kotlin を使用して関数を開発するには、以下のものがインストールされている必要があります。
 
-- [Java Developer Kit](https://aka.ms/azure-jdks)、バージョン 8
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン 8
 - [Apache Maven](https://maven.apache.org)、バージョン 3.0 以降
 - [Azure CLI](/cli/azure)
 - [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.6.666 以降
@@ -32,9 +32,9 @@ Kotlin を使用して関数を開発するには、以下のものがインス�
 > [!IMPORTANT]
 > このクイックスタートを行うには、JAVA_HOME 環境変数を JDK のインストール場所に設定する必要があります。
 
-## <a name="generate-a-new-functions-project"></a>新しい Functions プロジェクトを生成する
+## <a name="generate-a-new-azure-functions-project"></a>新しい Azure Functions のプロジェクトを生成する
 
-空のフォルダーで次のコマンドを実行して、[Maven アーキタイプ](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)から Functions プロジェクトを生成します。
+空のフォルダーで次のコマンドを実行して、[Maven アーキタイプ](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)から Azure Functions プロジェクトを生成します。
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash
@@ -158,7 +158,7 @@ Hello LocalFunction!
 
 ## <a name="deploy-the-function-to-azure"></a>関数を Azure にデプロイする
 
-Azure Functions へのデプロイ プロセスでは、Azure CLI からアカウントの資格情報を使います。 続行する前に、[Azure CLI にサインイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)します。
+Azure Functions へのデプロイ プロセスでは、Azure CLI からアカウントの資格情報を使います。 続行する前に、[Azure CLI にサインイン](/cli/azure/authenticate-azure-cli)します。
 
 ```azurecli
 az login
@@ -173,7 +173,7 @@ az login
 mvn azure-functions:deploy
 ```
 
-デプロイが完了すると、Azure 関数アプリへのアクセスに使うことができる URL が表示されます。
+デプロイが完了すると、関数アプリへのアクセスに使うことができる URL が表示されます。
 
 <pre>
 [INFO] Successfully deployed Function App with package.
@@ -186,7 +186,7 @@ mvn azure-functions:deploy
 `cURL` を使用して、Azure で実行している関数アプリをテストします。 前の手順でデプロイされた独自の関数アプリの URL と一致するように、下のサンプルの URL を変更する必要があります。
 
 > [!NOTE]
-> **アクセス権**を `Anonymous` に設定していることを確認します。 `Function` の既定のレベルを選択した場合、関数エンドポイントにアクセスする要求で、[関数キー](functions-bindings-http-webhook-trigger.md#authorization-keys)を提示する必要があります。
+> **アクセス権** を `Anonymous` に設定していることを確認します。 `Function` の既定のレベルを選択した場合、関数エンドポイントにアクセスする要求で、[関数キー](functions-bindings-http-webhook-trigger.md#authorization-keys)を提示する必要があります。
 
 ```
 curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/HttpTrigger-Java -d AzureFunctions
@@ -231,7 +231,7 @@ Hi, AzureFunctionsTest
 
 ## <a name="reference-bindings"></a>参照バインディング
 
-HTTP トリガーとタイマー トリガー以外の [Functions のトリガーとバインド](functions-triggers-bindings.md)を操作するには、バインド拡張機能をインストールする必要があります。 この記事では必要ありませんが、他のバインドの種類を操作するときに拡張機能を有効にする方法について理解しておく必要があります。
+HTTP トリガーとタイマー トリガー以外の [Azure Functions のトリガーとバインド](functions-triggers-bindings.md)を操作するには、バインド拡張機能をインストールする必要があります。 この記事では必要ありませんが、他のバインドの種類を操作するときに拡張機能を有効にする方法について理解しておく必要があります。
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -239,7 +239,7 @@ HTTP トリガーとタイマー トリガー以外の [Functions のトリガ�
 
 簡単な HTTP トリガーを使って Kotlin 関数アプリを作成し、Azure Functions にデプロイしました。
 
-- Java と Kotlin 関数の開発の詳細については、[Functions の Java 開発者向けガイド](functions-reference-java.md)を参照してください。
+- Java と Kotlin の関数の開発の詳細については、「[Azure Functions の Java 開発者向けガイド](functions-reference-java.md)」を参照してください。
 - `azure-functions:add` Maven ターゲットを使って、異なるトリガーの新しい関数をプロジェクトに追加します。
 - [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)、[IntelliJ](functions-create-maven-intellij.md)、[Eclipse](functions-create-maven-eclipse.md) を使って関数を作成し、ローカルでデバッグします。 
 - Azure にデプロイされた関数を Visual Studio Code でデバッグします。 その手順については、Visual Studio Code の[サーバーレス Java アプリケーション](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)に関するドキュメントを参照してください。

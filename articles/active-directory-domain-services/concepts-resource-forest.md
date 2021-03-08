@@ -2,24 +2,24 @@
 title: Azure AD Domain Services のリソース フォレストの概念 | Microsoft Docs
 description: Azure Active Directory Domain Services のリソース フォレストがどのようなものであり、ユーザー認証オプションが限られたハイブリッド環境やセキュリティ上の問題があるハイブリッド環境において、組織にどのような利点をもたらすかについて説明します。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 62a2ffeea1d15a16c4ec4aa6a2b88c8e34763064
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: justinha
+ms.openlocfilehash: 79cf408bcb9060c247b97e6a81204c5a5517d384
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480409"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620003"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services のリソース フォレストの概念と機能
 
-Azure Active Directory Domain Services (Azure AD DS) により、従来のオンプレミス基幹業務アプリケーションにサインイン エクスペリエンスが提供されます。 オンプレミスとクラウドのユーザーを対象に、ユーザー、グループ、およびパスワード ハッシュが Azure AD DS マネージド ドメインに同期されます。 これらの同期されたパスワード ハッシュは、オンプレミスの AD DS、Office 365、Azure Active Directory に使用できる資格情報の単一セットをユーザーに提供するものです。
+Azure Active Directory Domain Services (Azure AD DS) により、従来のオンプレミス基幹業務アプリケーションにサインイン エクスペリエンスが提供されます。 オンプレミスとクラウドのユーザーを対象に、ユーザー、グループ、およびパスワード ハッシュが Azure AD DS マネージド ドメインに同期されます。 これらの同期されたパスワード ハッシュは、オンプレミスの AD DS、Microsoft 365、Azure Active Directory に使用できる資格情報の単一セットをユーザーに提供するものです。
 
 セキュリティが確保され、セキュリティ上の追加の利点もありますが、一部の組織では、これらのユーザー パスワード ハッシュを Azure AD または Azure AD DS に同期できません。 組織内のユーザーは、スマート カード認証のみを使用しているために、パスワードを知らない場合があります。 これらの制限により、一部の組織では、Azure AD DS を使用してオンプレミスのクラシック アプリケーションを Azure にリフト アンド シフトすることができません。
 
@@ -41,7 +41,7 @@ Azure AD DS マネージド ドメインでは、フォレストにはドメイ�
 
 複数のドメインを持つ組織では、多くの場合、ユーザーが別のドメインの共有リソースにアクセスする必要があります。 これらの共有リソースへのアクセスのためには、あるドメインのユーザーを別のドメインに対して認証することが必要になります。 異なるドメインにあるクライアントとサーバーの間でこのような認証と承認の機能を提供するには、2 つのドメイン間に "*信頼*" がなければなりません。
 
-ドメインの信頼を使用することで、各ドメインの認証メカニズムに他のドメインからの認証を信頼させることができます。 信頼は、受信認証要求が信頼されている機関 (*信頼される*側のドメイン) からのものであることを確認することによって、リソース ドメイン (*信頼する*側のドメイン) 内の共有リソースへのアクセスを制御するのに役立ちます。 信頼は、検証済みの認証要求のみがドメイン間を移動できるようにするブリッジとして機能します。
+ドメインの信頼を使用することで、各ドメインの認証メカニズムに他のドメインからの認証を信頼させることができます。 信頼は、受信認証要求が信頼されている機関 (*信頼される* 側のドメイン) からのものであることを確認することによって、リソース ドメイン (*信頼する* 側のドメイン) 内の共有リソースへのアクセスを制御するのに役立ちます。 信頼は、検証済みの認証要求のみがドメイン間を移動できるようにするブリッジとして機能します。
 
 信頼によって認証要求が渡される方法は、信頼がどのように構成されているかによって異なります。 信頼は、次のいずれかの方法で構成できます。
 

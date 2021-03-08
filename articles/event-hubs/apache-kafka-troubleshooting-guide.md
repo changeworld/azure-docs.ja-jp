@@ -3,12 +3,12 @@ title: Apache Kafka 用 Azure Event Hubs に関する問題をトラブルシュ
 description: この記事では、Apache Kafka 用 Azure Event Hubs に関する問題をトラブルシューティングする方法を示します
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 034541aa6ea683c0e294ca8790b02f0dc60b5440
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e32e02947b9f004755381d562fd3f3c897b70674
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090571"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90061429"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Event Hubs 用 Apache Kafka トラブルシューティング ガイド
 この記事では、Apache Kafka 用 Event Hubs を使用するときに発生する可能性がある問題のトラブルシューティングのヒントを示します。 
@@ -55,11 +55,11 @@ Event Hubs で Kafka を使用するときに問題が発生する場合は、�
 - **SASL 認証** - Event Hubs で必要な SASL 認証プロトコルと連携するフレームワークを取得することは、見かけ以上に難しい場合があります。 SASL 認証でフレームワークのリソースを使用して、構成のトラブルシューティングを行うことができるかどうかを確認してください。 
 
 ## <a name="limits"></a>制限
-Apache Kafka と Event Hubs Kafka。 ほとんどの場合、Event Hubs Kafka には、Apache Kafka の場合と同じ既定値、プロパティ、エラー コード、一般的な動作があります。 これら 2 つが明示的に異なる (Kafka では課されない制限が Event Hubs で課される) インスタンスは、次のとおりです。
+Apache Kafka と Event Hubs Kafka。 ほとんどの場合、Azure Event Hubs の Kafka インターフェイスには、Apache Kafka の場合と同じ既定値、プロパティ、エラー コード、一般的な動作があります。 これら 2 つが明示的に異なる (Kafka では課されない制限が Event Hubs で課される) インスタンスは、次のとおりです。
 
 - `group.id` プロパティの最大長が 256 文字である
 - `offset.metadata.max.bytes` の最大サイズが 1024 バイトである
-- オフセット コミットは、最大内部ログ サイズが 1 MB のパーティションごとに、1 秒あたり 4 回の呼び出しで調整される
+- オフセット コミットは、最大内部ログ サイズが 1 MB のパーティションごとに、1 秒あたり 4 回の呼び出しに調整される
 
 
 ## <a name="next-steps"></a>次のステップ

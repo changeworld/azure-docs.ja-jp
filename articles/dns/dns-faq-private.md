@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 10/05/2019
+ms.date: 01/15/2021
 ms.author: rohink
-ms.openlocfilehash: d6faf5bd42c90ea1510d454a2ab7939f121b3d0d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 3272f4fea4169fd5e91b1ba2b97ad72dfbb49080
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925007"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247388"
 ---
 # <a name="azure-private-dns-faq"></a>Azure プライベート DNS に関する FAQ
 
@@ -34,7 +34,7 @@ Azure での他の内部 DNS オプションの詳細については、「[VM �
 
 ## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>複数の仮想ネットワークの解決に同じプライベート ゾーンを使用できますか?
 
-はい。 プライベート DNS ゾーンは、数千の仮想ネットワークにリンクすることができます。 詳しくは、「[Azure DNS の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)」を参照してください。
+はい。 プライベート DNS ゾーンは、数千の仮想ネットワークにリンクすることができます。 詳しくは、「[Azure DNS の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits)」を参照してください。
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>別のサブスクリプションに属している仮想ネットワークをプライベート ゾーンにリンクできますか。
 
@@ -43,6 +43,14 @@ Azure での他の内部 DNS オプションの詳細については、「[VM �
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>プライベート ゾーンに自動的に登録された仮想マシンの DNS レコードは、仮想マシンを削除すると自動的に削除されますか。
 
 はい。 リンクされた仮想ネットワークで自動登録が有効な場合、そのネットワーク内にある仮想マシンを削除すると、登録されているレコードは自動的に削除されます。
+
+## <a name="ive-reconfigured-the-os-in-my-virtual-machine-to-have-a-new-host-name-or-static-ip-address-why-dont-i-see-that-change-reflected-in-the-private-zone"></a>新しいホスト名または静的 IP アドレスを設定するように、仮想マシンの OS を再構成しました。 プライベート ゾーンにその変更が反映されていないのはなぜですか?
+
+プライベート ゾーンのレコードは、Azure DHCP サービスによって設定され、クライアント登録メッセージは無視されます。 静的 IP アドレスを構成して VM での DHCP クライアントのサポートを無効にしている場合、VM でのホスト名または静的 IP に対する変更はゾーンに反映されません。
+
+## <a name="i-have-configured-a-preferred-dns-suffix-in-my-windows-virtual-machine-why-are-my-records-still-registered-in-the-zone-linked-to-the-virtual-network"></a>Windows 仮想マシンで優先 DNS サフィックスを構成しました。 仮想ネットワークにリンクされているゾーンに自分のレコードがまだ登録されているのはなぜですか?
+
+Azure DHCP サービスでは、プライベート DNS ゾーンを登録する際、DNS サフィックスは無視されます。 たとえば、プライマリ DNS サフィックスとして `contoso.com` 用に仮想マシンが構成されていても、仮想ネットワークが `fabrikam.com` プライベート DNS ゾーンにリンクされている場合、仮想マシンの登録は `fabrikam.com` プライベート DNS ゾーンに表示されます。
 
 ## <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-linked-virtual-network-be-deleted-manually"></a>リンクされた仮想ネットワークからプライベート ゾーンに自動的に登録された仮想マシンのレコードは手動で削除できますか。
 
@@ -67,11 +75,11 @@ Azure での他の内部 DNS オプションの詳細については、「[VM �
 ## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>リンクされた仮想ネットワーク内の仮想マシンの DNS サフィックスは、そのプライベート ゾーンの DNS サフィックスに変更されますか。
 
 いいえ。 リンクされた仮想ネットワーク内の仮想マシン上の DNS サフィックスは、Azure 提供の既定のサフィックス ("*.internal.cloudapp.net") のままです。 仮想マシン上のこの DNS サフィックスをプライベート ゾーンの DNS サフィックスに手動で変更できます。
-このサフィックスを変更する方法のガイダンスについては、「[動的 DNS を使用して独自の DNS サーバーでホスト名を登録する](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-ddns#windows-clients)」を参照してください。
+このサフィックスを変更する方法のガイダンスについては、「[動的 DNS を使用して独自の DNS サーバーでホスト名を登録する](../virtual-network/virtual-networks-name-resolution-ddns.md#windows-clients)」を参照してください。
 
 ## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Azure DNS プライベート ゾーンの使用制限とは何ですか。
 
-Azure DNS プライベート ゾーンの使用制限の詳細については、「[Azure DNS の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)」を参照してください。
+Azure DNS プライベート ゾーンの使用制限の詳細については、「[Azure DNS の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits)」を参照してください。
 
 ## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>既存のプライベート DNS ゾーンが新しいポータル エクスペリエンスに表示されないのはなぜですか。
 
@@ -80,6 +88,10 @@ Azure DNS プライベート ゾーンの使用制限の詳細については、
 ## <a name="how-do-i-migrate-my-existing-private-dns-zones-to-the-new-model"></a>どのようにして既存のプライベート DNS ゾーンを新しいモデルに移行しますか。
 
 できるだけ早く新しいリソース モデルに移行することを強くお勧めします。 従来のリソース モデルは今後、サポートはされますが、追加機能開発のベースになることはありません。 新しいリソース モデルを優先するために、将来的には廃止される予定です。 既存のプライベート DNS ゾーンを新しいリソース モデルに移行する方法については、[Azure DNS プライベート ゾーンの移行ガイド](private-dns-migration-guide.md)に関する記事を参照してください。
+
+### <a name="does-azure-dns-private-zones-store-any-customer-content"></a>Azure DNS プライベート ゾーンには顧客のコンテンツが保存されますか。
+
+いいえ。Azure DNS プライベート ゾーンには顧客のコンテンツは保存されません。
 
 ## <a name="next-steps"></a>次のステップ
 

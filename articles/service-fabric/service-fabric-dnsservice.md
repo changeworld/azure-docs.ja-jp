@@ -4,12 +4,12 @@ description: Service Fabric の DNS サービスを使用して、クラスタ�
 ms.topic: conceptual
 ms.date: 7/20/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a05669bbd6de44447d7eb11a0b9941d18e8048d1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f7f06920820cdc73f8d3101ab24ee46625931ee4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021274"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268045"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric の DNS サービス
 オプションのシステム サービスである DNS サービスをクラスターで有効にし、DNS プロトコルを使用して他のサービスを検出できます。 
@@ -18,7 +18,7 @@ ms.locfileid: "89021274"
 
 DNS サービスによって DNS 名はサービス名にマップされ、ネーム サービスによって解決され、サービス エンドポイントに返されます。 サービスの DNS 名は、作成時に提供されます。 次の図は、ステートレス サービスでの DNS サービスの動作を示しています。
 
-![サービス エンドポイント](./media/service-fabric-dnsservice/stateless-dns.png)
+![ステートレス サービスの DNS サービスによって DNS 名がサービス名にどのようにマップされるかを示す図。](./media/service-fabric-dnsservice/stateless-dns.png)
 
 Service Fabric バージョン 6.3 以降では、Service Fabric の DNS プロトコルが拡張され、パーティション分割型ステートフル サービスをアドレス指定するためのスキームが追加されています。 これらの拡張機能では、ステートフル サービスの DNS 名とパーティション名とを組み合わせて、特定のパーティションの IP アドレスを解決することができます。 次の 3 つのパーティション分割構成がすべてサポートされています。
 
@@ -28,7 +28,7 @@ Service Fabric バージョン 6.3 以降では、Service Fabric の DNS プロ�
 
 次の図は、パーティション分割型ステートフル サービスでの DNS サービスの動作を示しています。
 
-![ステートフル サービス エンドポイント](./media/service-fabric-dnsservice/stateful-dns.png)
+![パーティション分割されたステートレス サービスの DNS サービスによって DNS 名がサービス名にどのようにマップされるかを示す図。](./media/service-fabric-dnsservice/stateful-dns.png)
 
 動的ポートは、DNS サービスではサポートされていません。 動的ポート上で公開されたサービスを解決するには、[リバース プロキシ サービス](./service-fabric-reverseproxy.md)を使用します。
 

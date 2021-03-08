@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 10/21/2020
 ms.author: b-juche
-ms.openlocfilehash: 54c85fb778d1794f9aeba2eba5ed459292636e35
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: e2f7328a0acc8e5206abc600a4052f83828a87f6
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513623"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174225"
 ---
-# <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp Files SDK および CLI ツール
+# <a name="azure-netapp-files-sdks-cli-tools-and-arm-templates"></a>Azure NetApp Files SDK、CLI ツール、ARM テンプレート
 
-この記事では、Azure NetApp Files でサポートされている SDK およびコマンドライン (CLI) ツールをリストアップします。
+この記事では、Azure NetApp Files でサポートされている SDK、コマンドライン (CLI) ツール、Azure Resource Manager (ARM) テンプレートを一覧表示しています。
 
 ## <a name="supported-sdks"></a>サポートされる SDK 
 
@@ -44,12 +44,18 @@ ms.locfileid: "87513623"
 
 |    ツール    |    コマンド リファレンス    |
 |------------------|--------------------------------------------|
-|    Azure CLI  |    [az netappfiles](https://docs.microsoft.com/cli/azure/netappfiles?view=azure-cli-latest)    |
-|    PowerShell   |    [Azure PowerShell for Azure NetApp Files](https://docs.microsoft.com/powershell/module/az.netappfiles/?view=azps-2.5.0#netapp_files)    |
+|    Azure CLI  |    [az netappfiles](/cli/azure/netappfiles)    |
+|    PowerShell   |    [Azure PowerShell for Azure NetApp Files](/powershell/module/az.netappfiles/?view=azps-2.5.0#netapp_files&preserve-view=true)    |
 
 ## <a name="code-samples"></a>コード サンプル
 
-[Azure NetApp Files のコード サンプル](https://docs.microsoft.com/samples/browse/?filter-products=netapp&products=azure-netapp-files)を参照してください。
+[Azure NetApp Files のコード サンプル](/samples/browse/?filter-products=netapp&products=azure-netapp-files)を参照してください。
+
+## <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート  
+
+Azure Resource Manager (ARM) では、宣言型のテンプレートを使用して、アプリケーションをプロビジョニングすることができます。 1 つのテンプレートで、複数のサービスをその依存関係と共にデプロイできます。 アプリケーション ライフサイクルの各ステージで、同じテンプレートを使用してアプリケーションを繰り返しデプロイします。   
+
+[Azure NetApp Files に使用できる ARM テンプレート](https://azure.microsoft.com/resources/templates/?term=anf)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ   
  [Azure SDK のダウンロード](https://azure.microsoft.com/downloads/)

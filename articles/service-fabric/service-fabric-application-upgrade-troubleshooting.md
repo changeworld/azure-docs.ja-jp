@@ -4,11 +4,11 @@ description: この記事では、Service Fabric アプリケーションのア�
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75377924"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009349"
 ---
 # <a name="troubleshoot-application-upgrades"></a>アプリケーションのアップグレードのトラブルシューティング
 
@@ -76,11 +76,11 @@ UpgradeReplicaSetCheckTimeout  : 00:00:00
 
 この例では、アップグレード ドメイン *MYUD1* でアップグレードが失敗し、2 つのパーティション (*744c8d9f-1d26-417e-a60e-cd48f5c098f0* と *4b43f4d8-b26b-424e-9307-7a7a62e79750*) がスタックしていました。 パーティションがスタックしている原因は、ランタイムが、ターゲット ノード *Node1* と *Node4* にプライマリ レプリカ (*WaitForPrimaryPlacement*) を配置できなかったことです。
 
-**Get-ServiceFabricNode** コマンドを使用して、これら 2 つのノードがアップグレード ドメイン *MYUD1*にあることを確認できます。 *UpgradePhase* は *PostUpgradeSafetyCheck* を出力していますが、アップグレード ドメイン内のすべてのノードがアップグレードを完了した後にこれらの安全性チェックがなされていることを意味します。 これらすべての情報は、潜在的な問題と新しいバージョンのアプリケーション コードを示します。 最も一般的な問題は、プライマリ コード パスのオープンまたは昇格でのサービスのエラーです。
+**Get-ServiceFabricNode** コマンドを使用して、これら 2 つのノードがアップグレード ドメイン *MYUD1* にあることを確認できます。 *UpgradePhase* は *PostUpgradeSafetyCheck* を出力していますが、アップグレード ドメイン内のすべてのノードがアップグレードを完了した後にこれらの安全性チェックがなされていることを意味します。 これらすべての情報は、潜在的な問題と新しいバージョンのアプリケーション コードを示します。 最も一般的な問題は、プライマリ コード パスのオープンまたは昇格でのサービスのエラーです。
 
 *PreUpgradeSafetyCheck* の *UpgradePhase* は、アップグレードを実行する前のアップグレード ドメインの準備で問題があることを意味します。 この場合の最も一般的な問題は、プライマリ コード パスのクローズまたは降格でのサービス エラーです。
 
-現在の **UpgradeState** は *RollingBackCompleted* であるため、元のアップグレードは、ロールバック **FailureAction** (障害発生時にアップグレードを自動的にロールバックする) を使用して実行済みのはずです。 元のアップグレードが手動の **FailureAction**を使用して実行された場合は、アプリケーションのライブ デバッグを実行できるように、アップグレードが代わりに中断状態になります。
+現在の **UpgradeState** は *RollingBackCompleted* であるため、元のアップグレードは、ロールバック **FailureAction** (障害発生時にアップグレードを自動的にロールバックする) を使用して実行済みのはずです。 元のアップグレードが手動の **FailureAction** を使用して実行された場合は、アプリケーションのライブ デバッグを実行できるように、アップグレードが代わりに中断状態になります。
 
 まれに、システムが現在のアップグレード ドメインのすべての作業を完了するのと同時に全体のアップグレードがタイムアウトになった場合に、**UpgradeDomainProgressAtFailure** フィールドが空になることがあります。 そのような場合は、アップグレード パラメーター **UpgradeTimeout** および **UpgradeDomainTimeout** の値を大きくしてアップグレードを再試行してください。
 
@@ -148,7 +148,7 @@ ServiceTypeHealthPolicyMap              :
 
 ### <a name="recover-from-a-suspended-upgrade"></a>中断されたアップグレードから回復する
 
-ロールバック **FailureAction**を使用すると、障害が発生したときにアップグレードが自動的にロールバックされるため、復旧は必要ありません。 手動の **FailureAction**を使用する場合、いくつかの回復オプションがあります。
+ロールバック **FailureAction** を使用すると、障害が発生したときにアップグレードが自動的にロールバックされるため、復旧は必要ありません。 手動の **FailureAction** を使用する場合、いくつかの回復オプションがあります。
 
 1.  ロールバックをトリガーする
 2. アップグレードの残りの項目を手動で続行する
@@ -216,7 +216,7 @@ Service Fabric は、すべてのパーセンテージを、正常性評価の�
 
 アップグレードの失敗が、*HealthCheckWaitDuration* + *HealthCheckRetryTimeout* より速く発生することはあり得ません。
 
-アップグレード ドメインのアップグレード時間は、 *UpgradeDomainTimeout*によって制限されます。  *HealthCheckRetryTimeout* と *HealthCheckStableDuration* が両方とも 0 以外であり、アプリケーションの正常性が切り替わる場合は、アップグレードが最終的に *UpgradeDomainTimeout* でタイムアウトします。 *UpgradeDomainTimeout* は、現在のアップグレード ドメインのアップグレードが開始されると、カウント ダウンを開始します。
+アップグレード ドメインのアップグレード時間は、 *UpgradeDomainTimeout* によって制限されます。  *HealthCheckRetryTimeout* と *HealthCheckStableDuration* が両方とも 0 以外であり、アプリケーションの正常性が切り替わる場合は、アップグレードが最終的に *UpgradeDomainTimeout* でタイムアウトします。 *UpgradeDomainTimeout* は、現在のアップグレード ドメインのアップグレードが開始されると、カウント ダウンを開始します。
 
 ## <a name="next-steps"></a>次のステップ
 

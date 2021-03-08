@@ -16,17 +16,17 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82632fb104438e1b5279b1525fbce2b6d8e7ceeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e09dd6a127bd04ae698cb6cad2ffd7f35e3b51c3
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356884"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413430"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>ID 同期と重複属性の回復性
 重複属性の回復性は、Microsoft のいずれかの同期ツールを実行しているときに **UserPrincipalName** と SMTP **ProxyAddress** の競合によって引き起こされる不整合を避けるために Azure Active Directory に備えられている機能です。
 
-この 2 つの属性は、通常、特定の Azure Active Directory テナント内のすべての **User**、**Group**、および **Contact** オブジェクトにわたって一意である必要があります。
+この 2 つの属性は、通常、特定の Azure Active Directory テナント内のすべての **User** 、 **Group** 、および **Contact** オブジェクトにわたって一意である必要があります。
 
 > [!NOTE]
 > UPN を持てるのは、User のみです。
@@ -75,7 +75,7 @@ _**\<OriginalPrefix>+\<4DigitNumber>\@\<InitialTenantDomain>.onmicrosoft.com**_ 
 このトピックの PowerShell コマンドレットには、以下のような特徴があります。
 
 * 以下のすべてのコマンドレットが、大文字と小文字を区別します。
-* **–ErrorCategory PropertyConflict** を常に含める必要があります。 現在、 **ErrorCategory**には他の型はありませんが、今後拡張される可能性があります。
+* **–ErrorCategory PropertyConflict** を常に含める必要があります。 現在、 **ErrorCategory** には他の型はありませんが、今後拡張される可能性があります。
 
 まず、 **Connect-MsolService** を実行し、テナント管理者の資格情報を入力します。
 
@@ -97,7 +97,7 @@ _**\<OriginalPrefix>+\<4DigitNumber>\@\<InitialTenantDomain>.onmicrosoft.com**_ 
  ![Get-MsolDirSyncProvisioningError](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1.png "Get-MsolDirSyncProvisioningError")  
 
 #### <a name="by-property-type"></a>プロパティの型ごと
-プロパティの型ごとにエラーを表示するには、**UserPrincipalName** 引数か **ProxyAddresses** 引数に、次のように **-PropertyName** フラグを追加します。
+プロパティの型ごとにエラーを表示するには、 **UserPrincipalName** 引数か **ProxyAddresses** 引数に、次のように **-PropertyName** フラグを追加します。
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName UserPrincipalName`
 
@@ -124,15 +124,15 @@ _**\<OriginalPrefix>+\<4DigitNumber>\@\<InitialTenantDomain>.onmicrosoft.com**_ 
 ## <a name="microsoft-365-admin-center"></a>Microsoft 365 管理センター
 Microsoft 365 管理センターでは、ディレクトリ同期エラーを表示できます。 Microsoft 365 管理センターのレポートには、これらのエラーを持つ **User** オブジェクトだけが表示されます。 **Group** と **Contact** の間の競合に関する情報は表示されません。
 
-![アクティブ ユーザー](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "[アクティブ ユーザー]")
+![Microsoft 365 管理センターでディレクトリ同期エラーを示すスクリーンショット。](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "[アクティブ ユーザー]")
 
-Microsoft 365 管理センターでディレクトリ同期エラーを表示する方法については、「 [Office 365 でディレクトリ同期エラーを確認する](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)」を参照してください。
+Microsoft 365 管理センターでディレクトリ同期エラーを表示する方法については、「[Microsoft 365 でディレクトリ同期エラーを確認する](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)」を参照してください。
 
 ### <a name="identity-synchronization-error-report"></a>ID 同期のエラー レポート
 重複属性の競合があるオブジェクトがこの新しい動作で処理されると、テナントの技術的通知の連絡先に送信される標準の ID 同期のエラー レポート メールに、通知が含められます。 ただし、この動作には重要な変更があります。 以前は、重複属性の競合に関する情報が、競合が解決されるまで、後続のすべてのエラー レポートに含められました。 この新しい動作では、特定の競合のエラー通知は、競合する属性が検疫されたときに 1 回だけ表示されます。
 
 ProxyAddress の競合に関する電子メール通知の例を、次に示します。  
-    ![アクティブ ユーザー](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "[アクティブ ユーザー]")  
+    ![ProxyAddress の競合に関する電子メール通知の例を示すスクリーンショット。](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "[アクティブ ユーザー]")  
 
 ## <a name="resolving-conflicts"></a>競合の解決
 これらのエラーのトラブルシューティングの方針と解決の方法は、以前の重複属性エラーの処理方法と変わりはありません。 唯一の違いは、タイマー タスクがサービス側のテナント全体をスイープして、競合が解決したら問題の属性を適切なオブジェクトに自動的に追加することです。
@@ -140,7 +140,7 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 次の記事では、さまざまなトラブルシューティングと解決戦略の概要を示しています。[Office 365 でのディレクトリ同期を妨げる重複または無効な属性に関する記事](https://support.microsoft.com/kb/2647098)
 
 ## <a name="known-issues"></a>既知の問題
-これらの既知の問題が、データの損失やサービスの低下を引き起こすことはありません。 いくつかは見た目の問題で、その他には、競合属性が検疫されずに、一般的な "*回復前*" 重複属性エラーがスローされる原因となる問題や、手動での修正を必要とするエラーを引き起こす問題があります。
+これらの既知の問題が、データの損失やサービスの低下を引き起こすことはありません。 いくつかは見た目の問題で、その他には、競合属性が検疫されずに、一般的な " *回復前* " 重複属性エラーがスローされる原因となる問題や、手動での修正を必要とするエラーを引き起こす問題があります。
 
 **主要な動作:**
 
@@ -151,10 +151,10 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
    
     b. このオブジェクトのプロパティが、ProxyAddress が **SMTP:Joe\@contoso.com** である既存の Group と競合します。
    
-    c. エクスポート時に、競合属性を検疫するのではなく、**ProxyAddress 競合**エラーがスローされます。 回復性機能が有効になる前と同様に、後続の同期サイクルごとに操作が再試行されます。
+    c. エクスポート時に、競合属性を検疫するのではなく、 **ProxyAddress 競合** エラーがスローされます。 回復性機能が有効になる前と同様に、後続の同期サイクルごとに操作が再試行されます。
 2. オンプレミスで 2 つの Group が同じ SMTP アドレスで作成された場合、一方は標準の重複 **ProxyAddress** エラーのために、最初の試行でプロビジョニングに失敗します。 ただし、重複している値は、次の同期サイクル時に適切に検疫されます。
 
-**Office ポータル レポート**:
+**Office ポータル レポート** :
 
 1. UPN 競合セットの 2 つのオブジェクトの詳細なエラー メッセージは、同一です。 つまり、両方で UPN が変更/検疫されたと示されますが、実際には一方だけでデータが変更されています。
 2. UPN 競合の詳細なエラー メッセージは、UPN を変更/検疫したユーザーの正しくない displayName を表示します。 次に例を示します。
@@ -163,19 +163,18 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
    
     b. **ユーザー B** が次に **UPN = User\@contoso.com** で同期を試行します。
    
-    c. **ユーザー B の** UPN が **User1234\@contoso.onmicrosoft.com** に変更され、**User\@contoso.com** が **DirSyncProvisioningErrors** に追加されます。
+    c. **ユーザー B の** UPN が **User1234\@contoso.onmicrosoft.com** に変更され、 **User\@contoso.com** が **DirSyncProvisioningErrors** に追加されます。
    
-    d. **ユーザー B** のエラー メッセージには、**ユーザー A** が既に **User\@contoso.com** を UPN として持っていることを示す必要がありますが、実際には**ユーザー B** 自身の displayName が表示されます。
+    d. **ユーザー B** のエラー メッセージには、 **ユーザー A** が既に **User\@contoso.com** を UPN として持っていることを示す必要がありますが、実際には **ユーザー B** 自身の displayName が表示されます。
 
-**ID 同期のエラー レポート**:
+**ID 同期のエラー レポート** :
 
-*この問題を解決する方法の手順*のリンクが正しくありません。  
+*この問題を解決する方法の手順* のリンクが正しくありません。  
     ![アクティブ ユーザー](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "[アクティブ ユーザー]")  
 
-指している必要があります[https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency)。
+指している必要があります[https://aka.ms/duplicateattributeresiliency]()。
 
 ## <a name="see-also"></a>関連項目
 * [Azure AD Connect Sync](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)
-* [Office 365 でディレクトリ同期エラーを確認する](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
-
+* [Microsoft 365 でディレクトリ同期エラーを確認する](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)

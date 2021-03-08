@@ -1,23 +1,18 @@
 ---
 title: Square からデータをコピーする (プレビュー)
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Square からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/03/2020
-ms.openlocfilehash: 2bfe9115f38c79618924379837dda8014ee31ed5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: ac10e42d338e0ddd44cb3c07709645a69653808d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529366"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384794"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Square からデータをコピーする (プレビュー)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -62,7 +57,7 @@ Square のリンクされたサービスでは、次のプロパティがサポ�
 | useHostVerification | TLS 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうか指定します。 既定値は、true です。  | いいえ |
 | usePeerVerification | TLS 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は、true です。  | いいえ |
 
-Square では、**個人用**と **OAuth** という 2 種類のアクセス トークンがサポートされます。
+Square では、**個人用** と **OAuth** という 2 種類のアクセス トークンがサポートされます。
 
 - 個人用アクセス トークンを使用すると、自分の Square アカウントのリソースに Connect API で無制限にアクセスできます。
 - OAuth アクセス トークンを使用すると、任意の Square アカウントに対して、Connect API を使用した認証済みのスコープ指定アクセスを取得できます。 これは、アカウント所有者の代わりにアプリが他の Square アカウント内のリソースにアクセスするときに使用します。 また、OAuth アクセス トークンを使用して、自分の Square アカウントのリソースにアクセスすることもできます。

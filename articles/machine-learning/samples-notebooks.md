@@ -1,7 +1,7 @@
 ---
-title: Jupyter ノートブックの例
+title: Jupyter Notebook の例
 titleSuffix: Azure Machine Learning
-description: サンプルの Jupyter Notebook を検索して使用し、Azure Machine Learning Python SDK を探索します。
+description: SDK の探索を支援し、独自の機械学習プロジェクトのモデルとして機能するように設計されている Jupyter Notebook を検索して使用する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,18 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 10cf06a829b991bfe15d7b24c4fc61d0fe22eaaf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 38d0c350718480506e1267c161a85505ece4b69d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653717"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452256"
 ---
-# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupyter ノートブックを使用して Azure Machine Learning を探索する
+
+# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupyter Notebook を使用した Azure Machine Learning について調べます
+
+> [!NOTE] 
+> コミュニティ主導の例のリポジトリについては、 https://github.com/Azure/azureml-examples を参照してください。
 
 [サンプルの Azure Machine Learning Notebooks のリポジトリ](https://github.com/azure/machinelearningnotebooks)には、最新の Azure Machine Learning Python SDK のサンプルが含まれています。 これらの Juypter Notebook は、SDK の探索を支援し、独自の機械学習プロジェクトのモデルとして機能するように設計されています。
 
@@ -44,7 +48,7 @@ ms.locfileid: "88653717"
 
 [!INCLUDE [aml-your-server](../../includes/aml-your-server.md)]
 
-これらの手順では、クイック スタートとチュートリアルのノートブックに必要な基本 SDK パッケージがインストールされます。 その他のサンプル ノートブックでは、追加のコンポーネントのインストールが必要になる場合があります。 詳細については、「[Install the Azure Machine Learning SDK for Python (Azure Machine Learning SDK for Python をインストールする)](https://docs.microsoft.com/python/api/overview/azure/ml/install)」を参照してください。
+これらの手順では、クイック スタートとチュートリアルのノートブックに必要な基本 SDK パッケージがインストールされます。 その他のサンプル ノートブックでは、追加のコンポーネントのインストールが必要になる場合があります。 詳細については、「[Install the Azure Machine Learning SDK for Python (Azure Machine Learning SDK for Python をインストールする)](/python/api/overview/azure/ml/install)」を参照してください。
 
 <a name="dsvm"></a>
 ## <a name="get-samples-on-dsvm"></a>DSVM 上でサンプルを入手する
@@ -58,6 +62,7 @@ ms.locfileid: "88653717"
 [サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks)を探索して、Azure Machine Learning で実行できることを把握します。
 
 他の GitHub サンプル プロジェクトと例については、次のサンプル リポジトリを参照してください。
++ [Azure/azureml-examples](https://github.com/Azure/azureml-examples)
 + [Microsoft/MLOps](https://github.com/Microsoft/MLOps)
 + [Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
 

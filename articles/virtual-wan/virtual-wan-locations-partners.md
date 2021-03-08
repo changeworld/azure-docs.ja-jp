@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: 2f3641bf540b188ce3d2333ccd6bcf4a926ba130
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 188bc14de502640ae05f1d1eb55330d86cee50b4
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565111"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621481"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtual WAN パートナーと仮想ハブの場所
 
@@ -23,7 +23,7 @@ Azure Virtual WAN は、Azure を介して支店間接続を最適化し、自�
 
 オンプレミス デバイスからの接続は、自動化された方法で仮想ハブに向けて確立されます。 仮想ハブは、Microsoft のマネージド仮想ネットワークです。 ハブには、オンプレミス ネットワーク (vpnsite) からの接続を可能にするさまざまなサービス エンドポイントが含まれています。 ハブはリージョンごとに 1 つしか存在できません。
 
-## <a name="automation-from-connectivity-partners"></a><a name="automation"></a>接続パートナーからの自動化
+## <a name="branch-ipsec-connectivity-automation-from-partners"></a><a name="automation"></a>パートナーからのブランチ IPSec 接続自動化
 
 Azure Virtual WAN に接続するデバイスには、接続の自動化が組み込まれています。 これは通常、VPN ブランチ デバイスと Azure Virtual Hub VPN エンドポイント (VPN ゲートウェイ) 間の接続および構成管理を設定するデバイス管理 UI (または同等の機能) で設定されます。
 
@@ -36,11 +36,31 @@ Azure Virtual WAN に接続するデバイスには、接続の自動化が組�
 
 接続パートナーによっては、自動化を拡張して Azure Virtual Hub VNet および VPN Gateway の作成を含める場合があります。 自動化の詳細については、[仮想 WAN パートナー向けの自動化ガイドライン](virtual-wan-configure-automation-providers.md)を参照してください。
 
-## <a name="connectivity-through-partners"></a><a name="partners"></a>パートナー経由の接続
+## <a name="branch-ipsec-connectivity-partners"></a><a name="partners"></a>ブランチ IPSec 接続パートナー
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-次のパートナーが近い将来のロードマップに追加されることが予定されています。128 Technologies、Arista、Aruba HPE、Cisco Systems (Viptela)、F5 Networks、Open Systems、Oracle SD-WAN、SharpLink。
+次のパートナーは、パートナーのデバイスと Azure Virtual WAN VPN Gateway 間の IPsec 接続の自動化作業の範囲を示す、両社間で締結された条件概要書に基づき、当社のロードマップに記載されています:128 Technologies、Arista、F5 Networks、Oracle SD-WAN (Talari)、SharpLink。
+
+## <a name="partners-with-integrated-virtual-hub-offerings"></a>仮想ハブ サービスを統合しているパートナー
+ブランチ オフィス IPSec 接続を自動化していることに加え、一部のパートナーは、Azure 仮想 WAN ハブに直接統合できる **ネットワーク仮想アプライアンス (NVA)** を提供しています。  これにより、お客様は仮想ハブ内の互換性のあるサードパーティ アプライアンスへのブランチ接続を終了することができます。  
+
+仮想 WAN ハブで NVA を提供するパートナーは、次のことを行う必要があります。
+
+* ブランチ デバイスから IPSec 接続自動化を実装し、NVA サービスを Azure 仮想 WAN ハブにオンボードしておきます。
+* 既存のネットワーク仮想アプライアンス サービスを Azure Marketplace で入手できるようにします。
+
+パートナーが仮想ハブ サービスのマネージド NVA について質問がある場合、vwannvaonboarding@microsoft.com にメールを送り、お問い合わせください。
+
+## <a name="integrated-virtual-hub-nva-partners"></a>仮想ハブ NVA を統合したパートナー
+これらのパートナーの **マネージド アプリケーション** サービスは仮想 WAN ハブにデプロイできるようになりました。
+
+|パートナー|構成/方法/デプロイ ガイド|
+|---|---|
+|[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Barracuda CloudGen WAN デプロイ ガイド](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
+|[Cisco Cloud Service Router (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| Cisco Cloud Services (CSR) WAN を VWAN ハブに導入するパブリック プレビューの間、Cisco により、vwan_public_preview@external.cisco.com にメールを送り、vManage Deployment Guide をリクエストして Cisco EFT (Early Field Trial) 顧客として登録することがエンド カスタマーに求められます。 |
+
+次のパートナーは、近い将来、仮想ハブで NVA を提供する予定です。Aviatrix、Citrix、VeloCloud、Versa Networks。
 
 ## <a name="locations"></a><a name="locations"></a>場所
 

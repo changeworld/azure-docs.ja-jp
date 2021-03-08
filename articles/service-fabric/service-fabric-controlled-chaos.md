@@ -1,22 +1,20 @@
 ---
 title: Service Fabric クラスターでの混乱の誘発
 description: フォールト挿入とクラスター分析サービス API を使用して、クラスター内の混乱を管理します。
-author: motanv
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.author: motanv
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9e9127d9776169131c2ed7f4778052646e84f8b6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8ff3c88b7f86294badb76ec1e8dde0c34b942509
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89013114"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588992"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Service Fabric クラスターでの制御された混乱の誘発
 クラウド インフラストラクチャのような大規模な分散システムは、本質的に信頼性の低いものです。 Azure Service Fabric を使用すると、開発者が、信頼性の低いインフラストラクチャ上で信頼できる分散サービスのコードを記述できます。 信頼性の低いインフラストラクチャ上に強固な分散サービスを作成するために、開発者は、基になる信頼性の低いインフラストラクチャで障害のために複雑な状態遷移が発生している状態で、サービスの安定性をテストできる必要があります。
 
-[フォールト挿入とクラスター分析サービス](./service-fabric-testability-overview.md) (別名 Fault Analysis Service) によって、開発者が、障害アクションを誘発してサービスをテストできます。 [パーティションの再起動](/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps)などのこれらのシミュレーション対象のエラーは、最も一般的な状態遷移の練習に役立ちます。 ただし、シミュレートされた対象のエラーは、定義でバイアスがかけられ、そのため予測が難しい、長くて複雑な状態のシーケンスでのみ発生し、バグに記録されない場合があります。 バイアスをかけないテストのために、混乱を使用することができます。
+[フォールト挿入とクラスター分析サービス](./service-fabric-testability-overview.md) (別名 Fault Analysis Service) によって、開発者が、障害アクションを誘発してサービスをテストできます。 [パーティションの再起動](/powershell/module/servicefabric/start-servicefabricpartitionrestart)などのこれらのシミュレーション対象のエラーは、最も一般的な状態遷移の練習に役立ちます。 ただし、シミュレートされた対象のエラーは、定義でバイアスがかけられ、そのため予測が難しい、長くて複雑な状態のシーケンスでのみ発生し、バグに記録されない場合があります。 バイアスをかけないテストのために、混乱を使用することができます。
 
 混乱により、長時間にわたり、クラスター全体で、交互に配置された (グレースフルと非グレースフル) 定期的な障害がシミュレートされます。 グレースフル障害は、一連の Service Fabric API の呼び出しで構成されます。たとえば、レプリカの再起動障害は、レプリカを閉じる操作に続いて開く操作が発生するため、グレースフル障害です。 レプリカの削除、プライマリ レプリカの移動、およびセカンダリ レプリカの移動は、混乱によって実行されるその他のグレースフル障害です。 非グレースフル障害はプロセスの終了であり、ノードの再起動やコード パッケージの再起動などがあります。 
 

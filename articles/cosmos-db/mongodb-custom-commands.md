@@ -1,28 +1,30 @@
 ---
 title: Azure Cosmos DB の MongoDB 用 API のデータを管理するための MongoDB 拡張コマンド
 description: この記事では、MongoDB 拡張コマンドを使用して、Azure Cosmos DB の MongoDB 用 API に格納されているデータを管理する方法について説明します。
-author: LuisBosquez
+author: christopheranderson
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 05/28/2020
-ms.author: lbosq
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7b0ac1e301705b24d706638deb3ee0a15d49c87b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.date: 03/02/2021
+ms.author: chrande
+ms.custom: devx-track-js
+ms.openlocfilehash: deba6696eb71287902fa3970ed2d83d0b09ac08d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415093"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658488"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API に格納されているデータを管理するために MongoDB 拡張コマンドを使用する 
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
-次のドキュメントには、MongoDB 用の Azure Cosmos DB の API に固有のカスタム アクション コマンドが含まれています。 これらのコマンドを使用して、[Azure Cosmos DB 容量モデル](databases-containers-items.md)に固有のデータベース リソースを作成および取得できます。
+次のドキュメントには、MongoDB 用の Azure Cosmos DB の API に固有のカスタム アクション コマンドが含まれています。 これらのコマンドを使用して、[Azure Cosmos DB 容量モデル](account-databases-containers-items.md)に固有のデータベース リソースを作成および取得できます。
 
 Azure Cosmos DB の MongoDB 用 API を使用することで、MongoDB アプリへの投資を保持しながら、グローバル配布、自動シャーディング、高可用性、低待機時間の保証、自動化、保存時の暗号化、バックアップなど多くの Cosmos DB の利点を活用できます。 Azure Cosmos DB の MongoDB 用 API との通信は、オープン ソースで公開されている任意の [MongoDB クライアント ドライバー](https://docs.mongodb.org/ecosystem/drivers)を使って行うことができます。 Azure Cosmos DB の MongoDB 用 API では、MongoDB [ワイヤ プロトコル](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)に従うことにより、既存のクライアント ドライバーを利用できます。
 
 ## <a name="mongodb-protocol-support"></a>MongoDB のプロトコル サポート
 
-Azure Cosmos DB の MongoDB 用 API は、MongoDB サーバー バージョン 3.2 および 3.6 と互換性があります。 詳細については、[サポートされている機能と構文](mongodb-feature-support.md)に関する記事を参照してください。 
+Azure Cosmos DB の MongoDB 用 API は、MongoDB サーバー バージョン 4.0、3.6、3.2 と互換性があります。 詳細については、[4.0](mongodb-feature-support-40.md)、[3.6](mongodb-feature-support-36.md)、[3.2](mongodb-feature-support.md) でサポートされている機能と構文を参照してください。 
 
 次の拡張コマンドを使用すると、データベース要求を使用して Azure Cosmos DB 固有のリソースを作成および変更できます。
 
@@ -88,7 +90,7 @@ db.runCommand({customAction: "CreateDatabase", autoScaleSettings: { maxThroughpu
 
 ## <a name="update-database"></a><a id="update-database"></a>データベースの更新
 
-データベースの更新拡張コマンドは、指定したデータベースに関連付けられているプロパティを更新します。 次の表では、コマンド内のパラメーターについて説明します。
+データベースの更新拡張コマンドは、指定したデータベースに関連付けられているプロパティを更新します。 プロビジョニングされたスループットから自動スケーリングへのデータベースの変更やその逆の変更は、Azure Portal でのみサポートされています。 次の表では、コマンド内のパラメーターについて説明します。
 
 |**フィールド**|**Type** |**説明** |
 |---------|---------|---------|
@@ -204,8 +206,8 @@ db.runCommand({customAction: "GetDatabase"});
   customAction: "CreateCollection",
   collection: "<Collection Name>",
   shardKey: "<Shard key path>",
-  offerThroughput: (int), // Amount of throughput allocated to a specific collection
-
+  // Replace the line below with "autoScaleSettings: { maxThroughput: (int) }" to use Autoscale instead of Provisioned Throughput. Fill the required Autoscale max throughput setting.
+  offerThroughput: (int) // Provisioned Throughput enabled with required throughput amount set
 }
 ```
 
@@ -290,13 +292,14 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", s
 
 ## <a name="update-collection"></a><a id="update-collection"></a>コレクションの更新
 
-コレクションの更新拡張コマンドは、指定したコレクションに関連付けられているプロパティを更新します。
+コレクションの更新拡張コマンドは、指定したコレクションに関連付けられているプロパティを更新します。 プロビジョニングされたスループットから自動スケーリングへのコレクションの変更やその逆の変更は、Azure Portal でのみサポートされています。
 
 ```javascript
 {
   customAction: "UpdateCollection",
   collection: "<Name of the collection that you want to update>",
-  offerThroughput: (int) // New throughput that will be set to the collection
+  // Replace the line below with "autoScaleSettings: { maxThroughput: (int) }" if using Autoscale instead of Provisioned Throughput. Fill the required Autoscale max throughput setting. Changing between Autoscale and Provisioned throughput is only supported in the Azure Portal.
+  offerThroughput: (int) // Provisioned Throughput enabled with required throughput amount set
 }
 ```
 

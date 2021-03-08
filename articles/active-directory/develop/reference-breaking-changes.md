@@ -12,12 +12,12 @@ ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0c5abf345fda9db4cc5123360245e42ea0ef40e1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 94c34e6f7cb24ff749e5de95f1c28a496700af80
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115035"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348723"
 ---
 # <a name="whats-new-for-authentication"></a>認証の新機能
 
@@ -65,7 +65,7 @@ ms.locfileid: "88115035"
 
 **影響を受けるプロトコル**:すべてのユーザー フローです。
 
-256 文字を超えるパスワードを使用して (ADFS などのフェデレーション IDP ではなく) Azure AD に直接接続するユーザーは、2020 年 3 月 13 日以降はサインインできなくなり、パスワードをリセットするように求められます。  管理者は、ユーザーのパスワード リセットを支援する要求を受信する場合があります。
+256 文字を超えるパスワードを使用して (ADFS などのフェデレーション IDP ではなく) Azure AD に直接接続するユーザーは、2020 年 3 月 13 日以降はサインインできなくなり、パスワードをリセットするように求められます。  管理者は、ユーザーのパスワード リセットを支援するように要求される場合があります。
 
 サインイン ログのエラーは、AADSTS 50052: InvalidPasswordExceedsMaxLength
 
@@ -98,7 +98,7 @@ login.microsoftonline.com から HTTP リダイレクト経由で認証応答が
 
 **影響を受けるエンドポイント**:v1.0 と v2.0 の両方
 
-**影響を受けるプロトコル**:POST が使用されるすべての場所 ([クライアント資格情報](./v2-oauth2-client-creds-grant-flow.md)、[承認コードの利用](./v2-oauth2-auth-code-flow.md)、[ROPC](./v2-oauth-ropc.md)、[OBO](./v2-oauth2-on-behalf-of-flow.md)、および[更新トークンの利用](./v2-oauth2-auth-code-flow.md#refresh-the-access-token))
+**影響を受けるプロトコル**:POST が使用されるすべての場所 ([クライアント資格情報](./v2-oauth2-client-creds-grant-flow.md)、[承認コードの利用](./v2-oauth2-auth-code-flow.md)、[ROPC](./v2-oauth-ropc.md)、[OBO](./v2-oauth2-on-behalf-of-flow.md)、および [更新トークンの利用](./v2-oauth2-auth-code-flow.md#refresh-the-access-token))
 
 9/2 の週から、POST メソッドを使用する認証要求は、より厳格な HTTP 標準を使用して検証されます。  具体的には、スペースと二重引用符 (") が要求フォームの値から削除されなくなります。 これらの変更によって、既存のクライアントが中断されることはなく、Azure AD に送信された要求は毎回確実に処理されます。 今後 (上記参照)、重複するパラメーターを拒否し、要求内の BOM を無視することをさらに計画しています。
 

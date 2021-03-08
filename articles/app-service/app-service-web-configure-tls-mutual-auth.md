@@ -3,14 +3,14 @@ title: TLS 相互認証の構成
 description: TLS でクライアント証明書を認証する方法を学びます。 Azure App Service では、クライアント証明書をアプリ コードで確認できます。
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
-ms.date: 10/01/2019
+ms.date: 12/11/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 145b999d7bf8597c06d6e3d4a36d01b182c8ae68
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 6ceeb3d31652c04eb9a69c1c8bb4b114e6f38d52
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213636"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347744"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Azure App Service に対する TLS 相互認証の構成
 
@@ -24,20 +24,33 @@ ms.locfileid: "88213636"
 
 ## <a name="enable-client-certificates"></a>クライアント証明書を有効にする
 
-アプリでクライアント証明書を必須にするようアプリを設定するには、Azure Portal で **[構成]**  >  **[全般設定]** の順に選択して、[Require incoming certificate]\(着信証明書を必須にする\) を **[オン]** にするか、アプリの `clientCertEnabled` 設定を `true` に設定する必要があります。 この設定を行うには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
+クライアント証明書を必要とするようにアプリを設定するには、以下のようにします。
+
+1. アプリの管理ページの左側のナビゲーションで、 **[構成]**  >  **[全般設定]** を選択します。
+
+1. **[Client certificate mode]\(クライアント証明書モード\)** を **[必須]** に設定します。 ページの上部にある **[保存]** をクリックします。
+
+Azure CLI を使用して同じことを行うには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
 ```azurecli-interactive
-az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
+az webapp update --set clientCertEnabled=true --name <app-name> --resource-group <group-name>
 ```
 
 ## <a name="exclude-paths-from-requiring-authentication"></a>パスを認証を必要としないものとして除外する
 
-お使いのアプリケーションで相互認証を有効にすると、お使いのアプリのルート下のすべてのパスで、アクセスにクライアント証明書が必要になります。 特定のパスが匿名アクセスできるよう残すには、お使いのアプリケーションを構成するときに除外するパスを定義する必要があります。
+お使いのアプリケーションで相互認証を有効にすると、そのアプリのルート下のすべてのパスで、アクセスにクライアント証明書が必要になります。 特定のパスでこの要件を削除するには、アプリケーション構成の一部として除外パスを定義します。
 
-除外するパスを構成するには、 **[構成]**  >  **[全般設定]** の順に選択して除外するパスを定義します。 この例では、お使いのアプリケーションの `/public` パスの下のすべてで、クライアント証明書は要求されません。
+1. アプリの管理ページの左側のナビゲーションで、 **[構成]**  >  **[全般設定]** を選択します。
+
+1. **[Client exclusion paths]\(クライアントの除外パス\)** の横にある編集アイコンをクリックします。
+
+1. **[新しいパス]** をクリックし、パスを指定して、 **[OK]** をクリックします。
+
+1. ページの上部にある **[保存]** をクリックします。
+
+次のスクリーンショットでは、アプリの `/public` パスの下にあるものは、クライアント証明書を必要としません。
 
 ![証明書不要のパス][exclusion-paths]
-
 
 ## <a name="access-client-certificate"></a>クライアント証明書にアクセスする
 

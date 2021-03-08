@@ -1,21 +1,21 @@
 ---
 title: マネージド ID Azure Stream Analytics による BLOB 出力の認証
 description: この記事では、マネージド ID を使用して、Azure Blob Storage 出力に対して Azure Stream Analytics ジョブを認証する方法について説明します。
-author: cedarbaum
-ms.author: sacedarb
+author: kim-ale
+ms.author: kimal
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/11/2020
-ms.openlocfilehash: 99b23b65a0ce1693bcd04d5828fe062f2f43ea73
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 12/15/2020
+ms.openlocfilehash: 369348133f7395f5db5b5923bd438cec8e4ad733
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044228"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954380"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>マネージド ID を使用して、Azure Blob Storage 出力に対して Azure Stream Analytics ジョブを認証する
+# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>マネージド ID (プレビュー) を使用して、Azure Blob Storage に対して Azure Stream Analytics ジョブを認証する
 
-Azure Blob Storage への出力に対して [マネージド ID 認証](../active-directory/managed-identities-azure-resources/overview.md)を使用すると、Stream Analytics ジョブで、接続文字列を使用せずに、ストレージ アカウントに直接アクセスできます。 この機能により、セキュリティが向上し、さらに Azure 内の仮想ネットワーク (VNET) のストレージ アカウントにデータを書き込むことができます。
+Azure Blob Storage への出力に対して[マネージド ID 認証](../active-directory/managed-identities-azure-resources/overview.md) (プレビュー) を使用すると、Stream Analytics ジョブで、接続文字列を使用せずに、ストレージ アカウントに直接アクセスできます。 この機能により、セキュリティが向上し、さらに Azure 内の仮想ネットワーク (VNET) のストレージ アカウントにデータを書き込むことができます。
 
 この記事では、Azure portal を通じて、および Azure Resource Manager デプロイを通じて、Stream Analytics ジョブの Blob 出力に対してマネージド ID を有効にする方法を示します。
 
@@ -33,7 +33,7 @@ Azure Blob Storage への出力に対して [マネージド ID 認証](../activ
 
 ## <a name="azure-resource-manager-deployment"></a>Azure Resource Manager デプロイ
 
-Azure Resource Manager を使用すると、Stream Analytics ジョブのデプロイを完全に自動化できます。 Azure PowerShell または [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用して、Resource Manager テンプレートをデプロイできます。 次の例では、Azure CLI を使用しています。
+Azure Resource Manager を使用すると、Stream Analytics ジョブのデプロイを完全に自動化できます。 Azure PowerShell または [Azure CLI](/cli/azure/) を使用して、Resource Manager テンプレートをデプロイできます。 次の例では、Azure CLI を使用しています。
 
 
 1. Resource Manager テンプレートのリソース セクションに次のプロパティを含めることで、マネージド ID を持つ **Microsoft.StreamAnalytics/streamingjobs** リソースを作成できます。
@@ -98,7 +98,7 @@ Azure Resource Manager を使用すると、Stream Analytics ジョブのデプ�
     次の Azure CLI コマンドを使用して、上記のジョブをリソース グループ **ExampleGroup** にデプロイできます。
 
     ```azurecli
-    az group deployment create --resource-group ExampleGroup -template-file StreamingJob.json
+    az deployment group create --resource-group ExampleGroup -template-file StreamingJob.json
     ```
 
 2. ジョブが作成された後、Azure Resource Manager を使用して、そのジョブの完全な定義を取得できます。
@@ -158,7 +158,7 @@ Stream Analytics ジョブには、次の 2 つのレベルのアクセス権の
 1. **コンテナー レベルのアクセス権:** このオプションでは、既存の特定コンテナーへのアクセス権がジョブに付与されます。
 2. **アカウント レベルのアクセス権:** このオプションでは、ストレージ アカウントへの一般的なアクセス権がジョブに付与され、新しいコンテナーの作成など行うことができます。
 
-自分のためにコンテナーを作成するためのジョブが必要でない限り、**コンテナー レベルのアクセス権**を選択してください。これは、このオプションでは、必要な最小レベルのアクセス権がジョブに付与されるためです。 Azure portal とコマンド ラインでの両方のオプションについて、以下で説明します。
+自分のためにコンテナーを作成するためのジョブが必要でない限り、**コンテナー レベルのアクセス権** を選択してください。これは、このオプションでは、必要な最小レベルのアクセス権がジョブに付与されるためです。 Azure portal とコマンド ラインでの両方のオプションについて、以下で説明します。
 
 ### <a name="grant-access-via-the-azure-portal"></a>Azure portal を使用してアクセス権を付与する
 
@@ -218,11 +218,15 @@ Stream Analytics ジョブには、次の 2 つのレベルのアクセス権の
 
 ストレージ アカウントの **[ファイアウォールと仮想ネットワーク]** を構成する場合、必要に応じて、他の信頼された Microsoft サービスからのネットワーク トラフィックを許可できます。 Stream Analytics は、マネージド ID を使用して認証を行う場合、要求が信頼されたサービスから発信されていることを証明します。 この VNET アクセスの例外を有効にする手順を次に示します。
 
-1.  ストレージ アカウントの構成ウィンドウ内の [ファイアウォールと仮想ネットワーク] ウィンドウに移動します。
-2.  [信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します] オプションが有効になっていることを確認します。
-3.  これを有効にした場合、 **[保存]** をクリックします。
+1.    ストレージ アカウントの構成ペイン内の [ファイアウォールと仮想ネットワーク] ペインに移動します。
+2.    [信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します] オプションが有効になっていることを確認します。
+3.    これを有効にした場合、 **[保存]** をクリックします。
 
    ![VNET アクセスを有効にする](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-vnet-exception.png)
+
+## <a name="remove-managed-identity"></a>マネージド ID を削除する
+
+Stream Analytics ジョブに対して作成されたマネージド ID は、ジョブが削除されたときにのみ削除されます。 ジョブを削除せずにマネージド ID を削除することはできません。 マネージド ID を使用する必要がなくなった場合は、出力の認証方法を変更できます。 マネージド ID は、ジョブが削除されるまで存在し続け、マネージド ID の認証を再度使用する場合に使用されます。
 
 ## <a name="limitations"></a>制限事項
 この機能の現在の制限は次のとおりです。

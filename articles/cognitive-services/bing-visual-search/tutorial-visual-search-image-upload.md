@@ -10,15 +10,20 @@ ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: scottwhi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c2e0e907734f30010690817ddb7bb15527c93bbf
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 96a4b13d11e40e24e78d3aed8dfebcc88b41c525
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404029"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486880"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>チュートリアル:Bing Visual Search API に画像をアップロードする
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、またはマイクロソフトエンタープライズ契約の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 Bing Visual Search API を使用すると、アップロードする画像と似ている画像を Web で検索することができます。 このチュートリアルを使用して、画像を API に送信し、返される分析情報を Web ページ内に表示できる Web アプリケーションを構築します。 このアプリケーションは、API を使用するための [Bing の利用と表示の要件](../bing-web-search/use-display-requirements.md)すべてに準拠していないことに注意してください。
 
@@ -472,7 +477,7 @@ function addDivContent(div, tag, json) {
 
 ## <a name="display-insights-for-different-actions"></a>さまざまなアクションの分析情報を表示する
 
-次の関数では、さまざまなアクションの分析情報が表示されます。 関数によって、クリックできる画像またはクリックできるリンクが提供され、クリックすると画像の詳細情報が含まれる Web ページが表示されます。 このページは、Bing.com または画像の元の Web サイトでホストされています。 分析情報のすべてはこのアプリケーションでは表示されません。 分析情報のすべての利用可能フィールドを確認するには、「[Images - Visual Search (画像 - Visual Search)](https://aka.ms/bingvisualsearchreferencedoc)」リファレンスを参照してください。
+次の関数では、さまざまなアクションの分析情報が表示されます。 関数によって、クリックできる画像またはクリックできるリンクが提供され、クリックすると画像の詳細情報が含まれる Web ページが表示されます。 このページは、Bing.com または画像の元の Web サイトでホストされています。 分析情報のすべてはこのアプリケーションでは表示されません。 分析情報のすべての利用可能フィールドを確認するには、「[Images - Visual Search (画像 - Visual Search)](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)」リファレンスを参照してください。
 
 > [!NOTE]
 > ページには最低限の分析情報を表示する必要があります。 詳細については、「[Bing Search API の利用と表示の要件](../bing-web-search/use-display-requirements.md)」を参照してください。

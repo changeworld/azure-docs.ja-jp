@@ -2,18 +2,17 @@
 title: Azure Stack での Azure Stream Analytics の実行 (プレビュー)
 description: Azure Stream Analytics Edge ジョブを作成し、IoT Edge ランタイムを使用して Azure Stack ハブに展開します。
 ms.service: stream-analytics
-author: raan
+author: an-emma
 ms.author: raan
-ms.reviewer: mamccrea
 ms.topic: how-to
 ms.date: 08/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1fe035d99f8a5962406d5aae3f093d71d432b310
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 3463b3eae96c0a65206023ed0f21efe44294d4eb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88860406"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020130"
 ---
 # <a name="run-azure-stream-analytics-on-azure-stack-preview"></a>Azure Stack での Azure Stream Analytics の実行 (プレビュー)
 
@@ -34,9 +33,9 @@ Azure Stack Hub または IoT Edge を初めて使用する場合は、以下の
 
 ### <a name="prepare-the-azure-stack-hub-environment"></a>Azure Stack Hub 環境を準備する
 
-Azure Stack Hub サブスクリプションを作成します。 詳細については、[Azure Stack Hub サブスクリプションを作成するためのチュートリアル](https://docs.microsoft.com/azure-stack/user/azure-stack-subscribe-services/)を参照してください。
+Azure Stack Hub サブスクリプションを作成します。 詳細については、[Azure Stack Hub サブスクリプションを作成するためのチュートリアル](/azure-stack/user/azure-stack-subscribe-services/)を参照してください。
 
-独自のサーバーで Azure Stack Hub を評価する場合は、Azure Stack Development Kit (ASDK) を使用できます。  ASDK の詳細については、[ASDK の概要](https://docs.microsoft.com/azure-stack/asdk/)に関する記事を参照してください。
+独自のサーバーで Azure Stack Hub を評価する場合は、Azure Stack Development Kit (ASDK) を使用できます。  ASDK の詳細については、[ASDK の概要](/azure-stack/asdk/)に関する記事を参照してください。
 
 ### <a name="install-the-iot-edge-runtime"></a>IoT Edge ランタイムをインストールする
 
@@ -46,8 +45,8 @@ Azure Stack Hub リソースへのネットワーク アクセスだけでなく
 
 次のガイドでは、デバイスまたは VM で IoT Edge ランタイムを設定する方法について説明します。
 
-* [Windows に Azure IoT Edge ランタイムをインストールする](../iot-edge/how-to-install-iot-edge-windows.md)
-* [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../iot-edge/how-to-install-iot-edge-linux.md)
+* [Windows に Azure IoT Edge ランタイムをインストールする](../iot-edge/how-to-install-iot-edge.md)
+* [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../iot-edge/how-to-install-iot-edge.md)
 
 
 ## <a name="create-an-azure-stream-analytics-edge-job"></a>Azure Stream Analytics Edge ジョブを作成する
@@ -67,7 +66,7 @@ Azure Stream Analytics ジョブを作成して IoT Edge デバイスで実行�
    | 名前 | ストレージ アカウント用に一意の名前を指定します。 |
    | 場所 | 近くの場所を選択します。|
    | サブスクリプション | IoT ハブと同じサブスクリプションを選択します。|
-   | リソース グループ | [IoT Edge のクイック スタート](https://docs.microsoft.com/azure/iot-edge/quickstart)およびチュートリアルで作成するすべてのテスト リソースに、同じリソース グループを使用することをお勧めします。 たとえば、**IoTEdgeResources** を使用します。 |
+   | リソース グループ | [IoT Edge のクイック スタート](../iot-edge/quickstart.md)およびチュートリアルで作成するすべてのテスト リソースに、同じリソース グループを使用することをお勧めします。 たとえば、**IoTEdgeResources** を使用します。 |
 
 3. 他のフィールドは既定値のままにして、**[作成]** を選択します。
 
@@ -81,7 +80,7 @@ Azure Stream Analytics ジョブを作成して IoT Edge デバイスで実行�
    | --- | --- |
    | ジョブ名 | ジョブの名前を指定します。 たとえば、「**IoTEdgeJob**」と指定します。 |
    | サブスクリプション | IoT ハブと同じサブスクリプションを選択します。|
-   | リソース グループ | [IoT Edge のクイック スタート](https://docs.microsoft.com/azure/iot-edge/quickstart)およびチュートリアルで作成するすべてのテスト リソースに、同じリソース グループを使用することをお勧めします。 たとえば、**IoTEdgeResources** を使用します。 |
+   | リソース グループ | [IoT Edge のクイック スタート](../iot-edge/quickstart.md)およびチュートリアルで作成するすべてのテスト リソースに、同じリソース グループを使用することをお勧めします。 たとえば、**IoTEdgeResources** を使用します。 |
    | 場所 | 近くの場所を選択します。 |
    | ホスト環境 | **[Edge]** を選択します。 |
 
@@ -176,5 +175,5 @@ Azure portal で Stream Analytics ジョブが作成されたら、ジョブの�
    > [ ![展開ページ](media/on-azure-stack/edge-deployment.png) ](media/on-azure-stack/edge-deployment.png#lightbox)
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure Stream Analytics on IoT Edge](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge)
-- [Stream Analytics Edge ジョブを開発する](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+- [Azure Stream Analytics on IoT Edge](./stream-analytics-edge.md)
+- [Stream Analytics Edge ジョブを開発する](/stream-analytics-query/stream-analytics-query-language-reference)

@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure Static Web Apps のドキュメント
-summary: Azure Static Web Apps を使用すると、GitHub で加えられた変更から自動的に発行される JavaScript Web アプリケーションを構築できます。
+summary: Azure Static Web Apps を使用すると、GitHub で加えられた変更から自動的に発行される最新の Web アプリケーションを構築できます。
 metadata:
   title: Azure Static Web Apps のドキュメント
-  description: Azure Static Web Apps を使用すると、GitHub で加えられた変更から自動的に発行される JavaScript Web アプリケーションを構築できます。
+  description: Azure Static Web Apps を使用すると、GitHub で加えられた変更から自動的に発行される最新の Web アプリケーションを構築できます。
   ms.topic: landing-page
   ms.service: static-web-apps
   author: craigshoemaker
   ms.author: cshoe
-  ms.date: 04/09/2020
-  ms.openlocfilehash: f70a746c948038b5bd67f4645e8dbd3df71b8b8a
-  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+  ms.date: 12/08/2020
+  ms.openlocfilehash: 880d675915a17e24269361c0ceed320a257d0ba9
+  ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/20/2020
-  ms.locfileid: "86528657"
+  ms.lasthandoff: 12/09/2020
+  ms.locfileid: "96906133"
 landingContent:
 - title: Static Web Apps について
   linkLists:
@@ -36,8 +36,10 @@ landingContent:
       url: ./getting-started.md?tabs=vanilla-javascript
   - linkListType: learn
     links:
-    - text: Angular、React、Svelte、または Vue JavaScript アプリと API を公開する
+    - text: Angular、React、Svelte、Vue JavaScript アプリを発行する
       url: /learn/modules/publish-app-service-static-web-app-api
+    - text: API を発行する
+      url: /learn/modules/publish-static-web-app-api-preview-url
   - linkListType: video
     links:
     - text: 静的 Web アプリを構築およびデプロイする
@@ -54,6 +56,8 @@ landingContent:
       url: publish-vuepress.md
     - text: Jekyll から発行する
       url: publish-jekyll.md
+    - text: Blazor からデプロイする
+      url: deploy-blazor.md
     - text: Next.js からデプロイする
       url: deploy-nextjs.md
     - text: Nuxt.js からデプロイする
@@ -62,6 +66,8 @@ landingContent:
     links:
     - text: Gatsby を使用して静的な Web アプリを発行する
       url: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+    - text: Blazor を使用して静的な Web アプリを発行する
+      url: /learn/modules/publish-app-service-static-web-app-api-dotnet
 - title: 主要な概念
   linkLists:
   - linkListType: concept

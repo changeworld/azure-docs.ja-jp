@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 83827c7a39b2833ce1301e78a0bef4e6d61ec62b
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: a74860b7adf4dade5aedc71a4960595cbe55eaf0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185300"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95995303"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>BLOB の論理的な削除の有効化と管理
 
-BLOB の論理的な削除により、誤って変更または削除されないようにデータを保護できます。 ストレージ アカウントに対して BLOB の論理的な削除が有効になっている場合、そのストレージ アカウント内の BLOB、BLOB バージョン (プレビュー)、およびスナップショットは、指定したリテンション期間内で、削除された後に復旧できます。
+BLOB の論理的な削除により、誤って変更または削除されないようにデータを保護できます。 ストレージ アカウントに対して BLOB の論理的な削除が有効になっている場合、そのストレージ アカウント内の BLOB、BLOB バージョン、およびスナップショットは、指定したリテンション期間内で、削除された後に復旧できます。
 
 アプリケーションまたは別のストレージ アカウントのユーザーによってデータが誤って変更または削除される可能性がある場合、Microsoft では BLOB の論理的な削除を有効にすることをお勧めしています。 この記事では、BLOB の論理的な削除を有効にする方法について説明します。 BLOB の論理的な削除の詳細については、「[BLOB の論理的な削除](soft-delete-blob-overview.md)」を参照してください。
 
@@ -194,5 +194,5 @@ blockBlob.StartCopy(copySource);
 
 ## <a name="next-steps"></a>次のステップ
 
-- [BLOB ストレージの論理的な削除](soft-delete-overview.md)
-- [BLOB のバージョン管理 (プレビュー)](versioning-overview.md)
+- [BLOB ストレージの論理的な削除](./soft-delete-blob-overview.md)
+- [BLOB バージョン管理](versioning-overview.md)

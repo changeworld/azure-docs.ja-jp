@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 4810de772e44be22ee5bd4a9fb6ef0ef756e62f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8a176fff0da932d0fafd40b9ab895b635acc5f6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085210"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169445"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>方法:さまざまな ID プロバイダーを使用するように iOS および macOS 用 MSAL を構成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "77085210"
 `MSALPublicClientApplication` は `https://login.microsoftonline.com/common` の既定の機関 URL を使用して構成されています。これは、ほとんどの Azure Active Directory (AAD) シナリオに適しています。 各国のクラウドのような高度なシナリオを実装する場合や B2C を使用する場合を除いて、変更する必要はありません。
 
 > [!NOTE]
-> ID プロバイダーとしての Active Directory フェデレーション サービス (ADFS) を使用した先進認証はサポートされていません (詳細については、「[開発者向けの AD FS のシナリオ](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)」を参照してください)。 ADFS は、フェデレーションを通じてサポートされます。
+> ID プロバイダーとしての Active Directory フェデレーション サービス (ADFS) を使用した先進認証はサポートされていません (詳細については、「[開発者向けの AD FS のシナリオ](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)」を参照してください)。 ADFS は、フェデレーションを通じてサポートされます。
 
 ## <a name="change-the-default-authority"></a>既定の機関を変更する
 

@@ -4,18 +4,20 @@ description: Azure Cosmos DB の MongoDB 用 API を使用してドキュメン�
 author: sivethe
 ms.author: sivethe
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.devlang: javascript
 ms.topic: how-to
 ms.date: 12/26/2018
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f2168338031b8c5b81fd1998f71adf47dcadc44e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 6ef3092c611e1eede2be1e0994ce69959a46f1d7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020713"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340925"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API でデータを期限切れにする
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Time to Live (TTL) 機能により、データベースはデータを自動的に期限切れにすることができます。 Azure Cosmos DB の MongoDB 用 API では、Cosmos DB の中核的な TTL 機能が利用されます。 コレクション全体に既定の TTL 値を設定するモードと、ドキュメントごとに個別の TTL 値を設定するモードの 2 つのモードがサポートされています。 Cosmos DB の MongoDB 用 API における TTL インデックスとドキュメントごとの TTL 値を管理するロジックは、[Cosmos DB におけるロジックと同じです](../cosmos-db/mongodb-indexing.md)。
 

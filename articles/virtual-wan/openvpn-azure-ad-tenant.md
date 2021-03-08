@@ -3,17 +3,17 @@ title: ユーザー VPN 接続用の Azure AD テナント:Azure AD 認証
 description: Azure Virtual WAN ユーザー VPN (ポイント対サイト) で、Azure AD 認証を使用して VNet に接続することができます
 titleSuffix: Azure Virtual WAN
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: e88437dc03772348ebbe0d179afc7fd4ddd24bd9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a54397fe7cfecef6813105645b7f2b218894875e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507558"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91367854"
 ---
 # <a name="prepare-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>ユーザー VPN OpenVPN プロトコル接続用の Azure Active Directory テナントを準備する
 
@@ -76,7 +76,7 @@ Azure AD テナントがあることを確認します。 Azure AD テナント�
 
 4. メッセージが表示されたら、 **[同意する]** を選択します。
 
-    ![Accept](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![[Permissions requested Accept for your organization] (アクセス許可が要求されています。組織のために同意してください) というメッセージと、その他の情報が表示されているダイアログ ボックスを示すスクリーンショット。](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 5. Azure AD の **[エンタープライズ アプリケーション]** に、**Azure VPN** が表示されるようになります。
 

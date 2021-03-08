@@ -1,37 +1,63 @@
 ---
 title: マルチテナント ホスティング権限を使用して Azure 上で Windows 10 をデプロイする方法
-description: Windows ソフトウェア アシュアランスの特典を最大限利用してオンプレミスのライセンスを Azure で使用する方法について説明します。
-author: xujing
+description: Windows ソフトウェア アシュアランスの特典を最大限利用して、マルチテナント ホスティング権限でオンプレミスのライセンスを Azure で使用する方法について説明します。
+author: mimckitt
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 1/24/2018
-ms.author: xujing
-ms.openlocfilehash: 40b5f4ee0c30e38c6cd5bd01c724ed783921670d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 2/2/2021
+ms.author: mimckitt
+ms.custom: rybaker, chmimckitt
+ms.openlocfilehash: 6e6f6ced1cdba429abd914354a5eba861ab127ec
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077437"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670050"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>マルチテナント ホスティング権限を使用して Azure 上で Windows 10 をデプロイする方法 
-接続ユーザーごとに Windows 10 Enterprise E3/E5 または Windows Virtual Desktop Access (ユーザー サブスクリプション ライセンスまたはアドオン ユーザー サブスクリプション ライセンス) をご利用中のお客様は、Windows 10 のマルチテナント ホスティング権限により、他のライセンスを購入することなく、Windows 10 ライセンスをクラウドに移行し、Azure 上で Windows 10 Virtual Machines を実行することができます。 詳細については、[Windows 10 のマルチテナント ホスティング](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)に関するページを参照してください。
+接続ユーザーごとに Windows 10 Enterprise E3/E5 または Windows Virtual Desktop Access (ユーザー サブスクリプション ライセンスまたはアドオン ユーザー サブスクリプション ライセンス) をご利用中のお客様は、Windows 10 のマルチテナント ホスティング権限により、他のライセンスを購入することなく、Windows 10 ライセンスをクラウドに移行し、Azure 上で Windows 10 Virtual Machines を実行することができます。 マルチテナント ホスティング権限は、Windows 10 (バージョン 1703 以降) でのみ使用できます。
+
+詳細については、[Windows 10 のマルチテナント ホスティング](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)に関するページを参照してください。
 
 > [!NOTE]
-> この記事では、Azure Marketplace の Windows 10 Pro デスクトップ イメージのライセンス特典を実装する方法について説明します。
-> - MSDN サブスクリプションを対象とした Azure Marketplace の Windows 7、8.1、10 Enterprise (x64) イメージについては、[Azure での Windows クライアントを用いた開発およびテスト シナリオ](client-images.md)に関するページをご覧ください。
+> - 開発またはテストのために Windows 7、8.1、10のイメージを使用する方法については、[開発/テスト シナリオのための Azure での Windows クライアント](client-images.md)に関するページを参照してください。
 > - Windows Server のライセンス特典については、[Windows Server イメージの Azure ハイブリッド使用特典](hybrid-use-benefit-licensing.md)に関するページをご覧ください。
->
+
+## <a name="subscription-licenses-that-qualify-for-multitenant-hosting-rights"></a>マルチテナント ホスティング権限の対象となるサブスクリプション ライセンス
+
+[Microsoft 管理センター](/microsoft-365/admin/admin-overview/about-the-admin-center?preserve-view=true&view=o365-worldwide)を使用して、ユーザーに Windows 10 のサポートされているライセンスが割り当てられているかどうかを確認できます。
+
+> [!IMPORTANT]
+> Azure で Windows 10 のイメージを使用するには、ユーザーに以下のいずれかのサブスクリプション ライセンスが必要です。 これらのいずれかのサブスクリプション ライセンスがない場合は、[クラウド サービス パートナー](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)を通じて、または [Microsoft](https://www.microsoft.com/microsoft-365?rtc=1) から直接購入できます。
+
+**対象となるサブスクリプション ライセンス:**
+
+-   Microsoft 365 E3/E5 
+-   Microsoft 365 F3 
+-   Microsoft 365 A3/A5 
+-   Windows 10 Enterprise E3/E5
+-   Windows 10 Education A3/A5 
+-   Windows VDA E3/E5
+
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Azure Marketplace から Windows 10 イメージをデプロイする 
-PowerShell、CLI、および Azure Resource Manager テンプレートでのデプロイについては、Windows 10 イメージを次の発行元、プラン、SKU で見つけることができます。
+PowerShell、CLI、および Azure Resource Manager テンプレートでのデプロイについては、Windows 10 イメージを `PublisherName: MicrosoftWindowsDesktop` と `Offer: Windows-10` で見つけることができます。 マルチテナント ホスティング権限では、Windows 10 Creators Update (バージョン 1809) 以降がサポートされています。 
 
-| OS  |      発行元      |  プラン | Sku |
-|:----------|:-------------:|:------|:------|
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
+```powershell
+Get-AzVmImageSku -Location '$location' -PublisherName 'MicrosoftWindowsDesktop' -Offer 'Windows-10'
+
+Skus                        Offer      PublisherName           Location 
+----                        -----      -------------           -------- 
+rs4-pro                     Windows-10 MicrosoftWindowsDesktop eastus   
+rs4-pron                    Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-enterprise              Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-enterprisen             Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-pro                     Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-pron                    Windows-10 MicrosoftWindowsDesktop eastus  
+```
+
+使用可能なイメージの詳細については、「[Azure PowerShell を使用して Azure Marketplace VM イメージを検索して使用する](./cli-ps-findimage.md)」を参照してください。
 
 ## <a name="uploading-windows-10-vhd-to-azure"></a>Windows 10 VHD を Azure にアップロードする
 汎用化された Windows 10 VHD をアップロードする場合、Windows 10 ではビルトイン Administrator アカウントが既定で有効になっていないことにご注意ください。 ビルトイン Administrator アカウントを有効にするには、カスタム スクリプト拡張機能の一部として次のコマンドを含めます。
@@ -100,10 +126,7 @@ LicenseType              :
 ```
 
 ## <a name="additional-information-about-joining-azure-ad"></a>Azure AD への参加に関する追加情報
->[!NOTE]
->Azure では、ビルトイン Administrator アカウントですべての Windows VM をプロビジョニングしますが、このアカウントは AAD への参加に使用できません。 たとえば、 *[設定] > [アカウント] > [職場または学校にアクセスする] > [+ 接続]* は機能しません。 手動で Azure AD に参加するには、2 つ目の Administrator アカウントを作成し、そのアカウントでログオンする必要があります。 また、プロビジョニング パッケージを使用して Azure AD を構成することもできます。詳細については、「*次のステップ*」セクションのリンクをご使用ください。
->
->
+Azure では、ビルトイン Administrator アカウントですべての Windows VM をプロビジョニングしますが、このアカウントは AAD への参加に使用できません。 たとえば、 *[設定] > [アカウント] > [職場または学校にアクセスする] > [+ 接続]* は機能しません。 手動で Azure AD に参加するには、2 つ目の Administrator アカウントを作成し、そのアカウントでログオンする必要があります。 また、プロビジョニング パッケージを使用して Azure AD を構成することもできます。詳細については、「*次のステップ*」セクションのリンクをご使用ください。
 
 ## <a name="next-steps"></a>次の手順
 - [Windows 10 の VDAの構成](/windows/deployment/vda-subscription-activation)に関する詳細情報を確認します

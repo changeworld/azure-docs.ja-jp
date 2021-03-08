@@ -3,8 +3,10 @@
 - name: 概要
   href: media-services-overview.md
   items:
-    - name: シナリオと可用性
+    - name: 一般的なシナリオ
       href: scenarios-and-availability.md
+    - name: リージョン別の提供状況
+      href: availability-regions-v-2.md
     - name: 概念
       href: media-services-concepts.md
 - name: はじめに
@@ -115,8 +117,6 @@
     - name: コンテンツのエンコード
       href: media-services-encode-asset.md
       items:
-        - name: エンコーダーの比較
-          href: media-services-compare-encoders.md
         - name: エンコードの速度とコンカレンシーの管理
           href: media-services-manage-encoding-speed.md
         - name: Media Encoder Standard (MES)
@@ -205,20 +205,6 @@
                   href: media-services-mes-preset-H264-Single-Bitrate-High-Quality-SD-for-Android.md
                 - name: H264 Single Bitrate Low Quality SD for Android
                   href: media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md
-        - name: メディア エンコーダー Premium ワークフロー
-          items:
-            - name: メディア エンコーダー プレミアム ワークフローの形式とコーデック
-              href: media-services-premium-workflow-encoder-formats.md
-            - name: メディア エンコーダー プレミアム ワークフローを使用したエンコード
-              items:
-                - name: メディア エンコーダー Premium ワークフロー
-                  href: media-services-encode-with-premium-workflow.md
-                - name: メディア エンコーダー Premium ワークフローのチュートリアル
-                  href: media-services-media-encoder-premium-workflow-tutorials.md
-                - name: ワークフロー デザイナーを使用して高度なエンコード ワークフローを作成する
-                  href: media-services-workflow-designer.md
-                - name: 複数入力の場合の Premium ワークフロー
-                  href: media-services-media-encoder-premium-workflow-multiplefilesinput.md
         - name: fMP4 チャンクを生成するタスクの作成
           href: media-services-generate-fmp4-chunks.md
         - name: メディア プロセッサ
@@ -318,33 +304,16 @@
               href: hybrid-design-drm-sybsystem.md
             - name: マルチ DRM の参照設計
               href: media-services-cenc-with-multidrm-access-control.md
-    - name: 分析
-      href: media-services-analytics-overview.md
+    - name: コンテンツの分析
       items:
-        - name: Azure portal を使用してメディアを分析する
-          href: media-services-portal-analyze.md
-        - name: Indexer 2 で処理する
-          href: media-services-process-content-with-indexer2.md
         - name: Indexer で処理する
           href: media-services-index-content.md
-          items:
-            - name: タスク プリセット
-              href: indexer-task-preset.md
-        - name: Face Detector で処理する
-          href: media-services-face-and-emotion-detection.md
-        - name: Motion Detector で処理する
-          href: media-services-motion-detection.md
+        - name: タスク プリセット
+          href: indexer-task-preset.md
         - name: Face Redactor で処理する
           href: media-services-face-redaction.md
-          items:
-            - name: Face Redactor のチュートリアル
-              href: media-services-redactor-walkthrough.md
-        - name: Video Thumbnails で処理する
-          href: media-services-video-summarization.md
-        - name: OCR で処理する
-          href: media-services-video-optical-character-recognition.md
-        - name: Content Moderator で処理する
-          href: media-services-content-moderation.md
+        - name: Face Redactor のチュートリアル
+          href: media-services-redactor-walkthrough.md
     - name: テレメトリの構成
       href: media-services-telemetry-overview.md
       items:

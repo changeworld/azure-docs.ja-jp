@@ -15,12 +15,18 @@
       href: quick-create-powershell.md
     - name: ポータル
       href: quick-create-portal.md
+    - name: .NET
+      href: quick-create-net.md
+    - name: Node.js
+      href: quick-create-node.md
     - name: Python
       href: quick-create-python.md
+    - name: Java
+      href: quick-create-java.md
 - name: サンプル
   items:
     - name: Key Vault のコード サンプル
-      href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
+      href: /samples/browse/?expanded=azure&products=azure-key-vault
 - name: チュートリアル
   items:
     - name: 証明書のインポート
@@ -37,6 +43,8 @@
       href: create-certificate.md
     - name: 証明書署名要求の作成
       href: create-certificate-signing-request.md
+    - name: 証明書のアクセスの制御
+      href: certificate-access-control.md
 - name: 操作方法ガイド
   items:
     - name: Key Vault と DigiCert CA の統合
@@ -56,7 +64,7 @@
     - name: Java
       href: /java/api/overview/azure/keyvault?view=azure-java-stable
     - name: Node.js
-      href: 'https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest'
+      href: /javascript/api/overview/azure/key-vault-index?view=azure-node-latest
     - name: Python
       href: /python/api/overview/azure/keyvault-certificates-readme?view=azure-python
     - name: REST
@@ -84,6 +92,6 @@
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=key-vault'
     - name: ブログ
-      href: 'https://blogs.technet.com/b/kv/'
+      href: /archive/blogs/kv/
     - name: 製品フィードバック
       href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

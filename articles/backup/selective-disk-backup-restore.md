@@ -3,20 +3,17 @@ title: Azure 仮想マシンの選択的なディスク バックアップと復
 description: この記事では、Azure 仮想マシン バックアップ ソリューションを使用した選択的なディスク バックアップと復元について説明します。
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.custom: references_regions
-ms.openlocfilehash: 12b5b4cd35d70d8ebbd6b269e82c46984652bd07
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.custom: references_regions , devx-track-azurecli
+ms.openlocfilehash: 38ead1591bf2ecadc8bfca5875ac1fa3e69d56ef
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961994"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806368"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Azure 仮想マシンの選択的なディスク バックアップと復元
 
 Azure Backup では、仮想マシン バックアップ ソリューションを使用して、VM 内のすべてのディスク (オペレーティング システムとデータ) をまとめてバックアップすることがサポートされています。 現在、選択的なディスク バックアップと復元の機能を使用して、VM 内のデータ ディスクのサブセットをバックアップできるようになっています。 これにより、バックアップと復元のニーズに応じた効率的で費用対効果の高いソリューションが提供されます。 各復旧ポイントには、バックアップ操作に含まれるディスクだけが含まれます。 これにより、復元操作中に特定の復旧ポイントからディスクのサブセットを復元できるようになります。 これは、スナップショットからの復元とコンテナーからの復元の両方に適用されます。
-
->[!NOTE]
->Azure 仮想マシンの選択的なディスク バックアップと復元は、すべてのリージョンでパブリック プレビュー中です。
 
 ## <a name="scenarios"></a>シナリオ
 
@@ -62,7 +59,7 @@ az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name
 VM がコンテナーと同じリソース グループにない場合、**ResourceGroup** は、コンテナーが作成されたリソース グループを参照します。 VM 名の代わりに、次に示すように VM ID を指定します。
 
 ```azurecli
-az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id | tr -d '"') --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
+az backup protection enable-for-vm  --resource-group {ResourceGroup} --vault-name {vaultname} --vm $(az vm show -g VMResourceGroup -n MyVm --query id --output tsv) --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
 ```
 
 ### <a name="modify-protection-for-already-backed-up-vms-with-azure-cli"></a>Azure CLI を使用して、既にバックアップされた VM の保護を変更する
@@ -86,7 +83,7 @@ az backup protection update-for-vm --resource-group {resourcegroup} --vault-name
 ### <a name="restore-disks-with-azure-cli"></a>Azure CLI を使用してディスクを復元する
 
 ```azurecli
-az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} --backup-management-type AzureIaasVM -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
+az backup restore restore-disks --resource-group {resourcegroup} --vault-name {vaultname} -c {vmname} -i {vmname} -r {restorepoint} --target-resource-group {targetresourcegroup} --storage-account {storageaccountname} --diskslist {LUN number of the disk(s) to be restored}
 ```
 
 ### <a name="restore-only-os-disk-with-azure-cli"></a>Azure CLI を使用して OS ディスクのみを復元する
@@ -192,10 +189,25 @@ az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-
 
 Azure PowerShell バージョン 3.7.0 以上を使用していることを確認します。
 
+保護の構成操作中に、バックアップに含めるか、または除外するディスクの LUN 番号を示す inclusion または exclusion パラメーターを含むディスク リスト設定を指定する必要があります。
+
 ### <a name="enable-backup-with-powershell"></a>PowerShell を使用してバックアップを有効にする
 
+次に例を示します。
+
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -DiskListSetting "Include"/"Exclude" -DisksList[Strings] -VaultId $targetVault.ID
+$disks = ("0","1")
+$targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "rg-p-recovery_vaults" -Name "rsv-p-servers"
+Get-AzRecoveryServicesBackupProtectionPolicy
+$pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "P-Servers"
+```
+
+```azurepowershell
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -InclusionDisksList $disks -VaultId $targetVault.ID
+```
+
+```azurepowershell
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -ExclusionDisksList $disks -VaultId $targetVault.ID
 ```
 
 ### <a name="backup-only-os-disk-during-configure-backup-with-powershell"></a>PowerShell を使用して、バックアップの構成中に OS ディスクのみをバックアップする
@@ -215,7 +227,11 @@ $item= Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -Workloa
 ### <a name="modify-protection-for-already-backed-up-vms-with-powershell"></a>PowerShell を使用して、既にバックアップされた VM の保護を変更する
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Item $item -DiskListSetting "Include"/"Exclude" -DisksList[Strings]   -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Item $item -InclusionDisksList[Strings] -VaultId $targetVault.ID
+```
+
+```azurepowershell
+Enable-AzRecoveryServicesBackupProtection -Item $item -ExclusionDisksList[Strings] -VaultId $targetVault.ID
 ```
 
 ### <a name="backup-only-os-disk-during-modify-protection-with-powershell"></a>PowerShell を使用して、保護の変更中に OS ディスクのみをバックアップする
@@ -227,7 +243,7 @@ Enable-AzRecoveryServicesBackupProtection -Item $item  -ExcludeAllDataDisks -Vau
 ### <a name="reset-disk-exclusion-setting-with-powershell"></a>PowerShell を使用して、ディスク除外設定をリセットする
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Item $item -DiskListSetting "Reset" -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Item $item -ResetExclusionSettings -VaultId $targetVault.ID
 ```
 
 ### <a name="restore-selective-disks-with-powershell"></a>PowerShell を使用して、ディスクを選択的に復元する
@@ -243,6 +259,8 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "
 ```
 
 ## <a name="using-the-azure-portal"></a>Azure ポータルの使用
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 Azure portal を使用すると、VM バックアップの詳細ペインとバックアップ ジョブの詳細ペインから、含まれているディスクと除外されているディスクを表示できます。  復元時に、復元する復旧ポイントを選択すると、その復旧ポイントのバックアップ ディスクを表示できます。
 
@@ -269,13 +287,17 @@ Azure portal を使用してバックアップを有効にした場合は、**OS
 
 ![OS ディスクのみのバックアップを構成する](./media/selective-disk-backup-restore/configure-backup-operating-system-disk.png)
 
+## <a name="using-azure-rest-api"></a>Azure REST API の使用
+
+いくつかのディスクを選択して Azure VM のバックアップを構成するか、または既存の VM の保護を変更して、[こちら](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)で説明されているようにいくつかのディスクを含めたり除外したりすることができます。
+
 ## <a name="selective-disk-restore"></a>選択的なディスクの復元
 
 選択的なディスクの復元は、選択的なディスク バックアップ機能を有効にすると得られる追加機能です。 この機能を使用すると、復旧ポイントでバックアップされたすべてのディスクからディスクを選択的に復元できます。 これはより効率的で、どのディスクを復元する必要があるかを把握しているシナリオで時間を節約できます。
 
 - OS ディスクは VM のバックアップと復元に既定で含まれており、除外することはできません。
 - 選択的なディスクの復元は、ディスクの除外機能が有効になった後に作成された復旧ポイントに対してのみサポートされます。
-- ディスクの除外設定を **[オン]** にしたバックアップでは、**ディスクの復元**オプションのみがサポートされます。 この場合、**VM の復元**または**既存のものを置き換える**復元オプションはサポートされません。
+- ディスクの除外設定を **[オン]** にしたバックアップでは、**ディスクの復元** オプションのみがサポートされます。 この場合、**VM の復元** または **既存のものを置き換える** 復元オプションはサポートされません。
 
 ![VM の復元および既存のものを置き換えるオプションは、復元操作中には使用できません](./media/selective-disk-backup-restore/options-not-available.png)
 
@@ -283,15 +305,36 @@ Azure portal を使用してバックアップを有効にした場合は、**OS
 
 選択的なディスクのバックアップ機能は、従来の仮想マシンおよび暗号化された仮想マシンではサポートされません。 そのため、Windows VM の暗号用の BitLocker を使用して Azure Disk Encryption (ADE) で暗号化された Azure VM と、Linux VM 用の dm-crypt 機能はサポートされません。
 
-**新しい VM の作成**および**既存のものを置き換える**復元オプションは、選択的なディスクのバックアップ機能が有効になっている VM ではサポートされません。
+**新しい VM の作成** および **既存のものを置き換える** 復元オプションは、選択的なディスクのバックアップ機能が有効になっている VM ではサポートされません。
+
+現在、Azure VM バックアップでは、Ultra Disk または共有ディスクが接続されている VM はサポートされていません。 ディスクを除外して VM をバックアップするこのような場合は、選択的ディスク バックアップを使用することはできません。
 
 ## <a name="billing"></a>課金
 
 Azure 仮想マシンのバックアップは、既存の価格モデルに従います。詳細については[こちら](https://azure.microsoft.com/pricing/details/backup/)を参照してください。
 
-**OS ディスクのみ**のオプションを使用してバックアップすることを選択した場合、**保護されたインスタンス (PI) のコスト**は OS ディスクに対してのみ計算されます。  バックアップを構成し、少なくとも 1 つのデータ ディスクを選択すると、その VM に接続されているすべてのディスクに対して PI コストが計算されます。 **バックアップ ストレージのコスト**は、含まれているディスクのみに基づいて計算されるので、ストレージ コストを節約できます。 **スナップショット コスト**は、常に VM 内のすべてのディスク (含まれているディスクと除外されているディスクの両方) に対して計算されます。  
+**OS ディスクのみ** のオプションを使用してバックアップすることを選択した場合、**保護されたインスタンス (PI) のコスト** は OS ディスクに対してのみ計算されます。  バックアップを構成し、少なくとも 1 つのデータ ディスクを選択すると、その VM に接続されているすべてのディスクに対して PI コストが計算されます。 **バックアップ ストレージのコスト** は、含まれているディスクのみに基づいて計算されるので、ストレージ コストを節約できます。 **スナップショット コスト** は、常に VM 内のすべてのディスク (含まれているディスクと除外されているディスクの両方) に対して計算されます。
+
+リージョンをまたがる復元 (CRR) 機能を選択した場合は、ディスクを除外した後に、[CRR 価格](https://azure.microsoft.com/pricing/details/backup/) がバックアップ ストレージのコストに適用されます。
+
+## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+### <a name="how-is-protected-instance-pi-cost-calculated-for-only-os-disk-backup-in-windows-and-linux"></a>Windows と Linux では、OS ディスクのバックアップのみに対する保護されたインスタンス (PI) のコストはどのように計算されますか?
+
+PI コストは、VM の実際の (使用されている) サイズに基づいて計算されます。
+
+- Windows の場合:使用領域の計算は、オペレーティング システムが格納されているドライブ (通常は C:) に基づいています。
+- Linux の場合:使用領域の計算は、ルート ファイルシステム (/) がマウントされているデバイスに基づいています。
+
+### <a name="i-have-configured-only-os-disk-backup-why-is-the-snapshot-happening-for-all-the-disks"></a>OS ディスク バックアップのみを構成しましたが、すべてのディスクでスナップショットが発生するのはなぜですか?
+
+選択的ディスク バックアップ機能を使用すると、バックアップの一部である含まれているディスクのセキュリティを強化することで、バックアップ コンテナーのストレージ コストを節約できます。 ただし、スナップショットは、VM に接続されているすべてのディスクに対して取得されます。 そのため、スナップショット コストは、常に VM 内のすべてのディスク (含まれているディスクと除外されているディスクの両方) に対して計算されます。 詳細については、「[課金](#billing)」を参照してください。
+
+### <a name="i-cant-configure-backup-for-the-azure-virtual-machine-by-excluding-ultra-disk-or-shared-disks-attached-to-the-vm"></a>VM に接続されている Ultra Disk または共有ディスクを除外して、Azure 仮想マシンのバックアップを構成できません
+
+選択的ディスク バックアップ機能は、Azure 仮想マシンのバックアップ ソリューションの上に提供される機能です。 現在、Azure VM バックアップでは、Ultra Disk または共有ディスクがアタッチされている VM はサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure VM バックアップのサポート マトリックス](backup-support-matrix-iaas.md)
-- [よく寄せられる質問 - Azure VM のバックアップ](backup-azure-vm-backup-faq.md)
+- [よく寄せられる質問 - Azure VM のバックアップ](backup-azure-vm-backup-faq.yml)

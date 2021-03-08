@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric と API Management の概要
 description: この記事では、Azure API Management を Service Fabric アプリケーションへのゲートウェイとして使用する方法の概要を示します。
-author: vturecek
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.author: vturecek
-ms.openlocfilehash: bbde23dd888d179917f123d00745fb7d0099c2d2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 32f47d62cc9dda7cc88421dbf616bf69ffe152fc
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259304"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575688"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Azure Service Fabric と API Management の概要
 
@@ -29,13 +27,13 @@ ms.locfileid: "86259304"
 
 このシナリオでは、ステートレス Web サービスが Service Fabric アプリケーションへのゲートウェイとして機能します。 このアプローチでは、下図に示すように、HTTP 要求をバックエンド サービスにプロキシすることができる Web サービスを記述する必要があります。
 
-![Service Fabric と Azure API Management のトポロジの概要][sf-web-app-stateless-gateway]
+![ステートレス Web サービスが Service Fabric アプリケーションへのゲートウェイとしてどのように機能するかを示す図。][sf-web-app-stateless-gateway]
 
 アプリケーションの複雑さが増すにつれ、多数のバックエンド サービスの前面で API を公開しなければならないゲートウェイも複雑になります。 Azure API Management は、ルーティング規則、アクセスの制御、レート制限、監視、イベント ログ、および応答キャッシュに対応する複雑な API を、最小限のユーザー操作で処理することができるよう設計されています。 また、Service Fabric サービスの検出、パーティション解決、およびレプリカ選択をサポートし、要求を直接 Service Fabric のバックエンド サービスにインテリジェントにルーティングできるので、独自のステートレス API ゲートウェイを記述する必要がありません。 
 
 このシナリオでは、下図に示すように、Web UI が Web サービスを通じて引き続き使用される一方、HTTP API 呼び出しは Azure API Management によって管理およびルーティングされます。
 
-![Service Fabric と Azure API Management のトポロジの概要][sf-apim-web-app]
+![Web UI が Web サービスを通じて引き続き使用される一方、HTTP API 呼び出しは Azure API Management によって管理およびルーティングされる方法を示す図。][sf-apim-web-app]
 
 ## <a name="application-scenarios"></a>アプリケーションのシナリオ
 
@@ -51,11 +49,11 @@ Azure API Management は、ステートレス サービス、ステートフル 
 
 次のシナリオでは、Service Fabric アプリケーションに `fabric:/app/fooservice` という名前のステートレス サービスがあり、そこで内部 HTTP API を公開しています。 サービス インスタンスの名前は既にわかっているので、API Management の受信処理ポリシーに直接ハードコードすることができます。 
 
-![Service Fabric と Azure API Management のトポロジの概要][sf-apim-static-stateless]
+![Service Fabric アプリケーションに、内部 HTTP API を公開しているステートレス サービスがあることを示す図。][sf-apim-static-stateless]
 
 ## <a name="send-traffic-to-a-stateful-service"></a>ステートフル サービスにトラフィックを送信する
 
-ステートレス サービスのシナリオと同様に、トラフィックはステートフル サービスのインスタンスに転送されます。 この場合、API Management 操作には、特定の*ステートフル* サービス インスタンスの特定のパーティションに要求をマップする Service Fabric バックエンドの受信処理ポリシーが含まれます。 各要求がマップされるパーティションは、受信 HTTP 要求からの入力 (URL パス内の値など) を使用して、ラムダ メソッドで計算されます。 このポリシーは、プライマリ レプリカだけに要求を送信するよう構成することも、読み取り操作のためにランダムなレプリカに要求を送信するよう構成することもできます。
+ステートレス サービスのシナリオと同様に、トラフィックはステートフル サービスのインスタンスに転送されます。 この場合、API Management 操作には、特定の *ステートフル* サービス インスタンスの特定のパーティションに要求をマップする Service Fabric バックエンドの受信処理ポリシーが含まれます。 各要求がマップされるパーティションは、受信 HTTP 要求からの入力 (URL パス内の値など) を使用して、ラムダ メソッドで計算されます。 このポリシーは、プライマリ レプリカだけに要求を送信するよう構成することも、読み取り操作のためにランダムなレプリカに要求を送信するよう構成することもできます。
 
 **例**
 
@@ -82,11 +80,11 @@ Azure API Management は、ステートレス サービス、ステートフル 
   - `/api/users/foo` への要求はサービス インスタンス `fabric:/app/users/foo` にルーティングされる
   - `/api/users/bar` への要求はサービス インスタンス `fabric:/app/users/bar` にルーティングされる
 
-![Service Fabric と Azure API Management のトポロジの概要][sf-apim-dynamic-stateless]
+![アプリケーションのユーザーごとに新しいステートレス サービス インスタンスが、動的に生成された名前を付けて作成される例を示す図。][sf-apim-dynamic-stateless]
 
 ## <a name="send-traffic-to-multiple-stateful-services"></a>複数のステートフル サービスにトラフィックを送信する
 
-ステートレス サービスの例と同様に、API Management 操作は複数の**ステートフル** サービスに要求をマップできますが、このとき、ステートフル サービス インスタンスごとにパーティション解決が必要になることもあります。
+ステートレス サービスの例と同様に、API Management 操作は複数の **ステートフル** サービスに要求をマップできますが、このとき、ステートフル サービス インスタンスごとにパーティション解決が必要になることもあります。
 
 そのため API Management 操作には、受信 HTTP 要求から取得した値に基づいて Service Fabric バックエンドのステートフル サービス インスタンスに要求をマップする Service Fabric バックエンドの受信処理ポリシーが含まれています。 要求は特定のサービス インスタンスのほか、そのサービス インスタンス内の特定のパーティションにもマップすることができます。さらに、任意でそのパーティション内のプライマリ レプリカかランダム セカンダリ レプリカのいずれにマップすることも可能です。
 
@@ -103,7 +101,7 @@ Azure API Management は、ステートレス サービス、ステートフル 
 
 各サービス インスタンスもまた、2 つのパーティションとキー範囲 (`Int64.MinValue` ～ `Int64.MaxValue`) を使用する Int64 パーティション構成でパーティション分割されます。 分割キーの計算には任意のアルゴリズムを使用できますが、ここでは、バックエンド ポリシーが URL 要求パスで指定された値 `id` を 64 ビットの整数に変換することで、範囲内でパーティション分割キーを計算します。 
 
-![Service Fabric と Azure API Management のトポロジの概要][sf-apim-dynamic-stateful]
+![各サービス インスタンスもまた、2 つのパーティションとキー範囲 (Int64.MinValue から Int64.MaxValue) を使用する Int64 パーティション構成でパーティション分割されることを示す図。][sf-apim-dynamic-stateful]
 
 ## <a name="next-steps"></a>次のステップ
 

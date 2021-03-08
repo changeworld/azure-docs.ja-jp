@@ -1,35 +1,35 @@
 ---
-title: SQL オンデマンド (プレビュー) を使用して、フォルダーと複数のファイルに対してクエリを実行する
-description: SQL オンデマンド (プレビュー) では、Windows OS で使用されるワイルドカードとよく似たワイルドカードを使用して複数のファイルまたはフォルダーを読み取ることができます。
+title: サーバーレス SQL プールを使用して、フォルダーと複数のファイルに対してクエリを実行する
+description: サーバーレス SQL プールでは、Windows OS で使用されるワイルドカードとよく似たワイルドカードを使用して複数のファイルまたはフォルダーを読み取ることができます。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 6c61bd420121800ade48de88cbcaadf37343262d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: stefanazaric
+ms.reviewer: jrasnick
+ms.openlocfilehash: 83c4d88e1a87f6b546e26dd55da338a36f16ebe4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207633"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462629"
 ---
 # <a name="query-folders-and-multiple-files"></a>クエリ フォルダーと複数のファイル  
 
-この記事では、Azure Synapse Analytics の SQL オンデマンド (プレビュー) を使用してクエリを作成する方法について説明します。
+この記事では、Azure Synapse Analytics のサーバーレス SQL プールを使用してクエリを作成する方法について説明します。
 
-SQL オンデマンドでは、ワイルドカードを使用して複数のファイルまたはフォルダーを読み取ることができます。これは、Windows OS で使用されるワイルドカードとよく似ています。 しかし、複数のワイルドカードを使用できるため、柔軟性がより高くなります。
+サーバーレス SQL プールでは、Windows OS で使用されるワイルドカードとよく似たワイルドカードを使用して複数のファイルまたはフォルダーを読み取ることができます。 しかし、複数のワイルドカードを使用できるため、柔軟性がより高くなります。
 
 ## <a name="prerequisites"></a>前提条件
 
-最初の手順として、クエリを実行する**データベースを作成**します。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、この記事のサンプルで使用されるデータ ソース、データベース スコープの資格情報、および外部ファイル形式が作成されます。
+最初の手順として、クエリを実行する **データベースを作成** します。 次に、そのデータベースで[セットアップ スクリプト](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)を実行して、オブジェクトを初期化します。 このセットアップ スクリプトにより、この記事のサンプルで使用されるデータ ソース、データベース スコープの資格情報、および外部ファイル形式が作成されます。
 
 フォルダー *csv/taxi* を使用してサンプル クエリを実行します。 これには、2016 年 7 月から 2018 年 6 月までの NYC のタクシーのデータ (イエロー タクシーの運行記録) が含まれています。 *csv/taxi* のファイルには、次のパターンを使用して、年月に従って名前が付けられます: yellow_tripdata_<year>-<month>.csv
 
 ## <a name="read-all-files-in-folder"></a>フォルダー内のすべてのファイルを読み取る
-    
+
 次の例では、*csv/taxi* フォルダーから NYC イエロー タクシーのすべてのデータ ファイルを読み取り、年間の合計乗客数および乗車回数を返します。 また、集計関数の使用方法も示します。
 
 ```sql
@@ -135,7 +135,7 @@ ORDER BY
 
 ### <a name="read-all-files-from-multiple-folders"></a>複数のフォルダーからすべてのファイルを読み取る
 
-ワイルドカードを使用して複数のフォルダーからファイルを読み取ることができます。 次のクエリでは、*csv* フォルダー内にある、*t* で始まり、*i*で終わる名前を持つすべてのフォルダーからすべてのファイルを読み取ります。
+ワイルドカードを使用して複数のフォルダーからファイルを読み取ることができます。 次のクエリでは、*csv* フォルダー内にある、*t* で始まり、*i* で終わる名前を持つすべてのフォルダーからすべてのファイルを読み取ります。
 
 > [!NOTE]
 > 次のクエリで、パスの最後に / があることに注意してください。 これはフォルダーを表します。 / を省略すると、クエリは *t&ast;i* という名前のファイルに対して実行されます。
@@ -180,6 +180,49 @@ ORDER BY
 > 1 回の OPENROWSET でアクセスされるファイルはすべて同じ構造である (つまり、列数とデータ型が同じである) 必要があります。
 
 条件に一致するフォルダーは 1 つだけであるため、クエリの結果は、「[フォルダー内のすべてのファイルを読み取る](#read-all-files-in-folder)」場合と同じです。
+
+## <a name="traverse-folders-recursively"></a>フォルダーを再帰的にスキャンする
+
+パスの末尾に /** を指定すると、サーバーレス SQL プールでフォルダーを再帰的にスキャンできます。 次のクエリでは、*csv* フォルダー内にあるすべてのフォルダーとサブフォルダーからすべてのファイルが読み取られます。
+
+```sql
+SELECT
+    YEAR(pickup_datetime) as [year],
+    SUM(passenger_count) AS passengers_total,
+    COUNT(*) AS [rides_total]
+FROM OPENROWSET(
+        BULK 'csv/taxi/**', 
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
+        FIRSTROW = 2
+    )
+    WITH (
+        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
+        pickup_datetime DATETIME2, 
+        dropoff_datetime DATETIME2,
+        passenger_count INT,
+        trip_distance FLOAT,
+        rate_code INT,
+        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
+        pickup_location_id INT,
+        dropoff_location_id INT,
+        payment_type INT,
+        fare_amount FLOAT,
+        extra FLOAT,
+        mta_tax FLOAT,
+        tip_amount FLOAT,
+        tolls_amount FLOAT,
+        improvement_surcharge FLOAT,
+        total_amount FLOAT
+    ) AS nyc
+GROUP BY
+    YEAR(pickup_datetime)
+ORDER BY
+    YEAR(pickup_datetime);
+```
+
+> [!NOTE]
+> 1 回の OPENROWSET でアクセスされるファイルはすべて同じ構造である (つまり、列数とデータ型が同じである) 必要があります。
 
 ## <a name="multiple-wildcards"></a>複数のワイルドカード
 

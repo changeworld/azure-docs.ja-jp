@@ -11,21 +11,22 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: d9b84f2eace9ec268c6ff0942d19b47402e19bde
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ROBOTS: NOINDEX
+ms.openlocfilehash: fe6e7277761c670d5af8743e6330ffe2340d235c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120730"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647457"
 ---
-# <a name="how-to-select-permissions-for-a-given-api"></a>指定の API のアクセス許可を選択する方法 
+# <a name="how-to-select-permissions-for-a-given-api"></a>指定の API のアクセス許可を選択する方法
 
 ## <a name="recommended-documents"></a>推奨されるドキュメント
 
 - 委任されたアクセス許可とアプリケーションのアクセス許可の要求を使用してクライアント アプリケーションでリソースにアクセスする方法については、[こちら](./developer-glossary.md#permissions)を参照してください。
-- クライアント アプリケーションのアクセス許可要求を構成する方法については、[こちら](./quickstart-register-app.md)の詳細な手順を参照してください。
-- さらに知識を深めるために、リソース アプリケーションで[スコープ](./developer-glossary.md#scopes)と[アプリケーション ロール](./developer-glossary.md#roles) (Azure Portal ではそれぞれ委任されたアクセス許可とアプリケーション アクセス許可) をクライアント アプリケーションに公開する方法を確認してください。 
+- クライアント アプリケーションのアクセス許可要求を構成する方法については、[こちら](./quickstart-configure-app-access-web-apis.md)の詳細な手順を参照してください。
+- さらに知識を深めるために、リソース アプリケーションで[スコープ](./developer-glossary.md#scopes)と[アプリケーション ロール](./developer-glossary.md#roles) (Azure Portal ではそれぞれ委任されたアクセス許可とアプリケーション アクセス許可) をクライアント アプリケーションに公開する方法を確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD Microsoft Q&A](/answers/topics/azure-active-directory.html)

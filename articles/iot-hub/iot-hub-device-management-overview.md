@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: 63497553f7cec2edf3c77ba8690dda2b15d104be
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9ff8ebeaf7c4a219bc403c81dfea62f4657a1fd8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324728"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148334"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>IoT Hub を使用したデバイス管理の概要
 
@@ -78,7 +78,7 @@ IoT のデバイス管理には特有の課題が伴います。このため、�
   
     *参考資料*:
     * [デバイス ツインのプロパティの使用方法](tutorial-device-twins.md)
-    * [多数の IoT デバイスの構成と監視](iot-hub-auto-device-config.md)
+    * [多数の IoT デバイスの構成と監視](./iot-hub-automatic-device-management.md)
     * [IoT ソリューション内のデバイス構成のベスト プラクティス](iot-hub-configuration-best-practices.md)
 
 * **監視**: デバイス コレクション全体の正常性や、進行中の操作の状態を監視して、対処が必要な問題があればオペレーターに通知します。  デバイス ツインを適用して、デバイスが稼働状況と更新操作の状態をリアルタイムで報告できるようにします。 デバイス ツインのクエリを使用して緊急を要する問題を報告するための強力なダッシュボード レポートを作成します。
@@ -86,7 +86,7 @@ IoT のデバイス管理には特有の課題が伴います。このため、�
     *参考資料*: 
     * [デバイス ツインのプロパティの使用方法](tutorial-device-twins.md)
     * [デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語](iot-hub-devguide-query-language.md)
-    * [多数の IoT デバイスの構成と監視](iot-hub-auto-device-config.md)
+    * [多数の IoT デバイスの構成と監視](./iot-hub-automatic-device-management.md)
     * [IoT ソリューション内のデバイス構成のベスト プラクティス](iot-hub-configuration-best-practices.md)
 
 * **使用中止**: 故障後やアップグレード サイクルの終了後、またはサービス有効期間の経過後に、デバイスを交換またはデバイスの使用を停止します。  デバイス ツインを使用して、物理デバイスが交換されている場合は、デバイス情報を保持します。使用中止になっている場合はアーカイブされます。 IoT Hub ID レジストリを使用して、デバイス ID と資格情報を安全に失効します。

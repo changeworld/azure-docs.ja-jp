@@ -4,15 +4,15 @@ description: Azure Spring Cloud のトラブルシューティング ガイド
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: troubleshooting
-ms.date: 11/04/2019
+ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 5a67ebbf0f83f2dc3a340f52cab7437bbfaa350e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 09415c47432f71310b10c86390c10e55f1ccc4b2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299169"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498610"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Azure Spring Cloud に関する一般的な問題のトラブルシューティング
 
@@ -58,10 +58,15 @@ Azure Log Analytics にログをエクスポートしてください。 Spring �
     * 最初のメモリの爆発的な増加。
     * 特定の論理パスに対するメモリ割り当ての急増。
     * 段階的なメモリ リーク。
-
   詳しくは、[メトリック](spring-cloud-concept-metrics.md)に関する記事をご覧ください。
+  
+* アプリケーションの起動に失敗した場合は、アプリケーションに有効な jvm パラメーターがあることを確認します。 jvm メモリの設定が高すぎる場合、ログに次のエラー メッセージが含まれている可能性があります。
 
-Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analytics の使用を開始する](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)」をご覧ください。
+  >"required memory 2728741K is greater than 2000M available for allocation" (必要なメモリ 2728741K は割り当てに使用できる 2000M を超えています)
+
+
+
+Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/log-analytics-tutorial.md)」をご覧ください。
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>アプリケーションで高い CPU 使用率またはメモリ使用率が発生する
 
@@ -73,7 +78,7 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 
 1. **[メトリック]** に移動し、 **[サービス CPU 使用率]** または **[Service Memory Used]\(サービス メモリ使用量\)** を選択します。
 2. 監視するアプリケーションを指定するには、**App=** フィルターを追加します。
-3. **インスタンス**ごとにメトリックを分割します。
+3. **インスタンス** ごとにメトリックを分割します。
 
 "*すべてのインスタンス*" で CPU またはメモリの使用率が高くなっている場合は、アプリケーションをスケールアウトするか、CPU またはメモリの使用量をスケールアップする必要があります。 詳細については、[Azure Spring Cloud でアプリケーションをスケーリングする](spring-cloud-tutorial-scale-manual.md)」をご覧ください。
 
@@ -83,7 +88,7 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 
 すべてのインスタンスが稼働している場合は、Azure Log Analytics に移動して、アプリケーション ログのクエリを実行し、コードのロジックを調べます。 これは、いずれかがスケールのパーティション分割に影響している可能性があるかどうかを確認するのに役立ちます。 詳しくは、「[診断設定でログとメトリックを分析する](diagnostic-services.md)」をご覧ください。
 
-Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analytics の使用を開始する](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)」をご覧ください。 [Kusto クエリ言語](https://docs.microsoft.com/azure/kusto/query/)を使用して、ログのクエリを実行します。
+Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/log-analytics-tutorial.md)」をご覧ください。 [Kusto クエリ言語](/azure/kusto/query/)を使用して、ログのクエリを実行します。
 
 ### <a name="checklist-for-deploying-your-spring-application-to-azure-spring-cloud"></a>Spring アプリケーションを Azure Spring Cloud にデプロイするためのチェックリスト
 
@@ -103,22 +108,30 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 
 Azure portal を使用して Azure Spring Cloud サービス インスタンスを設定すると、Azure Spring Cloud によって自動的に検証が行われます。
 
-一方、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) または [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/)を使用して Azure Spring Cloud サービス インスタンスを設定する場合には、次のことを確認してください。
+一方、[Azure CLI](/cli/azure/get-started-with-azure-cli) または [Azure Resource Manager テンプレート](../azure-resource-manager/index.yml)を使用して Azure Spring Cloud サービス インスタンスを設定する場合には、次のことを確認してください。
 
 * サブスクリプションがアクティブである。
 * 場所が Azure Spring Cloud で[サポートされている](spring-cloud-faq.md)。
 * インスタンスのリソース グループが既に作成されている。
 * リソース名が、名前付け規則に準拠している 使用できる文字は小文字、数字、およびハイフンのみです。 先頭の文字は英字にする必要があります。 末尾の文字は、文字または数字にする必要があります。 値は 2 文字以上 32 文字以下にする必要があります。
 
-Resource Manager テンプレートを使用して Azure Spring Cloud サービス インスタンスを設定する場合は、最初に「[Azure Resource Manager テンプレートの構造と構文の詳細](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)」を参照してください。
+Resource Manager テンプレートを使用して Azure Spring Cloud サービス インスタンスを設定する場合は、最初に「[Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/templates/template-syntax.md)」を参照してください。
 
 Azure Spring Cloud サービス インスタンスの名前が `azureapps.io` の下のサブドメイン名を要求するために使用されるため、名前が既存のものと競合する場合、設定は失敗します。 アクティビティ ログで詳細を確認できる場合があります。
+
+### <a name="i-cant-deploy-a-net-core-app"></a>.NET Core アプリをデプロイできない
+
+Azure portal または Resource Manager テンプレートを使用して .NET Core Steeltoe アプリの *.zip* ファイルをアップロードすることはできません。
+
+[Azure CLI](/cli/azure/get-started-with-azure-cli) を使用してアプリケーション パッケージをデプロイすると、Azure CLI によってデプロイの進行状況が定期的にポーリングされ、最後にデプロイの結果が表示されます。
+
+アプリケーションが正しい *.zip* ファイル形式でパッケージ化されていることを確認してください。 正しくパッケージ化されていないと、プロセスの応答が停止するか、エラー メッセージが表示されます。
 
 ### <a name="i-cant-deploy-a-jar-package"></a>JAR パッケージをデプロイできない
 
 Azure portal または Resource Manager テンプレートを使用して、Java アーカイブ ファイル (JAR) やソース パッケージをアップロードすることはできません。
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用してアプリケーション パッケージをデプロイすると、Azure CLI によってデプロイの進行状況が定期的にポーリングされ、最後にデプロイの結果が表示されます。
+[Azure CLI](/cli/azure/get-started-with-azure-cli) を使用してアプリケーション パッケージをデプロイすると、Azure CLI によってデプロイの進行状況が定期的にポーリングされ、最後にデプロイの結果が表示されます。
 
 ポーリングが中断された場合でも、次のコマンドを使用してデプロイ ログを取得できます。
 
@@ -132,7 +145,7 @@ Azure portal または Resource Manager テンプレートを使用して、Java
 
 Azure portal または Resource Manager テンプレートを使用して、JAR やソース パッケージをアップロードすることはできません。
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用してアプリケーション パッケージをデプロイすると、Azure CLI によってデプロイの進行状況が定期的にポーリングされ、最後にデプロイの結果が表示されます。
+[Azure CLI](/cli/azure/get-started-with-azure-cli) を使用してアプリケーション パッケージをデプロイすると、Azure CLI によってデプロイの進行状況が定期的にポーリングされ、最後にデプロイの結果が表示されます。
 
 ポーリングが中断された場合でも、次のコマンドを使用してビルドとデプロイのログを取得できます。
 
@@ -150,7 +163,7 @@ Azure portal または Resource Manager テンプレートを使用して、JAR 
 
 また、Azure Log Analytics で "_サービス レジストリ_" のクライアント ログを確認することもできます。 詳しくは、「[診断設定でログとメトリックを分析する](diagnostic-services.md)」をご覧ください
 
-Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analytics の使用を開始する](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)」をご覧ください。 [Kusto クエリ言語](https://docs.microsoft.com/azure/kusto/query/)を使用して、ログのクエリを実行します。
+Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/log-analytics-tutorial.md)」をご覧ください。 [Kusto クエリ言語](/azure/kusto/query/)を使用して、ログのクエリを実行します。
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>アプリケーションの環境変数を調べたい
 
@@ -210,4 +223,8 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 </dependency>
 ```
 
-アプリケーション ログをストレージ アカウントにアーカイブすることはできても、Azure Log Analytics に送信できない場合は、[ワークスペースが正しく設定されている](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)かどうかを確認します。 Free レベルの Azure Log Analytics を使用している場合は、[Free レベルではサービス レベル アグリーメント (SLA) が提供されない](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/)ことに注意してください。
+アプリケーション ログをストレージ アカウントにアーカイブすることはできても、Azure Log Analytics に送信できない場合は、[ワークスペースが正しく設定されている](../azure-monitor/learn/quick-create-workspace.md)かどうかを確認します。 Free レベルの Azure Log Analytics を使用している場合は、[Free レベルではサービス レベル アグリーメント (SLA) が提供されない](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_3/)ことに注意してください。
+
+## <a name="next-steps"></a>次の手順
+
+* [Azure Spring Cloud での問題を自己診断して解決する方法](spring-cloud-howto-self-diagnose-solve.md)

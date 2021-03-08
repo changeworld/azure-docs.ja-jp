@@ -7,13 +7,13 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
-ms.custom: include file
-ms.openlocfilehash: 8d0f9866864ca4b02ca6238be2ac44537a586c2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: fe37b0c9dbc16520a0dcb0993236db2797da6b68
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67181187"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555944"
 ---
 ## <a name="update-resources"></a>リソースの更新
 
@@ -36,7 +36,7 @@ ms.locfileid: "67181187"
 
 レプリカ リージョンを追加する予定の場合は、ソース マネージド イメージを削除しないでください。 追加リージョンにイメージ バージョンをレプリケートするには、ソース マネージド イメージが必要です。 
 
-[az sig update](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-update) を使用してギャラリーの説明を更新します。 
+[az sig update](/cli/azure/sig?view=azure-cli-latest#az-sig-update) を使用してギャラリーの説明を更新します。 
 
 ```azurecli-interactive
 az sig update \
@@ -46,7 +46,7 @@ az sig update \
 ```
 
 
-[az sig image-definition update](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) を使用してイメージ定義の説明を更新します。
+[az sig image-definition update](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) を使用してイメージ定義の説明を更新します。
 
 ```azurecli-interactive
 az sig image-definition update \
@@ -56,7 +56,7 @@ az sig image-definition update \
    --set description="My updated description."
 ```
 
-[az sig image-version update](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) を使用して、複製先のリージョンを追加するイメージ バージョンを更新します。 イメージが新しいリージョンに複製されるため、この変更には時間がかかります。
+[az sig image-version update](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) を使用して、複製先のリージョンを追加するイメージ バージョンを更新します。 イメージが新しいリージョンに複製されるため、この変更には時間がかかります。
 
 ```azurecli-interactive
 az sig image-version update \
@@ -67,11 +67,33 @@ az sig image-version update \
    --add publishingProfile.targetRegions  name=eastus
 ```
 
+この例では、[az sig image-version update](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) を使用して、このイメージ バージョンが "*最新*" のイメージとして使用されないようにする方法を示します。
+
+```azurecli-interactive
+az sig image-version update \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --gallery-image-version 1.0.0 \
+   --set publishingProfile.excludeFromLatest=true
+```
+
+この例では、[az sig image-version update](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-update) を使用して、このイメージ バージョンを "*最新*" のイメージとして見なして含める方法を示します。
+
+```azurecli-interactive
+az sig image-version update \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --gallery-image-version 1.0.0 \
+   --set publishingProfile.excludeFromLatest=false
+```
+
 ## <a name="delete-resources"></a>リソースを削除する
 
 最初にイメージのバージョンを削除することによって、逆の順序でリソースを削除する必要があります。 すべてのイメージのバージョンを削除した後、イメージの定義を削除できます。 すべてのイメージの定義を削除した後、ギャラリーを削除できます。 
 
-[az sig image-version delete](https://docs.microsoft.com/cli/azure/sig/image-version?view=azure-cli-latest#az-sig-image-version-delete) を使用してイメージのバージョンを削除します。
+[az sig image-version delete](/cli/azure/sig/image-version?view=azure-cli-latest#az-sig-image-version-delete) を使用してイメージのバージョンを削除します。
 
 ```azurecli-interactive
 az sig image-version delete \
@@ -81,7 +103,7 @@ az sig image-version delete \
    --gallery-image-version 1.0.0 
 ```
 
-[az sig image-definition delete](https://docs.microsoft.com/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-delete) を使用してイメージの定義を削除します。
+[az sig image-definition delete](/cli/azure/sig/image-definition?view=azure-cli-latest#az-sig-image-definition-delete) を使用してイメージの定義を削除します。
 
 ```azurecli-interactive
 az sig image-definition delete \
@@ -91,7 +113,7 @@ az sig image-definition delete \
 ```
 
 
-[az sig delete](https://docs.microsoft.com/cli/azure/sig?view=azure-cli-latest#az-sig-delete) を使用してイメージのギャラリーを削除します。
+[az sig delete](/cli/azure/sig?view=azure-cli-latest#az-sig-delete) を使用してイメージのギャラリーを削除します。
 
 ```azurecli-interactive
 az sig delete \
