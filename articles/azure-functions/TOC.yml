@@ -253,9 +253,9 @@
               href: functions-develop-local.md
             - name: Visual Studio Code での開発
               href: functions-develop-vs-code.md
-            - name: Visual Studio 開発
+            - name: Visual Studio での開発
               href: functions-develop-vs.md
-            - name: コア ツールの開発
+            - name: Core Tools での開発
               href: functions-run-local.md
               displayName: 'local, runtime'
         - name: 関数の作成
