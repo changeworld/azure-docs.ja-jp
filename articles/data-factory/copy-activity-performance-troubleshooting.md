@@ -224,8 +224,8 @@ ms.locfileid: "100387684"
 
 ここでは、サポートされているいくつかのデータ ストアについて、パフォーマンスの監視とチューニングに関するリファレンス情報を示します。
 
-* Azure Blob ストレージ:[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/blobs/scalability-targets.md)および [BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/blobs/storage-performance-checklist.md)。
-* Azure Table ストレージ:[Table ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/tables/scalability-targets.md)および [Table ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/tables/storage-performance-checklist.md)。
+* Azure Blob Storage:[Blob Storage のスケーラビリティとパフォーマンスのターゲット](../storage/blobs/scalability-targets.md)および [Blob Storage のパフォーマンスとスケーラビリティのチェックリスト](../storage/blobs/storage-performance-checklist.md)。
+* Azure Table Storage:[Table Storage のスケーラビリティとパフォーマンスのターゲット](../storage/tables/scalability-targets.md)および [Table Storage のパフォーマンスとスケーラビリティのチェックリスト](../storage/tables/storage-performance-checklist.md)。
 * Azure SQL Database:[パフォーマンスを監視](../azure-sql/database/monitor-tune-overview.md)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
 * Azure Synapse Analytics:その機能は、データ ウェアハウス単位 (DWU) で測定されます。 「[Azure Synapse Analytics のコンピューティング能力の管理 (概要)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)」を参照してください。
 * Azure Cosmos DB:[Azure Cosmos DB のパフォーマンス レベル](../cosmos-db/performance-levels.md)。
