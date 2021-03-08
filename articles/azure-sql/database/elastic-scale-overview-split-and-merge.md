@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 9303d84b2862b556a9ccc286ffa118bf1e52b715
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5a646ffe1d306d7ea13da002715d5bd9b907107b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84034653"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793468"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>スケールアウトされたクラウド データベース間のデータ移動
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-お客様がサービスとしてのソフトウェアの開発者で、突然、アプリが多大な要求を受けた場合、その増加に対応する必要があります。 そのため、データベース (シャード) を追加します。 データの整合性を破壊することなく、新しいデータベースにデータを再分散する方法 **Split-Merge ツール**を使用して、データを制約付きデータベースから新しいデータベースに移動します。  
+お客様がサービスとしてのソフトウェアの開発者で、突然、アプリが多大な要求を受けた場合、その増加に対応する必要があります。 そのため、データベース (シャード) を追加します。 データの整合性を破壊することなく、新しいデータベースにデータを再分散する方法 **Split-Merge ツール** を使用して、データを制約付きデータベースから新しいデータベースに移動します。  
 
 Split-Merge ツールは、Azure Web サービスとして実行されます。 管理者または開発者は、ツールを使用して、シャードレット (シャードからのデータ) を異なるデータベース (シャード) 間で移動します。 このツールは、シャード マップの管理を使用して、サービス メタデータ データベースを維持し、一貫したマッピングを保証します。
 
@@ -49,7 +49,7 @@ Split-Merge ツールは、Azure Web サービスとして実行されます。 
 
 - **分割して増加**
 
-  爆発的な増加に対応するために全体的な容量を増やすには、容量ニーズを満たすために、データをシャーディングし、データを分散するデータベースの数を段階的に増やすことによって追加の容量を確保します。 これは**分割**機能の典型的な例です。
+  爆発的な増加に対応するために全体的な容量を増やすには、容量ニーズを満たすために、データをシャーディングし、データを分散するデータベースの数を段階的に増やすことによって追加の容量を確保します。 これは **分割** 機能の典型的な例です。
 
 - **マージして縮小**
 
@@ -220,7 +220,7 @@ Split-Merge サービスは、監視と診断を行うために Azure SDK 2.5 �
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+> PowerShell Azure Resource Manager モジュールは引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
 NuGet パッケージで提供される Web ロール用と worker ロール用の診断構成を使用して、監視と診断を有効にするには、Azure PowerShell を使用して次のコマンドを実行します。
 
@@ -244,7 +244,7 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext `
 
 ## <a name="retrieve-diagnostics"></a>診断の取得
 
-診断には、Visual Studio サーバー エクスプローラーのサーバー エクスプローラー ツリーの Azure の部分から簡単にアクセスできます。 Visual Studio インスタンスを開き、メニュー バーで [ビュー]、[サーバー エクスプローラー] の順にクリックします。 Azure のアイコンをクリックして Azure サブスクリプションに接続します。 次に、Azure、[ストレージ]、[`<your storage account>`]、[テーブル]、[WADLogsTable] の順に移動します。 詳しくは、「[Server Explorer](https://msdn.microsoft.com/library/x603htbk.aspx)」(サーバー エクスプローラー) をご覧ください。
+診断には、Visual Studio サーバー エクスプローラーのサーバー エクスプローラー ツリーの Azure の部分から簡単にアクセスできます。 Visual Studio インスタンスを開き、メニュー バーで [ビュー]、[サーバー エクスプローラー] の順にクリックします。 Azure のアイコンをクリックして Azure サブスクリプションに接続します。 次に、Azure、[ストレージ]、[`<your storage account>`]、[テーブル]、[WADLogsTable] の順に移動します。 詳しくは、「[Server Explorer](/previous-versions/x603htbk(v=vs.140))」(サーバー エクスプローラー) をご覧ください。
 
 ![WADLogsTable][2]
 

@@ -1,17 +1,15 @@
 ---
 title: Azure で ELK を使用して Service Fabric 内のアプリを監視する
 description: このチュートリアルでは、ELK を設定して Service Fabric アプリケーションを監視する方法について説明します。
-author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: b27711158c10b0f7fa78875aec7f9c63c166258c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5faf26230618161a5b908c9a544a43ec5c33b807
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327176"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91532024"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>チュートリアル: ELK を使用して Service Fabric アプリケーションを監視する
 
@@ -142,7 +140,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 8. **http:\//SERVER-IP** で Kibana ダッシュボードにアクセスし、Kibana のユーザー名とパスワードを入力します。 Azure で ELK イメージを使用した場合、既定のユーザー名は "user" になり、パスワードは**ブート診断**で取得したものになります。
 
-    ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
+    ![プラットフォームとアプリケーション ログを視覚化する Kibana ダッシュボードを示すスクリーンショット。](./media/service-fabric-tutorial-java-elk/kibana.png)
 
 ## <a name="next-steps"></a>次のステップ
 

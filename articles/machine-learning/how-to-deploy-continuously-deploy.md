@@ -1,7 +1,7 @@
 ---
 title: Azure Machine Learning モデルを継続的にデプロイする
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning DevOps 拡張機能を使用してモデルを継続的にデプロイする方法について説明します。
+description: Azure Machine Learning DevOps 拡張機能を使用してモデルを継続的にデプロイする方法について説明します。 新しいモデル バージョンを自動的に確認して、デプロイします。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,13 +9,14 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 08/03/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: c95e1012decf1e3ae4ee3fbab8aae1a4c1a71be9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.reviewer: larryfr
+ms.custom: how-to, tracking-python, deploy
+ms.openlocfilehash: 6043ea4e1366890033571c2ba78ecdb2e59f64e1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544498"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325200"
 ---
 # <a name="continuously-deploy-models"></a>モデルを継続的にデプロイする
 
@@ -29,9 +30,9 @@ ms.locfileid: "87544498"
 
 [Azure DevOps](https://azure.microsoft.com/services/devops/) 用の Machine Learning 拡張機能を使用して、モデルを継続的にデプロイできます。 Azure DevOps 用の Machine Learning 拡張機能を使用して、新しい機械学習モデルが Azure Machine Learning ワークスペースに登録されたときにデプロイ パイプラインをトリガーできます。
 
-1. [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops) にサインアップします。そうすると、任意のプラットフォームや任意のクラウドへのご自分のアプリケーションの継続的インテグレーションとデリバリーを実現できます。 (Azure Pipelines は [Machine Learning パイプライン](concept-ml-pipelines.md#compare)とは異なることに注意してください)。
+1. [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops) にサインアップします。そうすると、任意のプラットフォームや任意のクラウドへのご自分のアプリケーションの継続的インテグレーションとデリバリーを実現できます。 (Azure Pipelines は [Machine Learning パイプライン](concept-ml-pipelines.md#compare)とは異なることに注意してください)。
 
-1. [Azure DevOps プロジェクトを作成します。](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
+1. [Azure DevOps プロジェクトを作成します。](/azure/devops/organizations/projects/create-project?view=azure-devops)
 
 1. [Azure Pipelines 用の Machine Learning 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml&targetId=6756afbe-7032-4a36-9cb6-2771710cadc2&utm_source=vstsproduct&utm_medium=ExtHubManageList)をインストールします。
 

@@ -1,5 +1,5 @@
 ---
-title: 電話番号の SMS サインイン ユーザー エクスペリエンス (プレビュー) - Azure AD
+title: 電話番号の SMS サインイン ユーザー エクスペリエンス - Azure AD
 description: 新規または既存の電話番号での SMS サインイン ユーザー エクスペリエンスについて詳しく説明します。
 services: active-directory
 author: curtand
@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 04/14/2020
+ms.date: 01/21/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 864225238c10ab2fda96e95448790201cc8a16ae
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1a50f2032a978a552205d1bba602249f34f0478a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422999"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661596"
 ---
-# <a name="use-your-phone-number-as-a-user-name-preview"></a>ユーザー名として電話番号を使用する (プレビュー)
+# <a name="use-your-phone-number-as-a-user-name"></a>ユーザー名として電話番号を使用する
 
 デバイスを登録すると、ご自身の電話から組織のサービスにアクセスできるようになります。また、組織からご自身の電話へのアクセスは許可されません。 ご自身が管理者の場合は、[SMS ベース認証に対するユーザーの構成と有効化](../authentication/howto-authentication-sms-signin.md)に関する記事で詳細を確認できます。
 
@@ -36,7 +36,7 @@ ms.locfileid: "87422999"
 1. "SMS が検証されました。 お使いの電話が正常に登録されました" というプロンプトが表示されます。
 
 > [!Important]
-> プレビューでの既知の問題が原因で、しばらくの間は、電話番号を追加しても SMS サインイン用にその番号が登録されません。 追加した番号を使用してサインインしてから、プロンプトに従って SMS サインイン用に番号を登録する必要があります。
+> 既知の問題が原因で、しばらくの間は、電話番号を追加しても SMS サインイン用にその番号が登録されません。 追加した番号を使用してサインインしてから、プロンプトに従って SMS サインイン用に番号を登録する必要があります。
 
 ### <a name="when-the-phone-number-is-in-use"></a>電話番号が使用中の場合
 
@@ -52,7 +52,7 @@ ms.locfileid: "87422999"
 
 1. SMS サインインが利用可能になると、SMS サインイン用に電話番号を有効にするかどうかを確認するバナーが表示されます。
 
-    [![電話番号での SMS サインインを有効化するためのバナー。](media/sms-sign-in-explainer/sms-sign-in-banner.png)](media/sms-sign-in-explainer/sms-sign-in-banner.png#lightbox)
+    :::image type="content" source="media/sms-sign-in-explainer/sms-sign-in-banner.png" alt-text="電話番号への SMS サインインを有効にするためのバナーを示すスクリーンショット。[有効化] 操作が選択されています。" lightbox="media/sms-sign-in-explainer/sms-sign-in-banner.png":::
 
 1. また、電話の方法のタイルにあるキャレットを選択すると、 **[有効化]** ボタンが表示されます。
 

@@ -1,24 +1,24 @@
 ---
-title: IoT プラグ アンド プレイ プレビューの概要 | Microsoft Docs
-description: IoT プラグ アンド プレイ プレビューについて説明します IoT プラグ アンド プレイは、スマート IoT デバイスがその機能を宣言できるようにするオープン モデリング言語に基づいています。 IoT デバイスは、クラウド ソリューションに接続するとき、デバイス モデルと呼ばれるその宣言を提示します。 これで、クラウド ソリューションでは、デバイスを自動的に認識して、デバイスとのやり取りを開始できるようになります。すべてコードを記述することなく行うことができます。
+title: IoT プラグ アンド プレイの概要 | Microsoft Docs
+description: IoT プラグ アンド プレイについて説明します。 IoT プラグ アンド プレイは、スマート IoT デバイスがその機能を宣言できるようにするオープン モデリング言語に基づいています。 IoT デバイスは、クラウド ソリューションに接続するとき、デバイス モデルと呼ばれるその宣言を提示します。 これで、クラウド ソリューションでは、デバイスを自動的に認識して、デバイスとのやり取りを開始できるようになります。すべてコードを記述することなく行うことができます。
 author: rido-min
 ms.author: rmpablos
 ms.date: 07/06/2020
-ms.topic: overview
+ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 32a873af3d287c3bd1e83de6db8e17ebc1d2958b
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: dcdd19faec5e428ac26917178aa8114245c205b3
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855618"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594571"
 ---
-# <a name="what-is-iot-plug-and-play-preview"></a>IoT プラグ アンド プレイ プレビューとは
+# <a name="what-is-iot-plug-and-play"></a>IoT プラグ アンド プレイとは
 
-IoT プラグ アンド プレイ プレビューにより、ソリューション ビルダーは、手動で構成することなく、自分のソリューションにスマート デバイスを統合することができます。 IoT プラグ アンド プレイの中核となるのは、デバイスが自身の機能を IoT プラグ アンド プレイ対応アプリケーションに公開するために使用するデバイス _モデル_です。 このモデルは、次の内容を定義する要素のセットとして構成されます。
+IoT プラグ アンド プレイにより、ソリューション ビルダーは、手動で構成することなく、独自のソリューションにスマート デバイスを統合することができます。 IoT プラグ アンド プレイの中核となるのは、デバイスが自身の機能を IoT プラグ アンド プレイ対応アプリケーションに公開するために使用するデバイス _モデル_ です。 このモデルは、次の内容を定義する要素のセットとして構成されます。
 
 - デバイスまたは他のエンティティの読み取り専用および書き込み可能な状態を表す _プロパティ_。 たとえば、デバイスのシリアル番号は読み取り専用のプロパティであり、サーモスタットでの目標温度は書き込み可能なプロパティとなります。
 - デバイスによって出力されるデータである "_テレメトリ_"。このデータはセンサー読み取り値の通常のストリーム、偶発的なエラー、または情報メッセージのいずれかです。
@@ -26,7 +26,7 @@ IoT プラグ アンド プレイ プレビューにより、ソリューショ�
 
 インターフェイス内でこれらの要素をグループ化してモデル間で再利用すれば、コラボレーションを容易にし、開発を高速化することができます。
 
-IoT プラグ アンド プレイを [Azure Digital Twins](../digital-twins/about-digital-twins.md) と連携させるには、[Digital Twin Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) を使用してモデルとインターフェイスを定義します。 IoT プラグ アンド プレイと DTDL はコミュニティにも開かれており、Microsoft はお客様、パートナー、業界とのコラボレーションを歓迎しています。 どちらも、サービスおよびツールをまたいで簡単に導入できるオープンな W3C 標準 (JSON-LD や RDF など) に基づいています。
+IoT プラグ アンド プレイを [Azure Digital Twins](../digital-twins/overview.md) と連携させるには、[Digital Twin Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) を使用してモデルとインターフェイスを定義します。 IoT プラグ アンド プレイと DTDL はコミュニティにも開かれており、Microsoft はお客様、パートナー、業界とのコラボレーションを歓迎しています。 どちらも、サービスおよびツールをまたいで簡単に導入できるオープンな W3C 標準 (JSON-LD や RDF など) に基づいています。
 
 IoT プラグ アンド プレイと DTDL を使用する場合、追加料金は発生しません。 [Azure IoT Hub](../iot-hub/about-iot-hub.md) およびその他の Azure サービスの標準料金は変わりません。
 
@@ -45,9 +45,13 @@ IoT プラグ アンド プレイは、次の 2 種類の開発者にとって�
 
 ## <a name="use-iot-plug-and-play-devices"></a>IoT プラグ アンド プレイ デバイスを使用する
 
-ソリューション ビルダーは、IoT プラグ アンド プレイ デバイスを使用する、クラウドでホストされた IoT ソリューションを開発できます。 [IoT Hub](../iot-hub/about-iot-hub.md) を使用します。これは、マネージド クラウド サービスであり、ご利用の IoT アプリケーションとデバイスとの間で、セキュリティで保護された双方向通信を行うためのメッセージ ハブとして機能します。
+ソリューション ビルダーは、[IoT Central](../iot-central/core/overview-iot-central.md) または [IoT Hub](../iot-hub/about-iot-hub.md) を使用して、IoT プラグ アンド プレイ デバイスを使用する、クラウドでホストされた IoT ソリューションを開発できます。
 
-IoT プラグ アンド プレイ デバイスを IoT ハブに接続すると、[Azure IoT エクスプローラー](./howto-use-iot-explorer.md) ツールを使用することで、インターフェイス内で定義されている、モデルを構成するテレメトリ、プロパティ、およびコマンドを表示できます。
+IoT Central の Web UI では、デバイスの状態を監視し、ルールを作成し、ライフ サイクル全体を通して何百万ものデバイスとそのデータを管理することができます。 IoT プラグ アンド プレイ デバイスは、カスタマイズ可能なダッシュボードを使用してデバイスを監視および制御できる IoT Central アプリケーションに直接接続します。 IoT Central Web UI のデバイス テンプレートを使用して、DTDL モデルを作成および編集することもできます。
+
+マネージド クラウド サービスである IoT Hub は、ご利用の IoT アプリケーションとデバイスとの間で、セキュリティで保護された双方向通信を行うためのメッセージ ハブとして機能します。 IoT プラグ アンド プレイ デバイスを IoT ハブに接続すると、[Azure IoT エクスプローラー](./howto-use-iot-explorer.md) ツールを使用することで、DTDL モデル内で定義されているテレメトリ、プロパティ、およびコマンドを表示できます。
+
+Windows または Linux ゲートウェイに接続されている既存のセンサーがある場合は、[IoT プラグ アンド プレイ ブリッジ](./concepts-iot-pnp-bridge.md)を使用してこれらのセンサーを接続し、([サポートされているプロトコル](./concepts-iot-pnp-bridge.md#supported-protocols-and-sensors)用の) デバイス ソフトウェアまたはファームウェアを記述することなく IoT プラグ アンド プレイ デバイスを作成することができます。
 
 ## <a name="develop-an-iot-device-application"></a>IoT デバイス アプリケーションを開発する
 
@@ -55,7 +59,7 @@ IoT プラグ アンド プレイ デバイスを IoT ハブに接続すると�
 
 1. デバイス モデルを定義します。 [DTDL](https://github.com/Azure/opendigitaltwins-dtdl) を使用してデバイスの機能を定義する一連の JSON ファイルを作成します。 モデルには、物理的な製品などの完全なエンティティが記述され、さらにそのエンティティによって実装される一連のインターフェイスが定義されます。 インターフェイスは、デバイスでサポートされているテレメトリ、プロパティ、コマンドを一意に識別する共有コントラクトです。 インターフェイスは、さまざまなモデル間で再利用できます。
 
-1. デバイスのソフトウェアまたはファームウェアを作成する場合は、それらのテレメトリ、プロパティ、およびコマンドが IoT プラグ アンド プレイ規則に従うようにします。
+1. デバイスのソフトウェアまたはファームウェアを作成する場合は、それらのテレメトリ、プロパティ、およびコマンドが IoT プラグ アンド プレイ規則に従うようにします。 Windows または Linux ゲートウェイに接続されている既存のセンサーを接続する場合は、[IoT プラグ アンド プレイ ブリッジ](./concepts-iot-pnp-bridge.md)を使用すると、このステップを簡略化できます。
 
 1. MQTT 接続の一環としてモデル ID がデバイスから通知されます。 Azure IoT SDK には、接続時にモデル ID を提供する新しいコンストラクトが含まれています。
 
@@ -66,14 +70,9 @@ IoT プラグ アンド プレイ デバイスを IoT ハブに接続すると�
 
 [IoT プラグ アンド プレイ デバイス認定プログラム](howto-certify-device.md)は、IoT プラグ アンド プレイの認定要件をデバイスが満たしていることを確認するものです。 認定されたデバイスは、公開されている [Azure IoT 認定デバイス カタログ](https://aka.ms/devicecatalog)に登録できます。
 
-## <a name="regional-availability"></a>リージョン別の提供状況
-
-この IoT プラグ アンド プレイ プレビュー更新は、米国中部、北ヨーロッパ、東日本の各リージョンで作成された IoT ハブで利用できます。
-
 ## <a name="next-steps"></a>次のステップ
 
 IoT プラグ アンド プレイの概要を説明したので、次の手順では、クイックスタートのいずれかを試してみましょう。
 
-- [デバイスを IoT Hub に接続する (C)](./quickstart-connect-device-c.md)
-- [ソリューションからデバイスを操作する (Node.js)](./quickstart-service-node.md)
-
+- [デバイスを IoT Hub に接続する](./quickstart-connect-device.md)
+- [ソリューションからデバイスを操作する](./quickstart-service.md)

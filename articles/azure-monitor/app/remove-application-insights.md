@@ -3,12 +3,12 @@ title: Visual Studio での Application Insights の削除 - Azure Monitor
 description: Visual Studio で ASP.NET 用および ASP.NET Core 用 Application Insights SDK を削除する方法。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 08a6d29e9170dde4bf3cc12015d126874006a778
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5bfa6ee21cc1a55f653c0e79807a14ac34082e73
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049771"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90981474"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Visual Studio で Application Insights を削除する方法
 
@@ -66,11 +66,11 @@ Application Insights を削除するには、ご利用のアプリケーショ�
 
 1. **[アンインストール]** を選択します。
     
-    ![依存関係の削除をオンにしてからアンインストールする](./media/remove-application-insights/uninstall-framework.png)
+    ![[依存関係の削除] がチェックされ、アンインストールが強調表示された Microsoft.ApplicationInsights.Web ウィンドウが表示されたスクリーンショット。](./media/remove-application-insights/uninstall-framework.png)
 
     アプリケーションから削除されるすべての依存関係を示すダイアログボックスが表示されます。  **[OK]**  を選択してアンインストールします。
     
-    ![依存関係の削除をオンにしてからアンインストールする](./media/remove-application-insights/preview-uninstall-framework.png)
+    ![削除する依存関係が記載されたダイアログ ボックスが表示されたスクリーンショット。](./media/remove-application-insights/preview-uninstall-framework.png)
     
 1.  すべてのものがアンインストールされた後も、 *ソリューション エクスプローラー*に "ApplicationInsights.config" と "AiHandleErrorAttribute.cs" が表示される場合があります。 この 2 つのファイルは手動で削除できます。
 

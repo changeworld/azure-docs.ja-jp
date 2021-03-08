@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: overview
-ms.date: 1/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 711c4ce8af613181d35d2850393c6c24d795c280
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 4a341d33c957af8fe7423bda80f1d34a7f59cdd6
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799266"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738001"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Team Data Science Process とは
 
@@ -28,10 +28,10 @@ Team Data Science Process (TDSP) は、予測分析ソリューションとイ�
 
 TDSP の主な構成要素は次のとおりです。
 
-- **データ サイエンス ライフサイクル**の定義
+- **データ サイエンス ライフサイクル** の定義
 - **標準プロジェクト構造**
-- データ サイエンス プロジェクトに推奨される**インフラストラクチャとリソース**
-- プロジェクト実行に推奨される**ツールとユーティリティ**
+- データ サイエンス プロジェクトに推奨される **インフラストラクチャとリソース**
+- プロジェクト実行に推奨される **ツールとユーティリティ**
 
 
 ## <a name="data-science-lifecycle"></a>データ サイエンス ライフサイクル
@@ -49,9 +49,9 @@ Team Data Science Process (TDSP) には、データ サイエンス プロジェ
 * **モデリング**
 * **デプロイ**
 
-次の図は、**Team Data Science Process ライフサイクル**を視覚的に表したものです。 
+次の図は、**Team Data Science Process ライフサイクル** を視覚的に表したものです。 
 
-![TDSP-Lifecycle2](./media/overview/tdsp-lifecycle2.png) 
+![データ サイエンスのライフサイクルを示す図。ビジネスの把握、データの取得と理解、モデリング、デプロイを含む。](./media/overview/tdsp-lifecycle2.png) 
 
 TDSP におけるライフサイクルの各ステージの目標、タスク、ドキュメント アーティファクトについては、「[Team Data Science Process ライフサイクル](lifecycle.md)」のトピックで説明しています。 これらのタスクとアーティファクトは、プロジェクトの各種役割に関連付けられます。
 
@@ -100,7 +100,7 @@ TDSP には、共有の分析およびストレージ インフラストラク�
 
 ## <a name="tools-and-utilities-for-project-execution"></a>プロジェクト実行のツールとユーティリティ
 
-プロセスの導入は、ほとんどの組織にとって困難を伴う作業です。 データ サイエンスのプロセスとライフサイクルを導入することを目的としたツールによって、受け入れの障壁を下げると共に、その一貫性を高めることができます。 TDSP には、チーム内に TDSP を速やかに導入するうえでまず必要となる一連のツールとスクリプトが用意されています。 また、データ探索やベースライン モデリングなど、データ サイエンス ライフサイクルにおいて一般的ないくつかのタスクも自動化することができます。 そこに用意されている明確に定義された構造を利用して、それぞれの人員が、そのチームの共有コード リポジトリに対し、共有のツールやユーティリティを提供することができます。 それらのリソースはさらに、チーム内または組織内の他のプロジェクトで活用することができます。 TDSP は、ツールやユーティリティをコミュニティ全体に寄与することも視野に入れています。 TDSP のユーティリティは [GitHub](https://github.com/Azure/Azure-TDSP-Utilities) から複製できます。
+プロセスの導入は、ほとんどの組織にとって困難を伴う作業です。 データ サイエンスのプロセスとライフサイクルを導入することを目的としたツールによって、受け入れの障壁を下げると共に、その一貫性を高めることができます。 TDSP には、チーム内に TDSP を速やかに導入するうえでまず必要となる一連のツールとスクリプトが用意されています。 また、データ探索やベースライン モデリングなど、データ サイエンス ライフサイクルにおいて一般的ないくつかのタスクも自動化することができます。 そこに用意されている明確に定義された構造を利用して、それぞれの人員が、そのチームの共有コード リポジトリに対し、共有のツールやユーティリティを提供することができます。 それらのリソースはさらに、チーム内または組織内の他のプロジェクトで活用することができます。  Microsoft の [Azure Machine Learning](../index.yml) では、オープンソースのツール (Python、R、ONNX、および一般的なディープラーニング フレームワーク) と Microsoft 独自のツール (AutoML) の両方をサポートする、豊富なツールが用意されています。
 
 
 ## <a name="next-steps"></a>次のステップ

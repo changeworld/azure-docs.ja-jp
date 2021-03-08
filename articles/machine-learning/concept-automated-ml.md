@@ -1,31 +1,31 @@
 ---
-title: 自動 ML/AutoML とは
+title: 自動 ML とは AutoML
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で、モデルにとって最適なアルゴリズムを選択するために指定するパラメーターと条件を使用することで、どのようにして自動的にアルゴリズムを選択し、それからモデルを生成して時間を節約できるかを説明します。
+description: 指定したパラメーターと条件を使用して、Azure Machine Learning がモデルを自動的に生成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
-ms.date: 04/22/2020
-ms.openlocfilehash: 081da2b3f6fbe97ebce21940d7e0ca8978793b15
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 10/27/2020
+ms.custom: automl
+ms.openlocfilehash: ee9267637c5e3250bfcd543ca46c39d513725819
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652102"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072226"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>自動機械学習 (AutoML) とは
 
-自動機械学習 (自動 ML または AutoML とも呼ばれます) は、時間のかかる反復的な機械学習モデルの開発タスクを自動化するプロセスです。 これにより、データ サイエンティスト、アナリスト、開発は、モデルの品質を維持しながら、高いスケール、効率性、生産性で ML モデルを構築することができます。 自動化された ML は、[Microsoft Research 部門](https://www.microsoft.com/research/project/automl/)の最先端技術に基づいています。
+自動機械学習 (自動 ML または AutoML とも呼ばれます) は、時間のかかる反復的な機械学習モデルの開発タスクを自動化するプロセスです。 これにより、データ サイエンティスト、アナリスト、開発は、モデルの品質を維持しながら、高いスケール、効率性、生産性で ML モデルを構築することができます。 Azure Machine Learning の 自動 ML は、[Microsoft Research 部門](https://www.microsoft.com/research/project/automl/)の最先端技術に基づいています。
 
-機械学習モデルの従来の開発はリソース集約型であり、ドメインに関する広範な知識と多数のモデルを生成して比較するための大量の時間を必要とします。 自動化された機械学習を使用することで、すぐに実稼働環境で使用できる ML モデルを取得するための時間を、容易にかつ効率的に短縮することができます。
+機械学習モデルの従来の開発はリソース集約型であり、ドメインに関する広範な知識と多数のモデルを生成して比較するための大量の時間を必要とします。 自動機械学習を使用することで、すぐに実稼働環境で使用できる ML モデルを取得するための時間を、容易にかつ効率的に短縮することができます。
 
 ## <a name="when-to-use-automl-classify-regression--forecast"></a>AutoML をいつ使用するか: 分類、回帰、予測
 
-指定したターゲット メトリックを使用して自分の代わりに Azure Machine Learning にモデルのトレーニングと調整を行わせる場合は、自動化された ML を適用します。 自動化された ML を使うと、誰でも機械学習モデルの開発プロセスを使用でき、ユーザーはデータ サイエンスの専門知識に関係なく、どの問題についてもエンド ツー エンドの機械学習パイプラインを識別することができます。
+指定したターゲット メトリックを使用して自分の代わりに Azure Machine Learning にモデルのトレーニングと調整を行わせる場合は、自動 ML を適用します。 自動 ML を使うと、誰でも機械学習モデルの開発プロセスを使用でき、ユーザーはデータ サイエンスの専門知識に関係なく、どの問題についてもエンド ツー エンドの機械学習パイプラインを識別することができます。
 
 さまざまな業界のデータ サイエンティスト、アナリスト、開発者が、自動化された ML を使用して次のことを実行できます。
 + 広範なプログラミング知識なしで ML ソリューションを実装する
@@ -39,7 +39,7 @@ ms.locfileid: "88652102"
 
 分類モデルの主な目的は、トレーニング データから学習した知識に基づいて、新しいデータがどのカテゴリに分類されるかを予測することです。 一般的な分類の例には、不正行為の検出、手書き認識、オブジェクトの検出などがあります。 詳細と例については、[Azure Machine Learning の自動 ML での分類モデルの作成](tutorial-first-experiment-automated-ml.md)に関するページで参照できます。
 
-分類と自動機械学習の例については、次の Python ノートブックを参照してください: [不正行為の検出](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)、[マーケティング予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)、[ニュースグループ データの分類](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)
+分類と自動機械学習の例については、次の Python ノートブックを参照してください: [不正行為の検出](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)、[マーケティング予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)、[ニュースグループ データの分類](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)
 
 ### <a name="regression"></a>回帰
 
@@ -53,7 +53,7 @@ ms.locfileid: "88652102"
 
 予測を行うことは、収益、在庫、販売、顧客需要にかかわらず、あらゆるビジネスに不可欠です。 自動化された ML を使用してテクニックとアプローチを組み合わせて、推奨される高品質な時系列予測を得ることができます。 詳細については、[時系列予測のための自動機械学習](how-to-auto-train-forecast.md)に関する記事を参照してください。 
 
-自動化された時系列の実験は、多変量回帰問題として扱われます。 過去の時系列値は "ピボット" されて、他の予測因子とともにリグレッサーの追加ディメンションとなります。 このアプローチには、従来の時系列手法と異なり、トレーニング中に複数のコンテキスト変数とその関係を自然に取り込めるという利点があります。 自動化された ML では、データセットと予測期間内のすべての項目について、単一ではあるがしばしば内部的に分岐するモデルが学習されます。 したがって、モデルのパラメーターを見積もるために多くのデータを使用でき、目に見えない系列の一般化が可能になります。
+自動化された時系列の実験は、多変量回帰問題として扱われます。 過去の時系列値は "ピボット" されて、他の予測因子とともにリグレッサーの追加ディメンションとなります。 このアプローチには、従来の時系列手法と異なり、トレーニング中に複数のコンテキスト変数とその関係を自然に取り込めるという利点があります。 自動 ML では、データセットと予測期間内のすべての項目について、単一ではあるがしばしば内部的に分岐するモデルが学習されます。 したがって、モデルのパラメーターを見積もるために多くのデータを使用でき、目に見えない系列の一般化が可能になります。
 
 高度な予測構成には次のものが含まれます。
 * 休日の検出と特性付け
@@ -66,7 +66,7 @@ ms.locfileid: "88652102"
 
 予測のための回帰と自動機械学習の例については、次の Python ノートブックを参照してください: [売上予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)、[需要予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)、[飲料生産の予測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)。
 
-## <a name="how-automl-works"></a>AutoML のしくみ
+## <a name="how-automated-ml-works"></a>自動 ML の動作
 
 トレーニング中、Azure Machine Learning は、さまざまなアルゴリズムとパラメーターを試行する多数のパイプラインを並列に作成します。 サービスは、機能選択と組み合わせた ML アルゴリズムを介して反復し、それぞれの反復で、トレーニング スコアを含むモデルを生成します。 このスコアが高いほど、モデルがデータに「適合している」と見なされます。  実験に定義されている終了基準に到達すると停止します。 
 
@@ -78,14 +78,12 @@ ms.locfileid: "88652102"
 
    * コードの経験があまりない、またはない場合は、Azure Machine Learning Studio Web エクスペリエンスを [https://ml.azure.com](https://ml.azure.com/) で試してください  
    * Python 開発者は、[Azure Machine Learning Python SDK](how-to-configure-auto-train.md) に関するページを参照してください 
-
-    [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]  
     
 1. **ラベルの付いたトレーニング データのソースとフォーマットを指定します**。Numpy 配列または Pandas データフレーム
 
 1. [ローカル コンピューター、Azure Machine Learning コンピューティング、リモート VM、Azure Databricks](how-to-set-up-training-targets.md) など、**モデル トレーニングのためのコンピューティング先を構成します**。  リモート リソースでの自動トレーニングに関する詳細は[こちら](how-to-auto-train-remote.md)にあります。
 
-1. さまざまなモデルでの繰り返しの回数、ハイパーパラメーター設定、前処理/特徴付けの詳細、最良のモデルを決定するときに考慮されるメトリックを決定する**自動化された機械学習のパラメーターを構成します**。  
+1. さまざまなモデルでの繰り返しの回数、ハイパーパラメーター設定、前処理/特徴付けの詳細、最良のモデルを決定するときに考慮されるメトリックを決定する **自動化された機械学習のパラメーターを構成します**。  
 1. **トレーニング実行を送信します。**
 
 1. **結果を確認します** 
@@ -105,14 +103,14 @@ ms.locfileid: "88652102"
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
 
-## <a name="feature-engineering"></a>機能エンジニアリング
+## <a name="feature-engineering"></a>特徴エンジニアリング
 
 特徴エンジニアリングは、データに関するドメインの知識を活用して、ML アルゴリズムの学習を支援する機能を作成するプロセスです。 Azure Machine Learning では、特徴エンジニアリングを容易にするために、スケーリングと正規化の手法が適用されます。 これらの手法と特徴エンジニアリングは、まとめて特徴量化と呼ばれています。
 
 自動機械学習の実験において、特徴量化は自動的に適用されますが、データに基づいてカスタマイズすることもできます。 含まれる特徴付けに関する詳細は[こちら](how-to-configure-auto-features.md#featurization)から参照してください。  
 
 > [!NOTE]
-> 自動化された機械学習の特徴付け手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 このモデルを予測に使用する場合、トレーニング中に適用されたのと同じ特徴付けの手順がご自分の入力データに自動的に適用されます。
+> 自動機械学習の特徴付け手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 このモデルを予測に使用する場合、トレーニング中に適用されたのと同じ特徴付けの手順がご自分の入力データに自動的に適用されます。
 
 ### <a name="automatic-featurization-standard"></a>自動特徴量化 (標準)
 
@@ -140,7 +138,7 @@ ms.locfileid: "88652102"
 
 ## <a name="ensemble-models"></a><a name="ensemble"></a> アンサンブル モデル
 
-自動化された機械学習では、既定で有効になっているアンサンブル モデルがサポートされています。 アンサンブル学習では、1 つのモデルを使用するのではなく、複数のモデルを組み合わせることによって、機械学習の結果と予測パフォーマンスが改善されます。 アンサンブル イテレーションは、実行の最終イテレーションとして表示されます。 自動化された機械学習では、モデルの結合に投票とスタッキングの両方のアンサンブル方法を使用します。
+自動機械学習では、既定で有効になっているアンサンブル モデルがサポートされています。 アンサンブル学習では、1 つのモデルを使用するのではなく、複数のモデルを組み合わせることによって、機械学習の結果と予測パフォーマンスが改善されます。 アンサンブル イテレーションは、実行の最終イテレーションとして表示されます。 自動機械学習では、モデルの結合に投票とスタッキングの両方のアンサンブル方法を使用します。
 
 * **投票**: 予測されたクラス確率 (分類タスクの場合) または予測された回帰ターゲット (回帰タスクの場合) の加重平均に基づいて予測します。
 * **スタッキング**: スタッキングは異種のモデルを結合し、個々のモデルの出力に基づいてメタモデルをトレーニングします。 現在の既定のメタモデルは、分類タスクの場合は LogisticRegression、回帰/予測タスクの場合は ElasticNet です。
@@ -172,31 +170,31 @@ ms.locfileid: "88652102"
 
 ### <a name="feature-availability"></a>使用可能な機能 
 
- 次の表に示すように、リモート コンピューティングを使用するとより多くの機能を使用できます。 これらの機能の一部は、Enterprise ワークスペースでのみ使用できます。
+ 次の表に示すように、リモート コンピューティングを使用するとより多くの機能を使用できます。 
 
-| 特徴量                                                    | Remote | ローカル | 必要 <br>Enterprise ワークスペース |
-|------------------------------------------------------------|--------|-------|-------------------------------|
-| データ ストリーミング (大規模なデータのサポート、最大 100 GB)          | ✓      |       | ✓                             |
-| DNN-BERT ベースのテキストの特徴量化とトレーニング             | ✓      |       | ✓                             |
-| すぐに使用できる GPU サポート (トレーニングと推論)        | ✓      |       | ✓                             |
-| 画像の分類とラベル付けのサポート                  | ✓      |       | ✓                             |
-| 予測のための自動 ARIMA、Prophet、および ForecastTCN モデル | ✓      |       | ✓                             |
-| 並列での複数の実行/反復                       | ✓      |       | ✓                             |
-| AutoML スタジオ Web エクスペリエンス UI で解釈可能なモデルを作成する      | ✓      |       | ✓                             |
-| スタジオ Web エクスペリエンス UI での特徴エンジニアリングのカスタマイズ                        | ✓      |       | ✓                              |
-| Azure ML ハイパーパラメーターの調整                             | ✓      |       |                               |
-| Azure ML パイプライン ワークフローのサポート                         | ✓      |       |                               |
-| 実行の継続                                             | ✓      |       |                               |
-| 予測                                                | ✓      | ✓     | ✓                             |
-| ノートブックで実験を作成して実行する                    | ✓      | ✓     |                               |
-| UI で実験の情報とメトリックを登録して視覚化する | ✓      | ✓     |                               |
-| データ ガードレール                                            | ✓      | ✓     |                               |
+| 機能                                                    | Remote | ローカル | 
+|------------------------------------------------------------|--------|-------|
+| データ ストリーミング (大規模なデータのサポート、最大 100 GB)          | ✓      |       | 
+| DNN-BERT ベースのテキストの特徴量化とトレーニング             | ✓      |       |
+| すぐに使用できる GPU サポート (トレーニングと推論)        | ✓      |       |
+| 画像の分類とラベル付けのサポート                  | ✓      |       |
+| 予測のための自動 ARIMA、Prophet、および ForecastTCN モデル | ✓      |       | 
+| 並列での複数の実行/反復                       | ✓      |       |
+| AutoML スタジオ Web エクスペリエンス UI で解釈可能なモデルを作成する      | ✓      |       |
+| スタジオ Web エクスペリエンス UI での特徴エンジニアリングのカスタマイズ| ✓      |       |
+| Azure ML ハイパーパラメーターの調整                             | ✓      |       |
+| Azure ML パイプライン ワークフローのサポート                         | ✓      |       |
+| 実行の継続                                             | ✓      |       |
+| 予測                                                | ✓      | ✓     |
+| ノートブックで実験を作成して実行する                    | ✓      | ✓     |
+| UI で実験の情報とメトリックを登録して視覚化する | ✓      | ✓     |
+| データ ガードレール                                            | ✓      | ✓     |
 
 ## <a name="many-models"></a>多数モデル 
 
 [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、自動 ML を使用して、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
 
-たとえば次のシナリオで、__それぞれの事例または個々の対象の__モデルを構築すると、結果が改善される可能性があります。
+たとえば次のシナリオで、__それぞれの事例または個々の対象の__ モデルを構築すると、結果が改善される可能性があります。
 
 * 個々の店舗の売上予測
 * 数百基の油井の予測メンテナンス
@@ -206,7 +204,7 @@ ms.locfileid: "88652102"
 
 Azure Machine Learning には、自動 ML を使用するための 2 つのエクスペリエンスが用意されています。
 
-* コードの経験がある場合は、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) に関する記事を参照してください 
+* コードの経験がある場合は、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) に関する記事を参照してください 
 
 * コードの経験があまりない、またはない場合は、Azure Machine Learning Studio ([https://ml.azure.com](https://ml.azure.com/)) に関する記事を参照してください。  
 
@@ -221,7 +219,7 @@ Azure Machine Learning には、自動 ML を使用するための 2 つのエ�
 |**データをトレーニングおよび検証セットに分割する**| ✓|✓
 |**ML タスクのサポート: 分類、回帰、予測**| ✓| ✓
 |**プライマリ メトリックに基づいて最適化する**| ✓| ✓
-|**AML コンピューティングをコンピューティング ターゲットとしてサポートする** | ✓|✓
+|**Azure ML コンピューティングをコンピューティング ターゲットとしてサポートする** | ✓|✓
 |**予測期間、ターゲットのラグ、ローリング期間を構成する**|✓|✓
 |**終了条件を設定する** |✓|✓ 
 |**コンカレント イテレーションを設定する**| ✓|✓
@@ -265,7 +263,7 @@ Azure Machine Learning では、自動化された ML を使用して Python モ
 
 ONNX 形式に変換する方法については、[この Jupyter ノートブックの例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)を参照してください。 [ONNX でサポートされているアルゴリズム](how-to-configure-auto-train.md#select-your-experiment-type)についてご確認ください。
 
-ONNX ランタイムは C# にも対応しています。そのため、コードを書き直す必要がなく、また、REST エンドポイントで発生するネットワークの遅延なく、C# アプリで自動的に構築されたモデルを使用できます。 [ONNX ランタイム C# API での ONNX モデルの推論](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md)に関する詳細をご覧ください。 
+ONNX ランタイムは C# にも対応しています。そのため、コードを書き直す必要がなく、また、REST エンドポイントで発生するネットワークの遅延なく、C# アプリで自動的に構築されたモデルを使用できます。 [ML.NET を使用する .NET アプリケーションでの AutoML ONNX モデルの使用](./how-to-use-automl-onnx-model-dotnet.md)と [ONNX ランタイム C# API を使用した ONNX モデルの推論](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md)に関するページを参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -289,10 +287,9 @@ AutoML の使用を開始する方法がわかるリソースが複数ありま�
 
 [GitHub の自動機械学習サンプルのノートブック リポジトリ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)で詳しいコード サンプルやユース ケースを確認してください。
 
-### <a name="python-sdk-reference"></a>Python SDK リファレンス 
+### <a name="python-sdk-reference"></a>Python SDK リファレンス
 
-[AutoML クラス リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)では、SDK デザイン パターンとクラス仕様の知識を深めることができます。 
+[AutoML クラス リファレンス ドキュメント](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py)では、SDK デザイン パターンとクラス仕様の知識を深めることができます。 
 
 > [!Note]
-> 自動機械学習機能は、[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)、[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/) などの他の Microsoft ソリューションでも使用できます
-
+> 自動機械学習機能は、[ML.NET](/dotnet/machine-learning/automl-overview)、[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、[Power BI](/power-bi/service-machine-learning-automated)、[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/) などの他の Microsoft ソリューションでも使用できます

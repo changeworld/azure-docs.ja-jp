@@ -1,22 +1,23 @@
 ---
-title: Azure Service Bus の SQLFilter 構文リファレンス | Microsoft Docs
-description: この記事では、SQLFilter の文法について詳しく説明します。 SqlFilter では、SQL-92 標準のサブセットをサポートします。
+title: Azure Service Bus サブスクリプション ルール SQL フィルター構文 | Microsoft Docs
+description: この記事では、SQL フィルターの文法について詳しく説明します。 SQL フィルターでは、SQL-92 標準のサブセットがサポートされます。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 8412dea583ae119b30976e53d4751411b45339a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 11/24/2020
+ms.openlocfilehash: 810d17d458de79c851b6f1ada4556a231bfd20eb
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341596"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742983"
 ---
-# <a name="sqlfilter-syntax"></a>SQLFilter 構文
+# <a name="subscription-rule-sql-filter-syntax"></a>サブスクリプション ルールの SQL フィルター構文
 
-*SqlFilter* オブジェクトは [SqlFilter クラス](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)のインスタンスであり、[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) に対して評価される SQL 言語ベースのフィルター式を表します。 SqlFilter では、SQL-92 標準のサブセットをサポートします。  
+"*SQL フィルター*" は、Service Bus トピック サブスクリプションで使用できるフィルターの種類の 1 つです。 これは、SQL-92 標準のサブセットに基づくテキスト式です。 フィルター式は、[Azure Resource Manager テンプレート](service-bus-resource-manager-namespace-topic-with-rule.md)内の Service Bus `Rule` の 'sqlFilter' プロパティの `sqlExpression` 要素、Azure CLI `az servicebus topic subscription rule create` コマンドの [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) 引数、およびサブスクリプション ルールの管理を可能にするいくつかの SDK 関数と共に使用されます。
+
+Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ セレクター構文](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html)もサポートされています。
+
   
- このトピックでは、SqlFilter の文法について詳しく説明します。  
-  
-```  
+``` 
 <predicate ::=  
       { NOT <predicate> }  
       | <predicate> AND <predicate>  
@@ -81,7 +82,7 @@ ms.locfileid: "85341596"
   
 `[:IsDigit:]` は、10 進数として分類される任意の Unicode 文字を表します。 `c` が Unicode の数字の場合、`System.Char.IsDigit(c)` は `true` を返します。  
   
-`<regular_identifier>` に予約済みのキーワードを指定することはできません。  
+`<regular_identifier>` に予約キーワードを指定することはできません。  
   
 `<delimited_identifier>` は、左右の各かっこ ([]) で囲まれた任意の文字列です。 右角かっこは 2 つの右角かっこで表されます。 `<delimited_identifier>` の例を次に示します。  
   
@@ -91,7 +92,7 @@ ms.locfileid: "85341596"
   
 ```  
   
-`<quoted_identifier>` は、二重引用符で囲まれた任意の文字列です。 識別子の二重引用符は 2 つの二重引用符で表されます。 引用符で囲まれた識別子は、文字列定数と混同されやすい可能性があるので使用しないことをお勧めします。 可能であれば、区切られた識別子を使用してください。 `<quoted_identifier>` の例を次に示します。  
+`<quoted_identifier>` は、二重引用符で囲まれた任意の文字列です。 識別子の二重引用符は 2 つの二重引用符で表されます。 引用符で囲まれた識別子は、文字列定数と混同されやすい可能性があるので使用しないことをお勧めします。 可能であれば、区切られた識別子を使用してください。 こちらに `<quoted_identifier>` の例を示します。  
   
 ```  
 "Contoso & Northwind"  
@@ -136,7 +137,7 @@ ms.locfileid: "85341596"
   
 -   `<integer_constant>` は、引用符で囲まれておらず、小数点が含まれていない数値の文字列です。 値は内部的に `System.Int64` として格納され、同じ範囲に従います。  
   
-     長い定数の例を次に示します。  
+     長い定数の例をこちらに示します。  
   
     ```  
     1894  
@@ -192,7 +193,7 @@ ms.locfileid: "85341596"
   
 ### <a name="remarks"></a>解説
   
-`newid()` 関数は、`System.Guid.NewGuid()` メソッドによって生成された **System.Guid** を返します。  
+`newid()` 関数は、`System.Guid.NewGuid()` メソッドによって生成された `System.Guid` を返します。  
   
 `property(name)` 関数は、`name` によって参照されるプロパティの値を返します。 `name` 値には、文字列値を返す任意の有効な式を指定できます。  
   
@@ -218,13 +219,13 @@ ms.locfileid: "85341596"
   
   算術演算子での unknown 評価は次のとおりです。  
   
-- 2 項演算子では、左側または右側あるいは左右のオペランドが **unknown** と評価された場合、結果は **unknown** になります。  
+- 2 項演算子では、左側または右側のオペランドが **unknown** と評価された場合、結果は **unknown** になります。  
   
 - 単項演算子では、オペランドが **unknown** と評価された場合、結果は **unknown** になります。  
   
   2 項比較演算子での unknown 評価は次のとおりです。  
   
-- 左側または右側あるいは左右のオペランドが **unknown** と評価された場合、結果は **unknown** になります。  
+- 左側または右側のオペランドが **unknown** と評価された場合、結果は **unknown** になります。  
   
   `[NOT] LIKE` での unknown 評価は次のとおりです。  
   
@@ -268,8 +269,14 @@ ms.locfileid: "85341596"
   
 -   算術演算子 (`+`、`-`、`*`、`/`、`%` など) は、データ型の上位変換および暗黙的な変換で C# 演算子の結合と同じセマンティクスに従います。
 
+
+[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
 - [SQLFilter クラス (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLFilter クラス (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
-- [SQLRuleAction クラス](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SqlFilter クラス (Java)](/java/api/com.microsoft.azure.servicebus.rules.SqlFilter)
+- [SqlRuleFilter (JavaScript)](/javascript/api/@azure/service-bus/sqlrulefilter)
+- [`az servicebus topic subscription rule`](/cli/azure/servicebus/topic/subscription/rule)
+- [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

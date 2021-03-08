@@ -8,17 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 05/08/2020
+ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 131c282ab61f04ffa94921c2816886a35ea4b7ac
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a0a77faba971f328c6ae1c5a03f8faf7ccfcf60d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936828"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351488"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>クイック スタート:C# を使用して Bing Entity Search REST API に検索要求を送信する
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関するページを参照してください。
 
 このクイック スタートを使用すると、Bing Entity Search API への最初の呼び出しを行い、JSON 応答を表示することができます。 このシンプルな C# アプリケーションは、新しい検索クエリを API に送信してその応答を表示します。 このアプリケーションのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs) で入手できます。
 
@@ -28,21 +33,20 @@ ms.locfileid: "88936828"
 ## <a name="prerequisites"></a>前提条件
 
 - [Visual Studio 2017 またはそれ以降](https://www.visualstudio.com/downloads/)の任意のエディション。
-
-- NuGet パッケージとして入手できる [Json.NET](https://www.newtonsoft.com/json) フレームワーク。 Visual Studio に NuGet パッケージをインストールするには、次の手順に従います。
-
-   1. **ソリューション エクスプローラー**でプロジェクトを右クリックします。
-   2. **[NuGet パッケージの管理]** を選択します。
-   3. *Newtonsoft.json* を探して選択し、パッケージをインストールします。
-
-- Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
+- あるいは、Linux または MacOS を使用している場合は、[Visual Studio Code](https://code.visualstudio.com/) および [.NET Core](/dotnet/core/install/macos) を使用して、このクイックスタートに従うことができます
+- [無料の Azure アカウント](https://azure.microsoft.com/free/dotnet)
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>プロジェクトの作成と初期化
 
-1. Visual Studio で、新しい C# コンソール ソリューションを作成します。 次に、メイン コード ファイルに次の名前空間を追加します。
+1. Visual Studio で、新しい C# コンソール ソリューションを作成します。 
+1. [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) NuGet パッケージを追加します。
+    1. **ソリューション エクスプローラー** でプロジェクトを右クリックします。
+    2. **[NuGet パッケージの管理]** を選択します。
+    3. *Newtonsoft.json* を探して選択し、パッケージをインストールします。
+1. 次に、メイン コード ファイルに次の名前空間を追加します。
     
     ```csharp
     using Newtonsoft.Json;
@@ -181,4 +185,4 @@ ms.locfileid: "88936828"
 > [シングルページ Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Bing Entity Search API とは](../overview.md )
-* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。
+* [Bing Entity Search API リファレンス](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。

@@ -8,14 +8,16 @@ ms.topic: conceptual
 description: Azure Dev Space でプライベート Helm リポジトリを使用します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー, Helm
 manager: gwallace
-ms.openlocfilehash: c8f0e463bc78d278d8162f8389664dbb46a83301
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c5f28595df2e552fd48033b44e4e1f0ea4ec306
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240470"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960339"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Azure Dev Spaces でプライベート Helm リポジトリを使用する
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 [Helm][helm] は、Kubernetes 用のパッケージ マネージャーです。 Helm では、依存関係をパッケージ化するために[チャート][helm-chart]形式が使用されます。 Helm チャートは、パブリックまたはプライベートのリポジトリに格納されます。 Azure Dev Spaces では、アプリケーションを実行するときに、パブリックリ ポジトリからのみ Helm チャートが取得されます。 Helm リポジトリがプライベートである場合、または Azure Dev Spaces でアクセスできない場合は、そのリポジトリからアプリケーションにチャートを直接追加できます。 チャートを直接追加すると、Azure Dev Spaces で、プライベート Helm リポジトリにアクセスしなくてもアプリケーションを実行することができます。
 

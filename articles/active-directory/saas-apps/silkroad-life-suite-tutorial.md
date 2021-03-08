@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 49dd333454f0eb92f5fb0dddc40390ec1baa91c5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 89d086ce136885e203e300f04bdbf3ade0affeb3
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525543"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516054"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>チュートリアル: Azure Active Directory と SilkRoad Life Suite の統合
 
@@ -27,7 +27,7 @@ SilkRoad Life Suite と Azure AD の統合には、次の利点があります�
 * ユーザーが自分の Azure AD アカウントで SilkRoad Life Suite に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ SilkRoad Life Suite と Azure AD の統合を構成するには、次のもの�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* SilkRoad Life Suite では、**SP** Initiated SSO がサポートされます
+* SilkRoad Life Suite では、 **SP** Initiated SSO がサポートされます
 
 ## <a name="adding-silkroad-life-suite-from-the-gallery"></a>ギャラリーからの SilkRoad Life Suite の追加
 
@@ -61,13 +61,13 @@ Azure AD への SilkRoad Life Suite の統合を構成するには、ギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**SilkRoad Life Suite**」と入力し、結果パネルで **[SilkRoad Life Suite]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **SilkRoad Life Suite** 」と入力し、結果パネルで **[SilkRoad Life Suite]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの SilkRoad Life Suite](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、SilkRoad Life Suite で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、SilkRoad Life Suite で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと SilkRoad Life Suite 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 SilkRoad Life Suite で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -97,29 +97,29 @@ SilkRoad Life Suite で Azure AD シングル サインオンを構成するに�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル**がある場合は、次の手順に従います。
+4. **[基本的な SAML 構成]** セクションで、 **サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
 
     > [!NOTE]
-    > このチュートリアルで後述する**サービス プロバイダーのメタデータ ファイル**を取得します。
+    > このチュートリアルで後述する **サービス プロバイダーのメタデータ ファイル** を取得します。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
-    ![image](common/upload-metadata.png)
+    ![スクリーンショットは、[メタデータ ファイルをアップロードする] リンクを含む、[基本的な SAML 構成] を示しています。](common/upload-metadata.png)
 
-    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
+    b. **フォルダー ロゴ** をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
-    ![image](common/browse-upload-metadata.png)
+    ![スクリーンショットは、ファイルを選択してアップロードできるダイアログ ボックスを示しています。](common/browse-upload-metadata.png)
 
-    c. メタデータ ファイルが正常にアップロードされると、**識別子**と**応答 URL** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
+    c. メタデータ ファイルが正常にアップロードされると、 **識別子** と **応答 URL** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
 
-    ![image](common/sp-identifier-reply.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/sp-identifier-reply.png)
 
     > [!Note]
-    > **識別子**と**返信 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
+    > **識別子** と **返信 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
 
     d. **[サインオン URL]** ボックスに、`https://<subdomain>.silkroad-eng.com/Authentication/` という形式で URL を入力します。
 
-5. **サービス プロバイダー メタデータ ファイル**がない場合は、 **[基本的な SAML 構成]** セクションで次の手順に従います。
+5. **サービス プロバイダー メタデータ ファイル** がない場合は、 **[基本的な SAML 構成]** セクションで次の手順に従います。
 
     ![[SilkRoad Life Suite のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
@@ -138,7 +138,7 @@ SilkRoad Life Suite で Azure AD シングル サインオンを構成するに�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[SilkRoad Life Suite クライアント サポート チーム](https://www.silkroad.com/locations/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -161,23 +161,23 @@ SilkRoad Life Suite で Azure AD シングル サインオンを構成するに�
 
 1. **[サービス プロバイダー]** に移動して、 **[フェデレーションの詳細]** をクリックします。
 
-    ![Azure AD Single Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_06.png)
+    ![[サービス プロバイダー] から [フェデレーションの詳細] を選択した画面のスクリーンショット。](./media/silkroad-life-suite-tutorial/tutorial_silkroad_06.png)
 
 1. **[Download Federation Metadata (フェデレーション メタデータのダウンロード)]** をクリックし、メタデータ ファイルをコンピューターに保存します。 ダウンロードしたフェデレーション メタデータは、Azure portal の **[基本的な SAML 構成]** セクションで **[サービス プロバイダー メタデータ ファイル]** として使用します。
 
-    ![Azure AD Single Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_07.png)
+    ![[Download Federation Metadata]\(フェデレーション メタデータのダウンロード\) リンクのスクリーンショット。](./media/silkroad-life-suite-tutorial/tutorial_silkroad_07.png)
 
 1. **SilkRoad** アプリケーションで、 **[Authentication Sources (認証ソース)]** をクリックします。
 
-    ![Azure AD Single Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_08.png) 
+    ![[Authentication Sources]\(認証ソース\) が選択された画面のスクリーンショット。](./media/silkroad-life-suite-tutorial/tutorial_silkroad_08.png) 
 
 1. **[Add Authentication Source (認証ソースの追加)]** をクリックします。
 
-    ![Azure AD Single Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_09.png)
+    ![[Add Authentication Source]\(認証ソースの追加\) リンクが選択された画面のスクリーンショット。](./media/silkroad-life-suite-tutorial/tutorial_silkroad_09.png)
 
 1. **[Add Authentication Source (認証ソースの追加)]** セクションで、次の手順に従います。
 
-    ![Azure AD Single Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_10.png)
+    ![[Create Identity Provider using File Data]\(ファイル データを使用して ID プロバイダーを作成\) ボタンが選択されている [Add Authentication Source]\(認証ソースの追加\) 画面のスクリーンショット。](./media/silkroad-life-suite-tutorial/tutorial_silkroad_10.png)
   
     a. **[Option 2 - Metadata File]\(オプション 2 - メタデータ ファイル\)** の下の **[参照]** をクリックして、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
   
@@ -185,31 +185,31 @@ SilkRoad Life Suite で Azure AD シングル サインオンを構成するに�
 
 1. **[Authentication Sources (認証ソース)]** セクションで、 **[編集]** をクリックします。
 
-    ![Azure AD Single Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_11.png)
+    ![[編集] オプションが選択されている [Authentication Sources]\(認証ソース\) 画面のスクリーンショット。](./media/silkroad-life-suite-tutorial/tutorial_silkroad_11.png)
 
 1. **[Edit Authentication Source (認証ソースの編集)]** ダイアログ ボックスで、次の手順を実行します。
 
-    ![Azure AD Single Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_12.png)
+    ![[Edit Authentication Source]\(認証ソースの編集\) ダイアログ ボックスのスクリーンショット。ここで、説明されている値を入力できます。](./media/silkroad-life-suite-tutorial/tutorial_silkroad_12.png)
 
     a. **[Enabled]** で **[Yes]** を選択します。
 
     b. **[EntityId]\(エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
-    c. **[IdP Description]\(IdP の説明\)** ボックスに、構成の説明を入力します (例: *Azure AD の SSO*)。
+    c. **[IdP Description]\(IdP の説明\)** ボックスに、構成の説明を入力します (例: *Azure AD の SSO* )。
 
-    d. **[メタデータ ファイル]** ボックスに、Azure Portal からダウンロードした**メタデータ** ファイルをアップロードします。
+    d. **[メタデータ ファイル]** ボックスに、Azure Portal からダウンロードした **メタデータ** ファイルをアップロードします。
   
-    e. **[IdP Name]\(IdP 名\)** ボックスに、構成の固有の名前を入力します (例: *Azure SP*)。
+    e. **[IdP Name]\(IdP 名\)** ボックスに、構成の固有の名前を入力します (例: *Azure SP* )。
   
-    f. **[Logout Service URL]\(ログアウト サービス URL\)** テキスト ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    f. **[Logout Service URL]\(ログアウト サービス URL\)** テキスト ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
-    g. **[Sign-on service URL]\(サインオン サービス URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    g. **[Sign-on service URL]\(サインオン サービス URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     h. **[保存]** をクリックします。
 
 1. その他のすべての認証のソースを無効にします。
 
-    ![Azure AD Single Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_13.png)
+    ![[Authentication Sources]\(認証ソース\) 画面のスクリーンショット。ここで、他のソースを無効にすることができます。 ](./media/silkroad-life-suite-tutorial/tutorial_silkroad_13.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -227,7 +227,7 @@ SilkRoad Life Suite で Azure AD シングル サインオンを構成するに�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -270,12 +270,12 @@ SilkRoad Life Suite で Azure AD シングル サインオンを構成するに�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [SilkRoad Life Suite] タイルをクリックすると、SSO を設定した SilkRoad Life Suite に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [SilkRoad Life Suite] タイルをクリックすると、SSO を設定した SilkRoad Life Suite に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

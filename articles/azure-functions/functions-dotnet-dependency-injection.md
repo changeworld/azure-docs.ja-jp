@@ -4,15 +4,15 @@ description: .NET 関数にサービスを登録して使用するために、�
 author: ggailey777
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 08/15/2020
+ms.date: 01/27/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 6badcedba7fa1e1b605fc5553e5c6eed52c4203b
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 66e2cd22f4bcb95be65d6d04345dcac622436a04
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182073"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955090"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Functions で依存関係の挿入を使用する
 
@@ -29,6 +29,8 @@ Azure Functions では、依存関係の挿入 (DI) ソフトウェア デザイ
 - [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
 - [Microsoft.NET.Sdk.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) パッケージ バージョン 1.0.28 以降
+
+- [Microsoft.Extensions.DependencyInjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/) (現在のところ、バージョン 3.x 以前のみサポートされています)
 
 ## <a name="register-services"></a>サービスを登録する
 
@@ -92,7 +94,7 @@ namespace MyNamespace
         private readonly HttpClient _client;
         private readonly IMyService _service;
 
-        public MyHttpTrigger(HttpClient httpClient, MyService service)
+        public MyHttpTrigger(HttpClient httpClient, IMyService service)
         {
             this._client = httpClient;
             this._service = service;
@@ -118,8 +120,8 @@ namespace MyNamespace
 
 Azure Functions アプリのサービス有効期間は [ASP.NET 依存関係挿入](/aspnet/core/fundamentals/dependency-injection#service-lifetimes)と同じになります。 Functions アプリの場合、各種サービス有効期間が次のように動作します。
 
-- **一時的**:一時的なサービスは、サービスが要求されるたびに作成されます。
-- **スコープ付き**:スコープ付きサービスの有効期間は、関数実行の有効期間に一致します。 スコープ付きサービスは毎回作成されます。 実行時のそのサービスに対する後続の要求では、既存のサービス インスタンスが再利用されます。
+- **一時的**:一時的なサービスは、サービスが解決されるたびに作成されます。
+- **スコープ付き**:スコープ付きサービスの有効期間は、関数実行の有効期間に一致します。 スコープ付きサービスは、関数の実行ごとに 1 回作成されます。 実行時のそのサービスに対する後続の要求では、既存のサービス インスタンスが再利用されます。
 - **シングルトン**:シングルトン サービスの有効期間はホストの有効期間に一致し、そのインスタンスでの関数実行間で再利用されます。 シングルトン サービスの有効期間は、`DocumentClient` インスタンスや `HttpClient` インスタンスなど、接続やクライアントに推奨されます。
 
 GitHub の[さまざまなサービスの有効期間のサンプル](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes)を表示するか、ダウンロードします。
@@ -131,8 +133,8 @@ GitHub の[さまざまなサービスの有効期間のサンプル](https://gi
 Azure Functions によって Application Insights が自動的に追加されます。
 
 > [!WARNING]
-> - サービス コレクションに `AddApplicationInsightsTelemetry()` を追加しないでください。環境によって提供されるサービスと競合するサービスが登録されます。
-> - 組み込みの Application Insights 機能を使用している場合、独自の `TelemetryConfiguration` または `TelemetryClient` を登録しないでください。 独自の `TelemetryClient` インスタンスを構成する必要がある場合は、「[Azure Functions を監視する](./functions-monitoring.md#version-2x-and-later-2)」に示されているように、挿入された `TelemetryConfiguration` を使用して作成します。
+> - 環境によって提供されるサービスと競合するサービスが登録されるため、サービス コレクションに `AddApplicationInsightsTelemetry()` を追加しないでください。
+> - 組み込みの Application Insights 機能を使用している場合、独自の `TelemetryConfiguration` または `TelemetryClient` を登録しないでください。 独自の `TelemetryClient` インスタンスを構成する必要がある場合は、[C# 関数でカスタム テレメトリをログに記録する](functions-dotnet-class-library.md?tabs=v2%2Ccmd#log-custom-telemetry-in-c-functions)方法に関するセクションに示されているように、挿入された `TelemetryConfiguration` を使用して作成します。
 
 ### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> および ILoggerFactory
 
@@ -170,9 +172,9 @@ namespace MyNamespace
     "version": "2.0",
     "logging": {
         "applicationInsights": {
-            "samplingExcludedTypes": "Request",
             "samplingSettings": {
-                "isEnabled": true
+                "isEnabled": true,
+                "excludedTypes": "Request"
             }
         },
         "logLevel": {
@@ -181,6 +183,8 @@ namespace MyNamespace
     }
 }
 ```
+
+ログ レベルの詳細については、「[ログ レベルを構成する](configure-monitoring.md#configure-log-levels)」を参照してください。
 
 ## <a name="function-app-provided-services"></a>関数アプリで提供されるサービス
 
@@ -253,6 +257,24 @@ public class HttpTrigger
 
 オプションの使用に関する詳細については、「[ASP.NET Core のオプション パターン](/aspnet/core/fundamentals/configuration/options)」を参照してください。
 
+## <a name="using-aspnet-core-user-secrets"></a>ASP.NET Core ユーザー シークレットの使用
+
+ローカルで開発する場合、ASP.NET Core にはプロジェクトのルートの外部にシークレット情報を格納できる[シークレット マネージャー ツール](/aspnet/core/security/app-secrets#secret-manager)が用意されています。 これにより、シークレットが誤ってソース管理にコミットされる可能性が低くなります。 ASP.NET Core シークレット マネージャーによって作成されたシークレットは、Azure Functions Core Tools (バージョン 3.0.3233 以降) によって自動的に読み取られます。
+
+ユーザー シークレットを使用するように .NET Azure Functions プロジェクトを構成するには、プロジェクトのルートで次のコマンドを実行します。
+
+```bash
+dotnet user-secrets init
+```
+
+次に、`dotnet user-secrets set` コマンドを使用して、シークレットを作成または更新します。
+
+```bash
+dotnet user-secrets set MySecret "my secret value"
+```
+
+関数アプリ コードでユーザー シークレット値にアクセスするには、`IConfiguration` または `IOptions` を使用します。
+
 ## <a name="customizing-configuration-sources"></a>構成ソースのカスタマイズ
 
 > [!NOTE]
@@ -287,7 +309,7 @@ namespace MyNamespace
 }
 ```
 
-`IFunctionsConfigurationBuilder` の `ConfigurationBuilder` プロパティに構成プロバイダーを追加します。 構成プロバイダーの使用の詳細については、「[ASP.NET Core での構成](/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#configuration-providers)」を参照してください。
+`IFunctionsConfigurationBuilder` の `ConfigurationBuilder` プロパティに構成プロバイダーを追加します。 構成プロバイダーの使用の詳細については、「[ASP.NET Core での構成](/aspnet/core/fundamentals/configuration/#configuration-providers)」を参照してください。
 
 `FunctionsHostBuilderContext` は `IFunctionsConfigurationBuilder.GetContext()` から取得されます。 このコンテキストを使用して現在の環境名を取得し、関数アプリ フォルダー内の構成ファイルの場所を解決します。
 

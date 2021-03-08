@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 15031a3e139265410179baa13db9ed3f1b41cf17
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ff3f3ab65df2d801b7c962de7cce645e9fc00b30
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531805"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358611"
 ---
 # <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>チュートリアル:Visitly を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "88531805"
 
 ## <a name="assign-users-to-visitly"></a>ユーザーを Visitly に割り当てる 
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD でアプリケーションに割り当てられているユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD でアプリケーションに割り当てられているユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Visitly にアクセスする必要がある Azure AD のユーザーまたはグループを決定しておく必要があります。 その後、次の手順に従って、これらのユーザーまたはグループを Visitly に割り当てます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -60,7 +60,7 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Visitl
 
     ![Azure AD セクション](media/Visitly-provisioning-tutorial/integration.png)
 
-3. **API キー**をコピーします。 これらの値は、Azure portal で Visitly アプリケーションの **[プロビジョニング]** タブにある **[シークレット トークン]** ボックスに入力します。
+3. **API キー** をコピーします。 これらの値は、Azure portal で Visitly アプリケーションの **[プロビジョニング]** タブにある **[シークレット トークン]** ボックスに入力します。
 
     ![API キー](media/Visitly-provisioning-tutorial/token.png)
 
@@ -83,7 +83,7 @@ Azure AD ギャラリーから Visitly を追加するには、次の手順に�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Visitly**」と入力し、結果ウィンドウで **[Visitly]** を選択してから、 **[追加]** を選択してアプリケーションを追加します。
+4. 検索ボックスに「 **Visitly** 」と入力し、結果ウィンドウで **[Visitly]** を選択してから、 **[追加]** を選択してアプリケーションを追加します。
 
     ![結果一覧の Visitly](common/search-new-app.png)
 
@@ -112,7 +112,7 @@ Azure AD ギャラリーから Visitly を追加するには、次の手順に�
 
     ![[プロビジョニング モード] が [自動] に設定されている](common/provisioning-automatic.png)
 
-5. [管理者資格情報] セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど取得した `https://api.visitly.io/v1/usersync/SCIM` と **API キー**の値をそれぞれ入力します。 Azure AD から Visitly に接続できることを確認するために、 **[テスト接続]** を選択します。 接続できない場合は、使用中の Visitly アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. [管理者資格情報] セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど取得した `https://api.visitly.io/v1/usersync/SCIM` と **API キー** の値をそれぞれ入力します。 Azure AD から Visitly に接続できることを確認するために、 **[テスト接続]** を選択します。 接続できない場合は、使用中の Visitly アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -126,7 +126,7 @@ Azure AD ギャラリーから Visitly を追加するには、次の手順に�
 
     ![Visitly のユーザー マッピング](media/visitly-provisioning-tutorial/usermapping.png)
 
-9. **[属性マッピング]** セクションで、Azure AD から Visitly に同期されるユーザー属性を確認します。 **照合**用プロパティとして選択されている属性は、更新処理で Visitly のユーザー アカウントとの照合に使用されます。 すべての変更をコミットするには、 **[保存]** を選択します。
+9. **[属性マッピング]** セクションで、Azure AD から Visitly に同期されるユーザー属性を確認します。 **照合** 用プロパティとして選択されている属性は、更新処理で Visitly のユーザー アカウントとの照合に使用されます。 すべての変更をコミットするには、 **[保存]** を選択します。
 
     ![Visitly のユーザー属性](media/visitly-provisioning-tutorial/userattribute.png)
 

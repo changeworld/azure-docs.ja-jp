@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/06/2019
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 5100974c071d6a63fd2c00e496a5422fef2dffb9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b2558b4b3bcd60acba3bf47d4a973a2b6de7424f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88517644"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736008"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appneta-performance-monitor"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と AppNeta Performance Monitor の統合
 
@@ -26,7 +26,6 @@ ms.locfileid: "88517644"
 * ユーザーが自分の Azure AD アカウントで自動的に AppNeta Performance Monitor にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,7 +40,6 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * AppNeta Performance Monitor では、**SP** Initiated SSO がサポートされます
 
-
 * AppNeta Performance Monitor では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 > [!NOTE]
@@ -52,7 +50,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 Azure AD への AppNeta Performance Monitor の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に AppNeta Performance Monitor を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
@@ -60,11 +58,11 @@ Azure AD への AppNeta Performance Monitor の統合を構成するには、ギ
 1. 結果のパネルから **AppNeta Performance Monitor** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-appneta-performance-monitor"></a>AppNeta Performance Monitor の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-appneta-performance-monitor"></a>AppNeta Performance Monitor の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、AppNeta Performance Monitor に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと AppNeta Performance Monitor の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-AppNeta Performance Monitor に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+AppNeta Performance Monitor に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -77,17 +75,15 @@ AppNeta Performance Monitor に対する Azure AD SSO を構成してテスト�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **AppNeta Performance Monitor** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **AppNeta Performance Monitor** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.pm.appneta.com`
-
-    b. **[識別子 (エンティティ ID)]** ボックスに、`PingConnect` という値を入力します。
 
     > [!NOTE]
     > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 [AppNeta Performance Monitor のクライアント サポート チーム](mailto:support@appneta.com)に問い合わせて、この値を入手します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -110,7 +106,7 @@ AppNeta Performance Monitor に対する Azure AD SSO を構成してテスト�
     | | |
 
     > [!NOTE]
-    > **groups** は、Azure AD で **Role** にマップされている Appneta のセキュリティ グループを指しています。 Azure AD でカスタム ロールを作成する方法を説明している[この](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)ドキュメントを参照してください。
+    > **groups** は、Azure AD で **Role** にマップされている Appneta のセキュリティ グループを指しています。 Azure AD でカスタム ロールを作成する方法を説明している[この](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)ドキュメントを参照してください。
 
     1. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
@@ -153,20 +149,13 @@ AppNeta Performance Monitor に対する Azure AD SSO を構成してテスト�
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[AppNeta Performance Monitor]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. 前述のロールを設定した場合、 **[ロールの選択]** ボックスの一覧からそれを選択できます。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
-
 ## <a name="configure-appneta-performance-monitor-sso"></a>AppNeta Performance Monitor の SSO の構成
 
-**AppNeta Performance Monitor** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [AppNeta Performance Monitor サポート チーム](mailto:support@appneta.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**AppNeta Performance Monitor** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [AppNeta Performance Monitor サポート チーム](mailto:support@appneta.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-appneta-performance-monitor-test-user"></a>AppNeta Performance Monitor のテスト ユーザーの作成
 
@@ -177,17 +166,15 @@ AppNeta Performance Monitor に対する Azure AD SSO を構成してテスト�
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネル上で [AppNeta Performance Monitor] タイルをクリックすると、SSO を設定した AppNeta Performance Monitor アプリケーションに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる AppNeta Performance Monitor のサインオン URL にリダイレクトされます。 
 
-## <a name="additional-resources"></a>その他のリソース
+* AppNeta Performance Monitor のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [AppNeta Performance Monitor] タイルをクリックすると、AppNeta Performance Monitor のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+## <a name="next-steps"></a>次のステップ
 
-- [Azure AD で AppNeta Performance Monitor を試す](https://aad.portal.azure.com/)
-
+AppNeta Performance Monitor を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: data sync
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 11/14/2018
-ms.openlocfilehash: 4d0800d109d17c1233a18966d84a498596e8e834
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: f9997ea737b96185b31a7f51996a396fb5fc46c4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188209"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790187"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Azure SQL データ同期でスキーマ変更のレプリケートを自動化する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -231,7 +231,7 @@ SQL データ同期の詳細については、以下を参照してください�
         -  [PowerShell を使用して Azure SQL Database と SQL Server インスタンスのデータベース間で同期する](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 -   データ同期エージェント - [Azure SQL データ同期のデータ同期エージェント](sql-data-sync-agent-overview.md)
 -   ベスト プラクティス - [Azure SQL データ同期のベスト プラクティス](sql-data-sync-best-practices.md)
--   監視 - [Azure Monitor ログによる SQL データ同期の監視](sql-data-sync-monitor-sync.md)
+-   監視 - [Azure Monitor ログによる SQL データ同期の監視](./monitor-tune-overview.md)
 -   トラブルシューティング - [Azure SQL データ同期に関する問題のトラブルシューティング]()
 -   同期スキーマの更新
     -   PowerShell の場合 - [PowerShell を使用して、既存の同期グループの同期スキーマを更新する](scripts/update-sync-schema-in-sync-group.md)

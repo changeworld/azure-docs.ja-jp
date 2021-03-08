@@ -5,20 +5,20 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 10/20/2019
-ms.openlocfilehash: b73d065b43aff5f9793e642a102ff8bb2a7be036
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: f5f1a9a51c4aa68c11f1843424186a727be94621
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81001141"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834308"
 ---
 # <a name="architecture-of-iot-central-digital-distribution-center-application-template"></a>IoT Central のデジタル配布センター アプリケーション テンプレートのアーキテクチャ
 
 
 
-パートナーと顧客は、アプリ テンプレートと以下のガイダンスを使用して、エンド ツー エンドの**デジタル配布センター** ソリューションを開発することができます。
+パートナーと顧客は、アプリ テンプレートと以下のガイダンスを使用して、エンド ツー エンドの **デジタル配布センター** ソリューションを開発することができます。
 
 > [!div class="mx-imgBorder"]
 > ![デジタル配布センター](./media/concept-ddc-architecture/digital-distribution-center-architecture.png)
@@ -26,7 +26,7 @@ ms.locfileid: "81001141"
 1. ゲートウェイ デバイスにテレメトリ データを送信している IoT センサーのセット
 2. テレメトリと集計された分析情報を IoT Central に送信しているゲートウェイ デバイス
 3. データは、操作のために目的の Azure サービスにルーティングされます
-4. ASA や Azure Functions などの Azure サービスを使用して、データ ストリームの形式を再設定し、目的のストレージ アカウントに送信できます 
+4. ASA や Azure Functions などの Azure サービスを使用して、データ ストリームの形式を再設定し、目的のストレージ アカウントに送信できます
 5. 処理されたデータは、ほぼリアルタイムのアクションのためにホット ストレージに格納されるか、ML やバッチ分析に基づいて分析情報をさらに拡充するためにコールド ストレージに格納されます。 
 6. Logic Apps を使用すると、エンド ユーザーのビジネス アプリケーションでさまざまなビジネス ワークフローを利用できます
 

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: c605efe60e279ca3f5f14055e39bf95dc677542b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 14708ddcc5c0e06ee58f5e9db5945c4e9f1a1d08
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545842"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937146"
 ---
 # <a name="tutorial-configure-zscaler-private-access-zpa-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Zscaler Private Access (ZPA) を構成する
 
@@ -54,7 +54,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Zscaler Private Access (ZPA) の管理コンソール](media/zscaler-private-access-provisioning-tutorial/idpconfig.png)
 
-2.  **シングル サインオン**用の IdP が構成されていることを確認します。 IdP が設定されていない場合は、画面の右上隅にあるプラス アイコンをクリックすることによって追加します。
+2.  **シングル サインオン** 用の IdP が構成されていることを確認します。 IdP が設定されていない場合は、画面の右上隅にあるプラス アイコンをクリックすることによって追加します。
 
     ![Zscaler Private Access (ZPA) の SCIM の追加](media/zscaler-private-access-provisioning-tutorial/plusicon.png)
 
@@ -62,11 +62,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Zscaler Private Access (ZPA) の IdP の追加](media/zscaler-private-access-provisioning-tutorial/addidp.png)
 
-4. **サービス プロバイダー証明書**をダウンロードします。 **[次へ]** をクリックして、次のウィンドウに移動します。
+4. **サービス プロバイダー証明書** をダウンロードします。 **[次へ]** をクリックして、次のウィンドウに移動します。
 
     ![Zscaler Private Access (ZPA) の SP 証明書](media/zscaler-private-access-provisioning-tutorial/spcertificate.png)
 
-5. 次のウィンドウで、前にダウンロードされた**サービス プロバイダー証明書**をアップロードします。
+5. 次のウィンドウで、前にダウンロードされた **サービス プロバイダー証明書** をアップロードします。
 
     ![Zscaler Private Access (ZPA) の証明書のアップロード](media/zscaler-private-access-provisioning-tutorial/uploadfile.png)
 
@@ -78,7 +78,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Zscaler Private Access (ZPA) のトークンの作成](media/zscaler-private-access-provisioning-tutorial/token.png)
 
-8.  **[テナント URL]** を見つけるには、 **[管理] > [IdP Configuration] (IdP 構成)** に移動します。 このページに表示されている新しく追加された IdP 構成の名前をクリックします。
+8.  **[テナント URL]** を見つけるには、 **[管理] > [IdP Configuration]\(IdP 構成\)** に移動します。 このページに表示されている新しく追加された IdP 構成の名前をクリックします。
 
     ![Zscaler Private Access (ZPA) の Idp 名](media/zscaler-private-access-provisioning-tutorial/idpname.png)
 
@@ -114,7 +114,10 @@ Azure AD での自動ユーザー プロビジョニング用に Zscaler Private
 このセクションでは、Azure AD でのユーザーまたはグループの割り当てに基づいて、Zscaler Private Access (ZPA) のユーザーまたはグループを作成、更新、および無効化するように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!TIP]
-> [Zscaler Private Access (ZPA) のシングル サインオン](https://docs.microsoft.com/azure/active-directory/saas-apps/zscalerprivateaccess-tutorial)に関するチュートリアルに示されている手順に従って、Zscaler Private Access (ZPA) の SAML ベースのシングル サインオンを有効にすることも選択できます。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> [Zscaler Private Access (ZPA) のシングル サインオン](./zscalerprivateaccess-tutorial.md)に関するチュートリアルに示されている手順に従って、Zscaler Private Access (ZPA) の SAML ベースのシングル サインオンを有効にすることも選択できます。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+
+> [!NOTE]
+> ユーザーとグループをプロビジョニングしたりプロビジョニング解除したりする際は、グループ メンバーシップが適切に更新されるよう、定期的にプロビジョニングをやり直すことをお勧めします。 そうすることによって、サービスによって強制的にすべてのグループが再評価され、メンバーシップが更新されます。  
 
 > [!NOTE]
 > Zscaler Private Access の SCIM エンドポイントの詳細については、[ここ](https://www.zscaler.com/partners/microsoft)を参照してください。
@@ -131,11 +134,11 @@ Azure AD での自動ユーザー プロビジョニング用に Zscaler Private
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者の資格情報]** セクションで、 **[テナント URL]** に、前に取得した **[SCIM Service Provider Endpoint] (SCIM サービス プロバイダーのエンドポイント)** の値を入力します。 **[シークレット トークン]** に、前に取得した **[Bearer Token] (ベアラー トークン)** の値を入力します。 **[接続テスト]** をクリックして、Azure AD が Zscaler Private Access (ZPA) に接続できることを確認します。 接続に失敗する場合は、Zscaler Private Access (ZPA) アカウントに管理者アクセス許可があることを確認し、再試行します。
 
@@ -189,4 +192,3 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="next-steps"></a>次のステップ
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
-

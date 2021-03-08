@@ -1,19 +1,19 @@
 ---
 title: Azure の予約とは
-description: 仮想マシン、SQL データベース、Azure Cosmos DB、その他のリソースのコストを節約するための Azure の予約と価格について説明します。
+description: 仮想マシン、SQL データベース、Azure Cosmos DB といったリソースの予約インスタンスに対するコストを節約するための Azure の予約と価格について説明します。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 08/04/2020
+ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: a5ab489e995506deb806fe5f0cee4a147ae42ac2
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0e45e9741e92bb9e1fe23af79695cae06e64e871
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682588"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602047"
 ---
 # <a name="what-are-azure-reservations"></a>Azure の予約とは
 
@@ -50,21 +50,22 @@ Azure Databricks を除くすべての予約は、1 時間単位で適用され�
 
 予約の購入は、Azure portal、API、PowerShell、CLI から行うことができます。 
 
-Azure portal にアクセスして購入 (https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) 
+[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) にアクセスして購入します。
 
-詳細については、「 [予約の購入](prepare-buy-reservation.md)」を参照してください。 
+詳細については、「 [予約の購入](prepare-buy-reservation.md)」を参照してください。
 
 ## <a name="how-is-a-reservation-billed"></a>予約はどのように課金されますか 
 
-予約は、サブスクリプションに関連付けられている支払い方法に対して課金されます。 予約コストは年額コミットメントの残高から差し引かれます (可能な場合)。 年額コミットメントの残高で予約のコストを賄えない場合は、超過分が課金されます。 従量課金制の個人プランのサブスクリプションをご利用の場合、前払い購入では、アカウントに登録されているクレジット カードに直接課金されます。 月支払いの場合は請求書に表示され、クレジット カードに毎月請求されます。 請求書による課金の場合、次回の請求書に料金が表示されます。 
+予約は、サブスクリプションに関連付けられている支払い方法に対して課金されます。 予約コストは Azure 前払い (旧称: 年額コミットメント) の残高から差し引かれます (可能な場合)。 Azure 前払いの残高で予約のコストを賄えない場合は、超過分が課金されます。 従量課金制の個人プランのサブスクリプションをご利用の場合、前払い購入では、アカウントに登録されているクレジット カードに直接課金されます。 月支払いの場合は請求書に表示され、クレジット カードに毎月請求されます。 請求書による課金の場合、次回の請求書に料金が表示されます。 
 
-## <a name="permissions-to-view-and-manage-reservations"></a>予約を表示、管理するためのアクセス許可 
+## <a name="who-can-manage-a-reservation-by-default"></a>既定で予約を管理できるユーザー
 
-予約を購入するユーザーと予約の請求に使用されるサブスクリプションのアカウント管理者には、予約注文と予約とに対する所有者ロールが割り当てられます。
+既定では、次のユーザーが予約を表示および管理できます。
 
-予約注文または予約でのロールにユーザーを追加することで、予約管理を委任することができます。 ロールの割り当ては Azure portal で行うか、API と PowerShell を使用して行います。 
+- 予約を購入した担当者と、予約の購入に使用した課金サブスクリプションのアカウント管理者が、予約注文に追加されます。
+- マイクロソフト エンタープライズ契約および Microsoft 顧客契約の課金管理者。
 
-詳細については、「 [予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)」を参照してください。 
+他のユーザーが予約を管理できるようにする方法については、「[Azure リソースに対する予約を管理する](manage-reserved-vm-instance.md)」を参照してください。
 
 ## <a name="get-reservation-details-and-utilization-after-purchase"></a>予約の詳細と購入後の使用状況の入手
 
@@ -90,7 +91,7 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 - **予約仮想マシン インスタンス** - 予約の対象は仮想マシンとクラウド サービスのコンピューティング コストのみです。 その他のソフトウェア、Windows、ネットワーク、ストレージの料金は含まれません。
 - **Azure Storage の予約容量** - 予約の対象となるのは、BLOB ストレージまたは Azure Data Lake Gen2 ストレージの標準ストレージ アカウントのストレージ容量です。 帯域幅またはトランザクション レートは予約の対象外です。
 - **Azure Cosmos DB の予約容量** - 予約は、リソース用にプロビジョニングされたスループットが対象になります。 ストレージとネットワーク料金は対象外です。
-- **SQL Database の予約された仮想コア** - 予約にはコンピューティング コストのみが含まれます。 SQL ライセンスの料金は別途請求されます。
+- **SQL データベース予約済み仮想コア** - SQL Managed Instance と SQL Database エラスティック プールまたは単一データベースの両方が含まれます。 予約にはコンピューティング コストのみが含まれます。 SQL ライセンスの料金は別途請求されます。 
 - **Azure Synapse Analytics** - 予約には cDWU の使用が含まれます。 Azure Synapse Analytics の使用に関連するストレージまたはネットワークの料金は含まれません。
 - **Azure Databricks** - 予約の対象となるのは、DBU の使用のみです。 コンピューティング、ストレージ、およびネットワーキングなどの他の料金は別途適用されます。
 - **App Service スタンプ料金** - 予約にはスタンプの使用が含まれます。 worker には適用されないので、スタンプに関連する他のすべてのリソースには別途課金されます。
@@ -106,7 +107,7 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 
 - **SUSE Linux** - 予約の対象となるのは、ソフトウェア プランのコストです。 この割引は SUSE 測定にのみ適用され、仮想マシンの使用には適用されません。
 - **Red Hat プラン** - 予約の対象となるのは、ソフトウェア プランのコストです。 この割引は Red Hat 測定にのみ適用され、仮想マシンの使用には適用されません。
-- **Azure VMware Solution by CloudSimple** - 予約の対象となるのは、VMWare CloudSimple ノードです。 追加のソフトウェア料金は発生します。
+- **Azure VMware Solution by CloudSimple** - 予約の対象となるのは、VMware CloudSimple ノードです。 追加のソフトウェア料金は発生します。
 - **Azure Red Hat OpenShift** - 予約は Azure インフラストラクチャのコストではなく、OpenShift のコストに適用されます。
 
 Windows 仮想マシンと SQL Database については、ソフトウェアのコストに予約割引が適用されません。 ライセンス コストは、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)で充当することができます。
@@ -125,9 +126,9 @@ Windows 仮想マシンと SQL Database については、ソフトウェアの�
     - [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](/partner-center/azure-reservations)
 
 - サービス プランの予約の詳細については、次の記事を参照してください。
-    - [Azure Reserved VM Instances による仮想マシン](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+    - [Azure Reserved VM Instances による仮想マシン](../../virtual-machines/prepay-reserved-vm-instances.md)
     - [Azure Cosmos DB の容量が予約された Azure Cosmos DB リソース](../../cosmos-db/cosmos-db-reserved-capacity.md)
     - [Azure SQL Database の予約容量を使用した SQL Database 計算リソース](../../azure-sql/database/reserved-capacity-overview.md)
     - [ の予約容量を使用した Azure Cache for Redis リソース](../../azure-cache-for-redis/cache-reserved-pricing.md) ソフトウェア プランの予約の詳細については、次の記事を参照してください。
-    - [Azure の予約からの Red Hat ソフトウェア プラン](../../virtual-machines/linux/prepay-rhel-software-charges.md)
+    - [Azure の予約からの Red Hat ソフトウェア プラン](../../virtual-machines/linux/prepay-suse-software-charges.md)
     - [Azure の予約からの SUSE ソフトウェア プラン](../../virtual-machines/linux/prepay-suse-software-charges.md)

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 950447aa146f05714b6ec5ea3d6e47c368a2140e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 46805427e6d00e858cf869eef68bf68549f57fb9
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229312"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018119"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>チュートリアル: Power BI Desktop を使用して接続する
 
@@ -70,4 +70,4 @@ Power BI Desktop からサーバーに接続するには、まずサーバー名
 不要になった場合は、レポートを保存しないでおきます。保存済みの場合は、ファイルを削除します。
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、Power BI Desktop を使用してサーバー上のデータ モデルに接続し、基本的なレポートを作成する方法について説明しました。 データ モデルの作成方法に慣れていない場合は、SQL Server Analysis Services のドキュメントで [Adventure Works Internet Sales 表形式データ モデリング チュートリアル](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)に関するページを参照してください。
+このチュートリアルでは、Power BI Desktop を使用してサーバー上のデータ モデルに接続し、基本的なレポートを作成する方法について説明しました。 データ モデルの作成方法に慣れていない場合は、SQL Server Analysis Services のドキュメントで [Adventure Works Internet Sales 表形式データ モデリング チュートリアル](/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)に関するページを参照してください。

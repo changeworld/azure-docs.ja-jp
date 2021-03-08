@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e31f5e6afb3b586cd8eb20db8d1ca34e95de86cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aa45294de4ef644c20ef66b7163706dca9759d3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356799"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996527"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect:DirSync からのアップグレード
 Azure AD Connect は DirSync の後継のツールです。 このトピックでは、DirSync からアップグレードする方法について説明します。 以下の手順は、Azure AD Connect の別のリリースまたは Azure AD Sync からのアップグレードには使用できません。
@@ -100,10 +100,10 @@ DirSync がサービス アカウントで使用したパスワードは取得�
    * SQL Server Express を使用しており、オブジェクトの数が 50,000 未満である場合は、次の画面が表示されます。  
      ![分析が完了し、DirSync からアップグレードする準備が整いました。](./media/how-to-dirsync-upgrade-get-started/AnalysisReady.png)
    * DirSync に完全バージョンの SQL Server を使用する場合、次のページが表示されます。  
-     ![分析が完了し、DirSync からアップグレードする準備が整いました。](./media/how-to-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png)  
+     ![使用されている既存の SQL データベース サーバーを示すスクリーンショット。](./media/how-to-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png)  
      DirSync によって使用されている既存の SQL Server データベース サーバーに関する情報が表示されます。 必要に応じて、適切に調整を行います。 **[次へ]** をクリックしてインストールを続行します。
    * 50,000 個を超えるオブジェクトがある場合は、代わりにこの画面が表示されます。  
-     ![分析が完了し、DirSync からアップグレードする準備が整いました。](./media/how-to-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)  
+     ![アップグレードするオブジェクトが 50,000 個を超える場合に表示されるスクリーンショット。](./media/how-to-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)  
      インプレース アップグレードを続行するには、"**このコンピューターの DirSync のアップグレードを続行します。** " の横のチェック ボックスをオンにします。
      代わりに[並列デプロイ](#parallel-deployment)を行うには、DirSync の構成設定をエクスポートして新しいサーバーに移します。
 5. Azure AD への接続に現在使用しているアカウントのパスワードを入力します。 これは、DirSync によって現在使用されているアカウントでなければなりません。  
@@ -140,7 +140,7 @@ DirSync がサービス アカウントで使用したパスワードは取得�
 4. Azure AD Connect のインストール場所 (既定: C:\Program Files\Microsoft Azure Active Directory Connect) から、次のコマンドを実行します。`AzureADConnect.exe /ForceExport`
 5. **[設定のエクスポート]** をクリックします。 Azure AD Connect を別のサーバーにインストールすると、これらの設定が現在の DirSync から新しい Azure AD Connect のインストールに移行されます。
 
-![分析完了](./media/how-to-dirsync-upgrade-get-started/forceexport.png)
+![新しい Azure AD Connect のインストールに設定を移行するための [設定のエクスポート] オプションを示すスクリーンショット。](./media/how-to-dirsync-upgrade-get-started/forceexport.png)
 
 設定が正常にエクスポートされたら、DirSync サーバーで、Azure AD Connect ウィザードを終了できます。 次の手順に進み、別のサーバーに Azure AD Connect をインストールします。
 
@@ -152,14 +152,14 @@ Azure AD Connect を新しいサーバーにインストールする場合、Azu
 3. コマンド プロンプトを開きます。
 4. Azure AD Connect のインストール場所 (既定: C:\Program Files\Microsoft Azure Active Directory Connect) から、次のコマンドを実行します。`AzureADConnect.exe /migrate`
    Azure AD Connect のインストール ウィザードが起動し、次の画面が表示されます。  
-   ![Azure ADの資格情報を入力します。](./media/how-to-dirsync-upgrade-get-started/ImportSettings.png)
+   ![アップグレード時に設定ファイルをインポートする場所を示すスクリーンショット。](./media/how-to-dirsync-upgrade-get-started/ImportSettings.png)
 5. DirSync インストールからエクスポートされた設定ファイルを選択します。
 6. 次の高度なオプションを構成します。
    * Azure AD Connect のカスタムのインストール場所。
    * SQL Server の既存のインスタンス (既定: Azure AD Connect では、SQL Server 2012 Express がインストールされます)。 DirSync サーバーと同じデータベース インスタンスは使用しないでください。
    * SQL Server への接続に使用するサービス アカウント (SQL Server データベースがリモートの場合、このアカウントはドメイン サービス アカウントにする必要があります)。
      これらのオプションは、次の画面で表示されます。  
-     ![Azure ADの資格情報を入力します。](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)
+     ![DirSync からアップグレードするための高度な構成オプションを示すスクリーンショット。](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)
 7. **[次へ]** をクリックします。
 8. **[構成の準備完了]** ページで **[構成が完了したら、同期処理を開始してください。]** チェック ボックスをオンのままにします。 サーバーは[ステージング モード](how-to-connect-sync-staging-server.md)になっているため、変更は Azure AD にエクスポートされません。
 9. **[インストール]** をクリックします。
@@ -204,7 +204,7 @@ DirSync がアンインストールされているか、無効になっている
 * **[ステージング モードの構成]** を選択します。
 * **[ステージング モードを有効にする]** チェックボックスをオフにして、ステージングを停止します。
 
-![Azure ADの資格情報を入力します。](./media/how-to-dirsync-upgrade-get-started/configurestaging.png)
+![ステージング モードを有効にするためのオプションを示すスクリーンショット。](./media/how-to-dirsync-upgrade-get-started/configurestaging.png)
 
 * **[次へ]** をクリックします。
 * [確認] ページで **[インストール]** ボタンをクリックします。

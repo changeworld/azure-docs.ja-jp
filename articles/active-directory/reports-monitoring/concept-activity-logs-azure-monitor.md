@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4253fe52346890eaa993a18e8e9bc9b270bffd7
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 73130c906d4d9f0da51db1b666e8562570cce40f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229856"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571275"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor の Azure AD アクティビティ ログ
 
@@ -111,11 +111,11 @@ Azure Active Directory (Azure AD) のアクティビティ ログを複数のエ
 
 
 
-| ログのカテゴリ       | ユーザーの数 | 1 日あたりのイベント | 1 か月 (30 日) あたりのイベント | 1 か月あたりの推定コスト (USD) |
-| :--                | ---             | ---            | ---                        | --:                          |
-| 監査とサインイン | 100,000         | 16,500,000     | 495,000,000                |  $1093.00                       |
-| Audit              | 100,000         | 1,500,000      | 45,000,000                 |  $246.66                     |
-| サインイン           | 100,000         | 15,000,000     | 450,000,000                |  $847.28                     |
+| ログのカテゴリ | ユーザーの数 | 1 日あたりのイベント | 1 か月 (30 日) あたりのイベント | 1 か月あたりの推定コスト (USD) |
+|:-|--|--|--|-:|
+| 監査とサインイン | 100,000 | 16,500,000 | 495,000,000 | $1093.00 |
+| Audit | 100,000 | 1,500,000 | 45,000,000 | $246.66 |
+| サインイン | 100,000 | 15,000,000 | 450,000,000 | $847.28 |
 
 
 
@@ -126,7 +126,7 @@ Azure Active Directory (Azure AD) のアクティビティ ログを複数のエ
 
 
 
-Azure Monitor ログの管理に関連するコストをレビューするには、[Azure Monitor ログでデータ ボリュームと保有期間を制御してコストを管理する方法](../../azure-monitor/platform/manage-cost-storage.md)に関する記事をご覧ください。
+Azure Monitor ログの管理に関連するコストをレビューするには、[Azure Monitor ログでデータ ボリュームと保有期間を制御してコストを管理する方法](../../azure-monitor/logs/manage-cost-storage.md)に関する記事をご覧ください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -180,7 +180,7 @@ Azure Monitor ログの管理に関連するコストをレビューするには
 
 **Q:現時点ではどの SIEM ツールがサポートされてますか。** 
 
-**A**: **A**: 現在、Azure Monitor は [Splunk](./howto-integrate-activity-logs-with-splunk.md)、IBM QRadar、[Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory)、[ArcSight](./howto-integrate-activity-logs-with-arcsight.md)、LogRhythm、および Logz.io でサポートされています。 コネクタのしくみの詳細については、「[外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)」を参照してください。
+**A**: **A**: 現在、Azure Monitor は [Splunk](./howto-integrate-activity-logs-with-splunk.md)、IBM QRadar、[Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory)、[ArcSight](./howto-integrate-activity-logs-with-arcsight.md)、LogRhythm、および Logz.io でサポートされています。 コネクタのしくみの詳細については、「[外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](../../azure-monitor/essentials/stream-monitoring-data-event-hubs.md)」を参照してください。
 
 ---
 

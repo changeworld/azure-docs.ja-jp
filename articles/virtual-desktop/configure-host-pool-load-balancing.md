@@ -3,15 +3,15 @@ title: Windows Virtual Desktop の負荷分散を構成する - Azure
 description: Windows Virtual Desktop 環境での負荷分散方法を構成する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/29/2019
+ms.date: 10/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 07eae73a36bf4051925547fa375f46963a162881
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2c57ac10fbd318dd4bbb2dc86457e186dd824834
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010108"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951657"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Windows Virtual Desktop の負荷分散方法を構成する
 
@@ -51,13 +51,19 @@ Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname>
 
 ## <a name="configure-depth-first-load-balancing"></a>深さ優先の負荷分散を構成する
 
-深さ優先の負荷分散では、新しいユーザー セッションが接続数が最も多いが、そのセッションの上限しきい値に達していない利用可能なセッション ホストに分散されます。 深さ優先の負荷分散を構成するときに、ホスト プール内のセッション ホストあたりのセッションの上限を設定する必要があります。
+深さ優先の負荷分散では、新しいユーザー セッションが接続数が最も多いが、そのセッションの上限しきい値に達していない利用可能なセッション ホストに分散されます。
+
+>[!IMPORTANT]
+>深さ優先の負荷分散を構成するときに、ホスト プール内のセッション ホストあたりのセッションの上限を設定する必要があります。
 
 深さ優先の負荷分散を実行するようにホスト プールを構成するには、次の PowerShell コマンドレットを実行します。
 
 ```powershell
 Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ###
 ```
+
+>[!NOTE]
+> 深さ優先の負荷分散アルゴリズムを使用すると、セッション ホストの上限 (`-MaxSessionLimit`) に基づいてセッションがセッション ホストに分散されます。 このパラメーターの既定値は `999999` です。これは、この変数に設定できる最大の数値でもあります。 このパラメーターは、深さ優先の負荷分散アルゴリズムを使用する場合に必要です。 最適なユーザー エクスペリエンスを実現するには、セッション ホストの上限パラメーターを実際の環境に最も適した数に変更してください。
 
 設定が更新されたことを確認するには、次のコマンドレットを実行します。
 

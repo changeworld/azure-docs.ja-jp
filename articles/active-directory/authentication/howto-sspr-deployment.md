@@ -9,14 +9,14 @@ ms.date: 01/31/2020
 ms.author: baselden
 author: barbaraselden
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c9f59c7bb9b3977bdff7e3fd1ab78ed6fa2e412
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 765bfe0f805ae4219110d689e8f7f8fd54a26cf3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717746"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173938"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory のセルフサービス パスワード リセットのデプロイを計画する
 
@@ -115,7 +115,7 @@ SSPR をデプロイする前に、各パスワード リセット呼び出し�
 
 組織では SSPR と多要素認証に対する統合された登録エクスペリエンスを有効にすることをお勧めします。 この統合された登録エクスペリエンスを有効にすると、ユーザーは登録情報を 1 回選択するだけで両方の機能を有効にすることができます。
 
-統合された登録エクスペリエンスでは、SSPR と Azure Multi-Factor Authentication の両方を有効にする必要はありません。 登録を組み合わせると、組織ではより優れたユーザー エクスペリエンスを実現できます。 詳細については、[統合されたセキュリティ情報の登録](concept-registration-mfa-sspr-combined.md)に関する記事を参照してください
+統合された登録エクスペリエンスでは、SSPR と Azure AD Multi-Factor Authentication の両方を有効にする必要はありません。 登録を組み合わせると、組織ではより優れたユーザー エクスペリエンスを実現できます。 詳細については、[統合されたセキュリティ情報の登録](concept-registration-mfa-sspr-combined.md)に関する記事を参照してください
 
 ## <a name="plan-the-deployment-project"></a>デプロイ プロジェクトを計画する
 
@@ -123,7 +123,7 @@ SSPR をデプロイする前に、各パスワード リセット呼び出し�
 
 ### <a name="engage-the-right-stakeholders"></a>適切な関係者を関わらせる
 
-テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者を関与させ](https://aka.ms/deploymentplans)、利害関係者およびそのプロジェクトでの入力と説明責任を文書化することで、プロジェクトでの利害関係者の役割をよく理解させます。
+テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者を関与させ](../fundamentals/active-directory-deployment-plans.md)、利害関係者およびそのプロジェクトでの入力と説明責任を文書化することで、プロジェクトでの利害関係者の役割をよく理解させます。
 
 #### <a name="required-administrator-roles"></a>必要な管理者ロール
 
@@ -200,7 +200,7 @@ SSPR が有効になっている場合、ユーザーが自分のパスワード
 
 ### <a name="password-writeback"></a>パスワード ライトバック
 
-**パスワード ライトバック**は、[Azure AD Connect](../hybrid/whatis-hybrid-identity.md) で有効になっていて、クラウドでのパスワード リセットを既存のオンプレミスのディレクトリにリアルタイムで書き戻します。 詳しくは、「[パスワード ライトバックとは](./concept-sspr-writeback.md)」をご覧ください
+**パスワード ライトバック** は、[Azure AD Connect](../hybrid/whatis-hybrid-identity.md) で有効になっていて、クラウドでのパスワード リセットを既存のオンプレミスのディレクトリにリアルタイムで書き戻します。 詳しくは、「[パスワード ライトバックとは](./concept-sspr-writeback.md)」をご覧ください
 
 次の設定が推奨されます。
 
@@ -313,7 +313,7 @@ Azure AD では、監査とレポートによって SSPR のパフォーマン�
 Azure portal で構築済みのレポートを使用して、SSPR のパフォーマンスを測定できます。 適切にライセンスを付与されている場合は、カスタム クエリを作成することもできます。 詳しくは、「[Azure AD のパスワード管理に関するレポート オプション](./howto-sspr-reporting.md)」を参照してください
 
 > [!NOTE]
->  ユーザーは[グローバル管理者](../users-groups-roles/directory-assign-admin-roles.md)であること、および組織のためにこのデータを収集できるようにオプトインすることが必要です。 オプトインするには、Azure portal の [レポート] タブまたは監査ログに少なくとも 1 回アクセスする必要があります。 それまでは、ご自分の組織のデータは収集されません。
+>  ユーザーは[グローバル管理者](../roles/permissions-reference.md)であること、および組織のためにこのデータを収集できるようにオプトインすることが必要です。 オプトインするには、Azure portal の [レポート] タブまたは監査ログに少なくとも 1 回アクセスする必要があります。 それまでは、ご自分の組織のデータは収集されません。
 
 登録とパスワード リセットに関する監査ログは、30 日間利用できます。 企業内でのセキュリティ監査をもっと長い期間保有する必要がある場合は、ログをエクスポートし、[Azure Sentinel](../../sentinel/connect-azure-active-directory.md)、Splunk、ArcSight などの SIEM ツールに取り込む必要があります。
 
@@ -321,11 +321,11 @@ Azure portal で構築済みのレポートを使用して、SSPR のパフォ�
 
 ### <a name="authentication-methods--usage-and-insights"></a>認証方法 - 使用状況と分析情報
 
-[使用状況と分析情報](./howto-authentication-methods-usage-insights.md)を使うと、Azure MFA や SSPR などの機能の認証方法が組織内でどのように機能しているかについて理解を深めることができます。 このレポート機能は、組織がどの方法で登録を行い、それらをどのように使用しているかを把握するための手段となるものです。
+[使用状況と分析情報](./howto-authentication-methods-usage-insights.md)を使うと、Azure AD MFA や SSPR などの機能の認証方法が組織内でどのように機能しているかについて理解を深めることができます。 このレポート機能は、組織がどの方法で登録を行い、それらをどのように使用しているかを把握するための手段となるものです。
 
 ### <a name="troubleshoot"></a>トラブルシューティング
 
-* 「[セルフサービスのパスワードのリセットのトラブルシューティング](./active-directory-passwords-troubleshoot.md)」を参照してください 
+* 「[セルフサービスのパスワードのリセットのトラブルシューティング](./troubleshoot-sspr.md)」を参照してください 
 
 * 「[パスワード管理に関するよく寄せられる質問 (FAQ)](./active-directory-passwords-faq.md)」に従ってください 
 

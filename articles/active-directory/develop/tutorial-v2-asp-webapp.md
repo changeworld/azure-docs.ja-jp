@@ -1,7 +1,7 @@
 ---
-title: Microsoft ID プラットフォームへのサインインを ASP.NET Web アプリに追加する
+title: チュートリアル:認証に Microsoft ID プラットフォームを使用する ASP.NET Web アプリを作成する | Azure
 titleSuffix: Microsoft identity platform
-description: 従来の Web ブラウザーベースのアプリケーションと OpenID Connect 標準を使用して、ASP.NET ソリューション上で Microsoft のサインインを実装します
+description: このチュートリアルでは、Microsoft ID プラットフォームと OWIN ミドルウェアを使用してユーザーがログインできるようにする ASP.NET Web アプリケーションを構築します。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,23 +12,31 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 740d62136393cf0c9cf31d367735bffed1c05276
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 38def2b5af3a5f0f9a32c2b681bd0ee95ca44086
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165585"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174684"
 ---
-# <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>ASP.NET Web アプリに Microsoft へのサインインを追加する
+# <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>チュートリアル:ASP.NET Web アプリに Microsoft へのサインインを追加する
 
-このガイドでは、従来の Web ブラウザーベースのアプリケーションと OpenID Connect を使用して、ASP.NET MVC ソリューションを通じて Microsoft へのサインインを実装する方法を示します。
+このチュートリアルでは、Open Web Interface for .NET (OWIN) ミドルウェアと Microsoft ID プラットフォームを使用してユーザーのサインインを処理する ASP.NET MVC Web アプリを作成します。
 
 このガイドを完了すると、ご自分のアプリケーションが outlook.com や live.com などの個人用アカウントのサインインを受け入れることができるようになります。 また、Microsoft ID プラットフォームと統合されている会社や組織の職場または学校アカウントでも、アプリにサインインできるようになります。
 
-> このガイドでは、Microsoft Visual Studio 2019 が必要です。  お持ちでない場合は、  [Visual Studio 2019 を無料でダウンロードできます](https://www.visualstudio.com/downloads/)。
+このチュートリアルの内容:
 
->[!NOTE]
-> Microsoft ID プラットフォームを初めて使用する場合は、「[ASP.NET Web アプリに Microsoft ID プラットフォーム サインインを追加する](quickstart-v2-aspnet-webapp.md)」から始めることをお勧めします。
+> [!div class="checklist"]
+> * Visual Studio で *ASP.NET Web アプリケーション* プロジェクトを作成する
+> * Open Web Interface for .NET (OWIN) ミドルウェア コンポーネントを追加する
+> * ユーザーのサインインとサインアウトをサポートするコードを追加する
+> * Azure portal でアプリを登録する
+> * アプリケーションをテストする
+
+## <a name="prerequisites"></a>前提条件
+
+* **ASP.NET および Web 開発** ワークロードがインストールされている [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>このガイドで生成されたサンプル アプリの動作
 
@@ -62,7 +70,7 @@ ms.locfileid: "88165585"
 ## <a name="add-authentication-components"></a>認証コンポーネントの追加
 
 1. Visual Studio で次の操作を行います。 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に移動します。
-2. パッケージ マネージャー コンソールのウィンドウで以下を入力し、*OWIN ミドルウェア NuGet パッケージ*を追加します。
+2. パッケージ マネージャー コンソールのウィンドウで以下を入力し、*OWIN ミドルウェア NuGet パッケージ* を追加します。
 
     ```powershell
     Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -111,7 +119,7 @@ OWIN ミドルウェアの Startup クラスを作成し、OpenID Connect の認
         // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-        // Authority is the URL for authority, composed by Microsoft identity platform endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
+        // Authority is the URL for authority, composed of the Microsoft identity platform and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
@@ -133,8 +141,8 @@ OWIN ミドルウェアの Startup クラスを作成し、OpenID Connect の認
                     // PostLogoutRedirectUri is the page that users will be redirected to after sign-out. In this case, it is using the home page
                     PostLogoutRedirectUri = redirectUri,
                     Scope = OpenIdConnectScope.OpenIdProfile,
-                    // ResponseType is set to request the id_token - which contains basic information about the signed-in user
-                    ResponseType = OpenIdConnectResponseType.IdToken,
+                    // ResponseType is set to request the code id_token - which contains basic information about the signed-in user
+                    ResponseType = OpenIdConnectResponseType.CodeIdToken,
                     // ValidateIssuer set to false to allow personal and work accounts from any organization to sign in to your application
                     // To only allow users from a single organizations, set ValidateIssuer to true and 'tenant' setting in web.config to the tenant name
                     // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter
@@ -264,7 +272,7 @@ Visual Studio で、サインイン ボタンを追加し、認証後にユー�
     ```
 
 ### <a name="more-information"></a>詳細情報
-このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![Microsoft アカウントでのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[ブランド化ガイドライン](./howto-add-branding-in-azure-ad-apps.md "ブランド化ガイドライン")をご覧ください。
+このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![[Microsoft アカウントでサインイン] ボタン](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[ブランド化ガイドライン](./howto-add-branding-in-azure-ad-apps.md "ブランド化ガイドライン")をご覧ください。
 
 ## <a name="add-a-controller-to-display-users-claims"></a>ユーザー要求を表示するコントローラーを追加する
 このコントローラーでは、コントローラーを保護する `[Authorize]` 属性の使用例を示します。 この属性は、認証されたユーザーのみを許可することで、コントローラーへのアクセスを制限します。 次のコードではこの属性を利用して、サインインの一部として取得されたユーザー要求を表示します。
@@ -287,7 +295,7 @@ Visual Studio で、サインイン ボタンを追加し、認証後にユー�
         {
             var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
 
-            //You get the user’s first and last name below:
+            //You get the user's first and last name below:
             ViewBag.Name = userClaims?.FindFirst("name")?.Value;
 
             // The 'preferred_username' claim can be used for showing the username
@@ -305,7 +313,7 @@ Visual Studio で、サインイン ボタンを追加し、認証後にユー�
     ```
 
 ### <a name="more-information"></a>詳細情報
-`[Authorize]` 属性を使用しているため、このコントローラーのすべてのメソッドは、ユーザーが認証されている場合にのみ実行できます。 認証されていないユーザーがコントローラーにアクセスしようとすると、OWIN は認証チャレンジを開始し、ユーザーに認証を強制します。 前のコードは、ユーザーの ID トークンに含まれている特定のユーザー属性に対する要求の一覧を参照します。 これらの属性には、ユーザーのフルネームとユーザー名、さらにグローバル ユーザー識別子のサブジェクトが含まれます。 また、ユーザーの組織の ID を表す*テナント ID* も含まれています。
+`[Authorize]` 属性を使用しているため、このコントローラーのすべてのメソッドは、ユーザーが認証されている場合にのみ実行できます。 認証されていないユーザーがコントローラーにアクセスしようとすると、OWIN は認証チャレンジを開始し、ユーザーに認証を強制します。 前のコードは、ユーザーの ID トークンに含まれている特定のユーザー属性に対する要求の一覧を参照します。 これらの属性には、ユーザーのフルネームとユーザー名、さらにグローバル ユーザー識別子のサブジェクトが含まれます。 また、ユーザーの組織の ID を表す "*テナント ID*" も含まれています。
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>ユーザー要求を表示するビューを作成する
 
@@ -353,7 +361,7 @@ Visual Studio で、Web ページでユーザー要求を表示するための�
 
 アプリケーションをすばやく登録するには、次の手順に従います。
 
-1. 新しい [Azure portal の [アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) ウィンドウに移動します。
+1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録</a>クイックスタート エクスペリエンスに移動します。  
 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 1. 指示に従ってダウンロードすると、1 回のクリックで、新しいアプリケーションが自動的に構成されます。
 
@@ -365,15 +373,17 @@ Visual Studio で、Web ページでユーザー要求を表示するための�
    1. ソリューション エクスプローラーで、プロジェクトを選択してプロパティ ウィンドウを確認します (プロパティ ウィンドウが表示されない場合は F4 キーを押します)。
    1. [SSL 有効] を `True` に変更します。
    1. Visual Studio でプロジェクトを右クリックし、 **[プロパティ]** を選択してから **[Web]** タブを選択します。 **[サーバー]** セクションで、 **[プロジェクト URL]** の設定を **SSL URL** に変更します。
-   1. SSL URL をコピーします。 この後の手順で、登録ポータルのリダイレクト URL の一覧に、この URL を追加します。<br/><br/>![プロジェクトのプロパティ](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
-1. 職場または学校アカウントを使用するか、個人用 Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
-1. 自分のアカウントで複数のテナントにアクセスできる場合は、右上隅で自分のアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
-1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。
-1. **[新規登録]** を選択します。
-1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
-   1. **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: **ASPNET-Tutorial**)。
-   1. 手順 1. で Visual Studio からコピーした SSL URL (たとえば `https://localhost:44368/`) を **[応答 URL]** に追加し、 **[登録]** を選択します。
-1. **[認証]** メニューを選択し、 **[暗黙の付与]** の **[ID トークン]** を選択して、 **[保存]** を選択します。
+   1. SSL URL をコピーします。 この後の手順で、登録ポータルのリダイレクト URI の一覧に、この URL を追加します。<br/><br/>![プロジェクトのプロパティ](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
+   
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+1. **Azure Active Directory** を検索して選択します。
+1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+1. アプリケーションの **名前** を入力します (例: `ASPNET-Tutorial`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
+1. 手順 1. で Visual Studio からコピーした SSL URL (たとえば `https://localhost:44368/`) を **[応答 URI]** に追加します。
+1. **[登録]** を選択します。
+1. **[管理]** で、 **[認証]** を選択します。
+1. **[暗黙的な許可およびハイブリッド フロー]** セクションで **[ID トークン]** を選択し、 **[保存]** を選択します。
 1. `configuration\appSettings` セクションのルート フォルダーにある web.config ファイルに、次のコードを追加します。
 
     ```xml
@@ -392,15 +402,14 @@ Visual Studio でアプリケーションをテストするには、F5 キーを
 
 テストを実行する準備が整ったら、Azure AD アカウント (職場または学校のアカウント) または個人用の Microsoft アカウント (<span>live.</span>com または <span>outlook.</span>com) を使用してサインインします。
 
-![Microsoft アカウントでのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
+![ブラウザーのブラウザー ログオン ページに表示された [Microsoft アカウントでサインイン] ボタン](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
 <br/><br/>
 ![Microsoft アカウントへのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
-#### <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意
+#### <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームでのアクセス許可と同意
+Microsoft ID プラットフォームと統合するアプリケーションは、データにアクセスする方法をユーザーと管理者が制御できるようにする認可モデルに従います。 このアプリケーションにアクセスするために Microsoft ID プラットフォームで認証されたユーザーは、アプリケーションによって要求されるアクセス許可 ("基本プロファイルの表示" と "自分がアクセス権を付与したデータへのアクセスの管理") に同意するように求められます。 これらのアクセス許可を受け入れると、ユーザーはアプリケーションの結果に進むこととなります。 ただし、次のいずれかの場合は、ユーザーに **[Need admin consent]\(管理者の同意が必要\)** ページが表示され、対応を求められることがあります。
 
-Microsoft ID プラットフォームと統合するアプリケーションは、データにアクセスする方法をユーザーと管理者が制御できるようにする承認モデルに従います。 このアプリケーションにアクセスするために Microsoft ID プラットフォームで認証されたユーザーは、アプリケーションによって要求されるアクセス許可 ("基本プロファイルの表示" と "自分がアクセス権を付与したデータへのアクセスの管理") に同意するように求められます。 これらのアクセス許可を受け入れると、ユーザーはアプリケーションの結果に進むこととなります。 ただし、次のいずれかの場合は、ユーザーに **[Need admin consent]\(管理者の同意が必要\)** ページが表示され、対応を求められることがあります。
-
-- アプリケーション開発者が、**管理者の同意**を必要とするその他の任意のアクセス許可を追加している。
+- アプリケーション開発者が、**管理者の同意** を必要とするその他の任意のアクセス許可を追加している。
 - または、( **[エンタープライズ アプリケーション] -> [ユーザー設定]** で) テナントが構成されていて、ユーザーが、自分の代わりにアプリが会社のデータにアクセスすることに同意できなくなっている。
 
 詳細については、「[Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意](./v2-permissions-and-consent.md)」を参照してください。
@@ -470,20 +479,11 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 **IssuerValidator** パラメーターを使用して、カスタム メソッドを実装して発行者を検証できます。 このパラメーターの使用方法の詳細については、[TokenValidationParameters](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters) クラスに関するページを参照してください。
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
-Web アプリが Web API を呼び出す方法について学習します。
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>このクイック スタートで使用されているアプリケーションの作成方法を確認する
-
-Microsoft ID プラットフォームで Web API を呼び出す Web アプリについてさらに学習します。
+Microsoft ID プラットフォームで Web アプリから保護された Web API を呼び出す方法について学習します。
 
 > [!div class="nextstepaction"]
 > [Web API を呼び出す Web アプリ](scenario-web-app-sign-user-overview.md)
-
-Microsoft Graph を呼び出す Web アプリを構築する方法について学習します。
-
-> [!div class="nextstepaction"]
-> [Microsoft Graph ASP.NET チュートリアル](/graph/tutorials/aspnet)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

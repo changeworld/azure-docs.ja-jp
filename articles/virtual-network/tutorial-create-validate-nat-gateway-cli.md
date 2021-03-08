@@ -15,28 +15,26 @@ ms.workload: infrastructure-services
 ms.date: 06/11/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7d4467e557105100fc32940c05fa349722689867
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 457749b353b9b7fabfb137ebe907463bb17158ba
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054376"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98926933"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>チュートリアル:Azure CLI を使用した NAT ゲートウェイの作成と、NAT サービスのテスト
 
 このチュートリアルでは、Azure 内の仮想マシンにアウトバウンド接続を提供する NAT ゲートウェイを作成します。 NAT ゲートウェイをテストするために、ソースと宛先の仮想マシンをデプロイします。 パブリック IP アドレスへの送信接続を行って、NAT ゲートウェイをテストします。 それらの接続は、送信元から送信先の仮想マシンに対して確立されます。 このチュートリアルでは、わかりやすくするために、同じリソース グループ内の 2 つの異なる仮想ネットワークにソースと宛先をデプロイしています。
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-このチュートリアルは、Azure Cloud Shell を使用して行うことができます。また、それぞれのコマンドをローカルで実行してもかまいません。  Azure Cloud Shell を使用したことがない場合は、[今すぐサインイン](https://shell.azure.com)してください。
-
-これらのコマンドをローカルで実行する場合は、CLI をインストールする必要があります。  このチュートリアルでは、Azure CLI バージョン 2.0.71 以降のバージョンが実行されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
-
+- この記事では、Azure CLI のバージョン 2.0.71 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](https://docs.microsoft.com/cli/azure/group) を使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[az group create](/cli/azure/group) を使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 次の例では、**myResourceGroupNAT** という名前のリソース グループを **eastus2** という場所に作成します。
 
@@ -51,7 +49,7 @@ ms.locfileid: "88054376"
 
 ### <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
 
-パブリック インターネットにアクセスするには、NAT ゲートウェイに少なくとも 1 つのパブリック IP アドレスが必要です。 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) を使用して、**myResourceGroupNAT** に **myPublicIPsource** というパブリック IP アドレス リソースを作成します。
+パブリック インターネットにアクセスするには、NAT ゲートウェイに少なくとも 1 つのパブリック IP アドレスが必要です。 [az network public-ip create](/cli/azure/network/public-ip) を使用して、**myResourceGroupNAT** に **myPublicIPsource** というパブリック IP アドレス リソースを作成します。
 
 ```azurecli-interactive
   az network public-ip create \
@@ -63,7 +61,7 @@ ms.locfileid: "88054376"
 
 ### <a name="create-a-public-ip-prefix"></a>パブリック IP プレフィックスの作成
 
-NAT ゲートウェイでは、1 つまたは複数のパブリック IP アドレス リソース、パブリック IP プレフィックス、またはその両方を使用できます。 このシナリオでは、デモンストレーションとしてパブリック IP プレフィックス リソースを追加することにします。   [az network public-ip prefix create](/cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-create) を使用して、**myResourceGroupNAT** に **myPublicIPprefixsource** というパブリック IP プレフィックス リソースを作成します。
+NAT ゲートウェイでは、1 つまたは複数のパブリック IP アドレス リソース、パブリック IP プレフィックス、またはその両方を使用できます。 このシナリオでは、デモンストレーションとしてパブリック IP プレフィックス リソースを追加することにします。   [az network public-ip prefix create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create) を使用して、**myResourceGroupNAT** に **myPublicIPprefixsource** というパブリック IP プレフィックス リソースを作成します。
 
 ```azurecli-interactive
   az network public-ip prefix create \
@@ -79,7 +77,7 @@ NAT ゲートウェイでは、1 つまたは複数のパブリック IP アド�
   - NAT ゲートウェイ リソースによって変換される送信フローに使用する、パブリック IP プールとパブリック IP プレフィックス。
   - アイドル タイムアウトを既定値の 4 分から 10 分に変更します。
 
-[az network nat gateway create](https://docs.microsoft.com/cli/azure/network/nat?view=azure-cli-latest) を使用して、**myNATgateway** というグローバル Azure NAT ゲートウェイを作成します。 このコマンドでは、パブリック IP アドレス **myPublicIP** とパブリック IP プレフィックス **myPublicIPprefix** の両方を使用します。 さらに、アイドル タイムアウトを 10 分に変更します。
+[az network nat gateway create](/cli/azure/network/nat) を使用して、**myNATgateway** というグローバル Azure NAT ゲートウェイを作成します。 このコマンドでは、パブリック IP アドレス **myPublicIP** とパブリック IP プレフィックス **myPublicIPprefix** の両方を使用します。 さらに、アイドル タイムアウトを 10 分に変更します。
 
 ```azurecli-interactive
   az network nat gateway create \
@@ -101,7 +99,7 @@ NAT ゲートウェイでは、1 つまたは複数のパブリック IP アド�
 
 VM をデプロイして NAT ゲートウェイをテストする前に、仮想ネットワークを作成しておく必要があります。
 
-[az network Microsoft Azure Virtual Network create](https://docs.microsoft.com/cli/azure/network/vnet) を使用して、**mySubnetsource** というサブネットを持つ **myVnetsource** という仮想ネットワークを **myResourceGroupNAT** に作成します。  この仮想ネットワークの IP アドレス空間は **192.168.0.0/16** です。 この仮想ネットワーク内のサブネットは **192.168.0.0/24** です。
+[az network Microsoft Azure Virtual Network create](/cli/azure/network/vnet) を使用して、**mySubnetsource** というサブネットを持つ **myVnetsource** という仮想ネットワークを **myResourceGroupNAT** に作成します。  この仮想ネットワークの IP アドレス空間は **192.168.0.0/16** です。 この仮想ネットワーク内のサブネットは **192.168.0.0/24** です。
 
 ```azurecli-interactive
   az network vnet create \
@@ -115,7 +113,7 @@ VM をデプロイして NAT ゲートウェイをテストする前に、仮想
 
 ### <a name="configure-nat-service-for-source-subnet"></a>送信元サブネット用の NAT サービスの構成
 
-[az network Microsoft Azure Virtual Network subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet) を使用して、仮想ネットワーク **myVnetsource** 内の送信元サブネット **mySubnetsource** で特定の NAT ゲートウェイ リソース **myNATgateway** が使用されるように構成します。 このコマンドにより、指定したサブネット上で NAT サービスがアクティブになります。
+[az network Microsoft Azure Virtual Network subnet update](/cli/azure/network/vnet/subnet) を使用して、仮想ネットワーク **myVnetsource** 内の送信元サブネット **mySubnetsource** で特定の NAT ゲートウェイ リソース **myNATgateway** が使用されるように構成します。 このコマンドにより、指定したサブネット上で NAT サービスがアクティブになります。
 
 ```azurecli-interactive
     az network vnet subnet update \
@@ -134,7 +132,7 @@ NAT ゲートウェイをテストする前に、送信元 VM を作成する必
 
 ### <a name="create-public-ip-for-source-vm"></a>送信元 VM 用のパブリック IP の作成
 
-送信元 VM へのアクセスに使用するパブリック IP を作成します。 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) を使用して、**myResourceGroupNAT** に **myPublicIPsourceVM** というパブリック IP アドレス リソースを作成します。
+送信元 VM へのアクセスに使用するパブリック IP を作成します。 [az network public-ip create](/cli/azure/network/public-ip) を使用して、**myResourceGroupNAT** に **myPublicIPsourceVM** というパブリック IP アドレス リソースを作成します。
 
 ```azurecli-interactive
   az network public-ip create \
@@ -146,7 +144,7 @@ NAT ゲートウェイをテストする前に、送信元 VM を作成する必
 
 ### <a name="create-an-nsg-for-source-vm"></a>送信元 VM 用の NSG の作成
 
-Standard パブリック IP アドレスは "既定でセキュリティ保護" されているため、SSH のインバウンド アクセスを許可する NSG を作成する必要があります。  Azure NAT サービスでは、フロー方向が認識されます。 同じサブネット上に NAT ゲートウェイが構成された後は、この NSG がアウトバウンドに使用されることはありません。 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) を使用して、**myNSGsource** という NSG リソースを **myResourceGroupNAT** に作成します。
+Standard パブリック IP アドレスは "既定でセキュリティ保護" されているため、SSH のインバウンド アクセスを許可する NSG を作成する必要があります。  Azure NAT サービスでは、フロー方向が認識されます。 同じサブネット上に NAT ゲートウェイが構成された後は、この NSG がアウトバウンドに使用されることはありません。 [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) を使用して、**myNSGsource** という NSG リソースを **myResourceGroupNAT** に作成します。
 
 ```azurecli-interactive
   az network nsg create \
@@ -157,7 +155,7 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
 
 ### <a name="expose-ssh-endpoint-on-source-vm"></a>送信元 VM 上の SSH エンドポイントの公開
 
-送信元 VM に SSH でアクセスするためのルールを NSG に作成します。 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) を使用して、**ssh** という NSG ルールを作成します。 このルールは、リソース グループ **myResourceGroupNAT** 内の **myNSGsource** という NSG に作成されます。
+送信元 VM に SSH でアクセスするためのルールを NSG に作成します。 [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) を使用して、**ssh** という NSG ルールを作成します。 このルールは、リソース グループ **myResourceGroupNAT** 内の **myNSGsource** という NSG に作成されます。
 
 ```azurecli-interactive
   az network nsg rule create \
@@ -213,7 +211,7 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
 
  送信先の仮想マシンを配置することになる仮想ネットワークを作成する必要があります。  そのコマンドの手順は送信元 VM と同じですが、送信先エンドポイントを公開するために少し変更を加えます。
 
-[az network Microsoft Azure Virtual Network create](https://docs.microsoft.com/cli/azure/network/vnet) を使用して、**mySubnetdestination** というサブネットを持つ **myVnetdestination** という仮想ネットワークを **myResourceGroupNAT** に作成します。  この仮想ネットワークの IP アドレス空間は **192.168.0.0/16** です。 この仮想ネットワーク内のサブネットは **192.168.0.0/24** です。
+[az network Microsoft Azure Virtual Network create](/cli/azure/network/vnet) を使用して、**mySubnetdestination** というサブネットを持つ **myVnetdestination** という仮想ネットワークを **myResourceGroupNAT** に作成します。  この仮想ネットワークの IP アドレス空間は **192.168.0.0/16** です。 この仮想ネットワーク内のサブネットは **192.168.0.0/24** です。
 
 ```azurecli-interactive
   az network vnet create \
@@ -227,7 +225,7 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
 
 ### <a name="create-public-ip-for-destination-vm"></a>送信先 VM 用のパブリック IP の作成
 
-送信元 VM へのアクセスに使用するパブリック IP を作成します。 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) を使用して、**myResourceGroupNAT** に **myPublicIPdestinationVM** というパブリック IP アドレス リソースを作成します。 
+送信元 VM へのアクセスに使用するパブリック IP を作成します。 [az network public-ip create](/cli/azure/network/public-ip) を使用して、**myResourceGroupNAT** に **myPublicIPdestinationVM** というパブリック IP アドレス リソースを作成します。 
 
 ```azurecli-interactive
   az network public-ip create \
@@ -239,7 +237,7 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
 
 ### <a name="create-an-nsg-for-destination-vm"></a>送信先 VM 用の NSG の作成
 
-Standard パブリック IP アドレスは "既定でセキュリティ保護" されているため、SSH のインバウンド アクセスを許可する NSG を作成する必要があります。 Azure NAT サービスでは、フロー方向が認識されます。 同じサブネット上に NAT ゲートウェイが構成された後は、この NSG がアウトバウンドに使用されることはありません。 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) を使用して、**myNSGdestination** という NSG リソースを **myResourceGroupNAT** に作成します。
+Standard パブリック IP アドレスは "既定でセキュリティ保護" されているため、SSH のインバウンド アクセスを許可する NSG を作成する必要があります。 Azure NAT サービスでは、フロー方向が認識されます。 同じサブネット上に NAT ゲートウェイが構成された後は、この NSG がアウトバウンドに使用されることはありません。 [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) を使用して、**myNSGdestination** という NSG リソースを **myResourceGroupNAT** に作成します。
 
 ```azurecli-interactive
     az network nsg create \
@@ -250,7 +248,7 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
 
 ### <a name="expose-ssh-endpoint-on-destination-vm"></a>送信先 VM 上の SSH エンドポイントの公開
 
-送信先 VM に SSH でアクセスするためのルールを NSG に作成します。 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) を使用して、**ssh** という NSG ルールを作成します。 このルールは、リソース グループ **myResourceGroupNAT** 内の **myNSGdestination** という NSG に作成されます。
+送信先 VM に SSH でアクセスするためのルールを NSG に作成します。 [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) を使用して、**ssh** という NSG ルールを作成します。 このルールは、リソース グループ **myResourceGroupNAT** 内の **myNSGdestination** という NSG に作成されます。
 
 ```azurecli-interactive
     az network nsg rule create \
@@ -268,7 +266,7 @@ Standard パブリック IP アドレスは "既定でセキュリティ保護" 
 
 ### <a name="expose-http-endpoint-on-destination-vm"></a>送信先 VM 上の HTTP エンドポイントの公開
 
-送信先 VM に HTTP でアクセスするためのルールを NSG に作成します。 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) を使用して、**myResourceGroupNAT** 内の **myNSGdestination** という NSG に **http** という NSG ルールを作成します。
+送信先 VM に HTTP でアクセスするためのルールを NSG に作成します。 [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) を使用して、**myResourceGroupNAT** 内の **myNSGdestination** という NSG に **http** という NSG ルールを作成します。
 
 ```azurecli-interactive
     az network nsg rule create \
@@ -436,4 +434,3 @@ Azure Monitor でメトリックを見て、NAT サービスの稼動状態を�
 - [Azure portal を使用して NAT ゲートウェイ リソース](./quickstart-create-nat-gateway-portal.md)をデプロイするためのクイックスタート。
 
 > [!div class="nextstepaction"]
-

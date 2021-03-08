@@ -3,17 +3,19 @@ title: Azure Cosmos DB でのクロス オリジン リソース共有 (CORS)
 description: この記事では、Azure portal と Azure Resource Manager テンプレートを使用して、Azure Cosmos DB でのクロス オリジン リソース共有 (CORS) を構成する方法について説明します。
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: eb1cbed7b974b6f0015591df01674e40aac2d8c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eba49ff45ba9ab1f5cfaa1d75973d656ac32ca6a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390875"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339901"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>クロスオリジン リソース共有 (CORS) の構成
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 クロス オリジン リソース共有 (CORS) は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 Web ブラウザーでは、Web ページから別のドメインの API を呼び出すことを防ぐために、同一オリジン ポリシーと呼ばれるセキュリティ制限が実装されています。 ただし、CORS を使用すれば、オリジン ドメインから他のドメイン内の API を安全に呼び出すことができます。 Azure Cosmos DB の Core (SQL) API では、"allowedOrigins" ヘッダーを使用してクロス オリジン リソース共有 (CORS) がサポートされるようになりました。 Azure Cosmos アカウントに対して CORS のサポートを有効すると、認証済みの要求だけが指定されたルールに従って評価され、それらが許可されるかどうかが判断されます。
 

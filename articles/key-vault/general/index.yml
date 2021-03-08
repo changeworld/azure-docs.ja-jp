@@ -5,18 +5,19 @@ metadata:
   title: Azure Key Vault のドキュメント
   description: Key Vault を使用して、クラウドのリソース、アプリ、ソリューションにアクセスして暗号化するキーを作成および管理する方法について説明します。 チュートリアルや API リファレンスなどを提供します。
   services: key-vault
+  ms.subservice: general
   ms.service: key-vault
   ms.topic: landing-page
   author: msmbaldwin
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 09/19/2019
-  ms.openlocfilehash: 080cf9d8b7816b28f299396de2fe147fc2f9b27e
-  ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+  ms.openlocfilehash: d1b3d48f89fc979775c0ee71df29e3af0ff5f5fa
+  ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/02/2020
-  ms.locfileid: "89378884"
+  ms.lasthandoff: 01/12/2021
+  ms.locfileid: "98133431"
 landingContent:
 - title: Azure Key Vault について
   linkLists:
@@ -48,10 +49,10 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
+    - text: セキュリティの概要
+      url: security-overview.md
     - text: キー コンテナーをセキュリティで保護する
       url: secure-your-key-vault.md
-    - text: セキュリティに関する推奨事項
-      url: security-recommendations.md
     - text: セキュリティ ベースライン
       url: security-baseline.md
   - linkListType: how-to-guide

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 1454be235c98e5348d1b57028d988252191ad270
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9d4413c47e40a611fb1559b32aac1e32a71d1998
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528048"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515986"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-skysite"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SKYSITE の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88528048"
 * ユーザーが自分の Azure AD アカウントを使用して SKYSITE に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SKYSITE では、**IDP** Initiated SSO がサポートされます
+* SKYSITE では、 **IDP** Initiated SSO がサポートされます
 
-* SKYSITE では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* SKYSITE では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-skysite-from-the-gallery"></a>ギャラリーからの SKYSITE の追加
 
@@ -51,7 +51,7 @@ Azure AD への SKYSITE の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**SKYSITE**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **SKYSITE** 」と入力します。
 1. 結果のパネルから **[SKYSITE]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -88,15 +88,15 @@ SKYSITE に対する Azure AD SSO を構成してテストするには、次の�
 
 1. SKYSITE アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes]\(ユーザー属性\) を示しています。](common/edit-attribute.png)
 
 1. その他に、SKYSITE アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[グループ要求 (プレビュー)]** ダイアログの **[ユーザー属性とクレーム]** セクションで、次の手順を実行します。
 
-    a. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある**ペン**をクリックします。
+    a. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある **ペン** をクリックします。
 
-    ![image](./media/skysite-tutorial/config01.png)
+    ![[新しい要求の追加] オプションが備わっている [ユーザー要求] のスクリーンショット。](./media/skysite-tutorial/config01.png)
 
-    ![image](./media/skysite-tutorial/config02.png)
+    ![スクリーンショットは、説明されている値を入力できる [ユーザー要求の管理] ダイアログ ボックスを示しています。](./media/skysite-tutorial/config02.png)
 
     b. ラジオ ボタンのリストから **[すべてのグループ]** を選択します。
 
@@ -148,11 +148,11 @@ SKYSITE に対する Azure AD SSO を構成してテストするには、次の�
 
 4. ページの右上にある **[Settings]\(設定\)** をクリックし、 **[Account setting]\(アカウント設定\)** に移動します。
 
-    ![構成](./media/skysite-tutorial/config03.png)
+    ![[Settings]\(設定\) の [Account setting]\(アカウント設定\) が選択された画面のスクリーンショット。](./media/skysite-tutorial/config03.png)
 
 5. **[Single sign on (SSO)]\(シングル サインオン (SSO)\)** タブで、次の手順を実行します。
 
-    ![構成](./media/skysite-tutorial/config04.png)
+    ![[Single sign on]\(シングル サインオン\) タブのスクリーンショット。ここで、説明されている値を入力できます。](./media/skysite-tutorial/config04.png)
 
     a. **[Identity Provider sign in URL]\(ID プロバイダー サインイン URL\)** ボックスに、Azure portal の **[プロパティ]** タブからコピーした **[ユーザーのアクセス URL]** の値を貼り付けます。
 
@@ -168,15 +168,14 @@ SKYSITE に対する Azure AD SSO を構成してテストするには、次の�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [SKYSITE] タイルをクリックすると、SSO を設定した SKYSITE に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [SKYSITE] タイルをクリックすると、SSO を設定した SKYSITE に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で SKYSITE を試す](https://aad.portal.azure.com/)
-

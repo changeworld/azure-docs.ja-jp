@@ -3,17 +3,17 @@ title: IoT Central でユーザー設定を管理する | Microsoft Docs
 description: IoT Central アプリケーションで、言語やテーマの変更など、アプリケーションのユーザー設定を管理する方法。
 author: lmasieri
 ms.author: lmasieri
-ms.date: 07/10/2019
+ms.date: 12/23/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: e2b0dbe8b7738a8c4c551eccca72897bbf1594b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83d8c04765bf9aecc9029cdc8d12461231d191f2
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157893"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795957"
 ---
 # <a name="manage-your-personal-application-preferences"></a>アプリケーションのユーザー設定を管理する
 
@@ -23,7 +23,7 @@ IoT Central には、ニーズに合わせてアプリケーションをカス�
 
 ## <a name="changing-language"></a>言語の変更
 
-IoT Central は、複数の言語でサポートされています。 上部のナビゲーション バーの設定アイコンの**言語選択機能**を使用して、目的の言語に切り替えることができます。 言語を変更すると、IoT Central にその選択が記憶され、すべてのアプリケーションに適用されます。 ダッシュボードの画像など、アプリケーション内のカスタマイズはローカライズされません。
+IoT Central は、複数の言語でサポートされています。 上部のナビゲーション バーの設定アイコンの **言語選択機能** を使用して、目的の言語に切り替えることができます。 言語を変更すると、IoT Central にその選択が記憶され、すべてのアプリケーションに適用されます。 ダッシュボードの画像など、アプリケーション内のカスタマイズはローカライズされません。
 
 ## <a name="changing-theme"></a>テーマの変更
 

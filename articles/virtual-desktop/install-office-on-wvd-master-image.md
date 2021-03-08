@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3e53d8bf8f7cb024b468983f596d3d1bd5c91ee7
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b6369013d605ae538ad611a28a90e9c099bb7d80
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007303"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91326050"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>マスター VHD イメージに Office をインストールする
 
@@ -56,7 +56,7 @@ Office 展開ツールには、構成 XML ファイルが必要です。 次の�
 
 Office 展開ツールには、setup.exe が含まれています。 Office をインストールするには、コマンド ラインで次のコマンドを実行します。
 
-```batch
+```cmd
 Setup.exe /configure configuration.xml
 ```
 
@@ -79,7 +79,7 @@ Setup.exe /configure configuration.xml
   <RemoveMSI/>
   <Updates Enabled="FALSE"/>
   <Display Level="None" AcceptEULA="TRUE" />
-  <Logging Level=" Standard" Path="%temp%\WVDOfficeInstall" />
+  <Logging Level="Standard" Path="%temp%\WVDOfficeInstall" />
   <Property Name="FORCEAPPSHUTDOWN" Value="TRUE"/>
   <Property Name="SharedComputerLicensing" Value="1"/>
 </Configuration>
@@ -90,7 +90,7 @@ Setup.exe /configure configuration.xml
 
 Office をインストールした後で、Office の既定の動作を更新できます。 次のコマンドを個別にまたはバッチ ファイルで実行して、動作を更新します。
 
-```batch
+```cmd
 rem Mount the default user registry hive
 reg load HKU\TempDefault C:\Users\Default\NTUSER.DAT
 rem Must be executed with default registry hive mounted.
@@ -121,37 +121,37 @@ OneDrive は、通常はユーザーごとにインストールされます。 �
 
 3. **\<ExcludeApp ID="OneDrive" /\>** を省略することで Office を OneDrive と共にインストールした場合は、次のコマンドを実行して、管理者特権でのコマンド プロンプトから既存のユーザーごとの OneDrive インストールをアンインストールします。
 
-    ```batch
+    ```cmd
     "[staged location]\OneDriveSetup.exe" /uninstall
     ```
 
 4. このコマンドを管理者特権でのコマンド プロンプトから実行して、**AllUsersInstall** レジストリ値を設定します。
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\Software\Microsoft\OneDrive" /v "AllUsersInstall" /t REG_DWORD /d 1 /reg:64
     ```
 
 5. 次のコマンドを実行して OneDrive をマシンごとのモードでインストールします。
 
-    ```batch
+    ```cmd
     Run "[staged location]\OneDriveSetup.exe" /allusers
     ```
 
 6. 次のコマンドを実行して、すべてのユーザーのサインイン時に開始する OneDrive を構成します。
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v OneDrive /t REG_SZ /d "C:\Program Files (x86)\Microsoft OneDrive\OneDrive.exe /background" /f
     ```
 
 7. 次のコマンドを実行して、 **[Silently configure user account]\(ユーザー アカウントをサイレントで構成\)** を有効にします。
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "SilentAccountConfig" /t REG_DWORD /d 1 /f
     ```
 
 8. 次のコマンドを実行して、Windows の既知のフォルダーを OneDrive にリダイレクトおよび移動します。
 
-    ```batch
+    ```cmd
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
     ```
 

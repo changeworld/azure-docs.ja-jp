@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
-ms.openlocfilehash: 8a78ed25be80cbf083467209f764109a26782278
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6a11e3d0cb41383b44b76975ecbd1c2ae2825015
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292786"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89441495"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Azure からオンプレミスへの再保護
 
@@ -46,6 +46,9 @@ ms.locfileid: "87292786"
 
 - 復旧計画を再保護する場合は、すべての保護されたマシンの値を指定する必要があります。
 - VM がマルチ VM 整合性用のレプリケーション グループに属している場合は、復旧計画を使用してのみ再保護できます。 レプリケーション グループ内の VM は、同じマスター ターゲット サーバーを使用する必要があります。
+
+>[!NOTE]
+>再保護中に Azure から以前のソースに送信されるデータの量は、0 バイトから保護されているすべてのマシンのディスク サイズの合計までの間の任意の値になる可能性があり、計算することはできません。
 
 ### <a name="before-you-start"></a>開始する前に
 

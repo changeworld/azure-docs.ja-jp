@@ -4,12 +4,12 @@ description: このクイックスタートでは、Azure Monitor Application In
 ms.topic: quickstart
 ms.date: 08/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 959beeac004c71fb4593740d3c1685771638e40c
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 0a30fb12e93058690fbd7611ae64fc0a7dd96f64
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611332"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583443"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>クイック スタート:Azure Monitor Application Insights を使って Web サイトの監視を開始する
 
@@ -60,7 +60,7 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
 
 ## <a name="configure-application-insights-sdk"></a>Application Insights SDK を構成する
 
-1. **[概要]**  >  **[基本]** の順に選択し、ご自分のアプリケーションの**インストルメンテーション キー**をコピーします。
+1. **[概要]**  >  **[基本]** の順に選択し、ご自分のアプリケーションの **インストルメンテーション キー** をコピーします。
 
    ![新しい Application Insights リソースのフォーム](media/website-monitoring/instrumentation-key-001.png)
 
@@ -114,7 +114,7 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
 
    ![サーバー メトリックのグラフ](./media/website-monitoring/browser-performance.png)
 
-1. Application Insights のメイン メニューの **[使用状況]** ヘッダーにある [ **[ユーザー]** ](./usage-segmentation.md) を選択し、[ユーザー動作分析ツール](./usage-overview.md)の調査を開始します。 1 台のマシンからテストを行っているため、1 人のユーザーのデータのみが表示されます。 ライブの Web サイトの場合、ユーザーの分布はこのようになります。
+1. Application Insights のメイン メニューの **[使用状況]** ヘッダーにある [ **[ユーザー]**](./usage-segmentation.md) を選択し、[ユーザー動作分析ツール](./usage-overview.md)の調査を開始します。 1 台のマシンからテストを行っているため、1 人のユーザーのデータのみが表示されます。 ライブの Web サイトの場合、ユーザーの分布はこのようになります。
 
      ![ユーザーのグラフ](./media/website-monitoring/usage-users.png)
 
@@ -137,5 +137,5 @@ Web サイトを監視するためのより高度な構成については、[Jav
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [パフォーマンスの問題の特定と診断](../log-query/log-query-overview.md)
+> [パフォーマンスの問題の特定と診断](../logs/log-query-overview.md)
 

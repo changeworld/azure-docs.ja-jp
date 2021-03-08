@@ -8,14 +8,14 @@ ms.custom: sqldbrb=2
 author: VanMSFT
 ms.author: vanto
 ms.topic: article
-ms.date: 02/20/2020
+ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: 6630b924decacc5ff59611c657e1d7e38b1813a7
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 1217d3af855e96b6d6a0f403c2ff351a6b957d9a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541721"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459667"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance で一般的なセキュリティ要件を解決するためのプレイブック
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,12 +28,12 @@ ms.locfileid: "87541721"
 
 ### <a name="azure-sql-database-deployment-offers-covered-in-this-guide"></a>このガイドで扱っている Azure SQL Database デプロイのオファー
 
-- [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-single-index): [サーバー](logical-servers.md)内の[単一データベース](single-database-overview.md)と[エラスティック プール](elastic-pool-overview.md)
-- [Azure SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)
+- [Azure SQL Database](./index.yml): [サーバー](logical-servers.md)内の[単一データベース](single-database-overview.md)と[エラスティック プール](elastic-pool-overview.md)
+- [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)
 
 ### <a name="deployment-offers-not-covered-in-this-guide"></a>このガイドで扱っていないデプロイのオファー
 
-- Azure SQL Data Warehouse
+- Azure Synapse Analytics
 - Azure SQL VM (IaaS)
 - SQL Server
 
@@ -60,7 +60,7 @@ ms.locfileid: "87541721"
 - [NIST Special Publication 800-53 セキュリティ制御](https://nvd.nist.gov/800-53):AC-5、AC-6
 - [PCI DSS](https://www.pcisecuritystandards.org/document_library):6.3.2、6.4.2
 
-こちらに記載されている推奨事項とベスト プラクティスは、継続的に更新予定です。 このドキュメントに関してご意見または訂正事項などがございましたら、この記事の下部にある**フィードバック**のリンクを利用してお寄せください。
+こちらに記載されている推奨事項とベスト プラクティスは、継続的に更新予定です。 このドキュメントに関してご意見または訂正事項などがございましたら、この記事の下部にある **フィードバック** のリンクを利用してお寄せください。
 
 ## <a name="authentication"></a>認証
 
@@ -91,7 +91,7 @@ ID の中央管理には、次のような利点があります。
 - グループ割り当てを使用して Azure AD プリンシパルにリソースへのアクセス権を割り当てます。Azure AD グループを作成し、グループにアクセス権を付与し、個々のメンバーをグループに追加します。 データベースに、Azure AD グループをマップする包含データベース ユーザーを作成します。 データベース内のアクセス許可を割り当てるには、適切なアクセス許可があるデータベース ロールを、Azure AD グループに関連付けられているユーザーに付与します。
   - 「[SQL による Azure Active Directory 認証の構成と管理](authentication-aad-configure.md)」と[Azure AD を使用した SQL の認証](authentication-aad-overview.md)に関する記事を参照してください。
   > [!NOTE]
-  > SQL Managed Instance では、マスター データベースの Azure AD プリンシパルにマップされるログインを作成することもできます。 「[CREATE LOGIN (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)」を参照してください。
+  > SQL Managed Instance では、マスター データベースの Azure AD プリンシパルにマップされるログインを作成することもできます。 「[CREATE LOGIN (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)」を参照してください。
 
 - Azure AD グループを使用するとアクセス許可の管理が簡素化され、グループ所有者とリソース所有者の両方が、グループへのメンバーの追加またはグループからのメンバーの削除を行うことができます。
 
@@ -107,16 +107,16 @@ ID の中央管理には、次のような利点があります。
 > [!NOTE]
 >
 > - Azure AD 認証は Azure SQL 監査ログに記録されますが、Azure AD サインイン ログには記録されません。
-> - Azure で付与された RBAC アクセス許可は、Azure SQL Database または SQL Managed Instance のアクセス許可には適用されません。 このようなアクセス許可は、既存の SQL アクセス許可を使用して手動で作成またはマップする必要があります。
+> - Azure で付与された Azure RBAC アクセス許可は、Azure SQL Database または SQL Managed Instance のアクセス許可には適用されません。 このようなアクセス許可は、既存の SQL アクセス許可を使用して手動で作成またはマップする必要があります。
 > - クライアント側では、Azure AD 認証にはインターネットへのアクセス、またはユーザー定義ルート (UDR) 経由の仮想ネットワークへのアクセスが必要です。
 > - Azure AD アクセス トークンはクライアント側にキャッシュされ、その有効期間はトークンの構成によって異なります。 「[Azure Active Directory における構成可能なトークンの有効期間](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)」という記事を参照してください。
 > - Azure AD Authentication の問題のトラブルシューティングのガイダンスについては、次のブログを参照してください。[Azure AD のトラブルシューティング](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991)。
 
-### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+### <a name="azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication
 
 > 次で言及されています: OSA プラクティス #2、ISO アクセス制御 (AC)
 
-Azure Multi-Factor Authentication は、複数の形式の認証を要求することにより、セキュリティを強化するのに役立ちます。
+Azure AD Multi-Factor Authentication では、複数の形式の認証が要求されるので、セキュリティが強化されます。
 
 **実装方法**:
 
@@ -136,15 +136,15 @@ Azure Multi-Factor Authentication は、複数の形式の認証を要求する�
 
 - パスワードが対話形式で要求され、その後に Multi-Factor Authentication 認証が適用される Azure SQL Database と Azure SQL Managed Instance には Azure AD 対話型認証モードを使用します。
   - SSMS でユニバーサル認証を使用します。 [Azure SQL Database、SQL Managed Instance、Azure Synapse で多要素 Azure AD 認証を使用する (Multi-Factor Authentication の SSMS サポート)](authentication-mfa-ssms-overview.md) に関する記事を参照してください。
-  - SQL Server Data Tools (SSDT) でサポートされている対話型認証を使用します。 「[SQL Server Data Tools (SSDT) での Azure Active Directory のサポート](https://docs.microsoft.com/sql/ssdt/azure-active-directory?view=azuresqldb-current)」という記事を参照してください。
+  - SQL Server Data Tools (SSDT) でサポートされている対話型認証を使用します。 「[SQL Server Data Tools (SSDT) での Azure Active Directory のサポート](/sql/ssdt/azure-active-directory?view=azuresqldb-current)」という記事を参照してください。
   - Multi-Factor Authentication をサポートする他の SQL ツールを使用します。
     - データベースをエクスポート/抽出/デプロイするための SSMS ウィザードのサポート  
-    - [sqlpackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage): オプション "/ua"
-    - [sqlcmd ユーティリティ](https://docs.microsoft.com/sql/tools/sqlcmd-utility): オプション -G (対話型)
-    - [bcp ユーティリティ](https://docs.microsoft.com/sql/tools/bcp-utility): オプション -G (対話型)
+    - [sqlpackage.exe](/sql/tools/sqlpackage): オプション "/ua"
+    - [sqlcmd ユーティリティ](/sql/tools/sqlcmd-utility): オプション -G (対話型)
+    - [bcp ユーティリティ](/sql/tools/bcp-utility): オプション -G (対話型)
 
 - Multi-Factor Authentication をサポートする対話型認証を使用して、Azure SQL Database または Azure SQL Managed Instance に接続するアプリケーションを実装します。
-  - 「[Azure Multi-Factor Authentication を使用して Azure SQL Database に接続する](active-directory-interactive-connect-azure-sql-db.md)」という記事を参照してください。
+  - [Azure AD Multi-Factor Authentication を使用した Azure SQL Database への接続](active-directory-interactive-connect-azure-sql-db.md)に関する記事を参照してください。
   > [!NOTE]
   > この認証モードには、ユーザーベースの ID が必要です。 個々の Azure AD ユーザー認証をバイパスする信頼できる ID モデルが使用されている場合 (たとえば、Azure リソースにマネージド ID を使用)、Multi-Factor Authentication は適用されません。
 
@@ -196,7 +196,7 @@ Azure Multi-Factor Authentication は、複数の形式の認証を要求する�
 
 - パスワードやシークレットを回避できない場合は、ユーザー パスワードとアプリケーション シークレットを Azure Key Vault に保存し、Key Vault のアクセス ポリシーを使用してアクセスを管理します。
 
-- アプリ開発フレームワークによっては、アプリ内のシークレットを保護するための、フレームワーク固有のメカニズムが提供されている場合もあります。 次に例を示します。[ASP.NET Core アプリ](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-2.1&tabs=windows)。
+- アプリ開発フレームワークによっては、アプリ内のシークレットを保護するための、フレームワーク固有のメカニズムが提供されている場合もあります。 次に例を示します。[ASP.NET Core アプリ](/aspnet/core/security/app-secrets?tabs=windows&view=aspnetcore-2.1)。
 
 ### <a name="use-sql-authentication-for-legacy-applications"></a>レガシ アプリケーションに対して SQL 認証を使用する
 
@@ -219,24 +219,24 @@ SQL 認証とは、ユーザーがユーザー名とパスワードを使用し�
 
 > 次で言及されています: FedRamp コントロール AC-06、NIST:AC-6、OSA プラクティス #3
 
-最小特権の原則には、ユーザーは自分のタスクを完了するのに必要である以上の特権を持つべきではないと記載されています。 詳細については、「[Just Enough Administration](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview)」という記事を参照してください。
+最小特権の原則には、ユーザーは自分のタスクを完了するのに必要である以上の特権を持つべきではないと記載されています。 詳細については、「[Just Enough Administration](/powershell/scripting/learn/remoting/jea/overview)」という記事を参照してください。
 
 **実装方法**:
 
-必要なタスクを完了するのに必要な[アクセス許可](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)のみを割り当てます。
+必要なタスクを完了するのに必要な[アクセス許可](/sql/relational-databases/security/permissions-database-engine)のみを割り当てます。
 
 - SQL データベースの場合:
   - 粒度の細かいアクセス許可とユーザー定義データベース ロール (Managed Instance ではサーバー ロール) を使用します。
     1. 必要なロールを作成します
-       - [CREATE ROLE](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)
-       - [CREATE SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/create-server-role-transact-sql)
+       - [CREATE ROLE](/sql/t-sql/statements/create-role-transact-sql)
+       - [CREATE SERVER ROLE](/sql/t-sql/statements/create-server-role-transact-sql)
     1. 必要なユーザーを作成します
-       - [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql)
+       - [CREATE USER](/sql/t-sql/statements/create-user-transact-sql)
     1. ユーザーをメンバーとしてロールに追加します
-       - [ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)
-       - [ALTER SERVER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql)
+       - [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql)
+       - [ALTER SERVER ROLE](/sql/t-sql/statements/alter-server-role-transact-sql)
     1. 次に、アクセス許可をロールに割り当てます。
-       - [GRANT](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql)
+       - [GRANT](/sql/t-sql/statements/grant-transact-sql)
   - 不要なロールにユーザーを割り当てないようにしてください。
 
 - Azure Resource Manager の場合:
@@ -271,9 +271,9 @@ SQL 認証とは、ユーザーがユーザー名とパスワードを使用し�
   - オブジェクト (テーブル、ビュー、プロシージャなど)
 
   > [!NOTE]
-  > オブジェクト レベルでアクセス許可を適用することは推奨されません。このレベルでは、不必要な複雑さが実装全体に追加されるからです。 オブジェクト レベルのアクセス許可を使用する場合は、それらを明確に文書化する必要があります。 列レベルのアクセス許可も同様です。それらは、同じ理由により、さらにお勧めできません。 また、既定ではテーブルレベルの[拒否](https://docs.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql)によって列レベルの許可がオーバーライドされないことにも注意してください。 このため、[情報セキュリティ国際評価基準に準拠したサーバー構成](https://docs.microsoft.com/sql/database-engine/configure-windows/common-criteria-compliance-enabled-server-configuration-option)をアクティブにする必要があります。
+  > オブジェクト レベルでアクセス許可を適用することは推奨されません。このレベルでは、不必要な複雑さが実装全体に追加されるからです。 オブジェクト レベルのアクセス許可を使用する場合は、それらを明確に文書化する必要があります。 列レベルのアクセス許可も同様です。それらは、同じ理由により、さらにお勧めできません。 また、既定ではテーブルレベルの[拒否](/sql/t-sql/statements/deny-object-permissions-transact-sql)によって列レベルの許可がオーバーライドされないことにも注意してください。 このため、[情報セキュリティ国際評価基準に準拠したサーバー構成](/sql/database-engine/configure-windows/common-criteria-compliance-enabled-server-configuration-option)をアクティブにする必要があります。
 
-- [脆弱性評価 (VA)](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment) を使用して通常のチェックを実行し、アクセス許可が多すぎるかどうかをテストします。
+- [脆弱性評価 (VA)](/sql/relational-databases/security/sql-vulnerability-assessment) を使用して通常のチェックを実行し、アクセス許可が多すぎるかどうかをテストします。
 
 ### <a name="implement-separation-of-duties"></a>職務の分離を実装する
 
@@ -296,13 +296,13 @@ SQL 認証とは、ユーザーがユーザー名とパスワードを使用し�
   - データベース レベルのタスクに対するデータベース ロールを作成します。
 
 - 特定の機密性の高いタスクについては、ユーザーに代わってタスクを実行するために、証明書によって署名された特殊なストアド プロシージャを作成することを検討してください。 デジタル署名されたストアド プロシージャの重要な利点の 1 つは、プロシージャが変更された場合に、以前のバージョンのプロシージャに与えられたアクセス許可が直ちに削除されることです。
-  - 例:[チュートリアル:証明書を使用したストアド プロシージャへの署名](https://docs.microsoft.com/sql/relational-databases/tutorial-signing-stored-procedures-with-a-certificate)
+  - 例:[チュートリアル:証明書を使用したストアド プロシージャへの署名](/sql/relational-databases/tutorial-signing-stored-procedures-with-a-certificate)
 
 - Azure Key Vault のカスタマー マネージド キーを使用して Transparent Data Encryption (TDE) を実装し、データ所有者とセキュリティ所有者の間での職務の分離を可能にします。
-  - [Azure portal からの Azure Storage 暗号化用カスタマー マネージド キーの構成](../../storage/common/storage-encryption-keys-portal.md)に関する記事を参照してください。
+  - [Azure portal からの Azure Storage 暗号化用カスタマー マネージド キーの構成](../../storage/common/customer-managed-keys-configure-key-vault.md)に関する記事を参照してください。
 
 - 非常に機密性が高いと見なされるデータを DBA が表示できないようにしながらも、DBA のタスクを実行できるようにするには、ロール分離と共に Always Encrypted を使用することができます。
-  - 「[Always Encrypted のキー管理の概要](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted)」、「[役割の分離を指定してキーを与える](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-powershell#KeyProvisionWithRoles)」、および「[役割の分離ありの列マスター キーの交換](https://docs.microsoft.com/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell#column-master-key-rotation-with-role-separation)」の記事を参照してください。
+  - 「[Always Encrypted のキー管理の概要](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted)」、「[役割の分離を指定してキーを与える](/sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-powershell#KeyProvisionWithRoles)」、および「[役割の分離ありの列マスター キーの交換](/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell#column-master-key-rotation-with-role-separation)」の記事を参照してください。
 
 - Always Encrypted の使用が不可能な場合や、少なくとも大きなコストと努力を払わなくては実現できないようなケースでは (それにより、システムがほぼ使用不可になる可能性すらある場合)、次のような補完コントロールの使用により妥協し、侵害を軽減できます。
   - プロセスへの人間の介入。
@@ -320,7 +320,7 @@ SQL 認証とは、ユーザーがユーザー名とパスワードを使用し�
 
 - ロールの割り当ては、T-SQL の SQL エージェント ジョブ ステップ内で、または Azure ロール用の Azure PIM を使用して一時的に行うこともできます。これは、動的な職務の分離 (DSD) とも呼ばれます。
 
-- DBA が暗号化キーやキー ストアにアクセスできないことを確認し、次に、キーにアクセスできるセキュリティ管理者がデータベースにアクセスできないことを確認します。 [拡張キー管理 (EKM)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm) を使用すると、このような分離を簡単に実現できます。 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) を使用して EKM を実装できます。
+- DBA が暗号化キーやキー ストアにアクセスできないことを確認し、次に、キーにアクセスできるセキュリティ管理者がデータベースにアクセスできないことを確認します。 [拡張キー管理 (EKM)](/sql/relational-databases/security/encryption/extensible-key-management-ekm) を使用すると、このような分離を簡単に実現できます。 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) を使用して EKM を実装できます。
 
 - セキュリティに関連した操作については、常に監査証跡を取るようにします。
 
@@ -337,9 +337,9 @@ SoD についてより深く知りたい読者には、次のリソースをお�
 
 - Azure SQL Database と SQL Managed Instance の場合:  
   - [データベース アクセスの制御と許可](logins-create-manage.md)
-  - [アプリケーション開発者のための職務の分離](https://docs.microsoft.com/previous-versions/sql/sql-server-2008/cc974525(v=sql.100))
+  - [アプリケーション開発者のための職務の分離](/previous-versions/sql/sql-server-2008/cc974525(v=sql.100))
   - [職務の分離](https://www.microsoft.com/download/details.aspx?id=39269)
-  - [ストアド プロシージャへの署名](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
+  - [ストアド プロシージャへの署名](/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - Azure Resource Management の場合:
   - [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)
@@ -416,23 +416,23 @@ SoD についてより深く知りたい読者には、次のリソースをお�
 
 **実装方法**:
 
-- [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) を使用して、メモリ内にある場合や使用中であっても、機密データが Azure SQL Database または SQL Managed Instance にプレーンテキストで確実に公開されないようにします。 Always Encrypted により、データベース管理者 (DBA) とクラウド管理者 (または、高い特権を持つが未承認のユーザーを偽装できる悪意のあるアクター) からデータを保護し、データにアクセスできるユーザーをより細かく制御できます。
+- [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) を使用して、メモリ内にある場合や使用中であっても、機密データが Azure SQL Database または SQL Managed Instance にプレーンテキストで確実に公開されないようにします。 Always Encrypted により、データベース管理者 (DBA) とクラウド管理者 (または、高い特権を持つが未承認のユーザーを偽装できる悪意のあるアクター) からデータを保護し、データにアクセスできるユーザーをより細かく制御できます。
 
 **ベスト プラクティス**:
 
 - Always Encrypted は、保存データ (TDE) または転送中のデータ (SSL/TLS) の暗号化の代替ではありません。 パフォーマンスと機能への影響を最小限に抑えるため、機密データ以外のデータには Always Encrypted を使用しないでください。 保存時、転送中、使用中のデータを包括的に保護するには、TDE およびトランスポート層セキュリティ (TLS) と組み合わせて Always Encrypted を使用することをお勧めします。
 
-- Always Encrypted を運用データベースにデプロイする前に、特定された機密データ列の暗号化による影響を評価します。 Always Encrypted では通常、暗号化された列でクエリの機能性が低下します。また、「[Always Encrypted」の「機能の詳細](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine#feature-details)」に記載されているその他の制限事項があります。 そのため場合によっては、クエリでサポートされていない機能をクライアント側に再実装するためにアプリケーションを再設計したり、ストアド プロシージャ、関数、ビュー、トリガーなど、データベース スキーマをリファクターしたりする必要があります。 Always Encrypted の制約と制限に準拠していない既存のアプリケーションでは、暗号化された列を使用できない場合があります。 Always Encrypted がサポートされる Microsoft のツール、製品、サービスのエコシステムは拡大しつつありますが、それらの一部では暗号化された列を使用できません。 ワークロードの特性によっては、列の暗号化がクエリのパフォーマンスに影響を及ぼす場合もあります。
+- Always Encrypted を運用データベースにデプロイする前に、特定された機密データ列の暗号化による影響を評価します。 Always Encrypted では通常、暗号化された列でクエリの機能性が低下します。また、「[Always Encrypted」の「機能の詳細](/sql/relational-databases/security/encryption/always-encrypted-database-engine#feature-details)」に記載されているその他の制限事項があります。 そのため場合によっては、クエリでサポートされていない機能をクライアント側に再実装するためにアプリケーションを再設計したり、ストアド プロシージャ、関数、ビュー、トリガーなど、データベース スキーマをリファクターしたりする必要があります。 Always Encrypted の制約と制限に準拠していない既存のアプリケーションでは、暗号化された列を使用できない場合があります。 Always Encrypted がサポートされる Microsoft のツール、製品、サービスのエコシステムは拡大しつつありますが、それらの一部では暗号化された列を使用できません。 ワークロードの特性によっては、列の暗号化がクエリのパフォーマンスに影響を及ぼす場合もあります。
 
 - Always Encrypted を使用して悪意のある DBA からデータを保護する場合は、役割の分離を使って Always Encrypted キーを管理します。 役割の分離を使用する場合、セキュリティ管理者が物理キーを作成します。 DBA は、データベースに物理キーを記述する列マスター キーと列暗号化キー メタデータ オブジェクトを作成します。 この処理中、セキュリティ管理者はデータベースにアクセスする必要はなく、DBA はプレーンテキストの物理キーにアクセスする必要はありません。
-  - 詳細については、「[役割の分離を使用したキー管理](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted#managing-keys-with-role-separation)」という記事を参照してください。
+  - 詳細については、「[役割の分離を使用したキー管理](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted#managing-keys-with-role-separation)」という記事を参照してください。
 
 - 管理を容易にするために、列マスター キーを Azure Key Vault に格納します。 キー管理を難しくする Windows 証明書ストア (および一般的に、中央キー管理ソリューションとは対照的な分散キー ストア ソリューション) は使用しないようにしてください。
 
 - 複数のキー (列マスター キーまたは列暗号化キー) を使用した場合のトレードオフについて、慎重に検討してください。 キー管理コストを削減するために、キーの数は少なく保つようにしてください。 通常、データベースごとに 1 つの列マスター キーと 1 つの列暗号化キーがあれば、(キー ローテーションの途中でなければ) 安定状態の環境では十分です。 複数のユーザー グループがあり、それぞれ異なるキーを使用し、異なるデータにアクセスする場合は、追加のキーが必要になる場合があります。  
 
 - 列マスター キーは、コンプライアンス要件に従ってローテーションさせます。 列暗号化キーもローテーションする必要がある場合は、アプリケーションのダウンタイムを最小限に抑えるためにオンライン暗号化を使用することを検討してください。
-  - 「[パフォーマンスと可用性に関する考慮事項](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-column-encryption-using-powershell#performance-and-availability-considerations)」という記事を参照してください。
+  - 「[パフォーマンスと可用性に関する考慮事項](/sql/relational-databases/security/encryption/configure-column-encryption-using-powershell#performance-and-availability-considerations)」という記事を参照してください。
 
 - データの計算 (等値) をサポートする必要がある場合は、決定論的な暗号化を使用します。 それ以外の場合は、ランダム化された暗号化を使用します。 低エントロピのデータ セットや、公に知られているディストリビューションがあるデータ セットには、決定論的な暗号化を使用しないようにしてください。
 
@@ -448,7 +448,7 @@ SoD についてより深く知りたい読者には、次のリソースをお�
 
 **実装方法**:
 
-- セル レベルの暗号化 (CLE) を使用します。 詳細については、「[データの列の暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/encrypt-a-column-of-data)」という記事を参照してください。
+- セル レベルの暗号化 (CLE) を使用します。 詳細については、「[データの列の暗号化](/sql/relational-databases/security/encryption/encrypt-a-column-of-data)」という記事を参照してください。
 - Always Encrypted を使用してください。ただし、制限事項には注意してください。 制限事項を次に示します。
 
 **ベスト プラクティス**
@@ -462,7 +462,7 @@ CLE を使用する場合:
 - 3DES の使用を回避するため、非対称キー/証明書 (パスワードではない) を使用して対称キーを保護します。
 
 - エクスポート/インポート (bacpac ファイル) でセル レベルの暗号化を使用してデータベースを移行するときは注意してください。
-  - データ移行時のキーの消失を回避する方法、およびその他のベスト プラクティスのガイダンスについては、「[Azure SQL Database でセルレベルの暗号化を使用するための推奨事項](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)」という記事を参照してください。
+  - データ移行時のキーの消失を回避する方法、およびその他のベスト プラクティスのガイダンスについては、「[Azure SQL Database でセルレベルの暗号化を使用するための推奨事項](/archive/blogs/sqlsecurity/recommendations-for-using-cell-level-encryption-in-azure-sql-database)」という記事を参照してください。
 
 Always Encrypted が、基本的に、使用中の機密データを Azure SQL Database の高い特権を持つユーザー (クラウド オペレーター、DBA) から保護するように設計されていることに留意してください。「[高い特権を持つ承認されていないユーザーから、使用中の機密データを保護する](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users)」を参照してください。 Always Encrypted を使用してアプリケーション ユーザーからデータを保護する場合は、次の課題に注意してください。
 
@@ -474,7 +474,7 @@ Always Encrypted が、基本的に、使用中の機密データを Azure SQL D
 
 **実装方法**:
 
-- テーブルの列を難読化するには、[動的データ マスク](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)を使用します。
+- テーブルの列を難読化するには、[動的データ マスク](/sql/relational-databases/security/dynamic-data-masking)を使用します。
 
 > [!NOTE]
 > Always Encrypted は、動的データ マスクでは機能しません。 同じ列を暗号化してマスクすることはできません。つまり、使用中のデータを保護することと、動的データ マスクによってアプリ ユーザーのデータをマスクすることのどちらを優先するかを決める必要があります。
@@ -485,7 +485,7 @@ Always Encrypted が、基本的に、使用中の機密データを Azure SQL D
 > 動的データ マスクを使用して、高い特権を持つユーザーからデータを保護することはできません。 マスク ポリシーは、db_owner のような管理者アクセス権を持つユーザーには適用されません。
 
 - アプリ ユーザーにアドホック クエリの実行を許可しないでください (動的データ マスクを回避できる可能性があるからです)。  
-  - 詳細については、「[推論またはブルートフォース手法を使用してマスクをバイパスする](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking#security-note-bypassing-masking-using-inference-or-brute-force-techniques)」という記事を参照してください。  
+  - 詳細については、「[推論またはブルートフォース手法を使用してマスクをバイパスする](/sql/relational-databases/security/dynamic-data-masking#security-note-bypassing-masking-using-inference-or-brute-force-techniques)」という記事を参照してください。  
 
 - (SQL アクセス許可、ロール、RLS を介した) 適切なアクセス制御ポリシーを使用して、マスクされた列で更新を行うユーザー アクセス許可を制限します。 列にマスクを作成しても、その列への更新は防止されません。 マスクされた列のクエリを実行するときにマスクされたデータを受け取るユーザーは、書き込みアクセス許可を持っている場合はデータを更新できます。
 
@@ -510,9 +510,9 @@ Always Encrypted が、基本的に、使用中の機密データを Azure SQL D
 
 - アプリが、TLS をサポートしていないドライバーを使用している場合や古いバージョンの TLS をサポートしている場合は、可能であればドライバーを置き換えます。 可能でない場合は、セキュリティ上のリスクを慎重に評価してください。
 
-- [トランスポート層セキュリティ (TLS) レジストリ設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-10)に従って、Azure SQL Database に接続しているクライアント コンピューターで SSL 2.0、SSL 3.0、TLS 1.0、および TLS 1.1 を無効にすることにより、それらの脆弱性による攻撃ベクトルを減らします。
+- [トランスポート層セキュリティ (TLS) レジストリ設定](/windows-server/security/tls/tls-registry-settings#tls-10)に従って、Azure SQL Database に接続しているクライアント コンピューターで SSL 2.0、SSL 3.0、TLS 1.0、および TLS 1.1 を無効にすることにより、それらの脆弱性による攻撃ベクトルを減らします。
 
-- クライアント上で使用できる暗号スイートを確認します。[TLS/SSL (Schannel SSP) の暗号スイート](https://docs.microsoft.com/windows/desktop/SecAuthN/cipher-suites-in-schannel)。 具体的には、[TLS の暗号スイートの順序の構成](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order)に関する記事に従って 3DES を無効にします。
+- クライアント上で使用できる暗号スイートを確認します。[TLS/SSL (Schannel SSP) の暗号スイート](/windows/desktop/SecAuthN/cipher-suites-in-schannel)。 具体的には、[TLS の暗号スイートの順序の構成](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order)に関する記事に従って 3DES を無効にします。
 
 - Azure SQL Database および SQL Managed Instance の場合、暗号化はプロキシとリダイレクトの両方の接続の種類に適用されます。 Azure SQL Managed Instance の場合は、 **[プロキシ]** の接続の種類 (既定) を使用します。これにより、サーバー側から暗号化が実施されます。 **[リダイレクト]** の接続の種類は、現在、暗号化の実施をサポートしておらず、プライベート IP 接続でのみ使用可能です。
 
@@ -555,7 +555,7 @@ SQL Managed Instance の場合:
   - 「[Azure のネットワーク セキュリティのベスト プラクティス](../../security/fundamentals/network-best-practices.md)」に従います。
   - 「[Azure Virtual Network のよく寄せられる質問 (FAQ)](../../virtual-network/virtual-networks-faq.md)」で説明されているベスト プラクティスと計画に従って、Virtual Network の構成を計画します。
   - 仮想ネットワークを複数のサブネットにセグメント化し、同様のロールのリソースを同じサブネット (たとえば、フロントエンドとバックエンドのリソース) に割り当てます。
-  - [ネットワーク セキュリティ グループ (NSG)](../../virtual-network/security-overview.md) を使用して、Azure 仮想ネットワーク境界内のサブネット間のトラフィックを制御します。
+  - [ネットワーク セキュリティ グループ (NSG)](../../virtual-network/network-security-groups-overview.md) を使用して、Azure 仮想ネットワーク境界内のサブネット間のトラフィックを制御します。
   - サブスクリプションで [Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) を有効にして、ネットワークの送受信トラフィックを監視します。
 
 ### <a name="configure-power-bi-for-secure-connections-to-sql-databasesql-managed-instance"></a>SQL Database または SQL Managed Instance へのセキュリティで保護された接続用に Power BI を構成する
@@ -564,11 +564,11 @@ SQL Managed Instance の場合:
 
 - Power BI Desktop の場合、可能な限りプライベート データ パスを使用します。
 
-- [トランスポート層セキュリティ (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) のレジストリ設定に従ってクライアント コンピューターのレジストリ キーを設定して、Power BI Desktop が TLS 1.2 を使用して接続していることを確認します。
+- [トランスポート層セキュリティ (TLS)](/windows-server/security/tls/tls-registry-settings) のレジストリ設定に従ってクライアント コンピューターのレジストリ キーを設定して、Power BI Desktop が TLS 1.2 を使用して接続していることを確認します。
 
-- [Power BI での行レベル セキュリティ (RLS)](https://docs.microsoft.com/power-bi/service-admin-rls) を使用して、特定のユーザーのデータ アクセスを制限します。
+- [Power BI での行レベル セキュリティ (RLS)](/power-bi/service-admin-rls) を使用して、特定のユーザーのデータ アクセスを制限します。
 
-- Power BI サービスについては、[制限事項と考慮事項](https://docs.microsoft.com/power-bi/service-gateway-deployment-guidance#installation-considerations-for-the-on-premises-data-gateway)に留意して、[オンプレミス データ ゲートウェイ](https://docs.microsoft.com/power-bi/service-gateway-onprem)を使用します。
+- Power BI サービスについては、[制限事項と考慮事項](/power-bi/service-gateway-deployment-guidance#installation-considerations-for-the-on-premises-data-gateway)に留意して、[オンプレミス データ ゲートウェイ](/power-bi/service-gateway-onprem)を使用します。
 
 ### <a name="configure-app-service-for-secure-connections-to-sql-databasesql-managed-instance"></a>SQL Database または SQL Managed Instance へのセキュリティで保護された接続用に App Service を構成する
 
@@ -614,7 +614,7 @@ SQL Managed Instance の場合:
 
 DDoS 保護は、Azure プラットフォームの一部として自動的に有効になります。 これには、パブリック エンドポイントでのネットワーク レベル攻撃に対する常時オンのトラフィック監視とリアルタイム軽減策が含まれます。
 
-- [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md) を使用して、仮想ネットワークにデプロイされたリソースに関連付けられているパブリック IP アドレスを監視します。
+- [Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md) を使用して、仮想ネットワークにデプロイされたリソースに関連付けられているパブリック IP アドレスを監視します。
 
 - [SQL Database の Advanced Threat Protection](threat-detection-overview.md) を使用して、データベースに対するサービス拒否 (DoS) 攻撃を検出します。
 
@@ -647,7 +647,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 **ベスト プラクティス**:
 
-- 特定のサーバーまたはマネージド インスタンス用に [Advanced Data Security (ADS)](advanced-data-security.md#getting-started-with-ads)  を構成します。 [Azure Security Center の Standard レベル](../../security-center/security-center-pricing.md)に切り替えて、サブスクリプション内のすべてのサーバーおよびマネージド インスタンス用に ADS を構成することもできます。
+- 特定のサーバーまたはマネージド インスタンス用に [Azure Defender for SQL](azure-defender-for-sql.md)  を構成します。 [Azure Security Center の Standard レベル](../../security-center/security-center-pricing.md)に切り替えて、サブスクリプション内のすべてのサーバーおよびマネージド インスタンス用に Azure Defender for SQL を構成することもできます。
 
 - 完全な調査エクスペリエンスを実現するには、 [SQL Database Auditing](../../azure-sql/database/auditing-overview.md) を有効にすることをお勧めします。 監査を使用すると、データベース イベントを追跡し、Azure Storage アカウントまたは Azure Log Analytics ワークスペースの監査ログに書き込むことができます。
 
@@ -664,7 +664,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 **ベスト プラクティス**:
 
 - イベントを監査するためにサーバーまたは [Managed Instance Auditing](../managed-instance/auditing-configure.md) に [SQL Database 監査](../../azure-sql/database/auditing-overview.md)を構成すると、そのサーバー上の既存および新しく作成されたすべてのデータベースが監査されます。
-- 既定で、監査ポリシーには、データベースに対するすべてのアクション (クエリ、ストアド プロシージャ、成功および失敗したログイン) が含まれます。その結果、大量の監査ログが生成される可能性があります。 [PowerShell を使用してさまざまな種類のアクションとアクション グループの監査を構成する](../../sql-database/sql-database-auditing.md#manage-auditing)ことをお勧めします。 これを構成すると、監査されるアクションの数を制御し、イベント損失のリスクを最小限に抑えることができます。 カスタムの監査構成を使うと、必要な監査データのみをキャプチャできます。
+- 既定で、監査ポリシーには、データベースに対するすべてのアクション (クエリ、ストアド プロシージャ、成功および失敗したログイン) が含まれます。その結果、大量の監査ログが生成される可能性があります。 [PowerShell を使用してさまざまな種類のアクションとアクション グループの監査を構成する](./auditing-overview.md#manage-auditing)ことをお勧めします。 これを構成すると、監査されるアクションの数を制御し、イベント損失のリスクを最小限に抑えることができます。 カスタムの監査構成を使うと、必要な監査データのみをキャプチャできます。
 - 監査ログは、[Azure portal](https://portal.azure.com/) で、または構成されたストレージの場所から直接使用できます。
 
 > [!NOTE]
@@ -673,7 +673,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 **その他のリソース**:
 
 - [SQL データベースの監査](../../azure-sql/database/auditing-overview.md)
-- [SQL Server 監査](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
+- [SQL Server 監査](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
 
 ### <a name="secure-audit-logs"></a>監査ログをセキュリティで保護する
 
@@ -700,7 +700,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 **実装方法**:
 
-- [SQL 脆弱性評価](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment) (VA) を有効にしてデータベースのセキュリティ問題をスキャンし、データベースで定期的に自動実行されるようにします。
+- [SQL 脆弱性評価](/sql/relational-databases/security/sql-vulnerability-assessment) (VA) を有効にしてデータベースのセキュリティ問題をスキャンし、データベースで定期的に自動実行されるようにします。
 
 **ベスト プラクティス**:
 
@@ -714,7 +714,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 **その他のリソース**:
 
-- [SQL 脆弱性評価](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment)
+- [SQL 脆弱性評価](/sql/relational-databases/security/sql-vulnerability-assessment)
 - [SQL 脆弱性評価サービスは、データベースの脆弱性を特定するのに役に立ちます](sql-vulnerability-assessment.md)
 
 ### <a name="identify-and-tag-sensitive-data"></a>機密データを特定してタグを付ける
@@ -726,7 +726,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 - [SQL データの検出と分類](data-discovery-and-classification-overview.md)を使用して、データベース内の機密データを検出、分類、ラベル付け、および保護します。
   - [SQL Data Discovery and Classification]\(SQL データの検出と分類\) ダッシュボードで、自動検出によって作成された分類の推奨事項を確認します。 機密データに分類ラベルが永続的にタグ付けされるように、関連する分類を受け入れます。
   - 自動メカニズムによって検出されなかったその他の機密データ フィールドについては、手動で分類を追加します。
-- 詳しくは、「[SQL データの検出と分類](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification)」をご覧ください。
+- 詳しくは、「[SQL データの検出と分類](/sql/relational-databases/security/sql-data-discovery-and-classification)」をご覧ください。
 
 **ベスト プラクティス**:
 
@@ -791,12 +791,14 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 - Azure には、次のような高可用性が組み込まれています。[SQL Database と SQL Managed Instance を使用した高可用性](high-availability-sla.md)
 
-- Business Critical レベルには、フェールオーバー グループ、複数の可用性ゾーン、完全および差分のログ バックアップ、および既定で有効になっているポイントインタイム リストアのバックアップが含まれます。  
-  - [高可用性 - ゾーン冗長構成](high-availability-sla.md#zone-redundant-configuration)
+- Business Critical サービス レベルには、フェールオーバー グループ、完全および差分のログ バックアップ、および既定で有効になっているポイントインタイム リストアのバックアップが含まれます。  
   - [自動バックアップ](automated-backups-overview.md)
   - [データベースの自動バックアップを使用してデータベースを復旧する - ポイントインタイム リストア](recovery-using-backups.md#point-in-time-restore)
 
-- 次で説明されているように、さまざまな Azure geo 間での自動フェールオーバー グループなど、追加のビジネス継続性機能を構成できます: [ビジネス継続性の概要](business-continuity-high-availability-disaster-recover-hadr-overview.md)
+- さまざまな Azure geo 間でのゾーン冗長構成や自動フェールオーバー グループなど、追加のビジネス継続性機能を構成できます。 
+    - [高可用性 - Premium および Business Critical のサービス レベル向けのゾーン冗長構成](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability)
+    - [高可用性 - General Purpose サービス レベル向けのゾーン冗長構成](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
+    - [ビジネス継続性の概要](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 
 ## <a name="next-steps"></a>次のステップ
 

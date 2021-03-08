@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
-ms.custom: fasttrack-new
-ms.openlocfilehash: 60177dd00dc6326aae4cfdc0b658c85f2635f8c0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: fasttrack-new, devx-track-js
+ms.openlocfilehash: b157200b03bdc89e00bfa5c8264d78baf24875c1
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253696"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609124"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>OAuth 2.0、Azure Active Directory B2C、および Azure API Management を使用して SPA バックエンドを保護する
 
@@ -249,7 +249,7 @@ IP 制限パネルに CIDR 形式のアドレス ブロックを追加する必�
    > これで API Management は JS SPA アプリへのクロス オリジン要求に応答できるようになりました。また、要求を関数 API に転送する前に渡される JWT 認証トークンの調整、レート制限、事前検証が実行されます。
 
    > [!NOTE]
-   > 次のセクションは省略可能であり、開発者ポータルをサポートしない**従量課金**レベルには適用されません。
+   > 次のセクションは省略可能であり、開発者ポータルをサポートしない **従量課金** レベルには適用されません。
    > 開発者ポータルを使用しない場合、または従量課金レベルを使用しているため使用できない場合は、この手順をスキップして、「[API を使用する JavaScript SPA を構築する](#build-the-javascript-spa-to-consume-the-api)」に進んでください。
 
 ## <a name="optional-configure-the-developer-portal"></a>[省略可能] 開発者ポータルを構成する
@@ -396,7 +396,8 @@ IP 制限パネルに CIDR 形式のアドレス ブロックを追加する必�
                     // Make the api call here
                 $.ajax({
                     type: "get",
-                    headers: {'Authorization': 'Bearer ' + token, 'Ocp-Apim-Subscription-Key': applicationConfig.subKey},                   url: applicationConfig.webApi
+                    headers: {'Authorization': 'Bearer ' + token, 'Ocp-Apim-Subscription-Key': applicationConfig.subKey},
+                    url: applicationConfig.webApi
                 }
                 ).done(function (body) {
                     document.getElementById("message").innerHTML = "The API Said " + body;

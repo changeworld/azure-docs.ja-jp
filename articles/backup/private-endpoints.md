@@ -3,12 +3,12 @@ title: プライベート エンドポイント
 description: Azure Backup のプライベート エンドポイントを作成するプロセスと、プライベート エンドポイントを使用することでリソースのセキュリティが維持しやすくなるシナリオについて説明します。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 4f41eee7a84308eb9f4da56f087b2c36e09148f0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 9363aaf45a7c092d8a773a07803c8c1bce1eedd7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890894"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728214"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイント
 
@@ -26,26 +26,30 @@ Azure Backup で[プライベート エンドポイント](../private-link/priva
 - Azure Active Directory では、現在、プライベート エンドポイントがサポートされていません。 したがって、Azure Active Directory がリージョンで機能するために必要な IP と FQDN には、Azure VM でのデータベースのバックアップおよび MARS エージェントを使用したバックアップを実行するときに、セキュリティで保護されたネットワークからの発信アクセスが許可される必要があります。 また、必要に応じて、NSG タグと Azure Firewall タグを使用して、Azure AD へのアクセスを許可することもできます。
 - ネットワーク ポリシーが適用されている仮想ネットワークは、プライベート エンドポイント用にサポートされません。 続行する前に、ネットワーク ポリシーを無効にする必要があります。
 - Recovery Services リソース プロバイダーをサブスクリプションに 2020 年 5 月 1 日より前に登録した場合は、再登録する必要があります。 プロバイダーを再登録するには、Azure portal のサブスクリプションに移動し、左側のナビゲーションバーで **[リソース プロバイダー]** に移動し、 **[Microsoft.RecoveryServices]** を選択し、 **[再登録]** を選択します。
+- コンテナーでプライベート エンドポイントが有効になっている場合、SQL および SAP HANA データベース バックアップの[リージョンをまたがる復元](backup-create-rs-vault.md#set-cross-region-restore)はサポートされていません。
+- 既にプライベート エンドポイントを使用している Recovery Services コンテナーを新しいテナントに移動する場合、Recovery Services コンテナーを更新して、コンテナーのマネージド ID を再作成および再構成し、新しいプライベート エンドポイント (新しいテナント内にあるはずです) を作成する必要があります。 これを実行しないと、バックアップおよび復元操作が失敗するようになります。 また、サブスクリプション内に設定されているすべてのロールベースのアクセス制御 (RBAC) アクセス許可も再構成する必要があります。
 
 ## <a name="recommended-and-supported-scenarios"></a>推奨されるシナリオとサポートされるシナリオ
 
 プライベート エンドポイントは、コンテナーに対して有効になっている間、Azure VM と MARS エージェントのバックアップにおいてのみ、SQL および SAP HANA のワークロードのバックアップと復元に使用されます。 コンテナーは、他のワークロードのバックアップにも使用できます (ただし、プライベート エンドポイントは必要ありません)。 SQL および SAP HANA のワークロードのバックアップと、MARS エージェントを使用したバックアップに加えて、プライベート エンドポイントを使用して Azure VM バックアップ用のファイルの復旧を実行することもできます。 詳細については、後の表を参照してください。
 
-| Azure VM でのワークロードのバックアップ (SQL、SAP HANA)、MARS エージェントを使用したバックアップ | プライベート エンドポイントの使用をお勧めします。これにより、ご自身の仮想ネットワークから、Azure Backup または Azure Storage のために IP と FQDN の許可リストを作成する必要なくバックアップと復元ができます。 |
+| Azure VM でのワークロードのバックアップ (SQL、SAP HANA)、MARS エージェントを使用したバックアップ | プライベート エンドポイントの使用をお勧めします。これにより、ご自身の仮想ネットワークから、Azure Backup または Azure Storage の IP と FQDN を許可リストに追加する必要なくバックアップと復元ができます。 このシナリオでは、SQL データベースをホストする VM から Azure AD の IP または FQDN に接続できることを確認します。 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **Azure VM バックアップ**                                         | VM バックアップでは、どの IP または FQDN へのアクセスも許可する必要はありません。 そのため、ディスクのバックアップと復元のためにプライベート エンドポイントは必要ありません。  <br><br>   ただし、プライベート エンドポイントを含むコンテナーからのファイルの復旧は、コンテナーのプライベート エンドポイントを含む仮想ネットワークに制限されます。 <br><br>    ACL に記載されたアンマネージド ディスクを使用する場合は、ディスクが格納されているストレージ アカウントで、**信頼された Microsoft サービス**へのアクセスが許可されていることを確認してください。 |
+| **Azure VM バックアップ**                                         | VM バックアップでは、どの IP または FQDN へのアクセスも許可する必要はありません。 そのため、ディスクのバックアップと復元のためにプライベート エンドポイントは必要ありません。  <br><br>   ただし、プライベート エンドポイントを含むコンテナーからのファイルの復旧は、コンテナーのプライベート エンドポイントを含む仮想ネットワークに制限されます。 <br><br>    ACL に記載されたアンマネージド ディスクを使用する場合は、ディスクが格納されているストレージ アカウントで、**信頼された Microsoft サービス** へのアクセスが許可されていることを確認してください。 |
 | **Azure Files バックアップ**                                      | Azure Files バックアップは、ローカル ストレージ アカウントに格納されます。 そのため、バックアップと復元にプライベート エンドポイントは必要ありません。 |
 
-## <a name="creating-and-using-private-endpoints-for-backup"></a>Backup のプライベート エンドポイントを作成して使用する
+## <a name="get-started-with-creating-private-endpoints-for-backup"></a>Backup 用のプライベート エンドポイントの作成の概要
 
-このセクションでは、ご自身の仮想ネットワーク内に Azure Backup 用のプライベート エンドポイントを作成して使用する手順を説明します。
+このセクションでは、ご自身の仮想ネットワーク内に Azure Backup 用のプライベート エンドポイントを作成して使用するステップを説明します。
 
 >[!IMPORTANT]
 > このドキュメントに示されているのと同じ順序で手順に従うことを強くお勧めします。 そうしないと、コンテナーにプライベート エンドポイントを使用するための互換性がなくなり、新しいコンテナーを使ってプロセスをやり直すことが必要になる可能性があります。
 
-[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
+## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
-Azure Resource Manager クライアントを使用してコンテナーを作成する方法については、[こちらのセクション](#create-a-recovery-services-vault-using-the-azure-resource-manager-client)を参照してください。 これにより、マネージド ID が既に有効になっているコンテナーが作成されます。 Recovery Services コンテナーの詳細については、[こちら](./backup-azure-recovery-services-vault-overview.md)を参照してください。
+Backup 用のプライベート エンドポイントは、項目が保護されていない (または、以前に保護または登録を試みた項目がない) Recovery Services コンテナーに対してのみ作成できます。 開始するには、新しいコンテナーを作成することをお勧めします。 新しいコンテナーの作成の詳細については、「[Recovery Services コンテナーを作成して構成する](backup-create-rs-vault.md)」を参照してください。
+
+Azure Resource Manager クライアントを使用してコンテナーを作成する方法については、[こちらのセクション](#create-a-recovery-services-vault-using-the-azure-resource-manager-client)を参照してください。 これにより、マネージド ID が既に有効になっているコンテナーが作成されます。
 
 ## <a name="enable-managed-identity-for-your-vault"></a>コンテナーのマネージド ID を有効にする
 
@@ -60,69 +64,7 @@ Azure Resource Manager クライアントを使用してコンテナーを作成
 1. **オブジェクト ID** が生成されます。これがコンテナーのマネージド ID です。
 
     >[!NOTE]
-    >マネージド ID は、いったん有効にしたら (一時的にであっても) 無効に**しないでください**。 マネージド ID を無効にすると、動作に一貫性がなくなる可能性があります。
-
-## <a name="dns-changes"></a>DNS の変更
-
-プライベート エンドポイントを使用するには、Backup の拡張機能でプライベート リンクの FQDN をプライベート IP に解決できるようにするために、プライベート DNS ゾーンが必要です。 全部で 3 つのプライベート DNS ゾーンが必要です。 それらのゾーンのうち 2 つは必須で作成する必要がありますが、3 つ目のゾーンは、プライベート エンドポイントに統合するか (プライベート エンドポイントの作成時に)、別個に作成するかを選択できます。
-
-ご自身のカスタム DNS サーバーを使用することもできます。 カスタム DNS サーバーの使用方法の詳細については、「[カスタム DNS サーバーの DNS の変更](#dns-changes-for-custom-dns-servers)」を参照してください。
-
-### <a name="creating-mandatory-dns-zones"></a>必須 DNS ゾーンの作成
-
-作成する必要がある 2 つの必須 DNS ゾーンがあります。
-
-- `privatelink.blob.core.windows.net` (データのバックアップと復元用)
-- `privatelink.queue.core.windows.net` (サービス通信用)
-
-1. **[すべてのサービス]** 検索バーで "**プライベート DNS ゾーン**" を検索し、ドロップダウン リストから **[プライベート DNS ゾーン]** を選択します。
-
-    ![プライベート DNS ゾーンを選択する](./media/private-endpoints/private-dns-zone.png)
-
-1. **[プライベート DNS ゾーン]** ウィンドウに移動したら、 **[+ 追加]** ボタンを選択して新しいゾーンの作成を開始します。
-
-1. **[プライベート DNS ゾーンの作成]** ウィンドウで、必要な詳細を入力します。 サブスクリプションは、プライベート エンドポイントの作成先と同じである必要があります。
-
-    ゾーンには次の名前を付ける必要があります。
-
-    - `privatelink.blob.core.windows.net`
-    - `privatelink.queue.core.windows.net`
-
-    | **ゾーン**                           | **サービス** | **サブスクリプションとリソース グループ (RG) の詳細**                  |
-    | ---------------------------------- | ----------- | ------------------------------------------------------------ |
-    | `privatelink.blob.core.windows.net`  | BLOB        | **サブスクリプション**:プライベート エンドポイントを作成する必要がある作成先と同じ  **RG**: VNET の RG またはプライベート エンドポイントの RG のいずれか |
-    | `privatelink.queue.core.windows.net` | キュー       | **RG**: VNET の RG またはプライベート エンドポイントの RG のいずれか |
-
-    ![プライベート DNS ゾーンを作成する](./media/private-endpoints/create-private-dns-zone.png)
-
-1. 完了したら、確認と DNS ゾーンの作成に進みます。
-
-### <a name="optional-dns-zone"></a>オプションの DNS ゾーン
-
-サービス通信のために、自分のプライベート エンドポイントを Azure Backup のプライベート DNS ゾーンと統合するという選択ができます (「[Backup のプライベート エンドポイントを作成して使用する](#creating-and-using-private-endpoints-for-backup)」のセクションで説明)。 プライベート DNS ゾーンとの統合を希望しない場合は、ご自身の DNS サーバーを使用するか、プライベート DNS ゾーンを別個に作成するかを選択できます。 これは、前のセクションで説明した 2 つの必須プライベート DNS ゾーンへの追加になります。
-
-Azure で別個のプライベート DNS ゾーンを作成する場合は、必須の DNS ゾーンの作成に使用したのと同じ手順を使用して、同じ操作を行うことができます。 名前とサブスクリプションの詳細を次に示します。
-
-| **ゾーン**                                                     | **サービス** | **サブスクリプションとリソース グループの詳細**                  |
-| ------------------------------------------------------------ | ----------- | ------------------------------------------------------------ |
-| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **注**: ここで *geo* は、リージョン コードを指します。 たとえば、*wcus* と *ne* は、それぞれ米国中西部と北ヨーロッパを表します。 | バックアップ      | **サブスクリプション**:プライベート エンドポイントを作成する必要がある作成先と同じ  **RG**: サブスクリプションに含まれる任意の RG |
-
-リージョン コードについては、[こちらの一覧](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)を参照してください。
-
-各国のリージョンの URL 名前付け規則については:
-
-- [中国](/azure/china/resources-developer-guide#check-endpoints-in-azure)
-- [ドイツ](../germany/germany-developer-guide.md#endpoint-mapping)
-- [US Gov ](../azure-government/documentation-government-developer-guide.md)
-
-### <a name="linking-private-dns-zones-with-your-virtual-network"></a>プライベート DNS ゾーンを仮想ネットワークにリンクする
-
-上記で作成した DNS ゾーンを、バックアップ対象のサーバーが配置されている仮想ネットワークにリンクする必要があります。 これは、作成したすべての DNS ゾーンに対して実行する必要があります。
-
-1. DNS ゾーン (前の手順で作成したもの) に移動し、左側のバーの **[Virtual network links]\(仮想ネットワーク リンク\)** に移動します。 移動したら、 **[+ 追加]** ボタンを選択します
-1. 必須の詳細を入力します。 **[サブスクリプション]** フィールドと **[仮想ネットワーク]** フィールドには、ご自身のサーバーが存在する仮想ネットワークの対応する詳細を入力する必要があります。 その他のフィールドはそのままにしておく必要があります。
-
-    ![仮想ネットワークリンクの追加](./media/private-endpoints/add-virtual-network-link.png)
+    >マネージド ID は、いったん有効にしたら (一時的にであっても) 無効に **しないでください**。 マネージド ID を無効にすると、動作に一貫性がなくなる可能性があります。
 
 ## <a name="grant-permissions-to-the-vault-to-create-required-private-endpoints"></a>必要なプライベート エンドポイントを作成するためのアクセス許可をコンテナーに付与する
 
@@ -130,54 +72,54 @@ Azure Backup に必要なプライベート エンドポイントを作成する
 
 - 対象の VNet が含まれているリソース グループ
 - プライベート エンドポイントが作成されるリソース グループ
-- プライベート DNS ゾーンが含まれているリソース グループ
+- プライベート DNS ゾーンが含まれているリソース グループ (詳細については、[こちら](#create-private-endpoints-for-azure-backup)で説明しています)
 
-これら 3 つのリソース グループの**共同作成者**ロールをコンテナー (マネージド ID) に付与することをお勧めします。 次の手順では、特定のリソース グループに対してこれを実行する方法について説明します (これは、3 つのリソース グループそれぞれに対して実行する必要があります)。
+これら 3 つのリソース グループの **共同作成者** ロールをコンテナー (マネージド ID) に付与することをお勧めします。 次の手順では、特定のリソース グループに対してこれを実行する方法について説明します (これは、3 つのリソース グループそれぞれに対して実行する必要があります)。
 
 1. リソース グループに移動し、左側のバーの **[アクセス制御 (IAM)]** に移動します。
 1. **[アクセス制御]** に移動したら、 **[ロールの割り当てを追加する]** に進みます。
 
     ![ロールの割り当てを追加する](./media/private-endpoints/add-role-assignment.png)
 
-1. **[ロールの割り当ての追加]** ウィンドウで、 **[ロール]** として **[共同作成者]** を選択し、コンテナーの**名前**を **[プリンシパル]** として使用します。 コンテナーを選択し、完了したら **[保存]** を選択します。
+1. **[ロールの割り当ての追加]** ウィンドウで、 **[ロール]** として **[共同作成者]** を選択し、コンテナーの **名前** を **[プリンシパル]** として使用します。 コンテナーを選択し、完了したら **[保存]** を選択します。
 
     ![ロールとプリンシパルの選択](./media/private-endpoints/choose-role-and-principal.png)
 
 より詳細なレベルでアクセス許可を管理するには、「[ロールとアクセス許可を手動で作成する](#create-roles-and-permissions-manually)」を参照してください。
 
-## <a name="creating-and-approving-private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイントを作成して承認する
+## <a name="create-private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイントを作成する
 
-### <a name="creating-private-endpoints-for-backup"></a>Azure Backup のプライベート エンドポイントを作成する
+このセクションでは、コンテナーのプライベート エンドポイントを作成する方法について説明します。
 
-このセクションでは、ご自身のコンテナーのプライベート エンドポイントを作成するプロセスについて説明します。
+1. 上記で作成したコンテナーに移動し、左側のナビゲーション バーの **[プライベート エンドポイント接続]** に移動します。 上部にある **[+ プライベート エンドポイント]** を選択して、このコンテナーの新しいプライベート エンドポイントの作成を開始します。
 
-1. 検索バーで "**プライベート リンク**" を検索して選択します。 これにより、**プライベート リンク センター**に移動します。
-
-    ![プライベート リンクの検索](./media/private-endpoints/search-for-private-link.png)
-
-1. 左側のナビゲーション バーで、 **[プライベート エンドポイント]** を選択します。 **[プライベート エンドポイント]** ウィンドウに移動したら、 **[+ 追加]** を選択して、コンテナーのプライベート エンドポイントの作成を開始します。
-
-    ![プライベート リンク センターでプライベート エンドポイントを追加する](./media/private-endpoints/add-private-endpoint.png)
+    ![新しいプライベート エンドポイントを作成する](./media/private-endpoints/new-private-endpoint.png)
 
 1. **[プライベート エンドポイントの作成]** のプロセスに入ったら、プライベート エンドポイント接続を作成するための詳細を指定する必要があります。
+  
+    1. **[基本]** :プライベート エンドポイントの基本的な詳細を入力します。 リージョンは、バックアップするコンテナーおよびリソースと同じである必要があります。
 
-    1. **[基本]** :プライベート エンドポイントの基本的な詳細を入力します。 リージョンは、コンテナーおよびリソースと同じである必要があります。
+        ![基本的な詳細を入力する](./media/private-endpoints/basics-tab.png)
 
-        ![基本的な詳細を入力する](./media/private-endpoints/basic-details.png)
+    1. **リソース**:このタブでは、接続を作成する対象の PaaS リソースを選択する必要があります。 目的のサブスクリプションのリソースの種類から、 **[Microsoft.RecoveryServices/vaults]** を選択します。 完了したら、 **[リソース]** として Recovery Services コンテナーの名前を選択し、**AzureBackup** を **[対象サブリソース]** としてします。
 
-    1. **リソース**:このタブでは、接続を作成する対象の PaaS リソースについて指定する必要があります。 目的のサブスクリプションのリソースの種類から、 **[Microsoft.RecoveryServices/vaults]** を選択します。 完了したら、 **[リソース]** として Recovery Services コンテナーの名前を選択し、**AzureBackup** を **[対象サブリソース]** としてします。
+        ![接続に使用するリソースを選択する](./media/private-endpoints/resource-tab.png)
 
-        ![[リソース] タブに入力する](./media/private-endpoints/resource-tab.png)
+    1. **構成**:[構成] では、プライベート エンドポイントを作成する仮想ネットワークとサブネットを指定します。 これは、VM が存在する Vnet です。
 
-    1. **構成**:[構成] では、プライベート エンドポイントを作成する仮想ネットワークとサブネットを指定します。 これは、VM が存在する Vnet です。 プライベート DNS ゾーンに**プライベート エンドポイントを統合する**ことを選択できます。 または、カスタム DNS サーバーを使用するか、プライベート DNS ゾーンを作成することもできます。
+        プライベートに接続するには、目的の DNS レコードが必要です。 ネットワークの設定に応じて、以下のいずれかを選択することができます。
 
-        ![[構成] タブに入力する](./media/private-endpoints/configuration-tab.png)
+          - プライベート エンドポイントをプライベート DNS ゾーンを統合する: 統合する場合は、 **[はい]** を選択します。
+          - カスタム DNS サーバーを使用する: ご自分の DNS サーバーを使用する場合は、 **[いいえ]** を選択します。
 
-    1. 必要に応じて、プライベート エンドポイントの**タグ**を追加できます。
+        これらの両方の DNS レコードの管理については、[後で説明します](#manage-dns-records)。
 
+          ![仮想ネットワークとサブネットを指定する](./media/private-endpoints/configuration-tab.png)
+
+    1. 必要に応じて、プライベート エンドポイントの **タグ** を追加できます。
     1. 詳細の入力が完了したら、 **[確認および作成]** に進みます。 検証が完了したら、 **[作成]** を選択してプライベート エンドポイントを作成します。
 
-## <a name="approving-private-endpoints"></a>プライベート エンドポイントを承認する
+## <a name="approve-private-endpoints"></a>プライベート エンドポイントを承認する
 
 プライベート エンドポイントを作成しているユーザーが Recovery Services コンテナーの所有者でもある場合、上記で作成したプライベート エンドポイントは自動承認されます。 それ以外の場合、プライベート エンドポイントが使用できるようになるには、その前にコンテナーの所有者によって承認される必要があります。 このセクションでは、Azure portal を使用してプライベート エンドポイントを手動で承認する方法について説明します。
 
@@ -189,77 +131,171 @@ Azure Resource Manager クライアントを使用してプライベート エ�
 
     ![プライベート エンドポイントを承認する](./media/private-endpoints/approve-private-endpoints.png)
 
-## <a name="adding-dns-records"></a>DNS レコードを追加する
+## <a name="manage-dns-records"></a>DNS レコードの管理
+
+前述のように、プライベートに接続するには、プライベート DNS ゾーンまたはサーバーに目的の DNS レコードが必要です。 プライベート エンドポイントを Azure プライベート DNS ゾーンと直接統合することも、カスタム DNS サーバーを使用してネットワークの設定に基づいてこれを実現することもできます。 これは、次の 3 つのサービスすべてで行う必要があります: Backup、BLOB、キュー。
+
+### <a name="when-integrating-private-endpoints-with-azure-private-dns-zones"></a>プライベート エンドポイントを Azure プライベート DNS ゾーンと統合する場合
+
+プライベート エンドポイントとプライベート DNS ゾーンを統合することを選択した場合は、必要な DNS レコードがバックアップによって追加されます。 使用されているプライベート DNS ゾーンは、プライベート エンドポイントの **[DNS 構成]** で表示できます。 これらの DNS ゾーンが存在しない場合は、プライベート エンドポイントの作成時に自動的に作成されます。 ただし、次に示すように、仮想ネットワーク (バックアップ対象のリソースを含む) が 3 つすべてのプライベート DNS ゾーンと適切にリンクされていることを確認する必要があります。
+
+![Azure プライベート DNS ゾーンの DNS 構成](./media/private-endpoints/dns-configuration.png)
+
+#### <a name="validate-virtual-network-links-in-private-dns-zones"></a>プライベート DNS ゾーン内の仮想ネットワーク リンクを検証する
+
+上記の **それぞれのプライベート DNS** ゾーン (Backup、BLOB、キュー) に対して、次の手順を行います。
+
+1. 左側のナビゲーション バーで、それぞれの **[仮想ネットワーク リンク]** オプションに移動します。
+1. 次に示すように、プライベート エンドポイントを作成した仮想ネットワークのエントリを確認できます。
+
+    ![プライベート エンドポイントの仮想ネットワーク](./media/private-endpoints/virtual-network-links.png)
+
+1. エントリが表示されない場合は、仮想ネットワークのリンクを、それを持っていないすべての DNS ゾーンに追加します。
+
+    ![仮想ネットワークリンクの追加](./media/private-endpoints/add-virtual-network-link.png)
+
+### <a name="when-using-custom-dns-server-or-host-files"></a>カスタム DNS サーバーまたはホスト ファイルを使用する場合
+
+カスタム DNS サーバーを使用している場合は、必要な DNS ゾーンを作成し、プライベート エンドポイントに必要な DNS レコードを DNS サーバーに追加する必要があります。 BLOB とキューの場合は、条件付きフォワーダーを使用することもできます。
+
+#### <a name="for-the-backup-service"></a>Backup サービスの場合
+
+1. DNS サーバーで、次の名前付け規則に従って、Backup 用の DNS ゾーンを作成します。
+
+    |ゾーン |サービス |
+    |---------|---------|
+    |`privatelink.<geo>.backup.windowsazure.com`   |  バックアップ        |
+
+    >[!NOTE]
+    > 上のテキストで、`<geo>` はリージョン コードを示します (たとえば、米国東部と北ヨーロッパはそれぞれ *eus* と *ne*)。 リージョン コードについては、次の一覧を参照してください。
+    >
+    > - [すべてのパブリック クラウド](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)
+    > - [中国](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+    > - [ドイツ](../germany/germany-developer-guide.md#endpoint-mapping)
+    > - [US Gov ](../azure-government/documentation-government-developer-guide.md)
+
+1. 次に、必要な DNS レコードを追加する必要があります。 Backup DNS ゾーンに追加する必要があるレコードを表示するには、上で作成したプライベート エンドポイントに移動し、左側のナビゲーション バーの下にある **[DNS 構成]** オプションに移動します。
+
+    ![カスタム DNS サーバーの DNS 構成](./media/private-endpoints/custom-dns-configuration.png)
+
+1. Backup 用の DNS ゾーンに A タイプのレコードとして表示される FQDN と IP ごとに 1 つのエントリを追加します。 名前解決にホスト ファイルを使用している場合は、次の形式に従って、各 IP および FQDN のホスト ファイルで対応するエントリを作成します。
+
+    `<private ip><space><backup service privatelink FQDN>`
 
 >[!NOTE]
-> 統合された DNS ゾーンを使用している場合、この手順は必要ありません。 ただし、ご自身の Azure プライベート DNS ゾーンを作成した場合、またはカスタム プライベート DNS ゾーンを使用している場合は、このセクションの説明に従って確実に入力してください。
+>上のスクリーンショットに示されているように、FQDN は `xxxxxxxx.<geo>.backup.windowsazure.com` を表します。`xxxxxxxx.privatelink.<geo>.backup. windowsazure.com` ではありません。 このような場合は、記載されている形式に従って、`.privatelink.` を含める (必要な場合には追加する) 必要があります。
 
-オプションのプライベート DNS ゾーンとコンテナーのプライベート エンドポイントを作成したら、DNS ゾーンに DNS レコードを追加する必要があります。 この操作は、手動で行うことも、PowerShell スクリプトを使用して行うこともできます。 これは、Backup の DNS ゾーンのみに対して実行する必要があります。Blob と Queue の DNS ゾーンは自動的に更新されます。
+#### <a name="for-blob-and-queue-services"></a>BLOB および Queue サービスの場合
 
-### <a name="add-records-manually"></a>レコードを手動で追加する
+BLOB とキューの場合は、条件付きフォワーダーを使用するか、DNS サーバーで DNS ゾーンを作成することができます。
 
-これを行うには、ご自身のプライベート エンドポイントの FQDN ごとに、プライベート DNS ゾーンにエントリを作成する必要があります。
+##### <a name="if-using-conditional-forwarders"></a>条件付きフォワーダーを使用している場合
 
-1. ご自身の**プライベート DNS ゾーン**に移動し、左側のバーの **[概要]** オプションに移動します。 移動したら、 **[+ レコード セット]** を選択してレコードの追加を開始します。
+条件付きフォワーダーを使用している場合は、次のように、BLOB とキューの FQDN のフォワーダーを追加します。
 
-    ![[+ レコード セット] を選択してレコードを追加する](./media/private-endpoints/select-record-set.png)
+|FQDN  |IP  |
+|---------|---------|
+|`privatelink.blob.core.windows.net`     |  168.63.129.16       |
+|`privatelink.queue.core.windows.net`     | 168.63.129.16        |
 
-1. 開いた **[レコード セットの追加]** ウィンドウで、FQDN およびプライベート IP ごとに 1 つのエントリを追加し、 **[種類] が A** のレコードとして追加します。 FQDN と IP の一覧は、プライベート エンドポイントから ( **[概要]** で) 取得できます。 次の例に示すように、プライベート エンドポイントの最初の FQDN が、プライベート DNS ゾーンのレコード セットに追加されています。
+##### <a name="if-using-private-dns-zones"></a>プライベート DNS ゾーンを使用している場合
 
-    ![FQDN と IP の一覧](./media/private-endpoints/list-of-fqdn-and-ip.png)
+BLOB とキューに DNS ゾーンを使用している場合は、最初にこれらの DNS ゾーンを作成してから、必要な A レコードを追加する必要があります。
 
-    ![[レコード セットの追加]](./media/private-endpoints/add-record-set.png)
+|ゾーン |サービス  |
+|---------|---------|
+|`privatelink.blob.core.windows.net`     |  BLOB     |
+|`privatelink.queue.core.windows.net`     | キュー        |
 
-### <a name="add-records-using-powershell-script"></a>PowerShell スクリプトを使用してレコードを追加する
+現時点では、カスタム DNS サーバーを使用する場合にのみ、BLOB とキューのゾーンを作成します。 DNS レコードの追加は、次の 2 つのステップで、後から行います。
 
-1. Azure portal で **Cloud Shell** を開始し、PowerShell ウィンドウで **[ファイルのアップロード]** を選択します。
+1. 最初のバックアップ インスタンスを登録するとき、つまり、初めてバックアップを構成するとき
+1. 最初のバックアップを実行するとき
 
-    ![PowerShell ウィンドウで [ファイルのアップロード] を選択する](./media/private-endpoints/upload-file-in-powershell.png)
+これらのステップは、以下のセクションで実行します。
 
-1. このスクリプトを実行します。[DnsZoneCreation](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/dnszonerecordcreation.ps1)
-
-1. ホーム フォルダー (例: `cd /home/user`) に移動します。
-
-1. 次のスクリプトを実行します。
-
-    ```azurepowershell
-    ./dnszonerecordcreation.ps1 -Subscription <SubscriptionId> -VaultPEName <VaultPE Name> -VaultPEResourceGroup <Vault PE RG> -DNSResourceGroup <Private DNS RG> -Privatezone <privatednszone>
-    ```
-
-    パラメーターは次のとおりです。
-
-    - **[サブスクリプション]** : リソース (コンテナーのプライベート エンドポイントとプライベート DNS ゾーン) が存在するサブスクリプション
-    - **vaultPEName**: コンテナー用に作成したプライベート エンドポイントの名前
-    - **vaultPEResourceGroup**: コンテナーのプライベート エンドポイントが含まれるリソース グループ
-    - **dnsResourceGroup**: プライベート DNS ゾーンが含まれるリソース グループ
-    - **Privatezone**: プライベート DNS ゾーンの名前
-
-## <a name="using-private-endpoints-for-backup"></a>Backup のプライベート エンドポイントを使用する
+## <a name="use-private-endpoints-for-backup"></a>Backup 用のプライベート エンドポイントを使用する
 
 ご自身の VNet 内のコンテナー用に作成したプライベート エンドポイントが承認されたら、バックアップと復元を実行するためにそれらの使用を開始できます。
 
 >[!IMPORTANT]
->続行する前に、ドキュメントに記載された前述のすべての手順を完了していることを確認してください。 まとめると、次のチェックリストの手順を完了している必要があります。
+>続行する前に、ドキュメントに記載された前述のすべての手順を確実に完了してください。 まとめると、次のチェックリストの手順を完了している必要があります。
 >
 >1. (新しい) Recovery Services コンテナーを作成しました
->1. システム割り当てマネージド ID をコンテナーで使用できるようにしました
->1. 3 つのプライベート DNS ゾーン (統合された DNS ゾーンを Backup に使用する場合は 2 つ) を作成しました
->1. プライベート DNS ゾーンをプライベート クラウドに接続しました
->1. コンテナーのマネージド ID に、関連するアクセス許可を割り当てました
->1. コンテナーのプライベート エンドポイントを作成しました
->1. プライベート エンドポイントを承認しました (自動承認されない場合)
->1. Backup のプライベート DNS ゾーンに必要な DNS レコードを追加しました (統合されたプライベート DNS ゾーンを使用していない場合にのみ適用されます)
+>2. システム割り当てマネージド ID をコンテナーで使用できるようにしました
+>3. コンテナーのマネージド ID に、関連するアクセス許可を割り当てました
+>4. コンテナーのプライベート エンドポイントを作成しました
+>5. プライベート エンドポイントを承認しました (自動承認されない場合)
+>6. すべての DNS レコードが適切に追加されていることを確認します (以下のセクションで説明するカスタム サーバーの BLOB とキューのレコードは除く)
 
-### <a name="backup-and-restore-of-workloads-in-azure-vm-sql-sap-hana"></a>Azure VM でのワークロードのバックアップと復元 (SQL、SAP HANA)
+### <a name="check-vm-connectivity"></a>VM の接続を確認する
 
-プライベート エンドポイントが作成され、承認されれば、クライアント側でプライベート エンドポイントを使用するために追加の変更は必要ありません。 セキュリティで保護されたネットワークからコンテナーへのすべての通信とデータ転送は、プライベート エンドポイントを介して実行されます。
-ただし、サーバー (SQL または SAP HANA) がボールトに登録された後にボールトのプライベート エンドポイントを削除した場合は、コンテナーをボールトに再登録する必要があります。 それらに対する保護を停止する必要はありません。
+ロックダウンされたネットワーク内の VM で、次のことを確認します。
+
+1. VM が AAD にアクセスできる。
+2. VM からバックアップ URL (`xxxxxxxx.privatelink.<geo>.backup. windowsazure.com`) で **nslookup** を実行して、接続を確保する。 これにより、仮想ネットワークに割り当てられたプライベート IP が返されます。
+
+### <a name="configure-backup"></a>バックアップの構成
+
+上記のチェックリストを確認し、アクセスが正常に完了したら、コンテナーへのワークロードのバックアップを引き続き構成できます。 カスタム DNS サーバーを使用している場合は、最初のバックアップを構成した後で使用可能な BLOB およびキューの DNS エントリを追加する必要があります。
+
+#### <a name="dns-records-for-blobs-and-queues-only-for-custom-dns-servershost-files-after-the-first-registration"></a>最初の登録後の BLOB とキューの DNS レコード (カスタム DNS サーバーとホスト ファイルの場合のみ)
+
+プライベート エンドポイントが有効になっているコンテナーに少なくとも 1 つのリソースのバックアップを構成した後、次に示すように、BLOB とキューに必要な DNS レコードを追加します。
+
+1. リソース グループに移動し、作成したプライベート エンドポイントを検索します。
+1. 自分が指定したプライベート エンドポイント名以外に、2 つのプライベート エンドポイントが作成されていることがわかります。 これらは、`<the name of the private endpoint>_ecs` で始まり、それぞれに `_blob` と `_queue` のサフィックスが付けられています。
+
+    ![プライベート エンドポイントのリソース](./media/private-endpoints/private-endpoint-resources.png)
+
+1. これらのプライベート エンドポイントに移動します。 2 つのプライベート エンドポイントそれぞれの DNS 構成オプションで、FQDN および IP アドレスを持つレコードが表示されます。 前に説明したものに加えて、これらの両方をカスタム DNS サーバーに追加します。
+ホスト ファイルを使用している場合は、次の形式に従って、各 IP および FQDN のホスト ファイルで対応するエントリを作成します。
+
+    `<private ip><space><blob service privatelink FQDN>`<br>
+    `<private ip><space><queue service privatelink FQDN>`
+
+    ![BLOB の DNS 構成](./media/private-endpoints/blob-dns-configuration.png)
+
+上記に加えて、最初のバックアップの後に必要なもう 1 つのエントリがあります。これについては[後で](#dns-records-for-blobs-only-for-custom-dns-servershost-files-after-the-first-backup)説明します。
+
+### <a name="backup-and-restore-of-workloads-in-azure-vm-sql-and-sap-hana"></a>Azure VM でのワークロードのバックアップと復元 (SQL と SAP HANA)
+
+プライベート エンドポイントが作成され、承認されたら、クライアント側でプライベート エンドポイントを使用するために必要な変更はありません (SQL 可用性グループを使用している場合については、このセクションの後半で説明します)。 セキュリティで保護されたネットワークからコンテナーへのすべての通信とデータ転送は、プライベート エンドポイントを介して実行されます。 ただし、サーバー (SQL または SAP HANA) がボールトに登録された後にそのプライベート エンドポイントを削除した場合は、コンテナーをボールトに再登録する必要があります。 それらに対する保護を停止する必要はありません。
+
+#### <a name="dns-records-for-blobs-only-for-custom-dns-servershost-files-after-the-first-backup"></a>最初のバックアップ後の BLOB の DNS レコード (カスタム DNS サーバーとホスト ファイルの場合のみ)
+
+最初のバックアップを実行した後に (条件付きの転送を行わずに) カスタム DNS サーバーを使用していると、バックアップが失敗するおそれがあります。 その場合は、以下の手順を行ってください。
+
+1. リソース グループに移動し、作成したプライベート エンドポイントを検索します。
+1. 前に説明した 3 つのプライベート エンドポイントとは別に、`<the name of the private endpoint>_prot` から始まる名前で、`_blob` のサフィックスが付いている、4 番目のプライベート エンドポイントが表示されます。
+
+    ![サフィックス "prot" を持つプライベート エンドポイント](./media/private-endpoints/private-endpoint-prot.png)
+
+1. この新しいプライベート エンドポイントに移動します。 DNS 構成オプションには、FQDN と IP アドレスを含むレコードが表示されます。 前に説明したものに加えて、これらをプライベート DNS サーバーに追加します。
+
+    ホスト ファイルを使用している場合は、次の形式に従って、各 IP および FQDN のホスト ファイルで対応するエントリを作成します。
+
+    `<private ip><space><blob service privatelink FQDN>`
+
+>[!NOTE]
+>この時点で、VM から **nslookup** を実行して、コンテナーのバックアップとストレージの URL で実行したときにプライベート IP アドレスに解決できるようになります。
+
+### <a name="when-using-sql-availability-groups"></a>SQL 可用性グループを使用する場合
+
+SQL 可用性グループ (AG) を使用する場合は、次に示すように、カスタム AG DNS で条件付き転送をプロビジョニングする必要があります。
+
+1. ドメイン コントローラーにサインインします。
+1. DNS アプリケーションの下で、必要に応じて、3 つすべての DNS ゾーン (Backup、BLOB、キュー) の条件付きフォワーダーをホスト IP 168.63.129.16 またはカスタム DNS サーバーの IP アドレスに追加します。 次のスクリーンショットは、Azure ホスト IP に転送する場合を示しています。 独自の DNS サーバーを使用している場合は、お使いの DNS サーバーの IP に置き換えます。
+
+    ![DNS マネージャーの条件付きフォワーダー](./media/private-endpoints/dns-manager.png)
+
+    ![新しい条件付きフォワーダー](./media/private-endpoints/new-conditional-forwarder.png)
 
 ### <a name="backup-and-restore-through-mars-agent"></a>MARS エージェントを使用したバックアップと復元
 
-MARS エージェントを使用してオンプレミスのリソースをバックアップする場合は、オンプレミスのネットワーク (バックアップ対象のリソースが含まれている) が Azure VNet (コンテナーのプライベート エンドポイントが含まれている) と確実にピアリングされているようにしてください。これにより、コンテナーを使用できるようになります。 その後、MARS エージェントをインストールして、ここで詳しく説明しているように、バックアップを構成できます。 ただし、バックアップのためのすべての通信が、ピアリングされたネットワークのみを介して行われるようにする必要があります。
+MARS エージェントを使用してオンプレミスのリソースをバックアップする場合は、オンプレミスのネットワーク (バックアップ対象のリソースが含まれている) が Azure VNet (コンテナーのプライベート エンドポイントが含まれている) と確実にピアリングされているようにしてください。これにより、コンテナーを使用できるようになります。 その後、MARS エージェントをインストールして、ここで詳しく説明しているように、バックアップを構成できます。 ただし、バックアップ用のすべての通信が、ピアリングされたネットワークのみを介して行われるようにする必要があります。
 
-ただし、MARS エージェントがボールトに登録された後にボールトのプライベート エンドポイントを削除した場合は、コンテナーをボールトに再登録する必要があります。 それらに対する保護を停止する必要はありません。
+MARS エージェントの登録後にそのボールト用のプライベート エンドポイントを削除した場合は、コンテナーをボールトに再登録する必要があります。 それらに対する保護を停止する必要はありません。
 
 ## <a name="additional-topics"></a>関連トピック
 
@@ -444,7 +480,11 @@ $privateEndpointConnection = New-AzPrivateLinkServiceConnection `
         -Name $privateEndpointConnectionName `
         -PrivateLinkServiceId $vault.ID `
         -GroupId "AzureBackup"  
-  
+
+$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $VMResourceGroupName
+$subnet = $vnet | Select -ExpandProperty subnets | Where-Object {$_.Name -eq '<subnetName>'}
+
+
 $privateEndpoint = New-AzPrivateEndpoint `
         -ResourceGroupName $vmResourceGroupName `
         -Name $privateEndpointName `
@@ -488,60 +528,6 @@ $privateEndpoint = New-AzPrivateEndpoint `
     }
     }
     ```
-
-### <a name="dns-changes-for-custom-dns-servers"></a>カスタム DNS サーバーの DNS の変更
-
-#### <a name="create-dns-zones-for-custom-dns-servers"></a>カスタム DNS サーバーの DNS ゾーンを作成する
-
-3 つのプライベート DNS ゾーンを作成し、それらをご自身の仮想ネットワークにリンクする必要があります。
-
-| **ゾーン**                                                     | **サービス** |
-| ------------------------------------------------------------ | ----------- |
-| `privatelink.<geo>.backup.windowsazure.com`      | バックアップ      |
-| `privatelink.blob.core.windows.net`                            | BLOB        |
-| `privatelink.queue.core.windows.net`                           | キュー       |
-
->[!NOTE]
->上のテキストでは、*geo* はリージョン コードを指します。 たとえば、*wcus* と *ne* は、それぞれ米国中西部と北ヨーロッパを表します。
-
-リージョン コードについては、[こちらの一覧](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)を参照してください。
-
-#### <a name="adding-dns-records-for-custom-dns-servers"></a>カスタム DNS サーバーの DNS レコードを追加する
-
-これを行うには、ご自身のプライベート エンドポイントの FQDN ごとに、プライベート DNS ゾーンにエントリを作成する必要があります。
-
-Backup、Blob、Queue の各サービス用に作成されたプライベート エンドポイントを使用することに注意してください。
-
-- コンテナーのプライベート エンドポイントには、プライベート エンドポイントの作成時に指定した名前が使用されます。
-- Blob service と Queue サービスのプライベート エンドポイントには、コンテナーの名前がプレフィックスとして付けられます。
-
-たとえば、次の図は *pee2epe* という名前のプライベート エンドポイント接続用に作成された、3 つのプライベート エンドポイントを示しています。
-
-![プライベート エンドポイント接続用の 3 つのプライベート エンドポイント](./media/private-endpoints/three-private-endpoints.png)
-
-Backup サービスの DNS ゾーン (`privatelink.<geo>.backup.windowsazure.com`):
-
-1. **プライベート リンク センター**で、Backup のプライベート エンドポイントに移動します。 [概要] ページには、プライベート エンドポイントの FQDN とプライベート IP が一覧表示されます。
-
-1. FQDN およびプライベート IP ごとに 1 つのエントリを種類が A のレコードとして追加します。
-
-    ![FQDN とプライベート IP ごとにエントリを追加する](./media/private-endpoints/add-entry-for-each-fqdn-and-ip.png)
-
-Blob service の DNS ゾーン (`privatelink.blob.core.windows.net`):
-
-1. **プライベート リンク センター**で、Blob のプライベート エンドポイントに移動します。 [概要] ページには、プライベート エンドポイントの FQDN とプライベート IP が一覧表示されます。
-
-1. FQDN およびプライベート IP に対して 1 つのエントリを種類が A のレコードとして追加します。
-
-    ![Blob service 用に FQDN およびプライベート IP のエントリを種類 A のレコードとして追加する](./media/private-endpoints/add-type-a-record-for-blob.png)
-
-Queue サービスの DNS ゾーン (`privatelink.queue.core.windows.net`):
-
-1. **プライベート リンク センター**で、Queue のプライベート エンドポイントに移動します。 [概要] ページには、プライベート エンドポイントの FQDN とプライベート IP が一覧表示されます。
-
-1. FQDN およびプライベート IP に対して 1 つのエントリを種類が A のレコードとして追加します。
-
-    ![Queue サービス用に FQDN およびプライベート IP のエントリを種類 A のレコードとして追加する](./media/private-endpoints/add-type-a-record-for-queue.png)
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

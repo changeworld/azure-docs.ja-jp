@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 56a865de8cb1be079f4935ef2a8f840f10589b26
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 13ae960f5d259314f00f8f09b2999a36c0919bc5
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550012"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353716"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>チュートリアル:Harness を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -33,11 +33,11 @@ ms.locfileid: "88550012"
 
 * Azure AD テナント
 * [Harness テナント](https://harness.io/pricing/)
-* *管理者*アクセス許可がある Harness のユーザー アカウント
+* *管理者* アクセス許可がある Harness のユーザー アカウント
 
 ## <a name="assign-users-to-harness"></a>ユーザーを Harness に割り当てる
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーまたはグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーまたはグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Harness にアクセスする必要がある Azure AD のユーザーまたはグループを決定しておく必要があります。 その後、「[エンタープライズ アプリにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)」の手順に従って、これらのユーザーまたはグループを Harness に割り当てることができます。
 
@@ -70,7 +70,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
    
 1. **[Submit]\(送信\)** をクリックします。
 
-1. このチュートリアルで後から使用するので、**キー**をコピーしておきます。
+1. このチュートリアルで後から使用するので、 **キー** をコピーしておきます。
 
     ![Harness でのトークンの作成](media/harness-provisioning-tutorial/token.png)
 
@@ -90,7 +90,7 @@ Azure AD での自動ユーザー プロビジョニング用に Harness を構�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-1. 検索ボックスに「**Harness**」と入力し、結果一覧から **[Harness]** を選択してから、 **[追加]** ボタンを選択してアプリケーションを追加します。
+1. 検索ボックスに「 **Harness** 」と入力し、結果一覧から **[Harness]** を選択してから、 **[追加]** ボタンを選択してアプリケーションを追加します。
 
     ![結果一覧の Harness](common/search-new-app.png)
 
@@ -99,7 +99,7 @@ Azure AD での自動ユーザー プロビジョニング用に Harness を構�
 このセクションでは、Azure AD でのユーザーやグループの割り当てに基づいて Harness のユーザーやグループを作成、更新、無効化するように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!TIP]
-> Harness では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Harness シングル サインオンのチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)の手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> Harness では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Harness シングル サインオンのチュートリアル](./harness-tutorial.md)の手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 > [!NOTE]
 > Harness の SCIM エンドポイントの詳細については、Harness の [API キー](https://docs.harness.io/article/smloyragsm-api-keys)の記事ご覧ください。
@@ -126,9 +126,9 @@ Azure AD で Harness の自動ユーザー プロビジョニングを構成す�
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
  
-   a. **[テナント URL]** ボックスに、「 **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** 」と入力します。  
+   a. **[テナント URL]** ボックスに、「 **`https://app.harness.io/gateway/api/scim/account/<your_harness_account_ID>`** 」と入力します。 Harness にログインしているとき、お使いのブラウザーで URL から Harness アカウント ID を取得できます。
    b. **[シークレット トークン]** ボックスに、「プロビジョニングのためのハーネスの設定」セクションの手順 6 で保存した SCIM 認証トークンの値を入力します。  
-   c. Azure AD から Harness に接続できることを確認するために、 **[テスト接続]** を選択します。 接続できない場合は、使用中の Harness アカウントに "*管理者*" アクセス許可があることを確認してから、もう一度試します。
+   c. Azure AD から Harness に接続できることを確認するために、 **[テスト接続]** を選択します。 接続できない場合は、使用中の Harness アカウントに " *管理者* " アクセス許可があることを確認してから、もう一度試します。
 
 1. **[通知用メール]** ボックスに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力し、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
@@ -170,7 +170,7 @@ Azure AD で Harness の自動ユーザー プロビジョニングを構成す�
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="additional-resources"></a>その他の技術情報
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)

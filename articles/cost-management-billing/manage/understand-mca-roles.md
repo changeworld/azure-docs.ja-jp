@@ -5,14 +5,14 @@ author: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 02/05/2021
 ms.author: banders
-ms.openlocfilehash: f0ace05d6a4df65282bd56cca8e7895b0dc24edf
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 00ac61567502984759c5db9837060c86aaee378d
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686549"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593588"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Azure での Microsoft 顧客契約の管理ロールを理解する
 
@@ -32,7 +32,7 @@ Microsoft 顧客契約の請求先アカウントを管理するには、以下�
 |課金プロファイル所有者|課金プロファイルに関するすべてを管理します|
 |課金プロファイル共同作成者|課金プロファイルのアクセス許可以外のすべてを管理します|
 |課金プロファイル閲覧者|課金プロファイルに関するすべての読み取り専用ビュー|
-|請求書マネージャー|課金プロファイルの請求書を表示および支払います|
+|請求書マネージャー|課金プロファイルの請求書を表示します|
 |請求書セクション所有者|請求書セクションのすべてを管理します|
 |請求書セクション共同作成者|請求書セクションのアクセス許可以外のすべてを管理します|
 |請求書セクション閲覧者|請求書セクションに関するすべての読み取り専用ビュー|
@@ -100,6 +100,8 @@ Microsoft 顧客契約の請求先アカウントを管理するには、以下�
 |課金プロファイル プロパティを更新する |✔|✔|✘|✘|✘|✘|✘|
 |Azure の予約の購入を有効にする、Azure Marketplace での購入を有効にするなど、課金プロファイルで適用されるポリシーを表示する|✔|✔|✔|✔|✔|✔|✔|
 |課金プロファイルにポリシーを適用する |✔|✔|✘|✘|✘|✘|✘|
+|予約注文を管理する |✔|✔|✘|✘|✘|✘|✘|
+|予約注文を表示する |✔|✔|✔|✘|✘|✘|✘|
 
 ### <a name="manage-invoices-for-billing-profile"></a>課金プロファイルの請求書を管理する
 

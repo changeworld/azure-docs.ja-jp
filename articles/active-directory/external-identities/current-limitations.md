@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 127f05298483dcf155000c2eda8f590fc069a1e9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e4f960819aa208dcc8d3e476fc45a766452b612c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907736"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168952"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションの制限
 現在、Azure Active Directory (Azure AD) B2B コラボレーションには、この記事に記載されている制限が適用されます。
@@ -28,13 +28,13 @@ Azure AD B2B を使用すると、多要素認証をリソース組織 (招待�
 B2B コラボレーションのフローでは、ユーザーをディレクトリに追加し、招待の使用、アプリ割り当てなどの際に動的に更新します。 更新と書き込みは、通常、1 つのディレクトリ インスタンスで行い、すべてのインスタンス間でレプリケートする必要があります。 すべてのインスタンスが更新されると、レプリケーションが完了します。 いずれかのインスタンスでオブジェクトの書き込みまたは更新が行われ、そのオブジェクトを取得する呼び出しが別のインスタンスに対して行われた場合は、レプリケーションの遅延が発生する可能性があります。 その場合は、更新または再試行が役立つことがあります。 API を使用してアプリを記述する場合は、バックオフの再試行がこの問題を軽減するための推奨される防御的な方法です。
 
 ## <a name="azure-ad-directories"></a>Azure AD ディレクトリ
-Azure AD B2B は、Azure AD サービス ディレクトリの制限に従います。 ユーザーが作成できるディレクトリ数と、ユーザーまたはゲスト ユーザーが所属できるディレクトリ数の詳細については、「[Azure AD サービスの制限と制約](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)」を参照してください。
+Azure AD B2B は、Azure AD サービス ディレクトリの制限に従います。 ユーザーが作成できるディレクトリ数と、ユーザーまたはゲスト ユーザーが所属できるディレクトリ数の詳細については、「[Azure AD サービスの制限と制約](../enterprise-users/directory-service-limits-restrictions.md)」を参照してください。
 
 ## <a name="national-clouds"></a>各国のクラウド
-[国内クラウド](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) は、物理的に分離された Azure のインスタンスです。 国内クラウドの境界を越えた B2B Collaboration はサポートされません。 たとえば、ご利用の Azure テナントがパブリックのグローバル クラウドに存在する場合、アカウントが国内クラウドにあるユーザーを招待することはできません。 ユーザーと共同作業を行うには、そのユーザーに別のメール アドレスを要求するか、またはご利用のディレクトリ内にメンバー ユーザー アカウントを作成してください。
+[国内クラウド](../develop/authentication-national-cloud.md) は、物理的に分離された Azure のインスタンスです。 国内クラウドの境界を越えた B2B Collaboration はサポートされません。 たとえば、ご利用の Azure テナントがパブリックのグローバル クラウドに存在する場合、アカウントが国内クラウドにあるユーザーを招待することはできません。 ユーザーと共同作業を行うには、そのユーザーに別のメール アドレスを要求するか、またはご利用のディレクトリ内にメンバー ユーザー アカウントを作成してください。
 
 ## <a name="azure-us-government-clouds"></a>Azure US Government クラウド
-Azure US Government クラウド内では、B2B コラボレーションは、両方が Azure US Government クラウド内にあるテナント間と、両方が B2B コラボレーションをサポートしているテナント間でサポートされています。 B2B コラボレーションをサポートする Azure US Government テナントは、Microsoft または Google アカウントを使用してソーシャル ユーザーと共同作業を行うこともできます。 これらのグループ外のユーザー (たとえばユーザーが Azure US Government クラウドの一部ではないテナント、または B2B コラボレーションをまだサポートしていないテナントにいる場合) を招待すると、その招待は失敗するか、またはその招待を履行できなくなります。 その他の制限事項の詳細については、「[Azure Active Directory Premium P1 と P2 のバリエーション](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)」を参照してください。
+Azure US Government クラウド内では、B2B コラボレーションは、両方が Azure US Government クラウド内にあるテナント間と、両方が B2B コラボレーションをサポートしているテナント間でサポートされています。 B2B コラボレーションをサポートする Azure US Government テナントは、Microsoft または Google アカウントを使用してソーシャル ユーザーと共同作業を行うこともできます。 これらのグループ外のユーザー (たとえばユーザーが Azure US Government クラウドの一部ではないテナント、または B2B コラボレーションをまだサポートしていないテナントにいる場合) を招待すると、その招待は失敗するか、またはその招待を履行できなくなります。 その他の制限事項の詳細については、「[Azure Active Directory Premium P1 と P2 のバリエーション](../../azure-government/compare-azure-government-global-azure.md#azure-active-directory-premium-p1-and-p2)」を参照してください。
 
 ### <a name="how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant"></a>B2B コラボレーションが Azure US Government テナントで利用可能かどうかを確認するにはどうすればよいですか？
 Azure US Government クラウド テナントが B2B コラボレーションをサポートしているかどうかを確認するには、次に従います。

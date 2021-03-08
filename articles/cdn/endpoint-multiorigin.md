@@ -1,19 +1,19 @@
 ---
-title: Azure CDN エンドポイントの複数配信元
+title: Azure CDN エンドポイントの複数配信元 (プレビュー)
 description: Azure CDN エンドポイントで複数の配信元を使用します。
 services: cdn
 author: asudbring
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: how-to
-ms.date: 8/20/2020
+ms.date: 9/06/2020
 ms.author: allensu
-ms.openlocfilehash: c7e6733079dbd867255e604f6f8d4459f647cc93
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 6e433950c04c4494201b090063b17a10e54a4822
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870462"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685773"
 ---
 # <a name="azure-cdn-endpoint-multi-origin"></a>Azure CDN エンドポイントの複数配信元
 

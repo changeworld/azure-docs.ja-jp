@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Node.js で Azure Cache for Redis を使用する
+title: 'クイックスタート: Node.js で Azure Cache for Redis を使用する'
 description: このクイック スタートでは、Node.js と node_redis で Azure Cache for Redis を使用する方法について説明します。
 author: yegu-ms
 ms.service: cache
@@ -7,15 +7,15 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: 89a5a911cc0de82afa704c43226d7dca0c9f98a9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
+ms.openlocfilehash: aa22cffc1fc38e055c6c2bb504c311c012f31ac2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281176"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012903"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>クイック スタート:Node.js で Azure Cache for Redis を使用する
+# <a name="quickstart-use-azure-cache-for-redis-in-nodejs"></a>クイックスタート: Node.js で Azure Cache for Redis を使用する
 
 このクイック スタートでは、Azure 内の任意のアプリケーションからアクセスできるセキュリティで保護された専用キャッシュにアクセスするために、Azure Cache for Redis を Node.js アプリに組み込みます。
 
@@ -51,7 +51,7 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
     {auth_pass: process.env.REDISCACHEKEY, tls: {servername: process.env.REDISCACHEHOSTNAME}});
 ```
 
-コード内の操作ごとに新しい接続を作成せず、 可能な限り接続を再利用してください。 
+コード内の操作ごとに新しい接続を作成しないでください。 可能な限り接続を再利用してください。 
 
 ## <a name="create-a-new-nodejs-app"></a>新しい Node.js アプリを作成する
 

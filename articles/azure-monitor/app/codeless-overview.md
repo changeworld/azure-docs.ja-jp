@@ -6,34 +6,34 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 234f772b4a77b780f0b0c1faf307c93847e5caf2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9ead123338a410daf53569ff577dfc8c728a8ddf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310720"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708494"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Azure Monitor Application Insights の自動インストルメンテーションまたはコードなしアタッチとは
 
 自動インストルメンテーション (コードなしアタッチ) を使用すると、コードを変更することなく Application Insights を使用したアプリケーションの監視を有効にすることができます。  
 
-Application Insights は、さまざまなリソース プロバイダーと統合されており、さまざまな環境で動作します。 基本的には、エージェントを有効にし、場合によっては構成するだけで済みます、これにより、すぐに使用できるテレメトリが収集されます。 すぐに、Application Insights リソースにメトリック、データ、依存関係が表示されます。これにより、潜在的な問題が発生する前に原因を特定し、エンドツーエンドのトランザクション ビューを使用して根本原因を分析することができます。
+Application Insights は、さまざまなリソース プロバイダーと統合されており、さまざまな環境で動作します。 基本的には、エージェントを有効にし、場合によっては構成するだけで済みます。これによりテレメトリは自動的にボックスに収集されます。 すぐに、Application Insights リソースにメトリック、データ、依存関係が表示されます。これにより、潜在的な問題が発生する前に原因を特定し、エンドツーエンドのトランザクション ビューを使用して根本原因を分析することができます。
 
 ## <a name="supported-environments-languages-and-resource-providers"></a>サポートされている環境、言語、リソース プロバイダー
 
-統合が多く追加されるほど、自動インストルメンテーション機能のマトリックスは複雑になります。 次の表は、さまざまなリソース プロバイダー、言語、環境のサポートに関して、現在の状態を示しています。
+新たな統合を追加していくと、自動インストルメンテーション機能のマトリックスは複雑になります。 次の表は、さまざまなリソース プロバイダー、言語、環境のサポートに関して、現在の状態を示しています。
 
-|環境/リソース プロバイダー | .NET            | .NET Core       | Java            | Node.js         |
-|------------------------------|-----------------|-----------------|-----------------|-----------------|
-|Azure App Service on Windows  | GA、OnBD*       | GA、オプトイン      | プライベート プレビュー | プライベート プレビュー |
-|Azure App Service on Linux    | 該当なし             | サポートされていません   | パブリック プレビュー  | パブリック プレビュー  |
-|Azure App Service on AKS      | 該当なし             | 設計中       | 設計中       | 設計中       |
-|Azure Functions - 基本       | GA、OnBD*       | GA、OnBD*       | GA、OnBD*       | GA、OnBD*       |
-|Azure Functions - 依存関係| サポートされていません   | サポートされていません   | パブリック プレビュー  | サポートされていません   |
-|Azure Kubernetes Service      | 該当なし             | 設計中       | エージェント経由   | 設計中       |
-|Azure VM Windows             | パブリック プレビュー  | サポートされていません   | サポートされていません   | サポートされていません   |
-|オンプレミスの VM Windows       | GA、オプトイン      | サポートされていません   | エージェント経由   | サポートされていません   |
-|スタンドアロン エージェント - 任意の環境   | サポートされていません   | サポートされていません   | パブリック プレビュー  | サポートされていません   |
+|環境/リソース プロバイダー          | .NET            | .NET Core       | Java            | Node.js         | Python          |
+|---------------------------------------|-----------------|-----------------|-----------------|-----------------|-----------------|
+|Azure App Service on Windows           | GA、OnBD*       | GA、オプトイン      | 進行中     | 進行中     | サポートされていません   |
+|Azure App Service on Linux             | 該当なし             | サポートされていません   | 進行中     | パブリック プレビュー  | サポートされていません   |
+|Azure App Service on AKS               | 該当なし             | 設計中       | 設計中       | 設計中       | サポートされていません   |
+|Azure Functions - 基本                | GA、OnBD*       | GA、OnBD*       | GA、OnBD*       | GA、OnBD*       | GA、OnBD*       |
+|Azure Functions Windows - 依存関係 | サポートされていません   | サポートされていません   | パブリック プレビュー  | サポートされていません   | サポートされていません   |
+|Azure Kubernetes Service               | 該当なし             | 設計中       | エージェント経由   | 設計中       | サポートされていません   |
+|Azure VM Windows                      | パブリック プレビュー  | サポートされていません   | サポートされていません   | サポートされていません   | サポートされていません   |
+|オンプレミスの VM Windows                | GA、オプトイン      | サポートされていません   | エージェント経由   | サポートされていません   | サポートされていません   |
+|スタンドアロン エージェント - 任意の環境            | サポートされていません   | サポートされていません   | GA              | サポートされていません   | サポートされていません   |
 
 *OnBD は On by Default (既定でオン) の短縮形です。サポートされている環境でアプリをデプロイすると、Application Insights が自動的に有効になります。 
 
@@ -41,11 +41,31 @@ Application Insights は、さまざまなリソース プロバイダーと統�
 
 ### <a name="windows"></a>Windows
 
-[Azure App Service でのアプリケーションの監視](./azure-web-apps.md?tabs=net)は、.NET アプリケーションで使用でき、既定で有効になっています。.NET Core は 1 回のクリックで有効にできます。Java と Node.js はプライベート プレビュー段階にあります。
+#### <a name="net"></a>.NET
+Azure App Service on Windows でのアプリケーション監視は [.NET アプリケーション](./azure-web-apps.md?tabs=net) .NET で使用可能であり、既定で有効です。
 
-### <a name="linux"></a>Linux 
+#### <a name="netcore"></a>.NETCore
+[.NETCore アプリケーション](./azure-web-apps.md?tabs=netcore)の監視をワンクリックで有効にできます。
 
-App Service での Java および Node.js アプリケーションの監視はパブリック プレビュー段階であり、Azure portal で有効にすることができ、すべてのリージョンで利用可能です。
+#### <a name="java"></a>Java
+App Service on Windows での Java アプリケーション監視のためのポータル統合は現在利用できませんが、アプリを App Service にデプロイする前にコードに変更を加えることなく、Application Insights [Java 3.0 スタンドアロン エージェント](./java-in-process-agent.md)をアプリケーションに追加できます。 Application Insights Java 3.0 エージェントは一般提供されています。
+
+#### <a name="nodejs"></a>Node.js
+現時点では Windows 上の Node.js アプリケーションの監視をポータルから有効にすることはできません。 Node.js アプリケーションを監視するには、[SDK](./nodejs.md) を使用します。
+
+### <a name="linux"></a>Linux
+
+#### <a name="netcore"></a>.NETCore
+Linux で実行中の .NETCore アプリケーションを監視するには、[SDK](./asp-net-core.md) を使用します。
+
+#### <a name="java"></a>Java 
+App Service on Linux での Java アプリケーション監視をポータルから有効にすることはできませんが、アプリを App Service にデプロイする前に、[Application Insights Java 3.0 エージェント](./java-in-process-agent.md)をアプリに追加できます。 Application Insights Java 3.0 エージェントは一般提供されています。
+
+#### <a name="nodejs"></a>Node.js
+[App Service on Linux での Node.js アプリケーションの監視](./azure-web-apps.md?tabs=nodejs)はパブリック プレビュー段階であり、Azure portal で有効にすることができ、すべてのリージョンで利用可能です。 
+
+#### <a name="python"></a>Python
+SDK を使用して [Python アプリを監視します](./opencensus-python.md) 
 
 ## <a name="azure-functions"></a>Azure Functions
 
@@ -57,7 +77,7 @@ Azure Kubernetes Service のコード不要のインストルメンテーショ�
 
 ## <a name="azure-windows-vms-and-virtual-machine-scale-set"></a>Azure Windows VM と仮想マシン スケール セット
 
-[Azure VM と仮想マシン スケール セットの自動インストルメンテーション](./azure-vm-vmss-apps.md)は、.NET アプリケーション用に使用できます。 
+Azure VM と仮想マシン スケール セットの自動インストルメンテーションを [.NET](./azure-vm-vmss-apps.md) および [Java](./java-in-process-agent.md) で使用できます。  
 
 ## <a name="on-premises-servers"></a>オンプレミスのサーバー
 [.NET アプリケーション](./status-monitor-v2-overview.md)用および [Java アプリ](./java-in-process-agent.md)用のオンプレミスの Windows サーバーの監視を、簡単に有効にすることができます。
@@ -69,5 +89,4 @@ Azure Kubernetes Service のコード不要のインストルメンテーショ�
 
 * [Application Insights の概要](./app-insights-overview.md)
 * [アプリケーション マップ](./app-map.md)
-* [エンドツーエンドのパフォーマンスの監視](../learn/tutorial-performance.md)
-
+* [エンドツーエンドのパフォーマンスの監視](../app/tutorial-performance.md)

@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 169a3149a2d8d02d486bc126071b17e9a4f7ed72
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9825e5e85c8da27b0f3fc2b9d78fcc9ca3513389
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167472"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281696"
 ---
 # <a name="what-is-opc-twin"></a>OPC Twin とは
+
+> [!IMPORTANT]
+> この記事は更新を行いますが、最新の内容については、「[Azure Industrial IoT](https://azure.github.io/Industrial-IoT/)」 (Azure 産業用 IoT) を参照してください。
 
 OPC Twin は、Azure IoT Edge と IoT Hub を使用してクラウドと工場のネットワークとを接続するマイクロサービスから成ります。 OPC Twin は、REST API を通じて、産業用デバイスの検出、登録、リモート制御を実現します。 OPC Twin は、OPC Unified Architecture (OPC UA) SDK を必要とせず、プログラミング言語に依存しません。また、サーバーレス ワークフローに組み込むことができます。 この記事では、OPC Twin のいくつかのユース ケースを説明します。
 
@@ -41,5 +44,4 @@ OPC Twin は、REST API を介して、任意のプログラミング言語で�
 
 ここでは OPC Twin とその用途について説明しました。次に以下の記事を読むことをお勧めします。
 
-> [!div class="nextstepaction"]
-> [OPC Vault とは](overview-opc-vault.md)
+[OPC Vault とは](overview-opc-vault.md)

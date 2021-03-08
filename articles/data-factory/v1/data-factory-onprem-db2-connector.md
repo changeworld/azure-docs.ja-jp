@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory を使用して DB2 からデータを移動する
 description: Azure Data Factory のコピー アクティビティを使用して、オンプレミスの DB2 データベースからデータを移動する方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcd1e6f9f9be1765e76399707ae36776a9f1987d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931782"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387361"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory のコピー アクティビティを使用した DB2 からのデータ移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -99,7 +94,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | **tableName** |リンクされたサービスが参照する DB2 データベース インスタンスのテーブルの名前です。 このプロパティは、大文字と小文字が区別されます。 |いいえ (種類が **RelationalSource** のコピー アクティビティの **query** プロパティが指定されている場合) |
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
-コピー アクティビティの定義に使用できるセクションとプロパティの一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 コピー アクティビティのプロパティ (**名前**、**説明**、**入力**テーブル、**出力**テーブル、**ポリシー**など) は、あらゆる種類のアクティビティで使用できます。 アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、プロパティはデータ ソースとシンクの種類によって異なります。
+コピー アクティビティの定義に使用できるセクションとプロパティの一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 コピー アクティビティのプロパティ (**名前**、**説明**、**入力** テーブル、**出力** テーブル、**ポリシー** など) は、あらゆる種類のアクティビティで使用できます。 アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、プロパティはデータ ソースとシンクの種類によって異なります。
 
 コピー アクティビティで、source の種類が **RelationalSource** (DB2 を含む) である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 

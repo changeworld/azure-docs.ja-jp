@@ -1,23 +1,32 @@
 ---
 title: 'Azure ExpressRoute: ExpressRoute Direct を構成する: CLI'
-description: 世界中のピアリングの場所で Microsoft のグローバル ネットワークに直接接続するため、Azure CLI を使用して Azure ExpressRoute Direct を構成する方法について説明します。
+description: Microsoft のグローバル ネットワークに直接接続するために、Azure CLI を使用して Azure ExpressRoute Direct を構成する方法について説明します。
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 05/20/2019
+ms.date: 12/14/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4eea79d6166ef4beae3b2d61e47e7df0bc82624c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: aea51e56f2d96fa634b1ece2029c9ea5bf3f60fc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395963"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011307"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLI の使用による ExpressRoute Direct の構成
 
-Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所で Microsoft のグローバル ネットワークに直接接続できます。 詳しくは、[ExpressRoute Direct の接続](expressroute-erdirect-about.md)に関する記事をご覧ください。
+ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所を通じて Microsoft のグローバル ネットワークに直接接続できます。 詳しくは、[ExpressRoute Direct の接続](expressroute-erdirect-about.md)に関する記事をご覧ください。
+
+## <a name="before-you-begin"></a>開始する前に
+
+ExpressRoute Direct を利用する前に、まず、サブスクリプションを登録する必要があります。 登録するには、以下の詳細を含め、サブスクリプション ID を記載して、<ExpressRouteDirect@microsoft.com> にメールを送信します。
+
+* **ExpressRoute Direct** で実行しようとしているシナリオ
+* 場所設定。すべての場所の完全なリストについては、[パートナーとピアリングの場所](expressroute-locations-providers.md)に関するページを参照してください。
+* 実装のタイムライン
+* その他の質問について
 
 ## <a name="create-the-resource"></a><a name="resources"></a>リソースを作成する
 
@@ -285,9 +294,10 @@ Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散さ
 
 ExpressRoute Direct では、ここで説明するシナリオをサポートするためだけの回線帯域幅を追加で使用できます。 帯域幅は、40 Gbps および 100 Gbps です。
 
-**SkuTier** には Local、Standard、または Premium を使用できます。
+**SkuTier** は Local、Standard、または Premium にできます。
 
-ExpressRoute Direct では無制限がサポートされていないため、**SkuFamily** には MeteredData のみを使用できます。
+**SkuFamily** は MeteredData のみにすることができます。 ExpressRoute Direct では、Unlimited はサポートされていません。
+
 ExpressRoute Direct リソース上に回線を作成します。
 
   ```azurecli

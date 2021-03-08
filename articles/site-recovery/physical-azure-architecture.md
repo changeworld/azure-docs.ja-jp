@@ -3,12 +3,12 @@ title: Azure Site Recovery における物理サーバーのディザスター �
 description: この記事では、Azure Site Recovery サービスを使用してオンプレミスの物理サーバー を Azure にディザスター リカバリーするときに使用されるコンポーネントとアーキテクチャの概要を説明します。
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: f2184654a8169cb353fb40fa76f0a7fe9b3df6f6
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 966636e269043d81912b552711635f34b412f22f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422659"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654729"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>物理サーバーの Azure へのディザスター リカバリー アーキテクチャ
 
@@ -42,7 +42,7 @@ Site Recovery を期待どおりに動作させるためには、環境でレプ
 
 | **名前**                  | **商用**                               | **政府**                                 | **説明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| ストレージ                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | ソース リージョンのキャッシュ ストレージ アカウントに、VM からデータが書き込まれるよう許可します。 |
+| ストレージ                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | ソース リージョンのキャッシュ ストレージ アカウントに、VM からデータが書き込まれるよう許可します。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Site Recovery サービス URL に対する承認と認証を提供します。 |
 | レプリケーション               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | VM と Site Recovery サービスの通信を許可します。 |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | VM による Site Recovery の監視および診断データの書き込みを許可します。 |

@@ -1,19 +1,19 @@
 ---
 title: C++ と WinRT でアンカーを作成および配置する
 description: C++/WinRT で Azure Spatial Anchors を使用してアンカーを作成して配置する方法の詳細な説明。
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 084058edca59eda776c47a3e20bb49178de78681
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a6b51da695037fd84053ac0bf1b9be091781fbbf
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74790065"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96018870"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cwinrt"></a>C++/WinRT で Azure Spatial Anchors を使用してアンカーを作成して配置する方法
 
@@ -38,11 +38,11 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 - 「[Azure Spatial Anchors の概要](../overview.md)」を読んでいる。
 - [5 分間のクイック スタート](../index.yml)のいずれかを完了している。
-- C++ と <a href="https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows Runtime API</a> に関する基本的な知識
+- C++ と <a href="/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows Runtime API</a> に関する基本的な知識
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
-[CloudSpatialAnchorSession](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession) クラスの詳細を確認してください。
+[CloudSpatialAnchorSession](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession) クラスの詳細を確認してください。
 
 ```cpp
     CloudSpatialAnchorSession m_cloudSession{ nullptr };
@@ -52,7 +52,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
 
-[SessionConfiguration](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/sessionconfiguration) クラスの詳細を確認してください。
+[SessionConfiguration](/cpp/api/spatial-anchors/winrt/sessionconfiguration) クラスの詳細を確認してください。
 
 ```cpp
     auto configuration = m_cloudSession.Configuration();
@@ -68,7 +68,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-[TokenRequiredDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/tokenrequireddelegate) デリゲートの詳細を確認してください。
+[TokenRequiredDelegate](/cpp/api/spatial-anchors/winrt/tokenrequireddelegate) デリゲートの詳細を確認してください。
 
 ```cpp
     m_accessTokenRequiredToken = m_cloudSession.TokenRequired(winrt::auto_revoke, [](auto&&, auto&& args) {
@@ -117,7 +117,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
-[Start](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#start) メソッドの詳細を確認してください。
+[Start](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#start) メソッドの詳細を確認してください。
 
 ```cpp
     m_cloudSession.Start();
@@ -125,7 +125,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-[ProcessFrame](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession) メソッドの詳細を確認してください。
+[ProcessFrame](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession) メソッドの詳細を確認してください。
 
 ```cpp
     m_cloudSession->ProcessFrame(ar_frame_);
@@ -133,7 +133,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-[SessionUpdatedDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/sessionupdateddelegate) デリゲートの詳細を確認してください。
+[SessionUpdatedDelegate](/cpp/api/spatial-anchors/winrt/sessionupdateddelegate) デリゲートの詳細を確認してください。
 
 ```cpp
     m_sessionUpdatedToken = m_cloudSession.SessionUpdated(winrt::auto_revoke, [this](auto&&, auto&& args)
@@ -147,7 +147,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
 
-[CloudSpatialAnchor](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor) クラスの詳細を確認してください。
+[CloudSpatialAnchor](/cpp/api/spatial-anchors/winrt/cloudspatialanchor) クラスの詳細を確認してください。
 
 ```cpp
     // Initialization
@@ -183,7 +183,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
-[GetSessionStatusAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#getsessionstatusasync) メソッドの詳細を確認してください。
+[GetSessionStatusAsync](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#getsessionstatusasync) メソッドの詳細を確認してください。
 
 ```cpp
     SessionStatus status = co_await m_cloudSession.GetSessionStatusAsync();
@@ -193,7 +193,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-[AppProperties](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor#appproperties) メソッドの詳細を確認してください。
+[AppProperties](/cpp/api/spatial-anchors/winrt/cloudspatialanchor#appproperties) メソッドの詳細を確認してください。
 
 ```cpp
     CloudSpatialAnchor cloudAnchor = CloudSpatialAnchor();
@@ -206,7 +206,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-[UpdateAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#updateanchorpropertiesasync) メソッドの詳細を確認してください。
+[UpdateAnchorPropertiesAsync](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#updateanchorpropertiesasync) メソッドの詳細を確認してください。
 
 ```cpp
     CloudSpatialAnchor anchor = /* locate your anchor */;
@@ -216,7 +216,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
 
-[GetAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#getanchorpropertiesasync) メソッドの詳細を確認してください。
+[GetAnchorPropertiesAsync](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#getanchorpropertiesasync) メソッドの詳細を確認してください。
 
 ```cpp
     CloudSpatialAnchor anchor = co_await m_cloudSession.GetAnchorPropertiesAsync(LR"(anchorId)");
@@ -229,7 +229,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-[Expiration](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor#expiration) メソッドの詳細を確認してください。
+[Expiration](/cpp/api/spatial-anchors/winrt/cloudspatialanchor#expiration) メソッドの詳細を確認してください。
 
 ```cpp
     const int64_t oneWeekFromNowInHours = 7 * 24;
@@ -239,7 +239,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-[CreateWatcher](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#createwatcher) メソッドの詳細を確認してください。
+[CreateWatcher](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#createwatcher) メソッドの詳細を確認してください。
 
 ```cpp
     AnchorLocateCriteria criteria = AnchorLocateCriteria();
@@ -249,7 +249,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-[AnchorLocatedDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/anchorlocateddelegate) デリゲートの詳細を確認してください。
+[AnchorLocatedDelegate](/cpp/api/spatial-anchors/winrt/anchorlocateddelegate) デリゲートの詳細を確認してください。
 
 ```cpp
     m_anchorLocatedToken = m_cloudSession.AnchorLocated(winrt::auto_revoke, [this](auto&&, auto&& args)
@@ -279,7 +279,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-[DeleteAnchorAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#deleteanchorasync) メソッドの詳細を確認してください。
+[DeleteAnchorAsync](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#deleteanchorasync) メソッドの詳細を確認してください。
 
 ```cpp
     co_await m_cloudSession.DeleteAnchorAsync(cloudAnchor);
@@ -288,7 +288,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-[Stop](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#stop) メソッドの詳細を確認してください。
+[Stop](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#stop) メソッドの詳細を確認してください。
 
 ```cpp
     m_cloudSession.Stop();
@@ -296,7 +296,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-[Reset](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#reset) メソッドの詳細を確認してください。
+[Reset](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#reset) メソッドの詳細を確認してください。
 
 ```cpp
     m_cloudSession.Reset();

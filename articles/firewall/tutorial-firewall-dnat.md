@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8f528c6be68258400cb3e29582943f1d657c557d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 281d0587ca4c041c7149e49aad6227f6dc0b7fbf
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069274"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050869"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>チュートリアル:Azure portal で Azure Firewall DNAT を使用してインバウンド インターネット トラフィックをフィルター処理する
 
@@ -66,7 +66,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
      ファイアウォールはこのサブネットに配置されます。サブネット名は AzureFirewallSubnet **でなければなりません**。
      > [!NOTE]
-     > AzureFirewallSubnet サブネットのサイズは /26 です。 サブネットのサイズの詳細については、「[Azure Firewall に関する FAQ](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)」を参照してください。
+     > AzureFirewallSubnet サブネットのサイズは /26 です。 サブネットのサイズの詳細については、「[Azure Firewall に関する FAQ](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size)」を参照してください。
 
 10. **[アドレス範囲]** に「**10.0.1.0/26**」と入力します。
 11. 他の設定については既定値を使用し、 **[作成]** を選択します。
@@ -226,4 +226,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 次に、Azure Firewall のログを監視することができます。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Azure Firewall のログを監視する](./tutorial-diagnostics.md)
+> [チュートリアル:Azure Firewall のログを監視する](./firewall-diagnostics.md)

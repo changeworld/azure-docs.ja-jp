@@ -1,20 +1,20 @@
 ---
 title: Azure AD Domain Services のマネージド ドメインに Windows Server VM を参加させる | Microsoft Docs
 description: このチュートリアルでは、Azure Active Directory Domain Services マネージド ドメインに Windows Server 仮想マシンを参加させる方法を学習します。
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 259b27528779c9934da6d69ca46f2794e2257d24
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: justinha
+ms.openlocfilehash: 869c827485d9b7a6baf68d2619af98d4c2ee82b9
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723029"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619574"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメインに Windows Server 仮想マシンを参加させる
 
@@ -139,7 +139,7 @@ VM に対して安全に接続するために、Azure Bastion ホストを使用
 
 VM を作成し、Azure Bastion を使用して Web ベースの RDP 接続を確立したので、Windows Server 仮想マシンをマネージド ドメインに参加させましょう。 このプロセスは、通常のオンプレミスの Active Directory Domain Services ドメインに接続しているコンピューターと同じです。
 
-1. VM にサインインしたときに**サーバー マネージャー**が既定で開かない場合は、 **[スタート]** メニューを選択し、 **[サーバー マネージャー]** を選択します。
+1. VM にサインインしたときに **サーバー マネージャー** が既定で開かない場合は、 **[スタート]** メニューを選択し、 **[サーバー マネージャー]** を選択します。
 1. **[サーバー マネージャー]** ウィンドウの左側のウィンドウで、 **[ローカル サーバー]** を選択します。 右側のウィンドウの **[プロパティ]** で、 **[ワークグループ]** を選択します。
 
     ![VM でサーバー マネージャーを開き、ワークグループのプロパティを編集する](./media/join-windows-vm/server-manager.png)
@@ -184,7 +184,7 @@ Windows Server VM が再起動すると、マネージド ドメインで適用�
 
 ### <a name="unjoin-the-vm-from-the-managed-domain"></a>マネージド ドメインへの VM の参加を解除する
 
-マネージド ドメインから VM を削除するには、もう一度、[VM をドメインに参加させる](#join-the-vm-to-the-managed-domain)ための手順を実行します。 このとき、マネージド ドメインに参加させる代わりに、ワークグループ (既定の "*WORKGROUP*" など) に参加させることを選択します。 VM が再起動すると、コンピューター オブジェクトがマネージド ドメインから削除されます。
+マネージド ドメインから VM を削除するには、もう一度、[VM をドメインに参加させる](#join-the-vm-to-the-managed-domain)ための手順を実行します。 このとき、マネージド ドメインに参加させる代わりに、WORKGROUP (既定の "*WORKGROUP*" など) に参加させることを選択します。 VM が再起動すると、コンピューター オブジェクトがマネージド ドメインから削除されます。
 
 ドメインへの参加を解除せずに [VM を削除](#delete-the-vm)すると、孤立したコンピューター オブジェクトが Azure AD DS に残されます。
 
@@ -246,5 +246,5 @@ Windows Server VM が再起動すると、マネージド ドメインで適用�
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [password-sync]: ./tutorial-create-instance.md
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
-[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[azure-bastion]: ../bastion/tutorial-create-host-portal.md
 [set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

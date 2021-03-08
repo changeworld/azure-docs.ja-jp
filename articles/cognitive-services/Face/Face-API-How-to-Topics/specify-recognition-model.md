@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 02/22/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: da34c2aa8a178a99f325bef8beb4a7e7685b3cbc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ea6b567d7b48e504d9b79dad568da7170ada5326
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931473"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706828"
 ---
 # <a name="specify-a-face-recognition-model"></a>顔認識モデルを指定する
 
@@ -35,10 +35,11 @@ _recognition_03_ モデル (2020 年公開) は、現在使用できる最も正
 
 ## <a name="prerequisites"></a>前提条件
 
-AI による顔の検出と識別の概念を理解している必要があります。 そうでない場合は、まず以下の方法ガイドを参照してください。
+AI による顔の検出と識別の概念を理解している必要があります。 そうでない場合は、まずこれらのガイドを参照してください。
 
+* [顔検出の概念](../concepts/face-detection.md)
+* [顔認識の概念](../concepts/face-recognition.md)
 * [画像内の顔を検出する方法](HowtoDetectFacesinImage.md)
-* [画像内の顔を識別する方法](HowtoIdentifyFacesinImage.md)
 
 ## <a name="detect-faces-with-specified-model"></a>指定されたモデルで顔を検出する
 
@@ -116,9 +117,9 @@ await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognit
 
 この記事では、さまざまな Face サービスの API で使用する認識モデルを指定する方法について説明しました。 次は、クイック スタートに従って顔検出を使い始めてみましょう。
 
-* [Face .NET SDK](../Quickstarts/csharp-sdk.md)
-* [Face Python SDK](../Quickstarts/python-sdk.md)
-* [Face Go SDK](../Quickstarts/go-sdk.md)
+* [Face .NET SDK](../quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
+* [Face Python SDK](../quickstarts/client-libraries.md?pivots=programming-language-python%253fpivots%253dprogramming-language-python)
+* [Face Go SDK](../quickstarts/client-libraries.md?pivots=programming-language-go%253fpivots%253dprogramming-language-go)
 
 [Face - Detect]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Face - Find Similar]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

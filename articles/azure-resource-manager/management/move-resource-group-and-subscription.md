@@ -2,14 +2,14 @@
 title: リソースを新しいサブスクリプションまたはリソース グループに移動する
 description: Azure Resource Manager を使用して、リソースを新しいリソース グループまたはサブスクリプションに移動します。
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e5b3e27110d5bd7941aad0209681d13f45fa66fa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: cd05fe045532ee1b1f1fb88e502d786daabf9365
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498873"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319556"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>リソースを新しいリソース グループまたはサブスクリプションに移動する
 
@@ -19,8 +19,6 @@ ms.locfileid: "87498873"
 
 リソースを移動しても、新しいリソース グループまたはサブスクリプションに移動されるだけです。 リソースの場所は変わりません。
 
-Azure Stack Hub を使用している場合は、グループ間でリソースを移動できません。
-
 ## <a name="checklist-before-moving-resources"></a>リソースの移動前のチェック リスト
 
 リソースを移動する前に行うべき重要な手順がいくつかあります。 これらの条件を確認することにより、エラーの発生を回避できます。
@@ -29,12 +27,17 @@ Azure Stack Hub を使用している場合は、グループ間でリソース�
 
 1. 一部のサービスには、リソースを移動するときに特定の制限または要件があります。 次のサービスのいずれかを移動する場合は、移動の前にそのガイダンスを確認してください。
 
+   * Azure Stack Hub を使用している場合は、グループ間でリソースを移動することはできません。
    * [App Services の移動ガイダンス](./move-limitations/app-service-move-limitations.md)
    * [Azure DevOps Services の移動ガイダンス](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
    * [クラシック デプロイ モデルの移動ガイダンス](./move-limitations/classic-model-move-limitations.md) - Classic Compute、Classic Storage、Classic Virtual Networks、Cloud Services
    * [ネットワークの移動ガイダンス](./move-limitations/networking-move-limitations.md)
    * [Recovery Services の移動ガイダンス](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [仮想マシンの移動ガイダンス](./move-limitations/virtual-machines-move-limitations.md)
+
+1. Azure ロールがリソース (または子リソース) に直接割り当てられており、そのリソースを移動する場合、ロールの割り当ては移動されず、孤立します。 移動した後は、ロールの割り当てを再作成する必要があります。 最終的に、孤立したロールの割り当ては自動的に削除されますが、ベスト プラクティスとして、リソースを移動する前にロールの割り当てを削除しておくことをお勧めします。
+
+    ロールの割り当てを管理する方法の詳細については、[Azure ロールの割り当ての一覧表示](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope)、および [Azure ロールの割り当ての追加または削除](../../role-based-access-control/role-assignments-portal.md)に関する記事を参照してください。
 
 1. 移動元と移動先のサブスクリプションがアクティブである必要があります。 無効になっているアカウントを有効にするときに問題がある場合は、[Azure サポート リクエストを作成します](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 問題の種類として **[サブスクリプション管理]** を選択します。
 
@@ -167,23 +170,37 @@ Authorization: Bearer <access-token>
 
 ## <a name="use-the-portal"></a>ポータルの使用
 
-リソースを移動するには、それらのリソースがあるリソース グループを選択し、 **[移動]** ボタンを選択します。
+リソースを移動するには、それらのリソースが含まれているリソース グループを選択します。
 
-![リソースの移動](./media/move-resource-group-and-subscription/select-move.png)
+リソース グループを表示すると、[移動] オプションは無効になります。
+
+:::image type="content" source="./media/move-resource-group-and-subscription/move-first-view.png" alt-text="移動オプションが無効":::
+
+[移動] オプションを有効にするには、移動するリソースを選択します。 すべてのリソースを選択するには、一覧の上部にあるチェック ボックスをオンにします。 または、リソースを個別に選択します。 リソースを選択すると、[移動] オプションが有効になります。
+
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="移動オプションが無効":::
+
+**[移動]** ボタンを選択します。
+
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="移動オプションが無効":::
+
+このボタンにより、次の 3 つのオプションが提示されます。
+
+* 新しいリソース グループに移動します。
+* 新しいサブスクリプションに移動します。
+* 新しいリージョンに移動します。 リージョンを変更する方法については、「[リージョン間でのリソースの移動 (リソース グループから)](../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json)」を参照してください。
 
 リソースを新しいリソース グループに移動するか新しいサブスクリプションに移動するかを選択します。
 
-移動するリソースを、移動先のリソース グループを選択します。 そのリソースのスクリプトを更新する必要があること確認し、 **[OK]** を選択します。 前の手順でサブスクリプションの編集アイコンを選択した場合は、移動先のサブスクリプションも選択する必要があります。
+移動先のリソース グループを選択します。 そのリソースのスクリプトを更新する必要があること確認し、 **[OK]** を選択します。 新しいサブスクリプションへの移動を選択した場合は、移動先のサブスクリプションも選択する必要があります。
 
-![移動先の選択](./media/move-resource-group-and-subscription/select-destination.png)
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="移動オプションが無効":::
 
-**[通知]** に、移動操作が実行されていることが表示されます。
+リソースを移動できることを検証した後、移動操作が実行中であることを示す通知が表示されます。
 
-![移動の状態の表示](./media/move-resource-group-and-subscription/show-status.png)
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="移動オプションが無効":::
 
 完了すると、結果が表示されます。
-
-![移動の結果の表示](./media/move-resource-group-and-subscription/show-result.png)
 
 エラーが発生した場合は、「[新しいリソース グループまたはサブスクリプションへの Azure リソースの移動に関するトラブルシューティング](troubleshoot-move.md)」を参照してください。
 
@@ -203,7 +220,7 @@ Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.Resource
 
 ## <a name="use-azure-cli"></a>Azure CLI の使用
 
-既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、[az resource move](/cli/azure/resource?view=azure-cli-latest#az-resource-move) コマンドを使用します。 移動するリソースのリソース ID を指定します。 次の例では、いくつかのリソースを新しいリソース グループに移動する方法を示します。 `--ids` パラメーターには、移動するリソース ID のスペース区切りリストを指定します。
+既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、[az resource move](/cli/azure/resource#az-resource-move) コマンドを使用します。 移動するリソースのリソース ID を指定します。 次の例では、いくつかのリソースを新しいリソース グループに移動する方法を示します。 `--ids` パラメーターには、移動するリソース ID のスペース区切りリストを指定します。
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
@@ -242,11 +259,11 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 
 **質問: リソースの移動中に、リソース グループが 4 時間ロックされるのはなぜですか?**
 
-4 時間のウィンドウは、リソースの移動に許容される最大時間です。 移動中のリソースでの変更を防ぐために、リソースの移動の期間中は移動元のリソース グループと移動先のリソース グループが両方ともロックされます。
+移動要求の完了には、最大 4 時間の猶予が与えられます。 移動中のリソースでの変更を防ぐために、リソースの移動の期間中は移動元のリソース グループと移動先のリソース グループが両方ともロックされます。
 
-移動要求には 2 つのフェーズがあります。 最初のフェーズでは、リソースが移動されます。 2 番目のフェーズでは、移動中のリソースに依存している他のリソース プロバイダーに通知が送信されます。 リソース プロバイダーがいずれかのフェーズで失敗した場合、4 時間のウィンドウ全体にわたってリソース グループをロックすることができます。 許容時間中、Resource Manager では失敗したステップが再試行されます。
+移動要求には 2 つのフェーズがあります。 最初のフェーズでは、リソースが移動されます。 2 番目のフェーズでは、移動中のリソースに依存している他のリソース プロバイダーに通知が送信されます。 リソース プロバイダーがいずれかのフェーズで失敗した場合、リソース グループが 4 時間にわたってロックされる可能性があります。 許容時間中、Resource Manager では失敗したステップが再試行されます。
 
-4 時間の期間内にリソースを移動できなかった場合、Resource Manager によって両方のリソース グループのロックが解除されます。 正常に移動されたリソースは、移動先のリソース グループ内にあります。 移動に失敗したリソースは、移動元のリソース グループに残ります。
+4 時間の内にリソースを移動できなかった場合、Resource Manager によって両方のリソース グループのロックが解除されます。 正常に移動されたリソースは、移動先のリソース グループ内にあります。 移動に失敗したリソースは、移動元のリソース グループに残ります。
 
 **質問: リソースの移動中に移動元のリソース グループと移動先のリソースグループがロックされると、どのような影響がありますか?**
 

@@ -6,17 +6,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/16/2020
+ms.date: 10/09/2020
 ms.author: masoucou
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0d5e8643abf41a488dd5f9b8cbc39c3f1bac1c0a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 339c6177de6e83f463efbc97e88a36ed4c52d97b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005039"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349097"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート: .NET SDK と Azure Cosmos DB の MongoDB 用 API を使用して Xamarin.Forms アプリを構築する
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -89,12 +90,9 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 * Mongo クライアントを初期化します。
     ```cs
-    MongoClientSettings settings = MongoClientSettings.FromUrl(
-        new MongoUrl(APIKeys.ConnectionString)
-    );
+    MongoClientSettings settings = MongoClientSettings.FromUrl(new MongoUrl(APIKeys.ConnectionString));
 
-    settings.SslSettings =
-        new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+    settings.SslSettings = new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
 
     settings.RetryWrites = false;
 
@@ -108,7 +106,8 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
     var db = mongoClient.GetDatabase(dbName);
 
-    var collectionSettings = new MongoCollectionSettings {
+    var collectionSettings = new MongoCollectionSettings 
+    {
         ReadPreference = ReadPreference.Nearest
     };
 
@@ -169,7 +168,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 2. **TaskList.Core** プロジェクトの **Helpers** ディレクトリにある **APIKeys.cs** ファイルを開きます。
 
-3. ポータルから (コピー ボタンを使って) **プライマリ接続文字列**の値をコピーし、**APIKeys.cs** ファイルの **ConnectionString** フィールドの値に設定します。
+3. ポータルから (コピー ボタンを使って) **プライマリ接続文字列** の値をコピーし、**APIKeys.cs** ファイルの **ConnectionString** フィールドの値に設定します。
 
 4. 接続文字列から `&replicaSet=globaldb` を削除します。 クエリ文字列からその値を削除しないと、ランタイム エラーが発生します。
 
@@ -182,11 +181,11 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 ### <a name="visual-studio-2019"></a>Visual Studio 2019
 
-1. Visual Studio の**ソリューション エクスプローラー**で各プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
+1. Visual Studio の **ソリューション エクスプローラー** で各プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 2. **[Restore all NuGet packages]\(すべての NuGet パッケージの復元\)** をクリックします。
 3. **TaskList.Android** を右クリックして、 **[スタートアップ プロジェクトとして設定]** を選択します。
 4. F5 キーを押してアプリケーションのデバッグを開始します。
-5. iOS で実行する場合は、まず、コンピューターを Mac に接続します (方法については、こちらの[説明](https://docs.microsoft.com/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio)をご覧ください)。
+5. iOS で実行する場合は、まず、コンピューターを Mac に接続します (方法については、こちらの[説明](/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio)をご覧ください)。
 6. **TaskList.iOS** プロジェクトを右クリックして、 **[スタートアップ プロジェクトとして設定]** を選択します。
 7. F5 キーを押してアプリケーションのデバッグを開始します。
 
@@ -208,4 +207,4 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、MongoDB 用 API を使用して Xamarin.Forms アプリを実行する方法を学習しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB の MongoDB 用 API で構成された Azure Cosmos DB にデータをインポートする](mongodb-migrate.md)
+> [Azure Cosmos DB の MongoDB 用 API で構成された Azure Cosmos DB にデータをインポートする](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

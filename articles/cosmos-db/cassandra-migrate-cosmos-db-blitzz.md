@@ -3,18 +3,20 @@ title: Blitzz を使用して Cassandra から Azure Cosmos DB Cassandra API に
 description: Blitzz を使用して Apache Cassandra データベースから Azure Cosmos DB Cassandra API にデータを移行する方法について説明します。
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: d3eda4694decb74912cc125ef0a33de04838be2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c26d21e74e9808fe65890b7f4eba31ee742552a4
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260629"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339990"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Blitzz を使用して Cassandra から Azure Cosmos DB Cassandra API アカウントにデータを移行する
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Azure Cosmos DB の Cassandra API は、次のようなさまざまな理由により、Apache Cassandra 上で実行されているエンタープライズ ワークロードに適した選択肢になりました。 
 
@@ -34,7 +36,7 @@ Blitzz の移行ソリューションでは、段階的なアプローチに従�
 
 * Blitzz は、大量の並列データベース レプリケーションを提供します。 これにより、変更データ キャプチャ (CDC) という手法を使用することで、移行中にソースとターゲット両方のプラットフォームを同期することができます。 CDC を使用することで、Blitzz は継続的に、ソース データベース (Apache Cassandra) から変更のストリームをプルし、それを移行先データベース (Azure Cosmos DB) に適用します。
 
-* フォールトトレラントであるため、システムでハードウェアまたはソフトウェアの障害が発生している間でもデータの配信が 1 回だけ保証されます。
+* フォールトトレラントであるため、システムでハードウェアまたはソフトウェアの障害が発生している間でもデータの配信が 1 回だけ行われます。
 
 * TLS、暗号化などのさまざまなセキュリティ手法を使用して、転送中のデータを保護します。
 
@@ -96,7 +98,7 @@ Blitzz の移行ソリューションでは、段階的なアプローチに従�
 
    移行が完了したら、スループットを下げます。 格納されたデータの量と各操作に必要な RU に基づいて、データの移行後に必要なスループットを見積もることができます。 必要な RU の見積もり方法の詳細については、「[コンテナーとデータベースのスループットのプロビジョニング](set-throughput.md)」と「[Azure Cosmos DB Capacity Planner を使用して RU/秒を見積もる](estimate-ru-with-capacity-planner.md)」の記事を参照してください。
 
-1. **[接続文字列]** ウィンドウで、ご利用の Azure Cosmos アカウントの**コンタクト ポイント、ポート、ユーザー名**、および**プライマリ パスワード**を取得します。 これらの値は構成ファイルで使用します。
+1. **[接続文字列]** ウィンドウで、ご利用の Azure Cosmos アカウントの **コンタクト ポイント、ポート、ユーザー名** 、および **プライマリ パスワード** を取得します。 これらの値は構成ファイルで使用します。
 
 1. CLI ターミナルから、移行先データベースの構成を設定します。 **`vi conf/conn/cosmosdb.yml`** コマンドを使用して構成ファイルを開き、ホスト URI、ポート番号、ユーザー名、パスワードなどの必要なパラメーターから成るコンマ区切りリストを追加します。 次の例は、構成ファイルの内容を示します。
 
@@ -112,7 +114,7 @@ Blitzz の移行ソリューションでは、段階的なアプローチに従�
    max-connections: 30
    ```
 
-1. 次に、Blitzz を使用してデータを移行します。 Blitzz replicant は、**フル**または**スナップショット** モードで実行できます。
+1. 次に、Blitzz を使用してデータを移行します。 Blitzz replicant は、 **フル** または **スナップショット** モードで実行できます。
 
    * **フル モード** - このモードでは、replicant が移行後も実行され続け、ソースの Apache Cassandra システムでの変更を待機します。 変更が検出されると、ターゲットの Azure Cosmos アカウントにリアルタイムでレプリケートされます。
 

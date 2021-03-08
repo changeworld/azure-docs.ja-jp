@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: v-anusp
 ms.openlocfilehash: 2f325c80877068c53d690bd7ff74f768dab3a174
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80371575"
 ---
 # <a name="device-roobo-smart-audio-dev-kit-v2"></a>デバイス:Roobo Smart Audio Dev Kit v2

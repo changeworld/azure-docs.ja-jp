@@ -12,18 +12,18 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: a5707ef266f3d49bdcbff9793a0b90e6c3f4cb68
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0e0ca8a787145fb40087a2d99be85607404eebfa
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327652"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152136"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする
 
-他のサービスにイベント通知を送信して、ダウンストリームのプロセスをトリガーできるように、Azure IoT Hub は Azure Event Grid と統合します。 信頼性が高く、スケーラブルで、安全な方法により、重大なイベントに対応できるよう、IoT Hub のイベントをリッスンするようにビジネス アプリケーションを構成します。 たとえば、新しい IoT デバイスが IoT Hub に登録されるたびに、データベースの更新、作業チケットの作成、メール通知の配信などを実行するよう、アプリケーションを構築します。
+他のサービスにイベント通知を送信して、ダウンストリームのプロセスをトリガーできるように、Azure IoT Hub は Azure Event Grid と統合します。 信頼性が高く、スケーラブルで、安全な方法により、重大なイベントに対応できるよう、IoT Hub のイベントをリッスンするようにビジネス アプリケーションを構成します。  たとえば、新しい IoT デバイスが IoT Hub に登録されるたびに、データベースの更新、作業チケットの作成、メール通知の配信などを実行するよう、アプリケーションを構築します。
 
-[Azure Event Grid](../event-grid/overview.md) は、発行-サブスクライブ モデルを使う、フル マネージドのイベント ルーティング サービスです。 Event Grid は、[Azure Functions](../azure-functions/functions-overview.md) や [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) などの Azure s サービスの組み込みサポートを備えており、webhook を使って Azure 以外のサービスにイベント アラートを配信できます。 Event Grid がサポートするイベント ハンドラーの完全な一覧については、「[Azure Event Grid の概要](../event-grid/overview.md)」をご覧ください。
+[Azure Event Grid](../event-grid/overview.md) は、発行-サブスクライブ モデルを使う、フル マネージドのイベント ルーティング サービスです。 Event Grid は、[Azure Functions](../azure-functions/functions-overview.md) や [Azure Logic Apps](../logic-apps/logic-apps-overview.md) などの Azure s サービスの組み込みサポートを備えており、webhook を使って Azure 以外のサービスにイベント アラートを配信できます。 Event Grid がサポートするイベント ハンドラーの完全な一覧については、「[Azure Event Grid の概要](../event-grid/overview.md)」をご覧ください。
 
 ![Azure Event Grid のアーキテクチャ](./media/iot-hub-event-grid/event-grid-functional-model.png)
 
@@ -73,6 +73,8 @@ IoT Hub イベントには、デバイスのライフサイクルの変更に対
   "metadataVersion": "1"
 }]
 ```
+
+
 
 ### <a name="device-telemetry-schema"></a>デバイス テレメトリ スキーマ
 
@@ -164,6 +166,10 @@ IoT Hub イベントには、デバイスのライフサイクルの変更に対
 }]
 ```
 
+
+> [!WARNING]
+> デバイス作成イベントに関連付けられている*ツイン データ*は既定の構成であるため、新しく作成されたデバイスの実際の `authenticationType` とその他のデバイス プロパティは、それらに依存*させない*ようにしてください。 新しく作成されたデバイスの `authenticationType` とその他のデバイス プロパティについては、Azure IoT SDK で提供されている Register Manager API を使用してください。
+
 各プロパティの詳しい説明については、「[IoT Hub の Azure Event Grid イベント スキーマ](../event-grid/event-schema-iot-hub.md)」をご覧ください。
 
 ## <a name="filter-events"></a>イベントのフィルター処理
@@ -178,17 +184,17 @@ IoT イベントのサブジェクトには次の形式が使われます。
 devices/{deviceId}
 ```
 
-さらに、Event Grid では、データ コンテンツなどの各イベントの属性でフィルター処理することもできます。 これにより、テレメトリ メッセージの内容に基づいて配信されるイベントを選択することができます。 [高度なフィルター処理](../event-grid/event-filtering.md#advanced-filtering)を参照して、例を確認してください。 テレメトリ メッセージ本文のフィルター処理の場合、メッセージの[システム プロパティ](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)で contentType を **application/json** に設定し、contentEncoding を **UTF-8** に設定する必要があります。 これらのプロパティでは、どちらも大文字と小文字が区別されません。
+さらに、Event Grid では、データ コンテンツなどの各イベントの属性でフィルター処理することもできます。 これにより、テレメトリ メッセージの内容に基づいて配信されるイベントを選択することができます。 [高度なフィルター処理](../event-grid/event-filtering.md#advanced-filtering)を参照して、例を確認してください。 テレメトリ メッセージ本文のフィルター処理の場合、メッセージの[システム プロパティ](./iot-hub-devguide-routing-query-syntax.md#system-properties)で contentType を **application/json** に設定し、contentEncoding を **UTF-8** に設定する必要があります。 これらのプロパティでは、どちらも大文字と小文字が区別されません。
 
 DeviceConnected、DeviceDisconnected、DeviceCreated、DeviceDeleted のような非テレメトリ イベントの場合、サブスクリプションの作成時に Event Grid のフィルター処理を使用できます。 テレメトリ イベントの場合、Event Grid でのフィルター処理に加えて、ユーザーは、メッセージ ルーティング クエリ経由で、デバイス ツイン、メッセージのプロパティと本文に対してフィルター処理することもできます。 
 
 Event Grid 経由でテレメトリ イベントをサブスクライブすると、IoT Hub では、Event Grid にデータ ソース型のデバイス メッセージを送信するための既定のメッセージ ルートが作成されます。 メッセージ ルーティングの詳細については、[IoT Hub メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)に関するページを参照してください。 このルートはポータルの [IoT Hub] の [メッセージ ルーティング] に表示されます。 Event Grid までの唯一のルートは、テレメトリ イベントに対して作成される EG サブスクリプションの数に関係なく作成されます。 そのため、フィルターの異なるサブスクリプションがいくつか必要な場合、同じルートでこれらのクエリに OR 演算子を使用できます。 ルートの作成と削除は、Event Grid 経由のテレメトリ イベントのサブスクリプションによって制御されます。 IoT Hub メッセージ ルーティングを利用して Event Grid までのルートを作成したり、削除したりすることはできません。
 
-テレメトリ データが送信される前に、メッセージをフィルター処理するために、[ルーティング クエリ](iot-hub-devguide-routing-query-syntax.md)を更新できます。 ルーティング クエリは本文が JSON である場合にのみ、メッセージ本文に適用できることに注意してください。 また、メッセージの[システム プロパティ](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)で contentType を **application/json** に設定し、contentEncoding を **UTF-8** に設定する必要もあります。
+テレメトリ データが送信される前に、メッセージをフィルター処理するために、[ルーティング クエリ](iot-hub-devguide-routing-query-syntax.md)を更新できます。 ルーティング クエリは本文が JSON である場合にのみ、メッセージ本文に適用できることに注意してください。 また、メッセージの[システム プロパティ](./iot-hub-devguide-routing-query-syntax.md#system-properties)で contentType を **application/json** に設定し、contentEncoding を **UTF-8** に設定する必要もあります。
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>デバイス接続イベントおよびデバイス切断イベントの制限事項
 
-デバイス接続状態イベントを受信するには、デバイスで IoT Hub を使用して "D2C テレメトリ送信" または "C2D メッセージ受信" 操作を実行する必要があります。 しかし、AMQP プロトコルを使用して IoT Hub に接続するデバイスについては、"C2D メッセージ受信" 操作を実行することが推奨されます。そうしないと、接続状態の通知が数分遅延することがあります。 デバイスが MQTT プロトコルを使用している場合、IoT Hub は C2D リンクを開いたままにします。 AMQP では、[Receive Async API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) (IoT Hub C# SDK) または[デバイス クライアント (AMQP)](iot-hub-amqp-support.md#device-client) を呼び出すことによって C2D リンクを開くことができます。
+デバイス接続状態イベントを受信するには、デバイスで IoT Hub を使用して "D2C テレメトリ送信" または "C2D メッセージ受信" 操作を実行する必要があります。 しかし、AMQP プロトコルを使用して IoT Hub に接続するデバイスについては、"C2D メッセージ受信" 操作を実行することが推奨されます。そうしないと、接続状態の通知が数分遅延することがあります。 デバイスが MQTT プロトコルを使用している場合、IoT Hub は C2D リンクを開いたままにします。 AMQP では、Receive Async API (IoT Hub C# SDK) または[デバイス クライアント (AMQP)](iot-hub-amqp-support.md#device-client) を呼び出すことによって、C2D リンクを開くことができます。
 
 テレメトリを送信する場合は、D2C リンクが開いています。 
 
@@ -214,4 +220,4 @@ IoT Hub イベントを処理するアプリケーションは、以下の推奨
 
 * [IoT Hub のイベントとメッセージのルーティングの違いを比較します](iot-hub-event-grid-routing-comparison.md)
 
-* [IoT テレメトリ イベントを使用して、Azure Maps を使用して IoT 空間分析を実装する方法について学びます](../azure-maps/tutorial-iot-hub-maps.md#create-an-azure-function-and-add-an-event-grid-subscription)
+* [IoT テレメトリ イベントを使用して、Azure Maps を使用して IoT 空間分析を実装する方法について学びます](../azure-maps/tutorial-iot-hub-maps.md)

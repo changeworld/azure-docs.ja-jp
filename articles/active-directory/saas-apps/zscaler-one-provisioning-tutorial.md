@@ -8,22 +8,22 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 978f8ff5e57a5a9a1df10152713c8c42901b3b6f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f6725045064b74079e00ca5bbe1d560f3b19f3ff
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545862"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937129"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>チュートリアル:Zscaler One を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Zscaler One に対するユーザーとグループのプロビジョニングとプロビジョニング解除を自動的に実行するように Azure AD を構成するために、Zscaler One と Azure Active Directory (Azure AD) で実行する手順を示します。
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービス上に構築されるコネクタについて説明します。 このサービスで実行されること、しくみ、およびよく寄せられるについては、「[Azure Active Directory によるサービスとしてのソフトウェア (SaaS) アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../active-directory-saas-app-provisioning.md)」を参照してください。
+> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービス上に構築されるコネクタについて説明します。 このサービスで実行されること、しくみ、およびよく寄せられるについては、「[Azure Active Directory によるサービスとしてのソフトウェア (SaaS) アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -63,7 +63,7 @@ Marketplace から Zscaler One を追加するには、次の手順に従いま�
 
 Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD でアプリケーションに割り当てられているユーザーとグループのみが同期されます。
 
-自動ユーザー プロビジョニングを構成して有効にする前に、Zscaler One にアクセスする必要がある Azure AD のユーザーまたはグループを決定しておく必要があります。 これらのユーザーまたはグループを Zscaler One に割り当てるには、「[エンタープライズ アプリにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)」の指示に従います。
+自動ユーザー プロビジョニングを構成して有効にする前に、Zscaler One にアクセスする必要がある Azure AD のユーザーまたはグループを決定しておく必要があります。 これらのユーザーまたはグループを Zscaler One に割り当てるには、「[エンタープライズ アプリにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)」の指示に従います。
 
 ### <a name="important-tips-for-assigning-users-to-zscaler-one"></a>ユーザーを Zscaler One に割り当てるときの重要なヒント
 
@@ -77,6 +77,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 > [!TIP]
 > Zscaler One に対する SAML ベースのシングル サインオンを有効にすることもできます。 [Zscaler One のシングル サインオンに関するチュートリアル](zscaler-One-tutorial.md)の手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+
+> [!NOTE]
+> ユーザーとグループをプロビジョニングしたりプロビジョニング解除したりする際は、グループ メンバーシップが適切に更新されるよう、定期的にプロビジョニングをやり直すことをお勧めします。 そうすることによって、サービスによって強制的にすべてのグループが再評価され、メンバーシップが更新されます。  
 
 ### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Azure AD で Zscaler One に対する自動ユーザー プロビジョニングを構成する
 
@@ -96,7 +99,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Zscaler One のプロビジョニング モード](./media/zscaler-one-provisioning-tutorial/provisioning-credentials.png)
 
-5. **[管理者資格情報]** セクションで、 **[テナント URL]** ボックスと **[シークレット トークン]** ボックスに、手順 6 で説明する Zscaler One アカウントの設定を入力します。
+5. **[管理者資格情報]** セクションで、**[テナント URL]** ボックスと **[シークレット トークン]** ボックスに、手順 6 で説明する Zscaler One アカウントの設定を入力します。
 
 6. テナント URL とシークレット トークンを取得するには、Zscaler One ポータル UI で **[Administration]\(管理\)**  >  **[Authentication Settings]\(認証設定\)** の順に移動します。 **[Authentication Type]\(認証タイプ\)** で **[SAML]** を選択します。
 
@@ -106,9 +109,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Zscaler One での SAML の構成](./media/zscaler-one-provisioning-tutorial/secret-token-2.png)
 
-    b. **[Enable SCIM-Based Provisioning]\(SCIM ベースのプロビジョニングを有効にする\)** を選択して、 **[Base URL]\(ベース URL\)** と **[Bearer Token]\(ベアラー トークン\)** の設定を取得します。 それらの設定を保存します。 **[Base URL]\(ベース URL\)** の設定を、Azure portal の **[テナント URL]** にコピーします。 **[Bearer Token]\(ベアラー トークン\)** の設定を、Azure portal の **[シークレット トークン]** にコピーします。
+    b. **[Enable SCIM-Based Provisioning]\(SCIM ベースのプロビジョニングを有効にする\)** を選択して、**[Base URL]\(ベース URL\)** と **[Bearer Token]\(ベアラー トークン\)** の設定を取得します。 それらの設定を保存します。 **[Base URL]\(ベース URL\)** の設定を、Azure portal の **[テナント URL]** にコピーします。 **[Bearer Token]\(ベアラー トークン\)** の設定を、Azure portal の **[シークレット トークン]** にコピーします。
 
-7. 手順 5 に示されているボックスに入力したら、 **[テスト接続]** を選択して、Azure AD が Zscaler One に接続できることを確認します。 接続できない場合は、使用中の Zscaler One アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+7. 手順 5 に示されているボックスに入力したら、**[テスト接続]** を選択して、Azure AD が Zscaler One に接続できることを確認します。 接続できない場合は、使用中の Zscaler One アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![Zscaler One のテスト接続](./media/zscaler-one-provisioning-tutorial/test-connection.png)
 
@@ -134,9 +137,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Zscaler One の一致するグループ属性](./media/zscaler-one-provisioning-tutorial/group-attribute-mappings.png)
 
-14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](./../active-directory-saas-scoping-filters.md)の手順を参照してください。
+14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の手順を参照してください。
 
-15. Zscaler One に対する Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+15. Zscaler One に対する Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
     ![Zscaler One のプロビジョニングの状態](./media/zscaler-one-provisioning-tutorial/provisioning-status.png)
 
@@ -152,7 +155,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 **[同期の詳細]** セクションを使用して進行状況を監視し、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。 このレポートには、Azure AD プロビジョニング サービスによって Zscaler One で実行されたすべてのアクションが記述されます。
 
-Azure AD プロビジョニング ログの見方について詳しくは、「[自動ユーザー アカウント プロビジョニングについてのレポート](../active-directory-saas-provisioning-reporting.md)」を参照してください。
+Azure AD プロビジョニング ログの見方について詳しくは、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -161,7 +164,7 @@ Azure AD プロビジョニング ログの見方について詳しくは、「[
 
 ## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../active-directory-saas-provisioning-reporting.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-one-provisioning-tutorial/tutorial-general-01.png

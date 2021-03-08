@@ -5,22 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: overview
-ms.openlocfilehash: e40109a3c43fa30d70b7a13243723d717b4003c4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6001fff54b86b7c18684092aad6c7fdf64f81990
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021443"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729948"
 ---
 # <a name="about-azure-remote-rendering"></a>Azure Remote Rendering について
 
-> [!IMPORTANT]
-> 現在、**Azure Remote Rendering** はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
 *Azure Remote Rendering* (ARR) は、高品質でインタラクティブな 3D コンテンツをクラウドでレンダリングし、HoloLens 2 などのデバイスにリアルタイムでストリーム配信できるようにするサービスです。
 
-![サンプル モデル](../media/arr-engine.png)
+![自動車エンジンの高品質でインタラクティブな 3D レンダリングの例を示す図。](../media/arr-engine.png)
 
 テザリングされていないデバイスでは、複雑なモデルをレンダリングするための計算能力が限られます。 その一方で、多くのアプリケーションでは、視覚的な忠実性を少しでも低下させることは許容されません。 次のスクリーンショットでは、詳細なモデルと、一般的なコンテンツ作成ツールを使用してデシメートされたモデルを比較しています。
 

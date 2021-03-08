@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 235010cbcdde326cf17643cec81f3b6fcb1eea59
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3225aa9eaff5c3cd0acca99261935feb9774810f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548771"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010267"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>チュートリアル: Azure Active Directory と RolePoint の統合
 
@@ -27,7 +27,7 @@ ms.locfileid: "88548771"
 * ユーザーが自分の Azure AD アカウントを使用して RolePoint に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure ポータル) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -92,7 +92,7 @@ RolePoint に対する Azure AD シングル サインオンを構成するに�
 
     ![シングル サインオン方式の選択](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**編集**アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**編集** アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
 
     ![[編集] アイコン](common/edit-urls.png)
 
@@ -182,18 +182,18 @@ RolePoint 側にシングル サインオンを設定するには、[RolePoint �
 
 ### <a name="create-a-rolepoint-test-user"></a>RolePoint テスト ユーザーの作成
 
-次に、RolePoint で Britta Simon というユーザーを作成する必要があります。  [RolePoint サポート チーム](mailto:info@rolepoint.com)と連携して、RolePoint にユーザーを追加します。 シングル サインオンを使用できるようにするには、ユーザーを作成してアクティブにする必要があります。
+次に、RolePoint で Britta Simon というユーザーを作成する必要があります。 [RolePoint サポート チーム](mailto:info@rolepoint.com)と連携して、RolePoint にユーザーを追加してください。 シングル サインオンを使用できるようにするには、ユーザーを作成してアクティブにする必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 ここで、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストする必要があります。
 
-アクセス パネル上で [RolePoint] タイルを選択すると、SSO を設定した RolePoint インスタンスに自動的にサインインします。 アクセス パネルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」を参照してください。
+アクセス パネル上で [RolePoint] タイルを選択すると、SSO を設定した RolePoint インスタンスに自動的にサインインします。 アクセス パネルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

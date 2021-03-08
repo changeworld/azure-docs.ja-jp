@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services (MARS) エージェントをインス�
 description: Windows マシンをバックアップする目的で Microsoft Azure Recovery Services (MARS) エージェントをインストールする方法について説明します。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 715153d445acbc372f8305ca39f5276bf8a39773
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: acf38fdf338fcdd0cd7902d4295f0f03310543a8
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533480"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986872"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Azure Backup MARS エージェントをインストールする
 
@@ -42,10 +42,10 @@ Azure Backup では、オンプレミスのマシンや Azure VM からファイ
 
 ## <a name="modify-storage-replication"></a>ストレージ レプリケーションを変更する
 
-既定では、コンテナーには [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md) が使用されます。
+既定では、コンテナーには [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) が使用されます。
 
 * コンテナーをプライマリ バックアップ メカニズムとする場合は、GRS を使用することをお勧めします。
-* [ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) を使用し、Azure ストレージのコストを削減できます。
+* [ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) を使用し、Azure ストレージのコストを削減できます。
 
 ストレージ レプリケーションの種類を変更にするには:
 
@@ -88,6 +88,9 @@ Azure Backup では、オンプレミスのマシンや Azure VM からファイ
 * `.WindowsAzure.com`
 * `.microsoftonline.com`
 * `.windows.net`
+* IP アドレス
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 Microsoft ピアリングを使用するには、次のサービス、リージョン、関連するコミュニティの値を選択します。
 

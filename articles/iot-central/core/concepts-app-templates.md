@@ -3,16 +3,16 @@ title: Azure IoT Central のアプリケーション テンプレートとは | 
 description: Azure IoT Central のアプリケーション テンプレートを使用すると、IoT ソリューションの開発に着手することができます。
 author: philmea
 ms.author: philmea
-ms.date: 10/25/2019
+ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0cf343ccd89ac5b00740d8c559538a0f97ec7905
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 27f054cb085e5064ffed0e75b77d53a1406b566e
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716573"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797130"
 ---
 # <a name="what-are-application-templates"></a>アプリケーション テンプレートとは
 
@@ -30,12 +30,7 @@ Azure IoT Central のアプリケーション テンプレートは、ソリュ�
 
 ## <a name="custom-templates"></a>カスタム テンプレート
 
-アプリケーションを最初から作成する場合は、次の 2 つのカスタム アプリケーション テンプレートのいずれかを選択します。
-
-- カスタム アプリケーション
-- カスタム アプリケーション (レガシ)
-
-レガシ テンプレートを使用する特別な理由がない限り、**カスタム アプリケーション** テンプレートを選択します。
+アプリケーションを最初から作成する場合は、いずれかの **カスタム アプリケーション** テンプレートを選択します。
 
 ## <a name="industry-focused-templates"></a>特定業界に焦点を合わせたテンプレート
 

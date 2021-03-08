@@ -1,17 +1,17 @@
 ---
 title: プライベート リンク - Azure portal - Azure Database for MySQL
 description: Azure portal から Azure Database for MySQL 用のプライベート リンクを構成する方法について説明します
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 37c5a0fb1addf9f84c8a237b4d185d140553535e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ce916336ea47cd223c10a8f664b2dc9806ed0a17
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825975"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221028"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>ポータルを使用して Azure Database for MySQL 用のプライベート リンクを作成および管理する
 
@@ -132,9 +132,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure portal の画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[プライベート リンク]** を選択します。
 
-2. **[プライベート リンク センター - 概要]** の**サービスへのプライベート接続を構築する**オプションで、 **[開始]** を選択します。
+2. **[プライベート リンク センター - 概要]** の **[サービスへのプライベート接続を構築する]** オプションで、 **[開始]** を選択します。
 
-    ![Private Link の概要](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/privatelink-overview.png" alt-text="Private Link の概要":::
 
 1. **[Create a private endpoint - Basics]\(プライベート エンドポイントの作成 - 基本\)** で次の情報を入力または選択します。
 
@@ -160,7 +160,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |ターゲット サブリソース |*[mysqlServer]* を選択します|
     |||
 7. **[Next:構成]** を選択します。
-8. **[Create a private endpoint - Configuration]\(プライベート エンドポイントの作成 - 構成\)** で次の情報を入力または選択します。
+8. **[Create a private endpoint - Configuration]/(プライベート エンドポイントの作成 - 構成/)** で次の情報を入力または選択します。
 
     | 設定 | 値 |
     | ------- | ----- |
@@ -178,7 +178,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。 
 2. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。 
 
-    ![作成された Private Link](media/concepts-data-access-and-security-private-link/show-mysql-private-link.png)
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-mysql-private-link.png" alt-text="作成された Private Link":::
 
     > [!NOTE] 
     > お客様の DNS 設定の FQDN は、構成されている非公開 IP では解決されません。 [こちら](../dns/dns-operations-recordsets-portal.md)で示すように、構成された FQDN の DNS ゾーンを設定する必要があります。
@@ -223,6 +223,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     Name:    myServer.privatelink.mysql.database.azure.com
     Address:  10.1.3.4
     ```
+    > [!NOTE]
+    > Azure Database for MySQL - 単一サーバーのファイアウォール設定でパブリック アクセスが無効になっている場合。 これらの ping および telnet テストは、ファイアウォールの設定に関係なく正常に実行されます。 これらのテストによって、ネットワーク接続が確認されます。
 
 3. 利用可能な任意のクライアントを使用して、MySQL サーバーのプライベート リンク接続をテストします。 次の例では、[MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) を使用して操作を行いました。
 
@@ -248,13 +250,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 プライベート エンドポイント、MySQL サーバー、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。
 
-1. ポータルの上部にある**検索**ボックスに「*myResourceGroup*」と入力し、検索結果から *myResourceGroup* を選択します。
+1. ポータルの上部にある **検索** ボックスに「*myResourceGroup*」と入力し、検索結果から *myResourceGroup* を選択します。
 2. **[リソース グループの削除]** を選択します。
 3. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「myResourceGroup」と入力し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、仮想ネットワーク上の VM、Azure Database for MySQL、およびプライベート アクセス用のプライベート エンドポイントを作成しました。 インターネットから 1 台の VM に接続し、Private Link を使用して MySQL サーバーと安全に通信を行いました。 プライベート エンドポイントの詳細については、「[Azure プライベート エンドポイントとは](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)」を参照してください。
+この記事では、仮想ネットワーク上の VM、Azure Database for MySQL、およびプライベート アクセス用のプライベート エンドポイントを作成しました。 インターネットから 1 台の VM に接続し、Private Link を使用して MySQL サーバーと安全に通信を行いました。 プライベート エンドポイントの詳細については、「[Azure プライベート エンドポイントとは](../private-link/private-endpoint-overview.md)」を参照してください。
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

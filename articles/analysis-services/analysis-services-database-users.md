@@ -8,12 +8,12 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 8ccd9120937148043590d30232acd6b556b09dc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31910e92ba4d5cbb1f133eaff6880fafb809b772
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015274"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054095"
 ---
 # <a name="manage-database-roles-and-users"></a>データベース ロールとユーザーの管理
 
@@ -26,9 +26,11 @@ model データベース レベルでは、すべてのユーザーがロール�
 *  **Process (プロセス)** - ユーザーは、データベースに接続し、データベースでのプロセス操作を実行し、model データベースのデータを分析できます。
 *  **Read (読み取り)** - ユーザーは、クライアント アプリケーションを使用して model データベースに接続し、このデータを分析できます。
 
-表形式のモデル プロジェクトを作成する場合、Analysis Services プロジェクトを使って Visual Studio 内でロール マネージャーを使用して、ロールを作成し、これらのロールにユーザーまたはグループを追加します。 サーバーにデプロイするとき、SQL Server Management Studio (SSMS)、[Analysis Services PowerShell コマンドレット](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)、または [Tabular Model Scripting Language](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) を使用して、ロールおよびユーザーのメンバーを追加または削除します。
+表形式のモデル プロジェクトを作成する場合、Analysis Services プロジェクトを使って Visual Studio 内でロール マネージャーを使用して、ロールを作成し、これらのロールにユーザーまたはグループを追加します。 サーバーにデプロイするとき、SQL Server Management Studio (SSMS)、[Analysis Services PowerShell コマンドレット](/analysis-services/powershell/analysis-services-powershell-reference)、または [Tabular Model Scripting Language](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) を使用して、ロールおよびユーザーのメンバーを追加または削除します。
 
-**セキュリティ グループ**を追加するときは、`obj:groupid@tenantid` を使用します。
+**セキュリティ グループ** を追加するときは、`obj:groupid@tenantid` を使用します。
+
+**サービス プリンシパル** を追加するときは、`app:appid@tenantid` を使用します。
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Visual Studio でロールおよびユーザーを追加または管理する方法  
   
@@ -85,7 +87,7 @@ model データベース レベルでは、すべてのユーザーがロール�
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>TMSL スクリプトを使用して、ロールとユーザーを追加する方法
 
-SSMS の XMLA ウィンドウで、または PowerShell を使用して、TMSL スクリプトを実行できます。 [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) コマンドおよび [Roles(ロール)](https://docs.microsoft.com/analysis-services/tmsl/roles-object-tmsl) オブジェクトを使用します。
+SSMS の XMLA ウィンドウで、または PowerShell を使用して、TMSL スクリプトを実行できます。 [CreateOrReplace](/analysis-services/tmsl/createorreplace-command-tmsl) コマンドおよび [Roles(ロール)](/analysis-services/tmsl/roles-object-tmsl) オブジェクトを使用します。
 
 **TMSL のサンプル スクリプト**
 
@@ -119,13 +121,13 @@ SSMS の XMLA ウィンドウで、または PowerShell を使用して、TMSL �
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>PowerShell を使用してロールとユーザーを追加する方法
 
-[SqlServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) モジュールには、タスク固有のデータベース管理コマンドレットと、Tabular Model Scripting Language (TMSL) クエリまたはスクリプトを受け入れる汎用 Invoke-ASCmd コマンドレットが用意されています。 次のコマンドレットは、データベース ロールとユーザーを管理するために使用されます。
+[SqlServer](/analysis-services/powershell/analysis-services-powershell-reference) モジュールには、タスク固有のデータベース管理コマンドレットと、Tabular Model Scripting Language (TMSL) クエリまたはスクリプトを受け入れる汎用 Invoke-ASCmd コマンドレットが用意されています。 次のコマンドレットは、データベース ロールとユーザーを管理するために使用されます。
   
 |コマンドレット|説明|
 |------------|-----------------| 
-|[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|データベース ロールにメンバーを追加します。| 
-|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|データベース ロールからメンバーを削除します。|   
-|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|TMSL スクリプトを実行します。|
+|[Add-RoleMember](/powershell/module/sqlserver/Add-RoleMember)|データベース ロールにメンバーを追加します。| 
+|[Remove-RoleMember](/powershell/module/sqlserver/remove-rolemember)|データベース ロールからメンバーを削除します。|   
+|[Invoke-ASCmd](/powershell/module/sqlserver/invoke-ascmd)|TMSL スクリプトを実行します。|
 
 ## <a name="row-filters"></a>行フィルター  
 
@@ -151,5 +153,4 @@ SSMS の XMLA ウィンドウで、または PowerShell を使用して、TMSL �
 
   [サーバー管理者の管理](analysis-services-server-admins.md)   
   [PowerShell で Azure Analysis Services を管理する](analysis-services-powershell.md)  
-  [Tabular Model Scripting Language (TMSL) のリファレンス](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)
-
+  [Tabular Model Scripting Language (TMSL) のリファレンス](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)

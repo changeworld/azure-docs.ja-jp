@@ -1,6 +1,7 @@
 ---
-title: ADAL アプリと MSAL アプリ間での SSO (iOS/macOS) - Microsoft ID プラットフォーム | Azure
-description: ''
+title: ADAL と MSAL の両アプリ間での SSO (iOS/macOS) | Azure
+titleSuffix: Microsoft identity platform
+description: ADAL と MSAL の両アプリ間で SSO を共有する方法について説明します。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,14 +13,14 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 7a8a1667ba1ca2a99c053c6941e3ba778299fd53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 396e9cfeace8791a59dec4a9c9c7203212f57304
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80880752"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584249"
 ---
-# <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>方法:macOS および iOS 上の ADAL アプリと MSAL アプリの間での SSO
+# <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>方法: macOS および iOS 上の ADAL アプリと MSAL アプリの間での SSO
 
 iOS 向けの Microsoft Authentication Library (MSAL) では、アプリケーションごとの SSO 状態を [ADAL Objective-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc) と共有できます。 ADAL ベースと MSAL ベースのアプリが混在することになってもユーザーがクロスアプリ SSO を引き続き活用できるので、MSAL へのアプリの移行はご自分のペースで進めることができます。
 
@@ -33,7 +34,7 @@ SSO 実装の詳細は、お客様が使用している ADAL のバージョン�
 
 ### <a name="cache-format"></a>キャッシュの形式
 
-ADAL 2.7.x では、MSAL のキャッシュ形式を読み取ることができます。 バージョン 2.7.x の ADAL を使用したクロスアプリ SSO では、特別な対応は必要ありません。 ただし、これら 2 つのライブラリでサポートされているアカウント識別子の違いを認識しておく必要があります。
+ADAL 2.7.x では、MSAL のキャッシュ形式を読み取ることができます。 バージョン 2.7.x の ADAL を使用したクロスアプリ SSO では、特別な対応は必要ありません。 ただし、これら 2 つのライブラリでサポートされているアカウント識別子の違いに注意してください。
 
 ### <a name="account-identifier-differences"></a>アカウント識別子の違い
 
@@ -48,8 +49,8 @@ MSAL の結果で `MSALAccount` オブジェクトを受け取る場合、`ident
 | アカウント識別子                | MSAL                                                         | ADAL 2.7.x      | 古い ADAL (2.7.x より前の ADAL) |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | 表示可能な識別子            | `username`                                                   | `userId`        | `userId`                       |
-| 一意の表示不能な識別子 | `identifier`                                                 | `homeAccountId` | 該当なし                            |
-| 既知のアカウント識別子なし               | `MSALPublicClientApplication` の `allAccounts:` API によりすべてのアカウントを照会する | 該当なし             | 該当なし                            |
+| 一意の表示不能な識別子 | `identifier`                                                 | `homeAccountId` | N/A                            |
+| 既知のアカウント識別子なし               | `MSALPublicClientApplication` の `allAccounts:` API によりすべてのアカウントを照会する | 該当なし             | N/A                            |
 
 これらの識別子を提供する `MSALAccount` インターフェイスを次に示します。
 

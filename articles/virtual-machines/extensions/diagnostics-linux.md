@@ -1,27 +1,28 @@
 ---
-title: Azure Compute - Linux Diagnostic Extension
-description: Azure Linux Diagnostic Extension (LAD) を構成して、Azure で実行中の Linux VM からメトリックとログ イベントを収集する方法。
+title: Azure Compute - Linux Diagnostic Extension 4.0
+description: Azure Linux Diagnostic Extension (LAD) 4.0 を構成して、Azure で実行中の Linux VM からメトリックとログ イベントを収集する方法。
 services: virtual-machines-linux
 author: axayjo
 manager: gwallace
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 02/05/2021
 ms.author: akjosh
-ms.openlocfilehash: c03105326b6d189b3c6fde72ff959211b3009517
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 741db5ea10847e2fe6711e7ca01d65efb1f09dea
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837042"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667312"
 ---
-# <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
+# <a name="use-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension 4.0 を使用して、メトリックとログを監視する
 
-このドキュメントでは、Linux Diagnostic Extension のバージョン 3.0 以降について説明します。
+このドキュメントでは、Linux Diagnostic Extension のバージョン 4.0 以降について説明します。
 
 > [!IMPORTANT]
-> バージョン 2.3 以前については、[このドキュメント](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)を参照してください。
+> バージョン 3.* については、[このドキュメント](./diagnostics-linux-v3.md)を参照してください。 バージョン 2.3 以前については、[このドキュメント](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)を参照してください。
 
 ## <a name="introduction"></a>はじめに
 
@@ -40,10 +41,14 @@ Linux Diagnostic Extension は、Microsoft Azure で実行中の Linux VM の正
 
 この拡張機能は、Azure PowerShell コマンドレット、Azure CLI スクリプト、ARM テンプレート、Azure portal のいずれかを使用して有効にできます。 詳細については、[拡張機能](features-linux.md)に関するページをご覧ください。
 
-このインストール手順と[ダウンロード可能なサンプル構成](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json)により、LAD 3.0 は次のように構成されます。
+>[!NOTE]
+>診断 VM 拡張機能の一部のコンポーネントは、[Log Analytics VM 拡張機能](./oms-linux.md)にも含まれています。 このアーキテクチャが原因で、両方の拡張機能が同じ ARM テンプレートでインスタンス化されると、競合が発生する可能性があります。 このようなインストール時の競合を回避するには、[`dependsOn` ディレクティブ](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)を使用して、拡張機能が順番にインストールされるようにします。 拡張機能は、どちらの順序でもインストールできます。
 
-* LAD 2.3 で提供されたものと同じメトリックをキャプチャし、保存します。
-* LAD 3.0 の新機能である、便利な一連のファイル システム メトリックをキャプチャします。
+これらのインストール手順と[ダウンロード可能なサンプル構成](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json)により、LAD 4.0 は次のように構成されます。
+
+* LAD 2.3、3* で提供されたものと同じメトリックをキャプチャし、保存します。
+* Azure Storage への通常のシンクと共に Azure Monitor シンクにメトリックを送信します。Lad 4.0 の新機能です
+* LAD 3.0 によって提供された、便利な一連のファイル システム メトリックをキャプチャします。
 * LAD 2.3 で有効になっている既定の syslog コレクションをキャプチャします。
 * Azure ポータル エクスペリエンスを使用して、VM メトリックのチャート作成とアラート通知を行います。
 
@@ -70,7 +75,30 @@ Debian 7 などのメジャー バージョンのみを示しているディス�
 * **Azure Linux エージェント バージョン 2.2.0 以降**。 ほとんどの Azure VM Linux ギャラリー イメージには、バージョン 2.2.7 以降が含まれています。 `/usr/sbin/waagent -version` を実行して、VM にインストールされているバージョンを確認します。 VM で古いバージョンのゲスト エージェントを実行している場合は、[次の手順](./update-linux-agent.md)に従って更新します。
 * **Azure CLI**。 ご使用のマシンに [Azure CLI 環境をセットアップ](/cli/azure/install-azure-cli)します。
 * wget コマンド。まだ持っていない場合は `sudo apt-get install wget` を実行します。
-* 既存の Azure サブスクリプションと、データをその中に格納するための既存のストレージ アカウント。
+* 既存の Azure サブスクリプションと、データを格納するための既存の汎用ストレージ アカウント。  汎用ストレージ アカウントでは、必須のテーブル ストレージがサポートされます。  BLOB ストレージ アカウントは機能しません。
+* Python 2
+
+### <a name="python-requirement"></a>Python の要件
+
+Linux Diagnostic Extension には、Python 2 が必要です。 既定で Python 2 が含まれないディストリビューションが仮想マシンで使用されている場合、それをインストールする必要があります。 次のサンプル コマンドでは、異なるディストリビューションに Python 2 がインストールされます。    
+
+ - Red Hat、CentOS、Oracle: `yum install -y python2`
+ - Ubuntu、Debian: `apt-get install -y python2`
+ - SUSE: `zypper install -y python2`
+
+python2 実行可能ファイルに *python* という別名を付ける必要があります。 この別名を設定するために使用できる 1 つの方法を次に示します。
+
+1. 次のコマンドを実行して、既存の別名を削除します。
+ 
+    ```
+    sudo update-alternatives --remove-all python
+    ```
+
+2. 次のコマンドを実行して、別名を作成します。
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+    ```
 
 ### <a name="sample-installation"></a>サンプル インストール
 
@@ -78,6 +106,9 @@ Debian 7 などのメジャー バージョンのみを示しているディス�
 > いずれのサンプルの場合でも、実行前に、最初のセクションに変数の正しい値を入力します。 
 
 これらの例でダウンロードしたサンプル構成では、一連の標準データが収集され、それらがテーブル ストレージに送信されます。 サンプル構成の URL と内容は変更される可能性があります。 ほとんどの場合、毎回その URL をダウンロードするのではなく、ポータル設定 JSON ファイルのコピーをダウンロードし、ニーズに合わせてカスタマイズし、自分で作るテンプレートやオートメーションでは独自のバージョンの構成ファイルを使用するようにします。
+
+> [!NOTE]
+> 新しい Azure Monitor シンクを有効にするには、VM で MSI 認証トークンの生成のために、システム割り当て ID が有効にされている必要があります。 これは、VM の作成中、または VM の作成後に行うことができます。 ポータル、CLI、PowerShell、およびリソース マネージャーを使用して、システム割り当て ID を有効にする手順。  の詳細については、[こちら](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)を参照してください。 
 
 #### <a name="azure-cli-sample"></a>Azure CLI のサンプル
 
@@ -93,6 +124,9 @@ az login
 # Select the subscription containing the storage account
 az account set --subscription <your_azure_subscription_id>
 
+# Enable System Assigned Identity to the existing VM
+az vm identity assign -g $my_resource_group -n $my_linux_vm
+
 # Download the sample Public settings. (You could also use curl or any web browser)
 wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
 
@@ -105,8 +139,40 @@ sed -i "s#__VM_RESOURCE_ID__#$my_vm_resource_id#g" portal_public_settings.json
 my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --account-name $my_diagnostic_storage_account --expiry 2037-12-31T23:59:00Z --permissions wlacu --resource-types co --services bt -o tsv)
 my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken'}"
 
-# Finallly tell Azure to install and enable the extension
-az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
+# Finally tell Azure to install and enable the extension
+az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
+```
+#### <a name="azure-cli-sample-for-installing-lad-40-extension-on-the-virtual-machine-scale-set-instance"></a>LAD 4.0 拡張機能を仮想マシン スケール セット インスタンスにインストールするための Azure CLI のサンプル
+
+```azurecli
+#Set your Azure VMSS diagnostic variables correctly below
+$my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
+$my_linux_vmss=<your_azure_linux_vmss_name>
+$my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
+
+# Should login to Azure first before anything else
+az login
+
+# Select the subscription containing the storage account
+az account set --subscription <your_azure_subscription_id>
+
+# Enable System Assigned Identity to the existing VMSS
+az vmss identity assign -g $my_resource_group -n $my_linux_vmss
+
+# Download the sample Public settings. (You could also use curl or any web browser)
+wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
+
+# Build the VMSS resource ID. Replace storage account name and resource ID in the public settings.
+$my_vmss_resource_id=$(az vmss show -g $my_resource_group -n $my_linux_vmss --query "id" -o tsv)
+sed -i "s#__DIAGNOSTIC_STORAGE_ACCOUNT__#$my_diagnostic_storage_account#g" portal_public_settings.json
+sed -i "s#__VM_RESOURCE_ID__#$my_vmss_resource_id#g" portal_public_settings.json
+
+# Build the protected settings (storage account SAS token)
+$my_diagnostic_storage_account_sastoken=$(az storage account generate-sas --account-name $my_diagnostic_storage_account --expiry 2037-12-31T23:59:00Z --permissions wlacu --resource-types co --services bt -o tsv)
+$my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_account', 'storageAccountSasToken': '$my_diagnostic_storage_account_sastoken'}"
+
+# Finally tell Azure to install and enable the extension
+az vmss extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group $my_resource_group --vmss-name $my_linux_vmss --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
 
 #### <a name="powershell-sample"></a>PowerShell のサンプル
@@ -120,6 +186,9 @@ $VMresourceGroup = "yourVMResourceGroupName"
 # Get the VM object
 $vm = Get-AzVM -Name $vmName -ResourceGroupName $VMresourceGroup
 
+# Enable System Assigned Identity on an existing VM
+Update-AzVM -ResourceGroupName $VMresourceGroup -VM $vm -IdentityType SystemAssigned
+
 # Get the public settings template from GitHub and update the templated values for storage account and resource ID
 $publicSettings = (Invoke-WebRequest -Uri https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json).Content
 $publicSettings = $publicSettings.Replace('__DIAGNOSTIC_STORAGE_ACCOUNT__', $storageAccountName)
@@ -128,13 +197,13 @@ $publicSettings = $publicSettings.Replace('__VM_RESOURCE_ID__', $vm.Id)
 # If you have your own customized public settings, you can inline those rather than using the template above: $publicSettings = '{"ladCfg":  { ... },}'
 
 # Generate a SAS token for the agent to use to authenticate with the storage account
-$sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context
+$sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context -ExpiryTime $([System.DateTime]::Now.AddYears(10))
 
 # Build the protected settings (storage account SAS token)
 $protectedSettings="{'storageAccountName': '$storageAccountName', 'storageAccountSasToken': '$sasToken'}"
 
 # Finally install the extension with the settings built above
-Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location $vm.Location -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0 
+Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location $vm.Location -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 4.0 
 ```
 
 ### <a name="updating-the-extension-settings"></a>拡張機能の設定の更新
@@ -143,21 +212,17 @@ Protected 設定または Public 設定を変更した後、同じコマンド�
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>以前のバージョンの拡張機能からの移行
 
-拡張機能の最新バージョンは **3.0** です。 **以前のバージョン (2.x) は非推奨となり、2018 年 7 月 31 日以降は非公開になる可能性があります**。
+拡張機能の最新バージョンは、**現在パブリック プレビュー段階の 4.0** です。 **以前のバージョンの 3.x は引き続きサポートされていますが、バージョン 2.x は 2018 年 7 月 31 日以降、非推奨となりました**。
 
 > [!IMPORTANT]
-> この拡張機能では、構成の面で大幅な変更点が導入されます。 その変更点の 1 つは、拡張機能のセキュリティを向上させるために行われました。結果として、2.x との下位互換性を維持できなくなりました。 また、この拡張機能の Extension Publisher は、2.x バージョンのパブリッシャーとは異なります。
->
-> 2\.x からこの新しいバージョンの拡張機能に移行するには、 (古いパブリッシャー名で) 古い拡張機能をアンインストールしてから、バージョン 3 の拡張機能をインストールする必要があります。
+> 3\. x からこの新しいバージョンの拡張機能に移行するには、古い拡張機能をアンインストールしてから、バージョン 4 の拡張機能 (メトリックを Azure Monitor シンクに送信するためのシステム割り当て ID とシンクの更新済み構成を含む) をインストールする必要があります。
 
 推奨事項:
 
 * 自動マイナー バージョン アップグレードを有効にして、拡張機能をインストールします。
-  * Azure XPLAT CLI または Powershell を使用して拡張機能をインストールする場合は、クラシック デプロイ モデルの VM では、バージョンを「3. *」に指定します。
+  * Azure XPLAT CLI または Powershell を使用して拡張機能をインストールする場合は、クラシック デプロイ モデルの VM では、バージョンを '4.*' に指定します。
   * Azure Resource Manager デプロイ モデルの VM では、VM デプロイ テンプレートに「"autoUpgradeMinorVersion": true」を含めます。
-* LAD 3.0 では、新規/別のストレージ アカウントを使用します。 LAD 2.3 と LAD 3.0 の間には小さな非互換性がいくつかあり、アカウントの共有には手間がかかります。
-  * LAD 3.0 では、syslog イベントを別の名前のテーブルに格納します。
-  * LAD 3.0 では、`builtin` メトリックの counterSpecifier 文字列が異なります。
+* LAD 3.* と同じストレージ アカウントを LAD 4.0 に使用できます。 
 
 ## <a name="protected-settings"></a>保護された設定
 
@@ -177,7 +242,7 @@ Protected 設定または Public 設定を変更した後、同じコマンド�
 ---- | -----
 storageAccountName | 拡張機能によってデータが書き込まれるストレージ アカウントの名前。
 storageAccountEndPoint | (省略可能) ストレージ アカウントが存在するクラウドを識別するエンドポイント。 この設定がない場合、LAD の既定値は Azure パブリック クラウド `https://core.windows.net` になります。 Azure Germany、Azure Government、Azure China でストレージ アカウントを使用するには、この値を適切に設定します。
-storageAccountSasToken | BLOB および Table service (`ss='bt'`) の[アカウント SAS トークン](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/)。追加、作成、一覧表示、更新、書き込み権限 (`sp='acluw'`) を付与するコンテナーおよびオブジェクト (`srt='co'`) に適用できます。 先頭の疑問符 (?) を*含めないで*ください。
+storageAccountSasToken | BLOB および Table service (`ss='bt'`) の[アカウント SAS トークン](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/)。追加、作成、一覧表示、更新、書き込み権限 (`sp='acluw'`) を付与するコンテナーおよびオブジェクト (`srt='co'`) に適用できます。 先頭の疑問符 (?) を *含めないで* ください。
 mdsdHttpProxy | (省略可能) 指定されたストレージ アカウントとエンドポイントに拡張機能が接続するために必要な HTTP プロキシ情報。
 sinksConfig | (省略可能) メトリックとイベントの配信が可能な代替宛先の詳細。 拡張機能でサポートされている各データ シンクの詳細については、以降のセクションで説明します。
 
@@ -190,7 +255,7 @@ Resource Manager テンプレート内の SAS トークンを取得するには�
 1. 前述のように、適切なセクションを作成します
 1. [SAS の生成] ボタンをクリックします。
 
-![image](./media/diagnostics-linux/make_sas.png)
+:::image type="content" source="./media/diagnostics-linux/make_sas.png" alt-text="スクリーンショットには、[Shared access signature] ページと、[SAS の生成] が表示されています。":::
 
 生成された SAS を storageAccountSasToken フィールドにコピーします。先頭の疑問符 ("?") を削除します。
 
@@ -216,7 +281,7 @@ Resource Manager テンプレート内の SAS トークンを取得するには�
 name | このシンクを拡張機能構成の他の場所で参照するために使用される文字列。
 type | 定義されているシンクの型。 この型のインスタンス内のその他の値 (存在する場合) を決定します。
 
-Linux Diagnostic Extension のバージョン 3.0 では、EventHub と JsonBlob という 2 つのシンク型がサポートされています。
+Linux Diagnostic Extension のバージョン 4.0 では、EventHub と JsonBlob という 2 つのシンク型がサポートされています。
 
 #### <a name="the-eventhub-sink"></a>EventHub シンク
 
@@ -261,14 +326,14 @@ JsonBlob シンクに転送されたデータは、Azure ストレージ内の B
 
 ## <a name="public-settings"></a>Public 設定
 
-この構造体には、拡張機能によって収集された情報を制御するさまざまな設定ブロックが含まれています。 各設定は省略可能です。 `ladCfg` を指定した場合、`StorageAccount` も指定する必要があります。
+この構造体には、拡張機能によって収集された情報を制御するさまざまな設定ブロックが含まれています。 各設定 (ladCfg を除く) は省略可能です。 `ladCfg` にメトリックまたは syslog の収集を指定する場合、`StorageAccount` も指定する必要があります。 LAD 4.0 からのメトリックに対して Azure Monitor シンクを有効にするには、sinksConfig 要素を指定する必要があります
 
 ```json
 {
     "ladCfg":  { ... },
-    "perfCfg": { ... },
     "fileLogs": { ... },
     "StorageAccount": "the storage account to receive data",
+    "sinksConfig": { ... },
     "mdsdHttpProxy" : ""
 }
 ```
@@ -294,7 +359,15 @@ mdsdHttpProxy | (省略可能) [保護された設定](#protected-settings)で�
 }
 ```
 
-この省略可能な構造体は、Azure Metrics サービスおよび他のデータ シンクに配信するためのメトリックとログの収集を制御します。 `performanceCounters` または `syslogEvents` のどちらか、またはその両方を指定する必要があります。 `metrics` 構造体を指定する必要があります。
+この構造体は、Azure Metrics サービスおよび他のデータ シンクに配信するためのメトリックとログの収集を制御します。 `performanceCounters` または `syslogEvents` のどちらか、またはその両方を指定する必要があります。 `metrics` 構造体を指定する必要があります。
+
+syslog またはメトリックの収集を有効にしない場合、次に示すように、ladCfg 要素の空の構造体を指定するだけです。 
+
+```json
+"ladCfg": {
+    "diagnosticMonitorConfiguration": {}
+    }
+```
 
 要素 | 値
 ------- | -----
@@ -412,31 +485,25 @@ minSeverity | Syslog の重大度レベル ("LOG\_ERR" や "LOG\_INFO" など)�
 
 例は、`LinuxSyslog20170410` や `LinuxSyslog20170609` のようになります。
 
-### <a name="perfcfg"></a>perfCfg
+### <a name="sinksconfig"></a>sinksConfig
 
-この省略可能なセクションは、任意の [OMI](https://github.com/Microsoft/omi) クエリの実行を制御します。
+この省略可能なセクションでは、ストレージ アカウントと既定のゲスト メトリック ブレードに加えて、Azure Monitor シンクへのメトリックの送信の有効化を制御します。
+
+> [!NOTE]
+> そのためには、VM または VMSS でシステム割り当て ID を有効にする必要があります。 これは、ポータル、CLI、PowerShell、およびリソース マネージャーを使用して行うことができます。 手順の詳細については、[こちら](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)を参照してください。 これを有効にする手順は、上記の AZ CLI、PowerShell などのインストール サンプルにも記載されています。 
 
 ```json
-"perfCfg": [
-    {
-        "namespace": "root/scx",
-        "query": "SELECT PercentAvailableMemory, PercentUsedSwap FROM SCX_MemoryStatisticalInformation",
-        "table": "LinuxOldMemory",
-        "frequency": 300,
-        "sinks": ""
-    }
-]
+  "sinksConfig": {
+    "sink": [
+      {
+        "name": "AzMonSink",
+        "type": "AzMonSink",
+        "AzureMonitor": {}
+      }
+    ]
+  },
 ```
 
-要素 | 値
-------- | -----
-namespace | (省略可能) クエリが実行される OMI 名前空間。 指定されていない場合、既定値は "root/scx" で、[System Center クロスプラットフォーム プロバイダー](https://github.com/Microsoft/SCXcore)によって実装されます。
-query | 実行される OMI クエリ。
-table | (省略可能) 指定されたストレージ アカウントの Azure ストレージ テーブル ([保護された設定](#protected-settings)を参照してください)。
-frequency | (省略可能) クエリの実行間隔 (秒) 。 既定値は 300 (5 分) です。最小値は 15 秒です。
-sinks | (省略可能) メトリック結果の生のサンプルが発行される追加のシンクの名前をコンマで区切ったリスト。 これらの生のサンプルの集計は、拡張機能または Azure メトリックスによって計算されません。
-
-"table" または "sinks" のどちらか、またはその両方を指定する必要があります。
 
 ### <a name="filelogs"></a>fileLogs
 
@@ -465,6 +532,9 @@ sinks | (省略可能) ログ行が送信される追加のシンクの名前を
 
 ## <a name="metrics-supported-by-the-builtin-provider"></a>組み込みプロバイダーでサポートされているメトリック
 
+> [!NOTE]
+> LAD によってサポートされている既定のメトリックは、すべてのファイルシステム、ディスク、名前で集計されます。 集計されないメトリックについては、新しい Azure Monitor シンク メトリックのサポートを参照してください。
+
 組み込みメトリック プロバイダーは、幅広いユーザーにとって最も興味深いメトリックのソースです。 これらのメトリックは、大きく 5 つのクラスに分類されます。
 
 * プロセッサ
@@ -489,8 +559,6 @@ PercentPrivilegedTime | 非アイドル時間のうち、特権 (カーネル) �
 
 最初の 4 つのカウンターの合計は 100% となる必要があります。 最後の 3 つカウンターの合計も 100% になります。PercentProcessorTime、PercentIOWaitTime、PercentInterruptTime の合計を細分したものが、それらのカウンターです。
 
-すべてのプロセッサで集計された単一のメトリックを取得するには、`"condition": "IsAggregate=TRUE"` のように設定します。 4 つの vCPU の VM の 2 番目の論理プロセッサなど、特定のプロセッサのメトリックを取得するには、`"condition": "Name=\\"1\\""` のように設定します。 論理プロセッサ番号は、 `[0..n-1]` の範囲内です。
-
 ### <a name="builtin-metrics-for-the-memory-class"></a>"メモリ" クラスの組み込みのメトリック
 
 "メモリ" クラスのメトリックは、メモリの使用率、ページング、スワップに関する情報を提供します。
@@ -513,7 +581,7 @@ PercentUsedSwap | 合計スワップに対する使用中のスワップ領域�
 
 ### <a name="builtin-metrics-for-the-network-class"></a>"ネットワーク" クラスの組み込みのメトリック
 
-"ネットワーク" クラスのメトリックは、起動後の個々のネットワーク インターフェイス上のネットワーク アクティビティに関する情報を提供します。 LAD は、ホスト メトリックから取得できる帯域幅メトリックを公開しません。
+メトリックのネットワーク クラスは、起動後の個々のネットワーク インターフェイスでのネットワーク アクティビティに関する情報を提供します。 LAD は、ホスト メトリックから取得できる帯域幅メトリックを公開しません。
 
 counter | 意味
 ------- | -------
@@ -525,8 +593,6 @@ PacketsReceived | 起動後に受信した合計パケット数
 TotalRxErrors | 起動後の受信エラー数
 TotalTxErrors | 起動後の送信エラー数
 TotalCollisions | 起動後にネットワーク ポートによって報告された競合の数
-
- このクラスはインスタンス化されていますが、LAD は、すべてのネットワーク デバイスから集計されたネットワーク メトリックのキャプチャをサポートしていません。 eth0 などの特定のインターフェイスのメトリックを取得するには、`"condition": "InstanceID=\\"eth0\\""` のように設定します。
 
 ### <a name="builtin-metrics-for-the-filesystem-class"></a>"ファイルシステム" クラスの組み込みメトリック
 
@@ -547,10 +613,6 @@ ReadsPerSecond | 1 秒あたりの読み取り操作
 WritesPerSecond | 1 秒あたりの書き込み操作
 TransfersPerSecond | 1 秒あたりの読み取りまたは書き込み操作
 
-すべてのファイル システムの集計値は、`"condition": "IsAggregate=True"` のように設定すると取得できます。 "/mnt" のような特定のマウントされたファイル システムの値は、`"condition": 'Name="/mnt"'` のように設定すると取得できます。 
-
-**注**:JSON ではなく Azure Portal を使用する場合、正しい条件フィールド形式は Name='/mnt' になります。
-
 ### <a name="builtin-metrics-for-the-disk-class"></a>"ディスク" クラスの組み込みメトリック
 
 "ディスク" クラスのメトリックは、ディスク デバイスの使用状況に関する情報を提供します。 これらの統計情報は、ドライブ全体に適用されます。 デバイス上に複数のファイル システムが存在する場合、そのデバイスのカウンターは、実際にはファイル システム全体で集計されます。
@@ -568,31 +630,29 @@ ReadBytesPerSecond | 1 秒あたりの読み取りバイト数
 WriteBytesPerSecond | 1 秒あたりの書き込みバイト数
 BytesPerSecond | 1 秒あたりの読み取りまたは書き込みバイト数
 
-すべてのディスクの集計値は、`"condition": "IsAggregate=True"` のように設定すると取得できます。 特定のデバイス (たとえば、dev/sdf1) の情報を取得するには、`"condition": "Name=\\"/dev/sdf1\\""` のように設定します。
-
-## <a name="installing-and-configuring-lad-30"></a>LAD 3.0 のインストールと構成
+## <a name="installing-and-configuring-lad-40"></a>LAD 4.0 のインストールと構成
 
 ### <a name="azure-cli"></a>Azure CLI
 
 保護された設定が ProtectedSettings.json ファイルにあり、パブリック構成情報が PublicSettings.json にあると仮定して、このコマンドを実行します。
 
 ```azurecli
-az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
+az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 4.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-このコマンドは、Azure CLI の Azure Resource Management モードを使用していることを前提としています。 クラシック デプロイ モデル (ASM) VM 用に LAD を構成するには、"asm" モード (`azure config mode asm`) に切り替え、コマンド内のリソース グループ名を省略します。 詳細については、[クロスプラットフォーム CLI ドキュメント](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)をご覧ください。
+このコマンドは、Azure CLI の Azure Resource Management モードを使用していることを前提としています。 クラシック デプロイ モデル (ASM) VM 用に LAD を構成するには、"asm" モード (`azure config mode asm`) に切り替え、コマンド内のリソース グループ名を省略します。 詳細については、[クロスプラットフォーム CLI ドキュメント](/cli/azure/authenticate-azure-cli)をご覧ください。
 
 ### <a name="powershell"></a>PowerShell
 
 保護された設定が `$protectedSettings` 変数にあり、パブリック構成情報が `$publicSettings` 変数にあると仮定して、このコマンドを実行します。
 
 ```powershell
-Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0
+Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 4.0
 ```
 
-## <a name="an-example-lad-30-configuration"></a>LAD 3.0 の構成例
+## <a name="an-example-lad-40-configuration"></a>LAD 4.0 の構成例
 
-前述の定義に基づき、以下に LAD 3.0 拡張機能の構成例を示し、説明を加えます。 このサンプルを特定のケースに適用するには、独自のストレージ アカウント名、アカウント SAS トークン、EventHubs SAS トークンを使用する必要があります。
+前述の定義に基づき、以下に LAD 4.0 拡張機能の構成例を示し、説明を加えます。 このサンプルを特定のケースに適用するには、独自のストレージ アカウント名、アカウント SAS トークン、EventHubs SAS トークンを使用する必要があります。
 
 > [!NOTE]
 > 設定を公開する方法と保護する方法は、LAD のインストールに Azure CLI を使用するのか、PowerShell を使用するのかによって異なります。 Azure CLI を使用する場合、次の設定を ProtectedSettings.json と PublicSettings.json に保存し、上のサンプル コマンドで使用します。 PowerShell を使用する場合、`$protectedSettings = '{ ... }'` を実行して `$protectedSettings` と `$publicSettings` に設定を保存します。
@@ -653,7 +713,6 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 
 * percent-processor-time メトリックと used-disk-space メトリックを `WADMetrics*` テーブルにアップロードする
 * Syslog ファシリティ "user" と重大度 "info" からのメッセージを `LinuxSyslog*` テーブルにアップロードする
-* 生の OMI クエリ結果 (PercentProcessorTime と PercentIdleTime) を指定された `LinuxCPU` テーブルにアップロードする
 * ファイル `/var/log/myladtestlog` の追加行を `MyLadTestLog` テーブルにアップロードする
 
 いずれの場合も、データは次の場所にもアップロードされます。
@@ -720,14 +779,15 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
       }
     }
   },
-  "perfCfg": [
-    {
-      "query": "SELECT PercentProcessorTime, PercentIdleTime FROM SCX_ProcessorStatisticalInformation WHERE Name='_TOTAL'",
-      "table": "LinuxCpu",
-      "frequency": 60,
-      "sinks": "LinuxCpuJsonBlob,LinuxCpuEventHub"
-    }
-  ],
+  "sinksConfig": {
+    "sink": [
+      {
+        "name": "AzMonSink",
+        "type": "AzMonSink",
+        "AzureMonitor": {}
+      }
+    ]
+  },
   "fileLogs": [
     {
       "file": "/var/log/myladtestlog",
@@ -748,7 +808,7 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 
 Azure ポータルを使用して、パフォーマンス データを表示したり、アラートを設定したりします。
 
-![image](./media/diagnostics-linux/graph_metrics.png)
+:::image type="content" source="./media/diagnostics-linux/graph_metrics.png" alt-text="スクリーンショットには、[使用されたディスク領域]\(Used disk space on\) メトリックが選択され、結果のグラフが Azure portal で表示されています。":::
 
 `performanceCounters` データは常に Azure Storage テーブルに格納されます。 Azure Storage API は、さまざまな言語とプラットフォームで利用できます。
 
@@ -757,16 +817,16 @@ JsonBlob シンクに送信されるデータは、[保護された設定](#prot
 さらに、次の UI ツールを使用して、Azure Storage のデータにアクセスすることもできます。
 
 * Visual Studio のサーバー エクスプローラー。
-* [Microsoft Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure ストレージ エクスプローラー")。
+* [スクリーンショットには、Azure Storage Exploref のコンテナーとテーブルが示されています](https://azurestorageexplorer.codeplex.com/ "Azure ストレージ エクスプローラー")。
 
-この Microsoft Azure Storage エクスプ ローラー セッションのスナップショットは、テスト VM 上で正しく構成された LAD 3.0 拡張機能から生成された Azure Storage テーブルとコンテナーが表示されています。 イメージは [サンプル LAD 3.0 構成](#an-example-lad-30-configuration)と正確には一致しません。
+この Microsoft Azure Storage エクスプ ローラー セッションのスナップショットは、テスト VM 上で正しく構成された LAD 3.0 拡張機能から生成された Azure Storage テーブルとコンテナーが表示されています。 イメージは [サンプル LAD 3.0 構成](#an-example-lad-40-configuration)と正確には一致しません。
 
-![image](./media/diagnostics-linux/stg_explorer.png)
+:::image type="content" source="./media/diagnostics-linux/stg_explorer.png" alt-text="スクリーンショットに Azure Storage Explorer が示されています。":::
 
 EventHubs エンドポイントに発行されたメッセージを使用する方法については、関連する [EventHubs ドキュメント](../../event-hubs/event-hubs-about.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* 収集するメトリックのメトリック アラートを [Azure Monitor](../../azure-monitor/platform/alerts-classic-portal.md) で作成します。
-* メトリックの[監視グラフ](../../azure-monitor/platform/data-platform.md)を作成します。
+* 収集するメトリックのメトリック アラートを [Azure Monitor](../../azure-monitor/alerts/alerts-classic-portal.md) で作成します。
+* メトリックの[監視グラフ](../../azure-monitor/data-platform.md)を作成します。
 * メトリックを使用して[仮想マシン スケール セットを作成](../linux/tutorial-create-vmss.md)し、自動スケールを制御する方法について説明します。

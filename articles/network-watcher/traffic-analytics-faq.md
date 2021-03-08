@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/08/2018
+ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: fa1ed25e8c9a80dda2bf0e4625d28a3befaa49c9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f4d97b81bf8f11b8380f04dcbfdb72bd658805ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87479848"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579235"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics についてよく寄せられる質問
 
@@ -58,7 +58,7 @@ Traffic Analytics では、次の前提条件が必要です。
 
 3. 指定したユーザーに割り当てられているすべてのロールを一覧表示するには、**Get-AzRoleAssignment -SignInName [ユーザーの電子メール アドレス] -IncludeClassicAdministrators** を使用します。 
 
-出力が表示されない場合は、各サブスクリプション管理者に連絡して、コマンドを実行するアクセス権を取得してください。 詳細については、[Azure PowerShell を使用したロールベースのアクセス制御の管理](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)に関するページを参照してください。
+出力が表示されない場合は、各サブスクリプション管理者に連絡して、コマンドを実行するアクセス権を取得してください。 詳細については、「[Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-powershell.md)」を参照してください。
 
 
 ## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>Traffic Analytics はどの Azure リージョンで使用できますか?
@@ -126,7 +126,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 ## <a name="can-i-use-an-existing-workspace"></a>既存のワークスペースを使用できますか?
 
-はい。 既存のワークスペースを選択する場合は、それが新しいクエリ言語に移行されていることを確認してください。 そのワークスペースのアップグレードを望まない場合は、新しいワークスペースを作成する必要があります。 新しいクエリ言語の詳細については、[新しいログ検索への Azure Monitor ログのアップグレード](../log-analytics/log-analytics-log-search-upgrade.md)に関するページをご覧ください。
+はい。 既存のワークスペースを選択する場合は、それが新しいクエリ言語に移行されていることを確認してください。 そのワークスペースのアップグレードを望まない場合は、新しいワークスペースを作成する必要があります。 新しいクエリ言語の詳細については、[新しいログ検索への Azure Monitor ログのアップグレード](../azure-monitor/logs/log-query-overview.md)に関するページをご覧ください。
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>自分の Azure Storage アカウントと自分の Log Analytics ワークスペースをそれぞれ別のサブスクリプションに置くことができますか?
 
@@ -142,7 +142,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 ## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>NSG フロー ログ ページの下に "読み込みに失敗しました" という状態が表示される場合はどうすればよいですか?
 
-フロー ログが正しく機能するには、Microsoft.Insights プロバイダーが登録されている必要があります。 サブスクリプションで Microsoft.Insights プロバイダーが登録されているかどうかわからない場合は、次のコマンドの *xxxxx-xxxxx-xxxxxx-xxxx* を置き換え、PowerShell から次のコマンドを実行します。
+フロー ログが正常に機能するためには、Microsoft.Insights プロバイダーが登録されている必要があります。 サブスクリプションで Microsoft.Insights プロバイダーが登録されているかどうかわからない場合は、次のコマンドの *xxxxx-xxxxx-xxxxxx-xxxx* を置き換え、PowerShell から次のコマンドを実行します。
 
 ```powershell-interactive
 **Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
@@ -153,7 +153,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 ダッシュボードを最初に表示する際は最大で 30 分かかることがあります。 ソリューションで意味がある分析情報が導出されるには、まず十分なデータを集計する必要があります。 その後にレポートが生成されます。 
 
-## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>次のメッセージが表示された場合はどうすればよいですか? "We could not find any data in this workspace for selected time interval. 時間間隔を変更してみるか、別のワークスペースを選択してください"。
+## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>次のメッセージが表示された場合はどうすればよいですか? "選択した時間内のデータがこのワークスペースで見つかりませんでした。 時間間隔を変更してみるか、別のワークスペースを選択してください"。
 
 次の方法を試してください。
 - 上部のバーで期間を変更します。
@@ -170,13 +170,13 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
     
 問題が解決しない場合は、[User Voice フォーラム](https://feedback.azure.com/forums/217313-networking?category_id=195844)に問題を投稿してください。
     
-## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>次のメッセージが表示された場合はどうすればよいですか? "Looks like we have resources data (Topology) and no flows information. Meanwhile, click here to see resources data and refer to FAQs for further information. (まず、ここをクリックしてリソース データを確認し、詳細については FAQ を参照してください。)"
+## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>次のメッセージが表示された場合はどうすればよいですか? "選択したワークスペースに関して存在するのはリソース データ (トポロジ) のみで、フローの情報はない可能性があります。 まず、ここをクリックしてリソース データを確認し、詳細については FAQ を参照してください。"
 
 ダッシュボードにはリソース情報が表示されていますが、フロー関連の統計がありません。 リソース間の通信フローがないためにデータが示されない可能性があります。 60 分間待ってから、状態を再確認します。 問題が解決せず、リソース間の通信フローが存在することが確実な場合は、[User Voice フォーラム](https://feedback.azure.com/forums/217313-networking?category_id=195844)に問題を投稿してください。
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>PowerShell または Azure Resource Manager テンプレートまたはクライアントを使用してトラフィック分析を構成できますか?
 
-バージョン 6.2.1 以降の Windows PowerShell を使用してトラフィック分析を構成できます。 Set コマンドレットを使用して特定の NSG のフロー ログとトラフィック分析を構成するには、[Set-AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) を参照してください。 特定の NSG のフロー ログとトラフィック分析状態を取得するには、[Get-AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus) を参照してください。
+バージョン 6.2.1 以降の Windows PowerShell を使用してトラフィック分析を構成できます。 Set コマンドレットを使用して特定の NSG のフロー ログとトラフィック分析を構成するには、[Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) を参照してください。 特定の NSG のフロー ログとトラフィック分析状態を取得するには、[Get-AzNetworkWatcherFlowLogStatus](/powershell/module/az.network/get-aznetworkwatcherflowlogstatus) を参照してください。
 
 現在、Azure Resource Manager テンプレートを使用してトラフィック分析を構成することはできません。
 
@@ -250,11 +250,11 @@ Traffic Analytics は従量制です。 測定は、サービスによるフロ�
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>Traffic Analytics ではデータがどのような頻度に処理されますか?
 
-Traffic Analytics のスキーマとデータ集計に関するドキュメントの「[データ集計](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation)」セクションを参照してください。
+Traffic Analytics のスキーマとデータ集計に関するドキュメントの「[データ集計](./traffic-analytics-schema.md#data-aggregation)」セクションを参照してください。
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Traffic Analytics では悪意のある IP であるかどうかがどのように判断されますか? 
 
-Traffic Analytics では、IP を悪意のあるものとみなす上で、Microsoft の内部的な脅威インテリジェンス システムに依存しています。 これらのシステムでは、Microsoft の製品とサービス、Microsoft デジタル犯罪対策ユニット (DCU)、Microsoft セキュリティ レスポンス センター (MSRC)、外部フィードなどのさまざまなテレメトリ ソースを活用し、その上に多くのインテリジェンスが構築されます。 このデータの一部は Microsoft の内部的なものです。 既知の IP に悪意のあることを示すフラグが設定された場合、その詳細を知るにはサポート チケットを発行してください。
+Traffic Analytics では、IP を悪意のあるものとみなす上で、Microsoft の内部的な脅威インテリジェンス システムに依存しています。 これらのシステムでは、Microsoft の製品とサービス、Microsoft デジタル犯罪対策ユニット (DCU)、Microsoft セキュリティ レスポンス センター (MSRC)、外部フィードなどのさまざまなテレメトリ ソースを活用し、その上に多くのインテリジェンスが構築されます。 このデータの一部は Mircosoft の内部的なものです。 既知の IP に悪意のあることを示すフラグが設定された場合、その詳細を知るにはサポート チケットを発行してください。
 
 ## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>Traffic Analytics のデータに対してアラートを設定するにはどうすればよいですか?
 
@@ -262,7 +262,7 @@ Traffic Analytics には、アラートに対する組み込みのサポート�
 - Traffic Analytics では Log Analytics への短縮リンクを使用することができます。 
 - [こちらで説明するスキーマ](traffic-analytics-schema.md)を使用して、ご自分のクエリを記述します。 
 - [新しいアラート ルール] をクリックして、アラートを作成します。
-- [ログ アラートのドキュメント](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)を参照して、アラートを作成します。
+- [ログ アラートのドキュメント](../azure-monitor/alerts/alerts-log.md)を参照して、アラートを作成します。
 
 ## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>受信するオンプレミス トラフィックが多い VM を確認するにはどうすればよいですか?
 
@@ -345,13 +345,13 @@ geo マップ ページには主に次の 2 つのセクションがあります
         
 ### <a name="keyboard-navigation-on-the-map"></a>マップでのキーボード ナビゲーション
     
-- バナーでフィルターを選択してから `Ctrl+F6` を押すと、マップ ビューで強調されたノードの 1 つ (**Azure データセンター**または**国/リージョン**) にフォーカスが移動します。
+- バナーでフィルターを選択してから `Ctrl+F6` を押すと、マップ ビューで強調されたノードの 1 つ (**Azure データセンター** または **国/リージョン**) にフォーカスが移動します。
 - マップ内の他の強調表示されたノードに移動するには、前方移動に `Tab` キーまたは `Right arrow` キーを使用します。 後方移動には、`Shift+Tab` キーまたは `Left arrow` キーを使用します。
 - マップ内で強調表示されたノードを選択するには、`Enter` キーまたは `Down arrow` キーを使用します。
 - そのようなノードを選択すると、そのノードの **[Information Tool Box]\(情報ツール ボックス\)** にフォーカスが移動します。 既定では、 **[Information Tool Box]\(情報ツール ボックス\)** の [閉じる] ボタンにフォーカスが移動します。 **[ボックス]** ビュー内で移動する際は、前方には `Right arrow` キー、後方には `Left arrow` キーを使用します。 `Enter` を押すと、 **[Information Tool Box]\(情報ツール ボックス\)** でフォーカスがあるボタンを選択したのと同じ効果があります。
 - **[Information Tool Box]\(情報ツール ボックス\)** にフォーカスがあるときに `Tab`を押すと、フォーカスは、選択したノードと同じ大陸のエンドポイントに移動します。 `Right arrow` キーと `Left arrow` キーを使用して、これらのエンドポイント間を移動できます。
 - 他のフロー エンドポイントまたは大陸クラスターに移動するには、前方移動では `Tab`、後方移動では `Shift+Tab` を使用します。
-- フォーカスが**大陸クラスター**にある場合は、`Enter` または `Down` 方向キーを使用して、大陸クラスター内のエンドポイントを強調表示します。 大陸クラスターのエンドポイントと情報ボックスの [閉じる] ボタンを移動するには、前方移動では `Right arrow` キー、後方移動では `Left arrow` キーをそれぞれ使用します。 任意のエンドポイントで、`Shift+L` を使用すると、選択したノードからエンドポイントへの接続線に切り替えることができます。 もう一度 `Shift+L` を押して、選択したエンドポイントに移動できます。
+- フォーカスが **大陸クラスター** にある場合は、`Enter` または `Down` 方向キーを使用して、大陸クラスター内のエンドポイントを強調表示します。 大陸クラスターのエンドポイントと情報ボックスの [閉じる] ボタンを移動するには、前方移動では `Right arrow` キー、後方移動では `Left arrow` キーをそれぞれ使用します。 任意のエンドポイントで、`Shift+L` を使用すると、選択したノードからエンドポイントへの接続線に切り替えることができます。 もう一度 `Shift+L` を押して、選択したエンドポイントに移動できます。
         
 ### <a name="keyboard-navigation-at-any-stage"></a>任意の段階のキーボード ナビゲーション
     
@@ -400,4 +400,7 @@ geo マップ ページには主に次の 2 つのセクションがあります
 - バナーでフィルターを選択してから `Ctrl+F6` を押すと、トポロジ ビューで強調されたノードの 1 つ (**サブネット**) にフォーカスが移動します。
 - トポロジ ビュー内の他の強調表示されたノードに移動するには、`Shift+Right arrow` キーを使用して前方に移動します。 
 - 強調表示されたノードの **[Information Tool Box]\(情報ツール ボックス\)** にフォーカスが移動します。 既定では、 **[Information Tool Box]\(情報ツール ボックス\)** の **[詳細]** ボタンにフォーカスが移動します。 **[ボックス]** ビュー内で移動する際は、前方には `Right arrow` キー、後方には `Left arrow` キーを使用します。 `Enter` を押すと、 **[Information Tool Box]\(情報ツール ボックス\)** でフォーカスがあるボタンを選択したのと同じ効果があります。
-- このようなノードを選択する際は、`Shift+Left arrow` キーを押して、すべての接続に 1 つずつアクセスできます。 フォーカスはその接続の **[Information Tool Box]\(情報ツール ボックス\)** に移動します。 いずれの時点でも、`Shift+Right arrow` を再度押して、フォーカスをノードに戻すことができます。    
+- このようなノードを選択する際は、`Shift+Left arrow` キーを押して、すべての接続に 1 つずつアクセスできます。 フォーカスはその接続の **[Information Tool Box]\(情報ツール ボックス\)** に移動します。 いずれの時点でも、`Shift+Right arrow` を再度押して、フォーカスをノードに戻すことができます。
+
+## <a name="are-classic-nsgs-supported"></a>従来の NSG はサポートされていますか?
+いいえ。Traffic Analytics は従来の NSG をサポートしていません。 従来のリソースが[非推奨](../virtual-machines/classic-vm-deprecation.md)になるため、IaaS リソースを従来のものから Azure Resource Manager に移行することをお勧めします。 [ツールの実行方法](../virtual-machines/migration-classic-resource-manager-overview.md)については、この記事を参照してください。

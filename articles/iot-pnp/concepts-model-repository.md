@@ -1,229 +1,166 @@
 ---
-title: Azure IoT モデル リポジトリの概念の理解 | Microsoft Docs
-description: ソリューション開発者や IT プロフェッショナル向けに、Azure IoT モデル リポジトリの基本的な概念について説明します。
-author: prashmo
-ms.author: prashmo
-ms.date: 07/24/2020
+title: デバイス モデル リポジトリの概念の理解 | Microsoft Docs
+description: ソリューション開発者や IT プロフェッショナル向けに、デバイス モデル リポジトリの基本的な概念について説明します。
+author: rido-min
+ms.author: rmpablos
+ms.date: 11/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7d736721e2676a42da90aead3144f8016329f730
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: b567efe2541bb33c905def73bb78398799b4ed69
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475500"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920544"
 ---
-# <a name="azure-iot-model-repository"></a>Azure IoT モデル リポジトリ
+# <a name="device-model-repository"></a>デバイス モデル リポジトリ
 
-Azure IoT モデル リポジトリを使用すると、デバイス ビルダーは IoT プラグ アンド プレイ デバイス モデルを管理および共有できます。 デバイス モデルは、[Digital Twins モデリング言語 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) を使用して定義された JSON LD ドキュメントです。 モデル リポジトリ サービスに格納されているモデルは、ソリューション開発者と共有することができます。そのためには、アクセス制御を介してプライベートに共有するか、認証を求めずにパブリックに共有して、IoT プラグ アンド プレイ クラウド ソリューションの統合および開発を行います。
+デバイス モデル リポジトリ (DMR) を使用すると、デバイス ビルダーは IoT プラグ アンド プレイ デバイス モデルを管理および共有できます。 デバイス モデルは、[Digital Twins モデリング言語 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) を使用して定義された JSON LD ドキュメントです。
 
-モデル リポジトリにアクセスするには、次のものを使用します。
+DMR によって、デバイス ツイン モデル識別子 (DTMI) に基づいて DTDL インターフェイスをフォルダー構造に格納するパターンが定義されます。 DTMI を相対パスに変換することで、DMR 内のインターフェイスを特定できます。 たとえば、`dtmi:com:example:Thermostat;1` DTMI は `/dtmi/com/example/thermostat-1.json` に変換されます。
 
-- [Azure IoT モデル リポジトリ](https://aka.ms/iotmodelrepo) ポータル
-- [Azure IoT モデル リポジトリ REST API](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)
-- [Azure CLI の IoT モデル リポジトリ コマンド](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest)
+## <a name="public-device-model-repository"></a>パブリック デバイス モデル リポジトリ
+
+Microsoft によって、これらの特性を持つパブリック DMR がホストされます:
+
+- キュレーション モデル。 Microsoft によって、GitHub のプル要求 (PR) 検証ワークフローを使用して、使用可能なすべてのインターフェイスがレビューおよび承認されます。
+- 不変性。  公開後、インターフェイスを更新することはできません。
+- ハイパースケール。 Microsoft は、デバイス モデルを公開して使用できる、安全でスケーラブルなエンドポイントを作成するために必要なインフラストラクチャを提供しています。
+
+## <a name="custom-device-model-repository"></a>カスタム デバイス モデル リポジトリ
+
+ローカル ファイル システムやカスタム HTTP Web サーバーなどの任意のストレージ メディア内で同じ DMR パターンを使用して、カスタム DMR を作成します。 DMR にアクセスするために使用するベース URL を変更して、パブリック DMR と同じ方法でカスタム DMR からデバイス モデルを取得できます。
+
+> [!NOTE]
+> Microsoft は、パブリック DMR のデバイス モデルを検証するためのツールを提供しています。 これらのツールはカスタム リポジトリで再利用できます。
 
 ## <a name="public-models"></a>パブリック モデル
 
-モデル リポジトリに格納されているパブリック デジタル ツイン モデルは、すべてのユーザーが認証なしでアプリケーションで使用および統合することができます。 また、パブリック モデルを使用すると、オープンなエコシステムでデバイス ビルダーおよびソリューション開発者が、IoT プラグ アンド プレイ デバイス モデルを共有したり、再利用したりすることができます。
+モデル リポジトリに格納されているパブリック デバイス モデルは、すべてのユーザーがアプリケーション内で使用および統合することができます。 パブリック デバイス モデルを使用すると、オープンなエコシステムでデバイス ビルダーおよびソリューション開発者が、IoT プラグ アンド プレイ デバイス モデルを共有したり、再利用したりすることができます。
 
-モデル リポジトリにモデルを公開してパブリックにする方法については、「**会社のモデル**」の「[モデルを公開する](#publish-a-model)」の項を参照してください。
+モデル リポジトリにモデルを公開してパブリックにする方法については、「[モデルを公開する](#publish-a-model)」のセクションを参照してください。
 
-モデル リポジトリ ポータルを使用してパブリック モデルを表示するには:
+ユーザーは、公式の [GitHub リポジトリ](https://github.com/Azure/iot-plugandplay-models)からパブリック インターフェイスを参照、検索、表示できます。
 
-1. [Azure IoT モデル リポジトリ ポータル](https://aka.ms/iotmodelrepo)にアクセスします。
+`dtmi` フォルダー内のすべてのインターフェイスは、パブリック エンドポイント [https://devicemodels.azure.com](https://devicemodels.azure.com) からも使用できます
 
-1. **[View public models]** \(パブリック モデルの表示\) を選択します。
+### <a name="resolve-models"></a>モデルを解決する
 
-    ![パブリック モデルの表示](./media/concepts-model-repository/public-models.png)
+プログラムを使用してこれらのインターフェイスにアクセスするには、DTMI を、パブリック エンドポイントのクエリに使用できる相対パスに変換する必要があります。
 
-REST API を使用してプログラムでパブリック モデルを表示するには、[Get Model](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync) REST API のドキュメントを参照してください。
+DTMI を絶対パスに変換するには、`IsValidDtmi` と共に `DtmiToPath` 関数を使用します。
 
-```csharp
-var httpClient = new HttpClient();
-httpClient.BaseAddress = new Uri("https://repo.azureiotrepository.com");
+```cs
+static string DtmiToPath(string dtmi)
+{
+    if (!IsValidDtmi(dtmi))
+    {
+        return null;
+    }
+    // dtmi:com:example:Thermostat;1 -> dtmi/com/example/thermostat-1.json
+    return $"/{dtmi.ToLowerInvariant().Replace(":", "/").Replace(";", "-")}.json";
+}
 
-var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
+static bool IsValidDtmi(string dtmi)
+{
+    // Regex defined at https://github.com/Azure/digital-twin-model-identifier#validation-regular-expressions
+    Regex rx = new Regex(@"^dtmi:[A-Za-z](?:[A-Za-z0-9_]*[A-Za-z0-9])?(?::[A-Za-z](?:[A-Za-z0-9_]*[A-Za-z0-9])?)*;[1-9][0-9]{0,8}$");
+    return rx.IsMatch(dtmi);
+}
 ```
 
-CLI を使用してパブリック モデルを表示するには、Azure CLI の[モデルの取得](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show)コマンドを参照してください。
+結果のパスとリポジトリのベース URL を使用して、インターフェイスを取得できます。
 
-## <a name="company-models"></a>会社のモデル
+```cs
+const string _repositoryEndpoint = "https://devicemodels.azure.com";
 
-会社のモデル リポジトリは、会社または組織内のユーザーが作成したデジタル ツイン モデルを作成および管理するための、組織の Azure IoT モデル リポジトリ内のテナントです。 会社のモデルは、会社または組織の認証済みユーザーのみが使用できます。 モデル リポジトリのテナント管理者は、会社のモデル リポジトリ内のモデルに対する、会社または組織内の他のユーザーのアクセス許可を割り当てたり、制御したりすることができます。
-
-### <a name="set-up-your-company-model-repository"></a>会社のモデル リポジトリをセットアップする
-
-*会社または学校の Azure Active Directory (Azure AD) アカウント*を使用して、モデル リポジトリにアクセスします。 組織に既に Azure AD テナントがある場合は、この Azure AD テナントのユーザー アカウントとサービス プリンシパルを使用できます。
-
-Azure AD テナントをセットアップする方法と、Azure AD テナントでユーザーまたはサービス プリンシパルを作成する方法については、「[追加情報](#additional-information)」の項を参照してください。
-
-- 組織で最初にモデル リポジトリにアクセスしたか、ポータルにサインインしたユーザーには、**テナント管理者**ロールが付与されます。 このロールを保持しているユーザーは、組織のリポジトリ テナント内の他のユーザーにロールを割り当てることができます。
-
-- **テナント管理者**によって、**モデルの読み取り**、**モデルの作成**などの他のロールがユーザーに割り当てられる場合があります。
-
-### <a name="understand-access-management"></a>アクセス管理について
-
-次の表は、会社のモデル リポジトリでサポートされている機能と、関連するアクセス許可をまとめたものです。
-
-| 機能  | 権限| 説明|
-|-------------|-----------|------------|
-|モデルの読み取り|モデルの読み取り|既定では、会社のテナントのすべてのユーザーが会社のモデルを表示できます。 さらに、ユーザーは他の会社がそのユーザーに対して共有しているプライベート モデルを表示することもできます。|
-|アクセスを管理する|アクセスを管理する|組織内の他のユーザーのユーザー ロールの割り当てを管理 (追加または削除) します。|
-|モデルの作成|モデルの作成|会社のモデル リポジトリにモデルを作成します。|
-|モデルの公開|モデルの公開|モデルを公開してパブリックにし、すべてのユーザーがモデルを表示できるようにします。|
-
-次の表は、アクセス管理に使用できる、モデル リポジトリでサポートされているロールとその機能をまとめたものです。
-
-|Role|機能|
-|----|----------|
-|TenantAdministrator|アクセスの管理、モデルの読み取り|
-|Creator|モデルの作成、モデルの読み取り|
-|Publisher|モデルの公開、モデルの読み取り|
-
-#### <a name="passing-a-security-token-when-accessing-company-models-with-a-rest-api"></a>REST API を使用して会社のモデルにアクセスするときにセキュリティ トークンを渡す
-
-REST API を呼び出して、プライベートな会社のモデルまたは共有されている会社のモデルを管理する場合は、ユーザーまたはサービス プリンシパルの認証トークンを JWT 形式で渡す必要があります。 ユーザーまたはサービス プリンシパルの JWT トークンを取得する方法については、「[追加情報](#additional-information)」の項を参照してください。
-
-会社のモデルまたは共有されたモデルを対象とする場合は、JWT トークンを API の Authorization HTTP ヘッダーで渡す必要があります。 パブリック モデルを対象とする場合、JWT トークンは必要ありません。
-
-```csharp
-// sample token
-var authorizationToken = "eyJhbGciOiJIUzI1NiIsInR5cCTI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
-httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authorizationToken);
+string dtmiPath = DtmiToPath(dtmi.ToString());
+string fullyQualifiedPath = $"{_repositoryEndpoint}{dtmiPath}";
+string modelContent = await _httpClient.GetStringAsync(fullyQualifiedPath);
 ```
 
-### <a name="view-company-or-shared-models"></a>会社のモデルまたは共有されたモデルを表示する
+## <a name="publish-a-model"></a>モデルを公開する
 
-モデルを読み取るには、リポジトリ テナントの *Reader* ロールのメンバーであるか、モデルが共有されている必要があります。 操作しているユーザーに対して共有されている非公開のモデルの一覧と、共有されている公開済みのモデルの一覧が表示されます。 既定では、ユーザーは所属する会社のモデル、他の会社がそのユーザーに対して共有しているモデル、およびすべてのパブリック モデルを読み取ることができます。
+> [!Important]
+> パブリック DMR にモデルを送信できるようにするには、GitHub アカウントが必要です。
 
-ポータルを使用して会社のモデルまたは共有されたモデルを表示するには:
+1. パブリック GitHub リポジトリ ([https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models)) をフォークします。
+1. フォークされたリポジトリをクローンします。 必要に応じて、新しいブランチを作成して、変更を `main` ブランチから分離します。
+1. フォルダーまたはファイル名の規則を使用して、新しいインターフェイスを `dtmi` フォルダーに追加します。 詳細については、「[`dtmi/` フォルダーへのモデルのインポート](#import-a-model-to-the-dtmi-folder)」を参照してください。
+1. `dmr-client` ツールを使用して、ローカルでモデルを検証します。 詳細については、「[モデルを検証する](#validate-models)」を参照してください。
+1. 変更をローカルでコミットし、フォークにプッシュします。
+1. フォークから、`main` ブランチを対象とするプル要求を作成します。 「[Issue もしくはプル リクエストの作成](https://docs.github.com/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/creating-an-issue-or-pull-request)」のドキュメントを参照してください。
+1. [プル要求の要件](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md)を確認します。
 
-1. [Azure IoT モデル リポジトリ ポータル](https://aka.ms/iotmodelrepo)にサインインします。
+送信されたインターフェイスを検証する一連の GitHub アクションがプル要求によってトリガーされ、プル要求がすべての要件を満たしていることが確認されます。
 
-1. 左側のペインで、 **[会社のモデル]** – **[非公開]** を展開します
+Microsoft によって、3 営業日以内にすべてのチェックが行われ、プル要求への応答が行われます。
 
-    ![会社のモデルの表示](./media/concepts-model-repository/view-company-models.png)
+### <a name="dmr-client-tools"></a>`dmr-client` のツール
 
-1. 左側のペインで、 **[共有されたモデル – 非公開]** を展開します
-
-    ![共有されたモデルの表示](./media/concepts-model-repository/view-shared-models.png)
-
-REST API を使用して会社のモデルまたは共有されたモデルを表示するには、[Get Model](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync) REST API のドキュメントを参照してください。 HTTP 要求で JWT Authorization ヘッダーを渡す方法については、「[REST API を使用して会社のモデルにアクセスするときにセキュリティ トークンを渡す](#passing-a-security-token-when-accessing-company-models-with-a-rest-api)」を参照してください。
-
-```csharp
-var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
-```
-
-CLI を使用して会社のモデルまたは共有されたモデルを表示するには、Azure CLI の[モデルの取得](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show)コマンドを参照してください。
-
-### <a name="manage-roles"></a>ロールの管理
-
-テナント管理者は、リポジトリ テナントのユーザーにロールを割り当てて会社または組織のプライベートなモデルを作成したり、モデルを公開したり、他のユーザーのロールを管理したりすることができます。
-
-ポータルを使用して、モデル リポジトリ テナントのロールにユーザーを追加するには:
-
-1. [Azure IoT モデル リポジトリ ポータル](https://aka.ms/iotmodelrepo)にサインインします。
-
-1. 左側のペインで **[アクセス管理]** を選択して、 **[+追加]** を選択します。 **[アクセス許可の追加]** ペインで、ロールに追加するユーザーのメール アドレスを入力します。
-
-    ![メール アドレスの追加](./media/concepts-model-repository/add-user.png)
-
-1. **[ロール]** ドロップダウンから、ユーザーを追加するロールを選択します。 次に、 **[保存]** を選択します。
-
-    ![ロールの選択](./media/concepts-model-repository/choose-role.png)
-
-### <a name="upload-a-model"></a>モデルのアップロード
-
-会社のモデル リポジトリにモデルをアップロードするには、リポジトリ テナントの **Creator** ロールのメンバーである必要があります。
-
-これらのモデルは公開されず、既定では組織内のユーザーのみがアクセスできます。 また、公開されていない 1 つ以上のモデルを外部ユーザーと共有することもできます。
-
-アップロードされたモデルは変更できません。
-
-これらのモデルのモデル ID は、すべてのリポジトリ テナントのアップロードされたすべてのモデルでグローバルに一意である必要があります。
-
-ポータルを使用してモデルをアップロードするには:
-
-1. [Azure IoT モデル リポジトリ ポータル](https://aka.ms/iotmodelrepo)にサインインします。
-
-1. 左側のペインで、 **[会社のモデル]** を展開して、 **[モデルの作成]** を選択します。 次に、 **[JSON をインポート]** を選択します。
-
-    ![モデルの作成](./media/concepts-model-repository/create-model.png)
-
-1. アップロードするファイルを選択します。 ポータルでモデルが正常に検証された場合は、 **[保存]** を選択します。
-
-REST API を使用してモデルをアップロードするには、[モデルの作成](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdateasync/createorupdateasync) API を参照してください。 HTTP 要求で JWT Authorization ヘッダーを渡す方法については、「[REST API を使用して会社のモデルにアクセスするときにセキュリティ トークンを渡す](#passing-a-security-token-when-accessing-company-models-with-a-rest-api)」を参照してください。
-
-```csharp
-var httpContent = new StringContent(jsonLdModel, Encoding.UTF8, "application/json");
-var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-05-01-preview", httpContent).ConfigureAwait(false);
-```
-
-CLI を使用してモデルをアップロードするには、Azure CLI の[モデルの作成](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-create)コマンドを参照してください。
-
-### <a name="publish-a-model"></a>モデルを公開する
-
-モデルを公開するには、次の要件を満たしている必要があります。
-
-1. モデルを公開するには、組織が [Microsoft Partner Network](https://docs.microsoft.com/partner-center/) のメンバーである必要があります。 パートナー センター アカウントを作成するには、[パートナー センター アカウントの作成](https://docs.microsoft.com/partner-center/mpn-create-a-partner-center-account)に関する記事を参照してください。 アカウントが承認されたら、モデルを公開できます。 詳細については、[パートナー センターに関する FAQ](https://support.microsoft.com/help/4340639/partner-center-account-faqs) の記事を参照してください。
-
-2. ユーザーは、リポジトリ テナントの *Publisher* ロールのメンバーである必要があります。
-
-組織内のユーザーによって作成および公開されたモデルは、*公開されたモデル*として表示されます。 これらのモデルはパブリックであり、すべてのユーザーが **[パブリック モデル]** で参照できます。
-
-ポータルを使用してモデルを公開するには:
-
-1. [Azure IoT モデル リポジトリ ポータル](https://aka.ms/iotmodelrepo)にサインインします。
-
-2. 左側のペインで **[会社のモデル]** を展開して、公開するモデルを選択します。 **[発行]** を選択します。
-
-    ![モデルの公開](./media/concepts-model-repository/publish-model.png)
+PR チェック中にモデルの検証に使用されるツールは、DTDL インターフェイスをローカルに追加して検証する際にも使用できます。
 
 > [!NOTE]
-> Microsoft Partner (MPN) ID を保持していないという通知が表示された場合は、通知に記載されている登録手順に従います。 詳細については、この項の冒頭の要件を参照してください。
+> このツールには、[.NET SDK](https://dotnet.microsoft.com/download) バージョン 3.1 以上が必要です。
 
-REST API を使用してモデルを公開するには、[モデルの公開](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdateasync/createorupdateasync) REST API のドキュメントを参照してください。 REST API を使用してモデルを公開するには、クエリ文字列パラメーター `update-metadata=true` を指定します。 HTTP 要求で JWT Authorization ヘッダーを渡す方法については、「[REST API を使用して会社のモデルにアクセスするときにセキュリティ トークンを渡す](#passing-a-security-token-when-accessing-company-models-with-a-rest-api)」を参照してください。
+### <a name="install-dmr-client"></a>`dmr-client` のインストール
 
-CLI を使用してモデルを公開するには、Azure CLI の[モデルの公開](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-publish)コマンドを参照してください。
+```bash
+curl -L https://aka.ms/install-dmr-client-linux | bash
+```
 
-### <a name="share-a-model"></a>モデルを共有する
+```powershell
+iwr https://aka.ms/install-dmr-client-windows -UseBasicParsing | iex
+```
 
-作成した会社のモデルは、外部組織のユーザーと共有できます。 これにより、コラボレーターがプライベートな会社のモデルを使用してソリューションを表示および開発できるようにすることができます。
+### <a name="import-a-model-to-the-dtmi-folder"></a>`dtmi/` フォルダーへのモデルのインポート
 
-たとえば、デバイスの製造元が、モデルを会社または組織のプライベートなモデルとして維持したい場合があります。 彼らは顧客からデバイスの機能の機密性を確保するように要求されることがあります。
+モデルが既に json ファイルに格納されている場合は、`dmr-client import` コマンドを使用して、`dtmi/` フォルダーに正しいファイル名で追加できます。
 
-会社間または組織間でモデルを共有すると、パブリックではないモデルに安全にアクセスできます。
+```bash
+# from the local repo root folder
+dmr-client import --model-file "MyThermostat.json"
+```
 
-ポータルを使用して会社のモデルを共有するには:
+> [!TIP]
+> `--local-repo` 引数を使用して、ローカル リポジトリのルート フォルダーを指定できます。
 
-- モデルの作成者である場合、 **[会社のモデル]** セクションでモデルを表示すると、 **[共有]** ボタンと **[共有ユーザー]** ボタンがアクティブになります。
+### <a name="validate-models"></a>モデルを検証する
 
-    ![モデルの共有](./media/concepts-model-repository/share-model.png)
+以下の `dmr-client validate` コマンドを使用して、モデルを検証できます。
 
-- 外部ユーザーとモデルを共有するには、 **[共有]** を選択します。 **[モデルの共有]** ペインで、外部ユーザーの電子メール アドレスを入力し、 **[保存]** を選択します。
+```bash
+dmr-client validate --model-file ./my/model/file.json
+```
 
-- モデルを共有したユーザーを表示するには、 **[共有ユーザー]** を選択します。
+> [!NOTE]
+> 検証では、すべてのインターフェイスが DTDL 言語仕様と互換性があることを確認するために、最新の DTDL パーサー バージョンが使用されます。
 
-- 特定のユーザーとのモデルの共有を停止するには、 **[共有ユーザー]** ペインで、ユーザーの一覧からユーザーを選択します。 次に、 **[削除]** を選択し、メッセージが表示されたら操作を確定します。
+外部の依存関係を検証するには、それらがローカル リポジトリに存在している必要があります。 モデルを検証するには、`--repo` オプションを使用して `local` フォルダーまたは `remote` フォルダーを指定し、依存関係を解決します。
 
-    ![共有を停止する](./media/concepts-model-repository/stop-sharing.png)
+```bash
+# from the repo root folder
+dmr-client validate --model-file ./my/model/file.json --repo .
+```
 
-## <a name="additional-information"></a>関連情報
+### <a name="strict-validation"></a>厳密な検証
 
-Azure AD を使用するときに、次のトピックが役に立つ場合があります。
+DMR には追加の[要件](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md)が含まれています。その要件に対してモデルを検証するには、`stict` フラグを使用します。
 
-- 新しい Azure AD のテナントを作成するには、「[Azure AD で新しいテナントを作成する](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)」を参照してください。 ほとんどの組織には、既に Azure AD テナントがあります。
+```bash
+dmr-client validate --model-file ./my/model/file.json --repo . --strict true
+```
 
-- Azure AD テナントにユーザーまたはゲスト ユーザーを追加する方法については、「[Azure AD を使用してユーザーを追加または削除する](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory)」を参照してください。
+コンソール出力にエラー メッセージが表示されていないかを確認します。
 
-- Azure AD にサービス プリンシパルを追加するには、「[方法: リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」を参照してください。
+### <a name="export-models"></a>モデルをエクスポートする
 
-- REST API を呼び出すときに使用する JWT トークンを Azure AD から取得する方法については、「[クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app)」を参照してください。
+JSON 配列を使用することで、モデルを特定リポジトリ (ローカルまたはリモート) から 1 つのファイルにエクスポートできます。
+
+```bash
+dmr-client export --dtmi "dtmi:com:example:TemperatureController;1" -o TemperatureController.expanded.json
+```
 
 ## <a name="next-steps"></a>次のステップ
 

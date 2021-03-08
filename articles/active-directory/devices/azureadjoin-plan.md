@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0863a782b7f4531b900bc3c005a39387c83d983
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 3acaf4929158b24ff50655aa18c05b41aeec4b53
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268229"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435452"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -95,6 +95,8 @@ ID プロバイダーによってこれらのプロトコルがサポートさ�
 
 Azure AD の UPN とは異なるオンプレミスの UPN は、Azure AD 参加済みデバイスでサポートされていません。 お客様のユーザーがオンプレミスの UPN を使用している場合は、Azure AD 内でプライマリ UPN を使用するように切り替えることを計画してください。
 
+UPN の変更は、Windows 10 2004 Update 以降でのみサポートされます。 この更新プログラムがインストールされたデバイスのユーザーには、UPN の変更後も問題は発生しません。 Windows 10 2004 Update より前のデバイスの場合は、ユーザーのデバイスで SSO および条件付きアクセスに関する問題が発生する可能性があります。 この問題を解決するために、ユーザーは新しい UPN を使用して [他のユーザー] タイルから Windows にサインインする必要があります。 
+
 ## <a name="assess-your-device-management"></a>デバイス管理を評価する
 
 ### <a name="supported-devices"></a>サポートされているデバイス
@@ -119,7 +121,7 @@ Azure AD 参加済みデバイスの管理には 2 つのアプローチがあ�
 - **MDM のみ** - デバイスは、Intune などの MDM プロバイダーによってのみ管理されます。 すべてのポリシーは、MDM の登録プロセスの一環として配信されます。 Azure AD Premium または EMS のお客様の場合、MDM の登録は、Azure AD 参加の一部である自動化された手順です。
 - **共同管理** - デバイスは、MDM プロバイダーと SCCM によって管理されます。 このアプローチでは、SCCM エージェントは、MDM によって管理されるデバイスにインストールされて、特定の側面を管理します。
 
-グループ ポリシーを使用している場合は、[MDM 移行分析ツール (MMAT)](https://github.com/WindowsDeviceManagement/MMAT) を使用して MDM ポリシーのパリティを評価します。 
+グループ ポリシーを使用している場合は、Microsoft Endpoint Manager の[グループ ポリシー分析](/mem/intune/configuration/group-policy-analytics)を使用して、GPO と MDM ポリシーのパリティを評価します。 
 
 サポート対象のポリシーとサポート対象外のポリシーを確認して、グループ ポリシーの代わりに MDM ソリューションを使用できるかどうかを判断します。 サポート対象外のポリシーの場合は、以下を検討してください。
 
@@ -184,9 +186,10 @@ Azure AD 参加済みデバイスでは、マシンの認証に依存するオ�
 
 Azure AD 参加済みデバイスにリモート デスクトップ接続を行うには、ホスト マシンが Azure AD 参加済みまたは Hybrid Azure AD 参加済みである必要があります。 参加していないデバイスまたは Windows 以外のデバイスからのリモート デスクトップはサポートされていません。 詳しくは、[Azure AD に参加しているリモート PC への接続](/windows/client-management/connect-to-remote-aadj-pc)に関する記事をご覧ください
 
-Windows 10 2004 更新プログラムを開始すると、ユーザーは Azure AD 登録済み Windows 10 デバイスから Azure AD 参加済みデバイスへのリモート デスクトップも使用できるようになります。 
+Windows 10 2004 更新プログラム以降、ユーザーは Azure AD 登録済み Windows 10 デバイスから Azure AD 参加済みデバイスへのリモート デスクトップも使用できるようになります。 
 
 ## <a name="understand-your-provisioning-options"></a>プロビジョニングのオプションを把握する
+**注**:Azure AD 参加済みデバイスは、システム準備ツール (Sysprep) または同様のイメージング ツールを使用してデプロイすることはできません
 
 次のアプローチを使用して Azure AD 参加をプロビジョニングできます。
 
@@ -248,7 +251,7 @@ Azure portal では、組織内の Azure AD 参加済みデバイスのデプロ
 1. **[アプリケーションの追加]** をクリックします。
 1. 一覧から、使用する MDM プロバイダーを選択します。
 
-   ![アプリケーションを追加する](./media/azureadjoin-plan/04.png)
+   :::image type="content" source="./media/azureadjoin-plan/04.png" alt-text="Azure Active Directory の [アプリケーションを追加する] ページのスクリーンショット。いくつかの MDM プロバイダーが一覧表示されます。" border="false":::
 
 MDM プロバイダーを選択して関連設定を構成します。 
 
@@ -271,7 +274,7 @@ MDM の構成に関連する URL は 3 つあります。
 - MDM 探索 URL 
 - MDM 準拠 URL
 
-![アプリケーションを追加する](./media/azureadjoin-plan/06.png)
+:::image type="content" source="./media/azureadjoin-plan/06.png" alt-text="Azure Active Directory MDM 構成セクションの一部に、MDM の使用条件、検出、コンプライアンスのための URL フィールドがあるスクリーンショット。" border="false":::
 
 各 URL には、定義済みの既定値があります。 これらのフィールドが空の場合、詳しくは MDM プロバイダーにお問い合わせください。
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: beabe9440c37d16ca4a81efdbc9588739f4c7473
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 15d62f40b50617fd1f6e543cb404a0d38361d3bd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279348"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836497"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する
 
@@ -86,13 +86,13 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
 
 ### <a name="cloud-authentication-password-hash-synchronization"></a>クラウド認証: パスワード ハッシュの同期
 
-* **作業量**。 パスワード ハッシュ同期は、展開、メンテナンス、インフラストラクチャに関して最小の作業量を必要とします。  ユーザーに必要なことが、Office 365、SaaS アプリ、およびその他の Azure AD ベースのリソースへのサインインのみである組織に対しては、典型的にこのレベルの作業量が適用されます。 パスワード ハッシュ同期をオンにすると、Azure AD Connect 同期プロセスの一部となって 2 分ごとに実行されます。
+* **作業量**。 パスワード ハッシュ同期は、展開、メンテナンス、インフラストラクチャに関して最小の作業量を必要とします。  ユーザーに必要なことが、Microsoft 365、SaaS アプリ、およびその他の Azure AD ベースのリソースへのサインインのみである組織に対しては、典型的にこのレベルの作業量が適用されます。 パスワード ハッシュ同期をオンにすると、Azure AD Connect 同期プロセスの一部となって 2 分ごとに実行されます。
 
 * **ユーザー エクスペリエンス**。 ユーザーのサインイン エクスペリエンスを向上させるには、パスワード ハッシュ同期と共にシームレス SSO を展開します。 シームレス SSO によって、ユーザーのサインイン時に不要なプロンプトが表示されないようになります。
 
 * **高度なシナリオ**。 組織は、Azure AD Premium P2 で Azure AD Identity Protection のレポートを使用して ID からの分析情報を使用することを選択できます。 その 1 つの例が漏洩した資格情報レポートです。 Windows Hello for Business には、[パスワード ハッシュ同期を使用するときの特定の要件](/windows/access-protection/hello-for-business/hello-identity-verification)があります。 [Azure AD Domain Services](../../active-directory-domain-services/tutorial-create-instance.md) では、ユーザーが会社の資格情報を使用してマネージド ドメインでプロビジョニングできるよう、パスワードのハッシュ同期が必要です。
 
-    パスワード ハッシュ同期を使用する多要素認証が必要な組織は、Azure Multi-Factor Authentication または[条件付きアクセス カスタム コントロール](../../active-directory/conditional-access/controls.md#custom-controls-preview)を使用する必要があります。 これらの組織は、フェデレーションに依存する、サード パーティ製またはオンプレミスの多要素認証方法を使用できません。
+    パスワード ハッシュ同期を使用する多要素認証が必要な組織は、Azure AD Multi-Factor Authentication または[条件付きアクセス カスタム コントロール](../../active-directory/conditional-access/controls.md#custom-controls-preview)を使用する必要があります。 これらの組織は、フェデレーションに依存する、サード パーティ製またはオンプレミスの多要素認証方法を使用できません。
 
 > [!NOTE]
 > Azure AD の条件付きアクセスでは [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) ライセンスが必要です。
@@ -116,7 +116,7 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
 
 * **高度なシナリオ**。 パススルー認証では、サインインの時点でオンプレミスのアカウント ポリシーが適用されます。 たとえば、オンプレミスのユーザーのアカウントの状態が無効、ロックアウト、[パスワードが期限切れ](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication)であるか、ログオンの試行時にユーザーに許可されているサインイン時間が超過した場合、アクセスは拒否されます。
 
-    パススルー認証を使用する多要素認証が必要な組織は、Azure Multi-Factor Authentication (MFA) または[条件付きアクセス カスタム コントロール](../../active-directory/conditional-access/controls.md#custom-controls-preview)を使用する必要があります。 これらの組織は、フェデレーションに依存する、サード パーティ製またはオンプレミスの多要素認証方法を使用できません。 高度な機能では、パススルー認証を選択するかどうかにかかわらず、パスワード ハッシュ同期が必要になります。 たとえば、Identity Protection の漏洩した資格情報のレポートです。
+    パススルー認証を使用する多要素認証が必要な組織は、Azure AD Multi-Factor Authentication (MFA) または[条件付きアクセス カスタム コントロール](../../active-directory/conditional-access/controls.md#custom-controls-preview)を使用する必要があります。 これらの組織は、フェデレーションに依存する、サード パーティ製またはオンプレミスの多要素認証方法を使用できません。 高度な機能では、パススルー認証を選択するかどうかにかかわらず、パスワード ハッシュ同期が必要になります。 たとえば、Identity Protection の漏洩した資格情報のレポートです。
 
 * **ビジネス継続性**。 2 つの追加パススルー認証エージェントを展開することをお勧めします。 Azure AD Connect サーバー上の最初のエージェントに加えて、これらを追加します。 この追加の展開によって、認証要求の高可用性が保証されます。 3 つのエージェントを展開すると、メンテナンスのために 1 つのエージェントを停止しても、まだ 1 つのエージェントの障害に対応できます。
 
@@ -182,7 +182,7 @@ Azure AD では検証できないルーティング不可能なドメインの�
 |会社のネットワーク内のドメインに参加しているデバイスからクラウドのリソースへのユーザーのシングル サインオン|[シームレス SSO](../../active-directory/hybrid/how-to-connect-sso.md) を使用して実行|[シームレス SSO](../../active-directory/hybrid/how-to-connect-sso.md) を使用して実行|はい|
 |サポートされているサインインの種類|UserPrincipalName + パスワード<br><br>[シームレス SSO](../../active-directory/hybrid/how-to-connect-sso.md) を使用した Windows 統合認証<br><br>[代替ログイン ID](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + パスワード<br><br>[シームレス SSO](../../active-directory/hybrid/how-to-connect-sso.md) を使用した Windows 統合認証<br><br>[代替ログイン ID](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + パスワード<br><br>sAMAccountName + パスワード<br><br>Windows 統合認証<br><br>[証明書とスマート カード認証](/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[代替ログイン ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |Windows Hello for Business のサポート|[キー信頼モデル](/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[キー信頼モデル](/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*Windows Server 2016 ドメインの機能レベルが必要*|[キー信頼モデル](/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[証明書信頼モデル](/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
-|多要素認証のオプション|[Azure MFA](/azure/multi-factor-authentication/)<br><br>[条件付きアクセスを使用するカスタム コントロール*](../../active-directory/conditional-access/controls.md)|[Azure MFA](/azure/multi-factor-authentication/)<br><br>[条件付きアクセスを使用するカスタム コントロール*](../../active-directory/conditional-access/controls.md)|[Azure MFA](/azure/multi-factor-authentication/)<br><br>[Azure MFA サーバー](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[サード パーティの MFA](/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[条件付きアクセスを使用するカスタム コントロール*](../../active-directory/conditional-access/controls.md)|
+|多要素認証のオプション|[Azure AD MFA](/azure/multi-factor-authentication/)<br><br>[条件付きアクセスを使用するカスタム コントロール*](../../active-directory/conditional-access/controls.md)|[Azure AD MFA](/azure/multi-factor-authentication/)<br><br>[条件付きアクセスを使用するカスタム コントロール*](../../active-directory/conditional-access/controls.md)|[Azure AD MFA](/azure/multi-factor-authentication/)<br><br>[Azure MFA サーバー](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[サード パーティの MFA](/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[条件付きアクセスを使用するカスタム コントロール*](../../active-directory/conditional-access/controls.md)|
 |サポートされるユーザー アカウントの状態|無効なアカウント<br>(最大 30 分の遅延)|無効なアカウント<br><br>アカウントのロックアウト<br><br>アカウント期限切れ<br><br>パスワード期限切れ<br><br>サインイン時間|無効なアカウント<br><br>アカウントのロックアウト<br><br>アカウント期限切れ<br><br>パスワード期限切れ<br><br>サインイン時間|
 |条件付きアクセスのオプション|[Azure AD の条件付きアクセス、Azure AD Premium を使用](../../active-directory/conditional-access/overview.md)|[Azure AD の条件付きアクセス、Azure AD Premium を使用](../../active-directory/conditional-access/overview.md)|[Azure AD の条件付きアクセス、Azure AD Premium を使用](../../active-directory/conditional-access/overview.md)<br><br>[AD FS の要求規則](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
 |サポートされる従来のプロトコルのブロック|[はい](../../active-directory/conditional-access/overview.md)|[はい](../../active-directory/conditional-access/overview.md)|[はい](/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
@@ -203,7 +203,7 @@ ID システムによって、クラウドに移行して利用できるよう�
 
 2. **オンプレミスの停止への対応**。  サイバー攻撃や災害によるオンプレミスの停止の影響は、ブランドの評判が損なわれることから、組織が麻痺して攻撃に対処できなくなることまで、大きな範囲に及ぶ可能性があります。 近年でも、オンプレミスのサーバーがダウンする原因となった特定対象へのランサムウェアなど、多くの組織がマルウェア攻撃の被害を受けました。 Microsoft は、この種の攻撃への対処を支援するなかで、組織には 2 つのカテゴリがあることに気付きました。
 
-   * 以前にフェデレーション認証またはパススルー認証でパスワード ハッシュ同期をオンにしていた組織は、パスワード ハッシュ同期を使用するようにプライマリ認証方法を変更しました。 このような組織は、数時間でオンラインに復帰しました。 Office 365 を介して電子メールにアクセスすることで、問題解決と他のクラウド ベースのワークロードへのアクセスのために作業することができました。
+   * 以前にフェデレーション認証またはパススルー認証でパスワード ハッシュ同期をオンにしていた組織は、パスワード ハッシュ同期を使用するようにプライマリ認証方法を変更しました。 このような組織は、数時間でオンラインに復帰しました。 Microsoft 365 を介して電子メールにアクセスすることで、問題解決と他のクラウド ベースのワークロードへのアクセスのために作業することができました。
 
    * 事前にパスワード ハッシュ同期を有効にしていなかった組織は、問題解決のために、信頼されていない外部のコンシューマー向けメール システムを通信に利用するしかありませんでした。 その場合、ユーザーがクラウドベースのアプリに再度サインインできるようになるまでに、オンプレミスの ID インフラストラクチャを復元するのに数週間かかりました。
 
@@ -221,4 +221,4 @@ ID システムによって、クラウドに移行して利用できるよう�
 
 [Azure AD を利用して](../fundamentals/active-directory-whatis.md)、組織に適した認証ソリューションを展開してください。
 
-フェデレーション認証からクラウド認証への移行を検討している場合は、[サインイン方法の変更](../../active-directory/hybrid/plan-connect-user-signin.md)についてさらに学習してください。 移行の計画と実装の助けになるように、[これらのプロジェクトのデプロイ計画](https://aka.ms/deploymentplans)を利用するか、段階的な方法でクラウド認証を使用するようにフェデレーション ユーザーを移行する新しい[段階的なロールアウト](../../active-directory/hybrid/how-to-connect-staged-rollout.md)の機能を使用することを検討してください。
+フェデレーション認証からクラウド認証への移行を検討している場合は、[サインイン方法の変更](../../active-directory/hybrid/plan-connect-user-signin.md)についてさらに学習してください。 移行の計画と実装の助けになるように、[これらのプロジェクトのデプロイ計画](../fundamentals/active-directory-deployment-plans.md)を利用するか、段階的な方法でクラウド認証を使用するようにフェデレーション ユーザーを移行する新しい[段階的なロールアウト](../../active-directory/hybrid/how-to-connect-staged-rollout.md)の機能を使用することを検討してください。

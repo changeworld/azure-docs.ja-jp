@@ -2,20 +2,20 @@
 title: チュートリアル - Azure AD Domain Services でレプリカ セットを作成する | Microsoft Docs
 description: Azure AD Domain Services でのサービスの回復性のために Azure portal でレプリカ セットを作成して使用する方法について説明します
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.author: iainfou
-ms.openlocfilehash: 6f166cdcb5f3764d7b264fdb4ebc082ece4c798b
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.author: justinha
+ms.openlocfilehash: 059f711269fd5f1eea9675f238a6003eaf1a0534
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245096"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618112"
 ---
 # <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>チュートリアル:Azure Active Directory Domain Services で回復性または位置情報のためにレプリカ セットを作成して使用する (プレビュー)
 

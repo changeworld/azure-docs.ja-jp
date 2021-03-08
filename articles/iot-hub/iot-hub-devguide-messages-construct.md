@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: dd2b88d923d0398dc42362242b94b978ccd24252
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 6d6b7122963b51619f26b8d02a8be4ad39261afb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336720"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147701"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub メッセージを作成し、読み取る
 
@@ -24,7 +24,7 @@ ms.locfileid: "87336720"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-IoT Hub は、ストリーミング メッセージング パターンを使用して、D2C メッセージングを実装しています。 IoT Hub の device-to-cloud メッセージは、[Service Bus](/azure/service-bus-messaging/) の "*メッセージ*" というよりはむしろ [Event Hubs](/azure/event-hubs/) の "*イベント*" であり、複数のリーダーで読み取り可能なサービスを経由する、大量のイベントが存在します。
+IoT Hub は、ストリーミング メッセージング パターンを使用して、D2C メッセージングを実装しています。 IoT Hub の device-to-cloud メッセージは、[Service Bus](../service-bus-messaging/index.yml) の "*メッセージ*" というよりはむしろ [Event Hubs](../event-hubs/index.yml) の "*イベント*" であり、複数のリーダーで読み取り可能なサービスを経由する、大量のイベントが存在します。
 
 IoT Hub メッセージは、次のような構成です。
 
@@ -61,8 +61,8 @@ IoT Hub を使用した device-to-cloud メッセージングには、次のよ�
 | iothub-connection-module-id |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **moduleId** が含まれます。 | いいえ | connectionModuleId |
 | iothub-connection-auth-generation-id |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **connectionDeviceGenerationId** (「[デバイス ID のプロパティ](iot-hub-devguide-identity-registry.md#device-identity-properties)」を参照) が含まれています。 | いいえ |connectionDeviceGenerationId |
 | iothub-connection-auth-method |IoT Hub で D2C メッセージに対して設定される認証方法。 このプロパティには、メッセージを送信するデバイスの認証に使用する認証方法に関する情報が含まれます。| いいえ | connectionAuthMethod |
-| dt-dataschema | この値は、IoT Hub で、device-to-cloud メッセージに対して設定されます。 デバイス接続で設定されたデバイス モデル ID が含まれます。 この機能は、[IoT プラグ アンド プレイ パブリック プレビュー](../iot-pnp/overview-iot-plug-and-play.md)の一部として提供されています。 | いいえ | N/A |
-| dt-subject | device-to-cloud メッセージを送信しているコンポーネントの名前。 この機能は、[IoT プラグ アンド プレイ パブリック プレビュー](../iot-pnp/overview-iot-plug-and-play.md)の一部として提供されています。 | はい | 該当なし |
+| dt-dataschema | この値は、IoT Hub で、device-to-cloud メッセージに対して設定されます。 デバイス接続で設定されたデバイス モデル ID が含まれます。 | いいえ | N/A |
+| dt-subject | device-to-cloud メッセージを送信しているコンポーネントの名前。 | はい | 該当なし |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT Hub メッセージのシステム プロパティ
 

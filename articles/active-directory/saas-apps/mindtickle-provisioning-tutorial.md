@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3cac57e0f205da7a39447ddd48810b8fd120ab58
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c158358b1c4fcd72d9189d7a991645cb65a4dc83
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549064"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348128"
 ---
 # <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>チュートリアル:MindTickle を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -97,13 +97,13 @@ Azure AD で自動ユーザー プロビジョニング用に MindTickle を構�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://admin.mindtickle.com/scim`」と入力します。 以前に [シークレット トークン] テキスト ボックスで取得した **JWT トークン**の値を入力し、MindTickle サポート チームから教えられた **JWT トークン**の値を入力します。 **[Test Connection]\(テスト接続\)** をクリックして、Azure AD から myPolicies に接続できることを確認します。 接続できない場合は、使用中の MindTickle アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://admin.mindtickle.com/scim`」と入力します。 以前に [シークレット トークン] テキスト ボックスで取得した **JWT トークン** の値を入力し、MindTickle サポート チームから教えられた **JWT トークン** の値を入力します。 **[Test Connection]\(テスト接続\)** をクリックして、Azure AD から myPolicies に接続できることを確認します。 接続できない場合は、使用中の MindTickle アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -115,11 +115,11 @@ Azure AD で自動ユーザー プロビジョニング用に MindTickle を構�
 
 8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to MindTickle]\(Azure Active Directory ユーザーを MindTickle に同期する\)** を選択します。
 
-    ![MindTickle のユーザー マッピング](media/mindtickle-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/mindtickle-provisioning-tutorial/usermapping.png" alt-text="[マッピング] セクションのスクリーンショット。[名前] の下に、[Azure Active Directory ユーザーを MindTickle に同期する] が表示されています。" border="false":::
 
 9. **[属性マッピング]** セクションで、Azure AD から MindTickle に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で MindTickle のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![MindTickle のユーザー マッピング](media/mindtickle-provisioning-tutorial/userattribute.png)
+    :::image type="content" source="media/mindtickle-provisioning-tutorial/userattribute.png" alt-text="[属性マッピング] ページのスクリーンショット。テーブルに、Azure Active Directory 属性と MindTickle 属性、および照合の優先順位が一覧表示されています。" border="false":::
 
 12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 

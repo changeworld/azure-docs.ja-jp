@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5f32ec82c2b4c6d8b902195782b286cca82befb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12fcc9996697f3bbba35826d79bec238bfb0f8b3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507638"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993014"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャーを使用して StorSimple Virtual Array のアラートを管理する
 
@@ -48,17 +48,17 @@ StorSimple Virtual Array ごとに、アラート状態について電子メー�
     ![[アラートの設定]](./media/storsimple-virtual-array-manage-alerts/alerts2.png)
 2. これにより **[設定]** ブレードが表示されます。 **[デバイス設定]** セクションで **[全般]** を選択します。 これにより **[全般設定]** ブレードが表示されます。
    
-    ![アラート通知の構成](./media/storsimple-virtual-array-manage-alerts/alerts4.png)
+    ![[アラートの設定] が表示された [デバイス設定] ペインを示すスクリーンショット。](./media/storsimple-virtual-array-manage-alerts/alerts4.png)
 3. **[全般設定]** ブレードで、 **[アラートの設定]** セクションに移動し、以下を設定します。
    
    1. **[電子メール通知を有効にする]** フィールドで、 **[はい]** を選択します。
    2. サービス管理者とすべての共同管理者がアラートの通知を受信するように設定する場合は、 **[電子メール サービスの管理者]** フィールドで **[はい]** を選択します。
    3. **[追加の電子メール受信者]** フィールドに、アラートの通知を受信する他の受信者すべての電子メール アドレスを入力します。 名前は *someone\@somewhere.com* の形式で入力します。 電子メール アドレスはセミコロンで区切ります。 1 つの仮想デバイスで構成できる電子メール アドレスは最大 20 件です。
       
-       ![アラート通知の構成](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
+       ![この手順で説明されている設定の [アラートの設定] の詳細が示されたスクリーンショット。](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
    4. 電子メールのテスト通知を送信するには、 **[テスト電子メールの送信]** をクリックします。 テスト通知を転送すると、StorSimple デバイス マネージャー サービスに状態メッセージが表示されます。
       
-       ![Alerts test notification email sent](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
+       ![テスト電子メールを確認するための情報ダイアログ ボックスを示すスクリーンショット。](./media/storsimple-virtual-array-manage-alerts/alerts7.png)
       
       > [!NOTE]
       > テスト通知のメッセージを送信できない場合、StorSimple デバイス マネージャー サービスにその旨を通知するメッセージが表示されます。 **[OK]** をクリックして数分待ってから、再度テスト通知のメッセージを送信してみてください。
@@ -66,13 +66,13 @@ StorSimple Virtual Array ごとに、アラート状態について電子メー�
       >
    5. ページの下部の **[保存]** をクリックして構成内容を保存します。 確認を求められたら、 **[はい]** をクリックします。
       
-      ![Alerts test notification email sent](./media/storsimple-virtual-array-manage-alerts/alerts10.png)
+      ![[保存] ボタンが選択された設定ペインを示すスクリーンショット。](./media/storsimple-virtual-array-manage-alerts/alerts10.png)
 
 ## <a name="common-alert-conditions"></a>一般的なアラートの状態
 
 StorSimple Virtual Array では、さまざまな状態に応じてアラートを生成します。 最も一般的な種類のアラート状態を次に示します。
 
-* **接続の問題** – データ転送が困難な場合に、これらのアラートが生成されます。 通信の問題は、Azure ストレージ アカウントとのデータの転送中に発生する可能性があるほか、仮想デバイスと StorSimple デバイス マネージャー サービスが接続されていないことが原因で発生する場合もあります。 通信の問題は、障害点が多すぎることから、最も修正が困難な問題の 1 つです。 常に、より高度なトラブルシューティングに進む前に、まずネットワーク接続とインターネット アクセスがあることを確認する必要があります。 ポートとファイアウォールの設定については、「 [StorSimple Virtual Array のシステム要件](storsimple-ova-system-requirements.md)」を参照してください。 トラブルシューティングのヘルプについては、「 [Test-Connection コマンドレットを使用したトラブルシューティング](storsimple-troubleshoot-deployment.md)」を参照してください。
+* **接続の問題** – データ転送が困難な場合に、これらのアラートが生成されます。 通信の問題は、Azure ストレージ アカウントとのデータの転送中に発生する可能性があるほか、仮想デバイスと StorSimple デバイス マネージャー サービスが接続されていないことが原因で発生する場合もあります。 通信の問題は、障害点が多すぎることから、最も修正が困難な問題の 1 つです。 常に、より高度なトラブルシューティングに進む前に、まずネットワーク接続とインターネット アクセスがあることを確認する必要があります。 ポートとファイアウォールの設定については、「 [StorSimple Virtual Array のシステム要件](storsimple-ova-system-requirements.md)」を参照してください。 トラブルシューティングのヘルプについては、「 [Test-Connection コマンドレットを使用したトラブルシューティング](./storsimple-8000-troubleshoot-deployment.md)」を参照してください。
 * **パフォーマンスの問題** – これらのアラートは、システムの負荷が高い場合など、システムが最適に実行されていない場合に発生します。
 
 さらに、セキュリティ、更新、ジョブの失敗に関連するアラートが表示される場合もあります。

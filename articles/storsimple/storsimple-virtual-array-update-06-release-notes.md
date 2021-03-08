@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/24/2017
 ms.author: alkohli
-ms.openlocfilehash: e984531feced2d61332e4c399848c12cd245a34a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24bddb47a32a7b8ad4ea659d52c2d5b2730be9ad
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60870708"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000914"
 ---
 # <a name="storsimple-virtual-array-update-06-release-notes"></a>StorSimple Virtual Array Update 0.6 のリリース ノート
 
@@ -40,7 +40,7 @@ Update 0.6 はソフトウェア バージョン **10.0.10293.0** に対応し�
 ## <a name="whats-new-in-the-update-06"></a>Update 0.6 の新機能
 Update 0.6 は重要な更新プログラムであるため、すぐにデプロイする必要があります。 この更新プログラムには、次の修正プログラムが含まれています。 
 
-- **Windows セキュリティ修正プログラム** - このリリースには **Windows の重要なセキュリティ上の修正**があります。 セキュリティの問題と関連する修正プログラムの詳細については、次のセキュリティ更新プログラムを確認します。
+- **Windows セキュリティ修正プログラム** - このリリースには **Windows の重要なセキュリティ上の修正** があります。 セキュリティの問題と関連する修正プログラムの詳細については、次のセキュリティ更新プログラムを確認します。
     - [2016 年 12 月 Windows 8.1 および Windows Server 2012 R2 用のセキュリティのみ品質更新プログラム](https://support.microsoft.com/help/3205400/december-2016-security-only-quality-update-for-windows-8.1-and-windows-server-2012-r2)
     - [2017 年 3 月 Windows 8.1 および Windows Server 2012 R2 用のセキュリティのみ品質更新プログラム](https://support.microsoft.com/help/4012213/march-2017-security-only-quality-update-for-windows-8-1-and-windows-server-2012-r23)
     - [2017 年 5 月 9 日 - KB4019213 (セキュリティ専用の更新プログラム)](https://support.microsoft.com/help/4019213/windows-8-update-kb4019213)
@@ -92,5 +92,4 @@ StorSimple Virtual Array に [Update 0.6 をインストール](storsimple-virtu
 * [StorSimple Virtual Array Update 0.4 のリリース ノート](storsimple-virtual-array-update-04-release-notes.md)
 * [StorSimple Virtual Array Update 0.3 のリリース ノート](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Virtual Array Update 0.1 および 0.2 のリリース ノート](storsimple-ova-update-01-release-notes.md)
-* [StorSimple Virtual Array 一般公開リリース ノート](storsimple-ova-pp-release-notes.md)
-
+* [StorSimple Virtual Array 一般公開リリース ノート]()

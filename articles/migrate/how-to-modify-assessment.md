@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate Server Assessment の評価をカスタマイズする |Microsoft Docs
 description: Azure Migrate Server Assessment で作成された評価をカスタマイズする方法について説明します
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 07/15/2019
-ms.author: raynew
-ms.openlocfilehash: bcc6f41d7cc08764266ffb6705d1b8937d355199
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: de90cffe8760a55aafebf079678d139c6f6f99e1
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109724"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751106"
 ---
 # <a name="customize-an-assessment"></a>評価のカスタマイズ
 
@@ -72,8 +72,8 @@ Server Assessment での AVS の評価に含まれる内容は次のとおりで
 **予約インスタンス (RI)** | このプロパティは、AVS で予約インスタンスを指定するのに役立ちます。 AVS ノードでは、現在 RI はサポートされていません。 |
 **ノードの種類** | オンプレミスの VM をマップするために使用する [AVS ノードの種類](../azure-vmware/concepts-private-clouds-clusters.md)を指定します。 既定のノードの種類は、AV36 であることに注意してください。 <br/><br/> Azure Migrate では、VM を AVS に移行するために必要なノードの数が推奨されます。 |
 **FTT 設定、RAID レベル** | 適用可能な、許容するエラーと RAID の組み合わせを指定します。 選択した FTT オプションとオンプレミスの VM ディスク要件を組み合わせて、AVS で必要とされる vSAN ストレージの合計が決定されます。 |
-**サイズ変更の設定基準** | VM を AVS にとって_適切なサイズ_にするために使用される基準を設定します。 _パフォーマンスに基づく_サイズ設定、またはパフォーマンス履歴を考慮しない_オンプレミス同様_のサイズ設定を選択できます。 |
-**パフォーマンス履歴** | マシンのパフォーマンス データを評価するために考慮する期間を設定します。 このプロパティは、サイズ設定の基準が_パフォーマンス ベース_の場合にのみ適用されます。 |
+**サイズ変更の設定基準** | VM を AVS にとって _適切なサイズ_ にするために使用される基準を設定します。 _パフォーマンスに基づく_ サイズ設定、またはパフォーマンス履歴を考慮しない _オンプレミス同様_ のサイズ設定を選択できます。 |
+**パフォーマンス履歴** | マシンのパフォーマンス データを評価するために考慮する期間を設定します。 このプロパティは、サイズ設定の基準が _パフォーマンス ベース_ の場合にのみ適用されます。 |
 **百分位数の使用率** | 適切なサイズ設定のために考慮するパフォーマンス サンプル セットのパーセンタイル値を指定します。 このプロパティは、サイズ設定がパフォーマンス ベースの場合にのみ適用されます。|
 **快適性係数** | Azure Migrate Server Assessment では、評価時にバッファー (快適性係数) が考慮されます。 VM のマシン使用率データ (CPU、メモリ、ディスク、ネットワーク) に加えて、このバッファーが適用されます。 快適性係数は、季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題に相当します。<br/><br/> たとえば、使用率 20% の 10 コア VM の結果は、通常 2 コア VM になります。 一方、快適性係数を 2.0x とした場合は、結果が 4 コア VM になります。 |
 **プラン** | 登録されている [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)を表示します。 Azure Migrate はそれに応じてコストを見積もります。|

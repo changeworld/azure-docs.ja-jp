@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 76809a41400502ec48c2dd674f8976bb168ec9f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40af9ac692a226b12f984db447db9635cba655e4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83735992"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530257"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>モバイル デバイスを 2 要素認証方法として設定する
 
@@ -30,7 +30,7 @@ ms.locfileid: "83735992"
 
 2. **[方法]** 領域で **[テキスト メッセージでコードを送信する]** を選択してから、 **[次へ]** を選択します。
 
-    ![[認証用電話] を選択し、[テキスト メッセージでコードを送信する] を選択した [追加のセキュリティ確認] ページ](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
+    ![[追加のセキュリティ確認] ページを示すスクリーンショット。[認証用電話] と [テキスト メッセージでコードを送信する] が選択されています。](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
 
 3. **[手順 2: お客様の電話にテキスト メッセージを送信しました]** 領域で、Microsoft から送信されたテキスト メッセージに含まれている確認コードを入力し、 **[確認]** を選択します。
 

@@ -2,7 +2,7 @@
 title: Azure AD Domain Services で Secure LDAP アラートを解決する | Microsoft Docs
 description: Azure Active Directory Domain Services での Secure LDAP の一般的なアラートをトラブルシューティングおよび解決する方法について説明します。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 81208c0b-8d41-4f65-be15-42119b1b5957
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
-ms.author: iainfou
-ms.openlocfilehash: d987bbbe2a35dd24341b75d5663bab33d8c3bdb9
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.author: justinha
+ms.openlocfilehash: 15c1f3a1731edf7b45061646d43688b4aacc6104
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220254"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620309"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>既知の問題:Azure Active Directory Domain Services の Secure LDAP アラート
 
@@ -34,7 +34,7 @@ ms.locfileid: "86220254"
 
 Secure LDAP を有効にする場合は、特定の IP アドレスへの受信 LDAPS アクセスを制限する追加の規則を作成することをお勧めします。 これらの規則は、マネージド ドメインをブルート フォース攻撃から保護します。 Secure LDAP への TCP ポート 636 アクセスを制限するようにネットワーク セキュリティ グループを更新するには、次の手順を実行します。
 
-1. Azure portal で、**ネットワーク セキュリティ グループ**を検索して選択します。
+1. Azure portal で、**ネットワーク セキュリティ グループ** を検索して選択します。
 1. マネージド ドメインに関連付けられているネットワーク セキュリティ グループ (*AADDS-contoso.com-NSG* など) を選択し、次に **[受信セキュリティ規則]** を選択します。
 1. **[+ 追加]** を選択して、TCP ポート 636 のルールを作成します。 必要に応じて、ウィンドウで **[詳細]** を選択して規則を作成します。
 1. **[Source]\(ソース\)** には、ドロップダウン メニューから *[IP アドレス]* を選択します。 Secure LDAP トラフィックのアクセス権を付与するソース IP アドレスを入力します。

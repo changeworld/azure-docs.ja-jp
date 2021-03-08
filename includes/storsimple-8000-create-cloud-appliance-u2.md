@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: d1ca6d37d6133786aff7ad3156fea2a0c22dfb97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b827a80059cecadd7b76263f13dd4a0d141fc7a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181239"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563070"
 ---
 #### <a name="to-create-a-cloud-appliance"></a>クラウド アプライアンスを作成するには
 
@@ -18,7 +18,7 @@ ms.locfileid: "67181239"
     ![StorSimple の [クラウド アプライアンスの作成]](./media/storsimple-8000-create-cloud-appliance-u2/sca-create1.png)
 3. **[クラウド アプライアンスの作成]** ブレードで、次のように詳細を指定します。
    
-    ![StorSimple の [クラウド アプライアンスの作成]](./media/storsimple-8000-create-cloud-appliance-u2/sca-create2m.png)
+    ![StorSimple の [クラウド アプライアンスの作成] 2](./media/storsimple-8000-create-cloud-appliance-u2/sca-create2m.png)
    
    1. **[名前]** – クラウド アプライアンスの一意の名前。
    2. **[モデル]** - クラウド アプライアンスのモデルを選択します。 8010 デバイスは 30 TB の Standard Storage を提供し、8020 は 64 TB の Premium Storage を提供します。 バックアップから項目レベルの取得を行うシナリオをデプロイする場合は、8010 を指定します。 高いパフォーマンスと短い待ち時間が求められるワークロードをデプロイするか、ディザスター リカバリーのためのセカンダリ デバイスとして使用する場合は、8020 を選択します。
@@ -33,8 +33,7 @@ ms.locfileid: "67181239"
    7. クラウド アプライアンスに格納するデータが Microsoft のデータセンターでホストされることに同意する旨のチェック ボックスをオンにします。
        * 物理デバイスのみを使用する場合は、暗号化キーがご利用のデバイスに保管されるため、マイクロソフトが暗号化を解除することはできません。
 
-       * クラウド アプライアンスを使用する場合、暗号化キーと復号化キーの両方が Microsoft Azure に保管されます。 詳細については、[クラウド アプライアンスを使用する際のセキュリティに関する考慮事項](../articles/storsimple/storsimple-security.md)をご覧ください。
+       * クラウド アプライアンスを使用する場合、暗号化キーと復号化キーの両方が Microsoft Azure に保管されます。 詳細については、[クラウド アプライアンスを使用する際のセキュリティに関する考慮事項](../articles/storsimple/storsimple-8000-security.md)をご覧ください。
    8. **[作成]** をクリックすると、クラウド アプライアンスがプロビジョニングされます。 デバイスは、プロビジョニングされるまで約 30 分かかることがあります。 クラウド アプライアンスが正常に作成されると、通知が表示されます。 [デバイス] ブレードに移動すると、デバイスの一覧が更新され、クラウド アプライアンスが表示されます。 アプライアンスの状態が **[セットアップの準備が完了しました]** になっています。
       
       ![StorSimple Cloud Appliance の [セットアップの準備が完了しました]](./media/storsimple-8000-create-cloud-appliance-u2/sca-create3.png)
-

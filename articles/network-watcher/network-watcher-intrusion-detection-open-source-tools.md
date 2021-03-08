@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 6a7b4d8c3d2e2b33d8e2a9936670992b1c922b6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4b38112e32a55739ea14d5ff06e327819171557
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737361"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014554"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Network Watcher とオープン ソース ツールを使用したネットワーク不正侵入検出の実行
 
@@ -80,7 +80,7 @@ Suricata によって作成されたログには、ネットワークで発生�
 
 #### <a name="install-elasticsearch"></a>Elasticsearch のインストール
 
-1. Elastic Stack のバージョン 5.0 以降では、Java 8 が必要です。 `java -version` コマンドを実行して、現在のバージョンを確認します。 Java がインストールされていない場合は、[Azure でサポートされている JDK](https://aka.ms/azure-jdks) に関するドキュメントを参照してください。
+1. Elastic Stack のバージョン 5.0 以降では、Java 8 が必要です。 `java -version` コマンドを実行して、現在のバージョンを確認します。 Java がインストールされていない場合は、[Azure でサポートされている JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support) に関するドキュメントを参照してください。
 
 1. お使いのシステムに適合するバイナリ パッケージをダウンロードします。
 
@@ -246,7 +246,7 @@ Logstash のインストール方法の詳細については、[公式ドキュ�
 
 1. Kibana の **[Management (管理)]** タブの下で **[Saved Objects (保存されたオブジェクト)]** に移動して、3 つのファイルすべてをインポートします。 これで、 **[Dashboard (ダッシュボード)]** タブからサンプル ダッシュボードを開いて読み込むことができます。
 
-関心のあるメトリックに合わせて独自の視覚化とダッシュボードを作成することもできます。 Kibana の視覚化を作成する方法の詳細については、Kibana の[公式ドキュメント](https://www.elastic.co/guide/en/kibana/current/visualize.html)を参照してください。
+関心のあるメトリックに合わせて独自の視覚化とダッシュボードを作成することもできます。 Kibana の視覚化を作成する方法の詳細については、Kibana の[公式ドキュメント](https://www.tutorialspoint.com/kibana/kibana_create_visualization.htm)を参照してください。
 
 ![Kibana ダッシュボード][2]
 

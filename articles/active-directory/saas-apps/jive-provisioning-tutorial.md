@@ -1,21 +1,21 @@
 ---
 title: チュートリアル:Jive を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
-description: Azure Active Directory と Jive の間でシングル サインオンを構成する方法について説明します。
+description: Azure AD から Jive へのユーザー アカウントの自動的なプロビジョニングおよびプロビジョニング解除を行うために、Jive と Azure AD で実行する必要がある手順について説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: fec959ee34f9491b6510390d4b390e652690897e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ebee5d986007e07d497056620f0cfc437b2da4d1
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547088"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356401"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>チュートリアル:Jive を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -35,7 +35,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 プロビジョニング サービスを構成して有効にする前に、Jive アプリへのアクセスが必要なユーザーを表す Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順でこれらのユーザーを Jive アプリに割り当てることができます。
 
-[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-jive"></a>ユーザーを Jive に割り当てる際の重要なヒント
 
@@ -63,11 +63,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 1. **[プロビジョニング モード]** を **[自動]** に設定します。 
 
-    ![プロビジョニング](./media/jive-provisioning-tutorial/provisioning.png)
+    ![スクリーンショットは、Jive のプロビジョニング ページを示しています。[プロビジョニング モード] は [自動] に設定され、ユーザーが設定できるその他の値が表示されています。](./media/jive-provisioning-tutorial/provisioning.png)
 
 1. **[管理者資格情報]** セクションに次の構成設定を指定します。
    
-    a. **[JIVE 管理ユーザー名]** テキストボックスに、Jive.com の**システム管理者**プロファイルが割り当てられている Jive アカウント名を入力します。
+    a. **[JIVE 管理ユーザー名]** テキストボックスに、Jive.com の **システム管理者** プロファイルが割り当てられている Jive アカウント名を入力します。
    
     b. **[JIVE 管理パスワード]** テキストボックスに、このアカウントのパスワードを入力します。
    

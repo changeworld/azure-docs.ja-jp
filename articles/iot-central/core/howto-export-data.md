@@ -1,67 +1,98 @@
 ---
-title: Azure IoT Central データをエクスポートする | Microsoft Docs
-description: Azure IoT Central アプリケーションから Azure Event Hubs、Azure Service Bus、および Azure Blob Storage にデータをエクスポートする方法
+title: Azure IoT Central からデータをエクスポートする | Microsoft Docs
+description: 新しいデータ エクスポートを使用して Azure とカスタム クラウドの宛先に IoT データをエクスポートする方法について説明します。
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 06/25/2020
+ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
-manager: corywink
-ms.openlocfilehash: 1428df124272816927c6bbbc4a242170c7f46c00
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: contperf-fy21q1, contperf-fy21q3
+ms.openlocfilehash: 7152012c7c4a342c7491e5f8b835eaede4269c4c
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008527"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522616"
 ---
-# <a name="export-iot-data-to-destinations-in-azure-using-data-export-legacy"></a>データ エクスポートを使用して Azure のターゲットに IoT データをエクスポートする (レガシ)
+# <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする
 
 > [!Note]
-> IoT Central には、データをエクスポートする新しい方法があります。 新しいデータ エクスポートを使用すると、エクスポートされるデータをフィルター処理したり、強化したり、Webhook エンドポイントなどの新しい宛先にエクスポートすることができます。 新しいデータ エクスポートについては、[こちら](./howto-use-data-export.md)を参照してください。 新しいデータ エクスポートと従来のデータ エクスポートの違いについては、[比較表](./howto-use-data-export.md#comparison-of-legacy-data-export-and-new-data-export)を参照してください。
+> この記事では、IoT Central のデータ エクスポート機能について説明します。 従来のデータ エクスポート機能の詳細については、[データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする (レガシ)](./howto-export-data-legacy.md) に関するページを参照してください。
 
-この記事では、Azure IoT Central のデータ エクスポート機能を使用する方法について説明します。 この機能を使用すると、データを **Azure Event Hubs**、**Azure Service Bus**、または **Azure Blob Storage** のインスタンスに継続的にエクスポートできます。 データ エクスポートでは JSON 形式が使用され、テレメトリ、デバイス情報、デバイス テンプレート情報を含めることができます。 エクスポートされたデータは次のことに使用します。
+この記事では、Azure IoT Central の新しいデータ エクスポート機能を使用する方法について説明します。 この機能を使用して、フィルター処理およびエンリッチ化された IoT データを IoT Central アプリケーションから連続エクスポートします。 データ エクスポートを使用すると、ウォーム パスの分析情報、分析、およびストレージ用に、クラウド ソリューションの他の部分にほぼリアルタイムで変更がプッシュされます。
 
-- ウォーム パスの分析情報と分析。 このオプションには、Azure Stream Analytics でのカスタム ルールのトリガー、Azure Logic Apps でのカスタム ワークフローのトリガー、または変換するための Azure Functions を介した受け渡しなどが含まれます。
-- Azure Machine Learning でのモデルのトレーニングや Microsoft Power BI での長期傾向分析などのコールド パス分析。
+たとえば、次のように操作できます。
 
-> [!Note]
+- テレメトリ データとプロパティの変更を JSON 形式でほぼリアルタイムに連続エクスポートする
+- データ ストリームをフィルター処理して、カスタム条件に一致するデータをエクスポートする
+- デバイスからのカスタム値とプロパティ値を使用してデータ ストリームをエンリッチ化する
+- データを Azure Event Hubs、Azure Service Bus、Azure Blob Storage、Webhook エンドポイントなどの宛先に送信する
+
+> [!Tip]
 > データ エクスポートを有効にすると、その時点以降のデータのみが取得されます。 現在は、データ エクスポートがオフになっていたときのデータを取得することはできません。 より多くの履歴データを保持するには、データ エクスポートを早い段階で有効にしてください。
 
 ## <a name="prerequisites"></a>前提条件
 
-ご利用の IoT Central アプリケーションの管理者であるか、データ エクスポートのアクセス許可を持っている必要があります。
+データ エクスポート機能を使用するには、[V3 アプリケーション](howto-get-app-info.md)が必要です。また、[データ エクスポート](howto-manage-users-roles.md)のアクセス許可が必要です。
+
+V2 アプリケーションをご使用の場合は、[V3 への V2 IoT Central アプリケーションの移行](howto-migrate.md)に関する記事を参照してください。
 
 ## <a name="set-up-export-destination"></a>エクスポート先の設定
 
-データ エクスポートを構成する前に、エクスポート先が存在している必要があります。
+データ エクスポートを構成する前に、エクスポート先が存在している必要があります。 現在、次のエクスポート先の種類を使用できます。
 
-### <a name="create-event-hubs-namespace"></a>Event Hubs 名前空間の作成
+- Azure Event Hubs
+- Azure Service Bus キュー
+- Azure Service Bus トピック
+- Azure Blob Storage
+- Webhook
+
+### <a name="create-an-event-hubs-destination"></a>Event Hubs の宛先を作成する
 
 エクスポート先となる既存の Event Hubs 名前空間がない場合は、次の手順に従います。
 
 1. [Azure portal で新しい Event Hubs 名前空間](https://ms.portal.azure.com/#create/Microsoft.EventHub)を作成します。 詳細については、[Azure Event Hubs のドキュメント](../../event-hubs/event-hubs-create.md)を参照してください。
 
-2. サブスクリプションを選択します。 ご使用の IoT Central アプリケーションと同じサブスクリプションではない、他のサブスクリプションにデータをエクスポートできます。 この場合、接続文字列を使用して接続します。
+1. Event Hubs 名前空間にイベント ハブを作成します。 名前空間に移動し、上部の **[+ イベント ハブ]** を選択して、イベント ハブ インスタンスを作成します。
 
-3. Event Hubs 名前空間にイベント ハブを作成します。 名前空間に移動し、上部の **[+ イベント ハブ]** を選択して、イベント ハブ インスタンスを作成します。
+1. IoT Central でデータ エクスポートを設定するときに使用するキーを生成します。
 
-### <a name="create-service-bus-namespace"></a>Service Bus 名前空間の作成
+    - 作成したイベント ハブ インスタンスを選択します。
+    - **[設定]、[共有アクセス ポリシー]** の順に選択します。
+    - 新しいキーを作成するか、**送信** アクセス許可を持っている既存のキーを選択します。
+    - プライマリ キーまたはセカンダリの接続文字列をコピーします。 この接続文字列は、IoT Central に新しい宛先を設定するために使用します。
+    - または、Event Hubs 名前空間全体の接続文字列を生成することもできます。
+        1. Azure portal で Event Hubs 名前空間にアクセスします。
+        2. **[設定]** で、 **[共有アクセス ポリシー]** を選択します。
+        3. 新しいキーを作成するか、**送信** アクセス許可を持っている既存のキーを選択します。
+        4. プライマリまたはセカンダリの接続文字列をコピーします。
+        
+### <a name="create-a-service-bus-queue-or-topic-destination"></a>Service Bus キューまたはトピックの宛先を作成する
 
 エクスポート先となる既存の Service Bus 名前空間がない場合は、次の手順に従います。
 
 1. [Azure portal で新しい Service Bus 名前空間](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5)を作成します。 詳細については、[Azure Service Bus のドキュメント](../../service-bus-messaging/service-bus-create-namespace-portal.md)を参照してください。
-2. サブスクリプションを選択します。 ご使用の IoT Central アプリケーションと同じサブスクリプションではない、他のサブスクリプションにデータをエクスポートできます。 この場合、接続文字列を使用して接続します。
 
-3. エクスポート先のキューまたはトピックを作成するには、Service Bus 名前空間に移動し、 **[+ キュー]** または **[+ トピック]** を選択します。
+1. エクスポート先のキューまたはトピックを作成するには、Service Bus 名前空間に移動し、 **[+ キュー]** または **[+ トピック]** を選択します。
 
-エクスポート先として Service Bus を選択する場合、キューとトピックでセッションまたは重複の検出が有効になっていてはいけません。 これらのオプションのいずれかが有効になっていると、一部のメッセージがキューやトピックに到着しません。
+1. IoT Central でデータ エクスポートを設定するときに使用するキーを生成します。
 
-### <a name="create-storage-account"></a>ストレージ アカウントの作成
+    - 作成したキューまたはトピックをクリックします。
+    - **[設定]/[共有アクセス ポリシー]** の順に選択します。
+    - 新しいキーを作成するか、**送信** アクセス許可を持っている既存のキーを選択します。
+    - プライマリ キーまたはセカンダリの接続文字列をコピーします。 この接続文字列は、IoT Central に新しい宛先を設定するために使用します。
+    - または、Service Bus 名前空間全体の接続文字列を生成することもできます。
+        1. Azure portal で、ご利用の Service Bus 名前空間に移動します。
+        2. **[設定]** で、 **[共有アクセス ポリシー]** を選択します。
+        3. 新しいキーを作成するか、**送信** アクセス許可を持っている既存のキーを選択します。
+        4. プライマリまたはセカンダリの接続文字列をコピーします。
+
+### <a name="create-an-azure-blob-storage-destination"></a>Azure Blob Storage の宛先を作成する
 
 エクスポート先となる既存の Azure Storage アカウントがない場合は、次の手順に従います。
 
-1. [Azure portal で新しいストレージ アカウント](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)を作成します。 新しい [Azure Blob ストレージ アカウント](https://aka.ms/blobdocscreatestorageaccount)または [Azure Data Lake Storage v2 ストレージ アカウント](../../storage/blobs/data-lake-storage-quickstart-create-account.md)の作成の詳細を確認できます。 データのエクスポートでは、ブロック BLOB をサポートするストレージ アカウントにのみデータを書き込めます。 次の一覧は、互換性のある既知のストレージ アカウントの種類を示しています。
+1. [Azure portal で新しいストレージ アカウント](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)を作成します。 新しい [Azure Blob Storage アカウント](../../storage/blobs/storage-quickstart-blobs-portal.md)または [Azure Data Lake Storage v2 ストレージ アカウント](../../storage/common/storage-account-create.md)の作成の詳細を確認できます。 データのエクスポートでは、ブロック BLOB をサポートするストレージ アカウントにのみデータを書き込めます。 次の一覧は、互換性のある既知のストレージ アカウントの種類を示しています。
 
     |パフォーマンス レベル|アカウントの種類|
     |-|-|
@@ -70,687 +101,295 @@ ms.locfileid: "88008527"
     |Standard|BLOB ストレージ|
     |Premium|ブロック BLOB ストレージ|
 
-2. ご自分のストレージ アカウントでコンテナーを作成します。 ストレージ アカウントに移動します。 **[Blob service]** で **[BLOB の参照]** を選択します。 上部の **[+ コンテナー]** を選択して、新しいコンテナーを作成します。
+1. ストレージ アカウントにコンテナーを作成するには、ストレージ アカウントにアクセスします。 **[Blob service]** で **[BLOB の参照]** を選択します。 上部の **[+ コンテナー]** を選択して、新しいコンテナーを作成します。
+
+1. **[設定] > [アクセス キー]** の順に移動してストレージ アカウントの接続文字列を生成します。 2 つの接続文字列のうち 1 つをコピーします。
+
+### <a name="create-a-webhook-endpoint"></a>Webhook エンドポイントを作成する
+
+パブリックに使用できる HTTP Webhook エンドポイントにデータをエクスポートできます。 [RequestBin](https://requestbin.net/) を使用して、テスト用の Webhook エンドポイントを作成できます。 RequestBin は、要求の上限に達したときに、要求をスロットルします。
+
+1. [RequestBin](https://requestbin.net/) を開きます。
+2. 新しい RequestBin を作成し、**Bin URL** をコピーします。 この URL は、データ エクスポートをテストするときに使用します。
 
 ## <a name="set-up-data-export"></a>データ エクスポートの設定
 
-これでデータのエクスポート先ができたので、次の手順に従ってデータ エクスポートを設定します。
+データのエクスポート先を準備したので、IoT Central アプリケーションでデータのエクスポートを設定します。
 
 1. ご使用の IoT Central アプリケーションにサインインします。
 
-2. 左側のペインで、 **[データのエクスポート]** を選択します。
+1. 左側のペインで、 **[データのエクスポート]** を選択します。
 
     > [!Tip]
     > 左側のペインに **[データのエクスポート]** が表示されない場合は、アプリでデータ エクスポートを構成するアクセス許可がありません。 データ エクスポートの設定について、管理者に問い合わせてください。
 
-3. **[+ 新規]** をクリックします。 エクスポート先として、**Azure Blob Storage**、**Azure Event Hubs**、**Azure Service Bus キュー**、または **Azure Service Bus トピック**のいずれかを選択します。 アプリケーションごとのエクスポートの最大数は 5 です。
+1. **[+ 新しいエクスポート]** を選択します。
 
-4. エクスポートの名前を入力します。 ドロップダウン リスト ボックスで、ご使用の**名前空間**を選択するか、**接続文字列を入力**します。
+1. 新しいエクスポートの表示名を入力し、データ エクスポートが **[有効]** になっていることを確認します。
 
-    - ご使用の IoT Central アプリケーションと同じサブスクリプション内のストレージ アカウント、Event Hubs 名前空間、Service Bus 名前空間のみが表示されます。 このサブスクリプションとは異なる場所にエクスポートする場合は、 **[接続文字列を入力してください]** を選択して、手順 6 に進みます。
-    - 無料プランを使用して作成されたアプリでデータ エクスポートを構成する唯一の方法は、接続文字列を使用することです。 無料プランのアプリには、関連付けられた Azure サブスクリプションがありません。
+1. エクスポートするデータの種類を選択します。 次の表は、サポートされるデータ エクスポートの型の一覧を示します。
 
-    ![新しい Event Hub を作成する](media/howto-export-data/export-event-hub.png)
+    | データ型 | 説明 | データ形式 |
+    | :------------- | :---------- | :----------- |
+    |  テレメトリ | デバイスからのテレメトリ メッセージがほぼリアルタイムでエクスポートされます。 エクスポートされた各メッセージには、元のデバイス メッセージの完全な内容が正規化されて含まれます。   |  [テレメトリ メッセージの形式](#telemetry-format)   |
+    | プロパティ変更 | デバイスとクラウドのプロパティに対する変更がほぼリアルタイムでエクスポートされます。 読み取り専用のデバイス プロパティでは、報告された値に対する変更がエクスポートされます。 読み取り/書き込みプロパティの場合、報告された値と必要な値の両方がエクスポートされます。 | [プロパティ変更メッセージの形式](#property-changes-format) |
 
-5. ドロップダウン リスト ボックスから、イベント ハブ、キュー、トピック、またはコンテナーを選択します。
+<a name="DataExportFilters"></a>
+1. 必要に応じて、フィルターを追加して、エクスポートするデータの量を減らします。 データ エクスポートの型ごとに、使用できるフィルターの種類は異なります。
 
-6. (省略可能) **[Enter a connection string]\(接続文字列を入力する\)** を選択すると、接続文字列を貼り付けるための新しいボックスが表示されます。 次の接続文字列を取得するには:
+    テレメトリをフィルター処理する場合、以下があります。
 
-    - Event Hubs や Service Bus。Azure portal で名前空間に移動します。
-        - 名前空間全体に対して接続文字列を使用するには:
-            1. **[設定]** で、 **[共有アクセス ポリシー]** を選択します。
-            2. 新しいキーを作成するか、**送信**アクセス許可を持っている既存のキーを選択します。
-            3. プライマリまたはセカンダリの接続文字列をコピーします。
-        - 特定のイベント ハブ インスタンスや Service Bus キューまたはトピックに対して接続文字列を使用するには、 **[エンティティ] > [Event Hubs]** 、 **[エンティティ] > [キュー]** 、 **[エンティティ] > [トピック]** のいずれかに移動します。 特定のインスタンスを選択し、上述のものと同じ手順に従って接続文字列を取得します。
-    - ストレージ アカウント。Azure portal でストレージ アカウントに移動します。
-        - ストレージ アカウント全体に対する接続文字列のみがサポートされています。 単一のコンテナーを対象とした接続文字列はサポートされていません。
-          1. **[設定]** で **[アクセス キー]** を選択します。
-          2. key1 接続文字列または key2 接続文字列のいずれかをコピーします。
+    - デバイス名、デバイス ID、およびデバイス テンプレートのフィルター条件に一致するデバイスのテレメトリだけを格納するように、エクスポートされたストリームを **フィルター処理** します。
+    - 機能を **フィルター処理** する: **[名前]** ドロップダウンでテレメトリ項目を選択すると、エクスポートされたストリームには、フィルター条件を満たすテレメトリだけが含まれます。 **[名前]** ドロップダウンでデバイスまたはクラウドのプロパティ項目を選択すると、エクスポートされたストリームには、フィルター条件に一致するプロパティを持つデバイスからのテレメトリだけが含まれます。
+    - **メッセージ プロパティのフィルター**: デバイス SDK を使用するデバイスでは、各テレメトリ メッセージで *メッセージのプロパティ* または *アプリケーションのプロパティ* を送信できます。 これらのプロパティは、メッセージにカスタム識別子をタグを付けるキーと値のペアのバッグです。 メッセージ プロパティ フィルターを作成するには、検索するメッセージ プロパティ キーを入力し、条件を指定します。 指定したフィルター条件に一致するプロパティを持つテレメトリ メッセージのみがエクスポートされます。 次の文字列比較演算子がサポートされています: 等しい、等しくない、次を含む、次を含まない、存在する、存在しない。 [アプリケーション プロパティの詳細については、IoT Hub のドキュメントを参照してください](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 
-    接続文字列を貼り付けます。 大文字と小文字が区別されることに注意して、インスタンスまたは**コンテナー名**を入力します。
+    プロパティの変更をフィルター処理するには、**機能フィルター** を使用します。 ドロップダウンでプロパティ項目を選択します。 エクスポートされたストリームには、フィルター条件を満たす選択したプロパティへの変更のみが含まれます。
 
-7. **[エクスポートするデータ]** で、種類を **[オン]** に設定して、エクスポートするデータの種類を選択します。
+<a name="DataExportEnrichmnents"></a>
+1. 必要に応じて、追加のキーと値のペアのメタデータを使用してエクスポートしたメッセージをエンリッチ化します。 次のエンリッチメントは、テレメトリとプロパティ変更のデータ エクスポートの型で使用できます。
 
-8. データ エクスポートを有効にするには、 **[有効]** トグルが **[オン]** になっていることを確認します。 **[保存]** を選択します。
+    - **カスタム文字列**: 各メッセージに静的なカスタム文字列を追加します。 任意のキーを入力し、任意の文字列値を入力します。
+    - **プロパティ**: デバイスから報告された現在のプロパティまたはクラウド プロパティの値を各メッセージに追加します。 任意のキーを入力し、デバイスまたはクラウドのプロパティを選択します。 エクスポートされたメッセージが、指定したプロパティを持たないデバイスからのものである場合、エクスポートされたメッセージにはそのエンリッチメントがありません。
 
-9. 数分後に、選択したエクスポート先にデータが表示されます。
+1. 新しい宛先を追加するか、既に作成済みの宛先を追加します。 **[Create a new one]\(新しく作成する\)** リンクを選択し、次の情報を追加します。
 
-## <a name="export-contents-and-format"></a>エクスポートの内容と形式
+    - **宛先名**: IoT Central 内の宛先の表示名
+    - **宛先の種類**: 宛先の種類を選択します。 宛先をまだ設定していない場合は、「[エクスポート先の設定](#set-up-export-destination)」を参照してください。
+    - Azure Event Hubs、Azure Service Bus キューまたはトピックの場合は、リソースの接続文字列を貼り付け、必要に応じてイベント ハブ、キュー、またはトピック名を大文字と小文字を区別して入力します。
+    - Azure Blob Storage の場合は、リソースの接続文字列を貼り付け、必要に応じてコンテナー名を大文字と小文字を区別して入力します。
+    - Webhook の場合は、Webhook エンドポイントのコールバック URL を貼り付けます。 必要に応じて、Webhook 認可 (OAuth 2.0 および認可トークン) を構成し、カスタム ヘッダーを追加することができます。 
+        - OAuth 2.0 の場合は、クライアント資格情報フローのみがサポートされます。 宛先を保存すると、IoT Central では OAuth プロバイダーと通信して認証トークンが取得されます。 このトークンは、この宛先に送信されるすべてのメッセージの "Authorization" ヘッダーに添付されます。
+        - 認可トークンの場合、この宛先に送信されるすべてのメッセージの "Authorization" ヘッダーに直接添付されるトークン値を指定できます。
+    - **［作成］** を選択します
 
-エクスポートされたテレメトリ データには、テレメトリ値自体だけでなく、デバイスが IoT Central に送信したメッセージ全体が含まれています。 エクスポートされたデバイス データには、すべてのデバイスのプロパティとメタデータに対する変更が含まれており、エクスポートされたデバイス テンプレートには、すべてのデバイス テンプレートに対する変更が含まれています。
+1. **[+ 宛先]** を選択し、ドロップダウンから宛先を選択します。 1 つのエクスポートに最大 5 つの宛先を追加できます。
 
-Event Hubs と Service Bus では、データはほぼリアルタイムでエクスポートされます。 データは `body` プロパティ内にあり、JSON 形式になっています。 次の例を参照してください。
+1. エクスポートの設定が完了したら、 **[保存]** を選択します。 数分後に、エクスポート先にデータが表示されます。
 
-Blob Storage の場合、データは 1 分に 1 回エクスポートされ、各ファイルには、最後にエクスポートされたファイル以降の変更のバッチが含まれます。 エクスポートされたデータは、JSON 形式で 3 つのフォルダーに配置されます。 ストレージ アカウントでの既定のパスは次のとおりです。
+## <a name="monitor-your-export"></a>エクスポートの監視
 
-- テレメトリ: _{container}/{app-id}/telemetry/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
-- デバイス: _{container}/{app-id}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
-- デバイス テンプレート: _{container}/{app-id}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
+IoT Central でエクスポートの状態を確認するだけでなく、[Azure Monitor](../../azure-monitor/overview.md) を使用して、エクスポートしているデータの量やエクスポート エラーを確認することもできます。 エクスポートとデバイスの正常性のメトリックには、Azure portal 内のグラフ、REST API、または PowerShell や Azure CLI のクエリを使用してアクセスできます。 現時点では、Azure Monitor で次のデータ エクスポート メトリックを監視できます。
 
-Azure portal でエクスポートされたファイルを参照するには、そのファイルに移動し、 **[BLOB の編集]** タブを選択します。
+- フィルター適用前のエクスポート対象受信メッセージの数。
+- フィルターを通過したメッセージの数。
+- 宛先に正常にエクスポートされたメッセージの数。
+- 発生したエラーの数。
 
-## <a name="telemetry"></a>テレメトリ
+詳細については、「[IoT Central アプリケーションの全体的な正常性状態を監視する](howto-monitor-application-health.md)」を参照してください。
 
-Event Hubs と Service Bus の場合、IoT Central は、デバイスからメッセージを受信した後、すぐに新しいメッセージをエクスポートします。 エクスポートされた各メッセージには、デバイスが body プロパティで送信した完全なメッセージが JSON 形式で含まれています。
+## <a name="destinations"></a>変換先
 
-Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 回エクスポートされます。 エクスポートされたファイルでは、[IoT Hub メッセージ ルーティング](../../iot-hub/tutorial-routing.md)によって Blob Storage にエクスポートされたメッセージ ファイルと同じ形式が使用されます。
+### <a name="azure-blob-storage-destination"></a>Azure Blob Storage の宛先
 
-> [!NOTE]
-> Blob Storage の場合、デバイスが、`contentType: application/JSON` と `contentEncoding:utf-8` (または `utf-16`、`utf-32`) を持つメッセージを送信していることを確認してください。 例については、[IoT Hub のドキュメント](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body)を参照してください。
+データは 1 分に 1 回エクスポートされ、各ファイルには、前のエクスポート以降の変更のバッチが含まれます。 エクスポートされたデータは JSON 形式で保存されます。 ストレージ アカウント内のエクスポートされたデータの既定のパスは次のとおりです。
 
-テレメトリを送信したデバイスは、デバイス ID で表されます (以下のセクションを参照)。 デバイスの名前を取得するには、デバイスのデータをエクスポートし、デバイス メッセージの **deviceId** と一致する **connectionDeviceId** を使用して各メッセージを関連付けます。
+- テレメトリ: _{container}/{app-id}/{partition_id}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
+- プロパティ変更: _{container}/{app-id}/{partition_id}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
 
-次の例は、イベント ハブまたは Service Bus のキューまたはトピックから受信したメッセージを示しています。
+Azure portal でエクスポートされたファイルを参照するには、そのファイルに移動し、 **[BLOB の編集]** を選択します。
 
-```json
-{
-  "temp":81.129693132351775,
-  "humid":59.488071477541247,
-  "EventProcessedUtcTime":"2020-04-07T09:41:15.2877981Z",
-  "PartitionId":0,
-  "EventEnqueuedUtcTime":"2020-04-07T09:38:32.7380000Z"
-}
-```
+### <a name="azure-event-hubs-and-azure-service-bus-destinations"></a>Azure Event Hubs および Azure Service Bus の宛先
 
-このメッセージには、送信元デバイスのデバイス ID は含まれていません。
+データはほぼリアルタイムでエクスポートされます。 データはメッセージ本文に含まれ、UTF-8 としてエンコードされた JSON 形式です。
 
-Azure Stream Analytics クエリのメッセージ データからデバイス ID を取得するには、[GetMetadataPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) 関数を使用します。 たとえば、「[Stream Analytics、Azure Functions、SendGrid を使用してカスタム ルールで Azure IoT Central を拡張する](./howto-create-custom-rules.md)」のクエリを参照してください。
+メッセージの注釈またはシステム プロパティ バッグ内には、メッセージ本文の対応するフィールドと同じ値を持つ `iotcentral-device-id`、`iotcentral-application-id`、`iotcentral-message-source`、および `iotcentral-message-type` フィールドがあります。
 
-Azure Databricks または Apache Spark のワークスペースでデバイス ID を取得するには、[systemProperties](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md) を使用します。 たとえば、「[Azure Databricks を使用したカスタム分析で Azure IoT Central を拡張する](./howto-create-custom-analytics.md)」の Databricks ワークスペースを参照してください。
+### <a name="webhook-destination"></a>Webhook の宛先
 
-次の例は、Blob Storage にエクスポートされるレコードを示しています。
+Webhook が宛先の場合も、データはほぼリアルタイムでエクスポートされます。 メッセージ本文のデータは、Event Hubs および Service Bus と同じ形式です。
 
-```json
-{
-  "EnqueuedTimeUtc":"2019-09-26T17:46:09.8870000Z",
-  "Properties":{
+## <a name="telemetry-format"></a>テレメトリ形式
 
-  },
-  "SystemProperties":{
-    "connectionDeviceId":"<deviceid>",
-    "connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-    "connectionDeviceGenerationId":"637051167384630591",
-    "contentType":"application/json",
-    "contentEncoding":"utf-8",
-    "enqueuedTime":"2019-09-26T17:46:09.8870000Z"
-  },
-  "Body":{
-    "temp":49.91322758395974,
-    "humid":49.61214852573155,
-    "pm25":25.87332214661367
-  }
-}
-```
+エクスポートされた各メッセージには、メッセージ本文でデバイスから送信された、完全なメッセージが正規化された形式で含まれます。 メッセージは JSON 形式で、UTF-8 としてエンコードされます。 各メッセージに含まれる情報は次のとおりです。
 
-## <a name="devices"></a>デバイス
+- `applicationId`:IoT Central アプリケーションの ID。
+- `messageSource`:メッセージのソース - `telemetry`。
+- `deviceId`:テレメトリ メッセージを送信したデバイスの ID。
+- `schema`:ペイロード スキーマの名前とバージョン。
+- `templateId`:デバイスに関連付けられているデバイス テンプレートの ID。
+- `enrichments`:エクスポートに設定されたエンリッチメント。
+- `messageProperties`:デバイスからメッセージと一緒に送信された追加のプロパティ。 これらのプロパティは *アプリケーション プロパティ* と呼ばれることもあります。 [詳細については IoT Hub のドキュメントを参照してください](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 
-スナップショット内の各メッセージまたはレコードは、最後にエクスポートされたメッセージ以降に、そのデバイスとクラウドのプロパティに加えられた 1 つ以上の変更を表しています。 メッセージには以下が含まれています。
+Event Hubs と Service Bus の場合、IoT Central は、デバイスからメッセージを受信した後、すぐに新しいメッセージをエクスポートします。 各メッセージのユーザー プロパティ (アプリケーション プロパティとも呼ばれます) では、`iotcentral-device-id`、`iotcentral-application-id`、および `iotcentral-message-source` が自動的に含まれます。
 
-- `id` IoT Central でデバイスの
-- デバイスの `displayName`
-- `instanceOf` のデバイス テンプレート ID
-- `simulated` フラグ (デバイスがシミュレートされたデバイスの場合は true)
-- `provisioned` フラグ (デバイスがプロビジョニングされている場合は true)
-- `approved` フラグ (デバイスでデータの送信が承認されている場合は true)
-- プロパティ値
-- `properties` (デバイスとクラウドのプロパティ値を含む)
+Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 回エクスポートされます。
 
-削除されたデバイスはエクスポートされません。 現在のところ、エクスポートされたメッセージ内に、削除されたデバイスを示すものはありません。
-
-Event Hubs と Service Bus の場合、IoT Central はデバイス データを含むメッセージをほぼリアルタイムでイベント ハブまたは Service Bus のキューまたはトピックに送信します。
-
-Blob Storage の場合は、最後のものが書き込まれてから以降のすべての変更を含む新しいスナップショットが 1 分間に 1 回エクスポートされます。
-
-次のメッセージの例は、イベント ハブまたは Service Bus のキューまたはトピック内のデバイスとプロパティ データに関する情報を示しています。
+次の例は、エクスポートされたテレメトリ メッセージを示しています。
 
 ```json
+
 {
-  "body":{
-    "id": "<device Id>",
-    "etag": "<etag>",
-    "displayName": "Sensor 1",
-    "instanceOf": "<device template Id>",
-    "simulated": false,
-    "provisioned": true,
-    "approved": true,
-    "properties": {
-        "sensorComponent": {
-            "setTemp": "30",
-            "fwVersion": "2.0.1",
-            "status": { "first": "first", "second": "second" },
-            "$metadata": {
-                "setTemp": {
-                    "desiredValue": "30",
-                    "desiredVersion": 3,
-                    "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
-                    "ackVersion": 3
-                },
-                "fwVersion": { "ackVersion": 3 },
-                "status": {
-                    "desiredValue": {
-                        "first": "first",
-                        "second": "second"
-                    },
-                    "desiredVersion": 2,
-                    "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
-                    "ackVersion": 2
-                }
-            },
-            
-        }
-    },
-    "installDate": { "installDate": "2020-02-01" }
-},
-  "annotations":{
-    "iotcentral-message-source":"devices",
-    "x-opt-partition-key":"<partitionKey>",
-    "x-opt-sequence-number":39740,
-    "x-opt-offset":"<offset>",
-    "x-opt-enqueued-time":1539274959654
-  },
-  "partitionKey":"<partitionKey>",
-  "sequenceNumber":39740,
-  "enqueuedTimeUtc":"2020-02-01T18:14:49.3820326Z",
-  "offset":"<offset>"
-}
-```
-
-このスナップショットは、Blob Storage のデバイスとプロパティ データを示すメッセージの例です。 エクスポートされたファイルには、1 つのレコードにつき 1 行が含まれます。
-
-```json
-{
-  "id": "<device Id>",
-  "etag": "<etag>",
-  "displayName": "Sensor 1",
-  "instanceOf": "<device template Id>",
-  "simulated": false,
-  "provisioned": true,
-  "approved": true,
-  "properties": {
-      "sensorComponent": {
-          "setTemp": "30",
-          "fwVersion": "2.0.1",
-          "status": { "first": "first", "second": "second" },
-          "$metadata": {
-              "setTemp": {
-                  "desiredValue": "30",
-                  "desiredVersion": 3,
-                  "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
-                  "ackVersion": 3
-              },
-              "fwVersion": { "ackVersion": 3 },
-              "status": {
-                  "desiredValue": {
-                      "first": "first",
-                      "second": "second"
-                  },
-                  "desiredVersion": 2,
-                  "desiredTimestamp": "2020-02-01T17:15:08.9284049Z",
-                  "ackVersion": 2
-              }
-          },
-          
-      }
-  },
-  "installDate": { "installDate": "2020-02-01" }
-}
-```
-
-## <a name="device-templates"></a>デバイス テンプレート
-
-各メッセージまたはスナップショット レコードは、最後にエクスポートされたメッセージ以降に公開されたデバイス テンプレートに加えられた 1 つ以上の変更を表しています。 各メッセージまたはレコードで送信される情報としては、次のものがあります。
-
-- 上記のデバイス ストリームの `instanceOf` に一致するデバイス テンプレートの `id`
-- デバイス テンプレートの`displayName`
-- デバイスの `capabilityModel` (その `interfaces` を含む)、テレメトリ、プロパティ、およびコマンドの定義
-- `cloudProperties` の定義
-- `capabilityModel` に埋め込まれたオーバライドと初期値
-
-削除されたデバイス テンプレートはエクスポートされません。 現在のところ、エクスポートされたメッセージ内に、削除されたデバイス テンプレートを示すものはありません。
-
-Event Hubs と Service Bus の場合、IoT Central はデバイス テンプレート データを含むメッセージをほぼリアルタイムでイベント ハブまたは Service Bus のキューまたはトピックに送信します。
-
-Blob Storage の場合は、最後のものが書き込まれてから以降のすべての変更を含む新しいスナップショットが 1 分間に 1 回エクスポートされます。
-
-この例は、イベント ハブまたは Service Bus のキューまたはトピック内にあるデバイス テンプレート データに関するメッセージを示しています。
-
-```json
-{
-  "body":{
-      "id": "<device template id>",
-      "etag": "<etag>",
-      "types": ["DeviceModel"],
-      "displayName": "Sensor template",
-      "capabilityModel": {
-          "@id": "<capability model id>",
-          "@type": ["CapabilityModel"],
-          "contents": [],
-          "implements": [
-              {
-                  "@id": "<component Id>",
-                  "@type": ["InterfaceInstance"],
-                  "name": "sensorComponent",
-                  "schema": {
-                      "@id": "<interface Id>",
-                      "@type": ["Interface"],
-                      "displayName": "Sensor interface",
-                      "contents": [
-                          {
-                              "@id": "<id>",
-                              "@type": ["Telemetry"],
-                              "displayName": "Humidity",
-                              "name": "humidity",
-                              "schema": "double"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Telemetry", "SemanticType/Event"],
-                              "displayName": "Error event",
-                              "name": "error",
-                              "schema": "integer"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Set temperature",
-                              "name": "setTemp",
-                              "writable": true,
-                              "schema": "integer",
-                              "unit": "Units/Temperature/fahrenheit",
-                              "initialValue": "30"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Firmware version read only",
-                              "name": "fwversion",
-                              "schema": "string"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Display status",
-                              "name": "status",
-                              "writable": true,
-                              "schema": {
-                                  "@id": "urn:testInterface:status:obj:ka8iw8wka:1",
-                                  "@type": ["Object"]
-                              }
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Command"],
-                              "commandType": "synchronous",
-                              "request": {
-                                  "@id": "<id>",
-                                  "@type": ["SchemaField"],
-                                  "displayName": "Configuration",
-                                  "name": "config",
-                                  "schema": "string"
-                              },
-                              "response": {
-                                  "@id": "<id>",
-                                  "@type": ["SchemaField"],
-                                  "displayName": "Response",
-                                  "name": "response",
-                                  "schema": "string"
-                              },
-                              "displayName": "Configure sensor",
-                              "name": "sensorConfig"
-                          }
-                      ]
-                  }
-              }
-          ],
-          "displayName": "Sensor capability model"
-      },
-      "solutionModel": {
-          "@id": "<id>",
-          "@type": ["SolutionModel"],
-          "cloudProperties": [
-              {
-                  "@id": "<id>",
-                  "@type": ["CloudProperty"],
-                  "displayName": "Install date",
-                  "name": "installDate",
-                  "schema": "dateTime",
-                  "valueDetail": {
-                      "@id": "<id>",
-                      "@type": ["ValueDetail/DateTimeValueDetail"]
-                  }
-              }
-          ]
-      }
-  },
-    "annotations":{
-      "iotcentral-message-source":"deviceTemplates",
-      "x-opt-partition-key":"<partitionKey>",
-      "x-opt-sequence-number":25315,
-      "x-opt-offset":"<offset>",
-      "x-opt-enqueued-time":1539274985085
-    },
-    "partitionKey":"<partitionKey>",
-    "sequenceNumber":25315,
-    "enqueuedTimeUtc":"2019-10-02T16:23:05.085Z",
-    "offset":"<offset>"
-  }
-}
-```
-
-このスナップショットの例では、Blob Storage のデバイスとプロパティ データを含むメッセージが表示されています。 エクスポートされたファイルには、1 つのレコードにつき 1 行が含まれます。
-
-```json
-{
-      "id": "<device template id>",
-      "etag": "<etag>",
-      "types": ["DeviceModel"],
-      "displayName": "Sensor template",
-      "capabilityModel": {
-          "@id": "<capability model id>",
-          "@type": ["CapabilityModel"],
-          "contents": [],
-          "implements": [
-              {
-                  "@id": "<component Id>",
-                  "@type": ["InterfaceInstance"],
-                  "name": "Sensor component",
-                  "schema": {
-                      "@id": "<interface Id>",
-                      "@type": ["Interface"],
-                      "displayName": "Sensor interface",
-                      "contents": [
-                          {
-                              "@id": "<id>",
-                              "@type": ["Telemetry"],
-                              "displayName": "Humidity",
-                              "name": "humidity",
-                              "schema": "double"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Telemetry", "SemanticType/Event"],
-                              "displayName": "Error event",
-                              "name": "error",
-                              "schema": "integer"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Set temperature",
-                              "name": "setTemp",
-                              "writable": true,
-                              "schema": "integer",
-                              "unit": "Units/Temperature/fahrenheit",
-                              "initialValue": "30"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Firmware version read only",
-                              "name": "fwversion",
-                              "schema": "string"
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Property"],
-                              "displayName": "Display status",
-                              "name": "status",
-                              "writable": true,
-                              "schema": {
-                                  "@id": "urn:testInterface:status:obj:ka8iw8wka:1",
-                                  "@type": ["Object"]
-                              }
-                          },
-                          {
-                              "@id": "<id>",
-                              "@type": ["Command"],
-                              "commandType": "synchronous",
-                              "request": {
-                                  "@id": "<id>",
-                                  "@type": ["SchemaField"],
-                                  "displayName": "Configuration",
-                                  "name": "config",
-                                  "schema": "string"
-                              },
-                              "response": {
-                                  "@id": "<id>",
-                                  "@type": ["SchemaField"],
-                                  "displayName": "Response",
-                                  "name": "response",
-                                  "schema": "string"
-                              },
-                              "displayName": "Configure sensor",
-                              "name": "sensorconfig"
-                          }
-                      ]
-                  }
-              }
-          ],
-          "displayName": "Sensor capability model"
-      },
-      "solutionModel": {
-          "@id": "<id>",
-          "@type": ["SolutionModel"],
-          "cloudProperties": [
-              {
-                  "@id": "<id>",
-                  "@type": ["CloudProperty"],
-                  "displayName": "Install date",
-                  "name": "installDate",
-                  "schema": "dateTime",
-                  "valueDetail": {
-                      "@id": "<id>",
-                      "@type": ["ValueDetail/DateTimeValueDetail"]
-                  }
-              }
-          ]
-      }
-  }
-```
-
-## <a name="data-format-change-notice"></a>データ形式の変更に関する通知
-
-> [!Note]
-> テレメトリ ストリームのデータ形式はこの変更の影響を受けません。 デバイスとデバイス テンプレートのデータ ストリームのみが影響を受けます。
-
-"*デバイス*" と "*デバイス テンプレート*" のストリームが有効になっているプレビュー アプリケーションに既存のデータ エクスポートがある場合は、**2020 年 6 月 30 日**までにそのエクスポートを更新してください。 この要件は、Azure Blob Storage、Azure Event Hubs、および Azure Service Bus へのエクスポートに適用されます。
-
-2020 年 2 月 3 日以降、デバイスとデバイス テンプレートが有効になっているアプリケーションの新しいすべてのエクスポートに、上記のデータ形式が使用されます。 この日付より前に作成されたすべてのエクスポートは、2020 年 6 月 30 日までは古いデータ形式のままになります。この時点で、これらのエクスポートは新しいデータ形式に自動的に移行されます。 新しいデータ形式は、IoT Central パブリック API 内の[デバイス](https://docs.microsoft.com/rest/api/iotcentral/devices/get)、[デバイス プロパティ](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties)、[デバイス クラウド プロパティ](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)および[デバイス テンプレート](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get)のオブジェクトと一致します。
-
-**デバイス**については、古いデータ形式と新しいデータ形式の間で主に次のような違いがあります。
-- デバイスの `@id` は削除され、`deviceId` の名前は `id` に変更されます 
-- デバイスのプロビジョニングの状態を示す `provisioned` フラグが追加されます
-- デバイスの承認の状態を示す `approved` フラグが追加されます
-- デバイスとクラウドのプロパティを含む `properties` が、パブリック API のエンティティと一致します
-
-**デバイス テンプレート**については、古いデータ形式と新しいデータ形式の間で主に次のような違いがあります。
-
-- デバイス テンプレートの `@id` の名前は `id` に変更されます
-- デバイス テンプレートの `@type` の名前が `types` に変更され、配列になりました
-
-### <a name="devices-format-deprecated-as-of-3-february-2020"></a>デバイス (2020 年 2 月 3 日時点で非推奨とされた形式)
-
-```json
-{
-  "@id":"<id-value>",
-  "@type":"Device",
-  "displayName":"Airbox",
-  "data":{
-    "$cloudProperties":{
-        "Color":"blue"
-    },
-    "EnvironmentalSensor":{
-      "thsensormodel":{
-        "reported":{
-          "value":"Neque quia et voluptatem veritatis assumenda consequuntur quod.",
-          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
-        }
-      },
-      "pm25sensormodel":{
-        "reported":{
-          "value":"Aut alias odio.",
-          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
-        }
-      }
-    },
-    "urn_azureiot_DeviceManagement_DeviceInformation":{
-      "totalStorage":{
-        "reported":{
-          "value":27900.9730905171,
-          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
-        }
-      },
-      "totalMemory":{
-        "reported":{
-          "value":4667.82916715811,
-          "$lastUpdatedTimestamp":"2019-09-30T20:35:43.8478978Z"
-        }
-      }
-    }
-  },
-  "instanceOf":"<template-id>",
-  "deviceId":"<device-id>",
-  "simulated":true
-}
-```
-
-### <a name="device-templates-format-deprecated-as-of-3-february-2020"></a>デバイス テンプレート (2020 年 2 月 3 日時点で非推奨とされた形式)
-
-```json
-{
-  "@id":"<template-id>",
-  "@type":"DeviceModelDefinition",
-  "displayName":"Airbox",
-  "capabilityModel":{
-    "@id":"<id>",
-    "@type":"CapabilityModel",
-    "implements":[
-      {
-        "@id":"<id>",
-        "@type":"InterfaceInstance",
-        "name":"EnvironmentalSensor",
-        "schema":{
-          "@id":"<id>",
-          "@type":"Interface",
-          "comment":"Requires temperature and humidity sensors.",
-          "description":"Provides functionality to report temperature, humidity. Provides telemetry, commands and read-write properties",
-          "displayName":"Environmental Sensor",
-          "contents":[
-            {
-              "@id":"<id>",
-              "@type":"Telemetry",
-              "description":"Current temperature on the device",
-              "displayName":"Temperature",
-              "name":"temp",
-              "schema":"double",
-              "unit":"Units/Temperature/celsius",
-              "valueDetail":{
-                "@id":"<id>",
-                "@type":"ValueDetail/NumberValueDetail",
-                "minValue":{
-                  "@value":"50"
-                }
-              },
-              "visualizationDetail":{
-                "@id":"<id>",
-                "@type":"VisualizationDetail"
-              }
-            },
-            {
-              "@id":"<id>",
-              "@type":"Telemetry",
-              "description":"Current humidity on the device",
-              "displayName":"Humidity",
-              "name":"humid",
-              "schema":"integer"
-            },
-            {
-              "@id":"<id>",
-              "@type":"Telemetry",
-              "description":"Current PM2.5 on the device",
-              "displayName":"PM2.5",
-              "name":"pm25",
-              "schema":"integer"
-            },
-            {
-              "@id":"<id>",
-              "@type":"Property",
-              "description":"T&H Sensor Model Name",
-              "displayName":"T&H Sensor Model",
-              "name":"thsensormodel",
-              "schema":"string"
-            },
-            {
-              "@id":"<id>",
-              "@type":"Property",
-              "description":"PM2.5 Sensor Model Name",
-              "displayName":"PM2.5 Sensor Model",
-              "name":"pm25sensormodel",
-              "schema":"string"
-            }
-          ]
-        }
-      },
-      {
-        "@id":"<id>",
-        "@type":"InterfaceInstance",
-        "name":"urn_azureiot_DeviceManagement_DeviceInformation",
-        "schema":{
-          "@id":"<id>",
-          "@type":"Interface",
-          "displayName":"Device information",
-          "contents":[
-            {
-              "@id":"<id>",
-              "@type":"Property",
-              "comment":"Total available storage on the device in kilobytes. Ex. 20480000 kilobytes.",
-              "displayName":"Total storage",
-              "name":"totalStorage",
-              "displayUnit":"kilobytes",
-              "schema":"long"
-            },
-            {
-              "@id":"<id>",
-              "@type":"Property",
-              "comment":"Total available memory on the device in kilobytes. Ex. 256000 kilobytes.",
-              "displayName":"Total memory",
-              "name":"totalMemory",
-              "displayUnit":"kilobytes",
-              "schema":"long"
-            }
-          ]
-        }
-      }
-    ],
-    "displayName":"AAEONAirbox52"
-  },
-  "solutionModel":{
-    "@id":"<id>",
-    "@type":"SolutionModel",
-    "cloudProperties":[
-      {
-        "@id":"<id>",
-        "@type":"CloudProperty",
-        "displayName":"Color",
-        "name":"Color",
-        "schema":"string",
-        "valueDetail":{
-          "@id":"<id>",
-          "@type":"ValueDetail/StringValueDetail"
+    "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+    "messageSource": "telemetry",
+    "deviceId": "1vzb5ghlsg1",
+    "schema": "default@v1",
+    "templateId": "urn:qugj6vbw5:___qbj_27r",
+    "enqueuedTime": "2020-08-05T22:26:55.455Z",
+    "telemetry": {
+        "Activity": "running",
+        "BloodPressure": {
+            "Diastolic": 7,
+            "Systolic": 71
         },
-        "visualizationDetail":{
-          "@id":"<id>",
-          "@type":"VisualizationDetail"
-        }
-      }
-    ]
-  }
+        "BodyTemperature": 98.73447010562934,
+        "HeartRate": 88,
+        "HeartRateVariability": 17,
+        "RespiratoryRate": 13
+    },
+    "enrichments": {
+      "userSpecifiedKey": "sampleValue"
+    },
+    "messageProperties": {
+      "messageProp": "value"
+    }
+}
+```
+### <a name="message-properties"></a>メッセージのプロパティ
+
+テレメトリ メッセージには、テレメトリ ペイロードに加え、メタデータのプロパティが含まれています。 前のスニペットは、`deviceId` や `enqueuedTime` など、システム メッセージの例を示しています。 システム メッセージ プロパティの詳細については、「[D2C IoT Hub メッセージのシステム プロパティ](../../iot-hub/iot-hub-devguide-messages-construct.md#system-properties-of-d2c-iot-hub-messages)」を参照してください。
+
+テレメトリ メッセージにカスタム メタデータを追加する必要がある場合、テレメトリ メッセージにプロパティを追加できます。 たとえば、デバイスでメッセージが作成されるとき、タイムスタンプを追加する必要があります。
+
+次のコード スニペットは、デバイス上でメッセージを作成するとき、それに `iothub-creation-time-utc` プロパティを追加する方法を示しています。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+async function sendTelemetry(deviceClient, index) {
+  console.log('Sending telemetry message %d...', index);
+  const msg = new Message(
+    JSON.stringify(
+      deviceTemperatureSensor.updateSensor().getCurrentTemperatureObject()
+    )
+  );
+  msg.properties.add("iothub-creation-time-utc", new Date().toISOString());
+  msg.contentType = 'application/json';
+  msg.contentEncoding = 'utf-8';
+  await deviceClient.sendEvent(msg);
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+# <a name="java"></a>[Java](#tab/java)
 
-これで、Azure Event Hubs、Azure Service Bus、および Azure Blob Storage にデータをエクスポートする方法がわかったので、次の手順に進みます。
+```java
+private static void sendTemperatureTelemetry() {
+  String telemetryName = "temperature";
+  String telemetryPayload = String.format("{\"%s\": %f}", telemetryName, temperature);
 
-> [!div class="nextstepaction"]
-> [Databricks を使用してカスタム分析を実行する方法](./howto-create-custom-analytics.md)
+  Message message = new Message(telemetryPayload);
+  message.setContentEncoding(StandardCharsets.UTF_8.name());
+  message.setContentTypeFinal("application/json");
+  message.setProperty("iothub-creation-time-utc", Instant.now().toString());
+
+  deviceClient.sendEventAsync(message, new MessageIotHubEventCallback(), message);
+  log.debug("My Telemetry: Sent - {\"{}\": {}°C} with message Id {}.", telemetryName, temperature, message.getMessageId());
+  temperatureReadings.put(new Date(), temperature);
+}
+```
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+```csharp
+private async Task SendTemperatureTelemetryAsync()
+{
+  const string telemetryName = "temperature";
+
+  string telemetryPayload = $"{{ \"{telemetryName}\": {_temperature} }}";
+  using var message = new Message(Encoding.UTF8.GetBytes(telemetryPayload))
+  {
+      ContentEncoding = "utf-8",
+      ContentType = "application/json",
+  };
+  message.Properties.Add("iothub-creation-time-utc", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ"));
+  await _deviceClient.SendEventAsync(message);
+  _logger.LogDebug($"Telemetry: Sent - {{ \"{telemetryName}\": {_temperature}°C }}.");
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+async def send_telemetry_from_thermostat(device_client, telemetry_msg):
+    msg = Message(json.dumps(telemetry_msg))
+    msg.custom_properties["iothub-creation-time-utc"] = datetime.now(timezone.utc).isoformat()
+    msg.content_encoding = "utf-8"
+    msg.content_type = "application/json"
+    print("Sent message")
+    await device_client.send_message(msg)
+```
+
+---
+
+次のスニペットは、BLOB ストレージにエクスポートされたメッセージにおけるこのプロパティを示しています。
+
+```json
+{
+  "applicationId":"5782ed70-b703-4f13-bda3-1f5f0f5c678e",
+  "messageSource":"telemetry",
+  "deviceId":"sample-device-01",
+  "schema":"default@v1",
+  "templateId":"urn:modelDefinition:mkuyqxzgea:e14m1ukpn",
+  "enqueuedTime":"2021-01-29T16:45:39.143Z",
+  "telemetry":{
+    "temperature":8.341033560421833
+  },
+  "messageProperties":{
+    "iothub-creation-time-utc":"2021-01-29T16:45:39.021Z"
+  },
+  "enrichments":{}
+}
+```
+
+## <a name="property-changes-format"></a>プロパティ変更の形式
+
+各メッセージまたはレコードは、デバイスまたはクラウドのプロパティに対する 1 つの変更を表します。 デバイスのプロパティの場合、報告された値の変更のみが別個のメッセージとしてエクスポートされます。 エクスポートされたメッセージに含まれる情報は次のとおりです。
+
+- `applicationId`:IoT Central アプリケーションの ID。
+- `messageSource`:メッセージのソース - `properties`。
+- `messageType`:`cloudPropertyChange`、`devicePropertyDesiredChange` または `devicePropertyReportedChange` のいずれかです。
+- `deviceId`:テレメトリ メッセージを送信したデバイスの ID。
+- `schema`:ペイロード スキーマの名前とバージョン。
+- `templateId`:デバイスに関連付けられているデバイス テンプレートの ID。
+- `enrichments`:エクスポートに設定されたエンリッチメント。
+
+Event Hubs と Service Bus の場合、IoT Central から新しいメッセージ データが、ほぼリアルタイムでイベント ハブあるいは Service Bus キューまたはトピックに送信されます。 各メッセージのユーザー プロパティ (アプリケーション プロパティとも呼ばれます) では、`iotcentral-device-id`、`iotcentral-application-id`、`iotcentral-message-source` および `iotcentral-message-type` が自動的に含まれます。
+
+Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 回エクスポートされます。
+
+次の例は、Azure Blob Storage で受信したエクスポートされたプロパティ変更メッセージを示しています。
+
+```json
+{
+    "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+    "messageSource": "properties",
+    "messageType": "cloudPropertyChange",
+    "deviceId": "18a985g1fta",
+    "schema": "default@v1",
+    "templateId": "urn:qugj6vbw5:___qbj_27r",
+    "enqueuedTime": "2020-08-05T22:37:32.942Z",
+    "properties": [{
+        "name": "MachineSerialNumber",
+        "value": "abc"
+    }],
+    "enrichments": {
+        "userSpecifiedKey" : "sampleValue"
+    }
+}
+```
+
+## <a name="comparison-of-legacy-data-export-and-data-export"></a>従来のデータ エクスポートとデータ エクスポートの比較
+
+次の表は、[従来のデータ エクスポート](howto-export-data-legacy.md)と新しいデータ エクスポートの機能の違いを示しています。
+
+| 機能  | 従来のデータ エクスポート | 新しいデータ エクスポート |
+| :------------- | :---------- | :----------- |
+| 使用できるデータの種類 | テレメトリ、デバイス、デバイス テンプレート | テレメトリ、プロパティ変更 |
+| フィルター処理 | なし | エクスポートするデータの種類によって異なります。 テレメトリの場合は、テレメトリ、メッセージ プロパティ、プロパティ値によるフィルター処理 |
+| エンリッチメント | なし | デバイスのカスタム文字列またはプロパティ値を使用してエンリッチ化する |
+| 変換先 | Azure Event Hubs、Azure Service Bus キューおよびトピック、Azure Blob Storage | 従来のデータ エクスポートと同じ宛先に加えて Webhook|
+| サポートされているアプリケーションのバージョン | V2、V3 | V3 のみ |
+| 重要な制限 | アプリごとに 5 つのエクスポート、エクスポートごとに 1 つの宛先 | エクスポートの宛先の接続数はアプリごとに 10 個 |
+
+## <a name="next-steps"></a>次の手順
+
+新しいデータ エクスポートの使用方法を理解できたので、次の手順として、[IoT Central で分析を使用する方法](./howto-create-analytics.md)の習得に進むことをお勧めします

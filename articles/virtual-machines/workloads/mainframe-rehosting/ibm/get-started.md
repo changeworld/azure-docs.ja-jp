@@ -3,6 +3,7 @@ title: Azure 上での IBM ワークロード | Microsoft Docs
 description: メインフレーム エミュレーターや Microsoft パートナーからの他のサービスを利用して、Microsoft Azure を使用する IBM z/OS ワークロードをリホストします。
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 ms.author: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: e99685b4d1476ee527b9eb7f1332f6a6beece669
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a2b5350e1aebeff3cc9dc3996f7e0a92c424ecf3
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499974"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219996"
 ---
 # <a name="ibm-workloads-on-azure"></a>Azure 上での IBM ワークロード
 
@@ -40,4 +41,4 @@ IBM メインフレーム システムを Azure へ移行するために、充�
 - [メインフレームの移行: 通説と事実](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [Azure 上に IBM zD&T 開発/テスト環境をインストールする](./install-ibm-z-environment.md)
 - [IBM zD&T v1 の Application Developers Controlled Distribution (ADCD) を設定する](./demo.md)
-- [Azure 上の IBM DB2 pureScale](../../../linux/ibm-db2-purescale-azure.md)
+- [Azure 上の IBM DB2 pureScale](ibm-db2-purescale-azure.md)

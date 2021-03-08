@@ -1,17 +1,15 @@
 ---
 title: Azure Service Fabric でアクターベースのサービスを作成する
 description: C# で Service Fabric Reliable Actors を使用して、最初のアクタベースのサービスを作成、デバッグ、およびデプロイする方法を説明します。
-author: vturecek
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3727c41c991b83bc3869279cbb0535a6185ff04d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 225ccb67153a33ed47af68ebb1549dce37426278
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015732"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573463"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors の使用
 > [!div class="op_single_selector"]
@@ -108,7 +106,7 @@ internal class HelloWorld : Actor, IHelloWorld
 
     NuGet パッケージとそのすべての依存関係が、ActorClient プロジェクトにインストールされます。
 
-5. クライアント プロジェクトには、インターフェイス プロジェクトへの参照も必要です。  ActorClient プロジェクトで、 **[依存関係]** を右クリックし、 **[参照の追加]** をクリックします。 **[プロジェクト] > [ソリューション]** (まだ選択されていない場合) の順に選択し、 **[HelloWorld.Interfaces]** の横にあるチェック ボックスをオンにします。  **[OK]** をクリックします。
+5. クライアント プロジェクトには、インターフェイス プロジェクトへの参照も必要です。  ActorClient プロジェクトで、 **[依存関係]** を右クリックし、 **[プロジェクト参照の追加]** をクリックします。 **[プロジェクト] > [ソリューション]** (まだ選択されていない場合) の順に選択し、 **[HelloWorld.Interfaces]** の横にあるチェック ボックスをオンにします。  **[OK]** をクリックします。
     
     ![[参照の追加] ダイアログ][7]
 

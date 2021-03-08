@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 1346fed738bb9afa595b63c91064a481e2ee2b51
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 659a8a3b38a79cc9dcc97f6f1e9c4395426ef7a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031943"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91450261"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>SQL Database アクティブ geo レプリケーションを使用してクラウド アプリケーションのローリング アップグレードを管理する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ Azure SQL Database で[アクティブ geo レプリケーション](auto-failov
 > [!NOTE]
 > これらの準備手順は運用環境に影響を与えず、環境はフル アクセス モードで動作できます。
 
-![クラウド ディザスター リカバリー用の SQL Database geo レプリケーション構成。](./media/manage-application-rolling-upgrade/option1-1.png)
+![クラウド ディザスター リカバリー用の SQL Database geo レプリケーション構成を示す図。](./media/manage-application-rolling-upgrade/option1-1.png)
 
 準備の手順が完了すると、アプリケーションを実際にアップグレードできるようになります。 次の図は、アップグレード処理で必要な手順を示しています。
 
@@ -48,7 +48,7 @@ Azure SQL Database で[アクティブ geo レプリケーション](auto-failov
 2. 計画終了モードを使用して、セカンダリ データベースを切断します (4)。 これにより、完全に同期された、プライマリ データベースの独立したコピーが作成されます。 このデータベースがアップグレードされます。
 3. セカンダリ データベースで読み取り/書き込みモードを有効にして、アップグレード スクリプトを実行します (5)。
 
-![クラウド ディザスター リカバリー用の SQL Database geo レプリケーション構成。](./media/manage-application-rolling-upgrade/option1-2.png)
+![アップグレード スクリプトを実行するクラウド ディザスター リカバリー用の SQL Database geo レプリケーション構成を示す図。](./media/manage-application-rolling-upgrade/option1-2.png)
 
 アップグレードが正常に終了すると、アプリケーションのアップグレードされたコピーにユーザーを切り替える準備が整い、これが運用環境になります。 この切り替えには、次の図に示すように、いくつかの手順がさらに必要になります。
 
@@ -67,7 +67,7 @@ Azure SQL Database で[アクティブ geo レプリケーション](auto-failov
 > [!NOTE]
 > まだスワップ操作を実行していないため、ロールバックに DNS の変更は必要ありません。
 
-![クラウド ディザスター リカバリー用の SQL Database geo レプリケーション構成。](./media/manage-application-rolling-upgrade/option1-4.png)
+![ステージング環境が使用停止になっている、クラウド ディザスター リカバリー用の SQL Database geo レプリケーション構成を示す図。](./media/manage-application-rolling-upgrade/option1-4.png)
 
 この方法の主なメリットは、一連の簡単な手順に従うことによって単一のリージョンでアプリケーションをアップグレードできる点です。 アップグレードのコストは比較的安価になります。 
 
@@ -98,7 +98,7 @@ Azure SQL Database で[アクティブ geo レプリケーション](auto-failov
 > [!NOTE]
 > これらの準備手順は運用環境のアプリケーションに影響を与えません。 読み取り/書き込みモードで完全に機能する状態のままです。
 
-![クラウド ディザスター リカバリー用の SQL Database geo レプリケーション構成。](./media/manage-application-rolling-upgrade/option2-1.png)
+![完全に同期されたアプリケーションのコピーを含む、クラウド ディザスター リカバリー用の SQL Database geo レプリケーション構成を示す図。](./media/manage-application-rolling-upgrade/option2-1.png)
 
 準備の手順が完了すると、ステージング環境をアップグレードできるようになります。 次の図は、これらのアップグレードの手順を示します。
 
@@ -110,7 +110,7 @@ ALTER DATABASE <Prod_DB>
 SET (ALLOW_CONNECTIONS = NO)
 ```
 
-2. セカンダリを切断して geo レプリケーション を終了します (11)。 この操作により、独立していても完全に同期された運用データベースのコピーが作成されます。 このデータベースがアップグレードされます。 次の例では Transact-SQL を使用していますが、[PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0) も使用できます。 
+2. セカンダリを切断して geo レプリケーション を終了します (11)。 この操作により、独立していても完全に同期された運用データベースのコピーが作成されます。 このデータベースがアップグレードされます。 次の例では Transact-SQL を使用していますが、[PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0&preserve-view=true) も使用できます。 
 
 ```sql
 -- Disconnect the secondary, terminating geo-replication
@@ -120,14 +120,14 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 
 3. `contoso-1-staging.azurewebsites.net`、`contoso-dr-staging.azurewebsites.net`、およびステージングのプライマリ データベースに対してアップグレード スクリプトを実行します (12)。 データベースの変更は、ステージングのセカンダリに自動的にレプリケートされます。
 
-![クラウド ディザスター リカバリー用の SQL Database geo レプリケーション構成。](./media/manage-application-rolling-upgrade/option2-2.png)
+![データベースの変更がステージングにレプリケートされる、クラウド ディザスター リカバリー用の SQL Database geo レプリケーション構成を示す図。](./media/manage-application-rolling-upgrade/option2-2.png)
 
 アップグレードが正常に終了すると、ユーザーを V2 バージョンのアプリケーションに切り替えられるようになります。 次の図に、必要な手順を示します。
 
 1. プライマリ リージョン (13) とバックアップ リージョン (14) の Web アプリの運用環境とステージング 環境のスワップ操作をアクティブにします。 これで、アプリケーションの V2 が、バックアップ リージョンに冗長コピーのある運用環境になります。
 2. V1 アプリケーションが不要になった場合 (15 および 16)、ステージング環境の使用を停止できます。
 
-![クラウド ディザスター リカバリー用の SQL Database geo レプリケーション構成。](./media/manage-application-rolling-upgrade/option2-3.png)
+![ステージング環境が任意で使用停止になっている、クラウド ディザスター リカバリー用の SQL Database geo レプリケーション構成を示す図。](./media/manage-application-rolling-upgrade/option2-3.png)
 
 (アップグレード スクリプトのエラーなどにより) アップグレード処理が失敗した場合は、ステージング環境が不整合状態であると見なします。 アプリケーションをアップグレード前の状態にロールバックするには、運用環境で V1 のアプリケーションを使用するように戻します。 必要な手順は、次の図に示すとおりです。
 
@@ -139,7 +139,7 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 > [!NOTE]
 > スワップ操作を実行していないため、ロールバックに DNS の変更は必要ありません。
 
-![クラウド ディザスター リカバリー用の SQL Database geo レプリケーション構成。](./media/manage-application-rolling-upgrade/option2-4.png)
+![アップグレード プロセスがロールバックされる、クラウド ディザスター リカバリー用の SQL Database geo レプリケーション構成を示す図。](./media/manage-application-rolling-upgrade/option2-4.png)
 
 この方法の主なメリットは、アップグレード中にビジネス継続性を損なうことなく、アプリケーションと geo 冗長性を持つコピーの両方を並行してアップグレードできる点です。
 

@@ -1,7 +1,7 @@
 ---
 title: 'Multiclass Neural Network (多クラス ニューラル ネットワーク): モジュール リファレンス'
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning の多クラス ニューラル ネットワーク モジュールを使用して、複数の値を持つターゲットを予測するのに使用できるニューラル ネットワーク モデルを作成する方法について説明します。
+description: Azure Machine Learning デザイナーの多クラス ニューラル ネットワーク モジュールを使用して、多クラスの値を持つターゲットを予測する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: c7fb02681936f575153f23ac60db43cc75541075
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4f7f8a7793f31ffbf2099cbfb314fc5097319f5
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137758"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421262"
 ---
 # <a name="multiclass-neural-network-module"></a>Multiclass Neural Network (多クラス ニューラル ネットワーク) モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 このモジュールを使用すると、複数の値を持つターゲットを予測するのに使用できるニューラル ネットワーク モデルを作成できます。 
 
@@ -79,7 +79,7 @@ ms.locfileid: "82137758"
 
 14. モデルをトレーニングする: 
 
-    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと[モデルのトレーニング](train-model.md) モジュールを接続します。  
+    + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、タグ付けされたデータセットと [モデルのトレーニング](train-model.md) モジュールを接続します。  
   
     + **[トレーナー モードの作成]** を **[パラメーター範囲]** に設定した場合は、[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)を使用して、タグ付けしたデータセットを接続してモデルをトレーニングします。  
   

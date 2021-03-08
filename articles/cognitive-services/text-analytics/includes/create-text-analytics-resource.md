@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: 6cd653909e26dc5e0484ca289a1d2ab47e20457f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5b6479d48a51ba962f2f6bfba16dac3b0886a9ff
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876434"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750071"
 ---
 ## <a name="create-a-cognitive-services-text-analytics-resource"></a>Cognitive Services Text Analytics リソースを作成する
 
@@ -25,16 +26,16 @@ ms.locfileid: "80876434"
 
     |設定|値|
     |--|--|
-    |名前|名前 (2 から 64 文字) を入力します。|
+    |名前|名前 (2 文字から 64 文字) を入力します。|
     |サブスクリプション|適切なサブスクリプションを選択します。|
     |場所|近くの場所を選択します。|
-    |Pricing tier| **S** (Standard 価格レベル) を入力します。|
+    |Pricing tier| 「**S**」 (Standard 価格レベル) と入力します。|
     |Resource group|使用可能なリソース グループを選択します。|
 
-1. **[作成]** を選択して、リソースが作成されるまで待ちます。 ブラウザーが、新たに作成されたリソースのページに自動的にリダイレクトされます。
+1. **[作成]** を選択し、リソースが作成されるまで待ちます。 ブラウザーが、新たに作成されたリソースのページに自動的にリダイレクトされます。
 1. 構成された `endpoint` と API キーを収集します。
 
     |ポータルでの [リソース] タブ|設定|値|
     |--|--|--|
-    |**概要**|エンドポイント|エンドポイントをコピーします。 `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0` のように表示されます。|
+    |**概要**|エンドポイント|エンドポイントをコピーします。 `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.0` のように表示されます。|
     |**[キー]**|API キー|2 つのキーのうちの 1 つをコピーします。 スペースやダッシュを含まない 32 文字の英数字文字列 <`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`> です。|

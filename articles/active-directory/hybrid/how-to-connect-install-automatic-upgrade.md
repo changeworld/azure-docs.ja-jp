@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcc6de1ce50e86f177023a0a66c436633c8d502c
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053288"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91317618"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect:自動アップグレード
 この機能は、ビルド [ 1.1.105.0 (2016 年 2 月リリース) で導入されました](reference-connect-version-history.md)。  この機能は[ビルド 1.1.561](reference-connect-version-history.md) で更新され、以前サポートされていなかった追加のシナリオがサポートされています。
@@ -64,7 +64,7 @@ Azure AD Connect のインストールを常に最新の状態に保つことは
 その後、プロキシまたはファイアウォールで必要な URL を開いていることを確認してください。 自動更新では、「 [概要](#overview)」で説明されているように、Azure AD Connect Health が使用されています。 プロキシを使用する場合は、 [プロキシ サーバー](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)を使用するよう Health が構成されていることを確認します。 また、Azure AD に対する [Health の接続](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) もテストします。
 
 Azure AD への接続が確認されたら、イベント ログを調査します。 イベント ビューアーを起動し、 **[アプリケーション]** イベントログを確認します。 ソースとして **[Azure AD Connect Upgrade (Azure AD Connect のアップグレード)]** を選択し、イベント ID 範囲に「**300-399**」を指定したイベント ログ フィルターを追加します。  
-![自動アップグレードのイベントログ フィルター](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
+![[現在のログをフィルター] ウィンドウで、[Event sources]\(イベント ソース\) および [Include/Exclude Event IDs]\(含める/除外するイベント ID\) が強調表示されているスクリーンショット。](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
 
 これで、自動アップグレードの状態に関連するイベント ログが表示されます。  
 ![自動アップグレードのイベントログ フィルター](./media/how-to-connect-install-automatic-upgrade/eventlogresult.png)  

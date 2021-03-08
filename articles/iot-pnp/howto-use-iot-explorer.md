@@ -1,50 +1,46 @@
 ---
 title: Azure IoT エクスプローラーをインストールして使用する | Microsoft Docs
-description: Azure IoT エクスプローラー ツールをインストールして、IoT ハブに接続されている IoT プラグ アンド プレイ プレビュー デバイスとの対話に使用します。
-author: rido-min
-ms.author: rmpablos
-ms.date: 05/06/2020
+description: Azure IoT エクスプローラー ツールをインストールして、IoT ハブに接続されている IoT プラグ アンド プレイ デバイスとの対話に使用します。 この記事では IoT プラグ アンド プレイ デバイスの操作について重点的に説明しますが、このツールはハブに接続されている任意のデバイスで使用できます。
+author: dominicbetts
+ms.author: dobett
+ms.date: 11/10/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc
-ms.openlocfilehash: 083dcde44e56af34f17d952c46e554b234818f27
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: b0a86a32148086a3b644d0bf147d12be0d812536
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352024"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030317"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT エクスプローラーをインストールして使用する
 
-Azure IoT エクスプローラーは、お使いの IoT プラグ アンド プレイ プレビュー デバイスと対話し、テストを実施するためのグラフィカル ツールです。 ローカル マシンにツールをインストールしたら、それを使用してハブに接続できます。 このツールを使用して、デバイスから送信されるテレメトリの表示、デバイスのプロパティの操作、コマンドの呼び出しを行うことができます。
+Azure IoT エクスプローラーは、IoT ハブに接続されている任意のデバイスと対話するためのグラフィカル ツールです。 この記事では、このツールを使用して IoT プラグ アンド プレイ デバイスをテストする方法について重点的に説明します。 ローカル マシンにツールをインストールしたら、それを使用してハブに接続できます。 このツールを使用して、デバイスから送信されるテレメトリの表示、デバイスのプロパティの操作、コマンドの呼び出しを行うことができます。
 
 この記事で取り上げるテクニック:
 
 - Azure IoT エクスプローラー ツールをインストールして構成する。
-- ツールを使用してデバイスと対話し、デバイスをテストする。
+- ツールを使用して IoT プラグ アンド プレイ デバイスと対話し、デバイスをテストする。
 
-## <a name="prerequisites"></a>前提条件
+ツールの使用方法に関するより一般的な情報については、GitHub の [Readme](https://github.com/Azure/azure-iot-explorer/blob/master/README.md) をご覧ください。
 
 Azure IoT エクスプローラー ツールを使用するには、次のものが必要です。
 
 - Azure IoT Hub。 お使いの Azure サブスクリプションに IoT ハブを追加する方法にはさまざまなものがあります。一例を挙げると、[Azure CLI を使用して IoT ハブを作成する](../iot-hub/iot-hub-create-using-cli.md)という方法があります。 Azure IoT エクスプローラー ツールを実行するには、IoT ハブの接続文字列が必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-- お使いの IoT ハブに登録されているデバイス。 デバイスの登録には、次の Azure CLI コマンドを使用できます。 `{YourIoTHubName}` と `{YourDeviceID}` のプレースホルダーは必ず、実際の値に置き換えてください。
-
-    ```azurecli-interactive
-    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
-    ```
+- お使いの IoT ハブに登録されているデバイス。 IoT Explorer を使用して、お使いの IoT ハブでデバイス登録を作成および管理できます。
 
 ## <a name="install-azure-iot-explorer"></a>Azure IoT エクスプローラーをインストールする
 
 [Azure IoT エクスプローラーのリリース情報](https://github.com/Azure/azure-iot-explorer/releases)に移動し、最新のリリースのアセットの一覧を展開します。 最新バージョンのアプリケーションをダウンロードしてインストールします。
 
 >[!Important]
->バージョン 0.11.0 の IoT Explorer では、2020 年 5 月のプレビュー リリースの IoT プラグ アンド プレイのみがサポートされています。 以前の 2019 年 8 月のプレビュー リリースで利用できる機能を使用するには、0.10.x バージョンをインストールする必要があります。
+> [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models) に基づく任意のリポジトリのモデルを解決するには、バージョン 0.13.x に更新します。
 
 ## <a name="use-azure-iot-explorer"></a>Azure IoT エクスプローラーを使用する
 
-デバイスに関しては、自分のデバイスを接続するか、サンプルのシミュレートされたデバイスのいずれかを使用することができます。 シミュレートされたデバイスのサンプルを実行する場合には、[こちらの手順](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/iothub_client/samples)に従ってください。
+デバイスに関しては、自分のデバイスを接続するか、サンプルのシミュレートされたデバイスのいずれかを使用することができます。 異なる言語で記述されたシミュレート デバイスの例については、クイックスタート「[サンプルの IoT プラグ アンド プレイ デバイス アプリケーションを IoT Hub に接続する (Node.js)](quickstart-connect-device.md)」を参照してください。
 
 ### <a name="connect-to-your-hub"></a>お使いのハブに接続する
 
@@ -54,18 +50,18 @@ IoT プラグ アンド プレイ デバイス用のモデル定義は、パブ�
 
 ソースを追加するには:
 
-1. **ホーム/IoT プラグ アンド プレイの設定**にアクセスします。
+1. **ホーム/IoT プラグ アンド プレイの設定** にアクセスします。
 2. **[追加]** を選択し、リポジトリまたはローカル フォルダーからソースを選択します。
 
 ソースを削除するには:
 
-1. **ホーム/IoT プラグ アンド プレイの設定**にアクセスします。
+1. **ホーム/IoT プラグ アンド プレイの設定** にアクセスします。
 2. 削除するソースを見つけます。
 3. **[X]** を選択して削除します。
 
 ソースの優先順位を変更するには:
 
-モデル定義のソースの 1 つを、一覧内の別の順位にドラッグ アンド ドロップできます。 
+モデル定義のソースの 1 つを、一覧内の別の順位にドラッグ アンド ドロップできます。
 
 ### <a name="view-devices"></a>デバイスの表示
 
@@ -86,16 +82,16 @@ IoT プラグ アンド プレイ デバイス用のモデル定義は、パブ�
 
 - [デバイス ID](../iot-hub/iot-hub-devguide-identity-registry.md) の情報は、 **[デバイス ID]** タブで表示および更新できます。
 - [デバイス ツイン](../iot-hub/iot-hub-devguide-device-twins.md)の情報には、 **[デバイス ツイン]** タブでアクセスできます。
-- デバイスが接続されており、データをアクティブに送信している場合には、 **[テレメトリ]** タブで[テレメトリ](../iot-hub/iot-hub-devguide-messages-read-builtin.md)を表示できます。
-- **[ダイレクト メソッド]** タブで、デバイス上で[ダイレクト メソッド](../iot-hub/iot-hub-devguide-direct-methods.md)を呼び出すことができます。
+- デバイスが接続されており、データをアクティブに送信している場合には、 **[テレメトリ]** タブで [テレメトリ](../iot-hub/iot-hub-devguide-messages-read-builtin.md)を表示できます。
+- **[ダイレクト メソッド]** タブで、デバイス上で [ダイレクト メソッド](../iot-hub/iot-hub-devguide-direct-methods.md)を呼び出すことができます。
 - **[cloud-to-device メッセージ]** タブで [cloud-to-device メッセージ](../iot-hub/iot-hub-devguide-messages-c2d.md)を送信できます。
 - [モジュール ツイン](../iot-hub/iot-hub-devguide-module-twins.md)情報にアクセスできます。
 
 ### <a name="iot-plug-and-play-components"></a>IoT プラグ アンド プレイ コンポーネント
 
-デバイスが**モデル ID** を使用してハブに接続されている場合、ツールに **[IoT Plug and Play components]\(IoT プラグ アンド プレイ コンポーネント\)** タブ '' が表示され、**モデル ID** を確認できます。
+デバイスが **モデル ID** を使用してハブに接続されている場合、ツールに **[IoT Plug and Play components]\(IoT プラグ アンド プレイ コンポーネント\)** タブが表示され、**モデル ID** を確認できます。
 
-構成されているソース (パブリック リポジトリまたはローカル フォルダー) のいずれかに**モデル ID** がある場合は、コンポーネントの一覧が表示されます。 コンポーネントを選択すると、使用可能なプロパティ、コマンド、およびテレメトリが表示されます。
+構成されているソース (パブリック リポジトリまたはローカル フォルダー) のいずれかに **モデル ID** がある場合は、コンポーネントの一覧が表示されます。 コンポーネントを選択すると、使用可能なプロパティ、コマンド、およびテレメトリが表示されます。
 
 **[コンポーネント]** ページでは、読み取り専用のプロパティの表示、書き込み可能なプロパティの更新、コマンドの呼び出し、およびこのコンポーネントによって生成されるテレメトリ メッセージの表示を行うことができます。
 
@@ -128,6 +124,10 @@ IoT プラグ アンド プレイ デバイス用のモデル定義は、パブ�
 
 選択したインターフェイスのテレメトリを表示するには、その **[テレメトリ]** タブにアクセスします。
 
+#### <a name="known-issues"></a>既知の問題
+
+ツールの最新バージョンでサポートされている IoT 機能の一覧については、[機能一覧](https://github.com/Azure/azure-iot-explorer/wiki)をご覧ください。
+
 ## <a name="next-steps"></a>次のステップ
 
-このハウツー記事では、Azure IoT エクスプローラーをインストールして使用し、IoT プラグ アンド プレイ デバイスと対話する方法について学習しました。 次は、[Azure CLI IoT プラグ アンド プレイ コマンド](./howto-use-iot-pnp-cli.md)を使用する方法について学習することをお勧めします。
+このハウツー記事では、Azure IoT エクスプローラーをインストールして使用し、IoT プラグ アンド プレイ デバイスと対話する方法について学習しました。 推奨される次の手順は、[DTDL 作成ツールをインストールして使用する](howto-use-dtdl-authoring-tools.md)方法を学習することです。

@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a8cab82511a495ed2eef444b05dc534c0f1891
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: fb23e60539c704dac457ab6e8706ec0cfe350ed9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422047"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835324"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD のカスタム ロールを構成する
 
@@ -44,7 +44,7 @@ ms.locfileid: "87422047"
 1. **[設定]** を選択して **[設定]** ページを開きます。 設定を構成したいロールを選択します。
 1. **[編集]** を選択して **[ロールの設定]** ページを開きます。
 
-    ![Azure AD のカスタム ロールを開いて設定を編集する](./media/azure-ad-custom-roles-configure/edit-settings.png)
+    ![[編集] 操作が選択された [ロール設定の詳細] ページを示すスクリーンショット。](./media/azure-ad-custom-roles-configure/edit-settings.png)
 
 ## <a name="role-settings"></a>ロールの設定
 
@@ -64,9 +64,9 @@ ms.locfileid: "87422047"
 - **永続するアクティブな割り当てを許可する**: 管理者は、永続的にアクティブなメンバーシップを割り当てることができます。
 - **アクティブな割り当てが次の期間後に期限切れになる**: 管理者は、すべてのアクティブな割り当てに、開始日と終了日の指定を必須にすることができます。
 
-### <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を必須とする
+### <a name="require-azure-ad-multi-factor-authentication"></a>Azure AD の Multi-Factor Authentication を必須とする
 
-Privileged Identity Management では、2 つの異なるシナリオで、必要に応じて Azure Multi-factor Authentication を強制できます。
+Privileged Identity Management では、2 つの異なるシナリオで、必要に応じて Azure AD Multi-factor Authentication を強制できます。
 
 - **アクティブな割り当てに多要素認証が必要**
 
@@ -74,7 +74,7 @@ Privileged Identity Management では、2 つの異なるシナリオで、必�
 
 - **アクティブ化に Azure Multi-Factor Authentication を必要とする**
 
-  ロールへの割り当て資格のあるユーザーが、アクティブ化を行うための条件として、Azure Multi-Factor Authentication への登録を必須とすることができます。 このプロセスにより、アクティブ化を要求しているユーザーが、確かに本人が言うような人物であることが合理的かつ確実に保証されます。 このオプションを強制すると、ユーザー アカウントが侵害された可能性がある状況で、重要なロールが保護されます。 資格のあるメンバーに対して、アクティブ化の前に Azure Multi-Factor Authentication の実行を必須にするには、 **[アクティブ化には Multi-Factor Authentication が必要です]** チェックボックスをオンにします。
+  ロールへの割り当て資格のあるユーザーが、アクティブ化を行うための条件として、Azure AD Multi-Factor Authentication への登録を必須とすることができます。 このプロセスにより、アクティブ化を要求しているユーザーが、確かに本人が言うような人物であることが合理的かつ確実に保証されます。 このオプションを強制すると、ユーザー アカウントが侵害された可能性がある状況で、重要なロールが保護されます。 資格のあるメンバーに対して、アクティブ化の前に Azure AD Multi-Factor Authentication の実行を必須にするには、 **[アクティブ化には Multi-Factor Authentication が必要です]** チェックボックスをオンにします。
 
 詳細については、[Multi-Factor Authentication と Privileged Identity Management](pim-how-to-require-mfa.md) に関するページを参照してください。
 
@@ -103,4 +103,4 @@ Privileged Identity Management では、2 つの異なるシナリオで、必�
 - [Azure AD のカスタム ロールをアクティブ化する](azure-ad-custom-roles-activate.md)
 - [Azure AD のカスタム ロールを割り当てる](azure-ad-custom-roles-assign.md)
 - [Azure AD のカスタム ロールの割り当てを削除または更新する](azure-ad-custom-roles-update-remove.md)
-- [Azure AD のロールの定義](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure AD のロールの定義](../roles/permissions-reference.md)

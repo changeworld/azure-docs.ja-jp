@@ -1,25 +1,25 @@
 ---
 title: Private Link - Azure CLI - Azure Database for PostgreSQL - 単一サーバー
 description: Azure CLI から Azure Database for PostgreSQL 単一サーバー用のプライベート リンクを構成する方法について説明します。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 15ddf9392fffb8a9ed196b75b1c5e80d4484b0ad
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b8aaebdd37f835201ef549e3f97e0c0b657e4fe9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837246"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020128"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>CLI を使用して Azure Database for PostgreSQL 単一サーバー用の Private Link を作成および管理する
 
 プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 この記事では、Azure CLI を使用して Azure Virtual Network 内に VM を作成し、Azure プライベート エンドポイントを含む Azure Database for PostgreSQL 単一サーバーを作成する方法について説明します。
 
 > [!NOTE]
-> プライベート リンク機能は、General Purpose または Memory Optimized のいずれかの価格レベルの Azure Database for PostgreSQL サーバーにのみ使用可能です。 データベース サーバーがこれらの価格レベルのいずれであるかを確認します。
+> プライベート リンク機能は、General Purpose または Memory Optimized のいずれかの価格レベルの Azure Database for PostgreSQL サーバーにのみ使用可能です。 データベース サーバーがこれらの価格レベルのいずれであることを確実にします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -50,7 +50,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>サブネットのプライベート エンドポイント ポリシーを無効にする 
-Azure では仮想ネットワーク内のサブネットにリソースがデプロイされるため、プライベート エンドポイントの[ネットワーク ポリシー](../private-link/disable-private-endpoint-network-policy.md)を無効にするようにサブネットを作成または更新する必要があります。 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) を使用して  *mySubnet*  という名前のサブネット構成を更新します。
+Azure では仮想ネットワーク内のサブネットにリソースがデプロイされるため、プライベート エンドポイントの[ネットワーク ポリシー](../private-link/disable-private-endpoint-network-policy.md)を無効にするようにサブネットを作成または更新する必要があります。 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) を使用して  *mySubnet*  という名前のサブネット構成を更新します。
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -67,10 +67,11 @@ az vm create \
   --name myVm \
   --image Win2019Datacenter
 ```
+
  VM のパブリック IP アドレスを書き留めます。 このアドレスは、次の手順でインターネットから VM に接続するために使用します。
 
 ## <a name="create-an-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL 単一サーバーを作成する 
-az postgres server create コマンドを使用して Azure Database for PostgreSQL を作成します。 PostgreSQL サーバーの名前は Azure 全体で一意である必要があるため、角かっこ内のプレースホルダー値を独自の一意の値に置き換えることを忘れないでください。 
+az postgres server create コマンドを使用して Azure Database for PostgreSQL を作成します。 PostgreSQL サーバーの名前は Azure 全体で一意である必要があるため、プレースホルダー値を、上記で使用した独自の一意の値に置き換えることを忘れないでください。 
 
 ```azurecli-interactive
 # Create a server in the resource group 
@@ -92,13 +93,14 @@ az network private-endpoint create \
     --resource-group myResourceGroup \  
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
-    --private-connection-resource-id $(az resource show -g myResourcegroup -n mydemoserver --resource-type "Microsoft.DBforPostgreSQL/servers" --query "id") \    
+    --private-connection-resource-id $(az resource show -g myResourcegroup -n mydemoserver --resource-type "Microsoft.DBforPostgreSQL/servers" --query "id" -o tsv) \    
     --group-id postgresqlServer \  
     --connection-name myConnection  
  ```
 
 ## <a name="configure-the-private-dns-zone"></a>プライベート DNS ゾーンを構成する 
 PostgreSQL サーバー ドメイン用のプライベート DNS ゾーンを作成し、Virtual Network との関連付けリンクを作成します。 
+
 ```azurecli-interactive
 az network private-dns zone create --resource-group myResourceGroup \ 
    --name  "privatelink.postgres.database.azure.com" 
@@ -126,7 +128,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 > [!NOTE]
 > Azure Database for PostgreSQL と VNet サブネットが異なるサブスクリプションに存在する場合があります。 このような場合は、次の構成を確認する必要があります。
-> - 両方のサブスクリプションに **Microsoft.DBforPostgreSQL** リソース プロバイダーが登録されていることを確認してください。 詳細については、[resource-manager-registration][resource-manager-portal] に関するページをご覧ください
+> - 両方のサブスクリプションに **Microsoft.DBforPostgreSQL** リソース プロバイダーが登録されていることを確認してください。 詳細については、[リソース プロバイダー](../azure-resource-manager/management/resource-providers-and-types.md)に関する記事をご覧ください。
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>インターネットから VM に接続する
 
@@ -159,27 +161,28 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 2. 「 `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com`」と入力します。 
 
-    次のようなメッセージが返されます。
-    ```azurepowershell
-    Server:  UnKnown
-    Address:  168.63.129.16
-    Non-authoritative answer:
-    Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
-    Address:  10.1.3.4
-    ```
+   次のようなメッセージが返されます。
 
-3. 使用可能な任意のクライアントを使用して、PostgreSQL サーバーのプライベートリンク接続をテストします。 次の例では、[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) を使用して操作を行いました。
+   ```azurepowershell
+   Server:  UnKnown
+   Address:  168.63.129.16
+   Non-authoritative answer:
+   Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
+   Address:  10.1.3.4
+   ```
+
+3. 使用可能な任意のクライアントを使用して、PostgreSQL サーバーのプライベートリンク接続をテストします。 次の例では [Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15&preserve-view=true) を使用して操作を実行します。
 
 4. **[新しい接続]** で、この情報を入力または選択します。
 
-    | 設定 | 値 |
-    | ------- | ----- |
-    | サーバーの種類| **[PostgreSQL]** を選択します。|
-    | サーバー名| *[mydemopostgresserver.privatelink.postgres.database.azure.com]* を選択します。 |
-    | ユーザー名 | PostgreSQL サーバーの作成時に指定されるユーザー名を「username@servername」として入力します。 |
-    |Password |PostgreSQL サーバーの作成時に指定したパスワードを入力します。 |
-    |SSL|**[必須]** を選択します。|
-    ||
+   | 設定 | 値 |
+   | ------- | ----- |
+   | サーバーの種類| **[PostgreSQL]** を選択します。|
+   | サーバー名| *[mydemopostgresserver.privatelink.postgres.database.azure.com]* を選択します。 |
+   | ユーザー名 | PostgreSQL サーバーの作成時に指定されるユーザー名を「username@servername」として入力します。 |
+   |Password |PostgreSQL サーバーの作成時に指定したパスワードを入力します。 |
+   |SSL|**[必須]** を選択します。|
+   ||
 
 5. [接続] を選択します。
 
@@ -197,7 +200,4 @@ az group delete --name myResourceGroup --yes
 ```
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure プライベート エンドポイントの概要](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)について学習します。
-
-<!-- Link references, to text, Within this same GitHub repo. -->
-[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md
+- [Azure プライベート エンドポイントの概要](../private-link/private-endpoint-overview.md)について学習します。

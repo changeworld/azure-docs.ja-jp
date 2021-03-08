@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: e2fcbd07c105885da4180b06fa27ec13045940a6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0b6258e160794eaf7d0c05775f8fd3b796e3ba47
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247644"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354821"
 ---
 # <a name="eventstore-overview"></a>EventStore の概要
 
@@ -26,7 +26,7 @@ EventStore は、クラスターからのイベントを保持するステート
 * クラスターに対して行っている管理アクションが、正しく処理されていることの確認
 * Service Fabric が特定のエンティティと対話している方法の "スナップショット" の取得
 
-![EventStore](media/service-fabric-diagnostics-eventstore/eventstore.png)
+![[ノード] ペインの [イベント] タブに NodeDown イベントなどのいくつかのイベントが表示さているスクリーンショット。](media/service-fabric-diagnostics-eventstore/eventstore.png)
 
 EventStore で使用できるイベントの完全な一覧を確認するには、「[Service Fabric イベント](service-fabric-diagnostics-event-generation-operational.md)」を参照してください。
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: e33e012480c876dc5befbb93404bdb131ea9329a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 49027899d66a2192cc311fb4dba66e441155b527
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022148"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206851"
 ---
 # <a name="scene-lighting"></a>シーンのライティング
 
@@ -69,6 +69,17 @@ Azure Remote Rendering では、`PointLightComponent` は単一点から光を�
 ## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
 
 光源は、レンダリングのパフォーマンスに大きな影響を与えます。 アプリケーションで必要な場合にのみ、慎重に使用してください。 静的な指向性コンポーネントを含む静的なグローバル光源の条件は、[カスタムのスカイ テクスチャ](sky.md)で実現できます。追加のレンダリングコストは発生しません。
+
+## <a name="api-documentation"></a>API のドキュメント
+
+* [C# LightComponentBase クラス](/dotnet/api/microsoft.azure.remoterendering.lightcomponentbase)
+* [C# PointLightComponent クラス](/dotnet/api/microsoft.azure.remoterendering.pointlightcomponent)
+* [C# SpotLightComponent クラス](/dotnet/api/microsoft.azure.remoterendering.spotlightcomponent)
+* [C# DirectionalLightComponent クラス](/dotnet/api/microsoft.azure.remoterendering.directionallightcomponent)
+* [C++ LightComponentBase クラス](/cpp/api/remote-rendering/lightcomponentbase)
+* [C++ PointLightComponent クラス](/cpp/api/remote-rendering/pointlightcomponent)
+* [C++ SpotLightComponent クラス](/cpp/api/remote-rendering/spotlightcomponent)
+* [C++ DirectionalLightComponent クラス](/cpp/api/remote-rendering/directionallightcomponent)
 
 ## <a name="next-steps"></a>次のステップ
 

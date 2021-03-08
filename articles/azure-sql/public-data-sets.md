@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 30f6bf7629152050bc1249a1e22aff0aa30642de
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 2e836a175b45c6fca46f9c76760e1cbaef305a47
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209530"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792584"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>テストとプロトタイプ作成用の公開されているデータ セット
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "88209530"
 | [Open Science Data Cloud のデータ](https://www.opensciencedatacloud.org/projects/) | "Open Science Data Cloud は、テラバイトやペタバイト規模の科学データ セットを格納、共有、分析するためのリソースを科学界に提供します。"| データ セットはさまざまな形式で提供されます。 |
 | [グローバルな気候データ - WorldClim](https://worldclim.org/) | "WorldClim は、約 1 km² の空間分解能を備えた、グローバルな気候レイヤー (グリッド表示された気候データ) のセットです。 これらのデータはマッピングと空間モデリングに使用できます。" | これらのファイルには地理空間データが含まれます。 詳細については、「[Data format (データ形式)](https://worldclim.org/formats1)」を参照してください。 |
 | [人類社会に関するデータ - The GDELT Project](https://www.gdeltproject.org/data.html) | "The GDELT Project は、これまで作成された中で、最も大規模かつ包括的で高精度な、人類社会のオープンなデータベースです。" | 生データ ファイルは CSV 形式です。 |
-| [Criteo の機械学習用の広告クリック予測データ](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "これまで公式にリリースされた中で最大規模の ML データ セットです。" 詳細については、[Criteo の 1 TB クリック予測データ セット](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/)に関するページを参照してください。 | |
+| [Criteo の機械学習用の広告クリック予測データ](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "これまで公式にリリースされた中で最大規模の ML データ セットです。" 詳細については、[Criteo の 1 TB クリック予測データ セット](/archive/blogs/machinelearning/now-available-on-azure-ml-criteos-1tb-click-prediction-dataset)に関するページを参照してください。 | |
 | [Lemur Project の ClueWeb09 テキスト マイニング データ セット](https://www.lemurproject.org/clueweb09.php/) | "ClueWeb09 データ セットは、情報取得と関連する自然言語技術についての調査を支援するために作成されました。 2009 年 1 月～ 2 月に収集された、10 の言語による約 10 億の Web ページで構成されています。" | 「[Dataset Information (データ セット情報)](https://www.lemurproject.org/clueweb09/datasetInformation.php)」を参照してください。|
 
 ## <a name="online-service-data"></a>オンライン サービス データ

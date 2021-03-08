@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59dc94e37dfa1ef8b0b079bf5d78d0504e0cb8c7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60246263"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91313622"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同期: 宣言型のプロビジョニングについて
 このトピックでは、Azure AD Connect の構成モデルについて説明します。 このモデルは宣言型のプロビジョニングと呼ばれ、構成の変更を簡単に実行することができます。 このトピックで説明する多くの内容は高度であるため、ほとんどの顧客シナリオで必要ありません。
@@ -29,11 +29,11 @@ ms.locfileid: "60246263"
 ## <a name="overview"></a>概要
 宣言型のプロビジョニングでは、ソースの接続されたディレクトリからのオブジェクトを処理します。また、オブジェクトと属性をソースからターゲットに変換する方法を決定します。 オブジェクトは同期パイプラインで処理されます。このパイプラインは受信規則と送信規則とで同じです。 受信規則はコネクタ スペースからメタバースに対する規則であり、送信規則はメタバースからコネクタ スペースに対する規則です。
 
-![Sync pipeline](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
+![同期パイプラインの例を示す図。](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
 
 パイプラインには何種類かのモジュールがあります。 各モジュールは、オブジェクトの同期における各概念に対応しています。
 
-![Sync pipeline](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
+![パイプライン内のモジュールを示す図。](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
 
 * Source (ソース): ソース オブジェクト
 * [Scope (スコープ)](#scope): スコープ内のすべての同期規則を特定
@@ -44,7 +44,7 @@ ms.locfileid: "60246263"
 
 ## <a name="scope"></a>Scope
 スコープ モジュールはオブジェクトを評価し、スコープ内にあり、処理に含める必要のある規則を決定します。 オブジェクトの属性値に応じて、各種同期規則がスコープ内にあるかどうか評価されます。 たとえば、Exchange のメールボックスを持たない無効なユーザーには、メールボックスを持つ有効なユーザーとは異なる規則が適用されます。  
-![Scope](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
+![オブジェクトのスコープ モジュールを示す図。](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
 
 スコープはグループおよび句として定義されます。 句はグループ内にあります。 グループ内のすべての句の間で論理 AND が使用されます。 たとえば、(department = IT AND country = Denmark) などです。 グループ間では 論理 OR が使用されます。
 
@@ -78,7 +78,7 @@ ms.locfileid: "60246263"
 この図の結合は、上から下へ処理されます。 最初に同期パイプラインが employeeID で一致するものがあるかどうかを確認します。 一致するものがない場合は、2 番目の規則によってアカウント名をオブジェクトの結合に使用できるかどうかが確認されます。 それでも一致するものがない場合は、最後の 3 番目の規則により、ユーザー名を使ってよりあいまいな照合が行われます。
 
 すべての結合規則が評価されても一致するものが 1 つでない場合は、 **[説明]** ページの **[リンクの種類]** が使用されます。 このオプションが **[プロビジョニング]** に設定されている場合は、ターゲットの新しいオブジェクトが作成されます。  
-![Provision or join](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
+![開いた [リンクの種類] ドロップダウン メニューを示すスクリーンショット。](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
 
 オブジェクトには、スコープ内の結合規則を持つ同期規則が 1 つだけ必要です。 結合が定義されている複数の同期規則がある場合、エラーが発生します。 優先順位は、結合の競合の解決には使用されません。 同じ受信/送信方向で属性をフローさせるためには、オブジェクトにスコープ内の結合規則が必要です。 同じオブジェクトに送受信双方向で属性をフローさせる必要がある場合は、結合が設定された受信と送信両方の同期規則が必要です。
 
@@ -101,7 +101,7 @@ ms.locfileid: "60246263"
 ### <a name="merging-attribute-values"></a>属性値の結合
 属性フローには、複数値の属性をいくつかの異なるコネクタから結合する必要があるかどうかを判断する設定があります。 既定値は **Update** です。これは、優先順位の最も高い同期規則が優先的に実行されることを示します。
 
-![Merge Types](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
+![[マージの種類] ドロップダウン メニューが開いた [変換の追加] セクションを示すスクリーンショット。](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
 
 **Merge** と **MergeCaseInsensitive** もあります。 これらのオプションを使用すると、異なるソースの値を結合できます。 たとえば、それを使用して、いくつかの異なるフォレストのメンバー属性や proxyAddresses 属性を結合できます。 このオプションを使用する場合、オブジェクトのスコープ内にあるすべての同期規則では、同じ結合の種類を使用する必要があります。 あるコネクタから **Update** を定義し、別のコネクタから **Merge** を定義することはできません。 試した場合は、エラーが発生します。
 
@@ -146,7 +146,7 @@ ImportedValue 関数は、属性名を角かっこではなく引用符で囲む
 
 ### <a name="multiple-objects-from-the-same-connector-space"></a>同じコネクタ スペースからの複数のオブジェクト
 同じコネクタ スペース内の複数のオブジェクトを同じメタバース オブジェクトに結合する場合、優先順位を調整する必要があります。 複数のオブジェクトが同じ同期規則のスコープに含まれる場合、同期エンジンは優先順位を決めることができません。 どのソース オブジェクトからメタバースに値を渡すかが明確ではないのです。 この構成は、ソース内の属性の値が同じであっても、あいまいとしてレポートされます。  
-![Multiple objects joined to the same mv object](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
+![透明な赤の X オーバーレイを持つ同じ mv オブジェクトに結合された複数のオブジェクトを示す図。 ](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
 
 このシナリオでは、同期規則のスコープを変更して、ソース オブジェクトがスコープ内に異なる同期規則を持つようにする必要があります。 そうすれば、異なる優先順位を定義できます。  
 ![Multiple objects joined to the same mv object](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple2.png)  

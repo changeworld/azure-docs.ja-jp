@@ -4,23 +4,83 @@ titleSuffix: Azure Digital Twins
 description: Azure Digital Twins クエリ言語の基本について理解します。
 author: baanders
 ms.author: baanders
-ms.date: 3/26/2020
+ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 29e1fa603600e246031f2a86aae3b0876b4910ba
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 742cff544886a1499bccfa575684edef708da7bd
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562475"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028361"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Azure Digital Twins 用のクエリ言語について
 
-Azure Digital Twins の中心は、**デジタル ツイン**と**リレーションシップ**から構築された[**ツイン グラフ**](concepts-twins-graph.md)であることを思い出してください。 このグラフに対してクエリを実行し、デジタル ツインとそれに含まれるリレーションシップに関する情報を取得することができます。 これらのクエリは、**Azure Digital Twins クエリ言語**と呼ばれる、SQL に似たクエリ言語で記述されます。
+Azure Digital Twins の中心は、デジタル ツインとリレーションシップから構築された[ツイン グラフ](concepts-twins-graph.md)であることを思い出してください。 
 
-クライアント アプリからサービスにクエリを送信するには、Azure Digital Twins の [**Query API**](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.digitaltwinsclient.query?view=azure-dotnet-preview) を使用します。 これにより、開発者はクエリを作成し、フィルターを適用して、ツイン グラフ内のデジタル ツインのセットや、Azure Digital Twins のシナリオに関するその他の情報を検索できます。
+このグラフに対してクエリを実行し、デジタル ツインとそれに含まれるリレーションシップに関する情報を取得することができます。 これらのクエリは、**Azure Digital Twins クエリ言語** と呼ばれる、SQL に似たクエリ言語で記述されます。 これは、同等の機能を多数持つ [IoT Hub クエリ言語](../iot-hub/iot-hub-devguide-query-language.md)に似ています。
 
-[!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
+この記事では、クエリ言語とその機能の基本について説明します。 クエリ構文の詳細な例とクエリ要求の実行方法については、[*ツイン グラフにクエリを実行する*](how-to-query-graph.md)方法に関する記事を参照してください。
+
+## <a name="about-the-queries"></a>クエリについて
+
+Azure Digital Twins クエリ言語を使用し、次に応じて、デジタル ツインを取得できます。
+* プロパティ ([タグのプロパティ](how-to-use-tags.md)を含む)
+* モデル
+* relationships
+  - リレーションシップのプロパティ
+
+クライアント アプリからサービスにクエリを送信するには、Azure Digital Twins の [**Query API**](/rest/api/digital-twins/dataplane/query) を使用します。 API を使用する方法の 1 つとして、Azure Digital Twins のいずれかの [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) を使用する方法があります。
+
+## <a name="reference-expressions-and-conditions"></a>リファレンス: 式と条件
+
+このセクションでは、Azure Digital Twins クエリの作成に使用できる演算子と関数について説明します。 これらの機能の使用方法を示すクエリの例については、[*ツイン グラフにクエリを実行する*](how-to-query-graph.md)方法に関する記事を参照してください。
+
+> [!NOTE]
+> すべての Azure Digital Twins クエリ操作では大文字と小文字が区別されるため、モデルで定義されている正確な名前を使用するように注意してください。 プロパティ名のスペルが間違っているか、大文字と小文字が正しくない場合、結果セットは空になり、エラーは返されません。
+
+### <a name="operators"></a>オペレーター
+
+次の演算子がサポートされています。
+
+| ファミリ | オペレーター |
+| --- | --- |
+| 論理 |`AND`, `OR`, `NOT` |
+| 比較 | `=`, `!=`, `<`, `>`, `<=`, `>=` |
+| 内容 | `IN`, `NIN` |
+
+### <a name="functions"></a>関数
+
+次の型チェックとキャスト関数がサポートされます。
+
+| 機能 | 説明 |
+| -------- | ----------- |
+| `IS_DEFINED` | プロパティに値が代入されているかどうかを示すブール値を返します。 これは、値がプリミティブ型である場合にのみサポートされます。 プリミティブ型には、文字列、ブール値、数値、または `null` が含まれます。 `DateTime`、オブジェクト型、配列はサポートされていません。 |
+| `IS_OF_MODEL` | 指定したツインが指定したモデルの種類と一致するかどうかを示すブール値を返します。 |
+| `IS_BOOL` | 指定した式の型がブール値であるかどうかを示すブール値を返します。 |
+| `IS_NUMBER` | 指定した式の型が数値であるかどうかを示すブール値を返します。 |
+| `IS_STRING` | 指定した式の型が文字列であるかどうかを示すブール値を返します。 |
+| `IS_NULL` | 指定した式の型が null であるかどうかを示すブール値を返します。 |
+| `IS_PRIMITIVE` | 指定した式の型がプリミティブ (文字列、ブール値、数値、または `null`) であるかどうかを示すブール値を返します。 |
+| `IS_OBJECT` | 指定した式の型が JSON オブジェクトであるかどうかを示すブール値を返します。 |
+
+次の文字列関数がサポートされます。
+
+| 機能 | 説明 |
+| -------- | ----------- |
+| `STARTSWITH(x, y)` | 1 つ目の文字列式が 2 つ目の文字列で始まっているかどうかを示すブール値を返します。 |
+| `ENDSWITH(x, y)` | 1 つ目の文字列式が 2 つ目の文字列で終了しているかどうかを示すブール値を返します。 |
+
+## <a name="query-limitations"></a>クエリの制限事項
+
+このセクションでは、クエリ言語の制限事項について説明します。
+
+* タイミング: インスタンスの変更がクエリに反映されるまでに最大 10 秒の遅延が発生する場合があります。 たとえば、DigitalTwins API を使用してツインの作成や削除などの操作が完了した場合、その結果が Query API 要求にすぐに反映されないことがあります。 解決するには、少しの間待つだけです。
+* `FROM` ステートメント内ではサブクエリはサポートされていません。
+* `OUTER JOIN` セマンティクスはサポートされていません。つまり、リレーションシップのランクがゼロの場合、"行" 全体が出力結果セットから削除されます。
+* グラフ トラバーサルの深さがクエリごとに 5 つの `JOIN` レベルに制限されます。
+* `JOIN` 操作のソースは制限されています。クエリを使用して、クエリが開始されるツインを宣言する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

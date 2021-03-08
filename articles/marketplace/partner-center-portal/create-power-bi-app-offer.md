@@ -5,18 +5,18 @@ author: navits09
 ms.author: navits
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: ebc3ad6957890423314bb2d8623c7b4708aed10b
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: bff20468e8185073f5c192c1e115bc405dd089eb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815414"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693620"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI アプリ オファーを作成する
 
-この記事では、Power BI アプリ オファーを作成し、Microsoft [AppSource](https://appsource.microsoft.com/) に公開する方法について説明します。
+この記事では、Power BI アプリ オファーを作成し、[Microsoft AppSource](https://appsource.microsoft.com/) に公開する方法について説明します。
 
 開始する前に、[パートナー センターでコマーシャル マーケットプレース アカウントを作成します](create-account.md) (まだ作成していない場合)。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
@@ -55,10 +55,10 @@ ms.locfileid: "88815414"
 
 これには、選択した内容に基づき、このオファーで操作を実行するためのリンクが含まれています。 次に例を示します。
 
-- オファーがドラフトの場合 - [ドラフトのオファーを削除する](update-existing-offer.md#delete-a-draft-offer)
-- オファーが公開中の場合 - [オファーの販売を停止する](update-existing-offer.md#stop-selling-an-offer-or-plan)
-- オファーがプレビュー段階である場合 - [一般公開する](publishing-status.md#publisher-approval)
-- 公開元のサインアウトを完了していない場合 - [公開を取り消す](update-existing-offer.md#cancel-publishing)
+- オファーがドラフトの場合 - ドラフトのオファーを削除する
+- オファーが発行中の場合 - [オファーの販売を停止する](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- オファーがプレビューの場合 - [公開する](../review-publish-offer.md#previewing-and-approving-your-offer)
+- 公開元のサインアウトを完了していない場合 - [発行をキャンセルする](../review-publish-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>オファーのセットアップ
 
@@ -73,7 +73,7 @@ ms.locfileid: "88815414"
     - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > ご利用の CRM システムが上記の一覧にない場合は、[Azure テーブル](commercial-marketplace-lead-management-instructions-azure-table.md)または [HTTPS エンドポイント](commercial-marketplace-lead-management-instructions-https.md)を使用して顧客リードのデータを格納します。 その後、そのデータをご利用の CRM システムにエクスポートします。
+    > 自分の CRM システムがこの一覧にない場合は、[Azure テーブル](commercial-marketplace-lead-management-instructions-azure-table.md)または [HTTPS エンドポイント](commercial-marketplace-lead-management-instructions-https.md)を使用して、顧客リードのデータを格納します。 その後、そのデータをご利用の CRM システムにエクスポートします。
 
 2. パートナー センターで発行する際は、オファーをリードの宛先に接続します。
 3. リードの宛先への接続が正しく構成されていることを確認します。 パートナー センターで公開すると、Microsoft で接続を検証して、テスト リードを送信します。 オファーの公開前に行うプレビュー中は、プレビュー環境でオファーを自分で購入してみることで、リードの接続をテストすることもできます。
@@ -81,10 +81,10 @@ ms.locfileid: "88815414"
 
 その他のリード管理リソースをいくつか次に示します。
 
-- [リード管理の概要](commercial-marketplace-get-customer-leads.md)
-- [リード管理に関する FAQ](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
-- [一般的なリード構成エラー](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
-- [リード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ポップアップ ブロックが無効になっていることを確認してください)
+- [コマーシャル マーケットプレース オファーからの顧客リード](commercial-marketplace-get-customer-leads.md)
+- [リード管理についてよく寄せられる質問](../lead-management-faq.md#common-questions-about-lead-management)
+- [リード構成エラーのトラブルシューティング](../lead-management-faq.md#publishing-config-errors)
+- [リード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ポップアップ ブロックが無効になっていることを確認してください)。
 
 続行する前に、 **[下書きの保存]** を選択します。
 
@@ -109,9 +109,7 @@ ms.locfileid: "88815414"
 
 #### <a name="terms-and-conditions"></a>使用条件
 
-独自のカスタム使用条件を指定するには、 **[使用条件]** ボックスに最大 10,000 文字を入力します。 使用条件により長い説明が必要な場合は、その場所への Web リンクを 1 つ入力します。 これはアクティブなリンクとして顧客に表示されます。
-
-顧客は、オファーを試す前にこれらの条件に同意する必要があります。
+独自のカスタム使用条件を指定するには、 **[使用条件]** ボックスに最大 10,000 文字を入力します。 顧客は、オファーを試す前にこれらの条件に同意する必要があります。
 
 **[下書きの保存]** を選択してから、次のセクション「オファーのリスト登録」に進みます。
 
@@ -130,7 +128,7 @@ ms.locfileid: "88815414"
 
 Microsoft AppSource でのオファー情報の表示例を次に示します (表示されている価格は例示のみを目的としており、実際のコストを反映することを意図していません)。
 
-:::image type="content" source="media/example-power-bi-app.png" alt-text="Microsoft AppSource でこのオファーが どのように表示されるかを示しています。":::
+:::image type="content" source="media/example-power-bi-app.png" alt-text="Microsoft AppSource でこのオファーがどのように表示されるかを示しています。":::
 
 #### <a name="call-out-descriptions"></a>コールアウトの説明
 
@@ -186,13 +184,13 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 ### <a name="contact-information"></a>連絡先情報
 
-**サポートの連絡先**と**エンジニアリングの連絡先**の名前、メール、電話番号を入力する必要があります。 この情報は顧客には表示されません。 これは Microsoft で利用することができ、クラウド ソリューション プロバイダー (CSP) パートナーに提供される場合があります。
+**サポートの連絡先** と **エンジニアリングの連絡先** の名前、メール、電話番号を入力する必要があります。 この情報は顧客には表示されません。 これは Microsoft で利用することができ、クラウド ソリューション プロバイダー (CSP) パートナーに提供される場合があります。
 
 - サポートの連絡先 (必須):サポートに関する一般的な質問用です。
 - エンジニアリングの連絡先 (必須):技術的な質問と認定に関する問題用です。
 - CSP プログラムの連絡先 (省略可能):リセラーからの CSP プログラムに関する質問用です。
 
-**[サポートの連絡先]** セクションに、パートナーがオファーのサポートを確認できる**サポート Web サイト**の Web アドレスを指定します。
+**[サポートの連絡先]** セクションに、パートナーがオファーのサポートを確認できる **サポート Web サイト** の Web アドレスを指定します。
 
 ### <a name="supporting-documents"></a>サポート ドキュメント
 
@@ -202,14 +200,14 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 ぼやけた画像は拒否されます。
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている `https://upload.xboxlive.com` サービスがローカル ネットワークでブロックされていないことを確認してください。
 
 #### <a name="store-logos"></a>ストア ロゴ
 
-**大**サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、**小**サイズのロゴを作成します。 これは、必要に応じて、後で別の画像に置き換えることができます。
+**大** サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、**小** サイズのロゴを作成します。 これは、必要に応じて、後で別の画像に置き換えることができます。
 
 - **大** (216 x 216 から 350 x 350 px、必須)
 - **小** (48 x 48 px、省略可能)
@@ -218,7 +216,7 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshots (スクリーンショット)
 
@@ -234,7 +232,7 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 ## <a name="technical-configuration"></a>技術的な構成
 
-Power BI サービスでアプリを運用環境に昇格させ、顧客がアプリをインストールできるようにするための Power BI アプリ インストーラー リンクを提供します。 詳しくは、「[Power BI でダッシュボードとレポートを含むアプリを発行する](https://docs.microsoft.com/power-bi/service-create-distribute-apps)」をご覧ください。
+Power BI サービスでアプリを運用環境に昇格させ、顧客がアプリをインストールできるようにするための Power BI アプリ インストーラー リンクを提供します。 詳しくは、「[Power BI でダッシュボードとレポートを含むアプリを発行する](/power-bi/service-create-distribute-apps)」をご覧ください。
 
 ## <a name="supplemental-content"></a>補足コンテンツ
 

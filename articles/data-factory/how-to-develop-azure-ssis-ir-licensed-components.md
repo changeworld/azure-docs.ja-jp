@@ -1,22 +1,18 @@
 ---
 title: Azure-SSIS 統合ランタイムのライセンス付きコンポーネントのインストール
 description: ISV が Azure SSIS 統合ランタイムの有料 (ライセンスあり) コンポーネントをどのようにして開発し、インストールできるかを学習します
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 author: swinarko
 ms.author: sawinark
-manager: mflasko
-ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: 77eedbfc65b54ce128e1adbd93375bc624ef38cd
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: fd62822e111346ee9a81a5d1bcce55191b19da02
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187619"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386290"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Azure SSIS 統合ランタイムの有料 (ライセンスあり) カスタム コンポーネントをインストールする
 
@@ -34,7 +30,7 @@ Azure SSIS 統合ランタイムは、その性質上、いくつかの難題を
 
 ## <a name="the-solution"></a>解決策
 
-前のセクションで説明されている従来のライセンス方法の制限の結果、Azure SSIS IR は新しい解決策を提供します。 この解決策では、Windows 環境変数と SSIS システム変数を使用して、サード パーティ コンポーネントのライセンスのバインドと検証を行います。 ISV はこのような変数を使用し、クラスター ID やクラスター ノード数など、Azure SSIS IR の固有かつ永続的な情報を取得できます。 この情報を使用することで、ISV は*クラスターとしての* Azure SSIS IR にコンポーネントのライセンスをバインドできます。 このバインドでは、顧客が任意の方法で Azure SSIS IR を開始または停止、スケールアップまたはスケールダウン、スケールインまたはスケールアウト、もしくは再構成したときに変更されない ID を使用します。
+前のセクションで説明されている従来のライセンス方法の制限の結果、Azure SSIS IR は新しい解決策を提供します。 この解決策では、Windows 環境変数と SSIS システム変数を使用して、サード パーティ コンポーネントのライセンスのバインドと検証を行います。 ISV はこのような変数を使用し、クラスター ID やクラスター ノード数など、Azure SSIS IR の固有かつ永続的な情報を取得できます。 この情報を使用することで、ISV は *クラスターとしての* Azure SSIS IR にコンポーネントのライセンスをバインドできます。 このバインドでは、顧客が任意の方法で Azure SSIS IR を開始または停止、スケールアップまたはスケールダウン、スケールインまたはスケールアウト、もしくは再構成したときに変更されない ID を使用します。
 
 次の図は、これらの新しい変数を使用するサードパーティ コンポーネントの一般的なインストール、ライセンス認証、ライセンス バインディング、検証のフローを示したものです。
 

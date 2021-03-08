@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: overview
-ms.date: 07/30/2020
-ms.openlocfilehash: 0dd0fbdd9bcf4d4fab2ffe9f420264ab737a700b
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 10/30/2020
+ms.openlocfilehash: b9fb5d6537d2c8dffef397c56128dd4891c939b7
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511923"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578129"
 ---
 # <a name="what-is-azure-data-share"></a>Azure Data Share とは
 
@@ -45,7 +45,7 @@ Azure Data Share は、現在、スナップショットベースの共有とイ
 
 ![データ共有の流れ](media/data-share-flow.png)
 
-データ コンシューマーは、データ共有を受け入れると、自分で選択したデータ ストアでデータを受け取ることができます。 たとえば、データ プロバイダーが Azure Blob Storage を使ってデータを共有している場合、データ コンシューマーは Azure Data Lake Store でこのデータを受け取ることができます。 同様に、データ プロバイダーが Azure SQL Data Warehouse からのデータを共有する場合、データ コンシューマーは、データを Azure Data Lake Store、Azure SQL Database、または Azure SQL Data Warehouse に受信するかどうかを選択できます。 SQL ベースのソースから共有する場合、データ コンシューマーは、parquet または csv でデータを受信するかどうかを選択することもできます。 
+データ コンシューマーは、データ共有を受け入れると、自分で選択したデータ ストアでデータを受け取ることができます。 たとえば、データ プロバイダーが Azure Blob Storage を使ってデータを共有している場合、データ コンシューマーは Azure Data Lake Store でこのデータを受け取ることができます。 同様に、データ プロバイダーが Azure Synapse Analytics からのデータを共有する場合、データ コンシューマーは、データを Azure Data Lake Store、Azure SQL Database、または Azure Synapse Analytics に受信するかどうかを選択できます。 SQL ベースのソースから共有する場合、データ コンシューマーは、parquet または csv でデータを受信するかどうかを選択することもできます。 
 
 インプレース共有では、データ プロバイダーがデータをコピーすることなく、データが置かれている場所でデータを共有できます。 招待フローを通じて共有関係が確立されると、データ プロバイダーのソース データ ストアとデータのコンシューマーのターゲット データ ストアとの間でシンボリック リンクが作成されます。 データ コンシューマーは、その独自のデータ ストアを使用してリアルタイムにデータを読み取り、照会することができます。 ソース データ ストアに対する変更は、データ コンシューマーに対して即座に提供されます。 インプレース共有は現在、Azure Data Explorer 向けのプレビューの段階です。
 
@@ -73,9 +73,7 @@ Azure Data Share は、現在、スナップショットベースの共有とイ
 
 * 自分と共有されているデータを、[サポートされているデータ ストア](supported-data-stores.md)に受け入れます。
 
-* 組織から共有されている Data Share の完全または増分スナップショットをトリガーします
-
-* データ共有をサブスクライブし、増分スナップショットによってデータの最新のコピーを受け取ります
+* 配置されているデータにアクセスするか、共有データの完全または増分スナップショットをトリガーします
 
 上記のすべての主要機能は、Azure portal または REST API によってサポートされます。 REST API での Azure Data Share の使用に関して詳しくは、リファレンス ドキュメントをご覧ください。 
 

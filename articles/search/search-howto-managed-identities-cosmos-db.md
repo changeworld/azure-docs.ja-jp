@@ -1,29 +1,27 @@
 ---
-title: マネージド ID を使用して、Cosmos DB アカウントへの接続を設定する (プレビュー)
+title: マネージド ID を使用して、Cosmos DB アカウントへの接続を設定する
 titleSuffix: Azure Cognitive Search
-description: マネージド ID を使用して Cosmos DB アカウントへのインデクサー接続を設定する方法を学ぶ (プレビュー)
+description: マネージド ID を使用して Cosmos DB アカウントへのインデクサー接続を設定する方法を学ぶ
 manager: luisca
 author: markheff
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: df37b7f1c5b1ed35b6c3779eea470b2fb0936ecf
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/22/2020
+ms.openlocfilehash: 2a1744feedc3e0ffae6cf2cd45cd090a6c2f06d5
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936658"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422095"
 ---
-# <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity-preview"></a>マネージド ID を使用して Cosmos DB データベースへのインデクサー接続を設定する (プレビュー)
-
-> [!IMPORTANT] 
-> マネージド ID を使用したデータ ソースへの接続の設定のサポートは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。
+# <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>マネージド ID を使用して Cosmos DB データベースへのインデクサー接続を設定する
 
 このページでは、データ ソースのオブジェクト接続文字列で資格情報を指定する代わりに、マネージド ID を使用して Azure Cosmos DB データベースへのインデクサー接続を設定する方法を説明します。
 
 この機能についてさらに学ぶ前に、インデクサーとは何かについて、およびデータ ソースに対してインデクサーを設定する方法について理解しておくことをお勧めします。 以下のリンクで詳しい情報を確認できます。
+
 * [インデクサーの概要](search-indexer-overview.md)
 * [Azure Cosmos DB インデクサー](search-howto-index-cosmosdb.md)
 
@@ -31,7 +29,7 @@ ms.locfileid: "88936658"
 
 ### <a name="1---turn-on-system-assigned-managed-identity"></a>1 - システム割り当てマネージド ID をオンにする
 
-システム割り当てマネージド ID が有効になると、Azure で検索サービスのための ID が作成されます。これは、同じテナントとサブスクリプション内の他の Azure サービスに対する認証に使用することができます。 その後、インデックス作成中にデータへのアクセスを許可する、ロールベースのアクセス制御 (RBAC) の割り当てで、この ID を使用することができます。
+システム割り当てマネージド ID が有効になると、Azure で検索サービスのための ID が作成されます。これは、同じテナントとサブスクリプション内の他の Azure サービスに対する認証に使用することができます。 この ID は、インデックス作成中にデータへのアクセスを許可する Azure ロールベースのアクセス制御 (Azure RBAC) の割り当てで使用できるようになります。
 
 ![システム割り当てマネージド ID をオンにする](./media/search-managed-identities/turn-on-system-assigned-identity.png "システム割り当てマネージド ID をオンにする")
 
@@ -57,9 +55,9 @@ ms.locfileid: "88936658"
 
 ### <a name="3---create-the-data-source"></a>3 - データ ソースを作成する
 
-[REST API](/rest/api/searchservice/create-data-source)、Azure portal、および [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) では、マネージド ID 接続文字列がサポートされています。 次に、[REST API](/rest/api/searchservice/create-data-source) とマネージド ID 接続文字列を使用して Cosmos DB のデータにインデックスを付けるためのデータ ソースを作成する方法例を示します。 マネージド ID 接続文字列の形式は、REST API、.NET SDK、および Azure portal において同じです。
+[REST API](/rest/api/searchservice/create-data-source)、Azure portal、および [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype) では、マネージド ID 接続文字列がサポートされています。 次に、[REST API](/rest/api/searchservice/create-data-source) とマネージド ID 接続文字列を使用して Cosmos DB のデータにインデックスを付けるためのデータ ソースを作成する方法例を示します。 マネージド ID 接続文字列の形式は、REST API、.NET SDK、および Azure portal において同じです。
 
-マネージド ID を使用して認証する場合、**資格情報**にはアカウント キーは含まれません。
+マネージド ID を使用して認証する場合、 **資格情報** にはアカウント キーは含まれません。
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -86,8 +84,8 @@ api-key: [Search service admin key]
 |---------|-------------|
 | **name** | 必須。 データ ソース オブジェクトを表す名前を選択します。 |
 |**type**| 必須。 `cosmosdb`である必要があります。 |
-|**credentials** | 必須。 <br/><br/>マネージド ID を使用して接続する場合、**credentials** の形式は次のようになります。*Database=[database-name];ResourceId=[resource-id-string];(ApiKind=[api-kind];)*<br/> <br/>ResourceId の形式:*ResourceId=/subscriptions/**your subscription ID**/resourceGroups/**your resource group name**/providers/Microsoft.DocumentDB/databaseAccounts/**your cosmos db account name**/;*<br/><br/>SQL コレクションの場合は、接続文字列に ApiKind は必要ありません。<br/><br/>MongoDB コレクションの場合は、**ApiKind=MongoDb** を接続文字列に追加します。 <br/><br/>Gremlin グラフと Cassandra テーブルの場合には、[インデクサーの限定プレビュー](https://aka.ms/azure-cognitive-search/indexer-preview)にサインアップして、プレビュー機能に対するアクセス権と、資格情報の形式に関する情報を入手してください。<br/>|
-| **container** | 次の要素が含まれます。 <br/>**name**:必須。 インデックスを作成するデータベース コレクションの ID を指定します。<br/>**query**: 省略可能。 任意の JSON ドキュメントを、Azure Cognitive Search がインデックスを作成できるフラット スキーマにフラット化するクエリを指定できます。<br/>MongoDB API、Gremlin API、Cassandra API では現在、クエリがサポートされていません。 |
+|**credentials** | 必須。 <br/><br/>マネージド ID を使用して接続する場合、 **credentials** の形式は次のようになります。 *Database=[database-name];ResourceId=[resource-id-string];(ApiKind=[api-kind];)*<br/> <br/>ResourceId の形式: *ResourceId=/subscriptions/ **your subscription ID** /resourceGroups/ **your resource group name** /providers/Microsoft.DocumentDB/databaseAccounts/ **your cosmos db account name** /;*<br/><br/>SQL コレクションの場合は、接続文字列に ApiKind は必要ありません。<br/><br/>MongoDB コレクションの場合は、 **ApiKind=MongoDb** を接続文字列に追加します。 <br/><br/>Gremlin グラフと Cassandra テーブルの場合には、[インデクサーの限定プレビュー](https://aka.ms/azure-cognitive-search/indexer-preview)にサインアップして、プレビュー機能に対するアクセス権と、資格情報の形式に関する情報を入手してください。<br/>|
+| **container** | 次の要素が含まれます。 <br/>**name** :必須。 インデックスを作成するデータベース コレクションの ID を指定します。<br/>**query** : 省略可能。 任意の JSON ドキュメントを、Azure Cognitive Search がインデックスを作成できるフラット スキーマにフラット化するクエリを指定できます。<br/>MongoDB API、Gremlin API、Cassandra API では現在、クエリがサポートされていません。 |
 | **dataChangeDetectionPolicy** | 推奨 |
 |**dataDeletionDetectionPolicy** | 省略可能 |
 
@@ -140,7 +138,14 @@ api-key: [admin key]
 
 インデクサーのスケジュールの定義の詳細については、[Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
 
-## <a name="see-also"></a>関連項目
+## <a name="troubleshooting"></a>トラブルシューティング
 
-Cosmos DB インデクサーの詳細情報:
+Cosmos DB からのデータにインデックスを付けることができない場合は、以下の点について検討してください。
+
+1. Cosmos DB のアカウント キーを最近ローテーションした場合は、マネージド ID の接続文字列が機能するまでに最大で 15 分間待つ必要があります。
+
+1. Cosmos DB アカウントで、特定のネットワークへのアクセスが制限されているかどうかを確認します。 そうされている場合は、[Azure ネットワーク セキュリティ機能を使用したデータ ソースへのインデクサーのアクセス](search-indexer-securing-resources.md)に関する記事を参照してください。
+
+## <a name="next-steps"></a>次の手順
+
 * [Azure Cosmos DB インデクサー](search-howto-index-cosmosdb.md)

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 025b9b7e503f38a111bd158f17b7fbeec5b23579
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 51baa26cf78846bd0a719b8b86056e2ea8176155
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684985"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131090"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Azure のコストの割り当てルールの作成と管理 (プレビュー)
 
@@ -58,16 +58,16 @@ ms.locfileid: "88684985"
 
 総コストに比例するようにコストを配分する場合、現在の課金月について、選択したターゲットの合計 (総コスト) を基準に、それに比例した割合が割り当てられます。
 
-:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="割り当ての割合を示す例" lightbox="./media/allocate-costs/cost-distribution.png" :::
+:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="ルール名の作成を示す例" lightbox="./media/allocate-costs/cost-distribution.png" :::
 
 設定後、定義された事前入力の割合が確定されます。 これらは、進行中のすべての割り当てに使用されます。 割合が変化するのは、ルールが手動で更新されたときだけです。
 
 1. **[次の割合を事前入力]** ボックスの一覧で、次のいずれかのオプションを選択します。
     - **[均等に配分]** - 総コストが均等な割合で配分されて各ターゲットに適用されます。
     - **[総コスト]** - ターゲットに比例した割合が、その総コストに基づいて作成されます。 その割合を使用して、選択したソースからのコストが配分されます。
-    - **[コンピューティング コスト]** - ターゲットに比例した割合が、Azure のコンピューティング コスト ([Microsoft.Compute](https://docs.microsoft.com/azure/templates/microsoft.compute/allversions) 名前空間のリソース タイプ) に基づいて作成されます。その割合を使用して、選択したソースからのコストが配分されます。
-    - **[ストレージ コスト]** - ターゲットに比例した割合が、Azure のストレージ コスト ([Microsoft.Storage](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions) 名前空間のリソース タイプ) に基づいて作成されます。 その割合を使用して、選択したソースからのコストが配分されます。
-    - **[ネットワーク コスト]** - ターゲットに比例した割合が、Azure のネットワーク コスト ([Microsoft.Network](https://docs.microsoft.com/azure/templates/microsoft.network/allversions) 名前空間のリソース タイプ) に基づいて作成されます。 その割合を使用して、選択したソースからのコストが配分されます。
+    - **[コンピューティング コスト]** - ターゲットに比例した割合が、Azure のコンピューティング コスト ([Microsoft.Compute](/azure/templates/microsoft.compute/allversions) 名前空間のリソース タイプ) に基づいて作成されます。その割合を使用して、選択したソースからのコストが配分されます。
+    - **[ストレージ コスト]** - ターゲットに比例した割合が、Azure のストレージ コスト ([Microsoft.Storage](/azure/templates/microsoft.storage/allversions) 名前空間のリソース タイプ) に基づいて作成されます。 その割合を使用して、選択したソースからのコストが配分されます。
+    - **[ネットワーク コスト]** - ターゲットに比例した割合が、Azure のネットワーク コスト ([Microsoft.Network](/azure/templates/microsoft.network/allversions) 名前空間のリソース タイプ) に基づいて作成されます。 その割合を使用して、選択したソースからのコストが配分されます。
     - **[Custom]\(カスタム\)** - 整数のパーセンテージを手動で指定できます。 指定した合計が 100% になるようにする必要があります。
 1. ルールを構成したら、 **[作成]** を選択します。
 
@@ -84,7 +84,7 @@ ms.locfileid: "88684985"
 
 コスト分析で割り当てルールの影響を確認します。 Azure portal で [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) に移動します。 アクティブなコストの割り当てルールの対象となるサブスクリプションをリストから選択します。 次に、メニューから **[コスト分析]** を選択します。 [コスト分析] で **[グループ化]** を選択し、 **[コストの割り当て]** を選択します。 サブスクリプションによって生成された簡単なコスト内訳が結果のビューに表示されます。 また、サブスクリプションに割り当てられたコストは、次の画像のように表示されます。
 
-:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="コスト内訳を示す例" lightbox="./media/allocate-costs/cost-breakdown.png" :::
+:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="ルール名の作成を示す例" lightbox="./media/allocate-costs/cost-breakdown.png" :::
 
 ### <a name="view-cost-allocation-for-a-resource-group"></a>リソース グループのコスト割り当てを表示する
 
@@ -94,7 +94,7 @@ ms.locfileid: "88684985"
 
 Azure portal で **[コストの管理と請求]**  >  **[コスト管理]**  >  **[コスト分析]** に移動します。 [コスト分析] で **[フィルターの追加]** を選択します。 **[タグ]** を選択し、タグ キーと、コストが割り当てられているタグ値を選択します。
 
-:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="タグ付けされた項目のコストを示す例" lightbox="./media/allocate-costs/tagged-costs.png" :::
+:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="ルール名の作成を示す例" lightbox="./media/allocate-costs/tagged-costs.png" :::
 
 ## <a name="edit-an-existing-cost-allocation-rule"></a>既存のコストの割り当てルールを編集する
 
@@ -112,10 +112,10 @@ Azure portal で **[コストの管理と請求]**  >  **[コスト管理]**  > 
 パブリック プレビューのコストの割り当てでは、現在次の項目がサポートされていません。
 
 - [エクスポート](tutorial-export-acm-data.md)のスケジュール実行
-- [Usage Details](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) API によって公開されたデータ
+- [Usage Details](/rest/api/consumption/usagedetails/list) API によって公開されたデータ
 - 課金サブスクリプション領域
 - [Cost Management Power BI アプリ](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)
-- [Power BI Desktop コネクタ](https://docs.microsoft.com/power-bi/connect-data/desktop-connect-azure-cost-management)
+- [Power BI Desktop コネクタ](/power-bi/connect-data/desktop-connect-azure-cost-management)
 
 ### <a name="are-costs-factored-into-budgets-and-forecast-views"></a>予算および予測ビューにコストは考慮されていますか?
 <a name="budgets-forecast"></a>
@@ -144,5 +144,5 @@ Azure portal で **[コストの管理と請求]**  >  **[コスト管理]**  > 
 
 ## <a name="next-steps"></a>次のステップ
 
-- [コスト割り当ての REST API](https://go.microsoft.com/fwlink/?linkid=2135004) を使用して割り当てルールを作成または更新する
+- [コスト割り当ての REST API](/rest/api/cost-management/costallocationrules) を使用して割り当てルールを作成または更新する
 - [Azure Cost Management を使用してクラウドへの投資を最適化する方法](cost-mgt-best-practices.md)の詳細を確認する

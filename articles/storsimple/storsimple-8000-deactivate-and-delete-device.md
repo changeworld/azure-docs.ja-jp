@@ -1,6 +1,6 @@
 ---
 title: StorSimple 8000 シリーズ デバイスを非アクティブ化して削除する | Microsoft Docs
-description: StorSimple デバイスを非アクティブ化して削除することによって、サービスからこれを削除する方法について説明します。
+description: StorSimple デバイス マネージャー サービスに接続されている StorSimple デバイスを非アクティブ化して削除する方法について説明します。
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 825a10bec7a9d415bdcf76e5b6f28f04060bb411
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07d108306fdca9bfe8f793b61660550e43151d71
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514022"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017187"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>StorSimple デバイスの非アクティブ化と削除
 
@@ -63,16 +63,16 @@ ms.locfileid: "85514022"
         ![StorSimple デバイスを非アクティブ化する](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
    2. **[非アクティブ化]** ブレードで、デバイス名を入力して確認した後、 **[非アクティブ化]** をクリックします。 非アクティブ化のプロセスが開始されます。この処理は数分かかります。
 
-        ![StorSimple デバイスを非アクティブ化する](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
+        ![StorSimple デバイスを非アクティブ化する 2](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
 
 3. 非アクティブ化を行った後は、デバイスを完全に削除できます。 デバイスを削除すると、サービスに接続されているデバイスの一覧からそのデバイスが削除されます。 サービスは、削除されたデバイスをもはや管理できなくなります。 次のようにしてデバイスを削除します。
    
    1. StorSimple デバイス マネージャー サービスに移動し、 **[デバイス]** をクリックします。 **[デバイス]** ブレードで、削除する非アクティブ化されたデバイスを選択します。右クリックして **[削除]** をクリックします。
 
-        ![StorSimple デバイスを非アクティブ化する](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
+        ![StorSimple デバイスを非アクティブ化する 3](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
    2. **[削除]** ブレードで、デバイス名を入力して確認した後、 **[削除]** をクリックします。 削除は、完了するまで数分かかります。
 
-        ![StorSimple デバイスを非アクティブ化する](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
+        ![StorSimple デバイスを非アクティブ化する 4](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
    3. 削除が正常に完了すると、通知が表示されます。 デバイスの一覧も、削除を反映するように更新されます。
 
 ## <a name="deactivate-and-retain-data"></a>データの非アクティブ化と保持
@@ -85,19 +85,19 @@ ms.locfileid: "85514022"
    
    1. StorSimple デバイス マネージャー サービスに移動し、 **[デバイス]** をクリックします。 **[デバイス]** ブレードで、非アクティブ化するデバイスを選択します。右クリックして **[非アクティブ化]** をクリックします。
 
-         ![StorSimple デバイスを非アクティブ化する](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
+         ![StorSimple デバイスを非アクティブ化する 5](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
    2. **[非アクティブ化]** ブレードで、デバイス名を入力して確認した後、 **[非アクティブ化]** をクリックします。 非アクティブ化のプロセスが開始されます。この処理は数分かかります。
 
-         ![StorSimple デバイスを非アクティブ化する](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
+         ![StorSimple デバイスを非アクティブ化する 6](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
 2. これで、ボリューム コンテナーと、関連付けられているスナップショットをフェールオーバーできます。 手順については、「[StorSimple デバイスのフェールオーバーとディザスター リカバリー](storsimple-8000-device-failover-disaster-recovery.md)」を参照してください。
 3. 非アクティブ化とフェールオーバーを行った後、デバイスを完全に削除できます。 デバイスを削除すると、サービスに接続されているデバイスの一覧からそのデバイスが削除されます。 サービスは、削除されたデバイスをもはや管理できなくなります。 デバイスを削除するには、次の手順を完了します。
    
    1. StorSimple デバイス マネージャー サービスに移動し、 **[デバイス]** をクリックします。 **[デバイス]** ブレードで、削除する非アクティブ化されたデバイスを選択します。右クリックして **[削除]** をクリックします。
 
-       ![StorSimple デバイスを非アクティブ化する](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
+       ![StorSimple デバイスを非アクティブ化する 7](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
    2. **[削除]** ブレードで、デバイス名を入力して確認した後、 **[削除]** をクリックします。 削除は、完了するまで数分かかります。
 
-       ![StorSimple デバイスを非アクティブ化する](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
+       ![StorSimple デバイスを非アクティブ化する 8](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
    3. 削除が正常に完了すると、通知が表示されます。 デバイスの一覧も、削除を反映するように更新されます。
 
 ## <a name="deactivate-and-delete-a-cloud-appliance"></a>クラウド アプライアンスを非アクティブ化して削除する

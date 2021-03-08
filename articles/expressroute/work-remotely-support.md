@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/22/2020
 ms.author: duau
-ms.openlocfilehash: e783e80a1883f5aea7a266d3ec670ce2a898e735
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: d51f47b73fe572ce81d3e7b54f902f94fcd11b5b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89392958"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89567675"
 ---
 # <a name="using-azure-expressroute-to-create-hybrid-connectivity-to-support-remote-users"></a>リモート ユーザーをサポートするためのハイブリッド接続を Azure ExpressRoute を使用して作成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "89392958"
 * [既存の ExpressRoute 回線の帯域幅を増やす方法](expressroute-howto-circuit-portal-resource-manager.md#modify)
 * [ExpressRoute の監視、メトリック、およびアラート](expressroute-monitoring-metrics-alerts.md#expressroute-gateway-connections-in-bitsseconds)
 * [ExpressRoute 経由のルート最適化](expressroute-optimize-routing.md)
-* [Azure ExpressRoute for O365](https://docs.microsoft.com/office365/enterprise/azure-expressroute?redirectSourcePath=%252farticle%252f6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)
+* [Microsoft 365 向け Azure ExpressRoute](/microsoft-365/enterprise/azure-expressroute)
 * [非対称ルーティングに関する考慮事項](expressroute-asymmetric-routing.md)
 * [Azure portal でサポート リクエストをオープンする方法](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 

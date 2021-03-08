@@ -3,18 +3,17 @@ title: Linux の探索
 titleSuffix: Azure Data Science Virtual Machine
 description: Linux Data Science Virtual Machine を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法について説明します。
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+ms.service: data-science-vm
+author: lobrien
+ms.author: laobri
 ms.topic: conceptual
-ms.date: 07/17/2020
-ms.openlocfilehash: ca3cfa44bd4f757c6fbb0dd2c84d7a843f9bff36
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 09/17/2020
+ms.openlocfilehash: 42136d0d58dbc318aab0e111fcef46f80751ca88
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816220"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517673"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Azure での Ubuntu Data Science Virtual Machine を使用したデータ サイエンス
 
@@ -28,8 +27,8 @@ Linux DSVM を使用する前に、以下の前提条件を満たしている必
 
 * **Azure サブスクリプション**。 Azure サブスクリプションを取得するには、「[無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free/)」をご覧ください。
 
-* [**Ubuntu Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) 仮想マシンのプロビジョニングについては、[Ubuntu Data Science Virtual Machine のプロビジョニング](linux-dsvm-intro.md)に関するページをご覧ください。
-* お使いのコンピューターに [**X2Go**](https://wiki.x2go.org/doku.php) がインストールされており、XFCE セッションが開かれている。 詳細については、「[X2Go クライアントをインストールして構成する](linux-dsvm-intro.md#x2go)」をご覧ください。
+* [**Ubuntu Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) 仮想マシンのプロビジョニングについては、[Ubuntu Data Science Virtual Machine のプロビジョニング](./release-notes.md)に関するページをご覧ください。
+* お使いのコンピューターに [**X2Go**](https://wiki.x2go.org/doku.php) がインストールされており、XFCE セッションが開かれている。 詳細については、「[X2Go クライアントをインストールして構成する](dsvm-ubuntu-intro.md#x2go)」をご覧ください。
 * スクロールをスムーズにするために、DSVM の FireFox Web ブラウザーで `about:config` の `gfx.xrender.enabled` フラグを切り替えます。 [詳細については、こちらを参照してください](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 また、`mousewheel.enable_pixel_scrolling` を `False` に設定することを検討してください。 [詳細については、こちらを参照してください](https://support.mozilla.org/questions/981140)。
 
 ## <a name="download-the-spambase-dataset"></a>spambase データセットをダウンロードする
@@ -213,7 +212,7 @@ accuracy
 
 - [イメージ内で製品を検出するエンド ツー エンド ソリューションを構築するための攻略ガイド](https://github.com/Azure/cortana-intelligence-product-detection-from-images):イメージ検出は、イメージ内のオブジェクトを特定して分類する手法です。 このテクノロジには、多くの現実のビジネス分野に大きなメリットをもたらす可能性があります。 たとえば、小売り業者は、この手法を使用して、顧客が棚から選ぶ製品を判断できます。 この情報は、店舗が製品在庫を管理するのに役立ちます。 
 
-- [音声のディープ ラーニング](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): このチュートリアルでは、[都市音声データセット](https://urbansounddataset.weebly.com/)の音声イベントを検出するためのディープ ラーニング モデルをトレーニングする方法を説明します。 また、音声データを操作する方法の概要についてもこのチュートリアルで説明します。
+- [音声のディープ ラーニング](/archive/blogs/machinelearning/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure): このチュートリアルでは、[都市音声データセット](https://urbansounddataset.weebly.com/)の音声イベントを検出するためのディープ ラーニング モデルをトレーニングする方法を説明します。 また、音声データを操作する方法の概要についてもこのチュートリアルで説明します。
 
 - [テキスト ドキュメントの分類](https://github.com/anargyri/lstm_han): このチュートリアルでは、2 つの異なるニューラル ネットワーク アーキテクチャを構築してトレーニングする方法を示します。Hierarchical Attention Network と Long Short Term Memory (LSTM) です。 これらのニューラル ネットワークでは、ディープ ラーニング用の Keras API を使用して、テキスト ドキュメントを分類します。 Keras は、最も普及している 3 つのディープ ラーニング フレームワーク (Microsoft Cognitive Toolkit、TensorFlow、および Theano) のフロントエンドです。
 
@@ -315,7 +314,7 @@ DSVM の Anaconda ディストリビューションには、Jupyter Notebook (Py
 
 ### <a name="rattle"></a>Rattle
 
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (*R* *A*nalytical *T*ool *T*o *L*earn *E*asily) は、データ マイニング用のグラフィカル R ツールです。 Rattle には、直感的なインターフェイスが用意され、データの読み込み、探索、変換のほか、モデルの構築と評価を簡単に行うことができます。 「[Rattle:R 向けのデータ マイニング GUI](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf)」に、Rattle の機能を説明するチュートリアルが記載されています。
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (*R* *A* nalytical *T* ool *T* o *L* earn *E* asily) は、データ マイニング用のグラフィカル R ツールです。 Rattle には、直感的なインターフェイスが用意され、データの読み込み、探索、変換のほか、モデルの構築と評価を簡単に行うことができます。 「[Rattle:R 向けのデータ マイニング GUI](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf)」に、Rattle の機能を説明するチュートリアルが記載されています。
 
 Rattle をインストールして起動するには、これらのコマンドを実行します。
 
@@ -328,7 +327,7 @@ rattle()
 > [!NOTE]
 > DSVM に Rattle をインストールする必要はありません。 ただし、Rattle を開いたときに、追加のパッケージをインストールするように求められる場合があります。
 
-Rattle では、タブベースのインターフェイスを使用します。 タブのほとんどは、 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) に関する記事の手順に対応しています (データの読み込みや探索など)。 データ サイエンス プロセスは、タブの左から右へと進んで行きます。 最後のタブには、Rattle で実行された R コマンドのログが含まれます。
+Rattle では、タブベースのインターフェイスを使用します。 タブのほとんどは、 [Team Data Science Process](../team-data-science-process/index.yml) に関する記事の手順に対応しています (データの読み込みや探索など)。 データ サイエンス プロセスは、タブの左から右へと進んで行きます。 最後のタブには、Rattle で実行された R コマンドのログが含まれます。
 
 データセットを読み込んで構成するには:
 
@@ -349,7 +348,7 @@ Rattle では、タブベースのインターフェイスを使用します。 
 1. **word_freq_remove** と **word_freq_you** については、 **[Histogram]\(ヒストグラム\)** を選択します。
 1. **[実行]** を選択します。 1 つのグラフ ウィンドウに両方の密度プロットが表示され、メールには _you_ という単語が _remove_ よりもはるかに頻繁に出現していることが明らかです。
 
-**相関関係**プロットも興味深いものです。 プロットを作成するには:
+**相関関係** プロットも興味深いものです。 プロットを作成するには:
 
 1. **[Type]\(種類\)** で **[Correlation]\(相関関係\)** を選択します。
 1. **[実行]** を選択します。
@@ -538,5 +537,3 @@ GO
 ```
 
 SQuirreL SQL を使用してクエリを実行することもできます。 SQL Server JDBC ドライバーを使用して PostgreSQL の場合と同様の手順を実行します。 JDBC ドライバーは /usr/share/java/jdbcdrivers/sqljdbc42.jar フォルダーにあります。
-
-

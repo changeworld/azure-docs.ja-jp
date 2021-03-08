@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 89adc283fa9d6edc49536cb9459a479710c94435
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f7edf790e526329dd285d03a31137a26220e52ee
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921162"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018649"
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS を利用した Azure CDN の使用
 ## <a name="what-is-cors"></a>CORS とは
@@ -75,7 +75,7 @@ Microsoft の Azure CDN Standard では、[Standard ルール エンジン](cdn-
 **Akamai の Azure CDN Standard** では、ワイルドカード オリジンを使用せずに複数のオリジンを許可するメカニズムは、[クエリ文字列のキャッシュ](cdn-query-string.md)を使用する方法だけです。 CDN エンドポイントのクエリ文字列設定を有効にしたうえで、許可される各ドメインからの要求について一意のクエリ文字列を使用してください。 これにより、CDN で一意のクエリ文字列ごとに個別のオブジェクトがキャッシュされるようになります。 この手法は最適ではありませんが、CDN でキャッシュされた同じファイルのコピーが複数得られるようになります。  
 
 ### <a name="azure-cdn-premium-from-verizon"></a>Azure CDN Premium from Verizon
-Verizon Premium ルール エンジンを使用する場合、要求の **Origin** ヘッダーを確認するための[ルールを作成](cdn-rules-engine.md)する必要があります。  オリジンが有効である場合、ルールによって、要求で指定されたオリジンが **Access-Control-Allow-Origin** ヘッダーに設定されます。  **Origin** ヘッダーで指定されたオリジンが許可されない場合、ルールによって **Access-Control-Allow-Origin** ヘッダーが省略されます。その結果、ブラウザーは要求を拒否します。 
+Verizon Premium ルール エンジンを使用する場合、要求の **Origin** ヘッダーを確認するための [ルールを作成](./cdn-verizon-premium-rules-engine.md)する必要があります。  オリジンが有効である場合、ルールによって、要求で指定されたオリジンが **Access-Control-Allow-Origin** ヘッダーに設定されます。  **Origin** ヘッダーで指定されたオリジンが許可されない場合、ルールによって **Access-Control-Allow-Origin** ヘッダーが省略されます。その結果、ブラウザーは要求を拒否します。 
 
 Premium ルール エンジンを使用してこれを行う方法は 2 つあります。 どちらの場合でも、ファイルの配信元サーバーからの **Access-Control-Allow-Origin** ヘッダーは無視され、CDN のルール エンジンが、許可される CORS オリジンを完全に管理します。
 
@@ -91,7 +91,7 @@ https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.co
 > 
 > 
 
-正規表現に一致すると、ルールによって、オリジンの **Access-Control-Allow-Origin** ヘッダーが (存在する場合)、要求の送信元のオリジンに置き換えられます。  **Access-Control-Allow-Methods**などのその他の CORS ヘッダーを追加することもできます。
+正規表現に一致すると、ルールによって、オリジンの **Access-Control-Allow-Origin** ヘッダーが (存在する場合)、要求の送信元のオリジンに置き換えられます。  **Access-Control-Allow-Methods** などのその他の CORS ヘッダーを追加することもできます。
 
 ![Rules example with regular expression](./media/cdn-cors/cdn-cors-regex.png)
 
@@ -103,7 +103,4 @@ https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.co
 > [!TIP]
 > 上記の例では、ワイルドカード文字 * を使うことで、HTTP と HTTPS の両方を照合するようにルール エンジンに指示しています。
 > 
-> 
-
-
-
+>

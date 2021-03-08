@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 1beb2065f1823135981545e42d499c5429b87c0f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 71c73fec4f559b34b097556243617636acd77480
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031613"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673269"
 ---
 # <a name="tutorial-configure-active-geo-replication-and-failover-in-the-azure-portal-azure-sql-database"></a>チュートリアル:Azure portal でアクティブ geo レプリケーションとフェールオーバーを構成する (Azure SQL Database)
 
@@ -35,7 +35,7 @@ Azure Portal を使ってアクティブ geo レプリケーションを構成�
 * Azure SQL Database 内のデータベース:別の地理的リージョンにレプリケートするプライマリ データベースです。
 
 > [!Note]
-> Azure portal を使用する場合は、プライマリと同じサブスクリプション内にのみセカンダリ データベースを作成できます。 別のサブスクリプション内にセカンダリ データベースが必要な場合、[データベースの作成の REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) または [ALTER DATABASE Transact-SQL API](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql) を使用します。
+> Azure portal を使用する場合は、プライマリと同じサブスクリプション内にのみセカンダリ データベースを作成できます。 別のサブスクリプション内にセカンダリ データベースが必要な場合、[データベースの作成の REST API](/rest/api/sql/databases/createorupdate) または [ALTER DATABASE Transact-SQL API](/sql/t-sql/statements/alter-database-transact-sql) を使用します。
 
 ## <a name="add-a-secondary-database"></a>セカンダリ データベースの追加
 
@@ -55,12 +55,12 @@ Azure Portal を使ってアクティブ geo レプリケーションを構成�
     ![geo レプリケーションの構成](./media/active-geo-replication-configure-portal/configure-geo-replication.png)
 3. サーバーと、セカンダリ データベースの価格レベルを選択または構成します。
 
-    ![セカンダリ データベースの構成](./media/active-geo-replication-configure-portal/create-secondary.png)
+    ![セカンダリ フォームの作成](./media/active-geo-replication-configure-portal/create-secondary.png)
 4. 必要に応じて、以下のようにセカンダリ データベースをエラスティック プールに追加できます。 プールにセカンダリ データベースを作成するには、 **[エラスティック プール]** をクリックし、ターゲット サーバー上でプールを選択します。 プールは、ターゲット サーバーに既に存在する必要があります。 このワークフローでは、プールを作成できません。
 5. **[作成]** をクリックして、セカンダリ データベースを追加します。
 6. セカンダリ データベースが作成され、シード処理が始まります。
 
-    ![セカンダリ データベースの構成](./media/active-geo-replication-configure-portal/seeding0.png)
+    ![セカンダリ マップ](./media/active-geo-replication-configure-portal/seeding0.png)
 7. シード処理が完了すると、セカンダリ データベースの状態が表示されます。
 
     ![シード処理の完了](./media/active-geo-replication-configure-portal/seeding-complete.png)

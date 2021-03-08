@@ -4,16 +4,16 @@ description: この記事では、Runbook の完了状態に基づいてメト�
 services: automation
 ms.date: 08/10/2020
 ms.topic: article
-ms.openlocfilehash: 8767687f0b72d3469bef570770ac81fa8300097f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 3a52824a7030d78647d8a664819f439d92d7296d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055932"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593947"
 ---
 # <a name="monitor-runbooks-with-metric-alerts"></a>メトリック アラートによる Runbook の監視
 
-この記事では、Runbook の完了状態に基づいて[メトリック アラート](../azure-monitor/platform/alerts-metric-overview.md)を設定する方法について説明します。
+この記事では、Runbook の完了状態に基づいて[メトリック アラート](../azure-monitor/alerts/alerts-metric-overview.md)を設定する方法について説明します。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -40,7 +40,7 @@ ms.locfileid: "88055932"
    > [!NOTE]
    > **[Runbook 名]** ディメンションに名前を指定しない場合、状態基準を満たす Runbook (隠しシステム Runbook を含む) があると、アラートが表示されます。
 
-    たとえば、Runbook から "_失敗_" 状態が返されたときにアラートするには、Runbook 名の指定に加えて、 **[状態]** ディメンションに対してカスタム ディメンション値**失敗**を追加します。
+    たとえば、Runbook から "_失敗_" 状態が返されたときにアラートするには、Runbook 名の指定に加えて、 **[状態]** ディメンションに対してカスタム ディメンション値 **失敗** を追加します。
 
     :::image type="content" source="./media/automation-alert-metric/specify-dimension-custom-value.png" alt-text="カスタム ディメンション値を指定する" border="false":::
 
@@ -52,7 +52,7 @@ ms.locfileid: "88055932"
 
 ### <a name="define-the-action-to-take"></a>実行するアクションを定義する
 
-1. **[アクション グループ]** で、 **[Specify action group]\(アクション グループの指定\)** をクリックします。 アクション グループとは、複数のアラートで使用できるアクションのグループです。 アクションには、電子メール通知、Runbook、webhook などがありますが、これらに限定されるわけではありません。 アクション グループの詳細と、電子メール通知を送信するアクション グループを作成する手順については、[アクショングループの作成と管理](../azure-monitor/platform/action-groups.md)に関する記事を参照してください。
+1. **[アクション グループ]** で、 **[Specify action group]\(アクション グループの指定\)** をクリックします。 アクション グループとは、複数のアラートで使用できるアクションのグループです。 アクションには、電子メール通知、Runbook、webhook などがありますが、これらに限定されるわけではありません。 アクション グループの詳細と、電子メール通知を送信するアクション グループを作成する手順については、[アクショングループの作成と管理](../azure-monitor/alerts/action-groups.md)に関する記事を参照してください。
 
 ### <a name="define-alert-details"></a>アラートの詳細を定義する
 

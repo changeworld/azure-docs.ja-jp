@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 53309023a838f4b256327a37866408f556c81d29
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: ac87d5040cd572635d81be51308f48a57ddd38e3
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924158"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335470"
 ---
 ::: zone target="docs"
 
@@ -119,7 +119,7 @@ ms.locfileid: "87924158"
 2. デバイスの MGMT ポートに接続し、https\://192.168.100.10 のローカル Web UI にアクセスします。 デバイスを起動してから最大 5 分かかることがあります。
 3. **[詳細]** をクリックしてから **[Web ページへ移動]** をクリックします。
 
-   ![ローカル Web UI への接続](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 
+   ![ローカル Web UI への接続](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png)
 
 4. ローカル Web UI の **[サインイン]** ページが表示されます。 デバイスのシリアル番号が、ポータル UI とローカル Web UI で一致することを確認します。 デバイスはこの時点でロックされます。
 5. [Azure Portal](https://portal.azure.com) にサインインします。
@@ -145,7 +145,7 @@ ms.locfileid: "87924158"
 
 ## <a name="connect-your-device"></a>ご利用のデバイスを接続する
 
-1. デバイスのパスワードを取得するには、[Azure Portal](https://portal.azure.com) で **[全般] > [デバイスの詳細]** に移動します。
+1. デバイスのパスワードを取得するには、 [Azure Portal](https://portal.azure.com) で **[全般] > [デバイスの詳細]** に移動します。
 2. Data Box に接続するために使用するコンピューターのイーサネット アダプターを、静的 IP アドレス 192.168.100.5、サブネット 255.255.255.0 で構成します。 `https://192.168.100.10` からデバイスのローカル Web UI にアクセスします。 デバイスを起動してから接続するまで最大 5 分かかることがあります。 
 3. Azure portal からパスワードを使用してサインインします。 Web サイトのセキュリティ証明書に問題があることを示すエラーが表示されます。 ブラウザー固有の手順に従い Web ページに進みます。
 4. 既定では、10 Gbps のデータ インターフェイス(または 1 Gbps) のネットワーク設定は、DHCP として構成されます。 必要に応じて、このインターフェイスを静的インターフェイスとして構成し、IP アドレスを入力することができます。 

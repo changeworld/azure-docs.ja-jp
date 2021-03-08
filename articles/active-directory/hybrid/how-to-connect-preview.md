@@ -16,19 +16,19 @@ ms.date: 05/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bb7305fe8ee96697c5c8b2172e32a2a97e5bd6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b543cf4655d0b961a144e9180385a532ae4216d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358431"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89657107"
 ---
 # <a name="more-details-about-features-in-preview"></a>プレビュー段階の機能の詳細
 このトピックでは、現在プレビュー段階の機能を使用する方法について説明します。
 
 ## <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect 同期 V2 エンドポイント API (パブリック プレビュー) 
 
-Microsoft がデプロイした Azure AD Connect 用の新しいエンドポイント (API) では、Azure Active Directory に対する同期サービス操作のパフォーマンスが向上しています。 新しい V2 エンドポイントを利用すると、Azure AD に対するエクスポートとインポートのパフォーマンスが明らかに向上していることがわかるでしょう。 この新しいエンドポイントでは、メンバーが最大 250,000 のグループの同期もサポートされています。 また、このエンドポイントを使用することで、グループ書き戻しが有効になっているとき、メンバーシップの上限なしで、オンプレミス Active Directory に O365 統一グループを書き戻すことができます。   詳細については、「[Azure AD Connect 同期 V2 エンドポイント API (パブリック プレビュー)](how-to-connect-sync-endpoint-api-v2.md)」を参照してください。
+Microsoft がデプロイした Azure AD Connect 用の新しいエンドポイント (API) では、Azure Active Directory に対する同期サービス操作のパフォーマンスが向上しています。 新しい V2 エンドポイントを利用すると、Azure AD に対するエクスポートとインポートのパフォーマンスが明らかに向上していることがわかるでしょう。 この新しいエンドポイントでは、メンバーが最大 250,000 のグループの同期もサポートされています。 また、グループ書き戻しが有効になっている場合は、このエンドポイントを使用することで、メンバーシップの上限なしで、オンプレミスの Active Directory に Microsoft 365 統一グループを書き戻すことができます。 詳細については、「[Azure AD Connect 同期 V2 エンドポイント API (パブリック プレビュー)](how-to-connect-sync-endpoint-api-v2.md)」を参照してください。
 
 ## <a name="user-writeback"></a>ユーザーの書き戻し
 > [!IMPORTANT]

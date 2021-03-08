@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 9371feb527bbb2d94d43072bb8a44a6705b45055
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5881d03603002cc8d5bef1680083f6b4145bc77f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280224"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526689"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) に移行する
 
@@ -21,7 +21,7 @@ ms.locfileid: "87280224"
 * [可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)によってサポートされている AKS クラスターの [Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md) への移行
 * [Standard SKU ロードバランサー](./load-balancer-standard.md)の使用への AKS クラスターの移行
 * [2020 年 1 月 31 日に廃止される Azure Container Service (ACS)](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/) から AKS への移行
-* [AKS エンジン](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)から AKS への移行
+* [AKS エンジン](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)から AKS への移行
 * Azure 以外に基づく Kubernetes クラスターから AKS への移行
 * 既存のリソースを別のリージョンに移動する
 
@@ -89,7 +89,7 @@ az aks create \
 
 IP を使い切らないようにするには、[ネットワーク クォータ](../azure-portal/supportability/networking-quota-requests.md)の増量を要求することが必要になる場合があります。 詳細については、[AKS のネットワークと IP 範囲](./configure-kubenet.md)に関するページを参照してください。
 
-詳細については、[Azure サブスクリプションとサービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md) に関する記事を参照してください。 現在のクォータを確認するには、Azure portal で[サブスクリプション ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)に移動し、サブスクリプションを選択して **[使用量 + クォータ]** を選択します。
+詳細については、[Azure サブスクリプションとサービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md) に関する記事を参照してください。 現在のクォータを確認するには、Azure portal で [サブスクリプション ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)に移動し、サブスクリプションを選択して **[使用量 + クォータ]** を選択します。
 
 ## <a name="high-availability-and-business-continuity"></a>高可用性とビジネス継続性
 
@@ -132,7 +132,7 @@ Azure Managed Disks を使用する場合は、どの VM にも接続されて�
 * ライブ トラフィックを新しい AKS クラスターに送ります。
 * 古いクラスターを切断します。
 
-共有を空にして開始し、ソース データのコピーを作成したい場合は、[`az storage file copy`](/cli/azure/storage/file/copy?view=azure-cli-latest) コマンドを使用してデータを移行できます。
+共有を空にして開始し、ソース データのコピーを作成したい場合は、[`az storage file copy`](/cli/azure/storage/file/copy) コマンドを使用してデータを移行できます。
 
 
 #### <a name="migrating-persistent-volumes"></a>永続ボリュームの移行
@@ -159,7 +159,7 @@ Azure Managed Disks を使用する場合は、どの VM にも接続されて�
 
 ### <a name="deployment-of-your-cluster-configuration"></a>クラスター構成のデプロイ
 
-既存の継続的インテグレーション (CI) および継続的配置 (CD) パイプラインを使用して、既知の正常な構成を AKS にデプロイすることをお勧めします。 Azure Pipelines を使用すると、[アプリケーションをビルドして AKS にデプロイ](/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)できます。 既存のデプロイ タスクを複製し、`kubeconfig` が新しい AKS クラスターを指すようにします。
+既存の継続的インテグレーション (CI) および継続的配置 (CD) パイプラインを使用して、既知の正常な構成を AKS にデプロイすることをお勧めします。 Azure Pipelines を使用すると、[アプリケーションをビルドして AKS にデプロイ](/azure/devops/pipelines/ecosystems/kubernetes/aks-template)できます。 既存のデプロイ タスクを複製し、`kubeconfig` が新しい AKS クラスターを指すようにします。
 
 それが不可能な場合は、既存の Kubernetes クラスターからリソース定義をエクスポートし、AKS にそれを適用します。 オブジェクトをエクスポートするには `kubectl` を使用できます。
 

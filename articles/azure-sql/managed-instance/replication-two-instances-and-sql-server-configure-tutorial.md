@@ -1,21 +1,21 @@
 ---
 title: Azure SQL Managed Instance と SQL Server の間にトランザクション レプリケーションを構成する
-description: このチュートリアルでは、Azure VM 上のパブリッシャー マネージド インスタンス、ディストリビューター マネージド インスタンス、および SQL Server サブスクライバーの間のレプリケーションと、プライベート DNS ゾーンや VPN ピアリングなどの必要なネットワーク コンポーネントを構成します。
+description: このチュートリアルでは、Azure VM 上のパブリッシャー マネージド インスタンス、ディストリビューター マネージド インスタンス、SQL Server サブスクライバーの間のレプリケーションと、プライベート DNS ゾーンや VNet ピアリングなどの必要なネットワーク コンポーネントを構成します。
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.topic: tutorial
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: carlrab
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 11/21/2019
-ms.openlocfilehash: d89bc33b0ddd0793a3c55dbd64bef9678bd723e7
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: d2b45f5b51f4656294632aa46f679a7a09c06ed3
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920145"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593928"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>チュートリアル:Azure SQL Managed Instance と SQL Server の間にトランザクション レプリケーションを構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "87920145"
 
 
 > [!NOTE]
-> この記事では、Azure SQL Managed Instance での[トランザクション レプリケーション](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)の使用方法について説明します。 これは、個々のインスタンスを完全に読み取れるレプリカを作成する Azure SQL Managed Instance の機能である、[フェールオーバー グループ](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)とは無関係です。 [フェールオーバー グループを使用してトランザクション レプリケーション](replication-transactional-overview.md#with-failover-groups)を構成する場合は、追加の考慮事項があります。
+> この記事では、Azure SQL Managed Instance での[トランザクション レプリケーション](/sql/relational-databases/replication/transactional/transactional-replication)の使用方法について説明します。 これは、個々のインスタンスを完全に読み取れるレプリカを作成する Azure SQL Managed Instance の機能である、[フェールオーバー グループ](../database/auto-failover-group-overview.md)とは無関係です。 [フェールオーバー グループを使用してトランザクション レプリケーション](replication-transactional-overview.md#with-failover-groups)を構成する場合は、追加の考慮事項があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,10 +48,10 @@ ms.locfileid: "87920145"
 - 同じ仮想ネットワーク内に 2 つのマネージド インスタンスをデプロイした経験。
 - オンプレミスまたは Azure VM 上の SQL Server サブスクライバー。 このチュートリアルでは Azure VM を使用します。  
 - [SQL Server Management Studio (SSMS) 18.0 以降](/sql/ssms/download-sql-server-management-studio-ssms)。
-- 最新バージョンの [Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0)。
+- 最新バージョンの [Azure PowerShell](/powershell/azure/install-az-ps)。
 - ポート 445 および 1433 は、Azure ファイアウォールと Windows ファイアウォールの両方で SQL トラフィックを許可します。
 
-## <a name="1---create-the-resource-group"></a>1 - リソース グループを作成する
+## <a name="create-the-resource-group"></a>リソース グループを作成する
 
 次の PowerShell コード スニペットを使用して、新しいリソース グループを作成します。
 
@@ -64,7 +64,7 @@ $Location = "East US 2"
 New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 ```
 
-## <a name="2---create-two-managed-instances"></a>2 - マネージド インスタンスを 2 つ作成する
+## <a name="create-two-managed-instances"></a>マネージド インスタンスを 2 つ作成する
 
 [Azure portal](https://portal.azure.com) を使用して、この新しいリソース グループ内に 2 つのマネージド インスタンスを作成します。
 
@@ -76,9 +76,9 @@ New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 マネージド インスタンスの作成の詳細については、[ポータルでのマネージド インスタンスの作成](instance-create-quickstart.md)に関するページを参照してください。
 
   > [!NOTE]
-  > わかりやすくするため、また最も一般的な構成であるため、このチュートリアルでは、ディストリビューター マネージド インスタンスをパブリッシャーと同じ仮想ネットワーク内に配置することを推奨しています。 ただし、別の仮想ネットワークにディストリビューターを作成することもできます。 そのためには、パブリッシャーとディストリビューターの仮想ネットワークの間に VPN ピアリングを構成してから、ディストリビューターとサブスクライバーの仮想ネットワークの間に VPN ピアリングを構成する必要があります。
+  > わかりやすくするため、また最も一般的な構成であるため、このチュートリアルでは、ディストリビューター マネージド インスタンスをパブリッシャーと同じ仮想ネットワーク内に配置することを推奨しています。 ただし、別の仮想ネットワークにディストリビューターを作成することもできます。 そのためには、パブリッシャーとディストリビューターの仮想ネットワークの間に VNet ピアリングを構成してから、ディストリビューターとサブスクライバーの仮想ネットワークの間に VNet ピアリングを構成する必要があります。
 
-## <a name="3---create-a-sql-server-vm"></a>3 - SQL Server の VM を作成する
+## <a name="create-a-sql-server-vm"></a>SQL Server VM の作成
 
 [Azure portal](https://portal.azure.com) を使用して SQL Server の仮想マシンを作成します。 SQL Server の仮想マシンは次のように設定する必要があります。
 
@@ -89,9 +89,9 @@ New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 
 Azure に SQL Server の VM をデプロイする方法について詳しくは、[SQL Server VM の作成](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)に関するページを参照してください。
 
-## <a name="4---configure-vpn-peering"></a>4 - VPN ピアリングを構成する
+## <a name="configure-vnet-peering"></a>VNet ピアリングの構成
 
-VPN ピアリングを構成して、2 つのマネージド インスタンスの仮想ネットワークと SQL Server の仮想ネットワークの間の通信を有効にします。 これを行うには、次の PowerShell コード スニペットを使用します。
+VNet ピアリングを構成して、2 つのマネージド インスタンスの仮想ネットワークと SQL Server の仮想ネットワークの間の通信を有効にします。 これを行うには、次の PowerShell コード スニペットを使用します。
 
 ```powershell-interactive
 # Set variables
@@ -110,13 +110,13 @@ $virtualNetwork1 = Get-AzVirtualNetwork `
   -ResourceGroupName $resourceGroup `
   -Name $subvNet  
 
-# Configure VPN peering from publisher to subscriber
+# Configure VNet peering from publisher to subscriber
 Add-AzVirtualNetworkPeering `
   -Name $pubsubName `
   -VirtualNetwork $virtualNetwork1 `
   -RemoteVirtualNetworkId $virtualNetwork2.Id
 
-# Configure VPN peering from subscriber to publisher
+# Configure VNet peering from subscriber to publisher
 Add-AzVirtualNetworkPeering `
   -Name $subpubName `
   -VirtualNetwork $virtualNetwork2 `
@@ -136,11 +136,11 @@ Get-AzVirtualNetworkPeering `
 
 ```
 
-VPN ピアリングを確立した後、SQL Server で SQL Server Management Studio (SSMS) を起動し、両方のマネージド インスタンスに接続して、接続をテストします。 SSMS を使用してマネージド インスタンスに接続する方法の詳細については、[SSMS を使用した SQL Managed Instance への接続](point-to-site-p2s-configure.md#connect-with-ssms)に関するページを参照してください。
+VNet ピアリングを確立した後、SQL Server で SQL Server Management Studio (SSMS) を起動し、両方のマネージド インスタンスに接続して、接続をテストします。 SSMS を使用してマネージド インスタンスに接続する方法の詳細については、[SSMS を使用した SQL Managed Instance への接続](point-to-site-p2s-configure.md#connect-with-ssms)に関するページを参照してください。
 
 ![マネージド インスタンスへの接続をテストする](./media/replication-two-instances-and-sql-server-configure-tutorial/test-connectivity-to-mi.png)
 
-## <a name="5---create-a-private-dns-zone"></a>5 - プライベート DNS ゾーンを作成する
+## <a name="create-a-private-dns-zone"></a>プライベート DNS ゾーンの作成
 
 プライベート DNS ゾーンを使用すると、マネージド インスタンスと SQL Server の間の DNS ルーティングが可能になります。
 
@@ -159,7 +159,7 @@ VPN ピアリングを確立した後、SQL Server で SQL Server Management Stu
 
 ### <a name="create-an-a-record"></a>A レコードを作成する
 
-1. 新しい**プライベート DNS ゾーン**に移動して、 **[概要]** を選択します。
+1. 新しい **プライベート DNS ゾーン** に移動して、 **[概要]** を選択します。
 1. **[+ レコード セット]** を選択して、新しい A レコードを作成します。
 1. SQL Server VM の名前と、プライベート内部 IP アドレスを指定します。
 
@@ -169,7 +169,7 @@ VPN ピアリングを確立した後、SQL Server で SQL Server Management Stu
 
 ### <a name="link-the-virtual-network"></a>仮想ネットワークのリンク
 
-1. 新しい**プライベート DNS ゾーン**に移動して、 **[仮想ネットワーク リンク]** を選択します。
+1. 新しい **プライベート DNS ゾーン** に移動して、 **[仮想ネットワーク リンク]** を選択します。
 1. **[+ 追加]** を選択します。
 1. リンクの名前を指定します (例: `Pub-link`)。
 1. ドロップダウンからサブスクリプションを選択し、パブリッシャー マネージド インスタンスの仮想ネットワークを選択します。
@@ -180,9 +180,9 @@ VPN ピアリングを確立した後、SQL Server で SQL Server Management Stu
 1. **[OK]** を選択して、仮想ネットワークをリンクします。
 1. 以上の手順を繰り返し、`Sub-link` のような名前でサブスクライバー仮想ネットワークのリンクを追加します。
 
-## <a name="6---create-an-azure-storage-account"></a>6 - Azure ストレージ アカウントを作成する
+## <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
 
-作業ディレクトリ用に [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)し、そのストレージ アカウント内に[ファイル共有](../../storage/files/storage-how-to-create-file-share.md)を作成します。
+作業ディレクトリ用に [Azure ストレージ アカウントを作成](../../storage/common/storage-account-create.md#create-a-storage-account)し、そのストレージ アカウント内に[ファイル共有](../../storage/files/storage-how-to-create-file-share.md)を作成します。
 
 `\\storage-account-name.file.core.windows.net\file-share-name` の形式のファイル共有パスをコピーします。
 
@@ -194,7 +194,7 @@ VPN ピアリングを確立した後、SQL Server で SQL Server Management Stu
 
 詳細については、[ストレージ アカウントのアクセス キーの管理](../../storage/common/storage-account-keys-manage.md)に関するページを参照してください。
 
-## <a name="7---create-a-database"></a>7 - データベースを作成する
+## <a name="create-a-database"></a>データベースを作成する
 
 パブリッシャー マネージド インスタンス上に新しいデータベースを作成します。 これを行うには、次のステップに従います。
 
@@ -210,7 +210,7 @@ GO
 -- Drop database if it exists
 IF EXISTS (SELECT * FROM sys.sysdatabases WHERE name = 'ReplTutorial')
 BEGIN
-    DROP DATABASE ReplTutorial
+    DROP DATABASE ReplTutorial
 END
 GO
 
@@ -242,7 +242,7 @@ SELECT * FROM ReplTest
 GO
 ```
 
-## <a name="8---configure-distribution"></a>8 - ディストリビューションを構成する
+## <a name="configure-distribution"></a>ディストリビューションを構成する
 
 接続を確立し、サンプル データベースを作成したら、`sql-mi-distributor` マネージド インスタンスでディストリビューションを構成できます。 これを行うには、次のステップに従います。
 
@@ -277,13 +277,13 @@ GO
    EXEC sys.sp_adddistributor @distributor = 'sql-mi-distributor.b6bf57.database.windows.net', @password = '<distributor_admin_password>'
    ```
 
-## <a name="9---create-the-publication"></a>9 - パブリケーションを作成する
+## <a name="create-the-publication"></a>パブリケーションの作成
 
 ディストリビューションの構成が済むと、パブリケーションを作成できるようになります。 これを行うには、次のステップに従います。
 
 1. SQL Server 上で SQL Server Management Studio を起動します。
 1. `sql-mi-publisher` マネージド インスタンスに接続します。
-1. **オブジェクト エクスプローラー**で **[レプリケーション]** ノードを展開し、 **[ローカル パブリケーション]** フォルダーを右クリックします。 **[新しいパブリケーション...]** を選択します。
+1. **オブジェクト エクスプローラー** で **[レプリケーション]** ノードを展開し、 **[ローカル パブリケーション]** フォルダーを右クリックします。 **[新しいパブリケーション...]** を選択します。
 1. **[次へ]** を選択して、ようこそページの後まで移動します。
 1. **[パブリケーション データベース]** ページで、前に作成した `ReplTutorial` データベースを選択します。 **[次へ]** を選択します。
 1. **[パブリケーションの種類]** ページで、 **[トランザクション パブリケーション]** を選択します。 **[次へ]** を選択します。
@@ -296,9 +296,9 @@ GO
 
 1. **[ウィザードのアクション]** ページで **[パブリケーションを作成する]** を選択し、後のためにこのスクリプトを保存する場合は **[パブリケーションを作成するためのステップを含むスクリプト ファイルを生成する]** を選択します (省略可能)。
 1. **[ウィザードの完了]** ページで、パブリケーションに `ReplTest` という名前を指定し、 **[次へ]** を選択してパブリケーションを作成します。
-1. パブリケーションが作成されたら、**オブジェクト エクスプローラー**の **[レプリケーション]** ノードを更新し、 **[ローカル パブリケーション]** を展開して、新しいパブリケーションを確認します。
+1. パブリケーションが作成されたら、**オブジェクト エクスプローラー** の **[レプリケーション]** ノードを更新し、 **[ローカル パブリケーション]** を展開して、新しいパブリケーションを確認します。
 
-## <a name="10---create-the-subscription"></a>10 - サブスクリプションを作成する
+## <a name="create-the-subscription"></a>サブスクリプションを作成する
 
 パブリケーションを作成した後は、サブスクリプションを作成できます。 これを行うには、次のステップに従います。
 
@@ -331,7 +331,7 @@ exec sp_addpushsubscription_agent
 GO
 ```
 
-## <a name="11---test-replication"></a>11 - レプリケーションをテストする
+## <a name="test-replication"></a>レプリケーションのテスト
 
 レプリケーションが構成されたら、パブリッシャーに新しい項目を挿入し、変更がサブスクライバーに反映されることを確認することでテストできます。
 
@@ -393,7 +393,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 - サブスクライバーを作成するときに DNS 名を使用したことを確認します。
 - 仮想ネットワークがプライベート DNS ゾーンで正しくリンクされていることを確認します。
 - A レコードが正しく構成されていることを確認します。
-- VPN ピアリングが正しく構成されていることを確認します。
+- VNet ピアリングが正しく構成されていることを確認します。
 
 ### <a name="no-publications-to-which-you-can-subscribe"></a>サブスクライブできるパブリケーションがありません
 
@@ -414,7 +414,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 - [脅威の検出](threat-detection-configure.md)
 - [動的データ マスク](/sql/relational-databases/security/dynamic-data-masking)
 - [行レベルのセキュリティ](/sql/relational-databases/security/row-level-security)
-- [透過的なデータ暗号化 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
+- [透過的なデータ暗号化 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
 ### <a name="sql-managed-instance-capabilities"></a>SQL Managed Instance の機能
 

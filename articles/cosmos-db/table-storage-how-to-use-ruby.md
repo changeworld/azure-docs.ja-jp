@@ -9,14 +9,15 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 2229eea7b91168507ea9568a1e53930cf983b1df
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 2d0c8433fff58854cb77a4e806058eae1937e71b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171934"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101121"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Ruby から Azure Table Storage と Azure Cosmos DB Table API を使用する方法
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
@@ -149,7 +150,7 @@ result = azure_table_service.get_entity("testtable", "test-partition-key",
 
 ## <a name="query-a-set-of-entities"></a>エンティティのセットを照会する
 
-テーブル内のエンティティのセットを照会するには、クエリ ハッシュ オブジェクトを作成し、**query_entities()** メソッドを使用します。 次の例では、同じ **PartitionKey**を持つエンティティをすべて取得します。
+テーブル内のエンティティのセットを照会するには、クエリ ハッシュ オブジェクトを作成し、**query_entities()** メソッドを使用します。 次の例では、同じ **PartitionKey** を持つエンティティをすべて取得します。
 
 ```ruby
 query = { :filter => "PartitionKey eq 'test-partition-key'" }

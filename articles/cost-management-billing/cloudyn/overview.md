@@ -3,33 +3,29 @@ title: Azure での Cloudyn の概要
 description: Cloudyn は、Azure や他のクラウド リソースを使用する際に役立つマルチクラウド コスト管理ソリューションです。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/12/2020
+ms.date: 10/23/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3acc13ca535808f14cb01d50e38f6bd4d12902fc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 74d171a4c694f6d720ec3882f97d18e43aecc63f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684441"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543289"
 ---
 # <a name="what-is-the-cloudyn-service"></a>Cloudyn サービスとは
 
-Microsoft の子会社である Cloudyn によって、Azure リソースおよび AWS や Google などの他のクラウド プロバイダーにおけるクラウドの使用状況と支出を追跡できます。 わかりやすいダッシュボードのレポートは、コストの割り当てとショーバック/チャージバックに役立ちます。 Cloudyn を使うと、使用率が低いリソースを識別して管理、調整することにより、クラウドの支出を最適化できます。
+Microsoft の子会社である Cloudyn によって、Azure リソースにおけるクラウドの使用状況と支出を追跡できます。 わかりやすいダッシュボードのレポートは、コストの割り当てとショーバック/チャージバックに役立ちます。 Cloudyn を使うと、使用率が低いリソースを識別して管理、調整することにより、クラウドの支出を最適化できます。
 
 入門ビデオを視聴するには、「[Azure Cloudyn の概要](https://azure.microsoft.com/resources/videos/azure-cost-management-overview-and-demo/)」を参照してください。
  
 Azure Cost Management には Cloudyn と同様の機能があります。 Azure Cost Management は、Azure のネイティブのコスト管理ソリューションです。 このソリューションにより、コストの分析、予算の作成と管理、データのエクスポート、最適化のための推奨事項の検討と対処を行うことで、費用を節約することができます。 詳細については、「[Azure Cost Management](../cost-management-billing-overview.md)」を参照してください。
  
 [!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
-
-ビジネス ニーズに基づいて、Azure Cost Management または Cloudyn のどちらかを使用する必要がある場合の推奨事項を確認するには、[Azure Cost Management と Cloudyn のビデオ](https://www.youtube.com/watch?v=15DzKPMBRxM)をご覧ください。
- 
->[!VIDEO https://www.youtube.com/embed/15DzKPMBRxM]
 
 ## <a name="monitor-usage-and-spending"></a>使用状況と支出の監視
 
@@ -56,6 +52,4 @@ AWS 予約済みインスタンスをプロビジョニングした場合、最�
 
 ## <a name="next-steps"></a>次のステップ
 
-Cloudyn について理解できたので、次はクラウド環境を登録して、データの探索を始めてみましょう。
-
-- [CSP パートナー プログラムに登録してコスト データを確認する](quick-register-csp.md)
+- [使用状況とコストを確認する](tutorial-review-usage.md)

@@ -1,19 +1,16 @@
 ---
 title: Web ブラウザーを使用して Apache Hadoop クラスターを作成する - Azure HDInsight
 description: HDInsight 上での Apache Hadoop、Apache HBase、Apache Storm、または Apache Spark クラスターの作成について説明します。 Web ブラウザーと Azure portal を使用します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
-ms.openlocfilehash: 1ba2f5e4b88ae6ae0ed15dbfbbc4fa5c55c45a77
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: c68d342cf21d69fa97ba3d5171ba596662fd845f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874029"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945817"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal を使用して HDInsight で Linux ベースのクラスターを作成する
 
@@ -52,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |クラスター名|グローバルに一意の名前を入力します。|
 |リージョン|ドロップダウン リストから、クラスターの作成先となるリージョンを選択します。|
 |クラスターの種類|**[クラスターの種類の選択]** をクリックして、一覧を開きます。 一覧から、目的のクラスターの種類を選択します。 HDInsight クラスターには、さまざまな種類があります。 それぞれに対応するワークロードやテクノロジがあり、それに合わせてクラスターが調整されます。 複数の種類を組み合わせたクラスターを作成する方法はサポートされていません。|
-|Version|ドロップダウン リストから**バージョン**を選択します。 どれを選択すべきかわからない場合は、既定のバージョンを使用します。 詳細については、「 [HDInsight クラスターのバージョン](hdinsight-component-versioning.md)」をご覧ください。|
+|Version|ドロップダウン リストから **バージョン** を選択します。 どれを選択すべきかわからない場合は、既定のバージョンを使用します。 詳細については、「 [HDInsight クラスターのバージョン](hdinsight-component-versioning.md)」をご覧ください。|
 |クラスター ログイン ユーザー名|ユーザー名を指定します。既定値は **admin** です。|
 |クラスター ログイン パスワード|パスワードを指定します。|
 |クラスター ログイン パスワードを確認する|パスワードを再入力します。|
@@ -64,7 +61,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="storage"></a>ストレージ
 
 > [!WARNING] 
-> 2020 年 6 月 15 日以降、HDInsight を使用して新しいサービス プリンシパルを作成することはできません。 Azure Active Directory 使用した[サービス プリンシパルと証明書の作成](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)に関する記事を参照してください。
+> 2020 年 6 月 15 日以降、HDInsight を使用して新しいサービス プリンシパルを作成することはできません。 Azure Active Directory 使用した[サービス プリンシパルと証明書の作成](../active-directory/develop/howto-create-service-principal-portal.md)に関する記事を参照してください。
 
 ![HDInsight でのクラスター ストレージの作成](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Azure portal での新しいクラスターの作成 - ストレージ")
 
@@ -73,8 +70,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 **[プライマリ ストレージの種類]** ドロップダウン リストから、既定のストレージの種類を選択します。 後で入力するフィールドは、選択内容によって異なります。 **Azure Storage** の場合:
 
 1. **[選択方法]** については、 **[一覧から選択する]** または **[アクセス キーを使用する]** を選択します。
-    * **[一覧から選択する]** では、ドロップダウン リストからお使いの**プライマリ ストレージ アカウント**を選択するか、 **[新規作成]** を選択します。
-    * **[アクセス キーを使用する]** では、お使いの**ストレージ アカウント名**を入力します。 次に、**アクセス キー**を指定します。
+    * **[一覧から選択する]** では、ドロップダウン リストからお使いの **プライマリ ストレージ アカウント** を選択するか、 **[新規作成]** を選択します。
+    * **[アクセス キーを使用する]** では、お使いの **ストレージ アカウント名** を入力します。 次に、**アクセス キー** を指定します。
 
 1. **[コンテナー]** では、既定値をそのまま使用するか、新しい値を入力します。
 
@@ -99,7 +96,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 |プロパティ |説明 |
 |---|---|
-|Enterprise セキュリティ パッケージ|省略可能:**Enterprise セキュリティ パッケージ**を使用するには、このチェックボックスをオンにします。 詳細については、[Azure Active Directory Domain Services を使用した HDInsight クラスターの Enterprise セキュリティ パッケージを含む構成](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)に関する記事を参照してください。|
+|Enterprise セキュリティ パッケージ|省略可能:**Enterprise セキュリティ パッケージ** を使用するには、このチェックボックスをオンにします。 詳細については、[Azure Active Directory Domain Services を使用した HDInsight クラスターの Enterprise セキュリティ パッケージを含む構成](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)に関する記事を参照してください。|
 |TLS|省略可能:ドロップダウン リストから TLS バージョンを選択します。 詳細については、「[トランスポート層セキュリティ](./transport-layer-security.md)」を参照してください。|
 |仮想ネットワーク|省略可能:ドロップダウン リストから既存の仮想ネットワークとサブネットを選択します。 詳細については、[Azure HDInsight クラスター用の仮想ネットワークのデプロイ計画](hdinsight-plan-virtual-network-deployment.md)に関する記事を参照してください。 その記事には、仮想ネットワークの具体的な構成要件が含まれます。|
 |ディスク暗号化設定|省略可能:暗号化を使用するには、このチェックボックスをオンにします。 詳細については、「[お客様が管理するキー ディスクの暗号化](./disk-encryption.md)」を参照してください。|

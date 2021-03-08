@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/17/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 10/05/2020
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6fa1c14509a558c1f91d07bf9a73a4ecc39e1413
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: ed93944c2a94370250fb75a679c1ac37a2a8418c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89068679"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861155"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Azure Active Directory セルフサービス パスワード リセット (SSPR) のユーザー認証連絡先情報の事前設定
 
@@ -48,16 +48,14 @@ Azure AD Connect で既定の設定を使用する場合、SSPR の認証連絡�
 
 ## <a name="authentication-contact-info"></a>認証の連絡先情報
 
-Azure portal の Azure AD ユーザーの **[認証方法]** ページでは、次のスクリーンショットの例で示すように、グローバル管理者が認証の連絡先情報を手動で設定できます。
+Azure portal の Azure AD ユーザーの **[認証方法]** ページでは、グローバル管理者が認証の連絡先情報を手動で設定できます。 次のスクリーンショットに示すように、 *[使用可能な認証方法]* セクションまたは **[+ 認証方法の追加]** で既存の方法を確認できます。
 
-![Azure AD におけるユーザーの認証の連絡先情報][Contact]
+:::image type="content" source="media/howto-sspr-authenticationdata/user-authentication-contact-info.png" alt-text="Azure portal から認証方法を管理する":::
 
 この認証連絡先情報には、次の考慮事項が適用されます。
 
 * *[電話番号]* フィールドに電話番号が設定され、SSPR ポリシーの *[携帯電話]* が有効になると、その番号がパスワード リセット登録ページに表示され、パスワード リセット ワークフロー中にも表示されます。
-* パスワード リセットには、 *[代替の電話]* フィールドは使用されません。
 * *[電子メール]* フィールドにメール アドレスが設定され、SSPR ポリシーの *[電子メール]* が有効になると、そのメール アドレスがパスワード リセット登録ページに表示され、パスワード リセット ワークフロー中にも表示されます。
-* *[連絡用メール アドレス]* フィールドにメール アドレスが設定され、SSPR ポリシーの *[電子メール]* が有効になると、そのメール アドレスはパスワード リセット登録ページには表示されませんが、パスワード リセット ワークフロー中には表示されます。
 
 ## <a name="security-questions-and-answers"></a>セキュリティの質問と回答
 
@@ -127,7 +125,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 ### <a name="use-powershell-version-2"></a>PowerShell バージョン 2 を使う
 
-始めるには、[Azure AD バージョン 2 PowerShell モジュールをダウンロードしてインストールします](/powershell/module/azuread/?view=azureadps-2.0)。
+始めるには、[Azure AD バージョン 2 PowerShell モジュールをダウンロードしてインストールします](/powershell/module/azuread/)。
 
 `Install-Module` をサポートする PowerShell の最新バージョンから簡単にインストールするには、次のコマンドを実行します。 最初の行では、モジュールが既にインストールされているかどうかを確認しています。
 
@@ -169,5 +167,3 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 
 > [!div class="nextstepaction"]
 > [Azure AD のセルフサービス パスワード リセット を有効にする](tutorial-enable-sspr.md)
-
-[Contact]: ./media/howto-sspr-authenticationdata/user-authentication-contact-info.png "グローバル管理者によるユーザーの認証の連絡先情報の変更"

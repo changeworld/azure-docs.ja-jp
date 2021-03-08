@@ -12,16 +12,18 @@ ms.date: 07/19/2017
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 1d09355993af96e9e0cd334c57174cdaa771b388
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 2064ab7e759798d8934facb8d293e8ac60ec6c82
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118265"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703417"
 ---
 # <a name="single-sign-out-saml-protocol"></a>シングル サインアウトの SAML プロトコル
 
 Azure Active Directory (Azure AD) は、SAML 2.0 の Web ブラウザー シングル サインアウト プロファイルをサポートします。 シングル サインアウトが正常に動作するためには、アプリケーションの **LogoutURL** が、アプリケーションの登録時に Azure AD に明示的に登録されている必要があります。 Azure AD は LogoutURL を使って、サインアウト後のユーザーをリダイレクトします。
+
+Azure AD は、HTTP POST バインディングではなく、リダイレクト バインディング (HTTP GET) をサポートしています。
 
 次の図では、Azure AD のシングル サインアウト プロセスのワークフローを示します。
 
@@ -41,7 +43,7 @@ Azure Active Directory (Azure AD) は、SAML 2.0 の Web ブラウザー シン�
 Azure AD に送信される `LogoutRequest` 要素には、次の属性が必要です。
 
 * `ID` - サインアウト要求を示します。 `ID` の値は、数字以外で始まっている必要があります。 一般的な方法としては、GUID の文字列表現の前に **id** を付加します。
-* `Version` - この要素の値は **2.0**に設定します。 この値は必須です。
+* `Version` - この要素の値は **2.0** に設定します。 この値は必須です。
 * `IssueInstant` - 世界協定時刻 (UTC) の値と[ラウンドトリップ書式 ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings) を含む `DateTime` 文字列です。 Azure AD ではこの型の値が期待されますが、必須ではありません。
 
 ### <a name="issuer"></a>発行者

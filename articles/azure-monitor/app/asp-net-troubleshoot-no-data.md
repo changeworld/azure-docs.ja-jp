@@ -4,12 +4,12 @@ description: Auzre Application Insights にデータが表示されない場合�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 7cf3371dc60f97b8bba61012e87b7b4bd4899aa6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e41b0a9ce1ff86bc6010e12fdf5d3320f303fd87
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936471"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092453"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET、Application Insights for .NET Core
 
@@ -39,8 +39,40 @@ ms.locfileid: "88936471"
 
 * 「 [Status Monitor のトラブルシューティング](./monitor-performance-live-website-now.md#troubleshoot)」を参照してください。
 
+> [!IMPORTANT]
+> 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./sdk-connection-string.md?tabs=net)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
+
+
+## <a name="filenotfoundexception-could-not-load-file-or-assembly-microsoftaspnet-telemetrycorrelation"></a>FileNotFoundException:ファイルまたはアセンブリ Microsoft.AspNet TelemetryCorrelation を読み込めませんでした
+
+このエラーの詳細については、GitHub の問題 1610 (https://github.com/microsoft/ApplicationInsights-dotnet/issues/1610) ) を参照してください。
+
+(2.4) より前の SDK からアップグレードする場合は、`web.config` と `ApplicationInsights.config` に次の変更が適用されていることを確認する必要があります。
+
+1. 1 つではなく 2 つの http モジュール `web.config` には 2 つの http モジュールが必要です。 いくつかのシナリオでは、順序が重要です。
+
+    ``` xml
+    <system.webServer>
+      <modules>
+          <add name="TelemetryCorrelationHttpModule" type="Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule, Microsoft.AspNet.TelemetryCorrelation" preCondition="integratedMode,managedHandler" />
+          <add name="ApplicationInsightsHttpModule" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web" preCondition="managedHandler" />
+      </modules>
+    </system.webServer>
+    ```
+
+2. `RequestTrackingTelemetryModule` に加えて `ApplicationInsights.config` には、次のテレメトリ モジュールが必要です。
+
+    ``` xml
+    <TelemetryModules>
+      <Add Type="Microsoft.ApplicationInsights.Web.AspNetDiagnosticTelemetryModule, Microsoft.AI.Web"/>
+    </TelemetryModules>
+    ```
+
+**_正常にアップグレードできないと、予期しない例外が発生したり、テレメトリが収集されなかったりする可能性があります。_* _
+
+
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Visual Studio に [Application Insights の追加] オプションが表示されない
-*ソリューション エクスプローラーで既存のプロジェクトを右クリックしたときに、Application Insights のオプションが表示されません。*
+_ソリューション エクスプローラーで既存のプロジェクトを右クリックしたときに、Application Insights のオプションが表示されません。*
 
 * このツールでは、一部の種類の .NET プロジェクトがサポートされません。 Web プロジェクトと WCF プロジェクトはサポートされます。 その他の種類のプロジェクト (デスクトップ アプリケーション、サービス アプリケーションなど) では、 [Application Insights SDK を手動でプロジェクトに追加](./windows-desktop.md)できます。
 * [Visual Studio 2013 Update 3 以降](/visualstudio/releasenotes/vs2013-update3-rtm-vs)を使用しているかご確認ください。 これは、Application Insights SDK を提供する Developer Analytics Tools と共に事前インストールされています。
@@ -156,7 +188,7 @@ Application Insights をインストールしているとき、またはログ �
 * すべての Microsoft. ApplicationInsights DLL が Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll と一緒にサーバーにコピーされたことを確認します。
 * ファイアウォールで、[一部の TCP ポートを開く](./ip-addresses.md)ことが必要な場合があります。
 * プロキシを使用して社内ネットワークの外に送信しなければならない場合は、Web.config に [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71)) を設定します。
-* Windows Server 2008:更新プログラム [KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://support.microsoft.com/kb/2600217) がインストールされていることを確認します。
+* Windows Server 2008:更新プログラム [KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://web.archive.org/web/20150129090641/http://support.microsoft.com/kb/2600217) がインストールされていることを確認します。
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>データが表示されていたのに停止しました。
 * データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いてご確認ください。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。 「 [料金プラン](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
@@ -246,7 +278,7 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 
 詳細については、以下を参照してください。
 - [PerfView でのパフォーマンス トレースの記録](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)
-- [Application Insights のイベント ソース](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
+- [Application Insights のイベント ソース](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/ETW)
 
 ## <a name="collect-logs-with-dotnet-trace"></a>dotnet-trace を使用してログを収集する
 

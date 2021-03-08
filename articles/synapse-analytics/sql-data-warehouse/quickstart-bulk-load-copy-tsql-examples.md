@@ -4,30 +4,33 @@ description: データを一括読み込みする認証メカニズムについ�
 services: synapse-analytics
 author: kevinvngo
 ms.service: synapse-analytics
-ms.topic: overview
+ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6f54a8993b602110e35c410338b6f0a51109738f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 1551e85bd45d4d64861b43bf53dd0c155520861f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603882"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673639"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Synapse SQL を使用してデータを安全に読み込む
 
-この記事では、[COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)のセキュリティで保護された認証メカニズムについて説明し、例を示します。 COPY ステートメントは、Synapse SQL でデータを一括読み込みするための最も柔軟で安全な方法です。
+この記事では、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)のセキュリティで保護された認証メカニズムについて説明し、例を示します。 COPY ステートメントは、Synapse SQL でデータを一括読み込みするための最も柔軟で安全な方法です。
 ## <a name="supported-authentication-mechanisms"></a>サポートされている認証メカニズム
 
 次の表は、サポートされている認証方法をファイルの種類別およびストレージ アカウント別にまとめたものです。 これはソース ストレージの場所とエラー ファイルの場所に適用されます。
 
-|                          |                CSV                |              Parquet               |                ORC                 |
-| :----------------------: | :-------------------------------: | :-------------------------------:  | :-------------------------------:  |
-|  **Azure Blob Storage**  | SAS/MSI/サービス プリンシパル/キー/AAD |              SAS/キー               |              SAS/キー               |
-| **Azure Data Lake Gen2** | SAS/MSI/サービス プリンシパル/キー/AAD | SAS (BLOB エンドポイント)/MSI (dfs エンドポイント)/サービス プリンシパル/キー/AAD | SAS (BLOB エンドポイント)/MSI (dfs エンドポイント)/サービス プリンシパル/キー/AAD |
+|                          |                CSV                |                      Parquet                       |                        ORC                         |
+| :----------------------: | :-------------------------------: | :------------------------------------------------: | :------------------------------------------------: |
+|  **Azure Blob Storage**  | SAS/MSI/サービス プリンシパル/キー/AAD |                      SAS/キー                       |                      SAS/キー                       |
+| **Azure Data Lake Gen2** | SAS/MSI/サービス プリンシパル/キー/AAD | SAS (BLOB<sup>1</sup>)/MSI (dfs<sup>2</sup>)/サービス プリンシパル/キー/AAD | SAS (BLOB<sup>1</sup>)/MSI (dfs<sup>2</sup>)/サービス プリンシパル/キー/AAD |
 
+1:この認証方法には、お使いの外部のロケーション パスに .blob エンドポイント ( **.blob**.core.windows.net) が必要です。
+
+2:この認証方法には、お使いの外部のロケーション パスに .dfs エンドポイント ( **.dfs**.core.windows.net) が必要です。
 
 ## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. 行を終止させるものとして LF が与えられたストレージ アカウント キー (Unix スタイルの改行)
 
@@ -74,30 +77,43 @@ WITH (
 1. この[ガイド](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用して、Azure PowerShell をインストールします。
 2. 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用して、最初に汎用 v2 にアップグレードする必要があります。
 3. Azure ストレージ アカウントの **[Firewalls and Virtual networks]\(ファイアウォールと仮想ネットワーク\)** 設定メニューで、 **[Allow trusted Microsoft services to access this storage account]\(信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します\)** をオンにする必要があります。 詳しくは、この[ガイド](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions)をご覧ください。
+
 #### <a name="steps"></a>手順
 
-1. PowerShell で、Azure Active Directory (AAD) に**お使いの SQL サーバーを登録します**。
+1. スタンドアロンの専用 SQL プールがある場合は、PowerShell を使用して SQL サーバーを Azure Active Directory (AAD) に登録します。 
 
    ```powershell
    Connect-AzAccount
-   Select-AzSubscription -SubscriptionId your-subscriptionId
-   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   Select-AzSubscription -SubscriptionId <subscriptionId>
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
-2. この[ガイド](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用して、**汎用 v2 ストレージ アカウント**を作成します。
+   Synapse ワークスペース内の専用 SQL プールでは、この手順は必要ありません。
+
+1. Synapse ワークスペースがある場合は、以下のようにワークスペースのシステム マネージド ID を登録します。
+
+   1. Azure portal で Synapse ワークスペースにアクセスする
+   2. [マネージド ID] ブレードにアクセスする 
+   3. "パイプラインを許可する" オプションを有効にする
+   
+   ![ワークスペース システム msi を登録する](./media/quickstart-bulk-load-copy-tsql-examples/msi-register-example.png)
+
+1. この [ガイド](../../storage/common/storage-account-create.md)を使用して、**汎用 v2 ストレージ アカウント** を作成します。
 
    > [!NOTE]
-   > 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用して、**最初に v2 にアップグレードする**必要があります。
+   >
+   > - 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この [ガイド](../../storage/common/storage-account-upgrade.md)を使用して、**最初に v2 にアップグレードする** 必要があります。
+   > - Azure Data Lake Storage Gen2 に関する既知の問題については、この[ガイド](../../storage/blobs/data-lake-storage-known-issues.md)をご覧ください。
 
-3. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 **ストレージ BLOB データ所有者、共同作成者、または閲覧者**の Azure ロールを SQL サーバーに割り当てます。
+1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 Azure Active Directory (AAD) に登録した専用 SQL プールをホストしているサーバーまたはワークスペースに、**ストレージ BLOB データ共同作成者** Azure ロールを割り当てます。
 
    > [!NOTE]
    > 所有者特権を持つメンバーのみが、この手順を実行できます。 さまざまな Azure の組み込みロールについては、こちらの[ガイド](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を参照してください。
    
     > [!IMPORTANT]
-    > **ストレージ** **BLOB データ**所有者、共同作成者、または閲覧者の Azure ロールを指定します。 これらのロールは、所有者、共同作成者、閲覧者の Azure 組み込みロールとは異なります。 
+    > **ストレージ** **BLOB データ** 所有者、共同作成者、または閲覧者の Azure ロールを指定します。 これらのロールは、所有者、共同作成者、閲覧者の Azure 組み込みロールとは異なります。 
 
-    ![読み込みのための RBAC アクセス許可の付与](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+    ![読み込みのための Azure RBAC アクセス許可の付与](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 4. これで "マネージド ID" を指定して COPY ステートメントを実行できます。
 
@@ -110,17 +126,17 @@ WITH (
     )
     ```
 
-## <a name="d-azure-active-directory-authentication-aad"></a>D. Azure Active Directory 認証 (AAD)
+## <a name="d-azure-active-directory-authentication"></a>D. Azure Active Directory 認証
 #### <a name="steps"></a>手順
 
-1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 **ストレージ BLOB データ所有者、共同作成者、または閲覧者**の Azure ロールを AAD ユーザーに割り当てます。 
+1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 **ストレージ BLOB データ所有者、共同作成者、または閲覧者** の Azure ロールを Azure AD ユーザーに割り当てます。 
 
     > [!IMPORTANT]
-    > **ストレージ** **BLOB データ**所有者、共同作成者、または閲覧者の Azure ロールを指定します。 これらのロールは、所有者、共同作成者、閲覧者の Azure 組み込みロールとは異なります。
+    > **ストレージ** **BLOB データ** 所有者、共同作成者、または閲覧者の Azure ロールを指定します。 これらのロールは、所有者、共同作成者、閲覧者の Azure 組み込みロールとは異なります。
 
-    ![読み込みのための RBAC アクセス許可の付与](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+    ![読み込みのための Azure RBAC アクセス許可の付与](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
-2. 次の[ドキュメント](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server)を進め、Azure AD 認証を構成します。 
+2. 次の[ドキュメント](../../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell)を進め、Azure AD 認証を構成します。 
 
 3. Active Directory を使用し、SQL プールに接続します。そこでは資格情報を指定せずに COPY ステートメントを実行できます。
 
@@ -136,11 +152,11 @@ WITH (
 ## <a name="e-service-principal-authentication"></a>E. サービス プリンシパル認証
 #### <a name="steps"></a>手順
 
-1. [Azure Active Directory (AAD) アプリケーションを作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
-2. [アプリケーション ID を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)
-3. [認証キーを取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret)
-4. [V1 OAuth 2.0 トークン エンドポイントを取得する](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
-5. ストレージ アカウントで [AAD アプリケーションに読み取り、書き込み、実行のアクセス許可を割り当てる](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder)
+1. [Azure Active Directory アプリケーションを作成する](../..//active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
+2. [アプリケーション ID を取得する](../..//active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)
+3. [認証キーを取得する](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)
+4. [V1 OAuth 2.0 トークン エンドポイントを取得する](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
+5. ストレージ アカウントで [Azure AD アプリケーションに読み取り、書き込み、実行のアクセス許可を割り当てる](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder)
 6. これで COPY ステートメントを実行できます。
 
     ```sql
@@ -160,5 +176,5 @@ WITH (
 
 ## <a name="next-steps"></a>次のステップ
 
-- 詳しい構文については、[COPY ステートメントに関する記事](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)をご覧ください
-- 読み込みのベスト プラクティスについては、[データ読み込みの概要](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading#what-is-elt)記事をご覧ください
+- 詳しい構文については、[COPY ステートメントに関する記事](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)をご覧ください
+- 読み込みのベスト プラクティスについては、[データ読み込みの概要](./design-elt-data-loading.md#what-is-elt)記事をご覧ください

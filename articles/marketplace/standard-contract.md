@@ -4,15 +4,15 @@ description: パートナー センターでの Azure Marketplace と AppSource 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 05/20/2020
-ms.openlocfilehash: f7327079e365bcd8a99a8274828f7c14e2337a34
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 20a257bde6022249fd7b2ab875b94f356234b490
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121556"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488878"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースの標準契約
 
@@ -21,7 +21,7 @@ Microsoft では、Microsoft コマーシャル マーケットプレースの�
 オファーの使用条件は、パートナー センターでオファーを作成するときに定義されます。 独自のカスタムの使用条件を提供する代わりに、Microsoft 商業マーケットプレースの標準契約を使用することを選択できます。
 
 >[!Note]
->Microsoft 商業マーケットプレースの標準契約を使用してオファーを発行した後に、独自のカスタムの使用条件を使用することはできません。 これは、"または" のシナリオです。 ソリューションは、標準契約*または*独自の使用条件のどちらかの下で提供されます。 標準契約の使用条件を変更したい場合は、Standard Contract Amendments (標準契約の修正) を使用して行うことができます。
+>Microsoft 商業マーケットプレースの標準契約を使用してオファーを発行した後は、独自のカスタムの使用条件を使用することができなくなります。 ソリューションは、標準契約 *または* 独自の使用条件のどちらかの下で提供されます。 カスタムの使用条件は、オファー レベルで定義され、すべてのプランに適用されます。パートナー センターで、プランの **[プロパティ]** ページにカスタムの使用条件を書き込みます。 標準契約の使用条件を変更したい場合は、Standard Contract Amendments (標準契約の修正) を使用して行うことができます。
 
 ## <a name="standard-contract-amendments"></a>Standard Contract Amendments (標準契約の修正)
 
@@ -34,7 +34,7 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 * Custom Amendments (カスタム修正):これらの修正は、Azure テナント ID を通して特定のお客様のみを対象にした、標準契約への特殊な修正です。 発行元は、対象にするテナントを選択できます。 カスタム修正の使用条件は、オファーの購入フローでこのテナントのお客様にのみ示されます。  お客様は、提供されるオファーを使用する前に、標準契約の使用条件とこの修正に同意する必要があります。
 
 >[!Note]
->これらの 2 種類の修正は、互いに重なり合っています。 カスタム修正の対象となるお客様には、購入中に標準契約へのユニバーサル修正も示されます。
+>これらの 2 種類の修正は、互いに重なり合っています。 カスタム修正の対象となるお客様には、購入中に標準契約へのユニバーサル修正も示されます。 修正は、スペースを含め 4000 文字までに制限されています。
 
 Microsoft 商業マーケットプレースの標準契約は、次のオファーの種類に対して利用できます。Azure アプリケーション (ソリューション テンプレートとマネージド アプリケーション)、仮想マシン、および SaaS。
 

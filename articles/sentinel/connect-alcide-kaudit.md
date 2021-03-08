@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: cf8da1d88529a823ff4399fb955c8a5e0abbd20e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d1314b79f09f1bed2de5d6964b0a6224b5962ca
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038241"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096873"
 ---
 # <a name="connect-your-alcide-kaudit-to-azure-sentinel"></a>Alcide kAudit を Azure Sentinel に接続する
 
@@ -63,7 +63,7 @@ Alcide kAudit によって、ログを Azure Sentinel に直接エクスポー�
 
 Alcide kAudit のログで関連するスキーマを使用するには、上記のデータ型を検索します。
 
-ログが Log Analytics に表示され始めるまで、20 分以上かかる場合があります。
+ログが Log Analytics に表示され始めるまで、最大 20 分かかることがあります。
 
 ## <a name="next-steps"></a>次のステップ
 

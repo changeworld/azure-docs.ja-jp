@@ -1,14 +1,16 @@
 ---
 title: Azure Functions のネットワーク オプション
 description: Azure Functions で利用可能なすべてのネットワーク オプションの概要。
+author: cachai2
 ms.topic: conceptual
-ms.date: 4/11/2019
-ms.openlocfilehash: 60258ef4aa3bbbbab69acd4f5106c774caa6f46f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 1/21/2021
+ms.author: cachai
+ms.openlocfilehash: 2c3f207e98f574bb6c43f87d34b0a404e263e83c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385944"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806993"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -19,27 +21,45 @@ ms.locfileid: "87385944"
 関数アプリは、いくつかの方法でホストできます。
 
 * さまざまなレベルの仮想ネットワーク接続性とスケーリングのオプションを備えた、マルチテナント インフラストラクチャ上で実行されるプラン オプションから選択できます。
-    * [従量課金プラン](functions-scale.md#consumption-plan)。負荷に応じて動的なスケーリングが行われ、最小限のネットワークの分離オプションが提供されます。
-    * [Premium プラン](functions-scale.md#premium-plan)。やはり動的なスケーリングが行われますが、より包括的なネットワークの分離が提供されます。
-    * [App Service プラン](functions-scale.md#app-service-plan)。固定されたスケールで動作し、Premium プランと同様のネットワークの分離が提供されます。
+    * [従量課金プラン](consumption-plan.md)。負荷に応じて動的なスケーリングが行われ、最小限のネットワークの分離オプションが提供されます。
+    * [Premium プラン](functions-premium-plan.md)。やはり動的なスケーリングが行われますが、より包括的なネットワークの分離が提供されます。
+    * [App Service プラン](dedicated-plan.md)。固定されたスケールで動作し、Premium プランと同様のネットワークの分離が提供されます。
 * [App Service Environment](../app-service/environment/intro.md) で関数を実行できます。 この方法では、関数を仮想ネットワークにデプロイし、完全なネットワーク制御と分離を提供します。
 
 ## <a name="matrix-of-networking-features"></a>ネットワーク機能のマトリックス
 
 [!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
 
-## <a name="inbound-ip-restrictions"></a>受信 IP の制限
+## <a name="inbound-access-restrictions"></a>受信アクセス制限
 
-IP 制限を使用すると、アプリへのアクセスを許可または拒否される IP アドレスの優先順位付きリストを定義できます。 このリストには、IPv4 アドレスと IPv6 アドレスを含めることができます。 1 つ以上のエントリがある場合、リストの最後にあるものは暗黙的に "すべて拒否" になります。 IP 制限は、すべての関数ホスティング オプションで有効です。
+アクセス制限を使用すると、アプリへのアクセスを許可または拒否される IP アドレスの優先順位付きリストを定義できます。 この一覧には、IPv4 と IPv6 のアドレス、または[サービス エンドポイント](#use-service-endpoints)を使用する特定の仮想ネットワーク サブネットを含めることができます。 1 つ以上のエントリがある場合、リストの最後にあるものは暗黙的に "すべて拒否" になります。 IP 制限は、すべての関数ホスティング オプションで有効です。
+
+アクセス制限は、[Premium](functions-premium-plan.md)、[従量課金](consumption-plan.md)、[App Service](dedicated-plan.md) で利用できます。
 
 > [!NOTE]
-> ネットワーク制限が適用されている場合、ポータル エディターを使用できるのは、仮想ネットワーク内から、または Azure portal へのアクセスに使用しているコンピューターの IP アドレスを [信頼できる宛先のリスト] に入れている場合のみになります。 ただし、 **[プラットフォーム機能]** タブの機能にはすべてのコンピューターから引き続きアクセスできます。
+> ネットワーク制限が適用されると、仮想ネットワーク内からか、または Azure portal へのアクセスに使用しているコンピューターの IP アドレスを [信頼された宛先のリスト] に入れている場合にのみ、デプロイを行うことができます。 ただし、ポータルを使用して関数を管理することもできます。
 
 詳細については、「[Azure App Service の静的なアクセス制限](../app-service/app-service-ip-restrictions.md)」を参照してください。
 
-## <a name="private-site-access"></a>プライベート サイトへのアクセス
+### <a name="use-service-endpoints"></a>サービス エンドポイントの使用
+
+サービス エンドポイントを使用することで、選択した Azure 仮想ネットワーク サブネットへのアクセスを制限できます。 特定のサブネットへのアクセスを制限するには、種類が **仮想ネットワーク** である制限規則を作成します。 その後、アクセスを許可または拒否するサブスクリプション、仮想ネットワーク、およびサブネットを選択できます。 
+
+選択したサブネットのサービス エンドポイントが Microsoft.Web でまだ有効になっていない場合は、自動的に有効になります。ただし、 **[見つからない Microsoft.Web サービス エンドポイントを無視する]** チェック ボックスをオンにしていない場合に限ります。 サービス エンドポイントをアプリで有効にしてサブネットでは有効にしないというシナリオは、主としてサブネット上でそれらを有効にするためのアクセス許可があるかどうかに依存します。 
+
+サブネット上でサービス エンドポイントを有効にするために他のユーザーが必要な場合は、 **[見つからない Microsoft.Web サービス エンドポイントを無視する]** チェック ボックスをオンにします。 アプリは、サービス エンドポイントが後からサブネット上で有効にされることを想定して構成されます。 
+
+![種類として仮想ネットワークが選択された [IP 制限の追加] ウィンドウのスクリーンショット。](../app-service/media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
+
+App Service Environment で実行されているアプリへのアクセスを制限するために、サービス エンドポイントを使うことはできません。 アプリが App Service Environment 内にあるときは、IP アクセス規則を適用することでアプリへのアクセスを制御できます。 
+
+サービス エンドポイントを設定する方法については、[Azure Functions のプライベート サイト アクセスの設定](functions-create-private-site-access.md)に関するページ参照してください。
+
+## <a name="private-endpoint-connections"></a>プライベート エンドポイント接続
 
 [!INCLUDE [functions-private-site-access](../../includes/functions-private-site-access.md)]
+
+ストレージやサービス バスなどのプライベート エンドポイント接続を持つその他のサービスを呼び出すには、必ず[プライベート エンドポイントへの送信呼び出し](#private-endpoints)を行うようにアプリを構成してください。
 
 ## <a name="virtual-network-integration"></a>仮想ネットワークの統合
 
@@ -65,11 +85,30 @@ Azure Functions の仮想ネットワーク統合では、App Service Web アプ
 
 詳細については、「[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)」を参照してください。
 
-## <a name="restrict-your-storage-account-to-a-virtual-network"></a>お使いのストレージ アカウントを仮想ネットワークに制限する
+## <a name="restrict-your-storage-account-to-a-virtual-network"></a>お使いのストレージ アカウントを仮想ネットワークに制限する 
 
-関数アプリを作成するときは、BLOB、Queue、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 現在、このアカウントに対して仮想ネットワークの制限を使用することはできません。 関数アプリに使用しているストレージ アカウントに仮想ネットワーク サービス エンドポイントを構成すると、その構成によってアプリが中断されます。
+関数アプリを作成するときは、BLOB、Queue、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。  このストレージ アカウントは、サービス エンドポイントまたはプライベート エンドポイントで保護されているものに置き換えることができます。  現在、この機能は、Windows Premium プランでのみ機能します。  プライベート ネットワークに制限されたストレージ アカウントを使用して関数を設定するには、次のようにします。
 
-詳しくは、「[ストレージ アカウントの要件](./functions-create-function-app-portal.md#storage-account-requirements)」をご覧ください。
+1. サービス エンドポイントが有効になっていないストレージ アカウントを使用して関数を作成します。
+1. ご使用の仮想ネットワークに接続するように関数を構成します。
+1. 別のストレージ アカウントを作成または構成します。  これがサービス エンドポイントで保護され、関数に接続されるストレージ アカウントになります。
+1. セキュリティで保護されたストレージ アカウントに[ファイル共有を作成](../storage/files/storage-how-to-create-file-share.md#create-file-share)します。
+1. ストレージ アカウントのサービス エンドポイントまたはプライベート エンドポイントを有効にします。  
+    * プライベート エンドポイント接続を使用する場合、ストレージ アカウントには、`file` と `blob` のサブリソース用のプライベート エンドポイントが必要です。  Durable Functions のような特定の機能を使用する場合は、プライベート エンドポイント接続を介して `queue` と `table` にアクセスできる必要もあります。
+    * サービス エンドポイントを使用する場合は、ストレージ アカウントに対して関数アプリ専用のサブネットを有効にします。
+1. (省略可能) 関数アプリのストレージ アカウントから、セキュリティで保護されたストレージ アカウントとファイル共有に、ファイルと BLOB の内容をコピーします。
+1. このストレージ アカウントの接続文字列をコピーします。
+1. 関数アプリの **[構成]** の下の **[アプリケーションの設定]** を次のように更新します。
+    - `AzureWebJobsStorage` をセキュリティで保護されたストレージ アカウントの接続文字列にします。
+    - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` をセキュリティで保護されたストレージ アカウントの接続文字列にします。
+    - `WEBSITE_CONTENTSHARE` をセキュリティで保護されたストレージ アカウントで作成されたファイル共有の名前にします。
+    - 名前が `WEBSITE_CONTENTOVERVNET` で値が `1` の新しい設定を作成します。
+    - ストレージ アカウントでプライベート エンドポイント接続が使用されている場合は、次の設定を確認または追加します。
+        - `WEBSITE_VNET_ROUTE_ALL` (値 `1`)
+        - `WEBSITE_DNS_SERVER` (値 `168.63.129.16`) 
+1. アプリケーションの設定を保存します。  
+
+関数アプリが再起動され、セキュリティで保護されたストレージ アカウントに接続されるようになります。
 
 ## <a name="use-key-vault-references"></a>Key Vault 参照を使用する
 
@@ -86,7 +125,7 @@ Azure Key Vault 参照を使用すると、コードの変更を必要とせず�
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>仮想ネットワーク トリガーを使用した Premium プラン
 
-Premium プランを実行する場合は、仮想ネットワーク内で実行されているサービスに非 HTTP トリガー関数を接続できます。 これを行うには、関数アプリの仮想ネットワーク トリガーのサポートを有効にする必要があります。 **[仮想ネットワーク トリガーのサポート]** 設定は、[Azure portal](https://portal.azure.com) の **[構成]**  >  **[関数のランタイム設定]** にあります。
+Premium プランを実行する場合は、仮想ネットワーク内で実行されているサービスに非 HTTP トリガー関数を接続できます。 これを行うには、関数アプリの仮想ネットワーク トリガーのサポートを有効にする必要があります。 **[Runtime Scale Monitoring]\(ランタイム スケールの監視\)** の設定は、[Azure portal](https://portal.azure.com) の **[構成]**  >  **[関数のランタイム設定]** にあります。
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
@@ -95,6 +134,9 @@ Premium プランを実行する場合は、仮想ネットワーク内で実行
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
 ```
+
+> [!TIP]
+> 仮想ネットワーク トリガーを有効にすると、アプリケーションのパフォーマンスに影響することがあります。これは、App Service プランのインスタンスがトリガーを監視して、スケーリングのタイミングを判断する必要があるためです。 この影響は非常に小さい場合がほとんどです。
 
 仮想ネットワーク トリガーは、バージョン 2.x 以降の Functions ランタイムでサポートされています。 次の非 HTTP トリガーの種類がサポートされています。
 

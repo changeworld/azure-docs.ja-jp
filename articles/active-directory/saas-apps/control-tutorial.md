@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 46686818f9a5b7a0ef287843887440331f5ac24e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d6b752b2c562944748d21aa1a28a177163a95aee
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548125"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455291"
 ---
 # <a name="tutorial-integrate-continuity-control-with-azure-active-directory"></a>チュートリアル:Continuity Control と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88548125"
 * ユーザーが自分の Azure AD アカウントを使用して Control に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Control では、**SP** によって開始される SSO がサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Control では、 **SP** によって開始される SSO がサポートされます。
 
 ## <a name="adding-control-from-the-gallery"></a>ギャラリーからの Control の追加
 
@@ -47,7 +47,7 @@ Azure AD への Control の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Control**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Control** 」と入力します。
 1. 結果ウィンドウで **[Control]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -94,7 +94,7 @@ Control で Azure AD SSO を構成してテストするには、次の構成要�
 
 ### <a name="configure-control-sso"></a>Control SSO の構成
 
-**Control** 側でシングル サインオンを構成するには、[Control Authentication Strategies](https://control.continuity.net/settings/account_profile#tab/security) でシングル サインオンの認証設定を更新する必要があります。 Azure portal で取得した**ログイン URL** と**拇印の値**で、 **[SAML SSO URL]** と **[Certificate Fingerprint]\(証明書の指紋\)** を更新します。
+**Control** 側でシングル サインオンを構成するには、 [Control Authentication Strategies](https://control.continuity.net/settings/account_profile#tab/security) でシングル サインオンの認証設定を更新する必要があります。 Azure portal で取得した **ログイン URL** と **拇印の値** で、 **[SAML SSO URL]** と **[Certificate Fingerprint]\(証明書の指紋\)** を更新します。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -128,16 +128,16 @@ Control で Azure AD SSO を構成してテストするには、次の構成要�
 
 ### <a name="create-control-test-user"></a>Control テスト ユーザーの作成
 
-このセクションでは、Control で Britta Simon というユーザーを作成します。  [Control サポート チーム](mailto:help@continuity.net)と連携し、Control プラットフォームにユーザーを追加してください。 Britta Simon の Azure AD **ユーザー名**を使用して、Control で **ID プロバイダー ユーザー ID** を指定します。 シングル サインオンを使用するには、ユーザーを作成して、その **ID プロバイダー ユーザー ID** を設定する必要があります。
+このセクションでは、Control で Britta Simon というユーザーを作成します。 [Control サポート チーム](mailto:help@continuity.net)と連携して、Control プラットフォームにユーザーを追加してください。 Britta Simon の Azure AD **ユーザー名** を使用して、Control で **ID プロバイダー ユーザー ID** を指定します。 シングル サインオンを使用するには、ユーザーを作成して、その **ID プロバイダー ユーザー ID** を設定する必要があります。
 
 ### <a name="test-sso"></a>SSO のテスト
 
-アクセス パネルで Control タイルを選択すると、SSO を設定した Control に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで Control タイルを選択すると、SSO を設定した Control に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

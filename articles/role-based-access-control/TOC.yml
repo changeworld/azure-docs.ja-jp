@@ -9,7 +9,7 @@
       href: rbac-and-directory-admin-roles.md
 - name: クイックスタート
   items:
-    - name: ユーザーのアクセス権の表示
+    - name: ユーザーのアクセスを確認
       href: check-access.md
     - name: ARM テンプレート
       displayName: Resource Manager
@@ -28,6 +28,10 @@
       href: tutorial-custom-role-cli.md
 - name: 概念
   items:
+    - name: ロールの定義
+      href: role-definitions.md
+    - name: スコープ
+      href: scope-overview.md
     - name: ベスト プラクティス
       href: best-practices.md
     - name: Azure 管理の条件付きアクセス
@@ -40,11 +44,7 @@
 - name: 操作方法ガイド
   items:
     - name: ロール定義の一覧表示
-      items:
-        - name: 概要
-          href: role-definitions.md
-        - name: ロール定義の一覧表示
-          href: role-definitions-list.md
+      href: role-definitions-list.md
     - name: ロールの割り当ての一覧表示
       items:
         - name: ポータル
@@ -55,12 +55,20 @@
           href: role-assignments-list-cli.md
         - name: REST API
           href: role-assignments-list-rest.md
-    - name: ロールの割り当てを追加または削除する
+    - name: ロールを割り当てる
       items:
+        - name: ロールを割り当てる手順
+          href: role-assignments-steps.md
         - name: ポータル
-          href: role-assignments-portal.md
-        - name: ポータル - ゲスト ユーザー
-          href: role-assignments-external-users.md
+          items:
+            - name: ロールを割り当てる
+              href: role-assignments-portal.md
+            - name: サブスクリプション管理者
+              href: role-assignments-portal-subscription-admin.md
+            - name: マネージド ID
+              href: role-assignments-portal-managed-identity.md
+            - name: 外部のゲスト ユーザー
+              href: role-assignments-external-users.md
         - name: PowerShell
           href: role-assignments-powershell.md
         - name: Azure CLI
@@ -70,6 +78,8 @@
         - name: ARM テンプレート
           displayName: Resource Manager
           href: role-assignments-template.md
+    - name: ロールの割り当てを削除する
+      href: role-assignments-remove.md
     - name: 拒否割り当てを一覧表示する
       items:
         - name: 概要
@@ -80,7 +90,7 @@
           href: deny-assignments-powershell.md
         - name: REST API
           href: deny-assignments-rest.md
-    - name: カスタム ロールの作成または更新
+    - name: カスタム ロールを作成する
       items:
         - name: 概要
           href: custom-roles.md
@@ -101,7 +111,7 @@
       href: elevate-access-global-admin.md
     - name: 従来の管理者
       href: classic-administrators.md
-    - name: サブスクリプションを別のディレクトリに譲渡する (プレビュー)
+    - name: サブスクリプションを別のディレクトリに譲渡する
       href: transfer-subscription.md
     - name: トラブルシューティング
       href: troubleshooting.md
@@ -112,7 +122,7 @@
     - name: リソース プロバイダー操作
       href: resource-provider-operations.md
     - name: Azure RBAC の制限
-      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-role-based-access-control-limits
     - name: Azure PowerShell
       href: /powershell/module/az.resources
     - name: Azure CLI

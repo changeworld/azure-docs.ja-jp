@@ -3,12 +3,12 @@ title: 基本イメージの更新 - タスク
 description: アプリケーション コンテナー イメージの基本イメージと、基本イメージの更新で Azure Container Registry タスクをトリガーする方法について説明します。
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: 35933c4cdbbf2762f7a54bd945f8a8ffa55b9f21
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: df33096830cd7b34a288c38c105aff3610315337
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918503"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707488"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>ACR タスクの基本イメージの更新について
 
@@ -22,9 +22,13 @@ ms.locfileid: "85918503"
 
 プライベートの開発チームなどの場合、基本イメージで複数の OS やフレームワークが指定されることがあります。 基本イメージはたとえば、追跡する必要がある共有サービス コンポーネント イメージの場合があります。 チームのメンバーは、テスト目的でこの基本イメージを追跡しなければならないことがあります。または、アプリケーション イメージの開発時、定期的にイメージを更新しなければならないことがあります。
 
+## <a name="maintain-copies-of-base-images"></a>基本イメージのコピーを保持する
+
+Docker Hub などのパブリック レジストリに保持されている基本コンテンツに依存するレジストリ内のコンテンツについては、Azure Container Registry または別のプライベート レジストリにコンテンツをコピーすることをお勧めします。 その後、プライベート基本イメージを参照して、アプリケーション イメージをビルドします。 Azure Container Registry には、パブリック レジストリまたは他の Azure Container Registry からコンテンツを簡単にコピーするための[イメージのインポート](container-registry-import-images.md)機能が用意されています。 次のセクションでは、アプリケーションの更新プログラムの作成時に、Azure Container Registry タスクを使用して基本イメージの更新を追跡する方法について説明します。 基本イメージの更新は、独自の Azure Container Registry で追跡でき、必要に応じて上流のパブリック レジストリで追跡できます。
+
 ## <a name="track-base-image-updates"></a>基本イメージの更新を追跡する
 
-ACR Tasks には、コンテナーの基本イメージが更新されたときにイメージを自動的にビルドする機能が備わっています。
+ACR Tasks には、コンテナーの基本イメージが更新されたときにイメージを自動的にビルドする機能が備わっています。 この機能を使用して、Azure Container Registry 内のパブリック基本イメージのコピーを保持および更新し、基本イメージに依存するアプリケーション イメージを再構築できます。
 
 ACR タスクでは、コンテナー イメージのビルド時、基本イメージの依存関係が動的に検出されます。 その結果、アプリケーション イメージの基本イメージが更新されるタイミングを検出できます。 ビルド タスクを 1 つ事前に構成しておくと、ACR タスクでは、基本イメージを参照するすべてのアプリケーション イメージを自動的にリビルドできます。 ACR タスクはこの自動検出とリビルドによって、更新された基本イメージを参照しているすべてのアプリケーション イメージを手動で追跡し、更新するために通常は必要となる時間と労力を削減しています。
 
@@ -50,17 +54,17 @@ Dockerfile からのイメージ ビルドでは、ACR タスクによって、�
 
 * **アプリケーション イメージの基本イメージ** - 現在、ACR タスクでは、アプリケーション (*実行時*) イメージの基本イメージの更新のみが追跡されます。 マルチステージ Dockerfiles で使用される中間 (*ビルド時*) イメージの基本イメージの更新は追跡されません。  
 
-* **既定で有効** - [az acr task create][az-acr-task-create] コマンドを使用して ACR タスクを作成すると、既定では、そのタスクでは基本イメージの更新によるトリガーが*有効*になっています。 つまり、`base-image-trigger-enabled` プロパティは True に設定されています。 タスクでこの動作を無効にする場合は、このプロパティを False に更新します。 たとえば、次の [az acr task update][az-acr-task-update] コマンドを実行します。
+* **既定で有効** - [az acr task create][az-acr-task-create] コマンドを使用して ACR タスクを作成すると、既定では、そのタスクでは基本イメージの更新によるトリガーが *有効* になっています。 つまり、`base-image-trigger-enabled` プロパティは True に設定されています。 タスクでこの動作を無効にする場合は、このプロパティを False に更新します。 たとえば、次の [az acr task update][az-acr-task-update] コマンドを実行します。
 
   ```azurecli
-  az acr task update --myregistry --name mytask --base-image-trigger-enabled False
+  az acr task update --registry myregistry --name mytask --base-image-trigger-enabled False
   ```
 
-* **依存関係追跡のトリガー** - ACR タスクでコンテナー イメージの依存関係 (基本イメージがどこに含まれるか) を特定して追跡できるようにするため、最初に**少なくとも 1 回**、タスクをトリガーしてイメージをビルドする必要があります。 たとえば、[az acr task run][az-acr-task-run] コマンドを使用してタスクを手動でトリガーします。
+* **依存関係追跡のトリガー** - ACR タスクでコンテナー イメージの依存関係 (基本イメージがどこに含まれるか) を特定して追跡できるようにするため、最初に **少なくとも 1 回**、タスクをトリガーしてイメージをビルドする必要があります。 たとえば、[az acr task run][az-acr-task-run] コマンドを使用してタスクを手動でトリガーします。
 
 * **基本イメージの安定タグ** - 基本イメージの更新時にタスクをトリガーするには、基本イメージに `node:9-alpine` などの "*安定した*" タグがなければなりません。 このタグ付けは、OS およびフレームワークの修正プログラムを使用して最新の安定版リリースに更新された基本イメージでは一般的なものです。 基本イメージは、新しいバージョン タグで更新された場合、タスクをトリガーしません。 イメージのタグ付けの詳細については、[ベスト プラクティス ガイダンス](container-registry-image-tag-version.md)に関するページを参照してください。 
 
-* **その他のタスク トリガー** - 基本イメージの更新によってトリガーされるタスクでは、[ソース コードのコミット](container-registry-tutorial-build-task.md)または[スケジュール](container-registry-tasks-scheduled.md)に基づいてトリガーを有効にすることもできます。 基本イメージの更新では、[複数ステップ タスク](container-registry-tasks-multi-step.md)もトリガーできます。
+* **その他のタスク トリガー** - 基本イメージの更新によってトリガーされるタスクでは、[ソース コードのコミット](container-registry-tutorial-build-task.md)または [スケジュール](container-registry-tasks-scheduled.md)に基づいてトリガーを有効にすることもできます。 基本イメージの更新では、[複数ステップ タスク](container-registry-tasks-multi-step.md)もトリガーできます。
 
 ## <a name="next-steps"></a>次のステップ
 

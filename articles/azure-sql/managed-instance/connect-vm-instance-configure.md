@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: quickstart
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlrab, srbozovi, bonova
+ms.reviewer: sstein, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: e3dc2990e810096310617e468a533a65626008ff
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: a1f496d59fa626dc8750493591128f7363afa40d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542655"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91620258"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>クイック スタート:Azure SQL Managed Instance に接続するように Azure VM を構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -110,7 +110,7 @@ SQL Managed Instance はご自分のプライベートの仮想ネットワー�
 
 1. デプロイが完了したら、仮想マシン リソースに移動します。
 
-    ![VM](./media/connect-vm-instance-configure/vm.png)  
+    ![スクリーンショットでは、仮想マシンの [概要] ページが選択され、[接続] が強調表示されている Azure portal が示されています。](./media/connect-vm-instance-configure/vm.png)  
 
 2. **[接続]** を選択します。
 

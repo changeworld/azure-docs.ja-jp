@@ -1,36 +1,54 @@
 ---
 title: Unity 向けの Azure Spatial Anchors をインストールする
 description: Azure Spatial Anchors を使用するように Unity プロジェクトを構成する
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 07/31/2020
+ms.author: parkerra
+ms.date: 2/3/2021
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: a23cff8bcef2d62b1e415997ffd6afc80cf47793
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 56532c17c91e6c703a6acd7990bbae47cd248165
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87812263"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576567"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Unity プロジェクトでの Azure Spatial Anchors の構成
 
-## <a name="requirements"></a>必要条件
+このガイドでは、Unity プロジェクトで Azure Spatial Anchors SDK の使用を開始する方法について説明します。
 
-Azure Spatial Anchors では現在、次の構成を持つ Unity 2019.4 (LTS) がサポートされています。
+## <a name="project-requirements"></a>プロジェクトの要件
 
-* AR Foundation 3.1 を備えた Unity 2019.4 が Azure Spatial Anchors 2.4.0 以降でサポートされています。
+[!INCLUDE [Unity Project Requirements](../../../includes/spatial-anchors-unity-project-requirements.md)]
 
 ## <a name="configuring-a-project"></a>プロジェクトの構成
 
-Unity 向けの Azure Spatial Anchors は現在、Unity アセット パッケージ (`.unitypackage`) を使用して配布されています。これは、[GitHub リリース](https://github.com/Azure/azure-spatial-anchors-samples/releases)にあります。
+Unity プロジェクトに Azure Spatial Anchors SDK を含める前に、必ず Unity パッケージ マネージャーを使用して[必要な](#project-requirements)パッケージをインストールしてください。
 
-### <a name="import-the-asset-package"></a>アセット パッケージをインポートする
+### <a name="download-asa-packages"></a>ASA パッケージのダウンロード
+[!INCLUDE [Download Unity Packages](../../../includes/spatial-anchors-unity-download-packages.md)]
 
-1. [GitHub リリース](https://github.com/Azure/azure-spatial-anchors-samples/releases)から対象とするバージョンの `AzureSpatialAnchors.unitypackage` ファイルをダウンロードします。
-2. [こちら](https://docs.unity3d.com/Manual/AssetPackagesImport.html)の指示に従って、Unity アセット パッケージをプロジェクトにインポートします。
+### <a name="import-asa-packages"></a>ASA パッケージのインポート
+[!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
+
+### <a name="android-only-configure-the-maintemplategradle-file"></a>Android のみ:mainTemplate.gradle ファイルを構成する
+
+1. **[Edit]\(編集\)**  >  **[Project Settings]\(プロジェクト設定\)**  >  **[Player]\(プレーヤー\)** の順に移動します。
+2. **[プレーヤー設定]** の **[インスペクター] パネル** で、**Android** アイコンを選択します。
+3. **[ビルド]** セクションで、 **[カスタム メイン Gradle テンプレート]** チェックボックスをオンにして、`Assets\Plugins\Android\mainTemplate.gradle` でカスタム Gradle テンプレートを生成します。
+4. `mainTemplate.gradle` ファイルをテキスト エディターで開きます。
+5. `dependencies` セクションに、次の依存関係を貼り付けます。
+
+    ```gradle
+    implementation('com.squareup.okhttp3:okhttp:[3.11.0]')
+    implementation('com.microsoft.appcenter:appcenter-analytics:[1.10.0]')
+    ```
+
+すべて完了すると、`dependencies` セクションは次のようになります。
+
+[!code-gradle[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-android-gradle-setup.md?range=9-13&highlight=3-4)]
 
 ## <a name="next-steps"></a>次のステップ
 

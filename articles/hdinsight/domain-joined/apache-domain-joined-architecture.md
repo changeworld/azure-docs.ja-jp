@@ -1,19 +1,17 @@
 ---
 title: Enterprise セキュリティ パッケージを使用した Azure HDInsight アーキテクチャ
 description: Enterprise セキュリティ パッケージを使用して Azure HDInsight のセキュリティを計画する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: omidm
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/11/2020
-ms.openlocfilehash: 452a3b04637126b40aca907178bebd6f74ec4481
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 404cd8652a4daf602f3326696ef5df2c3a23a548
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79365784"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943321"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>HDInsight で Enterprise セキュリティ パッケージを使用する
 
@@ -57,7 +55,7 @@ HDInsight での仮想マシン (VM) は、指定されたドメインに参加�
 
 自分のドメインにオンプレミス Active Directory インスタンスまたはより複雑な Active Directory 設定がある場合、Azure AD Connect を使用してそれらの ID を Azure AD と同期することができます。 その後、Active Directory テナント上で Azure AD DS を有効にできます。
 
-Kerberos はパスワード ハッシュに依存するため、[Azure AD DS でパスワード ハッシュ同期を有効にする](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)必要があります。
+Kerberos はパスワード ハッシュに依存するため、[Azure AD DS でパスワード ハッシュ同期を有効にする](../../active-directory-domain-services/tutorial-create-instance.md)必要があります。
 
 Active Directory フェデレーション サービス (AD FS) によるフェデレーションを使用している場合は、パスワード ハッシュ同期を有効にする必要があります(推奨される設定については、[こちらのビデオ](https://youtu.be/qQruArbu2Ew)をご覧ください)。パスワード ハッシュ同期は、AD FS インフラストラクチャに障害が発生した場合のディザスター リカバリーに役立ちます。また、漏えいした資格情報を保護するためにも役立ちます。 詳細については、「[Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)」を参照してください。
 
@@ -65,7 +63,7 @@ Azure AD と Azure AD DS を使用せずに、IaaS VM 単独でオンプレミ�
 
 フェデレーションの使用時に、パスワード ハッシュが正常に同期されていても認証エラーが発生する場合は、PowerShell サービス プリンシパルのクラウド パスワード認証が有効になっているかどうかを確認します。 有効でない場合は、Azure AD テナントに[ホーム領域の検出 (HRD) ポリシー](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)を設定する必要があります。 HRD ポリシーを確認し、設定するには:
 
-1. プレビューの [Azure AD PowerShell モジュール](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2)をインストールします。
+1. プレビューの [Azure AD PowerShell モジュール](/powershell/azure/active-directory/install-adv2)をインストールします。
 
    ```powershell
    Install-Module AzureAD

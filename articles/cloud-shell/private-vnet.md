@@ -14,16 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 1cb5716e2f02a99e4d39a4041a2e54e87cf43568
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 58f6c7a3b5d68d2825cead545ba1b683d1faf1af
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114661"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222804"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Azure 仮想ネットワークに Cloud Shell をデプロイする
-> [!NOTE]
-> この機能はパブリック プレビュー段階です。
 
 通常の Cloud Shell セッションは、リソースとは別の Microsoft ネットワーク内のコンテナーで実行されます。 これは、コンテナー内で実行されているコマンドが、特定の仮想ネットワークからのみアクセスできるリソースにアクセスできないことを意味します。 たとえば、SSH を使用して、Cloud Shell からプライベート IP アドレスのみを持つ仮想マシンに接続したり、kubectl を使用して、アクセスがロックダウンされた Kubernetes クラスターに接続したりすることはできません。 
 
@@ -52,7 +50,7 @@ Cloud Shell に使用する目的の仮想ネットワークを識別する必�
 ネットワーク プロファイルは、リソースの特定のネットワーク プロパティを指定する Azure リソースのネットワーク構成テンプレートです。
 
 ### <a name="azure-relay"></a>Azure Relay
-[Azure Relay](https://docs.microsoft.com/azure/azure-relay/relay-what-is-it) を使用すると、直接到達できない 2 つのエンドポイントが通信できるようになります。 この場合、これは管理者のブラウザーがプライベート ネットワーク内のコンテナーと通信できるようにするために使用されます。
+[Azure Relay](../azure-relay/relay-what-is-it.md) を使用すると、直接到達できない 2 つのエンドポイントが通信できるようになります。 この場合、これは管理者のブラウザーがプライベート ネットワーク内のコンテナーと通信できるようにするために使用されます。
 
 Cloud Shell に使用される Azure Relay インスタンスは、コンテナー リソースにアクセスできるネットワークを制御するように構成できます。 
 - パブリック インターネットからアクセス可能:この構成では、Cloud Shell は、外部から内部リソースに接続する手段を提供します。 
@@ -64,9 +62,9 @@ Cloud Shell に使用される Azure Relay インスタンスは、コンテナ�
 ## <a name="virtual-network-deployment-limitations"></a>仮想ネットワークのデプロイに関する制限事項
 * 追加のネットワーク リソースが関係しているため、通常、仮想ネットワークで Cloud Shell を開始するには、標準の Cloud Shell セッションよりも時間がかかります。
 
-* プレビュー期間中は、仮想ネットワーク内の Cloud Shell でサポートされるリージョンが少なくなっています。 現時点では、次のものに制限されています。WestUS と WestCentralUS。
+* 現在、インド中部以外のすべての Cloud Shell リージョンがサポートされています。 
 
-* [Azure Relay](https://docs.microsoft.com/azure/azure-relay/relay-what-is-it) は無料のサービスではありません。[価格](https://azure.microsoft.com/pricing/details/service-bus/)をご確認ください。 Cloud Shell シナリオでは、Cloud Shell を使用している間、管理者ごとに 1 つのハイブリッド接続が使用されます。 Cloud Shell セッションが完了すると、接続は自動的にシャットダウンされます。
+* [Azure Relay](../azure-relay/relay-what-is-it.md) は無料のサービスではありません。[価格](https://azure.microsoft.com/pricing/details/service-bus/)をご確認ください。 Cloud Shell シナリオでは、Cloud Shell を使用している間、管理者ごとに 1 つのハイブリッド接続が使用されます。 Cloud Shell セッションが完了すると、接続は自動的にシャットダウンされます。
 
 ## <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
 
@@ -90,9 +88,6 @@ ResourceTypes                             RegistrationState
 
 Azure portal で、または Azure CLI や Azure PowerShell などを使用して、リソース グループと、その新しいリソース グループ内に仮想ネットワークを作成します。**リソース グループと仮想ネットワークは同じリージョンに存在する必要があります**。
 
-> [!NOTE]
-> パブリック プレビューの段階は、リソース グループと仮想ネットワークが WestCentralUS または WestUS のいずれかに配置されている必要があります。
-
 ### <a name="arm-templates"></a>ARM テンプレート
 [Azure クイックスタート テンプレート](https://aka.ms/cloudshell/docs/vnet/template)を利用して仮想ネットワーク内に Cloud Shell リソースを作成し、[Azure クイックスタート テンプレート](https://aka.ms/cloudshell/docs/vnet/template/storage)を使用して必要なストレージを作成します。 リソース名 (主にファイル共有名) をメモしておきます。
 
@@ -114,4 +109,4 @@ Cloud Shell に接続すると、最初の実行エクスペリエンスを示�
 ![Cloud Shell 分離 VNET の最初のエクスペリエンス設定を示す図。](media/private-vnet/vnet-settings.png)
 
 ## <a name="next-steps"></a>次のステップ
-[Azure 仮想ネットワークについて](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+[Azure 仮想ネットワークについて](../virtual-network/virtual-networks-overview.md)

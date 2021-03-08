@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 44077c2685ce78b7ba1ea140a34dd75dcf5c7c46
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e1440feacd10935b15195110cd7ea3e20b4d523c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543467"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687636"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>チュートリアル:Azure Active Directory と SAML SSO for Jira by resolution GmbH の統合
 
@@ -27,7 +27,7 @@ SAML SSO for Jira by resolution GmbH と Azure AD の統合には、次の利点
 * SAML SSO for Jira by resolution GmbH を使用することで、ユーザーが自分の Azure AD アカウントで Jira に自動的にサインインするように設定できます (シングル サインオン)。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -99,7 +99,7 @@ SAML SSO for Jira by resolution GmbH でシングル サインオンを構成す
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順のようにします。
 
-    ![[SAML SSO for Jira by resolution GmbH のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![[識別子] と [応答 URL] が強調表示され、[保存] ボタンが選択されている [基本的な SAML 構成] セクションを示すスクリーンショット。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` の形式で URL を入力します。
 
@@ -124,37 +124,37 @@ SAML SSO for Jira by resolution GmbH でシングル サインオンを構成す
 
 2. 右側にある歯車アイコンをポイントし、 **[Manage apps]\(アプリの管理\)** をクリックします。
     
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon1.png)
+    !["歯車" アイコンを指している矢印と、ドロップダウンから選択された [Manage apps]\(アプリの管理\) を示すスクリーンショット。](./media/samlssojira-tutorial/addon1.png)
 
 3. [Administrator Access]\(管理者アクセス\) ページにリダイレクトされる場合は、 **[Password]\(パスワード\)** を入力し、 **[Confirm]\(確認\)** ボタンをクリックします。
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon2.png)
+    ![[Administrator Access]\(管理者アクセス\) ページを示すスクリーンショット。](./media/samlssojira-tutorial/addon2.png)
 
 4. Jira では通常、Atlassian マーケットプレースにリダイレクトされます。 そうでない場合は、左側のパネルで **[Find new apps]\(新しいアプリの検索\)** をクリックします。 **[SAML Single Sign On (SSO) for JIRA]\(JIRA の SAML シングル サインオン \(SSO\)\)** を検索し、 **[Install]\(インストール\)** ボタンをクリックして、SAML プラグインをインストールします。
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/store.png)
+    ![[Atlassian Marketplace for JIRA]\(JIRA の Atlassian マーケットプレース\) を示すスクリーンショット。[S A M L Single Sign On (S S O) Jira, S A M L/S S O]\(S A M L シングル サインオン (S S O) Jira、S A M L/S S O\) アプリの [Install]\(インストール\) ボタンを指している矢印が表示されています。](./media/samlssojira-tutorial/store.png)
 
 5. プラグインのインストールが開始されます。 終わったら、 **[Close]\(閉じる\)** ボタンをクリックします。
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/store-2.png)
+    ![[Installing]\(インストール中\) ダイアログを示すスクリーンショット。](./media/samlssojira-tutorial/store-2.png)
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/store-3.png)
+    !["Installed and ready to go!"\(インストールされ、使用できるようになりました\) と示すスクリーンショット。 [Close]\(閉じる\) ボタンが選択されているダイアログ。](./media/samlssojira-tutorial/store-3.png)
 
 6. 次に、 **[Manage]\(管理\)** をクリックします。
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/store-4.png)
+    ![[S A M L Single Sign On (S S O) Jira, S A M L/S S O]\(S A M L シングル サインオン (S S O) Jira、S A M L/S S O\) アプリを示すスクリーンショット。[Manage]\(管理\) ボタンが選択されています。](./media/samlssojira-tutorial/store-4.png)
     
 8. その後、 **[Configure]\(構成\)** をクリックして、インストールしたばかりのプラグインを構成します。
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/store-5.png)
+    ![[Manage apps]\(アプリの管理\) ページを示すスクリーンショット。[S A M L SingleSignOn for Jira]\(Jira の S A M L シングル サインオン\) アプリの [Configure]\(構成\) ボタンが選択されています。](./media/samlssojira-tutorial/store-5.png)
 
 9. **[SAML SingleSignOn Plugin Configuration]\(SAML SingleSignOn プラグインの構成\)** ウィザードで **[Add new IdP]\(新しい IDP の追加\)** をクリックし、新しい ID プロバイダーとして Azure AD を構成します。
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon4.png) 
+    ![[Welcome]\(ようこそ\) ページを示すスクリーンショット。[Add new I d P]\(新しい I D P の追加\) ボタンが選択されています。](./media/samlssojira-tutorial/addon4.png) 
 
 10. **[Choose your SAML Identity Provider]\(SAML ID プロバイダーの選択\)** ページで、次の手順のようにします。
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon5a.png)
+    ![[Choose your S A M L Identity Provider]\(S A M L I D プロバイダーの選択\) ページを示すスクリーンショット。[I d P Type]\(I d P の種類\) および [Name]\(名前\) テキスト ボックスが強調表示され、[Next]\(次へ\) ボタンが選択されています。](./media/samlssojira-tutorial/addon5a.png)
  
     a. IDP の種類として **[Azure AD]** を設定します。
     
@@ -166,13 +166,13 @@ SAML SSO for Jira by resolution GmbH でシングル サインオンを構成す
     
 11. **[Identity provider configuration]\(ID プロバイダーの構成\)** ページで、 **[次へ]** をクリックします。
  
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon5b.png)
+    ![[Identity provider configuration]\(I D プロバイダーの構成\) ページを示すスクリーンショット。](./media/samlssojira-tutorial/addon5b.png)
 
 12. **[Import SAML IdP Metadata]\(SAML IDP メタデータのインポート\)** ページで、次の手順を実行します。
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon5c.png)
+    ![[Import S A M L I d P Metadata]\(S A M L I D P メタデータのインポート\) ページを示すスクリーンショット。[Select Metadata X M L File]\(メタデータ X M L ファイルの選択\) アクションが選択されています。](./media/samlssojira-tutorial/addon5c.png)
 
-    a. **[Select Metadata XML File]\(メタデータ XML ファイルの選択\)** ボタンをクリックし、前にダウンロードした**フェデレーション メタデータ XML** ファイルを選択します。
+    a. **[Select Metadata XML File]\(メタデータ XML ファイルの選択\)** ボタンをクリックし、前にダウンロードした **フェデレーション メタデータ XML** ファイルを選択します。
 
     b. **[Import]\(インポート\)** ボタンをクリックします。
      
@@ -182,19 +182,19 @@ SAML SSO for Jira by resolution GmbH でシングル サインオンを構成す
     
 13. **[User ID attribute and transformation]\(ユーザーの ID 属性と変換\)** ページで、 **[Next]\(次へ\)** ボタンをクリックします。
 
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon5d.png)
+    ![[User I D attribute and transformation]\(ユーザーの I D 属性と変換\) ページを示すスクリーンショット。[Next]\(次へ\) ボタンが選択されています。](./media/samlssojira-tutorial/addon5d.png)
     
 14. **[User creation and update]\(ユーザーの作成と更新\)** ページで、 **[Save & Next]\(保存して次へ\)** をクリックして設定を保存します。
     
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon6a.png)
+    ![[User creation and update]\(ユーザーの作成と更新\) ページを示すスクリーンショット。[Next]\(次へ\) ボタンが選択されています。](./media/samlssojira-tutorial/addon6a.png)
     
 15. **[Test your settings]\(設定のテスト\)** ページで、 **[Skip test & configure manually]\(テストをスキップして手動で構成\)** をクリックして、今はユーザー テストをスキップします。 テストは次のセクションで実行し、Azure portal でいくつか設定する必要があります。
     
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon6b.png)
+    ![[Test your settings]\(設定のテスト\) ページを示すスクリーンショット。[Skip test & configure manually]\(テストをスキップして手動で構成\) ボタンが選択されています。](./media/samlssojira-tutorial/addon6b.png)
     
 16. **[OK]** をクリックして警告をスキップします。
     
-    ![Configure single sign-on](./media/samlssojira-tutorial/addon6c.png)
+    ![[O K] ボタンが選択されている警告ダイアログを示すスクリーンショット。](./media/samlssojira-tutorial/addon6c.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -256,15 +256,15 @@ Azure AD ユーザーが SAML SSO for Jira by resolution GmbH にサインイン
 
 2. 歯車アイコンをポイントし、 **[User management]\(ユーザー管理\)** を選択します。
 
-   ![従業員の追加](./media/samlssojira-tutorial/user1.png)
+   !["歯車" アイコンを指している矢印と、ドロップダウンから選択された [User management]\(ユーザー管理\) を示すスクリーンショット。](./media/samlssojira-tutorial/user1.png)
 
 3. [Administrator Access]\(管理者アクセス\) ページにリダイレクトされる場合は、 **[Password]\(パスワード\)** を入力し、 **[Confirm]\(確認\)** ボタンをクリックします。
 
-    ![従業員の追加](./media/samlssojira-tutorial/user2.png) 
+    ![[Administrator Access]\(管理者アクセス\) ページを示すスクリーンショット。[Password]\(パスワード\) テキスト ボックスが強調表示されています。](./media/samlssojira-tutorial/user2.png) 
 
 4. **[User management]\(ユーザー管理\)** タブ セクションで、 **[create user]\(ユーザーの作成\)** をクリックします。
 
-    ![従業員の追加](./media/samlssojira-tutorial/user3-new.png) 
+    ![[User management]\(ユーザー管理\) タブを示すスクリーンショット。[Create user]\(ユーザーの作成\) ボタンが選択されています。](./media/samlssojira-tutorial/user3-new.png) 
 
 5. **[Create new user]\(新しいユーザーの作成\)** ダイアログ ページで、次の手順のようにします。 Azure AD とまったく同じようにユーザーを作成する必要があります。
 
@@ -284,18 +284,18 @@ Azure AD ユーザーが SAML SSO for Jira by resolution GmbH にサインイン
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [SAML SSO for Jira by resolution GmbH] タイルをクリックすると、SSO を設定した SAML SSO for Jira by resolution GmbH に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [SAML SSO for Jira by resolution GmbH] タイルをクリックすると、SSO を設定した SAML SSO for Jira by resolution GmbH に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 `https://<server-base-url>/plugins/servlet/samlsso` に移動すると、シングル サインオンをテストすることもできます。 **\<server-base-url>** は、Jira インスタンスのベース URL に置き換えます。
 
 
 ## <a name="enable-single-sign-on-redirection-for-jira"></a>Jira のシングル サインオン リダイレクトを有効にする
 
-前のセクションで説明したように、現在、シングル サインオンをトリガーするには 2 つの方法があります。 **Azure portal** を使用するか、または **Jira インスタンスへの特別なリンク**を使用します。 resolution GmbH による SAML SSO プラグインでは、単純に **Jira インスタンスを指している任意の URL にアクセスする**ことでシングル サインオンをトリガーすることもできます。
+前のセクションで説明したように、現在、シングル サインオンをトリガーするには 2 つの方法があります。 **Azure portal** を使用するか、または **Jira インスタンスへの特別なリンク** を使用します。 resolution GmbH による SAML SSO プラグインでは、単純に **Jira インスタンスを指している任意の URL にアクセスする** ことでシングル サインオンをトリガーすることもできます。
 
 基本的に、Jira にアクセスするすべてのユーザーは、プラグインでオプションをアクティブ化した後、シングル サインオンにリダイレクトされます。
 
-SSO リダイレクトを有効にするには、**お使いの Jira インスタンス**で次のようにします。
+SSO リダイレクトを有効にするには、**お使いの Jira インスタンス** で次のようにします。
 
 1. Jira で SAML SSO プラグインの構成ページにアクセスします。
 1. 左側のパネルで **[Redirection]\(リダイレクト\)** をクリックします。
@@ -308,14 +308,13 @@ SSO リダイレクトを有効にするには、**お使いの Jira インス�
 
 1. 右上隅の **[Save Settings]\(設定の保存\)** ボタンをクリックします。
 
-`https://\<server-base-url>/login.jsp?nosso` に移動して **[Enable nosso]\(nosso を有効にする\)** をオンにした場合は、このオプションを有効にした後でもユーザー名とパスワードの入力を求められることがあります。 やはり、 **\<server-base-url>** はベース URL に置き換えます。
+`https://<server-base-url>/login.jsp?nosso` に移動して **[Enable nosso]\(nosso を有効にする\)** をオンにした場合は、このオプションを有効にした後でもユーザー名とパスワードの入力を求められることがあります。 やはり、 **\<server-base-url>** はベース URL に置き換えます。
 
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

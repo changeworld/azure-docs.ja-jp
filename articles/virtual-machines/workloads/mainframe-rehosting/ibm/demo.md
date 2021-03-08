@@ -3,6 +3,7 @@ title: IBM zD&T v1 の Application Developers Controlled Distribution (ADCD) を
 description: Azure Virtual Machines (VM) 上で、IBM Z Development and Test Environment (zD&T) 環境を実行します。
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 manager: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: b2509539551b3991690e6d0313e069ae015eb892
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c76768fa94b524763ac8ad94c9c3f5bb3a73dddb
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052405"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219440"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>IBM zD&T v1 の Application Developers Controlled Distribution (ADCD) を設定する
 
@@ -37,9 +38,9 @@ zD&T 同様、ADCD は IBM のお客様とパートナー様だけが利用で�
 
 - [ライセンス サーバー](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.tools.user.guide.doc/topics/zdt_ee.html)。 これは IBM zD&T を実行するために必要です。 これを作成する方法は、IBM からソフトウェアのライセンスをどのように取得するかによって異なります。
 
-  - **ハードウェア ベースのライセンス サーバー**では、ソフトウェアのすべての部分にアクセスするために必要な Rational Token を含む USB ハードウェア デバイスが必要です。 これは、IBM から取得する必要があります。
+  - **ハードウェア ベースのライセンス サーバー** では、ソフトウェアのすべての部分にアクセスするために必要な Rational Token を含む USB ハードウェア デバイスが必要です。 これは、IBM から取得する必要があります。
 
-  - **ソフトウェア ベースのライセンス サーバー**では、ライセンス キーを管理するための集中管理サーバーを設定する必要があります。 この方法が推奨されます。IBM から受け取ったキーを管理サーバーに設定する必要があります。
+  - **ソフトウェア ベースのライセンス サーバー** では、ライセンス キーを管理するための集中管理サーバーを設定する必要があります。 この方法が推奨されます。IBM から受け取ったキーを管理サーバーに設定する必要があります。
 
 ## <a name="download-the-installation-packages-from-passport-advantage"></a>パスポート アドバンテージからインストール パッケージをダウンロードする
 
@@ -119,7 +120,7 @@ ADCD メディアへのアクセスが必要です。 以下の手順は、IBM �
 
 5. **[Host name]\(ホスト名\)** として「**Localhost**」と入力し、イメージをアップロードしたディレクトリのパスを入力します。 例: /home/MyUserID/ZDT/adcd/nov2017/volumes。
 
-6. VM の**ユーザー ID** と**パスワード**を入力します。 zD&T のユーザー ID とパスワードは使用しないでください。
+6. VM の **ユーザー ID** と **パスワード** を入力します。 zD&T のユーザー ID とパスワードは使用しないでください。
 
 7. 接続をテストしてアクセスできることを確認し、 **[Save]\(保存\)** を選択して構成を保存します。
 
@@ -189,7 +190,7 @@ ADCD メディアへのアクセスが必要です。 以下の手順は、IBM �
 ## <a name="learn-more"></a>詳細情報
 
 - [メインフレームの移行: 通説と事実](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
-- [Azure 上の IBM DB2 pureScale](../../../linux/ibm-db2-purescale-azure.md)
+- [Azure 上の IBM DB2 pureScale](ibm-db2-purescale-azure.md)
 - [トラブルシューティング](../../../troubleshooting/index.yml)
 - [メインフレームから Azure への移行の解明](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 

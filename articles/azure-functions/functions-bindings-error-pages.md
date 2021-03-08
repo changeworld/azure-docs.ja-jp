@@ -1,18 +1,18 @@
 ---
-title: Azure Functions エラー処理ガイダンス
-description: Azure Functions のエラーを処理する方法を説明し、特定のバインド エラーへのリンクを示します。
+title: Azure Functions のエラー処理と再試行のガイダンス
+description: Azure Functions のエラーと再試行イベントを処理する方法を説明し、特定のバインド エラーへのリンクを示します。
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 10/01/2020
 ms.author: cshoe
-ms.openlocfilehash: befdb4a8cceaef18961c1e9297e23ed5d405ff50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e52babd5b0612b4590f1422a941b25ba30c3f169
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77586191"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93284457"
 ---
-# <a name="azure-functions-error-handling"></a>Azure Functions のエラー処理
+# <a name="azure-functions-error-handling-and-retries"></a>Azure Functions のエラー処理と再試行
 
 Azure Functions でエラーを処理することは、データの喪失やイベントの漏れを防ぎ、アプリケーションの正常性を監視するために重要です。
 
@@ -20,11 +20,11 @@ Azure Functions でエラーを処理することは、データの喪失やイ�
 
 ## <a name="handling-errors"></a>エラーの処理
 
-[!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
+[!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-retries.md)]
 
 ## <a name="binding-error-codes"></a>エラー コードのバインド
 
-Azure サービスと統合すると、基盤となるサービスの API からのエラーが発生する場合があります。 バインド固有のエラーに関する情報は、以下の記事の「**例外とリターン コード**」セクションにあります。
+Azure サービスと統合すると、基盤となるサービスの API からのエラーが発生する場合があります。 バインド固有のエラーに関する情報は、以下の記事の「 **例外とリターン コード** 」セクションにあります。
 
 + [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 
@@ -40,4 +40,4 @@ Azure サービスと統合すると、基盤となるサービスの API から
 
 + [Service Bus](functions-bindings-service-bus-output.md#exceptions-and-return-codes)
 
-+ [Table Storage](functions-bindings-storage-table.md#exceptions-and-return-codes)
++ [Table Storage](functions-bindings-storage-table-output.md#exceptions-and-return-codes)

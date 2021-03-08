@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight クラスターをカスタマイズするスクリプト 操作を開発します。
 description: Bash スクリプトを使用して HDInsight クラスターをカスタマイズする方法について説明します。 スクリプト 操作により、クラスター作成の最中または後にクラスターの構成設定を変更または追加のソフトウェアをインストールすることができます。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: 08354e212b8ca3cae642b599f25ed318e79f581c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b6705728fddc9a5a3c9cb8eb2f1811412fb3a290
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082252"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945479"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight でのスクリプト アクション開発
 
@@ -239,7 +236,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |元の URI から指定されたファイルのパスに、ファイルをダウンロードします。 既定では、既存のファイルは上書きされません。 |
 | `untar_file TARFILE DESTDIR` |tar ファイルを (`-xf`を使用して) インストール先ディレクトリに抽出します。 |
-| `test_is_headnode` |クラスターのヘッド ノードで実行された場合は 1 を返し、それ以外の場合は 0 を返します。 |
+| `test_is_headnode` |スクリプトがクラスターのヘッド ノードで実行された場合は 1 が返され、それ以外の場合は 0 が返されます。 |
 | `test_is_datanode` |現在のノードがデータ (ワーカー) ノードの場合は 1 を返し、それ以外の場合は 0 を返します。 |
 | `test_is_first_datanode` |現在のノードが最初のデータ (ワーカー) ノード (workernode0) の場合は 1 を返し、それ以外の場合は 0 を返します。 |
 | `get_headnodes` |クラスターのヘッドノードの完全修飾ドメイン名が返されます。 名前はコンマで区切られます。 エラーの場合は、空の文字列が返されます。 |
@@ -256,7 +253,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 場合によっては、スクリプトにパラメーターが必要な場合があります。 たとえば、Ambari の REST API の使用時に、クラスターの管理者パスワードが必要になる場合があります。
 
-スクリプトに渡されるパラメーターは*位置指定パラメーター*と呼ばれ、最初のパラメーターでは `$1` に、2 番目のパラメーターでは `$2` に割り当てられ、以下同様です。 `$0` にはスクリプト自体の名前が含まれています。
+スクリプトに渡されるパラメーターは *位置指定パラメーター* と呼ばれ、最初のパラメーターでは `$1` に、2 番目のパラメーターでは `$2` に割り当てられ、以下同様です。 `$0` にはスクリプト自体の名前が含まれています。
 
 パラメーターとしてスクリプトに渡される値は、単一引用符 (') で囲む必要があります。 これにより、渡された値はリテラルとして処理されます。
 
@@ -268,7 +265,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 VARIABLENAME=value
 ```
 
-VARIABLENAME は、変数の名前です。 変数にアクセスするには、`$VARIABLENAME` を使用します。 たとえば、PASSWORD という名前の環境変数として位置指定パラメーターで指定された値を割り当てるには、次のステートメントを使用します。
+前の例で、`VARIABLENAME` は変数の名前です。 変数にアクセスするには、`$VARIABLENAME` を使用します。 たとえば、PASSWORD という名前の環境変数として位置指定パラメーターで指定された値を割り当てるには、次のステートメントを使用します。
 
 ```bash
 PASSWORD=$1
@@ -292,7 +289,7 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 * __パブリックに読み取り可能な URI__。 たとえば、OneDrive、Dropbox、その他の ホスティング サービスに格納されたデータの URL。
 
-* HDInsight クラスターに関連付けられている __Azure Data Lake Storage アカウント__。 HDInsight での Azure Data Lake Storage の使用の詳細については、「[クイック スタート:HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
+* HDInsight クラスターに関連付けられている __Azure Data Lake Storage アカウント__。 HDInsight での Azure Data Lake Storage の使用の詳細については、「[クイック スタート:HDInsight のクラスターを設定する](./hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
 
     > [!NOTE]  
     > HDInsight が Data Lake Storage へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。
@@ -365,5 +362,5 @@ awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 ## <a name="next-steps"></a><a name="seeAlso"></a>次のステップ
 
 * [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)
-* [HDInsight .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) を使用して、HDInsight を管理する .NET アプリケーションの作成の詳細について理解します。
-* [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) を使用して、REST を使って HDInsight クラスターで管理操作を実行する方法について理解します。
+* [HDInsight .NET SDK リファレンス](/dotnet/api/overview/azure/hdinsight) を使用して、HDInsight を管理する .NET アプリケーションの作成の詳細について理解します。
+* [HDInsight REST API](/rest/api/hdinsight/) を使用して、REST を使って HDInsight クラスターで管理操作を実行する方法について理解します。

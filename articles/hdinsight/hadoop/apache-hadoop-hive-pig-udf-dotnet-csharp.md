@@ -1,19 +1,16 @@
 ---
 title: Apache Hadoop 上での C#、Apache Hive、Apache Pig - Azure HDInsight
 description: Azure HDInsight 上の Apache Hive と Apache Pig のストリーミングで C# のユーザー定義関数 (UDF) を使用する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
-ms.openlocfilehash: 5e32e269a36196d774bb1163a1c70c5d818ddcbb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 97b23a2b9e3b95a5ea0efcd27d0ec185b1c456f1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000619"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946547"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop の Apache Hive と Apache Pig で C# のユーザー定義関数を使用する
 
@@ -30,7 +27,7 @@ Hive と Pig では、両方とも、外部のアプリケーションにデー�
 
     必要なすべての IDE を使用します。 [Visual Studio](https://www.visualstudio.com/vs)または [Visual Studio Code](https://code.visualstudio.com/) をお勧めします。 このドキュメントの手順では、Visual Studio 2019 を使用します。
 
-* .exe ファイルをクラスターにアップロードして Pig と Hive のジョブを実行する方法。 [Data Lake Tools for Visual Studio](../../data-lake-analytics/data-lake-analytics-data-lake-tools-install.md)、[Azure PowerShell](/powershell/azure)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をお勧めします。 このドキュメントの手順では、Visual Studio の Data Lake ツールを使用して、ファイルをアップロードし、サンプルの Hive クエリを実行します。
+* .exe ファイルをクラスターにアップロードして Pig と Hive のジョブを実行する方法。 [Data Lake Tools for Visual Studio](../../data-lake-analytics/data-lake-analytics-data-lake-tools-install.md)、[Azure PowerShell](/powershell/azure)、[Azure CLI](/cli/azure/install-azure-cli) をお勧めします。 このドキュメントの手順では、Visual Studio の Data Lake ツールを使用して、ファイルをアップロードし、サンプルの Hive クエリを実行します。
 
     Hive クエリを実行する他の方法については、「[Azure HDInsight における Apache Hive と HiveQL](hdinsight-use-hive.md)」を参照してください。
 
@@ -58,7 +55,7 @@ Apache Hive UDF の C# プロジェクトを作成するには、次のように
 
 3. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** テンプレート (C# バージョン) を選択します。 **[次へ]** を選択します。
 
-4. **[新しいプロジェクトを構成します]** ウィンドウで、*HiveCSharp* の**プロジェクト名**を入力し、新しいプロジェクトを保存する**場所**に移動または場所を作成します。 **[作成]** を選択します。
+4. **[新しいプロジェクトを構成します]** ウィンドウで、*HiveCSharp* の **プロジェクト名** を入力し、新しいプロジェクトを保存する **場所** に移動または場所を作成します。 **[作成]** を選択します。
 
 5. Visual Studio IDE で、*Program.cs* の内容を次のコードに置き換えます。
 
@@ -125,7 +122,7 @@ Apache Hive UDF の C# プロジェクトを作成するには、次のように
 
 3. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** テンプレート (C# バージョン) を選択します。 **[次へ]** を選択します。
 
-4. **[新しいプロジェクトを構成します]** ウィンドウで、*PigUDF* の**プロジェクト名**を入力し、新しいプロジェクトを保存する**場所**に移動または場所を作成します。 **[作成]** を選択します。
+4. **[新しいプロジェクトを構成します]** ウィンドウで、*PigUDF* の **プロジェクト名** を入力し、新しいプロジェクトを保存する **場所** に移動または場所を作成します。 **[作成]** を選択します。
 
 5. Visual Studio IDE で、*Program.cs* の内容を次のコードに置き換えます。
 
@@ -176,13 +173,13 @@ Apache Hive UDF の C# プロジェクトを作成するには、次のように
 
     ![既定のストレージ アカウント、HDInsight クラスター、サーバー エクスプローラー](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
 
-    * このエントリを展開できる場合は、クラスターの既定のストレージとして **Azure ストレージ アカウント**を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、 **[(既定のコンテナー)]** をダブルクリックします。
+    * このエントリを展開できる場合は、クラスターの既定のストレージとして **Azure ストレージ アカウント** を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、 **[(既定のコンテナー)]** をダブルクリックします。
 
     * このエントリを展開できない場合は、クラスターの既定のストレージとして **Azure Data Lake Storage** を使用します。 クラスターの既定のストレージにファイルを表示するには、 **(既定のストレージ アカウント)** エントリをダブルクリックします。
 
 1. .exe ファイルをアップロードするには、次のいずれかの方法を使用します。
 
-    * **Azure ストレージ アカウント**を使用している場合は、 **[BLOB のアップロード]** アイコンを選択します。
+    * **Azure ストレージ アカウント** を使用している場合は、 **[BLOB のアップロード]** アイコンを選択します。
 
         ![新しいプロジェクトの HDInsight アップロード アイコン](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
 

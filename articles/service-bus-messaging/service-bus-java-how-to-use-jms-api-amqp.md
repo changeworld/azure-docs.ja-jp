@@ -1,52 +1,56 @@
 ---
 title: Java Message Service API と Azure Service Bus で AMQP を使用する
-description: Java Message Service (JMS) API を Azure Service Bus と Advanced Message Queuing Protodol (AMQP) 1.0 と共に使用する方法。
+description: Java Message Service (JMS) を Azure Service Bus と Advanced Message Queuing Protodol (AMQP) 1.0 と共に使用する。
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: be6b5de7946fc54ab58087fccabed9f5ed09251d
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 97031abaedaa3e5595e290fa0292646feb744d47
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065779"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90086693"
 ---
-# <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Azure Service Bus と AMQP 1.0 で Java Message Service (JMS) を使用する
+# <a name="use-the-java-message-service-with-azure-service-bus-and-amqp-10"></a>Azure Service Bus と AMQP 1.0 で Java Message Service を使用する
 
 > [!WARNING]
-> 次のガイドは、Java Message Service (JMS) 1.1 API の**限定的なサポート**に対応し、Azure Service Bus Standard レベルのみが対象です。
+> この記事は、Java Message Service (JMS) 1.1 API の "*限定的なサポート*" に対応し、Azure Service Bus Standard レベルのみが対象です。
 >
-> Java Message Service (JMS) 2.0 API の完全なサポートは、[プレビューの Azure Service Bus Premium レベル](how-to-use-java-message-service-20.md)でのみ使用できます。こちらを強くお勧めします。
+> Java Message Service 2.0 API の完全なサポートは、[プレビューの Azure Service Bus Premium レベル](how-to-use-java-message-service-20.md)でのみ使用できます。 このレベルを使用することをお勧めします。
 >
 
-この記事では、一般的な Java Message Service (JMS) API 規格を使用して Java アプリケーションから Azure Service Bus のメッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明します。 Azure Service Bus .NET API を使用して同じ作業を実行する方法が説明されている[関連記事](service-bus-amqp-dotnet.md)があります。 これら 2 種類のガイドを使用して、AMQP 1.0 を使用したクロスプラットフォームのメッセージングについて学習できます。
+この記事では、一般的な JMS API 標準を使用して Java アプリケーションから Service Bus メッセージング機能を使用する方法について説明します。 これらのメッセージング機能には、キュー、トピックの発行/サブスクライブなどが含まれます。 [関連記事](service-bus-amqp-dotnet.md)では、Azure Service Bus .NET API を使用して同じ作業を実行する方法について説明しています。 これらの 2 つの記事を併せて使用すると、Advanced Message Queuing Protocol (AMQP) 1.0 を使用したクロスプラットフォーム メッセージングについて学習できます。
 
-Advanced Message Queuing Protocol (AMQP) 1.0 は、堅牢なクロスプラットフォーム メッセージング アプリケーションを作成するために使用できる、効率的で信頼性の高い回線レベルのメッセージング プロトコルです。
+AMQP 1.0 は、堅牢なクロス プラットフォーム メッセージング アプリケーションを作成するために使用できる、効率的で信頼性の高い回線レベルのメッセージング プロトコルです。
 
-Azure Service Bus での AMQP 1.0 のサポートにより、ブローカー メッセージング機能 (キューおよびトピック発行/サブスクライブ) をさまざまなプラットフォームから効率的なバイナリ プロトコルを使って利用できます。 さらに、さまざまな言語、フレームワーク、およびオペレーティング システムを使って作成されたコンポーネントで構成されたアプリケーションを作成できます。
+Service Bus での AMQP 1.0 のサポートにより、仲介型メッセージング機能 (キュー、およびトピックの発行やサブスクライブ) をさまざまなプラットフォームから効率的なバイナリ プロトコルを使って利用できます。 また、さまざまな言語、フレームワーク、オペレーティング システムを使って作成されたコンポーネントで構成されるアプリケーションを作成できます。
 
 ## <a name="get-started-with-service-bus"></a>Service Bus の概要
-このガイドでは、`basicqueue` という名前のキューが含まれる Service Bus 名前空間が既にあることを前提とします。 まだない場合は、[Azure portal](https://portal.azure.com) を使用して[名前空間とキューを作成する](service-bus-create-namespace-portal.md)ことができます。 Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)」を参照してください。
+
+この記事は、`basicqueue` という名前のキューが含まれている Service Bus 名前空間が既にあることを前提としています。 まだない場合は、[Azure portal](https://portal.azure.com) を使用して[名前空間とキューを作成する](service-bus-create-namespace-portal.md)ことができます。 Service Bus 名前空間とキューの作成方法の詳細については、「[Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)」を参照してください。
 
 > [!NOTE]
 > パーティション分割されたキューおよびトピックも AMQP をサポートします。 詳細については、「[パーティション分割されたメッセージング エンティティ](service-bus-partitioning.md)」と「[パーティション分割された Service Bus のキューおよびトピックでの AMQP 1.0 のサポート](./service-bus-amqp-protocol-guide.md)」を参照してください。
 > 
 > 
 
-## <a name="downloading-the-amqp-10-jms-client-library"></a>AMQP 1.0 JMS クライアント ライブラリのダウンロード
-Apache Qpid JMS AMQP 1.0 クライアント ライブラリの最新バージョンをダウンロードする場所については、[https://qpid.apache.org/download.html](https://qpid.apache.org/download.html) を参照してください。
+## <a name="download-the-amqp-10-jms-client-library"></a>AMQP 1.0 JMS クライアント ライブラリをダウンロードする
 
-Service Bus を使用する JMS アプリケーションをビルドおよび実行するときは、以下の JAR ファイルを Apache Qpid JMS AMQP 1.0 ディストリビューション アーカイブから Java CLASSPATH に追加する必要があります。
+Apache Qpid JMS AMQP 1.0 クライアント ライブラリの最新バージョンをダウンロードする場所については、[Apache Qpid のダウンロード サイト](https://qpid.apache.org/download.html)をご覧ください。
+
+Service Bus を使用する JMS アプリケーションをビルドおよび実行するときは、Apache Qpid JMS AMQP 1.0 ディストリビューション アーカイブの以下の JAR ファイルを Java CLASSPATH 環境変数に追加する必要があります。
 
 * geronimo-jms\_1.1\_spec-1.0.jar
 * qpid-jms-client-[version].jar
 
 > [!NOTE]
-> JMS JAR 名およびバージョンが変更されている可能性があります。 詳細については、[Qpid JMS - AMQP 1.0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10) を参照してください。
+> JMS JAR 名およびバージョンが変更されている可能性があります。 詳細については、[Qpid JMS AMQP 1.0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10) のページをご覧ください。
 
-## <a name="coding-java-applications"></a>Java アプリケーションのコーディング
-### <a name="java-naming-and-directory-interface-jndi"></a>Java Naming and Directory Interface (JNDI)
-JMS では、Java Naming and Directory Interface (JNDI) を使用して論理名と物理名が関連付けられます。 JNDI を使用した名前解決には 2 種類の JMS オブジェクトが使用されます。ConnectionFactory と Destination です。 JNDI で使用されるプロバイダー モデルでは、さまざまなディレクトリ サービスに接続して、名前解決のタスクを処理できます。 Apache Qpid JMS AMQP 1.0 ライブラリには、次の形式のプロパティ ファイルを使用して構成されるシンプルなプロパティ ファイル ベースの JNDI Provider が付属しています。
+## <a name="code-java-applications"></a>Java アプリケーションのコーディング
+
+### <a name="java-naming-and-directory-interface"></a>Java Naming and Directory Interface
+
+JMS では、Java Naming and Directory Interface (JNDI) を使用して論理名と物理名が関連付けられます。 JNDI を使用して、2 種類の JMS オブジェクトが解決されます。**ConnectionFactory** と **Destination** です。 JNDI で使用されるプロバイダー モデルでは、さまざまなディレクトリ サービスに接続して、名前解決のタスクを処理できます。 Apache Qpid JMS AMQP 1.0 ライブラリには、次の形式のプロパティ ファイルを使用して構成されるシンプルなプロパティ ファイルベースの JNDI プロバイダーが付属しています。
 
 ```TEXT
 # servicebus.properties - sample JNDI configuration
@@ -61,16 +65,17 @@ connectionfactory.SBCF = amqps://[SASPolicyName]:[SASPolicyKey]@[namespace].serv
 queue.QUEUE = queue1
 ```
 
-#### <a name="setup-jndi-context-and-configure-the-connectionfactory"></a>JNDI コンテキストのセットアップと ConnectionFactory の構成
+#### <a name="set-up-jndi-context-and-configure-the-connectionfactory-object"></a>JNDI コンテキストのセットアップと ConnectionFactory オブジェクトの構成
 
-参照されている **ConnectionString** は、[Azure portal](https://portal.azure.com) の [共有アクセス ポリシー] の **[プライマリ接続文字列]** で使用可能な接続文字列です
+参照されている接続文字列は、[Azure portal](https://portal.azure.com) にある [共有アクセス ポリシー] の **[プライマリ接続文字列]** で使用可能なものです。
+
 ```java
 // The connection string builder is the only part of the azure-servicebus SDK library
 // we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
 // connection string. 
 ConnectionStringBuilder csb = new ConnectionStringBuilder(connectionString);
         
-// set up JNDI context
+// Set up JNDI context
 Hashtable<String, String> hashtable = new Hashtable<>();
 hashtable.put("connectionfactory.SBCF", "amqps://" + csb.getEndpoint().getHost() + "?amqp.idleTimeout=120000&amqp.traceFrames=true");
 hashtable.put("queue.QUEUE", "BasicQueue");
@@ -84,9 +89,10 @@ Destination queue = (Destination) context.lookup("QUEUE");
 ```
 
 #### <a name="configure-producer-and-consumer-destination-queues"></a>プロデューサーとコンシューマーの送信先キューの構成
-Qpid プロパティ ファイル JNDI プロバイダーで送信先の定義に使用するエントリは、次のような形式になります。
 
-プロデューサーの送信先キューを作成するには 
+Qpid プロパティ ファイルの JNDI プロバイダーで送信先の定義に使用するエントリは、次のような形式になります。
+
+プロデューサーの送信先キューを作成するには
 ```java
 String queueName = "queueName";
 Destination queue = (Destination) queueName;
@@ -96,11 +102,11 @@ Connection connection - cf.createConnection(csb.getSasKeyName(), csb.getSasKey()
 
 Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 
-// Create Producer
+// Create producer
 MessageProducer producer = session.createProducer(queue);
 ```
 
-コンシューマーの送信先キューを作成するには 
+コンシューマーの送信先キューを作成するには
 ```java
 String queueName = "queueName";
 Destination queue = (Destination) queueName;
@@ -110,18 +116,20 @@ Connection connection - cf.createConnection(csb.getSasKeyName(), csb.getSasKey()
 
 Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 
-// Create Consumer
+// Create consumer
 MessageConsumer consumer = session.createConsumer(queue);
 ```
 
 ### <a name="write-the-jms-application"></a>JMS アプリケーションの記述
-JMS と Service Bus の使用時に必要になる特殊な API やオプションはありません。 ただし、この後で取り上げているようないくつかの制限があります。 いずれの JMS アプリケーションでも、まず、**ConnectionFactory** と送信先の名前解決が可能になるように JNDI 環境を構成する必要があります。
 
-#### <a name="configure-the-jndi-initialcontext"></a>JNDI InitialContext の構成
-JNDI 環境を構成するには、構成情報のハッシュ テーブルを javax.naming.InitialContext クラスのコンストラクターに渡します。 ハッシュ テーブル内の 2 つの必須の要素は Initial Context Factory と Provider URL です。 次のコードでは、Qpid Properties File JNDI Provider と、**servicebus.properties** という名前のプロパティ ファイルを使用して、JNDI 環境を構成する方法を示しています。
+JMS と Service Bus を使用するときに特殊な API やオプションは必要ありません。 この後で取り上げるようないくつかの制限があります。 いずれの JMS アプリケーションでも、まず、**ConnectionFactory** オブジェクトと送信先の解決が可能になるように JNDI 環境を構成する必要があります。
+
+#### <a name="configure-the-jndi-initialcontext-object"></a>JNDI InitialContext オブジェクトの構成
+
+JNDI 環境を構成するには、構成情報のハッシュ テーブルを javax.naming.InitialContext クラスのコンストラクターに渡します。 ハッシュ テーブル内の 2 つの必須の要素は Initial Context Factory と Provider URL です。 次のコードでは、Qpid プロパティ ファイルベースの JNDI プロバイダーと、**servicebus.properties** という名前のプロパティ ファイルを使用して、JNDI 環境を構成する方法を示しています。
 
 ```java
-// set up JNDI context
+// Set up JNDI context
 Hashtable<String, String> hashtable = new Hashtable<>();
 hashtable.put("connectionfactory.SBCF", "amqps://" + csb.getEndpoint().getHost() + \
 "?amqp.idleTimeout=120000&amqp.traceFrames=true");
@@ -130,10 +138,11 @@ hashtable.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.jms.jndi.JmsInit
 Context context = new InitialContext(hashtable);
 ``` 
 
-### <a name="a-simple-jms-application-using-a-service-bus-queue"></a>Service Bus キューを使用するシンプルな JMS アプリケーション
-次のサンプル プログラムでは、JNDI 論理名が QUEUE の Service Bus キューに JMS TextMessages を送信し、折り返しそれらのメッセージを受信します。
+### <a name="a-simple-jms-application-that-uses-a-service-bus-queue"></a>Service Bus キューを使用するシンプルな JMS アプリケーション
 
-[Azure Service Bus サンプル JMS キュー クイック スタート](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client/JmsQueueQuickstart)から、すべてのソース コードと構成情報にアクセスできます
+次のサンプル プログラムでは、JNDI 論理名が QUEUE の Service Bus キューに JMS テキスト メッセージを送信し、折り返しそれらのメッセージを受信します。
+
+[Azure Service Bus サンプル JMS キュー クイック スタート](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client/JmsQueueQuickstart)から、すべてのソース コードと構成情報にアクセスできます。
 
 ```java
 // Copyright (c) Microsoft. All rights reserved.
@@ -153,9 +162,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 
 /**
- * This sample demonstrates how to send messages from a JMS Queue producer into
- * an Azure Service Bus Queue, and receive them with a JMS message consumer.
- * JMS Queue. 
+ * This sample demonstrates how to send messages from a JMS queue producer into
+ * an Azure Service Bus queue and receive them with a JMS message consumer.
+ * JMS queue. 
  */
 public class JmsQueueQuickstart {
 
@@ -173,7 +182,7 @@ public class JmsQueueQuickstart {
         // connection string. 
         ConnectionStringBuilder csb = new ConnectionStringBuilder(connectionString);
         
-        // set up JNDI context
+        // Set up JNDI context
         Hashtable<String, String> hashtable = new Hashtable<>();
         hashtable.put("connectionfactory.SBCF", "amqps://" + csb.getEndpoint().getHost() + "?amqp.idleTimeout=120000&amqp.traceFrames=true");
         hashtable.put("queue.QUEUE", "BasicQueue");
@@ -184,12 +193,12 @@ public class JmsQueueQuickstart {
         // Look up queue
         Destination queue = (Destination) context.lookup("QUEUE");
 
-        // we create a scope here so we can use the same set of local variables cleanly 
-        // again to show the receive side separately with minimal clutter
+        // We create a scope here so we can use the same set of local variables cleanly 
+        // again to show the receive side separately with minimal clutter.
         {
-            // Create Connection
+            // Create connection
             Connection connection = cf.createConnection(csb.getSasKeyName(), csb.getSasKey());
-            // Create Session, no transaction, client ack
+            // Create session, no transaction, client ack
             Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
 
             // Create producer
@@ -210,17 +219,17 @@ public class JmsQueueQuickstart {
         }
 
         {
-            // Create Connection
+            // Create connection
             Connection connection = cf.createConnection(csb.getSasKeyName(), csb.getSasKey());
             connection.start();
-            // Create Session, no transaction, client ack
+            // Create session, no transaction, client ack
             Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
             // Create consumer
             MessageConsumer consumer = session.createConsumer(queue);
-            // create a listener callback to receive the messages
+            // Create a listener callback to receive the messages
             consumer.setMessageListener(message -> {
                 try {
-                    // receives message is passed to callback
+                    // Received message is passed to callback
                     System.out.printf("Received message %d with sq#: %s\n",
                             totalReceived.incrementAndGet(), // increments the tracking counter
                             message.getJMSMessageID());
@@ -230,7 +239,7 @@ public class JmsQueueQuickstart {
                 }
             });
 
-            // wait on the main thread until all sent messages have been received
+            // Wait on the main thread until all sent messages have been received
             while (totalReceived.get() < totalSend) {
                 Thread.sleep(1000);
             }
@@ -265,7 +274,7 @@ public class JmsQueueQuickstart {
 
             String connectionString = null;
 
-            // parse connection string from command line
+            // Parse connection string from command line
             Options options = new Options();
             options.addOption(new Option("c", true, "Connection string"));
             CommandLineParser clp = new DefaultParser();
@@ -274,7 +283,7 @@ public class JmsQueueQuickstart {
                 connectionString = cl.getOptionValue("c");
             }
 
-            // get overrides from the environment
+            // Get overrides from the environment
             String env = System.getenv(SB_SAMPLES_CONNECTIONSTRING);
             if (env != null) {
                 connectionString = env;
@@ -295,8 +304,9 @@ public class JmsQueueQuickstart {
 ```
 
 ### <a name="run-the-application"></a>アプリケーションの実行
+
 共有アクセス ポリシーから**接続文字列**を渡してアプリケーションを実行します。
-以下は、アプリケーションの実行によるフォームの出力です。
+次の出力は、アプリケーションを実行するフォームです。
 
 ```Output
 > mvn clean package
@@ -328,6 +338,7 @@ Closing queue client.
 ```
 
 ## <a name="amqp-disposition-and-service-bus-operation-mapping"></a>AMQP の disposition と Service Bus 操作のマッピング
+
 AMQP の disposition が Service Bus 操作にどのように変換されるかを次に示します。
 
 ```Output
@@ -338,49 +349,53 @@ MODIFIED_FAILED = 4; -> Abandon() which increases delivery count
 MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ```
 
-## <a name="jms-topics-vs-service-bus-topics"></a>JMS トピックとService Bus トピック
-Java Message Service (JMS) API を通じて Azure Service Bus のトピックとサブスクリプションを使用すると、基本的な送受信機能が提供されます。 これは、JMS 準拠の API を使用して他のメッセージ ブローカーからアプリケーションを移植する場合に便利な選択肢となります。ただし、Service Bus トピックは JMS トピックとは異なるため、多少の調整が必要となります。 
+## <a name="jms-topics-vs-service-bus-topics"></a>JMS トピックと Service Bus トピック
 
-Azure Service Bus トピックは、Azure Resource Management インターフェイス、Azure コマンド ライン ツール、または Azure portal を通じて管理される、名前の付いた、共有の、永続的サブスクリプションにメッセージをルーティングします。 各サブスクリプションでは、最大 2000 の選択ルールを使用できます。各ルールではフィルター条件を使用できるほか、SQL フィルターについては、メタデータ変換アクションも使用できます。 フィルター条件が一致するごとに、サブスクリプション内にコピーされる入力メッセージが選択されます。  
+JMS API を通じて Service Bus のトピックとサブスクリプションを使用すると、基本的な送受信機能が提供されます。 これは、JMS 準拠の API を使用して他のメッセージ ブローカーからアプリケーションを移植する場合に便利な選択肢となります。ただし、Service Bus トピックは JMS トピックとは異なるため、多少の調整が必要となります。
 
-サブスクリプションからのメッセージ受信は、キューからのメッセージ受信と同じです。 各サブスクリプションには配信不能キューが関連付けられ、別のキューやトピックにメッセージを自動的に転送することができます。 
+Service Bus トピックは、Azure Resource Management インターフェイス、Azure コマンド ライン ツール、または Azure portal を通じて管理される、名前の付いた、共有の、永続的サブスクリプションにメッセージをルーティングします。 各サブスクリプションでは、最大 2,000 の選択ルールを使用できます。それぞれでフィルター条件を使用できるほか、SQL フィルターについては、メタデータ変換アクションも使用できます。 フィルター条件が一致するごとに、サブスクリプション内にコピーされる入力メッセージが選択されます。  
 
-JMS トピックでは、非永続的および永続的サブスクライバーをクライアントが動的に作成できます。これらのサブスクライバーでは、メッセージ セレクターを使用してメッセージをフィルター処理することもできます。 これらの非共有エンティティは、Service Bus ではサポートされていません。 ただし、Service Bus の SQL フィルター ルール構文は、JMS でサポートされているメッセージ セレクター構文と似ています。 
+サブスクリプションからのメッセージ受信は、キューからのメッセージ受信と同じです。 各サブスクリプションには配信不能キューが関連付けられ、別のキューやトピックにメッセージを自動的に転送することができます。
 
-JMS トピックのパブリッシャー側は (この例で示すように) Service Bus と互換性がありますが、動的サブスクライバーについては互換性がありません。 次のトポロジ関連 JMS API は、Service Bus ではサポートされていません。 
+JMS トピックでは、非永続的および永続的サブスクライバーをクライアントが動的に作成できます。それらでは、メッセージ セレクターを使用してメッセージをフィルター処理することもできます。 これらの非共有エンティティは、Service Bus ではサポートされていません。 Service Bus の SQL フィルター ルール構文は、JMS でサポートされているメッセージ セレクター構文と似ています。
+
+JMS トピックのパブリッシャー側は (この例で示すように) Service Bus と互換性がありますが、動的サブスクライバーについてはありません。 次のトポロジ関連 JMS API は、Service Bus ではサポートされていません。
 
 ## <a name="unsupported-features-and-restrictions"></a>サポートされていない機能および制限
-JMS を AMQP 1.0 と Service Bus で使用する場合は、次の制限があります。
 
-* **Session** ごとに作成できる **MessageProducer** または **MessageConsumer** は 1 つのみです。 アプリケーションで複数の **MessageProducers** または **MessageConsumers** を作成する必要がある場合は、それぞれに専用の**セッション**を作成してください。
+Service Bus で AMQP 1.0 を介して JMS を使用する場合は、次の制限があります。
+
+* セッションごとに許可される **MessageProducer** または **MessageConsumer** オブジェクトは 1 つだけです。 アプリケーションで複数の **MessageProducer** または **MessageConsumer** を作成する必要がある場合は、それぞれに専用のセッションを作成してください。
 * 揮発性トピック サブスクリプションは現在サポートされていません。
-* **MessageSelectors** は現在サポートされていません。
-* 分散トランザクションはサポートされません (ただし、トランザクション セッションはサポートされます)。
+* **MessageSelector** オブジェクトは現在サポートされていません。
+* 分散トランザクションはサポートされませんが、トランザクション セッションはサポートされます。
 
-さらに、Azure Service Bus では、データ プレーンからコントロール プレーンが分離されるため、JMS の動的トポロジ関数のいくつかがサポートされていません。
+Service Bus では、データ プレーンからコントロール プレーンが分離されるため、JMS の動的トポロジ関数のいくつかがサポートされていません。
 
 | サポートされていないメソッド          | 置換後の文字列                                                                             |
 |-----------------------------|------------------------------------------------------------------------------------------|
-| createDurableSubscriber     | メッセージ セレクタを移植するトピック サブスクリプションを作成します                                 |
-| createDurableConsumer       | メッセージ セレクタを移植するトピック サブスクリプションを作成します                                 |
-| createSharedConsumer        | Service Bus トピックは常に共有可能です。上記を参照してください                                       |
-| createSharedDurableConsumer | Service Bus トピックは常に共有可能です。上記を参照してください                                       |
-| createTemporaryTopic        | *AutoDeleteOnIdle* に有効期間を設定して、management API/tools/portal 経由でトピックを作成します |
-| createTopic                 | management API/tools/portal 経由でトピックを作成します。                                           |
-| unsubscribe                 | トピック management API/tools/portal を削除します                                             |
-| createBrowser               | サポートされていません。 Service Bus API の Peek() 機能を使用してください                         |
-| createQueue                 | management API/tools/portal 経由でキューを作成します                                           | 
-| createTemporaryQueue        | *AutoDeleteOnIdle* に有効期間を設定して、management API/tools/portal 経由でキューを作成します |
-| receiveNoWait               | Service Bus SDK によって提供される receive() メソッドを使用し、非常に短いタイムアウトまたはゼロ タイムアウトを指定します |
+| createDurableSubscriber     | メッセージ セレクタを移植するトピック サブスクリプションを作成します。                                |
+| createDurableConsumer       | メッセージ セレクタを移植するトピック サブスクリプションを作成します。                                |
+| createSharedConsumer        | Service Bus トピックは常に共有可能です。 「JMS トピックと Service Bus トピック」のセクションを参照してください。                                    |
+| createSharedDurableConsumer | Service Bus トピックは常に共有可能です。 「JMS トピックと Service Bus トピック」のセクションを参照してください。                                      |
+| createTemporaryTopic        | *AutoDeleteOnIdle* に有効期間を設定して、management API、ツール、またはポータルを使用してトピックを作成します。 |
+| createTopic                 | management API、ツール、またはポータルを使用してトピックを作成します。                                         |
+| unsubscribe                 | management API、ツール、またはポータルを使用してトピックを削除します。                                            |
+| createBrowser               | サポートされていません。 Service Bus API の Peek() 機能を使用してください。                         |
+| createQueue                 | management API、ツール、またはポータルを使用してキューを作成します。                                           | 
+| createTemporaryQueue        | *AutoDeleteOnIdle* に有効期間を設定して、management API、ツール、またはポータルを使用してキューを作成します。 |
+| receiveNoWait               | Service Bus SDK によって提供される receive() メソッドを使用し、非常に短いまたはゼロのタイムアウトを指定します。 |
 
 ## <a name="summary"></a>まとめ
-このガイドでは、一般的な JMS API と AMQP 1.0 を使って Java から Service Bus の仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明しました。
+
+この記事では、一般的な JMS API と AMQP 1.0 を使って Java から Service Bus の仲介型メッセージング機能 (キュー、およびトピックの発行やサブスクライブ) を使用する方法について説明しました。
 
 Service Bus AMQP 1.0 のサポートは、.NET、C、Python、PHP など、その他の言語からも使用できます。 Service Bus で AMQP 1.0 のサポートを使用すると、これらのさまざまな言語を使って作成されたコンポーネントで高い信頼性と十分な忠実度のメッセージ交換が実現されます。
 
 ## <a name="next-steps"></a>次のステップ
+
 * [Azure Service Bus での AMQP 1.0 サポート](service-bus-amqp-overview.md)
-* [Service Bus .NET API で AMQP 1.0 を使用する方法](./service-bus-amqp-dotnet.md)
+* [Service Bus .NET API で AMQP 1.0 を使用する](./service-bus-amqp-dotnet.md)
 * [Service Bus AMQP 1.0: 開発者ガイド](service-bus-amqp-dotnet.md)
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 * [Java デベロッパー センター](https://azure.microsoft.com/develop/java/)

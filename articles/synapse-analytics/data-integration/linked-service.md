@@ -2,28 +2,28 @@
 title: リンクされたサービスをセキュリティで保護する
 description: マネージド VNet を使用して、リンクされたサービスをプロビジョニングしてセキュリティで保護する方法について説明します
 services: synapse-analytics
-author: acomet
+author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1ce127dbfd9984b3fb18e518701cbbd3a87f5988
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: af6afa2b0285fe741241183ed99712a132953a30
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387245"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220118"
 ---
-# <a name="secure-a-linked-service-with-private-links"></a>Private Link を使用してリンクされたサービスをセキュリティで保護する 
+# <a name="secure-a-linked-service-with-private-links"></a>Private Link を使用してリンクされたサービスをセキュリティで保護する
 
 この記事では、プライベート エンドポイントを使用して Synapse 内のリンクされたサービスをセキュリティで保護する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
-* **Microsoft Azure Storage アカウント**:"*ソース*" データ ストアとして Azure Data Lake Gen 2 を使用します。 ストレージ アカウントがない場合の作成手順については、「[Azure Storage アカウントの作成](../../storage/blobs/data-lake-storage-quickstart-create-account.md)」を参照してください。 ストレージ アカウントにそれにアクセスするための Synapse Studio IP フィルタリングが用意されていること、**選択されたネットワーク**のみにストレージ アカウントへのアクセスを許可していることを確認します。 **[ファイアウォールと仮想ネットワーク]** ブレードでの設定は次の図のようになります。
+* **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
+* **Microsoft Azure Storage アカウント**:"*ソース*" データ ストアとして Azure Data Lake Gen 2 を使用します。 ストレージ アカウントがない場合の作成手順については、「[Azure Storage アカウントの作成](../../storage/common/storage-account-create.md)」を参照してください。 ストレージ アカウントにそれにアクセスするための Synapse Studio IP フィルタリングが用意されていること、**選択されたネットワーク** のみにストレージ アカウントへのアクセスを許可していることを確認します。 **[ファイアウォールと仮想ネットワーク]** ブレードでの設定は次の図のようになります。
 
 ![セキュリティで保護されたストレージ アカウント](./media/secure-storage-account.png)
 
@@ -33,16 +33,16 @@ Azure Synapse Analytics で、リンクされたサービスとは、他のサ�
 
 1. Azure Synapse Studio を開き、 **[管理]** タブに移動します。
 1. **[外部接続]** で、 **[リンクされたサービス]** を選択します。
-1. リンクされたサービスを追加するには、 **[新規]** をクリックします。
-1. リストから [Azure Data Lake Storage Gen2] タイルを選択し、 **[続行]** をクリックします。
+1. リンクされたサービスを追加するには、 **[新規]** を選択します。
+1. リストから [Azure Data Lake Storage Gen2] タイルを選択し、 **[続行]** を選択します。
 1. **[Interactive Authoring]\(インタラクティブな作成\)** を必ず有効にしてください。 これは有効になるまでに 1 分程かかる場合があります。 
-1. ご利用の認証資格情報を入力します。 アカウント キー、サービス プリンシパル、およびマネージド ID が現在サポートされている認証の種類です。 [テスト接続] をクリックして、ご利用の資格情報が正しいことを確認します。
-1. **[テスト接続]** を選択します。プライベート エンドポイントを作成および承認しなければストレージ アカウントにアクセスできないようになっているため、これは失敗するはずです。 エラー メッセージ内に、**プライベート エンド ポイント**を作成するためのリンクが表示されます。それをたどることで、次の部分に進むことができます。 そのリンクをたどる場合は、次の部分をスキップします。
+1. ご利用の認証資格情報を入力します。 アカウント キー、サービス プリンシパル、およびマネージド ID が現在サポートされている認証の種類です。 [テスト接続] を選択して、ご利用の資格情報が正しいことを確認します。
+1. **[テスト接続]** を選択します。プライベート エンドポイントを作成および承認しなければストレージ アカウントにアクセスできないようになっているため、これは失敗するはずです。 エラー メッセージ内に、**プライベート エンド ポイント** を作成するためのリンクが表示されます。それをたどることで、次の部分に進むことができます。 そのリンクをたどる場合は、次の部分をスキップします。
 1. 入力し終えたら **[作成]** を選択します。
 
 ## <a name="create-a-managed-private-endpoint"></a>マネージド プライベート エンドポイントを作成する
 
-上記の接続をテストするときにハイパーリンクをクリックしなかった場合は、次のパスに従います。 次に、上で作成したリンクされたサービスに接続するマネージド プライベート エンドポイントを作成する必要があります。
+上記の接続をテストするときにハイパーリンクを選択しなかった場合は、次のパスに従ってください。 上で作成したリンクされたサービスに接続するマネージド プライベート エンドポイントを作成します。
 
 1. **[管理]** タブに移動します。
 1. **[Managed Virtual Networks]\(マネージド仮想ネットワーク\)** セクションに移動します。
@@ -55,7 +55,7 @@ Azure Synapse Analytics で、リンクされたサービスとは、他のサ�
 ## <a name="private-link-approval"></a>プライベート リンクの承認
 1. 上で作成したプライベート エンドポイントを選択します。 ストレージ アカウント レベルでプライベート エンドポイントを承認するためのハイパーリンクが表示されます。 "*別の方法としては、Azure portal ストレージ アカウントに直接アクセスし、 **[プライベート エンドポイント接続]** ブレードにアクセスします。* "
 1. Studio で作成したプライベート エンドポイントを選択し、 **[承認]** を選択します。
-1. 説明を追加して、 **[はい]** をクリックします。
+1. 説明を追加し、 **[はい]** を選択します。
 1. **[管理]** タブの **[Managed Virtual Networks]\(マネージド仮想ネットワーク\)** セクションで Synapse Studio に戻ります。
 1. 使用するプライベート エンドポイントに対して承認が反映されるまで、約 1 分かかります。
 
@@ -68,6 +68,8 @@ Azure Synapse Analytics で、リンクされたサービスとは、他のサ�
 
 ## <a name="next-steps"></a>次のステップ
 
-Synapse Analytics でのマネージド プライベート エンドポイントについてさらに理解を深めるには、[Synapse マネージド プライベート エンドポイントの概念](data-integration-data-lake.md)に関する記事を参照してください。
 
-Synapse Analytics のデータ統合の詳細については、[Data Lake へのデータの取り込み](data-integration-data-lake.md)に関する記事を参照してください。
+Azure Synapse Analytics でのマネージド プライベート エンドポイントについてさらに理解を深めるには、[マネージド プライベート エンドポイント](../security/synapse-workspace-managed-private-endpoints.md)に関する記事を参照してください。
+
+
+Azure Synapse Analytics のデータ統合の詳細については、[Data Lake へのデータの取り込み](data-integration-data-lake.md)に関する記事を参照してください。

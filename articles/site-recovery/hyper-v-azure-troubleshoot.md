@@ -2,18 +2,18 @@
 title: Azure Site Recovery を使用した Hyper-V のディザスター リカバリーのトラブルシューティング
 description: Azure Site Recovery を使用した Hyper-V から Azure へのレプリケーションに関するディザスター リカバリーの問題をトラブルシューティングする方法について説明します。
 services: site-recovery
-author: rajani-janaki-ram
+author: Sharmistha-Rai
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
-ms.author: rajanaki
-ms.openlocfilehash: 1b3fdd93902709541f4a22e652c34973158ad9c7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sharrai
+ms.openlocfilehash: c804e13029dcec42a43885cbf0d9b227b3d0338f
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132445"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750804"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V から Azure へのレプリケーションおよびフェールオーバーをトラブルシューティングする
 
@@ -29,12 +29,26 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
 4. VM への Hyper-V-VMMS\Admin サインインに表示される問題を確認します。 このログは **Applications and Services Logs** > **Microsoft** > **Windows** にあります。
 5. ゲスト VM 上で、WMI が有効になっており、アクセス可能であることを確認します。
    - 基本的な WMI テスト[について学習します](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf)。
-   - WMI を[トラブルシューティングします](https://aka.ms/WMiTshooting)。
+   - WMI を[トラブルシューティングします](/windows/win32/wmisdk/wmi-troubleshooting)。
    - WMI スクリプトおよびサービスに関する問題を[トラブルシューティングします](/previous-versions/tn-archive/ff406382(v=msdn.10)#H22)。
 6. ゲスト VM 上で、最新バージョンの Integration Services が実行されていることを確認します。
     - 最新バージョンを使用していることを[確認します](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。
     - Integration Services を最新の状態に[維持します](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)。
-    
+
+### <a name="cannot-enable-protection-as-the-virtual-machine-is-not-highly-available-error-code-70094"></a>仮想マシンに高可用性が確保されていないため、保護を有効にできません (エラー コード 70094)
+
+マシンのレプリケーションを有効にしているときに、マシンの高可用性が確保されていないためにレプリケーションを有効にできないというエラーが発生した場合は、次の手順を実行してください。
+
+- VMM サーバー上で VMM サービスを再起動します。
+- クラスターから仮想マシンを削除して、もう一度追加します。
+
+### <a name="the-vss-writer-ntds-failed-with-status-11-and-writer-specific-failure-code-0x800423f4"></a>VSS ライター NTDS がステータス 11、ライター固有のエラー コード0x800423F4 で失敗しました
+
+レプリケーションを有効にしようとすると、NTDS が失敗したためにレプリケーションの有効化に失敗したというメッセージが表示されることがあります。 この問題の考えられる原因の 1 つは、仮想マシンのオペレーティング システムが Windows Server 2012 であって、Windows Server 2012 R2 でないことです。 この問題を解決するには、下の手順を試してください。
+
+- 4072650が適用された Windows Server R2 にアップグレードします。
+- Hyper-v ホストも Windows 2016 以降であることを確認します。
+
 ## <a name="replication-issues"></a>レプリケーションの問題
 
 初期および進行中のレプリケーションに関する問題を次のようにトラブルシューティングします。

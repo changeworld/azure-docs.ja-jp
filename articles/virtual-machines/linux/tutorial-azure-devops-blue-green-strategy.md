@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 0d001144f1a2703db118261e5cae5417b1d8c17a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f349ff62fe211f0610341864a4c7528ee6bfe9c5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080133"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961529"
 ---
 # <a name="tutorial---configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>チュートリアル - Azure Linux 仮想マシンのブルーグリーン デプロイ戦略を構成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "87080133"
 
 Azure Pipelines では、仮想マシンにデプロイするための機能が完備された CI/CD 自動化ツールのセットが提供されます。 Azure VM に対する継続的デリバリー パイプラインは、Azure portal から構成できます。
 
-この記事では、ブルーグリーン戦略を使用して複数マシンをデプロイする CI/CD パイプラインを設定する方法について説明します。 Azure portal では、他にも[ローリング](https://aka.ms/AA7jlh8)や[カナリア](https://aka.ms/AA7jdrz)などの戦略がサポートされます。
+この記事では、ブルーグリーン戦略を使用して複数マシンをデプロイする CI/CD パイプラインを設定する方法について説明します。 Azure portal では、他にも[ローリング](./tutorial-devops-azure-pipelines-classic.md)や[カナリア](./tutorial-azure-devops-canary-strategy.md)などの戦略がサポートされます。
 
 ### <a name="configure-cicd-on-virtual-machines"></a>仮想マシンで CI/CD を構成する
 
@@ -73,8 +73,8 @@ Azure Pipelines では、仮想マシンにデプロイするための機能が�
 
 ## <a name="other-deployment-strategies"></a>その他のデプロイ戦略
 
-- [ローリング デプロイ戦略を構成する](https://aka.ms/AA7jlh8)
-- [カナリア デプロイ戦略を構成する](https://aka.ms/AA7jdrz)
+- [ローリング デプロイ戦略を構成する](./tutorial-devops-azure-pipelines-classic.md)
+- [カナリア デプロイ戦略を構成する](./tutorial-azure-devops-canary-strategy.md)
 
 ## <a name="azure-devops-projects"></a>Azure DevOps Projects
 

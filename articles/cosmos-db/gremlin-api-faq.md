@@ -3,17 +3,19 @@ title: Azure Cosmos DB の Gremlin API についてよく寄せられる質問
 description: Azure Cosmos DB の Gremlin API についてよく寄せられる質問とその回答を紹介します
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 416cf4f027b6f1e72641324be39ba0304301db37
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 0374886482b43eefe6df5e107fd4da371633099d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613984"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359783"
 ---
 # <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB の Gremlin API についてよく寄せられる質問
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 この記事では、Azure Cosmos DB の Gremlin API についてよく寄せられるいくつかの質問に対する回答について説明します。
 
@@ -99,7 +101,7 @@ RU 課金は、結果セットではなく、走査の作業データ セット�
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API でグラフ データベースに与えられる最大スケールは何ですか。
 
-Azure Cosmos DB では、[水平方向のパーティション分割](partition-data.md)を利用し、ストレージ要件とスループット要件の増加に自動的に対処します。 ワークロードの最大スループットと最大ストレージ容量は、指定されたコンテナーに関連付けられているパーティションの数により決定されます。 ただし、Gremlin API コンテナーには、大規模でも適切なパフォーマンスが得られるように、特定のガイドラインのセットがあります。 パーティション分割の詳細とベスト プラクティスについては、[Azure Cosmos DB でのパーティション分割](partition-data.md)に関する記事をご覧ください。
+Azure Cosmos DB では、[水平方向のパーティション分割](partitioning-overview.md)を利用し、ストレージ要件とスループット要件の増加に自動的に対処します。 ワークロードの最大スループットと最大ストレージ容量は、指定されたコンテナーに関連付けられているパーティションの数により決定されます。 ただし、Gremlin API コンテナーには、大規模でも適切なパフォーマンスが得られるように、特定のガイドラインのセットがあります。 パーティション分割の詳細とベスト プラクティスについては、[Azure Cosmos DB でのパーティション分割](partitioning-overview.md)に関する記事をご覧ください。
 
 ### <a name="for-cnet-development-should-i-use-the-microsoftazuregraphs-package-or-gremlinnet"></a>C#/.NET 開発の場合、Microsoft.Azure.Graphs パッケージまたは Gremlin.NET を使用するべきですか。
 
@@ -107,7 +109,7 @@ Azure Cosmos DB Gremlin API では、サービスのメイン コネクタとし
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Gremlin ドライバーを利用したインジェクション攻撃はどのように防ぎますか。
 
-ネイティブ Apache Tinkerpop Gremlin ドライバーのほとんどでは、クエリ実行にパラメーター ディクショナリを提供できます。 この方法のサンプルは、[Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) と [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js) にあります。
+ネイティブ Apache Tinkerpop Gremlin ドライバーのほとんどでは、クエリ実行にパラメーター ディクショナリを提供できます。 この方法のサンプルは、[Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) と [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/main/app.js) にあります。
 
 ### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>"Gremlin Query Compilation Error: Unable to find any method" (Gremlin クエリ コンパイル エラー:メソッドが見つかりません) エラーが表示されるのはなぜですか。
 

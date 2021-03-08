@@ -2,11 +2,21 @@
   href: overview.md
 - name: Red Hat Enterprise Linux イメージ
   items:
-    - name: Red Hat Enterprise Linux イメージの概要
+    - name: RHEL イメージの概要
       href: redhat-images.md
-    - name: Red Hat Enterprise Linux イメージの一覧
+    - name: RHEL イメージ リスト
       href: redhat-imagelist.md
+- name: Red Hat Java クイックスタート
+  items:
+    - name: VM/VMSS での JBoss EAP と RHEL
+      href: jboss-eap-on-rhel.md
+    - name: VM での WildFly と CentOS
+      href: wildfly-on-centos.md
 - name: Azure の Red Hat Update Infrastructure
   href: redhat-rhui.md
 - name: Red Hat Enterprise Linux BYOS イメージ プラン
   href: byos.md
+- name: Red Hat Enterprise Linux 延長ライフサイクル サポート
+  href: redhat-extended-lifecycle-support.md
+- name: Azure 上の Red Hat Enterprise イメージの一括アップグレード
+  href: redhat-in-place-upgrade.md

@@ -8,22 +8,22 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: a3424a42e86b47d4103dd41ca143b5bc7be3796a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9f368a4aebc4d5de38ebbab800241366650633e6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545932"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936585"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>チュートリアル:Zscaler を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルの目的は、Azure AD が自動的にユーザーまたはグループを Zscaler にプロビジョニングまたは Zscaler からプロビジョニング解除するように構成するために、Zscaler と Azure Active Directory (Azure AD) で実行される手順を示すことです。
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../active-directory-saas-app-provisioning.md)」を参照してください。
+> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
 >
 
 ## <a name="prerequisites"></a>前提条件
@@ -65,7 +65,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Zscaler へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Zscaler に割り当てることができます。
 
-* [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-zscaler"></a>ユーザーを Zscaler に割り当てるときの重要なヒント
 
@@ -80,6 +80,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 > [!TIP]
 > Zscaler では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Zscaler シングル サインオンのチュートリアル](zscaler-tutorial.md)に関するページで説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
+> [!NOTE]
+> ユーザーとグループをプロビジョニングしたりプロビジョニング解除したりする際は、グループ メンバーシップが適切に更新されるよう、定期的にプロビジョニングをやり直すことをお勧めします。 そうすることによって、サービスによって強制的にすべてのグループが再評価され、メンバーシップが更新されます。 
+
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-in-azure-ad"></a>Azure AD で Zscaler の自動ユーザー プロビジョニングを構成するには
 
 1. [Azure portal](https://portal.azure.com) にサインインし、 **[エンタープライズ アプリケーション]** 、 **[すべてのアプリケーション]** 、 **[Zscaler]** の順に選択します。
@@ -92,67 +95,67 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/provisioning-tab.png)
+    ![[Zscaler - プロビジョニング エンタープライズ アプリケーション] サイドバーのスクリーンショット。[プロビジョニング] オプションが強調表示されています。](./media/zscaler-provisioning-tutorial/provisioning-tab.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/provisioning-credentials.png)
+    ![[プロビジョニング] ページのスクリーンショット。[プロビジョニング モード] が [自動] に設定されています。](./media/zscaler-provisioning-tutorial/provisioning-credentials.png)
 
 5. **[管理者資格情報]** セクションで、手順 6 で説明する Zscaler アカウントの **[テナント URL]** と **[シークレット トークン]** を入力します。
 
 6. **[テナント URL]** と **[シークレット トークン]** を取得するには、Zscaler ポータル ユーザー インターフェイスで **[管理]、[認証の設定]** の順に移動し、 **[認証の種類]** で **[SAML]** をクリックします。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/secret-token-1.png)
+    ![[認証設定] ページのスクリーンショット。](./media/zscaler-provisioning-tutorial/secret-token-1.png)
 
     **[Configure SAML]\(SAML の構成\)** をクリックし、 **[Configuration SAML]\(構成 SAML\)** オプションを開きます。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/secret-token-2.png)
+    ![[SAML の構成] ダイアログ ボックスのスクリーンショット。[ベース URL] と [ベアラー トークン] のテキスト ボックスが選択されています。](./media/zscaler-provisioning-tutorial/secret-token-2.png)
 
-    **[Enable SCIM-Based Provisioning]\(SCIM ベースのプロビジョニングを有効にする\)** を選択して、**ベース URL** と**ベアラー トークン**を取得し、設定を保存します。 Azure portal で**ベース URL**を**テナント URL** にコピーし、**ベアラー トークン**を**シークレット トークン**にコピーします。
+    **[Enable SCIM-Based Provisioning]\(SCIM ベースのプロビジョニングを有効にする\)** を選択して、**ベース URL** と **ベアラー トークン** を取得し、設定を保存します。 Azure portal で **ベース URL** を **テナント URL** にコピーし、**ベアラー トークン** を **シークレット トークン** にコピーします。
 
 7. 手順 5 の各フィールドに値を入力したら、 **[テスト接続]** をクリックして、Azure AD が Zscaler に接続できることを確認します。 接続できない場合は、使用中の Zscaler アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/test-connection.png)
+    ![[管理者資格情報] セクションのスクリーンショット。[テスト接続] オプションが選択されています。](./media/zscaler-provisioning-tutorial/test-connection.png)
 
 8. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/notification.png)
+    ![[通知用メール] テキスト ボックスのスクリーンショット。](./media/zscaler-provisioning-tutorial/notification.png)
 
 9. **[保存]** をクリックします。
 
 10. **[マッピング]** セクションで **[Synchronize Azure Active Directory Users to Zscaler]\(Azure Active Directory ユーザーを Zscaler に同期する\)** を選択します。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/user-mappings.png)
+    ![[マッピング] セクションのスクリーンショット。[Synchronize Azure Active Directory Users to Zscaler]\(Azure Active Directory ユーザーを Zscaler に同期する\) オプションが強調表示されています。](./media/zscaler-provisioning-tutorial/user-mappings.png)
 
 11. **[属性マッピング]** セクションで、Azure AD から Zscaler に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Zscaler のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
+    ![7 つのマッピングが表示されている [属性マッピング] セクションのスクリーンショット。](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
 
 12. **[マッピング]** セクションで **[Synchronize Azure Active Directory Groups to Zscaler]\(Azure Active Directory グループを Zscaler に同期する\)** を選択します。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/group-mappings.png)
+    ![[マッピング] セクションのスクリーンショット。[Synchronize Azure Active Directory Groups to Zscaler]\(Azure Active Directory グループを Zscaler に同期する\) オプションが強調表示されています。](./media/zscaler-provisioning-tutorial/group-mappings.png)
 
 13. **[属性マッピング]** セクションで、Azure AD から Zscaler に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Zscaler のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/group-attribute-mappings.png)
+    ![3 つのマッピングが表示されている [属性マッピング] セクションのスクリーンショット。](./media/zscaler-provisioning-tutorial/group-attribute-mappings.png)
 
-14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](./../active-directory-saas-scoping-filters.md)の次の手順を参照してください。
+14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
 15. Zscaler に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/provisioning-status.png)
+    ![[プロビジョニングの状態] オプションのスクリーンショット。[オン] に設定されています。](./media/zscaler-provisioning-tutorial/provisioning-status.png)
 
 16. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Zscaler にプロビジョニングするユーザーやグループを定義します。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/scoping.png)
+    ![[スコープ] 設定のスクリーンショット。[割り当てられたユーザーとグループのみを同期する] オプションが強調表示されています。](./media/zscaler-provisioning-tutorial/scoping.png)
 
 17. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
 
-    ![Zscaler プロビジョニング](./media/zscaler-provisioning-tutorial/save-provisioning.png)
+    ![[Zscaler - プロビジョニング エンタープライズ アプリケーション] サイドバーのスクリーンショット。[保存] オプションが選択されています。](./media/zscaler-provisioning-tutorial/save-provisioning.png)
 
 これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Zscaler に対して実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../active-directory-saas-provisioning-reporting.md)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -161,7 +164,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../active-directory-saas-provisioning-reporting.md)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-provisioning-tutorial/tutorial-general-01.png

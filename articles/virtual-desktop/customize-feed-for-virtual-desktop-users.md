@@ -3,20 +3,20 @@ title: Windows Virtual Desktop ユーザー用のフィードをカスタマイ�
 description: PowerShell コマンドレットで Windows Virtual Desktop ユーザー用のフィードをカスタマイズする方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/29/2019
+ms.date: 09/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1f1779ac27c7e46aa3e608b33e3c006902df8c27
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e47486f29537cb948aaae7cf17e97bae14b60700
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009122"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90084296"
 ---
 # <a name="customize-the-feed-for-windows-virtual-desktop-users"></a>Windows Virtual Desktop ユーザー用のフィードをカスタマイズする
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md)を参照してください。
+>これは、Azure Resource Manager Windows Virtual Desktop オブジェクトを使用する Windows Virtual Desktop を対象としたコンテンツです。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[この記事](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md)を参照してください。
 
 フィードは、RemoteApp とリモート デスクトップのリソースがユーザーの認識可能な方法で表示されるようにカスタマイズすることができます。
 
@@ -107,7 +107,7 @@ Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName
 
 3. サービスの下で **[Windows Virtual Desktop]** を選択します。
 
-4. Windows Virtual Desktop のページで、画面の左側にある **[アプリケーション グループ]** を選択し、編集するアプリ グループの名前を選択します。
+4. Windows Virtual Desktop のページで、画面の左側にある **[アプリケーション グループ]** を選択し、編集するアプリ グループの名前を選択します。 (たとえば、デスクトップ アプリ グループの表示名を編集する場合、**デスクトップ**という名前のアプリ グループを選択します)。
 
 5. 画面の左側にあるメニューで **[アプリケーション]** を選択します。
 

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 4f6b24b17ac0e12c286a11abe8732bb86e2deb5c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.custom: devx-track-js
+ms.openlocfilehash: c6ea238edd68413646dda59b22d1c0dc2557d57e
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297350"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916833"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Media Services v3 API に接続する - Node.js
 
@@ -40,6 +40,8 @@ ms.locfileid: "89297350"
 1. 好みのエディターを使用して package.json ファイルを作成します。
 1. ファイルを開き、次のコードを貼り付けます。
 
+   [AzureMediaServices SDK for JavaScript](https://www.npmjs.com/package/@azure/arm-mediaservices) の最新バージョンを入手していることを確認してください。
+
 ```json
 {
   "name": "media-services-node-sample",
@@ -47,7 +49,7 @@ ms.locfileid: "89297350"
   "description": "",
   "main": "./index.js",
   "dependencies": {
-    "azure-arm-mediaservices": "^4.1.0",
+    "azure-arm-mediaservices": "^8.0.0",
     "azure-storage": "^2.8.0",
     "ms-rest": "^2.3.3",
     "ms-rest-azure": "^2.5.5"
@@ -117,7 +119,7 @@ msRestAzure.loginWithServicePrincipalSecret(aadClientId, aadSecret, aadTenantId,
 });
 ```
 
-## <a name="run-your-app"></a>アプリケーションを実行する
+## <a name="run-your-app"></a>アプリを実行する
 
 コマンド プロンプトを開きます。 サンプルのディレクトリに移動して、以下のコマンドを実行します。
 
@@ -126,7 +128,7 @@ npm install
 node index.js
 ```
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [Media Services の概念](concepts-overview.md)
 - [NPM インストール azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)

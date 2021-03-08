@@ -8,16 +8,16 @@ ms.date: 02/11/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 6ce94590a1d0de6941c27d972bdd1c4194080e95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26062d73ae4c61af77b15dd2cac0541f2a988d11
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77153079"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912996"
 ---
 # <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Azure Data Lake Storage Gen2 の階層型名前空間
 
-Azure Data Lake Storage Gen2 では、オブジェクト ストレージのスケールと価格でファイル システムのパフォーマンスが得られますが、それを可能にした最大の要因の 1 つは、**階層型名前空間**を追加したことです。 これにより、コンピューター上のファイル システムを編成するのと同じ方法で、アカウント内のオブジェクト/ファイルのコレクションを、ディレクトリおよびネストされたサブディレクトリの階層に編成できるようになりました。 階層型名前空間を有効にすると、ストレージ アカウントは、分析エンジンと分析フレームワークでよく用いられるファイル システム セマンティクスを使用して、オブジェクト ストレージのスケーラビリティとコスト効果を提供することができます。
+Azure Data Lake Storage Gen2 では、オブジェクト ストレージのスケールと価格でファイル システムのパフォーマンスが得られますが、それを可能にした最大の要因の 1 つは、**階層型名前空間** を追加したことです。 これにより、コンピューター上のファイル システムを編成するのと同じ方法で、アカウント内のオブジェクト/ファイルのコレクションを、ディレクトリおよびネストされたサブディレクトリの階層に編成できるようになりました。 階層型名前空間を有効にすると、ストレージ アカウントは、分析エンジンと分析フレームワークでよく用いられるファイル システム セマンティクスを使用して、オブジェクト ストレージのスケーラビリティとコスト効果を提供することができます。
 
 ## <a name="the-benefits-of-a-hierarchical-namespace"></a>階層型名前空間の利点
 
@@ -47,4 +47,4 @@ BLOB データに対する階層構造の名前空間が実装されたファイ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Create a Storage account](./data-lake-storage-quickstart-create-account.md) (ストレージ アカウントを作成する)
+- [Create a Storage account](../common/storage-account-create.md) (ストレージ アカウントを作成する)

@@ -4,12 +4,12 @@ description: Java Service Fabric Reliable Actors アプリケーションを 5 �
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: 28ddc4f0e47d853df6b026cf2495d710bebfa980
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7d87b72437f86d7dc1ca4e3cf9f3d67609691c70
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368933"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655953"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Linux で初めての Java Service Fabric Reliable Actors アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
 * **アクター登録**。 Reliable Services と同様に、Reliable Actor サービスは Service Fabric ランタイムに登録する必要があります。 さらに、アクターの型を Actor ランタイムに登録する必要があります。
 * **アクター インターフェイス**。 アクター インターフェイスは、アクターの厳密に型指定されたパブリック インターフェイスを定義するために使用されます。 Reliable Actor モデルの用語では、アクター インターフェイスに、アクターが理解し、処理できるメッセージの種類が定義されています。 アクター インターフェイスは、他のアクターとクライアント アプリケーションがメッセージをアクターに (非同期に) "送信" するために使用されます。 Reliable Actors は複数のインターフェイスを実装できます。
 * **ActorProxy クラス**。 ActorProxy クラスは、アクター インターフェイスを介して公開されるメソッドを呼び出すためにクライアント アプリケーションで使用されます。 ActorProxy クラスは、次の 2 つの重要な機能を提供します。
-  
+
   * 名前解決: クラスター内のアクターを特定できます (ホストされているクラスターのノードを検索できます)。
   * エラー処理: たとえば、アクターをクラスター内の別のノードに再配置することが必要な障害の後、メソッドの呼び出しを再試行し、アクターの場所を再解決できます。
 
@@ -160,9 +160,9 @@ public class HelloWorldActorImpl extends FabricActor implements HelloWorldActor 
 public class HelloWorldActorHost {
 
 private static final Logger logger = Logger.getLogger(HelloWorldActorHost.class.getName());
-    
+
 public static void main(String[] args) throws Exception {
-        
+
         try {
 
             ActorRuntime.registerActorAsync(HelloWorldActorImpl.class, (context, actorType) -> new FabricActorService(context, actorType, (a,b)-> new HelloWorldActorImpl(a,b)), Duration.ofSeconds(10));
@@ -176,7 +176,7 @@ public static void main(String[] args) throws Exception {
 ```
 
 ## <a name="build-the-application"></a>アプリケーションのビルド
-Service Fabric Yeoman テンプレートには、[Gradle](https://gradle.org/) のビルド スクリプトが含まれています。このスクリプトを使用して、端末からアプリケーションをビルドすることができます。
+Service Fabric Yeoman テンプレートには、[Gradle](https://gradle.org/) のビルド スクリプトが含まれています。このスクリプトを使用して、ターミナルからアプリケーションをビルドすることができます。
 Service Fabric Java 依存関係は、Maven からフェッチされます。 Service Fabric Java アプリケーションをビルドして操作するには、JDK と Gradle がインストールされている必要があります。 まだインストールされていない場合は、[Linux による Service Fabric の概要](service-fabric-get-started-linux.md#set-up-java-development)に関するページを参照し、JDK と Gradle のインストール手順を確認してください。
 
 アプリケーションをビルドしてパッケージ化するには、次のコマンドを実行します。
@@ -221,7 +221,7 @@ Service Fabric Java 依存関係は、Maven からフェッチされます。 Se
 1. ウォッチ ユーティリティを使用してスクリプトを実行し、アクター サービスの出力を確認します。  テスト スクリプトは、アクターに対して `setCountAsync()` メソッドを呼び出してカウンターを増分させ、`getCountAsync()` メソッドを呼び出して新しいカウンター値を取得し、その値をコンソールに表示します。
 
    MAC OS X の場合は、次の追加コマンドを実行して、HelloWorldTestClient フォルダーをコンテナー内の場所にコピーする必要があります。    
-    
+
     ```bash
      docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home
      docker exec -it [first-four-digits-of-container-ID] /bin/bash

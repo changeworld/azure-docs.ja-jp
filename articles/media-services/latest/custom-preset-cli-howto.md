@@ -1,5 +1,5 @@
 ---
-title: Media Services v3 Azure CLI を使用するカスタム変換のエンコード | Microsoft Docs
+title: カスタム変換をエンコードする - CLI
 description: このトピックでは、Azure Media Services v3 で Azure CLI を使用してカスタム変換をエンコードする方法を示します。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: c61ac8c7cf85b1fae4c9b531f16b951dd2b80876
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: a91123b22eaef4cbaf2e96c93200777c8a85abab
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89295787"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092387"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>カスタム変換を使用してエンコードする方法 - Azure CLI
 
@@ -37,8 +37,6 @@ Azure Media Services でエンコードする場合、クイック スタート�
 [Media Services アカウントを作成する](./create-account-howto.md)
 
 リソース グループ名と Media Services アカウント名を覚えておいてください。
-
-[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="define-a-custom-preset"></a>カスタム プリセットを定義する
 
@@ -128,7 +126,7 @@ Azure Media Services でエンコードする場合、クイック スタート�
 
 ## <a name="create-a-new-transform"></a>新しい変換を作成する  
 
-この例では、先ほど定義したカスタム プリセットに基づく**変換**を作成します。 変換を作成するときは、すでに存在している変換があるかどうか確認する必要があります。 変換が存在する場合はそれを再利用します。 次の `show` コマンドは、変換が存在する場合、`customTransformName` を返します。
+この例では、先ほど定義したカスタム プリセットに基づく **変換** を作成します。 変換を作成するときは、すでに存在している変換があるかどうか確認する必要があります。 変換が存在する場合はそれを再利用します。 次の `show` コマンドは、変換が存在する場合、`customTransformName` を返します。
 
 ```azurecli-interactive
 az ams transform show -a amsaccount -g amsResourceGroup -n customTransformName

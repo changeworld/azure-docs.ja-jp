@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
-ms.date: 07/30/2020
-ms.openlocfilehash: 84d1ba6ff343b5f3d1f88d7ae5c618601f416e2c
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 10/15/2020
+ms.openlocfilehash: f5c5d6da239d302b57bdb37e9d49116a29c1ccb4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513767"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558126"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share のロールと要件 
 
@@ -25,8 +25,8 @@ Azure Data Share リソースのマネージド ID には、Azure データ ス�
 
 Azure データ ストアからデータを共有または受信するには、ユーザーに少なくとも以下のアクセス許可が必要です。 SQL ベースの共有には追加のアクセス許可が必要です。
 
-* その Azure データ ストアに対する書き込みアクセス許可。 通常、このアクセス許可は**共同作成者**ロールにあります。
-* その Azure データ ストアでロールの割り当てを作成するためのアクセス許可。 通常、ロールの割り当てを作成するためのアクセス許可は、**所有者**ロール、ユーザー アクセス管理者ロール、または Microsoft.Authorization/ロールの割り当て/書き込みのアクセス許可が割り当てられているカスタム ロールにあります。 データ共有リソースのマネージド ID に Azure データ ストアへのアクセス権が既に付与されている場合は、このアクセス許可は必要ありません。 必要なロールについては、以下の表を参照してください。
+* その Azure データ ストアに対する書き込みアクセス許可。 通常、このアクセス許可は **共同作成者** ロールにあります。
+* その Azure データ ストアでロールの割り当てを作成するためのアクセス許可。 通常、ロールの割り当てを作成するためのアクセス許可は、**所有者** ロール、ユーザー アクセス管理者ロール、または Microsoft.Authorization/ロールの割り当て/書き込みのアクセス許可が割り当てられているカスタム ロールにあります。 データ共有リソースのマネージド ID に Azure データ ストアへのアクセス権が既に付与されている場合は、このアクセス許可は必要ありません。 必要なロールについては、以下の表を参照してください。
 
 Data Share リソースのマネージド ID に割り当てられるロールの概要を次に示します。
 
@@ -35,16 +35,15 @@ Data Share リソースのマネージド ID に割り当てられるロール�
 |Azure Blob Storage| ストレージ BLOB データ閲覧者 | ストレージ BLOB データ共同作成者
 |Azure Data Lake Gen1 | 所有者 | サポートされていません
 |Azure Data Lake Gen2 | ストレージ BLOB データ閲覧者 | ストレージ BLOB データ共同作成者
-|Azure SQL Server | SQL DB Contributor | SQL DB Contributor
 |Azure Data Explorer クラスター | Contributor | Contributor
 |
 
-SQL ベースの共有を行う場合、Azure SQL Database に、Azure Data Share リソースと同じ名前を使用して、外部プロバイダーから SQL ユーザーを作成する必要があります。 その SQL ユーザーに必要なアクセス許可の概要を次に示します。
+SQL ベースの共有を行う場合、Azure SQL Database に、Azure Data Share リソースと同じ名前を使用して、外部プロバイダーから SQL ユーザーを作成する必要があります。 このユーザーを作成するには、Azure Active Directory の管理者権限が必要です。 その SQL ユーザーに必要なアクセス許可の概要を次に示します。
 
 |**SQL データベースの種類**|**データ プロバイダーの SQL ユーザーのアクセス許可**|**データ コンシューマーの SQL ユーザーのアクセス許可**|
 |---|---|---|
 |Azure SQL データベース | db_datareader | db_datareader、db_datawriter、db_ddladmin
-|Azure Synapse Analytics (旧称 SQL DW) | db_datareader | db_datareader、db_datawriter、db_ddladmin
+|Azure Synapse Analytics | db_datareader | db_datareader、db_datawriter、db_ddladmin
 |
 
 ### <a name="data-provider"></a>データ プロバイダー
@@ -55,7 +54,7 @@ Azure Data Share にデータセットを追加するには、プロバイダー
 
 または、ユーザーが、Azure データ ストアの所有者にデータ共有リソースのマネージド ID を手動で Azure データ ストアに追加させることもできます。 この操作は、データ共有リソースごとに 1 回だけ実行する必要があります。
 
-データ共有リソースのマネージド ID に対してロールの割り当てを作成するには、次の手順に従います。
+データ共有リソースのマネージド ID に対してロールの割り当てを手動で作成するには、次の手順に従います。  
 
 1. Azure データ ストアに移動します。
 1. **[アクセス制御 (IAM)]** を選択します。
@@ -64,7 +63,9 @@ Azure Data Share にデータセットを追加するには、プロバイダー
 1. *[選択]* の下に、使用する Azure Data Share リソースの名前を入力します。
 1. [*保存*] をクリックします。
 
-SQL ベースのソースの場合は、上記の手順に加えて、SQL Database に、Azure Data Share リソースと同じ名前を使用して、外部プロバイダーから SQL ユーザーを作成する必要があります。 このユーザーには *db_datareader* アクセス許可を付与する必要があります。 サンプル スクリプトと、SQL ベースの共有に必要なその他の前提条件については、「[データの共有](share-your-data.md)」のチュートリアルを参照してください。 
+ロールの割り当ての詳細については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。 REST API を使用してデータを共有している場合は、「[REST API を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-rest.md)」を参照することによって、API を使用してロールの割り当てを作成できます。 
+
+SQL ベースのソースの場合は、Azure Active Directory 認証を使用して SQL データベースに接続する一方で、SQL Database に、Azure Data Share リソースと同じ名前を使用して、外部プロバイダーから SQL ユーザーを作成する必要があります。 このユーザーには *db_datareader* アクセス許可を付与する必要があります。 サンプル スクリプトと、SQL ベースの共有に必要なその他の前提条件については、「[Azure SQL Database または Azure Synapse Analytics からの共有](how-to-share-from-sql.md)」のチュートリアルを参照してください。 
 
 ### <a name="data-consumer"></a>データ コンシューマー
 データを受信するには、コンシューマーのデータ共有リソースのマネージド ID に、ターゲット Azure データ ストアへのアクセス権が付与されている必要があります。 たとえば、ストレージ アカウントを使用する場合は、データ共有リソースのマネージド ID にストレージ BLOB データ共同作成者ロールが付与されます。 
@@ -73,7 +74,7 @@ SQL ベースのソースの場合は、上記の手順に加えて、SQL Databa
 
 または、ユーザーが、Azure データ ストアの所有者にデータ共有リソースのマネージド ID を手動で Azure データ ストアに追加させることもできます。 この操作は、データ共有リソースごとに 1 回だけ実行する必要があります。
 
-データ共有リソースのマネージド ID に対してロールの割り当てを手動で作成するには、次の手順に従います。
+データ共有リソースのマネージド ID に対してロールの割り当てを手動で作成するには、次の手順に従います。 
 
 1. Azure データ ストアに移動します。
 1. **[アクセス制御 (IAM)]** を選択します。
@@ -82,11 +83,9 @@ SQL ベースのソースの場合は、上記の手順に加えて、SQL Databa
 1. *[選択]* の下に、使用する Azure Data Share リソースの名前を入力します。
 1. [*保存*] をクリックします。
 
-SQL ベースのターゲットの場合は、上記の手順に加えて、SQL Database に、Azure Data Share リソースと同じ名前を使用して、外部プロバイダーから SQL ユーザーを作成する必要があります。 このユーザーには、*db_datareader、db_datawriter、db_ddladmin* アクセス許可を付与する必要があります。 サンプル スクリプトと、SQL ベースの共有に必要なその他の前提条件については、[データの受け入れと受信](subscribe-to-data-share.md)に関するチュートリアルを参照してください。 
+ロールの割り当ての詳細については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。 REST API を使用してデータを受信している場合は、「[REST API を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-rest.md)」を参照することによって、API を使用してロールの割り当てを作成できます。 
 
-REST API を使用してデータを共有する場合は、これらのロールの割り当てを手動で作成する必要があります。 
-
-ロールの割り当てを追加する方法の詳細については、[こちらのドキュメント](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)を参照してください。 
+SQL ベースのターゲットの場合は、Azure Active Directory 認証を使用して SQL データベースに接続する一方で、SQL Database に、Azure Data Share リソースと同じ名前を使用して、外部プロバイダーから SQL ユーザーを作成する必要があります。 このユーザーには、*db_datareader、db_datawriter、db_ddladmin* アクセス許可を付与する必要があります。 サンプル スクリプトと、SQL ベースの共有に必要なその他の前提条件については、「[Azure SQL Database または Azure Synapse Analytics からの共有](how-to-share-from-sql.md)」のチュートリアルを参照してください。 
 
 ## <a name="resource-provider-registration"></a>リソース プロバイダーの登録 
 
@@ -103,7 +102,9 @@ Microsoft.DataShare リソース プロバイダーを Azure サブスクリプ�
 1. **[リソース プロバイダー]** をクリックします。
 1. Microsoft.DataShare を検索します。
 1. **[登録]** をクリックします。
+ 
+リソース プロバイダーの詳細については、「[Azure リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)」を参照してください.
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure でのロールの詳細 - [ロール定義について](../role-based-access-control/role-definitions.md)
+- Azure でのロールの詳細 - [Azure ロールの定義について](../role-based-access-control/role-definitions.md)

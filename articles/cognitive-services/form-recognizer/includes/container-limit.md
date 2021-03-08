@@ -3,15 +3,15 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 07/14/2020
+ms.date: 02/04/2021
 ms.author: aahi
-ms.openlocfilehash: f8918766174d77ea2a9c50d9c97d9feae2d9f64a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3f620789e4224f5c278187ea3359752a6f7705be
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512787"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580073"
 ---
-> [!IMPORTANT]
-> * Form Recognizer コンテナーのユーザー制限に達しました。 現在、Form Recognizer コンテナーの新しいアプリケーションは受け付けていません。 
-> * Form Recognizer コンテナーでは、現在、Form Recognizer API バージョン 1.0 が使用されています。 API の最新バージョンにアクセスするには、代わりにマネージド サービスを使用できます。
+> [!CAUTION]
+> * Form Recognizer v1.0 コンテナーは廃止されます。 この記事は参照専用です。 
+> * 最新バージョンの API には、REST API と SDK を使用してアクセスできます。

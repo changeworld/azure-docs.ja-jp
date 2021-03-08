@@ -1,19 +1,16 @@
 ---
 title: Jupyter をローカルにインストールして Azure HDInsight の Spark に接続する
 description: Jupyter Notebook をローカル コンピューターにインストールして Apache Spark クラスターに接続する方法を説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: 96b2e7deff464f00ced4457a514ac833a90bd42d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: d5915316ee9d393b2481eeca6a5da7923b271d9f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873893"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930418"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Notebook をコンピューターにインストールして HDInsight の Apache Spark に接続する
 
@@ -42,12 +39,7 @@ Jupyter Notebook をインストールする前に Python をインストール�
 
 ## <a name="install-spark-magic"></a>Spark マジックをインストールする
 
-1. Spark マジックをインストールするには、次のコマンドのいずれかを入力します。 [sparkmagic のドキュメント](https://github.com/jupyter-incubator/sparkmagic#installation)も参照してください。
-
-    |クラスターのバージョン | インストール コマンド |
-    |---|---|
-    |v3.6 および v3.5 |`pip install sparkmagic==0.13.1`|
-    |v3.4|`pip install sparkmagic==0.2.3`|
+1. HDInsight クラスター バージョン 3.6 および 4.0 用の Spark マジックをインストールするには、`pip install sparkmagic==0.13.1` コマンドを入力します。 [sparkmagic のドキュメント](https://github.com/jupyter-incubator/sparkmagic#installation)も参照してください。
 
 1. 次のコマンドを実行して、`ipywidgets` が適切にインストールされていることを確認します。
 
@@ -63,7 +55,7 @@ Jupyter Notebook をインストールする前に Python をインストール�
     pip show sparkmagic
     ```
 
-    次に、上のコマンドで識別された**場所**に作業ディレクトリを変更します。
+    次に、上のコマンドで識別された **場所** に作業ディレクトリを変更します。
 
 1. 新しい作業ディレクトリから、次のコマンドを 1 つ以上入力して目的のカーネルをインストールします。
 
@@ -170,7 +162,7 @@ Jupyter Notebook をインストールする前に Python をインストール�
 
 Jupyter をコンピューターにインストールしてから HDInsight 上の Apache Spark クラスターに接続する理由は次のとおりです。
 
-* ノートブックをローカルに作成し、アプリケーションを実行中のクラスターに対してテストしてから、そのノートブックをクラスターにアップロードするオプションが提供されます。 ノートブックをクラスターにアップロードするには、クラスターで実行されている Jupyter Notebook を使用してアップロードするか、またはクラスターに関連付けられているストレージ アカウント内の `/HdiNotebooks` フォルダーに保存するかのどちらかの方法を使用できます。 クラスターにノートブックを保存する方法の詳細については、 [Jupyter Notebook の格納場所](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)に関するセクションを参照してください。
+* ノートブックをローカルに作成し、アプリケーションを実行中のクラスターに対してテストしてから、そのノートブックをクラスターにアップロードするオプションが提供されます。 ノートブックをクラスターにアップロードするには、クラスターで実行されている Jupyter Notebook を使用してアップロードするか、またはクラスターに関連付けられているストレージ アカウント内の `/HdiNotebooks` フォルダーに保存するかのどちらかの方法を使用できます。 クラスターにノートブックを保存する方法の詳細については、[Jupyter Notebook の格納場所](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)に関するセクションを参照してください。
 * ノートブックがローカルで利用できると、アプリケーションの要件に応じて異なる Spark クラスターに接続することができます。
 * GitHub を使用してソース管理システムを導入し、ノートブックのバージョン管理を行うことができます。 複数のユーザーが同じノートブックで作業するコラボレーション環境を実現することもできます。
 * クラスターをセットアップしなくてもローカルでノートブックを使用できます。 クラスターは、クラスターとの間でノートブックをテストする目的でのみ必要となります。ノートブックや開発環境を手動で管理するうえでクラスターは必要ありません。

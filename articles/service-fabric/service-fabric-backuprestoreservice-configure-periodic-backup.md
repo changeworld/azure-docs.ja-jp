@@ -1,16 +1,14 @@
 ---
 title: 定期的なバックアップの構成について
-description: アプリケーションデータの定期バックアップを可能にする Service Fabric の定期バックアップと復元機能を使用します。
-author: hrushib
+description: Service Fabric の定期的なバックアップと復元機能を使用して、Reliable Stateful Services または Reliable Actors の定期的なバックアップを構成します。
 ms.topic: article
 ms.date: 2/01/2019
-ms.author: hrushib
-ms.openlocfilehash: c77f069d93e368652c30cd100b0f99ca55341882
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 2607502af44b178131820d78f23bcdf4e32454a0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261226"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018887"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Azure Service Fabric の定期バックアップ構成を理解する
 
@@ -25,6 +23,9 @@ Reliable Stateful Services または Reliable Actors の定期バックアップ
 バックアップ ポリシーは、次の構成で構成されます。
 
 * **データ損失時の自動復元**: パーティションでデータ損失イベントが発生した場合に、利用可能な最新のバックアップを使用して自動的に復元をトリガーするかどうかを指定します。
+> [!NOTE]
+> 運用環境クラスターでは、自動復元を設定しないことをお勧めします。
+>
 
 * **増分バックアップの最大数**: 2 回の完全バックアップの間に実行される増分バックアップの最大数を定義します。 増分バックアップの最大数は、上限を指定します。 次の条件のいずれかに該当する場合は、指定した回数の増分バックアップが完了する前に、完全バックアップを実行できます。
 
@@ -80,6 +81,7 @@ Reliable Stateful Services または Reliable Actors の定期バックアップ
 
 * **バックアップ ストレージ**: バックアップをアップロードする場所を指定します。 ストレージは、Azure BLOB ストアまたはファイル共有が可能です。
     1. **Azure BLOB ストア**: Azure で生成されたバックアップを格納しなければならない場合は、このストレージの種類を選択する必要がります。 _スタンドアロン_ クラスターと _Azure ベースの_ クラスターは、両方ともこのストレージの種類を使用できます。 このストレージの種類の記述では、接続文字列と、バックアップをアップロードする必要があるコンテナーの名前が必要です。 指定した名前のコンテナーが使用できない場合は、バックアップのアップロード時に作成されます。
+
         ```json
         {
             "StorageKind": "AzureBlobStore",
@@ -88,6 +90,10 @@ Reliable Stateful Services または Reliable Actors の定期バックアップ
             "ContainerName": "BackupContainer"
         }
         ```
+
+        > [!NOTE]
+        > バックアップ復元サービスは、v1 Azure storage では機能しません。
+        >
 
     2. **ファイル共有**: オンプレミスでデータ バックアップを格納しなければならない場合は、_スタンドアロン_ クラスター用のこのストレージの種類を選択する必要があります。 このストレージの種類の記述では、バックアップをアップロードする必要があるファイル共有パスが必要です。 ファイル共有へのアクセスは、次のオプションのいずれかを使用して構成できます。
         1. "_統合 Windows 認証_"。ファイル共有へのアクセスは、Service Fabric クラスターに属するすべてのコンピューターに提供されます。 この場合は、次のフィールドを設定して、"_ファイル共有_" ベースのバックアップ ストレージを構成します。
@@ -131,6 +137,10 @@ Reliable Stateful Services または Reliable Actors の定期バックアップ
 
 ## <a name="enable-periodic-backup"></a>定期バックアップを有効にする
 データのバックアップ要件を満たすバックアップ ポリシーを定義した後、バックアップ ポリシーを "_アプリケーション_"、"_サービス_"、または "_パーティション_" に適切に関連付ける必要があります。
+
+> [!NOTE]
+> バックアップを有効にする前に、アプリケーションのアップグレードが進行中でないことを確認してください。
+>
 
 ### <a name="hierarchical-propagation-of-backup-policy"></a>バックアップ ポリシーの階層的な伝達
 Service fabric では、アプリケーション、サービス、およびパーティション間のリレーションシップは、[アプリケーション モデル](./service-fabric-application-model.md)で説明されているように階層構造になっています。 バックアップ ポリシーは、階層内の "_アプリケーション_"、"_サービス_"、または "_パーティション_" に関連付けることができます。 バックアップ ポリシーは、次のレベルの階層に伝達されます。 1 つだけ作成されたバックアップ ポリシーが "_アプリケーション_" に関連付けられていると仮定した場合、"_アプリケーション_" のすべての _Reliable Stateful Services_ と _Reliable Actors_ に属するすべてのステートフル パーティションが、そのバックアップ ポリシーを使用してバックアップされます。 バックアップ ポリシーが _Reliable Stateful Services_ に関連付けられている場合は、すべてのパーティションが、そのバックアップ ポリシーを使用してバックアップされます。
@@ -188,6 +198,9 @@ Service fabric では、アプリケーション、サービス、およびパ�
         "CleanBackup": true 
     }
     ```
+> [!NOTE]
+> バックアップを無効にする前に、アプリケーションのアップグレードが進行中でないことを確認してください。
+>
 
 ## <a name="suspend--resume-backup"></a>バックアップの中断と再開
 データの定期バックアップを一時的に中断しなければならない特定の状況が発生する場合があります。 このような状況では、要件に応じて、"_アプリケーション_"、"_サービス_"、または "_パーティション_" で Suspend Backup API を使用できます。 定期バックアップの中断は、中断が適用されたアプリケーションの階層からサブツリーに伝達されます。 
@@ -215,6 +228,10 @@ Service fabric では、アプリケーション、サービス、およびパ�
 予期しない障害によって、サービス パーティションでデータ損失が発生する場合があります。 たとえば、パーティションの 3 つのレプリカのうちの 2 つのディスク (プライマリ レプリカを含む) が破損または消去された場合です。
 
 Service Fabric は、パーティションでデータ損失が発生したことを検出すると、パーティションで `OnDataLossAsync` インターフェイス メソッドを呼び出して、パーティションで必要なアクションを実行してデータ損失の状態を脱することを期待します。 この状況では、パーティションの有効なバックアップ ポリシーで `AutoRestoreOnDataLoss` フラグが `true` に設定されている場合、このパーティションに対して利用できる最新のバックアップを使用して、復元が自動的にトリガーされます。
+
+> [!NOTE]
+> 運用環境クラスターでは、自動復元を設定しないことをお勧めします。
+>
 
 ## <a name="get-backup-configuration"></a>バックアップ構成を取得する
 "_アプリケーション_"、"_サービス_"、および "_パーティション_" スコープでのバックアップ構成情報を取得するための API を使用できます。 [Get Application Backup Configuration Info](/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo)[Get Service Backup Configuration Info](/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)および [Get Partition Backup Configuration Info](/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) が、それぞれに該当する API です。 主に、これらの API は、適切なバックアップ ポリシー、バックアップ ポリシーが適用されるスコープ、およびバックアップの中断の詳細を返します。 これらの API から返される結果についての簡単な説明を次に示します。

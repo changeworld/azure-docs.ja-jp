@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b04b9ababfe0e4c2a60d14044b9d3ee120837dc5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077373"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491045"
 ---
 # <a name="automation-with-service-principals"></a>サービス プリンシパルによる自動化
 
-サービス プリンシパルは、リソース/サービス レベルの無人操作を実行する目的でテナント内で作成する Azure Active Directory アプリケーション リソースです。 アプリケーション ID とパスワードまたは証明書が与えられた、独自の*ユーザー ID* です。 サービス プリンシパルには、割り当てられたロールとアクセス許可によって定義されるタスクを実行するために必要な権限のみが与えられます。 
+サービス プリンシパルは、リソース/サービス レベルの無人操作を実行する目的でテナント内で作成する Azure Active Directory アプリケーション リソースです。 アプリケーション ID とパスワードまたは証明書が与えられた、独自の *ユーザー ID* です。 サービス プリンシパルには、割り当てられたロールとアクセス許可によって定義されるタスクを実行するために必要な権限のみが与えられます。 
 
 Analysis Services では、サービス プリンシパルは Azure Automation、PowerShell 無人モード、カスタム クライアント アプリケーション、Web アプリと共に使用し、共通タスクを自動化します。 たとえば、サーバーのプロビジョニング、モデルのデプロイ、データ更新、拡大縮小、一時停止/再開をすべて、サービス プリンシパルを利用することで自動化できます。 権限は、通常の Azure AD UPN アカウントとほぼ同じように、ロール メンバーシップを介してサービス プリンシパルに割り当てられます。
 
@@ -33,8 +33,8 @@ Analysis Services では、サービス プリンシパルを使用してマネ�
 
 Runbook 操作のために、サービス プリンシパルの資格情報と証明書を Azure Automation に安全に格納できます。 詳細については、次を参照してください。
 
-[Azure Automation の資格情報資産](../automation/automation-credentials.md)   
-[Azure Automation の証明書資産](../automation/automation-certificates.md)
+[Azure Automation の資格情報資産](../automation/shared-resources/credentials.md)   
+[Azure Automation の証明書資産](../automation/shared-resources/certificates.md)
 
 ## <a name="add-service-principals-to-server-admin-role"></a>サービス プリンシパルをサーバー管理者ロールに追加する
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO と ADOMD 
 
-クライアント アプリケーションや Web アプリと接続するとき、[AMO と ADOMD のクライアント ライブラリ](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) バージョン 15.0.2 以降の、NuGet からインストールできるパッケージでは、接続文字列にサービス プリンシパルを指定できます。構文 `app:AppID` とパスワードまたは `cert:thumbprint` を利用します。 
+クライアント アプリケーションや Web アプリと接続するとき、[AMO と ADOMD のクライアント ライブラリ](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true) バージョン 15.0.2 以降の、NuGet からインストールできるパッケージでは、接続文字列にサービス プリンシパルを指定できます。構文 `app:AppID` とパスワードまたは `cert:thumbprint` を利用します。 
 
 次の例では、`appID` と `password` を使用し、モデル データベース更新操作を実行します。
 
@@ -109,8 +109,8 @@ db.Model.SaveChanges();
 ```
 
 ## <a name="next-steps"></a>次のステップ
-[Azure PowerShell を使用してサインインする](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
+[Azure PowerShell を使用してサインインする](/powershell/azure/authenticate-azureps)   
 [Logic Apps を使用した更新](analysis-services-refresh-logic-app.md)  
 [Azure Automation を使用した更新](analysis-services-refresh-azure-automation.md)  
 [サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)  
-[サービス プリンシパルを使用した Power BI Premium ワークスペースとデータセットのタスクの自動化](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 
+[サービス プリンシパルを使用した Power BI Premium ワークスペースとデータセットのタスクの自動化](/power-bi/admin/service-premium-service-principal)

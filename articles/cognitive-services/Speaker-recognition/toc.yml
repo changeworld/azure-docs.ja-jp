@@ -1,9 +1,9 @@
 - name: Speaker Recognition のドキュメント
-  href: Home.md
+  href: ../speech-service/speaker-recognition-overview.md
 - name: 概要
   items:
     - name: Speaker Recognition について
-      href: Home.md
+      href: ../speech-service/speaker-recognition-overview.md
 - name: リファレンス
   items:
     - name: API リファレンス

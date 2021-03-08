@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 7d0b0a6c935182737a7f207b7c7831fefcd491ea
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: eb7062b745ae6eb97dc2cd4ba2051cc221031630
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555312"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179165"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と ExpenseIn の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88555312"
 * ユーザーが自分の Azure AD アカウントを使用して ExpenseIn に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 
 * ExpenseIn では、**SP と IDP** によって開始される SSO がサポートされます。
-* ExpenseIn を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* ExpenseIn を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 
 ## <a name="adding-expensein-from-the-gallery"></a>ギャラリーからの ExpenseIn の追加
@@ -123,7 +123,7 @@ ExpenseIn で Azure AD SSO を構成してテストするには、次の構成�
 
 ## <a name="configure-expensein-sso"></a>ExpenseIn の SSO の構成
 
-1. ExpenseIn 内での構成を自動化するには、**[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. ExpenseIn 内での構成を自動化するには、**[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -135,19 +135,19 @@ ExpenseIn で Azure AD SSO を構成してテストするには、次の構成�
 
 1. ページ上部の **[管理者]** をクリックし、 **[シングル サインオン]** に移動して **[プロバイダーの追加]** をクリックします。
 
-     ![ExpenseIn の構成](./media/expenseIn-tutorial/config01.png)
+     ![[管理者] タブ、[シングル サインオン - プロバイダー] ページ、選択されている [プロバイダーの追加] を示すスクリーンショット。](./media/expenseIn-tutorial/config01.png)
 
 1. **[New Identity Provider] (新しい ID プロバイダー)** ポップアップで、次の手順に従います。
 
-    ![ExpenseIn の構成](./media/expenseIn-tutorial/config02.png)
+    ![値が入力された [Edit Identity Provider]\(ID プロバイダーの編集\) ポップアップを示すスクリーンショット。](./media/expenseIn-tutorial/config02.png)
 
     a. **[プロバイダー名]** ボックスに「Azure」などの名前を入力します。
 
     b. **[Allow Provider Intitated Sign-On]\(プロバイダーによって開始されるサインオンを許可する\)** で **[Yes]\(はい\)** を選択します。
 
-    c. **[ターゲット URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    c. **[ターゲット URL]** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    d. **[Issuer]\(発行者\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+    d. **[Issuer]\(発行者\)** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。
 
     e. 証明書 (Base64) をメモ帳で開き、その内容をコピーして **[証明書]** ボックスに貼り付けます。
 
@@ -163,7 +163,7 @@ Azure AD ユーザーが ExpenseIn にサインインできるようにするに
 
 2. ページ上部の **[管理者]** をクリックし、 **[ユーザー]** に移動して **[新しいユーザー]** をクリックします。
 
-     ![ExpenseIn の構成](./media/expenseIn-tutorial/config03.png)
+     ![[管理者] タブと、[新しいユーザー] が選択されている [ユーザーの管理] ページを示すスクリーンショット。](./media/expenseIn-tutorial/config03.png)
 
 3. **[詳細]** ポップアップで、次の手順に従います。
 
@@ -179,18 +179,18 @@ Azure AD ユーザーが ExpenseIn にサインインできるようにするに
 
 ## <a name="test-sso"></a>SSO のテスト
 
-アクセス パネル上で [ExpenseIn] タイルを選択すると、SSO を設定した ExpenseIn に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [ExpenseIn] タイルを選択すると、SSO を設定した ExpenseIn に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で ExpenseIn を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって ExpenseIn を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって ExpenseIn を保護する方法](/cloud-app-security/proxy-intro-aad)

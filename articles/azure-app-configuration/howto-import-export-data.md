@@ -2,23 +2,23 @@
 title: Azure App Configuration でのデータのインポートまたはエクスポート
 description: Azure App Configuration で構成データをインポートまたはエクスポートする方法について説明します。 お使いの App Configuration ストアとコード プロジェクト間でデータを交換できます。
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: lcozzens
-ms.openlocfilehash: 21eba653bcd853db9550d0d3781aacd281884605
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.author: alkemper
+ms.openlocfilehash: 5e4eeb37bb5efa11a656600072e4aa364fc71500
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588077"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931794"
 ---
 # <a name="import-or-export-configuration-data"></a>構成データのインポートまたはエクスポート
 
 Azure App Configuration はデータのインポート操作とエクスポート操作をサポートします。 これらの操作を使用して、構成データを一括処理し、お使いの App Configuration ストアとコード プロジェクト間でデータを交換することができます。 たとえば、1 つの App Configuration ストアをテスト用に、もう 1 つの App Configuration を実稼働用に設定することができます。 それらの間でアプリケーション設定をコピーできるので、データを 2 回入力する必要がなくなります。
 
-この記事では、App Configuration でデータをインポートおよびエクスポートするためのガイドを提供します。 GitHub リポジトリとの継続的な同期を設定する場合は、[GitHub Actions](https://aka.ms/azconfig-gha1) に関する記事を参照してください。
+この記事では、App Configuration でデータをインポートおよびエクスポートするためのガイドを提供します。 GitHub リポジトリとの継続的な同期を設定する場合は、[GitHub Actions](./concept-github-action.md) に関する記事を参照してください。
 
 ## <a name="import-data"></a>データのインポート
 
@@ -65,4 +65,4 @@ Azure App Configuration はデータのインポート操作とエクスポー�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core Web アプリケーションの作成](./quickstart-aspnet-core-app.md)  
+> [ASP.NET Core Web アプリケーションの作成](./quickstart-aspnet-core-app.md)

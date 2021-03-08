@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 10/11/2019
+ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: 52bf9e061eb57c7ce6ea698b7468b5ba5e11b4e8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d298dfd5f3ad0beb56a511c124bab056ca25fd27
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78244961"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310050"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure プライベート DNS ゾーンを作成する
 
@@ -20,15 +20,7 @@ ms.locfileid: "78244961"
 
 DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 Azure DNS でドメインのホストを開始するには、そのドメイン名用に DNS ゾーンを作成する必要があります。 ドメインの DNS レコードはすべて、この DNS ゾーン内に作成されます。 仮想ネットワークにプライベート DNS ゾーンを発行するには、そのゾーン内のレコードを解決することが認められた仮想ネットワークの一覧を指定します。  これらを "*リンクされている*" 仮想ネットワーク と呼びます。 また、自動登録を有効にすると、仮想マシンの作成または削除、あるいはその IP アドレスの変更を行うたびに、Azure DNS でそのゾーン レコードも更新されます。
 
-このクイックスタートでは、次の方法について説明します。
-
-> [!div class="checklist"]
-> * プライベート DNS ゾーンの作成
-> * 仮想ネットワークの作成
-> * 仮想ネットワークのリンク
-> * テスト用仮想マシンの作成
-> * 追加の DNS レコードの作成
-> * プライベート ゾーンのテスト
+## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -76,12 +68,12 @@ DNS ゾーンにはドメインの DNS エントリが含まれています。 A
 
 ## <a name="link-the-virtual-network"></a>仮想ネットワークのリンク
 
-プライベート DNS ゾーンを仮想ネットワークにリンクさせるには、仮想ネットワーク リンクを作成します。
+プライベート DNS ゾーンを仮想ネットワークにリンクするには、仮想ネットワーク リンクを作成します。
 
 ![仮想ネットワークリンクの追加](media/private-dns-portal/dns-add-virtual-network-link.png)
 
 1. **MyAzureResourceGroup** リソース グループを開き、**private.contoso.com** プライベート ゾーンを選択します。
-2. 左側のウィンドウで、 **[Virtual network links]\(仮想ネットワーク リンク\)** を選択します。
+2. 左側のウィンドウで、**[Virtual network links]\(仮想ネットワーク リンク\)** を選択します。
 3. **[追加]** を選択します。
 4. **[リンク名]** に「**myLink**」と入力します。
 5. **[仮想ネットワーク]** で **[myAzureVNet]** を選択します。
@@ -92,18 +84,18 @@ DNS ゾーンにはドメインの DNS エントリが含まれています。 A
 
 次に、プライベート DNS ゾーンをテストできるように 2 つの仮想マシンを作成します。
 
-1. ポータル ページの左上で **[リソースの作成]** を選択し、 **[Windows Server 2016 Datacenter]** を選択します。
+1. ポータル ページの左上で **[リソースの作成]** を選択し、**[Windows Server 2016 Datacenter]** を選択します。
 1. リソース グループに **[MyAzureResourceGroup]** を選択します。
 1. 仮想マシンの名前には「**myVM01**」と入力します。
 1. **[リージョン]** に **[米国中西部]** を選択します。
 1. 管理者ユーザーの名前を入力します。
 2. パスワードの入力と確認入力を行います。
-5. **[パブリック受信ポート]** で **[選択したポートを許可する]** を選択し、 **[受信ポートを選択]** で **[RDP (3389)]** を選択します。
+5. **[パブリック受信ポート]** で **[選択したポートを許可する]** を選択し、**[受信ポートを選択]** で **[RDP (3389)]** を選択します。
 10. そのページの他の値は既定のままとし、 **[Next: Disks >]\(次へ: ディスク >\)** をクリックします。
 11. **[ディスク]** ページは既定値のままとし、 **[Next: Networking >]\(次へ: ネットワーク >\)** をクリックします。
 1. 仮想ネットワークに **[myAzureVNet]** が選択されていることを確認します。
 1. そのページの他の値は既定のままとし、 **[Next: Management >]\(次へ: 管理 >\)** をクリックします。
-2. **[ブート診断]** に **[オフ]** を選択します。その他は既定値のままとし、 **[Review + create]\(確認と作成\)** を選択します。
+2. **[ブート診断]** に **[オフ]** を選択します。その他は既定値のままとし、**[Review + create]\(確認と作成\)** を選択します。
 1. 設定を確認し、 **[作成]** をクリックします。
 
 これらの手順を繰り返して、**myVM02** という名前の別の仮想マシンを作成します。
@@ -115,7 +107,7 @@ DNS ゾーンにはドメインの DNS エントリが含まれています。 A
  次の例では、リソース グループ **MyAzureResourceGroup** の DNS ゾーン **private.contoso.com** に、相対名が **db** のレコードを作成します。 レコード セットの完全修飾名は、**db.private.contoso.com** になります。 レコードの種類は "A" で、IP アドレスは **myVM01** です。
 
 1. **MyAzureResourceGroup** リソース グループを開き、**private.contoso.com** プライベート ゾーンを選択します。
-2. **+ [レコード セット]** を選択します。
+2. **[+ レコード セット]** を選択します。
 3. **[名前]** に「**db**」と入力します。
 4. 表示されている **myVM01** の IP アドレスを **[IP アドレス]** に入力します。 仮想マシンが起動されたときに、これが自動的に登録されることが必要です。
 5. **[OK]** を選択します。
@@ -143,7 +135,7 @@ MyVM02 についても同じ手順を繰り返します。
    ```
    ping myVM01.private.contoso.com
    ```
-   次のような出力が表示されます。
+   次のような出力が表示されるはずです。
    ```
    PS C:\> ping myvm01.private.contoso.com
 
@@ -163,7 +155,7 @@ MyVM02 についても同じ手順を繰り返します。
    ```
    ping db.private.contoso.com
    ```
-   次のような出力が表示されます。
+   次のような出力が表示されるはずです。
    ```
    PS C:\> ping db.private.contoso.com
 
@@ -180,7 +172,7 @@ MyVM02 についても同じ手順を繰り返します。
    PS C:\>
    ```
 
-## <a name="delete-all-resources"></a>すべてのリソースの削除
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このクイックスタートで作成したリソースが不要になったときに削除するには、**MyAzureResourceGroup** リソース グループを削除します。
 

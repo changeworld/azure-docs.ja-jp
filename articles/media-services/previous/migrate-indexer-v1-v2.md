@@ -3,7 +3,7 @@ title: Indexer v1 と v2 から Azure Media Services Video Indexer への移行|
 description: このトピックでは、Azure Media Indexer v1 と v2 から Azure Media Services Video Indexer に移行する方法を説明します。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,31 +11,32 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2019
-ms.author: juliako
-ms.openlocfilehash: 3da6dd877a94da64f85f093ae98a0b8a109ab2e1
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.date: 10/21/2020
+ms.author: inhenkel
+ms.openlocfilehash: 330bffebb870635fd473e88a8eadb300eed40b9b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255105"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012137"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Media Indexer と Media Indexer 2 から Video Indexer に移行する
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-[Azure Media Indexer](media-services-index-content.md) メディア プロセッサと [Azure Media Indexer 2 プレビュー](media-services-process-content-with-indexer2.md) メディア プロセッサのインベントリは廃止される予定です。 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。 [Azure Media Services Video Indexer](../video-indexer/index.yml) が、これらの従来のメディア プロセッサに取って代わります。
+> [!IMPORTANT]
+> 顧客は、[Media Services v3 AudioAnalyzerPreset Basic モード](../latest/analyzing-video-audio-files-concept.md)を使用して、Indexer v1 および Indexer v2 からに移行することをお勧めします。 [Azure Media Indexer](media-services-index-content.md) メディア プロセッサと [Azure Media Indexer 2 プレビュー](./legacy-components.md) メディア プロセッサのインベントリは廃止される予定です。 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。
 
 Azure Media Services Video Indexer は、Azure Media Analytics、Azure Cognitive Search、Cognitive Services (Face API、Microsoft Translator、Computer Vision API、Custom Speech Service など) を基盤として構築されています。 Video Indexer のビデオとオーディオのモデルを使用して、ビデオから分析情報を抽出することができます。 Video Indexer はどのようなシナリオで使用できるか、どのような機能を提供するか、どのように使用を開始するかを確認するには、[Video Indexer のビデオとオーディオのモデル](../video-indexer/video-indexer-overview.md)に関するページを参照してください。 
 
 [Azure Media Services v3 アナライザー プリセット](../latest/analyzing-video-audio-files-concept.md)を使用するか、直接 [Video Indexer API](https://api-portal.videoindexer.ai/) を使用して、ビデオ ファイルとオーディオ ファイルから分析情報を抽出できます。 現在、Video Indexer API と Media Services v3 API によって提供される機能には重複があります。
 
 > [!NOTE]
-> どのような場合に Video Indexer やMedia Services アナライザー プリセットを使用するかについて詳しくは、[比較のドキュメント](../video-indexer/compare-video-indexer-with-media-services-presets.md)をご覧ください。 
+> Video Indexer と Media Services の違いを理解する方法について詳しくは、[比較のドキュメント](../video-indexer/compare-video-indexer-with-media-services-presets.md)を参照してください。
 
 この記事では、Azure Media Indexer と Azure Media Indexer 2 から Azure Media Services Video Indexer に移行する手順について説明します。  
 
-## <a name="migration-options"></a>移行オプション 
+## <a name="migration-options"></a>移行オプション
 
 |以下が必要な場合  |と |
 |---|---|
@@ -48,7 +49,7 @@ Azure Media Services Video Indexer は、Azure Media Analytics、Azure Cognitive
 
 ## <a name="getting-started-with-media-services-v3-apis"></a>Media Services v3 API の使用を開始する
 
-Azure Media Services v3 API では、[Azure Media Services v3 アナライザー プリセット](../latest/analyzing-video-audio-files-concept.md)を使用して、ビデオ ファイルとオーディオ ファイルから分析情報を抽出できます。 
+Azure Media Services v3 API では、[Azure Media Services v3 アナライザー プリセット](../latest/analyzing-video-audio-files-concept.md)を使用して、ビデオ ファイルとオーディオ ファイルから分析情報を抽出できます。
 
 **AudioAnalyzerPreset** を使用して、音声または画像ファイルから複数の音声分析情報を抽出できます。 出力には、音声トランスクリプト用の VTT または TTML ファイルと、JSON ファイル (すべての追加の音声分析情報が格納される) が含まれます。 音声分析情報には、キーワード、話者インデックス作成、音声のセンチメント分析が含まれます。 AudioAnalyzerPreset では、特定の言語の言語検出もサポートされます。 詳細については、[変換](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)に関するページを参照してください。
 
@@ -69,15 +70,15 @@ Azure Media Services v3 API では、[Azure Media Services v3 アナライザー
 
 音声テキスト変換サービスの詳細と開始方法については、「[音声変換の概要](../../cognitive-services/speech-service/speech-to-text.md)」を参照してください。
 
-## <a name="known-differences-from-deprecated-services"></a>非推奨のサービスとの既知の違い 
+## <a name="known-differences-from-deprecated-services"></a>非推奨のサービスとの既知の違い
 
 Video Indexer、Azure Media Services v3 AudioAnalyzerPreset、および Cognitive Services Speech Services サービスは、廃止になった Azure Media Indexer 1 と Azure Media Indexer 2 プロセッサよりも信頼性が高く、より高品質な出力が生成されることがわかります。  
 
-既知の相違点をいくつか次に示します。 
+既知の相違点をいくつか次に示します。
 
-* Cognitive Services Speech Services では、キーワード抽出はサポートされません。 ただし、Video Indexer と Media Services v3 AudioAnalyzerPreset はどちらも、JSON ファイル形式のより堅牢なキーワード セットを提供します。 
+* Cognitive Services Speech Services では、キーワード抽出はサポートされません。 ただし、Video Indexer と Media Services v3 AudioAnalyzerPreset はどちらも、JSON ファイル形式のより堅牢なキーワード セットを提供します。
 
-## <a name="need-help"></a>お困りの際は、
+## <a name="support"></a>サポート
 
 [[新しいサポート リクエスト]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) に移動してサポート チケットを開くことができます
 

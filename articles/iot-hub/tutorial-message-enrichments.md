@@ -4,16 +4,16 @@ description: Azure IoT Hub のメッセージに対してメッセージ エン�
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 1e04ed8fe9087cb06b1533887da3c0fed61259ef
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ddc212e99c0e55156f56df6bf77e122408a727f9
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019727"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624057"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>チュートリアル:Azure IoT Hub のメッセージ エンリッチメントを使用する
 
@@ -23,7 +23,7 @@ ms.locfileid: "89019727"
 
 * 最初の方法では、Azure CLI を使用してリソースを作成し、メッセージ ルーティングを構成します。 次に、[Azure portal](https://portal.azure.com) を使用して手動でエンリッチメントを定義します。
 
-* 2 番目の方法では、Azure Resource Manager テンプレートを使用してリソースを作成し、メッセージ ルーティングとメッセージ エンリッチメントの構成*も*作成します。
+* 2 番目の方法では、Azure Resource Manager テンプレートを使用してリソースを作成し、メッセージ ルーティングとメッセージ エンリッチメントの構成 *も* 作成します。
 
 メッセージ ルーティングとメッセージ エンリッチメントの構成が完了したら、アプリケーションを使用してメッセージを IoT ハブに送信します。 その後、ハブによって両方のストレージ コンテナーにルーティングされます。 **enriched** ストレージ コンテナーのエンドポイントに送信されるメッセージだけがエンリッチされます。
 
@@ -38,13 +38,13 @@ ms.locfileid: "89019727"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-* [Visual Studio](https://www.visualstudio.com/) のインストール。
+- Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-* ポート 8883 がファイアウォールで開放されていることを確認してください。 このチュートリアルのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
+- [Visual Studio](https://www.visualstudio.com/) のインストール。
 
+- ポート 8883 がファイアウォールで開放されていることを確認してください。 このチュートリアルのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="retrieve-the-iot-c-samples-repository"></a>IoT C# サンプル リポジトリを取得する
 
@@ -386,7 +386,7 @@ Resource Manager テンプレートを使用して、リソース、メッセー
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Azure CLI を使用してリソースをクリーンアップする
 
-リソース グループを削除するには、[az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを使います。 `$resourceGroup` は、このチュートリアルの最初で **ContosoResourcesMsgEn** に設定されたことを思い出してください。
+リソース グループを削除するには、[az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) コマンドを使います。 `$resourceGroup` は、このチュートリアルの最初で **ContosoResourcesMsgEn** に設定されたことを思い出してください。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -397,6 +397,7 @@ az group delete --name $resourceGroup
 このチュートリアルでは、次の手順を使用して、IoT Hub メッセージへのメッセージ エンリッチメントの追加を構成、テストしました。
 
 **IoT Hub のメッセージ エンリッチメントを使用する**
+
 > [!div class="checklist"]
 > * 第 1 の方法: Azure CLI を使用してリソースを作成し、メッセージ ルーティングを構成します。 [Azure portal](https://portal.azure.com) を使用して、手動でメッセージ エンリッチメントを構成します。
 > * 第 2 の方法: Azure Resource Manager テンプレートを使用して、リソースを作成し、メッセージ ルーティングとメッセージ エンリッチメントを構成します。
@@ -407,5 +408,8 @@ az group delete --name $resourceGroup
 
 メッセージ ルーティングの詳細については、次の記事を参照してください。
 
-* [IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する](iot-hub-devguide-messages-d2c.md)
-* [チュートリアル:IoT Hub のルーティング](tutorial-routing.md)
+> [!div class="nextstepaction"]
+> [IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する](iot-hub-devguide-messages-d2c.md)
+
+> [!div class="nextstepaction"]
+> [チュートリアル:IoT Hub のルーティング](tutorial-routing.md)

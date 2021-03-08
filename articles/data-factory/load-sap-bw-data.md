@@ -1,22 +1,18 @@
 ---
 title: SAP Business Warehouse からデータを読み込む
 description: Azure Data Factory を使用して SAP Business Warehouse (BW) からデータをコピーする
-services: data-factory
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 5403abab0f93edf14237dcc73f29ffb00a6581f0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3dabb6d5df0a74cc7ae2fb8b381ad9e0dfe04e63
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081293"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370701"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Business Warehouse からデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -28,7 +24,7 @@ ms.locfileid: "86081293"
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Azure Data Factory**: ない場合は、手順に従って[データ ファクトリを作成](quickstart-create-data-factory-portal.md#create-a-data-factory)します。
+- **Azure Data Factory**: ない場合は、手順に従って [データ ファクトリを作成](quickstart-create-data-factory-portal.md#create-a-data-factory)します。
 
 - **宛先の種類が "データベース テーブル"である SAP BW オープン ハブ宛先 (OHD)** : OHD を作成するには、または自分の OHD が Data Factory 統合用に正しく構成されていることを確認するには、この記事の「[SAP BW オープン ハブ宛先の構成](#sap-bw-open-hub-destination-configurations)」セクションをご覧ください。
 
@@ -61,7 +57,7 @@ Azure portal でデータ ファクトリに移動します。 **[作成と監�
 
    1. **[Connect via integration runtime]\(統合ランタイム経由で接続\)** の一覧から、既存のセルフホステッド IR を選択します。 または、まだない場合は作成を選択します。
 
-      新しいセルフホステッド IR を作成するには、 **[+ 新規]** を選択してから、 **[Self-hosted]\(セルフホステッド\)** を選択します。 **[名前]** を入力してから、 **[次へ]** を選択します。 **[高速セットアップ]** を選択して現在のコンピューターにインストールするか、提供される**手動セットアップ**の手順に従います。
+      新しいセルフホステッド IR を作成するには、 **[+ 新規]** を選択してから、 **[Self-hosted]\(セルフホステッド\)** を選択します。 **[名前]** を入力してから、 **[次へ]** を選択します。 **[高速セットアップ]** を選択して現在のコンピューターにインストールするか、提供される **手動セットアップ** の手順に従います。
 
       「[前提条件](#prerequisites)」で説明したように、セルフホステッド IR が実行されているのと同じコンピューターに、Microsoft .NET 3.0 用の SAP Connector がインストールされていることを確認します。
 
@@ -175,7 +171,7 @@ Azure portal でデータ ファクトリに移動します。 **[作成と監�
 
       ![ロジック アプリの構成](media/load-sap-bw-data/logic-app-config.png)
 
-      1. Azure Portal にアクセスします。 新しい **Logic Apps** サービスを選択します。 **[+ 空のロジック アプリ]** を選択して、**Logic Apps デザイナー**に移動します。
+      1. Azure Portal にアクセスします。 新しい **Logic Apps** サービスを選択します。 **[+ 空のロジック アプリ]** を選択して、**Logic Apps デザイナー** に移動します。
 
       2. **[HTTP 要求の受信時]** のトリガーを選択します。 HTTP 要求本文を次のように指定します。
 
@@ -217,7 +213,7 @@ Azure portal でデータ ファクトリに移動します。 **[作成と監�
 
    DTP の SAP ワーク プロセスの並列実行の数を増やすことができます。
 
-   ![create-sap-bw-ohd-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
+   ![DTP の並列処理の数を選択できる並列処理の設定を示すスクリーンショット。](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
 
 2. プロセス チェーン内で DTP のスケジュールを設定します。
 
@@ -263,11 +259,11 @@ SAP オープン ハブ宛先は、(2015 年以降のすべて SAP BW サポー�
 
 1. Data Factory で完全抽出を実行します (SAP の完全 DTP を使用)。
 2. 差分 DTP のオープン ハブ テーブル内の行をすべて削除します。
-3. 差分 DTP の状態を**フェッチ済み**に設定します。
+3. 差分 DTP の状態を **フェッチ済み** に設定します。
 
 その後、後続のすべての差分 DTP と Data Factory 差分抽出は、意図したとおりに機能します。
 
-差分 DTP の状態を**フェッチ済み**に設定するには、次のオプションを使用して手動で差分 DTP を実行できます。
+差分 DTP の状態を **フェッチ済み** に設定するには、次のオプションを使用して手動で差分 DTP を実行できます。
 
 *No Data Transfer; Delta Status in Source:Fetched (データ転送なし。ソース内の差分状態: フェッチ済み)*
 

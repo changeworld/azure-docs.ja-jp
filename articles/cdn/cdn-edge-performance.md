@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8119c56c26ed32db136064d93775d21a71f238f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887716"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778662"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Microsoft Azure CDN でのエッジ ノード パフォーマンスの分析
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -186,6 +186,5 @@ ms.locfileid: "84887716"
 ## <a name="see-also"></a>参照
 * [Azure CDN の概要](cdn-overview.md)
 * [Microsoft Azure CDN でのリアルタイム統計情報](cdn-real-time-stats.md)
-* [規則エンジンを使用した既定の HTTP 動作のオーバーライド](cdn-rules-engine.md)
+* [規則エンジンを使用した既定の HTTP 動作のオーバーライド](./cdn-verizon-premium-rules-engine.md)
 * [詳細な HTTP レポート](cdn-advanced-http-reports.md)
-

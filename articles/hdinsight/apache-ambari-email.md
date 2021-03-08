@@ -1,18 +1,15 @@
 ---
 title: チュートリアル:Azure HDInsight で Apache Ambari のメール通知を構成する
 description: この記事では、Apache Ambari で SendGrid を使用してメール通知を行う方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 21376eb40fb40abe67f7e03d15aabd7d89ea62f8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 63d0f87925f14fddf3dbd722fa72326ee8b04f31
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80081901"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946968"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache Ambari のメール通知を構成する
 
@@ -26,7 +23,7 @@ ms.locfileid: "80081901"
 
 ## <a name="prerequisites"></a>前提条件
 
-* SendGrid 電子メール アカウント。 手順については、「[SendGrid を使用した Azure での電子メールの送信方法](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email)」を参照してください。
+* SendGrid 電子メール アカウント。 手順については、「[SendGrid を使用した Azure での電子メールの送信方法](../sendgrid-dotnet-how-to-send-email.md)」を参照してください。
 
 * HDInsight クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](./hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照してください。
 
@@ -54,7 +51,7 @@ ms.locfileid: "80081901"
 
 1. **[Manage Alert Notifications]\(アラート通知の管理\)** ウィンドウから **+** アイコンを選択します。
 
-    ![Ambari のアラート通知の作成](./media/apache-ambari-email/azure-portal-create-notification.png)
+    ![[Manage Alert Notifications]\(アラート通知の管理\) ダイアログ ボックスを示すスクリーンショット。](./media/apache-ambari-email/azure-portal-create-notification.png)
 
 1. **[Create Alert Notification]\(アラート通知の作成\)** ダイアログから次の情報を入力します。
 
@@ -75,7 +72,7 @@ ms.locfileid: "80081901"
     |Password Confirmation (パスワードの確認入力)|パスワードを再入力します。|
     |Start TLS (TLS の開始)|このチェック ボックスをオンにします。|
 
-    ![Ambari のアラート通知の作成](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    ![[Create Alert Notification]\(アラート通知の作成\) ダイアログ ボックスを示すスクリーンショット。](./media/apache-ambari-email/ambari-create-alert-notification.png)
 
     **[保存]** を選択します。 **[Manage Alert Notifications]\(アラート通知の管理\)** ウィンドウに戻ります。
 

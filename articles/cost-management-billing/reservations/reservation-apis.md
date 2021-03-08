@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: cffb753d515c4d066c8ce52e7dacebe5a8f6f8ca
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 773334787ec7b2706c16e517281d6a60215ad482
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682639"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353019"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Azure の予約の自動化に関する API
 
@@ -62,7 +62,7 @@ PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/
 予約は Azure portal でも購入できます。 詳細については、次の記事を参照してください。
 
 サービス プラン:
-- [仮想マシン](../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json)
+- [仮想マシン](../../virtual-machines/prepay-reserved-vm-instances.md?toc=%2fazure%2fbilling%2fTOC.json)
 -  [Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json)
 - [SQL Database](../../azure-sql/database/reserved-capacity-overview.md?toc=/azure/billing/TOC.json)
 
@@ -88,9 +88,9 @@ EA のお客様の場合、組織の予約がどのように使用されてい�
 
 ユーザーがアクセス権を持っているすべての予約の一覧を取得するには、[予約操作の一覧取得 API](/rest/api/reserved-vm-instances/reservationorder/list) を使用します。 プログラムで予約へのアクセス権を付与するには、次のいずれかの記事をご覧ください。
 
-- [RBAC と REST API を使用してアクセスを管理する](../../role-based-access-control/role-assignments-rest.md)
-- [RBAC と Azure PowerShell を使用してアクセスを管理する](../../role-based-access-control/role-assignments-powershell.md)
-- [RBAC と Azure CLI を使用してアクセスを管理する](../../role-based-access-control/role-assignments-cli.md)
+- [REST API を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-rest.md)
+- [Azure PowerShell を使用して Azure でのロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-powershell.md)
+- [Azure CLI を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-cli.md)
 
 ## <a name="split-or-merge-reservation"></a>予約を分割または統合する
 
@@ -115,4 +115,4 @@ EA のお客様の場合、組織の予約がどのように使用されてい�
 - [従量課金制サブスクリプションの予約使用量について](understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](understand-reserved-instance-usage-ea.md)
 - [予約に含まれない Windows ソフトウェアのコスト](reserved-instance-windows-software-costs.md)
-- [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](https://docs.microsoft.com/partner-center/azure-reservations)
+- [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](/partner-center/azure-reservations)

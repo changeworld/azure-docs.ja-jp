@@ -12,16 +12,16 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: b8eec0d95144c012d3034e3f2c7c6e8adc921651
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f77cc85bd62deb2cb2cb74c42cf245a409904b3a
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510176"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91978307"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>チュートリアル - Azure Linux 仮想マシンのローリング デプロイ戦略を構成する
 
-Azure DevOps は、Azure リソースの DevOps プロセスの各段階を自動化する組み込みの Azure サービスです。 Azure と Azure DevOps を使用すれば、仮想マシン、Web アプリ、Kubernetes など、アプリで使用されるリソースが何であれ、Infrastructure as Code (IaaC)、継続的インテグレーション、継続的なテスト、継続的デリバリー、継続的監視を導入することができます。
+Azure DevOps は、Azure リソースの DevOps プロセスの各段階を自動化する組み込みの Azure サービスです。 Azure と Azure DevOps を使用すれば、仮想マシン、Web アプリ、Kubernetes など、アプリで使用されるリソースが何であれ、Infrastructure as Code (IaC)、継続的インテグレーション、継続的なテスト、継続的デリバリー、継続的監視を導入することができます。
 
 ![Azure portal の [サービス] で [Azure DevOps] を選択したところ](media/tutorial-devops-azure-pipelines-classic/azdevops-view.png)
 
@@ -29,7 +29,7 @@ Azure DevOps は、Azure リソースの DevOps プロセスの各段階を自�
 
 Azure Pipelines では、仮想マシンにデプロイするための機能が完備された CI/CD 自動化ツールのセットが提供されます。 Azure VM に対する継続的デリバリー パイプラインは、Azure portal から構成できます。
 
-この記事では、複数マシンをローリング デプロイするための CI/CD パイプラインを Azure portal から設定する方法について説明します。 Azure portal では、他にも[カナリア](https://aka.ms/AA7jdrz)や[ブルーグリーン](https://aka.ms/AA83fwu)などの戦略がサポートされます。
+この記事では、複数マシンをローリング デプロイするための CI/CD パイプラインを Azure portal から設定する方法について説明します。 Azure portal では、他にも[カナリア](./tutorial-azure-devops-canary-strategy.md)や[ブルーグリーン](./tutorial-azure-devops-blue-green-strategy.md)などの戦略がサポートされます。
 
 ### <a name="configure-cicd-on-virtual-machines"></a>仮想マシンで CI/CD を構成する
 
@@ -78,8 +78,8 @@ Azure Pipelines では、仮想マシンにデプロイするための機能が�
 
 ## <a name="other-deployment-strategies"></a>その他のデプロイ戦略
 
-- [カナリア デプロイ戦略を構成する](https://aka.ms/AA7jdrz)
-- [ブルーグリーン デプロイ戦略を構成する](https://aka.ms/AA83fwu)
+- [カナリア デプロイ戦略を構成する](./tutorial-azure-devops-canary-strategy.md)
+- [ブルーグリーン デプロイ戦略を構成する](./tutorial-azure-devops-blue-green-strategy.md)
 
 ## <a name="azure-devops-projects"></a>Azure DevOps Projects
 

@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: guide
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: sstein, carlr
+ms.reviewer: sstein
 ms.date: 04/16/2019
-ms.openlocfilehash: de8d1b7aba7763799228c831af61bf83a79937bb
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: b7f2f060f32cf3bf92660a2e8b75a45b7ec76b82
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167982"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779766"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL Managed Instance のコンテンツ参照
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -64,7 +64,7 @@ ms.locfileid: "88167982"
 
 - [手動チューニング](../database/performance-guidance.md)
 - [DMV を使用したパフォーマンスの監視](../database/monitoring-with-dmvs.md)
-- [クエリ ストアを使用したパフォーマンスの監視](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
+- [クエリ ストアを使用したパフォーマンスの監視](/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [Intelligent Insights を使用したパフォーマンスのトラブルシューティング](../database/intelligent-insights-troubleshoot-performance.md)
 - [Intelligent Insights 診断ログの使用](../database/intelligent-insights-use-diagnostics-log.md)
 - [インメモリ OLTP スペースの監視](../in-memory-oltp-monitor-space.md)

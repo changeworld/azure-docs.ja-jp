@@ -4,14 +4,14 @@ description: Azure portal または Azure CLI を使用して Azure HPC Cache �
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 08/31/2020
 ms.author: v-erkel
-ms.openlocfilehash: 66b084cca3d1cd54362a538423988755a3d31ced
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 40d091782f37a32b75659cd274e49798dbe527cb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497227"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590790"
 ---
 # <a name="manage-your-cache"></a>キャッシュを管理する
 
@@ -25,11 +25,12 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 
 ページの上部のボタンは、キャッシュを管理する助けになります。
 
-* **[開始]** と [ **[停止]** ](#stop-the-cache) - キャッシュ操作を再開または中断します
-* [ **[フラッシュ]** ](#flush-cached-data) - 変更されたデータをストレージ ターゲットに書き込みます
-* [ **[フラッシュ]** ](#upgrade-cache-software) - キャッシュ ソフトウェアを更新します
+* **[開始]** と [ **[停止]**](#stop-the-cache) - キャッシュ操作を再開または中断します
+* [ **[フラッシュ]**](#flush-cached-data) - 変更されたデータをストレージ ターゲットに書き込みます
+* [ **[フラッシュ]**](#upgrade-cache-software) - キャッシュ ソフトウェアを更新します
+* [ **[診断の収集]**](#collect-diagnostics) - デバッグ情報をアップロードします
 * **[最新の情報に更新]** - 概要ページを再読み込みします
-* [ **[削除]** ](#delete-the-cache) - キャッシュを完全に破棄します
+* [ **[削除]**](#delete-the-cache) - キャッシュを完全に破棄します
 
 これらのオプションの詳細については、以下をご覧ください。
 
@@ -57,7 +58,7 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
 [az hpc-cache stop](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-stop) コマンドを使用して、一時的にキャッシュを一時停止します。 このアクションが有効になるのは、キャッシュの状態が **[正常]** または **[低下]** の場合のみです。
 
@@ -112,7 +113,7 @@ $ az hpc-cache start --name doc-cache0629
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
 [az hpc-cache flush](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-flush) を使用して、すべての変更されたデータをキャッシュからストレージ ターゲットに書き込むよう強制します。
 
@@ -160,7 +161,7 @@ $
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
 Azure CLI では、キャッシュの状態レポートの最後に新しいソフトウェア情報が含まれています。 (確認するには、[az hpc-cache show](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-show) を使用します。)メッセージで "upgradeStatus" という文字列を探します。
 
@@ -197,6 +198,16 @@ $
 
 ---
 
+## <a name="collect-diagnostics"></a>診断を収集する
+
+**[診断の収集]** ボタンをクリックすると、トラブルシューティングのために、システム情報を収集して Microsoft Service and Support にアップロードするプロセスを手動で開始できます。 重大なキャッシュの問題が発生した場合、キャッシュによって同じ診断情報が自動的に収集され、アップロードされます。
+
+Microsoft Service and Support に要請された場合は、このコントロールを使用します。
+
+ボタンをクリックした後に、 **[はい]** をクリックしてアップロードを確定します。
+
+![[診断収集の開始] ポップアップ確認メッセージのスクリーンショット。 既定のボタン [はい] が強調表示されています。](media/diagnostics-confirm.png)
+
 ## <a name="delete-the-cache"></a>キャッシュの削除
 
 **[削除]** ボタンでキャッシュが破棄されます。 キャッシュを削除すると、そのリソースすべてが破棄され、アカウントの料金が発生しなくなります。
@@ -214,7 +225,7 @@ $
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
 キャッシュを完全に削除するには、Azure CLI コマンド [az hpc-cache delete](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-delete) を使用します。
 
@@ -242,7 +253,7 @@ $
 
 ![サンプル キャッシュについて前述の統計情報を示している、3 つの折れ線グラフのスクリーンショット](media/hpc-cache-overview-stats.png)
 
-これらのグラフは、Azure の組み込みの監視および分析ツールの一部です。 その他のツールとアラートは、ポータルのサイドバーにある **[監視]** という見出しの下にあるページから利用できます。 詳細については、[Azure 監視のドキュメント](../azure-monitor/insights/monitor-azure-resource.md#monitoring-in-the-azure-portal)のポータルに関するセクションを参照してください。
+これらのグラフは、Azure の組み込みの監視および分析ツールの一部です。 その他のツールとアラートは、ポータルのサイドバーにある **[監視]** という見出しの下にあるページから利用できます。 詳細については、[Azure 監視のドキュメント](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-in-the-azure-portal)のポータルに関するセクションを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

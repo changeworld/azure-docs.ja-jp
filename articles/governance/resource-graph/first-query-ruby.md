@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:初めての Ruby クエリ
 description: このクイックスタートでは、手順に従って、Ruby 用の Resource Graph gem を有効にし、初めてのクエリを実行します。
-ms.date: 07/12/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 9763e2e9ec49d6fb4ea37fac12578ab23b7b5363
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41769359eaa1f930d34b0a182f35da38a6f5109d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101140"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920039"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-ruby"></a>クイック スタート:Ruby を使用して初めての Resource Graph クエリを実行する
 
@@ -85,7 +85,7 @@ Ruby で Azure Resource Graph のクエリを実行できるようにするに�
 
 ## <a name="run-your-first-resource-graph-query"></a>最初の Resource Graph クエリを実行する
 
-Ruby スクリプトを保存し、使用する準備ができたら、単純な Resource Graph クエリを試します。 このクエリでは、各リソースの**名前**と**リソースの種類**を使用して、最初の 5 つの Azure リソースが返されます。
+Ruby スクリプトを保存し、使用する準備ができたら、単純な Resource Graph クエリを試します。 このクエリでは、各リソースの **名前** と **リソースの種類** を使用して、最初の 5 つの Azure リソースが返されます。
 
 `argQuery` に対するそれぞれの呼び出しには、自分独自の値で置き換える必要のある変数があります。
 

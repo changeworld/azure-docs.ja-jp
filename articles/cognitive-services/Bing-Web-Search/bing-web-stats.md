@@ -11,14 +11,19 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: ad2ac118908f1c1f77ea204ae2400913ac0807cb
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 02fea02cca5950ef8467377a866e9a765af9e2e1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147399"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349556"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Bing Search API に分析を追加する
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 Bing Statistics は、Bing Search API に分析情報を提供します。 こうした分析には、呼び出しのボリューム、上位のクエリ文字列、地理的な分布などが含まれます。 [Azure portal](https://ms.portal.azure.com) で Bing Statistics を有効にするには、Azure リソースに移動し、 **[Enable Bing Statistics]\(Bing Statisticsを有効にする\)** をクリックします。
 

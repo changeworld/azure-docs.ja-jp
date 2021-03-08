@@ -2,23 +2,23 @@
 title: Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能
 description: Resource Manager テンプレートによる Azure の Desired State Configuration (DSC) 拡張機能の定義について説明します。
 services: virtual-machines-windows
-author: bobbytreed
-manager: carmonm
+author: mgoedtel
 tags: azure-resource-manager
 keywords: dsc
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 10/05/2018
-ms.author: robreed
-ms.openlocfilehash: dc73b5b9f05d24de206b25095ea7eaf93f035298
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 02/09/2021
+ms.author: magoedte
+ms.openlocfilehash: 4e9133697cda4a46a895c7e41eff6d17ccd01e4a
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511162"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093660"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能
 
@@ -31,13 +31,13 @@ ms.locfileid: "86511162"
 
 以下のスニペットは、テンプレートの **Resource** セクションに含まれます。
 DSC 拡張機能は、既定の拡張機能プロパティを継承します。
-詳しくは、「[VirtualMachineExtension class (VirtualMachineExtension クラス)](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet)」をご覧ください。
+詳しくは、「[VirtualMachineExtension class (VirtualMachineExtension クラス)](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension)」をご覧ください。
 
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
-  "name": "Microsoft.Powershell.DSC",
-  "apiVersion": "2018-06-30",
+  "name": "[concat(parameters('VMName'), '/Microsoft.Powershell.DSC')]",
+  "apiVersion": "2018-06-01",
   "location": "[parameters('location')]",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
@@ -84,7 +84,7 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。
 **[拡張機能]** の下に DSC 拡張機能の詳細を追加します。
 
 DSC 拡張機能は、既定の拡張機能プロパティを継承します。
-詳しくは、「[VirtualMachineScaleSetExtension class (VirtualMachineScaleSetExtension クラス)](/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet)」をご覧ください。
+詳しくは、「[VirtualMachineScaleSetExtension class (VirtualMachineScaleSetExtension クラス)](/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension)」をご覧ください。
 
 ```json
 "extensionProfile": {
@@ -391,9 +391,9 @@ Only possible values are … and 'latest' (WmfVersion は '{0}' です。指定�
 
 "Invalid configurationArguments type {0} (無効な configurationArguments の型 {0})"
 
-**問題点**:*ConfigurationArguments* プロパティが**ハッシュ テーブル** オブジェクトに解決できません。
+**問題点**:*ConfigurationArguments* プロパティが **ハッシュ テーブル** オブジェクトに解決できません。
 
-**解決策**:*ConfigurationArguments* プロパティを**ハッシュ テーブル**にしてください。
+**解決策**:*ConfigurationArguments* プロパティを **ハッシュ テーブル** にしてください。
 前の例に示されている形式に従います。 引用符、コンマ、および中かっこに注意します。
 
 ### <a name="duplicate-configurationarguments"></a>ConfigurationArguments の重複

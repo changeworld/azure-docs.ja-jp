@@ -1,18 +1,18 @@
 ---
 title: Azure の委任されたリソース管理
 description: Azure の委任されたリソース管理は Azure Lighthouse の重要な部分であり、サービス プロバイダーは機敏かつ正確に、委任されたリソースを大規模に管理できます。
-ms.date: 08/12/2020
+ms.date: 10/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9a499ceda546b7ea5c71cd8c770f1a4b99001b08
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d484e61fc4ab3714eb362b26d64d449890065888
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163528"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203859"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure の委任されたリソース管理
 
-Azure の委任されたリソース管理は、[Azure Lighthouse](../overview.md) の主要なコンポーネントの 1 つです。 Azure の委任されたリソース管理を使用すると、サービス プロバイダーは顧客のエンゲージメントとオンボードのエクスペリエンスを簡略化しながら、機敏かつ正確に委任されたリソースを大規模に管理できます。
+Azure の委任されたリソース管理は、[Azure Lighthouse](../overview.md) の主要なコンポーネントの 1 つです。 Azure の委任されたリソース管理を使用すると、サービス プロバイダーは顧客のエンゲージメントとオンボードのエクスペリエンスを簡略化しながら、機敏かつ正確に委任されたリソースを大規模に管理できます。 お客様は、自社のテナントにアクセスできるサービス プロバイダーの制御を維持できます。お客様は、自社のテナントにアクセスできるユーザー、そのユーザーがアクセスできるリソース、および実行可能な操作の制御を維持できます。
 
 ## <a name="what-is-azure-delegated-resource-management"></a>Azure の委任されたリソース管理とは
 
@@ -31,11 +31,12 @@ Azure の委任されたリソース管理を使用すると、承認された�
 
 大まかに言えば、Azure の委任されたリソース管理のしくみは次のとおりです。
 
-1. まず、顧客の Azure リソースを管理するためにグループ、サービス プリンシパル、またはユーザーが必要とするアクセス権 (ロール) を特定します。 アクセスの定義には、管理テナント ID とともに、[組み込みの **roleDefinition** の値](../../role-based-access-control/built-in-roles.md) (共同作成者、VM 共同作成者、閲覧者など) にマップされるテナントの **principalId** ID が含まれています。
+1. まず、顧客の Azure リソースを管理するためにグループ、サービス プリンシパル、またはユーザーが必要とするアクセス権 (ロール) を特定します。 アクセスの定義には、管理テナント ID とともに、 [組み込みの **roleDefinition** の値](../../role-based-access-control/built-in-roles.md) (共同作成者、VM 共同作成者、閲覧者など) にマップされるテナントの **principalId** ID が含まれています。
 2. このアクセスを指定し、次の 2 つの方法のいずれかで Azure Lighthouse に顧客をオンボードします。
    - 顧客が受け入れる [Azure Marketplace の管理されたサービス オファーを発行する](../how-to/publish-managed-services-offers.md) (プライベートまたはパブリック)
    - 1 つ以上の特定のサブスクリプションまたはリソース グループについて、[顧客のテナントに Azure Resource Manager テンプレートをデプロイする](../how-to/onboard-customer.md)
-3. 顧客がオンボードされたら、許可されているユーザーは、定義されたアクセス権に基づいて、特定の顧客のスコープで、管理テナントにサインインしてタスクを実行できます。
+
+3. 顧客がオンボードされたら、許可されているユーザーは、定義されたアクセス権に基づいて、特定の顧客のスコープで、管理テナントにサインインしてタスクを実行できます。 お客様は、サービス プロバイダーのアクションを確認し、必要に応じてアクセス権を削除することができます。
 
 > [!NOTE]
 > 別の[リージョン](../../availability-zones/az-overview.md#regions)にある委任されたリソースを管理することができます。 ただし、[各国のクラウド](../../active-directory/develop/authentication-national-cloud.md)と Azure パブリック クラウドにわたって行われる、または 2 つの独立した国内クラウドにわたって行われるサブスクリプションの委任はサポートされていません。

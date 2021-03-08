@@ -8,21 +8,21 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a088cb07fa74b65e497de54be8c97bd51d31c16
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61447456"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387838"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>azureiotsolutions.com サイトを使用してソリューション アクセラレータをデプロイする
 
-Azure IoT ソリューション アクセラレータを [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) から Azure サブスクリプションにデプロイできます。 AzureIoTSolutions.com は、Microsoft オープンソースとパートナーの両方のソリューション アクセラレータをホストします。 これらのソリューション アクセラレータは、[Azure IoT 参照アーキテクチャ](https://aka.ms/iotrefarchitecture)と連携します。 このサイトを使用すると、ソリューション アクセラレータをデモまたは運用環境としてすばやくデプロイできます。
+Azure IoT ソリューション アクセラレータを [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) から Azure サブスクリプションにデプロイできます。 AzureIoTSolutions.com は、Microsoft オープンソースとパートナーの両方のソリューション アクセラレータをホストします。 これらのソリューション アクセラレータは、[Azure IoT 参照アーキテクチャ](/azure/architecture/reference-architectures/iot)と連携します。 このサイトを使用すると、ソリューション アクセラレータをデモまたは運用環境としてすばやくデプロイできます。
 
-![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
+:::image type="content" source="media/iot-accelerators-permissions/iotsolutionscom.png" alt-text="IoT ソリューションのホーム ページ":::
 
 > [!TIP]
-> デプロイ プロセスに対するよりきめ細かな制御が必要な場合は、[CLI を使用してソリューション アクセラレータをデプロイ](iot-accelerators-remote-monitoring-deploy-cli.md)できます。
+> デプロイ プロセスに対するよりきめ細かな制御が必要な場合は、CLI を使用してソリューション アクセラレータをデプロイできます。
 
 ソリューション アクセラレータは、次の構成でデプロイできます。
 
@@ -34,11 +34,11 @@ Azure IoT ソリューション アクセラレータを [AzureIoTSolutions.com]
 
 ## <a name="sign-in-at-azureiotsolutionscom"></a>azureiotsolutions.com でサインインする
 
-ソリューション アクセラレータをデプロイするには、Azure サブスクリプションに関連付けられた資格情報を使用して AzureIoTSolutions.com でサインインする必要があります。 アカウントが複数の Microsoft Azure Active Directory (AD) テナントに関連付けられている場合は、**アカウント選択のドロップダウン**を使用して、使用するディレクトリを選択できます。
+ソリューション アクセラレータをデプロイするには、Azure サブスクリプションに関連付けられた資格情報を使用して AzureIoTSolutions.com でサインインする必要があります。 アカウントが複数の Microsoft Azure Active Directory (AD) テナントに関連付けられている場合は、**アカウント選択のドロップダウン** を使用して、使用するディレクトリを選択できます。
 
 ソリューション アクセラレータをデプロイし、ユーザーを管理し、Azure サービスを管理するためのアクセス許可は、選択されたディレクトリ内のロールによって異なります。 ソリューション アクセラレータに関連付けられた一般的な Azure AD ロールは次のとおりです。
 
-* **全体管理者**: Azure AD テナントごとに多数の[全体管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md)がいてもかまいません。
+* **全体管理者**: Azure AD テナントごとに多数の [全体管理者](../active-directory/roles/permissions-reference.md)がいてもかまいません。
 
   * Azure AD テナントを作成したユーザーは、既定でそのテナントの全体管理者になります。
   * 全体管理者は、基本的なソリューション アクセラレータと標準のソリューション アクセラレータをデプロイできます。
@@ -64,9 +64,4 @@ AzureIoTSolutions.com サイトは、[Azure Certified for IoT デバイス カ�
 
 ## <a name="next-steps"></a>次のステップ
 
-IoT ソリューション アクセラレータの 1 つを試してみるには、クイック スタートを参照してください。
-
-* [リモート監視ソリューションを試す](quickstart-remote-monitoring-deploy.md)
-* [接続済みファクトリ ソリューションを試す](quickstart-connected-factory-deploy.md)
-* [予測メンテナンス ソリューションを試す](quickstart-predictive-maintenance-deploy.md)
-* [デバイス シミュレーション ソリューションを試す](quickstart-device-simulation-deploy.md)
+IoT ソリューション アクセラレータの 1 つを試してみるには、クイック スタートを参照してください。[接続済みファクトリ ソリューションを試す](quickstart-connected-factory-deploy.md)

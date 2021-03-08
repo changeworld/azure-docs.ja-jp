@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 2961ffb21a1f34ca677e0aede5170689f4e38dca
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 1e939b86eeadfee276378488cfcb40c07f28684d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267965"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880660"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド
 
@@ -189,7 +189,7 @@ _特徴エンジニア リング_ の前提条件として、さまざまなス�
 上記の前処理したデータ ソースを準備したら、特徴エンジニアリング前の最後の変換として、資産 ID とタイムスタンプに基づいて上記のテーブルを結合します。 結果のテーブルには、マシンの通常稼働時の故障列に null 値が含まれます。 これらの null 値は、通常運用のインジケーターによって補完できます。 この故障列を使用して、"_予測モデルのラベル_" を作成します。 詳しくは、「[予測メンテナンスのためのモデリング手法](#modeling-techniques-for-predictive-maintenance)」のセクションを参照してください。
 
 ## <a name="feature-engineering"></a>機能エンジニアリング
-特徴エンジニアリングは、データのモデリングの前に行う最初の手順です。 データ サイエンス プロセスにおけるその役割については、[ここを参照](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/create-features)してください。 "_特徴_" とは、モデルの予測属性 (温度、圧力、振動など)。 PdM の場合、特徴エンジニアリングには、非常に長い期間にわたって収集された履歴データのマシンの正常性の要約が含まれます。 その意味では、これは、リモート監視、異常検出、障害検出などとは異なります。 
+特徴エンジニアリングは、データのモデリングの前に行う最初の手順です。 データ サイエンス プロセスにおけるその役割については、[ここを参照](./create-features.md)してください。 "_特徴_" とは、モデルの予測属性 (温度、圧力、振動など)。 PdM の場合、特徴エンジニアリングには、非常に長い期間にわたって収集された履歴データのマシンの正常性の要約が含まれます。 その意味では、これは、リモート監視、異常検出、障害検出などとは異なります。 
 
 ### <a name="time-windows"></a>時間枠
 リモート監視は、"_特定時点_" に発生したイベントのレポートを伴います。 異常検出モデルは、データの入力ストリームを評価 (スコア付け) して、特定時点の異常をフラグします。 エラー検出は、エラーを特定の時点に発生した特定の種類に分類します。 これに対し、PdM には、"_過去の期間_" にわたるマシンの動作を表す特徴に基づいた、"_将来の期間_" における故障の予測が含まれます。 PdM の場合、各特定の時点の特徴データは、予測についてノイズが多すぎます。 このため、時間枠でのデータ ポイントを集計することによって、各特徴のデータを "_スムージング_" する必要があります。
@@ -301,18 +301,18 @@ PdM のもう 1 つの便利な手法は、データ内の異常を検出する�
 
 図 5: 多クラス分類のラベル付けによる故障の予測
 
-ここでは、根本原因/問題 _P<sub>i</sub>_ によって次の X 期間内に資産が故障する確率は、どれくらいかが問題となります。 _i_ は可能な根本原因の数です。 この問題を解決するには、資産の故障前の X 個のレコードを、"根本原因 _P<sub>i</sub>_ によってまもなく故障する" (ラベル = _P<sub>i</sub>_ ) としてラベル付けします。 その他のレコードはすべて "正常である" (ラベル = 0) としてラベル付けします。 この方法でも、ラベルはカテゴリ変数です (図 6 を参照)。
+ここでは、根本原因/問題 _P <sub>i</sub>_ によって次の X 期間内に資産が故障する確率は、どれくらいかが問題となります。 _i_ は可能な根本原因の数です。 この問題を解決するには、資産の故障前の X 個のレコードを、"根本原因 _P <sub>i</sub>_ によってまもなく故障する" (ラベル = _P <sub>i</sub>_ ) としてラベル付けします。 その他のレコードはすべて "正常である" (ラベル = 0) としてラベル付けします。 この方法でも、ラベルはカテゴリ変数です (図 6 を参照)。
 
 ![図 6: 多クラス分類の根本原因予測ラベル](./media/predictive-maintenance-playbook/labelling-for-multiclass-classification-for-root-cause-prediction.png)
 
 図 6: 多クラス分類のラベル付けによる根本原因の予測
 
-このモデルは、各 _P<sub>i</sub>_ によって故障する確率と、故障しない確率を割り当てます。 これらの確率を magnitude により並べ替えて、今後最も発生する可能性のある問題を予測できます。
+このモデルは、各 _P <sub>i</sub>_ によって故障する確率と、故障しない確率を割り当てます。 これらの確率を magnitude により並べ替えて、今後最も発生する可能性のある問題を予測できます。
 
 ここでは、故障時にどのようなメンテナンス操作を行うべきかが問題となります。 この問題を解決するために、ラベル付けにおいて "_将来の水平期間を選択する必要はありません_"。なぜなら、このモデルは将来的な故障を予測しないからです。 予測するのは、"_既に故障が発生した場合_" における最も可能性の高い根本原因です。
 
 ## <a name="training-validation-and-testing-methods-for-predictive-maintenance"></a>予測メンテナンスのためのトレーニング、検証、およびテスト方法
-[Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) によって、モデルのトレーニング - テスト - 検証サイクルが全体的にカバーされます。 このセクションでは、PdM に固有の側面について説明します。
+[Team Data Science Process](./overview.md) によって、モデルのトレーニング - テスト - 検証サイクルが全体的にカバーされます。 このセクションでは、PdM に固有の側面について説明します。
 
 ### <a name="cross-validation"></a>クロス検証
 [クロス検証](https://en.wikipedia.org/wiki/Cross-validation_(statistics))の目的は、トレーニング フェーズでモデルを "テスト" するためにデータ セットを定義することです。 このデータ セットは、"_検証セット_" と呼ばれます。 この手法を使用すると、"_オーバーフィット_" のような問題を制限し、モデルが独立したデータ セットに対してどのように汎用化されるかを把握することができます。 つまりこれは、現実の問題から取得することができる、未知のデータ セットです。 PdM のトレーニングとテストのルーチンは、未知の将来的データをより深く一般化するために、時間によって変化するさまざまな側面を考慮する必要があります。
@@ -339,7 +339,7 @@ PdM に対して推奨される方法は、"_時間に依存した_" 方法に�
 
 さまざまなセンサーから収集した測定値のような、タイムスタンプ付きのイベントのストリームを想定します。 複数のイベントを含む期間全体で、トレーニング例とテスト例の特徴およびラベルを定義します。 たとえば、二項分類の場合、過去のイベントに基づいて特徴を作成し、将来の "X" 期間内のイベントに基づいてラベルを作成します ([特徴エンジニアリング](#feature-engineering)およびモデリング手法のセクションを参照)。 このため、例の期間のラベル付けは、その特徴の期間より後にきます。
 
-時間に依存した分割では、モデルをトレーニングする "_トレーニング分割時間 T<sub>c</sub>_ " を選択します。これには、T<sub>c</sub> までの履歴データを使用して調整したハイパーパラメーターを使用します。 T<sub>c</sub> を超えた将来のラベルがトレーニング データに混入するのを回避するには、トレーニング例をラベル付けする最新の時間を、T<sub>c</sub> よりも X 単位分前にします。 図 7 に示す例では、各四角形が、前述の方法で特徴とラベルを計算したデータ セット内のレコードを表しています。 この図では、X=2、W=3 の場合にトレーニング セットとテスト セットに入るレコードを示しています。
+時間に依存した分割では、モデルをトレーニングする "_トレーニング分割時間 T <sub>c</sub>_ " を選択します。これには、T <sub>c</sub> までの履歴データを使用して調整したハイパーパラメーターを使用します。 T<sub>c</sub> を超えた将来のラベルがトレーニング データに混入するのを回避するには、トレーニング例をラベル付けする最新の時間を、T<sub>c</sub> よりも X 単位分前にします。 図 7 に示す例では、各四角形が、前述の方法で特徴とラベルを計算したデータ セット内のレコードを表しています。 この図では、X=2、W=3 の場合にトレーニング セットとテスト セットに入るレコードを示しています。
 
 ![図 7: Time-dependent split for binary classification](./media/predictive-maintenance-playbook/time-dependent-split-for-binary-classification.png)
 
@@ -415,7 +415,7 @@ PdM では、通常の例よりも、少数派クラスを構成する故障の�
 
 前述のように、PdM のモデルの運用化は、その仲間と異なっています。 通常、異常検出や障害検出に関連するシナリオでは、"_オンライン スコアリング_" (または "_リアルタイム スコアリング_") を実装します。 ここでは、モデルは受信した各レコードを "_スコア付け_" し、予測を返します。 異常検出では、予測は異常が発生したという兆候です (例: 1 クラス SVM)。 障害検出では、予測は障害の種類やクラスとなります。
 
-これに対し、PdM は "_バッチ スコアリング_" を含みます。 モデル シグネチャに準拠するために、新しいデータの特徴はトレーニング データと同じ方法でエンジニアリングされる必要があります。 新しいデータに典型的な大規模データ セットでは、特徴は時間枠で集計され、バッチでスコア付けされます。 通常、バッチ スコアリングは、[Spark](https://spark.apache.org/) や [Azure Batch](https://docs.microsoft.com/azure/batch/batch-api-basics) のような分散システムで実行されます。 準最適な代替手段が 2 つ存在します。
+これに対し、PdM は "_バッチ スコアリング_" を含みます。 モデル シグネチャに準拠するために、新しいデータの特徴はトレーニング データと同じ方法でエンジニアリングされる必要があります。 新しいデータに典型的な大規模データ セットでは、特徴は時間枠で集計され、バッチでスコア付けされます。 通常、バッチ スコアリングは、[Spark](https://spark.apache.org/) や [Azure Batch](../../batch/batch-service-workflow-features.md) のような分散システムで実行されます。 準最適な代替手段が 2 つ存在します。
 - ストリーミング データ エンジンは、メモリ内で時間枠での集計をサポートします。 したがって、オンライン スコアリングをサポートするとも言えます。 ただし、これらのシステムが適しているのは、狭い時間枠での高密度のデータ、または広い時間枠でのまばらな要素です。 広い時間枠での高密度のデータに対しては、PdM のシナリオで見られるように、適切にスケーリングが行われない可能性があります。
 - バッチ スコアリングを利用できない場合のソリューションは、オンライン スコアリングを調整して、小さなバッチ内の新しいデータを一度に処理することです。
 
@@ -429,7 +429,7 @@ PdM では、通常の例よりも、少数派クラスを構成する故障の�
 | 3 | [予測メンテナンスのためのディープ ラーニング](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | 予測メンテナンスのために LSTM (Long Short-Term Memory) ネットワーク (再帰型ニューラル ネットワークの 1 クラス) を使用したデモ ソリューションを含む Azure Notebook です。[このサンプルに関するブログ記事](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance)をご覧ください。|
 | 4 | [航空宇宙業界向けの Azure 予測メンテナンス](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | 航空機メンテナンスのための、Azure ML v1.0 に基づいた最初の PdM ソリューション テンプレートの 1 つです。 本ガイドの起源はこのプロジェクトでした。 |
 | 5 | [IoT Edge 用 Azure AI ツールキット](https://github.com/Azure/ai-toolkit-iot-edge) | TensorFlow を使用した IoT edge での AI です。Azure IoT Edge と互換性のある Docker コンテナーでのディープ ラーニング モデルをまとめたツールキットが含まれます。これらのモデルは REST API として公開されます。
-| 6 | [Azure IoT 予測メンテナンス](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite PCS - 構成済みソリューションです。 IoT Suite を使用した航空機メンテナンスの PdM テンプレートです。 同じプロジェクトに関連する[別のドキュメント](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview)と[チュートリアル](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough)をご覧ください。 |
+| 6 | [Azure IoT 予測メンテナンス](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite PCS - 構成済みソリューションです。 IoT Suite を使用した航空機メンテナンスの PdM テンプレートです。 同じプロジェクトに関連する[別のドキュメント](/previous-versions/azure/iot-accelerators/about-iot-accelerators)と[チュートリアル](/previous-versions/azure/iot-accelerators/iot-accelerators-predictive-walkthrough)をご覧ください。 |
 | 7 | [SQL Server R Services を使用した予測メンテナンス テンプレート](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | R Services に基づいた、残存耐用年数に関するシナリオのデモです。 |
 | 8 | [予測メンテナンスのモデリング ガイド](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | R を使用して特徴エンジニアリングを行う航空機メンテナンスのデータ セットです。[実験](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1)、[データ セット](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1)、Azure notebook、AzureML v1.0 での[実験](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)を含みます|
 

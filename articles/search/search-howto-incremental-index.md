@@ -9,17 +9,18 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: c432b89574949b31612aeba862ece7687c12dde4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a1b317b651b0e17c07eb17dbdb8a7c6657d39564
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922839"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90971607"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search でインクリメンタル エンリッチメントのキャッシュを構成する方法
 
 > [!IMPORTANT] 
-> インクリメンタル エンリッチメントは現在、パブリック プレビューの段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 [REST API バージョン 2019-05-06-Preview および 2020-06-30-Preview](search-api-preview.md) がこの機能を提供します。 現時点で、ポータルまたは .NET SDK はサポートされていません。
+> インクリメンタル エンリッチメントは現在、パブリック プレビューの段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 
+> [REST API プレビュー バージョン](search-api-preview.md)にはこの機能が用意されています。 現時点で、ポータルまたは .NET SDK はサポートされていません。
 
 この記事では、エンリッチメント パイプラインにキャッシュを追加して、毎回リビルドしなくてもステップを段階的に変更できるようにする方法について説明します。 既定では、スキルセットはステートレスであり、その構成の任意の部分を変更するには、インデクサーを完全に再実行する必要があります。 インクリメンタル エンリッチメントを使用すると、スキルセットまたはインデクサーの定義で検出された変更に基づいて、ドキュメント ツリーのどの部分を更新する必要があるかをインデクサーで判断できます。 既存の処理済みの出力は保持され、可能な限り再利用されます。 
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 07/08/2020
+ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: a632e753426def52bb260d7bf01875ec24e2ea9e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bb70946fda4fad7a42fd885a2515cb0d82698eca
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200142"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124678"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box と Azure Data Box Heavy に関連する問題のトラブルシューティング
 
@@ -56,7 +56,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
     - 有効な名前の例: `my-folder-1`、`my-really-extra-long-folder-111`
     - 無効な名前の例: `my-folder_1`、`my`、`--myfolder`、`myfolder--`、`myfolder!`
 
-    詳細については、[コンテナー名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)と[共有名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)の Azure 名前付け規則を参照してください。
+    詳細については、[コンテナー名](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)と[共有名](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)の Azure 名前付け規則を参照してください。
 
 
 ### <a name="error_container_or_share_name_alpha_numeric_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
@@ -75,7 +75,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
     - 有効な名前の例: `my-folder-1`、`my-really-extra-long-folder-111`
     - 無効な名前の例: `my-folder_1`、`my`、`--myfolder`、`myfolder--`、`myfolder!`
 
-    詳細については、[コンテナー名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)と[共有名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)の Azure 名前付け規則を参照してください。
+    詳細については、[コンテナー名](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)と[共有名](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)の Azure 名前付け規則を参照してください。
 
 ### <a name="error_container_or_share_name_improper_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_IMPROPER_DASH
 
@@ -93,7 +93,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
     - 有効な名前の例: `my-folder-1`、`my-really-extra-long-folder-111`
     - 無効な名前の例: `my-folder_1`、`my`、`--myfolder`、`myfolder--`、`myfolder!`
 
-    詳細については、[コンテナー名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)と[共有名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)の Azure 名前付け規則を参照してください。
+    詳細については、[コンテナー名](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)と[共有名](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)の Azure 名前付け規則を参照してください。
     
 ### <a name="error_file_or_directory_name_illegal"></a>ERROR_FILE_OR_DIRECTORY_NAME_ILLEGAL
 
@@ -104,7 +104,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 - ローカル Web UI の [接続とコピー] ページで、エラー ファイルをダウンロードして確認し、問題があるフォルダーの名前を特定します。 
 - ディレクトリまたはコンテナーの名前を変更して、Azure の名前付け規則に準拠していることを確認します。
 
-詳細については、 [ディレクトリ](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) と[コンテナー](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)の Azure の名前付け規則に関する記事を参照してください。
+詳細については、 [ディレクトリ](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) と[コンテナー](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)の Azure の名前付け規則に関する記事を参照してください。
 
 ## <a name="container-or-share-size-limit-errors"></a>コンテナーまたは共有のサイズ制限のエラー
 
@@ -112,13 +112,17 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 
 ### <a name="error_container_or_share_capacity_exceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
 
-**エラーの説明:** Azure ファイル共有では、1 つの共有につき 5 TB のデータに制限されています。 一部の共有でこの制限を超えています。
+**エラーの説明:** Azure ファイル共有でデータの共有が 5 TiB に制限されており、ストレージ アカウントで大きなファイル共有が有効になっていません。 一部の共有で、この制限を超えました。
 
 **推奨される解決方法:** ローカル Web UI の **[接続とコピー]** ページで、エラー ファイルをダウンロードして確認します。
 
-エラー ログから、この問題があるフォルダーを特定し、そのフォルダー内のファイルが 5 TB 未満であることを確認します。
-
-
+- エラー ログから、この問題があるフォルダーを特定し、そのフォルダー内のファイルが 5 TiB 未満であることを確認します。
+- 5 TiB の制限は、大きなファイル共有を許可しているストレージ アカウントには適用されません。 ただし、注文時に大きなファイル共有が構成されている必要があります。 
+  - [Microsoft サポート](data-box-disk-contact-microsoft-support.md)に連絡して、新しい配送先住所ラベルを要求してください。
+  - [ストレージ アカウントで大きなファイル共有を有効にします。](../storage/files/storage-files-how-to-create-large-file-share.md#enable-large-files-shares-on-an-existing-account)
+  - [ストレージ アカウントのファイル共有を拡張](../storage/files/storage-files-how-to-create-large-file-share.md#expand-existing-file-shares)し、クォータを 100 TiB に設定します。
+  
+  
 ## <a name="object-or-file-size-limit-errors"></a>オブジェクトまたはファイルのサイズ制限のエラー
 
 これらは、Azure で許可されているオブジェクトまたはファイルの最大サイズを超過したデータに関連するエラーです。 
@@ -186,7 +190,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 ローカル Web UI の **[接続とコピー]** ページで、エラー ファイルをダウンロードして確認します。
 ファイルを削除するか名前を変更し、サポートされていない文字を削除します。
 
-詳細については、[BLOB 名](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)と[ファイル名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)の Azure 名前付け規則を参照してください。
+詳細については、[BLOB 名](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)と[ファイル名](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)の Azure 名前付け規則を参照してください。
 
 ### <a name="error_blob_or_file_name_character_illegal"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL
 
@@ -197,7 +201,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 ローカル Web UI の **[接続とコピー]** ページで、エラー ファイルをダウンロードして確認します。
 ファイルを削除するか名前を変更し、サポートされていない文字を削除します。
 
-詳細については、[BLOB 名](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)と[ファイル名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)の Azure 名前付け規則を参照してください。
+詳細については、[BLOB 名](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)と[ファイル名](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)の Azure 名前付け規則を参照してください。
 
 
 ### <a name="error_blob_or_file_name_ending"></a>ERROR_BLOB_OR_FILE_NAME_ENDING
@@ -209,7 +213,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 ローカル Web UI の **[接続とコピー]** ページで、エラー ファイルをダウンロードして確認します。
 ファイルを削除するか名前を変更し、サポートされていない文字を削除します。
 
-詳細については、[BLOB 名](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)と[ファイル名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)の Azure 名前付け規則を参照してください。
+詳細については、[BLOB 名](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)と[ファイル名](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)の Azure 名前付け規則を参照してください。
 
 
 ### <a name="error_blob_or_file_name_segment_count"></a>ERROR_BLOB_OR_FILE_NAME_SEGMENT_COUNT
@@ -219,7 +223,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 **推奨される解決方法:** コピーした BLOB またはファイルが、パスのセグメントの最大数を超えています。 パスのセグメントは、連続する区切り記号文字 (スラッシュ "/" など) の間の文字列です。
 
 - ローカル Web UI の **[接続とコピー]** ページで、エラー ファイルをダウンロードして確認します。
-- [BLOB 名](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)と[ファイル名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)が Azure 名前付け規則に準拠していることを確認します。
+- [BLOB 名](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)と[ファイル名](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)が Azure 名前付け規則に準拠していることを確認します。
 
 ### <a name="error_blob_or_file_name_aggregate_length"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
 
@@ -240,7 +244,7 @@ Data Box および Data Box Heavy でのエラーをまとめると次のよう�
 **推奨される解決方法:** BLOB またはファイルの名前に含まれるパスのセグメントの 1 つが、最大文字数を超えています。 パスのセグメントは、連続する区切り記号文字 (スラッシュ "/" など) の間の文字列です。
 
 - ローカル Web UI の **[接続とコピー]** ページで、エラー ファイルをダウンロードして確認します。
-- [BLOB 名](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)と[ファイル名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)が Azure 名前付け規則に準拠していることを確認します。
+- [BLOB 名](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)と[ファイル名](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)が Azure 名前付け規則に準拠していることを確認します。
 
 
 ### <a name="error_container_or_share_name_disallowed_for_type"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE

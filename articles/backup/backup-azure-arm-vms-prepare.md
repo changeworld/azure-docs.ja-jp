@@ -3,12 +3,12 @@ title: Recovery Services コンテナーに Azure VM をバックアップする
 description: Azure Backup を使用して Recovery Services コンテナーに Azure VM をバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: fd958fe658306fd068356764100e6aaa15f4fc67
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: f6fe2f629742e15e62dfc13106e92623a4b45add
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826312"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172748"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Recovery Services コンテナーに Azure VM をバックアップする
 
@@ -37,14 +37,17 @@ ms.locfileid: "88826312"
 
 * **VM に VM エージェントをインストールする**: Azure Backup では、マシンで実行されている Azure VM エージェントに拡張機能をインストールすることで、Azure VM がバックアップされます。 VM が Azure Marketplace のイメージから作成されている場合は、エージェントがインストールされ、実行されます。 カスタム VM を作成する場合、またはオンプレミスのマシンを移行する場合は、[手動でのエージェントのインストール](#install-the-vm-agent)が必要な場合があります。
 
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
+
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ### <a name="modify-storage-replication"></a>ストレージ レプリケーションを変更する
 
-既定では、コンテナーには [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md) が使用されます。
+既定では、コンテナーには [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) が使用されます。
 
 * コンテナーをプライマリ バックアップ メカニズムとする場合は、GRS を使用することをお勧めします。
-* コストを抑えるオプションとして[ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) を使用できます。
+* コストを抑えるオプションとして[ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) を使用できます。
+* [ゾーン冗長ストレージ (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) は、[可用性ゾーン](../availability-zones/az-overview.md#availability-zones)内のデータをレプリケートし、同じリージョン内でデータ所在地と回復性を保証します。
 
 ストレージ レプリケーションの種類を変更にするには、次の手順に従います。
 
@@ -155,7 +158,7 @@ ms.locfileid: "88826312"
 失敗 | 失敗 | 失敗
 
 この機能により、同じ VM に対して 2 つのバックアップを並列に実行できるようになりましたが、どちらのフェーズ (スナップショット、コンテナーへのデータ転送) でも実行できるのは 1 つのサブタスクだけです。 この分離機能により、進行中のバックアップ ジョブが翌日のバックアップになって失敗するシナリオは回避されます。 次の日のバックアップは、前の日のバックアップ ジョブが進行中の状態にある場合、**コンテナーへのデータ転送**がスキップされた状態でスナップショットを完了できます。
-コンテナーで作成された増分型の復旧ポイントは、コンテナーで作成された最後の復旧ポイントからのすべてのチャーンをキャプチャします。 ユーザーへのコストの影響はありません。
+コンテナーで作成された増分復旧ポイントは、コンテナーで作成された最新の復旧ポイントからのすべてのチャーンをキャプチャします。 ユーザーへのコストの影響はありません。
 
 ## <a name="optional-steps"></a>省略可能な手順
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Information Protection を Azure Sentinel に接続する
-description: Azure Information Protection データ コネクタを構成することにより、Azure Information Protection から Azure Sentinel にログ情報をストリーミングします。 
+description: Azure Information Protection データ コネクタを構成することにより、Azure Information Protection から Azure Sentinel にログ情報をストリーミングします。
 services: sentinel
 author: yelevin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 160912ef53b5c079d026c5d16230f49eadf66366
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 82ea47037902ce3a9449f71a9edf62cb80863d4b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794436"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655988"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Azure Information Protection からデータを接続する
 
@@ -25,7 +25,7 @@ ms.locfileid: "88794436"
 
 Azure Information Protection データ コネクタを構成することにより、[Azure Information Protection](https://azure.microsoft.com/services/information-protection/) から Azure Sentinel にログ情報をストリーミングできます。 Azure Information Protection は、クラウドとオンプレミスのどちらに保存されているかにかかわらず、機密データを制御し、セキュリティで保護するのに役立ちます。
 
-このサービスからのログ情報が、Azure Sentinel で現在選択されているのと同じ Log Analytics ワークスペースに格納されるように、[Azure Information Protection の中央レポート](https://docs.microsoft.com/azure/information-protection/reports-aip)が既に構成されている場合は、このデータ コネクタの構成を省略できます。 Azure Information Protection からのログ情報は、Azure Sentinel で既に利用できます。
+このサービスからのログ情報が、Azure Sentinel で現在選択されているのと同じ Log Analytics ワークスペースに格納されるように、[Azure Information Protection の中央レポート](/azure/information-protection/reports-aip)が既に構成されている場合は、このデータ コネクタの構成を省略できます。 Azure Information Protection からのログ情報は、Azure Sentinel で既に利用できます。
 
 ただし、Azure Information Protection からのログ情報を、Azure Sentinel 用に現在選択されているものとは異なる Log Analytics ワークスペースに送る場合は、次のいずれかを行います。
 
@@ -51,7 +51,7 @@ Azure Information Protection データ コネクタを構成することによ�
 
 - Azure Sentinel および Azure Information Protection 用に使用している Log Analytics ワークスペースの読み取りと書き込みを行うためのアクセス許可。
 
-- Azure Information Protection が Azure portal に追加されていること。 このステップに関するヘルプが必要な場合は、「[Azure portal に Azure Information Protection を追加する](https://docs.microsoft.com/azure/information-protection/quickstart-viewpolicy#add-azure-information-protection-to-the-azure-portal)」を参照してください。
+- Azure Information Protection が Azure portal に追加されていること。 このステップに関するヘルプが必要な場合は、「[Azure portal に Azure Information Protection を追加する](/azure/information-protection/quickstart-viewpolicy#add-azure-information-protection-to-the-azure-portal)」を参照してください。
 
 ## <a name="connect-to-azure-information-protection"></a>Azure Information Protection に接続する
 
@@ -69,7 +69,7 @@ Azure Information Protection 用に Log Analytics ワークスペースを構成
 
 6. Azure Information Protection からのレポート データは、選択したワークスペースの **InformationProtectionLogs_CL** テーブルに格納されます。 
     
-    このレポート データに関連するスキーマを Azure Monitor で使用するには、**InformationProtectionEvents** を検索します。 これらのイベント関数については、Azure Information Protection のドキュメントの「[イベント関数のフレンドリ スキーマ リファレンス](https://docs.microsoft.com/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions)」セクションを参照してください。
+    このレポート データに関連するスキーマを Azure Monitor で使用するには、**InformationProtectionEvents** を検索します。 これらのイベント関数については、Azure Information Protection のドキュメントの「[イベント関数のフレンドリ スキーマ リファレンス](/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions)」セクションを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

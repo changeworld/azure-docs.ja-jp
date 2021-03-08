@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 5ca2e37c3524dc75328b0b6615e15c58652d20d1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cd926875eda5676da6c154a57b0ac18ca12d9b79
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542957"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671633"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>チュートリアル: Azure Active Directory と Agiloft の統合
 
@@ -27,7 +27,7 @@ Agiloft と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで Agiloft に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -64,7 +64,7 @@ Azure AD への Agiloft の統合を構成するには、ギャラリーから�
 
 4. 検索ボックスに「**Agiloft**」と入力し、結果パネルで **Agiloft** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Agiloft](common/search-new-app.png)
+    ![結果一覧の Agiloft](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -100,19 +100,17 @@ Agiloft で Azure AD シングル サインオンを構成するには、次の�
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Agiloft のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![[識別子] および [応答 URL] テキスト ボックスが強調表示されているスクリーンショット。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
 
     ```http
-    https://<subdomain>.saas.enterprisewizard.com/project/<KB_NAME>
-    https://<subdomain>.agiloft.com/project/<KB_NAME>
+    https://<subdomain>.agiloft.com/<KB_NAME>
     ```
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
 
     ```http
-    https://<subdomain>.saas.enterprisewizard.com:443/gui2/spsamlsso?project=<KB_NAME>
     https://<subdomain>.agiloft.com:443/gui2/spsamlsso?project=<KB_NAME>
     ```
 
@@ -123,14 +121,13 @@ Agiloft で Azure AD シングル サインオンを構成するには、次の�
     **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
 
     ```http
-    https://<subdomain>.saas.enterprisewizard.com/gui2/samlssologin.jsp?project=<KB_NAME>
     https://<subdomain>.agiloft.com/gui2/samlssologin.jsp?project=<KB_NAME>
     ```
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Agiloft クライアント サポート チーム](https://www.agiloft.com/support-login.htm)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -150,23 +147,23 @@ Agiloft で Azure AD シングル サインオンを構成するには、次の�
 
 2. **[Setup]\(設定\)** (左側のウィンドウ) をクリックし、 **[Access]\(アクセス\)** を選択します。
 
-    ![Agiloft の構成](./media/agiloft-tutorial/setup1.png)
+    ![[Access]\(アクセス\) セクションが強調表示されているスクリーンショット。](./media/agiloft-tutorial/setup1.png)
 
 3. **[Configure SAML 2.0 Single Sign-On]\(SAML 2.0 シングル サインオンの構成\)** ボタンをクリックします。
 
-    ![Agiloft の構成](./media/agiloft-tutorial/setup2.png)
+    ![[Configure SAML 2.0 Single Sign-On]\(SAML 2.0 シングル サインオンの構成\) ボタンが強調表示されているスクリーンショット。](./media/agiloft-tutorial/setup2.png)
 
 4. ウィザード ダイアログが表示されます。 ダイアログで、 **[Identity Provider Details]\(ID プロバイダーの詳細\)** をクリックし、次のフィールドを入力します。  
 
     ![Agiloft の構成](./media/agiloft-tutorial/setup4.png)
 
-    a. **[IdP Entity Id / Issuer]\(IdP エンティティ ID/発行者\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+    a. **[IdP Entity Id / Issuer]\(IdP エンティティ ID/発行者\)** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。
 
-    b. **[IdP Login URL]\(IdP ログイン URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[IdP Login URL]\(IdP ログイン URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    c. **[IdP Logout URL]\(IdP ログアウト URL\)** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    c. **[IdP Logout URL]\(IdP ログアウト URL\)** ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
-    d. Azure ポータルからダウンロードした **Base-64 でエンコードされた証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[IdP Provided X.509 certificate contents]\(IdP によって提供される X.509 証明書の内容\)** ボックスに貼り付けます。
+    d. Azure ポータルからダウンロードした **Base-64 でエンコードされた証明書** をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[IdP Provided X.509 certificate contents]\(IdP によって提供される X.509 証明書の内容\)** ボックスに貼り付けます。
 
     e. **[完了]** をクリックします。
 
@@ -187,7 +184,7 @@ Agiloft で Azure AD シングル サインオンを構成するには、次の�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -229,12 +226,12 @@ Agiloft で Azure AD シングル サインオンを構成するには、次の�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Agiloft] タイルをクリックすると、SSO を設定した Agiloft に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Agiloft] タイルをクリックすると、SSO を設定した Agiloft に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

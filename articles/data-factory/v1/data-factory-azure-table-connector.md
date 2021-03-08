@@ -1,23 +1,18 @@
 ---
 title: Azure Table との間でデータを移動する
 description: Azure Data Factory を使用して Azure Table Storage に、または Azure Table Storage からデータを移動する方法を説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 07b046b1-7884-4e57-a613-337292416319
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 462d54a9d89d6f03aed5e221fa02609da786c8c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc8e0272dc690ed541883ae943c118cbbe2f1854
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84702313"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392121"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Azure Data Factory を使用した Azure テーブルとの間でのデータの移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -36,15 +31,15 @@ ms.locfileid: "84702313"
 ## <a name="getting-started"></a>作業の開始
 さまざまなツールや API を使用して、Azure Table Storage との間でデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード** を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
 また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
 
-1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
+1. **リンクされたサービス** を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
+2. コピー操作用の入力データと出力データを表す **データセット** を作成します。 
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む **パイプライン** を作成します。 
 
 ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 Azure Table Storage との間でのデータ コピーに使用する Data Factory エンティティの JSON 定義サンプルは、この記事の「[JSON の使用例](#json-examples)」セクションをご覧ください。
 
@@ -104,9 +99,9 @@ Azure テーブルの列が datetime 型の場合:
 | azureTableDefaultPartitionKeyValue |シンクで使用できる既定のパーティション キー値です。 |文字列値です。 |いいえ |
 | azureTablePartitionKeyName |値をパーティション キーとして使用する列の名前を指定します。 指定しない場合、AzureTableDefaultPartitionKeyValue がパーティション キーとして使用されます。 |列の名前。 |いいえ |
 | azureTableRowKeyName |値を行キーとして使用する列の名前を指定します。 指定しない場合、各行に GUID を使用します。 |列の名前。 |いいえ |
-| azureTableInsertType |Azure テーブルにデータを挿入する方法です。<br/><br/>このプロパティは、一致するパーティションと列キーを持つ出力テーブル内の既存の行で、値を置換するか結合するかを制御します。 <br/><br/>これらの設定 (結合と置換) の機能については、「[Insert or Merge Entity (エンティティの挿入または結合)](https://msdn.microsoft.com/library/azure/hh452241.aspx)」および「[Insert or Replace Entity (エンティティの挿入または置換)](https://msdn.microsoft.com/library/azure/hh452242.aspx)」をご覧ください。 <br/><br> この設定は、テーブル レベルではなく、行レベルで適用されます。どちらのオプションでも、出力テーブル内の、入力内に存在しない行は削除されません。 |merge (既定値)<br/>replace |いいえ |
+| azureTableInsertType |Azure テーブルにデータを挿入する方法です。<br/><br/>このプロパティは、一致するパーティションと列キーを持つ出力テーブル内の既存の行で、値を置換するか結合するかを制御します。 <br/><br/>これらの設定 (結合と置換) の機能については、「[Insert or Merge Entity (エンティティの挿入または結合)](/rest/api/storageservices/Insert-Or-Merge-Entity)」および「[Insert or Replace Entity (エンティティの挿入または置換)](/rest/api/storageservices/Insert-Or-Replace-Entity)」をご覧ください。 <br/><br> この設定は、テーブル レベルではなく、行レベルで適用されます。どちらのオプションでも、出力テーブル内の、入力内に存在しない行は削除されません。 |merge (既定値)<br/>replace |いいえ |
 | writeBatchSize |writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 10000) |
-| writeBatchTimeout |writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 |TimeSpan<br/><br/>例:"00:20:00" (20 分) |No (既定値はストレージ クライアントの既定のタイムアウト値の 90 秒) |
+| writeBatchTimeout |writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 |TimeSpan<br/><br/>例: "00:20:00" (20 分) |No (既定値はストレージ クライアントの既定のタイムアウト値の 90 秒) |
 
 ### <a name="azuretablepartitionkeyname"></a>azureTablePartitionKeyName
 azureTablePartitionKeyName として宛先列を使用する前に、translator JSON プロパティを使用して、ソース列を宛先列にマップします。
@@ -159,9 +154,9 @@ Azure Data Factory では、2 種類の Azure Storage のリンクされたサ�
 
 **Azure テーブルの入力データセット:**
 
-このサンプルでは、Azure テーブルに「MyTable」という名前のテーブルが作成されているものと想定しています。
+このサンプルでは、Azure テーブルに "MyTable" という名前のテーブルが作成されているものと想定しています。
 
-”external” を ”true” に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
+"external" を "true" に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 ```JSON
 {
@@ -327,7 +322,7 @@ Azure Data Factory では、2 種類の Azure Storage のリンクされたサ�
 
 **Azure BLOB の入力データセット:**
 
-データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔:1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスでは開始時間の年、月、日の部分を使用し、ファイル名では開始時間の時刻部分を使用します。 "external": "true" の設定により、このデータセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
+データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔:1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスでは開始時間の年、月、日の部分を使用し、ファイル名では開始時間の時刻部分を使用します。 "external": "true" の設定により、このデータセットがデータ ファクトリの外部にあり、データ ファクトリ内のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 ```JSON
 {
@@ -396,7 +391,7 @@ Azure Data Factory では、2 種類の Azure Storage のリンクされたサ�
 
 **Azure テーブルの出力データセット:**
 
-このサンプルは Azure テーブルの「MyTable」というテーブルにデータをコピーします。 BLOB CSV ファイルに含める予定の数の列を持つ Azure テーブルを作成します。 新しい行は 1 時間ごとにテーブルに追加されます。
+このサンプルでは Azure テーブルの "MyTable" というテーブルにデータがコピーされます。 BLOB CSV ファイルに含める予定の数の列を持つ Azure テーブルを作成します。 新しい行は 1 時間ごとにテーブルに追加されます。
 
 ```JSON
 {
@@ -472,7 +467,7 @@ Azure Data Factory では、2 種類の Azure Storage のリンクされたサ�
 1. ネイティブの source 型から .NET 型に変換する
 2. .NET 型からネイティブの sink 型に変換する
 
-Azure テーブル間でデータの移動時に、次の [Azure Table service により定義されたマッピング](https://msdn.microsoft.com/library/azure/dd179338.aspx)が Azure テーブルの OData 型と .NET 型の間の移動に利用されます。
+Azure テーブル間でデータの移動時に、次の [Azure Table service により定義されたマッピング](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)が Azure テーブルの OData 型と .NET 型の間の移動に利用されます。
 
 | OData データ型 | .NET 型 | 詳細 |
 | --- | --- | --- |
@@ -540,7 +535,7 @@ Azure テーブル OData 型から .NET 型への型マッピングを所与と�
 | name |Edm.String |
 | lastlogindate |Edm.DateTime |
 
-続いて、次のように Azure テーブルのデータセットを定義します。 基になるデータ ストアで既に指定されているため、“structure” セクションのタイプ情報を指定する必要はありません。
+続いて、次のように Azure テーブルのデータセットを定義します。 型情報は、基になるデータ ストアに既に指定されているため、型情報が含まれた "structure" セクションを指定する必要はありません。
 
 ```JSON
 {

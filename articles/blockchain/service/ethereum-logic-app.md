@@ -1,23 +1,24 @@
 ---
 title: Azure Logic Apps で Ethereum ブロックチェーン コネクタを使用する - Azure Blockchain Service
 description: Azure Logic Apps で Ethereum ブロックチェーン コネクタを使用して、スマート コントラクト関数をトリガーし、スマート コントラクト イベントに応答します。
-ms.date: 10/14/2019
+ms.date: 08/31/2020
 ms.topic: how-to
-ms.reviewer: chrisseg
-ms.openlocfilehash: 61dbda7cd7f486c7a8d838084875b34803833502
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: caleteet
+ms.openlocfilehash: 411337908553e58c252a0ed1a42d17f76195c720
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077046"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763793"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Azure Logic Apps で Ethereum ブロックチェーン コネクタを使用する
 
-[Azure Logic Apps](../../logic-apps/index.yml) で [Ethereum ブロックチェーン コネクタ](/connectors/blockchainethereum/)を使用することにより、スマート コントラクト アクションを実行し、スマート コントラクト イベントに応答できます。 たとえば、ブロックチェーン台帳から情報を返す REST ベースのマイクロサービスを作成するとします。 ロジック アプリを使用すると、ブロックチェーン台帳に格納されている情報を照会する HTTP 要求を受け入れることができます。
+[Azure Logic Apps](../../logic-apps/index.yml) で [Ethereum ブロックチェーン コネクタ](/connectors/blockchainethereum/)を使用することにより、スマート コントラクト アクションを実行し、スマート コントラクト イベントに応答できます。 この記事では、Ethereum ブロックチェーン コネクタを使用して、ブロックチェーン情報を別のサービスに送信したり、ブロックチェーン関数を呼び出したりする方法について説明します。 たとえば、ブロックチェーン台帳から情報を返す REST ベースのマイクロサービスを作成するとします。 ロジック アプリを使用すると、ブロックチェーン台帳に格納されている情報を照会する HTTP 要求を受け入れることができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-オプションの前提条件である「[クイックスタート: Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」を完了します。 このクイックスタートでは、[Azure Blockchain Development Kit for Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) のインストール方法とブロックチェーン開発環境の設定方法について説明しています。
+- オプションの前提条件である「[クイックスタート: Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」を完了します。 このクイックスタートでは、[Azure Blockchain Development Kit for Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) のインストール方法とブロックチェーン開発環境の設定方法について説明しています。
+- Azure Logic Apps を初めて使用する場合は、Microsoft Learn のモジュールの「[Azure Logic Apps の概要](/learn/modules/intro-to-logic-apps/)」および「[カスタム コネクタを使用して Logic Apps ワークフローから API を呼び出す](/learn/modules/logic-apps-and-custom-connectors/)」を確認することを検討してください。
 
 ## <a name="create-a-logic-app"></a>ロジック アプリを作成します
 
@@ -33,7 +34,7 @@ Azure Logic Apps は、システムとサービスを統合する必要がある
 
 すべてのロジック アプリは必ずトリガーから起動され、トリガーは、特定のイベントが発生するか特定の条件が満たされたときに起動されます。 トリガーが起動するたびに、Logic Apps エンジンによって、ワークフローを開始および実行するロジック アプリ インスタンスが作成されます。
 
-Ethereum ブロックチェーン コネクタには、1 つのトリガーといくつかのアクションが備わっています。 使用するトリガーまたはアクションは、シナリオによって異なります。
+Ethereum ブロックチェーン コネクタには、1 つのトリガーといくつかのアクションが備わっています。 使用するトリガーまたはアクションは、シナリオによって異なります。 この記事の中で、実際のシナリオに最も適したセクションに従ってください。
 
 実際のワークフローで
 
@@ -108,7 +109,7 @@ Visual Studio Code 拡張機能である Azure Blockchain Development Kit for Et
     ![[Generate Microservices for Smart Contracts]\(スマート コントラクト用のマイクロサービスの生成\) が選択されている Visual Studio Code のウィンドウ](./media/ethereum-logic-app/generate-logic-app.png)
 
 1. コマンド パレットで、 **[ロジック アプリ]** を選択します。
-1. **コントラクト アドレス**を入力します。 詳細については、「[コントラクト アドレスを取得する](#get-the-contract-address)」を参照してください。
+1. **コントラクト アドレス** を入力します。 詳細については、「[コントラクト アドレスを取得する](#get-the-contract-address)」を参照してください。
 1. そのロジック アプリ用の Azure サブスクリプションとリソース グループを選択します。
 
     ロジック アプリの構成とコード ファイルは、**generatedLogicApp** ディレクトリに生成されます。
@@ -193,7 +194,7 @@ Azure Blockchain Service メンバーに対する接続を設定できるよう�
 ブロックチェーンにトランザクションを送信する際の認証に、Ethereum アカウントの秘密キーを使用することができます。 ご自分の Ethereum アカウントの公開キーと秘密キーは、12 ワードのニーモニックから生成されます。 Azure Blockchain Service のコンソーシアム メンバーに接続すると、Azure Blockchain Development Kit for Ethereum によってニーモニックが生成されます。 開発キット拡張機能を使用して、エンドポイントのアドレスを取得できます。
 
 1. Visual Studio Code で、コマンド パレットを開きます (F1 キー)。
-1. **[Azure Blockchain: Retrieve private key] (Azure Blockchain: 秘密キーを取得する)** を選択します。
+1. **[Blockchain: Retrieve private key] (Azure Blockchain: 秘密キーを取得する)** を選択します。
 1. コンソーシアム メンバーへの接続時に保存したニーモニックを選択します。
 
     ![ニーモニックを選択するためのオプションを備えたコマンド パレット](./media/ethereum-logic-app/private-key.png)
@@ -269,7 +270,7 @@ Azure Blockchain Service メンバーに対する接続を設定できるよう�
 
 **Truffle の移行の出力を使用するには:**
 
-Truffle により、スマート コントラクトのデプロイ後に、コントラクト アドレスが表示されます。 出力から**コントラクト アドレス**をコピーします。
+Truffle により、スマート コントラクトのデプロイ後に、コントラクト アドレスが表示されます。 出力から **コントラクト アドレス** をコピーします。
 
 ![Visual Studio Code に表示された Truffle の移行の出力とコントラクト アドレス](./media/ethereum-logic-app/contract-address-truffle.png)
 

@@ -6,6 +6,8 @@
       href: overview-reports.md
     - name: Azure AD の監視とは
       href: overview-monitoring.md
+    - name: サインイン診断とは
+      href: overview-sign-in-diagnostics.md
 - name: クイックスタート
   expanded: true
   items:
@@ -31,6 +33,8 @@
       href: plan-monitoring-and-reporting.md
     - name: 監査ログ
       href: concept-audit-logs.md
+    - name: 新しいサインイン ログ - プレビュー
+      href: concept-all-sign-ins.md
     - name: サインイン ログ
       href: concept-sign-ins.md
     - name: 使用状況と分析情報のレポート
@@ -94,9 +98,9 @@
     - name: レポート用の Azure AD PowerShell コマンドレット
       href: reference-powershell-reporting.md
     - name: 監査ログの API リファレンス
-      href: /graph/api/resources/directoryaudit?view=graph-rest-beta
+      href: /graph/api/resources/directoryaudit?view=graph-rest-1.0
     - name: サインイン ログの API リファレンス
-      href: /graph/api/resources/signin?view=graph-rest-beta
+      href: /graph/api/resources/signin?view=graph-rest-1.0
     - name: 監査アクティビティ
       href: reference-audit-activities.md
     - name: データ保有ポリシー

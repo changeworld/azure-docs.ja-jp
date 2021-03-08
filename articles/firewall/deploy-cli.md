@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 7f00b57edb37cc5bb5c8340663d619e526c2eacb
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4d611a6d575fbc94a555006882f77e5a31753164
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89075428"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051464"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure CLI を使用して Azure Firewall をデプロイして構成する
 
@@ -25,7 +25,7 @@ Azure サブネットから外に向かうアウトバウンド ネットワー�
 
 ネットワーク トラフィックは、サブネットの既定ゲートウェイとしてのファイアウォールにルーティングしたときに、構成されているファイアウォール ルールに制約されます。
 
-この記事では、デプロイしやすいよう単純化して、3 つのサブネットを含んだ単一の VNet を作成します。 運用環境のデプロイには、[ハブ アンド スポーク モデル](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)が推奨されます。 ファイアウォールは独自の VNet に含まれています。 ワークロード サーバーは、1 つ以上のサブネットを含む同じリージョンのピアリングされた VNet に配置されます。
+この記事では、デプロイしやすいよう単純化して、3 つのサブネットを含んだ単一の VNet を作成します。 運用環境のデプロイには、[ハブ アンド スポーク モデル](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)が推奨されます。 ファイアウォールは独自の VNet に含まれています。 ワークロード サーバーは、1 つ以上のサブネットを含む同じリージョンのピアリングされた VNet に配置されます。
 
 * **AzureFirewallSubnet** - このサブネットにファイアウォールが存在します。
 * **Workload-SN** - このサブネットにはワークロード サーバーがあります。 このサブネットのネットワーク トラフィックは、ファイアウォールを通過します。
@@ -44,22 +44,11 @@ Azure サブネットから外に向かうアウトバウンド ネットワー�
 
 必要に応じて、この手順は [Azure portal](tutorial-firewall-deploy-portal.md) または [Azure PowerShell](deploy-ps.md) を使用して完了できます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prerequisites"></a>前提条件
-
-### <a name="azure-cli"></a>Azure CLI
-
-CLI をローカルにインストールして使用する場合は、Azure CLI バージョン 2.0.4 以降を実行してください。 バージョンを確認するには、**az --version** を実行します。 インストールまたはアップグレードについては、「[Azure CLI のインストール]( /cli/azure/install-azure-cli)」を参照してください。
-
-Azure Firewall 拡張機能をインストールします。
-
-```azurecli-interactive
-az extension add -n azure-firewall
-```
-
+- この記事では、Azure CLI のバージョン 2.0.4 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="set-up-the-network"></a>ネットワークのセットアップ
 
@@ -78,7 +67,7 @@ az group create --name Test-FW-RG --location eastus
 この仮想ネットワークには 3 つのサブネットが含まれています。
 
 > [!NOTE]
-> AzureFirewallSubnet サブネットのサイズは /26 です。 サブネットのサイズの詳細については、「[Azure Firewall に関する FAQ](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)」を参照してください。
+> AzureFirewallSubnet サブネットのサイズは /26 です。 サブネットのサイズの詳細については、「[Azure Firewall に関する FAQ](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size)」を参照してください。
 
 ```azurecli-interactive
 az network vnet create \
@@ -301,4 +290,4 @@ az group delete \
 
 ## <a name="next-steps"></a>次のステップ
 
-* [チュートリアル:Azure Firewall のログを監視する](./tutorial-diagnostics.md)
+* [チュートリアル:Azure Firewall のログを監視する](./firewall-diagnostics.md)

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mialdrid
-ms.openlocfilehash: 182195190fed70b46185f98f595de6b6c32bbffe
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 515a6f7175aee23c6f720258b7fdaefe76b3b5d6
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619398"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077951"
 ---
 # <a name="working-remotely-using-azure-bastion"></a>Azure Bastion を使用したリモート作業
 
@@ -26,10 +26,10 @@ Azure Bastion は、インターネット接続のあるユーザーが Azure �
 
 具体的には、Azure Bastion を使用すると、Azure 仮想ネットワーク内の仮想マシンに、パブリック IP アドレスを使用せず Azure portal で直接、安全かつシームレスに RDP/SSH 接続できます。 Azure Bastion のアーキテクチャと主な機能の詳細については、「[Azure Bastion とは](bastion-overview.md)」を参照してください。
 
-Azure Bastion は仮想ネットワークごとにデプロイされます。つまり、企業は 1 つの Azure Bastion を構成および管理して、Azure 仮想ネットワーク内の仮想マシンへのリモート ユーザー アクセスをすばやくサポートできます。 Azure Bastion を作成および管理する方法のガイダンスについては、[Bastion ホストの作成](bastion-create-host-portal.md)に関するページを参照してください。
+Azure Bastion は仮想ネットワークごとにデプロイされます。つまり、企業は 1 つの Azure Bastion を構成および管理して、Azure 仮想ネットワーク内の仮想マシンへのリモート ユーザー アクセスをすばやくサポートできます。 Azure Bastion を作成および管理する方法のガイダンスについては、[Bastion ホストの作成](./tutorial-create-host-portal.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure portal](bastion-create-host-portal.md)、[PowerShell](bastion-create-host-powershell.md)、または Azure CLI を使用して Azure Bastion を構成します。
+* [Azure portal](./tutorial-create-host-portal.md)、[PowerShell](bastion-create-host-powershell.md)、または Azure CLI を使用して Azure Bastion を構成します。
 
 * 詳細については、[Bastion に関する FAQ](bastion-faq.md) に関するページを参照してください。

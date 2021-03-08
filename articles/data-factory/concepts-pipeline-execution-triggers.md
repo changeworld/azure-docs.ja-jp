@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory でのパイプラインの実行とトリガー
 description: この記事では、オンデマンドで、またはトリガーを作成して、Azure Data Factory でパイプラインを実行する方法に関する情報を提供します。
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: 73934521cc68dc8ec2e28f29e35df833651915d2
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: bd36b589424a0d890fc5e1bbab3f234e9b3264c6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997011"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374781"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー
 
@@ -179,7 +175,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ## <a name="schedule-trigger"></a>スケジュール トリガー
 スケジュール トリガーは、実時間のスケジュールでパイプラインを実行します。 このトリガーは、定期的および高度な予定表のオプションをサポートしています。 たとえば、トリガーでは、"毎週" または "月曜日午後 5 時と木曜日午後 9 時" のような間隔がサポートされています。 スケジュール トリガーは、時系列データと非時系列データを区別せず、データセット パターンに依存しないため、柔軟性があります。
 
-スケジュール トリガーの詳細と例については、[スケジュール トリガーの作成](how-to-create-schedule-trigger.md)に関するページを参照してください。
+スケジュール トリガーに関する詳細と例については、「[スケジュールどおりにパイプラインを実行するトリガーの作成](how-to-create-schedule-trigger.md)」を参照してください。
 
 ## <a name="schedule-trigger-definition"></a>スケジュール トリガーの定義
 スケジュール トリガーを作成する場合、JSON 定義を使用してスケジュール設定と繰り返しを指定します。
@@ -239,7 +235,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | --- | --- |
 | **startTime** | 日付/時刻の値。 基本的なスケジュールの場合、**startTime** プロパティの値が最初の発生日時に適用されます。 複雑なスケジュールの場合、指定した **startTime** 値になるとすぐにトリガーが起動します。 |
 | **endTime** | トリガーの終了日時。 指定した終了日時を過ぎると、トリガーは実行されません。 このプロパティの値に過去の日時を指定することはできません。 <!-- This property is optional. --> |
-| **timeZone** | タイム ゾーン。 現在、サポートされているタイム ゾーンは UTC のみです。 |
+| **timeZone** | タイム ゾーン。 サポートされているタイム ゾーンの一覧については、「[スケジュールどおりにパイプラインを実行するトリガーの作成](how-to-create-schedule-trigger.md#time-zone-option)」を参照してください。 |
 | **recurrence** | トリガーの繰り返し規則を指定する recurrence オブジェクト。 この recurrence オブジェクトは、**frequency**、**interval** **endTime** **count**、**schedule** の各要素をサポートします。 recurrence オブジェクトを定義する場合、**frequency** 要素は必須です。 recurrence オブジェクトの他の要素は省略可能です。 |
 | **frequency** | トリガーが繰り返される頻度の単位。 サポートされる値には、"minute"、"hour"、"day"、"week"、"month" があります。 |
 | **interval** | **frequency** 値の間隔を示す正の整数。 **frequency** の値は、トリガーの実行頻度を決定します。 たとえば、**interval** が 3 で **frequency** が "week" の場合、トリガーは 3 週間ごとに繰り返されます。 |
@@ -381,7 +377,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | **信頼性** | 100% の信頼性です。 パイプライン実行は、指定した開始日から隙間なくすべてのウィンドウでスケジュールできます。 | 信頼性は低くなります。 |
 | **再試行機能** | サポートされています。 失敗したパイプライン実行には、既定の再試行ポリシー 0 か、トリガー定義でユーザーが指定したポリシーがあります。 コンカレンシー/サーバー/調整の制限が原因でパイプライン実行に失敗した場合は、自動的に再試行されます (つまり、状態コードが 400:ユーザー エラー、429:要求が多すぎる、500:内部サーバー エラーの場合)。 | サポートされていません。 |
 | **コンカレンシー** | サポートされています。 ユーザーは、トリガーのコンカレンシーの制限を明示的に設定できます。 1 から 50 個の同時実行のトリガーされたパイプライン実行が許可されます。 | サポートされていません。 |
-| **システム変数** | @trigger().scheduledTime および @trigger().startTime と共に、**WindowStart** および **WindowEnd** システム変数の使用もサポートします。 ユーザーは、トリガー定義のトリガー システム変数として `triggerOutputs().windowStartTime` および `triggerOutputs().windowEndTime` にアクセスできます。 値はそれぞれ、ウィンドウの開始時刻と終了時刻として使用されます。 たとえば、1 時間ごとに実行されるタンブリング ウィンドウ トリガーの場合、午前 1 時から午前 2 時までのウィンドウの定義は `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` と `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z` です。 | 既定の @trigger().scheduledTime および @trigger().startTime 変数のみがサポートされます。 |
+| **システム変数** | @trigger().scheduledTime および @trigger().startTime と共に、**WindowStart** および **WindowEnd** システム変数の使用もサポートします。 ユーザーは、トリガー定義のトリガー システム変数として `trigger().outputs.windowStartTime` および `trigger().outputs.windowEndTime` にアクセスできます。 値はそれぞれ、ウィンドウの開始時刻と終了時刻として使用されます。 たとえば、1 時間ごとに実行されるタンブリング ウィンドウ トリガーの場合、午前 1 時から午前 2 時までのウィンドウの定義は `trigger().outputs.windowStartTime = 2017-09-01T01:00:00Z` と `trigger().outputs.windowEndTime = 2017-09-01T02:00:00Z` です。 | 既定の @trigger().scheduledTime および @trigger().startTime 変数のみがサポートされます。 |
 | **パイプラインとトリガーのリレーションシップ** | 一対一のリレーションシップをサポートします。 トリガーできるパイプラインは 1 つだけです。 | 多対多のリレーションシップをサポートします。 複数のトリガーが 1 つのパイプラインを開始することができます。 1 つのトリガーが複数のパイプラインを開始することもできます。 |
 
 ## <a name="next-steps"></a>次のステップ

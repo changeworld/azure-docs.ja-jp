@@ -57,8 +57,16 @@
           href: container-registry-image-tag-version.md
         - name: geo レプリケーション
           href: container-registry-geo-replication.md
+        - name: ゾーン冗長性
+          displayName: availability zone
+          href: zone-redundancy.md
         - name: レジストリのベスト プラクティス
           href: container-registry-best-practices.md
+        - name: マルチアーキテクチャ イメージ
+          href: push-multi-architecture-images.md
+          displayName: multi-architecture
+        - name: パブリック イメージの管理
+          href: buffer-gate-public-content.md
     - name: 操作方法ガイド
       expanded: false
       items:
@@ -96,6 +104,8 @@
               href: container-registry-access-selected-networks.md
             - name: サービス エンドポイントを使用したアクセスの制限 (プレビュー)
               href: container-registry-vnet.md
+            - name: 信頼されたサービスによるアクセスを許可する
+              href: allow-access-trusted-services.md
             - name: カスタマー マネージド キーによる暗号化
               href: container-registry-customer-managed-keys.md
             - name: ファイアウォールの内側にアクセスする
@@ -118,12 +128,13 @@
                   href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
                 - name: リポジトリスコープ トークンによる認証 (プレビュー)
                   href: container-registry-repository-scoped-permissions.md
-            - name: ロールベースのアクセス制御
+            - name: Azure ロールベースのアクセス制御
               href: container-registry-roles.md
+              displayName: 'permissions, authorization'
             - name: コンテンツの信頼
               href: container-registry-content-trust.md
             - name: Security Center を使用したイメージのスキャン
-              href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+              href: ../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json
         - name: レジストリと他の Azure サービス
           expanded: false
           items:
@@ -151,6 +162,7 @@
               href: container-registry-troubleshoot-performance.md
             - name: 一般的な問題の検出
               href: container-registry-check-health.md
+              displayName: 'check, health'
             - name: よく寄せられる質問
               href: container-registry-faq.md
 - name: タスク
@@ -207,6 +219,10 @@
               href: container-registry-tasks-authentication-key-vault.md
         - name: Resource Manager テンプレートを使用したクイック タスクの実行
           href: container-registry-task-run-template.md
+        - name: 専用エージェント プールでタスクを実行する (プレビュー)
+          href: tasks-agent-pools.md
+        - name: パブリック コンテンツの使用と管理
+          href: tasks-consume-public-content.md
         - name: Buildpack を使用したイメージのビルド (プレビュー)
           href: container-registry-tasks-pack-build.md
         - name: タスク ログを表示する

@@ -5,12 +5,12 @@ author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 529bfb61b3af7040f3656c04071683841f5abe86
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 89ec0ad40822785457e988cf9e0f9bd6d00ed81f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870291"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91576627"
 ---
 # <a name="get-information-about-conversions"></a>変換に関する情報を取得する
 
@@ -65,6 +65,10 @@ ms.locfileid: "88870291"
         "numMeshUsagesInScene": 236,
         "maxNodeDepth": 3
     },
+    "materialOverrides": {
+        "numOverrides": 4,
+        "numOverriddenMaterials": 4
+    },
     "outputInfo": {
         "conversionToolVersion": "3b28d840de9916f9d628342f474d38c3ab949590",
         "conversionHash": "CCDB1F7A4C09F565"
@@ -114,6 +118,13 @@ ms.locfileid: "88870291"
 * `sourceAssetFormat`:ソース ファイル形式の説明。
 * `sourceAssetFormatVersion`:ソース ファイル形式のバージョン。
 * `sourceAssetGenerator`:ソース ファイルを生成したツールの名前 (使用可能な場合)。
+
+### <a name="the-materialoverrides-section"></a>*materialOverrides* セクション
+
+このセクションには、変換サービスに素材のオーバーライド ファイルが提供された場合の[素材のオーバーライド](override-materials.md)に関する情報が示されます。
+これには次の情報が含まれています。
+* `numOverrides`:素材のオーバーライド ファイルから読み取られたオーバーライド エントリの数。
+* `numOverriddenMaterials`:オーバーライドされた素材の数。
 
 ### <a name="the-inputstatistics-section"></a>*inputStatistics* セクション
 

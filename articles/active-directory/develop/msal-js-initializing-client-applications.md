@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 5af5d3a88262792f4b32e2ce3d8143ac680f083a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: aaddev, devx-track-js
+ms.openlocfilehash: a6d7b760ffd1931fa5dcdb3a67dd02f2798957a9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027038"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365839"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>MSAL.js を使用してクライアント アプリケーションを初期化する
 
@@ -37,13 +37,13 @@ ms.locfileid: "87027038"
 | 値 | 必須 | 説明 |
 |:----- | :------: | :---------- |
 | アプリケーション (クライアント) ID | 必須 | Microsoft ID プラットフォーム内でアプリケーションを一意に識別する GUID。 |
-| Authority | 省略可能 | ID プロバイダーの URL (*インスタンス*) とアプリケーションの*サインイン対象ユーザー*。 インスタンスとサインイン対象ユーザーが連結されると、*Authority* が構成されます。 |
-| ディレクトリ (テナント) ID | 省略可能 | 組織専用の基幹業務アプリケーション (*シングルテナント アプリケーション*とも呼ばれる) を構築している場合は、この値を指定します。 |
+| Authority | 省略可能 | ID プロバイダーの URL (*インスタンス*) とアプリケーションの *サインイン対象ユーザー*。 インスタンスとサインイン対象ユーザーが連結されると、*Authority* が構成されます。 |
+| ディレクトリ (テナント) ID | 省略可能 | 組織専用の基幹業務アプリケーション (*シングルテナント アプリケーション* とも呼ばれる) を構築している場合は、この値を指定します。 |
 | リダイレクト URI | 省略可能 | Web アプリを構築している場合、`redirectUri` では、ID プロバイダー (Microsoft ID プラットフォーム) が発行済みのセキュリティ トークンを返す場所を指定します。 |
 
 ## <a name="initialize-msaljs-2x-apps"></a>MSAL.js 2.x アプリの初期化
 
-[構成オブジェクト][msal-js-configuration]を使用して [PublicClientApplication][msal-js-publicclientapplication] をインスタンス化することで、MSAL 認証コンテキストを初期化します。 最低限必要な構成プロパティは、アプリケーションの `clientID` です。これは、Azure portal のアプリ登録の **[概要]** ページに**アプリケーション (クライアント) ID** として表示されます。
+[構成オブジェクト][msal-js-configuration]を使用して [PublicClientApplication][msal-js-publicclientapplication] をインスタンス化することで、MSAL 認証コンテキストを初期化します。 最低限必要な構成プロパティは、アプリケーションの `clientID` です。これは、Azure portal のアプリ登録の **[概要]** ページに **アプリケーション (クライアント) ID** として表示されます。
 
 次に、構成オブジェクトと `PublicClientApplication` のインスタンス化の例を示します。
 
@@ -108,14 +108,14 @@ msalInstance.handleRedirectPromise().then((tokenResponse) => {
 Promise では、次の 3 つの結果が考えられます。
 
 - `.then` が呼び出され、`tokenResponse` が truthy である: リダイレクト操作が成功すると、アプリケーションに戻ります。
-- `.then` が呼び出され、`tokenResponse` が falsey (`null`) である: リダイレクト操作では、アプリケーションに戻りません。
+- `.then` が呼び出され、`tokenResponse` が falsy (`null`) である:リダイレクト操作では、アプリケーションに戻りません。
 - `.catch` が呼び出される: リダイレクト操作によりアプリケーションに戻りますが、エラーが発生しています。
 
 ## <a name="initialize-msaljs-1x-apps"></a>MSAL.js 1.x アプリの初期化
 
-構成オブジェクトを使用して [UserAgentApplication][msal-js-useragentapplication] をインスタンス化することで、MSAL 1.x 認証コンテキストを初期化します。 最低限必要な構成プロパティは、アプリケーションの `clientID` です。これは、Azure portal のアプリ登録の **[概要]** ページに**アプリケーション (クライアント) ID** として表示されます。
+構成オブジェクトを使用して [UserAgentApplication][msal-js-useragentapplication] をインスタンス化することで、MSAL 1.x 認証コンテキストを初期化します。 最低限必要な構成プロパティは、アプリケーションの `clientID` です。これは、Azure portal のアプリ登録の **[概要]** ページに **アプリケーション (クライアント) ID** として表示されます。
 
-リダイレクト フローを使用した認証メソッドの場合 ([loginRedirect][msal-js-loginredirect] と [acquireTokenRedirect][msal-js-acquiretokenredirect])、MSAL.js 1.2.x 以前では、`handleRedirectCallback()` メソッドを介して成功またはエラーに対するコールバックを明示的に登録する必要があります。 MSAL.js 1.2.x 以前では、コールバックを明示的に登録する必要があります。これは、リダイレクト フローがポップアップ エクスペリエンスを持つメソッドのように Promise を返さないためです。 バージョン 1.3.x 以降の MSAL.js では、コールバックの登録は*省略可能*です。
+リダイレクト フローを使用した認証メソッドの場合 ([loginRedirect][msal-js-loginredirect] と [acquireTokenRedirect][msal-js-acquiretokenredirect])、MSAL.js 1.2.x 以前では、`handleRedirectCallback()` メソッドを介して成功またはエラーに対するコールバックを明示的に登録する必要があります。 MSAL.js 1.2.x 以前では、コールバックを明示的に登録する必要があります。これは、リダイレクト フローがポップアップ エクスペリエンスを持つメソッドのように Promise を返さないためです。 バージョン 1.3.x 以降の MSAL.js では、コールバックの登録は *省略可能* です。
 
 ```javascript
 // Configuration object constructed
@@ -153,9 +153,9 @@ GitHub にある、この MSAL.js 2.x コード サンプルでは、次の[構�
 <!-- LINKS - External -->
 [msal-browser]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-browser/
 [msal-core]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/
-[msal-js-acquiretokenredirect]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/classes/_useragentapplication_.useragentapplication.html#acquiretokenredirect
-[msal-js-configuration]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/modules/_configuration_.html
-[msal-js-handleredirectpromise]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-browser/classes/_src_app_publicclientapplication_.publicclientapplication.html#handleredirectpromise
-[msal-js-loginredirect]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/classes/_useragentapplication_.useragentapplication.html#loginredirect
-[msal-js-publicclientapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-browser/classes/_src_app_publicclientapplication_.publicclientapplication.html
-[msal-js-useragentapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/modules/_useragentapplication_.html
+[msal-js-acquiretokenredirect]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal.useragentapplication.html#acquiretokenredirect
+[msal-js-configuration]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/modules/_azure_msal.html#configuration
+[msal-js-handleredirectpromise]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal_browser.publicclientapplication.html#handleredirectpromise
+[msal-js-loginredirect]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal.useragentapplication.html#loginredirect
+[msal-js-publicclientapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal_browser.publicclientapplication.html
+[msal-js-useragentapplication]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal.useragentapplication.html

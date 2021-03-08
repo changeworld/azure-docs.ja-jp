@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: d1d14fa9730e3ddd47378a45ff7a1442bdee69ac
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 8813b2cad5800bd4ede6e64119117df57c230fdc
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543386"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071223"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps:Azure Machine Learning を使用したモデル管理、デプロイ、および監視
 
@@ -33,7 +32,7 @@ Machine Learning 操作 (MLOps) は、ワークフローの効率を向上させ
 Azure Machine Learning で提供される MLOps 機能は次のとおりです。
 
 - **再現可能な ML パイプラインを作成する**。 Machine Learning パイプラインを使用すると、データの準備、トレーニング、およびスコア付けプロセスに対して、反復可能かつ再利用可能な手順を定義できます。
-- モデルのトレーニングとデプロイのために**再利用可能なソフトウェア環境を作成する**。
+- モデルのトレーニングとデプロイのために **再利用可能なソフトウェア環境を作成する**。
 - **どこからでもモデルの登録、パッケージ化、デプロイを行う**。 モデルを使用するために必要な関連メタデータを追跡することもできます。
 - **エンドツーエンドの ML ライフサイクルのために管理データを取得する**。 ログに記録される情報には、モデルを公開しているユーザー、変更が行われた理由、モデルがいつ実稼働環境にデプロイされたか、または使用されたかが含まれます。
 - **ML ライフサイクルにおけるイベントについて通知とアラートを行う**。 たとえば、実験の完了、モデルの登録、モデル デプロイ、データ ドリフトの検出などです。
@@ -71,6 +70,9 @@ Azure Machine Learning の環境を使用して、プロジェクトのソフト
 アクティブなデプロイで使用されている登録済みモデルは削除できません。
 詳細については、[モデルのデプロイ](how-to-deploy-and-where.md#registermodel)に関するページの、モデルの登録のセクションを参照してください。
 
+> [!IMPORTANT]
+> Azure Machine Learning スタジオの [モデル] ページの [`Tags` でフィルター] オプションを使用するとき、お客様は `TagName : TagValue` を使用するのではなく、`TagName=TagValue` を (スペースなしで) 使用してください。
+
 ### <a name="profile-models"></a>モデルのプロファイル
 
 Azure Machine Learning は、モデルのデプロイ時に作成されるサービスの CPU とメモリの要件を把握するのに役立ちます。 モデルを実行して CPU 使用率、メモリ使用率、応答の待機時間などの情報を返す、サービスのプロファイル テストを行います。 また、リソースの使用状況に基づいて CPU とメモリに関する推奨事項が提示されます。
@@ -106,11 +108,11 @@ Azure Machine Learning での ONNX の詳細については、「[ML モデル�
 イメージが作成されると、Azure Machine Learning で必要なコンポーネントも追加されます。 たとえば、Web サービスを実行し、IoT Edge を操作するために必要なアセットです。
 
 #### <a name="batch-scoring"></a>バッチ スコアリング
-Batch スコアリングは、ML パイプライン経由でサポートされます。 詳細については、[ビッグ データでのバッチ予測](how-to-use-parallel-run-step.md)に関するページをご覧ください。
+Batch スコアリングは、ML パイプライン経由でサポートされます。 詳細については、[ビッグ データでのバッチ予測](./tutorial-pipeline-batch-scoring-classification.md)に関するページをご覧ください。
 
 #### <a name="real-time-web-services"></a>リアルタイム Web サービス
 
-次のコンピューティング ターゲットを持つ **Web サービス**でモデルを使用することができます。
+次のコンピューティング ターゲットを持つ **Web サービス** でモデルを使用することができます。
 
 * Azure Container Instances
 * Azure Kubernetes Service
@@ -136,13 +138,13 @@ Azure Kubernetes Service にデプロイする場合は、制御されたロー�
 
 #### <a name="iot-edge-devices"></a>IoT Edge デバイス
 
-**Azure IoT Edge モジュール**を介してモデルを IoT デバイスで使用することができます。 IoT Edge モジュールはハードウェア デバイスに展開されるため、デバイス上で推論、つまりモデルのスコアリングを使用できます。
+**Azure IoT Edge モジュール** を介してモデルを IoT デバイスで使用することができます。 IoT Edge モジュールはハードウェア デバイスに展開されるため、デバイス上で推論、つまりモデルのスコアリングを使用できます。
 
 詳細については、「[モデルのデプロイ](how-to-deploy-and-where.md)」を参照してください。
 
 ### <a name="analytics"></a>Analytics
 
-Microsoft Power BI は、データ分析への機械学習モデルの使用をサポートします。 詳細については、[Azure Machine Learning の Power BI への統合 (プレビュー)](https://docs.microsoft.com/power-bi/service-machine-learning-integration)に関する記事をご覧ください。
+Microsoft Power BI は、データ分析への機械学習モデルの使用をサポートします。 詳細については、[Azure Machine Learning の Power BI への統合 (プレビュー)](/power-bi/service-machine-learning-integration)に関する記事をご覧ください。
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>エンドツーエンドの ML ライフサイクルをキャプチャするために必要な管理データを取得する
 
@@ -156,9 +158,9 @@ Azure ML では、メタデータを使用して、すべての ML 資産のエ�
 - [Azure との統合](how-to-use-event-grid.md)を使用すると、ML ライフサイクル内のイベントに対してアクションを実行できます。 たとえば、モデル登録、デプロイ、データ ドリフト、トレーニング (実行) などのイベントです。
 
 > [!TIP]
-> モデルやデータセットに関する一部の情報は自動的にキャプチャされますが、__タグ__を使用して追加情報を付加できます。 ワークスペースで登録済みのモデルやデータセットを検索する場合は、タグをフィルターとして使用できます。
+> モデルやデータセットに関する一部の情報は自動的にキャプチャされますが、__タグ__ を使用して追加情報を付加できます。 ワークスペースで登録済みのモデルやデータセットを検索する場合は、タグをフィルターとして使用できます。
 >
-> データセットの登録済みのモデルとの関連付けは省略可能な手順です。 モデルを登録するときのデータセットの参照については、[Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py) クラスのリファレンスを参照してください。
+> データセットの登録済みのモデルとの関連付けは省略可能な手順です。 モデルを登録するときのデータセットの参照については、[Model](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py) クラスのリファレンスを参照してください。
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>ML ライフサイクルでのイベントに関する通知、自動化、アラートを行う
@@ -184,7 +186,7 @@ Azure ML では、Azure EventGrid に重要なイベントが発行され、ML �
 - 新しいモデルの出力を古いモデルのものと比較する
 - 定義済みの条件を使用して、古いモデルを置き換えるかどうかを選択する 
 
-上記の手順のテーマは、再トレーニングはアドホックではなく自動化する必要があるということです。 [Azure Machine Learning パイプライン](concept-ml-pipelines.md)に関する記事では、データの準備、トレーニング、検証、およびデプロイに関連するワークフローを作成するための適切な答えが示されています。 パイプラインと Azure Machine Learning デザイナーが再トレーニング シナリオにどのように適しているかを確認するには、「[Azure Machine Learning デザイナーを使用してモデルを再トレーニングする (プレビュー)](how-to-retrain-designer.md)」を参照してください。 
+上記の手順のテーマは、再トレーニングはアドホックではなく自動化する必要があるということです。 [Azure Machine Learning パイプライン](concept-ml-pipelines.md)に関する記事では、データの準備、トレーニング、検証、およびデプロイに関連するワークフローを作成するための適切な答えが示されています。 パイプラインと Azure Machine Learning デザイナーが再トレーニング シナリオにどのように適しているかを確認するには、「[Azure Machine Learning デザイナーを使用してモデルを再トレーニングする](how-to-retrain-designer.md)」を参照してください。 
 
 ## <a name="automate-the-ml-lifecycle"></a>ML ライフサイクルを自動化する 
 

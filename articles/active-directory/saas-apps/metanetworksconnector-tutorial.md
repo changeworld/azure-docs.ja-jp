@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 71aaaeec174611a86b037b693187cc4f49fe1a0c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b14a75dba2860c9dee58e40673d3299fdde277e7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528893"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516870"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>チュートリアル: Azure Active Directory と Meta Networks Connector の統合
 
@@ -27,7 +27,7 @@ Meta Networks Connector と Azure AD の統合には、次の利点がありま�
 * ユーザーが自分の Azure AD アカウントで自動的に Meta Networks Connector にサインイン (シングル サインオン) できるように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,9 +41,9 @@ Meta Networks Connector と Azure AD の統合を構成するには、次のも�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Meta Networks Connector では、**SP** と **IDP** によって開始される SSO がサポートされます
+* Meta Networks Connector では、 **SP** と **IDP** によって開始される SSO がサポートされます
  
-* Meta Networks Connector では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Meta Networks Connector では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-meta-networks-connector-from-the-gallery"></a>ギャラリーからの Meta Networks Connector の追加
 
@@ -63,13 +63,13 @@ Azure AD への Meta Networks Connector の統合を構成するには、ギャ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Meta Networks Connector**」と入力して、結果パネルから **Meta Networks Connector** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Meta Networks Connector** 」と入力して、結果パネルから **Meta Networks Connector** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果一覧の Meta Networks Connector](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Meta Networks Connector で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Meta Networks Connector で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンが機能するには、Azure AD ユーザーと Meta Networks Connector の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 Meta Networks Connector で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -101,7 +101,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Meta Networks Connector のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata` の形式で URL を入力します。
 
@@ -109,7 +109,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Meta Networks Connector のドメインと URL] のシングル サインオン情報](common/both-advanced-urls.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/both-advanced-urls.png)
 
     a. **[サインオン URL]** ボックスに、`https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login` という形式で URL を入力します。
 
@@ -120,7 +120,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 
 6. Meta Networks Connector アプリケーションでは、特定の形式の SAML アサーションが求められます。そのため、カスタム属性マッピングを SAML トークン属性構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes]\(ユーザー属性\) を示しています。](common/edit-attribute.png)
     
 7. その他に、Meta Networks Connector アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
     
@@ -134,9 +134,9 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![image](common/new-save-attribute.png)
+    ![[新しい要求の追加] オプションが備わっている [ユーザー要求] のスクリーンショット。](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![スクリーンショットは、説明されている値を入力できる [ユーザー要求の管理] ダイアログ ボックスを示しています。](common/new-attribute-details.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -150,7 +150,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 
     g. **[保存]** をクリックします。
 
-8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -173,19 +173,19 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
     
 2. **[管理者]** に移動して **[設定]** を選択します。
     
-    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure3.png)
+    ![[Administration]\(管理\) メニューの [Settings]\(設定\) が選択されているスクリーンショット。](./media/metanetworksconnector-tutorial/configure3.png)
     
 3. **[Log Internet Traffic]\(インターネット トラフィックのログ記録\)** と **[Force VPN MFA]\(VPN MFA の強制\)** がオフに設定されていることを確認します。
     
-    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure1.png)
+    ![これらの設定がオフにされているスクリーンショット。](./media/metanetworksconnector-tutorial/configure1.png)
     
 4. **[管理者]** に移動して **[SAML]** を選択します。
     
-    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure4.png)
+    ![[Administration]\(管理\) メニューの [SAML] が選択されているスクリーンショット。](./media/metanetworksconnector-tutorial/configure4.png)
     
 5. **[DETAILS]\(詳細\)** タブで次の手順を実行します。
     
-    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure2.png)
+    ![説明されている値を入力できる [DETAILS]\(詳細\) ページを示すスクリーンショット。](./media/metanetworksconnector-tutorial/configure2.png)
     
     a. **[SSO URL]** の値をコピーし、 **[Meta Networks Connector ドメインと URL]** セクションの **[サインイン URL]** テキスト ボックスに貼り付けます。
     
@@ -197,7 +197,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
     
 6. **[GENERAL]\(全般\)** タブで、次の手順を実行します。
 
-    ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure5.png)
+    ![説明されている値を入力できる [GENERAL]\(全般\) ページを示すスクリーンショット。](./media/metanetworksconnector-tutorial/configure5.png)
 
     a. **[Identity Provider Single Sign-On URL]\(ID プロバイダーのシングル サインオン URL\)** に、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
@@ -223,9 +223,9 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -269,13 +269,12 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Meta Networks Connector] タイルをクリックすると、SSO を設定した Meta Networks Connector に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Meta Networks Connector] タイルをクリックすると、SSO を設定した Meta Networks Connector に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: f752604b86634948954dd670d0b7f4edb5b3e2be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e18267d5a810826e41e05eb3dde3cd82a8eb9197
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517877"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065322"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway のバックエンドの正常性および診断ログ
 
@@ -41,10 +41,10 @@ Application Gateway は、ポータル、PowerShell、およびコマンド ラ�
 
 ポータルでは、バックエンドの正常性が自動的に提供されます。 既存の Application Gateway で、 **[監視]**  >  **[バックエンド正常性]** を選択します。
 
-バックエンド プール内の各メンバーはこのページに表示されます (NIC、IP、FQDN のいずれであっても)。 バックエンド プール名、ポート、バックエンドの HTTP 設定名、および正常性の状態が表示されます。 正常性の状態を表す有効値は、**正常**、**異常**、および**不明**です。
+バックエンド プール内の各メンバーはこのページに表示されます (NIC、IP、FQDN のいずれであっても)。 バックエンド プール名、ポート、バックエンドの HTTP 設定名、および正常性の状態が表示されます。 正常性の状態を表す有効値は、**正常**、**異常**、および **不明** です。
 
 > [!NOTE]
-> バックエンドの正常性の状態が**不明**と表示される場合、バックエンドへのアクセスが、NSG のルール、ユーザー定義ルート (UDR)、または仮想ネットワーク内のカスタム DNS によってブロックされていないことを確認します。
+> バックエンドの正常性の状態が **不明** と表示される場合、バックエンドへのアクセスが、NSG のルール、ユーザー定義ルート (UDR)、または仮想ネットワーク内のカスタム DNS によってブロックされていないことを確認します。
 
 ![バックエンドの正常性][10]
 
@@ -95,7 +95,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 Azure の各種ログを使用して、アプリケーション ゲートウェイの管理とトラブルシューティングを行うことができます。 一部のログにはポータルからアクセスできます。 どのログも Azure Blob Storage から抽出し、[Azure Monitor ログ](../azure-monitor/insights/azure-networking-analytics.md)、Excel、Power BI などのさまざまなツールで表示できます。 各種ログの詳細については、以下の一覧を参照してください。
 
-* **アクティビティ ログ**:[Azure アクティビティ ログ](../monitoring-and-diagnostics/insights-debugging-with-events.md) (以前の操作ログと監査ログ) を使用すると、Azure サブスクリプションに送信されるすべての操作とその操作の状態を表示できます。 アクティビティ ログ エントリは既定で収集され、Azure Portal で表示できます。
+* **アクティビティ ログ**:[Azure アクティビティ ログ](../azure-resource-manager/management/view-activity-logs.md) (以前の操作ログと監査ログ) を使用すると、Azure サブスクリプションに送信されるすべての操作とその操作の状態を表示できます。 アクティビティ ログ エントリは既定で収集され、Azure Portal で表示できます。
 * **アクセス ログ**:このログを使用して Application Gateway のアクセス パターンを表示し、重要な情報を分析できます。 これには、呼び出し元の IP、要求された URL、応答の待機時間、リターン コード、入出力バイトが含まれます。アクセス ログは 60 秒ごとに収集されます。 このログには、Application Gateway のインスタンスごとに 1 つのレコードが含まれます。 Application Gateway のインスタンスは、instanceId プロパティで識別されます。
 * **パフォーマンス ログ**:このログを使用すると、Application Gateway のインスタンスの実行状況を確認できます。 このログでは、インスタンスごとのパフォーマンス情報 (処理された要求の総数、スループット (バイト単位)、失敗した要求の数、正常および異常なバックエンド インスタンスの数など) が取得されます。 パフォーマンス ログは 60 秒ごとに収集されます。 パフォーマンス ログは v1 SKU でのみ使用できます。 v2 SKU の場合は、パフォーマンス データに[メトリック](application-gateway-metrics.md)を使用します。
 * **ファイアウォール ログ**:このログを使用すると、Web アプリケーション ファイアウォールが構成された Application Gateway の、検出モードまたは防止モードでログに記録された要求を表示することができます。 ファイアウォール ログは 60 秒ごとに収集されます。 
@@ -152,7 +152,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 
 ### <a name="activity-log"></a>アクティビティ ログ
 
-アクティビティ ログは、既定では Azure によって生成されます。 ログは、Azure のイベント ログ ストアに 90 日間保存されます。 これらのログの詳細については、「[イベントとアクティビティ ログの表示](../monitoring-and-diagnostics/insights-debugging-with-events.md)」を参照してください。
+アクティビティ ログは、既定では Azure によって生成されます。 ログは、Azure のイベント ログ ストアに 90 日間保存されます。 これらのログの詳細については、「[イベントとアクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md)」を参照してください。
 
 ### <a name="access-log"></a>アクセス ログ
 
@@ -208,7 +208,6 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 |---------|---------|
 |instanceId     | 要求を処理した Application Gateway のインスタンス。        |
 |clientIP     | 要求の送信元 IP。        |
-|clientPort     | 要求の送信元ポート。       |
 |httpMethod     | 要求で使用される HTTP メソッド。       |
 |requestUri     | 受信した要求の URI。        |
 |UserAgent     | HTTP 要求ヘッダーからのユーザー エージェント。        |
@@ -216,14 +215,14 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 |httpVersion     | 要求の HTTP バージョン。        |
 |receivedBytes     | 受信したパケットのサイズ (バイト単位)。        |
 |sentBytes| 送信したパケットのサイズ (バイト単位)。|
-|timeTaken| 要求が処理され、その応答が送信されるためにかかる時間の長さ (**秒**単位)。 これは、Application Gateway がHTTP 要求の最初のバイトを受信してから、応答の送信操作が完了するまでの間隔として計算されます。 通常、timeTaken フィールドには、要求パケットと応答パケットがネットワーク経由で移動する時間が含まれています。 |
+|timeTaken| 要求が処理され、その応答が送信されるためにかかる時間の長さ (**秒** 単位)。 これは、Application Gateway がHTTP 要求の最初のバイトを受信してから、応答の送信操作が完了するまでの間隔として計算されます。 通常、timeTaken フィールドには、要求パケットと応答パケットがネットワーク経由で移動する時間が含まれています。 |
 |sslEnabled| バックエンド プールへの通信に TLS を使用するかどうか。 有効な値は on と off です。|
 |sslCipher| TLS 通信に使用されている暗号スイート (TLS が有効な場合)。|
 |sslProtocol| 使用されている SSL または TLS プロトコル (TLS が有効な場合)。|
 |serverRouted| アプリケーション ゲートウェイから要求がルーティングされる先のバックエンド サーバー。|
 |serverStatus| バックエンド サーバーの HTTP 状態コード。|
 |serverResponseLatency| バックエンド サーバーからの応答の待機時間。|
-|host| 要求のホスト ヘッダーに表示されているアドレス。 書き換えられた場合、このフィールドには更新されたホスト名が含まれます|
+|host| 要求のホスト ヘッダーに表示されているアドレス。 ヘッダーの書き換えによって書き換えられた場合、このフィールドには更新されたホスト名が含まれます|
 |originalRequestUriWithArgs| このフィールドには元の要求 URL が含まれています |
 |requestUri| このフィールドには、Application Gateway での書き換え操作後の URL が含まれています |
 |originalHost| このフィールドには、元の要求ホスト名が含まれています
@@ -236,7 +235,6 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
     "properties": {
         "instanceId": "appgw_1",
         "clientIP": "191.96.249.97",
-        "clientPort": 46886,
         "httpMethod": "GET",
         "requestUri": "/phpmyadmin/scripts/setup.php",
         "userAgent": "-",
@@ -353,7 +351,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 次のいずれかの方法を使用して、アクティビティ ログのデータを表示および分析できます。
 
 * **Azure Tools**:Azure PowerShell、Azure CLI、Azure REST API、または Azure portal を使用して、アクティビティ ログから情報を取得します。 それぞれの方法の詳細な手順については、「[リソース マネージャーの監査操作](../azure-resource-manager/management/view-activity-logs.md)」を参照してください。
-* **Power BI**: [Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。 [Power BI テンプレート アプリ](https://docs.microsoft.com/power-bi/service-template-apps-overview)を使用して、データを分析できます。
+* **Power BI**: [Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。 [Power BI テンプレート アプリ](/power-bi/service-template-apps-overview)を使用して、データを分析できます。
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>アクセス ログ、パフォーマンス ログ、ファイアウォール ログの表示と分析
 

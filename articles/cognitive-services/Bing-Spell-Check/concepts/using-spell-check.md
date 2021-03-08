@@ -1,7 +1,7 @@
 ---
 title: Bing Spell Check API の使用
 titleSuffix: Azure Cognitive Services
-description: Bing Spell Check のモードや設定など、この API に関連した情報を取り上げます。
+description: Bing Spell Check のモードや設定など、この API に関連する情報について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,19 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: c5c9ad8be8bd4cd834b01a0c67e0bbc81b8cdd4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2031c31c6ea083452bbdbb95be74adf29be1f858
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "68881881"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349318"
 ---
 # <a name="using-the-bing-spell-check-api"></a>Bing Spell Check API の使用
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 この記事では、Bing Spell Check API を使用して、コンテキストに応じた文法とスペルのチェックを実行する方法について説明します。 ほとんどのスペルチェック機能はディクショナリベースのルール セットに依存しますが、Bing のスペルチェック機能は、機械学習と統計的機械翻訳を活用することでコンテキストに応じた正確な修正を実現しています。 
 
@@ -44,14 +49,14 @@ API は、2 つの校正モード (`Proof` と `Spell`) をサポートします
 
 ## <a name="market-setting"></a>市場の設定
 
-要求には、`mkt` クエリ パラメーターで[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes)を指定する必要があります。 指定しなかった場合は、要求の IP アドレスに基づく既定の市場が使用されます。
+要求には、`mkt` クエリ パラメーターで[市場コード](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes)を指定する必要があります。 指定しなかった場合は、要求の IP アドレスに基づく既定の市場が使用されます。
 
 
 ## <a name="http-post-and-get-support"></a>HTTP POST と HTTP GET のサポート
 
 この API は、HTTP POST と HTTP GET のどちらもサポートします。 どちらを使用するかは、校正する予定のテキストの長さによって決まります。 文字列が常に 1,500 文字未満の場合は、GET を使用します。 最大 10,000 文字の文字列をサポートする場合は、POST を使用します。 テキスト文字列には、任意の有効な UTF-8 文字を含めることができます。
 
-次の例は、テキスト文字列のスペルと文法のチェックを要求する POST 要求を示しています。 この例には、すべてを網羅するために [mode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#mode) クエリ パラメーターが含まれています (`mode` の既定値は Proof であるため、除外される可能性があります)。 [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) クエリ パラメーターには、校正対象の文字列が含まれます。
+次の例は、テキスト文字列のスペルと文法のチェックを要求する POST 要求を示しています。 この例には、すべてを網羅するために [mode](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#mode) クエリ パラメーターが含まれています (`mode` の既定値は Proof であるため、除外される可能性があります)。 [text](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) クエリ パラメーターには、校正対象の文字列が含まれます。
   
 ```  
 POST https://api.cognitive.microsoft.com/bing/v7.0/spellcheck?mode=proof&mkt=en-us HTTP/1.1  
@@ -68,7 +73,7 @@ text=when+its+your+turn+turn,+john,+come+runing
 
 HTTP GET を使用する場合は、URL のクエリ文字列に `text` クエリ パラメーターを含めます。
   
-前述の要求への応答は次のようになります。 応答には、[SpellCheck](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#spellcheck) オブジェクトが含まれます。 
+前述の要求への応答は次のようになります。 応答には、[SpellCheck](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#spellcheck) オブジェクトが含まれます。 
   
 ```json
 {  
@@ -112,7 +117,7 @@ HTTP GET を使用する場合は、URL のクエリ文字列に `text` クエ�
 }  
 ```  
   
-API が [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) 文字列内で検出したスペルと文法のエラーが、[flaggedTokens](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#flaggedtokens) フィールドに一覧表示されます。 `token` フィールドには、置換される単語が含まれます。 `offset` フィールドの 0 から始まるオフセットを使用して、`text` 文字列内のトークンを検出します。 その後、その場所にある単語を`suggestion` フィールド内の単語に置き換えます。 
+API が [text](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) 文字列内で検出したスペルと文法のエラーが、[flaggedTokens](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#flaggedtokens) フィールドに一覧表示されます。 `token` フィールドには、置換される単語が含まれます。 `offset` フィールドの 0 から始まるオフセットを使用して、`text` 文字列内のトークンを検出します。 その後、その場所にある単語を`suggestion` フィールド内の単語に置き換えます。 
 
 `type` フィールドが RepeatedToken の場合でも、トークンを `suggestion` に置き換えますが、おそらく末尾のスペースを削除する必要があります。
 
@@ -123,4 +128,4 @@ API が [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/
 ## <a name="next-steps"></a>次のステップ
 
 - [Bing Spell Check API とは](../overview.md)
-- [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Bing Spell Check API v7 リファレンス](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

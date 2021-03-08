@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 3fc6971c66d06ae9f25584f5be28b051075bfa49
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: afb63b76666f47217f9c19376d81aa4ed73991bf
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88921972"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572563"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR Service の内部
 
@@ -42,7 +42,7 @@ SignalR Service を使用すると、アプリケーション サーバーは永
 - ASP.NET Core SignalR の場合、Azure SignalR Service SDK により、SignalR Service への WebSocket 接続がハブあたり 5 個開かれます。 
 - ASP.NET SignalR の場合、Azure SignalR Service SDK により、SignalR Service への WebSocket 接続がハブあたり 5 個と、WebSocket 接続がアプリケーションあたり 1 個開かれます。
 
-5 個の WebSocket 接続は既定値です。[構成](https://github.com/Azure/azure-signalr/blob/dev/docs/use-signalr-service.md#connectioncount)内で変更できます。
+5 個の WebSocket 接続は既定値です。[構成](https://github.com/Azure/azure-signalr/blob/dev/docs/run-asp-net-core.md#connectioncount)内で変更できます。
 
 クライアントとの間のメッセージは、これらの接続に多重化されます。
 

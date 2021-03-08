@@ -6,21 +6,21 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, deploy
 ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: e4a62b9892af661f74df5b49ff4a451fb673b4e1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d8b1c2a5384e479e39d169d368554f16c300a33e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325765"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954548"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Azure Machine Learning コンピューティング インスタンスへのモデルのデプロイ
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Azure Machine Learning を使用して Azure Machine Learning コンピューティング インスタンス にモデルを Web サービスとしてデプロイする方法を説明します。 次のいずれかの条件に当てはまる場合はコンピューティング インスタンスを使用します。
 
@@ -38,11 +38,12 @@ Azure Machine Learning を使用して Azure Machine Learning コンピューテ
 
 ローカル デプロイを示すノートブックの例がコンピューティング インスタンスに含まれています。 次の手順を使用してノートブックを読み込み、モデルを Web サービスとして VM にデプロイします。
 
-1. [Azure Machine Learning Studio](https://ml.azure.com) から、Azure Machine Learning コンピューティング インスタンスを選択します。
+1. [Azure Machine Learning スタジオ](https://ml.azure.com)で、[ノートブック] を選択し、[サンプル ノートブック] の下にある [how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb] を選択します。 このノートブックをユーザー フォルダーに複製します。
 
-1. `samples-*` サブディレクトリを開き、次に `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb` を開きます。 開いたら、ノートブックを実行します。
+1. 手順 1 で複製したノートブックを見つけて、このノートブックを実行するコンピューティング インスタンスを選択または作成します。
 
     ![ノートブックで実行されているローカル サービスのスクリーンショット](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
+
 
 1. ノートブックには、サービスが実行されている URL とポートが表示されます。 たとえば、「 `https://localhost:6789` 」のように入力します。 また、`print('Local service port: {}'.format(local_service.port))` を含むセルを実行して、ポートを表示することもできます。
 
@@ -63,7 +64,7 @@ Azure Machine Learning を使用して Azure Machine Learning コンピューテ
 > [!NOTE]
 > コンピューティング インスタンスでのデプロイに対して認証を行う場合、認証は Azure Active Directory を使用して行われます。 コード例の `interactive_auth.get_authentication_header()` を呼び出すと、AAD を使用してあなたが認証され、コンピューティング インスタンスでのサービスに対する認証に使用できるヘッダーが返されます。 詳細については、「[Azure Machine Learning のリソースとワークフローの認証を設定する](how-to-setup-authentication.md#interactive-authentication)」を参照してください。
 >
-> Azure Kubernetes Service または Azure Container Instances でのデプロイに対して認証を行う場合は、別の認証方法が使用されます。 詳細については、「[Azure Machine Learning のリソースとワークフローの認証を設定する](how-to-setup-authentication.md#web-service-authentication)」を参照してください。
+> Azure Kubernetes Service または Azure Container Instances でのデプロイに対して認証を行う場合は、別の認証方法が使用されます。 詳細については、「[Web サービスとしてデプロイされた Azure Machine モデルの認証を構成する](how-to-authenticate-web-service.md)」を参照してください。
 
 ```python
 import requests

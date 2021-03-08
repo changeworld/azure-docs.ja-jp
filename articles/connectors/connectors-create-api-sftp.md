@@ -1,21 +1,22 @@
 ---
-title: SFTP アカウントに接続する
-description: Azure Logic Apps を使用して SSH 経由で SFTP サーバーのファイルを監視、作成、管理、送信、および受信するタスクおよびプロセスを自動化する
+title: SFTP アカウントに接続する (非推奨)
+description: Azure Logic Apps を使用して、SFTP サーバーのファイルの監視、作成、管理、受信を行うタスクとプロセスを自動化します
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: divswa, klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ROBOTS: NOINDEX
+ms.openlocfilehash: 70fb956af7ff45c7b54f04d7ed441ec39f9d80a5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74789275"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673811"
 ---
-# <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う
+# <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>Azure Logic Apps で SFTP ファイルの監視、作成、および管理を行う
 
 > [!IMPORTANT]
 > SFTP コネクタは非推奨となっているため、[SFTP-SSH コネクタ](../connectors/connectors-sftp-ssh.md)を使用してください。 Logic App Designer では、SFTP トリガーおよびアクションを選択できなくなりました。
@@ -31,7 +32,7 @@ SFTP サーバー上のイベントを監視し、出力を他のアクション
 
 ## <a name="limits"></a>制限
 
-SFTP コネクタで処理されるのは "*50 MB 以下*" のファイルのみであり、[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)はサポートされません。 それを超えるファイルについては、[SFTP-SSH コネクタ](../connectors/connectors-sftp-ssh.md)を使用してください。 SFTP コネクタと SFTP-SSH コネクタの違いについては、SFTP-SSH に関する記事の「[SFTP-SSH と SFTP を比較する](../connectors/connectors-sftp-ssh.md#comparison)」で確認してください。
+SFTP コネクタで処理されるのは " *50 MB 以下* " のファイルのみであり、 [メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)はサポートされません。 それを超えるファイルについては、[SFTP-SSH コネクタ](../connectors/connectors-sftp-ssh.md)を使用してください。 SFTP コネクタと SFTP-SSH コネクタの違いについては、SFTP-SSH に関する記事の「[SFTP-SSH と SFTP を比較する](../connectors/connectors-sftp-ssh.md#comparison)」で確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,12 +45,12 @@ SFTP コネクタで処理されるのは "*50 MB 以下*" のファイルのみ
   > SFTP コネクタは、次の秘密キーの形式をサポートしています: OpenSSH、ssh.com、および PuTTY。
   >
   > ロジック アプリを作成している場合は、必要な SFTP トリガーまたはアクションを追加した後、SFTP サーバーの接続情報を指定する必要があります。 
-  > SSH 秘密キーを使おうとしている場合は、SSH 秘密キー ファイルからキーを***コピー***し、そのキーを接続の詳細に***貼り付ける***ようにしてください。***キーは手動で入力または編集しないでください***。そのようにすると、接続が失敗することがあります。 
+  > SSH 秘密キーを使おうとしている場合は、SSH 秘密キー ファイルからキーを* **コピー** _し、そのキーを接続の詳細に _*_貼り付ける_*_ ようにしてください。 _*_キーは手動で入力または編集しないでください_*_ 。そのようにすると、接続が失敗することがあります。 
   > 詳細については、この記事で後述する手順を参照してください。
 
-* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
+[ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
-* SFTP アカウントにアクセスするロジック アプリ。 SFTP トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 SFTP アクションを使用するには、**繰り返し**トリガーなど、別のトリガーでロジック アプリを開始します。
+* SFTP アカウントにアクセスするロジック アプリ。 SFTP トリガーで開始するには、[空のロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 SFTP アクションを使用するには、 **繰り返し** トリガーなど、別のトリガーでロジック アプリを開始します。
 
 ## <a name="how-sftp-triggers-work"></a>SFTP トリガーの動作
 
@@ -92,9 +93,9 @@ SFTP トリガーは、SFTP ファイル システムをポーリングし、前
 
    1. **[編集]**  >  **[コピー]** を選択します。
 
-   1. 追加した SFTP トリガーまたはアクションで、コピーした*完全な*キーを **SSH 秘密キー** プロパティ (これは、複数行をサポートします) に貼り付けます。 キーは***貼り付けるようにしてください***。 ***キーを手動で入力または編集しないでください***。
+   1. 追加した SFTP トリガーまたはアクションで、コピーした *完全な* キーを **SSH 秘密キー** プロパティ (これは、複数行をサポートします) に貼り付けます。キーは **_貼り付けるようにしてください_* _。 _*_キーを手動で入力または編集しないでください_*_ 。
 
-1. 接続の詳細の入力を完了したら、 **[作成]** を選択します。
+1. 接続の詳細の入力を完了したら、_*[作成]** を選択します。
 
 1. 選択したトリガーまたはアクションのために必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
 
@@ -106,7 +107,7 @@ SFTP トリガーは、SFTP ファイル システムをポーリングし、前
 
 このトリガーは、SFTP サーバーでファイルが追加または変更されたときにロジック アプリ ワークフローを開始します。 たとえば、ファイルの内容をチェックし、内容が指定された条件を満たすかどうかに基づいてその内容を取得する条件を追加できます。 その後、ファイルの内容を取得し、その内容を SFTP サーバーのフォルダーに格納するアクションを追加できます。
 
-**企業での使用例**: このトリガーを使用して、SFTP フォルダーに顧客からの注文を表す新しいファイルがあるかどうかを監視できます。 その後、さらに処理するために注文の内容を取得し、その注文を注文データベース内に格納できるように、**ファイルの内容を取得する**などの SFTP アクションを使用できます。
+**企業での使用例** : このトリガーを使用して、SFTP フォルダーに顧客からの注文を表す新しいファイルがあるかどうかを監視できます。 その後、さらに処理するために注文の内容を取得し、その注文を注文データベース内に格納できるように、 **ファイルの内容を取得する** などの SFTP アクションを使用できます。
 
 <a name="get-content"></a>
 
@@ -116,7 +117,7 @@ SFTP トリガーは、SFTP ファイル システムをポーリングし、前
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/sftpconnector/)を参照してください。
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](../data-factory/connector-sftp.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

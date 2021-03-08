@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 0daed8e9bba247ae3d4e320e4a02cc2b1b26dbec
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 92333857177d33307d6997bfcbdf79787d3ab127
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136697"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90895946"
 ---
 # <a name="determining-application-type"></a>アプリケーションの種類の判断
 

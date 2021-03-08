@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 6be397631621c727bb8979df2ee8eec3aca43096
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: a668024db126c82f96756555aba513b77f7d7366
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799368"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422962"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell Azure Functions をローカル環境でデバッグする
 
@@ -38,7 +38,7 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-この関数アプリは、[PowerShell のクイックスタート](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)を完了したときに作成されるものと似ています。
+この関数アプリは、[PowerShell のクイックスタート](./create-first-function-vs-code-powershell.md)を完了したときに作成されるものと似ています。
 
 `run.ps1` の関数のコードは、次のようなスクリプトです。
 
@@ -66,6 +66,9 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 
 どのような PowerShell 関数でも、デバッグするには、デバッガーをアタッチするために停止する必要があります。 `Wait-Debugger` コマンドレットは実行を停止して、デバッガーを待機します。
 
+>[!NOTE]
+>PowerShell 7 を使用するとき、コードに `Wait-Debugger` 呼び出しを追加する必要はありません。
+
 開発者が行う必要があるのは、次のように、`if` ステートメントのすぐ上に `Wait-Debugger` コマンドレットの呼び出しを追加することだけです。
 
 ```powershell
@@ -92,10 +95,10 @@ if($name) {
 Visual Studio Code で PowerShell 関数をデバッグするには、以下がインストール済みである必要があります。
 
 * [Visual Studio Code 用 PowerShell 拡張機能](/powershell/scripting/components/vscode/using-vscode)
-* [Visual Studio Code 用 Azure Functions 拡張機能](functions-create-first-function-vs-code.md)
+* [Visual Studio Code 用 Azure Functions 拡張機能](./create-first-function-cli-powershell.md)
 * [PowerShell Core 6.2 以降](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-これらの依存関係をインストールした後、既存の PowerShell 関数プロジェクトを読み込むか、[Azure で初めての PowerShell 関数を作成します](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)。
+これらの依存関係をインストールした後、既存の PowerShell 関数プロジェクトを読み込むか、[Azure で初めての PowerShell 関数を作成します](./create-first-function-vs-code-powershell.md)。
 
 >[!NOTE]
 > プロジェクトに必要な構成ファイルがない場合は、追加を求めるメッセージが表示されます。

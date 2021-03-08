@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 57b9d46918414cef9e8cbcffb941b98c98f985ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42c79526288fb7e05959ac60cddc6f468656ffd4
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240343"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972545"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>組み込みのダイレクト メソッドを使用して edgeAgent と通信する
 
@@ -69,13 +69,14 @@ Azure portal で、メソッド名 `RestartModule` と次の JSON ペイロー�
 
 ![Azure portal でダイレクト メソッド 'RestartModule' を呼び出す](./media/how-to-edgeagent-direct-method/restartmodule-direct-method.png)
 
-## <a name="experimental-methods"></a>実験的なメソッド
+## <a name="diagnostic-direct-methods"></a>診断ダイレクト メソッド
 
-テスト用の実験的な機能として、新しいダイレクト メソッドのオプションを利用できます。これには以下が含まれます。
+* [GetModuleLogs](how-to-retrieve-iot-edge-logs.md#retrieve-module-logs):ダイレクト メソッドの応答でモジュール ログをインラインで取得します。
+* [UploadModuleLogs](how-to-retrieve-iot-edge-logs.md#upload-module-logs):モジュール ログを取得し、Azure Blob Storage にアップロードします。
+* [UploadSupportBundle](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics):サポート バンドルを使用してモジュール ログを取得し、zip ファイルを Azure Blob Storage にアップロードします。
+* [GetTaskStatus](how-to-retrieve-iot-edge-logs.md#get-upload-request-status):ログのアップロードまたはサポート バンドルの要求の状態を確認します。
 
-* [UploadLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md):モジュール ログを取得し、Azure Blob Storage にアップロードします。
-* [GetTaskStatus](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#gettaskstatus):ログのアップロード要求の状態を確認します。
-* [GetLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#getlogs):ダイレクト メソッドの応答でモジュール ログをインラインで取得します。
+これらの診断ダイレクト メソッドは、1.0.10 リリース以降で利用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

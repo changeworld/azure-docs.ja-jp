@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: c260643d7d553e407d0758f286aac76c91ae08d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 403576454615effeb53651b51679681422b08e9e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137690"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90890357"
 ---
 # <a name="neural-network-regression-module"></a>ニューラル ネットワーク回帰モジュール
 
@@ -24,7 +24,7 @@ ms.locfileid: "82137690"
   
 ## <a name="module-overview"></a>モジュールの概要  
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 カスタマイズ可能なニューラル ネットワーク アルゴリズムを使用して回帰モデルを作成するには、このモジュールを使用します。
   

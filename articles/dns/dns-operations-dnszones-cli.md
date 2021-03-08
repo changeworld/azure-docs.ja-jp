@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ff1abd48282a4ec9278d7182fea286178b5bd3ca
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 469fdbced4601c6ffb4b6aa35e8f943bcb5dde1b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495915"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965784"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Azure CLI を使用して Azure DNS で DNS ゾーンを管理する方法
 
@@ -43,11 +43,11 @@ ms.locfileid: "87495915"
 
 * Azure サブスクリプション。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-* Windows、Linux、または MAC 用の最新バージョンの Azure CLI をインストールしてください。 詳しくは、「 [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-az-cli2)」をご覧ください。
+* Windows、Linux、または MAC 用の最新バージョンの Azure CLI をインストールしてください。 詳しくは、「 [Azure CLI のインストール](/cli/azure/install-az-cli2)」をご覧ください。
 
 ### <a name="sign-in-to-your-azure-account"></a>Azure アカウントへのサインイン
 
-コンソール ウィンドウを開き、資格情報を使用して認証を行います。 詳細については、「[Azure CLI から Azure へのログイン](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)」をご覧ください。
+コンソール ウィンドウを開き、資格情報を使用して認証を行います。 詳細については、「[Azure CLI から Azure へのログイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)」をご覧ください。
 
 ```
 az login
@@ -193,7 +193,6 @@ az network dns zone delete --resource-group myresourcegroup --name contoso.com
 
 ## <a name="next-steps"></a>次のステップ
 
-DNS ゾーンでレコード セットとレコードを管理する方法については[こちら](dns-getstarted-create-recordset-cli.md)をご覧ください。
+DNS ゾーンでレコード セットとレコードを管理する方法については[こちら](./dns-getstarted-cli.md)をご覧ください。
 
 Azure DNS にドメインを委任する方法については[こちら](dns-domain-delegation.md)をご覧ください。
-

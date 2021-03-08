@@ -4,14 +4,14 @@ description: MetaMask を使用して Azure Blockchain Service ネットワー�
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: abb2479b81d4811b311d27fb0be9900f2827e939
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 4a45e02a861ff20a4dc774668a4e008f9b42aeea
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920573"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530439"
 ---
-# <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>クイック スタート:MetaMask を使用してスマート コントラクトを接続およびデプロイする
+# <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>MetaMask を使用してスマート コントラクトを接続およびデプロイする
 
 このクイックスタートでは、MetaMask を使用して Azure Blockchain Service ネットワークに接続し、Remix を使用してスマート コントラクトをデプロイします。 Metamask は、Ether ウォレットを管理し、スマート コントラクト アクションを実行するブラウザー拡張機能です。
 
@@ -19,7 +19,7 @@ ms.locfileid: "85920573"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[Quickstart: Azure portal を使用したブロックチェーン メンバーの作成](create-member.md)に関するページと、「[クイック スタート: Azure CLI を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する](create-member-cli.md)」を完了していること
+* Azure portal を使用したブロックチェーン メンバーの作成[と「](create-member.md)クイックスタート: {}Azure CLI を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する[」を完了していること
 * [MetaMask ブラウザー拡張機能](https://metamask.io)をインストールする
 * MetaMask [ウォレット](https://metamask.zendesk.com/hc/en-us/articles/360015488971-New-to-MetaMask-Learn-How-to-Setup-MetaMask-the-First-Time)を生成する
 
@@ -89,22 +89,22 @@ Remix はブラウザーベースの Solidity 開発環境です。 MetaMask と
     この **simple コントラクト**では、**balance** という状態変数を宣言します。 2 つの関数が定義されています。 **add** 関数によって **balance** に数値が追加されます。 **get** 関数は **balance** の値を返します。
 1. コントラクトをコンパイルするには、まず Solidity コンパイラ ウィンドウを選択し、次に **[Compile simple.sol]\(simple.sol をコンパイルする\)** を選択します。
 
-    ![コンパイル](./media/connect-metamask/compile.png)
+    ![画面キャプチャには、コンパイルされているコントラクトが示されています。](./media/connect-metamask/compile.png)
 
-1. **[Deploy & Run]\(展開して実行\)** ウィンドウを選択し、 **[Environment]\(環境\)** を **[Injected Web3]\(挿入された Web3\)** に設定して、MetaMask 経由でブロックチェーン メンバーに接続します。
+1. **[Deploy & Run]\(展開して実行\)** ウィンドウを選択し、**[Environment]\(環境\)** を **[Injected Web3]\(挿入された Web3\)** に設定して、MetaMask 経由でブロックチェーン メンバーに接続します。
 
     ![[Run]\(実行\) タブ](./media/connect-metamask/injected-web3.png)
 
-1. **simple** コントラクト、 **[デプロイ]** の順に選択します。
+1. **simple** コントラクト、**[デプロイ]** の順に選択します。
 
-    ![配置](./media/connect-metamask/deploy.png)
+    ![画面キャプチャには、コントラクトが選択され、[デプロイ] が選択された、トランザクションのデプロイと実行が表示されています。](./media/connect-metamask/deploy.png)
 
 
 1. MetaMask 通知により、資金不足でトランザクションを実行できないことが警告されます。
 
     パブリック ブロックチェーン ネットワークの場合、トランザクション コストを支払うには Ether が必要です。 これはコンソーシアム内のプライベート ネットワークなので、ガス料金をゼロに設定できます。
 
-1.  **[Gas Fee]\(ガス料金\) > [Edit]\(編集\) > [Advanced]\(詳細\)** の順に選択し、 **[Gas Price]\(ガス料金\)** を 0 に設定します。
+1.  **[Gas Fee]\(ガス料金\) > [Edit]\(編集\) > [Advanced]\(詳細\)** の順に選択し、**[Gas Price]\(ガス料金\)** を 0 に設定します。
 
     ![ガス料金](./media/connect-metamask/gas-price.png)
 
@@ -117,12 +117,12 @@ Remix はブラウザーベースの Solidity 開発環境です。 MetaMask と
 
     2 つのアクション **add** および **get** が、コントラクトに定義されている関数にマップされます。
 
-1. ブロックチェーンに対して **add** トランザクションを実行するには、追加する数値を入力し、 **[add]** を選択します。 Remix からガスの推定失敗メッセージ "You are sending the transaction to a private blockchain that does not require gas." (ガスを必要としないプライベート ブロックチェーンにトランザクションを送信しようとしています。) が表示される場合があります。 **[Send Transaction]\(トランザクションの送信\)** を選択して、トランザクションを強制的に実行します。
+1. ブロックチェーンに対して **add** トランザクションを実行するには、追加する数値を入力し、**[add]** を選択します。 Remix からガスの推定失敗メッセージ "You are sending the transaction to a private blockchain that does not require gas." (ガスを必要としないプライベート ブロックチェーンにトランザクションを送信しようとしています。) が表示される場合があります。 **[Send Transaction]\(トランザクションの送信\)** を選択して、トランザクションを強制的に実行します。
 1. コントラクトをデプロイしたときと同様に、MetaMask 通知により、資金不足でトランザクションを実行できないことが警告されます。
 
     これはコンソーシアム内のプライベート ネットワークなので、ガス料金をゼロに設定できます。
 
-1. **[Gas Fee]\(ガス料金\) > [Edit]\(編集\) > [Advanced]\(詳細\)** の順に選択し、 **[Gas Price]\(ガスの価格\)** を 0 に設定して、 **[Save]\(保存\)** を選択します。
+1. **[Gas Fee]\(ガス料金\) > [Edit]\(編集\) > [Advanced]\(詳細\)** の順に選択し、**[Gas Price]\(ガスの価格\)** を 0 に設定して、**[Save]\(保存\)** を選択します。
 1. **[Confirm]\(確認\)** を選択して、ブロックチェーンにトランザクションを送信します。
 1. **[get]** アクションを選択します。 これは、クエリ ノード データの呼び出しです。 トランザクションは必要ありません。
 
@@ -132,7 +132,7 @@ Remix のデバッグ ウィンドウに、ブロックチェーンに対する�
 
 **simple** コントラクトの作成、**simple.add** のトランザクション、**simple.get** の呼び出しを確認できます。
 
-MetaMask のトランザクション履歴を確認するには、MetaMask ブラウザー拡張機能を開いて、 **[History]\(履歴\)** セクションで、デプロイされたコントラクトとトランザクションのログを調べます。
+MetaMask のトランザクション履歴を確認するには、MetaMask ブラウザー拡張機能を開いて、**[History]\(履歴\)** セクションで、デプロイされたコントラクトとトランザクションのログを調べます。
 
 ## <a name="next-steps"></a>次のステップ
 

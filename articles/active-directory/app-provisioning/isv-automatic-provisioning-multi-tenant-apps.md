@@ -3,7 +3,7 @@ title: マルチテナント アプリケーションで自動ユーザー プ�
 description: 自動プロビジョニングを有効にするための独立系ソフトウェア ベンダー向けのガイド
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 7ffdef43aa0fdcaab9e8ceae519cef9dfe5cdf6e
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 7bd0fc634109beb6cc674d89f56666e7035d33ef
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235640"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255697"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>マルチテナント アプリケーションで自動ユーザー プロビジョニングを有効にする
 
@@ -64,7 +64,7 @@ Azure AD には、アプリケーションで自動ユーザー プロビジョ�
 |---|---|---|---|
 | Azure AD でのユーザーおよびグループの管理| √| √| ユーザーのみ |
 | オンプレミスの Active Directory から同期されるユーザーおよびグループを管理する| √*| √*| ユーザーのみ* |
-| O365 データ (Teams、SharePoint、電子メール、カレンダー、ドキュメントなど) に Access をプロビジョニングしているときに、ユーザーおよびグループ以外のデータにアクセスする| X+| √| X |
+| Microsoft 365 データ (Teams、SharePoint、電子メール、カレンダー、ドキュメントなど) に Access をプロビジョニングしているときに、ユーザーおよびグループ以外のデータにアクセスする| X+| √| X |
 | ビジネス ルールに基づいてユーザーの作成、読み取り、更新を行う| √| √| √ |
 | ビジネス ルールに基づいてユーザーを削除する| √| √| X |
 | Azure portal からすべてのアプリケーションの自動ユーザー プロビジョニングを管理する| √| X| √ |
@@ -89,9 +89,9 @@ Azure AD プロビジョニング サービスでの SCIM の使用方法につ�
 
 ## <a name="microsoft-graph-for-provisioning"></a>プロビジョニングのための Microsoft Graph
 
-プロビジョニングに Microsoft Graph を使用すると、Graph で使用可能なすべてのリッチ ユーザー データにアクセスできます。 ユーザーとグループの詳細情報に加え、ユーザーのロール、マネージャーと直属の部下、所有するデバイスと登録されたデバイス、および [Microsoft Graph](/graph/api/overview?view=graph-rest-1.0) で利用可能なその他の数百のデータなどの追加情報も取得できます。 
+プロビジョニングに Microsoft Graph を使用すると、Graph で使用可能なすべてのリッチ ユーザー データにアクセスできます。 ユーザーとグループの詳細情報に加え、ユーザーのロール、マネージャーと直属の部下、所有するデバイスと登録されたデバイス、および [Microsoft Graph](/graph/api/overview) で利用可能なその他の数百のデータなどの追加情報も取得できます。 
 
-1500 万を超える組織、および Fortune 500 企業の 90% が、Office 365、Microsoft Azure、Enterprise Mobility Suite、Microsoft 365 などの Microsoft クラウド サービスをサブスクライブしながら Azure AD を使用しています。 Microsoft Graph を使用して、従業員のオンボーディング (と退職)、プロファイルの保守などの管理ワークフローとアプリを統合できます。 
+1,500 万を超える組織、および Fortune 500 に選ばれた企業の 90% が、Microsoft 365、Microsoft Azure、Enterprise Mobility Suite などの Microsoft クラウド サービスをサブスクライブしながら Azure AD を使用しています。 Microsoft Graph を使用して、従業員のオンボーディング (と退職)、プロファイルの保守などの管理ワークフローとアプリを統合できます。 
 
 プロビジョニングでの Microsoft Graph の使用の詳細については、次をご覧ください。
 
@@ -111,7 +111,7 @@ SAML JIT は、SAML トークン内の要求情報を使用して、アプリケ
 
 ## <a name="next-steps"></a>次の手順
 
-* [アプリケーションのシングル サインオンを有効にする](../manage-apps/isv-sso-content.md)
+* [アプリケーションのシングル サインオンを有効にする](../develop/v2-howto-app-gallery-listing.md)
 
 * [アプリケーションの一覧を提出し](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)、Microsoft と連携して Microsoft のサイトでドキュメントを作成します。
 

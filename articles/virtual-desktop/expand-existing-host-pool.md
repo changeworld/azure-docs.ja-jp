@@ -3,15 +3,15 @@ title: 新しいセッション ホストで既存のホスト プールを拡�
 description: Windows Virtual Desktop で新しいセッション ホストを使用して既存のホスト プールを拡張する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 339fe25a5a75ca8bc5cc0af7c4d96651e90c7eb6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b65560a3b10d04887040c4da1e137912810b3095
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002451"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91929593"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>新しいセッション ホストで既存のホスト プールを拡張する
 
@@ -56,7 +56,7 @@ ms.locfileid: "88002451"
 8. ホスト プールに追加するセッション ホストの数を **[Number of VMs]\(VM の数\)** に入力します。 たとえば、ホスト プールを 5 つのホストで拡張する場合は、「**5**」を入力します。
 
     >[!NOTE]
-    >ホスト プール内のすべての VM を同じサイズにすることが重要であるため、VM のサイズまたはイメージを編集することはできません。
+    >VM のイメージとプレフィックスを編集することはできますが、同じホスト プールに異なるイメージを持つ VM がある場合は、それらを編集することはお勧めしません。 影響を受けたホスト プールから古いイメージを使用している VM を削除する計画がある場合にのみ、イメージとプレフィックスを編集してください。
 
 9. **[virtual network information]\(仮想ネットワークの情報\)** で、仮想マシンを参加させる仮想ネットワークとサブネットを選択します。 既存のマシンで現在使用しているのと同じ仮想ネットワークを選択することも、手順 7 で選択したリージョンに適した別の仮想ネットワークを選択することもできます。
 

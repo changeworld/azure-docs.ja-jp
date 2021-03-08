@@ -16,12 +16,12 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.custom: devx-track-java
-ms.openlocfilehash: 3957d7501634be01a978481787885ae13ad3273b
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 57daf9170a7f97c6c141532dafe759cde9d1c77b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225956"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519066"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Azure デプロイで Java から SendGrid を使用して電子メールを送信する方法
 次の例では、Azure でホストされる Web ページから SendGrid を使用して電子メールを送信する方法を示しています。 次のスクリーンショットに示すように、作成されたアプリケーションはメールに関する値の入力をユーザーに求めます。
@@ -43,7 +43,7 @@ ms.locfileid: "88225956"
 さらに、 [Microsoft Azure 用の Hello World アプリケーションを Eclipse で作成する方法に関するトピック](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app?view=azure-java-stable)にある情報に精通すること、または、Eclipse を使用していない場合は、Microsoft Azure 上の Java アプリケーションをホストする別の手法に精通することを強くお勧めします。
 
 ## <a name="create-a-web-form-for-sending-email"></a>電子メール送信用の Web フォームの作成
-次のコードでは、電子メール送信用のユーザー データを取得する Web フォームの作成方法を示しています。 このコンテンツでは、JSP ファイルに **emailform.jsp**という名前を付けています。
+次のコードでは、電子メール送信用のユーザー データを取得する Web フォームの作成方法を示しています。 このコンテンツでは、JSP ファイルに **emailform.jsp** という名前を付けています。
 
 ```html
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -101,7 +101,7 @@ ms.locfileid: "88225956"
 ```
 
 ## <a name="create-the-code-to-send-the-email"></a>電子メール送信用のコードの作成
-次のコードは、emailform.jsp によって表示されるフォームへの入力が完了すると呼び出され、電子メール メッセージを作成して送信します。 このコンテンツでは、JSP ファイルに **sendemail.jsp**という名前を付けています。
+次のコードは、emailform.jsp によって表示されるフォームへの入力が完了すると呼び出され、電子メール メッセージを作成して送信します。 このコンテンツでは、JSP ファイルに **sendemail.jsp** という名前を付けています。
 
 ```java
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -219,7 +219,7 @@ ms.locfileid: "88225956"
 
 Azure 上で Java から SendGrid を使用する方法を示すために、このコードが用意されています。 運用環境で Azure に展開する前に、エラー処理やその他の機能をさらに追加することができます。 次に例を示します。 
 
-* Web フォームを使用する代わりに、Azure ストレージ BLOB または SQL データベースを使用して、電子メール アドレスと電子メール メッセージを保存するようにします。 Java で Azure ストレージ BLOB を使用する方法の詳細については、 [Java から BLOB ストレージ サービスを使用する方法に関するページ](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/)を参照してください。 Java で SQL データベースを使用する方法の詳細については、[Java での SQL Database の使用に関するページ](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-java)を参照してください。
+* Web フォームを使用する代わりに、Azure ストレージ BLOB または SQL データベースを使用して、電子メール アドレスと電子メール メッセージを保存するようにします。 Java で Azure ストレージ BLOB を使用する方法の詳細については、 [Java から BLOB ストレージ サービスを使用する方法に関するページ](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/)を参照してください。 Java で SQL データベースを使用する方法の詳細については、[Java での SQL Database の使用に関するページ](./azure-sql/database/connect-query-java.md)を参照してください。
 * Java での SendGrid の使用については、「 [Java から SendGrid を使用して電子メールを送信する方法](store-sendgrid-java-how-to-send-email.md)」を参照してください。
 
 [emailform]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaEmailform.jpg

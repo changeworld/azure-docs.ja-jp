@@ -3,12 +3,12 @@ title: Azure Backup 診断イベントのデータ モデル
 description: このデータ モデルは、Log Analytics (LA) に診断イベントを送信するリソース固有モードを参照しています。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 8cc671152485bc2781a80f96e48b81263dea221b
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 52c5c0694ed59aea20453ae7a2bd3209d76df433
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892526"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173981"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure Backup 診断イベントのデータ モデル
 
@@ -217,6 +217,29 @@ ms.locfileid: "88892526"
 | VaultUniqueId                  | Text          | ストレージ エントリに関連するコンテナーの識別に使用される一意の ID |
 | VolumeFriendlyName             | Text          | ストレージ ボリュームのフレンドリ名                          |
 | SourceSystem                   | Text          | 現在のデータのソース システム (Azure)                    |
+
+## <a name="valid-operation-names-for-each-table"></a>各テーブルの有効な操作名
+
+上記のテーブルの各レコードには、関連付けられている**操作名**があります。 操作名は、レコードの種類を表します (および、そのレコードに対して設定されるテーブル内のフィールドを示します)。 各テーブル (カテゴリ) は、1 つまたは複数の個別の操作名をサポートします。 次に、上記の各テーブルでサポートされている操作名の概要を示します。
+
+| **テーブル名/カテゴリ**                   | **サポートされる操作名** | **説明**              |
+| ------------------------------------------- | ------------------------------|----------------------------- |
+| CoreAzureBackup | BackupItem | ID、名前、種類など、特定のバックアップ項目のすべての詳細を含むレコードを表します。 |
+| CoreAzureBackup | BackupItemAssociation | バックアップ項目とそれに関連付けられている保護されたコンテナー (該当する場合) との間のマッピングを表します。 |
+| CoreAzureBackup | BackupItemFrontEndSizeConsumption | バックアップ項目とそのフロント エンド サイズとの間のマッピングを表します。 |
+| CoreAzureBackup | ProtectedContainer | ID、名前、種類など、特定の保護されたコンテナーのすべての詳細を含むレコードを表します。 |
+| CoreAzureBackup | ProtectedContainerAssociation | 保護されたコンテナーとそのバックアップに使用されるコンテナーとの間のマッピングを表します。 |
+| CoreAzureBackup | コンテナー | 指定されたコンテナーのすべての詳細を含むレコードを表します。たとえば、 ID、名前、タグ、場所などです。 |
+| CoreAzureBackup | RecoveryPoint | 特定のバックアップ項目の最古および最新の回復ポイントを含むレコードを表します。 |
+| AddonAzureBackupJobs | ジョブ |  指定されたジョブのすべての詳細を含むレコードを表します。 たとえば、ジョブ操作、開始時刻、状態などです。 |
+| AddonAzureBackupAlerts | アラート: | 指定されたアラートのすべての詳細を含むレコードを表します。 たとえば、アラートの作成時刻、重要度、状態などです。  |
+| AddonAzureBackupStorage | ストレージ | 指定されたストレージ エンティティのすべての詳細を含むレコードを表します。 たとえば、ストレージ名、種類などです。 |
+| AddonAzureBackupStorage | StorageAssociation | バックアップ項目と、バックアップ項目によって消費されたクラウド ストレージの合計との間のマッピングを表します。 |
+| AddonAzureBackupProtectedInstance | ProtectedInstance | 各コンテナーまたはバックアップ項目の保護されたインスタンス数を含むレコードを表します。 Azure VM バックアップの場合、保護されたインスタンス数はバックアップ項目レベルで利用できます。他のワークロードの場合は、保護されたコンテナー レベルで使用できます。 |
+| AddonAzureBackupPolicy | ポリシー |  バックアップと保持ポリシーのすべての詳細を含むレコードを表します。 たとえば、ID、名前、保持設定などです。 |
+| AddonAzureBackupPolicy | PolicyAssociation | バックアップ項目と、それに適用されるバックアップ ポリシーとの間のマッピングを表します。 |   
+
+場合によっては、分析に必要なすべてのフィールドを取得するために、異なるテーブル間、および同じテーブル (操作名によって区別される) の一部であるレコードの異なるセット間の結合を実行する必要があります。 開始するには、[サンプル クエリ](./backup-azure-monitoring-use-azuremonitor.md#sample-kusto-queries)を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -12,14 +12,19 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 79e5b5e0562c86668c276a94ab28835c13433eb8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c806780664576c424665d1d58c69d164f8504d3f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327244"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341922"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-api-and-java"></a>クイック スタート:Bing Image Search API と Java を使用してイメージを検索する 
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関するページを参照してください。
 
 このクイックスタートを使用して、Azure Cognitive Services の Bing Image Search API に検索要求を送信する方法について説明します。 この Java アプリケーションは、検索クエリを API に送信し、その結果から最初の画像の URL を表示します。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
@@ -27,7 +32,7 @@ ms.locfileid: "87327244"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java Development Kit (JDK)](https://aka.ms/azure-jdks)
+* [Java Development Kit (JDK)](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 * [Gson ライブラリ](https://github.com/google/gson)
 
@@ -161,8 +166,8 @@ Bing Image Search API からの応答は、JSON として返されます。 こ�
 
 ## <a name="see-also"></a>関連項目
 
-* [Bing Image Search API とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Bing Image Search API とは](../overview.md)  
 * [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
 * [Bing Search API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
-* [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Azure Cognitive Services のドキュメント](../../index.yml)
+* [Bing Image Search API リファレンス](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

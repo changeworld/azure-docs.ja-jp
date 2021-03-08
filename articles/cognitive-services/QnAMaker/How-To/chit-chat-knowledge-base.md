@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0aca072a9e659d242dec9dd45a12f9568d419599
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1208d95a282ca6e236d9d6be8013f51dead90d13
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124427"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376656"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>ナレッジ ベースにおしゃべりを追加する
 
@@ -60,7 +60,15 @@ ms.locfileid: "87124427"
 ## <a name="add-chit-chat-to-an-existing-kb"></a>既存の KB におしゃべりを追加する
 KB を選択し、 **[設定]** ページに移動します。 適切な **.tsv** 形式のすべてのおしゃべりデータセットへのリンクがあります。 目的のパーソナリティをダウンロードして、ファイル ソースとしてアップロードします。 ファイルをダウンロードおよびアップロードするときは、形式またはメタデータを編集しないでください。
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+
 ![既存の KB におしゃべりを追加する](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+
+![既存の KB プレビュー リリースにおしゃべりを追加する](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset-v2.png)
+
+---
 
 ## <a name="edit-your-chit-chat-questions-and-answers"></a>おしゃべりの質問や返答を編集する
 KB を編集するときは、選択したパーソナリティに基づいて、おしゃべりの新しいソースが表示されます。 ここで、他のソースと同様に、変更した質問を追加したり返答を編集したりできます。
@@ -72,7 +80,7 @@ KB を編集するときは、選択したパーソナリティに基づいて�
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>追加のおしゃべりの質問と返答を追加する
 定義済みのデータセットに含まれていない、新しいおしゃべり QnA ペアを追加することができます。 既におしゃべりセットで対象となっている QnA ペアは、複製しないようにしてください。 追加した新しいおしゃべり QnA は、 **[編集]** ソースに追加されます。 これがおしゃべりであることをランカーが確実に理解できるようにするには、次の図に示すように、メタデータ キー/値ペアである "Editorial: chitchat" を追加します。
 
-![![Add chit-chat QnAs]\(../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
+:::image type="content" source="../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png" alt-text="おしゃべり QnAs を追加する" lightbox="../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png":::
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>既存の KB からおしゃべりを削除する
 KB を選択し、 **[設定]** ページに移動します。 選択したパーソナリティ名を持つ特定のおしゃべりソースが、ファイルとして表示されます。 ソース ファイルとしてこれを削除することができます。

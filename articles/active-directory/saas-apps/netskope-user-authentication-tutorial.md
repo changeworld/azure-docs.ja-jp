@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 4a2bd9b7240033df47f57dc3432ce50819d8754b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1ae9e39f5a23725b17451d7144c8304194d2a1d0
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544028"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514369"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-user-authentication"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Netskope User Authentication の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88544028"
 * ユーザーが自分の Azure AD アカウントで Netskope User Authentication に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Netskope User Authentication では、**SP および IDP によって開始される SSO** がサポートされます
+* Netskope User Authentication では、 **SP および IDP によって開始される SSO** がサポートされます
 
 ## <a name="adding-netskope-user-authentication-from-the-gallery"></a>ギャラリーからの Netskope User Authentication の追加
 
@@ -49,7 +49,7 @@ Azure AD への Netskope User Authentication の統合を構成するには、�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Netskope User Authentication**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Netskope User Authentication** 」と入力します。
 1. 結果のパネルから **[Netskope User Authentication]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -92,7 +92,7 @@ Netskope User Authentication で Azure AD SSO を構成してテストするに�
     > [!NOTE]
     > [サインオン URL] は実際の値ではありません。 実際のサインオン URL で [サインオン URL] の値を更新してください。 サインオン URL 値を取得するには、[Netskope User Authentication クライアント サポート チーム](mailto:support@netskope.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -136,15 +136,15 @@ Netskope User Authentication で Azure AD SSO を構成してテストするに�
 
 1. **[Active Platform]\(アクティブなプラットフォーム\)** タブをクリックします。
 
-    ![Netskope User Authentication の構成](./media/netskope-user-authentication-tutorial/user1.png)
+    ![[設定] で [アクティブなプラットフォーム] が選択されていることを示すスクリーンショット。](./media/netskope-user-authentication-tutorial/user1.png)
 
 1. **[FORWARD PROXY]\(転送プロキシ\)** までスクロールして **[SAML]** を選択します。
 
-    ![Netskope User Authentication の構成](./media/netskope-user-authentication-tutorial/config-saml.png)
+    ![[アクティブなプラットフォーム] で [SAML] が選択されていることを示すスクリーンショット。](./media/netskope-user-authentication-tutorial/config-saml.png)
 
 1. **[SAML Settings]** ページで、次の手順を実行します。
 
-    ![Netskope User Authentication の構成](./media/netskope-user-authentication-tutorial/configure-copyurls.png)
+    ![[SAML 設定] を示すスクリーンショット。ここでは、説明されている値を入力できます。](./media/netskope-user-authentication-tutorial/configure-copyurls.png)
 
     a. **[SAML Entity ID]\(SAML エンティティ ID\)** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションにある **[識別子]** ボックスに貼り付けます。
 
@@ -152,15 +152,15 @@ Netskope User Authentication で Azure AD SSO を構成してテストするに�
 
 1. **[ADD ACCOUNT]\(アカウントの追加\)** をクリックします。
 
-    ![Netskope User Authentication の構成](./media/netskope-user-authentication-tutorial/config-addaccount.png)
+    ![[アカウントの追加] を示すスクリーンショット。[SAML] ウィンドウが選択されています。](./media/netskope-user-authentication-tutorial/config-addaccount.png)
 
 1. **[Add SAML Account]\(SAML アカウントの追加\)** ページで、次の手順を実行します。
 
-    ![Netskope User Authentication の構成](./media/netskope-user-authentication-tutorial/config-settings1.png)
+    ![[SAML アカウントの追加] を示すスクリーンショット。ここでは、説明されている値を入力できます。](./media/netskope-user-authentication-tutorial/config-settings1.png)
 
     a. **[NAME]\(名前\)** ボックスに、Azure AD のような名前を入力します。
 
-    b. **[IDP URL]** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[IDP URL]** テキスト ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     c. **[IDP ENTITY ID]\(IDP エンティティ ID\)** テキスト ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
@@ -174,36 +174,36 @@ Netskope User Authentication で Azure AD SSO を構成してテストするに�
 
 1. 左側のナビゲーション ペインの **[Settings]\(設定\)** タブをクリックします。
 
-    ![Netskope User Authentication ユーザーの作成](./media/netskope-user-authentication-tutorial/config-settings.png)
+    ![選択した [設定] を示すスクリーンショット。](./media/netskope-user-authentication-tutorial/config-settings.png)
 
 1. **[Active Platform]\(アクティブなプラットフォーム\)** タブをクリックします。
 
-    ![Netskope User Authentication ユーザーの作成](./media/netskope-user-authentication-tutorial/user1.png)
+    ![[設定] で [アクティブなプラットフォーム] が選択されていることを示すスクリーンショット。](./media/netskope-user-authentication-tutorial/user1.png)
 
 1. **[Users]** タブをクリックします。
 
-    ![Netskope User Authentication ユーザーの作成](./media/netskope-user-authentication-tutorial/add-user.png)
+    ![[アクティブなプラットフォーム] で [ユーザー] が選択されていることを示すスクリーンショット。](./media/netskope-user-authentication-tutorial/add-user.png)
 
 1. **[ADD USERS]\(ユーザーの追加\)** をクリックします。
 
-    ![Netskope User Authentication ユーザーの作成](./media/netskope-user-authentication-tutorial/user-add.png)
+    ![[ユーザー] ダイアログ ボックスを示すスクリーンショット。ここでは、[ユーザーの追加] を選択できます。](./media/netskope-user-authentication-tutorial/user-add.png)
 
 1. 追加するユーザーのメール アドレスを入力し、 **[ADD]\(追加\)** をクリックします。
 
-    ![Netskope User Authentication ユーザーの作成](./media/netskope-user-authentication-tutorial/add-user-popup.png)
+    ![[ユーザーの追加] を示すスクリーンショット。ここでは、ユーザーの一覧を入力できます。](./media/netskope-user-authentication-tutorial/add-user-popup.png)
 
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Netskope User Authentication] タイルをクリックすると、SSO を設定した Netskope User Authentication に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Netskope User Authentication] タイルをクリックすると、SSO を設定した Netskope User Authentication に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Netskope User Authentication を試す](https://aad.portal.azure.com/)

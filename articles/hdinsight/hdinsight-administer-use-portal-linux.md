@@ -1,19 +1,16 @@
 ---
 title: Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する
 description: Azure portal を使用して Azure HDInsight クラスターを作成および管理する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
-ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 5d308bfbe605e5ec3bed3bf5d6506ccafc53836e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598500"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942825"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する
 
@@ -37,7 +34,7 @@ HDInsight 上の 既存の Apache Hadoop クラスター。  「[Azure Portal �
 
 ## <a name="cluster-home-page"></a><a name="homePage"></a> クラスター ホーム ページ
 
-[ **[HDInsight クラスター]** ](#showClusters) ページから、ご自身のクラスター名を選択します。  これにより、次の図のような **[概要]** ビューが開きます。
+[ **[HDInsight クラスター]**](#showClusters) ページから、ご自身のクラスター名を選択します。  これにより、次の図のような **[概要]** ビューが開きます。
 
 ![Azure Portal HDInsight クラスター 基本情報](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png)
 
@@ -58,7 +55,7 @@ HDInsight 上の 既存の Apache Hadoop クラスター。  「[Azure Portal �
     |概要|クラスターの全般的な情報が表示されます。|
     |アクティビティ ログ|アクティビティ ログを表示およびクエリします。|
     |アクセス制御 (IAM)|ロールの割り当てを使用します。  「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。|
-    |Tags|キーと値のペアを設定して、クラウド サービスのカスタム分類を定義できます。 たとえば、 **プロジェクト**という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスに共通の値を使用できます。|
+    |Tags|キーと値のペアを設定して、クラウド サービスのカスタム分類を定義できます。 たとえば、 **プロジェクト** という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスに共通の値を使用できます。|
     |問題の診断と解決|トラブルシューティング情報を表示します。|
     |クイック スタート|HDInsight の操作を開始するために役立つ情報を表示します。|
     |ツール|HDInsight 関連ツールのヘルプ情報です。|
@@ -70,7 +67,7 @@ HDInsight 上の 既存の Apache Hadoop クラスター。  「[Azure Portal �
     |クラスター サイズ|クラスターの worker ノードの数を確認したり、増減したりします。 「[クラスターのスケール](hdinsight-administer-use-portal-linux.md#scale-clusters)」を参照してください。|
     |クォータ制限|サブスクリプションの使用されているコアと使用可能なコアを表示します。|
     |SSH およびクラスターのログイン|Secure Shell (SSH) 接続を使用してクラスターに接続する方法を表示します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。|
-    |Data Lake Storage Gen1|Data Lake Storage Gen1 へのアクセスを構成します。  「[クイック スタート:HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。|
+    |Data Lake Storage Gen1|Data Lake Storage Gen1 へのアクセスを構成します。  「[クイック スタート:HDInsight のクラスターを設定する](./hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。|
     |ストレージ アカウント|ストレージ アカウントとキーを表示します。 ストレージ アカウントは、クラスター作成プロセス中に構成されます。|
     |アプリケーション|HDInsight アプリケーションを追加/削除します。  「[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)」を参照してください。|
     |スクリプト操作|クラスター上の Bash スクリプトを実行します。 「 [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。|
@@ -246,7 +243,7 @@ Azure Resource Manager モードでは、各 HDInsight クラスターは Azure 
 
 ## <a name="find-the-storage-accounts"></a>ストレージ アカウントを検索する
 
-HDInsight クラスターは、Azure Storage アカウントまたは Azure Data Lake Storage のいずれかを使用してデータを格納します。 各 HDInsight クラスターは、1 つの既定のストレージ アカウントと、複数のリンクされたストレージ アカウントを持つことができます。 ストレージ アカウントを一覧表示するには、**クラスター ホーム ページ**の **[設定]** で [[ストレージ アカウント]](#homePage) を選択します。
+HDInsight クラスターは、Azure Storage アカウントまたは Azure Data Lake Storage のいずれかを使用してデータを格納します。 各 HDInsight クラスターは、1 つの既定のストレージ アカウントと、複数のリンクされたストレージ アカウントを持つことができます。 ストレージ アカウントを一覧表示するには、**クラスター ホーム ページ** の **[設定]** で [[ストレージ アカウント]](#homePage) を選択します。
 
 ## <a name="monitor-jobs"></a>ジョブの監視
 

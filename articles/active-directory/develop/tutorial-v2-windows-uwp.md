@@ -1,6 +1,7 @@
 ---
-title: Microsoft ID プラットフォーム UWP の概要 | Azure
-description: ユニバーサル Windows プラットフォーム (UWP) アプリケーションで、Microsoft ID プラットフォーム エンドポイントによるアクセス トークンを必要とする API を呼び出す方法。
+title: チュートリアル:認証に Microsoft ID プラットフォームを使用するユニバーサル Windows プラットフォーム (UWP) アプリを作成する | Azure
+titleSuffix: Microsoft identity platform
+description: このチュートリアルでは、ユーザーのサインインに Microsoft ID プラットフォームを使用し、そのユーザーに代わって Microsoft Graph API を呼び出すためのアクセス トークンを取得する UWP アプリケーションをビルドします。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,26 +12,31 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: acdc23c664f84882916b91b8f8698ee36b1e6cd3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 6383f63d2118d8618f07bf3cb6cd08a0b16140f3
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165551"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102650"
 ---
-# <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>ユニバーサル Windows プラットフォーム アプリケーション (XAML) から Microsoft Graph API を呼び出す
+# <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>チュートリアル:ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 
-> [!div renderon="docs"]
-
-このガイドでは、ネイティブのユニバーサル Windows プラットフォーム (UWP) アプリケーションがアクセス トークンを要求する方法について説明します。 その後、アプリケーションは Microsoft Graph API を呼び出します。 このガイドは、Microsoft ID プラットフォーム エンドポイントのアクセス トークンを必要とする他の API にも適用されます。
+このチュートリアルでは、ユーザーのサインインを処理して Microsoft Graph API を呼び出すためのアクセス トークンを取得するネイティブ ユニバーサル Windows プラットフォーム (UWP) アプリを作成します。 
 
 このガイドの最後に、アプリケーションは個人のアカウントを使用して、保護されている API を呼び出します。 例としては、outlook.com、live.com などがあります。 アプリケーションは、Azure Active Directory (Azure AD) を持つ会社または組織の職場または学校アカウントも呼び出します。
 
->[!NOTE]
-> このガイドでは、ユニバーサル Windows プラットフォーム開発がインストールされた Visual Studio が必要です。 ユニバーサル Windows プラットフォーム アプリを開発するために Visual Studio をダウンロードして構成する手順については、「[準備](/windows/uwp/get-started/get-set-up)」を参照してください。
+このチュートリアルの内容:
 
->[!NOTE]
-> Microsoft ID プラットフォームを初めて使用する場合は、「[クイックスタート: ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す](quickstart-v2-uwp.md)」から始めてください。
+> [!div class="checklist"]
+> * Visual Studio で "*ユニバーサル Windows プラットフォーム (UWP)* " プロジェクトを作成する
+> * Azure portal でアプリケーションを登録する
+> * ユーザーのサインインとサインアウトをサポートするコードを追加する
+> * Microsoft Graph API を呼び出すコードを追加する
+> * アプリケーションをテストする
+
+## <a name="prerequisites"></a>前提条件
+
+* [ユニバーサル Windows プラットフォーム開発](https://visualstudio.microsoft.com/vs/)ワークロードがインストールされた [Visual Studio 2019](/windows/uwp/get-started/get-set-up)
 
 ## <a name="how-this-guide-works"></a>このガイドの利用法
 
@@ -44,7 +50,7 @@ ms.locfileid: "88165551"
 
 |ライブラリ|説明|
 |---|---|
-|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
+|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)| Microsoft Authentication Library|
 |[Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph のクライアント ライブラリ|
 
 ## <a name="set-up-your-project"></a>プロジェクトの設定
@@ -53,8 +59,8 @@ ms.locfileid: "88165551"
 
 このガイドでは、Microsoft Graph API に対してクエリを実行するボタンとサインアウトするボタンを表示するアプリケーションを作成します。また、呼び出しの結果を含むテキスト ボックスも表示します。
 
-> [!NOTE]
-> これを作成する代わりに、このサンプルの Visual Studio プロジェクトをダウンロードすることもできます。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)し、[アプリケーション登録](#register-your-application "アプリケーションの登録手順")の手順までスキップして、実行前にコード サンプルを構成します。
+> [!Tip]
+> このチュートリアルでビルドするプロジェクトの完成バージョンを確認する場合は、[GitHub からダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)できます。
 
 ### <a name="create-your-application"></a>アプリケーションの作成
 
@@ -65,10 +71,10 @@ ms.locfileid: "88165551"
 
    ![最小バージョンとターゲット バージョン](./media/tutorial-v2-windows-uwp/select-uwp-target-minimum.png)
 
-### <a name="add-microsoft-authentication-library-to-your-project"></a>プロジェクトへの Microsoft Authentication Library の追加
+### <a name="add-the-microsoft-authentication-library-to-your-project"></a>プロジェクトへの Microsoft Authentication Library の追加
 
 1. Visual Studio で、 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に選択します。
-1. 以下のコマンドをコピーして、**パッケージ マネージャー コンソール**のウィンドウに貼り付けます。
+1. 以下のコマンドをコピーして、**パッケージ マネージャー コンソール** のウィンドウに貼り付けます。
 
     ```powershell
     Install-Package Microsoft.Identity.Client
@@ -76,7 +82,7 @@ ms.locfileid: "88165551"
     ```
 
    > [!NOTE]
-   > 1 つ目のコマンドでは、[Microsoft Authentication Library(MSAL.NET)](https://aka.ms/msal-net) がインストールされます。 Microsoft ID プラットフォームにより保護された API にアクセスするユーザー トークンは、MSAL.NET によって取得、キャッシュ、更新されます。 2 つ目のコマンドでは、Microsoft Graph に対する要求を認証してサービスを呼び出す [Microsoft Graph .NET クライアント ライブラリ](https://github.com/microsoftgraph/msgraph-sdk-dotnet)がインストールされます。
+   > 1 つ目のコマンドでは、[Microsoft Authentication Library (MSAL.NET)](https://aka.ms/msal-net) がインストールされます。 Microsoft ID プラットフォームにより保護された API にアクセスするユーザー トークンは、MSAL.NET によって取得、キャッシュ、更新されます。 2 つ目のコマンドでは、Microsoft Graph に対する要求を認証してサービスを呼び出す [Microsoft Graph .NET クライアント ライブラリ](https://github.com/microsoftgraph/msgraph-sdk-dotnet)がインストールされます。
 
 ### <a name="create-your-applications-ui"></a>アプリケーションの UI の作成
 
@@ -97,7 +103,7 @@ Visual Studio では、プロジェクト テンプレートの一部として *
 </Grid>
 ```
 
-### <a name="use-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>Microsoft Authentication Library を使用して Microsoft Graph API のトークンを取得する
+### <a name="use-the-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>Microsoft Authentication Library を使用して Microsoft Graph API のトークンを取得する
 
 このセクションでは、Microsoft Authentication Library を使用して Microsoft Graph API のトークンを取得する方法について説明します。 *MainPage.xaml.cs* ファイルに変更を加えます。
 
@@ -115,7 +121,7 @@ Visual Studio では、プロジェクト テンプレートの一部として *
     ```csharp
     public sealed partial class MainPage : Page
     {
-       
+
         //Set the scope for API call to user.read
         private string[] scopes = new string[] { "user.read" };
 
@@ -286,8 +292,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
     }
 ```
 
-> [!NOTE]
-> MSAL.NET では、トークンの取得やアカウントの操作に非同期メソッドを使用しています。 UI スレッドでの UI 操作がサポートされている必要があります。 そのため、`Dispatcher.RunAsync` 呼び出しと、予防的な `ConfigureAwait(false)` 呼び出しが使用されています。
+MSAL.NET では、トークンの取得やアカウントの操作に非同期メソッドを使用しています。 したがって、UI スレッドでの UI 操作をサポートします。 そのため、`Dispatcher.RunAsync` 呼び出しと、予防的な `ConfigureAwait(false)` 呼び出しが使用されています。
 
 #### <a name="more-information-about-signing-out"></a>サインアウトに関する詳細情報<a name="more-information-on-sign-out"></a>
 
@@ -316,7 +321,7 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 
 #### <a name="more-information"></a>詳細情報<a name="more-information-1"></a>
 
-**OpenID 接続**を使用して取得した ID トークンにも、ユーザー関連情報の少量のサブセットが含まれています。 `DisplayBasicTokenInfo` は、トークンに含まれている基本的な情報を表示します。 この情報には、ユーザーの表示名や ID が含まれます。 また、トークンの有効期限やアクセス トークン自体を表す文字列も含まれます。 **[Call Microsoft Graph API]\(Microsoft Graph API の呼び出し\)** ボタンを数回選択すると、その後の要求で同じトークンが再利用されていることが確認できます。 また、Microsoft Authentication Library がトークンの更新時期だと判断したときに、有効期限が延長されることも確認できます。
+**OpenID 接続** を使用して取得した ID トークンにも、ユーザー関連情報の少量のサブセットが含まれています。 `DisplayBasicTokenInfo` は、トークンに含まれている基本的な情報を表示します。 この情報には、ユーザーの表示名や ID が含まれます。 また、トークンの有効期限やアクセス トークン自体を表す文字列も含まれます。 **[Call Microsoft Graph API]\(Microsoft Graph API の呼び出し\)** ボタンを数回選択すると、その後の要求で同じトークンが再利用されていることが確認できます。 また、Microsoft Authentication Library がトークンの更新時期だと判断したときに、有効期限が延長されることも確認できます。
 
 ### <a name="display-message"></a>メッセージの表示
 
@@ -338,24 +343,26 @@ private async Task DisplayMessageAsync(string message)
 
 ## <a name="register-your-application"></a>アプリケーションの登録
 
-ここで、アプリケーションを登録する必要があります。
+次に、アプリケーションを登録します。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
-1. **[Azure Active Directory]**  >  **[アプリの登録]** の順に選択します。
-1. **[新規登録]** を選択します。 アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: *UWP-App-calling-MSGraph*)。
-1. **[サポートされているアカウントの種類]** で、 **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox など)]** を選択します。 次に、 **[登録]** を選択して続行します。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+1. **Azure Active Directory** を検索して選択します。
+1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+1. アプリケーションの **名前** を入力します (例: `UWP-App-calling-MSGraph`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
+1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と、個人用の Microsoft アカウント (Skype、Xbox など)\)** を選択します。 
+1. **[登録]** を選択します。
 1. 概要ページで、 **[アプリケーション (クライアント) ID]** の値を見つけてコピーします。 Visual Studio に戻って *MainPage.xaml.cs* を開き、`ClientId` の値を、この値に置き換えます。
 
 アプリケーションの認証を構成します。
 
-1. [Azure portal](https://portal.azure.com) に戻り、 **[管理]** の下にある **[認証]** を選択します。
-1. **[リダイレクト URI]**  |  **[パブリック クライアント (モバイル、デスクトップ) に推奨されるリダイレクト URI]** セクションで、 https://login.microsoftonline.com/common/oauth2/nativeclient を確認します。
-1. **[保存]** を選択します。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> に戻り、 **[管理]** で **[認証]**  >  **[プラットフォームを追加]** の順に選択し、 **[モバイル アプリケーションとデスクトップ アプリケーション]** を選択します。
+1. **[リダイレクト URI]** セクションで、「`https://login.microsoftonline.com/common/oauth2/nativeclient`」と入力します。
+1. **[構成]** をクリックします。
 
 アプリケーション用に API アクセス許可を構成します。
 
-1. **[管理]** の下にある **[API のアクセス許可]** を選択します。
-1. **[アクセス許可の追加]** を選択したら、 **[Microsoft API]** が選択されていることを確認します。
+1. **[管理]** で、 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。
 1. **[Microsoft Graph]** を選択します。
 1. **[委任されたアクセス許可]** を選択し、*User.Read* を探して、 **[User.Read]** が選択されていることを確認します。
 1. 変更を行った場合は、 **[アクセス許可の追加]** を選択して保存します。
@@ -427,16 +434,15 @@ private async Task DisplayMessageAsync(string message)
             }
            ...
     }
-  
+
     ```
 
-    アプリを実行し、ブレークポイントに到達したら `redirectUri` の値をコピーします。 この値は次のようになります。  
-    `ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/`
+    アプリを実行し、ブレークポイントに到達したら `redirectUri` の値をコピーします。 この値は `ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/` のようになります。
 
-    このコード行は、値を取得するために 1 回だけ実行すればよく、その後は削除してかまいません。 
+    このコード行は、値を取得するために 1 回だけ実行すればよく、その後は削除してかまいません。
 
 3. 返された値を、アプリの登録ポータルの **[認証]** ペインの **[RedirectUri]** に追加します。
-   
+
 ## <a name="test-your-code"></a>コードのテスト
 
 アプリケーションをテストするには、Visual Studio で **F5** キーを押してプロジェクトを実行します。 メイン ウィンドウが表示されます。
@@ -470,8 +476,7 @@ Microsoft Graph API は、ユーザーのプロファイルを読み込むため
 
 アプリケーションのコンテキストでユーザーの予定表にアクセスするには、`Calendars.Read` の委任されたアクセス許可をアプリケーション登録情報に追加します。 次に、`acquireTokenSilent` の呼び出しに `Calendars.Read` スコープを追加します。
 
-> [!NOTE]
-> スコープの数を増やすと、ユーザーは追加の同意を求められることがあります。
+スコープの数を増やすと、ユーザーは追加の同意を求められることがあります。
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -496,3 +501,10 @@ Microsoft Graph API は、ユーザーのプロファイルを読み込むため
 **対処法:** **[Sign in with other options]\(他のオプションでサインイン\)** を選択します。 次に、 **[Sign in with a username and password]\(ユーザー名とパスワードでサインイン\)** を選択します。 **[Provide your password]\(パスワードを指定\)** を選択します。 電話認証プロセスに進みます。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+## <a name="next-steps"></a>次の手順
+
+.NET アプリケーションでの認可と認証に Microsoft Authentication Library (MSAL) を使用する方法を参照してください:
+
+> [!div class="nextstepaction"]
+> [Microsoft Authentication Library (MSAL) の概要](msal-overview.md)

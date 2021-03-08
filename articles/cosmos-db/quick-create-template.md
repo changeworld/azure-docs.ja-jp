@@ -5,19 +5,21 @@ author: SnehaGunda
 ms.author: sngun
 tags: azure-resource-manager
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 249ff87813fe23505a09db020d4c6ad0f272796d
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: b97702bb84eb38d185fe97ffcc596e374f28fbe2
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483297"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339667"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Cosmos DB とコンテナーを作成する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB を使用すると、キーと値のデータベース、ドキュメント データベース、グラフ データベースをすばやく作成し、クエリを実行できます。 このクイックスタートでは、Azure Cosmos データベースを作成してその中にコンテナーを作成する Azure Resource Manager テンプレート (ARM テンプレート) のデプロイ プロセスについて重点的に取り上げます。 その後、そのコンテナーにデータを格納することができます。
+Azure Cosmos DB は、あらゆる規模に対応する、オープン API を備えた Microsoft の高速 NoSQL データベースです。 Azure Cosmos DB を使用すると、キーと値のデータベース、ドキュメント データベース、グラフ データベースをすばやく作成し、クエリを実行できます。 このクイックスタートでは、Azure Cosmos データベースを作成してその中にコンテナーを作成する Azure Resource Manager テンプレート (ARM テンプレート) のデプロイ プロセスについて重点的に取り上げます。 その後、そのコンテナーにデータを格納することができます。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -61,20 +63,20 @@ Azure サブスクリプションまたは Azure Cosmos DB の無料試用版ア
 
     特に明記されていない場合は、既定値を使用して Azure Cosmos リソースを作成してください。
 
-    * **サブスクリプション**: Azure サブスクリプションを選択します。
-    * **リソース グループ**: **[新規作成]** を選択し、リソース グループの一意の名前を入力し、 **[OK]** をクリックします。
-    * **場所**: 場所を選択します。  たとえば **[米国中部]** です。
-    * **アカウント名**: Azure Cosmos アカウントの名前を入力します。 名前はグローバルに一意である必要があります。
-    * **場所**: Azure Cosmos アカウントの作成先となる場所を入力します。 Azure Cosmos アカウントは、リソース グループと同じ場所でかまいません。
-    * **プライマリ リージョン**: Azure Cosmos アカウントのプライマリ レプリカのリージョン。
-    * **セカンダリ リージョン**: Azure Cosmos アカウントのセカンダリ レプリカのリージョン。
-    * **既定の整合性レベル**: Azure Cosmos アカウントの既定の一貫性レベル。
-    * **最大整合性制約プレフィックス**: 整合性制約要求の最大数。 BoundedStaleness の場合に必須。
-    * **最大間隔秒数**: 最大ラグ時間。 BoundedStaleness の場合に必須。
-    * **データベース名**: Azure Cosmos データベースの名前。
-    * **コンテナー名**: Azure Cosmos コンテナーの名前。
-    * **スループット**:コンテナーのスループット。最小スループット値は 400 RU/秒です。
-    * **上記の使用条件に同意する**: 選択。
+    * **サブスクリプション** : Azure サブスクリプションを選択します。
+    * **リソース グループ** : **[新規作成]** を選択し、リソース グループの一意の名前を入力し、 **[OK]** をクリックします。
+    * **場所** : 場所を選択します。  たとえば **[米国中部]** です。
+    * **アカウント名** : Azure Cosmos アカウントの名前を入力します。 名前はグローバルに一意である必要があります。
+    * **場所** : Azure Cosmos アカウントの作成先となる場所を入力します。 Azure Cosmos アカウントは、リソース グループと同じ場所でかまいません。
+    * **プライマリ リージョン** : Azure Cosmos アカウントのプライマリ レプリカのリージョン。
+    * **セカンダリ リージョン** : Azure Cosmos アカウントのセカンダリ レプリカのリージョン。
+    * **既定の整合性レベル** : Azure Cosmos アカウントの既定の一貫性レベル。
+    * **最大整合性制約プレフィックス** : 整合性制約要求の最大数。 BoundedStaleness の場合に必須。
+    * **最大間隔秒数** : 最大ラグ時間。 BoundedStaleness の場合に必須。
+    * **データベース名** : Azure Cosmos データベースの名前。
+    * **コンテナー名** : Azure Cosmos コンテナーの名前。
+    * **スループット** :コンテナーのスループット。最小スループット値は 400 RU/秒です。
+    * **上記の使用条件に同意する** : 選択。
 
 3. **[購入]** を選択します。 Azure Cosmos アカウントが正常にデプロイされると、次の通知が表示されます。
 
@@ -136,4 +138,4 @@ Write-Host "Press [ENTER] to continue..."
 
 - [Azure Cosmos DB の概要](introduction.md)を確認する
 - [Azure Resource Manager](../azure-resource-manager/management/overview.md) の詳細を確認する
-- 他の [Azure Cosmos DB Resource Manager テンプレート](resource-manager-samples.md)を入手する
+- 他の [Azure Cosmos DB Resource Manager テンプレート](./templates-samples-sql.md)を入手する

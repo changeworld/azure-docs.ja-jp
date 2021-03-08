@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 020208a8b67d248c02fc659d4dc48fa22d333839
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5970e82619667a47ba160c84df2cdeb145b0dab8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298822"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966175"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Virtual Array のシステム要件
 
@@ -29,7 +29,7 @@ ms.locfileid: "80298822"
 
 この記事に記載されている StorSimple のシステム要件の情報は、StorSimple Virtual Array にのみ適用されます。
 
-* 8000 シリーズ デバイスについては、「 [StorSimple ソフトウェア、高可用性、ネットワークの要件](storsimple-system-requirements.md)」をご覧ください。
+* 8000 シリーズ デバイスについては、「 [StorSimple ソフトウェア、高可用性、ネットワークの要件](./storsimple-8000-system-requirements.md)」をご覧ください。
 * 7000 シリーズ デバイスについては、「 [StorSimple System Requirements](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements)」をご覧ください。
 
 ## <a name="software-requirements"></a>ソフトウェア要件
@@ -84,12 +84,12 @@ ms.locfileid: "80298822"
 
 
 ### <a name="supported-storage-format"></a>サポートされているストレージ形式
-Azure ブロック BLOB ストレージのみがサポートされています。 ページ BLOB はサポートされていません。 [ブロック BLOB とページ BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)に関する詳細情報。
+Azure ブロック BLOB ストレージのみがサポートされています。 ページ BLOB はサポートされていません。 [ブロック BLOB とページ BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)に関する詳細情報。
 
 ## <a name="networking-requirements"></a>ネットワーク要件
-iSCSI、SMB、クラウド、または管理トラフィックを許可するためにファイアウォールで開く必要があるポートを次の表に示します。 この表では、*イン*または*受信*はデバイスにアクセスするクライアント要求が入ってくる方向を意味します。 *アウト*または*送信*は StorSimple デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します。
+iSCSI、SMB、クラウド、または管理トラフィックを許可するためにファイアウォールで開く必要があるポートを次の表に示します。 この表では、*イン* または *受信* はデバイスにアクセスするクライアント要求が入ってくる方向を意味します。 *アウト* または *送信* は StorSimple デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します。
 
-| **ポート番号<sup>1</sup>** | **インまたはアウト** | **ポート範囲** | **必須** | **メモ** |
+| **ポート番号 <sup>1</sup>** | **インまたはアウト** | **ポート範囲** | **必須** | **メモ** |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP) |アウト |WAN |いいえ |送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。 <br></br>送信 Web プロキシは、ユーザーが構成できます。 |
 | TCP 443 (HTTPS) |アウト |WAN |はい |送信ポートは、クラウドのデータへのアクセスに使用します。 <br></br>送信 Web プロキシは、ユーザーが構成できます。 |

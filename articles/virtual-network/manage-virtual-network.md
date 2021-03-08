@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 5581a4c43f0b78dc8c14c44bfb1ded371a925fd0
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: cc0028a8c7d6d15277c3789118b13b80ed4306ea
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88706032"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596629"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>仮想ネットワークの作成、変更、削除
 
@@ -39,7 +39,7 @@ ms.locfileid: "88706032"
 
 1. **+ リソースの作成** > **ネットワーク** > **仮想ネットワーク** の順に選択します。
 2. 次の設定の値を入力または選択し、 **[作成]** を選択します。
-   - **Name**:この名前は、仮想ネットワークの作成先として選択する[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)内で一意である必要があります。 仮想ネットワークの作成後は、この名前を変更できません。 長く使用する中で、仮想ネットワークを複数作成する可能性があります。 名前付けの推奨事項については、「[名前付け規則](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)」を参照してください。 名前付け規則に従うことで、複数の仮想ネットワークを管理しやすくなります。
+   - **Name**:この名前は、仮想ネットワークの作成先として選択する [リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)内で一意である必要があります。 仮想ネットワークの作成後は、この名前を変更できません。 長く使用する中で、仮想ネットワークを複数作成する可能性があります。 名前付けの推奨事項については、「[名前付け規則](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)」を参照してください。 名前付け規則に従うことで、複数の仮想ネットワークを管理しやすくなります。
    - **[アドレス空間]** : 仮想ネットワークのアドレス空間は、CIDR 表記で指定された、1 つ以上の重複しないアドレス範囲で構成されます。 定義するアドレス範囲は、パブリックとプライベート (RFC 1918 に準拠) のどちらでもかまいません。 パブリックとプライベートのどちらのアドレス範囲を定義する場合でも、そのアドレス範囲に到達できるのは、仮想ネットワーク内から、相互接続された仮想ネットワークから、および仮想ネットワークに接続したオンプレミス ネットワークからだけです。 次のアドレス範囲は追加できません。
      - 224.0.0.0/4 (マルチキャスト)
      - 255.255.255.255/32 (ブロードキャスト)
@@ -56,13 +56,13 @@ ms.locfileid: "88706032"
      - **[サブネット名]** : 仮想ネットワーク内で一意となるサブネット名を使用してください。 サブネットの作成後は、サブネット名を変更できません。 ポータルでは、仮想ネットワークを作成する際にサブネットを 1 つ定義するよう求められますが、仮想ネットワークにサブネットを設定することは必須ではありません。 ポータルでは、仮想ネットワークの作成時に定義できるサブネットは 1 つのみです。 仮想ネットワークを作成した後で、仮想ネットワークにサブネットを追加できます。 仮想ネットワークにサブネットを追加するには、[サブネットの管理](virtual-network-manage-subnet.md)に関するページを参照してください。 Azure CLI または PowerShell を使用して、複数のサブネットを持つ仮想ネットワークを作成できます。
 
        >[!TIP]
-       >管理者が複数のサブネットを作成して、サブネット間でトラフィックのフィルター処理や制御を行うことはよくあります。 サブネットを定義する前に、サブネット間のトラフィックのルーティングやフィルター処理の方法について検討してください。 サブネット間のトラフィックをフィルター処理する方法の詳細については、[ネットワーク セキュリティ グループ](security-overview.md)に関する記事を参照してください。 Azure ではサブネット間のルーティングが自動的に行われますが、Azure の既定のルートをオーバーライドすることもできます。 Azure の既定のサブネット トラフィック ルーティングの詳細については、[ルーティングの概要](virtual-networks-udr-overview.md)に関するページを参照してください。
+       >管理者が複数のサブネットを作成して、サブネット間でトラフィックのフィルター処理や制御を行うことはよくあります。 サブネットを定義する前に、サブネット間のトラフィックのルーティングやフィルター処理の方法について検討してください。 サブネット間のトラフィックをフィルター処理する方法の詳細については、[ネットワーク セキュリティ グループ](./network-security-groups-overview.md)に関する記事を参照してください。 Azure ではサブネット間のルーティングが自動的に行われますが、Azure の既定のルートをオーバーライドすることもできます。 Azure の既定のサブネット トラフィック ルーティングの詳細については、[ルーティングの概要](virtual-networks-udr-overview.md)に関するページを参照してください。
        >
 
      - **[サブネットのアドレス範囲]** : この範囲は、仮想ネットワーク用に入力したアドレス空間内にある必要があります。 指定できる最小範囲は、/29 です。これでサブネットに 8 つの IP アドレスを使用できます。 Azure では、サブネットごとに、最初と最後のアドレスがプロトコルに準拠するために予約されています。 そのほか、3 つのアドレスが Azure サービスの使用のために予約されています。 そのため、/29 のサブネット アドレス範囲が設定された仮想ネットワークで使用できる IP アドレスは 3 つのみです。 仮想ネットワークを VPN ゲートウェイに接続する場合は、ゲートウェイ サブネットを作成する必要があります。 詳細については、[ゲートウェイ サブネットに指定するアドレス範囲の考慮事項](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)に関する記事を参照してください。 特定の条件下でのみ、サブネットの作成後にアドレス範囲を変更できます。 サブネット アドレス範囲を変更する方法については、[サブネットの管理](virtual-network-manage-subnet.md)に関するページを参照してください。
      - **サブスクリプション**:[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)を選択します。 1 つの仮想ネットワークが複数の Azure サブスクリプションにまたがることはできません。 ただし、1 つのサブスクリプションの仮想ネットワークを、[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)を使用して、他のサブスクリプションの仮想ネットワークに接続することはできます。 仮想ネットワークに接続する Azure リソースは、仮想ネットワークと同じサブスクリプションに存在する必要があります。
-     - **[リソース グループ]** :既存の[リソース グループ](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups)を選択するか、新しいものを作成します。 仮想ネットワークに接続する Azure リソースは、仮想ネットワークと同じリソース グループに存在していても別のリソース グループに存在していてもかまいません。
-     - **[場所]** :Azure の[場所](https://azure.microsoft.com/regions/)を選択します。この場所はリージョンとも呼ばれます。 1 つの仮想ネットワークは、Azure の 1 つの場所にのみ存在できます。 ただし、VPN ゲートウェイを使用して、1 つの場所にある仮想ネットワークを別の場所の仮想ネットワークに接続することはできます。 仮想ネットワークに接続する Azure リソースは、仮想ネットワークと同じ場所に存在する必要があります。
+     - **[リソース グループ]** :既存の [リソース グループ](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups)を選択するか、新しいものを作成します。 仮想ネットワークに接続する Azure リソースは、仮想ネットワークと同じリソース グループに存在していても別のリソース グループに存在していてもかまいません。
+     - **[場所]** :Azure の [場所](https://azure.microsoft.com/regions/)を選択します。この場所はリージョンとも呼ばれます。 1 つの仮想ネットワークは、Azure の 1 つの場所にのみ存在できます。 ただし、VPN ゲートウェイを使用して、1 つの場所にある仮想ネットワークを別の場所の仮想ネットワークに接続することはできます。 仮想ネットワークに接続する Azure リソースは、仮想ネットワークと同じ場所に存在する必要があります。
 
 **コマンド**
 
@@ -87,7 +87,7 @@ ms.locfileid: "88706032"
    - **[プロパティ]** :仮想ネットワークのリソース ID や、仮想ネットワークが存在する Azure サブスクリプションなど、仮想ネットワークに関する設定が表示されます。
    - **ダイアグラム**:このダイアグラムには、仮想ネットワークに接続されているすべてのデバイスを視覚的に表現したものが表示されます。 ダイアグラムには、デバイスに関する重要な情報が含まれます。 このビューでダイアグラム内のデバイスを管理するには、デバイスを選択します。
    - **Azure の一般的な設定**:Azure の一般的な設定の詳細については、次の情報を参照してください。
-     - [アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)
+     - [アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)
      - [アクセス制御 (IAM)](../role-based-access-control/overview.md)
      - [タグ](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Locks](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -179,4 +179,4 @@ ms.locfileid: "88706032"
 ## <a name="next-steps"></a>次のステップ
 
 - [PowerShell](powershell-samples.md) または [Azure CLI](cli-samples.md) のサンプル スクリプトを使って、または Azure [Resource Manager テンプレート](template-samples.md)を使って、仮想ネットワークを作成します
-- 仮想ネットワーク用に [Azure Policy 定義](policy-samples.md)を作成して割り当てる
+- 仮想ネットワーク用に [Azure Policy 定義](./policy-reference.md)を作成して割り当てる

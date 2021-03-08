@@ -4,10 +4,10 @@ description: この記事では、ラボ作成者が支援を受けるために�
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 3e04245c3f2d9b0a4f4e98ae21287983cf679ec6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85445051"
 ---
 # <a name="view-support-information-lab-creator-in-azure-lab-services"></a>サポート情報の表示 (Azure Lab Services のラボ作成者)

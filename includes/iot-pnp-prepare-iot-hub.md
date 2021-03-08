@@ -4,13 +4,13 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 03/17/2020
-ms.custom: references_regions
-ms.openlocfilehash: adc621f932462422202d9f16fd539f5ecc7c3d8e
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: ea5d4ef26fb14e22b871bb4bfa1054cb749d38e8
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336900"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673029"
 ---
 ## <a name="prepare-an-iot-hub"></a>IoT ハブを準備する
 
@@ -34,9 +34,6 @@ az group create --name my-pnp-resourcegroup \
 az iot hub create --name <YourIoTHubName> \
     --resource-group my-pnp-resourcegroup --sku F1
 ```
-
-> [!NOTE]
-> 現在、IoT プラグ アンド プレイは、米国中部、北ヨーロッパ、東日本の各リージョンで作成された IoT ハブで利用できます。 IoT プラグ アンド プレイ サポートは、Basic レベルの IoT ハブには含まれていません。
 
 次のコマンドを実行して、ご利用の IoT ハブに新しいデバイス ID を作成します。 `<YourIoTHubName>` と `<YourDeviceID>` のプレースホルダーを、任意の "_IoT ハブ名_" と "_デバイス ID_" に置き換えます。
 

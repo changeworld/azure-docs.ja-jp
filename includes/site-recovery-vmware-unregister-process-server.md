@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 00b0c1b1a40ad16db177916c57dba6e9d5a187a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bff9457220efbb6a6b318550a5b2dd9af4ae230f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181703"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019194"
 ---
 特定の状況に応じた手順に従います。
 
@@ -18,7 +18,7 @@ ms.locfileid: "67181703"
 1. 管理者としてプロセス サーバーにリモート接続を確立します。
 2. **[コントロール パネル]** で、 **[プログラム]、[プログラムのアンインストール]** の順に開きます。
 3. プログラム **Microsoft Azure Site Recovery Mobility Service/マスター ターゲット サーバー** をアンインストールします。
-4. プログラム**Microsoft Azure Site Recovery Configuration/Process Server (Microsoft Azure Site Recovery 構成/プロセス サーバー)** をアンインストールします。
+4. プログラム **Microsoft Azure Site Recovery Configuration/Process Server (Microsoft Azure Site Recovery 構成/プロセス サーバー)** をアンインストールします。
 5. 手順 3 と 4 のプログラムがアンインストールされたら、**Microsoft Azure Site Recovery Configuration/Process Server Dependencies (Microsoft Azure Site Recovery 構成/プロセス サーバーの依存関係)** をアンインストールします。
 
 ### <a name="unregister-a-disconnected-process-server"></a>接続されていないプロセス サーバーの登録を解除する
@@ -35,7 +35,7 @@ ms.locfileid: "67181703"
     - S. No: プロセス サーバーのシリアル番号。
     - IP/Name:プロセス サーバーを実行しているマシンの IP アドレスと名前。
     - Heartbeat:プロセス サーバー マシンからの最後のハートビート。
-    ![登録解除コマンド](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
+    ![プロセス サーバーに関する情報のプレーンテキストによる表示と、上のサーバーから登録解除するものを 1 つ選択してくださいというテキストを示すスクリーンショット。(media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
 
 4. 登録を解除するプロセス サーバーのシリアル番号を指定します。
 5. プロセス サーバーの登録解除により、その詳細のすべてがシステムから削除され、次のメッセージが表示されます。 **<サーバー名 (サーバーの IP アドレス) の登録が正常に解除されました**

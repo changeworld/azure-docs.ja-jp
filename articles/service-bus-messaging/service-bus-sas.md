@@ -2,20 +2,20 @@
 title: Shared Access Signature による Azure Service Bus アクセス制御
 description: Shared Access Signature を使用して Service Bus のアクセスの制御を行う方法と、Azure Service Bus における SAS 承認の詳細について説明します。
 ms.topic: article
-ms.date: 07/30/2020
+ms.date: 01/19/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fb90b2ae290752753b58b5e96c6c8a8b23f4c168
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6bdc167c437a79d609db25a2e3c48b71e0a748b2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012077"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598830"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Shared Access Signature による Service Bus のアクセスの制御
 
-*Shared Access Signatures* (SAS) は Service Bus メッセージングの主要なセキュリティ メカニズムです。 この記事では、SAS とそのしくみ、およびプラットフォームに依存しない方法で SAS を使用する方法について説明します。
+この記事では、*Shared Access Signature* (SAS)、そのしくみ、およびプラットフォームに依存しない方法で共有アクセス署名を使用する方法について説明します。
 
-SAS は、承認規則に基づいて Service Bus へのアクセスを保護します。 これらは、名前空間またはメッセージング エンティティ (リレー、キュー、またはトピック) のいずれかに構成されます。 承認規則は、名前を持ち、特定の権限に関連付けられており、暗号化キーのペアを保持しています。 Service Bus SDK または独自のコードから規則の名前とキーを使って SAS トークンを生成します。 その後、クライアントはトークンを Service Bus に渡して、要求する操作に対する承認を証明することができます。
+SAS は、承認規則に基づいて Service Bus へのアクセスを保護します。 これらは、名前空間またはメッセージング エンティティ (キューまたはトピック) のいずれかに構成されます。 承認規則は、名前を持ち、特定の権限に関連付けられており、暗号化キーのペアを保持しています。 Service Bus SDK または独自のコードから規則の名前とキーを使って SAS トークンを生成します。 その後、クライアントはトークンを Service Bus に渡して、要求する操作に対する承認を証明することができます。
 
 > [!NOTE]
 > Azure Service Bus では、Azure Active Directory (Azure AD) を使用する Service Bus 名前空間とそのエンティティへのアクセスの承認がサポートされます。 Azure AD によって返された OAuth 2.0 トークンを使用するユーザーまたはアプリケーションの承認では、Shared Access Signatures (SAS) よりも優れたセキュリティが提供され、使いやすくなります。 Azure AD を使用すれば、コードにトークンを格納する必要がなく、潜在的なセキュリティ脆弱性のリスクはありません。
@@ -36,12 +36,12 @@ Service Bus での SAS 認証は、アクセス権が関連付けられている
 
 各 Service Bus 名前空間と各 Service Bus エンティティには、規則で構成された共有アクセス承認ポリシーがあります。 名前空間レベルのポリシーは、個々のポリシー構成に関係なく、名前空間内のすべてのエンティティに適用されます。
 
-各承認ポリシー規則について、**名前**、**スコープ**、および**権限**という 3 種類の情報を決定します。 **名前**とは、文字どおり名前を表します。そのスコープ内で一意の名前です。 スコープは簡単です。対象となるリソースの URI です。 Service Bus 名前空間の場合、スコープは、`https://<yournamespace>.servicebus.windows.net/` のような完全修飾ドメイン名 (FQDN) です。
+各承認ポリシー規則について、**名前**、**スコープ**、および **権限** という 3 種類の情報を決定します。 **名前** とは、文字どおり名前を表します。そのスコープ内で一意の名前です。 スコープは簡単です。対象となるリソースの URI です。 Service Bus 名前空間の場合、スコープは、`https://<yournamespace>.servicebus.windows.net/` のような完全修飾ドメイン名 (FQDN) です。
 
 ポリシー規則での権限は、次のものの組み合わせです。
 
 * "送信" - エンティティにメッセージを送信する権限です
-* "リッスン" - リッスン (リレー) または受信 (キュー、サブスクリプション) の権限および関連するすべてのメッセージ処理です
+* "リッスン" - 受信 (キュー、サブスクリプション) および関連するすべてのメッセージ処理の権限を付与します
 * "管理" - エンティティの作成や削除など、名前空間のトポロジを管理する権限です。
 
 "管理" 権限には "送信" 権限と "受信" 権限が含まれます。
@@ -51,6 +51,20 @@ Service Bus での SAS 認証は、アクセス権が関連付けられている
 承認規則には、"*主キー*" と "*セカンダリ キー*" が割り当てられます。 これらは、暗号化された強力なキーです。 これらをなくしたり、外部に漏らしたりしないでください。これらは、常に [Azure portal][Azure portal] から入手可能です。 生成されたキーのいずれかを使用できます。また、いつでも再生成できます。 ポリシーのキーを再生成または変更すると、そのキーに基づいてそれまでに発行されたすべてのトークンが、すぐに無効になります。 ただし、そのようなトークンを基にして作成された進行中の接続は、トークンの有効期限が切れるまで動作し続けます。
 
 Service Bus の名前空間を作成すると、**RootManageSharedAccessKey** という名前のポリシー規則が、その名前空間に対して自動的に作成されます。 このポリシーには、名前空間全体の管理アクセス許可があります。 この規則は管理 **root** アカウントと同じように扱い、アプリケーションでは使わないようにすることをお勧めします。 ポータルの名前空間の **[構成]** タブ、PowerShell または Azure CLI を使って、追加のポリシー規則を作成できます。
+
+## <a name="best-practices-when-using-sas"></a>SAS を使用する際のベスト プラクティス
+アプリケーションで Shared Access Signature を使用する場合は、次の 2 つの潜在的なリスクに注意する必要があります。
+
+- SAS が漏えいすると、それを取得した人はだれでも使用できるため、Service Bus リソースが侵害される可能性があります。
+- クライアント アプリケーションに提供された SAS が期限切れになり、アプリケーションでサービスから新しい SAS を取得できない場合は、アプリケーションの機能が損なわれる可能性があります。
+
+Shared Access Signature の使用に関する次の推奨事項に従うと、これらのリスクの軽減に役立ちます。
+
+- **必要に応じて、クライアントで SAS が自動的に更新されるようにする**:クライアントでは、SAS を提供するサービスを使用できない場合に再試行する時間を考慮して、有効期限までに余裕を持って SAS を更新する必要があります。 SAS が、有効期間内の完了が予想される短時間で数の少ない即時操作に使用される予定の場合は、SAS が更新されることが想定されないため、不要である可能性があります。 ただし、クライアントが SAS 経由で日常的に要求を実行する場合は、有効期限に注意が必要になる可能性があります。 重要な考慮事項は、SAS の有効期限を短くする必要性 (前述のように) と、(更新が正常に完了する前に SAS の期限が切れることによる中断を避けるために) クライアントで早めに更新を要求する必要性とのバランスです。
+- **SAS の開始時刻に注意する**:SAS の開始時刻を **[現在]** に設定すると、クロック スキュー (コンピューターの違いによる現在時刻の差) により、最初の数分間にエラーが間欠的に発生する場合があります。 一般に、開始時刻は 15 分以上前になるように設定します。 または、まったく設定せず、すべての場合ですぐに有効になるようにします。 同じことが、一般的には有効期限にも適用されます。 どの要求でも、最大 15 分のクロック スキューが前後に発生する可能性があることに注意してください。 
+- **アクセス先のリソースを具体的に指定する**:セキュリティのベスト プラクティスは、必要最小限の特権をユーザーに付与することです。 ユーザーに必要なのは、1 つのエンティティへの読み取りアクセスだけの場合は、すべてのエンティティへの読み取り/書き込み/削除アクセスではなく、その 1 つのエンティティへの読み取りアクセスだけをユーザーに許可します。 攻撃者の手中にある SAS の機能を低下させるため、SAS が侵害された場合に損害を抑えるのにも役立ちます。
+- **場合によっては SAS を使用しないようにする**:Event Hubs に対する特定の操作に関連するリスクが、SAS の利点を上回ることがあります。 このような操作では、ビジネス ルールの検証、認証、および監査の後に Event Hubs に書き込む中間層サービスを作成します。
+- **常に HTTPS を使用する**:常に HTTPS を使用して SAS を作成または配布します。 SAS が HTTP 経由で渡され、傍受された場合、中間者攻撃を実行している攻撃者は、SAS を読み取って、意図したユーザーと同様に使用することができます。そのため、機微なデータが侵害されたり、悪意のあるユーザーによるデータ破損が発生したりする可能性があります。
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>Shared Access Signature 認証の構成
 
@@ -68,31 +82,45 @@ Service Bus の名前空間を作成すると、**RootManageSharedAccessKey** �
 SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-encoded-resourceURI>
 ```
 
-* **`se`** - トークンの有効期限。 エポック 1970 年 1 月 1 日 `00:00:00 UTC` (UNIX エポック) からトークンの期限が切れるまでの秒数を示す整数。
-* **`skn`** - 承認規則の名前。
-* **`sr`** - アクセスされているリソースの URI。
-* **`sig`** - 署名。
+- `se` - トークンの有効期限。 エポック 1970 年 1 月 1 日 `00:00:00 UTC` (UNIX エポック) からトークンの期限が切れるまでの秒数を示す整数。
+- `skn` - 承認規則の名前。
+- `sr` - アクセスされているリソースの URL でエンコードされた URI。
+- `sig` - URL でエンコードされた HMACSHA256 署名。 ハッシュ計算は次の擬似コードのようになり、生のバイナリ出力の base64 が返されます。
 
-`signature-string` は、リソースの URI (前のセクションで説明した**スコープ**) とトークンの有効期限の文字列表現を LF で区切ったものに対して計算された SHA-256 ハッシュです。
+    ```
+    urlencode(base64(hmacsha256(urlencode('https://<yournamespace>.servicebus.windows.net/') + "\n" + '<expiry instant>', '<signing key>')))
+    ```
 
-ハッシュ計算は次の擬似コードのようなもので、256 ビット/32 バイトのハッシュ値を返します。
+SAS トークンを生成する C# コードの例を次に示します。
 
+```csharp
+private static string createToken(string resourceUri, string keyName, string key)
+{
+    TimeSpan sinceEpoch = DateTime.UtcNow - new DateTime(1970, 1, 1);
+    var week = 60 * 60 * 24 * 7;
+    var expiry = Convert.ToString((int)sinceEpoch.TotalSeconds + week);
+    string stringToSign = HttpUtility.UrlEncode(resourceUri) + "\n" + expiry;
+    HMACSHA256 hmac = new HMACSHA256(Encoding.UTF8.GetBytes(key));
+    var signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
+    var sasToken = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}&skn={3}", HttpUtility.UrlEncode(resourceUri), HttpUtility.UrlEncode(signature), expiry, keyName);
+    return sasToken;
+}
 ```
-SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
-```
+
+> [!IMPORTANT]
+> さまざまなプログラミング言語を使用して SAS トークンを生成する例については、[SAS トークンの生成](/rest/api/eventhub/generate-sas-token)に関する記事を参照してください。 
+
 
 受信側が同じパラメーターでハッシュを再計算して、発行者が有効な署名キーを所有していることを確認できるように、トークンにはハッシュされていない値が含まれています。
 
 リソース URI とは、アクセスが要求される Service Bus リソースの完全な URI です。 たとえば、`http://<namespace>.servicebus.windows.net/<entityPath>` または `sb://<namespace>.servicebus.windows.net/<entityPath>` (つまり `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`) です。 
 
-**URI は[パーセント エンコード](/dotnet/api/system.web.httputility.urlencode?view=netcore-3.1)になっている必要があります。**
+**URI は [パーセント エンコード](/dotnet/api/system.web.httputility.urlencode)になっている必要があります。**
 
 署名に使用される共有アクセス承認規則は、この URI、またはその階層の親のいずれかで指定したエンティティに構成する必要があります。 たとえば、前の例では、`http://contoso.servicebus.windows.net/contosoTopics/T1` または `http://contoso.servicebus.windows.net` となります。
 
 SAS トークンは、`signature-string` で使われている `<resourceURI>` がプレフィックスになっているすべてのリソースで有効です。
 
-> [!NOTE]
-> さまざまなプログラミング言語を使用して SAS トークンを生成する例については、[SAS トークンの生成](/rest/api/eventhub/generate-sas-token)に関する記事を参照してください。 
 
 ## <a name="regenerating-keys"></a>キーの再生成
 
@@ -247,7 +275,7 @@ private bool PutCbsToken(Connection connection, string sasToken)
 
 次に、発行元は、SAS トークンの送信とサービスからの応答 (トークンの検証結果) の受信に使用される 2 つの AMQP リンクを作成します。
 
-AMQP メッセージには一連のプロパティと、簡単なメッセージより多くの情報が含まれています。 SAS トークンはメッセージの本文です (コンストラクターを使用)。 **"ReplyTo"** プロパティは、受信側リンクで検証結果を受信するノード名に設定されます (必要に応じて名前を変更できます。名前はサービスで自動的に作成されます)。 最後の 3 つの application/custom プロパティは、実行する必要がある操作の種類を示すためにサービスで使用されます。 CBS ドラフト仕様に記載されているように、**操作名** ("put-token")、**トークンの種類** (この例では、`servicebus.windows.net:sastoken`)、およびトークンを適用する**オーディエンスの "名前"** (エンティティ全体) を設定する必要があります。
+AMQP メッセージには一連のプロパティと、簡単なメッセージより多くの情報が含まれています。 SAS トークンはメッセージの本文です (コンストラクターを使用)。 **"ReplyTo"** プロパティは、受信側リンクで検証結果を受信するノード名に設定されます (必要に応じて名前を変更できます。名前はサービスで自動的に作成されます)。 最後の 3 つの application/custom プロパティは、実行する必要がある操作の種類を示すためにサービスで使用されます。 CBS ドラフト仕様に記載されているように、**操作名** ("put-token")、**トークンの種類** (この例では、`servicebus.windows.net:sastoken`)、およびトークンを適用する **オーディエンスの "名前"** (エンティティ全体) を設定する必要があります。
 
 発行元は、送信側リンクで SAS トークンを送信した後に、受信側リンクの応答を読み取る必要があります。 応答は、**"status-code"** というアプリケーション プロパティを含む簡単な AMQP メッセージです。このプロパティには、HTTP 状態コードと同じ値を含めることができます。
 

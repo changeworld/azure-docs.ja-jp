@@ -1,19 +1,16 @@
 ---
 title: HDInsight の Hadoop において MapReduce で C# を使用する - Azure
 description: Azure HDInsight 上の Apache Hadoop で C# を使用して MapReduce ソリューションを作成する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, seoapr2020, devx-track-csharp
 ms.date: 04/28/2020
-ms.openlocfilehash: 58f807a5a036f14af9baede604debe9d577cdbf6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6948491091f558aa7f317d519b0f92c63cac4788
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000687"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946630"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で C# と MapReduce ストリーミングを使用する
 
@@ -47,7 +44,7 @@ HDInsight クラスターでは、[Mono (https://mono-project.com)](https://mono
 
 * クラスターに .exe ファイルをアップロードする方法。 このドキュメントの手順では、Visual Studio の Data Lake ツールを使用して、クラスターのプライマリ ストレージにファイルをアップロードします。
 
-* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/)が必要になります。
+* PowerShell を使用している場合は、[AZ モジュール](/powershell/azure/)が必要になります。
 
 * HDInsight の Apache Hadoop クラスター。 [Linux での HDInsight の概要](../hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
@@ -155,13 +152,13 @@ namespace reducer
 
    ![ストレージ アカウント、HDInsight クラスター、サーバー エクスプローラー、Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png)
 
-   * **[(既定のストレージ アカウント)]** エントリを展開できる場合は、クラスターの既定のストレージとして **Azure ストレージ アカウント**を使用しています。 クラスターの既定のストレージのファイルを表示するには、エントリを展開し、 **[(既定のコンテナー)]** をダブルクリックします。
+   * **[(既定のストレージ アカウント)]** エントリを展開できる場合は、クラスターの既定のストレージとして **Azure ストレージ アカウント** を使用しています。 クラスターの既定のストレージのファイルを表示するには、エントリを展開し、 **[(既定のコンテナー)]** をダブルクリックします。
 
    * **[(既定のストレージ アカウント)]** エントリを展開できない場合は、クラスターの既定のストレージとして **Azure Data Lake Storage** を使用しています。 クラスターの既定のストレージにファイルを表示するには、 **(既定のストレージ アカウント)** エントリをダブルクリックします。
 
 1. .exe ファイルをアップロードするには、次のいずれかの方法を使用します。
 
-    * **Azure ストレージ アカウント**を使用している場合は、 **[BLOB のアップロード]** アイコンを選択します。
+    * **Azure ストレージ アカウント** を使用している場合は、 **[BLOB のアップロード]** アイコンを選択します。
 
         ![マッパーの HDInsight アップロード アイコン、Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
 

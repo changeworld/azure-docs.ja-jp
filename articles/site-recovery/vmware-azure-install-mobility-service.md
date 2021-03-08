@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: f75723aedae390a0d41956d63acadf6370f390d9
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 78fddb5b4512883f8e78d6ed53f6e3dbbeba0e4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606508"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90524999"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>モビリティ エージェントをプッシュ インストールできるようソース マシンを準備する
 
@@ -25,8 +25,12 @@ ms.locfileid: "88606508"
 1. プロセス サーバーがコンピューターへのアクセスに使用できるアカウントを作成します。 このアカウントには管理者権限 (ローカルまたはドメイン) が必要です 。 このアカウントは、プッシュ インストールとエージェントの更新にのみ使用します。
 2. ドメイン アカウントを使用しない場合は、次のようにローカル コンピューターでリモート ユーザー アクセス コントロールを無効にします。
     - HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System レジストリ キーに、新しい DWORD 値**LocalAccountTokenFilterPolicy** を追加します。 値を **1** に設定します。
-    -  これをコマンド プロンプトから行うには、次のコマンドを実行します。  
-   `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d
+    -  これをコマンド プロンプトから行うには、次のコマンドを実行します。
+    
+       ```
+       REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1 /f
+       ```
+
 3. 保護対象のマシンの Windows ファイアウォールで、 **[Windows ファイアウォールを介したアプリまたは機能を許可]** を選択します。 **[ファイルとプリンターの共有]** と **[Windows Management Instrumentation (WMI)]** を有効にします。 コンピューターがドメインに属している場合は、グループ ポリシー オブジェクト (GPO) を使用してファイアウォールの設定を構成できます。
 
    ![ファイアウォールの設定](./media/vmware-azure-install-mobility-service/mobility1.png)
@@ -59,7 +63,7 @@ ms.locfileid: "88606508"
 11. **[アカウントの管理]** タブの **[アカウントの追加]** を選択します。
 12. 作成したアカウントを追加します。
 13. コンピューターのレプリケーションを有効にするときに使用する資格情報を入力します。
-1. SUSE Linux Enterprise Server 11 SP3 コンピューターを更新または保護するための追加の手順を実行します。 [構成サーバーで最新バージョンを使用できることを確認してください](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server)。
+1. SUSE Linux Enterprise Server 11 SP3 OR RHEL 5 または CentOS 5 または Debian 7 コンピューターを更新または保護するための追加手順を実行します。 [構成サーバーで最新バージョンを使用できることを確認してください](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server)。
 
 ## <a name="anti-virus-on-replicated-machines"></a>レプリケートされるマシンでのウイルス対策
 

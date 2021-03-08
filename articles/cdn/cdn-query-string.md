@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 06/11/2018
 ms.author: allensu
 ms.openlocfilehash: 1521d08ef9d431bbe8b3fd3a578297d440ed56b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887208"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018581"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>クエリ文字列による Azure CDN キャッシュ動作の制御 - Standard レベル
 > [!div class="op_single_selector"]

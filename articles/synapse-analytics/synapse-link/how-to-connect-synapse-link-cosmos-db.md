@@ -1,67 +1,64 @@
 ---
-title: Azure Cosmos DB 用の Azure Synapse Link (プレビュー) に接続する
-description: Azure Synapse Link を使用して Azure Cosmos DB を Synapse ワークスペースに接続する方法
+title: Azure Cosmos DB 用の Azure Synapse Link に接続する
+description: Azure Synapse Link を使用して Azure Cosmos DB データベースを Azure Synapse ワークスペースに接続する方法について学習します。
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: synapse-link
-ms.date: 04/21/2020
+ms.date: 03/02/2021
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: fa33f2d9e0c4606587ca5ef65a3f4a021319431f
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: a8626174e157e79d0250824e0a3cfa97141d50dc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85195047"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695041"
 ---
-# <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>Azure Cosmos DB 用の Azure Synapse Link (プレビュー) に接続する
+# <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB 用の Azure Synapse Link に接続する
 
 この記事では、Azure Synapse Link を使用して Azure Synapse Analytics Studio から Azure Cosmos DB データベースにアクセスする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Cosmos DB データベースをワークスペースに接続する前に、以下が必要です。
+Azure Cosmos DB データベースをワークスペースに接続する前に、次が必要です。
 
-> [!IMPORTANT]
-> 現時点では、Azure Synapse Link for Azure Cosmos DB は、マネージド仮想ネットワークが有効になっていないワークスペースでサポートされています。 
+* 既存の Azure Cosmos DB データベース。または、[Azure Cosmos アカウントを管理する方法のクイックスタート](../../cosmos-db/how-to-manage-database-account.md)の手順に従って新しいアカウントを作成します。
+* 既存の Azure Synapse ワークスペース。または、「[クイックスタート: Synapse ワークスペースを作成する](../quickstart-create-workspace.md)」の手順に従って新しいワークスペースを作成します。
 
-* 既存の Azure Cosmos DB データベース。または、こちらの[クイックスタート](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account)に従って新しいアカウントを作成します
-* 既存の Synapse ワークスペース。または、こちらの[クイックスタート](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)に従って新しいワークスペースを作成します 
-
-## <a name="enable-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアを有効にする
+## <a name="enable-synapse-link-on-an-azure-cosmos-db-database-account"></a>Azure Cosmos DB データベース アカウントで Synapse Link を有効にする
 
 運用上のパフォーマンスに影響を与えることなく Azure Cosmos DB に大規模な分析を実行するには、Azure Cosmos DB 用の Synapse Link を有効にすることをお勧めします。 Synapse Link により、Azure Synapse のコンテナーと組み込みサポートに HTAP 機能が提供されます。
 
-## <a name="navigate-to-synapse-studio"></a>Synapse Studio に移動する
+## <a name="go-to-synapse-studio"></a>Synapse Studio に移動する
 
-Synapse ワークスペースから、 **[Synapse Studio の起動]** を選択します。 Synapse Studio のホーム ページで、[**データ] を選択します。これにより、**データ オブジェクト エクスプローラー**に移動します。
+対象の Azure Synapse ワークスペースから、 **[Synapse Studio の起動]** を選択します。 Synapse Studio のホーム ページで、 **[データ]** を選択します。これにより、データ オブジェクト エクスプローラーに移動します。
 
-## <a name="connect-an-azure-cosmos-db-database-to-a-synapse-workspace"></a>Azure Cosmos DB データベースを Synapse ワークスペースに接続する
+## <a name="connect-an-azure-cosmos-db-database-to-an-azure-synapse-workspace"></a>Azure Cosmos DB データベースを Azure Synapse ワークスペースに接続する
 
-Azure Cosmos DB データベースの接続は、リンクされたサービスとして行われます。 Azure Cosmos DB のリンクされたサービスを使用すると、ユーザーは Azure Synapse Analytics 用の Apache Spark または SQL からデータを参照して探索したり、Azure Cosmos DB に読み書きしたりできます。
+Azure Cosmos DB データベースの接続は、リンクされたサービスとして行われます。 Azure Cosmos DB のリンクされたサービスを使用すると、Azure Synapse Analytics 用の Apache Spark または SQL からデータを参照して探索したり、Azure Cosmos DB に読み書きしたりできます。
 
-データ オブジェクト エクスプローラーから、次の手順を実行して Azure Cosmos DB データベースに直接接続できます。
+データ オブジェクト エクスプローラーから Azure Cosmos DB データベースに直接接続するには、次の手順を実行します。
 
-1. [データ] の近くにある ***+*** アイコンを選択します
-2. **[Connect to external data]\(外部データに接続する\)** を選択します
-3. 接続先の API を選択します:MongoDB 用 SQL API または API
-4. ***[続行]*** を選択します
-5. リンクされたサービスに名前を付けます。 名前はオブジェクト エクスプローラーに表示され、データベースとコンテナーに接続するために Synapse ランタイムによって使用されます。 フレンドリ名を使用することをお勧めします。
-6. **Azure Cosmos DB アカウント名**と**データベース名**を選択します
-7. (省略可能) リージョンが指定されていない場合、Synapse ランタイム操作は、分析ストアが有効になっている最も近いリージョンにルーティングされます。 ただし、ユーザーを Azure Cosmos DB 分析ストアにアクセスさせるリージョンを手動で設定できます。 **[Additional connection properties]\(追加の接続プロパティ\)** 、 **[新規作成]** の順に選択します。 **[プロパティ名]** の下で、***PreferredRegions*** を作成し、 **[値]** を目的のリージョンに設定します (例:WestUS2、単語と数字の間にスペースはありません)
-8. ***[作成]***
+1. **[データ]** の近くにある **+** アイコンを選択します。
+1. **[Connect to external data]\(外部データに接続する\)** を選択します。
+1. 接続する API (**SQL API**、**MongoDB 用 API** など) を選択します。
+1. **[続行]** をクリックします。
+1. フレンドリ名を使用して、リンクされたサービスに名前を付けます。 この名前は、データ オブジェクト エクスプローラーに表示され、データベースとコンテナーに接続するために Azure Synapse ランタイムによって使用されます。
+1. **Azure Cosmos DB アカウント名** と **データベース名** を選択します。
+1. (省略可能) リージョンが指定されていない場合、Azure Synapse ランタイム操作は、分析ストアが有効になっている最も近いリージョンにルーティングされます。 また、ユーザーが Azure Cosmos DB 分析ストアにアクセスするために使用するリージョンを手動で設定することもできます。 **[Additional connection properties]\(追加の接続プロパティ\)** を選択し、 **[新規]** を選択します。 **[プロパティ名]** に「**PreferredRegions**」と入力します。 **[値]** を任意のリージョンに設定します (例: **WestUS2**)。 (単語と数字の間にスペースはありません)。
+1. **［作成］** を選択します
 
-Azure Cosmos DB データベースは、[Azure Cosmos DB] セクションの **[リンク済み]** タブの下に表示されます。 Azure Cosmos DB では、次のアイコンによって、HTAP 対応のコンテナーと OLTP のみのコンテナーを区別できます。
+Azure Cosmos DB データベースは、 **[Azure Cosmos DB]** セクションの **[リンク済み]** タブの下に表示されます。 Azure Cosmos DB では、次のアイコンによって、HTAP 対応のコンテナーと OLTP のみのコンテナーを区別できます。
 
 **OLTP のみのコンテナー**:
 
-![OLTP コンテナー](../media/quickstart-connect-synapse-link-cosmosdb/oltp-container.png)
+![OLTP コンテナー アイコンを示す視覚化。](../media/quickstart-connect-synapse-link-cosmosdb/oltp-container.png)
 
 **HTAP 対応のコンテナー**:
 
-![HTAP コンテナー](../media/quickstart-connect-synapse-link-cosmosdb/htap-container.png)
+![HTAP コンテナー アイコンを示す視覚化。](../media/quickstart-connect-synapse-link-cosmosdb/htap-container.png)
 
 ## <a name="quickly-interact-with-code-generated-actions"></a>コード生成アクションをすばやく操作する
 
@@ -69,5 +66,6 @@ Azure Cosmos DB データベースは、[Azure Cosmos DB] セクションの **[
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Synapse と Azure Cosmos DB の間でサポートされている内容について学習する](./concept-synapse-link-cosmos-db-support.md)
+* [Azure Synapse と Azure Cosmos DB の間でサポートされている内容について学習する](./concept-synapse-link-cosmos-db-support.md)
+* [Azure Cosmos DB 分析ストアのプライベート エンドポイントを構成する](../../cosmos-db/analytical-store-private-endpoints.md)
 * [Spark を使用して分析ストアにクエリを実行する方法を学習する](./how-to-query-analytical-store-spark.md)

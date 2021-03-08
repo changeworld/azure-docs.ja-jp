@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: c787df901fc33c2dcd2c8a901202c72ea6de45d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84fd1a2d3d0dc4ce6960469ea3212b8ca1d4d07c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513598"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023025"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>StorSimple Virtual Array の非アクティブ化と削除
 
@@ -30,7 +30,7 @@ StorSimple Virtual Array を非アクティブ化する場合は、デバイス�
 * デバイスの非アクティブ化 
 * 非アクティブ化されたデバイスの削除
 
-この記事の情報は、StorSimple Virtual Array にのみ適用されます。 8000 シリーズについては、[デバイスを非アクティブ化または削除](storsimple-deactivate-and-delete-device.md)する方法に関するページをご覧ください。
+この記事の情報は、StorSimple Virtual Array にのみ適用されます。 8000 シリーズについては、[デバイスを非アクティブ化または削除](./storsimple-8000-deactivate-and-delete-device.md)する方法に関するページをご覧ください。
 
 ## <a name="when-to-deactivate"></a>非アクティブ化するタイミング
 
@@ -90,5 +90,4 @@ StorSimple Virtual Array を非アクティブ化する場合は、デバイス�
 
 * フェールオーバーの方法については、[StorSimple Virtual Array のフェールオーバーとディザスター リカバリー](storsimple-virtual-array-failover-dr.md)に関するページをご覧ください。
 
-* StorSimple デバイス マネージャー サービスを使用する方法の詳細については、[StorSimple デバイス マネージャー サービスを使用した StorSimple Virtual Array の管理](storsimple-virtual-array-manager-service-administration.md)に関するページをご覧ください。 
-
+* StorSimple デバイス マネージャー サービスを使用する方法の詳細については、[StorSimple デバイス マネージャー サービスを使用した StorSimple Virtual Array の管理](storsimple-virtual-array-manager-service-administration.md)に関するページをご覧ください。

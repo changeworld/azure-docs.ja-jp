@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 6c3f4cfe7c896b317edc5897098a1c18c98dc826
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: a713d869a754f17f4030c531999c822a2cbb76ee
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962640"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039803"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する
 
@@ -42,7 +42,7 @@ ms.locfileid: "88962640"
 - [プライベート証明書をアプリに追加する](configure-ssl-certificate.md)
 
 > [!NOTE]
-> プライベート証明書を追加する最も簡単な方法は、[無料の App Service マネージド証明書 (プレビュー) を作成する](configure-ssl-certificate.md#create-a-free-certificate-preview)ことです。
+> プライベート証明書を追加する最も簡単な方法は、[無料の App Service マネージド証明書 (プレビュー) を作成する](configure-ssl-certificate.md#create-a-free-managed-certificate-preview)ことです。
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -73,7 +73,7 @@ ms.locfileid: "88962640"
 - **App Service 証明書のインポート** - 「[App Service 証明書をインポートする](configure-ssl-certificate.md#import-an-app-service-certificate)」のワークフローに従い、ここでこのオプションを選択します。
 
 > [!NOTE]
-> [無料証明書を作成](configure-ssl-certificate.md#create-a-free-certificate-preview)したり (プレビュー)、[Key Vault 証明書をインポート](configure-ssl-certificate.md#import-a-certificate-from-key-vault)したりすることもできますが、それは別々に行い、 **[TLS/SSL バインド]** ダイアログに戻る必要があります。
+> [無料証明書を作成](configure-ssl-certificate.md#create-a-free-managed-certificate-preview)したり (プレビュー)、[Key Vault 証明書をインポート](configure-ssl-certificate.md#import-a-certificate-from-key-vault)したりすることもできますが、それは別々に行い、 **[TLS/SSL バインド]** ダイアログに戻る必要があります。
 
 ### <a name="create-binding"></a>バインドを作成する
 
@@ -85,7 +85,7 @@ ms.locfileid: "88962640"
 | プライベート証明書のサムプリント | バインドする証明書。 |
 | TLS/SSL の種類 | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** - 複数の SNI SSL バインディングを追加できます。 このオプションでは、複数の TLS/SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (詳細については、「[Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。</li><li>**IP SSL** - IP SSL バインディングを 1 つだけ追加できます。 このオプションでは、TLS/SSL 証明書を 1 つだけ使用して、専用のパブリック IP アドレスを保護します。 バインディングを構成した後は、[IP SSL のレコードの再マッピング](#remap-records-for-ip-ssl)の手順に従います。<br/>IP SSL は、**Standard** レベル以上でのみサポートされます。 </li></ul> |
 
-操作が完了すると、カスタム ドメインの TLS/SSL 状態が**セキュリティで保護された**状態に変わります。
+操作が完了すると、カスタム ドメインの TLS/SSL 状態が **セキュリティで保護された** 状態に変わります。
 
 ![TLS/SSL バインド成功](./media/configure-ssl-bindings/secure-domain-finished.png)
 
@@ -108,7 +108,7 @@ ms.locfileid: "88962640"
 
 さまざまなブラウザーで `https://<your.custom.domain>` にアクセスし、アプリの要求を処理できることを確認します。
 
-![Azure アプリへのポータル ナビゲーション](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+:::image type="content" source="./media/configure-ssl-bindings/app-with-custom-ssl.png" alt-text="contoso.com のカスタム ドメインにブラウザーでアクセスする例を示す画面のスクリーンショット (URL が強調表示されている)。":::
 
 プロトコルは、アプリケーション コードから "x-appservice-proto" ヘッダーを介して調査することができます。 ヘッダーの値は `http` または `https` になります。 
 
@@ -159,11 +159,11 @@ App Service では、[TLS 終了](https://wikipedia.org/wiki/TLS_termination_pro
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>その他のリソース
 

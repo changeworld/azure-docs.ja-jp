@@ -1,25 +1,22 @@
 ---
-title: Azure Stack Hub でチェックポイント ストアとして Blob Storage を使用する (プレビュー)
-description: この記事では Azure Stack Hub (プレビュー) 上の Event Hubs でチェックポイント ストアとして Blob Storage を使用する方法について説明します。
+title: Azure Stack Hub でチェックポイント ストアとして Blob Storage を使用する
+description: この記事では Azure Stack Hub 上の Event Hubs でチェックポイント ストアとして Blob Storage を使用する方法について説明します。
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: 1c876ed36be6aec9395a1acba3a1deb25a47de2c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 12/09/2020
+ms.openlocfilehash: 07d7cf844480a9a88468c17cecc7ca38cca5d176
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039227"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007825"
 ---
-# <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>チェックポイント ストアとして Blob Storage を使用する - Azure Stack Hub 上の Event Hubs (プレビュー)
+# <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub"></a>チェックポイント ストアとして Blob Storage を使用する - Azure Stack Hub 上の Event Hubs
 Azure で一般公開されているものとは異なるバージョンの Storage Blob SDK をサポートする環境で、チェックポイント ストアとして Azure Blob Storage を使用している場合は、コードを使用して、Storage Service API バージョンをその環境でサポートされている特定のバージョンに変更する必要があります。 たとえば、[Azure Stack Hub バージョン 2002 上で Event Hubs](/azure-stack/user/event-hubs-overview) を実行している場合、Storage Service で利用可能な最も高いバージョンは 2017-11-09 です。 この場合は、コードを使用して、対象にする Storage Service API のバージョンを 2017-11-09 にする必要があります。 特定の Storage API バージョンを対象にする方法の例については、GitHub の次のサンプルを参照してください。 
 
-- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)
+- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/)
 - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java). 
 - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) または [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) 
 - Python - [同期](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py)、[非同期](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
-
-> [!IMPORTANT]
-> Azure Stack Hub 上の Event Hubs は現在[プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)段階であり、無料で提供されます。 
 
 Azure Stack Hub でサポートされているバージョンを対象にせずに、Blob Storage をチェックポイント ストアとして使用する Event Hubs レシーバーを実行すると、次のエラー メッセージが表示されます。
 

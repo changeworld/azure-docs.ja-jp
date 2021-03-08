@@ -7,23 +7,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 07/10/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 9f559587e1abca7642edfc6278018d760b55e774
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 13c07da7393c70bb1fc61930dd1179994c68ed75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206224"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389809"
 ---
 # <a name="what-is-azure-data-box"></a>Azure Data Box とは何ですか?
 
 Microsoft Azure Data Box クラウド ソリューションを使用すると、迅速かつ安価な信頼性の高い方法で、数テラバイトのデータを Azure に対して送受信できます。 独自の Data Box ストレージ デバイスを出荷することにより、セキュリティで保護されたデータ転送を高速化します。 各ストレージ デバイスは、最大で 80 TB のストレージ容量を使用でき、地域の運送業者を通じて皆さんのデータセンターに輸送されます。 デバイスは堅牢な筐体で保護され、転送中のデータはセキュリティで保護されます。
 
-Data Box デバイスを、Azure portal から注文して、Azure との間でデータをインポートまたはエクスポートできます。 デバイスを受け取ったら、ローカル Web UI を使用してすばやく設定できます。 データをインポートするのかエクスポートするのかに応じて、サーバーからデバイスにデータをコピーするか、その逆の操作を行い、デバイスを Azure に返送します。 Azure にデータをインポートする場合、そのデータは、Azure のデータセンターにてデバイスから Azure へと自動的にアップロードされます。 プロセス全体は、Azure portal の Data Box サービスでエンド ツー エンドで追跡できます。
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
-
+Data Box デバイスを、Azure portal から注文して、Azure との間でデータをインポートまたはエクスポートできます。 デバイスを受け取ったら、ローカル Web UI を使用してすばやく設定できます。 データをインポートするのかエクスポートするのかに応じて、サーバーからデバイスに、またはデバイスからサーバーにデータをコピーし、デバイスを Azure に返送します。 Azure にデータをインポートする場合、そのデータは、Azure のデータセンターにてデバイスから Azure へと自動的にアップロードされます。 プロセス全体は、Azure portal の Data Box サービスでエンド ツー エンドで追跡できます。
 
 ## <a name="use-cases"></a>ユース ケース
 
@@ -43,7 +40,7 @@ Data Box は、以下のようなさまざまなシナリオで、Azure にデ�
 
 Data Box は、以下のようなさまざまなシナリオで、Azure からデータをエクスポートするために使用できます。
 
-- **ディザスター リカバリー** - Azure のデータのコピーをオンプレミス ネットワークに復元する場合。 これは、通常、大量の Azure データが Data Box にエクスポートされるディザスター リカバリー シナリオの場合に実行されます。 その後、Microsoft はこの Data Box を発送し、データを短時間でオンプレミスに復元します。 
+- **ディザスター リカバリー** - Azure のデータのコピーをオンプレミス ネットワークに復元する場合。 通常のディザスター リカバリー シナリオでは、大量の Azure データが Data Box にエクスポートされます。 その後、Microsoft はこの Data Box を発送し、データは短時間でオンプレミスに復元されます。
 
 - **セキュリティ要件** - 政府またはセキュリティの要件により、Azure のデータをエクスポートできる必要がある場合。 たとえば、Azure Storage は US Secret と Top Secret のクラウドで利用でき、Data Box を使用して Azure からデータをエクスポートできます。 
 
@@ -61,7 +58,7 @@ Data Box は、ネットワークにほとんどまたはまったく影響を�
   - デバイスのデータは、AES 256 ビット暗号化によって常にセキュリティ保護されています。
   - デバイスは、Azure portal で提供されるパスワードでのみロックを解除できます。
   - このサービスは、Azure のセキュリティ機能によって保護されています。
-  - データがインポートの注文のために Azure にアップロードされると、NIST 800-88r1 規格に従って、デバイスのディスクが完全にワイプされます。 エクスポートの注文の場合、デバイスが Azure データセンターに到着すると、ディスクは消去されます。
+  - インポート注文のデータが Azure にアップロードされると、NIST 800-88r1 規格に従って、デバイスのディスクが完全にワイプされます。 エクスポートの注文の場合、デバイスが Azure データセンターに到着すると、ディスクは消去されます。
     
     詳細については、「[Azure Data Box のセキュリティとデータ保護](data-box-security.md)」を参照してください。
 
@@ -81,7 +78,7 @@ Data Box は、ネットワークにほとんどまたはまったく影響を�
 | データ転送                                      | インポートとエクスポートの両方がサポートされています。  |
 | データ転送メディア                                     | RJ45、SFP+ 銅線 10 GbE イーサネット  |
 | セキュリティ                                                | 開封防止ネジを搭載した堅牢なデバイス筐体 <br> デバイスの下部に開封明示ステッカー|
-| データ転送速度                                      | 10 GbE ネットワーク インターフェイスで最大 1 日 80 TB 以上        |
+| データ転送速度                                      | 10 GbE ネットワーク インターフェイスで 1 日に最大 80 TB        |
 | 管理                                              | ローカル Web UI - 1 回限りの初期セットアップと構成 <br> Azure portal - 日常的なデバイスの管理        |
 
 ## <a name="data-box-components"></a>Data Box のコンポーネント
@@ -90,12 +87,12 @@ Data Box に含まれるコンポーネントを次に示します。
 
 * **Data Box デバイス** - プライマリ ストレージを提供し、クラウド ストレージとの通信を管理する物理デバイスです。デバイス上に保存されたすべてのデータのセキュリティと機密性も確保されます。 Data Box デバイスでは、80 TB のストレージ容量を使用できます。 
 
-    ![Data Box の正面と背面](media/data-box-overview/data-box-combined3.png)
+    ![Data Box の正面と背面](media/data-box-overview/data-box-combined.png)
 
     
 * **Data Box サービス** - さまざまな地理的場所からアクセスできる Web インターフェイスから、Data Box デバイスを管理できる、Azure portal の拡張機能。 Data Box サービスを使用すると、Data Box デバイスの日常的な管理を実行できます。 サービス タスクには、注文の作成と管理、警告の表示と管理、共有の管理が含まれます。  
 
-    ![Azure portal の Data Box サービス](media/data-box-overview/data-box-service1.png)
+    ![Azure portal の Data Box サービス](media/data-box-overview/data-box-service.png)
 
     詳細については、「[Use the Data Box service to administer your Data Box device (Data Box サービスを使用した Data Box デバイスの管理)](data-box-portal-ui-admin.md)」を参照してください。
 
@@ -138,13 +135,13 @@ Data Box に含まれるコンポーネントを次に示します。
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
-Data Box は、サービスが展開されているリージョン、デバイスが出荷される国/リージョン、データの転送対象となる Azure ストレージ アカウントに基づいてデータを転送できます。 
+Data Box は、サービスが展開されているリージョン、デバイスが出荷される国またはリージョン、データの転送対象となる Azure ストレージ アカウントに基づいてデータを転送できます。
 
 ### <a name="for-import"></a>インポートの場合
 
-- **サービスの提供状況** - Data Box をインポートまたはエクスポートの注文で使用する場合、リージョン別の提供状況を確認するには、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関する記事を参照してください。 Data Box のエクスポート機能は現在プレビューの段階です。 
+- **サービスの提供状況** - Data Box をインポートまたはエクスポートの注文で使用する場合、リージョン別の提供状況を確認するには、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関する記事を参照してください。
 
-    インポートの注文の場合、Data Box は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)」を参照してください。 
+    インポートの注文の場合、Data Box は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](../azure-government/documentation-government-welcome.md)」を参照してください。 
 
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、サービスが使用可能なすべての Azure リージョンで利用できます。
 
@@ -154,7 +151,3 @@ Data Box は、サービスが展開されているリージョン、デバイ�
 - [Data Box のシステム要件](data-box-system-requirements.md)を確認する。
 - [Data Box の制限事項](data-box-limits.md)を理解する。
 - Azure portal で [Azure Data Box](data-box-quickstart-portal.md) をすばやく展開する。
-
-
-
-

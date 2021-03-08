@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/22/2019
 ms.author: chrupa
-ms.openlocfilehash: edc337849b53cb8e818114d3dd100d30cf00b895
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30fcaccbb4b87212cc4474b418712ba849156a8e
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871382"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803172"
 ---
 # <a name="partner-ecosystem-for-azure-api-for-fhir"></a>Azure API for FHIR のパートナー エコシステム
 Azure API for FHIR は、Azure のすべてのお客様に一般公開されています。 お客様が Microsoft のサービスを使用して構築するソリューションについてもさらに興奮しています。  
@@ -23,9 +23,9 @@ Azure API for FHIR を中心に構築されたエンドツーエンドのソリ�
 
 | Partner          | 機能                               | サポートされている国/地域         | Contact                                                                                                                                |
 |------------------|--------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| Medal            | 非識別化、レガシ FHIR の変換  | 米国                         | [連絡先](http://www.medal.com/)                                                                                           |
+| Medal            | 非識別化、レガシ FHIR の変換  | 米国                         | [連絡先](https://asab.squarespace.com/asab-medal/)                                                                                           |
 | Rhapsody         | レガシ FHIR の変換                     | 米国、オーストラリア、ニュージーランド | [連絡先](https://rhapsody.health/contact-us)                                                                                          |
-| iNTERFACEWARE    | レガシ FHIR の変換                     | 米国、カナダ                 | [連絡先](https://www.interfaceware.com/contact.html)                                                                                  |
+| iNTERFACEWARE    | レガシ FHIR の変換                     | 米国、カナダ                 | [連絡先](https://www.interfaceware.com/contact)                                                                                  |
 | Darena Solutions | アプリケーション開発、システム インテグレーター | 米国                         | [連絡先](https://www.darenasolutions.com/contact)                                                                                     |
 | NewWave          | アプリケーション開発、システム インテグレーター | 米国                         | [連絡先](https://newwave.io/get-in-touch/)                                                                                            |
 | Dapasoft         | アプリケーション開発、システム インテグレーター | 米国、カナダ                 | [連絡先](https://www.dapasoft.com/contact-us/)                                                                                        |

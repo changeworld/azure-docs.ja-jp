@@ -6,16 +6,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: de39789a45856211421e3ec5638a2df94d49976c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: a177b22f0f91d82013956bff36eaa57a084c27d1
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958713"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576584"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のアプリのトラブルシューティング
 ## <a name="overview"></a>概要
-このチュートリアルでは、Visual Studio Tools を活用し、[App Service](https://go.microsoft.com/fwlink/?LinkId=529714) のアプリを[デバッグ モード](/visualstudio/debugger/)でリモートから実行するか、アプリケーションのログと Web サーバーのログを参照することによってデバッグする方法を説明します。
+このチュートリアルでは、Visual Studio Tools を活用し、[App Service](./overview.md) のアプリを[デバッグ モード](/visualstudio/debugger/)でリモートから実行するか、アプリケーションのログと Web サーバーのログを参照することによってデバッグする方法を説明します。
 
 学習内容:
 
@@ -38,19 +38,19 @@ Visual Studio Ultimate がある場合は、デバッグに [IntelliTrace](/visu
 ストリーミング ログ機能は、.NET Framework 4 以降を対象とするアプリケーションでのみ動作します。
 
 ## <a name="app-configuration-and-management"></a><a name="sitemanagement"></a>アプリの構成と管理
-Visual Studio は、[Azure portal](https://go.microsoft.com/fwlink/?LinkId=529715) で利用できるアプリ管理機能や構成設定に一部アクセスできるようになっています。 このセクションでは、**サーバー エクスプローラー**を使用することで、その対象となる機能や設定について取り上げます。 最新の Azure の統合機能を確認するために、 **Cloud Explorer** もお試しください。 どちらのウィンドウも **[表示]** メニューから開くことができます。
+Visual Studio は、[Azure portal](https://go.microsoft.com/fwlink/?LinkId=529715) で利用できるアプリ管理機能や構成設定に一部アクセスできるようになっています。 このセクションでは、**サーバー エクスプローラー** を使用することで、その対象となる機能や設定について取り上げます。 最新の Azure の統合機能を確認するために、 **Cloud Explorer** もお試しください。 どちらのウィンドウも **[表示]** メニューから開くことができます。
 
-1. まだ Visual Studio で Azure にサインインしていない場合は、**サーバー エクスプ ローラー**で、 **[Azure]** を右クリックし、**Microsoft Azure サブスクリプション**への接続を選択します。
+1. まだ Visual Studio で Azure にサインインしていない場合は、**サーバー エクスプ ローラー** で、 **[Azure]** を右クリックし、**Microsoft Azure サブスクリプション** への接続を選択します。
 
-    または、アカウントへのアクセスを可能にする管理証明書をインストールします。 証明書をインストールする方針を選択した場合は、**サーバー エクスプローラー**で、 **[Azure]** ノードを右クリックし、コンテキスト メニューの **[サブスクリプションの管理およびフィルター]** を選択します。 **[Microsoft Azure サブスクリプションの管理]** ダイアログ ボックスで、 **[証明書]** タブをクリックし、 **[インポート]** をクリックします。 操作手順に従い、Azure アカウント用のサブスクリプション ファイル ( *.publishsettings* ファイル) をダウンロードしてインポートします。
+    または、アカウントへのアクセスを可能にする管理証明書をインストールします。 証明書をインストールする方針を選択した場合は、**サーバー エクスプローラー** で、 **[Azure]** ノードを右クリックし、コンテキスト メニューの **[サブスクリプションの管理およびフィルター]** を選択します。 **[Microsoft Azure サブスクリプションの管理]** ダイアログ ボックスで、 **[証明書]** タブをクリックし、 **[インポート]** をクリックします。 操作手順に従い、Azure アカウント用のサブスクリプション ファイル ( *.publishsettings* ファイル) をダウンロードしてインポートします。
 
    > [!NOTE]
    > サブスクリプション ファイルをダウンロードする場合は、ソース コード ディレクトリの外にあるフォルダー (Downloads フォルダーなど) に保存し、インポートが完了したらそのファイルを削除します。 悪意のあるユーザーがサブスクリプション ファイルへのアクセス許可を取得すると、Azure サービスを編集、作成、削除できるためです。
    >
    >
 
-    Visual Studio から Azure リソースへの接続の詳細については、「 [アカウント、サブスクリプション、管理ロールの管理](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert)」を参照してください。
-2. **サーバー エクスプローラー**で **[Azure]** を展開し、 **[App Service]** を展開します。
+    Visual Studio から Azure リソースへの接続の詳細については、「[アカウント、サブスクリプション、管理ロールの管理](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+2. **サーバー エクスプローラー** で **[Azure]** を展開し、 **[App Service]** を展開します。
 3. [Azure App Service での ASP.NET Web アプリの作成](quickstart-dotnet-framework.md)に関するページで作成したアプリを含むリソース グループを展開し、アプリ ノードを右クリックして、 **[設定の表示]** をクリックします。
 
     ![サーバー エクスプローラーの [設定の表示]](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
@@ -70,19 +70,19 @@ Visual Studio は、[Azure portal](https://go.microsoft.com/fwlink/?LinkId=52971
 
 **'/' アプリケーションのサーバー エラー:**
 
-![あまり役に立たないエラー ページ](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png" alt-text="Web ブラウザー上の &quot;/&quot; アプリケーション エラーのサーバー エラーを示すスクリーンショット。":::
 
 **エラーが発生しました:**
 
-![あまり役に立たないエラー ページ](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png" alt-text="Web ブラウザーで発生する一般的なエラーの例を示すスクリーンショット。":::
 
 **Web サイト側でページを表示できません**
 
-![あまり役に立たないエラー ページ](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="Web ブラウザーに表示される「Web サイト側でページを表示できません」というエラーのスクリーンショット。":::
 
-多くの場合、エラーの原因を最も簡単に見つける方法は、詳細なエラー メッセージを有効にすることです。その結果、既に示した最初のスクリーンショットのように、対応方法が表示されます。 ここでは、デプロイした Web.config ファイルの変更が必要です。 プロジェクト内の *Web.config* ファイルを編集し、プロジェクトを再デプロイすること、または [Web.config の変換](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations)を作成し、デバッグ ビルドをデプロイすることもできますが、より簡単な方法があります。**ソリューション エクスプローラー**で、*リモート ビュー*機能を使用して、リモート アプリからファイルを直接表示し、編集することができます。
+多くの場合、エラーの原因を最も簡単に見つける方法は、詳細なエラー メッセージを有効にすることです。その結果、既に示した最初のスクリーンショットのように、対応方法が表示されます。 ここでは、デプロイした Web.config ファイルの変更が必要です。 プロジェクト内の *Web.config* ファイルを編集し、プロジェクトを再デプロイすること、または [Web.config の変換](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations)を作成し、デバッグ ビルドをデプロイすることもできますが、より簡単な方法があります。**ソリューション エクスプローラー** で、*リモート ビュー* 機能を使用して、リモート アプリからファイルを直接表示し、編集することができます。
 
-1. **サーバー エクスプローラー**で、 **[Azure]** 、 **[App Service]** 、アプリがあるリソース グループ、アプリのノードの順に展開します。
+1. **サーバー エクスプローラー** で、 **[Azure]** 、 **[App Service]** 、アプリがあるリソース グループ、アプリのノードの順に展開します。
 
     アプリのコンテンツ ファイルとログ ファイルへのアクセス許可を付与するノードが表示されます。
 2. **[ファイル]** ノードを展開し、 *[Web.config]* ファイルをダブルクリックします。
@@ -125,9 +125,9 @@ Web.config ファイルの編集は、App Service アプリにあるファイル
     }
     ```
 
-1. `ViewBag.Message` の行に[ブレークポイントを設定](https://docs.microsoft.com/visualstudio/debugger/)します。
+1. `ViewBag.Message` の行に[ブレークポイントを設定](/visualstudio/debugger/)します。
 
-1. **ソリューション エクスプローラー**で目的のプロジェクトを右クリックし、 **[発行]** をクリックします。
+1. **ソリューション エクスプローラー** で目的のプロジェクトを右クリックし、 **[発行]** をクリックします。
 
 1. **[プロファイル]** ドロップダウン リストで、[Azure App Service での ASP.NET アプリの作成](quickstart-dotnet-framework.md)に関するページで使用した同じプロファイルを選択します。 次に、[設定] をクリックします。
 
@@ -137,14 +137,14 @@ Web.config ファイルの編集は、App Service アプリにあるファイル
 
 1. **[発行]** をクリックします。 デプロイが完了し、ブラウザーが起動してアプリの Azure URL が表示されたら、ブラウザーを閉じます。
 
-1. **サーバー エクスプローラー**で、アプリを右クリックしてから **[デバッガーの接続]** をクリックします。
+1. **サーバー エクスプローラー** で、アプリを右クリックしてから **[デバッガーの接続]** をクリックします。
 
-    ![[デバッガーの接続]](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png" alt-text="アプリが選択され、[デバッガーの接続] がクリックされていることを示す [サーバー エクスプローラー] ウィンドウのスクリーンショット。":::
 
     ブラウザーが自動的に起動し、Azure で実行されているホーム ページが表示されます。 デバッグに必要な設定を Azure がサーバーに対して行う間、20 秒ほどの待ち時間が生じることがあります。 この待ち時間が生じるのは、48 時間以内にアプリでのデバッグ モードを実行する初回に限られます。 同じ期間に再度デバッグを開始しても、遅延はありません。
 
     > [!NOTE] 
-    > デバッガーの起動時に問題がある場合、**サーバー エクスプローラー**ではなく**クラウド エクスプローラー**を使用して起動してみてください。
+    > デバッガーの起動時に問題がある場合、**サーバー エクスプローラー** ではなく **Cloud Explorer** を使用して起動してみてください。
     >
 
 1. メニューの **[About]** をクリックします。
@@ -174,25 +174,25 @@ Web.config ファイルの編集は、App Service アプリにあるファイル
 
 1. [Azure Web ジョブ SDK の使用][GetStartedWJ]に関するページで作成した Web プロジェクトを開きます。
 
-2. ContosoAdsWebJob プロジェクトで、 *Functions.cs*を開きます。
+2. ContosoAdsWebJob プロジェクトで、 *Functions.cs* を開きます。
 
-3. `GnerateThumbnail` メソッドの最初のステートメントに[ブレークポイントを設定](https://docs.microsoft.com/visualstudio/debugger/)します。
+3. `GnerateThumbnail` メソッドの最初のステートメントに[ブレークポイントを設定](/visualstudio/debugger/)します。
 
     ![ブレークポイントの設定](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
-4. **ソリューション エクスプローラー**で Web プロジェクト (Web ジョブ プロジェクトではない) を右クリックし、 **[発行]** をクリックします。
+4. **ソリューション エクスプローラー** で Web プロジェクト (Web ジョブ プロジェクトではない) を右クリックし、 **[発行]** をクリックします。
 
-5. **[プロファイル]** ボックスの一覧から、「 [Azure Web ジョブ SDK の使用](https://github.com/Azure/azure-webjobs-sdk/wiki)」で使用したものと同じプロファイルを選択します。
+5. **[プロファイル]** ボックスの一覧から、「[Azure Web ジョブ SDK の使用](https://github.com/Azure/azure-webjobs-sdk/wiki)」で使用したものと同じプロファイルを選択します。
 
 6. **[設定]** タブをクリックして **[構成]** を **[デバッグ]** に変更し、 **[発行]** をクリックします。
 
     Visual Studio によって Web プロジェクトと Web ジョブ プロジェクトがデプロイされ、ブラウザーでアプリの Azure URL が表示されます。
 
-7. **サーバー エクスプローラー**で、 **[Azure]、[App Service]、使用するリソース グループ、使用するアプリ、[Web ジョブ]、[継続]** の順に展開し、 **[ContosoAdsWebJob]** を右クリックします。
+7. **サーバー エクスプローラー** で、 **[Azure]、[App Service]、使用するリソース グループ、使用するアプリ、[Web ジョブ]、[継続]** の順に展開し、 **[ContosoAdsWebJob]** を右クリックします。
 
 8. **[デバッガーの接続]** をクリックします。
 
-    ![[デバッガーの接続]](./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png" alt-text="ドロップダウン メニューで ContosoAdsWebJob が選択され、[デバッガーの接続] が選択されたサーバー エクスプローラーのスクリーンショット。":::
 
     ブラウザーが自動的に起動し、Azure で実行されているホーム ページが表示されます。 デバッグに必要な設定を Azure がサーバーに対して行う間、20 秒ほどの待ち時間が生じることがあります。 この待ち時間が生じるのは、48 時間以内にアプリでのデバッグ モードを実行する初回に限られます。 同じ期間に再度デバッグを開始しても、遅延はありません。
 
@@ -212,7 +212,7 @@ Web.config ファイルの編集は、App Service アプリにあるファイル
 
 13. Visual Studio で、Shift キーを押しながら F5 キーを押すと、デバッグは停止します。
 
-14. **サーバー エクスプローラー**で、ContosoAdsWebJob ノードを右クリックし、 **[ダッシュボードの表示]** をクリックします。
+14. **サーバー エクスプローラー** で、ContosoAdsWebJob ノードを右クリックし、 **[ダッシュボードの表示]** をクリックします。
 
 15. Azure の資格情報を使用してサインインし、Web ジョブ名をクリックして、Web ジョブのページに移動します。
 
@@ -241,9 +241,9 @@ Web.config ファイルの編集は、App Service アプリにあるファイル
       <httpRuntime targetFramework="4.5" />
     </system.web>
     ```
-* デバッグ対象となるコードにデバッガーがステップ インしない場合、[マイ コードのみ] の設定を変更してみてください。  詳しくは、「[Specify whether to debug only user code using Just My Code in Visual Studio (Visual Studio で [マイコードのみ] を使用してユーザー コードのみをデバッグするかどうかを指定する)](https://docs.microsoft.com/visualstudio/debugger/just-my-code)」をご覧ください。
+* デバッグ対象となるコードにデバッガーがステップ インしない場合、[マイ コードのみ] の設定を変更してみてください。  詳しくは、「[Specify whether to debug only user code using Just My Code in Visual Studio (Visual Studio で [マイコードのみ] を使用してユーザー コードのみをデバッグするかどうかを指定する)](/visualstudio/debugger/just-my-code)」をご覧ください。
 * リモート デバッグ機能を有効にしたときに、サーバー上でタイマーが開始され、48 時間後にこの機能が自動的に無効になります。 この 48 時間の上限はセキュリティとパフォーマンス上の理由で設定されています。 必要に応じて、この機能を何回でも簡単に有効に戻すことができます。 積極的にデバッグを実行している場合以外は、この機能を無効にしたままにすることをお勧めします。
-* 手動でデバッガーをアプリ プロセス (w3wp.exe) だけでなく、任意のプロセスに接続できます。 Visual Studio のデバッグ モードの使い方の詳細については、MSDN のトピック「 [Visual Studio でのデバッグ](/visualstudio/debugger/debugging-in-visual-studio)」を参照してください。
+* 手動でデバッガーをアプリ プロセス (w3wp.exe) だけでなく、任意のプロセスに接続できます。 Visual Studio のデバッグ モードの使い方の詳細については、MSDN のトピック「[Visual Studio でのデバッグ](/visualstudio/debugger/debugging-in-visual-studio)」を参照してください。
 
 ## <a name="diagnostic-logs-overview"></a><a name="logsoverview"></a>診断ログの概要
 App Service アプリで実行される ASP.NET アプリケーションは、次の種類のログを作成できます。
@@ -268,7 +268,7 @@ App Service アプリで実行される ASP.NET アプリケーションは、�
 * プロジェクトをローカル実行したときのログを確認します。
 * Azure で実行中のアプリケーションによって生成されたログを確認します。
 
-Web ジョブでアプリケーション ログを作成する方法については、「 [Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法 - ログの記述方法](https://github.com/Azure/azure-webjobs-sdk/wiki)」を参照してください。 ログの表示とログを Azure に格納する方法の制御に関する次の手順は、Web ジョブによって作成されたアプリケーション ログにも適用されます。
+Web ジョブでアプリケーション ログを作成する方法については、「[Web ジョブ SDK を使用して Azure Queue Storage を操作する方法 - ログの記述方法](https://github.com/Azure/azure-webjobs-sdk/wiki)」を参照してください。 ログの表示とログを Azure に格納する方法の制御に関する次の手順は、Web ジョブによって作成されたアプリケーション ログにも適用されます。
 
 ### <a name="add-tracing-statements-to-the-application"></a>アプリケーションへのトレース ステートメントの追加
 1. `System.Diagnostics` の `Trace` ステートメントと `using` ステートメントを追加するために、*Controllers\HomeController.cs* を開き、`Index`、`About`、`Contact` のメソッドを次のコードで置き換えます。
@@ -330,7 +330,7 @@ Web ジョブでアプリケーション ログを作成する方法について
     ```
 
 `WebPageTraceListener` を使用すると、ブラウザーから `/trace.axd` にアクセスすることでトレース出力を表示できます。
-1. Web.config ファイルの `<system.web>` に、次のような <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">trace 要素</a>を追加します。
+1. Web.config ファイルの `<system.web>` に、次のような <a href="/previous-versions/dotnet/netframework-4.0/6915t83k(v=vs.100)">trace 要素</a>を追加します。
 
     ``` xml
     <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
@@ -340,11 +340,11 @@ Web ジョブでアプリケーション ログを作成する方法について
 1. ブラウザー ウィンドウのアドレス バーで、URL に続けて「*trace.axd*」と入力し、Enter キーを押します (例: `http://localhost:53370/trace.axd`)。
 1. **[アプリケーション トレース]** ページの最初の行 (BrowserLink の行とは異なる) で、 **[詳細の表示]** をクリックします。
 
-    ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png" alt-text="最初の行の [詳細の表示] が選択された Web ブラウザーの [アプリケーション トレース] ページのスクリーンショット。":::
 
     **[要求の詳細]** ページが表示され、`Index` メソッドに追加したトレース ステートメントからの出力が **[トレース情報]** セクションに表示されます。
 
-    ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png" alt-text="[トレース情報] セクションで強調表示されているメッセージが表示されている Web ブラウザーの [要求の詳細] ページのスクリーンショット。":::
 
     既定では、`trace.axd` の使用はローカルに限られます。 *Web.config* ファイルで `trace` 要素に `localOnly="false"` を追加すると、リモート アプリからも利用できるようになります。その例を次に示します。
 
@@ -355,20 +355,21 @@ Web ジョブでアプリケーション ログを作成する方法について
     ただし、運用アプリで `trace.axd` を有効にすることはセキュリティ上の理由でお勧めできません。 次のセクションでは、App Service アプリでトレース ログを読み取る簡単な方法を示します。
 
 ### <a name="view-the-tracing-output-in-azure"></a>Azure でのトレース出力の確認
-1. **ソリューション エクスプローラー**で Web プロジェクトを右クリックし、 **[発行]** をクリックします。
+1. **ソリューション エクスプローラー** で Web プロジェクトを右クリックし、 **[発行]** をクリックします。
 2. **[Web の発行]** ダイアログ ボックスの **[発行]** をクリックします。
 
     更新したプロジェクトを発行すると、ブラウザー ウィンドウが起動して自分のホーム ページが表示されます (ただし、 **[接続]** タブの **[宛先 URL]** をクリアした場合を除く)。
-3. **サーバー エクスプローラー**でアプリを右クリックし、 **[ストリーミング ログの表示]** を選択します。
+3. **サーバー エクスプローラー** でアプリを右クリックし、 **[ストリーミング ログの表示]** を選択します。
 
-    ![コンテキスト メニューからストリーミング ログを表示](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png" alt-text="新しいウィンドウで [ストリーミング ログの表示] が選択されている、アプリを右クリックした後のサーバー エクスプローラーのスクリーンショット。":::
 
-    ログ ストリーミング サービスに接続されたことを示すメッセージが**出力**ウィンドウに表示されます。ログが出力されないまま 1 分が経過すると、その都度、1 行の通知が追加されます。
+    ログ ストリーミング サービスに接続されたことを示すメッセージが **出力** ウィンドウに表示されます。ログが出力されないまま 1 分が経過すると、その都度、1 行の通知が追加されます。
 
-    ![コンテキスト メニューからストリーミング ログを表示](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png" alt-text="通知行を含むログ ストリーミング サービスへの接続の例が示されている、[出力] ウィンドウのスクリーンショット。":::
+
 4. アプリケーションのホーム ページが表示されているブラウザー ウィンドウで、 **[Contact]** をクリックします。
 
-    数秒すると、`Contact` メソッドに追加したエラー レベルのトレースが**出力**ウィンドウに表示されます。
+    数秒すると、`Contact` メソッドに追加したエラー レベルのトレースが **出力** ウィンドウに表示されます。
 
     ![出力ウィンドウのエラー トレース](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-errortrace.png)
 
@@ -378,7 +379,7 @@ Web ジョブでアプリケーション ログを作成する方法について
 
     ただし、 **[ストリーミング ログを表示]** を選択すると、 **[アプリケーション ログ記録 (ファイル システム)]** が自動的に **[エラー]** に変更されます。これは、エラー レベルのログが報告されることを意味します。 すべてのトレース ログを表示するためには、この設定を **[詳細]** に変更する必要があります。 "エラー" よりも低い重大度レベルを選択すると、その重大度を超えるログがすべて報告されます。 つまり [詳細] を選択した場合は、"情報"、"警告"、"エラー" に該当するログが表示されます。  
 
-5. 先ほどと同じように、**サーバー エクスプローラー**でアプリを右クリックし、 **[表示の設定]** をクリックします。
+5. 先ほどと同じように、**サーバー エクスプローラー** でアプリを右クリックし、 **[表示の設定]** をクリックします。
 6. **[アプリケーション ログ記録 (ファイル システム)]** を **[詳細]** に変更し、 **[保存]** をクリックします。
 
     ![トレース レベルを [詳細] に設定](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-applogverbose.png)
@@ -391,9 +392,9 @@ Web ジョブでアプリケーション ログを作成する方法について
     このセクションでは、ログの有効と無効の切り替えをアプリの設定で行いました。 トレース リスナーの有効と無効は、Web.config ファイルで設定することもできます。 ただし、Web.config ファイルに変更を加えると、アプリケーション ドメインの再利用処理が実行されます。一方、アプリの構成を介してログを有効にした場合は、そのようにはなりません。 問題の再現に時間がかかる場合や、発生のタイミングが散発的である場合、アプリケーション ドメインの再利用処理で問題が "解消" し、再発までしばらく待たなければならなくなります。 Azure で診断を有効にすると、アプリケーション ドメインの再利用処理は行われず、すぐにエラー情報を収集することができます。
 
 ### <a name="output-window-features"></a>出力ウィンドウの機能
-**出力**ウィンドウの **[Microsoft Azure ログ]** タブには、いくつかのボタンと 1 つのテキスト ボックスが表示されます。
+**出力** ウィンドウの **[Microsoft Azure ログ]** タブには、いくつかのボタンと 1 つのテキスト ボックスが表示されます。
 
-![[ログ] タブのボタン](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png)
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png" alt-text="[出力] ウィンドウの [Microsoft Azure ログ] タブのボタンとテキスト ボックスを示すスクリーンショット。":::
 
 それぞれの機能を次に示します。
 
@@ -405,15 +406,15 @@ Web ジョブでアプリケーション ログを作成する方法について
 * 検索文字列または正規表現によるフィルターをログに適用する。
 * **出力** ウィンドウを閉じる。
 
-検索文字列または正規表現を入力した場合、ログ情報は、Visual Studio によってクライアント側でフィルタリングされます。 つまり、フィルターの条件は、**出力**ウィンドウにログが表示された後に入力できます。フィルターの条件を変更するためにログを生成し直す必要はありません。
+検索文字列または正規表現を入力した場合、ログ情報は、Visual Studio によってクライアント側でフィルタリングされます。 つまり、フィルターの条件は、**出力** ウィンドウにログが表示された後に入力できます。フィルターの条件を変更するためにログを生成し直す必要はありません。
 
 ## <a name="view-web-server-logs"></a><a name="webserverlogs"></a>Web サーバーのログの表示
-Web サーバーのログには、アプリの HTTP アクティビティがすべて記録されます。 それらの HTTP 要求を**出力**ウィンドウに表示するには、アプリに対してその機能を有効にしたうえで、HTTP 要求を監視するための指定を Visual Studio に対して行う必要があります。
+Web サーバーのログには、アプリの HTTP アクティビティがすべて記録されます。 それらの HTTP 要求を **出力** ウィンドウに表示するには、アプリに対してその機能を有効にしたうえで、HTTP 要求を監視するための指定を Visual Studio に対して行う必要があります。
 
-1. **サーバー エクスプローラー**から開いた **Azure Web アプリの [構成]** タブで [Web サーバーのログ記録] を **[オン]** に変更し、 **[保存]** をクリックします。
+1. **サーバー エクスプローラー** から開いた **Azure Web アプリの [構成]** タブで [Web サーバーのログ記録] を **[オン]** に変更し、 **[保存]** をクリックします。
 
     ![Web サーバーのログ記録を有効にする](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-webserverloggingon.png)
-2. **出力**ウィンドウの **[監視する Microsoft Azure ログを指定する]** をクリックします。
+2. **出力** ウィンドウの **[監視する Microsoft Azure ログを指定する]** をクリックします。
 
     ![[監視する Azure ログの指定]](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-specifylogs.png)
 3. **[Microsoft Azure ログ オプション]** ダイアログ ボックスの **[Web サーバーのログ]** を選択し、 **[OK]** をクリックします。
@@ -430,13 +431,13 @@ Visual Studio で Web サーバーのログを初めて有効にしたとき、�
 Azure ポータルを使用して、Azure ストレージ アカウントへの Web サーバーのログ記録を有効にした後、Visual Studio でログ記録を無効にした場合、Visual Studio でログ記録を再度有効にすると、ストレージ アカウントの設定が復元されます。
 
 ## <a name="view-detailed-error-message-logs"></a><a name="detailederrorlogs"></a>詳細なエラー メッセージ ログの表示
-詳細なエラー ログでは、エラー応答コード (400 以上) が返された HTTP 要求について、いくつかの詳しい情報が確認できます。 それらの HTTP 要求を**出力**ウィンドウに表示するには、アプリに対してその機能を有効にしたうえで、HTTP 要求を監視するための指定を Visual Studio に対して行う必要があります。
+詳細なエラー ログでは、エラー応答コード (400 以上) が返された HTTP 要求について、いくつかの詳しい情報が確認できます。 それらの HTTP 要求を **出力** ウィンドウに表示するには、アプリに対してその機能を有効にしたうえで、HTTP 要求を監視するための指定を Visual Studio に対して行う必要があります。
 
-1. **サーバー エクスプローラー**から開いた **Azure Web アプリの [構成]** タブで **[詳細なエラー メッセージ]** を **[オン]** に変更し、 **[保存]** をクリックします。
+1. **サーバー エクスプローラー** から開いた **Azure Web アプリの [構成]** タブで **[詳細なエラー メッセージ]** を **[オン]** に変更し、 **[保存]** をクリックします。
 
     ![詳細なエラー メッセージを有効にする](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailedlogson.png)
 
-2. **出力**ウィンドウの **[監視する Microsoft Azure ログを指定する]** をクリックします。
+2. **出力** ウィンドウの **[監視する Microsoft Azure ログを指定する]** をクリックします。
 
 3. **[Microsoft Azure ログ オプション]** ダイアログ ボックスの **[すべてのログ]** を選択し、 **[OK]** をクリックします。
 
@@ -455,19 +456,20 @@ Azure ポータルを使用して、Azure ストレージ アカウントへの 
 ## <a name="download-file-system-logs"></a><a name="downloadlogs"></a>ファイル システムのログのダウンロード
 **出力** ウィンドウで監視できるすべてのログは *.zip* ファイルとしてダウンロードすることもできます。
 
-1. **出力**ウィンドウの **[ストリーミング ログのダウンロード]** をクリックします。
+1. **出力** ウィンドウの **[ストリーミング ログのダウンロード]** をクリックします。
 
-    ![[ログ] タブのボタン](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png" alt-text="[ストリーミング ログのダウンロード]"::: ボタンが強調表示されている [出力] ウィンドウのスクリーンショット。
 
     エクスプローラーが起動して *[ダウンロード]* フォルダーが開き、ダウンロード済みのファイルが選択状態で表示されます。
 
-    ![ダウンロードされたファイル](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png" alt-text="ダウンロードしたファイルが選択されている、エクスプローラーの [ダウンロード] フォルダーのスクリーンショット。":::
+
 2. この *.zip* ファイルを展開すると、次のフォルダー構造が確認できます。
 
-    ![ダウンロードされたファイル](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png)
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png" alt-text="ファイルが抽出された後の .zip ファイルのフォルダー構造のスクリーンショット。":::
 
    * アプリケーション トレース ログは、*LogFiles\Application* フォルダーの *.txt* ファイルに記録されます。
-   * Web サーバーのログは、*LogFiles\http\RawLogs* フォルダーの *.log* ファイルに記録されます。 これらのファイルの閲覧と操作は、 [Log Parser](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) などのツールを使って行うことができます。
+   * Web サーバーのログは、*LogFiles\http\RawLogs* フォルダーの *.log* ファイルに記録されます。 これらのファイルの閲覧と操作は、 [Log Parser](https://www.iis.net/downloads/community/2010/04/log-parser-22) などのツールを使って行うことができます。
    * 詳細なエラー メッセージのログは、*LogFiles\DetailedErrors* フォルダーの *.html* ファイルに記録されます。
 
      (*deployments* フォルダーは、ソース管理の発行によって作成されたファイルに使用されます。Visual Studio の発行に関連したファイルは保存されません。 *Git* フォルダーは、ログ ファイル ストリーミング サービスやソース管理の発行に関連したトレースに使用されます。)  
@@ -503,7 +505,7 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
     This setting specifies which Azure datacenter will host your storage account. For this tutorial your choice won't make a noticeable difference, but for a production web app you want your web server and your storage account to be in the same region to minimize latency and data egress charges. The web app (which you'll create later) should run in a region as close as possible to the browsers accessing your web app in order to minimize latency.
 3. Set the **Replication** drop-down list to **Locally redundant**.
    
-    When geo-replication is enabled for a storage account, the stored content is replicated to a secondary datacenter to enable failover to that location in case of a major disaster in the primary location. Geo-replication can incur additional costs. For test and development accounts, you generally don't want to pay for geo-replication. For more information, see [Create, manage, or delete a storage account](../storage/common/storage-create-storage-account.md).
+    When geo-replication is enabled for a storage account, the stored content is replicated to a secondary datacenter to enable failover to that location in case of a major disaster in the primary location. Geo-replication can incur additional costs. For test and development accounts, you generally don't want to pay for geo-replication. For more information, see [Create, manage, or delete a storage account](../storage/common/storage-account-create.md).
 4. Click **Create**.
 
     ![New storage account](./media/web-sites-dotnet-troubleshoot-visual-studio/newstorage.png)    
@@ -560,7 +562,7 @@ App Service アプリでは、同じ失敗した要求トレース機能が使�
 
 失敗した要求トレース ログは、ブラウザーから FTP で直接表示できるほか、FTP ツールを使ってローカル コンピューターにダウンロードした後、ローカルで表示することもできます。 このセクションでは、ブラウザーで直接閲覧する方法を説明します。
 
-1. **サーバー エクスプローラー**から開いた **[Azure Web アプリ]** ウィンドウの **[構成]** タブで、 **[失敗した要求トレース]** を **[オン]** に変更し、 **[保存]** をクリックします。
+1. **サーバー エクスプローラー** から開いた **[Azure Web アプリ]** ウィンドウの **[構成]** タブで、 **[失敗した要求トレース]** を **[オン]** に変更し、 **[保存]** をクリックします。
 
     ![失敗した要求トレースを有効にする](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-failedrequeston.png)
 2. アプリが表示されているブラウザー ウィンドウのアドレス バーで、余分な文字を URL に追加し、Enter キーを押して 404 エラーを発生させます。
@@ -622,7 +624,7 @@ Azure App Service のアプリのトラブルシューティングの詳細に�
 具体的なトラブルシューティングについての質問は、次のいずれかのフォーラムで投稿してください。
 
 * [ASP.NET サイト上の Azure フォーラム](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET)。
-* [Microsoft Q&A での Azure フォーラム](https://docs.microsoft.com/answers/topics/azure-webapps.html)。
+* [Microsoft Q&A での Azure フォーラム](/answers/topics/azure-webapps.html)。
 * [StackOverflow.com](https://www.stackoverflow.com)。
 
 ### <a name="debugging-in-visual-studio"></a>Visual Studio でのデバッグ
@@ -676,7 +678,7 @@ ASP.NET トレースに関しては、最新かつ必要な情報をすべて網
 ### <a name="analyzing-web-server-logs"></a>Web サーバーのログの分析
 Web サーバーのログの分析の詳細については、次のリソースを参照してください。
 
-* [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
+* [LogParser](https://www.iis.net/downloads/community/2010/04/log-parser-22)<br/>
   Web サーバーのログ ( *.log* ファイル) に記録されているデータを表示するためのツールです。
 * [IIS のパフォーマンスの問題やアプリケーション エラーを LogParser でトラブルシューティングする](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Web サーバーのログを分析する際に活用できる Log Parser ツールについて基本的な事柄が説明されています。

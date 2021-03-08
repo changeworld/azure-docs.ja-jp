@@ -1,18 +1,18 @@
 ---
 title: ポイント対サイトと RADIUS 認証を使用してコンピューターを仮想ネットワークに接続する:PowerShell | Azure
-description: P2S および RADIUS 認証を使って、Windows クライアントと Mac OS X クライアントを仮想ネットワークに安全に接続します。
+description: P2S および RADIUS 認証を使って、Windows クライアントと OS X クライアントを仮想ネットワークに安全に接続します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 11/18/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1bdaa2fd1e435e8bf7ff4b17c7f8a15d5bd249d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d962d3a4757b4c7b2d217f91aaf73d6ad4164d3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987160"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964849"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS 認証を使用して VNet へのポイント対サイト接続を構成する:PowerShell
 
@@ -24,10 +24,11 @@ P2S VPN 接続は、Windows デバイスと Mac デバイスから開始され�
 
 * RADIUS サーバー
 * VPN Gateway のネイティブ証明書認証
+* ネイティブ Azure Active Directory 認証 (Windows 10 のみ)
 
-この記事は、RADIUS サーバーによる認証を使用して P2S 構成を設定する際に役立ちます。 生成された証明書と VPN ゲートウェイ ネイティブ証明書認証を使用して認証を行いたい場合、[VPN ゲートウェイ ネイティブ証明書認証を使用した VNet へのポイント対サイト接続の構成](vpn-gateway-howto-point-to-site-rm-ps.md)に関するページを参照してください。
+この記事は、RADIUS サーバーによる認証を使用して P2S 構成を設定する際に役立ちます。 生成された証明書と VPN ゲートウェイ ネイティブ証明書認証を使用して認証を行いたい場合、[VPN ゲートウェイ ネイティブ証明書認証を使用した VNet へのポイント対サイト接続の構成](vpn-gateway-howto-point-to-site-rm-ps.md)に関するページ、または Azure Active Directory 認証用に [P2S OpenVPN プロトコル接続用の Azure Active Directory テナントを作成する](openvpn-azure-ad-tenant.md)方法に関するページを参照してください。
 
-![接続図 - RADIUS](./media/point-to-site-how-to-radius-ps/p2sradius.png)
+![RADIUS サーバーを使用した認証を使用する P2S 構成を示す図。](./media/point-to-site-how-to-radius-ps/p2sradius.png)
 
 ポイント対サイト接続に、VPN デバイスや公開 IP アドレスは必要ありません。 P2S では、SSTP (Secure Socket トンネリング プロトコル)、OpenVPN、または IKEv2 経由の VPN 接続が作成されます。
 
@@ -39,8 +40,8 @@ P2S VPN 接続は、Windows デバイスと Mac デバイスから開始され�
 
 P2S 接続には、以下のものが必要です。
 
-* RouteBased VPN ゲートウェイ。 
-* ユーザー認証を処理する RADIUS サーバー。 RADIUS サーバーは、オンプレミスまたは Azure VNet にデプロイできます。
+* RouteBased VPN ゲートウェイ。 
+* ユーザー認証を処理する RADIUS サーバー。 RADIUS サーバーは、オンプレミスまたは Azure VNet にデプロイできます。 また、高可用性のために 2 つの RADIUS サーバーを構成することもできます。
 * VNet に接続する Winodows デバイスの VPN クライアント構成パッケージ。 VPN クライアント構成パッケージには、VPN クライアントが P2S を介して接続するために必要な設定が含まれています。
 
 ## <a name="about-active-directory-ad-domain-authentication-for-p2s-vpns"></a><a name="aboutad"></a>P2S VPN の Active Directory (AD) ドメイン認証について
@@ -64,30 +65,30 @@ Azure サブスクリプションを持っていることを確認します。 A
 
 ### <a name="working-with-azure-powershell"></a>Azure PowerShell を使用する
 
-[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ### <a name="example-values"></a><a name="example"></a>値の例
 
 値の例を使用して、テスト環境を作成できます。また、この値を参考にしながら、この記事の例を確認していくこともできます。 手順をチュートリアルとして利用して値を変更せずに使用することも、実際の環境に合わせて値を変更することもできます。
 
 * **名前:VNet1**
-* **アドレス空間:192.168.0.0/16** および **10.254.0.0/16**<br>この例では、この構成が複数のアドレス空間で機能することを示すために、複数のアドレス空間を使用します。 ただし、この構成で複数のアドレス空間は必須ではありません。
+* **アドレス空間: 192.168.0.0/16** と **10.254.0.0/16**<br>この例では、この構成が複数のアドレス空間で機能することを示すために、複数のアドレス空間を使用します。 ただし、この構成で複数のアドレス空間は必須ではありません。
 * **サブネット名:FrontEnd**
-  * **サブネットのアドレス範囲:192.168.1.0/24**
-* **サブネット名:BackEnd**
-  * **サブネットのアドレス範囲:10.254.1.0/24**
-* **サブネット名:GatewaySubnet**<br>VPN ゲートウェイが機能するには、サブネット名 *GatewaySubnet* が必須となります。
-  * **GatewaySubnet のアドレス範囲:192.168.200.0/24** 
-* **VPN クライアント アドレス プール:172.16.201.0/24**<br>このポイント対サイト接続を利用して VNet に接続する VPN クライアントは、この VPN クライアント アドレス プールから IP アドレスを受け取ります。
+  * **サブネットのアドレス範囲: 192.168.1.0/24**
+* **サブネット名: BackEnd**
+  * **サブネットのアドレス範囲: 10.254.1.0/24**
+* **サブネット名: GatewaySubnet**<br>VPN ゲートウェイが機能するには、サブネット名 *GatewaySubnet* が必須となります。
+  * **GatewaySubnet のアドレス範囲: 192.168.200.0/24** 
+* **VPN クライアント アドレス プール: 172.16.201.0/24**<br>このポイント対サイト接続を利用して VNet に接続する VPN クライアントは、この VPN クライアント アドレス プールから IP アドレスを受け取ります。
 * **サブスクリプション:** サブスクリプションが複数ある場合は、適切なサブスクリプションを使用していることを確認します。
 * **リソース グループ:TestRG**
 * **場所:米国東部**
-* **DNS サーバー:** VNet の名前解決に利用する DNS サーバーの IP アドレス。 (省略可能)
-* **GW 名:Vnet1GW**
-* **パブリック IP 名:VNet1GWPIP**
+* **DNS サーバー**: VNet の名前解決に利用する DNS サーバーの IP アドレス。 (省略可能)
+* **GW 名: Vnet1GW**
+* **パブリック IP 名: VNet1GWPIP**
 * **VPN の種類:RouteBased**
 
-## <a name="1-set-the-variables"></a><a name="signin"></a>1.変数を設定する
+## <a name="1-set-the-variables"></a><a name="signin"></a>1. 変数を設定する
 
 使用する変数を宣言します。 次のサンプルを使用し、必要に応じて独自の値で置き換えます。 演習中の任意の時点で PowerShell/Cloud Shell セッションを閉じた場合は、値をもう一度コピーして貼り付けるだけで、変数を再宣言します。
 
@@ -147,11 +148,11 @@ Azure サブスクリプションを持っていることを確認します。 A
 
 仮想ネットワーク ゲートウェイを作成して構成する前に、RADIUS サーバーを認証用に正しく構成しておく必要があります。
 
-1. RADIUS サーバーをデプロイしていない場合はデプロイします。 デプロイ手順については、RADIUS ベンダーから提供されたセットアップ ガイドを参照してください。  
-2. RADIUS で VPN ゲートウェイを RADIUS クライアントとして構成します。 この RADIUS クライアントを追加する際に、作成した仮想ネットワーク GatewaySubnet を指定します。 
+1. RADIUS サーバーをデプロイしていない場合はデプロイします。 デプロイ手順については、RADIUS ベンダーから提供されたセットアップ ガイドを参照してください。  
+2. RADIUS で VPN ゲートウェイを RADIUS クライアントとして構成します。 この RADIUS クライアントを追加する際に、作成した仮想ネットワーク GatewaySubnet を指定します。 
 3. RADIUS サーバーの設定が完了したら、RADIUS クライアントが RADIUS サーバーとの通信に使用する RADIUS サーバーの IP アドレスと共有シークレットを取得します。 RADIUS サーバーが Azure VNet 内にある場合、RADIUS サーバー VM の CA IP を使用します。
 
-記事「[ネットワーク ポリシー サーバー (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)」では、AD ドメイン認証用に Windows RADIUS サーバー (NPS) を構成する方法についてのガイダンスが示されています。
+記事「[ネットワーク ポリシー サーバー (NPS)](/windows-server/networking/technologies/nps/nps-top)」では、AD ドメイン認証用に Windows RADIUS サーバー (NPS) を構成する方法についてのガイダンスが示されています。
 
 ## <a name="4-create-the-vpn-gateway"></a>4.<a name="creategw"></a>VPN ゲートウェイの作成
 
@@ -168,9 +169,9 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 
 ## <a name="5-add-the-radius-server-and-client-address-pool"></a>5.<a name="addradius"></a>RADIUS サーバーおよびクライアント アドレス プールの追加
  
-* -RadiusServer は名前または IP アドレスで指定できます。 サーバーがオンプレミスに存在する場合に名前を指定すると、VPN ゲートウェイはその名前を解決できない可能性があります。 この場合、サーバーの IP アドレスを指定することをお勧めします。 
+* -RadiusServer は名前または IP アドレスで指定できます。 サーバーがオンプレミスに存在する場合に名前を指定すると、VPN ゲートウェイはその名前を解決できない可能性があります。 この場合、サーバーの IP アドレスを指定することをお勧めします。 
 * -RadiusSecret は、RADIUS サーバーで構成したものと一致している必要があります。
-* -VpnClientAddressPool は、接続する VPN クライアントが受け取る IP アドレスの範囲です。 接続元であるオンプレミスの場所、または接続先とする VNet と重複しないプライベート IP アドレス範囲を使用してください。 また、構成するアドレス プールには十分な広さを確保してください。  
+* -VpnClientAddressPool は、接続する VPN クライアントが受け取る IP アドレスの範囲です。 接続元であるオンプレミスの場所、または接続先とする VNet と重複しないプライベート IP アドレス範囲を使用してください。 また、構成するアドレス プールには十分な広さを確保してください。  
 
 1. RADIUS シークレットのセキュリティで保護された文字列を作成します。
 
@@ -223,9 +224,20 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
+   **2 つ** の RADIUS サーバーを指定するには、次の構文を使用します。 必要に応じて **-VpnClientProtocol** の値を変更します
+
+    ```azurepowershell-interactive
+    $radiusServer1 = New-AzRadiusServer -RadiusServerAddress 10.1.0.15 -RadiusServerSecret $radiuspd -RadiusServerScore 30
+    $radiusServer2 = New-AzRadiusServer -RadiusServerAddress 10.1.0.16 -RadiusServerSecret $radiuspd -RadiusServerScore 1
+
+    $radiusServers = @( $radiusServer1, $radiusServer2 )
+
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientAddressPool 201.169.0.0/16 -VpnClientProtocol "IkeV2" -RadiusServerList $radiusServers
+    ```
+
 ## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6.<a name="vpnclient"></a>VPN クライアント構成パッケージのダウンロードと VPN クライアントの設定
 
-VPN クライアント構成を使用すると、デバイスは P2S 接続を介して VNet に接続できます。 VPN クライアント構成パッケージを生成して VPN クライアントを設定するには、[RADIUS 認証用の VPN クライアント構成の作成](point-to-site-vpn-client-configuration-radius.md)に関するページを参照してください。
+VPN クライアント構成を使用すると、デバイスは P2S 接続を介して VNet に接続できます。 VPN クライアント構成パッケージを生成して VPN クライアントを設定するには、[RADIUS 認証用の VPN クライアント構成の作成](point-to-site-vpn-client-configuration-radius.md)に関するページを参照してください。
 
 ## <a name="7-connect-to-azure"></a><a name="connect"></a>7.Azure に接続する
 
@@ -240,13 +252,13 @@ VPN クライアント構成を使用すると、デバイスは P2S 接続を�
 
 ### <a name="connect-from-a-mac-vpn-client"></a>Mac の VPN クライアントから接続する
 
-[ネットワーク] ダイアログ ボックスで使用するクライアント プロファイルを探し、 **[接続]** をクリックします。
+[ネットワーク] ダイアログ ボックスで使用するクライアント プロファイルを探し、**[接続]** をクリックします。
 
   ![Mac の接続](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 
 ## <a name="to-verify-your-connection"></a><a name="verify"></a>接続を確認するには
 
-1. VPN 接続がアクティブであることを確認するには、管理者特権でのコマンド プロンプトを開いて、 *ipconfig/all*を実行します。
+1. VPN 接続がアクティブであることを確認するには、管理者特権でのコマンド プロンプトを開いて、 *ipconfig/all* を実行します。
 2. 結果を表示します。 受信した IP アドレスが、構成に指定したポイント対サイト VPN クライアント アドレス プール内のアドレスのいずれかであることに注意してください。 結果は次の例のようになります。
 
    ```
@@ -266,7 +278,11 @@ P2S 接続のトラブルシューティングについては、「[トラブル
 
 ## <a name="to-connect-to-a-virtual-machine"></a><a name="connectVM"></a>仮想マシンに接続するには
 
-[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-p2s-include.md)]
+[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm.md)]
+
+* VNet に対して DNS サーバーの IP アドレスが指定された後に VPN クライアント構成パッケージが生成されたことを確認します。 DNS サーバーの IP アドレスを更新した場合は、新しい VPN クライアント構成パッケージを生成してインストールしてください。
+
+* 接続元のコンピューターのイーサネット アダプターに割り当てられている IPv4 アドレスを "ipconfig" でチェックします。 その IP アドレスが、接続先の VNet のアドレス範囲内または VPNClientAddressPool のアドレス範囲内にある場合、これを "アドレス空間の重複" といいます。 アドレス空間がこのように重複していると、ネットワーク トラフィックが Azure に到達せずローカル ネットワーク上に留まることになります。
 
 ## <a name="faq"></a><a name="faq"></a>FAQ
 
@@ -276,4 +292,4 @@ P2S 接続のトラブルシューティングについては、「[トラブル
 
 ## <a name="next-steps"></a>次のステップ
 
-接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/azure-vm-network-overview.md)」を参照してください。
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](../index.yml) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/network-overview.md)」を参照してください。

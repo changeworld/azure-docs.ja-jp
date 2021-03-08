@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bddf1642b2013567fbc23278b3d8d32692601d55
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 1f5f7f823d6c5f5860c2e78fe8cacdd1d788c581
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87906973"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95974121"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>チュートリアル: B2B ゲスト ユーザーに多要素認証を適用する
 
@@ -63,7 +63,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
     ![ゲスト招待メッセージを入力する場所を示すスクリーンショット](media/tutorial-mfa/tutorial-mfa-user-4.png)
 
-6.  **[招待]** を選択して、招待をゲスト ユーザーに自動的に送信します。 **ユーザーが正常に招待された**ことを示すメッセージが表示されます。 
+6.  **[招待]** を選択して、招待をゲスト ユーザーに自動的に送信します。 **ユーザーが正常に招待された** ことを示すメッセージが表示されます。 
 7.  招待を送信すると、ユーザー アカウントがディレクトリにゲストとして自動的に追加されます。
 
 ## <a name="test-the-sign-in-experience-before-mfa-setup"></a>MFA を設定する前にサインイン エクスペリエンスをテストする
@@ -89,7 +89,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 12. **[選択]** ページで **[Microsoft Azure Management]** を選択し、 **[選択]** を選択します。
 
-    ![[Microsoft Azure の管理] アプリが選択された状態を示すスクリーンショット](media/tutorial-mfa/tutorial-mfa-policy-11.png)
+    ![[Microsoft Azure Management] オプションが強調表示されているスクリーンショット。](media/tutorial-mfa/tutorial-mfa-policy-11.png)
 
 13. **[クラウド アプリ]** ページで、 **[完了]** を選択します。
 14. **[新規]** ページの **[アクセス制御]** セクションで、 **[付与]** を選択します。
@@ -107,7 +107,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1.  **[条件付きアクセス - ポリシー]** ページで、 **[What If]** を選択します。 
 
-    ![[What if] オプションを選択する場所を示すスクリーンショット](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
+    ![[条件付きアクセス - ポリシー] ページの [What-if] オプションを選択する場所を示すスクリーンショット。](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
 
 2.  **[ユーザー]** を選択し、テスト用のテスト ユーザーを選択し、 **[選択]** を選択します。
 

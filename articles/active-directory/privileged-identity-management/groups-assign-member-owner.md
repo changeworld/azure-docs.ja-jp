@@ -15,12 +15,12 @@ ms.date: 08/18/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06e61bb966313265f7e3772dbbf6017a03a42386
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 48c4473cfafce1215219251c47bce1d5730645fc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869655"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534422"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Privileged Identity Management で特権アクセス グループ (プレビュー) の資格を割り当てる
 
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 
 1. 特権アクセス グループの適用対象にするメンバーまたは所有者を選択します。
 
-    ![[メンバーまたはグループの選択] ウィンドウ](./media/groups-assign-member-owner/add-assignments.png)
+    ![[メンバーまたはグループの選択] ウィンドウが開かれ、[選択] ボタンが強調表示されている [割り当ての追加] ページを示すスクリーンショット。](./media/groups-assign-member-owner/add-assignments.png)
 
 1. **[次へ]** を選択して、メンバーシップまたは所有権の期間を設定します。
 

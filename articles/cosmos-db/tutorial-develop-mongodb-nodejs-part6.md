@@ -8,16 +8,17 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jopapa
-ms.custom: seodec18, devx-track-javascript
+ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: a5d697465f811f468fb0047284126deae0c455dd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c8e2c707566b08219b495e76be7f6f6130d876ab
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424309"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081316"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - アプリに CRUD 関数を追加する
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 複数のパートから成るこのチュートリアルでは、Express と Angular を使用して Node.js で新しいアプリを作成した後、[Cosmos DB の MongoDB 用 API を使用して構成された Cosmos アカウント](mongodb-introduction.md)にそれを接続する方法を紹介します。 このチュートリアルのパート 6 では、[パート 5](tutorial-develop-mongodb-nodejs-part5.md) の内容をベースとして、次のタスクについて取り上げます。
 
@@ -36,7 +37,7 @@ ms.locfileid: "87424309"
 
 ## <a name="add-a-post-function-to-the-hero-service"></a>Post 関数をヒーロー サービスに追加する
 
-1. Visual Studio Code で、 **[エディターの分割]** ボタン (:::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png":::) を押して、**routes.js** と **hero.service.js** を左右に並べて表示します。
+1. Visual Studio Code で、 **[エディターの分割]** ボタン (:::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png":::) を押して、 **routes.js** と **hero.service.js** を左右に並べて表示します。
 
     **hero.service.js** の 5 行目にある `getHeroes` 関数が、routes.js の 7 行目で呼び出されていることがわかります。  これと同じペアリングを Post、Put、Delete の各関数についても作成する必要があります。 
 

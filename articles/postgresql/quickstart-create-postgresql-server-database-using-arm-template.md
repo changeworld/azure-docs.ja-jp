@@ -1,18 +1,18 @@
 ---
 title: クイック スタート:Azure DB for PostgreSQL を作成する - ARM テンプレート
-description: この記事では、Azure Resource Manager テンプレートを使用して、Azure Database for PostgreSQL 単一サーバーを作成する方法について説明します。
-author: mgblythe
+description: このクイックスタートでは、Azure Resource Manager テンプレートを使用して、Azure Database for PostgreSQL 単一サーバーを作成する方法について説明します。
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
-ms.date: 05/14/2020
-ms.openlocfilehash: 0661e743fb2493b9eab4b90dcb65297e99c2cc64
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.date: 02/11/2021
+ms.openlocfilehash: fb9f12b3b31f1049cd4d9306294783e514331229
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661216"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382193"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>クイック スタート:ARM テンプレートを使用して、Azure Database for PostgreSQL - Single Server を作成する
 
@@ -22,7 +22,7 @@ Azure Database for PostgreSQL は、高可用性の PostgreSQL データベー�
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure へのデプロイ":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -66,17 +66,17 @@ Azure Database for PostgreSQL サーバーは、構成済みの一連のコン�
 
 Azure portal で Azure Database for PostgreSQL サーバーのテンプレートをデプロイするには、次のリンクを選択します。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure へのデプロイ":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
 **[Deploy Azure Database for PostgreSQL with VNet]\(VNet を使用して Azure Database for PostgreSQL をデプロイする\)** ページで、次の作業を行います。
 
 1. **[リソース グループ]** の **[新規作成]** を選択し、新しいリソース グループの名前を入力し、 **[OK]** を選択します。
 
-2. 新しいリソース グループを作成した場合は、リソース グループと新しいサーバーの**場所**を選択します。
+2. 新しいリソース グループを作成した場合は、リソース グループと新しいサーバーの **場所** を選択します。
 
-3. **サーバー名**、**管理者のログイン**、**管理者のログイン パスワード**を入力します。
+3. **サーバー名**、**管理者のログイン**、**管理者のログイン パスワード** を入力します。
 
-    ![[Deploy Azure Database for PostgreSQL with VNet]\(VNet を使用して Azure Database for PostgreSQL をデプロイする\) ウィンドウ、Azure クイックスタート テンプレート、Azure portal](./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png)
+    :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="[Deploy Azure Database for PostgreSQL with VNet]\(VNet を使用して Azure Database for PostgreSQL をデプロイする\) ウィンドウ、Azure クイックスタート テンプレート、Azure portal":::
 
 4. 必要に応じて、他の既定の設定を変更します。
 
@@ -174,6 +174,34 @@ read -p "Press [ENTER] to continue: "
 ```
 
 ---
+
+## <a name="exporting-arm-template-from-the-portal"></a>ポータルから ARM テンプレートをエクスポートする
+Azure portal から [ARM テンプレートをエクスポート](../azure-resource-manager/templates/export-template-portal.md)できます。 テンプレートをエクスポートするには、次の 2 とおりの方法があります。
+
+- [リソース グループまたはリソースからのエクスポート](../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource)。 このオプションでは、既存のリソースから新しいテンプレートを生成します。 エクスポートされたテンプレートは、リソース グループの現在の状態の "スナップショット" です。 リソース グループ全体、またはそのリソース グループ内の特定のリソースをエクスポートできます。
+- [デプロイ前または履歴からのエクスポート](../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment)。 このオプションでは、デプロイに使用されたテンプレートのそのままのコピーを取得します。
+
+テンプレートをエクスポートすると、PostgreSQL サーバー リソースの ```"properties":{ }``` セクションに、セキュリティ上の理由から ```administratorLogin``` と ```administratorLoginPassword``` が含まれていないことがわかります。 テンプレートをデプロイする前に、これらのパラメーターをテンプレートに追加する **必要があります**。そうしないと、テンプレートは失敗します。
+
+```
+"resources": [
+    {
+      "type": "Microsoft.DBforPostgreSQL/servers",
+      "apiVersion": "2017-12-01",
+      "name": "[parameters('servers_name')]",
+      "location": "southcentralus",
+      "sku": {
+                "name": "B_Gen5_1",
+                "tier": "Basic",
+                "family": "Gen5",
+                "capacity": 1
+            },
+      "properties": {
+        "administratorLogin": "[parameters('administratorLogin')]",
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+```
+
+
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

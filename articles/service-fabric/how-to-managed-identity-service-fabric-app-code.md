@@ -3,22 +3,75 @@ title: アプリケーションでマネージド ID を使用する
 description: Azure Service Fabric アプリケーション コードでマネージド ID を使用して Azure サービスにアクセスする方法。
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 07f960c01367ab42a434a8c2e1e276d9c5f7bd11
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e26a29020f26583f7e4aa16434c7e8647ba9a5a3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253645"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871063"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Service Fabric アプリケーションのマネージド ID を活用して Azure サービスにアクセスする方法
 
 Service Fabric アプリケーションは、マネージド ID を利用して、Azure Active Directory ベースの認証をサポートしている他の Azure リソースにアクセスできます。 アプリケーションはその ID を表す[アクセス トークン](../active-directory/develop/developer-glossary.md#access-token) (システム割り当ての場合とユーザー割り当ての場合がある) を取得でき、それを "ベアラー" トークンとして使用して、別のサービス ([保護されたリソース サーバー](../active-directory/develop/developer-glossary.md#resource-server)とも呼ばれる) に対してそれ自体を認証することができます。 このトークンは Service Fabric アプリケーションに割り当てられた ID を表し、その ID を共有する Azure リソース (SF アプリケーションを含む) に対してのみ発行されます。 マネージド ID の詳細な説明、およびシステム割り当ての ID とユーザー割り当ての ID の違いについては、[マネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)に関するドキュメントを参照してください。 この記事の中では、マネージド ID が有効になった Service Fabric アプリケーションを[クライアント アプリケーション](../active-directory/develop/developer-glossary.md#client-application)と呼びます。
+
+Reliable Services とコンテナーでシステム割り当ておよびユーザー割り当ての [Service Fabric アプリケーションのマネージド ID](https://github.com/Azure-Samples/service-fabric-managed-identity) を使用して示すコンパニオン サンプル アプリケーションをご確認ください。
 
 > [!IMPORTANT]
 > マネージド ID は、Azure リソースと、そのリソースを含むサブスクリプションに関連付けられた、対応する Azure AD テナント内のサービス プリンシパルの間の関連付けを表します。 そのため、Service Fabric のコンテキストでは、マネージド ID は、Azure リソースとしてデプロイされたアプリケーションでのみサポートされます。 
 
 > [!IMPORTANT]
 > Service Fabric アプリケーションのマネージド ID を使用する前に、保護されたリソースへのアクセス権をクライアント アプリケーションに付与する必要があります。 [Azure AD 認証をサポートする Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)の一覧を参照してサポートを確認してから、それぞれのサービスのドキュメントを参照して、関心のあるリソースへの ID アクセス権を付与する特定の手順を確認してください。 
+ 
+
+## <a name="leverage-a-managed-identity-using-azureidentity"></a>Azure.Identity を使用してマネージド ID を活用する
+
+Azure Identity SDK で Service Fabric がサポートされるようになりました。 Azure.Identity を使用すると、トークンのフェッチ、トークンのキャッシュ、およびサーバー認証が処理されるため、Service Fabric アプリのマネージド ID を使用するためのコードの記述が容易になります。 Azure リソースのほとんどは、アクセスされている間、トークンの概念が非表示になります。
+
+Service Fabric のサポートは、これらの言語の次のバージョンで利用できます。 
+- [C# (バージョン 1.3.0)](https://www.nuget.org/packages/Azure.Identity)。 [C# のサンプル](https://github.com/Azure-Samples/service-fabric-managed-identity)を参照してください。
+- [Python (バージョン 1.5.0)](https://pypi.org/project/azure-identity/)。 [Python のサンプル](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/identity/azure-identity/tests/managed-identity-live/service-fabric/service_fabric.md)を参照してください。
+- [Java (バージョン 1.2.0)](/java/api/overview/azure/identity-readme)。
+
+資格情報の初期化、および資格情報を使用した Azure Key Vault からのシークレットのフェッチに関する C# のサンプルを次に示します。
+
+```csharp
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+
+namespace MyMIService
+{
+    internal sealed class MyMIService : StatelessService
+    {
+        protected override async Task RunAsync(CancellationToken cancellationToken)
+        {
+            try
+            {
+                // Load the service fabric application managed identity assigned to the service
+                ManagedIdentityCredential creds = new ManagedIdentityCredential();
+
+                // Create a client to keyvault using that identity
+                SecretClient client = new SecretClient(new Uri("https://mykv.vault.azure.net/"), creds);
+
+                // Fetch a secret
+                KeyVaultSecret secret = (await client.GetSecretAsync("mysecret", cancellationToken: cancellationToken)).Value;
+            }
+            catch (CredentialUnavailableException e)
+            {
+                // Handle errors with loading the Managed Identity
+            }
+            catch (RequestFailedException)
+            {
+                // Handle errors with fetching the secret
+            }
+            catch (Exception e)
+            {
+                // Handle generic errors
+            }
+        }
+    }
+}
+
+```
 
 ## <a name="acquiring-an-access-token-using-rest-api"></a>REST API を使用してアクセス トークンを取得する
 マネージド ID が有効になっているクラスターでは、Service Fabric ランタイムによって、アプリケーションがアクセス トークンを取得するために使用できる localhost エンドポイントが公開されます。 このエンドポイントはクラスターのすべてのノードで使用でき、そのノード上のすべてのエンティティからアクセス可能です。 承認された呼び出し元は、このエンドポイントを呼び出して認証コードを提示することで、アクセス トークンを取得できます。このコードは、個別のサービス コード パッケージのアクティブ化ごとに Service Fabric ランタイムによって生成され、そのサービス コード パッケージをホストしているプロセスの有効期間にバインドされます。
@@ -377,3 +430,4 @@ Azure AD をサポートするサービスの一覧と、それぞれのリソ�
 * [システム割り当てのマネージド ID を持つ Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [ユーザー割り当てのマネージド ID を持つ Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Azure Service Fabric アプリケーションに他の Azure リソースへのアクセス権を付与する](./how-to-grant-access-other-resources.md)
+* [Service Fabric マネージド ID を使用してサンプル アプリケーションを探索する](https://github.com/Azure-Samples/service-fabric-managed-identity)

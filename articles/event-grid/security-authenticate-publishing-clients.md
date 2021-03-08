@@ -4,15 +4,15 @@ description: この記事では、Event Grid のカスタム トピックにイ�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e934ce0d8f5e31dc8dd7592a2e553cd278af2b10
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2c415b7e1bb6bd7a2116da82c7d8f1de205009d0
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019115"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886262"
 ---
 # <a name="authenticate-publishing-clients-azure-event-grid"></a>発行クライアントを認証する (Azure Event Grid)
-この記事では、**アクセス キー**または **Shared Access Signature (SAS)** トークンを使用して、Azure Event Grid のトピックまたはドメインにイベントを発行するクライアントを認証する方法について説明します。 SAS トークンを使用することをお勧めしますが、キー認証はプログラミングが簡単で、既存の多くの Webhook 発行元と互換性があります。  
+この記事では、**アクセス キー** または **Shared Access Signature (SAS)** トークンを使用して、Azure Event Grid のトピックまたはドメインにイベントを発行するクライアントを認証する方法について説明します。 SAS トークンを使用することをお勧めしますが、キー認証はプログラミングが簡単で、既存の多くの Webhook 発行元と互換性があります。  
 
 ## <a name="authenticate-using-an-access-key"></a>アクセス キーを使用して認証する
 アクセス キーによる認証は、最も簡単な形式の認証です。 アクセス キーは、HTTP ヘッダーまたは URL クエリ パラメーターとして渡すことができます。 
@@ -66,18 +66,33 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 }
 ```
 
+```python
+def generate_sas_token(uri, key, expiry=3600):
+    ttl = datetime.datetime.utcnow() + datetime.timedelta(seconds=expiry)
+    encoded_resource = urllib.parse.quote_plus(uri)
+    encoded_expiration_utc = urllib.parse.quote_plus(ttl.isoformat())
+
+    unsigned_sas = f'r={encoded_resource}&e={encoded_expiration_utc}'
+    signature = b64encode(HMAC(b64decode(key), unsigned_sas.encode('utf-8'), sha256).digest())
+    encoded_signature = urllib.parse.quote_plus(signature)
+    
+    token = f'r={encoded_resource}&e={encoded_expiration_utc}&s={encoded_signature}'
+
+    return token
+```
+
 ### <a name="using-aeg-sas-token-header"></a>aeg-sas-token ヘッダーの使用
-`aeg-sas-toke` ヘッダーの値として SAS トークンを渡す例を次に示します。 
+`aeg-sas-token` ヘッダーの値として SAS トークンを渡す例を次に示します。 
 
 ```http
-aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
+aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2fapi%2fevents&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
 ```
 
 ### <a name="using-authorization-header"></a>Authorization ヘッダーの使用
 `Authorization` ヘッダーの値として SAS トークンを渡す例を次に示します。 
 
 ```http
-Authorization: SharedAccessSignature r=https%3a%2f%2fmytopic.eventgrid.azure.net%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
+Authorization: SharedAccessSignature r=https%3a%2f%2fmytopic.eventgrid.azure.net%2fapi%2fevents&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
 ```
 
 ## <a name="next-steps"></a>次のステップ

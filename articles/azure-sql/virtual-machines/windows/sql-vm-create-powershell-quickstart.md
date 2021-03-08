@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: deployment
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
@@ -13,12 +14,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a458e0c03687df9d1cd53df69b8cf275da04174a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 350df1aede076120fd14dc46da351835c894c5b4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89073678"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356839"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Windows 仮想マシンに SQL Server を作成する
 
@@ -150,9 +151,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="register-with-sql-vm-rp"></a>SQL VM RP への登録 
 
-ポータル統合および SQL VM の機能を利用するには、[SQL VM リソースプロバイダー](sql-vm-resource-provider-register.md)に登録する必要があります。
+ポータル統合および SQL VM の機能を利用するには、[SQL IaaS Agent 拡張機能](sql-agent-extension-manually-register-single-vm.md)に登録する必要があります。
 
-すべての機能を利用するには、フル モードでリソースプロバイダーに登録する必要があります。 ただし、そのようにすると SQL Server サービスが再起動されるので、最初は軽量モードで登録しておき、メンテナンス期間中にフル モードにアップグレードする方法が推奨されます。 
+すべての機能を利用するには、フル モードで拡張機能に登録する必要があります。 ただし、そのようにすると SQL Server サービスが再起動されるので、最初は軽量モードで登録しておき、メンテナンス期間中にフル モードにアップグレードする方法が推奨されます。 
 
 まず、SQL Server VM を軽量モードで登録します。 
 
@@ -171,8 +172,8 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 # Get the existing Compute VM
 $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
       
-# Register with SQL VM resource provider in full mode
-New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
+# Register with SQL IaaS Agent extension in full mode
+Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
 ```
 
 

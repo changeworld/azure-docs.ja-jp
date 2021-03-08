@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bae3f4a0d8c793061bb3833b04717d378e86f85f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1ffa5d359e689220bd8cdbc7b9f6e305f451269a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519789"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458758"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>チュートリアル: Azure Active Directory と LaunchDarkly の統合
 
@@ -27,7 +27,7 @@ LaunchDarkly と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して LaunchDarkly に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,8 +41,8 @@ LaunchDarkly と Azure AD の統合を構成するには、次のものが必要
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* LaunchDarkly では、**SP と IDP** によって開始される SSO がサポートされます
-* LaunchDarkly では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* LaunchDarkly では、 **SP と IDP** によって開始される SSO がサポートされます
+* LaunchDarkly では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-launchdarkly-from-the-gallery"></a>ギャラリーからの LaunchDarkly の追加
 
@@ -62,13 +62,13 @@ Azure AD への LaunchDarkly の統合を構成するには、ギャラリーか
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**LaunchDarkly**」と入力し、結果ウィンドウで **LaunchDarkly** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **LaunchDarkly** 」と入力し、結果ウィンドウで **LaunchDarkly** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の LaunchDarkly](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、[アプリケーション名] を使用して Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、[アプリケーション名] を使用して Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと [アプリケーション名] 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 [アプリケーション名] を使用して Azure AD のシングル サインオンを構成し、テストするには、次の構成要素を完了する必要があります。
@@ -100,22 +100,22 @@ Azure AD への LaunchDarkly の統合を構成するには、ギャラリーか
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[LaunchDarkly のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **[識別子]** テキスト ボックスに、`app.launchdarkly.com` という URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://app.launchdarkly.com/trust/saml2/acs/<customers-unique-id>` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > 応答 URL 値は、実際の値ではありません。 実際の応答 URL に値を置き換えます。実際の値については後で説明します。 アプリケーションを **IDP** モードで使用する場合は、 **[サインオン URL]** フィールドを空白のままにする必要があります。そうしないと、**IDP** からログインを開始できません。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > 応答 URL 値は、実際の値ではありません。 実際の応答 URL に値を置き換えます。実際の値については後で説明します。 アプリケーションを **IDP** モードで使用する場合は、 **[サインオン URL]** フィールドを空白のままにする必要があります。そうしないと、 **IDP** からログインを開始できません。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     **[サインオン URL]** ボックスに、`https://app.launchdarkly.com` という形式で URL を入力します。
 
-    ![[LaunchDarkly のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -135,23 +135,23 @@ Azure AD への LaunchDarkly の統合を構成するには、ギャラリーか
 
 2. 左側のナビゲーション パネルから **[アカウント設定]** を選択します。
 
-    ![LaunchDarkly 構成](./media/launchdarkly-tutorial/configure1.png)
+    ![[Production]\(運用\) の下で [Account Settings]\(アカウント設定\) 項目が選択されているスクリーンショット。](./media/launchdarkly-tutorial/configure1.png)
 
 3. **[セキュリティ]** タブをクリックします。
 
-    ![LaunchDarkly 構成](./media/launchdarkly-tutorial/configure2.png)
+    ![[Account settings]\(アカウント設定\) の [Security]\(セキュリティ\) タブを示すスクリーンショット。](./media/launchdarkly-tutorial/configure2.png)
 
 4. **[ENABLE SSO]\(SSO を有効にする)** 、 **[EDIT SAML CONFIGURATION]\(SAML 構成の編集)** の順にクリックします。
 
-    ![LaunchDarkly 構成](./media/launchdarkly-tutorial/configure3.png)
+    ![[ENABLE S S O]\(S S O を有効にする\) および [EDIT SAML CONFIGURATION]\(SAML 構成の編集\) を操作できる [Single sign-on]\(シングル サインオン\) ページを示すスクリーンショット。](./media/launchdarkly-tutorial/configure3.png)
 
 5. **[Edit your SAML configuration]\(SAML の構成の編集)** セクションで、次の手順を実行します。
 
-    ![LaunchDarkly 構成](./media/launchdarkly-tutorial/configure4.png)
+    ![ここで説明されている変更を行うことができる [Edit your SAML configuration]\(SAML の構成の編集\) セクションを示すスクリーンショット。](./media/launchdarkly-tutorial/configure4.png)
 
     a. インスタンスの **SAML コンシューマー サービス URL** をコピーし、Azure Portal で、 **[LaunchDarkly ドメインと URL]** セクションの [応答 URL] ボックスに貼り付けます。
 
-    b. **[サインオン URL]** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[サインオン URL]** テキストボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     c. Azure Portal からダウンロードした証明書をメモ帳で開き、その内容をコピーして **[X.509 証明書]** ボックスに貼り付けます。または、 **[upload one]\(アップロードする)** をクリックして証明書を直接アップロードできます。
 
@@ -173,9 +173,9 @@ Azure AD への LaunchDarkly の統合を構成するには、ギャラリーか
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -213,18 +213,18 @@ Azure AD への LaunchDarkly の統合を構成するには、ギャラリーか
 このセクションの目的は、LaunchDarkly で Britta Simon というユーザーを作成することです。 LaunchDarkly では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 LaunchDarkly にアクセスしようとすると、ユーザーがまだ存在しない場合は新しいユーザーが作成されます。
 
 > [!Note]
-> ユーザーを手動で作成する必要がある場合は、 [LaunchDarkly クライアント サポート チーム](mailto:support@launchdarkly.com)にお問い合わせください。
+> ユーザーを手動で作成する必要がある場合は、[LaunchDarkly クライアント サポート チーム](mailto:support@launchdarkly.com)にお問い合わせください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [LaunchDarkly] タイルをクリックすると、SSO を設定した LaunchDarkly に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [LaunchDarkly] タイルをクリックすると、SSO を設定した LaunchDarkly に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

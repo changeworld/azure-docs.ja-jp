@@ -5,21 +5,21 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 28a6ea4ed40df909b4d74ff52703babb8e8cd949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b5dc30de19704b5e8950515cfa6224b4bbdbaf0
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791744"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341348"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Azure Security Center でのセキュリティ インシデントの管理
 
 セキュリティ アラートのトリアージと調査は、熟練のセキュリティ アナリストでさえ長時間を要することのある作業です。 多くのユーザーにとっては、どこから始めればよいかを判断することも困難です。 
 
-Security Center では、[分析](security-center-detection-capabilities.md)を使用して個別の[セキュリティ アラート](security-center-managing-and-responding-alerts.md)間の情報を接続します。 これらの接続を使用することで、Security Center では攻撃者の行動や影響を受けるリソースを理解するのに役立つ、攻撃活動とその関連アラートの単一ビューを作成します。
+Security Center では、[分析](./security-center-alerts-overview.md)を使用して個別の[セキュリティ アラート](security-center-managing-and-responding-alerts.md)間の情報を接続します。 これらの接続を使用することで、Security Center では攻撃者の行動や影響を受けるリソースを理解するのに役立つ、攻撃活動とその関連アラートの単一ビューを作成します。
 
 このページでは、Security Center のインシデントの概要について説明します。
 
@@ -62,6 +62,5 @@ Security Center でのセキュリティ インシデントとは、 [キル チ
 
 このページでは、Security Center のセキュリティ インシデント機能について説明しました。 関連情報については、次のページを参照してください。
 
-* [Security Center での脅威の防止](threat-protection.md)
-* [Security Center のセキュリティ アラート](security-center-alerts-overview.md)
-* [セキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md)
+- [Security Center のセキュリティ アラート](security-center-alerts-overview.md)
+- [セキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md)

@@ -2,16 +2,18 @@
 title: 人工知能 (AI)
 description: LUIS では、人工知能 (AI) を使用し、定義されたスキーマに基づいて、データに言語理解を提供します。
 ms.topic: conceptual
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.date: 08/07/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: bdcede01ec6bab5f8b43d89ff40d588a011d5dfb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 39f73dd002091451ae832516d525499eae98564d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751350"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021373"
 ---
-# <a name="artificial-intelligence-in-language-understanding-luis"></a>Language Understanding (LUIS) における人口知能
+# <a name="artificial-intelligence-in-language-understanding-luis"></a>Language Understanding (LUIS) における人工知能
 
 LUIS では、人工知能 (AI) を使用し、定義されたスキーマに基づいて、データに自然言語理解 (NLU) を提供します。
 
@@ -36,12 +38,12 @@ LUIS では、人工知能 (AI) を使用し、定義されたスキーマに基
 * LUIS の構成可能な NLP の側面:
     * [トークン化](luis-language-support.md#tokenization)
     * 分音記号、句読点、および単語形式の [API 設定](luis-reference-application-settings.md)を使用した形態論
-* 他の [Cognitive Services](../Welcome.md) によって提供されるクエリ (発話) の前または後処理。例:
+* 他の [Cognitive Services](../what-are-cognitive-services.md) によって提供されるクエリ (発話) の前または後処理。例:
     * [翻訳](../translator/translator-info-overview.md)
 
 ## <a name="natural-language-understanding-nlu"></a>自然言語理解 (NLU)
 
-NLU は、言語ステートメントを、ユーザーの言うことを自然に理解できる表現に_変換_する機能です。 自然言語理解は、依然として非常に困難な問題であり、_AI-hard (AI 困難)_ な問題として定義されています。
+NLU は、言語ステートメントを、ユーザーの言うことを自然に理解できる表現に _変換_ する機能です。 自然言語理解は、依然として非常に困難な問題であり、_AI-hard (AI 困難)_ な問題として定義されています。
 
 LUIS は、意図と抽出に重点を置くように意図されています。これには、次を識別できることが含まれます。
 * ユーザーが何を欲しているか

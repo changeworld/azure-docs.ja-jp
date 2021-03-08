@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
-ms.openlocfilehash: e49462612b58163c2ac51b78584761d0d8b8bd06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a89ce873c53e94036aa4f8ac2c2870365924187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700567"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91537210"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-the-azure-portal"></a>Azure portal を使用して Direct ピアリングを作成または変更する
 
@@ -37,7 +37,7 @@ ms.locfileid: "84700567"
 1. **[Create a Peering]\(ピアリングの作成\)** ページの **[基本]** タブで、次のようにボックスに入力します。
 
 
-    ![Peering Service の登録](./media/setup-basics-tab.png)
+    ![[ピアリングの作成] ページの [基本] タブが表示されているスクリーンショット。[新規作成] リンクのコールアウトが示されています。](./media/setup-basics-tab.png)
 
 2. お使いの Azure サブスクリプションを選択します。
 
@@ -59,7 +59,7 @@ ms.locfileid: "84700567"
 
 
 
-    ![Peering Service の登録](./media/setup-direct-basics-filled-tab.png)
+    ![[ピアリングの作成] ページの [基本] タブが表示されているスクリーンショット。すべての値が入力されています。](./media/setup-direct-basics-filled-tab.png)
 
 
 #### <a name="configure-connections-and-submit"></a>接続を構成して送信する

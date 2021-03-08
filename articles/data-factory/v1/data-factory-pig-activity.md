@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory での Pig アクティビティを使用したデータ変換
-description: Azure データ ファクトリで Pig アクティビティを使用して、オンデマンドまたは独自の HDInsight クラスターで Pig スクリプトを実行する方法について説明します。
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+description: Azure Data Factory v1 で Pig アクティビティを使用して、オンデマンドまたは独自の HDInsight クラスターで Pig スクリプトを実行する方法について説明します。
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
-ms.assetid: 5af07a1a-2087-455e-a67b-a79841b4ada5
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f59734b5452b5a06b49583954f8851e84e8f84d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74703205"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387174"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Azure Data Factory での Pig アクティビティを使用したデータ変換
 > [!div class="op_single_selector" title1="変換アクティビティ"]
@@ -26,8 +21,8 @@ ms.locfileid: "74703205"
 > * [MapReduce アクティビティ](data-factory-map-reduce.md)
 > * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
 > * [Spark アクティビティ](data-factory-spark.md)
-> * [Machine Learning バッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
-> * [Machine Learning 更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning スタジオ (クラシック) の更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
 > * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
@@ -121,8 +116,8 @@ Store PigSampleOut into 'wasb://adfwalkthrough@anandsub14.blob.core.windows.net/
 
 Data Factory パイプラインでこの Pig スクリプトを実行するには、以下の手順を実行します。
 
-1. リンクされたサービスを作成し、[独自の HDInsight コンピューティング クラスター](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)に登録するか、または[オンデマンドの HDInsight コンピューティング クラスター](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)を構成します。 このリンクされたサービスを **HDInsightLinkedService**と呼ぶことにしましょう。
-2. [リンクされたサービス](data-factory-azure-blob-connector.md) を作成し、データをホストする Azure BLOB ストレージへの接続を構成します。 このリンクされたサービスを **StorageLinkedService**と呼ぶことにしましょう。
+1. リンクされたサービスを作成し、[独自の HDInsight コンピューティング クラスター](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)に登録するか、または[オンデマンドの HDInsight コンピューティング クラスター](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)を構成します。 このリンクされたサービスを **HDInsightLinkedService** と呼ぶことにしましょう。
+2. [リンクされたサービス](data-factory-azure-blob-connector.md) を作成し、データをホストする Azure BLOB ストレージへの接続を構成します。 このリンクされたサービスを **StorageLinkedService** と呼ぶことにしましょう。
 3. 入力と出力のデータを指定する [データセット](data-factory-create-datasets.md) を作成します。 入力データセットは **PigSampleIn**、出力データセットは **PigSampleOut** と呼ぶことにしましょう。
 4. 上記の手順 2. で構成した Azure BLOB ストレージのファイルに Pig クエリをコピーします。 データをホストするリンクされた Azure ストレージが、クエリ ファイルをホストするものと異なる場合には、別の Azure Storage のリンクされたサービスを作成します。 アクティビティの構成で、このリンクされたサービスを参照します。 **scriptPath** を使用して、pig スクリプト ファイルへのパスと **scriptLinkedService** を指定します。 
    
@@ -172,7 +167,7 @@ Data Factory パイプラインでこの Pig スクリプトを実行するに�
 
 パラメーター化された Pig スクリプトを使用するには、以下の手順を実行します。
 
-* **defines**でパラメーターを定義します。
+* **defines** でパラメーターを定義します。
 
     ```JSON
     {

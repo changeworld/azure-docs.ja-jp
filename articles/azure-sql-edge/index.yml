@@ -1,21 +1,21 @@
 ### YamlMime:Landing
-title: Azure SQL Edge (プレビュー) のドキュメント
+title: Azure SQL Edge のドキュメント
 summary: Azure SQL Edge は、IoT およびエッジのデプロイ向けに最適化されたリレーショナル データベース エンジンです。
 metadata:
-  title: Azure SQL Edge (プレビュー) のドキュメント
-  meta.description: Learn how to use Azure SQL Edge (Preview).
+  title: Azure SQL Edge のドキュメント
+  meta.description: Learn how to use Azure SQL Edge.
   services: sql-edge
   ms.service: sql-edge
   ms.topic: landing-page
   author: stevestein
   ms.author: sstein
   ms.date: 05/19/2020
-  ms.openlocfilehash: 97595cd74fa5a584d5d1943ed88ac617fc742569
-  ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+  ms.openlocfilehash: 3a043b3e29352abd44d1b880f366d9fa8ccea4d2
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/31/2020
-  ms.locfileid: "84233194"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "90894468"
 landingContent:
 - title: SQL Edge
   linkLists:
@@ -25,8 +25,14 @@ landingContent:
       url: overview.md
   - linkListType: deploy
     links:
-    - text: SQL Edge をデプロイする
+    - text: ポータルを使用して SQL Edge をデプロイする
       url: deploy-portal.md
+    - text: Docker で SQL Edge をデプロイする
+      url: disconnected-deployment.md
+  - linkListType: tutorial
+    links:
+    - text: Kubernetes にデプロイする
+      url: deploy-kubernetes.md
 - title: データの同期
   linkLists:
   - linkListType: tutorial
@@ -43,6 +49,8 @@ landingContent:
       url: stream-data.md
     - text: カタログ ビューのストリーミング
       url: streaming-catalog-views.md
+    - text: ストリーミング ジョブを作成および管理する
+      url: create-stream-analytics-job.md
 - title: 機械学習
   linkLists:
   - linkListType: concept
@@ -53,3 +61,21 @@ landingContent:
     links:
     - text: SQL Edge に ONNX をデプロイする
       url: deploy-onnx.md
+- title: 時系列データの処理
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 欠損値を補完する
+      url: imputing-missing-values.md
+    - text: データ保持期間ポリシー
+      url: data-retention-overview.md
+    - text: Date_Bucket (Transact-SQL)
+      url: date-bucket-tsql.md
+- title: SQL Edge の構成
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: SQL Edge の構成
+      url: configure.md
+    - text: レプリケーションの設定
+      url: configure-replication.md

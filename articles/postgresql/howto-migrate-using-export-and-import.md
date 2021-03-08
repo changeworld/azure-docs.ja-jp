@@ -1,19 +1,20 @@
 ---
 title: データベースの移行 - Azure Database for PostgreSQL - Single Server
 description: PostgreSQL データベースをスクリプト ファイルに抽出し、そのファイルから対象のデータベースにデータをインポートする方法について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 09/24/2019
-ms.openlocfilehash: 5d97f7b976ef1dfcf0493a8bef6ddcdd2cd63960
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/22/2020
+ms.openlocfilehash: 080f444d50dcdf17be15d940002b745624b2f6a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116370"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91708528"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>エクスポートとインポートを使用した PostgreSQL データベースの移行
+[!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
 [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) を使用することで、PostgreSQL データベースをスクリプト ファイルに抽出できます。また、[psql](https://www.postgresql.org/docs/current/static/app-psql.html) を使用することで、そのファイルから対象のデータベースにデータをインポートできます。
 
 ## <a name="prerequisites"></a>前提条件
@@ -26,6 +27,7 @@ ms.locfileid: "86116370"
 
 ## <a name="create-a-script-file-using-pg_dump-that-contains-the-data-to-be-loaded"></a>pg_dump を使用して読み込むデータが含まれたスクリプト ファイルを作成する
 オンプレミスまたは VM 内にある既存の PostgreSQL データベースを SQL スクリプト ファイルにエクスポートするには、既存の環境で次のコマンドを実行します。
+
 ```bash
 pg_dump –-host=<host> --username=<name> --dbname=<database name> --file=<database>.sql
 ```
@@ -36,14 +38,24 @@ pg_dump --host=localhost --username=masterlogin --dbname=testdb --file=testdb.sq
 
 ## <a name="import-the-data-on-target-azure-database-for-postgresql"></a>対象の Azure Database for PostgreSQL にデータをインポートする
 psql コマンド ラインと --dbname パラメーター (-d) を使用して、Azure Database for PostgreSQL サーバーにデータをインポートし、SQL ファイルからデータを読み込みます。
+
 ```bash
-psql --file=<database>.sql --host=<server name> --port=5432 --username=<user@servername> --dbname=<target database name>
+psql --file=<database>.sql --host=<server name> --port=5432 --username=<user> --dbname=<target database name>
 ```
 この例は、psql ユーティリティと前の手順で作成した **testdb.sql** という名前のスクリプト ファイルを使って、対象サーバー **mydemoserver.postgres.database.azure.com** のデータベース **mypgsqldb** にデータをインポートします。
+
+**単一サーバー**の場合は、このコマンドを使用します。 
 ```bash
 psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb
 ```
 
-## <a name="next-steps"></a>次のステップ
+**フレキシブル サーバー**の場合は、このコマンドを使用します。  
+```bash
+psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --username=mylogin --dbname=mypgsqldb
+```
+
+
+
+## <a name="next-steps"></a>次の手順
 - ダンプと復元を使用して PostgreSQL データベースを移行するには、「[ダンプと復元を使用した PostgreSQL データベースの移行](howto-migrate-using-dump-and-restore.md)」をご覧ください。
-- Azure Database for PostgreSQL へのデータベースの移行については、「[Database Migration Guide](https://aka.ms/datamigration)」 (データベースの移行ガイド) を参照してください。 
+- Azure Database for PostgreSQL へのデータベースの移行については、「[Database Migration Guide](https://aka.ms/datamigration)」 (データベースの移行ガイド) を参照してください。

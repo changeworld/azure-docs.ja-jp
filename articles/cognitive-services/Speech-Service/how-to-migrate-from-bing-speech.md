@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: 7b78bdb070cdf1364fe7fbdc75f175be7ce145ff
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d0ffd786d3fb6bb5f0d70095d947c81caa070518
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656459"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499137"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Speech から Speech Service に移行する
 
@@ -28,7 +28,7 @@ ms.locfileid: "80656459"
 * [音声テキスト変換](speech-to-text.md)
 * [カスタム音声テキスト変換](https://cris.ai)
 * [テキスト読み上げ](text-to-speech.md)
-* [カスタム テキスト音声読み上げ](how-to-customize-voice-font.md)
+* [カスタム テキスト音声読み上げ](./how-to-custom-voice-create-voice.md)
 * [音声翻訳](speech-translation.md) ([テキスト翻訳](../translator/translator-info-overview.md)は含まれません)
 
 [Speech SDK](speech-sdk.md) は Bing Speech クライアント ライブラリの機能を代替するものですが､使用している API は異なります｡
@@ -42,8 +42,8 @@ Speech Service と Bing Speech はよく似ていますが、次のような違�
 | C# SDK | :heavy_check_mark: | :heavy_check_mark: | Speech Service は、Windows 10、Universal Windows Platform (UWP)、および .NET Standard 2.0 に対応します。 |
 | C++ SDK | :heavy_minus_sign: | :heavy_check_mark: | Speech Service は Windows および Linux に対応します。 |
 | Java SDK | :heavy_check_mark: | :heavy_check_mark: | Speech Service は Android および Speech Devices に対応します。 |
-| 連続音声認識 | 10 分 | 無制限 (SDK) | Bing Speech と Speech Service WebSockets プロトコルは､どちらも呼び出し 1 回あたり最大 10 分をサポートしています｡ ただし､Speech SDK 方はタイムアウト時に自動的に再接続､切断します｡ |
-| 部分的または中間結果 | :heavy_check_mark: | :heavy_check_mark: | WebSockets プロトコルまたは SDK あり。 |
+| 連続音声認識 | 10 分 | 無制限 | Speech SDK は、無制限の連続認識をサポートし、タイムアウトまたは切断時には自動的に再接続します。 |
+| 部分的または中間結果 | :heavy_check_mark: | :heavy_check_mark: | Speech SDK でサポートされています。 |
 | カスタム音声モデル | :heavy_check_mark: | :heavy_check_mark: | Bing Speech には別個の Custom Speech サブスクリプションが必要です。 |
 | カスタム音声フォント | :heavy_check_mark: | :heavy_check_mark: | Bing Speech には別個の Custom Voice サブスクリプションが必要です。 |
 | 24 KHz の音声 | :heavy_minus_sign: | :heavy_check_mark: |
@@ -53,7 +53,7 @@ Speech Service と Bing Speech はよく似ていますが、次のような違�
 | 認識モード | エンドポイント URI 経由での手動 | 自動 | Speech Service には認識モードはありません。 |
 | エンドポイントの地域性 | グローバル | 地域 | 地域のエンドポイントによって､待機時間が改善されます｡ |
 | REST API | :heavy_check_mark: | :heavy_check_mark: | Speech Service REST API は Bing Speech と互換性があります (エンドポイントは異なる)。 REST API はテキスト読み上げ機能と音声テキスト変換機能(限定的) をサポートしています｡ |
-| WebSockets プロトコル | :heavy_check_mark: | :heavy_check_mark: | Speech Service WebSockets API は Bing Speech と互換性があります (エンドポイントは異なる)｡ 可能であれば、Speech SDK に移行することで、コードを簡略化できます。 |
+| WebSockets プロトコル | :heavy_check_mark: | :heavy_minus_sign: | サービスへの常時接続を必要とする機能に向けた Web ソケット接続が Speech SDK によって抽象化されるため、手動でのサブスクライブはサポートされなくなりました。 |
 | Service-to-service API 呼び出し | :heavy_check_mark: | :heavy_minus_sign: | Bing Speech では､C# サービス ライブラリで提供｡ |
 | オープンソース SDK | :heavy_check_mark: | :heavy_minus_sign: |
 
@@ -63,34 +63,32 @@ Speech Service では､トランザクション ベースではなく時間ベ�
 
 Bing Speech API を使用しているアプリケーションを開発中の場合､あるいはそうしたアプリケーションを運用している場合は､できるかぎり速やかに Speech Service を使用するように更新することをお勧めします｡ 使用できる SDK やサンプル コード､チュートリアルについては､[Speech Service](index.yml) のドキュメントをご覧ください。
 
-Speech Service の [REST API](rest-apis.md) Bing Speech の API 互換性があります｡ 現在 Bing Speech REST API をご利用の場合は、REST エンドポイントのみを変更し、Speech Service サブスクリプション キーに切り替えるだけで済みます。
-
-Speech Service WebSockets プロトコルも Bing Speech が使用しているものと互換性があります｡ 新しい開発では、WebSocket ではなく Speech SDK を使用することをお勧めします。 既存のコードもこの SDK に移行することをお勧めします。 REST API 同様､既存のコードが WebSockets を介して Bing Speech を使用している場合は､エンドポイントを変更して､キーを更新すればよいだけです｡
+Speech Service の [REST API](./overview.md#reference-docs) Bing Speech の API 互換性があります｡ 現在 Bing Speech REST API をご利用の場合は、REST エンドポイントのみを変更し、Speech Service サブスクリプション キーに切り替えるだけで済みます。
 
 ただし、特定のプログラミング言語で Bing Speech クライアント ライブラリを使用している場合、[Speech SDK](speech-sdk.md) に移行するには、API が異なるため、アプリケーションそのものを変更する必要があります。 Speech SDK により、新しい機能を利用できる一方でコードを簡略化できるようになります。 Speech SDK は、さまざまなプログラミング言語で使用できます。 どのプラットフォームの API も似ており､マルチプラットフォーム開発が容易になります｡
 
 Speech Service では、グローバル エンドポイントは提供されません。 アプリケーションのすべてのトラフィックに単一のリージョン エンドポイントを使用しているときにアプリケーションが効率的に機能するかどうかを判断します。 効率的に機能しない場合は､geolocation を使って最も効率的なエンドポイントを探してください｡ 使用するリージョンごとに Speech Service サブスクリプションが必要になります。
 
-アプリケーションが長時間維持される接続を使用していて、利用可能な SDK を使用できない場合は、WebSocket 接続を使用できます。 適切なタイミングで再接続して、10 分のタイムアウト制限を管理してください。
-
 Speech SDK を使ってみる
 
 1. [Speech SDK](speech-sdk.md) をダウンロードします｡
-1. Speech Service [クイック スタート ガイド](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)と[チュートリアル](how-to-recognize-intents-from-speech-csharp.md)に従って作業します。 また、[コード サンプル](samples.md)を見て、新しい API に関する経験を得ます。
+1. Speech Service [クイック スタート ガイド](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet)と[チュートリアル](how-to-recognize-intents-from-speech-csharp.md)に従って作業します。 また、[コード サンプル](./speech-sdk.md#sample-source-code)を見て、新しい API に関する経験を得ます。
 1. Speech Service を使用するようにアプリケーションを更新します。
 
 ## <a name="support"></a>サポート
 
 Bing Speech のお客様は[サポート チケット](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を開いて､カスタマー サービスに問い合わせることをお勧めします｡ サポートで[テクニカル サポート プラン](https://azure.microsoft.com/support/plans/)が必要な場合もお問い合わせください。
 
-Speech Service､SDK､および API サポートについては､Speech Service の[サポート ページ](support.md)をご覧ください｡
+Speech Service､SDK､および API サポートについては､Speech Service の[サポート ページ](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)をご覧ください｡
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Speech Service を無料で試す](get-started.md)
-* [クイック スタート: UWP アプリで Speech SDK を使用して音声を認識する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
+* [Speech Service を無料で試す](overview.md#try-the-speech-service-for-free)
+* [音声変換の概要](get-started-speech-to-text.md)
+* [テキスト読み上げの概要](get-started-text-to-speech.md)
 
 ## <a name="see-also"></a>関連項目
+
 * [Speech Service リリース ノート](releasenotes.md)
 * [Speech Service とは](overview.md)
 * [Speech Service と Speech SDK のドキュメント](speech-sdk.md#get-the-speech-sdk)

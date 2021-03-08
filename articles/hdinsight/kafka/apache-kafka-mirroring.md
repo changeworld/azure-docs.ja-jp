@@ -1,23 +1,23 @@
 ---
 title: Apache Kafka のミラーリングに関するトピック - Azure HDInsight
 description: Apache Kafka のミラーリング機能を使用してセカンダリ クラスターにトピックをミラーリングすることにより、HDInsight クラスターに Kafka のレプリカを保持する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 278fbdf7010fe7b14488bb021ab8a366393ad512
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c2fce6d4ee95a56cc087d50184fcd69ac113620f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087364"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940836"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする
 
 Apache Kafka のミラーリング機能を使用して、セカンダリ クラスターにトピックをレプリケートする方法について説明します。 ミラーリングは、継続的なプロセスとして実行できるほか、1 つのクラスターから別のクラスターにデータを移行する方法として断続的に使用することもできます。
+
+> [!NOTE]
+> この記事には、Microsoft では使用されなくなった "*ホワイトリスト*" という用語への言及があります。 この用語は、ソフトウェアから削除された時点でこの記事から削除されます。
 
 この例では、ミラーリングを使用して、2 つの HDInsight クラスター間でトピックをレプリケートします。 どちらのクラスターも、異なるデータセンター内の異なる仮想ネットワーク内にあります。
 
@@ -28,7 +28,7 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
 ## <a name="how-apache-kafka-mirroring-works"></a>Apache Kafka のミラーリングのしくみ
 
-ミラーリングでは、Apache Kafka に含まれるツール [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) によってプライマリ クラスターのトピックからレコードが使用され、セカンダリ クラスターにローカル コピーが作成されます。 MirrorMaker では、プライマリ クラスターから読み取りを行う 1 つ (あるいは複数) の*コンシューマー*と、ローカル (セカンダリ) クラスターへの書き込みを行う*プロデューサー*を使用します。
+ミラーリングでは、Apache Kafka に含まれるツール [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) によってプライマリ クラスターのトピックからレコードが使用され、セカンダリ クラスターにローカル コピーが作成されます。 MirrorMaker では、プライマリ クラスターから読み取りを行う 1 つ (あるいは複数) の *コンシューマー* と、ローカル (セカンダリ) クラスターへの書き込みを行う *プロデューサー* を使用します。
 
 ディザスター リカバリーに最も役立つミラーリングの設定では、異なる Azure リージョンの Kafka クラスターを使用します。 これを実現するには、クラスターが存在する仮想ネットワークをピアリングします。
 
@@ -57,7 +57,7 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
 ## <a name="mirroring-architecture"></a>ミラーリング アーキテクチャ
 
-このアーキテクチャの特徴は、リソース グループと仮想ネットワークが異なる 2 つのクラスター、すなわち**プライマリ**と**セカンダリ**があることです。
+このアーキテクチャの特徴は、リソース グループと仮想ネットワークが異なる 2 つのクラスター、すなわち **プライマリ** と **セカンダリ** があることです。
 
 ### <a name="creation-steps"></a>作成手順
 
@@ -102,18 +102,18 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-1. **[構成の保存]** 画面でメモを入力し、 **[保存]** をクリックします。
-1. 構成の警告が表示されたら、 **[Proceed Anyway] (警告を無視して続行)** をクリックします。
+1. **[構成の保存]** 画面でメモを入力し、**[保存]** をクリックします。
+1. 構成の警告が表示されたら、**[Proceed Anyway] (警告を無視して続行)** をクリックします。
 1. **[Save Configuration Changes] (構成の変更を保存)** の **[OK]** を選択します。
-1. **再起動が必要**通知の **[再起動]**  >  **[すべて再起動]** をク選択します。 **[Confirm Restart All]\(すべて再起動\)** を選択します。
+1. **再起動が必要** 通知の **[再起動]**  >  **[すべて再起動]** をク選択します。 **[Confirm Restart All]\(すべて再起動\)** を選択します。
 
     ![Apache Ambari の影響を受けるものをすべて再起動](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>すべてのネットワーク インターフェイスをリッスンするように Kafka を構成します。
     
-1. **[サービス]**  >  **[Kafka]** の **[構成]** タブにとどまります。 **[Kafka Broker] (Kafka ブローカー)** セクションで、**リスナー** プロパティを `PLAINTEXT://0.0.0.0:9092` に設定します。
+1. **[サービス]** > **[Kafka]** の **[構成]** タブにとどまります。 **[Kafka Broker] (Kafka ブローカー)** セクションで、**リスナー** プロパティを `PLAINTEXT://0.0.0.0:9092` に設定します。
 1. **[保存]** を選択します。
-1. **[再起動]** 、 **[Confirm Restart All] (すべて再起動)** を選択します。
+1. **[再起動]**、**[Confirm Restart All] (すべて再起動)** を選択します。
 
 ### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>プライマリ クラスターのブローカーの IP アドレスと Zookeeper アドレスを記録します。
 
@@ -171,7 +171,7 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
 ## <a name="configure-mirroring"></a>ミラーリングの構成
 
-1. 別の SSH セッションを使用して**セカンダリ** クラスターに接続します。
+1. 別の SSH セッションを使用して **セカンダリ** クラスターに接続します。
 
     ```bash
     ssh sshuser@SECONDARYCLUSTER-ssh.azurehdinsight.net

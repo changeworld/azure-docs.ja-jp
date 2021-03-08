@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 76e72e8fd134c65cc9334e635375cc25e9b09a75
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: fbfef094cd062e437f2a28369162de96631ef41b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719072"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832608"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>チュートリアル:ビデオ分析 (物体とモーションの検出) アプリケーションを監視、管理する
 
@@ -26,8 +26,8 @@ ms.locfileid: "88719072"
 
 開始する前に、以下を完了しておく必要があります。
 
-* [Azure IoT Central でライブ ビデオ分析アプリケーションを作成する](./tutorial-video-analytics-create-app.md)チュートリアル。
-* [ライブ ビデオ分析用の IoT Edge インスタンスの作成 (Linux VM)](tutorial-video-analytics-iot-edge-vm.md) または[ライブ ビデオ分析用の IoT Edge インスタンスの作成 (Linux VM)](tutorial-video-analytics-iot-edge-nuc.md) に関する既出のチュートリアル。
+* これよりも前の [Azure IoT Central でのライブ ビデオ分析アプリケーションの作成](./tutorial-video-analytics-create-app-yolo-v3.md)に関するチュートリアルか、[Azure IoT Central でのビデオ分析の作成 (OpenVINO&trade;)](tutorial-video-analytics-create-app-openvino.md) に関するチュートリアルのいずれか一方。
+* 既出の、[ライブ ビデオ分析用の IoT Edge インスタンスの作成 (Linux VM)](tutorial-video-analytics-iot-edge-vm.md) または[ライブ ビデオ分析用の IoT Edge インスタンスの作成 (Intel NUC)](tutorial-video-analytics-iot-edge-nuc.md) に関するチュートリアルのいずれか。
 
 ビデオ ビューアー アプリケーションを実行するためには、ローカル コンピューターに [Docker](https://www.docker.com/products/docker-desktop) がインストールされている必要があります。
 
@@ -195,7 +195,7 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
     * **ストリーミング エンドポイント** リソースをクリックします。
     * **[ストリーミング エンドポイントの詳細情報]** ページで **[停止]** を選択します。
 
-## <a name="tidy-up"></a>片付ける
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 アプリケーションを使い終えたら、次の手順で、作成したリソースをすべて削除することができます。
 

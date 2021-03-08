@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: b1df1219590aa94331a4404b1315eb7231c59699
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 097db6683127b410e713be53e6de838cf7734ddc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445878"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91400725"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Azure Logic Apps を使用して Excel Online データを管理する
 
@@ -33,7 +33,7 @@ ms.locfileid: "75445878"
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* 職場アカウントまたは個人の Microsoft アカウント用の [Office 365 アカウント](https://www.office.com/)。
+* 職場アカウントまたは個人の Microsoft アカウント用の[職場または学校アカウント](https://www.office.com/)
 
   Excel データは、OneDrive などのストレージ フォルダーに、コンマ区切り値 (CSV) ファイルとして存在できます。 
   同じ CSV ファイルを、[フラット ファイル コネクタ](../logic-apps/logic-apps-enterprise-integration-flatfile.md)で使用することもできます。
@@ -53,7 +53,7 @@ ms.locfileid: "75445878"
    > [!NOTE]
    > ロジック アプリ デザイナーでは、100 以上の列を含むテーブルを読み込むことはできません。 可能であれば、デザイナーでテーブルを読み込めるように、選択したテーブルの列数を減らします。
 
-1. メッセージに従って、Office 365 アカウントにサインインします。
+1. メッセージが表示されたら、職場または学校のアカウントにサインインします。
 
    Excel Online への接続を作成してデータにアクセスしてよいという承認が、この資格情報によってロジック アプリに与えられます。
 

@@ -1,23 +1,23 @@
 ---
-title: Azure Stack Edge のユーザー管理 | Microsoft Docs
-description: Azure portal を使用して Azure Stack Edge のユーザーを管理する方法について説明します。
+title: Azure Stack Edge Pro FPGA のユーザー管理 | Microsoft Docs
+description: Azure portal を使用して Azure Stack Edge Pro のユーザーを管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/11/2019
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 1012ce417fb4952878dada29a9080c70954ed21f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27ca190f3bad7f75175e5206d48e13dae1f5687e
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339639"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913328"
 ---
-# <a name="use-the-azure-portal-to-manage-users-on-your-azure-azure-stack-edge"></a>Azure portal を使用して Azure Stack Edge のユーザーを管理する
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro-fpga"></a>Azure portal を使用して Azure Stack Edge Pro FPGA のユーザーを管理する
 
-この記事では、Azure Stack Edge のユーザーを管理する方法について説明します。 Azure Stack Edge の管理は、Azure portal またはローカル Web UI を通じて行えます。 Azure portal を使用してユーザーを追加、変更、または削除します。
+この記事では、Azure Stack Edge Pro FPGA デバイスのユーザーを管理する方法について説明します。 Azure Stack Edge Pro の管理は、Azure portal またはローカル Web UI を通じて行えます。 Azure portal を使用してユーザーを追加、変更、または削除します。
 
 この記事では、次のことについて説明します。
 
@@ -39,7 +39,7 @@ ms.locfileid: "84339639"
 
 ユーザーを追加するには、Azure portal で次の手順を実行します。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[概要] > [ユーザー]** に移動します。 コマンド バーの **[+ ユーザーの追加]** を選択します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[ユーザー]** に移動します。 コマンド バーの **[+ ユーザーの追加]** を選択します。
 
     ![[ユーザーの追加] の選択](media/azure-stack-edge-manage-users/add-user-1.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "84339639"
 ユーザーを削除するには、Azure portal で次の手順を実行します。
 
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[概要] > [ユーザー]** に移動します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[ユーザー]** に移動します。
 
     ![削除するユーザーの選択](media/azure-stack-edge-manage-users/delete-user-1.png)
 

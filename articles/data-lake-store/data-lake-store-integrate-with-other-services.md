@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f56d3a364e38d13931f8e07d749d3a5958dcee67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 929853f4dbedca7034c8e2a51e6231651a2dd08f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322512"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461654"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Azure Data Lake Storage Gen1 と他の Azure サービスを統合する
 Azure Data Lake Storage Gen1 を他の Azure サービスと連携させれば、さまざまなシナリオが可能になります。 次の記事では、Data Lake Storage Gen1 と統合できるサービスについてまとめてあります。
@@ -21,7 +21,7 @@ HDFS に準拠しているストレージとして Data Lake Storage Gen1 を使
 
 Data Lake Storage Gen1 を使用する HDInsight クラスターをプロビジョニングする方法については、次をご覧ください。
 
-* [Azure Portal を使用して、Data Lake Storage Gen1 を使用する HDInsight クラスターをプロビジョニングする](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Azure portal を使用して、Data Lake Storage Gen1 を使用する HDInsight クラスターをプロビジョニングする](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [Azure PowerShell を使用して、Data Lake Storage Gen1 を既定のストレージとして使用する HDInsight クラスターをプロビジョニングする](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 * [Azure PowerShell を使用して、Data Lake Storage Gen1 を追加のストレージとして使用する HDInsight クラスターをプロビジョニングする](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
@@ -51,10 +51,10 @@ Power BI を使用して、Data Lake Storage Gen1 アカウントからデータ
 組織全体でデータを検出できるように、Azure Data Catalog に Data Lake Storage Gen1 のデータを登録することができます。 詳しくは、[Azure Data Catalog への Data Lake Storage Gen1 のデータの登録](data-lake-store-with-data-catalog.md)に関する記事をご覧ください。
 
 ## <a name="use-data-lake-storage-gen1-with-sql-server-integration-services-ssis"></a>Data Lake Storage Gen1 を SQL Server Integration Services (SSIS) と共に使用する
-SSIS で Data Lake Storage Gen1 接続マネージャーを使用して、SSIS パッケージを Data Lake Storage Gen1 と接続することができます。 詳しくは、[SSIS での Data Lake Storage Gen1 の使用](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)に関するページをご覧ください。
+SSIS で Data Lake Storage Gen1 接続マネージャーを使用して、SSIS パッケージを Data Lake Storage Gen1 と接続することができます。 詳しくは、[SSIS での Data Lake Storage Gen1 の使用](/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)に関するページをご覧ください。
 
-## <a name="use-data-lake-storage-gen1-with-sql-data-warehouse"></a>Data Lake Storage Gen1 を SQL Data Warehouse と共に使用する
-PolyBase を使用して、Data Lake Storage Gen1 から SQL Data Warehouse にデータを読み込むことができます。 詳しくは、[SQL Data Warehouse での Data Lake Storage Gen1 の使用](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)に関する記事をご覧ください。
+## <a name="use-data-lake-storage-gen1-with-azure-synapse-analytics"></a>Data Lake Storage Gen1 を Azure Synapse Analytics と共に使用する
+PolyBase を使用して、Data Lake Storage Gen1 から Azure Synapse Analytics にデータを読み込むことができます。 詳しくは、[Azure Synapse Analytics での Data Lake Storage Gen1 の使用](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)に関する記事をご覧ください。
 
 ## <a name="use-data-lake-storage-gen1-with-azure-event-hubs"></a>Data Lake Storage Gen1 を Azure Event Hubs と共に使用する
 Azure Data Lake Storage Gen1 を使用して、Azure Event Hubs によって受信されたデータをアーカイブしてキャプチャできます。 詳しくは、[Azure Event Hubs での Data Lake Storage Gen1 の使用](data-lake-store-archive-eventhub-capture.md)に関する記事をご覧ください。
@@ -62,5 +62,4 @@ Azure Data Lake Storage Gen1 を使用して、Azure Event Hubs によって受�
 ## <a name="see-also"></a>関連項目
 * [Azure Data Lake Storage Gen1 の概要](data-lake-store-overview.md)
 * [ポータルを使用して Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-portal.md)
-* [PowerShell を使用して Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-powershell.md)  
-
+* [PowerShell を使用して Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-powershell.md)

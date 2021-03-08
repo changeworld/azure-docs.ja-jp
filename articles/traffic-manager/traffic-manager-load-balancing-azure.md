@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: duau
-ms.openlocfilehash: 431eaff9da95063648d3e80acb54be9cc5c25bc5
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: eaf50f3bdacaf5680bc5ecb1379faff20133b5ce
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89393068"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184375"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Azure で負荷分散サービスを使用する
 
@@ -39,7 +39,7 @@ Microsoft Azure では、ネットワーク トラフィックの分散や負荷
 
   クライアントは、Traffic Manager によって返されたエンドポイントに直接接続します。 Azure Traffic Manager は、エンドポイントに異常が発生したことを検出すると、クライアントを別の正常なインスタンスに誘導します。 サービスの詳細については、[Azure Traffic Manager のドキュメント](traffic-manager-overview.md)をご覧ください。
 * **Application Gateway** は、アプリケーション配信コントローラー (ADC) をサービスとして提供することで、さまざまなレイヤー 7 負荷分散機能をアプリケーションで利用できるようにします。 これにより、顧客は CPU 集中型の TLS 終端を Application Gateway にオフロードすることによって Web ファームの生産性を最適化できます。 着信トラフィックのラウンド ロビン分散、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、単一の Application Gateway の背後で複数の Web サイトをホストする機能など、その他のレイヤー 7 ルーティング機能も用意されています。 Application Gateway は、インターネット接続ゲートウェイ、または内部的にのみ使用されるゲートウェイのいずれかとして構成できるほか、この両方を組み合わせて使用することも可能です。 Application Gateway は Azure によって完全に管理され、非常にスケーラブルで、高い可用性を備えています。 管理しやすいように診断機能とログ機能が豊富に用意されています。
-* **ロード バランサー**は、Azure SDN スタックの重要な構成要素であり、すべての UDP と TCP プロトコル向けの高パフォーマンス、低待機時間のレイヤー 4 負荷分散サービスを備えています。 受信接続と送信接続を管理します。 負荷分散されるパブリックおよび内部のエンドポイントを構成したり、TCP を使用して受信接続をバックエンド プールの送信先にマッピングする規則や、サービスの可用性を管理するための HTTP の正常性プローブ オプションを定義したりできます。
+* **ロード バランサー** は、Azure SDN スタックの重要な構成要素であり、すべての UDP と TCP プロトコル向けの高パフォーマンス、低待機時間のレイヤー 4 負荷分散サービスを備えています。 受信接続と送信接続を管理します。 負荷分散されるパブリックおよび内部のエンドポイントを構成したり、TCP を使用して受信接続をバックエンド プールの送信先にマッピングする規則や、サービスの可用性を管理するための HTTP の正常性プローブ オプションを定義したりできます。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -92,11 +92,11 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 4. Application Gateway の仮想ネットワーク、サブネット、フロントエンド IP、およびリスナーの構成を定義します。 このシナリオでは、フロント エンド IP アドレスは **[パブリック]** に設定されているため、後で Traffic Manager プロファイルにエンドポイントとして追加できます。
 5. 次のいずれかのオプションでリスナーを構成します。
     * HTTP を使用する場合は、構成する必要はありません。 **[OK]** をクリックします。
-    * HTTPS を使用する場合は、さらに構成が必要になります。 [Application Gateway の作成](../application-gateway/application-gateway-create-gateway-portal.md)に関するページの手順 9.以降を参照してください。 構成が完了したら、 **[OK]** をクリックします。
+    * HTTPS を使用する場合は、さらに構成が必要になります。 [Application Gateway の作成](../application-gateway/quick-create-portal.md)に関するページの手順 9.以降を参照してください。 構成が完了したら、 **[OK]** をクリックします。
 
 #### <a name="configure-url-routing-for-application-gateways"></a>Application Gateway の URL ルーティングを構成する
 
-バックエンド プールを選択するときは、パスベースの規則で構成される Application Gateway では、ラウンド ロビン分散だけでなく、要求 URL のパスのパターンを使用します。 このシナリオでは、"/images/\*" 含む URL をイメージ サーバー プールに誘導するための、パス ベースの規制を追加します。 Application Gateway のパス ベースの URL ルーティングの詳細については、[Application Gateway のパスベース ルールの作成](../application-gateway/application-gateway-create-url-route-portal.md)に関するページをご覧ください。
+バックエンド プールを選択するときは、パスベースの規則で構成される Application Gateway では、ラウンド ロビン分散だけでなく、要求 URL のパスのパターンを使用します。 このシナリオでは、"/images/\*" 含む URL をイメージ サーバー プールに誘導するための、パス ベースの規制を追加します。 Application Gateway のパス ベースの URL ルーティングの詳細については、[Application Gateway のパスベース ルールの作成](../application-gateway/create-url-route-portal.md)に関するページをご覧ください。
 
 ![Application Gateway の Web 層の図](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
 
@@ -156,7 +156,7 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 
 高可用性データベース クラスターが SQL Server AlwaysOn を使用している場合は、1 つまたは複数の [Always On 可用性グループ リスナーを構成する方法](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md)をご覧ください。
 
-内部ロード バランサーの構成方法について詳しくは、「[Azure Portal での内部ロード バランサーの作成](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)」をご覧ください。
+内部ロード バランサーの構成方法について詳しくは、「[Azure Portal での内部ロード バランサーの作成](../load-balancer/quickstart-load-balancer-standard-internal-portal.md)」をご覧ください。
 
 1. Azure Portal の左側のウィンドウで、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[ロード バランサー]** の順にクリックします。
 2. ロード バランサーの名前を選択します。
@@ -192,7 +192,7 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 #### <a name="configure-the-load-balancing-rules"></a>負荷分散規則を構成する
 
 1. ロード バランサーの **[設定]** で **[負荷分散規則]** を選択し、 **[追加]** をクリックして、規則を作成します。
-2. 負荷分散規則の**名前**を入力します。
+2. 負荷分散規則の **名前** を入力します。
 3. ロード バランサーの **[フロントエンド IP アドレス]** 、 **[プロトコル]** 、 **[ポート]** を選択します。
 4. **[バックエンド ポート]** で、バックエンド プールで使用するポートを指定します。
 5. **[バックエンド プール]** を選択し、上述の手順で作成した、規則を適用する **[プローブ]** を選択します。
@@ -210,5 +210,5 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 ## <a name="next-steps"></a>次のステップ
 
 * [Traffic Manager の概要](traffic-manager-overview.md)
-* [Application Gateway の概要](../application-gateway/application-gateway-introduction.md)
+* [Application Gateway の概要](../application-gateway/overview.md)
 * [Azure Load Balancer の概要](../load-balancer/load-balancer-overview.md)

@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/13/2019
 ms.author: cynthn
-ms.openlocfilehash: 5c57ac0fb0ab377f00770e3c9c03a413dcb345bc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5e6f7b461d205478d6a3fe3eecbbb933d0533ec9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291040"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200517"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Azure から Windows VHD をダウンロードする
 
@@ -27,7 +27,7 @@ ms.locfileid: "87291040"
 他の VM を作成するためのイメージとして VHD を使用するには、VM を一般化してください。
 
 1. まだサインインしていない場合は、 [Azure ポータル](https://portal.azure.com/)にサインインします。
-2. [VM に接続します](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
+2. [VM に接続します](connect-logon.md)。 
 3. VM で、管理者としてコマンド プロンプト ウィンドウを開きます。
 4. ディレクトリを *%windir%\system32\sysprep* に変更し、sysprep.exe を実行します。
 5. [システム準備ツール] ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、 **[一般化する]** チェック ボックスがオンになっていることを確認します。
@@ -65,6 +65,6 @@ VHD ファイルをダウンロードするには、[Shared Access Signature (SA
 
 ## <a name="next-steps"></a>次のステップ
 
-- [VHD ファイルを Azure にアップロードする](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)方法を学習します。 
-- [ストレージ アカウント内の非管理対象ディスクからマネージド ディスクを作成する](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-- [PowerShell を使用した Azure ディスクの管理](tutorial-manage-data-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+- [VHD ファイルを Azure にアップロードする](upload-generalized-managed.md)方法を学習します。 
+- [ストレージ アカウント内の非管理対象ディスクからマネージド ディスクを作成する](attach-disk-ps.md)。
+- [PowerShell を使用した Azure ディスクの管理](tutorial-manage-data-disk.md)。

@@ -1,14 +1,16 @@
 ---
 title: データ コレクション
 description: アプリの開発中に収集するデータの例について説明します
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 7abb3736eb9d7c73465ffa646b79e8e7dd7ae88b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c901d4024292ad03a9195ad0cbd226f473917ee4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599327"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738086"
 ---
 # <a name="data-collection-for-your-app"></a>アプリのデータ収集
 
@@ -69,7 +71,7 @@ LUIS では、テキストをデータとして使って LUIS アプリをトレ
 
 ## <a name="test-data-selection-for-batch-testing"></a>バッチ テスト用のテスト データの選択
 
-発話をトレーニングするための上記の原則はすべて、[テスト セット](luis-concept-batch-test.md)に使用する発話に適用されます。 意図とエンティティの分散は、できる限り、実際の分散を反映するようにしてください。
+発話をトレーニングするための上記の原則はすべて、[テスト セット](./luis-how-to-batch-test.md)に使用する発話に適用されます。 意図とエンティティの分散は、できる限り、実際の分散を反映するようにしてください。
 
 トレーニング セットの発話をテスト セットで再利用しないでください。 結果が不適切に偏って、運用環境での LUIS アプリの実際の動作が正しく示されなくなります。
 

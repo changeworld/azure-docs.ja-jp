@@ -1,24 +1,24 @@
 ---
 title: Azure HDInsight で使用されるネットワーク セキュリティ グループ (NSG) サービス タグ
 description: NSG に IP アドレスを追加することなく、正常性と管理サービス ノードからクラスターへのインバウンド トラフィックを許可するには、HDInsight のサービス タグを使用します。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/15/2020
-ms.openlocfilehash: 5608d0cd83e506bc6b30337db5148f344f59f80e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 08/11/2020
+ms.openlocfilehash: d17d067b88add3006bc5c7fb10caa6b80a80a827
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81410862"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931766"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight の NSG サービス タグ
 
-ネットワーク セキュリティ グループ (NSG) 用の Azure HDInsight サービス タグは、正常性および管理サービスのための IP アドレスのグループです。 これらのグループを使用すると、セキュリティ規則の作成の複雑さを最小限に抑えることができます。 [サービス タグ](../virtual-network/security-overview.md#service-tags)を使用すると、NSG に[管理 IP アドレス](hdinsight-management-ip-addresses.md)を個別に入力することなく、特定の IP からのインバウンド トラフィックを許可することができます。
+ネットワーク セキュリティ グループ (NSG) 用の Azure HDInsight サービス タグは、正常性および管理サービスのための IP アドレスのグループです。 これらのグループを使用すると、セキュリティ規則の作成の複雑さを最小限に抑えることができます。 [サービス タグ](../virtual-network/network-security-groups-overview.md#service-tags)を使用すると、NSG に[管理 IP アドレス](hdinsight-management-ip-addresses.md)を個別に入力することなく、特定の IP からのインバウンド トラフィックを許可することができます。
 
 これらのサービス タグは、HDInsight サービスによって管理されます。 独自のサービス タグを作成したり、既存のタグを変更したりすることはできません。 サービス タグと一致するアドレス プレフィックスの管理は Microsoft によって行われ、アドレスが変化するとサービス タグは自動的に更新されます。
+
+特定のリージョンを使用する場合に、サービス タグがまだこのページに記載されていない場合は、[Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) を使用してサービス タグを検索できます。 また、[サービス タグの JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)をダウンロードして、目的のリージョンを検索することもできます。
 
 ## <a name="get-started-with-service-tags"></a>サービス タグを使ってみる
 
@@ -61,10 +61,10 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 | &nbsp; | オーストラリア中部 | HDInsight.AustraliaCentral |
 | 中国 | 中国東部 2 | HDInsight.ChinaEast2 |
 | &nbsp; | 中国北部 2 | HDInsight.ChinaNorth2 |
-| 米国 | 米国中北部 | HDInsight.NorthCentralUS |
+| United States | 米国中北部 | HDInsight.NorthCentralUS |
 | &nbsp; | 米国西部 2 | HDInsight.WestUS2 |
 | &nbsp; | 米国中西部 | HDInsight.WestCentralUS |
-| カナダ | カナダ東部 | HDInsight.CanadaEast |
+| Canada | カナダ東部 | HDInsight.CanadaEast |
 | ブラジル | ブラジル南部 | HDInsight.BrazilSouth |
 | 韓国 | 韓国中部 | HDInsight.KoreaCentral |
 | &nbsp; | 韓国南部 | HDInsight.KoreaSouth |
@@ -96,7 +96,7 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 
 | Country | リージョン | サービス タグ |
 | ---- | ---- | ---- |
-| 米国 | 米国東部 2 | HDInsight.EastUS2 |
+| United States | 米国東部 2 | HDInsight.EastUS2 |
 | &nbsp; | 米国中部 | HDInsight.CentralUS |
 | &nbsp; | 米国中北部 | HDInsight. NorthCentralUS |
 | &nbsp; | 米国中南部 | HDInsight.SouthCentralUS |
@@ -123,5 +123,5 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ネットワーク セキュリティ グループ: サービス タグ](../virtual-network/security-overview.md#security-rules)
+- [ネットワーク セキュリティ グループ: サービス タグ](../virtual-network/network-security-groups-overview.md#security-rules)
 - [Azure HDInsight クラスターの仮想ネットワークの作成](hdinsight-create-virtual-network.md)

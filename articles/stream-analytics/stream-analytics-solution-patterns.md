@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics のソリューション パターン
 description: ダッシュボード、イベント メッセージング、データ ストア、参照データ エンリッチメント、監視など、Azure Stream Analytics の一般的なソリューション パターンについて説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: c3d487c1595a077ac8609813a41d15e28ede0e0b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 1bd3c1099344bd266d7e3bc153613daaecfb412a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903325"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020317"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics のソリューション パターン
 
@@ -20,7 +19,7 @@ Azure にある他の多くのサービスと同様、Stream Analytics は、他
 
 ## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>Stream Analytics ジョブを作成してリアルタイム ダッシュボード エクスペリエンスを強化する
 
-Azure Stream Analytics を使用して、リアルタイムのダッシュボードとアラートを簡単に構築することができます。 Event Hubs または IoT Hub からイベントを取り込み、[Power BI ダッシュボードにストリーミング データ セットをフィード](/power-bi/service-real-time-streaming)するシンプルなソリューションが挙げられます。 詳細については、「[Stream Analytics で通話データを分析し、Power BI ダッシュボードで結果を視覚化する](stream-analytics-manage-job.md)」という詳しいチュートリアルを参照してください。
+Azure Stream Analytics を使用して、リアルタイムのダッシュボードとアラートを簡単に構築することができます。 Event Hubs または IoT Hub からイベントを取り込み、[Power BI ダッシュボードにストリーミング データ セットをフィード](/power-bi/service-real-time-streaming)するシンプルなソリューションが挙げられます。 詳細については、「[Stream Analytics で不正な通話のデータを分析し、Power BI ダッシュボードで結果を視覚化する](stream-analytics-real-time-fraud-detection.md)」という詳しいチュートリアルを参照してください。
 
 ![ASA Power BI ダッシュボード](media/stream-analytics-solution-patterns/power-bi-dashboard.png)
 
@@ -62,7 +61,7 @@ CRUD ベースのシステムでは、大量のデータがパフォーマンス
 
 ![ASA イベント ソーシング アプリ](media/stream-analytics-solution-patterns/event-sourcing-app.png)
 
-このソリューション パターンでは、Azure Stream Analytics によってイベントが処理されてデータ ストアに集約されます。 アプリケーション レイヤーは、従来の要求/応答パターンを使用して、そのデータ ストアと対話することになります。 Stream Analytics には大量のイベントをリアルタイムに処理する機能があるため、アプリケーションは非常にスケーラブルであり、データ ストア レイヤーを増強する必要はありません。 実質的にはデータ ストア レイヤーが、システムにおける具体化されたビューとなります。 Stream Analytics の出力として Cosmos DB を使用する方法は、「[Azure Cosmos DB への Azure Stream Analytics の出力](stream-analytics-documentdb-output.md)」で説明されています。
+このソリューション パターンでは、Azure Stream Analytics によってイベントが処理されてデータ ストアに集約されます。 アプリケーション レイヤーは、従来の要求/応答パターンを使用して、そのデータ ストアと対話することになります。 Stream Analytics には大量のイベントをリアルタイムに処理する機能があるため、アプリケーションは非常にスケーラブルであり、データ ストア レイヤーを増強する必要はありません。 実質的にはデータ ストア レイヤーが、システムにおけるマテリアライズドビューとなります。 Stream Analytics の出力として Cosmos DB を使用する方法は、「[Azure Cosmos DB への Azure Stream Analytics の出力](stream-analytics-documentdb-output.md)」で説明されています。
 
 処理ロジックが複雑で、特定のロジック領域を個別にアップグレードする必要があるような実際のアプリケーションでは、中間イベント ブローカーとしての Event Hubs に複数の Stream Analytics ジョブを組み合わせることができます。
 
@@ -102,7 +101,7 @@ Azure Stream Analytics のビルトインの[異常検出モデル](stream-analy
 
 ## <a name="use-reference-data-for-enrichment"></a>エンリッチメントに参照データを使用する
 
-データ エンリッチメントは、多くの場合、ETL エンジンの要件となっています。 Azure Stream Analytics は、SQL Database と Azure Blob Storage の両方の[参照データ](stream-analytics-use-reference-data.md)を使ったデータ エンリッチメントをサポートします。 データ エンリッチメントによって、Azure Data Lake と SQL Data Warehouse の両方へのデータ ランディングを実現できます。
+データ エンリッチメントは、多くの場合、ETL エンジンの要件となっています。 Azure Stream Analytics は、SQL Database と Azure Blob Storage の両方の[参照データ](stream-analytics-use-reference-data.md)を使ったデータ エンリッチメントをサポートします。 データ エンリッチメントによって、Azure Data Lake と Azure Synapse Analytics の両方へのデータ ランディングを実現できます。
 
 
 ![ASA のオフライン分析とデータ エンリッチメント](media/stream-analytics-solution-patterns/offline-analytics-enriched.png)

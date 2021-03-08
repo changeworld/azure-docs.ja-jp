@@ -7,41 +7,17 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 6e253604c57d73c2a89ccfa5cff7efe9e572d11d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 6a862a051d0040ac99746d81f10ae63d5af7545f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89094348"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013728"
 ---
-[Durable Functions](../articles/azure-functions/durable-functions-overview.md) の構成設定。
+[Durable Functions](../articles/azure-functions/durable/durable-functions-overview.md) の構成設定。
 
-### <a name="durable-functions-1x"></a>Durable Functions 1.x
-
-```json
-{
-  "durableTask": {
-    "hubName": "MyTaskHub",
-    "controlQueueBatchSize": 32,
-    "partitionCount": 4,
-    "controlQueueVisibilityTimeout": "00:05:00",
-    "workItemQueueVisibilityTimeout": "00:05:00",
-    "maxConcurrentActivityFunctions": 10,
-    "maxConcurrentOrchestratorFunctions": 10,
-    "maxQueuePollingInterval": "00:00:30",
-    "azureStorageConnectionStringName": "AzureWebJobsStorage",
-    "trackingStoreConnectionStringName": "TrackingStorage",
-    "trackingStoreNamePrefix": "DurableTask",
-    "traceInputsAndOutputs": false,
-    "logReplayEvents": false,
-    "eventGridTopicEndpoint": "https://topic_name.westus2-1.eventgrid.azure.net/api/events",
-    "eventGridKeySettingName":  "EventGridKey",
-    "eventGridPublishRetryCount": 3,
-    "eventGridPublishRetryInterval": "00:00:30",
-    "eventGridPublishEventTypes": ["Started", "Completed", "Failed", "Terminated"]
-  }
-}
-```
+> [!NOTE]
+> Durable Functions のすべてのメジャー バージョンは、Azure Functions ランタイムのすべてのバージョンでサポートされています。 ただし、host.json 構成のスキーマは、Azure Functions ランタイムのバージョンと使用する Durable Functions 拡張機能のバージョンによって若干異なります。 次の例は、Azure Functions 2.0 および3.0 で使用するためのものです。 どちらの例でも、Azure Functions 1.0 を使用している場合、使用可能な設定は同じですが、host.json の "durableTask" セクションは、"extensions" の下のフィールドとしてではなく、host.json 構成のルートに配置する必要があります。
 
 ### <a name="durable-functions-2x"></a><a name="durable-functions-2-0-host-json"></a>Durable Functions 2.x
 
@@ -92,11 +68,40 @@ ms.locfileid: "89094348"
 
 ```
 
-タスク ハブの名前は、先頭文字をアルファベットとする必要があります。また、使用できるのはアルファベットと数値だけです。 指定しない場合、関数アプリの既定のタスク ハブ名は **DurableFunctionsHub** です。 詳細については、[タスク ハブ](../articles/azure-functions/durable-functions-task-hubs.md)に関するページをご覧ください。
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "hubName": "MyTaskHub",
+      "controlQueueBatchSize": 32,
+      "partitionCount": 4,
+      "controlQueueVisibilityTimeout": "00:05:00",
+      "workItemQueueVisibilityTimeout": "00:05:00",
+      "maxConcurrentActivityFunctions": 10,
+      "maxConcurrentOrchestratorFunctions": 10,
+      "maxQueuePollingInterval": "00:00:30",
+      "azureStorageConnectionStringName": "AzureWebJobsStorage",
+      "trackingStoreConnectionStringName": "TrackingStorage",
+      "trackingStoreNamePrefix": "DurableTask",
+      "traceInputsAndOutputs": false,
+      "logReplayEvents": false,
+      "eventGridTopicEndpoint": "https://topic_name.westus2-1.eventgrid.azure.net/api/events",
+      "eventGridKeySettingName":  "EventGridKey",
+      "eventGridPublishRetryCount": 3,
+      "eventGridPublishRetryInterval": "00:00:30",
+      "eventGridPublishEventTypes": ["Started", "Completed", "Failed", "Terminated"]
+    }
+  }
+}
+```
+
+タスク ハブの名前は、先頭文字をアルファベットとする必要があります。また、使用できるのはアルファベットと数値だけです。 指定しない場合、関数アプリの既定のタスク ハブ名は **DurableFunctionsHub** です。 詳細については、[タスク ハブ](../articles/azure-functions/durable/durable-functions-task-hubs.md)に関するページをご覧ください。
 
 |プロパティ  |Default | 説明 |
 |---------|---------|---------|
-|hubName|DurableFunctionsHub|代替[タスク ハブ](../articles/azure-functions/durable-functions-task-hubs.md)名を使用すると、複数の Durable Functions アプリケーションが同じストレージ バックエンドを使用している場合でも、これらのアプリケーションを互いに分離できます。|
+|hubName|DurableFunctionsHub|代替[タスク ハブ](../articles/azure-functions/durable/durable-functions-task-hubs.md)名を使用すると、複数の Durable Functions アプリケーションが同じストレージ バックエンドを使用している場合でも、これらのアプリケーションを互いに分離できます。|
 |controlQueueBatchSize|32|コントロール キューから一度にプルするメッセージの数。|
 |controlQueueBufferThreshold|256|一度にメモリにバッファー処理できる制御キュー メッセージの数。その時点で、ディスパッチャーは、追加のメッセージがデキューされるまで待機します。|
 |partitionCount |4|コントロール キューのパーティション数。 1 から 16 までの正の整数を使用できます。|
@@ -119,4 +124,4 @@ ms.locfileid: "89094348"
 |useLegacyPartitionManagement|true|`false` に設定した場合は、スケールアウト時に関数の実行が重複する可能性を抑えるパーティション管理アルゴリズムを使用します。v2.3.0 以降で利用可能です。 既定値は、将来のリリースで `false` に変更される予定です。|
 |useGracefulShutdown|false|(プレビュー) 正常なシャットダウンを有効にして、ホストのシャットダウンでインプロセス関数の実行が失敗する可能性を減らします。|
 
-これらの設定の多くはパフォーマンスの最適化を目的としています。 詳細については、「[パフォーマンスと拡張性](../articles/azure-functions/durable-functions-perf-and-scale.md)」を参照してください。
+これらの設定の多くはパフォーマンスの最適化を目的としています。 詳細については、「[パフォーマンスと拡張性](../articles/azure-functions/durable/durable-functions-perf-and-scale.md)」を参照してください。

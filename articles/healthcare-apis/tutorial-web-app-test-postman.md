@@ -10,11 +10,11 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.openlocfilehash: 1c64468a2e420734ca51a5b9308bb52e13712c51
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852924"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023314"
 ---
 # <a name="testing-the-fhir-api"></a>FHIR API をテストする
 前の 2 つの手順では、Azure API for FHIR をデプロイし、クライアント アプリケーションを登録しました。 これで、Azure API for FHIR がクライアント アプリケーションでセットアップされていることをテストする準備ができました。 

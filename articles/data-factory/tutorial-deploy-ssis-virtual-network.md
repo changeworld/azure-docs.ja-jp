@@ -1,22 +1,17 @@
 ---
 title: 仮想ネットワークに参加するように Azure-SSIS 統合ランタイムを構成するためのチュートリアル
-description: Azure-SSIS 統合ランタイムを Azure 仮想ネットワークに参加させる方法について説明します。
-services: data-factory
-documentationcenter: ''
+description: Azure 仮想ネットワークに参加する目的で Azure-SSIS 統合ランタイムを参加させる方法について説明します。
 author: chugugrace
 ms.author: chugu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 0b83049e154afc48334cc6deb576c700ed71d844
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 3dbbce4adc44696fdd12f6ce948b48b34caaed75
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118155"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391237"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>仮想ネットワークに参加するように Azure-SQL Server Integration Services (SSIS) 統合ランタイム (IR) を構成する
 
@@ -33,14 +28,14 @@ ms.locfileid: "84118155"
 
 - **Azure-SSIS 統合ランタイム**: Azure-SSIS 統合ランタイムがない場合は、開始する前に [Azure Data Factory で Azure-SSIS 統合ランタイムをプロビジョニング](tutorial-deploy-ssis-packages-azure.md)してください。
 
-- **ユーザーのアクセス許可**: Azure-SSIS IR を作成するユーザーには、少なくとも Azure Data Factory リソースに対する[ロールを割り当てる](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal#list-role-assignments-for-a-user-at-a-scope)必要があります。次のオプションがあります。
+- **ユーザーのアクセス許可**: Azure-SSIS IR を作成するユーザーには、少なくとも Azure Data Factory リソースに対する[ロールを割り当てる](../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope)必要があります。次のオプションがあります。
 
     - 組み込みのネットワーク共同作成者ロールを使用します。 このロールには、必要なスコープよりずっと大きなスコープを持つ _Microsoft.Network/\*_ アクセス許可が備わっています。
     - 必要な _Microsoft.Network/virtualNetworks/\*/join/action_ アクセス許可のみを含むカスタム ロールを作成してください。 また、Azure-SSIS IR を Azure Resource Manager 仮想ネットワークに参加させるときに独自のパブリック IP アドレスを使用する場合は、_Microsoft.Network/publicIPAddresses/*/join/action_ アクセス許可もロールに含めてください。
 
 - **Virtual network**。
 
-    - 仮想ネットワークがない場合は、[Azure portal を使用して仮想ネットワークを作成します](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)。
+    - 仮想ネットワークがない場合は、[Azure portal を使用して仮想ネットワークを作成します](../virtual-network/quick-create-portal.md)。
 
     - 仮想ネットワークのリソース グループが特定の Azure ネットワーク リソースを作成および削除できることを確認します。
     
@@ -51,13 +46,13 @@ ms.locfileid: "84118155"
     
         これらのリソースは、Azure-SSIS IR の開始時に作成されます。 これらは、Azure-SSIS IR の停止時に削除されます。 Azure-SSIS IR の停止がブロックされないように、他のリソースでこれらのネットワーク リソースを再利用しないでください。
 
-    - 仮想ネットワークが属するリソース グループまたはサブスクリプション上で[リソースのロック](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)がないことを確認します。 読み取り専用または削除ロックを構成した場合、Azure-SSIS IR の開始と停止が失敗するか、応答しなくなります。
+    - 仮想ネットワークが属するリソース グループまたはサブスクリプション上で[リソースのロック](../azure-resource-manager/management/lock-resources.md)がないことを確認します。 読み取り専用または削除ロックを構成した場合、Azure-SSIS IR の開始と停止が失敗するか、応答しなくなります。
 
     - 仮想ネットワークが属するリソース グループまたはサブスクリプション下に次のリソースが作成されるのを妨げる Azure Policy の割り当てがないことを確認します。
         - Microsoft.Network/LoadBalancers
         - Microsoft.Network/NetworkSecurityGroups
 
-- 次の**ネットワーク構成**シナリオについては、このチュートリアルでは扱いません。
+- 次の **ネットワーク構成** シナリオについては、このチュートリアルでは扱いません。
     - Azure-SSIS IR に独自のパブリック IP アドレスを使用する。
     - 独自のドメイン ネーム システム (DNS) サーバーを使用する。
     - サブネット上でネットワーク セキュリティ グループ (NSG) を使用する。
@@ -98,7 +93,7 @@ Azure-SSIS IR を参加させる前に、Azure portal を使用して仮想ネ�
 
    !["登録済み" 状態の確認](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
 
-   **Microsoft.Batch** が一覧に表示されない場合は、サブスクリプションに[空の Azure Batch アカウントを作成](../batch/batch-account-create-portal.md)します。 これは後で削除することができます。
+   **Microsoft.Batch** が一覧に表示されない場合は、サブスクリプションに [空の Azure Batch アカウントを作成](../batch/batch-account-create-portal.md)します。 これは後で削除することができます。
 
 ## <a name="join-the-azure-ssis-ir-to-a-virtual-network"></a>Azure-SSIS IR を仮想ネットワークに参加させる
 

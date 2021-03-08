@@ -1,30 +1,33 @@
 ---
 title: Media Services v3 動的暗号化を使用してコンテンツを保護する
-titleSuffix: Azure Media Services
 description: Azure Media Services での動的暗号化によるコンテンツ保護、ストリーミング プロトコル、および暗号化の種類について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/17/2020
-ms.author: juliako
-ms.custom: seodec18
-ms.openlocfilehash: 0be481d90562ca611b021e2f05d9109eb51958c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 7402172473056f191c2c50fa8aa8bd99d4e948eb
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023264"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095922"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Media Services 動的暗号化を使用してコンテンツを保護する
 
-Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでの全過程をセキュリティ保護できます。 Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム コンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。 コンテンツが AES クリア キーで暗号化され、HTTPS で送信される場合、クライアントに到達するまで平文になりません。 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでの全過程をセキュリティ保護できます。 Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム コンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。 コンテンツが AES クリア キーで暗号化され、HTTPS で送信される場合、クライアントに到達するまで平文になりません。
+
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 Media Services v3 では、コンテンツ キーがストリーミング ロケーターに関連付けられています ([この例](protect-with-aes128.md)を参照)。 Media Services キー配信サービスを使用している場合は、Azure Media Services でコンテンツ キーを生成できます。 独自のキー配信サービスを使用している場合、または 2 つのデータセンターに同じコンテンツ キーが必要な高可用性シナリオに対応する必要がある場合は、コンテンツ キーを自分で生成する必要があります。
 
@@ -134,7 +137,7 @@ HLS/CMAF + FairPlay (HEVC/H.265 を含む) は、次のデバイスでサポー�
 
 * iOS 11 以降。
 * iPhone 8 以降。
-* MacOS High Sierra (Intel 第 7 世代 CPU 搭載)。
+* macOS High Sierra (Intel 第 7 世代 CPU 搭載)。
 
 ### <a name="mpeg-dash"></a>MPEG-DASH
 
@@ -154,6 +157,10 @@ MPEG-DASH プロトコルでは、次のコンテナー形式と暗号化スキ�
 |---|---|---|
 |fMP4|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cbc)`|
 |fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cenc)`|
+|fMP4 | PIFF 1.1 (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
+
+> [!NOTE]
+> PIFF 1.1 のサポートは、初期の "Silverlight" バージョンの Common Encryption を実装したスマート TV (Samsung、LG) で下位互換性を保つためのソリューションとして提供されています。 PIFF 形式は、PIFF 1.1 バージョンの PlayReady 暗号化をサポートしている 2009 ～ 2015 年に出荷された従来の Samsung または LG 製スマート TV をサポートするために必要な場合のみ使用することをお勧めします。 
 
 ### <a name="browsers"></a>ブラウザー
 
@@ -169,7 +176,7 @@ MPEG-DASH プロトコルでは、次のコンテナー形式と暗号化スキ�
 
 ## <a name="controlling-content-access"></a>コンテンツ アクセスの制御
 
-コンテンツ キー ポリシーを構成することで、コンテンツにアクセスできるユーザーを制御できます。 Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 キーをクライアント (プレーヤー) に配信するには、クライアントがポリシーの要件を満たしている必要があります。 コンテンツ キー ポリシーは、*オープン*または*トークン*の制限を持つことができます。
+コンテンツ キー ポリシーを構成することで、コンテンツにアクセスできるユーザーを制御できます。 Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 キーをクライアント (プレーヤー) に配信するには、クライアントがポリシーの要件を満たしている必要があります。 コンテンツ キー ポリシーは、*オープン* または *トークン* の制限を持つことができます。
 
 オープンの制限のコンテンツ キー ポリシーは、承認を必要としないすべてのユーザーにライセンスを発行するときに使用できます。 たとえば、収益が広告ベースで、サブスクリプションベースではない場合です。  
 
@@ -184,7 +191,7 @@ Azure AD を STS として使用することも、[カスタム STS](#using-a-cu
 
 ### <a name="token-replay-prevention"></a>トークン再生の防止
 
-*トークン再生の防止*機能を使用すると、Media Services のユーザーは、同じトークンを使用してキーまたはライセンスを要求できる回数に制限を設定できます。 ユーザーは `urn:microsoft:azure:mediaservices:maxuses` の種類の要求をトークンに追加できます。この値は、トークンを使用してライセンスまたはキーを取得できる回数です。 キー配信に対して同じトークンを使用する後続のすべての要求では、"許可されていません" 応答が返されます。 [DRM サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)で、要求を追加する方法を参照してください。
+*トークン再生の防止* 機能を使用すると、Media Services のユーザーは、同じトークンを使用してキーまたはライセンスを要求できる回数に制限を設定できます。 ユーザーは `urn:microsoft:azure:mediaservices:maxuses` の種類の要求をトークンに追加できます。この値は、トークンを使用してライセンスまたはキーを取得できる回数です。 キー配信に対して同じトークンを使用する後続のすべての要求では、"許可されていません" 応答が返されます。 [DRM サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)で、要求を追加する方法を参照してください。
  
 #### <a name="considerations"></a>考慮事項
 
@@ -197,7 +204,7 @@ Azure AD を STS として使用することも、[カスタム STS](#using-a-cu
 
 ## <a name="using-a-custom-sts"></a>カスタム STS の使用
 
-ユーザーは、カスタム STS を使ってトークンを提供することがあります。 次のような理由が考えられます。
+ユーザーは、カスタム STS を使ってトークンを提供することがあります。 原因は次のとおりです。
 
 * ユーザーが使用する ID プロバイダー (IDP) が STS をサポートしていない場合。 この場合は、カスタム STS が選択肢になります。
 * ユーザーが、STS とユーザーのサブスクライバー請求システムの統合において、より柔軟性の高い、または厳密な制御を必要とする場合。

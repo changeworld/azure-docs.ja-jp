@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7509a17127f04220a8e8450a81627354b28bdacd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: bfcd1e600c722cf3a4951da60097c7c373f9b1a6
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89006467"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592043"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>チュートリアル:リモートでレンダリングされたモデルの表示
 
@@ -78,8 +78,8 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
 
 :::image type="content" source="./media/confirm-packages.png" alt-text="パッケージのインポートを確認する":::
 
-パッケージが読み込まれない場合は、Unity コンソールでエラーを確認してください。 エラーが発生していないのに、 **[Packages]\(パッケージ\)** フォルダーにパッケージが表示されない場合は、パッケージの表示トグル ボタンを確認します。
-![Unity カメラのプロパティ](./media/unity-package-visibility.png)
+パッケージが読み込まれない場合は、Unity コンソールでエラーを確認してください。 エラーが発生していないのに、 **[Packages]\(パッケージ\)** フォルダーにパッケージが表示されない場合は、パッケージの表示トグル ボタンを確認します。\
+![パッケージ表示トグル ボタンを指し示す矢印を含むスクリーンショット。](./media/unity-package-visibility.png)
 
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>最新バージョンのパッケージがあることを確認する
 
@@ -87,10 +87,10 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
 
 1. Unity エディターの上部のメニューで、 *[Window]\(ウィンドウ\)、[Package Manager]\(パッケージ マネージャー\)* の順に開きます。
 1. **[Microsoft Azure Remote Rendering]** パッケージを選択します。
-1. **Microsoft Azure Remote Rendering** パッケージの [Package Manager]\(パッケージ マネージャー\) ページで、 **[Update]\(更新\)** ボタンを使用できるかどうかを確認します。 使用できる場合はクリックして、利用可能な最新バージョンにパッケージを更新します。
+1. **Microsoft Azure Remote Rendering** パッケージの [Package Manager]\(パッケージ マネージャー\) ページで、 **[Update]\(更新\)** ボタンを使用できるかどうかを確認します。 使用できる場合はクリックして、利用可能な最新バージョンにパッケージを更新します。\
 ![パッケージ マネージャーにおける ARR パッケージ](./media/package-manager.png)
 1. パッケージを更新すると、コンソール エラーが発生することがあります。 その場合は、プロジェクトを閉じてから再度開いてみてください。
-1. パッケージが最新の状態になると、パッケージ マネージャーには [更新] ボタンではなく **[Up to date]\(最新\)** が表示されます。
+1. パッケージが最新の状態になると、パッケージ マネージャーには [更新] ボタンではなく **[Up to date]\(最新\)** が表示されます。\
 ![最新のパッケージ](./media/package-up-to-date.png)
 ## <a name="configure-the-camera"></a>カメラを構成する
 
@@ -119,16 +119,16 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
     ![プロジェクトの品質設定を変更する](./media/settings-quality.png)
 
 1. 左側のリスト メニューから **[Graphics]\(グラフィックス\)** を選択します
-1. **[Scriptable Rendering Pipeline]\(スクリプト可能なレンダリング パイプライン\)** 設定を *[HybridRenderingPipeline]* に変更します。
-    ![プロジェクトのグラフィックス設定の変更](./media/settings-graphics-render-pipeline.png)\
-    場合によっては、この UI では、パッケージで使用できるパイプラインの種類の一覧が表示されないことがあります。 その場合は、手動で *HybridRenderingPipeline* アセットをフィールドにドラッグする必要があります。
+1. **[Scriptable Rendering Pipeline]\(スクリプト可能なレンダリング パイプライン\)** 設定を *[HybridRenderingPipeline]* に変更します。\
+    ![[Scriptable Rendering Pipeline]\(スクリプト可能なレンダリング パイプライン\) 設定を HybridRenderingPipeline に変更する場所を示すスクリーンショット。](./media/settings-graphics-render-pipeline.png)\
+    場合によっては、この UI では、パッケージで使用できるパイプラインの種類の一覧が表示されないことがあります。 その場合は、手動で *HybridRenderingPipeline* アセットをフィールドにドラッグする必要があります。\
     ![プロジェクトのグラフィックス設定の変更](./media/hybrid-rendering-pipeline.png)
 
     > [!NOTE]
     > *HybridRenderingPipeline* アセットを [Render Pipeline Asset]\(パイプライン アセットのレンダリング\) フィールドにドラッグ アンド ドロップできない場合 (おそらくフィールドが存在しないことが理由)、パッケージ構成に `com.unity.render-pipelines.universal` パッケージが含まれていることを確認します。
 
 1. 左側のリスト メニューから **[Player]\(プレーヤー\)** を選択します
-1. Windows アイコンとして表示されている**ユニバーサル Windows プラットフォームの設定**タブを選択します。
+1. Windows アイコンとして表示されている **ユニバーサル Windows プラットフォームの設定** タブを選択します。
 1. Windows Mixed Reality をサポートするように、 **[XR Settings]\(XR 設定\)** を次のように変更します。
     1. **[Virtual Reality Supported]\(サポートされている仮想現実\)** を有効にします。
     1. [+] ボタンを押して **[Windows Mixed Reality]** を追加します
@@ -150,7 +150,7 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
 1. *[File]\(ファイル\)、[Build Settings]\(ビルド設定\)* の順に開きます
 1. **[Universal Windows Platform]\(ユニバーサル Windows プラットフォーム\)** を選択します
 1. 以下の内容と一致するように設定を構成します
-1. **[Switch Platform]\(プラットフォームの切り替え\)** ボタンを押します。
+1. **[Switch Platform]\(プラットフォームの切り替え\)** ボタンを押します。\
 ![ビルド設定](./media/build-settings.png)
 1. Unity でプラットフォームが変更されたら、ビルド パネルを閉じます。
 
@@ -171,7 +171,7 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
 
 1. *[Project]\(プロジェクト\)* ペインの **[Assets]\(アセット\)** の下に、*RemoteRenderingCore* という名前の新しいフォルダーを作成します。 次に、*RemoteRenderingCore* 内に *Scripts* という名前の別のフォルダーを作成します。
 
-1. **RemoteRenderingCoordinator** という名前の[新しい C# スクリプト](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html)を作成します。
+1. **RemoteRenderingCoordinator** という名前の [新しい C# スクリプト](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html)を作成します。
 プロジェクトはこのようになります。
 
     ![プロジェクトの階層](./media/project-structure.png)
@@ -180,7 +180,7 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
 
 1. コード エディターで **RemoteRenderingCoordinator** を開き、内容全体を次のコードで置き換えます。
 
-```csharp
+```cs
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -220,7 +220,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     public static RemoteRenderingCoordinator instance;
 
     // AccountDomain must be '<region>.mixedreality.azure.com' - if no '<region>' is specified, connections will fail
-    // For most people '<region>' is either 'westus2' or 'westeurope'
+    // The list of regions is available at https://docs.microsoft.com/azure/remote-rendering/reference/regions
     [SerializeField]
     private string accountDomain = "westus2.mixedreality.azure.com";
     public string AccountDomain
@@ -236,6 +236,14 @@ public class RemoteRenderingCoordinator : MonoBehaviour
         get => accountId.Trim();
         set => accountId = value;
     }
+
+    [SerializeField]
+    private string accountAuthenticationDomain = "<enter your account authentication domain here>";
+    public string AccountAuthenticationDomain
+    {
+        get => accountAuthenticationDomain.Trim();
+        set => accountAuthenticationDomain = value;
+    }   
 
     [SerializeField]
     private string accountKey = "<enter your account key here>";
@@ -284,7 +292,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
         }
     }
 
-    public delegate Task<AzureFrontendAccountInfo> AccountInfoGetter();
+    public delegate Task<SessionConfiguration> AccountInfoGetter();
 
     public static AccountInfoGetter ARRCredentialGetter
     {
@@ -309,7 +317,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     public static event Action<RemoteRenderingState> CoordinatorStateChange;
 
-    public static AzureSession CurrentSession => instance?.ARRSessionService?.CurrentActiveSession;
+    public static RenderingSession CurrentSession => instance?.ARRSessionService?.CurrentActiveSession;
 
     private ARRServiceUnity arrSessionService;
 
@@ -323,10 +331,10 @@ public class RemoteRenderingCoordinator : MonoBehaviour
         }
     }
 
-    private async Task<AzureFrontendAccountInfo> GetDevelopmentCredentials()
+    private async Task<SessionConfiguration> GetDevelopmentCredentials()
     {
         Debug.LogWarning("Using development credentials! Not recommended for production.");
-        return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AccountId, AccountKey));
+        return await Task.FromResult(new SessionConfiguration(AccountAuthenticationDomain, AccountDomain, AccountId, AccountKey));
     }
 
     /// <summary>
@@ -454,8 +462,8 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     private async Task<bool> IsSessionAvailable(string sessionID)
     {
-        var allSessions = await ARRSessionService.Frontend.GetCurrentRenderingSessionsAsync().AsTask();
-        return allSessions.Any(x => x.Id == sessionID && (x.Status == RenderingSessionStatus.Ready || x.Status == RenderingSessionStatus.Starting));
+        var allSessions = await ARRSessionService.Client.GetCurrentRenderingSessionsAsync();
+        return allSessions.SessionProperties.Any(x => x.Id == sessionID && (x.Status == RenderingSessionStatus.Ready || x.Status == RenderingSessionStatus.Starting));
     }
 
     /// <summary>
@@ -473,11 +481,11 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     /// <summary>
     /// The session must have its runtime pump updated.
-    /// The Actions.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
+    /// The Connection.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
     /// </summary>
     private void LateUpdate()
     {
-        ARRSessionService?.CurrentActiveSession?.Actions?.Update();
+        ARRSessionService?.CurrentActiveSession?.Connection?.Update();
     }
 
     /// <summary>
@@ -487,17 +495,17 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     /// <param name="progress">A call back method that accepts a float progress value [0->1]</param>
     /// <param name="parent">The parent Transform for this remote entity</param>
     /// <returns>An awaitable Remote Rendering Entity</returns>
-    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, ProgressHandler progress = null)
+    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, Action<float> progress = null)
     {
         //Implement me
         return null;
     }
 
-    private async void OnRemoteSessionStatusChanged(ARRServiceUnity caller, AzureSession session)
+    private async void OnRemoteSessionStatusChanged(ARRServiceUnity caller, RenderingSession session)
     {
-        var properties = await session.GetPropertiesAsync().AsTask();
+        var properties = await session.GetPropertiesAsync();
 
-        switch (properties.Status)
+        switch (properties.SessionProperties.Status)
         {
             case RenderingSessionStatus.Error:
             case RenderingSessionStatus.Expired:
@@ -537,19 +545,19 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 リモート レンダリング コーディネーターとこれに必要なスクリプト (*ARRServiceUnity*) はどちらも、シーン内の GameObject にアタッチする必要がある MonoBehaviours です。 *ARRServiceUnity* スクリプトは、リモート セッションに接続して管理するための ARR の機能の多くを公開する目的で、ARR によって提供されています。
 
 1. シーンに新しい GameObject を作成し (Ctrl + Shift + N キーを押すか、 *[GameObject]、[Create Empty]\(空の作成\)* の順に選択)、それに **RemoteRenderingCoordinator** という名前を付けます。
-1. *RemoteRenderingCoordinator* スクリプトを **RemoteRenderingCoordinator** GameObject に追加します。
+1. *RemoteRenderingCoordinator* スクリプトを **RemoteRenderingCoordinator** GameObject に追加します。\
 ![RemoteRenderingCoordinator コンポーネントを追加する](./media/add-coordinator-script.png)
 1. インスペクターで "*サービス*" として表示される *ARRServiceUnity* スクリプトが、自動的に GameObject に追加されていることを確認します。 判然としない場合は、**RemoteRenderingCoordinator** スクリプトの先頭に `[RequireComponent(typeof(ARRServiceUnity))]` が含まれていることを確認してください。
-1. Azure Remote Rendering の資格情報とアカウント ドメインをコーディネーター スクリプトに追加します。
+1. Azure Remote Rendering の資格情報、アカウント認証ドメイン、アカウント ドメインをコーディネーター スクリプトに追加します。\
 ![資格情報を追加する](./media/configure-coordinator-script.png)
 
 ## <a name="initialize-azure-remote-rendering"></a>Azure Remote Rendering を初期化する
 
-コーディネーターのフレームワークが用意されたので、4 つの各ステージのうち、**Remote Rendering の初期化**から実装を始めていきます。
+コーディネーターのフレームワークが用意されたので、4 つの各ステージのうち、**Remote Rendering の初期化** から実装を始めていきます。
 
 ![ARR スタック 1](./media/remote-render-stack-1.png)
 
-**初期化**によって、どのカメラ オブジェクトをレンダリングに使用するかが Azure Remote Rendering に伝えられ、状態機械が **NotAuthorized** に進みます。 つまり、初期化されていても、セッションに接続する権限はまだありません。 ARR セッションを開始するとコストが発生するため、続行するかどうかをユーザーに確認する必要があります。
+**初期化** によって、どのカメラ オブジェクトをレンダリングに使用するかが Azure Remote Rendering に伝えられ、状態機械が **NotAuthorized** に進みます。 つまり、初期化されていても、セッションに接続する権限はまだありません。 ARR セッションを開始するとコストが発生するため、続行するかどうかをユーザーに確認する必要があります。
 
 **NotAuthorized** 状態に入ると、**CheckAuthorization** が呼び出されます。これにより、**RequestingAuthorization** イベントが呼び出され、どのアカウントの資格情報を使用するかが決定されます (**AccountInfo** はクラスの先頭付近で定義されており、上記の手順で Unity インスペクターを介して定義した資格情報が使用されます)。
 
@@ -558,7 +566,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
 1. **InitializeARR** と **InitializeSessionService** の内容を、次の完成したコードで置き換えます。
 
- ```csharp
+ ```cs
 /// <summary>
 /// Initializes ARR, associating the main camera
 /// Note: This must be called on the main Unity thread
@@ -594,10 +602,10 @@ public async void InitializeSessionService()
 1. **RemoteRenderingCoordinator** GameObject を選択し、**RemoteRenderingCoordinator** コンポーネントのインスペクターで公開されている **OnRequestingAuthorization** Unity イベントを見つけます。
 
 1. 右下にある [+] を押して、新しいイベントを追加します。
-1. コンポーネントを独自のイベントにドラッグして、それ自体を参照するようにします。
+1. コンポーネントを独自のイベントにドラッグして、それ自体を参照するようにします。\
 ![認証をバイパスする](./media/bypass-authorization-add-event.png)\
-1. ドロップダウンで **[RemoteRenderingCoordinator]、[BypassAuthorization]** の順に選択します。
-![認証をバイパスする](./media/bypass-authorization-event.png)
+1. ドロップダウンで **[RemoteRenderingCoordinator]、[BypassAuthorization]** の順に選択します。\
+![選択された RemoteRenderingCoordinator.BypassAuthorization オプションを表示するスクリーンショット。](./media/bypass-authorization-event.png)
 
 ## <a name="create-or-join-a-remote-session"></a>リモート セッションの作成または参加を行う
 
@@ -616,7 +624,7 @@ public async void InitializeSessionService()
 
 1. 新しいセッションに参加するには、コードを変更して、**JoinRemoteSession()** および **StopRemoteSession()** メソッドを完成した次のコードで置き換えます。
 
-```csharp
+```cs
 /// <summary>
 /// Attempts to join an existing session or start a new session
 /// </summary>
@@ -632,7 +640,7 @@ public async void JoinRemoteSession()
     else
     {
         CurrentCoordinatorState = RemoteRenderingState.ConnectingToNewRemoteSession;
-        joinResult = await ARRSessionService.StartSession(new RenderingSessionCreationParams(renderingSessionVmSize, maxLeaseHours, maxLeaseMinutes));
+        joinResult = await ARRSessionService.StartSession(new RenderingSessionCreationOptions(renderingSessionVmSize, maxLeaseHours, maxLeaseMinutes));
     }
 
     if (joinResult.Status == RenderingSessionStatus.Ready || joinResult.Status == RenderingSessionStatus.Starting)
@@ -674,7 +682,7 @@ public void StopRemoteSession()
  1. **ConnectRuntimeToRemoteSession()** および **DisconnectRuntimeFromRemoteSession()** メソッドを、次の完成版で置き換えます。
  1. Unity メソッド **LateUpdate** をメモし、これによって現在のアクティブなセッションが更新されていることを確認することが重要です。 これにより、現在のセッションでメッセージを送受信し、リモート セッションから受信したフレームを使用してフレーム バッファーを更新できます。 これは ARR が正常に機能するうえで非常に重要です。
 
-```csharp
+```cs
 /// <summary>
 /// Connects the local runtime to the current active session, if there's a session available
 /// </summary>
@@ -690,7 +698,7 @@ public void ConnectRuntimeToRemoteSession()
     //This session is set when connecting to a new or existing session
 
     ARRSessionService.CurrentActiveSession.ConnectionStatusChanged += OnLocalRuntimeStatusChanged;
-    ARRSessionService.CurrentActiveSession.ConnectToRuntime(new ConnectToRuntimeParams());
+    ARRSessionService.CurrentActiveSession.ConnectAsync(new RendererInitOptions());
     CurrentCoordinatorState = RemoteRenderingState.ConnectingToRuntime;
 }
 
@@ -702,18 +710,18 @@ public void DisconnectRuntimeFromRemoteSession()
         return;
     }
 
-    ARRSessionService.CurrentActiveSession.DisconnectFromRuntime();
+    ARRSessionService.CurrentActiveSession.Disconnect();
     ARRSessionService.CurrentActiveSession.ConnectionStatusChanged -= OnLocalRuntimeStatusChanged;
     CurrentCoordinatorState = RemoteRenderingState.RemoteSessionReady;
 }
 
 /// <summary>
 /// The session must have its runtime pump updated.
-/// The Actions.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
+/// The Connection.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
 /// </summary>
 private void LateUpdate()
 {
-    ARRSessionService?.CurrentActiveSession?.Actions?.Update();
+    ARRSessionService?.CurrentActiveSession?.Connection?.Update();
 }
 ```
 
@@ -724,13 +732,13 @@ private void LateUpdate()
 
 必要な基盤が整ったら、モデルをリモート セッションに読み込んで、フレームの受信を開始する準備ができています。
 
-![ARR スタック 4](./media/remote-render-stack-4.png)
+![モデルを読み込んで表示するまでのプロセス フローを示す図。](./media/remote-render-stack-4.png)
 
 **LoadModel** メソッドは、モデル パス、進行状況ハンドラー、および親変換を受け入れるように設計されています。 これらの引数を使用して、リモート セッションにモデルを読み込み、読み込みの進行状況に応じてユーザーを更新し、親変換に基づいてリモートでレンダリングされるモデルの向きを指定します。
 
 1. **LoadModel** メソッド全体を次のコードで置き換えます。
 
-    ```csharp
+    ```cs
     /// <summary>
     /// Loads a model into the remote session for rendering
     /// </summary>
@@ -738,10 +746,10 @@ private void LateUpdate()
     /// <param name="parent">The parent Transform for this remote entity</param>
     /// <param name="progress">A call back method that accepts a float progress value [0->1]</param>
     /// <returns>An awaitable Remote Rendering Entity</returns>
-    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, ProgressHandler progress = null)
+    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, Action<float> progress = null)
     {
         //Create a root object to parent a loaded model to
-        var modelEntity = ARRSessionService.CurrentActiveSession.Actions.CreateEntity();
+        var modelEntity = ARRSessionService.CurrentActiveSession.Connection.CreateEntity();
 
         //Get the game object representation of this entity
         var modelGameObject = modelEntity.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
@@ -770,11 +778,9 @@ private void LateUpdate()
     #endif
 
         //Load a model that will be parented to the entity
-        var loadModelParams = new LoadModelFromSASParams(modelPath, modelEntity);
-        var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelFromSASAsync(loadModelParams);
-        if(progress != null)
-            loadModelAsync.ProgressUpdated += progress;
-        var result = await loadModelAsync.AsTask();
+        var loadModelParams = new LoadModelFromSasParams(modelPath, modelEntity);
+        var loadModelAsync = ARRSessionService.CurrentActiveSession.Connection.LoadModelFromSasAsync(loadModelParams, progress);
+        var result = await loadModelAsync;
         return modelEntity;
     }
     ```
@@ -796,7 +802,7 @@ private void LateUpdate()
 
 1. 次のコードを **RemoteRenderingCoordinator** クラスの **LoadModel** メソッドのすぐ下に追加します。
 
-    ```csharp
+    ```cs
     private bool loadingTestModel = false;
     [ContextMenu("Load Test Model")]
     public async void LoadTestModel()

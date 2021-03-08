@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 6/15/2019
+ms.date: 01/11/2021
 ms.author: rohink
-ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb14cb95ec1362782a634b0e62cfa2f8237a5852
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77121721"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246384"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS に関する FAQ
 
@@ -24,7 +24,7 @@ ms.locfileid: "77121721"
 
 Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Azure のグローバル ネットワーク上でホストされます。 このシステムではエニーキャスト ネットワークが使用されるため、各 DNS クエリには、使用できる最も近い DNS サーバーが応答します。 Azure DNS によって、ドメインに高速なパフォーマンスと高可用性が提供されます。
 
-Azure DNS は、Azure Resource Manager に基づいています。 Azure DNS では、ロールベースのアクセス制御、監査ログ、リソース ロックなどの Resource Manager 機能を利用できます。 ドメインとレコードは、Azure portal、Azure PowerShell コマンドレット、およびクロス プラットフォームの Azure CLI を使用して管理できます。 DNS の自動管理を必要とするアプリケーションは、REST API と SDK を使用してサービスを統合できます。
+Azure DNS は、Azure Resource Manager に基づいています。 Azure DNS では、Azure ロールベースのアクセス制御、監査ログ、リソース ロックなどの Resource Manager 機能を利用できます。 ドメインとレコードは、Azure portal、Azure PowerShell コマンドレット、およびクロス プラットフォームの Azure CLI を使用して管理できます。 DNS の自動管理を必要とするアプリケーションは、REST API と SDK を使用してサービスを統合できます。
 
 ### <a name="how-much-does-azure-dns-cost"></a>Azure DNS の料金はいくらですか。
 
@@ -44,7 +44,7 @@ DNS 要求が有効な場合、Azure では 100% の時間において Azure DNS
 
 DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 たとえば、ドメイン contoso.com に、複数の DNS レコードが含まれることがあります。 これらのレコードに、メール サーバー用の mail.contoso.com と Web サイト用の www\.contoso.com が含まれることがあります。 これらのレコードは DNS ゾーン contoso.com でホストされます。
 
-ドメイン名は*単なる名前*です。 DNS ゾーンは、ドメイン名用の DNS レコードを含むデータ リソースです。 Azure DNS を使用すると、DNS ゾーンをホストし、Azure のドメインの DNS レコードを管理できます。 また、インターネットからの DNS クエリに応答する DNS ネーム サーバーも提供します。
+ドメイン名は *単なる名前* です。 DNS ゾーンは、ドメイン名用の DNS レコードを含むデータ リソースです。 Azure DNS を使用すると、DNS ゾーンをホストし、Azure のドメインの DNS レコードを管理できます。 また、インターネットからの DNS クエリに応答する DNS ネーム サーバーも提供します。
 
 ### <a name="do-i-need-to-buy-a-dns-domain-name-to-use-azure-dns"></a>Azure DNS を使用するために DNS ドメイン名を購入する必要がありますか。 
 
@@ -58,7 +58,7 @@ DNS ゾーンをグローバル DNS 階層にリンクするには、ドメイ�
 
 ### <a name="are-there-any-restrictions-when-using-alias-records-for-a-domain-name-apex-with-traffic-manager"></a>Traffic Manager でドメイン名の apex に対してエイリアス レコードを使用するときに、何か制限はありますか。
 
-はい。 Azure Traffic Manager では静的パブリック IP アドレスを使用する必要があります。 静的 IP アドレスを使用して**外部エンドポイント** ターゲットを構成してください。 
+はい。 Azure Traffic Manager では静的パブリック IP アドレスを使用する必要があります。 静的 IP アドレスを使用して **外部エンドポイント** ターゲットを構成してください。 
 
 ### <a name="does-azure-dns-support-dns-based-traffic-routing-or-endpoint-failover"></a>Azure DNS では DNS ベースのトラフィック ルーティングまたはエンドポイント フェールオーバーがサポートされますか。
 
@@ -80,7 +80,7 @@ DNSSEC 機能は、Azure DNS バックログで追跡されます。 フィー�
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Azure DNS ではゾーン転送 (IXFR AXFR/) はサポートされますか。
 
-いいえ。 現在、Azure DNS でゾーン転送はサポートされていません。 DNS ゾーンは [Azure CLI を使用して Azure DNS にインポート](dns-import-export.md)できます。 DNS レコードは、[Microsoft Azure DNS 管理ポータル](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell コマンドレット](dns-operations-recordsets.md)、または [CLI ツール](dns-operations-recordsets-cli.md)で管理できます。
+いいえ。 現在、Azure DNS でゾーン転送はサポートされていません。 DNS ゾーンは [Azure CLI を使用して Azure DNS にインポート](dns-import-export.md)できます。 DNS レコードは、[Microsoft Azure DNS 管理ポータル](dns-operations-recordsets-portal.md)、[REST API](/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell コマンドレット](dns-operations-recordsets.md)、または [CLI ツール](dns-operations-recordsets-cli.md)で管理できます。
 
 ゾーン転送機能は、Azure DNS バックログで追跡されます。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c)してください。
 
@@ -149,7 +149,7 @@ Azure DNS ゾーンでは、エイリアス レコード セットとして、�
 
 共同ホスティングを設定するには、両方のプロバイダーのネーム サーバーをポイントするようにドメインの NS レコードを変更します。 ドメインに対する DNS クエリを受信するプロバイダーは、ネーム サーバー (NS) レコードによって制御されます。 Azure DNS、他のプロバイダー、および親ゾーン内のこれらの NS レコードを変更できます。 通常、親ゾーンは、ドメイン名レジストラーによって構成されます。 DNS 委任の詳細については、[DNS へのドメインの委任](dns-domain-delegation.md)に関する記事を参照してください。
 
-また、ドメイン用の DNS レコードが両方の DNS プロバイダー間で同期していることを確認してください。 現在、Azure DNS では DNS ゾーン転送はサポートされていません。 DNS レコードは、[Azure DNS 管理ポータル](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/rest/api/dns/)、[SDK](dns-sdk.md)、[PowerShell コマンドレット](dns-operations-recordsets.md)、[CLI ツール](dns-operations-recordsets-cli.md)のいずれかを使用して同期する必要があります。
+また、ドメイン用の DNS レコードが両方の DNS プロバイダー間で同期していることを確認してください。 現在、Azure DNS では DNS ゾーン転送はサポートされていません。 DNS レコードは、[Azure DNS 管理ポータル](dns-operations-recordsets-portal.md)、[REST API](/rest/api/dns/)、[SDK](dns-sdk.md)、[PowerShell コマンドレット](dns-operations-recordsets.md)、[CLI ツール](dns-operations-recordsets-cli.md)のいずれかを使用して同期する必要があります。
 
 ### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>自分のドメインを 4 個の Azure DNS ネーム サーバーすべてに委任する必要がありますか。
 
@@ -177,7 +177,7 @@ DNS ゾーンの移動に関する詳細と手順については、「[新しい
 
 ### <a name="how-can-i-protect-my-dns-zones-against-accidental-deletion"></a>誤って削除されないように DNS ゾーンを保護するにはどうすればよいですか。
 
-Azure DNS の管理は、Azure Resource Manager を使用して行われます。 Azure DNS では、Azure Resource Manager が提供するアクセス制御機能を利用しています。 ロールベースのアクセス制御によって、DNS ゾーンとレコード セットに対する読み取りアクセスまたは書き込みアクセスを持つユーザーを制御します。 リソース ロックによって、DNS ゾーンとレコード セットを誤って変更または削除することを回避します。
+Azure DNS の管理は、Azure Resource Manager を使用して行われます。 Azure DNS では、Azure Resource Manager が提供するアクセス制御機能を利用しています。 Azure ロールベースのアクセス制御を使用すると、DNS ゾーンとレコード セットへの読み取りアクセスまたは書き込みアクセスを持つユーザーを制御できます。 リソース ロックによって、DNS ゾーンとレコード セットを誤って変更または削除することを回避します。
 
 詳細については、「[DNS ゾーンとレコードを保護する方法](dns-protect-zones-recordsets.md)」を参照してください。
 

@@ -1,25 +1,19 @@
 ---
 title: Microsoft Azure を Oracle Cloud Infrastructure と統合する | Microsoft Docs
 description: Microsoft Azure 上で実行されている Oracle アプリを Oracle Cloud Infrastructure (OCI) のデータベースと統合するソリューションについて説明します。
-services: virtual-machines-linux
-documentationcenter: ''
-author: rgardler
-manager: ''
-tags: ''
-ms.assetid: ''
+author: dbakevlar
 ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 06/01/2020
-ms.author: rogardle
-ms.custom: ''
-ms.openlocfilehash: d93446f4db914c736235daeb4e08e82b9ff00e62
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.author: kegorman
+ms.openlocfilehash: b27db94775e2ba8275dbdab4bf5bd61cc0fdf5c8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224504"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666871"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Microsoft Azure と Oracle Cloud Infrastructure を統合した Oracle アプリケーション ソリューション
 
@@ -55,6 +49,7 @@ Oracle ソリューションを完全に Azure インフラストラクチャに
 * Azure カナダ中部 (CanadaCentral) および OCI トロント (カナダ南東部)
 * Azure 西ヨーロッパ (WestEurope) および OCI アムステルダム (オランダ北西部)
 * Azure 東日本 (JapanEast) および OCI 東京 (東日本)
+* Azure 米国西部 (WestUS) および OCI サンノゼ (米国西部)
 
 ## <a name="networking"></a>ネットワーク
 
@@ -68,7 +63,7 @@ ExpressRoute と FastConnect を使用すると、プライベート IP アド�
 
 ネットワーク セキュリティは、あらゆるエンタープライズ アプリケーションの重要なコンポーネントであり、このマルチクラウド ソリューションの中心です。 ExpressRoute および FastConnect を経由するトラフィックはすべてプライベート ネットワークを経由します。 この構成で、Azure 仮想ネットワークと Oracle 仮想クラウド ネットワーク間のセキュリティで保護された通信を実現できます。 Azure の仮想マシンにパブリック IP アドレスを提供する必要はありません。 同様に、OCI にインターネット ゲートウェイは必要ありません。 通信はすべてマシンのプライベート IP アドレスを介して行われます。
 
-さらに、OCI 仮想クラウド ネットワーク上の[セキュリティ リスト](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm)と、セキュリティ ルール (Azure [ネットワーク セキュリティ グループ](../../../virtual-network/security-overview.md)に添付) を設定できます。 これらのルールは、仮想ネットワーク内のマシン間を流れるトラフィックを制御するために使用します。 ネットワーク セキュリティ ルールは、マシン レベル、サブネット レベル、および仮想ネットワーク レベルで追加できます。
+さらに、OCI 仮想クラウド ネットワーク上の[セキュリティ リスト](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm)と、セキュリティ ルール (Azure [ネットワーク セキュリティ グループ](../../../virtual-network/network-security-groups-overview.md)に添付) を設定できます。 これらのルールは、仮想ネットワーク内のマシン間を流れるトラフィックを制御するために使用します。 ネットワーク セキュリティ ルールは、マシン レベル、サブネット レベル、および仮想ネットワーク レベルで追加できます。
 
 それぞれの [WebLogic Server Azure アプリケーション](oracle-weblogic.md)は、WebLogic Server のポート構成と連携するように事前に構成されたネットワーク セキュリティ グループを作成します。
  

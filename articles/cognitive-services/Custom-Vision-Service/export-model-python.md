@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: af0e9cd66cf64366a6f563148fa6b075161151f4
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: a47475ad55c5e6262dc8ba1a384d89b9721fd2e9
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875440"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736427"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>チュートリアル: Python での TensorFlow モデルの実行
 
-Custom Vision Service から [TensorFlow モデルをエクスポート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)したら、このクイックスタートが、このモデルをローカルで使用して画像を分類する方法を示します。
+Custom Vision Service から [TensorFlow モデルをエクスポート](./export-your-model.md)したら、このクイックスタートが、このモデルをローカルで使用して画像を分類する方法を示します。
 
 > [!NOTE]
 > このチュートリアルは、イメージ分類のプロジェクトからエクスポートされたモデルにのみ適用されます。
@@ -34,7 +34,7 @@ Custom Vision Service から [TensorFlow モデルをエクスポート](https:/
 
 続けて次のパッケージをインストールする必要があります。
 
-```
+```bash
 pip install tensorflow
 pip install pillow
 pip install numpy
@@ -43,7 +43,7 @@ pip install opencv-python
 
 ## <a name="load-your-model-and-tags"></a>モデルとタグを読み込む
 
-ダウンロードした zip ファイルには、model.pb と、labels.txt が含まれています。 これらのファイルは、トレーニング済みモデルと分類ラベルを表します。 最初の手順では、プロジェクトに、モデルを読み込みます。
+ダウンロードした zip ファイルには、_model.pb_ と、_labels.txt_ ファイルが含まれています。 これらのファイルは、トレーニング済みモデルと分類ラベルを表します。 最初の手順では、プロジェクトに、モデルを読み込みます。 次のコードを新しい Python スクリプトに追加します。
 
 ```Python
 import tensorflow as tf
@@ -126,6 +126,8 @@ augmented_image = crop_center(augmented_image, network_input_size, network_input
 
 ```
 
+### <a name="add-helper-functions"></a>ヘルパー関数を追加する
+
 上記の手順では、次のヘルパー関数を使用します。
 
 ```Python
@@ -191,7 +193,7 @@ with tf.compat.v1.Session() as sess:
         exit(-1)
 ```
 
-## <a name="view-the-results"></a>結果の確認
+## <a name="display-the-results"></a>結果を表示する
 
 モデルを通じて画像テンソルを実行した結果をラベルにマップする必要があります。
 

@@ -4,12 +4,12 @@ description: Azure Blockchain Service のトランザクション ノードを�
 ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 90836ad94410dfec5caa32275362f1407c9f5b1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50f9b2aa0f5e1a1b1095b6c799ce0706b6e541de
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212566"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150873"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure Blockchain Service のトランザクション ノードを構成する
 
@@ -52,7 +52,7 @@ ms.locfileid: "85212566"
 
 1. Azure portal で Azure Blockchain Service メンバーのトランザクション ノードの 1 つに移動して、 **[概要]** を選択します。
 
-    ![エンドポイント](./media/configure-transaction-nodes/endpoints.png)
+    ![ブロックチェーン メンバーに対するトランザクション ノードの概要のスクリーンショット。](./media/configure-transaction-nodes/endpoints.png)
 
 トランザクション ノード エンドポイントはセキュリティで保護されており、認証が必要です。 トランザクション エンドポイントに接続するには、Azure AD Authentication、HTTPS 基本認証、および HTTPS または TLS 経由の WebSocket を介したアクセス キーを使用できます。
 
@@ -75,7 +75,7 @@ Azure Blockchain Service のトランザクション ノード エンドポイ�
 
 1. **[保存]** を選択して、ロールの割り当てを追加します。
 
-Azure AD のアクセス制御について詳しくは、「[RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」をご覧ください
+Azure AD アクセス制御の詳細については、[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)方法に関するページを参照してください
 
 Azure AD 認証を使って接続する方法について詳しくは、[AAD 認証を使用したノードへの接続](configure-aad.md)に関する記事をご覧ください。
 

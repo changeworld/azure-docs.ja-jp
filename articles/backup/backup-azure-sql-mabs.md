@@ -3,12 +3,12 @@ title: Azure Backup Server を使用した SQL Server のバックアップ
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用して SQL Server データベースのバックアップを構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: d682e63424ca247161e9784a8a05b91186da54b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 29813741e88ad5f2bc5109be87939abf7cc11502
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003646"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91316921"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Azure Backup Server を使用して SQL Server を Azure にバックアップする
 
@@ -24,16 +24,16 @@ SQL Server データベースをバックアップし、それを Azure から�
 
 * データベースのファイルがリモート ファイル共有にある場合、保護はエラー ID 104 で失敗します。 MABS では、リモート ファイル共有上の SQL Server データの保護はサポートされていません。
 * リモート SMB 共有に保存されているデータベースを MABS で保護することはできません。
-* [可用性グループのレプリカが読み取り専用として構成されている](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)ことを確認します。
+* [可用性グループのレプリカが読み取り専用として構成されている](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server)ことを確認します。
 * システム アカウント **NTAuthority\System** を SQL Server の Sysadmin グループに明示的に追加する必要があります。
-* 部分的な包含データベースに対して別の場所への回復を実行する場合は、ターゲット SQL インスタンスで[包含データベース](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable)機能が有効になっていることを確認する必要があります。
-* ファイル ストリーム データベースに対して別の場所への回復を実行する場合、ターゲット SQL インスタンスで[ファイル ストリーム データベース](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15)機能が有効になっていることを確認する必要があります。
+* 部分的な包含データベースに対して別の場所への回復を実行する場合は、ターゲット SQL インスタンスで[包含データベース](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#enable)機能が有効になっていることを確認する必要があります。
+* ファイル ストリーム データベースに対して別の場所への回復を実行する場合、ターゲット SQL インスタンスで[ファイル ストリーム データベース](/sql/relational-databases/blob/enable-and-configure-filestream)機能が有効になっていることを確認する必要があります。
 * SQL Server AlwaysOn の保護:
   * 保護グループの作成時に照会を実行するときに、MABS によって可用性グループが検出されます。
   * MABS によってフェールオーバーが検出され、データベース保護が続行されます。
   * MABS では、SQL Server のインスタンスに対するマルチサイト クラスター構成がサポートされます。
 * AlwaysOn 機能を使用するデータベースを MABS で保護するときは、次の制限があります。
-  * MABS では、バックアップ設定に基づいて SQL Server に設定されている可用性グループに対するバックアップ ポリシーが使用されます。
+  * MABS では、次のように、バックアップ設定に基づいて SQL Server に設定されている可用性グループ用のバックアップ ポリシーに従います。
     * セカンダリ優先 - オンラインになっているのがプライマリ レプリカのみの場合を除き、バックアップは常にセカンダリ レプリカ上で発生します。 セカンダリ レプリカが複数ある場合は、バックアップの優先度が最も高いノードがバックアップ用に選択されます。 プライマリ レプリカのみを使用できる場合、バックアップはプライマリ レプリカ上で発生します。
     * セカンダリのみ - プライマリ レプリカでのバックアップは行いません。 オンラインになっているのがプライマリ レプリカのみの場合、バックアップは発生しません。
     * プライマリ - バックアップは常にプライマリ レプリカ上で発生します。
@@ -45,12 +45,12 @@ SQL Server データベースをバックアップし、それを Azure から�
     * 選択されたノード上でバックアップに失敗した場合、バックアップ操作は失敗します。
     * 元の場所への回復はサポートされていません。
 * SQL Server 2014 以降のバックアップに関する問題:
-  * [Windows Azure Blob Storage にオンプレミスの SQL Server 用のデータベース](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)を作成するための新機能が SQL Server 2014 に追加されました。 この構成を保護するために MABS を使用することはできません。
+  * [Windows Azure Blob Storage にオンプレミスの SQL Server 用のデータベース](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)を作成するための新機能が SQL Server 2014 に追加されました。 この構成を保護するために MABS を使用することはできません。
   * SQL AlwaysOn オプションの [セカンダリを優先] バックアップ設定には、いくつかの既知の問題があります。 MABS では、常にセカンダリからバックアップが作成されます。 セカンダリが見つからない場合、バックアップは失敗します。
 
 ## <a name="before-you-start"></a>開始する前に
 
-開始する前に、[Azure Backup Server をインストールし、準備を完了](backup-azure-microsoft-azure-backup.md)しておきます。
+開始する前に、[Azure Backup Server がインストールされ、準備完了状態になっている](backup-azure-microsoft-azure-backup.md)ことを確認してください。
 
 ## <a name="create-a-backup-policy"></a>バックアップ ポリシーの作成
 

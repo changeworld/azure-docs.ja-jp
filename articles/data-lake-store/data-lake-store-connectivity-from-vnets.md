@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 0fa836ea31793d9177ad6e838ddea1516bf51733
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: e319cf9dfc01546607e20572c5bf4930fd974c75
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191408"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104038"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Azure VNET 内の VM から Azure Data Lake Storage Gen1 へのアクセス
 Azure Data Lake Storage Gen1 は、パブリック インターネット IP アドレスで動作する PaaS サービスです。 パブリック インターネットに接続できるサーバーは、通常、Azure Data Lake Storage Gen1 エンドポイントにも接続できます。 既定では、Azure VNET 内のすべての VM はインターネットにアクセスできるため、Azure Data Lake Storage Gen1 にアクセスできます。 ただし、VNET 内の VM をインターネットにアクセスできないように構成することもできます。 そのような VM では、Azure Data Lake Storage Gen1 へのアクセスも制限されます。 Azure VNET 内の VM のパブリック インターネット アクセスをブロックするには、次のいずれかの方法を使用します。
@@ -46,7 +46,7 @@ Aliases:  mydatastore.azuredatalakestore.net
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>NSG を使用して制限されている VM からの接続を有効にする
-NSG ルールを使用してインターネットへのアクセスがブロックされている場合は、Data Lake Storage Gen1 の IP アドレスへのアクセスを許可する別の NSG を作成できます。 NSG ルールの詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/security-overview.md)に関するページを参照してください。 NSG を作成する方法については、[ネットワーク セキュリティ グループを作成する方法](../virtual-network/tutorial-filter-network-traffic.md)に関するページを参照してください。
+NSG ルールを使用してインターネットへのアクセスがブロックされている場合は、Data Lake Storage Gen1 の IP アドレスへのアクセスを許可する別の NSG を作成できます。 NSG ルールの詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/network-security-groups-overview.md)に関するページを参照してください。 NSG を作成する方法については、[ネットワーク セキュリティ グループを作成する方法](../virtual-network/tutorial-filter-network-traffic.md)に関するページを参照してください。
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>UDR または ExpressRoute を使用して制限されている VM からの接続を有効にする
 ルート (UDR または BGP 交換ルート) を使用してインターネットへのアクセスがブロックされている場合は、そのようなサブネット内の VM が Data Lake Storage Gen1 エンドポイントにアクセスできるように、特別なルートを構成する必要があります。 詳細については、[ユーザー定義のルートの概要](../virtual-network/virtual-networks-udr-overview.md)に関するページを参照してください。 UDR の作成方法の詳細については、[Resource Manager での UDR の作成](../virtual-network/tutorial-create-route-table-powershell.md)に関するページを参照してください。
@@ -57,4 +57,3 @@ ExpressRoute 回線を構成すると、オンプレミスのサーバーはパ�
 ## <a name="see-also"></a>参照
 * [Azure Data Lake Storage Gen1 の概要](data-lake-store-overview.md)
 * [Azure Data Lake Storage Gen1 に格納されているデータのセキュリティ保護](data-lake-store-security-overview.md)
-

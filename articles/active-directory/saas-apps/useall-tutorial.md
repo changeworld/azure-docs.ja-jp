@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 26d464ed318b50369daaeea09815ddae2748abeb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 54433a8887e460bfdbdd86391ec826196f940294
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88532884"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92509469"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-useall"></a>チュートリアル: Azure Active Directory と Useall の統合
 
@@ -27,7 +27,7 @@ Useall と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで Useall に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Useall と Azure AD の統合を構成するには、次のものが必要です
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Useall では、**SP** Initiated SSO がサポートされます
+* Useall では、 **SP** Initiated SSO がサポートされます
 
 ## <a name="adding-useall-from-the-gallery"></a>ギャラリーからの Useall の追加
 
@@ -61,13 +61,13 @@ Azure AD への Useall の統合を構成するには、ギャラリーから管
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Useall**」と入力し、結果ウィンドウで **[Useall]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Useall** 」と入力し、結果ウィンドウで **[Useall]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの Useall](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Useall で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Useall で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Useall 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Useall で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -114,7 +114,7 @@ Useall で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="configure-useall-single-sign-on"></a>Useall のシングル サインオンの構成
 
-**Useall** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Useall サポート チーム](mailto:luizotavio@useall.com.br)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Useall** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Useall サポート チーム](mailto:luizotavio@useall.com.br)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -132,7 +132,7 @@ Useall で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -168,19 +168,18 @@ Useall で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="create-useall-test-user"></a>Useall のテスト ユーザーの作成
 
-このセクションでは、Useall で Britta Simon というユーザーを作成します。  [Useall サポート チーム](mailto:luizotavio@useall.com.br)と連携し、Useall プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Useall で Britta Simon というユーザーを作成します。 [Useall サポート チーム](mailto:luizotavio@useall.com.br)と連携して、Useall プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Useall] タイルをクリックすると、SSO を設定した Useall に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Useall] タイルをクリックすると、SSO を設定した Useall に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

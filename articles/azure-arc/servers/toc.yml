@@ -31,28 +31,76 @@
       items:
         - name: Connected Machine エージェントの概要
           href: agent-overview.md
+        - name: 大規模なデプロイを計画する
+          href: plan-at-scale-deployment.md
         - name: Azure portal から Azure Arc へのマシンの接続
           href: onboard-portal.md
         - name: サービス プリンシパルを使用したマシンの大規模な接続
           href: onboard-service-principal.md
         - name: PowerShell DSC を使用してマシンを Azure Arc に接続する
           href: onboard-dsc.md
+        - name: Windows Admin Center からマシンを接続する
+          href: onboard-windows-admin-center.md
+        - name: PowerShell を使用してマシンを Azure Arc に接続する
+          href: onboard-powershell.md
     - name: 管理する
       items:
-        - name: Azure VM 拡張機能の管理と使用
-          href: manage-vm-extensions.md
+        - name: VM 拡張機能
+          items:
+            - name: 概要
+              href: manage-vm-extensions.md
+            - name: ポータルから拡張機能を管理する
+              href: manage-vm-extensions-portal.md
+            - name: CLI を使用して拡張機能を管理する
+              href: manage-vm-extensions-cli.md
+            - name: PowerShell を使用して拡張機能を管理する
+              href: manage-vm-extensions-powershell.md
+            - name: Resource Manager テンプレートを使用して拡張機能をデプロイする
+              href: manage-vm-extensions-template.md
+        - name: サーバーでマネージド ID を使用する
+          href: managed-identity-authentication.md
         - name: エージェントの管理
           href: manage-agent.md
+        - name: リージョンをまたいだマシンの移行
+          href: manage-howto-migrate.md
+    - name: シナリオ
+      items:
+        - name: Azure Sentinel にオンボードする
+          href: scenario-onboard-azure-sentinel.md
+        - name: Azure Security Center にオンボードする
+          href: ../../security-center/quickstart-onboard-machines.md
     - name: トラブルシューティング
       items:
         - name: エージェントの接続に関する問題
           href: troubleshoot-agent-onboard.md
-    - name: 関連項目
-      items:
-        - name: 利用可能なリージョンとデータの保存場所
-          href: data-residency.md
-        - name: REST
-          href: /rest/api/hybridcompute
-        - name: Azure Policy の組み込み
-          displayName: 'samples, policies, definitions'
-          href: policy-reference.md
+        - name: VM 拡張機能の問題
+          href: troubleshoot-vm-extensions.md
+- name: リファレンス
+  items:
+    - name: データの保存場所
+      href: data-residency.md
+    - name: Azure CLI
+      href: /cli/azure/ext/connectedmachine/connectedmachine
+    - name: Azure PowerShell
+      href: /powershell/module/az.connectedmachine
+    - name: .NET
+      href: /dotnet/api/overview/azure/hybridcompute/management
+    - name: Azure Stack HCI REST
+      href: /rest/api/stackhci
+    - name: REST
+      href: /rest/api/hybridcompute
+    - name: Go
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/hybridcompute/mgmt/2020-08-02/hybridcompute'
+    - name: Java
+      href: /java/api/overview/azure/compute/resourcemanagement
+    - name: JavaScript
+      href: /javascript/api/%40azure/arm-hybridcompute
+    - name: Python
+      href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-hybridcompute/2.0.0/index.html'
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: policy-reference.md
+- name: リソース
+  items:
+    - name: Azure Arc のジャンプスタート
+      href: 'https://azurearcjumpstart.io'

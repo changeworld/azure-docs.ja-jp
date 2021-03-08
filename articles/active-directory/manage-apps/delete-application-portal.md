@@ -3,23 +3,25 @@ title: クイック スタート:Azure Active Directory (Azure AD) テナント�
 description: このクイックスタートでは、Azure portal を使用して、Azure Active Directory (Azure AD) テナントからアプリケーションを削除します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/01/2020
+ms.date: 1/5/2021
 ms.author: kenwith
-ms.openlocfilehash: 659d136695943d846fe57986d4b64a37f0d8f30e
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 187f4a1d524e0343130808aa4b4c18222fa982c3
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300121"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259272"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>クイック スタート:Azure Active Directory (Azure AD) テナントからアプリケーションを削除する
 
 このクイックスタートでは、Azure portal を使用して、Azure Active Directory (Azure AD) テナントに追加されたアプリケーションを削除します。
+
+SSO と Azure の詳細については、「[シングル サインオン (SSO) とは](what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +47,7 @@ Azure AD テナントからアプリケーションを削除するには:
 1. **[削除]** を選択してから **[はい]** を選び、Azure AD テナントからアプリを削除することを確定します。
 
 > [!TIP]
-> Graph API を使用してアプリの管理を自動化できます。[Microsoft Graph API によるアプリ管理の自動化](https://docs.microsoft.com/graph/application-saml-sso-configure-api)に関するページを参照してください。
+> Graph API を使用してアプリの管理を自動化できます。[Microsoft Graph API によるアプリ管理の自動化](/graph/application-saml-sso-configure-api)に関するページを参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -53,6 +55,6 @@ Azure AD テナントからアプリケーションを削除するには:
 
 ## <a name="next-steps"></a>次のステップ
 
-クイックスタート シリーズを完了しました。 次のステップとしては、アプリ管理でのベスト プラクティスについてお読みください。
+クイックスタート シリーズを完了しました。 次に、シングル サインオン (SSO) について学習しましょう。[SSO の概要](what-is-single-sign-on.md)に関するページを参照してください または、アプリ管理でのベスト プラクティスについてお読みください。
 > [!div class="nextstepaction"]
 > [アプリケーション管理のベスト プラクティス](application-management-fundamentals.md)

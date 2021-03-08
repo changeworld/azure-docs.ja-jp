@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 08/02/2020
-ms.openlocfilehash: 1745a2bf83cb704c8cc73e9d3bf0eba8245329b3
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 11/18/2020
+ms.openlocfilehash: 6af9b8f97d622ae10cfdbcaa8ca50abb42ec7332
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924267"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94889056"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>REST と Postman を使用してナレッジ ストアを作成する
 
@@ -84,8 +84,8 @@ Postman をインストールして設定します。
 | `index-name` | **hotel-reviews-ix** のままにします。 | 
 | `search-service-name` | Azure Cognitive Search サービスの名前。 URL は `https://{{search-service-name}}.search.windows.net` です。 | 
 | `skillset-name` | **hotel-reviews-ss** のままにします。 | 
-| `storage-account-name` | ストレージ アカウント名。 | 
-| `storage-connection-string` | ストレージ アカウントの **[Access Keys]\(アクセス キー\)** タブで、 **[key1]**  >  **[Connection string]\(接続文字列\)** を選択します。 | 
+| `storage-account-name` | Azure ストレージ アカウント名。 | 
+| `storage-connection-string` | ストレージ アカウントの **[アクセス キー]** タブで、 **[key1]**  >  **[接続文字列]** を選択します。 | 
 | `storage-container-name` | **hotel-reviews** のままにします。 | 
 
 ### <a name="review-the-request-collection-in-postman"></a>Postman の要求コレクションの確認

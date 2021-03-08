@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 3d4d1e65c2200aee178abefb46d3e330acbd3108
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 5d662efc927235711c4dd5e8a424d8775279c30b
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563634"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048047"
 ---
 # <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager"></a>チュートリアル:Azure Firewall Manager を使用してハブ仮想ネットワークをセキュリティで保護する
 
@@ -107,7 +107,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="create-the-firewall-hub-virtual-network"></a>ファイアウォールのハブ仮想ネットワークを作成する
 
 > [!NOTE]
-> AzureFirewallSubnet サブネットのサイズは /26 です。 サブネットのサイズの詳細については、「[Azure Firewall に関する FAQ](../firewall/firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)」を参照してください。
+> AzureFirewallSubnet サブネットのサイズは /26 です。 サブネットのサイズの詳細については、「[Azure Firewall に関する FAQ](../firewall/firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size)」を参照してください。
 
 1. Azure portal のホーム ページから **[リソースの作成]** を選択します。
 2. **[ネットワーク]** で、 **[仮想ネットワーク]** を選択します。

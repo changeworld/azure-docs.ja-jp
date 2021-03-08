@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/21/2020
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: 49a9917d925ebc7a36d14ff6679ad4b1737f9627
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: defcce3a00a38c88e1bff944075f0987fbdedd4b
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515884"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98225352"
 ---
  次の制限は、Azure Private Link に適用されます。
 
@@ -26,4 +26,6 @@ ms.locfileid: "86515884"
 |同じプライベート リンク サービスでのプライベート エンドポイントの数   |  1000       |
 |キー コンテナーあたりのプライベート エンドポイントの数 | 64 |
 |サブスクリプションあたりのプライベート エンドポイントのあるキー コンテナーの数 | 400 |
+|プライベート エンドポイントにリンクできるプライベート DNS ゾーン グループの数 | 1 |
+|各グループの DNS ゾーンの数 | 5 |
 

@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 7eca9b4a8cf09f2f35d56dc22fc25169be192f47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 42c592e6aede4537dc983fd2cff043a878f81f1c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066240"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593100"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>事前作成済みテンプレートを使用したロジック アプリ ワークフローの作成
 
@@ -50,7 +50,7 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
    | **サブスクリプション** | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションを選択します。 | 
    | **リソース グループ** | <*Azure リソース グループ名*> | このロジック アプリ用の [Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成するか選択し、このアプリに関連するすべてのリソースを整理します。 | 
    | **場所** | <*Azure データセンターのリージョン*> | ロジック アプリをデプロイするデータセンターのリージョンを選びます (たとえば米国西部)。 | 
-   | **Log Analytics** | **[オフ]** (既定値) または **[オン]** | [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)を通じてロジック アプリの[診断ログ](../logic-apps/monitor-logic-apps-log-analytics.md)を設定します。 Log Analytics ワークスペースが既にあることが要件です。 | 
+   | **Log Analytics** | **[オフ]** (既定値) または **[オン]** | [Azure Monitor ログ](../azure-monitor/logs/log-query-overview.md)を通じてロジック アプリの[診断ログ](../logic-apps/monitor-logic-apps-log-analytics.md)を設定します。 Log Analytics ワークスペースが既にあることが要件です。 | 
    |||| 
 
 4. 準備ができたら、 **[ダッシュボードにピン留めする]** を選択します。 そうすることで、ロジック アプリがデプロイ後に Azure ダッシュボードに自動的に表示され、開かれます。 **[作成]** を選択します。

@@ -7,14 +7,17 @@ ms.topic: include
 ms.date: 08/15/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 1d47e8e29f6114c601d86f73bf3c34023ffe9c40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1776c756df23be9c1f29382ff223d367ffc5cc5a
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76279469"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500499"
 ---
 関数アプリの設定は、いくつかの方法で追加、更新、削除できます。
 
 + [Azure portal を使用する方法](../articles/azure-functions/functions-how-to-use-azure-function-app-settings.md#settings)
-+ [Azure CLI を使用する方法](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)
++ [Azure CLI を使用する方法](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)
++ [Azure PowerShell を使用する方法](/powershell/module/az.functions/update-azfunctionappsetting)
+
+関数アプリの設定に変更を加えるためには、関数アプリを再起動する必要があります。

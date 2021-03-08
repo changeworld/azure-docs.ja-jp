@@ -1,17 +1,17 @@
 ---
-title: ポータルを使用してコンテンツをアップロード、エンコード、およびストリーム配信する - Azure
+title: ポータルを使用したコンテンツのアップロード、エンコード、ストリーム配信
 description: このクイックスタートでは、ポータルで Azure Media Services を使用してコンテンツをアップロード、エンコード、およびストリーム配信する方法を示します。
 ms.topic: quickstart
 ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 16a5793f9848a6e16856728877727dbefc3e0805
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 3831892b6cd241643b3e5753689f768d59e27704
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264931"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955972"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>クイック スタート:ポータルでコンテンツをアップロード、エンコード、およびストリーム配信する
 
@@ -24,7 +24,7 @@ ms.locfileid: "89264931"
   
 ## <a name="overview"></a>概要
 
-* Azure でメディア コンテンツの管理、暗号化、エンコード、分析、およびストリーミングを開始するには、Media Services アカウントを作成し、高品質のデジタル メディア ファイルを**資産**にアップロードする必要があります。 
+* Azure でメディア コンテンツの管理、暗号化、エンコード、分析、およびストリーミングを開始するには、Media Services アカウントを作成し、高品質のデジタル メディア ファイルを **資産** にアップロードする必要があります。 
     
     > [!NOTE]
     > ビデオが以前に Media Services v3 API を使用して Media Services アカウントにアップロードされていた場合、またはコンテンツがライブ出力に基づいて生成された場合、Azure portal に **[エンコード]** 、 **[分析]** 、または **[暗号化]** ボタンは表示されません。 これらのタスクを実行するには、Media Services v3 API シリーズを使用してください。
@@ -40,7 +40,7 @@ ms.locfileid: "89264931"
         現在、Azure portal を使用して、TTML および WebVTT クローズド キャプション ファイルを生成することができます。 これらの形式のファイルを使用して、聴覚障がいを持つユーザーがオーディオ ファイルとビデオ ファイルにアクセスできるようにします。 また、コンテンツからキーワードを抽出することもできます。
 
         ビデオおよびオーディオ ファイルから分析情報を抽出できるリッチなエクスペリエンスを実現するには、Media Services v3 プリセットを使用します (「[チュートリアル: Media Services v3 を使用してビデオを分析する](analyze-videos-tutorial-with-api.md)」を参照してください)。 <br/>より詳細な分析情報が必要な場合は [Video Indexer](../video-indexer/index.yml) を直接使用します。    
-* コンテンツが処理されると、メディア コンテンツをクライアント プレーヤーに配信できます。 出力資産内のビデオをクライアントが再生できるようにするには、**ストリーミング ロケーター**を作成する必要があります。 **ストリーミング ロケーター**を作成するときは、**ストリーミング ポリシー**を指定する必要があります。 **ストリーミング ポリシー**を使用して、**ストリーミング ロケーター**のためのストリーミング プロトコルと暗号化オプション (該当する場合) を定義できます。
+* コンテンツが処理されると、メディア コンテンツをクライアント プレーヤーに配信できます。 出力資産内のビデオをクライアントが再生できるようにするには、**ストリーミング ロケーター** を作成する必要があります。 **ストリーミング ロケーター** を作成するときは、**ストリーミング ポリシー** を指定する必要があります。 **ストリーミング ポリシー** を使用して、**ストリーミング ロケーター** のためのストリーミング プロトコルと暗号化オプション (該当する場合) を定義できます。
     
     レビュー:
 
@@ -54,7 +54,7 @@ ms.locfileid: "89264931"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[Media Services アカウントを作成する](create-account-howto.md#use-the-azure-portal)
+[Media Services アカウントを作成する](create-account-howto.md)
 
 ## <a name="upload"></a>アップロード
 
@@ -66,7 +66,7 @@ ms.locfileid: "89264931"
 
 対象の資産ウィンドウに移動すると、新しい資産が一覧に追加されていることがわかります。
 
-![アップロード](./media/manage-assets-quickstart/upload.png)
+![Azure portal のスクリーンショット。[資産 (新規)] を選択して開いた [資産] ウィンドウと、[アップロード] ボタンを選択して追加した新しい資産が表示されています。](./media/manage-assets-quickstart/upload.png)
 
 ## <a name="encode"></a>エンコード
 
@@ -78,7 +78,7 @@ ms.locfileid: "89264931"
 
 対象の資産ウィンドウに移動すると、出力資産が一覧に追加されていることがわかります。
 
-![エンコード](./media/manage-assets-quickstart/encode.png)
+![Azure portal の [資産] ウィンドウのスクリーンショット。ignite.mp4 Media Encoded Standard encoded という資産が資産一覧に追加されています。](./media/manage-assets-quickstart/encode.png)
 
 ## <a name="monitor-the-job-progress"></a>ジョブの進行状況を監視する
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 037e07a1d8a6a3b4016d00f1b5a68bffc9caf335
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 6cb083e823583105f04aaa59a99357b2b2b2426b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543369"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97034056"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する
 
@@ -24,8 +24,8 @@ ms.locfileid: "87543369"
 
 * AKS クラスターの仮想ネットワークでは、送信インターネット接続を許可する必要があります。
 * 同じサブネット内に複数の AKS クラスターを作成しないでください。
-* AKS クラスターでは、Kubernetes サービスのアドレス範囲に `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16`、`192.0.2.0/24` は使用できません。
-* AKS クラスターで使用されるサービス プリンシパルには、少なくとも、ご利用の仮想ネットワーク内のサブネットに対する[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)ロールが必要です。 組み込みのネットワークの共同作成者ロールを使用する代わりに、[カスタム ロール](../role-based-access-control/custom-roles.md)を定義する場合は、次のアクセス許可が必要です。
+* AKS クラスターでは、Kubernetes サービスのアドレス範囲、ポッド アドレス範囲、またはクラスターの仮想ネットワーク アドレス範囲に `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16`、`192.0.2.0/24` を使用することはできません。
+* AKS クラスターで使用されるサービス プリンシパルには、少なくとも、ご利用の仮想ネットワーク内のサブネットに対する[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)ロールが必要です。 また、サービス プリンシパルを作成してアクセス許可を割り当てるには、サブスクリプション所有者などの適切なアクセス許可が必要です。 組み込みのネットワークの共同作成者ロールを使用する代わりに、[カスタム ロール](../role-based-access-control/custom-roles.md)を定義する場合は、次のアクセス許可が必要です。
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
@@ -34,7 +34,7 @@ ms.locfileid: "87543369"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-Azure CLI バージョン 2.0.65 以降がインストールされて構成されている必要があります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+Azure CLI バージョン 2.0.65 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>独自のサブネットでの kubenet ネットワークの概要
 
@@ -54,10 +54,10 @@ Azure でサポートされる UDR のルート数は最大 400 なので、AKS 
 * kubenet を使用するには、ルート テーブルとユーザー定義ルートが必要になるため、操作が複雑になります。
 * kubenet の設計により、直接的なポッドのアドレス指定は kubenet ではサポートされていません。
 * Azure CNI クラスターとは異なり、複数の kubenet クラスターで 1 つのサブネットを共有することはできません。
-* **kubenet でサポートされていない機能**には次のものが含まれます。
+* **kubenet でサポートされていない機能** には次のものが含まれます。
    * [Azure ネットワーク ポリシー](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy)。ただし、Calico ネットワーク ポリシーは kubenet でサポートされています。
-   * [Windows ノード プール](windows-node-limitations.md)
-   * [仮想ノード アドオン](virtual-nodes-portal.md#known-limitations)
+   * [Windows ノード プール](./windows-faq.md)
+   * [仮想ノード アドオン](virtual-nodes.md#network-requirements)
 
 ### <a name="ip-address-availability-and-exhaustion"></a>IP アドレスの使用可能性と不足
 
@@ -162,7 +162,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role "Network Co
 
 クラスター作成プロセスの一部として、次の IP アドレス範囲も定義します。
 
-* *--service-cidr* は、AKS クラスター内の内部サービスに IP アドレスを割り当てるために使用します。 この IP アドレス範囲は、ネットワーク環境の他の場所で使われていないアドレス空間でなければなりません。 ExpressRoute またはサイト間 VPN 接続を使用して、お使いの Azure 仮想ネットワークを接続している場合、または接続する予定である場合は、すべてのオンプレミス ネットワーク範囲がこの範囲に含まれます。
+* *--service-cidr* は、AKS クラスター内の内部サービスに IP アドレスを割り当てるために使用します。 この IP アドレス範囲は、ネットワーク環境内の他の場所で使用されていないアドレス空間である必要があります。ExpressRoute またはサイト間 VPN 接続を使用して、お使いの Azure 仮想ネットワークを接続している場合、または接続する予定である場合は、すべてのオンプレミス ネットワーク範囲がこれに含まれます。
 
 * *--dns-service-ip* アドレスは、サービス IP アドレス範囲の *.10* アドレスにする必要があります。
 
@@ -224,7 +224,6 @@ Kubernet ネットワークで要求を正常にルーティングするには�
 制限事項:
 
 * クラスターを作成する前にアクセス許可を割り当てる必要があります。対象のカスタム サブネットおよびカスタム ルート テーブルへの書き込みアクセス許可を持つサービス プリンシパルを使用していることを確認してください。
-* マネージド ID は、kubenet のカスタム ルート テーブルでは現在サポートされていません。
 * AKS クラスターを作成する前に、カスタム ルート テーブルをサブネットに関連付ける必要があります。
 * クラスターを作成した後で、関連付けられているルート テーブル リソースを更新することはできません。 ルート テーブル リソースは更新できませんが、カスタム ルールはルート テーブルで変更できます。
 * 各 AKS クラスターでは、クラスターに関連付けられているすべてのサブネットに対して、一意のルート テーブルを 1 つだけ使用する必要があります。 ポッドの CIDR が重複してルーティング規則が競合する可能性があるため、複数のクラスターでルート テーブルを再利用することはできません。

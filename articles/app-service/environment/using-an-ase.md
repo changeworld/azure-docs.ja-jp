@@ -4,15 +4,15 @@ description: App Service Environment でアプリを作成、発行、スケー�
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 5/10/2020
+ms.date: 9/22/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5e3cb07730aafed7d1c339f543e7fb09fe956cab
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: a7fa9ece3728214fad31f0bae769e1e50206df7e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961909"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594047"
 ---
 # <a name="use-an-app-service-environment"></a>App Service 環境の使用
 
@@ -196,7 +196,7 @@ Log Analytics と統合している場合は、ASE ポータルから **[ログ]
 
 **アラートの作成**
 
-ログに対してアラートを作成するには、「[Azure Monitor を使用したログ アラートの作成、表示、管理][logalerts]」の手順に従います。 概要:
+ログに対してアラートを作成するには、「[Azure Monitor を使用したログ アラートの作成、表示、管理](../../azure-monitor/alerts/alerts-log.md)」の手順に従います。 概要:
 
 * ASE ポータルで [アラート] ページを開く
 * **[新しいアラート ルール]** を選択する
@@ -292,7 +292,7 @@ For more specific examples, use: az find "az appservice ase"
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/security-overview.md
+[NSGs]: ../../virtual-network/network-security-groups-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [Functions]: ../../azure-functions/index.yml
@@ -303,4 +303,4 @@ For more specific examples, use: az find "az appservice ase"
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
-[logalerts]: ../../azure-monitor/platform/alerts-log.md
+[logalerts]: ../../azure-monitor/alerts/alerts-log.md

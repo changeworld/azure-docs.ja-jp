@@ -1,18 +1,18 @@
 ---
 title: 接続文字列 - Azure Database for MariaDB
 description: このドキュメントでは、Azure Database for MariaDB に接続するアプリケーションについて、現在サポートされている接続文字列を示します。ADO.NET (C#)、JDBC、Node.js、ODBC、PHP、Python、および Ruby の接続文字列が含まれます。
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 1d24f06631bd3fd52061637892423c94e12127af
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp
+ms.openlocfilehash: 309c8b55910c5223f377571edb7207e5b34bd219
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021359"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662179"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>Azure Database for MariaDB にアプリケーションを接続する方法
 このトピックでは、Azure Database for MariaDB でサポートされているすべての接続文字列の種類と共に、テンプレートと例を紹介します。 実際に使用する接続文字列のパラメーターと設定は異なる可能性があります。

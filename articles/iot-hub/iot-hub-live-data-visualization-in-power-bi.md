@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub から取得したデータのリアルタイム データ視覚化 – Power BI
-description: Power BI を使用して、センサーから収集されて Azure IoT ハブに送信された気温と湿度のデータを視覚化します。
+description: Power BI を使用して、センサーから収集されて Azure IoT Hub に送信された気温と湿度のデータを視覚化します。
 author: robinsh
 keywords: リアルタイム データの視覚化, ライブ データの視覚化, センサー データの視覚化
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
-ms.openlocfilehash: ed429d2f584da20439b0cb0eedcf4742b9ae4599
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d10d0202e9e4c813cffe6373acfb5200ebb3266
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84634517"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146771"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する
 
@@ -28,9 +28,9 @@ Azure IoT ハブが受信したリアルタイム センサー データを Powe
 
 ## <a name="what-you-do"></a>作業内容
 
-* コンシューマー グループを追加して、データにアクセスできるよう IoT ハブを準備する。
+* コンシューマー グループを追加して、データにアクセスできるよう IoT Hub を準備する。
 
-* IoT ハブから Power BI アカウントにデータを転送できるよう Stream Analytics ジョブを作成、構成、実行する。
+* IoT Hub から Power BI アカウントにデータを転送できるよう Stream Analytics ジョブを作成、構成、実行する。
 
 * Power BI レポートの作成と公開を行い、データを視覚化する。
 
@@ -58,7 +58,7 @@ Azure IoT ハブが受信したリアルタイム センサー データを Powe
 
    **ジョブ名**:ジョブの名前。 名前はグローバルに一意である必要があります。
 
-   **[リソース グループ]** :IoT ハブと同じリソース グループを使用します。
+   **[リソース グループ]** :IoT Hub と同じリソース グループを使用します。
 
    **[場所]** :リソース グループと同じ場所を使用します。
 
@@ -140,9 +140,9 @@ Stream Analytics ジョブで、 **[概要]** を選択してから、 **[開始
 
 ## <a name="create-and-publish-a-power-bi-report-to-visualize-the-data"></a>データを視覚化する Power BI レポートの作成と公開
 
-次の手順では、Power BI サービスを使用してレポートの作成と公開を行う方法を示しています。 Power BI で "新しい外観" を使用する場合は、いくつかの変更を加えて次の手順を実行できます。 "新しい外観" の相違点と移動方法を理解するには、「[Power BI サービスの "新しい外観"](https://docs.microsoft.com/power-bi/consumer/service-new-look)」を参照してください。
+次の手順では、Power BI サービスを使用してレポートの作成と公開を行う方法を示しています。 Power BI で "新しい外観" を使用する場合は、いくつかの変更を加えて次の手順を実行できます。 "新しい外観" の相違点と移動方法を理解するには、「[Power BI サービスの "新しい外観"](/power-bi/consumer/service-new-look)」を参照してください。
 
-1. デバイスでサンプル アプリケーションが実行されていることを確認します。 実行されていない場合、チュートリアルの「[デバイスのセットアップ](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started)」を参照してください。
+1. デバイスでサンプル アプリケーションが実行されていることを確認します。 実行されていない場合、チュートリアルの「[デバイスのセットアップ](./iot-hub-raspberry-pi-kit-node-get-started.md)」を参照してください。
 
 2. [Power BI](https://powerbi.microsoft.com/en-us/) アカウントにサインインします。
 
@@ -197,7 +197,7 @@ Microsoft は [Power BI のモバイル アプリ](https://powerbi.microsoft.com
 
 ## <a name="next-steps"></a>次のステップ
 
-Power BI を使用して、Azure IoT ハブからのリアルタイム センサー データを視覚化することができました。
+Power BI を使用して、Azure IoT Hub からのリアルタイム センサー データを視覚化することができました。
 
 Azure IoT Hub からのデータを視覚化するための別の方法については、[Web アプリを使用した Azure IoT Hub からのリアルタイム センサー データの視覚化](iot-hub-live-data-visualization-in-web-apps.md)に関するページを参照してください。
 

@@ -9,18 +9,21 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: e7f5750d89c661cad7616cf1c56157c6e92e1175
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 724bc80f8887ff2c47db93ecfc4cd2e20be7e7f8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654465"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020046"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c-sharp"></a>C# を使用して Azure Time Series Insights Gen1 環境からデータのクエリを実行する
 
-この C# サンプルでは、[Gen1 Query API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query) を使用して Azure Time Series Insights Gen1 環境からデータのクエリを実行する方法について説明します。
+> [!CAUTION]
+> これは Gen1 の記事です。
+
+この C# サンプルでは、[Gen1 Query API](/rest/api/time-series-insights/gen1-query) を使用して Azure Time Series Insights Gen1 環境からデータのクエリを実行する方法について説明します。
 
 > [!TIP]
 > [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) で Gen1 C# コード サンプルを表示します。
@@ -34,22 +37,22 @@ ms.locfileid: "88654465"
 * 取得したアクセス ークンを後続のクエリ API 要求の `Authorization` ヘッダーで渡す方法。
 
 * このサンプルでは、それぞれの Gen1 Query API を呼び出して、以下に対する HTTP 要求がどのように行われるかを示します。
-  * [Get Environments API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environments-api) (ユーザーがアクセスできる環境を返します)
-  * [Get Environment Availability API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-availability-api)
-  * [Get Environment Metadata API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-metadata-api) (環境メタデータを取得します)
-  * [Get Environments Events API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-events-api)
-  * [Get Environment Aggregates API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api)
+  * [Get Environments API](/rest/api/time-series-insights/gen1-query-api#get-environments-api) (ユーザーがアクセスできる環境を返します)
+  * [Get Environment Availability API](/rest/api/time-series-insights/gen1-query-api#get-environment-availability-api)
+  * [Get Environment Metadata API](/rest/api/time-series-insights/gen1-query-api#get-environment-metadata-api) (環境メタデータを取得します)
+  * [Get Environments Events API](/rest/api/time-series-insights/gen1-query-api#get-environment-events-api)
+  * [Get Environment Aggregates API](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api)
 
 * 以下に対するメッセージ処理のために、WSS を使用して Gen1 Query API と対話する方法。
 
-  * [Get Environment Events Streamed API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-events-streamed-api)
-  * [Get Environment Aggregates Streamed API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-streamed-api)
+  * [Get Environment Events Streamed API](/rest/api/time-series-insights/gen1-query-api#get-environment-events-streamed-api)
+  * [Get Environment Aggregates Streamed API](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-streamed-api)
 
 ## <a name="prerequisites-and-setup"></a>前提条件と設定
 
 サンプル コードをコンパイルして実行する前に、次の手順を実行します。
 
-1. [Gen1 Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started) 環境をプロビジョニングします。
+1. [Gen1 Azure Time Series Insights](./time-series-insights-get-started.md) 環境をプロビジョニングします。
 1. [認証と承認](time-series-insights-authentication-and-authorization.md)に関するページにある説明に基づき、Azure Active Directory で Azure Time Series Insights 環境を設定します。
 1. 必要なプロジェクト依存関係をインストールします。
 1. 各 **#DUMMY#** を該当する環境識別子に置換し、下のサンプル コードを編集します。
@@ -75,11 +78,11 @@ ms.locfileid: "88654465"
 
 ## <a name="c-sample-code"></a>C# サンプル コード
 
-[Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs) リポジトリを参照し、C# サンプル コードにアクセスします。 
+[Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs) リポジトリを参照し、C# サンプル コードにアクセスします。
 
 ## <a name="next-steps"></a>次のステップ
 
-* クエリの詳細については、[クエリ API リファレンス](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api)を参照してください。
+* クエリの詳細については、[クエリ API リファレンス](/rest/api/time-series-insights/gen1-query-api)を参照してください。
 
 * Time Series Insights に [クライアント SDK を使用して JavaScript アプリを接続する](https://github.com/microsoft/tsiclient)方法について確認します。
 Azure-Samples/Azure-Time-Series-Insights/gen1-sample/csharp-tsi-gen1-sample/Program.cs

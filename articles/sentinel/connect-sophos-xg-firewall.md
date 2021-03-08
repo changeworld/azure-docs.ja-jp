@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: b48773272e050b47af73b197d6f1c8156318fd71
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0b8b6247a735bceaf98029740bf9d4f7e233069d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095472"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097570"
 ---
 # <a name="connect-your-sophos-xg-firewall-to-azure-sentinel"></a>Azure Sentinel に Sophos XG Firewall を接続する
 
@@ -48,7 +48,7 @@ Syslog のエージェントを介して Azure ワークスペースに Syslog �
 
 ## <a name="validate-connectivity"></a>接続の検証
 
-ログが Log Analytics に表示され始めるまで、20 分以上かかる場合があります。
+ログが Log Analytics に表示され始めるまで、最大 20 分かかることがあります。
 
 ## <a name="next-steps"></a>次のステップ
 

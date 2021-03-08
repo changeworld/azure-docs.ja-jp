@@ -4,12 +4,12 @@ description: Service Bus の配信不能キューについて説明します。 
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 5f7fb65a2a1a6d6529177cd20a85a6d845c119d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ad62f946584071e7ce6fd55f48b5f7ee8db44a2f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021682"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630100"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus の配信不能キューの概要
 
@@ -30,7 +30,7 @@ DLQ は自動的にクリーンアップされません。 DLQ から明示的�
 
 ![DLQ のメッセージ数](./media/service-bus-dead-letter-queues/dead-letter-queue-message-count.png)
 
-Azure CLI コマンド [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription?view=azure-cli-latest#az-servicebus-topic-subscription-show) を使用して、DLQ のメッセージ数を取得することもできます。 
+Azure CLI コマンド [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription#az-servicebus-topic-subscription-show) を使用して、DLQ のメッセージ数を取得することもできます。 
 
 ## <a name="moving-messages-to-the-dlq"></a>DLQ にメッセージを移動する
 
@@ -62,7 +62,7 @@ Service Bus には、メッセージがメッセージング エンジン自体�
 
 ## <a name="errors-while-processing-subscription-rules"></a>サブスクリプション ルールの処理中のエラー
 
-[SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) プロパティがサブスクリプションに対して有効になっている場合、サブスクリプションの SQL フィルター ルールの実行時に発生したエラーはすべて問題のメッセージと共に DLQ にキャプチャされます。
+[SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) プロパティがサブスクリプションに対して有効になっている場合、サブスクリプションの SQL フィルター ルールの実行時に発生したエラーはすべて問題のメッセージと共に DLQ にキャプチャされます。 このオプションは、すべてのメッセージ型がサブスクライバーを持つわけではない運用環境では使用しないでください。
 
 ## <a name="application-level-dead-lettering"></a>アプリケーション レベルの配信不能処理
 

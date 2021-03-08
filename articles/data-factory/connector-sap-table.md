@@ -1,24 +1,21 @@
 ---
 title: SAP テーブルからデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、SAP テーブルからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/03/2020
-ms.openlocfilehash: a6eaa5519607d5d5e9a49851e1c55f9b60b554ea
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 02/01/2021
+ms.openlocfilehash: e4f756631b51ce9c5fba32939d1c6651e7b328d0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529723"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378521"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP テーブルからデータをコピーする
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、SAP テーブルからデータをコピーする方法について説明します。 詳細については、[コピー アクティビティの概要](copy-activity-overview.md)に関するページを参照してください。
@@ -48,6 +45,13 @@ SAP テーブルから、サポートされている任意のシンク データ
 - 基本認証、または Secure Network Communications (SNC) が構成されている場合は、SNC を使用したデータのコピー。
 - SAP アプリケーション サーバーまたは SAP メッセージ サーバーへの接続。
 - 既定の RFC またはカスタム RFC によるデータの取得。
+
+バージョン 7.01 以降は、SAP ECC のバージョンではなく SAP NetWeaver のバージョンを指します。 たとえば、一般に SAP ECC 6.0 EHP 7 の NetWeaver バージョンは 7.4 以降です。 お使いの環境が不明な場合に、SAP システムからバージョンを確認する手順を次に示します。
+
+1. SAP GUI を使用して SAP システムに接続します。 
+2. **[システム]**  ->  **[ステータス]** に移動します。 
+3. SAP_BASIS のリリースを調べ、701 以上であることを確認します。  
+      ![SAP_BASIS の確認](./media/connector-sap-table/sap-basis.png)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -94,7 +98,7 @@ SAP BW オープン ハブのリンクされたサービスでは、次のプロ
 | `sncQop` | 適用する SNC の保護品質レベル。<br/>`sncMode` がオンのときに適用されます。 <br/>使用できる値は、`1` (認証)、`2` (整合性)、`3` (プライバシー)、`8` (既定)、`9` (最大) です。 | いいえ |
 | `connectVia` | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」で前述されているように、セルフホステッド統合ランタイムが必要です。 |はい |
 
-**例 1: SAP アプリケーション サーバーに接続する**
+### <a name="example-1-connect-to-an-sap-application-server"></a>例 1: SAP アプリケーション サーバーに接続する
 
 ```json
 {
@@ -221,7 +225,7 @@ SAP テーブルからデータをコピーするために、次のプロパテ�
 | `rfcTableFields`                 | SAP テーブルからコピーするフィールド (列)。 たとえば、「 `column0, column1` 」のように入力します。 | いいえ       |
 | `rfcTableOptions`                | SAP テーブルの行をフィルターにかけるためのオプション。 たとえば、「 `COLUMN0 EQ 'SOMEVALUE'` 」のように入力します。 この記事で後に提供する SAP クエリ演算子の表も参照してください。 | いいえ       |
 | `customRfcReadTableFunctionModule` | SAP テーブルからデータを読み取るために使用できるカスタム RFC 関数モジュール。<br>カスタム RFC 関数モジュールを使用して、SAP システムからデータを取得して Data Factory に返す方法を定義できます。 カスタム関数モジュールでは、`/SAPDS/RFC_READ_TABLE2` と同様のインターフェイスが実装されている必要があります (インポート、エクスポート、テーブル)。これは、Data Factory で使用される既定のインターフェイスです。<br>Data Factory | いいえ       |
-| `partitionOption`                  | SAP テーブルから読み取るパーティション メカニズム。 サポートされているオプションは次のとおりです。 <ul><li>`None`</li><li>`PartitionOnInt` (通常の整数値、または `0000012345` のように左側をゼロでパディングした整数値)</li><li>`PartitionOnCalendarYear` ("YYYY" の形式の 4 桁の数字)</li><li>`PartitionOnCalendarMonth` ("YYYYMM" の形式の 6 桁の数字)</li><li>`PartitionOnCalendarDate` ("YYYYMMDD" の形式の 8 桁の数字)</li></ul> | いいえ       |
+| `partitionOption`                  | SAP テーブルから読み取るパーティション メカニズム。 サポートされているオプションは次のとおりです。 <ul><li>`None`</li><li>`PartitionOnInt` (通常の整数値、または `0000012345` のように左側をゼロでパディングした整数値)</li><li>`PartitionOnCalendarYear` ("YYYY" の形式の 4 桁の数字)</li><li>`PartitionOnCalendarMonth` ("YYYYMM" の形式の 6 桁の数字)</li><li>`PartitionOnCalendarDate` ("YYYYMMDD" の形式の 8 桁の数字)</li><li>`PartitionOntime` ("HHMMSS" の形式の 6 桁の数字、`235959` など)</li></ul> | いいえ       |
 | `partitionColumnName`              | データを分割するために使用される列の名前。                | いいえ       |
 | `partitionUpperBound`              | `partitionColumnName` で指定され、パーティション分割を続行するために使用される列の最大値。 | いいえ       |
 | `partitionLowerBound`              | `partitionColumnName` で指定され、パーティション分割を続行するために使用される列の最小値。 (注: パーティション オプションが `PartitionOnInt` の場合、`partitionLowerBound` を "0" にすることはできません) | いいえ       |
@@ -286,6 +290,60 @@ SAP テーブルからデータをコピーするために、次のプロパテ�
     }
 ]
 ```
+
+## <a name="join-sap-tables"></a>SAP テーブルを結合する
+
+現在、SAP テーブル コネクタでは、既定の関数モジュールを備えた単一のテーブルのみがサポートされます。 複数のテーブルの結合されたデータを取得するには、次の手順に従って、SAP テーブル コネクタの [customRfcReadTableFunctionModule](#copy-activity-properties) プロパティを利用してください。
+
+- クエリを OPTIONS として処理し、独自のロジックを適用してデータを取得できるようにする、[カスタム関数モジュールを記述します](#create-custom-function-module)。
+- [Custom function module]\(カスタム関数モジュール\) で、自分のカスタム関数モジュールの名前を入力します。
+- [RFC table options]\(RFC テーブル オプション) で、自分の関数モジュールに取り込まれるテーブル結合ステートメントを OPTIONS として指定します。たとえば、"`<TABLE1>` INNER JOIN `<TABLE2>` ON COLUMN0"。
+
+次に例を示します。
+
+![SAP テーブルの結合](./media/connector-sap-table/sap-table-join.png) 
+
+>[!TIP]
+>また、SAP テーブル コネクタでサポートされている VIEW で、結合されたデータを集計することも検討できます。
+>また、関連テーブルを抽出して Azure (Azure Storage、Azure SQL Database など) にオンボードしてみてから、Data Flow を使用して、さらに結合またはフィルター処理に進むことができます。
+
+## <a name="create-custom-function-module"></a>カスタム関数モジュールを作成する
+
+SAP テーブルについては、現在、[customRfcReadTableFunctionModule](#copy-activity-properties) プロパティをコピー ソースでサポートしています。これにより、独自のロジックを活用して、データを処理することができます。
+
+ここでは、"カスタム関数モジュール" の使用を開始するためのいくつかの要件について簡単に説明します。
+
+- 定義は次のとおりです。
+
+    ![定義](./media/connector-sap-table/custom-function-module-definition.png) 
+
+- 次のいずれかのテーブルにデータをエクスポートします。
+
+    ![エクスポート テーブル 1](./media/connector-sap-table/export-table-1.png) 
+
+    ![エクスポート テーブル 2](./media/connector-sap-table/export-table-2.png)
+ 
+SAP テーブル コネクタでカスタム関数モジュールがどのように使用されるのかを以下に示します。
+
+1. SAP NCO を経由する SAP サーバーとの接続を構築します。
+
+1. パラメーターを次のように設定して、"カスタム関数モジュール" を呼び出します。
+
+    - QUERY_TABLE: ADF SAP テーブル データセットで設定したテーブル名。 
+    - Delimiter: ADF SAP テーブル ソースで設定した区切り記号。 
+    - ROWCOUNT/Option/Fields: ADF テーブル ソースで設定した行数/集計オプション/フィールド。
+
+1. 次の方法で結果を取得してデータを解析します。
+
+    1. Fields テーブル内の値を解析して、スキーマを取得します。
+
+        ![Fields 内の値を解析する](./media/connector-sap-table/parse-values.png)
+
+    1. 出力テーブルの値を取得して、これらの値が含まれているテーブルを確認します。
+
+        ![出力テーブル内の値を取得する](./media/connector-sap-table/get-values.png)
+
+    1. OUT_TABLE 内の値を取得し、データを解析してから、シンクに書き込みます。
 
 ## <a name="data-type-mappings-for-an-sap-table"></a>SAP テーブルのデータ型マッピング
 

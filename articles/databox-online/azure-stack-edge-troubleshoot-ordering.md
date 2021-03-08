@@ -1,23 +1,23 @@
 ---
-title: Azure portal を使用して Azure Stack Edge の順序の問題をトラブルシューティングする | Microsoft Docs
-description: Azure Stack Edge の順序の問題をトラブルシューティングする方法について説明します。
+title: Azure portal を使用して Azure Stack Edge Pro の順序の問題をトラブルシューティングする | Microsoft Docs
+description: Azure Stack Edge Pro の順序の問題をトラブルシューティングする方法について説明します。
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
-ms.author: twooley
-ms.openlocfilehash: 226274c52610e24c305400d77dc7737d32c2b722
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.author: alkohli
+ms.openlocfilehash: be7d477d08b025fd450bfa859e8eb677ba680143
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783996"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446368"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>Azure Stack Edge の順序の問題をトラブルシューティングする
+# <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>Azure Stack Edge Pro の順序の問題をトラブルシューティングする
 
-この記事では、Azure Stack Edge の順序の問題をトラブルシューティングする方法について説明します。
+この記事では、Azure Stack Edge Pro の順序の問題をトラブルシューティングする方法について説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -33,7 +33,7 @@ ms.locfileid: "88783996"
 
 ![サポートされていないサブスクリプションまたはリージョン](media/azure-stack-edge-troubleshoot-ordering/azure-stack-edge-troubleshoot-ordering-01.png)
 
-**推奨されている解決方法:** [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。 従量課金制サブスクリプションはサポートされていません。 詳細については、[Azure Stack Edge リソースの前提条件](azure-stack-edge-deploy-prep.md#prerequisites)に関するページを参照してください。
+**推奨されている解決方法:** [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。 従量課金制サブスクリプションはサポートされていません。 詳細については、[Azure Stack Edge リソースの前提条件](azure-stack-edge-deploy-prep.md#prerequisites)に関するページを参照してください。
 
 Microsoft では、サブスクリプションの種類のアップグレードがケース バイ ケースで許可される可能性があります。 [Microsoft サポート](https://azure.microsoft.com/support/options/)までご連絡ください。お客様のニーズを理解し、これらの制限を適切に調整できるようにいたします。
 
@@ -59,7 +59,7 @@ Microsoft では、サブスクリプションの種類のアップグレード�
 
 ## <a name="microsoftdataboxedge-not-registered-for-subscription"></a>Microsoft.DataBoxEdge がサブスクリプションに登録されいない
 
-**エラー:** Azure portal で、Azure Stack Edge または Data Box Gateway に使用するサブスクリプションを選択すると、次のエラーが表示されます。
+**エラー:** Azure portal で、Azure Stack Edge Pro または Data Box Gateway に使用するサブスクリプションを選択すると、次のエラーが表示されます。
 
 *リソース プロバイダー Microsoft.DataBoxEdge はサブスクリプション &lt;サブスクリプション名&gt; に登録されておらず、サブスクリプション &lt;サブスクリプション名&gt; のリソース プロバイダーを登録するためのアクセス許可がありません*。
 
@@ -75,4 +75,4 @@ Microsoft では、サブスクリプションの種類のアップグレード�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Stack Edge に関する問題をトラブルシューティングする](azure-stack-edge-troubleshoot.md)方法の詳細について学習します。
+* [Azure Stack Edge Pro に関する問題をトラブルシューティングする](azure-stack-edge-troubleshoot.md)方法の詳細について学習します。

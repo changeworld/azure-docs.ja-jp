@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ff70df225b5ed27960c96889d409d7005f0fbcc4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527831"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950734"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>バックアップ セットからの StorSimple ボリュームの復元
 
@@ -63,7 +63,7 @@ Update 4 では、Windows PowerShell コマンドレットを使用して、実�
 
 * `Set-HcsRehydrationJob` - このコマンドレットを使用すると、リハイドレートの実行中に、リハイドレート ジョブを一時停止、停止、再開できます。
 
-リハイドレート コマンドレットの詳細については、[StorSimple 用 Windows PowerShell コマンドレット リファレンス](https://technet.microsoft.com/library/dn688168.aspx)をご覧ください。
+リハイドレート コマンドレットの詳細については、[StorSimple 用 Windows PowerShell コマンドレット リファレンス](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps)をご覧ください。
 
 自動リハイドレートでは、一般に一時的な読み取りパフォーマンスが高くなることが予想されます。 実際の向上の度合いは、アクセス パターン、データの変化、データの種類などのさまざまな要素に左右されます。 
 
@@ -115,7 +115,7 @@ Update 4 では、Windows PowerShell コマンドレットを使用して、実�
    
 4. **[バックアップ カタログ]** タブに戻り、バックアップ セットを選択します。 右クリックし、コンテキスト メニューの **[復元]** を選択します。
 
-    ![バックアップ セットの一覧](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
+    ![バックアップ セットの一覧 2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
 5. 確認を求められます。 復元情報を確認し、確認のチェック ボックスをオンにします。
    
@@ -123,7 +123,7 @@ Update 4 では、Windows PowerShell コマンドレットを使用して、実�
 
 7. **[復元]** をクリックします。 復元ジョブが開始されます。このジョブは、 **[ジョブ]** ページに表示されます。
 
-   ![確認ページ](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
+   ![確認ページ 2](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
 8. 復元操作が完了した後、ボリュームの内容がバックアップからのボリュームで置き換えられていることを確認します。
 
@@ -137,4 +137,3 @@ Update 4 では、Windows PowerShell コマンドレットを使用して、実�
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple ボリュームを管理する](storsimple-8000-manage-volumes-u2.md)方法について説明します。
 * [StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを管理する](storsimple-8000-manager-service-administration.md)方法について説明します。
-

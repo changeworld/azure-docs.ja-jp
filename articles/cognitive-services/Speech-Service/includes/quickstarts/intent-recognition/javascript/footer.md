@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: beb63df47c30da397df0dca6496c22deb5403935
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 9c4c450057b32292d58bcc00f04b3073c78c18a1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82979679"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93136155"
 ---
 > [!div class="nextstepaction"]
-> [GitHub の JavaScript のサンプルを参照する](https://aka.ms/speech/github-javascript)
+> [GitHub で JavaScript サンプルを探索する](https://aka.ms/speech/github-javascript)
+> [GitHub で高度な LUIS サンプルを参照する](https://github.com/Azure/pizza_luis_bot)

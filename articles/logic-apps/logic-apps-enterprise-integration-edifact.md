@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: dfe48a1348929bbe8d4af6793d94d52514df9d74
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b0df55e59bd519a816c4022f2434edfcd4460780
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001538"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006525"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の EDIFACT メッセージを交換する
 
@@ -57,7 +57,7 @@ Azure Logic Apps の EDIFACT メッセージを交換する前に、EDIFACT 契�
 
    ![[追加] の選択](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
 
-6. **[追加]** で、契約の**名前**を入力します。 **[契約タイプ]** で、 **[EDIFACT]** を選択します。 契約の**ホスト パートナー**、**ホスト ID**、**ゲスト パートナー**、および**ゲスト ID** を選択します。
+6. **[追加]** で、契約の **名前** を入力します。 **[契約タイプ]** で、 **[EDIFACT]** を選択します。 契約の **ホスト パートナー**、**ホスト ID**、**ゲスト パートナー**、および **ゲスト ID** を選択します。
 
    ![契約の詳細の指定](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
@@ -247,7 +247,7 @@ Azure Logic Apps の EDIFACT メッセージを交換する前に、EDIFACT 契�
 
 2.  また、統合アカウントの概要で、契約を表示することもできます。 統合アカウント メニューで、 **[概要]** 、 **[契約]** タイルの順に選びます。 
 
-    ![[契約] タイルの選択](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+    ![[契約] タイルを示すスクリーンショット。](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 

@@ -5,16 +5,15 @@ description: Azure Data Lake Storage Gen2 でコンテンツとメタデータ�
 manager: nitinme
 author: markheff
 ms.author: maheff
-ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: b1a88398d657e6bc242c7db12f3c0ddc1af828ca
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 51c32501015a16819ba9316272ed0d522e1083d7
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935859"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545566"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のドキュメントのインデックス作成
 
@@ -34,7 +33,7 @@ Data Lake Storage Gen2 のコンテンツにインデックスを作成するに
 
 [このフォーム](https://aka.ms/azure-cognitive-search/indexer-preview)を入力して、Data Lake Storage Gen2 インデクサーのプレビューにサインアップしてください。 プレビューへの参加が承認されると、確認メールが届きます。
 
-### <a name="step-2-follow-the-azure-blob-storage-indexing-setup-steps"></a>手順 2:Azure Blob ストレージのインデックス作成セットアップ手順の実行
+### <a name="step-2-follow-the-azure-blob-storage-indexing-setup-steps"></a>手順 2:Azure Blob Storage のインデックス作成セットアップ手順の実行
 
 プレビューのサインアップが正常に完了したことを示すメッセージが表示されたら、インデックス作成パイプラインを作成する準備ができています。
 
@@ -44,7 +43,7 @@ Data Lake Storage Gen2 でのコンテンツのインデックス作成は、Azu
 
 ## <a name="access-control"></a>アクセス制御
 
-Azure Data Lake Storage Gen2 では、Azure ロールベースのアクセス制御 (Azure RBAC) と POSIX のようなアクセス制御リスト (ACL) の両方をサポートする[アクセス制御モデル](../storage/blobs/data-lake-storage-access-control.md)が実装されています。 Data Lake Storage Gen2 からコンテンツのインデックスを作成する場合、Azure Cognitive Search はコンテンツから RBAC と ACL の情報を抽出しません。 このため、この情報は Azure Cognitive Search インデックスには含められません。
+Azure Data Lake Storage Gen2 では、Azure ロールベースのアクセス制御 (Azure RBAC) と POSIX のようなアクセス制御リスト (ACL) の両方をサポートする[アクセス制御モデル](../storage/blobs/data-lake-storage-access-control.md)が実装されています。 Data Lake Storage Gen2 からコンテンツのインデックスを作成する場合、Azure Cognitive Search はコンテンツから Azure RBAC と ACL の情報を抽出しません。 このため、この情報は Azure Cognitive Search インデックスには含められません。
 
 インデックス内の各ドキュメントのアクセス制御を維持することが重要な場合は、アプリケーション開発者が[セキュリティによるトリミング](./search-security-trimming-for-azure-search.md)を実装する必要があります。
 

@@ -4,13 +4,13 @@ description: この記事では、Live Video Analytics on IoT Edge のトラブ�
 author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
-ms.date: 05/24/2020
-ms.openlocfilehash: bbd3cb88b017209adff58a646e274caf31ab425f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 12/04/2020
+ms.openlocfilehash: d766843f58bc2cdd0dcdddfad337b23fefb28768
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486444"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698741"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Live Video Analytics on IoT Edge のトラブルシューティング
 
@@ -31,19 +31,23 @@ Live Video Analytics をデプロイする一環として、IoT Hub デバイス
 
 ### <a name="pre-deployment-issues"></a>デプロイ前の問題
 
-エッジ インフラストラクチャが正常な場合は、配置マニフェスト ファイルの問題を調べることができます。 Live Video Analytics on IoT Edge モジュールを他の IoT モジュールと共に IoT Edge デバイスにデプロイするには、IoT Edge ハブ、IoT Edge エージェント、その他のモジュールとそれらのプロパティを含む配置マニフェストを使用します。 JSON コードの形式が正しくない場合、次のエラーが表示されることがあります。 
+エッジ インフラストラクチャが正常な場合は、配置マニフェスト ファイルの問題を調べることができます。 Live Video Analytics on IoT Edge モジュールを他の IoT モジュールと共に IoT Edge デバイスにデプロイするには、IoT Edge ハブ、IoT Edge エージェント、その他のモジュールとそれらのプロパティを含む配置マニフェストを使用します。 次のコマンドを使用すれば、マニフェスト ファイルをデプロイできます。
 
 ```
 az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device --content <path-to-deployment_manifest.json>
 ```
-
-Failed to parse JSON from file: '<deployment manifest.json>' for argument 'content' with exception:"Extra data: line 101 column 1 (char 5325)"
+JSON コードの形式が正しくない場合、次のエラーが表示されることがあります。   
+&nbsp;&nbsp;&nbsp; **Failed to parse JSON from file: '<deployment manifest.json>' for argument 'content' with exception:"Extra data: line 101 column 1 (char 5325)"**
 
 このエラーが発生した場合は、かっこの不足やファイルの構造に関するその他の問題がないか、JSON を確認することをお勧めします。 ファイル構造を検証するには、[JSON Viewer プラグイン搭載の Notepad++](https://riptutorial.com/notepadplusplus/example/18201/json-viewer) などのクライアントや、[JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/) などのオンライン ツールを使用できます。
 
 ### <a name="during-deployment-diagnose-with-media-graph-direct-methods"></a>デプロイ中:メディア グラフのダイレクト メソッドを使用した診断 
 
-Live Video Analytics on IoT Edge モジュールが IoT Edge デバイスに正しくデプロイされると、[ダイレクト メソッド](direct-methods.md)を呼び出すことによって、メディア グラフを作成して実行できるようになります。 Azure portal を使用して、ダイレクト メソッド経由でメディア グラフの診断を実行できます。
+Live Video Analytics on IoT Edge モジュールが IoT Edge デバイスに正しくデプロイされると、[ダイレクト メソッド](direct-methods.md)を呼び出すことによって、メディア グラフを作成して実行できるようになります。  
+>[!NOTE]
+>  ダイレクト メソッド呼び出しは、 **`lvaEdge`** モジュールに対してのみ行う必要があります。
+
+Azure portal を使用して、ダイレクト メソッドを使用してメディア グラフの診断を実行できます。
 
 1. Azure portal で、IoT Edge デバイスに接続されている IoT ハブにアクセスします。
 
@@ -53,6 +57,7 @@ Live Video Analytics on IoT Edge モジュールが IoT Edge デバイスに正�
          
     ![エッジ デバイスの一覧が表示された Azure portal のスクリーンショット](./media/troubleshoot-how-to/lva-sample-device.png)
 
+
 1. 応答コードが *200-OK* かどうかを確認します。 [IoT Edge ランタイム](../../iot-edge/iot-edge-runtime.md)の応答コードには、他にも次のものがあります。
     * 400 - デプロイ構成が正しくない形式であるか、無効です。
     * 417 - デバイスにデプロイ構成セットがありません。
@@ -60,7 +65,11 @@ Live Video Analytics on IoT Edge モジュールが IoT Edge デバイスに正�
     * 406 - IoT Edge デバイスがオフラインであるか、状態レポートを送信していません。
     * 500 - IoT Edge ランタイムでエラーが発生しました。
 
-1. 状態 501 のコードが表示された場合は、ダイレクト メソッド名が正確であることを確認してください。 メソッド名と要求ペイロードが正確である場合は、成功コード = 200 と共に結果が返されます。 要求ペイロードが不正確な場合は、状態 = 400 と、ダイレクト メソッド呼び出しに関する問題の診断に役立つエラー コードとメッセージを示す応答ペイロードが表示されます。
+    > [!TIP]
+    > お使いの環境で Azure IoT Edge モジュールを実行するときに問題が発生した場合は、トラブルシューティングと診断のガイドとして **[Azure IoT Edge の標準的な診断手順](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** に関する記事を参照してください。
+### <a name="post-deployment-direct-method-error-code"></a>デプロイ後:ダイレクト メソッドのエラー コード
+1. 状態 `501 code` のコードが表示された場合は、ダイレクト メソッド名が正確であることを確認してください。 メソッド名と要求ペイロードが正確である場合は、成功コード = 200 と共に結果が返されます。 
+1. 要求ペイロードが不正確な場合は、状態 `400 code` と、ダイレクト メソッド呼び出しに関する問題の診断に役立つエラー コードとメッセージを示す応答ペイロードが表示されます。
     * 報告される、および必要なプロパティを確認すると、モジュールのプロパティがデプロイと同期されているかどうかを理解するのに役立ちます。 同期されていない場合は、IoT Edge デバイスを再起動できます。 
     * 「[ダイレクト メソッド](direct-methods.md)」ガイドを使用して、いくつかのメソッド (特に GraphTopologyList のような単純なメソッド) を呼び出します。 このガイドでは、予想される要求、応答のペイロードとエラーコードも指定します。 単純なダイレクト メソッドが正常に完了する場合は、Live Video Analytics on IoT Edge モジュールが機能的には問題ないことを確認できます。
         
@@ -86,158 +95,33 @@ Live Video Analytics は、IoT Edge デバイスに IoT Edge モジュールと�
 * [Live Video Analytics またはその他のカスタム IoT Edge モジュールがエッジ ハブへのメッセージ送信に 404 エラーで失敗する](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-fails-to-send-a-message-to-edgehub-with-404-error)。
 * [IoT Edge モジュールがデプロイに成功したのに、デバイスに表示されなくなる](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device)。
 
-### <a name="edge-setup-script-issues"></a>エッジのセットアップ スクリプトの問題
+    > [!TIP]
+    > お使いの環境で Azure IoT Edge モジュールを実行するときに問題が発生した場合は、トラブルシューティングと診断のガイドとして **[Azure IoT Edge の標準的な診断手順](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** に関する記事を参照してください。
 
-Microsoft のドキュメントの一部として、エッジおよびクラウド リソースをデプロイして Live Video Analytics Edge を開始するための[セットアップ スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)が用意されています。 このセクションでは、発生する可能性があるスクリプト エラーのいくつかと、それらをデバッグするための解決策について説明します。
+**[Live Video Analytics リソース設定スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)** の実行時に問題が発生する場合もあります。 一般的な問題としては、次のようなものがあります。
 
-問題点:スクリプトを実行すると、いくつかのリソースが部分的に作成されるものの、次のメッセージが表示されて失敗します。
+* 所有者特権を持っていないサブスクリプションの使用。 この場合、**ForbiddenError** または **AuthorizationFailed** のエラーでスクリプトが失敗します。
+    * この問題を解決するには、使用する予定のサブスクリプションの **所有者** 特権が自身に付与されるようにします。 これを自分で行うことができない場合は、サブスクリプション管理者に連絡して、適切な特権を付与するよう依頼してください。
+* **ポリシー違反に起因してテンプレートのデプロイが失敗しました。**
+    * この問題を解決するには、IT 管理者と協力して、仮想マシンを作成するための呼び出しで、ssh 認証のブロックがバイパスされるようにしてください。 Azure リソースとの通信にはユーザー名とパスワードを必要とするセキュリティで保護された Bastion ネットワークを使用しているため、これは必要ありません。 これらの資格情報は、仮想マシンが正常に作成され、IoT Hub にデプロイされアタッチされた後、Cloud Shell の **~/clouddrive/lva-sample/vm-edge-device-credentials.txt** ファイルに保存されます。
+* セットアップ スクリプトで、サービス プリンシパル、Azure リソース、またはこの両方を作成できない。
+    * この問題を解決するには、サブスクリプションと Azure テナントがサービスの上限に達していないことを確認してください。 詳細については、「[Azure AD サービスの制限と制約](../../active-directory/enterprise-users/directory-service-limits-restrictions.md)」と「[Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
 
-```
-registering device...
-
-Unable to load extension 'eventgrid: unrecognized kwargs: ['min_profile']'. Use --debug for more information.
-The command failed with an unexpected error. Here is the traceback:
-
-No module named 'azure.mgmt.iothub.iot_hub_client'
-Traceback (most recent call last):
-File "/opt/az/lib/python3.6/site-packages/knack/cli.py", line 215, in invoke
-  cmd_result = self.invocation.execute(args)
-File "/opt/az/lib/python3.6/site-packages/azure/cli/core/commands/__init__.py", line 631, in execute
-  raise ex
-File "/opt/az/lib/python3.6/site-packages/azure/cli/core/commands/__init__.py", line 695, in _run_jobs_serially
-  results.append(self._run_job(expanded_arg, cmd_copy))
-File "/opt/az/lib/python3.6/site-packages/azure/cli/core/commands/__init__.py", line 688, in _run_job
-  six.reraise(*sys.exc_info())
-File "/opt/az/lib/python3.6/site-packages/six.py", line 693, in reraise
-  raise value
-File "/opt/az/lib/python3.6/site-packages/azure/cli/core/commands/__init__.py", line 665, in _run_job
-  result = cmd_copy(params)
-File "/opt/az/lib/python3.6/site-packages/azure/cli/core/commands/__init__.py", line 324, in __call__
-  return self.handler(*args, **kwargs)
-File "/opt/az/lib/python3.6/site-packages/azure/cli/core/__init__.py", line 574, in default_command_handler
-  return op(**command_args)
-File "/home/.azure/cliextensions/azure-cli-iot-ext/azext_iot/operations/hub.py", line 75, in iot_device_list
-  result = iot_query(cmd, query, hub_name, top, resource_group_name, login=login)
-File "/home/.azure/cliextensions/azure-cli-iot-ext/azext_iot/operations/hub.py", line 45, in iot_query
-  target = get_iot_hub_connection_string(cmd, hub_name, resource_group_name, login=login)
-File "/home/.azure/cliextensions/azure-cli-iot-ext/azext_iot/common/_azure.py", line 112, in get_iot_hub_connection_string
-  client = iot_hub_service_factory(cmd.cli_ctx)
-File "/home/.azure/cliextensions/azure-cli-iot-ext/azext_iot/_factory.py", line 28, in iot_hub_service_factory
-  from azure.mgmt.iothub.iot_hub_client import IotHubClient
-ModuleNotFoundError: No module named 'azure.mgmt.iothub.iot_hub_client'
-```
-    
-この問題を解決するには、次の手順に従います。
-
-1. 次のコマンドを実行します。
-
-    ```
-    az --version
-    ```
-1. 次の拡張機能がインストールされていることを確認します。 この記事の公開時点では、拡張機能とそのバージョンは次のとおりです。
-
-    | 拡張機能 | Version |
-    |---|---|
-    |azure-cli   |      2.5.1*|
-    |command-modules-nspkg         |   2.0.3|
-    |core  |    2.5.1*|
-    |nspkg    | 3.0.4|
-    |telemetry| 1.0.4|
-    |storage-preview          |     0.2.10|
-    |azure-cli-iot-ext          |    0.8.9|
-    |eventgrid| 0.4.9|
-    |azure-iot                       | 0.9.2|
-1. インストールされている拡張機能の中に、そのバージョンがこちらに記載されているリリース番号より前のものがある場合は、次のコマンドを使用してその拡張機能を更新します。
-
-    ```
-    az extension update --name <Extension name>
-    ```
-
-    たとえば、`az extension update --name azure-iot` のように実行します。
-
-### <a name="sample-app-issues"></a>サンプル アプリの問題
-
-Microsoft では、リリースの一部として、開発者コミュニティが自分で作業を開始するのに役立つ .NET サンプル コードを用意しています。 このセクションでは、そのサンプル コードを実行するときに発生する可能性があるエラーのいくつかと、それらをデバッグするための解決策について説明します。
-
-問題点:Program.cs は、ダイレクト メソッドの呼び出しで次のエラーが発生して失敗します。
-
-```
-Unhandled exception. Microsoft.Azure.Devices.Common.Exceptions.UnauthorizedException: {"Message":"{\"errorCode\":401002,\"trackingId\":\"b1da85801b2e4faf951a2291a2c467c3-G:32-TimeStamp:04/06/2020 17:15:11\",\"message\":\"Unauthorized\",\"timestampUtc\":\"2020-04-06T17:15:11.6990676Z\"}","ExceptionMessage":""}
-    
-        at Microsoft.Azure.Devices.HttpClientHelper.ExecuteAsync(HttpClient httpClient, HttpMethod httpMethod, Uri requestUri, Func`3 modifyRequestMessageAsync, Func`2 isMappedToException, Func`3 processResponseMessageAsync, IDictionary`2 errorMappingOverrides, CancellationToken cancellationToken)
-    
-        at Microsoft.Azure.Devices.HttpClientHelper.ExecuteAsync(HttpMethod httpMethod, Uri requestUri, Func`3 modifyRequestMessageAsync, Func`3 processResponseMessageAsync, IDictionary`2 errorMappingOverrides, CancellationToken cancellationToken)
-        
-        at Microsoft.Azure.Devices.HttpClientHelper.PostAsync[T,T2](Uri requestUri, T entity, TimeSpan operationTimeout, IDictionary`2 errorMappingOverrides, IDictionary`2 customHeaders, CancellationToken cancellationToken)…
-```
-
-1. Visual Studio Code 環境に [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) がインストールされていること、および IoT ハブ セットアップへの接続が設定済みであることを確認します。 これを行うには、Ctrl + Shift + P キーを同時に押し、 **[Select IoT Hub method]\(IoT Hub メソッドの選択\)** を選択します。
-
-1. Visual Studio Code を使用してその IoT Edge モジュールでダイレクト メソッドを呼び出せるかどうかを確認します。 たとえば、次のペイロードを指定して、GraphTopologyList を呼び出します。{&nbsp;"@apiVersion":"1.0"}。 次の応答が返されるはずです。 
-
-    ```
-    {
-      "status": 200,
-      "payload": {
-        "values": [
-          {…
-    …}
-          ]
-        }
-    }
-    ```
-
-    ![Visual Studio Code の応答のスクリーンショット。](./media/troubleshoot-how-to/visual-studio-code1.png)
-1. 上記のソリューションで解決しない場合は、次を試してください。
-
-    a. IoT Edge デバイスでコマンド プロンプトに移動し、次のコマンドを実行します。
-    
-      ```
-      sudo systemctl restart iotedge
-      ```
-
-      このコマンドを実行すると、IoT Edge デバイスとすべてのモジュールが再起動します。 数分待ってから、ダイレクト メソッドをもう一度使用してみる前に、次のコマンドを実行してモジュールが実行されていることを確認します。
-
-      ```
-      sudo iotedge list
-      ```
-
-    b. 上記の方法でも解決しない場合は、仮想マシンやコンピューターを再起動してみてください。
-
-    c. すべてのアプローチを試しても問題が解決しない場合は、次のコマンドを実行して、すべての[関連ログ](../../iot-edge/troubleshoot.md#gather-debug-information-with-support-bundle-command)を含む ZIP ファイルを取得し、そのファイルを[サポート チケット](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)に添付してください。
-
-    ```
-    sudo iotedge support-bundle --since 2h
-    ```
-
-1. エラー応答 *400* コードが表示された場合は、メソッド呼び出しペイロードが「[ダイレクト メソッド](direct-methods.md)」ガイドに従った適切な形式になっていることをご確認ください。
-1. 状態 *200* コードが表示された場合は、ハブが正常に機能しており、モジュールのデプロイが適切で応答していることを示しています。 
-
-1. アプリの構成が正確であるかどうかを確認します。 アプリの構成は、*appsettings.json* ファイルの次のフィールドで構成されています。 deviceId と moduleId が正確であることをもう一度確認してください。 Visual Studio Code の Azure IoT Hub 拡張機能セクションを見ると、簡単に確認できます。 *appsettings.json* ファイルの値と、この IoT Hub セクションの値は一致しているはずです。
-    
-    ```
-    {
-        "IoThubConnectionString" : 
-        "deviceId" : 
-        "moduleId" : 
-    }
-    ```
-
-1. *appsettings.json* ファイルで、IoT Hub デバイス接続文字列*ではなく*、IoT Hub 接続文字列が指定されていることを確認します。これは、両者の[接続文字列の形式が異なる](https://devblogs.microsoft.com/iotdev/understand-different-connection-strings-in-azure-iot-hub/)ためです。
-
+> [!TIP]
+> 支援が必要な追加の問題がある場合は、 **[ログを収集し、サポート チケットを送信](#collect-logs-for-submitting-a-support-ticket)** してください。 **[amshelp@microsoft.com](mailto:amshelp@microsoft.com)** 宛にメールで問い合わせることもできます。
 ### <a name="live-video-analytics-working-with-external-modules"></a>Live Video Analytics による外部モジュールの操作
 
-HTTP 拡張プロセッサ経由の Live Video Analytics では、メディア グラフを拡張し、他の IoT Edge モジュールに対して REST を使用して HTTP 経由でデータを送受信することができます。 [具体的な例](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)として、メディア グラフでは、Yolo v3 などの外部推論モジュールへビデオ フレームをイメージとして送信し、JSON ベースの分析結果を受け取ることができます。 このようなトポロジでは、イベントの送信先は主に IoT ハブです。 ハブで推論イベントが表示されない場合は、次の点を確認します。
+メディア グラフ拡張プロセッサ経由の Live Video Analytics では、メディア グラフを拡張し、他の IoT Edge モジュールに対して HTTP または gRPC プロトコルを使用してデータを送受信することができます。 [具体的な例](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)として、メディア グラフでは、Yolo v3 などの外部推論モジュールへビデオ フレームをイメージとして送信し、HTTP プロトコルを使用して JSON ベースの分析結果を受け取ることができます。 このようなトポロジでは、イベントの送信先は主に IoT ハブです。 ハブで推論イベントが表示されない場合は、次の点を確認します。
 
 * メディア グラフの公開先となるハブと、調査中のハブが同じであるかどうかを確認します。 複数のデプロイを作成すると、ハブが複数作成され、イベントに対して間違ったハブを誤って確認していることがあります。
-* Visual Studio Code で、外部モジュールがデプロイされて実行されているかどうかを確認します。 この例の図では、rtspsim と cv は、lvaEdge モジュールの外部で実行されている IoT Edge モジュールです。
+* Azure portal で、外部モジュールがデプロイされて実行されているかどうかを確認します。 この例の図では、rtspsim、yolov3、tinyyolov3、logAnalyticsAgent は、lvaEdge モジュールの外部で実行されている IoT Edge モジュールです。
 
-    ![Azure IoT Hub のモジュールの実行状態を表示するスクリーンショット。](./media/troubleshoot-how-to/iot-hub.png)
+    [ ![Azure IoT Hub のモジュールの実行状態を表示するスクリーンショット。](./media/troubleshoot-how-to/iot-hub-azure.png) ](./media/troubleshoot-how-to/iot-hub-azure.png#lightbox)
 
-* 正しい URL エンドポイントにイベントを送信しているかどうかを確認します。 外部 AI コンテナーは、URL と、POST 要求からデータを受信して返すポートを公開します。 この URL は、HTTP 拡張プロセッサの `endpoint: url` プロパティとして指定されます。 [トポロジ URL](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json) に示されているように、エンドポイントは推論の URL パラメーターに設定されています。 このパラメーターの既定値、または渡された値が正確であることを確認します。 クライアント URL (cURL) を使用することにより、それが機能しているかどうかをテストできます。  
+* 正しい URL エンドポイントにイベントを送信しているかどうかを確認します。 外部 AI コンテナーは、URL と、POST 要求からデータを受信して返すポートを公開します。 この URL は、HTTP 拡張プロセッサの `endpoint: url` プロパティとして指定されます。 [トポロジ URL](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/2.0/topology.json) に示されているように、エンドポイントは推論の URL パラメーターに設定されています。 このパラメーターの既定値、または渡された値が正確であることを確認します。 クライアント URL (cURL) を使用することにより、それが機能しているかどうかをテストできます。  
 
-    例として、ローカル コンピューター上で実行されている Yolo v3 コンテナー (IP アドレス: 172.17.0.3) があるとします。 IP アドレスを検出するには、Docker inspect を使用します。
-
+    例として、ローカル コンピューター上で実行されている Yolo v3 コンテナー (IP アドレス: 172.17.0.3) があるとします。  
+    
     ```
     curl -X POST http://172.17.0.3/score -H "Content-Type: image/jpeg" --data-binary @<fullpath to jpg>
     ```
@@ -247,12 +131,12 @@ HTTP 拡張プロセッサ経由の Live Video Analytics では、メディア �
     ```
     {"inferences": [{"type": "entity", "entity": {"tag": {"value": "car", "confidence": 0.8668569922447205}, "box": {"l": 0.3853073438008626, "t": 0.6063712999658677, "w": 0.04174524943033854, "h": 0.02989496027381675}}}]}
     ```
+    > [!TIP]
+    > **[Docker 検査コマンド](https://docs.docker.com/engine/reference/commandline/inspect/)** を使用して、マシンの IP アドレスを検索します。
+    
+* メディア グラフ拡張プロセッサを利用するグラフのインスタンスを 1 つ以上実行している場合は、ビデオ フィードの 1 秒あたりのフレーム数 (fps) を管理するため、`samplingOptions` フィールドを使用する必要があります。 
 
-* HTTP 拡張プロセッサを利用するグラフのインスタンスを 1 つ以上実行している場合は、ビデオ フィードの 1 秒あたりのフレーム数 (fps) を管理するため、各 HTTP 拡張プロセッサの前にフレーム レート フィルターが必要です。 
-
-   エッジ マシンの CPU やメモリの使用率が高い特定の状況では、特定の推論イベントが失われることがあります。 この問題に対処するには、フレーム レート フィルターの maximumFps プロパティの値を低く設定します。 グラフの各インスタンスで 0.5 ("maximumFps":0.5) に設定してインスタンスを再実行し、ハブで推論イベントを確認できます。
-
-   また、より強力な CPU とより多くのメモリを搭載するパワフルなエッジ マシンを取得する方法もあります。
+   * エッジ マシンの CPU やメモリの使用率が高い特定の状況では、特定の推論イベントが失われることがあります。 この問題に対処するには、`samplingOptions` フィールドで `maximumSamplesPerSecond` プロパティの値を低く設定します。 グラフの各インスタンスで 0.5 ("maximumSamplesPerSecond":"0.5") に設定してインスタンスを再実行し、ハブで推論イベントを確認できます。
     
 ### <a name="multiple-direct-methods-in-parallel--timeout-failure"></a>複数のダイレクトメソッドの並列 –タイムアウト エラー 
 
@@ -269,7 +153,36 @@ Assembly Initialization method Microsoft.Media.LiveVideoAnalytics.Test.Feature.E
 > [!WARNING]
 > ログには、ご使用の IP アドレスなどの、個人を特定できる情報 (PII) が含まれている可能性があります。 ログのすべてのローカル コピーは、Microsoft による調査が完了し、サポート チケットが閉じられるとすぐに削除されます。  
 
-チケットに追加する必要のある関連ログを収集するには、次のセクションの手順に従います。 ログ ファイルは、サポート リクエストの **[詳細]** ペインでアップロードできます。
+チケットに追加する必要のある関連するログを収集するには、以下の指示に順番に従い、サポート要求の **[詳細]** ウィンドウにログ ファイルをアップロードします。  
+1. [詳細ログを収集するように Live Video Analytics モジュールを構成します](#configure-live-video-analytics-module-to-collect-verbose-logs)
+1. [デバッグ ログを有効にします](#live-video-analytics-debug-logs)
+1. 問題を再現します
+1. ポータルの **[IoT Hub]** ページから仮想マシンに接続します
+    1. *debugLogs* フォルダー内のすべてのファイルを zip 圧縮します。
+
+       > [!NOTE]
+       > これらのログ ファイルは、自己診断を目的としたものではありません。 これらは、Azure エンジニアリング チームがお客様の問題を分析するために使用するものです。
+
+       * 次のコマンドで、 **$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE** の部分を、前に **手順 2** で設定したエッジ デバイス上のデバッグ ログの場所に忘れずに置き換えてください。  
+
+           ```
+           sudo apt install zip unzip  
+           zip -r debugLogs.zip $DEBUG_LOG_LOCATION_ON_EDGE_DEVICE 
+           ```
+
+    1. この *debugLogs.zip* ファイルをサポート チケットに添付します。
+1. [サポート バンドル コマンド](#use-the-support-bundle-command)を実行し、ログを収集してサポート チケットにアタッチします。
+
+### <a name="configure-live-video-analytics-module-to-collect-verbose-logs"></a>詳細ログを収集するように Live Video Analytics モジュールを構成する
+次のように `logLevel` と `logCategories` を設定して、詳細ログを収集するように Live Video Analytics モジュールを構成します。
+```
+"logLevel": "Verbose",
+"logCategories": "Application,Events,MediaPipeline",
+```
+
+これは次のいずれかで行えます。
+* **Azure portal** で、Live Video Analytics モジュールのモジュール ID ツインのプロパティを更新します。[ ![モジュール ID ツインのプロパティ。](media/troubleshoot-how-to/module-twin.png)](media/troubleshoot-how-to/module-twin.png#lightbox)    
+* または、**配置マニフェスト** ファイルで、Live Video Analytics モジュールのプロパティ ノードにこれらのエントリを追加できます
 
 ### <a name="use-the-support-bundle-command"></a>support-bundle コマンドを使用する
 
@@ -277,7 +190,7 @@ IoT Edge デバイスからログを収集する必要がある場合、最も�
 
 - モジュール ログ
 - IoT Edge Security Manager とコンテナー エンジンのログ
-- Iotedge check JSON 出力
+- IoT Edge check JSON 出力
 - 有用なデバッグ情報
 
 1. ログの収集時間の長さを指定するには、 *--since* フラグを指定して `support-bundle` コマンドを実行します。 たとえば、2h と指定すると、過去 2 時間のログを取得します。 このフラグの値を変更することで、別の期間のログを取得できます。
@@ -321,30 +234,97 @@ Live Video Analytics on IoT Edge モジュールがデバッグ ログを生成�
     `"DebugLogsDirectory": "/var/lib/azuremediaservices/logs"`
 
     > [!NOTE] 
-    > このコマンドにより、エッジ デバイスとコンテナーの間でログ フォルダーがバインドされます。 別の場所にあるログを収集する場合は、 **$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE** の部分を使用したい場所に置き換えて、次のコマンドを使用します。  
-    > `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE"`  
-
+    > このコマンドにより、エッジ デバイスとコンテナーの間でログ フォルダーがバインドされます。 デバイス上の別の場所にあるログを収集するには、次のようにします。
+    > 1. **[バインド]** セクションでデバッグ ログの場所のバインドを作成し、 **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE** と **$DEBUG _LOG_LOCATION** を目的の場所 `/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE:/var/$DEBUG_LOG_LOCATION` に置き換えます。
+    > 2. 次のコマンドを使用して、 **$DEBUG _LOG_LOCATION** を、前の手順で使用した場所に置き換えます。  
+    > `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION"`  
+    
     d. **[保存]** を選択します。
 
-1. 問題を再現します。
-1. ポータルの **[IoT Hub]** ページから仮想マシンに接続します。
-1. *debugLogs* フォルダー内のすべてのファイルを zip 圧縮します。
-
-   > [!NOTE]
-   > これらのログ ファイルは、自己診断を目的としたものではありません。 これらは、Azure エンジニアリング チームがお客様の問題を分析するために使用するものです。
-
-   a. 次のコマンドで、 **$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE** の部分を、前に設定したエッジ デバイス上のデバッグ ログの場所に忘れずに置き換えてください。  
-
-   ```
-   sudo apt install zip unzip  
-   zip -r debugLogs.zip $DEBUG_LOG_LOCATION_ON_EDGE_DEVICE 
-   ```
-
-   b. この *debugLogs.zip* ファイルをサポート チケットに添付します。
 
 1. **[モジュール ID ツイン]** の値を *null* に設定すると、ログ収集を停止できます。 **[モジュール ID ツイン]** ページに戻り、次の内容をパラメーターとして更新します。
 
     `"DebugLogsDirectory": ""`
+
+### <a name="best-practices-around-logging"></a>ログ記録に関するベスト プラクティス
+
+[監視とログ記録](monitoring-logging.md)は、分類を理解し、LVA での問題のデバッグに役立つログの生成方法を理解する場合に役立ちます。 
+
+gRPC サーバーの実装は言語間で異なるので、サーバーには、内部でログ記録を追加する標準的な方法はありません。  
+
+たとえば、.NET Core を使用して gRPC サーバーを構築する場合、gRPC サービスは **Grpc** カテゴリ下にログを追加します。 gRPC から詳細なログを有効にするには、次の項目をログ記録の LogLevel サブセクションに追加することで、appsettings.json ファイルのデバッグ レベルに Grpc プレフィックスを構成します。 
+
+```
+{ 
+  "Logging": { 
+    "LogLevel": { 
+      "Default": "Debug", 
+      "System": "Information", 
+      "Microsoft": "Information", 
+      "Grpc": "Debug" 
+       } 
+  } 
+} 
+``` 
+
+ConfigureLogging を使用して、Startup.cs ファイルでこれを構成することもできます。 
+
+```
+public static IHostBuilder CreateHostBuilder(string[] args) => 
+    Host.CreateDefaultBuilder(args) 
+        .ConfigureLogging(logging => 
+        { 
+
+           logging.AddFilter("Grpc", LogLevel.Debug); 
+        }) 
+        .ConfigureWebHostDefaults(webBuilder => 
+        { 
+            webBuilder.UseStartup<Startup>(); 
+        }); 
+
+``` 
+
+[.NET の gRPC でのログ記録と診断](/aspnet/core/grpc/diagnostics?preserve-view=true&view=aspnetcore-3.1)には、gRPC サーバーから複数の診断ログを収集するためのいくつかのガイダンスが用意されています。 
+
+### <a name="a-failed-grpc-connection"></a>失敗した gRPC 接続 
+
+グラフがアクティブであり、カメラからストリーミングされている場合、接続は Live Video Analytics によって維持されます。 
+
+### <a name="monitoring-and-balancing-the-load-of-cpu-and-gpu-resources-when-these-resources-become-bottlenecks"></a>CPU および GPU リソースがボトルネックになっているときに、これらのリソースの負荷を監視し分散する
+
+Live Video Analytics は監視していないか、ハードウェア リソース監視を用意していません。 開発者は、ハードウェア製造元の監視ソリューションを使用する必要があります。 ただし、Kubernetes コンテナーを使用する場合は、[Kubernetes ダッシュボード](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)を使用してデバイスを監視できます。 
+
+また、.NET Core ドキュメントの gRPC は、「[パフォーマンスのベストプラクティス](/aspnet/core/grpc/performance?preserve-view=true&view=aspnetcore-3.1)」および「[負荷分散](/aspnet/core/grpc/performance?preserve-view=true&view=aspnetcore-3.1#load-balancing)」に関する重要な情報も共有します。  
+
+### <a name="troubleshooting-an-inference-server-when-it-does-not-receive-any-frames-and-you-are-receiving-an-unknown-protocol-error"></a>どのフレームも受信しない場合および "不明" プロトコル エラーを受信している場合の推論サーバーのトラブルシューティング 
+
+問題に関する詳細情報を取得するために実行できるいくつかの操作があります。  
+
+* Live Video Analytics モジュールの目的のプロパティに "**ediaPipeline**" ログ カテゴリを含め、ログ レベルが `Information` に設定されていることを確認します。  
+* ネットワーク接続をテストするには、エッジ デバイスから次のコマンドを実行できます。 
+
+   ```
+   sudo docker exec lvaEdge /bin/bash -c “apt update; apt install -y telnet; telnet <inference-host> <inference-port>” 
+   ```
+
+   コマンドによって短い文字列の乱雑なテキストが出力された場合、Telnet は正常に推論サーバーへの接続を開き、バイナリ gRPC チャネルを開くことができました。 これが表示されない場合、Telnet はネットワーク エラーを報告します。 
+* 推論サーバーでは、gRPC ライブラリで追加のログ記録を有効にすることができます。 これにより、gRPC チャネル自体に関する追加情報が提供されます。 この操作は言語によって異なりますが、ここでは [C#](/aspnet/core/grpc/diagnostics?preserve-view=true&view=aspnetcore-3.1) での手順を説明します。 
+
+### <a name="picking-more-images-from-buffer-of-grpc-without-sending-back-result-for-first-buffer"></a>最初のバッファーの結果を返さずに gRPC のバッファーからより多くのイメージを選択する
+
+gRPC データ転送コントラクトの一部として、Live Video Analytics が gRPC 推論サーバーに送信するすべてのメッセージは確認される必要があります。 イメージ フレームの受信を確認しないと、データ コントラクトが中断され、望ましくない状況になる場合があります。  
+
+Live Video Analytics で gRPC サーバーを使用する場合、最適なパフォーマンスを得るために共有メモリを使用できます。 これには、プログラミング言語/環境によって公開された Linux 共有メモリ機能を使用する必要があります。 
+
+1. Linux 共有メモリ ハンドルを開きます。
+1. フレームを受信したときに、共有メモリ内のアドレス オフセットにアクセスします。
+1. Live Video Analytics でメモリを再利用できるように、フレーム処理の完了を確認します。
+
+   > [!NOTE]
+   > 長時間、Live Video Analytics へのフレームの受信の確認が遅れた場合、共有メモリがいっぱいになり、データのドロップが行われる結果になることがあります。
+1. 各フレームは、推論サーバー上の任意のデータ構造 (リスト、配列など) に格納します。
+1. この場合、必要な数のイメージ フレームがあれば、処理ロジックを実行できます。
+1. 準備ができたら、Live Video Analytics に推論の結果を戻します。
 
 ## <a name="next-steps"></a>次のステップ
 

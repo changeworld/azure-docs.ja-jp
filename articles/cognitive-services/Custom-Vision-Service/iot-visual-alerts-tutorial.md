@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 5582056f1bae2dbeb69a7d05044f055ff1394bd5
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: c6405e2fcddef9ae3228ede76dfa57f7542164c8
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244671"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96020179"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>チュートリアル:IoT デバイスで Custom Vision を使用して視覚的な状態を報告する
 
@@ -37,11 +37,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * [!INCLUDE [create-resources](includes/create-resources.md)]
     > [!IMPORTANT]
-    > このプロジェクトではモデルを後で ONNX にエクスポートするため、**コンパクト**な画像分類プロジェクトである必要があります。
+    > このプロジェクトではモデルを後で ONNX にエクスポートするため、**コンパクト** な画像分類プロジェクトである必要があります。
 * また、Azure で [IoT Hub リソースを作成](https://ms.portal.azure.com/#create/Microsoft.IotHub)する必要があります。
 * [Visual Studio 2015 またはそれ以降](https://www.visualstudio.com/downloads/)
 * 必要に応じて、Windows 10 IoT Core バージョン 17763 以上を実行している IoT デバイス。 PC からアプリを直接実行することもできます。
-   * Raspberry Pi 2 および 3 では、IoT ダッシュボード アプリから Windows 10 を直接設定できます。 DrangonBoard などの他のデバイスの場合、[eMMC の方法](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices)を使用してフラッシュする必要があります。 新しいデバイスのセットアップでヘルプが必要な場合は、Windows IoT ドキュメントの「[デバイスのセットアップ](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)」を参照してください。
+   * Raspberry Pi 2 および 3 では、IoT ダッシュボード アプリから Windows 10 を直接設定できます。 DrangonBoard などの他のデバイスの場合、[eMMC の方法](/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices)を使用してフラッシュする必要があります。 新しいデバイスのセットアップでヘルプが必要な場合は、Windows IoT ドキュメントの「[デバイスのセットアップ](/windows/iot-core/tutorials/quickstarter/devicesetup)」を参照してください。
 
 ## <a name="about-the-visual-alerts-app"></a>Visual Alerts アプリについて
 
@@ -49,10 +49,10 @@ IoT Visual Alerts アプリは状況に応じて 4 つの異なる状態を切�
 
 * **モデルなし**:操作なしの状態です。 アプリは継続的に 1 秒間スリープ状態になり、カメラを検査します。
 * **トレーニング イメージのキャプチャ中**:この状態では、アプリは画像をキャプチャし、ターゲットの Custom Vision プロジェクトにトレーニング イメージとしてアップロードします。 その後、アプリは 500 ミリ秒間スリープ状態になり、イメージのターゲット数が設定回数キャプチャされるまで操作を繰り返します。 次に、Custom Vision モデルのトレーニングをトリガーします。
-* **トレーニング済みモデルの待機中**:この状態では、アプリは 1 秒ごとに Custom Vision API を呼び出して、ターゲット プロジェクトにトレーニング済みのイテレーションが含まれているかどうかを確認します。 トレーニング済みのイテレーションが検出されると、対応する ONNX モデルがローカル ファイルにダウンロードされ、**スコアリング**状態に切り替わります。
+* **トレーニング済みモデルの待機中**:この状態では、アプリは 1 秒ごとに Custom Vision API を呼び出して、ターゲット プロジェクトにトレーニング済みのイテレーションが含まれているかどうかを確認します。 トレーニング済みのイテレーションが検出されると、対応する ONNX モデルがローカル ファイルにダウンロードされ、**スコアリング** 状態に切り替わります。
 * **スコアリング**:この状態では、アプリはローカル ONNX モデルに対して Windows ML を使用してカメラから 1 つのフレームを評価します。 最終的なイメージの分類が画面に表示され、IoT Hub にメッセージとして送信されます。 アプリは、新しいイメージをスコアリングする前に 1 秒間スリープ状態になります。
 
-## <a name="understand-the-code-structure"></a>コードの構造を理解する
+## <a name="examine-the-code-structure"></a>コードの構造を調べる
 
 このアプリの主な機能は、以下のファイルで処理されています。
 
@@ -82,39 +82,39 @@ IoT Visual Alerts アプリは状況に応じて 4 つの異なる状態を切�
 
 PC でアプリを実行している場合は、Visual Studio ではターゲット デバイスの **[ローカル コンピューター]** を選択し、ターゲット プラットフォームでは **x64** または **x86** を選択します。 その後、F5 を押して、プログラムを実行します。 アプリが起動し、カメラからのライブ フィードとステータス メッセージが表示されます。
 
-ARM プロセッサを搭載した IoT デバイスにデプロイする場合は、ターゲット プラットフォームとして **ARM** を選択し、ターゲット デバイスとして**リモート マシン**を選択する必要があります。 メッセージが表示されたら、デバイスの IP アドレスを指定します (PC と同じネットワーク上にある必要があります)。 デバイスを起動してネットワークに接続すると、Windows IoT の既定アプリから IP アドレスを取得できます。 F5 を押して、プログラムを実行します。
+ARM プロセッサを搭載した IoT デバイスにデプロイする場合は、ターゲット プラットフォームとして **ARM** を選択し、ターゲット デバイスとして **リモート マシン** を選択する必要があります。 メッセージが表示されたら、デバイスの IP アドレスを指定します (PC と同じネットワーク上にある必要があります)。 デバイスを起動してネットワークに接続すると、Windows IoT の既定アプリから IP アドレスを取得できます。 F5 を押して、プログラムを実行します。
 
 アプリの初回実行時は、視覚的な状態に関する情報は表示されません。 使用可能なモデルがないことを示すステータス メッセージが表示されます。 
 
 ## <a name="capture-training-images"></a>トレーニング イメージをキャプチャする
 
-モデルを設定するには、アプリを**トレーニング イメージのキャプチャ中**状態にする必要があります。 次のいずれかのステップを使用します。
+モデルを設定するには、アプリを **トレーニング イメージのキャプチャ中** 状態にする必要があります。 次のいずれかのステップを使用します。
 * PC でアプリを実行している場合は、UI の右上隅にあるボタンを使用します。
 * アプリを IoT デバイスで実行している場合は、IoT Hub を通してデバイスで `EnterLearningMode` メソッドを呼び出します。 これは、Azure portal の [IoT Hub] メニューのデバイス エントリ、または [IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp) などのツールを使用して呼び出すことができます。
  
-アプリの状態が**トレーニング イメージのキャプチャ中**になると、目標のイメージ数に達するまで、1 秒ごとに 2 枚のイメージがキャプチャされます。 既定では、目標のイメージ数は 30 ですが、設定したい数を引数として `EnterLearningMode` IoT Hub メソッドに渡すことによって、このパラメーターを設定できます。 
+アプリの状態が **トレーニング イメージのキャプチャ中** になると、目標のイメージ数に達するまで、1 秒ごとに 2 枚のイメージがキャプチャされます。 既定では、目標のイメージ数は 30 ですが、設定したい数を引数として `EnterLearningMode` IoT Hub メソッドに渡すことによって、このパラメーターを設定できます。 
 
 アプリがイメージをキャプチャしている間、検出する視覚的な状態の種類 (たとえば、空の部屋、人がいる部屋、空の机、おもちゃのトラックが乗っている机など) にカメラを向ける必要があります。
 
 ## <a name="train-the-custom-vision-model"></a>Custom Vision モデルをトレーニングする
 
-アプリでイメージのキャプチャが完了すると、イメージがアップロードされ、**トレーニング済みモデルの待機中**状態に切り替わります。 切り替わったら [Custom Vision ポータル](https://www.customvision.ai/)にアクセスし、新しいトレーニング イメージに基づいてモデルを作成する必要があります。 以下のアニメーションはこのプロセスの例を示したものです。
+アプリでイメージのキャプチャが完了すると、イメージがアップロードされ、**トレーニング済みモデルの待機中** 状態に切り替わります。 切り替わったら [Custom Vision Web サイト](https://www.customvision.ai/)にアクセスし、新しいトレーニング イメージに基づいてモデルを作成する必要があります。 以下のアニメーションはこのプロセスの例を示したものです。
 
 ![アニメーション: 複数のバナナの画像にタグ付けする](./media/iot-visual-alerts-tutorial/labeling.gif)
 
 独自のシナリオでこのプロセスを繰り返すには、次のステップを実行します。
 
-1. [Custom Vision ポータル](http://customvision.ai)にサインインします。
+1. [Custom Vision Web サイト](http://customvision.ai)にサインインします。
 1. アプリがアップロードしたすべてのトレーニング イメージが含まれているターゲット プロジェクトを見つけます。
 1. 識別する視覚的な状態ごとに適切なイメージを選択し、タグを手動で適用します。
-    * たとえば、空の部屋と人がいる部屋を区別することが目的である場合は、人が含まれている 5 枚以上の画像を新しいクラス (**人**) としてタグ付けし、人がいない 5 枚以上の写真を**負**のタグとしてタグ付けすることをお勧めします。 これにより、モデルは 2 つの状態を区別できます。
+    * たとえば、空の部屋と人がいる部屋を区別することが目的である場合は、人が含まれている 5 枚以上の画像を新しいクラス (**人**) としてタグ付けし、人がいない 5 枚以上の写真を **負** のタグとしてタグ付けすることをお勧めします。 これにより、モデルは 2 つの状態を区別できます。
     * もう 1 つの例として、棚がどの程度いっぱいであるかを推定したい場合は、**EmptyShelf**、**PartiallyFullShelf**、**FullShelf** のようなタグを使用します。
 1. 完了したら、 **[トレーニングする]** ボタンをクリックします。
 1. トレーニングが完了すると、アプリがトレーニング済みのイテレーションが使用可能であることを検出します。 トレーニング済みのモデルを ONNX にエクスポートし、デバイスにダウンロードするプロセスがアプリで開始されます。
 
 ## <a name="use-the-trained-model"></a>トレーニング済みのモデルを使用する
 
-トレーニング済みのモデルがアプリによってダウンロードされると**スコアリング**状態に切り替わり、連続したループでカメラからのイメージのスコアリングが開始されます。
+トレーニング済みのモデルがアプリによってダウンロードされると **スコアリング** 状態に切り替わり、連続したループでカメラからのイメージのスコアリングが開始されます。
 
 アプリでは、キャプチャされたイメージごとに、上位のタグが画面に表示されます。 視覚的な状態が認識できない場合は **[一致なし]** と表示されます。 また、アプリはこれらのメッセージを IoT Hub に送信し、クラスが検出された場合、メッセージには、ラベル、信頼スコア、および `detectedClassAlert` というプロパティが含まれます。このプロパティは、プロパティに基づく高速メッセージ ルーティングを行うために必要な IoT Hub クライアントで使用できます。
 
@@ -141,6 +141,6 @@ Custom Vision プロジェクトを保持する必要がなくなった場合は
 > [!div class="nextstepaction"]
 > [IoTVisualAlerts サンプル (GitHub)](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/tree/master/IoTVisualAlerts)
 
-* IoT Hub メソッドを追加して、アプリを**トレーニング済みモデルの待機中**状態に直接切り替えます。 これにより、デバイス以外でキャプチャされたイメージを使用してモデルをトレーニングし、新しいモデルをコマンドを通じてデバイスにプッシュすることができます。
-* Power BI ダッシュボードを作成し、サンプルによって送信された IoT Hub アラートを視覚化するには、[リアルタイム センサー データを視覚化する](https://docs.microsoft.com/azure/iot-hub/iot-hub-live-data-visualization-in-power-bi)方法に関するチュートリアルに従います。
-* 視覚的な状態が検出されたときに IoT Hub アラートに応答するロジック アプリを作成するには、[IoT リモート監視](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps)に関するチュートリアルに従います。
+* IoT Hub メソッドを追加して、アプリを **トレーニング済みモデルの待機中** 状態に直接切り替えます。 これにより、デバイス以外でキャプチャされたイメージを使用してモデルをトレーニングし、新しいモデルをコマンドを通じてデバイスにプッシュすることができます。
+* Power BI ダッシュボードを作成し、サンプルによって送信された IoT Hub アラートを視覚化するには、[リアルタイム センサー データを視覚化する](../../iot-hub/iot-hub-live-data-visualization-in-power-bi.md)方法に関するチュートリアルに従います。
+* 視覚的な状態が検出されたときに IoT Hub アラートに応答するロジック アプリを作成するには、[IoT リモート監視](../../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)に関するチュートリアルに従います。

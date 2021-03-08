@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/25/2019
+ms.date: 12/11/2020
 ms.author: tamram
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c80269c949ec97a09584d736371ccd11879fd82b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 50a0894898dcdc817ee253ad326b88a9bb61b9d6
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069716"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357366"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントにアップグレードする
 
@@ -40,16 +40,16 @@ ms.locfileid: "89069716"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-PowerShell を使用して汎用 v1 アカウントを汎用 v2 アカウントにアップグレードするには、まず、**Az.Storage** モジュールの最新バージョンを使用するために PowerShell を更新します。 PowerShell のインストールについては、「[Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/install-Az-ps)」を参照してください。
+PowerShell を使用して汎用 v1 アカウントを汎用 v2 アカウントにアップグレードするには、まず、**Az.Storage** モジュールの最新バージョンを使用するために PowerShell を更新します。 PowerShell のインストールについては、「[Azure PowerShell のインストールおよび構成](/powershell/azure/install-Az-ps)」を参照してください。
 
 次に、次のコマンドを呼び出してアカウントをアップグレードします。その際、ご使用のリソース グループ名、ストレージ アカウント名、および目的のアカウント アクセス層に置き換えます。
 
 ```powershell
-Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
+Set-AzStorageAccount -ResourceGroupName <resource-group> -Name <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用して汎用 v1 アカウントを汎用 v2 アカウントにアップグレードするには、まず Azure CLI の最新バージョンをインストールします。 CLI のインストールについては、[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+Azure CLI を使用して汎用 v1 アカウントを汎用 v2 アカウントにアップグレードするには、まず Azure CLI の最新バージョンをインストールします。 CLI のインストールについては、[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 次に、次のコマンドを呼び出してアカウントをアップグレードします。その際、ご使用のリソース グループ名、ストレージ アカウント名、および目的のアカウント アクセス層に置き換えます。
 
@@ -111,7 +111,7 @@ v1 ストレージ アカウントから汎用 v2 アカウントへのアップ
 
 既存のストレージ アカウントを監視し、そのデータを収集するには、Azure Storage Analytics を利用できます。これにより、ログ記録が実行され、ストレージ アカウントのメトリック データが得られます。 Storage Analytics では、GPv1、GPv2、BLOB というストレージ アカウントの種類について、ストレージ サービスへの要求に関して集計されたトランザクション統計情報と容量データを含むメトリックを格納できます。 このデータは、同じストレージ アカウント内の既知のテーブルに格納されます。
 
-詳細については、「[About Storage Analytics Metrics (Storage Analytics メトリックについて)](https://msdn.microsoft.com/library/azure/hh343258.aspx)」と「[Storage Analytics Metrics Table Schema (Storage Analytics メトリックのテーブル スキーマ)](https://msdn.microsoft.com/library/azure/hh343264.aspx)」を参照してください。
+詳細については、「[About Storage Analytics Metrics (Storage Analytics メトリックについて)](../blobs/monitor-blob-storage.md)」と「[Storage Analytics Metrics Table Schema (Storage Analytics メトリックのテーブル スキーマ)](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)」を参照してください。
 
 > [!NOTE]
 > BLOB ストレージ アカウントは、そのアカウントのメトリック データの格納とアクセスのためだけに Table service エンドポイントを公開します。
@@ -168,4 +168,7 @@ BLOB ストレージ アカウントのデータ アクセス コストを見積
 
 ## <a name="next-steps"></a>次のステップ
 
+* [ストレージ アカウントの概要](storage-account-overview.md)
 * [ストレージ アカウントの作成](storage-account-create.md)
+* [Azure ストレージ アカウントを別のリージョンに移動する](storage-account-move.md)
+* [削除されたストレージ アカウントを復旧します](storage-account-recover.md)

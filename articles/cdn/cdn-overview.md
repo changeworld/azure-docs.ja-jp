@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 44ab6822039ef2a26ffafc2824bed249825e2daa
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: b0c8170947b59b3d40a388642dac3df772238197
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783812"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778345"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Azure 上のコンテンツ配信ネットワークとは
 コンテンツ配信ネットワーク (CDN) は、ユーザーに Web コンテンツを効率的に配信できるサーバーの分散ネットワークです。 CDN では、待ち時間を最小限に抑えるために、エンド ユーザーに近いポイントオブプレゼンス (POP) の場所のエッジ サーバーに、キャッシュされたコンテンツを格納します。 
@@ -59,7 +59,7 @@ Azure CDN を使用するには、少なくとも 1 つの Azure サブスクリ
  - CDN プロファイルに作成できるエンドポイントの数。 
  - エンドポイントにマッピングできるカスタム ドメインの数。
 
-CDN サブスクリプションの制限の詳細については、「[CDN の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)」を参照してください。
+CDN サブスクリプションの制限の詳細については、「[CDN の制限](../azure-resource-manager/management/azure-subscription-service-limits.md)」を参照してください。
     
 ## <a name="azure-cdn-features"></a>Azure CDN の機能
 Azure CDN が提供する主要な機能は、次のとおりです。

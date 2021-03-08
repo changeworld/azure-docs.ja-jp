@@ -1,25 +1,22 @@
 ---
 title: CPU コア クォータの増加の要求 - Azure HDInsight
 description: サブスクリプションに割り当てられている CPU コアの増加を要求するプロセスについて説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 4de32bad763c0bbf0e143a7ce639efec8c9c41ae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a539acc423feeab500830fb33262d1b824101072
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079617"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935833"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Azure HDInsight のクォータの増加を要求する
 
 CPU コア クォータは、確実に、特定の Azure リージョン内のすべての顧客にリソース使用量が公平に配分されるようにするのに役立ちます。 ただし、状況によっては、現在のクォータで許可されているよりも多くのクラスター リソースが業務で必要になる場合があります。 このような場合は、データ処理の要件に合わせてクラスターをデプロイできるように、CPU コア クォータの増加を要求できます。
 
-クォータの上限に達すると、新しいクラスターをデプロイしたり、ワーカー ノードを追加して既存のクラスターをスケールアウトしたりすることができません。 唯一のクォータ制限は CPU コア クォータに関するものであり、サブスクリプションごとにリージョン レベルで存在します。 たとえば、ご利用のサブスクリプションは、米国東部リージョンにおいては 30 CPU コアの制限が存在し、米国東部 2 においてはさらに 30 CPU コアを使用できる場合があります。
+クォータの上限に達すると、新しいクラスターをデプロイしたり、ワーカー ノードを追加して既存のクラスターをスケールアウトしたりすることができません。 唯一のクォータ制限は CPU コア クォータに関するものであり、サブスクリプションごとにリージョン レベルで存在します。 たとえば、ご利用のサブスクリプションは、米国東部リージョンにおいては 30 CPU コアの制限が存在し、米国東部においてはさらに 30 CPU コアを使用できる場合があります。
 
 ## <a name="gather-required-information"></a>必要な情報を収集する
 
@@ -48,7 +45,7 @@ CPU コア クォータは、確実に、特定の Azure リージョン内の�
 
      ![HDInsight コア クォータを増やすためのサポート要求を作成します。](./media/quota-increase-request/hdinsight-quota-support-request.png)
 
-1. **次へ:ソリューション >>** を選択します。
+1. **ソリューション >>** を選択します。
 1. **[詳細]** ページで、問題に関する説明を入力し、問題の重大度、希望する連絡方法、およびその他の必須フィールドを選択します。 次に示すテンプレートを使用して、必要な情報を確実に提供てください。 クォータの増加要求は、HDInsight 製品チームではなく、Azure の容量チームによって評価されます。 詳細な情報を提供すれば、要求が承認される可能性が高くなります。
 
     ```
@@ -65,11 +62,11 @@ CPU コア クォータは、確実に、特定の Azure リージョン内の�
 1. **[確認および作成]** タブで、 **[作成]** を選択します。
 
 > [!NOTE]  
-> プライベート リージョンで HDInsight コア クォータを増やす必要がある場合は、[ホワイト リストの要求を送信](https://aka.ms/canaryintwhitelist)してください。
+> プライベート リージョンで HDInsight コア クォータを増やす必要がある場合は、[承認済みリストの要求を送信](https://aka.ms/canaryintwhitelist)してください。
 
-[サポートに連絡してクォータの引き上げを要求](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)できます。
+[サポートに連絡してクォータの引き上げを要求](../azure-portal/supportability/resource-manager-core-quotas-request.md)できます。
 
-固定のクォータ制限がいくつか存在します。 たとえば、1 つの Azure サブスクリプションに許可されるコアの数は最大 10,000 です。 これらの制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)」をご覧ください。
+固定のクォータ制限がいくつか存在します。 たとえば、1 つの Azure サブスクリプションに許可されるコアの数は最大 10,000 です。 これらの制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

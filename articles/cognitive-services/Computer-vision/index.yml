@@ -10,13 +10,13 @@ metadata:
   ms.topic: landing-page
   author: PatrickFarley
   ms.author: pafarley
-  ms.date: 10/01/2019
-  ms.openlocfilehash: 6b72b632cb1cea104d7db2afbb870725496326b8
-  ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+  ms.date: 09/22/2020
+  ms.openlocfilehash: 4f93df526275e55524a9a4b67462e47eaa1a73d0
+  ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/02/2020
-  ms.locfileid: "89321805"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102182011"
 landingContent:
 - title: Computer Vision について
   linkLists:
@@ -50,6 +50,8 @@ landingContent:
       url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Go SDK の使用
       url: quickstarts-sdk/client-library.md?pivots=programming-language-go
+    - text: REST API の使用
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
 - title: 画像内のオブジェクトを検出する
   linkLists:
   - linkListType: concept
@@ -68,6 +70,8 @@ landingContent:
       url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Go SDK の使用
       url: quickstarts-sdk/client-library.md?pivots=programming-language-go
+    - text: REST API の使用
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
 - title: コンテンツ タグを画像に適用する
   linkLists:
   - linkListType: concept
@@ -86,7 +90,9 @@ landingContent:
       url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Go SDK の使用
       url: quickstarts-sdk/client-library.md?pivots=programming-language-go
-- title: コンテナーの使用
+    - text: REST API の使用
+      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
+- title: 読み取りコンテナーの使用
   linkLists:
   - linkListType: get-started
     links:
@@ -99,9 +105,31 @@ landingContent:
   - linkListType: deploy
     links:
     - text: Container Instances の使用
-      url: deploy-computer-vision-on-container-instances.md
+      url: ../containers/azure-container-instance-recipe.md
     - text: Kubernetes と Helm での使用
       url: deploy-computer-vision-on-premises.md
+- title: 空間分析コンテナーの使用
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 空間分析の概要
+      url: intro-to-spatial-analysis-public-preview.md
+    - text: コンテナーのインストールと実行
+      url: spatial-analysis-container.md
+    - text: 操作を構成する
+      url: spatial-analysis-operations.md
+  - linkListType: deploy
+    links:
+    - text: 人数カウント アプリをデプロイする
+      url: spatial-analysis-web-app.md
+  - linkListType: concept
+    links:
+    - text: ゾーンとラインの配置
+      url: spatial-analysis-zone-line-placement.md
+    - text: カメラの配置
+      url: spatial-analysis-camera-placement.md
+    - text: ロギングおよびトラブルシューティング
+      url: spatial-analysis-logging.md
 - title: 画像内の顔を検出する
   linkLists:
   - linkListType: concept
@@ -120,35 +148,45 @@ landingContent:
       url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Go SDK の使用
       url: quickstarts-sdk/client-library.md?pivots=programming-language-go
+- title: AI の責任ある使用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 空間分析の透明性に関するメモ
+      url: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+  - linkListType: concept
+    links:
+    - text: AI デプロイでの責任ある使用
+      url: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+    - text: データ、プライバシー、セキュリティ
+      url: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
 - title: リファレンス
   linkLists:
   - linkListType: reference
     links:
-    - text: Computer Vision API v3.1 プレビュー
-      url: https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005
-    - text: Computer Vision API v3.0
-      url: https://aka.ms/computer-vision-v3-ref
+    - text: Computer Vision API v3.2 プレビュー
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005
+    - text: Computer Vision API v3.1
+      url: https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005
     - text: Computer Vision API v2.1
       url: https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641/operations/56f91f2e778daf14a499f21b
     - text: .NET SDK
-      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
+      url: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
     - text: Python SDK
-      url: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/computervision?view=azure-python
+      url: /python/api/overview/azure/cognitiveservices/computervision?view=azure-python
     - text: Java SDK
-      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
+      url: /java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
     - text: Node.js SDK
-      url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest
+      url: /javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest
     - text: Go SDK
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision
     - text: Azure PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+      url: /powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure コマンド ライン インターフェイス (CLI)
-      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+      url: /cli/azure/cognitiveservices#az-cognitiveservices-list
 - title: ヘルプとフィードバック
   linkLists:
   - linkListType: reference
     links:
-    - text: UserVoice
-      url: https://cognitive.uservoice.com/forums/430309-computer-vision-api
-    - text: Stack Overflow
-      url: https://stackoverflow.com/questions/tagged/microsoft-cognitive
+    - text: サポート オプションとヘルプ オプション
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context

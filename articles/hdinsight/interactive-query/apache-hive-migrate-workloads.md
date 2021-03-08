@@ -3,20 +3,19 @@ title: Azure HDInsight 3.6 Hive ワークロードを Hive HDInsight 4.0 に移�
 description: HDInsight 3.6 上の Apache Hive のワークロードを HDInsight 4.0 に移行する方法について説明します。
 author: msft-tacox
 ms.author: tacox
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.openlocfilehash: 313b6afb8bd96f8ae507118cd552110d5f07ff78
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 93dc565055c6eb413a0c277a9891e5fcfab50345
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087521"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941350"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6 Hive ワークロードを Hive HDInsight 4.0 に移行する
 
-このドキュメントでは、HDInsight 3.6 上の Apache Hive と LLAP のワークロードを HDInsight 4.0 に移行する方法について説明します。 HDInsight 4.0 では、具体化されたビューやクエリ結果のキャッシュなどの新しい Hive と LLAP の機能が提供されます。 ワークロードを HDInsight 4.0 に移行すると、HDInsight 3.6 で利用できない Hive 3 の多くの新しい機能を使用できます。
+このドキュメントでは、HDInsight 3.6 上の Apache Hive と LLAP のワークロードを HDInsight 4.0 に移行する方法について説明します。 HDInsight 4.0 では、マテリアライズドビューやクエリ結果のキャッシュなどの新しい Hive と LLAP の機能が提供されます。 ワークロードを HDInsight 4.0 に移行すると、HDInsight 3.6 で利用できない Hive 3 の多くの新しい機能を使用できます。
 
 この記事に含まれるサブジェクトは次のとおりです。
 
@@ -37,9 +36,9 @@ HDInsight 3.6 と HDInsight 4.0 の ACID テーブルでは、ACID のデルタ�
 外部メタストアの新しいコピーを作成します。 外部メタストアを使用している場合、メタストアのコピーを作成する安全で簡単な方法の 1 つは、`RESTORE` 関数を使用して、別の名前で[データベースを復元](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore)することです。  HDInsight クラスターへの外部メタストアのアタッチについて詳しくは、「[Azure HDInsight での外部メタデータ ストアの使用](../hdinsight-use-external-metadata-stores.md)」をご覧ください。
 
 ### <a name="3-upgrade-metastore-schema"></a>3.メタストア スキーマをアップグレードする
-メタストアの**コピー**が完了したら、既存の HDInsight 3.6 クラスター上の[スクリプト アクション](../hdinsight-hadoop-customize-cluster-linux.md)でスキーマ アップグレード スクリプトを実行して、新しいメタストアを Hive 3 スキーマにアップグレードします。 (この手順では、新しいメタストアがクラスターに接続されている必要はありません。)これにより、データベースを HDInsight 4.0 メタストアとして接続できるようになります。
+メタストアの **コピー** が完了したら、既存の HDInsight 3.6 クラスター上の [スクリプト アクション](../hdinsight-hadoop-customize-cluster-linux.md)でスキーマ アップグレード スクリプトを実行して、新しいメタストアを Hive 3 スキーマにアップグレードします。 (この手順では、新しいメタストアがクラスターに接続されている必要はありません。)これにより、データベースを HDInsight 4.0 メタストアとして接続できるようになります。
 
-下にある表の値を使用してください。 `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` は、スペース区切りで、Hive メタストアの**コピー**用に適切な値に置き換えます。 SQL サーバー名を指定するときに ".database.windows.net" を含めないでください。
+下にある表の値を使用してください。 `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` は、スペース区切りで、Hive メタストアの **コピー** 用に適切な値に置き換えます。 SQL サーバー名を指定するときに ".database.windows.net" を含めないでください。
 
 |プロパティ | 値 |
 |---|---|
@@ -208,30 +207,9 @@ HDInsight 3.6 以降では、HDInsight は、HDInsight Enterprise セキュリ�
 
 ## <a name="query-execution-across-hdinsight-versions"></a>HDInsight バージョン間でのクエリの実行
 
-HDInsight 3.6 クラスター内で Hive/LLAP クエリを実行し、デバッグする方法は 2 つあります。 HiveCLI ではコマンドライン エクスペリエンスが提供され、Tez ビュー/Hive ビューでは GUI ベースのワークフローが提供されます。
+HDInsight 3.6 クラスター内で Hive/LLAP クエリを実行し、デバッグする方法は 2 つあります。 HiveCLI ではコマンドライン エクスペリエンスが提供され、[Tez ビューと Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md)では GUI ベースのワークフローが提供されます。
 
-HDInsight 4.0 では、Hive CLI は BeeLine に置き換えられています。 HiveCLI は Hiveserver 1 用の Thrift クライアントであり、Beeline は Hiveserver 2 へのアクセスを提供する JDBC クライアントです。 Beeline は、その他の JDBC 互換のデータベース エンドポイントへの接続にも使用できます。 Beeline は、HDInsight 4.0 上ですぐに使用可能で、インストールは必要ありません。
-
-HDInsight 3.6 では、Hive サーバーと対話するための GUI クライアントは Ambari Hive ビューです。 HDInsight 4.0 には Ambari ビューは付属していません。 お客様が Data Analytics Studio (DAS) を使用する方法を提供しています。これは、中核となる HDInsight サービスではありません。 DAS には HDInsight クラスターは標準では付属せず、公式にサポートされているパッケージではありません。 ただし、次のように[スクリプト アクション](../hdinsight-hadoop-customize-cluster-linux.md)を使用して DAS をクラスターにインストールできます。
-
-|プロパティ | 値 |
-|---|---|
-|スクリプトの種類|- Custom|
-|名前|DAS|
-|Bash スクリプト URI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
-|ノードの種類|Head|
-
-10 - 15 分待機してから、URL `https://CLUSTERNAME.azurehdinsight.net/das/` を使用して Data Analytics Studio を起動します。
-
-DAS にアクセスする前に、Ambari UI の更新やすべての Ambari コンポーネントの再起動が必要になる場合があります。
-
-DAS がインストールされた後、クエリ ビューアーで実行したクエリが表示されない場合は、次の手順を実行します。
-
-1. [DAS のインストールのトラブルシューティングに関するこのガイド](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.2.0/troubleshooting/content/das_queries_not_appearing.html)の説明に従って、Hive、Tez、DAS の構成を設定します。
-2. 次の Azure ストレージ ディレクトリ構成がページ BLOB であり、`fs.azure.page.blob.dirs` の下に表示されることを確認します。
-    * `hive.hook.proto.base-directory`
-    * `tez.history.logging.proto-base-dir`
-3. 両方のヘッドノード上の HDFS、Hive、Tez、DAS を再起動します。
+HDInsight 4.0 では、Hive CLI は BeeLine に置き換えられています。 Tez ビューと Hive ビューには、GUI ベースのワークフローが用意されています。 HiveCLI は Hiveserver 1 用の Thrift クライアントであり、Beeline は Hiveserver 2 へのアクセスを提供する JDBC クライアントです。 Beeline は、その他の JDBC 互換のデータベース エンドポイントへの接続にも使用できます。 Beeline は、HDInsight 4.0 上ですぐに使用可能で、インストールは必要ありません。
 
 ## <a name="next-steps"></a>次のステップ
 

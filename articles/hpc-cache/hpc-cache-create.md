@@ -4,14 +4,14 @@ description: Azure HPC Cache インスタンスを作成する方法
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: a988f08b2b6e30543c112b20e5b374130ceddc47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 77bd5e3b7a258ef83e5de4ec645ea70578fb9dfb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092492"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657093"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC キャッシュを作成する
 
@@ -29,7 +29,7 @@ Azure portal または Azure CLI を使用してキャッシュを作成しま�
 
 ![Azure portal のプロジェクト詳細ページのスクリーンショット](media/hpc-cache-create-basics.png)
 
-**[プロジェクトの詳細]** で、キャッシュのホストとなるサブスクリプションとリソース グループを選択します。 サブスクリプションが[アクセス](hpc-cache-prerequisites.md#azure-subscription)一覧にあることを確認します。
+**[プロジェクトの詳細]** で、キャッシュのホストとなるサブスクリプションとリソース グループを選択します。
 
 **[サービスの詳細]** で、キャッシュの名前と、これらのその他の属性を設定します。
 
@@ -81,7 +81,7 @@ Azure HPC Cache では、キャッシュ ヒット率を最大限に高めるた
 
 ## <a name="add-resource-tags-optional"></a>リソース タグを追加する (省略可)
 
-**[タグ]** ページでは、お使いの Azure HPC キャッシュ インスタンスに[リソース タグ](https://go.microsoft.com/fwlink/?linkid=873112)を追加できます。
+**[タグ]** ページでは、お使いの Azure HPC キャッシュ インスタンスに [リソース タグ](../azure-resource-manager/management/tag-resources.md)を追加できます。
 
 ## <a name="finish-creating-the-cache"></a>キャッシュの作成を完了する
 
@@ -96,13 +96,13 @@ Azure HPC Cache では、キャッシュ ヒット率を最大限に高めるた
 ![Azure portal における Azure HPC Cache インスタンスのスクリーンショット](media/hpc-cache-new-overview.png)
 
 > [!NOTE]
-> キャッシュでカスタマー マネージド暗号化キーを使用する場合は、デプロイの状態が完了に変更される前に、リソースの一覧にそのキャッシュが表示されることがあります。 キャッシュの状態が **[Waiting for key]\(キーの待機中\)** になるとすぐに、それに対してキー コンテナーの使用を[承認する](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)ことができます。
+> キャッシュでカスタマー マネージド暗号化キーを使用する場合は、デプロイの状態が完了に変更される前に、リソースの一覧にそのキャッシュが表示されることがあります。 キャッシュの状態が **[Waiting for key]\(キーの待機中\)** になるとすぐに、それに対してキー コンテナーの使用を [承認する](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)ことができます。
 
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ## <a name="create-the-cache-with-azure-cli"></a>Azure CLI でキャッシュを作成する
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
 > [!NOTE]
 > Azure CLI では、現在のところ、カスタマー マネージド暗号化キーを使用したキャッシュの作成はサポートされていません。 Azure portal を使用します。
@@ -132,8 +132,8 @@ nets/<cache_subnet_name>"``
 
   | キャッシュ サイズ | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
-  | 3,072 GB    | 可         | no          | Ｘ          |
-  | 6144 GB    | 可         | 可         | no          |
+  | 3,072 GB    | 可         | no          | no          |
+  | 6144 GB    | 可         | はい         | no          |
   | 12288 GB   | 可         | 可         | 可         |
   | 24576 GB   | Ｘ          | 可         | 可         |
   | 49152 GB   | Ｘ          | no          | 可         |
@@ -182,6 +182,97 @@ az hpc-cache create --resource-group doc-demo-rg --name my-cache-0619 \
     "pendingFirmwareVersion": null
   }
 }
+```
+
+メッセージには、以下の項目を含む便利な情報がいくつか含まれています。
+
+* クライアントのマウント アドレス - クライアントをキャッシュに接続する準備ができたら、これらの IP アドレスを使用します。 詳細については、「[Azure HPC Cache をマウントする](hpc-cache-mount.md)」を参照してください。
+* アップグレードの状態 - ソフトウェア更新プログラムがリリースされると、このメッセージが変化します。 [キャッシュ ソフトウェアのアップグレード](hpc-cache-manage.md#upgrade-cache-software)は、都合のよいときに手動で行えます。または、数日後には自動的に適用されます。
+
+## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+> [!CAUTION]
+> Az.HPCCache PowerShell モジュールは、現在パブリック プレビュー段階にあります。 このプレビュー バージョンは、サービス レベル アグリーメントなしに提供されます。 運用環境のワークロードにはお勧めしません。 一部の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+## <a name="requirements"></a>必要条件
+
+ローカルで PowerShell を使用する場合は、Az PowerShell モジュールをインストールしたうえで、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して自分の Azure アカウントに接続する必要があります。 Az PowerShell モジュールのインストールの詳細については、「[Azure PowerShell のインストール](/powershell/azure/install-az-ps)」を参照してください。 Cloud Shell の使用を選択した場合、詳細については「[Azure Cloud Shell の概要](../cloud-shell/overview.md)」を参照してください。
+
+> [!IMPORTANT]
+> **Az.HPCCache** PowerShell モジュールがプレビュー段階にある間は、`Install-Module` コマンドレットを使用して、これを個別にインストールする必要があります。 この PowerShell モジュールは、一般提供されると、将来の Az PowerShell モジュール リリースの一部となり、Azure Cloud Shell 内からネイティブに使用できるようになります。
+
+```azurepowershell-interactive
+Install-Module -Name Az.HPCCache
+```
+
+## <a name="create-the-cache-with-azure-powershell"></a>Azure PowerShell でキャッシュを作成する
+
+> [!NOTE]
+> Azure PowerShell では、現在のところ、カスタマー マネージド暗号化キーを使用したキャッシュの作成はサポートされていません。 Azure portal を使用します。
+
+新しい Azure HPC Cache を作成するには、[New-AzHpcCache](/powershell/module/az.hpccache/new-azhpccache) コマンドレットを使用します。
+
+次の値を指定します。
+
+* キャッシュのリソース グループ名
+* キャッシュ名
+* Azure リージョン
+* キャッシュのサブネット (次の形式):
+
+  `-SubnetUri "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/sub
+nets/<cache_subnet_name>"`
+
+  キャッシュのサブネットには少なくとも 64 個の IP アドレス (/24) が必要で、そこに他のリソースを格納することはできません。
+
+* キャッシュ容量。 2 つの値で、Azure HPC Cache の最大スループットを設定します。
+
+  * キャッシュ サイズ (GB)
+  * キャッシュ インフラストラクチャで使用される仮想マシンの SKU
+
+  [Get-AzHpcCacheSku](/powershell/module/az.hpccache/get-azhpccachesku) を実行すると、使用可能な SKU と、それぞれの有効なキャッシュ サイズ オプションが表示されます。 キャッシュ サイズ オプションの範囲は 3 TB ～ 48 TB ですが、サポートされるのは一部の値のみです。
+
+  次の表は、このドキュメントの準備時点 (2020 年 7 月) で有効な、キャッシュ サイズと SKU の組み合わせを示しています。
+
+  | キャッシュ サイズ | Standard_2G | Standard_4G | Standard_8G |
+  |------------|-------------|-------------|-------------|
+  | 3,072 GB    | 可         | Ｘ          | no          |
+  | 6144 GB    | はい         | はい         | no          |
+  | 12,288 GB   | はい         | はい         | はい         |
+  | 24,576 GB   | no          | はい         | はい         |
+  | 49,152 GB   | no          | no          | 可         |
+
+  料金、スループット、およびワークフローに応じてキャッシュのサイズを適切に設定する方法については、ポータルの指示タブにある「**キャッシュ容量を設定する**」セクションを参照してください。
+
+キャッシュ作成の例:
+
+```azurepowershell-interactive
+$cacheParams = @{
+  ResourceGroupName = 'doc-demo-rg'
+  CacheName = 'my-cache-0619'
+  Location = 'eastus'
+  cacheSize = '3072'
+  SubnetUri = "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default"
+  Sku = 'Standard_2G'
+}
+New-AzHpcCache @cacheParams
+```
+
+キャッシュの作成には数分かかります。 成功すると、create コマンドから次の出力が返されます。
+
+```Output
+cacheSizeGb       : 3072
+health            : @{state=Healthy; statusDescription=The cache is in Running state}
+id                : /subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.StorageCache/caches/my-cache-0619
+location          : eastus
+mountAddresses    : {10.3.0.17, 10.3.0.18, 10.3.0.19}
+name              : my-cache-0619
+provisioningState : Succeeded
+resourceGroup     : doc-demo-rg
+sku               : @{name=Standard_2G}
+subnet            : /subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default
+tags              :
+type              : Microsoft.StorageCache/caches
+upgradeStatus     : @{currentFirmwareVersion=5.3.42; firmwareUpdateDeadline=1/1/0001 12:00:00 AM; firmwareUpdateStatus=unavailable; lastFirmwareUpdate=4/1/2020 10:19:54 AM; pendingFirmwareVersion=}
 ```
 
 メッセージには、以下の項目を含む便利な情報がいくつか含まれています。

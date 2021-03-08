@@ -9,12 +9,12 @@ ms.subservice: faq
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3bc259f9ee6cb1e6fd927af82a1740403d3ae7d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080473"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587956"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -60,7 +60,7 @@ VM イメージを作成しキャプチャしてから、それをスケール �
 
 ### <a name="do-scale-sets-work-with-azure-availability-sets"></a>Scale Sets は、Azure 可用性セットと連携できますか?
 
-リージョン (非ゾーン) スケール セットは*配置グループ*を使用します。配置グループは、5 つの障害ドメインと 5 つの更新ドメインを使用する暗黙的な可用性セットとして機能します。 100 を超える VM のスケール セットは複数の配置グループにまたがります。 配置グループの詳細については、「[大規模な Virtual Machine Scale Sets の使用](virtual-machine-scale-sets-placement-groups.md)」をご覧ください。 VM の可用性セットは、VM Scale Sets と同じ VNET に存在できます。 一般的な構成では、(多くの場合、可用性セットに固有の構成を必要とする) 制御ノード VM とデータ ノードを Scale Sets に配置します。
+リージョン (非ゾーン) スケール セットは *配置グループ* を使用します。配置グループは、5 つの障害ドメインと 5 つの更新ドメインを使用する暗黙的な可用性セットとして機能します。 100 を超える VM のスケール セットは複数の配置グループにまたがります。 配置グループの詳細については、「[大規模な Virtual Machine Scale Sets の使用](virtual-machine-scale-sets-placement-groups.md)」をご覧ください。 VM の可用性セットは、VM Scale Sets と同じ VNET に存在できます。 一般的な構成では、(多くの場合、可用性セットに固有の構成を必要とする) 制御ノード VM とデータ ノードを Scale Sets に配置します。
 
 ### <a name="do-scale-sets-work-with-azure-availability-zones"></a>スケール セットは、Azure 可用性ゾーンと連携しますか。
 
@@ -71,15 +71,15 @@ VM イメージを作成しキャプチャしてから、それをスケール �
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Azure の自動スケールのベスト プラクティスを教えてください。
 
-自動スケールのベスト プラクティスについては、[仮想マシンの自動スケールのベスト プラクティス](../azure-monitor/platform/autoscale-best-practices.md)に関するページを参照してください。
+自動スケールのベスト プラクティスについては、[仮想マシンの自動スケールのベスト プラクティス](../azure-monitor/autoscale/autoscale-best-practices.md)に関するページを参照してください。
 
 ### <a name="where-do-i-find-metric-names-for-autoscaling-that-uses-host-based-metrics"></a>ホストベースのメトリックを使用した自動スケールのメトリック名はどこで確認できますか。
 
-ホストベースのメトリックを使用した自動スケールのメトリック名については、「[Azure Monitor のサポートされるメトリック](../azure-monitor/platform/metrics-supported.md)」を参照してください。
+ホストベースのメトリックを使用した自動スケールのメトリック名については、「[Azure Monitor のサポートされるメトリック](../azure-monitor/essentials/metrics-supported.md)」を参照してください。
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>Azure Service Bus のトピックとキューの長さに基づいた自動スケールの例はありますか。
 
-はい。 Azure Service Bus のトピックとキューの長さに基づいた自動スケールの例については、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/platform/autoscale-common-metrics.md)」を参照してください。
+はい。 Azure Service Bus のトピックとキューの長さに基づいた自動スケールの例については、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/autoscale/autoscale-common-metrics.md)」を参照してください。
 
 Service Bus キューの場合は、次の JSON を使用します。
 
@@ -104,9 +104,9 @@ Service Bus キューの場合は、次の JSON を使用します。
 
 VM の自動スケール設定は、ホストレベルのメトリックまたはゲスト OS ベースのメトリックを使用するように作成できます。
 
-サポートされるメトリックの一覧については、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/platform/autoscale-common-metrics.md)」を参照してください。
+サポートされるメトリックの一覧については、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/autoscale/autoscale-common-metrics.md)」を参照してください。
 
-仮想マシン スケール セットの完全なサンプルについては、[仮想マシン スケール セット向けの Resource Manager テンプレートを使用した高度な自動スケール構成](../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md)に関するページを参照してください。
+仮想マシン スケール セットの完全なサンプルについては、[仮想マシン スケール セット向けの Resource Manager テンプレートを使用した高度な自動スケール構成](../azure-monitor/autoscale/autoscale-virtual-machine-scale-sets.md)に関するページを参照してください。
 
 サンプルには、ホストレベル CPU のメトリックとメッセージ数のメトリックが使用されています。
 
@@ -114,13 +114,13 @@ VM の自動スケール設定は、ホストレベルのメトリックまた�
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>仮想マシン スケール セットに対するアラート ルールの設定方法を教えてください。
 
-仮想マシン スケール セットのメトリックに対するアラートは、PowerShell または Azure CLI で作成できます。 詳細については、「[Azure Monitor の PowerShell クイックスタート サンプル](../azure-monitor/samples/powershell-samples.md#create-metric-alerts)」と「[Azure Monitor クロスプラットフォーム CLI のクイックスタート サンプル](../azure-monitor/samples/cli-samples.md#work-with-alerts)」を参照してください。
+仮想マシン スケール セットのメトリックに対するアラートは、PowerShell または Azure CLI で作成できます。 詳細については、「[Azure Monitor の PowerShell クイックスタート サンプル](../azure-monitor/powershell-samples.md#create-metric-alerts)」と「[Azure Monitor クロスプラットフォーム CLI のクイックスタート サンプル](../azure-monitor/cli-samples.md#work-with-alerts)」を参照してください。
 
 仮想マシン スケール セットの TargetResourceId は次のような形式になっています。
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
-アラートは、メトリックとなる VM のパフォーマンス カウンターを自由に選んで設定することができます。 詳細については、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/platform/autoscale-common-metrics.md)」の記事の [Resource Manager ベースの Windows VM のゲスト OS メトリック](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms)と [Linux VM のゲスト OS メトリック](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-linux-vms)に関するセクションを参照してください。
+アラートは、メトリックとなる VM のパフォーマンス カウンターを自由に選んで設定することができます。 詳細については、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/autoscale/autoscale-common-metrics.md)」の記事の [Resource Manager ベースの Windows VM のゲスト OS メトリック](../azure-monitor/autoscale/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms)と [Linux VM のゲスト OS メトリック](../azure-monitor/autoscale/autoscale-common-metrics.md#guest-os-metrics-linux-vms)に関するセクションを参照してください。
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>仮想マシン スケール セットに対する自動スケールを PowerShell で設定する方法を教えてください。
 
@@ -368,13 +368,13 @@ Azure Monitor ログと統合する仮想マシン スケール セット テン
 
 ### <a name="how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set"></a>仮想マシン スケール セットのすべての VM に拡張機能を追加するにはどうすればよいですか。
 
-更新ポリシーが**自動**に設定されている場合は、拡張機能の新しいプロパティが含まれたテンプレートを再デプロイすると、すべての VM が更新されます。
+更新ポリシーが **自動** に設定されている場合は、拡張機能の新しいプロパティが含まれたテンプレートを再デプロイすると、すべての VM が更新されます。
 
-更新ポリシーが**手動**に設定されている場合は、まず拡張機能を更新したうえで、VM のすべてのインスタンスを手動で更新する必要があります。
+更新ポリシーが **手動** に設定されている場合は、まず拡張機能を更新したうえで、VM のすべてのインスタンスを手動で更新する必要があります。
 
 ### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected"></a>既存の仮想マシン スケール セットに関連付けられている拡張機能を更新した場合、既存の VM に影響はありますか
 
-仮想マシン スケール セット モデル内の拡張機能の定義を更新した場合、upgradePolicy プロパティが**自動**に設定されていれば VM が更新されます。 upgradePolicy プロパティが**手動**に設定されている場合は、拡張機能がモデルと一致しないことを示すフラグが設定されます。
+仮想マシン スケール セット モデル内の拡張機能の定義を更新した場合、upgradePolicy プロパティが **自動** に設定されていれば VM が更新されます。 upgradePolicy プロパティが **手動** に設定されている場合は、拡張機能がモデルと一致しないことを示すフラグが設定されます。
 
 ### <a name="are-extensions-run-again-when-an-existing-machine-is-service-healed-or-reimaged"></a>既存のマシンがサービス復旧や再イメージ化される場合に拡張機能は再実行されますか?
 
@@ -694,7 +694,7 @@ Azure portal の Log Analytics ワークスペースに、必要な workspaceId 
 
 ### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>仮想マシン スケール セット VM のマシン名や VM ID に欠落があるのはなぜですか 次に例を示します。0、1、3...
 
-仮想マシン スケール セット VM のマシン名や VM ID に欠落があるのは、仮想マシン スケール セットの**過剰プロビジョニング** プロパティが既定値の **true** に設定されているためです。 過剰プロビジョニングが **true** の場合、要求した数よりも多くの VM が作成されます。 その後、余分な VM が削除されます。 この場合、連続した名前付けと連続した NAT (ネットワーク アドレス変換) 規則が失われる代わりに、デプロイの信頼性が向上します。
+仮想マシン スケール セット VM のマシン名や VM ID に欠落があるのは、仮想マシン スケール セットの **過剰プロビジョニング** プロパティが既定値の **true** に設定されているためです。 過剰プロビジョニングが **true** の場合、要求した数よりも多くの VM が作成されます。 その後、余分な VM が削除されます。 この場合、連続した名前付けと連続した NAT (ネットワーク アドレス変換) 規則が失われる代わりに、デプロイの信頼性が向上します。
 
 このプロパティは **false** に設定することができます。 仮想マシン スケール セットの規模が小さい場合、デプロイの信頼性はさほど変わりません。
 

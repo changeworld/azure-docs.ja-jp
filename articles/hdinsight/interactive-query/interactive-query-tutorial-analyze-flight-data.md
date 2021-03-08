@@ -1,19 +1,16 @@
 ---
 title: チュートリアル:対話型クエリによる ETL 操作 - Azure HDInsight
 description: チュートリアル - 生の CSV データセットからデータを抽出する方法について説明します。 それを HDInsight の Interactive Query を使用して変換します。 その後 Apache Sqoop を使用して、変換済みデータを Azure SQL Database に読み込みます。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 5c5a3c9e66a4d25a84d7940f49ec332d57f4c818
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 13b6b8658aa2d896ec154cfa3c7a961e37df6cbf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85319193"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935912"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で対話型クエリを使用してデータの抽出、変換、読み込みを行う
 
@@ -32,7 +29,7 @@ ms.locfileid: "85319193"
 
 * HDInsight 上の対話型クエリ クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照して、 **[クラスターの種類]** として **[対話型クエリ]** を選択します。
 
-* Azure SQL Database 内のデータベース。 保存先データ ストアとしてデータベースを使用します。 Azure SQL Database のデータベースがない場合は、[Azure portal での Azure SQL Database のデータベースの作成](/azure/sql-database/sql-database-single-database-get-started)に関するページを参照してください。
+* Azure SQL Database 内のデータベース。 保存先データ ストアとしてデータベースを使用します。 Azure SQL Database のデータベースがない場合は、[Azure portal での Azure SQL Database のデータベースの作成](../../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 

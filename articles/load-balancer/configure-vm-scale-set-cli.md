@@ -1,39 +1,33 @@
 ---
 title: 既存の Azure Load Balancer で仮想マシン スケール セットを構成する - Azure CLI
-description: 既存の Azure Load Balancer で仮想マシン スケール セットを構成する方法について説明します。
+description: Azure CLI を使用し、既存の Azure Load Balancer で仮想マシン スケール セットを構成する方法について説明します。
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 2d734e5242ff2a250d332de78cfa3b7f017a3fff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a60a6889217ce6ca8dccd5ebf5ee74b8f67a7757
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809462"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518211"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-cli"></a>Azure CLI を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する
 
-この記事では、既存の Azure Load Balancer で仮想マシン スケール セットを構成する方法について説明します。 
+この記事では、既存の Azure Load Balancer で仮想マシン スケール セットを構成する方法について説明します。
 
-## <a name="prerequisites"></a>前提条件
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- Azure サブスクリプション。
-- 仮想マシン スケール セットがデプロイされるサブスクリプション内の、既存の標準 SKU ロード バランサー。
-- 仮想マシン スケール セット用の Azure Virtual Network。
+## <a name="prerequisites"></a>前提条件 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
+- 仮想マシン スケール セットがデプロイされるサブスクリプション内に、既存の標準 SKU ロード バランサーが必要です。
 
-CLI をローカルで使用する場合には、Azure CLI バージョン 2.0.28 以降のバージョンがインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+- 仮想マシン スケール セット用の Azure Virtual Network が必要です。
+ 
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-## <a name="sign-in-to-azure-cli"></a>Azure CLI へのサインイン
-
-Azure にサインインします。
-
-```azurecli-interactive
-az login
-```
+- この記事では、Azure CLI のバージョン 2.0.28 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-existing-load-balancer"></a>既存のロード バランサーで仮想マシン スケール セットをデプロイする
 

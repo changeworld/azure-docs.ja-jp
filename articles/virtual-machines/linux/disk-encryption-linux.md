@@ -7,16 +7,15 @@ ms.subservice: security
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: b7d19d782e9cb29cfc917293f084b78830db89bc
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: d32e5c55bbaa7357c1f13200213dbaed19986825
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797617"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694344"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM での Azure Disk Encryption シナリオ
-
 
 Linux 仮想マシン (VM) に対する Azure Disk Encryption では、Linux の DM-Crypt 機能を使用して、OS ディスクとデータ ディスクの完全なディスク暗号化を提供します。 また、EncryptFormatAll 機能を使用すると、一時的なディスクの暗号化を行うことができます。
 
@@ -42,11 +41,11 @@ Azure Disk Encryption は、[Azure CLI](/cli/azure) と [Azure PowerShell](/powe
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI 2.0](/cli/azure) は、Azure リソースを管理するためのコマンドライン ツールです。 CLI は、データのクエリを柔軟に実行し、長時間実行される操作を非ブロッキング プロセスとしてサポートし、スクリプトが簡単になるように設計されています。 「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」の手順に従って、これをローカルにインストールすることができます。
+[Azure CLI 2.0](/cli/azure) は、Azure リソースを管理するためのコマンドライン ツールです。 CLI は、データのクエリを柔軟に実行し、長時間実行される操作を非ブロッキング プロセスとしてサポートし、スクリプトが簡単になるように設計されています。 「[Azure CLI のインストール](/cli/azure/install-azure-cli)」の手順に従って、これをローカルにインストールすることができます。
 
  
 
-[Azure CLI を使用して Azure アカウントにログインする](/cli/azure/authenticate-azure-cli)には、[az login](/cli/azure/reference-index?view=azure-cli-latest#az-login) コマンドを使用します。
+[Azure CLI を使用して Azure アカウントにログインする](/cli/azure/authenticate-azure-cli)には、[az login](/cli/azure/reference-index#az_login) コマンドを使用します。
 
 ```azurecli
 az login
@@ -72,13 +71,13 @@ az account set --subscription "<subscription name or ID>"
 
 既にローカルにインストールされている場合、Azure Disk Encryption を構成するには、最新バージョンの Azure PowerShell SDK を使用します。 [Azure PowerShell リリース](https://github.com/Azure/azure-powershell/releases)の最新バージョンをダウンロードします。
 
-[Azure PowerShell を使用して Azure アカウントにサインインする](/powershell/azure/authenticate-azureps?view=azps-2.5.0)には、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドレットを使用します。
+[Azure PowerShell を使用して Azure アカウントにサインインする](/powershell/azure/authenticate-azureps)には、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用します。
 
 ```powershell
 Connect-AzAccount
 ```
 
-複数のサブスクリプションがあり、1 つを指定する場合は、[Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) コマンドレットを使用してそれらを一覧表示し、次に [Set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-2.5.0) コマンドレットを使用します。
+複数のサブスクリプションがあり、1 つを指定する場合は、[Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) コマンドレットを使用してそれらを一覧表示し、次に [Set-AzContext](/powershell/module/az.accounts/set-azcontext) コマンドレットを使用します。
 
 ```powershell
 Set-AzContext -Subscription -Subscription <SubscriptionId>
@@ -86,7 +85,7 @@ Set-AzContext -Subscription -Subscription <SubscriptionId>
 
 [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext) コマンドレットを実行すると、正しいサブスクリプションが選択されていることが確認されます。
 
-Azure Disk Encryption コマンドレットがインストールされていることを確認するには、[Get-command](/powershell/module/microsoft.powershell.core/get-command?view=powershell-6) コマンドレットを使用します。
+Azure Disk Encryption コマンドレットがインストールされていることを確認するには、[Get-command](/powershell/module/microsoft.powershell.core/get-command) コマンドレットを使用します。
      
 ```powershell
 Get-command *diskencryption*
@@ -104,9 +103,9 @@ Get-command *diskencryption*
 
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-using-azure-cli"></a>Azure CLI を使用して既存または実行中の Linux VM で暗号化を有効にする 
 
-暗号化された VHD でのディスク暗号化は、[Azure CLI](/cli/azure/?view=azure-cli-latest) コマンド ライン ツールをインストールして使用することで有効化できます。 これは、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用してブラウザーで使用することも、ローカル コンピューターにインストールして PowerShell セッションで使用することもできます。 Azure 内にある既存または実行中の Linux VM で暗号化を有効にするには、次の CLI コマンドを使用します。
+暗号化された VHD でのディスク暗号化は、[Azure CLI](/cli/azure/) コマンド ライン ツールをインストールして使用することで有効化できます。 これは、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用してブラウザーで使用することも、ローカル コンピューターにインストールして PowerShell セッションで使用することもできます。 Azure 内にある既存または実行中の Linux VM で暗号化を有効にするには、次の CLI コマンドを使用します。
 
-[az vm encryption enable](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-show) コマンドを使用して、Azure で実行中の仮想マシンで暗号化を有効にします。
+[az vm encryption enable](/cli/azure/vm/encryption#az_vm_encryption_show) コマンドを使用して、Azure で実行中の仮想マシンで暗号化を有効にします。
 
 - **実行中の VM を暗号化する:**
 
@@ -218,7 +217,7 @@ Linux VM ディスク暗号化テンプレートの構成の詳細について�
  >暗号化の設定の更新中にこのパラメーターを設定すると、実際の暗号化の前に再起動が行われる可能性があります。 その場合、フォーマットしないディスクを fstab ファイルから削除する必要があります。 同様に、暗号化操作を開始する前に、暗号化フォーマットするパーティションを fstab ファイルに追加する必要があります。 
 
 ### <a name="encryptformatall-criteria"></a>EncryptFormatAll 条件
-パーティションが以下の条件を**すべて**満たしている場合に限り、このパラメーターはすべてのパーティションを確認して暗号化します。
+パーティションが以下の条件を **すべて** 満たしている場合に限り、このパラメーターはすべてのパーティションを確認して暗号化します。
 - ルート/OS/ブート パーティションではない
 - まだ暗号化されていない
 - BEK ボリュームではない
@@ -283,7 +282,7 @@ LVM-on-crypt のセットアップをお勧めします。 以下に示すすべ
     echo "/dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint ext4 defaults,nofail 0 2" >> /etc/fstab
     ```
     
-1. -EncryptFormatAll を指定して Azure PowerShell の [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-3.8.0) コマンドレットを実行し、これらのディスクを暗号化します。
+1. -EncryptFormatAll を指定して Azure PowerShell の [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) コマンドレットを実行し、これらのディスクを暗号化します。
 
     ```azurepowershell-interactive
     $KeyVault = Get-AzKeyVault -VaultName "MySecureVault" -ResourceGroupName "MySecureGroup"
@@ -408,13 +407,14 @@ Azure Disk Encryption は、次の Linux のシナリオ、機能、およびテ
 - 暗号化された VM のイメージまたはスナップショットを作成し、それを使用して追加の VM をデプロイする。
 - カーネル クラッシュ ダンプ (kdump)。
 - Oracle ACFS (ASM クラスター ファイル システム)。
-- Gen2 VM (「[Azure での第 2 世代 VM のサポート](generation-2.md#generation-1-vs-generation-2-capabilities)」を参照)。
 - Lsv2 シリーズ VM の NVMe ディスク (参照: [LSv2 シリーズ](../lsv2-series.md))。
 - "マウント ポイントが入れ子になっている"、つまり、1 つのパスに複数のマウント ポイントがある ("/1stmountpoint/data/2stmountpoint" など) VM。
 - OS フォルダーの上にデータ ドライブがマウントされている VM。
+- データ ディスクを使用してルート (OS ディスク) 論理ボリュームが拡張された VM。
 - 書き込みアクセラレータ ディスクを備えた M シリーズの VM。
-- [カスタマー マネージド キーによるサーバー側での暗号化](disk-encryption.md) (SSE + CMK) で暗号化されているディスクを持つ VM に ADE を適用する。 ADE で暗号化された VM 上のデータ ディスクに SSE + CMK を適用することも、サポートされていないシナリオです。
-- ADE で暗号化されている、または ADE で暗号化**されたことがある** VM を、[カスタマー マネージド キーを使用したサーバー側暗号化に移行する](disk-encryption.md)。
+- [カスタマー マネージド キーを使用したサーバー側暗号化](../disk-encryption.md) (SSE + CMK) で暗号化されたディスクがある VM に ADE を適用する。 ADE で暗号化された VM 上のデータ ディスクに SSE + CMK を適用することも、サポートされていないシナリオです。
+- ADE で暗号化されている、または ADE で暗号化 **されたことがある** VM を、[カスタマー マネージド キーを使用したサーバー側暗号化](../disk-encryption.md)に移行する。
+- フェールオーバー クラスター内の VM を暗号化する。
 
 ## <a name="next-steps"></a>次のステップ
 

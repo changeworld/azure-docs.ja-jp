@@ -1,6 +1,6 @@
 ---
 title: Java 3.0 SDK を使用した Azure Cosmos DB Cassandra API による Java アプリ
-description: このクイックスタートでは、Azure Cosmos DB Cassandra API を使用して Azure Portal と Java でプロファイル アプリケーションを作成する方法を示します
+description: このクイックスタートでは、Azure Cosmos DB Cassandra API を使用して Azure portal と Java 3.0 SDK でプロファイル アプリケーションを作成する方法を示します。
 ms.service: cosmos-db
 author: TheovanKraay
 ms.author: thvankra
@@ -9,14 +9,15 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 78a8e6cd777c239841f6d26e06a9fc348a221286
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: df7f857edc4c1296b6a6e1fae13d70aa4f178728
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323147"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099775"
 ---
-# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v3-driver"></a>クイック スタート:Azure Cosmos DB Cassandra API データを管理する Java アプリを作成する (v3 ドライバー)
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v3-driver"></a>Azure Cosmos DB Cassandra API データを管理する Java アプリを作成する (v3 ドライバー)
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -66,7 +67,7 @@ ms.locfileid: "87323147"
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コードでデータベース リソースを作成する方法に関心がある場合は、次のスニペットで確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 これらのスニペットはすべて、*src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java* ファイルから取得されます。  
+この手順は省略可能です。 コードでデータベース リソースを作成する方法に関心がある場合は、次のスニペットで確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 これらのスニペットはすべて、 *src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java* ファイルから取得されます。  
 
 * Cassandra ホスト、ポート、ユーザー名、パスワード、および TLS/SSL オプションが設定されます。 接続文字列情報は、Azure Portal の [接続文字列] ページから取得されます。
 
@@ -80,7 +81,7 @@ ms.locfileid: "87323147"
     return cluster.connect();
     ```
 
-次のスニペットは、*src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java* ファイルからのものです。
+次のスニペットは、 *src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java* ファイルからのものです。
 
 * 新しいキースペースを作成します。
 

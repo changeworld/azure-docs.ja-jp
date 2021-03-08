@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: da0c3284b42be6d9054b7386839004b57d8ca274
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: cd5b709843ba2d98170aaa58eb5c3cc1ec8883af
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935740"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734683"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR Service の認証
 
@@ -45,11 +45,11 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 
 このチュートリアルを完了するには、次の前提条件を満たしている必要があります。
 
-* [GitHub](https://github.com/) で作成されたアカウント
-* [Git](https://git-scm.com/)
-* [.NET Core SDK](https://www.microsoft.com/net/download/windows)
-* [構成済みの Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
-* GitHub リポジトリの [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) をダウンロードまたは複製する。
+- [GitHub](https://github.com/) で作成されたアカウント
+- [Git](https://git-scm.com/)
+- [.NET Core SDK](https://www.microsoft.com/net/download/windows)
+- Bash 環境用に [Azure Cloud Shell](../cloud-shell/quickstart.md) が構成されている。
+- GitHub リポジトリの [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) をダウンロードまたは複製する。
 
 ## <a name="create-an-oauth-app"></a>OAuth アプリを作成する
 
@@ -66,7 +66,7 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
     | アプリケーションの説明 | *Azure SignalR サービスと GitHub 認証を使用するチャット ルーム サンプル* | 使用されている認証のコンテキストをアプリケーションのユーザーが理解するために役立つ、アプリケーションの有益な説明。 |
     | 認証コールバックの URL | `http://localhost:5000/signin-github` | この設定は、OAuth アプリケーションの最も重要な設定です。 認証の成功後に GitHub がユーザーに返すコールバック URL です。 このチュートリアルでは、 */signin-github* の *AspNet.Security.OAuth.GitHub* パッケージの既定のコールバック URL を使用する必要があります。  |
 
-4. 新しい OAuth アプリの登録が完了したら、次のコマンドを使用して、*クライアント ID* と*クライアント シークレット*を Secret Manager に追加します。 *Your_GitHub_Client_Id* と *Your_GitHub_Client_Secret* を実際の OAuth アプリの値に置き換えます。
+4. 新しい OAuth アプリの登録が完了したら、次のコマンドを使用して、*クライアント ID* と *クライアント シークレット* を Secret Manager に追加します。 *Your_GitHub_Client_Id* と *Your_GitHub_Client_Secret* を実際の OAuth アプリの値に置き換えます。
 
     ```dotnetcli
     dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
@@ -384,17 +384,13 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 
     チャット アプリが GitHub で認証を実行し、認証情報をクッキーとして保存するようになりました。他のユーザーが自分のアカウントで認証を行い、他のワークステーションから通信できるようにするには、チャット アプリを Azure にデプロイする必要があります。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 ## <a name="deploy-the-app-to-azure"></a>Azure にアプリケーションをデプロイする
 
-このセクションでは、Azure Cloud Shell から Azure コマンド ライン インターフェイス (CLI) を使用して、Azure で ASP.NET アプリケーションをホストするための新しい Web アプリを [Azure App Service](https://docs.microsoft.com/azure/app-service/) に作成します。 Web アプリは、ローカル Git デプロイを使用するように構成されます。 また、Web アプリは、SignalR 接続文字列、GitHub OAuth のアプリ シークレット、およびデプロイ ユーザーによっても構成されます。
+Azure CLI の環境を準備する:
 
-このセクションの手順では、Azure CLI の *signalr* 拡張機能を使用します。 次のコマンドを実行して、Azure CLI の *signalr* 拡張機能をインストールします。
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-```azurecli-interactive
-az extension add -n signalr
-```
+このセクションでは、Azure コマンド ライン インターフェイス (CLI) を使用して、Azure で ASP.NET アプリケーションをホストするための新しい Web アプリを [Azure App Service](../app-service/index.yml) に作成します。 Web アプリは、ローカル Git デプロイを使用するように構成されます。 また、Web アプリは、SignalR 接続文字列、GitHub OAuth のアプリ シークレット、およびデプロイ ユーザーによっても構成されます。
 
 以下のリソースを作成する場合は、SignalR Service リソースと同じリソース グループを使用してください。 このようにすると、後ですべてのリソースを削除する場合に、クリーンアップが容易になります。 この例では、前のチュートリアルで推奨されたグループ名である *SignalRTestResources* が使用されたと仮定しています。
 
@@ -541,14 +537,14 @@ az webapp deployment source config-local-git --name $WebAppName \
 4. Azure の Web アプリにコードをデプロイします。
 
     ```bash
-    git push Azure master
+    git push Azure main
     ```
 
     Azure にコードをデプロイするための認証を求めるメッセージが表示されます。 前に作成したデプロイ ユーザーのユーザー名とパスワードを入力します。
 
 ### <a name="update-the-github-oauth-app"></a>GitHub OAuth アプリを更新する
 
-最後に、GitHub OAuth アプリの**ホームページ URL** と**認証コールバックの URL** を、ホストされている新しいアプリを指すように更新する必要があります。
+最後に、GitHub OAuth アプリの **ホームページ URL** と **認証コールバックの URL** を、ホストされている新しいアプリを指すように更新する必要があります。
 
 1. ブラウザーで [https://github.com](https://github.com) を開き、アカウントの **[Settings]\(設定\)**  >  **[Developer settings]\(開発者向け設定\)**  >  **[Oauth Apps]\(Oauth アプリ\)** の順に移動します。
 

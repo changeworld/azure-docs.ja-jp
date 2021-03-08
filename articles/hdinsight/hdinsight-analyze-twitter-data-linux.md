@@ -1,19 +1,16 @@
 ---
 title: Apache Hive を使用した Twitter データの分析 - Azure HDInsight
 description: Apache Hive と Apache Hadoop を HDInsight で使用して、生の Twitter データを検索可能な Hive テーブルに変換する方法を学びます。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
-ms.openlocfilehash: 8031e917d998b877e6c3a5830d69abf81c9bdebe
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 74a18be37608b2ac0c8a64655fa833753111706a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086723"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942784"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>HDInsight で Apache Hive と Apache Hadoop を使用して Twitter データを分析する
 
@@ -32,7 +29,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
 2. **[Create New App]** を選択します。
 
-3. **名前**、**説明**、**Web サイト**を入力します。 **[Website]** フィールドの URL を構成することができます。 次のテーブルは使用する値のサンプルを示しています。
+3. **名前**、**説明**、**Web サイト** を入力します。 **[Website]** フィールドの URL を構成することができます。 次のテーブルは使用する値のサンプルを示しています。
 
    | フィールド | 値 |
    |--- |--- |
@@ -42,7 +39,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
 4. **[Yes, I agree]** を選択して、 **[Create your Twitter application]** を選択します。
 
-5. **[Permissions]** タブを選択します。既定のアクセス許可は **読み取り専用**です。
+5. **[Permissions]** タブを選択します。既定のアクセス許可は **読み取り専用** です。
 
 6. **[Keys and Access Tokens]** タブをクリックします。
 
@@ -50,7 +47,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
 8. ページの右上隅にある **[Test OAuth]** を選択します。
 
-9. **コンシューマー キー**、**コンシューマー シークレット**、**アクセス トークン**、**アクセス トークン シークレット**を書き留めます。
+9. **コンシューマー キー**、**コンシューマー シークレット**、**アクセス トークン**、**アクセス トークン シークレット** を書き留めます。
 
 ### <a name="download-tweets"></a>ツイートをダウンロードする
 
@@ -313,4 +310,4 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 ここでは、構造化されていない JSON データ セットを構造化された [Apache Hive](https://hive.apache.org/) テーブルに変換する方法を学習しました。 HDInsight での Hive の詳細については、次のドキュメントを参照してください。
 
 * [HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [HDInsight を使用したフライト遅延データの分析](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [HDInsight を使用したフライト遅延データの分析](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)

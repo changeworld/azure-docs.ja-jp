@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 52481eb40a46457a0374c776ee4897c81ebddf7c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7a4e3a4a6049b48fa70e5352680bdc7342676c0b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551287"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670283"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco Webex Meetings の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88551287"
 * ユーザーが自分の Azure AD アカウントを使用して Cisco Webex Meetings に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -80,7 +80,7 @@ Cisco Webex Meetings に対する Azure AD SSO を構成してテストするに
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
-    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
+    b. **フォルダー ロゴ** をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
     c. サービス プロバイダー メタデータ ファイルのアップロードが正常に完了すると、次のように、**[識別子]** と **[応答 URL]** の値が **[基本的な SAML 構成]** セクションに自動的に入力されます。
 
@@ -92,8 +92,8 @@ Cisco Webex Meetings に対する Azure AD SSO を構成してテストするに
     a. **[基本的な SAML 構成]** セクションで、編集 (ペン) アイコンをクリックします。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
-    
-    b. **[サインオン URL]** ボックスに、` https://<customername>.my.webex.com` という形式で URL を入力します。
+
+    b. **[サインオン URL]** ボックスに、`https://<customername>.my.webex.com` という形式で URL を入力します。
 
 5. Cisco Webex Meetings アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
@@ -163,12 +163,12 @@ Cisco Webex Meetings に対する Azure AD SSO を構成してテストするに
 1. 管理資格情報で `https://<customername>.webex.com/admin` という URL に移動します。
 
 2. **[Common Site Settings]\(共通サイト設定\)** に移動し、**[SSO Configuration]\(SSO 構成\)** に移動します。
- 
-    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
+
+    ![スクリーンショットは、[Common Site Settings]\(共通サイト設定\) と [SSO Configuration]\(SSO 構成\) が選択されている [Cisco Webex Administration]\(Cisco Webex 管理\) を示しています。](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
 
 3. **[Webex Administration]\(Webex 管理\)** ページで、次の手順を実行します。
 
-    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
+    ![スクリーンショットは、この手順で説明されている情報を含む [Webex Administration]\(Webex 管理\) ページを示しています。](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
 
     a. **[Federation Protocol]\(フェデレーション プロトコル\)** として **[SAML 2.0]** を選択します。
 
@@ -196,14 +196,14 @@ Cisco Webex Meetings に対する Azure AD SSO を構成してテストするに
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Cisco Webex Meetings] タイルをクリックすると、SSO を設定した Cisco Webex Meetings に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Cisco Webex Meetings] タイルをクリックすると、SSO を設定した Cisco Webex Meetings に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で ServiceNow を試す](https://aad.portal.azure.com)

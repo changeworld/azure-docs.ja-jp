@@ -10,41 +10,44 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 08/08/2020
+ms.date: 09/29/2020
 ms.author: curtand
-ms.custom: pim
+ms.custom: pim ; azuread-video-2020
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4a081bc5a8040fa3ccd0599341eb2671bbe2d4d
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: c3c7003ce3e8c65f6fdb7f3d847947114aee251f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047821"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370187"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management とは
 
- Privileged Identity Management (PIM) は、お客様の組織内の重要なリソースへのアクセスを管理、制御、監視することができる、Azure Active Directory (Azure AD) のサービスです。 これらのリソースには、Azure AD、Azure、およびその他の Microsoft Online Services (Office 365、Microsoft Intune など) 内のリソースが含まれます。
+ Privileged Identity Management (PIM) は、お客様の組織内の重要なリソースへのアクセスを管理、制御、監視することができる、Azure Active Directory (Azure AD) のサービスです。 これらのリソースには、Azure AD、Azure、他の Microsoft Online Services (Microsoft 365 や Microsoft Intune など) 内のリソースが含まれます。 次のビデオでは、PIM の重要な概念と機能を紹介しています。
+<br><br>
+
+> [!VIDEO https://www.youtube.com/embed/f-0K7mRUPpQ]
 
 ## <a name="reasons-to-use"></a>使用する理由
 
-組織では、セキュリティで保護された情報またはリソースへのアクセス権を持つユーザーの数を最小限に抑える必要があります。そうすることで、悪意のあるアクターがこのようなアクセス権を手にしたり、許可されているユーザーの不注意で機密性の高いリソースに影響が及んだりする可能性が抑えられるためです。 しかし一方で、ユーザーは Azure AD、Azure、Office 365、または SaaS アプリケーションで特権操作を実行する必要があります。 組織は、Azure リソースおよび Azure AD への Just-In-Time の特権アクセスをユーザーに付与できます。 そこで、そうしたユーザーが管理者特権で何をしているかについて監視することが必要となります。
+組織では、セキュリティで保護された情報またはリソースへのアクセス権を持つユーザーの数を最小限に抑える必要があります。そうすることで、悪意のあるアクターがこのようなアクセス権を手にしたり、許可されているユーザーの不注意で機密性の高いリソースに影響が及んだりする可能性が抑えられるためです。 ただし、ユーザーは、Azure AD、Azure、Microsoft 365、または SaaS アプリで特権操作を実行する必要があります。 組織は、Azure リソースおよび Azure AD への Just-In-Time の特権アクセスをユーザーに付与できます。 そこで、そうしたユーザーが管理者特権で何をしているかについて監視することが必要となります。
 
 ## <a name="what-does-it-do"></a>内容
 
 Privileged Identity Management では、時間ベースおよび承認ベースのロールのアクティブ化を提供して、対象リソースに対する過剰、不要、または誤用であるアクセス許可のリスクを軽減します。 以下に、Privileged Identity Management の主な機能をいくつか示します。
 
 - Azure AD と Azure のリソースに対する **Just-In-Time** の特権アクセスを提供する
-- 開始日と終了日を使用した**期限付き**アクセス権をリソースに割り当てる
-- 特権ロールをアクティブ化するために**承認**を要求する
-- ロールをアクティブ化するために**多要素認証**を強制する
-- なぜユーザーをアクティブ化するのかを把握するために**理由**を使用する
-- 特権ロールがアクティブ化されたときに**通知**を受ける
-- 継続してユーザーにロールが必要であることを確認するために**アクセス レビュー**を実施する
-- 社内監査または外部監査に使用する**監査履歴**をダウンロードする
+- 開始日と終了日を使用した **期限付き** アクセス権をリソースに割り当てる
+- 特権ロールをアクティブ化するために **承認** を要求する
+- ロールをアクティブ化するために **多要素認証** を強制する
+- なぜユーザーをアクティブ化するのかを把握するために **理由** を使用する
+- 特権ロールがアクティブ化されたときに **通知** を受ける
+- 継続してユーザーにロールが必要であることを確認するために **アクセス レビュー** を実施する
+- 社内監査または外部監査に使用する **監査履歴** をダウンロードする
 
 ## <a name="what-can-i-do-with-it"></a>これによってできること
 
-Privileged Identity Management を設定すると、左側のナビゲーション メニューに **[タスク]** 、 **[管理]** 、 **[アクティビティ]** の各オプションが表示されます。 お客様は管理者として、**Azure AD ロール**の管理、**Azure リソース** ロールの管理、特権アクセス グループなどのオプションを選択することになります。 管理対象を選択すると、そのオプションに対する適切な一連のオプションが表示されます。
+Privileged Identity Management を設定すると、左側のナビゲーション メニューに **[タスク]** 、 **[管理]** 、 **[アクティビティ]** の各オプションが表示されます。 お客様は管理者として、 **Azure AD ロール** の管理、 **Azure リソース** ロールの管理、特権アクセス グループなどのオプションを選択することになります。 管理対象を選択すると、そのオプションに対する適切な一連のオプションが表示されます。
 
 ![Azure portal での Privileged Identity Management のスクリーンショット](./media/pim-configure/pim-quickstart.png)
 
@@ -103,5 +106,5 @@ Privileged Identity Management とそのドキュメントについてより深�
 ## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management を使用するためのライセンスの要件](subscription-requirements.md)
-- [Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+- [Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](../roles/security-planning.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 - [Privileged Identity Management をデプロイする](pim-deployment-plan.md)

@@ -1,15 +1,15 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: azure-spatial-anchors
 ms.topic: include
-ms.date: 1/29/2019
-ms.author: rgarcia
-ms.openlocfilehash: cfd5cf77b9df8cdd5b856a0b36b9010077a7078a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 88fbe9d58f1742ae311958a6bb15134ffec3bdac
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "68562504"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185359"
 ---
 **[ファイル]**  >  **[ビルド設定]** を選択して、 **[ビルド設定]** を開きます。
 
@@ -17,7 +17,7 @@ ms.locfileid: "68562504"
 
 **[Switch Platform]\(プラットフォームの切り替え\)** を選択して、プラットフォームを **[iOS]** に変更します。 iOS をサポートするコンポーネントが不足している場合は、Unity によってそれらをインストールすることを要求される場合があります。
 
-![Unity の [Build Settings]\(ビルド設定\) ウィンドウ](./media/spatial-anchors-unity/unity-ios-build-settings.png)
+![Unity の [Build Settings]\(ビルド設定\) ウィンドウのスクリーンショット。](./media/spatial-anchors-unity/unity-ios-build-settings.png)
 
 **[ビルド設定]** ウィンドウを閉じます。
 

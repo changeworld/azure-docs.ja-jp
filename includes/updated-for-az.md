@@ -1,17 +1,15 @@
 ---
 ms.topic: include
-ms.date: 04/17/2019
-author: dbradish-microsoft
-ms.author: dbradish
+ms.date: 01/15/2021
+author: mikefrobbins
+ms.author: mirobb
 manager: barbkess
-ms.openlocfilehash: 1b3f9fff835e39c737227d6817c3a1dd901f3c65
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 03ee1325d0e5d3fcb95e9578d25c14beefc5bdf7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "85367574"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98901021"
 ---
 > [!NOTE]
-> この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。
-> Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.3.0)」を参照してください。 Az モジュールのインストール手順については、[Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.3.0)を参照してください。
-
+> この記事は、Azure Az PowerShell モジュールを使用するように更新されています。 Az PowerShell モジュールは、Azure と対話するために推奨される PowerShell モジュールです。 Az PowerShell モジュールの使用を開始するには、「[Azure PowerShell をインストールする](/powershell/azure/install-az-ps)」を参照してください。 Az PowerShell モジュールに移行する方法については、「[AzureRM から Az への Azure PowerShell の移行](/powershell/azure/migrate-from-azurerm-to-az)」を参照してください。

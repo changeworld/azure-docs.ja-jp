@@ -1,66 +1,72 @@
 ---
-title: AI を使用して BLOB ストレージ データを理解する
+title: AI を使用して BLOB コンテンツをエンリッチする
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search の AI エンリッチメント パイプラインを使用して、セマンティック、自然言語処理、および画像分析を Azure BLOB に追加します。
+description: Azure Cognitive Search の自然言語とイメージの分析機能、およびそれらの処理が Azure Blob に格納されているコンテンツにどのように適用されるかについて説明します。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ce5eafe0b36f07d8de366b6d4adb92e894fcb67e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 02/02/2021
+ms.openlocfilehash: 3d427d80e502eed0825165e640acc0755515c5b0
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936743"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222050"
 ---
-# <a name="use-ai-to-understand-blob-storage-data"></a>AI を使用して BLOB ストレージ データを理解する
+# <a name="use-ai-to-process-and-analyze-blob-content-in-azure-cognitive-search"></a>AI を使用して Azure Cognitive Search で BLOB コンテンツを処理および分析する
 
-Azure BLOB ストレージのデータは、多くの場合、画像、長いテキスト、PDF、Office ドキュメントなどのさまざまな非構造化コンテンツです。 Azure Cognitive Search の AI 機能を使用すると、さまざまな方法で BLOB から貴重な情報を抽出し、理解することができます。 AI を BLOB コンテンツに応用する例を次に示します。
+イメージまたは区別されていない長いテキストで構成される Azure Blob Storage 内のコンテンツでは、ディープ ラーニング分析を行うことで、ダウンストリーム アプリケーションに役立つ貴重な情報を明らかにして抽出することができます。 [AI エンリッチメント](cognitive-search-concept-intro.md)を使用すると、以下を行うことができます。
 
 + 光学式文字認識 (OCR) を使用して画像からテキストを抽出する
 + 写真からシーンの説明またはタグを生成する
 + 言語を検出し、テキストを異なる言語に翻訳する
-+ 名前付きエンティティの認識 (NER) を使用してテキストを処理し、人、日付、場所、または組織への言及を見つける 
++ 人、日付、場所、または組織への言及を見つけて、エンティティ認識を通じて構造を推測します
 
-これらの AI 機能は 1 つしか必要でない場合もありますが、(スキャンした画像からテキストを抽出した後、その中で言及されているすべての日付と場所を見つける、というように) 複数の機能を同じパイプラインに組み合わせるのが一般的です。 
+これらの AI 機能は 1 つしか必要でない場合もありますが、(スキャンした画像からテキストを抽出した後、その中で言及されているすべての日付と場所を見つける、というように) 複数の機能を同じパイプラインに組み合わせるのが一般的です。 また、最先端の外部パッケージ、またはお客様のデータと要件に合わせて調整された社内モデルの形式で、カスタム AI または機械学習処理を含めることも一般的です。
 
-AI エンリッチメントは、テキストとしてキャプチャされ、フィールドに保存される新しい情報を作成します。 エンリッチメント後、フルテキスト検索を使用して検索インデックスからこの情報にアクセスしたり、エンリッチされたドキュメントを Azure ストレージに送信することで、検出または分析シナリオのためのデータ探索など、新しいアプリケーション エクスペリエンスを強化できます。 
+AI エンリッチメントは検索インデクサーでサポートされているすべてのデータ ソースに適用できますが、エンリッチメント パイプラインで最も頻繁に使用される構造は BLOB です。 結果は、検出または分析シナリオのためのデータ探索など、新しいアプリケーション エクスペリエンスを強化するために、フルテキスト検索用に検索インデックスに取り込まれるか、再ルーティングされて Azure Storage に戻されます。 
 
 この記事では、広角レンズを通じて AI エンリッチメントを展望し、BLOB 内の未加工データの変換から、検索インデックスまたはナレッジ ストア内のクエリ可能な情報に至るまでのプロセス全体を読者がすばやく理解できるようにします。
 
 ## <a name="what-it-means-to-enrich-blob-data-with-ai"></a>AI を使用して BLOB データを "エンリッチ" することの意味
 
-"*AI エンリッチメント*" は、Microsoft の組み込み AI またはユーザーが提供するカスタム AI を統合する Azure Cognitive Search のインデックス作成アーキテクチャの一部です。 これは、(既存と新規両方の) BLOB を (受信時または更新時に) 処理し、すべてのファイル形式を解析して画像やテキストを抽出し、さまざまな AI 機能を使用して必要な情報を抽出し、検索、取得、探索を高速化するために検索インデックスに情報をインデックス化する必要があるエンドツーエンドのシナリオの実装に役立ちます。 
+"*AI エンリッチメント*" は、Microsoft の機械学習モデルまたはユーザーが提供するカスタム学習モデルを統合する Azure Cognitive Search のインデックス作成アーキテクチャの一部です。 これは、(既存と新規両方の) BLOB を (受信時または更新時に) 処理し、すべてのファイル形式を解析して画像やテキストを抽出し、さまざまな AI 機能を使用して必要な情報を抽出し、検索、取得、探索を高速化するために検索インデックスに情報をインデックス化する必要があるエンドツーエンドのシナリオの実装に役立ちます。 
 
 Azure Blob Storage 内の単一コンテナーにあるご利用の BLOB が入力となります。 BLOB は、ほぼ任意の種類のテキストまたは画像データとすることができます。 
 
-出力は常に検索インデックスであり、クライアント アプリケーションでの高速テキスト検索、取得、および探索に使用されます。 さらに、Power BI のようなツールやデータ サイエンス ワークロードでのダウンストリーム分析のために、エンリッチされたドキュメントを Azure BLOB または Azure テーブルに射影する*ナレッジ ストア*を出力にすることもできます。
+出力は常に検索インデックスであり、クライアント アプリケーションでの高速テキスト検索、取得、および探索に使用されます。 さらに、Power BI のようなツールやデータ サイエンス ワークロードでのダウンストリーム分析のために、エンリッチされたドキュメントを Azure BLOB または Azure テーブルに射影する "[*ナレッジ ストア*](knowledge-store-concept-intro.md)" を出力にすることもできます。
 
-中間にあるのはパイプライン アーキテクチャそのものです。 パイプラインは*インデクサー*機能に基づいており、AI を提供する 1 つ以上の*スキル*で構成される*スキルセット*をこの機能に割り当てることができます。 パイプラインの目的は、未加工のコンテンツとして入力され、パイプラインの通過中に追加の構造、コンテキスト、情報を取得する*エンリッチされたドキュメント*を生成することです。 エンリッチされたドキュメントは、フルテキスト検索または探索と分析で使用される反転インデックスとその他の構造を作成するために、インデックス作成中に利用されます。
+中間にあるのはパイプライン アーキテクチャそのものです。 パイプラインは "[*インデクサー*](search-indexer-overview.md)" に基づいていて、AI を提供する 1 つ以上の "*スキル*" で構成される "[*スキルセット*](cognitive-search-working-with-skillsets.md)" をこれに割り当てることができます。 パイプラインの目的は、パイプラインを未加工のコンテンツとして入力し、パイプラインの通過中に追加の構造、コンテキスト、情報を取得する "*エンリッチされたドキュメント*" を生成することです。 エンリッチされたドキュメントは、フルテキスト検索または探索と分析で使用される反転インデックスとその他の構造を作成するために、インデックス作成中に利用されます。
 
-## <a name="start-with-services"></a>サービスの使用を開始する
+## <a name="required-resources"></a>必要なリソース
 
-Azure Cognitive Search と Azure Blob Storage が必要です。 BLOB ストレージ内には、ソース コンテンツを提供するコンテナーが必要です。
+Azure Blob Storage と Azure Cognitive Search のほかに、AI を提供する第 3 のサービスまたはメカニズムが必要です。
 
-ご自分のストレージ アカウント ポータル ページで直接開始できます。 左側のナビゲーション ページの **[Blob service]** で、 **[Azure Cognitive Search の追加]** をクリックして新しいサービスを作成するか、既存のサービスを選択します。 
++ 組み込み AI の場合、Cognitive Search は Azure Cognitive Services のビジョンと自然言語を処理する API と統合されます。 [Cognitive Services リソースをアタッチ](cognitive-search-attach-cognitive-services.md)すると、光学式文字認識 (OCR)、イメージ分析、自然言語処理 (言語検出、テキスト翻訳、エンティティ認識、キー フレーズ抽出) を追加できます。 
 
-ご利用のストレージ アカウントに Azure Cognitive Search を追加したら、標準的なプロセスに従って、任意の Azure データ ソース内のデータをエンリッチできます。 最初の導入または AI エンリッチメントを簡単に行うには Azure Cognitive Search の **[データのインポート]** ウィザードをお勧めします。 このクイックスタートで説明する手順に従って、[ポータルで AI エンリッチメント パイプラインを作成します](cognitive-search-quickstart-blob.md)。 
++ Azure リソースを使用したカスタム AI の場合、使用する外部関数またはモデルをラップするカスタム スキルを定義できます。 [カスタム スキル](cognitive-search-custom-skill-interface.md)では、Azure Functions、Azure Machine Learning、Azure Form Recognizer、または HTTPS 経由でアクセス可能な別のリソースによって提供されるコードを使用できます。
 
-以下のセクションでは、その他のコンポーネントと概念について説明します。
++ Azure AI 以外のカスタム AI の場合、モデルまたはモジュールが HTTP 経由でインデクサーにアクセスできる必要があります。
+
+すべてのサービスをすぐに利用できない場合は、ストレージ アカウントのポータル ページから直接開始してください。 左側のナビゲーション ページの **[Blob service]** で、 **[Azure Cognitive Search の追加]** をクリックして新しいサービスを作成するか、既存のサービスを選択します。 
+
+ご利用のストレージ アカウントに Azure Cognitive Search を追加したら、標準的なプロセスに従って、任意の Azure データ ソース内のデータをエンリッチできます。 最初の導入または AI エンリッチメントを簡単に行うには Azure Cognitive Search の **[データのインポート]** ウィザードをお勧めします。 ワークフローの実行中に Cognitive Services リソースをアタッチできます。 このクイックスタートで説明する手順に従って、[ポータルで AI エンリッチメント パイプラインを作成します](cognitive-search-quickstart-blob.md)。 
+
+以下のセクションでは、コンポーネントとワークフローについて詳しく説明します。
 
 ## <a name="use-a-blob-indexer"></a>BLOB インデクサーを使用する
 
 AI エンリッチメントはインデックス作成パイプラインのアドオンであり、Azure Cognitive Search では、それらのパイプラインは "*インデクサー*" の上に構築されます。 インデクサーは、データソースに対応したサブサービスであり、データのサンプリング、メタデータ データの読み取り、データの取得、および後続のインポートに備えたネイティブ形式から JSON ドキュメントへのデータのシリアル化、などを行うための内部ロジックを備えています。 インデクサーは、AI とは別に、インポートのために単独で使用されることがよくありますが、AI エンリッチメント パイプラインを構築する場合は、インデクサーとそれに対応するスキルセットが必要になります。 このセクションでは、インデクサーについて説明します。次のセクションでは、スキルセットに焦点を当てます。
 
-Azure Storage 内の BLOB は、[Azure Cognitive Search Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)を使用してインデックス作成されます。 このインデクサーを呼び出すには、 **[データのインポート]** ウィザード、REST API、または .NET SDK を使用します。 コード内でこのインデクサーを使用するには、種類を設定してから、Azure Storage アカウントおよび BLOB コンテナーを含む接続情報を指定します。 ご利用の BLOB のサブセットを作成するには、パラメーターとして渡すことができる仮想ディレクトリを作成するか、ファイルの種類の拡張子に基づいてフィルター処理を行います。
+Azure Storage 内の BLOB は、[BLOB インデクサー](search-howto-indexing-azure-blob-storage.md) を使用してインデックス付けされます。 このインデクサーを呼び出すには、 **[データのインポート]** ウィザード、REST API、または SDK を使用します。 BLOB インデクサーは、インデクサーによって使用されるデータ ソースが Azure Blob コンテナーである場合に呼び出されます。 BLOB のサブセットをインデックス付けするには、パラメーターとして渡すことができる仮想ディレクトリを作成するか、ファイルの種類の拡張子に基づいてフィルター処理を行います。
 
 インデクサーでは、"ドキュメント解析" を行い、BLOB を開いてコンテンツが検査されます。 データソースに接続したら、それがパイプラインでの最初のステップとなります。 BLOB データの場合は、ここで、PDF、Office ドキュメント、画像、およびその他のコンテンツの種類が検出されます。 テキストの抽出によるドキュメント解析は課金の対象外です。 画像抽出によるドキュメント解析は、[価格ページ](https://azure.microsoft.com/pricing/details/search/)で確認できる料金で課金されます。
 
 すべてのドキュメントが解析されますが、エンリッチメントは、そのためのスキルを明示的に指定した場合にのみ発生します。 たとえば、パイプラインが画像分析のみで構成されている場合、コンテナーまたはドキュメント内のテキストは無視されます。
 
-BLOB インデクサーでは、構成パラメーターが用意されているほか、基になるデータが十分な情報を提供している場合は、変更の追跡がサポートされます。 コア機能の詳細については、[Azure Cognitive Search Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)に関するページを参照してください。
+BLOB インデクサーでは、構成パラメーターが用意されているほか、基になるデータに十分な情報が提供されている場合は、変更の追跡がサポートされます。 詳細については、[BLOB インデクサーの構成方法](search-howto-indexing-azure-blob-storage.md)に関する記事を参照してください。
 
 ## <a name="add-ai-components"></a>AI コンポーネントを追加する
 
@@ -72,27 +78,13 @@ Azure Cognitive Search では、"*スキル*" は AI 処理の個々のコンポ
 
 + カスタム スキルは、[インターフェイス定義](cognitive-search-custom-skill-interface.md)でラップされ、パイプラインへの統合を可能にするカスタム コードです。 カスタマー ソリューションでは、カスタム スキルと共に両方を使用して、オープンソース、サードパーティ、またはファーストパーティの AI モジュールを提供するのが一般的です。
 
-*スキルセット*は、パイプラインで使用されるスキルのコレクションであり、ドキュメント解析フェーズでコンテンツが利用可能になった後に呼び出されます。 インデクサーは 1 つのスキルセットしか使用できませんが、そのスキルセットはインデクサーとは独立して存在するため、他のシナリオで再利用できます。
+*スキルセット* は、パイプラインで使用されるスキルのコレクションであり、ドキュメント解析フェーズでコンテンツが利用可能になった後に呼び出されます。 インデクサーは 1 つのスキルセットしか使用できませんが、そのスキルセットはインデクサーとは独立して存在するため、他のシナリオで再利用できます。
 
 カスタム スキルは一見複雑ですが、実装に関しては単純明快な場合があります。 パターン マッチングまたは分類モデルを提供する既存のパッケージがある場合、BLOB から抽出したコンテンツをこれらのモデルに渡して処理を委ねることができます。 AI エンリッチメントは Azure ベースであるため、モデルも Azure に存在する必要があります。 一般的なホスティング手法としては、[Azure Functions](cognitive-search-create-custom-skill-example.md) や [Containers](https://github.com/Microsoft/SkillsExtractorCognitiveSearch) の使用があります。
 
 Cognitive Services に支えられた組み込みスキルを使用するには、リソースへのアクセスを提供するオールインワンのサブスクリプション キーである [Cognitive Services をアタッチ](cognitive-search-attach-cognitive-services.md)する必要があります。 オールインワンのキーにより、画像分析、言語検出、テキスト翻訳、テキスト分析が提供されます。 その他の組み込みスキルは Azure Cognitive Search の機能であり、追加のサービスやキーは必要ありません。 テキストの形成、分割、合併は、パイプラインの設計時に必要な場合があるヘルパー スキルの例です。
 
 カスタム スキルと組み込みユーティリティ スキルのみを使用する場合、Cognitive Services に関連する依存関係やコストはありません。
-
-<!-- ## Order of operations
-
-Now we've covered indexers, content extraction, and skills, we can take a closer look at pipeline mechanisms and order of operations.
-
-A skillset is a composition of one or more skills. When multiple skills are involved, the skillset operates as sequential pipeline, producing dependency graphs, where output from one skill becomes input to another. 
-
-For example, given a large blob of unstructured text, a sample order of operations for text analytics might be as follows:
-
-1. Use Text Splitter to break the blob into smaller parts.
-1. Use Language Detection to determine if content is English or another language.
-1. Use Text Translator to get all text into a common language.
-1. Run Entity Recognition, Key Phrase Extraction, or Sentiment Analysis on chunks of text. In this step, new fields are created and populated. Entities might be location, people, organization, dates. Key phrases are short combinations of words that appear to belong together. Sentiment score is a rating on continuum of negative (0) to positive (1) sentiment.
-1. Use Text Merger to reconstitute the document from the smaller chunks. -->
 
 ## <a name="consume-ai-enriched-output-in-downstream-solutions"></a>ダウンストリーム ソリューションでの AI エンリッチメント出力の使用
 

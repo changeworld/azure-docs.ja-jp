@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1f79add26af40abfa320bc23a3287d8246237701
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3cf27319fa84ff5d693e74e90664b7a86f4d934a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037441"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897213"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps でのジオコーディングの対象範囲
 
-Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) では、ジオコーディングをサポートしています。つまり、API 要求で、アドレスや場所の名前などの検索語句を指定でき、その結果を緯度と経度の座標として返すことができます。 たとえば、Azure Maps [Get Search Address API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) は、位置情報を含むクエリを受け取り、結果を緯度と経度の座標として返します。
+Azure Maps [Search Service](/rest/api/maps/search) では、ジオコーディングをサポートしています。つまり、API 要求で、アドレスや場所の名前などの検索語句を指定でき、その結果を緯度と経度の座標として返すことができます。 たとえば、Azure Maps [Get Search Address API](/rest/api/maps/search/getsearchaddress) は、位置情報を含むクエリを受け取り、結果を緯度と経度の座標として返します。
 
-ただし Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) では、すべてのリージョンや国に対して、同じレベルの情報と精度を有しているわけではありません。 この記事を利用して、各地域ではどの種類の位置情報を確実に検索できるかを判断してください。
+ただし Azure Maps [Search Service](/rest/api/maps/search) では、すべてのリージョンや国に対して、同じレベルの情報と精度を有しているわけではありません。 この記事を利用して、各地域ではどの種類の位置情報を確実に検索できるかを判断してください。
 
 ある国/リージョンでジオコーディングする機能は、ジオコーディング サービスによる道路データの網羅率とジオコーディングの精度に左右されます。 各国/リージョンのジオコーディング サポート レベルを指定する際、次の分類が利用されます。
 
@@ -301,4 +301,4 @@ Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) で
 
 Azure Maps ジオコーディングの詳細:
 > [!div class="nextstepaction"]
-> [Azure Maps Search Service](https://docs.microsoft.com/rest/api/maps/search)
+> [Azure Maps Search Service](/rest/api/maps/search)

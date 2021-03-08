@@ -5,11 +5,11 @@ ms.date: 09/09/2019
 ms.topic: how-to
 ms.reviewer: mmercuri
 ms.openlocfilehash: dc7a1dc7e4a083ef8f5f7650f29ed1430b32e88b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214198"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009451"
 ---
 # <a name="configure-the-azure-blockchain-workbench-database-firewall"></a>Azure Blockchain Workbench データベース ファイアウォールを構成する
 
@@ -19,7 +19,7 @@ ms.locfileid: "85214198"
 
 ルールを構成するデータベースに接続する手順は、以下の通りです。
 
-1. Azure Blockchain Workbench リソースの**所有者**アクセス許可を持つアカウントで Azure portal にサインインします。
+1. Azure Blockchain Workbench リソースの **所有者** アクセス許可を持つアカウントで Azure portal にサインインします。
 2. 左側のナビゲーション ペインで、 **[リソース グループ]** を選択します。
 3. Blockchain Workbench のデプロイにリソース グループの名前を選択します。
 4. **[タイプ]** を選択してリソースの一覧を並べ替えて、使用する **SQL Server** を選択します。
@@ -32,7 +32,7 @@ ms.locfileid: "85214198"
 ファイアウォール規則を作成する手順は、以下の通りです。
 
 1. "lsgn-sdk" データベースへのリンクを選択します。
-2. メニュー バーで、**サーバー ファイアウォールの設定**を選択します。
+2. メニュー バーで、**サーバー ファイアウォールの設定** を選択します。
 
    ![サーバー ファイアウォールの設定](./media/database-firewall/configure-server-firewall.png)
 

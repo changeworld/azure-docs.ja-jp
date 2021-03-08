@@ -1,42 +1,136 @@
 ---
-title: 'Azure ExpressRoute: VNet へのゲートウェイの追加:PowerShell'
-description: この記事では、ExpressRoute の作成済みの Resource Manager VNet に VNet ゲートウェイを追加する方法を説明します。
+title: チュートリアル - Azure ExpressRoute:VNet にゲートウェイを追加する - Azure PowerShell
+description: このチュートリアルでは、Azure PowerShell を使用して、ExpressRoute の作成済みの Resource Manager VNet に VNet ゲートウェイを追加する方法を説明します。
 services: expressroute
 author: duongau
 ms.service: expressroute
-ms.topic: how-to
-ms.date: 02/21/2019
+ms.topic: tutorial
+ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: cfdab553ba7f6506f66e892da3f1e8ce01c6d8bb
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 9f01961ec7c7f8e0a4e2d72e28e6def50e93ad5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396388"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854309"
 ---
-# <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>PowerShell を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
+# <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>チュートリアル:PowerShell を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]
 > * [Resource Manager - Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 > * [Resource Manager - PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 > * [クラシック - PowerShell](expressroute-howto-add-gateway-classic.md)
 > * [ビデオ - Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
 > 
-> 
 
-この記事では、既存の仮想ネットワーク (VNet) 用の VNet ゲートウェイを追加、サイズ変更、および削除する手順を説明します。 この構成の手順は、ExpressRoute 構成用に Resource Manager デプロイ モデルを使用して作成された VNet に適用されます。 詳細については、「[ExpressRoute 用の仮想ネットワーク ゲートウェイについて](expressroute-about-virtual-network-gateways.md)」をご覧ください。
+このチュートリアルでは、既存の仮想ネットワーク (VNet) 用の VNet ゲートウェイを追加、サイズ変更、および削除する手順を説明します。 この構成の手順は、ExpressRoute 構成用に Resource Manager デプロイ モデルを使用して作成された VNet に適用されます。 詳細については、「[ExpressRoute 用の仮想ネットワーク ゲートウェイについて](expressroute-about-virtual-network-gateways.md)」をご覧ください。
 
-## <a name="before-beginning"></a>作業を開始する前に
+このチュートリアルでは、以下の内容を学習します。
+> [!div class="checklist"]
+> - ゲートウェイ サブネットを作成します。
+> - 仮想ネットワーク ゲートウェイを作成します。
 
-### <a name="working-with-powershell"></a>PowerShell での作業
-
-[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
-
-[!INCLUDE [working with cloud shell](../../includes/expressroute-cloudshell-powershell-about.md)]
+## <a name="prerequisites"></a>前提条件
 
 ### <a name="configuration-reference-list"></a>構成参照一覧
 
-[!INCLUDE [expressroute-gateway-rm-ps](../../includes/expressroute-gateway-rm-ps-include.md)]
+このタスクの手順では、以下の構成参照一覧の値に基づいて VNet を使用します。 その他の設定と名前についても、一覧で概要を説明します。 ここでは、この一覧内の値に基づいて変数を追加しますが、どの手順でもこの一覧を直接使用しません。 参照として使用する一覧をコピーし、値を独自の値で置き換えることができます。
+
+| 設定                   | [値]                                              |
+| ---                       | ---                                                |
+| 仮想ネットワーク名 | *TestVNet* |    
+| Virtual Network のアドレス空間 | *192.168.0.0/16* |
+| リソース グループ | *TestRG* |
+| Subnet1 名 | *FrontEnd* |   
+| Subnet1 アドレス空間 | *192.168.1.0/24* |
+| Subnet1 名 | *FrontEnd* |
+| ゲートウェイ サブネット名 | *GatewaySubnet* |    
+| ゲートウェイ サブネットのアドレス空間 | *192.168.200.0/26* |
+| リージョン | *米国東部* |
+| ゲートウェイ名 | *GW* |   
+| ゲートウェイ IP 名 | *GWIP* |
+| ゲートウェイ IP 構成名 | *gwipconf* |
+| 型 | *ExpressRoute* |
+| ゲートウェイのパブリック IP 名  | *gwpip* |
+
+## <a name="add-a-gateway"></a>ゲートウェイを追加する
+
+1. Azure に接続するには、`Connect-AzAccount` を実行します。
+
+1. この演習用に変数を宣言します。 サンプルを編集して、使用する設定を反映します。
+
+   ```azurepowershell-interactive 
+   $RG = "TestRG"
+   $Location = "East US"
+   $GWName = "GW"
+   $GWIPName = "GWIP"
+   $GWIPconfName = "gwipconf"
+   $VNetName = "TestVNet"
+   ```
+1. 仮想ネットワーク オブジェクトを変数として格納します。
+
+   ```azurepowershell-interactive
+   $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
+   ```
+1. ゲートウェイ サブネットを Virtual Network に追加します。 ゲートウェイ サブネット名は、"GatewaySubnet " にする必要があります。 ゲートウェイ サブネットは、/27 以上 (/26、/25 など) である必要があります。
+
+   ```azurepowershell-interactive
+   Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
+   ```
+1. 構成を設定します。
+
+   ```azurepowershell-interactive
+   $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
+   ```
+1. 変数としてゲートウェイ サブネットを格納します。
+
+   ```azurepowershell-interactive
+   $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
+   ```
+1. パブリック IP アドレスを要求します。 IP アドレスは、ゲートウェイを作成する前に要求されます。 使用したい IP アドレスを指定することはできません。IP アドレスは動的に割り当てられます。 この IP アドレスは、次の構成セクションで使用します。 AllocationMethod は動的である必要があります。
+
+   ```azurepowershell-interactive
+   $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
+   ```
+1. ゲートウェイの構成を作成します。 ゲートウェイの構成で、使用するサブネットとパブリック IP アドレスを定義します。 この手順では、ゲートウェイを作成するときに使用する構成を指定します。 次のサンプルを使用して、ゲートウェイの構成を作成します。
+
+   ```azurepowershell-interactive
+   $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
+   ```
+1. ゲートウェイを作成します。 この手順では、 **-GatewayType** が特に重要です。 値 **ExpressRoute**を使用する必要があります。 これらのコマンドレットを実行してからゲートウェイが作成されるまでに 45 分以上かかる場合があります。
+
+   ```azurepowershell-interactive
+   New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
+   ```
+
+## <a name="verify-the-gateway-was-created"></a>ゲートウェイが作成されていることの確認
+次のコマンドを使用して、ゲートウェイが作成されていることを確認します。
+
+```azurepowershell-interactive
+Get-AzVirtualNetworkGateway -ResourceGroupName $RG
+```
+
+## <a name="resize-a-gateway"></a>ゲートウェイのサイズを変更する
+[ゲートウェイ SKU](expressroute-about-virtual-network-gateways.md)には複数の種類があります。 次のコマンドを使用して、ゲートウェイ SKU をいつでも変更できます。
+
+> [!IMPORTANT]
+> このコマンドは UltraPerformance ゲートウェイでは使用できません。 ゲートウェイを UltraPerformance ゲートウェイに変更するには、既存の ExpressRoute ゲートウェイを削除してから、新しい UltraPerformance ゲートウェイを作成します。 ゲートウェイを UltraPerformance ゲートウェイからダウングレードするには、UltraPerformance ゲートウェイを削除してから、新しいゲートウェイを作成します。
+> 
+
+```azurepowershell-interactive
+$gw = Get-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
+Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
+```
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+次のコマンドを使用してゲートウェイを削除します。
+
+```azurepowershell-interactive
+Remove-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
+```
 
 ## <a name="next-steps"></a>次のステップ
-VNet ゲートウェイを作成したので、ExpressRoute 回線に VNet をリンクできるようになりました。 「 [ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)」を参照してください。
+VNet ゲートウェイを作成したので、VNet を ExpressRoute 回線にリンクできます。 
+
+> [!div class="nextstepaction"]
+> [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-arm.md)

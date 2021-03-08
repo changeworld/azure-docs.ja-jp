@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: db05c7a5a45221485ecb62c2c90d56be52d5ef48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e899b249261ea3238695a2e2be6001cb6a9bc763
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808606"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318060"
 ---
 # <a name="convert-models"></a>モデルの変換
 
@@ -21,9 +21,8 @@ Azure Remote Rendering を使用すると、非常に複雑なモデルをレン
 
 変換サービスでは、次の形式がサポートされています。
 
-- **FBX** (バージョン 2011 以降)
-- **GLTF** (バージョン 2.x)
-- **GLB** (バージョン 2.x)
+- **FBX**  (バージョン 2011 からバージョン 2020)
+- **GLTF**/**GLB** (バージョン 2.x)
 
 素材のプロパティの変換については、「[モデル形式の素材マッピング](../../reference/material-mapping.md)」に掲載されているように、形式ごとにわずかな違いがあります。
 
@@ -58,4 +57,5 @@ Azure Remote Rendering を使用すると、非常に複雑なモデルをレン
 - [モデル変換に Azure Blob Storage を使用する](blob-storage.md)
 - [モデル変換 REST API](conversion-rest-api.md)
 - [モデル変換を構成する](configure-model-conversion.md)
+- [変換用のファイルのレイアウト](layout-files-for-conversion.md)
 - [モデル形式の素材マッピング](../../reference/material-mapping.md)
