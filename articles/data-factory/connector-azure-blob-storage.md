@@ -14,7 +14,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 02/14/2021
 ms.locfileid: "100393124"
 ---
-# <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB ストレージのデータをコピーおよび変換する
+# <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Blob Storage のデータをコピーおよび変換する
 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択します。"]
 > * [Version 1](v1/data-factory-azure-blob-connector.md)
@@ -22,14 +22,14 @@ ms.locfileid: "100393124"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure BLOB ストレージをコピー元またはコピー先としてデータをコピーする方法について説明します。 Data Flow アクティビティを使用して Azure BLOB ストレージ内のデータを変換する方法についても説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
+この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Blob Storage をコピー元またはコピー先としてデータをコピーする方法について説明します。 Data Flow アクティビティを使用して Azure Blob Storage 内のデータを変換する方法についても説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
 
 >[!TIP]
 >データ レイクまたはデータ ウェアハウスの移行シナリオについては、「[Azure Data Factory を使用してデータ レイクまたはデータ ウェアハウスから Azure にデータを移行する](data-migration-guidance-overview.md)」を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-この Azure BLOB ストレージ コネクタは、次のアクティビティでサポートされます。
+この Azure Blob Storage コネクタは、次のアクティビティでサポートされます。
 
 - [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
 - [マッピング データ フロー](concepts-data-flow-overview.md)
@@ -65,7 +65,7 @@ ms.locfileid: "100393124"
 >- PolyBase または COPY ステートメントを使用して Azure Synapse Analytics にデータを読み込むときに、ソースまたはステージング BLOB ストレージが Azure Virtual Network エンドポイントで構成されている場合は、Synapse の要求に従ってマネージド ID 認証を使用する必要があります。 構成の前提条件の詳細については、「[マネージド ID の認証](#managed-identity)」を参照してください。
 
 >[!NOTE]
->Azure HDInsight および Azure Machine Learning のアクティビティは、Azure BLOB ストレージ アカウント キーを使用する認証のみをサポートします。
+>Azure HDInsight および Azure Machine Learning のアクティビティは、Azure Blob Storage アカウント キーを使用する認証のみをサポートします。
 
 ### <a name="account-key-authentication"></a>アカウント キー認証
 
@@ -218,17 +218,17 @@ Azure Storage サービス プリンシパル認証の全般的な情報につ�
     - アプリケーション キー
     - テナント ID
 
-2. Azure BLOB ストレージでサービス プリンシパルに適切なアクセス許可を付与します。 ロールの詳細については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](../storage/common/storage-auth-aad-rbac-portal.md)」を参照してください。
+2. Azure Blob Storage でサービス プリンシパルに適切なアクセス許可を付与します。 ロールの詳細については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](../storage/common/storage-auth-aad-rbac-portal.md)」を参照してください。
 
     - **ソースとして**、**アクセス制御 (IAM)** で、少なくとも **ストレージ BLOB データ閲覧者** のロールを付与します。
     - **シンクとして**、**アクセス制御 (IAM)** で、少なくとも **ストレージ BLOB データ共同作成者** のロールを付与します。
 
-Azure BLOB ストレージのリンクされたサービスでは、次のプロパティがサポートされます。
+Azure Blob Storage のリンクされたサービスでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | **type** プロパティは、**AzureBlobStorage** に設定する必要があります。 |はい |
-| serviceEndpoint | `https://<accountName>.blob.core.windows.net/` のパターンで、Azure BLOB ストレージ サービス エンドポイントを指定します。 |はい |
+| serviceEndpoint | `https://<accountName>.blob.core.windows.net/` のパターンで、Azure Blob Storage サービス エンドポイントを指定します。 |はい |
 | accountKind | ストレージ アカウントの種類を指定します。 使用できる値は、以下のとおりです。**Storage** (汎用 v1)、**StorageV2** (汎用 v2)、**BlobStorage**、または **BlockBlobStorage**。 <br/> データ フローで Azure Blob のリンクされたサービスを使用する場合、アカウントの種類が空または "Storage" の場合、マネージド ID またはサービス プリンシパルの認証はサポートされません。 適切なアカウントの種類を指定するか、別の認証を選択するか、ストレージ アカウントを汎用 v2 にアップグレードします。 |いいえ |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
 | servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
@@ -275,7 +275,7 @@ Azure Storage 認証の全般的な情報については、「[Azure Active Dire
 
 1. ファクトリと共に生成されたマネージド ID オブジェクト ID の値をコピーして、[Data Factory のマネージド ID 情報を取得します](data-factory-service-identity.md#retrieve-managed-identity)。
 
-2. Azure BLOB ストレージでマネージド ID にアクセス許可を付与します。 ロールの詳細については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](../storage/common/storage-auth-aad-rbac-portal.md)」を参照してください。
+2. Azure Blob Storage でマネージド ID にアクセス許可を付与します。 ロールの詳細については、「[Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる](../storage/common/storage-auth-aad-rbac-portal.md)」を参照してください。
 
     - **ソースとして**、**アクセス制御 (IAM)** で、少なくとも **ストレージ BLOB データ閲覧者** のロールを付与します。
     - **シンクとして**、**アクセス制御 (IAM)** で、少なくとも **ストレージ BLOB データ共同作成者** のロールを付与します。
@@ -283,12 +283,12 @@ Azure Storage 認証の全般的な情報については、「[Azure Active Dire
 >[!IMPORTANT]
 >PolyBase または COPY ステートメントを使用して (ソースまたはステージングとしての) BLOB ストレージから Azure Synapse Analytics にデータを読み込む場合に、BLOB ストレージに対してマネージド ID 認証を使用するときは、必ず[こちらのガイダンス](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)の手順 1 から 3 にも従ってください。 これらの手順により、サーバーが Azure AD に登録され、ストレージ BLOB データ共同作成者のロールがサーバーに割り当てられます。 残りの処理は Data Factory によって行われます。 Azure Virtual Network エンドポイントを使用して Blob Storage を構成する場合は、さらに Synapse の要求に従って、Azure Storage アカウントで、 **[ファイアウォールと仮想ネットワーク]** 設定メニューの **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** をオンにする必要があります。
 
-Azure BLOB ストレージのリンクされたサービスでは、次のプロパティがサポートされます。
+Azure Blob Storage のリンクされたサービスでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | **type** プロパティは、**AzureBlobStorage** に設定する必要があります。 |はい |
-| serviceEndpoint | `https://<accountName>.blob.core.windows.net/` のパターンで、Azure BLOB ストレージ サービス エンドポイントを指定します。 |はい |
+| serviceEndpoint | `https://<accountName>.blob.core.windows.net/` のパターンで、Azure Blob Storage サービス エンドポイントを指定します。 |はい |
 | accountKind | ストレージ アカウントの種類を指定します。 使用できる値は、以下のとおりです。**Storage** (汎用 v1)、**StorageV2** (汎用 v2)、**BlobStorage**、または **BlockBlobStorage**。 <br/> データ フローで Azure Blob のリンクされたサービスを使用する場合、アカウントの種類が空または "Storage" の場合、マネージド ID またはサービス プリンシパルの認証はサポートされません。 適切なアカウントの種類を指定するか、別の認証を選択するか、ストレージ アカウントを汎用 v2 にアップグレードします。 |いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、サービスでは、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
@@ -323,7 +323,7 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-Azure BLOB ストレージでは、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
+Azure Blob Storage では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
 | プロパティ   | 説明                                                  | 必須 |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -367,7 +367,7 @@ Azure BLOB ストレージでは、形式ベースのデータセットの `loca
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-Azure BLOB ストレージでは、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
+Azure Blob Storage では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -438,7 +438,7 @@ Azure BLOB ストレージでは、形式ベースのコピー ソースの `sto
 
 [!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)] 
 
-Azure BLOB ストレージでは、形式ベースのコピー シンクの `storeSettings` 設定において、次のプロパティがサポートされています。
+Azure Blob Storage では、形式ベースのコピー シンクの `storeSettings` 設定において、次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -518,11 +518,11 @@ Azure BLOB ストレージでは、形式ベースのコピー シンクの `sto
 
 ## <a name="preserving-metadata-during-copy"></a>コピー中のメタデータの保持
 
-Amazon S3、Azure BLOB ストレージ、または Azure Data Lake Storage Gen2 から Azure Data Lake Storage Gen2 または Azure BLOB ストレージにファイルをコピーする場合、ファイルのメタデータをデータと共に保持することもできます。 詳細については、[メタデータの保存](copy-activity-preserve-metadata.md#preserve-metadata)に関する記事を参照してください。
+Amazon S3、Azure Blob Storage、または Azure Data Lake Storage Gen2 から Azure Data Lake Storage Gen2 または Azure Blob Storage にファイルをコピーする場合、ファイルのメタデータをデータと共に保持することもできます。 詳細については、[メタデータの保存](copy-activity-preserve-metadata.md#preserve-metadata)に関する記事を参照してください。
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
-マッピング データ フローでデータを変換するときに、次の形式で Azure BLOB ストレージのファイルの読み取りと書き込みができます。
+マッピング データ フローでデータを変換するときに、次の形式で Azure Blob Storage のファイルの読み取りと書き込みができます。
 * [Avro](format-avro.md#mapping-data-flow-properties)
 * [区切りテキスト](format-delimited-text.md#mapping-data-flow-properties)
 * [Delta](format-delta.md#mapping-data-flow-properties)
@@ -534,7 +534,7 @@ Amazon S3、Azure BLOB ストレージ、または Azure Data Lake Storage Gen2 
 
 ### <a name="source-transformation"></a>ソース変換
 
-ソース変換では、Azure BLOB ストレージ内のコンテナー、フォルダー、または個々のファイルから読み取ることができます。 ファイルの読み取り方法を管理するには、 **[ソース オプション]** タブを使用します。 
+ソース変換では、Azure Blob Storage 内のコンテナー、フォルダー、または個々のファイルから読み取ることができます。 ファイルの読み取り方法を管理するには、 **[ソース オプション]** タブを使用します。 
 
 ![ソース オプション](media/data-flow/sourceOptions1.png "ソース オプション")
 
@@ -593,7 +593,7 @@ Amazon S3、Azure BLOB ストレージ、または Azure Data Lake Storage Gen2 
 
 ### <a name="sink-properties"></a>シンクのプロパティ
 
-シンク変換では、Azure BLOB ストレージ内のコンテナーまたはフォルダーに書き込むことができます。 ファイルへの書き込み方法を管理するには、 **[設定]** タブを使用します。
+シンク変換では、Azure Blob Storage 内のコンテナーまたはフォルダーに書き込むことができます。 ファイルへの書き込み方法を管理するには、 **[設定]** タブを使用します。
 
 ![シンクのオプション](media/data-flow/file-sink-settings.png "シンク オプション")
 
