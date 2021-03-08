@@ -20,7 +20,7 @@ Azure Functions で発生するエラーは、次のいずれかが元になっ�
 
 データやメッセージが失われないようにするには、次の優れたエラー処理手法が重要です。 推奨されるエラー処理方法には、次のアクションが含まれます。
 
-- [[Application Insights を有効にする]](../articles/azure-functions/functions-monitoring.md)
+- [Application Insights を有効にする](../articles/azure-functions/functions-monitoring.md)
 - [構造化エラー処理を使用する](#use-structured-error-handling)
 - [べき等に設計する](../articles/azure-functions/functions-idempotent.md)
 - [再試行ポリシーを実装する](#retry-policies-preview) (該当する場合)
