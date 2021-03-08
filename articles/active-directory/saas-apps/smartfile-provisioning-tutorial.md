@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 675d9c76841ba1a4b94b666c7ff4ac4287fc5264
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 03c7efd390d4714680ed2ccd54d297b8137aaafc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525192"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348672"
 ---
 # <a name="tutorial-configure-smartfile-for-automatic-user-provisioning"></a>チュートリアル:SmartFile を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -56,11 +56,11 @@ Azure AD での自動ユーザー プロビジョニング用に SmartFile を�
 
     ![SmartFile 管理コンソール](media/smartfile-provisioning-tutorial/login.png)
 
-2. ベアラー トークンを生成するには、**プロダクト キー**と**プロダクト パスワード**をコピーします。 それらをメモ帳に貼り付け、間にコロンを入れます。
+2. ベアラー トークンを生成するには、**プロダクト キー** と **プロダクト パスワード** をコピーします。 それらをメモ帳に貼り付け、間にコロンを入れます。
     
-     ![SmartFile の SCIM の追加](media/smartfile-provisioning-tutorial/auth.png)
+     ![[プロダクト キー] セクションのスクリーンショット。[プロダクト キー] と [プロダクト パスワード] のテキスト ボックスが選択されています。](media/smartfile-provisioning-tutorial/auth.png)
 
-    ![SmartFile の SCIM の追加](media/smartfile-provisioning-tutorial/key.png)
+    ![プレーンテキストのスクリーンショット。[プロダクト キー] と [プロダクト パスワード] がコロンで区切られています。](media/smartfile-provisioning-tutorial/key.png)
 
 ## <a name="add-smartfile-from-the-gallery"></a>ギャラリーから SmartFile を追加する
 
@@ -103,13 +103,13 @@ Azure AD で自動ユーザー プロビジョニング用に SmartFile を構�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5.  **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<SmartFile sitename>.smartfile.com/ftp/scim`」と入力します。 たとえば、`https://demo1test.smartfile.com/ftp/scim` のようになります。 先ほど取得した**ベアラー トークン**の値 (ProductKey:ProductPassword) を **[シークレット トークン]** に入力します。 **[テスト接続]** をクリックして、Azure AD から SmartFile に接続できることを確認します。 接続できない場合は、使用している SmartFile アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5.  **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<SmartFile sitename>.smartfile.com/ftp/scim`」と入力します。 たとえば、`https://demo1test.smartfile.com/ftp/scim` のようになります。 先ほど取得した **ベアラー トークン** の値 (ProductKey:ProductPassword) を **[シークレット トークン]** に入力します。 **[テスト接続]** をクリックして、Azure AD から SmartFile に接続できることを確認します。 接続できない場合は、使用している SmartFile アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 

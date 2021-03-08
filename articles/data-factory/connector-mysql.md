@@ -1,24 +1,20 @@
 ---
 title: Azure Data Factory を使用して MySQL からデータをコピーする
 description: MySQL データベースからシンクとしてサポートされているデータ ストアに データをコピーできる Azure Data Factory の MySQL コネクタについて説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 09/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 9fbf4062304dda7112e89ecd4abd5288533f28ff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b6a2253a4a124fe5e3725863c799f91714e66cab
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635791"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375257"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータをコピーする
+
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-onprem-mysql-connector.md)
 > * [現在のバージョン](connector-mysql.md)
@@ -66,7 +62,9 @@ MySQL のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | Options | 必須 |
 |:--- |:--- |:--- |:--- |
-| SSLMode | このオプションは、MySQL に接続するときにドライバーで TLS 暗号化および検証を使用するかどうかを指定します。 例: `SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(既定)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | いいえ |
+| SSLMode | このオプションは、MySQL に接続するときにドライバーで TLS 暗号化および検証を使用するかどうかを指定します。 例: `SSLMode=<0/1/2/3/4>`。| DISABLED (0) / PREFERRED (1) **(既定)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | いいえ |
+| SSLCert | クライアントの ID を証明するために使用される SSL 証明書を含む、.pem ファイルの完全パスと名前。 <br/> この証明書をサーバーに送信する前に暗号化するための秘密キーを指定するには、`SSLKey` プロパティを使用します。| | はい、双方向 SSL 検証を使用する場合。 |
+| SSLKey | 双方向 SSL 検証中にクライアント側の証明書を暗号化するために使用される秘密キーを含むファイルの完全パスと名前。|  | はい、双方向 SSL 検証を使用する場合。 |
 | UseSystemTrustStore | このオプションは、システムの信頼ストアと指定した PEM ファイルのどちらの CA 証明書を使用するかを指定します。 例: `UseSystemTrustStore=<0/1>;`| Enabled (1) / Disabled (0) **(既定)** | いいえ |
 
 **例:**
@@ -96,13 +94,13 @@ MySQL のリンクされたサービスでは、次のプロパティがサポ�
         "type": "MySql",
         "typeProperties": {
             "connectionString": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {

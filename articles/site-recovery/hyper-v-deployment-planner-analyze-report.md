@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
-ms.openlocfilehash: b2bb351de292ff2015cdcbd388155063a86a7359
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f230445ecdb046c2b631e89567df71e1d09c3234
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653581"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999231"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Deployment Planner レポートの分析
 この記事では、Azure Site Recovery Deployment Planner で、Hyper-V から Azure へのシナリオに関して生成される Excel レポート内のシートについて取り上げます。
@@ -154,7 +154,7 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 **[Disk Storage Type (ディスク ストレージの種類)]** : **[VMs to Place (配置する VM)]** 列に示されている該当 VM をすべてレプリケートするために使用される "Standard" または "Premium" のストレージ アカウントです。
 
-**[Suggested Prefix (推奨プレフィックス)]** : ストレージ アカウントの名前に使用できる 3 文字のプレフィックスです。 独自のプレフィックスを使用することもできますが、[ストレージ アカウントのパーティションの名前付け規則](https://aka.ms/storage-performance-checklist)に準拠したプレフィックスがツールから提案されます。
+**[Suggested Prefix (推奨プレフィックス)]** : ストレージ アカウントの名前に使用できる 3 文字のプレフィックスです。 独自のプレフィックスを使用することもできますが、[ストレージ アカウントのパーティションの名前付け規則](/en-in/azure/storage/blobs/storage-performance-checklist)に準拠したプレフィックスがツールから提案されます。
 
 **[Suggested Account Name (推奨アカウント名)]** : 推奨されるプレフィックスを付けた場合のストレージ アカウントの名前が表示されます。 山かっこ (< と >) で囲まれた名前は、カスタムの入力値に置き換えてください。
 
@@ -220,7 +220,7 @@ Site Recovery Deployment Planner によって生成される Excel レポート�
 
 **[VM 名]** : レポートの生成時に VMListFile で使った VM の名前です。 また、VM にアタッチされたディスク (VHD) もこの列に一覧表示されます。 この名前には、VM がプロファイリング期間中に検出された時点で配置されていた Hyper-V ホストの名前が含まれます。
 
-**[VM Compatibility (VM 適合性)]** : 指定された VM が Site Recovery での使用に不適合である理由が表示されます。 理由は VM の不適合ディスクごとに記述され、公開されている[ストレージの制限](https://aka.ms/azure-storage-scalbility-performance)に基づく次のいずれかの状況に該当します。
+**[VM Compatibility (VM 適合性)]** : 指定された VM が Site Recovery での使用に不適合である理由が表示されます。 理由は VM の不適合ディスクごとに記述され、公開されている[ストレージの制限](/en-in/azure/storage/common/scalability-targets-standard-account)に基づく次のいずれかの状況に該当します。
 
 * ディスク サイズが 4,095 GB を超えている。 Azure Storage では現在、4,095 GB を超えるデータ ディスク サイズがサポートされません。
 

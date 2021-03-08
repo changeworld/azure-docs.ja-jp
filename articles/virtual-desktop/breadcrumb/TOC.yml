@@ -12,6 +12,3 @@
         - name: リファレンス
           tocHref: /WindowsServerDocs/remote/remote-desktop-services/virtual-machine-recs
           topicHref: /azure/virtual-desktop/index
-        - name: リファレンス
-          tocHref: /WindowsServerDocs/remote/remote-desktop-services/network-guidance
-          topicHref: /azure/virtual-desktop/index

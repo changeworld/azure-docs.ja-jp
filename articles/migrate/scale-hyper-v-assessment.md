@@ -1,18 +1,17 @@
 ---
 title: Azure Migrate を使用して Azure に移行するために多数の Hyper-V VM を評価する | Microsoft Docs
 description: Azure Migrate サービスを使用して Azure に移行するために多数の Hyper-V VM を評価する方法について説明します。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
-ms.topic: conceptual
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 07/10/2019
-ms.author: raynew
-ms.openlocfilehash: c1ae3a9ed8a775161aaf85ab2c91b1e43113d2e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92c275ee3f8e00e71b80e448c9adb94f0b6d21dc
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70279449"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753724"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>Azure への移行のために多数の Hyper-V VM を評価する
 
@@ -30,7 +29,7 @@ ms.locfileid: "70279449"
 
 
 > [!NOTE]
-> 大規模な評価を行う前に、いくつかの VM を評価するための概念実証を試す場合は、[チュートリアル シリーズ](tutorial-prepare-hyper-v.md)に従ってください
+> 大規模な評価を行う前に、いくつかの VM を評価するための概念実証を試す場合は、[チュートリアル シリーズ](./tutorial-discover-hyper-v.md)に従ってください
 
 ## <a name="plan-for-assessment"></a>評価の計画
 
@@ -66,7 +65,7 @@ ms.locfileid: "70279449"
 2. Azure Migrate とやり取りするために、自分の Azure アカウントのアクセス許可を設定します
 3. Hyper-V ホストと VM を準備します
 
-[このチュートリアル](tutorial-prepare-hyper-v.md)の手順に従って、これらの設定を構成します。
+[このチュートリアル](./tutorial-discover-hyper-v.md)の手順に従って、これらの設定を構成します。
 
 ## <a name="create-a-project"></a>プロジェクトの作成
 
@@ -75,7 +74,7 @@ ms.locfileid: "70279449"
 1. Azure Migrate プロジェクトを作成します。
 2. Azure Migrate Server Assessment ツールをプロジェクトに追加します。
 
-[詳細情報](how-to-add-tool-first-time.md)
+[詳細情報](./create-manage-projects.md)
 
 ## <a name="create-and-review-an-assessment"></a>評価の作成とレビュー
 

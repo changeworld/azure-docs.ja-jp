@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight における Apache Spark クラスターの問題のトラブルシューティング
 description: Azure HDInsight における Apache Spark のクラスターに関連する問題と、それらを解決する方法について説明します。
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1dbf6478a62675c8b514298007a7663239d8f7cf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c92b55d3ac7f4476b7b74d25b40150a74c6ea1cf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084644"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930148"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight における Apache Spark クラスターの既知の問題
 
@@ -81,7 +78,7 @@ Jupyter Notebook に関連する既知の問題を以下に示します。
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>ファイル名での非 ASCII 文字の使用
 
-Jupyter ノートブックのファイル名に ASCII 以外の文字を使用しないでください。 ファイル名に ASCII 以外を含むファイルのアップロードを Jupyter UI 経由で試行すると、エラー メッセージが表示されないまま、エラーになります。 Jupyter を使ってファイルをアップロードすることはできませんが、表示可能なエラーもスローされません。
+Jupyter Notebook のファイル名に ASCII 以外の文字を使用しないでください。 ファイル名に ASCII 以外を含むファイルのアップロードを Jupyter UI 経由で試行すると、エラー メッセージが表示されないまま、エラーになります。 Jupyter を使ってファイルをアップロードすることはできませんが、表示可能なエラーもスローされません。
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>大きなサイズの Notebook の読み込み中のエラー
 

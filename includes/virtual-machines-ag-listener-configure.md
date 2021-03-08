@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 73ba78eca710f0b98b2a209494519cb8003e554b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd635d4c0563c35979f8d85c33dfbde35f05f9e6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75469019"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91401059"
 ---
 可用性グループ リスナーとは、SQL Server 可用性グループがリッスンする IP アドレスとネットワーク名のことです。 可用性グループ リスナーを作成するには、次の手順を実行します。
 
@@ -30,7 +30,7 @@ ms.locfileid: "75469019"
 
     b. **[ロール]** ウィンドウで、可用性グループ名を右クリックし、 **[リソースの追加]**  >  **[クライアント アクセス ポイント]** の順にクリックします。
 
-   ![クライアント アクセス ポイント](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
+   ![[クライアント アクセス ポイント] メニュー オプションのスクリーンショット。](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
     c. **[名前]** ボックスで、この新しいリスナーの名前を指定します。 
    新しいリスナーの名前は、アプリケーションが SQL Server 可用性グループ内のデータベースへの接続に使用するネットワーク名です。
@@ -50,7 +50,7 @@ ms.locfileid: "75469019"
 
     c. **[IP アドレス]** で **[静的 IP アドレス]** をクリックします。 静的 IP アドレスを、Azure Portal でロード バランサーのアドレス設定時に使用したものと同じアドレスに設定します。
 
-   ![IP リソース](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
+   ![IP アドレスの設定場所を示すスクリーンショット。](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
     <!-----------------------I don't see this option on server 2016
     1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
@@ -64,7 +64,7 @@ ms.locfileid: "75469019"
 
     c. [依存関係] タブで、クライアント アクセス ポイント (リスナー) リソースの名前を追加します。
 
-   ![IP リソース](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
+   ![[依存関係] タブにおける名前の追加先を示すスクリーンショット。](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
     d. **[OK]** をクリックします。
 
@@ -74,7 +74,7 @@ ms.locfileid: "75469019"
 
     b. **[リソース]** タブで **[サーバー名]** の下にあるクライアント アクセスポイント リソースを右クリックし、 **[プロパティ]** をクリックします。 
 
-   ![IP リソース](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
+   ![サーバーの名前の [プロパティ] メニュー オプションを示すスクリーンショット。](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
     c. **[依存関係]** タブをクリックします。IP アドレスが依存関係の要素であることを確認します。 そうでない場合は、IP アドレスへの依存関係を設定します。 複数のリソースが一覧表示される場合は、IP アドレスに OR (AND ではなく) 依存関係があることを確認します。 **[OK]** をクリックします。 
 

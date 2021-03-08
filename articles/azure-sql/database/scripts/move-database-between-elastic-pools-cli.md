@@ -4,19 +4,19 @@ description: Azure CLI のサンプル スクリプトを使用して 2 つの�
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 7da5e25624a0e3a323e60cdf91660b29f58f31d7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9fcb23750137c8286efbc0e1fb7446e324c572dd
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514749"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747346"
 ---
 # <a name="use-the-azure-cli-to-move-a-database-in-sql-database-in-a-sql-elastic-pool"></a>Azure CLI を使用して SQL Database のデータベースを SQL エラスティック プール間で移動する
 

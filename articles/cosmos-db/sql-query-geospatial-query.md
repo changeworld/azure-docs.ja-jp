@@ -3,17 +3,19 @@ title: Azure Cosmos DB に地理空間データを照会する
 description: Azure Cosmos DB に空間データを照会します
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: bbfc31e810e2c11cde4907c9d5120b66195191af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb9a0351b6f1de47f3687995c65060a23bdb2874
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764980"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336131"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Azure Cosmos DB に地理空間データを照会する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、SQL と LINQ を使用して、Azure Cosmos DB に地理空間データを照会する方法について取り上げます。 現在、地理空間データの保存とアクセスは、Azure Cosmos DB SQL API アカウントのみでサポートされます。 Azure Cosmos DB は、以下の Open Geospatial Consortium (OGC) 組み込み関数を使った地理空間検索をサポートしています。 SQL 言語の全組み込み関数の詳細については、[Azure Cosmos DB のクエリ システム関数](sql-query-system-functions.md)に関する記事を参照してください。
 
@@ -73,7 +75,7 @@ ms.locfileid: "84764980"
 ```
 
 > [!NOTE]
-> Azure Cosmos DB クエリで型が一致しないときの動作と同様、いずれかの引数に指定された場所の値が無効であったり形式に誤りがあったりした場合、その値は**未定義**として評価され、評価対象となったドキュメントはクエリの結果からスキップされます。 クエリから結果が返されなかった場合は、`ST_ISVALIDDETAILED` を実行して、空間データ型が無効である理由をデバッグしてください。
+> Azure Cosmos DB クエリで型が一致しないときの動作と同様、いずれかの引数に指定された場所の値が無効であったり形式に誤りがあったりした場合、その値は **未定義** として評価され、評価対象となったドキュメントはクエリの結果からスキップされます。 クエリから結果が返されなかった場合は、`ST_ISVALIDDETAILED` を実行して、空間データ型が無効である理由をデバッグしてください。
 >
 >
 

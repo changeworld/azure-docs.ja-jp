@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cafde6ed66e5b636be60533abafcd6f221fe33a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 74c77356df4f35461a8b9f1459712cdcf7f77cbf
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502515"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95560665"
 ---
 Azure 共有ディスクは、マネージド ディスクを複数の仮想マシン (VM) に同時に接続できるようにする Azure マネージド ディスクの新機能です。 マネージド ディスクを複数の VM に接続すると、新規にデプロイするか、既存のクラスター化されたアプリケーションを Azure に移行することができます。
 
@@ -41,7 +41,7 @@ Azure 共有ディスクは、マネージド ディスクを複数の仮想マ�
 
 ### <a name="windows"></a>Windows
 
-Azure 共有ディスクは、Windows Server 2008 以降でサポートされています。 ほとんどの Windows ベースのクラスタリングは、クラスタ ノード通信のためのすべてのコアインフラストラクチャを処理し、アプリケーションで並列アクセス パターンを利用できるように WSFC 上にビルドされています。 WSFC では、ご使用の Windows Server のバージョンに応じて、CSV と非 CSV ベースのオプションの両方が有効になります。 詳細については、「[フェールオーバー クラスターを作成する](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)」を参照してください。
+Azure 共有ディスクは、Windows Server 2008 以降でサポートされています。 ほとんどの Windows ベースのクラスタリングは、クラスタ ノード通信のためのすべてのコアインフラストラクチャを処理し、アプリケーションで並列アクセス パターンを利用できるように WSFC 上にビルドされています。 WSFC では、ご使用の Windows Server のバージョンに応じて、CSV と非 CSV ベースのオプションの両方が有効になります。 詳細については、「[フェールオーバー クラスターを作成する](/windows-server/failover-clustering/create-failover-cluster)」を参照してください。
 
 WSFC で実行される一般的なアプリケーションには、次のようなものがあります。
 
@@ -54,10 +54,10 @@ WSFC で実行される一般的なアプリケーションには、次のよう
 ### <a name="linux"></a>Linux
 
 Azure 共有ディスクは、以下でサポートされています。
-- [SUSE SLE for SAP および SUSE SLE HA 15 SP1 以上](https://documentation.suse.com/sle-ha/15-SP1/single-html/SLE-HA-guide/index.html)
+- [SUSE SLE for SAP および SUSE SLE HA 15 SP1 以上](https://www.suse.com/c/azure-shared-disks-excercise-w-sles-for-sap-or-sle-ha/)
 - [Ubuntu 18.04 以降](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874)
-- [RHEL 8 バージョンの RHEL 開発者向けプレビュー](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_and_managing_high_availability_clusters/index)
-- [Oracle Enterprise Linux] (https://docs.oracle.com/en/operating-systems/oracle-linux/8/availability/hacluster-1.html)
+- [RHEL 8 バージョンの RHEL 開発者向けプレビュー](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/deploying_red_hat_enterprise_linux_8_on_public_cloud_platforms/index?lb_target=production#azure-configuring-shared-block-storage_configuring-rhel-high-availability-on-azure)
+- [Oracle Enterprise Linux](https://docs.oracle.com/en/operating-systems/oracle-linux/8/availability/hacluster-1.html)
 
 Linux クラスターでは、[Pacemaker](https://wiki.clusterlabs.org/wiki/Pacemaker) などのクラスター マネージャーを利用できます。 Pacemaker は [Corosync](http://corosync.github.io/corosync/) 上に構築され、高可用性環境にデプロイされたアプリケーションのクラスター通信を可能にします。 一般的なクラスター化されたファイルシステムには、[ocfs2](https://oss.oracle.com/projects/ocfs2/) と [gfs2](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/ch-overview-gfs2) があります。 SCSI 永続的予約 (SCSI PR) または STONITH Block Device (SBD) ベースのクラスター モデルを使用して、ディスクへのアクセスを調節することができます。 SCSI PR を使用する場合は、[fence_scsi](http://manpages.ubuntu.com/manpages/eoan/man8/fence_scsi.8.html) や [sg_persist](https://linux.die.net/man/8/sg_persist) などのユーティリティを使用して、予約と登録を操作できます。
 

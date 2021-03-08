@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/12/2020
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: b099a6ea706482e25b2c37a87cf0a24f2fe475bb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9a20a7966daff372cf5c0abc9b7b1dbbfd459838
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528240"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403240"
 ---
 # <a name="revisions-in-azure-api-management"></a>Azure API Management のリビジョン
 
@@ -38,7 +38,7 @@ API の各リビジョンには、特別な形式の URL を使用してアク�
 
 `https://apis.contoso.com/customers;rev=3?customerId=123`
 
-既定では、各リビジョンのセキュリティ設定は現在のリビジョンのものと同じです。 リビジョンごとに異なるセキュリティを適用したい場合、特定のリビジョンのポリシーを意図的に変更することができます。 たとえば、[IP ホワイトリスト ポリシー](./api-management-access-restriction-policies.md#RestrictCallerIPs)を追加して、外部の呼び出し元による開発中のリビジョンへのアクセスを防ぐことができます。
+既定では、各リビジョンのセキュリティ設定は現在のリビジョンのものと同じです。 リビジョンごとに異なるセキュリティを適用したい場合、特定のリビジョンのポリシーを意図的に変更することができます。 たとえば、[IP フィルタリング ポリシー](./api-management-access-restriction-policies.md#RestrictCallerIPs)を追加して、外部の呼び出し元による開発中のリビジョンへのアクセスを防ぐことができます。
 
 リビジョンはオフラインにすることができます。これにより、呼び出し元は、URL を介してリビジョンにアクセスしようとしてもできなくなります。 Azure portal を使用して、リビジョンをオフラインとしてマークできます。 PowerShell を使用する場合は、`Set-AzApiManagementApiRevision` コマンドレットを使用して、`Path` 引数を `$null` に設定できます。
 

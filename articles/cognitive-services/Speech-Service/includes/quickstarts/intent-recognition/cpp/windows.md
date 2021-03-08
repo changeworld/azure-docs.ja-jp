@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 9c0c2673acf12ddf80b77be57acc5af55e7f160c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 08679bac77121ee2d276f3d2854e0b119c769582
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87298801"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109337"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,14 +46,14 @@ ms.locfileid: "87298801"
 このコードを `recognizeIntent()` メソッドに挿入します。 次の値を必ず更新してください。
 
 * `"YourLanguageUnderstandingSubscriptionKey"` を LUIS 予測キーで置き換えます。
-* `"YourLanguageUnderstandingServiceRegion"` を LUIS の場所で置き換えます。  [リージョン](https://aka.ms/speech/sdkregion)の**リージョン識別子**を使用してください。
+* `"YourLanguageUnderstandingServiceRegion"` を LUIS の場所で置き換えます。  [リージョン](../../../../regions.md)の **リージョン識別子** を使用してください。
 
 >[!TIP]
 > これらの値を見つける方法については、「[意図認識用の LUIS アプリを作成する](#create-a-luis-app-for-intent-recognition)」を参照してください。
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=25)]
 
-このサンプルでは、`FromSubscription()` メソッドを使用して `SpeechConfig` をビルドします。 使用可能なメソッドの完全な一覧については、[SpeechConfig クラス](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)に関する記事を参照してください。
+このサンプルでは、`FromSubscription()` メソッドを使用して `SpeechConfig` をビルドします。 使用可能なメソッドの完全な一覧については、[SpeechConfig クラス](/cpp/cognitive-services/speech/speechconfig)に関する記事を参照してください。
 
 Speech SDK では、既定で認識される言語が en-us です。ソース言語の選択については、「[音声テキスト変換のソース言語を指定する](../../../../how-to-specify-source-language.md)」を参照してください。
 
@@ -75,6 +75,13 @@ Speech SDK では、既定で認識される言語が en-us です。ソース�
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=31-33)]
 
 この例では、`AddIntent()` 関数を使用して、個別に意図を追加します。 モデルのすべての意図を追加する場合は、`AddAllIntents(model)` を使用し、モデルを渡します。
+
+> [!NOTE]
+> Speech SDK では、LUIS v2.0 エンドポイントのみがサポートされています。
+> V2.0 URL パターンを使用するには、例のクエリ フィールドにある v3.0 エンドポイントの URL を手動で変更する必要があります。
+> LUIS v2.0 エンドポイントは、常に次の 2 つのパターンのいずれかに従います。
+> * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+> * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 
 ## <a name="recognize-an-intent"></a>意図を認識する
 

@@ -5,25 +5,25 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
-ms.openlocfilehash: 2e9cb216c100f1732230a90572284bd3f8462584
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 11bd79a1bc88d2605a20744f5a6b6536d754c100
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433141"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91576644"
 ---
 # <a name="override-materials-during-model-conversion"></a>モデル変換中に素材をオーバーライドする
 
 レンダラーに使用される [PBR 素材](../../overview/features/pbr-materials.md)を定義するために、ソース モデルの素材設定が使用されます。
 場合によっては、[既定の変換](../../reference/material-mapping.md)では目的の結果が得られず、変更を加える必要があります。
-Azure Remote Rendering で使用するためにモデルを変換する場合、素材のオーバーライド ファイルを用意し、素材ごとに素材変換を行う方法をカスタマイズできます。
-[モデル変換の構成](configure-model-conversion.md)に関するセクションでは、素材のオーバーライド ファイル名を宣言する手順が説明されています。
+Azure Remote Rendering で使用するためにモデルを変換する場合は、素材のオーバーライド ファイルを用意して、素材変換を行う方法を素材ごとにカスタマイズできます。
+入力コンテナーに、入力モデル `<modelName>.<ext>` と共に `<modelName>.MaterialOverrides.json` という名前のファイルがある場合は、それが素材のオーバーライド ファイルとして使用されます。
 
 ## <a name="the-override-file-used-during-conversion"></a>変換中に使用されるオーバーライド ファイル
 
 単純な例として、ボックス モデルに "既定値" という 1 つの素材があるとします。
 さらに、ARR で使用するために albedo の色を調整する必要があるとします。
-この場合、`box_materials_override.json` ファイルは次のように作成できます。
+この場合、`box.MaterialOverrides.json` ファイルは次のように作成できます。
 
 ```json
 [
@@ -39,15 +39,7 @@ Azure Remote Rendering で使用するためにモデルを変換する場合、
 ]
 ```
 
-`box_materials_override.json` ファイルが入力コンテナーに配置され、`box.fbx` とは別に `box.ConversionSettings.json` が追加されます。これにより、オーバーライド ファイルの位置が変換に指示されます ([モデル変換の構成](configure-model-conversion.md)に関するページを参照してください)。
-
-```json
-{
-    "material-override" : "box_materials_override.json"
-}
-```
-
-モデルが変換されると、新しい設定が適用されます。
+`box.MaterialOverrides.json` ファイルを `box.fbx` と共に入力コンテナーに配置することで、変換サービスに新しい設定を適用するように指示します。
 
 ### <a name="color-materials"></a>色素材
 
@@ -84,6 +76,36 @@ Azure Remote Rendering で使用するためにモデルを変換する場合、
 ```
 
 無視できるテクスチャ マップの詳細な一覧については、以下の JSON スキーマを参照してください。
+
+### <a name="applying-the-same-overrides-to-multiple-materials"></a>複数の素材に同じオーバーライドを適用する
+
+既定では、素材のオーバーライド ファイルにあるエントリの名前が素材名と完全に一致した場合にそのエントリが適用されます。
+同じオーバーライドを複数の素材に適用することがよくあるため、必要に応じて正規表現をエントリ名として指定できます。
+フィールド `nameMatching` の既定値は `exact` ですが、`regex` に設定することで、一致するすべての素材にそのエントリが適用されるようになります。
+使用する構文は、JavaScript で使用する構文と同じです。 次の例に示すオーバーライドは、"Material2"、"Material01"、"Material999" などの名前の素材に適用されます。
+
+```json
+[
+    {
+        "name": "Material[0-9]+",
+        "nameMatching": "regex",
+        "albedoColor": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 1.0,
+            "a": 1.0
+        }
+    }
+]
+```
+
+1 つの素材に適用される素材のオーバーライド ファイルのエントリは 1 つだけです。
+素材名に完全一致が存在する場合 (つまり `nameMatching` がないか `exact` に等しい場合) は、そのエントリが選択されます。
+それ以外の場合は、素材名と一致するファイル内の最初の正規表現エントリが選択されます。
+
+### <a name="getting-information-about-which-entries-applied"></a>適用されたエントリに関する情報を取得する
+
+出力コンテナーに書き込まれる [info ファイル](get-information.md#information-about-a-converted-model-the-info-file)には、指定されたオーバーライドの数とオーバーライドされた素材の数に関する情報が記録されています。
 
 ## <a name="json-schema"></a>JSON スキーマ
 
@@ -154,6 +176,7 @@ Azure Remote Rendering で使用するためにモデルを変換する場合、
         "properties":
         {
             "name": { "type" : "string"},
+            "nameMatching" : { "type" : "string", "enum" : ["exact", "regex"] },
             "unlit": { "type" : "boolean" },
             "albedoColor": { "$ref": "#/definitions/colorOrAlpha" },
             "roughness": { "type": "number" },

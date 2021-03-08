@@ -1,29 +1,33 @@
 ---
-title: Azure Maps Creator 屋内マップの動的スタイル設定を実装する
-description: Creator の屋内マップに動的スタイル設定を実装する方法について説明します
+title: Azure Maps Creator (プレビュー) の屋内マップに動的スタイル設定を実装する
+description: Creator (プレビュー) の屋内マップに動的スタイル設定を実装する方法について説明します
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a96a62d7bb93f0ede6b16008dc844ad7f1a8c8d2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 266dc5d62f6224495075546528ad71d806d415ac
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517299"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903447"
 ---
-# <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Creator の屋内マップに動的スタイル設定を実装する
+# <a name="implement-dynamic-styling-for-creator-preview-indoor-maps"></a>Creator (プレビュー) の屋内マップに動的スタイル設定を実装する
 
-Azure Maps Creator [Feature State サービス](https://docs.microsoft.com/rest/api/maps/featurestate)を使用すると、屋内マップ データ地物の動的プロパティに基づいてスタイルを適用できます。  たとえば、施設の会議室を特定の色でレンダリングして、占有状態を反映できます。 この記事では、[Feature State サービス](https://docs.microsoft.com/rest/api/maps/featurestate)と [Indoor Web モジュール](how-to-use-indoor-module.md)を使用して、屋内マップ地物を動的にレンダリングする方法について説明します。
+> [!IMPORTANT]
+> Azure Maps Creator サービスは、現在パブリック プレビューの段階にあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+Azure Maps Creator [Feature State サービス](/rest/api/maps/featurestate)を使用すると、屋内マップ データ地物の動的プロパティに基づいてスタイルを適用できます。  たとえば、施設の会議室を特定の色でレンダリングして、占有状態を反映できます。 この記事では、[Feature State サービス](/rest/api/maps/featurestate)と [Indoor Web モジュール](how-to-use-indoor-module.md)を使用して、屋内マップ地物を動的にレンダリングする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
-3. [Creator リソースを作成します](how-to-manage-creator.md)
+3. [Creator (プレビュー) リソースを作成します](how-to-manage-creator.md)
 4. [サンプル Drawing パッケージ](https://github.com/Azure-Samples/am-creator-indoor-data-examples)をダウンロードします。
 5. [屋内マップを作成](tutorial-creator-indoor-maps.md)して、`tilesetId` と `statesetId` を取得します。
 6. [Indoor Maps モジュールの使用方法](how-to-use-indoor-module.md)の手順に従って、Web アプリケーションを構築します。
@@ -68,7 +72,7 @@ map.events.add("click", function(e){
 
 1. Postman アプリケーションで、 **[New]\(新規\)** を選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 **[Request name]\(要求名\)** を入力し、コレクションを選択します。 **[保存]**
 
-2. [Feature Update States API](https://docs.microsoft.com/rest/api/maps/featurestate/updatestatespreview) を使用して状態を更新します。 状態セット ID を渡し、2 つのユニットのいずれかに `UNIT26` を渡します。 Azure Maps サブスクリプション キーを追加します。 状態を更新するための **POST** 要求の URL は次のとおりです。
+2. [Feature Update States API](/rest/api/maps/featurestate/updatestatespreview) を使用して状態を更新します。 状態セット ID を渡し、2 つのユニットのいずれかに `UNIT26` を渡します。 Azure Maps サブスクリプション キーを追加します。 状態を更新するための **POST** 要求の URL は次のとおりです。
 
     ```http
     https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetId}&featureID=UNIT26&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -113,7 +117,7 @@ map.events.add("click", function(e){
 詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [屋内マップ用の Creator](creator-indoor-maps.md)
+> [屋内マップ用の Creator (プレビュー)](creator-indoor-maps.md)
 
 この記事で触れられている API のリファレンスを参照してください。
 
@@ -134,4 +138,3 @@ map.events.add("click", function(e){
 
 > [!div class="nextstepaction"]
 > [WFS サービス](creator-indoor-maps.md#web-feature-service-api)
-

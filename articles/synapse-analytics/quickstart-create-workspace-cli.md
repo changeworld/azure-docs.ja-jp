@@ -5,16 +5,16 @@ services: synapse-analytics
 author: alehall
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: workspace
 ms.date: 08/25/2020
 ms.author: alehall
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 7f0bf7d409c5e47abaaa5b59271f55952d8ccff4
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.reviewer: jrasnick
+ms.openlocfilehash: 8a56b325dd5e1180b1229465965167241fab76a8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871590"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676454"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Synapse ワークスペースを作成する
 
@@ -22,38 +22,17 @@ Azure CLI は、Azure リソースを管理するための、Azure のコマン�
 
 このクイックスタートでは、Azure CLI を使用して Synapse ワークスペースを作成する方法について説明します。
 
-Azure サブスクリプションをお持ちでない場合は、[開始する前に無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
 - 軽量で柔軟性の高いコマンド ライン JSON プロセッサ、[jq](https://stedolan.github.io/jq/download/) をダウンロードしてインストールします。
-- [Azure Data Lake Storage Gen2 ストレージ アカウント](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Azure Data Lake Storage Gen2 ストレージ アカウント](../storage/common/storage-account-create.md)
 
     > [!IMPORTANT]
-    > Azure Synapse ワークスペースは、選択した ADLS Gen2 アカウントの読み取りと書き込みを行うことができる必要があります。 加えて、プライマリ ストレージ アカウントとしてリンクするストレージ アカウントについては、「[ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal#create-a-storage-account)」ページの説明に従って、その作成時に**階層型名前空間**を有効にする必要があります。 
+    > Azure Synapse ワークスペースは、選択した ADLS Gen2 アカウントの読み取りと書き込みを行うことができる必要があります。 加えて、プライマリ ストレージ アカウントとしてリンクするストレージ アカウントについては、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account)」ページの説明に従って、その作成時に **階層型名前空間** を有効にする必要があります。 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="install-the-azure-cli-locally"></a>Azure CLI をローカルにインストールする
-
-Azure CLI をローカルにインストールして使用する場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
-
-Azure CLI をローカルで実行している場合、ログインして認証を行う必要があります。 Azure Cloud Shell を使用している場合、この手順は必要ありません。 Azure CLI にログインするには、`az login` を実行して、ブラウザー ウィンドウで認証を行います。
-
-```azurecli
-az login
-```
-
-Azure CLI を使用した認証について詳しくは、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli)」をご覧ください。
-
-## <a name="install-azure-synapse-extension-for-azure-cli"></a>Azure CLI 用 Azure Synapse 拡張機能をインストールする
-
-```azurecli
-az extension add --name synapse
-```
-
-> [!WARNING]
-> Azure CLI 用 Azure Synapse 拡張機能はプレビュー段階です。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-an-azure-synapse-workspace-using-the-azure-cli"></a>Azure CLI を使用して Azure Synapse ワークスペースを作成する
 
@@ -71,31 +50,12 @@ az extension add --name synapse
     |SqlPassword| セキュリティで保護されたパスワードを選択します。|
     |||
 
-2. Azure Synapse ワークスペースのコンテナーとしてリソース グループを作成します。
+1. Azure Synapse ワークスペースのコンテナーとしてリソース グループを作成します。
     ```azurecli
     az group create --name $SynapseResourceGroup --location $Region
     ```
-3. ADLS Gen 2 ストレージ アカウント キーを取得します。
-    ```azurecli
-    StorageAccountKey=$(az storage account keys list \
-      --account-name $StorageAccountName \
-      | jq -r '.[0] | .value')
-    ```
-4. ADLS Gen 2 ストレージ エンドポイント URL を取得します。
-    ```azurecli
-    StorageEndpointUrl=$(az storage account show \
-      --name $StorageAccountName \
-      --resource-group $StorageAccountResourceGroup \
-      | jq -r '.primaryEndpoints | .dfs')
-    ```
 
-5. (オプション) ADLS Gen2 のストレージ アカウント キーとエンドポイントは、次のようにしていつでも確認できます。
-    ```azurecli
-    echo "Storage Account Key: $StorageAccountKey"
-    echo "Storage Endpoint URL: $StorageEndpointUrl"
-    ```
-
-6. Azure Synapse ワークスペースを作成します。
+1. Azure Synapse ワークスペースを作成します。
     ```azurecli
     az synapse workspace create \
       --name $SynapseWorkspaceName \
@@ -107,14 +67,14 @@ az extension add --name synapse
       --location $Region
     ```
 
-7. Azure Synapse ワークスペースの Web URL と開発 URL を取得します。
+1. Azure Synapse ワークスペースの Web URL と開発 URL を取得します。
     ```azurecli
     WorkspaceWeb=$(az synapse workspace show --name $SynapseWorkspaceName --resource-group $SynapseResourceGroup | jq -r '.connectivityEndpoints | .web')
 
     WorkspaceDev=$(az synapse workspace show --name $SynapseWorkspaceName --resource-group $SynapseResourceGroup | jq -r '.connectivityEndpoints | .dev')
     ```
 
-8. ご使用のマシンから Azure Synapse ワークスペースへのアクセスを許可するファイアウォール規則を作成します。
+1. ご使用のマシンから Azure Synapse ワークスペースへのアクセスを許可するファイアウォール規則を作成します。
 
     ```azurecli
     ClientIP=$(curl -sb -H "Accept: application/json" "$WorkspaceDev" | jq -r '.message')
@@ -124,7 +84,7 @@ az extension add --name synapse
     az synapse workspace firewall-rule create --end-ip-address $ClientIP --start-ip-address $ClientIP --name "Allow Client IP" --resource-group $SynapseResourceGroup --workspace-name $SynapseWorkspaceName
     ```
 
-9. 環境変数 `WorkspaceWeb` に格納された Azure Synapse ワークスペースの Web URL アドレスを開いてワークスペースにアクセスします。
+1. 環境変数 `WorkspaceWeb` に格納された Azure Synapse ワークスペースの Web URL アドレスを開いてワークスペースにアクセスします。
 
     ```azurecli
     echo "Open your Azure Synapse Workspace Web URL in the browser: $WorkspaceWeb"
@@ -139,7 +99,7 @@ az extension add --name synapse
 > [!WARNING]
 > Azure Synapse ワークスペースを削除すると、分析エンジンと、含まれている SQL プールとワークスペース メタデータのデータベースに格納されているデータが削除されます。 以後、SQL または Apache Spark のエンドポイントには接続できません。 すべてのコード成果物が削除されます (クエリ、ノートブック、ジョブ定義、およびパイプライン)。
 >
-> ワークスペースを削除しても、そのワークスペースにリンクされている Data Lake Store Gen2 のデータには影響**しません**。
+> ワークスペースを削除しても、そのワークスペースにリンクされている Data Lake Store Gen2 のデータには影響 **しません**。
 
 Azure Synapse ワークスペースを削除する場合は、次のコマンドを実行します。
 

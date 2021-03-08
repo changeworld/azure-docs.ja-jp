@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 047915874dfd81fdf68dc97ac217274b2439d726
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 580181aaaea975ee07bcec8108297079c5373b92
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027479"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007411"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Team Data Science Process の活用: SQL Sever の使用
 このチュートリアルでは、SQL Server と公開されているデータセット ([NYC タクシー乗車](https://www.andresmh.com/nyctaxitrips/)データセット) を使って、機械学習モデルを構築してデプロイするプロセスを説明します。 ここで使用する手順は、標準的なデータ サイエンス ワークフローを踏襲しています。つまり、データの取り込みと調査、特徴エンジニアリングによる学習の円滑化を経てモデルを構築し、デプロイします。
@@ -83,8 +83,8 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 Azure のデータ サイエンス環境をセット アップするには、
 
 1. [ストレージ アカウントの作成](../../storage/common/storage-account-create.md)
-2. [Azure Machine Learning ワークスペースの作成](../studio/create-workspace.md)
-3. [データ サイエンス仮想マシンをプロビジョニングする](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)。この仮想マシンにより、SQL Server と IPython Notebook サーバーが用意されます。
+2. [Azure Machine Learning ワークスペースの作成](../classic/create-workspace.md)
+3. [データ サイエンス仮想マシンをプロビジョニングする](../data-science-virtual-machine/overview.md)。この仮想マシンにより、SQL Server と IPython Notebook サーバーが用意されます。
    
    > [!NOTE]
    > サンプル スクリプトと IPython Notebook は、セットアップ プロセス中、データ サイエンス仮想マシンにダウンロードされます。 仮想マシンのインストール後スクリプトが完了すると、サンプルは仮想マシンのドキュメント ライブラリに入ります。  
@@ -116,7 +116,7 @@ AzCopy を使用してデータをコピーするには
 ## <a name="bulk-import-data-into-sql-server-database"></a><a name="dbload"></a>SQL Server データベースにデータを一括インポートする
 *Partitioned テーブルと Views* を使用すると、大量のデータを SQL データベースおよび後続のクエリに読み込んだり転送したりする際のパフォーマンスを向上させることができます。 このセクションでは、「 [SQL パーティション テーブルを使用したデータの並行一括インポート](parallel-load-sql-partitioned-tables.md) 」で説明する手順に従ってデータベースを新規作成し、並行してデータをパーティション分割されたテーブルに読み込みます。
 
-1. VM にログオンした状態で、 **SQL Server Management Studio**を起動します。
+1. VM にログオンした状態で、 **SQL Server Management Studio** を起動します。
 2. Windows 認証を使用して接続します。
    
     ![SSMS 接続][12]
@@ -129,7 +129,7 @@ AzCopy を使用してデータをコピーするには
      
        ![SQL Server プロパティ][14]
    * 左側の **[ページの選択]** リストから、 **[データベース設定]** を選択します。
-   * **[データベースの既定の場所]** が選択した**データ ディスク**の場所になっているか確認し、なっていなければ変更します。 この場所は、既定の設定で作成した場合に新しいデータベースが存在する場所です。
+   * **[データベースの既定の場所]** が選択した **データ ディスク** の場所になっているか確認し、なっていなければ変更します。 この場所は、既定の設定で作成した場合に新しいデータベースが存在する場所です。
      
        ![SQL Database 既定値][15]  
 5. 新しいデータベースとファイルグループのセットを作成してパーティション分割されたテーブルを保持するには、サンプルのスクリプト **create\_db\_default.sql** を開きます。 スクリプトは、既定のデータの場所に **TaxiNYC** という名前の新しいデータベースと 12 のファイルグループを作成します。 各ファイルグループは、1 か月分の trip\_data と trip\_fare data を保持します。 必要な場合は、データベース名を変更します。 スクリプトを実行するには、 **[実行]** をクリックします。
@@ -432,7 +432,7 @@ plt.scatter(df1['passenger_count'], df1['trip_distance'])
 ![プロット #8][8]
 
 ### <a name="sub-sampling-the-data-in-sql"></a>SQL でのデータのサブサンプリング
-[Azure Machine Learning Studio](https://studio.azureml.net) でモデル作成用のデータを準備する際、**SQL クエリをデータのインポート モジュールで直接使用する**か、エンジニアリングとサンプリングが行われたデータを新しいテーブルで保持するかを決定できます。新しいテーブルは、簡単な **SELECT * FROM <your\_new\_table\_name>** によって[データのインポート][import-data] モジュールで使用できます。
+[Azure Machine Learning Studio](https://studio.azureml.net) でモデル作成用のデータを準備する際、**SQL クエリをデータのインポート モジュールで直接使用する** か、エンジニアリングとサンプリングが行われたデータを新しいテーブルで保持するかを決定できます。新しいテーブルは、簡単な **SELECT * FROM <your\_new\_table\_name>** によって [データのインポート][import-data] モジュールで使用できます。
 
 このセクションでは、サンプリング データとエンジニアリング データを保持するためにテーブルを新規作成します。 モデルを構築するための直接的な SQL クエリの例は、「 [SQL Server でのデータの探索と特徴エンジニアリング](#dbexplore) 」セクションに記載されています。
 
@@ -585,7 +585,7 @@ cursor.commit()
 ```
 
 #### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>特徴エンジニアリング: 10 進数の緯度と経度から抽出する場所特徴
-この例では、"緯度" フィールドや "経度" フィールドの 10 進数表記を、国または地域、都市、町、ブロックなどの異なる粒度に細分化します。新しい geo フィールドは実際の場所にマップされていません。 Geocode の場所のマッピングの詳細については、「[Bing マップの REST サービス](https://msdn.microsoft.com/library/ff701710.aspx)」を参照してください。
+この例では、"緯度" フィールドや "経度" フィールドの 10 進数表記を、国または地域、都市、町、ブロックなどの異なる粒度に細分化します。新しい geo フィールドは実際の場所にマップされていません。 Geocode の場所のマッピングの詳細については、「[Bing マップの REST サービス](/bingmaps/rest-services/locations/find-a-location-by-point)」を参照してください。
 
 ```sql
 nyctaxi_one_percent_insert_col = '''
@@ -626,9 +626,9 @@ pd.read_sql(query,conn)
 3. 回帰タスク:乗車で支払われたチップの金額を予測します。  
 
 ## <a name="building-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Azure Machine Learning でのモデルの作成
-モデリングの演習を開始するには、Azure Machine Learning ワークスペースにログインします。 Machine Learning ワークスペースをまだ作成していない場合は、 [Azure Machine Learning ワークスペースの作成](../studio/create-workspace.md)に関する記事をご覧ください。
+モデリングの演習を開始するには、Azure Machine Learning ワークスペースにログインします。 Machine Learning ワークスペースをまだ作成していない場合は、 [Azure Machine Learning ワークスペースの作成](../classic/create-workspace.md)に関する記事をご覧ください。
 
-1. Azure Machine Learning の使用を開始するには、「 [Azure Machine Learning Studio とは](../studio/what-is-ml-studio.md)
+1. Azure Machine Learning の使用を開始するには、「 [Azure Machine Learning Studio とは](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 2. [Azure Machine Learning Studio](https://studio.azureml.net)にログインします。
 3. Studio のホーム ページには、豊富な情報、ビデオ、チュートリアル、モジュール リファレンスへのリンク、およびその他のリソースが用意されています。 Azure Machine Learning の詳細については、 [Azure Machine Learning ドキュメント センター](https://azure.microsoft.com/documentation/services/machine-learning/)をご覧ください。
 
@@ -650,7 +650,7 @@ pd.read_sql(query,conn)
 1. **[データの入力と出力]** セクションにある [[データのインポート]][import-data] モジュール を使用して、Azure Machine Learning にデータを取り込みます。 詳細については、[データのインポート][import-data] モジュールのリファレンス ページを参照してください。
    
     ![Azure Machine Learning の [データのインポート]][17]
-2. **[プロパティ]** パネルで、**Azure SQL Database** を**データ ソース**として選択します。
+2. **[プロパティ]** パネルで、**Azure SQL Database** を **データ ソース** として選択します。
 3. データベースの DNS 名を **[データベース サーバー名]** フィールドに入力します。 形式: `tcp:<your_virtual_machine_DNS_name>,1433`
 4. **データベース名** を対応するフィールドに入力します。
 5. <**SQL ユーザー名**> を **[Server user account name (サーバーのユーザー アカウント名)]** に、<**パスワード**> を **[Server user account password (サーバーのユーザー アカウントのパスワード)]** に入力します。
@@ -661,21 +661,21 @@ SQL Server データベースから直接データを読み取る、二項分類
 ![Azure Machine Learning のトレーニング][10]
 
 > [!IMPORTANT]
-> 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、 **3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。 各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての**ターゲット リーク**を**除外する**ことです。 たとえば、二項分類を使用する場合は、ラベル **tipped** を使用し、フィールド **[tip\_class]** 、 **[tip\_amount]** 、 **[total\_amount]** は除外します。 使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
+> 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、 **3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。 各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての **ターゲット リーク** を **除外する** ことです。 たとえば、二項分類を使用する場合は、ラベル **tipped** を使用し、フィールド **[tip\_class]** 、 **[tip\_amount]** 、 **[total\_amount]** は除外します。 使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
 > 
 > 不要な列またはターゲット リークを除外するには、[データセット内の列の選択][select-columns]モジュールまたは[メタデータの編集][edit-metadata]を使用できます。 詳細については、[データセット内の列の選択][select-columns]と[メタデータの編集][edit-metadata]のリファレンス ページを参照してください。
 > 
 > 
 
 ## <a name="deploying-models-in-azure-machine-learning"></a><a name="mldeploy"></a>Azure Machine Learning にモデルを配置する
-モデルの準備ができたら、実験から直接 Web サービスとして簡単にデプロイできます。 Azure Machine Learning Web サービスのデプロイの詳細については、「 [Azure Machine Learning Web サービスをデプロイする](../studio/deploy-a-machine-learning-web-service.md)」をご覧ください。
+モデルの準備ができたら、実験から直接 Web サービスとして簡単にデプロイできます。 Azure Machine Learning Web サービスのデプロイの詳細については、「 [Azure Machine Learning Web サービスをデプロイする](../classic/deploy-a-machine-learning-web-service.md)」をご覧ください。
 
 新しい Web サービスをデプロイするには以下のことを実行する必要があります。
 
 1. スコア付け実験の作成。
 2. Web サービスのデプロイ。
 
-**終了した**トレーニング実験からスコア付け実験を作成するには、下部の操作バーにある **[スコア付け実験の作成]** をクリックしてください。
+**終了した** トレーニング実験からスコア付け実験を作成するには、下部の操作バーにある **[スコア付け実験の作成]** をクリックしてください。
 
 ![Azure スコアリング][18]
 
@@ -685,7 +685,7 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 2. 予想される入力データ スキーマを表す論理 **入力ポート** を特定する。
 3. 予想される Web サービスの出力スキーマを表す論理 **出力ポート** を特定する。
 
-スコア付け実験が作成されたら、それを確認し、必要に応じて調整します。 一般的な調整は、入力データセットやクエリをラベル フィールドを除くものに置き換えることです。これらのラベルは、サービスの呼び出し時にスキーマで使用できないためです。 入力データセットまたはクエリのサイズを、入力スキーマを示すのに十分な 2、3 個のレコードまで削減することをお勧めします。 出力ポートでは、一般的に、すべての入力フィールドを除外し、[データセット内の列の選択][select-columns]モジュールを使用して、**スコアリングしたラベル**と**スコアリングした確率**のみを出力に含めます。
+スコア付け実験が作成されたら、それを確認し、必要に応じて調整します。 一般的な調整は、入力データセットやクエリをラベル フィールドを除くものに置き換えることです。これらのラベルは、サービスの呼び出し時にスキーマで使用できないためです。 入力データセットまたはクエリのサイズを、入力スキーマを示すのに十分な 2、3 個のレコードまで削減することをお勧めします。 出力ポートでは、一般的に、すべての入力フィールドを除外し、[データセット内の列の選択][select-columns]モジュールを使用して、**スコアリングしたラベル** と **スコアリングした確率** のみを出力に含めます。
 
 サンプルのスコア付け実験を次の図に示します。 デプロイできる状態になったら、下部の操作バーにある **[Web サービスの発行]** ボタンをクリックします。
 
@@ -722,6 +722,6 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 
 
 <!-- Module References -->
-[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[edit-metadata]: /azure/machine-learning/studio-module-reference/edit-metadata
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[import-data]: /azure/machine-learning/studio-module-reference/import-data

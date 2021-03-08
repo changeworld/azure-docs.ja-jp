@@ -3,6 +3,8 @@
   items:
     - name: App Service 環境について
       href: intro.md
+    - name: App Service Environment v3 (プレビュー)
+      href: overview.md
 - name: クイックスタート
   expanded: true
   items:
@@ -10,11 +12,13 @@
       href: create-external-ase.md
     - name: 内部 ASE の作成
       href: create-ilb-ase.md
+    - name: ASEv3 を作成する (プレビュー)
+      href: creation.md
 - name: チュートリアル
   items:
     - name: WAF との統合
       href: app-service-app-service-environment-web-application-firewall.md
-    - name: TLS の構成
+    - name: ASE のカスタム設定
       href: app-service-app-service-environment-custom-settings.md
 - name: サンプル
   items:
@@ -28,12 +32,12 @@
       href: network-info.md
     - name: 地理的に分散されたスケール
       href: app-service-app-service-environment-geo-distributed-scale.md
-    - name: ASEv1
-      href: app-service-app-service-environment-intro.md
     - name: 診断
       href: ../overview-diagnostics.md
     - name: 証明書
       href: certificates.md
+    - name: ASEv3 (プレビュー) のネットワーク
+      href: networking.md
 - name: ハウツー ガイド
   items:
     - name: ASE の使用
@@ -48,12 +52,16 @@
       href: firewall-integration.md
     - name: ゾーン冗長性
       href: zone-redundancy.md
+    - name: ASEv3 を使用する (プレビュー)
+      href: using.md
 - name: リファレンス
   items:
     - name: 管理アドレス
       href: management-addresses.md
     - name: ASEv1 ドキュメント
       items:
+        - name: ASEv1
+          href: app-service-app-service-environment-intro.md
         - name: ASEv1 の作成
           href: app-service-web-how-to-create-an-app-service-environment.md
         - name: ASEv1 の構成

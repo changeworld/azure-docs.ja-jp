@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: matjazl
-ms.openlocfilehash: c62593251cb0e19c91d1c4877d1b33fe407ebd06
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 096e4e3ecbcedaec674e074a2baccbb336e03c94
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847008"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95524200"
 ---
 # <a name="configure-local-rbac-for-fhir"></a>FHIR 用にローカル RBAC を構成する 
 
@@ -23,7 +23,7 @@ ms.locfileid: "87847008"
 
 ## <a name="add-service-principal"></a>サービス プリンシパルの追加
 
-ローカル RBAC では、FHIR サーバーで外部の Azure Active Directory テナントを使用できます。 RBAC システムでこのテナントのグループ メンバーシップを確認できるようにするには、Azure API for FHIR でテナント内にサービス プリンシパルが必要です。 このサービス プリンシパルは、Azure API for FHIR をデプロイしたサブスクリプションに関連付けられたテナントに自動的に作成されます。ただし、テナントにサブスクリプションが関連付けられていない場合は、テナント管理者が、次のいずれかのコマンドを使用してこのサービス プリンシパルを作成する必要があります。
+ローカル RBAC では、FHIR サーバーで外部の Azure Active Directory テナントを使用できます。 ローカル RBAC システムでこのテナントのグループ メンバーシップを確認できるようにするには、Azure API for FHIR でテナント内にサービス プリンシパルが必要です。 このサービス プリンシパルは、Azure API for FHIR をデプロイしたサブスクリプションに関連付けられたテナントに自動的に作成されます。ただし、テナントにサブスクリプションが関連付けられていない場合は、テナント管理者が、次のいずれかのコマンドを使用してこのサービス プリンシパルを作成する必要があります。
 
 `Az` PowerShell モジュールの使用:
 

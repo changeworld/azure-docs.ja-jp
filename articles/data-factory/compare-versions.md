@@ -1,21 +1,17 @@
 ---
 title: Azure Data Factory と Data Factory バージョン 1 の比較
 description: この記事では、Azure Data Factory と Azure Data Factory バージョン 1 を比較します。
-services: data-factory
-documentationcenter: ''
 author: kromerm
-manager: anandsub
+ms.author: makromer
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: overview
 ms.date: 04/09/2018
-ms.author: makromer
-ms.openlocfilehash: 6c43906468ee0124187dc5ce6d6f1405e3b96b2e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: dc5a4c92ee4ac0acd4a69ef94fec0981e328d829
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231235"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393719"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory と Data Factory バージョン 1 の比較
 
@@ -28,7 +24,7 @@ ms.locfileid: "86231235"
 
 | 特徴量 | Version 1 | 現在のバージョン | 
 | ------- | --------- | --------- | 
-| データセット | アクティビティで入力および出力として使用するデータを参照するデータの名前付きビューです。 データセットは、テーブル、ファイル、フォルダー、ドキュメントなど、さまざまなデータ ストア内のデータを示します。 たとえば、Azure Blob データセットは、アクティビティによってデータが読み取られる、Azure Blob Storage 内の BLOB コンテナーと BLOB フォルダーを示しています。<br/><br/>**可用性**で、データセットの処理時間枠スライス モデル (時間単位、日単位など) を定義します。 | データセットは、現在のバージョンと同じです。 ただし、データセットの**可用性**スケジュールを定義する必要はありません。 クロック スケジューラ パラダイムからパイプラインをスケジュールできるトリガー リソースを定義できます。 詳細については、「[トリガー](concepts-pipeline-execution-triggers.md#trigger-execution)」と[データセット](concepts-datasets-linked-services.md)に関するページを参照してください。 | 
+| データセット | アクティビティで入力および出力として使用するデータを参照するデータの名前付きビューです。 データセットは、テーブル、ファイル、フォルダー、ドキュメントなど、さまざまなデータ ストア内のデータを示します。 たとえば、Azure Blob データセットは、アクティビティによってデータが読み取られる、Azure Blob Storage 内の BLOB コンテナーと BLOB フォルダーを示しています。<br/><br/>**可用性** で、データセットの処理時間枠スライス モデル (時間単位、日単位など) を定義します。 | データセットは、現在のバージョンと同じです。 ただし、データセットの **可用性** スケジュールを定義する必要はありません。 クロック スケジューラ パラダイムからパイプラインをスケジュールできるトリガー リソースを定義できます。 詳細については、「[トリガー](concepts-pipeline-execution-triggers.md#trigger-execution)」と[データセット](concepts-datasets-linked-services.md)に関するページを参照してください。 | 
 | リンクされたサービス | リンクされたサービスは、接続文字列によく似ており、Data Factory が外部リソースに接続するために必要な接続情報を定義します。 | リンクされたサービスは Data Factory V1 と同じですが、現在のバージョン の Data Factory の Integration Runtime コンピューティング環境を利用するための新しい **connectVia** プロパティがあります。 詳細については、[Azure Data Factory の統合ランタイム](concepts-integration-runtime.md)に関するページと、[Azure Blob Storage のリンクされたサービスのプロパティ](connector-azure-blob-storage.md#linked-service-properties)に関するページを参照してください。 |
 | パイプライン | データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインは、1 つのタスクを連携して実行するアクティビティの論理的なグループです。 パイプラインをスケジュールして実行するには、startTime、endTime、isPaused を使用します。 | パイプラインは、データに対して実行されるアクティビティのグループです。 ただし、パイプライン内のアクティビティのスケジュールは、新しいトリガー リソースに分割されています。 現在のバージョンの Data Factory のパイプラインは、むしろ、トリガーを介して個別にスケジュールされる "ワークフロー単位" として考えることができます。 <br/><br/>現在のバージョンの Data Factory では、パイプラインに実行時間の "枠" がありません。 Data Factory V1 の概念である startTime、endTime、isPaused は、現在のバージョンの Data Factory にはなくなりました。 詳細については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関するページと、[パイプラインとアクティビティ](concepts-pipelines-activities.md)に関するページを参照してください。 |
 | Activities | アクティビティは、パイプライン内のデータに対して実行するアクションを定義します。 データ移動 (コピー アクティビティ) およびデータ変換アクティビティ (Hive、Pig、MapReduce など) がサポートされています。 | Data Factory の現在のバージョンでも、アクティビティはパイプライン内の定義されたアクションです。 Data Factory の現在のバージョンには、新しい[制御フロー アクティビティ](concepts-pipelines-activities.md#control-flow-activities)が導入されています。 これらのアクティビティは、制御フロー (ループおよび分岐) で使用します。 V1 でサポートされていたデータ移動およびデータ変換アクティビティは、現在のバージョンでもサポートされています。 現在のバージョンでは、データセットを使用せずに変換アクティビティを定義できます。 |
@@ -87,7 +83,7 @@ SSIS ワークロードをクラウドに移動し、現在のバージョンを
 
 Azure-SSIS Integration Runtime は、クラウドでの SSIS パッケージの実行専用の、Azure VM (ノード) のフル マネージド クラスターです。 Azure-SSIS Integration Runtime のプロビジョニング後は、SSIS パッケージをオンプレミスの SSIS 環境にデプロイするために使用していたのと同じツールを使用できます。 
 
-たとえば、SQL Server Data Tools または SQL Server Management Studio を使用して、Azure 上のこのランタイムに SSIS パッケージをデプロイできます。 手順については、チュートリアル「[SQL Server Integration Services パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md)」を参照してください。 
+たとえば、SQL Server Data Tools または SQL Server Management Studio を使用して、Azure 上のこのランタイムに SSIS パッケージをデプロイできます。 手順については、チュートリアル「[SQL Server Integration Services パッケージを Azure にデプロイする](./tutorial-deploy-ssis-packages-azure.md)」を参照してください。 
 
 ## <a name="flexible-scheduling"></a>柔軟なスケジュール設定
 現在のバージョンの Data Factory では、データセットの可用性スケジュールを定義する必要はありません。 クロック スケジューラ パラダイムからパイプラインをスケジュールできるトリガー リソースを定義できます。 柔軟なスケジュール設定および実行モデルのために、トリガーからパイプラインにパラメーターを渡すこともできます。 
@@ -133,11 +129,11 @@ V1 では、IDotNetActivity インターフェイスの Execute メソッドを�
 | | Version 2 | Version 1 |
 | ------ | -- | -- | 
 | **Azure Portal** | [はい](quickstart-create-data-factory-portal.md) | いいえ |
-| **Azure PowerShell** | [はい](quickstart-create-data-factory-powershell.md) | [はい](data-factory-build-your-first-pipeline-using-powershell.md) |
-| **.NET SDK** | [はい](quickstart-create-data-factory-dot-net.md) | [はい](data-factory-build-your-first-pipeline-using-vs.md) |
-| **REST API** | [はい](quickstart-create-data-factory-rest-api.md) | [はい](data-factory-build-your-first-pipeline-using-rest-api.md) |
+| **Azure PowerShell** | [はい](quickstart-create-data-factory-powershell.md) | [はい](./v1/data-factory-build-your-first-pipeline-using-powershell.md) |
+| **.NET SDK** | [はい](quickstart-create-data-factory-dot-net.md) | [はい](./v1/data-factory-build-your-first-pipeline-using-vs.md) |
+| **REST API** | [はい](quickstart-create-data-factory-rest-api.md) | [はい](./v1/data-factory-build-your-first-pipeline-using-rest-api.md) |
 | **Python SDK** | [はい](quickstart-create-data-factory-python.md) | いいえ |
-| **Resource Manager テンプレート** | [はい](quickstart-create-data-factory-resource-manager-template.md) | [はい](data-factory-build-your-first-pipeline-using-arm.md) | 
+| **Resource Manager テンプレート** | [はい](quickstart-create-data-factory-resource-manager-template.md) | [はい](./v1/data-factory-build-your-first-pipeline-using-arm.md) | 
 
 ## <a name="roles-and-permissions"></a>ロールとアクセス許可
 
@@ -148,4 +144,4 @@ Data Factory バージョン 1 の共同作成者ロールを使って、現在�
 
 
 ## <a name="next-steps"></a>次のステップ
-データ ファクトリの作成手順について、[PowerShell](quickstart-create-data-factory-powershell.md)、[.NET](quickstart-create-data-factory-dot-net.md)、[Python](quickstart-create-data-factory-python.md)、[REST API](quickstart-create-data-factory-rest-api.md) の各クイック スタートを参照してください。 
+データ ファクトリの作成手順について、[PowerShell](quickstart-create-data-factory-powershell.md)、[.NET](quickstart-create-data-factory-dot-net.md)、[Python](quickstart-create-data-factory-python.md)、[REST API](quickstart-create-data-factory-rest-api.md) の各クイック スタートを参照してください。

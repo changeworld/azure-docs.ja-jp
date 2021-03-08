@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 2884302ae636739243e0277fa49ef6889b077c86
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08e028ba057ad57f3d600bc59bf7595c0b1d354c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547598"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456576"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CakeHR の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88547598"
 * ユーザーが自分の Azure AD アカウントを使用して CakeHR に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* CakeHR では、**SP** Initiated SSO がサポートされます
+* CakeHR では、 **SP** Initiated SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -52,7 +52,7 @@ Azure AD への CakeHR の統合を構成するには、ギャラリーからマ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**CakeHR**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **CakeHR** 」と入力します。
 1. 結果のパネルから **[CakeHR]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-cakehr"></a>CakeHR の Azure AD シングル サインオンの構成とテスト
@@ -130,7 +130,7 @@ CakeHR に対する Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-cakehr-sso"></a>CakeHR SSO の構成
 
-1. CakeHR 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. CakeHR 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -142,15 +142,15 @@ CakeHR に対する Azure AD SSO を構成してテストするには、次の�
 
 1. ページの右上隅の **[プロファイル]** をクリックし、 **[設定]** に移動します。
 
-    ![CakeHR の構成](./media/cakehr-tutorial/config01.png)
+    ![このスクリーンショットは、[設定] が選択された状態の [プロファイル] を示しています。](./media/cakehr-tutorial/config01.png)
 
 1. メニュー バーの左側で **[INTEGRATIONS]\(統合\)**  >  **[SAML SSO]** の順にクリックし、以下の手順を実行します。
 
-    ![CakeHR の構成](./media/cakehr-tutorial/config02.png)
+    ![このスクリーンショットは、[設定] ペインを示しています。ここで、これらの手順を実行します。](./media/cakehr-tutorial/config02.png)
 
     a. **[Entity ID]\(エンティティ ID\)** ボックスに、「`cake.hr`」と入力します。
 
-    b. **[Authentication URL]\(認証 URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. **[Authentication URL]\(認証 URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     c. **[Key fingerprint (SHA1 format)]\(キーの拇印 (SHA1 形式)\)** ボックスに、Azure portal からコピーした **THUMBPRINT (拇印)** 値を貼り付けます。
 
@@ -168,11 +168,11 @@ Azure AD ユーザーが CakeHR にサインインできるようにするには
 
 2. メニュー バーの左側で **[COMPANY]\(会社\)**  >  **[ADD]\(追加\)** の順にクリックします。
 
-    ![CakeHR の構成](./media/cakehr-tutorial/config03.png)
+    ![このスクリーンショットは、[COMPANY]\(会社\) と [ADD]\(追加\) が選択された状態の CakeHR を示しています。](./media/cakehr-tutorial/config03.png)
 
 3. **[Add new employee]\(新しい従業員の追加\)** ポップアップで、以下の手順を実行します。
 
-     ![CakeHR の構成](./media/cakehr-tutorial/config04.png)
+     ![このスクリーンショットは、[Add new employee]\(新しい従業員の追加\) を示しています。ここで、これらの手順を実行します。](./media/cakehr-tutorial/config04.png)
 
     a. **[Full name]\(氏名\)** ボックスに、ユーザーの氏名を入力します (例: B.Simon)。
 
@@ -184,14 +184,14 @@ Azure AD ユーザーが CakeHR にサインインできるようにするには
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [CakeHR] タイルをクリックすると、SSO を設定した CakeHR に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [CakeHR] タイルをクリックすると、SSO を設定した CakeHR に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で CakeHR を試す](https://aad.portal.azure.com/)

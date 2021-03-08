@@ -4,13 +4,13 @@ description: Azure FarmBeats のアーキテクチャについて説明します
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: d64c2175072d9979cfda2ea5f75beb34d3ad0d6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: v-ummehabiba
+ms.openlocfilehash: ebc1cdc7c762117851072037624f11e9fa98b6f1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75475721"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182606"
 ---
 # <a name="integration-patterns"></a>統合のパターン
 

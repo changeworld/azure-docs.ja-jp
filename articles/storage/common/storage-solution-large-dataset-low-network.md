@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 6514b149b057d690d37551bd0489c63852addb1e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9b83ba106b35a0a3abd035e85f60c4c39bbadd3b
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207502"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704642"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>ネットワーク帯域幅が低速またはない場合の大規模なデータセットのデータ転送
  
@@ -66,6 +66,6 @@ ms.locfileid: "86207502"
 
 - 以下の方法を理解します
 
-    - [Data Box Edge を使用してデータを転送する](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal)。
-    - [Data Box を使用してデータを転送する](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)。
-    - [Import/Export を使用してデータを転送する](/azure/storage/common/storage-import-export-data-to-blobs)。
+    - [Data Box Edge を使用してデータを転送する](../../databox/data-box-disk-quickstart-portal.md)。
+    - [Data Box を使用してデータを転送する](../../databox/data-box-quickstart-portal.md)。
+    - [Import/Export を使用してデータを転送する](../../import-export/storage-import-export-data-to-blobs.md)。

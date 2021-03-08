@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics ジョブでログイン資格情報を交換する
 description: この記事では、Azure Stream Analytics ジョブの入力および出力シンクの資格情報を更新する方法について説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3154447e4df64b9b335beae99cfd208d1a21efc4
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: fd6c072f9783e8ff5d4d5e465b513c2e530bfd63
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044415"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015234"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Stream Analytics ジョブの入力と出力のログイン資格情報の交換
 
@@ -52,7 +51,7 @@ Stream Analytics ジョブの入力または出力のための資格情報を再
 既存ユーザーのログイン資格情報を更新するには、SQL Database に接続する必要があります。 Azure Portal または SQL Server Management Studio などのクライアント側ツールを使って、資格情報を更新することができます。 このセクションでは、Azure Portal を使って資格情報を更新する手順を示します。
 
 1. Azure Portal にサインインし、Stream Analytics ジョブの出力として使った SQL データベースを参照します。    
-2. **データ エクスプローラー**でデータベースにログイン/接続し、[承認の種類] として **[SQL Server 認証]** を選び、 **[ログイン]** と **[パスワード]** の詳細を入力して、 **[OK]** を選びます。  
+2. **データ エクスプローラー** でデータベースにログイン/接続し、[承認の種類] として **[SQL Server 認証]** を選び、 **[ログイン]** と **[パスワード]** の詳細を入力して、 **[OK]** を選びます。  
    ![SQL Database の資格情報を再生成する](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
 
 3. クエリ タブで、次のクエリを実行して、いずれかのユーザーのパスワードを変更します (`<user_name>` はお使いのユーザー名に、`<new_password>` は新しいパスワードに置き換えてください)。  
@@ -84,5 +83,5 @@ Stream Analytics ジョブの入力または出力のための資格情報を再
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](/rest/api/streamanalytics/)

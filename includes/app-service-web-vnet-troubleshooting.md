@@ -4,23 +4,27 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: ff54d60573fbc7b6694b8d02d1378869674c1e81
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050485"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999447"
 ---
 機能は簡単にセットアップできますが、問題が発生しないという意味ではありません。 目的のエンドポイントへのアクセスに関して問題が発生した場合は、アプリのコンソールからの接続をテストするために、いくつかのユーティリティを利用できます。 利用できるコンソールが 2 つあります。 1 つは Kudu コンソールで、もう 1 つは Azure portal 内のコンソールです。 アプリから Kudu コンソールにアクセスするには、 **[ツール]**  >  **[Kudu]** の順に移動します。 [サイト名].scm.azurewebsites.net で Kudo コンソールにアクセスすることもできます。 Web サイトが読み込まれたら、 **[デバッグ コンソール]** タブに移動します。お使いのアプリから Azure portal によってホストされたコンソールにアクセスするには、 **[ツール]**  >  **[コンソール]** の順に移動します。
 
 #### <a name="tools"></a>ツール
-**ping**、**nslookup**、および **tracert** の各ツールは、セキュリティの制約により、コンソールから使用することはできません。 それを補うために、2 つの独立したツールが追加されています。 DNS 機能をテストするために、**nameresolver.exe** という名前のツールを追加しました。 の構文は次のとおりです。
+ネイティブ Windows アプリでは、**ping**、**nslookup**、**tracert** の各ツールは、セキュリティの制約により、コンソールから使用することはできません ([カスタム Windows コンテナー](../articles/app-service/quickstart-custom-container.md)で動作します)。 それを補うために、2 つの独立したツールが追加されています。 DNS 機能をテストするために、**nameresolver.exe** という名前のツールを追加しました。 の構文は次のとおりです。
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
 ```
 
 nameresolver を使用すると、アプリが依存しているホスト名を確認できます。 この方法によって、DNS の構成に誤りがあるかどうかや、DNS サーバーへのアクセス権がないかどうかをテストできます。 環境変数 WEBSITE_DNS_SERVER と WEBSITE_DNS_ALT_SERVER を調べることによって、アプリによって使用される DNS サーバーをコンソール上で確認できます。
+
+> [!NOTE]
+> nameresolver.exe は現在のところ、カスタム Windows コンテナーでは動作しません。
+>
 
 次のツールを使用して、ホストとポートを組み合わせたものへの TCP 接続をテストすることができます。 このツールは **tcpping** という名前で、構文は次のとおりです。
 
@@ -42,7 +46,7 @@ tcpping.exe hostname [optional: port]
 * 宛先は RFC1918 以外のアドレスであり、WEBSITE_VNET_ROUTE_ALL が 1 に設定されていないこと。
 * 統合サブネットからのエグレスをブロックしている NSG は存在するか。
 * Azure ExpressRoute または VPN をまたがって移動する場合は、オンプレミスのゲートウェイがトラフィック バックアップを Azure にルーティングするように構成されているか。 仮想ネットワーク内のエンドポイントには到達できるが、オンプレミスに到達できない場合は、ルートを確認します。
-* 統合サブネットに委任を設定するための十分なアクセス許可があるか。 リージョン VNet 統合が構成されている間、統合サブネットは Microsoft.Web に委任されます。 VNet 統合 UI では、Microsoft.Web に対するサブネットが自動的に委任されます。 アカウントに委任を設定するための十分なネットワークのアクセス許可がない場合は、サブネットを委任するために、統合サブネットに属性を設定できるユーザーが必要になります。 統合サブネットを手動で委任するには、Azure Virtual Network サブネット UI にアクセスして、Microsoft.Web の委任を設定します。
+* 統合サブネットに委任を設定するための十分なアクセス許可があるか。 リージョン VNet 統合が構成されている間、統合サブネットは Microsoft.Web/serverFarms に委任されます。 VNet 統合 UI では、Microsoft.Web/serverFarms に対するサブネットが自動的に委任されます。 アカウントに委任を設定するための十分なネットワークのアクセス許可がない場合は、サブネットを委任するために、統合サブネットに属性を設定できるユーザーが必要になります。 統合サブネットを手動で委任するには、Azure Virtual Network サブネット UI にアクセスして、Microsoft.Web/serverFarms の委任を設定します。
 
 **ゲートウェイが必要な VNet 統合**
 * ポイント対サイトのアドレス範囲が RFC 1918 の範囲 (10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255) にあるか。

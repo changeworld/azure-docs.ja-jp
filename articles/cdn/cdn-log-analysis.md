@@ -9,14 +9,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/22/2020
+ms.date: 11/30/2020
 ms.author: allensu
-ms.openlocfilehash: 169889dbb87d00fdde44ff72c0d2004c331604ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2c593cda7761ce1defa6bdb31e0dbb528b9e5eca
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073048"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483990"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Azure CDN の使用パターンを分析する
 
@@ -31,7 +31,7 @@ ms.locfileid: "87073048"
 
 Azure Log Analytics を使用すると、監視メトリックの表示やアラートの設定を行うことができます。 
 
-詳細については、「[Azure CDN HTTP 生ログ](enable-raw-logs.md)」を参照してください。
+詳細については、「[Azure CDN HTTP 生ログ](monitoring-and-access-log.md)」を参照してください。
 
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>Azure 診断ログによるコア分析
@@ -61,6 +61,4 @@ Azure Log Analytics を使用すると、監視メトリックの表示やアラ
 Azure CDN とこの記事で言及しているその他の Azure サービスの詳細については、次をご覧ください。
 
 * [Azure CDN とは](cdn-overview.md)
-* [Azure CDN HTTP 生ログ](enable-raw-logs.md)
-
-
+* [Azure CDN HTTP 生ログ](monitoring-and-access-log.md)

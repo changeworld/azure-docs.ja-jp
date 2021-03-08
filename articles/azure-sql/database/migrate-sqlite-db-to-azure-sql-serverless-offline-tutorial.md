@@ -6,15 +6,15 @@ author: joplum
 ms.author: joplum
 ms.service: sql-database
 ms.workload: data-services
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
-ms.openlocfilehash: 551276895de0ba659349c20205fa21d3d2c6b43e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2f240247cbba0f80254d504792df45be55c6a1b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669573"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790408"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>SQLite データベースを Azure SQL Database サーバーレスに移行する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -109,4 +109,4 @@ Azure SQL Database サーバーレスは、ワークロードの需要に基づ�
 ## <a name="next-steps"></a>次のステップ
 
 - 使用を開始するには、「[クイック スタート: Azure portal を使用して Azure SQL Database で単一データベースを作成する](single-database-create-quickstart.md)」をご覧ください。
-- リソースの制限については、[サーバーレス コンピューティング レベルのリソース制限](../../sql-database/sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)に関する記事をご覧ください。
+- リソースの制限については、[サーバーレス コンピューティング レベルのリソース制限](./resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)に関する記事をご覧ください。

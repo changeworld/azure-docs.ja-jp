@@ -3,22 +3,26 @@ title: 現実の例を使用して Azure Cosmos DB のデータをモデル化�
 description: Azure Cosmos DB Core API を使用して現実の例をモデル化およびパーティション分割する方法について説明します
 author: ThomasWeiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d5809d7475759450a513153abf641f7943163d98
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: d2f35ae7a6110acb2ca89bdaeb487eddabf84923
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422217"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185820"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>現実の例を使用して Azure Cosmos DB のデータをモデル化およびパーティション分割する方法
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、[データ モデリング](modeling-data.md)、[パーティション分割](partitioning-overview.md)、[プロビジョニング済みスループット](request-units.md)などの Azure Cosmos DB のいくつかの概念を基にして、現実世界のデータ設計に取り組む方法を示します。
 
 通常、リレーショナル データベースで作業している場合は、データ モデルの設計方法についての習慣や直感が築かれているはずです。 Azure Cosmos DB に固有の制約のため (それは Azure Cosmos DB だけが持つ長所でもありますが)、それらのベスト プラクティスのほとんどはうまく流用できず、次善のソリューションになってしまうことがあります。 この記事の目的は、項目のモデリングからエンティティのコロケーションやコンテナーのパーティション分割まで、Azure Cosmos DB で現実のユース ケースをモデル化する完全なプロセスの手順を示すことです。
+
+この記事の概念を示すコミュニティで作成されたソース コードは、[こちら](https://github.com/jwidmer/AzureCosmosDbBlogExample)でダウンロードまたは表示できます。 このコード サンプルは、コミュニティの共同作成者によって提供されたものであり、Azure Cosmos DB チームはそのメンテナンスをサポートしていません。
 
 ## <a name="the-scenario"></a>シナリオ
 
@@ -56,7 +60,7 @@ ms.locfileid: "87422217"
 
 この段階では、各エンティティ (ユーザー、投稿など) の内容の詳細については考えていません。 これらのエンティティをテーブル、列、外部キーなどの観点から変換する方法を把握する必要があるので、このステップは、通常、リレーショナル ストアについて設計するときに最初に取り組むことの 1 つです。書き込み時にスキーマが適用されないドキュメント データベースでは、これはそれほど重要なことではありません。
 
-最初からアクセス パターンを明らかにすることが重要である主な理由は、この要求の一覧がテスト スイートになるためです。 データ モデルの作業を繰り返すたびに、各要求を検討してパフォーマンスとスケーラビリティを確認します。
+最初からアクセス パターンを明らかにすることが重要である主な理由は、この要求の一覧がテスト スイートになるためです。 データ モデルの作業を繰り返すたびに、各要求を検討してパフォーマンスとスケーラビリティを確認します。 各モデルで使用される要求ユニットを計算して最適化します。 これらのすべてのモデルでは、既定のインデックス作成ポリシーが使用されますが、これは特定のプロパティのインデックスを作成することでオーバーライドすることができ、それによって RU の使用量と待機時間をさらに向上させることができます。
 
 ## <a name="v1-a-first-version"></a>V1: 最初のバージョン
 
@@ -327,7 +331,7 @@ function createComment(postId, comment) {
 - 投稿を置き換えます
 - 新しいコメントを追加します
 
-ストアド プロシージャはアトミック トランザクションとして実行されるので、`commentCount` の値とコメントの実際の数が常に同期することが保証されます。
+ストアド プロシージャはアトミック トランザクションとして実行されるので、`commentCount` の値とコメントの実際の数が常に同期します。
 
 新しいいいね! を追加するときも似たストアド プロシージャを呼び出して、`likeCount` を増分します。
 
@@ -411,7 +415,7 @@ function updateUsernames(userId, username) {
 
 この要求は既に、追加のクエリを不要にする V2 で導入された改善によるメリットがあります。
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q3.png" alt-text="ユーザーのすべての投稿の取得" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q3.png" alt-text="ユーザーの投稿を短い形式で一覧表示するクエリを示す図。" border="false":::
 
 しかし、残りのクエリではまだ、`posts` コンテナーのパーティション キーによるフィルター処理が行われていません。
 
@@ -469,7 +473,7 @@ function updateUsernames(userId, username) {
 
 ここでも似た状況に対応する必要があります。V2 で導入された非正規化により、残っていた不要な追加クエリが除去された後も、残りのクエリではコンテナーのパーティション キーによるフィルター処理が行われていません。
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q6.png" alt-text="最新の投稿の取得" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q6.png" alt-text="最近作成された x 件の投稿を短い形式で一覧表示するクエリを示す図。" border="false":::
 
 同じ方法で、この要求のパフォーマンスとスケーラビリティを最大限にするには、1 つのパーティションのみにヒットすることが必要です。 これは、限られた数の項目だけを取得する必要があるので、考えられることです。このブログ作成プラットフォームのホーム ページを設定するには、最新の 100 件の投稿を取得するだけでよく、データ セット全体をページ分割する必要はありません。
 
@@ -586,6 +590,6 @@ function truncateFeed() {
 
 実用的なデータ モデリングとパーティション分割に関するこの概要の後は、ここで説明した概念を次の記事で確認できます。
 
-- [データベース、コンテナー、およびアイテムの操作](databases-containers-items.md)
+- [データベース、コンテナー、およびアイテムの操作](account-databases-containers-items.md)
 - [Azure Cosmos DB でのパーティション分割](partitioning-overview.md)
 - [Azure Cosmos DB の変更フィード](change-feed.md)

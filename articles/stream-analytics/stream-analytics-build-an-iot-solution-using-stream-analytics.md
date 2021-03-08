@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics を使って IoT ソリューションをビルドする
 description: 料金所ブースを例に Stream Analytics を使った基本的な IoT ソリューションを紹介します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: e0e2244d8c70ca2e6d379e741d543d9cd260b7f8
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: ddec53b18cd6f374a5665298b43b46122bcfa143
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044585"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016152"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics を使って IoT ソリューションを構築する
 
@@ -128,13 +127,13 @@ Azure クレジットを最適に利用できるよう、この記事の最後�
 
 6. **[間隔]** を秒数で指定します。 この値は、サンプル Web アプリで使用され、Event Hub にデータを送信する頻度を決定します。
 
-7. 使用条件に同意して、**チェック ボックスをオン**にします。
+7. 使用条件に同意して、**チェック ボックスをオン** にします。
 
 8. 後でリソースを簡単に特定できるように、 **[ダッシュボードにピン留めする]** を選択します。
 
 9. **[購入]** を選択して、サンプル テンプレートをデプロイします。
 
-10. しばらく待つと、**デプロイが成功した**ことを確認する通知が表示されます。
+10. しばらく待つと、**デプロイが成功した** ことを確認する通知が表示されます。
 
 ### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>Azure Stream Analytics TollApp リソースの確認
 
@@ -163,7 +162,7 @@ Azure クレジットを最適に利用できるよう、この記事の最後�
 
    このクエリの意図は、料金所ブースに入る車両の台数をカウントする必要があると言い換えることができます。 高速道路の料金所ブースには車両が次々と入ってくるため、これらの入り口イベントは、止まることがない流れに似ています。 この流れを定量化するには、測定する "期間" を定義する必要があります。 質問を "3 分間で料金所ブースに入る車両は何台あるか" に絞り込んでみましょう。 これを一般に "タンブリング カウント" といいます。
 
-   ご覧のとおり、Azure Stream Analytics には SQL に似たクエリ言語が使用されており、さらに、時間に関連したクエリ要素を指定するための拡張機能がいくつか追加されています。  詳細については、クエリで使われる[時間管理](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics)と[時間枠](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)コンストラクトをご覧ください。
+   ご覧のとおり、Azure Stream Analytics には SQL に似たクエリ言語が使用されており、さらに、時間に関連したクエリ要素を指定するための拡張機能がいくつか追加されています。  詳細については、クエリで使われる[時間管理](/stream-analytics-query/time-management-azure-stream-analytics)と[時間枠](/stream-analytics-query/windowing-azure-stream-analytics)コンストラクトをご覧ください。
 
 3. TollApp サンプル ジョブの入力を調べます。 現在のクエリでは、EntryStream 入力だけが使用されています。
    - **EntryStream** 入力は、車両が高速道路の料金所ブースに入ったことを表すデータをキュー処理する Event Hub 接続です。 このイベントは、サンプルの一部である Web アプリによって作成され、そのデータが Event Hub でキュー処理されます。 この入力がストリーミング クエリの FROM 句でクエリ処理されることに注意してください。
@@ -297,7 +296,7 @@ GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 
 ストリーミング ジョブのストリーミング ユニットをスケールアップするには:
 
-1. 現在のジョブを**停止**します。
+1. 現在のジョブを **停止** します。
 
 2. **[< > クエリ]** ページでクエリの構文を更新し、変更を保存します。
 
@@ -305,14 +304,14 @@ GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 
 4. **[ストリーミング ユニット]** スライダーを 1 から 6 にスライドします。 ストリーミング ユニットは、ジョブが使用できる計算能力の量を定義します。 **[保存]** を選択します。
 
-5. ストリーミング ジョブを**開始**して、スケールが追加されたことを確認します。 Azure Stream Analytics は、より多くのコンピューティング リソースに作業を分散させてスループットの向上を実現し、PARTITION BY 句に指定された列を使用してリソース間で作業をパーティション分割します。
+5. ストリーミング ジョブを **開始** して、スケールが追加されたことを確認します。 Azure Stream Analytics は、より多くのコンピューティング リソースに作業を分散させてスループットの向上を実現し、PARTITION BY 句に指定された列を使用してリソース間で作業をパーティション分割します。
 
 ## <a name="monitor-the-job"></a>ジョブの監視
 **[監視]** 領域には、実行中のジョブに関する統計情報が表示されます。 ストレージ アカウントを同じリージョン内で使用する場合は、初回の構成が必要です (料金所ブースにこのドキュメントの他の箇所と同じ名前を付けます)。
 
 ![Azure Stream Analytics ジョブ監視](media/stream-analytics-build-an-iot-solution-using-stream-analytics/stream-analytics-job-monitoring.png)
 
-**アクティビティ ログ**には、ジョブのダッシュボードの **[設定]** 領域からもアクセスできます。
+**アクティビティ ログ** には、ジョブのダッシュボードの **[設定]** 領域からもアクセスできます。
 
 ## <a name="clean-up-the-tollapp-resources"></a>TollApp リソースをクリーンアップする
 1. Azure Portal で Stream Analytics ジョブを停止します。

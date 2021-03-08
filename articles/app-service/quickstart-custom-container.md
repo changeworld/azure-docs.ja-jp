@@ -3,27 +3,27 @@ title: クイック スタート:App Service でカスタム コンテナーを�
 description: 初めてのカスタム アプリをデプロイして、Azure App Service でのコンテナーの使用を開始します。
 author: msangapu-msft
 ms.author: msangapu
-ms.date: 08/28/2019
+ms.date: 10/21/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 33eaf6274f2da09ab98a21e6028b0103df817744
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 360da015f012822593dbb6390cb7df0017ba85b1
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961365"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745079"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Azure でカスタム コンテナーを実行する
 
 ::: zone pivot="container-windows"
-[Azure App Service](overview.md) は、IIS 上で稼働する ASP.NET や IIS 上で稼働する Node.js など、Windows 上の定義済みのアプリケーション スタックを提供します。 事前構成済みの Windows コンテナー (プレビュー) 環境によって、オペレーティング システムは、管理アクセスやソフトウェアのインストール、グローバル アセンブリ キャッシュへの変更などができないようにロックされます。 詳細については、「[Azure App Service におけるオペレーティング システムの機能](operating-system-functionality.md)」を参照してください。 アプリケーションから利用すべき領域が事前構成済みの環境を超える場合は、カスタムの Windows コンテナーをデプロイすることで対応できます。
+[Azure App Service](overview.md) は、IIS 上で稼働する ASP.NET や IIS 上で稼働する Node.js など、Windows 上の定義済みのアプリケーション スタックを提供します。 事前構成済みの Windows コンテナー環境では、オペレーティング システムは、管理アクセス、ソフトウェアのインストール、グローバル アセンブリ キャッシュへの変更などができないようにロックされます。 詳細については、「[Azure App Service におけるオペレーティング システムの機能](operating-system-functionality.md)」を参照してください。 アプリケーションから利用すべき領域が事前構成済みの環境を超える場合は、カスタムの Windows コンテナーをデプロイすることで対応できます。
 
 このクイックスタートでは、Visual Studio から [Docker Hub](https://hub.docker.com/) に、Windows イメージで ASP.NET アプリをデプロイする方法について説明します。 アプリは、Azure App Service のカスタム コンテナーで実行します。
 
 > [!NOTE]
-> Azure App Service on Windows コンテナーは、プレビュー段階にあります。
->
+> Windows コンテナーは Azure Files に限定されており、現時点では Azure Blob はサポートされていません。
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,8 +31,8 @@ ms.locfileid: "88961365"
 
 - <a href="https://hub.docker.com/" target="_blank">Docker Hub アカウントにサインアップする</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker for Windows をインストールする</a>。
-- <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Windows コンテナーを実行するように Docker を切り替える</a>。
-- **ASP.NET と Web 開発**ワークロードと **Azure の開発**ワークロードを含めて <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019 をインストールする</a>。 Visual Studio 2019 を既にインストールしている場合:
+- <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Windows コンテナーを実行するように Docker を切り替える</a>。
+- **ASP.NET と Web 開発** ワークロードと **Azure の開発** ワークロードを含めて <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019 をインストールする</a>。 Visual Studio 2019 を既にインストールしている場合:
 
     - **[ヘルプ]**  >  **[更新プログラムの確認]** の順に選択して、Visual Studio に最新の更新プログラムをインストールします。
     - **[ツール]**  >  **[ツールと機能を取得]** の順に選択し、Visual Studio にワークロードを追加します。
@@ -55,9 +55,9 @@ ms.locfileid: "88961365"
 
    ![ASP.NET Web アプリケーションを作成する](./media/quickstart-custom-container/select-mvc-template-for-container.png)
 
-1. _Dockerfile_ ファイルが自動的に開かない場合は、**ソリューション エクスプローラー**から開きます。
+1. _Dockerfile_ ファイルが自動的に開かない場合は、**ソリューション エクスプローラー** から開きます。
 
-1. [サポートされている親イメージ](#use-a-different-parent-image)が必要です。 `FROM` 行を次のコードに置き換えることで親イメージを変更し、ファイルを保存します。
+1. [サポートされている親イメージ](configure-custom-container.md#supported-parent-images)が必要です。 `FROM` 行を次のコードに置き換えることで親イメージを変更し、ファイルを保存します。
 
    ```dockerfile
    FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
@@ -69,7 +69,7 @@ ms.locfileid: "88961365"
 
 ## <a name="publish-to-docker-hub"></a>Docker Hub に発行する
 
-1. **ソリューション エクスプローラー**で **myfirstazurewebapp** プロジェクトを右クリックし、 **[発行]** を選択します。
+1. **ソリューション エクスプローラー** で **myfirstazurewebapp** プロジェクトを右クリックし、 **[発行]** を選択します。
 
 1. **App Service** を選択し、 **[発行]** を選択します。
 
@@ -81,7 +81,7 @@ ms.locfileid: "88961365"
 
    デプロイが完了するまで待ちます。 **[発行]** ページに、後で使用するリポジトリ名が表示されるようになります。
 
-   ![プロジェクトの概要ページから発行する](./media/quickstart-custom-container/published-docker-repository-vs2019.png)
+   ![リポジトリ名が強調表示されているスクリーンショット。](./media/quickstart-custom-container/published-docker-repository-vs2019.png)
 
 1. 後で使用するのでこのリポジトリ名をコピーします。
 
@@ -93,7 +93,7 @@ ms.locfileid: "88961365"
 
 1. Azure Marketplace リソース一覧の上にある検索ボックスで、 **[Web App for Containers]** を検索して、 **[作成]** を選択します。
 
-1. **[Web App Create]\(Web アプリの作成\)** で、サブスクリプションと**リソース グループ**を選択します。 必要な場合は、新しいリソース グループを作成できます。
+1. **[Web App Create]\(Web アプリの作成\)** で、サブスクリプションと **リソース グループ** を選択します。 必要な場合は、新しいリソース グループを作成できます。
 
 1. アプリ名 (例: *win-container-demo*) を入力し、 **[オペレーティング システム]** に **[Windows]** を選択します。 **Docker** を選択して続行します。
 
@@ -146,7 +146,7 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
 
 ## <a name="update-locally-and-redeploy"></a>ローカルで更新して再デプロイする
 
-1. Visual Studio の**ソリューション エクスプローラー**から、 **[表示]**  >  **[ホーム]**  >  **[Index.cshtml]** の順に開きます。
+1. Visual Studio の **ソリューション エクスプローラー** から、 **[表示]**  >  **[ホーム]**  >  **[Index.cshtml]** の順に開きます。
 
 1. 上部の `<div class="jumbotron">` HTML タグを検索し、要素全体を次のコードに置き換えます。
 
@@ -157,7 +157,7 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
    </div>
    ```
 
-1. Azure に再デプロイするには、**ソリューション エクスプローラー**で **myfirstazurewebapp** プロジェクトを右クリックし、 **[発行]** を選択します。
+1. Azure に再デプロイするには、**ソリューション エクスプローラー** で **myfirstazurewebapp** プロジェクトを右クリックし、 **[発行]** を選択します。
 
 1. 発行ページで **[発行]** を選択し、発行が完了するまで待ちます。
 
@@ -169,22 +169,16 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
 
 ![Azure での更新された Web アプリ](./media/quickstart-custom-container/azure-web-app-updated.png)
 
-## <a name="use-a-different-parent-image"></a>別の親イメージを使用する
-
-別のカスタム Docker イメージを使用してアプリを実行することもできます。 ただし、必要なフレームワークに合った適切な[親イメージ (基本イメージ)](https://docs.docker.com/develop/develop-images/baseimages/) を選ぶ必要があります。
-
-- .NET Framework のアプリをデプロイするには、Windows Server Core 2019 [Long-Term Servicing Channel (LTSC: 長期的なサービス チャネル)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) リリースに基づく親イメージを使用します。 
-- .NET Core のアプリをデプロイするには、Windows Server Nano 1809 [Semi-Annual Servicing Channel (SAC: 半期サービス チャネル)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) リリースに基づく親イメージを使用します。 
-
-アプリの起動中は、親イメージのダウンロードに多少の時間がかかります。 ただし、Azure App Service にあらかじめキャッシュされている次のいずれかの親イメージを使用することで、起動時間を短縮することができます。
-
-- [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.7.2-windowsservercore-ltsc2019
-- [mcr.microsoft.com/windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/):1809 - このイメージは、Microsoft [ASP.NET Core](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/) の Microsoft Windows Nano Server イメージ全体で使用されるベース コンテナーです。
-
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure で Windows コンテナーに移行する](tutorial-custom-container.md)
+
+または、他のリソースを参照してください。
+
+> [!div class="nextstepaction"]
+> [カスタム コンテナーの構成](configure-custom-container.md)
+
 ::: zone-end  
 
 ::: zone pivot="container-linux"
@@ -225,7 +219,7 @@ docker --version
 
 最後に、Azure Container Registry が接続されていることを確認します。 そのためには、アクティビティ バーで Docker ロゴを選択し、**[レジストリ]** に移動します。
 
-![レジストリ](./media/quickstart-docker/registries.png)
+![スクリーンショットは、[Azure] が展開された [レジストリ] の値として、ファイル名拡張子 .io を持つファイルを示しています。](./media/quickstart-docker/registries.png)
 
 ## <a name="deploy-the-image-to-azure-app-service"></a>Azure App Service にイメージをデプロイする
 
@@ -237,9 +231,9 @@ docker --version
 
 デプロイ後は、`http://<app name>.azurewebsites.net` でアプリにアクセスできます。
 
-**リソース グループ**は、Azure で利用するすべてのアプリケーションのリソースをまとめた名前付きのコレクションです。 たとえば、Web サイトやデータベース、Azure 関数への参照をリソース グループに含めることができます。
+**リソース グループ** は、Azure で利用するすべてのアプリケーションのリソースをまとめた名前付きのコレクションです。 たとえば、Web サイトやデータベース、Azure 関数への参照をリソース グループに含めることができます。
 
-Web サイトをホストするために使用される物理リソースは、**App Service プラン**によって定義されます。 このクイックスタートでは、**Linux** インフラストラクチャ上の **Basic** ホスティング プランを使用します。つまりサイトは Linux マシン上で、他の Web サイトと一緒にホストされます。 **Basic** プランから開始すれば、マシン上で自分のサイトだけが実行されるように、Azure portal を使用してスケールアップすることができます。
+Web サイトをホストするために使用される物理リソースは、**App Service プラン** によって定義されます。 このクイックスタートでは、**Linux** インフラストラクチャ上の **Basic** ホスティング プランを使用します。つまりサイトは Linux マシン上で、他の Web サイトと一緒にホストされます。 **Basic** プランから開始すれば、マシン上で自分のサイトだけが実行されるように、Azure portal を使用してスケールアップすることができます。
 
 ## <a name="browse-the-website"></a>Web サイトを閲覧する
 
@@ -260,5 +254,10 @@ Web サイトをホストするために使用される物理リソースは、*
 * [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
 または、[Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) 拡張機能パックをインストールして、これらすべてを入手しましょう。
+
+他のリソースを確認してください。
+
+> [!div class="nextstepaction"]
+> [カスタム コンテナーの構成](configure-custom-container.md)
 
 ::: zone-end

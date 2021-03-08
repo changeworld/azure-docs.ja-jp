@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning デザイナーを使用してモデルを再トレーニングする (プレビュー)
+title: パイプライン パラメーターを使用し、デザイナーのモデルを再トレーニングする
 titleSuffix: Azure Machine Learning
-description: 発行されたパイプラインを使用して Azure Machine Learning デザイナー (プレビュー) でモデルを再トレーニングする方法について説明します。
+description: 発行されたパイプラインとパイプライン パラメーターを使用して Azure Machine Learning デザイナーでモデルを再トレーニングします。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 181d79c6aef87999bc1b4242a70870edf60ad7df
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6efb0f095f8a157f723a3b7c0c2b229546ebb36b
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319628"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708468"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーを使用してモデルを再トレーニングする (プレビュー)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
+# <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>パイプライン パラメーターを使用し、デザイナーのモデルを再トレーニングする
 
-このハウツー記事では、Azure Machine Learning デザイナーを使用して機械学習モデルを再トレーニングする方法について説明します。 発行されたパイプラインを使用してワークフローを自動化し、パラメーターを設定して新しいデータに対してモデルをトレーニングします。 
+
+このハウツー記事では、Azure Machine Learning デザイナーでパイプライン パラメーターを使用して機械学習モデルを再トレーニングする方法について説明します。 発行されたパイプラインを使用してワークフローを自動化し、パラメーターを設定して新しいデータに対してモデルをトレーニングします。 パイプライン パラメーターを使用すると、異なるジョブに対して既存のパイプラインを再利用できます。  
 
 この記事では、次のことについて説明します。
 
@@ -32,22 +32,26 @@ ms.locfileid: "87319628"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Enterprise SKU の Azure Machine Learning ワークスペース。
-* この操作方法シリーズのパート 1、[デザイナーでのデータの変換](how-to-designer-transform-data.md)に関する記事を完了してください。
+* Azure Machine Learning ワークスペース
+* この操作方法シリーズのパート 1、[デザイナーでのデータの変換](how-to-designer-transform-data.md)に関する記事を完了してください
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
-また、この記事は、デザイナーでパイプラインを構築することの基本的知識を持っていることも前提としています。 ガイド付きの概要については、[チュートリアル](tutorial-designer-automobile-price-train-score.md)を完了してください。 
+また、この記事では、デザイナーでのパイプラインの構築に関する知識を持っていることも前提としています。 ガイド付きの概要については、[チュートリアル](tutorial-designer-automobile-price-train-score.md)を完了してください。 
 
 ### <a name="sample-pipeline"></a>サンプル パイプライン
 
-この記事で使用されているパイプラインは、[サンプル 3: 収入予測](samples-designer.md#classification)で取り上げたパイプラインの変更されたバージョンです。 サンプル データセットではなく[データのインポート](algorithm-module-reference/import-data.md) モジュールをパイプラインに使用して、独自のデータを利用してモデルをトレーニングする方法を示します。
+この記事で使用されているパイプラインは、デザイナーのホームページにある、サンプル パイプライン「[収入の予測](samples-designer.md#classification)」の変更されたバージョンです。 サンプル データセットではなく[データのインポート](algorithm-module-reference/import-data.md) モジュールをパイプラインに使用して、独自のデータを利用してモデルをトレーニングする方法を示します。
 
 ![データのインポート モジュールが強調表示されている、変更されたサンプル パイプラインを示すスクリーンショット](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
 ## <a name="create-a-pipeline-parameter"></a>パイプライン パラメーターを作成する
 
-パイプライン パラメーターを作成して実行時に変数を動的に設定します。 この例では、トレーニング データ パスを固定値からパラメーターに変更し、別のデータに対してモデルを再トレーニングできるようにします。
+パイプライン パラメーターは、後でさまざまなパラメーター値を使用して再送信できる汎用性のあるパイプラインを作成するために使用します。 いくつかの一般的なシナリオでは、再トレーニング用にデータセットまたは一部のハイパーパラメーターを更新します。 パイプライン パラメーターを作成して実行時に変数を動的に設定します。 
+
+パイプライン パラメーターは、パイプラインのデータ ソースまたはモジュール パラメーターに追加できます。 パイプラインを再送信するときに、これらのパラメーターの値を指定できます。
+
+この例では、トレーニング データ パスを固定値からパラメーターに変更し、別のデータに対してモデルを再トレーニングできるようにします。 ユースケースに応じて、パイプライン パラメーターとして他のモジュール パラメーターを追加することもできます。
 
 1. **[データのインポート]** モジュールを選択します。
 
@@ -60,30 +64,22 @@ ms.locfileid: "87319628"
 
 1. **[パス]** フィールドにマウスを置き、表示される **[パス]** フィールドの上にある省略記号 (...) を選択します。
 
-    ![パイプライン パラメーターの作成方法を示すスクリーンショット](media/how-to-retrain-designer/add-pipeline-parameter.png)
-
 1. **[Add to pipeline parameter]\(パイプライン パラメーターに追加する\)** を選択します。
 
 1. パラメーター名と既定値を指定します。
 
-   > [!NOTE]
-   > パイプライン ドラフトのタイトルの横にある **[設定]** の歯車アイコンを選択すると、パイプライン パラメーターを調べて編集することができます。 
+   ![パイプライン パラメーターの作成方法を示すスクリーンショット](media/how-to-retrain-designer/add-pipeline-parameter.png)
 
 1. **[保存]** を選択します。
 
+   > [!NOTE]
+   > また、モジュールの詳細ペインでパイプライン パラメーターからモジュール パラメーターをデタッチすることもできます。これは、パイプライン パラメーターの追加と似ています。
+   >
+   > パイプライン ドラフトのタイトルの横にある **[設定]** の歯車アイコンを選択すると、パイプライン パラメーターを調べて編集することができます。 
+   >    - デタッチした後、 **[設定]** ペインでパイプライン パラメーターを削除できます。
+   >    - また、 **[設定]** ペインでパイプライン パラメーターを追加し、一部のモジュール パラメーターに適用することもできます。
+
 1. パイプラインの実行を送信します。
-
-## <a name="find-a-trained-model"></a>トレーニング済みのモデルを検索する
-
-デザイナーでは、トレーニング済みのモデルを含むすべてのパイプライン出力が、既定のワークスペース ストレージ アカウントに保存されます。 デザイナーから直接トレーニングされたモデルにアクセスすることもできます。
-
-1. パイプラインの実行が完了するまで待機します。
-1. **Train Model** (モデルのトレーニング) モジュールを選択します。
-1. キャンバスの右側にある [モジュールの詳細] ペインで **[Outputs + logs]\(出力 + ログ\)** を選択します。
-1. **[その他の出力]** で実行ログと共にモデルを見つけることができます。
-1. または、 **[出力の表示]** アイコンを選択します。 ここでは、ダイアログの指示に従って、データストアに直接移動できます。 
-
-![トレーニングされたモデルをダウンロードする方法を示すスクリーンショット](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="publish-a-training-pipeline"></a>トレーニング パイプラインを発行する
 
@@ -101,9 +97,9 @@ ms.locfileid: "87319628"
 
 これでトレーニング パイプラインが発行されたので、それを利用し、新しいデータに対してモデルを再トレーニングできます。 パイプライン エンドポイントから実行を送信するには、studio ワークスペースまたはプログラムを使用します。
 
-### <a name="submit-runs-by-using-the-designer"></a>デザイナーを使用して実行を送信する
+### <a name="submit-runs-by-using-the-studio-portal"></a>Studio ポータルを使用した実行の送信
 
-以下の手順を使用して、デザイナーからパラメーター化されたパイプライン エンドポイントの実行を送信します。
+以下の手順を使用して、Studio ポータルからパラメーター化されたパイプライン エンドポイントの実行を送信します。
 
 1. studio ワークスペースの **[エンドポイント]** ページに移動します。
 1. **[パイプライン エンドポイント]** タブを選択します。次に、パイプライン エンドポイントを選択します。

@@ -1,7 +1,7 @@
 ---
 title: UWP に関する考慮事項 (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: ユニバーサル Windows プラットフォーム (UWP) を .NET 用 Microsoft Authentication Library (MSAL.NET) と使用する場合の考慮事項について説明します。
+description: ユニバーサル Windows プラットフォーム (UWP) を Microsoft Authentication Library for .NET (MSAL.NET) と使用する場合の考慮事項について説明します。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: f716af1d50eb8a24d8ab70f784cba31f65795cb7
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 6451368baf9c047f0318eb74d53ffac075d4a184
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165908"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063452"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>ユニバーサル Windows プラットフォームを MSAL.NET と使用する場合の考慮事項
 ユニバーサル Windows プラットフォーム (UWP) を MSAL.NET と使用するアプリケーションの開発者は、この記事で紹介する概念を考慮する必要があります。
@@ -64,4 +64,4 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execu
 サンプル | プラットフォーム | 説明 
 |------ | -------- | -----------|
 |[active-directory-dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | MSAL.NET を使用する UWP クライアント アプリケーション。 Azure AD 2.0 エンドポイントを使用して認証を行うユーザーの Microsoft Graph にアクセスします。 <br>![トポロジ](media/msal-net-uwp-considerations/topology-native-uwp.png)|
-|[active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、UWP | MSAL を使用して、Azure AD 2.0 エンドポイントを介して Microsoft の個人用アカウントおよび Azure AD を認証する方法を示すシンプルな Xamarin Forms アプリ。 また、Microsoft Graph にアクセスする方法と、結果として生成されるトークンについても示します。 <br>![トポロジ](media/msal-net-uwp-considerations/topology-xamarin-native.png)|
+|[active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、UWP | MSAL を使用して、Microsoft ID プラットフォームを介して Microsoft の個人用アカウントと Azure AD を認証する方法を示す Xamarin Forms アプリ。 また、Microsoft Graph にアクセスする方法と、結果として生成されるトークンについても示します。 <br>![MSAL を使用して Microsoft ID プラットフォームを介して Microsoft の個人用アカウントと Azure AD を認証する方法を示している図。](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

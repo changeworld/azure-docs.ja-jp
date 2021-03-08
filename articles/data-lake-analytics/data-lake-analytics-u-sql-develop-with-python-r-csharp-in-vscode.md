@@ -1,18 +1,17 @@
 ---
 title: Python、R、C# で U-SQL ジョブを実行する - Azure Data Lake Analytics
 description: Python、R、および C# で分離コードを使用して Azure Data Lake にジョブを送信する方法について説明します。
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/22/2017
 ms.custom: devx-track-python
-ms.openlocfilehash: 673c8db0b7c6d3d8658d2d3b6cfd7e00f3d7d986
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: d6066bd6ec2a4c986ae17ad0cce3e7f6f73b21e7
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876208"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219974"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Visual Studio Code で Azure Data Lake Analytics の Python、R、および C# を使用して U-SQL を開発する
 Visual Studio Code (VSCode) を使用して、U-SQL で Python、R、および C# 分離コードを記述し、Azure Data Lake サービスにジョブを送信する方法について説明します。 Data Lake Tools for VSCode の詳細については、「[Azure Data Lake Tools for Visual Studio Code の使用](data-lake-analytics-data-lake-tools-for-vscode.md)」を参照してください。
@@ -183,4 +182,4 @@ ADL アカウントで Python および R の拡張機能アセンブリを登�
 * [PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
 * [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
 * [U-SQL アプリケーションを開発するための Data Lake Tools for Visual Studio の使用](data-lake-analytics-data-lake-tools-get-started.md)
-* [Data Lake Analytics(U-SQL) カタログの使用](data-lake-analytics-use-u-sql-catalog.md)
+* [Data Lake Analytics(U-SQL) カタログの使用](./data-lake-analytics-u-sql-get-started.md)

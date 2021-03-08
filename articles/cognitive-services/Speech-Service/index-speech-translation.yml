@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/13/2020
   ms.author: trbye
-  ms.openlocfilehash: 8fa1b62b193fff2a0ca8f4825ece228f156e5318
-  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+  ms.openlocfilehash: a54153dc8fc7f3b5ea2f86b3bf03f469aa56cdb3
+  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/22/2020
-  ms.locfileid: "83800846"
+  ms.lasthandoff: 11/21/2020
+  ms.locfileid: "95015425"
 landingContent:
 - title: 音声翻訳について
   linkLists:
@@ -25,23 +25,19 @@ landingContent:
     - text: 音声翻訳とは何か
       url: speech-translation.md
     - text: 音声翻訳の基本
-      url: speech-translation-basics.md
+      url: ./get-started-speech-translation.md
     - text: Speech CLI を使用して、コードを書かずに音声を翻訳する
       url: spx-overview.md
   - linkListType: quickstart
     links:
-    - text: 音声テキスト変換の翻訳
-      url: quickstarts/translate-speech-to-text.md
-    - text: 音声を複数のターゲット言語に翻訳する
-      url: quickstarts/translate-speech-to-text-multiple-languages.md
-    - text: 音声間翻訳
-      url: quickstarts/translate-speech-to-speech.md
+    - text: 音声翻訳を使ってみる
+      url: get-started-speech-translation.md
 - title: 音声翻訳を使用して開発する
   linkLists:
   - linkListType: learn
     links:
     - text: 音声をリアルタイムで翻訳する
-      url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
+      url: /learn/modules/convert-speech-to-text
   - linkListType: tutorial
     links:
     - text: REST API を使用してテキストを翻訳して合成する
@@ -56,3 +52,9 @@ landingContent:
       url: https://www.microsoft.com/translator/business/faq/
     - text: 音声翻訳の価格
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: サポート オプションとヘルプ オプション
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

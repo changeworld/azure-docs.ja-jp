@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB Table API .NET SDK およびリソース
-description: リリース日、提供終了日、各バージョン間で行われた変更など、Azure Cosmos DB Table API に関するすべてについて説明します。
+description: リリース日、提供終了日、各バージョン間で行われた変更など、Azure Cosmos DB Table API for .NET に関するすべてについて説明します。
 author: sakash279
 ms.author: akshanka
 ms.service: cosmos-db
@@ -9,14 +9,15 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 8c594ba01ea6fe9fb1c3cee2ed415496132d1abc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ea5f3fca18e6a5781bf46112134ae4efc7159106
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018435"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101206"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API: ダウンロードおよびリリース ノート
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
@@ -79,7 +80,7 @@ ms.locfileid: "89018435"
 
 ## <a name="release-and-retirement-dates"></a>リリース日と提供終了日
 
-Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月**前に通知します。
+Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月** 前に通知します。
 
 `Microsoft.Azure.CosmosDB.Table` ライブラリは現在 .NET Framework でのみ利用可能で、メンテナンス モードにあり、間もなく非推奨となる予定です。 新機能および最適化は、.NET Standard ライブラリの [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) にのみ追加されます。そのため、[Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) にアップグレードすることをお勧めします。
 

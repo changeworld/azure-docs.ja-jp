@@ -5,19 +5,19 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 5/7/2020
+ms.date: 2/7/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5dd1fd1209be29774d19a155b6e585fa6ebcc036
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1f19366ac8fd7aedadcca0287540262516ad060c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930487"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726184"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
 > [!NOTE]
-> この記事では、Application Insights のコストを理解し、それを制御する方法について説明します。  関連記事の「[使用量と推定コストの監視](../platform/usage-estimated-costs.md)」では、さまざまな価格モデルに対する複数の Azure 監視機能全体の使用量と推定コストを表示する方法について説明します。
+> この記事では、Application Insights のコストを理解し、それを制御する方法について説明します。  関連記事の「[使用量と推定コストの監視](..//usage-estimated-costs.md)」では、さまざまな価格モデルに対する複数の Azure 監視機能全体の使用量と推定コストを表示する方法について説明します。
 
 Application Insights は、Azure とオンプレミスのどちらでホストされているかに関係なく、Web アプリケーションの可用性、パフォーマンス、使用状況の監視に必要なものすべてを使えるように設計されています。 Application Insights では、.NET、Java、Node.js など、一般的な言語とフレームワークがサポートされています。また、Azure DevOps、Jira、PagerDuty などの DevOps プロセスおよびツールと統合できます。 アプリケーションの監視コストがどのように決まるかを把握することが重要です。 この記事では、アプリケーションの監視コストを発生させるものを確認し、それらを予防的に監視および制御する方法について説明します。
 
@@ -25,7 +25,7 @@ Application Insights の課金のしくみについてご質問がある場合�
 
 ## <a name="pricing-model"></a>価格モデル
 
-[Azure Application Insights][start] の価格は**従量課金制**モデルであり、取り込まれたデータの量に基づき、データを長期保有してもかかる場合があります。 Application Insights の各リソースは個々のサービスとして課金され、Azure サブスクリプションの課金内容に加えられます。 データ ボリュームは、Application Insights がアプリケーションから受信した圧縮されていない JSON データ パッケージのサイズとして測定されます。 [Live Metrics Stream](./live-stream.md) を使用するためのデータ ボリューム料金はありません。
+[Azure Application Insights][start] の価格は **従量課金制** モデルであり、取り込まれたデータの量に基づき、データを長期保有してもかかる場合があります。 Application Insights の各リソースは個々のサービスとして課金され、Azure サブスクリプションの課金内容に加えられます。 データ ボリュームは、Application Insights がアプリケーションから受信した圧縮されていない JSON データ パッケージのサイズとして測定されます。 [Live Metrics Stream](./live-stream.md) を使用するためのデータ ボリューム料金はありません。
 
 [複数ステップ Web テスト](./availability-multistep.md)に対しては、追加料金が発生します。 複数ステップ Web テストは、一連のアクションを実行する Web テストです。 単一ページの "*ping テスト*" については、個別の料金はかかりません。 Ping テストと複数ステップ テストからのテレメトリについては、アプリの他のテレメトリと同じ料金が請求されます。
 
@@ -33,7 +33,7 @@ Application Insights の課金のしくみについてご質問がある場合�
 
 ### <a name="workspace-based-application-insights"></a>ワークスペースベースの Application Insights
 
-[ワークスペースベースの Application Insights リソース](create-workspace-resource.md)と呼ばれる、Log Analytics ワークスペースにデータを送信する Application Insights リソースについては、Application Insights データが配置されているワークスペースによって、データ インジェストとリテンション期間の課金が行われます。 これにより、従量課金制に加えて容量予約を含む Log Analytics [価格モデル](../platform/manage-cost-storage.md#pricing-model) のすべてのオプションを利用できます。 Log Analytics には、データ保持に関するオプションが他にもあります。たとえば、[データの種類別のリテンション期間](../platform/manage-cost-storage.md#retention-by-data-type)などです。 ワークスペース内の Application Insights データの種類には、課金なしで 90 日分のリテンション期間が付与されます。 Web テストの使用およびカスタム メトリック ディメンションに対するアラートの有効化は、引き続き Application Insights を通じて報告されます。 [[使用量と推定コスト]](../platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs)、[[Azure Cost Management + Billing]\(Azure Cost Management + 請求\)](../platform/manage-cost-storage.md#viewing-log-analytics-usage-on-your-azure-bill) および [[Log Analytics queries]\(Log Analytics クエリ\)](#data-volume-for-workspace-based-application-insights-resources) を使用して、Log Analytics 内でデータ インジェストとリテンション期間のコストを追跡する方法について説明します。 
+[ワークスペースベースの Application Insights リソース](create-workspace-resource.md)と呼ばれる、Log Analytics ワークスペースにデータを送信する Application Insights リソースについては、Application Insights データが配置されているワークスペースによって、データ インジェストとリテンション期間の課金が行われます。 これにより、従量課金制に加えて容量予約を含む Log Analytics [価格モデル](../logs/manage-cost-storage.md#pricing-model) のすべてのオプションを利用できます。 Log Analytics には、データ保持に関するオプションが他にもあります。たとえば、[データの種類別のリテンション期間](../logs/manage-cost-storage.md#retention-by-data-type)などです。 ワークスペース内の Application Insights データの種類には、課金なしで 90 日分のリテンション期間が付与されます。 Web テストの使用およびカスタム メトリック ディメンションに対するアラートの有効化は、引き続き Application Insights を通じて報告されます。 [[使用量と推定コスト]](../logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs)、[[Azure Cost Management + Billing]\(Azure Cost Management + 請求\)](../logs/manage-cost-storage.md#viewing-log-analytics-usage-on-your-azure-bill) および [[Log Analytics queries]\(Log Analytics クエリ\)](#data-volume-for-workspace-based-application-insights-resources) を使用して、Log Analytics 内でデータ インジェストとリテンション期間のコストを追跡する方法について説明します。 
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>アプリケーションを管理するためのコストの見積もり
 
@@ -106,7 +106,7 @@ systemEvents
 | summarize sum(BillingTelemetrySizeInBytes) by BillingTelemetryType, bin(timestamp, 1d) | render barchart  
 ```
 
-このクエリは、データ ボリュームに対するアラートを設定するために、[Azure ログ アラート](../platform/alerts-unified-log.md)で使用できることに注意してください。  
+このクエリは、データ ボリュームに対するアラートを設定するために、[Azure ログ アラート](../alerts/alerts-unified-log.md)で使用できることに注意してください。  
 
 テレメトリ データの変化についてさらに詳しく調べるために、次のクエリを使用して種類別のイベント数を取得できます。
 
@@ -148,7 +148,7 @@ union (AppAvailabilityResults),
       (AppRequests),
       (AppSystemEvents),
       (AppTraces)
-| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now())
 | summarize sum(_BilledSize) by _ResourceId, bin(TimeGenerated, 1d)
 | render areachart
 ```
@@ -167,7 +167,7 @@ union (AppAvailabilityResults),
       (AppRequests),
       (AppSystemEvents),
       (AppTraces)
-| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now())
 | where _ResourceId contains "<myAppInsightsResourceName>"
 | summarize sum(_BilledSize) by Type, bin(TimeGenerated, 1d)
 | render areachart
@@ -186,7 +186,7 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
 
 * **サンプリング**:サンプリングを使用すると、メトリックのひずみを最小に抑えて、サーバーおよびクライアント アプリから送信されるテレメトリの量を減らすことができます。 サンプリングは、送信するデータの量を調整するために使用できる主要なツールです。 [サンプリング機能の詳細については、こちらを参照してください](./sampling.md)。
 
-* **Ajax 呼び出しの制限**: 各ページ ビューで、[報告できる Ajax 呼び出しの数を制限](./javascript.md#configuration)できます。Ajax レポートを無効にすることもできます。
+* **Ajax 呼び出しの制限**: 各ページ ビューで、[報告できる Ajax 呼び出しの数を制限](./javascript.md#configuration)できます。Ajax レポートを無効にすることもできます。 Ajax 呼び出しを無効にすると [JavaScript の相関関係](./javascript.md#enable-correlation)が無効になることに注意してください。
 
 * **不要なモジュールの無効化**: [ApplicationInsights.config を編集](./configuration-with-applicationinsights-config.md)し、不要なコレクション モジュールを無効にします。 たとえば、パフォーマンス カウンターや依存関係のデータが重要ではないと判断した場合などに検討します。
 
@@ -224,7 +224,7 @@ Application Insights の使用量と推定コストを確認し、データ イ�
 
 ### <a name="create-alerts-for-the-daily-cap"></a>日次上限のアラートを作成する
 
-Application Insights の日次上限では、取り込まれたデータ ボリュームが警告レベルまたは日次上限レベルに達したときに、Azure アクティビティ ログにイベントが作成されます。  [これらのアクティビティ ログ イベントに基づいてアラートを作成](../platform/alerts-activity-log.md#create-with-the-azure-portal)できます。 これらのイベントのシグナル名:
+Application Insights の日次上限では、取り込まれたデータ ボリュームが警告レベルまたは日次上限レベルに達したときに、Azure アクティビティ ログにイベントが作成されます。  [これらのアクティビティ ログ イベントに基づいてアラートを作成](../alerts/alerts-activity-log.md#create-with-the-azure-portal)できます。 これらのイベントのシグナル名:
 
 * Application Insights コンポーネントの日次上限の警告しきい値に到達しました
 
@@ -248,7 +248,7 @@ Application Insights の日次上限では、取り込まれたデータ ボリ�
 > **[データのサンプリング]** ウィンドウでは、インジェスト サンプリングの値だけを制御します。 アプリで Application Insights SDK によって適用されているサンプリング レートは反映されません。 受信テレメトリが既に SDK でサンプリングされている場合、インジェスト サンプリングは適用されません。
 >
 
-適用されている場所に関係なく、実際のサンプリング レートを検出するには、[Analytics クエリ](../log-query/log-query-overview.md) を使用します。 クエリは次のようになります。
+適用されている場所に関係なく、実際のサンプリング レートを検出するには、[Analytics クエリ](../logs/log-query-overview.md) を使用します。 クエリは次のようになります。
 
 ```kusto
 requests | where timestamp > ago(1d)
@@ -264,7 +264,7 @@ Application Insights リソースの既定の保持期間は 90 日です。 App
 
 保持期間を変更するには、ご利用の Application Insights リソースから **[使用量と推定コスト]** ページに移動し、 **[データ保持期間]** オプションを選択します。
 
-![テレメトリの日次ボリューム上限の調整](./media/pricing/pricing-005.png)
+![データ保有期間を変更する場所を示すスクリーンショット。](./media/pricing/pricing-005.png)
 
 保持期間が短縮された場合、最も古いデータが削除されるまでに数日の猶予期間があります。
 
@@ -286,15 +286,18 @@ Application Insights にデータを転送する場合、データ帯域幅の�
 
 Azure Application Insights の早期導入者は、引き続き次の 2 つの価格レベルをご利用いただけます。Basic と Enterprise。 Basic 価格レベルは前述のとおりで、既定のレベルです。 これには、Enterprise レベルのすべての機能が追加コストなしで含まれます。 Basic レベルでは基本的に、取り込まれるデータの量に基づいて請求されます。
 
-> [!NOTE]
-> レガシ価格レベルの名前が変更されました。 Enterprise 価格レベルの新しい名前は **Per Node** に、Basic 価格レベルの新しい名前は **Per GB** となります。 Azure portal も含め、以下、これらの新しい名前を使用します。  
+レガシ価格レベルの名前が変更されました。 Enterprise 価格レベルの新しい名前は **Per Node** に、Basic 価格レベルの新しい名前は **Per GB** となります。 Azure portal も含め、以下、これらの新しい名前を使用します。  
 
-Per Node (旧 Enterprise) レベルは、料金がノード単位となっており、日単位のデータ利用分が各ノードに割り当てられます。 Per Node 価格レベルでは、含まれる利用分を超えて取り込まれたデータに対して課金されます。 Operations Management Suite を使用している場合は、Per Node レベルを選択する必要があります。
+Per Node (旧 Enterprise) レベルは、料金がノード単位となっており、日単位のデータ利用分が各ノードに割り当てられます。 Per Node 価格レベルでは、含まれる利用分を超えて取り込まれたデータに対して課金されます。 Operations Management Suite を使用している場合は、Per Node レベルを選択する必要があります。 2018 年 4 月に、Azure Monitoring 用の新しい価格モデルを[導入](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)しました。 このモデルでは、監視サービスのポートフォリオ全体で単純な "従量課金制" モデルを採用しています。 [新しい価格モデル](..//usage-estimated-costs.md)をご確認ください。
 
 お客様の通貨およびリージョンでの現在の価格については、「[Application Insights の価格](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
-> [!NOTE]
-> 2018 年 4 月に、Azure Monitoring 用の新しい価格モデルを[導入](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)しました。 このモデルでは、監視サービスのポートフォリオ全体で単純な "従量課金制" モデルを採用しています。 [新しい価格モデル](../platform/usage-estimated-costs.md)の詳細、使用パターンに基づいて[このモデルへの移行の影響を評価](../platform/usage-estimated-costs.md#understanding-your-azure-monitor-costs)する方法、[新しいモデルを有効にする方法](../platform/usage-estimated-costs.md#azure-monitor-pricing-model)をご確認ください。
+### <a name="understanding-billed-usage-on-the-legacy-enterprise-per-node-tier"></a>レガシ エンタープライズ (ノードごと) レベルでの課金の使用状況について 
+
+以下で説明するように、従来のレガシ エンタープライズ (ノードごと) レベルでは、サブスクリプション内のすべての Application Insights リソースの使用状況を組み合わせて、ノード数とデータ超過分数を計算します。 この組み合わせプロセスにより、**サブスクリプション内のすべての Application Insights リソースの使用状況が 1 つのリソースに対してのみ報告されます**。  これにより、Application Insights リソースごとに計測する使用量と[課金された使用量](#viewing-application-insights-usage-on-your-azure-bill)の調整が非常に複雑になります。 
+
+> [!WARNING]
+> 従来のエンタープライズ (ノードごと) レベルでの Application Insights リソースの使用状況は追跡することも理解することも複雑であるため、現在の従量課金制の価格レベルを使用することを強くお勧めします。 
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>Per Node レベルと Operations Management Suite のサブスクリプションの権利
 
@@ -308,7 +311,7 @@ Per Node (旧 Enterprise) レベルは、料金がノード単位となってお
 ### <a name="how-the-per-node-tier-works"></a>Per Node レベルのしくみ
 
 * Per Node レベルでは、アプリに対してテレメトリを送信するノードごとに料金が課金されます。
-  * *ノード*とは、アプリをホストする物理または仮想サーバー マシン (または、サービスとしてのプラットフォーム (PaaS) ロール インスタンス) のことです。
+  * *ノード* とは、アプリをホストする物理または仮想サーバー マシン (または、サービスとしてのプラットフォーム (PaaS) ロール インスタンス) のことです。
   * 開発マシン、クライアントのブラウザー、およびモバイル デバイスはノードとしてカウントされません。
   * テレメトリを送信するコンポーネント (Web サービスやバックエンド ワーカーなど) がアプリに複数ある場合、それらは個別にカウントされます。
   * [ライブ メトリック ストリーム](./live-stream.md) データは、課金対象としてカウントされません。 サブスクリプション内では、料金はノード単位で計算されます (アプリ単位ではありません)。 12 のアプリに対して 5 つのノードがテレメトリを送信する場合、料金は 5 ノード分になります。
@@ -331,7 +334,7 @@ Per Node (旧 Enterprise) レベルは、料金がノード単位となってお
 * 正確なノード カウントは、アプリケーションで使用している Application Insights SDK によって異なります。 
   * SDK バージョン 2.2 以降では、Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) と [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) の両方が、各アプリケーション ホストをノードとして報告します。 例としては、物理サーバーと VM ホストのコンピューター名やクラウド サービスのインスタンス名があります。  唯一の例外は、[.NET Core](https://dotnet.github.io/) と Application Insights Core SDK のみを使用するアプリケーションです。 その場合は、ホスト名が使用できないためすべてのホストに対して 1 つのノードが報告されます。
   * 以前のバージョンの SDK では、[Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) は、新しいバージョンの SDK と同じように動作しますが、[Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) は実際のアプリケーション ホストの数に関係なく 1 つのノードのみ報告します。
-  * アプリケーションで SDK を使用して**ロール インスタンス**をカスタム値に設定すると、既定ではノード カウントの決定に同じ値が使用されます。
+  * アプリケーションで SDK を使用して **ロール インスタンス** をカスタム値に設定すると、既定ではノード カウントの決定に同じ値が使用されます。
   * クライアント コンピューターやモバイル デバイスから実行されているアプリで新しいバージョンの SDK を使用している場合は、(クライアント コンピューターやモバイル デバイスの数が多いため) ノード カウントで大きい値が返される可能性があります。
 
 ## <a name="automation"></a>オートメーション
@@ -347,4 +350,3 @@ Azure Resource Management を使用して、価格レベルを設定するスク
 [start]: ./app-insights-overview.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
-

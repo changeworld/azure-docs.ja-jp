@@ -1,6 +1,6 @@
 ---
 title: Striim クイック スタート
-description: Striim と Azure SQL Data Warehouse の使用をすぐに開始します。
+description: Striim と Azure Synapse Analytics の使用をすぐに開始します。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 945bcd03bc3bf13517836e7a5624bd5142782183
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6b5fa1a42201479c5d426a5bbb9188d0cb8e03d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208554"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89485976"
 ---
-# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Striim の Azure SQL DW の Marketplace サービスのインストール ガイド
+# <a name="striim-azure-synapse-analytics-marketplace-offering-install-guide"></a>Striim の Azure Synapse Analytics の Marketplace サービスのインストール ガイド
 
-このクイックスタートでは、SQL Data Warehouse の既存のインスタンスが既にあることを前提とします。
+このクイックスタートでは、Azure Synapse Analytics の既存のインスタンスが既にあることを前提とします。
 
-Azure Marketplace で Striim を検索し、[Striim for Data Integration to SQL Data Warehouse (Staged)]\(SQL Data Warehouse へのデータ統合用の Striim (ステージング)) オプションを選択します 
+Azure Marketplace で Striim を検索し、[Striim for Data Integration to Azure Synapse Analytics (Staged)]\(Azure Synapse Analytics へのデータ統合用の Striim (ステージング)) オプションを選択します 
 
 ![Striim をインストールする][install]
 
@@ -32,7 +32,7 @@ Striim クラスター名、パスワード、および管理者のパスワー�
 
 デプロイした後、Azure portal で \<VM Name>-masternode をクリックし、[接続] をクリックし、[Login using VM local account]\(VM ローカル アカウントを使用してログイン) をコピーします 
 
-![Striim を SQL Data Warehouse に接続する][connect]
+![Azure Synapse Analytics に Striim を接続する][connect]
 
 sqljdbc42.jar を <https://www.microsoft.com/en-us/download/details.aspx?id=54671> からローカル コンピューターにダウンロードします。 
 

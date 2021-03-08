@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 4fc5c44ab0fcee5cbf1faa2338f65fe12d779f37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67d6fb1f3cc359288ed942d915e186542a62b0fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511787"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017136"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>StorSimple 8000 シリーズ物理デバイスにフェールオーバーする
 
@@ -75,7 +75,7 @@ StorSimple 物理デバイスを StorSimple Cloud Appliance にフェールオ�
    
    1. フェールオーバー プロセスのターゲット デバイスとして使用されたデバイスを選択します。
 
-       ![デバイスの削除](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
+       ![デバイス 2 を選択する](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
    2. **[ボリューム コンテナー]** ブレードに移動します。 すべてのボリューム コンテナーと古いデバイスのボリュームの一覧が表示されます。
 

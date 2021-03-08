@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 133e6b533a3d87ef519d0f586ea59db1bbce28b9
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e383896e50ccf06ef6d1b5caaeb0ef36ece2ce3b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744478"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348298"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Microsoft Authenticator アプリを検証方法として設定する
 
@@ -45,6 +45,11 @@ ms.locfileid: "83744478"
 ## <a name="set-up-the-microsoft-authenticator-app-from-the-security-info-page"></a>[セキュリティ情報] ページから Microsoft Authenticator アプリを設定する
 
 組織の設定に応じて、セキュリティ情報メソッドの 1 つとして認証アプリを使用できます。 Microsoft Authenticator アプリを使用することは必須ではなく、設定プロセス時に別のアプリを選択することもできます。 ただし、この記事では、Microsoft Authenticator アプリを使用します。
+
+>[!Important]
+> 5 つの異なるデバイスまたは 5 つのハードウェア トークンに Microsoft Authenticator アプリがセットアップされている場合は、6 つ目をセットアップすることができず、次のエラー メッセージが表示される可能性があります。
+> 
+> **既に 5 つの認証アプリまたはハードウェア トークンがあるため、Microsoft Authenticator をセットアップできません。認証アプリまたはハードウェア トークンを 1 つ削除する場合は、管理者に問い合わせてください。**
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを設定するには
 

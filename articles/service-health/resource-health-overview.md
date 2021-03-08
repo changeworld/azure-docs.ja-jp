@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Health の概要
-description: Azure Resource Health の概要
+description: Azure Resource Health が、Azure のリソースに影響を及ぼしているサービスの問題を診断したり、サポートを受けたりするときにどのように役立つかについて説明します。
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: f0d2fdb8e1c8b92dba526650405405db8ae8a776
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 25425eadfaf54ba56cde3b377a44cd85c2b68959
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041576"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90967868"
 ---
 # <a name="resource-health-overview"></a>Resource Health の概要
  

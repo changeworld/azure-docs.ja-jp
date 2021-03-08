@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: ac19eba35e478fbd30aff647e1605fc7fc4c45a6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a3b9ae91118f714ce15f56cde0f79faa4fb4d640
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536514"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586688"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>チュートリアル: Azure Active Directory と Direct の統合
 
@@ -27,7 +27,7 @@ direct と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して direct に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -63,7 +63,7 @@ Azure AD への direct の統合を構成するには、ギャラリーから管
 
 4. 検索ボックスに「**direct**」と入力し、結果パネルから **[direct]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
 
-     ![結果一覧の direct](common/search-new-app.png)
+    ![結果一覧の direct](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -109,7 +109,7 @@ direct で Azure AD シングル サインオンを構成するには、次の�
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://direct4b.com/sso`」と入力します。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -125,7 +125,7 @@ direct で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="configure-direct-single-sign-on"></a>direct でのシングル サインオンの構成
 
-**direct** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [direct サポート チーム](https://direct4b.com/ja/support.html#inquiry)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**direct** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [direct サポート チーム](https://direct4b.com/ja/support.html#inquiry)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -144,7 +144,7 @@ direct で Azure AD シングル サインオンを構成するには、次の�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -179,29 +179,28 @@ direct で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="create-direct-test-user"></a>direct テスト ユーザーの作成
 
-このセクションでは、direct で Britta Simon というユーザーを作成します。  [direct サポート チーム](https://direct4b.com/ja/support.html#inquiry)と連携して direct プラットフォームでユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、direct で Britta Simon というユーザーを作成します。 [Direct サポート チーム](https://direct4b.com/ja/support.html#inquiry)と連携して Direct プラットフォームでユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-1. **IDP 開始モード**でテストする場合:
+1. **IDP 開始モード** でテストする場合:
 
     アクセス パネルで **[direct]** タイルをクリックすると、自動的に **direct** アプリケーションにサインオンします。
 
-2. **SP 開始モード**でテストする場合:
+2. **SP 開始モード** でテストする場合:
 
     a. アクセス パネルの **[direct]** タイルをクリックします。アプリケーションのサインオン ページにリダイレクトされます。
 
-    b. 表示されるボックスに「`subdomain`」と入力し、[Next]\(次へ\) を押します。**direct** アプリケーションに自動的にサインオンされます。
+    b. 表示されるボックスに「`subdomain`」と入力し、 **[Next]\(次へ\)** を選択します。**direct** アプリケーションに自動的にサインオンされます。
 
-アクセス パネル上で [direct] タイルをクリックすると、SSO を設定した direct に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [direct] タイルをクリックすると、SSO を設定した direct に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

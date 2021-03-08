@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 34e36be8ee9444b5612901439aa5dca4771f2dda
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b720f7e49fc0679de5c3f430122bab05d5b706f8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551678"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455761"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudpassage"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CloudPassage の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88551678"
 * ユーザーが自分の Azure AD アカウントを使用して CloudPassage に自動的にサインインできるようにします。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* CloudPassage では、**SP** によって開始される SSO がサポートされます
+* CloudPassage では、 **SP** によって開始される SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -52,7 +52,7 @@ Azure AD への CloudPassage の統合を構成するには、ギャラリーか
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**CloudPassage**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **CloudPassage** 」と入力します。
 1. 結果のパネルから **CloudPassage** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -85,7 +85,7 @@ CloudPassage に対する Azure AD SSO を構成してテストするには、�
 
     b. **[応答 URL]** ボックスに、`https://portal.cloudpassage.com/saml/consume/accountid` のパターンを使用して URL を入力します。 この属性の値は、CloudPassage ポータルの **[Single Sign-on Settings (シングル サインオンの設定)]** セクションで **[SSO Setup documentation (SSO セットアップのドキュメント)]** をクリックすることで取得できます。
 
-    ![Configure single sign-on](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
+    ![このスクリーンショットは、[S S O Setup Documentation]\(S S O セットアップのドキュメント\) リンクがコールアウトされた状態の CloudPassage ポータルを示しています。](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と応答 URL でこれらの値を更新してください。 これらの値を取得するには、[CloudPassage クライアント サポート チーム](https://www.cloudpassage.com/company/contact/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -146,19 +146,19 @@ CloudPassage に対する Azure AD SSO を構成してテストするには、�
 
 1. 上部のメニューの **[Settings (設定)]** をクリックし、 **[Site Administration (サイトの管理)]** をクリックします。 
    
-    ![Configure single sign-on][12]
+    ![このスクリーンショットは、[Site Administration]\(サイトの管理\) が選択された状態の CloudPassage サイトを示しています。][12]
 
 1. **[Authentication Settings (認証設定)]** タブをクリックします。 
    
-    ![Configure single sign-on][13]
+    ![このスクリーンショットは、[Authentication Settings]\(認証設定\) タブが選択された状態の CloudPassage サイトを示しています。][13]
 
 1. **[Single Sign-on Settings (シングル サインオンの設定)]** セクションで、次の手順に従います。 
    
-    ![Configure single sign-on][14]
+    ![このスクリーンショットは、[Single Sign-on Settings]\(シングル サインオンの設定\) セクションを示しています。ここで、この手順の情報を入力します。][14]
 
     a. **[Enable Single sign-on(SSO)(SSO Setup Documentation)]\(シングル サインオン (SSO)(SSO セットアップ ドキュメント) を有効にする\)** チェックボックスをオンにします。
     
-    b. **Azure AD の識別子**を **[SAML issuer URL]\(SAML 発行者 URL\)** ボックスに貼り付けます。
+    b. **Azure AD の識別子** を **[SAML issuer URL]\(SAML 発行者 URL\)** ボックスに貼り付けます。
   
     c. **ログイン URL** を **[SAML endpoint URL]\(SAML エンドポイント URL\)** ボックスに貼り付けます。
   
@@ -178,15 +178,15 @@ CloudPassage に対する Azure AD SSO を構成してテストするには、�
 
 1. 上部にあるツールバーの **[Settings (設定)]** をクリックし、 **[Site Administration (サイトの管理)]** をクリックします。 
    
-    ![CloudPassage テスト ユーザーの作成][22] 
+    ![このスクリーンショットは、[Site Administration]\(サイトの管理\) が選択された状態の CloudPassage を示しています。][22] 
 
 1. **[Users (ユーザー)]** タブをクリックし、 **[Add New User (新しいユーザーの追加)]** をクリックします。 
    
-    ![CloudPassage テスト ユーザーの作成][23]
+    ![このスクリーンショットは、[Users]\(ユーザー\) タブと [Add New User]\(新しいユーザーの追加\) オプションが選択された状態の CloudPassage の [Site Administration]\(サイトの管理\) を示しています。][23]
 
 1. **[新しいユーザーの追加]** セクションで、次の手順を実行します。 
    
-    ![CloudPassage テスト ユーザーの作成][24]
+    ![このスクリーンショットは、[Add New User]\(新しいユーザーの追加\) セクションを示しています。ここで、ユーザー情報を指定できます。][24]
     
     a. **[名]** ボックスに「Britta」と入力します。 
   
@@ -202,15 +202,15 @@ CloudPassage に対する Azure AD SSO を構成してテストするには、�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [CloudPassage] タイルをクリックすると、SSO を設定した CloudPassage に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [CloudPassage] タイルをクリックすると、SSO を設定した CloudPassage に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で CloudPassage を試す](https://aad.portal.azure.com/)
 
@@ -223,4 +223,3 @@ CloudPassage に対する Azure AD SSO を構成してテストするには、�
 [22]: ./media/cloudpassage-tutorial/tutorial_cloudpassage_15.png
 [23]: ./media/cloudpassage-tutorial/tutorial_cloudpassage_16.png
 [24]: ./media/cloudpassage-tutorial/tutorial_cloudpassage_17.png
-

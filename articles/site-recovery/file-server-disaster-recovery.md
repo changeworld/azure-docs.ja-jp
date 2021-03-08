@@ -1,19 +1,19 @@
 ---
 title: Azure Site Recovery を使用したファイル サーバーの保護
 description: この記事では、Azure Site Recovery を使用してファイル サーバーを保護する方法について説明します。
-author: rajani-janaki-ram
-manager: gauravd
+author: Sharmistha-Rai
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.author: rajanaki
+ms.author: sharrai
 ms.custom: mvc
-ms.openlocfilehash: c4b6d583c2dd3d54c6201917a40fa6165efac18f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 9cef163c1b53360222ca32a827552fa361e9dd40
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131271"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874249"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Azure Site Recovery を使用したファイル サーバーの保護 
 
@@ -45,7 +45,7 @@ DFSR では、Remote Differential Compression (RDC) という圧縮アルゴリ�
 
     * VM の構成が Site Recovery でサポートされていない場合は、この方法を使用できます。 例として、ファイル サーバー環境でよく使用される共有クラスター ディスクが挙げられます。 DFSR は、チャーン レートが中程度の低帯域幅の環境でも適切に機能します。 Azure VM を常時稼働させておくための追加コストを考慮する必要があります。 
 
-* **Azure File Sync を使用してファイルをレプリケートする**: クラウドを使用する予定があるか、または既に Azure VM を使用している場合は、Azure File Sync を使用できます。Azure File Sync は、業界標準の[サーバー メッセージ ブロック](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) (SMB) プロトコルを介してアクセスできる、クラウドでのフル マネージドのファイル共有の同期を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにある Windows、Linux、および macOS に同時にマウントできます。 
+* **Azure File Sync を使用してファイルをレプリケートする**: クラウドを使用する予定があるか、または既に Azure VM を使用している場合は、Azure File Sync を使用できます。Azure File Sync は、業界標準の [サーバー メッセージ ブロック](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) (SMB) プロトコルを介してアクセスできる、クラウドでのフル マネージドのファイル共有の同期を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにある Windows、Linux、および macOS に同時にマウントできます。 
 
 次のダイアグラムは、ファイル サーバー環境で使用する戦略を決定する際に役立ちます。
 
@@ -77,7 +77,7 @@ Site Recovery レプリケーションはアプリケーションに依存しな
 
 
 
-**サイト間接続**: サーバー間の通信を許可するには、オンプレミスのサイトと Azure ネットワークの間の直接接続を確立する必要があります。 ディザスター リカバリー サイトとして使用する Azure 仮想ネットワークへのセキュリティで保護されたサイト間 VPN 接続を使用します。 詳細については、[オンプレミス サイトと Azure 仮想ネットワーク間のサイト間 VPN 接続の確立](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関する記事をご覧ください。
+**サイト間接続**: サーバー間の通信を許可するには、オンプレミスのサイトと Azure ネットワークの間の直接接続を確立する必要があります。 ディザスター リカバリー サイトとして使用する Azure 仮想ネットワークへのセキュリティで保護されたサイト間 VPN 接続を使用します。 詳細については、[オンプレミス サイトと Azure 仮想ネットワーク間のサイト間 VPN 接続の確立](../vpn-gateway/tutorial-site-to-site-portal.md)に関する記事をご覧ください。
 
 **Active Directory**: DFSR は Active Directory に依存します。 つまり、ローカル ドメイン コントローラーを使用する Active Directory フォレストが Azure のディザスター リカバリー サイトに拡張されます。 DFSR を使用しない場合でも、対象のユーザーにアクセス権を付与したり、アクセスを検証したりする必要がある場合は、これらの手順を実行してください。 詳細については、[Azure へのオンプレミス Active Directory の拡張](./site-recovery-active-directory.md)に関する記事をご覧ください。
 

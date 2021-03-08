@@ -1,14 +1,14 @@
 ---
 title: パターン:ポリシー定義の効果
 description: この Azure Policy パターンでは、ポリシー定義のさまざまな効果を使用する方法の例を示します。
-ms.date: 06/29/2020
+ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 9c7e7689aa837a2dba0992112df3cd36ac9affe6
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: f1da9bd153707db35c07ed3c176542797a694d7a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85565729"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073038"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure Policy パターン: 効果
 
@@ -24,7 +24,7 @@ Azure Policy には、準拠していないリソースにサービスがどの�
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json" range="40-50":::
 
-**modify** 効果には、**roleDefinitionIds** および **operations** を定義する **policyRule.then.details** ブロックが必要です。 これらのパラメーターによって、タグを追加してリソースを修復するために必要なロールと、実行するするべき**変更**操作が Azure Policy に通知されます。 この例では、**操作**が "_追加_" され、パラメーターを使用してタグとその値が設定されます。
+**modify** 効果には、**roleDefinitionIds** および **operations** を定義する **policyRule.then.details** ブロックが必要です。 これらのパラメーターによって、タグを追加してリソースを修復するために必要なロールと、使用するべき**変更**操作が Azure Policy に通知されます。 この例では、"_追加_" **操作**とパラメーターを使用してタグとその値が設定されます。
 
 ## <a name="sample-2-complex-effect"></a>サンプル 2:複雑な効果
 

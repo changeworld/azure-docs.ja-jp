@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 12/11/2020
 ms.author: jeedes
-ms.openlocfilehash: d257935aa3e9ad54b64b0f416119931661809172
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d105c83ba3db9502cf83f943dec6fcbfd5640d07
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545966"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735626"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zoom の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "88545966"
 * Zoom にアクセスできるユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Zoom に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,24 +38,24 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Zoom では、**SP** Initiated SSO がサポートされます。 
-* Zoom では、[**自動化された**ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial)がサポートされます。
+* Zoom では、[**自動化された** ユーザー プロビジョニング](./zoom-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-zoom-from-the-gallery"></a>ギャラリーからの Zoom の追加
 
 Azure AD への Zoom の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Zoom を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Zoom**」と入力します。
 1. 結果パネルで **[Zoom]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-zoom"></a>Zoom の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-zoom"></a>Zoom の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Zoom に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと Zoom の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Zoom で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+Zoom に対して Azure AD SSO を構成してテストするには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -70,7 +68,7 @@ Zoom で Azure AD SSO を構成してテストするには、次の構成要素�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Zoom** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Zoom** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
 
@@ -96,7 +94,7 @@ Zoom で Azure AD SSO を構成してテストするには、次の構成要素�
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
 > [!NOTE]
-> Azure AD でロールを構成する方法については、[エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する方法](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)に関するページを参照してください。
+> Azure AD でロールを構成する方法については、[エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する方法](../develop/active-directory-enterprise-app-role-management.md)に関するページを参照してください。
 
 > [!NOTE]
 > Zoom は、グループ要求が SAML ペイロードに含まれていることを想定している場合があります。 グループを作成した場合は、[Zoom クライアント サポート チーム](https://support.zoom.us/hc/)にグループ情報を連絡し、Zoom クライアント サポート チーム側で、そのグループ情報を構成できるようにしてください。 また、Zoom クライアント サポート チーム側でオブジェクト ID を構成できるよう、[Zoom クライアント サポート チーム](https://support.zoom.us/hc/)にオブジェクト ID を提供する必要もあります。 オブジェクト ID の取得については、[Azure での Zoom の構成](https://support.zoom.us/hc/articles/115005887566)に関するページを参照してください。
@@ -120,20 +118,22 @@ Zoom で Azure AD SSO を構成してテストするには、次の構成要素�
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[Zoom]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-zoom-sso"></a>Zoom SSO の構成
 
-1. 別の Web ブラウザー ウィンドウで、Zoom 企業サイトに管理者としてサインインします。
+1. Zoom 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして、**My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+2. ブラウザーに拡張機能を追加した後、 **[Zoom のセットアップ]** をクリックすると、Zoom アプリケーションに誘導されます。 そこから、管理者の資格情報を入力して Zoom にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+3. Zoom を手動でセットアップする場合は、別の Web ブラウザー ウィンドウで、Zoom 企業サイトに管理者としてサインインします。
 
 2. [**シングル サインオン**] タブをクリックします。
 
@@ -145,7 +145,7 @@ Zoom で Azure AD SSO を構成してテストするには、次の構成要素�
 
     ![[Single sign-on]\(シングル サインオン\) セクション](./media/zoom-tutorial/zoom-sso2.png "シングル サインオン")
 
-    a. **[Sign-in page URL]\(サインイン ページの URL\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    a. **[Sign-in page URL]\(サインイン ページの URL\)** テキスト ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     b. **[サインアウト ページの URL]** 値については、Azure portal に移動し、左側の **[Azure Active Directory]** をクリックしてから **[アプリの登録]** に移動する必要があります。
 
@@ -161,7 +161,7 @@ Zoom で Azure AD SSO を構成してテストするには、次の構成要素�
 
     e. base-64 でエンコードされた証明書をメモ帳で開き、内容をクリップボードにコピーし、**[Identity Provider Certificate]** ボックスに貼り付けます。
 
-    f. **[Issuer]\(発行者\)** テキストボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。 
+    f. **[Issuer]\(発行者\)** テキストボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。 
 
     g. **[変更を保存]** をクリックします。
 
@@ -170,23 +170,21 @@ Zoom で Azure AD SSO を構成してテストするには、次の構成要素�
 
 ### <a name="create-zoom-test-user"></a>Zoom テスト ユーザーの作成
 
-このセクションの目的は、Zoom で B.Simon というユーザーを作成することです。 Zoom では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial)をご覧ください。
+このセクションの目的は、Zoom で B.Simon というユーザーを作成することです。 Zoom では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./zoom-provisioning-tutorial.md)をご覧ください。
 
 > [!NOTE]
 > ユーザーを手動で作成する必要がある場合、[Zoom クライアント サポート チーム](https://support.zoom.us/hc/)に問い合わせる必要があります
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Zoom] タイルをクリックすると、SSO を設定した Zoom に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Zoom のサインオン URL にリダイレクトされます。
 
-## <a name="additional-resources"></a>その他のリソース
+* Zoom のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Zoom] タイルをクリックすると、Zoom のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Azure AD で Zoom を試す](https://aad.portal.azure.com/)
+Azure AD Zoom を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

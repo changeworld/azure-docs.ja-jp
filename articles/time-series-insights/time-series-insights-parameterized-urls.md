@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 07/07/2020
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2673bb70582640cda97160eb31f16f7c7f1d60e6
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9bf857a66643b1e95ea2559601761a7217babad4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421183"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91665329"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>パラメーター化 URL を使用してカスタム ビューを共有する
 
@@ -24,6 +24,7 @@ Azure Time Series Insights Explorer のカスタム ビューを共有するた�
 Azure Time Series Insights Explorer では、そのエクスペリエンスのビューを URL から直接指定する URL クエリ パラメーターがサポートされています。 たとえば、ターゲット環境や検索述語、必要な期間を URL だけで指定することができます。 そのカスタマイズした URL をユーザーが選択すると、Azure Time Series Insights ポータル内の対応するアセットにインターフェイスから直接アクセスすることができます。 データ アクセス ポリシーが適用されます。
 
 > [!TIP]
+>
 > * 無料の [Azure Time Series Insights のデモ](https://insights.timeseries.azure.com/samples)をご覧ください。
 > * 付属の [Azure Time Series Insights Explorer](./time-series-insights-explorer.md) のドキュメントを参照してください。
 
@@ -123,7 +124,7 @@ https://insights.timeseries.azure.com/classic/samples?environmentId=10000000-000
 > Explorer ライブで上記の [URL の使用](https://insights.timeseries.azure.com/classic/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[%7B%22name%22:%22F1PressureId%22,%22splitBy%22:%22Id%22,%22measureName%22:%22Pressure%22,%22predicate%22:%22%27Factory1%27%22%7D,%7B%22name%22:%22F2TempStation%22,%22splitBy%22:%22Station%22,%22measureName%22:%22Temperature%22,%22predicate%22:%22%27Factory2%27%22%7D,%7B%22name%22:%22F3VibrationPL%22,%22splitBy%22:%22ProductionLine%22,%22measureName%22:%22Vibration%22,%22predicate%22:%22%27Factory3%27%22%7D]
 )例についてご覧ください。
 
-上の URL は、パラメーター化された Azure Time Series Insights Explorer ビューを記述し、表示しています。 
+上の URL は、パラメーター化された Azure Time Series Insights Explorer ビューを記述し、表示しています。
 
 * パラメーター化された述語です。
 

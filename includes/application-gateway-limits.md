@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: a3fb3dbf026a696b9d472efcba139c371ff1e587
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c7c68bf690097004f2f3310a8d89ce954d7f87f
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334927"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98612908"
 ---
 | リソース | 制限 | Note |
 | --- | --- | --- |
@@ -32,6 +32,9 @@ ms.locfileid: "80334927"
 | 各リスナーあたりの URL のマップの数 |1 | |
 | URL マップあたりのパスベース ルールの最大数|100||
 | リダイレクトの構成 |100<sup>1</sup>| |
+| 書き換えルール セットの数 |400| |
+| 書き換えルール セットごとのヘッダーまたは URL 構成の数|40| |
+| 書き換えルール セットごとの条件の数|40| |
 | コンカレント WebSocket 接続 |中規模のゲートウェイ 20k<br> 大規模のゲートウェイ 50k| |
 | URL の最大長|32KB| |
 | HTTP/2 向けヘッダーの最大サイズ |4KB| |
@@ -39,6 +42,6 @@ ms.locfileid: "80334927"
 | 最大ファイル アップロード サイズ (WAF) |中規模の V1 WAF ゲートウェイ、100 MB<br>大規模の V1 WAF ゲートウェイ、500 MB<br>V2 WAF、750 MB| |
 | WAF の本文サイズの制限 (ファイルがない場合)|128 KB||
 | WAF カスタム規則の最大数|100||
-| WAF 除外の最大数|100||
+| Application Gateway あたりの最大 WAF 除外数|40||
 
-<sup>1</sup> WAF 対応 SKU の場合は、最適なパフォーマンスを確保するためにリソース数を 40 に制限することをお勧めします。
+<sup>1</sup> WAF 対応の SKU の場合、リソース数を 40 に制限する必要があります。

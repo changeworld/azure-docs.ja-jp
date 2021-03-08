@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/07/2020
+ms.date: 09/01/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1de7e98a9cb57f83b87589ceddedc3cdd80927
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 4662e9fb537a93cb87c554e319256e2eca40d2e7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005946"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372431"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Azure AD ロールの検出と分析情報 (プレビュー) (以前のセキュリティ ウィザード)
 
@@ -29,9 +29,9 @@ Azure Active Directory (Azure AD) 組織内で Privileged Identity Management (P
 
 組織で Privileged Identity Management の使用を開始する前に、すべてのロールの割り当てが永続になります。 ユーザーは特権を必要としない場合でも、常に割り当てられたロールに含まれます。 以前のセキュリティウィザードに代わる [Discovery and insights (preview)]\(検出と分析情報 (プレビュー)\) には、特権ロールの一覧と、それらのロールに現在存在しているユーザーの数が表示されます。 1 人または複数のロール割り当て済みユーザーが不明な場合に、その詳細を確認するには、ロールの割り当ての一覧を表示できます。
 
-:heavy_check_mark:Microsoft は、サインイン時に多要素認証を必要としないグローバル管理者ロールに永続的に割り当てられる、緊急用アカウントを 2 つ保持することを**お勧めします**。 これらは、どのような緊急時のシナリオでも、グローバル管理者ロールに誰も昇格できない場合であっても使用できます。
+:heavy_check_mark:Microsoft は、グローバル管理者ロールに永続的に割り当てられる、緊急用アカウントを 2 つ保持することを **お勧めします** 。 「[Azure AD で緊急アクセス用管理者アカウントを管理する](../roles/security-emergency-access.md)」で説明されているように、これらのアカウントが、サインインする通常の管理者アカウントと同じ多要素認証メカニズムを必要としないようにしてください。
 
-また、ユーザーに Microsoft アカウント (つまり、Skype、Outlook.com などの Microsoft サービスへのサインインに使用するアカウント) がある場合は、ロールの割り当ても永続的に維持してください。 このようなロールで多要素認証をアクティブにする必要がある場合、そのユーザーはロックアウトされます。
+また、ユーザーに Microsoft アカウント (つまり、Skype、Outlook.com などの Microsoft サービスへのサインインに使用するアカウント) がある場合は、ロールの割り当ても永続的に維持してください。 ロールの割り当てをアクティブ化するために、Microsoft アカウントを持つユーザーに対して多要素認証が必要な場合、このユーザーはロックアウトされます。
 
 ## <a name="open-discovery-and-insights-preview"></a>[Discovery and insights (preview)]\(検出と分析情報 (プレビュー)\) を開く
 
@@ -45,11 +45,11 @@ Azure Active Directory (Azure AD) 組織内で Privileged Identity Management (P
 
 1. **[Reduce global administrators]\(グローバル管理者を減らす\)** を選択します。
 
-    ![グローバル管理者を減らす - すべてのメンバーを表示している [ロール] ウィンドウ](./media/pim-security-wizard/new-preview-page.png)
+    ![[グローバル管理者の削減] 操作が選択されている [検出と分析情報 (プレビュー)] を示すスクリーンショット。](./media/pim-security-wizard/new-preview-page.png)
 
 1. グローバル管理者ロールの割り当ての一覧を確認します。
 
-    ![グローバル管理者を減らす - すべてのメンバーを表示している [ロール] ウィンドウ](./media/pim-security-wizard/new-global-administrator-list.png)
+    ![グローバル管理者を減らす - すべてのグローバル管理者を表示している [ロール] ウィンドウ](./media/pim-security-wizard/new-global-administrator-list.png)
 
 1. **[次へ]** を選択し、対象とするユーザーまたはグループを選択してから、 **[対象化]** または **[割り当ての削除]** を選択します。
 

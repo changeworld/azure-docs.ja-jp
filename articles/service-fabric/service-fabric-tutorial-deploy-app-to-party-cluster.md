@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 4cd21669b30b8ec83d6a0538c90d4cec5cafe32a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e35b655dc8b735214de891884fe40fb951dd16cd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244992"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91441294"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>チュートリアル: Azure のクラスターに Service Fabric アプリケーションをデプロイする
 
@@ -78,19 +78,19 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 **[クラスター]** タブで、**クラスター名** (たとえば、"mytestcluster") を入力します。お客様のサブスクリプションを選択し、クラスターのリージョン (たとえば、"米国中南部") を選択します。クラスター ノードの数 (テスト クラスターには 3 つのノードをお勧めします) を入力し、リソース グループ (たとえば、"mytestclustergroup") を入力します。 **[次へ]** をクリックします。
 
-![クラスターの作成](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
+![[Service Fabric クラスターの作成] ダイアログ ボックスの [クラスター] タブを示すスクリーンショット。](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
 **[証明書]** タブで、クラスター証明書のパスワードと出力パスを入力します。 自己署名証明書は PFX ファイルとして作成され、指定した出力パスに保存されます。  証明書は、ノード間のセキュリティと、クライアントとノード間のセキュリティの両方に使用されます。  運用クラスターでは、自己署名証明書を使用しないでください。  この証明書は、クラスターによる認証とアプリケーションのデプロイのために Visual Studio によって使用されます。 お客様のコンピューターの CurrentUser\My certificate store に PFX をインストールするために、 **[証明書のインポート]** を選択します。  **[次へ]** をクリックします。
 
-![クラスターの作成](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
+![[Service Fabric クラスターの作成] ダイアログ ボックスの [証明書] タブを示すスクリーンショット。](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
 **[VM の詳細]** タブで、クラスター管理者アカウントの**ユーザー名**と**パスワード**を入力します。  クラスター ノードの**仮想マシン イメージ**を選択し、各クラスター ノードの**仮想マシン サイズ**を選択します。  **[詳細設定]** タブをクリックします。
 
-![クラスターの作成](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
+![[Service Fabric クラスターの作成] ダイアログ ボックスの [VM の詳細] タブを示すスクリーンショット。](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 
 **[ポート]** に、前の手順の VotingWeb サービス エンドポイントを入力します (たとえば、8080)。  クラスターが作成されると、トラフィックをクラスターに転送するためにこれらのアプリケーション ポートが Azure ロード バランサーで開かれます。  **[作成]** をクリックしてクラスターを作成します。これには数分かかります。
 
-![クラスターの作成](./media/service-fabric-tutorial-deploy-app-to-party-cluster/advanced.png)
+![[Service Fabric クラスターの作成] ダイアログ ボックスの [詳細設定] タブを示すスクリーンショット。](./media/service-fabric-tutorial-deploy-app-to-party-cluster/advanced.png)
 
 ## <a name="publish-the-application-to-the-cluster"></a>アプリケーションをクラスターに発行する
 

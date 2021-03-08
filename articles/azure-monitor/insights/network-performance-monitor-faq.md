@@ -1,21 +1,23 @@
 ---
 title: FAQ - Azure の Network Performance Monitor ソリューション | Microsoft Docs
 description: この記事では、Azure の Network Performance Monitor についてよく寄せられる質問について説明します。 Network Performance Monitor (NPM) は、ネットワークのパフォーマンスをほぼリアルタイムで監視し、ネットワーク パフォーマンスのボトルネックを検出して特定するのに役立ちます。
-ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 45a10ddce165626bfbadb0ba0b3d68b81709c3bb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 909cbd6174fe7eceaa8b53b5ba44fe72990b56d9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326139"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708052"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 
 ![ネットワーク パフォーマンス モニターのシンボル](media/network-performance-monitor-faq/npm-symbol.png)
+
+> [!IMPORTANT]
+> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 2021 年 7 月 1 日より前に作成されたテストは使い続けることができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor から Azure Network Watcher の新しい接続モニターにテストを移行](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md)します。
 
 この記事では、Azure の Network Performance Monitor (NPM) についてよく寄せられる質問 (FAQ) について説明します
 
@@ -34,13 +36,13 @@ NPM の様々な機能に対するプラットフォーム要件を、以下に�
 - NPM の ExpressRoute モニター機能は Windows Server (2008 SP1 またはそれ以降) オペレーティング システムのみをサポートします。
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>NPM 内の監視ノードとして Linux マシンを使用できますか。
-Linux ベースのノードを使用してネットワークを監視する機能は、現在はプレビュー段階です。 詳細についてはアカウント マネージャーにご連絡ください。 Linux エージェントは NPM のパフォーマンス モニター機能についてのみ監視機能を提供し、サービス接続モニターおよび ExpressRoute Monitor 機能については使用できません
+Linux ベースのノードを使用してネットワークを監視する機能が一般提供されました。 [こちら](../../virtual-machines/extensions/oms-linux.md)からエージェントにアクセスします。 
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM による監視で使用するノードのサイズ要件はありますか。
 ネットワークを監視するためにノード VM 上に NPM ソリューションを実行するには、ノードには少なくとも 500 MB のメモリと 1 つのコアが必要です。 NPM を実行するために別のノードを使用する必要はありません。 ソリューションは、別のワークロードが実行されているノードでも実行できます。 このソリューションには、その CPU 使用率が 5% を超えた場合に監視プロセスを停止する機能があります。
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>NPM を使用するには、ノードを直接エージェントとして、または System Center Operations Manager を介して接続する必要がありますか。
-パフォーマンス モニター機能とサービス接続モニター機能のどちらも、[直接エージェントとして接続されている](../platform/agent-windows.md)ノードと [Operations Manager 経由で接続されている](../platform/om-agents.md)ノードをサポートします。
+パフォーマンス モニター機能とサービス接続モニター機能のどちらも、[直接エージェントとして接続されている](../agents/agent-windows.md)ノードと [Operations Manager 経由で接続されている](../agents/om-agents.md)ノードをサポートします。
 
 ExpressRoute モニター機能では、Azure ノードは直接エージェントとしてのみ接続する必要があります。 Operations Manager 経由で接続されている Azure ノードはサポートされません。 オンプレミス ノードの場合、直接エージェントとして接続されるノードおよび Operations Manager を介して接続されているノードは、ExpressRoute 回線の監視用としてサポートされます。
 
@@ -54,7 +56,7 @@ Windows デスクトップ/クライアント オペレーティング システ
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>TCP プロトコルを使用して監視をサポートするにはノードをどのように構成できますか。
 TCP プロトコルを使用してノードが監視をサポートするには、次のようにします。 
 * ノードのプラットフォームが Windows Server (2008 SP1 またはそれ以降) であるようにします。
-* [EnableRules.ps1](https://aka.ms/npmpowershellscript) Powershell スクリプトをノードで実行します。 詳細については、[手順](./network-performance-monitor.md#configure-log-analytics-agents-for-monitoring)を参照してください。
+* [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell スクリプトをノードで実行します。 詳細については、[手順](./network-performance-monitor.md#configure-log-analytics-agents-for-monitoring)を参照してください。
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>監視のために NPM で使用する TCP ポートをどのように変更すればよいですか。
@@ -95,7 +97,7 @@ NPM は、ソース エージェントと宛先の間のすべての可能なル
 NPM は確率論的メカニズムを使用して、各ネットワーク パス、ネットワーク セグメント、および構成要素のネットワーク ホップに対し、それらがその一部となる異常なパスの数に基づき障害確率を割り当てます。 ネットワーク セグメントとホップが異常なパスの一部になる場合が多くなるほど、それらに関連付けられる障害確率が増加します。 このアルゴリズムは、NPM エージェントが相互に接続された多くのノードがある場合に最適です。この場合は障害確率を計算するためのデータ ポイントが増加するためです。
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>NPM でアラートを作成する方法はありますか。
-NPM UI からのアラートの作成は、問題が発生したため現在失敗しています。 手動でアラートを作成してください。
+現時点では、NPM UI からのアラートの作成は、既知の問題により失敗します。 [手動でアラートを作成](../alerts/alerts-log.md)してください。
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>アラート用の既定の Log Analytics クエリはどのようなものですか。
 パフォーマンス モニター クエリ
@@ -257,7 +259,7 @@ NPM は、ユーザーがアクセスできるすべてのサブスクリプシ�
 ### <a name="why-does-expressroute-monitor-report-my-circuitpeering-as-unhealthy-when-it-is-available-and-passing-data"></a>回線またはピアリングが使用可能であり、データが渡されている場合でも、ExpressRoute モニターに異常と報告されるのはなぜですか。
 ExpressRoute モニターでは、エージェントまたはサービスから報告されたネットワーク パフォーマンス値 (損失、待機時間、帯域幅の使用率) と、構成時に設定されたしきい値が比較されます。 回線の場合、報告された帯域幅の使用率が構成で設定されたしきい値よりも高い場合、回線は異常とマークされます。 ピアリングの場合、報告された損失、待機時間、または帯域幅の使用率が構成で設定されたしきい値よりも高い場合、ピアリングは異常とマークされます。 NPM には、正常性の状態を判断するためにメトリックやその他の形式のデータが利用されません。
 
-### <a name="why-does-expressroute-monitorbandwidth-utilisation-report-a-value-differrent-from-metrics-bits-inout"></a>ExpressRoute モニターの帯域幅の使用率にメトリックのビットの送受信とは異なる値が報告されるのはなぜですか
+### <a name="why-does-expressroute-monitorbandwidth-utilization-report-a-value-different-from-metrics-bits-inout"></a>ExpressRoute モニターの帯域幅の使用率にメトリックのビットの送受信とは異なる値が報告されるのはなぜですか
 ExpressRoute モニターの場合、帯域幅の使用率は、過去 20 分間の受信および送信の帯域幅の平均値であり、ビット/秒で表されます。Express Route メトリックの場合、ビットの送受信は 1 分あたりのデータ ポイントです。内部的に両方に使用されるデータセットは同じですが、集計値は NPM と ER の各メトリックで異なります。 きめ細かい、分単位の監視と高速アラートの場合は、ER メトリックに直接アラートを設定することをお勧めします
 
 ### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>ExpressRoute 回線の監視を構成中に Azure ノードが検出されません。
@@ -289,7 +291,7 @@ NPM は Azure portal からでも OMS ポータルからでも使用できます
 NPM プロセスは、ホスト CPU リソースの 5% 以上を使用した場合に停止するよう構成されています。 これにより、パフォーマンスに影響を及ぼすことなく、ノードをノードの通常のワークロードのために使用し続けることができます。
 
 ### <a name="does-npm-edit-firewall-rules-for-monitoring"></a>NPM は監視目的でファイアウォール ルールを編集しますか。
-NPM は、指定したポートでの TCP 相互接続をエージェントが作成できるようにするために、EnableRules.ps1 Powershell スクリプトを実行するノード上でローカルの Windows ファイアウォール ルールを作成することのみ行います。 このソリューションは、ネットワーク ファイアウォールまたはネットワーク セキュリティ グループ (NSG) ルールを変更しません。
+NPM は、指定したポートでの TCP 相互接続をエージェントが作成できるようにするために、EnableRules.ps1 PowerShell スクリプトを実行するノード上でローカルの Windows ファイアウォール ルールを作成することのみ行います。 このソリューションは、ネットワーク ファイアウォールまたはネットワーク セキュリティ グループ (NSG) ルールを変更しません。
 
 ### <a name="how-can-i-check-the-health-of-the-nodes-being-used-for-monitoring"></a>監視に使用されるノードの正常性をどのように確認できますか。
 監視に使用されるノードの正常性状態は、次のビューから表示できます。[Network Performance Monitor] -> [構成] -> [ノード] ノードが正常でない場合は、エラーの詳細を表示し、推奨されるアクションを実行できます。
@@ -300,4 +302,3 @@ NPM は UI では待機時間の数値をミリ秒単位に丸めます。 こ�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure の Network Performance Monitor ソリューション](./network-performance-monitor.md)を参照して、Network Performance Monitor の詳細について学習します。
-

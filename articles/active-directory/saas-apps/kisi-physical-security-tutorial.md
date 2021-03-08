@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 8543eb83e9a642f377d5d3abd261a545cefc7e5f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a65d3f24fdcc684d5a47c19497d36b091764406b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534957"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020774"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kisi-physical-security"></a>チュートリアル:Azure Active Directory のシングル サインオン (SSO) と Kisi Physical Security の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88534957"
 * ユーザーが自分の Azure AD アカウントを使用して Kisi Physical Security に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,7 +42,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Kisi Physical Security では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 * Kisi Physical Security では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
-* Kisi Physical Security を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Kisi Physical Security を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-kisi-physical-security-from-the-gallery"></a>ギャラリーからの Kisi Physical Security の追加
 
@@ -86,7 +86,7 @@ Kisi Physical Security に対する Azure AD SSO を構成してテストする�
     b. **[応答 URL]** ボックスに、`https://api.kisi.io/saml/consume/<DOMAIN>` のパターンを使用して URL を入力します
 
     > [!NOTE] 
-    > `DOMAIN` は、Kisi によって組織に割り当てられる小文字の英数字識別子であり、組織の DNS ドメイン名と同じものでは**ありません**。*
+    > `DOMAIN` は、Kisi によって組織に割り当てられる小文字の英数字識別子であり、組織の DNS ドメイン名と同じものでは **ありません**。*
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -153,18 +153,18 @@ Kisi Physical Security に対する Azure AD SSO を構成してテストする�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Kisi Physical Security] タイルをクリックすると、SSO を設定した Kisi Physical Security に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Kisi Physical Security] タイルをクリックすると、SSO を設定した Kisi Physical Security に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Kisi Physical Security を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって Kisi Physical Security を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって Kisi Physical Security を保護する方法](/cloud-app-security/proxy-intro-aad)

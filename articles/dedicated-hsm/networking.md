@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 06cd02177d7d5c478f3378eb05517f1a37297e92
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300734"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91359156"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure の専用 HSM のネットワーク
 
@@ -83,7 +83,7 @@ HSM デバイスには、ソフトウェア ライブラリを通じて、トラ
 > [!NOTE]
 > 現時点では、専用 HSM を使用したリージョン間接続のシナリオで、グローバル VNET ピアリングを利用することはできません。VPN Gateway を使用する必要があります。 
 
-![グローバル VNET](media/networking/global-vnet.png)
+![2 つの VPN ゲートウェイで接続されている 2 つのリージョンを示す図。 各リージョンに、ピアリングされた仮想ネットワークが含まれています。](media/networking/global-vnet.png)
 
 ## <a name="next-steps"></a>次のステップ
 

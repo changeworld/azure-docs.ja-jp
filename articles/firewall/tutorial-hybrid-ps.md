@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: a91d0e11c44657a2d4cdd267ffa6490ca89532a9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: e60c829831bde3b454ab180d1a39ec46cb346963
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069410"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658657"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
@@ -48,11 +48,11 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、PowerShell をローカルで実行する必要があります。 Azure PowerShell モジュールをインストールしておく必要があります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell のバージョンを確認した後、`Login-AzAccount` を実行して Azure との接続を作成します。
+この記事では、PowerShell をローカルで実行する必要があります。 Azure PowerShell モジュールをインストールしておく必要があります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell のバージョンを確認した後、`Login-AzAccount` を実行して Azure との接続を作成します。
 
 このシナリオが正しく機能するために重要な要件が 3 つあります。
 
-- スポーク サブネット上のユーザー定義ルート (UDR) が、Azure Firewall IP アドレスを既定のゲートウェイとして指すこと。 このルート テーブルでは仮想ネットワーク ゲートウェイのルート伝達を**無効**にする必要があります。
+- スポーク サブネット上のユーザー定義ルート (UDR) が、Azure Firewall IP アドレスを既定のゲートウェイとして指すこと。 このルート テーブルでは仮想ネットワーク ゲートウェイのルート伝達を **無効** にする必要があります。
 - ハブ ゲートウェイ サブネット上の UDR が、スポーク ネットワークへの次のホップとしてファイアウォール IP アドレスを指すこと。
 
    Azure Firewall サブネット上に UDR は必要ありません。BGP からルートを学習するためです。
@@ -68,7 +68,7 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
 >[!NOTE]
 >直接ピアリングされた VNets 間のトラフィックは、UDR が既定のゲートウェイとして Azure Firewall をポイントしている場合でも、直接ルーティングされます。 このシナリオでサブネット間トラフィックをファイアウォールに送信するには、UDR に両方のサブネットのターゲットのサブネット ネットワーク プレフィックスを明示的に含める必要があります。
 
-関連する Azure PowerShell リファレンス ドキュメントを確認するには、[Azure PowerShell リファレンス](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall)を参照してください。
+関連する Azure PowerShell リファレンス ドキュメントを確認するには、[Azure PowerShell リファレンス](/powershell/module/az.network/new-azfirewall)を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -292,7 +292,7 @@ New-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupNam
 
 #### <a name="verify-the-connection"></a>接続を確認する
 
-*Get-AzVirtualNetworkGatewayConnection*コマンドレットを使用して、接続が成功したことを確認できます。 *-Debug* は指定しても指定しなくてもかまいません。 次のコマンドレットを使用します。値は実際の値に置き換えてください。 プロンプトが表示されたら、**A** を選択して **All** を実行します。 この例では、テストする接続の名前が *-Name* で示されています。
+*Get-AzVirtualNetworkGatewayConnection* コマンドレットを使用して、接続が成功したことを確認できます。 *-Debug* は指定しても指定しなくてもかまいません。 次のコマンドレットを使用します。値は実際の値に置き換えてください。 プロンプトが表示されたら、**A** を選択して **All** を実行します。 この例では、テストする接続の名前が *-Name* で示されています。
 
 ```azurepowershell
 Get-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupName $RG1
@@ -496,4 +496,4 @@ Set-AzFirewall -AzureFirewall $azfw
 
 次に、Azure Firewall のログを監視することができます。
 
-[チュートリアル:Azure Firewall のログを監視する](./tutorial-diagnostics.md)
+[チュートリアル:Azure Firewall のログを監視する](./firewall-diagnostics.md)

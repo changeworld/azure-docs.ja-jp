@@ -1,21 +1,21 @@
 ---
 title: チュートリアル - テンプレートに出力を追加する
-description: Azure Resource Manager テンプレートに出力を追加して構文を単純化します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) に出力を追加して構文を単純化します。
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4c90f1ce4bc3f3f5ed91bee86bb1f6f9093876c7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: ''
+ms.openlocfilehash: 7acfb168462354017168ee333ea0b1ecaea434c1
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497785"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107126"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>チュートリアル:ARM テンプレートに出力を追加する
 
-このチュートリアルでは、Azure Resource Manager (ARM) テンプレートから値を返す方法について説明します。 デプロイされたリソースから得られる値が必要なときは出力を使用します。 このチュートリアルの所要時間は **7 分**です。
+このチュートリアルでは、Azure Resource Manager テンプレート (ARM テンプレート) から値を返す方法について説明します。 デプロイされたリソースから得られる値が必要なときは出力を使用します。 このチュートリアルの所要時間は **7 分** です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,17 +41,17 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 追加した出力値については、注目すべき重要な事柄がいくつかあります。
 
-返される値の型は **object** に設定されています。これは JSON オブジェクトが返されることを意味します。
+返される値の型は `object` に設定されています。これは JSON オブジェクトが返されることを意味します。
 
 ストレージ アカウントの実行時の状態を取得するために、[reference](template-functions-resource.md#reference) 関数が使用されています。 リソースの実行時の状態を取得するには、リソースの名前または ID を渡します。 このケースでは、ストレージ アカウントの名前を作成する際に使用した変数を使用します。
 
-最後に、ストレージ アカウントの **primaryEndpoints** プロパティを返します。
+最後に、ストレージ アカウントの `primaryEndpoints` プロパティを返します。
 
 ## <a name="deploy-template"></a>テンプレートのデプロイ
 
 それではテンプレートをデプロイして、返される値を見てみましょう。
 
-まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、**templateFile** 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
+まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、`templateFile` 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -92,7 +92,7 @@ az deployment group create \
 ```
 
 > [!NOTE]
-> デプロイに失敗した場合は、デプロイ コマンドで **debug** スイッチを使用してデバッグ ログを表示します。  **verbose** スイッチを使用して、詳細なデバッグ ログを表示することもできます。
+> デプロイに失敗した場合は、`verbose` スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、`debug` スイッチを使用してください。
 
 ## <a name="review-your-work"></a>作業を振り返る
 

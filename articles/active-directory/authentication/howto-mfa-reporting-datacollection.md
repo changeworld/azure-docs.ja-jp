@@ -1,32 +1,32 @@
 ---
-title: Azure MFA ユーザー データの収集 - Azure Active Directory
-description: Azure Multi-Factor Authentication によるユーザーの認証に役立つ情報としてどの情報が使用されますか。
+title: Azure AD MFA ユーザー データの収集 - Azure Active Directory
+description: Azure AD Multi-Factor Authentication によるユーザーの認証に役立つ情報としてどの情報が使用されますか。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f3b5af972ad6dd15b7c992d5e264ede97bd1dde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2124ca9fae76d87a695a2c453f7b222e7a08794
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80653630"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742795"
 ---
-# <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication によるユーザー データの収集
+# <a name="azure-ad-multi-factor-authentication-user-data-collection"></a>Azure AD Multi-Factor Authentication によるユーザー データの収集
 
-このドキュメントでは、Azure Multi-Factor Authentication Server (MFA Server) と Azure MFA (クラウドベース) によって収集されたユーザー情報を削除する場合にその情報を見つける方法について説明します。
+このドキュメントでは、Azure Multi-Factor Authentication Server (MFA Server) と Azure AD MFA (クラウドベース) によって収集されたユーザー情報を削除する場合にその情報を見つける方法について説明します。
 
 [!INCLUDE [gdpr-hybrid-note](../../../includes/gdpr-hybrid-note.md)]
 
 ## <a name="information-collected"></a>収集される情報
 
-MFA Server、NPS 拡張機能、および Windows Server 2016 Azure MFA AD FS アダプターは、次の情報を収集して 90 日間保存します。
+MFA Server、NPS 拡張機能、および Windows Server 2016 Azure AD MFA AD FS アダプターは、次の情報を収集して 90 日間保存します。
 
 認証の試行 (レポートとトラブルシューティングに使用):
 
@@ -163,26 +163,26 @@ MFA Server のコマンド ラインから次のコマンドを実行して、�
 
 - データが完全に削除されるまでには最大で 30 日かかる場合があります。
 
-## <a name="gather-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Windows Server 2016 Azure MFA AD FS アダプターからのデータの収集
+## <a name="gather-data-from-windows-server-2016-azure-ad-mfa-ad-fs-adapter"></a>Windows Server 2016 Azure AD MFA AD FS アダプターからのデータの収集
 
 [Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) を使用して、エクスポートを要求します。 
 
 - MFA 情報はエクスポートに含まれます。この操作が完了するまでに数時間または数日かかることがあります。
 - AD FS Tracing/Debug イベント ログ (有効な場合) 内に出現するユーザー名は運用データと見なされ、エクスポートで提供される情報と重複していると見なされます。
 
-## <a name="delete-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Windows Server 2016 Azure MFA AD FS アダプターからのデータの削除
+## <a name="delete-data-from-windows-server-2016-azure-ad-mfa-ad-fs-adapter"></a>Windows Server 2016 Azure AD MFA AD FS アダプターからのデータの削除
 
 [Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) を使用してアカウントの削除要求を行って、このユーザー用に収集されたすべての MFA クラウド サービス情報を削除します。
 
 - データが完全に削除されるまでには最大で 30 日かかる場合があります。
 
-## <a name="gather-data-for-azure-mfa"></a>Azure MFA のデータの収集
+## <a name="gather-data-for-azure-ad-mfa"></a>Azure AD MFA のデータの収集
 
 [Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) を使用して、エクスポートを要求します。
 
 - MFA 情報はエクスポートに含まれます。この操作が完了するまでに数時間または数日かかることがあります。
 
-## <a name="delete-data-for-azure-mfa"></a>Azure MFA のデータの削除
+## <a name="delete-data-for-azure-ad-mfa"></a>Azure AD MFA のデータの削除
 
 [Microsoft Privacy Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) を使用してアカウントの削除要求を行って、このユーザー用に収集されたすべての MFA クラウド サービス情報を削除します。
 

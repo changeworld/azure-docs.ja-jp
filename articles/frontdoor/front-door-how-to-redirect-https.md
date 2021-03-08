@@ -5,107 +5,79 @@ services: front-door
 author: duongau
 ms.service: frontdoor
 ms.topic: how-to
-ms.date: 5/21/2019
+ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: fe2159f0eeb9d01081e6a25e7a88ceff4f1e361c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 19908b3cba63bc76a205097ef8d16e612d58503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399692"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91626644"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal を使用して HTTP から HTTPS にリダイレクトする Front Door を作成する
 
-Azure portal を使用して、TLS 終端の証明書で [Front Door](front-door-overview.md) を作成できます。 ルーティング規則を使用して、HTTP トラフィックを HTTPS にリダイレクトします。
-
-この記事では、次のことについて説明します。
-
-> [!div class="checklist"]
-> * 既存の Web アプリ リソースを使用して Front Door を作成する
-> * TLS/SSL 証明書を使用してカスタム ドメインを追加する 
-> * カスタム ドメインで HTTPS リダイレクトをセットアップする
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure portal を使用して、TLS 終端の証明書で [Front Door を作成](quickstart-create-front-door.md)できます。 ルーティング規則を使用して、HTTP トラフィックを HTTPS にリダイレクトします。
 
 ## <a name="create-a-front-door-with-an-existing-web-app-resource"></a>既存の Web アプリ リソースを使用して Front Door を作成する
 
 1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
-2. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
-3. 検索バーを使用して **Front Door** を検索し、リソースの種類を見つけたら、 **[作成]** をクリックします。
-4. サブスクリプションを選択して、既存のリソース グループを使用するか、新しいものを作成します。 UI で指定するよう求められる場所は、このリソース グループ専用です。 Front Door 構成は、[Azure Front Door の POP の場所](front-door-faq.md#what-are-the-pop-locations-for-azure-front-door)全体にわたってデプロイされます。
 
-    ![新規 Front Door の基本を構成する](./media/front-door-url-redirect/front-door-create-basics.png)
+1. Azure Portal の左上隅にある **[リソースの作成]** を選択します。
 
-5. **[次へ]** をクリックして構成タブに進みます。Front Door の構成は、3 つの手順、つまり既定のフロントエンド ホストの追加、バックエンド プールへのバックエンドの追加、およびフロントエンド ホストのルーティング動作をマップするルーティング規則の作成によって行われます。 
+1. 検索バーを使用して **Front Door** を検索し、リソースの種類を見つけたら、 **[作成]** を選択します。
 
-     ![Front Door 構成デザイナー](./media/front-door-url-redirect/front-door-designer.png)
+1. *サブスクリプション*を選択して、既存のリソース グループを使用するか、新しいものを作成します。 **[次へ]** をクリックして構成タブに進みます。
 
-6. _フロントエンド ホスト_ の ' **+** ' アイコンをクリックしてフロントエンド ホストを作成し、Front Door の既定のフロントエンド ホストに対するグローバルで一意な名前を入力します (`\<**name**\>.azurefd.net`)。 **[追加]** をクリックして次の手順に進みます。
+    > [!NOTE]
+    > UI で指定するよう求められる場所は、このリソース グループ専用です。 Front Door 構成は、[Azure Front Door の POP の場所](front-door-faq.md#what-are-the-pop-locations-for-azure-front-door)全体にわたってデプロイされます。
 
-     ![フロントエンド ホストを追加する](./media/front-door-url-redirect/front-door-create-fehost.png)
+    :::image type="content" source="./media/front-door-url-redirect/front-door-create-basics.png" alt-text="新規 Front Door の基本を構成する":::
 
-7. _[バックエンド プール]_ の ' **+** ' アイコンをクリックして、バックエンド プールを作成します。 バックエンド プールの名前を指定し、 **[バックエンドの追加]** をクリックします。
-8. [バックエンド ホストの種類] で _[App service]_ を選択します。 お使いの Web アプリがホストされているサブスクリプションを選択し、**バックエンド ホスト名**用のドロップダウンから特定の Web アプリを選択します。
-9. **[追加]** をクリックしてバックエンドを保存し、もう一度 **[追加]** をクリックしてバックエンド プールの構成を保存します。 ![バックエンド プールにバックエンドを追加する](./media/front-door-url-redirect/front-door-create-backendpool.png)
+1. Front Door の構成は、3 つの手順、つまり既定のフロントエンド ホストの追加、バックエンド プールへのバックエンドの追加、およびフロントエンド ホストのルーティング動作をマップするルーティング規則の作成によって行われます。 _フロントエンド ホスト_ の ' **+** ' アイコンを選択して、フロントエンド ホストを作成します。
 
-10. _[ルーティング規則]_ で ' **+** ' アイコンをクリックしてルートを作成します。 ルートの名前 ('HttpToHttpsRedirect' など) を指定し、 _[受け入れ済みのプロトコル]_ フィールドを **[HTTP のみ]** に設定します。 適切な _フロントエンド ホスト_ が選択されていることを確認します。  
-11. _[ルートの詳細]_ セクションで、 _[ルートの種類]_ を **[リダイレクト]** に設定し、 _[リダイレクトの種類]_ が **[検出 (302)]** に設定され、 _[プロトコルをリダイレクトします]_ が **[HTTPS のみ]** に設定されていることを確認します。 
-12. [追加] をクリックして、HTTP から HTTPS へのリダイレクト用のルーティング規則を保存します。
-     ![HTTP から HTTPS へのリダイレクト ルートを追加する](./media/front-door-url-redirect/front-door-redirect-config-example.png)
-13. HTTPS トラフィックを処理するための別のルーティング規則を追加します。 _[ルーティング規則]_ で ' **+** ' 記号をクリックして、ルートの名前 ('DefaultForwardingRoute' など) を指定し、 _[受け入れ済みのプロトコル]_ フィールドを **[HTTP のみ]** に設定します。 適切な _フロントエンド ホスト_ が選択されていることを確認します。
-14. [ルートの詳細] セクションで、 _[ルートの種類]_ を **[転送]** に設定し、適切なバックエンド プールが選択されていること、および _[転送プロトコル]_ が **[HTTPS のみ]** に設定されていることを確認します。 
-15. [追加] をクリックして、要求の転送用のルーティング規則を保存します。
-     ![HTTPS トラフィックの転送ルートを追加する](./media/front-door-url-redirect/front-door-forward-route-example.png)
-16. **[レビュー + 作成]** 、 **[作成]** の順にクリックし、Front Door プロファイルを作成します。 作成されたリソースに移動します。
+    :::image type="content" source="./media/front-door-url-redirect/front-door-designer.png" alt-text="新規 Front Door の基本を構成する":::
 
-## <a name="add-a-custom-domain-to-your-front-door-and-enable-https-on-it"></a>Front Door にカスタム ドメインを追加し、そこで HTTPS を有効にする
-次の手順では、既存の Front Door リソースにカスタム ドメインを追加し、そこで HTTP から HTTPS へのリダイレクトを有効にする方法を紹介します。 
+1. Front Door の既定のフロントエンド ホストのグローバルに一意の名前を入力します。 **[追加]** を選択して、次の手順に進みます。
 
-### <a name="add-a-custom-domain"></a>カスタム ドメインの追加
+    :::image type="content" source="./media/front-door-url-redirect/front-door-create-frontend-host.png" alt-text="新規 Front Door の基本を構成する":::
 
-この例では、`www` サブドメイン (たとえば `www.contosonews.com`) の CNAME レコードを追加します。
+### <a name="create-backend-pool"></a>バックエンド プールの作成
 
-#### <a name="create-the-cname-record"></a>CNAME レコードを作成する
+1. _[バックエンド プール]_ の ' **+** ' アイコンを選択して、バックエンド プールを作成します。 バックエンド プールの名前を指定し、 **[バックエンドの追加]** を選択します。
 
-サブドメインを Front Door の既定のフロントエンド ホスト (`<name>.azurefd.net`、ここで、`<name>` は Front Door プロファイルの名前) にマップする CNAME レコードを追加します。
+    :::image type="content" source="./media/front-door-url-redirect/front-door-designer-backend-pool.png" alt-text="新規 Front Door の基本を構成する":::
 
-たとえば `www.contoso.com` ドメインの場合、名前 `www` を `<name>.azurefd.net` にマップする CNAME レコードを追加します。
+1. [バックエンド ホストの種類] で _[App service]_ を選択します。 お使いの Web アプリがホストされているサブスクリプションを選択し、**バックエンド ホスト名**用のドロップダウンから特定の Web アプリを選択します。
 
-CNAME を追加した後の DNS レコード ページは次の例のようになります。
+    :::image type="content" source="./media/front-door-url-redirect/front-door-create-backend-pool.png" alt-text="新規 Front Door の基本を構成する":::
 
-![Front Door に対する CNAME カスタム ドメイン](./media/front-door-url-redirect/front-door-dns-cname.png)
+1. **[追加]** を選択してバックエンドを保存し、もう一度 **[追加]** を選択してバックエンド プールの構成を保存します。 
 
-#### <a name="onboard-the-custom-domain-on-your-front-door"></a>カスタム ドメインをフロント ドアにオンボードする
+## <a name="create-http-to-https-redirect-rule"></a>HTTP から HTTPS へのリダイレクト ルールの作成
 
-1. [Front Door デザイナー] タブで、[フロントエンド ホスト] セクションの [+] アイコンをクリックして、新しいカスタム ドメインを追加します。 
-2. カスタム ホスト名フィールドに完全修飾カスタム DNS 名を入力します (例: `www.contosonews.com`)。 
-3. ドメインからご自分のフロント ドアへの CNAME マッピングが検証されたら、 **[追加]** をクリックしてカスタム ドメインを追加します。
-4. **[保存]** をクリックして、変更を送信します。
+1. *[ルーティング規則]* で ' **+** ' アイコンを選択してルートを作成します。 ルートの名前 ('HttpToHttpsRedirect' など) を指定し、 *[受け入れ済みのプロトコル]* フィールドを **[HTTP のみ]** に設定します。 適切な *[フロントエンド/ドメイン]* が選択されていることを確認します。  
 
-![[カスタム ドメイン] メニュー](./media/front-door-url-redirect/front-door-add-custom-domain.png)
+    :::image type="content" source="./media/front-door-url-redirect/front-door-designer-routing-rule.png" alt-text="新規 Front Door の基本を構成する":::
 
-### <a name="enable-https-on-your-custom-domain"></a>カスタム ドメインで HTTPS を有効にする
+1. *[ルートの詳細]* セクションで、 *[ルートの種類]* を **[リダイレクト]** に設定します。 *[リダイレクトの種類]* が **[検出 (302)]** に設定され、 *[リダイレクト プロトコル]* が **[HTTPS のみ]** に設定されていることを確認します。 
 
-1. 追加されたカスタム ドメインをクリックし、 **[カスタム ドメイン HTTPS]** セクションで、状態を **[有効]** に変更します。
-2. Front Door によって維持、管理、およびオートローテーションされる無料の証明書については、 **[証明書の管理の種類]** を *[Front Door managed]\(Front Door による管理\)* のままにすることができます。 また、Azure Key Vault に格納されている独自のカスタム TLS/SSL 証明書を使用することも選択できます。 このチュートリアルでは、Front Door によって管理される証明書を使用することを前提としています。
-![カスタム ドメインに対して HTTPS を有効にする](./media/front-door-url-redirect/front-door-custom-domain-https.png)
+    :::image type="content" source="./media/front-door-url-redirect/front-door-redirect-config-example.png" alt-text="新規 Front Door の基本を構成する":::
 
-3. **[更新]** をクリックして選択内容を保存し、 **[保存]** をクリックします。
-4. 数分経った後で **[更新]** をクリックし、カスタム ドメインをもう一度クリックして、証明書のプロビジョニングの進行状況を確認します。 
+1. **[追加]** を選択して、HTTP から HTTPS へのリダイレクト用のルーティング規則を保存します。
 
-> [!WARNING]
-> カスタム ドメインの HTTPS の有効化は、数分かかる場合があり、また、CNAME が Front Door ホスト `<name>.azurefd.net` に直接マップされていない場合は、ドメインの所有権の検証によっても異なります。 [カスタム ドメインの HTTPS を有効にする方法](./front-door-custom-domain-https.md)に関する記事を参照してください。
+## <a name="create-forwarding-rule"></a>転送ルールの作成
 
-## <a name="configure-the-routing-rules-for-the-custom-domain"></a>カスタム ドメインのルーティング規則を構成する
+1. HTTPS トラフィックを処理するための別のルーティング規則を追加します。 *[ルーティング規則]* の ' **+** ' 記号を選択し、ルートの名前 ('DefaultForwardingRoute' など) を指定します。 次に *[受け入れ済みのプロトコル]* フィールドを **[HTTPS のみ]** に設定します。 適切な *[フロントエンド/ドメイン]* が選択されていることを確認します。
 
-1. 先ほど作成したリダイレクト ルーティング規則をクリックします。
-2. フロントエンド ホストについてのドロップダウンをクリックし、使用するカスタム ドメインを選択して、このルートを該当のドメインにも適用します。
-3. **[Update]** をクリックします。
-4. 他のルーティング規則についても (つまりカスタム ドメインを追加するための転送ルートについても)、同じ操作を実行します。
-5. **[保存]** をクリックして変更を送信します。
+1. [ルートの詳細] セクションで、 *[ルートの種類]* を **[転送]** に設定します。 適切なバックエンド プールが選択されており、 *[転送プロトコル]* が **[HTTPS のみ]** に設定されていることを確認します。 
+
+    :::image type="content" source="./media/front-door-url-redirect/front-door-forward-route-example.png" alt-text="新規 Front Door の基本を構成する" border="false":::
+
+1. **[追加]** を選択して、要求の転送用のルーティング規則を保存します。
+
+1. **[レビュー + 作成]** 、 **[作成]** の順に選択し、Front Door プロファイルを作成します。 作成されたリソースに移動します。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
 - [Front Door のしくみ](front-door-routing-architecture.md)について学習します。
 - [Front Door の URL リダイレクト](front-door-url-redirect.md)について詳しく学習します。

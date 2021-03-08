@@ -2,13 +2,13 @@
 title: Azure Site Recovery の最新情報
 description: Azure Site Recovery サービスの新機能と最新の更新プログラムの概要について説明します。
 ms.topic: conceptual
-ms.date: 08/20/2020
-ms.openlocfilehash: 837344d10e21d20488760f6d5aa4749c039f9b07
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.date: 01/26/2021
+ms.openlocfilehash: 51d54ca4d46af3b9e0746f36114fadc47edd5b1f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816951"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805047"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
@@ -22,14 +22,63 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 
 **アップデート** |  **統合セットアップ** | **構成サーバー ova** | **モビリティ サービス エージェント** | **Site Recovery プロバイダー** | **Recovery Services エージェント**
 --- | --- | --- | --- | --- | ---
+[ロールアップ 53](https://support.microsoft.com/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 9.40.5850.1 | 5.1.6537.0 | 9.40.5850.1 | 5.1.6537.0  | 2.0.9202.0
+[ロールアップ 52](https://support.microsoft.com/help/4597409/)  | 9.39.5796.1 | 5.1.6458.0 | 9.39.5796.1 | 5.1.6458.0  | 2.0.9196.0
+[ロールアップ 51](https://support.microsoft.com/help/4590304)  | 9.38.5761.1 | 5.1.6400.0 | 9.38.5761.1 | 5.1.6400.0  | 2.0.9193.0
+[ロールアップ 50](https://support.microsoft.com/help/4582666/) | 9.37.5724.1 | 5.1.6347.0 | 9.37.5724.1 | 5.1.6347.0  | 2.0.9192.0
 [ロールアップ 49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
-[ロールアップ 48](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
-[ロールアップ 47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | HyperV マシン - 2.0.9183.0 <br> VMware マシン - 2.0.9177.0
-[ロールアップ 46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
-[ロールアップ 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
+
 
 更新プログラムのインストールとサポートの詳細については、[こちら](service-updates-how-to.md)を参照してください。
 
+## <a name="updates-january-2021"></a>更新プログラム (2021 年 1 月)
+
+### <a name="update-rollup-53"></a>更新プログラム ロールアップ 53
+
+[更新プログラム ロールアップ 53](https://support.microsoft.com/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) では、以下の更新が提供されます。
+
+**アップデート** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照) 
+**Azure VM のディザスター リカバリー** | タグのレプリケーションがサポートされるようになりました。 ソース リージョン内の Azure VM、ディスク、NIC に追加されたすべてのタグが、ターゲット リージョンのマシンにレプリケートされます。<br/><br/> Debian 10 を実行する Azure VM のレプリケーションがサポートされるようになりました。
+**VMware VM/物理の Azure へのディザスター リカバリー** | この更新プログラムには、Azure への VMware VM レプリケーションのログ機能強化と、エラー メッセージの改善が含まれています。<br/><br/> Debian 10 を実行する VMware VM と物理マシンのレプリケーションがサポートされるようになりました。
+
+
+## <a name="updates-november-2020"></a>更新プログラム (2020 年 11 月)
+
+### <a name="update-rollup-52"></a>更新プログラム ロールアップ 52
+
+[更新プログラム ロールアップ 52](https://support.microsoft.com/help/4597409/update-rollup-52-for-azure-site-recovery) では、以下の更新が提供されます。
+
+**アップデート** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | Mobility Service に対する新しい Linux のサポートを含む、ロールアップで詳細に説明されているいくつかの修正と改善。
+**Azure VM のディザスター リカバリー** | RHEL 8.3 および Oracle Linux 7.9 が実行される VM でサポートされるようになりました
+**VMware VM/物理の Azure へのディザスター リカバリー** | RHEL 8.3 および Oracle Linux 7.9/8.3 が実行される VM でサポートされるようになりました。
+
+## <a name="updates-october-2020"></a>更新プログラム (2020 年 10 月)
+
+### <a name="update-rollup-51"></a>更新プログラム ロールアップ 51
+
+[更新プログラム ロールアップ 51](https://support.microsoft.com/help/4590304/update-rollup-51-for-azure-site-recovery) では、以下の更新が提供されます。
+
+**アップデート** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | Mobility Service に対する新しい Linux のサポートを含む、ロールアップで詳細に説明されているいくつかの修正と改善。
+
+## <a name="updates-september-2020"></a>更新プログラム (2020 年 9 月)
+
+### <a name="update-rollup-50"></a>更新プログラム ロールアップ 50
+
+[更新プログラム ロールアップ 50](https://support.microsoft.com/help/4582666/update-rollup-50-for-azure-site-recovery) では、以下の更新が提供されます。
+
+**アップデート** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
 
 ## <a name="updates-august-2020"></a>更新プログラム (2020 年 8 月)
 
@@ -40,7 +89,7 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 **アップデート** | **詳細**
 --- | ---
 **プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
-**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
+**問題の修正/改善点** | Mobility Service に対する新しい Linux のサポートを含む、ロールアップで詳細に説明されているいくつかの修正と改善。
 
 ## <a name="updates-july-2020"></a>更新 (2020 年 7 月)
 

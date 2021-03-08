@@ -1,19 +1,16 @@
 ---
 title: HDInsight で Apache Hadoop ジョブを送信する
 description: Microsoft .NET SDK、curl、または PowerShell を使用して Azure HDInsight で Apache Hadoop ジョブを送信する
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/16/2019
-ms.openlocfilehash: 1cdee99378feb381d75edef0d150089132d1bbc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52a5fcbc68d7efdce5724e39ee7bc25581ceb0ef
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75435690"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944200"
 ---
 # <a name="submit-apache-hadoop-jobs-in-hdinsight"></a>HDInsight で Apache Hadoop ジョブを送信する
 
@@ -40,6 +37,6 @@ Azure HDInsight で Apache Hadoop ジョブを送信するには、HDInsight、c
   - [HDInsight 上の Apache Hadoop で Apache Sqoop を使用する](apache-hadoop-use-sqoop-powershell.md)
   - [PowerShell を使用して HDInsight の Apache Hadoop で MapReduce ジョブを実行する](apache-hadoop-use-mapreduce-powershell.md)
 
-## <a name="see-also"></a>参照
+## <a name="next-steps"></a>次のステップ
 
-- [Azure HDInsight のドキュメント](https://docs.microsoft.com/azure/hdinsight/)
+- [Azure HDInsight のドキュメント](../index.yml)

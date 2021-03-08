@@ -4,12 +4,12 @@ description: ステートレス サービスとステートフル サービス�
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev, devx-track-csharp
-ms.openlocfilehash: 1de77f870bce5766ab704249034d6d7b6c8b098e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 45341c98a40cbcabfa8b96f2016f02f1755fe2b3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012740"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791529"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 使用
 
@@ -42,14 +42,14 @@ Visual Studio 2017 または Visual Studio 2019 を管理者として起動し�
 
 これで、ソリューションには、次の 2 つのプロジェクトが含まれています。
 
-* *HelloWorld*。 これは*サービス*を含む*アプリケーション* プロジェクトです。 また、アプリケーションを説明するアプリケーション マニフェストと、アプリケーションをデプロイするのに役立つ多くの PowerShell スクリプトも含まれます。
+* *HelloWorld*。 これは *サービス* を含む *アプリケーション* プロジェクトです。 また、アプリケーションを説明するアプリケーション マニフェストと、アプリケーションをデプロイするのに役立つ多くの PowerShell スクリプトも含まれます。
 * *HelloWorldStateless*。 これはサービス プロジェクトです。 ステートレス サービスの実装が含まれています。
 
 ## <a name="implement-the-service"></a>サービスの実装
 
 サービス プロジェクト内にある **HelloWorldStateless.cs** ファイルを開きます。 Service Fabric では、どのようなビジネス ロジックもサービスで実行できます。 サービス API には、コードのエントリ ポイントが 2 つあります。
 
-* *RunAsync*という変更可能なエントリ ポイント メソッドでは、実行時間の長いコンピューティング ワークロードなどの任意のワークロードの実行を開始できます。
+* *RunAsync* という変更可能なエントリ ポイント メソッドでは、実行時間の長いコンピューティング ワークロードなどの任意のワークロードの実行を開始できます。
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
@@ -125,9 +125,9 @@ Service Fabric には、新しい種類のステートフルなサービスが�
 
 これで、アプリケーションには、ステートレス サービス *HelloWorldStateless* とステートフル サービス *HelloWorldStateful* の 2 つのサービスが含まれるようになります。
 
-ステートフル サービスのエントリ ポイントは、ステートレス サービスと同じです。 主な違いは、*状態プロバイダー*を使用して状態を確実に保存できることです。 Service Fabric には、[Reliable Collection](service-fabric-reliable-services-reliable-collections.md) という状態プロバイダー実装が用意されています。Reliable Collection では、Reliable State Manager を使用してレプリケートされたデータ構造を作成できます。 ステートフル Reliable Service では、この状態プロバイダーを既定で使用します。
+ステートフル サービスのエントリ ポイントは、ステートレス サービスと同じです。 主な違いは、*状態プロバイダー* を使用して状態を確実に保存できることです。 Service Fabric には、[Reliable Collection](service-fabric-reliable-services-reliable-collections.md) という状態プロバイダー実装が用意されています。Reliable Collection では、Reliable State Manager を使用してレプリケートされたデータ構造を作成できます。 ステートフル Reliable Service では、この状態プロバイダーを既定で使用します。
 
-**HelloWorldStateful** で、次の RunAsync メソッドを含む *HelloWorldStateful.cs*を開きます。
+**HelloWorldStateful** で、次の RunAsync メソッドを含む *HelloWorldStateful.cs* を開きます。
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
@@ -169,11 +169,11 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-[IReliableDictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2) は、サービスに状態を確実に格納するために使用できるディクショナリ実装です。 Service Fabric と Reliable Collection を使用すると、データをサービスに直接格納できるため、外部の永続ストアが必要ありません。 Reliable Collection により、データの可用性が向上します。 Service Fabric では、サービスの複数の *レプリカ* を作成して管理することでこれを実現します。 また、これらのレプリカとその状態遷移の管理の複雑さを取り除く API も提供します。
+[IReliableDictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2#microsoft_servicefabric_data_collections_ireliabledictionary_2) は、サービスに状態を確実に格納するために使用できるディクショナリ実装です。 Service Fabric と Reliable Collection を使用すると、データをサービスに直接格納できるため、外部の永続ストアが必要ありません。 Reliable Collection により、データの可用性が向上します。 Service Fabric では、サービスの複数の *レプリカ* を作成して管理することでこれを実現します。 また、これらのレプリカとその状態遷移の管理の複雑さを取り除く API も提供します。
 
 Reliable Collection にはカスタム型を含むすべての .NET 型を格納できます。ただし次の点にご注意ください。
 
-* Service Fabric がノード全体で状態を*レプリケート*して状態の可用性を高め、Reliable Collection が各レプリカでデータをローカル ディスクに保存します。 これは、Reliable Collection で保存されるすべてのデータは*シリアル化可能である*必要があることを意味します。 既定では、Reliable Collection は [DataContract](/dotnet/api/system.runtime.serialization.datacontractattribute?view=netcore-3.1) を使用してシリアル化します。そのため、既定のシリアライザーを使用する場合は、使用する型が[データ コントラクト シリアライザーでサポートされている](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)ことを確認することが重要です。
+* Service Fabric がノード全体で状態を *レプリケート* して状態の可用性を高め、Reliable Collection が各レプリカでデータをローカル ディスクに保存します。 これは、Reliable Collection で保存されるすべてのデータは *シリアル化可能である* 必要があることを意味します。 既定では、Reliable Collection は [DataContract](/dotnet/api/system.runtime.serialization.datacontractattribute) を使用してシリアル化します。そのため、既定のシリアライザーを使用する場合は、使用する型が[データ コントラクト シリアライザーでサポートされている](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)ことを確認することが重要です。
 * Reliable Collection でトランザクションをコミットすると、可用性が高めるためにオブジェクトがレプリケートされます。 Reliable Collection に格納されるオブジェクトは、サービスのローカル メモリに保持されます。 これは、オブジェクトへのローカルな参照があることを意味します。
   
    トランザクションの Reliable Collection を更新せずに、これらのオブジェクトのローカル インスタンスを変更しないようにしてください。 オブジェクトのローカル インスタンスの変更は自動的にレプリケートされないためです。 オブジェクトをディクショナリに再挿入するか、ディクショナリで *update* メソッドのいずれかを使用する必要があります。
@@ -195,10 +195,10 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 
 Reliable Collection には、統合言語クエリ (LINQ) を除き、対応する `System.Collections.Generic` と `System.Collections.Concurrent` が実行する操作と同じ操作が多数あります。 Reliable Collection での操作は非同期です。 Reliable Collection での書き込み操作では、データをレプリケートしてディスクに保持するために I/O 操作が実行されるためです。
 
-Reliable Collection の操作は *トランザクション*であるため、複数の Reliable Collection と操作で状態の整合性を維持できます。 たとえば、1 つのトランザクション内で Reliable Queue から作業項目をデキューし、その項目の操作を実行してから、結果を Reliable Dictionary に保存するとします。 これはアトミック操作として扱われので、操作全体が成功するか、操作全体がロールバックされることが保証されます。 項目をデキューしたが、結果を保存する前にエラーが発生した場合は、トランザクション全体がロールバックされ、項目は処理のためにキューに残ります。
+Reliable Collection の操作は *トランザクション* であるため、複数の Reliable Collection と操作で状態の整合性を維持できます。 たとえば、1 つのトランザクション内で Reliable Queue から作業項目をデキューし、その項目の操作を実行してから、結果を Reliable Dictionary に保存するとします。 これはアトミック操作として扱われので、操作全体が成功するか、操作全体がロールバックされることが保証されます。 項目をデキューしたが、結果を保存する前にエラーが発生した場合は、トランザクション全体がロールバックされ、項目は処理のためにキューに残ります。
 
 ## <a name="run-the-application"></a>アプリケーションの実行
-*HelloWorld* アプリケーションに戻ります。 ここからサービスを構築してデプロイできます。 **F5**キーを押すと、アプリケーションがビルドされ、ローカル クラスターにデプロイされます。
+*HelloWorld* アプリケーションに戻ります。 ここからサービスを構築してデプロイできます。 **F5** キーを押すと、アプリケーションがビルドされ、ローカル クラスターにデプロイされます。
 
 サービスが開始されたら、生成された Event Tracing for Windows (ETW) イベントを **[診断イベント]** ウィンドウで確認できます。 アプリケーションのステートレス サービスとステートフル サービスの両方のイベントが表示されるのでご注意ください。 **[一時停止]** ボタンをクリックして、ストリームを一時停止できます。 その後、メッセージを展開して、メッセージの詳細を調べることができます。
 

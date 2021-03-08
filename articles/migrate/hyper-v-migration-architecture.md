@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate での Hyper-V の移行のしくみについて
 description: Azure Migrate での Hyper-V の移行について説明します。
-author: rayne-wiselman
-ms.service: azure-migrate
+author: bsiva
+ms.author: bsiva
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 8bca88fc63a7fc04a22d2a68adbe59259b07f50e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 239918cc19eefbef9e3c3f12d5ddd3bb5434b490
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74185874"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751021"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hyper-V のレプリケーションのしくみ
 
@@ -30,7 +30,7 @@ Azure Migrate Server Migration は、オンプレミスのワークロードと�
 
 ## <a name="architectural-components"></a>アーキテクチャ コンポーネント
 
-![Architecture](./media/hyper-v-replication-architecture/architecture.png)
+![図に、Microsoft Azure への HTTPS データ チャネルがある元の Hyper-V ネットワークと、表内の詳細な説明が示されています。](./media/hyper-v-replication-architecture/architecture.png)
 
 
 

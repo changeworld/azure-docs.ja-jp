@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 62c052f2293c670b43f1c77363c8bbbcc03d0de2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48671e7558ea1bd613d33372c96fa3c563407e81
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514285"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017221"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>StorSimple デバイスの Web プロキシを構成する
 
@@ -59,7 +59,7 @@ Web プロキシ設定を構成するには、次のいずれかを使用しま�
 
 #### <a name="to-configure-web-proxy-via-the-setup-wizard"></a>セットアップ ウィザードを使用して Web プロキシを構成するには
 
-1. シリアル コンソール メニューで、オプション 1 の **[フル アクセスによるログイン]** を選択し、**デバイス管理者のパスワード**を入力します。 次のコマンドを入力してセットアップ ウィザード セッションを開始します。
+1. シリアル コンソール メニューで、オプション 1 の **[フル アクセスによるログイン]** を選択し、**デバイス管理者のパスワード** を入力します。 次のコマンドを入力してセットアップ ウィザード セッションを開始します。
    
     `Invoke-HcsSetupWizard`
 2. デバイスを登録するためにセットアップ ウィザードを初めて使用する場合は、Web プロキシを構成する前に、必要なすべてのネットワーク設定を構成する必要があります。 デバイスが既に登録されている場合は、構成済みのすべてのネットワーク設定をそのまま使用して、Web プロキシを構成できます。 セットアップ ウィザードで、Web プロキシ設定を構成するかどうかを確認するメッセージが表示されたら、「 **Yes**」と入力します。
@@ -73,7 +73,7 @@ Web プロキシ設定を構成するには、次のいずれかを使用しま�
    > [!IMPORTANT]
    > **StorSimple デバイス マネージャー サービスのデバイス監視チャートは、デバイスのプロキシ サーバーの構成で基本認証または NTLM 認証が有効になっていると正しく機能しません。監視グラフを機能させるには、認証が [None] に設定されていることを確認する必要があります。**
   
-5. 認証を有効にしている場合は、**Web プロキシ ユーザー名**と **Web プロキシ パスワード**を指定します。 また、パスワードの確認も必要です。
+5. 認証を有効にしている場合は、**Web プロキシ ユーザー名** と **Web プロキシ パスワード** を指定します。 また、パスワードの確認も必要です。
    
     ![Configure Web Proxy On StorSimple Device1](./media/storsimple-configure-web-proxy/IC751830.png)
 
@@ -86,7 +86,7 @@ Web プロキシ設定を構成するには、次のいずれかを使用しま�
 Web プロキシ設定を構成するための代替手段として、StorSimple 用 Windows PowerShell のコマンドレットを使用する方法があります。 次の手順を実行して、Web プロキシを構成します。
 
 #### <a name="to-configure-web-proxy-via-cmdlets"></a>コマンドレットを使用して Web プロキシを構成するには
-1. シリアル コンソール メニューで、オプション 1 を選択し、 **フル アクセスでログイン**します。 画面の指示に従って、 **デバイス管理者のパスワード**を入力します。 既定のパスワードは `Password1`です。
+1. シリアル コンソール メニューで、オプション 1 を選択し、 **フル アクセスでログイン** します。 画面の指示に従って、 **デバイス管理者のパスワード** を入力します。 既定のパスワードは `Password1`です。
 2. コマンド プロンプトに、次のコマンドを入力します。
    
     `Set-HcsWebProxy -Authentication NTLM -ConnectionURI "<http://<IP address or FQDN of web proxy server>:<TCP port number>" -Username "<Username for web proxy server>"`
@@ -108,7 +108,7 @@ Web プロキシは、既定では無効になっています。 StorSimple デ�
 StorSimple 用 Windows PowerShell で次の手順を実行し、デバイスで Web プロキシを有効にします。
 
 #### <a name="to-enable-web-proxy"></a>Web プロキシを有効にするには
-1. シリアル コンソール メニューで、オプション 1 を選択し、 **フル アクセスでログイン**します。 画面の指示に従って、 **デバイス管理者のパスワード**を入力します。 既定のパスワードは `Password1`です。
+1. シリアル コンソール メニューで、オプション 1 を選択し、 **フル アクセスでログイン** します。 画面の指示に従って、 **デバイス管理者のパスワード** を入力します。 既定のパスワードは `Password1`です。
 2. コマンド プロンプトに、次のコマンドを入力します。
    
     `Enable-HcsWebProxy`
@@ -154,6 +154,5 @@ Web プロキシの設定が正しく構成されていない場合は、StorSim
 > * Web プロキシの設定に関連するエラーは、StorSimple デバイス マネージャー サービスの Azure ポータルには表示されません。 構成が完了した後で Web プロキシに問題がある場合、クラシック ポータルではデバイスの状態が **"オフライン"** になります。
 
 ## <a name="next-steps"></a>次の手順
-* デバイスのデプロイまたは Web プロキシ設定の構成中に問題が発生した場合は、 [StorSimple デバイスのデプロイのトラブルシューティング](storsimple-troubleshoot-deployment.md)に関するページを参照してください。
+* デバイスのデプロイまたは Web プロキシ設定の構成中に問題が発生した場合は、 [StorSimple デバイスのデプロイのトラブルシューティング](./storsimple-8000-troubleshoot-deployment.md)に関するページを参照してください。
 * StorSimple デバイス マネージャー サービスを使用する方法については、「[StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)」を参照してください。
-

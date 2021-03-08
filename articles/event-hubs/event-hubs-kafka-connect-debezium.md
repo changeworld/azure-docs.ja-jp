@@ -1,22 +1,34 @@
 ---
-title: 変更データ キャプチャ用に Azure Event Hubs の Apache Kafka Connect (プレビュー) を Debezium と統合する
-description: この記事では、Kafka 用 Azure Event Hubs で Apache Spark を使用する方法について取り上げます。
+title: 変更データ キャプチャ用に Azure Event Hubs の Apache Kafka Connect を Debezium と統合する
+description: この記事では、Kafka 用 Azure Event Hubs で Debezium を使用する方法について取り上げます。
 ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
-ms.date: 08/11/2020
-ms.openlocfilehash: a11ec882a50d051a34758562ac84dcef5b799f5f
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.date: 01/06/2021
+ms.openlocfilehash: 0ad1df23e71e652f7d380ffbabb542b81954e038
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136673"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935174"
 ---
-# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>変更データ キャプチャ用に Azure Event Hubs の Apache Kafka Connect のサポート (プレビュー) を Debezium と統合する
+# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-with-debezium-for-change-data-capture"></a>変更データ キャプチャ用に Azure Event Hubs の Apache Kafka Connect のサポートを Debezium と統合する
 
 **変更データ キャプチャ (CDC)** は、作成、更新、削除操作に応答して、データベース テーブル内の行レベルの変更を追跡するために使用される手法です。 [Debezium](https://debezium.io/) は、さまざまなデータベースで使用できる変更データ キャプチャ機能 ([PostgreSQL の論理デコード](https://www.postgresql.org/docs/current/static/logicaldecoding-explanation.html)など) に基づいて構築された分散プラットフォームです。 これにより、データベース テーブル内の行レベルの変更を取得し、それを後で [Apache Kafka](https://kafka.apache.org/) に送信されるイベント ストリームに変換する一連の [Kafka Connect コネクタ](https://debezium.io/documentation/reference/1.2/connectors/index.html)が提供されます。
 
-このチュートリアルでは、[Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-about?WT.mc_id=devto-blog-abhishgu) (Kafka 用)、[Azure DB for PostgreSQL](../postgresql/overview.md)、Debezium を使用して、Azure で変更データ キャプチャ ベースのシステムを設定する方法について説明します。 ここでは、PostgreSQL のデータベース変更を Azure Event Hubs の Kafka トピックにストリーミングするために [Debezium PostgreSQL コネクタ](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html)を使用します。
+> [!WARNING]
+> Apache Kafka Connect フレームワークと Debezium プラットフォームおよびそのコネクタを共に使用することは、**Microsoft Azure 経由の製品サポートの対象外です**。
+>
+> Apache Kafka Connect では、その動的構成が、通常であれば無制限の保持期間を持つ圧縮されたトピックに保持されていることを前提としています。 Azure Event Hubs では[圧縮がブローカー機能として実装されていないため](event-hubs-federation-overview.md#log-projections)、保持されるイベントに時間ベースの保持期間の制限が常に課されます。これは、Azure Event Hubs が長期間のデータ ストアや構成ストアではなく、リアルタイムのイベント ストリーミング エンジンであるという原則から来ています。
+>
+> Apache Kafka プロジェクトは混在したこれらのロールに適している可能性がありますが、Azure では、このような情報は適切なデータベースまたは構成ストアで最適に管理されると考えています。
+>
+> Apache Kafka Connect のシナリオの多くは正常に機能しますが、Apache Kafka と Azure Event Hubs の保持モデル間のこれらの概念的な違いのために、特定の構成が期待どおりに機能しなくなる可能性があります。 
+
+このチュートリアルでは、[Azure Event Hubs](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (Kafka 用)、[Azure DB for PostgreSQL](../postgresql/overview.md)、Debezium を使用して、Azure で変更データ キャプチャ ベースのシステムを設定する方法について説明します。 ここでは、PostgreSQL のデータベース変更を Azure Event Hubs の Kafka トピックにストリーミングするために [Debezium PostgreSQL コネクタ](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html)を使用します。
+
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 このチュートリアルでは、次の手順を実行します。
 
@@ -98,6 +110,10 @@ consumer.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModul
 
 plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka release
 ```
+
+> [!IMPORTANT]
+> `{YOUR.EVENTHUBS.CONNECTION.STRING}` を Event Hubs 名前空間への接続文字列に置き換えます。 接続文字列を取得する手順については、「[Event Hubs の接続文字列の取得](event-hubs-get-connection-string.md)」を参照してください。 構成の例には、`sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";` などがあります。
+
 
 ### <a name="run-kafka-connect"></a>Kafka Connect を実行する
 この手順では、Event Hubs を使用し、Kafka Connect ワーカーをローカルから分散モードで開始して、クラスターの状態を維持します。

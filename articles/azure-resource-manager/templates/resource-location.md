@@ -1,19 +1,19 @@
 ---
 title: テンプレート リソースの場所
-description: Azure Resource Manager テンプレートでリソースの場所を設定する方法について説明します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) でリソースの場所を設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: e60fa9727ef899c3192c751614736cd1dda5b382
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: ''
+ms.openlocfilehash: 84a818109e6681b8d0e18de4d2d7969310582818
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504196"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922395"
 ---
 # <a name="set-resource-location-in-arm-template"></a>ARM テンプレートでリソースの場所を設定する
 
-Azure Resource Manager (ARM) テンプレートをデプロイするときに、各リソースの場所を指定する必要があります。 場所は、リソース グループの場所と同じ場所である必要はありません。
+Azure Resource Manager テンプレート (ARM テンプレート) をデプロイするときに、各リソースの場所を指定する必要があります。 場所は、リソース グループの場所と同じ場所である必要はありません。
 
 ## <a name="get-available-locations"></a>利用可能な場所を取得する
 
@@ -96,5 +96,5 @@ az provider show \
 
 ## <a name="next-steps"></a>次のステップ
 
-* テンプレート関数の完全一覧が必要な場合、「 [Azure リソース マネージャーのテンプレートの関数](template-functions.md)」を参照してください。
+* テンプレート関数の完全な一覧については、「[ARM テンプレート関数](template-functions.md)」を参照してください。
 * テンプレート ファイルの詳細については、「[ARM テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。

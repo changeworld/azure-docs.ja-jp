@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:シミュレートされたデバイス データを生成する - Azure IoT Edge での Machine Learning
-description: 後で機械学習モデルをトレーニングするために使用できるシミュレートされたテレメトリを生成する仮想デバイスを作成します。
+description: チュートリアル - 後で機械学習モデルをトレーニングするために使用できるシミュレートされたテレメトリを生成する仮想デバイスを作成します。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,17 +8,14 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8f7a971315183e867ae06b58801d5855f90462a1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: eef5e60b06eedb1fb07c57aa2e369dd3830fcad5
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76722380"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932406"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>チュートリアル:シミュレートされたデバイスのデータを生成する
-
-> [!NOTE]
-> この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 この記事に直接アクセスしている場合は、最適な結果を得るために、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md) から始めることをお勧めします。
 
 この記事では、機械学習のトレーニング データを使用して、Azure IoT Hub にテレメトリを送信するデバイスをシミュレートします。 概要で説明したように、このチュートリアルでは[ターボファン エンジンの劣化シミュレーション データ セット](https://c3.nasa.gov/dashlink/resources/139/)を使用して、トレーニングとテストのための 1 組の航空機エンジンのデータをシミュレートします。
 
@@ -45,6 +42,18 @@ DeviceHarness プロジェクトは、次の 4 つのクラスから成る C# �
 この記事で説明されているタスクは、完了するまでに約 20 分かかります。
 
 この手順に相当する実際の作業は、デバイス開発者やクラウド開発者によって実行される可能性があります。
+
+チュートリアルのこのセクションで学習する内容は次のとおりです。
+
+> [!div class="checklist"]
+>
+> * 外部プロジェクトを開発環境に組み込む。
+> * サンプル DeviceHarness プロジェクトを使用して、シミュレートされた IoT デバイス データを生成する。
+> * IoT Hub で生成されたデータを表示する。
+
+## <a name="prerequisites"></a>前提条件
+
+この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 シリーズの各記事は、前の記事の作業に基づいています。 この記事に直接アクセスしている場合は、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md)を参照してください。
 
 ## <a name="configure-visual-studio-code-and-build-deviceharness-project"></a>Visual Studio Code を構成して DeviceHarness プロジェクトをビルドする
 
@@ -156,6 +165,10 @@ DeviceHarness によって送信されたデータは IoT ハブに転送され�
 1. ファイルは [Avro](https://avro.apache.org/) 形式で書き込まれます。 これらのファイルのうちの 1 つをダブルクリックすると、別のブラウザー タブが開き、データが部分的に表示されます。 プログラムでファイルを開くよう求められた場合は、VS Code を選択できます。それにより、データが正しく表示されます。
 
 1. 現時点ではデータを読み取ったり、解釈したりしようとする必要はありません。それは、次の記事で行う予定です。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このチュートリアルはセットの一部であり、各記事は前の記事の作業が行われたことが前提になっています。 最後のチュートリアルを完了するまで、リソースのクリーンアップはしないでください。
 
 ## <a name="next-steps"></a>次のステップ
 

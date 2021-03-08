@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 0955cc8722c2a2b559935341cfd7e87bac6e4d3e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: eb06d101170685bea5ff231612e9ffbf8df467da
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954657"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079293"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>総保有コスト (TCO) と Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB は、きめ細かいマルチ テナントとリソース ガバナンスを考慮して設計されています。 この設計により、Azure Cosmos DB はかなり低コストで動作し、ユーザーはコストを節約できます。 現在、Azure Cosmos DB では、密度が増加し続ける 1 台のコンピューター上の 280 個を超えるお客様のワークロードと、クラスター内の数千ものお客様のワークロードがサポートされています。 これにより、クラスター内のさまざまなコンピューター間で、またデータ センター内の複数のクラスター間でお客様のワークロードのレプリカの負荷が分散されます。 詳細については、「[Azure Cosmos DB:グローバルな分散データベースの新境地を開拓する](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/)」を参照してください。 リソース ガバナンス、マルチ テナント、および Azure インフラストラクチャの残りの部分とのネイティブ統合により、Azure Cosmos DB のコストは、MongoDB、Cassandra、または IaaS で実行されているその他の OSS NoSQL より平均で 4 倍から 6 倍低くなり、オンプレミスで実行されているデータベース エンジンより最大で 10 倍低くなります。 「[The total cost of (non) ownership of a NoSQL database cloud service](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)」 (NoSQL データベース クラウド サービスの総 (非) 保有コスト) の論文を参照してください。
 
@@ -26,7 +27,7 @@ Apache Cassandra、MongoDB、HBase、エンジンなどの OSS NoSQL データ�
 
 Azure Cosmos DB のサーバーレス プロビジョニング モデルでは、データベース インフラストラクチャを余分にプロビジョニングする必要がなくなります。 Azure Cosmos DB リソースは、特殊な構成やライセンスを必要とすることなく提供されます。 その結果、Azure Cosmos DB でサポートされるアプリケーションを実行する際に、OSS NoSQL データベースと比べて、総保有コストが 70% も節約できます。 リアルタイムのいくつかの例については、[お客様事例](https://customers.microsoft.com/en-us/search?sq=Cosmos%20DB&ff=&p=0&so=story_publish_date%20desc)をご覧ください。 Azure Cosmos DB 価格モデルのその他の利点は次のとおりです。
 
-* **価格の優れた価値:** 市場アナリスト、お客様、およびパートナーは、お客様が自ら、または他のベンダーを介してソリューションを実装する際に得られるものと比べてはるかに低い価格で、Azure Cosmos DB によって提供されるすべての機能のより優れた価値を確認しています。 グローバル分散、マルチマスター、明確に定義された直感的な整合性モデル、自動インデックス作成などのデータベース機能は、Azure Cosmos DB で大幅に簡略化され、複雑さ、オーバーヘッド、ダウンタイムはありません。
+* **価格の優れた価値:** 市場アナリスト、お客様、およびパートナーは、お客様が自ら、または他のベンダーを介してソリューションを実装する際に得られるものと比べてはるかに低い価格で、Azure Cosmos DB によって提供されるすべての機能のより優れた価値を確認しています。 グローバル分散、マルチリージョンの書き込み、明確に定義された直感的な整合性モデル、自動インデックス作成などのデータベース機能は、複雑さ、オーバーヘッド、ダウンタイムがなく、Azure Cosmos DB で大幅に簡略化されています。
 
 * **NoSQL DevOps の管理が不要:** Azure Cosmos DB では、DevOps を採用し、デプロイを管理したり、メンテナンス、スケーリング、修正プログラムを適用したりする必要はありせん。 オンプレミスやクラウド インフラストラクチャでホストされている OSS NoSQL クラスターで行うすべてのワークロードを実行できます。
 
@@ -40,7 +41,7 @@ Azure Cosmos DB のサーバーレス プロビジョニング モデルでは�
 
 * **時間単位の支払い:** 大規模なワークロードでは、ある時点でスケーリングが必要になった場合、時間単位でのみ課金されます。 アプリケーションのワークロードは、通常、時期や、クエリが実行されたデータによって異なります。 Azure Cosmos DB では、必要に応じてスケールアップまたはスケールダウンでき、必要な分だけ支払うことができます。 オンプレミスまたは IaaS でホストされているシステムでは、このモデルを適合させることはできません。1 時間ごとにハードウェアを停止する方法がないためです。 このような場合、Azure Cosmos DB では平均で 10 倍から 14 倍節約できる可能性があります。
 
-* **無料で数多くの機能を取得:** Azure Cosmos DB では、書き込みワークロードのコストが、別のデータベース サービスに比べて大幅に低くなります。 さらに、Azure Cosmos DB では、[自動インデックス作成](indexing-policies.md)、[Time to Live (TTL)](time-to-live.md)、[変更フィード](change-feed.md)などの機能が、(他のデータベース サービスでは通常発生する) 追加料金なしで提供されます。
+* **無料で数多くの機能を取得:** Azure Cosmos DB では、書き込みワークロードのコストが、別のデータベース サービスに比べて大幅に低くなります。 さらに、Azure Cosmos DB では、[自動インデックス作成](index-policy.md)、[Time to Live (TTL)](time-to-live.md)、[変更フィード](change-feed.md)などの機能が、(他のデータベース サービスでは通常発生する) 追加料金なしで提供されます。
 
 * **さまざまなワークロードでの統合された通貨の使用:** 別のオファリングとは異なり、Azure Cosmos DB では、ワークロードを読み取りや書き込みなどにセグメント化する必要はありません。 ワークロードの種類 (読み取りスループットと書き込みスループット) ごとにスループットをプロビジョニングします。 Azure Cosmos DB では、プロビジョニングされたスループットは、要求ユニットまたは RU/秒の観点から、統合され正規化された通貨を使用して予約されます。Azure Cosmos DB によって、ワークロードへの優先順位の割り当て、容量計画の実行、容量の種類ごとの個別の支払いが強制されることはありません。 このような方法では、さまざまな操作やワークロードの種類の間で同じ RU/秒を簡単に交換することができます。
 
@@ -54,7 +55,7 @@ Azure Cosmos DB のサーバーレス プロビジョニング モデルでは�
 
 * **追加コストなしで、エンタープライズ機能がすべて自動的に得られる。** Azure Cosmos DB では、コンプライアンス認定、セキュリティ、およびデータの保管時および稼働時の暗号化の最も包括的なセットが追加料金なしで提供されます (競合他社と比較した場合)。 世界中のあらゆる場所で自動的にリージョンの可用性が得られます。 データベースは任意の数の Azure リージョンにまたがることができ、任意の時点でリージョンを追加したり削除したりすることができます。
 
-* **予約容量により最大 65% のコストの節約が可能:** Azure Cosmos DB の[予約容量](cosmos-db-reserved-capacity.md)は、Azure Cosmos DB のリソース料金 1 年分または 3 年分を前払いすることで経費を節減するのに役立ちます。 1 年分または 3 年分を事前にコミットすることでコストを大幅に減らすことができ、通常価格に比べ、20% から 65% の割引になります。 ミッション クリティカルなワークロードでは、容量のプロビジョニングの観点からより良い SLA が得られます。
+* **予約容量により最大 65% のコストの節約が可能:** Azure Cosmos DB の [予約容量](cosmos-db-reserved-capacity.md)は、Azure Cosmos DB のリソース料金 1 年分または 3 年分を前払いすることで経費を節減するのに役立ちます。 1 年分または 3 年分を事前にコミットすることでコストを大幅に減らすことができ、通常価格に比べ、20% から 65% の割引になります。 ミッション クリティカルなワークロードでは、容量のプロビジョニングの観点からより良い SLA が得られます。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -63,6 +64,6 @@ Azure Cosmos DB のサーバーレス プロビジョニング モデルでは�
 * [スループット コストの最適化](optimize-cost-throughput.md)の詳細について学習します
 * [ストレージ コストの最適化](optimize-cost-storage.md)の詳細について学習します
 * [読み取りと書き込みのコストの最適化](optimize-cost-reads-writes.md)の詳細について学習します
-* [クエリ コストの最適化](optimize-cost-queries.md)の詳細について学習します
+* [クエリ コストの最適化](./optimize-cost-reads-writes.md)の詳細について学習します
 * [複数リージョンの Cosmos アカウント コストの最適化](optimize-cost-regions.md)について確認する
 * [NoSQL データベース クラウド サービスの総 (非) 保有コスト](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)の詳細を確認します

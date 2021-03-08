@@ -10,14 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: c43abc6c87b88e9fc4a15d4ca5d5506389a8a81a
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 213dec3498b76f7331f40cb24f0c796175a3fbb3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849622"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353852"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>クイック スタート:Bing Video Search REST API と PHP を使用して動画を検索する
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関するページを参照してください。
 
 このクイックスタートを使用して、Bing Video Search API を呼び出してみましょう。 このシンプルな PHP アプリケーションでは、HTTP 動画検索クエリを API に送信して、その JSON 応答を表示します。 コード例は、PHP 5.6 で動作するように記述されています。
 
@@ -31,7 +36,7 @@ ms.locfileid: "83849622"
 
 ## <a name="running-the-application"></a>アプリケーションの実行
 
-[Bing Video Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) は、Bing 検索エンジンから動画の結果を返します。
+[Bing Video Search API](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) は、Bing 検索エンジンから動画の結果を返します。
 
 1. 次のコードで説明されているように、`;extension=php_openssl.dll` 行をコメント解除して、`php.ini` ファイルでセキュリティで保護された HTTP サポートを有効にします。
 2. 適切な IDE またはエディターで新しい PHP プロジェクトを作成します。
@@ -46,8 +51,8 @@ ms.locfileid: "83849622"
 // ;extension=php_openssl.dll
 
 // **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+// **_ Update or verify the following values. _*_
+// _*********************************************
 
 // Replace the accessKey string value with your valid access key.
 $accessKey = 'enter key here';

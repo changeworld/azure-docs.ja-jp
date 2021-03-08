@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 63e20467750e9a4b0c85de33180d4fa51831e59b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81a0f0e01827c48518f2eb1fba062e9e6536d9df
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555407"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655699"
 ---
 # <a name="connect-f5-asm-to-azure-sentinel"></a>F5 ASM を Azure Sentinel に接続する
 
@@ -32,7 +32,7 @@ ms.locfileid: "85555407"
    - **[Remote storage type]** (リモート ストレージの種類) を **[CEF]** に設定します。
    - **[Protocol]\(プロトコル\)** を **[TCP]** に設定します。
    - **[IP アドレス]** を Syslog サーバーの IP アドレスに設定します。
-   - **ポート番号**を **514** またはエージェントで使用するように設定するポートに設定します。
+   - **ポート番号** を **514** またはエージェントで使用するように設定するポートに設定します。
    - **[Maximum Query String Size]** (クエリ文字列の最大サイズ) を、エージェントで設定するサイズに設定できます。
 
 1. Log Analytics で CEF イベントに関連するスキーマを使用するために、`CommonSecurityLog` を検索します。
@@ -43,6 +43,5 @@ ms.locfileid: "85555407"
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、F5 ASM を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。
 - [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
-

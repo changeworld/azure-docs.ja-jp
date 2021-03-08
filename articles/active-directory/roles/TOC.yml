@@ -1,0 +1,117 @@
+- name: Azure AD ロールのドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure AD RBAC とは
+      href: custom-overview.md
+    - name: Azure AD ロールについて
+      href: concept-understand-roles.md
+- name: クイックスタート
+  items:
+    - name: 無制限のアプリの登録の作成
+      href: quickstart-app-registration-limits.md
+- name: チュートリアル
+  expanded: true
+  items:
+    - name: 管理者ロールへのユーザーの割り当て
+      href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+- name: 概念
+  expanded: true
+  items:
+    - name: Azure AD 管理者ロールの委任
+      href: concept-delegation.md
+    - name: 既定のユーザー アクセス許可の比較
+      href: ../fundamentals/users-default-permissions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Azure と Azure AD のロールの比較
+      href: ../../role-based-access-control/rbac-and-directory-admin-roles.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Azure AD の管理単位について
+      href: administrative-units.md
+- name: 攻略ガイド
+  expanded: true
+  items:
+    - name: ロールとアクセス許可
+      expanded: true
+      items:
+        - name: ロールとアクセス許可
+          href: permissions-reference.md
+        - name: ロールの表示と割り当て
+          href: manage-roles-portal.md
+        - name: マイ スタッフの委任
+          href: my-staff-configure.md
+    - name: カスタム ロール
+      expanded: true
+      items:
+        - name: カスタム ロールの作成
+          href: custom-create.md
+        - name: カスタム ロールの割り当ての表示
+          href: custom-view-assignments.md
+        - name: Azure portal でのカスタム ロールの割り当て
+          href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+        - name: PowerShell でのカスタム ロールの割り当て
+          href: custom-assign-powershell.md
+        - name: エンタープライズ アプリのカスタム ロールの割り当て
+          href: custom-enterprise-apps.md
+        - name: カスタム ロールのアクセス許可
+          items:
+            - name: アプリの登録とアクセス許可
+              href: custom-available-permissions.md
+            - name: エンタープライズ アプリのアクセス許可
+              href: custom-enterprise-app-permissions.md
+            - name: アプリへの同意のアクセス許可
+              href: custom-consent-permissions.md
+        - name: アプリの管理社ロールを委任する
+          href: delegate-app-roles.md
+    - name: ロールをグループに割り当てる
+      items:
+        - name: グループベースのロールの割り当て (プレビュー)
+          href: groups-concept.md
+        - name: ロールを割り当て可能なグループを作成する
+          href: groups-create-eligible.md
+        - name: ロールをグループに割り当てる
+          href: groups-assign-role.md
+        - name: グループからロールの割り当てを削除する
+          href: groups-remove-assignment.md
+        - name: グループのロールの割り当てを確認する
+          href: groups-view-assignments.md
+        - name: PIM でグループをロールの対象にする
+          href: groups-pim-eligible.md
+        - name: FAQ とトラブルシューティング
+          href: groups-faq-troubleshooting.md
+    - name: ロールのセキュリティ保護
+      items:
+        - name: ロール セキュリティの計画
+          href: security-planning.md
+        - name: 緊急アカウントの作成
+          href: security-emergency-access.md
+    - name: 管理単位
+      items:
+        - name: 管理単位の概要
+          href: administrative-units.md
+        - name: 追加と管理
+          href: admin-units-manage.md
+        - name: ユーザーの追加と管理
+          href: admin-units-add-manage-users.md
+        - name: グループを追加して管理する
+          href: admin-units-add-manage-groups.md
+        - name: スコープを使用してロールを割り当てる
+          href: admin-units-assign-roles.md
+        - name: FAQ とトラブルシューティング
+          href: admin-units-faq-troubleshoot.md
+    - name: トラブルシューティング
+      items:
+        - name: Azure AD のサポートを受ける
+          href: ../fundamentals/active-directory-troubleshooting-support-howto.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+- name: リファレンス
+  items:
+    - name: タスク別の最小特権ロール
+      href: delegate-by-task.md
+    - name: Microsoft 365 ロールのドキュメント
+      href: m365-workload-docs.md
+    - name: Graph API
+      href: /graph/api/resources/directoryrole?view=graph-rest-1.0
+    - name: Azure AD CLI
+      href: /cli/azure/ad
+    - name: Azure AD PowerShell for Graph
+      href: /powershell/azure/active-directory/install-adv2?view=azureadps-2.0
+    - name: Azure AD サービスの制約
+      href: ../enterprise-users/directory-service-limits-restrictions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context

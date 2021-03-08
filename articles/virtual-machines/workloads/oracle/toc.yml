@@ -4,8 +4,10 @@
       href: oracle-overview.md
     - name: Azure VM 上のソリューション
       href: oracle-vm-solutions.md
-    - name: Azure の Oracle WebLogic Server とは
+    - name: Azure Virtual Machines で Oracle WebLogic Server を実行するためのソリューションとは
       href: oracle-weblogic.md
+    - name: Azure Kubernetes Service で Oracle WebLogic Server を実行するためのソリューションとは
+      href: weblogic-aks.md
     - name: OCI を使用したソリューション
       href: oracle-oci-overview.md
 - name: クイックスタート
@@ -28,6 +30,12 @@
       href: oracle-reference-architecture.md
     - name: Oracle DB の構築
       href: oracle-design.md
+    - name: Oracle Database のバックアップ戦略
+      href: oracle-database-backup-strategies.md
+    - name: Azure Storage を使用した Oracle Database のバックアップ
+      href: oracle-database-backup-azure-storage.md
+    - name: Azure Backup を使用した Oracle Database のバックアップ
+      href: oracle-database-backup-azure-backup.md
     - name: Oracle のディザスター リカバリー オプション
       href: oracle-disaster-recovery.md
 - name: 操作方法ガイド

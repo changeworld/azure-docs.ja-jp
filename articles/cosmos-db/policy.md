@@ -1,27 +1,31 @@
 ---
 title: Azure Policy を使用して Azure Cosmos DB リソースのガバナンスとコントロールを実装する
 description: Azure Policy を使用して Azure Cosmos DB リソースのガバナンスとコントロールを実装する方法について説明します。
-author: plzm
-ms.author: paelaz
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: a1b1c01f7cf720690decd9c7aac5fb14b92121ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/23/2020
+ms.openlocfilehash: 1390f5db6e0f0370788bef60d5a2cafee1e8a96d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84431984"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080653"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Azure Policy を使用して Azure Cosmos DB リソースのガバナンスとコントロールを実装する
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 [Azure Policy](../governance/policy/overview.md) は、組織のガバナンス標準の実施、リソースのコンプライアンスの評価、自動修復の実装を支援します。 一般的なユースケースには、セキュリティ、コスト管理、構成の一貫性などがあります。
 
 Azure Policy には組み込みポリシー定義が用意されています。 組み込みポリシー定義では対応できないシナリオには、カスタムのポリシー定義を作成できます。 詳細については、[Azure Policy のドキュメント](../governance/policy/overview.md)を参照してください。
 
+> [!IMPORTANT]
+> Azure Policy は、Azure サービスのリソース プロバイダー レベルで適用されます。 Cosmos DB SDK を使用すると、Cosmos DB のリソース プロバイダーをバイパスするデータベース、コンテナー、およびスループット リソースに対してほとんどの管理操作を実行できるため、Azure Policy を使用して作成されたポリシーはすべて無視されます。 ポリシーの適用を確実にするには、[Azure Cosmos DB SDK からの変更の防止](role-based-access-control.md#prevent-sdk-changes)に関する記事を参照してください。
+
 ## <a name="assign-a-built-in-policy-definition"></a>組み込みポリシー定義の割り当て
 
-ポリシー定義には、リソースのコンプライアンス条件と、条件が満たされた場合に実行する効果が記述されます。 ポリシー "_割り当て_" は、ポリシー "_定義_" から作成されます。 Azure Cosmos DB リソースには、組み込みまたはカスタムのポリシー定義を使用できます。 ポリシー割り当ては、スコープが Azure 管理グループ、Azure サブスクリプション、リソース グループのいずれかに設定され、選択されたスコープ内のリソースに適用されます。 必要に応じて、スコープから特定のリソースを除外できます。
+ポリシー定義には、リソースのコンプライアンス条件と、条件が満たされた場合に実行する効果が記述されます。 ポリシー " _割り当て_ " は、ポリシー " _定義_ " から作成されます。 Azure Cosmos DB リソースには、組み込みまたはカスタムのポリシー定義を使用できます。 ポリシー割り当ては、スコープが Azure 管理グループ、Azure サブスクリプション、リソース グループのいずれかに設定され、選択されたスコープ内のリソースに適用されます。 必要に応じて、スコープから特定のリソースを除外できます。
 
 ポリシー割り当ては、[Azure portal](../governance/policy/assign-policy-portal.md)、[Azure PowerShell](../governance/policy/assign-policy-powershell.md)、[Azure CLI](../governance/policy/assign-policy-azurecli.md)、または [ARM テンプレート](../governance/policy/assign-policy-template.md)で作成できます。
 
@@ -36,7 +40,7 @@ Azure Cosmos DB に対して組み込みポリシー定義からポリシー割�
 
 ## <a name="create-a-custom-policy-definition"></a>カスタム ポリシー定義の作成
 
-組み込みポリシーで対応できない特定のシナリオには、[カスタム ポリシー定義](../governance/policy/tutorials/create-custom-policy-definition.md)を作成できます。 この後に、カスタム ポリシー "_定義_" からポリシー "_割り当て_" を作成します。
+組み込みポリシーで対応できない特定のシナリオには、[カスタム ポリシー定義](../governance/policy/tutorials/create-custom-policy-definition.md)を作成できます。 この後に、カスタム ポリシー " _定義_ " からポリシー " _割り当て_ " を作成します。
 
 ### <a name="property-types-and-property-aliases-in-policy-rules"></a>ポリシー ルールのプロパティの種類とプロパティ エイリアス
 
@@ -105,7 +109,7 @@ az provider show --namespace Microsoft.DocumentDB --expand "resourceTypes/aliase
 
 ## <a name="policy-compliance"></a>ポリシーのコンプライアンス
 
-ポリシー割り当てを作成すると、Azure Policy によって割り当てのスコープ内のリソースが評価されます。 ポリシーに対する各リソースの "_コンプライアンス_" が評価されます。 準拠していないリソースには、ポリシーで指定されている "_効果_" が適用されます。
+ポリシー割り当てを作成すると、Azure Policy によって割り当てのスコープ内のリソースが評価されます。 ポリシーに対する各リソースの " _コンプライアンス_ " が評価されます。 準拠していないリソースには、ポリシーで指定されている " _効果_ " が適用されます。
 
 コンプライアンスの結果と修復の詳細は、[Azure portal](../governance/policy/how-to/get-compliance-data.md#portal)、[Azure CLI](../governance/policy/how-to/get-compliance-data.md#command-line)、または [Azure Monitor ログ](../governance/policy/how-to/get-compliance-data.md#azure-monitor-logs)で確認できます。
 
@@ -131,4 +135,4 @@ az provider show --namespace Microsoft.DocumentDB --expand "resourceTypes/aliase
 
 - [Azure Cosmos DB のカスタム ポリシー定義のサンプルを確認](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB)します。これには、上に示した複数の書き込み場所と VNet フィルターのポリシーが含まれています。
 - [Azure portal でポリシー割り当てを作成する](../governance/policy/assign-policy-portal.md)
-- [Azure Cosmos DB 用の Azure Policy 組み込みポリシー定義を確認する](./policy-samples.md)
+- [Azure Cosmos DB 用の Azure Policy 組み込みポリシー定義を確認する](./policy-reference.md)

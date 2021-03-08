@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services v3 と Microsoft PlayReady ライセンス テンプレート
-description: このトピックでは、PlayReady ライセンスの設定に使用する PlayReady ライセンス テンプレートの概要を示します。
+title: Media Services Microsoft PlayReady ライセンス テンプレート
+description: PlayReady ライセンス テンプレートを使用した Azure Media Services v3 と、PlayReady ライセンスの構成方法について説明します。
 author: IngridAtMicrosoft
 manager: femila
 editor: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e1aec5861f06b7309a90c84f28dafb30c3580f51
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 0dc015ee1798bb4b9ce632d11f952178156155d6
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89289335"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955188"
 ---
 # <a name="media-services-v3-with-playready-license-template"></a>Media Services v3 と PlayReady ライセンス テンプレート
 

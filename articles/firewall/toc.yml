@@ -4,14 +4,6 @@
   items:
     - name: Azure Firewall とは
       href: overview.md
-- name: チュートリアル
-  items:
-    - name: デプロイと構成
-      href: tutorial-firewall-deploy-portal.md
-    - name: ハイブリッド ネットワークでのデプロイ
-      href: tutorial-hybrid-portal.md
-    - name: DNAT で受信トラフィックをフィルター処理する
-      href: tutorial-firewall-dnat.md
 - name: クイックスタート
   expanded: true
   items:
@@ -24,16 +16,28 @@
     - name: Availability Zones を使用したデプロイ - ARM テンプレート
       displayName: Resource Manager
       href: deploy-template.md
+- name: チュートリアル
+  items:
+    - name: デプロイと構成
+      href: tutorial-firewall-deploy-portal.md
+    - name: ハイブリッド ネットワークでのデプロイ
+      href: tutorial-hybrid-portal.md
+    - name: DNAT で受信トラフィックをフィルター処理する
+      href: tutorial-firewall-dnat.md
 - name: サンプル
   items:
     - name: Azure PowerShell
       href: sample-powershell.md
-    - name: Azure Monitor ログ
-      href: log-analytics-samples.md
 - name: 概念
   items:
     - name: Azure Firewall の機能
       href: features.md
+    - name: Azure Firewall Premium の機能
+      href: premium-features.md
+    - name: ポータルの Azure Firewall Premium
+      href: premium-portal.md
+    - name: Azure Firewall Premium の証明書
+      href: premium-certificates.md
     - name: FQDN のタグ
       href: fqdn-tags.md
     - name: インフラストラクチャ FQDN
@@ -60,6 +64,8 @@
       href: fqdn-filtering-network-rules.md
     - name: セキュリティ ベースライン
       href: security-baseline.md
+    - name: アクティブ FTP のサポート
+      href: active-ftp-support.md
 - name: 操作方法ガイド
   items:
     - name: Azure PowerShell を使用したデプロイ
@@ -88,6 +94,13 @@
       href: dns-settings.md
     - name: 診断ログの監視
       href: firewall-diagnostics.md
+      displayName: 'Azure CLI, az monitor diagnostic-settings create, monitor diagnostic settings'
+    - name: Azure Firewall ブック
+      href: firewall-workbook.md
+    - name: Firewall Premium のデプロイと構成
+      href: premium-deploy.md
+    - name: Azure Firewall Premium への移行
+      href: premium-migrate.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -109,7 +122,7 @@
 - name: リソース
   items:
     - name: よく寄せられる質問
-      href: firewall-faq.md
+      href: firewall-faq.yml
     - name: テンプレートの作成
       href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure のロードマップ

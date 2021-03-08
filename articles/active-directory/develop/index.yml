@@ -3,18 +3,18 @@ title: Microsoft ID プラットフォームのドキュメント
 summary: Microsoft ID プラットフォームは、認証サービス、オープンソース ライブラリ、およびアプリケーション管理ツールです。 Microsoft が提供するクイックスタート、チュートリアル、コード サンプルを使用して、標準ベースの最新の認証ソリューションを作成する方法について説明します。 ユーザーと顧客が自分の Microsoft ID またはソーシャル アカウントを使用してサインインし、API または Microsoft Graph などの Microsoft API へのアクセスを承認するアプリケーションを構築します。
 metadata:
   ms.topic: landing-page
-  ms.date: 08/11/2020
+  ms.date: 10/07/2020
   author: mmacy
   ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: 115c2b7058941512bf75f2b45b17d4a0a806c1af
-  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+  ms.openlocfilehash: 954712c2056a4251bc92b71c5b7cd2f1309804b2
+  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/20/2020
-  ms.locfileid: "88690291"
+  ms.lasthandoff: 10/13/2020
+  ms.locfileid: "91962022"
 landingContent:
 - title: Microsoft ID プラットフォームについて
   linkLists:
@@ -64,8 +64,8 @@ landingContent:
       url: quickstart-v2-aspnet-webapp.md
     - text: ASP.NET Core
       url: quickstart-v2-aspnet-core-webapp.md
-    - text: Python
-      url: quickstart-v2-python-webapp.md
+    - text: Blazor サーバー
+      url: tutorial-blazor-server.md
 - title: モバイル/ネイティブ アプリ
   linkLists:
   - linkListType: get-started
@@ -83,7 +83,7 @@ landingContent:
     - text: ASP.NET
       url: quickstart-v2-dotnet-native-aspnet.md
     - text: ASP.NET Core
-      url: /samples/azure-samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/calling-a-web-api-in-an-aspnet-core-web-application-using-azure-ad/
+      url: quickstart-v2-aspnet-core-web-api.md
 - title: Microsoft Graph
   linkLists:
   - linkListType: get-started
@@ -120,9 +120,9 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
-    - text: エラーと例外を処理する - Android
-      url: msal-android-handling-exceptions.md
-    - text: 要求のディレクトリ スキーマ拡張属性
-      url: active-directory-schema-extensions.md
-    - text: MSAL.js 2.0 認証コード + PKCE および CORS
-      url: quickstart-v2-javascript-auth-code.md
+    - text: ドキュメントの最新情報
+      url: whats-new-docs.md
+    - text: Microsoft Identity Web ライブラリの概要
+      url: microsoft-identity-web.md
+    - text: チュートリアル:Blazor Server
+      url: tutorial-blazor-server.md

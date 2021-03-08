@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: fb5196f9612cb4ce1f0a49be8b5a76f6703fdab6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c5b4f0d5d4b153684683963c56b7506e76d963e
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248685"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575655"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Application Gateway で HTTP ヘッダーを書き換える
 
@@ -22,7 +22,7 @@ ms.locfileid: "85248685"
 
 Application Gateway を使用することで、要求/応答パケットがクライアントとバックエンド プールの間を移動する間に、HTTP 要求および応答ヘッダーを追加、削除、または更新することができます。 また、条件を追加することで、特定の条件が満たされた場合にのみ、指定したヘッダーが確実に書き換えられるようにできます。
 
-Application Gateway は、要求と応答に関する追加情報を格納するための複数の[サーバー変数](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables)もサポートしています。 このため、簡単に強力な書き換え規則を作成できます。
+Application Gateway は、要求と応答に関する追加情報を格納するための複数の[サーバー変数](#server-variables)もサポートしています。 このため、簡単に強力な書き換え規則を作成できます。
 
 > [!NOTE]
 >
@@ -56,7 +56,7 @@ Application Gateway は、要求と応答に関する追加情報を格納する
 
 ## <a name="server-variables"></a>サーバー変数
 
-Application Gateway では、サーバー変数を使用して、サーバー、クライアントとの接続、およびその接続での現在の要求に関する情報が格納されます。 格納される情報には、クライアントの IP アドレスや Web ブラウザーの種類などがあります。 サーバー変数は、たとえば新しいページが読み込まるときや、フォームが投稿されるときに動的に変化します。 これらの変数を使用して、書き換え条件を評価し、ヘッダーを書き換えることができます。 サーバー変数の値を使用してヘッダーを書き換えるには、{var_*serverVariable*} という構文でこれらの変数を指定する必要があります
+Application Gateway では、サーバー変数を使用して、サーバー、クライアントとの接続、およびその接続での現在の要求に関する情報が格納されます。 格納される情報には、クライアントの IP アドレスや Web ブラウザーの種類などがあります。 サーバー変数は、たとえば新しいページが読み込まるときや、フォームが投稿されるときに動的に変化します。 これらの変数を使用して、書き換え条件を評価し、ヘッダーを書き換えることができます。 サーバー変数の値を使用してヘッダーを書き換えるには、{var_ *serverVariable*} という構文でこれらの変数を指定する必要があります
 
 アプリケーション ゲートウェイでは、次のサーバー変数がサポートされています。
 
@@ -69,21 +69,21 @@ Application Gateway では、サーバー変数を使用して、サーバー、
 | client_port                | クライアント ポート。                                                  |
 | client_tcp_rtt             | クライアント TCP 接続の情報。 TCP_INFO ソケット オプションをサポートするシステムで使用できます。 |
 | client_user                | HTTP 認証の使用時に、認証のために提供されるユーザー名。 |
-| host                       | 優先順位は次の通りです: 要求行のホスト名、Host 要求ヘッダー フィールドのホスト名、要求に一致するサーバー名。 例: 要求 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* では、ホストの値は *contoso.com* になります |
-| cookie_*name*              | *name* クッキー。                                            |
+| host                       | 優先順位は次の通りです: 要求行のホスト名、Host 要求ヘッダー フィールドのホスト名、要求に一致するサーバー名。 例: 要求 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` では、ホストの値は *contoso.com* になります |
+| cookie_ *name*              | *name* クッキー。                                            |
 | http_method                | URL 要求を行うために使用されたメソッド。 たとえば、GET、POST などです。 |
 | http_status                | セッションの状態。 たとえば、200、400、403 です。                       |
 | http_version               | 要求プロトコル。 通常、HTTP/1.0、HTTP/1.1、または HTTP/2.0 です。 |
-| query_string               | 要求された URL 内で "?" の後にある、変数と値のペアから成る一覧。 例: 要求 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* では、query_string 値は *id=123&title=fabrikam* になります |
+| query_string               | 要求された URL 内で "?" の後にある、変数と値のペアから成る一覧。 例: 要求 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` では、query_string 値は *id=123&title=fabrikam* になります |
 | received_bytes             | 要求の長さ (要求行、ヘッダー、および要求本文を含む)。 |
 | request_query              | 要求行内の引数。                                |
 | request_scheme             | 要求スキーム。http または https です。                            |
-| request_uri                | 完全な元の要求 URI (引数を含む)。 例: 要求 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* では、request_uri 値は */article.aspx?id=123&title=fabrikam* になります   |
+| request_uri                | 完全な元の要求 URI (引数を含む)。 例: 要求 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` では、request_uri 値は */article.aspx?id=123&title=fabrikam* になります   |
 | sent_bytes                 | クライアントに送信されたバイト数。                             |
 | server_port                | 要求を受け付けたサーバーのポート。                 |
 | ssl_connection_protocol    | 確立された TLS 接続のプロトコル。        |
 | ssl_enabled                | 接続が TLS モードで動作する場合は “オン”。 それ以外の場合は、空の文字列です。 |
-| uri_path                   | Web クライアントがアクセスする必要があるホスト内の特定のリソースを識別します。 これは、引数を含まない要求 URI の部分です。 例: 要求 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* では、uri_path 値は */article.aspx* になります  |
+| uri_path                   | Web クライアントがアクセスする必要があるホスト内の特定のリソースを識別します。 これは、引数を含まない要求 URI の部分です。 例: 要求 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` では、uri_path 値は */article.aspx* になります  |
 
 ## <a name="rewrite-configuration"></a>書き換えの構成
 
@@ -168,5 +168,5 @@ HTTP 要求または応答ヘッダーを評価し、ヘッダーまたはサー
 
 HTTP ヘッダーを書き換える方法について学習するには、以下をご覧ください。
 
-- [Azure portal を使用して HTTP ヘッダーを書き換える](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+- [Azure portal を使用して HTTP ヘッダーを書き換える](./rewrite-http-headers-portal.md)
 - [Azure PowerShell を使用して HTTP ヘッダーを書き換える](add-http-header-rewrite-rule-powershell.md)

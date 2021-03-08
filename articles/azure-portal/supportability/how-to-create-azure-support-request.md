@@ -1,20 +1,15 @@
 ---
-title: Azure サポート要求を作成する方法 | Microsoft Docs
+title: Azure サポート要求を作成する方法
 description: サポートが必要なお客様は、Azure portal を使用して、セルフサービス ソリューションを見つけたり、サポート リクエストを作成および管理したりできます。
-services: Azure Supportability
-author: mgblythe
-manager: scotthit
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
-ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
-ms.author: mblythe
-ms.openlocfilehash: d8a480481e47995f9f819122a3e8cc0b0a21a254
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 11ca7925ce1664b5586ab8ec0fb523a2d562ee80
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851905"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745589"
 ---
 # <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
 
@@ -39,9 +34,9 @@ Azure は、サブスクリプション管理 (請求、割り当て調整、ア
 
 Azure portal で **[ヘルプとサポート]** にアクセスできます。 これは、Azure portal メニュー、グローバル ヘッダー、またはサービスのリソース メニューから使用できます。 サポート リクエストを提出するには、適切なアクセス許可が必要です。
 
-### <a name="role-based-access-control"></a>ロールベースのアクセス制御
+### <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 
-サポート リクエストを作成するには、[所有者](../../role-based-access-control/built-in-roles.md#owner)か、[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)か、またはサブスクリプション レベルで[サポート リクエスト共同作成者](../../role-based-access-control/built-in-roles.md#support-request-contributor)ロールが割り当てられている必要があります。 Azure Active Directory シナリオなどのサブスクリプションを使用せずにサポート リクエストを作成するには、[管理者](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)である必要があります。
+サポート リクエストを作成するには、[所有者](../../role-based-access-control/built-in-roles.md#owner)か、[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)か、またはサブスクリプション レベルで[サポート リクエスト共同作成者](../../role-based-access-control/built-in-roles.md#support-request-contributor)ロールが割り当てられている必要があります。 Azure Active Directory シナリオなどのサブスクリプションを使用せずにサポート リクエストを作成するには、[管理者](../../active-directory/roles/permissions-reference.md)である必要があります。
 
 ### <a name="go-to-help--support-from-the-global-header"></a>グローバル ヘッダーから [ヘルプとサポート] にアクセスする
 
@@ -73,7 +68,7 @@ Microsoft は、発生している問題について情報を収集してその�
 
 サポート要求プロセスの最初の手順は、ユーザーが抱える問題とそのサポート プランに必要な基本情報を集めることです。
 
-**[新しいサポート リクエスト]** の **[基本]** タブで、セレクターを使用して、Microsoft への問題の説明を開始します。 まず、問題の種類の一般的なカテゴリを特定し、関連するサブスクリプションを選択します。 **Windows を実行する仮想マシン**など、サービスを選択します。 仮想マシンの名前などのリソースを選択します。 ご自分の言葉で問題を記述してから、 **[問題の種類]** と **[問題のサブタイプ]** を選択して、より具体的にご説明下さい。
+**[新しいサポート リクエスト]** の **[基本]** タブで、セレクターを使用して、Microsoft への問題の説明を開始します。 まず、問題の種類の一般的なカテゴリを特定し、関連するサブスクリプションを選択します。 **Windows を実行する仮想マシン** など、サービスを選択します。 仮想マシンの名前などのリソースを選択します。 ご自分の言葉で問題を記述してから、 **[問題の種類]** と **[問題のサブタイプ]** を選択して、より具体的にご説明下さい。
 
 ![[基本] ブレード](./media/how-to-create-azure-support-request/basics2lower.png)
 
@@ -114,5 +109,5 @@ Azure のセルフヘルプ サポート オプションの詳細については
 * [Azure サポート チケット REST API](/rest/api/support)
 * [お客様からのフィードバックとご提案の送信](https://feedback.azure.com/forums/266794-support-feedback)
 * [Twitter](https://twitter.com/azuresupport) でのご協力
-* [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/products/azure)で同僚からのヘルプを得る
+* [Microsoft Q&A 質問ページ](/answers/products/azure)で同僚からのヘルプを得る
 * [Azure サポートに関する FAQ で詳細を確認する](https://azure.microsoft.com/support/faq)

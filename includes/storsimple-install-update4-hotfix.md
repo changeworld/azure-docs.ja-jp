@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 89ad3dfffa82f062ef8bc808da19440adfa32f05
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: cc42c22579346c272ee5a6f41147e6b5b09643ba
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050379"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95553654"
 ---
 #### <a name="to-download-hotfixes"></a>修正プログラムをダウンロードするには
 
@@ -38,7 +38,7 @@ ms.locfileid: "86050379"
 
 通常モードの修正プログラムをインストールして確認するには、次の手順を実行します。 Azure クラシック ポータルを使用して既にインストールしてある場合は、[メンテナンス モードの修正プログラムのインストールと確認](#to-install-and-verify-maintenance-mode-hotfixes)に進みます。
 
-1. 修正プログラムをインストールするには、StorSimple デバイスのシリアル コンソールで Windows PowerShell インターフェイスにアクセスします。 詳細については、[PuTTy を使用してシリアル コンソールに接続する方法](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)に関するセクションを参照してください。 コマンド プロンプトで **Enter**キーを押します。
+1. 修正プログラムをインストールするには、StorSimple デバイスのシリアル コンソールで Windows PowerShell インターフェイスにアクセスします。 詳細については、[PuTTy を使用してシリアル コンソールに接続する方法](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)に関するセクションを参照してください。 コマンド プロンプトで **Enter** キーを押します。
 2. オプション 1 の **[Log in with full access]\(フル アクセスによるログイン\)** を選択します。 まず、パッシブ コントローラーに修正プログラムをインストールすることをお勧めします。
 3. 修正プログラムをインストールするには、コマンド プロンプトで次のように入力します。
    
@@ -101,7 +101,7 @@ ms.locfileid: "86050379"
    * `FriendlySoftwareVersion: StorSimple 8000 Series Update 4.0`
    * `HcsSoftwareVersion: 6.3.9600.17820`
    
-     更新プログラムの適用後にバージョン番号が変わらない場合は、修正プログラムの適用に失敗したことを示します。 そのような場合は、[Microsoft サポート](../articles/storsimple/storsimple-contact-microsoft-support.md)にお問い合わせください。
+     更新プログラムの適用後にバージョン番号が変わらない場合は、修正プログラムの適用に失敗したことを示します。 そのような場合は、[Microsoft サポート](../articles/storsimple/storsimple-8000-contact-microsoft-support.md)にお問い合わせください。
      
      > [!IMPORTANT]
      > 次の更新プログラムを適用する前に、`Restart-HcsController` コマンドレットを使用してアクティブ コントローラーを再起動する必要があります。
@@ -267,4 +267,3 @@ KB4011837 を使用して、ディスク ファームウェアの更新プログ
    `Exit-HcsMaintenanceMode`
 
 5. メンテナンス モードを終了すると、コントローラーが再起動します。 ディスク ファームウェアの更新プログラムが正常に適用され、デバイスがメンテナンス モードを終了したら、Azure クラシック ポータルに戻ります。 メンテナンス モードの更新プログラムがインストールされたことがポータルに 24 時間表示されない可能性があることにご注意ください。
-

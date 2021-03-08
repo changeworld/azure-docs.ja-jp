@@ -4,16 +4,18 @@ description: Github に接続して、GitHub リポジトリから Azure Cosmos 
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: d85f020152fa3cadb1d437c125d327f5e895e14e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8315369d2100036a50aae770267aa04bceb2dfb0
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262890"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339803"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>GitHub リポジトリから Azure Cosmos DB にノートブックをインポートする
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos アカウントの[ノートブック サポートを有効にする](enable-notebooks.md)と、新しいノートブックを作成したり、ローカル コンピューターから新しいノートブックをアップロードしたり、GitHub アカウントから既存のノートブックをインポートしたりできます。 この記事では、ノートブック ワークスペースを Github に接続して、GitHub リポジトリから Azure Cosmos アカウントにノートブックをインポートする方法について説明します。 インポートした後は、それらを実行し、変更を加え、変更内容を GitHub に保存することができます。
 
@@ -27,7 +29,7 @@ Azure Cosmos アカウントの[ノートブック サポートを有効にす�
 
 1. **[GitHub への接続]** メニュー項目 選択します。
 
-1. 表示されるタブで、**パブリック リポジトリ**のみに接続するか、**パブリック リポジトリとプライベート リポジトリ**に接続するかを選択できます。  必要なオプションを選択した後、 **[アクセスを承認する]** を選択します。 Azure Cosmos DB から GitHub アカウントのリポジトリにアクセスするには、承認が必要です。
+1. 表示されるタブで、 **パブリック リポジトリ** のみに接続するか、 **パブリック リポジトリとプライベート リポジトリ** に接続するかを選択できます。  必要なオプションを選択した後、 **[アクセスを承認する]** を選択します。 Azure Cosmos DB から GitHub アカウントのリポジトリにアクセスするには、承認が必要です。
 
    :::image type="content" source="./media/import-github-notebooks/authorize-access-github.png" alt-text="Azure Cosmos DB から GitHub リポジトリにアクセスすることの承認":::
 

@@ -1,19 +1,16 @@
 ---
 title: Power Query を使用して Excel を Apache Hadoop に接続する - Azure HDInsight
 description: ビジネス インテリジェンス コンポーネントを活用し、HDInsight 上の Hadoop に格納されているデータに Power Query for Excel でアクセスする方法を説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: acb5171048b5a12310b6c0af5d652b7e615a71f5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bcca511bcb61ceab8395ee56b377efa99f095586
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087811"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946708"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Power Query を使用して Excel を Apache Hadoop に接続する
 
@@ -23,7 +20,7 @@ ms.locfileid: "86087811"
 
 * HDInsight の Apache Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 * Windows 10、7、Windows Server 2008 R2、またはそれ以降のオペレーティング システムを実行しているワークステーション。
-* Office 2016、Office 2013 Professional Plus、Office 365 ProPlus、Excel 2013 Standalone、または Office 2010 Professional Plus。
+* 企業向け Microsoft 365 アプリ、Office 2016、Office 2013 Professional Plus、Excel 2013 Standalone、または Office 2010 Professional Plus。
 
 ## <a name="install-microsoft-power-query"></a>Microsoft Power Query のインストール
 

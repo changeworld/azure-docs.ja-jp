@@ -4,12 +4,12 @@ description: 複数のメッセージ ブローカーを使用して Service Bus
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 11cc76b0dd0125c7b54438d3f991069b7c44db59
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9c500a69f853b11437a0dcaa48213fe3a84da53b
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007963"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796637"
 ---
 # <a name="partitioned-queues-and-topics"></a>パーティション分割されたキューとトピック
 
@@ -29,6 +29,9 @@ Azure Service Bus では、メッセージを処理する複数のメッセー�
 パーティション分割されていないエンティティに対するピーク操作では、常に最も古いメッセージが返されますが、パーティション分割されたエンティティでは返されません。 代わりに、メッセージ ブローカーが最初に応答したパーティションのうち、最も古いメッセージが返されます。 返されたメッセージが、すべてのパーティションで最も古いメッセージであることは保証されません。 
 
 パーティション分割されたキューやトピックとのメッセージの送受信に追加費用は発生しません。
+
+> [!NOTE]
+> ピーク操作によって、最も古いメッセージがシーケンス番号に基づいてパーティションから返されます。 パーティション分割されたエンティティの場合、シーケンス番号はパーティションを基準として発行されます。 詳細については、「[メッセージのシーケンス処理とタイムスタンプ](../service-bus-messaging/message-sequencing.md)」を参照してください。
 
 ## <a name="enable-partitioning"></a>パーティション分割の有効化
 
@@ -92,8 +95,8 @@ using (TransactionScope ts = new TransactionScope(committableTransaction))
 {
     Message msg = new Message("This is a message");
     msg.PartitionKey = "myPartitionKey";
-    messageSender.SendAsync(msg); 
-    ts.CompleteAsync();
+    await messageSender.SendAsync(msg); 
+    await ts.CompleteAsync();
 }
 committableTransaction.Commit();
 ```
@@ -112,8 +115,8 @@ using (TransactionScope ts = new TransactionScope(committableTransaction))
 {
     Message msg = new Message("This is a message");
     msg.SessionId = "mySession";
-    messageSender.SendAsync(msg); 
-    ts.CompleteAsync();
+    await messageSender.SendAsync(msg); 
+    await ts.CompleteAsync();
 }
 committableTransaction.Commit();
 ```
@@ -125,7 +128,7 @@ Service Bus では、パーティション分割されたエンティティを�
 ## <a name="considerations-and-guidelines"></a>考慮事項とガイドライン
 * **高い整合性機能**: パーティション キーの明示的制御、重複データ検出、セッションといった機能が使用されるエンティティの場合、メッセージング操作は常に特定のパーティションにルーティングされます。 いずれかのパーティションにトラフィックが集中した場合や、基になるストアに異常が生じた場合、それらの操作は失敗し、可用性が低下します。 それでも全体として堅牢性は、パーティション分割されていないエンティティと比べれば、はるかに高くなります。問題が発生するのはトラフィックの一部だけです。すべてのトラフィックで問題が発生するわけではありません。 詳細については、「[Event Hubs における可用性と一貫性](../event-hubs/event-hubs-availability-and-consistency.md)」を参照してください。
 * **管理**: 作成、更新、削除といった操作は、エンティティのすべてのパーティションに対して実行する必要があります。 異常のあるパーティションが 1 つでもあると、それらの操作は失敗します。 Get 操作に関して言えば、メッセージ数などの情報は、全パーティションから集計する必要があります。 いずれかのパーティションに異常があった場合、そのエンティティの可用性ステータスは "制限あり" として報告されます。
-* **低量メッセージのシナリオ**: このようなシナリオの場合、特に HTTP プロトコルの使用時には、すべてのメッセージを取得するために、複数の受信操作を実行する必要が生じることがあります。 受信要求の場合、フロント エンドは、すべてのパーティションを受信し、返されたすべての応答をキャッシュします。 以降、同じ接続上で行われる受信要求でこのキャッシュを利用できるため、受信で発生する遅延は小さくなります。 ただし複数の接続が存在する場合や、HTTP を使用している場合は、要求ごとに新しい接続が確立されます。 そのため、要求元と同じノードに応答が届く保証はありません。 既存のメッセージがすべてロックされ、別のフロント エンドでキャッシュされている場合は、受信操作から **null**が返されます。 最終的にはメッセージの有効期限が切れ、再度受信できる状態になります。 HTTP キープアライブの使用をお勧めします。 低量のシナリオでパーティション分割を使用する場合、受信操作に予想以上の時間がかかることがあります。 そのため、このようなシナリオではパーティション分割を使用しないことをお勧めします。 パーティション分割された既存のエンティティをすべて削除し、パフォーマンスを向上させるためにパーティション分割を無効にして再作成してください。
+* **低量メッセージのシナリオ**: このようなシナリオの場合、特に HTTP プロトコルの使用時には、すべてのメッセージを取得するために、複数の受信操作を実行する必要が生じることがあります。 受信要求の場合、フロント エンドは、すべてのパーティションを受信し、返されたすべての応答をキャッシュします。 以降、同じ接続上で行われる受信要求でこのキャッシュを利用できるため、受信で発生する遅延は小さくなります。 ただし複数の接続が存在する場合や、HTTP を使用している場合は、要求ごとに新しい接続が確立されます。 そのため、要求元と同じノードに応答が届く保証はありません。 既存のメッセージがすべてロックされ、別のフロント エンドでキャッシュされている場合は、受信操作から **null** が返されます。 最終的にはメッセージの有効期限が切れ、再度受信できる状態になります。 HTTP キープアライブの使用をお勧めします。 低量のシナリオでパーティション分割を使用する場合、受信操作に予想以上の時間がかかることがあります。 そのため、このようなシナリオではパーティション分割を使用しないことをお勧めします。 パーティション分割された既存のエンティティをすべて削除し、パフォーマンスを向上させるためにパーティション分割を無効にして再作成してください。
 * **メッセージの参照/ピーク**: 従来の [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) ライブラリでのみ使用可能です。 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) は、必ずしも [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount) プロパティに指定された数のメッセージを返すとは限りません。 一般に、この動作には 2 つの理由があります。 1 つ目は、メッセージのコレクションの総サイズが、最大サイズである 256 KB を超えていることです。 2 つ目は、キューまたはトピックの [EnablePartitioning プロパティ](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning)が **true** に設定されている場合に、要求されたメッセージ数を満たすだけのメッセージがパーティションにない可能性があります。 通常、アプリケーションは、決まった数のメッセージを受信する必要がある場合、そのメッセージ数に達するまで、または読み取るメッセージがなくなるまで、[PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) を繰り返し呼び出す必要があります。 コード サンプルを含む詳細については、[QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) または [SubscriptionClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch) に関する API ドキュメントをご覧ください。
 
 ## <a name="latest-added-features"></a>最近追加された機能

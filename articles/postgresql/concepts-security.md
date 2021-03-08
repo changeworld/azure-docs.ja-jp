@@ -1,17 +1,17 @@
 ---
 title: Azure Database for PostgreSQL のセキュリティ - 単一サーバー
 description: Azure Database for PostgreSQL のセキュリティ機能の概要 - 単一サーバー。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 02dc9e1ad9ee46b1a400e44b6ef737e70571a17a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be042a0ec076538cf0f0d155667acea6f1ae19cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75972581"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710483"
 ---
 # <a name="security-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL のセキュリティ - 単一サーバー
 
@@ -23,7 +23,7 @@ Azure Database for PostgreSQL サーバーには、データを保護するた�
 Azure Database for PostgreSQL では、トランスポート層セキュリティを使用して転送中のデータを暗号化することによってデータをセキュリティで保護します。 既定では、暗号化 (SSL/TLS) が適用されます。
 
 ### <a name="at-rest"></a>保存
-Azure Database for PostgreSQL サービスでは、保存データのストレージ暗号化に FIPS 140-2 認証済みの暗号モジュールが使用されます。 バックアップを含むデータは、クエリの実行中に作成された一時ファイルを除き、ディスク上で暗号化されます。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用され、キーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。
+Azure Database for PostgreSQL サービスでは、保存データのストレージ暗号化に FIPS 140-2 認証済みの暗号モジュールが使用されます。 データ (バックアップを含む) は、クエリの実行中に作成される一時ファイルも含めて、ディスク上で暗号化されます。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用され、キーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。
 
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
@@ -54,6 +54,9 @@ Azure Database for PostgreSQL サーバーを作成するときに、管理者�
 
 [監査ログ](concepts-audit.md)を使うと、データベースのアクティビティを追跡できます。 
 
+## <a name="migrating-from-oracle"></a>Oracle からの移行
+
+Oracle では、テーブルおよびテーブルスペースのデータを暗号化するための Transparent Data Encryption (TDE) がサポートされています。 Azure for PostgreSQL では、データはさまざまなレイヤーで自動的に暗号化されます。 このページの「保存」セクションをご覧ください。また、[カスタマー マネージド キー](./concepts-data-encryption-postgresql.md)や[インフラストラクチャの二重暗号化](./concepts-infrastructure-double-encryption.md)などのさまざまなセキュリティのトピックも参照してください。 [Azure for PostgreSQL](./concepts-extensions.md) でサポートされている、[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html) 拡張機能を使用することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 - [IP](concepts-firewall-rules.md) または[仮想ネットワーク](concepts-data-access-and-security-vnet.md)のファイアウォール規則を有効にする

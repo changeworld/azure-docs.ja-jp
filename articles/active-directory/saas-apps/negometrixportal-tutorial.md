@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/06/2019
 ms.author: jeedes
-ms.openlocfilehash: e2d795e1269e2a22264f911fcdb2092813062229
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d972868cf9c5d67824eab781bc99a7cac5f7b313
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552416"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92507140"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-negometrixportal-single-sign-on-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と NegometrixPortal Single Sign On (SSO) の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552416"
 * ユーザーが自分の Azure AD アカウントを使用して NegometrixPortal Single Sign On (SSO) に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* NegometrixPortal Single Sign On (SSO) では、**SP** によって開始される SSO がサポートされます
+* NegometrixPortal Single Sign On (SSO) では、 **SP** によって開始される SSO がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -52,7 +52,7 @@ Azure AD への NegometrixPortal Single Sign On (SSO) の統合を構成する�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**NegometrixPortal Single Sign On (SSO)** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **NegometrixPortal Single Sign On (SSO)** 」と入力します。
 1. 結果パネルから **[NegometrixPortal Single Sign-on (SSO)]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-negometrixportal-single-sign-on-sso"></a>NegometrixPortal Single Sign On (SSO) の Azure AD シングル サインオンの構成とテスト
@@ -131,24 +131,24 @@ NegometrixPortal Single Sign On (SSO) で Azure AD のシングル サインオ�
 
 ## <a name="configure-negometrixportal-single-sign-on-sso-sso"></a>NegometrixPortal Single Sign On (SSO) のシングル サインオンを構成する
 
-**NegometrixPortal Single Sign On (SSO)** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [NegometrixPortal Single Sign On (SSO) サポートチーム](mailto:sander.hoek@negometrix.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**NegometrixPortal Single Sign On (SSO)** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [NegometrixPortal Single Sign On (SSO) サポートチーム](mailto:sander.hoek@negometrix.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-negometrixportal-single-sign-on-sso-test-user"></a>NegometrixPortal Single Sign On (SSO) のテスト ユーザーを作成する
 
-このセクションでは、NegometrixPortal Single Sign On (SSO) で B.Simon というユーザーを作成します。  [NegometrixPortal Single Sign On (SSO) のサポートチーム](mailto:sander.hoek@negometrix.com)と連携し、NegometrixPortal Single Sign On (SSO) プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、NegometrixPortal Single Sign On (SSO) で B.Simon というユーザーを作成します。 [NegometrixPortal Single Sign On (SSO) のサポートチーム](mailto:sander.hoek@negometrix.com)と連携し、NegometrixPortal Single Sign On (SSO) プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで NegometrixPortal Single Sign On (SSO) のタイルをクリックすると、SSO を設定した NegometrixPortal Single Sign On (SSO) に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで NegometrixPortal Single Sign On (SSO) のタイルをクリックすると、SSO を設定した NegometrixPortal Single Sign On (SSO) に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で NegometrixPortal Single Sign On (SSO) を試す](https://aad.portal.azure.com/)

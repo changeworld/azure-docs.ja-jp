@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 44f7ce657ea9341779e15f6e4817e8fae1515e47
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ea1ee2311d8655ce17017c73309bc69e89f4b5f4
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685971"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599112"
 ---
 # <a name="save-on-sap-hana-large-instances-with-an-azure-reservation"></a>Azure 予約を使用して SAP HANA Large Instances に保存する
 
@@ -32,15 +32,15 @@ Azure 予約を 1 年分または 3 年分事前に購入すると、SAP HANA La
 - HANA 予約容量に共有予約スコープを設定することはできません。 予約スコープを分割、マージ、または更新することはできません。
 - 予約容量の API 呼び出しを使用して、一度に 1 つの HLI を購入できます。 追加の数量を購入するには、追加の API 呼び出しを行います。
 
-予約容量は、Azure portal で購入することも、[REST API](https://docs.microsoft.com/rest/api/reserved-vm-instances/reservationorder/purchase) を使用して購入することもできます。
+予約容量は、Azure portal で購入することも、[REST API](/rest/api/reserved-vm-instances/reservationorder/purchase) を使用して購入することもできます。
 
 ## <a name="buy-a-hana-large-instance-reservation"></a>HANA Large Instance 予約を購入する
 
-次の情報を使用して、[予約注文 REST API](https://docs.microsoft.com/rest/api/reserved-vm-instances/reservationorder/purchase) で HLI 予約を購入します。
+次の情報を使用して、[予約注文 REST API](/rest/api/reserved-vm-instances/reservationorder/purchase) で HLI 予約を購入します。
 
 ### <a name="get-the-reservation-order-and-price"></a>予約注文と価格を取得する
 
-まず、[価格計算](https://docs.microsoft.com/rest/api/reserved-vm-instances/reservationorder/calculate) API を使用して、プロビジョニング済みの HANA Large Instance SKU の予約注文と価格を取得します。
+まず、[価格計算](/rest/api/reserved-vm-instances/reservationorder/calculate) API を使用して、プロビジョニング済みの HANA Large Instance SKU の予約注文と価格を取得します。
 
 次の例では [armclient](https://github.com/projectkudu/ARMClient) を使用して、PowerShell で REST API 呼び出しを行っています。 予約注文、そして価格計算 API の要求と要求本文は次のようになります。
 
@@ -220,11 +220,11 @@ armclient get /providers/microsoft.capacity/reservationOrders/22222222-2222-2222
 
   **SKU** HLI の SKU 名。 `SAP_HANA_On_Azure_<SKUname>` のように表示されます。
 
-  **Location** 使用可能な HLI のリージョン。 使用可能なリージョンについては、[SAP HANA on Azure (Large Instances) での SKU](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) に関する記事を参照してください。 場所の文字列形式を取得するには、[場所を取得する API 呼び出し](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations#locationlistresult)を使用します。
+  **Location** 使用可能な HLI のリージョン。 使用可能なリージョンについては、[SAP HANA on Azure (Large Instances) での SKU](../../virtual-machines/workloads/sap/hana-available-skus.md) に関する記事を参照してください。 場所の文字列形式を取得するには、[場所を取得する API 呼び出し](/rest/api/resources/subscriptions/listlocations#locationlistresult)を使用します。
 
   **Reserved Resource type** `SapHana`
 
-  **Subscription** 予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、予約のコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または Microsoft 顧客契約である必要があります。 年額コミットメント残高から料金が差し引かれるか(使用可能な場合)、超過料金として課金されます。
+  **Subscription** 予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、予約のコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または Microsoft 顧客契約である必要があります。 Azure 前払い (旧称: 年額コミットメント) 残高から料金が差し引かれるか (使用可能な場合)、超過料金として課金されます。
 
   **Scope** 予約のスコープは、1 つのスコープである必要があります。
 
@@ -248,5 +248,5 @@ location. You can also go to https://aka.ms/corequotaincrease to learn about quo
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Postman と cURL で Azure REST API を呼び出す方法](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)について確認します。
-- 使用可能な SKU の一覧とリージョンについては、[SAP HANA on Azure (Large Instances) での SKU](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) に関する記事を参照してください。
+- [Postman と cURL で Azure REST API を呼び出す方法](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)について確認します。
+- 使用可能な SKU の一覧とリージョンについては、[SAP HANA on Azure (Large Instances) での SKU](../../virtual-machines/workloads/sap/hana-available-skus.md) に関する記事を参照してください。

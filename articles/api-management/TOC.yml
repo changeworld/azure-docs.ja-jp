@@ -11,17 +11,26 @@
 - name: クイックスタート
   expanded: true
   items:
+    - name: インスタンスの作成 - CLI
+      href: get-started-create-service-instance-cli.md
     - name: インスタンスの作成 - ポータル
       href: get-started-create-service-instance.md
     - name: インスタンスの作成 - PowerShell
       href: powershell-create-service-instance.md
+    - name: インスタンスの作成 - Visual Studio Code
+      href: vscode-create-service-instance.md
+    - name: インスタンスを作成する - Resource Manager テンプレート
+      displayName: Resource Manager
+      href: quickstart-arm-template.md
 - name: チュートリアル
   items:
     - name: 1 - 最初の API のインポート
       href: import-and-publish.md
     - name: 2 - 製品の作成と発行
+      displayName: 'Azure CLI, az apim product'
       href: api-management-howto-add-products.md
     - name: 3 - API の応答の模擬テストを実行する
+      displayName: 'Azure CLI, az apim api operation'
       href: mock-api-responses.md
     - name: 4 - API の保護
       href: transform-api.md
@@ -30,11 +39,15 @@
     - name: 6 - API のデバッグ
       href: api-management-howto-api-inspector.md
     - name: 7 - リビジョンの追加
+      displayName: 'Azure CLI, az apim api release'
       href: api-management-get-started-revise-api.md
     - name: 8 - 複数のバージョンの追加
+      displayName: 'Azure CLI, az apim api versionset'
       href: api-management-get-started-publish-versions.md
     - name: 9 - 開発者ポータルのカスタマイズ
       href: api-management-howto-developer-portal-customize.md
+    - name: 10 - Visual Studio Code で API を管理する
+      href: visual-studio-code-tutorial.md
 - name: サンプル
   items:
     - name: ポリシー
@@ -51,12 +64,16 @@
           href: api-management-howto-policies.md
         - name: ポリシー リファレンスのインデックス
           href: api-management-policies.md
+        - name: エラー処理
+          href: api-management-error-handling-policies.md
     - name: セキュリティ
       items:
+        - name: Azure Policy によるセキュリティ制御
+          href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
-        - name: 組み込みのセキュリティ制御
-          href: api-management-security-controls.md
+    - name: バックエンド
+      href: backends.md
     - name: サブスクリプション
       href: api-management-subscriptions.md
     - name: バージョン
@@ -65,14 +82,16 @@
       href: api-management-revisions.md
     - name: Automation を使用して管理する
       href: automation-manage-api-management.md
-    - name: エラー処理
-      href: api-management-error-handling-policies.md
     - name: API のインポートに関する制限事項
       href: api-management-api-import-restrictions.md
     - name: セルフホステッド ゲートウェイの概要
       href: self-hosted-gateway-overview.md
     - name: 可観測性
       href: observability.md
+    - name: Resource Manager テンプレートを使用した CI/CD
+      href: devops-api-development-templates.md
+    - name: 論理的な削除
+      href: soft-delete.md
 - name: 操作方法ガイド
   items:
     - name: API の定義
@@ -91,14 +110,16 @@
           href: import-function-app-as-api.md
         - name: ロジック アプリのインポート
           href: import-logic-app-as-api.md
-        - name: Service Fabric アプリのインポート
-          href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
         - name: API の編集
           href: edit-api.md
+        - name: Service Fabric バックエンドを構成する
+          href: how-to-configure-service-fabric-backend.md
     - name: プロビジョニングとスケーリング
       items:
         - name: 容量メトリック
           href: api-management-capacity.md
+        - name: コストの計画と管理
+          href: plan-manage-costs.md
         - name: アップグレードとスケーリング
           href: upgrade-and-scale.md
         - name: 自動スケールの構成
@@ -151,6 +172,8 @@
       items:
         - name: 開発者ポータルについて
           href: api-management-howto-developer-portal.md
+        - name: 非推奨から新しい開発者ポータルへの移行
+          href: developer-portal-deprecated-migration.md
         - name: Azure AD による認証
           href: api-management-howto-aad.md
         - name: Azure AD B2C による認証
@@ -161,13 +184,13 @@
           href: api-management-howto-configure-notifications.md
         - name: コンソール OAuth サポートを有効にする
           href: api-management-howto-oauth2.md
-        - name: 従来のポータル - ポータルのカスタマイズ
+        - name: 非推奨のポータル - ポータルのカスタマイズ
           href: api-management-customize-styles.md
-        - name: 従来のポータル - ページとレイアウトの変更
+        - name: 非推奨のポータル - ページとレイアウトの変更
           href: api-management-modify-content-layout.md
-        - name: 従来のポータル - テンプレートを使用したカスタマイズ
+        - name: 非推奨のポータル - テンプレートを使用したカスタマイズ
           href: api-management-developer-portal-templates.md
-    - name: 従来のポータルのテンプレート
+    - name: 非推奨のポータルのテンプレート
       items:
         - name: データ モデル リファレンス
           href: api-management-template-data-model-reference.md
@@ -193,6 +216,8 @@
       items:
         - name: ポリシーの設定または編集
           href: set-edit-policies.md
+        - name: デバッグ ポリシー
+          href: api-management-debug-policies.md
         - name: ポリシー式
           href: api-management-policy-expressions.md
         - name: カスタム キャッシュ
@@ -203,7 +228,8 @@
           href: api-management-sample-flexible-throttling.md
         - name: 外部サービスの使用
           href: api-management-sample-send-request.md
-        - name: プロパティを使用してシークレットを管理する
+        - name: 名前付きの値を使用してシークレットを管理する
+          displayName: 'Azure CLI, az apim nv'
           href: api-management-howto-properties.md
         - name: アクセス制限ポリシー
           href: api-management-access-restriction-policies.md
@@ -217,6 +243,8 @@
           href: api-management-cross-domain-policies.md
         - name: 変換ポリシー
           href: api-management-transformation-policies.md
+        - name: 分散型アプリケーション ランタイム (Dapr) 統合ポリシー
+          href: api-management-dapr-policies.md
     - name: 運用環境でテストする
       items:
         - name: API を Power Platform にエクスポートする
@@ -225,6 +253,8 @@
           href: api-management-howto-create-groups.md
         - name: IP アドレスを取得する
           href: api-management-howto-ip-addresses.md
+        - name: API 分析を取得する
+          href: howto-use-analytics.md
         - name: イベントを Azure Event Hubs にログ記録する
           href: api-management-howto-log-event-hubs.md
         - name: Azure Application Insights でログを要求する
@@ -251,10 +281,14 @@
               href: ../service-fabric/service-fabric-api-management-overview.md
             - name: チュートリアル
               href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
+        - name: 運用環境の問題を診断する
+          href: diagnose-solve-problems.md
 - name: リファレンス
   items:
+    - name: Azure CLI
+      href: /cli/azure/apim
     - name: Azure PowerShell
-      href: /powershell/module/az.apimanagement/?view=azps-2.6.0
+      href: /powershell/module/az.apimanagement/
     - name: REST
       href: /rest/api/apimanagement/
     - name: REST (オリジナル)
@@ -264,6 +298,8 @@
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
+    - name: リソース ログ スキーマ
+      href: gateway-log-schema-reference.md
 - name: リソース
   items:
     - name: よく寄せられる質問
@@ -286,5 +322,9 @@
       href: /azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
     - name: API 実装ガイダンス
       href: /azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
-    - name: '"ホスト名の更新の失敗" エラーに関するトラブルシューティング'
-      href: api-management-troubleshoot-cannot-add-custom-domain.md
+    - name: トラブルシューティング
+      items:
+        - name: '"ホスト名の更新の失敗" エラーに関するトラブルシューティング'
+          href: api-management-troubleshoot-cannot-add-custom-domain.md
+        - name: 応答のタイムアウトとエラーのトラブルシューティング
+          href: troubleshoot-response-timeout-and-errors.md

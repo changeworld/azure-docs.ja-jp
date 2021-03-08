@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: cc93f4062851f01dd127c108ca60bc240a1940e6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: eed4e919684575bb2c63170d91517b661fac4acf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311757"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753970"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>サードパーティの Cookie がブロックされている Safari やその他のブラウザーで ITP を扱う
 
@@ -49,7 +49,7 @@ SPA にはさらに 2 つの制約があります。
 * ログイン エンドポイントで CORS を有効にするには、[リダイレクト URI が `spa` という種類としてマークされている必要があります](v2-oauth2-auth-code-flow.md#redirect-uri-setup-required-for-single-page-apps)。
 * `spa` リダイレクト URI に認可コード フローを通じて発行される更新トークンには、90 日の有効期間ではなく、24 時間の有効期間があります。
 
-![SPA アプリのコード フロー](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
+:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="シングル ページ アプリとセキュリティ トークン サービス エンドポイントの間の OAuth 2 認証コード フローを示す図。" border="false":::
 
 ## <a name="performance-and-ux-implications"></a>パフォーマンスと UX への影響
 

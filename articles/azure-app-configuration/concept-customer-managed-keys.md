@@ -1,17 +1,17 @@
 ---
 title: カスタマー マネージド キーを使用して構成データを暗号化する
 description: カスタマー マネージド キーを使用して、構成データを暗号化する
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/18/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 8942c93b7346613b8cfdc97d9afe09f1c473fb10
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 46a1e99a7bc75efa85fcb5eff649c14af5abd17b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384873"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930502"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>カスタマー マネージド キーを使用して App Configuration データを暗号化する
 Azure App Configuration では、[保存されている機密情報を暗号化](../security/fundamentals/encryption-atrest.md)します。 カスタマー マネージド キーを使用すると、暗号化キーを管理できるため、データ保護が強化されます。  マネージド キー暗号化が使用されている場合、App Configuration 内のすべての機密情報が、ユーザー指定の Azure Key Vault キーで暗号化されます。  これにより、必要に応じて暗号化キーを交換することができます。  また、App Configuration インスタンスのキーへのアクセスを取り消すことによって、機密情報への Azure App Configuration のアクセスを取り消すことができます。

@@ -3,12 +3,12 @@ title: DPM と Azure Backup Server のオフライン バックアップ
 description: Azure Backup では、Azure Import/Export サービスを使用してネットワークからデータを送信できます。 この記事では、DPM と Azure Backup Server でのオフライン バックアップ ワークフローについて説明します。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 221424871aa4f022e199c98e95024ec20e55d803
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 006c0fa4d67c9a85426d7a007912df65876313da
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890078"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701815"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM と Azure Backup Server (MABS) のオフライン バックアップのワークフロー
 
@@ -17,7 +17,7 @@ ms.locfileid: "88890078"
 
 System Center Data Protection Manager と Azure Backup Server (MABS) は、Azure Backup と統合し、組み込みの効率性を使って Azure への初回完全バックアップ時にネットワークとストレージのコストを抑えます。 初回完全バックアップでは通常、大量のデータが転送されます。その後の差分/増分のみを転送するバックアップと比べると、多くのネットワーク帯域幅が必要です。 Azure Backup では、初回バックアップが圧縮されます。 オフライン シード処理プロセスによって、Azure Backup でディスクを使用し、圧縮済みの初回バックアップ データをオフラインで Azure にアップロードすることができます。
 
-Azure Backup のオフライン シード処理プロセスは [Azure Import/Export サービス](../storage/common/storage-import-export-service.md) と緊密に統合されています。 このサービスでは、ディスクを使用してデータを Azure に転送できます。 待ち時間が長く、低帯域幅のネットワークで転送する必要がある初回バックアップ データが数 TB (テラバイト) ある場合は、オフライン シード処理ワークフローを使用して、1 台以上のハード ドライブ上にある初回バックアップ コピーを Azure データセンターに発送できます。 この記事では、System Center Data Protection Manager (DPM) および Microsoft Azure Backup Server (MABS) のこのワークフローを完了するための概要と手順について説明します。
+Azure Backup のオフライン シード処理プロセスは [Azure Import/Export サービス](../import-export/storage-import-export-service.md) と緊密に統合されています。 このサービスでは、ディスクを使用してデータを Azure に転送できます。 待ち時間が長く、低帯域幅のネットワークで転送する必要がある初回バックアップ データが数 TB (テラバイト) ある場合は、オフライン シード処理ワークフローを使用して、1 台以上のハード ドライブ上にある初回バックアップ コピーを Azure データセンターに発送できます。 この記事では、System Center Data Protection Manager (DPM) および Microsoft Azure Backup Server (MABS) のこのワークフローを完了するための概要と手順について説明します。
 
 > [!NOTE]
 > Microsoft Azure Recovery Services (MARS) エージェントのオフライン バックアップのプロセスは、DPM と MABS とは異なります。 MARS エージェントのオフライン バックアップの使用の詳細については、「[Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md)」を参照してください。 Azure Backup エージェントを使用して行われたシステム状態のバックアップでは、オフライン バックアップはサポートされていません。
@@ -51,28 +51,28 @@ Azure Backup のオフライン シード処理機能と Azure Import/Export サ
 * Recovery Services コンテナーと同じサブスクリプションを使って、Azure ストレージ アカウントを作成します。
 * Azure Active Directory アプリケーションを作成するのに[必要なアクセス許可](../active-directory/develop/howto-create-service-principal-portal.md)があることを確認します。 オフライン バックアップ ワークフローは、Azure ストレージ アカウントに関連付けられているサブスクリプションに Azure Active Directory アプリケーションを作成します。 アプリケーションの目的は、オフライン バックアップ ワークフローに必要な、Azure インポート サービスに対するセキュリティで保護されて範囲を制限されたアクセスを、Azure Backup に提供することです。
 * Azure ストレージ アカウントを含むサブスクリプションに Microsoft.ImportExport リソース プロバイダーを登録します。 リソース プロバイダーを登録するには:
-    1. メイン メニューで **[サブスクリプション]** をクリックします。
+    1. メイン メニューで、 **[サブスクリプション]** を選択します。
     2. 複数のサブスクリプションをサブスクライブしている場合は、オフライン バックアップに使っているサブスクリプションを選びます。 使っているサブスクリプションが 1 つだけの場合は、そのサブスクリプションが表示されます。
-    3. サブスクリプションのメニューで、 **[リソース プロバイダー]** をクリックしてプロバイダーの一覧を表示します。
-    4. プロバイダーの一覧で、Microsoft.ImportExport まで下にスクロールします。 状態が [NotRegistered]\(未登録\) の場合は、 **[登録]** をクリックします。
+    3. サブスクリプション メニューで、 **[リソース プロバイダー]** を選択してプロバイダーの一覧を表示します。
+    4. プロバイダーの一覧で、Microsoft.ImportExport まで下にスクロールします。 状態が [未登録] である場合は、 **[登録]** を選択します。
 
        ![リソース プロバイダーの登録](./media/backup-azure-backup-server-import-export/register-import-export.png)
 
 * ステージング場所 (ネットワーク共有、または最初のコピーを保持するのに十分なディスク領域がある内部または外部コンピューター上の追加ドライブ) が作成されていること。 たとえば、500 GB のファイル サーバーをバックアップする場合は、500 GB 以上のステージング領域を確保します。 たとえば、500 GB のファイル サーバーをバックアップする場合は、ステージング領域が 500 GB 以上あることを確認します (圧縮処理により、使用量はこれよりも少なくなります)。
-* Azure に送信されるディスクに関して、2.5 インチ SSD、または 2.5 インチか 3.5 インチの SATA II/III 内蔵ハード ドライブが使用されていることを確認します。 最大 10 TB のハード ドライブを使用できます。 サービスでサポートされている最新のドライブについては、[Azure Import/Export サービスのドキュメント](../storage/common/storage-import-export-requirements.md#supported-hardware)をご覧ください。
+* Azure に送信されるディスクに関して、2.5 インチ SSD、または 2.5 インチか 3.5 インチの SATA II/III 内蔵ハード ドライブが使用されていることを確認します。 最大 10 TB のハード ドライブを使用できます。 サービスでサポートされている最新のドライブについては、[Azure Import/Export サービスのドキュメント](../import-export/storage-import-export-requirements.md#supported-hardware)をご覧ください。
 * SATA ドライブは、ステージング場所から SATA ドライブへのバックアップ データのコピーが行われるコンピューター ("*コピー用コンピューター*" と呼ばれます) に接続されている必要があります。 コピー用コンピューターで BitLocker を確実に有効にします。
 
 ## <a name="workflow"></a>ワークフロー
 
-このセクションの情報は、オフライン バックアップ ワークフローを完了するためのものなので、このデータを Azure データセンターに配信したり、Azure Storage にアップロードしたりできます。 インポート サービスやプロセスの他の側面について質問がある場合は、上記で参照した [サービスの概要に関するページ](../storage/common/storage-import-export-service.md) を参照してください。
+このセクションの情報は、オフライン バックアップ ワークフローを完了するためのものなので、このデータを Azure データセンターに配信したり、Azure Storage にアップロードしたりできます。 インポート サービスやプロセスの他の側面について質問がある場合は、上記で参照した [サービスの概要に関するページ](../import-export/storage-import-export-service.md) を参照してください。
 
 ## <a name="initiate-offline-backup"></a>オフライン バックアップを開始する
 
-1. オンライン保護を使用して新しい保護グループを作成するか、既存の保護グループにオンライン保護を追加すると、次の画面が表示されます。 初期のオンライン レプリケーション方法を選択するには、 **[独自のディスクを使用して転送]** を選択し、 **[次へ]** をクリックします。
+1. オンライン保護を使用して新しい保護グループを作成するか、既存の保護グループにオンライン保護を追加すると、次の画面が表示されます。 初期のオンライン レプリケーション方法を選択するには、 **[独自のディスクを使用して転送]** を選択し、 **[次へ]** を選択します。
 
     ![Import screen](./media/backup-azure-backup-server-import-export/create-new-protection-group.png)
 
-2. Azure のサインイン ページが開きます。 Azure のユーザー アカウントを使用してサインインします。このアカウントには、Azure サブスクリプションに対する*所有者*ロールの権限が付与されています。
+2. Azure のサインイン ページが開きます。 Azure のユーザー アカウントを使用してサインインします。このアカウントには、Azure サブスクリプションに対する *所有者* ロールの権限が付与されています。
 
     ![Azure サインイン ページ](./media/backup-azure-backup-server-import-export/choose-initial-online-replication.png)
 
@@ -88,7 +88,7 @@ Azure Backup のオフライン シード処理機能と Azure Import/Export サ
    * **Azure サブスクリプション ID**:Azure ストレージ アカウントを作成する Azure サブスクリプションの ID。
    * **Azure インポート ジョブ名**:ディスクを使用して Azure に送信されたデータを、Azure インポート サービスと Azure Backup が追跡するときに使用する一意の名前。
 
-    **ステージング場所**と、指定した **Azure Import ジョブの名前**を保存します。 ディスクを準備する必要があります。
+    **ステージング場所** と、指定した **Azure Import ジョブの名前** を保存します。 ディスクを準備する必要があります。
 
 4. ワークフローを完了して、保護を作成または更新します。 また、オフライン バックアップ コピーを開始するには、 **[保護グループ]** を右クリックし、 **[回復ポイントの作成]** オプションを選択します。 次に、 **[オンライン保護]** オプションを選択します。
 
@@ -160,7 +160,7 @@ Azure Backup のオフライン シード処理機能と Azure Import/Export サ
 * ディスクの返送先の詳細
 
    1. Azure サブスクリプションにサインインします。
-   2. メイン メニューで **[すべてのサービス]** をクリックし、[すべてのサービス] ダイアログで「インポート」と入力します。 **[インポート/エクスポート ジョブ]** が表示されたら、それをクリックします。
+   2. メイン メニューで **[すべてのサービス]** を選択し、[すべてのサービス] ダイアログで「インポート」と入力します。 **[インポート/エクスポート ジョブ]** が表示されたら、それを選択します。
        ![発送情報の入力](./media/backup-azure-backup-server-import-export/search-import-job.png)
 
        **[インポート/エクスポート ジョブ]** メニューの一覧が開き、選択したサブスクリプション内のすべてのインポート/エクスポート ジョブの一覧が表示されます。
@@ -169,11 +169,11 @@ Azure Backup のオフライン シード処理機能と Azure Import/Export サ
 
        ![発送情報の確認](./media/backup-azure-backup-server-import-export/import-job-found.png)
 
-   4. インポート ジョブの [設定] メニューで、 **[発送情報の管理]** をクリックして、返送の詳細を入力します。
+   4. インポート ジョブの [設定] メニューで、 **[配送情報の管理]** を選択し、返送の詳細を入力します。
 
        ![発送情報の格納](./media/backup-azure-backup-server-import-export/shipping-info.png)
 
-   5. 配送業者の追跡番号がある場合は、Azure インポートジョブの概要ページでバナーをクリックして、次の詳細を入力します。
+   5. 配送業者の追跡番号がある場合は、Azure インポート ジョブの概要ページでバナーを選択し、次の詳細を入力します。
 
       > [!IMPORTANT]
       > Azure インポート ジョブを作成してから 2 週間以内に、配送業者の情報と追跡番号が更新されたことを確認します。 2 週間以内にこの情報を確認しないと、ジョブが削除され、ドライブが処理されない可能性があります。
@@ -188,14 +188,14 @@ Azure インポート ジョブの処理にかかる時間は状況に応じて�
 
 ### <a name="monitor-azure-import-job-status"></a>Azure インポート ジョブの状態の監視
 
-Azure portal で **[インポート/エクスポート ジョブ]** ページに移動してジョブを選ぶことにより、インポート ジョブの状態を監視できます。 インポート ジョブの状態について詳しくは、[ストレージのインポート/エクスポート サービス](../storage/common/storage-import-export-service.md)に関するページをご覧ください。
+Azure portal で **[インポート/エクスポート ジョブ]** ページに移動してジョブを選ぶことにより、インポート ジョブの状態を監視できます。 インポート ジョブの状態について詳しくは、[ストレージのインポート/エクスポート サービス](../import-export/storage-import-export-service.md)に関するページをご覧ください。
 
 ### <a name="complete-the-workflow"></a>ワークフローを完了する
 
-インポート ジョブが完了すると、初回バックアップ データをストレージ アカウントで使用できます。 予定されている次回のスケジュール バックアップで、Azure Backup によってストレージ アカウントからデータのコンテンツが Recovery Services コンテナーにコピーされます。
+インポート ジョブが完了すると、初回バックアップ データをストレージ アカウントで使用できます。 次回のスケジュール バックアップでは、Azure Backup はストレージ アカウントのデータのコンテンツを Recovery Services コンテナーにコピーします。
 
 予定されている次回のオンライン レプリカ作成ジョブで、Data Protection Manager は、初回バックアップ コピーに対する増分バックアップを実行します。
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Import/Export サービス ワークフローについて質問がある場合は、[Microsoft Azure Import/Export サービスを使用した BLOB ストレージへのデータの転送](../storage/common/storage-import-export-service.md)に関するページを参照してください。
+* Azure Import/Export サービス ワークフローについて質問がある場合は、[Microsoft Azure Import/Export サービスを使用した BLOB ストレージへのデータの転送](../import-export/storage-import-export-service.md)に関するページを参照してください。

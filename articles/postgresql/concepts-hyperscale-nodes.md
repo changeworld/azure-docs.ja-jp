@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/28/2019
-ms.openlocfilehash: a02583825f4a1ef15992aa2307e7f666d5abeaba
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: b3eda2c8de8319552f32938f20ff98af0e0a49fc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136458"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314829"
 ---
 # <a name="nodes-and-tables-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL のノードとテーブル - Hyperscale (Citus)
 
@@ -24,7 +24,7 @@ Hyperscale (Citus) のホスティング タイプは、Azure Database for Postg
 
 すべてのサーバー グループに、1 つのコーディネーター ノードと複数のワーカーが含まれます。 アプリケーションは、クエリをコーディネーター ノードに送信し、このノードが関連するワーカーにリレーして、結果を累積します。 アプリケーションは、ワーカーに直接接続することはできません。
 
-Hyperscale (Citus) を使用すると、データベース管理者は、異なる行を異なるワーカー ノード上に格納して、テーブルを "*分散*" させることができます。 分散テーブルは、Hyperscale パフォーマンスにとって重要です。 テーブルの分散に失敗すると、コーディネーター ノード上に完全に残り、マシン間の並列処理を利用できません。
+Hyperscale (Citus) を使用すると、データベース管理者は、異なる行を異なるワーカー ノード上に格納して、テーブルを "*分散*" させることができます。 分散テーブルは、Hyperscale (Citus) のパフォーマンスにとって重要です。 テーブルの分散に失敗すると、コーディネーター ノード上に完全に残り、マシン間の並列処理を利用できません。
 
 分散テーブル上の各クエリに対して、コーディネーターは、必要なデータが単一または複数のノードのどちらに存在するかに応じて、単一のワーカー ノードにルーティングするか、または複数にわたって並列処理を行います。 コーディネーターは、メタデータ テーブルを参照して、どのように処理するかを決定します。 これらのテーブルは、ワーカー ノードの DNS 名およびヘルスと、ノード間でのデータの分布を追跡します。
 

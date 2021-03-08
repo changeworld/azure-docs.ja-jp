@@ -10,18 +10,19 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
-ms.openlocfilehash: 5fc565ecc1b501f52e934784695594dcfef2a83a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c3056415d3432dbe64dd1f2bcf974a676bbf6c6b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047279"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586059"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Video Indexer API を使用してブランド モデルをカスタマイズする
 
-Video Indexer では、ビデオとオーディオ コンテンツのインデックスの作成と再作成中に、音声と視覚テキストからのブランドの検出がサポートされます。 ブランド検出機能では、Bing のブランド データベースで提案される製品、サービス、および企業の説明が識別されます。 たとえば、Microsoft がビデオまたはオーディオ コンテンツで説明されている場合や、ビデオ内の視覚テキストに表示される場合、Video Indexer ではそのコンテンツ内でブランドとして Microsoft が検出されます。 カスタム ブランド モデルでは、特定のブランドを検出対象から除外し、Bing のブランド データベースにはない可能性があるモデルの一部である必要があるブランドを含めることができます。
+Video Indexer では、ビデオとオーディオ コンテンツのインデックスの作成と再作成中に、音声と視覚テキストからのブランドの検出がサポートされます。 ブランド検出機能では、Bing のブランド データベースで提案される製品、サービス、および企業の説明が識別されます。 たとえば、Microsoft がビデオまたはオーディオ コンテンツで説明されている場合や、ビデオ内の視覚テキストに表示される場合、Video Indexer ではそのコンテンツ内でブランドとして Microsoft が検出されます。 カスタム ブランド モデルでは、特定のブランドを検出対象から除外し、Bing のブランド データベースにはない可能性があるモデルの一部である必要があるブランドを含めることができます。 詳細については、[概要](customize-brands-model-overview.md)に関するページを参照してください。
 
-詳細な概要については、[概要](customize-brands-model-overview.md)に関するページを参照してください。
+> [!NOTE]
+> ブランド追加に先立ってビデオにインデックスを付けた場合、インデックスを再作成する必要があります。
 
 このトピックで説明されているように、Video Indexer API を使って、ビデオで検出されるカスタム ブランド モデルを作成、使用、および編集することができます。 また、[Video Indexer Web サイトを使用するブランド モデルのカスタマイズ](customize-brands-model-with-api.md)に関するページで説明されているように、Video Indexer Web サイトを使用することもできます。
 
@@ -61,7 +62,7 @@ Video Indexer では、ビデオとオーディオ コンテンツのインデ�
 
 ## <a name="delete-a-brand"></a>ブランドを削除する
 
-[ブランドの削除](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?) API では、指定されたアカウントのカスタム ブランド モデルからブランドを削除します。 アカウントは `accountId` パラメーターで指定されます。 呼び出しが正常に行われると、ブランドは、 *[含める]* や *[除外]* のブランド リストに配置されなくなります。
+[ブランドの削除](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?) API では、指定されたアカウントのカスタム ブランド モデルからブランドを削除します。 アカウントは `accountId` パラメーターで指定されます。 呼び出しが正常に行われると、ブランドは、*[含める]* や *[除外]* のブランド リストに配置されなくなります。
 
 ### <a name="response"></a>Response
 

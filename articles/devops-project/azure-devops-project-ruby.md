@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: cde959d8e075b55cb6cbb37479ca49cdd8a8c0c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9e2f7115560148a1d3b9d2671be54c1ba4d61946
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233739"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588915"
 ---
 # <a name="create-a-cicd-pipeline-for-ruby-on-rails-by-using-azure-devops-starter"></a>Azure DevOps Starter を使用して Ruby on Rails 用の CI/CD パイプラインを作成する
 
@@ -63,9 +63,9 @@ Azure DevOps Starter によって、Azure Repos に CI/CD パイプラインが�
 
 Azure DevOps Starter によって、Azure Pipelines または GitHub に Git リポジトリが作成されます。 リポジトリを表示し、アプリにコード変更を加えるには、次の手順に従います。
 
-1. DevOps Starter ダッシュボードの左側にあるマスター分岐のリンクを選択します。 このリンクによって、新しく作成された Git リポジトリのビューが開かれます。
+1. DevOps Starter ダッシュボードの左側にあるメイン ブランチのリンクを選択します。 このリンクによって、新しく作成された Git リポジトリのビューが開かれます。
 
-1. リポジトリのクローン URL を表示するには、右上の **[複製]** を選択します。 お気に入りの IDE で Git リポジトリを複製できます。 次のいくつかの手順では、Web ブラウザーを使用してマスター ブランチに直接コード変更を行い、コミットできます。
+1. リポジトリのクローン URL を表示するには、右上の **[複製]** を選択します。 お気に入りの IDE で Git リポジトリを複製できます。 次のいくつかの手順では、Web ブラウザーを使用してメイン ブランチに直接コード変更を行い、コミットできます。
 
 1. 左側で *app/views/pages/home.html.erb* ファイルに移動し、 **[編集]** を選択します。
 
@@ -101,7 +101,7 @@ Azure DevOps Starter によって、Azure DevOps 組織内に完全な CI/CD パ
 
 1. **[ビルドとリリース]** を選択し、 **[リリース]** を選択します。  DevOps Starter により、Azure へのデプロイを管理するリリース パイプラインが作成されます。
 
-1. リリース パイプラインの横にある省略記号 (...) を選択し、 **[編集]** を選択します。 リリース パイプラインには、リリース プロセスを定義する*パイプライン*が含まれています。
+1. リリース パイプラインの横にある省略記号 (...) を選択し、 **[編集]** を選択します。 リリース パイプラインには、リリース プロセスを定義する *パイプライン* が含まれています。
 
 1. **[成果物]** で、 **[ドロップ]** を選択します。 前に調べたビルド パイプラインでは、成果物に使用される出力が生成されます。 
 
@@ -119,11 +119,11 @@ Azure DevOps Starter によって、Azure DevOps 組織内に完全な CI/CD パ
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このクイック スタートで作成した Azure App Service インスタンスと関連リソースが必要なくなったら、削除してかまいません。 そうするには、DevOps Starter ダッシュボードで**削除**機能を使用します。
+このクイック スタートで作成した Azure App Service インスタンスと関連リソースが必要なくなったら、削除してかまいません。 そうするには、DevOps Starter ダッシュボードで **削除** 機能を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 
 チームのニーズを満たすためのビルドおよびリリース パイプラインの変更については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [複数ステージの継続的デプロイ (CD) パイプラインを定義する](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [複数ステージの継続的デプロイ (CD) パイプラインを定義する](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

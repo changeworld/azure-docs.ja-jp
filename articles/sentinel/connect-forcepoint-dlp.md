@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 3bdb9d2b23ce05929ba5612e0c6a03fe1aab05de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 62ed3915dcaf596d144a2f59817626cdf8ec47e5
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588248"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092776"
 ---
 # <a name="connect-your-forcepoint-dlp-to-azure-sentinel"></a>Forcepoint DLP を Azure Sentinel に接続する
 
@@ -46,7 +46,7 @@ Forcepoint DLP の Log Analytics で関連するスキーマを使用するに�
 
 ## <a name="validate-connectivity"></a>接続の検証
 
-ログが Log Analytics に表示され始めるまで、20 分以上かかる場合があります。
+ログが Log Analytics に表示され始めるまで、最大 20 分かかることがあります。
 
 ## <a name="next-steps"></a>次のステップ
 

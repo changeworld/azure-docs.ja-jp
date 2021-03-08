@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:Xamarin.iOS アプリを作成する
 description: このクイックスタートでは、Spatial Anchors を使用する iOS アプリを Xamarin でビルドする方法について説明します。
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 07/22/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 12fb644430d4bfd6444c6bbf09d37b4662ca6fd1
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: b62ca4b02a1bd28d150f233adf1dfb621995e1c4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810107"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009740"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用して Xamarin iOS アプリを作成する
 
@@ -33,7 +33,7 @@ ms.locfileid: "87810107"
 このクイック スタートを実行するには、以下が必要です。
 - macOS High Sierra (10.13) 以降を実行する Mac。次の要件を満たしている必要があります。
   - [App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12) からインストールされた最新バージョンの Xcode と iOS SDK。
-  - 最新バージョンの <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio for Mac 8.1 以上</a>。
+  - 最新バージョンの <a href="/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio for Mac 8.1 以上</a>。
   - <a href="https://git-scm.com/download/mac" target="_blank">Git for macOS</a>。
   - <a href="https://git-lfs.github.com/">Git LFS</a>。
 

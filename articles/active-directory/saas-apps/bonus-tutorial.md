@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: fd82d3d2d2a76e0c0671c57d9254ff8c9030d3a3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e93d03ac9ec404a18b480a0cd1bfe289944b60d8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548286"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689115"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>チュートリアル: Azure Active Directory と Bonusly の統合
 
@@ -27,7 +27,7 @@ Bonusly と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Bonusly に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -143,7 +143,7 @@ Bonusly で Azure AD シングル サインオンを構成するには、次の�
 
     c. **[IdP Issuer]\(IdP 発行者\)** ボックスに、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
     
-    d. Azure Portal からコピーした**拇印**の値を、 **[Cert Fingerprint]\(証明書の指紋\)** ボックスに貼り付けます。
+    d. Azure Portal からコピーした **拇印** の値を、 **[Cert Fingerprint]\(証明書の指紋\)** ボックスに貼り付けます。
     
     e. **[保存]** をクリックします。
 
@@ -222,17 +222,17 @@ Azure AD ユーザーが Bonusly にサインインできるようにするに�
 
 1. **[ユーザーの追加]** をクリックします。
 
-    ![ユーザーの追加](./media/bonus-tutorial/ic781044.png "ユーザーの追加")
+    ![スクリーンショットは、[Add User]\(ユーザーの追加\) を選択できる [Manage Users]\(ユーザーの管理\) を示しています。](./media/bonus-tutorial/ic781044.png "ユーザーの追加")
 
 1. **[Add User]** ダイアログで、次の手順を実行します。
 
-    ![ユーザーの追加](./media/bonus-tutorial/ic781045.png "ユーザーの追加")  
+    ![スクリーンショットは、この情報を入力できる [Add User]\(ユーザーの追加\) ダイアログ ボックスを示しています。](./media/bonus-tutorial/ic781045.png "ユーザーの追加")  
 
     a. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
 
     b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
-    c. **[メール]** ボックスに、ユーザーのメール (`brittasimon\@contoso.com` など) を入力します。
+    c. **[メール]** ボックスに、ユーザーのメール (`brittasimon@contoso.com` など) を入力します。
 
     d. **[保存]** をクリックします。
 
@@ -243,12 +243,12 @@ Azure AD ユーザーが Bonusly にサインインできるようにするに�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Bonusly] タイルをクリックすると、SSO を設定した Bonusly に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Bonusly] タイルをクリックすると、SSO を設定した Bonusly に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

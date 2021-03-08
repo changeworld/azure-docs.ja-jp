@@ -1,18 +1,15 @@
 ---
 title: HDInsight の Apache Spark 上で Azure Machine Learning ワークロードを実行する
 description: Azure HDInsight の Apache Spark 上で 自動化された機械学習 (AutoML) を使用して Azure Machine Learning ワークロードを実行する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/13/2019
-ms.openlocfilehash: 6e472c65897fa57cdb1e0b09d94c62913e268040
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4087341a9a96ae56c00972f886ce3cc8891750a5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087472"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929727"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>HDInsight の Apache Spark 上で自動化された機械学習を使用して Azure Machine Learning ワークロードを実行する
 
@@ -24,7 +21,7 @@ Automated Machine Learning の一般的なチュートリアルについては�
 すべての新しい HDInsight Spark クラスターには、AzureML AutoML SDK がプレインストールされています。
 
 > [!Note]
-> Azure Machine Learning パッケージは、Python3 conda 環境にインストールされます。 インストールされた Jupyter ノートブックは PySpark3 カーネルを使用して実行する必要があります。
+> Azure Machine Learning パッケージは、Python3 conda 環境にインストールされます。 インストールされた Jupyter Notebook は PySpark3 カーネルを使用して実行する必要があります。
 
 Zeppelin ノートブックを使用して、AutoML を使用することもできます。
 
@@ -35,7 +32,7 @@ Zeppelin ノートブックを使用して、AutoML を使用することもで�
 
 ワークスペースの作成と実験の送信を行うには、認証トークンが必要です。 このトークンは、[Azure AD アプリケーション](../../active-directory/develop/app-objects-and-service-principals.md)を使用して生成できます。 アカウントで多要素認証が有効になっていない場合は、必要な認証トークンを [Azure AD ユーザー](/azure/python/python-sdk-azure-authenticate)を使用して生成することもできます。  
 
-次のコード スニペットでは、**Azure AD アプリケーション**を使用して、認証トークンが作成されます。
+次のコード スニペットでは、**Azure AD アプリケーション** を使用して、認証トークンが作成されます。
 
 ```python
 from azureml.core.authentication import ServicePrincipalAuthentication
@@ -46,7 +43,7 @@ auth_sp = ServicePrincipalAuthentication(
 )
 ```
 
-次のコード スニペットでは、**Azure AD ユーザー**を使用して、認証トークンが作成されます。
+次のコード スニペットでは、**Azure AD ユーザー** を使用して、認証トークンが作成されます。
 
 ```python
 from azure.common.credentials import UserPassCredentials
@@ -55,7 +52,7 @@ credentials = UserPassCredentials('user@domain.com', 'my_smart_password')
 
 ## <a name="loading-dataset"></a>データセットの読み込み
 
-Spark での自動化された機械学習では、データに対して遅延評価される不変の操作である**データフロー**が使用されます。  データフローでは、パブリックな読み取りアクセスを使用して BLOB から、または SAS トークンを使用して BLOB URL からデータセットを読み込むことができます。
+Spark での自動化された機械学習では、データに対して遅延評価される不変の操作である **データフロー** が使用されます。  データフローでは、パブリックな読み取りアクセスを使用して BLOB から、または SAS トークンを使用して BLOB URL からデータセットを読み込むことができます。
 
 ```python
 import azureml.dataprep as dprep

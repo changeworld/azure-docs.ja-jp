@@ -7,24 +7,24 @@ ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein, carlrab
+ms.topic: how-to
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 08/14/2019
-ms.openlocfilehash: 6c85fce45bcfa63d921297b068066b8f6e814223
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 09bb7cb2344e3e708a64842916e6e483136da3bb
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987132"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594285"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL Database のフェールオーバー グループを構成する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 このトピックでは、Azure SQL Database と Azure SQL Managed Instance の[自動フェールオーバー グループ](auto-failover-group-overview.md)を構成する方法について説明します。
 
-## <a name="single-database-in-azure-sql-database"></a>Azure SQL Database 内の単一データベース
+## <a name="single-database"></a>単一データベース
 
 Azure portal または PowerShell を使用して、フェールオーバー グループを作成し、そのグループに単一データベースを追加します。
 
@@ -192,7 +192,7 @@ PowerShell を使用してフェールオーバー グループのフェール�
 > [!IMPORTANT]
 > セカンダリ データベースを削除する必要がある場合は、削除する前にそれをフェールオーバー グループから削除します。 セカンダリ データベースをフェールオーバー グループから削除する前に削除すると、予期しない動作が発生する可能性があります。
 
-## <a name="elastic-pools-in-azure-sql-database"></a>Azure SQL Database 内のエラスティック プール
+## <a name="elastic-pool"></a>エラスティック プール
 
 Azure portal または PowerShell を使用して、フェールオーバー グループを作成し、そのグループにエラスティック プールを追加します。  
 
@@ -346,7 +346,9 @@ PowerShell を使用してフェールオーバー グループのフェール�
 
 Azure portal または PowerShell を使用して、Azure SQL Managed Instance 内の 2 つのマネージド インスタンス間にフェールオーバー グループを作成します。
 
-[ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) を構成するか、あるいは、各 SQL Managed Instance の仮想ネットワーク用のゲートウェイを作成し、2 つのゲートウェイを接続して、フェールオーバー グループを作成する必要があります。
+[ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) を構成するか、あるいは、各 SQL Managed Instance の仮想ネットワーク用のゲートウェイを作成し、2 つのゲートウェイを接続して、フェールオーバー グループを作成する必要があります。 
+
+パフォーマンス上の理由により、両方のマネージド インスタンスを、[ペアになっているリージョン](../../best-practices-availability-paired-regions.md)にデプロイします。 geo のペアになっているリージョンに存在するマネージド インスタンスは、ペアになっていないリージョンと比較すると、パフォーマンスがはるかに優れています。 
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -361,16 +363,19 @@ Azure portal または PowerShell を使用して、Azure SQL Managed Instance �
 
 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) を構成していない場合は、Azure portal または PowerShell を使用して、プライマリ仮想ネットワーク ゲートウェイを作成できます。
 
+> [!NOTE]
+> ゲートウェイの SKU は、スループットのパフォーマンスに影響を与えます。 この記事では、最も基本的な SKU (`HwGw1`) を使用して、ゲートウェイをデプロイします。 上位の SKU (`VpnGw3` など) をデプロイして、より高いスループットを実現します。 使用可能なすべてのオプションについては、[ゲートウェイ SKU](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) に関する記事を参照してください。 
+
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用して、プライマリ仮想ネットワーク ゲートウェイを作成します。
 
-1. [Azure portal](https://portal.azure.com) で、リソース グループに移動し、プライマリ マネージド インスタンスの**仮想ネットワーク** リソースを選択します。
-1. **[設定]** で **[サブネット]** を選び、新しい**ゲートウェイ サブネット**を追加することを選択します。 既定値のままにします。
+1. [Azure portal](https://portal.azure.com) で、リソース グループに移動し、プライマリ マネージド インスタンスの **仮想ネットワーク** リソースを選択します。
+1. **[設定]** で **[サブネット]** を選び、新しい **ゲートウェイ サブネット** を追加することを選択します。 既定値のままにします。
 
    ![プライマリ マネージド インスタンスのゲートウェイを追加する](./media/auto-failover-group-configure/add-subnet-gateway-primary-vnet.png)
 
-1. サブネット ゲートウェイが作成されたら、左側のナビゲーション ウィンドウで **[リソースの作成]** を選択し、検索ボックスに「`Virtual network gateway`」と入力します。 **Microsoft** によって公開された**仮想ネットワーク ゲートウェイ** リソースを選択します。
+1. サブネット ゲートウェイが作成されたら、左側のナビゲーション ウィンドウで **[リソースの作成]** を選択し、検索ボックスに「`Virtual network gateway`」と入力します。 **Microsoft** によって公開された **仮想ネットワーク ゲートウェイ** リソースを選択します。
 
    ![新しい仮想ネットワーク ゲートウェイを作成する](./media/auto-failover-group-configure/create-virtual-network-gateway.png)
 
@@ -502,7 +507,7 @@ Azure portal または PowerShell を使用して、2 つのゲートウェイ�
 Azure portal を使用して、2 つのゲートウェイ間の接続を作成します。
 
 1. [Azure portal](https://portal.azure.com) から **[リソースの作成]** を選択します。
-1. 検索ボックスに「`connection`」と入力し、Enter キーを押して検索します。それにより、Microsoft によって発行された**接続**リソースに移動します。
+1. 検索ボックスに「`connection`」と入力し、Enter キーを押して検索します。それにより、Microsoft によって発行された **接続** リソースに移動します。
 1. **[作成]** を選択して接続を作成します。
 1. **[基本]** タブで次の値を選択し、 **[OK]** を選択します。
     1. **[接続の種類]** に対して `VNet-to-VNet` を選択します。
@@ -514,7 +519,7 @@ Azure portal を使用して、2 つのゲートウェイ間の接続を作成�
     1. **[2 番目の仮想ネットワーク ゲートウェイ]** のセカンダリ ネットワーク ゲートウェイを選択します (`Secondary-Gateway` など)。
     1. **[双方向接続の確立]** の横にあるチェック ボックスをオンにします。
     1. 既定のプライマリ接続名をそのまま使用するか、名前を任意の値に変更します。
-    1. 接続の**共有キー (PSK)** を指定します (`mi1m2psk` など)。
+    1. 接続の **共有キー (PSK)** を指定します (`mi1m2psk` など)。
 
    ![ゲートウェイ接続を作成する](./media/auto-failover-group-configure/create-gateway-connection.png)
 
@@ -660,7 +665,7 @@ Private Link を使用すると、論理サーバーを、仮想ネットワー�
 
 フェールオーバー グループで Private Link を使用するには、次の手順を実行します。
 
-1. プライマリ サーバーとセカンダリ サーバーが、[ペアになっているリージョン](/azure/best-practices-availability-paired-regions)内にあることを確認します。 
+1. プライマリ サーバーとセカンダリ サーバーが、[ペアになっているリージョン](../../best-practices-availability-paired-regions.md)内にあることを確認します。 
 1. 各リージョンに仮想ネットワークとサブネットを作成して、プライマリ サーバーとセカンダリ サーバーのプライベート エンドポイントをホストします。これにより、重複しない IP アドレス空間が存在するようになります。 たとえば、10.0.0.0/16 のプライマリ仮想ネットワーク アドレス範囲と、10.0.0.1/16 のセカンダリ仮想ネットワーク アドレス範囲は重複しています。 仮想ネットワーク アドレス範囲の詳細については、[Azure 仮想ネットワークの設計](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/)に関するブログを参照してください。
 1. [プライマリ サーバーのプライベート エンドポイントと Azure プライベート DNS ゾーン](../../private-link/create-private-endpoint-portal.md#create-a-private-endpoint)を作成します。 
 1. セカンダリ サーバーのプライベート エンドポイントも作成しますが、今回は、プライマリ サーバー用に作成されたプライベート DNS ゾーンと同じものを再利用することを選択します。 

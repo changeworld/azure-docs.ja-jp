@@ -4,12 +4,12 @@ description: Azure Site Recovery サービスの概要を説明し、ディザ�
 ms.topic: overview
 ms.date: 03/17/2020
 ms.custom: MVC
-ms.openlocfilehash: 2b8268a47a141bb7254571a762bb9603e1a31b04
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 19860e64182cd73fe9f9fa1246f440a03109d465
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135222"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281871"
 ---
 # <a name="about-site-recovery"></a>Site Recovery について
 
@@ -50,7 +50,7 @@ Site Recovery で対応できるレプリケーションは次のとおりです
 **サポートされています** | **詳細**
 --- | ---
 **レプリケーション シナリオ** | Azure VM を 1 つの Azure リージョンから別のリージョンにレプリケートします。<br/><br/>  オンプレミスの VMware VM、Hyper-V VM、物理サーバー (Windows および Linux)、Azure Stack VM を Azure にレプリケートします。<br/><br/> AWS Windows インスタンスを Azure にレプリケートします。<br/><br/> オンプレミスの VMware VM、System Center VMM で管理されている HYPER-V VM、および物理サーバーを、セカンダリ サイトにレプリケートします。
-**リージョン** | Site Recovery の[サポートされているリージョン](https://azure.microsoft.com/regions/services/)を確認してください。 |
+**リージョン** | Site Recovery の[サポートされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=site-recovery)を確認してください。 |
 **レプリケートされたマシン** | [Azure VM](azure-to-azure-support-matrix.md#replicated-machine-operating-systems) レプリケーション、[オンプレミスの VMware VM と物理サーバー](vmware-physical-azure-support-matrix.md#replicated-machines)、および[オンプレミスの Hyper-V VM](hyper-v-azure-support-matrix.md#replicated-vms) のレプリケーション要件を確認してください。
 **ワークロード** | レプリケーションがサポートされているマシンで実行されている任意のワークロードをレプリケートできます。 そして、Site Recovery チームでは、[多数のアプリ](site-recovery-workload.md#workload-summary)に対してアプリ固有のテストを行っています。
 

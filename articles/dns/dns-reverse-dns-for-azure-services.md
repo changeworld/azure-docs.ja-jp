@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: 15396467e92b3e035add03d0d29888558571aa2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c72e17e601ebf87b0f344a4723159ae22abc81d1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711240"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919886"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Azure でホストされているサービスの逆引き DNS を構成する
 
@@ -33,7 +33,7 @@ Azure のサービスは、Azure によって割り当てられて、Microsoft �
 Azure DNS では、コンピューティング リソース (仮想マシン、仮想マシンのスケール セット、Service Fabric クラスターなど) は、PublicIpAddress リソースによって公開されます。 逆引き DNS 参照は、PublicIpAddress の "ReverseFqdn" プロパティを使って構成します。
 
 
-現在、Azure App Service については逆引き DNS はサポートされていません。
+現在、Azure App Service と Application Gateway については逆引き DNS はサポートされていません。
 
 ## <a name="validation-of-reverse-dns-records"></a>逆引き DNS レコードの検証
 
@@ -247,11 +247,10 @@ FQDN は順方向で指定します。末尾にはドットを指定する必要
 
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Azure コンピューティング サービスから外部ドメインに電子メールを送信できますか?
 
-Azure のデプロイから電子メールを直接送信する技術的能力は、サブスクリプションの種類によって異なります。 Microsoft では、サブスクリプションの種類に関係なく、信頼できるメール リレー サービスを使用して発信メールを送信することをお勧めしています。 詳細については、「[Enhanced Azure Security for sending Emails – November 2017 Update](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/)」 (電子メールを送信するための Azure セキュリティの強化 - 2017 年 11 月更新) を参照してください。
+Azure のデプロイから電子メールを直接送信する技術的能力は、サブスクリプションの種類によって異なります。 Microsoft では、サブスクリプションの種類に関係なく、信頼できるメール リレー サービスを使用して発信メールを送信することをお勧めしています。 詳細については、「[Enhanced Azure Security for sending Emails – November 2017 Update](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)」 (電子メールを送信するための Azure セキュリティの強化 - 2017 年 11 月更新) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 逆引き DNS について詳しくは、[Wikipedia の逆引き DNS 参照](https://en.wikipedia.org/wiki/Reverse_DNS_lookup)をご覧ください。
 <br>
 [Azure DNS で ISP によって割り当てられた IP アドレス範囲の逆引き参照ゾーンをホストする](dns-reverse-dns-for-azure-services.md)方法を学習してください。
-

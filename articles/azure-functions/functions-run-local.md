@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 8dfc1471955a6d10199a078922151ff3aeda4294
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3ddd84f2f73546b42a3925802b3357df16485488
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929493"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521443"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -41,7 +41,7 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 
 ## <a name="prerequisites"></a>前提条件
 
-現在、Azure Functions Core Tools では、Azure CLI に依存して Azure アカウントでの認証を行っています。 つまり、Azure Functions Core Tools から [Azure に発行](#publish)できるようにするには、[Azure CLI をローカルにインストール](/cli/azure/install-azure-cli)する必要があります。 
+現在、Azure Functions Core Tools では、[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/install-az-ps) に依存して Azure アカウントでの認証を行っています。 つまり、Azure Functions Core Tools から [Azure に発行](#publish)できるようにするには、このいずれかのツールをインストールする必要があります。 
 
 ## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools のインストール
 
@@ -155,7 +155,7 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 
 ## <a name="create-a-local-functions-project"></a>ローカル関数プロジェクトを作成する
 
-関数プロジェクト ディレクトリには、[host.json](functions-host-json.md) ファイル、[local.settings.json](#local-settings-file) ファイル、および個々の関数のコードを含むサブフォルダーが含まれています。 このディレクトリは、Azure の関数アプリに相当します。 Functions のフォルダー構造の詳細については、[Azure Functions の開発者向けガイド](functions-reference.md#folder-structure)を参照してください。
+Functions プロジェクト ディレクトリには、[host.json](functions-host-json.md) および [local.settings.json](#local-settings-file) ファイル、および個々の関数のコードを含むサブフォルダーが含まれています。 このディレクトリは、Azure の関数アプリに相当します。 Functions のフォルダー構造の詳細については、[Azure Functions の開発者向けガイド](functions-reference.md#folder-structure)を参照してください。
 
 バージョン 3.x/2.x では、プロジェクトの初期化時に既定の言語を選択する必要があります。 バージョン 3.x/2.x では、追加されたすべての関数に既定の言語テンプレートが使用されます。 バージョン 1.x では、関数を作成するたびに言語を指定します。
 
@@ -166,7 +166,7 @@ func init MyFunctionProj
 ```
 
 >[!IMPORTANT]
-> Java では、HTTP でトリガーされる最初の関数と共に、Maven アーキタイプを使用してローカル関数プロジェクトを作成します。 次のコマンドを使用して、Java プロジェクト `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` を作成します。 Maven アーキタイプの使用例については、[コマンド ラインのクイックスタート](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)に関する記事を参照してください。  
+> Java では、HTTP でトリガーされる最初の関数と共に、Maven アーキタイプを使用してローカル関数プロジェクトを作成します。 次のコマンドを使用して、Java プロジェクト `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` を作成します。 Maven アーキタイプの使用例については、[コマンド ラインのクイックスタート](./create-first-function-cli-java.md)に関する記事を参照してください。  
 
 プロジェクト名を指定すると、その名前の新しいフォルダーの作成と初期化が実行されます。 それ以外の場合は、現在のフォルダーが初期化されます。  
 バージョン 3.x/2.x では、コマンドを実行するときにプロジェクトのランタイムを選択する必要があります。 
@@ -179,7 +179,7 @@ python
 powershell
 </pre>
 
-上/下方向キーを使用して言語を選択し、Enter キーを押します。 JavaScript または TypeScript 関数の開発を計画している場合は、**ノード**を選択し、言語を選択します。 TypeScript には[いくつかの追加要件](functions-reference-node.md#typescript)があります。 
+上/下方向キーを使用して言語を選択し、Enter キーを押します。 JavaScript または TypeScript 関数の開発を計画している場合は、**ノード** を選択し、言語を選択します。 TypeScript には[いくつかの追加要件](functions-reference-node.md#typescript)があります。 
 
 出力は、次の JavaScript プロジェクトの例のようになります。
 
@@ -357,7 +357,7 @@ func start
 ```
 func start
 ```
-このコマンドは[仮想環境で実行する](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#create-venv)必要があります。
+このコマンドは[仮想環境で実行する](./create-first-function-cli-python.md)必要があります。
 
 # <a name="typescript"></a>[TypeScript](#tab/ts)
 
@@ -409,7 +409,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 関数をローカルでテストするには、[Functions ホストを起動](#start)し、HTTP 要求を使用してローカル サーバーでエンドポイントを呼び出します。 呼び出すエンドポイントは、関数の種類によって異なります。
 
 >[!NOTE]
-> このトピックの例では、cURL ツールを使用して端末またはコマンド プロンプトから HTTP 要求を送信します。 お好みのツールを使用して HTTP 要求をローカル サーバーに送信できます。 Linux ベースのシステムと Windows 10 ビルド 17063 以降では既定で cURL ツールを使用できます。 以前の Windows では、最初に [cURL ツール](https://curl.haxx.se/)をダウンロードし、インストールする必要があります。
+> このトピックの例では、cURL ツールを使用してターミナルまたはコマンド プロンプトから HTTP 要求を送信します。 お好みのツールを使用して HTTP 要求をローカル サーバーに送信できます。 Linux ベースのシステムと Windows 10 ビルド 17063 以降では既定で cURL ツールを使用できます。 以前の Windows では、最初に [cURL ツール](https://curl.haxx.se/)をダウンロードし、インストールする必要があります。
 
 関数のテストの全般的な情報については、「[Azure Functions のコードをテストするための戦略](functions-test-a-function.md)」を参照してください。
 
@@ -505,7 +505,7 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 Azure Functions Core Tools でサポートされている 2 種類のデプロイは、[Zip デプロイ](functions-deployment-technologies.md#zip-deploy)による関数アプリへの関数プロジェクト ファイルの直接的なデプロイと、[カスタム Docker コンテナーのデプロイ](functions-deployment-technologies.md#docker-container)です。 コードをデプロイする [Azure サブスクリプションで関数アプリを作成しておく](functions-cli-samples.md#create)必要があります。 コンパイルを必要とするプロジェクトは、バイナリをデプロイできるように、ビルドする必要があります。
 
 >[!IMPORTANT]
->Core Tools から Azure に発行できるようにするには、[Azure CLI](/cli/azure/install-azure-cli) がローカルにインストールされている必要があります。  
+>Core Tools から Azure に発行できるようにするには、[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/install-az-ps) がローカルにインストールされている必要があります。  
 
 プロジェクト フォルダーには、発行するべきではない言語固有のファイルやディレクトリが含まれている場合があります。 除外された項目は、ルート プロジェクト フォルダーの .funcignore ファイルにリストされます。     
 
@@ -520,7 +520,7 @@ func azure functionapp publish <FunctionAppName>
 >[!IMPORTANT]
 > Java では、Maven を使用して、ローカル プロジェクトが Azure に発行されます。 コマンド `mvn azure-functions:deploy` を実行して、Azure に発行します。 Azure リソースは、初期デプロイ中に作成されます。
 
-このコマンドにより、Azure の既存の関数アプリに公開されます。 サブスクリプションに存在しない `<FunctionAppName>` に発行しようとすると、エラーが表示されます。 Azure CLI を使用してコマンド プロンプトまたはターミナル ウィンドウから関数アプリを作成する方法については、「[サーバーレス実行用の Function App を作成する](./scripts/functions-cli-create-serverless.md)」を参照してください。 既定では、このコマンドでは[リモート ビルド](functions-deployment-technologies.md#remote-build)が使用され、アプリがデプロイされて、[デプロイ パッケージから実行](run-functions-from-deployment-package.md)されます。 この推奨されるデプロイ モードを無効にするには、`--nozip` オプションを使用します。
+このコマンドにより、Azure の既存の関数アプリに公開されます。 サブスクリプションに存在しない `<FunctionAppName>` に発行しようとすると、エラーが表示されます。 Azure CLI または Azure PowerShell を使用してコマンド プロンプトまたはターミナル ウィンドウから関数アプリを作成する方法については、「[サーバーレス実行用の Function App を作成する](./scripts/functions-cli-create-serverless.md)」を参照してください。 既定では、このコマンドでは[リモート ビルド](functions-deployment-technologies.md#remote-build)が使用され、アプリがデプロイされて、[デプロイ パッケージから実行](run-functions-from-deployment-package.md)されます。 この推奨されるデプロイ モードを無効にするには、`--nozip` オプションを使用します。
 
 >[!IMPORTANT]
 > Azure portal で関数アプリを作成すると、既定でバージョン 3.x の Function ランタイムが使用されます。 関数アプリにバージョン 1.x のランタイムを使用させるには、[バージョン 1.x での実行](functions-versions.md#creating-1x-apps)に関するページの説明に従ってください。
@@ -568,21 +568,17 @@ func deploy
 | **`--min`**  | 必要に応じて、デプロイする関数アプリ インスタンスの最小数を設定します。 |
 | **`--config`** | オプションのデプロイ構成ファイルを設定します。 |
 
-## <a name="monitoring-functions"></a>Functions の監視
+## <a name="monitoring-functions"></a>関数の監視
 
 関数の実行を監視するための推奨される方法は、Azure Application Insights との統合です。 また、ローカル コンピューターに実行ログをストリーミングすることもできます。 詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
 
 ### <a name="application-insights-integration"></a>Application Insights の統合
 
-Azure で関数アプリを作成するときに Application Insights の統合を有効にする必要があります。 何らかの理由で関数アプリが Application Insights インスタンスに接続されていない場合は、Azure portal でこの統合を簡単に行うことができます。 
-
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+Azure で関数アプリを作成するときに Application Insights の統合を有効にする必要があります。 何らかの理由で関数アプリが Application Insights インスタンスに接続されていない場合は、Azure portal でこの統合を簡単に行うことができます。 詳細については、「[Application Insights との統合を有効にする](configure-monitoring.md#enable-application-insights-integration)」を参照してください。
 
 ### <a name="enable-streaming-logs"></a>ストリーミング ログを有効にする
 
 関数によって生成されているログ ファイルのストリームは、ローカル コンピューター上のコマンド ライン セッションで表示できます。 
-
-#### <a name="native-streaming-logs"></a>ネイティブ ストリーミング ログ
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 

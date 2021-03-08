@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 02/16/2017
-ms.openlocfilehash: dcf782a41dbb09135f7a4cd767a94ff90578b6ba
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 6a637dc431b0f9cd8c40cfa1c048559a56a6b97f
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169363"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518058"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
 
@@ -49,7 +49,7 @@ Threat Modeling Tool は、Microsoft セキュリティ開発ライフサイク�
 
 今日の脅威モデリングにも関連する以前の記事:
 
-* [脅威モデリングの重要性に関する記事](https://docs.microsoft.com/archive/msdn-magazine/2009/january/security-briefs-getting-started-with-the-sdl-threat-modeling-tool)
+* [脅威モデリングの重要性に関する記事](/archive/msdn-magazine/2009/january/security-briefs-getting-started-with-the-sdl-threat-modeling-tool)
 * [Trustworthy Computing (信頼できるコンピューティング) 発行のトレーニング](https://www.microsoft.com/download/details.aspx?id=16420)
 
 Threat Modeling Tool の専門家による記事:

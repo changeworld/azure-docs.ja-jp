@@ -6,18 +6,20 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: e2651afbcdc3bae71bb531aa0e821f83264c295d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 2482a26987ec142880acc51bf470d844655b6e3f
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212588"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763517"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Functions における SignalR Service のトリガー バインド
 
 *SignalR* トリガー バインドを使用して、Azure SignalR Service から送信されたメッセージに応答します。 関数がトリガーされると、関数に渡されるメッセージは JSON オブジェクトとして解析されます。
 
-セットアップと構成の詳細については、[概要](functions-bindings-signalr-service.md)に関するページをご覧ください。
+SignalR Service サーバーレス モードでは、SignalR Service は[アップストリーム](../azure-signalr/concept-upstream.md)機能を使用して、クライアントから関数アプリにメッセージを送信します。 また関数アプリでは、SignalR Service トリガー バインドを使用してこれらのメッセージを処理します。 一般的なアーキテクチャを次に示します。:::image type="content" source="media/functions-bindings-signalr-service/signalr-trigger.png" alt-text="SignalR トリガーのアーキテクチャ":::
+
+セットアップと構成の詳細については、[概要](functions-bindings-signalr-service.md)に関する記事を参照してください。
 
 ## <a name="example"></a>例
 
@@ -175,7 +177,7 @@ def main(invocation) -> None:
 |**direction**| 該当なし | `in` に設定する必要があります。|
 |**name**| 該当なし | トリガー呼び出しコンテキスト オブジェクトの関数コードで使用される変数名。 |
 |**hubName**|**HubName**| この値は、トリガーされる関数の SignalR ハブの名前に設定する必要があります。|
-|**category**|**カテゴリ**| この値は、トリガーされる関数のメッセージのカテゴリとして設定する必要があります。 カテゴリには次のいずれかの値を指定することができます。 <ul><li>**connections**:*connected* および *disconnected* イベントを含む</li><li>**messages**:*connections* カテゴリ以外の他のすべてのイベントを含む</li></ul> |
+|**category**|**Category**| この値は、トリガーされる関数のメッセージのCategoryとして設定する必要があります。 カテゴリには次のいずれかの値を指定することができます。 <ul><li>**connections**:*connected* および *disconnected* イベントを含む</li><li>**messages**:*connections* カテゴリ以外の他のすべてのイベントを含む</li></ul> |
 |**event**|**Event**| この値は、トリガーされる関数のメッセージのイベントとして設定する必要があります。 *messages* カテゴリの場合、イベントは「[呼び出しメッセージ](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)」でクライアントが送信する *target* です。 *connections* カテゴリの場合、*connected* および *disconnected* のみが使用されます。 |
 |**parameterNames**|**ParameterNames**| (省略可能) パラメーターにバインドする名前のリスト。 |
 |**connectionStringSetting**|**ConnectionStringSetting**| SignalR Service 接続文字列を含むアプリ設定の名前 (既定値は "AzureSignalRConnectionString") |
@@ -190,49 +192,64 @@ InvocationContext には、SignalR サービスから送信されるメッセー
 
 |InvocationContext のプロパティ | 説明|
 |------------------------------|------------|
-|引数| *messages* カテゴリで使用可能。 「[呼び出しメッセージ](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)」の *arguments* が格納されています|
-|エラー| *disconnected* イベントで使用可能。 接続がエラーなしで閉じられた場合、またはエラー メッセージが含まれている場合は、空になる場合があります。|
-|ハブ| メッセージが属しているハブの名前。|
+|Arguments| *messages* カテゴリで使用可能。 「[呼び出しメッセージ](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)」の *arguments* が格納されています|
+|Error| *disconnected* イベントで使用可能。 接続がエラーなしで閉じられた場合、またはエラー メッセージが含まれている場合は、空になる場合があります。|
+|Hub| メッセージが属しているハブの名前。|
 |カテゴリ| メッセージのカテゴリ。|
 |Event| メッセージのイベント。|
 |ConnectionId| メッセージを送信するクライアントの接続 ID。|
 |UserId| メッセージを送信するクライアントのユーザー ID。|
-|ヘッダー| 要求のヘッダー。|
-|クエリ| クライアントがサービスに接続するときの要求のクエリ。|
+|Headers| 要求のヘッダー。|
+|Query| クライアントがサービスに接続するときの要求のクエリ。|
 |Claims| クライアントのクレーム。|
 
 ## <a name="using-parameternames"></a>`ParameterNames` の使用
 
-`SignalRTrigger` のプロパティ `ParameterNames` を使用すると、呼び出しメッセージの引数を関数のパラメーターにバインドできます。 これにより、`InvocationContext` の引数へのアクセスがより便利になります。
+`SignalRTrigger` のプロパティ `ParameterNames` を使用すると、呼び出しメッセージの引数を関数のパラメーターにバインドできます。 定義した名前は、他のバインドの[バインド式](../azure-functions/functions-bindings-expressions-patterns.md)の一部として、またはコードのパラメーターとして使用できます。 これにより、`InvocationContext` の引数へのアクセスがより便利になります。
 
-たとえば、JavaScript SignalR クライアントが 2 つの引数を使用して Azure 関数でメソッド `broadcast` を呼び出そうとしているとします。
+たとえば、JavaScript SignalR クライアントが 2 つの引数 (`message1`、`message2`) を使用して Azure 関数でメソッド `broadcast` を呼び出そうとしているとします。
 
 ```javascript
 await connection.invoke("broadcast", message1, message2);
 ```
 
-パラメーターからこれらの 2 つの引数にアクセスし、`ParameterNames` を使用してパラメーターの型を割り当てることができます。
+`parameterNames` を設定すると、定義した名前が、クライアント側で送信される引数それぞれに対応します。 
+
+```cs
+[SignalRTrigger(parameterNames: new string[] {"arg1, arg2"})]
+```
+
+この場合、`arg1` に `message1` のコンテンツが含まれ、`arg2` に `message2` のコンテンツが含まれます。
+
 
 ### <a name="remarks"></a>解説
 
 パラメーター バインドの場合、順序は重要です。 `ParameterNames` を使用している場合、`ParameterNames` の順序は、クライアントで呼び出した引数の順序と一致します。 C# で属性 `[SignalRParameter]` を使用している場合、Azure 関数メソッドの引数の順序は、クライアントの引数の順序と一致します。
 
-`ParameterNames` および属性 `[SignalRParameter]` を同時に使用することは**できません**。使用すると、例外が発生します。
+`ParameterNames` および属性 `[SignalRParameter]` を同時に使用することは **できません**。使用すると、例外が発生します。
 
-## <a name="send-messages-to-signalr-service-trigger-binding"></a>SignalR Service トリガー バインドへのメッセージの送信
+## <a name="signalr-service-integration"></a>SignalR Service の統合
 
-Azure Function は、次のようなフォーマットの SignalR Service トリガー バインドの URL を生成します。
+SignalR Service トリガー バインドを使用している場合、SignalR サービスには関数アプリにアクセスするための URL が必要です。 URL は、SignalR Service 側の **アップストリームの設定** で構成する必要があります。 
+
+:::image type="content" source="../azure-signalr/media/concept-upstream/upstream-portal.png" alt-text="アップストリーム ポータル":::
+
+SignalR Service トリガーを使用する場合、URL は単純で、次に示す形式にすることができます。
 
 ```http
-https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>
+<Function_App_URL>/runtime/webhooks/signalr?code=<API_KEY>
 ```
 
-`API_KEY` は、Azure 関数によって生成されます。 SignalR Service トリガー バインドを使用しているため、Azure portal から `API_KEY` を取得できます。
+`Function_App_URL` は関数アプリの [概要] ページで確認でき、`API_KEY` は Azure 関数によって生成されます。 関数アプリの **[アプリ キー]** ブレードで `signalr_extension` から `API_KEY` を取得できます。
 :::image type="content" source="media/functions-bindings-signalr-service/signalr-keys.png" alt-text="API キー":::
 
-この URL は、SignalR Service のアップストリーム設定にある `UrlTemplate` で設定する必要があります。
+1 つの SignalR サービスで複数の関数アプリを一緒に使用する場合は、アップストリームで複雑なルーティング規則をサポートすることもできます。 詳細については「[アップストリームの設定](../azure-signalr/concept-upstream.md)」をご覧ください。
+
+## <a name="step-by-step-sample"></a>ステップ バイ ステップ サンプル
+
+GitHub のサンプルに従って、SignalR Service トリガー バインドとアップストリーム機能を使用して関数アプリに関するチャット ルームをデプロイできます。[双方向チャット ルームのサンプル](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure SignalR Service を使用した Azure Functions の開発と構成](../azure-signalr/signalr-concept-serverless-development-config.md)
-* [SignalR Service トリガー バインドのサンプル](https://github.com/Azure/azure-functions-signalrservice-extension/tree/dev/samples/bidirectional-chat)
+* [SignalR Service トリガー バインドのサンプル](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)

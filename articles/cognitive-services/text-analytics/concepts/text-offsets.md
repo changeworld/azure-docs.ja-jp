@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: 14fd7c2b034077d818d1a1224d3c4c12a7fc07bc
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: f5b63503792b13e089568004ba67e5be8a3d0c7f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855640"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932376"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>Text Analytics API の出力でのテキスト オフセット
 
@@ -34,9 +34,9 @@ ms.locfileid: "88855640"
 
 ## <a name="extracting-substrings-from-text-with-offsets"></a>オフセットを使用したテキストからの部分文字列の抽出
 
-文字ベースの部分文字列メソッドを .NET [substring ()](https://docs.microsoft.com/dotnet/api/system.string.substring?view=netframework-4.8) メソッドなどで使用すると、オフセットによる問題が発生する可能性があります。 問題の 1 つとして、オフセットが原因で、部分文字列メソッドが複数文字の書記素エンコードの末尾ではなく途中で終了することがあります。
+文字ベースの部分文字列メソッドを .NET [substring ()](/dotnet/api/system.string.substring) メソッドなどで使用すると、オフセットによる問題が発生する可能性があります。 問題の 1 つとして、オフセットが原因で、部分文字列メソッドが複数文字の書記素エンコードの末尾ではなく途中で終了することがあります。
 
-.NET では、[StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) クラスを使用することを検討してください。これにより、個々の文字オブジェクトではなく、一連のテキスト要素として文字列を操作できます。 任意のソフトウェア環境で、書記素スプリッター ライブラリを検索することもできます。 
+.NET では、[StringInfo](/dotnet/api/system.globalization.stringinfo) クラスを使用することを検討してください。これにより、個々の文字オブジェクトではなく、一連のテキスト要素として文字列を操作できます。 任意のソフトウェア環境で、書記素スプリッター ライブラリを検索することもできます。 
 
 Text Analytics API では、便宜上、これらのテキスト要素も返されます。
 

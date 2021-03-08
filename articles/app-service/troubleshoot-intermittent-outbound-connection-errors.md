@@ -4,15 +4,15 @@ description: Azure App Service での断続的な接続エラーと、それに�
 author: v-miegge
 manager: barbkess
 ms.topic: troubleshooting
-ms.date: 07/24/2020
+ms.date: 11/19/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: 467f7b3525883e16e57a06ff97cf4fd386279d22
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 989f47c0ff60865a8e8be15e089cdcf96ab2550c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958237"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968300"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Azure App Service での断続的な送信接続エラーのトラブルシューティング
 
@@ -29,20 +29,31 @@ Azure アプリ サービスでホストされているアプリケーション�
 
 ## <a name="cause"></a>原因
 
-これらの現象の主な原因は、次のいずれかの制限に達したため、アプリケーション インスタンスが外部エンドポイントへの新しい接続を開けないことです。
+接続が途切れる問題の主な原因は、新しい送信接続を作成している間に制限に達していることです。 以下のような制限に、到達している可能性があります。
 
-* TCP 接続: 作成できる送信接続の数には制限があります。 これは、使用されるワーカーのサイズに関連付けられています。
-* SNAT ポート: [Azure の送信接続](../load-balancer/load-balancer-outbound-connections.md)に関するページで説明しているように、Azure では、ソース ネットワーク アドレス変換 (SNAT) と Load Balancer (お客様には公開していません) を使用して、パブリック IP アドレス空間内で Azure の外側にあるエンドポイントと通信します。 Azure アプリ サービスの各インスタンスには、当初、**128** 個の SNAT ポートが事前に割り当てられています。 この制限は、同じホストとポートの組み合わせへの接続を開くことに影響します。 アドレスとポートのさまざまな組み合わせへの接続をアプリが作成する場合、SNAT ポートを使い果たすことはありません。 SNAT ポートが使い果たされるのは、同じアドレスとポートの組み合わせへの呼び出しを繰り返したときです。 解放されたポートは必要に応じて再利用できます。 Azure ネットワーク ロード バランサーは、4 分間待機した後でないと、閉じられた接続の SNAT ポートを回収しません。
+* TCP 接続: 作成できる送信接続の数には制限があります。 送信接続の制限は、使用されるワーカーのサイズに関連付けられています。
+* SNAT ポート: [Azure の送信接続](../load-balancer/load-balancer-outbound-connections.md)に関する記事では、SNAT ポートの制限と、送信接続への影響について説明します。 Azure では、送信元ネットワーク アドレス変換 (SNAT) とロード バランサー (顧客に公開されません) を使用して、パブリック IP アドレスと通信します。 Azure アプリ サービスの各インスタンスには、当初、**128** 個の SNAT ポートが事前に割り当てられています。 この SNAT ポートの制限は、同じアドレスとポートの組み合わせへの接続を開くことに影響します。 アドレスとポートのさまざまな組み合わせへの接続をアプリが作成する場合、SNAT ポートを使い果たすことはありません。 SNAT ポートが使い果たされるのは、同じアドレスとポートの組み合わせへの呼び出しを繰り返したときです。 解放されたポートは必要に応じて再利用できます。 Azure ネットワーク ロード バランサーは、4 分間待機した後でないと、閉じられた接続の SNAT ポートを回収しません。
 
-アプリケーションまたは関数で新しい接続を開くペースが速いと、128 ポートの事前割り当てクォータがすぐに枯渇する可能性があります。 その場合、追加の SNAT ポートを動的に割り当てるか、回収した SNAT ポートを再利用することで新しい SNAT ポートが利用可能になるまで、アプリケーションまたは関数はブロックされます。 このように新しい接続を作成できないためにブロックされているアプリケーションまたは関数では、この記事の「**現象**」で説明している 1 つ以上の問題が発生し始めます。
+アプリケーションまたは関数で新しい接続を開くペースが速いと、128 ポートの事前割り当てクォータがすぐに枯渇する可能性があります。 その場合、追加の SNAT ポートを動的に割り当てるか、回収した SNAT ポートを再利用することで新しい SNAT ポートが利用可能になるまで、アプリケーションまたは関数はブロックされます。 アプリで SNAT ポートが不足している場合は、送信接続が途切れる問題が発生します。 
 
 ## <a name="avoiding-the-problem"></a>問題の回避
 
+SNAT ポートの制限を回避するための解決策は、いくつかあります。 具体的な内容を次に示します。
+
+* 接続プール: 接続をプールすることで、同じアドレスとポートへの呼び出しに対して、新しいネットワーク接続を開かないようにすることができます。
+* サービス エンドポイント: サービス エンドポイントで保護されているサービスには SNAT ポートの制限がありません。
+* プライベート エンドポイント: プライベート エンドポイントで保護されているサービスには SNAT ポートの制限がありません。
+* NAT Gateway: NAT Gateway では、これを介してトラフィックを送信するリソースが使用できる SNAT 送信ポートが 64000 個あります。
+
+SNAT ポートの問題を回避することは、同じホストとポートへの新しい接続を繰り返し作成しないことを意味します。 接続プールは、この問題を解決するための理解しやすい方法の 1 つです。
+
 サービス エンドポイントがサポートされる Azure サービスが宛先であれば、[リージョンの VNet 統合](./web-sites-integrate-with-vnet.md)とサービス エンドポイントまたはプライベート エンドポイントを利用し、SNAT ポート不足問題を回避できます。 リージョンの VNet 統合を使用しているとき、統合サブネットにサービス エンドポイントを配置する場合、アプリでそれらのサービスにトラフィックを送信するとき、送信 SNAT ポート制限が適用されません。 同様に、リージョンの VNet 統合とプライベート エンドポイントを使用する場合、その宛先には、送信 SNAT ポート問題が発生しません。 
 
-SNAT ポートの問題を回避することは、同じホストとポートへの新しい接続を繰り返し作成しないことを意味します。
+送信先が Azure 外部の外部エンドポイントである場合、NAT Gateway を使用すると、64000 個の送信 SNAT ポートが提供されます。 また、他のユーザーと共有しない専用の送信アドレスが提供されます。 
 
-SNAT ポートの枯渇を避けるための一般的な戦略については、**Azure の送信接続**に関するドキュメントの[問題解決セクション](../load-balancer/load-balancer-outbound-connections.md)で説明しています。 これらの戦略のうち、Azure アプリ サービスでホストされているアプリおよび関数に適用されるものは以下のとおりです。
+可能な場合は、接続プールを使用するようにコードを改良し、すべての状況を改善します。 必ずしも、この状況を軽減するのに十分な時間をかけてコードを変更できるとは限りません。 時間内にコードを変更できない場合は、他の解決策を利用してください。 問題を解決する最善策として、すべての解決策を可能な限り組み合わせることをお勧めします。 Azure サービスにはサービス エンドポイントとプライベート エンドポイントを、それ以外には NAT Gateway を使用してみてください。 
+
+SNAT ポートの枯渇を避けるための一般的な戦略については、**Azure の送信接続** に関するドキュメントの [問題解決セクション](../load-balancer/load-balancer-outbound-connections.md)で説明しています。 これらの戦略のうち、Azure アプリ サービスでホストされているアプリおよび関数に適用されるものは以下のとおりです。
 
 ### <a name="modify-the-application-to-use-connection-pooling"></a>接続プールを使用するようにアプリケーションを変更する
 
@@ -92,16 +103,6 @@ PHP では接続プールがサポートされていませんが、バックエ�
 * 他のデータ ソース
 
    * [PHP の接続管理](https://www.php.net/manual/en/pdo.connections.php)
-
-#### <a name="python"></a>Python
-
-* [MySQL](https://github.com/mysqljs/mysql#pooling-connections)
-* [MongoDB](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
-* [PostgreSQL](https://node-postgres.com/features/pooling)
-* [SQL Server](https://github.com/tediousjs/node-mssql#connection-pools) (注: MicrosoftSQL Server に加えて、他のデータベースでも SQLAlchemy を使用できます)
-* [HTTP キープアライブ](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive) (セッション [session-objects](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive) を使用する場合、キープアライブは自動です)。
-
-その他の環境については、アプリケーションに接続プールを実装するための、プロバイダーまたはドライバー固有のドキュメントを確認してください。
 
 ### <a name="modify-the-application-to-reuse-connections"></a>接続を再利用するようにアプリケーションを変更する
 

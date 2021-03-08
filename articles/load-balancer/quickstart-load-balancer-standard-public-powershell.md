@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 11/22/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 3589aeb21053525e481f3448270d236265dd698e
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 27a2b764ebf420c91c57c6f5f762f656b1040a91
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89052036"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594554"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して VM の負荷を分散するパブリック ロード バランサーを作成する
 
@@ -32,10 +32,6 @@ Azure PowerShell を使用してパブリック ロード バランサーと 3 �
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - ローカルにインストールされた Azure PowerShell または Azure Cloud Shell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 PowerShell をインストールしてローカルで使用する場合、この記事では Azure PowerShell モジュール バージョン 5.4.1 以降が必要になります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
@@ -44,15 +40,9 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 
 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して、次のようにリソース グループを作成します。
 
-* 名前は **myResourceGroupLB** にします。
-* 場所は **eastus** にします。
-
 ```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'MyResourceGroupLB'
-$loc = 'eastus'
+New-AzResourceGroup -Name 'CreatePubLBQS-rg' -Location 'eastus'
 
-New-AzResourceGroup -Name $rg -Location $loc
 ```
 ---
 
@@ -61,464 +51,280 @@ New-AzResourceGroup -Name $rg -Location $loc
 >[!NOTE]
 >運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。 SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
 
-## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
+:::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/resources-diagram.png" alt-text="クイックスタートで作成される標準的なロード バランサー リソース。" border="false":::
 
-インターネット上の Web アプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 
+## <a name="create-a-public-ip-address---standard"></a>パブリック IP アドレスを作成する - Standard
 
-[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、以下のことを行います。
-
-* **myPublicIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
-* **myResourceGroupLB** 内に作成します。
+パブリック IP アドレスを作成するには、[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用します。
 
 ```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'MyResourceGroupLB'
-$loc = 'eastus'
-$pubIP = 'myPublicIP'
-$sku = 'Standard'
-$all = 'static'
+$publicip = @{
+    Name = 'myPublicIP'
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Location = 'eastus'
+    Sku = 'Standard'
+    AllocationMethod = 'static'
+    Zone = 1,2,3
+}
+New-AzPublicIpAddress @publicip
 
-$publicIp = 
-New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $all -SKU $sku
 ```
 
 ゾーンのパブリック IP アドレスをゾーン 1 に作成するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'MyResourceGroupLB'
-$loc = 'eastus'
-$pubIP = 'myPublicIP'
-$sku = 'Standard'
-$all = 'static'
+$publicip = @{
+    Name = 'myPublicIP'
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Location = 'eastus'
+    Sku = 'Standard'
+    AllocationMethod = 'static'
+    Zone = 1
+}
+New-AzPublicIpAddress @publicip
 
-$publicIp = 
-New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $all -SKU $sku -zone 1
 ```
 
 ## <a name="create-standard-load-balancer"></a>Standard ロード バランサーを作成する
 
 このセクションでは、ロード バランサーの以下のコンポーネントを作成および構成する方法について説明します。
 
-  * ロード バランサーの着信ネットワーク トラフィックを受け取るフロントエンド IP プール。
-  * フロントエンド プールから負荷分散されたネットワーク トラフィックが送信されるバックエンド IP プール。
-  * バックエンド VM インスタンスの正常性を判断する正常性プローブ。
-  * VM に対するトラフィックの分散方法を定義するロード バランサー規則。
+* フロントエンド IP プールに対し、[New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) を使用して、次のようにフロントエンド IP を作成します。 ロード バランサーでは、この IP で受信トラフィックを受け取ります。
 
-### <a name="create-frontend-ip"></a>フロントエンド IP を作成する
+* ロード バランサーのフロントエンドから送信されるトラフィック用に、[New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) でバックエンド アドレス プールを作成します。 このプールが、バックエンド仮想マシンのデプロイ先となります。
 
-[New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) を使用して、次のようにフロントエンド IP を作成します。
+* バックエンド VM インスタンスの正常性を調べる正常性プローブを [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) で作成します。
 
-* 名前は **myFrontEnd** にします。
-* パブリック IP **myPublicIP** に接続します。
+* 複数の VM に対してどのようにトラフィックを分散させるかを定義するロード バランサー規則を [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) で作成します。
 
-```azurepowershell-interactive
-## Variables for the commands ##
-$fe = 'myFrontEnd'
-$rg = 'MyResourceGroupLB'
-$loc = 'eastus'
-$pubIP = 'myPublicIP'
+* [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) を使用して、次のようにパブリック ロード バランサーを作成します。
 
-$publicIp = 
-Get-AzPublicIpAddress -Name $pubIP -ResourceGroupName $rg
-
-$feip = 
-New-AzLoadBalancerFrontendIpConfig -Name $fe -PublicIpAddress $publicIp
-```
-
-### <a name="configure-back-end-address-pool"></a>バックエンド アドレス プールを構成する
-
-[New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) を使用して、次のようにバックエンド アドレス プールを作成します。 
-
-* 名前は **myBackEndPool** にします。
-* 残りの手順では、VM をこのバックエンド プールにアタッチします。
 
 ```azurepowershell-interactive
-## Variable for the command ##
-$be = 'myBackEndPool'
+## Place public IP created in previous steps into variable. ##
+$publicIp = Get-AzPublicIpAddress -Name 'myPublicIP' -ResourceGroupName 'CreatePubLBQS-rg'
 
-$bepool = 
-New-AzLoadBalancerBackendAddressPoolConfig -Name $be
+## Create load balancer frontend configuration and place in variable. ##
+$feip = New-AzLoadBalancerFrontendIpConfig -Name 'myFrontEnd' -PublicIpAddress $publicIp
+
+## Create backend address pool configuration and place in variable. ##
+$bepool = New-AzLoadBalancerBackendAddressPoolConfig -Name 'myBackEndPool'
+
+## Create the health probe and place in variable. ##
+$probe = @{
+    Name = 'myHealthProbe'
+    Protocol = 'http'
+    Port = '80'
+    IntervalInSeconds = '360'
+    ProbeCount = '5'
+    RequestPath = '/'
+}
+$healthprobe = New-AzLoadBalancerProbeConfig @probe
+
+## Create the load balancer rule and place in variable. ##
+$lbrule = @{
+    Name = 'myHTTPRule'
+    Protocol = 'tcp'
+    FrontendPort = '80'
+    BackendPort = '80'
+    IdleTimeoutInMinutes = '15'
+    FrontendIpConfiguration = $feip
+    BackendAddressPool = $bePool
+}
+$rule = New-AzLoadBalancerRuleConfig @lbrule -EnableTcpReset -DisableOutboundSNAT
+
+## Create the load balancer resource. ##
+$loadbalancer = @{
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Name = 'myLoadBalancer'
+    Location = 'eastus'
+    Sku = 'Standard'
+    FrontendIpConfiguration = $feip
+    BackendAddressPool = $bePool
+    LoadBalancingRule = $rule
+    Probe = $healthprobe
+}
+New-AzLoadBalancer @loadbalancer
+
 ```
 
-### <a name="create-the-health-probe"></a>正常性プローブを作成する
-
-正常性プローブは、すべての仮想マシン インスタンスを調べて、ネットワーク トラ	フィックを送信できるかどうかを確認します。 
-
-プローブ チェックが失敗した仮想マシンは、ロード バランサーから削除されます。 障害が解決されると、仮想マシンがロード バランサーに再び追加されます。
-
-[Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) を使用して、次のように正常性プローブを作成します。
-
-* 仮想マシンの正常性を監視します。
-* 名前は **myHealthProbe** にします。
-* プロトコルは **TCP** にします。
-* **ポート 80** を監視します。
-
-```azurepowershell-interactive
-## Variables for the command ##
-$hp = 'myHealthProbe'
-$pro = 'http'
-$port = '80'
-$int = '360'
-$cnt = '5'
-
-$probe = 
-New-AzLoadBalancerProbeConfig -Name $hp -Protocol $pro -Port $port -RequestPath / -IntervalInSeconds $int -ProbeCount $cnt
-```
-
-### <a name="create-the-load-balancer-rule"></a>ロード バランサー規則を作成する
-
-ロード バランサー規則は、以下のものを定義します。
-
-* 着信トラフィック用のフロントエンド IP 構成。
-* トラフィックを受信するためのバックエンド IP プール。
-* 必要な発信元ポートと宛先ポート。 
-
-[Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) を使用して、次のようにロード バランサー規則を作成します。 
-
-* 名前は **myHTTPRule** にします
-* フロントエンド プール **myFrontEnd** で**ポート 80** をリッスンします。
-* **ポート 80** を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール **myBackEndPool** に送信します。 
-* 正常性プローブ **myHealthProbe** を使用します。
-* プロトコルは **TCP** にします。
-
-```azurepowershell-interactive
-## Variables for the command ##
-$lbr = 'myHTTPRule'
-$pro = 'tcp'
-$port = '80'
-
-## $feip and $bePool are the variables from previous steps. ##
-
-$rule = 
-New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool -DisableOutboundSNAT
-```
-
-### <a name="create-load-balancer-resource"></a>ロード バランサーのリソースを作成する
-
-[New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) を使用して、次のようにパブリック ロード バランサーを作成します。
-
-* 名前は **myLoadBalancer** にします
-* 場所は **eastus** にします。
-* リソース グループは **myResourceGroupLB** にします。
-
-```azurepowershell-interactive
-## Variables for the command ##
-$lbn = 'myLoadBalancer'
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$sku = 'Standard'
-
-## $feip, $bepool, $probe, $rule are variables with configuration information from previous steps. ##
-
-$lb = 
-New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -FrontendIpConfiguration $feip -BackendAddressPool $bepool -Probe $probe -LoadBalancingRule $rule
-```
-
-## <a name="configure-virtual-network"></a>仮想ネットワークを構成する
+## <a name="configure-virtual-network---standard"></a>仮想ネットワークを構成する - Standard
 
 VM をデプロイしてロード バランサーをテストする前に、サポート用の仮想ネットワーク リソースを作成します。
 
-### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
+バックエンド仮想マシン用の仮想ネットワーク カードを作成します。
 
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して、次のように仮想ネットワークを作成します。
-
-* 名前は **myVNet** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* サブネットの名前は **myBackendSubnet** にします。
-* 仮想ネットワークは **10.0.0.0/16** にします。
-* サブネットは **10.0.0.0/24** にします。
-
-```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$sub = 'myBackendSubnet'
-$spfx = '10.0.0.0/24'
-$vnm = 'myVNet'
-$vpfx = '10.0.0.0/16'
-
-
-## Create backend subnet config ##
-$subnetConfig = 
-New-AzVirtualNetworkSubnetConfig -Name $sub -AddressPrefix $spfx
-
-## Create the virtual network ##
-$vnet = 
-New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig
-```
-
-### <a name="create-network-security-group"></a>ネットワーク セキュリティ グループの作成
 ネットワーク セキュリティ グループを作成して、仮想ネットワークへの受信接続を定義します。
 
-#### <a name="create-a-network-security-group-rule-for-port-80"></a>ポート 80 のネットワーク セキュリティ グループ規則を作成する
-[New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) を使用して、次のようにネットワーク セキュリティ グループの規則を作成します。
+### <a name="create-virtual-network-network-security-group-and-bastion-host"></a>仮想ネットワーク、ネットワーク セキュリティ グループ、bastion ホストを作成する
 
-* 名前は **myNSGRuleHTTP** にします。
-* 説明は **Allow HTTP** にします。
-* アクセスは **Allow** にします。
-* プロトコルは **(*)** にします。
-* 方向は **Inbound** にします。
-* 優先度は **2000** にします。
-* 発信元は **Internet** にします。
-* 発信元ポート範囲は **(*)** にします。
-* 宛先アドレス プレフィックスは **(*)** にします。
-* 宛先は**ポート 80** にします。
+* [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して仮想ネットワークを作成します。
+
+* [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) を使用して、ネットワーク セキュリティ グループの規則を作成します。
+
+* [New-AzBastion](/powershell/module/az.network/new-azbastion) を使用して Azure Bastion ホストを作成します。
+
+* [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) を使用して、ネットワーク セキュリティ グループを作成します。
 
 ```azurepowershell-interactive
-## Variables for command ##
-$rnm = 'myNSGRuleHTTP'
-$des = 'Allow HTTP'
-$acc = 'Allow'
-$pro = '*'
-$dir = 'Inbound'
-$pri = '2000'
-$spfx = 'Internet'
-$spr = '*'
-$dpfx = '*'
-$dpr = '80'
+## Create backend subnet config ##
+$subnet = @{
+    Name = 'myBackendSubnet'
+    AddressPrefix = '10.1.0.0/24'
+}
+$subnetConfig = New-AzVirtualNetworkSubnetConfig @subnet 
 
-$rule1 = 
-New-AzNetworkSecurityRuleConfig -Name $rnm -Description $des -Access $acc -Protocol $pro -Direction $dir -Priority $pri -SourceAddressPrefix $spfx -SourcePortRange $spr -DestinationAddressPrefix $dpfx -DestinationPortRange $dpr
+## Create Azure Bastion subnet. ##
+$bastsubnet = @{
+    Name = 'AzureBastionSubnet' 
+    AddressPrefix = '10.1.1.0/24'
+}
+$bastsubnetConfig = New-AzVirtualNetworkSubnetConfig @bastsubnet
+
+## Create the virtual network ##
+$net = @{
+    Name = 'myVNet'
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Location = 'eastus'
+    AddressPrefix = '10.1.0.0/16'
+    Subnet = $subnetConfig,$bastsubnetConfig
+}
+$vnet = New-AzVirtualNetwork @net
+
+## Create public IP address for bastion host. ##
+$ip = @{
+    Name = 'myBastionIP'
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Location = 'eastus'
+    Sku = 'Standard'
+    AllocationMethod = 'Static'
+}
+$publicip = New-AzPublicIpAddress @ip
+
+## Create bastion host ##
+$bastion = @{
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Name = 'myBastion'
+    PublicIpAddress = $publicip
+    VirtualNetwork = $vnet
+}
+New-AzBastion @bastion -AsJob
+
+## Create rule for network security group and place in variable. ##
+$nsgrule = @{
+    Name = 'myNSGRuleHTTP'
+    Description = 'Allow HTTP'
+    Protocol = '*'
+    SourcePortRange = '*'
+    DestinationPortRange = '80'
+    SourceAddressPrefix = 'Internet'
+    DestinationAddressPrefix = '*'
+    Access = 'Allow'
+    Priority = '2000'
+    Direction = 'Inbound'
+}
+$rule1 = New-AzNetworkSecurityRuleConfig @nsgrule
+
+## Create network security group ##
+$nsg = @{
+    Name = 'myNSG'
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Location = 'eastus'
+    SecurityRules = $rule1
+}
+New-AzNetworkSecurityGroup @nsg
+
 ```
 
-#### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
+## <a name="create-virtual-machines---standard"></a>仮想マシンを作成する - Standard
 
-[New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) を使用して、次のようにネットワーク セキュリティ グループを作成します。
+このセクションでは、ロード バランサーのバックエンド プール用に 3 つの仮想マシンを作成します。
 
-* 名前は **myNSG** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* 場所は **eastus** にします。
-* 前の手順で作成したセキュリティ規則を変数に格納します。
+* [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) を使用して、次のように 3 つのネットワーク インターフェイスを作成します。
 
-```azurepowershell
-## Variables for command ##
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$nmn = 'myNSG'
+* 次のように、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) を使用して VM の管理者のユーザー名とパスワードを設定します。
 
-## $rule1 contains configuration information from the previous steps. ##
-$nsg = 
-New-AzNetworkSecurityGroup -ResourceGroupName $rg -Location $loc -Name $nmn -SecurityRules $rule1
-```
-
-### <a name="create-network-interfaces"></a>ネットワーク インターフェイスの作成
-
-[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) を使用して、次のように 3 つのネットワーク インターフェイスを作成します。
-
-#### <a name="vm-1"></a>VM 1
-
-* 名前は **myNicVM1** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* 場所は **eastus** にします。
-* 仮想ネットワークは **myVNet** にします。
-* サブネットは **myBackendSubnet** にします。
-* ネットワーク セキュリティ グループは **myNSG** にします。
-* **myBackEndPool** のロード バランサー **myLoadBalancer** に接続します。
+* 以下を使用して、仮想マシンを作成します。
+    * [New-AzVM](/powershell/module/az.compute/new-azvm)
+    * [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
+    * [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem)
+    * [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage)
+    * [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface)
 
 ```azurepowershell-interactive
-## Variables for command ##
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$nic1 = 'myNicVM1'
-$vnt = 'myVNet'
-$lb = 'myLoadBalancer'
-$ngn = 'myNSG'
-
-## Command to get virtual network configuration. ##
-$vnet = 
-Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get load balancer configuration
-$bepool = 
-Get-AzLoadBalancer -Name $lb -ResourceGroupName $rg | Get-AzLoadBalancerBackendAddressPoolConfig
-
-## Command to get network security group configuration ##
-$nsg = 
-Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
-
-## Command to create network interface for VM1 ##
-$nicVM1 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
-```
-
-#### <a name="vm-2"></a>VM 2
-
-* 名前は **myNicVM2** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* 場所は **eastus** にします。
-* 仮想ネットワークは **myVNet** にします。
-* サブネットは **myBackendSubnet** にします。
-* ネットワーク セキュリティ グループは **myNSG** にします。
-* **myBackEndPool** のロード バランサー **myLoadBalancer** に接続します。
-
-```azurepowershell-interactive
-## Variables for command ##
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$nic2 = 'myNicVM2'
-$vnt = 'myVNet'
-$lb = 'myLoadBalancer'
-$ngn = 'myNSG'
-
-## Command to get virtual network configuration. ##
-$vnet = 
-Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get load balancer configuration
-$bepool = 
-Get-AzLoadBalancer -Name $lb -ResourceGroupName $rg | Get-AzLoadBalancerBackendAddressPoolConfig
-
-## Command to get network security group configuration ##
-$nsg = 
-Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
-
-## Command to create network interface for VM2 ##
-$nicVM2 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
-```
-
-#### <a name="vm-3"></a>VM 3
-
-* 名前は **myNicVM3** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* 場所は **eastus** にします。
-* 仮想ネットワークは **myVNet** にします。
-* サブネットは **myBackendSubnet** にします。
-* ネットワーク セキュリティ グループは **myNSG** にします。
-* **myBackEndPool** のロード バランサー **myLoadBalancer** に接続します。
-
-```azurepowershell-interactive
-## Variables for command ##
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$nic3 = 'myNicVM3'
-$vnt = 'myVNet'
-$lb = 'myLoadBalancer'
-$ngn = 'myNSG'
-
-## Command to get virtual network configuration. ##
-$vnet = 
-Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get load balancer configuration
-$bepool = 
-Get-AzLoadBalancer -Name $lb -ResourceGroupName $rg | Get-AzLoadBalancerBackendAddressPoolConfig
-
-## Command to get network security group configuration ##
-$nsg = 
-Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
-
-## Command to create network interface for VM3 ##
-$nicVM3 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic3 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
-```
-### <a name="create-virtual-machines"></a>仮想マシンを作成する
-
-次のように、[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して VM の管理者のユーザー名とパスワードを設定します。
-
-```azurepowershell
+# Set the administrator and password for the VMs. ##
 $cred = Get-Credential
+
+## Place the virtual network into a variable. ##
+$vnet = Get-AzVirtualNetwork -Name 'myVNet' -ResourceGroupName 'CreatePubLBQS-rg'
+
+## Place the load balancer into a variable. ##
+$lb = @{
+    Name = 'myLoadBalancer'
+    ResourceGroupName = 'CreatePubLBQS-rg'
+}
+$bepool = Get-AzLoadBalancer @lb  | Get-AzLoadBalancerBackendAddressPoolConfig
+
+## Place the network security group into a variable. ##
+$nsg = Get-AzNetworkSecurityGroup -Name 'myNSG' -ResourceGroupName 'CreatePubLBQS-rg'
+
+## For loop with variable to create virtual machines for load balancer backend pool. ##
+for ($i=1; $i -le 3; $i++)
+{
+## Command to create network interface for VMs ##
+$nic = @{
+    Name = "myNicVM$i"
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Location = 'eastus'
+    Subnet = $vnet.Subnets[0]
+    NetworkSecurityGroup = $nsg
+    LoadBalancerBackendAddressPool = $bepool
+}
+$nicVM = New-AzNetworkInterface @nic
+
+## Create a virtual machine configuration for VMs ##
+$vmsz = @{
+    VMName = "myVM$i"
+    VMSize = 'Standard_DS1_v2'  
+}
+$vmos = @{
+    ComputerName = "myVM$i"
+    Credential = $cred
+}
+$vmimage = @{
+    PublisherName = 'MicrosoftWindowsServer'
+    Offer = 'WindowsServer'
+    Skus = '2019-Datacenter'
+    Version = 'latest'    
+}
+$vmConfig = New-AzVMConfig @vmsz `
+    | Set-AzVMOperatingSystem @vmos -Windows `
+    | Set-AzVMSourceImage @vmimage `
+    | Add-AzVMNetworkInterface -Id $nicVM.Id
+
+## Create the virtual machine for VMs ##
+$vm = @{
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Location = 'eastus'
+    VM = $vmConfig
+    Zone = "$i"
+}
+New-AzVM @vm -AsJob
+}
+
 ```
 
-以下を使用して、仮想マシンを作成します。
-
-* [New-AzVM](/powershell/module/az.compute/new-azvm)
-* [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
-* [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem)
-* [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage)
-* [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface)
-
-
-#### <a name="vm1"></a>VM1
-
-* 名前は **myVM1** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* ネットワーク インターフェイス **myNicVM1** に接続します。
-* ロード バランサー **myLoadBalancer** に接続します。
-* ゾーンは **Zone 1** にします。
-* 場所は **eastus** にします。
+仮想マシンと bastion ホストのデプロイは、PowerShell ジョブとして送信されます。 ジョブの状態を表示するには、[Get-Job](/powershell/module/microsoft.powershell.core/get-job) を使用します。
 
 ```azurepowershell-interactive
-## Variables used for command. ##
-$rg = 'myResourceGroupLB'
-$vm = 'myVM1'
-$siz = 'Standard_DS1_v2'
-$pub = 'MicrosoftWindowsServer'
-$off = 'WindowsServer'
-$sku = '2019-Datacenter'
-$ver = 'latest'
-$zn = '1'
-$loc = 'eastus'
+Get-Job
 
-## Create a virtual machine configuration. $cred and $nicVM1 are variables with configuration from the previous steps. ##
-
-$vmConfig = 
-New-AzVMConfig -VMName $vm -VMSize $siz | Set-AzVMOperatingSystem -Windows -ComputerName $vm -Credential $cred | Set-AzVMSourceImage -PublisherName $pub -Offer WindowsServer -Skus $sku -Version $ver | Add-AzVMNetworkInterface -Id $nicVM1.Id
-
-## Create the virtual machine ##
-New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
-```
-
-
-#### <a name="vm2"></a>VM2
-
-* 名前は **myVM2** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* ネットワーク インターフェイス **myNicVM2** に接続します。
-* ロード バランサー **myLoadBalancer** に接続します。
-* ゾーンは **Zone 2** にします。
-* 場所は **eastus** にします。
-
-```azurepowershell-interactive
-## Variables used for command. ##
-$rg = 'myResourceGroupLB'
-$vm = 'myVM2'
-$siz = 'Standard_DS1_v2'
-$pub = 'MicrosoftWindowsServer'
-$off = 'WindowsServer'
-$sku = '2019-Datacenter'
-$ver = 'latest'
-$zn = '2'
-$loc = 'eastus'
-
-## Create a virtual machine configuration. $cred and $nicVM2 are variables with configuration from the previous steps. ##
-
-$vmConfig = 
-New-AzVMConfig -VMName $vm -VMSize $siz | Set-AzVMOperatingSystem -Windows -ComputerName $vm -Credential $cred | Set-AzVMSourceImage -PublisherName $pub -Offer WindowsServer -Skus $sku -Version $ver | Add-AzVMNetworkInterface -Id $nicVM2.Id
-
-## Create the virtual machine ##
-New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
-```
-
-#### <a name="vm3"></a>VM3
-
-* 名前は **myVM3** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* ネットワーク インターフェイス **myNicVM3** に接続します。
-* ロード バランサー **myLoadBalancer** に接続します。
-* ゾーンは **Zone 3** にします。
-* 場所は **eastus** にします。
-
-```azurepowershell-interactive
-## Variables used for command. ##
-$rg = 'myResourceGroupLB'
-$vm = 'myVM3'
-$siz = 'Standard_DS1_v2'
-$pub = 'MicrosoftWindowsServer'
-$off = 'WindowsServer'
-$sku = '2019-Datacenter'
-$ver = 'latest'
-$zn = '3'
-$loc = 'eastus'
-
-## Create a virtual machine configuration. $cred and $nicVM3 are variables with configuration from the previous steps. ##
-
-$vmConfig = 
-New-AzVMConfig -VMName $vm -VMSize $siz | Set-AzVMOperatingSystem -Windows -ComputerName $vm -Credential $cred | Set-AzVMSourceImage -PublisherName $pub -Offer WindowsServer -Skus $sku -Version $ver | Add-AzVMNetworkInterface -Id $nicVM3.Id
-
-## Create the virtual machine ##
-New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
+Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+--     ----            -------------   -----         -----------     --------             -------
+1      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzBastion
+2      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
+3      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
+4      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
 ```
 
 ## <a name="create-outbound-rule-configuration"></a>アウトバウンド規則構成の作成
@@ -528,182 +334,114 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 
 ### <a name="create-outbound-public-ip-address"></a>送信パブリック IP アドレスの作成
 
-[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、以下のことを行います。
-
-* **myPublicIPOutbound** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
-* **myResourceGroupLB** 内に作成します。
+[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、**myPublicIPOutbound** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
 
 ```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'MyResourceGroupLB'
-$loc = 'eastus'
-$pubIP = 'myPublicIPOutbound'
-$sku = 'Standard'
-$all = 'static'
+$publicipout = @{
+    Name = 'myPublicIPOutbound'
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Location = 'eastus'
+    Sku = 'Standard'
+    AllocationMethod = 'static'
+    Zone = 1,2,3
+}
+New-AzPublicIpAddress @publicipout
 
-$publicIp = 
-New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $all -SKU $sku
 ```
 
 ゾーンのパブリック IP アドレスをゾーン 1 に作成するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'MyResourceGroupLB'
-$loc = 'eastus'
-$pubIP = 'myPublicIPOutbound'
-$sku = 'Standard'
-$all = 'static'
+$publicipout = @{
+    Name = 'myPublicIPOutbound'
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Location = 'eastus'
+    Sku = 'Standard'
+    AllocationMethod = 'static'
+    Zone = 1
+}
+New-AzPublicIpAddress @publicipout
 
-$publicIp = 
-New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $all -SKU $sku -zone 1
-```
-### <a name="create-outbound-frontend-ip-configuration"></a>アウトバウンド フロントエンド IP 構成を作成する
-
-[Add-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/add-azloadbalancerfrontendipconfig) を使用して、次のように新しいフロントエンド IP 構成を作成します。
-
-* 名前は **myFrontEndOutbound** にします。
-* パブリック IP アドレス **myPublicIPOutbound** に関連付けます。
-
-```azurepowershell-interactive
-## Variables for the command ##
-$fen = 'myFrontEndOutbound'
-$lbn = 'myLoadBalancer'
-
-## Get the load balancer configuration  and apply the frontend config##
-Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg | Add-AzLoadBalancerFrontendIPConfig -Name $fen -PublicIpAddress $publicIP | Set-AzLoadBalancer
 ```
 
-### <a name="create-outbound-pool"></a>送信プールを作成する
+### <a name="create-outbound-configuration"></a>アウトバウンドの構成を作成する
 
-[Add-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/add-azloadbalancerbackendaddresspoolconfig) を使用して、新しいアウトバウンド プールを作成します。 
+* [Add-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/add-azloadbalancerfrontendipconfig) を使用して、次のように新しいフロントエンド IP 構成を作成します。
 
-[Set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer) を使用して、次のようにプールおよびフロントエンド IP アドレスをロード バランサーに適用します。
+* [Add-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/add-azloadbalancerbackendaddresspoolconfig) を使用して、新しいアウトバウンド プールを作成します。 
 
-* 名前は **myBackEndPoolOutbound** にします。
-
-```azurepowershell-interactive
-## Variables for the command ##
-$ben = 'myBackEndPoolOutbound'
-$lbn = 'myLoadBalancer'
-$rg = 'myResourceGroupLB'
-
-## Get the load balancer configuration and create the outbound backend address pool##
-Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg | Add-AzLoadBalancerBackendAddressPoolConfig -Name $ben | Set-AzLoadBalancer
-```
-### <a name="create-outbound-rule-and-apply-to-load-balancer"></a>アウトバウンド規則を作成し、ロード バランサーに適用する
-
-[Add-AzLoadBalancerOutboundRuleConfig](/powershell/module/az.network/new-azloadbalanceroutboundruleconfig) を使用して、次のようにアウトバウンド バックエンド プールの新しいアウトバウンド規則を作成します。 
-
-[Set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer) を使用して、次のように規則をロード バランサーに適用します。
-
-* 名前は **myOutboundRule** にします。
-* ロード バランサー **myLoadBalancer** に関連付けます。
-* フロントエンド **myFrontEndOutbound** に関連付けます。
-* プロトコルは **All** にします。
-* アイドル タイムアウトは **15** にします。
-* アウトバウンド ポートは **10000** にします。
-* バックエンド プール **myBackEndPoolOutbound** に関連付けます。
-* リソース グループは **myResourceGroupLB** にします。
+* [Set-AzLoadBalancer](/powershell/module/az.network/set-azloadbalancer) を使用して、次のようにプールおよびフロントエンド IP アドレスをロード バランサーに適用します。
+*  [Add-AzLoadBalancerOutboundRuleConfig](/powershell/module/az.network/new-azloadbalanceroutboundruleconfig) を使用して、次のようにアウトバウンド バックエンド プールの新しいアウトバウンド規則を作成します。 
 
 ```azurepowershell-interactive
-## Variables for the commands ##
-$rg = 'myResourceGroupLB'
-$lbn = 'myLoadBalancer'
-$brn = 'myOutboundRule'
-$pro = 'All'
-$idl = '15'
-$por = '10000'
+## Place public IP created in previous steps into variable. ##
+$pubip = @{
+    Name = 'myPublicIPOutbound'
+    ResourceGroupName = 'CreatePubLBQS-rg'
+}
+$publicIp = Get-AzPublicIpAddress @pubip
 
 ## Get the load balancer configuration ##
-$lb = 
-Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg 
+$lbc = @{
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Name = 'myLoadBalancer'
+}
+$lb = Get-AzLoadBalancer @lbc
+
+## Create the frontend configuration ##
+$fe = @{
+    Name = 'myFrontEndOutbound'
+    PublicIPAddress = $publicIP
+}
+$lb | Add-AzLoadBalancerFrontendIPConfig @fe | Set-AzLoadBalancer
+
+## Create the outbound backend address pool ##
+$be = @{
+    Name = 'myBackEndPoolOutbound'
+}
+$lb | Add-AzLoadBalancerBackendAddressPoolConfig @be | Set-AzLoadBalancer
 
 ## Apply the outbound rule configuration to the load balancer. ##
-$lb | Add-AzLoadBalancerOutBoundRuleConfig -Name $brn -FrontendIPConfiguration $lb.FrontendIpConfigurations[1] -BackendAddressPool $lb.BackendAddressPools[1] -Protocol $pro -IdleTimeoutInMinutes $idl -AllocatedOutboundPort $por | Set-AzLoadBalancer
+$rule = @{
+    Name = 'myOutboundRule'
+    AllocatedOutboundPort = '10000'
+    Protocol = 'All'
+    IdleTimeoutInMinutes = '15'
+    FrontendIPConfiguration = $lb.FrontendIpConfigurations[1]
+    BackendAddressPool = $lb.BackendAddressPools[1]
+}
+$lb | Add-AzLoadBalancerOutBoundRuleConfig @rule | Set-AzLoadBalancer
+
 ```
 
 ### <a name="add-virtual-machines-to-outbound-pool"></a>仮想マシンをアウトバウンド プールに追加する
 
 [Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig) を使用して、次のようにロード バランサーのアウトバウンド プールに仮想マシンのネットワーク インターフェイスを追加します。
 
-
-#### <a name="vm1"></a>VM1
-* バックエンド アドレス プールは **myBackEndPoolOutbound** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* ネットワーク インターフェイス **myNicVM1** および **ipconfig1** に関連付けます。
-* ロード バランサー **myLoadBalancer** に関連付けます。
-
 ```azurepowershell-interactive
-## Variables for the commands ##
-$rg = 'myResourceGroupLB'
-$lbn = 'myLoadBalancer'
-$bep = 'myBackEndPoolOutbound'
-$nic1 = 'myNicVM1'
-$ipc = 'ipconfig1'
-
 ## Get the load balancer configuration ##
-$lb = 
-Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg
+$lbc = @{
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Name = 'myLoadBalancer'
+}
+$lb = Get-AzLoadBalancer @lbc
 
-## Get the network interface configuration ##
-$nic = 
-Get-AzNetworkInterface -Name $nic1 -ResourceGroupName $rg
+# For loop with variable to add virtual machines to backend outbound pool. ##
+for ($i=1; $i -le 3; $i++)
+{
+$nic = @{
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Name = "myNicVM$i"
+}
+$nicvm = Get-AzNetworkInterface @nic
 
 ## Apply the backend to the network interface ##
-$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[0].id,$lb.BackendAddressPools[1].id | Set-AzNetworkInterface
-```
-
-#### <a name="vm2"></a>VM2
-* バックエンド アドレス プールは **myBackEndPoolOutbound** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* ネットワーク インターフェイス **myNicVM2** および **ipconfig1** に関連付けます。
-* ロード バランサー **myLoadBalancer** に関連付けます。
-
-```azurepowershell-interactive
-## Variables for the commands ##
-$rg = 'myResourceGroupLB'
-$lbn = 'myLoadBalancer'
-$bep = 'myBackEndPoolOutbound'
-$nic2 = 'myNicVM2'
-$ipc = 'ipconfig1'
-
-## Get the load balancer configuration ##
-$lb = 
-Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg
-
-## Get the network interface configuration ##
-$nic = 
-Get-AzNetworkInterface -Name $nic2 -ResourceGroupName $rg
-
-## Apply the backend to the network interface ##
-$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[0].id,$lb.BackendAddressPools[1].id | Set-AzNetworkInterface
-```
-
-#### <a name="vm3"></a>VM3
-* バックエンド アドレス プールは **myBackEndPoolOutbound** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* ネットワーク インターフェイス **myNicVM3** および **ipconfig1** に関連付けます。
-* ロード バランサー **myLoadBalancer** に関連付けます。
-
-```azurepowershell-interactive
-## Variables for the commands ##
-$rg = 'myResourceGroupLB'
-$lbn = 'myLoadBalancer'
-$bep = 'myBackEndPoolOutbound'
-$nic3 = 'myNicVM3'
-$ipc = 'ipconfig1'
-
-## Get the load balancer configuration ##
-$lb = 
-Get-AzLoadBalancer -Name $lbn -ResourceGroupName $rg
-
-## Get the network interface configuration ##
-$nic = 
-Get-AzNetworkInterface -Name $nic3 -ResourceGroupName $rg
-
-## Apply the backend to the network interface ##
-$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[0].id,$lb.BackendAddressPools[1].id | Set-AzNetworkInterface
+$be = @{
+    Name = 'ipconfig1'
+    LoadBalancerBackendAddressPoolId = $lb.BackendAddressPools[0].id,$lb.BackendAddressPools[1].id
+}
+$nicvm | Set-AzNetworkInterfaceIpConfig @be | Set-AzNetworkInterface
+}
 
 ```
 
@@ -712,537 +450,331 @@ $nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPool
 >[!NOTE]
 >運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。 SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
 
-## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
+:::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/resources-diagram-basic.png" alt-text="クイックスタートで作成される基本的なロード バランサー リソース。" border="false":::
 
-インターネット上の Web アプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 
+## <a name="create-a-public-ip-address---basic"></a>パブリック IP アドレスを作成する - Basic
 
-[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、以下のことを行います。
-
-* **myPublicIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
-* **myResourceGroupLB** 内に作成します。
+パブリック IP アドレスを作成するには、[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用します。
 
 ```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'MyResourceGroupLB'
-$loc = 'eastus'
-$pubIP = 'myPublicIP'
-$sku = 'Basic'
-$all = 'static'
+$publicip = @{
+    Name = 'myPublicIP'
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Location = 'eastus'
+    Sku = 'Basic'
+    AllocationMethod = 'static'
+}
+New-AzPublicIpAddress @publicip
 
-$publicIp = 
-New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $all -SKU $sku
 ```
 
 ## <a name="create-basic-load-balancer"></a>Basic ロード バランサーを作成する
 
 このセクションでは、ロード バランサーの以下のコンポーネントを作成および構成する方法について説明します。
 
-  * ロード バランサーの着信ネットワーク トラフィックを受け取るフロントエンド IP プール。
-  * フロントエンド プールから負荷分散されたネットワーク トラフィックが送信されるバックエンド IP プール。
-  * バックエンド VM インスタンスの正常性を判断する正常性プローブ。
-  * VM に対するトラフィックの分散方法を定義するロード バランサー規則。
+* フロントエンド IP プールに対し、[New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) を使用して、次のようにフロントエンド IP を作成します。 ロード バランサーでは、この IP で受信トラフィックを受け取ります。
 
-### <a name="create-frontend-ip"></a>フロントエンド IP を作成する
+* ロード バランサーのフロントエンドから送信されるトラフィック用に、[New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) でバックエンド アドレス プールを作成します。 このプールが、バックエンド仮想マシンのデプロイ先となります。
 
-[New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) を使用して、次のようにフロントエンド IP を作成します。
+* バックエンド VM インスタンスの正常性を調べる正常性プローブを [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) で作成します。
 
-* 名前は **myFrontEnd** にします。
-* パブリック IP **myPublicIP** に接続します。
+* 複数の VM に対してどのようにトラフィックを分散させるかを定義するロード バランサー規則を [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) で作成します。
+
+* [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) を使用して、次のようにパブリック ロード バランサーを作成します。
 
 ```azurepowershell-interactive
-## Variables for the commands ##
-$fe = 'myFrontEnd'
-$rg = 'MyResourceGroupLB'
-$loc = 'eastus'
-$pubIP = 'myPublicIP'
+## Place public IP created in previous steps into variable. ##
+$publicIp = Get-AzPublicIpAddress -Name 'myPublicIP' -ResourceGroupName 'CreatePubLBQS-rg'
 
-$publicIp = 
-Get-AzPublicIpAddress -Name $pubIP -ResourceGroupName $rg
+## Create load balancer frontend configuration and place in variable. ##
+$feip = New-AzLoadBalancerFrontendIpConfig -Name 'myFrontEnd' -PublicIpAddress $publicIp
 
-$feip = 
-New-AzLoadBalancerFrontendIpConfig -Name $fe -PublicIpAddress $publicIp
+## Create backend address pool configuration and place in variable. ##
+$bepool = New-AzLoadBalancerBackendAddressPoolConfig -Name 'myBackEndPool'
+
+## Create the health probe and place in variable. ##
+$probe = @{
+    Name = 'myHealthProbe'
+    Protocol = 'http'
+    Port = '80'
+    IntervalInSeconds = '360'
+    ProbeCount = '5'
+    RequestPath = '/'
+}
+$healthprobe = New-AzLoadBalancerProbeConfig @probe
+
+## Create the load balancer rule and place in variable. ##
+$lbrule = @{
+    Name = 'myHTTPRule'
+    Protocol = 'tcp'
+    FrontendPort = '80'
+    BackendPort = '80'
+    IdleTimeoutInMinutes = '15'
+    FrontendIpConfiguration = $feip
+    BackendAddressPool = $bePool
+}
+$rule = New-AzLoadBalancerRuleConfig @lbrule
+
+## Create the load balancer resource. ##
+$loadbalancer = @{
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Name = 'myLoadBalancer'
+    Location = 'eastus'
+    Sku = 'Basic'
+    FrontendIpConfiguration = $feip
+    BackendAddressPool = $bePool
+    LoadBalancingRule = $rule
+    Probe = $healthprobe
+}
+New-AzLoadBalancer @loadbalancer
+
 ```
 
-### <a name="configure-back-end-address-pool"></a>バックエンド アドレス プールを構成する
-
-[New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) を使用して、次のようにバックエンド アドレス プールを作成します。 
-
-* 名前は **myBackEndPool** にします。
-* 残りの手順では、VM をこのバックエンド プールにアタッチします。
-
-```azurepowershell-interactive
-## Variable for the command ##
-$be = 'myBackEndPool'
-
-$bepool = 
-New-AzLoadBalancerBackendAddressPoolConfig -Name $be
-```
-
-### <a name="create-the-health-probe"></a>正常性プローブを作成する
-
-正常性プローブは、すべての仮想マシン インスタンスを調べて、ネットワーク トラ	フィックを送信できるかどうかを確認します。 
-
-プローブ チェックが失敗した仮想マシンは、ロード バランサーから削除されます。 障害が解決されると、仮想マシンがロード バランサーに再び追加されます。
-
-[Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) を使用して、次のように正常性プローブを作成します。
-
-* 仮想マシンの正常性を監視します。
-* 名前は **myHealthProbe** にします。
-* プロトコルは **TCP** にします。
-* **ポート 80** を監視します。
-
-```azurepowershell-interactive
-## Variables for the command ##
-$hp = 'myHealthProbe'
-$pro = 'http'
-$port = '80'
-$int = '360'
-$cnt = '5'
-
-$probe = 
-New-AzLoadBalancerProbeConfig -Name $hp -Protocol $pro -Port $port -RequestPath / -IntervalInSeconds $int -ProbeCount $cnt
-```
-
-### <a name="create-the-load-balancer-rule"></a>ロード バランサー規則を作成する
-
-ロード バランサー規則は、以下のものを定義します。
-
-* 着信トラフィック用のフロントエンド IP 構成。
-* トラフィックを受信するためのバックエンド IP プール。
-* 必要な発信元ポートと宛先ポート。 
-
-[Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) を使用して、次のようにロード バランサー規則を作成します。 
-
-* 名前は **myHTTPRule** にします
-* フロントエンド プール **myFrontEnd** で**ポート 80** をリッスンします。
-* **ポート 80** を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール **myBackEndPool** に送信します。 
-* 正常性プローブ **myHealthProbe** を使用します。
-* プロトコルは **TCP** にします。
-* フロントエンド IP アドレスを使用して、アウトバウンドの送信元ネットワーク アドレス変換 (SNAT) を有効にします。
-
-
-```azurepowershell-interactive
-## Variables for the command ##
-$lbr = 'myHTTPRule'
-$pro = 'tcp'
-$port = '80'
-
-## $feip and $bePool are the variables from previous steps. ##
-
-$rule = 
-New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool
-```
-
-### <a name="create-load-balancer-resource"></a>ロード バランサーのリソースを作成する
-
-[New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) を使用して、次のようにパブリック ロード バランサーを作成します。
-
-* 名前は **myLoadBalancer** にします
-* 場所は **eastus** にします。
-* リソース グループは **myResourceGroupLB** にします。
-
-```azurepowershell-interactive
-## Variables for the command ##
-$lbn = 'myLoadBalancer'
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$sku = 'Basic'
-
-## $feip, $bepool, $probe, $rule are variables with configuration information from previous steps. ##
-
-$lb = 
-New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -FrontendIpConfiguration $feip -BackendAddressPool $bepool -Probe $probe -LoadBalancingRule $rule
-```
-
-## <a name="configure-virtual-network"></a>仮想ネットワークを構成する
+## <a name="configure-virtual-network---basic"></a>仮想ネットワークを構成する - Basic
 
 VM をデプロイしてロード バランサーをテストする前に、サポート用の仮想ネットワーク リソースを作成します。
 
-### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
+バックエンド仮想マシン用の仮想ネットワーク カードを作成します。
 
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して、次のように仮想ネットワークを作成します。
-
-* 名前は **myVNet** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* サブネットの名前は **myBackendSubnet** にします。
-* 仮想ネットワークは **10.0.0.0/16** にします。
-* サブネットは **10.0.0.0/24** にします。
-
-```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$sub = 'myBackendSubnet'
-$spfx = '10.0.0.0/24'
-$vnm = 'myVNet'
-$vpfx = '10.0.0.0/16'
-
-
-## Create backend subnet config ##
-$subnetConfig = 
-New-AzVirtualNetworkSubnetConfig -Name $sub -AddressPrefix $spfx
-
-## Create the virtual network ##
-$vnet = 
-New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig
-```
-
-### <a name="create-network-security-group"></a>ネットワーク セキュリティ グループの作成
 ネットワーク セキュリティ グループを作成して、仮想ネットワークへの受信接続を定義します。
 
-#### <a name="create-a-network-security-group-rule-for-port-80"></a>ポート 80 のネットワーク セキュリティ グループ規則を作成する
-[New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) を使用して、次のようにネットワーク セキュリティ グループの規則を作成します。
+### <a name="create-virtual-network-network-security-group-and-bastion-host"></a>仮想ネットワーク、ネットワーク セキュリティ グループ、bastion ホストを作成する
 
-* 名前は **myNSGRuleHTTP** にします。
-* 説明は **Allow HTTP** にします。
-* アクセスは **Allow** にします。
-* プロトコルは **(*)** にします。
-* 方向は **Inbound** にします。
-* 優先度は **2000** にします。
-* 発信元は **Internet** にします。
-* 発信元ポート範囲は **(*)** にします。
-* 宛先アドレス プレフィックスは **(*)** にします。
-* 宛先は**ポート 80** にします。
+* [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して仮想ネットワークを作成します。
+
+* [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) を使用して、ネットワーク セキュリティ グループの規則を作成します。
+
+* [New-AzBastion](/powershell/module/az.network/new-azbastion) を使用して Azure Bastion ホストを作成します。
+
+* [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) を使用して、ネットワーク セキュリティ グループを作成します。
 
 ```azurepowershell-interactive
-## Variables for command ##
-$rnm = 'myNSGRuleHTTP'
-$des = 'Allow HTTP'
-$acc = 'Allow'
-$pro = '*'
-$dir = 'Inbound'
-$pri = '2000'
-$spfx = 'Internet'
-$spr = '*'
-$dpfx = '*'
-$dpr = '80'
+## Create backend subnet config ##
+$subnet = @{
+    Name = 'myBackendSubnet'
+    AddressPrefix = '10.1.0.0/24'
+}
+$subnetConfig = New-AzVirtualNetworkSubnetConfig @subnet 
 
-$rule2 = 
-New-AzNetworkSecurityRuleConfig -Name $rnm -Description $des -Access $acc -Protocol $pro -Direction $dir -Priority $pri -SourceAddressPrefix $spfx -SourcePortRange $spr -DestinationAddressPrefix $dpfx -DestinationPortRange $dpr
+## Create Azure Bastion subnet. ##
+$bastsubnet = @{
+    Name = 'AzureBastionSubnet' 
+    AddressPrefix = '10.1.1.0/24'
+}
+$bastsubnetConfig = New-AzVirtualNetworkSubnetConfig @bastsubnet
+
+## Create the virtual network ##
+$net = @{
+    Name = 'myVNet'
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Location = 'eastus'
+    AddressPrefix = '10.1.0.0/16'
+    Subnet = $subnetConfig,$bastsubnetConfig
+}
+$vnet = New-AzVirtualNetwork @net
+
+## Create public IP address for bastion host. ##
+$ip = @{
+    Name = 'myBastionIP'
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Location = 'eastus'
+    Sku = 'Standard'
+    AllocationMethod = 'Static'
+}
+$publicip = New-AzPublicIpAddress @ip
+
+## Create bastion host ##
+$bastion = @{
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Name = 'myBastion'
+    PublicIpAddress = $publicip
+    VirtualNetwork = $vnet
+}
+New-AzBastion @bastion -AsJob
+
+## Create rule for network security group and place in variable. ##
+$nsgrule = @{
+    Name = 'myNSGRuleHTTP'
+    Description = 'Allow HTTP'
+    Protocol = '*'
+    SourcePortRange = '*'
+    DestinationPortRange = '80'
+    SourceAddressPrefix = 'Internet'
+    DestinationAddressPrefix = '*'
+    Access = 'Allow'
+    Priority = '2000'
+    Direction = 'Inbound'
+}
+$rule1 = New-AzNetworkSecurityRuleConfig @nsgrule
+
+## Create network security group ##
+$nsg = @{
+    Name = 'myNSG'
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Location = 'eastus'
+    SecurityRules = $rule1
+}
+New-AzNetworkSecurityGroup @nsg
+
 ```
 
-#### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
+## <a name="create-virtual-machines---basic"></a>仮想マシンを作成する - Basic
 
-[New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) を使用して、次のようにネットワーク セキュリティ グループを作成します。
+このセクションでは、ロード バランサーのバックエンド プール用に仮想マシンを作成します。
 
-* 名前は **myNSG** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* 場所は **eastus** にします。
-* 前の手順で作成したセキュリティ規則を変数に格納します。
+* [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) を使用して、次のように 3 つのネットワーク インターフェイスを作成します。
 
-```azurepowershell
-## Variables for command ##
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$nmn = 'myNSG'
+* 次のように、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) を使用して VM の管理者のユーザー名とパスワードを設定します。
 
-## $rule1 and $rule2 are variables with configuration information from the previous steps. ##
-$nsg = 
-New-AzNetworkSecurityGroup -ResourceGroupName $rg -Location $loc -Name $nmn -SecurityRules $rule1,$rule2
-```
+* [New-AzAvailabilitySet](/powershell/module/az.compute/new-azvm) を使用して、次のように仮想マシンの可用性セットを作成します。
 
-### <a name="create-network-interfaces"></a>ネットワーク インターフェイスの作成
-
-[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) を使用して、次のように 3 つのネットワーク インターフェイスを作成します。
-
-#### <a name="vm-1"></a>VM 1
-
-* 名前は **myNicVM1** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* 場所は **eastus** にします。
-* 仮想ネットワークは **myVNet** にします。
-* サブネットは **myBackendSubnet** にします。
-* ネットワーク セキュリティ グループは **myNSG** にします。
-* **myBackEndPool** のロード バランサー **myLoadBalancer** に接続します。
+* 以下を使用して、仮想マシンを作成します。
+    * [New-AzVM](/powershell/module/az.compute/new-azvm)
+    * [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
+    * [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem)
+    * [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage)
+    * [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface)
 
 ```azurepowershell-interactive
-## Variables for command ##
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$nic1 = 'myNicVM1'
-$vnt = 'myVNet'
-$lb = 'myLoadBalancer'
-$ngn = 'myNSG'
-
-## Command to get virtual network configuration. ##
-$vnet = 
-Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get load balancer configuration
-$bepool = 
-Get-AzLoadBalancer -Name $lb -ResourceGroupName $rg | Get-AzLoadBalancerBackendAddressPoolConfig
-
-## Command to get network security group configuration ##
-$nsg = 
-Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
-
-## Command to create network interface for VM1 ##
-$nicVM1 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
-```
-
-#### <a name="vm-2"></a>VM 2
-
-* 名前は **myNicVM2** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* 場所は **eastus** にします。
-* 仮想ネットワークは **myVNet** にします。
-* サブネットは **myBackendSubnet** にします。
-* ネットワーク セキュリティ グループは **myNSG** にします。
-* **myBackEndPool** のロード バランサー **myLoadBalancer** に接続します。
-
-```azurepowershell-interactive
-## Variables for command ##
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$nic2 = 'myNicVM2'
-$vnt = 'myVNet'
-$lb = 'myLoadBalancer'
-$ngn = 'myNSG'
-
-## Command to get virtual network configuration. ##
-$vnet = 
-Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get load balancer configuration
-$bepool = 
-Get-AzLoadBalancer -Name $lb -ResourceGroupName $rg | Get-AzLoadBalancerBackendAddressPoolConfig
-
-## Command to get network security group configuration ##
-$nsg = 
-Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
-
-## Command to create network interface for VM2 ##
-$nicVM2 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
-```
-
-#### <a name="vm-3"></a>VM 3
-
-* 名前は **myNicVM3** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* 場所は **eastus** にします。
-* 仮想ネットワークは **myVNet** にします。
-* サブネットは **myBackendSubnet** にします。
-* ネットワーク セキュリティ グループは **myNSG** にします。
-* **myBackEndPool** のロード バランサー **myLoadBalancer** に接続します。
-
-```azurepowershell-interactive
-## Variables for command ##
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$nic3 = 'myNicVM3'
-$vnt = 'myVNet'
-$lb = 'myLoadBalancer'
-$ngn = 'myNSG'
-
-## Command to get virtual network configuration. ##
-$vnet = 
-Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get load balancer configuration
-$bepool = 
-Get-AzLoadBalancer -Name $lb -ResourceGroupName $rg | Get-AzLoadBalancerBackendAddressPoolConfig
-
-## Command to get network security group configuration ##
-$nsg = 
-Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
-
-## Command to create network interface for VM3 ##
-$nicVM3 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic3 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
-```
-
-### <a name="create-availability-set-for-virtual-machines"></a>仮想マシンの可用性セットを作成する
-
-[New-AzAvailabilitySet](/powershell/module/az.compute/new-azvm) を使用して、次のように仮想マシンの可用性セットを作成します。
-
-* 名前は **myAvSet** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* 場所は **eastus** にします。
-
-```azurepowershell-interactive
-## Variables used for the command. ##
-$rg = 'myResourceGroupLB'
-$avs = 'myAvSet'
-$loc = 'eastus'
-
-New-AzAvailabilitySet -ResourceGroupName $rg -Name $avs -Location $loc
-```
-
-### <a name="create-virtual-machines"></a>仮想マシンを作成する
-
-次のように、[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して VM の管理者のユーザー名とパスワードを設定します。
-
-```azurepowershell
+# Set the administrator and password for the VMs. ##
 $cred = Get-Credential
+
+## Place the virtual network into a variable. ##
+$vnet = Get-AzVirtualNetwork -Name 'myVNet' -ResourceGroupName 'CreatePubLBQS-rg'
+
+## Place the load balancer into a variable. ##
+$lb = @{
+    Name = 'myLoadBalancer'
+    ResourceGroupName = 'CreatePubLBQS-rg'
+}
+$bepool = Get-AzLoadBalancer @lb  | Get-AzLoadBalancerBackendAddressPoolConfig
+
+## Place the network security group into a variable. ##
+$nsg = Get-AzNetworkSecurityGroup -Name 'myNSG' -ResourceGroupName 'CreatePubLBQS-rg'
+
+## Create availability set for the virtual machines. ##
+$set = @{
+    Name = 'myAvSet'
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Location = 'eastus'
+    Sku = 'Aligned'
+    PlatformFaultDomainCount = '2'
+    PlatformUpdateDomainCount =  '2'
+}
+$avs = New-AzAvailabilitySet @set
+
+## For loop with variable to create virtual machines. ##
+for ($i=1; $i -le 3; $i++)
+{
+## Command to create network interface for VMs ##
+$nic = @{
+    Name = "myNicVM$i"
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Location = 'eastus'
+    Subnet = $vnet.Subnets[0]
+    NetworkSecurityGroup = $nsg
+    LoadBalancerBackendAddressPool = $bepool
+}
+$nicVM = New-AzNetworkInterface @nic
+
+## Create a virtual machine configuration for VMs ##
+$vmsz = @{
+    VMName = "myVM$i"
+    VMSize = 'Standard_DS1_v2'
+    AvailabilitySetId = $avs.Id   
+}
+$vmos = @{
+    ComputerName = "myVM$i"
+    Credential = $cred
+}
+$vmimage = @{
+    PublisherName = 'MicrosoftWindowsServer'
+    Offer = 'WindowsServer'
+    Skus = '2019-Datacenter'
+    Version = 'latest'    
+}
+$vmConfig = New-AzVMConfig @vmsz `
+    | Set-AzVMOperatingSystem @vmos -Windows `
+    | Set-AzVMSourceImage @vmimage `
+    | Add-AzVMNetworkInterface -Id $nicVM.Id
+
+## Create the virtual machine for VMs ##
+$vm = @{
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Location = 'eastus'
+    VM = $vmConfig
+}
+New-AzVM @vm -AsJob
+}
+
 ```
 
-以下を使用して、仮想マシンを作成します。
-
-* [New-AzVM](/powershell/module/az.compute/new-azvm)
-* [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
-* [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem)
-* [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage)
-* [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface)
-
-
-#### <a name="vm1"></a>VM1
-
-* 名前は **myVM1** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* ネットワーク インターフェイス **myNicVM1** に接続します。
-* ロード バランサー **myLoadBalancer** に接続します。
-* 場所は **eastus** にします。
-* 可用性セットは **myAvSet** にします。
+仮想マシンと bastion ホストのデプロイは、PowerShell ジョブとして送信されます。 ジョブの状態を表示するには、[Get-Job](/powershell/module/microsoft.powershell.core/get-job) を使用します。
 
 ```azurepowershell-interactive
-## Variables used for command. ##
-$rg = 'myResourceGroupLB'
-$vm = 'myVM1'
-$siz = 'Standard_DS1_v2'
-$pub = 'MicrosoftWindowsServer'
-$off = 'WindowsServer'
-$sku = '2019-Datacenter'
-$ver = 'latest'
-$loc = 'eastus'
-$avs = 'myAvSet'
+Get-Job
 
-## Create a virtual machine configuration. $cred and $nicVM1 are variables with configuration from the previous steps. ##
-
-$vmConfig = 
-New-AzVMConfig -VMName $vm -VMSize $siz | Set-AzVMOperatingSystem -Windows -ComputerName $vm -Credential $cred | Set-AzVMSourceImage -PublisherName $pub -Offer WindowsServer -Skus $sku -Version $ver | Add-AzVMNetworkInterface -Id $nicVM1.Id
-
-## Create the virtual machine ##
-New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetName $avs
+Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+--     ----            -------------   -----         -----------     --------             -------
+1      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzBastion
+2      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
+3      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
+4      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
 ```
-
-
-#### <a name="vm2"></a>VM2
-
-* 名前は **myVM2** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* ネットワーク インターフェイス **myNicVM2** に接続します。
-* ロード バランサー **myLoadBalancer** に接続します。
-* 場所は **eastus** にします。
-* 可用性セットは **myAvSet** にします。
-
-```azurepowershell-interactive
-## Variables used for command. ##
-$rg = 'myResourceGroupLB'
-$vm = 'myVM2'
-$siz = 'Standard_DS1_v2'
-$pub = 'MicrosoftWindowsServer'
-$off = 'WindowsServer'
-$sku = '2019-Datacenter'
-$ver = 'latest'
-$loc = 'eastus'
-$avs = 'myAvSet'
-
-## Create a virtual machine configuration. $cred and $nicVM2 are variables with configuration from the previous steps. ##
-
-$vmConfig = 
-New-AzVMConfig -VMName $vm -VMSize $siz | Set-AzVMOperatingSystem -Windows -ComputerName $vm -Credential $cred | Set-AzVMSourceImage -PublisherName $pub -Offer WindowsServer -Skus $sku -Version $ver | Add-AzVMNetworkInterface -Id $nicVM2.Id
-
-## Create the virtual machine ##
-New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetName $avs
-```
-
-#### <a name="vm3"></a>VM3
-
-* 名前は **myVM3** にします。
-* リソース グループは **myResourceGroupLB** にします。
-* ネットワーク インターフェイス **myNicVM3** に接続します。
-* ロード バランサー **myLoadBalancer** に接続します。
-* 場所は **eastus** にします。
-* 可用性セットは **myAvSet** にします。
-
-```azurepowershell-interactive
-## Variables used for command. ##
-$rg = 'myResourceGroupLB'
-$vm = 'myVM3'
-$siz = 'Standard_DS1_v2'
-$pub = 'MicrosoftWindowsServer'
-$off = 'WindowsServer'
-$sku = '2019-Datacenter'
-$ver = 'latest'
-$loc = 'eastus'
-$avs = 'myAvSet'
-
-## Create a virtual machine configuration. $cred and $nicVM3 are variables with configuration from the previous steps. ##
-
-$vmConfig = 
-New-AzVMConfig -VMName $vm -VMSize $siz | Set-AzVMOperatingSystem -Windows -ComputerName $vm -Credential $cred | Set-AzVMSourceImage -PublisherName $pub -Offer WindowsServer -Skus $sku -Version $ver | Add-AzVMNetworkInterface -Id $nicVM3.Id
-
-## Create the virtual machine ##
-New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetName $avs
-```
-
-3 つの VM を作成して構成するには数分かかります。
 
 ---
 
 ## <a name="install-iis"></a>IIS のインストール
 
-[Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension?view=latest) を使用して、カスタム スクリプト拡張機能をインストールします。 
+[Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) を使用して、カスタム スクリプト拡張機能をインストールします。 
 
-この拡張機能によって PowerShell Add-WindowsFeature Web-Server が実行され、IIS Web サーバーがインストールされます。次に、VM のホスト名を表示するように Default.htm ページが更新されます。
+この拡張機能によって `PowerShell Add-WindowsFeature Web-Server` が実行され、IIS Web サーバーがインストールされます。次に、VM のホスト名を表示するように Default.htm ページが更新されます。
 
-### <a name="vm1"></a>VM1 
+> [!IMPORTANT]
+> 前の手順で行った仮想マシンのデプロイが完了したことを確認してから次に進んでください。  仮想マシンのデプロイ ジョブの状態は、`Get-Job` を使用して確認します。
 
 ```azurepowershell-interactive
-## Variables for command. ##
-$rg = 'myResourceGroupLB'
-$enm = 'IIS'
-$vmn = 'myVM1'
-$loc = 'eastus'
-$pub = 'Microsoft.Compute'
-$ext = 'CustomScriptExtension'
-$typ = '1.8'
-
-Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Location $loc -Publisher $pub -ExtensionType $ext -TypeHandlerVersion $typ -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}'
+## For loop with variable to install custom script extension on virtual machines. ##
+for ($i=1; $i -le 3; $i++)
+{
+$ext = @{
+    Publisher = 'Microsoft.Compute'
+    ExtensionType = 'CustomScriptExtension'
+    ExtensionName = 'IIS'
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    VMName = "myVM$i"
+    Location = 'eastus'
+    TypeHandlerVersion = '1.8'
+    SettingString = '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}'
+}
+Set-AzVMExtension @ext -AsJob
+}
 ```
 
-### <a name="vm2"></a>VM2 
+拡張機能は、PowerShell ジョブとしてデプロイされます。 インストール ジョブの状態を表示するには、[Get-Job](/powershell/module/microsoft.powershell.core/get-job) を使用します。
+
 
 ```azurepowershell-interactive
-## Variables for command. ##
-$rg = 'myResourceGroupLB'
-$enm = 'IIS'
-$vmn = 'myVM2'
-$loc = 'eastus'
-$pub = 'Microsoft.Compute'
-$ext = 'CustomScriptExtension'
-$typ = '1.8'
+Get-Job
 
-Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Location $loc -Publisher $pub -ExtensionType $ext -TypeHandlerVersion $typ -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}'
-```
-
-### <a name="vm3"></a>VM3
-
-```azurepowershell-interactive
-## Variables for command. ##
-$rg = 'myResourceGroupLB'
-$enm = 'IIS'
-$vmn = 'myVM3'
-$loc = 'eastus'
-$pub = 'Microsoft.Compute'
-$ext = 'CustomScriptExtension'
-$typ = '1.8'
-
-Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Location $loc -Publisher $pub -ExtensionType $ext -TypeHandlerVersion $typ -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}'
+Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+--     ----            -------------   -----         -----------     --------             -------
+8      Long Running O… AzureLongRunni… Running       True            localhost            Set-AzVMExtension
+9      Long Running O… AzureLongRunni… Running       True            localhost            Set-AzVMExtension
+10     Long Running O… AzureLongRunni… Running       True            localhost            Set-AzVMExtension
 ```
 
 ## <a name="test-the-load-balancer"></a>ロード バランサーをテストする
 
-[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=latest) を使用して、ロード バランサーのパブリック IP アドレスを取得します。
+[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) を使用して、ロード バランサーのパブリック IP アドレスを取得します。
 
 ```azurepowershell-interactive
-  ## Variables for command. ##
-  $rg = 'myResourceGroupLB'
-  $ipn = 'myPublicIP'
-    
-  Get-AzPublicIPAddress -ResourceGroupName $rg -Name $ipn | select IpAddress
+$ip = @{
+    ResourceGroupName = 'CreatePubLBQS-rg'
+    Name = 'myPublicIP'
+}  
+Get-AzPublicIPAddress @ip | select IpAddress
+
 ```
 
 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 IIS Web サーバーの既定のページがブラウザーに表示されます。
@@ -1256,23 +788,19 @@ Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Locat
 必要がなくなれば、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループやロード バランサー、その他のリソースを削除できます。
 
 ```azurepowershell-interactive
-## Variable for command. ##
-$rg = 'myResourceGroupLB'
+Remove-AzResourceGroup -Name 'CreatePubLBQS-rg'
 
-Remove-AzResourceGroup -Name $rg
 ```
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、
+このクイック スタートでは次のようにします。
 
 * Standard または Basic パブリック ロード バランサーを作成しました
 * 仮想マシンを接続しました。 
 * ロード バランサーのトラフィック規則と正常性プローブを構成しました。
 * ロード バランサーをテストしました。
 
-Azure Load Balancer の詳細については、「[Azure Load Balancer の概要](load-balancer-overview.md)」および「[Load Balancer に関してよく寄せられる質問](load-balancer-faqs.md)」を参照してください。
-
-* [Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)について理解を深めます。
-
-
+Azure Load Balancer についてさらに学習するには、次の記事に進んでください。
+> [!div class="nextstepaction"]
+> [Azure Load Balancer の概要](load-balancer-overview.md)

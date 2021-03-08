@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f202a9d616809d1f14366350d8d60ef2bc06b96b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 5d11f343a55d30e5d14d6f4ae0ddb1a74d9c61fa
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934516"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631977"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -33,6 +33,11 @@ SSML の Speech Service の実装は、World Wide Web コンソーシアムの[�
 
 標準音声、ニューラル音声、およびカスタム音声の詳細については、[テキスト読み上げの概要](text-to-speech.md)に関するページを参照してください。
 
+
+> [!NOTE]
+> [テキスト読み上げページ](https://azure.microsoft.com/services/cognitive-services/text-to-speech/#features)を使って、さまざまなスタイルや音程で読み上げられている例文の音声を聞くことができます。
+
+
 ## <a name="special-characters"></a>特殊文字
 
 SSML を使用するとき、引用符、アポストロフィ、角かっこなどの特殊文字をエスケープする必要があることに注意してください。 詳細については、「[Extensible Markup Language (XML) 1.0: Appendix D](https://www.w3.org/TR/xml/#sec-entexpand)」 (拡張マークアップ言語 (XML) 1.0: 付録 D) を参照してください。
@@ -46,7 +51,7 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 
 ## <a name="create-an-ssml-document"></a>SSML ドキュメントを作成する
 
-`speak` はルート要素であり、SSML のすべてのドキュメントで**必須**です。 `speak` 要素には、バージョン、言語、およびマークアップのボキャブラリ定義などの重要な情報が含まれています。
+`speak` はルート要素であり、SSML のすべてのドキュメントで **必須** です。 `speak` 要素には、バージョン、言語、およびマークアップのボキャブラリ定義などの重要な情報が含まれています。
 
 **構文**
 
@@ -130,7 +135,7 @@ speechConfig->SetProperty(
 
 # <a name="java"></a>[Java](#tab/java)
 
-詳細については、<a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a> を参照してください。
+詳細については、<a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a> を参照してください。
 
 ```java
 speechConfig.setProperty(
@@ -148,7 +153,7 @@ speech_config.set_property_by_name(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-詳細については、<a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a> を参照してください。
+詳細については、<a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true#setproperty-string--string-" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a> を参照してください。
 
 ```javascript
 speechConfig.setProperty(
@@ -192,42 +197,141 @@ speechConfig!.setPropertyTo(
 > [!IMPORTANT]
 > ニューラル音声でのみ、話し方を調整できます。
 
-既定では、テキスト読み上げサービスは、標準の音声とニューラル音声の両方のニュートラルな話し方を使用してテキストを合成します。 ニューラル音声を使用すると、明るさ、共感、落ち着きなどのさまざまな感情を表現するように話し方を調整することや、 `mstts:express-as`  要素を使用してカスタム サービス、ニュース放送、音声アシスタントなどのさまざまなシナリオに合わせて音声を最適化することができます。 これは、Speech Service に固有の省略可能な要素です。
+既定では、テキスト読み上げサービスは、標準の音声とニューラル音声の両方のニュートラルな話し方を使用してテキストを合成します。 ニューラル音声を使用すると、明るさ、共感、落ち着きなどのさまざまな感情を表現するように話し方を調整することや、`mstts:express-as` 要素を使用してカスタマー サービス、ニュース放送、音声アシスタントなどのさまざまなシナリオに合わせて音声を最適化することができます。 これは、Speech Service に固有の省略可能な要素です。
 
 現在、これらのニューラル音声では話し方の調整がサポートされています。
 * `en-US-AriaNeural`
+* `en-US-JennyNeural`
+* `en-US-GuyNeural`
+* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
+* `zh-CN-YunyeNeural`
+* `zh-CN-YunxiNeural` (プレビュー)
+* `zh-CN-XiaohanNeural` (プレビュー)
+* `zh-CN-XiaomoNeural` (プレビュー)
+* `zh-CN-XiaoxuanNeural` (プレビュー)
+* `zh-CN-XiaoruiNeural` (プレビュー)
 
-変更は文章レベルで適用され、スタイルは音声によって異なります。 スタイルがサポートされていない場合、サービスは既定のニュートラルな話し方の音声を返します。
+ユースケースに合わせて話し方の強度をさらに変更できます。 `styledegree` でより強いスタイルやより柔らかいスタイルを指定して、音声の表現力を高めたり抑えたりできます。 
+
+現在、これらのニューラル音声では話し方の調整がサポートされています。
+* `zh-CN-XiaoxiaoNeural`
+
+話し方とその強度を調整する以外に、`role` パラメーターを調整して、音声が異なる年齢と性別を模倣するようにすることもできます。 たとえば、男性の声がピッチを上げて女性の音声を模倣するように、イントネーションを変更できます。
+
+現在、これらのニューラル音声ではロールプレイの調整がサポートされています。
+* `zh-CN-XiaomoNeural`
+* `zh-CN-XiaoxuanNeural`
+
+上記の変更は文章レベルで適用され、スタイルおよびロールプレイは音声によって異なります。 スタイルまたはロールプレイがサポートされていない場合、サービスは既定のニュートラルな話し方の音声を返します。 各音声に対してサポートされているスタイルとロールプレイは、[音声リスト API](rest-text-to-speech.md#get-a-list-of-voices) を通じて、またはコードなしの [Audio Content Creation](https://aka.ms/audiocontentcreation) プラットフォームを使用して確認できます。
 
 **構文**
 
 ```xml
 <mstts:express-as style="string"></mstts:express-as>
 ```
+```xml
+<mstts:express-as style="string" styledegree="value"></mstts:express-as>
+```
+```xml
+<mstts:express-as role="string" style="string"></mstts:express-as>
+```
+> [!NOTE]
+> 現時点では、`styledegree` では zh-CN-XiaoxiaoNeural のみがサポートされています。 `role` では、zh-CN-XiaomoNeural と zh-CN-XiaoxuanNeural のみがサポートされています。
 
 **属性**
 
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
 | `style` | 話し方を指定します。 現在のところ、話し方は音声に固有です。 | ニューラル音声の話し方を調整する場合は、必須です。 `mstts:express-as` を使用する場合は、スタイルを指定する必要があります。 無効な値を指定すると、この要素は無視されます。 |
+| `styledegree` | 話し方の強度を指定します。 **指定可能な値**:0.01 ～ 2 (0.01 と 2 を含む)。 既定値は、定義済みのスタイル強度を表す 1 です。 最小単位は 0.01 で、ターゲットのスタイルにわずかに傾きます。 値を 2 にすると、既定のスタイル強度が 2 倍になります。  | オプション (現時点では、`styledegree` では zh-CN-XiaoxiaoNeural のみがサポートされています)。|
+| `role` | 読み上げロールプレイを指定します。 音声は、異なる年齢と性別として動作します。  | オプション (現時点では、`role` では zh-CN-XiaomoNeural と zh-CN-XiaoxuanNeural のみがサポートされています)。|
 
 各ニューラル音声でサポートされている話し方を確認するには、次の表を使用してください。
 
 | 音声                   | Style                     | 説明                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
-| `en-US-AriaNeural`      | `style="newscast-formal"` | ニュースを配信するときの改まった、自信に満ちた、威厳のある語調|
-|                         | `style="newscast-casual"` | 一般的なニュースを配信するときの汎用的でカジュアルな語調       |
+| `en-US-AriaNeural`      | `style="newscast-formal"` | ニュースを配信するときの改まった、自信に満ちた、威厳のある語調を表します |
+|                         | `style="newscast-casual"` | 一般的なニュースを配信するときの汎用的でカジュアルな語調を表します        |
 |                         | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
 |                         | `style="chat"`            | カジュアルでリラックスした語調を表します                         |
 |                         | `style="cheerful"`        | 肯定的で幸せな語調を表します                         |
 |                         | `style="empathetic"`      | 思いやりと理解を示します               |
+| `en-US-JennyNeural`     | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
+|                         | `style="chat"`            | カジュアルでリラックスした語調を表します                         |
+|                         | `style="assistant"`       | デジタル アシスタント向けの暖かくてリラックスした語調を表します    |
+|                         | `style="newscast"`        | 一般的なニュースを配信するときの汎用的でカジュアルな語調を表します   |
+| `en-US-GuyNeural`       | `style="newscast"`        | ニュースを読み上げる改まった職業的な語調を表します |
+| `pt-BR-FranciscaNeural` | `style="calm"`            | 話すときの冷静で落ち着いた態度を表します。 他の種類の音声に比べて、語調、ピッチ、韻律がかなり均一になります。                                |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | ニュースを読み上げる改まった職業的な語調を表します |
 |                         | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
 |                         | `style="assistant"`       | デジタル アシスタント向けの暖かくてリラックスした語調を表します    |
+|                         | `style="chat"`            | おしゃべり向けのカジュアルでリラックスした語調を表します           |
+|                         | `style="calm"`            | 話すときの冷静で落ち着いた態度を表します。 他の種類の音声に比べて、語調、ピッチ、韻律がかなり均一になります。                                |
+|                         | `style="cheerful"`        | 高いピッチと音声エネルギーにより、陽気で熱狂的な語調を表します                         |
+|                         | `style="sad"`             | 高いピッチ、低い強度、低い音声エネルギーにより、悲しそうな語調を表します。 この感情の一般的な指標は、話し中のすすり泣きや号泣です。            |
+|                         | `style="angry"`           | 低いピッチ、高い強度、高い音声エネルギーにより、怒っていらだっている語調を表します。 話者は、激怒し、不機嫌で、立腹した状態にあります。       |
+|                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                          |
+|                         | `style="disgruntled"`     | 軽蔑的で不満のある語調を表します。 この感情の音声は、不満と軽蔑を表します。              |
+|                         | `style="serious"`         | 厳しく威圧するような語調を表します。 話者は、多くの場合、安定したリズムで、堅苦しい緊張感の高い話し方をします。          |
+|                         | `style="affectionate"`    | 高いピッチと音声エネルギーにより、温かみのある優しい語調を表します。 話者は、聞き手の注目を集める状態にあります。 多くの場合、話者の「パーソナリティ」が実際に聞き手の心を引きつけています。          |     
+|                         | `style="gentle"`          | 低いピッチと音声エネルギーにより、穏やかで礼儀正しく心地よい語調を表します         |   
 |                         | `style="lyrical"`         | 音楽的でセンチメンタルな方法で感情を表現します         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  | 
+| `zh-CN-YunyeNeural`     | `style="calm"`            | 話すときの冷静で落ち着いた態度を表します。 他の種類の音声に比べて、語調、ピッチ、韻律がかなり均一になります。    | 
+|                         | `style="cheerful"`        | 高いピッチと音声エネルギーにより、陽気で熱狂的な語調を表します                         |
+|                         | `style="sad"`             | 高いピッチ、低い強度、低い音声エネルギーにより、悲しそうな語調を表します。 この感情の一般的な指標は、話し中のすすり泣きや号泣です。            |
+|                         | `style="angry"`           | 低いピッチ、高い強度、高い音声エネルギーにより、怒っていらだっている語調を表します。 話者は、激怒し、不機嫌で、立腹した状態にあります。       |
+|                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                          |
+|                         | `style="disgruntled"`     | 軽蔑的で不満のある語調を表します。 この感情の音声は、不満と軽蔑を表します。              |
+|                         | `style="serious"`         | 厳しく威圧するような語調を表します。 話者は、多くの場合、安定したリズムで、堅苦しい緊張感の高い話し方をします。          |
+| `zh-CN-YunxiNeural`     | `style="cheerful"`        | 高いピッチと音声エネルギーにより、陽気で熱狂的な語調を表します                         |
+|                         | `style="sad"`             | 高いピッチ、低い強度、低い音声エネルギーにより、悲しそうな語調を表します。 この感情の一般的な指標は、話し中のすすり泣きや号泣です。            |
+|                         | `style="angry"`           | 低いピッチ、高い強度、高い音声エネルギーにより、怒っていらだっている語調を表します。 話者は、激怒し、不機嫌で、立腹した状態にあります。       |
+|                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                          |
+|                         | `style="disgruntled"`     | 軽蔑的で不満のある語調を表します。 この感情の音声は、不満と軽蔑を表します。              |
+|                         | `style="serious"`         | 厳しく威圧するような語調を表します。 話者は、多くの場合、安定したリズムで、堅苦しい緊張感の高い話し方をします。    |
+|                         | `style="depressed"`       | ピッチとエネルギーの低い、憂鬱で沈んだ語調を表します。    |
+|                         | `style="embarrassed"`     | 話者が不快感を感じているときの、自信がなく気後れしている語調を表します。   |
+| `zh-CN-XiaohanNeural`   | `style="cheerful"`        | 高いピッチと音声エネルギーにより、陽気で熱狂的な語調を表します                         |
+|                         | `style="sad"`             | 高いピッチ、低い強度、低い音声エネルギーにより、悲しそうな語調を表します。 この感情の一般的な指標は、話し中のすすり泣きや号泣です。            |
+|                         | `style="angry"`           | 低いピッチ、高い強度、高い音声エネルギーにより、怒っていらだっている語調を表します。 話者は、激怒し、不機嫌で、立腹した状態にあります。       |
+|                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                          |
+|                         | `style="disgruntled"`     | 軽蔑的で不満のある語調を表します。 この感情の音声は、不満と軽蔑を表します。              |
+|                         | `style="serious"`         | 厳しく威圧するような語調を表します。 話者は、多くの場合、安定したリズムで、堅苦しい緊張感の高い話し方をします。    |
+|                         | `style="embarrassed"`     | 話者が不快感を感じているときの、自信がなく気後れしている語調を表します。   |
+|                         | `style="affectionate"`    | 高いピッチと音声エネルギーにより、温かみのある優しい語調を表します。 話者は、聞き手の注目を集める状態にあります。 多くの場合、話者の「パーソナリティ」が実際に聞き手の心を引きつけています。          |     
+|                         | `style="gentle"`          | 低いピッチと音声エネルギーにより、穏やかで礼儀正しく心地よい語調を表します         |   
+| `zh-CN-XiaomoNeural`    | `style="cheerful"`        | 高いピッチと音声エネルギーにより、陽気で熱狂的な語調を表します                         |
+|                         | `style="angry"`           | 低いピッチ、高い強度、高い音声エネルギーにより、怒っていらだっている語調を表します。 話者は、激怒し、不機嫌で、立腹した状態にあります。       |
+|                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                          |
+|                         | `style="disgruntled"`     | 軽蔑的で不満のある語調を表します。 この感情の音声は、不満と軽蔑を表します。              |
+|                         | `style="serious"`         | 厳しく威圧するような語調を表します。 話者は、多くの場合、安定したリズムで、堅苦しい緊張感の高い話し方をします。    |
+|                         | `style="depressed"`       | ピッチとエネルギーの低い、憂鬱で沈んだ語調を表します。    |
+|                         | `style="gentle"`          | 低いピッチと音声エネルギーにより、穏やかで礼儀正しく心地よい語調を表します         |  
+| `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | 高いピッチと音声エネルギーにより、陽気で熱狂的な語調を表します                         |
+|                         | `style="angry"`           | 低いピッチ、高い強度、高い音声エネルギーにより、怒っていらだっている語調を表します。 話者は、激怒し、不機嫌で、立腹した状態にあります。       |
+|                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                          |
+|                         | `style="disgruntled"`     | 軽蔑的で不満のある語調を表します。 この感情の音声は、不満と軽蔑を表します。              |
+|                         | `style="serious"`         | 厳しく威圧するような語調を表します。 話者は、多くの場合、安定したリズムで、堅苦しい緊張感の高い話し方をします。    |
+|                         | `style="depressed"`       | ピッチとエネルギーの低い、憂鬱で沈んだ語調を表します。    |
+|                         | `style="gentle"`          | 低いピッチと音声エネルギーにより、穏やかで礼儀正しく心地よい語調を表します         |   
+| `zh-CN-XiaoruiNeural`    | `style="sad"`             | 高いピッチ、低い強度、低い音声エネルギーにより、悲しそうな語調を表します。 この感情の一般的な指標は、話し中のすすり泣きや号泣です。            |
+|                         | `style="angry"`           | 低いピッチ、高い強度、高い音声エネルギーにより、怒っていらだっている語調を表します。 話者は、激怒し、不機嫌で、立腹した状態にあります。       |
+|                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                          |
+
+各ニューラル音声でサポートされているロールを確認するには、次の表を使用してください。
+
+| 音声                   | ロール                       | 説明                                                 |
+|-------------------------|----------------------------|-------------------------------------------------------------|
+| `zh-CN-XiaomoNeural`    | `role="YoungAdultFemale"`  | 音声は若い成人の女性を模倣します。                 |
+|                         | `role="OlderAdultMale"`    | 音声は年配の男性を模倣します。                   |
+|                         | `role="Girl"`              | 音声は少女を模倣します。                               |
+|                         | `role="Boy"`               | 模倣は少年を模倣します。                                |
+| `zh-CN-XiaoxuanNeural`  | `role="YoungAdultFemale"`  | 音声は若い成人の女性を模倣します。                 |
+|                         | `role="OlderAdultFemale"`  | 音声は年配の女性を模倣します。                 |
+|                         | `role="OlderAdultMale"`    | 音声は年配の男性を模倣します。                   |
 
 **例**
 
@@ -239,6 +343,35 @@ speechConfig!.setPropertyTo(
     <voice name="en-US-AriaNeural">
         <mstts:express-as style="cheerful">
             That'd be just amazing!
+        </mstts:express-as>
+    </voice>
+</speak>
+```
+
+この SSML スニペットは、`styledegree` 属性を使用して XiaoxiaoNeural の話し方の強度を変更する方法を示しています。
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="zh-CN">
+    <voice name="zh-CN-XiaoxiaoNeural">
+        <mstts:express-as style="sad" styledegree="2">
+            快走吧，路上一定要注意安全，早去早回。
+        </mstts:express-as>
+    </voice>
+</speak>
+```
+
+この SSML スニペットは、`role` 属性を使用して XiaomoNeural のロールプレイを変更する方法を示しています。
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+       xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="zh-CN">
+    <voice name="zh-CN-XiaomoNeural">
+        女儿看见父亲走了进来，问道：
+        <mstts:express-as role="YoungAdultFemale" style="calm">
+            “您来的挺快的，怎么过来的？”
+        </mstts:express-as>
+        父亲放下手提包，说：
+        <mstts:express-as role="OlderAdultMale" style="calm">
+            “刚打车过来的，路上还挺顺畅。”
         </mstts:express-as>
     </voice>
 </speak>
@@ -263,7 +396,7 @@ speechConfig!.setPropertyTo(
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
 | `strength` | 次のいずれかの値を使用して、一時停止の相対的な時間を指定します。<ul><li>なし</li><li>x-weak</li><li>weak</li><li>medium (既定値)</li><li>strong</li><li>x-strong</li></ul> | 省略可能 |
-| `time` | 一時停止の絶対時間を秒またはミリ秒で指定します。 `2s` や `500` は有効な値の例です | 省略可能 |
+| `time` | 一時停止の絶対継続時間を秒またはミリ秒単位で指定します。この値は 5000 ms 未満に設定する必要があります。 `2s` や `500ms` は有効な値の例です | 省略可能 |
 
 | Strength                      | 説明 |
 |-------------------------------|-------------|
@@ -282,6 +415,37 @@ speechConfig!.setPropertyTo(
         Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
     </voice>
 </speak>
+```
+## <a name="add-silence"></a>無音を追加する
+
+`mstts:silence` 要素を使用して、テキストの前後または 2 つの隣接する文の間に一時停止を挿入します。 
+
+> [!NOTE]
+>`mstts:silence` と `break` の違いとして、`break` はテキスト内の任意の場所に追加できますが、無音は入力テキストの先頭または末尾、または 2 つの隣接する文の境界でのみ機能します。  
+
+
+**構文**
+
+```xml
+<mstts:silence  type="string"  value="string"/>
+```
+
+**属性**
+
+| 属性 | 説明 | 必須/省略可能 |
+|-----------|-------------|---------------------|
+| `type` | 無音を追加する場所を指定します。 <ul><li>Leading - テキストの先頭 </li><li>Tailing - テキストの末尾 </li><li>Sentenceboundary - 隣接する文の間 </li></ul> | 必須 |
+| `Value` | 一時停止の絶対継続時間を秒またはミリ秒単位で指定します。この値は 5000 ms 未満に設定する必要があります。 `2s` や `500ms` は有効な値の例です | 必須 |
+
+**例** この例では、`mtts:silence` を使用して、2 つの文の間に 200 ms の無音を追加します。
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">  
+<voice name="en-US-AriaNeural"> 
+<mstts:silence  type="Sentenceboundary" value="200ms"/> 
+If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way. 
+A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time. 
+</voice> 
+</speak> 
 ```
 
 ## <a name="specify-paragraphs-and-sentences"></a>段落や文を指定する
@@ -321,6 +485,9 @@ speechConfig!.setPropertyTo(
 `ph` 要素は、SSML ドキュメントの発音のために使用します。 `ph` 要素に含めることができるのはテキストのみで、その他の要素を含めることはできません。 常に人間が判読できる音声をフォールバックとして提供します。
 
 音標文字は音素で構成され、英字、数字、または文字から成り、場合によってはその組み合わせで構成されます。 それぞれの音素は、音声の一意の音を示します。 これは、文字が複数の話された音を表す場合があるラテン文字とは対照的です。 "candy" と "cease" という単語の文字 "c" の異なる発音や、"thing" と "those" の文字の組み合わせ "th" の異なる発音を考えてみてください。
+
+> [!NOTE]
+> 現時点では、これらの 5 つの音声 (et-EE-AnuNeural、ga-IE-OrlaNeural、lt-LT-OnaNeural、lv-LV-EveritaNeural、および mt-MT-GarceNeural) では音素タグはサポートされていません。
 
 **構文**
 
@@ -368,6 +535,10 @@ speechConfig!.setPropertyTo(
 > [!NOTE]
 > 現在、カスタム辞書では UTF-8 エンコードがサポートされています。 
 
+> [!NOTE]
+> 現時点では、これらの 5 つの音声 (et-EE-AnuNeural、ga-IE-OrlaNeural、lt-LT-OnaNeural、lv-LV-EveritaNeural、および mt-MT-GarceNeural) ではカスタム辞書はサポートされていません。
+
+
 **構文**
 
 ```XML
@@ -405,7 +576,7 @@ speechConfig!.setPropertyTo(
 
 `lexicon` 要素には、少なくとも 1 つの `lexeme` 要素が含まれています。 各 `lexeme` 要素には、少なくとも 1 つの `grapheme` 要素と、1 つ以上の `grapheme`、`alias`、および `phoneme` 要素が含まれています。 `grapheme` 要素には、<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">正書法 <span class="docon docon-navigate-external x-hidden-focus"></span></a> を説明するテキストが含まれています。 `alias` 要素は、頭字語または短縮語の発音を示すために使用されます。 `phoneme` 要素には、`lexeme` の発音方法を説明するテキストを指定します。
 
-カスタム辞書を使用して単語の発音を直接設定することはできない点に注意してください。 頭字語または短縮語の発音を設定する必要がある場合は、まず `alias` を指定し、次に `phoneme` をその `alias` に関連付けます。 次に例を示します。
+カスタム辞書を使用して語句の発音を直接設定することはできない点に注意してください。 頭字語または短縮語の発音を設定する必要がある場合は、まず `alias` を指定し、次に `phoneme` をその `alias` に関連付けます。 次に例を示します。
 
 ```xml
   <lexeme>
@@ -418,12 +589,20 @@ speechConfig!.setPropertyTo(
   </lexeme>
 ```
 
+また、頭字語または略語に対して期待される `alias` を直接指定することもできます。 次に例を示します。
+```xml
+  <lexeme>
+    <grapheme>Scotland MV</grapheme> 
+    <alias>Scotland Media Wave</alias> 
+  </lexeme>
+```
+
 > [!IMPORTANT]
 > IPA を使用する場合、`phoneme` 要素に空白を含めることはできません。
 
 カスタム辞書ファイルの詳細については、「[Pronunciation Lexicon Specification (PLS) Version 1.0 (発音辞書仕様 (PLS) バージョン 1.0)](https://www.w3.org/TR/pronunciation-lexicon/)」を参照してください。
 
-次に、カスタム辞書ファイルを発行します。 このファイルの格納場所に関する制限はありませんが、[Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) を使用することをお勧めします。
+次に、カスタム辞書ファイルを発行します。 このファイルの格納場所に関する制限はありませんが、[Azure Blob Storage](../../storage/blobs/storage-quickstart-blobs-portal.md) を使用することをお勧めします。
 
 カスタム辞書を発行した後は、SSML から参照できます。
 
@@ -493,11 +672,11 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| `pitch` | テキストのベースラインのピッチを示します。 ピッチは次のように表されます。<ul><li>絶対値。数字の後に "Hz" (ヘルツ) が付いて表されます。 たとえば、600 Hz。</li><li>相対値。前に "+" または "-" が付き、後にピッチの変更量を指定する "Hz" または "st" が付いた数字として表されます。 たとえば、+80 Hz、-2st。 "st" は、変更単位が半音 (標準の全音階での全音の半分) であることを示します。</li><li>定数値:<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>default</li></ul></li></ul>. | 省略可能 |
+| `pitch` | テキストのベースラインのピッチを示します。 ピッチは次のように表されます。<ul><li>絶対値。数字の後に "Hz" (ヘルツ) が付いて表されます。 たとえば、「 `<prosody pitch="600Hz">some text</prosody>` 」のように入力します。</li><li>相対値。前に "+" または "-" が付き、後にピッチの変更量を指定する "Hz" または "st" が付いた数字として表されます。 たとえば、`<prosody pitch="+80Hz">some text</prosody>` や `<prosody pitch="-2st">some text</prosody>` などです。 "st" は、変更単位が半音 (標準の全音階での全音の半分) であることを示します。</li><li>定数値:<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>default</li></ul></li></ul> | 省略可能 |
 | `contour` |ニューラル音声と標準音声の両方で音調がサポートされるようになりました。 音調とは音の高さの変化です。 この変化は、音声出力において指定の時間位置にあるターゲットの配列として表わされます。 各ターゲットは、パラメーターのペアのセットによって定義されます。 次に例を示します。 <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>パラメーターの各セットの最初の値は、ピッチの変更位置をテキストの継続時間の割合として指定します。 2 番目の値は、ピッチの相対値または列挙値を使用して、ピッチを増減する量を指定します (`pitch` を参照)。 | 省略可能 |
 | `range` | テキストのピッチの範囲を表す値。 `range` は、`pitch` の記述に使用されるものと同じ絶対値、相対値、または列挙値を使用して表すことができます。 | 省略可能 |
 | `rate` | テキストの読み上げ速度を示します。 `rate` は次のように表されます。<ul><li>相対値。既定値の乗数として機能する数字で表されます。 たとえば、値 *1* では速度は変更されません。 値 *0.5* では、速度が半分になります。 値 *3* では、速度が 3 倍になります。</li><li>定数値:<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>default</li></ul></li></ul> | 省略可能 |
-| `duration` | 音声合成 (TTS) サービスがテキストを読んでいる間に経過する時間 (秒またはミリ秒)。 たとえば、*2s* または *1800ms* です。 | 省略可能 |
+| `duration` | 音声合成 (TTS) サービスがテキストを読んでいる間に経過する時間 (秒またはミリ秒)。 たとえば、*2s* または *1800ms* です。 duration では、標準の音声のみがサポートされます。| 省略可能 |
 | `volume` | 読み上げている音声の音量レベルを示します。 音量は次のように表されます。<ul><li>絶対値。0.0 から 100.0 (*quietest* から *loudest* まで) の範囲の数字として表されます。 たとえば、75 です。 既定値は 100.0 です。</li><li>相対値。音量の変更量を指定する、前に "+" または "-" が付いた数字として表されます。 たとえば、+10、-5.5。</li><li>定数値:<ul><li>silent</li><li>x-soft</li><li>soft</li><li>中</li><li>loud</li><li>x-loud</li><li>default</li></ul></li></ul> | 省略可能 |
 
 ### <a name="change-speaking-rate"></a>読み上げ速度を変更する

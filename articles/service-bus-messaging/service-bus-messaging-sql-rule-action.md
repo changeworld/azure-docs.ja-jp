@@ -1,20 +1,19 @@
 ---
-title: Azure Service Bus の SQLRuleAction 構文リファレンス
-description: この記事では、SQLRuleAction 構文のリファレンスを示します。 アクションは、ブローカー メッセージに対して実行される SQL 言語ベースの構文で記述されています。
+title: Azure Service Bus サブスクリプション ルールの SQL アクション構文 |Microsoft Docs
+description: この記事では、SQL ルールのアクション構文のリファレンスを示します。 アクションは、メッセージに対して実行される SQL 言語ベースの構文で記述されています。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 61fa6e046b4d4a0ba91bf8608c846755026d07ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 11/24/2020
+ms.openlocfilehash: f7b8cdfcccc22508b98a42391d2a0ef9955232d0
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341573"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742686"
 ---
-# <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure Service Bus の SQLRuleAction 構文リファレンス
+# <a name="subscription-rule-sql-action-syntax"></a>サブスクリプション ルールの SQL アクション構文
 
-*SqlRuleAction* は [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) クラスのインスタンスであり、[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) に対して実行される、SQL 言語ベースの構文で記述された一連のアクションを表します。   
+"*SQL アクション*" は、メッセージがサブスクリプション ルールのフィルターによって選択された後にメッセージ メタデータを操作するために使用されます。 これは、SQL-92 標準のサブセットに基づくテキスト式です。 アクション式は、[Azure Resource Manager テンプレート](service-bus-resource-manager-namespace-topic-with-rule.md)内の Service Bus `Rule` の "action" プロパティの `sqlExpression` 要素、または Azure CLI `az servicebus topic subscription rule create` コマンドの [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) 引数、およびサブスクリプション ルールの管理を可能にするいくつかの SDK 関数で使用されます。
   
-この記事では、SQL ルール アクションの文法について詳しく説明します。  
   
 ```  
 <statements> ::=
@@ -85,7 +84,7 @@ ms.locfileid: "85341573"
   
  `[:IsDigit:]` は、10 進数として分類される任意の Unicode 文字を表します。 `c` が Unicode の数字の場合、`System.Char.IsDigit(c)` は `true` を返します。  
   
- `<regular_identifier>` に予約済みのキーワードを指定することはできません。  
+ `<regular_identifier>` に予約キーワードを指定することはできません。  
   
  `<delimited_identifier>` は、左右の各かっこ ([]) で囲まれた任意の文字列です。 右角かっこは 2 つの右角かっこで表されます。 `<delimited_identifier>` の例を次に示します。  
   
@@ -196,9 +195,11 @@ ms.locfileid: "85341573"
   
 ### <a name="remarks"></a>解説  
 
-`newid()` 関数は、`System.Guid.NewGuid()` メソッドによって生成された **System.Guid** を返します。  
+`newid()` 関数は、`System.Guid.NewGuid()` メソッドによって生成された `System.Guid` を返します。  
   
 `property(name)` 関数は、`name` によって参照されるプロパティの値を返します。 `name` 値には、文字列値を返す任意の有効な式を指定できます。  
+
+[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
   
 ## <a name="considerations"></a>考慮事項
 
@@ -209,7 +210,11 @@ ms.locfileid: "85341573"
 - 存在しないユーザー プロパティが参照されていても、アクションは失敗しません。
 - 存在しないユーザー プロパティは内部的に "Unknown" と評価され、演算子を評価するときに [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) と同じセマンティクスに従います。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- [SQLRuleAction クラス](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
-- [SQLFilter クラス](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
+- [SQLRuleAction クラス (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SQLRuleAction クラス (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)
+- [SqlRuleAction クラス (Java)](/java/api/com.microsoft.azure.servicebus.rules.sqlruleaction)
+- [SqlRuleAction (JavaScript)](/javascript/api/@azure/service-bus/sqlruleaction)
+- [`az servicebus topic subscription rule`](/cli/azure/servicebus/topic/subscription/rule)
+- [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

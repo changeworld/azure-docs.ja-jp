@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 5ac0f0777ea341036950550e19c5d8e7fb71a91f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 193d779a2e9246fe36af4828251a15d593e80ac7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545065"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514777"
 ---
 # <a name="tutorial-integrate-soloinsight-cloudgate-sso-with-azure-active-directory"></a>チュートリアル:Soloinsight-CloudGate SSO を Azure Active Directory と統合する
 
@@ -26,7 +26,7 @@ ms.locfileid: "88545065"
 * ユーザーが自分の Azure AD アカウントを使用して、Soloinsight-CloudGate SSO に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Soloinsight-CloudGate SSO では、**SP** によって開始される SSO がサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Soloinsight-CloudGate SSO では、 **SP** によって開始される SSO がサポートされます。
 
 ## <a name="adding-soloinsight-cloudgate-sso-from-the-gallery"></a>ギャラリーからの Soloinsight-CloudGate SSO の追加
 
@@ -47,7 +47,7 @@ Soloinsight-CloudGate SSO の Azure AD への統合を構成するには、ギ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Soloinsight-CloudGate SSO**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Soloinsight-CloudGate SSO** 」と入力します。
 1. 結果パネルから **[Soloinsight-CloudGate SSO]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -80,7 +80,7 @@ Soloinsight-CloudGate SSO で Azure AD の SSO を構成してテストするに
     1. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.sigateway.com/process/sso`
 
    > [!NOTE]
-   > これらは実際の値ではありません。 これらの値を実際のサインオン URL と識別子に更新します。これについては、このチュートリアルの「**Soloinsight-CloudGate SSO のシングル サインオンの構成**」セクションで後述します。
+   > これらは実際の値ではありません。 これらの値を実際のサインオン URL と識別子に更新します。これについては、このチュートリアルの「 **Soloinsight-CloudGate SSO のシングル サインオンの構成** 」セクションで後述します。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -92,7 +92,7 @@ Soloinsight-CloudGate SSO で Azure AD の SSO を構成してテストするに
 
 ### <a name="configure-soloinsight-cloudgate-sso"></a>Soloinsight-CloudGate SSO を構成する
 
-1. Soloinsight-CloudGate SSO 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして、**My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. Soloinsight-CloudGate SSO 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして、 **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -134,11 +134,11 @@ Soloinsight-CloudGate SSO で Azure AD の SSO を構成してテストするに
 
 8. **AD 識別子とログイン URL**
 
-    * Azure portal の **[Set up Soloinsight-CloudGate SSO]\(Soloinsight-CloudGate SSO のセットアップ\)** 構成からコピーした**ログイン URL** を、CloudGate Web ポータルの SSO 設定セクションに入力します。
+    * Azure portal の **[Set up Soloinsight-CloudGate SSO]\(Soloinsight-CloudGate SSO のセットアップ\)** 構成からコピーした **ログイン URL** を、CloudGate Web ポータルの SSO 設定セクションに入力します。
 
-    * Azure portal の**ログイン URL** リンクを、CloudGate Web ポータルの **[AD Login URL]\(AD ログイン URL\)** フィールドに貼り付けます。
+    * Azure portal の **ログイン URL** リンクを、CloudGate Web ポータルの **[AD Login URL]\(AD ログイン URL\)** フィールドに貼り付けます。
 
-    * Azure portal の**Azure AD 識別子**リンクを、CloudGate Web ポータルの **[AD Identifier]\(AD 識別子\)** フィールドに貼り付けます
+    * Azure portal の **Azure AD 識別子** リンクを、CloudGate Web ポータルの **[AD Identifier]\(AD 識別子\)** フィールドに貼り付けます
 
         ![AD ログイン](./media/soloinsight-cloudgate-sso-tutorial/ad-login.png)
 
@@ -180,12 +180,12 @@ Soloinsight-CloudGate SSO で Azure AD の SSO を構成してテストするに
 
 ### <a name="test-sso"></a>SSO のテスト
 
-アクセス パネルで [Soloinsight-CloudGate SSO] タイルを選択すると、SSO を設定した Soloinsight-CloudGate SSO に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Soloinsight-CloudGate SSO] タイルを選択すると、SSO を設定した Soloinsight-CloudGate SSO に自動的にサインインされるはずです。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

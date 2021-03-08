@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 211e06695d3cabef8cfeb0a7bbf581835819345c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a70d434b06fd19071f3576f9333579e0bd2b85e7
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686209"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574976"
 ---
 # <a name="buy-a-reservation"></a>予約の購入
 
@@ -21,9 +21,9 @@ Azure の予約には、多数の Azure リソースに対する計画を 1 年�
 
 ## <a name="who-can-buy-a-reservation"></a>だれが予約を購入できるか
 
-プランを購入するには、Enterprise のサブスクリプション所有者ロール (MS-AZR-0017P または MS-AZR-0148P)、従量課金制サブスクリプション (MS-AZR-0003P または MS-AZR-0023P)、Microsoft 顧客契約サブスクリプションのいずれかが必要です。 クラウド ソリューション プロバイダーは、Azure portal または [パートナー センター](/partner-center/azure-reservations) を使用して Azure の予約を購入できます。
+予約を購入するには、Enterprise (MS-AZR-0017P または MS-AZR-0148P) または従量課金制 (MS-AZR-0003P または MS-AZR-0023P) または Microsoft 顧客契約型の Azure サブスクリプションに対する所有者ロールまたは予約購入者ロールを保持している必要があります。 クラウド ソリューション プロバイダーは、Azure portal または [パートナー センター](/partner-center/azure-reservations) を使用して Azure の予約を購入できます。
 
-Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約インスタンスを追加します]** オプションを無効にして、購入を EA 管理者に限定することができます。 EA 管理者は、予約を購入するために、少なくとも 1 つの EA サブスクリプションのサブスクリプション所有者である必要があります。 このオプションは、さまざまなコスト センター用に予約を購入する集中管理チームを必要とする企業に役立ちます。 購入後、集中管理チームは、予約にコスト センター所有者を追加できます。 これにより、所有者は、そのサブスクリプションに予約のスコープを設定できます。 集中管理チームは、予約が購入されたサブスクリプション所有者のアクセス権を持つ必要はありません。
+Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約インスタンスを追加します]** オプションを無効にして、購入を EA 管理者に限定することができます。 EA 管理者は、予約を購入するために、少なくとも 1 つの EA サブスクリプションの所有者または予約購入者のアクセス権を保持している必要があります。 このオプションは、一元化されたチームが予約を購入する必要がある企業に役立ちます。
 
 予約割引が適用されるのは、エンタープライズ、クラウド ソリューション プロバイダー (CSP)、Microsoft 顧客契約、および従量課金制の個人プランを通じて購入したサブスクリプションに関連付けられたリソースのみです。
 
@@ -67,7 +67,7 @@ Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約イン�
 
 予約の購入は、Azure portal、API、PowerShell、CLI から行うことができます。 予約の購入準備が整ったら、次の中から、ご自身に該当する記事をお読みください。
 
-- [App Service](prepay-app-service-isolated-stamp.md)
+- [App Service](prepay-app-service.md)
 - [Azure Cache for Redis](../../azure-cache-for-redis/cache-reserved-pricing.md)
 - [Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)
 - [Databricks](prepay-databricks-reserved-capacity.md)
@@ -81,7 +81,7 @@ Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約イン�
 - [Azure Database for MySQL](../../mysql/concept-reserved-pricing.md)
 - [Azure Database for MariaDB](../../mariadb/concept-reserved-pricing.md)
 - [Azure Synapse Analytics](prepay-sql-data-warehouse-charges.md)
-- [仮想マシン](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [仮想マシン](../../virtual-machines/prepay-reserved-vm-instances.md)
 
 ## <a name="buy-reservations-with-monthly-payments"></a>月払いで予約を購入する
 
@@ -123,7 +123,7 @@ Azure サブスクリプションの支払い方法によっては、組織内�
 EA サブスクリプションをお持ちのお客様の場合:
 
 - 通知は、EA 通知の連絡先にのみ送信されます。
-- RBAC (IAM) アクセス許可を使用して予約に追加されたユーザーは、メール通知を受け取りません。
+- Azure RBAC (IAM) アクセス許可を使用して予約に追加されたユーザーは、メール通知を受け取りません。
 
 個々のサブスクリプションをお持ちのお客様の場合:
 

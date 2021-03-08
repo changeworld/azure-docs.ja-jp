@@ -3,20 +3,19 @@ title: Azure Stream Analytics との Power BI ダッシュボードの統合
 description: この記事では、リアルタイムの Power BI ダッシュボードを使って、Azure Stream Analytics ジョブからデータを視覚化する方法について説明します。
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 8/6/2020
-ms.openlocfilehash: 4c6d1d3877629150493ee2a57a04573760d2772a
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.date: 11/16/2020
+ms.openlocfilehash: 3bd35df91e836245de52d8959dff0671582ebc3f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870019"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012446"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics と Power BI:ストリーミング データのリアルタイム分析ダッシュボード
 
-Azure Stream Analytics では、主要なビジネス インテリジェンス ツールの 1 つである [Microsoft Power BI](https://powerbi.com/) を利用することができます。 この記事では、Azure Stream Analytics ジョブの出力として Power BI を使ってビジネス インテリジェンス ツールを作成する方法について説明します。 リアルタイム ダッシュボードを作って使う方法についても説明します。
+Azure Stream Analytics では、主要なビジネス インテリジェンス ツールの 1 つである [Microsoft Power BI](https://powerbi.com/) を利用することができます。 この記事では、Azure Stream Analytics ジョブの出力として Power BI を使ってビジネス インテリジェンス ツールを作成する方法について説明します。 また、Stream Analytics ジョブによって継続的に更新されるリアルタイム ダッシュボードを作成して使用する方法についても説明します。
 
 この記事は、Stream Analytics による[リアルタイムでの不正検出](stream-analytics-real-time-fraud-detection.md)に関するチュートリアルに続くものです。 この記事では、前のチュートリアルで作成したワークフローに Power BI の出力を追加し、Streaming Analytics ジョブによって検出された不正な電話を視覚化できるようにします。 
 
@@ -42,7 +41,7 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 3. **[+ 追加]**  >  **[Power BI]** の順に選択します。 続けて、フォームに次の詳細を入力し、独自のユーザー ID を使用して Power BI に接続するために **[承認]** を選択します (トークンは 90日間有効です)。 
 
 >[!NOTE]
->運用ジョブの場合は、[マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)ように接続することをお勧めします。
+>運用ジョブの場合は、[マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する](./powerbi-output-managed-identity.md)ように接続することをお勧めします。
 
    |**設定**  |**推奨値**  |
    |---------|---------|
@@ -57,18 +56,18 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
    > このデータセットとテーブルは Power BI アカウントに明示的に作成しないことをお勧めします。 Stream Analytics ジョブを開始すると自動的に作成され、Power BI への出力が開始されます。 ジョブ クエリで結果が返されない場合、データセットとテーブルは作成されません。
    >
 
-4. **[承認する]** を選択すると、ポップアップ ウィンドウが開き、Power BI アカウントに対する認証のための資格情報を入力するよう求められます。 認可が成功したら、設定を**保存**します。
+4. **[承認する]** を選択すると、ポップアップ ウィンドウが開き、Power BI アカウントに対する認証のための資格情報を入力するよう求められます。 認可が成功したら、設定を **保存** します。
 
 8. **Create** をクリックしてください。
 
 データセットは、次の設定で作成されます。
 
 * **defaultRetentionPolicy:BasicFIFO** - データは FIFO で、最大行数は 200,000 です。
-* **defaultMode: pushStreaming** - データセットは、ストリーミング タイルと従来のレポートベース ビジュアル (プッシュとも呼ばれます) の両方をサポートしています。
+* **defaultMode: hybrid** - データセットは、ストリーミング タイル (プッシュとも呼ばれます) と従来のレポートベース ビジュアルの両方をサポートしています。 プッシュ コンテンツについては、データはこの場合、ストリーム分析ジョブから継続的に更新され、Power BI 側からの更新をスケジュールする必要はありません。
 
 現時点では、他のフラグでデータセットを作成することはできません。
 
-Power BI データセットの詳細については、[Power BI REST API](https://msdn.microsoft.com/library/mt203562.aspx) リファレンスを参照してください。
+Power BI データセットの詳細については、[Power BI REST API](/rest/api/power-bi/) リファレンスを参照してください。
 
 
 ## <a name="write-the-query"></a>クエリを作成する
@@ -221,7 +220,7 @@ Streaming Analytics ジョブが、受信ストリームでの不正な呼び出
 ```
 
 ### <a name="renew-authorization"></a>承認の更新
-ジョブが作成されてから、または最後の認証以降にパスワードが変わっている場合、Power BI アカウントを再認証する必要があります。 また、Azure Active Directory (Azure AD) テナント上で Azure Multi-Factor Authentication が構成されている場合は、Power BI の承認を 2 週間ごとに更新する必要があります。 更新しなかった場合、ジョブが出力されなかったり、操作ログに "`Authenticate user error`" が記録されたりする現象が生じる可能性があります。
+ジョブが作成されてから、または最後の認証以降にパスワードが変わっている場合、Power BI アカウントを再認証する必要があります。 また、Azure Active Directory (Azure AD) テナント上で Azure AD Multi-Factor Authentication が構成されている場合は、Power BI の承認を 2 週間ごとに更新する必要があります。 更新しなかった場合、ジョブが出力されなかったり、操作ログに "`Authenticate user error`" が記録されたりする現象が生じる可能性があります。
 
 同様に、トークンの期限が切れた後でジョブが開始すると、エラーが発生し、ジョブは失敗します。 この問題を解決するには、実行中のジョブを停止し、Power BI 出力に移動します。 データの損失を避けるには、 **[承認の更新]** リンクを選択し、 **[最後に停止した時刻]** からジョブを再開します。
 
@@ -231,6 +230,6 @@ Power BI で承認が更新されると、承認の領域に緑色のアラー�
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics の出力](stream-analytics-define-outputs.md)
-* [Azure Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics の管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-* [マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)
+* [Azure Stream Analytics クエリ言語リファレンス](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics の管理 REST API リファレンス](/rest/api/streamanalytics/)
+* [マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する](./powerbi-output-managed-identity.md)

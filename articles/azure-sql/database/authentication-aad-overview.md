@@ -1,28 +1,28 @@
 ---
 title: Azure Active Directory 認証
-description: Azure Active Directory を使用して Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics を認証する方法について説明します
+description: Azure Active Directory を使用して Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics の Synapse SQL を認証する方法について説明します
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
-ms.openlocfilehash: e1f97b1a29681a65cddf3a5904020555e903fe63
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a636c0e2a41b636f30ada14d4f16a022f2890b71
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984777"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454293"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Azure Active Directory 認証を使用する
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure Active Directory (Azure AD) 認証は、Azure AD の ID を使用して Azure [SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、[Azure Synapse Analytics (旧称 Azure SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。
+Azure Active Directory (Azure AD) 認証は、Azure AD の ID を使用して [Azure SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、[Azure Synapse Analytics の Synapse SQL](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。
 
 > [!NOTE]
 > この記事は、Azure SQL Database、SQL Managed Instance、Azure Synapse Analytics に当てはまります。
@@ -39,7 +39,7 @@ Azure AD 認証を使用すると、データベース ユーザーの ID や他
 - Azure AD 認証のサポート対象:
   - Azure AD クラウド専用 ID。
   - 以下をサポートする Azure AD ハイブリッド ID:
-    - シームレス シングル サインオン (SSO) と 2 つのオプション (**パススルー**認証と**パスワード ハッシュ**認証) を組み合わせたクラウド認証。
+    - シームレス シングル サインオン (SSO) と 2 つのオプション (**パススルー** 認証と **パスワード ハッシュ** 認証) を組み合わせたクラウド認証。
     - フェデレーション認証。
   - Azure AD の認証方法と、どれを選択すべきかに関する詳細については、次の記事を参照してください。
     - [Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](../../active-directory/hybrid/choose-ad-authn.md)
@@ -61,7 +61,7 @@ Azure AD 認証を使用すると、データベース ユーザーの ID や他
 6. Azure AD の ID を使用してデータベースに接続します。
 
 > [!NOTE]
-> Azure AD を作成して設定した後、Azure SQL Database、SQL Managed Instance、Azure Synapse で Azure AD を構成する方法については、[Azure SQL Database での Azure AD の構成](authentication-aad-configure.md)に関するページを参照してください。
+> Azure AD を作成して設定した後、Azure SQL Database、SQL Managed Instance、Azure Synapse Analytics の Synapse SQL で Azure AD を構成する方法については、[Azure SQL Database での Azure AD の構成](authentication-aad-configure.md)に関するページを参照してください。
 
 ## <a name="trust-architecture"></a>信頼のアーキテクチャ
 
@@ -155,20 +155,20 @@ Azure AD サーバー プリンシパル (ログイン) では、次の認証方
 - 接続のタイムアウトを 30 秒に設定することをお勧めします。
 - SQL Server 2016 Management Studio と SQL Server Data Tools for Visual Studio 2015 (バージョン 14.0.60311.1April 2016 以降) では、Azure Active Directory 認証がサポートされています (Azure AD 認証は、 **.NET Framework Data Provider for SqlServer** (.NET Framework 4.6 以降のバージョン) でサポートされています)。 したがって、これらのツールとデータ層アプリケーション (DAC および BACPAC) の最新のバージョンでは、Azure AD 認証を使用できます。
 - バージョン 15.0.1 以降では、[sqlcmd ユーティリティ](/sql/tools/sqlcmd-utility)と [bcp ユーティリティ](/sql/tools/bcp-utility)は Multi-Factor Authentication を使用した Active Directory 対話型認証をサポートしています。
-- SQL Server Data Tools for Visual Studio 2015 には、April 2016 バージョン以降の Data Tools (バージョン 14.0.60311.1) が必要です。 現在、Azure AD ユーザーは SSDT のオブジェクト エクスプローラーに表示されません。 回避策として、ユーザーを [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx) で表示してください。
+- SQL Server Data Tools for Visual Studio 2015 には、April 2016 バージョン以降の Data Tools (バージョン 14.0.60311.1) が必要です。 現在、Azure AD ユーザーは SSDT のオブジェクト エクスプローラーに表示されません。 回避策として、ユーザーを [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql) で表示してください。
 - [Microsoft JDBC Driver 6.0 for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) は、Azure AD 認証をサポートしています。 「 [接続プロパティの設定](/sql/connect/jdbc/setting-the-connection-properties)」もご覧ください。
 - PolyBase では Azure AD 認証を使用した認証は行えません。
 - Azure SQL Database と Azure Synapse 向けの Azure AD 認証は、Azure Portal の **[データベースのインポート]** ブレードと **[データベースのエクスポート]** ブレードによりサポートされています。 Azure AD 認証を使用したインポートとエクスポートは、PowerShell コマンドでもサポートされています。
-- Azure AD 認証は、CLI を使用することによって、SQL Database、SQL Managed Instance、Azure Synapse でサポートされます。 詳細については、[SQL Database または Azure Synapse で Azure AD 認証を構成して管理する](authentication-aad-configure.md)方法に関するページと「[SQL Server - az sql server](https://docs.microsoft.com/cli/azure/sql/server)」を参照してください。
+- Azure AD 認証は、CLI を使用することによって、SQL Database、SQL Managed Instance、Azure Synapse でサポートされます。 詳細については、[SQL Database または Azure Synapse で Azure AD 認証を構成して管理する](authentication-aad-configure.md)方法に関するページと「[SQL Server - az sql server](/cli/azure/sql/server)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 - Azure AD インスタンスを作成して設定し、Azure SQL Database、SQL Managed Instance、または Azure Synapse を使用して構成する方法については、[SQL Database、SQL Managed Instance、または Azure Synapse で Azure Active Directory 認証を構成して管理する](authentication-aad-configure.md)方法に関するページを参照してください。
 - SQL Managed Instance での Azure AD サーバー プリンシパル (ログイン) の使用のチュートリアルについては、[SQL Managed Instance での Azure AD サーバー プリンシパル (ログイン)](../managed-instance/aad-security-configure-tutorial.md) に関するページを参照してください
 - SQL Database のログイン、ユーザー、データベース ロール、アクセス許可の概要については、[ログイン、ユーザー、データベース ロール、およびアクセス許可](logins-create-manage.md)に関するページを参照してください。
-- データベース プリンシパルの詳細については、「[プリンシパル](https://msdn.microsoft.com/library/ms181127.aspx)」を参照してください。
-- データベース ロールの詳細については、[データベース ロール](https://msdn.microsoft.com/library/ms189121.aspx)に関するページを参照してください。
-- SQL Managed Instance 用の Azure AD サーバー プリンシパル (ログイン) の作成の構文については、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)」を参照してください。
+- データベース プリンシパルの詳細については、「[プリンシパル](/sql/relational-databases/security/authentication-access/principals-database-engine)」を参照してください。
+- データベース ロールの詳細については、[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles)に関するページを参照してください。
+- SQL Managed Instance 用の Azure AD サーバー プリンシパル (ログイン) の作成の構文については、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)」を参照してください。
 - SQL Database のファイアウォール規則の詳細については、[SQL Database のファイアウォール規則](firewall-configure.md)に関するページを参照してください。
 
 <!--Image references-->

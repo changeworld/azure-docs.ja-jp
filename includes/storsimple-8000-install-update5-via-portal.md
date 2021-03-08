@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: d2df7388018c463ba58b57be46945915210b84b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9832a961562930e61e94b28ed78976fd9f8c6f78
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181373"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375975"
 ---
 #### <a name="to-install-an-update-from-the-azure-portal"></a>Azure ポータルから 更新プログラムをインストールするには
 
@@ -23,11 +23,11 @@ ms.locfileid: "67181373"
 
 2. 新しい更新プログラムが利用できる場合は、通知が表示されます。 または、 **[デバイスの更新プログラム]** ブレードで **[更新プログラムのスキャン]** をクリックします。 利用可能な更新プログラムをスキャンするジョブが作成されます。 ジョブが正常に完了すると、その旨が通知されます。
 
-    ![[デバイスの更新プログラム] をクリック](./media/storsimple-8000-install-update5-via-portal/update3.png)
+    ![[デバイスの更新プログラム] をクリック 2](./media/storsimple-8000-install-update5-via-portal/update3.png)
 
 3. 更新プログラムをデバイスに適用する前に、リリース ノートを確認することをお勧めします。 **[更新プログラムのインストール]** をクリックすると、更新プログラムが適用されます。 **[定期更新プログラムの確認]** ブレードで、更新プログラムを適用する前に完了する必要のある前提条件を確認します。 デバイスを更新する準備ができたことを示すチェック ボックスをオンにし、 **[インストール]** をクリックします。
 
-    ![[デバイスの更新プログラム] をクリック](./media/storsimple-8000-install-update5-via-portal/update4.png)
+    ![[デバイスの更新プログラム] をクリック 3](./media/storsimple-8000-install-update5-via-portal/update4.png)
 
 6. 一連の前提条件のチェックが開始されます。 これらのチェックは次のとおりです。
    
@@ -45,11 +45,11 @@ ms.locfileid: "67181373"
 
 9. 更新の完了には数時間かかります。 更新ジョブを選択し、 **[詳細]** をクリックすると、ジョブの詳細をいつでも表示できます。
 
-    ![Update job creation](./media/storsimple-8000-install-update5-via-portal/update8.png)
+    ![更新ジョブの作成 2](./media/storsimple-8000-install-update5-via-portal/update8.png)
 
      **[デバイスの設定]、[ジョブ]** の順に移動して、更新ジョブの進行状況を監視することもできます。 **[ジョブ]** ブレードで、更新の進行状況を確認できます。
 
-     ![Update job creation](./media/storsimple-8000-install-update5-via-portal/update7.png)
+     ![更新ジョブの作成 3](./media/storsimple-8000-install-update5-via-portal/update7.png)
 
 10. ジョブが完了したら、 **[デバイスの設定]、[デバイスの更新プログラム]** の順に移動します。 ソフトウェアのバージョンが更新されています。
 

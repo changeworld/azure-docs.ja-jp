@@ -14,12 +14,12 @@ ms.date: 01/07/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a5a20498ccd0a133c6e02d366af690acf2665e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8481c562ecbab1f26e877e55a5a9454695ddf4c0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742268"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370833"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの監査履歴を表示する
 
@@ -29,10 +29,10 @@ Privileged Identity Management (PIM) の監査履歴を使用すると、すべ�
 
 2019 年 11 月以降、Privileged Identity Management の Azure AD ロール部分は、Azure リソース ロールのエクスペリエンスと一致する新しいバージョンに更新されます。 これによって機能が追加され、[既存の API の変更](azure-ad-roles-features.md#api-changes)が行われます。 新しいバージョンのロールアウト中、この記事で実行する手順は、現在お使いになっている Privileged Identity Management のバージョンによって異なります。 このセクションの手順に従って、お使いになっている Privileged Identity Management のバージョンを確認してください。 Privileged Identity Management のバージョンを確認したら、この記事に記載されている手順のうち、そのバージョンに一致するものを選択することができます。
 
-1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)のロールであるユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
+1. [特権ロール管理者](../roles/permissions-reference.md#privileged-role-administrator)のロールであるユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 1. **[Azure AD Privileged Identity Management]** を開きます。 概要ページの上部にバナーが表示されている場合は、この記事の **[新しいバージョン]** タブの指示に従ってください。 それ以外の場合は、 **[以前のバージョン]** タブの指示に従ってください。
 
-    [![Azure AD ロールの新しいバージョン](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "自分のバージョン用のタブを選択する")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
+    [![[Azure AD ロール - ディレクトリ ロールの監査履歴] ページを示すスクリーンショット。](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "自分のバージョン用のタブを選択する")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
 # <a name="new-version"></a>[新しいバージョン](#tab/new)
 
@@ -74,7 +74,7 @@ Azure AD ロールの監査履歴を表示するには、次の手順に従い�
 
 Azure AD ロールの監査履歴を表示するには、次の手順に従います。
 
-1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
+1. [特権ロール管理者](../roles/permissions-reference.md#privileged-role-administrator)ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
@@ -123,18 +123,18 @@ Azure AD ロールの監査履歴を表示するには、次の手順に従い�
     - **[状態の理由]** 列で監査イベントの理由を確認します。
     - "ロールへのメンバーの追加要求が承認されました" イベントの **[開始者 (アクター)]** 列で承認者を確認します。
 
-    [![Azure AD ロールの新しいバージョン](media/pim-how-to-use-audit-log/filter-audit-logs.png "PIM サービスについて監査ログをフィルターに掛ける")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
+    [![[開始者 (アクター)] メニューが開き、[PIM] が選択された [監査ログ] ページを示すスクリーンショット。](media/pim-how-to-use-audit-log/filter-audit-logs.png "PIM サービスについて監査ログをフィルターに掛ける")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
 
 1. 監査ログ イベントを選択すると、 **[詳細]** ペインの **[アクティビティ]** タブにチケット番号が表示されます。
   
-    [![Azure AD ロールの新しいバージョン](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "監査イベントのチケット番号を確認する")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
+    [![[詳細] ペインにチケット番号が強調表示された [監査ログ] ページを示すスクリーンショット。](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "監査イベントのチケット番号を確認する")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
 
 1. 監査イベントの **[詳細]** ペインの **[ターゲット]** タブに、要求者 (ロールをアクティブにしているユーザー) を表示できます。 Azure AD のロールには、次の 2 つのターゲットの種類があります。
 
-    - ロール (**Type** = Role)
-    - 要求者 (**Type** = User)
+    - ロール ( **Type** = Role)
+    - 要求者 ( **Type** = User)
 
-通常、承認イベントのすぐ上にある監査ログ イベントは、**開始者 (アクター)** が要求者である "ロールへのメンバーの追加が完了しました" のイベントです。 ほとんどの場合、監査の観点から承認要求で要求者を検索する必要はありません。
+通常、承認イベントのすぐ上にある監査ログ イベントは、 **開始者 (アクター)** が要求者である "ロールへのメンバーの追加が完了しました" のイベントです。 ほとんどの場合、監査の観点から承認要求で要求者を検索する必要はありません。
 
 ---
 

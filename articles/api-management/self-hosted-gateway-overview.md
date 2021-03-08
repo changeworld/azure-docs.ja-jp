@@ -8,14 +8,14 @@ manager: gwallace
 editor: ''
 ms.service: api-management
 ms.topic: article
-ms.date: 04/26/2020
+ms.date: 01/25/2021
 ms.author: apimpm
-ms.openlocfilehash: b560b02544eeb96167e68ed305d4d9942d2b1e0f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 48abce693ca22163c0a1742ba71faf36fc6156a1
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232974"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989093"
 ---
 # <a name="self-hosted-gateway-overview"></a>セルフホステッド ゲートウェイの概要
 
@@ -45,11 +45,11 @@ ms.locfileid: "82232974"
 
 セルフホステッド ゲートウェイは、すべての API Management サービスの一部として Azure にデプロイされるマネージド ゲートウェイと機能的に同等の、コンテナー化されたバージョンです。 セルフホステッド ゲートウェイは、Microsoft Container Registry から Linux ベースの Docker [コンテナー](https://aka.ms/apim/sputnik/dhub)として入手できます。 オンプレミスのサーバー クラスターで実行されている Docker、Kubernetes などのコンテナー オーケストレーション ソリューション、クラウド インフラストラクチャ、または評価と開発が目的の場合はパーソナル コンピューター上にデプロイできます。
 
-マネージ ゲートウェイにある次の機能は、セルフホステッド ゲートウェイでは**使用できません**。
+マネージ ゲートウェイにある次の機能は、セルフホステッド ゲートウェイでは **使用できません**。
 
 - Azure Monitor ログ
 - アップストリーム (バックエンド側) の TLS バージョンと暗号管理
-- API Management サービスにアップロードされた [CA ルート証明書](api-management-howto-ca-certificates.md)を使用した、サーバーとクライアントの証明書の検証。 カスタム CA のサポートを追加するには、CA のルート証明書をインストールするレイヤーをセルフホステッド ゲートウェイ コンテナー イメージに追加します。
+- API Management サービスにアップロードされた [CA ルート証明書](api-management-howto-ca-certificates.md)を使用した、サーバーとクライアントの証明書の検証。 詳細については、「[セルフホステッド ゲートウェイでの証明書の検証](api-management-howto-mutual-certificates-for-clients.md#certificate-validation-in-self-hosted-gateway)」を参照してください。
 - [Service Fabric](../service-fabric/service-fabric-api-management-overview.md) との統合
 - TLS セッションの再開
 - クライアント証明書の再ネゴシエーション。 これは、[クライアント証明書の認証](api-management-howto-mutual-certificates-for-clients.md)が動作するには、API コンシューマーが初期 TLS ハンドシェイクの一部として証明書を提示する必要があることを意味します。 これを保証するには、セルフホステッド ゲートウェイのカスタム ホスト名を構成するときに、クライアント証明書のネゴシエート設定を有効にします。

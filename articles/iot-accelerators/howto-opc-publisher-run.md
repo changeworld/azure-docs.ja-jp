@@ -11,14 +11,17 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c664d4859a306387b4eafa2f19ab5877ccf6eb1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d6581a1892ebd74a1adba5c09c0af9d3cf9d43
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81686952"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92079005"
 ---
 # <a name="run-opc-publisher"></a>OPC Publisher の実行
+
+> [!IMPORTANT]
+> この記事は更新を行いますが、最新の内容については、「[Azure Industrial IoT](https://azure.github.io/Industrial-IoT/)」 (Azure 産業用 IoT) を参照してください。
 
 この記事では、OPC Publisher を実行してデバッグする方法について説明します。 パフォーマンスとメモリに関する考慮事項についても説明します。
 
@@ -367,7 +370,7 @@ docker run mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubco
 
 ## <a name="run-as-an-azure-iot-edge-module"></a>Azure IoT Edge モジュールとしての実行
 
-OPC Publisher は、[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge) モジュールとして使用する準備が整っています。 OPC Publisher を IoT Edge モジュールとして使用する場合、サポートされるトランスポート プロトコルは **Amqp_Tcp_Only** と **Mqtt_Tcp_Only** のみです。
+OPC Publisher は、[Azure IoT Edge](../iot-edge/index.yml) モジュールとして使用する準備が整っています。 OPC Publisher を IoT Edge モジュールとして使用する場合、サポートされるトランスポート プロトコルは **Amqp_Tcp_Only** と **Mqtt_Tcp_Only** のみです。
 
 OPC Publisher をモジュールとして自分の IoT Edge のデプロイに追加するには、Azure portal で対象の IoT Hub の設定に移動し、次の手順を実行します。
 
@@ -390,8 +393,8 @@ OPC Publisher をモジュールとして自分の IoT Edge のデプロイに�
 
     この構成では、OPC Publisher イメージを使用して **publisher** という名前のコンテナーを起動するように IoT Edge を構成しています。 コンテナーのシステムのホスト名は **publisher** に設定されています。 OPC Publisher は、`--aa` コマンドライン引数で呼び出されます。 このオプションにより、OPC Publisher は、接続先の OPC UA サーバーの証明書を信頼します。 OPC Publisher の任意のコマンドライン オプションを使用できます。 唯一の制限は、IoT Edge でサポートされる "**コンテナーの作成オプション**" のサイズです。
 
-1. 他の設定はそのままにして、 **[保存]** を選択します。
-1. OPC Publisher の出力を別の IoT Edge モジュールでローカルに処理する場合は、 **[モジュールの設定]** ページに戻ります。 次に、 **[ルートの指定]** タブに移動し、次の JSON のような新しいルートを追加します。
+1. 他の設定はそのままにして、**[保存]** を選択します。
+1. OPC Publisher の出力を別の IoT Edge モジュールでローカルに処理する場合は、**[モジュールの設定]** ページに戻ります。 次に、**[ルートの指定]** タブに移動し、次の JSON のような新しいルートを追加します。
 
     ```json
     {
@@ -713,6 +716,6 @@ OPC Publisher は、いくつかの追加の IoT Hub ダイレクト メソッ�
 
 これは、ランダムなデータと異常のあるタグを生成する多数のタグを実装します。 追加のタグ値をシミュレートする必要がある場合は、サンプルを拡張できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ここでは、OPC Publisher の実行方法について学習しました。次のステップとして、[OPC Twin](overview-opc-twin.md) と [OPC Vault](overview-opc-vault.md) について学習することをお勧めします。

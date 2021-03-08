@@ -3,19 +3,19 @@ title: Azure CLI のサンプル スクリプト - Azure App Configuration ス�
 titleSuffix: Azure App Configuration
 description: サンプル Azure CLI スクリプトを使用して、Azure App Configuration ストアを削除します。 スクリプトで使用されているコマンドへのリファレンス記事のリンクを参照してください。
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/19/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e107ba9628eca384f518f7a241be5c00c278ef0a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 49d6a85faa55de5dbf50377998dbe2fc829d9f6f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588322"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929788"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>Azure App Configuration ストアの削除
 
@@ -23,9 +23,9 @@ ms.locfileid: "88588322"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+ - このチュートリアルには、Azure CLI のバージョン 2.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -42,7 +42,7 @@ az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 
 このスクリプトでは、次のコマンドを使用して App Configuration ストアを削除します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | メモ |
 |---|---|
 | [az appconfig delete](/cli/azure/appconfig#az-appconfig-delete) | App Configuration ストア リソースを削除します。 |
 

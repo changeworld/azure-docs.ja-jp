@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 18a9de8a2eaa2364e89e831db8dab5cbbb061c10
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: fc85eec008ef099d63d538e4871a1a84573f5a18
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299247"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790447"
 ---
 # <a name="what-is-a-voice-assistant"></a>音声アシスタントとは
 
@@ -32,7 +32,7 @@ ms.locfileid: "85299247"
 |堅牢なスキルの連携と完全なデプロイ制御を使用した制約のない会話 | [Direct Line Speech](direct-line-speech.md) チャネルを使用する Azure Bot Service ボット | <ul><li>"I need to go to Seattle"</li><li>"What kind of pizza can I order?"</li></ul>
 |作成とホスティングが簡素化された音声コマンド処理またはシンプルなタスク指向の会話 | [カスタム コマンド](custom-commands.md) | <ul><li>"Turn on the overhead light"</li><li>"Make it 5 degrees warmer"</li><li>その他のサンプルを[こちらで入手できます](https://speech.microsoft.com/customcommands)</li></ul>
 
-アシスタントで扱う処理がまだ決まっていない場合には、既定の最適な選択肢として [Direct Line Speech](direct-line-speech.md) をお勧めします。 [仮想アシスタント ソリューションとエンタープライズ テンプレート](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)や [QnA Maker サービス](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview)を使用して、一般的なパターンを作成したり既存のナレッジ ソースを使用したりするなど、豊富なツール群と作成支援機能が統合されています。
+アシスタントで扱う処理がまだ決まっていない場合には、既定の最適な選択肢として [Direct Line Speech](direct-line-speech.md) をお勧めします。 [仮想アシスタント ソリューションとエンタープライズ テンプレート](/azure/bot-service/bot-builder-enterprise-template-overview)や [QnA Maker サービス](../qnamaker/overview/overview.md)を使用して、一般的なパターンを作成したり既存のナレッジ ソースを使用したりするなど、豊富なツール群と作成支援機能が統合されています。
 
 [カスタム コマンド](custom-commands.md)を使用すると、音声優先の対話操作を行うために最適化された、リッチな音声コマンド処理アプリを簡単に構築できます。 これにより、統一された作成エクスペリエンス、自動ホスティング モデル、比較的低い複雑性が実現し、音声コマンドのシナリオに最適なソリューションの構築に専念できるようになります。
 
@@ -49,7 +49,7 @@ ms.locfileid: "85299247"
 
 | カテゴリ | 特徴 |
 |----------|----------|
-|[カスタム キーワード](speech-devices-sdk-create-kws.md) | ユーザーは、"Hey Contoso" などのカスタム キーワードを使用してアシスタントとの会話を始めることができます。 これは、アプリが Speech SDK のカスタム キーワード エンジンを使用して行います。カスタム キーワード エンジンは、[ここで生成できる](speech-devices-sdk-create-kws.md)カスタム キーワードを使用して構成できます。 音声アシスタントは、サービス側のキーワード検証を使用することで、(デバイス単体の場合と比べて) キーワード アクティブ化の正確性を高めることができます。
+|[カスタム キーワード](./custom-keyword-basics.md) | ユーザーは、"Hey Contoso" などのカスタム キーワードを使用してアシスタントとの会話を始めることができます。 これは、アプリが Speech SDK のカスタム キーワード エンジンを使用して行います。カスタム キーワード エンジンは、[ここで生成できる](./custom-keyword-basics.md)カスタム キーワードを使用して構成できます。 音声アシスタントは、サービス側のキーワード検証を使用することで、(デバイス単体の場合と比べて) キーワード アクティブ化の正確性を高めることができます。
 |[音声テキスト変換](speech-to-text.md) | 音声アシスタントは、音声サービスの[音声変換](speech-to-text.md)を使用してリアルタイム オーディオを認識されたテキストに変換します。 このテキストは文字起こしされているため、アシスタントの実装とクライアント アプリケーションのどちらからでも利用できます。
 |[テキスト読み上げ](text-to-speech.md) | アシスタントからのテキスト応答は、音声サービスの[テキスト読み上げ](text-to-speech.md)を使用して合成されます。 この合成は、クライアント アプリケーションでオーディオ ストリームとして利用できるようになります。 Microsoft では、独自のカスタム高品質ニューラル TTS 音声を構築してブランドに音声を加える機能を提供しています。 詳細については、[こちらからお問い合わせください](mailto:mstts@microsoft.com)。
 
@@ -66,13 +66,13 @@ ms.locfileid: "85299247"
 
 * [GitHub 上の音声アシスタントのサンプル](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)
 * [チュートリアル:C# Speech SDK で、Azure Bot Service を使用して構築したアシスタントを音声対応にする](tutorial-voice-enable-your-bot-speech-sdk.md)
-* [チュートリアル:単純な音声コマンドを使用してカスタム コマンド アプリケーションを作成する](how-to-custom-commands-create-application-with-simple-commands.md)
+* [チュートリアル:単純な音声コマンドを使用してカスタム コマンド アプリケーションを作成する](./how-to-develop-custom-commands-application.md)
 
 ## <a name="customization"></a>カスタマイズ
 
 Azure Speech Services を使用して構築された音声アシスタントでは、すべてのカスタム オプションを使用できます。
 
-* [カスタム音声](how-to-custom-speech.md)
+* [カスタム音声](./custom-speech-overview.md)
 * [Custom Voice](how-to-custom-voice.md)
 * [カスタム キーワード](custom-keyword-overview.md)
 
@@ -81,7 +81,7 @@ Azure Speech Services を使用して構築された音声アシスタントで�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
+* [Speech サービスのサブスクリプション キーを無料で取得する](overview.md#try-the-speech-service-for-free)
 * [カスタム コマンドについて詳しく学習する](custom-commands.md)
 * [Direct Line Speech について詳しく学習する](direct-line-speech.md)
 * [Speech SDK を取得する](speech-sdk.md)

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: surmb
 ms.openlocfilehash: ebd06b0b78ee511dce535ff4220df03087fb6906
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723318"
 ---
 # <a name="application-gateway-components"></a>アプリケーション ゲートウェイのコンポーネント
@@ -132,7 +132,7 @@ HTTPS リスナーは TLS 終端に使用します。 HTTPS リスナーは暗�
 - FQDN
 - マルチテナント バックエンド (App Service など)
 
-Application Gateway バックエンド プールのメンバーは、可用性セットには関連付けられません。 アプリケーション ゲートウェイは、それが属している仮想ネットワークの外部にあるインスタンスとの通信が可能です。 そのため、IP 接続がある限り、バックエンド プールのメンバーを、クラスターやデータ センターをまたいで、または Azure の外部に配置したりすることができます。
+Application Gateway バックエンド プールのメンバーは、可用性セットとの関連はありません。 アプリケーション ゲートウェイは、それが属している仮想ネットワークの外部にあるインスタンスとの通信が可能です。 そのため、IP 接続がある限り、バックエンド プールのメンバーを、クラスターやデータ センターをまたいで、または Azure の外部に配置したりすることができます。
 
 バックエンド プール メンバーとして内部 IP を使用する場合、[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)または [VPN ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md)を使用する必要があります。 仮想ネットワーク ピアリングはサポート対象であり、他の仮想ネットワークにおけるトラフィックの負荷分散に適しています。
 

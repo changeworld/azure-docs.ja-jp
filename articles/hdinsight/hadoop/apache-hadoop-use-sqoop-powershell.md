@@ -1,19 +1,16 @@
 ---
 title: PowerShell と Azure HDInsight を使用して Apache Sqoop ジョブを実行する
 description: ワークステーションから Azure PowerShell を使用して、Apache Hadoop クラスターと Azure SQL Database 間で Apache Sqoop のインポートとエクスポートを実行する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: 3f8a5bdc9e1240303216df1dec31c78a560c55eb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d1f0a4982402a7854841f17c1915625e2f01cc1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086496"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943128"
 ---
 # <a name="run-apache-sqoop-jobs-with-azure-powershell-in-hdinsight"></a>HDInsight で Azure PowerShell を使用して Apache Sqoop ジョブを実行する
 
@@ -23,7 +20,7 @@ Azure PowerShell を使用して、HDInsight クラスターと Azure SQL Databa
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure PowerShell [AZ モジュール](https://docs.microsoft.com/powershell/azure/)がインストールされているワークステーション。
+* Azure PowerShell [AZ モジュール](/powershell/azure/)がインストールされているワークステーション。
 
 * 「[HDInsight の Hadoop での Apache Sqoop の使用](./hdinsight-use-sqoop.md)」の「[テスト環境のセットアップ](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)」が完了していること。
 

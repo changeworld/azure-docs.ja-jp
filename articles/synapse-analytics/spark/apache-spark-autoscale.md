@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: c043941543088d9bdbfd535f372e2335e1ba55a5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f34bcfa8b743fbee6ee3b78fc1a042d1df0abfde
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500353"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313632"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Azure Synapse Analytics Apache Spark プールの自動スケーリング
 
@@ -49,15 +49,15 @@ Apache Spark for Azure Synapse Analytics プールの自動スケーリング機
 
 ## <a name="get-started"></a>はじめに
 
-### <a name="create-a-spark-pool-with-autoscaling"></a>自動スケーリングを使用して Spark プールを作成する
+### <a name="create-a-serverless-apache-spark-pool-with-autoscaling"></a>自動スケーリングでサーバーレス Apache Spark プールを作成する
 
 自動スケーリング機能を有効にするには、通常のプールの作成プロセスの一部として、次の手順を行います。
 
 1. **[基本]** タブで、 **[自動スケーリングの有効化]** チェック ボックスをオンにします。
 1. 次のプロパティに希望する値を入力します。  
 
-    * ノードの**最小**数。
-    * ノードの**最大**数。
+    * ノードの **最小** 数。
+    * ノードの **最大** 数。
 
 ノードの初期数は最小値になります。 この値によって、インスタンスが作成されるときのその初期サイズが定義されます。 ノードの最小数を 3 より小さくすることはできません。
 

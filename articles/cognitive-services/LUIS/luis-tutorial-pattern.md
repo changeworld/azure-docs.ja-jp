@@ -1,14 +1,16 @@
 ---
 title: チュートリアル:パターン - LUIS
 description: このチュートリアルでは、パターンを使用して意図とエンティティの予測を改善すると共に、与える発話の例を減らします。 このパターンは、エンティティと無視できるテキストを識別するための構文を含むテンプレート発話の例として与えられます。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.openlocfilehash: 3ca8bb15d19b0fa0dd6b33d35a380c0b1b07abe0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9814304aed4d7a5f307fb2179491b0fa9635fd68
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039502"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91324656"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>チュートリアル:一般的なパターン テンプレート発話フォーマットを追加して予測を改善する
 
@@ -41,7 +43,7 @@ LUIS アプリに格納される発話には、次の 2 種類があります。
 
 1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/tutorial-fix-unsure-predictions.json?raw=true)をダウンロードして保存します。
 
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の **サブスクリプション** と **作成リソース** を選択して、その作成リソースに割り当てられているアプリを表示します。
 1. [LUIS ポータル](https://www.luis.ai)で、その JSON を新しいアプリにインポートします。 **[マイ アプリ]** ページで、 **[+ New app for conversation]\(+ 会話用の新しいアプリ\)** を選択し、 **[Import as JSON]\(JSON としてインポート\)** を選択します。 前の手順でダウンロードしたファイルを選択し、アプリに `Patterns tutorial` という名前を付けます。
 
 ## <a name="create-new-intents-and-their-utterances"></a>新しい意図とその発話を作成する
@@ -198,7 +200,7 @@ LUIS アプリに格納される発話には、次の 2 種類があります。
 |`Who does Jill Jones report to?`|
 |`Who reports to Jill Jones?`|
 
-発話の_多数_の例を提供せずに、それぞれの文脈の一意性を判断するには、これらの発話は類似しすぎています。 意図のパターンを追加することにより、発話の多数の例をさらに提供しなくても、LUIS は意図の一般的な発話パターンを学習します。
+発話の _多数_ の例を提供せずに、それぞれの文脈の一意性を判断するには、これらの発話は類似しすぎています。 意図のパターンを追加することにより、発話の多数の例をさらに提供しなくても、LUIS は意図の一般的な発話パターンを学習します。
 
 この意図のテンプレート発話例には、次のものが含まれます:
 
@@ -429,7 +431,7 @@ LUIS アプリに格納される発話には、次の 2 種類があります。
 
 `who ( was | is | will be ) {EmployeeListEntity}['s] manager [([in]|[on]){datetimeV2}?]`.
 
-ここでは、必須の動詞の時制を囲む**グループ**と、**or** パイプでつなげた省略可能な `in` および `on` を使用しています。
+ここでは、必須の動詞の時制を囲む **グループ** と、**or** パイプでつなげた省略可能な `in` および `on` を使用しています。
 
 > [!NOTE]
 > 例のテンプレートで _OR_ 記号の `|` (パイプ) を使用する場合は、パイプ記号の前後にスペースを挿入して区切ってください。
@@ -473,7 +475,7 @@ LUIS アプリに格納される発話には、次の 2 種類があります。
 
 1. 意図の一覧から **FindForm** を選択します。
 
-1. 発話の例をいくつか追加します。 Pattern.any として予測されるべきテキストは**太字**で示しています。 発話に含まれるフォーム名は、周囲にある他の単語から判断するのは困難です。 Pattern.any でエンティティの境界をマークすると効果的です。
+1. 発話の例をいくつか追加します。 Pattern.any として予測されるべきテキストは **太字** で示しています。 発話に含まれるフォーム名は、周囲にある他の単語から判断するのは困難です。 Pattern.any でエンティティの境界をマークすると効果的です。
 
     |発話の例|フォーム名|
     |--|--|

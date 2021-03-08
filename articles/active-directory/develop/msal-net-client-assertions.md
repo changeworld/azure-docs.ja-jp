@@ -1,7 +1,7 @@
 ---
 title: クライアント アサーション (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: .NET 用の Microsoft Authentication Library (MSAL.NET) での機密クライアント アプリケーションに対する署名付きクライアント アサーションのサポートについて説明します。
+description: Microsoft Authentication Library for .NET (MSAL.NET) での機密クライアント アプリケーションに対する署名付きクライアント アサーションのサポートについて説明します。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/18/2019
+ms.date: 9/30/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: aeef0c4f139f9721449ba2c503f08fafa2c627d3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: f1ff679bddf2afc355516f2a04b3307d4a260a5c
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166316"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063622"
 ---
 # <a name="confidential-client-assertions"></a>機密クライアント アサーション
 
@@ -48,16 +48,16 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-Azure AD で想定される要求は次のとおりです。
+[Azure AD で想定される要求](active-directory-certificate-credentials.md)は次のとおりです。
 
 要求の種類 | 値 | 説明
 ---------- | ---------- | ----------
-aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | "aud" (対象ユーザー) 要求では、JWT が意図する受信者 (ここでは Azure AD) を指定します。[RFC 7519、セクション 4.1.3] を参照してください。
-exp | 2019 年 6 月 27 日木曜日 15:04:17 GMT + 0200 (ロマンス夏時間) | "exp" (有効期限) 要求は、JWT の処理を受け入れることができなくなる時刻を指定します。 [RFC 7519、セクション 4.1.4] を参照してください。
-iss | {ClientID} | "iss" (発行者) 要求では、JWT を発行した元本を指定します。 この要求の処理はアプリケーション固有です。 "iss" 値は、StringOrURI 値を含む大文字と小文字が区別される文字列です。 [RFC 7519、セクション 4.1.1]
-jti | (Guid) | "jti" (JWT ID) 要求は、JWT の一意の識別子を提供します。 識別子の値は、同じ値が誤って異なるデータ オブジェクトに割り当てられる可能性が無視できるほど低くなる方法で割り当てる必要があります。複数の発行者を使用するアプリケーションの場合は、異なる発行者が生成した値が競合しないように防ぐ必要があります。 "jti" 要求を使用すると、JWT の再生を防ぐことができます。 "jti" 値は大文字と小文字が区別される文字列です。 [RFC 7519、セクション 4.1.7]
-nbf | 2019 年 6 月 27 日木曜日 14:54:17 GMT+0200 (ロマンス夏時間) | "nbf" (指定時刻よりも後) 要求では、指定した時刻よりも後に JWT の処理を受け入れることができるようになります。 [RFC 7519、セクション 4.1.5]
-sub | {ClientID} | "sub" (主題) 要求では、JWT の件名を指定します。 通常、JWT の要求は主題に関するステートメントです。 主題値は、発行者のコンテキストのローカルで一意、またはグローバルで一意になるようにスコープを設定する必要があります。 [RFC 7519、セクション 4.1.2] を参照してください
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | "aud" (対象ユーザー) 要求では、JWT が意図する受信者 (ここでは Azure AD) を指定します。[[RFC 7519、セクション 4.1.3]](https://tools.ietf.org/html/rfc7519#section-4.1.3) を参照してください。  この場合、その受信者はログイン サーバー (login.microsoftonline.com) です。
+exp | 1601519414 | "exp" (有効期限) 要求は、JWT の処理を受け入れることができなくなる時刻を指定します。 [[RFC 7519、セクション 4.1.4]](https://tools.ietf.org/html/rfc7519#section-4.1.4) を参照してください。  これにより、そのときまでアサーションを使用できるようになるため、間隔を短く (最大でも `nbf` の 5 ～ 10 分後に) してください。  Azure AD では、現在 `exp` の時刻に制限は設定されていません。 
+iss | {ClientID} | "iss" (発行者) 要求では、JWT を発行したプリンシパル (この場合はクライアント アプリケーション) を指定します。  GUID (アプリケーション ID) を使用します。
+jti | (Guid) | "jti" (JWT ID) 要求は、JWT の一意の識別子を提供します。 識別子の値は、同じ値が誤って異なるデータ オブジェクトに割り当てられる可能性が無視できるほど低くなる方法で割り当てる必要があります。複数の発行者を使用するアプリケーションの場合は、異なる発行者が生成した値が競合しないように防ぐ必要があります。 "jti" 値は大文字と小文字が区別される文字列です。 [[RFC 7519、セクション 4.1.7]](https://tools.ietf.org/html/rfc7519#section-4.1.7)
+nbf | 1601519114 | "nbf" (指定時刻よりも後) 要求では、指定した時刻よりも後に JWT の処理を受け入れることができるようになります。 [[RFC 7519、セクション 4.1.5]](https://tools.ietf.org/html/rfc7519#section-4.1.5)  現在の時刻を使用するのが適切です。 
+sub | {ClientID} | "sub" (主題) 要求では、JWT の件名 (この場合はお使いのアプリケーション) を指定します。 `iss` と同じ値を使用します。 
 
 これらの要求を作成する方法の例を次に示します。
 

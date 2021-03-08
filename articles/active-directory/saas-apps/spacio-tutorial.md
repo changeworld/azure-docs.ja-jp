@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: a38580dcd55ef9b9fca8fb2619d2aff124cb3c9e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0057c28d5b0c65e7bd75eb2c80a0bf413e5f5c0f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545003"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517896"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spacio"></a>チュートリアル: Azure Active Directory と Spacio の統合
 
@@ -27,7 +27,7 @@ Spacio と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Spacio に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Spacio と Azure AD の統合を構成するには、次のものが必要です
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Spacio では、**SP** によって開始される SSO がサポートされます
+* Spacio では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-spacio-from-the-gallery"></a>ギャラリーからの Spacio の追加
 
@@ -61,13 +61,13 @@ Azure AD への Spacio の統合を構成するには、ギャラリーから管
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Spacio** 」と入力し、結果ウィンドウで **[Spacio ]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Spacio** 」と入力し、結果ウィンドウで **[Spacio ]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果一覧の Spacio](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Spacio で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Spacio で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Spacio 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Spacio で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -114,7 +114,7 @@ Spacio で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="configure-spacio-single-sign-on"></a>Spacio シングル サインオンの構成
 
-**Spacio** 側にシングル サインオンを構成するには、作成された**アプリケーション フェデレーション メタデータ URL** を [Spacio サポート チーム](mailto:support@spac.io)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Spacio** 側にシングル サインオンを構成するには、作成された **アプリケーション フェデレーション メタデータ URL** を [Spacio サポート チーム](mailto:support@spac.io)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -132,7 +132,7 @@ Spacio で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
@@ -169,18 +169,18 @@ Spacio で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="create-spacio-test-user"></a>Spacio テスト ユーザーを作成する
 
-このセクションでは、Spacio で Britta Simon というユーザーを作成します。  [Spacio サポート チーム](mailto:support@spac.io)と連携し、Spacio プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Spacio で Britta Simon というユーザーを作成します。 [Spacio サポート チーム](mailto:support@spac.io)と連携し、Spacio プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Spacio] タイルをクリックすると、SSO を設定した Spacio に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Spacio] タイルをクリックすると、SSO を設定した Spacio に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

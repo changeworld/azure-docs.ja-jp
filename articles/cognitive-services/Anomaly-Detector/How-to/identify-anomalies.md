@@ -3,19 +3,19 @@ title: 時系列データで Anomaly Detector API を使用する方法
 titleSuffix: Azure Cognitive Services
 description: バッチとして、またはストリーミング データ上でデータ内の異常を検出する方法について説明します。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.author: aahi
-ms.openlocfilehash: ca93de71f64efaf21c78b37b9c9aee193d13b28d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mbullwin
+ms.openlocfilehash: 74f891ba7f5b400b5782565e670539167f4e2464
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71840215"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703434"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>方法:時系列データに Anomaly Detector API を使用する  
 
@@ -71,4 +71,4 @@ Anomaly Detector API には、バッチとストリーミングの検出モー�
 ## <a name="next-steps"></a>次の手順
 
 * [Anomaly Detector API とは](../overview.md)
-* [クイック スタート: Anomaly Detector REST API を使用し、時系列データ内の異常を検出する](../quickstarts/detect-data-anomalies-csharp.md)
+* [クイック スタート: Anomaly Detector を使用して時系列データ内の異常を検出する](../quickstarts/client-libraries.md)

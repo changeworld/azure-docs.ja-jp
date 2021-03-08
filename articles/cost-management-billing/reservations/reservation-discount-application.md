@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: banders
-ms.openlocfilehash: 1c038e896a9f9fc65c3b2201b3e763e966285c56
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 1dec8253d785973aa900434c10f85ec0a63e0599
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684679"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99574874"
 ---
 # <a name="how-a-reservation-discount-is-applied"></a>予約割引の適用方法
 
@@ -48,7 +48,7 @@ ms.locfileid: "88684679"
 
 各 Azure サービスに対して割引がどのように適用されるかについては、次の記事をお読みください。
 
-- [App Service](reservation-discount-app-service-isolated-stamp.md)
+- [App Service](reservation-discount-app-service.md)
 - [Azure Cache for Redis](understand-azure-cache-for-redis-reservation-charges.md)
 - [Cosmos DB](understand-cosmosdb-reservation-charges.md)
 - [Database for MariaDB](understand-reservation-charges-mariadb.md)

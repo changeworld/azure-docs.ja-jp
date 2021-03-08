@@ -1,25 +1,21 @@
 ---
 title: Dynamics でデータをコピーする (Common Data Service)
 description: Data Factory パイプラインでコピー アクティビティを使用して、Microsoft Dynamics CRM または Microsoft Dynamics 365 (Common Data Service) からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから Dynamics CRM または Dynamics 365 にデータをコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: 54aac9fda42a867ab66d631279efbca4f812b01a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 02/02/2021
+ms.openlocfilehash: d238a232d719c75244e6f9b825272957d2a4a4bc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497619"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381003"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Microsoft Dynamics 365 および Microsoft Dynamics CRM をコピー元またはコピー先としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
@@ -56,14 +52,14 @@ Dynamics のバージョンおよび製品でサポートされている認証�
 
 このコネクタでは、Finance、Operations、Talent など、上記以外のアプリケーションの種類はサポートされていません。
 
-この Dynamics コネクタは [Dynamics XRM ツール](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)に基づいて構築されています。
-
 >[!TIP]
 >Dynamics 365 Finance and Operations からデータをコピーするには、[Dynamics AX コネクタ](connector-dynamics-ax.md)を使用できます。
 
+この Dynamics コネクタは [Dynamics XRM ツール](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)に基づいて構築されています。
+
 ## <a name="prerequisites"></a>前提条件
 
-このコネクタを Azure AD サービス プリンシパル認証で使用するには、Common Data Service または Dynamics でサーバー間 (S2S) 認証を設定する必要があります。 詳細な手順については、[この記事](https://docs.microsoft.com/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication)を参照してください。
+このコネクタを Azure AD サービス プリンシパル認証で使用するには、Common Data Service または Dynamics でサーバー間 (S2S) 認証を設定する必要があります。 詳細な手順については、[この記事](/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication)を参照してください。
 
 ## <a name="get-started"></a>はじめに
 
@@ -81,14 +77,14 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 |:--- |:--- |:--- |
 | type | type プロパティは、"Dynamics"、"DynamicsCrm"、"CommonDataServiceForApps" のいずれかに設定する必要があります。 | はい |
 | deploymentType | Dynamics インスタンスの展開の種類。 オンライン Dynamics の場合、値を "Online" にする必要があります。 | はい |
-| serviceUri | Dynamics インスタンスのサービス URL。 たとえば https://www.crmdynamics.com です。 | はい |
+| serviceUri | Dynamics インスタンスのサービス URL。ブラウザーからアクセスしたときに使用したものと同じ。 "https://\<organization-name>.crm[x].dynamics.com" などです。 | はい |
 | authenticationType | Dynamics サーバーに接続する認証の種類。 有効な値は "AADServicePrincipal" と "Office365" です。 | はい |
 | servicePrincipalId | Azure AD アプリケーションのクライアント ID。 | はい (認証が "AADServicePrincipal" の場合) |
 | servicePrincipalCredentialType | サービス プリンシパル認証に使用する資格情報の種類。 有効な値は "ServicePrincipalKey" と "ServicePrincipalCert" です。 | はい (認証が "AADServicePrincipal" の場合) |
 | servicePrincipalCredential | サービス プリンシパルの資格情報。 <br/><br/>資格情報の種類として "ServicePrincipalKey" を使用する場合、`servicePrincipalCredential` には、リンクされたサービスの展開時に Azure Data Factory によって暗号化される文字列を設定できます。 または、Azure Key Vault 内のシークレットへの参照を設定できます。 <br/><br/>資格情報として "ServicePrincipalCert" を使用する場合、`servicePrincipalCredential` は Azure Key Vault 内の証明書への参照である必要があります。 | はい (認証が "AADServicePrincipal" の場合) |
 | username | Dynamics に接続するためのユーザー名。 | はい (認証が "Office365" の場合) |
 | password | username として指定したユーザー アカウントのパスワード。 このフィールドを "SecureString" でマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい (認証が "Office365" の場合) |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 値を指定しない場合、プロパティでは既定の Azure 統合ランタイムが使用されます。 | ソースの場合は「いいえ」、シンクの場合は「はい」 (ソースにリンクされたサービスに統合ランタイムがない場合) |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 値を指定しない場合、プロパティでは既定の Azure 統合ランタイムが使用されます。 | いいえ |
 
 >[!NOTE]
 >以前の Dynamics コネクタでは、省略可能な **organizationName** プロパティを使用してオンラインの Dynamics CRM または Dynamics 365 インスタンスを識別していました。 そのプロパティはまだ機能しますが、代わりに新しい **serviceUri** プロパティを指定して、インスタンス検出のパフォーマンスを向上させることをお勧めします。
@@ -102,7 +98,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
         "type": "Dynamics",  
         "typeProperties": {  
             "deploymentType": "Online",  
-            "serviceUri": "https://www.crmdynamics.com",  
+            "serviceUri": "https://<organization-name>.crm[x].dynamics.com",  
             "authenticationType": "AADServicePrincipal",  
             "servicePrincipalId": "<service principal id>",  
             "servicePrincipalCredentialType": "ServicePrincipalKey",  
@@ -124,7 +120,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
         "type": "Dynamics", 
         "typeProperties": { 
             "deploymentType": "Online", 
-            "serviceUri": "https://www.crmdynamics.com", 
+            "serviceUri": "https://<organization-name>.crm[x].dynamics.com", 
             "authenticationType": "AADServicePrincipal", 
             "servicePrincipalId": "<service principal id>", 
             "servicePrincipalCredentialType": "ServicePrincipalCert", 
@@ -154,7 +150,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
         "type": "Dynamics",
         "typeProperties": {
             "deploymentType": "Online",
-            "serviceUri": "https://www.crmdynamics.com",
+            "serviceUri": "https://<organization-name>.crm[x].dynamics.com",
             "authenticationType": "Office365",
             "username": "test@contoso.onmicrosoft.com",
             "password": {
@@ -184,7 +180,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 | authenticationType | Dynamics サーバーに接続する認証の種類。 IFD 対応オンプレミス Dynamics の場合、"Ifd" を指定します。 | はい。 |
 | username | Dynamics に接続するためのユーザー名。 | はい。 |
 | password | username に指定したユーザー アカウントのパスワード。 このフィールドを "SecureString" でマークして、Data Factory に安全に格納することができます。 または、Key Vault にパスワードを格納して、データ コピーの実行時にコピー アクティビティがそこからプルするようにできます。 詳しくは、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」をご覧ください。 | はい。 |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 値を指定しない場合、プロパティでは既定の Azure 統合ランタイムが使用されます。 | ソースの場合は「いいえ」、シンクの場合は「はい」。 |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 値を指定しない場合、プロパティでは既定の Azure 統合ランタイムが使用されます。 | いいえ |
 
 #### <a name="example-dynamics-on-premises-with-ifd-using-ifd-authentication"></a>例:IFD 認証を使用する IFD 対応オンプレミス Dynamics
 
@@ -255,7 +251,7 @@ Dynamics からデータをコピーするために、コピー アクティビ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは、"DynamicsSource"、"DynamicsCrmSource"、"CommonDataServiceForAppsSource" のいずれかに設定する必要があります。 | はい |
-| query | FetchXML は、オンラインおよびオンプレミスの Dynamics で使用される独自のクエリ言語です。 次の例を参照してください。 詳細については、「[FetchXML を使用したクエリの構築](https://msdn.microsoft.com/library/gg328332.aspx)」を参照してください。 | いいえ (データセットの `entityName` が指定されている場合) |
+| query | FetchXML は、オンラインおよびオンプレミスの Dynamics で使用される独自のクエリ言語です。 次の例を参照してください。 詳細については、「[FetchXML を使用したクエリの構築](/previous-versions/dynamicscrm-2016/developers-guide/gg328332(v=crm.8))」を参照してください。 | いいえ (データセットの `entityName` が指定されている場合) |
 
 >[!NOTE]
 >PK 列は、FetchXML クエリで構成する列のプロジェクションに含まれていない場合でも常にコピーされます。
@@ -331,7 +327,7 @@ Dynamics にデータをコピーするために、コピー アクティビテ�
 >[!NOTE]
 >Dynamics シンクでのシンク **writeBatchSize** とコピー アクティビティ **[parallelCopies](copy-activity-performance-features.md#parallel-copy)** のどちらでも、既定値は 10 です。 そのため、既定で 100 個のレコードが同時に Dynamics に送信されます。
 
-Dynamics 365 オンラインでは、[1 組織あたりの同時バッチ呼び出し数が 2](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations) という制限があります。 この制限を超えた場合、最初の要求が実行される前に "サーバー ビジー" 例外がスローされます。 このような同時呼び出しの帯域幅調整を避けるには、**writeBatchSize** を 10 以下に保ちます。
+Dynamics 365 オンラインでは、[1 組織あたりの同時バッチ呼び出し数が 2](/previous-versions/dynamicscrm-2016/developers-guide/jj863631(v=crm.8)#Run-time%20limitations) という制限があります。 この制限を超えた場合、最初の要求が実行される前に "サーバー ビジー" 例外がスローされます。 このような同時呼び出しの帯域幅調整を避けるには、**writeBatchSize** を 10 以下に保ちます。
 
 **writeBatchSize** と **parallelCopies** の最適な組み合わせは、エンティティのスキーマによって異なります。 スキーマの要素には、列の数や行のサイズに加えて、これらの呼び出しにフックされるプラグイン、ワークフロー、またはワークフロー アクティビティの数が含まれます。 **writeBatchSize** (10) &times; **parallelCopies** (10) の既定の設定は、Dynamics サービスによる推奨設定です。 この値は、ほとんどの Dynamics エンティティに対して機能しますが、最高のパフォーマンスをもたらすとは限りません。 コピー アクティビティ設定の組み合わせを調整することで、パフォーマンスを調整できます。
 

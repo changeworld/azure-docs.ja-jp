@@ -2,33 +2,35 @@
 title: Azure Application Insights の IP アドレスの収集 | Microsoft Docs
 description: Azure Application Insights を使用して IP アドレスと位置情報を処理する方法について
 ms.topic: conceptual
-ms.date: 09/11/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 28a7fa50a06dc8b80c7d8dd284cd88ebe4645da6
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.date: 09/23/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: 91b3aa07720e39aa8aeeceb9c35e38205e7d7c76
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371653"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584080"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>位置情報と IP アドレスの処理
 
-この記事では、Application Insights で位置情報検索と IP アドレスの処理がどのように行われるか、また、既定の動作を変更する方法について説明します。
+この記事では、Application Insights で位置情報検索と IP アドレスの処理がどのように機能するか、また、既定の動作を変更する方法について説明します。
 
 ## <a name="default-behavior"></a>既定の動作
 
 既定では、IP アドレスは一時的に収集されますが、Application Insights には格納されません。 基本的なプロセスは次のとおりです。
 
-IP アドレスは、テレメトリ データの一部として Application Insights に送信されます。 Azure のインジェスト エンドポイントに達した場合、[MaxMind の GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) を使って物位置情報検索を行うために IP アドレスが使用されます。 この検索結果は、`client_City`、`client_StateOrProvince`、`client_CountryOrRegion`の各フィールドを設定するために使用されます。 この時点で、IP アドレスは破棄され、`0.0.0.0` が `client_IP` フィールドに書き込まれます。
+テレメトリが Azure に送信されると、[MaxMind の GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) を使って位置情報検索を行うために IP アドレスが使用されます。 この検索結果は、`client_City`、`client_StateOrProvince`、`client_CountryOrRegion` の各フィールドを設定するために使用されます。 アドレスは破棄され、`0.0.0.0` が `client_IP` フィールドに書き込まれます。
 
 * ブラウザー テレメトリ:送信者の IP アドレスを一時的に収集します。 IP アドレスはインジェスト エンドポイントによって計算されます。
-* サーバー テレメトリ:Application Insights モジュールでクライアントの IP アドレスが一時的に収集されます。 `X-Forwarded-For` が設定されている場合は収集されません。
+* サーバー テレメトリ:Application Insights テレメトリ モジュールでクライアントの IP アドレスが一時的に収集されます。 `X-Forwarded-For` ヘッダーが設定されている場合、IP アドレスはローカルに収集されません。
 
 この動作の仕様は、個人データの不必要な収集を回避するのに役立ちます。 可能な限り、個人データの収集を回避することをお勧めします。 
 
 ## <a name="overriding-default-behavior"></a>既定の動作のオーバーライド
 
-既定の動作では個人データの収集が最小限に抑えられますが、IP アドレス データの収集と格納は引き続き柔軟に行うことができます。 IP アドレスなどの個人データを格納することを選択する前に、これが、適用される可能性があるコンプライアンス要件と地方条例に違反しないことを確認することを強くお勧めします。 Application Insights での個人データ処理の詳細については、[個人データのガイダンス](../platform/personal-data-mgmt.md)に関するページをご覧ください。
+既定では IP アドレスを収集しません。 この動作をオーバーライドする柔軟性を引き続き提供しています。 ただし、コレクションがどのコンプライアンス要件にも地域の規制にも違反していないことを確認することをお勧めします。 
+
+Application Insights での個人データ処理の詳細については、[個人データのガイダンス](../logs/personal-data-mgmt.md)に関するページをご覧ください。
 
 ## <a name="storing-ip-address-data"></a>IP アドレス データの格納
 
@@ -58,38 +60,37 @@ IP の収集と格納を有効にするには、Application Insights コンポ�
 
 ### <a name="portal"></a>ポータル 
 
-1 つの Application Insights リソースの動作のみを変更する必要がある場合は、Azure portal を使用するのが最も簡単な方法です。  
+1 つの Application Insights リソースの動作のみを変更する必要がある場合は、Azure portal を使用します。 
 
-1. Application Insights リソース > **[設定]**  >  **[テンプレートのエクスポート]** の順に移動します 
-
-    ![テンプレートのエクスポート](media/ip-collection/export-template.png)
+1. Application Insights リソース > **[Automation]**  >  **[テンプレートのエクスポート]** の順に移動します 
 
 2. **[デプロイ]** を選択します
 
-    ![赤色で強調表示されている [デプロイ] ボタン](media/ip-collection/deploy.png)
+    !["デプロイ" の語が赤色で強調表示されたボタン](media/ip-collection/deploy.png)
 
-3. **[テンプレートの編集]** を選択します (テンプレートに、この例のテンプレートに表示されていない追加のプロパティまたはリソースがある場合は、すべてのリソースでテンプレートのデプロイが増分変更/更新として確実に受け入れられるように注意して作業を進めてください)。
+3. **[テンプレートの編集]** を選択します
 
-    ![テンプレートを編集する](media/ip-collection/edit-template.png)
+    !["編集" の語が赤色で強調表示されたボタン](media/ip-collection/edit-template.png)
 
-4. リソースの json を次のように変更してから、 **[保存]** をクリックします。
+4. リソースの json を次のように変更してから、 **[保存]** を選択します。
 
     ![スクリーンショットでは、"IbizaAIExtension" の後にコンマが追加され、その下の新しい行に "DisableIpMasking": true が追加されています](media/ip-collection/save.png)
 
     > [!WARNING]
-    > 次のようなエラーが発生した場合:" **_リソース グループは、テンプレート内の 1 つ以上のリソースがサポートしていない場所にあります。別のリソース グループを選択してください。_** " 一時的にドロップダウンから別のリソース グループを選択してから、元のリソース グループを再選択してエラーを解決します。
+    > 次のようなエラーが発生した場合:"**_リソース グループは、テンプレート内の 1 つ以上のリソースがサポートしていない場所にあります。別のリソース グループを選択してください。_**" 一時的にドロップダウンから別のリソース グループを選択してから、元のリソース グループを再選択してエラーを解決します。
 
 5. **[同意する]**  >  **[購入]** の順に選択します。 
 
-    ![テンプレートを編集する](media/ip-collection/purchase.png)
+    !["購入" の語が赤色で強調表示されたボタンの上に、"上記の使用条件に同意する" の語句が赤色で強調表示されたチェックされたボックス。](media/ip-collection/purchase.png)
 
-    この場合、新しいものは購入されません。既存の Application Insights リソースの構成を更新するだけです。
+    この場合、実際には新しいものは購入されていません。 既存の Application Insights リソースの構成のみを更新しています。
 
 6. デプロイが完了すると、新しいテレメトリ データが記録されます。
 
-    テンプレートをもう一度選択して編集すると、既定のテンプレートのみが表示され、新しく追加されたプロパティとそれに関連付けられた値は表示されません。 IP アドレス データが表示されず、`"DisableIpMasking": true` が設定されていることを確認する必要がある場合。 次の PowerShell を実行します (`Fabrikam-dev` は、適切なリソースとリソース グループの名前に置き換えてください)。
+    テンプレートをもう一度選択して編集すると、新しく追加されたプロパティを使用せずに既定のテンプレートのみが表示されます。 IP アドレス データが表示されず、`"DisableIpMasking": true` が設定されていることを確認する必要がある場合、次の PowerShell を実行します。 
     
     ```powershell
+    # Replace `Fabrikam-dev` with the appropriate resource and resource group name.
     # If you aren't using the cloud shell you will need to connect to your Azure account
     # Connect-AzAccount 
     $AppInsights = Get-AzResource -Name 'Fabrikam-dev' -ResourceType 'microsoft.insights/components' -ResourceGroupName 'Fabrikam-dev'
@@ -121,7 +122,9 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>テレメトリ初期化子
 
-IP アドレスのすべてまたは一部を記録するために `DisableIpMasking` よりも柔軟な代替方法が必要な場合は、[テレメトリ初期化子](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)を使用して、IP のすべてまたは一部をカスタム フィールドにコピーすることができます。 
+`DisableIpMasking` よりも柔軟な代替方法が必要な場合は、[テレメトリ初期化子](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)を使用して、IP アドレスのすべてまたは一部をカスタム フィールドにコピーすることができます。 
+
+# <a name="net"></a>[.NET](#tab/net)
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET または ASP.NET Core
 
@@ -183,6 +186,7 @@ ASP.NET と同じ方法で ASP.NET Core のテレメトリ初期化子を作成�
     services.AddSingleton<ITelemetryInitializer, CloneIPAddress>();
 }
 ```
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ### <a name="nodejs"></a>Node.js
 
@@ -197,14 +201,15 @@ appInsights.defaultClient.addTelemetryProcessor((envelope) => {
     }
 });
 ```
+# <a name="client-side-javascript"></a>[クライアント側の JavaScript](#tab/javascript)
 
 ### <a name="client-side-javascript"></a>クライアント側の JavaScript
 
-サーバー側の SDK とは異なり、クライアント側の JavaScript SDK では IP アドレスは計算されません。 既定では、クライアント側のテレメトリの IP アドレス計算は、テレメトリの到着時に Azure のインジェスト エンドポイントで実行されます。 つまり、クライアント側のデータをプロキシに送信してから、インジェスト エンドポイントに転送した場合、IP アドレスの計算では、クライアントではなく、プロキシの IP アドレスが表示されることがあります。 プロキシが使用されていない場合、これは問題にならないはずです。
+サーバー側の SDK とは異なり、クライアント側の JavaScript SDK では IP アドレスは計算されません。 既定では、クライアント側のテレメトリの IP アドレス計算は、Azure のインジェスト エンドポイントで実行されます。 
 
-クライアント側で IP アドレスを直接計算する場合は、独自のカスタム ロジックを追加してこの計算を実行し、結果を使用して `ai.location.ip` タグを設定する必要があります。 `ai.location.ip` が設定されている場合、IP アドレスの計算はインジェスト エンドポイントでは行われず、指定された IP アドレスが受け入れられ、位置情報検索を実行するために使用されます。 このシナリオでは、引き続き、既定で IP アドレスがゼロに設定されます。 
+クライアント側で IP アドレスを直接計算する場合は、独自のカスタム ロジックを追加し、結果を使用して `ai.location.ip` タグを設定する必要があります。 `ai.location.ip` が設定されている場合、IP アドレスの計算はインジェスト エンドポイントでは行われず、指定された IP アドレスが、位置情報検索に使用されます。 このシナリオでは、引き続き、既定で IP アドレスがゼロに設定されます。 
 
-カスタム ロジックから計算された IP アドレス全体を保持する場合は、テレメトリ初期化子を使用できます。これにより、`ai.location.ip` で指定した IP アドレス データが別のカスタム フィールドにコピーされます。 しかし、ここでもサーバー側の SDK とは異なり、サードパーティのライブラリや独自のカスタム クライアント側の IP 収集ロジックに依存することなく、クライアント側の SDK では IP が自動的に計算されません。    
+カスタム ロジックから計算された IP アドレス全体を保持する場合は、テレメトリ初期化子を使用できます。これにより、`ai.location.ip` で指定した IP アドレス データが別のカスタム フィールドにコピーされます。 しかし、ここでもサーバー側の SDK とは異なり、サードパーティのライブラリや独自のカスタム収集ロジックに依存することなく、クライアント側の SDK ではアドレスが自動的に計算されません。    
 
 
 ```javascript
@@ -220,9 +225,13 @@ appInsights.addTelemetryInitializer((item) => {
 
 ```  
 
+インジェスト エンドポイントに転送する前に、クライアント側のデータがプロキシを通過した場合、IP アドレスの計算では、クライアントではなく、プロキシの IP アドレスが表示されることがあります。 
+
+---
+
 ### <a name="view-the-results-of-your-telemetry-initializer"></a>テレメトリ初期化子の結果を表示する
 
-その後、サイトに対して新しいトラフィックをトリガーし、約 2 分から 5 分待ち、取り込む時間があったことを確認する場合は、Kusto クエリを実行し、IP アドレスの収集が動作しているかどうかを確かめます。
+サイトに新しいトラフィックを送信する場合は、数分待ってください。 次に、クエリを実行して、コレクションが動作していることを確認できます。
 
 ```kusto
 requests
@@ -230,10 +239,12 @@ requests
 | project appName, operation_Name, url, resultCode, client_IP, customDimensions.["client-ip"]
 ```
 
-新しく収集された IP アドレスは `customDimensions_client-ip` 列に表示されるはずです。 既定の `client-ip` 列では引き続き、4 つのオクテットがすべてゼロに設定されるか、コンポーネント レベルで IP アドレスの収集を構成した方法によっては、最初の 3 つのオクテットのみが表示されます。 テレメトリ初期化子を実装した後、ローカルでテストしており、`customDimensions_client-ip` で表示される値が `::1` である場合は、これが想定される動作です。 `::1` は、IPv6 のループバック アドレスを表します。 これは IPv4 の `127.0.01` と同等であり、localhost からテストする場合に表示される結果です。
+新しく収集された IP アドレスは `customDimensions_client-ip` 列に表示されます。 既定の `client-ip` 列では、4 つすべてのオクテットがゼロになります。 
+
+localhost からテストし、`customDimensions_client-ip` の値が `::1` の場合、この値は想定される動作です。 `::1` は、IPv6 のループバック アドレスを表します。 これは、IPv4 での `127.0.0.1` と同じです。
 
 ## <a name="next-steps"></a>次の手順
 
-* Application Insights での[個人データ収集](../platform/personal-data-mgmt.md)について、さらに学習します。
+* Application Insights での[個人データ収集](../logs/personal-data-mgmt.md)について、さらに学習します。
 
-* Application Insights の [IP アドレス収集](https://apmtips.com/posts/2016-07-05-client-ip-address/)のしくみについて、さらに学習します (これは、Microsoft のエンジニアの 1 人が書き込んだ外部の古いブログ投稿です。 IP アドレスが `0.0.0.0` として記録される現在の既定の動作より前のものですが、組み込みの `ClientIpHeaderTelemetryInitializer` のメカニズムについてより詳しく説明されています)。
+* Application Insights の [IP アドレス収集](https://apmtips.com/posts/2016-07-05-client-ip-address/)のしくみについて、さらに学習します  (この記事は、Microsoft のエンジニアの 1 人が書き込んだ外部の古いブログ投稿です。 IP アドレスが `0.0.0.0` として記録される現在の既定の動作より前のものですが、組み込みの `ClientIpHeaderTelemetryInitializer` のメカニズムについてより詳しく説明されています)。

@@ -1,7 +1,7 @@
 ---
 title: Web API を呼び出すモバイル アプリを構成する | Azure
 titleSuffix: Microsoft identity platform
-description: Web API を呼び出すモバイル アプリを構築する方法 (アプリのコード構成) について説明します
+description: Web API を呼び出すようにモバイル アプリのコードを構成する方法について説明します
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 717b6ed7e711b4db4cb15e55282cfcdea4659178
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 1187c768a54dd04d25b6de0e6785ebb81a7dfc24
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051340"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584433"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Web API を呼び出すモバイル アプリを構成する
 
@@ -82,7 +82,7 @@ var app = PublicClientApplicationBuilder.Create(clientId)
 
 ##### <a name="specify-the-parent-ui-window-or-activity"></a>親 UI、ウィンドウ、またはアクティビティを指定する
 
-Android では、対話型認証を行う前に親アクティビティを渡す必要があります。 iOS でブローカーを使用する場合は、`ViewController` に渡す必要があります。 UWP の場合と同じように、親ウィンドウを渡すことができます。 トークンを取得するときに、それを渡します。 ただし、アプリを作成するときに、コールバックを `UIParent` を返すデリゲートとして指定することもできます。
+Android では、対話型認証を行う前に親アクティビティを渡します。 iOS でブローカーを使用する場合は、`ViewController` を渡します。 UWP の場合と同じように、親ウィンドウを渡すことができます。 トークンを取得するときに、それを渡します。 ただし、アプリを作成するときに、コールバックを `UIParent` を返すデリゲートとして指定することもできます。
 
 ```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)
@@ -160,7 +160,7 @@ Xamarin.iOS のブローカー認証を有効にするには、この記事の [
 
 ### <a name="enable-the-broker-for-msal-for-android"></a>Android 向け MSAL に対するブローカーの有効化
 
-Android でブローカーを有効にする方法の詳細については、「[Android のブローカー認証](brokered-auth.md)」を参照してください。
+Android でブローカーを有効にする方法の詳細については、「[Android のブローカー認証](msal-android-single-sign-on.md)」を参照してください。
 
 ### <a name="enable-the-broker-for-msal-for-ios-and-macos"></a>iOS および macOS 用の MSAL に対するブローカーの有効化
 
@@ -249,8 +249,8 @@ MSAL.NET は、URL を使用してブローカーを呼び出し、ブローカ�
 
    ここでは、`BundleId` によってデバイスが一意に識別されます。 たとえば、`BundleId` が `yourcompany.xforms` の場合、URL スキームは `msauth.com.yourcompany.xforms` になります。
 
-   > [!NOTE]
-   > この URL スキームは、ブローカーから応答を受け取るときにアプリを一意に識別するリダイレクト URI の一部になります。
+  
+      この URL スキームは、ブローカーから応答を受け取るときにアプリを一意に識別するリダイレクト URI の一部になります。
 
    ```XML
     <key>CFBundleURLTypes</key>
@@ -310,10 +310,9 @@ iOS および macOS 用の MSAL でブローカーが呼び出されると、ブ
     }
 ```
 
-> [!NOTE]
-> iOS 13 以降で `UISceneDelegate` を採用した場合は、代わりに `UISceneDelegate` の `scene:openURLContexts:` に MSAL のコールバックを配置します。 MSAL `handleMSALResponse:sourceApplication:` の呼び出しは URL ごとに 1 回のみにする必要があります。
->
-> 詳しくは、[Apple のドキュメント](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)をご覧ください。
+iOS 13 以降で `UISceneDelegate` を採用した場合は、代わりに `UISceneDelegate` の `scene:openURLContexts:` に MSAL のコールバックを配置します。 MSAL `handleMSALResponse:sourceApplication:` の呼び出しは URL ごとに 1 回のみにする必要があります。
+
+詳しくは、[Apple のドキュメント](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)をご覧ください。
 
 #### <a name="step-2-register-a-url-scheme"></a>手順 2:URL スキームを登録する
 
@@ -329,8 +328,7 @@ iOS および macOS 用の MSAL では、URL を使用してブローカーが�
 
    ここでは、`BundleId` によってデバイスが一意に識別されます。 たとえば、`BundleId` が `yourcompany.xforms` の場合、URL スキームは `msauth.com.yourcompany.xforms` になります。
 
-   > [!NOTE]
-   > この URL スキームは、ブローカーから応答を受け取るときにアプリを一意に識別するリダイレクト URI の一部になります。 [Azure portal](https://portal.azure.com) で、`msauth.(BundleId)://auth` 形式のリダイレクト URI がアプリケーションに対して登録されていることを確認してください。
+    この URL スキームは、ブローカーから応答を受け取るときにアプリを一意に識別するリダイレクト URI の一部になります。 [Azure portal](https://portal.azure.com) で、`msauth.(BundleId)://auth` 形式のリダイレクト URI がアプリケーションに対して登録されていることを確認してください。
 
    ```XML
    <key>CFBundleURLTypes</key>
@@ -367,5 +365,4 @@ Android でブローカーを有効にする方法の詳細については、[Xa
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [トークンの取得](scenario-mobile-acquire-token.md)
+このシナリオの次の[トークンを取得する](scenario-mobile-acquire-token.md)に関する記事に進みます。

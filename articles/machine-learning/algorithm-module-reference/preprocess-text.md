@@ -1,24 +1,24 @@
 ---
 title: Preprocess Text (テキストの前処理):モジュール リファレンス
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning 内で Preprocess Text (テキストの前処理) モジュールを使用して、テキストをクリーンアップして簡素化する方法について説明します。
+description: Azure Machine Learning デザイナーの Preprocess Text (テキストの前処理) モジュールを使用して、テキストをクリーンアップして簡素化する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/01/2019
-ms.openlocfilehash: 6e4d4c8f798418e090caeba091dec33c71f0458f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 11/16/2020
+ms.openlocfilehash: 366b30df677a5b74bc7d70e1aea60e05b4df0152
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477495"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659309"
 ---
 # <a name="preprocess-text"></a>Preprocess Text (テキストの前処理)
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 **Preprocess Text (テキストの前処理)** モジュールを使用して、テキストをクリーンアップして簡素化します。 次の一般的なテキスト処理操作がサポートされています。
 
@@ -53,7 +53,7 @@ ms.locfileid: "79477495"
 
     このモジュールは、一連の 3個のパイプ文字 `|||` を使用して、文の終端記号を表します。
 
-1. 正規表現を使用して、オプションの検索と置換の操作を実行します。
+1. 正規表現を使用して、オプションの検索と置換の操作を実行します。 正規表現は他のすべての組み込みオプションの前に、最初に処理されます。
 
     * **Custom regular expression (カスタム正規表現)** :検索するテキストを定義します。
     * **Custom replacement string (カスタム置換文字列)** :1 つの置換値を定義します。
@@ -64,7 +64,7 @@ ms.locfileid: "79477495"
 
 1. また、処理された出力テキストから、次の種類の文字または文字シーケンスを削除することもできます。
 
-    * **Remove numbers (数字の削除)** :このオプションを選択すると、指定した言語のすべての数字が削除されます。 ID 番号はドメインに依存し、言語に依存します。 数字が既知の単語の不可欠の部分である場合、その数字は削除されない可能性があります。
+    * **Remove numbers (数字の削除)** :このオプションを選択すると、指定した言語のすべての数字が削除されます。 ID 番号はドメインに依存し、言語に依存します。 数字が既知の単語の不可欠の部分である場合、その数字は削除されない可能性があります。 詳細については「[テクニカル ノート](#technical-notes)」を参照してください。
     
     * **Remove special characters (特殊文字の削除)** :英数字以外の特殊文字をすべて削除するには、このオプションを使用します。
     
@@ -84,6 +84,25 @@ ms.locfileid: "79477495"
     たとえば、文字列 `MS---WORD` は、3 つのトークン `MS`、`-`、`WORD` に分割されます。
 
 1. パイプラインを送信します。
+
+## <a name="technical-notes"></a>テクニカル ノート
+
+Studio (クラシック) とデザイナーの **preprocess-text** モジュールでは、異なる言語モデルが使用されます。 デザイナーでは、[spaCy](https://spacy.io/models/en) のマルチタスク CNN のトレーニング済みモデルが使用されます。 モデルが異なれば、トークナイザーと品詞タガーも異なり、結果も異なります。
+
+次にいくつかの例を示します。
+
+| 構成 | 出力結果 |
+| --- | --- |
+|すべてのオプションが選択された状態 </br> 説明: </br> 'WC-3 3test 4test' の '3test' のような場合、デザイナーによって '3test' という単語全体が削除されます。このコンテキストでは、品詞タガーによってこのトークン '3test' が数字として指定されているため、品詞に従って、モジュールでそれが削除されます。| :::image type="content" source="./media/module/preprocess-text-all-options-selected.png" alt-text="すべてのオプションが選択された状態" border="True"::: |
+|`Removing number` のみが選択された状態 </br> 説明: </br> '3test'、'4-EC' のようなケースの場合、デザイナー トークナイザーではこれらのケースは分割されず、トークン全体として扱われます。 そのため、これらの単語の数値は削除されません。| :::image type="content" source="./media/module/preprocess-text-removing-numbers-selected.png" alt-text="`Removing number` のみが選択された状態" border="True"::: |
+
+また、正規表現を使用して、カスタマイズされた結果を出力することもできます。
+
+| 構成 | 出力結果 |
+| --- | --- |
+|すべてのオプションが選択された状態 </br> カスタム正規表現: `(\s+)*(-|\d+)(\s+)*` </br> カスタム置換文字列: `\1 \2 \3`| :::image type="content" source="./media/module/preprocess-text-regular-expression-all-options-selected.png" alt-text="すべてのオプションが選択され、正規表現が使用された状態" border="True"::: |
+|`Removing number` のみが選択された状態 </br> カスタム正規表現: `(\s+)*(-|\d+)(\s+)*` </br> カスタム置換文字列: `\1 \2 \3`| :::image type="content" source="./media/module/preprocess-text-regular-expression-removing-numbers-selected.png" alt-text="削除する数値が選択され、正規表現が使用された状態" border="True"::: |
+
 
 ## <a name="next-steps"></a>次のステップ
 

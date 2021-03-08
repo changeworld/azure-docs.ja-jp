@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: raynew
-ms.openlocfilehash: aa9d776df50306ab1705426c923413b5a5d545a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d441284b265ab11dd5ece42ec3737e455d662435
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68717352"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023569"
 ---
 # <a name="monitor-site-recovery"></a>Site Recovery の監視
 
@@ -36,7 +36,7 @@ ms.locfileid: "68717352"
 
 2. ダッシュボードから、さまざまな領域にドリルダウンすることができます。 
 
-    ![Site Recovery のダッシュボード](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png)。
+    ![ドリルダウンできるダッシュボード上の領域を示すスクリーンショット。](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png)。
 
 3. **[レプリケートされたアイテム]** で **[すべて表示]** をクリックすると、コンテナー内のすべてのサーバーが表示されます。
 4. ドリルダウンするには、各セクションの状態の詳細をクリックします。

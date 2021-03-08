@@ -1,24 +1,21 @@
 ---
 title: プライベート エンドポイントを使用してオンプレミス マシンのレプリケーションを有効にする
 description: この記事では、Site Recovery でプライベート エンドポイントを使用して、オンプレミス マシンのレプリケーションを構成する方法について説明します。
-author: mayurigupta13
-ms.author: mayg
+author: Harsha-CS
+ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
-ms.openlocfilehash: 13c19f07ac21f986a5523407e46c59c050ebf96d
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 7f10654e1c96f1756e5864d20fa2a6817385e994
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142079"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629795"
 ---
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>プライベート エンドポイントを使用してオンプレミス マシンをレプリケートする
 
-Azure Site Recovery では、オンプレミス マシンを Azure の仮想ネットワークにレプリケートするために [Azure Private Link](../private-link/private-endpoint-overview.md) プライベート エンドポイントを使用できます。 これらのリージョンでは、回復コンテナーへのプライベート エンドポイントのアクセスがサポートされています。
-
-- Azure 商用:米国中南部、米国西部 2、米国東部
-- Azure Government:US Gov バージニア、US Gov アリゾナ、US Gov テキサス、US DoD 東部、US DoD 中部
+Azure Site Recovery では、オンプレミス マシンを Azure の仮想ネットワークにレプリケートするために [Azure Private Link](../private-link/private-endpoint-overview.md) プライベート エンドポイントを使用できます。 Azure Commercial リージョンおよび Azure Government リージョンでは、回復コンテナーへのプライベート エンドポイントのアクセスがサポートされています。
 
 この記事では、次の手順を完了する方法について説明します。
 
@@ -124,9 +121,12 @@ Recovery Services コンテナーには、マシンのレプリケーション�
 Azure Storage へのプライベート エンドポイントを使用できます。 ストレージ アクセス用のプライベート エンドポイントの作成は、Azure Site Recovery レプリケーションでは省略可能です。 ストレージ用のプライベート エンドポイントを作成する場合は、バイパス仮想ネットワーク内にキャッシュまたはログ ストレージ アカウント用のプライベート エンドポイントが必要です。
 
 > [!NOTE]
+> ストレージ アカウントでプライベート エンドポイントが有効になっていない場合でも、保護は正常に実行されます。 ただし、レプリケーション トラフィックはインターネット経由で Azure Site Recovery のパブリック エンドポイントに転送されます。 レプリケーション トラフィックが確実にプライベート リンクを経由するようにするには、ストレージ アカウントでプライベート エンドポイントを有効にする必要があります。
+
+> [!NOTE]
 > ストレージ用のプライベート エンドポイントは、General Purpose v2 ストレージ アカウントでのみ作成できます。 価格情報については、「[Azure ページ BLOB の価格](https://azure.microsoft.com/pricing/details/storage/page-blobs/)」を参照してください。
 
-[プライベート ストレージを作成するためのガイダンス](../private-link/create-private-endpoint-storage-portal.md#create-your-private-endpoint)に従って、プライベート エンドポイントと共にストレージ アカウントを作成します。 **[プライベート DNS ゾーンとの統合]** では、必ず、 **[はい]** を選択してください。 既存の DNS ゾーンを選択するか、新たに作成します。
+[プライベート ストレージを作成するためのガイダンス](../private-link/tutorial-private-endpoint-storage-portal.md#create-storage-account-with-a-private-endpoint)に従って、プライベート エンドポイントと共にストレージ アカウントを作成します。 **[プライベート DNS ゾーンとの統合]** では、必ず、 **[はい]** を選択してください。 既存の DNS ゾーンを選択するか、新たに作成します。
 
 ### <a name="grant-required-permissions-to-the-vault"></a>コンテナーに必要なアクセス許可を付与する
 

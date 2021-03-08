@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 54a7723e07bd348e31b564707da9e78e96593d3c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f7d2a6f01e891a7fb1c14cde552d66679e474139
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553365"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359172"
 ---
 # <a name="tutorial-configure-proxyclick-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Proxyclick を構成する
 
@@ -53,13 +53,13 @@ Azure AD での自動ユーザー プロビジョニング用に Proxyclick を�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Proxyclick**」と入力し、結果ウィンドウで **[Proxyclick]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Proxyclick** 」と入力し、結果ウィンドウで **[Proxyclick]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果リストの Proxyclick](common/search-new-app.png)
 
 ## <a name="assigning-users-to-proxyclick"></a>Proxyclick へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Proxyclickr へのアクセスが必要な Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Proxyclick に割り当てることができます。
 
@@ -90,13 +90,13 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. お使いの Proxyclick アカウントの**テナント URL** と**シークレット トークン**を取得するために、手順 6 で説明されている操作を行います。
+5. お使いの Proxyclick アカウントの **テナント URL** と **シークレット トークン** を取得するために、手順 6 で説明されている操作を行います。
 
 6. [Proxyclick 管理コンソール](https://app.proxyclick.com/login//?destination=%2Fdefault)にサインインします。 **[Settings]\(設定\)**  >  **[Integrations]\(統合\)**  >  **[Browse Marketplace]\(マーケットプレースの参照\)** に移動します。
 
@@ -120,7 +120,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Proxyclick の作成](media/proxyclick-provisioning-tutorial/proxyclick06.png)
 
-    ここで、**テナント URL** と**シークレット トークン**を見つけることができます。
+    ここで、 **テナント URL** と **シークレット トークン** を見つけることができます。
 
     ![Proxyclick の作成トークン](media/proxyclick-provisioning-tutorial/proxyclick07.png)
 

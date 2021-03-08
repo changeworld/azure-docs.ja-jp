@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: duau
-ms.openlocfilehash: 5c6551e721a4bf197ea7091b8c0b71829693ba76
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 348f1d779f8ea67860726b8f8b7739921e7ad54a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398292"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003805"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用してユーザーのサブネットに基づいて特定のエンドポイントにトラフィックを転送する
 
@@ -40,8 +40,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルでは、Traffic Manager の動作を確認するために、以下をデプロイする必要があります。
 
-- 異なる Azure リージョン (**米国東部** (内部 Web サイトとして機能) と**西ヨーロッパ** (運用 Web サイトとして機能)) で実行している 2 つの基本的な Web サイト。
-- Traffic Manager をテストするための 2 台の VM (1 台は**米国東部**内、2 台目は**西ヨーロッパ**内)。
+- 異なる Azure リージョン (**米国東部** (内部 Web サイトとして機能) と **西ヨーロッパ** (運用 Web サイトとして機能)) で実行している 2 つの基本的な Web サイト。
+- Traffic Manager をテストするための 2 台の VM (1 台は **米国東部** 内、2 台目は **西ヨーロッパ** 内)。
 
 テスト VM を使用して、ユーザー クエリの送信元サブネットに基づいて、Traffic Manager でユーザー トラフィックが内部 Web サイトまたは運用 Web サイトにルーティングされる方法を示します。
 
@@ -53,12 +53,12 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 このセクションでは、2 つの Azure リージョン内に Traffic Manager プロファイル用の 2 つのサービス エンドポイントを提供する 2 つの Web サイト インスタンスを作成します。 2 つの Web サイトの作成には、次の手順が含まれます。
 
-1. 基本的な Web サイトを実行する 2 台の VM を作成します (1 台は**米国東部**内、他方は**西ヨーロッパ**内)。
+1. 基本的な Web サイトを実行する 2 台の VM を作成します (1 台は **米国東部** 内、他方は **西ヨーロッパ** 内)。
 2. 各 VM に IIS サーバーをインストールし、ユーザーが この Web サイトにアクセスした場合に接続される VM の名前を記述する既定の Web サイト ページを更新します。
 
 #### <a name="create-vms-for-running-websites"></a>Web サイトを実行するための VM を作成する
 
-このセクションでは、**米国東部**と**西ヨーロッパ**の 2 つの Azure リージョンに 2 台の VM (*myIISVMEastUS* と *myIISVMWestEurope*) を作成します。
+このセクションでは、**米国東部** と **西ヨーロッパ** の 2 つの Azure リージョンに 2 台の VM (*myIISVMEastUS* と *myIISVMWestEurope*) を作成します。
 
 1. Azure portal の左上隅で、 **[リソースの作成]**  >  **[Compute]**  >  **[Windows Server 2019 Datacenter]** の順に選択します。
 2. **[仮想マシンの作成]** の **[Basic]** タブに次の値を入力するか選択します。
@@ -126,7 +126,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
 ### <a name="create-test-vms"></a>テスト VM を作成する
 
-このセクションでは、VM (*myVMEastUS* と *myVMWestEurope*) を、該当する Azure リージョン (**米国東部**と**西ヨーロッパ**) 内に作成します。 これらの VM は、ユーザーのクエリのサブネットに基づいて Traffic Manager がユーザー トラフィックをどのようにルーティングするかをテストするために使用します。
+このセクションでは、VM (*myVMEastUS* と *myVMWestEurope*) を、該当する Azure リージョン (**米国東部** と **西ヨーロッパ**) 内に作成します。 これらの VM は、ユーザーのクエリのサブネットに基づいて Traffic Manager がユーザー トラフィックをどのようにルーティングするかをテストするために使用します。
 
 1. Azure portal の左上隅で、 **[リソースの作成]**  >  **[Compute]**  >  **[Windows Server 2019 Datacenter]** の順に選択します。
 2. **[仮想マシンの作成]** の **[Basic]** タブに次の値を入力するか選択します。
@@ -176,7 +176,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
     | Type                    | Azure エンドポイント                                   |
     | 名前           | myInternalWebSiteEndpoint                                        |
     | ターゲット リソースの種類           | パブリック IP アドレス                          |
-    | ターゲット リソース          | **パブリック IP アドレスを選択**して、同じサブスクリプションでパブリック IP アドレスを持つリソースの一覧を表示します。 **[リソース]** で、*myIISVMEastUS-ip* という名前のパブリック IP アドレスを選択します。 これは、米国東部内の IIS サーバー VM のパブリック IP アドレスです。|
+    | ターゲット リソース          | **パブリック IP アドレスを選択** して、同じサブスクリプションでパブリック IP アドレスを持つリソースの一覧を表示します。 **[リソース]** で、*myIISVMEastUS-ip* という名前のパブリック IP アドレスを選択します。 これは、米国東部内の IIS サーバー VM のパブリック IP アドレスです。|
     |  サブネット ルーティングの設定    |   *myVMEastUS* テスト VM の IP アドレスを追加します。 この VM から送信されたすべてのユーザー クエリは、*myInternalWebSiteEndpoint* に転送されます。    |
 
 4. 手順 2. と 3. を繰り返して、*myIISVMWestEurope* という名前の IIS サーバー VM に関連付けられたパブリック IP アドレス *myIISVMWestEurope-ip* 用の *myProdWebsiteEndpoint* という名前の別のエンドポイントを追加します。 **[Subnet routing settings]\(サブネット ルーティングの設定\)** で、テスト VM *myVMWestEurope* の IP アドレスを追加します。 このテスト VM からのすべてのユーザー クエリは、エンドポイント *myProdWebsiteEndpoint* にルーティングされます。
@@ -188,7 +188,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
 1. Traffic Manager プロファイルの DNS 名を判別します。
 2. 次のように、動作中の Traffic Manager を表示します。
-    - **米国東部**リージョン内のテスト VM (*myVMEastUS*) から、Web ブラウザーで、Traffic Manager プロファイルの DNS 名を参照します。
+    - **米国東部** リージョン内のテスト VM (*myVMEastUS*) から、Web ブラウザーで、Traffic Manager プロファイルの DNS 名を参照します。
     - **西ヨーロッパ** リージョン内のテスト VM (*myVMWestEurope*) から、Web ブラウザーで、Traffic Manager プロファイルの DNS 名を参照します。
 
 ### <a name="determine-dns-name-of-traffic-manager-profile"></a>Traffic Manager プロファイルの DNS 名を判別する
@@ -197,7 +197,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
 次のように、Traffic Manager プロファイルの DNS 名を判別できます。
 
-1. ポータルの検索バーで、前のセクションで作成した **Traffic Manager プロファイル**の名前を検索します。 表示された結果で、Traffic Manager プロファイルをクリックします。
+1. ポータルの検索バーで、前のセクションで作成した **Traffic Manager プロファイル** の名前を検索します。 表示された結果で、Traffic Manager プロファイルをクリックします。
 2. **[Overview]** をクリックします。
 3. **[Traffic Manager プロファイル]** に、新しく作成した Traffic Manager プロファイルの DNS 名が表示されます。 運用環境のデプロイでは、DNS CNAME レコードを使用して、Traffic Manager のドメイン名をポイントするバニティ ドメイン名を構成します。
 
@@ -212,14 +212,15 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 5. サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、 **[はい]** または **[続行]** を選択して接続処理を続行します。
 6. VM *myVMEastUS* の Web ブラウザーで、Traffic Manager プロファイルの DNS 名を入力して、Web サイトを表示します。 VM *myVMEastUS* の IP アドレスはエンドポイント *myInternalWebsiteEndpoint* と関連付けられているので、Web ブラウザーではテスト Web サイト サーバー *myIISVMEastUS* が起動されます。
 
-7. 次に、手順 1 から 5 を使用して**西ヨーロッパ**にある VM *myVMWestEurope* に接続し、その VM から Traffic Manager プロファイルのドメイン名を参照します。 VM *myVMWestEurope* の IP アドレスはエンドポイント *myProductionWebsiteEndpoint* と関連付けられているので、Web ブラウザーではテスト Web サイト サーバー *myIISVMWestEurope* が起動されます。
+7. 次に、手順 1 から 5 を使用して **西ヨーロッパ** にある VM *myVMWestEurope* に接続し、その VM から Traffic Manager プロファイルのドメイン名を参照します。 VM *myVMWestEurope* の IP アドレスはエンドポイント *myProductionWebsiteEndpoint* と関連付けられているので、Web ブラウザーではテスト Web サイト サーバー *myIISVMWestEurope* が起動されます。
 
-## <a name="delete-the-traffic-manager-profile"></a>Traffic Manager プロファイルの削除
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になったら、リソース グループ (**ResourceGroupTM1** と **ResourceGroupTM2**) を削除します。 これを行うには、リソース グループ (**ResourceGroupTM1** または **ResourceGroupTM2**) を選択し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [重み付けによるトラフィック ルーティング方法](traffic-manager-configure-weighted-routing-method.md)について学習します。
-- [優先順位によるルーティング方法](traffic-manager-configure-priority-routing-method.md)について学習します。
-- [地理的なルーティング方法](traffic-manager-configure-geographic-routing-method.md)について学習します。
+サブネットのルーティング方法の詳細については、以下を参照してください。
+
+> [!div class="nextstepaction"]
+> [サブネット トラフィック ルーティング方法](traffic-manager-routing-methods.md#subnet)

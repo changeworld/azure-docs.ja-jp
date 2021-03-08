@@ -5,13 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: masnider
-ms.custom: sfrev
-ms.openlocfilehash: 66fc58941de206d0bff086f44852d0f2a31587f1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 50b8cae11cef5ee8670e2e0270fd8506b1dad4d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253084"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576538"
 ---
 # <a name="reliable-services-overview"></a>Reliable Services の概要
 
@@ -21,7 +20,7 @@ Azure Service Fabric により、ステートレスおよびステートフル�
 * Reliable Service を作成するうえでの選択肢。
 * Reliable Service を使用するタイミングと作成方法のいくつかのシナリオと例。
 
-*Reliable Services* は、Service Fabric で使用できるプログラミング モデルの 1 つです。 もう 1 つは、*Reliable Actor* プログラミング モデルで、Reliable Services モデルが基になっている[仮想アクター](https://research.microsoft.com/en-us/projects/orleans/) アプリケーション フレームワークが提供されます。 Reliable Actors の詳細については、「[Service Fabric Reliable Actors の概要](service-fabric-reliable-actors-introduction.md)」を参照してください。
+*Reliable Services* は、Service Fabric で使用できるプログラミング モデルの 1 つです。 もう 1 つは、*Reliable Actor* プログラミング モデルで、Reliable Services モデルが基になっている [仮想アクター](https://research.microsoft.com/en-us/projects/orleans/) アプリケーション フレームワークが提供されます。 Reliable Actors の詳細については、「[Service Fabric Reliable Actors の概要](service-fabric-reliable-actors-introduction.md)」を参照してください。
 
 Service Fabric では、プロビジョニングとデプロイからアップグレードと削除までのサービスの有効期間が [Service Fabric のアプリケーション管理](service-fabric-deploy-remove-applications.md)で管理されます。
 

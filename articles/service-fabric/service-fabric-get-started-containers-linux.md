@@ -4,12 +4,12 @@ description: Azure Service Fabric で初めての Linux コンテナー アプ�
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 35e96f1039dc71427a1a3d2745245eff5d012aaf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0481cc2d36f7882bbd8eea9b984c3dc388de5dee
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847535"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96534082"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -87,10 +87,17 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
 ```
 
-## <a name="build-the-image"></a>イメージをビルドする
-`docker build` コマンドを実行して、Web アプリケーションを実行するイメージを作成します。 PowerShell ウィンドウを開き、*c:\temp\helloworldapp* に移動します。 次のコマンドを実行します。
+## <a name="login-to-docker-and-build-the-image"></a>Docker にログインしてイメージをビルドする
 
-```bash
+次に、Web アプリケーションを実行するイメージを作成します。 Docker からパブリック イメージをプルする場合は (Dockerfile の `python:2.7-slim` など)、匿名のプル要求を行うのではなく、Docker Hub アカウントで認証することをお勧めします。
+
+> [!NOTE]
+> 匿名のプル要求を頻繁に行うと、`ERROR: toomanyrequests: Too Many Requests.` や `You have reached your pull rate limit.` のような Docker エラーが発生することがあります。このようなエラーを防ぐには、Docker Hub に対して認証を行います。 詳細については、「[Azure Container Registry を使用してパブリック コンテンツを管理する](../container-registry/buffer-gate-public-content.md)」を参照してください。
+
+PowerShell ウィンドウを開き、Dockerfile が格納されているディレクトリに移動します。 次のコマンドを実行します。
+
+```
+docker login
 docker build -t helloworldapp .
 ```
 
@@ -209,13 +216,13 @@ Service Fabric コンテナー アプリケーションを作成するには、�
 
 ## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK を構成する 
 
-Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、*health_status* が "*正常*" のときに、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に表示され、**警告**は、*health_status* が "*異常*" のときに表示されます。 
+Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、*health_status* が "*正常*" のときに、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に表示され、**警告** は、*health_status* が "*異常*" のときに表示されます。 
 
-v6.4 の最新の更新リリース以降、Docker の HEALTHCHECK 評価をエラーとしてレポートするかどうかの選択肢ができました。 このオプションを有効にすると、*health_status* が*正常*の場合、**OK** 正常性レポートが表示され、*health_status* が*異常*の場合、**ERROR** が表示されます。
+v6.4 の最新の更新リリース以降、Docker の HEALTHCHECK 評価をエラーとしてレポートするかどうかの選択肢ができました。 このオプションを有効にすると、*health_status* が *正常* の場合、**OK** 正常性レポートが表示され、*health_status* が *異常* の場合、**ERROR** が表示されます。
 
 コンテナーの正常性の監視のために実行される実際のチェックを指す **HEALTHCHECK** 命令は、コンテナー イメージを生成するときに使用される Dockerfile に存在する必要があります。
 
-![HealthCheckHealthy][1]
+![スクリーンショットからは、デプロイされたサービス パッケージ NodeServicePackage の詳細を確認できます。][1]
 
 ![HealthCheckUnhealthyApp][2]
 
@@ -239,7 +246,7 @@ ApplicationManifest の **ContainerHostPolicies** の一部として **HealthCon
 
 *RestartContainerOnUnhealthyDockerHealthStatus* を **true** に設定すると、異常を繰り返し報告するコンテナーが (おそらく他のノードで) 再起動されます。
 
-*TreatContainerUnhealthyStatusAsError* が **true** に設定されている場合、コンテナーの *health_status* が*異常*のとき、**ERROR** 正常性レポートが表示されます。
+*TreatContainerUnhealthyStatusAsError* が **true** に設定されている場合、コンテナーの *health_status* が *異常* のとき、**ERROR** 正常性レポートが表示されます。
 
 Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する場合、[EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) を **false** に設定する必要があります。
 
@@ -413,7 +420,7 @@ yeoman を使用して作成したアプリケーションに別のコンテナ�
           },
           {
                 "name": "ContainerImagesToSkip",
-                "value": "microsoft/windowsservercore|microsoft/nanoserver|microsoft/dotnet-frameworku|..."
+                "value": "mcr.microsoft.com/windows/servercore|mcr.microsoft.com/windows/nanoserver|mcr.microsoft.com/dotnet/framework/aspnet|..."
           }
           ...
           }

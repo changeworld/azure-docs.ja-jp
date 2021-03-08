@@ -3,13 +3,13 @@ title: Azure Application Insights を使用して Node.js サービスを監視�
 description: Application Insights を使用して Node.js サービスのパフォーマンスを監視して問題を診断します。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c6a1a030829f128c4369e99efcd56a416390afc6
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-js
+ms.openlocfilehash: 9eba74bcf2b4b047b3ed881342db4f7b1011f928
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371619"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585760"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights を使用して Node.js サービスとアプリを監視する
 
@@ -40,6 +40,9 @@ TelemetryClient API を使用して手動でインストルメント化すれば
 ### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a> Node.js SDK の設定
 
 アプリでデータを収集できるように、アプリに SDK を追加します。
+
+> [!IMPORTANT]
+> 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./sdk-connection-string.md?tabs=nodejs)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
 
 1. 新しく作成したリソースから、リソースのインストルメンテーション キー (*ikey* とも呼ばれます) をコピーします。 Application Insights では、この ikey を使用して、対象の Azure リソースにデータをマッピングします。 SDK で ikey を使用するためには、その ikey を環境変数またはコードの中で指定する必要があります。  
 
@@ -139,7 +142,7 @@ appInsights.setup("<instrumentation_key>")
 IDE の組み込みの型ヒントで説明を確認するか、または [applicationinsights.ts](https://github.com/microsoft/ApplicationInsights-node.js/blob/develop/applicationinsights.ts) を参照して、これらがコントロールできる内容と省略可能なセカンダリ引数についての詳細を確認してください。
 
 > [!NOTE]
->  既定では、`setAutoCollectConsole` は `console.log` (およびその他のコンソール メソッド) の呼び出しを*除外*するように構成されています。 サポートされているサードパーティのロガー (たとえば、winston や bunyan) の呼び出しのみが収集されます。 `setAutoCollectConsole(true, true)` を使用することで、この動作を変更して `console` メソッドの呼び出しを含めることができます。
+>  既定では、`setAutoCollectConsole` は `console.log` (およびその他のコンソール メソッド) の呼び出しを *除外* するように構成されています。 サポートされているサードパーティのロガー (たとえば、winston や bunyan) の呼び出しのみが収集されます。 `setAutoCollectConsole(true, true)` を使用することで、この動作を変更して `console` メソッドの呼び出しを含めることができます。
 
 ### <a name="sampling"></a>サンプリング
 
@@ -332,9 +335,15 @@ server.on("listening", () => {
 });
 ```
 
+### <a name="flush"></a>フラッシュ
+
+既定では、テレメトリは 15 秒間バッファリングされた後、インジェスト サーバーへ送信されます。 存続期間の短いアプリケーションの場合 (CLI ツールなど) は、アプリケーションの終了時に、バッファリングされたテレメトリを手動でフラッシュすることが必要になる場合があります (`appInsights.defaultClient.flush()`)。
+
+SDK はアプリケーションがクラッシュしたことを検知すると、フラッシュを自動的に呼び出します (`appInsights.defaultClient.flush({ isAppCrashing: true })`)。 フラッシュ オプション (`isAppCrashing`) によって、アプリケーションが異常な状態であり、テレメトリ送信に適していないと見なされます。 代わりに、SDK はバッファリングしたすべてのテレメトリを[永続ストレージ](./data-retention-privacy.md#nodejs)に保存して、アプリケーションを終了させます。 アプリケーションは、再起動すると、永続ストレージに保存されたテレメトリを送信しようと試みます。
+
 ### <a name="preprocess-data-with-telemetry-processors"></a>テレメトリ プロセッサを使用したデータの前処理
 
-*テレメトリ プロセッサ*を使用して、収集されたデータを保持のために送信する前に、データ処理とフィルター処理を行うことができます。 テレメトリ プロセッサは、テレメトリ項目がクラウドに送信される前に、追加された順序で、1 つずつ呼び出されます。
+*テレメトリ プロセッサ* を使用して、収集されたデータを保持のために送信する前に、データ処理とフィルター処理を行うことができます。 テレメトリ プロセッサは、テレメトリ項目がクラウドに送信される前に、追加された順序で、1 つずつ呼び出されます。
 
 ```javascript
 public addTelemetryProcessor(telemetryProcessor: (envelope: Contracts.Envelope, context: { http.RequestOptions, http.ClientRequest, http.ClientResponse, correlationContext }) => boolean)
@@ -416,10 +425,9 @@ client.config.PROPERTYNAME = VALUE;
 ## <a name="next-steps"></a>次のステップ
 
 * [ポータル内でテレメトリを監視する](./overview-dashboard.md)
-* [テレメトリに関する分析クエリを記述する](../log-query/get-started-portal.md)
+* [テレメトリに関する分析クエリを記述する](../logs/log-analytics-tutorial.md)
 
 <!--references-->
 
 [portal]: https://portal.azure.com/
 [FAQ]: ../faq.md
-

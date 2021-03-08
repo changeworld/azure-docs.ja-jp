@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2395f3c8b46f69105a81cd2d866ee4e330f4791e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2f7f017d773e7708b2206029769df7977b12e6f0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555493"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454339"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ebsco"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EBSCO の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88555493"
 * ユーザーが自分の Azure AD アカウントを使用して EBSCO に自動的にサインインできるようにすることができます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* EBSCO では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* EBSCO では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* EBSCO では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* EBSCO では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -53,7 +53,7 @@ Azure AD への EBSCO の統合を構成するには、ギャラリーから管�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**EBSCO**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **EBSCO** 」と入力します。
 1. 結果のパネルから **[EBSCO]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-ebsco"></a>EBSCO の Azure AD シングル サインオンの構成とテスト
@@ -101,7 +101,7 @@ EBSCO に対する Azure AD SSO を構成してテストするには、次の構
     ![image](common/default-attributes.png)
 
     > [!Note]
-    > **name** 属性は必須であり、EBSCO アプリケーションの**名前識別子の値**とマッピングされます。 これは既定で追加されるため、手動で追加する必要はありません。
+    > **name** 属性は必須であり、EBSCO アプリケーションの **名前識別子の値** とマッピングされます。 これは既定で追加されるため、手動で追加する必要はありません。
 
 1. その他に、EBSCO アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
@@ -151,7 +151,7 @@ EBSCO に対する Azure AD SSO を構成してテストするには、次の構
 
 ## <a name="configure-ebsco-sso"></a>EBSCO SSO の構成
 
-**EBSCO** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [EBSCO サポート チーム](mailto:support@ebsco.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**EBSCO** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [EBSCO サポート チーム](mailto:support@ebsco.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-ebsco-test-user"></a>EBSCO のテスト ユーザーの作成
 
@@ -169,7 +169,7 @@ Azure AD によって必要なデータが EBSCO アプリケーションに渡�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 1. アクセス パネルで EBSCO のタイルをクリックすると、EBSCO アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 1. アプリケーションにログインしたら、右上隅の **[サインイン]** ボタンをクリックします。
 
@@ -183,10 +183,10 @@ Azure AD によって必要なデータが EBSCO アプリケーションに渡�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で EBSCO を試す](https://aad.portal.azure.com/)

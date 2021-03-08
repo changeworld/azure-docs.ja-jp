@@ -3,19 +3,19 @@ title: Azure Resource Manager の概要
 description: Azure Resource Manager を使用して、Azure のリソースをデプロイ、管理、およびのアクセス制御する方法について説明します。
 ms.topic: overview
 ms.date: 09/01/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 2dc33093df0d9bc0bd75410bac8d200fe6555257
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: fad49db94195bbd2f9e5e32f8596f33fab586752
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293950"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858520"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager とは
 
 Azure Resource Manager は、Azure のデプロイおよび管理サービスです。 お使いの Azure アカウント内のリソースを作成、更新、および削除できる管理レイヤーを提供します。 アクセス制御、ロック、タグなどの管理機能を使用して、デプロイ後にリソースを保護および整理します。
 
-Azure Resource Manager テンプレートについては、[テンプレートのデプロイの概要](../templates/overview.md)に関するページを参照してください。
+Azure Resource Manager テンプレート (ARM テンプレート) については、[テンプレートのデプロイの概要](../templates/overview.md)に関するページを参照してください。
 
 ## <a name="consistent-management-layer"></a>一貫性のある管理レイヤー
 
@@ -33,7 +33,7 @@ Azure Resource Manager には、初めて使う方にとって、あまり馴染
 
 * **リソース** - Azure を通じて管理できる要素。 リソースの例として、仮想マシン、ストレージ アカウント、Web アプリ、データベース、および仮想ネットワークがあります。 リソース グループ、サブスクリプション、管理グループ、およびタグもリソースの例です。
 * **リソース グループ** - Azure ソリューションの関連するリソースを保持するコンテナー。 リソース グループには、グループとして管理するリソースが含まれます。 組織にとって最も有用になるように、どのリソースをリソース グループに含めるかを決定します。 「 [リソース グループ](#resource-groups)」を参照してください。
-* **リソース プロバイダー** - Azure リソースを提供するサービス。 一般的なリソースプロバイダーの一例として、仮想マシン リソースを提供する Microsoft.Compute があります。 Microsoft.Storage は、もう 1 つの一般的なリソースプロバイダーです。 [リソースプロバイダーと種類](resource-providers-and-types.md)に関するページを参照してください。
+* **リソース プロバイダー** - Azure リソースを提供するサービス。 一般的なリソースプロバイダーの一例として、仮想マシン リソースを提供する `Microsoft.Compute` があります。 `Microsoft.Storage` は、もう 1 つの一般的なリソースプロバイダーです。 [リソースプロバイダーと種類](resource-providers-and-types.md)に関するページを参照してください。
 * **Resource Manager テンプレート** - リソース グループ、サブスクリプション、管理グループ、またはテナントにデプロイする 1 つまたは複数のリソースを定義する JavaScript Object Notation (JSON) ファイル。 このテンプレートを使えば、リソースを一貫性のある形で繰り返しデプロイできます。 [テンプレートのデプロイの概要](../templates/overview.md)に関するページを参照してください。
 * **宣言型構文** - 一連のプログラミング コマンドを記述しなくても、"作成しようとしているもの" を明確に宣言することのできる構文です。 宣言型構文の例として、Resource Manager テンプレートがあります。 このファイルで、Azure にデプロイするインフラストラクチャのプロパティを定義します。  [テンプレートのデプロイの概要](../templates/overview.md)に関するページを参照してください。
 
@@ -49,7 +49,7 @@ Resource Manager を使用すると、以下のことができます。
 
 * 正しい順序でデプロイされるように、リソース間の依存関係を定義します。
 
-* ロールベースのアクセス制御 (RBAC) が管理プラットフォームにネイティブ統合されるため、すべてのサービスにアクセス制御を適用できます。
+* Azure ロールベースのアクセス制御 (Azure RBAC) が管理プラットフォームにネイティブ統合されるため、すべてのサービスにアクセス制御を適用できます。
 
 * タグをリソースに適用し、サブスクリプションのすべてのリソースを論理的に整理します。
 
@@ -83,7 +83,7 @@ Azure には、[管理グループ](../../governance/management-groups/overview.
 
    リソース グループのリージョンが一時的に使用できない場合は、メタデータが使用できないため、リソース グループ内のリソースを更新できません。 他のリージョン内のリソースは通常どおり機能しますが、それらを更新することはできません。 信頼性の高いアプリケーションの設計の詳細については、「[信頼性の高い Azure アプリケーションの設計](/azure/architecture/checklist/resiliency-per-service)」を参照してください。
 
-* リソース グループを使用すると、管理操作のアクセス制御のスコープを設定できる。 リソース グループを管理するために、[Azure ポリシー](../../governance/policy/overview.md)、[RBAC のロール](../../role-based-access-control/role-assignments-portal.md)、または[リソース ロック](lock-resources.md)を割り当てることができます。
+* リソース グループを使用すると、管理操作のアクセス制御のスコープを設定できる。 リソース グループを管理するために、[Azure ポリシー](../../governance/policy/overview.md)、[Azure のロール](../../role-based-access-control/role-assignments-portal.md)、または[リソース ロック](lock-resources.md)を割り当てることができます。
 
 * リソース グループに[タグを適用](tag-resources.md)できます。 リソース グループ内のリソースは、これらのタグを継承しません。
 
@@ -95,15 +95,15 @@ Azure には、[管理グループ](../../governance/management-groups/overview.
 
 * リソース グループの外部に存在するリソースもある。 これらのリソースは、[サブスクリプション](../templates/deploy-to-subscription.md)、[管理グループ](../templates/deploy-to-management-group.md)、または[テナント](../templates/deploy-to-tenant.md)にデプロイされます。 これらのスコープでは、特定のリソースの種類のみがサポートされます。
 
-* リソース グループを作成するには、[ポータル](manage-resource-groups-portal.md#create-resource-groups)、[PowerShell](manage-resource-groups-powershell.md#create-resource-groups)、[Azure CLI](manage-resource-groups-cli.md#create-resource-groups)、または [Azure Resource Manager (ARM) テンプレート](../templates/deploy-to-subscription.md#resource-groups)を使用できます。
+* リソース グループを作成するには、[ポータル](manage-resource-groups-portal.md#create-resource-groups)、[PowerShell](manage-resource-groups-powershell.md#create-resource-groups)、[Azure CLI](manage-resource-groups-cli.md#create-resource-groups)、または [ARM テンプレート](../templates/deploy-to-subscription.md#resource-groups)を使用できます。
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Azure Resource Manager の回復性
 
-Azure Resource Manager サービスは、回復性と継続的な可用性を実現するよう設計されています。 REST API での Resource Manager とコントロール プレーン操作 (management.azure.com に送信される要求) は、次のように動作します。
+Azure Resource Manager サービスは、回復性と継続的な可用性を実現するよう設計されています。 REST API での Resource Manager とコントロール プレーン操作 (`management.azure.com` に送信される要求) は、次のように動作します。
 
 * リージョン間に分散されます。 一部のサービスはリージョン固有です。
 
-* 複数の可用性ゾーンを含む場所では、可用性ゾーン (リージョン) 間で分散されます。
+* 複数の可用性ゾーンを含む場所では、可用性ゾーン (およびリージョン) 間で分散されます。
 
 * 単一の論理データ センターに依存しません。
 

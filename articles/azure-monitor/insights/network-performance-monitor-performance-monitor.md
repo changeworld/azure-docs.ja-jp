@@ -1,19 +1,21 @@
 ---
 title: Network Performance Monitor のパフォーマンス モニター
 description: Network Performance Monitor のパフォーマンス モニター機能を使うと、ネットワーク内のさまざまなポイントでネットワーク接続を監視できます。 クラウド展開やオンプレミスの場所、複数のデータ センターやブランチ オフィス、ミッション クリティカルな多層アプリケーション/マイクロ サービスを監視できます。
-ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 2c20f668c57e8c2e74c320ca535aea18e633daf8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 505584abbe573c94056888b07406437650b09611
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326122"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728622"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Network Performance Monitor ソリューション:パフォーマンスの監視
+
+> [!IMPORTANT]
+> 2021 年 7 月 1 日以降、既存のワークスペースに新しいテストを追加したり、Network Performance Monitor で新しいワークスペースを有効にしたりできなくなります。 2021 年 7 月 1 日より前に作成されたテストは使い続けることができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[Network Performance Monitor から Azure Network Watcher の新しい接続モニターにテストを移行](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md)します。
 
 [Network Performance Monitor](network-performance-monitor.md) のパフォーマンス モニター機能を使うと、ネットワーク内のさまざまなポイントでネットワーク接続を監視できます。 クラウド展開やオンプレミスの場所、複数のデータ センターやブランチ オフィス、ミッション クリティカルな多層アプリケーション/マイクロ サービスを監視できます。 パフォーマンスの監視では、ユーザーから不満があがる前に、ネットワークの問題を検出できます。 次のような利点があります。 
 
@@ -65,7 +67,7 @@ Performance Monitor は、2 つのサブネットワーク間、または 2 つ�
 6. 監視条件を選択します。 正常性イベントの生成に関するカスタムしきい値を設定するには、しきい値を入力します。 選んだネットワーク ペア/サブネットワーク ペアに対して選んだしきい値を条件の値が上回ると、正常性イベントが生成されます。 
 7. **[保存]** を選んで構成を保存します。 
 
-監視ルールを保存した後、 **[アラートの作成]** を選んで、そのルールを Alert Management に統合することができます。 アラート ルールは、検索クエリで自動的に作成されます。 その他の必要なパラメーターは自動的に設定します。 アラート ルールを使うと、Network Performance Monitor 内の既存のアラートに加え、電子メール ベースのアラートを受け取ることができます。 アラートを引き金として Runbook で対応策を実行したり、webhook を使って既存のサービス管理ソリューションとアラートを連動させたりすることもできます。 アラートの設定を編集するには、 **[Manage Alert]\(アラートの管理\)** を選びます。 
+監視ルールを保存した後、 **[アラートの作成]** を選んで、そのルールを Alert Management に統合することができます。 アラート ルールは、検索クエリで自動的に作成されます。 その他の必要なパラメーターは自動的に設定します。 アラート ルールを使うと、Network Performance Monitor 内の既存のアラートに加え、電子メール ベースのアラートを受け取ることができます。 アラートによって、Runbook で修正アクションをトリガーしたり、Webhook を使って、それらを既存のサービス管理ソリューションと統合させたりすることもできます。 アラートの設定を編集するには、 **[Manage Alert]\(アラートの管理\)** を選びます。 
 
 さらに、追加の Performance Monitor ルールを作成したり、ソリューション ダッシュボードから機能を使うこともできるようになりました。
 
@@ -128,5 +130,4 @@ Network Performance Monitor では、代理トランザクションを実行す�
 ![ノードのプロパティが選ばれたトポロジ マップ](media/network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
 ## <a name="next-steps"></a>次のステップ
-詳細なネットワーク パフォーマンスのデータ レコードを表示するために、[ログを検索](../log-query/log-query-overview.md)します。
-
+詳細なネットワーク パフォーマンスのデータ レコードを表示するために、[ログを検索](../logs/log-query-overview.md)します。

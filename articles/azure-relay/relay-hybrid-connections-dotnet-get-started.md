@@ -4,12 +4,12 @@ description: Azure Relay ハイブリッド接続 WebSocket 用の C# コンソ�
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: eb204a7bf18ed1c88a6d359cc521130fa19a1c82
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bf22b8b11dc386644803b43ee4e3a51d04b70419
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934261"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90527430"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>.NET での Relay ハイブリッド接続 WebSocket の概要
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -52,7 +52,7 @@ Visual Studio で C# コンソール アプリケーションを作成して、R
 2. クライアント アプリケーションを実行し、何かテキストを入力します。
 3. サーバー アプリケーション コンソールに、クライアント アプリケーションで入力したテキストが表示されることを確認します。
 
-    ![アプリケーションの実行](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
+    ![サーバー アプリケーションとクライアント アプリケーションの両方をテストするコンソール ウィンドウ。](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 
 これで、完全なハイブリッド接続のアプリケーションが作成されました。
 

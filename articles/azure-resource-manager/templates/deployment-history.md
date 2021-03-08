@@ -3,13 +3,13 @@ title: デプロイ履歴
 description: Azure Resource Manager のデプロイ操作を、ポータル、PowerShell、Azure CLI、および REST API を使用して表示する方法について説明します。
 tags: top-support-issue
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.openlocfilehash: b7439a70a3bd802a5f8a7c371fc04ab3eed31a5b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 09/23/2020
+ms.openlocfilehash: 00e0c51244d5c191d4c9f05f689b90ece81ec5a4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117847"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91284620"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Azure Resource Manager でのデプロイ履歴の表示
 
@@ -21,7 +21,7 @@ Azure Resource Manager では、デプロイ履歴を表示することができ
 
 ## <a name="get-deployments-and-correlation-id"></a>デプロイと関連付け ID の取得
 
-デプロイの詳細を表示するには、Azure portal、PowerShell、Azure CLI、または REST API を使用します。 各デプロイには、関連イベントの追跡に使用される関連付け ID があります。 これは、デプロイのトラブルシューティングを行うためにテクニカル サポートと共に作業を行うときに有用である可能性があります。
+デプロイの詳細を表示するには、Azure portal、PowerShell、Azure CLI、または REST API を使用します。 各デプロイには、関連イベントの追跡に使用される関連付け ID があります。 [Azure サポート リクエストを作成した](../../azure-portal/supportability/how-to-create-azure-support-request.md)場合、関連付け ID をサポートから求められることがあります。 サポートは関連付け ID を使用し、デプロイを失敗させた操作を特定します。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -61,13 +61,13 @@ Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName Ex
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-リソース グループのデプロイを一覧表示するには、[az deployment group list](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-list) を使用します。
+リソース グループのデプロイを一覧表示するには、[az deployment group list](/cli/azure/group/deployment#az-deployment-group-list) を使用します。
 
 ```azurecli-interactive
 az deployment group list --resource-group ExampleGroup
 ```
 
-特定のデプロイを取得するには、[az deployment group show](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-show) を使用します。
+特定のデプロイを取得するには、[az deployment group show](/cli/azure/group/deployment#az-deployment-group-show) を使用します。
 
 ```azurecli-interactive
 az deployment group show --resource-group ExampleGroup --name ExampleDeployment

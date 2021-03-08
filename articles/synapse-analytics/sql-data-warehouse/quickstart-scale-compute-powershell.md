@@ -1,6 +1,6 @@
 ---
-title: Synapse SQL プールのコンピューティングをスケーリングする (Azure PowerShell)
-description: Azure PowerShell を使用して、Synapse SQL プール (データ ウェアハウス) のコンピューティングをスケーリングできます。
+title: 'クイックスタート: 専用 SQL プール (以前の SQL DW) のコンピューティングをスケーリングする (Azure PowerShell)'
+description: Azure PowerShell を使用して、専用 SQL プール (以前の SQL DW) のコンピューティングをスケーリングできます。
 services: synapse-analytics
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 044b1b145f95e81b2aa2474950d4961131c3c88a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 87e10740e6081431bad96daa930f61238ca495bd
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079729"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921900"
 ---
-# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Synapse SQL プールのコンピューティングをスケーリングする
+# <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>クイックスタート: Azure PowerShell を使用して専用 SQL プール (以前の SQL DW) のコンピューティングをスケーリングする
 
-Azure PowerShell を使用して、Synapse SQL プール (データ ウェアハウス) のコンピューティングをスケーリングできます。 [コンピューティングをスケールアウト](sql-data-warehouse-manage-compute-overview.md)してパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。
+Azure PowerShell を使用して、専用 SQL プール (以前の SQL DW) のコンピューティングをスケーリングできます。 [コンピューティングをスケールアウト](sql-data-warehouse-manage-compute-overview.md)してパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -28,7 +28,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-このクイックスタートでは、スケーリングできる SQL プールが既に用意されていることを前提とします。 作成する必要がある場合は、[ポータルでの作成と接続](create-data-warehouse-portal.md)に関する記事に従って、**mySampleDataWarehouse** という名前の SQL プールを作成してください。
+このクイックスタートでは、スケーリングできる専用 SQL プール (以前の SQL DW) が既にあることを前提としています。 作成する必要がある場合は、[ポータルでの作成と接続](create-data-warehouse-portal.md)に関する記事に従って、**mySampleDataWarehouse** という名前の専用 SQL プール (以前の SQL DW) を作成してください。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
@@ -67,7 +67,7 @@ Set-AzContext -SubscriptionName "MySubscription"
 
 ## <a name="scale-compute"></a>コンピューティングのスケーリング
 
-SQL プールでは、Data Warehouse ユニットを調整してコンピューティング リソースを増減させることができます。 [ポータルでの作成と接続](create-data-warehouse-portal.md)では、**mySampleDataWarehouse** を作成し、それを 400 DWU で初期化しました。 次の手順では、**mySampleDataWarehouse** の DWU を調整します。
+専用 SQL プール (以前の SQL DW) では、Data Warehouse ユニットを調整してコンピューティング リソースを増減させることができます。 [ポータルでの作成と接続](create-data-warehouse-portal.md)では、**mySampleDataWarehouse** を作成し、それを 400 DWU で初期化しました。 次の手順では、**mySampleDataWarehouse** の DWU を調整します。
 
 Data Warehouse ユニットを変更するには、[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell コマンドレットを使用します。 次の例では、サーバー **sqlpoolservername** 上のリソース グループ **resourcegroupname** においてホストされているデータベース **mySampleDataWarehouse** の Data Warehouse ユニットを DW300c に設定します。
 
@@ -111,7 +111,7 @@ ReadScale                     : Disabled
 ZoneRedundant                 : False
 ```
 
-出力には、データベースの**状態**が表示されます。 このケースでは、データベースがオンラインであることが確認できます。  このコマンドを実行すると、状態を表す値としてオンライン、一時停止中、再開中、スケーリング、一時停止のいずれかが表示されます。
+出力には、データベースの **状態** が表示されます。 このケースでは、データベースがオンラインであることが確認できます。  このコマンドを実行すると、状態を表す値としてオンライン、一時停止中、再開中、スケーリング、一時停止のいずれかが表示されます。
 
 状態のみを表示するには、次のコマンドを使用します。
 
@@ -121,7 +121,7 @@ $database | Select-Object DatabaseName,Status
 
 ## <a name="next-steps"></a>次のステップ
 
-ここでは、SQL プールのコンピューティングをスケーリングする方法について説明しました。 SQL プールに関する理解をさらに深めるために、データの読み込みに関するチュートリアルに進んでください。
+ここでは、専用 SQL プール (以前の SQL DW) のコンピューティングをスケーリングする方法について学習しました。 専用 SQL プール (以前の SQL DW) に関する理解をさらに深めるために、データの読み込みに関するチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
->[SQL プールにデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)
+>[専用 SQL プールにデータを読み込む](load-data-from-azure-blob-storage-using-copy.md)

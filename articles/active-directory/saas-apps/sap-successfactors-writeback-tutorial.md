@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
-ms.date: 08/05/2020
+ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 4b048053a553176f73b5bd199bcb6e28bc74cc6c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3260787dec4ae26cd6ef7cc3bd562f39db8e3655
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88533998"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526977"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>チュートリアル:Azure AD から SAP SuccessFactors への属性の書き戻しを構成する
 このチュートリアルの目的は、Azure AD から SAP SuccessFactors Employee Central に属性を書き戻すための手順を説明することです。 
@@ -40,7 +40,7 @@ Azure Active Directory から SAP SuccessFactors Employee Central に特定の�
 
 この SuccessFactors Writeback ユーザー プロビジョニング ソリューションは、次の場合に最適です：
 
-* IT によって管理される信頼できる属性（メール アドレス、電話番号、ユーザー名など）を SuccessFactors Employee Central に書き戻す必要のある、Office 365 を使用している組織。
+* IT によって管理される信頼できる属性 (メール アドレス、電話番号、ユーザー名など) を SuccessFactors Employee Central に書き戻す必要のある、Microsoft 365 を使用している組織。
 
 ## <a name="configuring-successfactors-for-the-integration"></a>統合のための SuccessFactors の構成
 
@@ -125,68 +125,97 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 
 ## <a name="preparing-for-successfactors-writeback"></a>SuccessFactors Writeback の準備
 
-SuccessFactors Writeback プロビジョニング アプリでは、Employee Central でメール アドレスと電話番号を設定するために、特定の "*コード*" の値が使用されます。 これらの "*コード*" の値は、属性マッピング テーブルの定数値として設定され、SuccessFactors のインスタンスごとに異なります。 このセクションでは、[Postman](https://www.postman.com/downloads/) を使用してコードの値をフェッチします。 [cURL](https://curl.haxx.se/)、[Fiddler](https://www.telerik.com/fiddler)、または他の同様のツールを使用して、HTTP 要求を送信できます。 
+SuccessFactors Writeback プロビジョニング アプリでは、Employee Central でメール アドレスと電話番号を設定するために、特定の "*コード*" の値が使用されます。 これらの "*コード*" の値は、属性マッピング テーブルの定数値として設定され、SuccessFactors のインスタンスごとに異なります。 このセクションでは、これらの "*コード*" 値をキャプチャする手順について説明します。
 
-### <a name="download-and-configure-postman-with-your-successfactors-tenant"></a>SuccessFactors テナントで Postman をダウンロードして構成する
+   > [!NOTE]
+   > このセクションの手順を完了するには、SuccessFactors 管理者に協力を要請してください。 
 
-1. [Postman](https://www.postman.com/downloads/) をダウンロードします
-1. Postman アプリで "新しいコレクション" を作成します。 "SuccessFactors" という名前にします。 
+### <a name="identify-email-and-phone-number-picklist-names"></a>メール アドレスと電話番号の候補リストの名前を識別する 
+
+SAP SuccessFactors では、"*候補リスト*" は、ユーザーが選択できるオプションの構成可能なセットです。 さまざまな種類のメール アドレスと電話番号 (例: 勤務先、個人、その他) は、候補リストを使用して表されます。 この手順では、メール アドレスと電話番号の値を格納するために、SuccessFactors テナントで構成されている候補リストを識別します。 
+ 
+1. SuccessFactors Admin Center で、"*Manage business configuration*" (勤務先の構成の管理) を検索します。 
 
    > [!div class="mx-imgBorder"]
-   > ![新しい Postman コレクション](./media/sap-successfactors-inbound-provisioning/new-postman-collection.png)
+   > ![Manage business configuration (勤務先の構成の管理)](./media/sap-successfactors-inbound-provisioning/manage-business-config.png)
 
-1. [Authorization]\(承認\) タブで、前のセクションで構成した API ユーザーの資格情報を入力します。 種類を [Basic Auth]\(基本認証\) として構成します。 
+1. **[HRIS Elements]\(HRIS 要素\)** で **[emailInfo]** を選択し、 **[email-type]** フィールドの *[Details]\(詳細\)* をクリックします。
 
    > [!div class="mx-imgBorder"]
-   > ![Postman の承認](./media/sap-successfactors-inbound-provisioning/postman-authorization.png)
+   > ![メール アドレス情報の取得](./media/sap-successfactors-inbound-provisioning/get-email-info.png)
 
-1. 構成を保存します。 
+1. **[email-type]** の詳細ページで、このフィールドに関連付けられている候補リストの名前を書き留めます。 既定では、**ecEmailType** です。 ただし、テナントによって異なる場合があります。 
+
+   > [!div class="mx-imgBorder"]
+   > ![メール アドレスの候補リストの識別](./media/sap-successfactors-inbound-provisioning/identify-email-picklist.png)
+
+1. **[HRIS Elements]\(HRIS 要素\)** で **[phoneInfo]** を選択し、 **[phone-type]** フィールドの *[Details]\(詳細\)* をクリックします。
+
+   > [!div class="mx-imgBorder"]
+   > ![電話情報の取得](./media/sap-successfactors-inbound-provisioning/get-phone-info.png)
+
+1. **[phone-type]** の詳細ページで、このフィールドに関連付けられている候補リストの名前を書き留めます。 既定では、**ecPhoneType** です。 ただし、テナントによって異なる場合があります。 
+
+   > [!div class="mx-imgBorder"]
+   > ![電話の候補リストを識別する](./media/sap-successfactors-inbound-provisioning/identify-phone-picklist.png)
 
 ### <a name="retrieve-constant-value-for-emailtype"></a>emailType の定数値を取得する
 
-1. Postman で、SuccessFactors コレクションの省略記号ボタン [...] をクリックして、次に示すように "Get Email Type" という名前の [New Request]\(新しい要求\) を追加します。 
+1. SuccessFactors Admin Center で *Picklist Center* を検索して開きます。 
+1. 前のセクションで取得したメール アドレスの候補リストの名前 (例: ecEmailType) を使用して、メール アドレスの候補リストを見つけます。 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman のメール要求 ](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
+   > ![メール アドレスの種類の候補リストの検索](./media/sap-successfactors-inbound-provisioning/find-email-type-picklist.png)
 
-1. "Get Email Type" 要求のパネルを開きます。 
-1. GET の URL に次の URL を追加し、`successFactorsAPITenantName` を SuccessFactors インスタンスの API テナントに置き換えます。 
-   `https://<successfactorsAPITenantName>/odata/v2/Picklist('ecEmailType')?$expand=picklistOptions&$select=picklistOptions/id,picklistOptions/externalCode&$format=json`
+1. アクティブなメール アドレスの候補リストを開きます。 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman でのメールの種類の取得](./media/sap-successfactors-inbound-provisioning/postman-get-email-type.png)
+   > ![アクティブなメール アドレスの種類の候補リストを開く](./media/sap-successfactors-inbound-provisioning/open-active-email-type-picklist.png)
 
-1. [Authorization]\(承認\) タブでは、コレクションに対して構成されている認証が継承されます。 
-1. [Send]\(送信\) をクリックして、API 呼び出しを呼び出します。 
-1. 応答本文で、JSON の結果セットを表示し、`externalCode = B` に対応する ID を探します。 
+1. メール アドレスの種類の候補リスト ページで、メール アドレスの種類として *[Business]\(勤務先\)* を選択します。
 
    > [!div class="mx-imgBorder"]
-   > ![Postman でのメールの種類の応答](./media/sap-successfactors-inbound-provisioning/postman-email-type-response.png)
+   > ![勤務先のメール アドレスの種類の選択](./media/sap-successfactors-inbound-provisioning/select-business-email-type.png)
 
-1. 属性マッピング テーブルの *emailType* で定数として使用するので、この値を記録しておきます。
+1. *[Business]\(勤務先\)* メール アドレスに関連付けられている **[Option ID]\(オプション ID\)** をメモしておきます。 これは、属性マッピング テーブルで *emailType* と共に使用するコードです。
+
+   > [!div class="mx-imgBorder"]
+   > ![メール アドレスの種類のコードを取得する](./media/sap-successfactors-inbound-provisioning/get-email-type-code.png)
+
+   > [!NOTE]
+   > 値をコピーするときは、コンマ文字を削除してください。 たとえば、 **[Option ID]\(オプション ID\)** 値が *8,448* の場合は、Azure AD の *[emailType]* を (コンマ文字を含まない) 定数 *8448* に設定します。 
 
 ### <a name="retrieve-constant-value-for-phonetype"></a>phoneType の定数値を取得する
 
-1. Postman で、SuccessFactors コレクションの省略記号ボタン [...] をクリックして、次に示すように "Get Phone Types" という名前の [New Request]\(新しい要求\) を追加します。 
+1. SuccessFactors Admin Center で *Picklist Center* を検索して開きます。 
+1. 前のセクションで取得した電話の候補リストの名前を使用して、電話の候補リストを見つけます。 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman での電話の要求](./media/sap-successfactors-inbound-provisioning/postman-phone-request.png)
+   > ![電話の種類の候補リストの検索](./media/sap-successfactors-inbound-provisioning/find-phone-type-picklist.png)
 
-1. "Get Phone Types" 要求のパネルを開きます。 
-1. GET の URL に次の URL を追加し、`successFactorsAPITenantName` を SuccessFactors インスタンスの API テナントに置き換えます。 
-   `https://<successfactorsAPITenantName>/odata/v2/Picklist('ecPhoneType')?$expand=picklistOptions&$select=picklistOptions/id,picklistOptions/externalCode&$format=json`
+1. アクティブな電話の候補リストを開きます。 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman での電話の種類の取得](./media/sap-successfactors-inbound-provisioning/postman-get-phone-type.png)
+   > ![アクティブな電話の種類の候補リストを開く](./media/sap-successfactors-inbound-provisioning/open-active-phone-type-picklist.png)
 
-1. [Authorization]\(承認\) タブでは、コレクションに対して構成されている認証が継承されます。 
-1. [Send]\(送信\) をクリックして、API 呼び出しを呼び出します。 
-1. 応答本文で、JSON の結果セットを表示し、`externalCode = B` と `externalCode = C` に対応する *id* を探します。 
+1. 電話の種類の候補リストのページで、 **[Picklist Values]\(候補リストの値\)** に表示されているさまざまな電話の種類を確認します。
 
    > [!div class="mx-imgBorder"]
-   > ![Postman-Phone](./media/sap-successfactors-inbound-provisioning/postman-phone-type-response.png)
+   > ![電話の種類を確認する](./media/sap-successfactors-inbound-provisioning/review-phone-types.png)
 
-1. 属性マッピング テーブルの *businessPhoneType* および *cellPhoneType* で定数として使用するので、これらの値を記録しておきます。
+1. *[Business]\(勤務先\)* 電話に関連付けられている **[Option ID]\(オプション ID\)** をメモしておきます。 これは、属性マッピング テーブルで *businessPhoneType* と共に使用するコードです。
+
+   > [!div class="mx-imgBorder"]
+   > ![勤務先の電話コードを取得する](./media/sap-successfactors-inbound-provisioning/get-business-phone-code.png)
+
+1. *[Cell]\(携帯\)* 電話に関連付けられている **[Option ID]\(オプション ID\)** をメモしておきます。 これは、属性マッピング テーブルで *cellPhoneType* と共に使用するコードです。
+
+   > [!div class="mx-imgBorder"]
+   > ![携帯電話コードを取得する](./media/sap-successfactors-inbound-provisioning/get-cell-phone-code.png)
+
+   > [!NOTE]
+   > 値をコピーするときは、コンマ文字を削除してください。 たとえば、 **[Option ID]\(オプション ID\)** 値が *10,606* の場合は、Azure AD の *[cellPhoneType]* を (コンマ文字を含まない) 定数 *10606* に設定します。 
+
 
 ## <a name="configuring-successfactors-writeback-app"></a>SuccessFactors Writeback アプリの構成
 
@@ -224,7 +253,7 @@ SuccessFactors Writeback プロビジョニング アプリでは、Employee Cen
 
    * **メール通知** - メール アドレスを入力し、[send email if failure occurs]\(失敗した場合にメールを送信する\) チェックボックスをオンにします。
     > [!NOTE]
-    > Azure AD プロビジョニング サービスは、プロビジョニング ジョブが[検査](/azure/active-directory/manage-apps/application-provisioning-quarantine-status)状態になった場合にメール通知を送信します。
+    > Azure AD プロビジョニング サービスは、プロビジョニング ジョブが[検査](../app-provisioning/application-provisioning-quarantine-status.md)状態になった場合にメール通知を送信します。
 
    * **[接続のテスト]** ボタンをクリックします。 接続テストが成功した場合、上部の **[保存]** ボタンをクリックします。 失敗した場合は、SuccessFactors 資格情報および URL が有効か再度確認します。
     >[!div class="mx-imgBorder"]
@@ -253,7 +282,7 @@ SuccessFactors Writeback プロビジョニング アプリでは、Employee Cen
    | 3 | 8448 | emailType | この定数値は、勤務先のメールに関連付けられている SuccessFactors ID の値です。 SuccessFactors の環境に合わせてこの値を更新します。 この値を設定する手順については、「[emailType の定数値を取得する](#retrieve-constant-value-for-emailtype)」セクションを参照してください。 |
    | 4 | true | emailIsPrimary | SuccessFactors のプライマリとして勤務先のメールを設定するには、この属性を使用します。 勤務先のメールがプライマリでない場合は、このフラグを false に設定します。 |
    | 5 | userPrincipalName | [custom01 – custom15] | **[新しいマッピングの追加]** を使用すると、必要に応じて、SuccessFactors の User オブジェクトで使用可能なカスタム属性に、userPrincipalName または任意の Azure AD 属性を書き込むことができます。  |
-   | 6 | on-prem-samAccountName | username | **[新しいマッピングの追加]** を使用すると、必要に応じてオンプレミスの samAccountName を SuccessFactors の username 属性にマップできます。 |
+   | 6 | On Prem SamAccountName | username | **[新しいマッピングの追加]** を使用すると、必要に応じてオンプレミスの samAccountName を SuccessFactors の username 属性にマップできます。 [Azure AD Connect 同期: ディレクトリ拡張機能](../hybrid/how-to-connect-sync-feature-directory-extensions.md)を使用して、samAccountName を Azure AD に同期します。 これは、ソース ドロップダウンに *extension_yourTenantGUID_samAccountName* として表示されます。 |
    | 7 | SSO | loginMethod | SuccessFactors テナントが[部分的な SSO](https://apps.support.sap.com/sap/support/knowledge/en/2320766) に対してセットアップされている場合、[新しいマッピングの追加] を使用すると、必要に応じて loginMethod を "SSO" または "PWD" の定数値に設定できます。 |
    | 8 | telephoneNumber | businessPhoneNumber | *telephoneNumber* を Azure AD から SuccessFactors の勤務先または職場の電話番号に転送するには、このマッピングを使用します。 |
    | 9 | 10605 | businessPhoneType | この定数値は、勤務先の電話に関連付けられている SuccessFactors ID の値です。 SuccessFactors の環境に合わせてこの値を更新します。 この値を設定する手順については、「[phoneType の定数値を取得する](#retrieve-constant-value-for-phonetype)」セクションを参照してください。 |
@@ -295,13 +324,23 @@ SuccessFactors プロビジョニング アプリの構成が完了すると、A
 
 1. **[プロビジョニング]** タブで、 **[プロビジョニングの状態]** を **[ON]** に設定します。
 
-2. **[保存]** をクリックします。
+1. **[スコープ]** を選択します。 以下のオプションのいずれかを選択できます。 
+   * **すべてのユーザーとグループを同期する**:すべてのユーザーのマップされた属性を **[マッピング]** の **[ソース オブジェクト スコープ]** に定義されているスコープ規則に従って Azure AD から SuccessFactors に書き戻す予定の場合、このオプションを使用します。 
+   * **割り当てられたユーザーとグループのみを同期する**: **[アプリケーション]** の **[管理]** の **[ユーザーとグループ]** メニュー オプションでこのアプリケーションに割り当てたユーザーのみのマップされた属性を書き戻す予定の場合、このオプションを選択します。 これらのユーザーは、 **[マッピング]** の **[ソース オブジェクト スコープ]** で定義されているスコープ規則にも制約されます。
 
-3. この操作により初期同期が開始されます。所要時間は SuccessFactors テナントのユーザー数に応じて変わります。 進行状況バーをチェックして、同期サイクルの進行状況を追跡できます。 
+   > [!div class="mx-imgBorder"]
+   > ![書き戻しのスコープを選択する](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
 
-4. 好きなときに、Azure Portal の **[監査ログ]** タブをチェックして、プロビジョニング サービスで実行されたアクションを確認します。 監査ログには、Employee Central から読み取られたユーザーや、その後 Active Directory に追加または更新されたユーザーなど、プロビジョニング サービスによって実行された個々の同期イベントがすべて表示されます。 
+   > [!NOTE]
+   > SuccessFactors Writeback プロビジョニング アプリでは "グループ割り当て" がサポートされていません。 "ユーザー割り当て" のみがサポートされています。 
 
-5. 最初の同期が完了すると、次に示すように、 **[プロビジョニング]** タブに監査概要レポートが書き込まれます。
+1. **[保存]** をクリックします。
+
+1. この操作により初期同期が開始されます。所要時間は Azure AD テナントのユーザー数と操作に定義されているスコープに応じて変わります。 進行状況バーをチェックして、同期サイクルの進行状況を追跡できます。 
+
+1. 好きなときに、Azure Portal の **[プロビジョニング ログ]** タブをチェックして、プロビジョニング サービスで実行されたアクションを確認します。 プロビジョニング ログには、プロビジョニング サービスによって実行される個々の同期イベントがすべて一覧表示されます。 
+
+1. 最初の同期が完了すると、次に示すように、 **[プロビジョニング]** タブに監査概要レポートが書き込まれます。
 
    > [!div class="mx-imgBorder"]
    > ![プロビジョニングの進行状況バー](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
@@ -317,4 +356,3 @@ SAP SuccessFactors 統合リファレンス ガイドの[書き戻しシナリ�
 * [SuccessFactors と Azure Active Directory Domain Services の間でシングル サインオンを構成する方法を学習する](successfactors-tutorial.md)
 * [他の SaaS アプリケーションを Azure Active Directory と統合する方法](tutorial-list.md)
 * [プロビジョニング構成をエクスポートおよびインポートする方法を学習する](../app-provisioning/export-import-provisioning-configuration.md)
-

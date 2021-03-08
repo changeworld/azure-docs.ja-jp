@@ -3,12 +3,12 @@ title: 無効なテンプレート エラー
 description: Azure Resource Manager テンプレートのデプロイ時の無効なテンプレート エラーを解決する方法について説明します。
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: 3e68d4634d0092d05222348ca0db0116422faec3
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ba19d3c4e72a765e2aaff7393915b77a80daf2ba
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373812"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185795"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>無効なテンプレートのエラーを解決する
 
@@ -62,7 +62,7 @@ Message=Deployment template validation failed: 'The template resource {resource-
 for type {resource-type} has incorrect segment lengths.
 ```
 
-ルート レベルのリソースは、名前に含まれるセグメントの数がリソース タイプのセグメントの数よりも 1 つ少なくなっている必要があります。 各セグメントは、スラッシュで区別されます。 次の例は、type のセグメント数が 2 つで、name のセグメント数が 1 つなので、**有効な名前**です。
+ルート レベルのリソースは、名前に含まれるセグメントの数がリソース タイプのセグメントの数よりも 1 つ少なくなっている必要があります。 各セグメントは、スラッシュで区別されます。 次の例は、type のセグメント数が 2 つで、name のセグメント数が 1 つなので、**有効な名前** です。
 
 ```json
 {
@@ -130,7 +130,7 @@ part of the allowed values
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>解決策 4 - ターゲット リソース グループが多すぎる
 
-以前のデプロイでは、ターゲット リソース グループが 1 回のデプロイにつき 5 つに制限されていたため、このエラーが表示されることがあります。 この制限は、2020 年 5 月に 800 リソース グループに増やされました。 詳細については、「[複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする](cross-scope-deployment.md)」を参照してください。
+以前のデプロイでは、ターゲット リソース グループが 1 回のデプロイにつき 5 つに制限されていたため、このエラーが表示されることがあります。 この制限は、2020 年 5 月に 800 リソース グループに増やされました。 詳細については、「[複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする](./deploy-to-resource-group.md)」を参照してください。
 
 <a id="circular-dependency"></a>
 
@@ -141,7 +141,7 @@ part of the allowed values
 循環依存関係を解決するには:
 
 1. テンプレートで、循環依存関係が検出されたリソースを検索します。
-2. **dependsOn** プロパティと**参照**関数の使用を確認し、そのリソースが依存しているリソースを調べます。
+2. **dependsOn** プロパティと **参照** 関数の使用を確認し、そのリソースが依存しているリソースを調べます。
 3. それらのリソースが依存しているリソースを確認します。 元のリソースに依存するリソースを見つけるまで依存関係を辿ります。
 5. 循環依存関係に関連するリソースについては、すべての **dependsOn** プロパティを調べ、不要な依存関係を特定します。 それら不要な依存関係を削除します。 依存関係が必要であるかどうか確証がない場合は、削除してみてください。
 6. テンプレートを再デプロイします。

@@ -1,6 +1,6 @@
 ---
-title: T-SQL、Python を使用した SQL Data Warehouse での分析 - Team Data Science Process
-description: SQL Data Warehouse を使用して予測分析を行う例を紹介します。
+title: T-SQL、Python を使用した Azure Synapse Analytics での分析 - Team Data Science Process
+description: Azure Synapse Analytics を使用して予測分析を行う例。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,23 +11,23 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f657f02a39a023f6cb620895549105e7fd1eb233
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92cd3a9cc82a38cae6a56b7796e22d035979f2d5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128163"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89439852"
 ---
-# <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Azure 上の T-SQL と Python を使用した SQL Data Warehouse データ サイエンスのチュートリアル
+# <a name="azure-synapse-analytics-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Azure 上で T-SQL と Python を使用した Azure Synapse Analytics データ サイエンスのチュートリアル
 
-ここでは、SQL Data Warehouse を使って予測分析を行うチュートリアルを紹介します。 Team Data Science Process で概説された手順を踏襲しています。 Team Data Science Process の概要については、[データ サイエンス プロセス](overview.md)に関するページを参照してください。 SQL Data Warehouse の概要については、「[Azure SQL Data Warehouse の概要](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)」を参照してください。
+これらのチュートリアルでは、Azure Synapse Analytics を使用して予測分析を行います。 Team Data Science Process で概説された手順を踏襲しています。 Team Data Science Process の概要については、[データ サイエンス プロセス](overview.md)に関するページを参照してください。 Azure Synapse Analytics の概要については、「[Azure Synapse Analytics とは](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)」を参照してください。
 
 Team Data Science Process を実行するデータ サイエンスのチュートリアルは他にも存在し、使用する**プラットフォーム**ごとにグループ化されています。 これらの例の箇条書きについては、[Team Data Science Process を実行するチュートリアル](walkthroughs.md)に関するページをご覧ください。
 
 
-## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-sql-data-warehouse"></a>T-SQL、IPython Notebook、SQL Data Warehouse を使ってタクシーのチップを予測する
+## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-azure-synapse-analytics"></a>Azure Synapse Analytics で T-SQL と IPython Notebook を使用してタクシーのチップを予測する
 
-[SQL Data Warehouse の使用](sqldw-walkthrough.md)に関するチュートリアルでは、SQL Data Warehouse (SQL DW) を使用して、機械学習の分類および回帰モデルの構築とデプロイを行う方法を説明します。  データは、一般公開されている NYC タクシーの乗車と料金のデータセットです。
+[Azure Synapse Analytics の使用に関するチュートリアル](sqldw-walkthrough.md)では、Azure Synapse Analytics を使用して機械学習の分類および回帰モデルの構築とデプロイを行う方法を示します。  データは、一般公開されている NYC タクシーの乗車と料金のデータセットです。
 
 
 ## <a name="next-steps"></a>次のステップ

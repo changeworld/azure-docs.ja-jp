@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e656eb0062cafcf7a34008e0034ec0111242807d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9562c81fcd159d61e36aa77f01fa5d5f09f71b8c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545320"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460429"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idid-manager"></a>チュートリアル:Azure Active Directory と iDiD Manager の統合
 
@@ -27,7 +27,7 @@ iDiD Manager と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して iDiD Manager に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ iDiD Manager と Azure AD の統合を構成するには、次のものが必要
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* iDiD Manager では、**SP と IDP** によって開始される SSO がサポートされます
+* iDiD Manager では、 **SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-idid-manager-from-the-gallery"></a>ギャラリーからの iDiD Manager の追加
 
@@ -61,13 +61,13 @@ Azure AD への iDiD Manager の統合を構成するには、ギャラリーか
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**iDiD Manager**」と入力し、結果ウィンドウで **[iDiD Manager]** を選択してから **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **iDiD Manager** 」と入力し、結果ウィンドウで **[iDiD Manager]** を選択してから **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
      ![結果一覧の iDiD Manager](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon**. というテスト ユーザーに基づいて、iDiD Manager で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon**. というテスト ユーザーに基づいて、iDiD Manager で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと iDiD Manager 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 iDiD Manager で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -99,11 +99,11 @@ iDiD Manager で Azure AD のシングル サインオンを構成するには�
 
 4. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
 
-    ![[iDiD Manager のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
+    ![[基本的な SAML 構成] を示すスクリーンショット。](common/preintegrated.png)
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[iDiD Manager のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://idid2.fi/saml/login/<domain>` という形式で URL を入力します。
 
@@ -116,7 +116,7 @@ iDiD Manager で Azure AD のシングル サインオンを構成するには�
 
 ### <a name="configure-idid-manager-single-sign-on"></a>iDiD Manager のシングル サインオンの構成
 
-**iDiD Manager** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [iDiD Manager サポート チーム](mailto:support@idid.fi)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**iDiD Manager** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [iDiD Manager サポート チーム](mailto:support@idid.fi)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -134,9 +134,9 @@ iDiD Manager で Azure AD のシングル サインオンを構成するには�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -171,19 +171,18 @@ iDiD Manager で Azure AD のシングル サインオンを構成するには�
 
 ### <a name="create-idid-manager-test-user"></a>iDiD Manager のテスト ユーザーの作成
 
-このセクションでは、iDiD Manager で Britta Simon というユーザーを作成します。  [iDiD Manager サポート チーム](mailto:support@idid.fi)と連携し、iDiD Manager プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、iDiD Manager で Britta Simon というユーザーを作成します。 [iDiD Manager サポート チーム](mailto:support@idid.fi)と連携し、iDiD Manager プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [iDiD Manager] タイルをクリックすると、SSO を設定した iDiD Manager に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [iDiD Manager] タイルをクリックすると、SSO を設定した iDiD Manager に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

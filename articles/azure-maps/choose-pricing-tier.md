@@ -3,17 +3,17 @@ title: Microsoft Azure Maps の適切な価格レベルの選択
 description: Azure Maps の価格レベルについて説明します。 どの機能がどのレベルで提供されているかを確かめ、価格レベルの選択に関する重要な考慮事項を確認します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/12/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3603a4f5d103987b25bd5f976b89f943f98565a8
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cb57e424642141e73588a61d026d1ff2f1a8b096
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163987"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905300"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Azure Maps での適切な価格レベルの選択
 
@@ -21,7 +21,7 @@ Azure Maps では 2 つの価格レベルが提供されています。S0 と S1
 
 ## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>サポートする同時実行ユーザーの数はどれくらいですか
 
-S0 価格レベルと S1 価格レベルでは、処理されるデータ スループットの量が異なります。 S0 価格レベルでは、**1 秒あたり最大 50 個のクエリ**が処理されます。 一方、S1 レベルでは、**1 秒あたり 50 個を超えるクエリ**が処理されます。
+S0 価格レベルと S1 価格レベルでは、処理されるデータ スループットの量が異なります。 S0 価格レベルでは、**1 秒あたり最大 50 個のクエリ** が処理されます。 一方、S1 レベルでは、**1 秒あたり 50 個を超えるクエリ** が処理されます。
 
 ## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>どのような地理空間機能を使用する予定ですか
 
@@ -48,6 +48,7 @@ S0 価格レベルと S1 価格レベルでは、処理されるデータ スル
 | Mobility (プレビュー)                       |                     | ✓        |
 | Weather (プレビュー)                        |✓                    |✓        |
 |  Creator (プレビュー)                         |                   |✓        |
+|  Elevation (プレビュー)                        |                   |✓        |
 
 さらに次の点も考慮してください。
 

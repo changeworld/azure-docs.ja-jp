@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2eafd2f74ffcf5fe0fe65d04884cfd2d668cdf0b
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-js
+ms.openlocfilehash: 8f21f5fa8ee9035fe594cecff37a63b1ef2115cc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684577"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563468"
 ---
 # <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>サーバーでレンダリングされた Nuxt.js の Web サイトを Azure Static Web Apps プレビューにデプロイする
 
@@ -30,7 +30,7 @@ ms.locfileid: "88684577"
 `create-nuxt-app` を使用して、新しい Nuxt.js プロジェクトを設定できます。 このチュートリアルでは、新しいプロジェクトではなく、既存のリポジトリを複製することで始めます。 このリポジトリは、動的 Nuxt.js アプリを静的サイトとしてデプロイする方法がわかるように設定されています。
 
 1. お使いの GitHub アカウントに、テンプレート リポジトリから新しいリポジトリを作成します。
-1. <http://github.com/staticwebdev/nuxtjs-starter/generate> に移動します
+1. [http://github.com/staticwebdev/nuxtjs-starter/generate](https://github.com/login?return_to=/staticwebdev/nuxtjs-starter/generate) に移動します
 1. リポジトリに **nuxtjs-starter** という名前を設定します
 1. 次に、新しいリポジトリをお使いのコンピューターに複製します。 <YOUR_GITHUB_ACCOUNT_NAME> は、必ず自分のアカウント名に置き換えてください。
 
@@ -109,7 +109,7 @@ Azure Static Web Apps により、GitHub リポジトリからアプリがデプ
 1. 変更を GitHub にプッシュします。
 
     ```bash
-    git push origin master
+    git push origin main
     ```
 
 ## <a name="deploy-your-static-website"></a>静的 Web サイトをデプロイする
@@ -139,7 +139,7 @@ Azure Static Web Apps により、GitHub リポジトリからアプリがデプ
 1. **[GitHub でサインイン]** ボタンをクリックします
 1. Nuxt.js プロジェクト用のリポジトリを作成した **[組織]** を選択します。これは、GitHub のユーザー名である場合があります。
 1. 前に作成したリポジトリの名前を探して選択します。
-1. *[ブランチ]* ドロップダウンから、ブランチとして **master** を選択します。
+1. *[ブランチ]* ドロップダウンから、ブランチとして **main** を選択します。
 
    :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="GitHub に接続する":::
 
@@ -172,7 +172,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nuxtjs-starter/actions
 
 アプリを作成すると、Azure Static Web Apps によってリポジトリに GitHub Actions ワークフロー ファイルが作成されます。 git 履歴が同期されるように、このファイルをローカル リポジトリに取り込む必要があります。
 
-ターミナルに戻り、`git pull origin master` コマンドを実行します。
+ターミナルに戻り、`git pull origin main` コマンドを実行します。
 
 ## <a name="configure-dynamic-routes"></a>動的なルートを構成する
 

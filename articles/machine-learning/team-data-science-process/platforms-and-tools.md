@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a9528b31bfd1be40b478f3c47fd0a16047a7f6ff
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 4ba7b8af9b50b9173f5e2040bb8b623eeafdd538
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028118"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453857"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>データ サイエンス プロジェクトのためのプラットフォームとツール
 
@@ -25,7 +25,7 @@ TDSP を使用するデータ サイエンス チームが利用できる分析�
 
 - データ サイエンス仮想マシン (Windows および Linux CentOS)
 - HDInsight Spark クラスター
-- Synapse Analytics
+- Azure Synapse Analytics
 - Azure Data Lake
 - HDInsight Hive クラスター
 - Azure File Storage
@@ -45,7 +45,7 @@ Microsoft が Windows と Linux の両方で提供するデータ サイエン�
 - Windows 用 Power BI Desktop
 - SQL Server 2016 Developer Edition (Windows )/Postgres (Linux)
 
-また、xgboost、mxnet、Vowpal Wabbit などの **ML や AI ツール**も含まれています。
+また、xgboost、mxnet、Vowpal Wabbit などの **ML や AI ツール** も含まれています。
 
 現在、DSVM は、**Windows** オペレーティング システムと **Linux CentOS** オペレーティング システムでご利用いただけます。 実行を計画しているデータ サイエンス プロジェクトのニーズに基づいて、DSVM のサイズ (CPU コアの数とメモリ容量) を選択します。 
 
@@ -60,14 +60,14 @@ Apache Spark は、ビッグ データ分析アプリケーションのパフォ
 
 HDInsight で Spark クラスターを作成するときは、Spark をインストールおよび構成して Azure コンピューティング リソースを作成します。 HDInsight の Spark クラスターの作成には約 10 分かかります。 処理対象のデータは Azure Blob Storage に格納します。 クラスターで Azure Blob Storage を使用する方法については、[HDInsight の Hadoop での HDFS と互換性のある Azure Blob Storage の使用](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。
 
-Microsoft の TDSP チームは、Azure HDInsight Spark クラスターを使用してデータ サイエンス ソリューションを構築する方法を示す 2 つのエンド ツー エンド チュートリアルを公開しています。1 つは Python を使用し、もう 1 つは Scala を使用します。 Azure HDInsight **Spark クラスター**の詳細については、[HDInsight Linux の Apache Spark の概要](../../hdinsight/spark/apache-spark-overview.md)に関する記事をご覧ください。 Azure HDInsight Spark クラスターで **Python** を使用してデータ サイエンス ソリューションを構築する方法については、「[Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](spark-overview.md)」をご覧ください。 Azure HDInsight Spark クラスターで **Scala** を使用してデータ サイエンス ソリューションを構築する方法については、「[Scala および Azure 上の Spark を使用したデータ サイエンス](scala-walkthrough.md)」をご覧ください。 
+Microsoft の TDSP チームは、Azure HDInsight Spark クラスターを使用してデータ サイエンス ソリューションを構築する方法を示す 2 つのエンド ツー エンド チュートリアルを公開しています。1 つは Python を使用し、もう 1 つは Scala を使用します。 Azure HDInsight **Spark クラスター** の詳細については、[HDInsight Linux の Apache Spark の概要](../../hdinsight/spark/apache-spark-overview.md)に関する記事をご覧ください。 Azure HDInsight Spark クラスターで **Python** を使用してデータ サイエンス ソリューションを構築する方法については、「[Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](spark-overview.md)」をご覧ください。 Azure HDInsight Spark クラスターで **Scala** を使用してデータ サイエンス ソリューションを構築する方法については、「[Scala および Azure 上の Spark を使用したデータ サイエンス](scala-walkthrough.md)」をご覧ください。 
 
 
-##  <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
+##  <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure SQL Data Warehouse では、過剰なプロビジョニングや過払いが発生することなく、コンピューティング リソースを数秒で簡単にスケールできます。 また、コンピューティング リソースの使用を一時停止する独自のオプションも用意されており、クラウドの適切なコスト管理を自由に行うことができます。 スケーラブルなコンピューティング リソースをデプロイできるので、すべてのデータを Azure SQL Data Warehouse に取り込むことができます。 ストレージ コストが最小限に抑えられており、分析する必要があるデータセットの部分だけを対象に計算を実行できます。 
+Azure Synapse Analytics では、過剰なプロビジョニングや過払いが発生することなく、コンピューティング リソースを数秒で簡単にスケールできます。 また、コンピューティング リソースの使用を一時停止する独自のオプションも用意されており、クラウドの適切なコスト管理を自由に行うことができます。 スケーラブルなコンピューティング リソースをデプロイできるので、すべてのデータを Azure Synapse Analytics に取り込むことができます。 ストレージ コストが最小限に抑えられており、分析する必要があるデータセットの部分だけを対象に計算を実行できます。 
 
-Azure SQL Data Warehouse の詳細については、[SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse) の Web サイトをご覧ください。 SQL Data Warehouse を使用してエンド ツー エンドの高度な分析ソリューションを構築する方法については、「[Team Data Science Process の活用: SQL Data Warehouse の使用](sqldw-walkthrough.md)」をご覧ください。
+Azure Synapse Analytics の詳細については、[Azure Synapse Analytics](https://azure.microsoft.com/services/sql-data-warehouse) の Web サイトをご覧ください。 SQL Data Warehouse を使用してエンド ツー エンドの高度な分析ソリューションを構築する方法については、「[Team Data Science Process の活用: Azure Synapse Analytics の使用](sqldw-walkthrough.md)」をご覧ください。
 
 
 ## <a name="azure-data-lake"></a>Azure Data Lake
@@ -92,23 +92,23 @@ Azure HDInsight Hive クラスターの詳細については、[HDInsight の Ha
 
 Azure File Storage は、標準のサーバー メッセージ ブロック (SMB) プロトコルを使用してクラウドでファイル共有を提供するサービスです。 SMB 2.1 と SMB 3.0 の両方がサポートされます。 Azure File Storage を使用すると、コストがかかる書き換えを行わずに、ファイル共有に依存しているレガシ アプリケーションをすばやく Azure に移行することができます。 Azure 仮想マシンまたはクラウド サービスで実行されているアプリケーション、またはオンプレミスのクライアントから実行されているアプリケーションは、デスクトップ アプリケーションが一般的な SMB 共有をマウントするのと同じように、クラウドにファイル共有をマウントできます。 このため、任意の数のアプリケーション コンポーネントが、File Storage 共有をマウントして同時にアクセスできます。
 
-データ サイエンス プロジェクトで特に役立つのは、プロジェクト データをプロジェクト チームのメンバーと共有する場所として Azure File Storage を作成できることです。 これにより、各メンバーは、Azure File Storage でデータの同じコピーにアクセスできます。 また、この File Storage を使用して、プロジェクトの実行中に生成される機能セットを共有することもできます。 プロジェクトがクライアント エンゲージメントの場合、クライアントが自身の Azure サブスクリプションに Azure File Storage を作成して、プロジェクトのデータや機能をチームのメンバーと共有できます。 これにより、クライアントはプロジェクトのデータ資産を完全に制御できます。 Azure File Storage の詳細については、[Windows での Azure File Storage の使用](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files)に関する記事、および [Linux で Azure File Storage を使用する方法](../../storage/files/storage-how-to-use-files-linux.md)に関する記事をご覧ください。
+データ サイエンス プロジェクトで特に役立つのは、プロジェクト データをプロジェクト チームのメンバーと共有する場所として Azure File Storage を作成できることです。 これにより、各メンバーは、Azure File Storage でデータの同じコピーにアクセスできます。 また、この File Storage を使用して、プロジェクトの実行中に生成される機能セットを共有することもできます。 プロジェクトがクライアント エンゲージメントの場合、クライアントが自身の Azure サブスクリプションに Azure File Storage を作成して、プロジェクトのデータや機能をチームのメンバーと共有できます。 これにより、クライアントはプロジェクトのデータ資産を完全に制御できます。 Azure File Storage の詳細については、[Windows での Azure File Storage の使用](../../storage/files/storage-dotnet-how-to-use-files.md)に関する記事、および [Linux で Azure File Storage を使用する方法](../../storage/files/storage-how-to-use-files-linux.md)に関する記事をご覧ください。
 
 
 ## <a name="sql-server-2019-r-and-python-services"></a>SQL Server 2019 R Services および Python Services
 
 R Services (データベース内) は、新たな洞察を発見できるインテリジェント アプリケーションを開発、デプロイするためのプラットフォームです。 R コミュニティで提供される多数のパッケージを含め、豊富で強力な R 言語を使用して、SQL Server データを使ったモデルの作成や予測の生成を行うことができます。 R Services (データベース内) では R 言語が SQL Server と統合されるため、常にデータの近くで分析が実行されます。これにより、データの移動に関連するコストやセキュリティ リスクが排除されます。
 
-R Services (データベース内) では、SQL Server のツールとテクノロジの包括的なセットを使用してオープン ソースの R 言語をサポートします。 R Services (データベース内) は、優れたパフォーマンス、セキュリティ、信頼性、管理容易性を実現します。 使い慣れた便利なツールを使用して、R ソリューションをデプロイできます。 実稼働アプリケーションでは、R ランタイムを呼び出し、Transact-SQL を使用して予測やビジュアルを取得できます。 また、ScaleR ライブラリを使用して、R ソリューションのスケールとパフォーマンスを向上させることもできます。 詳細については、[SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services) に関する記事をご覧ください。
+R Services (データベース内) では、SQL Server のツールとテクノロジの包括的なセットを使用してオープン ソースの R 言語をサポートします。 R Services (データベース内) は、優れたパフォーマンス、セキュリティ、信頼性、管理容易性を実現します。 使い慣れた便利なツールを使用して、R ソリューションをデプロイできます。 実稼働アプリケーションでは、R ランタイムを呼び出し、Transact-SQL を使用して予測やビジュアルを取得できます。 また、ScaleR ライブラリを使用して、R ソリューションのスケールとパフォーマンスを向上させることもできます。 詳細については、[SQL Server R Services](/sql/advanced-analytics/r/sql-server-r-services) に関する記事をご覧ください。
 
-Microsoft の TDSP チームは、SQL Server 2016 R Services でデータ サイエンス ソリューションを構築する方法を示す 2 つのエンド ツー エンド チュートリアルを公開しています。1 つは R プログラマ向けで、もう 1 つは SQL 開発者向けです。 **R プログラマ**の場合は、[データ サイエンスのエンド ツー エンド チュートリアル](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)をご覧ください。 **SQL 開発者**の場合は、[SQL 開発者向けの高度なデータベース内分析のチュートリアル](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)をご覧ください。
+Microsoft の TDSP チームは、SQL Server 2016 R Services でデータ サイエンス ソリューションを構築する方法を示す 2 つのエンド ツー エンド チュートリアルを公開しています。1 つは R プログラマ向けで、もう 1 つは SQL 開発者向けです。 **R プログラマ** の場合は、[データ サイエンスのエンド ツー エンド チュートリアル](/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)をご覧ください。 **SQL 開発者** の場合は、[SQL 開発者向けの高度なデータベース内分析のチュートリアル](/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)をご覧ください。
 
 
 ## <a name="appendix-tools-to-set-up-data-science-projects"></a><a name="appendix"></a>付録: データ サイエンス プロジェクトを設定するためのツール
 
 ### <a name="install-git-credential-manager-on-windows"></a>Windows への Git Credential Manager のインストール
 
-**Windows** で TDSP に従う場合、Git リポジトリと通信するために **Git Credential Manager (GCM)** をインストールする必要があります。 GCM をインストールするには、最初に **Chocolaty** をインストールする必要があります。 Chocolaty と GCM をインストールするには、Windows PowerShell で**管理者**として次のコマンドを実行します。  
+**Windows** で TDSP に従う場合、Git リポジトリと通信するために **Git Credential Manager (GCM)** をインストールする必要があります。 GCM をインストールするには、最初に **Chocolaty** をインストールする必要があります。 Chocolaty と GCM をインストールするには、Windows PowerShell で **管理者** として次のコマンドを実行します。  
 
 ```powershell
 iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
@@ -153,4 +153,4 @@ Linux (CentOS) コンピューターを使用して Git コマンドを実行し
 
 また、 **特定のシナリオ** のプロセスに伴うすべての段階をリハーサル的に最初から最後まで実証することも可能です。 これらは、[サンプル チュートリアル](walkthroughs.md)のトピックで簡単な説明と共にリンク付きで紹介されています。 チュートリアルでは、クラウド、オンプレミスのツール、サービスをワークフローまたはパイプラインに組み込んでインテリジェント アプリケーションを作成する方法を説明しています。 
 
-Azure Machine Learning Studio (クラシック) を使用して Team Data Science Process の手順を実行する方法を示す例については、[Azure ML の使用](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)に関するラーニング パスを参照してください。
+Azure Machine Learning Studio (クラシック) を使用して Team Data Science Process の手順を実行する方法を示す例については、[Azure ML の使用](./index.yml)に関するラーニング パスを参照してください。

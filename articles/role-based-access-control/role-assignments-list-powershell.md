@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e27fe0589498de13f5eb6e17f8869bb9d7352a09
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: bf5445f6ca04e56aab466e97967a58c3e4b735a4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372078"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556944"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>Azure PowerShell を使用して Azure でのロールの割り当てを一覧表示する
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] この記事では、Azure PowerShell を使用してロールの割り当てを一覧表示する方法を説明します。
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] この記事では、Azure PowerShell を使用してロールの割り当てを一覧表示する方法を説明します。
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "87372078"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Azure Cloud Shell の PowerShell](/azure/cloud-shell/overview) または [Azure PowerShell](/powershell/azure/install-az-ps)
+- [Azure Cloud Shell の PowerShell](../cloud-shell/overview.md) または [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="list-role-assignments-for-the-current-subscription"></a>現在のサブスクリプションにおけるロールの割り当ての一覧表示
 
@@ -188,4 +188,4 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure PowerShell を使用して Azure でのロールの割り当てを追加または削除する](role-assignments-powershell.md)
+- [Azure PowerShell を使用して Azure ロールを割り当てる](role-assignments-powershell.md)

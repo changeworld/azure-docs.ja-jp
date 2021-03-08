@@ -1,19 +1,19 @@
 ---
 title: Azure SignalR Service サーバーレス クイック スタート - C#
-description: Azure SignalR Service と Azure Functions を使ってチャット ルームを作成する方法について説明します。
+description: C# から Azure SignalR Service と Azure Functions を使ってチャット ルームを作成する方法について説明します。
 author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.date: 03/04/2019
+ms.date: 09/25/2020
 ms.author: zhshang
-ms.openlocfilehash: 54a4c9374c064073620f2679e7c7511e30c45de6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 1f28058a766144ada3326b3ee4ce09ca503d1896
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050643"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873881"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>クイック スタート:C\# を使用した Azure Functions と SignalR Service によるチャット ルームの作成
 
@@ -21,27 +21,27 @@ Azure SignalR Service を使用すると、アプリケーションにリアル�
 
 ## <a name="prerequisites"></a>前提条件
 
-Visual Studio 2019 をまだインストールしていない場合は、**無料**の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
+まだ Visual Studio 2019 をインストールしていない場合は、**無料** の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 
 [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing)、[.NET Core SDK](https://dotnet.microsoft.com/download)、お好みのコード エディターを使用して、このチュートリアルをコマンド ライン (macOS、Windows、または Linux) で実行することもできます。
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料でアカウントを 1 つ](https://azure.microsoft.com/free/dotnet)作成してください。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qscsharp)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qscsharp)。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
 Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサインインします。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qscsharp)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qscsharp)。
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qscsharp)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qscsharp)。
 
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qscsharp)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qscsharp)。
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Azure Function アプリを構成して実行する
 
@@ -55,13 +55,13 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 1. プライマリ接続文字列を選択してコピーします。
 
-1. Visual Studio に戻り、ソリューション エクスプローラーで、*local.settings.sample.json* の名前を *local.settings.json* に変更します。
+1. Visual Studio の **ソリューション エクスプローラー** に戻り、*local.settings.sample.json* の名前を *local.settings.json* に変更します。
 
-1. **local.settings.json** で、**AzureSignalRConnectionString** 設定に接続文字列の値を貼り付けます。 ファイルを保存します。
+1. *local.settings.json* で、**AzureSignalRConnectionString** 設定に接続文字列の値を貼り付けます。 ファイルを保存します。
 
-1. **Functions.cs** を開きます。 この関数アプリには、HTTP によってトリガーされる関数が 2 つあります。
+1. *Functions.cs* を開きます。 この関数アプリには、HTTP によってトリガーされる関数が 2 つあります。
 
-    - **GetSignalRInfo** - *SignalRConnectionInfo* 入力バインディングを使用し、有効な接続情報を生成して返却します。
+    - **GetSignalRInfo** - `SignalRConnectionInfo` 入力バインディングを使用し、有効な接続情報を生成して返します。
     - **SendMessage** - 要求本文でチャット メッセージを受信し、*SignalR* 出力バインディングを使用して接続されているすべてのクライアント アプリケーションにメッセージをブロードキャストします。
 
 1. Azure 関数アプリをローカルで起動するには、次のオプションのいずれかを使用します。
@@ -75,15 +75,15 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
         ```bash
         func start
         ```
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qscsharp)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qscsharp)。
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qscsharp)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qscsharp)。
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qscsharp)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qscsharp)
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -92,4 +92,3 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 > [!div class="nextstepaction"]
 > [Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md)
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qscsharp)

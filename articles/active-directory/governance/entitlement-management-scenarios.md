@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e83560caa6f4147252fd4c55767888e7c0ad632b
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: c0f45a1481661aa350815560d795ab7411f99545
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783401"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317840"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理での一般的なシナリオ
 
@@ -119,24 +119,24 @@ ms.locfileid: "88783401"
 1. [ビデオを視聴する: 日々の管理: 変化への対応](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
 1. アクセス パッケージを開く
 1. [ライフサイクルの設定を開く](entitlement-management-access-package-lifecycle-policy.md#open-lifecycle-settings)
-1. [有効期限の設定を更新する](entitlement-management-access-package-lifecycle-policy.md#lifecycle)
+1. [有効期限の設定を更新する](entitlement-management-access-package-lifecycle-policy.md#lifecycle) 
 
 ### <a name="access-package-manager-update-how-access-is-approved-for-a-project"></a>アクセス パッケージ マネージャー: プロジェクトのアクセスの承認方法を更新する
 
 1. [ビデオを視聴する: 日々の管理: 変化への対応](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
-1. [要求と承認の設定の既存ポリシーを開く](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
-1. [承認設定を更新する](entitlement-management-access-package-request-policy.md#approval)
+1. [要求設定の既存ポリシーを開く](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
+1. [承認設定を更新する](entitlement-management-access-package-approval-policy.md#change-approval-settings-of-an-existing-access-package)
 
 ### <a name="access-package-manager-update-the-people-for-a-project"></a>アクセス パッケージ マネージャー: プロジェクトの人員を更新する
 
 1. [ビデオを視聴する: 日々の管理: 変化への対応](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
 1. [アクセスが不要になったユーザーを削除する](entitlement-management-access-package-assignments.md)
-1. [要求と承認の設定の既存ポリシーを開く](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
+1. [要求設定の既存ポリシーを開く](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
 1. [アクセスが必要なユーザーを追加する](entitlement-management-access-package-request-policy.md#for-users-in-your-directory)
 
 ### <a name="access-package-manager-directly-assign-specific-users-to-an-access-package"></a>アクセス パッケージ マネージャー: アクセス パッケージに特定のユーザーを直接割り当てる
 
-1. [異なるライフサイクル設定がユーザーに必要になった場合、アクセス パッケージに新しいポリシーを追加する](entitlement-management-access-package-request-policy.md#add-a-new-policy-of-request-and-approval-settings)
+1. [異なるライフサイクル設定がユーザーに必要になった場合、アクセス パッケージに新しいポリシーを追加する](entitlement-management-access-package-request-policy.md#open-an-existing-access-package-and-add-a-new-policy-of-request-settings)
 1. [アクセス パッケージに特定のユーザーを直接割り当てる](entitlement-management-access-package-assignments.md#directly-assign-a-user)
 
 ## <a name="assignments-and-reports"></a>割り当てとレポート
@@ -154,7 +154,7 @@ ms.locfileid: "88783401"
 
 ## <a name="programmatic-administration"></a>プログラムによる管理
 
-Microsoft Graph を使用して、アクセス パッケージ、カタログ、ポリシー、要求、および割り当てを管理することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、[エンタイトルメント管理 API](/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta) を呼び出すことができます。
+Microsoft Graph を使用して、アクセス パッケージ、カタログ、ポリシー、要求、および割り当てを管理することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、[エンタイトルメント管理 API](/graph/tutorial-access-package-api?view=graph-rest-beta) を呼び出すことができます。
 
 ## <a name="next-steps"></a>次のステップ
 

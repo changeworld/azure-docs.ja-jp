@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: d3e70384a99e2dad3f19825cb85b83861e4647e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d61a44e671c43754fa7cccbe8ea8fe54eeba387
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083822"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900418"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure 間の VM レプリケーションに関するエラーのトラブルシューティング
 
@@ -191,18 +191,21 @@ VM がカスタム DNS 設定を使用するかどうかを確認するには、
 
 仮想マシンから DNS サーバーにアクセスを試みます。 DNS サーバーにアクセスできない場合は、DNS サーバーをフェールオーバーするか、または DR ネットワークと DNS の間にサイトのラインを作成して、アクセスできるようにします。
 
+> [!NOTE]
+> プライベート エンドポイントを使用する場合は、確実に VM によるプライベート DNS レコードの解決が可能であるようにします。
+
 :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/custom_dns.png" alt-text="com-error。":::
 
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>問題 2:Site Recovery の構成に失敗しました (151196)
 
 #### <a name="possible-cause"></a>考えられる原因
 
-Office 365 認証と ID IP4 エンドポイントへの接続を確立できません。
+Microsoft 365 認証と ID IP4 エンドポイントへの接続を確立できません。
 
 #### <a name="fix-the-problem"></a>問題の解決
 
-Azure Site Recovery では、認証のために Office 365 の IP 範囲にアクセスする必要がありました。
-Azure ネットワーク セキュリティ グループ (NSG) 規則またはファイアウォール プロキシを使用して VM 上で発信ネットワーク接続を制御している場合、Azure Active Directory (AAD) へのアクセスを許可するには [AAD サービス タグ](../virtual-network/security-overview.md#service-tags)に基づく NSG 規則を確実に使用してください。 IP アドレスベースの NSG 規則はサポートしなくなりました。
+Azure Site Recovery では、認証のために Microsoft 365 の IP 範囲にアクセスする必要がありました。
+Azure ネットワーク セキュリティ グループ (NSG) 規則またはファイアウォール プロキシを使用して VM 上で発信ネットワーク接続を制御している場合、Azure Active Directory (AAD) へのアクセスを許可するには [AAD サービス タグ](../virtual-network/network-security-groups-overview.md#service-tags)に基づく NSG 規則を確実に使用してください。 IP アドレスベースの NSG 規則はサポートしなくなりました。
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>問題 3:Site Recovery の構成に失敗しました (151197)
 
@@ -237,7 +240,7 @@ VM での発信ネットワーク接続の制御に Azure ネットワーク セ
    ```
 
 > [!NOTE]
-> Mobility Service エージェントは、**認証されていないプロキシ**のみをサポートします。
+> Mobility Service エージェントは、**認証されていないプロキシ** のみをサポートします。
 
 ### <a name="more-information"></a>詳細情報
 
@@ -312,7 +315,7 @@ Site Recovery によって仮想マシンが保護されると、ソース仮想
    :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="VM からロックを削除する。":::
 
 1. [古い Site Recovery 構成を削除する](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)ためのスクリプトをダウンロードします。
-1. _Cleanup-stale-asr-config-Azure-VM.ps1_ スクリプトを実行します。 パラメーターとして、**サブスクリプション ID**、**VM リソース グループ**、および **VM 名**を指定します。
+1. _Cleanup-stale-asr-config-Azure-VM.ps1_ スクリプトを実行します。 パラメーターとして、**サブスクリプション ID**、**VM リソース グループ**、および **VM 名** を指定します。
 1. Azure 資格情報の入力を求められたら、それを指定します。 次に、スクリプトがエラーを出さずに実行されることを確認します。
 
 ## <a name="replication-not-enabled-on-vm-with-stale-resources-error-code-150226"></a>古いリソースを含む VM でレプリケーションが有効にならない (エラー コード 150226)
@@ -337,7 +340,7 @@ Site Recovery を使用して Azure VM のレプリケーションを有効に�
    :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="VM からロックを削除する。":::
 
 1. [古い Site Recovery 構成を削除する](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)ためのスクリプトをダウンロードします。
-1. _Cleanup-stale-asr-config-Azure-VM.ps1_ スクリプトを実行します。 パラメーターとして、**サブスクリプション ID**、**VM リソース グループ**、および **VM 名**を指定します。
+1. _Cleanup-stale-asr-config-Azure-VM.ps1_ スクリプトを実行します。 パラメーターとして、**サブスクリプション ID**、**VM リソース グループ**、および **VM 名** を指定します。
 1. Azure 資格情報の入力を求められたら、それを指定します。 次に、スクリプトがエラーを出さずに実行されることを確認します。
 
 ## <a name="cant-select-vm-or-resource-group-in-enable-replication-job"></a>レプリケーションの有効化ジョブで VM またはリソース グループを選択できない
@@ -370,7 +373,7 @@ Azure VM 上に古い Site Recovery 構成が存在する場合、レプリケ�
    :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png" alt-text="VM からロックを削除する。":::
 
 1. [古い Site Recovery 構成を削除する](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)ためのスクリプトをダウンロードします。
-1. _Cleanup-stale-asr-config-Azure-VM.ps1_ スクリプトを実行します。 パラメーターとして、**サブスクリプション ID**、**VM リソース グループ**、および **VM 名**を指定します。
+1. _Cleanup-stale-asr-config-Azure-VM.ps1_ スクリプトを実行します。 パラメーターとして、**サブスクリプション ID**、**VM リソース グループ**、および **VM 名** を指定します。
 1. Azure 資格情報の入力を求められたら、それを指定します。 次に、スクリプトがエラーを出さずに実行されることを確認します。
 
 ## <a name="unable-to-select-a-vm-for-protection"></a>保護のために VM を選択できない
@@ -412,7 +415,7 @@ VM のレプリケーションを無効にしても、ネットワーク マッ�
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="ネットワーク マッピングの削除。":::
 
-ディザスター リカバリーのセットアップ中に構成されたターゲット ネットワークが、初期セットアップ後で、かつ VM が保護された後に変更される場合があります。 **ネットワーク マッピングを変更する**には、ネットワーク名を選択します。
+ディザスター リカバリーのセットアップ中に構成されたターゲット ネットワークが、初期セットアップ後で、かつ VM が保護された後に変更される場合があります。 **ネットワーク マッピングを変更する** には、ネットワーク名を選択します。
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="ネットワーク マッピングの変更。":::
 

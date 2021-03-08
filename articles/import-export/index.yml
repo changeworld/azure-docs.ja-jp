@@ -1,0 +1,71 @@
+### YamlMime:Landing
+title: Azure Import/Export のドキュメント
+summary: Azure Import/Export を使用すると、Azure データセンターにディスク ドライブを送付することで、Azure Blob Storage と Azure Files に大量のデータを安全にインポートできます。
+metadata:
+  title: Azure Import/Export のドキュメント
+  description: 物理ディスクを送付することで、Azure データセンターとの間で大量のデータを安全にインポートまたはエクスポートするための Azure Import/Export のドキュメント。
+  services: storage
+  ms.service: storage
+  ms.subservice: storage
+  ms.topic: landing-page
+  ms.collection: collection
+  author: v-dalc
+  ms.author: alkohli
+  ms.date: 01/08/201
+  ms.openlocfilehash: f30a85c3e38917357f162b1ad24899fba36a12c5
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101712625"
+landingContent:
+- title: Azure Import/Export について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Import/Export とは
+      url: storage-import-export-service.md
+  - linkListType: architecture
+    links:
+    - text: データ転送オプションの選択
+      url: ../storage/common/storage-choose-data-transfer-solution.md
+    - text: ネットワーク転送またはオフライン転送の使用
+      url: ../storage/common/storage-solution-large-dataset-low-network.md#offline-transfer-or-network-transfer
+- title: 必要条件
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 必要条件
+      url: storage-import-export-requirements.md
+    - text: よく寄せられる質問
+      url: storage-import-export-service-faq.md
+- title: 配置
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: データを BLOB にインポートする
+      url: storage-import-export-data-to-blobs.md
+    - text: データをファイルにインポートする
+      url: storage-import-export-data-to-files.md
+    - text: BLOB からデータをエクスポートする
+      url: storage-import-export-data-from-blobs.md
+  - linkListType: learn
+    links:
+    - text: Import/Export を使用してデータをオフラインでエクスポートする
+      url: /learn/modules/export-data-with-azure-import-export/
+- title: モニター
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ドライブの状態を表示する
+      url: storage-import-export-view-drive-status.md
+    - text: ジョブの状態を表示する
+      url: storage-import-export-tool-reviewing-job-status-v1.md
+- title: トラブルシューティング
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: トラブルシューティング
+      url: storage-import-export-contact-microsoft-support.md
+    - text: サポートに問い合わせる
+      url: storage-import-export-contact-microsoft-support.md

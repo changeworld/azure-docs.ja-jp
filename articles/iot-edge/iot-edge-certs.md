@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: 9d7caf332239d364b5bc47b5d58a808ead70395d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d1d4abbcc0768915d7d2e693cfc76a699ed21a91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210589"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89669631"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Azure IoT Edge での証明書の使用方法について理解する
 
@@ -34,7 +34,7 @@ IoT Edge デバイスに証明書を設定するには、2 つの一般的なシ
 ![典型的な証明書の関連図](./media/iot-edge-certs/edgeCerts-general.png)
 
 > [!NOTE]
-> 現時点では、libiothsm の制限により、2050 年 1 月 1 日以降に有効期限が切れる証明書は使用できません。 この制限は、デバイス CA 証明書、信頼バンドル内のすべての証明書、x.509 のプロビジョニング方法に使用されるデバイス ID 証明書に適用されます。
+> 現時点では、libiothsm の制限により、2038 年 1 月 1 日以降に有効期限が切れる証明書は使用できません。 この制限は、デバイス CA 証明書、信頼バンドル内のすべての証明書、x.509 のプロビジョニング方法に使用されるデバイス ID 証明書に適用されます。
 
 ### <a name="certificate-authority"></a>証明機関
 

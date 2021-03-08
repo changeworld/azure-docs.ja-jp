@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c4667b810e4d3d5f13e13572e2420880da5a8a0b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b35b66615bd5c577dd73faca77d3ea20468442f8
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931626"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913519"
 ---
 # <a name="example-use-the-large-scale-feature"></a>例:大規模なフィーチャーを使用する
 
@@ -232,7 +232,7 @@ LargePersonGroup または LargeFaceList の Persons または Faces は、ト�
 
 比較的長い待機時間を許容できる場合は、新しいデータを追加した直後にトレーニング操作をトリガーする必要はありません。 代わりに、トレイン操作をメイン ロジックから分割して、定期的にトリガーすることができます。 この戦略は、許容できる待機時間がある動的なシナリオに適しています。 これは、トレーニングの頻度をさらに減らすために、静的なシナリオに適用することができます。
 
-`TrainLargeFaceList` と似た `TrainLargePersonGroup` 関数があるとします。 `System.Timers` の [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) クラスを呼び出して LargePersonGroup に対してスタンドアロン トレーニングを実行する一般的な実装を次に示します。
+`TrainLargeFaceList` と似た `TrainLargePersonGroup` 関数があるとします。 `System.Timers` の [`Timer`](/dotnet/api/system.timers.timer) クラスを呼び出して LargePersonGroup に対してスタンドアロン トレーニングを実行する一般的な実装を次に示します。
 
 ```csharp
 private static void Main()
@@ -260,7 +260,7 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 }
 ```
 
-データ管理と識別に関連する実装の詳細については、「[顔を追加する方法](how-to-add-faces.md)」と「[画像内の顔を識別する方法](HowtoIdentifyFacesinImage.md)」を参照してください。
+データ管理と識別に関連する実装の詳細については、[顔を追加する](how-to-add-faces.md)方法に関するページを参照してください。
 
 ## <a name="summary"></a>まとめ
 
@@ -271,7 +271,7 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 
 ## <a name="next-steps"></a>次のステップ
 
-ハウツー ガイドに従って、PersonGroup に顔を追加する方法、または PersonGroup で識別操作を実行する方法を学習します。
+ハウツー ガイドに従って、PersonGroup に顔を追加する方法、または PersonGroup で識別操作を実行するスクリプトを作成する方法を学習します。
 
 - [顔を追加する](how-to-add-faces.md)
-- [画像内の顔を識別する](HowtoIdentifyFacesinImage.md)
+- [Face クライアント ライブラリのクイックスタート](../Quickstarts/client-libraries.md)

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/12/2018
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 455df5d2bf6003dd06a11f93d3e0d70ab9e11ee2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fbddd2eb52414827561d8896dfc8bc9ff705f41b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919524"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584393"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>最新の Azure Multi-Factor Authentication Server にアップグレードする
 
@@ -25,24 +25,24 @@ ms.locfileid: "88919524"
 v6.x 以前から v7.x 以降にアップグレードする場合、すべてのコンポーネントが .NET 2.0 から .NET 4.5 に変わります。 また、すべてのコンポーネントに Microsoft Visual C++ 2015 再頒布可能 Update 1 以降が必要です。 これらのコンポーネントの x86 および x64 バージョンがまだインストールされていない場合、MFA Server のインストーラーは両方のバージョンをインストールします。 ユーザー ポータルとモバイル アプリ Web サービスが異なるサーバーで動いている場合、コンポーネントをアップグレードする前にこれらのパッケージをインストールする必要があります。 最新の Microsoft Visual C++ 2015 再頒布可能 Update は [Microsoft ダウンロード センター](https://www.microsoft.com/download/)で見つかります。 
 
 > [!IMPORTANT]
-> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなりました。 サインイン イベント時に多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication (MFA) を使用していただく必要があります。
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなりました。 サインイン イベント時に多要素認証が必要な新しいお客様は、クラウドベースの Azure AD Multi-Factor Authentication (MFA) を使用していただく必要があります。
 >
-> クラウドベースの MFA の使用を開始するには、「[チュートリアル: Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
+> クラウドベースの MFA の使用を開始するには、「[チュートリアル: Azure AD Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
 >
 > 2019 年 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
 
 アップグレードの手順:
 
-* Azure MFA Server をアップグレードする (下位からマスターへという順番で)
+* Azure MFA Server をアップグレードする (下位からプライマリへという順番で)
 * ユーザー ポータル インスタンスをアップグレードする
 * AD FS アダプター インスタンスをアップグレードする
 
 ## <a name="upgrade-azure-mfa-server"></a>Azure MFA Server をアップグレードする
 
 1. 「[Azure Multi-Factor Authentication Server のダウンロード](howto-mfaserver-deploy.md#download-the-mfa-server)」の説明に従って、Azure MFA Server インストーラーの最新バージョンを入手します。
-2. マスター MFA Server の C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (既定のインストール場所の場合) にある MFA Server データ ファイルのバックアップを作成します。
+2. プライマリ MFA Server の C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (既定のインストール場所の場合) にある MFA Server データ ファイルのバックアップを作成します。
 3. 高可用性のために複数のサーバーを実行している場合は、アップグレード中のサーバーへのトラフィック送信を停止するように、MFA Server への認証を行うクライアント システムを変更します。 ロード バランサーを使用する場合は、下位の MFA Server をロード バランサーから削除し、アップグレードを行ってから、ファームにサーバーを追加して戻します。
-4. 各 MFA Server で新しいインストーラーを実行します。 下位サーバーはマスターによってレプリケートされる古いデータ ファイルを読み取ることができるため、最初に下位サーバーをアップグレードします。
+4. 各 MFA Server で新しいインストーラーを実行します。 下位サーバーはプライマリによってレプリケートされる古いデータ ファイルを読み取ることができるため、最初に下位サーバーをアップグレードします。
 
    > [!NOTE]
    > サーバーをアップグレードする場合には、他の MFA サーバーとの負荷分散やトラフィック共有から削除する必要があります。
@@ -51,7 +51,7 @@ v6.x 以前から v7.x 以降にアップグレードする場合、すべての
   
 5. Microsoft Visual C++ 2015 再頒布可能 Update パッケージのインストールを求められた場合は、受け入れます。 パッケージの x86 バージョンと x64 バージョンの両方がインストールされます。
 6. Web サービス SDK を使用する場合は、新しい Web サービス SDK のインストールを求められます。 新しい Web サービス SDK をインストールするときは、仮想ディレクトリ名が前にインストールされていた仮想ディレクトリ (たとえば、MultiFactorAuthWebServiceSdk) と一致することを確認してください。
-7. すべての下位サーバーで手順を繰り返します。 下位サーバーの 1 つを新しいマスターに昇格させた後、元のマスター サーバーをアップグレードします。
+7. すべての下位サーバーで手順を繰り返します。 下位サーバーの 1 つを新しいプライマリに昇格させた後、元のプライマリ サーバーをアップグレードします。
 
 ## <a name="upgrade-the-user-portal"></a>ユーザー ポータルをアップグレードする
 

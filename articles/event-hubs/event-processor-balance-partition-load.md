@@ -3,15 +3,15 @@ title: 複数のインスタンス間でパーティション負荷のバラン�
 description: イベント プロセッサと Azure Event Hubs SDK を使用して、アプリケーションの複数のインスタンス間でパーティション負荷のバランスを取る方法について説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 8bf3f05b823a784f4f3fc2074719ed346f769f5e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: af307058d0eda6b96c0811bccc245c09e2bdd27d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933795"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025046"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>アプリケーションの複数のインスタンス間でパーティション負荷のバランスを取る
-イベント処理アプリケーションをスケーリングするには、アプリケーションのインスタンスを複数実行し、それらのインスタンス間で負荷のバランスを取ります。 以前のバージョンでは、[EventProcessorHost](event-hubs-event-processor-host.md) を使用することで、プログラムの複数のインスタンス間での負荷と、受信時のチェックポイントイ ベントのバランスを取ることができました。 新しいバージョン (5.0 以降) では **EventProcessorClient** (.NET および Java) または **EventHubConsumerClient** (Python および JavaScript) を使用して、同じ処理を実行できます。 開発モデルは、イベントを使用することでより簡単に作成できます。 イベント ハンドラーを登録することによって、目的のイベントをサブスクライブします。
+イベント処理アプリケーションをスケーリングするには、アプリケーションのインスタンスを複数実行し、それらのインスタンス間で負荷のバランスを取ります。 以前のバージョンでは、[EventProcessorHost](event-hubs-event-processor-host.md) を使用することで、プログラムの複数のインスタンス間での負荷と、受信時のチェックポイントイ ベントのバランスを取ることができました。 新しいバージョン (5.0 以降) では **EventProcessorClient** (.NET および Java) または **EventHubConsumerClient** (Python および JavaScript) を使用して、同じ処理を実行できます。 開発モデルは、イベントを使用することでより簡単に作成できます。 イベント ハンドラーを登録することによって、目的のイベントをサブスクライブします。 古いバージョンのクライアント ライブラリを使用している場合は、[.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)、[Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/migration-guide.md)、[Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/servicebus/azure-servicebus/migration_guide.md)、[JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/migrationguide.md) の各移行ガイドを参照してください。
 
 この記事では、複数のインスタンスを使用してイベント ハブからイベントを読み取り、イベント プロセッサ クライアントの機能について詳しく説明するためのサンプル シナリオについて説明します。これによって、一度に複数のパーティションからイベントを受信し、同じイベント ハブとコンシューマー グループを使用する他のコンシューマーと負荷のバランスを取ることができます。
 
@@ -37,7 +37,7 @@ ms.locfileid: "88933795"
 
 これらの要件を満たすために独自のソリューションを構築する必要はありません。 この機能は、Azure Event Hubs SDK によって提供されます。 .NET SDK または Java SDK ではイベント プロセッサ クライアント (EventProcessorClient) を使用し、Python SDK と JavaScript SDK では EventHubConsumerClient を使用します。 以前のバージョンの SDK では、イベント プロセッサ ホスト (EventProcessorHost) がこれらの機能をサポートしていました。
 
-大部分の運用環境では、イベントの読み取りと処理にイベント プロセッサ クライアントを使用することをお勧めします。 プロセッサ クライアントは、イベント ハブのすべてのパーティションにわたって、パフォーマンスが高く、フォールト トレラントな方法でイベントを処理しながら、その進行状況にチェックポイントを設定する手段を提供するための堅牢なエクスペリエンスを提供することを目的としています。 また、イベント プロセッサ クライアントは、特定のイベント ハブ用にコンシューマー グループのコンテキスト内で協調的に動作できます。 クライアントは、インスタンスがそのグループに対して使用可能または使用不可能になると、自動的に作業の配布と分散を管理します。
+大部分の運用環境では、イベントの読み取りと処理にイベント プロセッサ クライアントを使用することをお勧めします。 プロセッサ クライアントは、イベント ハブのすべてのパーティションにわたって、パフォーマンスが高く、フォールト トレラントな方法でイベントを処理しながら、その進行状況にチェックポイントを設定する手段を提供するための堅牢なエクスペリエンスを提供することを目的としています。 イベント プロセッサ クライアントは、特定のイベント ハブ用にコンシューマー グループのコンテキスト内で協調的に動作できます。 クライアントは、インスタンスがそのグループに対して使用可能または使用不可能になると、自動的に作業の配布と分散を管理します。
 
 ## <a name="partition-ownership-tracking"></a>パーティションの所有権の追跡
 
@@ -58,7 +58,7 @@ ms.locfileid: "88933795"
 |                                    |                | :                  |                                      |              |                     |
 | mynamespace.servicebus.windows.net | myeventhub     | myconsumergroup    | 844bd8fb-1f3a-4580-984d-6324f9e208af | 15           | 2020-01-15T01:22:00 |
 
-各イベント プロセッサ インスタンスは、パーティションの所有権を取得し、最後に認識された[チェックポイント](# Checkpointing)からパーティションの処理を開始します。 プロセッサで障害が発生した場合 (VM がシャットダウンした場合)、他のインスタンスは最終更新時刻を確認するこによってこれを検出します。 他のインスタンスは、アクティブでないインスタンスによって以前に所有されていたパーティションの所有権を取得しようとします。チェックポイント ストアによって、確実に 1 つのインスタンスだけがパーティションの所有権の要求に成功します。 そのため、特定の時点で、1 つのパーティションからイベントを受け取るプロセッサは最大で 1 つです。
+各イベント プロセッサ インスタンスは、パーティションの所有権を取得し、最後に認識された[チェックポイント](# Checkpointing)からパーティションの処理を開始します。 プロセッサで障害が発生した場合 (VM がシャットダウンした場合)、他のインスタンスは最終変更時刻を確認することによってこれを検出します。 他のインスタンスは、アクティブでないインスタンスによって以前に所有されていたパーティションの所有権を取得しようとします。チェックポイント ストアによって、確実に 1 つのインスタンスだけがパーティションの所有権の要求に成功します。 そのため、特定の時点で、1 つのパーティションからイベントを受け取るプロセッサは最大で 1 つです。
 
 ## <a name="receive-messages"></a>メッセージを受信する
 
@@ -68,7 +68,7 @@ ms.locfileid: "88933795"
 
 ## <a name="checkpointing"></a>チェックポイント機能
 
-*チェックポイント処理*とは、イベント プロセッサがパーティション内の最後に正常に処理されたイベントの位置をマークまたはコミットするために使用する処理です。 通常、チェックポイントのマーク付けはイベントを処理する関数内で実行され、コンシューマー グループ内のパーティションごとに発生します。 
+*チェックポイント処理* とは、イベント プロセッサがパーティション内の最後に正常に処理されたイベントの位置をマークまたはコミットするために使用する処理です。 通常、チェックポイントのマーク付けはイベントを処理する関数内で実行され、コンシューマー グループ内のパーティションごとに発生します。 
 
 イベント プロセッサがパーティションから切断されると、別のインスタンスが、そのコンシューマー グループ内のそのパーティションの最後のプロセッサによって以前にコミットされたチェックポイントからパーティションの処理を再開できます。 プロセッサは接続の際に、このオフセットをイベント ハブに渡して、読み取りを開始する場所を指定します。 このように、チェックポイント処理を使用することで、ダウンストリーム アプリケーションごとにイベントに "完了" のマークを付けると共に、イベント プロセッサがダウンしたときに回復性をもたらすことができます。 このチェックポイント処理で、より小さなオフセットを指定すると、古いデータに戻ることができます。 
 
@@ -76,14 +76,14 @@ ms.locfileid: "88933795"
 
 > [!NOTE]
 > Azure で一般公開されているものとは異なるバージョンの Storage Blob SDK をサポートする環境で、チェックポイント ストアとして Azure Blob Storage を使用している場合は、コードを使用して、Storage Service API バージョンをその環境でサポートされている特定のバージョンに変更する必要があります。 たとえば、[Azure Stack Hub バージョン 2002 上で Event Hubs](/azure-stack/user/event-hubs-overview) を実行している場合、Storage Service で利用可能な最も高いバージョンは 2017-11-09 です。 この場合は、コードを使用して、対象にする Storage Service API のバージョンを 2017-11-09 にする必要があります。 特定の Storage API バージョンを対象にする方法の例については、GitHub の次のサンプルを参照してください。 
-> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs) 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/) 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
 > - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) または [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/)
 
 ## <a name="thread-safety-and-processor-instances"></a>スレッドの安全性とプロセッサのインスタンス
 
-既定では、イベントを処理する関数は、特定のパーティションに対して順番に呼び出されます。 後続のイベントと同じパーティションからのこの関数に対する呼び出しは、メッセージ ポンプが他のスレッドのバックグラウンドで引き続き実行されるため、バックグラウンドでキューに配置されます。 異なるパーティションからのイベントを同時に処理でき、パーティション間でアクセスされるすべての共有状態を同期する必要があることに注意してください。
+既定では、イベントを処理する関数は、特定のパーティションに対して順番に呼び出されます。 後続のイベントと同じパーティションからのこの関数に対する呼び出しは、メッセージ ポンプが他のスレッドのバックグラウンドで引き続き実行されるため、バックグラウンドでキューに配置されます。 異なるパーティションからのイベントは同時に処理できるため、パーティションをまたがってアクセスされる共有状態は同期される必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 次のクイック スタートを参照してください。

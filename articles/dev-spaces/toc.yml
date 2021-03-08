@@ -5,12 +5,10 @@
       items:
         - name: Azure Dev Spaces とは
           href: about.md
-    - name: チュートリアル
-      items:
-        - name: Visual Studio 入門
-          href: get-started-netcore-visualstudio.md
     - name: 概念
       items:
+        - name: Bridge to Kubernetes への移行
+          href: migrate-to-bridge-to-kubernetes.md
         - name: Dev Spaces のしくみ
           items:
             - name: 概要
@@ -49,8 +47,6 @@
           href: how-to/setup-cicd.md
         - name: Azure Dev Spaces で GitHub アクションを使用する (プレビュー)
           href: how-to/github-actions.md
-        - name: Jenkins 用 Azure Dev Spaces プラグインを使用する
-          href: /azure/developer/jenkins/azure-dev-spaces-and-aks
         - name: Azure Dev Spaces の事業継続とディザスター リカバリー
           href: how-to/dev-spaces-business-continuity.md
         - name: Windows コンテナーを操作する

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 343f6b7a78ca98615d512d31d7ac1c10d9de8f10
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: efc3bfef7c182ea005ac17a59793ac8f6484a424
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799334"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042013"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) の全体管理者には、自分のディレ�
 
 ## <a name="how-does-elevated-access-work"></a>昇格されたアクセスはどのように機能しますか?
 
-Azure AD と Azure リソースは互いに依存することなくセキュリティで保護されます。 つまり、Azure AD のロール割り当てによって Azure リソースにアクセス権が付与されることはなく、Azure のロール割り当てによって Azure AD にアクセス権が付与されることはありません。 ただし、Azure AD の[全体管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions)であれば、自分のディレクトリにあるすべての Azure サブスクリプションと管理グループに対するアクセス許可を自分に割り当てることができます。 仮想マシンやストレージ アカウントなど、Azure リソースへのアクセス許可が与えられていない場合、この機能を使用します。このようなリソースに対するアクセス権を得るには、全体管理者の特権を使用することをお勧めします。
+Azure AD と Azure リソースは互いに依存することなくセキュリティで保護されます。 つまり、Azure AD のロール割り当てによって Azure リソースにアクセス権が付与されることはなく、Azure のロール割り当てによって Azure AD にアクセス権が付与されることはありません。 ただし、Azure AD の[全体管理者](../active-directory/roles/permissions-reference.md#global-administrator)であれば、自分のディレクトリにあるすべての Azure サブスクリプションと管理グループに対するアクセス許可を自分に割り当てることができます。 仮想マシンやストレージ アカウントなど、Azure リソースへのアクセス許可が与えられていない場合、この機能を使用します。このようなリソースに対するアクセス権を得るには、全体管理者の特権を使用することをお勧めします。
 
 アクセス権を昇格させると、Azure のルート範囲 (`/`) で[ユーザー アクセスの管理者](built-in-roles.md#user-access-administrator)ロールが割り当てられます。 これにより、すべてのリソースを表示したり、ディレクトリにあるあらゆるサブスクリプションまたは管理グループでアクセス権を割り当てたりできます。 ユーザー アクセス管理者ロールの割り当ては Azure PowerShell、Azure CLI、または REST API を使用して削除できます。
 
@@ -66,7 +66,7 @@ Azure portal を使用して全体管理者のアクセス権を昇格するに�
    **[いいえ]** に切り替えると、Azure RBAC のユーザー アクセス管理者ロールがユーザー アカウントから削除されます。 この Azure AD ディレクトリに関連付けられているすべての Azure サブスクリプションと管理グループでロールを割り当てることができなくなります。 自分にアクセス権が割り当てられている Azure サブスクリプションと管理グループのみを表示し、管理できます。
 
     > [!NOTE]
-    > [Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) を使用している場合、ロールの割り当てを非アクティブにしても、**Azure リソースのアクセス管理**トグルは **[いいえ]** に切り替わりません。 最小限の特権アクセスを維持するために、ロールの割り当てを非アクティブ化する前に、この切り替えを **[いいえ]** に設定することをお勧めします。
+    > [Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) を使用している場合、ロールの割り当てを非アクティブにしても、**Azure リソースのアクセス管理** トグルは **[いいえ]** に切り替わりません。 最小限の特権アクセスを維持するために、ロールの割り当てを非アクティブ化する前に、この切り替えを **[いいえ]** に設定することをお勧めします。
     
 1. **[保存]** をクリックして設定を保存します。
 
@@ -80,7 +80,7 @@ Azure portal を使用して全体管理者のアクセス権を昇格するに�
 
 1. 昇格させたアクセス権で必要な変更を加えます。
 
-    ロールの割り当ての詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](role-assignments-portal.md)」をご覧ください。 Privileged Identity Management を使用している場合、[管理する Azure リソースの検出](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)または [Azure リソース ロールの割り当て](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)に関するページを参照してください。
+    ロールの割り当ての詳細については、「[Azure portal を使用して Azure ロールを割り当てる](role-assignments-portal.md)」をご覧ください。 Privileged Identity Management を使用している場合、[管理する Azure リソースの検出](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)または [Azure リソース ロールの割り当て](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)に関するページを参照してください。
 
 1. 次のセクションの手順を実行し、昇格したアクセス権を削除します。
 
@@ -103,7 +103,7 @@ Azure portal を使用して全体管理者のアクセス権を昇格するに�
     Privileged Identity Management を使用している場合は、全体管理者ロールの割り当てを非アクティブ化します。
 
     > [!NOTE]
-    > [Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) を使用している場合、ロールの割り当てを非アクティブにしても、**Azure リソースのアクセス管理**トグルは **[いいえ]** に切り替わりません。 最小限の特権アクセスを維持するために、ロールの割り当てを非アクティブ化する前に、この切り替えを **[いいえ]** に設定することをお勧めします。
+    > [Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) を使用している場合、ロールの割り当てを非アクティブにしても、**Azure リソースのアクセス管理** トグルは **[いいえ]** に切り替わりません。 最小限の特権アクセスを維持するために、ロールの割り当てを非アクティブ化する前に、この切り替えを **[いいえ]** に設定することをお勧めします。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -149,7 +149,7 @@ CanDelegate        : False
 
 Azure CLI を使用して全体管理者のアクセス権を昇格するには、以下の基本的な手順を実行します。
 
-1. [az rest](/cli/azure/reference-index?view=azure-cli-latest#az-rest) コマンドを使用して `elevateAccess` エンドポイントを呼び出します。これにより、ユーザー アクセス管理者ロールがルート スコープ (`/`) で付与されます。
+1. [az rest](/cli/azure/reference-index#az_rest) コマンドを使用して `elevateAccess` エンドポイントを呼び出します。これにより、ユーザー アクセス管理者ロールがルート スコープ (`/`) で付与されます。
 
     ```azurecli
     az rest --method post --url "/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01"
@@ -157,7 +157,7 @@ Azure CLI を使用して全体管理者のアクセス権を昇格するには�
 
 1. 昇格させたアクセス権で必要な変更を加えます。
 
-    ロールの割り当ての詳細については、「[Azure CLI を使用して Azure ロールの割り当てを追加または削除する](role-assignments-cli.md)」をご覧ください。
+    ロールの割り当ての詳細については、「[Azure CLI を使用して Azure ロールを割り当てる](role-assignments-cli.md)」をご覧ください。
 
 1. 後述のセクションの手順を実行して、昇格したアクセス権を削除します。
 
@@ -213,7 +213,7 @@ REST API を使用して全体管理者のアクセス権を昇格するには�
 
 1. 昇格させたアクセス権で必要な変更を加えます。
 
-    ロールの割り当ての詳細については、「[REST API を使用して Azure ロールの割り当てを追加または削除する](role-assignments-rest.md)」を参照してください。
+    ロールの割り当ての詳細については、「[REST API を使用して Azure ロールを割り当てる](role-assignments-rest.md)」をご覧ください。
 
 1. 後述のセクションの手順を実行して、昇格したアクセス権を削除します。
 
@@ -330,4 +330,4 @@ REST API を使用して全体管理者のアクセス権を昇格するには�
 ## <a name="next-steps"></a>次のステップ
 
 - [各種ロールについて](rbac-and-directory-admin-roles.md)
-- [REST API を使用して Azure ロールの割り当てを追加または削除する](role-assignments-rest.md)
+- [REST API を使用して Azure ロールを割り当てる](role-assignments-rest.md)

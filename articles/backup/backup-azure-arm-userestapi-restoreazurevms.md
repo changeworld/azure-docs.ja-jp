@@ -4,12 +4,12 @@ description: この記事では、REST API を使用して Azure 仮想マシン
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 2588ca87e2dc2209fbaa5eae411fe5895d5f5669
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 260c78af39c46e493ebb79c26ff1c55153a41c1d
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88889653"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174029"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API を使用して Azure 仮想マシンを復元する
 
@@ -27,7 +27,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 `{containerName}` および `{protectedItemName}` は、[こちら](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation)のように構成されています。 `{fabricName}` は "Azure" です。
 
-*GET* URI には、すべての必須パラメーターが含まれます。 追加の要求本文は必要ありません
+*GET* URI には、すべての必須パラメーターが含まれます。 追加の要求本文は必要ありません。
 
 ### <a name="responses"></a>Responses
 
@@ -122,7 +122,7 @@ X-Powered-By: ASP.NET
 ***バックアップ項目のすべての復元操作は同じ *POST* API を使用して実行されます。復元シナリオでは、要求本文のみが変更されます。***
 
 > [!IMPORTANT]
-> さまざまな復元オプションとその依存関係の詳細については [こちら](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options)に記載されています。 確認してからこれらの操作のトリガーに進んでください。
+> さまざまな復元オプションとその依存関係の詳細については [こちら](./backup-azure-arm-restore-vms.md#restore-options)に記載されています。 確認してからこれらの操作のトリガーに進んでください。
 
 復元操作のトリガーは、*POST* 要求です。 API について詳しくは、["復元のトリガー" REST API](/rest/api/backup/restores/trigger) に関するページをご覧ください。
 
@@ -242,6 +242,30 @@ Azure VM バックアップからのディスクの復元をトリガーする�
     }
   }
 }
+```
+
+### <a name="restore-disks-selectively"></a>選択的にディスクを復元する
+
+[選択的にディスクをバックアップ](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)している場合は、現在バックアップされているディスク リストが、[回復ポイントの概要](#select-recovery-point)および[詳細な応答](/rest/api/backup/recoverypoints/get)に記されます。 ディスクを選択的に復元することもできます。詳細については[こちら](selective-disk-backup-restore.md#selective-disk-restore)を参照してください。 バックアップ ディスクの一覧からディスクを選択的に復元するには、回復ポイントの応答からディスクの LUN を探し、次に示すように、[上記の要求本文](#example-request)に **restoreDiskLunList** プロパティを追加します。
+
+```json
+{
+    "properties": {
+        "objectType": "IaasVMRestoreRequest",
+        "recoveryPointId": "20982486783671",
+        "recoveryType": "RestoreDisks",
+        "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+        "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
+        "region": "westus",
+        "createNewCloudService": false,
+        "originalStorageAccountOption": false,
+        "encryptionDetails": {
+          "encryptionEnabled": false
+        },
+        "restoreDiskLunList" : [0]
+    }
+}
+
 ```
 
 [上記で](#responses)説明されているように応答を追跡し、実行時間の長いジョブが完了すると、バックアップされていた仮想マシン ("VMConfig.json") のディスクと構成が、特定のストレージ アカウント内に存在しています。

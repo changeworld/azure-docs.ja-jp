@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 06/12/2020
+ms.date: 11/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 8a7fa295bdc8881c0c1ba58c95872a9380231b81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ec0f8cf090b3ae85a8602fb39cb07f03a417133
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85558024"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605600"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Azure API Management でマネージド ID を使用する
 
@@ -38,7 +38,6 @@ Azure portal でマネージド ID を設定するには、まず API Management
 3. **[システム割り当て済み]** タブで、 **[状態]** を **[オン]** に切り替えます。 **[保存]** を選択します。
 
     :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="システム割り当てマネージド ID を有効化するための選択項目" border="true":::
-
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -119,13 +118,12 @@ ID を持った API Management インスタンスは、リソース定義に次�
 
 `tenantId` プロパティは、ID が属している Azure AD テナントを識別します。 `principalId` プロパティは、インスタンスの新しい ID の一意識別子です。 Azure AD 内では、サービス プリンシパルの名前は、お使いの API Management インスタンスに指定したものと同じになります。
 
-
 > [!NOTE]
 > API Management インスタンスには、システム割り当て ID とユーザー割り当て ID の両方を同時に設定することができます。 この場合、`type` プロパティは `SystemAssigned,UserAssigned` になります。
 
-### <a name="supported-scenarios"></a>サポートされるシナリオ
+## <a name="supported-scenarios-using-system-assigned-identity"></a>システム割り当て ID を使用したサポートされるシナリオ
 
-#### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>API Management インスタンスのカスタム TLS/SSL 証明書を Azure Key Vault から取得する
+### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>API Management インスタンスのカスタム TLS/SSL 証明書を Azure Key Vault から取得する
 API Management インスタンスのシステム割り当て ID を使用して、Azure Key Vault に格納されているカスタム TLS/SSL 証明書を取得できます。 その後、これらの証明書を API Management インスタンスのカスタム ドメインに割り当てることができます。 以下の考慮事項に留意してください。
 
 - シークレットのコンテンツ タイプは *application/x-pkcs12* である必要があります。
@@ -262,10 +260,9 @@ API Management インスタンスのシステム割り当て ID を使用して�
 }
 ```
 
-#### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>API Management ID を使用してバックエンドに対する認証を行う
+### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>API Management ID を使用してバックエンドに対する認証を行う
 
 システム割り当て ID を使用して、[authentication-managed-identity](api-management-authentication-policies.md#ManagedIdentity) ポリシーを通じて、バックエンドに対する認証を行うことができます。
-
 
 ## <a name="create-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を作成する
 
@@ -361,7 +358,7 @@ ID を持った API Management インスタンスは、リソース定義に次�
                 "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]": {}
              }
         },
-        "dependsOn": [       
+         "dependsOn": [       
           "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]"
         ]
     }]
@@ -387,12 +384,34 @@ ID を持った API Management インスタンスは、リソース定義に次�
 > [!NOTE]
 > API Management インスタンスには、システム割り当て ID とユーザー割り当て ID の両方を同時に設定することができます。 この場合、`type` プロパティは `SystemAssigned,UserAssigned` になります。
 
-### <a name="supported-scenarios"></a>サポートされるシナリオ
+## <a name="supported-scenarios-using-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を使用したサポートされるシナリオ
 
-#### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>ユーザー割り当て ID を使用してバックエンドに対する認証を行う
+### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault-ua"></a>API Management インスタンスのカスタム TLS/SSL 証明書を Azure Key Vault から取得する
+ユーザーが割り当てた任意の ID を使用して、API Management インスタンスと KeyVault 間で信頼を確立できます。 その後、この信頼を使用して、Azure Key Vault に格納されているカスタム TLS/SSL 証明書を取得できます。 その後、これらの証明書を API Management インスタンスのカスタム ドメインに割り当てることができます。 
+
+以下の考慮事項に留意してください。
+
+- シークレットのコンテンツ タイプは *application/x-pkcs12* である必要があります。
+- シークレットが含まれている Key Vault 証明書のシークレット エンドポイントを使用します。
+
+> [!Important]
+> 証明書のオブジェクト バージョンの指定がない場合は、より新しいバージョンの証明書が Key Vault にアップロードされた後、4 時間以内にそれが API Management によって自動的に取得されます。
+
+完全なテンプレートについては、[ユーザー割り当て ID を使用した KeyVault ベースの SSL を使用する API Management](https://github.com/Azure/azure-quickstart-templates/blob/master/101-api-management-key-vault-create/azuredeploy.json) に関するページをご覧ください。
+
+このテンプレートでは、以下をデプロイします。
+
+* Azure API Management
+* Azure ユーザー割り当てマネージド ID
+* SSL/TLS 証明書を格納するための Azure KeyVault
+
+デプロイメントを自動的に実行するには、次のボタンをクリックします。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-api-management-key-vault-create%2Fazuredeploy.json)
+
+### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>ユーザー割り当て ID を使用してバックエンドに対する認証を行う
 
 ユーザー割り当て ID を使用して、[authentication-managed-identity](api-management-authentication-policies.md#ManagedIdentity) ポリシーを通じて、バックエンドに対する認証を行うことができます。
-
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>ID を削除する
 

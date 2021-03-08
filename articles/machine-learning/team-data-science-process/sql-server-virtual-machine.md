@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e387d5f7ee0b1926457717b30b03bbfeb8d70a1c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8be878cf40967356d68e9be0765e898c81b5ba0a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027428"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314628"
 ---
 # <a name="process-data-in-sql-server-virtual-machine-on-azure"></a><a name="heading"></a>Azure の SQL Server 仮想マシンでデータを処理する
 このドキュメントでは、Azure の SQL Server VM に保存されたデータを探索し、データの特徴を生成する方法について説明します。 この目標は、SQL を使用してデータをラングリングするか、Python などのプログラミング言語を使用して達成できます。
@@ -98,7 +98,7 @@ SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <
 * 小数第 5 位は、1.1 m に値します。木々を互いに識別することができます。 商用の GPS ユニットにおいて、このレベルの精度は微分補正によってのみ実現できます。
 * 小数第 6 位は、最大 0.11 m に値します。これは、造園設計、道路建設において構造を詳細に配置するために使用できます。 氷河と川の動きを追跡するには十分すぎるはずです。 これは、GPS の微分補正など、GPS を使用した精密な測定で実現できます。
 
-位置情報の Featurize は、地域、位置、および都市の情報に分けて、次のように実行します。 地域または地区の情報は、「[ポイントで位置情報を特定する](https://msdn.microsoft.com/library/ff701710.aspx)」に示されている Bing Maps API などの REST エンド ポイントを呼び出すことで取得することもできます。
+位置情報の Featurize は、地域、位置、および都市の情報に分けて、次のように実行します。 地域または地区の情報は、「[ポイントで位置情報を特定する](/bingmaps/rest-services/locations/find-a-location-by-point)」に示されている Bing Maps API などの REST エンド ポイントを呼び出すことで取得することもできます。
 
 ```sql
 select 
@@ -116,7 +116,7 @@ from <tablename>
 これらの位置ベースの特徴をさらに使用すると、前述した追加のカウント特徴を生成できます。 
 
 > [!TIP]
-> お好みのプログラム言語でレコードを挿入できます。 書き込み効率を向上させるためにデータをチャンクで挿入する必要があります。「[A HelloWorld sample to access SQLServer with python](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)」(SQL Server に python でアクセスするための HelloWorld サンプル) で pyodbc を使用した実行方法の例を確認してください。 もう 1 つの選択肢は、[BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)を使用してデータベースにデータを挿入することです。
+> お好みのプログラム言語でレコードを挿入できます。 書き込み効率を向上させるためにデータをチャンクで挿入する必要があります。「[A HelloWorld sample to access SQLServer with python](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)」(SQL Server に python でアクセスするための HelloWorld サンプル) で pyodbc を使用した実行方法の例を確認してください。 もう 1 つの選択肢は、[BCP ユーティリティ](/sql/tools/bcp-utility)を使用してデータベースにデータを挿入することです。
 > 
 > 
 
@@ -152,5 +152,4 @@ data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablena
 
 
 <!-- Module References -->
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
+[import-data]: /azure/machine-learning/studio-module-reference/import-data

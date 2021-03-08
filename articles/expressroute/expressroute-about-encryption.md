@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: 46f0a0e86c5db612f440bcf631329d2800251dab
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 693d2304324bdfcac298b3e20ddd0d882a16533c
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397799"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899870"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute の暗号化
  
@@ -31,16 +31,14 @@ MACsec は [IEEE 標準](https://1.ieee802.org/security/802-1ae/)です。 MAC (
 ### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>ExpressRoute Direct で MACsec を有効にすると、ネットワーク パフォーマンスが低下しますか。
 MACsec の暗号化と復号は、Microsoft が使用するルーターのハードウェアで行われます。 Microsoft 側では、パフォーマンスに影響はありません。 しかしながら、お使いのデバイスのネットワーク ベンダーに問い合わせ、MACsec にパフォーマンス上の影響が出るかどうかを確認してください。
 ### <a name="which-cipher-suites-are-supported-for-encryption"></a>暗号化にはどの暗号スイートがサポートされていますか。
-[Extended Packet Numbering](https://1.ieee802.org/security/802-1aebw/) バージョンの AES128 および AES256 のみサポートされています。 また、デバイスの MACsec 構成で [Secure Channel Identifier (SCI)](https://en.wikipedia.org/wiki/IEEE_802.1AE) を無効にしてください。 
+[Extended Packet Numbering](https://1.ieee802.org/security/802-1aebw/) バージョンの AES-128 および AES-256 のみサポートされています。 また、デバイスの MACsec 構成で [Secure Channel Identifier (SCI)](https://wikipedia.org/wiki/IEEE_802.1AE) を無効にする必要があります。 
 
 ## <a name="end-to-end-encryption-by-ipsec-faq"></a>IPsec によるエンドツーエンドの暗号化に関してよくあるご質問
 IPsec は [IETF 標準](https://tools.ietf.org/html/rfc6071)です。 インターネット プロトコル (IP) レベルまたはネットワーク レイヤー 3 でデータを暗号化します。 お使いのオンプレミス ネットワークと Azure でお使いの仮想ネットワーク (VNET) の間でエンドツーエンドの接続を暗号化する目的で IPsec を利用できます。 以下でその他のよくあるご質問をご覧ください。
 ### <a name="can-i-enable-ipsec-in-addition-to-macsec-on-my-expressroute-direct-ports"></a>自分の ExpressRoute Direct ポートでは、MACsec に加えて IPsec を有効にできますか。
 はい。 MACsec の場合、ユーザーと Microsoft との間の物理的な接続がセキュリティで保護されます。 IPsec の場合、ユーザーと Azure でお使いの仮想ネットワークの間のエンドツーエンド接続がセキュリティで保護されます。 いずれも個別に有効にすることができます。 
-### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-between-my-on-premises-network-and-my-azure-virtual-network"></a>Azure VPN ゲートウェイを使用し、自分のオンプレミス ネットワークと自分の Azure 仮想ネットワークの間で IPsec トンネルを設定できますか。
-はい。 お使いの ExpressRoute 回線の Microsoft ピアリング経由でこの IPsec トンネルを設定できます。 Microsoft の[構成ガイド](site-to-site-vpn-over-microsoft-peering.md)に従ってください。
 ### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-over-azure-private-peering"></a>Azure VPN ゲートウェイを利用し、Azure プライベート ピアリング経由で IPsec トンネルを設定できます。
-Azure Virtual WAN を採用する場合は、[次の手順](../virtual-wan/vpn-over-expressroute.md)に従って、エンドツーエンド接続を暗号化することができます。 通常の Azure VNET がある場合は、ご利用の VNET にサードパーティの VPN ゲートウェイをデプロイし、それとご利用のオンプレミスの VPN ゲートウェイの間に IPsec トンネルを確立することができます。
+はい。 Azure Virtual WAN を採用する場合は、[次の手順](../virtual-wan/vpn-over-expressroute.md)に従って、エンドツーエンド接続を暗号化することができます。 通常の Azure VNET を使用している場合は、[こちらの手順](../vpn-gateway/site-to-site-vpn-private-peering.md)に従って、Azure VPN ゲートウェイとオンプレミスの VPN ゲートウェイの間に IPsec トンネルを確立することができます。
 ### <a name="what-is-the-throughput-i-will-get-after-enabling-ipsec-on-my-expressroute-connection"></a>自分の ExpressRoute 接続で IPsec を有効にすると、どのようなスループットが得られますか。
 Azure VPN ゲートウェイが使用されている場合、[こちらでパフォーマンス数値](../vpn-gateway/vpn-gateway-about-vpngateways.md)をご確認ください。 サードパーティ製の VPN ゲートウェイが使用されている場合、パフォーマンス数値についてはベンダーにお問い合わせください。
 

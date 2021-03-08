@@ -6,31 +6,32 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.subservice: management
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8def7c52f2b1005419a29d35ef122b48f34fdee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68c7805136a7361a64a6ff6dfbb9e7d910b2ea9b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669003"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357944"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>Azure portal を使用して Azure 内の SQL Server VM を管理する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-[Azure portal](https://portal.azure.com) において、**SQL 仮想マシン** (VM) リソースは独立した管理サービスです。 これを使用すると、すべての SQL Server VM を同時に表示し、SQL Server 専用の設定を変更できます。 
+[Azure portal](https://portal.azure.com) において、[**SQL 仮想マシン**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) リソースは、Azure VM 上の SQL Server を管理するための独立した管理サービスです。 これを使用すると、すべての SQL Server VM を同時に表示し、SQL Server 専用の設定を変更できます。 
 
 ![SQL 仮想マシン リソース](./media/manage-sql-vm-portal/sql-vm-manage.png)
 
 
 ## <a name="remarks"></a>解説
 
-- **SQL 仮想マシン** リソースを使用して Azure 内の SQL Server VM を表示および管理することをお勧めします。 ただし、現在、**SQL 仮想マシン** リソースは、[サポート終了](sql-server-2008-extend-end-of-support.md)の SQL Server VM の管理をサポートしていません。 サポート終了の SQL Server VM 用の設定を管理するには、代わりに、非推奨の [[SQL Server の構成] タブ](#access-the-sql-server-configuration-tab)を使用してください。 
-- **SQL 仮想マシン** リソースは、[SQL VM リソースプロバイダーに登録](sql-vm-resource-provider-register.md)されている SQL Server VM でのみ使用できます。 
+- [**SQL 仮想マシン**](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) リソースを使用して Azure 内の SQL Server VM を表示および管理することをお勧めします。 ただし、現在、**SQL 仮想マシン** リソースは、[サポート終了](sql-server-2008-extend-end-of-support.md)の SQL Server VM の管理をサポートしていません。 サポート終了の SQL Server VM 用の設定を管理するには、代わりに、非推奨の [[SQL Server の構成] タブ](#access-the-sql-server-configuration-tab)を使用してください。 
+- **SQL 仮想マシン** リソースは、[SQL IaaS Agent 拡張機能に登録](sql-agent-extension-manually-register-single-vm.md)されている SQL Server VM でのみ使用できます。 
 
 
 ## <a name="access-the-sql-virtual-machines-resource"></a>SQL 仮想マシン リソースへのアクセス
@@ -51,13 +52,13 @@ ms.locfileid: "84669003"
    対象の SQL Server VM を選択すると、**SQL 仮想マシン** リソースが開きます。 
 
 
-   ![SQL 仮想マシン リソース](./media/manage-sql-vm-portal/sql-vm-resource.png)
+   ![SQL 仮想マシン リソースを表示する](./media/manage-sql-vm-portal/sql-vm-resource.png)
 
 > [!TIP]
 > **SQL 仮想マシン** リソースは専用の SQL Server 設定用のリソースです。 **[仮想マシン]** ボックスで VM の名前を選択し、その VM (ただし、SQL Server に限定されません) に固有の設定を開きます。 
 
 ## <a name="access-the-sql-server-configuration-tab"></a>[SQL Server の構成] タブへのアクセス
-**[SQL Server の構成]** タブは非推奨になりました。 現時点では、これが[サポート終了](sql-server-2008-extend-end-of-support.md)の SQL Server VM や [SQL VM リソースプロバイダーに登録](sql-vm-resource-provider-register.md)されていない SQL Server VM を管理する唯一の方法です。
+**[SQL Server の構成]** タブは非推奨になりました。 現時点では、これが[サポート終了](sql-server-2008-extend-end-of-support.md)の SQL Server VM や [SQL IaaS Agent 拡張機能に登録](sql-agent-extension-manually-register-single-vm.md)されていない SQL Server VM を管理する唯一の方法です。
 
 非推奨の **[SQL Server の構成]** タブにアクセスするには、**仮想マシン** リソースに移動します。 次の手順に従います。
 

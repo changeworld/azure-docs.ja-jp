@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 1445d1418bde6d5d15e365c59ceb56e7661faccb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 13441899eeb5ca2b7c60977ab2858fe40a398d1a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088072"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397860"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>PowerShell を使用して Azure Application Gateway (クラシック) のカスタム プローブを作成する
 
@@ -57,7 +57,7 @@ Get-AzureApplicationGateway AppGwTest
 > 
 > 
 
-ゲートウェイがまだ起動していないため、*VirtualIPs* と *DnsName* は空白のまま表示されます。 これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
+ゲートウェイがまだ起動していないため、 *VirtualIPs* と *DnsName* は空白のまま表示されます。 これらの値は、ゲートウェイが実行中の状態になったときに作成されます。
 
 ### <a name="configure-an-application-gateway-by-using-xml"></a>XML を使用してアプリケーション ゲートウェイを構成する
 
@@ -147,7 +147,7 @@ Get-AzureApplicationGateway AppGwTest
 | **Host** と **Path** | インスタンスの状態を判断するためにアプリケーション ゲートウェイによって呼び出される完全な URL パス。 たとえば、http:\//contoso.com/ という Web サイトがある場合、HTTP 応答が正常かどうかをプローブでチェックするために、"http:\//contoso.com/path/custompath.htm" に対してカスタム プローブを構成します。|
 | **間隔** | プローブのチェック間隔を秒単位で指定します。|
 | **タイムアウト** | プローブの HTTP 応答チェックのタイムアウト期間を定義します。|
-| **UnhealthyThreshold** | バックエンド インスタンスに "*異常*" というフラグを設定するために必要な HTTP 応答の失敗数。|
+| **UnhealthyThreshold** | バックエンド インスタンスに " *異常* " というフラグを設定するために必要な HTTP 応答の失敗数。|
 
 プローブの名前は、どのバックエンド プールがカスタム プローブ設定を使用するかを割り当てる \<BackendHttpSettings\> 構成で参照されます。
 
@@ -200,7 +200,6 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 
 ## <a name="next-steps"></a>次のステップ
 
-トランスポート層セキュリティ (TLS) (旧称 Secure Sockets Layer (SSL)) オフロードを構成する場合は、[TLS オフロードのためのアプリケーション ゲートウェイの構成](application-gateway-ssl.md)に関するページを参照してください。
+トランスポート層セキュリティ (TLS) (旧称 Secure Sockets Layer (SSL)) オフロードを構成する場合は、[TLS オフロードのためのアプリケーション ゲートウェイの構成](./tutorial-ssl-powershell.md)に関するページを参照してください。
 
-内部ロード バランサーと共に使用するようにアプリケーション ゲートウェイを構成する場合は、「 [内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
-
+内部ロード バランサーと共に使用するようにアプリケーション ゲートウェイを構成する場合は、「 [内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](./application-gateway-ilb-arm.md)」を参照してください。

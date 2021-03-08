@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: c51e67dcc3536a3083179451743b1c97cf618dae
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 88e433dbfa87d8ea483789b1fd838c62a6a481c0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004870"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536761"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Azure PowerShell を使用した Azure Cache for Redis の管理
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "88004870"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-このトピックでは、Azure Cache for Redis インスタンスの作成、更新、スケールなどの一般的なタスクを実行する方法、アクセス キーを再生成する方法、キャッシュに関する情報を表示する方法について説明します。 Azure Cache for Redis 用の PowerShell コマンドレットの詳細な一覧については、[Azure Cache for Redis コマンドレット](https://docs.microsoft.com/powershell/module/az.rediscache)に関するページをご覧ください。
+このトピックでは、Azure Cache for Redis インスタンスの作成、更新、スケールなどの一般的なタスクを実行する方法、アクセス キーを再生成する方法、キャッシュに関する情報を表示する方法について説明します。 Azure Cache for Redis 用の PowerShell コマンドレットの詳細な一覧については、[Azure Cache for Redis コマンドレット](/powershell/module/az.rediscache)に関するページをご覧ください。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -57,7 +57,7 @@ Microsoft Azure のサインイン ダイアログで、Azure アカウントの
 
 Azure リソース マネージャーで Windows PowerShell を使用するには、以下が必要です。
 
-* Windows PowerShell バージョン 3.0 または 4.0。 Windows PowerShell のバージョンを調べるには、`$PSVersionTable` と入力して、`PSVersion` の値が 3.0 か 4.0 かを確認します。 互換バージョンをインストールするには、「[Windows Management Framework 3.0](https://www.microsoft.com/download/details.aspx?id=34595)」または「[Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855)」を参照してください。
+* Windows PowerShell バージョン 3.0 または 4.0。 Windows PowerShell のバージョンを調べるには、`$PSVersionTable` と入力して、`PSVersion` の値が 3.0 か 4.0 かを確認します。 互換バージョンをインストールするには、「[Windows Management Framework 3.0](https://www.microsoft.com/download/details.aspx?id=34595)」を参照してください。
 
 このチュートリアルに表示されているコマンドレットの詳しいヘルプを確認には、Get-Help コマンドレットを使用します。
 
@@ -94,7 +94,7 @@ Azure Government Cloud でキャッシュを作成するには、次のいずれ
 * USGov バージニア州
 * USGov アイオワ州
 
-Azure Government Cloud の詳細については、「[Microsoft Azure Government](https://azure.microsoft.com/features/gov/)」と「[Microsoft Azure Government 開発者向けガイド](../azure-government-developer-guide.md)」をご覧ください。
+Azure Government Cloud の詳細については、「[Microsoft Azure Government](https://azure.microsoft.com/features/gov/)」と「[Microsoft Azure Government 開発者向けガイド](../azure-government/documentation-government-developer-guide.md)」をご覧ください。
 
 ### <a name="to-connect-to-the-azure-china-cloud"></a>Azure China Cloud に接続するには
 Azure China Cloud に接続するには、次のいずれかのコマンドを使用します。
@@ -172,7 +172,7 @@ Microsoft Azure Germany の詳細については、「[Microsoft Azure Germany](
 | databases |データベースの数を構成する。 このプロパティは、キャッシュの作成時にのみ構成できます。 |Standard と Premium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>Azure Cache for Redis を作成するには
-Azure Cache for Redis インスタンスを新規作成するには、[New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) コマンドレットを使用します。
+Azure Cache for Redis インスタンスを新規作成するには、[New-AzRedisCache](/powershell/module/az.rediscache/new-azrediscache) コマンドレットを使用します。
 
 > [!IMPORTANT]
 > Azure portal を使用してサブスクリプションに初めて Azure Cache for Redis を作成すると、そのサブスクリプションの `Microsoft.Cache` 名前空間がポータルにより登録されます。 PowerShell を使用してサブスクリプションに最初の Azure Cache for Redis を作成する場合は、先に次のコマンドを使用して名前空間を登録する必要があります。これを実行しないと、`New-AzRedisCache` や `Get-AzRedisCache` などのコマンドレットが失敗します。
@@ -280,16 +280,16 @@ Premium キャッシュを作成する場合は、P1 (6 GB ～ 60 GB)、P2 (13 G
 <a name="databases"></a>
 
 ## <a name="to-configure-the-databases-setting-during-cache-creation"></a>キャッシュの作成時にデータベースの設定を構成するには
-`databases` の設定は、キャッシュの作成中にのみ構成することができます。 次の例では、[New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCache) コマンドレットを使用して、48 のデータベースを持つ Premium P3 (26 GB) のキャッシュを作成します。
+`databases` の設定は、キャッシュの作成中にのみ構成することができます。 次の例では、[New-AzRedisCache](/powershell/module/az.rediscache/New-azRedisCache) コマンドレットを使用して、48 のデータベースを持つ Premium P3 (26 GB) のキャッシュを作成します。
 
 ```azurepowershell
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P3 -RedisConfiguration @{"databases" = "48"}
 ```
 
-`databases` プロパティの詳細については、「[Default Azure Cache for Redis server configuration](cache-configure.md#default-redis-server-configuration)」 (既定の Azure Cache for Redis サーバー構成) をご覧ください。 [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) コマンドレットを使用してキャッシュを作成する方法の詳細については、上記の「Azure Cache for Redis を作成するには」のセクションをご覧ください。
+`databases` プロパティの詳細については、「[Default Azure Cache for Redis server configuration](cache-configure.md#default-redis-server-configuration)」 (既定の Azure Cache for Redis サーバー構成) をご覧ください。 [New-AzRedisCache](/powershell/module/az.rediscache/new-azrediscache) コマンドレットを使用してキャッシュを作成する方法の詳細については、上記の「Azure Cache for Redis を作成するには」のセクションをご覧ください。
 
 ## <a name="to-update-an-azure-cache-for-redis"></a>Azure Cache for Redis を更新するには
-Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/Set-azRedisCache) コマンドレットを使用します。
+Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCache](/powershell/module/az.rediscache/Set-azRedisCache) コマンドレットを使用します。
 
 `Set-AzRedisCache`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
@@ -418,7 +418,7 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
 ```
 
 ## <a name="to-get-information-about-an-azure-cache-for-redis"></a>Azure Cache for Redis についての情報を取得するには
-[Get-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/get-azrediscache) コマンドレットを使用してキャッシュに関する情報を取得できます。
+[Get-AzRedisCache](/powershell/module/az.rediscache/get-azrediscache) コマンドレットを使用してキャッシュに関する情報を取得できます。
 
 `Get-AzRedisCache`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
@@ -502,7 +502,7 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
 ```
 
 ## <a name="to-retrieve-the-access-keys-for-an-azure-cache-for-redis"></a>Azure Cache for Redis インスタンスのアクセス キーを取得するには
-キャッシュのアクセス キーを取得するには、 [Get-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-azRedisCacheKey) コマンドレットを使用します。
+キャッシュのアクセス キーを取得するには、 [Get-AzRedisCacheKey](/powershell/module/az.rediscache/Get-azRedisCacheKey) コマンドレットを使用します。
 
 `Get-AzRedisCacheKey`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
@@ -546,7 +546,7 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
 ```
 
 ## <a name="to-regenerate-access-keys-for-your-azure-cache-for-redis"></a>Azure Cache for Redis インスタンスのアクセス キーを生成するには
-キャッシュのアクセス キーを再生成するには、 [New-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCacheKey) コマンドレットを使用します。
+キャッシュのアクセス キーを再生成するには、 [New-AzRedisCacheKey](/powershell/module/az.rediscache/New-azRedisCacheKey) コマンドレットを使用します。
 
 `New-AzRedisCacheKey`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
@@ -600,7 +600,7 @@ Azure Cache for Redis インスタンスを更新するには、[Set-AzRedisCach
 ```
 
 ## <a name="to-delete-an-azure-cache-for-redis"></a>Azure Cache for Redis を削除するには
-Azure Cache for Redis を削除するには、[Remove-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/remove-azrediscache) コマンドレットを使用します。
+Azure Cache for Redis を削除するには、[Remove-AzRedisCache](/powershell/module/az.rediscache/remove-azrediscache) コマンドレットを使用します。
 
 `Remove-AzRedisCache`で使用可能なパラメーターとその説明の一覧を表示するには、次のコマンドを実行します。
 
@@ -848,10 +848,9 @@ Azure Cache for Redis インスタンスを再起動するには、`Reset-AzRedi
 ## <a name="next-steps"></a>次のステップ
 Azure での Windows PowerShell の使用の詳細については、次のリソースをご覧ください。
 
-* [MSDN 上の Azure Cache for Redis コマンドレットのドキュメント](https://docs.microsoft.com/powershell/module/az.rediscache)
-* [Azure Resource Manager コマンドレットに関するページ](https://go.microsoft.com/fwlink/?LinkID=394765): Azure Resource Manager モジュールのコマンドレットを使用する方法について説明します。
+* [MSDN 上の Azure Cache for Redis コマンドレットのドキュメント](/powershell/module/az.rediscache)
+* [Azure Resource Manager コマンドレットに関するページ](/powershell/module/): Azure Resource Manager モジュールのコマンドレットを使用する方法について説明します。
 * [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/templates/deploy-portal.md): Azure ポータルでリソース グループを作成して管理する方法について説明します。
 * [Azure blog (Azure のブログ)](https://azure.microsoft.com/blog/): Azure の新機能について説明します。
 * [Windows PowerShell blog (Windows PowerShell ブログ)](https://devblogs.microsoft.com/powershell/): Windows PowerShell の新機能について説明します。
-* ["Hey, Scripting Guy!" ブログ](https://blogs.technet.microsoft.com/heyscriptingguy/author/the-scripting-guys/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
-
+* ["Hey, Scripting Guy!" ブログ](https://devblogs.microsoft.com/scripting/tag/hey-scripting-guy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。

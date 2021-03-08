@@ -6,25 +6,25 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 771f692ade9c7616eb7d217b4728a8c80d2aeac5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: ab4f92c9723dc98d0b6c32d3a49df8d4f724ebfa
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044177"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585461"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory 用の Azure セキュリティ ベースライン
 
 Azure Data Factory 用の Azure セキュリティ ベースラインには、ご自身のデプロイのセキュリティ体制を改善するために役立つレコメンデーションが含まれています。
 
-このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) に基づいて作成されています。
+このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview.md) に基づいて作成されています。
 
-詳細については、「[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)」を参照してください。
+詳細については、「[Azure セキュリティ ベースラインの概要](../security/benchmarks/security-baselines-overview.md)」を参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する
 
@@ -34,17 +34,17 @@ Azure Data Factory 用の Azure セキュリティ ベースラインには、�
 
 Private Link が使用可能な場合は、プライベート エンドポイントを使用して、Azure Data Factory パイプラインにリンクされているすべてのリソース (Azure SQL Server など) をセキュリティで保護します。 Private Link では、仮想ネットワークとサービス間のトラフィックは、Microsoft のバックボーン ネットワーク経由で転送されるため、パブリック インターネットから公開されることがなくなります。
 
-* [Azure-SSIS IR を作成する方法](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)
+* [Azure-SSIS IR を作成する方法](./create-azure-ssis-integration-runtime.md)
 
-* [セルフホステッド IR を作成および構成する方法](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
+* [セルフホステッド IR を作成および構成する方法](./create-self-hosted-integration-runtime.md)
 
-* [仮想ネットワークを作成する方法](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [仮想ネットワークへの Azure-SSIS IR の参加](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#virtual-network-configuration)
+* [仮想ネットワークへの Azure-SSIS IR の参加](./join-azure-ssis-integration-runtime-virtual-network.md#virtual-network-configuration)
 
-* [Azure Private Link について](https://docs.microsoft.com/azure/private-link/private-link-overview)
+* [Azure Private Link について](../private-link/private-link-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -58,13 +58,13 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 また、NSG フロー ログを Log Analytics ワークスペースに送信し、Traffic Analytics を使用して Azure クラウド内のトラフィック フローに関する分析情報を提供することもできます。 Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化してホット スポットを特定したり、セキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。
 
-* [Azure Security Center によって提供されるネットワークのセキュリティについて](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [Azure Security Center によって提供されるネットワークのセキュリティについて](../security-center/security-center-network-recommendations.md)
 
-* [NSG フロー ログを有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Azure Security Center によって提供されるネットワークのセキュリティについて](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [Azure Security Center によって提供されるネットワークのセキュリティについて](../security-center/security-center-network-recommendations.md)
 
-* [Traffic Analytics を有効にして使用する方法](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Traffic Analytics を有効にして使用する方法](../network-watcher/traffic-analytics.md)
 
 **Azure Security Center の監視**: はい
 
@@ -82,9 +82,9 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 **ガイダンス**: 分散型サービス拒否攻撃からの保護のために、お使いの Integration Runtime デプロイに関連付けられている仮想ネットワークで DDoS Protection Standard を有効にします。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のインターネット IP アドレスとの通信を拒否します。
 
-* [DDoS 保護を構成する方法](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
-* [Azure Security Center の統合された脅威インテリジェンスについて](https://docs.microsoft.com/azure/security-center/security-center-alerts-data-services)
+* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/azure-defender.md)
 
 **Azure Security Center の監視**: はい
 
@@ -96,11 +96,11 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 また、NSG フロー ログを Log Analytics ワークスペースに送信し、Traffic Analytics を使用して Azure クラウド内のトラフィック フローに関する分析情報を提供することもできます。 Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化してホット スポットを特定したり、セキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。
 
-* [NSG フロー ログを有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Azure Security Center によって提供されるネットワークのセキュリティについて](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [Azure Security Center によって提供されるネットワークのセキュリティについて](../security-center/security-center-network-recommendations.md)
 
-* [Traffic Analytics を有効にして使用する方法](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Traffic Analytics を有効にして使用する方法](../network-watcher/traffic-analytics.md)
 
 **Azure Security Center の監視**: はい
 
@@ -110,13 +110,13 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 **ガイダンス**: Azure-SSIS IR からの送信トラフィックを検査する場合は、Azure-SSIS IR から開始されたトラフィックを、Azure ExpressRoute 強制トンネリングを使用して、オンプレミス ファイアウォール アプライアンスに、または IDS/IPS 機能をサポートする Azure Marketplace から、ネットワーク仮想アプライアンス (NVA) にルーティングできます。 ペイロード検査に基づく侵入検出または侵入防止が要件でない場合は、脅威インテリジェンスを備えた Azure Firewall を使用できます。
 
-* [Azure-SSIS Integration Runtime を仮想ネットワークに参加させる](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)
+* [Azure-SSIS Integration Runtime を仮想ネットワークに参加させる](./join-azure-ssis-integration-runtime-virtual-network.md)
 
 * [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-* [Azure Firewall をデプロイする方法l](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Firewall でアラートを構成する方法](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Azure Firewall でアラートを構成する方法](../firewall/threat-intel.md)
 
 **Azure Security Center の監視**: はい
 
@@ -134,9 +134,9 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 **ガイダンス**: ネットワーク セキュリティ グループ (NSG) または Azure Firewall でのネットワーク アクセス制御を定義するには、仮想ネットワーク サービス タグを使用します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソースまたは宛先フィールドにサービス タグ名 (DataFactoryManagement など) を指定することにより、対応するサービスの受信トラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
 
-* [サービス タグの概要と使用](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [サービス タグの概要と使用](../virtual-network/service-tags-overview.md)
 
-* [Azure Data Factory 固有のサービスタグについて](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)
+* [Azure Data Factory 固有のサービスタグについて](./join-azure-ssis-integration-runtime-virtual-network.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -147,11 +147,11 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 **ガイダンス**: Azure Policy を使用して、Azure Data Factory インスタンスに関連付けられているネットワーク設定とネットワーク リソースの標準的なセキュリティ構成を定義して実装します。 "Microsoft.DataFactory" と "Microsoft.Network" の名前空間で Azure Policy エイリアスを使用して、Azure Data Factory インスタンスのネットワーク構成を監査または適用するためのカスタム ポリシーを作成します。 次のように、ネットワークまたは Azure Data Factory インスタンスに関連する組み込みのポリシー定義を使用することもできます。
 - DDoS Protection Standard を有効にする必要がある
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [ネットワークに関する Azure Policy のサンプル](https://docs.microsoft.com/azure/governance/policy/samples/#network)
+* [ネットワークに関する Azure Policy のサンプル](../governance/policy/samples/built-in-policies.md#network) 
 
-* [Azure Blueprint を作成する方法](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -165,7 +165,7 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 リソースに対するアクションをそのタグに基づいて検索または実行するには、Azure PowerShell または Azure CLI を使用できます。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -175,9 +175,9 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 **ガイダンス**: Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Data Factory インスタンスに関連するネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -185,7 +185,7 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、「[セキュリティ コントロール: ログ記録と監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
@@ -201,13 +201,13 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 または、Azure Sentinel またはサードパーティのセキュリティ情報イベント管理 (SIEM) に対してデータを有効にしてオンボードできます。また、Azure Data Factory を Git と統合して、変更を追跡/監査する機能や、バグを招く変更を元に戻す機能など、いくつかのソース管理の利点を利用することもできます。
 
-* [診断設定を構成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-in-azure-portal)
+* [診断設定を構成する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 * [Azure Monitor とサードパーティの SIEM 統合を開始する方法](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-* [Azure Data Factory のソース管理](https://docs.microsoft.com/azure/data-factory/source-control)
+* [Azure Data Factory のソース管理](./source-control.md)
 
 **Azure Security Center の監視**: はい
 
@@ -219,9 +219,9 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 診断設定を使用して、Azure Data Factory でメトリックやパイプライン実行データなどの非コンピューティング リソースの診断ログを構成します。 Azure Data Factory では、パイプライン実行データが 45 日間保存されます。 このデータをさらに長く保持するには、監査または手動検査のためのストレージ アカウントに診断ログを保存し、リテンション期間を日数で指定します。 また、ログを Azure Event Hubs にストリーミングしたり、ログを分析のために Log Analytics ワークスペースに送信したりすることもできます。
 
-* [Azure アクティビティ ログの診断設定を有効にする方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
-* [Azure Data Factory 診断ログについて](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor)
+* [Azure Data Factory 診断ログについて](./monitor-using-azure-monitor.md)
 
 **Azure Security Center の監視**: はい
 
@@ -233,9 +233,9 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 組織で、セキュリティ イベント ログ データを保持する必要がある場合は、それをデータ コレクション層内に格納したら、Log Analytics でそれをクエリできます。
 
-* [Azure Monitor で Azure 仮想マシンからデータを収集する方法](https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm)
+* [Azure Monitor で Azure 仮想マシンからデータを収集する方法](../azure-monitor/vm/quick-collect-azurevm.md)
 
-* [Azure Security Center でのデータ収集の有効化](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
+* [Azure Security Center でのデータ収集の有効化](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
 **Azure Security Center の監視**: はい
 
@@ -245,9 +245,9 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 **ガイダンス**: Azure Data Factory の診断設定を有効にします。 Log Analytics ワークスペースにログを保存することを選択した場合は、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
-* [Azure Data Factory の診断設定を有効にする方法](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#set-up-diagnostic-logs)
+* [Azure Data Factory の診断設定を有効にする方法](./monitor-using-azure-monitor.md)
 
-* [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -261,11 +261,11 @@ Azure 仮想マシン (VM) で Integration Runtime を実行している場合�
 
 または、Azure Sentinel またはサードパーティの SIEM に対してデータを有効にしてオンボードすることもできます。
 
-* [Log Analytics のスキーマ](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#schema-of-logs-and-events)
+* [Log Analytics のスキーマ](./monitor-using-azure-monitor.md#schema-of-logs-and-events)
 
-* [Azure Monitor を使用して Azure 仮想マシンからデータを収集する方法](https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm)
+* [Azure Monitor を使用して Azure 仮想マシンからデータを収集する方法](../azure-monitor/vm/quick-collect-azurevm.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -279,11 +279,11 @@ Azure Data Factory の診断設定を構成し、Log Analytics ワークスペ�
 
 また、データ ストアに関連するサービスの診断設定が有効になっていることを確認してください。 ガイダンスについては、各サービスのセキュリティ ベースラインを参照できます。
 
-* [Azure Data Factory のアラート](https://docs.microsoft.com/azure/data-factory/monitor-visually#alerts)
+* [Azure Data Factory のアラート](./monitor-visually.md#alerts)
 
-* [サポートされているすべてのメトリック ページ](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)
+* [サポートされているすべてのメトリック ページ](../azure-monitor/essentials/metrics-supported.md)
 
-* [Log Analytics ワークスペースでアラートを構成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)
+* [Log Analytics ワークスペースでアラートを構成する方法](../azure-monitor/alerts/alerts-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -293,9 +293,9 @@ Azure Data Factory の診断設定を構成し、Log Analytics ワークスペ�
 
 **ガイダンス**: Azure 仮想マシンで Integration Runtime を実行している場合は、Azure Cloud Services および Virtual Machines 用 Microsoft Antimalware を使用して、Azure Storage アカウントにイベントを記録するように仮想マシンを構成できます。 Storage アカウントからイベントを取り込み、必要に応じてアラートを作成するように、Log Analytics ワークスペースを構成します。 Azure Security Center の[Compute &amp; Apps]\(計算とアプリ\) の推奨事項に従います。
 
-* [Cloud Services と Virtual Machines に対して Microsoft Antimalware を構成する方法](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [Cloud Services と Virtual Machines に対して Microsoft Antimalware を構成する方法](../security/fundamentals/antimalware.md)
 
-* [Virtual Machines のゲストレベルの監視を有効にする方法](https://docs.microsoft.com/azure/cost-management/azure-vm-extended-metrics)
+* [Virtual Machines のゲストレベルの監視を有効にする方法](../cost-management-billing/cloudyn/azure-vm-extended-metrics.md)
 
 **Azure Security Center の監視**: はい
 
@@ -313,7 +313,7 @@ Azure Data Factory の診断設定を構成し、Log Analytics ワークスペ�
 
 **ガイダンス**: Azure 仮想マシン (VM) で Integration Runtime を実行している場合は、コマンドライン監査ログを有効にできます。 Azure Security Center では、Azure VM のセキュリティ イベント ログの監視が提供されます。 自動プロビジョニングを有効にすると、Security Center によって、サポートされているすべての Azure VM と新しく作成される VM に Microsoft Monitoring Agent がプロビジョニングされます。またはエージェントを手動でインストールできます。 エージェントにより、プロセス作成イベント 4688 とイベント 4688 内の CommandLine フィールドが有効になります。 VM に作成された新しいプロセスは EventLog に記録され、Security Center の検出サービスによって監視されます。
 
-* [Azure Security Center でのデータ収集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
+* [Azure Security Center でのデータ収集](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -321,7 +321,7 @@ Azure Data Factory の診断設定を構成し、Log Analytics ワークスペ�
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
@@ -331,15 +331,15 @@ Azure Data Factory の診断設定を構成し、Log Analytics ワークスペ�
 
 Azure AD はユーザー アクセスを管理するために推奨される方法ですが、Azure 仮想マシン (VM) で Integration Runtime を実行している場合は、VM にローカル アカウントも存在する可能性があることに注意してください。 ローカル アカウントとドメイン アカウントの両方を、通常、最小の占有領域で、確認して管理する必要があります。 さらに、管理権限の可用性を削減するために、ジャストインタイム機能について、Privileged Identity Manager を確認することをお勧めします。
 
-* [Azure Data Factory のロールとアクセス許可](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
+* [Azure Data Factory のロールとアクセス許可](./concepts-roles-permissions.md)
 
-* [Privileged Identity Manager に関する情報](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Manager に関する情報](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-* [ローカル アカウントに関する情報](https://docs.microsoft.com/azure/active-directory/devices/assign-local-admin#manage-the-device-administrator-role)
+* [ローカル アカウントに関する情報](../active-directory/devices/assign-local-admin.md#manage-the-device-administrator-role)
 
 **Azure Security Center の監視**: はい
 
@@ -364,13 +364,13 @@ Azure AD はユーザー アクセスを管理するために推奨される方�
 
 Azure 仮想マシンで Integration Runtime を実行している場合、Azure 仮想マシンの管理者アカウントは、Azure Privileged Identity Manager (PIM) で構成することもできます。 Azure Privileged Identity Manager には、アクセス許可を特定の期間だけ使用できるように、ジャストインタイム昇格、Multi-Factor Authentication、委任オプションなどのいくつかのオプションが用意されており、承認するための 2 人目のユーザーが必要です。
 
-* [Azure Security Center ID とアクセスについて](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center ID とアクセスについて](../security-center/security-center-identity-access.md)
 
-* [Azure Policy を使用する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を使用する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Privileged Identity Manager に関する情報](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Manager に関する情報](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Azure Data Factory のロールとアクセス許可](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
+* [Azure Data Factory のロールとアクセス許可](./concepts-roles-permissions.md)
 
 **Azure Security Center の監視**: はい
 
@@ -380,13 +380,13 @@ Azure 仮想マシンで Integration Runtime を実行している場合、Azure
 
 **ガイダンス**: Azure アプリの登録 (サービス プリンシパル) を使用して、アプリケーションまたは関数で、Recovery Services コンテナーにアクセスして、対話するために使用できるトークンを取得します。
 
-* [Azure REST API を呼び出す方法](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
+* [Azure REST API を呼び出す方法](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
-* [クライアント アプリケーション (サービス プリンシパル) を Azure AD に登録する方法](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
+* [クライアント アプリケーション (サービス プリンシパル) を Azure AD に登録する方法](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
-* [Azure Recovery Services API に関する情報](https://docs.microsoft.com/rest/api/recoveryservices/)
+* [Azure Recovery Services API に関する情報](/rest/api/recoveryservices/)
 
-* [Azure Data Factory の REST API に関する情報](https://docs.microsoft.com/rest/api/datafactory/)
+* [Azure Data Factory の REST API に関する情報](/rest/api/datafactory/)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -396,9 +396,9 @@ Azure 仮想マシンで Integration Runtime を実行している場合、Azure
 
 **ガイダンス**:Azure Active Directory の Multi-Factor Authentication (MFA) を有効にし、Azure Security Center ID とアクセス管理の推奨事項に従います。
 
-* [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Azure Security Center で ID とアクセスを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: はい
 
@@ -408,9 +408,9 @@ Azure 仮想マシンで Integration Runtime を実行している場合、Azure
 
 **ガイダンス**: Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure リソースを構成します。
 
-* [特権アクセス ワークステーションについて](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -422,11 +422,11 @@ Azure 仮想マシンで Integration Runtime を実行している場合、Azure
 
 Azure 仮想マシン (VM) で Integration Runtime を実行している場合は、さらに VM を Azure Sentinel にオンボードすることができます。 Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ型のセキュリティ情報イベント管理 (SIEM) およびセキュリティ オーケストレーション自動応答 (SOAR) ソリューションです。 Azure Sentinel は、高度なセキュリティ分析と脅威インテリジェンスを企業全体で実現し、アラートの検出、脅威の可視性、予防的な捜索、および脅威への対応のための 1 つのソリューションを提供します。
 
-* [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+* [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../security-center/security-center-identity-access.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: はい
 
@@ -436,7 +436,7 @@ Azure 仮想マシン (VM) で Integration Runtime を実行している場合�
 
 **ガイダンス**: 条件付きアクセスのネームド ロケーションを使用して、IP アドレス範囲または国/地域の特定の論理グループからのアクセスのみを許可します。
 
-* [Azure でネームド ロケーションを構成する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure でネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -448,13 +448,13 @@ Azure 仮想マシン (VM) で Integration Runtime を実行している場合�
 
 Azure 仮想マシンで Integration Runtime (IR) を実行している場合は、マネージド ID を使用すると、コード内に資格情報を記述することなく、Azure AD 認証をサポートする任意のサービス (Key Vault を含む) に対して認証を行うことができます。 仮想マシンで実行しているコードでは、マネージド ID を使用して、Azure AD 認証をサポートするサービスのアクセス トークンを要求できます。
 
-* [Azure AD インスタンスを作成して構成する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Azure AD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-* [Azure リソースのマネージド ID とは](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+* [Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)
 
-* [Azure Data Factory を使用して Azure SQL Database のデータをコピーおよび変換する](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#using-service-principal-authentication)
+* [Azure Data Factory を使用して Azure SQL Database のデータをコピーおよび変換する](./connector-azure-sql-database.md)
 
-* [Azure SQL Database による Azure Active Directory 認証を構成して管理する方法](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)
+* [Azure SQL Database による Azure Active Directory 認証を構成して管理する方法](../azure-sql/database/authentication-aad-configure.md)
 
 **Azure Security Center の監視**: はい
 
@@ -466,11 +466,11 @@ Azure 仮想マシンで Integration Runtime (IR) を実行している場合は
 
 Azure 仮想マシンでランタイム統合を実行している場合は、ローカル セキュリティ グループとユーザーを確認して、システムを危険にさらす可能性がある予期しないアカウントがないことを確認する必要があります。
 
-* [Azure ID アクセス レビューの使用方法](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
-* [Azure AD のレポートの概要](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
-* [Azure ID アクセス レビューの使用方法](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -482,11 +482,11 @@ Azure 仮想マシンでランタイム統合を実行している場合は、�
 
 Azure 仮想マシン (VM) で Integration Runtime を実行している場合は、その VM を Azure Sentinel にオンボードします。 Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ型のセキュリティ情報イベント管理 (SIEM) およびセキュリティ オーケストレーション自動応答 (SOAR) ソリューションです。 Azure Sentinel は、高度なセキュリティ分析と脅威インテリジェンスを企業全体で実現し、アラートの検出、脅威の可視性、予防的な捜索、および脅威への対応のための 1 つのソリューションを提供します。
 
-* [Azure アクティビティ ログを Azure Monitor に統合する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Azure Active Directory を使用して Event Hubs リソースへのアクセスを承認する](https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory)
+* [Azure Active Directory を使用して Event Hubs リソースへのアクセスを承認する](../event-hubs/authorize-access-azure-active-directory.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -496,15 +496,15 @@ Azure 仮想マシン (VM) で Integration Runtime を実行している場合�
 
 **ガイダンス**: Azure SQL Database や Azure 仮想マシンなどの Azure Data Factory リソースの一元的な認証および承認システムとして Azure Active Directory (AD) を使用します。 コントロール プレーン (Azure portal) でのアカウント ログイン動作の偏差について、Azure AD Identity Protection とリスク検出機能を使用して、ユーザー ID に関連して検出された疑わしいアクションへの自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
 
-* [Azure AD の危険なサインインを表示する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Identity Protection のリスク ポリシーを構成して有効にする方法](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-* [SQL による Azure Active Directory 認証の構成と管理](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell)
+* [SQL による Azure Active Directory 認証の構成と管理](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell)
 
-* [Azure-SSIS Integration Runtime に対して Azure Active Directory 認証を有効にする](https://docs.microsoft.com/azure/data-factory/enable-aad-authentication-azure-ssis-ir)
+* [Azure-SSIS Integration Runtime に対して Azure Active Directory 認証を有効にする](./enable-aad-authentication-azure-ssis-ir.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -514,7 +514,7 @@ Azure 仮想マシン (VM) で Integration Runtime を実行している場合�
 
 **ガイダンス**: Microsoft が顧客データにアクセスする必要のあるサポート シナリオでは、Azure カスタマー ロックボックスに、顧客が顧客データへのアクセス要求を確認し、承認または拒否するためのインターフェイスが用意されています。 Azure ロックボックスは Azure Data Factory 自体で使用できませんが、Azure ロックボックスでは Azure SQL Database と Azure Virtual Machines がサポートされていることに注意してください。
 
-* [カスタマー ロックボックスについて](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+* [カスタマー ロックボックスについて](../security/fundamentals/customer-lockbox-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -522,7 +522,7 @@ Azure 仮想マシン (VM) で Integration Runtime を実行している場合�
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、「[セキュリティ コントロール: データ保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
@@ -530,9 +530,9 @@ Azure 仮想マシン (VM) で Integration Runtime を実行している場合�
 
 Azure SQL Database のデータの検出と分類機能を使用します。 データの検出と分類では、データベース内の機密データを検出、分類、ラベル付け、保護するために Azure SQL Database に組み込まれた高度な機能が提供されます。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [Azure SQL Server に対してデータの検出と分類を使用する方法](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
+* [Azure SQL Server に対してデータの検出と分類を使用する方法](../azure-sql/database/data-discovery-and-classification-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -544,13 +544,13 @@ Azure SQL Database のデータの検出と分類機能を使用します。 デ
 
  プライベート エンドポイントを使用してネットワークの分離を実行することもできます。 Azure プライベート エンドポイントは、Azure Private Link を使用するサービスにプライベートかつ安全に接続するためのネットワーク インターフェイスです。 プライベート エンドポイントでは、自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [プライベート リンクについて](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
+* [プライベート リンクについて](../private-link/private-endpoint-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -562,13 +562,13 @@ Azure SQL Database のデータの検出と分類機能を使用します。 デ
 
 Private Link が使用可能な場合は、プライベート エンドポイントを使用して、Azure Data Factory パイプラインにリンクされているすべてのリソースをセキュリティで保護します。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由して、パブリック インターネットからの公開を排除します。 また、ネットワーク セキュリティ グループ (NSG) に対して厳格な一連のアウトバウンド規則を構成し、その NSG をサブネットに関連付けることによって、データ窃盗のリスクを軽減することもできます。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Azure Private Link について](https://docs.microsoft.com/azure/private-link/private-link-overview)
+* [Azure Private Link について](../private-link/private-link-overview.md)
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: はい
 
@@ -578,9 +578,9 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 **ガイダンス**:クラウド データ ストアが HTTPS または TLS をサポートしている場合、Data Factory のデータ移動サービスとクラウド データ ストア間のデータ転送はすべて、セキュリティで保護されたチャネル HTTPS または TLS を介して行われます。 使用される TLS のバージョンは、1.2 です。
 
-データがデータベースとの間で転送中である間は、Azure SQL Database および Azure SQL Data Warehouse への接続をすべて (SSL/TLS を使用して) 暗号化する必要があります。 JSON を使用してパイプラインを作成する場合は、encryption プロパティを追加し、接続文字列で true に設定します。 Azure Storage では、接続文字列で HTTPS を使用できます。
+データベースとの間でのデータ転送中は、Azure SQL Database および Azure Synapse Analytics へのすべての接続で暗号化 (SSL/TLS) が必要です。 JSON を使用してパイプラインを作成する場合は、encryption プロパティを追加し、接続文字列で true に設定します。 Azure Storage では、接続文字列で HTTPS を使用できます。
 
-* [Azure Data Factory での転送中の暗号化について](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
+* [Azure Data Factory での転送中の暗号化について](./data-movement-security-considerations.md)
 
 **Azure Security Center の監視**: はい
 
@@ -592,23 +592,23 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 データの検出と分類機能は、他の Azure サービスではまだ使用できません。
 
-* [Azure SQL Server に対してデータの検出と分類を使用する方法](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
+* [Azure SQL Server に対してデータの検出と分類を使用する方法](../azure-sql/database/data-discovery-and-classification-overview.md)
 
 **Azure Security Center の監視**: はい
 
 **責任**: Customer
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure Active Directory (AD) ロールベースのアクセス制御 (RBAC) を使用して、Azure Data Factory コントロール プレーン (Azure portal) へのアクセスを制御します。
+**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Data Factory コントロール プレーン (Azure portal) へのアクセスを制御します。
 
 Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、共同作成者ロールまたは所有者ロールのメンバーであるか、Azure サブスクリプションの管理者である必要があります。
 
-Azure SQL Database などの Data Factory データ ソースの場合、RBAC に関する詳細について、そのサービスのセキュリティ ベースラインを参照してください。
+Azure SQL Database などの Data Factory データ ソースの場合、Azure RBAC に関する詳細について、そのサービスのセキュリティ ベースラインを参照してください。
 
-* [Azure で RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
-* [Azure Data Factory のロールとアクセス許可](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
+* [Azure Data Factory のロールとアクセス許可](./concepts-roles-permissions.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -620,7 +620,7 @@ Azure SQL Database などの Data Factory データ ソースの場合、RBAC �
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -634,15 +634,15 @@ Azure 仮想マシンで Integration Runtime を実行している場合、Windo
 
 資格情報またはシークレット値を Azure Key Vault に格納し、パイプラインの実行時にそれらを使用してアクティビティに渡すことができます。 データ ストアや計算のための資格情報を Azure Key Vault に格納することもできます。 Azure Data Factory は、データ ストア/計算を使うアクティビティの実行時に、資格情報を取得します。
 
-* [Azure Data Factory での保存時の暗号化について](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
+* [Azure Data Factory での保存時の暗号化について](./data-movement-security-considerations.md)
 
-* [Azure Managed Disks のサーバー側暗号化](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption)
+* [Azure Managed Disks のサーバー側暗号化](../virtual-machines/disk-encryption.md)
 
-* [Windows VM 用の Azure Disk Encryption](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview)
+* [Windows VM 用の Azure Disk Encryption](../virtual-machines/windows/disk-encryption-overview.md)
 
-* [パイプライン アクティビティでの Azure Key Vault シークレットの使用方法](https://docs.microsoft.com/azure/data-factory/how-to-use-azure-key-vault-secrets-pipeline-activities)
+* [パイプライン アクティビティでの Azure Key Vault シークレットの使用方法](./how-to-use-azure-key-vault-secrets-pipeline-activities.md)
 
-* [Azure Key Vault への資格情報の格納方法](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
+* [Azure Key Vault への資格情報の格納方法](./store-credentials-in-key-vault.md)
 
 **Azure Security Center の監視**: はい
 
@@ -652,11 +652,11 @@ Azure 仮想マシンで Integration Runtime を実行している場合、Windo
 
 **ガイダンス**: Azure アクティビティ ログで Azure Monitor を使用して、Azure Data Factory と関連リソースに変更が加えられたときのアラートを作成します。
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
-* [Azure Storage Analytics のログ](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+* [Azure Storage Analytics のログ](../storage/common/storage-analytics-logging.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -664,7 +664,7 @@ Azure 仮想マシンで Integration Runtime を実行している場合、Windo
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、「[セキュリティ コントロール: 脆弱性の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
@@ -672,11 +672,11 @@ Azure 仮想マシンで Integration Runtime を実行している場合、Windo
 
 Azure 仮想マシン (VM) で Integration Runtime を実行している場合、VM に対する脆弱性評価の実行に関する Azure Security Center のレコメンデーションに従います。 仮想マシンの脆弱性評価を実行するには、Azure セキュリティの推奨されるソリューションまたはサードパーティ ソリューションを使用します。
 
-* [Azure SQL Database で脆弱性評価を実行する方法](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [Azure SQL Database で脆弱性評価を実行する方法](../azure-sql/database/sql-vulnerability-assessment.md)
 
-* [Advanced Data Security を有効にする方法](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [Advanced Data Security を有効にする方法](../azure-sql/database/azure-defender-for-sql.md)
 
-* [Azure Security Center の脆弱性評価の推奨事項を実装する方法](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
+* [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center の監視**: はい
 
@@ -688,11 +688,11 @@ Azure 仮想マシン (VM) で Integration Runtime を実行している場合�
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-* [Azure の Update Management ソリューション](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Azure の Update Management ソリューション](../automation/update-management/overview.md)
 
-* [Azure VM の更新プログラムとパッチの管理](https://docs.microsoft.com/azure/automation/automation-tutorial-update-management)
+* [Azure VM の更新プログラムとパッチの管理](../automation/update-management/manage-updates-for-vm.md)
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: はい
 
@@ -702,9 +702,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**:Azure 仮想マシン (VM) で Integration Runtime を実行している場合は、サードパーティ修正プログラム管理ソリューションを使用できます。 Azure Update Management のソリューションを使用すると、仮想マシンの更新プログラムと修正プログラムを管理できます。 Update Management は、サポート対象の Windows システムへの修正プログラムの適用を、ローカルに構成された更新リポジトリに依存しています。 System Center Updates Publisher (Updates Publisher) などのツールを使用して、カスタム更新プログラムを Windows Server Update Services (WSUS) に公開できます。 このシナリオでは、サード パーティ製ソフトウェアで Configuration Manager を更新リポジトリとして使用するマシンに、Update Management で修正プログラムを適用できます。
 
-* [Azure の Update Management ソリューション](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Azure の Update Management ソリューション](../automation/update-management/overview.md)
 
-* [Azure VM の更新プログラムとパッチの管理](https://docs.microsoft.com/azure/automation/automation-tutorial-update-management)
+* [Azure VM の更新プログラムとパッチの管理](../automation/update-management/manage-updates-for-vm.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -714,7 +714,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure 仮想マシンで Integration Runtime を実行している場合は、スキャン結果を一定の間隔でエクスポートして結果を比較し、脆弱性が修復されていることを確認します。 Azure Security Center によって提案された脆弱性管理のレコメンデーションを使用する場合は、選択したソリューションのポータルに切り替えてスキャン データの履歴を表示できます。
 
-* [仮想マシン向けの統合された脆弱性スキャナーについて](https://docs.microsoft.com/azure/security-center/built-in-vulnerability-assessment)
+* [仮想マシン向けの統合された脆弱性スキャナーについて](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -726,7 +726,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 Security Center で脆弱性が識別されると、検出結果と推奨事項としての関連情報が提示されます。 関連情報には、修復手順、関連する CVE、CVSS のスコアなどが含まれます。 1 つ以上のサブスクリプション、または特定の仮想マシンで識別された脆弱性を表示することができます。
 
-* [仮想マシン向けの統合された脆弱性スキャナー](https://docs.microsoft.com/azure/security-center/built-in-vulnerability-assessment)
+* [仮想マシン向けの統合された脆弱性スキャナー](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center の監視**: はい
 
@@ -734,7 +734,7 @@ Security Center で脆弱性が識別されると、検出結果と推奨事項�
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された Asset Discovery ソリューションを使用する
 
@@ -742,11 +742,11 @@ Security Center で脆弱性が識別されると、検出結果と推奨事項�
 
 従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
 
-* [Azure Resource Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-* [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription)
 
-* [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC について](../role-based-access-control/overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -756,7 +756,7 @@ Security Center で脆弱性が識別されると、検出結果と推奨事項�
 
 **ガイダンス**:メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -770,11 +770,11 @@ Security Center で脆弱性が識別されると、検出結果と推奨事項�
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -794,9 +794,9 @@ Security Center で脆弱性が識別されると、検出結果と推奨事項�
 
 Azure Resource Graph を使用して、サブスクリプション内のリソースのクエリまたは検出を行います。 環境に存在するすべての Azure リソースが承認されていることを確認します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -808,9 +808,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 注:ソフトウェアの名前、バージョン、発行元、および更新時刻は、Azure portal から入手できます。 インストール日やその他の情報にアクセスするには、お客様はゲストレベルの診断を有効にし、Windows イベント ログを Log Analytics ワークスペースに取り込む必要があります。
 
-* [Azure Automation の概要](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Azure Automation の概要](../automation/automation-intro.md)
 
-* [Azure VM インベントリを有効にする方法](https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software)
+* [Azure VM インベントリを有効にする方法](../automation/automation-tutorial-installed-software.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -820,11 +820,11 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure 仮想マシンで Integration Runtime を実行している場合は、Azure Automation によって、ワークロードとリソースのデプロイ、運用、および使用停止を完全に制御できます。 Change Tracking を使用して、Virtual Machines にインストールされているすべてのソフトウェアを特定できます。 独自のプロセスを実装するか、Azure Automation State Configuration を使用して、承認されていないソフトウェアを削除できます。
 
-* [Azure Automation の概要](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Azure Automation の概要](../automation/automation-intro.md)
 
-* [Change Tracking ソリューションを使用して環境内の変更を追跡する](https://docs.microsoft.com/azure/automation/change-tracking)
+* [Change Tracking ソリューションを使用して環境内の変更を追跡する](../automation/change-tracking/overview.md)
 
-* [Azure Automation State Configuration の概要](https://docs.microsoft.com/azure/automation/automation-dsc-overview)
+* [Azure Automation State Configuration の概要](../automation/automation-dsc-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -834,7 +834,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure 仮想マシン (VM) で Integration Runtime を実行している場合は、Azure Security Center の適応型アプリケーション制御を使用して、VM 上で承認されたソフトウェアのみを実行し、すべての承認されていないソフトウェアが実行されないようにします。
 
-* [Azure Security Center の適応型アプリケーション制御を使用する方法](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+* [Azure Security Center の適応型アプリケーション制御を使用する方法](../security-center/security-center-adaptive-application.md)
 
 **Azure Security Center の監視**: はい
 
@@ -846,9 +846,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -860,7 +860,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 これは、Integration Runtime が Azure 仮想マシンで実行されている場合にのみ適用されることに注意してください。
 
-* [Azure Security Center の適応型アプリケーション制御を使用する方法](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+* [Azure Security Center の適応型アプリケーション制御を使用する方法](../security-center/security-center-adaptive-application.md)
 
 **Azure Security Center の監視**: はい
 
@@ -870,7 +870,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure 条件付きアクセスを使用して Azure Resource Manager とやりとりするユーザーの機能を制限するには、"Microsoft Azure 管理" アプリに対して [アクセスのブロック] を構成します。
 
-* [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -880,9 +880,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure Virtual Machine で Runtime Integration を実行している場合、スクリプトの種類に応じて、オペレーティング システム固有の構成またはサードパーティのリソースを使用して、ユーザーの Azure コンピューティング リソース内でスクリプトを実行する機能を制限できます。 また、Azure Security Center の適応型アプリケーション制御を利用して、Azure Virtual Machines 上で承認されたソフトウェアのみを実行し、すべての承認されていないソフトウェアが実行されないようにすることもできます。
 
-* [Windows 環境で PowerShell スクリプトの実行を制御する方法](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [Windows 環境で PowerShell スクリプトの実行を制御する方法](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
-* [Azure Security Center の適応型アプリケーション制御を使用する方法](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+* [Azure Security Center の適応型アプリケーション制御を使用する方法](../security-center/security-center-adaptive-application.md)
 
 **Azure Security Center の監視**: はい
 
@@ -892,19 +892,19 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure 環境にデプロイされた高リスク アプリケーションは、仮想ネットワーク、サブネット、サブスクリプション、管理グループなどを使用して分離し、Azure Firewall、Web アプリケーション ファイアウォール (WAF)、またはネットワーク セキュリティ グループ (NSG) によって十分に保護できます。
 
-* [Azure における仮想ネットワークと仮想マシン](https://docs.microsoft.com/azure/virtual-machines/windows/network-overview)
+* [Azure における仮想ネットワークと仮想マシン](../virtual-machines/network-overview.md)
 
-* [Azure Firewall とは](https://docs.microsoft.com/azure/firewall/overview)
+* [Azure Firewall とは](../firewall/overview.md)
 
-* [Azure Web アプリケーション ファイアウォールとは](https://docs.microsoft.com/azure/web-application-firewall/overview)
+* [Azure Web アプリケーション ファイアウォールとは](../web-application-firewall/overview.md)
 
-* [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)
+* [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)
 
-* [Azure Virtual Network とは](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
+* [Azure Virtual Network とは](../virtual-network/virtual-networks-overview.md)
 
-* [Azure 管理グループでリソースを整理する](https://docs.microsoft.com/azure/governance/management-groups/overview)
+* [Azure 管理グループでリソースを整理する](../governance/management-groups/overview.md)
 
-* [サブスクリプション決定ガイド](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/subscriptions/)
+* [サブスクリプション決定ガイド](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -912,15 +912,15 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
 **ガイダンス**: Azure Policy を使用して、Azure Data Factory の標準的なセキュリティ構成を定義して実装します。 Azure Data Factory インスタンスの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.DataFactory" 名前空間で Azure Policy エイリアスを使用します。
 
-* [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias)
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -930,9 +930,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure 仮想マシンで Runtime Integration を実行している場合は、Azure Security Center のレコメンデーション [Remediate Vulnerabilities in Security Configurations on your Virtual Machines]\(仮想マシンのセキュリティ構成の脆弱性を修復する\) を使用して、すべてのコンピューティング リソースのセキュリティ構成を維持します。
 
-* [Azure Security Center の推奨事項を監視する方法](https://docs.microsoft.com/azure/security-center/security-center-recommendations)
+* [Azure Security Center の推奨事項を監視する方法](../security-center/security-center-recommendations.md)
 
-* [Azure Security Center のレコメンデーションを修復する方法](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
+* [Azure Security Center のレコメンデーションを修復する方法](../security-center/security-center-remediate-recommendations.md)
 
 **Azure Security Center の監視**: はい
 
@@ -940,13 +940,13 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
+**ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy の効果について](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Policy の効果について](../governance/policy/concepts/effects.md)
 
-* [Azure Resource Manager テンプレートの作成に関する情報](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
+* [Azure Resource Manager テンプレートの作成に関する情報](../virtual-machines/windows/ps-template.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -960,11 +960,11 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ほとんどのシナリオで、Microsoft ベース VM テンプレートと Azure Automation Desired State Configuration を組み合わせると、セキュリティ要件を満たし、それを維持するために役立つ可能性があります。
 
-* [VM テンプレートをダウンロードする方法に関する情報](https://docs.microsoft.com/azure/virtual-machines/windows/download-template)
+* [VM テンプレートをダウンロードする方法に関する情報](/previous-versions/azure/virtual-machines/windows/download-template)
 
-* [Azure Resource Manager テンプレートの作成に関する情報](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
+* [Azure Resource Manager テンプレートの作成に関する情報](../virtual-machines/windows/ps-template.md)
 
-* [カスタム VM VHD を Azure にアップロードする方法](https://docs.microsoft.com/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [カスタム VM VHD を Azure にアップロードする方法](/azure-stack/operator/azure-stack-add-vm-image)
 
 **Azure Security Center の監視**: はい
 
@@ -974,9 +974,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: カスタムの Azure Policy 定義を使用する場合は、Azure DevOps または Azure Repos を使用して、コードを安全に格納して管理します。
 
-* [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
 
-* [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos のドキュメント](/azure/devops/repos/index)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -984,17 +984,17 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
 
-**ガイダンス**: カスタム イメージを使用している場合は、ロールベースのアクセス制御 (RBAC) を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。 コンテナー イメージの場合は、Azure Container Registry に保存し、RBAC を利用して、承認されたユーザーだけがイメージにアクセスできるようにします。
+**ガイダンス**: カスタム イメージを使用している場合は、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、確実に承認されたユーザーのみがイメージにアクセスできるようにします。 コンテナー イメージの場合は、Azure Container Registry に保存し、Azure RBAC を利用して、承認されたユーザーのみがイメージにアクセスできるようにします。
 
 Data Factory 共同作成者ロールを使って、データ ファクトリのほか、それらの中の子リソースの作成と管理を行うことができます。
 
-* [Azure での RBAC の概要](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Azure RBAC について](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [コンテナー レジストリの RBAC を理解する](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [コンテナー レジストリの Azure RBAC を理解する](../container-registry/container-registry-roles.md)
 
-* [Azure で RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [Azure RBAC を構成する方法](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-* [Azure Data Factory のロールとアクセス許可](https://docs.microsoft.com/azure/data-factory/concepts-roles-permissions)
+* [Azure Data Factory のロールとアクセス許可](./concepts-roles-permissions.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1004,7 +1004,7 @@ Data Factory 共同作成者ロールを使って、データ ファクトリの
 
 **ガイダンス**: 組み込みの Azure Policy 定義と "Microsoft.DataFactory" 名前空間の Azure Policy エイリアスを使用して、システム構成のアラート、監査、適用を行うカスタム ポリシーを作成します。 さらに、ポリシー例外を管理するためのプロセスとパイプラインを作成します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1014,7 +1014,7 @@ Data Factory 共同作成者ロールを使って、データ ファクトリの
 
 **ガイダンス**: このレコメンデーションは、Azure 仮想マシンで Integration Runtime が 実行されている場合に適用できます。 Azure Automation State Configuration は、あらゆるクラウドまたはオンプレミスのデータセンターにある Desired State Configuration (DSC) ノードの管理構成サービスです。 これにより、一元化された安全な場所から、何千ものマシンでの迅速かつ簡単なスケーラビリティが可能になります。 マシンのオンボード、宣言型構成の割り当て、指定した必要な状態に準拠した各マシンを示すレポートの表示を簡単に行うことができます。
 
-* [Azure Automation State Configuration による管理のためのマシンのオンボード](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)
+* [Azure Automation State Configuration による管理のためのマシンのオンボード](../automation/automation-dsc-onboarding.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1024,7 +1024,7 @@ Data Factory 共同作成者ロールを使って、データ ファクトリの
 
 **ガイダンス**: 組み込みの Azure Policy 定義と "Microsoft.DataFactory" 名前空間の Azure Policy エイリアスを使用して、システム構成のアラート、監査、適用を行うカスタム ポリシーを作成します。 Azure リソースの構成を自動的に適用するには、Azure Policy の [audit]、[deny]、[deploy if not exist] を使用します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1034,7 +1034,7 @@ Data Factory 共同作成者ロールを使って、データ ファクトリの
 
 **ガイダンス**:このレコメンデーションは、Azure 仮想マシンで Integration Runtime が 実行されている場合に適用できます。 Azure Automation State Configuration は、あらゆるクラウドまたはオンプレミスのデータセンターにある Desired State Configuration (DSC) ノードの管理構成サービスです。 これにより、一元化された安全な場所から、何千ものマシンでの迅速かつ簡単なスケーラビリティが可能になります。 マシンのオンボード、宣言型構成の割り当て、指定した必要な状態に準拠した各マシンを示すレポートの表示を簡単に行うことができます。
 
-* [Azure Automation State Configuration による管理のためのマシンのオンボード](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)
+* [Azure Automation State Configuration による管理のためのマシンのオンボード](../automation/automation-dsc-onboarding.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1046,15 +1046,17 @@ Data Factory 共同作成者ロールを使って、データ ファクトリの
 
 資格情報またはシークレット値を Azure Key Vault に格納し、パイプラインの実行時にそれらを使用してアクティビティに渡すこともできます。 論理的な削除が有効にされていることを確認します。
 
-* [Azure マネージド ID と統合する方法](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
+* [Azure マネージド ID と統合する方法](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-* [キー コンテナーを作成する方法](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
+* [キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md)
 
-* [マネージド ID で Key Vault の認証を提供する方法](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [Key Vault に対して認証を行う方法](../key-vault/general/authentication.md)
 
-* [パイプライン アクティビティでの Azure Key Vault シークレットの使用](https://docs.microsoft.com/azure/data-factory/how-to-use-azure-key-vault-secrets-pipeline-activities)
+* [Key Vault のアクセス ポリシーを割り当てる方法](../key-vault/general/assign-access-policy-portal.md)
 
-* [Azure Key Vault の論理的な削除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
+* [パイプライン アクティビティでの Azure Key Vault シークレットの使用](./how-to-use-azure-key-vault-secrets-pipeline-activities.md)
+
+* [Azure Key Vault の論理的な削除](../key-vault/general/soft-delete-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1064,7 +1066,7 @@ Data Factory 共同作成者ロールを使って、データ ファクトリの
 
 **ガイダンス**: データ ファクトリの作成時に、ファクトリの作成に加え、マネージド ID を作成できます。 マネージド ID は、Azure Active Directory に登録されているマネージド アプリケーションであり、この特定のデータ ファクトリを表します。
 
-* [Azure Data Factory のマネージド ID](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)
+* [Azure Data Factory のマネージド ID](./data-factory-service-identity.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1082,13 +1084,13 @@ Data Factory 共同作成者ロールを使って、データ ファクトリの
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、「[セキュリティ コントロール: マルウェアからの防御](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されるマルウェア対策ソフトウェアを使用する
 
 **ガイダンス**: Azure 仮想マシンで Integration Runtime を実行している場合は、Azure Windows Virtual Machines 用 Microsoft Antimalware を使用して、リソースを継続的に監視し、保護することができます。
 
-* [Cloud Services と Virtual Machines に対して Microsoft Antimalware を構成する方法](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [Cloud Services と Virtual Machines に対して Microsoft Antimalware を構成する方法](../security/fundamentals/antimalware.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1102,9 +1104,9 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 データ サービス向けの Azure Security Center の脅威検出を使用して、ストレージ アカウントにアップロードされたマルウェアを検出します。
 
-* [Azure Cloud Services および Virtual Machines 向けの Microsoft Antimalware について](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [Azure Cloud Services および Virtual Machines 向けの Microsoft Antimalware について](../security/fundamentals/antimalware.md)
 
-* [データ サービスに対する Azure Security Center の脅威検出について](https://docs.microsoft.com/azure/security-center/security-center-alerts-data-services)
+* [データ サービスに対する Azure Security Center の脅威検出について](../security-center/azure-defender.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1114,9 +1116,9 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 **ガイダンス**: Azure 用 Microsoft Antimalware をデプロイすると、既定で、最新の署名、プラットフォーム、エンジンの更新プログラムが自動的にインストールされます。 Azure Security Center の"計算とアプリ" の推奨事項に従って、すべてのエンドポイントが最新の署名を備え、最新の状態になっているようにします。 Azure Security Center と統合された Microsoft Defender Advanced Threat Protection サービスを使用して、ウイルスやマルウェアベースの攻撃のリスクを限定する追加のセキュリティによって、Windows OS の保護を強化できます。
 
-* [Azure Cloud Services および Virtual Machines 向けの Microsoft Antimalware をデプロイする方法](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [Azure Cloud Services および Virtual Machines 向けの Microsoft Antimalware をデプロイする方法](../security/fundamentals/antimalware.md)
 
-* [Microsoft Defender Advanced Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/onboard-configure)
+* [Microsoft Defender Advanced Threat Protection](/windows/security/threat-protection/microsoft-defender-atp/onboard-configure)
 
 **Azure Security Center の監視**: はい
 
@@ -1124,7 +1126,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、「[セキュリティ コントロール: データの復旧](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
@@ -1132,9 +1134,9 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 いかなるデータストアの場合も、定期的な自動バックアップの実行方法に関するレコメンデーションについては、そのサービスのセキュリティ ベースラインを参照してください。
 
-* [Azure VM バックアップの概要](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
+* [Azure VM バックアップの概要](../backup/backup-azure-vms-introduction.md)
 
-* [VM の設定から Azure VM をバックアップする](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm)
+* [VM の設定から Azure VM をバックアップする](../backup/backup-azure-vms-first-look-arm.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1146,9 +1148,9 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 いかなるデータストアの場合も、定期的な自動バックアップの実行方法に関するレコメンデーションについては、そのサービスのセキュリティ ベースラインを参照してください。
 
-* [Azure VM バックアップの概要](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
+* [Azure VM バックアップの概要](../backup/backup-azure-vms-introduction.md)
 
-* [Azure 上でキー コンテナーのキーをバックアップする方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure Security Center の監視**: はい
 
@@ -1160,9 +1162,9 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 どのデータ ストアの場合でも、バックアップの検証に関するガイダンスについては、そのサービスのセキュリティ ベースラインを参照してください。
 
-* [Azure 仮想マシンのバックアップからファイルを復旧する方法](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm)
+* [Azure 仮想マシンのバックアップからファイルを復旧する方法](../backup/backup-azure-restore-files-from-vm.md)
 
-* [Azure でキー コンテナーのキーを復元する方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1172,9 +1174,9 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 **ガイダンス**: Azure 仮想マシン (VM) で Integration Runtime を実行していて、Azure Backup でその VM を バックアップする場合、VM は Storage Service Encryption (SSE) によって保存時に暗号化されます。 Azure Backup では、Azure Disk Encryption を使用して暗号化されている Azure VM もバックアップできます。 Azure Disk Encryption は、シークレットとしてキー コンテナーで保護されている BitLocker 暗号化キー (BEK) と統合されます。 Azure Disk Encryption は、Azure Key Vault キー暗号化キー (KEK) とも統合されます。 Key Vault で論理的な削除を有効にして、偶発的または悪意のある削除からキーを保護します。
 
-* [VM の論理的な削除](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#soft-delete)
+* [VM の論理的な削除](../backup/backup-azure-security-feature-cloud.md)
 
-* [Azure Key Vault の論理的な削除の概要](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
+* [Azure Key Vault の論理的な削除の概要](../key-vault/general/soft-delete-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1182,13 +1184,13 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、「[セキュリティ コントロール: インシデント対応](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
 **ガイダンス**: 組織のインシデント対応ガイドを作成します。 要員のすべてのロールを定義するインシデント対応計画が記述されていることと、検出からインシデント後のレビューまでのインシデント対応/管理のフェーズがあることを確認します。
 
-* [Azure Security Center 内でワークフロー自動化を構成する方法](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+* [Azure Security Center 内でワークフロー自動化を構成する方法](../security-center/security-center-planning-and-operations-guide.md)
 
 * [独自のセキュリティ インシデント対応プロセスを構築するためのガイダンス](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1212,7 +1214,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
-**ガイダンス**:定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。
+**ガイダンス**: 定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。
 
 * [NIST の出版物「IT 計画と機能に関するテスト、トレーニング、演習プログラムのガイド」を参照してください。](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
@@ -1224,7 +1226,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 **ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) で、不正なユーザーまたは権限のないユーザーによるお客様のデータへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
 
-* [Azure Security Center のセキュリティ連絡先を設定する方法](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1232,11 +1234,11 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用して、アラートの Sentinel のストリーミングを実行できます。
+**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
-* [連続エクスポートを構成する方法](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 
-* [Azure Sentinel にアラートをストリーミングする方法](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Azure Sentinel にアラートをストリーミングする方法](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1246,7 +1248,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 **ガイダンス**:セキュリティ アラートやセキュリティに関する推奨事項に対して "Logic Apps" 経由で応答を自動的にトリガーするには、Azure Security Center のワークフローの自動化機能を使用します。
 
-* [ワークフローの自動化と Logic Apps を構成する方法](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [ワークフローの自動化と Logic Apps を構成する方法](../security-center/workflow-automation.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1254,7 +1256,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
@@ -1270,5 +1272,5 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

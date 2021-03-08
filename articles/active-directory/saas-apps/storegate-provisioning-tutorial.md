@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/15/2019
 ms.author: Zhchia
-ms.openlocfilehash: c889b2c7b11c5e649045e34cdac9e50a3a242b6a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c984beff630ef90ea33a13e2fef1bca0189c2314
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88524455"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357943"
 ---
 # <a name="tutorial-configure-storegate-for-automatic-user-provisioning"></a>チュートリアル:Storegate を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -83,7 +83,7 @@ Azure AD で自動ユーザー プロビジョニング用に Storegate を構�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Storegate**」と入力し、結果パネルで **Storegate** を選択します。 
+4. 検索ボックスに「 **Storegate** 」と入力し、結果パネルで **Storegate** を選択します。 
 
     ![結果一覧の Storegate](common/search-new-app.png)
 
@@ -130,11 +130,11 @@ Azure AD で自動ユーザー プロビジョニング用に Storegate を構�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://dialpad.com/scim`」と入力します。 前の手順で Storegate から取得して保存した値を **[シークレット トークン]** に入力します。 **[接続テスト]** をクリックして、Azure AD から確実に Storegate に接続できるようにします。 接続できない場合は、使用中の Storegate アカウントに管理者アクセス許可があること確認してから、もう一度試します。
 

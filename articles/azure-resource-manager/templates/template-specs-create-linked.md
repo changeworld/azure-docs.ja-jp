@@ -2,24 +2,24 @@
 title: リンクされたテンプレートを使用してテンプレート スペックを作成する
 description: リンクされたテンプレートを使用してテンプレート スペックを作成する方法について説明します。
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: 49a26bf61c3c66f41761afe293471575e76c4eb9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 01/05/2021
+ms.openlocfilehash: e5725ece165f5716480afbcb4ef9098274c09993
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936369"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900639"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>チュートリアル:リンクされたテンプレートを使用してテンプレート スペックを作成する (プレビュー)
 
-[リンクされたテンプレート](linked-templates.md#linked-template)を使用して[テンプレート スペック](template-specs.md)を作成する方法について説明します。 テンプレート スペックは、ARM テンプレートを組織内の他のユーザーと共有するために使用します。 この記事では、[デプロイ リソース](/azure/templates/microsoft.resources/deployments)の新しい `relativePath` プロパティを使用して、メイン テンプレートとそのリンクされたテンプレートをパッケージ化するテンプレート スペックを作成する方法について説明します。
+メイン テンプレートと[リンクされたテンプレート](linked-templates.md#linked-template)を使用して[テンプレート スペック](template-specs.md)を作成する方法について説明します。 テンプレート スペックは、ARM テンプレートを組織内の他のユーザーと共有するために使用します。 この記事では、[デプロイ リソース](/azure/templates/microsoft.resources/deployments)の `relativePath` プロパティを使用して、メイン テンプレートとそのリンクされたテンプレートをパッケージ化するテンプレート スペックを作成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> テンプレート スペックは現在プレビュー段階にあります。 使用するには、[プレビューにサインアップする](https://aka.ms/templateSpecOnboarding)必要があります。
+> テンプレート スペックは現在プレビュー段階にあります。 Azure PowerShell でこれを使用するには、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)をインストールする必要があります。 Azure CLI でこれを使用するには、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
 
 ## <a name="create-linked-templates"></a>リンク済みテンプレートの作成
 
@@ -176,7 +176,7 @@ New-AzTemplateSpec `
   -Version "1.0.0.0" `
   -ResourceGroupName templateSpecRG `
   -Location westus2 `
-  -TemplateJsonFile "c:\Templates\linkedTS\azuredeploy.json"
+  -TemplateFile "c:\Templates\linkedTS\azuredeploy.json"
 ```
 
 # <a name="cli"></a>[CLI](#tab/azure-cli)
@@ -186,12 +186,12 @@ az group create \
   --name templateSpecRG \
   --location westus2
 
-az template-specs create \
+az ts create \
   --name webSpec \
   --version "1.0.0.0" \
   --resource-group templateSpecRG \
   --location "westus2" \
-  --template-file "c:\Templates\linkedTS\azuredeploy.json"
+  --template-file "<path-to-main-template>"
 ```
 
 ---
@@ -207,7 +207,7 @@ Get-AzTemplateSpec -ResourceGroupName templatespecRG -Name webSpec
 # <a name="cli"></a>[CLI](#tab/azure-cli)
 
 ```azurecli
-az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0"
+az ts show --name webSpec --resource-group templateSpecRG --version "1.0.0.0"
 ```
 
 ---
@@ -223,7 +223,7 @@ New-AzResourceGroup `
   -Name webRG `
   -Location westus2
 
-$id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name webSpec -Version "1.0.0.0").Version.Id
+$id = (Get-AzTemplateSpec -ResourceGroupName templateSpecRG -Name webSpec -Version "1.0.0.0").Versions.Id
 
 New-AzResourceGroupDeployment `
   -TemplateSpecId $id `
@@ -237,7 +237,7 @@ az group create \
   --name webRG \
   --location westus2
 
-id = $(az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0" --query "id")
+id = $(az ts show --name webSpec --resource-group templateSpecRG --version "1.0.0.0" --query "id")
 
 az deployment group create \
   --resource-group webRG \
@@ -245,7 +245,7 @@ az deployment group create \
 ```
 
 > [!NOTE]
-> テンプレート スペック ID の取得および Windows PowerShell の変数への割り当てに関する既知の問題があります。
+> Windows PowerShell におけるテンプレート スペック ID の取得と変数への割り当てには既知の問題があります。
 
 ---
 

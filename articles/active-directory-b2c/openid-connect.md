@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a0131e461f2664fa06fc0e24237aec1579bd253c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48c60878a6a58b2f4629768b81af894a741dab1c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203845"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509803"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OpenID Connect による Web サインイン
 
@@ -24,7 +24,7 @@ OpenID Connect は、ユーザーを Web アプリケーションに安全にサ
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 の "*認可*" プロトコルを "*認証*" プロトコルとして使用できるように拡張したものです。 この認証プロトコルでは、シングル サインオンを実行できます。 ここでは、クライアントがユーザーの ID を検証したり、ユーザーに関する基本的なプロファイル情報を取得したりできるようにする "*ID トークン*" の概念が導入されています。
 
-これは OAuth 2.0 の拡張であるため、アプリケーションが*アクセス トークン*を安全に取得することも可能になります。 アクセス トークンを使用すると、[認可サーバー](protocols-overview.md)によってセキュリティ保護されたリソースにアクセスできます。 サーバー上でホストされ、ブラウザー経由でアクセスされる Web アプリケーションを構築する場合は、OpenID Connect をお勧めします。 トークンの詳細については、「[Overview of tokens in Azure Active Directory B2C (Azure Active Directory B2C でのトークンの概要)](tokens-overview.md)」を参照してください。
+これは OAuth 2.0 の拡張であるため、アプリケーションが *アクセス トークン* を安全に取得することも可能になります。 アクセス トークンを使用すると、[認可サーバー](protocols-overview.md)によってセキュリティ保護されたリソースにアクセスできます。 サーバー上でホストされ、ブラウザー経由でアクセスされる Web アプリケーションを構築する場合は、OpenID Connect をお勧めします。 トークンの詳細については、「[Overview of tokens in Azure Active Directory B2C (Azure Active Directory B2C でのトークンの概要)](tokens-overview.md)」を参照してください。
 
 Azure AD B2C は、単純な認証と権限付与以上のことができるように標準の OpenID Connect プロトコルを拡張したものです。 これには、OpenID Connect を使用してサインアップ、サインイン、プロファイル管理などのユーザー エクスペリエンスをご利用のアプリに追加できるようにする[ユーザー フロー パラメーター](user-flow-overview.md)が導入されています。
 
@@ -124,7 +124,7 @@ ID トークンの署名を検証した後、確認する必要のあるいく�
 
 - ユーザー/組織がアプリケーションにサインアップ済みであることを確認する。
 - 適切な承認/特権がユーザーにあることを確認する。
-- Azure Multi-Factor Authentication など特定の強度の認証が行われたことを確認する。
+- Azure AD Multi-Factor Authentication など特定の強度の認証が行われたことを確認する。
 
 ID トークンを検証した後、ユーザーとのセッションを開始できます。 ID トークン内の要求を使用して、アプリケーションでユーザーに関する情報を取得できます。 この情報の使用には、表示、記録、および承認が含まれます。
 
@@ -219,7 +219,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 | {policy} | はい | 元の更新トークンの取得に使用されたユーザー フロー。 この要求に別のユーザー フローを使用することはできません。 このパラメーターを POST 本文ではなく、クエリ文字列に追加します。 |
 | client_id | はい | [Azure portal](https://portal.azure.com/) によってアプリケーションに割り当てられたアプリケーション ID。 |
 | client_secret | はい (Web アプリの場合) | [Azure portal](https://portal.azure.com/) で生成されたアプリケーション シークレット。 クライアントが安全にクライアント シークレットを格納できる Web アプリのシナリオでは、このフローでクライアント シークレットが使用されます。 ネイティブ アプリ (パブリック クライアント) のシナリオでは、クライアント シークレットを安全に保存できないため、この呼び出しでは使用されません。 クライアント シークレットを使用する場合は、定期的に変更してください。 |
-| grant_type | はい | 付与の種類。承認コード フローのこのパートでは、更新トークンである必要があります。 |
+| grant_type | はい | 許可の種類。承認コード フローのこの部分の `refresh_token` を指定する必要があります。 |
 | refresh_token | はい | フローの第 2 のパートで取得された元の更新トークン。 更新トークンを受信するには、承認要求とトークン要求の両方でスコープ `offline_access` を使用する必要があります。 |
 | redirect_uri | いいえ | 承認コードを受信したアプリケーションの `redirect_uri` パラメーター。 |
 | scope | いいえ | スコープのスペース区切りリスト。 `openid` スコープは、ユーザーをサインインさせ、ID トークンの形式でユーザーに関するデータを取得するためのアクセス許可を示します。 これを使用すると、クライアントと同じアプリケーション ID で表される、アプリケーションの独自のバックエンド Web API にトークンを送信できます。 `offline_access` スコープは、リソースへのアクセス期間を延長するには、アプリケーションで更新トークンが必要であることを示します。 |
@@ -262,7 +262,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 ## <a name="send-a-sign-out-request"></a>サインアウト要求を送信する
 
-ユーザーをアプリケーションからサインアウトさせるときは、アプリケーションの Cookie を消去する、あるいはユーザーとのセッションを終了するだけでは十分ではありません。 サインアウトさせるには、ユーザーを Azure AD B2C にリダイレクトします。そうしない場合、ユーザーは資格情報を再入力しなくてもアプリケーションに対して再認証できることがあります。 詳しくは、「[Azure AD B2C のセッション](session-overview.md)」をご覧ください。
+ユーザーをアプリケーションからサインアウトさせるときは、アプリケーションの Cookie を消去する、あるいはユーザーとのセッションを終了するだけでは十分ではありません。 サインアウトさせるには、ユーザーを Azure AD B2C にリダイレクトします。そうしない場合、ユーザーは資格情報を再入力しなくてもアプリケーションに対して再認証できることがあります。 詳しくは、「[Azure AD B2C のセッション](session-behavior.md)」をご覧ください。
 
 ユーザーをサインアウトするには、前述した OpenID Connect メタデータ ドキュメントに示されている `end_session` エンドポイントにユーザーをリダイレクトします。
 
@@ -274,13 +274,17 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | --------- | -------- | ----------- |
 | {tenant} | はい | Azure AD B2C テナントの名前。 |
 | {policy} | はい | ご利用のアプリケーションからユーザーをサインアウトさせるために使用するユーザー フロー。 |
-| id_token_hint| いいえ | エンド ユーザーのクライアントとの現在の認証済みセッションに関するヒントとしてログアウトエンド ポイントに渡される発行済みの ID トークン。 `id_token_hint` によって、`post_logout_redirect_uri` が Azure AD B2C アプリケーション設定に登録済みの応答 URL であることが確認されます。 |
+| id_token_hint| いいえ | エンド ユーザーのクライアントとの現在の認証済みセッションに関するヒントとしてログアウトエンド ポイントに渡される発行済みの ID トークン。 `id_token_hint` によって、`post_logout_redirect_uri` が Azure AD B2C アプリケーション設定に登録済みの応答 URL であることが確認されます。 詳細については、「[ログアウトのリダイレクトをセキュリティで保護する](#secure-your-logout-redirect)」を参照してください。 |
 | client_id | いいえ* | [Azure portal](https://portal.azure.com/) によってアプリケーションに割り当てられたアプリケーション ID。<br><br>\**これは、`Application` の分離の SSO 構成を使用し、 _[ログアウト要求に ID トークンが必要]_ が `No` に設定されている場合に必要となります。* |
 | post_logout_redirect_uri | いいえ | サインアウトの正常終了後にユーザーをリダイレクトする URL。これが含まれていない場合、Azure AD B2C では、ユーザーに対して一般的なメッセージが表示されます。 `id_token_hint` を指定しない限り、この URL を Azure AD B2C アプリケーション設定に応答 URL として登録することはできません。 |
 | state | いいえ | 要求に `state` パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 アプリケーションでは、要求と応答の `state` 値が同一であることを検証する必要があります。 |
 
 ### <a name="secure-your-logout-redirect"></a>ログアウトのリダイレクトをセキュリティで保護する
 
-ログアウト後、ユーザーは、アプリケーションに対して指定されている応答 URL に関係なく、`post_logout_redirect_uri` パラメーターに指定された URI にリダイレクトされます。 ただし、有効な `id_token_hint` が渡された場合、Azure AD B2C では、リダイレクトの実行前に、`post_logout_redirect_uri` の値がいずれかのアプリケーションの構成済みのリダイレクト URL と一致するかどうかが検証されます。 一致する応答 URL がアプリケーションで構成されていない場合は、エラー メッセージが表示され、ユーザーはリダイレクトされません。
+ログアウト後、ユーザーは、アプリケーションに対して指定されている応答 URL に関係なく、`post_logout_redirect_uri` パラメーターに指定された URI にリダイレクトされます。 ただし、有効な `id_token_hint` が渡され、 **[ログアウト要求に ID トークンが必要]** が有効になっている場合、Azure AD B2C では、リダイレクトの実行前に、`post_logout_redirect_uri` の値がいずれかのアプリケーションの構成済みのリダイレクト URL と一致するかどうかが検証されます。 一致する応答 URL がアプリケーションで構成されていない場合は、エラー メッセージが表示され、ユーザーはリダイレクトされません。
 
+ログアウト要求に必要な ID トークンを設定するには、「[Azure Active Directory B2C でセッションの動作を構成する](session-behavior.md#secure-your-logout-redirect)」を参照してください。
 
+## <a name="next-steps"></a>次のステップ
+
+- [Azure AD B2C セッション](session-behavior.md)の詳細について学習します。

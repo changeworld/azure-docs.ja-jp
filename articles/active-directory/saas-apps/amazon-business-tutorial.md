@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 0db43f438eaff3e783b829eabe7152c5f13e943d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1424669af9fe28257e66c8c5438f6e1d171954e0
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548294"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672901"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>チュートリアル:Amazon ビジネスと Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88548294"
 * ユーザーが自分の Azure AD アカウントを使用して Amazon ビジネスに自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -74,12 +74,12 @@ Amazon ビジネスで Azure AD SSO を構成してテストするには、次�
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
 
-   ![基本的な SAML 構成を編集する](common/edit-urls.png)
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** セクションで、**IDP** Initiated モードで構成する場合は、次の手順を実行します。
 
     1. **[識別子 (エンティティ ID)]** ボックスに、次のいずれかのパターンを使用して URL を入力します。
-    
+
        | URL | リージョン |
        |-|-|
        | `https://www.amazon.com`| 北米 |
@@ -87,7 +87,7 @@ Amazon ビジネスで Azure AD SSO を構成してテストするには、次�
        | `https://www.amazon.de`| ヨーロッパ |
 
     1. **[応答 URL]** ボックスに、次のいずれかのパターンを使用して URL を入力します。
-    
+
        | URL | リージョン |
        |-|-|
        | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`| 北米 |
@@ -101,27 +101,27 @@ Amazon ビジネスで Azure AD SSO を構成してテストするには、次�
 
 1. 次のスクリーンショットには、既定の属性一覧が示されています。 **[ユーザー属性と要求]** セクションで、 **[編集]** アイコンをクリックして、属性を編集します。
 
-    ![属性](media/amazon-business-tutorial/map-attribute3.png)
+    ![スクリーンショットは [User Attributes & Claims]\(ユーザー属性とクレーム\) を示しています。[Givenname]\(名\) の user.givenname や [Emailaddress]\(メール アドレス\) の user.mail など、既定値が表示されています。](media/amazon-business-tutorial/map-attribute3.png)
 
-1. 属性を編集し、これらの属性の**名前空間**の値をメモ帳にコピーします。
+1. 属性を編集し、これらの属性の **名前空間** の値をメモ帳にコピーします。
 
-    ![属性](media/amazon-business-tutorial/map-attribute4.png)
+    ![このスクリーンショットは、[クレーム名] 列と [値] 列が表示された状態の [User Attributes & Claims]\(ユーザー属性と要求\) を示しています。](media/amazon-business-tutorial/map-attribute4.png)
 
 1. その他に、Amazon ビジネス アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[グループ要求]** ダイアログの **[ユーザー属性と要求]** セクションで、次の手順を実行します。
 
-    a. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある**ペン**をクリックします。
+    1. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある **ペン** をクリックします。
 
-    ![image](./media/amazon-business-tutorial/config04.png)
+        ![このスクリーンショットは、[クレームで返されるグループ] のアイコンが選択された状態の [User Attributes & Claims]\(ユーザー属性と要求\) を示しています。](./media/amazon-business-tutorial/config04.png)
 
-    ![image](./media/amazon-business-tutorial/config05.png)
+        ![このスクリーンショットは、この手順で説明されている値が表示された状態の [グループ クレーム] を示しています。](./media/amazon-business-tutorial/config05.png)
 
-    b. ラジオ ボタンのリストから **[すべてのグループ]** を選択します。
+    1. ラジオ ボタンのリストから **[すべてのグループ]** を選択します。
 
-    c. **[ソース属性]** として **[グループ ID]** を選択します。
+    1. **[ソース属性]** として **[グループ ID]** を選択します。
 
-    d. **[グループ要求の名前をカスタマイズする]** チェック ボックスをオンにし、ご自分の組織の要件に従ってグループ名を入力します。
+    1. **[グループ要求の名前をカスタマイズする]** チェック ボックスをオンにし、ご自分の組織の要件に従ってグループ名を入力します。
 
-    e. **[保存]** をクリックします。
+    1. **[保存]** をクリックします。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードしてコンピューターに保存します。
 
@@ -135,7 +135,7 @@ Amazon ビジネスで Azure AD SSO を構成してテストするには、次�
 
 1. 別の Web ブラウザー ウィンドウで、ご使用の Amazon ビジネス企業サイトに管理者としてサインインします。
 
-1. **ユーザー プロファイル**をクリックし、 **[Business Settings]\(ビジネス設定\)** を選択します。
+1. **ユーザー プロファイル** をクリックし、 **[Business Settings]\(ビジネス設定\)** を選択します。
 
     ![ユーザー プロファイル](media/amazon-business-tutorial/user-profile.png)
 
@@ -145,60 +145,60 @@ Amazon ビジネスで Azure AD SSO を構成してテストするには、次�
 
 1. **Set up SSO (SSO の設定)** ウィザードで、ご自分の組織の要件に従ってプロバイダーを選択し、 **[Next]\(次へ\)** をクリックします。
 
-    ![既定のグループ](media/amazon-business-tutorial/default-group1.png)
-    
+    ![このスクリーンショットは、[Microsoft Azure AD] と [次へ] が選択された状態の [Set up S S O]\(S S O の設定\) を示しています。](media/amazon-business-tutorial/default-group1.png)
+
     > [!NOTE]
     > Microsoft ADFS はオプションとして表示されていますが、Azure AD SSO では機能しません。
 
 1. **New user account defaults (新しいユーザー アカウントの既定値)** ウィザードで、 **[Default Group]\(既定のグループ\)** を選択し、ご自分の組織内のユーザー ロールに従って **[Default Buying Role]\(既定の購入ロール\)** を選択し、 **[Next]\(次へ\)** をクリックします。
 
-    ![既定のグループ](media/amazon-business-tutorial/dafault-group2.png)
+    ![このスクリーンショットは、[Microsoft S S O]、[Requisitioner]\(要求者\)、および [次へ] が選択された状態の [New user account defaults]\(新しいユーザー アカウントの既定値\) を示しています。](media/amazon-business-tutorial/dafault-group2.png)
 
-1. **Upload your metadata file (メタデータ ファイルのアップロード)** ウィザードで、 **[Browse]\(参照\)** をクリックして、Azure portal からダウンロードした**メタデータ XML** ファイルをアップロードします。 **[Upload]\(アップロード\)** をクリックします。
+1. **Upload your metadata file (メタデータ ファイルのアップロード)** ウィザードで、 **[Browse]\(参照\)** をクリックして、Azure portal からダウンロードした **メタデータ XML** ファイルをアップロードします。 **[Upload]\(アップロード\)** をクリックします。
 
-    ![接続データ](media/amazon-business-tutorial/connection-data1.png)
+    ![このスクリーンショットは、[Upload your metadata file]\(メタデータ ファイルのアップロード\) を示しています。ここで、xml ファイルを参照してアップロードできます。](media/amazon-business-tutorial/connection-data1.png)
 
 1. ダウンロードしたメタデータ ファイルをアップロードすると、 **[Connection data]\(接続データ\)** セクション内のフィールドが自動的に設定されます。 その後、 **[Next]\(次へ\)** をクリックします。
 
-    ![接続データ](media/amazon-business-tutorial/connection-data2.png)
+    ![このスクリーンショットは、[Connection data]\(接続データ\) を示しています。ここで、Azure A D 識別子、ログイン U R L、および SAML 署名証明書を指定できます。](media/amazon-business-tutorial/connection-data2.png)
 
 1. **Upload your Attribute statement (属性のアップロード)** ウィザードで、 **[Skip]\(スキップ\)** をクリックします。
 
-    ![属性](media/amazon-business-tutorial/map-attribute1.png)
+    ![このスクリーンショットは、[Upload your Attribute statement]\(属性ステートメントのアップロード\) を示しています。ここで、属性ステートメントを参照できますが、この場合は [スキップ] を選択します。](media/amazon-business-tutorial/map-attribute1.png)
 
 1. **Attribute mapping (属性マッピング)** ウィザードで **[+ Add a field]\(+ フィールドの追加\)** オプションをクリックして、要件フィールドを追加します。 Azure portal の **[ユーザー属性と要求]** セクションからコピーした、名前空間を含む属性値を **[SAML AttributeName]** フィールドに追加し、 **[Next]\(次へ\)** をクリックします。
 
-    ![属性](media/amazon-business-tutorial/map-attribute2.png)
+    ![このスクリーンショットは、[属性マッピング] を示しています。ここで、Amazon データの SAML 属性名を編集できます。](media/amazon-business-tutorial/map-attribute2.png)
 
 1. **Amazon connection data (Amazon 接続データ)** ウィザードで、 **[Next]\(次へ\)** をクリックします。
 
-    ![Connection](media/amazon-business-tutorial/amazon-connect.png)
+    ![このスクリーンショットは [Amazon connection data]\(Amazon 接続データ\) を示しています。[次へ] をクリックして続行できます。](media/amazon-business-tutorial/amazon-connect.png)
 
 1. 構成されている手順の **[Status]\(状態\)** を確認し、 **[Start testing]\(テストの開始\)** をクリックします。
 
-    ![Connection](media/amazon-business-tutorial/sso-connection1.png)
+    ![このスクリーンショットは、[Start testing]\(テストの開始\) オプションを備えた [S S O Connection details]\(S S O 接続の詳細\) を示しています。](media/amazon-business-tutorial/sso-connection1.png)
 
 1. **Test SSO Connection (SSO 接続のテスト)** ウィザードで、 **[Test]\(テスト\)** をクリックします。
 
-    ![Connection](media/amazon-business-tutorial/sso-connection2.png)
+    ![このスクリーンショットは、[テスト] ボタンを備えた [Test S S O Connection]\(S S O 接続のテスト\) を示しています。](media/amazon-business-tutorial/sso-connection2.png)
 
 1. **IDP initiated URL** ウィザードで、 **[Activate]\(アクティブ化\)** をクリックする前に、**idpid** に割り当てられている値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションにある **[応答 URL]** の **idpid** パラメーターに貼り付けます。
 
-    ![Connection](media/amazon-business-tutorial/sso-connection3.png)
+    ![このスクリーンショットは、[I D P initiated U R L] を示しています。ここで、テストに必要な U R L を取得し、[アクティブ化] を選択できます。](media/amazon-business-tutorial/sso-connection3.png)
 
 1. **Are you ready to switch to active SSO? (アクティブな SSO に切り替える準備ができましたか?)** ウィザードで、 **[I have fully tested SSO and am ready to go live]\(SSO は完全にテスト済みで、ライブにする準備ができている\)** チェック ボックスをオンにし、 **[Switch to active]\(アクティブに切り替える\)** をクリックします。
 
-    ![Connection](media/amazon-business-tutorial/sso-connection4.png)
+    ![このスクリーンショットは、[Are you ready to switch to active S S O]\(アクティブな S S O に切り替える準備ができましたか\) 確認を示しています。ここで、[Switch to active]\(アクティブに切り替える\) を選択できます。](media/amazon-business-tutorial/sso-connection4.png)
 
 1. 最後に、 **[SSO Connection details]\(SSO 接続の詳細\)** セクションで、 **[Status]\(状態\)** が **[Active]\(アクティブ\)** として表示されます。
 
-    ![Connection](media/amazon-business-tutorial/sso-connection5.png)
-    
+    ![このスクリーンショットは、状態が [アクティブ] と表示された [S S O Connection details]\(S S O 接続の詳細\) を示しています。](media/amazon-business-tutorial/sso-connection5.png)
+
     > [!NOTE]
     > **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行して、上のスクリーンショットのサインオン URL を、Azure portal の **[追加の URL を設定します]** セクションの **[サインオン URL]** テキスト ボックスに貼り付けます。 次の形式を使用します。
     >
     > `https://www.amazon.<TLD>/bb/feature/sso/action/start?domain_hint=<uniqueid>`
-    
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -218,15 +218,15 @@ Amazon ビジネスで Azure AD SSO を構成してテストするには、次�
 
 1. **[Azure Active Directory] > [すべてのグループ]** をクリックします。
 
-    ![Azure AD セキュリティ グループを作成する](./media/amazon-business-tutorial/all-groups-tab.png)
+    ![このスクリーンショットは、[Azure Active Directory] が選択され、[グループ] ペインで [すべてのグループ] が選択された状態の Azure portal メニューを示しています。](./media/amazon-business-tutorial/all-groups-tab.png)
 
 1. **[新しいグループ]** をクリックします。
 
-    ![Azure AD セキュリティ グループを作成する](./media/amazon-business-tutorial/new-group-tab.png)
+    ![このスクリーンショットは、[新しいグループ] ボタンを示しています。](./media/amazon-business-tutorial/new-group-tab.png)
 
 1. **[グループの種類]** 、 **[グループ名]** 、 **[グループの説明]** 、 **[メンバーシップの種類]** を入力します。 矢印をクリックしてメンバーを選択し、グループに追加するメンバーを検索またはクリックします。 **[選択]** をクリックして選択したメンバーを追加した後、 **[作成]** をクリックします。
 
-    ![Azure AD セキュリティ グループを作成する](./media/amazon-business-tutorial/group-information.png)
+    ![このスクリーンショットは、メンバーの選択や外部ユーザーの招待などのオプションを含む [グループ] ペインを示しています。](./media/amazon-business-tutorial/group-information.png)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -236,11 +236,11 @@ Amazon ビジネスで Azure AD SSO を構成してテストするには、次�
 1. アプリケーションの一覧で、 **[Amazon Business]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
+    ![このスクリーンショットは、[ユーザーの追加] ボタンを示しています。](common/add-assign-user.png)
 
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
@@ -249,7 +249,7 @@ Amazon ビジネスで Azure AD SSO を構成してテストするには、次�
     >[!NOTE]
     > Azure AD 内でユーザーを割り当てないと、次のエラーが表示されます。
 
-    ![[ユーザーの追加] リンク](media/amazon-business-tutorial/assign-user.png)
+    ![このスクリーンショットは、サインインできないことを示すエラー メッセージを示しています。](media/amazon-business-tutorial/assign-user.png)
 
 ### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>Azure portal で Azure AD セキュリティ グループを割り当てる
 
@@ -284,12 +284,12 @@ Amazon ビジネスで Azure AD SSO を構成してテストするには、次�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Amazon Business] タイルをクリックすると、SSO を設定した Amazon ビジネスに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Amazon Business] タイルをクリックすると、SSO を設定した Amazon ビジネスに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

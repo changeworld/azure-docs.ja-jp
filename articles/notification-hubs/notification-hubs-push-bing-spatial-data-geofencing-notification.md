@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5888eeea98a80eeacb97e625d199a3b1912d1943
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 51ad23e67a77c28d0ad8a147168a0094f5de1796
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015137"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91578004"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>チュートリアル:Notification Hubs と Bing Spatial Data を使用して場所に基づいたプッシュ通知を送信する
 
@@ -387,7 +387,7 @@ ms.locfileid: "89015137"
 
 10. 実際の座標 (現時点では境界内にない可能性があります) を渡しているわけではなく、事前に定義されたテスト値を使用しているため、更新時に次の通知が表示されます。
 
-    ![テスト メッセージが表示された Windows デスクトップのスクリーンショット。](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
+    ![TEST メッセージが表示された Windows デスクトップのスクリーンショット。](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
 
 ## <a name="next-steps"></a>次のステップ
 

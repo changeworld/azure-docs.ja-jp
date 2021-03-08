@@ -11,14 +11,17 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c77dff4a4f89a78dc0a0d723fbb45fe691246112
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 49ca12ed4f408e2a3fce1c8e59f541778f35311e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81681932"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281781"
 ---
 # <a name="what-is-opc-publisher"></a>OPC Publisher の概要
+
+> [!IMPORTANT]
+> この記事は更新を行いますが、最新の内容については、「[Azure Industrial IoT](https://azure.github.io/Industrial-IoT/)」 (Azure 産業用 IoT) を参照してください。
 
 OPC Publisher は、以下の方法を説明するリファレンス実装です。
 
@@ -44,6 +47,8 @@ OPC UA サーバーに対する明確な発行間隔ごとに、この発行間�
 
 このアプリケーションでは、NuGet パッケージとして OPC Foundation OPC UA リファレンス スタックを使用しています。 ライセンス条項については、[https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/) を参照してください。
 
-### <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-OPC Publisher の概要を学習しました。推奨される次の手順は [OPC Publisher を構成する](howto-opc-publisher-configure.md)方法を学習することです。
+OPC Publisher の概要を学習しました。次の手順として、以下に関する方法を学習することをお勧めします。
+
+[OPC Publisher の構成](howto-opc-publisher-configure.md)

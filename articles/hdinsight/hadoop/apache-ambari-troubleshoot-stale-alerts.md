@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight での Apache Ambari の古いアラート
 description: HDInsight での Apache Ambari の古いアラートについて、考えられる原因と解決策を説明し、分析します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e31e5d5a5b27f4dcb267905eae6329666fc3292c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77539112"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946718"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での Apache Ambari の古いアラート
 
@@ -26,7 +23,7 @@ Apache Ambari UI では、次のようなアラートが表示される場合が
 
 ## <a name="cause"></a>原因
 
-Ambari エージェントでは、多くのリソースの正常性が継続的に監視されます。 *アラート*は、特定のクラスターのプロパティが事前に定義されたしきい値内にあるかどうかを通知するように構成できます。 各リソース チェックが実行された後、アラートの条件が満たされている場合、Ambari エージェントから Ambari サーバーへ状態が報告され、アラートがトリガーされます。 アラート プロファイルの間隔に従ってアラートが確認されていない場合、サーバーでは *Ambari Server Stale Alerts* アラートがトリガーされます。
+Ambari エージェントでは、多くのリソースの正常性が継続的に監視されます。 *アラート* は、特定のクラスターのプロパティが事前に定義されたしきい値内にあるかどうかを通知するように構成できます。 各リソース チェックが実行された後、アラートの条件が満たされている場合、Ambari エージェントから Ambari サーバーへ状態が報告され、アラートがトリガーされます。 アラート プロファイルの間隔に従ってアラートが確認されていない場合、サーバーでは *Ambari Server Stale Alerts* アラートがトリガーされます。
 
 定義された間隔で正常性チェックが実行されない原因はいくつかあります。
 
@@ -36,7 +33,7 @@ Ambari エージェントでは、多くのリソースの正常性が継続的�
 
 * クラスター内の少数のホストが多数のコンポーネントをホストしているため、多くのアラートの実行を要求されています。 コンポーネントの数が多い場合、アラート ジョブがスケジュールされた間隔で実行されない可能性があります。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 Ambari の古いアラートに関する問題を解決するには、次の方法を試してください。
 
@@ -84,6 +81,6 @@ Ambari エージェントには、構成されたアラートがスケジュー�
 
 * Twitter で [@AzureSupport](https://twitter.com/azuresupport) と繋がります。 これは、カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウントです。 Azure コミュニティを適切なリソース (回答、サポート、エキスパート) と結び付けます。
 
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信します。 表示するには、ポータル メニューから [ヘルプ] ( **?** ) を選択するか、 **[Help + support]\(ヘルプとサポート\)** ウィンドウを開きます。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)」を参照してください。 
+* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信します。 表示するには、ポータル メニューから [ヘルプ] ( **?** ) を選択するか、 **[Help + support]\(ヘルプとサポート\)** ウィンドウを開きます。 詳細については、「[Azure サポート要求を作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)」を参照してください。 
 
   サブスクリプションの管理と課金のサポートは、Microsoft Azure サブスクリプションに含まれています。 テクニカル サポートは、[Azure サポート プラン](https://azure.microsoft.com/support/plans/)を通じて提供されます。

@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/08/2020
-ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.date: 10/30/2020
+ms.openlocfilehash: d1f8993b1adc297b1bfadba114df76a66e59afa2
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606294"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147184"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>マッピング データ フローの代理キー変換 
 
@@ -31,9 +31,9 @@ ms.locfileid: "81606294"
 
 ## <a name="increment-keys-from-existing-sources"></a>既存のソースからの増分キー
 
-ソース内に存在する値からシーケンスを開始するには、代理キー変換の直後に派生列変換を使用して、2 つの値をまとめて追加します。
+ソース内に存在する値からシーケンスを開始するには、キャッシュ シンクを使用してその値を保存し、派生列変換を使用して 2 つの値をまとめて追加することをお勧めします。 キャッシュされた参照を使用して出力を取得し、生成されたキーにそれを追加します。 詳細については、[キャッシュ シンク](data-flow-sink.md#cache-sink)および[キャッシュされた参照](concepts-data-flow-expression-builder.md#cached-lookup)に関するページを参照してください。
 
-![SK での Max の追加](media/data-flow/sk006.png "代理キー変換での Max の追加")
+![代理キー参照](media/data-flow/cached-lookup-example.png "代理キー参照")
 
 ### <a name="increment-from-existing-maximum-value"></a>既存の最大値からの増分
 
@@ -41,19 +41,18 @@ ms.locfileid: "81606294"
 
 #### <a name="database-sources"></a>データベース ソース
 
-SQL クエリ オプションを使用して、ソースから MAX () を選択します。 例: `Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
+SQL クエリ オプションを使用して、ソースから MAX () を選択します。 たとえば、`Select MAX(<surrogateKeyName>) as maxval from <sourceTable>` のようにします。
 
-![代理キー クエリ](media/data-flow/sk002.png "代理キー変換のクエリ")
+![代理キー クエリ](media/data-flow/surrogate-key-max-database.png "代理キー変換のクエリ")
 
 #### <a name="file-sources"></a>ファイル ソース
 
 前の最大値がファイル内にある場合は、集計変換内で `max()` 関数を使用して、前の最大値を取得します。
 
-![代理キー ファイル](media/data-flow/sk008.png "代理キー ファイル")
+![代理キー ファイル](media/data-flow/surrogate-key-max-file.png "代理キー ファイル")
 
-どちらの場合でも、以前の最大値を含むソースと受信する新しいデータを結合する必要があります。
+どちらの場合も、キャッシュ シンクに書き込み、値を参照する必要があります。 
 
-![代理キー結合](media/data-flow/sk004.png "代理キー結合")
 
 ## <a name="data-flow-script"></a>データ フローのスクリプト
 

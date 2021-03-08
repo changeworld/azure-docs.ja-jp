@@ -6,12 +6,13 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 408e0166e52af9efd3d4c64f1b29bddcfc1cca4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.subservice: workloads
+ms.openlocfilehash: 215a17ced6be4cc8792ac1a06115450bfbccac99
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61485445"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963268"
 ---
 # <a name="get-started-with-tmaxsoft-openframe-on-azure"></a>Azure 上の TmaxSoft OpenFrame の概要
 
@@ -30,12 +31,12 @@ ms.locfileid: "61485445"
 
 Azure 上の OpenFrame 環境には、次のコンポーネントが含まれます。
 
-- OFMiner を含む**移行ツール**。メインフレームのアセットを分析し、それらを Azure に移行するソリューションです。
+- OFMiner を含む **移行ツール**。メインフレームのアセットを分析し、それらを Azure に移行するソリューションです。
 - **コンパイラ**。OFCOBOL はメインフレームの COBOL プログラムを解釈するコンパイラであり、OFPLI はメインフレームの PL/I プログラムを解釈し、OFASM はメインフレームのアセンブラー プログラムを解釈するコンパイラです。
 - **フロントエンド** コンポーネント。Java Enterprise Edition 6.OFGW に認定されている Web アプリケーション サーバーである Java Enterprise User Solution (JEUS) と、3270 リスナーを提供する OpenFrame ゲートウェイ コンポーネントが含まれます。
-- **アプリケーション**環境。 OpenFrame Base は、システム全体を管理するミドルウェアです。 OpenFrame Server Type C (OSC) は、メインフレームのミドルウェアと IBM CICS を置き換えます。
+- **アプリケーション** 環境。 OpenFrame Base は、システム全体を管理するミドルウェアです。 OpenFrame Server Type C (OSC) は、メインフレームのミドルウェアと IBM CICS を置き換えます。
 - **リレーショナル データベース**。Tibero (図)、Oracle Database、Microsoft SQL Server、IBM Db2、MySQL。 OpenFrame アプリケーションは、Open Database Connectivity (ODBC) プロトコルを使ってデータベースと通信します。
-- TACF による**セキュリティ**。システムおよびリソースへのユーザー アクセスを制御するサービス モジュールです。 
+- TACF による **セキュリティ**。システムおよびリソースへのユーザー アクセスを制御するサービス モジュールです。 
 - **OFManager** は、Web 環境で OpenFrame の運用と管理の機能を提供するソリューションです。
 
 ![OpenFrame アーキテクチャ](media/openframe-02.png)

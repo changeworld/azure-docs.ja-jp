@@ -1,21 +1,21 @@
 ---
 title: よく寄せられる質問 - Apache Kafka 用 Azure Event Hubs
-description: この記事では、さまざまなプロトコル (AMQP、Apache Kafka、および HTTPS) を使用するコンシューマーとプロデューサーが、Azure Event Hubs の使用時にイベントを交換する方法を示しています。
+description: この記事では、他の記事で説明されていない Apache Kafka クライアント向けの Azure Event Hubs のサポートについてよく寄せられる質問に回答します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8bdd86d9f299a69d5f2d05bb8ec526ed94780608
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dc6a12b2098a1fdf33adda92b4347f91ab4e5489
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031685"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828102"
 ---
 # <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>よく寄せられる質問 - Apache Kafka 用 Event Hubs 
 この記事では、Apache Kafka 用 Event Hubs への移行についてよく寄せられる質問とその回答を示します。
 
-## <a name="do-you-run-apache-kafka"></a>Apache Kafka を実行しますか?
+## <a name="does-azure-event-hubs-run-on-apache-kafka"></a>Azure Event Hubs は Apache Kafka 上で実行されますか。
 
-いいえ。  Event Hubs のインフラストラクチャに対して Kafka API 操作を実行します。  Apache Kafka と Event Hubs AMQP の機能 (つまり、生成、受信、管理など) の間には密接な相関関係があるため、Event Hubs の既知の信頼性を Kafka PaaS 空間に導入することができます。
+いいえ。 Azure Event Hubs は、Microsoft で開発および管理され、どの Apache Kafka コードも使用されない複数のプロトコルをサポートするクラウドネイティブの多層ブローカーです。 サポートされているプロトコルの 1 つは、Kafka クライアントのコンシューマー API とプロデューサー API 用の Kafka RPC プロトコルです。 Event Hubs は、既存の Kafka アプリケーションの多くで動作します。 詳細については、[Apache Kafka 用の Event Hubs](event-hubs-for-kafka-ecosystem-overview.md) に関するページを参照してください。 Apache Kafka と Azure Event Hubs の概念は非常に似ているため (ただし、同一ではありません)、既存の Apache Kafka に投資している顧客に Azure Event Hubs の比類ない信頼性を提供できます。 
 
 ## <a name="event-hubs-consumer-group-vs-kafka-consumer-group"></a>イベント ハブ コンシューマー グループとKafka コンシューマー グループ
 Event Hubs 上のイベント ハブ コンシューマー グループと Kafka コンシューマー グループの違いは何ですか? Event Hubs 上の Kafka コンシューマー グループは、標準 Event Hubs コンシューマー グループと完全に区別されています。

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: b18717b78a271bd390bc221e9ed0723cb02079ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c3c3d38ac0d8334f70f681d8ef86c0d6f86ecfa
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484298"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750222"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の推奨事項とベスト プラクティス
 
@@ -27,8 +27,8 @@ ms.locfileid: "84484298"
 | ベスト プラクティス | 説明 |
 |--|--|
 | ほとんどのシナリオでユーザー フローを選択する | Azure AD B2C の Identity Experience Framework は、サービスの中核となる強みです。 ポリシーには、サインアップ、サインイン、プロファイル編集などの ID エクスペリエンスが完全に記述されています。 最も一般的な ID タスクを設定しやすくするために、Azure AD B2C ポータルには、ユーザー フローという事前定義済みで構成できるポリシーが用意されています。 ユーザー フローを使用すると、数回クリックするだけで、非常に優れたユーザー エクスペリエンスを数分で作成できます。 [ユーザー フローとカスタム ポリシーを使用するタイミングについて確認してください](custom-policy-overview.md#comparing-user-flows-and-custom-policies)。|
-| アプリの登録 | セキュリティで保護するすべてのアプリケーション (Web、ネイティブ) と API を Azure AD B2C に登録する必要があります。 アプリに iOS および Android の Web バージョンとネイティブ バージョンの両方が含まれている場合は、同じクライアント ID を使用して Azure AD B2C に 1 つのアプリケーションとして登録できます。 [OIDC、SAML、Web、ネイティブの各アプリを登録](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications?tabs=applications)する方法について確認してください。 [Azure AD B2C で使用できるアプリケーションの種類](https://docs.microsoft.com/azure/active-directory-b2c/application-types)の詳細について確認してください。 |
-| 月間アクティブ ユーザーの課金に移行する | Azure AD B2C は、月間アクティブ認証から月間アクティブ ユーザー (MAU) の課金に移行されました。 ほとんどの顧客は、これがコスト効率の高いモデルであることに気付くでしょう。 [月間アクティブ ユーザーの課金の詳細について確認してください](https://azure.microsoft.com/updates/mau-billing/)。 |
+| アプリの登録 | セキュリティで保護するすべてのアプリケーション (Web、ネイティブ) と API を Azure AD B2C に登録する必要があります。 アプリに iOS および Android の Web バージョンとネイティブ バージョンの両方が含まれている場合は、同じクライアント ID を使用して Azure AD B2C に 1 つのアプリケーションとして登録できます。 [OIDC、SAML、Web、ネイティブの各アプリを登録](./tutorial-register-applications.md?tabs=applications)する方法について確認してください。 [Azure AD B2C で使用できるアプリケーションの種類](./application-types.md)の詳細について確認してください。 |
+| 月間アクティブ ユーザーの課金に移行する | Azure AD B2C は、月間アクティブ認証から月間アクティブ ユーザー (MAU) の課金に移行されました。 ほとんどの顧客は、これがコスト効率の高いモデルであることに気付くでしょう。 [月間アクティブ ユーザーの課金の詳細について確認してください](https://azure.microsoft.com/updates/mau-billing/)。 [このリンクを保存する](b2clogin.md) |
 
 ## <a name="planning-and-design"></a>計画と設計
 
@@ -44,6 +44,7 @@ ms.locfileid: "84484298"
 | 使いやすさとセキュリティ | ソリューションでは、アプリケーションの使いやすさと組織におけるリスクの許容レベルとの間で適切なバランスを取る必要があります。 |
 | オンプレミスの依存関係をクラウドに移行する | ソリューションの回復性を確保できるようにするために、クラウドへの既存のアプリケーションの依存関係の移行を検討してください。 |
 | 既存のアプリを b2clogin.com に移行する | login.microsoftonline.com の廃止は、2020 年 12 月 4 日にすべての Azure AD B2C テナントに対して有効になります。 [詳細については、こちらを参照してください](b2clogin.md)。 |
+| Identity Protection と条件付きアクセスを使用する | これらの機能を使用すると、危険な認証やアクセス ポリシーをきわめて厳密に制御できます。 Azure AD B2C Premium P2 が必要です。 [詳細については、こちらを参照してください](conditional-access-identity-protection-overview.md)。 |
 
 ## <a name="implementation"></a>実装
 
@@ -52,9 +53,8 @@ ms.locfileid: "84484298"
 | ベスト プラクティス | 説明 |
 |--|--|
 | Visual Studio Code 用 Azure AD B2C 拡張機能を使用してカスタム ポリシーを編集する | Visual Studio Code と、このコミュニティによって構築された[拡張機能を Visual Studio Code Marketplace から](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)ダウンロードします。 Microsoft の公式製品ではありませんが、Visual Studio Code 用の Azure AD B2C 拡張機能には、カスタム ポリシーの操作をより簡単にするのに役立つ機能がいくつか含まれています。 |
-| Azure AD B2C のトラブルシューティングを行う方法について確認する | 開発時に[カスタム ポリシーのトラブルシューティング](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications)を行う方法について確認してください。 通常の認証フローとはどのようになるか確認し、異常やエラーを検出するためのツールを使用します。 たとえば、[Application Insights](troubleshoot-with-application-insights.md) を使用して、ユーザー体験の出力ログを確認します。 |
+| Azure AD B2C のトラブルシューティングを行う方法について確認する | 開発時に[カスタム ポリシーのトラブルシューティング](./troubleshoot-custom-policies.md?tabs=applications)を行う方法について確認してください。 通常の認証フローとはどのようになるか確認し、異常やエラーを検出するためのツールを使用します。 たとえば、[Application Insights](troubleshoot-with-application-insights.md) を使用して、ユーザー体験の出力ログを確認します。 |
 | 実績のあるカスタム ポリシー パターンからなる Microsoft のライブラリを活用する | 強化された Azure AD B2C カスタマー ID およびアクセス管理 (CIAM) ユーザー体験のいくつかの[サンプル](https://github.com/azure-ad-b2c/samples)を確認してください。 |
-
 
 ## <a name="testing"></a>テスト
 
@@ -64,7 +64,7 @@ ms.locfileid: "84484298"
 |--|--|
 | グローバル トラフィックを考慮する | 異なるグローバル アドレスからのトラフィック ソースを使用して、パフォーマンスとローカライズの要件をテストします。 すべての HTML、CSS、および依存関係がパフォーマンスのニーズを満たしていることを確認します。 |
 | 機能および UI のテスト | ユーザー フローをエンドツーエンドでテストします。 Selenium、VS Web Test などを使用して、数分ごとに合成テストを追加します。 |
-| 侵入テスト | ソリューションを公開する前に、侵入テストの演習を実行して、サードパーティの依存関係を含むすべてのコンポーネントが安全であることを確認します。 アクセス トークンを使用して API をセキュリティで保護していること、さらにアプリケーションのシナリオに適した認証プロトコルを使用していることを確認します。 [侵入テスト](https://docs.microsoft.com/azure/security/fundamentals/pen-testing)、および [Microsoft Cloud 統合侵入テストの活動規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)の詳細を確認してください。 |
+| 侵入テスト | ソリューションを公開する前に、侵入テストの演習を実行して、サードパーティの依存関係を含むすべてのコンポーネントが安全であることを確認します。 アクセス トークンを使用して API をセキュリティで保護していること、さらにアプリケーションのシナリオに適した認証プロトコルを使用していることを確認します。 [侵入テスト](../security/fundamentals/pen-testing.md)、および [Microsoft Cloud 統合侵入テストの活動規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)の詳細を確認してください。 |
 | A/B テスト | ご利用の母集団全体にロール アウトする前に、少量のランダムなユーザー セットを使用して新機能をフライト化します。 Azure AD B2C で JavaScript を有効にすると、Optimizely や Clarity などの A/B テスト ツールと統合できます。 |
 | ロード テスト | Azure AD B2C はスケーリングすることができます。しかし、ご利用のアプリケーションのスケーリングは、その依存関係のすべてをスケーリングできる場合にのみ可能です。 ご利用の API と CDN のロード テストを行います。 |
 | Throttling |  短時間に同じソースから送信される要求が多すぎる場合、Azure AD B2C によってトラフィックが調整されます。 ロード テスト中にいくつかのトラフィック ソースを使用し、ご利用のアプリケーション内で `AADB2C90229` エラー コードを適切に処理します。 |
@@ -78,14 +78,13 @@ ms.locfileid: "84484298"
 |--|--|
 | 複数の環境を作成する | 操作とデプロイのロールアウトをより簡単に行えるように、開発、テスト、実稼働前、運用向けに個別の環境を作成します。 それぞれのために Azure AD B2C テナントを作成します。 |
 | カスタム ポリシーにバージョン管理を使用する | Azure AD B2C カスタム ポリシーに対して、GitHub、Azure Repos、またはその他のクラウドベースのバージョン管理システムの使用を検討してください。 |
-| Microsoft Graph API を使用して B2C テナントの管理を自動化する | Microsoft Graph API:<br/>[Identity Experience Framework](https://docs.microsoft.com/graph/api/resources/trustframeworkpolicy?view=graph-rest-beta) (カスタム ポリシー) を管理する<br/>[[キー]](https://docs.microsoft.com/graph/api/resources/trustframeworkkeyset?view=graph-rest-beta)<br/>[ユーザー フロー](https://docs.microsoft.com/graph/api/resources/identityuserflow?view=graph-rest-beta) |
+| Microsoft Graph API を使用して B2C テナントの管理を自動化する | Microsoft Graph API:<br/>[Identity Experience Framework](/graph/api/resources/trustframeworkpolicy?preserve-view=true&view=graph-rest-beta) (カスタム ポリシー) を管理する<br/>[[キー]](/graph/api/resources/trustframeworkkeyset?preserve-view=true&view=graph-rest-beta)<br/>[ユーザー フロー](/graph/api/resources/identityuserflow?preserve-view=true&view=graph-rest-beta) |
 | Azure DevOps との統合 | [CI、CD パイプライン](deploy-custom-policies-devops.md) を使用すると、異なる環境間でのコードの移行が簡単になり、常に運用対応性を確保することができます。   |
 | Azure Monitor との統合 | [監査ログ イベント](view-audit-logs.md)は 7 日間のみ保持されます。 [Azure Monitor と統合する](azure-monitor.md)ことにより、そのログを、長期的な使用のために保持したり、サードパーティのセキュリティ情報およびイベント管理 (SIEM) ツールと統合してご利用の環境の分析情報を取得したりすることができます。 |
-| アクティブなアラートと監視のセットアップ | Application Insights を使用して Azure AD B2C での[ユーザーの動作を追跡](active-directory-b2c-custom-guide-eventlogger-appins.md)します。 |
-
+| アクティブなアラートと監視のセットアップ | Application Insights を使用して Azure AD B2C での[ユーザーの動作を追跡](./analytics-with-application-insights.md)します。 |
 
 ## <a name="support-and-status-updates"></a>サポートとステータスの更新
-
+## <a name="todays-support-and-status-updates"></a>現在のサポートとステータス更新
 サービスの最新の状態を把握し、サポート オプションを見つけてください。
 
 | ベスト プラクティス | 説明 |

@@ -4,12 +4,12 @@ description: この記事では、REST API を使用してコンテナーの構�
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 3ee2d57b5589daa756020ebb787a5400ed244506
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 19a335d17ee0aa5ff9f989556656f5cf20d2b1a9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890044"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567827"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>REST API を使用して Azure Recovery Services コンテナーの構成を更新する
 
@@ -30,13 +30,13 @@ ms.locfileid: "88890044"
 コンテナーの現在の論理的な削除状態を取得するには、次の *GET* 操作を使用します
 
 ```http
-GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
+GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 GET URI には、`{subscriptionId}`、`{vaultName}`、`{vaultresourceGroupName}` のパラメーターがあります。 この例では、`{vaultName}` は "testVault" で、`{vaultresourceGroupName}` は "testVaultRG" です。 すべての必須パラメーターは URI で指定されるため、別の要求本文は不要です。
 
 ```http
-GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
+GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 #### <a name="responses"></a>Responses
@@ -65,16 +65,16 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 ### <a name="update-soft-delete-state-using-rest-api"></a>REST API を使用した論理的な削除状態の更新
 
-REST API を使用して Recovery Services コンテナーの論理的な削除状態を更新するには、次の *PATCH* 操作を使用します
+REST API を使用して Recovery Services コンテナーの論理的な削除状態を更新するには、次の *PUT* 操作を使用します
 
 ```http
-PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
+PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
-PATCH URI には、`{subscriptionId}`、`{vaultName}`、`{vaultresourceGroupName}` のパラメーターがあります。 この例では、`{vaultName}` は "testVault" で、`{vaultresourceGroupName}` は "testVaultRG" です。 URI を上記の値に置き換えると、URI は次のようになります。
+PUT URI には、`{subscriptionId}`、`{vaultName}`、`{vaultresourceGroupName}` の各パラメーターがあります。 この例では、`{vaultName}` は "testVault" で、`{vaultresourceGroupName}` は "testVaultRG" です。 URI を上記の値に置き換えると、URI は次のようになります。
 
 ```http
-PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
+PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 #### <a name="create-the-request-body"></a>要求本文を作成する

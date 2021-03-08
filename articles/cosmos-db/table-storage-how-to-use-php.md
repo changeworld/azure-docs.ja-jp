@@ -1,6 +1,6 @@
 ---
 title: PHP から Azure Storage Table service API または Azure Cosmos DB Table API を使用する
-description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
+description: PHP から Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 author: sakash279
 ms.author: akshanka
 ms.service: cosmos-db
@@ -8,19 +8,20 @@ ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 07/23/2020
-ms.openlocfilehash: c690002141c6c275d90d5bae41318f9a5907fb85
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 9d059c899e4a64d4d2c1b880b2a1d0f89258f33b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236435"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079633"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>PHP から Azure Storage Table service API または Azure Cosmos DB Table API を使用する方法
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-この記事では、テーブルの作成、データの格納、データに対する CRUD 操作の実行を行う方法について説明します。 Azure Table service または Azure Cosmos DB Table API のいずれかを選択してください。 サンプルは PHP で記述されており、[Azure Storage Table PHP クライアント ライブラリ][download]を使います。 紹介するシナリオは、**テーブルの作成と削除**、**テーブルのエンティティの挿入、削除、および照会**などです。 Azure Table service の詳細については、「[次のステップ](#next-steps)」を参照してください。
+この記事では、テーブルの作成、データの格納、データに対する CRUD 操作の実行を行う方法について説明します。 Azure Table service または Azure Cosmos DB Table API のいずれかを選択してください。 サンプルは PHP で記述されており、[Azure Storage Table PHP クライアント ライブラリ][download]を使います。 紹介するシナリオは、**テーブルの作成と削除**、**テーブルのエンティティの挿入、削除、および照会** などです。 Azure Table service の詳細については、「[次のステップ](#next-steps)」を参照してください。
 
 ## <a name="create-an-azure-service-account"></a>Azure サービス アカウントを作成する
 
@@ -326,7 +327,7 @@ foreach($entities as $entity){
 
 ## <a name="retrieve-a-subset-of-entity-properties"></a>エンティティ プロパティのサブセットを取得する
 
-クエリを使用してエンティティのプロパティのサブセットを取得できます。 *プロジェクション*と呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。 取得するプロパティを指定するには、プロパティの名前を **Query->addSelectField** メソッドに渡します。 このメソッドを複数回呼び出して、ほかのプロパティを追加できます。 **TableRestProxy->queryEntities** の実行後、返されるエンティティには選択したプロパティのみ格納されています。 (テーブル エンティティのサブセットが返されるようにする場合は、前のクエリで示したようにフィルターを使用します)。
+クエリを使用してエンティティのプロパティのサブセットを取得できます。 *プロジェクション* と呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。 取得するプロパティを指定するには、プロパティの名前を **Query->addSelectField** メソッドに渡します。 このメソッドを複数回呼び出して、ほかのプロパティを追加できます。 **TableRestProxy->queryEntities** の実行後、返されるエンティティには選択したプロパティのみ格納されています。 (テーブル エンティティのサブセットが返されるようにする場合は、前のクエリで示したようにフィルターを使用します)。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -366,7 +367,7 @@ foreach($entities as $entity){
 
 ## <a name="update-an-entity"></a>エンティティを更新する
 
-既存のエンティティは、エンティティの **Entity->setProperty** および **Entity->addProperty** メソッドを使った後、**TableRestProxy->updateEntity** を呼び出すことで更新できます。 次の例では、エンティティを取得してから、1 つのプロパティの変更、別のプロパティの削除、新しいプロパティの追加を行っています。 プロパティの値を **null**に設定して、プロパティを削除できることに注意してください。
+既存のエンティティは、エンティティの **Entity->setProperty** および **Entity->addProperty** メソッドを使った後、**TableRestProxy->updateEntity** を呼び出すことで更新できます。 次の例では、エンティティを取得してから、1 つのプロパティの変更、別のプロパティの削除、新しいプロパティの追加を行っています。 プロパティの値を **null** に設定して、プロパティを削除できることに注意してください。
 
 ```php
 require_once 'vendor/autoload.php';

@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 82bd284ede23e8880f79c614f4a6e2f588a4293c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b2648382fb19fafcfc342379aa9da974f6f8d1ff
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74976997"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528421"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>クイック スタート:IoT Hub Device Provisioning Service 対応の C# デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする
+# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>クイックスタート - IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングします。
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
@@ -23,12 +23,12 @@ ms.locfileid: "74976997"
 
 このサンプル コードでは、デバイスの[ハードウェア セキュリティ モジュール (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) として Windows TPM シミュレーターを使用しています。 
 
-自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](concepts-auto-provisioning.md)」も確認してください。 また、先に進む前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。 
+自動プロビジョニングの処理に慣れていない場合は、[プロビジョニング](about-iot-dps.md#provisioning-process)の概要を確認してください。 また、先に進む前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。 
 
 Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポートされています。
 
-- [登録グループ](concepts-service.md#enrollment-group)：複数の関連するデバイスを登録するために使用します。
-- [個々の登録](concepts-service.md#individual-enrollment):単一デバイスを登録するために使用します。
+- [登録グループ](concepts-service.md#enrollment-group): 複数の関連するデバイスを登録するために使用します。
+- [個別登録](concepts-service.md#individual-enrollment): 1 台のデバイスを登録するために使用します。
 
 この記事では、個別登録の使用方法を示します。
 
@@ -49,7 +49,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 ## <a name="provision-the-simulated-device"></a>シミュレーションされたデバイスをプロビジョニングする
 
-1. Azure portal にサインインします。 左側のメニューの **[すべてのリソース]** を選択して、Device Provisioning Service を開きます。 **[概要]** ブレードから、 **_[ID スコープ]_** の値をメモします。
+1. Azure portal にサインインします。 左側のメニューの **[すべてのリソース]** を選択して、Device Provisioning Service を開きます。 **[概要]** ブレードから、**_[ID スコープ]_** の値をメモします。
 
     ![ポータルのブレードからプロビジョニング サービスのスコープ ID をコピーします](./media/quick-create-simulated-device-tpm-csharp/copy-scope.png) 
 
@@ -67,13 +67,13 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
     このコマンドにより、別のコマンド プロンプトで TPM チップのシミュレーターが起動します。 Windows の場合、Simulator.exe がパブリック ネットワーク経由で通信するのを許可するかどうかをお客様に確認する Windows セキュリティ アラートが発生する場合があります。 このサンプルでは、要求を取り消してもかまいません。
 
-1. 元のコマンド ウィンドウには、デバイスの登録に必要な **_保証キー_** 、 **_登録 ID_** 、提案される **_デバイス ID_** が表示されます。 これらの値を書き留めておきます。 これらの値を使用して、Device Provisioning Service インスタンスで個々の登録を作成します。 
+1. 元のコマンド ウィンドウには、デバイスの登録に必要な**_保証キー_**、**_登録 ID_**、提案される**_デバイス ID_** が表示されます。 これらの値を書き留めておきます。 これらの値を使用して、Device Provisioning Service インスタンスで個々の登録を作成します。 
    > [!NOTE]
    > コマンド出力が表示されるウィンドウと、TPM シミュレーターの出力が表示されるウィンドウを混同しないでください。 必要に応じて、元のコマンド ウィンドウを選択してウィンドウを前面に表示します。
 
     ![コマンド ウィンドウの出力](./media/quick-create-simulated-device-tpm-csharp/output1.png) 
 
-1. Azure portal の Device Provisioning Service のメニューで、 **[登録を管理します]** を選択します。 **[個々の登録]** タブを選択したうえで、上部にある **[個別登録の追加]** を選択します。 
+1. Azure portal の Device Provisioning Service のメニューで、**[登録を管理します]** を選択します。 **[個々の登録]** タブを選択したうえで、上部にある **[個別登録の追加]** を選択します。 
 
 1. **[登録の追加]** パネルで、次の情報を入力します。
    - ID 構成証明の "*メカニズム*" として **[TPM]** を選択します。
@@ -82,13 +82,13 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
    - 必要に応じて、次の情報を入力することができます。
        - 一意の*デバイス ID* を入力します (推奨されるものを使用するか、独自のものを指定できます)。 デバイスに名前を付ける際に機密データを含めないようにしてください。 指定しない場合には、デバイスを識別するために登録 ID が代わりに使用されます。
        - **[Initial device twin state]\(初期のデバイス ツインの状態\)** をデバイスの目的の初期構成で更新します。
-   - 作業が完了したら、 **[保存]** を押します。 
+   - 作業が完了したら、**[保存]** を押します。 
 
      ![ポータルのブレードにデバイス登録情報を入力します。](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  
 
-   登録に成功すると、 *[Individual Enrollments]\(個々の登録\)* タブの一覧に、対象デバイスの "*登録 ID*" が表示されます。 
+   登録に成功すると、*[Individual Enrollments]\(個々の登録\)* タブの一覧に、対象デバイスの "*登録 ID*" が表示されます。 
 
-1. コマンド ウィンドウで *Enter* キーを押します。コマンド ウィンドウには、シミュレートされたデバイスの登録に必要な " **_保証キー_** "、" **_登録 ID_** "、提案される " **_デバイス ID_** " が表示されます。 デバイスが起動して Device Provisioning Service に接続し、IoT ハブの情報を取得する動作がシミュレートされるので、そのメッセージに注目してください。 
+1. コマンド ウィンドウで *Enter* キーを押します。コマンド ウィンドウには、シミュレートされたデバイスの登録に必要な "**_保証キー_**"、"**_登録 ID_**"、提案される "**_デバイス ID_**" が表示されます。 デバイスが起動して Device Provisioning Service に接続し、IoT ハブの情報を取得する動作がシミュレートされるので、そのメッセージに注目してください。 
 
 1. デバイスがプロビジョニングされたことを確認します。 プロビジョニング サービスにリンクされた IoT ハブに対してシミュレートされたデバイスが正常にプロビジョニングされると、ハブの **[IoT デバイス]** ブレードにデバイス ID が表示されます。 
 

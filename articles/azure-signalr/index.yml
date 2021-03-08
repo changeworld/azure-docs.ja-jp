@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure SignalR Service のドキュメント
-summary: Azure SignalR サービスは、リアルタイムの機能で開発者が Web アプリケーションを構築しやすくする Azure 管理のサービスです。
+summary: Azure SignalR Service は、開発者がリアルタイムの機能を使って Web アプリケーションを簡単に作成できるようにするための Azure マネージド サービスです。
 metadata:
   title: Azure SignalR Service のドキュメント
   description: サーバーレスまたはサーバー モードで、リアルタイム Web アプリを簡単に構築してスケーリングできます。 さまざまな言語やフレームワークをサポートする WebSocket に基づいています。
@@ -9,12 +9,12 @@ metadata:
   author: v-chmccl
   ms.author: wesmc
   ms.date: 03/11/2020
-  ms.openlocfilehash: db405e7405fc96779aebc9074fa19302f3b4ba1b
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 377d0c8daa864b6ee936fbb487ef8a7235ee638e
+  ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "79137939"
+  ms.lasthandoff: 12/28/2020
+  ms.locfileid: "97796739"
 landingContent:
 - title: Azure SignalR サービスについて
   linkLists:
@@ -22,7 +22,7 @@ landingContent:
     links:
     - text: Azure SignalR サービスとは
       url: signalr-overview.md
-- title: はじめに
+- title: 作業開始
   linkLists:
   - linkListType: quickstart
     links:
@@ -38,6 +38,8 @@ landingContent:
       url: signalr-quickstart-azure-functions-java.md
     - text: Azure Functions - Python
       url: signalr-quickstart-azure-functions-python.md
+    - text: Azure SignalR Service のデプロイ - Resource Manager テンプレート
+      url: signalr-quickstart-azure-signalr-service-arm-template.md
     - text: REST API
       url: signalr-quickstart-rest-api.md
 - title: Azure SignalR Service のアプリをビルドする

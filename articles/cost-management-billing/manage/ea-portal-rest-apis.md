@@ -3,17 +3,17 @@ title: Azure Enterprise REST API
 description: この記事では、Azure エンタープライズ登録で使用する REST API について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/20/2020
+ms.date: 01/21/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: d9ea567f3285ad773007a69a651e406eb2c94821
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 1fdf64053a55eb33d80ed461c231e8c6dd84d63b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687435"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677733"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise REST API
 
@@ -25,15 +25,15 @@ Microsoft Enterprise Azure のお客様は、REST API を使用して使用状�
 
 ### <a name="available-apis"></a>利用可能な API
 
-**Balance and Summary** - [Balance and Summary API](../../billing/billing-enterprise-api-balance-summary.md) では、残高、新規購入、Azure Marketplace サービス料金、精算、および超過料金に関する情報の月次概要が提供されます。 詳細については、「[Reporting APIs for Enterprise customers - Balance and Summary (Enterprise のお客様向けの Reporting API - Balance and Summary)](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary)」を参照してください。
+**Balance and Summary** - [Balance and Summary API](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) では、残高、新規購入、Azure Marketplace サービス料金、精算、および超過料金に関する情報の月次概要が提供されます。 詳細については、「[Reporting APIs for Enterprise customers - Balance and Summary (Enterprise のお客様向けの Reporting API - Balance and Summary)](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary)」を参照してください。
 
-**Usage Details** - [Usage Detail API](../../billing/billing-enterprise-api-usage-detail.md) では、登録別の毎日の消費量の内訳と見積料金が提供されます。 この結果には、インスタンス、測定、および部署に関する情報も含まれています。 この API には、請求期間、または指定した開始日と終了日でクエリを実行できます。 詳細については、「[Reporting APIs for Enterprise customers - Usage Details (Enterprise のお客様向けの Reporting API - Usage Details)](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)」を参照してください。
+**Usage Details** - [Usage Detail API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) では、登録別の毎日の消費量の内訳と見積料金が提供されます。 この結果には、インスタンス、測定、および部署に関する情報も含まれています。 この API には、請求期間、または指定した開始日と終了日でクエリを実行できます。 詳細については、「[Reporting APIs for Enterprise customers - Usage Details (Enterprise のお客様向けの Reporting API - Usage Details)](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)」を参照してください。
 
-**Marketplace Store Charge** - [Marketplace Store Charge API](../../billing/billing-enterprise-api-marketplace-storecharge.md) では、指定された請求期間または開始日から終了日までの使用量に基づく Marketplace 料金の日別内訳が返されます。 詳細については、「[Reporting APIs for Enterprise customers - Marketplace Store Charge (Enterprise のお客様向けの Reporting API - Marketplace Store Charge)](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)」を参照してください。
+**Marketplace Store Charge** - [Marketplace Store Charge API](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) では、指定された請求期間または開始日から終了日までの使用量に基づく Marketplace 料金の日別内訳が返されます。 詳細については、「[Reporting APIs for Enterprise customers - Marketplace Store Charge (Enterprise のお客様向けの Reporting API - Marketplace Store Charge)](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)」を参照してください。
 
 **Price sheet** - [Price Sheet API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) では、登録と請求期間に対する各測定に適用される課金率が提供されます。 詳細については、「[Reporting APIs for Enterprise customers - Price Sheet (Enterprise のお客様向けの Reporting API - Price Sheet)](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet)」を参照してください。
 
-**Billing Periods** - [Billing Periods API](../../billing/billing-enterprise-api-billing-periods.md) では、登録の消費量データが記載された請求期間の一覧が逆時系列順に返されます。 各期間には、BalanceSummary、UsageDetails、Marktplace Charges および PriceSheet という 4 セットのデータの API ルートを示すプロパティが含まれています。 詳細については、「[Reporting APIs for Enterprise customers - Billing Periods (Enterprise のお客様向けの Reporting API - Billing Periods)](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)」を参照してください。
+**Billing Periods** - [Billing Periods API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) では、登録の消費量データが記載された請求期間の一覧が逆時系列順に返されます。 各期間には、BalanceSummary、UsageDetails、Marktplace Charges および PriceSheet という 4 セットのデータの API ルートを示すプロパティが含まれています。 詳細については、「[Reporting APIs for Enterprise customers - Billing Periods (Enterprise のお客様向けの Reporting API - Billing Periods)](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)」を参照してください。
 
 ### <a name="enable-api-data-access"></a>API データ アクセスを有効にする
 
@@ -93,14 +93,6 @@ API を使用しているときに、応答の状態コードが表示されま�
 
 使用状況データ ファイルと課金データ ファイルは、現在の請求月に対して 24 時間ごとに更新されます。 ただし、最大で 3 日間のデータ待機時間が発生する可能性があります。 たとえば、月曜日に使用量が発生した場合、データ ファイルには木曜日までデータが表示されないことがあります。
 
-### <a name="test-enrollment-for-development"></a>開発用のテスト登録
-
-Azure エンタープライズ登録のないパートナーまたは開発者が API にアクセスする場合は、テスト登録を使用できます。 登録名は _EnrollmentNumber 100_ です。2018 年 6 月までの使用情報を検索してテストできます。 次に、次のキーを使用して API を呼び出し、サンプル データを確認できます。
-
-```
-eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5byJ9.eyJFbnJvbGxtZW50TnVtYmVyIjoiMTAwIiwiSWQiOiI1ZTc2ZmNiMy0xN2I4LTQ5ZDItYjdkOC0zMDU0YjUwOWY0MWYiLCJSZXBvcnRWaWV3IjoiU3lzdGVtIiwiUGFydG5lcklkIjoiIiwiRGVwYXJ0bWVudElkIjoiIiwiQWNjb3VudElkIjoiIiwiaXNzIjoiZWEubWljcm9zb2Z0YXp1cmUuY29tIiwiYXVkIjoiY2xpZW50LmVhLm1pY3Jvc29mdGF6dXJlLmNvbSIsImV4cCI6MTU4NjM5MDA2OSwibmJmIjoxNTcwNTc4ODY5fQ.lENR5pCBph6iZCVexUlN1b-j7StaILCyBewVHoILD-_fn8S2o2bHY1qUseGOkBwNlaFQfk2OZIo-jQYvnf3eP3UNrNVTCINT0APbc1RqgwSjZSxugVVHH9jnSzEjONkJaSKmi4tlidk6zkF1-uY-TPJkKxYN_9ar7BgLshF9JGXk7t8OZhxSCxDZc-smntu6ORFDl4gRZZVBKXhqOGjOAdYX5tPiGDF2Bxb68RSzh9Xyr5PXxKLx5yivZzUdo0-GFHo13V9w6a5VQM4R1w4_ro8jF8WAo3mpGZ_ovx_U5IY6zMNmi_AoA1mUyvTGotgcu94RragutoJRxAGHbNJZ0Q
-```
-
 ### <a name="azure-service-catalog"></a>Azure サービス カタログ
 
 すべての Azure サービスは、Azure Storage Blob の CSV 形式のカタログに記載されています。 このカタログは、お使いのシステムのすべての Azure サービスのキュレーション カタログを作成する必要がある場合に便利です。 現在のカタログは、[https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv](https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv) にあります。
@@ -113,7 +105,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5
 
 JSON 形式は CSV レポートから生成されます。 そのため、形式は概要の CSV 形式と同じになります。 列名が使用されるため、JSON 概要データを使用するときはデータ テーブルに逆シリアル化する必要があります。
 
-| CSV の列名 | JSON の列名 | JSON の新しい列 | 解説 |
+| CSV の列名 | JSON の列名 | JSON の新しい列 | コメント |
 | --- | --- | --- | --- |
 | AccountOwnerId | AccountOwnerLiveId | AccountOwnerLiveId |   |
 | アカウント名 | AccountName | AccountName |   |
@@ -122,20 +114,20 @@ JSON 形式は CSV レポートから生成されます。 そのため、形式
 | SubscriptionGuid | MOCPSubscriptionGuid | SubscriptionGuid |   |
 | サブスクリプション名 | SubscriptionName | SubscriptionName |   |
 | Date | Date | Date | サービス カタログ レポートが実行された日付を示します。 形式は、タイム スタンプのない日付文字列です。 |
-| Month | Month | Month |   |
+| 月 | 月 | Month |   |
 | 日 | 日 | 日 |   |
 | 年 | 年 | 年 |   |
 | Product | BillableItemName | Product |   |
-| 測定 ID | ResourceGUID | MeterId |   |
+| Meter ID | ResourceGUID | MeterId |   |
 | 測定カテゴリ | サービス | MeterCategory | サービスを検索する際に役立ちます。 複数の ServiceType を持つサービスに関連します。 例: Virtual Machines。 |
-| 測定サブカテゴリ | ServiceType | MeterSubCategory | サービスの 2 番目の詳細レベルを提供します。 例: A1 VM (Windows 以外)。  |
-| 測定リージョン | ServiceRegion | MeterRegion | サービスに必要な 3 番目の詳細レベル。 ResourceGUID のリージョン コンテキストを検索する際に役立ちます。 |
-| 測定名 | ServiceResource | MeterName | サービスの名前。 |
-| Consumed | ResourceQtyConsumed | ConsumedQuantity |   |
+| Meter Sub-Category | ServiceType | MeterSubCategory | サービスの 2 番目の詳細レベルを提供します。 例: A1 VM (Windows 以外)。  |
+| Meter Region | ServiceRegion | MeterRegion | サービスに必要な 3 番目の詳細レベル。 ResourceGUID のリージョン コンテキストを検索する際に役立ちます。 |
+| Meter Name | ServiceResource | MeterName | サービスの名前。 |
+| Consumed Quantity | ResourceQtyConsumed | ConsumedQuantity |   |
 | ResourceRate | ResourceRate | ResourceRate |   |
 | ExtendedCost | ExtendedCost | ExtendedCost |   |
-| リソースの場所 | ServiceSubRegion | ResourceLocation |   |
-| 使用サービス | ServiceInfo | ConsumedService |   |
+| Resource Location | ServiceSubRegion | ResourceLocation |   |
+| Consumed Service | ServiceInfo | ConsumedService |   |
 | インスタンス ID | コンポーネント | InstanceId |   |
 | ServiceInfo1 | ServiceInfo1 | ServiceInfo1 |   |
 | ServiceInfo2 | ServiceInfo2 | ServiceInfo2 |   |
@@ -143,7 +135,7 @@ JSON 形式は CSV レポートから生成されます。 そのため、形式
 | Tags | Tags | Tags |   |
 | Store Service Identifier   | OrderNumber | StoreServiceIdentifier   |   |
 | Department Name | DepartmentName | DepartmentName |   |
-| コスト センター | CostCenter | CostCenter |   |
+| Cost Center | CostCenter | CostCenter |   |
 | 計算単位 | UnitOfMeasure | UnitOfMeasure | サンプル値: 時間、GB、イベント、プッシュ、ユニット、ユニット時間、MB、日割りユニット |
 | ResourceGroup | ResourceGroup | ResourceGroup |   |
 
@@ -157,14 +149,14 @@ JSON 形式は CSV レポートから生成されます。 そのため、形式
 | SubscriptionGuid | SubscriptionGuid | SubscriptionGuid |
 | サブスクリプション名 | SubscriptionName |  SubscriptionName |
 | Date | BillingCycle |  日付 (日付文字列のみ。 タイム スタンプなし)
-| Month | Month |  Month |
+| 月 | 月 |  Month |
 | 日 | 日 |  日 |
 | 年 | 年 |  年 |
-| 測定 ID | MeterResourceId |  MeterId |
+| Meter ID | MeterResourceId |  MeterId |
 | 発行元の名前 | PublisherFriendlyName |  発行元 |
 | プラン名 | OfferFriendlyName |  OfferName |
 | Plan Name | PlanFriendlyName |  PlanName |
-| Consumed | BilledQty |  ConsumedQuantity |
+| Consumed Quantity | BilledQty |  ConsumedQuantity |
 | ResourceRate | ResourceRate | ResourceRate |
 | ExtendedCost | ExtendedCost | ExtendedCost |
 | 計算単位 | UnitOfMeasure | UnitOfMeasure |
@@ -173,12 +165,12 @@ JSON 形式は CSV レポートから生成されます。 そのため、形式
 | Tags | Tags | Tags |
 | Order Number | OrderNumber | OrderNumber |
 | Department Name | DepartmentNames | DepartmentName |
-| コスト センター | CostCenters |  CostCenter |
+| Cost Center | CostCenters |  CostCenter |
 | リソース グループ | ResourceGroup |  ResourceGroup |
 
 #### <a name="price-sheet"></a>Price Sheet
 
-| CSV の列名 | JSON の列名 | 解説 |
+| CSV の列名 | JSON の列名 | コメント |
 | --- | --- | --- |
 | サービス | サービス |  価格に変更はありません |
 | 計算単位 | UnitOfMeasure |   |

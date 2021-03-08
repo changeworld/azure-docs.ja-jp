@@ -1,5 +1,5 @@
 ---
-title: Azure 子 DNS ゾーンの作成
+title: チュートリアル:Azure 子 DNS ゾーンの作成
 titleSuffix: Azure DNS
 description: Azure portal で子 DNS ゾーンを作成する方法に関するチュートリアル。
 author: jonbeck
@@ -10,12 +10,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
-ms.openlocfilehash: 3f35d39634470ccacffa4d35c272a82725e9001c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 1e2eddd821bb7a9d2050913efef3d73b406e32f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89081015"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733212"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>チュートリアル:新しい子 DNS ゾーンの作成
 
@@ -34,7 +34,7 @@ ms.locfileid: "89081015"
 * アクティブなサブスクリプションが含まれる Azure アカウント。  アカウントを持っていない場合は、[無料でアカウントを作成する](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)ことができます。
 * 既存の親 Azure DNS ゾーン。  
 
-このチュートリアルでは、親ゾーンとして contoso.com を使用し、子ドメイン名として subdomain.contoso.com を使用します。  *contoso.com* を実際の親ドメイン名に、*subdomain* を実際の子ドメインに置き換えてください。  親 DNS ゾーンを作成していない場合は、[Azure portal を使用して DNS ゾーンを作成する](https://docs.microsoft.com/azure/dns/dns-getstarted-portal#create-a-dns-zone)ための手順を参照してください。 
+このチュートリアルでは、親ゾーンとして contoso.com を使用し、子ドメイン名として subdomain.contoso.com を使用します。  *contoso.com* を実際の親ドメイン名に、*subdomain* を実際の子ドメインに置き換えてください。  親 DNS ゾーンを作成していない場合は、[Azure portal を使用して DNS ゾーンを作成する](./dns-getstarted-portal.md#create-a-dns-zone)ための手順を参照してください。 
 
 
 ## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
@@ -81,7 +81,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1.  **タグ**、**次へ:確認と作成** をクリックします。
 1.  **[確認および作成]** タブで概要を確認し、検証エラーを修正してから、 **[作成]** を選択します。
 
-    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="選択された子ゾーンのスクリーンショット" border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="選択された子ゾーンのスクリーンショット" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+
 ## <a name="verify-child-dns-zone"></a>子 DNS ゾーンを検証する
 これで、新しい子 DNS ゾーン *subdomain.contoso.com* が作成されました。 委任が正しく行われたことを確認するには、以下で説明するように、子ゾーンのネーム サーバー (NS) レコードが親ゾーンにあることを確認します。  
 

@@ -2,13 +2,13 @@
 title: Azure Event Grid イベントに対するイベント ハンドラーとしての Service Bus のキューとトピック
 description: Azure Event Grid のイベントに対するイベント ハンドラーとして Service Bus のキューとトピックを使用する方法を説明します。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: c573f7ee088fe1d88f832623891377d4fd50bd4b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/03/2020
+ms.openlocfilehash: 12b72420e3475b46a4cd61ce5032b478af740dde
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105695"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399861"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Azure Event Grid イベントに対するイベント ハンドラーとしての Service Bus のキューとトピック
 イベント ハンドラーは、イベントの送信先となる場所です。 ハンドラーは、さらにいくつかのアクションを行ってイベントを処理します。 一部の Azure サービスは、イベントを処理するように自動的に構成されます。**Azure Service Bus** はその 1 つです。 
@@ -40,7 +40,7 @@ Azure portal で、イベント サブスクリプションを作成するとき
 
 ### <a name="using-cli-to-add-a-service-bus-topic-handler"></a>CLI を使って Service Bus トピック ハンドラーを追加する
 
-Azure CLI の場合、次の例でイベント グリッド トピックを Service Bus キューにサブスクライブして接続します。
+Azure CLI の場合、次の例では、イベント グリッド トピックをサブスクライブし、Service Bus トピックに接続します。
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
@@ -50,21 +50,11 @@ az eventgrid event-subscription create \
     --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/topics/topic1
 ```
 
-## <a name="message-properties"></a>メッセージのプロパティ
-Event Grid からのイベントのイベント ハンドラーとして**Service Bus のトピックまたはキュー**を使用する場合は、次のメッセージ ヘッダーを設定します。 
+[!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
 
-| プロパティ名 | 説明 |
-| ------------- | ----------- | 
-| aeg-subscription-name | イベント サブスクリプションの名前。 |
-| aeg-delivery-count | <p>イベントに対して行われた試行の回数。</p> <p>例:"1"</p> |
-| aeg-event-type | <p>イベントの種類。</p><p> 例:"Microsoft.Storage.blobCreated"</p> | 
-| aeg-metadata-version | <p>イベントのメタデータ バージョン。</p> <p>例:"1"。</p><p> **Event Grid のイベント スキーマ**の場合、このプロパティはメタデータのバージョンを表し、**クラウド イベント スキーマ**の場合は**仕様のバージョン**を表します。 </p>|
-| aeg-data-version | <p>イベントのデータ バージョン。</p><p>例:"1"。</p><p>**Event Grid のイベント スキーマ**の場合、このプロパティはデータのバージョンを表し、**クラウド イベント スキーマ**の場合は適用されません。</p> |
+ブローカー メッセージとして Service Bus のキューまたはトピックにイベントを送信する場合、ブローカー メッセージの `messageid` は内部システム ID です。
 
-## <a name="message-headers"></a>メッセージ ヘッダー
-ブローカー メッセージとして Service Bus のキューまたはトピックにイベントを送信する場合、ブローカー メッセージの `messageid` は**イベント ID** です。
-
-イベント ID は、イベントの再配信間で保持されるので、Service Bus のエンティティで**重複検出**をオンにすることで、配信の重複を回避できます。 Service Bus エンティティでの重複検出の期間を、イベントの有効期限 (TTL) または最大再試行期間のいずれか長い方に設定することをお勧めします。
+メッセージの内部システム ID は、イベントの再配信間で保持されるので、Service Bus のエンティティで **重複検出** をオンにすることで、配信の重複を回避できます。 Service Bus エンティティでの重複検出の期間を、イベントの有効期限 (TTL) または最大再試行期間のいずれか長い方に設定することをお勧めします。
 
 ## <a name="rest-examples-for-put"></a>REST の例 (PUT 用)
 

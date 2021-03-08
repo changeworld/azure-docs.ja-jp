@@ -1,44 +1,45 @@
 ---
-title: チュートリアル - Node.js 向け Azure Batch クライアント ライブラリを使用する
+title: Node.js 向け Azure Batch クライアント ライブラリを使用する
 description: Azure Batch の基本的な概念について説明し、Node.js でシンプルなソリューションを作成します。
-ms.topic: tutorial
-ms.date: 05/22/2017
-ms.openlocfilehash: 4cecd25346d868dfb27deb9f768342ab2e72ade9
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.topic: how-to
+ms.date: 10/08/2020
+ms.openlocfilehash: 36a127a20014e87554f0d3e3927b05679b6f72f1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780173"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737288"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Node.js 向け Batch SDK の概要
 
-この記事では、[Azure Batch Node.js SDK](/javascript/api/overview/azure/batch) を使って Node.js で Batch クライアントを作成するうえで基本となる事項を説明します。 説明にあたっては、段階的なアプローチを採用しています。具体的には、バッチ アプリケーションを使用するシナリオを紹介したうえで、Node.js クライアントを使ってアプリケーションをセットアップしていきます。  
+この記事では、[Azure Batch Node.js SDK](/javascript/api/overview/azure/batch) を使って Node.js で Batch クライアントを作成するうえで基本となる事項を説明します。 説明にあたっては、段階的なアプローチを採用しています。具体的には、バッチ アプリケーションを使用するシナリオを紹介したうえで、Node.js クライアントを使ってアプリケーションをセットアップしていきます。
 
 ## <a name="prerequisites"></a>前提条件
+
 この記事は、Node.js の実務知識を持ち、Linux に精通している読者を想定しています。 また、Batch と Storage の 2 つのサービスを作成できるアクセス権を備えた Azure アカウントも必要になります。
 
 この記事を読む前に、[Azure Batch の技術的概要](batch-technical-overview.md)に関する記事を読むことをお勧めします。
 
-## <a name="the-tutorial-scenario"></a>このチュートリアルのシナリオ
-まずは、バッチ ワークフローのシナリオを説明しましょう。 このチュートリアルでは、Python で書かれたシンプルなスクリプトを使用します。このスクリプトは、Azure Blob Storage コンテナーから csv ファイルをすべてダウンロードし、JSON に変換するものです。 今回は複数のストレージ アカウントのコンテナーを同時に処理するために、このスクリプトを Azure Batch ジョブとしてデプロイします。
+## <a name="understand-the-scenario"></a>シナリオの理解
+
+ここでは、Python で記述された簡単なスクリプトを使用して、Azure Blob Storage コンテナーからすべての csv ファイルをダウンロードし、JSON に変換します。 今回は複数のストレージ アカウントのコンテナーを同時に処理するために、このスクリプトを Azure Batch ジョブとしてデプロイします。
 
 ## <a name="azure-batch-architecture"></a>Azure Batch のアーキテクチャ
+
 以下の図は、上で説明した Python スクリプトを Azure Batch と Node.js クライアントを使って拡張する方法を示しています。
 
-![Azure Batch のシナリオ](./media/batch-nodejs-get-started/BatchScenario.png)
+![シナリオのアーキテクチャを示す図。](./media/batch-nodejs-get-started/BatchScenario.png)
 
 Node.js クライアントは、準備タスク (後述) と、ストレージ アカウント内のコンテナーの数に応じた一連のタスクを備えたバッチ ジョブをデプロイします。 スクリプトは、GitHub リポジトリからダウンロードできます。
 
-* [Node.js クライアント](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/nodejs_batch_client_sample.js)
-* [準備タスクのシェル スクリプト](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/startup_prereq.sh)
-* [csv から JSON への変換処理スクリプト (Python)](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
+- [Node.js クライアント](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/nodejs_batch_client_sample.js)
+- [準備タスクのシェル スクリプト](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/startup_prereq.sh)
+- [csv から JSON への変換処理スクリプト (Python)](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
 
 > [!TIP]
 > 上記リンクから入手できる Node.js クライアントには、Azure Function App としてデプロイするための具体的なコードが含まれていません。 Function App を作成するための手順については、以下のリンクを参照してください。
-> - [Function App の作成](../azure-functions/functions-create-first-azure-function.md)
+> - [Function App の作成](../azure-functions/functions-get-started.md)
 > - [タイマー トリガー関数の作成](../azure-functions/functions-bindings-timer.md)
->
->
 
 ## <a name="build-the-application"></a>アプリケーションのビルド
 
@@ -54,8 +55,6 @@ Node.js 向け Azure Batch SDK をインストールするには、npm install �
 
 >[!Tip]
 > Azure Function App では、Azure 関数の [設定] タブにある "Kudu コンソール" から npm install コマンドを実行できます。 この場合、Node.js 向けの Azure Batch SDK をインストールします。
->
->
 
 ### <a name="step-2-create-an-azure-batch-account"></a>手順 2:Azure Batch アカウントを作成する
 
@@ -78,6 +77,7 @@ Node.js 向け Azure Batch SDK をインストールするには、npm install �
 以降の手順で使用するため、キーをコピーして保存します。
 
 ### <a name="step-3-create-an-azure-batch-service-client"></a>手順 3:Azure Batch サービス クライアントを作成する
+
 以下のコード スニペットでは、azure-batch Node.js モジュールをインポートしたうえで、Batch サービス クライアントを作成します。 最初に、先ほどの手順でコピーしておいた Batch アカウントのキーを使って SharedKeyCredentials オブジェクトを作成する必要があります。
 
 ```nodejs
@@ -109,19 +109,16 @@ Azure Batch の URI は、Azure Portal の [概要] タブにあります。 こ
 
 ![Azure Batch の URI](./media/batch-nodejs-get-started/azurebatchuri.png)
 
-
-
 ### <a name="step-4-create-an-azure-batch-pool"></a>手順 4:Azure Batch プールを作成する
+
 Azure Batch プールは、複数の VM (別名 Batch ノード) で構成されています。 Azure Batch サービスでは、そのノードにタスクをデプロイして管理します。 プールには以下の構成パラメーターを定義できます。
 
-* 仮想マシン イメージの種類
-* 仮想マシン ノードのサイズ
-* 仮想マシン ノードの数
+- 仮想マシン イメージの種類
+- 仮想マシン ノードのサイズ
+- 仮想マシン ノードの数
 
-> [!Tip]
+> [!TIP]
 > 仮想マシン ノードのサイズと数は、並行して実行するタスクの数のほか、タスク自体の内容に大きく左右されます。 このため、テストを実施して最適な数とサイズを確認することをお勧めします。
->
->
 
 以下のコード スニペットは、構成パラメーター オブジェクトを作成するものです。
 
@@ -139,10 +136,8 @@ var vmSize = "STANDARD_F4"
 var numVMs = 4
 ```
 
-> [!Tip]
+> [!TIP]
 > Azure Batch で利用できる Linux VM イメージの一覧とその SKU ID については、「[仮想マシン イメージの一覧](batch-linux-nodes.md#list-of-virtual-machine-images)」を参照してください。
->
->
 
 プールの構成を定義したら、Azure Batch プールを作成できます。 Batch プール コマンドを実行すると、Azure 仮想マシン ノードが作成され、ノードで実行対象のタスクを受信する準備が整います。 各プールには、後の手順で参照するための一意の ID が必要です。
 
@@ -174,7 +169,7 @@ var cloudPool = batch_client.pool.get(poolid,function(error,result,request,respo
         {
             if(error.statusCode==404)
             {
-                console.log("Pool not found yet returned 404...");    
+                console.log("Pool not found yet returned 404...");
 
             }
             else
@@ -241,44 +236,41 @@ var cloudPool = batch_client.pool.get(poolid,function(error,result,request,respo
   targetDedicated: 4,
   enableAutoScale: false,
   enableInterNodeCommunication: false,
-  maxTasksPerNode: 1,
+  taskSlotsPerNode: 1,
   taskSchedulingPolicy: { nodeFillType: 'Spread' } }
 ```
 
-
 ### <a name="step-4-submit-an-azure-batch-job"></a>手順 4:Azure Batch ジョブを送信する
+
 Azure Batch ジョブは、よく似たタスクを論理的なグループにまとめたものです。 今回のシナリオの場合、"csv を処理して JSON に変換する" ためのジョブです。 このジョブでは、それぞれのタスクが各 Azure ストレージ コンテナーに存在する csv ファイルを処理します。
 
 タスクはいずれも並行して実行され、多数のノードにデプロイされます。Azure Batch サービスは、そのオーケストレーションを担当します。
 
-> [!Tip]
-> 1 つのノードで同時に実行できるタスクの最大数を指定するには、[maxTasksPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) プロパティを使用します。
->
->
+> [!TIP]
+> 1 つのノードで同時に実行できるタスクの最大数を指定するには、[taskSlotsPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) プロパティを使用します。
 
 #### <a name="preparation-task"></a>準備タスク
 
 作成された VM ノードは、空の Ubuntu ノードです。 多くの場合、前提条件としていくつかのプログラムをインストールする必要があります。
 Linux ノードの場合には通常、実際のタスクの実行前に前提条件となるプログラムをインストールするシェル スクリプトを用意します。 もっとも、そのようなスクリプトはプログラミング可能な実行可能ファイルであれば何でもかまいません。
+
 この例で使用する[シェル スクリプト](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/startup_prereq.sh)は、Python pip と Python 向けの Azure Storage SDK をインストールします。
 
 このスクリプトを Azure ストレージ アカウントにアップロードすると、スクリプトにアクセスするための SAS の URI を生成できます。 この処理は、Azure Storage Node.js SDK を使って自動化することもできます。
 
-> [!Tip]
+> [!TIP]
 > ジョブの準備タスクは、特定のタスクの実行が必要な VM ノードでのみ実行されます。 ノードで実行するタスクに関係なく全ノードに前提条件をインストールする場合には、プールを追加するときに [startTask](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) プロパティを使用します。 以下で紹介する準備タスクの定義は、参考として使用してください。
->
->
 
 準備タスクは、Azure Batch ジョブの送信中に指定します。 準備タスクの構成パラメーターは以下のとおりです。
 
-* **[ID]** :準備タスクの一意の識別子
-* **commandLine**:タスクの実行可能ファイルを実行するためのコマンド ライン
-* **resourceFiles**:このタスクを実行するためにダウンロードが必要なファイルの詳細を指定したオブジェクトの配列。  オプションは以下のとおりです。
-    - blobSource:ファイルの SAS の URI
-    - filePath:ファイルのダウンロードと保存のためのローカル パス
-    - fileMode:0770 を既定値とする 8 進数形式の値 (Linux ノードのみ該当)
-* **waitForSuccess**:true に設定すると、準備タスクが失敗した場合にタスクが実行されなくなります
-* **runElevated**:タスクの実行に昇格された特権が必要な場合には true に設定します。
+- **[ID]** :準備タスクの一意の識別子
+- **commandLine**:タスクの実行可能ファイルを実行するためのコマンド ライン
+- **resourceFiles**:このタスクを実行するためにダウンロードが必要なファイルの詳細を指定したオブジェクトの配列。  オプションは以下のとおりです。
+  - blobSource:ファイルの SAS の URI
+  - filePath:ファイルのダウンロードと保存のためのローカル パス
+  - fileMode:0770 を既定値とする 8 進数形式の値 (Linux ノードのみ該当)
+- **waitForSuccess**:true に設定すると、準備タスクが失敗した場合にタスクが実行されなくなります
+- **runElevated**:タスクの実行に昇格された特権が必要な場合には true に設定します。
 
 以下のコード スニペットでは、準備タスク スクリプトの構成サンプルを示しています。
 
@@ -302,22 +294,21 @@ var job_prep_task_config = {id:"installprereq",commandLine:"sudo sh startup_prer
      }});
 ```
 
-
 ### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>手順 5:ジョブの Azure Batch タスクを送信する
 
 csv を処理するジョブが作成できたので、このジョブのためのタスクを作成しましょう。 コンテナーが 4 つあるとすると、コンテナーごとに 1 つずつ、計 4 つのタスクを作成する必要があります。
 
 [Python スクリプト](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py)を見ると、次の 2 つのパラメーターを受け取ることがわかります。
 
-* コンテナー名:ファイルをダウンロードするストレージ コンテナー
-* パターン:ファイル名パターンの省略可能なパラメーター
+- コンテナー名:ファイルをダウンロードするストレージ コンテナー
+- パターン:ファイル名パターンの省略可能なパラメーター
 
 以下のコードは、コンテナーが "con1"、"con2"、"con3"、"con4" の 4 つであると仮定して、先ほど作成した Azure Batch ジョブ "process csv" にタスクを送信する方法を示しています。
 
 ```nodejs
 // storing container names in an array
 var container_list = ["con1","con2","con3","con4"]
-    container_list.forEach(function(val,index){           
+    container_list.forEach(function(val,index){
 
            var container_name = val;
            var taskID = container_name + "_process";
@@ -325,7 +316,7 @@ var container_list = ["con1","con2","con3","con4"]
            var task = batch_client.task.add(poolid,task_config,function(error,result){
                 if(error != null)
                 {
-                    console.log(error.response);     
+                    console.log(error.response);
                 }
                 else
                 {
@@ -339,7 +330,7 @@ var container_list = ["con1","con2","con3","con4"]
     });
 ```
 
-このコードによって、プールにタスクが複数追加されます。 各タスクは、作成された VM のプール内のノードで実行されます。 タスクの数がプールまたは maxTasksPerNode プロパティの VM の数を上回った場合には、タスクはノードが利用可能になるまで待機します。 このオーケストレーションは、Azure Batch によって自動的に処理されます。
+このコードによって、プールにタスクが複数追加されます。 各タスクは、作成された VM のプール内のノードで実行されます。 タスクの数がプールまたは taskSlotsPerNode プロパティの VM の数を上回った場合には、タスクはノードが利用可能になるまで待機します。 このオーケストレーションは、Azure Batch によって自動的に処理されます。
 
 ポータルでは、タスクとジョブの状態の詳細を確認できます。 このほか、Azure Node SDK の list 関数や get 関数も使用できます。 詳細については、ドキュメント ([リンク](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html)) を参照してください。
 
@@ -347,4 +338,3 @@ var container_list = ["con1","con2","con3","con4"]
 
 - [Batch サービスのワークフローと主要なリソース](batch-service-workflow-features.md) (プール、ノード、ジョブ、タスクなど) について学習します。
 - Batch API の詳細については、[Batch Node.js のリファレンス](/javascript/api/overview/azure/batch)を参照してください。
-

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: dffa059b18e159d04b5e3bb8555dabf801ede692
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511794"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017119"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのフェールオーバーとディザスター リカバリー
 
@@ -27,14 +27,14 @@ ms.locfileid: "85511794"
 
 この記事では、StorSimple 8000 シリーズ デバイスのデバイス フェールオーバー機能について説明し、障害が発生した場合に、どのようにこの機能を使用すれば StorSimple デバイスを復旧できるかを説明します。 StorSimple は、デバイス フェールオーバーを使用して、データセンター内のソース デバイスから別のターゲット デバイスにデータを移行します。 この記事のガイダンスは、StorSimple 8000 シリーズ物理デバイスやソフトウェア バージョン Update 3 以降を実行しているクラウド アプライアンスに適用されます。
 
-障害が発生した場合、StorSimple は**デバイス** ブレードを使用してデバイス フェールオーバー機能を開始します。 このブレードには、StorSimple デバイス マネージャー サービスに接続されているすべての StorSimple デバイスの一覧が表示されます。
+障害が発生した場合、StorSimple は **デバイス** ブレードを使用してデバイス フェールオーバー機能を開始します。 このブレードには、StorSimple デバイス マネージャー サービスに接続されているすべての StorSimple デバイスの一覧が表示されます。
 
 ![[デバイス] ブレード](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png)
 
 
 ## <a name="disaster-recovery-dr-and-device-failover"></a>ディザスター リカバリー (DR) とデバイスのフェールオーバー
 
-ディザスター リカバリー (DR) シナリオでは、プライマリ デバイスの機能が停止します。 StorSimple はプライマリ デバイスを _ソース_ として使用し、関連付けられているクラウド データを別の _ターゲット_ デバイスに移動します。 このプロセスを *フェールオーバー*といいます。 次の図は、フェールオーバーのプロセスを示しています。
+ディザスター リカバリー (DR) シナリオでは、プライマリ デバイスの機能が停止します。 StorSimple はプライマリ デバイスを _ソース_ として使用し、関連付けられているクラウド データを別の _ターゲット_ デバイスに移動します。 このプロセスを *フェールオーバー* といいます。 次の図は、フェールオーバーのプロセスを示しています。
 
 ![デバイスのフェールオーバーでは何が起きるか](./media/storsimple-8000-device-failover-disaster-recovery/failover-dr-flow.png)
 

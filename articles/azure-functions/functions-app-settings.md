@@ -3,12 +3,12 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: b17db828aeb19c3347c0db4babf0eee2b9d5f280
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 8cb3e12c48adf1273c58f4914e34590e21b9d3cc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589302"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378300"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -19,11 +19,11 @@ ms.locfileid: "88589302"
 [host.json](functions-host-json.md) ファイルと [local.settings.json](functions-run-local.md#local-settings-file) ファイルには、他のグローバル構成オプションもあります。
 
 > [!NOTE]  
-> アプリケーション設定を使用して、host.json ファイル自体を変更することなく、host.json 設定値をオーバーライドできます。 これは、特定の環境の特定の host.json 設定を構成または変更する必要がある場合に便利です。 これにより、プロジェクトを再発行しなくても、host.json 設定を変更できます。 詳細については、[host.json のリファレンスに関する記事](functions-host-json.md#override-hostjson-values)をご覧ください。  
+> アプリケーション設定を使用して、host.json ファイル自体を変更することなく、host.json 設定値をオーバーライドできます。 これは、特定の環境の特定の host.json 設定を構成または変更する必要がある場合に便利です。 これにより、プロジェクトを再発行しなくても、host.json 設定を変更できます。 詳細については、[host.json のリファレンスに関する記事](functions-host-json.md#override-hostjson-values)をご覧ください。 関数アプリの設定に変更を加えるためには、関数アプリを再起動する必要があります。
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Application Insights のインストルメンテーション キー。 `APPINSIGHTS_INSTRUMENTATIONKEY` または `APPLICATIONINSIGHTS_CONNECTION_STRING` のいずれかのみを使用してください。 詳しくは、「[Azure Functions を監視する](functions-monitoring.md)」をご覧ください。 
+Application Insights のインストルメンテーション キー。 `APPINSIGHTS_INSTRUMENTATIONKEY` または `APPLICATIONINSIGHTS_CONNECTION_STRING` のいずれかのみを使用してください。 Application Insights がソブリン クラウドで実行されている場合は、`APPLICATIONINSIGHTS_CONNECTION_STRING` を使用します。 詳細については、[Azure Functions で監視を構成する](configure-monitoring.md)方法に関するページを参照してください。 
 
 |Key|値の例|
 |---|------------|
@@ -31,7 +31,12 @@ Application Insights のインストルメンテーション キー。 `APPINSIG
 
 ## <a name="applicationinsights_connection_string"></a>APPLICATIONINSIGHTS_CONNECTION_STRING
 
-Application Insights の接続文字列。 お使いの関数アプリで接続文字列を使用した追加のカスタマイズ サポートが必要な場合は、`APPINSIGHTS_INSTRUMENTATIONKEY` ではなく `APPLICATIONINSIGHTS_CONNECTION_STRING` を使用します。 詳細については、[接続文字列](../azure-monitor/app/sdk-connection-string.md)に関するページを参照してください。 
+Application Insights の接続文字列。 次の場合は、`APPINSIGHTS_INSTRUMENTATIONKEY` ではなく `APPLICATIONINSIGHTS_CONNECTION_STRING` を使用します。
+
++ お使いの関数アプリで接続文字列を使用した追加のカスタマイズ サポートが必要な場合。 
++ カスタム エンドポイントを必要とするソブリン クラウドで Application Insights インスタンスが実行されている場合。
+
+詳細については、[接続文字列](../azure-monitor/app/sdk-connection-string.md)に関するページを参照してください。 
 
 |Key|値の例|
 |---|------------|
@@ -130,7 +135,7 @@ Functions ランタイムのバージョン 2.x 以降では、現在の環境�
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
-Azure Functions ランタイムは、HTTP によってトリガーされる関数を除くすべての関数で、このストレージ アカウントの接続文字列を使用します。 このストレージ アカウントは、blob、キュー、およびテーブルをサポートする汎用的なものである必要があります。 「[ストレージ アカウント](functions-infrastructure-as-code.md#storage-account)」および「[ストレージ アカウントの要件](storage-considerations.md#storage-account-requirements)」を参照してください。
+Azure Functions ランタイムでは、このストレージ アカウント接続文字列は通常の操作に使用されます。 このストレージ アカウントの使用方法としては、キー管理、タイマー トリガー管理、Event Hubs チェックポイントなどがあります。 このストレージ アカウントは、blob、キュー、およびテーブルをサポートする汎用的なものである必要があります。 「[ストレージ アカウント](functions-infrastructure-as-code.md#storage-account)」および「[ストレージ アカウントの要件](storage-considerations.md#storage-account-requirements)」を参照してください。
 
 |Key|値の例|
 |---|------------|
@@ -181,6 +186,14 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 |---|------------|
 |FUNCTIONS\_WORKER\_PROCESS\_COUNT|2|
 
+## <a name="python_threadpool_thread_count"></a>PYTHON\_THREADPOOL\_THREAD\_COUNT
+
+関数呼び出しを実行するために Python 言語ワーカーによって使用されるスレッドの最大数を指定します。Python バージョン `3.8` 以前では、既定値 `1` を使用します。 Python バージョン `3.9` 以降では、値は `None` に設定されます。 この設定は、実行中に設定されるスレッドの数を保証するものではないことに注意してください。 この設定により、Python では、スレッドの数を指定された値に増やすことができます。 この設定は、Python 関数アプリにのみ適用されます。 また、この設定は、コルーチンではなく、同期関数の呼び出しに適用されます。
+
+|Key|値の例|最大値|
+|---|------------|---------|
+|PYTHON\_THREADPOOL\_THREAD\_COUNT|2|32|
+
 
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
@@ -200,15 +213,15 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 詳細については、Python 開発者リファレンスの「[カスタムの依存関係](functions-reference-python.md#remote-build-with-extra-index-url)」を参照してください。
 
-## <a name="scale_controller_logging_enable"></a>SCALE\_CONTROLLER\_LOGGING\_ENABLE
+## <a name="scale_controller_logging_enabled"></a>SCALE\_CONTROLLER\_LOGGING\_ENABLED
 
 "_この設定は現在プレビューの段階です。_ "  
 
-この設定は、Azure Functions スケール コントローラーからのログ記録を制御します。 詳細については、[スケール コントローラーのログ](functions-monitoring.md#scale-controller-logs-preview)に関するセクションを参照してください。
+この設定は、Azure Functions スケール コントローラーからのログ記録を制御します。 詳細については、[スケール コントローラーのログ](functions-monitoring.md#scale-controller-logs)に関するセクションを参照してください。
 
 |Key|値の例|
 |-|-|
-|SCALE_CONTROLLER_LOGGING_ENABLE|AppInsights:Verbose|
+|SCALE_CONTROLLER_LOGGING_ENABLED|AppInsights:Verbose|
 
 このキーの値は `<DESTINATION>:<VERBOSITY>` の形式で指定されます。これは次のように定義されます。
 
@@ -216,26 +229,40 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 ## <a name="website_contentazurefileconnectionstring"></a>WEBSITE\_CONTENTAZUREFILECONNECTIONSTRING
 
-従量課金および Premium プランのみ。 関数アプリのコードと構成が格納されているストレージ アカウントの接続文字列です。 「[Function App を作成する](functions-infrastructure-as-code.md#create-a-function-app)」を参照してください。
+Windows 上で実行されているイベント ドリブン スケーリング プランに関数アプリのコードと構成が格納されているストレージ アカウントの接続文字列です。 詳細については、「[Function App を作成する](functions-infrastructure-as-code.md#windows)」を参照してください。
 
 |Key|値の例|
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
 
+Windows 上で実行されている Premium プランまたは従量課金プランにデプロイする場合にのみ使用されます。 Linux を実行する従量課金プランではサポートされていません。 この設定を変更または削除すると、関数アプリが起動しなくなることがあります。 詳細については、[こちらのトラブルシューティング記事](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)を参照してください。 
+
+## <a name="website_contentovervnet"></a>WEBSITE\_CONTENTOVERVNET
+
+Premium プランのみ。 `1` の値を指定すると、ストレージ アカウントを仮想ネットワークに制限している場合に、関数アプリをスケーリングできます。 ストレージ アカウントを仮想ネットワークに制限する場合は、この設定を有効にする必要があります。 詳細については、「[ストレージ アカウントを仮想ネットワークに制限する](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)」を参照してください。
+
+|Key|値の例|
+|---|------------|
+|WEBSITE_CONTENTOVERVNET|1|
+
 ## <a name="website_contentshare"></a>WEBSITE\_CONTENTSHARE
 
-従量課金および Premium プランのみ。 関数アプリ コードと構成へのファイル パスです。 WEBSITE_CONTENTAZUREFILECONNECTIONSTRING と共に使用されます。 既定は、関数アプリ名で始まる一意文字列です。 「[Function App を作成する](functions-infrastructure-as-code.md#create-a-function-app)」を参照してください。
+Windows 上のイベント ドリブン スケーリング プラン内の関数アプリ コードと構成へのファイル パス。 WEBSITE_CONTENTAZUREFILECONNECTIONSTRING と共に使用されます。 既定は、関数アプリ名で始まる一意文字列です。 「[Function App を作成する](functions-infrastructure-as-code.md#windows)」を参照してください。
 
 |Key|値の例|
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
+
+Windows 上で実行されている Premium プランまたは従量課金プランにデプロイする場合にのみ使用されます。 Linux を実行する従量課金プランではサポートされていません。 この設定を変更または削除すると、関数アプリが起動しなくなることがあります。 詳細については、[こちらのトラブルシューティング記事](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)を参照してください。
+
+デプロイ中、Azure Resource Manager を使用して関数アプリを作成するとき、テンプレートに WEBSITE_CONTENTSHARE を含めないでください。 このアプリケーション設定はデプロイ中に生成されます。 詳細については、[関数アプリのリソース デプロイを自動化する](functions-infrastructure-as-code.md#windows)方法に関するページを参照してください。   
 
 ## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
 
 関数アプリがスケールアウトできる最大のインスタンス数です。 既定は無制限です。
 
 > [!IMPORTANT]
-> この設定は、プレビューの段階です。  スケールアウトの制限に推奨される、[関数で最大にスケールアウトするためのアプリ プロパティ](./functions-scale.md#limit-scale-out)が追加されています。
+> この設定は、プレビューの段階です。  スケールアウトの制限に推奨される、[関数で最大にスケールアウトするためのアプリ プロパティ](./event-driven-scaling.md#limit-scale-out)が追加されています。
 
 |Key|値の例|
 |---|------------|

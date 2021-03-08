@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: f77a5b634b035b7cc1142645d355fe6c3756226b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3cfe75edcf338f5248baf396147a5b77803fbfb3
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004070"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655936"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics を使用して Avro データのクエリを実行する
 
@@ -56,7 +56,7 @@ U-SQL には Avro 用の "エクストラクター" があります。 詳細に
 
 6. Visual Studio で、U-SQL プロジェクトを作成します。
 
-   !Create a U-SQL project](./media/iot-hub-query-avro-data/query-avro-data-6.png)
+   ![U-SQL プロジェクトの作成](./media/iot-hub-query-avro-data/query-avro-data-6.png)
 
 7. 次のスクリプトの内容を、新しく作成されたファイルに貼り付けます。 3 つの強調表示されたセクション (Data Lake Analytics アカウント、関連する DLL ファイルのパス、ストレージ アカウントの正しいパス) を変更します。
 
@@ -154,10 +154,10 @@ U-SQL には Avro 用の "エクストラクター" があります。 詳細に
         
         @cnt =
             SELECT message["message"] AS iotmessage,
-                   message["event"] AS msgevent,
-                   message["object"] AS msgobject,
-                   message["status"] AS msgstatus,
-                   message["host"] AS msghost
+                message["event"] AS msgevent,
+                message["object"] AS msgobject,
+                message["status"] AS msgstatus,
+                message["host"] AS msghost
             FROM @jsonify;
             
         OUTPUT @cnt TO @output_file USING Outputters.Text();
@@ -171,7 +171,7 @@ U-SQL には Avro 用の "エクストラクター" があります。 詳細に
 
 このチュートリアルでは、Azure IoT Hub から Azure サービスにメッセージを効率的にルーティングするために Avro データに対してクエリを実行する方法について説明しました。
 
-IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT ソリューション アクセラレータのドキュメント](/azure/iot-accelerators)を参照してください。
+IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT ソリューション アクセラレータのドキュメント](../iot-accelerators/index.yml)を参照してください。
 
 IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド](iot-hub-devguide.md)をご覧ください。
 

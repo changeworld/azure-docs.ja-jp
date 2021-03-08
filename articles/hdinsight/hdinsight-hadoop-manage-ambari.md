@@ -1,19 +1,16 @@
 ---
 title: Ambari Web UI を使用して Azure HDInsight を監視および管理する
 description: Apache Ambari UI を使用して HDInsight クラスターを監視および管理する方法を説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/16/2020
-ms.openlocfilehash: ce078a3dad645f592bb33ed55ce508f68ce8f30a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 01/12/2021
+ms.openlocfilehash: 087f284bed7ab0c9eb551c1629ab4f9196c80d76
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281390"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945692"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
@@ -88,7 +85,7 @@ Ambari Web UI に接続するときに、そのページに対する認証が求
 
 最後に、 __[Actions]__ メニューの __[Manage Alert Settings]__ を選択すると、通知の送信前にアラートが発生する回数を設定できます。 この設定は、一時的なエラーの通知を防ぐために使用できます。
 
-無料の [SendGrid アカウント](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email)を使用したアラート通知のチュートリアルについては、「[Azure HDInsight で Apache Ambari のメール通知を構成する](./apache-ambari-email.md)」を参照してください。
+無料の [SendGrid アカウント](../sendgrid-dotnet-how-to-send-email.md)を使用したアラート通知のチュートリアルについては、「[Azure HDInsight で Apache Ambari のメール通知を構成する](./apache-ambari-email.md)」を参照してください。
 
 ### <a name="cluster"></a>クラスター
 
@@ -139,7 +136,7 @@ Ambari Web UI に接続するときに、そのページに対する認証が求
 ユーザー、グループ、およびアクセス許可の操作はサポートされています。 ローカル管理については、「[Apache Ambari ビューに対してユーザーを承認する](./hdinsight-authorize-users-to-ambari.md)」をご覧ください。 ドメイン参加済みクラスターについては、[ドメイン参加済み HDInsight クラスターの管理](./domain-joined/hdinsight-security-overview.md)に関する記事をご覧ください。
 
 > [!WARNING]  
-> Linux ベースの HDInsight クラスターでは、Ambari ウォッチドッグ (hdinsightwatchdog) のパスワードは変更しないでください。 パスワードを変更すると、スクリプト アクションを使用したり、クラスターでスケール操作を実行する能力が損なわれます。
+> Linux ベースの HDInsight クラスターで、Ambari ウォッチドッグ (hdinsightwatchdog) のパスワードを削除または変更しないでください。 パスワードを変更すると、スクリプト アクションを使用したり、クラスターでスケール操作を実行する能力が損なわれます。
 
 ### <a name="hosts"></a>Hosts
 

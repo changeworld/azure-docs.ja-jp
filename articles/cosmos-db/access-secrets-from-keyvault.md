@@ -4,19 +4,19 @@ description: Azure Key Vault を使用し、Azure Cosmos DB の接続文字列�
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 50a9d5e3d3bbb608160ee160c5f1aede8f70e530
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9bea0664f99a21ac734de666c802e9875ff00b5
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262669"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359325"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Key Vault を使用して Azure Cosmos キーをセキュリティ保護する 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 >[!IMPORTANT]
 > Azure Cosmos DB キーにアクセスするために推奨されるソリューションは、[システムによって割り当てられたマネージド ID](managed-identity-based-authentication.md) を使用することです。 サービスでマネージド ID を利用できない場合は、[証明書ベースのソリューション](certificate-based-authentication.md)を使用します。 マネージド ID ソリューションと証明書ベースのソリューションのどちらもニーズを満たしていない場合は、次のキー コンテナー ソリューションを使用してください。
@@ -59,13 +59,13 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
 
 ## <a name="create-an-azure-web-application"></a>Azure Web アプリケーションの作成
 
-1. Azure Web アプリケーションを作成します。または、[GitHub リポジトリ](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/Demo/keyvaultdemo)からアプリケーションをダウンロードできます。 これは単純な MVC アプリケーションです。  
+1. Azure Web アプリケーションを作成します。または、[GitHub リポジトリ](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/Demo/keyvaultdemo)からアプリケーションをダウンロードできます。 これは単純な MVC アプリケーションです。  
 
 2. ダウンロードしたアプリケーションを解凍し、**HomeController.cs** ファイルを開きます。 次の行のシークレット ID を更新します。
 
    `var secret = await keyVaultClient.GetSecretAsync("<Your Key Vault’s secret identifier>")`
 
-3. ファイルを**保存**し、ソリューションを**ビルド**します。  
+3. ファイルを **保存** し、ソリューションを **ビルド** します。  
 4. 次は、Azure にアプリケーションをデプロイします。 プロジェクトを右クリックし、 **[発行]** を選択します。 新しいアプリ サービス プロファイルを作成し (アプリの名前は WebAppKeyVault1 とします)、 **[発行]** を選択します。   
 
 5. アプリケーションがデプロイされたら、 Azure Portal で、デプロイした Web アプリケーションに移動し、そのアプリケーションの **[マネージド サービス ID]** をオンにします。  
@@ -94,5 +94,5 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Cosmos DB のファイアウォールを構成するには、[ファイアウォールのサポート](firewall-support.md)に関する記事を参照してください。
-* 仮想ネットワーク サービス エンドポイントを構成するには、[VNet サービス エンドポイントを使用してアクセスをセキュリティで保護する](vnet-service-endpoint.md)方法に関する記事をご覧ください。
+* Azure Cosmos DB のファイアウォールを構成するには、[ファイアウォールのサポート](how-to-configure-firewall.md)に関する記事を参照してください。
+* 仮想ネットワーク サービス エンドポイントを構成するには、[VNet サービス エンドポイントを使用してアクセスをセキュリティで保護する](how-to-configure-vnet-service-endpoint.md)方法に関する記事をご覧ください。

@@ -1,0 +1,41 @@
+### YamlMime:Landing
+title: Azure Route Server のドキュメント
+summary: Azure Route Server を使用してネットワーク仮想アプライアンスと仮想ネットワークの間の動的ルーティングを簡略化する方法について説明します。
+metadata:
+  title: Azure Route Server のドキュメント
+  description: Azure Route Server の詳細
+  services: route-server
+  ms.service: route-server
+  ms.topic: landing-page
+  author: duongau
+  ms.author: duau
+  ms.date: 03/02/2021
+  ms.openlocfilehash: f235d7118ce207d793c4ba03d357e2db09662c1f
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101677977"
+landingContent:
+- title: Azure Route Server (プレビュー) について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Route Server (プレビュー) とは
+      url: overview.md
+- title: はじめに
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: ルート サーバーを作成して構成する - PowerShell
+      url: quickstart-configure-route-server-powershell.md
+    - text: ルート サーバーを作成して構成する - CLI
+      url: quickstart-configure-route-server-cli.md
+- title: 計画
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ExpressRoute と VPN Gateway のサポート
+      url: expressroute-vpn-support.md
+    - text: ルート サーバーに関する FAQ
+      url: route-server-faq.md

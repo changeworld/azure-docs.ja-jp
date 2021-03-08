@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 84fa7ae50b69e7e1a2fe341e34497f2bf1a75b0d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c665e30ed9b284f7c93cf8588b710c9f22457a0a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260173"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151677"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub の高可用性とディザスター リカバリー
 
-回復力のある IoT ソリューションを実装するための第一歩として、設計者、開発者、経営者は、構築しているソリューションのアップタイム目標を定義する必要があります。 この目標は、主にシナリオごとの細かい事業目標に基づいて定義できます。 このような背景から、この[Azure ビジネス継続性テクニカル ガイダンス](https://docs.microsoft.com/azure/architecture/resiliency/)に関する記事では、ビジネス継続性とディザスター リカバリーについて考慮する際に役立つ一般的なフレームワークについて説明しています。 「[Disaster recovery and high availability for Azure applications](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery)」(Azure アプリケーションのディザスター リカバリーと高可用性) では、高可用性 (HA) とディザスター リカバリー (DR) を実現するための Azure アプリケーションの戦略に関するアーキテクチャのガイダンスを確認できます。
+回復力のある IoT ソリューションを実装するための第一歩として、設計者、開発者、経営者は、構築しているソリューションのアップタイム目標を定義する必要があります。 この目標は、主にシナリオごとの細かい事業目標に基づいて定義できます。 このような背景から、この[Azure ビジネス継続性テクニカル ガイダンス](/azure/architecture/resiliency/)に関する記事では、ビジネス継続性とディザスター リカバリーについて考慮する際に役立つ一般的なフレームワークについて説明しています。 「[Disaster recovery and high availability for Azure applications](/azure/architecture/reliability/disaster-recovery)」(Azure アプリケーションのディザスター リカバリーと高可用性) では、高可用性 (HA) とディザスター リカバリー (DR) を実現するための Azure アプリケーションの戦略に関するアーキテクチャのガイダンスを確認できます。
 
 この記事では、特に IoT Hub サービスによって提供されている HA および DR の機能について説明します。 この記事では、次のように幅広い分野について取り上げています。
 
@@ -57,12 +57,14 @@ IoT Hub サービスは、サービスのほぼすべてのレイヤーに冗長
 
 <sup>1</sup> cloud-to-device メッセージと親ジョブは、手動フェールオーバーの一部として回復されません。
 
-IoT Hub のフェールオーバー操作が完了すると、デバイスおよびバックエンド アプリケーションからのすべての操作は、機能し続けることが期待されます。手動操作は必要ありません。 これは、device-to-cloud メッセージが引き続き動作するはずであり、デバイス レジストリ全体が破損していないことを意味します。 Event Grid から発行されたイベントは、Event Grid のサブスクリプションを引き続き利用できる限り、以前に構成されたその同じサブスクリプションから使用できます。
+IoT Hub のフェールオーバー操作が完了すると、デバイスおよびバックエンド アプリケーションからのすべての操作は、機能し続けることが期待されます。手動操作は必要ありません。 これは、device-to-cloud メッセージが引き続き動作するはずであり、デバイス レジストリ全体が破損していないことを意味します。 Event Grid から発行されたイベントは、Event Grid のサブスクリプションを引き続き利用できる限り、以前に構成されたその同じサブスクリプションから使用できます。 カスタム エンドポイントに対して追加の処理は必要ありません。
 
 > [!CAUTION]
-> - そのIoT Hub の組み込みイベント エンドポイントのイベント ハブと互換性のある名前とエンドポイントは、フェールオーバー後に変更されます。 イベント ハブ クライアントまたはイベント プロセッサ ホストを使用して組み込みエンドポイントからテレメトリ メッセージを受信する場合は、[その IoT ハブの接続文字列を使用](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)して接続を確立する必要があります。 これにより、フェールオーバー後に手動操作することなく、バックエンド アプリケーションは継続的に動作します。 アプリケーションでイベント ハブと互換性のある名前とエンドポイントを直接使用する場合、フェールオーバー後も運用を継続するには、[新しいイベント ハブと互換性のあるエンドポイントをフェッチする](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)必要があります。 Azure Functions または Azure Stream Analytics を使用して組み込みのエンドポイントを接続する場合は、**再起動**が必要になることがあります。
+> - そのIoT Hub の組み込みイベント エンドポイントのイベント ハブと互換性のある名前とエンドポイントは、フェールオーバー後に変更されます。 イベント ハブ クライアントまたはイベント プロセッサ ホストを使用して組み込みエンドポイントからテレメトリ メッセージを受信する場合は、[その IoT ハブの接続文字列を使用](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)して接続を確立する必要があります。 これにより、フェールオーバー後に手動操作することなく、バックエンド アプリケーションは継続的に動作します。 アプリケーションでイベント ハブと互換性のある名前とエンドポイントを直接使用する場合、フェールオーバー後も運用を継続するには、[新しいイベント ハブと互換性のあるエンドポイントをフェッチする](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)必要があります。 
 >
-> - ストレージにルーティングするときは、パーティションを想定せずにすべての BLOB またはファイルを確実に読み取るために、BLOB またはファイルの一覧を取得したうえでそれらを反復処理することをお勧めします。 Microsoft が開始するフェールオーバー中や手動フェールオーバー中にパーティションの範囲が変化する可能性があります。 [List Blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) を使用して BLOB の一覧を、または [List ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) を使用してファイルの一覧を列挙できます。 
+> - Azure Functions または Azure Stream Analytics を使用して組み込みイベント エンドポイントを接続する場合は、**再起動**が必要になる場合があります。 これは、フェールオーバー中に以前のオフセットが無効になるためです。
+>
+> - ストレージにルーティングするときは、パーティションを想定せずにすべての BLOB またはファイルを確実に読み取るために、BLOB またはファイルの一覧を取得したうえでそれらを反復処理することをお勧めします。 Microsoft が開始するフェールオーバー中や手動フェールオーバー中にパーティションの範囲が変化する可能性があります。 [List Blobs API](/rest/api/storageservices/list-blobs) を使用して BLOB の一覧を、または [List ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/list) を使用してファイルの一覧を列挙できます。 詳細については、「[ルーティング エンドポイントとしての Azure Storage](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)」を参照してください。
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft が開始するフェールオーバー
 

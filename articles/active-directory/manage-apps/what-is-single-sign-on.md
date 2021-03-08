@@ -3,7 +3,7 @@ title: Azure シングル サインオン (SSO) とは
 description: シングル サインオン (SSO) が Azure Active Directory でどのように機能するかについて説明します。 SSO を使用すると、ユーザーはすべてのアプリケーションのパスワードを記憶する必要がなくなります。 また、SSO を使用すると、アカウント管理の方法が簡略化されます。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,13 +11,13 @@ ms.topic: overview
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.custom: contperfq1
-ms.openlocfilehash: 6c7ac840dfba665c4691fc4d389d66f44b077bf7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 36025a5a68e4c3d0de1d6b11a13df656c72745d4
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069471"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260199"
 ---
 # <a name="what-is-single-sign-on-sso"></a>シングル サインオン (SSO) とは
 
@@ -53,7 +53,7 @@ Web アプリにおけるシングル サインオンの動作については、
 > [!TIP]
 > クラウドでホストされるアプリは、SaaS (サービスとしてのソフトウェア) アプリとも呼ばれます。 
 
-クラウドでホストされるアプリのシングル サインオンは簡単です。 アプリにそれが使用されていることを ID プロバイダーに伝えます。 そのうえで、ID プロバイダーを信頼するようにアプリを構成します。 アプリの ID プロバイダーとして Azure AD を使用する方法については、[アプリケーション管理に関するクイックスタート シリーズ](view-applications-portal.md)を参照してください。
+クラウドでホストされるアプリのシングル サインオンは簡単です。 アプリにそれが使用されていることを ID プロバイダーに伝えます。 そのうえで、ID プロバイダーを信頼するようにアプリを構成します。 アプリの ID プロバイダーとして Azure AD を使用する方法については、[アプリケーション管理に関するクイックスタート シリーズ](add-application-portal.md)を参照してください。
 
 > [!TIP]
 > クラウドとインターネットという用語は、多くの場合置き換えることができます。 その理由は、ネットワーク図と関係があります。 すべてのコンポーネントを描画するのは現実的ではないため、図で大規模なコンピューター ネットワークを表すときは雲の形を使うのが一般的です。 インターネットは最もよく知られているネットワークであるため、これらの用語は容易に置き換えて使うことができます。 ただし、どのコンピューター ネットワークでもクラウドと呼ぶことができます。

@@ -5,15 +5,15 @@ description: この記事では、Application Gateway 上の Web アプリケー
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/31/2020
+ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e3b7e3ae10afd45105358743ef1fc0f4c6d14e78
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: fb7d49459b4eae8c3c7b3b1e6ad5bc5d44a089d3
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227000"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183354"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway 上の Azure Web アプリケーション ファイアウォールとは
 
@@ -22,9 +22,6 @@ Azure Application Gateway 上の Azure Web アプリケーション ファイア
 Application Gateway 上の WAF は、OWASP (Open Web Application Security Project) の[コア ルール セット (CRS)](https://owasp.org/www-project-modsecurity-core-rule-set/) 3.1、3.0 または 2.2.9 に基づいています。 WAF は、追加構成を必要とすることなく、新たな脆弱性に対する保護を含めるために自動的に更新します。 
 
 次に示す WAF の機能はすべて WAF ポリシー内に存在します。 複数のポリシーを作成して、Application Gateway、個々のリスナー、または Application Gateway のパスベースのルーティング規則に関連付けることができます。 これにより、必要に応じて、Application Gateway の後ろにあるサイトごとに個別のポリシーを設定できます。 WAF ポリシーの詳細については、「[WAF ポリシーの作成](create-waf-policy-ag.md)」を参照してください。
-
-   > [!NOTE]
-   > URI ごとの WAF ポリシーはパブリック プレビュー段階です。 つまり、この機能には、Microsoft の追加使用条件が適用されます。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ![Application Gateway の WAF の図](../media/ag-overview/waf1.png)
 
@@ -74,10 +71,23 @@ Application Gateway によるセキュリティの強化には、TLS ポリシ�
 - 特定のアプリケーションのニーズに合わせてカスタム ルールを作成することができます。
 - トラフィックを geo フィルタリングすることで、特定の国/地域を対象に、アプリケーションへのアクセスを許可したりブロックしたりできます。 (プレビュー)
 - ボット軽減策ルールセットを使用してアプリケーションをボットから保護できます。 (プレビュー)
+- 要求本文で JSON と XML を検査する
 
-## <a name="waf-policy"></a>WAF ポリシー
+## <a name="waf-policy-and-rules"></a>WAF のポリシーと規則
 
-Application Gateway 上で Web アプリケーション ファイアウォールを有効にするには、WAF ポリシーを作成する必要があります。 このポリシーには、すべてのマネージド ルール、カスタム ルール、除外、ファイル アップロード制限などのその他のカスタマイズが含まれます。 
+Application Gateway 上で Web アプリケーション ファイアウォールを有効にするには、WAF ポリシーを作成する必要があります。 このポリシーには、すべてのマネージド規則、カスタム規則、除外、そしてファイル アップロード制限などのその他のカスタマイズが含まれます。
+
+保護のために、WAF ポリシーを構成して、そのポリシーを 1 つまたは複数のアプリケーション ゲートウェイに関連付けることができます。 WAF ポリシーは、2 種類のセキュリティ規則で構成されます。
+
+- 作成したカスタム規則
+
+- Azure で管理される事前に構成された一連の規則のコレクションであるマネージド規則セット
+
+両方ともある場合、マネージド規則セットの規則が処理される前に、カスタム規則が処理されます。 規則は、一致条件、優先順位、およびアクションで構成されます。 サポートされているアクションの種類は次のとおりです: ALLOW、BLOCK、および LOG。 マネージド規則とカスタム規則を組み合わせることで、特定のアプリケーション保護要件を満たす完全にカスタマイズされたポリシーを作成することができます。
+
+ポリシー内の規則は、優先順位に従って処理されます。 優先順位は、規則の処理順序を定義する一意の整数です。 整数値が小さいほど高い優先順位を表し、大きい整数値の規則より前に評価されます。 規則が一致すると、規則で定義されている対応するアクションが要求に対して適用されます。 このような一致が処理された後、優先順位の低い規則はそれ以上処理されません。
+
+Application Gateway を使用して配信する Web アプリケーションには、グローバル レベル、サイトごとのレベル、または URI ごとのレベルで、WAF ポリシーを関連付けることができます。
 
 ### <a name="core-rule-sets"></a>コア ルール セット
 
@@ -133,7 +143,7 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 異常スコアでトラフィックがブロックされるしきい値は 5 です。 そのため、防止モードであっても、Application Gateway の WAF が要求をブロックするには、 *[重大]* 規則の一致が 1 つあるだけで十分です。 しかし、1 つの *[警告]* 規則の一致では、異常スコアは 3 増加するだけで、その一致だけではトラフィックをブロックするには不十分です。
 
 > [!NOTE]
-> WAF の規則がトラフィックと一致したときにログに記録されるメッセージには、アクション値 "ブロック" が含まれます。 ただし、トラフィックは、実際には 5 以上の異常スコアに対してのみブロックされます。  
+> WAF の規則がトラフィックと一致したときにログに記録されるメッセージには、アクション値 "ブロック" が含まれます。 ただし、トラフィックは、実際には 5 以上の異常スコアに対してのみブロックされます。 詳細については、「[Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) のトラブルシューティング](web-application-firewall-troubleshoot.md#understanding-waf-logs)」を参照してください。 
 
 ### <a name="waf-monitoring"></a>WAF の監視
 
@@ -147,7 +157,7 @@ Application Gateway のログは、[Azure Monitor](../../azure-monitor/overview.
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-[Security Center](../../security-center/security-center-intro.md) は、脅威の防御、検出、対応を可能にする機能です。 Azure リソースのセキュリティに対する可視性と制御を強化します。 Application Gateway は [Security Center と統合されています](../../application-gateway/application-gateway-integration-security-center.md)。 Security Center では、環境をスキャンして、保護されていない Web アプリケーションを検出します。 これらの脆弱なリソースを保護するために、Application Gateway の WAF が推奨されます。 Security Center から直接ファイアウォールを作成します。 これらの WAF インスタンスは Security Center と統合されます。 それらによって、アラートおよび正常性情報がレポートとして Security Center に送信されます。
+[Security Center](../../security-center/security-center-introduction.md) は、脅威の防御、検出、対応を可能にする機能です。 Azure リソースのセキュリティに対する可視性と制御を強化します。 Application Gateway は [Security Center と統合されています](../../security-center/security-center-partner-integration.md#integrated-azure-security-solutions)。 Security Center では、環境をスキャンして、保護されていない Web アプリケーションを検出します。 これらの脆弱なリソースを保護するために、Application Gateway の WAF が推奨されます。 Security Center から直接ファイアウォールを作成します。 これらの WAF インスタンスは Security Center と統合されます。 それらによって、アラートおよび正常性情報がレポートとして Security Center に送信されます。
 
 ![Security Center の概要ウィンドウ](../media/ag-overview/figure1.png)
 
@@ -159,6 +169,11 @@ Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ�
 
 
 ![Azure WAF ファイアウォール イベント ブック](../media/ag-overview/sentinel.png)
+
+
+#### <a name="azure-monitor-workbook-for-waf"></a>WAF の Azure Monitor ブック
+
+このブックを使用すると、複数のフィルター可能なパネルでセキュリティ関連の WAF イベントをカスタムで可視化することができます。 Application Gateway、Front Door、CDN などのすべての WAF の種類と連携でき、WAF の種類や特定の WAF インスタンスに基づいてフィルター処理できます。 ARM テンプレートまたはギャラリー テンプレートを使用してインポートします。 このブックをデプロイするには、[WAF ブック](https://aka.ms/AzWAFworkbook)に関するページを参照してください。
 
 #### <a name="logging"></a>ログ記録
 

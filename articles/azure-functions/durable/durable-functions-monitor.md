@@ -4,12 +4,12 @@ description: Azure Functions の Durable Functions 拡張機能を使って状�
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e70c50098ece516312e1e92984185624c276301b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77562124"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028422"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions のモニター シナリオ - 天気ウォッチャーのサンプル
 
@@ -19,7 +19,7 @@ ms.locfileid: "77562124"
 
 ## <a name="scenario-overview"></a>シナリオの概要
 
-このサンプルでは、ある場所の現在の気象条件を監視し、空が晴れたときに SMS でユーザーに通知します。 定期的にタイマーでトリガーされる関数を使って、天気を確認し、アラートを送信できます。 ただし、このアプローチの 1 つの問題は**有効期間管理**です。 送信する必要があるアラートが 1 つだけの場合は、晴天が検出された後でモニターを無効にする必要があります。 特にメリットがあるのは、監視パターンがそれ自体の実行を終了できることです。
+このサンプルでは、ある場所の現在の気象条件を監視し、空が晴れたときに SMS でユーザーに通知します。 定期的にタイマーでトリガーされる関数を使って、天気を確認し、アラートを送信できます。 ただし、このアプローチの 1 つの問題は **有効期間管理** です。 送信する必要があるアラートが 1 つだけの場合は、晴天が検出された後でモニターを無効にする必要があります。 特にメリットがあるのは、監視パターンがそれ自体の実行を終了できることです。
 
 * モニターは、スケジュールではなく一定間隔で実行されます。タイマーは "*実行*" を毎時トリガーし、モニターはアクション間で 1 時間 "*待機*" します。 モニターのアクションは、指定されない限り重複しません。これは実行時間の長いタスクで重要です。
 * モニターの間隔は動的にすることができます。待機時間は、いくつかの条件に基づいて変化することがあります。
@@ -40,7 +40,7 @@ ms.locfileid: "77562124"
 
 まず必要なのは、Weather Underground アカウントです。 [https://www.wunderground.com/signup](https://www.wunderground.com/signup) で無料で作成できます。 アカウントを作成したら、API キーを取得する必要があります。 これは、[https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1) にアクセスし、キー設定を選択することで行います。 Stratus Developer プランは無料で、このサンプルを実行するのに十分です。
 
-API キーを入手したら、次の**アプリ設定**を関数アプリに追加します。
+API キーを入手したら、次の **アプリ設定** を関数アプリに追加します。
 
 | アプリ設定の名前 | 値の説明 |
 | - | - |
@@ -72,6 +72,9 @@ API キーを入手したら、次の**アプリ設定**を関数アプリに追
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
+# <a name="python"></a>[Python](#tab/python)
+Python での監視パターンについては、別のチュートリアルがあります。[こちら](durable-functions-monitor-python.md)を参照してください。
+
 ---
 
 このオーケストレーター関数は、次のアクションを行います。
@@ -83,8 +86,7 @@ API キーを入手したら、次の**アプリ設定**を関数アプリに追
 5. 持続的タイマーを作成して、次のポーリング間隔でオーケストレーションを再開します。 サンプルでは、簡略化のためにハード コーディングされた値を使います。
 6. 現在の UTC 時間がモニターの有効期限を経過するか SMS アラートが送信されるまで、実行を続けます。
 
-オーケストレーター関数を複数回呼び出すことによって、複数のオーケストレーター インスタンスを同時に実行できます。 監視する場所と SMS アラートを送信する電話番号を指定することができます。
-
+オーケストレーター関数を複数回呼び出すことによって、複数のオーケストレーター インスタンスを同時に実行できます。 監視する場所と SMS アラートを送信する電話番号を指定することができます。 最後に、オーケストレーター関数は、タイマーの待機中は実行されて "*いない*" ため、その間は課金されることはありません。
 ### <a name="e3_getisclear-activity-function"></a>E3_GetIsClear アクティビティ関数
 
 他のサンプルと同様に、ヘルパー アクティビティ関数は、`activityTrigger` トリガー バインドを使う標準的な関数です。 **E3_GetIsClear** 関数は、Weather Underground API を使って現在の気象条件を取得し、晴れているかどうかを判断します。
@@ -102,6 +104,9 @@ API キーを入手したら、次の**アプリ設定**を関数アプリに追
 その実装を次に示します。
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+Python での監視パターンについては、別のチュートリアルがあります。[こちら](durable-functions-monitor-python.md)を参照してください。
 
 ---
 
@@ -125,6 +130,9 @@ API キーを入手したら、次の**アプリ設定**を関数アプリに追
 SMS メッセージを送信するコードを次に示します。
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+Python での監視パターンについては、別のチュートリアルがあります。[こちら](durable-functions-monitor-python.md)を参照してください。
 
 ---
 
@@ -169,7 +177,7 @@ RetryAfter: 10
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-オーケストレーションは、タイムアウトになるか晴天が検出されると[終了](durable-functions-instance-management.md)します。 別の関数内で `TerminateAsync` (.NET) または `terminate` (JavaScript) を使うか、上の 202 応答で参照されている **terminatePostUri** HTTP POST webhook を呼び出して `{text}` を終了の理由に置き換えることもできます。
+オーケストレーションは、タイムアウトになるか晴天が検出されると完了します。 別の関数内で `terminate` API を使用することも、上の 202 応答で参照されている **terminatePostUri** HTTP POST Webhook を呼び出すこともできます。 Webhook を使用するには、`{text}` を早期終了の理由に置き換えます。 HTTP POST URL は概ね次のようになります。
 
 ```
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}

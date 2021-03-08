@@ -3,18 +3,18 @@ title: Just-In-Time アクセスを要求する
 description: Azure Managed Applications の発行元が、マネージド アプリケーションへのジャストインタイム アクセスを要求する方法について説明します。
 author: MSEvanhi
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 09/25/2020
 ms.author: evanhi
-ms.openlocfilehash: 7f475774828bcaecd471e13de994b156041323ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7c067ca82ea7fbe7eb9c0f3d50b7fe75dfb47df
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649483"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377365"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Azure Managed Applications でジャストインタイム アクセスを有効にして要求する
 
-マネージド アプリケーションのコンシューマーが、マネージド リソース グループへの永続的なアクセスを発行元に許可することに消極的な場合があります。 マネージャー アプリケーションの発行元として、マネージド リソースにいつアクセスする必要があるかをコンシューマーに正確に知らせることができます。 コンシューマーがマネージド リソースへのアクセス権の付与を制御できるようにするため、Azure Managed Applications には、ジャストインタイム (JIT) アクセスと呼ばれる機能が提供されています (この機能は、現在プレビュー段階です)。
+マネージド アプリケーションのコンシューマーが、マネージド リソース グループへの永続的なアクセスを発行元に許可することに消極的な場合があります。 マネージド アプリケーションの発行元としては、管理対象リソースに厳密にいつアクセスする必要があるかをコンシューマーに知らせることが望ましい場合があります。 コンシューマーが管理対象リソースへのアクセス権の付与を制御できるようにするため、Azure Managed Applications には、ジャストインタイム (JIT) アクセスと呼ばれる機能が提供されています。 現在、この機能はプレビュー段階にあります。
 
 JIT アクセスによって、発行元は、トラブルシューティングやメンテナンスを行うために、マネージド アプリケーションのリソースに対して昇格されたアクセス権を要求することができます。 発行元は、リソースへの読み取り専用アクセス権を常に所有していますが、特定の期間にさらに大きなアクセス権を持つことができます。
 
@@ -34,9 +34,7 @@ JIT アクセスによって、発行元は、トラブルシューティング�
 
 ## <a name="add-jit-access-step-to-ui"></a>JIT アクセス手順を UI に追加する
 
-CreateUiDefinition.json ファイルは、コンシューマーが JIT アクセスを有効にするための手順を含める必要があること以外は、永続的アクセス用に作成する UI ファイルと同じです。 初めてのマネージド アプリケーション オファリングを Azure Marketplace に発行する方法については、「[Marketplace の Azure Managed Applications](publish-marketplace-app.md)」を参照してください。
-
-オファリングで JIT 機能をサポートするには、CreateUiDefinition.json ファイルに次の内容を追加します。
+CreateUiDefinition.json ファイルに、コンシューマーが JIT アクセスを有効にできる手順を含めます。 オファリングで JIT 機能をサポートするには、CreateUiDefinition.json ファイルに次の内容を追加します。
 
 "steps" に:
 
@@ -58,7 +56,7 @@ CreateUiDefinition.json ファイルは、コンシューマーが JIT アクセ
     ]
 }
 ```
- 
+
 "outputs" に:
 
 ```json
@@ -70,19 +68,21 @@ CreateUiDefinition.json ファイルは、コンシューマーが JIT アクセ
 
 ## <a name="enable-jit-access"></a>JIT アクセスを有効化する
 
-マーケットプレースでオファリングを定義するときは、JIT アクセスが有効になっていることを確認します。
+パートナー センターでオファーを作成するとき、JIT アクセスを必ず有効にしてください。
 
-1. [Cloud パートナー発行ポータル](https://cloudpartner.azure.com)にサインインします。
+1. [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)のコマーシャル マーケットプレース ポータルにサインインします。
 
-1. マネージド アプリケーションをマーケットプレースに発行するための値を指定します。 **[JIT アクセスの有効化]** で **[はい]** を選択します。
+1. 新しいマネージド アプリケーションを作成する方法については、「[Azure アプリケーション オファーを作成する](../../marketplace/create-new-azure-apps-offer.md)」の手順に従ってください。
 
-   ![ジャストインタイム アクセスを有効にする](./media/request-just-in-time-access/marketplace-enable.png)
+1. **技術的な構成** ページで、 **[ジャストインタイム (JIT) アクセスを有効にする]** チェックボックスを選択します。
 
-JIT 構成手順が UI に追加され、マーケットプレースのオファリングで JIT アクセスが有効になっています。 コンシューマーは、マネージド アプリケーションをデプロイするときに、[インスタンスに対する JIT アクセスをオンにする](approve-just-in-time-access.md#enable-during-deployment)ことができます。
+   :::image type="content" source="./media/request-just-in-time-access/enable-just-in-time-access.png" alt-text="ジャストインタイム アクセスを有効にする":::
+
+JIT 構成手順が UI に追加され、コマーシャル マーケットプレースのオファリングで JIT アクセスが有効になっています。 コンシューマーは、マネージド アプリケーションをデプロイするときに、[インスタンスに対する JIT アクセスをオンにする](approve-just-in-time-access.md#enable-during-deployment)ことができます。
 
 ## <a name="request-access"></a>アクセスの要求
 
-発行元は、コンシューマーのマネージド リソースにアクセスする必要があるときに、特定のロール、時刻、および期間の要求を送信します。 コンシューマーは、その要求を承認する必要があります。
+発行元は、コンシューマーの管理対象リソースにアクセスする必要があるときに、特定のロール、時刻、期間の要求を送信します。 コンシューマーは、その要求を承認する必要があります。
 
 JIT アクセス要求を送信するには:
 

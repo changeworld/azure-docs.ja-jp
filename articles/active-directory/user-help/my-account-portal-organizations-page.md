@@ -1,6 +1,6 @@
 ---
 title: マイ アカウント ポータルから組織を管理する - Azure AD
-description: マイ アカウント ポータルの [組織] ページから、ご利用の職場または学校アカウントに接続されている組織を表示および脱退する方法。
+description: マイ アカウント ポータルの [組織] ページからアクセスできる組織を表示および脱退する方法。
 services: active-directory
 author: curtand
 manager: daveba
@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/29/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: bb0f0b93f3890a06f4ecbdc6cf39a173ea048940
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: ef2e79f8c8e7964d04db0dd1a3f9988599fcb130
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798178"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094119"
 ---
-# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>[組織] ページから接続済み組織を管理する
+# <a name="manage-organizations-you-have-access-to-in-the-my-account-portal"></a>アクセスできる組織をマイ アカウント ポータルで管理する
 
-**[マイ アカウント]** ポータルの **[組織]** ページでは、職場または学校アカウントに接続されている組織 (通常は組織の名前) を管理できます。 **[組織]** ページに表示される組織には、次の 2 種類があります。
+**[マイ アカウント]** ポータルの **[組織]** ページでは、アクセスできる組織 (通常は組織の名前) を管理できます。 **[組織]** ページに表示される組織には、次の 2 種類があります。
 
 - **ホーム組織**。 ホーム組織は、ご自分の職場または学校アカウントを所有している組織です。 ホーム組織から脱退することはできません。
 
@@ -30,21 +30,26 @@ ms.locfileid: "88798178"
 - **その他の組織**。 その他の組織は、ご自分の職場または学校アカウントを使用して前にサインインしたことがあるグループです。 これらの組織からの脱退は、いつでも実行できます。
 
 >[!Important]
->この記事は、職場または学校アカウントに接続されている組織情報を更新するユーザーを対象としています。 従業員のグループとユーザーの管理、およびその他の用途に関する情報を探している管理者の場合は、「[Enterprise ユーザー管理のドキュメント](../users-groups-roles/index.yml)」を参照してください。
+>この記事は、職場または学校アカウントでアクセスし、組織情報を更新するユーザーを対象としています。 個人用 Microsoft アカウントでのサインイン時にエラーが発生した場合でも、組織のドメイン名 (contoso.com など) または組織の **テナント ID** (管理者から入手) を使用して、次のいずれかの URL でサインインできます。
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+>
+>従業員のグループとユーザーの管理、およびその他の用途に関する情報を探している管理者の場合は、「[Enterprise ユーザー管理のドキュメント](../enterprise-users/index.yml)」を参照してください。
 
 ## <a name="view-your-organizations"></a>組織を表示する
 
-1. 職場または学校アカウントにサインインした後、 **[マイ アカウント]** (https://myaccount.microsoft.com/) ページ) に移動します。
+1. 職場または学校アカウントにサインインした後、 **[マイ アカウント]** (https://myaccount.microsoft.com/) ページ) に移動します。 
 
-2. 左側のナビゲーション ウィンドウから **[組織]** を選択するか、 **[組織]** ブロックから **[組織の確認]** リンクを選択します。
+1. 左側のナビゲーション ウィンドウから **[組織]** を選択するか、 **[組織]** ブロックから **[組織の確認]** リンクを選択します。
 
     ![[組織] リンクが強調表示されている [マイ アカウント] ページ](media/my-account-portal/my-account-portal-organizations.png)
 
-3. **[ホーム組織]** の情報を確認します。
+1. **[ホーム組織]** の情報を確認します。
 
     ![[組織] ページ](media/my-account-portal/my-account-portal-organization-page.png)
 
-4. 関連付けられているその他の組織を見直して、ご自分のアカウントに接続されているすべての組織に覚えがあることを確認します。
+1. その他の組織を見直して、アクセスできるすべての組織に覚えがあることを確認します。
 
 ## <a name="leave-an-organization"></a>組織を脱退する
 

@@ -1,22 +1,18 @@
 ---
 title: Amazon S3 から Azure Data Lake Storage Gen2 にデータを移行する
 description: ソリューション テンプレートを使用して Amazon S3 からデータを移行する方法について説明します。これには、Azure Data Factory で AWS S3 のパーティション一覧を格納する外部制御テーブルを使用します。
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
-ms.openlocfilehash: 23d799f84cb3ac3ca911a5669041b0a25394a7ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1fd4cb248abdc219c6ee5d098e10c329826c160
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414775"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361989"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Amazon S3 から Azure Data Lake Storage Gen2 にデータを移行する
 
@@ -109,23 +105,23 @@ ms.locfileid: "81414775"
 
 3. **Migrate historical data from AWS S3 to Azure Data Lake Storage Gen2 (AWS S3 から Azure Data Lake Storage Gen2 への履歴データの移行)** テンプレートに移動します。 外部制御テーブルへの接続を入力します。データ ソース ストアとして AWS S3、宛先ストアとして Azure Data Lake Storage Gen2 を指定します。 外部制御テーブルとストアド プロシージャは、同じ接続を参照していることに注意してください。
 
-    ![新しい接続を作成する](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
+    ![Migrate historical data from AWS S3 to Azure Data Lake Storage Gen2 (AWS S3 から Azure Data Lake Storage Gen2 への履歴データの移行) テンプレートを示すスクリーンショット。](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
 
 4. **[このテンプレートを使用]** を選択します。
 
-    ![このテンプレートを使用](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
+    ![[このテンプレートを使用] ボタンが強調表示されているスクリーンショット。](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
     
 5. 次の例に示すように、2 つのパイプラインと 3 つのデータセットが作成されたことがわかります。
 
-    ![パイプラインのレビュー](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
+    ![テンプレートを使用して作成された 2 つのパイプラインと 3 つのデータセットを示すスクリーンショット。](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
 
-6. **[デバッグ]** を選択し、 **[パラメーター]** で入力し、 **[完了]** を選択します。
+6. "BulkCopyFromS3" パイプラインに移動し、 **[デバッグ]** を選択し、 **[パラメーター]** を入力します。 次に、 **[Finish]\(完了\)** を選択します。
 
-    ![**[デバッグ]** をクリックします。](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
+    ![[完了] を選択する前に、[デバッグ] を選択し、パラメーターを入力する場所を示すスクリーンショット。](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
 
 7. 次の例のような結果が表示されます。
 
-    ![結果を確認する](media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png)
+    ![返された結果を示すスクリーンショット。](media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png)
 
 
 ### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>変更されたファイルのみを Amazon S3 から Azure Data Lake Storage Gen2 にコピーするテンプレートの場合
@@ -182,7 +178,7 @@ ms.locfileid: "81414775"
 
     ![パイプラインのレビュー](media/solution-template-migration-s3-azure/delta-migration-s3-azure3.png)
 
-6. **[デバッグ]** を選択し、 **[パラメーター]** で入力し、 **[完了]** を選択します。
+6.  "DeltaCopyFromS3" パイプラインに移動し、 **[デバッグ]** を選択し、 **[パラメーター]** を入力します。 次に、 **[Finish]\(完了\)** を選択します。
 
     ![**[デバッグ]** をクリックします。](media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png)
 
@@ -192,7 +188,7 @@ ms.locfileid: "81414775"
 
 8. クエリ *"select * from s3_partition_delta_control_table"* による制御テーブルからの結果を確認することもできます。この出力は、次の例のようになります。
 
-    ![結果を確認する](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
+    ![クエリの実行後に制御テーブルからの結果を示すスクリーンショット。](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
     
 ## <a name="next-steps"></a>次のステップ
 

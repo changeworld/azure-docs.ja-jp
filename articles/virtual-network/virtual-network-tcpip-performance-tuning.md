@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: 67b635f09cb9407279e89b5f7b8526dab3c08946
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1f6abbf68d4f648aeee6c025800f24140c9459e9
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068526"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219319"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Azure VM の TCP/IP パフォーマンス チューニング
 
@@ -89,7 +89,7 @@ VM の MTU を増やすことは、お客様にお勧めしていません。 �
 
 #### <a name="large-send-offload"></a>Large Send Offload (LSO)
 
-Large Send Offload (LSO) では、パケットのセグメント化をイーサネット アダプターにオフロードすることで、ネットワーク パフォーマンスを向上させることができます。 LSO が有効になっている場合、TCP/IP スタックでは大きな TCP パケットが作成され、転送前にセグメント化するためにイーサネット アダプターに送信されます。 LSO の利点は、MTU に準拠したサイズへのパケットのセグメント化から CPU を解放でき、ハードウェアで実行されているイーサネット インターフェイスにその処理をオフロードできることです。 LSO の特典についての詳細については、[Large Send Offload のサポート](https://docs.microsoft.com/windows-hardware/drivers/network/performance-in-network-adapters#supporting-large-send-offload-lso)を参照してください。
+Large Send Offload (LSO) では、パケットのセグメント化をイーサネット アダプターにオフロードすることで、ネットワーク パフォーマンスを向上させることができます。 LSO が有効になっている場合、TCP/IP スタックでは大きな TCP パケットが作成され、転送前にセグメント化するためにイーサネット アダプターに送信されます。 LSO の利点は、MTU に準拠したサイズへのパケットのセグメント化から CPU を解放でき、ハードウェアで実行されているイーサネット インターフェイスにその処理をオフロードできることです。 LSO の特典についての詳細については、[Large Send Offload のサポート](/windows-hardware/drivers/network/performance-in-network-adapters#supporting-large-send-offload-lso)を参照してください。
 
 LSO が有効になっている場合、Azure のお客様では、パケット キャプチャの実行時に大きなフレーム サイズが見られることがあります。 これらの大きなフレーム サイズにより、一部のお客様は、断片化が起きているとか、大きな MTU が使用されていないのに使用されていると考える可能性があります。 LSO により、イーサネット アダプターは、より大きな最大セグメント サイズ (MSS) を TCP/IP スタックにアドバタイズして、さらに大きな TCP パケットを作成します。 この非セグメント化フレーム全体がイーサネット アダプターに転送され、VM 上で実行されるパケット キャプチャに表示されます。 しかし、パケットは、イーサネット アダプターによってイーサネット アダプターの MTU に従って多くの小さなフレームに分割されます。
 
@@ -117,7 +117,7 @@ PMTUD プロセスは、効率的でなく、ネットワーク パフォーマ�
 
 (IPsec VPN などの) カプセル化を実行する VM を使用する場合は、パケット サイズと MTU に関するいくつか追加の考慮事項があります。 VPN は、さらにヘッダーをパケットに追加しますが、これによりパケット サイズが大きくなり、より小さい MSS が必要になります。
 
-Azure の場合、TCP MSS クランプを 1,350 バイトに設定し、トンネル インターフェイス MTU を 1,400 に設定することをお勧めします。 詳細については、[VPN デバイスと IPSec/IKE パラメーターに関するページ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)を参照してください。
+Azure の場合、TCP MSS クランプを 1,350 バイトに設定し、トンネル インターフェイス MTU を 1,400 に設定することをお勧めします。 詳細については、[VPN デバイスと IPSec/IKE パラメーターに関するページ](../vpn-gateway/vpn-gateway-about-vpn-devices.md)を参照してください。
 
 ### <a name="latency-round-trip-time-and-tcp-window-scaling"></a>待ち時間、ラウンドトリップ時間、TCP ウィンドウ スケーリング
 
@@ -147,7 +147,7 @@ Azure の場合、TCP MSS クランプを 1,350 バイトに設定し、トン�
 
 #### <a name="latency-and-round-trip-time-effects-on-tcp"></a>TCP に対する待ち時間とラウンドトリップ時間の影響
 
-ラウンド トリップ時間は、TCP の最大スループットに直接影響します。 TCP プロトコルでは、*ウィンドウ サイズ*は、送信者が受信者から受信確認を受信する前に TCP 接続経由で送信できるトラフィックの最大量です。 TCP MSS が 1,460 に設定され、TCP ウィンドウ サイズが 65,535 に設定されている場合、送信者は受信者から受信確認を受信する前に 45 パケットを送信できます。 送信者が受信確認を取得しない場合は、データは再送信されます。 数式は次のとおりです。
+ラウンド トリップ時間は、TCP の最大スループットに直接影響します。 TCP プロトコルでは、*ウィンドウ サイズ* は、送信者が受信者から受信確認を受信する前に TCP 接続経由で送信できるトラフィックの最大量です。 TCP MSS が 1,460 に設定され、TCP ウィンドウ サイズが 65,535 に設定されている場合、送信者は受信者から受信確認を受信する前に 45 パケットを送信できます。 送信者が受信確認を取得しない場合は、データは再送信されます。 数式は次のとおりです。
 
 `TCP window size / TCP MSS = packets sent`
 
@@ -210,7 +210,7 @@ Get-NetTCPConnection
 Get-NetTCPSetting
 ```
 
-初期の TCP ウィンドウ サイズと TCP スケーリング ファクターは、Windows で `Set-NetTCPSetting` PowerShell コマンドを使用して設定できます。 詳細については、[Set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps) を参照してください。
+初期の TCP ウィンドウ サイズと TCP スケーリング ファクターは、Windows で `Set-NetTCPSetting` PowerShell コマンドを使用して設定できます。 詳細については、[Set-NetTCPSetting](/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps) を参照してください。
 
 ```powershell
 Set-NetTCPSetting
@@ -253,13 +253,13 @@ MTU が大きいほど MSS が大きくなるので、MTU を増やすと TCP �
 
 - **CPU 使用率の削減**:ホストの仮想スイッチをバイパスすることによって、ネットワーク トラフィックを処理するための CPU 使用率を削減できます。
 
-高速ネットワークを使用するには、該当する各 VM に明示的に有効にする必要があります。 手順については、「[高速ネットワークを使った Linux 仮想マシンの作成](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)」を参照してください。
+高速ネットワークを使用するには、該当する各 VM に明示的に有効にする必要があります。 手順については、「[高速ネットワークを使った Linux 仮想マシンの作成](./create-vm-accelerated-networking-cli.md)」を参照してください。
 
 #### <a name="receive-side-scaling"></a>Receive Side Scaling
 
-Receive Side Scaling (RSS) は、受信処理をマルチプロセッサ システム上の複数の CPU に分散することで、ネットワーク トラフィックの受信をより効率的に分散するネットワーク ドライバー テクノロジです。 簡単に言うと、RSS では、1 つだけではなくすべての使用可能な CPU が使用されるので、システムで処理できる受信トラフィックが増えます。 RSS の技術的な詳細については、[サイド スケーリングの受け取りの概要](https://docs.microsoft.com/windows-hardware/drivers/network/introduction-to-receive-side-scaling)を参照してください。
+Receive Side Scaling (RSS) は、受信処理をマルチプロセッサ システム上の複数の CPU に分散することで、ネットワーク トラフィックの受信をより効率的に分散するネットワーク ドライバー テクノロジです。 簡単に言うと、RSS では、1 つだけではなくすべての使用可能な CPU が使用されるので、システムで処理できる受信トラフィックが増えます。 RSS の技術的な詳細については、[サイド スケーリングの受け取りの概要](/windows-hardware/drivers/network/introduction-to-receive-side-scaling)を参照してください。
 
-VM 上で高速ネットワークが有効になっているときに最大のパフォーマンスを実現するには、RSS を有効にする必要があります。 RSS は、高速ネットワークを使用しない VM 上でも利点があります。 RSS が有効になっているかどうかを判断する方法と、これを有効にすることについては、「[Azure 仮想マシンのネットワーク スループットの最適化](https://aka.ms/FastVM)」を参照してください。
+VM 上で高速ネットワークが有効になっているときに最大のパフォーマンスを実現するには、RSS を有効にする必要があります。 RSS は、高速ネットワークを使用しない VM 上でも利点があります。 RSS が有効になっているかどうかを判断する方法と、これを有効にすることについては、「[Azure 仮想マシンのネットワーク スループットの最適化](./virtual-network-optimize-network-bandwidth.md)」を参照してください。
 
 ### <a name="tcp-time_wait-and-time_wait-assassination"></a>TCP TIME_WAIT と TIME_WAIT アセシネーション
 
@@ -271,7 +271,7 @@ TCP TIME_WAIT は、ネットワークとアプリケーションのパフォー
 
 TIME_WAIT アセシネーションを使用して、このスケールの制限に対処できます。 TIME_WAIT アセシネーションにより、新しい接続の IP パケット内のシーケンス番号が以前の接続の最後のパケットのシーケンス番号を超えたときのような一部の状況で、ソケットを再利用できます。 この場合、オペレーティング システムにより、新しい接続の確立 (新しい SYN ACK の受け入れ) が許可され、TIME_WAIT 状態だった以前の接続が強制的に終了されます。 この機能は、Azure の Windows VM でサポートされます。 他の VM でのサポートについては、OS ベンダーにお問い合わせください。
 
-TCP TIME_WAIT の構成に関するドキュメントについては、「[Settings that can be modified to improve network performance (ネットワーク パフォーマンスを向上させるために変更可能な設定)](https://docs.microsoft.com/biztalk/technical-guides/settings-that-can-be-modified-to-improve-network-performance)」をご覧ください。
+TCP TIME_WAIT の構成に関するドキュメントについては、「[Settings that can be modified to improve network performance (ネットワーク パフォーマンスを向上させるために変更可能な設定)](/biztalk/technical-guides/settings-that-can-be-modified-to-improve-network-performance)」をご覧ください。
 
 ## <a name="virtual-network-factors-that-can-affect-performance"></a>パフォーマンスに影響する可能性のある仮想ネットワーク要素
 
@@ -287,7 +287,7 @@ Azure の VM には多様なサイズと種類があり、パフォーマンス�
 
 Azure 仮想マシンには常に少なくとも 1 つのネットワーク インターフェイスが接続されている必要があります。 複数を接続することができます。 仮想マシンに割り当てられる帯域幅は、マシンに接続されているすべてのネットワーク インターフェイス全体の送信トラフィックの合計です。 つまり、帯域幅は仮想マシンごとに割り当てられており、マシンに接続されているネットワーク インターフェイスの数は関係ありません。
 
-VM の各サイズでサポートされる予想される送信スループットとサポートされるネットワーク インターフェイスの数については、「[Azure での Windows の VM サイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)」で詳しく説明しています。 最大スループットを表示するには、**汎用**などの種類を選択し、表示されたページにサイズ シリーズに関するセクション (たとえば、「Dv2-series」) を見つけます。 各シリーズに、"最大 NIC 数/想定ネットワーク帯域幅 (Mbps)" というタイトルの最終列でネットワーク仕様を提供する表があります。
+VM の各サイズでサポートされる予想される送信スループットとサポートされるネットワーク インターフェイスの数については、「[Azure での Windows の VM サイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」で詳しく説明しています。 最大スループットを表示するには、**汎用** などの種類を選択し、表示されたページにサイズ シリーズに関するセクション (たとえば、「Dv2-series」) を見つけます。 各シリーズに、"最大 NIC 数/想定ネットワーク帯域幅 (Mbps)" というタイトルの最終列でネットワーク仕様を提供する表があります。
 
 このスループット制限が仮想マシンに適用されます。 スループットは、次の要因の影響を受けません。
 
@@ -299,7 +299,7 @@ VM の各サイズでサポートされる予想される送信スループッ�
 
 - **プロトコル**:すべてのプロトコルに対するすべての送信トラフィックが、制限に達するまでカウントされます。
 
-詳しくは、「[仮想マシンのネットワーク帯域幅](https://aka.ms/AzureBandwidth)」を参照してください。
+詳しくは、「[仮想マシンのネットワーク帯域幅](./virtual-machine-network-throughput.md)」を参照してください。
 
 ### <a name="internet-performance-considerations"></a>インターネットのパフォーマンスに関する考慮事項
 
@@ -333,7 +333,7 @@ Azure 内のデプロイでは、パブリック インターネットまたは�
 
 送信接続ごとに、このマッピングが Azure Load Balancer によって一定期間維持される必要があります。 Azure のマルチテナントの性質により、すべての VM のすべての送信フローについてこのマッピングを保持すると、大量のリソースが消費される可能性があります。 そのため、Azure Virtual Network の構成に基づいて制限が設定されます。 または、より正確に言うと、Azure VM では特定の時点に特定の数の送信接続のみ確立できます。 これらの制限に達すると、VM はそれ以上発信接続を作成できません。
 
-ただしこの動作は構成できません。 SNAT と SNAT ポートの不足について詳しくは、[こちらの記事](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)をご覧ください。
+ただしこの動作は構成できません。 SNAT と SNAT ポートの不足について詳しくは、[こちらの記事](../load-balancer/load-balancer-outbound-connections.md)をご覧ください。
 
 ## <a name="measure-network-performance-on-azure"></a>Azure 上でのネットワーク パフォーマンスの測定
 
@@ -341,13 +341,13 @@ Azure 内のデプロイでは、パブリック インターネットまたは�
 
 ### <a name="measure-round-trip-time-and-packet-loss"></a>ラウンドトリップ時間とパケット損失の測定
 
-TCP のパフォーマンスは、RTT とパケット損失に大きく依存します。 Windows と Linux で使用可能な ping ユーティリティは、RTT とパケット損失を測定する最も簡単な方法となります。 ping の出力は、ソースと宛先の間の最小/最大/平均待ち時間を示します。 パケット損失も表示されます。 ping では、既定で ICMP プロトコルが使用されます。 PsPing を使用して、TCP RTT をテストできます。 詳細については、「[PsPing](https://docs.microsoft.com/sysinternals/downloads/psping)」を参照してください。
+TCP のパフォーマンスは、RTT とパケット損失に大きく依存します。 Windows と Linux で使用可能な ping ユーティリティは、RTT とパケット損失を測定する最も簡単な方法となります。 ping の出力は、ソースと宛先の間の最小/最大/平均待ち時間を示します。 パケット損失も表示されます。 ping では、既定で ICMP プロトコルが使用されます。 PsPing を使用して、TCP RTT をテストできます。 詳細については、「[PsPing](/sysinternals/downloads/psping)」を参照してください。
 
 ### <a name="measure-actual-throughput-of-a-tcp-connection"></a>TCP 接続の実際のスループットの測定
 
 NTttcp は、Linux または Windows VM の TCP パフォーマンスをテストするためのツールです。 TCP のさまざまな設定を変更し、NTttcp を使用してその利点をテストできます。 詳細については、次のリソースを参照してください。
 
-- [帯域幅/スループットのテスト (NTttcp)](https://aka.ms/TestNetworkThroughput)
+- [帯域幅/スループットのテスト (NTttcp)](./virtual-network-bandwidth-testing.md)
 
 - [NTttcp ユーティリティ](https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769)
 
@@ -357,9 +357,9 @@ NTttcp は、Linux または Windows VM の TCP パフォーマンスをテス�
 
 詳細と例については、次の記事をご覧ください。
 
-- [Expressroute ネットワーク パフォーマンスのトラブルシューティング](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-network-performance)
+- [Expressroute ネットワーク パフォーマンスのトラブルシューティング](../expressroute/expressroute-troubleshooting-network-performance.md)
 
-- [仮想ネットワークへの VPN スループットを検証する方法](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-validate-throughput-to-vnet)
+- [仮想ネットワークへの VPN スループットを検証する方法](../vpn-gateway/vpn-gateway-validate-throughput-to-vnet.md)
 
 ### <a name="detect-inefficient-tcp-behaviors"></a>非効率的な TCP 動作の検出
 
@@ -371,4 +371,4 @@ NTttcp は、Linux または Windows VM の TCP パフォーマンスをテス�
 
 ## <a name="next-steps"></a>次のステップ
 
-これで Azure VM の TCP/IP パフォーマンス チューニングについて学習したので、[仮想ネットワークの計画](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)の他の考慮事項について読んだり、[仮想ネットワークの接続と構成の詳細](https://docs.microsoft.com/azure/virtual-network/)について調べたりできます。
+これで Azure VM の TCP/IP パフォーマンス チューニングについて学習したので、[仮想ネットワークの計画](./virtual-network-vnet-plan-design-arm.md)の他の考慮事項について読んだり、[仮想ネットワークの接続と構成の詳細](./index.yml)について調べたりできます。

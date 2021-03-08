@@ -1,19 +1,16 @@
 ---
 title: Apache Spark を使用して Azure SQL Database のデータを読み書きする
 description: HDInsight Spark クラスターと Azure SQL Database の間の接続を設定する方法について説明します。 SQL データベースに対するデータの読み取り、データの書き込み、データのストリーミングを行うには
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: d979a68f4e3aa0071fb7654647610af1fbf95e90
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4d42cedbc5dc20c929703be106e732b4806f3902
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078818"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940598"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>HDInsight Spark クラスターを使用して Azure SQL Database のデータを読み書きする
 
@@ -36,7 +33,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
 最初に、Spark クラスターに関連付けられた Jupyter Notebook を作成します。 この Notebook を使って、この記事で使われているコード スニペットを実行します。
 
 1. [Azure Portal](https://portal.azure.com/) でクラスターを開きます。
-1. 右側の**クラスター ダッシュボード**の下で、 **[Jupyter Notebook]** を選択します。  **クラスター ダッシュボード**が表示されない場合は、左側のメニューの **[概要]** を選択します。 入力を求められたら、クラスターの管理者資格情報を入力します。
+1. 右側の **クラスター ダッシュボード** の下で、 **[Jupyter Notebook]** を選択します。  **クラスター ダッシュボード** が表示されない場合は、左側のメニューの **[概要]** を選択します。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
     ![Azure Spark 上の Jupyter Notebook](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark 上の Jupyter Notebook")
 
@@ -45,7 +42,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-1. Jupyter Notebook で、右上隅の **[New]\(新規\)** をクリックし、 **[Spark]** をクリックして Scala Notebook を作成します。 HDInsight Spark クラスター上の Jupyter Notebook では、Python2 アプリケーション用の **PySpark** カーネル、Python3 アプリケーション用の **PySpark3** カーネルも提供されます。 この記事では、Scala Notebook を作成します。
+1. Jupyter Notebook で、右上隅の **[New]\(新規\)** をクリックし、 **[Spark]** をクリックして Scala ノートブックを作成します。 HDInsight Spark クラスター上の Jupyter Notebook では、Python2 アプリケーション用の **PySpark** カーネル、Python3 アプリケーション用の **PySpark3** カーネルも提供されます。 この記事では、Scala Notebook を作成します。
 
     ![Spark 上の Jupyter Notebook 用のカーネル](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Spark 上の Jupyter Notebook 用のカーネル")
 
@@ -172,7 +169,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
 
     ![SSMS1 を使用して SQL Database に接続する](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "SSMS1 を使用して SQL Database に接続する")
 
-    b. **オブジェクト エクスプローラー**でデータベースとテーブル ノードを展開して、**dbo.hvactable** が作成されていることを確認します。
+    b. **オブジェクト エクスプローラー** でデータベースとテーブル ノードを展開して、**dbo.hvactable** が作成されていることを確認します。
 
     ![SSMS2 を使用して SQL Database に接続する](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "SSMS2 を使用して SQL Database に接続する")
 

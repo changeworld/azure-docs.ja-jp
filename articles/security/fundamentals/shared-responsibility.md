@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/16/2019
+ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: 8f16105d6bda1798828bc423ec8a158d49e0cf2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5d9d3878c34bd203b6c14b45e1196245ef8524f6
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72518147"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548951"
 ---
 # <a name="shared-responsibility-in-the-cloud"></a>クラウドにおける共同責任
 
@@ -50,4 +50,4 @@ ms.locfileid: "72518147"
 クラウド対応のアプローチでは、クラウドベースのセキュリティ機能を活用して有効性を高め、クラウド インテリジェンスを使用して脅威の検出と応答時間を向上させることもできます。 クラウド プロバイダーに責任をシフトすることで、セキュリティの適用範囲を広げることができるため、これまでセキュリティに費やしてきたリソースと予算を、事業のその他の優先事項に割り当てることができます。
 
 ## <a name="next-steps"></a>次のステップ
-SaaS、PaaS、IaaS のデプロイにおけるお客様と Microsoft との責任の分担の詳細については、「[クラウド コンピューティングについての責任共有](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)」を参照してください。
+SaaS、PaaS、IaaS のデプロイにおけるお客様と Microsoft との責任の分担の詳細については、「[クラウド コンピューティングについての責任共有](https://azure.microsoft.com/resources/shared-responsibility-for-cloud-computing/)」を参照してください。

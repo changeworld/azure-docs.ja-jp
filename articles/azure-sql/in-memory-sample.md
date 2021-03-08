@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: aed1965b07a80efa3cd8dbc84e396b9ef4f99252
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5a1035f8a213a6ce02dd3252ff7d3ddea46faf7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345276"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786583"
 ---
 # <a name="in-memory-sample"></a>In-Memory のサンプル
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -49,7 +49,7 @@ Azure SQL Database のインメモリ テクノロジにより、アプリケー
 
 1. [Azure Portal](https://portal.azure.com/) で、サーバー上に Premium または Business Critical データベースを作成します。 **ソース** を AdventureWorksLT サンプル データベースに設定します。 詳細な手順については、[Azure SQL Database での最初のデータベースの作成](database/single-database-create-quickstart.md)に関するページを参照してください。
 
-2. SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx)を使用して、データベースに接続します。
+2. SQL Server Management Studio [(SSMS.exe)](/sql/ssms/download-sql-server-management-studio-ssms)を使用して、データベースに接続します。
 
 3. [インメモリ OLTP Transact-SQL スクリプト](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) をクリップボードにコピーします。 この T-SQL スクリプトによって、手順 1. で作成した AdventureWorksLT サンプル データベース内に、必要なインメモリ オブジェクトが作成されます。
 
@@ -70,7 +70,7 @@ T-SQL スクリプトを実行するときにエラー 40536 が発生する場�
 SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 ```
 
-結果が **0** の場合、インメモリがサポートされていないことを示します。**1** の場合はサポートされています。 問題を診断するには、データベースを Premium サービス レベルにします。
+結果が **0** の場合、インメモリがサポートされていないことを示します。 **1** の場合はサポートされています。 問題を診断するには、データベースを Premium サービス レベルにします。
 
 ### <a name="about-the-created-memory-optimized-items"></a>作成されるメモリ最適化項目の概要
 
@@ -82,7 +82,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 - Demo.DemoSalesOrderHeaderSeed
 - Demo.DemoSalesOrderDetailSeed
 
-SSMS で**オブジェクト エクスプローラー**を使用してメモリ最適化テーブルを確認できます。 **[テーブル]** を右クリックし、 >  **[フィルター]**  >  **[フィルターの設定]**  >  **[Is Memory Optimized (メモリ最適化済み)]** の順に選択します。 値は 1 です。
+SSMS で **オブジェクト エクスプローラー** を使用してメモリ最適化テーブルを確認できます。 **[テーブル]** を右クリックし、 >  **[フィルター]**  >  **[フィルターの設定]**  >  **[Is Memory Optimized (メモリ最適化済み)]** の順に選択します。 値は 1 です。
 
 または、次のようにカタログ ビューにクエリを実行できます。
 
@@ -92,7 +92,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
     WHERE is_memory_optimized = 1;
 ```
 
-**ネイティブ コンパイル ストアド プロシージャ**:SalesLT.usp_InsertSalesOrder_inmem は、カタログ ビューのクエリを使用して確認できます。
+**ネイティブ コンパイル ストアド プロシージャ** :SalesLT.usp_InsertSalesOrder_inmem は、カタログ ビューのクエリを使用して確認できます。
 
 ```sql
 SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
@@ -122,7 +122,7 @@ ostress.exe を実行する場合、次の両方について指定したパラ�
 
 このセクションでは、ostress.exe コマンド ラインに埋め込まれた T-SQL スクリプトを示します。 このスクリプトでは、インストールした T-SQL スクリプトで作成されたアイテムを使用します。
 
-次のスクリプトでは、5 行のアイテムがあるサンプルの販売注文を、次のメモリ最適化 *テーブル*に挿入します。
+次のスクリプトでは、5 行のアイテムがあるサンプルの販売注文を、次のメモリ最適化 *テーブル* に挿入します。
 
 - SalesLT.SalesOrderHeader_inmem
 - SalesLT.SalesOrderDetail_inmem
@@ -160,8 +160,8 @@ VM または選択した任意のホストに、Replay Markup Language (RML) ユ
 
 詳細については、次を参照してください。
 
-- 「[インメモリ OLTP のサンプル データベース](https://msdn.microsoft.com/library/mt465764.aspx)」にある ostress.exe の説明。
-- [インメモリ OLTP のサンプル データベース](https://msdn.microsoft.com/library/mt465764.aspx)。
+- 「[インメモリ OLTP のサンプル データベース](/sql/relational-databases/in-memory-oltp/sample-database-for-in-memory-oltp)」にある ostress.exe の説明。
+- [インメモリ OLTP のサンプル データベース](/sql/relational-databases/in-memory-oltp/sample-database-for-in-memory-oltp)。
 - [ostress.exe のインストールに関するブログ](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910)。
 
 <!--
@@ -223,7 +223,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 
 #### <a name="expected-comparison-results"></a>予想される比較結果
 
-インメモリ テストの結果、`ostress` をデータベースと同じ Azure リージョンにある Azure VM で実行した場合、この単純なワークロードではパフォーマンスが **9 倍**向上することがわかりました。
+インメモリ テストの結果、`ostress` をデータベースと同じ Azure リージョンにある Azure VM で実行した場合、この単純なワークロードではパフォーマンスが **9 倍** 向上することがわかりました。
 
 <a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
 
@@ -233,7 +233,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 
 このセクションでは、列ストア インデックスと従来の B ツリー インデックスを使用した場合の IO と統計情報の結果を比較します。
 
-OLTP ワークロードのリアルタイム分析では、多くの場合、非クラスター化列ストア インデックスを使用するのが最適です。 詳細については、[列ストア インデックスの説明](https://msdn.microsoft.com/library/gg492088.aspx)に関するページを参照してください。
+OLTP ワークロードのリアルタイム分析では、多くの場合、非クラスター化列ストア インデックスを使用するのが最適です。 詳細については、[列ストア インデックスの説明](/sql/relational-databases/indexes/columnstore-indexes-overview)に関するページを参照してください。
 
 ### <a name="prepare-the-columnstore-analytics-test"></a>列ストア分析テストを準備する
 
@@ -246,7 +246,7 @@ OLTP ワークロードのリアルタイム分析では、多くの場合、非
    - このスクリプトでは、Dimension テーブルと 2 つのファクト テーブルを作成します。 fact テーブルには、それぞれ 350 万行のデータが設定されています。
    - スクリプトが完了するには約 15 分かかります。
 
-3. T-SQL スクリプトを SSMS に貼り付け、スクリプトを実行します。 次のように、**CREATE INDEX** ステートメントの **COLUMNSTORE** キーワードが重要です。<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
+3. T-SQL スクリプトを SSMS に貼り付け、スクリプトを実行します。 次のように、 **CREATE INDEX** ステートメントの **COLUMNSTORE** キーワードが重要です。<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
 
 4. AdventureWorksLT を互換性レベル 130 に設定します。<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
 
@@ -254,9 +254,9 @@ OLTP ワークロードのリアルタイム分析では、多くの場合、非
 
 #### <a name="key-tables-and-columnstore-indexes"></a>重要なテーブルと列ストア インデックス
 
-- dbo.FactResellerSalesXL_CCI は、クラスター化列ストア インデックスがあるテーブルで、"*データ*" レベルで高度に圧縮されます。
+- dbo.FactResellerSalesXL_CCI は、クラスター化列ストア インデックスがあるテーブルで、" *データ* " レベルで高度に圧縮されます。
 
-- dbo.FactResellerSalesXL_PageCompressed は、同等の標準のクラスター化されたインデックスがあるテーブルで、*ページ* レベルでのみ圧縮されます。
+- dbo.FactResellerSalesXL_PageCompressed は、同等の標準のクラスター化されたインデックスがあるテーブルで、 *ページ* レベルでのみ圧縮されます。
 
 #### <a name="key-queries-to-compare-the-columnstore-index"></a>列ストア インデックスを比較する重要なクエリ
 
@@ -335,7 +335,7 @@ P2 価格レベルのデータベースでは、クラスター化列ストア �
 
 ## <a name="next-steps"></a>次のステップ
 
-- [クイック スタート 1:T-SQL のパフォーマンスの高速化のためのインメモリ OLTP テクノロジ](https://msdn.microsoft.com/library/mt694156.aspx)
+- [クイック スタート 1:T-SQL のパフォーマンスの高速化のためのインメモリ OLTP テクノロジ](/sql/relational-databases/in-memory-oltp/survey-of-initial-areas-in-in-memory-oltp)
 
 - [既存の Azure SQL アプリケーションにおけるインメモリ OLTP の使用](in-memory-oltp-configure.md)
 
@@ -349,17 +349,17 @@ P2 価格レベルのデータベースでは、クラスター化列ストア �
 
 - [Azure SQL Database のインメモリ OLTP に関するブログ記事](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
-- [インメモリ OLTP の詳細情報](https://msdn.microsoft.com/library/dn133186.aspx)
+- [インメモリ OLTP の詳細情報](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
 
-- [列ストア インデックスの詳細情報](https://msdn.microsoft.com/library/gg492088.aspx)
+- [列ストア インデックスの詳細情報](/sql/relational-databases/indexes/columnstore-indexes-overview)
 
-- [リアルタイム運用分析の詳細情報](https://msdn.microsoft.com/library/dn817827.aspx)
+- [リアルタイム運用分析の詳細情報](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)
 
-- (インメモリ OLTP によってパフォーマンスが大幅に向上する一般的なワークロード パターンが記載されている) [一般的なワークロード パターンと移行の考慮事項](https://msdn.microsoft.com/library/dn673538.aspx)に関するホワイトペーパーを参照してください
+- (インメモリ OLTP によってパフォーマンスが大幅に向上する一般的なワークロード パターンが記載されている) [一般的なワークロード パターンと移行の考慮事項](/previous-versions/dn673538(v=msdn.10))に関するホワイトペーパーを参照してください
 
 #### <a name="application-design"></a>アプリケーションの設計
 
-- [インメモリ OLTP (インメモリ最適化)](https://msdn.microsoft.com/library/dn133186.aspx)
+- [インメモリ OLTP (インメモリ最適化)](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
 
 - [既存の Azure SQL アプリケーションにおけるインメモリ OLTP の使用](in-memory-oltp-configure.md)
 
@@ -367,6 +367,6 @@ P2 価格レベルのデータベースでは、クラスター化列ストア �
 
 - [Azure Portal](https://portal.azure.com/)
 
-- [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
+- [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)
 
-- [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
+- [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt)

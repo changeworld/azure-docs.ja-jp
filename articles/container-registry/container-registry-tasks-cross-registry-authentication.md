@@ -3,12 +3,12 @@ title: ACR タスクからのクロスレジストリ認証
 description: Azure リソースのマネージド ID を使用して、別のプライベート Azure コンテナー レジストリにアクセスできるように、Azure Container Registry タスク (ACR タスク) を構成します
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 8b961a2ff6a795f03798cc6f6a7d303391036ef8
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 789d2c141f8b7c3f2eb8daa31d99090e3d028a43
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057359"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915830"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>ACR タスクでの Azure マネージド ID を使用したクロスレジストリ認証 
 
@@ -39,16 +39,12 @@ Azure リソースを作成するために、この記事では Azure CLI バー
 
 ## <a name="prepare-base-registry"></a>基本レジストリの準備
 
-最初に作業ディレクトリを作成し、その後、次の内容を含む Dockerfile という名前のファイルを作成します。 この単純な例では、Docker Hub のパブリック イメージから Node.js 基本イメージをビルドします。
-    
-```bash
-echo FROM node:9-alpine > Dockerfile
-```
+デモンストレーション目的で、1 回限りの操作として、[az acr import][az-acr-import] を実行して、Docker Hub から基本レジストリにパブリック Node.js イメージをインポートします。 実際には、組織内の別のチームまたはプロセスが基本レジストリのイメージを保持することがあります。
 
-現在のディレクトリで、[az acr build][az-acr-build] コマンドを実行して基本イメージをビルドし、基本レジストリにプッシュします。 実際には、組織内の別のチームまたはプロセスが基本レジストリを保持することがあります。
-    
 ```azurecli
-az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file Dockerfile .
+az acr import --name mybaseregistry \
+  --source docker.io/library/node:15-alpine \
+  --image baseimages/node:15-alpine 
 ```
 
 ## <a name="define-task-steps-in-yaml-file"></a>タスクのステップを YAML ファイルで定義する
@@ -59,7 +55,7 @@ az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file D
 version: v1.1.0
 steps:
 # Replace mybaseregistry with the name of your registry containing the base image
-  - build: -t $Registry/hello-world:$ID  https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile-app --build-arg REGISTRY_NAME=mybaseregistry.azurecr.io
+  - build: -t $Registry/hello-world:$ID  https://github.com/Azure-Samples/acr-build-helloworld-node.git#main -f Dockerfile-app --build-arg REGISTRY_NAME=mybaseregistry.azurecr.io
   - push: ["$Registry/hello-world:$ID"]
 ```
 
@@ -194,8 +190,8 @@ Waiting for an agent...
 2019/06/14 22:47:45 Launching container with name: acb_step_0
 Sending build context to Docker daemon   25.6kB
 Step 1/6 : ARG REGISTRY_NAME
-Step 2/6 : FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
-9-alpine: Pulling from baseimages/node
+Step 2/6 : FROM ${REGISTRY_NAME}/baseimages/node:15-alpine
+15-alpine: Pulling from baseimages/node
 [...]
 Successfully built 41b49a112663
 Successfully tagged myregistry.azurecr.io/hello-world:cf10
@@ -215,7 +211,7 @@ The push refers to repository [myregistry.azurecr.io/hello-world]
   runtime-dependency:
     registry: mybaseregistry.azurecr.io
     repository: baseimages/node
-    tag: 9-alpine
+    tag: 15-alpine
     digest: sha256:e8e92cffd464fce3be9a3eefd1b65dc9cbe2484da31c11e813a4effc6105c00f
   git:
     git-head-revision: 0f988779c97fe0bfc7f2f74b88531617f4421643

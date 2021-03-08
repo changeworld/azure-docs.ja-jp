@@ -5,15 +5,17 @@ ms.date: 12/03/2019
 ms.topic: conceptual
 description: Azure Dev Spaces を使用してアプリケーションを開発する際に、実行時またはビルド時に Kubernetes シークレットを使用する方法について説明します
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 25d67d9ace6870eed283302256e3fa85661a0672
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 8791480f420dfd76d5291ce82e8ebf7412a41326
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421571"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972970"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Azure Dev Space を操作する場合のシークレットを管理する方法
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 サービスで、データベースやその他のセキュリティ保護された Azure サービスなどの特定のパスワード、接続文字列、およびその他のシークレットが必要になることがあります。 構成ファイルにこれらのシークレットの値を設定して、コードで環境変数としてそれらを使用できるようにすることができます。  これらの構成ファイルは、シークレットのセキュリティを損なわないように注意して扱う必要があります。
 

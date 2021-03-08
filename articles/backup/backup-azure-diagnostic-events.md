@@ -3,12 +3,12 @@ title: Recovery Services コンテナーの診断設定を使用する
 description: この記事では、Azure Backup の新旧の診断イベントの使用方法を説明します。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: e5f666886dca0959b0f06b799088cadf4593ec39
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b2130f06e17dd2b5cf8461d4e58342ee41c14f96
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826669"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575415"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Recovery Services コンテナーの診断設定を使用する
 
@@ -37,7 +37,7 @@ Azure Backup には、次の診断機能が用意されています。 各イベ
 
 ## <a name="use-diagnostics-settings-with-log-analytics"></a>Log Analytics での診断設定の使用
 
-Azure Backup を使用して、コンテナー診断データをバックアップ用の専用 Log Analytics テーブルに送信できるようになりました。 これらのテーブルは、[リソース固有テーブル](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)と呼ばれます。
+Azure Backup を使用して、コンテナー診断データをバックアップ用の専用 Log Analytics テーブルに送信できるようになりました。 これらのテーブルは、[リソース固有テーブル](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)と呼ばれます。
 
 コンテナーの診断データを Log Analytics に送信するには、次のようにします。
 
@@ -58,7 +58,7 @@ Azure Backup を使用して、コンテナー診断データをバックアッ�
 
 従来、コンテナーのバックアップ関連の診断データは、すべてが AzureBackupReport という名前の 1 つのイベントに含まれていました。 ここに示した 6 つのイベントは、実質的には、AzureBackupReport に含まれるすべてのデータを分解したものです。
 
-現時点では、AzureBackupReport イベントは引き続きサポートされています。これは、ユーザーがこのイベントに対して既存のカスタム クエリを持っている場合の下位互換性を保つためです。 例として、カスタム ログ アラートやカスタム視覚化エフェクトがあります。 "*可能な限り早く[新しいイベント](#diagnostics-events-available-for-azure-backup-users)にアップグレードすることをお勧めします。* " 新しいイベントでは次のようになります。
+現時点では、AzureBackupReport イベントは引き続きサポートされています。これは、ユーザーがこのイベントに対して既存のカスタム クエリを持っている場合の下位互換性を保つためです。 例として、カスタム ログ アラートやカスタム視覚化エフェクトがあります。 "*可能な限り早く [新しいイベント](#diagnostics-events-available-for-azure-backup-users)にアップグレードすることをお勧めします。* " 新しいイベントでは次のようになります。
 
 * ログ クエリでデータをより簡単に操作できます。
 * スキーマとその構造をより確実に発見できます。
@@ -121,7 +121,7 @@ Azure Backup イベントと Azure Site Recovery イベントは、同じ Recove
 まとめると次のようになります。
 
 * Azure Diagnostics で既に Log Analytics 診断が設定されていて、カスタム クエリが記述されている場合は、新しいイベントのデータを使用するようにクエリを移行するまで、設定を "*そのまま*" にしておきます。
-* 推奨されているように新しいテーブルにオンボードする場合は、**新しい**診断設定を作成し、 **[リソース固有]** を選択して、6 つの新しいイベントを選択します。
+* 推奨されているように新しいテーブルにオンボードする場合は、**新しい** 診断設定を作成し、 **[リソース固有]** を選択して、6 つの新しいイベントを選択します。
 * 現在 Azure Site Recovery イベントを Log Analytics に送信している場合は、それらのイベントに対してリソース固有モードを選択 "*しないでください*"。 そうしないと、これらのイベントのデータが Log Analytics ワークスペースに送られません。 代わりに、追加の診断設定を作成し、 **[Azure diagnostics]\(Azure 診断\)** を選択して、関連する Azure Site Recovery イベントを選択します。
 
 次の図に、1 つのコンテナーに対して 3 つの診断設定を使用しているユーザーの例を示します。 最初の **Setting1** という名前の設定では、AzureBackupReport イベントのデータが、Azure 診断モードで Log Analytics ワークスペースに送信されます。 2 つ目の **Setting2** という名前の設定では、6 つの新しい Azure Backup イベントのデータが、リソース固有モードで Log Analytics ワークスペースに送信されます。 3 つ目の **Setting3** という名前の設定では、Azure Site Recovery イベントのデータが、Azure 診断モードで Log Analytics ワークスペースに送信されます。

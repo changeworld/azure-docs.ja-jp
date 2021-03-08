@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 39a92dbdc0bdcd0fdd2bb06efe3fbd4bfe33069d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071200"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371989"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware VM または物理マシンから Azure へのフェールオーバー時のエラーをトラブルシューティングする
 
@@ -44,7 +44,7 @@ Site Recovery は、フェールオーバーした従来の仮想マシンを Az
 
 Site Recovery は、フェールオーバーした仮想マシンを Azure に作成できませんでした。 これは、オンプレミスの仮想マシンでハイドレーションの内部アクティビティが失敗したために発生します。
 
-Azure でマシンを起動するには、Azure 環境で、いくつかのドライバーがブート開始状態であり、DHCP などのサービスが自動開始状態である必要があります。 そのため、ハイドレーション アクティビティは、フェールオーバーの時点で、**atapi、intelide、storflt、vmbus、および storvsc ドライバー**のスタートアップの種類をブート開始に変換します。 また、DHCP などのいくつかのサービスのスタートアップの種類も自動開始に変換します。 このアクティビティは、環境固有の問題が原因で失敗する可能性があります。 
+Azure でマシンを起動するには、Azure 環境で、いくつかのドライバーがブート開始状態であり、DHCP などのサービスが自動開始状態である必要があります。 そのため、ハイドレーション アクティビティは、フェールオーバーの時点で、 **atapi、intelide、storflt、vmbus、および storvsc ドライバー** のスタートアップの種類をブート開始に変換します。 また、DHCP などのいくつかのサービスのスタートアップの種類も自動開始に変換します。 このアクティビティは、環境固有の問題が原因で失敗する可能性があります。 
 
 **Windows Guest OS** 用のドライバーのスタートアップの種類を手動で変更するには、次の手順に従ってください。
 
@@ -55,7 +55,7 @@ Azure でマシンを起動するには、Azure 環境で、いくつかのド�
     ハイドレーションが必要な場合は、次の結果を示します。
 
     ```output
-    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
     This system doesn't meet no-hydration requirement.
     ```
@@ -84,8 +84,8 @@ SSH の問題に関する詳細なトラブルシューティング手順につ�
 
 Azure でフェールオーバーされた VM で **[接続]** ボタンが淡色表示され、Express Route またはサイト間 VPN 接続を使用して Azure に接続されない場合は、次の操作を実行します。
 
-1. **[仮想マシン]**  >  **[ネットワーク]** に移動し、必要なネットワーク インターフェイスの名前をクリックします。  ![ネットワーク インターフェイス](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. **[IP 構成]** に移動し、必要な IP 構成の名前フィールドをクリックします。 ![IPConfigurations](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+1. **[仮想マシン]**  >  **[ネットワーク]** に移動し、必要なネットワーク インターフェイスの名前をクリックします。  ![仮想マシンのネットワーク ページのスクリーンショット。ネットワーク インターフェイスの名前が選択されています。](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+2. **[IP 構成]** に移動し、必要な IP 構成の名前フィールドをクリックします。 ![ネットワーク インターフェイスの IP 構成ページのスクリーンショット。IP 構成の名前が選択されています。](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. パブリック IP アドレスを有効にするには、 **[有効にする]** をクリックします。 ![IP の有効化](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
 4. **[必要な設定の構成]**  >  **[新規作成]** をクリックします。 ![新規作成](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
 5. パブリック アドレスの名前を入力し、 **[SKU]** と **[割り当て]** の既定のオプションを選択し、 **[OK]** をクリックします。
@@ -94,7 +94,7 @@ Azure でフェールオーバーされた VM で **[接続]** ボタンが淡�
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>接続/RDP/SSH ができない - VM の [接続] ボタンは使用可能
 
-Azure でフェールオーバーされた VM で **[接続]** ボタンが使用できる (淡色表示されていない) 場合は、仮想マシンで **[Boot diagnostics]\(ブート診断)** を調べ、[この記事](../virtual-machines/troubleshooting/boot-diagnostics.md)に記載されているエラーがないかチェックします。
+Azure でフェールオーバーされた VM で **[接続]** ボタンが使用できる (淡色表示されていない) 場合は、仮想マシンで **[Boot diagnostics]\(ブート診断)** を調べ、 [この記事](../virtual-machines/troubleshooting/boot-diagnostics.md)に記載されているエラーがないかチェックします。
 
 1. 仮想マシンが起動されていない場合は、前の復旧ポイントにフェールオーバーしてみます
 2. 仮想マシン内のアプリケーションが開始されていない場合は、アプリケーションと整合性がとれた復旧ポイントにフェールオーバーしてみます
@@ -104,7 +104,7 @@ Azure でフェールオーバーされた VM で **[接続]** ボタンが使�
 
     b.  フェールオーバーされた仮想マシンが開始されると予想されているのと同じドメインに参加できることを確認します。
 
-    c. ドメイン コントローラーが適切に機能**していない**場合は、ローカル管理者アカウントを使用して、フェールオーバーされた仮想マシンにログインしてみます。
+    c. ドメイン コントローラーが適切に機能 **していない** 場合は、ローカル管理者アカウントを使用して、フェールオーバーされた仮想マシンにログインしてみます。
 4. カスタム DNS サーバーを使用している場合は、そのサーバーにアクセスできることを確認します。 そのためには、以下の手順に従います。
 
     a. 同じネットワークに新しい仮想マシンを作成します
@@ -134,7 +134,7 @@ RDP を使用してマシンに接続できても、シリアル コンソール
 
 フェールオーバー後の Windows VM 起動時に、回復した VM で、予期しないシャット ダウンのメッセージを受信した場合、それはフェールオーバーに使用された復旧ポイントで、VM のシャット ダウン状態がキャプチャされなかったことを示しています。 これは、VM が完全にはシャット ダウンされていないときのポイントに復旧すると発生します。
 
-これは一般に懸念の原因にはならないため、計画外のフェールオーバーであれば通常は無視できます。 フェールオーバーが計画されている場合は、フェールオーバーの前に VM が正しくシャット ダウンされるようにして、オンプレミスの保留中のレプリケーション データが Azure に送信されるのに十分な時間を確保します。 次に、[フェールオーバー画面](site-recovery-failover.md#run-a-failover)の **[Lateset]\(最新)** オプションを使用して、Azure 上の保留中データがすべて処理されて復旧ポイントに入れられるようにします。それが後で、VM のフェールオーバーに使用されます。
+これは一般に懸念の原因にはならないため、計画外のフェールオーバーであれば通常は無視できます。 フェールオーバーが計画されている場合は、フェールオーバーの前に VM が正しくシャット ダウンされるようにして、オンプレミスの保留中のレプリケーション データが Azure に送信されるのに十分な時間を確保します。 次に、 [フェールオーバー画面](site-recovery-failover.md#run-a-failover)の **[Lateset]\(最新)** オプションを使用して、Azure 上の保留中データがすべて処理されて復旧ポイントに入れられるようにします。それが後で、VM のフェールオーバーに使用されます。
 
 ## <a name="unable-to-select-the-datastore"></a>データストアを選択できない
 
@@ -168,7 +168,7 @@ RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] Cu
 
 2. http_proxy または https_proxy のどちらかの設定が定義されていることが前のコマンドの出力で示されている場合は、次のいずれかの方法を使用して構成サーバーとマスター ターゲットの間の通信のブロックを解除します。
    
-   - [PsExec ツール](https://aka.ms/PsExec) をダウンロードします。
+   - [PsExec ツール](/sysinternals/downloads/psexec) をダウンロードします。
    - このツールを使用して、システム ユーザーのコンテキストにアクセスし、プロキシ アドレスが構成されているかどうかを判断します。 
    - プロキシが構成されている場合は、PsExec ツールを使用してシステム ユーザーのコンテキストで IE を開きます。
   

@@ -6,21 +6,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 02/09/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2e390c9d5d2fa7c6551ed661c6c25096732eefd5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: a370a7f04e0e43b96e4a574313c4f24c4990ab6f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057099"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390359"
 ---
 # <a name="soft-delete-for-blobs"></a>BLOB の論理的な削除
 
-BLOB の論理的な削除では、お客様のデータが誤って変更または削除されないように保護します。 ストレージ アカウントに対して BLOB の論理的な削除が有効になっている場合、そのストレージ アカウント内の BLOB、BLOB バージョン (プレビュー)、およびスナップショットは、削除された後も、指定した保持期間中は復旧することができます。
+BLOB の論理的な削除では、お客様のデータが誤って変更または削除されないように保護します。 ストレージ アカウントに対して BLOB の論理的な削除が有効になっている場合、そのストレージ アカウント内の BLOB、BLOB バージョン、およびスナップショットは、削除された後も、指定した保持期間中は復旧することができます。
 
-アプリケーションまたは別のストレージ アカウントのユーザーによってデータが誤って変更または削除される可能性がある場合、Microsoft では論理的な削除を有効にすることをお勧めします。 論理的な削除を有効にする方法について詳しくは、[BLOB の論理的な削除の有効化と管理](soft-delete-enable.md)に関する記事をご覧ください。
+アプリケーションまたは別のストレージ アカウントのユーザーによってデータが誤って変更または削除される可能性がある場合、Microsoft では論理的な削除を有効にすることをお勧めします。 論理的な削除を有効にする方法について詳しくは、[BLOB の論理的な削除の有効化と管理](./soft-delete-blob-enable.md)に関する記事をご覧ください。
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -28,7 +28,11 @@ BLOB の論理的な削除では、お客様のデータが誤って変更また
 
 ストレージ アカウントで BLOB の論理的な削除が有効になっている場合は、オブジェクトが削除された後も、指定したデータ保持期間中は復旧することができます。 この保護の範囲は、上書きされたために消去されたすべての BLOB データ (ブロック BLOB、追加 BLOB、ページ BLOB) に及びます。
 
-BLOB の論理的な削除は有効になっているが、BLOB のバージョン管理 (プレビュー) が有効になっていない場合、既存の BLOB またはスナップショット内のデータが削除されると、上書きされたデータの状態を保存するために、論理的に削除されたスナップショットが生成されます。 指定された保持期間が経過すると、オブジェクトは完全に削除されます。
+次の図は、BLOB の論理的な削除が有効になっている場合に、削除された BLOB を復元する方法を示しています。
+
+:::image type="content" source="media/soft-delete-blob-overview/blob-soft-delete-diagram.png" alt-text="論理的に削除された BLOB を復元する方法を示す図":::
+
+BLOB の論理的な削除は有効になっているが、BLOB のバージョン管理が有効になっていない場合、既存の BLOB またはスナップショット内のデータが削除されると、上書きされたデータの状態を保存するために、論理的に削除されたスナップショットが生成されます。 指定された保持期間が経過すると、オブジェクトは完全に削除されます。
 
 ストレージ アカウントで BLOB のバージョン管理と BLOB の論理的な削除の両方が有効になっている場合、BLOB を削除すると、論理的に削除されたスナップショットではなく、新しいバージョンが作成されます。 新しいバージョンは論理的に削除されず、論理的な削除の保持期間が過ぎても削除されません。 BLOB の論理的に削除されたバージョンは、[Undelete Blob](/rest/api/storageservices/undelete-blob) 操作を呼び出すことで、保持期間内に復元できます。 BLOB は、後で [Copy Blob](/rest/api/storageservices/copy-blob) 操作を呼び出して、そのいずれかのバージョンから復元できます。 BLOB のバージョン管理と論理的な削除の併用の詳細については、「[BLOB のバージョン管理と論理的な削除](versioning-overview.md#blob-versioning-and-soft-delete)」を参照してください。
 
@@ -79,7 +83,7 @@ BLOB の論理的な削除は、新規と既存の両方の汎用 v2、汎用 v1
 > [!NOTE]  
 > 論理的に削除された BLOB が上書きされると、書き込み操作前の BLOB の状態の論理的に削除されたスナップショットが、自動的に生成されます。 新しい BLOB は、上書きされた BLOB の階層を継承します。
 
-コンテナーまたはアカウントによる削除の場合、または BLOB メタデータおよび BLOB プロパティの上書きの場合は、論理的な削除はデータを保存しません。 誤った削除からストレージ アカウントを保護するには、Azure Resource Manager を使ってロックを設定できます。 詳しくは、Azure Resource Manager の記事「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」をご覧ください。
+コンテナーまたはアカウントの削除の場合、または BLOB メタデータおよび BLOB プロパティが上書きされる場合、論理的な削除ではデータは保存されません。 削除からストレージ アカウントを保護するには、Azure Resource Manager を使ってロックを設定できます。 詳しくは、Azure Resource Manager の記事「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」をご覧ください。  コンテナーが誤って削除されないようにするには、ストレージ アカウントに対してコンテナーの論理的な削除を構成します。 詳細については、「[コンテナーの論理的な削除 (プレビュー)](soft-delete-container-overview.md)」を参照してください。
 
 次の表では、論理的な削除を有効にしたときに想定される動作の詳細を示します。
 
@@ -149,7 +153,7 @@ Copy a snapshot over the base blob:
 
 ## <a name="pricing-and-billing"></a>価格と課金
 
-論理的に削除されたデータはすべて、アクティブなデータと同じレートで課金されます。 構成されているリテンション期間の後で完全に削除されたデータについては請求されません。 スナップショットとその課金方法について詳しくは、「[スナップショットの課金方法について](storage-blob-snapshots.md)」をご覧ください。
+論理的に削除されたデータはすべて、アクティブなデータと同じレートで課金されます。 構成されているリテンション期間の後で完全に削除されたデータについては請求されません。 スナップショットとその課金方法について詳しくは、「[スナップショットの課金方法について](./snapshots-overview.md)」をご覧ください。
 
 スナップショットの自動生成に関するトランザクションには課金されません。 **Undelete Blob** のトランザクションは、書き込み操作のレートで課金されます。
 
@@ -193,5 +197,5 @@ Azure 仮想マシンからアンマネージド ディスクへの書き込み�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [BLOB の論理的な削除の有効化](soft-delete-enable.md)
-- [BLOB のバージョン管理 (プレビュー)](versioning-overview.md)
+- [BLOB の論理的な削除の有効化](./soft-delete-blob-enable.md)
+- [BLOB のバージョン管理](versioning-overview.md)

@@ -6,18 +6,18 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 38532fba2be1fedd275ed2e7f9dfc1bf5752499d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 88082c441dafdc7571f2b9775bfc07ebe3ca5aa4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501655"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730508"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>メンテナンス コントロール構成のリソースを別のリージョンに移動する
 
 メンテナンス コントロール構成に関連付けられているリソースを別の Azure リージョンに移動するには、この記事に従ってください。 構成を移動する場合、さまざまな理由が考えられます。 たとえば、新しい Azure リージョンを利用するため、特定のリージョンでのみ利用可能な機能やサービスをデプロイするため、内部ポリシーとガバナンスの要件を満たすため、または容量計画の要件に応じるためなどがあります。
 
-カスタマイズされたメンテナンス構成でメンテナンス コントロールを使用すると、プラットフォームの更新プログラムを [Windows](./maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) VM、[Linux](./maintenance-control-cli.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) VM、Azure Dedicated Host に適用する方法を制御できます。 メンテナンス コントロールをリージョン間で移動するためのシナリオがいくつかあります。
+[メンテナンス コントロール](maintenance-control.md)を、カスタマイズされたメンテナンス構成と共に使用すると、プラットフォームの更新プログラムを VM、および Azure Dedicated Host に適用する方法を制御できます。 メンテナンス コントロールをリージョン間で移動するためのシナリオがいくつかあります。
 
 - メンテナンス構成に関連付けられているリソースを移動するが、構成自体は移動しない場合、この記事に従います。
 - メンテナンス コントロール構成を移動するが、構成に関連付けられているリソースは移動しない場合、[こちらの手順](move-region-maintenance-configuration.md)に従います。
@@ -49,7 +49,7 @@ ms.locfileid: "86501655"
     $adh | Dedicated ホスト名 | "myHost"
     $adhParentName | 親リソース名 | "HostGroup"
     
-2. PowerShell の [Get-AZConfigurationAssignment](/powershell/module/az.maintenance/get-azconfigurationassignment?view=azps-3.5.0) コマンドを使用してメンテナンス構成を取得する場合:
+2. PowerShell の [Get-AZConfigurationAssignment](/powershell/module/az.maintenance/get-azconfigurationassignment) コマンドを使用してメンテナンス構成を取得する場合:
 
     - Azure Dedicated Host の場合、次のコマンドを実行します。
         ```
@@ -61,7 +61,7 @@ ms.locfileid: "86501655"
         ```
         Get-AzConfigurationAssignment -ResourceGroupName $rgName -ResourceName $vmName -ProviderName Microsoft.Compute -ResourceType virtualMachines | Format-Table Name
         ```
-3. CLI の [az maintenance assignment](/cli/azure/ext/maintenance/maintenance/assignment?view=azure-cli-latest) コマンドを使用してメンテナンス構成を取得する場合:
+3. CLI の [az maintenance assignment](/cli/azure/ext/maintenance/maintenance/assignment) コマンドを使用してメンテナンス構成を取得する場合:
 
     - Azure Dedicated Host の場合:
 

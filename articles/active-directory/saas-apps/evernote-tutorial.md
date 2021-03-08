@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 22225d9810c7b913505cb003a1ed2ce8f1a144e1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 86a314cd5255c06a70d0f9b28d06e3ac4156fdb6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555340"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453834"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evernote"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Evernote の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88555340"
 * ユーザーが自分の Azure AD アカウントで自動的に Evernote にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Evernote では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Evernote では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -52,7 +52,7 @@ Azure AD への Evernote の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Evernote**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Evernote** 」と入力します。
 1. 結果のパネルから **[Evernote]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-evernote"></a>Evernote の Azure AD シングル サインオンの構成とテスト
@@ -90,9 +90,9 @@ Evernote で Azure AD SSO を構成してテストするには、次の構成要
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-7. **署名**オプションを変更するには、 **[編集]** をクリックして **[SAML 署名証明書]** ダイアログを開きます。
+7. **署名** オプションを変更するには、 **[編集]** をクリックして **[SAML 署名証明書]** ダイアログを開きます。
 
-    ![image](common/edit-certificate.png) 
+    ![[Edit]\(編集\) ボタンが選択されている [S A M L Signing Certificate]\(S A M L 署名証明書\) ダイアログを示すスクリーンショット。](common/edit-certificate.png) 
 
     ![image](./media/evernote-tutorial/samlassertion.png)
 
@@ -136,7 +136,7 @@ Evernote で Azure AD SSO を構成してテストするには、次の構成要
 
 ## <a name="configure-evernote-sso"></a>Evernote の SSO の構成
 
-1. Evernote 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. Evernote 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -181,7 +181,7 @@ Evernote の場合、プロビジョニングは手動で行います。
 
 3. **[管理コンソール]** から **[ユーザーの追加]** に移動します。
 
-    ![Add-testUser](./media/evernote-tutorial/create_aaduser_0001.png)
+    ![[Add Users]\(ユーザーの追加\) が選択されている [Users]\(ユーザー\) メニューを示すスクリーンショット。](./media/evernote-tutorial/create_aaduser_0001.png)
 
 4. **[メール]** テキストボックスの **[チーム メンバーを追加]** にユーザー アカウントのメール アドレスを入力し、 **[招待する]** をクリックします。
 
@@ -193,15 +193,14 @@ Evernote の場合、プロビジョニングは手動で行います。
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Evernote] タイルをクリックすると、SSO を設定した Evernote に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Evernote] タイルをクリックすると、SSO を設定した Evernote に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Evernote を試す](https://aad.portal.azure.com/)
-

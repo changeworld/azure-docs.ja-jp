@@ -7,19 +7,16 @@ author: lobrien
 ms.author: laobri
 ms.custom: subject-armqs
 ms.date: 06/10/2020
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: 9b89c0a4135bf595991439dd47e57a870ea2b0d1
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 7feacec9f0e78749f17359a9080411b6d9696136
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855057"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518217"
 ---
 # <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Ubuntu Data Science Virtual Machine を作成する
-
-[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Ubuntu 18.04 Data Science Virtual Machine を作成する方法について説明します。 Data Science Virtual Machine は、一連のデータ サイエンスおよび機械学習のフレームワークとツールがプリロードされているクラウドベースの仮想マシンです。 GPU を利用したコンピューティング リソースにデプロイすると、すべてのツールとライブラリは GPU を使用するよう構成されます。
 
@@ -33,7 +30,7 @@ ms.locfileid: "88855057"
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/services/machine-learning/) を作成してください。
 
-* ご使用の**ローカル環境**からこのドキュメントの CLI コマンドを使用するには、[Azure CLI](/cli/azure/install-azure-cli) が必要です。
+* ご使用の **ローカル環境** からこのドキュメントの CLI コマンドを使用するには、[Azure CLI](/cli/azure/install-azure-cli) が必要です。
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 

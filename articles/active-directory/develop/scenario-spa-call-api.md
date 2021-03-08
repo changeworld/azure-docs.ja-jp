@@ -1,5 +1,6 @@
 ---
-title: Web API を呼び出すシングル ページ アプリを構築する - Microsoft IDプラットフォーム | Azure
+title: Web API を呼び出すシングル ページ アプリを作成する
+titleSuffix: Microsoft identity platform
 description: Web API を呼び出すシングル ページ アプリケーションをビルドする方法について学ぶ
 services: active-directory
 author: rwike77
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.openlocfilehash: 5b70b109f43e80fc3ec68f52aef2dba6823033bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4dd4a40233fc1c030581fd1ae2827061435a0ab3
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882133"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753547"
 ---
 # <a name="single-page-application-call-a-web-api"></a>シングルページ アプリケーション：Web API を呼び出す
 
@@ -52,5 +53,4 @@ MSAL Angular ラッパーを使用すると、自動的にアクセス トーク
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [運用環境への移行](scenario-spa-production.md)
+このシナリオの次の記事「[運用環境に移行する](scenario-spa-production.md)」に進みます。

@@ -1,17 +1,15 @@
 ---
 title: Service Fabric スタンドアロン クライアントをインストールする
-description: このチュートリアルでは、前のチュートリアル記事で作成したクラスターに Service Fabric スタンドアロン クライアントをインストールする方法について説明します。
-author: dkkapur
+description: このチュートリアルでは、クラスターに Service Fabric スタンドアロン クライアントをインストールする方法について説明します。
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ae0b343be986f4d8d5176c1f39eef6b23ca81278
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75613943"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840644"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>チュートリアル: Service Fabric クラスターのインストールと作成
 
@@ -19,7 +17,7 @@ Service Fabric で採用されている "すべての OS、すべてのクラウ
 
 このチュートリアルは、シリーズの第 2 部です。 このチュートリアルでは、Service Fabric スタンドアロン クラスターの作成手順について説明します。
 
-シリーズの第 2 部で学習する内容は次のとおりです。
+この記事では、次の方法について学習します。
 
 > [!div class="checklist"]
 > * Service Fabric スタンドアロン パッケージをダウンロードしてインストールする
@@ -77,7 +75,7 @@ cd .\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\
 .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
 ```
 
-次のような出力結果が表示されます。 一番下の "Passed" フィールドで `True` が返された場合、サニティ チェックは成功であり、クラスターは入力した構成を基にデプロイ可能と考えられます。
+次の例のような出力が表示されます。 一番下の "Passed" フィールドで `True` が返された場合、サニティ チェックは成功であり、クラスターは入力した構成を基にデプロイ可能と考えられます。
 
 ```powershell
 Trace folder already exists. Traces will be written to existing trace folder: C:\Users\Administrator\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\DeploymentTraces
@@ -118,7 +116,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 >
 >
 
-### <a name="bring-up-service-fabric-explorer"></a>Service Fabric Explorer を起動する
+### <a name="open-service-fabric-explorer"></a>Service Fabric Explorer を開く
 
 これで、Service Fabric Explorer を使用してクラスターに接続できるようになりました。http:\//localhost:19080/Explorer/index.html を使っていずれかのマシンから直接接続するか、http:\//<*IPAddressofaMachine*>:19080/Explorer/index.html を使ってリモートで接続することができます。
 
@@ -128,7 +126,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 
 ## <a name="next-steps"></a>次のステップ
 
-シリーズの第 2 部では、次の手順をはじめ、ストレージ アカウントに大量のランダム データを並行でアップロードする方法について学びました。
+この記事では、次の手順をはじめ、ストレージ アカウントに大量のランダム データを並列でアップロードする方法について学びました。
 
 > [!div class="checklist"]
 > * 接続文字列の構成

@@ -1,21 +1,21 @@
 ---
 title: 非対話型サインインでシングル ページ アプリケーションをセキュリティで保護する方法
 titleSuffix: Azure Maps
-description: 非対話型の Azure AD ロールベースのアクセス制御と Azure Maps Web SDK を使用してシングル ページ アプリケーションを構成する方法。
+description: 非対話型の Azure ロールベースのアクセス制御 (Azure RBAC) と Azure Maps Web SDK を使用してシングル ページ アプリケーションを構成する方法。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 83fbf6fa9190953d902ab60a8a5ce131f1fd8a0e
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: devx-track-js
+ms.openlocfilehash: 3b647a02731a4fa404aab4bb648853eea766d92e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006419"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684074"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>非対話型サインインでシングル ページ アプリケーションをセキュリティで保護する方法
 
@@ -30,15 +30,15 @@ ms.locfileid: "88006419"
 
 Azure AD の認証を行うセキュリティで保護された Web サービス アプリケーションを作成します。 
 
-1. Azure portal で関数を作成します。 詳細については、[Azure 関数の作成](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function)に関する記事を参照してください。
+1. Azure portal で関数を作成します。 詳細については、[Azure 関数の作成](../azure-functions/functions-get-started.md)に関する記事を参照してください。
 
-2. シングル ページ Web アプリケーションからアクセスできるように、Azure 関数で CORS ポリシーを構成します。 これにより、ブラウザー クライアントが Web アプリケーションの許可された配信元に安全にアクセスできるようになります。 詳細については、「[CORS 機能の追加](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-rest-api#add-cors-functionality)」を参照してください。
+2. シングル ページ Web アプリケーションからアクセスできるように、Azure 関数で CORS ポリシーを構成します。 これにより、ブラウザー クライアントが Web アプリケーションの許可された配信元に安全にアクセスできるようになります。 詳細については、「[CORS 機能の追加](../app-service/app-service-web-tutorial-rest-api.md#add-cors-functionality)」を参照してください。
 
-3. Azure 関数に[システム割り当て ID を追加](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)して、Azure AD に認証するサービス プリンシパルを作成できるようにします。  
+3. Azure 関数に[システム割り当て ID を追加](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)して、Azure AD に認証するサービス プリンシパルを作成できるようにします。  
 
-4. Azure Maps アカウントへのシステム割り当て ID のロールベースのアクセスを許可します。 詳細については、[ロールベースのアクセスの付与](#grant-role-based-access)に関する記事を参照してください。
+4. Azure Maps アカウントにシステム割り当て ID に対するロールベースのアクセス権を付与します。 詳細については、「[ロールベースのアクセス権を付与する](#grant-role-based-access)」を参照してください。
 
-5. サポートされているいずれかのメカニズムまたは REST プロトコルを使用して、システム割り当て ID を使用して Azure Maps アクセス トークンを取得する Azure 関数のコードを記述します。 詳細については、「[Azure リソースのトークンを取得する](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)」を参照してください
+5. サポートされているいずれかのメカニズムまたは REST プロトコルを使用して、システム割り当て ID を使用して Azure Maps アクセス トークンを取得する Azure 関数のコードを記述します。 詳細については、「[Azure リソースのトークンを取得する](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)」を参照してください
 
     REST プロトコルの例のサンプルを次に示します。
 
@@ -64,8 +64,8 @@ Azure AD の認証を行うセキュリティで保護された Web サービス
 
 6. Azure 関数 HttpTrigger のセキュリティを構成する
 
-   * [関数アクセス キーを作成する](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#authorization-keys)
-   * 運用環境の Azure 関数の [HTTP エンドポイントをセキュリティで保護](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#secure-an-http-endpoint-in-production)する。
+   * [関数アクセス キーを作成する](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#authorization-keys)
+   * 運用環境の Azure 関数の [HTTP エンドポイントをセキュリティで保護](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)する。
    
 7. Web アプリケーション Azure Maps Web SDK を構成します。 
 
@@ -111,16 +111,16 @@ Azure AD の認証を行うセキュリティで保護された Web サービス
 
 2. **[ロールの割り当て]** タブの **[ロール]** で、 **[Azure Maps データ閲覧者]** や **[Azure Maps データ共同作成者]** などの組み込みの Azure Maps ロールの定義を選択します。 **[アクセスの割り当て先]** で、 **[関数アプリ]** を選択します。 プリンシパルを名前で選択します。 次に、 **[保存]** を選択します。
 
-   * 詳細については、「[ロールの割り当てを追加または削除する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)」を参照してください。
+   * 詳細については、「[ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 > [!WARNING]
-> Azure Maps の組み込みロールの定義は、多くの Azure Maps REST API に対する非常に大きな承認アクセスを提供します。 API のアクセスを最小限に制限するには、[カスタム ロールの定義を作成して、システム割り当て ID をカスタム ロールの定義に割り当てる](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)方法に関する記事を参照してください。 これにより、アプリケーションが Azure Maps にアクセスするために必要な最小限の権限が有効になります。
+> Azure Maps の組み込みロールの定義は、多くの Azure Maps REST API に対する非常に大きな承認アクセスを提供します。 API のアクセスを最小限に制限するには、[カスタム ロールの定義を作成して、システム割り当て ID をカスタム ロールの定義に割り当てる](../role-based-access-control/custom-roles.md)方法に関する記事を参照してください。 これにより、アプリケーションが Azure Maps にアクセスするために必要な最小限の権限が有効になります。
 
 ## <a name="next-steps"></a>次のステップ
 
 シングル ページ アプリケーションのシナリオの詳細については、次を参考にしてください。
 > [!div class="nextstepaction"]
-> [シングルページ アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-overview)
+> [シングルページ アプリケーション](../active-directory/develop/scenario-spa-overview.md)
 
 Azure Maps アカウントにおける API 使用状況メトリックを確認します。
 > [!div class="nextstepaction"]

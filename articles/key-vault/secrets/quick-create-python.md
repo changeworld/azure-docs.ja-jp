@@ -3,151 +3,102 @@ title: クイックスタート - Python 用の Azure Key Vault クライアン�
 description: Python クライアント ライブラリを使用して Azure キー コンテナーからシークレットを作成、取得、削除する方法について学習します。
 author: msmbaldwin
 ms.author: mbaldwin
-ms.date: 10/20/2019
+ms.date: 09/03/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: devx-track-python
-ms.openlocfilehash: f1f044eb3af35019eaf010e118bc4a5814269e9e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 1eb3728e9697cefc3621221e4a918656efcba3c6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378554"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936636"
 ---
-# <a name="quickstart-azure-key-vault-secrets-client-library-for-python"></a>クイック スタート:Python 用 Azure Key Vault シークレット クライアント ライブラリ
+# <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>クイックスタート: Python 用 Azure Key Vault シークレット クライアント ライブラリ
 
-Python 用 Azure Key Vault クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。
+Python 用 Azure Key Vault シークレット クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。 Key Vault を使用してシークレットを保存することで、シークレットをコードに保存しなくて済むため、アプリのセキュリティが向上します。
 
-Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Python 用 Key Vault クライアント ライブラリは、次の目的で使用します。
-
-- キーとパスワードのセキュリティと制御を強化する。
-- 暗号化キーの作成とインポートを数分で実行する。
-- クラウド スケールおよびグローバルな冗長性により待ち時間を短縮する。
-- TLS または SSL 証明書のタスクを簡略化および自動化する。
-- FIPS 140-2 レベル 2 への準拠が検証済みの HSM を使用する。
-
-[API のリファレンスのドキュメント](/python/api/overview/azure/keyvault-secrets-readme?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets) | [パッケージ (Python Package Index)](https://pypi.org/project/azure-keyvault-secrets/)
+[API のリファレンスのドキュメント](/python/api/overview/azure/keyvault-secrets-readme) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets) | [パッケージ (Python Package Index)](https://pypi.org/project/azure-keyvault-secrets/)
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- Python 2.7、3.5.3 以降
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Azure PowerShell](/powershell/azure/)。
+- [Python 2.7 以降または 3.5.3 以降](/azure/developer/python/configure-local-development-environment)
+- [Azure CLI](/cli/azure/install-azure-cli)
 
-このクイックスタートは、Linux ターミナル ウィンドウで [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) を実行していることを前提としています。
+このクイックスタートは、Linux ターミナル ウィンドウで [Azure CLI](/cli/azure/install-azure-cli) を実行していることを前提としています。
 
-## <a name="setting-up"></a>設定
 
-### <a name="install-the-package"></a>パッケージをインストールする
+## <a name="set-up-your-local-environment"></a>ローカル環境を設定する
+このクイックスタートでは、Azure CLI と Azure Identity ライブラリを使用して、Azure サービスに対するユーザーの認証を行います。 開発者は、Visual Studio または Visual Studio Code を使用してその呼び出しを認証することもできます。詳細については、[Azure Identity クライアント ライブラリを使用してクライアントを認証する](/java/api/overview/azure/identity-readme)方法に関するページを参照してください。
 
-コンソール ウィンドウから、Python 用 Azure Key Vault シークレット ライブラリをインストールします。
+### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-```console
-pip install azure-keyvault-secrets
-```
+1. `login` コマンドを実行します。
 
-このクイックスタートでは、azure.identity パッケージもインストールする必要があります。
+    ```azurecli-interactive
+    az login
+    ```
 
-```console
-pip install azure.identity
-```
+    CLI で既定のブラウザーを開くことができる場合、開いたブラウザに Azure サインイン ページが読み込まれます。
+
+    それ以外の場合は、[https://aka.ms/devicelogin](https://aka.ms/devicelogin) でブラウザー ページを開き、ターミナルに表示されている認証コードを入力します。
+
+2. ブラウザーでアカウントの資格情報を使用してサインインします。
+
+### <a name="install-the-packages"></a>パッケージのインストール
+
+1. ターミナルまたはコマンド プロンプトで、適切なプロジェクト フォルダーを作成したら、「[Python 仮想環境を使用する](/azure/developer/python/configure-local-development-environment?tabs=cmd#use-python-virtual-environments)」で説明されているように、Python 仮想環境を作成し、アクティブ化します。
+
+1. Azure Active Directory ID ライブラリをインストールします。
+
+    ```terminal
+    pip install azure-identity
+    ```
+
+
+1. Key Vault シークレット ライブラリをインストールします。
+
+    ```terminal
+    pip install azure-keyvault-secrets
+    ```
 
 ### <a name="create-a-resource-group-and-key-vault"></a>リソース グループとキー コンテナーを作成する
 
-[!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
+[!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-python-qs-rg-kv-creation.md)]
 
-### <a name="create-a-service-principal"></a>サービス プリンシパルの作成
+### <a name="grant-access-to-your-key-vault"></a>キー コンテナーへのアクセス許可を付与する
 
-[!INCLUDE [Create a service principal](../../../includes/key-vault-sp-creation.md)]
+自分のユーザー アカウントにシークレットのアクセス許可を付与するアクセス ポリシーをキー コンテナーに対して作成します。
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>サービス プリンシパルにキー コンテナーへのアクセス権を付与する
-
-[!INCLUDE [Give the service principal access to your key vault](../../../includes/key-vault-sp-kv-access.md)]
-
-#### <a name="set-environmental-variables"></a>環境変数の設定
-
-[!INCLUDE [Set environmental variables](../../../includes/key-vault-set-environmental-variables.md)]
-
-## <a name="object-model"></a>オブジェクト モデル
-
-Python 用 Azure Key Vault クライアント ライブラリを使用すると、キーおよび関連するアセット (証明書、シークレットなど) を管理できます。 以下のコード サンプルでは、クライアントの作成、シークレットの設定、シークレットの取得、シークレットの削除を行う方法を示します。
-
-この記事に示されているものと同様の操作およびその他の Key Vault の機能を示すサンプル アプリは、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets/samples) で入手できます。
-
-## <a name="code-examples"></a>コード例
-
-### <a name="add-directives"></a>ディレクティブの追加
-
-コードの先頭に次のディレクティブを追加します。
-
-```python
-import os
-from azure.keyvault.secrets import SecretClient
-from azure.identity import DefaultAzureCredential
+```console
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set
 ```
 
-### <a name="authenticate-and-create-a-client"></a>クライアントの認証と作成
+#### <a name="set-environment-variables"></a>環境変数の設定
 
-キー コンテナーに対する認証とキー コンテナー クライアントの作成は、上記の「[環境変数の設定](#set-environmental-variables)」の手順にある環境変数によって異なります。 キー コンテナーの名前は、"https://<your-key-vault-name>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。
+このアプリケーションでは、`KEY_VAULT_NAME` という環境変数にキー コンテナーの名前を使用します。
 
-```python
-credential = DefaultAzureCredential()
-
-client = SecretClient(vault_url=KVUri, credential=credential)
+Windows
+```cmd
+set KEY_VAULT_NAME=<your-key-vault-name>
+````
+Windows PowerShell
+```powershell
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
-### <a name="save-a-secret"></a>シークレットを保存する
-
-アプリケーションが認証されたら、client.[set_secret メソッド](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#set-secret-name--value----kwargs-)を使用して、対象のキー コンテナーにシークレットを設定できます。これには、シークレットの名前が必要です (この例では、"mySecret" を使用します)。  
-
-```python
-client.set_secret(secretName, secretValue)
+macOS または Linux
+```cmd
+export KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
-シークレットが設定されたことは、[az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) コマンドを使用して確認できます。
+## <a name="create-the-sample-code"></a>サンプル コードを作成する
 
-```azurecli
-az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
-```
+シークレットは、Python 用 Azure Key Vault シークレット クライアント ライブラリを使用して管理できます。 以下のコード サンプルでは、クライアントの作成、シークレットの設定、シークレットの取得、シークレットの削除を行う方法を示します。
 
-### <a name="retrieve-a-secret"></a>シークレットを取得する
-
-先ほど設定した値は、[get_secret メソッド](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#get-secret-name--version-none----kwargs-)を使用して取得できます。
-
-```python
-retrieved_secret = client.get_secret(secretName)
- ```
-
-これで、シークレットが `retrieved_secret.value` として保存されました。
-
-### <a name="delete-a-secret"></a>シークレットを削除します
-
-最後に、[begin_delete_secret メソッド](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?view=azure-python#begin-delete-secret-name----kwargs-)を使用して、対象のキー コンテナーからシークレットを削除してみましょう。
-
-```python
-client.begin_delete_secret(secretName)
-```
-
-[az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) コマンドを使用して、シークレットがなくなったことを確認できます。
-
-```azurecli
-az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
-```
-
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
-
-不要になったら、Azure CLI または Azure PowerShell を使用して、キー コンテナーとそれに対応するリソース グループを削除できます。
-
-```azurecli
-az group delete -g "myResourceGroup"
-```
-
-```azurepowershell
-Remove-AzResourceGroup -Name "myResourceGroup"
-```
-
-## <a name="sample-code"></a>サンプル コード
+このコードを含めた *kv_secrets.py* という名前のファイルを作成します。
 
 ```python
 import os
@@ -161,20 +112,14 @@ KVUri = f"https://{keyVaultName}.vault.azure.net"
 credential = DefaultAzureCredential()
 client = SecretClient(vault_url=KVUri, credential=credential)
 
-secretName = "mySecret"
+secretName = input("Input a name for your secret > ")
+secretValue = input("Input a value for your secret > ")
 
-print("Input the value of your secret > ")
-secretValue = raw_input()
-
-print(f"Creating a secret in {keyVaultName} called '{secretName}' with the value '{secretValue}` ...")
+print(f"Creating a secret in {keyVaultName} called '{secretName}' with the value '{secretValue}' ...")
 
 client.set_secret(secretName, secretValue)
 
 print(" done.")
-
-print("Forgetting your secret.")
-secretValue = ""
-print(f"Your secret is {secretValue}.")
 
 print(f"Retrieving your secret from {keyVaultName}.")
 
@@ -183,15 +128,89 @@ retrieved_secret = client.get_secret(secretName)
 print(f"Your secret is '{retrieved_secret.value}'.")
 print(f"Deleting your secret from {keyVaultName} ...")
 
-client.begin_delete_secret(secretName)
+poller = client.begin_delete_secret(secretName)
+deleted_secret = poller.result()
 
 print(" done.")
 ```
 
+## <a name="run-the-code"></a>コードの実行
+
+前のセクションのコードが *kv_secrets.py* という名前のファイルに含まれていることを確認します。 次のコマンドを使用して、コードを実行します。
+
+```terminal
+python kv_secrets.py
+```
+
+- アクセス許可エラーが発生した場合は、[`az keyvault set-policy` コマンド](#grant-access-to-your-key-vault)を実行したことを確認してください。
+- 同じシークレット名を使用してコードを再実行すると、"(競合) シークレット <name> は現在削除されているが、回復可能な状態です" というエラーが生成されることがあります。 別のシークレット名を使用してください。
+
+## <a name="code-details"></a>コードの詳細
+
+### <a name="authenticate-and-create-a-client"></a>クライアントの認証と作成
+
+このクイックスタートでは、ログイン ユーザーを使用してキー コンテナーに対する認証を行います。ローカル開発では、これが推奨される方法となります。 Azure にデプロイされるアプリケーションの場合は、App Service または仮想マシンにマネージド ID を割り当てる必要があります。詳細については、[マネージド ID の概要](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
+
+以下の例では、キー コンテナーの名前は、"https://\<your-key-vault-name\>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。 この例では、["DefaultAzureCredential()"](https://docs.microsoft.com/python/api/azure-identity/azure.identity.defaultazurecredential) クラスを使用しています。環境や使用するオプションが変わっても、同じコードを使用して ID を提供することができます。 詳細については、[DefaultAzureCredential 認証](https://docs.microsoft.com/python/api/overview/azure/identity-readme)に関するセクションを参照してください。 
+
+```python
+credential = DefaultAzureCredential()
+client = SecretClient(vault_url=KVUri, credential=credential)
+```
+
+### <a name="save-a-secret"></a>シークレットを保存する
+
+キー コンテナーのクライアント オブジェクトを取得したら、[set_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?#set-secret-name--value----kwargs-) メソッドを使用してシークレットを格納できます。 
+
+```python
+client.set_secret(secretName, secretValue)
+```
+
+`set_secret` を呼び出すと、キー コンテナーに対する Azure REST API への呼び出しが生成されます。
+
+要求を処理するとき、クライアントに提供した資格情報オブジェクトを使用して、Azure により、呼び出し元の ID (サービス プリンシパル) が認証されます。
+
+### <a name="retrieve-a-secret"></a>シークレットを取得する
+
+Key Vault からシークレットを読み取るには、[get_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?#get-secret-name--version-none----kwargs-) メソッドを使用します。
+
+```python
+retrieved_secret = client.get_secret(secretName)
+ ```
+
+シークレット値は `retrieved_secret.value` に含まれています。
+
+また、Azure CLI コマンド [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) を使用してシークレットを取得することもできます。
+
+### <a name="delete-a-secret"></a>シークレットを削除します
+
+シークレットを削除するには、[begin_delete_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?#begin-delete-secret-name----kwargs-) メソッドを使用します。
+
+```python
+poller = client.begin_delete_secret(secretName)
+deleted_secret = poller.result()
+```
+
+`begin_delete_secret` メソッドは非同期であり、ポーラー オブジェクトを返します。 ポーラーの `result` メソッドを呼び出して、その完了を待機します。
+
+シークレットが削除されたことを確認するには、Azure CLI コマンド [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) を使用します。
+
+削除されると、シークレットは削除されたが回復可能な状態がしばらく維持されます。 コードをもう一度実行する場合は、別のシークレット名を使用します。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+[証明書](../certificates/quick-create-python.md)と[キー](../keys/quick-create-python.md)も試してみる場合は、この記事で作成した Key Vault を再利用できます。
+
+それ以外の場合は、この記事で作成したリソースが完了したら、次のコマンドを使用して、リソース グループとそれに含まれるすべてのリソースを削除します。
+
+```azurecli
+az group delete --resource-group KeyVault-PythonQS-rg
+```
+
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、キー コンテナーを作成し、シークレットを格納して、そのシークレットを取得しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
-
 - [Azure Key Vault の概要](../general/overview.md)
+- [キー コンテナーへのアクセスをセキュリティで保護する](../general/secure-your-key-vault.md)
 - [Azure Key Vault 開発者ガイド](../general/developers-guide.md)
-- [Azure Key Vault のベスト プラクティス](../general/best-practices.md)
+- [Key Vault のセキュリティの概要](../general/security-overview.md)
+- [Key Vault を使用した認証](../general/authentication.md)

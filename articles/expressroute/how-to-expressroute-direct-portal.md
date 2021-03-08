@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: 09d3723224f9c678e41a6cbc86b5f8f9655173c8
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: acbd5c3aa88c2c8c14407ebda0c42d228aa6c9e3
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401471"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018940"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Azure portal を使用して ExpressRoute Direct を作成する
 
@@ -21,16 +21,23 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
 
 ## <a name="before-you-begin"></a><a name="before"></a>開始する前に
 
-**Microsoft.Network** リソース プロバイダーがサブスクリプションに登録されていることを確認します。 リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。
+ExpressRoute Direct を利用する前に、まず、サブスクリプションを登録する必要があります。 登録するには、以下の詳細を含め、サブスクリプション ID を記載して、<ExpressRouteDirect@microsoft.com> にメールを送信します。
+
+* **ExpressRoute Direct** で実行しようとしているシナリオ
+* 場所設定。すべての場所の完全なリストについては、[パートナーとピアリングの場所](expressroute-locations-providers.md)に関するページを参照してください。
+* 実装のタイムライン
+* その他の質問について
+
+登録したら、**Microsoft.Network** リソース プロバイダーがサブスクリプションに登録されていることを確認します。 リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。
 
 1. 「[Azure リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)」の説明に従って、サブスクリプションの設定にアクセスします。
-1. サブスクリプションで、**リソース プロバイダー**に関して、**Microsoft.Network** プロバイダーに**登録**状態が表示されていることを確認します。 登録されているプロバイダーの一覧に、Microsoft.Network リソース プロバイダーが存在しない場合は、それを追加します。
+1. サブスクリプションで、**リソース プロバイダー** に関して、**Microsoft.Network** プロバイダーに **登録** 状態が表示されていることを確認します。 登録されているプロバイダーの一覧に、Microsoft.Network リソース プロバイダーが存在しない場合は、それを追加します。
 
-## <a name="1-create-expressroute-direct"></a><a name="create-erdir"></a>1.ExpressRoute Direct を作成する
+## <a name="create-expressroute-direct"></a><a name="create-erdir"></a>ExpressRoute Direct を作成する
 
 1. [Azure portal](https://portal.azure.com) のメニューまたは **[ホーム]** ページから、 **[リソースの作成]** を選択します。
 
-1. **[新規]** ページで、***[Marketplace の検索]*** フィールドに「**ExpressRoute Direct**」と入力し、**Enter** キーを押して検索結果を取得します。
+1. **[新規]** ページで、**_[Marketplace の検索]_ *フィールドに「* ExpressRoute Direct**」と入力し、**Enter** キーを押して検索結果を取得します。
 
 1. 結果から **ExpressRoute Direct** を選択します。
 
@@ -47,7 +54,7 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
 
 1. 次に、 **[構成]** ページのフィールドを設定します。
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="[構成] ページ":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="[構成] タブが選択されている [ExpressRoute Direct の作成] ページを示すスクリーンショット。":::
 
     * **[ピアリングの場所]** : ExpressRoute Direct リソースに接続するピアリングの場所。 ピアリングの場所の詳細については、[ExpressRoute の場所](expressroute-locations-providers.md)に関する記事を参照してください。
    * "**帯域幅**": 予約するポート ペアの帯域幅。 ExpressRoute Direct では、10 Gb と 100 Gb の両方の帯域幅オプションがサポートされています。 指定したピアリングの場所で目的の帯域幅が使用できない場合は、[Azure portal でサポート リクエストを開きます](https://aka.ms/azsupt)。
@@ -61,11 +68,15 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
 
 1. リソース タグを指定し、 **[確認と作成]** を選択して、ExpressRoute Direct リソースの設定を検証します。
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="確認と作成":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/validate.png" alt-text="[確認と作成] タブが選択されている [ExpressRoute の作成] ページを示すスクリーンショット。":::
 
 1. **［作成］** を選択します デプロイが進行中であることを知らせるメッセージが表示されます。 リソースが作成されたときに、状態がこのページに表示されます。 
 
-## <a name="2-change-admin-state-of-links"></a><a name="state"></a>2.リンクの管理状態を変更する
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>承認状 (LOA) を生成する
+
+現時点では、ポータルから承認状を生成することはできません。 **[Azure PowerShell](expressroute-howto-erdirect.md#authorization)** を使用して、承認状を取得します。
+
+## <a name="change-admin-state-of-links"></a><a name="state"></a>リンクの管理状態を変更する
 
 このプロセスは、レイヤー 1 のテストを実施して、各相互接続がプライマリとセカンダリの各ルーターに適切に接続されていることを確認するために使用する必要があります。
 
@@ -83,7 +94,7 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
 
 1. **[link2]\(リンク 2\)** についても同じ手順を繰り返します。
 
-## <a name="3-create-a-circuit"></a><a name="circuit"></a>3.回線を作成する
+## <a name="create-a-circuit"></a><a name="circuit"></a>回線を作成する
 
 既定では、ExpressRoute Direct リソースがあるサブスクリプション内に 10 個の回線を作成できます。 この数はサポートによって増やすことができます。 プロビジョニング済みの帯域幅と使用済みの帯域幅の両方を追跡してください。 プロビジョニングされる帯域幅は、ExpressRoute Direct リソース上のすべての回線の帯域幅の合計です。 使用される帯域幅は、基礎となる物理インターフェイスの実際の使用量です。
 
@@ -97,15 +108,15 @@ ExpressRoute Direct のワークフローから ExpressRoute 回線を作成す�
 
 1. ExpressRoute Direct の **[設定]** セクションで、 **[Circuits]\(回線\)** を選択してから、 **[+ 追加]** を選択します。 
 
-    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="追加" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="[Circuits]\(回線\) が選択されて [追加] が強調表示された ExpressRoute 設定を示すスクリーンショット。" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
 
 1. **[構成]** ページで設定を構成します。
 
-   :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration2.png" alt-text="[構成] ページ":::
+   :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration2.png" alt-text="[構成] ページ - ExpressRoute Direct":::
 
 1. リソース タグを指定します。リソースを作成する前に値を検証するには、 **[確認と作成]** を選択します。
 
-   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="確認と作成":::
+   :::image type="content" source="./media/how-to-expressroute-direct-portal/review.png" alt-text="[確認と作成] - ExpressRoute Direct":::
 
 1. **［作成］** を選択します デプロイが進行中であることを知らせるメッセージが表示されます。 リソースが作成されたときに、状態がこのページに表示されます。 
 

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: 5dc8bf670e14d8a44b10b8093d786091791ae793
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 5d2760415e4f4ef3b181f2fb69802659fec3ef66
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186795"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95975957"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>ポータルを使用して Application Gateway 用カスタム プローブを作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "86186795"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-Application Gateway がまだない場合は、[Application Gateway の作成](application-gateway-create-gateway-portal.md)に関する記事を参照して、使用する Application Gateway を作成します。
+Application Gateway がまだない場合は、[Application Gateway の作成](./quick-create-portal.md)に関する記事を参照して、使用する Application Gateway を作成します。
 
 ## <a name="create-probe-for-application-gateway-v2-sku"></a>Application Gateway v2 SKU のプローブの作成
 
@@ -49,14 +49,14 @@ Application Gateway がまだない場合は、[Application Gateway の作成](a
    |**名前**|customProbe|この値は、ポータルでアクセス可能なプローブに付けるフレンドリ名です。|
    |**プロトコル**|HTTP または HTTPS | 正常性プローブが使用するプロトコルです。 |
    |**Host**|つまり contoso.com|この値は、アプリケーション サーバーで実行されている仮想ホストの名前 (VM ホスト名とは異なる) です。 プローブは \<protocol\>://\<host name\>:\<port\>/\<urlPath\> に送信されます|
-   |**ホスト名をバックエンド HTTP 設定から選択します**|はい、いいえ|プローブ内の *host* ヘッダーを、このプローブが関連付けられている HTTP 設定のホスト名に設定します。 特に、Azure App Service などのマルチテナント バックエンドの場合に必要です。 [詳細情報](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
+   |**ホスト名をバックエンド HTTP 設定から選択します**|はい、いいえ|プローブ内の *host* ヘッダーを、このプローブが関連付けられている HTTP 設定のホスト名に設定します。 特に、Azure App Service などのマルチテナント バックエンドの場合に必要です。 [詳細情報](./configuration-http-settings.md#pick-host-name-from-back-end-address)|
    |**ポートをバックエンド HTTP 設定から選択します**| はい、いいえ|正常性プローブの *port* を、このプローブが関連付けられている HTTP 設定のポートに設定します。 [いいえ] を選択した場合は、使用するカスタム宛先ポートを入力できます |
    |**[ポート]**| 1-65535 | 正常性プローブに使用されるカスタム ポート | 
    |**パス**|/ または任意の有効なパス|カスタム プローブの完全な URL の残りの部分です。 パスは先頭が "/" である必要があります。 既定のパス http:\//contoso.com では "/" のみを使用します。 |
    |**間隔 (秒)**|30|正常性を確認するためにプローブを実行する頻度です。 30 秒未満に設定しないようにすることをお勧めします。|
    |**タイムアウト (秒)**|30|タイムアウトまでにプローブが待機する時間です。このタイムアウト期間内に正常な応答が受信されなかった場合は、プローブが「失敗」とマークされます。 タイムアウトまでの時間は、バックエンドの正常性ページが利用可能であることを確認するために HTTP 呼び出しを実行できるだけの長さである必要があります。 タイムアウト値は、このプローブ設定で使用される "間隔" 値、またはこのプローブに関連付けられる HTTP 設定の "要求タイムアウト" 値を超えることはできないことに注意してください。|
    |**異常のしきい値**|3|異常であると見なされる連続試行失敗回数です。 しきい値は 1 以上に設定できます。|
-   |**プローブの一致条件を使用**|はい、いいえ|既定では、状態コードが 200 から 399 の HTTP(S) 応答は正常と見なされます。 バックエンドの応答コードまたはバックエンドの応答本文の許容範囲を変更できます。 [詳細情報](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
+   |**プローブの一致条件を使用**|はい、いいえ|既定では、状態コードが 200 から 399 の HTTP(S) 応答は正常と見なされます。 バックエンドの応答コードまたはバックエンドの応答本文の許容範囲を変更できます。 [詳細情報](./application-gateway-probe-overview.md#probe-matching)|
    |**HTTP 設定**|ドロップダウンから選択|プローブは、ここで選択する HTTP 設定に関連付けられ、その結果、選択した HTTP 設定に関連付けられているバックエンド プールの正常性が監視されます。 選択した HTTP 設定で使用されているものと同じポートがプローブ要求に使用されます。 他のカスタム プローブに関連付けられていない HTTP 設定のみを選択できます。 <br>このプローブ構成で選択したプロトコルと同じプロトコルを使用し、"*ホスト名をバックエンド HTTP 設定から選択します*" スイッチと状態が同じ HTTP 設定のみが関連付けに使用できることに注意してください。|
    
    > [!IMPORTANT]
@@ -100,12 +100,12 @@ Application Gateway がまだない場合は、[Application Gateway の作成](a
    |**名前**|customProbe|この値は、ポータルでアクセス可能なプローブに付けるフレンドリ名です。|
    |**プロトコル**|HTTP または HTTPS | 正常性プローブが使用するプロトコルです。 |
    |**Host**|つまり contoso.com|この値は、アプリケーション サーバーで実行されている仮想ホストの名前 (VM ホスト名とは異なる) です。 プローブは、(プロトコル)://(ホスト名):(httpsetting のポート)/urlPath に送信されます。  これは、Application Gateway でマルチサイトを構成する場合に適用可能です。 Application Gateway が 1 つのサイトに対して構成されている場合は、「127.0.0.1」と入力します。|
-   |**ホスト名をバックエンド HTTP 設定から選択します**|はい、いいえ|プローブ内の "*host*" ヘッダーを、このプローブが関連付けられている HTTP 設定に関連付けられているバックエンド プール内のバックエンド リソースのホスト名に設定します。 特に、Azure App Service などのマルチテナント バックエンドの場合に必要です。 [詳細情報](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
+   |**ホスト名をバックエンド HTTP 設定から選択します**|はい、いいえ|プローブ内の "*host*" ヘッダーを、このプローブが関連付けられている HTTP 設定に関連付けられているバックエンド プール内のバックエンド リソースのホスト名に設定します。 特に、Azure App Service などのマルチテナント バックエンドの場合に必要です。 [詳細情報](./configuration-http-settings.md#pick-host-name-from-back-end-address)|
    |**パス**|/ または任意の有効なパス|カスタム プローブの完全な URL の残りの部分です。 パスは先頭が "/" である必要があります。 既定のパス http:\//contoso.com では "/" のみを使用します。 |
    |**間隔 (秒)**|30|正常性を確認するためにプローブを実行する頻度です。 30 秒未満に設定しないようにすることをお勧めします。|
    |**タイムアウト (秒)**|30|タイムアウトまでにプローブが待機する時間です。このタイムアウト期間内に正常な応答が受信されなかった場合は、プローブが「失敗」とマークされます。 タイムアウトまでの時間は、バックエンドの正常性ページが利用可能であることを確認するために HTTP 呼び出しを実行できるだけの長さである必要があります。 タイムアウト値は、このプローブ設定で使用される "間隔" 値、またはこのプローブに関連付けられる HTTP 設定の "要求タイムアウト" 値を超えることはできないことに注意してください。|
    |**異常のしきい値**|3|異常であると見なされる連続試行失敗回数です。 しきい値は 1 以上に設定できます。|
-   |**プローブの一致条件を使用**|はい、いいえ|既定では、状態コードが 200 から 399 の HTTP(S) 応答は正常と見なされます。 バックエンドの応答コードまたはバックエンドの応答本文の許容範囲を変更できます。 [詳細情報](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
+   |**プローブの一致条件を使用**|はい、いいえ|既定では、状態コードが 200 から 399 の HTTP(S) 応答は正常と見なされます。 バックエンドの応答コードまたはバックエンドの応答本文の許容範囲を変更できます。 [詳細情報](./application-gateway-probe-overview.md#probe-matching)|
 
    > [!IMPORTANT]
    > ホスト名はサーバー名と同じではありません。 この値は、アプリケーション サーバーで実行されている仮想ホストの名前です。 プローブは \<protocol\>://\<hostName\>:\<port from http settings\>/\<urlPath\> に送信されます
@@ -123,7 +123,7 @@ Application Gateway がまだない場合は、[Application Gateway の作成](a
 
 ## <a name="next-steps"></a>次のステップ
 
-[バックエンドの正常性ビュー](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health)を使用して、プローブによって決定されたバックエンド リソースの正常性を確認します。
+[バックエンドの正常性ビュー](./application-gateway-diagnostics.md#back-end-health)を使用して、プローブによって決定されたバックエンド リソースの正常性を確認します。
 
 [1]: ./media/application-gateway-create-probe-portal/figure1.png
 [2]: ./media/application-gateway-create-probe-portal/figure2.png

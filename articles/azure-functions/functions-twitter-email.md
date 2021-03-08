@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: 29b35493342b92813aa808069ebdd7ca8a7bbc56
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 5750597d7d4d372be975aa64ce8db11859791da2
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208551"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674320"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps と統合される関数を作成する
 
@@ -40,7 +40,7 @@ Azure Functions は、Logic Apps デザイナーで Azure Logic Apps と統合�
 > [!NOTE]
 > Gmail コネクタの使用を希望する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のアプリおよびサービスのみで Gmail コネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
 
-+ この記事では、[Azure portal から初めての関数を作成する方法](functions-create-first-azure-function.md)に関するページで作成したリソースを使用して作業を開始します。
++ この記事では、[Azure portal から初めての関数を作成する方法](./functions-get-started.md)に関するページで作成したリソースを使用して作業を開始します。
 リソースの作成が済んでいない場合は、すぐにこれらの手順に従って Function App を作成してください。
 
 ## <a name="create-a-cognitive-services-resource"></a>Cognitive Services リソースの作成
@@ -182,7 +182,7 @@ Azure Functions は、ロジック アプリ ワークフローの処理タス�
 
 2. **[アクションを選択してください]** で「**テキスト分析**」と入力し、 **[感情の検出]** アクションをクリックします。
     
-    ![[新しいステップ]、[アクションの追加]](media/functions-twitter-email/11-detect-sentiment.png)
+    ![検索ボックスに「Text Analytics」と入力され、[感情の検出] アクションが選択されている [アクションを選択してください] セクションを示すスクリーンショット。 ](media/functions-twitter-email/11-detect-sentiment.png)
 
 3. `MyCognitiveServicesConnection` などの接続名を入力し、テキスト エディターにメモしておいた Cognitive Services API と Cognitive Services エンドポイントのキーを貼り付けて、 **[作成]** をクリックします。
 
@@ -202,7 +202,7 @@ Azure Functions は、ロジック アプリ ワークフローの処理タス�
   
 4. 先ほど作成した関数アプリを選択します。
 
-    ![関数の選択](media/functions-twitter-email/15-select-function.png)
+    ![関数アプリが選択されている [アクションを選択してください] セクションを示すスクリーンショット。](media/functions-twitter-email/15-select-function.png)
 
 5. このチュートリアルで作成した関数を選択します。
 
@@ -228,7 +228,7 @@ Azure Functions は、ロジック アプリ ワークフローの処理タス�
 
 3. **[true の場合]** で **[アクションの追加]** をクリックします。`outlook.com` を検索して、 **[電子メールの送信]** をクリックし、Outlook.com アカウントにサインインします。
 
-    ![[電子メールの送信] アクション用に電子メールを構成する](media/functions-twitter-email/20-add-outlook.png)
+    ![検索ボックスに「outlook.com」と入力され、[電子メールの送信] アクションが選択された "IF TRUE" セクションを示すスクリーンショット。](media/functions-twitter-email/20-add-outlook.png)
 
     > [!NOTE]
     > Outlook.com アカウントを取得していない場合は、Gmail や Office 365 Outlook など、別のコネクタを選択できます。

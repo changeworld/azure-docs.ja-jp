@@ -7,16 +7,16 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 51f4c9a5748896eff9e9f3ae9719b2e7e7cdd4e7
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c906d37a01f0fca2d4114e8ba07078fc46eec88b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607492"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131175"
 ---
 # <a name="cloud-solution-provider-program"></a>クラウド ソリューション プロバイダー プログラム
 
-この記事では、クラウド ソリューション プロバイダー (CSP) プログラムから提供できるよう、オファーを構成する方法について説明します。 オファーを[コマーシャル マーケットプレースのオンライン ストア](comparing-appsource-azure-marketplace.md)で公開するだけでなく、CSP プログラムを通じて販売することにより、このプログラムを利用している数百万の Microsoft の正規のお客様にオファーを提供できます。
+この記事では、クラウド ソリューション プロバイダー (CSP) プログラムから提供できるよう、オファーを構成する方法について説明します。 オファーを[コマーシャル マーケットプレースのオンライン ストア](overview.md#commercial-marketplace-online-stores)で公開するだけでなく、CSP プログラムを通じて販売することにより、このプログラムを利用している数百万の Microsoft の正規のお客様にオファーを提供できます。
 
 新規または既存のオファーを CSP プログラムで提供できるよう、オプトイン方式で構成できます。これにより、CSP パートナーは、貴社の製品を販売したり、顧客向けのバンドル ソリューションを作成したりできるようになります。
 
@@ -60,11 +60,11 @@ ms.locfileid: "88607492"
 
 このオプションを選択すると、自分のオファーを再販できる CSP プログラムのパートナーを承認できます。
 
-パートナーを承認するには、 **[CSP パートナーの選択]** をクリックしてメニューを表示し、パートナー名または CSP Azure Active Directory (AAD) テナント ID で検索します。
+パートナーを認可するには、 **[CSP パートナーの選択]** を選択してメニューを表示し、パートナー名または CSP Azure Active Directory (Azure AD) テナント ID で検索します。
 
 ![CSP の選択メニュー](media/marketplace-publishers-guide/csp-pop-up-module.png)
 
-**国**、**コンピテンシー**、**スキル** などの検索フィルターを適用できます。
+**国** 、 **コンピテンシー** 、 **スキル** などの検索フィルターを適用できます。
 
 ![パートナー検索に対する国/地域、コンピテンシー、スキルのフィルター](media/marketplace-publishers-guide/csp-add-resellers.png)
 
@@ -81,11 +81,11 @@ ms.locfileid: "88607492"
 このオファーが発行されていない場合は、オファーを発行して、選択したパートナーが使用できるようにする必要があります。
 
 >[!NOTE]
->特定のリージョンの CSP プログラムのパートナーを承認すると、そのパートナーはその特定のリージョンに属する顧客に対してオファーを販売できます。 リージョンでの CSP オファーの分類方法について詳しくは、[クラウド ソリューション プロバイダー プログラムのリージョン別の市場と通貨](https://docs.microsoft.com/partner-center/regional-authorization-overview)に関するページをご覧ください。
+>特定のリージョンの CSP プログラムのパートナーを承認すると、そのパートナーはその特定のリージョンに属する顧客に対してオファーを販売できます。 リージョンでの CSP オファーの分類方法について詳しくは、[クラウド ソリューション プロバイダー プログラムのリージョン別の市場と通貨](/partner-center/regional-authorization-overview)に関するページをご覧ください。
 
 既に発行されているオファーの CSP の一覧を更新する場合は、新しいパートナーを追加し、 **[Sync CSP audience]\(CSP の対象を同期する\)** を選択します。
 
-承認されたパートナーの一覧が既に作成されているオファーがあり、別のオファーで同じ一覧を使用する場合は、**インポート/エクスポート**を使用します。 CSP の一覧があるオファーに移動し、 **[CSP のエクスポート]** を選択します。 機能によって作成された .csv ファイルを、別のオファーにインポートできます。
+承認されたパートナーの一覧が既に作成されているオファーがあり、別のオファーで同じ一覧を使用する場合は、 **インポート/エクスポート** を使用します。 CSP の一覧があるオファーに移動し、 **[CSP のエクスポート]** を選択します。 機能によって作成された .csv ファイルを、別のオファーにインポートできます。
 
 #### <a name="option-3-no-partners-in-the-csp-program"></a>オプション 3:CSP プログラムでパートナーはいません
 
@@ -107,8 +107,8 @@ CSP プログラムのパートナーが製品を顧客に販売していない�
 2. **[Select the product version]\(製品バージョンの選択\)** で、 **[Live offer management]\(ライブ オファー管理\)** を選択します。
 3. **[Select a category that best describe the issue]\(問題の説明として最も適切なカテゴリを選択してください\)** で、オファーを示すカテゴリを選択します。
 4. **[Select a problem that best describes the issue]\(問題の説明として最も適切な問題を選択してください\)** で、 **[Update existing offer]\(既存のオファーの更新\)** を選択します。
-5. **[次へ]** を選択して**問題の詳細ページ**に移動し、問題の詳細を入力します。
-6. 問題のタイトルを "**Deauthorize CSP**" (CSP の承認を取り消す) とし、残りの必要なセクションを入力します。
+5. **[次へ]** を選択して **問題の詳細ページ** に移動し、問題の詳細を入力します。
+6. 問題のタイトルを " **Deauthorize CSP** " (CSP の承認を取り消す) とし、残りの必要なセクションを入力します。
 
 ## <a name="navigate-between-options"></a>オプション間の移動
 
@@ -116,7 +116,7 @@ CSP プログラムのパートナーが製品を顧客に販売していない�
 
 ### <a name="navigate-from-option-one-any-partner-in-the-csp-program"></a>移動元がオプション 1: CSP プログラムの任意のパートナー
 
-現在のオファーが**オプション 1: CSP プログラムの任意のパートナー**であり、他の 2 つのオプションのいずれかに移動する場合は、次の手順に従ってリクエストを作成します。
+現在のオファーが **オプション 1: CSP プログラムの任意のパートナー** であり、他の 2 つのオプションのいずれかに移動する場合は、次の手順に従ってリクエストを作成します。
 
 1. [サポート リクエスト ページ](https://aka.ms/marketplacepublishersupport)に移動します。 最初のいくつかのドロップダウン メニューは、自動的に入力されます。
 
@@ -126,15 +126,15 @@ CSP プログラムのパートナーが製品を顧客に販売していない�
 2. **[Select the product version]\(製品バージョンの選択\)** で、 **[Live offer management]\(ライブ オファー管理\)** を選択します。
 3. **[Select a category that best describe the issue]\(問題の説明として最も適切なカテゴリを選択してください\)** で、オファーを示すカテゴリを選択します。
 4. **[Select a problem that best describes the issue]\(問題の説明として最も適切な問題を選択してください\)** で、 **[Update existing offer]\(既存のオファーの更新\)** を選択します。
-5. **[次へ]** を選択して**問題の詳細ページ**に移動し、問題の詳細を入力します。
-6. 問題のタイトルを "**Deauthorize CSP**" (CSP の承認を取り消す) とし、残りの必要なセクションを入力します。
+5. **[次へ]** を選択して **問題の詳細ページ** に移動し、問題の詳細を入力します。
+6. 問題のタイトルを " **Deauthorize CSP** " (CSP の承認を取り消す) とし、残りの必要なセクションを入力します。
 
 > [!NOTE]
 > オプション 2 に移動しようとしていて、CSP プログラムのパートナーが既に顧客にオファーを再販している場合、そのパートナーは既定で既に承認済みパートナーの一覧に登録されています。  
 
 ### <a name="navigate-from-option-two-specific-partners-in-the-csp-program-i-select"></a>移動元がオプション 2: 選択した CSP プログラムの特定のパートナー
 
-現在のオファーが**オプション 2: 選択した CSP プログラムの特定のパートナー**で、移動先が**オプション 1: CSP プログラムの任意のパートナー**である場合は、次の手順を使用してリクエストを作成します。
+現在のオファーが **オプション 2: 選択した CSP プログラムの特定のパートナー** で、移動先が **オプション 1: CSP プログラムの任意のパートナー** である場合は、次の手順を使用してリクエストを作成します。
 
 1. [サポート リクエスト ページ](https://aka.ms/marketplacepublishersupport)に移動します。 最初のいくつかのドロップダウン メニューは、自動的に入力されます。
 
@@ -144,10 +144,10 @@ CSP プログラムのパートナーが製品を顧客に販売していない�
 2. **[Select the product version]\(製品バージョンの選択\)** で、 **[Live offer management]\(ライブ オファー管理\)** を選択します。
 3. **[Select a category that best describe the issue]\(問題の説明として最も適切なカテゴリを選択してください\)** で、オファーを示すカテゴリを選択します。
 4. **[Select a problem that best describes the issue]\(問題の説明として最も適切な問題を選択してください\)** で、 **[Update existing offer]\(既存のオファーの更新\)** を選択します。
-5. **[次へ]** を選択して**問題の詳細ページ**に移動し、問題の詳細を入力します。
-6. 問題のタイトルを "**Deauthorize CSP**" (CSP の承認を取り消す) とし、残りの必要なセクションを入力します。
+5. **[次へ]** を選択して **問題の詳細ページ** に移動し、問題の詳細を入力します。
+6. 問題のタイトルを " **Deauthorize CSP** " (CSP の承認を取り消す) とし、残りの必要なセクションを入力します。
 
- 現在のオファーが**オプション 2: 選択した CSP プログラムの特定のパートナー**で、移動先が**オプション 3: CSP プログラムでパートナーはいません**である場合は、以前に承認した CSP プログラムのパートナーが最終顧客にオファーを再販していない場合にのみ、そのオプションに移動できます。 次の手順を使用してリクエストを作成してください。
+ 現在のオファーが **オプション 2: 選択した CSP プログラムの特定のパートナー** で、移動先が **オプション 3: CSP プログラムでパートナーはいません** である場合は、以前に承認した CSP プログラムのパートナーが最終顧客にオファーを再販していない場合にのみ、そのオプションに移動できます。 次の手順を使用してリクエストを作成します。
 
 1. [サポート リクエスト ページ](https://aka.ms/marketplacepublishersupport)に移動します。 最初のいくつかのドロップダウン メニューは、自動的に入力されます。
 
@@ -157,12 +157,12 @@ CSP プログラムのパートナーが製品を顧客に販売していない�
 2. **[Select the product version]\(製品バージョンの選択\)** で、 **[Live offer management]\(ライブ オファー管理\)** を選択します。
 3. **[Select a category that best describe the issue]\(問題の説明として最も適切なカテゴリを選択してください\)** で、オファーを示すカテゴリを選択します。
 4. **[Select a problem that best describes the issue]\(問題の説明として最も適切な問題を選択してください\)** で、 **[Update existing offer]\(既存のオファーの更新\)** を選択します。
-5. **[次へ]** を選択して**問題の詳細ページ**に移動し、問題の詳細を入力します。
-6. 問題のタイトルを "**Deauthorize CSP**" (CSP の承認を取り消す) とし、残りの必要なセクションを入力します。
+5. **[次へ]** を選択して **問題の詳細ページ** に移動し、問題の詳細を入力します。
+6. 問題のタイトルを " **Deauthorize CSP** " (CSP の承認を取り消す) とし、残りの必要なセクションを入力します。
 
 ### <a name="navigate-from-option-3-no-partners-in-the-csp-program"></a>移動元がオプション 3: CSP プログラムでパートナーはいません
 
-現在のオファーが**オプション 3: CSP プログラムでパートナーはいません**である場合は、いつでも他の 2 つのオプションのいずれかに移動できます。
+現在のオファーが **オプション 3: CSP プログラムでパートナーはいません** である場合は、いつでも他の 2 つのオプションのいずれかに移動できます。
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>販売とサポートの資料を CSP プログラムのパートナーと共有する
 
@@ -170,14 +170,11 @@ CSP プログラムのパートナーが製品を顧客に販売していない�
 
 ### <a name="partner-center-csp-channel"></a>パートナー センターの CSP チャネル
 
-パートナー センターで CSP チャネルにオプトインしている場合、発行元は、関連するマーケティング資料がホストされている URL と、チャネルの連絡先情報を、オファー一覧モジュールで CSP チャネルに入力する必要があります。
+パートナー センターで CSP チャネルにオプトインしている場合、発行元は、関連するマーケティング資料がホストされている URL と、チャネルの連絡先情報を、オファー一覧モジュールで入力する必要があります。
 
 ![パートナー センターでの CSP 関連情報](media/marketplace-publishers-guide/pc-csp-channel.png)
 
 ## <a name="next-steps"></a>次のステップ
 
-「[Azure Marketplace と AppSource の公開ガイド](marketplace-publishers-guide.md)」を参照してください。
-
-マーケットプレース GTM サービスの詳細については、「[Go-to-Market サービス](https://partner.microsoft.com/reach-customers/gtm)」を参照してください。
-
-[パートナー センター](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)にサインインして、プランを作成して構成します。
+- [市場投入サービス](https://partner.microsoft.com/reach-customers/gtm)の詳細を確認します。
+- [パートナー センター](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)にサインインして、オファーを作成して構成します。

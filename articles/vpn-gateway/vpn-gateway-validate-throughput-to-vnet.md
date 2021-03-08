@@ -1,21 +1,21 @@
 ---
 title: Microsoft Azure Virtual Network への VPN スループットを検証する
-description: このドキュメントの目的は、ユーザーがオンプレミスのリソースから Azure 仮想マシンへのネットワーク スループットを検証できるようにすることです。
+description: この記事は、オンプレミスのリソースから Azure 仮想マシンへのネットワーク スループットを検証する際に役立ちます。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 05/29/2019
+ms.date: 09/02/2020
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: 7d19cc4a474324ff3e88ec0c5353a47c157ec715
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2d5b51e8cfbfcb5f771e9da524231f8ddfc40a9e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86998478"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660935"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>仮想ネットワークへの VPN スループットを検証する方法
 
@@ -119,7 +119,7 @@ VPN ゲートウェイ接続には、次のコンポーネントが含まれま�
 1. 前の手順を完了したら、サーバー ノードがクライアント ノードになるか、またはその逆になるように、ロールを反転して、同じ手順を実行します。
 
 > [!Note]
-> Iperf は唯一のツールではありません。 [NTTTCP は、テストを実行するための代替ソリューションです](https://docs.microsoft.com/azure/virtual-network/virtual-network-bandwidth-testing)。
+> Iperf は唯一のツールではありません。 [NTTTCP は、テストを実行するための代替ソリューションです](../virtual-network/virtual-network-bandwidth-testing.md)。
 
 ## <a name="test-vms-running-windows"></a>Windows を実行している VM をテストする
 
@@ -225,7 +225,7 @@ Make インストールは高速です
 
 前の手順 (iPERF/NTTTCP/など) で評価された全体的なスループットが良好であったとしても、エクスプローラーを使用しているとき、または RDP セッションを介してドラッグ アンド ドロップを使用しているときに、ファイルのコピーが遅くなることがあります。 この問題は、次の要因の一方または両方に原因があります。
 
-* エクスプローラーや RDP などのファイル コピー アプリケーションでは、ファイルのコピー時に複数のスレッドを使用しません。 パフォーマンス向上のためには、[Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) などのマルチスレッド ファイル コピー アプリケーションを使用して、16 個または 32 個のスレッドを使用してファイルをコピーしてください。 Richcopy でファイル コピーのスレッド数を変更するには、 **[アクション]**  >  **[コピー オプション]**  >  **[ファイルのコピー]** をクリックします。
+* エクスプローラーや RDP などのファイル コピー アプリケーションでは、ファイルのコピー時に複数のスレッドを使用しません。 パフォーマンス向上のためには、[Richcopy](/previous-versions/technet-magazine/dd547088(v=msdn.10)) などのマルチスレッド ファイル コピー アプリケーションを使用して、16 個または 32 個のスレッドを使用してファイルをコピーしてください。 Richcopy でファイル コピーのスレッド数を変更するには、 **[アクション]**  >  **[コピー オプション]**  >  **[ファイルのコピー]** をクリックします。
 
    ![低速ファイル コピーの問題](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 
@@ -233,7 +233,7 @@ Make インストールは高速です
    > すべてのアプリケーションが同様に動作するわけではなく、すべてのアプリケーション/プロセスがすべてのスレッドを利用するわけではありません。 テストを実行した場合、一部のスレッドが空で、正確なスループットの結果が得られないことがあります。
    > アプリケーション ファイル転送のパフォーマンスを確認するには、スレッド数を連続して増加してマルチスレッドを使用するか、アプリケーションまたはファイル転送の最適なスループットを検出するために削減します。
 
-* 不十分な VM ディスク読み取り/書き込み速度。 詳細については、[Azure Storage のトラブルシューティング](../storage/common/storage-e2e-troubleshooting.md)に関するページを参照してください。
+* 不十分な VM ディスク読み取り/書き込み速度。 詳細については、[Azure Storage のトラブルシューティング](/previous-versions/azure/storage/common/storage-e2e-troubleshooting)に関するページを参照してください。
 
 ## <a name="on-premises-device-external-facing-interface"></a>オンプレミスのデバイスの外部に接続するインターフェイス
 

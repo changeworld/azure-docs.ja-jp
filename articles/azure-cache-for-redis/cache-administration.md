@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: c9da97607961a7d701851c6892393cdf537b9a32
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 156dfd1d9553e369357eb68225e722222a59d847
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008034"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91838672"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Azure Cache for Redis を管理する方法
 このトピックでは、Azure Cache for Redis インスタンスについて、[再起動](#reboot)、[更新スケジュール](#schedule-updates)などの管理タスクを実行する方法について説明します。
@@ -21,11 +21,11 @@ ms.locfileid: "88008034"
 ## <a name="reboot"></a>再起動
 **[再起動]** ブレードでは、キャッシュの 1 つ以上のノードを再起動できます。 この再起動機能により、アプリケーションにキャッシュ ノードの障害が発生した場合の復元性をテストすることができます。
 
-![再起動](./media/cache-administration/redis-cache-administration-reboot.png)
+![[再起動] オプションが強調表示されているスクリーンショット。](./media/cache-administration/redis-cache-administration-reboot.png)
 
 再起動するノードを選び、 **[再起動]** をクリックします。
 
-![再起動](./media/cache-administration/redis-cache-reboot.png)
+![再起動できるノードを示すスクリーンショット。](./media/cache-administration/redis-cache-reboot.png)
 
 クラスタリングが有効になっている Premium キャッシュがある場合は、再起動するキャッシュのシャードを選択できます。
 

@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/30/2019
 ms.author: erhopf
-ms.openlocfilehash: ffefde7d692950fc272ab2502ad8afe254bf48f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c9d73804484ea7cc72e0198b857099fd8fba46d5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73591037"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563681"
 ---
-次の制限は、Azure サブスクリプションごとの Cognitive Services リソースの数に関するものです。 各 Cognitive Services には、追加の制限がある場合があります。詳しくは、[Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) に関するページを参照してください。
+次の制限は、Azure サブスクリプションごとの Cognitive Services リソースの数に関するものです。 各 Cognitive Services には、追加の制限がある場合があります。詳しくは、[Azure Cognitive Services](../articles/cognitive-services/index.yml) に関するページを参照してください。
 
 | 種類 | 制限 | 例 |
 |------|-------|---------|

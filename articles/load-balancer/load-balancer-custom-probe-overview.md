@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: e22908dc5d445f105c199e594443cd051eb4be41
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a008d7b26738b9552a7a43ab026391bd9afe0aa8
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051357"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780945"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -121,7 +121,7 @@ TCP プローブは、定義済みのポートに 3 ウェイ オープン TCP �
 ### <a name="http--https-probe"></a><a name="httpprobe"></a> <a name="httpsprobe"></a> HTTP / HTTPS プローブ
 
 >[!NOTE]
->HTTPS プローブは、[Standard Load Balancer](load-balancer-standard-overview.md) でのみ使用できます。
+>HTTPS プローブは、[Standard Load Balancer](./load-balancer-overview.md) でのみ使用できます。
 
 HTTP プローブと HTTPS プローブは TCP プローブに基づいており、パスが指定された HTTP GET を発行します。 これら両方のプローブは、HTTP GET に対して相対パスをサポートします。 HTTPS プローブは、トランスポート層セキュリティ (TLS、旧称は SSL) ラッパーがある点を除き、HTTP プローブと同じです。 タイムアウト期間内にインスタンスが HTTP ステータス 200 で応答すると、正常性プローブはアップとしてマークされます。  既定では、構成された正常性プローブ ポートのチェックが、正常性プローブによって 15 秒ごとに試行されます。 最小のプローブ間隔は 5 秒です。 すべての間隔の合計期間が 120 秒を超えることはできません。
 
@@ -169,7 +169,7 @@ Cloud Services を使用し、w3wp.exe を使う Web ロールがある場合は
 
 ゲスト エージェント プローブは、VM 内のゲスト エージェントのチェックです。 その後リッスンし、インスタンスが準備完了状態になっている場合にのみ、HTTP 200 OK で応答します (他の状態はビジー、リサイクル中、停止中です)。
 
-詳しくは、[正常性プローブのサービス定義ファイル (csdef) の構成](https://msdn.microsoft.com/library/azure/ee758710.aspx)に関するページまたは[クラウド サービス用のパブリック ロード バランサーの作成の開始](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services)に関するページをご覧ください。
+詳しくは、[正常性プローブのサービス定義ファイル (csdef) の構成](/previous-versions/azure/reference/ee758710(v=azure.100))に関するページまたは[クラウド サービス用のパブリック ロード バランサーの作成の開始](/previous-versions/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services)に関するページをご覧ください。
 
 ゲスト エージェントが HTTP 200 OK で応答できない場合、Load Balancer はそのインスタンスを応答不能としてマークします。 そして、そのインスタンスへのフローの送信を停止します。 Load Balancer はインスタンスのチェックを続けます。 
 
@@ -215,7 +215,7 @@ UDP はコネクションレスであり、UDP に追跡されるフロー状態
 
 Load Balancer は、その内部正常性モデルに対して分散プローブ サービスを使用します。 VM の各ホスト上に存在するプローブ サービスは、お客様の構成に従って正常性プローブを生成するようにオンデマンドでプログラミングできます。 正常性プローブのトラフィックは、正常性プローブを生成するプローブ サービスとお客様の VM の間で直接やり取りされます。 Load Balancer のすべての正常性プローブは、ソースとして IP アドレス 168.63.129.16 から送信されます。  RFC1918 空間ではない、VNet 内の IP アドレス空間を使用できます。  グローバルに予約された Microsoft 所有の IP アドレスを使用すると、お客様が VNet 内で使用する IP アドレス空間との IP アドレス競合の可能性が低くなります。  この IP アドレスはすべてのリージョンにおいて同一で、変更されません。また、この IP アドレスからパケットを送信できるのは内部 Azure プラットフォーム コンポーネントだけであるため、セキュリティ リスクになりません。 
 
-AzureLoadBalancer サービス タグによって、お客様の[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)に含まれているこのソース IP アドレスが特定され、正常性プローブのトラフィックが既定で許可されます。
+AzureLoadBalancer サービス タグによって、お客様の[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)に含まれているこのソース IP アドレスが特定され、正常性プローブのトラフィックが既定で許可されます。
 
 Load Balancer の正常性プローブだけでなく、[次の操作でもこの IP アドレスが使用されます](../virtual-network/what-is-ip-address-168-63-129-16.md)。
 
@@ -233,15 +233,15 @@ Load Balancer の正常性プローブだけでなく、[次の操作でもこ�
 
 UDP の負荷分散では、バックエンド エンドポイントからカスタム正常性プローブ シグナルを生成し、対応するリスナーをターゲットとする TCP、HTTP、または HTTPS の正常性プローブを使用して、UDP アプリケーションの正常性を反映する必要があります。
 
-[Standard Load Balancer](load-balancer-standard-overview.md) による [HA ポート負荷分散規則](load-balancer-ha-ports-overview.md)を使用すると、すべてのポートが負荷分散されて、1 つの正常性プローブ応答がインスタンス全体の状態を反映する必要があります。
+[Standard Load Balancer](./load-balancer-overview.md) による [HA ポート負荷分散規則](load-balancer-ha-ports-overview.md)を使用すると、すべてのポートが負荷分散されて、1 つの正常性プローブ応答がインスタンス全体の状態を反映する必要があります。
 
 お客様の VNet 内にある別のインスタンスへの正常性プローブを受信するインスタンスによる正常性プローブの変換またはプロキシは行わないでください。この構成では、お客様のシナリオで障害が連鎖的に発生する可能性があります。  次のシナリオを検討してください。スケーラビリティと冗長性をアプライアンスに提供する Load Balancer リソースのバックエンド プールに一連のサードパーティ アプライアンスがデプロイされています。また、アプライアンスの背後にある他の仮想マシンへのプロキシまたは変換がサードパーティ アプライアンスによって行われるポートをプローブするよう、正常性プローブが構成されています。  アプライアンスの背後にある他の仮想マシンに対して要求を変換またはプロキシするために使用している同じポートをプローブすると、アプライアンスの背後にある単一の仮想マシンからのプローブ応答によって、アプライアンス自体が停止状態としてマークされます。 この構成では、アプライアンスの内側にある単一のバックエンド エンドポイントによって、アプリケーションのシナリオ全体が連鎖的に失敗する可能性があります。  トリガーとなり得るのはプローブの断続的な失敗です。これが原因で、Load Balancer によって元の送信先 (アプライアンスのインスタンス) がダウンとしてマークされ、お客様のアプリケーションのシナリオ全体が無効になる可能性があります。 代わりにアプライアンス自体の正常性をプローブしてください。 正常性シグナルを特定するプローブの選択はネットワーク仮想アプライアンス (NVA) のシナリオで重要な考慮事項です。このようなシナリオでは、適切な正常性シグナルについてお客様のアプリケーション ベンダーと相談する必要があります。
 
 お客様のファイアウォール ポリシーでプローブの[ソース IP](#probesource) を許可しない場合、正常性プローブはお客様のインスタンスに到達できないため失敗します。  さらに、正常性プローブが失敗するため、Load Balancer はインスタンスをダウンとしてマークします。  この誤った構成は、お客様の負荷分散アプリケーションのシナリオが失敗する原因となる可能性があります。
 
-Load Balancer の正常性プローブによってお客様のインスタンスがアップとしてマークされるには、Azure の[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)とローカル ファイアウォールのポリシーで、この IP アドレスを許可する**必要があります**。  既定では、正常性プローブのトラフィックを許可するための[サービス タグ](../virtual-network/security-overview.md#service-tags) AzureLoadBalancer がすべてのネットワーク セキュリティ グループに含まれています。
+Load Balancer の正常性プローブによってお客様のインスタンスがアップとしてマークされるには、Azure の [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)とローカル ファイアウォールのポリシーで、この IP アドレスを許可する **必要があります**。  既定では、正常性プローブのトラフィックを許可するための[サービス タグ](../virtual-network/network-security-groups-overview.md#service-tags) AzureLoadBalancer がすべてのネットワーク セキュリティ グループに含まれています。
 
-正常性プローブの失敗をテストしたい場合、または個別のインスタンスをダウンとしてマークしたい場合は、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を使用し、正常性プローブ (宛先ポートまたは[ソース IP](#probesource)) を明示的にブロックしてプローブの失敗をシミュレートできます。
+正常性プローブの失敗をテストしたい場合、または個別のインスタンスをダウンとしてマークしたい場合は、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)を使用し、正常性プローブ (宛先ポートまたは[ソース IP](#probesource)) を明示的にブロックしてプローブの失敗をシミュレートできます。
 
 168.63.129.16 が含まれている Microsoft 所有の IP アドレス範囲を使用してお客様の VNet を構成しないでください。  このような構成は正常性プローブの IP アドレスと競合して、お客様のシナリオの失敗を引き起こす可能性があります。
 
@@ -251,7 +251,7 @@ VM に複数のインターフェイスがある場合は、プローブを受�
 
 ## <a name="monitoring"></a>監視
 
-公開と内部いずれの [Standard Load Balancer](load-balancer-standard-overview.md) でも、エンドポイントおよびバックエンド エンドポイントごとの正常性プローブの状態が、Azure Monitor により多次元メトリックとして公開されます。 これらのメトリックは、他の Azure サービスやパートナー アプリケーションによって消費される可能性があります。 
+公開と内部いずれの [Standard Load Balancer](./load-balancer-overview.md) でも、エンドポイントおよびバックエンド エンドポイントごとの正常性プローブの状態が、Azure Monitor により多次元メトリックとして公開されます。 これらのメトリックは、他の Azure サービスやパートナー アプリケーションによって消費される可能性があります。 
 
 公開の Basic Load Balancer では、Azure Monitor ログ経由でバックエンド プールごとにまとめられた正常性プローブの状態が公開されます。  Azure Monitor ログは内部の Basic Load Balancer では使用できません。  [Azure Monitor ログ](load-balancer-monitor-log.md)を使って、パブリック Load Balancer のプローブの正常性状態とプローブの数を確認できます。 ログ記録と共に Power BI または Azure Operational Insights を使用することで、Load Balancer の正常性状態の統計情報を提供することができます。
 
@@ -262,7 +262,7 @@ VM に複数のインターフェイスがある場合は、プローブを受�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する
+- [Standard Load Balancer](./load-balancer-overview.md) の詳細を確認する
 - [PowerShell を使用した Resource Manager でのパブリック ロード バランサーの作成の概要](quickstart-load-balancer-standard-public-powershell.md)
-- [正常性プローブ用の REST API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
+- [正常性プローブ用の REST API](/rest/api/load-balancer/loadbalancerprobes/)
 - [Load Balancer の Uservoice](https://aka.ms/lbuservoice) で新しい正常性プローブ機能をリクエストする

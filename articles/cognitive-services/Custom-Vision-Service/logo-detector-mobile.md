@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 98d94e9544e75f762d4532101a92d14106d6a575
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 76e7b061670f603007cefd6d7aed503e0e0d3d6b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931796"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941777"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>チュートリアル:写真内にある Azure サービスのロゴを認識する
 
@@ -34,9 +34,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 
 - [Visual Studio 2017 以降](https://www.visualstudio.com/downloads/)
-- Visual Studio 向けの Xamarin ワークロード ([Xamarin のインストール](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows)に関するページを参照してください)
+- Visual Studio 向けの Xamarin ワークロード ([Xamarin のインストール](/xamarin/cross-platform/get-started/installation/windows)に関するページを参照してください)
 - Visual Studio 向けの iOS または Android のエミュレーター
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) (オプション)
+- [Azure CLI](/cli/azure/install-azure-cli-windows) (オプション)
 
 ## <a name="get-the-source-code"></a>ソース コードを入手する
 
@@ -94,7 +94,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルの Custom Vision 部分が完了しました。 このアプリを実行するには、Computer Vision サービスも統合する必要があります。 このアプリでは、Computer Vision のテキスト認識機能を使用して、ロゴの検出プロセスが補完されます。 Azure のロゴは、その外観 "*または*" その近くに印刷されたテキストによって認識されます。 Computer Vision は、Custom Vision モデルとは異なり、画像や動画に対して特定の操作を実行するように事前にトレーニングされています。
 
-Computer Vision サービスに登録して、キーとエンドポイント URL を取得します。 この手順に関してサポートが必要な場合は、「[サブスクリプション キーを取得する方法](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe)」を参照してください。
+Computer Vision サービスに登録して、キーとエンドポイント URL を取得します。 この手順に関してサポートが必要な場合は、「[サブスクリプション キーを取得する方法](../cognitive-services-apis-create-account.md?tabs=singleservice%2Cwindows)」を参照してください。
 
 ![[クイック スタート] メニューが選択された、Azure portal の Computer Vision サービス。 キーへのリンクと、API エンドポイント URL が枠線で囲まれている](media/azure-logo-tutorial/comvis-keys.png)
 
@@ -104,7 +104,7 @@ Computer Vision サービスに登録して、キーとエンドポイント URL
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
-このアプリでは、Azure サブスクリプションにサービスをデプロイするために、Azure サービス プリンシパル アカウントが必要です。 サービス プリンシパルを使用すると、ロールベースのアクセス制御を使用して特定のアクセス許可をアプリに委任できます。 詳細については、[サービス プリンシパルのガイド](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals)を参照してください。
+このアプリでは、Azure サブスクリプションにサービスをデプロイするために、Azure サービス プリンシパル アカウントが必要です。 サービス プリンシパルを使用すると、Azure ロールベースのアクセス制御を使用して特定のアクセス許可をアプリに委任できます。 詳細については、[サービス プリンシパルのガイド](/azure-stack/operator/azure-stack-create-service-principals)を参照してください。
 
 サービス プリンシパルは、ここで示すように、Azure Cloud Shell または Azure CLI を使用して作成できます。 開始するには、サインインして、使用するサブスクリプションを選択します。
 

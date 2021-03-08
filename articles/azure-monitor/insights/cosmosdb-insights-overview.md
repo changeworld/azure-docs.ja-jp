@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor for Cosmos DB で Azure Cosmos DB を監視する | Microsoft Docs
 description: この記事では、Cosmos DB の所有者が CosmosDB アカウントのパフォーマンスと使用状況の問題をすばやく把握できる Azure Monitor for Cosmos DB の機能について説明します。
-ms.subservice: ''
+author: lgayhardt
+ms.author: lagayhar
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 8043dfb7fdda972d4ede6798d07355936b23bf93
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fdf482f5afc444aff77c2ab528a4e333a0282c3d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498918"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582366"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Monitor for Azure Cosmos DB の探索
 
@@ -68,11 +67,11 @@ Azure Monitor for Azure Cosmos DB を使用すると、すべての Azure Cosmos
 
 ### <a name="failures"></a>エラー
 
-ページの上部にある **[エラー]** を選択すると、ブック テンプレートの**エラー**部分が表示されます。 要求数の合計が、それらの要求を構成する応答の配分と共に表示されます。
+ページの上部にある **[エラー]** を選択すると、ブック テンプレートの **エラー** 部分が表示されます。 要求数の合計が、それらの要求を構成する応答の配分と共に表示されます。
 
 ![HTTP 要求タイプごとの内訳を含むエラーのスクリーンショット](./media/cosmosdb-insights-overview/failures.png)
 
-| コード      |  説明       | 
+| コード |  説明       | 
 |-----------|:--------------------|
 | `200 OK`  | 次のいずれかの REST 操作が成功しました。 </br>- リソースに対する GET。 </br> - リソースに対する PUT。 </br> - リソースに対する POST。 </br> - ストアド プロシージャ リソースに対する POST でのストアド プロシージャの実行。|
 | `201 Created` | リソースを作成するための POST 操作が成功しました。 |
@@ -82,7 +81,7 @@ Azure Monitor for Azure Cosmos DB を使用すると、すべての Azure Cosmos
 
 ### <a name="capacity"></a>容量
 
-ページの上部にある **[容量]** を選択すると、ブック テンプレートの**容量**部分が表示されます。 保有するドキュメント数、時間の経過に伴うドキュメントの増加、データ使用状況、利用可能な残りストレージ容量の合計が表示されます。  これは、ストレージとデータ使用率の潜在的な問題を特定する目的で役立てることができます。
+ページの上部にある **[容量]** を選択すると、ブック テンプレートの **容量** 部分が表示されます。 保有するドキュメント数、時間の経過に伴うドキュメントの増加、データ使用状況、利用可能な残りストレージ容量の合計が表示されます。  これは、ストレージとデータ使用率の潜在的な問題を特定する目的で役立てることができます。
 
 ![[容量] ブック](./media/cosmosdb-insights-overview/capacity.png) 
 
@@ -90,7 +89,7 @@ Azure Monitor for Azure Cosmos DB を使用すると、すべての Azure Cosmos
 
 ### <a name="operations"></a>操作 
 
-ページの上部にある **[操作]** を選択すると、ブック テンプレートの**操作**部分が表示されます。 送信された要求の種類ごとに要求の内訳を確認できます。 
+ページの上部にある **[操作]** を選択すると、ブック テンプレートの **操作** 部分が表示されます。 送信された要求の種類ごとに要求の内訳を確認できます。 
 
 以下の例を見ると、`eastus-billingint` は、読み取り要求の大部分を受け取っていますが、upsert 要求と作成要求はごくわずかであることがわかります。 `westeurope-billingint` は、要求の観点から言えば読み取りのみですが、現在このブックがパラメーターでスコープ設定されている時間範囲は、少なくとも過去 4 時間となります。
 
@@ -126,6 +125,6 @@ Azure Monitor for Azure Cosmos DB を使用すると、すべての Azure Cosmos
 
 ## <a name="next-steps"></a>次のステップ
 
-* [メトリック アラート](../platform/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications-portal.md)を構成して、問題の検出に役立つ自動アラートを設定します。
+* [メトリック アラート](../alerts/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications-portal.md)を構成して、問題の検出に役立つ自動アラートを設定します。
 
-* ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../platform/workbooks-overview.md)」で学習してください。
+* ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../visualize/workbooks-overview.md)」で学習してください。

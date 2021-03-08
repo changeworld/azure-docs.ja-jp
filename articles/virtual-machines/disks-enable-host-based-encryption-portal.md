@@ -8,20 +8,20 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4498e78b408f64ab5bc00b9f8730559b90c95d57
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: ba7d6d8deb2034f8b2a853cf74635687561c41ea
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817230"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573604"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Azure portal を使用して、ホストでの暗号化を使用したエンドツーエンドの暗号化を有効にする
 
 ホストでの暗号化を有効にすると、VM ホスト上の格納データは、保存時に暗号化され、暗号化された状態でストレージ サービスに送られます。 ホストでの暗号化とその他のマネージド ディスクの暗号化の概要については、次の記事を参照してください。
 
-* Linux: [ホストでの暗号化 - ご利用の VM データのエンドツーエンド暗号化](./linux/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
+* Linux: [ホストでの暗号化 - ご利用の VM データのエンドツーエンド暗号化](./disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
 
-* Windows: [ホストでの暗号化 - ご利用の VM データのエンドツーエンド暗号化](./windows/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
+* Windows: [ホストでの暗号化 - ご利用の VM データのエンドツーエンド暗号化](./disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
 
 ## <a name="restrictions"></a>制限
 
@@ -37,7 +37,7 @@ ms.locfileid: "88817230"
 
 ## <a name="prerequisites"></a>前提条件
 
-VM または仮想マシン スケール セットに対してホストでの暗号化を使用できるようにするには、サブスクリプションで機能が有効になっている必要があります。 encryptionAtHost@microsoft に電子メールを送信する。 ご自分のサブスクリプション ID と共に .com に電子メールを送信して、ご自分のサブスクリプションに対してこの機能を有効にします。
+VM または仮想マシン スケール セットに対してホストでの暗号化を使用できるようにするには、サブスクリプションで機能が有効になっている必要があります。 サブスクリプション ID と共に encryptionAtHost@microsoft.com にメールを送信して、サブスクリプションに対して機能を有効にします。
 
 [提供されているリンク](https://aka.ms/diskencryptionupdates)を使用して Azure portal にサインインします。
 

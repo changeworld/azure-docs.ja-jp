@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight での認証の問題
 description: Azure HDInsight での認証の問題
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/24/2020
-ms.openlocfilehash: 6473b6b69ba45138c30e4f2c8a7f1ba1a7f2ae7e
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b5a55b3b5f9affcd9f34e1c0d4c439a7ada8c0b9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816849"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095126"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Azure HDInsight での認証の問題
 
@@ -38,7 +35,7 @@ Azure AD エラー コード 50126 は、`AllowCloudPasswordValidation` ポリ�
 
 ### <a name="resolution"></a>解決策
 
-Azure AD テナントの社内管理者は、ADFS の管理対象ユーザーのパスワード ハッシュを Azure AD で使用できるようにする必要があります。  記事「`AllowCloudPasswordValidationPolicy`HDInsight で Enterprise セキュリティ パッケージを使用する[」で示されているように、](../domain-joined/apache-domain-joined-architecture.md) を適用します。
+Azure AD テナントの全体管理者は、ADFS の管理対象ユーザーのパスワード ハッシュを Azure AD で使用できるようにする必要があります。  記事「`AllowCloudPasswordValidationPolicy`HDInsight で Enterprise セキュリティ パッケージを使用する[」で示されているように、](../domain-joined/apache-domain-joined-architecture.md) を適用します。
 
 ---
 
@@ -154,7 +151,7 @@ kinit が成功するには、自分の `sAMAccountName` を把握しておく�
 
 * ローカルの Ambari 管理者を使用して Ambari にサインインできる場合は、ユーザーの一覧を確認します。
 
-* [ドメインに参加している Windows コンピューター](../../active-directory-domain-services/manage-domain.md)がある場合は、標準の Windows AD ツールを使用して参照できます。 これには、ドメイン内に有効なアカウントが必要です。
+* [ドメインに参加している Windows コンピューター](../../active-directory-domain-services/tutorial-create-management-vm.md)がある場合は、標準の Windows AD ツールを使用して参照できます。 これには、ドメイン内に有効なアカウントが必要です。
 
 * ヘッド ノードから、SAMBA コマンドを使用して検索することができます。 これには、有効な Kerberos セッション (kinit の成功) が必要です。 net ads search "(userPrincipalName=bob*)"
 
@@ -214,10 +211,4 @@ kinit が `Preauthentication` エラーで失敗します。
 
 ## <a name="next-steps"></a>次のステップ
 
-問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
-
-* [Azure コミュニティのサポート](https://azure.microsoft.com/support/community/)を通じて Azure エキスパートから回答を得る。
-
-* [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
-
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

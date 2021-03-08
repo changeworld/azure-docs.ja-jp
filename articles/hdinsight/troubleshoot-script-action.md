@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight でのスクリプト アクションのトラブルシューティング
 description: Azure HDInsight でのスクリプト アクションの一般的なトラブルシューティングの手順。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: e8585779a263f4ff5dbdd998bbf065c6a4e1acdf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7158e9f82ee01b320d448baeab51fcfd122be00d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079261"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944677"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Azure HDInsight でのスクリプト アクションのトラブルシューティング
 
@@ -45,7 +42,7 @@ Apache Ambari Web UI を使用すると、スクリプト アクションによ�
 
     ![スクリプト アクション ログ](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
 
-    このディレクトリの下で、**ヘッド ノード**、**ワーカー ノード**、および **zookeeper ノード**ごとにログが整理されています。 次の例を参照してください。
+    このディレクトリの下で、**ヘッド ノード**、**ワーカー ノード**、および **zookeeper ノード** ごとにログが整理されています。 次の例を参照してください。
 
     * **ヘッド ノード**: `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 
@@ -110,10 +107,4 @@ SSH を使用してクラスターに接続する方法については、「[SSH
 
 ## <a name="next-steps"></a>次のステップ
 
-問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
-
-* [Azure コミュニティのサポート](https://azure.microsoft.com/support/community/)を通じて Azure エキスパートから回答を得る。
-
-* [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
-
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

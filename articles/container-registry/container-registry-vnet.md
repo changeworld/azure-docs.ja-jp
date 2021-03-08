@@ -3,12 +3,12 @@ title: サービス エンドポイントを使用してアクセスを制限す
 description: Azure 仮想ネットワークのサービス エンドポイントを使用して Azure コンテナー レジストリへのアクセスを制限します。 サービス エンドポイント アクセスは、Premium サービス レベルの機能です。
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: a6a0702019cd11f26ea9fcdba8a74bf3e71df94b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5f9bc7c9a6c8f2061765510a6396611502fd4a2a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371432"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026226"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Azure 仮想ネットワークのサービス エンドポイントを使用してコンテナー レジストリへのアクセスを制限する
 
@@ -19,15 +19,17 @@ ms.locfileid: "87371432"
 > [!IMPORTANT]
 > Azure Container Registry で [Azure Private Link](container-registry-private-link.md) がサポートされ、仮想ネットワークからプライベート エンドポイントをレジストリにデプロイできるようになりました。 プライベート エンドポイントには、プライベート IP アドレスを使用して仮想ネットワーク内からアクセスできます。 ほとんどのネットワーク シナリオでは、サービス エンドポイントの代わりにプライベート エンドポイントを使用することをお勧めします。
 
-レジストリ サービス エンドポイントの構成は、**Premium** コンテナー レジストリ サービス レベルで利用できます。 レジストリ サービスのレベルと制限については、「[Azure Container Registry のサービス レベル](container-registry-skus.md)」を参照してください。
+レジストリ サービス エンドポイントの構成は、 **Premium** コンテナー レジストリ サービス レベルで利用できます。 レジストリ サービスのレベルと制限については、「[Azure Container Registry のサービス レベル](container-registry-skus.md)」を参照してください。
 
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
 * 現在、Azure Container Registry のサービス エンドポイントの今後の開発は計画されていません。 代わりに、[プライベート エンドポイント](container-registry-private-link.md)を使用することをお勧めします。
 * Azure portal を使用してレジストリにサービス エンドポイントを構成することはできません。
-* サービス エンドポイントを使用してコンテナー レジストリにアクセスするためのホストとして使用できるのは、[Azure Kubernetes Service](../aks/intro-kubernetes.md) クラスターまたは Azure [仮想マシン](../virtual-machines/linux/overview.md)だけです。 "*Azure Container Instances を含むその他の Azure サービスはサポートされていません。* "
+* サービス エンドポイントを使用してコンテナー レジストリにアクセスするためのホストとして使用できるのは、[Azure Kubernetes Service](../aks/intro-kubernetes.md) クラスターまたは Azure [仮想マシン](../virtual-machines/linux/overview.md)だけです。 " *Azure Container Instances を含むその他の Azure サービスはサポートされていません。* "
 * 各レジストリでは、最大 100 個のネットワーク アクセス規則がサポートされます。
 * Azure Container Registry のサービス エンドポイントは、Azure US Government Cloud または Azure China Cloud ではサポートされていません。
+
+[!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,13 +49,11 @@ ms.locfileid: "87371432"
 
 ## <a name="configure-network-access-for-registry"></a>レジストリへのネットワーク アクセスを構成する
 
-このセクションでは、Azure 仮想ネットワーク内のサブネットからのアクセスを許可するようにコンテナー レジストリを構成します。 Azure CLI と Azure portal を使用した同等の手順が提供されます。
+このセクションでは、Azure 仮想ネットワーク内のサブネットからのアクセスを許可するようにコンテナー レジストリを構成します。 Azure CLI を使用した手順が用意されています。
 
-### <a name="allow-access-from-a-virtual-network---cli"></a>仮想ネットワークからのアクセスの許可 - CLI
+### <a name="add-a-service-endpoint-to-a-subnet"></a>サブネットにサービス エンドポイントを追加する
 
-#### <a name="add-a-service-endpoint-to-a-subnet"></a>サブネットにサービス エンドポイントを追加する
-
-VM を作成するときに、既定では Azure によって仮想ネットワークが同じリソース グループに作成されます。 仮想ネットワークの名前は仮想マシンの名前に基づいています。 たとえば、仮想マシンに *myDockerVM* という名前を付ける場合、既定の仮想ネットワーク名は *myDockerVMVNET* で、サブネット名は *myDockerVMSubnet* です。 これは、Azure portal で、または [az network vnet list][az-network-vnet-list] コマンドを使用して確認します。
+VM を作成するときに、既定では Azure によって仮想ネットワークが同じリソース グループに作成されます。 仮想ネットワークの名前は仮想マシンの名前に基づいています。 たとえば、仮想マシンに *myDockerVM* という名前を付ける場合、既定の仮想ネットワーク名は *myDockerVMVNET* で、サブネット名は *myDockerVMSubnet* です。 これを確認するには、[az network vnet list][az-network-vnet-list] コマンドを使用します。
 
 ```azurecli
 az network vnet list \
@@ -72,7 +72,7 @@ az network vnet list \
 ]
 ```
 
-[az network vnet subnet update][az-network-vnet-subnet-update] コマンドを使用して、**Microsoft.ContainerRegistry** サービス エンドポイントをサブネットに追加します。 次のコマンドでは、自分の仮想ネットワークとサブネットの名前に置き換えます。
+[az network vnet subnet update][az-network-vnet-subnet-update] コマンドを使用して、 **Microsoft.ContainerRegistry** サービス エンドポイントをサブネットに追加します。 次のコマンドでは、自分の仮想ネットワークとサブネットの名前に置き換えます。
 
 ```azurecli
 az network vnet subnet update \
@@ -99,7 +99,7 @@ az network vnet subnet show \
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
 ```
 
-#### <a name="change-default-network-access-to-registry"></a>レジストリへの既定のネットワーク アクセスを変更する
+### <a name="change-default-network-access-to-registry"></a>レジストリへの既定のネットワーク アクセスを変更する
 
 既定では、Azure コンテナー レジストリは、任意のネットワーク上のホストからの接続を許可します。 選択したネットワークへのアクセスを制限するには、既定のアクションを変更してアクセスを拒否します。 次の [az acr update][az-acr-update] コマンドでは、自分のレジストリの名前に置き換えます。
 
@@ -107,7 +107,7 @@ az network vnet subnet show \
 az acr update --name myContainerRegistry --default-action Deny
 ```
 
-#### <a name="add-network-rule-to-registry"></a>レジストリにネットワーク規則を追加する
+### <a name="add-network-rule-to-registry"></a>レジストリにネットワーク規則を追加する
 
 [az acr network-rule add][az-acr-network-rule-add] コマンドを使用して、VM のサブネットからのアクセスを許可するネットワーク規則をレジストリに追加します。 次のコマンドでは、コンテナー レジストリの名前とサブネットのリソース ID に置き換えます。 
 
@@ -141,11 +141,9 @@ Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ fail
 
 ## <a name="restore-default-registry-access"></a>既定のレジストリ アクセスの復元
 
-既定でアクセスを許可するようにレジストリを復元するには、構成されているネットワーク規則をすべて削除します。 次に、アクセスを許可する既定のアクションを設定します。 Azure CLI と Azure portal を使用した同等の手順が提供されます。
+既定でアクセスを許可するようにレジストリを復元するには、構成されているネットワーク規則をすべて削除します。 次に、アクセスを許可する既定のアクションを設定します。 
 
-### <a name="restore-default-registry-access---cli"></a>既定のレジストリ アクセスの復元 - CLI
-
-#### <a name="remove-network-rules"></a>ネットワーク規則を削除する
+### <a name="remove-network-rules"></a>ネットワーク規則を削除する
 
 レジストリに対して構成されているネットワーク規則の一覧を表示するには、次の [az acr network-rule list][az-acr-network-rule-list] コマンドを実行します。
 
@@ -164,7 +162,7 @@ az acr network-rule remove \
   xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
 ```
 
-#### <a name="allow-access"></a>アクセスを許可
+### <a name="allow-access"></a>アクセスを許可
 
 次の [az acr update][az-acr-update] コマンドでは、自分のレジストリの名前に置き換えます。
 ```azurecli
@@ -179,8 +177,6 @@ az acr update --name myContainerRegistry --default-action Allow
 az group delete --name myResourceGroup
 ```
 
-ポータル上でリソースをクリーンアップするには、myResourceGroup リソース グループに移動します。 リソース グループが読み込まれたら、 **[リソース グループの削除]** をクリックして、リソース グループとそこに格納されているリソースを削除します。
-
 ## <a name="next-steps"></a>次のステップ
 
 * 仮想ネットワーク内のプライベート エンドポイントを使用してレジストリへのアクセスを制限するには、「[Azure コンテナー レジストリ用に Azure Private Link を構成する](container-registry-private-link.md)」を参照してください。
@@ -193,7 +189,6 @@ az group delete --name myResourceGroup
 
 
 <!-- LINKS - External -->
-[aci-helloworld]: https://hub.docker.com/r/microsoft/aci-helloworld/
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 16a133205b13a3d0a4aa76f75c8ce316f6c09199
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 64d40de50f21811a56318971de1836abc8fbf8c9
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014900"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027263"
 ---
 # <a name="http-features"></a>HTTP 機能
 
@@ -140,7 +140,7 @@ Retry-After: 10
 
 ### <a name="async-operation-tracking"></a>非同期操作の追跡
 
-上記の HTTP 応答は、Durable Functions で実行時間の長い HTTP 非同期 API を実装するのに役立つように設計されています。 このパターンは、*ポーリング コンシューマー パターン*と呼ばれる場合もあります。 クライアント/サーバー フローは次のように動作します。
+上記の HTTP 応答は、Durable Functions で実行時間の長い HTTP 非同期 API を実装するのに役立つように設計されています。 このパターンは、 *ポーリング コンシューマー パターン* と呼ばれる場合もあります。 クライアント/サーバー フローは次のように動作します。
 
 1. クライアントが、オーケストレーター関数など、実行時間の長いプロセスを開始する HTTP 要求を発行します。
 1. ターゲット HTTP トリガーは、"statusQueryGetUri" の値を持つ Location ヘッダーを含む HTTP 202 応答を返します。
@@ -251,12 +251,12 @@ public static async Task RunOrchestrator(
     string vmName = "myVM";
     string apiVersion = "2019-03-01";
     
-    // Automatically fetches an Azure AD token for resource = https://management.core.windows.net
+    // Automatically fetches an Azure AD token for resource = https://management.core.windows.net/.default
     // and attaches it to the outgoing Azure Resource Manager API call.
     var restartRequest = new DurableHttpRequest(
         HttpMethod.Post, 
         new Uri($"https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/virtualMachines/{vmName}/restart?api-version={apiVersion}"),
-        tokenSource: new ManagedIdentityTokenSource("https://management.core.windows.net"));
+        tokenSource: new ManagedIdentityTokenSource("https://management.core.windows.net/.default"));
     DurableHttpResponse restartResponse = await context.CallHttpAsync(restartRequest);
     if (restartResponse.StatusCode != HttpStatusCode.OK)
     {
@@ -275,7 +275,7 @@ module.exports = df.orchestrator(function*(context) {
     const resourceGroup = "myRG";
     const vmName = "myVM";
     const apiVersion = "2019-03-01";
-    const tokenSource = new df.ManagedIdentityTokenSource("https://management.core.windows.net");
+    const tokenSource = new df.ManagedIdentityTokenSource("https://management.core.windows.net/.default");
 
     // get a list of the Azure subscriptions that I have access to
     const restartResponse = yield context.df.callHttp(
@@ -300,11 +300,11 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
     resource_group = "myRg"
     vm_name = "myVM"
     api_version = "2019-03-01"
-    token_source = df.ManagedIdentityTokenSource("https://management.core.windows.net")
+    token_source = df.ManagedIdentityTokenSource("https://management.core.windows.net/.default")
 
     # get a list of the Azure subscriptions that I have access to
     restart_response = yield context.call_http("POST", 
-        f"https://management.azure.com/subscriptions/${subscription_id}/resourceGroups/${resource_group}/providers/Microsoft.Compute/virtualMachines/${vm_name}/restart?api-version=${api_version}",
+        f"https://management.azure.com/subscriptions/{subscription_id}/resourceGroups/{resource_group}/providers/Microsoft.Compute/virtualMachines/{vm_name}/restart?api-version={api_version}",
         None,
         None,
         token_source)
@@ -315,7 +315,7 @@ main = df.Orchestrator.create(orchestrator_function)
 
 ---
 
-前の例で、`tokenSource` パラメーターは [Azure Resource Manager](../../azure-resource-manager/management/overview.md) の Azure AD トークンを取得するように構成されています。 このトークンは、リソース URI `https://management.core.windows.net`によって識別されます。 この例では、現在の関数アプリがローカルで実行されているか、マネージド ID を使用する関数アプリとしてデプロイ済みであることを前提としています。 ローカル ID またはマネージド ID は、指定されたリソース グループ `myRG` 内の VM を管理できるアクセス許可を持っていると見なされます。
+前の例で、`tokenSource` パラメーターは [Azure Resource Manager](../../azure-resource-manager/management/overview.md) の Azure AD トークンを取得するように構成されています。 このトークンは、リソース URI `https://management.core.windows.net/.default`によって識別されます。 この例では、現在の関数アプリがローカルで実行されているか、マネージド ID を使用する関数アプリとしてデプロイ済みであることを前提としています。 ローカル ID またはマネージド ID は、指定されたリソース グループ `myRG` 内の VM を管理できるアクセス許可を持っていると見なされます。
 
 実行時に、構成されたトークン ソースにより OAuth 2.0 アクセス トークンが自動的に返されます。 次に、ソースによって、送信要求の Authorization ヘッダーにトークンがベアラー トークンとして追加されます。 このモデルは、次の理由により、Authorization ヘッダーを HTTP 要求に手動で追加するよりも優れています。
 
@@ -341,7 +341,7 @@ HTTP API を呼び出す組み込みのサポートは便利な機能です。 �
 これらの制限事項のいずれかがお客様のユースケースに影響する可能性がある場合は、代わりにアクティビティ関数と言語固有の HTTP クライアント ライブラリを使用して送信 HTTP 呼び出しを行うことを検討してください。
 
 > [!NOTE]
-> .NET 開発者であれば、この機能で、組み込みの .NET **HttpRequestMessage** および **HttpResponseMessage** 型ではなく、**DurableHttpRequest** および **DurableHttpResponse** 型が使用される理由を疑問に思うかもしれません。
+> .NET 開発者であれば、この機能で、組み込みの .NET **HttpRequestMessage** および **HttpResponseMessage** 型ではなく、 **DurableHttpRequest** および **DurableHttpResponse** 型が使用される理由を疑問に思うかもしれません。
 >
 > この設計の選択は意図的なものです。 主な理由は、カスタム型を使用することで、内部 HTTP クライアントのサポートされている動作についてユーザーが誤った想定を行うことを回避するためです。 Durable Functions に固有の型により、API の設計を簡素化することもできます。 また、[マネージド ID の統合](#managed-identities)や[ポーリング コンシューマー パターン](#http-202-handling)などの特別な機能を、より簡単に利用できるようになります。 
 

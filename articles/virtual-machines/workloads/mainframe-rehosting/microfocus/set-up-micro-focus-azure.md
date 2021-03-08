@@ -1,6 +1,6 @@
 ---
 title: Azure で Micro Focus Enterprise Server 5.0 および Enterprise Developer 5.0 をインストールする | Microsoft Docs
-description: Azure 仮想マシン (VM) 上で Micro Focus 開発およびテスト環境を使用して IBM z/OS メインフレーム ワークロードをリホストします。
+description: この記事では、Microsoft Azure で Micro Focus Enterprise Server 5.0 と Enterprise Developer 5.0 をインストールする方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
 author: maggsl
@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 59566fc051b1e84d8e271b3c9d061f2481dcc58f
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: d9e5f9b531fc28caf8f3162a70318927d40bb923
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245317"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483064"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Azure で Micro Focus Enterprise Server 5.0 および Enterprise Developer 5.0 をインストールする
 
@@ -42,7 +42,7 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
     > [!Note]
     > 以下のように、VM へのアクセスを制御するためのオプションはいくつかあります。
     > -   [Azure Bastion](https://azure.microsoft.com/services/azure-bastion/) を設定することをお勧めします。
-    > -   [サイト間仮想プライベート ネットワーク (VPN)](../../../../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md) トンネル。
+    > -   [サイト間仮想プライベート ネットワーク (VPN)](../../../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) トンネル。
     > -   ジャンプボックス VM。
 
 ## <a name="install-enterprise-server"></a>Enterprise Server をインストールする
@@ -73,11 +73,11 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
 
 9.  ファイルをダブルクリックしてインストールを開始します。 最初のウィンドウで、インストールの場所を選択し、使用許諾契約書に同意します。
 
-    ![Micro Focus Enterprise Server の設定画面](media/install-image-1.png)
+    ![スクリーンショットに、インストールを開始できる、Micro Focus Enterprise Server のダイアログ ボックスが示されています。](media/install-image-1.png)
 
     設定が完了すると、次のメッセージが表示されます。
 
-    ![Micro Focus Enterprise Server の設定画面](media/install-image-2.png)
+    ![スクリーンショットに、Micro Focus Enterprise Server のダイアログ ボックスに成功メッセージが示されています。](media/install-image-2.png)
 
  ### <a name="check-for-updates"></a>更新プログラムをチェックする
 
@@ -89,7 +89,7 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
 
 2.  **[スタート]** \> **[Micro Focus License Manager]\(Micro Focus ライセンス マネージャー\)** \> **[License Administration]\(ライセンス管理\)** の順に選択し、 **[インストール]** タブをクリックします。アップロードするライセンス形式の種類 (ライセンス ファイルまたは 16 文字のライセンス コード) を選択します。 たとえば、ファイルの場合は、 **[License file]\(ライセンス ファイル\)** で、前に VM にアップロードされた `mflic` ファイルを参照し、 **[Install Licenses]\(ライセンスのインストール\)** を選択します。
 
-    ![Micro Focus の [License Administration]\(ライセンス管理\) ダイアログ ボックス](media/install-image-3.png)
+    ![スクリーンショットに、[Install Licenses]\(ライセンスのインストール\) を選択できる Micro Focus の [License Administration]\(ライセンス管理\) ダイアログ ボックスが示されています。](media/install-image-3.png)
 
 3.  Enterprise Server が読み込まれることを確認します。 URL: `http://localhost:86/` を使用して、ブラウザーから [Enterprise Server Administration]\(Enterprise Server の管理\) サイトを起動してみてください。 [Enterprise Server Administration]\(Enterprise Server の管理\) ページが次のように表示されます。
 

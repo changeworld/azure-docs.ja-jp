@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: egeaney
 ms.custom: include
-ms.openlocfilehash: 3b975d9f0953c874c627e30b382ad8c7fa7cfc09
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 90d5aae559a317ed509d04c8db3310ff8a5de026
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84307821"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89069913"
 ---
 ## <a name="about-cognitive-services-encryption"></a>Cognitive Services の暗号化について
 
@@ -21,4 +21,4 @@ ms.locfileid: "84307821"
 
 ## <a name="about-encryption-key-management"></a>暗号化キーの管理について
 
-サブスクリプションでは、Microsoft が管理する暗号化キーが既定で使用されます。 ただし、ユーザー独自の暗号化キーを使用してサブスクリプションを管理することもできます。 カスタマー マネージド キー (CMK、Bring Your Own Key (BYOK) とも呼ばれます) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、データを保護するために使われる暗号化キーを監査することもできます。
+サブスクリプションでは、Microsoft が管理する暗号化キーが既定で使用されます。 カスタマー マネージド キー (CMK) と呼ばれるユーザー独自のキーを使用してサブスクリプションを管理するオプションもあります。 CMK を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、データを保護するために使われる暗号化キーを監査することもできます。 CMK がサブスクリプション用に構成されている場合は、Azure Key Vault で暗号化キーを制御しながら、2 つ目の保護レイヤーを提供する二重暗号化が提供されます。

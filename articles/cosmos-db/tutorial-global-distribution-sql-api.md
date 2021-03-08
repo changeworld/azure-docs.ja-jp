@@ -4,18 +4,20 @@ description: チュートリアル:.NET、Java、Python など各種 SDK で SQL
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: dbfb90abcf301cb22a84ba28359c6cb0bfaacfd6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp
+ms.openlocfilehash: aacb8d4ffb98d553b17aa52e4c4b11a4837dc1c6
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021087"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337882"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>チュートリアル:SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、Azure portal を使用して Azure Cosmos DB グローバル分散をセットアップし、SQL API を使用して接続する方法を説明します。
 
@@ -23,7 +25,7 @@ ms.locfileid: "89021087"
 
 > [!div class="checklist"]
 > * Azure Portal を使用してグローバル分散を構成する
-> * [SQL API](sql-api-introduction.md) を使用してグローバル分散を構成する
+> * [SQL API](./introduction.md) を使用してグローバル分散を構成する
 
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
@@ -240,4 +242,3 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 > [エミュレーターを使用したローカル開発](local-emulator.md)
 
 [regions]: https://azure.microsoft.com/regions/
-

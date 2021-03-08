@@ -5,26 +5,26 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 12/12/2018
+ms.date: 11/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2766ea87544f2a21fb654f687eb62dee3c0714ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7db9749adab9a6d6d7b8c350648603f42d0b43d
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334996"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94574235"
 ---
-**Standard HDD マネージド ディスク**  
+### <a name="standard-hdd-managed-disks"></a>Standard HDD マネージド ディスク
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
-**Standard SSD マネージド ディスク**  
+### <a name="standard-ssd-managed-disks"></a>Standard SSD マネージド ディスク
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-**Premium SSD マネージド ディスク:ディスクあたりの制限**  
+### <a name="premium-ssd-managed-disks-per-disk-limits"></a>Premium SSD マネージド ディスク:ディスクあたりの制限 
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-**Premium SSD マネージド ディスク:VM あたりの制限**
+### <a name="premium-ssd-managed-disks-per-vm-limits"></a>Premium SSD マネージド ディスク:VM あたりの制限
 
 | リソース | 制限 |
 | --- | --- |

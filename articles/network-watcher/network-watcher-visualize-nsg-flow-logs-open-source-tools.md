@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 6d2b2fb55a9c23643bbb778ced047e75871ba7f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aca8c75f262e472cbc770c052b86d6e760ee449a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807684"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026473"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>オープン ソース ツールを使用した Azure Network Watcher NSG フロー ログの視覚化
 
@@ -29,7 +29,7 @@ ms.locfileid: "84807684"
 
 この記事では、Elastic Stack を使用してネットワーク セキュリティ グループのフロー ログを視覚化するソリューションを設定します。  Logstash 入力プラグインは、フロー ログを格納するように構成されているストレージ BLOB から直接、フロー ログを取得します。 Elastic Stack を使用して、フロー ログにインデックスを作成し、Kibana ダッシュボードを作成して、情報を視覚化します。
 
-![scenario][scenario]
+![Elastic Stack を使用してネットワーク セキュリティ グループのフロー ログを視覚化できるシナリオの図。][scenario]
 
 ## <a name="steps"></a>手順
 
@@ -41,7 +41,7 @@ NSG のフロー ログを Elastic Stack に接続すると、Kibana ダッシ�
 
 #### <a name="install-elasticsearch"></a>Elasticsearch のインストール
 
-1. Elastic Stack のバージョン 5.0 以降では、Java 8 が必要です。 `java -version` コマンドを実行して、現在のバージョンを確認します。 Java がインストールされていない場合は、[Azure でサポートされている JDK](https://aka.ms/azure-jdks) に関するドキュメントを参照してください。
+1. Elastic Stack のバージョン 5.0 以降では、Java 8 が必要です。 `java -version` コマンドを実行して、現在のバージョンを確認します。 Java がインストールされていない場合は、[Azure でサポートされている JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support) に関するドキュメントを参照してください。
 2. お使いのシステムに適合するバイナリ パッケージをダウンロードします。
 
    ```bash
@@ -207,7 +207,7 @@ sudo /etc/init.d/logstash start
 
 Kibana の **[Management (管理)]** タブの下で **[Saved Objects (保存されたオブジェクト)]** に移動して、3 つのファイルすべてをインポートします。 これで、 **[Dashboard (ダッシュボード)]** タブからサンプル ダッシュボードを開いて読み込むことができます。
 
-関心のあるメトリックに合わせて独自の視覚化とダッシュボードを作成することもできます。 Kibana の視覚化を作成する方法の詳細については、Kibana の[公式ドキュメント](https://www.elastic.co/guide/en/kibana/current/visualize.html)を参照してください。
+関心のあるメトリックに合わせて独自の視覚化とダッシュボードを作成することもできます。 Kibana の視覚化を作成する方法の詳細については、Kibana の[公式ドキュメント](https://www.tutorialspoint.com/kibana/kibana_create_visualization.htm)を参照してください。
 
 ### <a name="visualize-nsg-flow-logs"></a>NSG フロー ログの視覚化
 
@@ -215,27 +215,27 @@ Kibana の **[Management (管理)]** タブの下で **[Saved Objects (保存さ
 
 1. Flows by Decision/Direction Over Time (決定/方向別のフロー (時系列)) - 一定時間内のフローの数を時系列のグラフで表示します。 これらのグラフでは、時間の単位と範囲を編集できます。 Flows by Decision (決定別のフロー) は、許可または拒否の決定の割合を示しています。Flows by Direction (方向別のフロー) は、受信トラフィックと送信トラフィックの割合を示しています。 これらのグラフで、時間の経過に伴う傾向を精査し、急激な増加や異常なパターンがないかどうかを確認できます。
 
-   ![図 2][2]
+   ![サンプル ダッシュボードのスクリーンショット。時間の経過に伴うフローが決定別と方向別に表示されています。][2]
 
 2. Flows by Destination/Source Port (送信先ポート/送信元ポート別のフロー) - 該当するポートごとにフローを分割した円グラフです。 このビューでは、最もよく使用されるポートを確認できます。 円グラフ内の特定のポートをクリックすると、ダッシュボードの空いている部分に、そのポートのフローの詳細が表示されます。
 
-   ![図 3][3]
+   ![サンプル ダッシュボードのスクリーンショット。フローが送信先別と送信元別に表示されています。][3]
 
 3. Number of Flows (フローの数) と Earliest Log Time (最も早いログ時刻) - 記録されたフローの数と、ログが取得された最も早い時刻を示すメトリックです。
 
-   ![図 4][4]
+   ![サンプル ダッシュボードのスクリーンショット。フローの数と最も早いログ時刻を確認できます。][4]
 
 4. Flows by NSG and Rule (NSG ごとのフローとルール) - 各 NSG 内のフローの分布、および各 NSG 内のルールの分布を示す棒グラフです。 ここから、どの NSG とルールがトラフィックの多くの部分を生成しているかを確認できます。
 
-   ![図 5][5]
+   ![サンプル ダッシュボードのスクリーンショット。フローが NSG 別とルール別に表示されています。][5]
 
 5. Top 10 Source/Destination IPs (送信元/送信先 IP の上位 10 個) - 送信元/送信先 IP の上位 10 個を示す棒グラフです。 グラフを調整して、表示される IP を増やしたり減らしたりできます。 ここから、最もよく使われる IP や、各 IP へのトラフィックの決定 (許可または拒否) を確認できます。
 
-   ![図 6][6]
+   ![サンプル ダッシュボードのスクリーンショット。フローが上位 10 の送信元別と送信先 IP アドレス別に表示されています。][6]
 
 6. Flow Tuples (フロー タプル) - 各フロー タプルに含まれる情報と、対応する NSG およびルールを表示する表です。
 
-   ![図 7][7]
+   ![テーブルのフロー タプルのスクリーンショット。][7]
 
 ダッシュボードの最上部にあるクエリ バーを使用して、フローのパラメーター (サブスクリプション ID、リソース グループ、ルール、また関連するその他の変数など) に基づいて、ダッシュボードをフィルターできます。 Kibana のクエリとフィルターの詳細については、[公式ドキュメント](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html)を参照してください。
 

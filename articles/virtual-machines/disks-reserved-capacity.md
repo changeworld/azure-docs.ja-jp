@@ -7,12 +7,12 @@ ms.date: 01/30/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 9a6a56491a327d5d4eafc2c05dc2b54b137096b8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: db6575894904e6ced2d4be48fec5961f5b8b8a54
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752063"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602638"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>Azure ディスク予約によるコストの削減
 
@@ -70,7 +70,7 @@ Azure Disk Storage の予約は [Azure portal](https://portal.azure.com/) を使
    |要素  |説明  |
    |---------|---------|
    |**スコープ**   |  予約に関連付けられた課金の特典を使用できるサブスクリプションの数。 この値は、特定のサブスクリプションに予約を適用する方法も指定します。 <br/><br/> **[共有]** を選択すると、予約割引は、課金のコンテキスト内にあるすべてのサブスクリプションの Azure Storage 容量に適用されます。 課金のコンテキストは、Azure に対するサインアップ方法に基づきます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプションが含まれます。 従量課金制のお客様の場合、共有スコープはアカウント管理者が作成するすべての個別の従量課金制サブスクリプションを含みます。  <br/><br/>  **[単一サブスクリプション]** を選択すると、予約割引は選択したサブスクリプションの Azure Storage 容量に適用されます。 <br/><br/> **[1 つのリソース グループ]** を選択すると、予約割引は選択したサブスクリプションおよびそのサブスクリプションの選択したリソース グループ内の Azure Storage 容量に適用されます。 <br/><br/> 予約を購入した後で、予約のスコープを変更できます。  |
-   |**サブスクリプション**  | Azure Storage の予約の支払いに使用するサブスクリプション。 選択したサブスクリプションの支払方法が、コストの課金で使用されます。 サブスクリプションは、次のいずれかの種類である必要があります。<br/><ul><li> マイクロソフト エンタープライズ契約 (オファー番号: MS-AZR-0017P と MS-AZR-0148P)。 エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。</li><br/><li>従来課金制料金の個別サブスクリプション (オファー番号: MS-AZR-0003P と MS-AZR-0023P)。 従量課金制料金の個々のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。</li></ul>    |
+   |**サブスクリプション**  | Azure Storage の予約の支払いに使用するサブスクリプション。 選択したサブスクリプションの支払方法が、コストの課金で使用されます。 サブスクリプションは、次のいずれかの種類である必要があります。<br/><ul><li> マイクロソフト エンタープライズ契約 (オファー番号: MS-AZR-0017P と MS-AZR-0148P)。 Enterprise サブスクリプションの場合、登録の Azure 前払い (旧称: 年額コミットメント) の残高から料金が差し引かれるか、超過分として課金されます。</li><br/><li>従来課金制料金の個別サブスクリプション (オファー番号: MS-AZR-0003P と MS-AZR-0023P)。 従量課金制料金の個々のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。</li></ul>    |
    | **ディスク** | 作成する SKU。 |
    | **リージョン** | 予約が有効になっているリージョン。 |
    | **請求頻度** | アカウントが予約に対して課金される頻度。 オプションには **[月 1 回]** と **[前払い]** があります。 |
@@ -89,7 +89,7 @@ Azure Disk Storage の予約は [Azure portal](https://portal.azure.com/) を使
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>予約の取り消し、交換、または返金
 
-一定の制限内で予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)」を参照してください。
+一定の制限内で予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)」を参照してください。
 
 ## <a name="expiration-of-a-reservation"></a>予約の有効期限
 

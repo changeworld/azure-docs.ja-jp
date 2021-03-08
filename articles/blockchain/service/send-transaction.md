@@ -1,17 +1,17 @@
 ---
 title: スマート コントラクトを作成、ビルド、デプロイするチュートリアル - Azure Blockchain Service
 description: Visual Studio Code の Ethereum 用 Azure Blockchain 開発キット拡張機能を使用して Azure Blockchain Service にスマート コントラクトを作成、ビルド、デプロイするチュートリアル
-ms.date: 04/22/2020
+ms.date: 11/30/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
-ms.openlocfilehash: dc23c680dfb2ed33cae2a251af16e1b1f25c6ac7
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f7605a0c118a40e52210582d2411569795fb25ee
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82086659"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763691"
 ---
-# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>チュートリアル:スマート コントラクトの作成、ビルド、Azure Blockchain Service へのデプロイ
+# <a name="tutorial-create-build-and-deploy-smart-contracts-on-azure-blockchain-service"></a>チュートリアル:スマート コントラクトの作成、ビルド、Azure Blockchain Service へのデプロイ
 
 このチュートリアルでは、Visual Studio Code の Ethereum 用 Azure Blockchain 開発キット拡張機能を使用して、Azure Blockchain Service にスマート コントラクトを作成、ビルド、デプロイします。 また、開発キットを使用し、トランザクションを介してスマート コントラクト関数を実行します。
 
@@ -31,7 +31,6 @@ Azure Blockchain Development Kit for Ethereum を使用して、以下のこと�
 * [Azure Blockchain Development Kit for Ethereum 拡張機能](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
 * [Node.js 10.15.x 以降](https://nodejs.org/download)
 * [Git 2.10.x 以降](https://git-scm.com)
-* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)。python.exe をパスに追加します。 Azure Blockchain 開発キットでは、パス内に Python バージョン 2.7.15 が必要です。
 * [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
 * [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
 
@@ -47,9 +46,9 @@ node-gyp の詳細については、[GitHub の node-gyp のリポジトリ](htt
 
 Azure Blockchain Development Kit for Ethereum では、プロジェクト テンプレートと Truffle ツールを使用して、コントラクトのスキャフォールディング、ビルド、およびデプロイを支援します。 開始する前に、前提条件の「[クイックスタート: Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」を完了してください。 クイックスタートには、Ethereum 用 Azure Blockchain 開発キットのインストールと構成の手順が紹介されています。
 
-1. VS Code コマンド パレットで、 **[Azure Blockchain: New Solidity Project]\(Azure Blockchain: 新しい Solidity プロジェクト\)** を選択します。
+1. VS Code コマンド パレットで、 **[Blockchain: New Solidity Project]\(Azure Blockchain: 新しい Solidity プロジェクト\)** を選択します。
 1. **[Create basic project]\(基本プロジェクトの作成\)** を選択します。
-1. `HelloBlockchain` という名前の新しいフォルダーを作成し、**新しいプロジェクトのパスを選択**します。
+1. `HelloBlockchain` という名前の新しいフォルダーを作成し、**新しいプロジェクトのパスを選択** します。
 
 Azure Blockchain Development Kit によって、新しい Solidity プロジェクトが作成され初期化されます。 基本プロジェクトには、サンプルの **HelloBlockchain** スマート コントラクトと、ビルドして Azure Blockchain Service のコンソーシアム メンバーにデプロイするために必要なすべてのファイルが含まれています。 プロジェクトが作成されるまでに数分かかる場合があります。 Azure Blockchain の出力を選択すると、VS Code のターミナル パネルで進行状況を監視できます。
 
@@ -59,7 +58,7 @@ Azure Blockchain Development Kit によって、新しい Solidity プロジェ�
 
 ## <a name="build-a-smart-contract"></a>スマート コントラクトをビルドする
 
-スマート コントラクトは、プロジェクトの **contracts** ディレクトリに配置されます。 スマート コントラクトのコンパイルは、ブロックチェーンにデプロイする前に行います。 プロジェクト内のすべてのスマート コントラクトをコンパイルするには、 **[Build Contracts]\(コントラクトのビルド\)** コマンドを使用します。
+スマート コントラクトは、プロジェクトの **contracts** ディレクトリに配置されます。 スマート コントラクトのコンパイルは、ブロックチェーンにデプロイする前に行います。 プロジェクト内のすべてのスマート コントラクトをコンパイルするには、**[Build Contracts]\(コントラクトのビルド\)** コマンドを使用します。
 
 1. VS Code エクスプローラーのサイドバーで、プロジェクトの **[contracts]** フォルダーを展開します。
 1. **HelloBlockchain.sol** を右クリックし、メニューの **[Build Contracts]\(コントラクトのビルド\)** を選択します。
@@ -94,7 +93,7 @@ Azure Blockchain Development Kit では、Truffle を使用して移行スクリ
 
     ![スマート コントラクト インタラクション ページの例](./media/send-transaction/interaction-page.png)
 
-1. スマート コントラクト関数を呼び出すには、コントラクト アクションを選択して必要な引数を渡します。 **[SendRequest]** コントラクト アクションを選択し、「**Hello, Blockchain!** 」と **requestMessage** パラメーターに入力します。 **[実行]** を選択すると、トランザクションを介して **SendRequest** 関数が呼び出されます。
+1. スマート コントラクト関数を呼び出すには、コントラクト アクションを選択して必要な引数を渡します。 **[SendRequest]** コントラクト アクションを選択し、 **[requestMessage]** パラメーターに「**Hello, Blockchain!** 」と入力します。 **[実行]** を選択すると、トランザクションを介して **SendRequest** 関数が呼び出されます。
 
     ![SendRequest アクションを実行する](./media/send-transaction/sendrequest-action.png)
 

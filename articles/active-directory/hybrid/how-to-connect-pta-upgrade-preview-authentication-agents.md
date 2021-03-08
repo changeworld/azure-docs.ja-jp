@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d0507f7751305af5e626cbd7dd6e0dfd1a63a74
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279484"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973050"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory パススルー認証: 認証エージェント (プレビュー) のアップグレード
 
@@ -74,7 +74,7 @@ ms.locfileid: "89279484"
 5. **最新バージョンがインストールされたことを確認する**: 前と同じように **[コントロール パネル] -> [プログラム] -> [プログラムと機能]** に移動し、 **[Microsoft Azure AD Connect Authentication Agent]\(Microsoft Azure AD Connect 認証エージェント\)** のエントリがあることを確認します。
 
 >[!NOTE]
->上記の手順を完了した後に [Azure Active Directory 管理センター](https://aad.portal.azure.com)の [パススルー認証] ブレードを見ると、各サーバーに**アクティブ**と**非アクティブ**の 2 つの認証エージェントのエントリがあることがわかります。 これは "_予期されること_" です。 **非アクティブ**のエントリは、数日後に自動的に削除されます。
+>上記の手順を完了した後に [Azure Active Directory 管理センター](https://aad.portal.azure.com)の [パススルー認証] ブレードを見ると、各サーバーに **アクティブ** と **非アクティブ** の 2 つの認証エージェントのエントリがあることがわかります。 これは "_予期されること_" です。 **非アクティブ** のエントリは、数日後に自動的に削除されます。
 
 ## <a name="upgrading-the-authentication-agent-on-other-servers"></a>他のサーバーの認証エージェントをアップグレードする
 
@@ -86,7 +86,7 @@ ms.locfileid: "89279484"
 4. **最新バージョンがインストールされたことを確認する**: 前と同じように **[コントロール パネル] -> [プログラム] -> [プログラムと機能]** に移動し、 **[Microsoft Azure AD Connect Authentication Agent]\(Microsoft Azure AD Connect 認証エージェント\)** というエントリがあることを確認します。
 
 >[!NOTE]
->上記の手順を完了した後に [Azure Active Directory 管理センター](https://aad.portal.azure.com)の [パススルー認証] ブレードを見ると、各サーバーに**アクティブ**と**非アクティブ**の 2 つの認証エージェントのエントリがあることがわかります。 これは "_予期されること_" です。 **非アクティブ**のエントリは、数日後に自動的に削除されます。
+>上記の手順を完了した後に [Azure Active Directory 管理センター](https://aad.portal.azure.com)の [パススルー認証] ブレードを見ると、各サーバーに **アクティブ** と **非アクティブ** の 2 つの認証エージェントのエントリがあることがわかります。 これは "_予期されること_" です。 **非アクティブ** のエントリは、数日後に自動的に削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 - [**トラブルシューティング**](tshoot-connect-pass-through-authentication.md) - この機能に関する一般的な問題を解決する方法を確認します。

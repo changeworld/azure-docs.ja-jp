@@ -6,33 +6,33 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 33084d72e26f2926751def686c0a4c1d0485a5c2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 48df40d6f1e3030435a7ac1236d3dcda298920ba
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005132"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596901"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>Data Lake Analytics 用の Azure セキュリティ ベースライン
 
 Data Lake Analytics 用の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
 
-このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) に基づいて作成されています。
+このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview.md) に基づいて作成されています。
 
-詳細については、[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)に関するページを参照してください。
+詳細については、[Azure セキュリティ ベースラインの概要](../security/benchmarks/security-baselines-overview.md)に関するページを参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する
 
 **ガイダンス**:Data Lake Analytics のファイアウォール設定を使用して、外部 IP 範囲を制限し、オンプレミスのクライアントとサード パーティのサービスからのアクセスを許可します。 ファイアウォール設定の構成は、ポータル、REST API、または PowerShell を使用して行うことができます。
 
-* [ファイアウォール規則](https://docs.microsoft.com/rest/api/datalakeanalytics/firewallrules)
+* [ファイアウォール規則](/rest/api/datalakeanalytics/firewallrules)
 
-* [Azure PowerShell を使用する Azure Data Lake Analytics の管理](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-powershell)
+* [Azure PowerShell を使用する Azure Data Lake Analytics の管理](./data-lake-analytics-manage-use-powershell.md)
 
 **Azure Security Center の監視**: はい
 
@@ -58,9 +58,9 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 **ガイダンス**: Data Lake Analytics のファイアウォール設定を使用して、外部 IP 範囲を制限し、オンプレミスのクライアントとサード パーティのサービスからのアクセスを許可します。 ファイアウォール設定の構成は、ポータル、REST API、または PowerShell を使用して行うことができます。
 
-* [ファイアウォール規則](https://docs.microsoft.com/rest/api/datalakeanalytics/firewallrules)
+* [ファイアウォール規則](/rest/api/datalakeanalytics/firewallrules)
 
-* [Azure PowerShell を使用する Azure Data Lake Analytics の管理](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-powershell)
+* [Azure PowerShell を使用する Azure Data Lake Analytics の管理](./data-lake-analytics-manage-use-powershell.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -124,7 +124,7 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、「[セキュリティ コントロール: ログ記録と監視](/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
@@ -140,13 +140,13 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 または、Azure Sentinel またはサード パーティの SIEM に対してデータを有効にしてオンボードすることもできます。
 
-* [Azure Data Lake Analytics の診断ログへのアクセス](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs)
+* [Azure Data Lake Analytics の診断ログへのアクセス](./data-lake-analytics-diagnostic-logs.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm)
+* [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../azure-monitor/vm/quick-collect-azurevm.md)
 
 * [Azure Monitor とサードパーティの SIEM 統合を開始する方法](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -158,9 +158,9 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 **ガイダンス**: Data Lake Analytics の診断設定を有効にして、監査ログと要求ログにアクセスします。 これには、イベント ソース、日付、ユーザー、timestamp、およびその他の便利な要素などのデータが含まれます。
 
-* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Azure でのログ記録とログのさまざまな種類について](https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview)
+* [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -178,9 +178,9 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 **ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期およびアーカイブ ストレージには Azure Storage アカウントを使用します。
 
-* [Log Analytics でデータ保持期間を変更する](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-* [Azure Storage アカウント ログの保持ポリシーを構成する方法](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging)
+* [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 **Azure Security Center の監視**: はい
 
@@ -190,11 +190,11 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 **ガイダンス**: Data Lake Analytics のリソースについて、異常な動作がないかログの分析と監視を行い、定期的に結果を確認します。 Azure Monitor の Log Analytics ワークスペースを使用してログを確認し、ログ データに対してクエリを実行します。 または、Azure Sentinel またはサード パーティの SIEM に対してデータを有効にしてオンボードすることもできます。
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-* [Log Analytics ワークスペースの詳細について](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [Log Analytics ワークスペースの詳細について](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Azure Monitor でカスタム クエリを実行する方法](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center の監視**: はい
 
@@ -204,11 +204,11 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 **ガイダンス**: Data Lake Analytics の診断設定を有効にし、Log Analytics ワークスペースにログを送信します。 Log Analytics ワークスペースを Azure Sentinel にオンボードします。これは、セキュリティ オーケストレーション自動応答 (SOAR) ソリューションが提供されるためです。 これにより、プレイブック (自動化されたソリューション) を作成して、セキュリティの問題を修復するために使用できます。
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-* [Log Analytics のログ データに関するアラートを送信する方法](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
-* [Azure Data Lake Analytics の診断ログへのアクセス](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs)
+* [Azure Data Lake Analytics の診断ログへのアクセス](./data-lake-analytics-diagnostic-logs.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -240,15 +240,15 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
 **ガイダンス**: Azure AD の組み込みロールは、明示的に割り当てる必要があり、クエリ可能でなければなりません。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure Security Center の監視**: はい
 
@@ -258,7 +258,7 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 **ガイダンス**:Data Lake Analytics には既定のパスワードの概念がありません。認証は、Azure Active Directory によって提供され、Azure ロールベースのアクセス制御 (Azure RBAC) によってセキュリティ保護されるためです。
 
-* [Azure Data Lake Analytics の概要](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-overview)
+* [Azure Data Lake Analytics の概要](./data-lake-analytics-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -270,7 +270,7 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 また、Azure AD Privileged Identity Management および Azure Resource Manager を使用して、Just-In-Time アクセスを有効にすることもできます。
 
-* [Privileged Identity Management について](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
+* [Privileged Identity Management について](../active-directory/privileged-identity-management/index.yml)
 
 **Azure Security Center の監視**: はい
 
@@ -280,7 +280,7 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 **ガイダンス**:可能な限り、サービスごとに個別のスタンドアロン資格情報を構成するのではなく、Azure Active Directory SSO を使用します。 Azure Security Center ID とアクセスの推奨事項を使用してください。
 
-* [Azure AD を使用した SSO の概要](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+* [Azure AD を使用した SSO の概要](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure Security Center の監視**: はい
 
@@ -290,9 +290,9 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 **ガイダンス**: Azure Active Directory の多要素認証 (MFA) を有効にし、Data Lake Analytics リソースを保護するための Azure Security Center ID とアクセス管理の推奨事項に従います。
 
-* [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Azure Security Center で ID とアクセスを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: はい
 
@@ -302,9 +302,9 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 **ガイダンス**:高度な特権を必要とする管理タスクには、セキュリティで保護された Azure マネージド ワークステーション (特権アクセス ワークステーション (PAW) とも呼ばれます) を使用します。
 
-* [セキュリティで保護された Azure マネージド ワークステーションを理解する](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-managed-workstation)
+* [セキュリティで保護された Azure マネージド ワークステーションを理解する](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [Azure AD MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure AD MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: はい
 
@@ -314,9 +314,9 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 **ガイダンス**: 環境内で疑わしいアクティビティまたは安全でないアクティビティが環境で発生したときに、Azure Active Directory セキュリティ レポートを使用して、ログおよびアラートを生成します。 Azure Security Center を使用して ID およびアクセス アクティビティを監視します。
 
-* [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+* [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: はい
 
@@ -326,7 +326,7 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 **ガイダンス**: Azure AD のネームド ロケーションを使用して、IP アドレス範囲または国、地域の特定の論理グループからのアクセスのみを許可します。
 
-* [Azure AD のネームド ロケーションを構成する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure AD のネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -334,9 +334,9 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory を使用する
 
-**ガイダンス**: Azure Active Directory (Azure AD) を中央認証と承認システムとして使用します。 Azure AD には、Data Lake Analytics リソースに対するクライアントのアクセスをきめ細かく制御するロールベースのアクセス制御 (RBAC) が用意されています。
+**ガイダンス**: Azure Active Directory (Azure AD) を中央認証と承認システムとして使用します。 Azure ロールベースのアクセス制御 (Azure RBAC) を使用すると、Data Lake Analytics リソースに対するクライアントのアクセスをきめ細かく制御できます。
 
-* [Azure AD インスタンスを作成して構成する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Azure AD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center の監視**: はい
 
@@ -346,9 +346,9 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 **ガイダンス**: Azure AD には、古いアカウントの検出に役立つログが用意されています。 また、Azure AD の ID およびアクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
 
-* [Azure AD のレポートの概要](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
-* [Azure AD の ID およびアクセス レビューの使用方法](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Azure AD の ID およびアクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -358,7 +358,7 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 **ガイダンス**: Data Lake Analytics および Azure Active Directory の診断設定を有効にし、すべてのログを Log Analytics ワークスペースに送信します。 Log Analytics 内で、目的のアラート (無効なシークレットへのアクセスの試行など) を構成します。
 
-* [Azure AD ログを Azure Monitor ログと統合する](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure AD ログを Azure Monitor ログと統合する](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Security Center の監視**: はい
 
@@ -368,11 +368,11 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 **ガイダンス**:Azure Active Directory のリスクおよび ID Protection 機能を使用して、Data Lake Analytics リソースに関連して検出された疑わしいアクションに対する自動応答を構成します。 組織のセキュリティ対応を実装するには、Azure Sentinel によって自動応答を有効にする必要があります。
 
-* [Azure AD の危険なサインインを表示する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Identity Protection のリスク ポリシーを構成して有効にする方法](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: はい
 
@@ -382,7 +382,7 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 **ガイダンス**: 適用できません。Azure Data Lake Analytics ではカスタマー ロックボックスはサポートされていません。
 
-* [一般提供でサポートされるサービスとシナリオ](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [一般提供でサポートされるサービスとシナリオ](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -390,13 +390,13 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、「[セキュリティ コントロール: データ保護](/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
 **ガイダンス**: 機密情報を格納または処理する Data Lake Analytics リソースを追跡しやすくするには、タグを使用します。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -404,19 +404,19 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
 
-**ガイダンス**: 環境やデータの機密度など、個々のセキュリティ ドメイン用の個別のサブスクリプション、管理グループを使用して分離を実装します。 Data Lake Analytics を制限して、アプリケーションやエンタープライズ環境で必要とされる Data Lake Analytics リソースへのアクセス レベルを制御できます。 ファイアウォール ルールが構成されている場合、指定された一連のネットワークを介してデータを要求するアプリケーションのみが、Data Lake Analytics リソースにアクセスできます。 Azure AD RBAC を使用して Azure Data Lake Analytics へのアクセスを制御できます。
+**ガイダンス**: 環境やデータの機密度など、個々のセキュリティ ドメイン用の個別のサブスクリプション、管理グループを使用して分離を実装します。 Data Lake Analytics を制限して、アプリケーションやエンタープライズ環境で必要とされる Data Lake Analytics リソースへのアクセス レベルを制御できます。 ファイアウォール ルールが構成されている場合、指定された一連のネットワークを介してデータを要求するアプリケーションのみが、Data Lake Analytics リソースにアクセスできます。 Azure RBAC を使用して Azure Data Lake Analytics へのアクセスを制御できます。
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [ロールベースのアクセス制御の管理](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
+* [Azure ロールベースのアクセス制御の管理](./data-lake-analytics-manage-use-portal.md#manage-azure-role-based-access-control)
 
-* [ファイアウォール規則](https://docs.microsoft.com/rest/api/datalakeanalytics/firewallrules)
+* [ファイアウォール規則](/rest/api/datalakeanalytics/firewallrules)
 
-* [Azure PowerShell を使用する Azure Data Lake Analytics の管理](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-powershell)
+* [Azure PowerShell を使用する Azure Data Lake Analytics の管理](./data-lake-analytics-manage-use-powershell.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -428,9 +428,9 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft では顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護します。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
-* [Azure Storage アカウントをセキュリティで保護する方法](https://docs.microsoft.com/azure/storage/common/storage-security-guide)
+* [Azure Storage アカウントをセキュリティで保護する方法](../storage/blobs/security-recommendations.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -440,7 +440,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**:Microsoft Azure リソースでは、既定で TLS 1.2 をネゴシエートします。 Data Lake Analytics リソースに接続しているすべてのクライアントが TLS 1.2 以上を使用してネゴシエートできることを確認します。
 
-* [操作例の一覧](https://docs.microsoft.com/rest/api/datalakeanalytics/operations/list)
+* [操作例の一覧](/rest/api/datalakeanalytics/operations/list)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -450,17 +450,17 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure Data Lake Analytics リソースでは、データ特定機能をまだ使用できません。 コンプライアンスのために必要な場合は、サードパーティ ソリューションを実装します。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
 **責任**: Customer
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: ロールベースのアクセス制御 (RBAC) を使用して、ユーザーがサービスと対話する方法を制御します。
+**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、ユーザーがサービスと対話する方法を制御します。
 
-* [ロールベースのアクセス制御の管理](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
+* [Azure RBAC の管理](./data-lake-analytics-manage-use-portal.md#manage-azure-role-based-access-control)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -478,7 +478,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: データは既定の Data Lake Storage Gen1 アカウントに格納されます。 保存データに関しては、Data Lake Storage Gen1 では "既定でオン" の透過的な暗号化がサポートされます。
 
-* [Azure Data Lake Storage Gen1 でのデータの暗号化](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-encryption)
+* [Azure Data Lake Storage Gen1 でのデータの暗号化](../data-lake-store/data-lake-store-encryption.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -488,7 +488,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure アクティビティ ログで Azure Monitor を使用して、Azure Data Lake Analytics リソースの実稼働インスタンスに対して変更が行われたときのアラートを作成します。
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -496,7 +496,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、「[セキュリティ コントロール: 脆弱性の管理](/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
@@ -504,7 +504,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 Microsoft では、Azure Data Lake Analytics をサポートしている基になるシステムで脆弱性の管理を行います。
 
-* [Azure Security Center の推奨事項について](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+* [Azure Security Center の推奨事項について](../security-center/recommendations-reference.md)
 
 **Azure Security Center の監視**: はい
 
@@ -546,7 +546,7 @@ Microsoft では、Azure Data Lake Analytics をサポートしている基に�
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された資産検出ソリューションを使用する
 
@@ -554,11 +554,11 @@ Microsoft では、Azure Data Lake Analytics をサポートしている基に�
 
 従来の Azure リソースは Azure Resource Graph Explorer で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
 
-* [Azure Resource Graph Explorer を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Resource Graph Explorer を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-* [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription)
 
-* [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC について](../role-based-access-control/overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -568,7 +568,7 @@ Microsoft では、Azure Data Lake Analytics をサポートしている基に�
 
 **ガイダンス**:メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: はい
 
@@ -582,11 +582,11 @@ Microsoft では、Azure Data Lake Analytics をサポートしている基に�
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: はい
 
@@ -608,9 +608,9 @@ Microsoft では、Azure Data Lake Analytics をサポートしている基に�
 
 さらに、Azure Resource Graph を使用して、サブスクリプション内のリソースのクエリまたは検出を行います。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center の監視**: はい
 
@@ -646,9 +646,9 @@ Microsoft では、Azure Data Lake Analytics をサポートしている基に�
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: はい
 
@@ -666,7 +666,7 @@ Microsoft では、Azure Data Lake Analytics をサポートしている基に�
 
 **ガイダンス**: Azure 条件付きアクセスを使用して Azure Resource Manager とやりとりするユーザーの機能を制限するには、"Microsoft Azure 管理" アプリに対して [アクセスのブロック] を構成します。
 
-* [ARM へのアクセスをブロックするように条件付きアクセスを構成する方法](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [ARM へのアクセスをブロックするように条件付きアクセスを構成する方法](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -690,16 +690,16 @@ Microsoft では、Azure Data Lake Analytics をサポートしている基に�
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
 **ガイダンス**:Azure Data Lake Analytics の構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.DataLakeAnalytics" 名前空間で Azure Policy エイリアスを使用します。 次のように、Azure Data Lake Analytics に関連する組み込みのポリシー定義を使用することもできます。
 - Data Lake Analytics の診断ログを有効にする必要がある
 
-* [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias)
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: はい
 
@@ -717,9 +717,9 @@ Microsoft では、Azure Data Lake Analytics をサポートしている基に�
 
 **ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure ポリシー [拒否] と [存在する場合はデプロイする] を使用します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy の効果について](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Policy の効果について](../governance/policy/concepts/effects.md)
 
 **Azure Security Center の監視**: はい
 
@@ -737,9 +737,9 @@ Microsoft では、Azure Data Lake Analytics をサポートしている基に�
 
 **ガイダンス**: カスタム Azure ポリシー、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなど、ご利用のコードを安全に格納して管理するには、Azure Repos を使用します。Azure DevOps で管理するリソースにアクセスするには、Azure Active Directory (Azure AD) で定義された (Azure DevOps に統合されている場合)、または Active Directory で定義された (TFS に統合されている場合) 特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与したり、そのアクセス許可を拒否したりできます。
 
-* [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
-* [Azure DevOps でのアクセス許可とグループについて](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
+* [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -773,7 +773,7 @@ Microsoft では、Azure Data Lake Analytics をサポートしている基に�
 
 **ガイダンス**:システム構成を警告処理、監査、適用するためのカスタム ポリシーを作成するには、"Microsoft.DataLakeAnalytics" 名前空間で Azure Policy エイリアスを使用します。 Azure Data Lake Analytics リソースの構成を自動的に適用するには、Azure Policy の [audit]、[deny]、[deploy if not exist] を使用します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -815,7 +815,7 @@ Microsoft では、Azure Data Lake Analytics をサポートしている基に�
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、「[セキュリティ コントロール: マルウェアからの防御](/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されたマルウェア対策ソフトウェアを使用する
 
@@ -845,17 +845,17 @@ App Service、Data Lake Analytics、Blob Storage などの Azure リソースに
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、「[セキュリティ コントロール: データの復旧](/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的な自動バックアップを保証する
 
 **ガイダンス**: Data Lake Analytics ジョブ ログとデータ出力は、基になる Data Lake Storage Gen1 サービスに格納されます。 ADLCopy、Azure PowerShell、Azure Data Factory など、データをコピーするさまざまな方法があります。 また、Azure Automation を使用して、定期的にデータを自動的にバックアップすることもできます。
 
-* [Storage Explorer を使用して Azure Data Lake Storage Gen1 リソースを管理する](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-in-storage-explorer)
+* [Storage Explorer を使用して Azure Data Lake Storage Gen1 リソースを管理する](../data-lake-store/data-lake-store-in-storage-explorer.md)
 
-* [Azure Storage Blob から Azure Data Lake Storage Gen1 にデータをコピーする](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)
+* [Azure Storage Blob から Azure Data Lake Storage Gen1 にデータをコピーする](../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)
 
-* [Azure Automation の概要](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Azure Automation の概要](../automation/automation-intro.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -865,9 +865,9 @@ App Service、Data Lake Analytics、Blob Storage などの Azure リソースに
 
 **ガイダンス**: Data Lake Analytics ジョブ ログとデータ出力は、基になる Data Lake Storage Gen1 サービスに格納されます。 ADLCopy、Azure PowerShell、Azure Data Factory など、データをコピーするさまざまな方法があります。
 
-* [Storage Explorer を使用して Azure Data Lake Storage Gen1 リソースを管理する](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-in-storage-explorer)
+* [Storage Explorer を使用して Azure Data Lake Storage Gen1 リソースを管理する](../data-lake-store/data-lake-store-in-storage-explorer.md)
 
-* [Azure Storage Blob から Azure Data Lake Storage Gen1 にデータをコピーする](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)
+* [Azure Storage Blob から Azure Data Lake Storage Gen1 にデータをコピーする](../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -885,9 +885,9 @@ App Service、Data Lake Analytics、Blob Storage などの Azure リソースに
 
 **ガイダンス**: Data Lake Storage Gen1 または Azure Storage 内に格納されている Data Lake Analytics バックアップは、既定で暗号化をサポートしており、無効にすることはできません。 バックアップを機密データとして扱い、このベースラインの一部として関連するアクセスとデータ保護制御を適用する必要があります。
 
-* [Azure Data Lake Storage Gen1 に格納されているデータのセキュリティ保護](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data)
+* [Azure Data Lake Storage Gen1 に格納されているデータのセキュリティ保護](../data-lake-store/data-lake-store-secure-data.md)
 
-* [Azure Storage 内のデータへのアクセスの承認](https://docs.microsoft.com/azure/storage/common/storage-auth)
+* [Azure Storage 内のデータへのアクセスの承認](../storage/common/storage-auth.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -895,7 +895,7 @@ App Service、Data Lake Analytics、Blob Storage などの Azure リソースに
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、「[セキュリティ コントロール: インシデント対応](/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
@@ -917,9 +917,9 @@ App Service、Data Lake Analytics、Blob Storage などの Azure リソースに
 
 また、サブスクリプション ( 運用、非運用など) をタグを使用して明確にマークし、Azure リソース (特に、機密データを処理するもの) を明確に識別して分類するための命名システムを作成します。 インシデントが発生した Azure リソースと環境の重要度に基づいて、アラートの修復に優先順位を付けることは、お客様の責任です。
 
-* [Security alerts in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Security alerts in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-* [タグを使用した Azure リソースの整理](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -939,7 +939,7 @@ App Service、Data Lake Analytics、Blob Storage などの Azure リソースに
 
 **ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) でユーザーのデータが違法または権限のないユーザーによってアクセスされたことが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
 
-* [Azure Security Center のセキュリティ連絡先を設定する方法](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -949,9 +949,9 @@ App Service、Data Lake Analytics、Blob Storage などの Azure リソースに
 
 **ガイダンス**: 連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートすると、Azure リソースへのリスクを特定できます。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
-* [連続エクスポートを構成する方法](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 
-* [Azure Sentinel にアラートをストリーミングする方法](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Azure Sentinel にアラートをストリーミングする方法](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -961,7 +961,7 @@ App Service、Data Lake Analytics、Blob Storage などの Azure リソースに
 
 **ガイダンス**: Azure Security Center のワークフロー自動化機能を使用すると、セキュリティのアラートと推奨事項に対して "Logic Apps" で自動的に応答をトリガーし、Azure リソースを保護できます。
 
-* [ワークフローの自動化と Logic Apps を構成する方法](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [ワークフローの自動化と Logic Apps を構成する方法](../security-center/workflow-automation.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -969,7 +969,7 @@ App Service、Data Lake Analytics、Blob Storage などの Azure リソースに
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
@@ -985,5 +985,5 @@ App Service、Data Lake Analytics、Blob Storage などの Azure リソースに
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

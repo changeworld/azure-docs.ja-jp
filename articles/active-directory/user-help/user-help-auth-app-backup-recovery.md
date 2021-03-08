@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 3148f8ba84674c79764d0fc69acdbc02e7a12dc4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e7608196c962a6918a90b91457f856f3e11b04f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798994"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91530903"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウント資格情報をバックアップおよび回復する
 
@@ -83,21 +83,21 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
 
 1. Microsoft Authenticator アプリの **[アカウント]** 画面で、復旧するアカウントをタップして、アカウントの全画面ビューを開きます。
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="使用可能なアカウント タイルを表示した Microsoft Authenticator アプリ" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="使用可能なアカウント タイルを含む Microsoft Authenticator アプリを示すスクリーンショット。" border="true":::
 
 1. 復旧するアカウントのタイルをタップし、サインインするオプションをタップして復旧します。 パスワードを入力し、追加認証としてメール アドレスまたは電話番号を確認します。
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="Authenticator がワンタイム パスワードを確認コードとして提示する" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="使用可能なアカウント タイルを含む Microsoft Authenticator アプリを示すスクリーンショット。" border="true":::
 
 ### <a name="to-provide-more-verification-for-work-or-school-accounts"></a>職場または学校アカウントに対してさらに検証を提供するには
 
 1. Microsoft Authenticator アプリの **[アカウント]** 画面で、復旧するアカウントをタップして、アカウントの全画面ビューを開きます。
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="使用可能なアカウント タイルを表示した Microsoft Authenticator アプリ" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="使用可能なアカウント タイルを含む Microsoft Authenticator アプリを示すスクリーンショット。" border="true":::
 
 1. 全画面表示ビューで、QR コードをスキャンするオプションをタップして完全に復旧します。
 
-    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="Authenticator がワンタイム パスワードを確認コードとして提示する" border="true":::
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="使用可能なアカウント タイルを含む Microsoft Authenticator アプリを示すスクリーンショット。" border="true":::
 
 >[!NOTE]
 >QR コードとその取得方法の詳細については、管理者がセキュリティ情報を有効にしたかどうかに基づいて、[Microsoft Authenticator アプリの概要](./user-help-auth-app-download-install.md)に関するページまたは [Authenticator アプリを使用するためのセキュリティ情報の設定](./security-info-setup-auth-app.md)に関するページを参照してください。

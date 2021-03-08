@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: ae145f5a1ce462edb28171a1f5bb6f3ebb72f538
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 43cafb8c5efe0581fe7c4136aa41980b3d817be2
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018214"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981410"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする (.NET)
 
@@ -48,6 +48,8 @@ ms.locfileid: "89018214"
 > [!NOTE]
 > IoT Hub は、Azure IoT device SDK を通して、多数のデバイス プラットフォームと言語 (C、Java、Python、Javascript を含む) をサポートしています。 Azure IoT Hub にデバイスを接続するための詳しい手順については、[Azure IoT デベロッパー センター](https://azure.microsoft.com/develop/iot)を参照してください。
 
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 * Visual Studio
@@ -77,16 +79,15 @@ ms.locfileid: "89018214"
 1. **Program** クラスに次のメソッドを追加します。
 
     ```csharp
-    private static async void SendToBlobAsync()
+    private static async Task SendToBlobAsync(string fileName)
     {
-        string fileName = "image.jpg";
         Console.WriteLine("Uploading file: {0}", fileName);
         var watch = System.Diagnostics.Stopwatch.StartNew();
 
-        using (var sourceData = new FileStream(@"image.jpg", FileMode.Open))
-        {
-            await deviceClient.UploadToBlobAsync(fileName, sourceData);
-        }
+        await deviceClient.GetFileUploadSasUriAsync(new FileUploadSasUriRequest { BlobName = fileName });
+        var blob = new CloudBlockBlob(sas.GetBlobUri());
+        await blob.UploadFromFileAsync(fileName);
+        await deviceClient.CompleteFileUploadAsync(new FileUploadCompletionNotification { CorrelationId = sas.CorrelationId, IsSuccess = true });
 
         watch.Stop();
         Console.WriteLine("Time to upload file: {0}ms\n", watch.ElapsedMilliseconds);
@@ -98,7 +99,7 @@ ms.locfileid: "89018214"
 1. **Main** メソッドの `Console.ReadLine()` の直前に次の行を追加します。
 
     ```csharp
-    SendToBlobAsync();
+    await SendToBlobAsync("image.jpg");
     ```
 
 > [!NOTE]
@@ -106,7 +107,7 @@ ms.locfileid: "89018214"
 
 ## <a name="get-the-iot-hub-connection-string"></a>IoT ハブ接続文字列を取得する
 
-この記事では、[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するページで作成した IoT ハブからのファイル アップロード通知メッセージを受信するバックエンド サービスを作成します。 ファイル アップロード通知メッセージを受信するサービスには、**サービス接続**のアクセス許可が必要となります。 既定では、どの IoT Hub も、このアクセス許可を付与する **service** という名前の共有アクセス ポリシーがある状態で作成されます。
+この記事では、[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するページで作成した IoT ハブからのファイル アップロード通知メッセージを受信するバックエンド サービスを作成します。 ファイル アップロード通知メッセージを受信するサービスには、**サービス接続** のアクセス許可が必要となります。 既定では、どの IoT Hub も、このアクセス許可を付与する **service** という名前の共有アクセス ポリシーがある状態で作成されます。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -116,13 +117,13 @@ ms.locfileid: "89018214"
 
 1. 現在の Visual Studio ソリューションで、**ファイル** > **新規** > 、**プロジェクト** の順に選択します。 **[新しいプロジェクトの作成]** で、 **[コンソール アプリ (.NET Framework)]** を選択してから、 **[次へ]** を選択します。
 
-1. プロジェクトに *ReadFileUploadNotification*という名前を付けます。 **[ソリューション]** で、 **[ソリューションに追加]** を選択します。 **[作成]** を選択してプロジェクトを作成します。
+1. プロジェクトに *ReadFileUploadNotification* という名前を付けます。 **[ソリューション]** で、 **[ソリューションに追加]** を選択します。 **[作成]** を選択してプロジェクトを作成します。
 
     ![Visual Studio で ReadFileUploadNotification プロジェクトを構成する](./media/iot-hub-csharp-csharp-file-upload/read-file-upload-project-configure.png)
 
 1. ソリューション エクスプローラーで、 **[ReadFileUploadNotification]** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 
-1. **NuGet パッケージ マネージャー**で、 **[参照]** を選択します。 **[Microsoft.Azure.Devices]** を検索して選択した後、 **[インストール]** を選択します。
+1. **NuGet パッケージ マネージャー** で、 **[参照]** を選択します。 **[Microsoft.Azure.Devices]** を検索して選択した後、 **[インストール]** を選択します。
 
     この手順によって [Azure IoT サービス SDK NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Devices/)がダウンロードしてインストールされ、その参照が **ReadFileUploadNotification** プロジェクトに追加されます。
 
@@ -182,7 +183,7 @@ ms.locfileid: "89018214"
 
 1. **[共通プロパティ]**  >  **[スタートアップ プロジェクト]** で、 **[マルチ スタートアップ プロジェクト]** を選択してから、 **[ReadFileUploadNotification]** と **[SimulatedDevice]** の **[開始]** アクションを選択します。 **[OK]** を選択して変更を保存します。
 
-1. **F5**キーを押します。 両方のアプリケーションが開始されます。 1 つのコンソール アプリケーションでアップロードの完了が表示され、もう 1 つのコンソール アプリケーションでアップロード通知メッセージが受信されます。 [Azure Portal](https://portal.azure.com/) または Visual Studio サーバー エクスプローラーを使用して、Azure Storage アカウントにアップロードされたファイルがあるかどうかを確認できます。
+1. **F5** キーを押します。 両方のアプリケーションが開始されます。 1 つのコンソール アプリケーションでアップロードの完了が表示され、もう 1 つのコンソール アプリケーションでアップロード通知メッセージが受信されます。 [Azure Portal](https://portal.azure.com/) または Visual Studio サーバー エクスプローラーを使用して、Azure Storage アカウントにアップロードされたファイルがあるかどうかを確認できます。
 
     ![出力の表示画面のスクリーンショット](./media/iot-hub-csharp-csharp-file-upload/run-apps1.png)
 
@@ -198,4 +199,4 @@ ms.locfileid: "89018214"
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)
+* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/quickstart-linux.md)

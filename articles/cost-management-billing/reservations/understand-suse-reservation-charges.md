@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: banders
-ms.openlocfilehash: 3b936cb15114d81d1dff1eb052a9bafe01adeff7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2c17b2f9dc12fa7bff2dae8603bcf95a3a8ddfa0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681687"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350842"
 ---
 # <a name="azure-software-plan-discount"></a>Azure ソフトウェア プラン割引
 
@@ -123,7 +123,7 @@ Azure portal マーケットプレース名:
 
 - [Azure の予約とは](save-compute-costs-reservations.md)
 - [Azure の予約による SUSE ソフトウェア プランの前払い](../../virtual-machines/linux/prepay-suse-software-charges.md)
-- [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [Azure の予約の管理](manage-reserved-vm-instance.md)
 - [従量課金制サブスクリプションの予約使用量について](understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](understand-reserved-instance-usage-ea.md)

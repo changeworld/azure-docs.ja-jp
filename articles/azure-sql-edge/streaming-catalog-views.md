@@ -1,6 +1,6 @@
 ---
-title: ストリーミング カタログ ビュー (Transact-SQL) - Azure SQL Edge (プレビュー)
-description: Azure SQL Edge (プレビュー) で利用可能なストリーミング カタログ ビューと動的管理ビューについて説明します
+title: ストリーミング カタログ ビュー (Transact-SQL) - Azure SQL Edge
+description: Azure SQL Edge で利用可能なストリーミング カタログ ビューと動的管理ビューについて説明します
 keywords: sys.external_streams、SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: 5b1cd58b8947e376ac70ee307041ae7864ed7e24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a8f037cd9923564e2e214e9727ff87d63cca547
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233105"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90900521"
 ---
 # <a name="streaming-catalog-views-transact-sql"></a>ストリーミング カタログ ビュー (Transact-SQL)
 

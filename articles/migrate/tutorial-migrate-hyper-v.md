@@ -1,17 +1,20 @@
 ---
 title: Azure Migrate Server Migration を使用して Hyper-V VM を Azure に移行する
 description: Azure Migrate Server Migration を使用してオンプレミスの Hyper-V VM を Azure に移行する方法について説明します。
+author: bsiva
+ms.author: bsiva
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 370712ea976db027abee943d786f6ce81ac99c4a
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 9d0fa516fefefe4c3d8e67c3e6d592ec4274943c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376011"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878174"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM を Azure に移行する 
 
@@ -25,7 +28,7 @@ ms.locfileid: "89376011"
  このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * Azure Migrate:Server Migration ツールを追加します。
+> * Azure Migrate Server Migration ツールを追加します。
 > * 移行したい VM を検出します。
 > * VM のレプリケートを開始します。
 > * すべてが想定どおりに動作していることを確認するためにテスト移行を実行します。
@@ -43,23 +46,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. Hyper-V ホストの移行の要件と、VM 移行のために Hyper-V ホストおよびクラスターがアクセスする必要がある Azure URL を[確認](migrate-support-matrix-hyper-v-migration.md#hyper-v-host-requirements)します。
 3. Azure に移行する Hyper-V VM の要件を[確認](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms)します。
 4. [Hyper-V VM を評価](tutorial-assess-hyper-v.md)したうえで Azure に移行することをお勧めしますが、必須ではありません。
-
-   
-## <a name="add-the-azure-migrateserver-migration-tool"></a>Azure Migrate:Server Migration ツールを追加する
-
-Azure Migrate Server Migration ツールを追加します。 Azure Migrate プロジェクトがまだない場合は、[先にプロジェクトを作成](how-to-add-tool-first-time.md)してから Azure Migrate プロジェクトを設定してください。 プロジェクトの作成時に Azure Migrate:Server Migration ツールを追加します。
-
-プロジェクトの設定が済んでいる場合は、次の手順に従ってツールを追加します。
-
-1. Azure Migrate プロジェクトで、 **[概要]** をクリックします。 
-2. **[サーバーの検出、評価、移行]** で、 **[サーバーの評価と移行]** をクリックします。
-3. **[移行ツール]** で、 **[Click here to add a migration tool when you are ready to migrate]\(移行する準備ができたら、ここをクリックして移行ツールを追加してください\)** を選択します。
-
-    ![ツールの選択](./media/tutorial-migrate-hyper-v/select-migration-tool.png)
-
-4. ツールの一覧で、次を選択します: **[Azure Migrate: Server Migration]**  >  **[ツールを追加]**
-
-    ![Server Migration ツール](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
+5. 既に作成されているプロジェクトに移動するか、[新しいプロジェクトを作成](./create-manage-projects.md)します。
+6. ご使用の Azure アカウントのアクセス許可を確認します。Azure アカウントには、VM を作成し、Azure マネージド ディスクに書き込むためのアクセス許可が必要です。
 
 ## <a name="download-and-install-the-provider"></a>プロバイダーをダウンロードしてインストールする
 
@@ -133,11 +121,11 @@ Azure Migrate:Server Migration は、Hyper-V VM を移行するにあたり、�
 
     ![VM コンピューティングの設定](./media/tutorial-migrate-hyper-v/compute-settings.png)
 
-12. **[ディスク]** で、VM ディスクを Azure にレプリケートするかどうかを指定し、Azure でのディスクの種類 (Standard SSD か HDD、または Premium マネージド ディスク) を選択します。 続けて、 **[次へ]** をクリックします。
+12. **[ディスク]** で、Azure にレプリケートする必要がある VM ディスクを指定します。 続けて、 **[次へ]** をクリックします。
     - レプリケーションからディスクを除外できます。
     - ディスクは除外すると、移行後に Azure VM 上に存在しなくなります。 
 
-    ![ディスク](./media/tutorial-migrate-hyper-v/disks.png)
+    ![[レプリケート] ダイアログ ボックスの [ディスク] タブを表示するスクリーンショット。](./media/tutorial-migrate-hyper-v/disks.png)
 
 13. **[レプリケーションの確認と開始]** で、設定を確認し、 **[レプリケート]** をクリックして、サーバーの初期レプリケーションを開始します。
 
@@ -151,7 +139,7 @@ Azure Migrate:Server Migration は、Hyper-V VM を移行するにあたり、�
 - **サービス バス**: Azure Migrate: Server Migration では、Service Bus を使用して、レプリケーション オーケストレーション メッセージをアプライアンスに送信します。
 - **ゲートウェイ ストレージ アカウント**: Azure Migrate: Server Migration では、ゲートウェイ ストレージ アカウントを使用して、レプリケートされる VM に関する状態情報を格納します。
 - **ログ ストレージ アカウント**: Azure Migrate アプライアンスでは、VM のレプリケーション ログをログ ストレージ アカウントにアップロードします。 Azure Migrate により、レプリケーション情報がレプリカ マネージド ディスクに適用されます。
-- **キー コンテナー**: Azure Migrate アプライアンスでは、キー コンテナーを使用して、サービス バスの接続文字列と、レプリケーションで使用されるストレージ アカウントのアクセス キーを管理します。 Hyper-V VM の評価と移行を行うための [Azure の準備](tutorial-prepare-hyper-v.md#prepare-azure)を行ったときに、キー コンテナーがストレージ アカウントにアクセスするために必要なアクセス許可を設定したはずです。 
+- **キー コンテナー**: Azure Migrate アプライアンスでは、キー コンテナーを使用して、サービス バスの接続文字列と、レプリケーションで使用されるストレージ アカウントのアクセス キーを管理します。 Hyper-V VM の評価と移行を行うための [Azure の準備](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account)を行ったときに、キー コンテナーがストレージ アカウントにアクセスするために必要なアクセス許可を設定したはずです。 
 
 
 ## <a name="track-and-monitor"></a>追跡して監視する
@@ -189,7 +177,7 @@ Azure Migrate:Server Migration は、Hyper-V VM を移行するにあたり、�
     ![テスト移行](./media/tutorial-migrate-hyper-v/test-migrate.png)
 
 3. **[テスト移行]** で、移行後に Azure VM が配置される Azure 仮想ネットワークを選択します。 非運用環境の仮想ネットワークを使用することをお勧めします。
-4. **テスト移行**ジョブが開始されます。 ポータルの通知でジョブを監視します。
+4. **テスト移行** ジョブが開始されます。 ポータルの通知でジョブを監視します。
 5. 移行の完了後、Azure portal の **[仮想マシン]** で、移行された Azure VM を確認します。 マシン名には、サフィックス **-Test** が含まれています。
 6. テストが完了したら、 **[マシンのレプリケート]** で Azure VM を右クリックし、 **[テスト移行をクリーンアップ]** をクリックします。
 
@@ -232,7 +220,7 @@ Azure Migrate:Server Migration は、Hyper-V VM を移行するにあたり、�
     - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細については、こちらを参照してください](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - セキュリティの強化：
     - [Azure Security Center のジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
-    - [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
+    - [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
     - [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
     - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/) を確認してください。
 - 監視と管理：

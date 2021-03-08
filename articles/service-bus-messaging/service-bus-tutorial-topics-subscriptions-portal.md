@@ -3,15 +3,15 @@ title: Azure Portal とトピック/サブスクリプションを使用して�
 description: このチュートリアルでは、トピックとサブスクリプションからメッセージを送受信する方法と、.NET を使用してフィルター ルールを追加および使用する方法について説明します。
 author: spelluru
 ms.author: spelluru
-ms.date: 06/23/2020
+ms.date: 10/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 811777fff28cf56d7732461924b14e9e4b619c0c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f2c8d107c6de4965472c3fb04ff626841fb1f6ea
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000174"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95810738"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>チュートリアル: Azure Portal とトピック/サブスクリプションを使用して在庫を更新する
 
@@ -62,7 +62,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    git clone https://github.com/Azure/azure-service-bus.git
    ```
 
-2. サンプル フォルダー `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveTutorialwithFilters` に移動します。
+2. サンプル フォルダー `azure-service-bus\samples\DotNet\Azure.Messaging.ServiceBus\BasicSendReceiveTutorialwithFilters` に移動します。
 
 3. このチュートリアルの「管理資格情報の取得」セクションで、メモ帳にコピーした接続文字列を取得します。 前のセクションで作成したトピックの名前も必要です。
 
@@ -72,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    dotnet build
    ```
 
-5. `BasicSendReceiveTutorialwithFilters\bin\Debug\netcoreapp2.0` フォルダーに移動します。
+5. `BasicSendReceiveTutorialwithFilters\bin\Debug\netcoreapp3.1` フォルダーに移動します。
 
 6. 次のコマンドを入力してプログラムを実行します。 `myConnectionString` を以前に取得した値に、`myTopicName` を作成したトピックの名前に置き換えます。
 
@@ -175,12 +175,11 @@ private async Task RemoveDefaultFilters()
 
     try
     {
+        var client = new ServiceBusAdministrationClient(ServiceBusConnectionString);
         foreach (var subscription in Subscriptions)
         {
-            SubscriptionClient s = new SubscriptionClient(ServiceBusConnectionString, TopicName, subscription);
-            await s.RemoveRuleAsync(RuleDescription.DefaultRuleName);
+            await client.DeleteRuleAsync(TopicName, subscription, CreateRuleOptions.DefaultRuleName);
             Console.WriteLine($"Default filter for {subscription} has been removed.");
-            await s.CloseAsync();
         }
 
         Console.WriteLine("All default Rules have been removed.\n");
@@ -205,7 +204,7 @@ private async Task CreateCustomFilters()
     {
         for (int i = 0; i < Subscriptions.Length; i++)
         {
-            SubscriptionClient s = new SubscriptionClient(ServiceBusConnectionString, TopicName, Subscriptions[i]);
+            var client = new ServiceBusAdministrationClient(ServiceBusConnectionString);
             string[] filters = SubscriptionFilters[Subscriptions[i]];
             if (filters[0] != "")
             {
@@ -217,18 +216,18 @@ private async Task CreateCustomFilters()
                     string action = SubscriptionAction[Subscriptions[i]];
                     if (action != "")
                     {
-                        await s.AddRuleAsync(new RuleDescription
+                        await client.CreateRuleAsync(TopicName, Subscriptions[i], new CreateRuleOptions
                         {
-                            Filter = new SqlFilter(myFilter),
+                            Filter = new SqlRuleFilter(myFilter),
                             Action = new SqlRuleAction(action),
                             Name = $"MyRule{count}"
                         });
                     }
                     else
                     {
-                        await s.AddRuleAsync(new RuleDescription
+                        await client.CreateRuleAsync(TopicName, Subscriptions[i], new CreateRuleOptions
                         {
-                            Filter = new SqlFilter(myFilter),
+                            Filter = new SqlRuleFilter(myFilter),
                             Name = $"MyRule{count}"
                         });
                     }
@@ -260,14 +259,13 @@ private async Task CleanUpCustomFilters()
     {
         try
         {
-            SubscriptionClient s = new SubscriptionClient(ServiceBusConnectionString, TopicName, subscription);
-            IEnumerable<RuleDescription> rules = await s.GetRulesAsync();
-            foreach (RuleDescription r in rules)
+            var client = new ServiceBusAdministrationClient(ServiceBusConnectionString);
+            IAsyncEnumerator<RuleProperties> rules = client.GetRulesAsync(TopicName, subscription).GetAsyncEnumerator();
+            while (await rules.MoveNextAsync())
             {
-                await s.RemoveRuleAsync(r.Name);
-                Console.WriteLine($"Rule {r.Name} has been removed.");
+                await client.DeleteRuleAsync(TopicName, subscription, rules.Current.Name);
+                Console.WriteLine($"Rule {rules.Current.Name} has been removed.");
             }
-            await s.CloseAsync();
         }
         catch (Exception ex)
         {
@@ -289,16 +287,14 @@ public async Task SendMessages()
 {
     try
     {
-        TopicClient tc = new TopicClient(ServiceBusConnectionString, TopicName);
-
+        await using var client = new ServiceBusClient(ServiceBusConnectionString);
         var taskList = new List<Task>();
         for (int i = 0; i < Store.Length; i++)
         {
-            taskList.Add(SendItems(tc, Store[i]));
+            taskList.Add(SendItems(client, Store[i]));
         }
 
         await Task.WhenAll(taskList);
-        await tc.CloseAsync();
     }
     catch (Exception ex)
     {
@@ -307,30 +303,33 @@ public async Task SendMessages()
     Console.WriteLine("\nAll messages sent.\n");
 }
 
-private async Task SendItems(TopicClient tc, string store)
+private async Task SendItems(ServiceBusClient client, string store)
 {
+    // create the sender
+    ServiceBusSender tc = client.CreateSender(TopicName);
+
     for (int i = 0; i < NrOfMessagesPerStore; i++)
     {
         Random r = new Random();
         Item item = new Item(r.Next(5), r.Next(5), r.Next(5));
 
         // Note the extension class which is serializing an deserializing messages
-        Message message = item.AsMessage();
+        ServiceBusMessage message = item.AsMessage();
         message.To = store;
-        message.UserProperties.Add("StoreId", store);
-        message.UserProperties.Add("Price", item.getPrice().ToString());
-        message.UserProperties.Add("Color", item.getColor());
-        message.UserProperties.Add("Category", item.getItemCategory());
+        message.ApplicationProperties.Add("StoreId", store);
+        message.ApplicationProperties.Add("Price", item.GetPrice().ToString());
+        message.ApplicationProperties.Add("Color", item.GetColor());
+        message.ApplicationProperties.Add("Category", item.GetItemCategory());
 
-        await tc.SendAsync(message);
-        Console.WriteLine($"Sent item to Store {store}. Price={item.getPrice()}, Color={item.getColor()}, Category={item.getItemCategory()}"); ;
+        await tc.SendMessageAsync(message);
+        Console.WriteLine($"Sent item to Store {store}. Price={item.GetPrice()}, Color={item.GetColor()}, Category={item.GetItemCategory()}"); ;
     }
 }
 ```
 
 ### <a name="receive-messages"></a>メッセージを受信する
 
-メッセージはタスク一覧を介して再び受信され、コードはバッチ処理を使用します。 バッチ処理を使用して送受信することはできますが、この例はバッチ受信方法のみを示しています。 実際には、ループから抜けることはありませんが、ループを維持し、1 分などのより長い時間間隔を設定します。 この期間はブローカーへの受信呼び出しが開かれたままになり、メッセージが到達した場合は即座に返され、新しい受信呼び出しが発行されます。 この概念は、*長いポーリング*と呼ばれます。 より一般的なオプションは、この[クイック スタート](service-bus-quickstart-portal.md)やリポジトリの他のいくつかのサンプルで見られる受信ポンプです。
+メッセージはタスク一覧を介して再び受信され、コードはバッチ処理を使用します。 バッチ処理を使用して送受信することはできますが、この例はバッチ受信方法のみを示しています。 実際には、ループから抜けることはありませんが、ループを維持し、1 分などのより長い時間間隔を設定します。 この期間はブローカーへの受信呼び出しが開かれたままになり、メッセージが到達した場合は即座に返され、新しい受信呼び出しが発行されます。 この概念は、*長いポーリング* と呼ばれます。 より一般的なオプションは、この[クイック スタート](service-bus-quickstart-portal.md)やリポジトリの他のいくつかのサンプルで見られる受信ポンプです。
 
 ```csharp
 public async Task Receive()
@@ -346,34 +345,41 @@ public async Task Receive()
 
 private async Task ReceiveMessages(string subscription)
 {
-    var entityPath = EntityNameHelper.FormatSubscriptionPath(TopicName, subscription);
-    var receiver = new MessageReceiver(ServiceBusConnectionString, entityPath, ReceiveMode.PeekLock, RetryPolicy.Default, 100);
+    await using var client = new ServiceBusClient(ServiceBusConnectionString);
+    ServiceBusReceiver receiver = client.CreateReceiver(TopicName, subscription);
 
+    // In reality you would not break out of the loop like in this example but would keep looping. The receiver keeps the connection open
+    // to the broker for the specified amount of seconds and the broker returns messages as soon as they arrive. The client then initiates
+    // a new connection. So in reality you would not want to break out of the loop. 
+    // Also note that the code shows how to batch receive, which you would do for performance reasons. For convenience you can also always
+    // use the regular receive pump which we show in our Quick Start and in other github samples.
     while (true)
     {
         try
         {
-            IList<Message> messages = await receiver.ReceiveAsync(10, TimeSpan.FromSeconds(2));
+            //IList<Message> messages = await receiver.ReceiveAsync(10, TimeSpan.FromSeconds(2));
+            // Note the extension class which is serializing an deserializing messages and testing messages is null or 0.
+            // If you think you did not receive all messages, just press M and receive again via the menu.
+            IReadOnlyList<ServiceBusReceivedMessage> messages = await receiver.ReceiveMessagesAsync(maxMessages: 100);
+
             if (messages.Any())
             {
-                foreach (var message in messages)
+                foreach (ServiceBusReceivedMessage message in messages)
                 {
                     lock (Console.Out)
                     {
                         Item item = message.As<Item>();
-                        IDictionary<string, object> myUserProperties = message.UserProperties;
-                        Console.WriteLine($"StoreId={myUserProperties["StoreId"]}");
-
-                        if (message.Label != null)
+                        IReadOnlyDictionary<string, object> myApplicationProperties = message.ApplicationProperties;
+                        Console.WriteLine($"StoreId={myApplicationProperties["StoreId"]}");
+                        if (message.Subject != null)
                         {
-                            Console.WriteLine($"Label={message.Label}");
+                            Console.WriteLine($"Subject={message.Subject}");
                         }
-
                         Console.WriteLine(
-                            $"Item data: Price={item.getPrice()}, Color={item.getColor()}, Category={item.getItemCategory()}");
+                            $"Item data: Price={item.GetPrice()}, Color={item.GetColor()}, Category={item.GetItemCategory()}");
                     }
 
-                    await receiver.CompleteAsync(message.SystemProperties.LockToken);
+                    await receiver.CompleteMessageAsync(message);
                 }
             }
             else
@@ -386,8 +392,6 @@ private async Task ReceiveMessages(string subscription)
             Console.WriteLine(ex.ToString());
         }
     }
-
-    await receiver.CloseAsync();
 }
 ```
 

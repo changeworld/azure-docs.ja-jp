@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ac69b442b06864fd45561b26909e1247674611a
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: ddc9dbf77c04ea95e5b873c45de4c0df109514c7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89458384"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544447"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>チュートリアル - Azure Key Vault を使用して BLOB を暗号化および復号化する
 
@@ -236,8 +236,8 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
 
 ## <a name="next-steps"></a>次のステップ
 
-C# での Microsoft Azure Storage の使用について詳しくは、「[.NET 用の Microsoft Azure Storage クライアント ライブラリ](https://msdn.microsoft.com/library/azure/dn261237.aspx)」をご覧ください。
+C# での Microsoft Azure Storage の使用について詳しくは、「[.NET 用の Microsoft Azure Storage クライアント ライブラリ](/previous-versions/azure/dn261237(v=azure.100))」をご覧ください。
 
-BLOB REST API について詳しくは、「[BLOB サービス REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)」をご覧ください。
+BLOB REST API について詳しくは、「[BLOB サービス REST API](/rest/api/storageservices/Blob-Service-REST-API)」をご覧ください。
 
-Microsoft Azure Storage の最新情報については、[Microsoft Azure Storage チーム ブログ](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)をご覧ください。
+Microsoft Azure Storage の最新情報については、[Microsoft Azure Storage チーム ブログ](/archive/blogs/windowsazurestorage/)をご覧ください。

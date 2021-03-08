@@ -1,25 +1,19 @@
 ---
 title: Azure Linux 仮想マシンで Oracle Data Guard を実装する | Microsoft Docs
 description: Oracle Data Guard をすばやく作成し、Azure 環境で実行します。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: rgardler
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
+author: dbakevlar
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogardle
-ms.openlocfilehash: c6b064df1fe8943f9202446fb2857d50bcb4e0e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: kegorman
+ms.openlocfilehash: 1b04ef24ff01787c6904db0e288c23d4434e7dcf
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083380"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673825"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle Data Guard を実装する 
 
@@ -57,7 +51,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>可用性セットの作成
 
-可用性セットの作成は省略可能ですが、作成することをお勧めします。 詳細については、[Azure 可用性セットのガイドライン](../../windows/infrastructure-example.md)に関する記事をご覧ください。
+可用性セットの作成は省略可能ですが、作成することをお勧めします。 詳細については、[Azure 可用性セットのガイドライン](/previous-versions/azure/virtual-machines/windows/infrastructure-example)に関する記事をご覧ください。
 
 ```azurecli
 az vm availability-set create \
@@ -273,13 +267,13 @@ SQL> ALTER DATABASE FORCE LOGGING;
 SQL> ALTER SYSTEM SWITCH LOGFILE;
 ```
 
-スタンバイ redo ログを作成します。
+プライマリ データベースの再実行ログと同じサイズ、数量を設定して、スタンバイ再実行ログを作成します。
 
 ```bash
-SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo01.log') SIZE 50M;
-SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo02.log') SIZE 50M;
-SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo03.log') SIZE 50M;
-SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
+SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo01.log') SIZE 200M;
+SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo02.log') SIZE 200M;
+SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo03.log') SIZE 200M;
+SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 200M;
 ```
 
 フラッシュバック機能をオン (回復の際に簡単に戻せる) にし、STANDBY\_FILE\_MANAGEMENT を自動に設定します。完了したら、SQL*Plus を終了します。
@@ -703,4 +697,4 @@ az group delete --name myResourceGroup
 
 [チュートリアル:可用性が高い仮想マシンの作成](../../linux/create-cli-complete.md)
 
-[VM デプロイ Azure CLI サンプルを探索する](../../linux/cli-samples.md)
+[VM デプロイ Azure CLI サンプルを探索する](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

@@ -4,19 +4,18 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Azure Data Science Virtual Machine で使用できるディープ ラーニングのフレームワークとツール。
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 ms.custom: devx-track-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 29f1949cbe9998ac569b0389986023a72e7845b1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3c720e2b033d07397f3b13c37e1b4e15251b0a17
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070918"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519492"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Azure Data Science VM 用のディープ ラーニングと AI のフレームワーク
 以下の一覧では、DSVM でのディープ ラーニング フレームワークを示します。
@@ -76,7 +75,7 @@ ms.locfileid: "89070918"
 | DSVM での構成/インストール方法  | Keras は、Windows では Python 3.6 に、Linux では Python 3.5 にインストールされます |
 | 実行方法      | ターミナルで適切な環境をアクティブ化した後、Python を実行します。 |
 
-## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
+## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](/cognitive-toolkit/)
 
 | カテゴリ | 値 |
 | ------------- | ------------- |
@@ -110,7 +109,7 @@ ms.locfileid: "89070918"
 | サポートされている DSVM エディション      | Windows Server 2019<br>Ubuntu 18.04<br> Windows 2016<br> Ubuntu 16.04   |
 | 何を目的としていますか? | GPU アクティビティをクエリするための NVIDIA ツール |
 | DSVM での構成/インストール方法  | `nvidia-smi` はシステム パス上にあります。 |
-| 実行方法      | **GPU を備えた**仮想マシンで、コマンド プロンプト (Windows の場合) またはターミナル (Linux の場合) を開き、`nvidia-smi` を実行します。 |
+| 実行方法      | **GPU を備えた** 仮想マシンで、コマンド プロンプト (Windows の場合) またはターミナル (Linux の場合) を開き、`nvidia-smi` を実行します。 |
 
 ## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 

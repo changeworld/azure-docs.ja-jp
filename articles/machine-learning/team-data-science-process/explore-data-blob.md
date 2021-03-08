@@ -1,5 +1,5 @@
 ---
-title: Pandas を使用して Azure BLOB ストレージのデータを探索する - Team Data Science Process
+title: Pandas を使用して Azure Blob Storage のデータを探索する - Team Data Science Process
 description: Pandas Python パッケージを使用して Azure BLOB コンテナーに格納されているデータを探索する方法について説明します。
 services: machine-learning
 author: marktab
@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5a0804ae5ee2dbffaa57fc967fda29701562ab44
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 855998b887f1d446ee8d196ff4628e066cb5d675
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085703"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805671"
 ---
-# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Pandas を使用して Azure BLOB ストレージのデータを探索する
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Pandas を使用して Azure Blob Storage のデータを探索する
 
 この記事では、[Pandas](https://pandas.pydata.org/) Python パッケージを使用して Azure BLOB コンテナーに格納されているデータを探索する方法について説明します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "86085703"
 この記事では、以下のことを前提としています。
 
 * Azure のストレージ アカウントが作成されている。 手順については、「[Azure ストレージ アカウントの作成](../../storage/common/storage-account-create.md)」をご覧ください。
-* Azure BLOB ストレージ アカウントにデータが格納されている。 手順については、「 [Azure Storage との間でのデータの移動](../../storage/common/storage-moving-data.md)
+* Azure Blob Storage アカウントにデータが格納されている。 手順については、「 [Azure Storage との間でのデータの移動](../../storage/common/storage-choose-data-transfer-solution.md)
 
 ## <a name="load-the-data-into-a-pandas-dataframe"></a>Pandas データ フレームにデータを読み込む
 データセットを探索および操作するには、先にデータを BLOB ソースからローカル ファイルにダウンロードしておく必要があります。このローカル ファイルを、Pandas データ フレームに読み込むことができます。 この手順に必要な操作は次のとおりです。
@@ -69,10 +69,10 @@ ms.locfileid: "86085703"
 1. **行と列の数**
 
     ```python
-    print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
+    print('the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape)
     ```
 
-1. 次のデータセットの始めまたは終わりの数**行**を**検査**します。
+1. 次のデータセットの始めまたは終わりの数 **行** を **検査** します。
 
     ```python
     dataframe_blobdata.head(10)
@@ -84,7 +84,7 @@ ms.locfileid: "86085703"
 
     ```python
     for col in dataframe_blobdata.columns:
-        print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
+        print(dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype)
     ```
 
 1. 次のように、データ セット内の列の **基本的な統計** を確認します。
@@ -103,7 +103,7 @@ ms.locfileid: "86085703"
 
     ```python
     miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
-    print miss_num
+    print(miss_num)
     ```
 
 1. データ内の特定の列に **不足値** がある場合は、次のように削除できます。

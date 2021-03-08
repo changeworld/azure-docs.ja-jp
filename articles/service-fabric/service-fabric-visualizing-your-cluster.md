@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric Explorer を使用したクラスターの視覚化
 description: Service Fabric Explorer は、Microsoft Azure Service Fabric クラスター内のクラウド アプリケーションとノードを検査および管理するためのアプリケーションです。
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.author: mikhegn
-ms.openlocfilehash: 92f6f495f6aac23785dd2a21672747bffb07e2e3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a45aff305f97610cb2660c2e3f4b4427b905d7d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256256"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574057"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化
 
@@ -106,7 +104,7 @@ Service Fabric Explorer を使用して、特定のアプリケーションの�
 ## <a name="event-store"></a>EventStore
 EventStore は Service Fabric Explorer と REST API で使用可能な Service Fabric プラットフォーム イベントを提供する、プラットフォームによって提供される機能です。 ノード、サービス、アプリケーション、クエリなどの各エンティティに対してクラスター内で行われていることの時刻に基づくスナップショット ビューを表示できます。 「[EventStore の概要](service-fabric-diagnostics-eventstore.md)」で、EventStore の詳細を確認することもできます。   
 
-![EventStore][sfx-eventstore]
+![[イベント] が選択された [ノード] ウィンドウを示すスクリーンショット。][sfx-eventstore]
 
 >[!NOTE]
 >Service Fabric バージョン 6.4 の時点で、 EventStore は既定では有効になりません。Resource Manager テンプレートで有効にする必要があります。
@@ -117,7 +115,7 @@ EventStore は Service Fabric Explorer と REST API で使用可能な Service F
 ## <a name="image-store-viewer"></a>Image Store Viewer
 Image Store Viewer は、Native Image Store を使用している場合に提供される機能であり、これを使用して、イメージ ストアの現在の内容を表示したり、ファイルやフォルダーの情報を取得したり、ファイルやフォルダーを削除したりできます。
 
-![Service Fabric Explorer のクラスター マップ][sfx-imagestore]
+![Image Store Viewer を示しているスクリーンショット。][sfx-imagestore]
 
 ## <a name="backup-and-restore"></a>バックアップと復元
 Service Fabric Explorer には、[バックアップと復元](./service-fabric-reliable-services-backup-restore.md)とのインターフェイスを提供する機能が用意されています。 SFX でバックアップと復元の機能を表示するには、詳細設定モードを有効にする必要があります。
