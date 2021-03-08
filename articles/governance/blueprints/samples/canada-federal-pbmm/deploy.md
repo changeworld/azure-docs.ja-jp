@@ -1,14 +1,14 @@
 ---
 title: カナダ連邦 PBMM ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含む Canada Federal PBMM ブループリント サンプルのデプロイ手順です。
-ms.date: 11/02/2020
+ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: da83ec775b953f064444c0c97687a506d66de57f
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: ec7b0f4bd049b8cb2ead9301ac9ddb76ae727cca
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420463"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594776"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>Canada Federal PBMM ブループリント サンプルをデプロイする
 
@@ -64,11 +64,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    - 基本
 
-     - **サブスクリプション** :ブループリント サンプルのコピーを保存した管理グループ内の 1 つ以上のサブスクリプションを選択します。 複数のサブスクリプションを選択すると、入力したパラメーターを使用して、それぞれに対して割り当てが作成されます。
-     - **割り当て名** :名前は、ブループリントの名前に基づいてあらかじめ設定されています。
+     - **サブスクリプション**:ブループリント サンプルのコピーを保存した管理グループ内の 1 つ以上のサブスクリプションを選択します。 複数のサブスクリプションを選択すると、入力したパラメーターを使用して、それぞれに対して割り当てが作成されます。
+     - **割り当て名**:名前は、ブループリントの名前に基づいてあらかじめ設定されています。
        必要に応じて変更することも、そのままにしておくこともできます。
      - **[場所]** :マネージド ID を作成するリージョンを選択します。 Azure Blueprint は、この管理対象 ID を使用して、割り当てられたブループリント内にすべての成果物をデプロイします。 詳細については、[Azure リソースの管理対象 ID の概要](../../../../active-directory/managed-identities-azure-resources/overview.md)に関するページをご覧ください。
-     - **ブループリント定義ラベル** :ブループリント サンプルのコピーの **発行済み** バージョンを選択します。
+     - **ブループリント定義ラベル**:ブループリント サンプルのコピーの **発行済み** バージョンを選択します。
 
    - ロックの割り当て
 
@@ -85,7 +85,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. すべてのパラメーターの入力が完了したら、ページの下部にある **[割り当て]** を選択します。 ブループリントの割り当てが作成され、アーティファクトのデプロイが開始されます。 デプロイに要する時間は、約 1 時間です。 デプロイの状態を確認するには、ブループリントの割り当てを開きます。
 
 > [!WARNING]
-> Azure Blueprints サービスと、組み込まれているブループリント サンプルは、 **無料** でご利用になれます。 Azure リソースは、[製品ごとに課金](https://azure.microsoft.com/pricing/)されます。 このブループリント サンプルでデプロイされるリソースの実行コストを見積もるには、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用します。
+> Azure Blueprints サービスと、組み込まれているブループリント サンプルは、**無料** でご利用になれます。 Azure リソースは、[製品ごとに課金](https://azure.microsoft.com/pricing/)されます。 このブループリント サンプルでデプロイされるリソースの実行コストを見積もるには、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用します。
 
 ## <a name="artifact-parameters-table"></a>アーティファクトのパラメーター表
 
@@ -93,12 +93,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 アーティファクト名|アーティファクトの種類|パラメーター名|説明|
 |-|-|-|-|
-|\[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |Linux VM 用の Log Analytics ワークスペース |詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 |
+|\[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |Linux VM 用の Log Analytics ワークスペース |詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/logs/quick-create-workspace.md)」を参照してください。 |
 |\[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |省略可能:スコープに追加するため、サポートされている Linux OS を持つ VM イメージの一覧 |空の配列 (`[]`) を使用して、オプションのパラメーターがないことを示すことができます。 |
 |\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |省略可能:スコープに追加するため、サポートされている Windows OS を持つ VM イメージの一覧 |空の配列 (`[]`) を使用して、オプションのパラメーターがないことを示すことができます。 |
-|\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |Windows VM 用の Log Analytics ワークスペース |詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 |
+|\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ |ポリシー割り当て |Windows VM 用の Log Analytics ワークスペース |詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../../../azure-monitor/logs/quick-create-workspace.md)」を参照してください。 |
 |\[プレビュー\]:Canada Federal PBMM コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする |ポリシー割り当て |VM で構成する必要がある Log Analytics ワークスペース ID |これは、VM で構成する必要がある Log Analytics ワークスペース ID (GUID) です。 |
-|\[プレビュー\]:Canada Federal PBMM コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする |ポリシー割り当て |診断ログを有効にする必要のあるリソースの種類の一覧 |診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。 |
+|\[プレビュー\]:Canada Federal PBMM コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする |ポリシー割り当て |診断ログを有効にする必要のあるリソースの種類の一覧 |診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。 |
 |\[プレビュー\]:Canada Federal PBMM コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする |ポリシー割り当て |管理者グループ |グループ。 例: `Administrator; myUser1; myUser2` |
 |\[プレビュー\]:Canada Federal PBMM コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする |ポリシー割り当て |Windows VM Administrators グループに含める必要があるユーザーの一覧 |ローカルの Administrators グループに含める必要があるメンバーのセミコロン区切りリスト。 例: `Administrator; myUser1; myUser2` |
 |ストレージ アカウントに対する Advanced Threat Protection のデプロイ |ポリシー割り当て |結果 |ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。 |

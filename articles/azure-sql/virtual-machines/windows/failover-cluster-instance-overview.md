@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 33be57832d9364b859042cd38349c2437bcfcb18
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a7735de9763f3924cd6baae6af1258f6448c874e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358148"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690925"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server を使用したフェールオーバー クラスター インスタンス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,7 +47,7 @@ Azure Virtual Machines 上の SQL Server を使用するフェールオーバー
 
 Azure VM 上の SQL Server には、SQL Server フェールオーバー クラスター インスタンスをデプロイするための共有記憶域ソリューションとして、さまざまなオプションが用意されています。 
 
-||[Azure 共有ディスク](../../../virtual-machines/disks-shared.md)|[Premium ファイル共有](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[記憶域スペース ダイレクト (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
+||[Azure 共有ディスク](../../../virtual-machines/disks-shared.md)|[Premium ファイル共有](../../../storage/files/storage-how-to-create-file-share.md) |[記憶域スペース ダイレクト (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
 |**OS の最小バージョン**| All |Windows Server 2012|Windows Server 2016|
 |**SQL Server の最小バージョン**|All|SQL Server 2012|SQL Server 2016|
@@ -107,7 +107,7 @@ Azure VM 上の SQL Server には、SQL Server フェールオーバー クラ�
 
 ### <a name="premium-file-share"></a>Premium ファイル共有
 
-[Premium ファイル共有](../../../storage/files/storage-how-to-create-premium-fileshare.md)は [Azure Files](../../../storage/files/index.yml) の機能です。 Premium ファイル共有は SSD ベースであり、待ち時間が一貫して低くなります。 これらは、Windows Server 2012 以降での SQL Server 2012 以降のフェールオーバー クラスター インスタンスとの使用が完全にサポートされています。 Premium ファイル共有を使用すると柔軟性が向上しまず。ダウンタイムなしでファイル共有のサイズを変更したりスケーリングしたりできるためです。
+[Premium ファイル共有](../../../storage/files/storage-how-to-create-file-share.md)は [Azure Files](../../../storage/files/index.yml) の機能です。 Premium ファイル共有は SSD ベースであり、待ち時間が一貫して低くなります。 これらは、Windows Server 2012 以降での SQL Server 2012 以降のフェールオーバー クラスター インスタンスとの使用が完全にサポートされています。 Premium ファイル共有を使用すると柔軟性が向上しまず。ダウンタイムなしでファイル共有のサイズを変更したりスケーリングしたりできるためです。
 
 **サポートされる OS**:Windows Server 2012 以降   
 **サポートされる SQL バージョン**:SQL Server 2012 以降   

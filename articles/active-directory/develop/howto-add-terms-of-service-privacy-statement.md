@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 46919a97364aeff29e2b458c619315571dba7710
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 311dfd976610c392909a0ec3d91fecaa4d733539
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013670"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104197"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>方法:アプリのサービス利用規約とプライバシーに関する声明を構成する
 
@@ -58,11 +58,11 @@ Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウ�
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Azure portal を使用する
 Azure portal で次の手順に従います。
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインし、(B2C ではなく) 適切な AzureAD テナントを選択します。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインし、(B2C ではなく) 適切な Azure AD テナントを選択します。
 2. **[アプリの登録]** セクションに移動して、自分のアプリを選択します。
-3. **[ブランド]** ウィンドウを開きます。
+3. **[管理]** 下にある **[ブランド]** を選択します。
 4. **[サービス利用規約 URL]** と **[プライバシーに関する声明 URL]** フィールドを入力します。
-5. 変更を保存します。
+5. **[保存]** を選択します。
 
     ![サービス利用規約 URL とプライバシーに関する声明 URL を含むアプリのプロパティ](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 

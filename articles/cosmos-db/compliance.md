@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 512accd274da35c1f747f2ef185f0b3eefa4756d
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: ce68b9e42ca1e34c8ea493b67e123a86139134bf
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636794"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555598"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB のコンプライアンス 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -33,37 +33,7 @@ Azure Cosmos DB は、すべての Azure リージョンで利用できます。
 
 ## <a name="azure-cosmos-db-certifications"></a>Azure Cosmos DB の認証  
 
-Azure Cosmos DB は、その認証範囲を拡大し続けています。 現時点では、Azure Cosmos DB は、以下の認証を受けています。
-
-| **グローバルに適用可能** | **米国政府** | **業界に固有** | **地域/国に固有** |
-| --- | --- | --- | --- |
-| CSA STAR 認証 | DoD SRG Level 2 | HIPAA BAA | オーストラリアの IRAP |
-| CSA STAR 証明 | FedRAMP Moderate | HITRUST | ドイツの C5|
-| ISO 20000-1:2011 | GxP (FDA 21 CFR Part 11) | PCI DSS | シンガポールの MTCS Level 3 |
-| ISO 22301:2012 | | | スペインの ENS High|
-| ISO 27001:2013| | | |
-| ISO 27017:2015 | | | |
-| ISO 27018:2014 | | | |
-| ISO 9001:2015 | | | |
-| ISO 27701:2019| | | |
-| SOC 1、2、3 | | | |
-
-これらのコンプライアンス認証とそれらのメリットの詳細については、[Microsoft Azure のコンプライアンス認証の概要](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/)に関するページを参照してください。
-
-次の表に、Azure Government 上で Azure Cosmos DB によってサポートされている認証を示します。
-
-| **グローバルに適用可能** | **米国政府** | **業界に固有** | 
-| --- | --- | --- |
-| CSA STAR 認証 | CJIS| HIPAA BAA | 
-| CSA STAR 証明| DoD SRG Level 2| HITRUST  | 
-| ISO 20000-1:2011 | DoD SRG Level 4 | PCI DSS | 
-| ISO 9001:2012 | DoD SRG Level 5 | | 
-| ISO 27001:2013 | FedRAMP High | |
-| ISO 9001:2015 | IRS 1075|  |
-| ISO 27017:2014 | NIST CSF | |
-| ISO 27018:2015 | NIST SP 800-171 | |
-| SOC 1、2、3 | | |
-
+Azure Cosmos DB の最新のコンプライアンス認証を確認するには、[Microsoft Azure のコンプライアンス認証の概要](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/)に関するページの付録 A と B を参照してください。  
 
 ## <a name="next-steps"></a>次のステップ
 

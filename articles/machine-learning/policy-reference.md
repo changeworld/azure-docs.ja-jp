@@ -1,18 +1,18 @@
 ---
 title: Azure Machine Learning 用の組み込みポリシー定義
 description: Azure Machine Learning 用の Azure Policy 組み込みポリシー定義の一覧を示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 01/29/2021
+ms.date: 02/09/2021
 ms.author: larryfr
 author: BlackMist
 ms.topic: reference
 ms.service: machine-learning
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 65a5719b6f90aef6b30bac7e03138d5b7843def2
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 59ebd9234f5bf3c1434c0970fc8262d5402b74af
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097322"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095659"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-machine-learning"></a>Azure Machine Learning 用の Azure Policy 組み込みポリシー定義
 

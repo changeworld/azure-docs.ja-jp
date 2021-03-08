@@ -4,16 +4,16 @@ description: この記事では、Azure IoT Central ソーラー パネル監視
 author: op-ravi
 ms.author: omravi
 ms.date: 12/11/2020
-ms.topic: overview
+ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: cd35381e4c2cdb849662ad134cfbef8229707eed
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 1efb693e1ad9b9e9bfdbeafa27e9cc75c645baf4
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516635"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834291"
 ---
 # <a name="azure-iot-central---solar-panel-app-architecture"></a>Azure IoT Central - ソーラー パネル アプリのアーキテクチャ
 

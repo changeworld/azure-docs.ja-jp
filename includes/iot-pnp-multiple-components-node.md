@@ -4,14 +4,21 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: d803796792a3933cdf915214f15c56d146ecb49d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 43a8600a288a9797edcd326a1cb5dbcc8688d61f
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511302"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834145"
 ---
 このチュートリアルでは、複数のコンポーネントを使用する IoT プラグ アンド プレイのサンプル デバイス アプリケーションをビルドし、それを IoT ハブに接続して、ハブに送信される情報を Azure IoT エクスプローラー ツールを使用して表示する方法について説明します。 このサンプル アプリケーションは Node.js 用に記述されており、Node.js 用 Azure IoT Hub デバイス SDK に含まれています。 ソリューション ビルダーは Azure IoT エクスプローラー ツールを使用して、デバイス コードを表示しなくても IoT プラグ アンド プレイ デバイスの機能を理解することができます。
+
+このチュートリアルでは、次の作業を行いました。
+
+> [!div class="checklist"]
+> * サンプル コードをダウンロードします。
+> * サンプル デバイス アプリケーションを実行して、IoT ハブに接続することを確認します。
+> * ソース コードを確認します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -120,5 +127,3 @@ node pnpTemperatureController.js
 デバイス クライアントのサンプルが開始された後、Azure IoT エクスプローラー ツールを使用して、それが動作していることを確認します。
 
 [!INCLUDE [iot-pnp-iot-explorer.md](iot-pnp-iot-explorer.md)]
-
-[!INCLUDE [iot-pnp-clean-resources.md](iot-pnp-clean-resources.md)]

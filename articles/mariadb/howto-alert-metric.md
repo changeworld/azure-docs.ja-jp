@@ -3,15 +3,15 @@ title: メトリック アラートを構成する - Azure portal - Azure Databa
 description: この記事では、Azure portal から Azure Database for MariaDB のメトリック アラートを構成およびアクセスする方法について説明します。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 1e7dafaba6b6792afdec1f1866629fac9ba5a577
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 689e830d2486420be8d551d1f88dccba8d982428
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664420"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593059"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Azure portal を使用して Azure Database for MariaDB のメトリックのアラートを設定する
 
@@ -25,8 +25,8 @@ ms.locfileid: "98664420"
 * Webhook を呼び出す
 
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure Portal](../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Azure 監視 REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric"></a>メトリックのアラート ルールを作成する
@@ -85,5 +85,5 @@ ms.locfileid: "98664420"
 
 
 ## <a name="next-steps"></a>次のステップ
-* [アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)に関する詳細情報を確認します。
-* [メトリック収集の概要](../azure-monitor/platform/data-platform.md) 情報を入手して、サービスの可用性と応答性を確認します。
+* [アラートでの webhook の構成](../azure-monitor/alerts/alerts-webhooks.md)に関する詳細情報を確認します。
+* [メトリック収集の概要](../azure-monitor/data-platform.md) 情報を入手して、サービスの可用性と応答性を確認します。

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 81ae46a7b6c19557eeadd2d5b28ad2fa46e77115
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 21f07ed76ef0b900a723677acc2bf576649fe861
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881369"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702013"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Azure Defender for SQL の概要
 
@@ -44,7 +44,7 @@ Azure Defender for SQL には、Azure Security Center の[データ セキュリ
     - [SQL Server on Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/)
     - オンプレミスの SQL サーバー:
         - [Azure Arc 対応 SQL Server (プレビュー)](/sql/sql-server/azure-arc/overview)
-        - [Windows マシン上で実行される SQL Server (Azure Arc なし)](../azure-monitor/platform/agent-windows.md)
+        - [Windows マシン上で実行される SQL Server (Azure Arc なし)](../azure-monitor/agents/agent-windows.md)
 
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-sql"></a>Azure Defender for SQL の利点
@@ -72,7 +72,6 @@ Azure Defender for SQL には、Azure Security Center の[データ セキュリ
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure Defender for SQL について説明しました。
+この記事では、Azure Defender for SQL について説明しました。 説明したサービスを使用するために、次の作業を行います。
 
-> [!div class="nextstepaction"]
-> [Azure Defender で SQL サーバーの脆弱性をスキャンする](defender-for-sql-usage.md)
+- Azure Defender for SQL servers on machines を使用して [SQL Server の脆弱性をスキャン](defender-for-sql-usage.md)する

@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 664264f2cd810f232b967f5af78ba3d522f0a41f
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 857fba6dfa6191163c06c423cefb42d57f25dc1d
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060012"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980577"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>仮想ネットワークの分離とプライバシーの概要
 
@@ -137,6 +137,15 @@ ms.locfileid: "98060012"
 ### <a name="limitations"></a>制限事項
 - AKS クラスターは、ワークスペースおよび関連するリソースと同じ VNet に属している必要があります。 
 
+## <a name="optional-enable-public-access"></a>省略可能:パブリック アクセスを有効にする
+
+プライベート エンドポイントを使用して VNet の背後にあるワークスペースをセキュリティで保護しながら、パブリック インターネット経由のアクセスを許可することができます。 初期構成は、[ワークスペースと関連するリソースをセキュリティで保護する](#secure-the-workspace-and-associated-resources)場合と同じです。 
+
+プライベート リンクを使用してワークスペースをセキュリティで保護した後、[パブリック アクセスを有効](how-to-configure-private-link.md#enable-public-access)にします。 その後、パブリック インターネットと VNet の両方からこのワークスペースにアクセスできます。
+
+### <a name="limitations"></a>制限事項
+
+- パブリック インターネット経由で Azure Machine Learning スタジオを使用する場合、デザイナーなどの一部の機能から自分のデータにアクセスできないことがあります。 この問題は、データが VNet の背後でセキュリティ保護されているサービスに格納されている場合に発生します。 たとえば、Azure Storage アカウントです。
 ## <a name="optional-enable-studio-functionality"></a>省略可能: Studio の機能を有効にする
 
 [ワークスペースをセキュリティで保護する](#secure-the-workspace-and-associated-resources) > [トレーニング環境をセキュリティで保護する](#secure-the-training-environment) > [推論環境をセキュリティで保護する](#secure-the-inferencing-environment) > **Studio の機能を有効にする** > [ファイアウォール設定を構成する](#configure-firewall-settings)

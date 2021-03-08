@@ -1,35 +1,28 @@
 ---
-title: Azure Synapse Link プレビューでサーバーレス SQL プールを使用して Azure Cosmos DB データのクエリを実行する
-description: この記事では、Azure Synapse Link プレビューでサーバーレス SQL プールを使用して、Azure Cosmos DB のクエリを実行する方法について説明します。
+title: Azure Synapse Link でサーバーレス SQL プールを使用して Azure Cosmos DB データのクエリを実行する
+description: この記事では、Azure Synapse Link でサーバーレス SQL プールを使用して、Azure Cosmos DB のクエリを実行する方法について説明します。
 services: synapse analytics
 author: jovanpop-msft
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
-ms.date: 12/04/2020
+ms.date: 03/02/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2059608faa8ce148e5823e48eff6abf9e71c9b01
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a574cacbabf1c0d1730430153a3c0afcad6582c6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735435"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694361"
 ---
-# <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure Synapse Link プレビューでサーバーレス SQL プールを使用して Azure Cosmos DB データのクエリを実行する
+# <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link"></a>Azure Synapse Link でサーバーレス SQL プールを使用して Azure Cosmos DB データのクエリを実行する
 
-> [!IMPORTANT]
-> Azure Synapse Link for Azure Cosmos DB のサーバーレス SQL プールのサポートは現在プレビュー段階にあります。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
-
-
-サーバーレス SQL プールを使用すると、トランザクション ワークロードのパフォーマンスに影響を与えることなく、[Azure Synapse Link](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) で有効になっている Azure Cosmos DB コンテナー内のデータをほぼリアルタイムで分析できます。 T-SQL インターフェイスを使用して[分析ストア](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)および統合された接続からさまざまなビジネス インテリジェンス (BI) やアドホック クエリ ツールへのデータのクエリを実行するために、使い慣れた T-SQL 構文が用意されています。
+サーバーレス SQL プールを使用すると、トランザクション ワークロードのパフォーマンスに影響を与えることなく、[Azure Synapse Link](../../cosmos-db/synapse-link.md) で有効になっている Azure Cosmos DB コンテナー内のデータをほぼリアルタイムで分析できます。 T-SQL インターフェイスを使用して[分析ストア](../../cosmos-db/analytical-store-introduction.md)および統合された接続からさまざまなビジネス インテリジェンス (BI) やアドホック クエリ ツールへのデータのクエリを実行するために、使い慣れた T-SQL 構文が用意されています。
 
 Azure Cosmos DB のクエリを実行する場合、[SELECT](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) のすべての機能が [OPENROWSET](develop-openrowset.md) 関数によってサポートされます。これには、[SQL の関数や演算子](overview-features.md)の大部分が含まれます。 また、Azure Blob Storage または Azure Data Lake Storage のデータと共に Azure Cosmos DB からデータを読み取るクエリの結果を、[create external table as select](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS) を使用して格納することもできます。 現在は、CETAS を使用して、サーバーレス SQL プールのクエリの結果を Azure Cosmos DB に格納することはできません。
 
-この記事では、Azure Synapse Link が有効になっている Azure Cosmos DB コンテナーのデータのクエリを実行する、サーバーレス SQL プールを使用するクエリの作成方法について説明します。 その後は、[このチュートリアル](./tutorial-data-analyst.md)で、Azure Cosmos DB コンテナーに対するサーバーレス SQL プールのビューを構築し、それらを Power BI モデルに接続することの詳細を学習できます。
-
-> [!IMPORTANT]
-> このチュートリアルでは、[Azure Cosmos DB の適切に定義されたスキーマ](../../cosmos-db/analytical-store-introduction.md#schema-representation)を持つコンテナーを使用します。 サーバーレス SQL プールによって提供される、[Azure Cosmos DB の完全に忠実なスキーマ](#full-fidelity-schema)でのクエリ エクスペリエンスの動作は、プレビューのフィードバックに基づいて変更される予定の一時的なものです。 クエリ エクスペリエンスは、適切に定義されたスキーマに基づいて調整されている可能性があるため、完全に忠実なスキーマを持つコンテナーからデータを読み取る、`WITH` 句のない `OPENROWSET` 関数の結果セット スキーマには依存しないでください。 フィードバックは、[Azure Synapse Analytics フィードバック フォーラム](https://feedback.azure.com/forums/307516-azure-synapse-analytics)に投稿できます。 [Azure Synapse Link の製品チーム](mailto:cosmosdbsynapselink@microsoft.com)に連絡して、フィードバックを提供することもできます。
+この記事では、Azure Synapse Link が有効になっている Azure Cosmos DB コンテナーのデータのクエリを実行する、サーバーレス SQL プールを使用するクエリの作成方法について説明します。 その後は、[このチュートリアル](./tutorial-data-analyst.md)で、Azure Cosmos DB コンテナー上にサーバーレス SQL プール ビューを構築し、それらを Power BI モデルに接続する方法について詳しく学ぶことができます。このチュートリアルには、[Azure Cosmos DB の定義済みスキーマ](../../cosmos-db/analytical-store-introduction.md#schema-representation)を使ったコンテナーが使用されています。
 
 ## <a name="overview"></a>概要
 
@@ -377,11 +370,11 @@ cases の数値は `int32` 値として格納される情報ですが、小数�
 > [!IMPORTANT]
 > `WITH` 句が指定されていない `OPENROWSET` 関数では、予期される型を持つ値と、入力された型が正しくない値の両方が公開されます。 この関数は、レポート用ではなく、データの探索用に設計されています。 この関数から返された JSON 値を解析してレポートを作成しないでください。 レポートを作成するには、明示的な [WITH 句](#query-items-with-full-fidelity-schema) を使用します。 完全に忠実な分析ストアで補正を適用するためには、Azure Cosmos DB コンテナー内の型が正しくない値をクリーンアップする必要があります。
 
-Mongo DB API の種類の Azure Cosmos DB アカウントに対してクエリを実行する必要がある場合は、分析ストア内の完全に忠実なスキーマ表現と、使用される拡張プロパティ名の詳細を、「[Azure Cosmos DB の分析ストア (プレビュー) とは](../../cosmos-db/analytical-store-introduction.md#analytical-schema)」で確認してください。
+Mongo DB API の種類の Azure Cosmos DB アカウントに対してクエリを実行する必要がある場合は、分析ストア内の完全に忠実なスキーマ表現と、使用される拡張プロパティ名の詳細を、「[Azure Cosmos DB の分析ストアとは](../../cosmos-db/analytical-store-introduction.md#analytical-schema)」で確認してください。
 
 ### <a name="query-items-with-full-fidelity-schema"></a>完全に忠実なスキーマの項目に対してクエリを実行する
 
-完全に忠実なスキーマにクエリを実行する際は、`WITH` 句で SQL 型と、想定される Azure Cosmos DB のプロパティ型を明示的に指定する必要があります。 結果セットの形式がフィードバックに基づいてプレビューで変更されている可能性があるため、レポートでは `WITH` 句を指定せずに `OPENROWSET` を使用しないでください。
+完全に忠実なスキーマにクエリを実行する際は、`WITH` 句で SQL 型と、想定される Azure Cosmos DB のプロパティ型を明示的に指定する必要があります。
 
 次の例では、`string` が `geo_id` プロパティの正しい型であり、`int32` が `cases` プロパティの正しい型であると仮定します。
 
@@ -419,7 +412,6 @@ GROUP BY geo_id
 
 ## <a name="known-issues"></a>既知の問題
 
-- [Azure Cosmos DB の完全な忠実性スキーマ](#full-fidelity-schema)で利用できるサーバーレス SQL プールがもたらすクエリ エクスペリエンスは、プレビューのフィードバックに基づいて変更される一時的な動作です。 クエリ エクスペリエンスは顧客フィードバックに基づいて適切に定義されたスキーマに合わせて調整されている可能性があるため、パブリック プレビュー期間中は、`WITH` 句のない `OPENROWSET` 関数によって生成されたスキーマには依存しないでください。 フィードバックを提供するには、[Azure Synapse Link の製品チーム](mailto:cosmosdbsynapselink@microsoft.com)にご連絡ください。
 - `OPENROWSET` 列の照合順序のエンコードが UTF-8 でない場合、サーバーレス SQL プールからコンパイル時警告が返されます。 現在のデータベースで実行されるすべての `OPENROWSET` 関数の既定の照合順序は、`alter database current collate Latin1_General_100_CI_AS_SC_UTF8` という T-SQL ステートメントを使用して簡単に変更できます。
 
 次の表に、考えられるエラーとトラブルシューティングの操作を示します。

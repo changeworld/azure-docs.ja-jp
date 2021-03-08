@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ae3865c1ee5e656fc4feda48de9ab67995619593
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9612a26d7ac2e7a059655636fc1a2a7a43e3b8d7
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936371"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526240"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーの概要
 
@@ -111,7 +111,7 @@ Azure AD B2C テナントにアプリケーションを登録するには、**�
 次に、アプリケーションをパブリック クライアントとして扱うよう指定します。
 
 1. 左側のメニューの **[管理]** セクションで、 **[認証]** を選択します。
-1. **[詳細設定]** で、 **[アプリケーションは、パブリック クライアントとして扱います]** を有効にします ( **[はい]** を選択します)。 **"allowPublicClient": true** がアプリケーション マニフェストで確実に設定されているようにします。 
+1. **[詳細設定]** の **[パブリック クライアント フローを許可する]** セクションで、 **[次のモバイルとデスクトップのフローを有効にする]** を **[はい]** に設定します。 **"allowPublicClient": true** がアプリケーション マニフェストで確実に設定されているようにします。 
 1. **[保存]** を選択します。
 
 次に、*IdentityExperienceFramework* 登録で前に公開した API スコープに、アクセス許可を付与します。

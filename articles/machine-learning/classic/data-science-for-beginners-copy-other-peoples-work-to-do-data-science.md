@@ -3,25 +3,25 @@ title: データ サイエンス コピーの例 - ML Studio (クラシック) -
 description: データ サイエンスの企業秘密:自分のために他のユーザーに作業してもらいます。 Azure AI ギャラリーから Machine Learning の例を取得します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 84caf1ea684e46eec00f8479bd0e7c4123e731b1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2410e5fed48b7ab206360debc3bbeb174b3943cb
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322797"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517061"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 ## <a name="video-5-data-science-for-beginners-series"></a>ビデオ 5: 初心者向けデータ サイエンス シリーズ
 データ サイエンスの企業秘密の 1 つは、自分の代わりに他のユーザーに作業してもらうことです。 自分の Machine Learning の実験に使用するクラスタリング アルゴリズムの例を、Azure AI ギャラリーで検索します。
 
 > [!IMPORTANT]
-> **Cortana Intelligence ギャラリー** は、 **Azure AI ギャラリー** と名前が変更されました。 その結果、このトランスクリプトのテキストとイメージは、以前の名前が使用されているビデオとは多少異なります。
+> **Cortana Intelligence ギャラリー** は、**Azure AI ギャラリー** と名前が変更されました。 その結果、このトランスクリプトのテキストとイメージは、以前の名前が使用されているビデオとは多少異なります。
 >
 
 このシリーズを最大限に活用するには、このビデオをすべて視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
@@ -58,7 +58,7 @@ Microsoft では、[Azure Machine Learning Studio (クラシック)](https://azu
 一番上の **[試験的機能]** をクリックすると、評価の高い最新の実験が多数ギャラリーに表示されます。 その他の実験を検索するには、画面上部の **[Browse All (すべて参照)]** をクリックしてください。そこで検索語句を入力したり、検索フィルターを選択したりすることができます。
 
 ## <a name="find-and-use-a-clustering-algorithm-example"></a>クラスタリング アルゴリズム サンプルの検索と使用
-たとえばクラスター解析の実例を見てみたいという場合は、「 **clustering sweep** 」と入力して実験を検索します。
+たとえばクラスター解析の実例を見てみたいという場合は、「**clustering sweep**」と入力して実験を検索します。
 
 ![Search for clustering experiments](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/search-for-clustering-experiments.png)
 
@@ -74,7 +74,7 @@ Microsoft では、[Azure Machine Learning Studio (クラシック)](https://azu
 
 ![[Studio (クラシック) で開く] ボタン](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
 
-このリンクをクリックすると、 **Azure Machine Learning Studio (クラシック)** が表示されます。 実験のコピーが作成され、自分のワークスペースに配置されます。 ここには投稿者のデータセットとそのすべての処理、その投稿者が使用したすべてのアルゴリズム、結果の保存方法が含まれています。
+このリンクをクリックすると、**Azure Machine Learning Studio (クラシック)** が表示されます。 実験のコピーが作成され、自分のワークスペースに配置されます。 ここには投稿者のデータセットとそのすべての処理、その投稿者が使用したすべてのアルゴリズム、結果の保存方法が含まれています。
 
 ![Machine Learning Studio (クラシック) でギャラリー実験を開く - クラスタリング アルゴリズム サンプル](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
 

@@ -24,7 +24,7 @@ ms.locfileid: "98630295"
 
 自分が所有して運用する VNet を介した Azure リソース (IoT Hub を含む) への接続を制限したい場合があります。 これらの理由には以下のものが含まれます。
 
-* パブリック インターネットへの接続の露出を防ぐことにより、IoT ハブにネットワークの分離を導入する。
+* パブリック インターネットへの接続の露出を防ぐことにより、IoT Hub にネットワークの分離を導入する。
 
 * オンプレミスのネットワーク資産からのプライベート接続エクスペリエンスを有効にし、データとトラフィックが Azure バックボーン ネットワークに直接送信されるようにする。
 
@@ -36,7 +36,7 @@ ms.locfileid: "98630295"
 
 ## <a name="ingress-connectivity-to-iot-hub-using-azure-private-link"></a>Azure Private Link を使用した IoT Hub へのイングレス接続
 
-プライベート エンドポイントは、Azure リソースに到達可能な、顧客所有の VNet 内に割り当てられたプライベート IP アドレスです。 Azure Private Link を使用すると、IoT ハブ用にプライベート エンドポイントを設定して、IoT Hub のパブリック エンドポイントにトラフィックを送信しなくても、VNet 内のサービスが IoT Hub に到達できるようにすることができます。 同様に、オンプレミスのデバイスでは [仮想プライベート ネットワーク (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoute](https://azure.microsoft.com/services/expressroute/) ピアリングを使用して、VNet と (プライベート エンドポイント経由で) IoT Hub に接続することができます。 その結果、[IoT Hub の IP フィルター](./iot-hub-ip-filtering.md)または[パブリック ネットワーク アクセスの切り替え](iot-hub-public-network-access.md)を使用することで、IoT ハブのパブリック エンドポイントへの接続を制限または完全にブロックすることができます。 この方法では、デバイスのプライベート エンドポイントを使用して、ハブへの接続を維持します。 この設定の主な対象は、オンプレミス ネットワーク内のデバイスです。 ワイドエリア ネットワークにデプロイされているデバイスには、この設定はお勧めできません。
+プライベート エンドポイントは、Azure リソースに到達可能な、顧客所有の VNet 内に割り当てられたプライベート IP アドレスです。 Azure Private Link を使用すると、IoT Hub 用にプライベート エンドポイントを設定して、IoT Hub のパブリック エンドポイントにトラフィックを送信しなくても、VNet 内のサービスが IoT Hub に到達できるようにすることができます。 同様に、オンプレミスのデバイスでは [仮想プライベート ネットワーク (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoute](https://azure.microsoft.com/services/expressroute/) ピアリングを使用して、VNet と (プライベート エンドポイント経由で) IoT Hub に接続することができます。 その結果、[IoT Hub の IP フィルター](./iot-hub-ip-filtering.md)または[パブリック ネットワーク アクセスの切り替え](iot-hub-public-network-access.md)を使用することで、IoT Hub のパブリック エンドポイントへの接続を制限または完全にブロックすることができます。 この方法では、デバイスのプライベート エンドポイントを使用して、ハブへの接続を維持します。 この設定の主な対象は、オンプレミス ネットワーク内のデバイスです。 ワイドエリア ネットワークにデプロイされているデバイスには、この設定はお勧めできません。
 
 ![IoT Hub 仮想ネットワークのエグレス](./media/virtual-network-support/virtual-network-ingress.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "98630295"
 
 IoT Hub の [IP フィルター](iot-hub-ip-filtering.md)によって、必要に応じて、組み込みのエンドポイントへのパブリック アクセスを制御できます。 
 
-IoT ハブへのパブリック ネットワーク アクセスを完全にブロックするには、[パブリック ネットワーク アクセスをオフにする](iot-hub-public-network-access.md)か、IP フィルターを使用してすべての IP をブロックし、組み込みのエンドポイントに規則を適用するオプションを選択します。
+IoT Hub へのパブリック ネットワーク アクセスを完全にブロックするには、[パブリック ネットワーク アクセスをオフにする](iot-hub-public-network-access.md)か、IP フィルターを使用してすべての IP をブロックし、組み込みのエンドポイントに規則を適用するオプションを選択します。
 
 ### <a name="pricing-for-private-link"></a>Private Link の価格
 
@@ -84,7 +84,7 @@ IoT Hub は、リソースのパブリック エンドポイントを経由し�
 
 ### <a name="turn-on-managed-identity-for-iot-hub"></a>IoT Hub のマネージド ID を有効にする
 
-他のサービスが IoT ハブを信頼された Microsoft サービスとして検出できるようにするには、システムに割り当てられたマネージド ID が必要です。
+他のサービスが IoT Hub を信頼された Microsoft サービスとして検出できるようにするには、システムに割り当てられたマネージド ID が必要です。
 
 1. IoT Hub ポータルで **[ID]** に移動します。
 
@@ -98,9 +98,9 @@ Azure CLI を使用してマネージド ID を有効にするには:
 az iot hub update --name <iot-hub-resource-name> --set identity.type="SystemAssigned"
 ```
 
-### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>ARM テンプレートを使用して、作成時にマネージド ID を IoT ハブに割り当てる
+### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>ARM テンプレートを使用して、作成時にマネージド ID を IoT Hub に割り当てる
 
-リソースのプロビジョニング時にマネージド ID を IoT ハブに割り当てるには、次の ARM テンプレートを使用します。 この ARM テンプレートには、2 つの必須リソースがあり、これらはどちらも、`Microsoft.Devices/IotHubs/eventHubEndpoints/ConsumerGroups` などの他のリソースを作成する前にデプロイする必要があります。 
+リソースのプロビジョニング時にマネージド ID を IoT Hub に割り当てるには、次の ARM テンプレートを使用します。 この ARM テンプレートには、2 つの必須リソースがあり、これらはどちらも、`Microsoft.Devices/IotHubs/eventHubEndpoints/ConsumerGroups` などの他のリソースを作成する前にデプロイする必要があります。 
 
 ```json
 {

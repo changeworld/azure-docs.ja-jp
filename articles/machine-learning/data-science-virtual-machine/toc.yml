@@ -6,7 +6,7 @@
   items:
     - name: Data Science Virtual Machine (DSVM) とは
       href: overview.md
-    - name: Data Science Virtual Machine に含まれるツール
+    - name: Data Science Virtual Machine 内のツール
       href: tools-included.md
 - name: クイックスタート
   expanded: true

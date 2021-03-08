@@ -6,12 +6,12 @@ ms.author: tyfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: 08be42f4f0801fc700b3e0fc645c1bbc1b747e91
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c6bbb389902c11239f665c6d0db787f61955a953
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944097"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555811"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>クラスター構成できめ細かなロールベースのアクセスに移行する
 
@@ -182,7 +182,7 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
-Azure portal を使用して、HDInsight クラスター オペレーター ロールの割り当てをユーザーに追加することもできます。 「[Azure portal を使用して Azure ロールの割り当てを追加または削除する - ロール割り当てを追加する](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)」を参照してください。
+Azure portal を使用して、HDInsight クラスター オペレーター ロールの割り当てをユーザーに追加することもできます。 「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」のドキュメントを参照してください。
 
 ## <a name="faq"></a>よく寄せられる質問
 

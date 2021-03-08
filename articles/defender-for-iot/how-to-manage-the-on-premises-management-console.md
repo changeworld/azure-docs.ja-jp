@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 80dbad919e9446100bdeebb7cde71c147abfc8bc
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: d76db6830839902a46aaf6515f816fdcc36d0df5
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539349"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523942"
 ---
 # <a name="manage-the-on-premises-management-console"></a>オンプレミスの管理コンソールを管理する
 
@@ -415,7 +415,7 @@ VLAN 名は、センサーと管理コンソールの間で同期されません
 
 1. Defender for IoT の **[更新プログラム]** ページからダウンロードしたファイルを選択します。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 [管理コンソールからセンサーを管理する](how-to-manage-sensors-from-the-on-premises-management-console.md)
 

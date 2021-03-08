@@ -13,12 +13,12 @@ ms.custom: project-no-code, devx-track-js
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1a1fa09c7c9b8baeeb8f3c2c9b2cf8271e513be1
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 6bb478038d398226db38dc20e49ed7a14e5d5d0a
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963538"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592808"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C における JavaScript とページ レイアウトのバージョン
 
@@ -63,7 +63,7 @@ JavaScript クライアント側コードを有効にする場合は、JavaScrip
 
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 1. ポリシー ("B2C_1_SignupSignin" など) を選択して開きます。
-1. **[Page layouts]\(ページ レイアウト\)** を選択します。 **[レイアウト名]** で、ユーザー フローのページを選択して、 **[ページ レイアウト バージョン (プレビュー)]** を選択します。
+1. **[Page layouts]\(ページ レイアウト\)** を選択します。 **[レイアウト名]** を選択し、 **[ページ レイアウト バージョン (プレビュー)]** を選択します。
 
 さまざまなページ レイアウトのバージョンの詳細については、[ページ レイアウトのバージョン変更ログ](page-layout.md)に関する記事を参照してください。
 

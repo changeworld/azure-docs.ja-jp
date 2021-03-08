@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 45af940382a261f1793583e471871b9cceed0a57
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 00a70b585ddf522a25e81703fe5bdf55efbcb7e1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753839"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582776"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>シナリオ:Web API を呼び出すデーモン アプリケーション
 
@@ -52,7 +52,7 @@ Web API を呼び出すデーモン アプリをビルドするために必要�
 開発者にとって、このシナリオのエンドツーエンドのエクスペリエンスには、次の側面があります。
 
 - デーモン アプリケーションは Azure AD テナントでのみ機能します。 Microsoft の個人アカウントを操作しようとするデーモン アプリケーションをビルドする意味はありません。 基幹業務 (LOB) アプリの開発者の場合は、自分のテナント内でデーモン アプリを作成します。 ISV の場合は、マルチテナントのデーモン アプリケーションを作成した方がよいでしょう。 各テナント管理者は、同意を示す必要があります。
-- [アプリケーションの登録](./scenario-daemon-app-registration.md)時に、応答 URI は必要ありません。 Azure AD でシークレット、証明書、または署名付きアサーションを共有する必要があります。 また、アプリケーションのアクセス許可を要求し、それらのアプリのアクセス許可を使用できるように管理者の同意を与える必要があります。
+- [アプリケーションの登録](./scenario-daemon-app-registration.md)時に、応答 URI は必要ありません。 Azure AD でシークレット、証明書、または署名付きアサーションを共有します。 また、アプリケーションのアクセス許可を要求し、それらのアプリのアクセス許可を使用できるように管理者の同意を与える必要があります。
 - [アプリケーションの構成](./scenario-daemon-app-configuration.md)で、アプリケーションの登録時に Azure AD と共有されるようにクライアントの資格情報を提供する必要があります。
 - クライアント資格情報フローでトークンを取得するために使用される[スコープ](scenario-daemon-acquire-token.md#scopes-to-request)は、静的スコープである必要があります。
 

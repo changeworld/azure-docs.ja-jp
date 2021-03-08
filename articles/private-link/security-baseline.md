@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b38d86402f418e5c2b484bb9101e2b4cc3575d6e
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 7dacec1521787e55ee4c7fd5f08b9e56d9dd4842
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196624"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101736000"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Azure Private Link の Azure セキュリティ ベースライン
 
@@ -28,9 +28,9 @@ ms.locfileid: "98196624"
 
 重要なリソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -50,7 +50,7 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Private Link のログ記録と監視](private-link-overview.md#logging-and-monitoring)
 
@@ -66,9 +66,9 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 **ガイダンス**: Azure Monitor アクティビティ ログを有効にします。これにより、操作を開始したユーザー、操作の発生日時、操作の状態、その他の有用な監査情報など、Private Link リソースに対して行われた操作がログに記録されます。 
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure アクティビティ ログ イベントを表示および取得する](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示および取得する](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 - [Private Link のログ記録と監視](private-link-overview.md#logging-and-monitoring)
 
@@ -80,9 +80,9 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 **ガイダンス**: Private Link に関連するログでは、Azure Monitor 内の組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 ログの長期またはアーカイブ ストレージには Azure Storage アカウントを使用します。
 
-- [Log Analytics でデータ保持期間を変更する](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -96,9 +96,9 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics ワークスペースについて](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics ワークスペースについて](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -114,7 +114,7 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 - [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: はい
 
@@ -192,7 +192,7 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 - [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [カスタムのアラートおよび通知用にアクション グループを構成する方法](../azure-monitor/platform/action-groups.md)
+- [カスタムのアラートおよび通知用にアクション グループを構成する方法](../azure-monitor/alerts/action-groups.md)
 
 **Azure Security Center の監視**: はい
 
@@ -318,7 +318,7 @@ Private Link の "可視性" 設定を使用してサービスの公開を制御
 
 - [ネットワーク セキュリティ グループの診断ログ](private-link-overview.md#logging-and-monitoring)
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 

@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 08/04/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 963a84c55a5433a204f387d1936eb7ceee60d913
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 9552e9c6deaabc9c847a8fbd26b1246b073dcc1b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730042"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673283"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows 仮想マシン用の Azure 仮想ネットワークを作成および管理する
 
@@ -280,4 +280,4 @@ New-AzVM `
 > * ネットワーク トラフィックのセキュリティ保護
 > * バックエンド VM の作成
 
-VM ディスクの保護の詳細については、[ディスクのバックアップとディザスター リカバリー](backup-and-disaster-recovery-for-azure-iaas-disks.md)に関するページをご覧ください。
+VM ディスクの保護の詳細については、[ディスクのバックアップとディザスター リカバリー](../backup-and-disaster-recovery-for-azure-iaas-disks.md)に関するページをご覧ください。

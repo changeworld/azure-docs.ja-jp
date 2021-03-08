@@ -6,19 +6,19 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/24/2020
-ms.openlocfilehash: a0eed27636a3f65d68489d1f2249db784ba1d722
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/17/2021
+ms.openlocfilehash: b6ea3e762ad098e373baa8487d8926105820f226
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196539"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666516"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Azure Purview からのデータに関する分類の分析情報
 
 このハウツーガイドでは、データに関する Purview 分類分析情報レポートにアクセスし、これを表示し、フィルター処理する方法について説明します。
 
-サポートされるデータ ソースは次のとおりです。Azure Blob Storage、Azure Data Lake Storage (ADLS) GEN 1、Azure Data Lake Storage (ADLS) GEN 2、Azure Cosmos DB (SQL API)、Azure Synapse Analytics (旧称 SQL DW)、Azure SQL Database、Azure SQL Managed Instance、SQL Server
+サポートされるデータ ソースは、Azure Blob Storage、Azure Data Lake Storage (ADLS) GEN 1、Azure Data Lake Storage (ADLS) GEN 2、Azure Cosmos DB (SQL API)、Azure Synapse Analytics (旧称 SQL DW)、Azure SQL Database、Azure SQL Managed Instance、SQL Server、Amazon S3 バケットです。
 
 このハウツーガイドでは、次の方法について説明します。
 
@@ -33,7 +33,7 @@ Purview の分析情報の使用を開始する前に、次の手順を完了し
 
 - Azure リソースを設定し、関連するアカウントにテスト データを設定している
 
-- 各データ ソースのテスト データに対するスキャンを設定して完了している
+- 各データ ソースのテスト データに対するスキャンを設定して完了している。 詳細については、「[Azure Purview でデータ ソースを管理する (プレビュー)](manage-data-sources.md)」および「[スキャン ルール セットを作成する](create-a-scan-rule-set.md)」を参照してください。
 
 - [データ閲覧者またはデータ キュレーター ロール](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)を持つアカウントを使用して Purview にサインインします。
 

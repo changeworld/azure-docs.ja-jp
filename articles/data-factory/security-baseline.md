@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 690dcca23aedb129090b3bf4f0da8874705b5fcc
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ab4f92c9723dc98d0b6c32d3a49df8d4f724ebfa
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941465"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585461"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory 用の Azure セキュリティ ベースライン
 
@@ -175,9 +175,9 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 **ガイダンス**: Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Data Factory インスタンスに関連するネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -201,7 +201,7 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 または、Azure Sentinel またはサードパーティのセキュリティ情報イベント管理 (SIEM) に対してデータを有効にしてオンボードできます。また、Azure Data Factory を Git と統合して、変更を追跡/監査する機能や、バグを招く変更を元に戻す機能など、いくつかのソース管理の利点を利用することもできます。
 
-* [診断設定を構成する方法](../azure-monitor/platform/diagnostic-settings.md)
+* [診断設定を構成する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
 * [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -219,7 +219,7 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 診断設定を使用して、Azure Data Factory でメトリックやパイプライン実行データなどの非コンピューティング リソースの診断ログを構成します。 Azure Data Factory では、パイプライン実行データが 45 日間保存されます。 このデータをさらに長く保持するには、監査または手動検査のためのストレージ アカウントに診断ログを保存し、リテンション期間を日数で指定します。 また、ログを Azure Event Hubs にストリーミングしたり、ログを分析のために Log Analytics ワークスペースに送信したりすることもできます。
 
-* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+* [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 * [Azure Data Factory 診断ログについて](./monitor-using-azure-monitor.md)
 
@@ -233,7 +233,7 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 組織で、セキュリティ イベント ログ データを保持する必要がある場合は、それをデータ コレクション層内に格納したら、Log Analytics でそれをクエリできます。
 
-* [Azure Monitor で Azure 仮想マシンからデータを収集する方法](../azure-monitor/learn/quick-collect-azurevm.md)
+* [Azure Monitor で Azure 仮想マシンからデータを収集する方法](../azure-monitor/vm/quick-collect-azurevm.md)
 
 * [Azure Security Center でのデータ収集の有効化](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
@@ -247,7 +247,7 @@ Private Link が使用可能な場合は、プライベート エンドポイン
 
 * [Azure Data Factory の診断設定を有効にする方法](./monitor-using-azure-monitor.md)
 
-* [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -263,7 +263,7 @@ Azure 仮想マシン (VM) で Integration Runtime を実行している場合�
 
 * [Log Analytics のスキーマ](./monitor-using-azure-monitor.md#schema-of-logs-and-events)
 
-* [Azure Monitor を使用して Azure 仮想マシンからデータを収集する方法](../azure-monitor/learn/quick-collect-azurevm.md)
+* [Azure Monitor を使用して Azure 仮想マシンからデータを収集する方法](../azure-monitor/vm/quick-collect-azurevm.md)
 
 * [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -281,9 +281,9 @@ Azure Data Factory の診断設定を構成し、Log Analytics ワークスペ�
 
 * [Azure Data Factory のアラート](./monitor-visually.md#alerts)
 
-* [サポートされているすべてのメトリック ページ](../azure-monitor/platform/metrics-supported.md)
+* [サポートされているすべてのメトリック ページ](../azure-monitor/essentials/metrics-supported.md)
 
-* [Log Analytics ワークスペースでアラートを構成する方法](../azure-monitor/platform/alerts-log.md)
+* [Log Analytics ワークスペースでアラートを構成する方法](../azure-monitor/alerts/alerts-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -652,9 +652,9 @@ Azure 仮想マシンで Integration Runtime を実行している場合、Windo
 
 **ガイダンス**: Azure アクティビティ ログで Azure Monitor を使用して、Azure Data Factory と関連リソースに変更が加えられたときのアラートを作成します。
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Azure Storage Analytics のログ](../storage/common/storage-analytics-logging.md)
 
@@ -1234,7 +1234,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用して、アラートの Sentinel のストリーミングを実行できます。
+**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
 * [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 

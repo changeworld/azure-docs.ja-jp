@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: b475d8072c4103e8a532cdf703e2d75b0c8aafa2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 60eed96e20ffcebc3ddefccffa2761017e28e0d2
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754159"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103619"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>クイック スタート:JavaScript SPA 内でユーザーをサインインさせ、アクセス トークンを取得する
 
@@ -37,7 +37,7 @@ ms.locfileid: "98754159"
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>オプション 1 (簡易): アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
-> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録<span class="docon docon-navigate-external x-hidden-focus"></span></a>クイックスタート エクスペリエンスに移動します。
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録</a>クイックスタート エクスペリエンスに移動します。
 > 1. アプリケーションの名前を入力します。
 > 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
 > 1. **[登録]** を選択します。
@@ -47,7 +47,7 @@ ms.locfileid: "98754159"
 >
 > #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 >
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 > 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 > 1. **Azure Active Directory** を検索して選択します。
 > 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
@@ -55,13 +55,14 @@ ms.locfileid: "98754159"
 > 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
 > 1. **[登録]** を選択します。 後で使用するために、アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を書き留めます。
 > 1. このクイック スタートでは、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。 **[管理]** で、 **[認証]** を選択します。
-> 1. **[プラットフォーム構成]** で **[プラットフォームを追加]** を選択します。 左側のパネルが開きます。 そこで、**Web アプリケーション** のリージョンを選択します。
-> 1. 引き続き左側で、 **[リダイレクト URI]** の値を `http://localhost:3000/` に設定します。 次に、 **[アクセス トークン]** と **[ID トークン]** を選択します。
+> 1. **[プラットフォーム構成]**  >  **[プラットフォームを追加]** を選択します。 **[Web]** を選択します。
+> 1. **[リダイレクト URI]** の値を `http://localhost:3000/` に設定します。 
+> 1. **[暗黙的な許可およびハイブリッド フロー]** で、 **[アクセス トークン]** と **[ID トークン]** を選択します。
 > 1. **[構成]** をクリックします。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
-> このクイックスタートのコード サンプルを動作させるには、`redirectUri` を `http://localhost:3000/` として追加し、 **[暗黙の付与]** を有効にします。
+> このクイックスタートのコード サンプルを動作させるには、**リダイレクト URI** (`http://localhost:3000/`) を追加し、 **[暗黙の付与]** を有効にします。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [これらの変更を行います]()
 >
@@ -266,7 +267,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
 
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
-ユーザーに Microsoft ID プラットフォームとのやり取りを強制しなければならない場合があります。 次に例を示します。
+ユーザーに Microsoft ID プラットフォームとのやり取りを強制する場合があります。 次に例を示します。
 * パスワードの有効期限が切れているため、ユーザーは資格情報を再入力する必要がある。
 * お使いのアプリケーションが、ユーザーによる同意が必要な追加のリソース スコープへのアクセスを要求している。
 * 2 要素認証が必須である。

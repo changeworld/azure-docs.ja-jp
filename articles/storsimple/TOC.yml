@@ -263,6 +263,10 @@
               href: storsimple-disaster-recovery-using-azure-site-recovery.md
             - name: Express Route を使用した StorSimple
               href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_ExpressRoute.pdf'
+            - name: StorSimple と Hyper-V
+              href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_HyperVDeployment_v1.0.pdf'
+            - name: StorSimple と VMware
+              href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_VMware_v10.pdf'
             - name: 分散されたグローバル名前空間
               href: 'https://www.microsoft.com/download/details.aspx?id=45507'
         - name: モニター

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, azuread-video-2020
-ms.openlocfilehash: a39ae904bb1dd36c3d3e19e8f51ff24e8d975f9b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5bf9b79621ae1cd2c73f2e3ce18b0780bcdd2a71
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033920"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559338"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Azure ロールベースのアクセス制御 (Azure RBAC) とは
 
@@ -38,7 +38,7 @@ Azure RBAC でできることの例を次に示します。
 
 ## <a name="how-azure-rbac-works"></a>Azure RBAC のしくみ
 
-Azure RBAC を使用してリソースへのアクセスを制御するには、ロールの割り当てを作成します。 これは理解する必要のある重要な概念です。 これによってアクセス許可の設定が強制されているのです。 ロールの割り当ては、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素で構成されています。
+Azure RBAC を使用してリソースへのアクセスを制御するには、Azure のロールを割り当てます。 これは理解する必要のある重要な概念です。これではアクセス許可を適用できます。 ロールの割り当ては、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素で構成されています。
 
 ### <a name="security-principal"></a>セキュリティ プリンシパル
 
@@ -80,9 +80,9 @@ Azure では、4 つのレベル ([管理グループ](../governance/management-
 
 ![アクセスを制御するためのロールの割り当て](./media/overview/rbac-overview.png)
 
-ロールの割り当ては、Azure portal、Azure CLI、Azure PowerShell、Azure SDK、または REST API を使用して作成できます。
+ロールは Azure portal、Azure CLI、Azure PowerShell、Azure SDK、REST API のいずれかを使用して割り当てることができます。
 
-詳細については、「[ロールの割り当てを追加する手順](role-assignments-steps.md)」を参照してください。
+詳細については、[Azure ロールを割り当てる手順](role-assignments-steps.md)を参照してください。
 
 ## <a name="multiple-role-assignments"></a>複数のロールの割り当て
 
@@ -122,6 +122,6 @@ Azure では、4 つのレベル ([管理グループ](../governance/management-
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure portal を使用して Azure ロールの割り当てを追加または削除する](role-assignments-portal.md)
+- [Azure portal を使用して Azure ロールを割り当てる](role-assignments-portal.md)
 - [各種ロールについて](rbac-and-directory-admin-roles.md)
 - [クラウド導入フレームワーク:Azure でのリソース アクセス管理](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

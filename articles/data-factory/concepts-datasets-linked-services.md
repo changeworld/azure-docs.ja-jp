@@ -1,23 +1,19 @@
 ---
 title: データセット
 description: Data factory のデータセットについて説明します。 データセットは、入力/出力データを表します。
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/24/2020
-ms.openlocfilehash: 6a9de6ff174adc5f6be9647560ad4e26367cb4ed
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4dafb738fd7d44893705994baa962831c101804b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500123"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390030"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory のデータセット
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]

@@ -7,14 +7,14 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1178b0ab5af3642026fe78c7de788f354691b13a
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: b37277c660562721273ff9ae86dd677ee7ac7d55
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701164"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050003"
 ---
-# <a name="connect-function-apps-in-azure-for-processing-data"></a>データを処理するために Azure の関数アプリを接続する
+# <a name="connect-function-apps-in-azure-for-processing-data"></a>データを処理するために Azure Functions アプリを接続する
 
 データに基づくデジタル ツインの更新は、[Azure Functions](../azure-functions/functions-overview.md) を使用して作成された関数などのコンピューティング リソースを介し、[**イベント ルート**](concepts-route-events.md)を使用して処理されます。 関数を使用すると、以下に対応してデジタル ツインを更新することができます。
 * IoT Hub からのデバイス テレメトリ データ
@@ -65,7 +65,7 @@ SDK を使用するには、次のパッケージをプロジェクトに含め�
 * `Azure.DigitalTwins.Core`
 * `Azure.Identity`
 * `System.Net.Http`
-* `Azure.Core`
+* `Azure.Core.Pipeline`
 
 **オプション 2: `dotnet` コマンドライン ツールを使用してパッケージを追加する:**
 
@@ -75,7 +75,7 @@ SDK を使用するには、次のパッケージをプロジェクトに含め�
 dotnet add package Azure.DigitalTwins.Core
 dotnet add package Azure.Identity
 dotnet add package System.Net.Http
-dotnet add package Azure.Core
+dotnet add package Azure.Core.Pipeline
 ```
 
 次に、Visual Studio のソリューション エクスプローラーで、サンプル コードが含まれる _Function1.cs_ ファイルを開きます。その関数に以下の `using` ステートメントを追加します。 
@@ -122,8 +122,6 @@ Azure CLI または Azure portal のいずれかを使用して、関数アプ�
 
 システム マネージド ID を作成し、関数アプリの ID を Azure Digital Twins インスタンスの _**Azure Digital Twins Data Owner (Azure Digital Twins データ所有者)**_ ロールに割り当てることができます。 これにより、インスタンスでデータ プレーン アクティビティを実行するアクセス許可が、関数アプリに与えられます。 次に、環境変数を設定することで、関数から Azure Digital Twins インスタンスの URL にアクセスできるようにします。
 
-[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
-
 コマンドを実行するには、[Azure Cloud Shell](https://shell.azure.com) を使用します。
 
 次のコマンドを使用して、システムによって管理される ID を作成します。 出力の _principalId_ フィールドを書き留めてください。
@@ -164,13 +162,13 @@ _[はい]_ ボタンを選択します。
 
 また、次のセクションで使用するので、 _[ID]_ ページに表示される **オブジェクト ID** を記録しておきます。
 
-:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="Azure portal のスクリーンショット:Azure 関数の ID ページの &quot;オブジェクト ID&quot; フィールドの周囲が強調表示されています。":::
+:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="Azure portal のスクリーンショット:Azure Functions の ID ページの &quot;オブジェクト ID&quot; フィールドの周囲が強調表示されています。":::
 
 ### <a name="assign-access-roles-using-azure-portal"></a>Azure portal を使用してアクセス ロールを割り当てる
 
 _[Azure ロールの割り当て]_ ボタンを選択し、 *[Azure ロールの割り当て]* ページを開きます。 次に、 _[+ ロールの割り当ての追加 (プレビュー)]_ を選択します。
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Azure portal のスクリーンショット:Azure 関数の ID ページの [アクセス許可] の下にある [Azure ロールの割り当て] ボタンの周囲が強調表示されています。":::
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Azure portal のスクリーンショット:Azure Functions の ID ページの [アクセス許可] の下にある [Azure ロールの割り当て] ボタンの周囲が強調表示されています。":::
 
 _[ロールの割り当ての追加 (プレビュー)]_ ページが開かれたら、以下を選択します。
 

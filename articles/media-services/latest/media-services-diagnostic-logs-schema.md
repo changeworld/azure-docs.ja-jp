@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8cfbe26458de630aaf411aade4a31cb4e9c72b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8015f610dfd9404810a1fa19c951078ebb45ac4f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295429"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588489"
 ---
 # <a name="diagnostic-logs-schemas"></a>診断ログのスキーマ
 
@@ -26,13 +26,13 @@ ms.locfileid: "89295429"
 
 [Azure Monitor](../../azure-monitor/overview.md) により、アプリケーションの実行状況を理解する上で役立つメトリックと診断ログを監視できます。 Media Services の診断ログを監視し、収集されたメトリックおよびログのアラートと通知を作成できます。 ログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信し、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信して、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) にエクスポートできます。またはサード パーティのサービスを使用できます。
 
-詳細については、 [Azure Monitor メトリック](../../azure-monitor/platform/data-platform.md)および [Azure Monitor 診断ログ](../../azure-monitor/platform/platform-logs-overview.md)に関する記事をご覧ください。
+詳細については、 [Azure Monitor メトリック](../../azure-monitor/data-platform.md)および [Azure Monitor 診断ログ](../../azure-monitor/essentials/platform-logs-overview.md)に関する記事をご覧ください。
 
 この記事では、Media Services の診断ログのスキーマについて説明します。
 
 ## <a name="top-level-diagnostic-logs-schema"></a>診断ログの上位スキーマ
 
-診断ログの上位スキーマについて詳しくは、「[Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ](../../azure-monitor/platform/resource-logs-schema.md)」をご覧ください。
+診断ログの上位スキーマについて詳しくは、「[Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ](../../azure-monitor/essentials/resource-logs-schema.md)」をご覧ください。
 
 ## <a name="key-delivery-log-schema"></a>キー配信ログのスキーマ
 

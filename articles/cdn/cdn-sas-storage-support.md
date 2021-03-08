@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: ff205069c31d50813a4fad71a3c9e2f8e2462844
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ccf55e0e3986de8afe23cb646d4df743b576900c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778141"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725324"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS を利用した Azure CDN の使用
 
@@ -69,7 +69,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 
 ### <a name="option-2-hidden-cdn-sas-token-using-a-rewrite-rule"></a>オプション 2:書き換えルールを使用して CDN SAS トークンを非表示にする
  
-このオプションは、 **Azure CDN Premium from Verizon** プロファイルでのみ使用できます。 このオプションを使用して、配信元サーバーの BLOB ストレージをセキュリティで保護できます。 ファイルに対する特定のアクセス制限が必要なくても、Azure CDN オフロード時間を短縮するためにユーザーがストレージ配信元に直接アクセスできないようにする場合は、このオプションを使用できます。 ユーザーには知られていない SAS トークンは、配信元サーバーの指定されたコンテナー内のファイルにアクセスする人に必要です。 ただし、URL 書き換えルールにより、SAS トークンは CDN エンドポイントでは不要です。
+このオプションは、**Azure CDN Premium from Verizon** プロファイルでのみ使用できます。 このオプションを使用して、配信元サーバーの BLOB ストレージをセキュリティで保護できます。 ファイルに対する特定のアクセス制限が必要なくても、Azure CDN オフロード時間を短縮するためにユーザーがストレージ配信元に直接アクセスできないようにする場合は、このオプションを使用できます。 ユーザーには知られていない SAS トークンは、配信元サーバーの指定されたコンテナー内のファイルにアクセスする人に必要です。 ただし、URL 書き換えルールにより、SAS トークンは CDN エンドポイントでは不要です。
  
 1. [ルール エンジン](./cdn-verizon-premium-rules-engine.md)を使用して URL 書き換えルールを作成します。 新しいルールが反映されるまで最大で 4 時間かかります。
 
@@ -77,10 +77,10 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 
    ![CDN の [ルール エンジン] ボタン](./media/cdn-sas-storage-support/cdn-rules-engine-btn.png)
 
-   次のサンプル URL 書き換えルールでは、キャプチャ グループを使用する正規表現パターンと、 *sasstoragedemo* という名前のエンドポイントを使用します。
+   次のサンプル URL 書き換えルールでは、キャプチャ グループを使用する正規表現パターンと、*sasstoragedemo* という名前のエンドポイントを使用します。
    
    ソース:   
-   `(container1\/.*)`
+   `(container1/.*)`
 
 
    変換先:   
@@ -100,7 +100,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 
 ### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>オプション 3:書き換えルールと共に CDN セキュリティ トークン認証を使用する
 
-Azure CDN セキュリティ トークン認証を使用するには、 **Azure CDN Premium from Verizon** プロファイルが必要です。 このオプションは、最も安全かつカスタマイズ可能です。 クライアント アクセスは、セキュリティ トークンに設定されているセキュリティ パラメーターを使用して実行されます。 セキュリティ トークンを作成し、設定したら、すべての CDN エンドポイント URL で必要になります。 ただし、URL 書き換えルールにより、SAS トークンは CDN エンドポイントでは不要です。 SAS トークンが後で無効になった場合、Azure CDN は配信元サーバーからのコンテンツを再検証できなくなります。
+Azure CDN セキュリティ トークン認証を使用するには、**Azure CDN Premium from Verizon** プロファイルが必要です。 このオプションは、最も安全かつカスタマイズ可能です。 クライアント アクセスは、セキュリティ トークンに設定されているセキュリティ パラメーターを使用して実行されます。 セキュリティ トークンを作成し、設定したら、すべての CDN エンドポイント URL で必要になります。 ただし、URL 書き換えルールにより、SAS トークンは CDN エンドポイントでは不要です。 SAS トークンが後で無効になった場合、Azure CDN は配信元サーバーからのコンテンツを再検証できなくなります。
 
 1. [Azure CDN セキュリティ トークンを作成](./cdn-token-auth.md#setting-up-token-authentication)し、CDN エンドポイントのルール エンジンと、ユーザーがファイルにアクセスできる場所のパスを使用してアクティブにします。
 
@@ -116,10 +116,10 @@ Azure CDN セキュリティ トークン認証を使用するには、 **Azure 
  
 2. コンテナー内のすべての BLOB にアクセスできる SAS トークンを有効にするには、[ルール エンジン](./cdn-verizon-premium-rules-engine.md)を使用して URL 書き換えルールを作成します。 新しいルールが反映されるまで最大で 4 時間かかります。
 
-   次のサンプル URL 書き換えルールでは、キャプチャ グループを使用する正規表現パターンと、 *sasstoragedemo* という名前のエンドポイントを使用します。
+   次のサンプル URL 書き換えルールでは、キャプチャ グループを使用する正規表現パターンと、*sasstoragedemo* という名前のエンドポイントを使用します。
    
    ソース:   
-   `(container1\/.*)`
+   `(container1/.*)`
    
    変換先:   
    ```
@@ -138,7 +138,7 @@ SAS パラメーターは Azure CDN からは認識できないため、Azure CD
 | --- | --- |
 | [開始] | Azure CDN が BLOB ファイルにアクセスを開始できる時刻。 クロックのずれ (クロック シグナルが各コンポーネントで受信された時刻が異なる) のため、アセットをすぐ使用する必要がある場合は、15 分早い時刻を選択してください。 |
 | End | Azure CDN が BLOB ファイルにアクセスできなくなる時刻。 これより以前に Azure CDN にキャッシュされたファイルは引き続きアクセスできます。 ファイルの有効期限を制御するためには、Azure CDN のセキュリティ トークンに適切な有効期限を設定するか、アセットを削除します。 |
-| 許可された IP アドレス | 省略可能。 **Azure CDN from Verizon** を使用する場合は、このパラメーターを「 [Azure CDN from Verizon Edge Server IP Ranges](./cdn-pop-list-api.md)」(Azure CDN from Verizon Edge Server の IP 範囲) で定義されている範囲に設定できます。 **Azure CDN from Akamai** を使用する場合、IP アドレスは静的でないため、IP 範囲パラメーターを設定できません。|
+| 許可された IP アドレス | 省略可能。 **Azure CDN from Verizon** を使用する場合は、このパラメーターを「[Azure CDN from Verizon Edge Server IP Ranges](./cdn-pop-list-api.md)」(Azure CDN from Verizon Edge Server の IP 範囲) で定義されている範囲に設定できます。 **Azure CDN from Akamai** を使用する場合、IP アドレスは静的でないため、IP 範囲パラメーターを設定できません。|
 | 許可されるプロトコル | アカウント SAS を使用して行われた要求に対して許可されるプロトコル。 HTTPS 設定をお勧めします。|
 
 ## <a name="next-steps"></a>次のステップ

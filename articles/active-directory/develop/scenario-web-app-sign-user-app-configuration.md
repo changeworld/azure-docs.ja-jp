@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 45f3a066283a921f60909a4aa3cfdc76f3faad06
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 54caea62feed6ae7c082a979901999a5dcb3bd71
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753271"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582249"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>ユーザーをサインインさせる Web アプリ:コード構成
 
@@ -64,13 +64,13 @@ Web アプリ (および Web API) を保護するために使用されるライ�
 
 ## <a name="configuration-files"></a>構成ファイル
 
-Microsoft ID プラットフォームを使用してユーザーをサインインさせる Web アプリケーションは、構成ファイルを使用して構成します。 入力する必要がある設定は次のとおりです。
+Microsoft ID プラットフォームを使用してユーザーをサインインさせる Web アプリケーションは、構成ファイルを使用して構成します。 構成で指定する必要がある値を次に示します。
 
 - クラウド インスタンス (`Instance`) (たとえば、アプリを国内のクラウドで実行する場合など)
 - 対象ユーザーのテナント ID (`TenantId`)
 - Azure portal からコピーした、アプリケーションのクライアント ID (`ClientId`)
 
-場合によっては、アプリケーションを `Authority` によってパラメーター化できます。これは、`Instance` と `TenantId` を連結したものです。
+`Authority` への参照が表示される場合もあります。 `Authority` 値は、`Instance` と `TenantId` の値を連結したものです。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -133,7 +133,7 @@ ASP.NET Core では、別のファイル ([properties\launchSettings.json](https
 }
 ```
 
-Azure portal では、アプリケーションの **[認証]** ページで登録する必要がある応答 URI は、これらの URL と一致している必要があります。 前記の 2 つの構成ファイルについては、それは `https://localhost:44321/signin-oidc` です。 これは `applicationUrl` が `http://localhost:3110` ですが、`sslPort` が (44321) と指定されているためです。 `CallbackPath` は、`appsettings.json` で定義されているように `/signin-oidc` となります。
+Azure portal では、アプリケーションの **[認証]** ページで登録するリダイレクト URI は、これらの URL と一致している必要があります。 前記の 2 つの構成ファイルについては、それは `https://localhost:44321/signin-oidc` です。 これは `applicationUrl` が `http://localhost:3110` ですが、`sslPort` が (44321) と指定されているためです。 `CallbackPath` は、`appsettings.json` で定義されているように `/signin-oidc` となります。
 
 同様に、サインアウト URI は `https://localhost:44321/signout-oidc` に設定されます。
 
@@ -161,7 +161,7 @@ ASP.NET では、アプリケーションは [Web.Config](https://github.com/Azu
   </appSettings>
 ```
 
-Azure portal では、アプリケーションの **[認証]** ページで登録する必要がある応答 URI は、これらの URL と一致している必要があります。 つまり、`https://localhost:44326/` である必要があります。
+Azure portal では、アプリケーションの **[認証]** ページで登録する応答 URI は、これらの URL と一致している必要があります。 つまり、`https://localhost:44326/` である必要があります。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -175,7 +175,7 @@ aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
 aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 ```
 
-Azure portal では、アプリケーションの **[認証]** ページで登録する必要がある応答 URI は、アプリケーションが定義する `redirectUri` インスタンスと一致している必要があります。 つまり、`http://localhost:8080/msal4jsample/secure/aad` および `http://localhost:8080/msal4jsample/graph/me` である必要があります。
+Azure portal では、アプリケーションの **[認証]** ページで登録する応答 URI は、アプリケーションで定義される `redirectUri` インスタンスと一致している必要があります。 つまり、`http://localhost:8080/msal4jsample/secure/aad` および `http://localhost:8080/msal4jsample/graph/me` である必要があります。
 
 # <a name="python"></a>[Python](#tab/python)
 

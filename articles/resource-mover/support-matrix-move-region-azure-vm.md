@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 10/11/2020
+ms.date: 02/08/2021
 ms.author: raynew
-ms.openlocfilehash: fa0017b0633d856906609818dd56b5971b1879a7
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 3022b2d4954ffaef71e17ed28dd9b6f141d4da70
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222800"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980492"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Azure リージョン間で Azure VM を移動するためのサポート
 
@@ -134,6 +134,8 @@ OS ディスクの最大サイズ | 2048 GB | VM ディスクに関する[詳細
 Standard SSD | サポートされています |
 第 2 世代 (UEFI ブート) | サポートされています
 ブート診断ストレージ アカウント | サポートされていません | ターゲット リージョンに VM を移動した後で再度有効にします。
+Azure Disk Encryption が有効になっている VM | サポートされています | [詳細情報](tutorial-move-region-encrypted-virtual-machines.md)
+カスタマー マネージド キーによるサーバー側暗号化を使用する VM | サポートされています | [詳細情報](tutorial-move-region-encrypted-virtual-machines.md)
 
 ### <a name="limits-and-data-change-rates"></a>制限とデータ変化率
 

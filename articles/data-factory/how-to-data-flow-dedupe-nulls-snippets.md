@@ -1,19 +1,17 @@
 ---
 title: データ フロー スニペットを使用して行の重複を除去し、null を見つける
 description: データ フロー内でコード スニペットを使用して、簡単に行の重複を除去し、null を見つける方法について説明します
-services: data-factory
 author: kromerm
+ms.author: makromer
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.author: makromer
-ms.openlocfilehash: cdb522cc4be83eadd2c60c91c7fee33e7ccc039b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 1b49b2584c4cb462c7c0f520fe8d1b5bf69c8674
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632449"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393668"
 ---
 # <a name="dedupe-rows-and-find-nulls-by-using-data-flow-snippets"></a>データ フロー スニペットを使用して行の重複を除去し、null を見つける
 
@@ -45,7 +43,7 @@ ms.locfileid: "92632449"
 
 1. 以下のいずれかを実行します。
 
-   * 貼り付けたコードの前に「 **source1** 」と入力することで、貼り付けたこのコード スニペットを、グラフ内に以前作成したソース変換に接続します。
+   * 貼り付けたコードの前に「**source1**」と入力することで、貼り付けたこのコード スニペットを、グラフ内に以前作成したソース変換に接続します。
 
    * または、グラフ内の新しい変換のノードから受信ストリームを選択しても、デザイナー内で新しい変換を接続できます。
 

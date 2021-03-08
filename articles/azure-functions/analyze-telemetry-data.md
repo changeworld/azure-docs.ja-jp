@@ -4,12 +4,12 @@ description: Azure Application Insights によって収集と格納が行われ�
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 14b6ed3964900e3395ca335c301dfd0285da46e7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: d06fe64ddc0475b5ca7d9c16876c8dfc9acda544
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937299"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729370"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Application Insights で Azure Functions のテレメトリを分析する 
 
@@ -64,12 +64,12 @@ Application Insights の次の領域は、関数の動作、パフォーマン�
 | ---- | ----------- |
 | **[障害](../azure-monitor/app/asp-net-exceptions.md)** |  関数の失敗やサーバーの例外に基づいてグラフやアラートを作成します。 **[操作名]** は関数名です。 依存関係に関するカスタム テレメトリを実装している場合を除き、依存関係のエラーは表示されません。 |
 | **[パフォーマンス](../azure-monitor/app/performance-counters.md)** | **クラウド ロール インスタンス** あたりのリソース使用率とスループットを表示して、パフォーマンスの問題を分析します。 このパフォーマンス データは、基になっているリソースの処理が関数のために滞っている場合のデバッグに役立つことがあります。 |
-| **[メトリック](../azure-monitor/platform/metrics-charts.md)** | メトリックに基づいたグラフやアラートを作成します。 メトリックには、関数呼び出しの数、実行時間、成功率が含まれます。 |
+| **[メトリック](../azure-monitor/essentials/metrics-charts.md)** | メトリックに基づいたグラフやアラートを作成します。 メトリックには、関数呼び出しの数、実行時間、成功率が含まれます。 |
 | **[ライブ メトリック](../azure-monitor/app/live-stream.md)** | メトリック データが作成されたときに、ほぼリアルタイムに表示します。 |
 
 ## <a name="query-telemetry-data"></a>テレメトリをクエリする
 
-[Application Insights Analytics](../azure-monitor/log-query/log-query-overview.md) では、データベース内のテーブルの形式ですべてのテレメトリ データにアクセスできます。 Analytics では、データを抽出、操作、視覚化するためのクエリ言語が用意されています。 
+[Application Insights Analytics](../azure-monitor/logs/log-query-overview.md) では、データベース内のテーブルの形式ですべてのテレメトリ データにアクセスできます。 Analytics では、データを抽出、操作、視覚化するためのクエリ言語が用意されています。 
 
 **[ログ]** を選択して、ログに記録されたイベントを探索または照会します。
 
@@ -77,18 +77,18 @@ Application Insights の次の領域は、関数の動作、パフォーマン�
 
 以下は、直近 30 分間の worker あたりの要求数の分布を示すクエリの例です。
 
-<pre>
+```kusto
 requests
 | where timestamp > ago(30m) 
 | summarize count() by cloud_RoleInstance, bin(timestamp, 1m)
 | render timechart
-</pre>
+```
 
 使用可能なテーブルは、左側の **[スキーマ]** タブに表示されます。 次のテーブルで、関数呼び出しによって生成されたデータを確認できます。
 
 | テーブル | 説明 |
 | ----- | ----------- |
-| **traces** | ランタイムよって作成されたログと、関数コードからのトレース。 |
+| **traces** | ランタイムによって作成されたログ、スケール コントローラー、関数コードからのトレース。 |
 | **requests** | 関数呼び出しごとの要求。 |
 | **exceptions** | ランタイムによってスローされた例外。 |
 | **customMetrics** | 呼び出しの成功数と失敗数、成功率、時間。 |
@@ -99,12 +99,38 @@ requests
 
 各テーブルでは、関数固有のデータの一部が `customDimensions` フィールドに保存されます。  たとえば、次のクエリでは、ログ レベルが `Error` のすべてのトレースが取得されます。
 
-<pre>
+```kusto
 traces 
 | where customDimensions.LogLevel == "Error"
-</pre>
+```
 
 ランタイムにより、`customDimensions.LogLevel` フィールドと `customDimensions.Category` フィールドが提供されます。 関数コードで記述したログにフィールドを追加できます。 C# での例については、.NET クラス ライブラリ開発者ガイドの「[構造化ログ](functions-dotnet-class-library.md#structured-logging)」を参照してください。
+
+## <a name="query-scale-controller-logs"></a>スケール コントローラー ログのクエリを実行する
+
+_この機能はプレビュー段階にあります。_
+
+[スケール コントローラー ログの記録](configure-monitoring.md#configure-scale-controller-logs)と [Application Insights 統合](configure-monitoring.md#enable-application-insights-integration)の両方を有効にすると、Application Insights ログ検索を使用して、出力されたスケール コントローラー ログのクエリを実行することができます。 スケール コントローラー ログは、**ScaleControllerLogs** カテゴリの `traces` コレクションに保存されます。
+
+次のクエリを使用すると、指定した期間内の現在の関数アプリのスケール コントローラー ログをすべて検索することができます。
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+```
+
+次のクエリは、前のクエリで展開して、スケールの変更を示すログのみを取得する方法を示しています。
+
+```kusto
+traces 
+| extend CustomDimensions = todynamic(tostring(customDimensions))
+| where CustomDimensions.Category == "ScaleControllerLogs"
+| where message == "Instance count changed"
+| extend Reason = CustomDimensions.Reason
+| extend PreviousInstanceCount = CustomDimensions.PreviousInstanceCount
+| extend NewInstanceCount = CustomDimensions.CurrentInstanceCount
+```
 
 ## <a name="consumption-plan-specific-metrics"></a>従量課金プランに特有のメトリック
 
@@ -114,10 +140,21 @@ traces
 
 [!INCLUDE [functions-consumption-metrics-queries](../../includes/functions-consumption-metrics-queries.md)]
 
+## <a name="azure-monitor-metrics"></a>Azure Monitor のメトリック
+
+Application Insights によって収集されるテレメトリ データに加えて、[Azure Monitor メトリック](../azure-monitor/essentials/data-platform-metrics.md)から、関数アプリがどのように実行されているかに関するデータも取得できます。 [App Service アプリで使用できる通常のメトリック](../app-service/web-sites-monitor.md#understand-metrics)と共に、目的の関数に固有の 2 つのメトリックがあります。
+
+| メトリック | 説明 |
+| ---- | ---- |
+| **FunctionExecutionCount** | 関数の実行回数は、関数アプリが実行された回数を示します。 これは、アプリ内で関数が実行された回数に関連付けられています。 現在、このメトリックは、Linux で実行されている Premium および Dedicated (App Service) のプランではサポートされていません。 |
+| **FunctionExecutionUnits** | 関数の実行単位は、実行時間とメモリ使用量を組み合わせたものです。  現在、Azure Monitor では、メモリ データのメトリックは使用できません。 ただし、アプリのメモリ使用量を最適化したい場合は、Application Insights によって収集されるパフォーマンス カウンター データを使用できます。 現在、このメトリックは、Linux で実行されている Premium および Dedicated (App Service) のプランではサポートされていません。|
+
+Application Insights データを使用して従量課金プランのコストを計算する方法の詳細については、「[従量課金プランのコストの見積もり](functions-consumption-costs.md)」を参照してください。 Monitor エクスプローラーを使用してメトリックを表示する方法の詳細については、[Azure メトリックス エクスプローラーの概要](../azure-monitor/essentials/metrics-getting-started.md)」を参照してください。
+
+
 ## <a name="next-steps"></a>次の手順
 
 Azure Functions の監視の詳細を確認してください。
 
 + [Azure Functions を監視する](functions-monitoring.md)
 + [Azure Functions の監視を構成する方法](configure-monitoring.md)
-

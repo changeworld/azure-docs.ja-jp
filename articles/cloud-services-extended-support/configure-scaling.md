@@ -8,20 +8,20 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 482c11395ff5dbbf2dd5bb8100451c3442f2f333
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: cfa5be01a0d36764086c6c9adf97e6cb166d2bb6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744077"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728163"
 ---
 # <a name="configure-scaling-options-with-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) でスケーリング オプションを構成する 
 
 Cloud Services (延長サポート) のデプロイでスケールインとスケールアウトができるように、条件を構成できます。これらの条件は、CPU 使用率、ディスク負荷、およびネットワーク負荷に基づくことができます。 
 
 クラウド サービスのデプロイのスケーリングを構成するときは、次の情報を考慮してください。
-- スケーリングは、コア使用量に影響します。 ロール インスタンスが大きいほどコアが多く消費されますが、サブスクリプションのコア制限内でのみスケーリングできます。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)」をご覧ください。
-- キュー メッセージングのしきい値に基づくスケーリングがサポートされています。 詳細については、「[Azure Queue Storage を使用する](https://docs.microsoft.com/azure/storage/queues/storage-dotnet-how-to-use-queues)」をご覧ください。
+- スケーリングは、コア使用量に影響します。 ロール インスタンスが大きいほどコアが多く消費されますが、サブスクリプションのコア制限内でのみスケーリングできます。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
+- キュー メッセージングのしきい値に基づくスケーリングがサポートされています。 詳細については、「[Azure Queue Storage を使用する](../storage/queues/storage-dotnet-how-to-use-queues.md)」をご覧ください。
 - クラウド サービス (延長サポート) アプリケーションの高可用性を確保するには、2 つ以上のロール インスタンスを使用してデプロイするようにしてください。
 - カスタム自動スケーリングは、すべてのロールが **[準備完了]** 状態にある場合にのみ実行できます。
 
@@ -64,4 +64,4 @@ Cloud Services (延長サポート) のデプロイでスケールインとス�
 ## <a name="next-steps"></a>次のステップ 
 - Cloud Services (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認します。
 - Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.md)を確認します。
-- [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用して、クラウド サービス (拡張サポート) をデプロイします。
+- [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用してクラウド サービス (延長サポート) をデプロイします。

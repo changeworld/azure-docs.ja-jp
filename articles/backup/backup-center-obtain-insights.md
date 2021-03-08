@@ -3,16 +3,16 @@ title: バックアップ センターを使用して洞察を得る
 description: バックアップ センターを使用して、履歴の傾向を分析し、バックアップに関する詳細な洞察を得る方法について説明します。
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: c0f687ee123abe2f95ad0d23a6fe302f4a5c22e1
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 3086224e4dbb1be2ccfadbfcfcb7441b68a5ff6b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173750"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592010"
 ---
-# <a name="obtain-insights-using-backup-center"></a>バックアップ センターを使用して洞察を得る
+# <a name="obtain-insights-using-backup-center-preview"></a>バックアップ センター (プレビュー) を使用して分析情報を得る
 
-履歴の傾向を分析し、バックアップに関する詳細な洞察を得るために、バックアップ センターには、[Azure Monitor ログ](../azure-monitor/platform/data-platform-logs.md)と [Azure ブック](../azure-monitor/platform/workbooks-overview.md)を使用する[バックアップ レポート](configure-reports.md)へのインターフェイスが用意されています。 バックアップ レポートには次の機能が用意されています。
+履歴の傾向を分析し、バックアップに関する詳細な分析情報を得るために、バックアップ センターには、[Azure Monitor ログ](../azure-monitor/logs/data-platform-logs.md)と [Azure ブック](../azure-monitor/visualize/workbooks-overview.md)を使用する[バックアップ レポート (プレビュー)](configure-reports.md)へのインターフェイスが用意されています。 バックアップ レポートには次の機能が用意されています。
 
 - 使用されるクラウド ストレージの割り当てと予測。
 
@@ -24,7 +24,7 @@ ms.locfileid: "92173750"
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
-- 現在、バックアップ レポートは Azure Database for PostgreSQL サーバーのバックアップには使用できません。
+- 現在、バックアップ レポート (プレビュー) は Azure Database for PostgreSQL サーバーのバックアップには使用できません。
 
 - サポートされるシナリオとサポートされないシナリオの詳細な一覧については、[サポート マトリックス](backup-center-support-matrix.md)を参照してください。
 

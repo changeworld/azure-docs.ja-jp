@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: dbd7937667a3c4d5af9f13e15cdd4ff2081241f0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 010cfc307d2b2c10c31168fce73673fb1fb611b8
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723882"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807650"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory と Azure Purview を接続する方法
 
@@ -69,12 +69,22 @@ ms.locfileid: "98723882"
 >[!Note]
 >一度に 10 個までの Data Factory の追加がサポートされるようになりました。 一度に 10 個を超える Data Factory を追加する場合は、サポート チケットを提出してください。
 
+### <a name="how-does-the-authentication-work"></a>認証のしくみ
+
+Purview ユーザーがアクセス権を持つ Data Factory を登録すると、バックエンドで以下が実行されます。
+
+1. **Data Factory MSI** が次の Purview RBAC ロールに追加されます: **Purview データ キュレーター**。
+
+    :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="Azure Data Factory MSI を示すスクリーンショット。" lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
+     
+2. 系列メタデータを Purview にプッシュバックできるようにするために、Data Factory パイプラインを再実行する必要があります。
+3. 実行後に Data Factory メタデータが Purview にプッシュされます。
 
 ### <a name="remove-data-factory-connections"></a>Data Factory 接続を削除する
 Data Factory 接続を削除するには、次の操作を行います。
 
 1. **[Data Factory connection] (Data Factory 接続)** ページで、1 つ以上の Data Factory 接続の横にある **[削除]** ボタンを選択します。
-1. ポップアップの **[確認]** を選択して、選択されている Data Factory 接続を削除します。
+2. ポップアップの **[確認]** を選択して、選択されている Data Factory 接続を削除します。
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="接続を削除する Data Factory を選択する方法を示すスクリーンショット。" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 
@@ -97,29 +107,29 @@ Azure Purview は、次の Azure Data Factory アクティビティからラン�
 
 ### <a name="data-factory-copy-data-support"></a>Data Factory のデータ コピーのサポート
 
-| データ ストレージ システム | ソースとしてサポート | シンクとしてサポート |
-| ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 | はい | ○ (非バイナリ コピーのみ) |
-| ADLS Gen2 | はい | はい |
-| Azure BLOB | はい | はい |
-| Azure Cosmos DB (SQL API) | はい | はい |
-| Azure Cosmos DB (Mongo API) | はい | はい |
-| Azure Cognitive Search | はい | はい |
-| Azure Data Explorer | はい | はい |
-| Azure Database for Maria DB \* | はい | はい |
-| Azure Database for MYSQL \* | はい | はい |
-| Azure Database for PostgreSQL \* | はい | はい |
-| Azure File Storage | はい | はい |
-| Azure Table Storage | はい | はい |
-| Azure SQL Database \* | はい | はい |
-| Azure SQL MI \* | はい | はい |
-| Azure Synapse Analytics (以前の SQL DW) \* | はい | はい |
-| オンプレミスの SQL Server (SHIR が必要) \* | はい | はい |
-| Amazon S3 | はい | はい |
-| Teradata | はい | はい |
-| SAP s4 Hana | はい | はい |
-| SAP ECC | はい | はい |
-| Hive | はい | はい |
+| データ ストレージ システム | ソースとしてサポート | 
+| ------------------- | ------------------- | 
+| ADLS Gen1 | はい | 
+| ADLS Gen2 | はい | 
+| Azure BLOB | はい |
+| Azure Cosmos DB (SQL API) | はい | 
+| Azure Cosmos DB (Mongo API) | はい |
+| Azure Cognitive Search | はい | 
+| Azure Data Explorer | はい | 
+| Azure Database for Maria DB \* | はい | 
+| Azure Database for MYSQL \* | はい | 
+| Azure Database for PostgreSQL \* | はい |
+| Azure File Storage | はい | 
+| Azure Table Storage | はい |
+| Azure SQL Database \* | はい | 
+| Azure SQL MI \* | はい | 
+| Azure Synapse Analytics (以前の SQL DW) \* | はい | 
+| オンプレミスの SQL Server \* | はい | 
+| Amazon S3 | はい | 
+| Teradata | はい | 
+| SAP テーブル コネクタ | はい |
+| SAP ECC | はい | 
+| Hive | はい | 
 
 > [!Note]
 > Data Factory のコピー アクティビティでは、系列の機能で特定のパフォーマンスのオーバーヘッドが発生します。 Purview で Data Factory 接続を設定している場合は、特定のコピー ジョブが完了するまでの時間が長くなることがあります。 この影響は多くの場合、とても無視できません。 コピー ジョブが完了するまでの時間が通常より大幅に長くなっている場合は、その時間の比較をサポートに連絡してください。
@@ -127,7 +137,7 @@ Azure Purview は、次の Azure Data Factory アクティビティからラン�
 ### <a name="data-factory-data-flow-support"></a>Data Factory Data Flow のサポート
 
 | データ ストレージ システム | サポートされています |
-| ------------------- | ------------------- | ----------------- |
+| ------------------- | ------------------- | 
 | ADLS Gen1 | はい |
 | ADLS Gen2 | はい |
 | Azure BLOB | はい |
@@ -137,7 +147,7 @@ Azure Purview は、次の Azure Data Factory アクティビティからラン�
 ### <a name="data-factory-execute-ssis-package-support"></a>Data Factory の SSIS パッケージの実行のサポート
 
 | データ ストレージ システム | サポートされています |
-| ------------------- | ------------------- | ----------------- |
+| ------------------- | ------------------- |
 | Azure BLOB | はい |
 | ADLS Gen1 | はい |
 | ADLS Gen2 | はい |

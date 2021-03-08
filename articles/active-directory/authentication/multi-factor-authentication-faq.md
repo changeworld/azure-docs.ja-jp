@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1dfe99a2ed57ecc953c69d1bad89e2b2c8816ca3
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a58fbf874339bf287ce1af62e1edb39ec6227d99
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741452"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257104"
 ---
 # <a name="frequently-asked-questions-about-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication についてよく寄せられる質問
 
@@ -28,7 +28,7 @@ ms.locfileid: "96741452"
 > Azure Multi-Factor Authentication Server に関して、以下で共有される情報は、MFAサーバーを既に実行しているユーザーにのみ適用されます。
 >
 > 2018 年 9 月 1 日以降、新規のお客様は、使用量ベースのライセンスを利用できません。
-> 2018 年 9 月 1 日以降、新しい認証プロバイダーを作成できなくなります。 既存の認証プロバイダーは引き続き使用および更新できます。 多要素認証認証は、今後も Azure AD Premium ライセンスで利用できます。
+> 2018 年 9 月 1 日以降、新しい認証プロバイダーを作成できなくなります。 既存の認証プロバイダーは引き続き使用および更新できます。 多要素認証は、今後も Azure AD Premium ライセンスで利用できます。
 
 ## <a name="general"></a>全般
 

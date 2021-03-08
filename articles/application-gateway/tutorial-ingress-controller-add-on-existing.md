@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 9d1aa54ba1e3f3a589df8f694e340909c4e24ecc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d491b714c7d553fbd89d72315f46e6927d437717
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183687"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593816"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>チュートリアル:Azure CLI を介して、既存の Application Gateway を使用して既存の AKS クラスターで Application Gateway イングレス コントローラー アドオンを有効にする (プレビュー)
 
@@ -67,7 +67,7 @@ az group create --name myResourceGroup --location canadacentral
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity 
 ```
 
-`az aks create` コマンドの追加パラメーターを構成するには、[こちら](/cli/azure/aks?view=azure-cli-latest#az-aks-create)のレファレンスを参照してください。 
+`az aks create` コマンドの追加パラメーターを構成するには、[こちら](/cli/azure/aks#az-aks-create)のレファレンスを参照してください。 
 
 ## <a name="deploy-a-new-application-gateway"></a>新しい Application Gateway のデプロイ 
 

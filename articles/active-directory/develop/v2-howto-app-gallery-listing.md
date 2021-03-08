@@ -12,12 +12,12 @@ ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 8f5324e967c5a67ee77559087a02c3421611d8f3
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f2a04a341239b62290eecac8c0e1ce70b7c927c1
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98752857"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988905"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>アプリを Azure AD アプリ ギャラリーで公開する
 
@@ -85,7 +85,7 @@ Azure AD ギャラリーにアプリを追加すると、次のような利点�
 
 ## <a name="step-1---choose-the-right-single-sign-on-standard-for-your-app"></a>ステップ 1 - アプリに適したシングル サインオン標準を選択する
 
-Azure AD アプリ ギャラリーにアプリケーションを掲載するには、サポートされているシングル サインオン オプションの少なくとも 1 つを実装する必要があります。 シングル サインオンのオプションと、カスタマーが Azure AD でそれらを構成する方法については、[SSO のオプション](../manage-apps/sso-options.md)に関する記事を参照してください。
+Azure AD アプリ ギャラリーにアプリケーションを掲載するには、サポートされているシングル サインオン オプションの少なくとも 1 つを実装します。 シングル サインオンのオプションと、カスタマーが Azure AD でそれらを構成する方法については、[SSO のオプション](../manage-apps/sso-options.md)に関する記事を参照してください。
 
 次の表は、主な標準を比較したものです: Open Authentication 2.0 (OAuth 2.0) と OpenID Connect (OIDC)、Security Assertion Markup Language (SAML)、Web Services Federation (WS-Fed)。
 
@@ -186,7 +186,7 @@ Azure AD には、SCIM エンドポイントを構築するのに役立つ[参�
 
 または、すべての Microsoft 365 サブスクリプションには、Azure AD テナントが付属しています。 無料の Microsoft 365 開発環境をセットアップするには、[Microsoft 365 開発者プログラムへの参加](/office/developer-program/microsoft-365-developer-program)に関するページを参照してください。
 
-テナントの用意ができたら、シングル サインオンと[プロビジョニング](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)をテストする必要があります。 
+テナントの用意ができたら、シングル サインオンと[プロビジョニング](../app-provisioning/use-scim-to-provision-users-and-groups.md#integrate-your-scim-endpoint-with-the-aad-scim-client)をテストします。 
 
 **OIDC または Oath アプリケーション** の場合、マルチテナント アプリケーションとして [アプリケーションを登録](quickstart-register-app.md)します。 ‎[サポートされているアカウントの種類] で、[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント] オプションを選択します。
 

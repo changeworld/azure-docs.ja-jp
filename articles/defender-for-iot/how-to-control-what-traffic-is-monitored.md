@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: bfe3e00c4930ba57c930eb1bc2f2dd4ed11886e0
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: a7af817074400bedd8f07adaefc35309566dc931
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624686"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522395"
 ---
 # <a name="control-what-traffic-is-monitored"></a>監視するトラフィックを制御する
 
@@ -295,7 +295,7 @@ Windows エンドポイント監視機能を使用して、Windows システム�
 
 1. スキャンが完了したら、 **[操作]** ペインで **[View Scan Results]\(スキャン結果の表示\)** を選択します。 スキャン結果を含む CSV ファイルがコンピューターにダウンロードされます。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 [デバイス インベントリでのセンサー検出を調査する](how-to-investigate-sensor-detections-in-a-device-inventory.md)
 [デバイス マップでのセンサー検出を調査する](how-to-work-with-the-sensor-device-map.md)

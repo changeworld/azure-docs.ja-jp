@@ -1,40 +1,35 @@
 ---
-title: REST API を使用して Azure のロールの割り当てを追加または削除する - Azure RBAC
+title: REST API を使用して Azure ロールを割り当てる - Azure RBAC
 description: REST API と Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に対して Azure リソースへのアクセス権を付与する方法について説明します。
 services: active-directory
 documentationcenter: na
 author: rolyon
 manager: mtillman
-editor: ''
-ms.assetid: 1f90228a-7aac-4ea7-ad82-b57d222ab128
 ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: e4f230663e0eeddcf874c24e5041653f241f481c
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: d012173adb5e238282e107b832ed9c6895237e48
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964271"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556075"
 ---
-# <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>REST API を使用して Azure のロールの割り当てを追加または削除する
+# <a name="assign-azure-roles-using-the-rest-api"></a>REST API を使用して Azure ロールを割り当てる
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] この記事では、REST API を使用してロールを割り当てる方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-ロールの割り当てを追加または削除するには、以下が必要です。
+[!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
-- `Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)や[所有者](built-in-roles.md#owner)など)
+## <a name="assign-an-azure-role"></a>Azure ロールを割り当てる
 
-## <a name="add-a-role-assignment"></a>ロールの割り当てを追加する
-
-Azure RBAC でアクセス権を付与するには、ロールの割り当てを追加します。 ロールの割り当てを追加するには、[ロールの割り当て - 作成](/rest/api/authorization/roleassignments/create) REST API を使用し、セキュリティ プリンシパル、ロールの定義、スコープを指定します。 この API を呼び出すには、`Microsoft.Authorization/roleAssignments/write` 操作へのアクセス許可が必要です。 組み込みロールのうち、この操作のアクセス権が付与されているのは [Owner](built-in-roles.md#owner) と [User Access Administrator](built-in-roles.md#user-access-administrator) だけです。
+ロールを割り当てるには、[ロールの割り当て - 作成](/rest/api/authorization/roleassignments/create) REST API を使用し、セキュリティ プリンシパル、ロールの定義、スコープを指定します。 この API を呼び出すには、`Microsoft.Authorization/roleAssignments/write` 操作へのアクセス許可が必要です。 組み込みロールのうち、この操作のアクセス権が付与されているのは [Owner](built-in-roles.md#owner) と [User Access Administrator](built-in-roles.md#user-access-administrator) だけです。
 
 1. [ロールの定義 - 一覧表示](/rest/api/authorization/roledefinitions/list) REST API を使用するか、[組み込みロール](built-in-roles.md)を参照し、割り当てるロール定義の識別子を取得します。
 
@@ -109,55 +104,6 @@ PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/micro
         "createdOn": "2020-05-06T23:55:23.7679147Z",
         "updatedOn": "2020-05-06T23:55:23.7679147Z",
         "createdBy": null,
-        "updatedBy": "{updatedByObjectId1}"
-    },
-    "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",
-    "type": "Microsoft.Authorization/roleAssignments",
-    "name": "{roleAssignmentId1}"
-}
-```
-
-## <a name="remove-a-role-assignment"></a>ロールの割り当てを削除する
-
-Azure RBAC でアクセス権を削除するには、ロールの割り当てを削除します。 ロールの割り当てを削除するには、[ロールの割り当て - 削除](/rest/api/authorization/roleassignments/delete) REST API を使用します。 この API を呼び出すには、`Microsoft.Authorization/roleAssignments/delete` 操作へのアクセス許可が必要です。 組み込みロールのうち、この操作のアクセス権が付与されているのは [Owner](built-in-roles.md#owner) と [User Access Administrator](built-in-roles.md#user-access-administrator) だけです。
-
-1. ロールの割り当ての識別子 (GUID) を取得します。 この識別子は、ロールの割り当てを最初に作成するときに返されます。あるいは、ロールの割り当てを一覧表示することで取得できます。
-
-1. 次の要求から開始します。
-
-    ```http
-    DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2015-07-01
-    ```
-
-1. URI の *{scope}* を、ロールの割り当てを削除するためのスコープに変更します。
-
-    > [!div class="mx-tableFixed"]
-    > | Scope | Type |
-    > | --- | --- |
-    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理グループ |
-    > | `subscriptions/{subscriptionId1}` | サブスクリプション |
-    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
-    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | リソース |
-
-1. *{roleAssignmentId}* を、ロールの割り当ての GUID 識別子に置き換えます。
-
-次の要求は、サブスクリプション スコープで指定されたロールの割り当てを削除します。
-
-```http
-DELETE https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2015-07-01
-```
-
-出力例を次に示します。
-
-```json
-{
-    "properties": {
-        "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/a795c7a0-d4a2-40c1-ae25-d81f01202912",
-        "principalId": "{objectId1}",
-        "scope": "/subscriptions/{subscriptionId1}",
-        "createdOn": "2020-05-06T23:55:24.5379478Z",
-        "updatedOn": "2020-05-06T23:55:24.5379478Z",
-        "createdBy": "{createdByObjectId1}",
         "updatedBy": "{updatedByObjectId1}"
     },
     "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",

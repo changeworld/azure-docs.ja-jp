@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 37099b551e004ebfc702dce37c2a1499aa46ff10
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7c91cd8cbb1a927a88f05fcea603c6a4ed6e1c14
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950729"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719034"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法 
 
@@ -23,7 +23,7 @@ ms.locfileid: "94950729"
 1. 将来の自動プロビジョニングを防ぐために、プロビジョニング サービスからデバイスの登録を抹消します。 アクセスを一時的に取り消すのか、または永続的に取り消すのかに応じて、登録エントリを無効にするか、削除します。 X.509 の構成証明を使用するデバイスの場合は、既存の登録グループの階層内のエントリを無効または削除する必要があることがあります。  
  
    - デバイスの登録を抹消する方法については、次を参照してください。 [Azure IoT Hub Device Provisioning サービスからの登録を抹消する方法](how-to-revoke-device-access-portal.md)です。
-   - いずれかのプロビジョニング サービス SDK を使用してプログラムでデバイスの登録を抹消する方法については、[サービス SDK を使用したデバイスの登録の管理](how-to-manage-enrollments-sdks.md)に関する記事をご覧ください。
+   - いずれかのプロビジョニング サービス SDK を使用してプログラムでデバイスの登録を抹消する方法については、[サービス SDK を使用したデバイスの登録の管理](./quick-enroll-device-x509-java.md)に関する記事をご覧ください。
 
 2. 将来の通信とデータ転送を防ぐために、IoT Hub からデバイスの登録を解除します。 デバイスがプロビジョニングされた IoT Hub の ID レジストリで、もう一度一時的にデバイスのエントリを無効化するか、または永続的に削除します。 無効化についての詳細は[デバイスの無効化](../iot-hub/iot-hub-devguide-identity-registry.md#disable-devices)を参照してください。 IoT Hub リソースについては、[Azure Portal](https://portal.azure.com)の「デバイスの管理/IoT デバイス」を参照してください。
 

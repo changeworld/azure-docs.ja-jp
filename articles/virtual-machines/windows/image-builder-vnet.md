@@ -3,17 +3,18 @@ title: 既定の VNET で Azure Image Builder を使用して Windows VM を作�
 description: 既定の VNET で Azure Image Builder を使用して Windows VM を作成する
 author: cynthn
 ms.author: cynthn
-ms.date: 05/29/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.service: virtual-machines-windows
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subervice: image-builder
+ms.colletion: windows
 ms.reviewer: danis
-ms.openlocfilehash: f4f55e9a5d08b2c2cd14b1ca94efac15f84f1978
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3695732f81463efcadb3d8d8b49e367501cb6e29
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879529"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034083"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>Windows VM の Azure Image Builder を使用して既存の Azure VNET へのアクセスを許可する
 
@@ -132,13 +133,13 @@ Image Builder ネットワークの詳細については、「[Azure Image Build
 ## <a name="modify-the-example-template-and-create-role"></a>サンプル テンプレートの変更とロールの作成
 
 ```powershell-interactive
-$templateUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1a_Creating_a_Custom_Win_Image_on_Existing_VNET/existingVNETWindows.json"
+$templateUrl="https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/1a_Creating_a_Custom_Win_Image_on_Existing_VNET/existingVNETWindows.json"
 $templateFilePath = "existingVNETWindows.json"
 
-$aibRoleNetworkingUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleNetworking.json"
+$aibRoleNetworkingUrl="https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleNetworking.json"
 $aibRoleNetworkingPath = "aibRoleNetworking.json"
 
-$aibRoleImageCreationUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
+$aibRoleImageCreationUrl="https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
 $aibRoleImageCreationPath = "aibRoleImageCreation.json"
 
 # download configs

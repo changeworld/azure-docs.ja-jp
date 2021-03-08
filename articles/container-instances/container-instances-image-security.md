@@ -4,20 +4,20 @@ description: Azure Container Instances のイメージとシークレットを�
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: 898bdf77bf4b6636e78f5d735fc8650da4fde2b8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cbceeea24501bc9815cb07e1b0a054914ba8e964
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148665"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579272"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure Container Instances のセキュリティに関する考慮事項
 
 この記事では、Azure Container Instances を使ってコンテナー アプリを実行するためのセキュリティに関する考慮事項について説明します。 取り上げるトピックは次のとおりです。
 
 > [!div class="checklist"]
-> * Azure Container Instances のイメージとシークレットの管理に関する**セキュリティについての推奨事項**
-> * 任意のコンテナー プラットフォームのコンテナー ライフサイクル全体に関する**コンテナー エコシステムの考慮事項**
+> * Azure Container Instances のイメージとシークレットの管理に関する **セキュリティについての推奨事項**
+> * 任意のコンテナー プラットフォームのコンテナー ライフサイクル全体に関する **コンテナー エコシステムの考慮事項**
 
 デプロイのセキュリティ体制を改善するために役立つ包括的な推奨事項については、「[Container Instances の Azure セキュリティ ベースライン](security-baseline.md)」を参照してください。
 
@@ -115,9 +115,9 @@ ms.locfileid: "92148665"
 
 他の IT 環境と同様、コンテナー エコシステムに対するアクティビティおよびユーザー アクセスを常に監視し、疑わしいアクティビティや悪意のあるアクティビティをすばやく識別する必要があります。 Azure では、次のようなコンテナー監視ソリューションが提供されます。
 
-* [コンテナー向け Azure Monitor](../azure-monitor/insights/container-insights-overview.md) では、Azure Kubernetes Service (AKS) 上でホストされている Kubernetes 環境にデプロイされているワークロードのパフォーマンスが監視されます。 コンテナーに対する Azure Monitor では、Kubernetes で使用可能なコントローラー、ノード、およびコンテナーから Metrics API 経由でメモリやプロセッサ メトリックを収集することにより、パフォーマンスを把握できます。 
+* [コンテナー向け Azure Monitor](../azure-monitor/containers/container-insights-overview.md) では、Azure Kubernetes Service (AKS) 上でホストされている Kubernetes 環境にデプロイされているワークロードのパフォーマンスが監視されます。 コンテナーに対する Azure Monitor では、Kubernetes で使用可能なコントローラー、ノード、およびコンテナーから Metrics API 経由でメモリやプロセッサ メトリックを収集することにより、パフォーマンスを把握できます。 
 
-* [Azure コンテナー監視ソリューション](../azure-monitor/insights/containers.md)を使用すると、他の Docker と Windows のコンテナー ホストを 1 か所で表示して管理できます。 次に例を示します。
+* [Azure コンテナー監視ソリューション](../azure-monitor/containers/containers.md)を使用すると、他の Docker と Windows のコンテナー ホストを 1 か所で表示して管理できます。 次に例を示します。
 
   * コンテナーで使用されるコマンドを示す詳細な監査情報を確認します。 
   * Docker または Windows ホストをリモートで確認しなくても、一元化されたログを表示および検索して、コンテナーのトラブルシューティングを行います。  
@@ -139,7 +139,7 @@ ms.locfileid: "92148665"
 ご使用の Kubernetes クラスター、コンテナー レジストリ、およびコンテナー イメージを含むコンテナー エコシステムへの管理アクセスの正確な監査証跡を維持します。 これらのログは、監査のために必要な場合があり、セキュリティ インシデント後の法的証拠として役に立ちます。 Azure ソリューションには次のものがあります。
 
 * クラスター環境のセキュリティ構成を監視し、セキュリティに関する推奨事項を生成するための [Azure Kubernetes Service と Azure Security Center との統合](../security-center/defender-for-kubernetes-introduction.md)
-* [Azure コンテナー監視ソリューション](../azure-monitor/insights/containers.md)
+* [Azure コンテナー監視ソリューション](../azure-monitor/containers/containers.md)
 * [Azure Container Instances](container-instances-log-analytics.md) および [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md) のリソース ログ
 
 ## <a name="next-steps"></a>次のステップ

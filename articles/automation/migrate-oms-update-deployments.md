@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: a2226f55c829afa4316a92888d16f6dc68e1f931
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2e94191e80d39e28d7ff0ffc9aa22b522fda68c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183602"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576023"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Azure Monitor ログの更新プログラムの展開を Azure portal に移行する
 
-Operations Management Suite (OMS) ポータルは[非推奨](../azure-monitor/platform/oms-portal-transition.md)となっています。 Update Management 用の OMS ポータルで使用できたすべての機能が、Azure Monitor ログを通じて Azure portal で使用できます。 この記事では、Azure portal に移行するために必要な情報を提供しています。
+Operations Management Suite (OMS) ポータルは[非推奨](../azure-monitor/logs/oms-portal-transition.md)となっています。 Update Management 用の OMS ポータルで使用できたすべての機能が、Azure Monitor ログを通じて Azure portal で使用できます。 この記事では、Azure portal に移行するために必要な情報を提供しています。
 
 ## <a name="key-information"></a>重要な情報
 
@@ -41,7 +41,7 @@ Operations Management Suite (OMS) ポータルは[非推奨](../azure-monitor/pl
 
 ## <a name="recreate-existing-deployments"></a>既存の展開を再作成する
 
-OMS ポータルで作成されたすべての更新プログラムの展開には、[保存された検索条件](../azure-monitor/platform/computer-groups.md)があります。これはコンピューター グループとも呼ばれ、存在する更新プログラムの展開と同じ名前を持ちます。 保存された検索条件には、更新プログラムの展開でスケジュールされていたコンピューターの一覧が含まれています。
+OMS ポータルで作成されたすべての更新プログラムの展開には、[保存された検索条件](../azure-monitor/logs/computer-groups.md)があります。これはコンピューター グループとも呼ばれ、存在する更新プログラムの展開と同じ名前を持ちます。 保存された検索条件には、更新プログラムの展開でスケジュールされていたコンピューターの一覧が含まれています。
 
 :::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="[更新プログラムの展開] ページのスクリーンショット。[名前] と [サーバー] フィールドが強調表示されています。":::
 
@@ -59,7 +59,7 @@ OMS ポータルで作成されたすべての更新プログラムの展開に�
     | --- | --- |
     |名前 |更新プログラムの展開を識別する一意の名前。 |
     |オペレーティング システム| **Linux** か **Windows** を選択します。|
-    |更新するマシン |保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。</br> Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください |
+    |更新するマシン |保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。</br> Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../azure-monitor/logs/computer-groups.md)に関するページを参照してください |
     |更新プログラムの分類|必要な更新プログラムの分類をすべて選択します。 CentOS ではこれは既定ではサポートされていません。|
     |除外する更新プログラム|除外する更新プログラムを入力します。 Windows の場合は、KB 記事を **KB** プレフィックスを付けないで入力します。 Linux の場合は、パッケージ名を入力するか、ワイルドカード文字を使用します。  |
     |スケジュール設定|開始する時刻を選択し、繰り返しの設定として、 **[1 回]** または **[定期的]** のいずれかを選択します | 

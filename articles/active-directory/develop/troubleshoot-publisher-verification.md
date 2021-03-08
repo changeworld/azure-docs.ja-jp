@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: troubleshooting
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 01/28/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 10609f2706d257dbe5d8f43b85da5f06cb986cae
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9ae5d2279baab69d762a71b2f6400009747c16fe
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756179"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584215"
 ---
 # <a name="troubleshoot-publisher-verification"></a>発行者の確認に関するトラブルシューティング
 [発行者の確認](publisher-verification-overview.md)で、エラーが発生してプロセスを完了できない場合、または予期しない動作が発生する場合は、次の手順を行う必要があります。 
@@ -40,7 +40,7 @@ ms.locfileid: "98756179"
     1. MPN アカウントが既に存在する場合は、これが認識され、アカウントに追加されます 
     1. MPN ID とプライマリ アカウントの連絡先が表示される[パートナー プロファイル ページ](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)に移動します
 
-- **自分の Azure AD グローバル管理者 (会社の管理者またはテナント管理者とも呼ばれます) がわからない場合は、どのようにして見つけることができますか。アプリケーション管理者またはクラウド アプリケーション管理者はどうですか。**
+- **自分の Azure AD 全体管理者 (会社の管理者またはテナント管理者とも呼ばれます) がわからない場合は、どのようにして見つけることができますか。アプリケーション管理者またはクラウド アプリケーション管理者はどうですか。**
     1. 組織のプライマリ テナントのユーザー アカウントを使用して、[Azure AD ポータル](https://aad.portal.azure.com)にサインインします
     1. [[ロールと管理者]](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) に移動します
     1. 目的の管理者ロールをクリックします。
@@ -52,8 +52,8 @@ ms.locfileid: "98756179"
     1. 自分の[パートナー プロファイル](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile)に移動し、次のことを確認します。 
         - MPN ID が正しい。 
         - エラーまたは "保留中のアクション" が表示されず、会社プロファイルとパートナー情報の両方の検証状態が "承認済み" または "成功" と表示される。
-    1. [MPN テナント管理ページ](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement)に移動し、アプリが登録されているテナント、およびサインインに使用しているユーザー アカウントのテナントが、関連付けられているテナントの一覧に含まれることを確認します。 さらにテナントを追加する必要がある場合は、[こちら](/partner-center/multi-tenant-account)の手順を実行します。 追加したテナントのすべてのグローバル管理者には、パートナー センター アカウントの全体管理者特権が付与されることに注意してください。
-    1. [MPN ユーザー管理ページ](https://partner.microsoft.com/pcv/users)に移動し、サインインに使用しているユーザーが、グローバル管理者、MPN 管理者、またはアカウント管理者のいずれかであることを確認します。パートナー センターのロールにユーザーを追加する必要がある場合は、[こちら](/partner-center/create-user-accounts-and-set-permissions)の手順を実行します。
+    1. [MPN テナント管理ページ](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement)に移動し、アプリが登録されているテナント、およびサインインに使用しているユーザー アカウントのテナントが、関連付けられているテナントの一覧に含まれることを確認します。 さらにテナントを追加するには、[こちら](/partner-center/multi-tenant-account)の手順に従います。 追加したテナントのすべてのグローバル管理者には、パートナー センター アカウントの全体管理者特権が付与されることに注意してください。
+    1. [MPN ユーザー管理ページ](https://partner.microsoft.com/pcv/users)に移動し、サインインに使用しているユーザーが、グローバル管理者、MPN 管理者、またはアカウント管理者のいずれかであることを確認します。パートナー センターでロールにユーザーを追加するには、[こちら](/partner-center/create-user-accounts-and-set-permissions)の手順に従います。
 
 - **Azure AD ポータルにサインインすると、登録されているアプリが表示されません。なぜですか?** 
     アプリの登録は、このテナントの別のユーザー アカウント、個人またはコンシューマー アカウント、または別のテナントを使用して作成された可能性があります。 アプリの登録が作成されたテナントで、正しいアカウントを使用してサインインしていることを確認します。
@@ -149,87 +149,95 @@ HTTP/1.1 200 OK
 
 Microsoft Graph でのトラブルシューティングのとき、またはアプリ登録ポータルでのプロセスの間に発生する可能性のあるエラー コードの一覧を以下に示します。
 
-### <a name="mpnaccountnotfoundornoaccess"></a>MPNAccountNotFoundOrNoAccess     
+### <a name="mpnaccountnotfoundornoaccess"></a>MPNAccountNotFoundOrNoAccess
 
-指定した MPN ID (<MPNID>) が存在しないか、それへのアクセス権がありません。 有効な MPN ID を指定して、やり直してください。
+指定した MPN ID (`MPNID`) が存在しないか、それへのアクセス権がありません。 有効な MPN ID を指定して、やり直してください。
     
 サインインしているユーザーがパートナー センターの MPN アカウントの適切なロールのメンバーになっていないことが原因で最もよく発生します。対象となるロールの一覧については、「[必要条件](publisher-verification-overview.md#requirements)」をご覧ください。詳しくは、「[一般的な問題](#common-issues)」 をご覧ください。 また、アプリが登録されているテナントが MPN アカウントに追加されていないか、MPN ID が無効であるために発生する可能性もあります。
 
-### <a name="mpnglobalaccountnotfound"></a>MPNGlobalAccountNotFound     
+### <a name="mpnglobalaccountnotfound"></a>MPNGlobalAccountNotFound
 
-指定した MPN ID (<MPNID>) が無効です。 有効な MPN ID を指定して、やり直してください。
+指定した MPN ID (`MPNID`) が無効です。 有効な MPN ID を指定して、やり直してください。
     
 パートナーの場所アカウント (PLA) に対応する MPN ID が指定されている場合に最もよく発生します。 パートナー グローバル アカウントのみがサポートされています。 詳しくは、[パートナー センターのアカウントの構造](/partner-center/account-structure)に関する記事をご覧ください。
 
-### <a name="mpnaccountinvalid"></a>MPNAccountInvalid    
+### <a name="mpnaccountinvalid"></a>MPNAccountInvalid
 
-指定した MPN ID (<MPNID>) が無効です。 有効な MPN ID を指定して、やり直してください。
+指定した MPN ID (`MPNID`) が無効です。 有効な MPN ID を指定して、やり直してください。
     
 間違った MPN ID が指定されていることが原因で最もよく発生します。
 
-### <a name="mpnaccountnotvetted"></a>MPNAccountNotVetted  
+### <a name="mpnaccountnotvetted"></a>MPNAccountNotVetted
 
-指定した MPN ID (<MPNID>) は、審査プロセスを完了していません。 パートナー センターでこのプロセスを完了してから、操作をやり直してください。 
+指定した MPN ID (`MPNID`) は、審査プロセスを完了していません。 パートナー センターでこのプロセスを完了してから、操作をやり直してください。 
     
 MPN アカウントが[検証](/partner-center/verification-responses)プロセスを完了していない場合に最もよく発生します。
 
-### <a name="nopublisheridonassociatedmpnaccount"></a>NoPublisherIdOnAssociatedMPNAccount  
+### <a name="nopublisheridonassociatedmpnaccount"></a>NoPublisherIdOnAssociatedMPNAccount
 
-指定した MPN ID (<MPNID>) が無効です。 有効な MPN ID を指定して、やり直してください。 
+指定した MPN ID (`MPNID`) が無効です。 有効な MPN ID を指定して、やり直してください。 
    
 間違った MPN ID が指定されていることが原因で最もよく発生します。
 
-### <a name="mpniddoesnotmatchassociatedmpnaccount"></a>MPNIdDoesNotMatchAssociatedMPNAccount    
+### <a name="mpniddoesnotmatchassociatedmpnaccount"></a>MPNIdDoesNotMatchAssociatedMPNAccount
 
-指定した MPN ID (<MPNID>) が無効です。 有効な MPN ID を指定して、やり直してください。
+指定した MPN ID (`MPNID`) が無効です。 有効な MPN ID を指定して、やり直してください。
     
 間違った MPN ID が指定されていることが原因で最もよく発生します。
 
-### <a name="applicationnotfound"></a>ApplicationNotFound  
+### <a name="applicationnotfound"></a>ApplicationNotFound
 
-ターゲット アプリケーション (<AppId>) が見つかりません。 有効なアプリケーション ID を指定して、もう一度やり直してください。
+ターゲット アプリケーション (`AppId`) が見つかりません。 有効なアプリケーション ID を指定して、もう一度やり直してください。
     
 Graph API 経由で検証が実行され、指定されたアプリケーションの ID が正しくない場合に最もよく発生します。 注 - アプリ ID やクライアント ID ではなく、アプリケーションの ID を指定する必要があります。
 
-### <a name="b2ctenantnotallowed"></a>B2CTenantNotAllowed  
+### <a name="b2ctenantnotallowed"></a>B2CTenantNotAllowed
 
-この機能は、Azure AD B2C テナントではサポートされていません。 
+この機能は、Azure AD B2C テナントではサポートされていません。
 
-### <a name="emailverifiedtenantnotallowed"></a>EmailVerifiedTenantNotAllowed    
+### <a name="emailverifiedtenantnotallowed"></a>EmailVerifiedTenantNotAllowed
 
-この機能は、メールで確認されたテナントではサポートされていません。 
+この機能は、メールで確認されたテナントではサポートされていません。
 
-### <a name="nopublisherdomainonapplication"></a>NoPublisherDomainOnApplication   
+### <a name="nopublisherdomainonapplication"></a>NoPublisherDomainOnApplication
 
-ターゲット アプリケーション (\<AppId\>) には、パブリッシャー ドメインが設定されている必要があります。 パブリッシャー ドメインを設定してから、やり直してください。
+ターゲット アプリケーション (`AppId`) には、パブリッシャー ドメインが設定されている必要があります。 パブリッシャー ドメインを設定してから、やり直してください。
 
 アプリで[パブリッシャー ドメイン](howto-configure-publisher-domain.md)が構成されていない場合に発生します。
 
-### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch  
+### <a name="publisherdomainmismatch"></a>PublisherDomainMismatch
 
-ターゲット アプリケーションのパブリッシャー ドメイン (<publisherDomain>) が、パートナー センターでメール確認を実行するために使用されたドメイン (<pcDomain>) と一致しません。 これらのドメインが一致していることを確認してから、やり直してください。 
+ターゲット アプリケーションのパブリッシャー ドメイン (`publisherDomain`) が、パートナー センターでメール確認を実行するために使用されたドメイン (`pcDomain`) と一致しません。 これらのドメインが一致していることを確認してから、やり直してください。 
     
 アプリの[パブリッシャー ドメイン](howto-configure-publisher-domain.md)と、Azure AD テナントに追加された[カスタム ドメイン](../fundamentals/add-custom-domain.md)のいずれもが、パートナー センターで電子メールの検証を実行するために使用されたドメインと一致しない場合に発生します。
 
-### <a name="notauthorizedtoverifypublisher"></a>NotAuthorizedToVerifyPublisher   
+### <a name="notauthorizedtoverifypublisher"></a>NotAuthorizedToVerifyPublisher
 
-アプリケーション (<AppId>) の確認済み発行者プロパティを設定することを承認されていません 
+アプリケーション (<`AppId`) の確認済み発行者プロパティを設定することを承認されていません 
   
 サインインしているユーザーが Azure AD の MPN アカウントの適切なロールのメンバーになっていないことが原因で最もよく発生します。対象となるロールの一覧については、「[必要条件](publisher-verification-overview.md#requirements)」をご覧ください。詳しくは、「[一般的な問題](#common-issues)」 をご覧ください。
 
-### <a name="mpnidwasnotprovided"></a>MPNIdWasNotProvided  
+### <a name="mpnidwasnotprovided"></a>MPNIdWasNotProvided
 
-要求本文で MPN ID が指定されていないか、または要求の内容の種類が "application/json" ではありませんでした。 
+要求本文で MPN ID が指定されていないか、または要求の内容の種類が "application/json" ではありませんでした。
 
-### <a name="msanotsupported"></a>MSANotSupported  
+### <a name="msanotsupported"></a>MSANotSupported 
 
 この機能は、Microsoft コンシューマー アカウントではサポートされていません。 Azure AD ユーザーによって Azure AD に登録されているアプリケーションのみがサポートされます。
 
 ### <a name="interactionrequired"></a>InteractionRequired
 
-検証済みの発行者をアプリに追加しようとする前に多要素認証が実行されていない場合に発生します。 詳しくは、「[一般的な問題](#common-issues)」をご覧ください。 注:確認済み発行者を追加するときは、同じセッションで MFA を行う必要があります。 MFA が有効になっていても、そのセッションで行う必要がない場合、要求は失敗します。   
+検証済みの発行者をアプリに追加しようとする前に多要素認証が実行されていない場合に発生します。 詳しくは、「[一般的な問題](#common-issues)」をご覧ください。 注:確認済み発行者を追加するときは、同じセッションで MFA を行う必要があります。 MFA が有効になっていても、そのセッションで行う必要がない場合、要求は失敗します。 
 
 次のようなエラー メッセージが表示されます。"管理者によって構成が変更されたか、自分が新しい場所に移動したため、続行するには多要素認証を使用する必要があります。"
+
+### <a name="unabletoaddpublisher"></a>UnableToAddPublisher
+
+次のようなエラー メッセージが表示されます。"A verified publisher cannot be added to this application. (確認済み発行者をこのアプリケーションに追加できません。) Please contact your administrator for assistance. (管理者にお問い合わせください。)"
+
+まず、[発行者の確認の要件](publisher-verification-overview.md#requirements)を満たしていることを確認します。
+
+確認済み発行者を追加する要求が行われると、多数のシグナルを使用してセキュリティ リスク評価が実行されます。 要求が危険であると判断された場合は、エラーが返されます。 セキュリティ上の理由から、Microsoft は、要求が危険かどうかを判断するために使用される具体的な基準を公開していません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 621c5e7b0061ccd76fd0109552107915b943511f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 06d6352f018238318c3bb4625ae86a2974f14569
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89653336"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820165"
 ---
 # <a name="what-is-azure-resource-mover"></a>Azure Resource Mover とは
 
@@ -29,8 +29,6 @@ ms.locfileid: "89653336"
 - **デプロイ要件に対応する**: デプロイ時にエラーが発生したリソースを移動するか、または容量のニーズに対応して移動します。
 - **使用停止に対応する**: リージョンが使用停止になっているため、リソースを移動します。
 
-> [!IMPORTANT]
-> Azure Resource Mover は現在、パブリックプレビュー段階にあります。
 
 ## <a name="why-use-resource-mover"></a>Resource Mover を使用する理由
 
@@ -41,7 +39,7 @@ Resource Mover によって、以下のことが可能になります。
 - シンプルかつ一貫性のあるエクスペリエンスによって、さまざまな種類の Azure リソースを移動できます。
 - 移動するリソース間の依存関係を簡単に識別できます。 これにより、関連リソースをまとめて移動することができるため、移動後にすべてのリソースがターゲット リージョンで期待どおりに動作します。
 - 移動後にソース リージョンのリソースを削除する場合は、自動的にクリーンアップされます。
-- テスト: 移動を試してみて、完全に移動することは望まない場合は破棄することができます。
+- テスト。 移動を試してみて、完全に移動することは望まない場合は破棄することができます。
 
 ## <a name="move-across-regions"></a>リージョン間で移動する
 
@@ -62,11 +60,12 @@ Resource Mover によって、以下のことが可能になります。
 Resource Mover を使用すると、現在、リージョン間で次のリソースを移動できます。
 
 - Azure VM および関連付けられているディスク
+- 暗号化された Azure VM および関連付けられているディスク。 これには、Azure Disk Encryption が有効になっている VM と、既定のサーバー側暗号化を使用している Azure VM が含まれます (どちらにもプラットフォーム マネージド キーとカスタマー マネージド キーがある)
 - NIC
 - 可用性セット 
 - Azure 仮想ネットワーク 
 - パブリック IP アドレス
-- ネットワーク セキュリティ グループ (NSG):
+- ネットワーク セキュリティ グループ (NSG)
 - 内部およびパブリック ロード バランサー 
 - Azure SQL データベースとエラスティック プール
 

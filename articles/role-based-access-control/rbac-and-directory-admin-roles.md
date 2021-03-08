@@ -15,12 +15,12 @@ ms.date: 01/04/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 0b43f30c25767a135b98b756d61ed2535e1fbd22
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 24ff39fba5ce4b484f23595a9f7d718b12faae10
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092202"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102037270"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD ロール
 
@@ -91,7 +91,7 @@ Azure portal では、Azure RBAC を使用したロールの割り当てが **[�
 
 ![Azure portal での組み込みロール](./media/rbac-and-directory-admin-roles/roles-list.png)
 
-詳細については、[Azure portal を使用して Azure ロールの割り当てを追加または削除する](role-assignments-portal.md)方法に関するページを参照してください。
+詳細については、[Azure portal を使用して Azure ロールを割り当てる方法](role-assignments-portal.md)に関するページを参照してください。
 
 ## <a name="azure-ad-roles"></a>Azure AD ロール
 
@@ -99,7 +99,7 @@ Azure AD ロールは、ディレクトリ内の Azure AD リソースの管理�
 
 | Azure AD ロール | アクセス許可 | Notes |
 | --- | --- | --- |
-| [全体管理者](../active-directory/roles/permissions-reference.md#global-administrator-permissions) | <ul><li>Azure Active Directory のすべての管理機能や、Azure Active Directory に統合されたサービスへのアクセスを管理する</li><li>他のユーザーに管理者ロールを割り当てる</li><li>すべてのユーザーと他のすべての管理者のパスワードをリセットする</li></ul> | Azure Active Directory テナントにサインアップしたユーザーが全体管理者になります。 |
+| [全体管理者](../active-directory/roles/permissions-reference.md#global-administrator) | <ul><li>Azure Active Directory のすべての管理機能や、Azure Active Directory に統合されたサービスへのアクセスを管理する</li><li>他のユーザーに管理者ロールを割り当てる</li><li>すべてのユーザーと他のすべての管理者のパスワードをリセットする</li></ul> | Azure Active Directory テナントにサインアップしたユーザーが全体管理者になります。 |
 | [ユーザー管理者](../active-directory/roles/permissions-reference.md#user-administrator) | <ul><li>ユーザーとグループのすべての側面を作成および管理する</li><li>サポート チケットの管理</li><li>サービス正常性の監視</li><li>ユーザー、ヘルプデスク管理者、およびその他のユーザー管理者のパスワードを変更する</li></ul> |  |
 | [課金管理者](../active-directory/roles/permissions-reference.md#billing-administrator) | <ul><li>購入する</li><li>サブスクリプションの管理</li><li>サポート チケットの管理</li><li>サービスの正常性を監視する</li></ul> |  |
 

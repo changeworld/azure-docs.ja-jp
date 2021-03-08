@@ -4,15 +4,15 @@ description: アクティブ化ファイルの管理、バックアップの実�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/12/2021
+ms.date: 02/02/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 16031c3d67b075e962c73fbb38ada36c7efeddad
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c8bb44d323574f6815aa570b271ed4c0df1fc6be
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621216"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526920"
 ---
 # <a name="manage-individual-sensors"></a>個々のセンサーの管理
 
@@ -86,7 +86,7 @@ ms.locfileid: "98621216"
 
 - **クラウド接続のセンサーの場合**: センサーがインターネットに接続できません。 センサーのネットワーク構成を確認します。 センサーがインターネットにアクセスするために Web プロキシ経由で接続する必要がある場合は、 **[センサーのネットワーク構成]** 画面でプロキシ サーバーが正しく構成されていることを確認します。 ファイアウォールやプロキシで \*.azure-devices.net:443 が許可されていることを確認します。 ワイルドカードがサポートされていない場合、または細かく制御する必要がある場合は、特定の Defender for IoT ハブの FQDN をお使いのファイアウォールやプロキシで開く必要があります。 詳しくは、「[リファレンス - IoT Hub エンドポイント](../iot-hub/iot-hub-devguide-endpoints.md)」をご覧ください。  
 
-- **クラウド接続のセンサーの場合**: アクティブ化ファイルは有効ですが、Defender for IoT で拒否されました。 この問題を解決できない場合は、Defender for IoT ポータルの **[センサー管理]** ページから別のアクティブ化をダウンロードできます。 それでもうまくいかない場合は、Microsoft サポートにお問い合わせください。
+- **クラウド接続のセンサーの場合**: アクティブ化ファイルは有効ですが、Defender for IoT で拒否されました。 この問題を解決できない場合は、Defender for IoT ポータルの [サイトとセンサー] ページから、別のアクティブ化をダウンロードできます。 それでもうまくいかない場合は、Microsoft サポートにお問い合わせください。
 
 ## <a name="manage-certificates"></a>証明書の管理
 
@@ -114,7 +114,7 @@ Defender for IoT センサーとオンプレミスの管理コンソールは、
  
  - センサーとオンプレミスの管理コンソールとの間のセキュリティで保護された通信。 
 
-インストールされると、アプライアンスによって、ローカルの自己署名証明書が生成され、Web コンソールへの暫定的なアクセスが可能になります。 エンタープライズ SSL および TLS 証明書は、[`cyberx-xsense-certificate-import`](#cli-commands) コマンド ライン ツールを使用してインストールできます。 
+インストールされると、アプライアンスによって、ローカルの自己署名証明書が生成され、Web コンソールへの暫定的なアクセスが可能になります。 エンタープライズ SSL および TLS 証明書は、[`cyberx-xsense-certificate-import`](#cli-commands) コマンド ライン ツールを使用してインストールできます。
 
  > [!NOTE]
  > アプライアンスがセッションのクライアントおよびイニシエーターである統合および転送ルールでは、特定の証明書が使用され、システム証明書に関連付けられません。  
@@ -363,15 +363,23 @@ CLI コマンドを使用する場合:
 
 名前を変更するには:
 
-1. Azure Defender for IoT ポータルで、 **[センサー管理]** ページにアクセスします。
+1. Azure Defender for IoT ポータルで、[サイトとセンサー] ページに移動します。
 
-1. センサーを **[センサー管理]** ウィンドウから削除します。
+1. [サイトとセンサー] ページからセンサーを削除します。
 
-1. 新しい名前で登録します。
+1. [はじめに] ページで **[センサーのオンボード]** を選択して、新しい名前で登録します。
 
 1. 新しいアクティブ化ファイルをダウンロードします。
 
-1. センサーにサインインし、新しいアクティブ化ファイルをアップロードします。
+1. Defender for IoT センサー コンソールにサインインします。
+
+1. センサー コンソールで、 **[システム設定]** を選択し、 **[再アクティブ化]** を選択します。
+
+   :::image type="content" source="media/how-to-manage-sensors-on-the-cloud/reactivate.png" alt-text="アクティブ化ファイルをアップロードしてセンサーを再アクティブ化します。":::
+
+1. **[アップロード]** を選択し、保存したファイルを選択します。
+
+1. **[アクティブ化]** を選びます。
 
 ## <a name="update-the-sensor-network-configuration"></a>センサーのネットワーク構成の更新
 
@@ -387,7 +395,7 @@ CLI コマンドを使用する場合:
 
     :::image type="content" source="media/how-to-manage-individual-sensors/edit-network-configuration-screen.png" alt-text="ネットワーク設定を構成します。":::
 
-3. パラメーターを次のように編集します。
+3. パラメーターを設定します。
 
     | パラメーター | [説明] |
     |--|--|
@@ -444,7 +452,7 @@ CLI コマンドを使用する場合:
 
 最新のバックアップ ファイルを復元するには:
 
-- 管理アカウントにサインインし、「`$ sudo cyberx-xsense-system-restore`」と入力します。
+- 管理者アカウントにサインインし、「`$ sudo cyberx-xsense-system-restore`」と入力します。
 
 外部の SMB サーバーにバックアップを保存するには:
 
@@ -458,7 +466,7 @@ CLI コマンドを使用する場合:
 
     - `sudo chmod 777 /<backup_folder_name_on_cyberx_server>/`
 
-3. `fstab`を編集します: 
+3. `fstab`を編集します:
 
     - `sudo nano /etc/fstab`
 
@@ -526,7 +534,7 @@ CLI コマンドを使用する場合:
 
     :::image type="content" source="media/how-to-manage-individual-sensors/defender-for-iot-version.png" alt-text="サインイン後に表示されるアップグレード バージョンのスクリーンショット。":::
 
-## <a name="forward-sensor-failure-alerts"></a>センサーの障害アラートの転送 
+## <a name="forward-sensor-failure-alerts"></a>センサーの障害アラートの転送
 
 以下に関する詳細情報を提供するために、サード パーティにアラートを転送できます。
 

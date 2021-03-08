@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: aa8c00d1ee2a0dc3d019cc75b4e411ede984e74a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 2658c088304eba457b25bb3dc421b356ba70b57f
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756054"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102480"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームでのアクセス許可と同意
 
@@ -164,7 +164,7 @@ Microsoft のリソースにおける高い特権のアクセス許可には、"
 
 管理者の同意エンドポイントを使用して管理者の同意を付与したら、それで終了です。 ユーザーはそれ以上の操作を行う必要はありません。 管理者の同意が付与されると、ユーザーは一般的な認証フローを使用してアクセス トークンを取得できます。 結果として得られたアクセス トークンには、同意済みのアクセス許可が含まれています。
 
-会社の管理者がアプリケーションを使用していて、承認エンドポイントに送られると、Microsoft ID プラットフォームによってユーザーのロールが検出されます。 会社の管理者がテナント全体に代わり、要求されたアクセス許可に対して同意するかどうかが尋ねられます。 その代わりに、専用の管理者の同意エンドポイントを使用して、テナント全体に代わってアクセス許可を付与するように管理者に事前に要求することもできます。 このエンドポイントは、アプリケーションのアクセス許可を要求する場合にも必要です。 アプリケーションのアクセス許可は、承認エンドポイントを使用して要求することはできません。
+全体管理者がアプリケーションを使用していて、承認エンドポイントに送られると、Microsoft ID プラットフォームによってユーザーのロールが検出されます。 全体管理者がテナント全体に代わり、要求されたアクセス許可に対して同意するかどうかが尋ねられます。 その代わりに、専用の管理者の同意エンドポイントを使用して、テナント全体に代わってアクセス許可を付与するように管理者に事前に要求することもできます。 このエンドポイントは、アプリケーションのアクセス許可を要求する場合にも必要です。 アプリケーションのアクセス許可は、承認エンドポイントを使用して要求することはできません。
 
 これから説明する手順に従うと、管理者に制限されているスコープを含むテナントのユーザー全員のアクセス許可をアプリで要求できます。 この操作には高い特権があります。 この操作は、ご自身のシナリオに必要な場合にだけ使用してください。
 
@@ -181,7 +181,7 @@ Microsoft のリソースにおける高い特権のアクセス許可には、"
 
 アプリケーションに対して静的に要求されるアクセス許可のリストを構成するには:
 
-1. <a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">Azure portal の [アプリの登録]<span class="docon docon-navigate-external x-hidden-focus"></span></a> クイックスタート エクスペリエンス内のアプリケーションに移動します。
+1. <a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">Azure portal の [アプリの登録]</a> クイックスタート エクスペリエンス内のアプリケーションに移動します。
 1. アプリケーションを選択するか、まだ作成していない場合は[アプリを作成](quickstart-register-app.md)します。
 1. アプリケーションの **[概要]** ページの **[管理]** で、 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。
 1. 利用可能な API の一覧から **[Microsoft Graph]** を選択します。 次に、アプリに必要なアクセス許可を追加します。

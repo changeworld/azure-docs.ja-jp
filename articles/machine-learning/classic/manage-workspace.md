@@ -3,18 +3,18 @@ title: 'ML Studio (classic): ワークスペースを管理する - Azure'
 description: Azure Machine Learning Studio (クラシック) ワークスペースへのアクセスを管理し、Machine Learning API Web サービスをデプロイおよび管理します
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: 3763942c7b939bf9a4fcc3e11a2536de33b61e05
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1996f4c6c73040fa16a1c5a0468ebcced3ab1641
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308110"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516483"
 ---
 # <a name="manage-an-azure-machine-learning-studio-classic-workspace"></a>Azure Machine Learning Studio (クラシック) ワークスペースの管理
 

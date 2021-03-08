@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3d1386ea3d7096e0926825c9b53cf62466c09cc3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 79743ba2c733855a377ae8e2522ce54eca9e8c04
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789838"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091089"
 ---
 # <a name="azure-security-baseline-for-azure-database-migration-service"></a>Azure Database Migration Service の Azure セキュリティ ベースライン
 
@@ -263,13 +263,13 @@ GitHub が使用されている場合は、ネイティブなシークレット 
 
 ### <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7:Just Enough Administration (最小限の特権の原則) に従う 
 
-**ガイダンス**:Azure Database Migration Service は、そのリソースの管理のために Azure ロールベースのアクセス制御 (RBAC) と統合されています。 Azure RBAC を使用すると、ロールの割り当てによって Azure リソースへのアクセスを管理できます。 これらのロールを、ユーザー、グループ サービス プリンシパル、およびマネージド ID に割り当てることができます。 特定のリソースに対して定義済みの組み込みロールがあります。これらのロールは、Azure CLI、Azure PowerShell、Azure portal などのツールを使用してインベントリまたは照会できます。 Azure RBAC を使用してリソースに割り当てる特権は、常に、ロールで必要なものに制限する必要があります。 これは、Azure AD Privileged Identity Management (PIM) のジャスト イン タイム (JIT) アプローチを補完するものであり、定期的に見直す必要があります。
+**ガイダンス**:Azure Database Migration Service は、そのリソースの管理のために Azure ロールベースのアクセス制御 (RBAC) と統合されています。 Azure RBAC を使用すると、ロールの割り当てによって Azure リソースへのアクセスを管理できます。 これらのロールを、ユーザー、グループ サービス プリンシパル、およびマネージド ID に割り当てることができます。 特定のリソースに対して定義済みの組み込みロールがあります。これらのロールは、Azure CLI、Azure PowerShell、Azure portal などのツールを使用してインベントリまたは照会できます。 Azure RBAC を使用してリソースに割り当てる特権は、常に、ロールで必要なものに制限する必要があります。 これは、Azure Active Directory Privileged Identity Management (PIM) のジャスト イン タイム (JIT) アプローチを補完するものであり、定期的に見直す必要があります。
 
 組み込みのロールを使用してアクセス許可を割り当て、カスタム ロールは必要な場合にのみ作成します。
 
 - [Azure ロールベースのアクセス制御 (Azure RBAC) とは](../role-based-access-control/overview.md)
 
-- [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md) 
+- [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md) 
 
 - [Azure AD の ID およびアクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
@@ -422,7 +422,7 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 
 多くの組織では、頻繁に使用される "ホット" データに対しては Azure Sentinel を、使用頻度の低い "コールド" データに対しては Azure Storage を使用することを選択しています。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 

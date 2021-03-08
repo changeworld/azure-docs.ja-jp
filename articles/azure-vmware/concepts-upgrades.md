@@ -2,13 +2,13 @@
 title: 概念 - プライベート クラウドの更新とアップグレード
 description: Azure VMware Solution の主要なアップグレード プロセスと機能について説明します。
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 6fb65a0e192fbf1f054857223b3fdaf58fc6a903
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.date: 02/02/2021
+ms.openlocfilehash: 78d4b566aa9156cdddfdcd69b50ebfd1d10aa784
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809651"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006703"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware Solution のプライベート クラウドの更新とアップグレード
 
@@ -53,11 +53,14 @@ Azure VMware Solution では、更新に加えて、次の VMware コンポー�
 
 障害が発生した際は、Azure VMware Solution を使用して構成のバックアップからこれらを復元できます。 
 
-VMware ソフトウェアのバージョンの詳細については、[プライベート クラウドとクラスターの概念に関する記事](concepts-private-clouds-clusters.md)と [FAQ](faq.md) を参照してください。
+VMware ソフトウェアのバージョンの詳細については、[プライベート クラウドとクラスターの概念に関する記事](concepts-private-clouds-clusters.md)と [FAQ](faq.yml) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-次のステップでは、[プライベート クラウドを作成](tutorial-create-private-cloud.md)します。
+Azure VMware Solution の主要なアップグレード プロセスと機能について理解したので、次について確認する必要がある可能性があります。
+
+- [プライベート クラウドを作成する方法](tutorial-create-private-cloud.md)。
+- [Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)。
 
 <!-- LINKS - external -->
 

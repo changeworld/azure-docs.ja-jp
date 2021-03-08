@@ -9,12 +9,12 @@ ms.date: 09/08/2020
 ms.topic: how-to
 ms.author: nitinme
 author: nitinme
-ms.openlocfilehash: 8a4b86fb8fa5a87283178d957e07617b908e6286
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: aeb84fca47dbf2922f17a3e8931e3158f9ee2cca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790903"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101706777"
 ---
 # <a name="sign-in-to-luis-portal"></a>LUIS ポータルにサインインする
 
@@ -48,7 +48,7 @@ ms.locfileid: "98790903"
     * **[Azure リソース グループ名]** - サブスクリプションで選択したカスタム リソース グループの名前。 リソース グループを使用すると、アクセスと管理のために Azure リソースをグループ化できます。 現在サブスクリプション内にリソース グループがない場合、LUIS ポータルでそれを作成することはできません。 [Azure portal](https://ms.portal.azure.com/#create/Microsoft.ResourceGroup) にアクセスしてそれを作成してから、LUIS にアクセスしてサインイン プロセスを続行します。
     * **[Azure リソース名]** - 選択したカスタム名。オーサリング トランザクションの URL の一部として使用されます。 リソース名には英数字と `-` のみを含めることができ、先頭または末尾に `-` を使用することはできません。 名前に他の記号が含まれている場合は、リソースの作成に失敗します。
     * **[場所]** - LUIS で現在サポートされている次の [3 つのオーサリング場所](./luis-reference-regions.md)のいずれかでアプリケーションを作成することを選択します:米国西部、西ヨーロッパ、オーストラリア東部
-    * **[価格レベル]** - 既定では、推奨されているように F0 authoring 価格レベルが選択されています。 セキュリティをさらに強化する必要がある場合は、Azure portal から[カスタマー マネージド キー](./luis-encryption-of-data-at-rest.md#customer-managed-keys-for-language-understanding)を作成します。
+    * **[価格レベル]** - 既定では、推奨されているように F0 authoring 価格レベルが選択されています。 セキュリティをさらに強化する必要がある場合は、Azure portal から[カスタマー マネージド キー](./encrypt-data-at-rest.md#customer-managed-keys-for-language-understanding)を作成します。
 8. これで、LUIS に正常にサインインしました。 アプリケーションの作成を開始できます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング

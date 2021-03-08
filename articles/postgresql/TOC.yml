@@ -30,6 +30,9 @@
     - name: バージョン管理ポリシー
       href: concepts-version-policy.md
       displayName: 'version, postgresql'
+    - name: 既知の問題と制限事項
+      href: concepts-known-issues-limitations.md
+      displayName: 'issues, limitations, postgresql'
 - name: シングル サーバー
   expanded: true
   items:
@@ -110,6 +113,9 @@
       items:
         - name: Azure CLI
           href: sample-scripts-azure-cli.md
+        - name: Azure Policy の組み込み
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
     - name: 概念
       items:
         - name: サーバー
@@ -488,7 +494,7 @@
           items:
             - name: Azure portal
               href: flexible-server/how-to-maintenance-portal.md
-        - name: ネットワーキング
+        - name: ネットワーク
           items:
             - name: プライベート アクセス (VNet 統合)
               items:
@@ -569,14 +575,6 @@
         - name: リアルタイム ダッシュボードを設計する
           href: tutorial-design-database-hyperscale-realtime.md
           displayName: 'hyperscale, tutorial, real-time'
-    - name: サンプル
-      items:
-        - name: Azure CLI
-          href: sample-scripts-azure-cli.md
-          displayName: 'samples, azure cli'
-        - name: Azure Policy の組み込み
-          displayName: 'samples, policies, definitions'
-          href: ./policy-reference.md
     - name: 概念
       items:
         - name: 分散データ

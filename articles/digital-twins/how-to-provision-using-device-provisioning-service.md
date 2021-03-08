@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e783e5dd3b0f1952928d1c36c682c5be1cba2599
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: c2e7c9c96f237512d7f28f7243707b097c034aab
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044392"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198457"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Device Provisioning Service (DPS) を使用して Azure Digital Twins でデバイスを自動管理する
 
@@ -69,7 +69,7 @@ Device Provisioning Service を使用して新しいデバイスをプロビジ�
 
 Device Provisioning Service のインスタンスを作成します。これが IoT デバイスのプロビジョニングに使用されます。 以下の Azure CLI の手順を使用するか、Azure portal を使用することができます: 「[*クイック スタート:Azure portal で IoT Hub Device Provisioning Service を設定する*](../iot-dps/quick-setup-auto-provision.md)」。
 
-次の Azure CLI コマンドを実行すると、デバイス プロビジョニング サービスが作成されます。 名前、リソース グループ、およびリージョンを指定する必要があります。 このコマンドは、[Cloud Shell](https://shell.azure.com) で実行するか、Azure CLI が[コンピューターにインストールされている](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)場合はローカルで実行できます。
+次の Azure CLI コマンドを実行すると、デバイス プロビジョニング サービスが作成されます。 名前、リソース グループ、およびリージョンを指定する必要があります。 このコマンドは、[Cloud Shell](https://shell.azure.com) で実行するか、Azure CLI が[コンピューターにインストールされている](/cli/azure/install-azure-cli)場合はローカルで実行できます。
 
 ```azurecli-interactive
 az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region; for example, eastus>
@@ -85,7 +85,7 @@ az iot dps create --name <Device Provisioning Service name> --resource-group <re
 
 新しく作成された関数コード ファイル内に次のコードを貼り付けます。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIotHub_allocate.cs":::
+:::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DpsAdtAllocationFunc.cs":::
 
 ファイルを保存し、関数アプリを再発行します。 関数アプリを発行する手順については、エンドツーエンドのチュートリアルの「[*アプリの発行*](tutorial-end-to-end.md#publish-the-app)」のセクションを参照してください。
 
@@ -182,7 +182,7 @@ Azure Digital Twins インスタンス内にデバイスのツインがあるこ
 
 発行された関数アプリ内で、"*イベント ハブ トリガー*" 型の新しい関数クラスを追加し、次のコードを貼り付けます。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIotHub_delete.cs":::
+:::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DeleteDeviceInTwinFunc.cs":::
 
 プロジェクトを保存し、関数アプリを再度発行します。 関数アプリを発行する手順については、エンドツーエンドのチュートリアルの「[*アプリの発行*](tutorial-end-to-end.md#publish-the-app)」のセクションを参照してください。
 
@@ -190,7 +190,7 @@ Azure Digital Twins インスタンス内にデバイスのツインがあるこ
 
 次に、先ほど作成した Azure Digital Twins インスタンスへの、およびイベント ハブへの参照が含まれる環境変数を、前の関数アプリで設定する必要があります。 エンドツーエンドのチュートリアル (「[*チュートリアル: エンドツーエンドのソリューションを接続する*](./tutorial-end-to-end.md)」) を使用した場合、最初の設定は既に構成されていることになります。
 
-次の Azure CLI コマンドを使用して設定を追加します。 このコマンドは、[Cloud Shell](https://shell.azure.com) で実行するか、Azure CLI が[コンピューターにインストールされている](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)場合はローカルで実行できます。
+次の Azure CLI コマンドを使用して設定を追加します。 このコマンドは、[Cloud Shell](https://shell.azure.com) で実行するか、Azure CLI が[コンピューターにインストールされている](/cli/azure/install-azure-cli)場合はローカルで実行できます。
 
 ```azurecli-interactive
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
@@ -223,7 +223,7 @@ IoT Hub ルートを作成する手順は、こちらの記事で説明されて
 
 [この記事の前半](#auto-provision-device-using-device-provisioning-service)で、IoT Hub 内にデバイスを作成し、対応するデジタル ツインを作成しました。 
 
-次に、IoT Hub にアクセスし、そのデバイスを削除します (これは、[Azure CLI コマンド](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest&preserve-view=true#ext-azure-cli-iot-ext-az-iot-hub-device-identity-delete)または [Azure portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs) で行うことができます)。 
+次に、IoT Hub にアクセスし、そのデバイスを削除します (これは、[Azure CLI コマンド](/cli/azure/ext/azure-iot/iot/hub/module-identity#ext_azure_iot_az_iot_hub_module_identity_delete)または [Azure portal](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Devices%2FIotHubs) で行うことができます)。 
 
 デバイスが Azure Digital Twins から自動的に削除されます。 
 
@@ -240,7 +240,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 
 この記事で作成したリソースがもう必要ない場合は、次の手順に従って削除します。
 
-Azure Cloud Shell またはローカルの Azure CLI から [az group delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-delete) コマンドを使用すると、リソース グループ内の Azure リソースをすべて削除できます。 リソース グループが削除され、Azure Digital Twins インスタンス、IoT ハブとハブ デバイスの登録、Event Grid トピックとそれに関連するサブスクリプション、イベント ハブ名前空間と両方の Azure Functions アプリが、ストレージなどの関連するリソースを含めて削除されます。
+Azure Cloud Shell またはローカルの Azure CLI から [az group delete](/cli/azure/group#az-group-delete) コマンドを使用すると、リソース グループ内の Azure リソースをすべて削除できます。 リソース グループが削除され、Azure Digital Twins インスタンス、IoT ハブとハブ デバイスの登録、Event Grid トピックとそれに関連するサブスクリプション、イベント ハブ名前空間と両方の Azure Functions アプリが、ストレージなどの関連するリソースを含めて削除されます。
 
 > [!IMPORTANT]
 > リソース グループを削除すると、元に戻すことができません。 リソース グループとそこに含まれるすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 

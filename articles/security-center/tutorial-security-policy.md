@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 7ea871428fffe685cc9d43dd698bfefb8d8a511a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 19128f0372f9a5bda0d16155167a507eccaf436a
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756676"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986610"
 ---
 # <a name="manage-security-policies"></a>セキュリティ ポリシーの管理
 
@@ -54,7 +54,7 @@ Security Center でセキュリティ ポリシーを表示するには:
 
 1. そのサブスクリプションまたは管理グループのセキュリティ ポリシー ページが表示されます。 利用可能な割り当て済みのポリシーが表示されます。
 
-   ![ポリシー ページ](./media/tutorial-security-policy/security-policy-page.png)
+    :::image type="content" source="./media/tutorial-security-policy/security-policy-page.png" alt-text="Security Center のセキュリティ ポリシー ページ" lightbox="./media/tutorial-security-policy/security-policy-page.png":::
 
     > [!NOTE]
     > 既定のポリシーの横に "MG 継承済み" というラベルがある場合、そのポリシーが管理グループに割り当てられており、表示しているサブスクリプションに継承されていることを意味します。
@@ -102,7 +102,7 @@ Security Center の規制コンプライアンス ツールで適用した規制
 
 1. Security Center 内の **[Policy & Compliance]\(ポリシーとコンプライアンス\)** セクションで **[セキュリティ ポリシー]** を選択します。
 
-   ![ポリシー管理](./media/tutorial-security-policy/policy-management.png)
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="Azure Security Center でポリシー管理プロセスの開始":::
 
 2. 推奨設定を無効にするサブスクリプションまたは管理グループを選択します。
 
@@ -111,7 +111,7 @@ Security Center の規制コンプライアンス ツールで適用した規制
 
 1. **[有効なポリシーの表示]** を選択します。
 
-   ![ポリシーの表示](./media/tutorial-security-policy/view-effective-policy.png)
+    :::image type="content" source="./media/tutorial-security-policy/view-effective-policy.png" alt-text="サブスクリプションに割り当てられた有効なポリシーを開く方法":::
 
 1. 割り当てられたポリシーを選択します。
 
@@ -126,10 +126,8 @@ Security Center の規制コンプライアンス ツールで適用した規制
    > [!NOTE]
    > ポリシー無効化の変更が有効になるまでに、最大 12 時間かかる場合があります。
 
-
-
 ## <a name="next-steps"></a>次のステップ
-この記事では、セキュリティ ポリシーについて説明しました。 関連情報については、次の記事をご覧ください。
+このページでは、セキュリティ ポリシーについて説明しました。 関連情報については、次のページを参照してください。
 
 - [PowerShell を使用してポリシーを設定する方法を確認する](../governance/policy/assign-policy-powershell.md) - 
 - [Azure Policy でセキュリティ ポリシーを編集する方法を確認する](../governance/policy/tutorials/create-and-manage.md) - 

@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB クエリ言語の GetCurrentTimestamp
 description: Azure Cosmos DB での SQL システム関数 GetCurrentTimestamp について学習します。
-author: ginamr
+author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.author: girobins
+ms.date: 02/03/2021
+ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 6720b0e5d13f2baaaf063fef2244b0c1f1863571
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: fa7d1ec2af12065fb7d761073cd982a561cf53c1
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341928"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524263"
 ---
 # <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,7 +34,8 @@ Unix エポックから現在までに経過したミリ秒数を表す符号付
 
 GetCurrentTimestamp() は非決定論的関数です。 返される結果は UTC (協定世界時) です。
 
-このシステム関数では、インデックスは使用されません。
+> [!NOTE]
+> このシステム関数では、インデックスは使用されません。 値を現在の時刻と比較する場合は、現在の時刻をクエリ実行前に取得して、その定数文字列値を `WHERE` 句で使用します。
 
 ## <a name="examples"></a>例
   

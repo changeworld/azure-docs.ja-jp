@@ -14,24 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: d64c6383b9a83b759dd8368a4e3e0f1847b5ee16
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 7d52d49ab5d3a47dd69fdc1708f9e52f4f796a92
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791225"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390642"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
-> 
 > [!IMPORTANT]
-> 2019 年 4 月 30 日の時点で、パッチ オーケストレーション アプリケーション バージョン 1.2.* はサポートされなくなりました。 必ず最新バージョンにアップグレードしてください。
+> 2019 年 4 月 30 日の時点で、パッチ オーケストレーション アプリケーション バージョン 1.2.* はサポートされなくなりました。 必ず最新バージョンにアップグレードしてください。 OS ディスクを交換せずに、"Windows Update" によってオペレーティング システムの修正プログラムを適用する VM のアップグレードは、サポートされません。 
 
 > [!NOTE]
-> [仮想マシン スケール セットでの OS イメージの自動アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)の取得は、Azure でオペレーティング システムに修正プログラムが適用された状態を保つためのベスト プラクティスです。 仮想マシン スケール セット ベースの OS イメージの自動アップグレードでは、スケール セットに Silver 以上の耐久性が必要です。
->
+> [仮想マシン スケール セットでの OS イメージの自動アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)の取得は、Azure でオペレーティング システムに修正プログラムが適用された状態を保つためのベスト プラクティスです。 仮想マシン スケール セット ベースの OS イメージの自動アップグレードでは、スケール セットに Silver 以上の耐久性が必要です。 持続性層がブロンズのノードのタイプでは、これはサポートされていません。この場合は、パッチ オーケストレーション アプリケーションを使用してください。
 
- パッチ オーケストレーション アプリケーション (POA) は、Azure Service Fabric Repair Manager サービスのラッパーであり、Azure 以外でホストされるクラスターに対して構成ベースの OS 修正プログラム スケジュールを有効にします。 POA は、Azure 以外でホストされるクラスターには必要ありませんが、更新ドメインによる修正プログラムのインストールのスケジュール設定は、ダウンタイムを発生させることなく Service Fabric クラスター ホストに修正プログラムを適用するために必要です。
+パッチ オーケストレーション アプリケーション (POA) は、Azure Service Fabric Repair Manager サービスのラッパーであり、Azure 以外でホストされるクラスターに対して構成ベースの OS 修正プログラム スケジュールを有効にします。 POA は、Azure 以外でホストされるクラスターには必要ありませんが、更新ドメインによる修正プログラムのインストールのスケジュール設定は、ダウンタイムを発生させることなく Service Fabric クラスター ホストに修正プログラムを適用するために必要です。
 
 POA は、ダウンタイムを発生させることなく、Service Fabric クラスターでのオペレーティング システムへの修正プログラムの適用を自動化する Service Fabric アプリケーションです。
 
@@ -155,7 +153,7 @@ Windows の自動更新では、複数のクラスター ノードが同時に�
 
 ニーズに合わせて POA の動作を構成することができます。 アプリケーションを作成または更新するときにアプリケーション パラメーターを渡して、既定値をオーバーライドします。 `Start-ServiceFabricApplicationUpgrade` または `New-ServiceFabricApplication` コマンドレットに `ApplicationParameter` を指定することで、アプリケーション パラメーターを指定できます。
 
-| パラメーター        | Type                          | 詳細 |
+| パラメーター        | 種類                          | 詳細 |
 |:-|-|-|
 |MaxResultsToCache    |Long                              | キャッシュする必要がある Windows Update の結果の最大数。 <br><br>既定値は 3000 で、以下が前提となります。 <br> &nbsp;&nbsp;- ノード数が 20 である。 <br> &nbsp;&nbsp;- 月あたりのノードの更新数が 5 である。 <br> &nbsp;&nbsp;- 操作あたりの結果の数を 10 にできる。 <br> &nbsp;&nbsp;- 過去 3 か月の結果を格納する必要がある。 |
 |TaskApprovalPolicy   |列挙型 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy は、コーディネーター サービスが、Service Fabric クラスター ノードに Windows Update をインストールする際に使用するポリシーを示しています。<br><br>使用できる値は、次のとおりです。 <br>*NodeWise*:Windows 更新プログラムは、一度に 1 つのノードにインストールされます。 <br> *UpgradeDomainWise*:Windows 更新プログラムは、一度に 1 つの更新ドメインにインストールされます (最大で、更新ドメインに属するすべてのノードに Windows 更新プログラムを適用できます)。<br><br> [FAQ](#frequently-asked-questions) に関するセクションを参照してください。これは、クラスターに最適なポリシーを決定するのに役立ちます。

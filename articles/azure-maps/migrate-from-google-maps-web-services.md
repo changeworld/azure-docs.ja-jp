@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 3bb0aadf81ba501070ce0c734847bb16c0378896
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 04bbb0465f26e82d247c53e7393c4476b9d36fde
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624040"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "100386851"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>チュートリアル:Google マップから Web サービスを移行する
 
@@ -54,7 +54,7 @@ Azure Maps と Google マップでは、どちらの場合も REST Web サービ
 
 次のサービス API は、Azure Maps では現在使用できません。
 
-- 地理的位置情報
+- Geolocation - Azure Maps には、Geolocation というサービスがあります。これは、位置情報に IP アドレスを提供しますが、現在、携帯電話基地局または WiFi の三角測量をサポートしていません。
 - 場所の詳細と写真。電話番号と Web サイトの URL は、Azure Maps Search API で利用できます。
 - Map URL
 - Nearest Roads - Web SDK を使用して実現できますが ([こちら](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic)を参照)、現在サービスとしては提供されていません。

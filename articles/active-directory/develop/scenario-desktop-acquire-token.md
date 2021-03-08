@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c58f4a553073eb3ed062ef9ec2a66c8e4f40e57b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 4a244c543aa83ae84891e3f942995dc340a7209d
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98785127"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582657"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ:トークンを取得する
 
@@ -445,7 +445,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-MSAL.NET では、次を使用する必要があります。
+MSAL.NET では、次のように使用します。
 
 ```csharp
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
@@ -922,7 +922,7 @@ if not result:
 
 ### <a name="device-code-flow"></a>デバイス コード フロー
 
-Web コントロールのないコマンドライン ツールを記述する際に前述のフローを使用できない (しない) 場合は、デバイス コード フローを使用する必要があります。
+Web コントロールのないコマンドライン ツールを記述するときに前述のフローを使用できない (しない) 場合は、デバイス コード フローを使用します。
 
 Azure AD による対話型認証には Web ブラウザーが必要です。 詳細については、[Web ブラウザーの使用](https://aka.ms/msal-net-uses-web-browser)に関する記事を参照してください。 Web ブラウザーを提供しないデバイスまたはオペレーティング システム上でユーザーを認証する場合、ユーザーはデバイス コード フローによって別のデバイス (コンピューターや携帯電話など) を使用して対話形式でサインインできます。 デバイス コード フローを使用すると、アプリケーションでは、これらのデバイスまたはオペレーティング システム用に設計された 2 ステップ プロセスを通じてトークンを取得します。 このようなアプリケーションには、IoT やコマンドライン ツール (CLI) で実行されるアプリケーションがあります。 考え方は次のとおりです。
 

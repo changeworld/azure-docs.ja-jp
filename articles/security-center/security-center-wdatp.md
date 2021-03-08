@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2020
+ms.date: 02/15/2021
 ms.author: memildin
-ms.openlocfilehash: 519285f2bad352aa16bdc8d9a1db7a63c2eb04e5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5a0fefd91e0aa60f6a3813513aa82a75b3557c7c
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876395"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526971"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Security Center の統合 EDR ソリューションを使用してエンドポイントを保護する: Microsoft Defender for Endpoint
 
@@ -43,12 +43,11 @@ Microsoft Defender for Endpoint は、クラウドで提供される包括的な
 | リリース状態:                  | 一般提供 (GA)                                                                                                                                                                                                                                                                                      |
 | 価格:                        | [Azure Defender for servers](security-center-pricing.md) が必要                                                                                                                                                                                                                                             |
 | サポート対象のプラットフォーム:            | Windows を実行している Azure マシン<br>Windows を実行している Azure Arc マシン|
-| サポート対象の Windows のバージョン:  |  • Windows Server 2016、2012 R2、2008 R2 SP1 での検出が Security Center でサポートされています。<br> • この統合を使用したサーバー エンドポイントの監視は、Office 365 GCC のお客様に対して無効になっています。|
-| サポートされていないオペレーティング システム:  |  • Windows Server 2019<br> • Windows 10<br> • Linux|
+| サポート対象の Windows のバージョン:  |  • Windows Server 2019、2016、2012 R2、2008 R2 SP1 での検出が Security Center でサポートされています<br> • この統合を使用したサーバー エンドポイントの監視は、Office 365 GCC のお客様に対して無効になっています。<br> • [Windows 10 Enterprise マルチセッション](../virtual-desktop/windows-10-multisession-faq.md) (旧称 Enterprise for Virtual Desktops (EVD)<br> •  [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)|
+| サポートされていないオペレーティング システム:  |  • Windows 10 (EVD と WVD 以外)<br> • Linux|
 | 必要なロールとアクセス許可: | 統合を有効または無効にするには: **セキュリティ管理者** または **所有者**<br>Security Center の MDATP アラートを表示するには: **セキュリティ閲覧者**、**閲覧さ**、**リソース グループの共同作成者**、**リソース グループの所有者**、**セキュリティ管理者**、**サブスクリプションの所有者**、または **サブスクリプションの共同作成者**|
-| クラウド:                         | ![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov<br>![いいえ](./media/icons/no-icon.png) グローバルな Azure クラウドでワークロードを実行している GCC の顧客                                                        |
+| クラウド:                         | ![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![いいえ](./media/icons/no-icon.png) China Gov、その他の Gov<br>![いいえ](./media/icons/no-icon.png) グローバルな Azure クラウドでワークロードを実行している GCC の顧客                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
-
 
 ## <a name="microsoft-defender-for-endpoint-features-in-security-center"></a>Security Center の Microsoft Defender for Endpoint 機能
 
@@ -62,7 +61,7 @@ Microsoft Defender for Endpoint では次のものが提供されます。
 
 Defender for Endpoint を Security Center と統合すると、次の追加機能を利用することができます。
 
-- **自動オンボード**。 Security Center によって監視されているすべての Windows サーバー向けの Microsoft Defender for Endpoint センサーが、Security Center によって自動的に有効にされます。 ローカル スクリプト、グループ ポリシー オブジェクト (GPO)、または [Microsoft Endpoint Configuration Manager](/mem/configmgr/) (旧称 SCCM) を介してオンボードする必要がある、Windows Server 2019 を実行しているものは除外されます。
+- **自動オンボード**。 Security Center によって監視されているすべての Windows サーバー向けの Microsoft Defender for Endpoint センサーが、Security Center によって自動的に有効にされます。
 
 - **1 つのウィンドウ**。 Security Center コンソールには、Microsoft Defender for Endpoint のアラートが表示されます。 さらに調査するには、Microsoft Defender for Endpoint 独自のポータル ページを使用します。ここには、アラート プロセス ツリーやインシデント グラフなどの追加情報が表示されます。 最大 6 か月前まで遡って、すべての動作を示す詳細なマシン タイムラインを見ることもできます。
 

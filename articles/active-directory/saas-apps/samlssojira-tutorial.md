@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: fe241a3fd74e1421f1bd3d39087fe776ee7b61d9
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e1440feacd10935b15195110cd7ea3e20b4d523c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891586"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687636"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>チュートリアル:Azure Active Directory と SAML SSO for Jira by resolution GmbH の統合
 
@@ -41,7 +41,7 @@ Azure AD の統合と SAML SSO for Jira by resolution GmbH を構成するには
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* SAML SSO for Jira by resolution GmbH では、 **SP** と **IDP** によって開始される SSO がサポートされます
+* SAML SSO for Jira by resolution GmbH では、**SP** と **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-an-enterprise-application-for-single-sign-on"></a>シングル サインオン用のエンタープライズ アプリケーションの追加
 
@@ -61,7 +61,7 @@ Azure AD でシングル サインオンを設定するには、新しいエン�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. [検索] ボックスに「 **SAML SSO for Jira by resolution GmbH** 」と入力し、結果パネルで **[SAML SSO for Jira by resolution GmbH]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。 エンタープライズ アプリの名前を変更することもできます。
+4. [検索] ボックスに「**SAML SSO for Jira by resolution GmbH**」と入力し、結果パネルで **[SAML SSO for Jira by resolution GmbH]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。 エンタープライズ アプリの名前を変更することもできます。
 
      ![結果一覧の SAML SSO for Jira by resolution GmbH](common/search-new-app.png)
 
@@ -114,7 +114,7 @@ SAML SSO for Jira by resolution GmbH でシングル サインオンを構成す
     > [!NOTE]
     > 識別子、応答 URL、サインオン URL では、 **\<server-base-url>** を Jira インスタンスのベース URL に置き換えます。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。 問題がある場合は、[SAML SSO for Jira by resolution GmbH クライアント サポート チーム](https://www.resolution.de/go/support)に問い合わせてください。
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **フェデレーション メタデータ XML** をダウンロードし、コンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**フェデレーション メタデータ XML** をダウンロードし、コンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -212,9 +212,9 @@ SAML SSO for Jira by resolution GmbH でシングル サインオンを構成す
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **Britta Simon** 」と入力します。
+    a. **[名前]** フィールドに「**Britta Simon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「 <b>BrittaSimon@contoso.com</b>」と入力します。
+    b. **[ユーザー名]** フィールドに「<b>BrittaSimon@contoso.com</b>」と入力します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
@@ -228,7 +228,7 @@ SAML SSO for Jira by resolution GmbH でシングル サインオンを構成す
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、このチュートリアルの冒頭で作成したエンタープライズ アプリケーションを検索します。 チュートリアルの手順どおりに行っている場合は、 **SAML SSO for Jira by resolution GmbH** という名前です。 別の名前を指定した場合は、その名前を検索します。
+2. アプリケーションの一覧で、このチュートリアルの冒頭で作成したエンタープライズ アプリケーションを検索します。 チュートリアルの手順どおりに行っている場合は、**SAML SSO for Jira by resolution GmbH** という名前です。 別の名前を指定した場合は、その名前を検索します。
 
     ![アプリケーションの一覧の SAML SSO for Jira by resolution GmbH のリンク](common/all-applications.png)
 
@@ -248,7 +248,7 @@ SAML SSO for Jira by resolution GmbH でシングル サインオンを構成す
 
 ### <a name="create-the-test-user-also-in-jira"></a>Jira でもテスト ユーザーを作成する
 
-Azure AD ユーザーが SAML SSO for Jira by resolution GmbH にサインインできるようにするには、ユーザーを SAML SSO for Jira by resolution GmbH にプロビジョニングする必要があります。 このチュートリアルの場合、プロビジョニングは手作業で行う必要があります。 ただし、resolution による SAML SSO プラグインでは、他のプロビジョニング モデルも使用できます ( **Just In Time** プロビジョニングなど)。 [SAML SSO by resolution GmbH](https://wiki.resolution.de/doc/saml-sso/latest/all) のドキュメントをご覧ください。 質問がある場合は、[resolution のサポート](https://www.resolution.de/go/support)に問い合わせてください。
+Azure AD ユーザーが SAML SSO for Jira by resolution GmbH にサインインできるようにするには、ユーザーを SAML SSO for Jira by resolution GmbH にプロビジョニングする必要があります。 このチュートリアルの場合、プロビジョニングは手作業で行う必要があります。 ただし、resolution による SAML SSO プラグインでは、他のプロビジョニング モデルも使用できます (**Just In Time** プロビジョニングなど)。 [SAML SSO by resolution GmbH](https://wiki.resolution.de/doc/saml-sso/latest/all) のドキュメントをご覧ください。 質問がある場合は、[resolution のサポート](https://www.resolution.de/go/support)に問い合わせてください。
 
 **ユーザー アカウントを手作業でプロビジョニングするには、次の手順のようにします。**
 
@@ -272,7 +272,7 @@ Azure AD ユーザーが SAML SSO for Jira by resolution GmbH にサインイン
 
     a. **[Email address]\(電子メール アドレス\)** ボックスに、ユーザーのメール アドレス <b>BrittaSimon@contoso.com</b> を入力します。
 
-    b. **[Full Name]\(フル ネーム\)** ボックスに、ユーザーの氏名を入力します: **Britta Simon** 。
+    b. **[Full Name]\(フル ネーム\)** ボックスに、ユーザーの氏名を入力します: **Britta Simon**。
 
     c. **[Username]\(ユーザー名\)** ボックスに、ユーザーのメール アドレス <b>BrittaSimon@contoso.com</b> を入力します。 
 
@@ -295,7 +295,7 @@ Azure AD ユーザーが SAML SSO for Jira by resolution GmbH にサインイン
 
 基本的に、Jira にアクセスするすべてのユーザーは、プラグインでオプションをアクティブ化した後、シングル サインオンにリダイレクトされます。
 
-SSO リダイレクトを有効にするには、 **お使いの Jira インスタンス** で次のようにします。
+SSO リダイレクトを有効にするには、**お使いの Jira インスタンス** で次のようにします。
 
 1. Jira で SAML SSO プラグインの構成ページにアクセスします。
 1. 左側のパネルで **[Redirection]\(リダイレクト\)** をクリックします。
@@ -308,7 +308,7 @@ SSO リダイレクトを有効にするには、 **お使いの Jira インス�
 
 1. 右上隅の **[Save Settings]\(設定の保存\)** ボタンをクリックします。
 
-`https://\<server-base-url>/login.jsp?nosso` に移動して **[Enable nosso]\(nosso を有効にする\)** をオンにした場合は、このオプションを有効にした後でもユーザー名とパスワードの入力を求められることがあります。 やはり、 **\<server-base-url>** はベース URL に置き換えます。
+`https://<server-base-url>/login.jsp?nosso` に移動して **[Enable nosso]\(nosso を有効にする\)** をオンにした場合は、このオプションを有効にした後でもユーザー名とパスワードの入力を求められることがあります。 やはり、 **\<server-base-url>** はベース URL に置き換えます。
 
 
 ## <a name="additional-resources"></a>その他のリソース

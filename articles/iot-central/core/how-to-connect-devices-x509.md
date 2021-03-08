@@ -8,18 +8,25 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: d36cf2344891bb70ab5499e77699b111429a936b
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: cf0db71600c9350b4d70e6375f509a6e88709f70
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121835"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378334"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>IoT Central アプリケーション用の Node.js デバイス SDK を使用して、x.509 証明書を使用するデバイスを接続する方法
 
 IoT Central では、デバイスとアプリケーションの間の通信をセキュリティで保護するために、共有アクセス署名 (SAS) と X.509 証明書の両方がサポートされています。 SAS は、「[クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](./tutorial-connect-device.md)」チュートリアルで使用されます。 この記事では、X.509 を使用するようにコード サンプルを変更する方法について説明します。  運用環境では、X.509 証明書はお勧めしません。 詳細については、「[Azure IoT Central に接続する](./concepts-get-connected.md)」を参照してください。
 
 この記事では、X.509 の 2 つの使用方法を示します。通常は運用環境で使用される[グループ登録](how-to-connect-devices-x509.md#use-a-group-enrollment)と、テストに役立つ[個別登録](how-to-connect-devices-x509.md#use-an-individual-enrollment)です。
+
+この記事のコード スニペットでは、JavaScript を使用します。 他の言語のコード サンプルについては、次を参照してください。
+
+- [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_ll_client_x509_sample)
+- [C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/device/X509DeviceCertWithChainSample)
+- [Java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
+- [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -199,7 +206,7 @@ filename | 目次
 
 1. _mytestselfcertprimary_key.pem_ と _mytestselfcertprimary_cert.pem_ ファイルを **simple_thermostat.js** アプリケーションが格納されている _azure-iot-sdk-node/device/samples/pnp_ フォルダーにコピーします。 このアプリケーションは、[デバイスの接続 (JavaScript) に関するチュートリアル](./tutorial-connect-device.md)の完了時に使用しました。
 
-1. 使用した環境変数を次のように変更します。
+1. 上記のサンプルで使用した環境変数を次のように変更します。
 
     ```cmd/sh
     set IOTHUB_DEVICE_DPS_DEVICE_ID=mytestselfcertprimary
@@ -219,6 +226,6 @@ filename | 目次
 
 _mytestselfcertsecondary_ 証明書に対して、上記の手順を繰り返すことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、X.509 証明書を使用するデバイスを接続する方法を学習できました。推奨される次の手順は、[Azure CLI を使用してデバイスの接続を監視する](howto-monitor-devices-azure-cli.md)方法を確認することです。

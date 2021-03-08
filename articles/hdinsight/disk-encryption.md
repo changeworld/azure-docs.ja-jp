@@ -5,12 +5,12 @@ description: この記事では、Azure HDInsight クラスターの保存デー
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: c9e50885a7283d3f7fcd231bf222415389212a93
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 58b3d892ea24430a9d951a5a0230282f6c4fd584
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927326"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988611"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Azure HDInsight の保存データの二重暗号化
 
@@ -116,7 +116,7 @@ HDInsight では、Azure Key Vault にのみ対応しています。 自分の�
 
 これで新しい HDInsight クラスターを作成する準備が整いました。 カスタマー マネージド キーは、クラスター作成時に新しいクラスターにのみ適用できます。 カスタマー マネージド キー クラスターからは暗号化を削除することはできず、カスタマー マネージド キーは既存のクラスターには追加できません。
 
-[2020 年 11 月のリリース](hdinsight-release-notes.md#release-date-11182020)以降、HDInsight では、バージョン管理されているものとバージョンレスの両方のキー URI を使用したクラスター作成がサポートされています。 バージョンレスのキー URI でクラスターを作成すると、HDInsight クラスターでは、Azure Key Vault でキーが更新されたときにキーの自動ローテーションが試行されます。 バージョン管理されたキー URI でクラスターを作成する場合は、「[暗号キーを入れ替える](#rotating-the-encryption-key)」で説明されているように、手動でキー ローテーションを実行する必要があります。
+2020 年 11 月のリリース以降、HDInsight では、バージョン管理されているものとバージョンレスの両方のキー URI を使用したクラスター作成がサポートされています。 バージョンレスのキー URI でクラスターを作成すると、HDInsight クラスターでは、Azure Key Vault でキーが更新されたときにキーの自動ローテーションが試行されます。 バージョン管理されたキー URI でクラスターを作成する場合は、「[暗号キーを入れ替える](#rotating-the-encryption-key)」で説明されているように、手動でキー ローテーションを実行する必要があります。
 
 2020 年 11 月のリリースより前に作成されたクラスターでは、バージョン管理されたキー URI を使用して手動でキー ローテーションを実行する必要があります。
 

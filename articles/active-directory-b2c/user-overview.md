@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c3e6c1d6bfa83ef238ef38b25b189510cf142a38
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c42b79cb8b92b5f96f31eb58f091ff0ce79b84f5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661087"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652132"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー アカウントの概要
 
@@ -80,7 +80,7 @@ Azure Active Directory B2C (Azure AD B2C) には、作成できるアカウン�
 
 コンシューマー ユーザー アカウントを作成するときに収集されるデータを指定できます。 詳細については、[ユーザー属性の追加とユーザー入力のカスタマイズ](configure-user-input.md)に関する記事を参照してください。
 
-コンシューマー アカウントの管理の詳細については、「[Microsoft Graph での Azure AD B2C ユーザーアカウントの管理](manage-user-accounts-graph-api.md)」を参照してください。
+コンシューマー アカウントの管理の詳細については、「[Microsoft Graph での Azure AD B2C ユーザーアカウントの管理](./microsoft-graph-operations.md)」を参照してください。
 
 ### <a name="migrate-consumer-user-accounts"></a>コンシューマー ユーザー アカウントを移行する
 

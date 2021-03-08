@@ -7,22 +7,22 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 40bc76f839cf6757b8f874112504249e611c3e1a
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d01e7817906927295591353b710afe2899aacdf1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98605947"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726480"
 ---
 # <a name="setting-up-diagnostics-with-trusted-platform-module-tpm-endpoint-of-azure-attestation"></a>Azure Attestation のトラステッド プラットフォーム モジュール (TPM) エンドポイントで診断を設定する
 
-Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](/azure/azure-monitor/platform/platform-logs-overview)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 [プラットフォーム メトリック](/azure/azure-monitor/platform/data-platform-metrics)は、既定で収集され、通常は Azure Monitor メトリック データベースに格納されます。 この記事では、プラットフォーム メトリックとプラットフォーム ログをさまざまな送信先に送信するための診断設定を作成して構成する方法について詳しく説明します。 
+Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](../azure-monitor/essentials/platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 [プラットフォーム メトリック](../azure-monitor/essentials/data-platform-metrics.md)は、既定で収集され、通常は Azure Monitor メトリック データベースに格納されます。 この記事では、プラットフォーム メトリックとプラットフォーム ログをさまざまな送信先に送信するための診断設定を作成して構成する方法について詳しく説明します。 
 
-TPM エンドポイント サービスは、アクティビティを監視する目的に使用できます。診断設定を使用して有効にします。 PowerShell を使用して TPM サービス エンドポイントの [Azure Monitoring](/azure/azure-monitor/overview) を設定するには、以下の手順に従ってください。 
+TPM エンドポイント サービスは、アクティビティを監視する目的に使用できます。診断設定を使用して有効にします。 PowerShell を使用して TPM サービス エンドポイントの [Azure Monitoring](../azure-monitor/overview.md) を設定するには、以下の手順に従ってください。 
 
 Azure Attestation サービスを設定する。 
 
-[Azure PowerShell を使用して Azure Attestation を設定する](/azure/attestation/quickstart-powershell#:~:text=%20Quickstart%3A%20Set%20up%20Azure%20Attestation%20with%20Azure,Register%20Microsoft.Attestation%20resource%20provider.%20Register%20the...%20More%20)
+[Azure PowerShell を使用して Azure Attestation を設定する](./quickstart-powershell.md)
 
 ```powershell
 
@@ -41,4 +41,4 @@ Azure Attestation サービスを設定する。
  Set-AzDiagnosticSetting -ResourceId $ attestationProvider.Id -StorageAccountId $ storageAccount.Id -Enabled $true 
 
 ```
-アクティビティ ログは、ストレージ アカウントの [コンテナー] セクションにあります。 詳細については、[Azure リソースからリソース ログを収集し、Azure Monitor で分析する](/azure/azure-monitor/learn/tutorial-resource-logs)方法に関する記事を参照してください。
+アクティビティ ログは、ストレージ アカウントの [コンテナー] セクションにあります。 詳細については、[Azure リソースからリソース ログを収集し、Azure Monitor で分析する](../azure-monitor/essentials/tutorial-resource-logs.md)方法に関する記事を参照してください。

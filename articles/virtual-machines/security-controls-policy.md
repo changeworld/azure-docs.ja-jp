@@ -1,18 +1,18 @@
 ---
 title: Azure Virtual Machines 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Virtual Machines に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 01/29/2021
+ms.date: 02/09/2021
 ms.topic: sample
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: bdbe26d851d9961563a976f4d5fd495ed5424fac
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 6e2d995ad7fae80c46ae5dd3075ebc4d84249417
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093255"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100098939"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-virtual-machines"></a>Azure Virtual Machines 用の Azure Policy 規制コンプライアンス コントロール 
 

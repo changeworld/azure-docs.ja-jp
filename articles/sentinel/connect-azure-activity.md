@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 88f363406ec40dfa439a52ad351501d1c64dce95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f0bac363e020826e34df3cb0b4e3d3582990302
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564484"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595439"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Azure アクティビティ ログからデータを接続する
 
-[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)から Azure Sentinel にシングル クリックでログをストリーミングできます。 アクティビティ ログは、Azure Resource Manager オペレーショナル データから Service Health イベントに関する最新情報まで、Azure 全体でサブスクリプション レベルのイベントを記録して表示するサブスクリプション ログです。 アクティビティ ログを使用して、お使いのサブスクリプションのリソースに対して実行されたすべての書き込み操作 (PUT、POST、DELETE) について、"いつ誰が何を" 行ったのかを確認できます。 また、操作の状態やその他の関連するプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作や、クラシック/"RDFE" モデルを使用しているリソースに対する操作は含まれません。 
+[Azure アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)から Azure Sentinel にシングル クリックでログをストリーミングできます。 アクティビティ ログは、Azure Resource Manager オペレーショナル データから Service Health イベントに関する最新情報まで、Azure 全体でサブスクリプション レベルのイベントを記録して表示するサブスクリプション ログです。 アクティビティ ログを使用して、お使いのサブスクリプションのリソースに対して実行されたすべての書き込み操作 (PUT、POST、DELETE) について、"いつ誰が何を" 行ったのかを確認できます。 また、操作の状態やその他の関連するプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作や、クラシック/"RDFE" モデルを使用しているリソースに対する操作は含まれません。 
 
 ## <a name="prerequisites"></a>前提条件
 

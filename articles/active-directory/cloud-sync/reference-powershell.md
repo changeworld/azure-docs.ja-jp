@@ -11,52 +11,48 @@ ms.date: 11/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 486a1c6c8103db8dc938a956eb1f77da3f15f49c
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: aa358b0c9d7747584deabe761160d3bcbcde8feb
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98612589"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593182"
 ---
 # <a name="aadcloudsynctools-powershell-module-for-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期用 AADCloudSyncTools PowerShell モジュール
 
-パブリック プレビュー更新 2 のリリースでは、Microsoft によって AADCloudSyncTools PowerShell モジュールが導入されました。  このモジュールには、Azure AD Connect クラウド同期のデプロイを管理するために使用できる便利な一連のツールが用意されています。
+AADCloudSyncTools モジュールには、Azure AD Connect クラウド同期のデプロイを管理するために使用できる一連の便利なツールが用意されています。
 
 ## <a name="pre-requisites"></a>前提条件
 次の前提条件が必要です。
-- このモジュールでは MSAL 認証が使用されるため、MSAL.PS モジュールがインストールされている必要があります。 Azure AD または Azure AD Preview に依存しなくなりました。   確認するには、管理者用 PowerShell ウィンドウで `Get-module MSAL.PS` を実行します。 モジュールが正しくインストールされている場合は、応答が返されます。  `Install-AADCloudSyncToolsPrerequisites` を使用して、MSAL.PS の最新バージョンをインストールできます
-- AzureAD PowerShell モジュール。  一部のコマンドレットは、タスクを実行するために AzureAD PowerShell モジュールの一部に依存しています。  確認するには、管理者用 PowerShell ウィンドウで `Get-module AzureAD` を実行します。 応答が返されるはずです。  `Install-AADCloudSyncToolsPrerequisites` を使用して、AzureAD PowerShell モジュールの最新バージョンをインストールできます。
-- PowerShell からモジュールをインストールすると、TLS 1.2 の使用が強制される場合があります。  モジュールを確実にインストールできるようにするには、次を設定します: \
-`[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 `
+
+- このモジュールのすべての前提条件は、`Install-AADCloudSyncToolsPrerequisites` を使用して自動的にインストールすることができます。
+- このモジュールでは、MSAL 認証が使用されるため、MSAL.PS モジュールがインストールされている必要があります。 確認するには、PowerShell ウィンドウで `Get-module MSAL.PS -ListAvailable` を実行します。 モジュールが正しくインストールされている場合は、応答が返されます。 `Install-AADCloudSyncToolsPrerequisites` を使用して、MSAL.PS の最新バージョンをインストールできます
+- AzureAD PowerShell モジュールは、このモジュールの機能の前提条件となるものではありませんが、`Install-AADCloudSyncToolsPrerequisites` を使用して自動的にインストールされるようにすると便利です。
+- PowerShell から手動でモジュールをインストールするには、TLS 1.2 の適用が必要です。 モジュールを確実にインストールできるようにするには、使用する前に、PowerShell セッションで次のように設定します
+  ```
+   Install-Module:
+  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
+  ```
+
 
 ## <a name="install-the-aadcloudsynctools-powershell-module"></a>AADCloudSyncTools PowerShell モジュールをインストールする
 AADCloudSyncTools モジュールをインストールして使用するには、次の手順を実行します。
 
-1.  管理者特権で Windows PowerShell を開きます
-2.  「`[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12`」と入力して Enter キーを押します。
-3.  次を入力するか、コピーして貼り付けます。 
-    ``` powershell
-    Import-module -Name "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Utility\AADCloudSyncTools"
-    ```
-3.  Enter キーを押します。
-4.  モジュールがインストールされたことを確認するには、次のように入力するか、コピーして貼り付けます。
-    ```powershell
-    Get-module AADCloudSyncTools
-    ```
-5.  モジュールに関する情報が表示されます。
-6.  次に、以下を実行します
-    ``` powershell
-    Install-AADCloudSyncToolsPrerequisites
-    ```
-7.  これにより、PowerShell Get モジュールがインストールされます。  PowerShell ウィンドウを閉じます。
-8.  管理者特権で Windows PowerShell を開きます
-9.  手順 3 を使用してモジュールを再度インポートします。
-10. `Install-AADCloudSyncToolsPrerequisites` を実行して MSAL および AzureAD モジュールをインストールします
+1. 管理者特権で Windows PowerShell を開きます
+2. `Import-module -Name "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Utility\AADCloudSyncTools"` を入力するか、コピーして貼り付けます
+3. Enter キーを押します。
+4. モジュールがインポートされたことを確認するには、`Get-module AADCloudSyncTools` を入力するか、コピーして貼り付けます
+5. モジュールに関する情報が表示されます。
+6. 次に、AADCloudSyncTools モジュールの前提条件をインストールするには、`Install-AADCloudSyncToolsPrerequisites` を実行します
+7. 最初の実行時に、PoweShellGet モジュールが存在しない場合は、インストールされます。 新しい PowershellGet モジュールを読み込むには、PowerShell ウィンドウを閉じ、管理者特権で新しい PowerShell セッションを開きます。 
+8. 手順 3 を使用してモジュールを再度インポートします。
+9. `Install-AADCloudSyncToolsPrerequisites` を実行して MSAL および AzureAD モジュールをインストールします
 11. すべての前提要件が正常にインストールされているはずです ![モジュールのインストール](media/reference-powershell/install-1.png)
+
 
 ## <a name="aadcloudsynctools--cmdlets"></a>AADCloudSyncTools コマンドレット
 ### <a name="connect-aadcloudsynctools"></a>Connect-AADCloudSyncTools
-AzureAD モジュールを使用して Azure AD に接続し、Microsoft Graph のトークンを要求するために MSAL.PS モジュールを使用します
+MSAL.PS モジュールを使用して、Azure AD 管理者が Microsoft Graph にアクセスするためのトークンを要求します 
 
 
 ### <a name="export-aadcloudsynctoolslogs"></a>Export-AADCloudSyncToolsLogs

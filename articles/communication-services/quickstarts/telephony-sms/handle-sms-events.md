@@ -9,26 +9,25 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d6409c005e006372f55e77aeb4d977e6b1c45832
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: b3bdbef5680561d60ab4db6ee42033553e691ed3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936279"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101660125"
 ---
 # <a name="quickstart-handle-sms-events"></a>クイック スタート:SMS イベントの処理
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Azure Event Grid を使用して Communication Services の SMS イベントを処理することにより、Azure Communication Services を開始します。 
+Azure Event Grid を使用して Communication Services の SMS イベントを処理することにより、Azure Communication Services を開始します。
 
 ## <a name="about-azure-event-grid"></a>Azure Event Grid について
 
 [Azure Event Grid](../../../event-grid/overview.md) は、クラウドベースのイベント処理サービスです。 この記事では、[通信サービス イベント](../../concepts/event-handling.md)のイベントをサブスクライブし、イベントをトリガーして結果を表示する方法について説明します。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 この記事では、メッセージを収集して表示する Web アプリにイベントを送信します。
 
 ## <a name="prerequisites"></a>前提条件
-- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - Azure Communication Services リソース。 詳細については、[Azure Communication リソースの作成](../create-communication-resource.md)のクイックスタートに関するページを参照してください。
 - SMS が有効になっている電話番号。 [電話番号を取得します](./get-phone-number.md)。
 
@@ -44,13 +43,13 @@ Azure Portal で次の操作を行います。
 2. Event Grid に使用するサブスクリプションを選択します。
 3. 左側のメニューの **[設定]** で、 **[リソース プロバイダー]** を選択します。
 4. **Microsoft.EventGrid** を探します。
-5. 登録されていない場合は、 **[登録]** を選択します。 
+5. 登録されていない場合は、 **[登録]** を選択します。
 
 登録完了まで少し時間がかかることがあります。 **[最新の情報に更新]** を選択して、状態を更新します。 **[状態]** が **[登録済み]** に になったら、次に進めることができます。
 
 ### <a name="event-grid-viewer-deployment"></a>Event Grid ビューアーのデプロイ
 
-このクイックスタートでは、 [Azure Event Grid ビューアーのサンプル](/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)を使用して、ほぼリアルタイムでイベントを表示します。 これにより、リアルタイム フィードのエクスペリエンスがユーザーに提供されます。 さらに、各イベントのペイロードも検査に使用できるようにする必要があります。  
+このクイックスタートでは、 [Azure Event Grid ビューアーのサンプル](/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/)を使用して、ほぼリアルタイムでイベントを表示します。 これにより、リアルタイム フィードのエクスペリエンスがユーザーに提供されます。 さらに、各イベントのペイロードも検査に使用できるようにする必要があります。
 
 ## <a name="subscribe-to-the-sms-events-using-web-hooks"></a>Webhook を使用して SMS イベントをサブスクライブする
 
@@ -62,7 +61,7 @@ Azure Portal で次の操作を行います。
 
 **[イベント サブスクリプションの作成]** ページで、イベント サブスクリプションの **名前** を入力します。
 
-特定のイベントをサブスクライブすることで、どの SMS イベントを追跡し、どこにイベントを送信するかを Event Grid に伝えることができます。 サブスクライブするイベントをドロップダウン メニューから選択します。 SMS の場合は、`SMS Received` と `SMS Delivery Report Received` を選択できます。 
+特定のイベントをサブスクライブすることで、どの SMS イベントを追跡し、どこにイベントを送信するかを Event Grid に伝えることができます。 サブスクライブするイベントをドロップダウン メニューから選択します。 SMS の場合は、`SMS Received` と `SMS Delivery Report Received` を選択できます。
 
 **システム トピック名** の入力を求められた場合は、一意の文字列を自由に指定してかまいません。 このフィールドはエクスペリエンスに影響を与えず、内部テレメトリの目的で使用されます。
 
@@ -70,7 +69,7 @@ Azure Portal で次の操作を行います。
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="SMS Received および SMS Delivery Report Received のイベントの種類が選択されていることを示すスクリーンショット。":::
 
-**[エンドポイントのタイプ]** には **[Webhook]** を選択します。 
+**[エンドポイントのタイプ]** には **[Webhook]** を選択します。
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="[エンドポイントのタイプ] フィールドが [Webhook] に設定されていることを示すスクリーンショット。":::
 
@@ -111,7 +110,7 @@ Communication Services サブスクリプションをクリーンアップして
 
 このクイックスタートでは、SMS イベントの使用方法について説明しました。 Event Grid サブスクリプションを作成することによって SMS メッセージを受信できます。
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [SMS を送信する](../telephony-sms/send.md)
 
 次のことも実行できます。

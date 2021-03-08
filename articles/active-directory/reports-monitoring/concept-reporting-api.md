@@ -17,12 +17,12 @@ ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2027f713baf2b8039187e933ffc7bb0b68b5cc5f
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: b6ef122cd36c3d4e9135876647075f22158df0d1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631963"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653237"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API の概要
 
@@ -51,7 +51,7 @@ Azure AD レポートに Microsoft Graph API を使用すると、一連の REST
 
 [Identity Protection リスク検出 API](/graph/api/resources/identityriskevent?view=graph-rest-beta) を使用すると、Microsoft Graph を使ってプログラムからセキュリティの検出にアクセスできます。 詳細については、「[Azure Active Directory Identity Protection と Microsoft Graph の基本](../identity-protection/howto-identity-protection-graph-api.md)」を参照してください。 
   
-また、[プロビジョニング ログ API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) を使用して、テナント内のプロビジョニング イベントにプログラムからアクセスすることもできます。 
+また、[プロビジョニング ログ API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) を使用して、テナント内のプロビジョニング イベントにプログラムからアクセスすることもできます。 
 
 ## <a name="apis-with-microsoft-graph-explorer"></a>Microsoft Graph Explorer を使用する API
 

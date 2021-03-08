@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 02/24/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b014f81354b2f7eb2fb06de540f16b08206d583e
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 2acc3d104786be330e3e799ad7bd96d703587581
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706094"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738992"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage にデータをインポートする
 
@@ -62,13 +62,13 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 
         `WAImportExport Unlock /externalKey:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`
 
-5. 管理者特権を使用して PowerShell またはコマンド ライン ウィンドウを開きます。 解凍されたフォルダーにディレクトリを変更するには、次のコマンドを実行します。
+5. 管理特権を使用して PowerShell またはコマンド ライン ウィンドウを開きます。 解凍されたフォルダーにディレクトリを変更するには、次のコマンドを実行します。
 
     `cd C:\WaImportExportV1`
 6. ドライブの BitLocker キーを取得するには、次のコマンドを実行します。
 
     `manage-bde -protectors -get <DriveLetter>:`
-7. ディスクを準備するには、次のコマンドを実行します。 **データ サイズによっては、数時間から数日かかることがあります。**
+7. ディスクを準備するには、次のコマンドを実行します。 **データ サイズによっては、ディスクの準備に数時間から数日かかることがあります。**
 
     ```powershell
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
@@ -86,13 +86,14 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
     |/bk:     |ドライブの BitLocker キー。 `manage-bde -protectors -get D:` の出力からの数値パスワードです      |
     |/srcdir:     |送付するディスクのドライブ文字の末尾に `:\` を付けます。 たとえば、「 `D:\` 」のように入力します。         |
     |/dstdir:     |Azure Storage 内の保存先コンテナーの名前。         |
-    |/blobtype:     |このオプションは、データをインポートする BLOB の種類を指定します。 これは、ブロック BLOB の場合は `BlockBlob` で、ページ BLOB の場合は `PageBlob` です。         |
-    |/skipwrite:     |コピーする必要がある新しいデータがなく、ディスク上の既存のデータを準備する必要があることを指定するオプション。          |
+    |/blobtype:     |このオプションは、データをインポートする BLOB の種類を指定します。 ブロック BLOB の場合、BLOB の種類は `BlockBlob` で、ページ BLOB の場合は `PageBlob` です。         |
+    |/skipwrite:     | コピーする必要がある新しいデータがなく、ディスク上の既存のデータを準備する必要があることを指定します。          |
     |/enablecontentmd5:     |有効にすると、このオプションにより、MD5 が計算されて、各 BLOB で `Content-md5` プロパティとして設定されます。 このオプションは、データが Azure にアップロードされた後に、`Content-md5` フィールドを使用する場合にのみ使用してください。 <br> このオプションはデータ整合性チェック (既定で実行) には影響しません。 この設定により、クラウドにデータをアップロードするためにかかる時間が長くなります。          |
 8. 送付する必要があるディスクごとに前の手順を繰り返します。 コマンド行の実行ごとに、指定された名前のジャーナル ファイルが作成されます。
 
     > [!IMPORTANT]
     > * ツールが存在するフォルダーと同じフォルダーに、ジャーナル ファイルと共に `<Journal file name>_DriveInfo_<Drive serial ID>.xml` ファイルも作成されます。 ジャーナル ファイルが大きすぎる場合、ジョブの作成時にジャーナル ファイルではなく .xml ファイルが使用されます。
+   > * ポータルで許可されるジャーナル ファイルの最大サイズは 2 MB です。 ジャーナル ファイルがこの制限を超えると、エラーが返されます。
 
 ## <a name="step-2-create-an-import-job"></a>手順 2:インポート ジョブの作成
 
@@ -101,13 +102,13 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 次の手順を実行して、Azure portal でインポート ジョブを作成します。
 
 1. https://portal.azure.com/ にログオンします。
-2. **[すべてのサービス] > [ストレージ] > [インポート/エクスポート ジョブ]** の順に移動します。
+2. **インポート/エクスポート ジョブ** を検索します。
 
-    ![インポート/エクスポートへの移動](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+    ![インポート/エクスポート ジョブの検索](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
-3. **[インポート/エクスポート ジョブの作成]** をクリックします。
+3. **[+新規]** を選択します。
 
-    ![[インポート/エクスポート ジョブの作成] をクリックします](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+    ![[新規] を選択して新しく作成する ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. **[基本]** で次のようにします。
 
@@ -118,7 +119,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
    * サブスクリプションを選択します。
    * リソース グループを入力または選択します。
 
-     ![インポート ジョブを作成する - 手順 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+     ![インポート ジョブを作成する - 手順 1](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
 
 5. **[ジョブの詳細]** で次の操作を実行します。
 
@@ -126,7 +127,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
    * データの保存先ストレージ アカウントを選択します。
    * 配送場所は、選んだストレージ アカウントのリージョンに基づいて自動的に入力されます。
 
-   ![インポート ジョブを作成する - 手順 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
+   ![インポート ジョブを作成する - 手順 2](./media/storage-import-export-data-to-blobs/import-to-blob-4.png)
 
 6. **[差出人住所の詳細]** で次の操作を実行します。
 
@@ -137,14 +138,14 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
        > [!TIP]
        > 1 人のユーザーの電子メール アドレスを指定する代わりに、グループ メール アドレスを提供します。 これにより、管理者が離れる場合でも、通知を受信します。
 
-     ![インポート ジョブの作成 - ステップ 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+     ![インポート ジョブの作成 - ステップ 3](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
 
 7. **[概要]** で次の操作を実行します。
 
    * 概要に表示されているジョブ情報を確認します。 ジョブ名と、Azure にディスクを送付するために使用する Azure データセンターの送付先住所をメモします。 この情報は、後で配送先住所ラベルに使用します。
    * **[OK]** をクリックしてインポート ジョブを作成します。
 
-     ![インポート ジョブを作成する - 手順 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+     ![インポート ジョブを作成する - 手順 4](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

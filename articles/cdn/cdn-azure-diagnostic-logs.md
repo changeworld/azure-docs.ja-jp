@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: fdb609a243656e2c75159cd2d4e70e2f965ae896
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 96e80de5b8b5ab0a046913ce40ca2d7254dd0133
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352118"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573224"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>診断ログ - Azure Content Delivery Network
 
@@ -78,7 +78,7 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
 ログに Log Analytics を使用するには、次の手順に従います。
 
 >[!NOTE] 
->これらの手順を完了するには、Log Analytics ワークスペースが必要です。 以下を参照してください:詳細については、「 **[Azure ポータルで Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)** 」を参照してください。
+>これらの手順を完了するには、Log Analytics ワークスペースが必要です。 以下を参照してください:詳細については、「 **[Azure ポータルで Log Analytics ワークスペースを作成する](../azure-monitor/logs/quick-create-workspace.md)** 」を参照してください。
     
 1. **[Diagnostic setting name]\(診断設定の名前\)** には、診断ログ設定の名前を入力します。
 
@@ -369,7 +369,7 @@ Microsoft ログ データの遅延 | Verizon ログ データの遅延 | Akamai
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [Azure 診断ログ](../azure-monitor/platform/platform-logs-overview.md)
+* [Azure 診断ログ](../azure-monitor/essentials/platform-logs-overview.md)
 * [Azure CDN の補助ポータルを使用したコア分析](./cdn-analyze-usage-patterns.md)
-* [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)
+* [Azure Monitor ログ](../azure-monitor/logs/log-query-overview.md)
 * [Azure Log Analytics REST API](/rest/api/loganalytics)

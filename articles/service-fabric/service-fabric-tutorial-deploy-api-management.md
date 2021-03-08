@@ -4,12 +4,12 @@ description: Azure API Management をすぐに使い始め、Service Fabric の�
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b89204e2df5c8e79200b780de38d06b1a93c1fa3
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 681a1c5241743a0164d83d73753efa0b6c446109
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702193"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735592"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Azure で API Management と Service Fabric を統合する
 
@@ -30,7 +30,7 @@ Service Fabric での Azure API Management のデプロイは高度なシナリ�
 作業を開始する前に、次のことを行います。
 
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
-* [Azure Powershell](/powershell/azure/install-az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールする。
+* [Azure PowerShell](/powershell/azure/install-az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
 * ネットワーク セキュリティ グループにセキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を作成します。
 * Windows クラスターをデプロイする場合は、Windows 開発環境を設定します。 [Visual Studio 2019](https://www.visualstudio.com)、**Azure 開発** ワークロード、**ASP.NET および Web 開発** ワークロード、 **.NET Core クロス プラットフォーム開発** ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
 
@@ -277,7 +277,7 @@ az deployment group create --name ApiMgmtDeployment --resource-group $ResourceGr
 
 クラスターは、クラスター リソース自体に加え、その他の Azure リソースで構成されます。 クラスターと、そのクラスターによって使用されるすべてのリソースを削除するための最も簡単な方法は、リソース グループを削除することです。
 
-Azure にサインインして、クラスターを削除するサブスクリプション ID を選択します。  サブスクリプション ID は、[Azure Portal](https://portal.azure.com) にログインして確認できます。 リソース グループとそのグループのクラスター リソースすべてを削除するには、[Remove-AzResourceGroup](/en-us/powershell/module/az.resources/remove-azresourcegroup) コマンドレットを使用します。
+Azure にサインインして、クラスターを削除するサブスクリプション ID を選択します。  サブスクリプション ID は、[Azure Portal](https://portal.azure.com) にログインして確認できます。 リソース グループとそのグループのクラスター リソースすべてを削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドレットを使用します。
 
 ```powershell
 $ResourceGroupName = "sfclustertutorialgroup"
@@ -293,6 +293,8 @@ az group delete --name $ResourceGroupName
 
 [API Management](../api-management/import-and-publish.md) の使用方法の詳細を確認する
 
+また、[Azure portal](../api-management/how-to-configure-service-fabric-backend.md) を使用して、API Management の Service Fabric バックエンドを作成および管理することもできます。
+
 [azure-powershell]: /powershell/azure/
 
 [apim-arm]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/apim.json
@@ -303,7 +305,6 @@ az group delete --name $ResourceGroupName
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png
-vice-fabric-scripts-and-templates/blob/master/templates/service-integration/network-apim.parameters.jsonn
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png

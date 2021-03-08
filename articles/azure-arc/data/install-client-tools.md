@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: ecf0f54913f980d879b562eb4aa8063acf6c4772
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6f42f712ecca77c00020304b63f5a1b0dbd77ad0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320249"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172322"
 ---
 # <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>Azure Arc 対応データ サービスをデプロイおよび管理するためのクライアント ツールをインストールする
 
@@ -36,7 +36,7 @@ ms.locfileid: "92320249"
 | Azure Data Studio 用の [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 拡張機能 | はい | Azure Data Studio の拡張機能。[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] がまだインストールされていない場合にインストールを行います。| Azure Data Studio の拡張機能ギャラリーからインストールします。|
 | Azure Data Studio 用の Azure Arc 拡張機能 | はい | Azure Data Studio の拡張機能は、Azure Arc 対応データ サービスの管理エクスペリエンスを提供します。 Azure Data Studio 用の [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 拡張機能に依存しています。 | Azure Data Studio の拡張機能ギャラリーからインストールします。|
 | Azure Data Studio の PostgreSQL 拡張機能 | いいえ | PostgreSQL の管理機能を提供する Azure Data Studio 用の PostgreSQL 拡張機能です。 | <!--{need link} [Install](../azure-data-studio/data-virtualization-extension.md) --> Azure Data Studio の拡張機能ギャラリーからインストールします。|
-| Azure CLI (az)<sup>1</sup> | はい | Azure のサービスを管理するための最新のコマンドライン インターフェイスです。 AKS デプロイと共に使用し、Azure Arc 対応データ サービスのインベントリと請求先データを Azure にアップロードします。 ([詳細情報](/cli/azure/?view=azure-cli-latest&preserve-view=true))。 | [インストール](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) |
+| Azure CLI (az)<sup>1</sup> | はい | Azure のサービスを管理するための最新のコマンドライン インターフェイスです。 AKS デプロイと共に使用し、Azure Arc 対応データ サービスのインベントリと請求先データを Azure にアップロードします。 ([詳細情報](/cli/azure/))。 | [インストール](/cli/azure/install-azure-cli) |
 | Kubernetes CLI (kubectl)<sup>2</sup> | はい | Kubernetes クラスターを管理するためのコマンドライン ツールです ([詳細情報](https://kubernetes.io/docs/tasks/tools/install-kubectl/))。 | [Windows](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-with-powershell-from-psgallery) \| [Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-using-native-package-management) |
 | curl <sup>3</sup> | 一部のサンプル スクリプトで必要です。 | URL でデータを転送するためのコマンドライン ツールです。 | [Windows](https://curl.haxx.se/windows/) \| Linux: curl パッケージのインストール |
 | oc | Red Hat OpenShift と Azure Redhat OpenShift の展開に必要です。 |`oc` は、Open Shift コマンド ライン インターフェイス (CLI) です。 | [CLI のインストール](https://docs.openshift.com/container-platform/4.4/cli_reference/openshift_cli/getting-started-cli.html#installing-the-cli)

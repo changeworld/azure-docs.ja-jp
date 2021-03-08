@@ -1,22 +1,18 @@
 ---
 title: Azure Databricks Delta Lake との間でデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure Databricks Delta Lake との間で双方向にデータをコピーする方法について説明します。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/24/2020
-ms.openlocfilehash: e32b93c669bffd382b1eb648111f9b8931b07eac
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: bdf71276d59dec9a19e29ae7f49cb92a0512c05a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221144"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364241"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Databricks Delta Lake をコピー先またはコピー元としてデータをコピーする
 
@@ -151,8 +147,8 @@ Azure Databricks Delta Lake からデータをコピーするために、コピ�
 | type                         | コピー アクティビティのソースの type プロパティは **AzureDatabricksDeltaLakeSource** を設定する必要があります。 | はい      |
 | query          | データを読み取るための SQL クエリを指定します。 タイム トラベル制御については、次のパターンに従います。<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | いいえ       |
 | exportSettings | デルタ テーブルからデータを取得するために使用される詳細設定。 | いいえ       |
-| * **`exportSettings` の下:** _ |  |  |
-| type | エクスポート コマンドの種類。_*AzureDatabricksDeltaLakeExportCommand** に設定します。 | Yes |
+| ***`exportSettings` の下:*** |  |  |
+| type | エクスポート コマンドの種類。**AzureDatabricksDeltaLakeExportCommand** に設定します。 | Yes |
 | dateFormat | 日付型を日付形式の文字列に書式設定します。 カスタム日付形式は [datetime パターン](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)の形式に従います。 指定しない場合は、既定値の `yyyy-MM-dd` が使用されます。 | いいえ |
 | timestampFormat | タイムスタンプ型をタイムスタンプ形式の文字列に書式設定します。 カスタム日付形式は [datetime パターン](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)の形式に従います。 指定しない場合は、既定値の `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` が使用されます。 | いいえ |
 
@@ -265,8 +261,8 @@ Azure Databricks Delta Lake にデータをコピーするために、コピー 
 | type          | コピー アクティビティのシンクの type プロパティ。**AzureDatabricksDeltaLakeSink** に設定します。 | はい      |
 | preCopyScript | コピー アクティビティの毎回の実行で、データを Databricks Delta テーブルに書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップしたり、TRUNCATE TABLE ステートメントまたは VACUUM ステートメントを追加したりできます。 | いいえ       |
 | importSettings | デルタ テーブルにデータを書き込むために使用される詳細設定。 | いいえ |
-| **_`importSettings` の下:_* _ |                                                              |  |
-| type | インポート コマンドの種類。_*AzureDatabricksDeltaLakeImportCommand** に設定します。 | Yes |
+| ***`importSettings` の下:*** |                                                              |  |
+| type | インポート コマンドの種類。**AzureDatabricksDeltaLakeImportCommand** に設定します。 | Yes |
 | dateFormat | 日付形式の文字列を日付型に書式設定します。 カスタム日付形式は [datetime パターン](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)の形式に従います。 指定しない場合は、既定値の `yyyy-MM-dd` が使用されます。 | いいえ |
 | timestampFormat | タイムスタンプ形式の文字列をタイムスタンプ型に書式設定します。 カスタム日付形式は [datetime パターン](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)の形式に従います。 指定しない場合は、既定値の `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` が使用されます。 | いいえ |
 

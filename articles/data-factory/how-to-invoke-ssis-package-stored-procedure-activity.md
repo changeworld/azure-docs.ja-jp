@@ -1,25 +1,19 @@
 ---
 title: ストアド プロシージャ アクティビティを使用した SSIS パッケージの実行 - Azure
 description: この記事では、ストアド プロシージャ アクティビティを使用して、SQL Server Integration Services (SSIS) パッケージを Azure Data Factory パイプラインで実行する方法を説明します。
-services: data-factory
-documentationcenter: ''
 author: swinarko
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6cb3bf53db14c6c01290abea7a5c48c332a07632
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6260606fe56d4dfc6bac93e04e726b5fd3298777
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634880"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391509"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory のストアド プロシージャ アクティビティを使用して SSIS パッケージを実行する
 
@@ -41,12 +35,12 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 ### <a name="create-a-data-factory"></a>Data Factory の作成
 最初の手順として、Azure Portal を使用してデータ ファクトリを作成します。 
 
-1. Web ブラウザー ( **Microsoft Edge** または **Google Chrome** ) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
+1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 2. [Azure Portal](https://portal.azure.com) に移動します。 
 3. 左側のメニューで **[新規]** をクリックし、 **[データ + 分析]** 、 **[Data Factory]** の順にクリックします。 
    
    ![New->DataFactory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
-2. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「 **ADFTutorialDataFactory** 」と入力します。 
+2. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。 
       
      ![[新しいデータ ファクトリ] ページ](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png)
  
@@ -87,7 +81,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 4. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。 
 
     1. **[種類]** で **[Azure SQL Database]** を選択します。
-    2. `SSISDB` データベースをホストしている Azure SQL Database に接続するために、 **既定の** Azure Integration Runtime を選択します。
+    2. `SSISDB` データベースをホストしている Azure SQL Database に接続するために、**既定の** Azure Integration Runtime を選択します。
     3. **[サーバー名]** フィールドで、SSISDB データベースをホストしている Azure SQL Database を選択します。
     4. **[データベース名]** で **[SSISDB]** を選択します。
     5. **[ユーザー名]** に、データベースにアクセスするユーザーの名前を入力します。
@@ -101,11 +95,11 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
     1. **[編集]** を選択します。 
     2. **[ストアド プロシージャ名]** フィールドに、「`sp_executesql`」と入力します。 
     3. **[ストアド プロシージャ パラメーター]** セクションで **[+ 新規]** をクリックします。 
-    4. パラメーターの **[名前]** に、「 **stmt** 」と入力します。 
-    5. パラメーターの **[型]** に、「 **String** 」と入力します。 
+    4. パラメーターの **[名前]** に、「**stmt**」と入力します。 
+    5. パラメーターの **[型]** に、「**String**」と入力します。 
     6. パラメーターの **[値]** に、次の SQL クエリを入力します。
 
-        SQL クエリで、 **folder_name** 、 **project_name** 、および **package_name** パラメーターに適切な値を指定します。 
+        SQL クエリで、**folder_name**、**project_name**、および **package_name** パラメーターに適切な値を指定します。 
 
         ```sql
         DECLARE @return_value INT, @exe_id BIGINT, @err_msg NVARCHAR(150)    EXEC @return_value=[SSISDB].[catalog].[create_execution] @folder_name=N'<FOLDER name in SSIS Catalog>', @project_name=N'<PROJECT name in SSIS Catalog>', @package_name=N'<PACKAGE name>.dtsx', @use32bitruntime=0, @runinscaleout=1, @useanyworker=1, @execution_id=@exe_id OUTPUT    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1    EXEC [SSISDB].[catalog].[start_execution] @execution_id=@exe_id, @retry_count=0    IF(SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id=@exe_id)<>7 BEGIN SET @err_msg=N'Your package execution did not succeed for execution ID: ' + CAST(@exe_id AS NVARCHAR(20)) RAISERROR(@err_msg,15,1) END
@@ -193,8 +187,8 @@ Azure-SSIS IR と同じデータ ファクトリを使用することも、別�
     ```
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
-* Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、 **共同作成者** ロールまたは **所有者** ロールのメンバーであるか、Azure サブスクリプションの **管理者** である必要があります。
-* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。 [リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+* Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者** ロールまたは **所有者** ロールのメンバーであるか、Azure サブスクリプションの **管理者** である必要があります。
+* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービスを作成する
 リンクされたサービスを作成して、SSIS カタログをホストするデータベースをデータ ファクトリにリンクします。 このリンクされたサービスの情報をデータ ファクトリが使用して、SSISDB データベースに接続し、ストアド プロシージャを実行して SSIS パッケージを実行します。 
@@ -259,7 +253,7 @@ Azure-SSIS IR と同じデータ ファクトリを使用することも、別�
     }
     ```
 
-2. パイプライン **RunSSISPackagePipeline** を作成するには、 **Set-AzDataFactoryV2Pipeline** コマンドレットを実行します。
+2. パイプライン **RunSSISPackagePipeline** を作成するには、**Set-AzDataFactoryV2Pipeline** コマンドレットを実行します。
 
     ```powershell
     $DFPipeLine = Set-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"

@@ -1,14 +1,14 @@
 ---
 title: ブループリント サンプルの一覧
 description: Azure Blueprints を使用して環境、ポリシー、クラウド導入フレームワークの基礎をデプロイするためのコンプライアンスおよび標準サンプルのインデックス。
-ms.date: 02/01/2021
+ms.date: 02/08/2020
 ms.topic: sample
-ms.openlocfilehash: 17bacecf8fcf7c0f1969a489561a3a3ac976872e
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: c64bc02c1dea4e2c53d4ff195add2ac7fa57874f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225143"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370956"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints サンプル
 
@@ -19,7 +19,8 @@ ms.locfileid: "99225143"
 | サンプル | 説明 |
 |---------|---------|
 | [Australian Government ISM PROTECTED](./ism-protected/index.md) | Australian Government ISM PROTECTED に準拠するための規定を提供します。 |
-| [Azure セキュリティ ベンチマーク v1](./azure-security-benchmark.md) | [Azure セキュリティ ベンチマーク v1](../../../security/benchmarks/overview.md)に準拠するための規定を提供します。 |
+| [Azure セキュリティ ベンチマーク](./azure-security-benchmark.md) | [Azure セキュリティ ベンチマーク](../../../security/benchmarks/overview.md)に準拠するための規定を提供します。 |
+| [Azure セキュリティ ベンチマーク基盤](./azure-security-benchmark-foundation/index.md) | Azure セキュリティ ベンチマーク基盤をデプロイして構成します。 |
 | [カナダ連邦の PBMM](./canada-federal-pbmm/index.md) | カナダ連邦の Protected B、Medium Integrity、Medium Availability (PBMM) に準拠するための規定を提供します。 |
 | [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1-1-0.md)| CIS Microsoft Azure Foundations Benchmark の推奨事項に準拠する際に役立つ一連のポリシーを提供します。 |
 | [DoD 影響レベル 4](./dod-impact-level-4/index.md) | DoD 影響レベル 4 への準拠に役立つ一連のポリシーを提供します。 |

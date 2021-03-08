@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 969f60cd92e8c1cbe93f1646cccd08c942ad9923
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 8ed21d8689bf5340c1bde0a7f782bb8614f7cf11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762828"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700203"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) について
 
@@ -21,7 +21,7 @@ ms.locfileid: "98762828"
 > Cloud Services (延長サポート) は現在、パブリック プレビュー段階にあります。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-Cloud Services (延長サポート) は、 [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) 製品向けの新しい  [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) ベースのデプロイ モデルであり、現在パブリック プレビュー段階にあります。 Cloud Services (延長サポート) には、Azure Service Manager を使用してデプロイされた Azure Cloud Services との機能パリティと共に、リージョンの回復性を提供するという主な利点があります。 また、ロールベースのアクセスと制御 (RBAC)、タグ、ポリシーなどのいくつかの ARM 機能も提供し、デプロイ テンプレートをサポートしています。  
+Cloud Services (延長サポート) は、 [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) 製品向けの新しい  [Azure Resource Manager](../azure-resource-manager/management/overview.md) ベースのデプロイ モデルであり、現在パブリック プレビュー段階にあります。 Cloud Services (延長サポート) には、Azure Service Manager を使用してデプロイされた Azure Cloud Services との機能パリティと共に、リージョンの回復性を提供するという主な利点があります。 また、ロールベースのアクセスと制御 (RBAC)、タグ、ポリシーなどのいくつかの ARM 機能も提供し、デプロイ テンプレートをサポートしています。  
 
 この変更により、Cloud Services 向けの Azure Service Manager ベースのデプロイ モデルは [Cloud Services (クラシック)](../cloud-services/cloud-services-choose-me.md) という名前に変更されます。 Web およびクラウド アプリケーションやサービスを構築して迅速にデプロイする機能は保持されます。 現在の要求に基づいてクラウド サービスのインフラストラクチャをスケーリングすることができ、アプリケーションのパフォーマンスを維持しながら、同時にコストも削減できるようになります。  
 
@@ -41,11 +41,11 @@ Cloud Services (延長サポート) をデプロイするには、サービス�
 
 デプロイに関する Cloud Services (クラシック) と Cloud Services (延長サポート) の主な違いは次のとおりです。 
 
-- Azure Resource Manager のデプロイでは、プロジェクトのインフラストラクチャと構成を定義する JavaScript Object Notation (JSON) ファイルである [ARM テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)を使用します。 このテンプレートでは、デプロイしようとしているものを、それを作成する一連のプログラミング コマンドを記述しなくても記述できる、宣言型の構文を使用しています。 Cloud Services (延長サポート) のデプロイ中に、サービス構成ファイルとサービス定義ファイルが [ARM テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)と一致している必要があります。 これは、[ARM テンプレートを手動で作成する](deploy-template.md)か、または [PowerShell](deploy-powershell.md)、[ポータル](deploy-portal.md)、[Visual Studio](deploy-visual-studio.md) を使用することによって実現できます。  
+- Azure Resource Manager のデプロイでは、プロジェクトのインフラストラクチャと構成を定義する JavaScript Object Notation (JSON) ファイルである [ARM テンプレート](../azure-resource-manager/templates/overview.md)を使用します。 このテンプレートでは、デプロイしようとしているものを、それを作成する一連のプログラミング コマンドを記述しなくても記述できる、宣言型の構文を使用しています。 Cloud Services (延長サポート) のデプロイ中に、サービス構成ファイルとサービス定義ファイルが [ARM テンプレート](../azure-resource-manager/templates/overview.md)と一致している必要があります。 これは、[ARM テンプレートを手動で作成する](deploy-template.md)か、または [PowerShell](deploy-powershell.md)、[ポータル](deploy-portal.md)、[Visual Studio](deploy-visual-studio.md) を使用することによって実現できます。  
 
-- [Cloud Services (延長サポート) で証明書を管理する](certificates-and-key-vault.md)には、顧客は [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) を使用する必要があります。 Azure Key Vault を使用すると、シークレット、キー、証明書などのアプリケーション資格情報を、中央のセキュリティで保護されたクラウド リポジトリに安全に格納して管理することができます。 アプリケーションで実行時に Key Vault に対して認証を行うことで、資格情報を取得できます。 
+- [Cloud Services (延長サポート) で証明書を管理する](certificates-and-key-vault.md)には、顧客は [Azure Key Vault](../key-vault/general/overview.md) を使用する必要があります。 Azure Key Vault を使用すると、シークレット、キー、証明書などのアプリケーション資格情報を、中央のセキュリティで保護されたクラウド リポジトリに安全に格納して管理することができます。 アプリケーションで実行時に Key Vault に対して認証を行うことで、資格情報を取得できます。 
 
-- [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview) を使用してデプロイされたリソースはすべて、仮想ネットワークの内部に存在する必要があります。 仮想ネットワークとサブネットは、既存の Azure Resource Manager API を使用して Azure Resource Manager で作成され、Cloud Services (延長サポート) をデプロイするときに .cscfg の NetworkConfiguration セクション内で参照する必要があります。   
+- [Azure Resource Manager](../azure-resource-manager/templates/overview.md) を使用してデプロイされたリソースはすべて、仮想ネットワークの内部に存在する必要があります。 仮想ネットワークとサブネットは、既存の Azure Resource Manager API を使用して Azure Resource Manager で作成され、Cloud Services (延長サポート) をデプロイするときに .cscfg の NetworkConfiguration セクション内で参照する必要があります。   
 
 - 各クラウド サービス (延長サポート) は、1 つの独立したデプロイです。 クラウド サービス (延長サポート) では、1 つのクラウド サービス内の複数のスロットはサポートされません。  
     - VIP スワップ<sup>*</sup>機能を使用すると、2 つのクラウド サービス (延長サポート) 間でのスワップが可能になります。 クラウド サービスの新しいリリースをテストしてステージングするには、クラウド サービス (延長サポート) をデプロイし、それを別のクラウド サービス (延長サポート) との VIP スワップ可能としてタグ付けします。  
@@ -57,17 +57,17 @@ Cloud Services (延長サポート) をデプロイするには、サービス�
 
 ## <a name="migration-to-azure-resource-manager"></a>Azure Resource Manager への移行
 
-Cloud Services (延長サポート) には、[Azure Service Manager](https://docs.microsoft.com/powershell/azure/servicemanagement/overview?view=azuresmps-4.0.0&preserve-view=true ) から [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) に移行するための 2 つのパスが用意されています。 
+Cloud Services (延長サポート) には、[Azure Service Manager](/powershell/azure/servicemanagement/overview?preserve-view=true&view=azuresmps-4.0.0) から [Azure Resource Manager](../azure-resource-manager/management/overview.md) に移行するための 2 つのパスが用意されています。 
 1) 顧客は、クラウド サービスを Azure Resource Manager に直接デプロイした後、Azure Service Manager で古いクラウド サービスを削除します。 
 2) インプレース移行では、Cloud Services (クラシック) を最小限のダウンタイムで、またはダウンタイムなしで Cloud Services (延長サポート) に移行する機能がサポートされています。 
 
 ### <a name="additional-migration-options"></a>その他の移行オプション
 
-Cloud Services (クラシック) から Cloud Services (延長サポート) への移行計画を評価する場合は、[仮想マシン スケール セット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)、[App Service](https://docs.microsoft.com/azure/app-service/overview)、[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/intro-kubernetes)、[Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) などの追加の Azure サービスを調査することもできます。 これらのサービスには引き続き追加機能が含まれますが、Cloud Services (延長サポート) では、主に Cloud Services (クラシック) との機能パリティが保持されます。 
+Cloud Services (クラシック) から Cloud Services (延長サポート) への移行計画を評価する場合は、[仮想マシン スケール セット](../virtual-machine-scale-sets/overview.md)、[App Service](../app-service/overview.md)、[Azure Kubernetes Service](../aks/intro-kubernetes.md)、[Azure Service Fabric](../service-fabric/service-fabric-overview.md) などの追加の Azure サービスを調査することもできます。 これらのサービスには引き続き追加機能が含まれますが、Cloud Services (延長サポート) では、主に Cloud Services (クラシック) との機能パリティが保持されます。 
 
 アプリケーションによっては、Cloud Services (延長サポート) では、Azure Resource Manager に移行するために必要な労力が他のオプションより大幅に少なくなる場合があります。 アプリケーションが進化中でない場合、Cloud Services (延長サポート) は迅速な移行パスを提供するため、考慮すべき実行可能なオプションになります。 逆に、アプリケーションが継続的に進化しており、より最新の機能セットを必要としている場合は、現在および将来の要件により適切に対処するために他の Azure サービスを調査してください。 
 
 ## <a name="next-steps"></a>次のステップ
 - Cloud Services (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認します。
 - [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用してクラウド サービス (延長サポート) をデプロイします。
-- Cloud Services (延長サポート) の[よく寄せられる質問](faq.md)を確認します。
+- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.md)を確認します。

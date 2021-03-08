@@ -138,6 +138,23 @@
               href: ./scripts/functions-cli-create-function-app-vsts-continuous.md
 - name: 概念
   items:
+    - name: ベスト プラクティス
+      items:
+        - name: パフォーマンスと信頼性
+          href: functions-best-practices.md
+          displayName: best practices
+        - name: 接続の管理
+          href: manage-connections.md
+          displayName: best practices
+        - name: ストレージに関する考慮事項
+          href: storage-considerations.md
+          displayName: 'encryption, keys, mount, files'
+        - name: エラー処理と関数の再試行
+          href: functions-bindings-error-pages.md
+          displayName: best practices
+        - name: セキュリティ
+          href: security-concepts.md
+          displayName: best practices
     - name: ランタイムのバージョンの比較
       href: functions-versions.md
       displayName: 'migrate, migration, v3'
@@ -180,6 +197,9 @@
           href: supported-languages.md
         - name: C# (クラス ライブラリ)
           href: functions-dotnet-class-library.md
+        - name: C# (分離プロセス)
+          displayName: '.NET isolated, .NET 5'
+          href: dotnet-isolated-process-guide.md
         - name: C# スクリプト (.csx)
           href: functions-reference-csharp.md
         - name: F#
@@ -212,12 +232,7 @@
       href: functions-diagnostics.md
     - name: 従量課金プランのコスト
       href: functions-consumption-costs.md
-    - name: パフォーマンスに関する考慮事項
-      href: functions-best-practices.md
       displayName: best practice
-    - name: ストレージに関する考慮事項
-      href: storage-considerations.md
-      displayName: 'encryption, keys, mount, files'
     - name: 関数プロキシ
       href: functions-proxies.md
     - name: ネットワーク オプション
@@ -238,9 +253,9 @@
               href: functions-develop-local.md
             - name: Visual Studio Code での開発
               href: functions-develop-vs-code.md
-            - name: Visual Studio 開発
+            - name: Visual Studio での開発
               href: functions-develop-vs.md
-            - name: コア ツールの開発
+            - name: Core Tools での開発
               href: functions-run-local.md
               displayName: 'local, runtime'
         - name: 関数の作成

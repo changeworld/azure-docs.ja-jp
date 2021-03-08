@@ -9,7 +9,7 @@
           href: azure-stack-edge-gpu-overview.md
     - name: クイックスタート
       items:
-        - name: はじめに
+        - name: 作業開始
           href: azure-stack-edge-gpu-quickstart.md
     - name: チュートリアル
       items:
@@ -102,7 +102,7 @@
     - name: 概要
       items:
         - name: Azure Stack Edge Mini R とは
-          href: azure-stack-edge-k-series-overview.md
+          href: azure-stack-edge-mini-r-overview.md
     - name: 概念
       items:
         - name: 安全性の準備完了
@@ -206,6 +206,8 @@
                   href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
                 - name: GitOps を使用してステートレス アプリをデプロイする
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
+                - name: Azure Arc データ コントローラーをデプロイする
+                  href: azure-stack-edge-gpu-deploy-arc-data-controller.md
         - name: Azure Resource Manager (プレビュー) を構成する
           items:
             - name: Azure PowerShell 経由で接続する
@@ -237,13 +239,13 @@
         - name: 証明書の管理
           items:
             - name: 要件
-              href: azure-stack-edge-j-series-certificate-requirements.md
+              href: azure-stack-edge-gpu-certificate-requirements.md
             - name: 独自のものを使用する
-              href: azure-stack-edge-j-series-manage-certificates.md
+              href: azure-stack-edge-gpu-manage-certificates.md
             - name: Azure Stack 適合性チェッカー ツールを使用して作成する
-              href: azure-stack-edge-j-series-create-certificates-tool.md
+              href: azure-stack-edge-gpu-create-certificates-tool.md
             - name: 証明書エラーのトラブルシューティングを行う
-              href: azure-stack-edge-j-series-certificate-troubleshooting.md
+              href: azure-stack-edge-gpu-certificate-troubleshooting.md
         - name: Edge コンピューティングを管理する
           href: azure-stack-edge-j-series-manage-compute.md
         - name: Edge コンテナー レジストリを管理する
@@ -270,6 +272,8 @@
               href: azure-stack-edge-gpu-connect-powershell-interface.md
             - name: 更新プログラムの適用
               href: azure-stack-edge-gpu-install-update.md
+            - name: デバイスのリセット、再アクティブ化
+              href: azure-stack-edge-reset-reactivate-device.md
             - name: デバイスの返却
               href: azure-stack-edge-return-device.md
             - name: デバイスの置換
@@ -383,6 +387,8 @@
           href: azure-stack-edge-return-device.md
         - name: デバイスの置換
           href: azure-stack-edge-replace-device.md
+        - name: GPU デバイスへの移行
+          href: azure-stack-edge-migrate-fpga-gpu.md
     - name: リリース ノート
       items:
         - name: 2101 - 最新

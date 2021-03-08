@@ -9,13 +9,13 @@ ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
-ms.date: 05/07/2019
-ms.openlocfilehash: 73fa4d4988c7a036dc1d2eb7dc81c3c1c5d77026
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 02/08/2021
+ms.openlocfilehash: 7d5f40be895aea26a234d9ae622aa5bf22528231
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788283"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981444"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance のパブリック エンドポイントを構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -112,7 +112,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>マネージド インスタンスのパブリック エンドポイントの接続文字列を取得する
 
 1. パブリック エンドポイントに対して有効になっている マネージド インスタンスの構成ページに移動します。 **[設定]** 構成の下にある **[接続文字列]** タブを選択します。
-1. パブリック エンドポイントのホスト名が <mi_name>.**public**.<dns_zone>.database.windows.net 形式になっていることと、接続に使用されるポートが 3342 であることに注意してください。
+1. パブリック エンドポイントのホスト名が <mi_name>.**public**.<dns_zone>.database.windows.net 形式になっていることと、接続に使用されるポートが 3342 であることに注意してください。 SQL Server Management Studio または Azure Data Studio 接続で使用できるパブリック エンドポイント ポートを示す接続文字列のサーバー値の例を次に示します: `<mi_name>.public.<dns_zone>.database.windows.net,3342`
 
     ![パブリック エンドポイントとプライベート エンドポイントの接続文字列を示すスクリーンショット。](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 

@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9fe43125c83436f89bf93cbe975317efec2beb46
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4678a6128be13ac61dc4ac67bbd1a17e99c6d24d
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542815"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820231"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>チュートリアル:Azure SQL Database リソースを別のリージョンに移動する
 
@@ -272,10 +272,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 移動後に、必要に応じて、ソース リージョンのリソースを削除できます。 
 
-1. **[Across Regions]\(リージョン間\)** で、削除する各ソース リソースの名前をクリックします。
-2. 各リソースのプロパティ ページで、 **[削除]** を選択します。
+> [!NOTE]
+> SQL Server サーバーは、ポータルからは削除できません。リソースのプロパティ ページから削除する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+1. **[Across Regions]\(リージョン間\)** で、削除するソース リソースの名前をクリックします。
+2. **[ソースの削除]** を選択します。
+
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、次のことを行いました。
 

@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 7e2d4b47f8f37a8e6d69a7846b8b0f92247121da
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: ad19c976cceab76d6eb0dbfbea5840d9764bffec
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685193"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101092953"
 ---
 # <a name="secure-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) をセキュリティで保護する
 
@@ -92,7 +92,7 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-Azure portal または Azure Resource Manager API を使用したデータベースとサーバーの管理は、ポータル ユーザー アカウントのロールの割り当てによって制御されます。 詳細については、[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)方法に関するページを参照してください。
+Azure portal または Azure Resource Manager API を使用したデータベースとサーバーの管理は、ポータル ユーザー アカウントのロールの割り当てによって制御されます。 詳細については、[Azure portal を使用して Azure ロールを割り当てる方法](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関するページを参照してください。
 
 ## <a name="encryption"></a>暗号化
 

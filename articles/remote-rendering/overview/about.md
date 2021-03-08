@@ -5,18 +5,14 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: overview
-ms.openlocfilehash: 14ebe9dfd11bed2dfaded9f18e23f73d33a708ae
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6001fff54b86b7c18684092aad6c7fdf64f81990
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91650461"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101729948"
 ---
 # <a name="about-azure-remote-rendering"></a>Azure Remote Rendering について
-
-> [!IMPORTANT]
-> 現在、**Azure Remote Rendering** はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 *Azure Remote Rendering* (ARR) は、高品質でインタラクティブな 3D コンテンツをクラウドでレンダリングし、HoloLens 2 などのデバイスにリアルタイムでストリーム配信できるようにするサービスです。
 

@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 4c05b654b6714c5317e1334d3a3ea5c327a5ff18
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 2213da7b9c6e4776a0e463e6a43d0cc645a1e911
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97770827"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750343"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,10 +42,10 @@ dotnet build
 
 ### <a name="install-the-package"></a>パッケージをインストールする
 
-まだアプリケーション ディレクトリにいる間に、`dotnet add package` コマンドを使用して、.NET 用の Azure Communication Services 管理ライブラリ パッケージをインストールします。
+まだアプリケーション ディレクトリにいる間に、`dotnet add package` コマンドを使用して、.NET 用の Azure Communication Services ID ライブラリ パッケージをインストールします。
 
 ```console
-dotnet add package Azure.Communication.Administration --version 1.0.0-beta.3
+dotnet add package Azure.Communication.Identity
 ```
 
 ### <a name="set-up-the-app-framework"></a>アプリのフレームワークを設定する
@@ -53,7 +53,7 @@ dotnet add package Azure.Communication.Administration --version 1.0.0-beta.3
 プロジェクト ディレクトリで次の操作を行います。
 
 1. テキスト エディターで、**Program.cs** ファイルを開きます
-1. `Azure.Communication.Administration` 名前空間を含めるように `using` ディレクティブを追加します
+1. `Azure.Communication.Identity` 名前空間を含めるように `using` ディレクティブを追加します
 1. 非同期コードをサポートするように `Main` メソッドの宣言を更新します
 
 次のコードを使用して開始します。
@@ -61,7 +61,7 @@ dotnet add package Azure.Communication.Administration --version 1.0.0-beta.3
 ```csharp
 using System;
 using Azure.Communication;
-using Azure.Communication.Administration;
+using Azure.Communication.Identity;
 
 namespace AccessTokensQuickstart
 {
@@ -113,6 +113,18 @@ Console.WriteLine(token);
 ```
 
 アクセス トークンは有効期間の短い資格情報であるため、再発行が必要になります。 そうしないと、アプリケーションのユーザー エクスペリエンスが中断される可能性があります。 `expiresOn` 応答プロパティは、アクセス トークンの有効期間を示します。 
+
+## <a name="create-an-identity-and-issue-an-access-token-within-the-same-request"></a>ID を作成し、同じ要求内でアクセス トークンを発行する
+
+`createUserWithToken` メソッドを使用して、Communication Services ID を作成し、そのアクセス トークンを発行します。 パラメーター `scopes` によって、このアクセス トークンを承認するプリミティブのセットが定義されます。 [サポートされているアクションの一覧](../../concepts/authentication.md)を参照してください。
+
+```csharp  
+// Issue an identity and an access token with the "voip" scope for the new identity
+var identityWithTokenResponse = await client.CreateUserWithTokenAsync(scopes: new[] { CommunicationTokenScope.VoIP });
+var identity = identityWithTokenResponse.Value.user.Id;
+var token = identityWithTokenResponse.Value.token.Token;
+var expiresOn = identityWithTokenResponse.Value.token.ExpiresOn;
+```
 
 ## <a name="refresh-access-tokens"></a>アクセス トークンの更新
 

@@ -1,15 +1,15 @@
 ---
 title: Azure App Service 用の組み込みポリシー定義
 description: Azure App Service 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 01/29/2021
+ms.date: 02/09/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: d363a85959e30ca1ffa9d88a7aa53c54d371a181
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: c4d083c84d89c39b865dc7b5e677f45e976da5a2
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221314"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092752"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-app-service"></a>Azure App Service 用の Azure Policy 組み込み定義
 

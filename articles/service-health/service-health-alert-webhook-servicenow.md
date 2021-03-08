@@ -4,12 +4,12 @@ description: ServiceNow インスタンスに送られたサービス正常性�
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: f120e9d950cc349d0331a476dbfbfe9d7e599f0c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df6596dd9853a792b5bfdb333361a2b9cd02a347
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000642"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588189"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>ServiceNow で webhook を使用して Azure サービス正常性アラートを構成する
 
@@ -19,7 +19,7 @@ ms.locfileid: "96000642"
 
 1.  [ServiceNow](https://www.servicenow.com/) アカウントをサインアップ済みであることを確認した後、サインインします。
 
-1.  ServiceNow の **[System Web Services]\(システム Web サービス\)** セクションに移動し、 **[Scripted REST APIs]\(スクリプト化された REST API\)** を選択します。
+1.  ServiceNow の **[System Web Services]\(システム Web サービス\)** セクションに移動し、**[Scripted REST APIs]\(スクリプト化された REST API\)** を選択します。
 
     ![ServiceNow の [Scripted Web Service]\(スクリプト化された Web サービス\) セクション](./media/webhook-alerts/servicenow-sws-section.png)
 
@@ -27,17 +27,17 @@ ms.locfileid: "96000642"
  
     ![ServiceNow の "新しいスクリプト化された REST API" のボタン](./media/webhook-alerts/servicenow-new-button.png)
 
-1.  **[Name]\(名前\)** に REST API の名前を追加し、 **[API ID]** を `azureservicehealth` に設定します。
+1.  **[Name]\(名前\)** に REST API の名前を追加し、**[API ID]** を `azureservicehealth` に設定します。
 
 1.  **[Submit]\(送信\)** をクリックします。
 
     ![ServiceNow の "REST API 設定"](./media/webhook-alerts/servicenow-restapi-settings.png)
 
-1.  作成した REST API を選択し、 **[Resources]\(リソース\)** タブで **[New]\(新規\)** を選択します。
+1.  作成した REST API を選択し、**[Resources]\(リソース\)** タブで **[New]\(新規\)** を選択します。
 
     ![ServiceNow の "リソース タブ"](./media/webhook-alerts/servicenow-resources-tab.png)
 
-1.  新しいリソースの **[Name]\(名前\)** を `event` に設定し、 **[HTTP method]\(HTTP メソッド\)** を `POST` に変更します。
+1.  新しいリソースの **[Name]\(名前\)** を `event` に設定し、**[HTTP method]\(HTTP メソッド\)** を `POST` に変更します。
 
 1.  **[Script]\(スクリプト\)** セクションで、次の JavaScript コードを追加します。
 
@@ -132,7 +132,7 @@ ms.locfileid: "96000642"
     })(request, response);
     ```
 
-1.  セキュリティのタブで **[Requires authentication]\(認証が必要\)** チェック ボックスをオフにして、 **[Submit]\(送信\)** を選択します。 設定した `<secret>` が代わりにこの API を保護します。
+1.  セキュリティのタブで **[Requires authentication]\(認証が必要\)** チェック ボックスをオフにして、**[Submit]\(送信\)** を選択します。 設定した `<secret>` が代わりにこの API を保護します。
 
     ![ServiceNow の [Requires authentication]\(認証が必要\) チェック ボックス](./media/webhook-alerts/servicenow-resource-settings.png)
 
@@ -154,7 +154,7 @@ ms.locfileid: "96000642"
 
     a. **[アクションの種類]:** *webhook*
 
-    b. **[詳細]:** 先ほど保存した ServiceNow の **統合 URL**。
+    b. **詳細:** 先ほど保存した ServiceNow の **統合 URL**。
 
     c. **[名前]:** Webhook の名前、別名、または識別子。
 
@@ -171,14 +171,14 @@ ms.locfileid: "96000642"
 
     a. **[アクションの種類]:** *webhook*
 
-    b. **[詳細]:** 先ほど保存した ServiceNow の **統合 URL**。
+    b. **詳細:** 先ほど保存した ServiceNow の **統合 URL**。
 
     c. **[名前]:** Webhook の名前、別名、または識別子。
 
 1. 完了したら **[保存]** を選択して、アクション グループを更新します。
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>HTTP POST 要求によって webhook 統合をテストする
-1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 webhook ペイロードの例については、「[Azure アクティビティ ログ アラートのための webhook](../azure-monitor/platform/activity-log-alerts-webhook.md)」を参照してください。
+1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 webhook ペイロードの例については、「[Azure アクティビティ ログ アラートのための webhook](../azure-monitor/alerts/activity-log-alerts-webhook.md)」を参照してください。
 
 1. 次のような HTTP POST 要求を作成します。
 
@@ -195,6 +195,6 @@ ms.locfileid: "96000642"
 
 ## <a name="next-steps"></a>次のステップ
 - [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。
-- [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。 
+- [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/alerts/activity-log-alerts-webhook.md)を確認します。 
 - [サービス正常性の通知](./service-notifications.md)について学習します。
-- [アクション グループ](../azure-monitor/platform/action-groups.md)について学習します。
+- [アクション グループ](../azure-monitor/alerts/action-groups.md)について学習します。

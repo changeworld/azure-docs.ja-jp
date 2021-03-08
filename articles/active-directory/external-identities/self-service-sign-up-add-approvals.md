@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: article
-ms.date: 06/16/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3165bc28e6d6283bf8578d9c10b11f7b19981002
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: b447873df882847f052125254ea52b5ae6ab9ec4
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355241"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644869"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>カスタム承認ワークフローをセルフサービス サインアップに追加する
 
@@ -81,7 +81,7 @@ ms.locfileid: "97355241"
 1. [Azure Portal](https://portal.azure.com/) に Azure AD 管理者としてサインインします。
 2. **[Azure サービス]** で **[Azure Active Directory]** を選択します。
 3. 左側のメニューで、 **[External Identities]** を選択します。
-4. **[User flows (Preview)]\(ユーザー フロー (プレビュー)\)** を選択し、API コネクタを有効にするユーザー フローを選択します。
+4. **[ユーザー フロー]** を選択し、API コネクタを有効にするユーザー フローを選択します。
 5. **[API connectors]\(API コネクタ\)** を選択し、ユーザー フローの次の手順で呼び出す API エンドポイントを選択します。
 
    - **ID プロバイダーを使用してサインインした後**:承認状態 API コネクタを選択します。たとえば、 _[Check approval status]\(承認状態の確認\)_ を選択します。
@@ -357,8 +357,8 @@ POST https://graph.microsoft.com/v1.0/invitations
 Content-type: application/json
 
 {
-    "invitedUserEmailAddress":"johnsmith@fabrikam.onmicrosoft.com",
-    "inviteRedirectUrl" : "https://myapp.com"
+    "invitedUserEmailAddress": "johnsmith@fabrikam.onmicrosoft.com",
+    "inviteRedirectUrl" : "https://myapp.com"
 }
 ```
 
@@ -370,9 +370,9 @@ Content-type: application/json
 
 {
     ...
-    "invitedUser": {
-        "id": "<generated-user-guid>"
-    }
+    "invitedUser": {
+        "id": "<generated-user-guid>"
+    }
 }
 ```
 

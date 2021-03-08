@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して ODBC データ ストアをコピー元またはコピー先としてデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、ODBC データ ストアをコピー元またはコピー先としてデータをコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: jingwang
-ms.openlocfilehash: c92428666f0766f78475be16416027cdc6e71f20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b73e10b0ed539879e9a32d3961b6375828cc153
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85506533"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389622"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアをコピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -35,7 +30,7 @@ ms.locfileid: "85506533"
 
 ODBC ソースのデータをサポートされる任意のシンク データ ストアにコピーしたり、サポートされる任意のソース データ ストアのデータを ODBC シンクにコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-具体的には、この ODBC コネクタは、**基本**または**匿名**認証を使用して、**任意の ODBC 対応データ ストア**をコピー元またはコピー先とするデータのコピーをサポートします。 **64 ビットの ODBC ドライバー**が必要です。 ODBC シンクの場合、ADF は ODBC バージョン 2.0 標準をサポートします。
+具体的には、この ODBC コネクタは、**基本** または **匿名** 認証を使用して、**任意の ODBC 対応データ ストア** をコピー元またはコピー先とするデータのコピーをサポートします。 **64 ビットの ODBC ドライバー** が必要です。 ODBC シンクの場合、ADF は ODBC バージョン 2.0 標準をサポートします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -57,7 +52,7 @@ ODBC のリンクされたサービスでは、次のプロパティがサポー
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**Odbc** | はい |
-| connectionString | 資格情報部分を除外した接続文字列。 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` のようなパターンで接続文字列を指定するか、Integration Runtime マシンに設定したシステム DSN (データ ソース名) を `"DSN=<name of the DSN on IR machine>;"` で使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。<br>パスワードを Azure Key Vault に格納して、接続文字列から  `password`  構成をプルすることもできます。 詳細については、「 [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md) 」を参照してください。| はい |
+| connectionString | 資格情報部分を除外した接続文字列。 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` のようなパターンで接続文字列を指定するか、Integration Runtime マシンに設定したシステム DSN (データ ソース名) を `"DSN=<name of the DSN on IR machine>;"` で使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。<br>パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。| はい |
 | authenticationType | ODBC データ ストアへの接続に使用される認証の種類です。<br/>使用できる値は、以下のとおりです。**Basic** と **Anonymous**。 | はい |
 | userName | 基本認証を使用している場合は、ユーザー名を指定します。 | いいえ |
 | password | userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
@@ -202,7 +197,7 @@ ODBC 対応データ ストアにデータをコピーするには、コピー �
 | preCopyScript |コピー アクティビティの毎回の実行で、データをデータ ストアに書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ |
 
 > [!NOTE]
-> "writeBatchSize" が設定されていない場合 (自動検出)、コピー アクティビティは、ドライバーでバッチ操作がサポートされるかどうかを検出した後、サポートされる場合は 10000 を、サポートされない場合は 1 を設定します。 0 以外の値を明示的に設定した場合、コピー アクティビティはその値を尊重します。実行時にドライバーがバッチ操作をサポートしていない場合、操作は失敗します。
+> "writeBatchSize" が設定されていない場合 (自動検出)、コピー アクティビティは、ドライバーでバッチ操作がサポートされるかどうかを検出した後、サポートされる場合は 10000 を、サポートされない場合は 1 を設定します。 0 以外の値を明示的に設定した場合、コピー アクティビティはその値に従い、実行時にドライバーがバッチ操作をサポートしていない場合は失敗します。
 
 **例:**
 
@@ -242,7 +237,7 @@ ODBC 対応データ ストアにデータをコピーするには、コピー �
 
 ## <a name="troubleshoot-connectivity-issues"></a>接続の問題のトラブルシューティング
 
-接続の問題をトラブルシューティングするには、**Integration Runtime Configuration Manager**の **[診断]** タブを使用します。
+接続の問題をトラブルシューティングするには、**Integration Runtime Configuration Manager** の **[診断]** タブを使用します。
 
 1. **Integration Runtime Configuration Manager** を起動します。
 2. **[診断]** タブに切り替えます。

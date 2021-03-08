@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: a36481b2496060cb12bd755f56680915ec1074bb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 987b56eb1b258e1c5f2fd7d5bcfdd0e95f6c0730
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540200"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100091671"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
@@ -46,19 +46,6 @@ ms.locfileid: "94540200"
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/):コンピューティング先で使用されるシークレット、およびワークスペースで必要な他の機密情報を格納します。
 
 他のユーザーとワークスペースを共有できます。
-
-### <a name="create-workspace"></a>ワークスペースの作成
-
-次の図は、ワークスペース作成のワークフローを示したものです。
-
-* サポートされている Azure Machine Learning クライアント (Azure CLI、Python SDK、Azure portal) のいずれかから Azure AD にサインインし、適切な Azure Resource Manager トークンを要求します。
-* ワークスペースを作成するために Azure Resource Manager を呼び出します。 
-* Azure Resource Manager では、Azure Machine Learning のリソース プロバイダーに連絡し、ワークスペースをプロビジョニングします。
-* 既存のリソースを指定しない場合、追加の必須リソースがサブスクリプションで作成されます。
-
-必要に応じて、(Azure Kubernetes Service や VM などの) ワークスペースにアタッチされている他のコンピューティング先をプロビジョニングすることもできます。
-
-[![ワークスペースの作成ワークフロー](media/concept-azure-machine-learning-architecture/create-workspace.png)](media/concept-azure-machine-learning-architecture/create-workspace.png#lightbox)
 
 ## <a name="computes"></a>コンピューティング
 
@@ -126,10 +113,6 @@ Azure Machine Learning では、すべての実行を記録して、実験に次
 [ワークスペース](#workspace) > [実験](#experiments) > [実行](#runs) > **スナップショット**
 
 実行を送信するときに、Azure Machine Learning によって、スクリプトが含まれているディレクトリが zip ファイルとして圧縮され、コンピューティング先に送られます。 その後、zip ファイルが抽出され、そこでスクリプトが実行されます。 Azure Machine Learning では、zip ファイルもスナップショットとして実行レコード内に格納されます。 ワークスペースにアクセスできるすべてのユーザーは、実行レコードを参照し、スナップショットをダウンできます。
-
-次の図は、コード スナップショットのワークフローを示したものです。
-
-[![コード スナップショット ワークフロー](media/concept-azure-machine-learning-architecture/code-snapshot.png)](media/concept-azure-machine-learning-architecture/code-snapshot.png#lightbox)
 
 ### <a name="logging"></a>ログ記録
 

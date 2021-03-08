@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 962e0e734abd73f5a66f9b9ee6067155dd839e5d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 92d06a95dcd32501a05dfd50e81f768f59742bd5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118287"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674336"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Azure Active Directory 認証を使用して Synapse SQL での認証を行う
 
@@ -30,7 +30,7 @@ Azure AD 認証を使用すると、Azure Synapse にアクセスできるユー
 - Azure AD は、Azure Synapse に接続するアプリケーション向けにトークンベースの認証をサポートしています。
 - Azure AD 認証は、ADFS (ドメイン フェデレーション) またはドメインを同期しないローカル Azure Active Directory のネイティブ ユーザー/パスワード認証をサポートします。
 - Azure AD 認証は、Multi-Factor Authentication (MFA) を含む Active Directory ユニバーサル認証を使用する SQL Server Management Studio からの接続をサポートします。  MFA には、電話、テキスト メッセージ、暗証番号 (PIN) が設定されたスマート カード、モバイル アプリ通知など、簡単な各種確認オプションによる強力な認証が含まれます。 詳細については、[Synapse SQL を使用した Azure AD MFA のための SSMS のサポート](mfa-authentication.md)に関するページを参照してください。
-- Azure AD は、Active Directory 対話型認証を使用する SQL Server Data Tools (SSDT) からの同様の接続をサポートしています。 詳細については、「[SQL Server Data Tools (SSDT) での Azure Active Directory のサポート](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」をご覧ください。
+- Azure AD は、Active Directory 対話型認証を使用する SQL Server Data Tools (SSDT) からの同様の接続をサポートしています。 詳細については、「[SQL Server Data Tools (SSDT) での Azure Active Directory のサポート](/sql/ssdt/azure-active-directory?view=azure-sqldw-latest&preserve-view=true)」をご覧ください。
 
 構成の手順には、Azure Active Directory 認証を構成して使用する次の手順が含まれます。
 
@@ -81,12 +81,12 @@ Synapse SQL に対して Azure AD 管理者が作成された場合にのみ、�
 
 - Azure AD の次のメンバーを Synapse SQL にプロビジョニングできます。
 
-  - ネイティブ メンバー:マネージド ドメインまたは顧客のドメインの Azure AD で作成したメンバー。 詳細については、 [Azure AD への独自のドメイン名の追加](../../active-directory/fundamentals/add-custom-domain.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関する記事をご覧ください。
+  - ネイティブ メンバー:マネージド ドメインまたは顧客のドメインの Azure AD で作成したメンバー。 詳細については、 [Azure AD への独自のドメイン名の追加](../../active-directory/fundamentals/add-custom-domain.md)に関する記事をご覧ください。
   - フェデレーション ドメインのメンバー:フェデレーション ドメインを使用して Azure AD で作成されたメンバー。 詳細については、「 [Microsoft Azure now supports federation with Windows Server Active Directory (Microsoft Azure による Windows Server Active Directory とのフェデレーションのサポートの実現)](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)」をご覧ください。
   - ネイティブ メンバーまたはフェデレーション ドメインのメンバーである別の Azure AD からインポートされたメンバー。
   - セキュリティ グループとして作成された Active Directory グループ。
 
-- `db_owner` サーバー ロールを持つグループに含まれている Azure AD ユーザーは、Synapse SQL に対して **[CREATE DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)** 構文を使用できません。 次のエラーが表示されます。
+- `db_owner` サーバー ロールを持つグループに含まれている Azure AD ユーザーは、Synapse SQL に対して **[CREATE DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?view=azure-sqldw-latest&preserve-view=true)** 構文を使用できません。 次のエラーが表示されます。
 
     `SQL Error [2760] [S0001]: The specified schema name 'user@mydomain.com' either does not exist or you do not have permission to use it.`
 
@@ -123,13 +123,13 @@ Azure AD サーバー プリンシパル (ログイン) では、次の認証方
 - Azure Active Directory アカウントを使用して Synapse SQL に最初に接続できるのは、Synapse SQL の Azure AD 管理者だけです。 Active Directory 管理者は、それ以降の Azure AD のデータベース ユーザーを構成できます。
 - 接続のタイムアウトを 30 秒に設定することをお勧めします。
 - SQL Server 2016 Management Studio と SQL Server Data Tools for Visual Studio 2015 (バージョン 14.0.60311.1April 2016 以降) では、Azure Active Directory 認証がサポートされています (Azure AD 認証は、 **.NET Framework Data Provider for SqlServer** (.NET Framework 4.6 以降のバージョン) でサポートされています)。 したがって、これらのツールとデータ層アプリケーション (DAC および BACPAC) の最新バージョンでは、Azure AD 認証を使用できます。
-- バージョン 15.0.1 以降では、[sqlcmd ユーティリティ](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)と [bcp ユーティリティ](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)は MFA を使用した Active Directory 対話型認証をサポートしています。
-- SQL Server Data Tools for Visual Studio 2015 には、April 2016 バージョン以降の Data Tools (バージョン 14.0.60311.1) が必要です。 現在、Azure AD ユーザーは SSDT オブジェクト エクスプローラーには表示されません。 回避策として、ユーザーを [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) で表示してください。
-- [Microsoft JDBC Driver 6.0 for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) は、Azure AD 認証をサポートしています。 「 [接続プロパティの設定](/sql/connect/jdbc/setting-the-connection-properties?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」もご覧ください。
+- バージョン 15.0.1 以降では、[sqlcmd ユーティリティ](/sql/tools/sqlcmd-utility?view=azure-sqldw-latest&preserve-view=true)と [bcp ユーティリティ](/sql/tools/bcp-utility?view=azure-sqldw-latest&preserve-view=true)は MFA を使用した Active Directory 対話型認証をサポートしています。
+- SQL Server Data Tools for Visual Studio 2015 には、April 2016 バージョン以降の Data Tools (バージョン 14.0.60311.1) が必要です。 現在、Azure AD ユーザーは SSDT オブジェクト エクスプローラーには表示されません。 回避策として、ユーザーを [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?view=azure-sqldw-latest&preserve-view=true) で表示してください。
+- [Microsoft JDBC Driver 6.0 for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) は、Azure AD 認証をサポートしています。 「 [接続プロパティの設定](/sql/connect/jdbc/setting-the-connection-properties?view=azure-sqldw-latest&preserve-view=true)」もご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
 - Synapse SQL でのアクセスおよび制御の概要については、[Synapse SQL のアクセス制御](../security/synapse-workspace-access-control-overview.md)に関するページを参照してください。
-- データベース プリンシパルの詳細については、「[プリンシパル](/sql/relational-databases/security/authentication-access/principals-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
-- データベース ロールの詳細については、[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)に関するページを参照してください。
+- データベース プリンシパルの詳細については、「[プリンシパル](/sql/relational-databases/security/authentication-access/principals-database-engine?view=azure-sqldw-latest&preserve-view=true)」を参照してください。
+- データベース ロールの詳細については、[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles?view=azure-sqldw-latest&preserve-view=true)に関するページを参照してください。
 

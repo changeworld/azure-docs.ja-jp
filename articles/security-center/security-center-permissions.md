@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/01/2020
 ms.author: memildin
-ms.openlocfilehash: 668fe1436feeb0888f7d871144da6cb6b8e3864e
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 14ee9f23379a26c1756c622efb7d739f49dd0537
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922611"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099184"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure Security Center におけるアクセス許可
 
@@ -59,6 +59,5 @@ Security Center は、リソースの構成を評価して、セキュリティ�
 
 - [Security Center でセキュリティ ポリシーを設定する](tutorial-security-policy.md)
 - [Security Center でセキュリティに関する推奨事項を管理する](security-center-recommendations.md)
-- [Azure リソースのセキュリティ正常性を監視する](security-center-monitoring.md)
 - [Security Center でセキュリティのアラートの管理と対応を行う](security-center-managing-and-responding-alerts.md)
 - [パートナー セキュリティ ソリューションを監視する](./security-center-partner-integration.md)

@@ -5,15 +5,15 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: overview
-ms.date: 09/03/2020
+ms.date: 01/28/2021
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 974631f9cba66404a3881caed1382be7ff3c00d1
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 34168a02b5a2d2dfe74e2a5839e0bfddcf684222
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881335"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712183"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Private Link とは 
 Azure Private Link を使用すると、お使いの仮想ネットワーク内の[プライベート エンドポイント](private-endpoint-overview.md)経由で Azure PaaS サービス (Azure Storage、SQL Database など) と Azure でホストされている顧客所有の、またはパートナー サービスにアクセスできます。
@@ -54,6 +54,7 @@ Azure Private Link には次のような利点があります。
 |  Azure Database for PostgreSQL - 単一サーバー         | すべてのパブリック リージョン <br/> すべての Government リージョン<br/>すべての中国リージョン     | General Purpose とメモリ最適化の価格レベルでサポートされます | GA <br/> [Azure Database for PostgreSQL のプライベート エンドポイントを作成する方法を確認します。](../postgresql/concepts-data-access-and-security-private-link.md)      |
 |  Azure Database for MySQL         | すべてのパブリック リージョン<br/> すべての Government リージョン<br/>すべての中国リージョン      |  | GA <br/> [Azure Database for MySQL のプライベート エンドポイントを作成する方法を確認します。](../mysql/concepts-data-access-security-private-link.md)     |
 |  Azure Database for MariaDB         | すべてのパブリック リージョン<br/> すべての Government リージョン<br/>すべての中国リージョン     |  | GA <br/> [Azure Database for MariaDB のプライベート エンドポイントを作成する方法を確認します。](../mariadb/concepts-data-access-security-private-link.md)      |
+|  Azure Digital Twins         | Azure Digital Twins でサポートされるすべてのパブリック リージョン     |  | プレビュー <br/> [Azure Digital Twins のプライベート エンドポイントを作成する方法を確認します。](../digital-twins/how-to-enable-private-link-portal.md)      |
 |  Azure Key Vault         | すべてのパブリック リージョン<br/> すべての Government リージョン      |  | GA   <br/> [Azure Key Vault のプライベート エンドポイントを作成する方法を確認します。](../key-vault/general/private-link-service.md)   |
 |Azure Kubernetes Service - Kubernetes API | すべてのパブリック リージョン      |  | GA   <br/> [Azure Kubernetes Service のプライベート エンドポイントを作成する方法を確認します。](../aks/private-clusters.md)   |
 |Azure Search | すべてのパブリック リージョン <br/> すべての Government リージョン | プライベート モードのサービスでサポートされます | GA   <br/> [Azure Search のプライベート エンドポイントを作成する方法を確認します。](../search/service-create-private-endpoint.md)    |
@@ -69,7 +70,7 @@ Azure Private Link には次のような利点があります。
 | Azure Automation  | すべてのパブリック リージョン<br/> すべての Government リージョン |  | プレビュー </br> [Azure Automation のプライベート エンドポイントを作成する方法を確認します。](../automation/how-to/private-link-security.md)| |
 | Azure IoT Hub | すべてのパブリック リージョン    |  | GA   <br/> [Azure IoT Hub のプライベート エンドポイントを作成する方法を確認します。](../iot-hub/virtual-network-support.md) |
 | Azure SignalR | 米国東部、米国中南部、<br/>米国西部 2、すべての中国リージョン      |  | プレビュー   <br/> [Azure SignalR のプライベート エンドポイントを作成する方法を確認します。](../azure-signalr/howto-private-endpoints.md)   |
-| Azure Monitor <br/>(ログ分析と Application Insights) | すべてのパブリック リージョン      |  | GA   <br/> [Azure Monitor のプライベート エンドポイントを作成する方法を確認します。](../azure-monitor/platform/private-link-security.md)   | 
+| Azure Monitor <br/>(ログ分析と Application Insights) | すべてのパブリック リージョン      |  | GA   <br/> [Azure Monitor のプライベート エンドポイントを作成する方法を確認します。](../azure-monitor/logs/private-link-security.md)   | 
 | Azure Batch | 以下を除くすべてのパブリック リージョン:ドイツ中部、ドイツ北東部 <br/> すべての Government リージョン  | | GA <br/> [Azure Batch のプライベート エンドポイントを作成する方法を確認します。](../batch/private-connectivity.md) |
 |Azure Data Factory | すべてのパブリック リージョン<br/> すべての Government リージョン<br/>すべての中国リージョン    | 資格情報は Azure Key Vault に格納する必要があります| GA   <br/> [Azure Data Factory のプライベート エンドポイントを作成する方法を確認します。](../data-factory/data-factory-private-link.md)   |
 |Azure Managed Disks | すべてのパブリック リージョン<br/> すべての Government リージョン<br/>すべての中国リージョン    | [既知の制限についてはここをクリックしてください](../virtual-machines/disks-enable-private-links-for-import-export-portal.md#limitations) | GA   <br/> [Azure Managed Disks のプライベート エンドポイントを作成する方法を確認します。](../virtual-machines/disks-enable-private-links-for-import-export-portal.md)   |

@@ -368,7 +368,7 @@ Java [関数ランタイム ライブラリ](/java/api/overview/azure/functions/
 
 Event Hubs トリガーには、いくつかの[メタデータ プロパティ](../articles/azure-functions/./functions-bindings-expressions-patterns.md)があります。 メタデータ プロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらのプロパティは、[EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) クラスに由来します。
 
-|プロパティ|Type|説明|
+|プロパティ|型|説明|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` のインスタンスです。|
 |`EnqueuedTimeUtc`|`DateTime`|エンキューされた時刻 (UTC)。|

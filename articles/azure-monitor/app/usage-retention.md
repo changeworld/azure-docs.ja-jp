@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: f7f6155d3230d234e1163ee12cd7685817331b93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37de27e8dc707133595b71b39e45bdec554289e5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323538"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583390"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Azure Application Insights による Web アプリケーションのユーザー リテンション期間分析
 
@@ -63,6 +63,6 @@ Application Insights ポータルのリテンション期間ツールにデー�
     - [ユーザー、セッション、イベント](usage-segmentation.md)
     - [ファネル](usage-funnels.md)
     - [ユーザー フロー](usage-flows.md)
-    - [ブック](../platform/workbooks-overview.md)
+    - [ブック](../visualize/workbooks-overview.md)
     - [ユーザー コンテキストの追加](usage-send-user-context.md)
 

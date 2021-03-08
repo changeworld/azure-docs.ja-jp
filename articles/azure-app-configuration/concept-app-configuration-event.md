@@ -7,22 +7,22 @@ ms.author: jimmyca
 ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: 640be797b2653f9e6c969306b7e2b99393b99c39
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 12a62bbd06cf9adf3b5978bb061e1d014599b44c
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078206"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550744"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Azure App Configuration イベントへの反応
 
 Azure App Configuration イベントを使用すると、アプリケーションでキー/値の変化に反応できます。 これを実行するために、複雑なコードや、高価で非効率的なポーリング サービスは必要ありません。 イベントは、[Azure Event Grid](https://azure.microsoft.com/services/event-grid/) を通して、[Azure Functions](https://azure.microsoft.com/services/functions/)、[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) などのサブスクライバー、またはユーザー独自のカスタム HTTP リスナーにプッシュされます。 決定的な点は、使用した分だけ支払うということです。
 
-Azure App Configuration イベントは Azure Event Grid に送信されます。Event Grid Service では豊富な再試行ポリシーおよび配信不能メッセージ配信を使用してご利用のアプリケーションに信頼性の高い配信サービスが提供されます。 詳細については、「[Event Grid のメッセージの配信と再試行](../event-grid/delivery-and-retry.md)」を参照してください。
+Azure App Configuration のイベントは Azure Event Grid に送信されます。そこでは、豊富な再試行ポリシーと配信不能メッセージ配信を使用して、信頼性の高い配信サービスがアプリケーションに提供されます。 詳細については、「[Event Grid のメッセージの配信と再試行](../event-grid/delivery-and-retry.md)」を参照してください。
 
 一般的なアプリ構成イベントのシナリオには、アプリケーション構成の更新、デプロイのトリガー、またはすべての構成指向のワークフローが含まれます。 変更の頻度が低くても、即時の応答性が必要なシナリオでは、イベント ベースのアーキテクチャは特に効果的です。
 
-簡単な例については、[Azure App Configuration イベントをカスタム Web エンドポイントにルーティングする - CLI](./howto-app-configuration-event.md) に関する記事を参照してください。 
+簡単な例については、[データ変更通知での Event Grid の使用](./howto-app-configuration-event.md)に関する記事を参照してください。 
 
 ![Event Grid モデル](./media/event-grid-functional-model.png)
 
@@ -87,4 +87,4 @@ App Configuration イベントを処理するアプリケーションは、次�
 Event Grid の詳細について理解し、Azure App Configuration イベントを試してみてください。
 
 - [Event Grid について](../event-grid/overview.md)
-- [Azure App Configuration イベントをカスタム Web エンドポイントにルーティングする](./howto-app-configuration-event.md)
+- [データ変更通知に Event Grid を使用する方法](./howto-app-configuration-event.md)

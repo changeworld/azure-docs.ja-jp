@@ -3,12 +3,12 @@ title: マネージド ID による認証
 description: ユーザー割り当てまたはシステム割り当て Azure マネージド ID を使用して、プライベート コンテナー レジストリ内のイメージへのアクセス権を付与します。
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 9a144f0e865cfc9bf857752eed65dbe5cda88bd9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 68564cc5743b1deb43bf39f897c239dc683c334c
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253464"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99987748"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure マネージド ID を使用して Azure コンテナー レジストリに対して認証する 
 
@@ -53,7 +53,7 @@ Azure リソースのマネージド ID は、Azure サービスに Azure Active
 
 ## <a name="create-a-docker-enabled-vm"></a>Docker 対応 VM を作成する
 
-Docker 対応 Ubuntu 仮想マシンを作成します。 また、その仮想マシンに [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) もインストールする必要があります。 既に Azure 仮想マシンがある場合は、仮想マシンを作成するこの手順を省略します。
+Docker 対応 Ubuntu 仮想マシンを作成します。 また、その仮想マシンに [Azure CLI](/cli/azure/install-azure-cli) もインストールする必要があります。 既に Azure 仮想マシンがある場合は、仮想マシンを作成するこの手順を省略します。
 
 [az vm create][az-vm-create] を使用して、既定の Ubuntu Azure 仮想マシンをデプロイします。 次の例では、*myResourceGroup* という名前の既存のリソース グループ内に *myDockerVM* という名前の VM を作成します。
 
@@ -86,7 +86,7 @@ sudo apt install docker.io -y
 インストールの後、次のコマンドを実行して、VM 上で Docker が正しく実行されていることを確認します。
 
 ```bash
-sudo docker run -it hello-world
+sudo docker run -it mcr.microsoft.com/hello-world
 ```
 
 出力:
@@ -99,7 +99,7 @@ This message shows that your installation appears to be working correctly.
 
 ### <a name="install-the-azure-cli"></a>Azure CLI のインストール
 
-Ubuntu 仮想マシンに Azure CLI をインストールするには、「[apt での Azure CLI のインストール](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)」の手順に従います。 この記事の場合は、バージョン 2.0.55 以降をインストールするようにしてください。
+Ubuntu 仮想マシンに Azure CLI をインストールするには、「[apt での Azure CLI のインストール](/cli/azure/install-azure-cli-apt)」の手順に従います。 この記事の場合は、バージョン 2.0.55 以降をインストールするようにしてください。
 
 SSH セッションを終了します。
 
@@ -107,7 +107,7 @@ SSH セッションを終了します。
 
 ### <a name="create-an-identity"></a>ID の作成
 
-[az identity create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) コマンドを使用して、サブスクリプション内に ID を作成します。 前にコンテナー レジストリまたは仮想マシンを作成するために使用したものと同じリソース グループ、または別のリソース グループを使用できます。
+[az identity create](/cli/azure/identit#az-identity-create) コマンドを使用して、サブスクリプション内に ID を作成します。 前にコンテナー レジストリまたは仮想マシンを作成するために使用したものと同じリソース グループ、または別のリソース グループを使用できます。
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRId

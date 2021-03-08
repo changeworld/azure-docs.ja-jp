@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 79282e99894bccad4f3c265cdffe4bee2e465950
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 4be9b802f5284663c2834f9d9c59fb709269bd53
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052755"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572593"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Automation 用の Azure セキュリティ ベースライン
 
@@ -180,9 +180,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Azure アクティビティ ログを使用して、リソース構成を監視し、ネットワーク リソースに対する変更を検出します。 重要なリソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -210,7 +210,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 * [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
 * [Azure Monitor とサードパーティの SIEM 統合を開始する方法](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -230,9 +230,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**:監査およびアクティビティのログ (イベント ソース、日付、ユーザー、タイムスタンプ、送信元アドレス、送信先アドレス、その他の役立つ要素を含みます) にアクセスするために、Azure Monitor を有効にします。
 
-* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Azure アクティビティ ログ イベントを表示および取得する](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure アクティビティ ログ イベントを表示および取得する](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **Azure Security Center の監視**: はい
 
@@ -254,7 +254,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 **ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
-* [Log Analytics でデータ保持期間を変更する](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 * [Automation アカウントのデータ保持の詳細](./automation-managing-data.md#data-retention)
 
@@ -270,9 +270,9 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 * [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-* [Azure Monitor のログ クエリについて](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Azure Monitor のログ クエリについて](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
+* [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -288,7 +288,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 * [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Azure Monitor ログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md)
+* [Azure Monitor ログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -418,7 +418,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 * [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [カスタムのアラートおよび通知用にアクション グループを構成する方法](../azure-monitor/platform/action-groups.md)
+* [カスタムのアラートおよび通知用にアクション グループを構成する方法](../azure-monitor/alerts/action-groups.md)
 
 **Azure Security Center の監視**: はい
 
@@ -618,7 +618,7 @@ Hybrid Runbook Worker を使用する場合、仮想マシン上の仮想ディ�
 
 * [ネットワーク セキュリティ グループの診断ログ](../private-link/private-link-overview.md#logging-and-monitoring)
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 

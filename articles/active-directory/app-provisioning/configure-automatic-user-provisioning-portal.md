@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 02/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 8ee18043f0485ae6290b1b323648ba9b2b83258b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 02d415bd957b0490857081b996c592f90365f031
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255918"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555631"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure Portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する
 
@@ -63,7 +63,7 @@ Azure Active Directory ポータルを使用して、ディレクトリでのシ
 
 **[マッピング]** を展開し、ユーザー アカウントをプロビジョニングまたは更新する場合に、Azure AD とターゲット アプリケーションの間でフローするユーザー属性を表示および編集します。
 
-Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オブジェクトの間には、構成済みの一連のマッピングが存在します。 アプリによっては、グループや連絡先といった他のタイプのオブジェクトを管理するものもあります。 テーブルでマッピングを選択すると右側にマッピング エディターが開き、それらを表示してカスタマイズできます。
+Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オブジェクトの間には、構成済みの一連のマッピングが存在します。 一部のアプリではグループ オブジェクトも管理します。 テーブルでマッピングを選択すると右側にマッピング エディターが開き、それらを表示してカスタマイズできます。
 
 ![[属性マッピング] 画面を表示します](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 

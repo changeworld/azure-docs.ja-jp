@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Services (AKS) での仮想ノードの使用方法の概要
 services: container-service
 ms.topic: conceptual
-ms.date: 09/21/2020
+ms.date: 02/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1e5a53c80aed90e44ba594dcff3c8ca23afc2c4f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3bba1155ec57db67968aec95d1d3386fc6cda006
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684776"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634449"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes"></a>Azure Kubernetes Service (AKS) クラスターを作成し、仮想ノードを使用できるように構成する
 
@@ -45,7 +45,6 @@ Azure Container Instances (ACI) で実行されているポッドは、ネット
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) を使用すると、ポッドは仮想ノードにデプロイされません
 * 仮想ノードでは、Linux ポッドのスケジュール設定がサポートされています。 オープンソースの [Virtual Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) プロバイダーを手動でインストールして、Windows Server のコンテナーを ACI にスケジュールすることができます。
 * 仮想ノードには、Azure CNI ネットワークを使用した AKS クラスターが必要です。
-* プライベート クラスター持つ仮想ノード。
 * AKS に対する API サーバーの許可された IP 範囲の使用。
 * Azure Files 共有のサポート[汎用 v1](../storage/common/storage-account-overview.md#types-of-storage-accounts) をマウントするボリューム。 [Azure Files 共有を含むボリューム](azure-files-volume.md)をマウントする手順に従います。
 * IPv6 の使用はサポートされていません。

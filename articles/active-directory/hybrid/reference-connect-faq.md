@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fa195fd8d40c6b67a9c446f0b2320fe47d75259
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 29c0ae8ec210356f6027a46ed01f2a7126ea4a49
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092668"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644733"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -201,7 +201,7 @@ Microsoft では、すべてのお客様に対し、Azure AD Connect インス�
 **Q:自動アップグレードが動作しなくなっているため、新しいバージョンをインストールする必要があるという内容の電子メールが送られてきました。なぜそうしなければならないのですか。**  
 昨年リリースされた Azure AD Connect のバージョンでは、特定の状況において、自動アップグレード機能がサーバー上で無効になることがあります。 この問題は、Azure AD Connect バージョン 1.1.750.0 で修正しました。 問題の影響を受けている場合は、PowerShell スクリプトを実行して修復するか、手動で最新バージョンの Azure AD Connect にアップグレードすることで軽減できます。 
 
-PowerShell スクリプトを実行するには、[スクリプトをダウンロード](https://aka.ms/repairaadconnect)して、管理 PowerShell ウィンドウの Azure AD Connect サーバー上で実行します。 スクリプトの実行方法については、[この短い動画](https://aka.ms/repairaadcau)をご覧ください。
+PowerShell スクリプトを実行するには、[スクリプトをダウンロード](/samples/browse/?redirectedfrom=TechNet-Gallery)して、管理 PowerShell ウィンドウの Azure AD Connect サーバー上で実行します。 スクリプトの実行方法については、[この短い動画](https://aka.ms/repairaadcau)をご覧ください。
 
 手動でアップグレードするには、AADConnect.msi ファイルの最新バージョンをダウンロードし、実行する必要があります。
  

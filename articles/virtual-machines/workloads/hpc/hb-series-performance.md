@@ -3,17 +3,17 @@ title: HB シリーズの VM サイズのパフォーマンス
 description: Azure での HB シリーズ VM サイズのパフォーマンス テスト結果について説明します。
 author: vermagit
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: hpc
 ms.topic: article
 ms.date: 09/09/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 10d1bfea4527eb7ab9a341de8f12a32cb59597eb
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1f2d24279d3e74774da05eba42c0e916370d4f1c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966974"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672166"
 ---
 # <a name="hb-series-virtual-machine-sizes"></a>HB シリーズの仮想マシンのサイズ
 

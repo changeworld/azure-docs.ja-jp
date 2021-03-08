@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 09/03/2020
-ms.openlocfilehash: cb7a441a6d86cd64847300d1e597cf6f86067282
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.date: 01/27/2021
+ms.openlocfilehash: c0e86cad252da1b5484944c12351d4ee1e39edbe
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740948"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656307"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>クイック スタート:Azure SQL Database の単一データベースを作成する
 
@@ -70,6 +70,8 @@ Azure portal で単一データベースを作成するため、このクイッ�
   
 
 1. **[追加設定]** タブにある **[データ ソース]** セクションの **[既存のデータを使用します]** で、 **[サンプル]** を選択します。 これにより、AdventureWorksLT サンプル データベースが作成され、空のデータベースではなく、クエリと実験に使用するテーブルとデータが用意されます。
+1. 必要に応じて、[Azure Defender for SQL](../database/azure-defender-for-sql.md) を有効にします。
+1. 必要に応じて、[メンテナンス期間](../database/maintenance-window.md)を設定して、ご利用のデータベースに対して計画メンテナンスが最適なタイミングで実行されるようにします。
 1. ページの下部にある **[確認と作成]** を選択します。
 
    ![[追加設定] タブ](./media/single-database-create-quickstart/additional-settings.png)

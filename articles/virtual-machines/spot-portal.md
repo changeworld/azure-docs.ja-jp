@@ -1,27 +1,28 @@
 ---
-title: ポータルを使用した Azure スポット VM のデプロイ
-description: Azure PowerShell を使用してスポット VM をデプロイし、コストを節約する方法。
+title: ポータルを使用した Azure Spot Virtual Machines のデプロイ
+description: Azure PowerShell を使用して Spot Virtual Machines をデプロイし、コストを節約する方法。
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: spot
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/14/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 0da650646c35a9a663dd29589f963d23cbe552cf
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 879a3e9b3d3f651a1dea17e76dba503cd2816b9e
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828285"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098572"
 ---
-# <a name="deploy-spot-vms-using-the-azure-portal"></a>Azure portal を使用してスポット VM をデプロイする
+# <a name="deploy-azure-spot-virtual-machines-using-the-azure-portal"></a>Azure portal を使用して Azure Spot Virtual Machines をデプロイする
 
-[スポット VM](spot-vms.md) を使うと、非常に低コストで未使用の容量を利用できます。 Azure で容量の回復が必要になると常に、Azure インフラストラクチャはスポット VM を削除します。 したがって、スポット VM は、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断してもかまわないワークロードに最適です。
+[Azure Spot Virtual Machines](spot-vms.md) を使用すると、大幅にコストを削減して未使用の容量を利用できます。 Azure で容量の回復が必要になると常に、Azure インフラストラクチャによって Azure スポット仮想マシンが削除されます。 したがって、Azure スポット仮想マシンは、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断してもかまわないワークロードに最適です。
 
-スポット VM の価格は、リージョンと SKU に基づいて変化します。 詳細については、[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) と [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) の VM 価格を参照してください。 最大価格の設定の詳細については、[スポット VM の価格](spot-vms.md#pricing)に関するページを参照してください。
+Azure スポット仮想マシンの価格は、リージョンと SKU に基づいて変動します。 詳細については、[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) と [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) の VM 価格を参照してください。 最大価格の設定の詳細については、[Azure スポット仮想マシンの価格](spot-vms.md#pricing)に関するページを参照してください。
 
-VM に対して、1 時間あたりに支払うことができる最大価格を設定するオプションがあります。 スポット VM の最大価格は、小数点以下最大 5 桁を使用して米ドル (USD) で設定できます。 たとえば、`0.05701` の値は、1 時間あたり $0.05701 米ドルの最大価格になります。 最大価格を `-1` に設定した場合、VM は価格に基づいて削除されません。 VM の価格は、使用可能な容量とクォータがある限り、現在のスポットの価格または標準 VM の価格のいずれか低い方になります。
+VM に対して、1 時間あたりに支払うことができる最大価格を設定するオプションがあります。 Azure Spot Virtual Machine の最大価格は、小数点以下最大 5 桁を使用して米ドル (USD) で設定できます。 たとえば、`0.05701` の値は、1 時間あたり $0.05701 米ドルの最大価格になります。 最大価格を `-1` に設定した場合、VM は価格に基づいて削除されません。 VM の価格は、使用可能な容量とクォータがある限り、現在のスポットの価格または標準 VM の価格のいずれか低い方になります。
 
 VM の削除時には、VM とその基になっているディスクを削除するオプションと、後で再開できるように VM の割り当てを解除するオプションが用意されています。
 
@@ -49,7 +50,7 @@ VM をデプロイするときに、Azure スポット インスタンスを使�
 
 ## <a name="simulate-an-eviction"></a>削除をシミュレートする
 
-スポット VM の[削除をシミュレート](/rest/api/compute/virtualmachines/simulateeviction)して、突然の削除に対するアプリケーションの応答をテストすることができます。 
+Azure Spot Virtual Machine の[削除をシミュレート](/rest/api/compute/virtualmachines/simulateeviction)して、突然の削除に対してアプリケーションがどの程度適切に対応するかをテストすることができます。 
 
 次の情報をお客様の情報に置き換えてください。 
 
@@ -58,10 +59,12 @@ VM をデプロイするときに、Azure スポット インスタンスを使�
 - `vmName`
 
 
-```http
+```rest
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
 ```
 
-## <a name="next-steps"></a>次の手順
+`Response Code: 204` は、シミュレートされた削除が成功したことを意味します。 
 
-[PowerShell](./windows/spot-powershell.md)、[CLI](./linux/spot-cli.md)、[テンプレート](./linux/spot-template.md)を使用してスポット VM を作成することもできます。
+## <a name="next-steps"></a>次のステップ
+
+[PowerShell](./windows/spot-powershell.md)、[CLI](./linux/spot-cli.md)、[テンプレート](./linux/spot-template.md)を使用して Azure Spot Virtual Machines を作成することもできます。

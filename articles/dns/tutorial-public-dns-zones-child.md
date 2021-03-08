@@ -10,12 +10,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
-ms.openlocfilehash: d805fb926131e047572887758b10506e4edd5944
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1e2eddd821bb7a9d2050913efef3d73b406e32f7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183381"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101733212"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>チュートリアル:新しい子 DNS ゾーンの作成
 
@@ -81,7 +81,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1.  **タグ**、**次へ:確認と作成** をクリックします。
 1.  **[確認および作成]** タブで概要を確認し、検証エラーを修正してから、 **[作成]** を選択します。
 
-    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="選択された子ゾーンのスクリーンショット" border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="選択された子ゾーンのスクリーンショット" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+
 ## <a name="verify-child-dns-zone"></a>子 DNS ゾーンを検証する
 これで、新しい子 DNS ゾーン *subdomain.contoso.com* が作成されました。 委任が正しく行われたことを確認するには、以下で説明するように、子ゾーンのネーム サーバー (NS) レコードが親ゾーンにあることを確認します。  
 

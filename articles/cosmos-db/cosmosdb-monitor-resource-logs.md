@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: sngun
-ms.openlocfilehash: d78ddf983f1c8f2bfeaf733c273afc1cc98b1185
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 1e551fc12da5e25ba54df5a6a38a49b76f7c376e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684860"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181875"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure の診断設定を使用して Azure Cosmos DB データを監視する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -103,7 +103,7 @@ Azure の診断設定は、リソース ログの収集に使用されます。 
 
 * **要求**: Azure Cosmos DB からメトリック データを収集し、診断設定で指定した場所に送信するには、このオプションを選択します。 これは、Azure のメトリックで自動的に収集されるものと同じデータです。 リソース ログを使用してメトリック データを収集し、両方の種類のデータをまとめて分析し、Azure Monitor の外部にメトリック データを送信します。
 
-Azure portal、CLI、または PowerShell を使用して診断設定を作成する方法の詳細については、「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../azure-monitor/platform/diagnostic-settings.md)」を参照してください。
+Azure portal、CLI、または PowerShell を使用して診断設定を作成する方法の詳細については、「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../azure-monitor/essentials/diagnostic-settings.md)」を参照してください。
 
 
 ## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a> 診断クエリに関する問題のトラブルシューティング
@@ -246,7 +246,7 @@ Azure portal、CLI、または PowerShell を使用して診断設定を作成�
    ```Kusto
    AzureDiagnostics
    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics"
-   | where todouble(sizeKb_d) > 800000
+   | where todouble(sizeKb_d) > 8000000
    ```
 
 1. 操作、要求の課金、または応答の長さの P99 または P50 レプリケーションの待機時間を取得する方法

@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 54f3f0e1b57525a3bd425575ff03a9f3c91b0044
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 274db058f9f291d720fc350bb23f7bfdde2791e9
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951215"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670927"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure 仮想マシンの SAP ワークロードでサポートされるシナリオ
 Azure での SAP NetWeaver、Business One、`Hybris`、または S/4HANA システム アーキテクチャの設計により、さまざまなアーキテクチャやツールで、スケーラブルで、効率性、可用性に優れたデプロイを実現するためのさまざまな機会が提供されます。 使用されているオペレーティング システムまたは DBMS によっては、制限があります。 また、オンプレミスでサポートされているすべてのシナリオが、Azure でも同じようにサポートされているわけではありません。 このドキュメントでは、サポートされていない非高可用性構成と高可用性構成、および Azure VM だけを使用するアーキテクチャについて説明します。 [HANA Large Instances](./hana-overview-architecture.md) でサポートされているシナリオについては、「[HANA L インスタンスのサポートされるシナリオ](./hana-supported-scenario.md)」をご覧ください。 

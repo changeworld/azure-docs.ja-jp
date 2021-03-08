@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 02/25/2021
 ms.author: b-juche
-ms.openlocfilehash: 5984727f123da6e1d35d862c3f396bd85ce9e7f2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 756cadd42e8cda557a90c39e2412f5d4f3290835
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881454"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741210"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files を使用したソリューション アーキテクチャ
 この記事では、Azure NetApp Files を使用するためのソリューション アーキテクチャを理解するうえで役立つベスト プラクティスへの参照を提供します。  
@@ -73,6 +73,7 @@ ms.locfileid: "98881454"
 ### <a name="sap-hana"></a>SAP HANA 
 
 * [SAP HANA Azure 仮想マシンのストレージ構成](../virtual-machines/workloads/sap/hana-vm-operations-storage.md)
+* [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](../virtual-machines/workloads/sap/hana-vm-operations-netapp.md)
 * [Red Hat Enterprise Linux で Azure NetApp Files を使用した SAP HANA スケールアップの高可用性](../virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md)
 * [SUSE Linux Enterprise Server 上で Azure NetApp Files を使用した Azure VM のスタンバイ ノードを使用して SAP HANA をスケールアウトする](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md)
 * [Red Hat Enterprise Linux 上で Azure NetApp Files を使用した Azure VM のスタンバイ ノードを使用して SAP HANA をスケールアウトする](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
@@ -85,6 +86,7 @@ ms.locfileid: "98881454"
 ### <a name="sap-iq-nls"></a>SAP IQ-NLS
 
 *   [SUSE Linux Enterprise Server で Azure NetApp Files を利用し、SAP IQ-NLS HA Solution をデプロイする](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-iq-nls-ha-solution-using-azure-netapp-files-on-suse/ba-p/1651172#.X2tDfpNzBh4.linkedin)
+* [HA シナリオで SAP IQ ライセンスを管理する方法](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/how-to-manage-sap-iq-license-in-ha-scenario/ba-p/2052583)
 
 ### <a name="sap-tech-community-and-blog-posts"></a>SAP 技術コミュニティとブログ記事 
 
@@ -93,6 +95,8 @@ ms.locfileid: "98881454"
 * [Azure NetApp Files – クラウド同期を使用した SAP HANA のオフロード バックアップ](https://blog.netapp.com/azure-netapp-files-sap-hana)
 * [Azure NetApp Files を使用して SAP HANA システムのコピーを高速化する](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
 * [Cloud Volumes ONTAP と Azure NetApp Files:SAP HANA システムの移行が簡単に](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
+* [HANA N+M スケールアウト アーキテクチャで ANF 投資を最大化するためのアーキテクチャに関する決定 - パート 1](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737)
+* [HANA N+M スケールアウト アーキテクチャで ANF 投資を最大化するためのアーキテクチャに関する決定 - パート 2](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130)
 
 ## <a name="azure-vmware-solutions"></a>Azure VMware Solutions
 
@@ -145,6 +149,7 @@ ms.locfileid: "98881454"
 
 * [Azure NetApp Files と Azure Kubernetes Service を統合する](../aks/azure-netapp-files.md)
 * [Azure NetApp Files を使用した Azure での現実離れした Kubernetes のパフォーマンス](https://cloud.netapp.com/blog/ma-anf-blg-configure-kubernetes-openshift)
+* [Azure NetApp Files + Trident = Kubernetes 用の動的および永続的ストレージ](https://anfcommunity.com/2021/02/16/azure-netapp-files-trident-dynamic-and-persistent-storage-for-kubernetes/)
 * [Trident - コンテナー用のストレージ オーケストレーター](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html)
 * [Azure Kubernetes Service (AKS) の Magento eコマース プラットフォーム](/azure/architecture/example-scenario/magento/magento-azure)
 

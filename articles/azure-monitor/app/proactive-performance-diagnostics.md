@@ -4,12 +4,12 @@ description: Application Insights は、アプリのテレメトリの高度な�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: ead71a5ac6e2cfa0df6654c7ba9aa7b5b9238d04
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: a055a323001e0291d3cb5c1716e640b3c8b21dbf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763776"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573735"
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 
@@ -70,12 +70,12 @@ Application Insights は、アプリケーションのパフォーマンスの�
 * *独自の異常検出ルールを作成できますか。または既存のルールをカスタマイズできますか。*
 
   * 現時点ではできません。ただし、次のことができます。
-    * メトリックがしきい値を超えたときに通知する[アラートを設定](../platform/alerts-log.md)する。
+    * メトリックがしきい値を超えたときに通知する[アラートを設定](../alerts/alerts-log.md)する。
     * 自分で分析できるように、[データベース](./code-sample-export-sql-stream-analytics.md)または [Power BI](./export-power-bi.md) に[テレメトリをエクスポート](./export-telemetry.md)する。
 * *どのくらいの頻度で分析は実行されますか。*
 
   * 前日 (UTC タイム ゾーンにおける終日) のテレメトリの分析が毎日実行されます。
-* *これにより、[メトリック アラート](../platform/alerts-log.md)が置き換えられるのですか。*
+* *これにより、[メトリック アラート](../alerts/alerts-log.md)が置き換えられるのですか。*
   * いいえ。  異常と見なされる可能性のあるすべての動作を検出することを確約しているわけではありません。
 
 
@@ -175,10 +175,10 @@ Application Insights は、一部のユーザーにのみ影響する、また�
 
 * [Profiler](profiler.md) 
 * [スナップショット デバッガー](./snapshot-debugger.md)
-* [Analytics](../log-query/log-analytics-tutorial.md)
-* [Analytics Smart Diagnostics](../log-query/log-query-overview.md)
+* [Analytics](../logs/log-analytics-tutorial.md)
+* [Analytics Smart Diagnostics](../logs/log-query-overview.md)
 
 スマート検出は、すべて自動化されています。 ただし、アラートを追加で設定する機能が用意されています。
 
-* [手動で構成するメトリックのアラート](../platform/alerts-log.md)
+* [手動で構成するメトリックのアラート](../alerts/alerts-log.md)
 * [可用性 Web テスト](./monitor-web-app-availability.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 62030d1c208fc778476f49e5b3165e46e6aa0d66
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: e1569cf4c7e91fd0c90d407846a9165d4b7b3776
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878852"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592941"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Linux Virtual Machines 用の Azure のセキュリティ ベースライン
 
@@ -176,9 +176,9 @@ Azure Security Center の Just In Time ネットワーク アクセスを使用�
 
 Linux Virtual Machines に関連するネットワーク リソースの構成を検証 (または修復) するには、Azure Policy を使用します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](../../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Monitor でアラートを作成する方法](../../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -208,7 +208,7 @@ Linux Virtual Machines に関連するネットワーク リソースの構成�
 
 * [Azure Security Center でのデータ収集](../../security-center/security-center-enable-data-collection.md)
 
-* [監視のために Syslog データをキャプチャするには、Log Analytics 拡張機能を有効にする必要がある](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+* [監視のために Syslog データをキャプチャするには、Log Analytics 拡張機能を有効にする必要がある](../../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 
 **Azure Security Center の監視**: はい
 
@@ -224,13 +224,13 @@ Virtual Machines (VM) に診断拡張機能をデプロイすることによっ�
 
 さらに、イベント ソース、日付、ユーザー、タイムスタンプ、ソース アドレス、宛先アドレス、その他の役立つ要素が含まれている監査およびアクティビティ ログへのアクセスのために Azure Monitor を有効にします。
 
-* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/platform/diagnostic-settings.md)
+* [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/essentials/diagnostic-settings.md)
 
-* [Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md)
+* [Log Analytics エージェントの概要](../../azure-monitor/agents/log-analytics-agent.md)
 
 * [Linux 用の Log Analytics 仮想マシン拡張機能](../extensions/oms-linux.md)
 
-* [Azure アクティビティ ログ イベントを表示および取得する](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure アクティビティ ログ イベントを表示および取得する](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 * [Application Insights の概要](../../azure-monitor/app/app-insights-overview.md)
 
@@ -246,7 +246,7 @@ Virtual Machines (VM) に診断拡張機能をデプロイすることによっ�
 
 * [Azure Security Center でのデータ収集](../../security-center/security-center-enable-data-collection.md)
 
-* [監視のために Syslog データをキャプチャするには、Log Analytics 拡張機能を有効にする必要がある](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+* [監視のために Syslog データをキャプチャするには、Log Analytics 拡張機能を有効にする必要がある](../../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 
 **Azure Security Center の監視**: はい
 
@@ -256,9 +256,9 @@ Virtual Machines (VM) に診断拡張機能をデプロイすることによっ�
 
 **ガイダンス**: 仮想マシン ログを格納するために使用されるすべてのストレージ アカウントまたは Log Analytics ワークスペースに、組織のコンプライアンス規則に従ったログの保有期間が設定されていることを確認します。
 
-* [Azure で仮想マシンを監視する方法](../../azure-monitor/insights/monitor-vm-azure.md)
+* [Azure で仮想マシンを監視する方法](../../azure-monitor/vm/monitor-vm-azure.md)
 
-* [Log Analytics ワークスペースの保有期間を構成する方法](../../azure-monitor/platform/manage-cost-storage.md)
+* [Log Analytics ワークスペースの保有期間を構成する方法](../../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure Security Center の監視**: 利用不可
 
@@ -272,15 +272,15 @@ Virtual Machines (VM) に診断拡張機能をデプロイすることによっ�
 
 あるいは、データを有効にして Azure Sentinel またはサード パーティの SIEM にオンボードすることにより、ログを監視および確認することもできます。
 
-* [Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md)
+* [Log Analytics エージェントの概要](../../azure-monitor/agents/log-analytics-agent.md)
 
 * [Linux 用の Log Analytics 仮想マシン拡張機能](../extensions/oms-linux.md)
 
 * [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md)
 
-* [Log Analytics ワークスペースについて](../../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Log Analytics ワークスペースについて](../../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Azure Monitor でカスタム クエリを実行する方法](../../azure-monitor/log-query/get-started-queries.md)
+* [Azure Monitor でカスタム クエリを実行する方法](../../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center の監視**: 利用不可
 
@@ -296,7 +296,7 @@ Virtual Machines (VM) に診断拡張機能をデプロイすることによっ�
 
 * [Azure Security Center でアラートを管理する方法](../../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Log Analytics のログ データに関するアラートを送信する方法](../../azure-monitor/learn/tutorial-response.md)
+* [Log Analytics のログ データに関するアラートを送信する方法](../../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: 利用不可
 
@@ -326,9 +326,9 @@ Virtual Machines (VM) に診断拡張機能をデプロイすることによっ�
 
 **ガイダンス**: ノードごとにコンソールのログ記録を手動で構成し、Syslog を使用してデータを格納できます。 また、ログを確認したり、Azure 仮想マシンの Syslog データにクエリを実行したりするには Azure Monitor の Log Analytics ワークスペースを使用します。
 
-* [Azure Monitor でカスタム クエリを実行する方法](../../azure-monitor/log-query/get-started-queries.md)
+* [Azure Monitor でカスタム クエリを実行する方法](../../azure-monitor/logs/get-started-queries.md)
 
-* [Azure Monitor の Syslog データ ソース](../../azure-monitor/platform/data-sources-syslog.md)
+* [Azure Monitor の Syslog データ ソース](../../azure-monitor/agents/data-sources-syslog.md)
 
 **Azure Security Center の監視**: 利用不可
 
@@ -416,7 +416,7 @@ Virtual Machines (VM) に診断拡張機能をデプロイすることによっ�
 
 * [Azure アクティビティ ログを Azure Monitor に統合する方法](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [カスタムのアラートおよび通知用にアクション グループを構成する方法](../../azure-monitor/platform/action-groups.md)
+* [カスタムのアラートおよび通知用にアクション グループを構成する方法](../../azure-monitor/alerts/action-groups.md)
 
 **Azure Security Center の監視**: はい
 
@@ -458,13 +458,13 @@ Virtual Machines (VM) に診断拡張機能をデプロイすることによっ�
 
 **ガイダンス**: 監査ログとサインイン ログを Log Analytics ワークスペースに送信するように Azure Active Directory の診断設定を構成します。 また、ログを確認したり、Azure 仮想マシンの認証 Syslog データにクエリを実行したりするには Azure Monitor を使用します。
 
-* [Log Analytics ワークスペースについて](../../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Log Analytics ワークスペースについて](../../azure-monitor/logs/log-analytics-tutorial.md)
 
 * [Azure アクティビティ ログを Azure Monitor に統合する方法](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Azure Monitor でカスタム クエリを実行する方法](../../azure-monitor/log-query/get-started-queries.md)
+* [Azure Monitor でカスタム クエリを実行する方法](../../azure-monitor/logs/get-started-queries.md)
 
-* [Azure Monitor の Syslog データ ソース](../../azure-monitor/platform/data-sources-syslog.md)
+* [Azure Monitor の Syslog データ ソース](../../azure-monitor/agents/data-sources-syslog.md)
 
 **Azure Security Center の監視**: 利用不可
 
@@ -598,9 +598,9 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **ガイダンス**:仮想マシンや関連リソースにいつ変更が加えられたかに関するアラートを作成するには、Azure Monitor を Azure アクティビティ ログと共に使用します。
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](../../azure-monitor/platform/alerts-activity-log.md)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../../azure-monitor/alerts/alerts-activity-log.md)
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](../../azure-monitor/platform/alerts-activity-log.md)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Azure Storage Analytics のログ](../../storage/common/storage-analytics-logging.md)
 

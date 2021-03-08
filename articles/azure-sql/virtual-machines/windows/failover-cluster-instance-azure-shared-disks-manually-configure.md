@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 8daec71745c9eff9a7db5bb34cb3596973def4aa
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: ce77021e74507ead6d225081debc7024cb89a15a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736415"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042404"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure 共有ディスクを使用して FCI を作成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "98736415"
 この記事に記載されている手順を完了するには、次のものが必要です。
 
 - Azure サブスクリプション。 [無料](https://azure.microsoft.com/free/)で開始しましょう。 
-- [2 台以上の Windows Azure 仮想マシン](failover-cluster-instance-prepare-vm.md)。 Premium SSD と[可用性ゾーン](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)でサポートされる[可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md)と[近接配置グループ](../../../virtual-machines/co-location.md#proximity-placement-groups) (PPG) は、Ultra Disks でサポートされます。 PPG を使用する場合、すべてのノードが同じグループ内にある必要があります。
+- [2 台以上の Windows Azure 仮想マシン](failover-cluster-instance-prepare-vm.md)。 Premium SSD と[可用性ゾーン](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)でサポートされる[可用性セット](../../../virtual-machines/windows/tutorial-availability-sets.md)と[近接配置グループ](../../../virtual-machines/co-location.md#proximity-placement-groups) (PPG) は、Ultra Disks でサポートされます。 すべてのノードは同じ[近接配置グループ](../../../virtual-machines/co-location.md#proximity-placement-groups)内に存在している必要があります。
 - Azure の仮想マシンと Active Directory の両方にオブジェクトを作成するためのアクセス許可を持つアカウント。
 - 最新バージョンの [PowerShell](/powershell/azure/install-az-ps)。 
 
@@ -205,7 +205,9 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>接続の構成 
 
-現在のプライマリ ノードに適切にトラフィックをルーティングするには、お使いの環境に適した接続オプションを構成します。 [Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) を作成できます。あるいは、SQL Server 2019 CU2 (以降) と Windows Server 2016 (以降) を使用している場合、代わりに[分散ネットワーク名](failover-cluster-instance-distributed-network-name-dnn-configure.md)機能を使用できます。 
+現在のプライマリ ノードに適切にトラフィックをルーティングするには、お使いの環境に適した接続オプションを構成します。 [Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) を作成できます。あるいは、SQL Server 2019 CU2 (以降) と Windows Server 2016 (以降) を使用している場合、代わりに[分散ネットワーク名](failover-cluster-instance-distributed-network-name-dnn-configure.md)機能を使用できます。  
+
+クラスター接続オプションの詳細については、[HADR 接続を Azure VM 上の SQL Server にルーティングする方法](hadr-cluster-best-practices.md#connectivity)に関する記事をご覧ください。 
 
 ## <a name="limitations"></a>制限事項
 

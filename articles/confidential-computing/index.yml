@@ -10,12 +10,12 @@ metadata:
   author: JBCook
   ms.author: jencook
   ms.date: 09/22/2020
-  ms.openlocfilehash: e4e9819820b9ebd711dc6789d43fd9bbd83d1b8a
-  ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+  ms.openlocfilehash: d41addbcf1c7e5bf673ba0082e5eaa216b5f946d
+  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/30/2021
-  ms.locfileid: "99096679"
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "100652634"
 landingContent:
 - title: Azure のコンフィデンシャル コンピューティングについて
   linkLists:
@@ -67,7 +67,7 @@ landingContent:
   linkLists:
   - linkListType: get-started
     links:
-    - text: Azure Kubernetes Service (AKS) のコンフィデンシャル コンピューティング ノード (プレビュー)
+    - text: AKS (Azure Kubernetes Service) のコンフィデンシャル コンピューティング ノード
       url: confidential-nodes-aks-overview.md
   - linkListType: concept
     links:
@@ -90,7 +90,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: AKS 上の機密ノードに関する FAQ
-      url: confidential-nodes-aks-overview.md
+      url: confidential-nodes-aks-faq.md
     - text: Azure Kubernetes Service (AKS) について
       url: ../aks/intro-kubernetes.md
 - title: 機密クラウド サービス

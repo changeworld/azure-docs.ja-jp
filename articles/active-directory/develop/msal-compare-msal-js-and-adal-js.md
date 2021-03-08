@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a1ec8c31681ab6c0ac40ba33e94f33057ee948e7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 1a56685c830fc7aa717add3e826c68c04449e378
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754802"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580848"
 ---
 # <a name="differences-between-msaljs-and-adaljs"></a>MSAL.js と ADAL.js の相違点
 
@@ -48,7 +48,7 @@ v1.0 エンドポイント (および ADAL.js) を既に使い慣れている場
 
 V1.0 では、`https://login.microsoftonline.com/common` 機関を使用すると、ユーザーは Azure AD アカウント (任意の組織用) でサインインできるようになります。
 
-v2.0 では、`https://login.microsoftonline.com/common` 機関を使用すると、ユーザーは Azure AD 組織アカウントや Microsoft の個人用アカウント (MSA) でサインインできるようになります。 サインインを Azure AD アカウント (ADAL.js の場合と同じ動作) だけに制限するには、`https://login.microsoftonline.com/organizations` を使用する必要があります。 詳細については、[MSAL.js を使用した初期化](msal-js-initializing-client-applications.md)に関するページの `authority` config オプションを参照してください。
+v2.0 では、`https://login.microsoftonline.com/common` 機関を使用すると、ユーザーは Azure AD 組織アカウントや Microsoft の個人用アカウント (MSA) でサインインできるようになります。 サインインを Azure AD アカウントのみに制限するには (ADAL.js の場合と同じ動作)、`https://login.microsoftonline.com/organizations` を使用します。 詳細については、[MSAL.js を使用した初期化](msal-js-initializing-client-applications.md)に関するページの `authority` config オプションを参照してください。
 
 ### <a name="scopes-for-acquiring-tokens"></a>トークンを取得するためのスコープ
 * トークンを取得するための認証要求におけるリソース パラメーターに代わるスコープ

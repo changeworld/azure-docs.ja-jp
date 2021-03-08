@@ -11,17 +11,17 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 10/21/2020
-ms.openlocfilehash: 1fc5653f08f8fc7916257dfdba570f451c0afa75
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 95e9ef340328bb4c1835e966cc9c3019bca88c09
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131935"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368831"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>PowerShell を使用してエラスティック ジョブ エージェントを作成する (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[エラスティック ジョブ (プレビュー)](job-automation-overview.md#elastic-database-jobs-preview) を使用すると、多数のデータベースにわたって 1 つまたは複数の Transact-SQL (T-SQL) スクリプトを同時に実行できます。
+[エラスティック ジョブ (プレビュー)](job-automation-overview.md) を使用すると、多数のデータベースにわたって 1 つまたは複数の Transact-SQL (T-SQL) スクリプトを同時に実行できます。
 
 このチュートリアルでは、複数のデータベースにわたってクエリを実行するために必要な手順を学習します。
 
@@ -63,7 +63,7 @@ Get-Module Az.Sql
 
 ## <a name="create-required-resources"></a>必要なリソースを作成する
 
-エラスティック ジョブ エージェントを作成するには、[ジョブ データベース](job-automation-overview.md#job-database)として使用するデータベース (S0 以上) が必要です。
+エラスティック ジョブ エージェントを作成するには、[ジョブ データベース](job-automation-overview.md#elastic-job-database)として使用するデータベース (S0 以上) が必要です。
 
 次のスクリプトを実行すると、新しいリソース グループ、サーバー、およびジョブ データベースとして使用されるデータベースが作成されます。 2 番目のスクリプトを実行すると、ジョブを実行する対象の、2 つの空のデータベースを含む 2 番目のサーバーが作成されます。
 

@@ -6,13 +6,13 @@ ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/1/2020
-ms.openlocfilehash: 53c71eec4c913c606669b7d36ca9a71ac8f3e2f1
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.date: 2/5/2021
+ms.openlocfilehash: 3cc29e0bd806ab76c4980128df5a89761e465fe7
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693462"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988379"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Azure Purview でのカスタム分類 
 
@@ -39,7 +39,7 @@ Azure Purview Data Catalog には、データ資産に含まれている可能�
     :::image type="content" source="media/create-a-custom-classification-and-classification-rule/new-classification.png" alt-text="新しい分類" border="true":::
 
 **[Add new classification]\(新しい分類の追加\)** ウィンドウが開き、分類の名前と説明を入力できます。 `your company name.classification name` など、名前空間の規則を使用することをお勧めします。
-Microsoft のシステム分類は、予約済みの `MS.` 名前空間にグループ化されます。 たとえば、**MS.GOVERNMENT.US.SOCIAL\_SECURITY\_NUMBER** です。
+Microsoft のシステム分類は、予約済みの `MICROSOFT.` 名前空間にグループ化されます。 たとえば、**MICROSOFT.GOVERNMENT.US.SOCIAL\_SECURITY\_NUMBER** です。
 
 分類の名前は、文字で始まり、その後に一連の文字、数字、およびピリオド (.) またはアンダースコアが続く必要があります。
 スペースは使用できません。 入力すると、UX によって自動的にフレンドリ名が生成されます。 このフレンドリ名は、カタログ内の資産に適用するとユーザーに表示されます。

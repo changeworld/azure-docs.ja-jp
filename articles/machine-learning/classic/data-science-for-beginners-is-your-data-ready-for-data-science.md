@@ -3,18 +3,18 @@ title: ML Studio (classic):データの評価 - Azure
 description: データ サイエンスを準備するためにデータが満たす必要のある 4 つの条件。 このビデオでは、基本的なデータの評価を支援する具体的な例を説明しています。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 2174044a1a913663e255b125f2ea89c312f5e9d3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 07db1f1c8021759fbd5702ad9353f74fcd1524c9
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307699"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516976"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>データ サイエンス用のデータの準備はお済みですか?
 ## <a name="video-2-data-science-for-beginners-series"></a>ビデオ 2: 初心者向けデータ サイエンス シリーズ
@@ -37,7 +37,7 @@ ms.locfileid: "93307699"
 * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
 ## <a name="transcript-is-your-data-ready-for-data-science"></a>トランスクリプト: データ サイエンス用のデータの準備はお済みですか?
-"データ サイエンス用のデータの準備はお済みですか?" へようこそ。 これは、" *初心者向けデータ サイエンス* " シリーズの 2 番目のビデオです。  
+"データ サイエンス用のデータの準備はお済みですか?" へようこそ。 これは、"*初心者向けデータ サイエンス*" シリーズの 2 番目のビデオです。  
 
 データ サイエンスから必要な回答を得るには、高品質の原材料を提供して操作できるようにする必要があります。 ピザを作るのと同じで、最初の材料が良いほど最終的な製品も良くなります。 
 

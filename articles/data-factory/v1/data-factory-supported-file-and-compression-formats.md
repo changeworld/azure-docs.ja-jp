@@ -1,25 +1,21 @@
 ---
 title: Azure Data Factory のファイル形式と圧縮形式
 description: Azure Data Factory でサポートされるファイル形式について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 874ee264d2d8778e2ea413575c3b8b2ab6c5373d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 7b53d9cd64c50d8305714878324dd355eb6d1840
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636138"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368729"
 ---
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮形式
-*このトピックが適用されるコネクタは、 [Amazon S3](data-factory-amazon-simple-storage-service-connector.md)、 [Azure Blob](data-factory-azure-blob-connector.md)、 [Azure Data Lake Store](data-factory-azure-datalake-connector.md)、 [ファイル システム](data-factory-onprem-file-system-connector.md)、 [FTP](data-factory-ftp-connector.md)、 [HDFS](data-factory-hdfs-connector.md)、 [HTTP](data-factory-http-connector.md)、 [SFTP](data-factory-sftp-connector.md) です。*
+*このトピックが適用されるコネクタは、[Amazon S3](data-factory-amazon-simple-storage-service-connector.md)、[Azure Blob](data-factory-azure-blob-connector.md)、[Azure Data Lake Store](data-factory-azure-datalake-connector.md)、[ファイル システム](data-factory-onprem-file-system-connector.md)、[FTP](data-factory-ftp-connector.md)、[HDFS](data-factory-hdfs-connector.md)、[HTTP](data-factory-http-connector.md)、[SFTP](data-factory-sftp-connector.md) です。*
 
 > [!NOTE]
 > この記事は、Azure Data Factory のバージョン 1 に適用されます。 Data Factory サービスの現在のバージョンを使用している場合は、[Data Factory でサポートされているファイル形式と圧縮コーデック](../supported-file-formats-and-compression-codecs.md)に関するページを参照してください。
@@ -81,16 +77,16 @@ Azure Data Factory は次のファイル形式をサポートしています。
 * テキスト ファイルからコピーして、データやヘッダー情報を含まない先頭の数行をスキップする: `skipLineCount` を指定して、スキップする行数を示します。 ファイルの残りの部分にヘッダー行が含まれている場合は、`firstRowAsHeader` も指定できます。 `skipLineCount` と `firstRowAsHeader` の両方を指定した場合は、まず行がスキップされ、次に入力ファイルからヘッダー情報が読み取られます。
 
 ## <a name="json-format"></a>JSON 形式
-**Azure Cosmos DB との間で JSON ファイルをそのままインポート/エクスポートする** 場合は、 [Azure Cosmos DB との間でのデータの移動](data-factory-azure-documentdb-connector.md)に関する記事の「 [JSON ドキュメントのインポート/エクスポート](data-factory-azure-documentdb-connector.md#importexport-json-documents)」をご覧ください。
+**Azure Cosmos DB との間で JSON ファイルをそのままインポート/エクスポートする** 場合は、[Azure Cosmos DB との間でのデータの移動](data-factory-azure-documentdb-connector.md)に関する記事の「[JSON ドキュメントのインポート/エクスポート](data-factory-azure-documentdb-connector.md#importexport-json-documents)」をご覧ください。
 
 JSON ファイルを解析するか、JSON 形式でデータを書き込む場合は、`format` セクションの `type` プロパティを **JsonFormat** に設定します。 `format` セクションに **オプションの** プロパティを指定することもできます。 構成方法については、「[JsonFormat の例](#jsonformat-example)」セクションを参照してください。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| filePattern |各 JSON ファイルに格納されたデータのパターンを示します。 使用できる値は、 **setOfObjects** と **arrayOfObjects** です。 **既定** 値は **setOfObjects** です。 これらのパターンの詳細については、「[JSON ファイルのパターン](#json-file-patterns)」セクションを参照してください。 |いいえ |
+| filePattern |各 JSON ファイルに格納されたデータのパターンを示します。 使用できる値は、**setOfObjects** と **arrayOfObjects** です。 **既定** 値は **setOfObjects** です。 これらのパターンの詳細については、「[JSON ファイルのパターン](#json-file-patterns)」セクションを参照してください。 |いいえ |
 | jsonNodeReference | 同じパターンを持つ配列フィールド内のオブジェクトからのデータの反復処理と抽出を行う場合は、その配列の JSON のパスを指定します。 このプロパティは、JSON ファイルからデータをコピーするときにのみサポートされます。 | いいえ |
 | jsonPathDefinition | カスタマイズされた列名 (先頭が小文字) での列マッピングごとに JSON のパス式を指定します。 このプロパティは JSON ファイルからデータをコピーするときにのみサポートされ、オブジェクトまたは配列からデータを抽出することができます。 <br/><br/> ルート オブジェクトの直下のフィールドの場合、ルートの $ から記述します。`jsonNodeReference` プロパティによって選択された配列内のフィールドの場合、配列要素から記述します。 構成方法については、「[JsonFormat の例](#jsonformat-example)」セクションを参照してください。 | いいえ |
-| encodingName |エンコーディング名を指定します。 有効なエンコード名の一覧については、[Encoding.EncodingName](/dotnet/api/system.text.encoding) プロパティに関する記事を参照してください。 例: windows-1250 または shift_jis。 **既定** 値は、 **UTF-8** です。 |いいえ |
+| encodingName |エンコーディング名を指定します。 有効なエンコード名の一覧については、[Encoding.EncodingName](/dotnet/api/system.text.encoding) プロパティに関する記事を参照してください。 例: windows-1250 または shift_jis。 **既定** 値は、**UTF-8** です。 |いいえ |
 | nestingSeparator |入れ子レベルの分割に使用される文字。 既定値は "." (ドット) です。 |いいえ |
 
 ### <a name="json-file-patterns"></a>JSON ファイルのパターン
@@ -226,7 +222,7 @@ JSON ファイルからデータをコピーするときは、次の 2 つのサ
 **JsonFormat** 型の入力データセットは次のように定義されます (関連する部分のみでの部分的な定義)。 具体的には次のとおりです。
 
 - `structure` セクションでは、表形式データへの変換中に、カスタマイズされた列名と、対応するデータ型を定義します。 このセクションは、列マッピングを行う必要がない場合は **省略可能** です。 詳しくは、「[ソース データセット列を変換先のデータセット列にマップする](data-factory-map-columns.md)」をご覧ください。
-- `jsonPathDefinition` は、データを抽出する位置を示す各列の JSON のパスを指定します。 配列からデータをコピーするには、 **array[x].property** を使用して x 番目のオブジェクトから特定のプロパティの値を抽出するか、 **array[*].property** を使用してこのようなプロパティを含むオブジェクトから値を見つけることができます。
+- `jsonPathDefinition` は、データを抽出する位置を示す各列の JSON のパスを指定します。 配列からデータをコピーするには、**array[x].property** を使用して x 番目のオブジェクトから特定のプロパティの値を抽出するか、**array[*].property** を使用してこのようなプロパティを含むオブジェクトから値を見つけることができます。
 
 ```json
 "properties": {
@@ -408,7 +404,7 @@ Avro ファイルを解析するか、Avro 形式でデータを書き込む場�
 }
 ```
 
-Hive テーブルで Avro 形式を使用するには、 [Apache Hive のチュートリアルに関するページ](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)を参照してください。
+Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュートリアル](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)を参照してください。
 
 以下の点に注意してください。  
 
@@ -483,15 +479,15 @@ Parquet ファイルを解析するか、Parquet 形式でデータを書き込�
 サンプル データセットをコピー アクティビティの出力として使用し、コピー アクティビティで出力データを GZIP コーデックによって最適な圧縮率で圧縮してから、Azure Blob Storage の pagecounts.csv.gz という名前のファイルに圧縮データを書き込む場合を考えます。
 
 > [!NOTE]
-> **AvroFormat** 、 **OrcFormat** 、および **ParquetFormat** のデータの圧縮設定はサポートされていません。 こうした形式でファイルを読み取るとき、Data Factory は、メタデータ内の圧縮コーデックを検出して使用します。 ファイルに書き込むときは、その形式の既定の圧縮コーデックを選択します。 たとえば、OrcFormat には ZLIB、ParquetFormat には SNAPPY が選択されます。   
+> **AvroFormat**、**OrcFormat**、および **ParquetFormat** のデータの圧縮設定はサポートされていません。 こうした形式でファイルを読み取るとき、Data Factory は、メタデータ内の圧縮コーデックを検出して使用します。 ファイルに書き込むときは、その形式の既定の圧縮コーデックを選択します。 たとえば、OrcFormat には ZLIB、ParquetFormat には SNAPPY が選択されます。   
 
 **compression** セクションには次の 2 つのプロパティがあります。  
 
-* **Type:** 圧縮コーデックです。 **GZIP** 、 **Deflate** 、 **BZIP2** 、または **ZipDeflate** を選択できます。  
-* **level:** 圧縮率です。 **Optimal** または **Fastest** を指定できます。
+* **Type:** 圧縮コーデックです。**GZIP**、**Deflate**、**BZIP2**、または **ZipDeflate** を選択できます。  
+* **level:** 圧縮率です。**Optimal** または **Fastest** を指定できます。
 
   * **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、圧縮後のファイルが最適に圧縮されていない場合があります。
-  * **Optimal** :圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。
+  * **Optimal**:圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。
 
     詳細については、 [圧縮レベル](/dotnet/api/system.io.compression.compressionlevel) に関するトピックをご覧ください。
 

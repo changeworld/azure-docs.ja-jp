@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 88c287c4aa87b4df41bfe6bbc1992262b21d07aa
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 190a9e431dedfb0f0fe6077e903174f253f5c773
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232762"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589099"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>Azure Load Balancer を監視および構成するための分析情報の使用
 
@@ -40,7 +40,7 @@ Standard Load Balancer の場合、バックエンド プールのリソース�
 
 ## <a name="metrics-dashboard"></a>メトリック ダッシュボード
 
-Load Balancer の [分析情報] ブレードからは、より詳細なメトリックを選択して、Load Balancer の特定の側面に関連するメトリック ビジュアルが含まれる事前構成済みの [Azure Monitor ブック](../azure-monitor/platform/workbooks-overview.md)を表示できます。 このダッシュボードには、Load Balancer の状態と関連ドキュメントへのリンクがページの上部に表示されます。
+Load Balancer の [分析情報] ブレードからは、より詳細なメトリックを選択して、Load Balancer の特定の側面に関連するメトリック ビジュアルが含まれる事前構成済みの [Azure Monitor ブック](../azure-monitor/visualize/workbooks-overview.md)を表示できます。 このダッシュボードには、Load Balancer の状態と関連ドキュメントへのリンクがページの上部に表示されます。
 
 最初に [概要] タブが表示されます。使用可能なタブ間を移動できます。各タブには、お使いの Load Balancer の特定の側面に関連するビジュアルが含まれます。 ダッシュボードの各タブの下部には、それぞれの明示的なガイダンスがあります。
 
@@ -80,4 +80,4 @@ Load Balancer の [分析情報] ブレードからは、より詳細なメト�
 * ダッシュボードを確認し、改善できるものがある場合は、次のリンクを使用してフィードバックを提供します
 * [メトリックのドキュメントを見て、各メトリックの計算方法を理解していることを確認します](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)
 * [Load Balancer に対する接続モニターを作成します](../network-watcher/connection-monitor.md)
-* [独自のブックを作成](../azure-monitor/platform/workbooks-overview.md)します。詳細なメトリック ダッシュボードで編集ボタンをクリックして、インスピレーションを得ることができます
+* [独自のブックを作成](../azure-monitor/visualize/workbooks-overview.md)します。詳細なメトリック ダッシュボードで編集ボタンをクリックして、インスピレーションを得ることができます

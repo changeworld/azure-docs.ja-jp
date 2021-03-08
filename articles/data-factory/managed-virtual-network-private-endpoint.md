@@ -1,24 +1,20 @@
 ---
 title: マネージド仮想ネットワークとマネージド プライベート エンドポイント
 description: Azure Data Factory におけるマネージド仮想ネットワークとマネージド プライベート エンドポイントについて説明します。
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 81d82bccd6b6bd97b84df5269dd59ffac4903370
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: d950b05dd34788c2c5ef0b34b8ec8ac0b20ad4b6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980380"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379575"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory マネージド仮想ネットワーク (プレビュー)
 
@@ -51,7 +47,7 @@ Azure Data Factory マネージド仮想ネットワーク (VNET) 内に Azure I
 
 ![新しいマネージド プライベート エンドポイント](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
-Azure Data Factory では、プライベート リンクがサポートされます。 プライベート リンクを使用すると、Azure (PaaS) サービス (Azure Storage、Azure Cosmos DB、Azure Synapse Analytics (以前の SQL Data Warehouse) など) にアクセスできます。
+Azure Data Factory では、プライベート リンクがサポートされます。 プライベート リンクを使用すると、Azure (PaaS) サービス (Azure Storage、Azure Cosmos DB、Azure Synapse Analytics など) にアクセスできます。
 
 プライベート リンクを使用すると、データ ストアとマネージド仮想ネットワーク間のトラフィックは、全面的に Microsoft のバックボーンネットワークを介して転送されます。 プライベート リンクによって、データ流出のリスクから身を守ることができます。 リソースへのプライベート リンクは、プライベート エンドポイントを作成することによって確立します。
 
@@ -86,7 +82,7 @@ Azure Data Factory にマネージド プライベート エンドポイント�
 - Azure Files
 - Azure Data Lake Gen2
 - Azure SQL Database (Azure SQL Managed Instance を含まない)
-- Azure Synapse Analytics (旧称 SQL Data Warehouse)
+- Azure Synapse Analytics
 - Azure CosmosDB SQL
 - Azure Key Vault
 - Azure Private Link サービス

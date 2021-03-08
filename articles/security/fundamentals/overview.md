@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 749c32091ed10d5bb39d7b67c8b737e002fc9909
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: f1e56c38353b43faf600fdd8e6405eced7f1b8a0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693734"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720564"
 ---
 # <a name="introduction-to-azure-security"></a>Azure のセキュリティの概要
 ## <a name="overview"></a>概要
@@ -53,7 +53,7 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 | [必須のセキュリティ トレーニング、バックグラウンド チェック](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [データ保管場所の管理](https://www.microsoft.com/trustcenter/Privacy/Where-your-data-is-located) |  [共通管理ハブ](https://www.microsoft.com/trustcenter/Common-Controls-Hub) |[Microsoft が Azure サービスでデータの保管場所を管理する方法](https://azuredatacentermap.azurewebsites.net/)|
 | [侵入テスト](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx)、[不正侵入検出、DDoS](https://www.microsoft.com/trustcenter/Security/ThreatManagement)、[監査、ログ記録](https://www.microsoft.com/trustcenter/Security/AuditingAndLogging) | [条件に応じたアクセス権の付与](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [クラウド サービス向けデリジェンス チェックリスト](https://www.microsoft.com/trustcenter/Compliance/Due-Diligence-Checklist) |[データにアクセスできるユーザーとその条件](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [最新のデータ センター](https://www.microsoft.com/cloud-platform/global-datacenters)、物理的なセキュリティ、[セキュリティで保護されたネットワーク](network-overview.md) | [法執行機関への対応](https://www.microsoft.com/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [サービス、場所、および業界ごとのコンプライアンス](https://www.microsoft.com/trustcenter/Compliance/default.aspx) |[Microsoft が Azure サービスで顧客データの安全性を確保する方法](https://www.microsoft.com/trustcenter/Transparency/default.aspx)|
-|  [セキュリティ インシデント対応](https://aka.ms/SecurityResponsepaper)、[責任の分担](./shared-responsibility.md) |[厳格なプライバシー基準](https://www.microsoft.com/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Azure サービスの証明書確認、Transparency Hub](https://www.microsoft.com/trustcenter/Compliance/default.aspx)|
+|  [セキュリティ インシデント対応](/samples/browse/?redirectedfrom=TechNet-Gallery)、[責任の分担](./shared-responsibility.md) |[厳格なプライバシー基準](https://www.microsoft.com/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Azure サービスの証明書確認、Transparency Hub](https://www.microsoft.com/trustcenter/Compliance/default.aspx)|
 
 ### <a name="features-to-secure-data-and-application"></a>データとアプリケーションをセキュリティで保護するための機能
 アプリケーションやサービスのセキュリティを管理する担当者の責任範囲は、クラウド サービス モデルによって異なります。 ビルトイン機能および Azure サブスクリプションに展開可能なパートナー ソリューションに、これらの責任範囲をカバーする Azure プラットフォームで使用可能な機能があります。
@@ -81,12 +81,12 @@ Application Insights が作成するグラフや表を見ると、たとえば�
 クラッシュ、エラー、パフォーマンス問題が発生した場合、製品利用統計情報データを詳しく調査し、原因を診断できます。 アプリの可用性やパフォーマンスに変化があった場合は、サービスからメールが届きます。 Application Insights は、機密性、整合性、および可用性というセキュリティの 3 本柱の中の可用性に役立つ、貴重なセキュリティ ツールとなります。
 
 ### <a name="azure-monitor"></a>Azure Monitor
-[Azure Monitor](/azure/monitoring-and-diagnostics/) は、Azure インフラストラクチャ ([アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)) と個々の Azure リソース ([診断ログ](../../azure-monitor/platform/platform-logs-overview.md)) の両方から得られたデータの視覚化、クエリ、ルーティング、アラート、自動スケール、自動化を行います。 Azure Monitor を使用して、Azure ログで生成されたセキュリティ関連のイベントについて通知を作成できます。
+[Azure Monitor](/azure/monitoring-and-diagnostics/) は、Azure インフラストラクチャ ([アクティビティ ログ](../../azure-monitor/essentials/platform-logs-overview.md)) と個々の Azure リソース ([診断ログ](../../azure-monitor/essentials/platform-logs-overview.md)) の両方から得られたデータの視覚化、クエリ、ルーティング、アラート、自動スケール、自動化を行います。 Azure Monitor を使用して、Azure ログで生成されたセキュリティ関連のイベントについて通知を作成できます。
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor ログ
 [Azure Monitor ログ](https://azure.microsoft.com/documentation/services/log-analytics/) – Azure リソースだけでなく、オンプレミスやサードパーティ製のクラウド インフラストラクチャ (AWS など) にも使える IT 管理ソリューションです。 Azure Monitor ログには Azure Monitor のデータを直接ルーティングできるため、環境全体のメトリックとログを 1 か所で確認できます。
 
-Azure Monitor ログは、フォレンジック分析などのセキュリティ分析に便利なツールで、セキュリティ関連の項目が大量にあっても柔軟なクエリ方法により迅速に検索を行うことができます。 さらに、オンプレミスの[ファイアウォールおよびプロキシ ログを Azure にエクスポートして、Azure Monitor ログを使用した分析に使用することができます。](../../azure-monitor/platform/agent-windows.md)
+Azure Monitor ログは、フォレンジック分析などのセキュリティ分析に便利なツールで、セキュリティ関連の項目が大量にあっても柔軟なクエリ方法により迅速に検索を行うことができます。 さらに、オンプレミスの[ファイアウォールおよびプロキシ ログを Azure にエクスポートして、Azure Monitor ログを使用した分析に使用することができます。](../../azure-monitor/agents/agent-windows.md)
 
 ### <a name="azure-advisor"></a>Azure Advisor
 [Azure Advisor](../../advisor/index.yml) は、Azure のデプロイの最適化に役立つ、個人用に設定されたクラウド コンサルタントです。 Azure Advisor では、リソース構成と使用量テレメトリを分析します。 次に、[Azure の全体的な使用量を削減する](../../advisor/advisor-cost-recommendations.md)機会を探すと同時に、[パフォーマンス](../../advisor/advisor-performance-recommendations.md)、[セキュリティ](../../advisor/advisor-security-recommendations.md)、リソースの[高可用性](../../advisor/advisor-high-availability-recommendations.md)の向上に役立つソリューションを提案します。 Azure Advisor では、Azure にデプロイするソリューションの全体的なセキュリティの状況を大幅に改善することができる提案を行います。 これらの提案は [Azure Security Center](../../security-center/security-center-introduction.md) で実施されるセキュリティ分析に基づいています。

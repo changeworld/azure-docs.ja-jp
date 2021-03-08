@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: mayg
-ms.openlocfilehash: 9a78b0ec53dfce0a1c1478790f404adb78a8c6b9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4291e8438f70e2e7190cd4dc6c890b5b325f2324
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359851"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100360909"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>VMware から Azure 用の Azure Site Recovery Deployment Planner について
 この記事は、VMware から Azure へのレプリケーションを行う運用環境のデプロイに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
@@ -65,7 +65,7 @@ Azure Site Recovery を使用して VMware 仮想マシン (VM) を保護する�
 | **カテゴリ** | **VMware から Azure** |**Hyper-V から Azure**|**Azure から Azure**|**Hyper-V からセカンダリ サイト**|**VMware からセカンダリ サイト**
 --|--|--|--|--|--
 サポートされるシナリオ |はい|はい|いいえ|はい*|いいえ
-サポートされているバージョン | vCenter 6.7、6.5、6.0、または 5.5| Windows Server 2016、Windows Server 2012 R2 | NA |Windows Server 2016、Windows Server 2012 R2|NA
+サポートされているバージョン | vCenter 7.0、6.7、6.5、6.0、または 5.5| Windows Server 2016、Windows Server 2012 R2 | NA |Windows Server 2016、Windows Server 2012 R2|NA
 サポートされている構成|vCenter、ESXi| Hyper-V クラスター、Hyper-V ホスト|NA|Hyper-V クラスター、Hyper-V ホスト|NA|
 Site Recovery Deployment Planner の実行中のインスタンスごとにプロファイルできるサーバーの数 |単一 (単一の vCenter Server または ESXi サーバーに含まれている VM を同時にプロファイル可能)|複数 (複数のホストまたはホスト クラスターにまたがった VM を同時にプロファイル可能)| NA |複数 (複数のホストまたはホスト クラスターにまたがった VM を同時にプロファイル可能)| NA
 

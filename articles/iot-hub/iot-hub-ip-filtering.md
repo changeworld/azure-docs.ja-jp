@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/19/2020
 ms.author: jlian
-ms.openlocfilehash: c6544e8ac00744602476207a89567aea5afe5b1d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 6f83421d4ee56d56875e13ffbdd8ac9dbbf4b6bb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632367"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656365"
 ---
 # <a name="use-ip-filters"></a>IP フィルターの使用
 
@@ -20,7 +20,7 @@ ms.locfileid: "98632367"
 
 ## <a name="when-to-use"></a>使用する場合
 
-IP フィルターを使用して、指定された範囲の IP アドレスからのトラフィックのみを受信し、それ以外をすべて拒否します。 たとえば、IoT ハブを [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) と共に使用して、IoT ハブとオンプレミス インフラストラクチャとの間にプライベート接続を作成する場合が該当します。
+IP フィルターを使用して、指定された範囲の IP アドレスからのトラフィックのみを受信し、それ以外をすべて拒否します。 たとえば、IoT ハブを [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) と共に使用して、IoT ハブとオンプレミス インフラストラクチャとの間にプライベート接続を作成する場合が該当します。
 
 ## <a name="default-setting"></a>既定の設定
 
@@ -78,7 +78,7 @@ IP フィルター規則は、IoT Hub サービス レベルで適用されま�
 明示的に許可されていない IP アドレスからの接続試行では、未認証の 401 状態コードと説明が返されます。 IP 規則に関する記述は応答メッセージに含まれません。 IP アドレスを拒否すると、Azure Stream Analytics、Azure Virtual Machines、Azure portal のデバイス エクスプローラーなど、他の Azure サービスが IoT Hub と対話できなくなる可能性があります。
 
 > [!NOTE]
-> IP フィルターを有効にした状態で、Azure Stream Analytics (ASA) を使用して IoT ハブからメッセージを読み取る必要がある場合は、 **[Apply IP filters to the built-in endpoint]\(組み込みのエンドポイントに IP フィルターを適用する\)** オプションを **無効** にしてから、IoT ハブのイベント ハブと互換性のある名前とエンドポイントを使用して、ASA に[イベント ハブのストリーム入力](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-event-hubs)を手動で追加します。
+> IP フィルターを有効にした状態で、Azure Stream Analytics (ASA) を使用して IoT ハブからメッセージを読み取る必要がある場合は、 **[Apply IP filters to the built-in endpoint]\(組み込みのエンドポイントに IP フィルターを適用する\)** オプションを **無効** にしてから、IoT ハブのイベント ハブと互換性のある名前とエンドポイントを使用して、ASA に [イベント ハブのストリーム入力](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-event-hubs)を手動で追加します。
 
 ### <a name="ordering"></a>順序
 
@@ -164,7 +164,7 @@ $iothubResource | Set-AzResource -Force
 ## <a name="update-ip-filter-rules-using-rest"></a>REST を使用した IP フィルター規則の更新
 
 
-Azure リソース プロバイダーの REST エンドポイントを使用することでも、IoT Hub の IP フィルターを取得および変更できます。 [createorupdate メソッド](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate)の `properties.networkRuleSets` を参照してください。
+Azure リソース プロバイダーの REST エンドポイントを使用することでも、IoT Hub の IP フィルターを取得および変更できます。 [createorupdate メソッド](/rest/api/iothub/iothubresource/createorupdate)の `properties.networkRuleSets` を参照してください。
 
 ## <a name="ip-filter-classic-retirement"></a>IP フィルター (クラシック) の提供終了
 
@@ -174,7 +174,7 @@ Azure リソース プロバイダーの REST エンドポイントを使用す�
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [IoT Hub メトリック](iot-hub-metrics.md)
+* [IoT Hub メトリック](./monitor-iot-hub.md)
 * [Private Link とマネージド ID を使用した仮想ネットワークの IoT Hub サポート](virtual-network-support.md)
 * [IoT ハブのパブリック ネットワーク アクセスの管理](iot-hub-public-network-access.md)
 * [IoT Hub の監視](monitor-iot-hub.md)

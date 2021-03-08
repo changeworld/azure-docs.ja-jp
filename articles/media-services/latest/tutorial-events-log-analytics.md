@@ -1,8 +1,23 @@
 ---
-title:Azure Media Services イベントを Azure Log Analytics に格納する:Azure Media Services の説明:Azure Media Services イベントを Azure Log Analytics に格納する方法を学習します。
-services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: '' ms.service: media-services ms.workload: ms.topic: tutorial ms.date:08/24/2020 ms.author: inhenkel
+title: Media Services イベントを Azure Log Analytics に格納する
+description: Azure Media Services イベントを Azure Log Analytics に格納する方法を学習します。
+services: media-services
+documentationcenter: ''
+author: IngridAtMicrosoft
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: ''
+ms.topic: tutorial
+ms.date: 08/24/2020
+ms.author: inhenkel
+ms.openlocfilehash: c481daf73f916ede2e7063c75448ba4d09e553cc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571864"
 ---
-
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>チュートリアル:Azure Media Services イベントを Azure Log Analytics に格納する
 
 ## <a name="azure-media-services-events"></a>Azure Media Services イベント
@@ -27,11 +42,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 > * [Azure サブスクリプション](how-to-set-azure-subscription.md)
 > * [Media Services](create-account-howto.md) アカウントとリソース グループ。
 > * お使いの OS 用の [FFmpeg](https://ffmpeg.org/download.html) のインストール。
-> * [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) ワークスペース
+> * [Log Analytics](../../azure-monitor/logs/quick-create-workspace.md) ワークスペース
 
 ## <a name="subscribe-to-a-media-services-event-with-logic-app"></a>ロジック アプリで Media Services イベントをサブスクライブする
 
-1. [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) ワークスペースをまだ作成していない場合は、Azure portal で作成します。 ワークスペース ID とキーの 1 つが必要になるので、ブラウザー ウィンドウを開いたままにしておきます。 次に、別のタブまたはウィンドウでポータルを開きます。
+1. [Log Analytics](../../azure-monitor/logs/quick-create-workspace.md) ワークスペースをまだ作成していない場合は、Azure portal で作成します。 ワークスペース ID とキーの 1 つが必要になるので、ブラウザー ウィンドウを開いたままにしておきます。 次に、別のタブまたはウィンドウでポータルを開きます。
 
 1. Azure Media Services アカウントに移動して、 **[イベント]** を選択します。 これにより、Azure Media Services イベントをサブスクライブするためのすべての方法が表示されます。
     > [!div class="mx-imgBorder"]
@@ -215,4 +230,4 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="next-steps"></a>次のステップ
 
-さまざまなクエリを作成して保存することができます。 これらを [Azure ダッシュボード](../../azure-monitor/learn/tutorial-logs-dashboards.md)に追加できます。
+さまざまなクエリを作成して保存することができます。 これらを [Azure ダッシュボード](../../azure-monitor/visualize/tutorial-logs-dashboards.md)に追加できます。

@@ -1,23 +1,18 @@
 ---
 title: SQL Server との間でデータを移動する
 description: Azure Data Factory を使用してオンプレミスまたは Azure VM の SQL Server データベースとの間でデータを移動する方法を説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 864ece28-93b5-4309-9873-b095bbe6fedd
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b2d69f9f70861799d941bbeaed7eb8d338fa8a5e
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: fbd1e1d652db3bbd91344ea828278d057baeb060
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636172"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368814"
 ---
 # <a name="move-data-to-and-from-sql-server-using-azure-data-factory"></a>Azure Data Factory を使用した SQL Server との間のデータの移動
 
@@ -54,9 +49,9 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 ## <a name="getting-started"></a>作業の開始
 さまざまなツールや API を使用して、SQL Server データベースとの間でデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、 **コピー ウィザード** を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード** を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-また、次のツールを使用してパイプラインを作成することもできます。 **Visual Studio** 、 **Azure PowerShell** 、 **Azure Resource Manager テンプレート** 、 **.NET API** 、 **REST API** 。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -76,13 +71,13 @@ SQL Server と同じオンプレミス コンピューターまたはクラウ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは次の値に設定されます。 **OnPremisesSqlServer** |はい |
+| type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |はい |
 | connectionString |SQL 認証または Windows 認証を使用して、SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
 | gatewayName |Data Factory サービスが、SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
-| username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username** 。 |いいえ |
+| username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 
-**New-AzDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます ( **EncryptedCredential** プロパティ)。
+**New-AzDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます (**EncryptedCredential** プロパティ)。
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -146,7 +141,7 @@ SQL Server データベースからデータを移動する場合は、コピー
 一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
 
 ### <a name="sqlsource"></a>SqlSource
-コピー アクティビティで、source の種類が **SqlSource** である場合は、 **typeProperties** セクションで次のプロパティを使用できます。
+コピー アクティビティで、source の種類が **SqlSource** である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -156,7 +151,7 @@ SQL Server データベースからデータを移動する場合は、コピー
 
 SqlSource に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するために SQL Server Database ソースに対してこのクエリを実行します。
 
-または、 **sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
+または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
 
 SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合は、SQL Server Database に対して実行する選択クエリを作成するために、構造セクションで定義された列が使用されます。 データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
 
@@ -310,7 +305,7 @@ SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合�
 ```
 **コピー アクティビティのあるパイプライン**
 
-パイプラインには、この入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、 **source** 型が **SqlSource** に設定され、 **sink** 型が **BlobSink** に設定されています。 **SqlReaderQuery** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
+パイプラインには、この入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **SqlSource** に設定され、**sink** 型が **BlobSink** に設定されています。 **SqlReaderQuery** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
 
 ```json
 {
@@ -358,7 +353,7 @@ SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合�
   }
 }
 ```
-この例では、SqlSource に **sqlReaderQuery** が指定されています。 コピー アクティビティでは、データを取得するために SQL Server Database ソースに対してこのクエリを実行します。 または、 **sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。 sqlReaderQuery は、入力データセットによって参照されるデータベースで複数のテーブルを参照できます。 参照できるテーブルは、データセットの tableName typeProperty として設定されるテーブルに限りません。
+この例では、SqlSource に **sqlReaderQuery** が指定されています。 コピー アクティビティでは、データを取得するために SQL Server Database ソースに対してこのクエリを実行します。 または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。 sqlReaderQuery は、入力データセットによって参照されるデータベースで複数のテーブルを参照できます。 参照できるテーブルは、データセットの tableName typeProperty として設定されるテーブルに限りません。
 
 SqlReaderQuery または sqlReaderStoredProcedureName を指定しない場合は、SQL Server Database に対して実行する選択クエリを作成するために、構造セクションで定義された列が使用されます。 データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
 
@@ -492,7 +487,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 ```
 **コピー アクティビティのあるパイプライン**
 
-パイプラインには、この入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプラインの JSON 定義で、 **source** 型が **BlobSource** に設定され、 **sink** 型が **SqlSink** に設定されています。
+パイプラインには、この入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプラインの JSON 定義で、**source** 型が **BlobSource** に設定され、**sink** 型が **SqlSink** に設定されています。
 
 ```json
 {
@@ -542,7 +537,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 ```
 
 ## <a name="troubleshooting-connection-issues"></a>接続の問題のトラブルシューティング
-1. リモート接続を許可するよう、SQL Server を構成します。 **SQL Server Management Studio** を起動し、 **サーバー** を右クリックして、 **[プロパティ]** をクリックします。 一覧から **[接続]** を選択し、 **[このサーバーへのリモート接続を許可する]** をオンにします。
+1. リモート接続を許可するよう、SQL Server を構成します。 **SQL Server Management Studio** を起動し、**サーバー** を右クリックして、 **[プロパティ]** をクリックします。 一覧から **[接続]** を選択し、 **[このサーバーへのリモート接続を許可する]** をオンにします。
 
     ![リモート接続を有効にする](./media/data-factory-sqlserver-connector/AllowRemoteConnections.png)
 
@@ -555,7 +550,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 3. 同じウィンドウで、 **[TCP/IP]** をダブルクリックして、 **[TCP/IP のプロパティ]** ウィンドウを起動します。
 4. **[IP アドレス]** タブに切り替えます。下へスクロールして **[IPAll]** セクションを表示します。 **[TCP ポート]** の値をメモしておきます (既定値は **1433** です)。
 5. コンピューターに **Windows Firewall のルール** を作成し、このポート経由の受信トラフィックを許可します。
-6. **接続の確認** : 完全修飾名を使って SQL Server に接続するには、別のマシンから SQL Server Management Studio を使用します。 "\<machine\>\<domain\>.corp\<company\>.com,1433" などを使用します。
+6. **接続の確認**: 完全修飾名を使って SQL Server に接続するには、別のマシンから SQL Server Management Studio を使用します。 "\<machine\>\<domain\>.corp\<company\>.com,1433" などを使用します。
 
    > [!IMPORTANT]
    > 

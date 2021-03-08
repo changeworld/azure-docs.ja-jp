@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3da63503c80652bc8737f2cb4894e25d8bc6fc0
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 7338fb480f76ed1a5edbf9502dc0946d08618a63
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98893408"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644920"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -82,7 +82,7 @@ WPAD を使用しない場合は、Windows 10 1709 以降のコンピュータ�
 
 組織が認証されたアウトバウンド プロキシ経由でのインターネットへのアクセスを必要とする場合、お使いの Windows 10 コンピューターがアウトバウンド プロキシに対して正常に認証されることを確認してください。 Windows 10 コンピューターではマシン コンテキストを使用してデバイス登録が実行されるため、マシン コンテキストを使用してアウトバウンド プロキシ認証を構成します。 構成要件については、送信プロキシ プロバイダーに確認してください。
 
-[デバイス登録接続のテスト](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0)のスクリプトを使用して、デバイスがシステム アカウントで上記の Microsoft リソースにアクセスできることを確認します。
+[デバイス登録接続のテスト](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/)のスクリプトを使用して、デバイスがシステム アカウントで上記の Microsoft リソースにアクセスできることを確認します。
 
 ## <a name="configure-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の構成
 

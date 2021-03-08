@@ -1,19 +1,17 @@
 ---
 title: Azure Data Factory を使用して Azure SQL Database テーブルを Azure CosmosDB に移行する
 description: Azure SQL Database から既存の正規化されたデータベース スキーマを取得し、Azure Data Factory を使用して Azure CosmosDB 非正規化コンテナーに移行します。
-services: data-factory
 author: kromerm
+ms.author: makromer
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.author: makromer
-ms.openlocfilehash: 5d93cb49c77a4c8164a8b4e9bca349a805f39678
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 3d67ac9474704fac39dbe7eb91aead5c4babc4ce
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041631"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383944"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>正規化されたデータベース スキーマを Azure SQL Database から Azure CosmosDB 非正規コンテナーに移行する
 

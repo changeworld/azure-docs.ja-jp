@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory のシステム変数
 description: この記事では、Azure Data Factory でサポートされているシステム変数について説明します。 Data Factory エンティティを定義するときに、式でこれらの変数を使用できます。
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: fc6b2e4c944394d811abc19f70aeb34a0ae3c9a4
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: cb19b7e8c5271e1106e69c98d5bd17a1bcb822bf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127670"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385287"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされているシステム変数
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

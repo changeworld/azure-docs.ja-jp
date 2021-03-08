@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: e549a79930cf599b89cd549691e23f3587e8a85c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 4a3f272ab6e4a1788368442d7d060233391442fd
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202710"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627817"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure マネージド ディスクの概要
 
@@ -44,6 +44,10 @@ Azure マネージド ディスクは、Azure によって管理されて Azure 
 ### <a name="azure-backup-support"></a>Azure Backup のサポート
 
 リージョン全体の災害から保護するために、[Azure Backup](../backup/backup-overview.md) を使用し、時間ベースのバックアップとバックアップ保存ポリシーを指定してバックアップ ジョブを作成できます。 こうすることで、VM またはマネージド ディスクの復元を任意で実行できます。 現在、Azure Backup では、最大 32 テビバイト (TiB) のディスク サイズがサポートされています。 Azure VM バックアップ サポートについて[詳しく確認します](../backup/backup-support-matrix-iaas.md)。
+
+#### <a name="azure-disk-backup"></a>Azure ディスク バックアップ
+
+Azure Backup は、マネージド ディスク内のデータを保護するネイティブのクラウドベースのバックアップ ソリューションである Azure ディスク バックアップ (プレビュー) を提供します。 これはわずかな手順でマネージド ディスクの保護を構成できる、シンプルで安全なコスト効率の高いソリューションです。 Azure ディスク バックアップは、スナップショットの定期的な作成を自動化し、バックアップ ポリシーを使用して構成された期間にわたってそのスナップショットを保持することで、マネージド ディスクのスナップショット ライフサイクル管理を提供する、ターンキー ソリューションを提供します。 Azure ディスク バックアップの詳細については、「[Azure ディスク バックアップ (プレビュー) の概要](../backup/disk-backup-overview.md)」を参照してください。
 
 ### <a name="granular-access-control"></a>詳細なアクセス制御
 

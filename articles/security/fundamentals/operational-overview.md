@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: c3674b6877438a0dd4fe53569cf6852e872334a7
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 4bc30fbf342a9bc85b52c9f88ce7ca1df3c36e23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693614"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595499"
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 
@@ -94,7 +94,7 @@ Security Center は、リソースの構成を評価して、セキュリティ�
 >[!Note]
 >Security Center のロールと許可されているアクションの詳細については、「[Azure Security Center におけるアクセス許可](../../security-center/security-center-permissions.md)」を参照してください。
 
-Security Center では、Microsoft Monitoring Agent が使用されます。 これは、Azure Monitor サービスで使用されるのと同じエージェントです。 このエージェントから収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の Log Analytics [ワークスペース](../../azure-monitor/platform/manage-access.md)または新規のワークスペースのいずれかに格納されます。
+Security Center では、Microsoft Monitoring Agent が使用されます。 これは、Azure Monitor サービスで使用されるのと同じエージェントです。 このエージェントから収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の Log Analytics [ワークスペース](../../azure-monitor/logs/manage-access.md)または新規のワークスペースのいずれかに格納されます。
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
@@ -108,23 +108,23 @@ Azure Monitor には、次のコンポーネントが含まれています。
 
 ### <a name="azure-activity-log"></a>[Azure Activity Log (Azure アクティビティ ログ)]
 
-[Azure アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)では、サブスクリプションのリソースに対して実行された操作を調査できます。 アクティビティ ログではサブスクリプションのコントロール プレーン イベントが報告されるため、以前は "監査ログ" または "操作ログ" と呼ばれていました。
+[Azure アクティビティ ログ](../../azure-monitor/essentials/platform-logs-overview.md)では、サブスクリプションのリソースに対して実行された操作を調査できます。 アクティビティ ログではサブスクリプションのコントロール プレーン イベントが報告されるため、以前は "監査ログ" または "操作ログ" と呼ばれていました。
 
 ### <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 
-[Azure 診断ログ](../../azure-monitor/platform/platform-logs-overview.md)はリソースによって出力され、そのリソースの操作に関する豊富なデータを提供します。 これらのログの内容は、リソースの種類によって異なります。
+[Azure 診断ログ](../../azure-monitor/essentials/platform-logs-overview.md)はリソースによって出力され、そのリソースの操作に関する豊富なデータを提供します。 これらのログの内容は、リソースの種類によって異なります。
 
 Windows イベント システム ログは、VM 用診断ログの 1 カテゴリです。 Blob ログ、テーブル ログ、およびキュー ログは、ストレージ アカウント用の診断ログ カテゴリです。
 
-診断ログは、[アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)とは異なります。 アクティビティ ログでは、サブスクリプションのリソースに対して実行された操作を調査できます。 診断ログでは、リソース自体が実行した操作を調査できます。
+診断ログは、[アクティビティ ログ](../../azure-monitor/essentials/platform-logs-overview.md)とは異なります。 アクティビティ ログでは、サブスクリプションのリソースに対して実行された操作を調査できます。 診断ログでは、リソース自体が実行した操作を調査できます。
 
 ### <a name="metrics"></a>メトリック
 
-Azure Monitor では、テレメトリを使用して、Azure 上のワークロードのパフォーマンスと正常性を可視化できます。 Azure テレメトリ データの種類の中でも最も重要なのが、[メトリック](../../azure-monitor/platform/data-platform.md)です (パフォーマンス カウンターとも呼ばれます)。これはほとんどの Azure リソースから出力されます。 Azure Monitor では、このメトリックを複数の方法で構成して使用し、監視やトラブルシューティングを行うことができます。
+Azure Monitor では、テレメトリを使用して、Azure 上のワークロードのパフォーマンスと正常性を可視化できます。 Azure テレメトリ データの種類の中でも最も重要なのが、[メトリック](../../azure-monitor/data-platform.md)です (パフォーマンス カウンターとも呼ばれます)。これはほとんどの Azure リソースから出力されます。 Azure Monitor では、このメトリックを複数の方法で構成して使用し、監視やトラブルシューティングを行うことができます。
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-Azure Diagnostics を使用すると、デプロイされたアプリケーションで診断データを収集できます。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、[Azure クラウド サービスのロール](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service)、Microsoft Windows を実行している [Azure 仮想マシン](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service)、および [Azure Service Fabric](../../azure-monitor/platform/diagnostics-extension-overview.md) となっています。
+Azure Diagnostics を使用すると、デプロイされたアプリケーションで診断データを収集できます。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、[Azure クラウド サービスのロール](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service)、Microsoft Windows を実行している [Azure 仮想マシン](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service)、および [Azure Service Fabric](../../azure-monitor/agents/diagnostics-extension-overview.md) となっています。
 
 ## <a name="azure-network-watcher"></a>Azure Network Watcher
 

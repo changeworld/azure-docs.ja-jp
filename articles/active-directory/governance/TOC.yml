@@ -14,8 +14,10 @@
 - name: チュートリアル
   expanded: true
   items:
-    - name: 最初のアクセス パッケージを作成する
+    - name: リソースへのアクセスの管理 - Azure portal
       href: entitlement-management-access-package-first.md
+    - name: リソースへのアクセスの管理 - Microsoft Graph
+      href: /graph/tutorial-access-package-api?toc=/azure/active-directory/governance/toc.json&bc=/azure/active-directory/governance/breadcrumb/toc.json
 - name: 概念
   expanded: true
   items:

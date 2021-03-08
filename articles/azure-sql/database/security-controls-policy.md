@@ -1,18 +1,18 @@
 ---
 title: Azure SQL Database 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure SQL Database と SQL Managed Instance に対して使用できる Azure Policy の規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 01/29/2021
+ms.date: 02/09/2021
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.service: sql-database
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 710da8820a7d2f3ad88d3d83eeb2926b1a46a3e9
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: c398a99e6bb78fda751b511dcfada17e8a6796f4
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092479"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096117"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance 用の Azure Policy 規制コンプライアンス コントロール
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

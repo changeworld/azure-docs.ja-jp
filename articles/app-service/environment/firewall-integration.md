@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/24/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: e5f9cd361d4f130d725f608614159d67fb7b56d1
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: ec506546b52a2d137d448f07f4b7a6827c01b4d2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026362"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594128"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service 環境をロックする
 
@@ -100,7 +100,7 @@ Azure Firewall は、Azure Storage、Event Hub、または Azure Monitor ログ�
 AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
-Azure Firewall を Azure Monitor ログと統合すると、アプリケーションのすべての依存関係がわからないときに初めてアプリケーションを動作させる場合に役立ちます。 Azure Monitor ログの詳細については、[Azure Monitor でのログ データの分析](../../azure-monitor/log-query/log-query-overview.md)に関する記事をご覧ください。
+Azure Firewall を Azure Monitor ログと統合すると、アプリケーションのすべての依存関係がわからないときに初めてアプリケーションを動作させる場合に役立ちます。 Azure Monitor ログの詳細については、[Azure Monitor でのログ データの分析](../../azure-monitor/logs/log-query-overview.md)に関する記事をご覧ください。
  
 ## <a name="dependencies"></a>依存関係
 

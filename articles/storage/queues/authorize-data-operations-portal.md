@@ -6,17 +6,17 @@ author: tamram
 services: storage
 ms.author: tamram
 ms.reviewer: ozguns
-ms.date: 09/08/2020
+ms.date: 02/10/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 504d2eb939758e6045a2af095c66093c8754cb94
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: fbb96fc1d2cb12e1aede07295357abfaa6d6b67f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590751"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385015"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>Azure portal でキュー データへのアクセスの承認方法を選択する
 
@@ -28,16 +28,19 @@ Azure portal でキュー データへのアクセスを承認する方法に応
 
 ### <a name="use-the-account-access-key"></a>アカウント アクセス キーを使用する
 
-アカウント アクセス キーを使用してキュー データにアクセスするには、Azure RBAC アクション `Microsoft.Storage/storageAccounts/listkeys/action` を含む Azure ロールが割り当てられている必要があります。 この Azure ロールは、組み込みロールまたはカスタム ロールのどちらでも構いません。 `Microsoft.Storage/storageAccounts/listkeys/action` をサポートする組み込みロールには、次が含まれます。
+アカウント アクセス キーを使用してキュー データにアクセスするには、Azure RBAC アクション **Microsoft.Storage/storageAccounts/listkeys/action** を含む Azure ロールが割り当てられている必要があります。 この Azure ロールは、組み込みロールまたはカスタム ロールのどちらでも構いません。 **Microsoft.Storage/storageAccounts/listkeys/action** をサポートする組み込みロールには、次が含まれます。
 
 - Azure Resource Manager の[所有者ロール](../../role-based-access-control/built-in-roles.md#owner)
 - Azure Resource Manager の[共同作成者ロール](../../role-based-access-control/built-in-roles.md#contributor)
 - [Storage Account の共同作成者ロール](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Azure portal でキュー データにアクセスしようとすると、ポータルではまず `Microsoft.Storage/storageAccounts/listkeys/action` を含むロールがお客様に割り当てられているかどうかが確認されます。 このアクションを持つロールが割り当てられている場合、ポータルではキュー データにアクセスするためにアカウント キーが使用されます。 このアクションを持つロールが割り当てられていない場合、ポータルは、Azure AD アカウントを使用してデータへのアクセスを試みます。
+Azure portal でキュー データにアクセスしようとすると、ポータルではまず **Microsoft.Storage/storageAccounts/listkeys/action** を含むロールがお客様に割り当てられているかどうかが確認されます。 このアクションを持つロールが割り当てられている場合、ポータルではキュー データにアクセスするためにアカウント キーが使用されます。 このアクションを持つロールが割り当てられていない場合、ポータルは、Azure AD アカウントを使用してデータへのアクセスを試みます。
+
+> [!IMPORTANT]
+> ストレージ アカウントが Azure Resource Manager **ReadOnly** ロックでロックされている場合、そのストレージ アカウントに対して[キーの一覧表示](/rest/api/storagerp/storageaccounts/listkeys)操作は許可されません。 **キーの一覧表示** は POST 操作であり、アカウントに対して **ReadOnly** ロックが構成されている場合、すべての POST 操作が禁止されます。 このため、アカウントが **ReadOnly** ロックでロックされている場合、ユーザーは Azure AD 資格情報を使用してポータル内のキュー データにアクセスする必要があります。 Azure AD を使用したポータル内のキュー データへのアクセスの詳細については、「[自分の Azure AD アカウントを使用する](#use-your-azure-ad-account)」を参照してください。
 
 > [!NOTE]
-> 従来のサブスクリプション管理者ロールである **サービス管理者** と **共同管理者** には、Azure Resource Manager の [`Owner`](../../role-based-access-control/built-in-roles.md#owner) ロールと同等のものが含まれています。 **所有者** ロールには、`Microsoft.Storage/storageAccounts/listkeys/action` を含むすべてのアクションが含まれているので、これらの管理者ロールのいずれかを持つユーザーは、アカウント キーを持つキュー データにもアクセスできます。 詳細については、「[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)」を参照してください。
+> 従来のサブスクリプション管理者ロールである **サービス管理者** と **共同管理者** には、Azure Resource Manager の [`Owner`](../../role-based-access-control/built-in-roles.md#owner) ロールと同等のものが含まれています。 **所有者** ロールには、**Microsoft.Storage/storageAccounts/listkeys/action** を含むすべてのアクションが含まれているので、これらの管理者ロールのいずれかを持つユーザーは、アカウント キーを持つキュー データにもアクセスできます。 詳細については、「[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)」を参照してください。
 
 ### <a name="use-your-azure-ad-account"></a>自分の Azure AD アカウントを使用する
 
@@ -58,7 +61,7 @@ Azure AD アカウントを使用して、Azure portal からキュー データ
 従来のサブスクリプション管理者ロールでキューを一覧表示することはサポートされていません。 キューを一覧表示するには、ユーザーには Azure Resource Manager **リーダー** ロール、**ストレージ キュー データ閲覧者** ロール、または **ストレージ キュー データ共同作成者** ロールが割り当てられている必要があります。
 
 > [!IMPORTANT]
-> Azure portal の Storage Explorer のプレビュー バージョンでは、キュー データを表示および変更するための Azure AD 資格情報の使用はサポートされていません。 Azure portal の Storage Explorer では、データは常にアカウント キーを使用してアクセスされます。 Azure portal で Storage Explorer を使用するには、`Microsoft.Storage/storageAccounts/listkeys/action` を含むロールが割り当てられている必要があります。
+> Azure portal の Storage Explorer のプレビュー バージョンでは、キュー データを表示および変更するための Azure AD 資格情報の使用はサポートされていません。 Azure portal の Storage Explorer では、データは常にアカウント キーを使用してアクセスされます。 Azure portal で Storage Explorer を使用するには、**Microsoft. Storage/storageAccounts/listkeys/action** を含むロールが割り当てられている必要があります。
 
 ## <a name="navigate-to-queues-in-the-azure-portal"></a>Azure portal でキューに移動する
 

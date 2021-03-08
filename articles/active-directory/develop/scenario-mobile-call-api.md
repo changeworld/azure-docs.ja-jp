@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 601eefa7957972daa2d538e6ba0d9b7a5311c79d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 656cb167fb47e44c28922afed75d8c46a460aaf1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756476"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584399"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>モバイル アプリから Web API を呼び出す
 
@@ -117,7 +117,7 @@ task.resume()
 
 ## <a name="make-several-api-requests"></a>複数の API 要求を行う
 
-同じ API を複数回呼び出す必要がある場合、または複数の API を呼び出す必要がある場合は、アプリを構築するときに、次の点を考慮してください。
+同じ API を複数回呼び出す場合、または複数の API を呼び出す場合は、アプリを構築するときに、次の点を考慮してください。
 
 - **増分同意**:Microsoft ID プラットフォームでは、すべて開始時にではなく、アクセス許可が必要なときに、アプリがユーザーの同意を得られるようにしています。 アプリが API を呼び出す準備ができたら、毎回、必要なスコープのみを要求します。
 
@@ -125,7 +125,7 @@ task.resume()
 
 ## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>増分同意と条件付きアクセスを使用して複数の API を呼び出す
 
-同じユーザーに対して複数の API を呼び出す必要がある場合、ユーザーのトークンを取得した後、続けて `AcquireTokenSilent` を呼び出してトークンを取得すれば、ユーザーに何度も資格情報の入力を求める必要がなくなります。
+同じユーザーに対して複数の API を呼び出す場合、ユーザーのトークンを取得した後、続けて `AcquireTokenSilent` を呼び出してトークンを取得すれば、ユーザーに何度も資格情報の入力を求める必要がなくなります。
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")

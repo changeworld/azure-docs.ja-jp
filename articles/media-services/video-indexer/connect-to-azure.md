@@ -8,16 +8,16 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 10/21/2020
+ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 82dc9aa9615ef86c878fb75df6650dcc1f904a8f
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: fe6be5778997f0ef4a3f53ae45d17352eca60d8e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702635"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727262"
 ---
-# <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure に接続された Video Indexer アカウントを作成する
+# <a name="create-a-video-indexer-account"></a>Video Indexer アカウントを作成する
 
 Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer を使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、Azure サブスクリプションに接続する Video Indexer アカウントを作成します。 インデックス作成にかかった時間 (分) に対して支払います。詳細については、「[Media Services の価格](https://azure.microsoft.com/pricing/details/media-services/)」を参照してください。
 
@@ -25,7 +25,9 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
 
 *試用版* から *有料版* の Video Indexer アカウントに移行する場合、ビデオとモデルのカスタマイズをすべて新しいアカウントにコピーすることを選択できます。詳細は「[試用版アカウントからコンテンツをインポートする](#import-your-content-from-the-trial-account)」セクションにあります。
 
-## <a name="prerequisites"></a>前提条件
+この記事では、[Azure Government への Video Indexer アカウントのリンク](#video-indexer-in-azure-government)についても説明します。
+
+## <a name="prerequisites-for-connecting-to-azure"></a>Azure に接続するための前提条件
 
 * Azure サブスクリプション。
 
@@ -37,7 +39,7 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
 
     このユーザーは、職場または学校アカウントを持つ Azure AD ユーザーである必要があります。 個人アカウント (outlook.com、live.com、hotmail.com など) は使用しないでください。
 
-    ![すべての AAD ユーザー](./media/create-account/all-aad-users.png)
+    ![すべての Azure AD ユーザー](./media/create-account/all-aad-users.png)
 
 ### <a name="additional-prerequisites-for-automatic-flow"></a>自動フローのその他の前提条件
 
@@ -51,15 +53,15 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
 
 ### <a name="additional-prerequisites-for-manual-flow"></a>手動フローのその他の前提条件
 
-* Azure Portal を使用して EventGrid リソース プロバイダーを登録します。
+* Azure portal を使用して EventGrid リソース プロバイダーを登録します。
 
-    [Azure Portal](https://portal.azure.com/) で **[サブスクリプション]** 、[subscription]、 **[ResourceProviders]** に移動します。
+    [Azure portal](https://portal.azure.com/) で **[サブスクリプション]** 、[subscription]、 **[ResourceProviders]** に移動します。
 
     **Microsoft.Media** と **Microsoft.EventGrid** を探します。 "登録済み" 状態でない場合は、 **[登録]** をクリックします。 登録には数分かかります。
 
     ![EventGrid](./media/create-account/event-grid.png)
 
-## <a name="create-a-new-account"></a>新しいアカウントを作成する
+## <a name="create-a-new-account-on-azure"></a>Azure で新しいアカウントを作成する 
 
 > [!NOTE]
 > Azure サブスクリプションが証明書ベースの多要素認証を使用する場合、必要な証明書がインストールされているデバイスで次の手順を実行することが重要です。
@@ -126,7 +128,7 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
     新しい Media Services アカウントで **[ストリーミング エンドポイント]** を選択します。 次に、ストリーミング エンドポイントを選択し、[開始] を押します。
 
     ![ストリーミング エンドポイント](./media/create-account/create-ams-account-se.png)
-4. Video Indexer が Media Services API を使用して認証するには、AD アプリを作成する必要があります。 次に、「[Azure Portal で Azure AD 認証を開始する](../previous/media-services-portal-get-started-with-aad.md)」で説明されている Azure AD 認証プロセスについて、手順を追って説明します。
+4. Video Indexer が Media Services API を使用して認証するには、AD アプリを作成する必要があります。 次に、「[Azure ポータルで Azure AD 認証を開始する](../previous/media-services-portal-get-started-with-aad.md)」で説明されている Azure AD 認証プロセスについて、手順を追って説明します。
 
     1. 新しい Media Services アカウントで **[API アクセス]** をクリックします。
     2. [サービス プリンシパルの認証方法](../previous/media-services-portal-get-started-with-aad.md)を選択します。
@@ -149,13 +151,13 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
 |---|---|
 |Video Indexer アカウントのリージョン|Video Indexer アカウントのリージョンの名前。 パフォーマンスの向上とコストの削減を実現するために、Azure Media Services リソースと Azure Storage アカウントがあるリージョンの名前を指定するよう強くお勧めします。 |
 |Azure AD テナント|Azure AD テナントの名前 (例: "contoso.onmicrosoft.com")。 テナント情報は Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。 **[ドメイン]** の右側に名前が表示されます。|
-|サブスクリプション ID|この接続を作成先にする Azure サブスクリプション。 サブスクリプション ID は Azure Portal から取得できます。 左側のウィンドウで **[すべてのサービス]** を選択し、「サブスクリプション」と検索します。 **[サブスクリプション]** を選択して、サブスクリプションの一覧から目的の ID を選択します。|
+|サブスクリプション ID|この接続を作成先にする Azure サブスクリプション。 サブスクリプション ID は Azure portal から取得できます。 左側のウィンドウで **[すべてのサービス]** を選択し、「サブスクリプション」と検索します。 **[サブスクリプション]** を選択して、サブスクリプションの一覧から目的の ID を選択します。|
 |Azure Media Services のリソース グループ名|Media Services アカウントを作成したリソース グループの名前。|
 |Media Services リソース名|前のセクションで作成した Azure Media Services アカウントの名前。|
 |アプリケーション ID|前のセクションで作成した (指定した Media Services アカウントのアクセス許可を持つ) Azure AD アプリケーション ID。|
 |アプリケーション キー|前のセクションで作成した Azure AD アプリケーション キー。 |
 
-## <a name="import-your-content-from-the-trial-account"></a>"*試用版*" アカウントからコンテンツをインポートする
+### <a name="import-your-content-from-the-trial-account"></a>"*試用版*" アカウントからコンテンツをインポートする
 
 新しいアカウントを作成する場合は、 *"試用版"* アカウントから新しいアカウントにコンテンツをインポートするオプションがあります。 **[Azure サブスクリプションで新しいアカウントを作成する]** ダイアログで " *[インポート]* " オプションをオンにする場合、メディアおよびコンテンツ モデルのカスタマイズはすべて、"*試用版*" アカウントから新しいアカウントにコピーされます。
 
@@ -163,16 +165,10 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
 
 > [!NOTE]
 > コンテンツは、各アカウントから一度だけインポートすることができます。
+>
+> "*試用版*" アカウントは、Azure Government クラウドでは利用できません。
 
-## <a name="delete-the-account"></a>アカウントを削除する
-
-後でアカウントを削除する場合は、Video Indexer Web サイトからアカウントを削除できます。 アカウントを削除するには、所有者である必要があります。
-
-アカウントを選択し、 **[設定]**  ->  **[このアカウントを削除する]** の順にクリックします。 
-
-アカウントは 90 日後に完全に削除されます。
-
-## <a name="considerations"></a>考慮事項
+## <a name="azure-media-services-considerations"></a>Azure Media Services に関する考慮事項
 
 Azure Media Services に関する次の考慮事項が適用されます。
 
@@ -199,11 +195,54 @@ Azure Media Services に関する次の考慮事項が適用されます。
 1. Azure Resource Manager を使用して、Azure Media Services アカウントと Azure AD アプリケーションを作成します。
 
     [Media Services アカウント作成テンプレート](https://github.com/Azure-Samples/media-services-v3-arm-templates)の例を参照してください。
-1. [Media Services と Azure AD アプリケーションで Create-Account](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account) を呼び出します。
+1. [Media Services と Azure AD アプリケーションで Create-Account](https://videoindexer.ai.azure.us/account/login?source=apim) を呼び出します。
+
+## <a name="video-indexer-in-azure-government"></a>Azure Government での Video Indexer
+
+### <a name="prerequisites-for-connecting-to-azure-government"></a>Azure Government に接続するための前提条件
+
+-   [Azure Government](../../azure-government/index.yml) の Azure サブスクリプション。
+- Azure Government の Azure AD アカウント。
+- 「[Azure に接続するための前提条件](#prerequisites-for-connecting-to-azure)」で前述したアクセス許可とリソースの前提条件すべて。
+
+### <a name="create-new-account-via-the-azure-government-portal"></a>Azure Government ポータルを使用して新しいアカウントを作成する
+
+> [!NOTE]
+> Azure Government クラウドには、Video Indexer の "*試用版*" エクスペリエンスが含まれていません。
+
+Video Indexer ポータルを使用して有料アカウントを作成するには、次のようにします。
+
+1. [https://resources.azure.com](https://videoindexer.ai.azure.us) に移動します 
+1. Azure Government の Azure AD アカウントでログインします。
+1.  自分が所有者または共同作成者である Video Indexer アカウントが Azure Government にない場合は、アカウントの作成を開始できる空のエクスペリエンスが表示されます。 
+
+    フローの残りの部分は、上記で説明したとおりです。選択肢となるリージョンのみが、Video Indexer が使用できる Government リージョンになります。 
+
+    自分が既に Azure Government 内の既存の 1 つ以上の Video Indexer アカウントの共同作成者または管理者である場合は、そのアカウントに誘導され、前述の説明に従って、必要に応じて追加のアカウントを作成するためのフォロー手順を開始できます。
+    
+### <a name="create-new-account-via-the-api-on-azure-government"></a>Azure Government で API を使用して新しいアカウントを作成する
+
+Azure Government で有料アカウントを作成するには、[Create-Paid-Account]() の手順に従います。 この API エンド ポイントには、Government クラウドのリージョンのみが含まれます。
+
+### <a name="limitations-of-video-indexer-on-azure-government"></a>Azure Government での Video Indexer の制限事項
+
+*   Government クラウドでは、手動によるコンテンツ モデレーションを利用できません。 
+
+    パブリック クラウドでは、コンテンツがコンテンツ モデレーションに基づいて不快であると見なされる場合に、顧客はそのコンテンツの調査を人に依頼して、その判定を取り消せる可能性があります。  
+*   試用版アカウントはありません。 
+* Bing の説明 - Government クラウド では、識別される有名人および名前付きエンティティの説明は表示されません。 これは UI 機能のみです。 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルを完了したら、使用する予定がないリソースを削除します。
+
+### <a name="delete-a-video-indexer-account"></a>Video Indexer アカウントを削除する
+
+Video Indexer アカウントを削除する場合は、Video Indexer Web サイトからアカウントを削除できます。 アカウントを削除するには、所有者である必要があります。
+
+アカウントを選択し、 **[設定]**  ->  **[このアカウントを削除する]** の順にクリックします。 
+
+アカウントは 90 日後に完全に削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 

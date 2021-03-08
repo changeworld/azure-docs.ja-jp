@@ -8,12 +8,12 @@ ms.date: 01/19/2021
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 33af92c1987d9cd0c88e689dd7bafccadd60cb06
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: fad065795345314c58e83c8d2614ed01c9e78e49
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98612601"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805531"
 ---
 # <a name="cloud-sync-troubleshooting"></a>クラウド同期のトラブルシューティング
 
@@ -164,7 +164,7 @@ Azure portal では、プロビジョニング ログを使用して、オブジ
 
 この状態を選択することで、検疫に関する追加情報を表示できます。 エラー コードとメッセージも取得できます。
 
-![検疫状態の情報](media/how-to-troubleshoot/quarantine-2.png)
+![検疫に関する詳細を示すスクリーンショット。](media/how-to-troubleshoot/quarantine-2.png)
 
 状態を右クリックすると、追加のオプションが表示されます。
     
@@ -172,7 +172,7 @@ Azure portal では、プロビジョニング ログを使用して、オブジ
    - エージェントの表示
    - 検疫のクリア
 
-![検疫状態の情報](media/how-to-troubleshoot/quarantine-4.png)
+![右クリック メニュー オプションを示すスクリーンショット。](media/how-to-troubleshoot/quarantine-4.png)
 
 
 ### <a name="resolve-a-quarantine"></a>検疫を解決する
@@ -186,7 +186,7 @@ Azure portal では、プロビジョニング ログを使用して、オブジ
 
 検疫がクリアされていることを示す通知が表示されます。
 
-![検疫状態の情報](media/how-to-troubleshoot/quarantine-5.png)
+![検疫がクリアされていることを示すスクリーンショット。](media/how-to-troubleshoot/quarantine-5.png)
 
 これで、エージェントの状態が正常であることを確認できます。
 

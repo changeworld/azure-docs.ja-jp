@@ -31,10 +31,10 @@ Team Data Science Process では、さまざまなストレージ環境に取り
 * [Python](../../storage/blobs/storage-quickstart-blobs-python.md)
 * [SSIS](move-data-to-azure-blob-using-ssis.md)
 
-最適な方法はシナリオによって異なります。 高度な分析プロセスで使用されるさまざまなデータ サイエンス ワークフローで必要なリソースを確認するには、記事「 [Azure Machine Learning での高度な分析のシナリオ](plan-sample-scenarios.md) 」が役立ちます。
+最適な方法はシナリオによって異なります。 高度な分析プロセスで使用されるさまざまなデータ サイエンス ワークフローで必要なリソースを確認するには、記事「[Azure Machine Learning での高度な分析のシナリオ](plan-sample-scenarios.md) 」が役立ちます。
 
 > [!NOTE]
-> Azure BLOB ストレージの概要については、[Azure BLOB の基礎](../../storage/blobs/storage-quickstart-blobs-dotnet.md)に関する記事および [Azure BLOB サービス](/rest/api/storageservices/Blob-Service-Concepts)に関するページをご覧ください。
+> Azure Blob Storage の概要については、[Azure BLOB の基礎](../../storage/blobs/storage-quickstart-blobs-dotnet.md)に関する記事および [Azure BLOB サービス](/rest/api/storageservices/Blob-Service-Concepts)に関するページをご覧ください。
 > 
 > 
 
@@ -42,12 +42,12 @@ Team Data Science Process では、さまざまなストレージ環境に取り
 
 別の方法として、 [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) を使用して以下を行うこともできます。 
 
-* Azure BLOB ストレージからデータをダウンロードするパイプラインを作成し、スケジュールを設定する 
+* Azure Blob Storage からデータをダウンロードするパイプラインを作成し、スケジュールを設定する 
 * パイプラインを発行済みの Azure Machine Learning Web サービスに渡す 
 * 予測分析の結果を受け取る 
 * 結果をストレージにアップロードする 
 
-詳細については、「 [Azure Data Factory および Azure Machine Learning を使用して予測パイプラインを作成する](../../data-factory/transform-data-using-machine-learning.md)」を参照してください。
+詳細については、「[Azure Data Factory および Azure Machine Learning を使用して予測パイプラインを作成する](../../data-factory/transform-data-using-machine-learning.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 この記事は、Azure サブスクリプション、ストレージ アカウント、そのアカウントに対応するストレージ キーがあることを前提としています。 データのアップロードまたはダウンロードを行う前に、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。

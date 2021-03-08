@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: f52e308199ddb8bc21809009ad71918d077ac5b2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 878b1b2d5ba13b68b5122e4b9cffc3c408e211e2
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836990"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526325"
 ---
 # <a name="work-with-alerts-on-the-on-premises-management-console"></a>オンプレミス管理コンソールでアラートを操作する 
 
@@ -119,13 +119,34 @@ UUID を使用すると、オンプレミス管理コンソールに表示され
 
 ## <a name="manage-alert-events"></a>アラート イベントを管理する
 
-組織のセンサーによって検出されたアラート イベントは、次のように管理できます。
+オンプレミス管理コンソールからアラート イベントを管理するために使用できるオプションがいくつかあります。
 
 - アラート イベントの学習または確認。 承認可能なすべてのアラート イベントを学習し、現在確認されていないすべてのアラート イベントを確認するには、 **[Learn & Acknowledge]\(学習と確認\)** を選択します。
 
   :::image type="content" source="media/how-to-work-with-alerts-on-premises-management-console/learn-and-acknowledge.png" alt-text="[Learn & Acknowledge]\(学習と確認\) を選択してすべてを学習します。":::
 
 - アラート イベントをミュートまたはミュート解除します。
+
+アラート イベントの学習、確認、ミュートの詳細については、センサーの「[アラート イベントの管理](how-to-manage-the-alert-event.md)」を参照してください。
+
+## <a name="export-alert-information"></a>アラート情報をエクスポートする
+
+アラート情報を .csv ファイルにエクスポートします。 検出されたすべてのアラートの情報をエクスポートしたり、フィルター表示に基づいて情報をエクスポートしたりできます。次の情報がエクスポートされます。
+
+- ソースの住所
+- Destination Address (宛先アドレス)
+- アラートのタイトル
+- アラートの重大度
+- アラート メッセージ
+- 関連情報
+- 確認済み状態
+- PCAP の可用性
+
+エクスポートするには、次のようにします。
+
+1. サイド メニューから、 [アラート] を選択します。
+1. [エクスポート] を選択します。
+1. 複数のデバイスを対象とするアラートごとに個別の行にアラート情報をエクスポートするには、[拡張アラートのエクスポート] を選択します。 [拡張アラートのエクスポート] を選択すると、.csv ファイルにアラートの重複行が作成され、行ごとに一意の項目が含まれます。 このオプションを使用すると、エクスポートされたアラート イベントを簡単に調査できます。  
 
 ## <a name="create-alert-exclusion-rules"></a>アラートの除外ルールを作成する
 

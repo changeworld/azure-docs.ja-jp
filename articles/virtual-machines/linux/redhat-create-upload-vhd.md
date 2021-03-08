@@ -8,19 +8,20 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: c6a3385b4347f76d83963ca33fa8485974d3c62a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 07c5be6339048517169f14032e8c37b1dc5fbf01
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881284"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546620"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure 用の Red Hat ベースの仮想マシンの準備
-この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。 この記事で取り上げる RHEL のバージョンは 6.7+ と 7.1+ で、 準備対象のハイパーバイザーは Hyper-V、Kernel-based Virtual Machine (KVM)、VMware です。 Red Hat の Cloud Access プログラムに参加するための資格要件の詳細については、[Red Hat の Cloud Access Web サイト](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)と [Azure での RHEL の実行](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)に関するページを参照してください。 RHEL イメージの作成を自動化する方法については、[Azure Image Builder](../image-builder-overview.md) を参照してください。
+
+この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。 この記事で取り上げる RHEL のバージョンは 6.7+ と 7.1+ で、 準備対象のハイパーバイザーは Hyper-V、Kernel-based Virtual Machine (KVM)、VMware です。 Red Hat の Cloud Access プログラムに参加するための資格要件の詳細については、[Red Hat の Cloud Access Web サイト](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)と [Azure での RHEL の実行](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)に関するページを参照してください。 RHEL イメージの作成を自動化する方法については、[Azure Image Builder](../image-builder-overview.md) に関するページを参照してください。
 
 ## <a name="hyper-v-manager"></a>Hyper-V マネージャーは
 
-このセクションでは、Hyper-V マネージャーを使用して、[RHEL 6](#rhel-6-using-hyper-v-manager) または [RHEL 7](#rhel-7-using-hyper-v-manager) 仮想マシンを準備する方法について説明します。
+このセクションでは、Hyper-V マネージャーを使用して、[RHEL 6](#rhel-6-using-hyper-v-manager)、[RHEL 7](#rhel-7-using-hyper-v-manager)、または [RHEL 8](#rhel-8-using-hyper-v-manager) 仮想マシンを準備する方法について説明します。
 
 ### <a name="prerequisites"></a>前提条件
 このセクションは、Red Hat の Web サイトから取得した ISO ファイルの RHEL イメージが仮想ハード ディスク (VHD) にインストール済みであることを前提としています。 Hyper-V マネージャーを使用してオペレーティング システム イメージをインストールする方法の詳細については、[Hyper-V の役割のインストールと仮想マシンの構成](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))に関するページを参照してください。
@@ -273,8 +274,8 @@ ms.locfileid: "98881284"
     cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
     datasource_list: [ Azure ]
     datasource:
-    Azure:
-        apply_network_config: False
+        Azure:
+            apply_network_config: False
     EOF
     ```
 
@@ -460,8 +461,8 @@ ms.locfileid: "98881284"
     cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
     datasource_list: [ Azure ]
     datasource:
-    Azure:
-        apply_network_config: False
+        Azure:
+            apply_network_config: False
     EOF
     ```
 

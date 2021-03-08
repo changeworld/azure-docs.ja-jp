@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: ff7de678e40a02b364451e7c88d661d2e38ed9d4
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 50ab66a1f98d06d79a46d61f683d56822b619721
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918925"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007042"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Availability Zones をまたがる Azure Service Fabric クラスターのデプロイ
 Azure の Availability Zones は高可用性を備えたサービスで、アプリケーションとデータをデータセンターの障害から保護します。 可用性ゾーンは、Azure リージョン内に独立した電源、冷却手段、ネットワークを備えた一意の物理的な場所です。
@@ -374,8 +374,8 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 * 最初の値は **multipleAvailabilityZones** であり、nodeType には true に設定する必要があります。
 * 2 番目の値は **sfZonalUpgradeMode** であり、省略可能です。 AZ が複数ある nodeType がクラスター内に既に存在する場合、このプロパティを変更することはできません。
       プロパティは、アップグレード ドメイン内の VM の論理グループ化を制御します。
-          値が false (フラットモード) に設定されている場合:ノードの種類の下にある VM は、5 UD のゾーン情報を無視して UD にグループ化されます。
-          値が省略されているか、true (階層モード) に設定されている場合:VM は、最大 15 の UD に、ゾーン分布を反映するようにグループ化されます。 3 つのゾーンそれぞれに 5 つの UD があります。
+          値が "Parallel" に設定されている場合:ノードの種類の下にある VM は、5 UD のゾーン情報を無視して UD にグループ化されます。
+          値が省略されているか、"Hierarchical" に設定されている場合:VM は、最大 15 の UD に、ゾーン分布を反映するようにグループ化されます。 3 つのゾーンそれぞれに 5 つの UD があります。
           このプロパティは、ServiceFabric アプリケーションおよびコード アップグレードのアップグレード動作を定義するだけです。 基になる仮想マシン スケール セットのアップグレードは、引き続きすべての AZ で並列に実行されます。
       このプロパティは、複数のゾーンが有効になっていないノード型の UD 分布には影響しません。
 * 3 つ目の値は **vmssZonalUpgradeMode = Parallel** です。 これは、複数の AZ を持つ nodeType が追加された場合にクラスターで構成される *必須* のプロパティです。 このプロパティは、一度にすべての AZ で並列に発生する仮想マシン スケール セットの更新のアップグレード モードを定義します。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1ba23b73836f1a2dbe73932ba920649ca5bb8b33
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b2d86083077b95312415099f64a13509ed60091b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195706"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582637"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Service Fabric 用の Azure セキュリティ ベースライン
 
@@ -178,9 +178,9 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**:Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Service Fabric のデプロイに関連するネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -224,7 +224,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 * [Log Analytics エージェントをノードにデプロイする方法](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics のログ検索](../azure-monitor/log-query/log-query-overview.md)
+* [Log Analytics のログ検索](../azure-monitor/logs/log-query-overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -240,7 +240,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 * [Log Analytics エージェントをノードにデプロイする方法](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/platform/manage-cost-storage.md)
+* [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -256,7 +256,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 * [Log Analytics エージェントをノードにデプロイする方法](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/platform/manage-cost-storage.md)
+* [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/logs/manage-cost-storage.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -266,7 +266,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**: Azure Log Analytics ワークスペース クエリを使用して Azure Service Fabric ログに対してクエリを実行します。
 
-* [Log Analytics のログ検索](../azure-monitor/log-query/log-query-overview.md)
+* [Log Analytics のログ検索](../azure-monitor/logs/log-query-overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -278,7 +278,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 * [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md)
+* [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: はい
 
@@ -586,7 +586,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure アクティビティ ログで Azure Monitor を使用して、重要な Azure リソースに変更が加えられたときのアラートを作成します。
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1102,7 +1102,7 @@ Windows Defender を使用していない場合は、お使いのマルウェア
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用して、アラートの Sentinel のストリーミングを実行できます。
+**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
 * [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 

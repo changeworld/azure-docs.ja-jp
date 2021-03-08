@@ -3,19 +3,19 @@ title: Azure portal を使用して Azure サービスの通知でアクティ�
 description: Azure portal を使用してサービスの正常性通知を行うためのアクティビティ ログ アラートを Azure portal を使用して設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 88fbdeeb8bdcc239f1591e053aaf4fb1c36b9b19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48126d923cb0baa33058c6fd55e48f31d793fade
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289788"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570187"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications-using-the-azure-portal"></a>Azure portal を使用してサービスの通知でアクティビティ ログ アラートを作成する
 ## <a name="overview"></a>概要
 
 この記事では、Azure portal を使用してサービスの正常性通知を行うためのアクティビティ ログ アラートを Azure portal を使用して設定する方法について説明します。  
 
-サービス正常性通知は、[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に格納されます。 アクティビティ ログに格納されている大量の情報を考慮し、サービス正常性通知に関するアラートを表示および設定しやすくするための個別のユーザー インターフェイスがあります。 
+サービス正常性通知は、[Azure アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)に格納されます。 アクティビティ ログに格納されている大量の情報を考慮し、サービス正常性通知に関するアラートを表示および設定しやすくするための個別のユーザー インターフェイスがあります。 
 
 Azure でサービス正常性通知を Azure サブスクリプションに送信するときに、アラートを受け取ることができます。 次の情報に基づくアラートを構成できます。
 
@@ -32,9 +32,9 @@ Azure でサービス正常性通知を Azure サブスクリプションに送�
 - 既存のアクション グループを選択します。
 - 新しいアクション グループを作成します (将来のアラートで使用できます)。
 
-アクション グループの詳細については、[アクション グループの作成および管理](../azure-monitor/platform/action-groups.md)に関するページを参照してください。
+アクション グループの詳細については、[アクション グループの作成および管理](../azure-monitor/alerts/action-groups.md)に関するページを参照してください。
 
-Azure Resource Manager テンプレートを使用したサービス正常性通知アラートの構成方法の詳細については、[Resource Manager テンプレート](../azure-monitor/platform/alerts-activity-log.md)に関するページを参照してください。
+Azure Resource Manager テンプレートを使用したサービス正常性通知アラートの構成方法の詳細については、[Resource Manager テンプレート](../azure-monitor/alerts/alerts-activity-log.md)に関するページを参照してください。
 
 ### <a name="watch-a-video-on-setting-up-your-first-azure-service-health-alert"></a>初めての Azure Service Health アラートの設定に関するビデオを見る
 
@@ -60,9 +60,9 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 > [!NOTE]
 >このサブスクリプションは、アクティビティ ログ アラートの保存に使用されます。 アラート リソースはこのサブスクリプションにデプロイされ、アクティビティ ログのイベントを監視します。
 
-5. アラートを受け取りたい**イベントの種類**を選択します。これは、 *[サービスの問題]* 、 *[計画メンテナンス]* 、 *[正常性の勧告]* 、および *[セキュリティに関する勧告]* のいずれかです。
+5. アラートを受け取りたい **イベントの種類** を選択します。これは、 *[サービスの問題]* 、 *[計画メンテナンス]* 、 *[正常性の勧告]* 、および *[セキュリティに関する勧告]* のいずれかです。
 
-6. **[アクション グループの選択]** をクリックして、既存のアクション グループを選択するか、新しいアクション グループを作成します。 アクション グループの詳細については、「[Azure portal でのアクション グループの作成および管理](../azure-monitor/platform/action-groups.md)」を参照してください。
+6. **[アクション グループの選択]** をクリックして、既存のアクション グループを選択するか、新しいアクション グループを作成します。 アクション グループの詳細については、「[Azure portal でのアクション グループの作成および管理](../azure-monitor/alerts/action-groups.md)」を参照してください。
 
 
 7. **[アラート ルール名]** と **[説明]** を入力してアラートの詳細を定義します。
@@ -73,7 +73,7 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 
 数分以内にアラートがアクティブになり、作成時に指定した条件に基づいてトリガーが開始されます。
 
-[既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。 アクティビティ ログ アラートの webhook スキーマの詳細については、「[Azure アクティビティ ログ アラートのための webhook](../azure-monitor/platform/activity-log-alerts-webhook.md)」を参照してください。
+[既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。 アクティビティ ログ アラートの webhook スキーマの詳細については、「[Azure アクティビティ ログ アラートのための webhook](../azure-monitor/alerts/activity-log-alerts-webhook.md)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
@@ -81,7 +81,7 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 - [Azure Service Health のモバイル プッシュ通知を設定](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw)する方法について学習します。
 - [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。
 - [サービス正常性の通知](service-notifications.md)について学習します。
-- [通知のレート制限](../azure-monitor/platform/alerts-rate-limiting.md)について学習します。
-- [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。
-- [アクティビティ ログ アラートの概要](../azure-monitor/platform/alerts-overview.md)を把握し、アラートを受信する方法について学習します。
-- [アクション グループ](../azure-monitor/platform/action-groups.md)について学習します。
+- [通知のレート制限](../azure-monitor/alerts/alerts-rate-limiting.md)について学習します。
+- [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/alerts/activity-log-alerts-webhook.md)を確認します。
+- [アクティビティ ログ アラートの概要](../azure-monitor/alerts/alerts-overview.md)を把握し、アラートを受信する方法について学習します。
+- [アクション グループ](../azure-monitor/alerts/action-groups.md)について学習します。

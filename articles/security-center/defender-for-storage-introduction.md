@@ -3,19 +3,18 @@ title: Azure Defender for Storage - 利点と機能
 description: Azure Defender for Storage の利点と機能について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 02/04/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 42e8a1f4ff06f6ca6af4afd428008ca174823c5f
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: eb1635cec2b0bcf7f2c13101b2aeab25a869dc66
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916423"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99558583"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Azure Defender for Storage の概要
-
 
 **Azure Defender for Storage** は、ストレージ アカウントに対する通常とは異なる潜在的に有害なアクセスの試行、すなわちストレージ アカウントの悪用を検出する、Azure ネイティブのセキュリティ インテリジェンス レイヤーです。 セキュリティ AI の高度な機能と [Microsoft の脅威インテリジェンス](https://go.microsoft.com/fwlink/?linkid=2128684)を利用して、コンテキストに応じたセキュリティ アラートと推奨事項を提供します。
 
@@ -68,7 +67,40 @@ Azure Defender for Storage の利点は次のとおりです。
 >
 > **Azure Defender for Storage** は、サブスクリプション レベルまたはリソース レベルで有効にできます。
 
+## <a name="trigger-a-test-alert-for-azure-defender-for-storage"></a>Azure Defender for Storage のテスト アラートをトリガーする
 
+環境内の Azure Defender for Storage のセキュリティ アラートをテストするには、次の手順に従って、"Access from a Tor exit node to a storage account (Tor 出口ノードからストレージ アカウントへのアクセス)" というアラートを生成します。
+
+1. Azure Defender for Storage が有効になっているストレージ アカウントを開きます。
+1. サイドバーから [コンテナー] を選択し、既存のコンテナーを開くか、新しいコンテナーを作成します。
+
+    :::image type="content" source="media/defender-for-storage-introduction/opening-storage-container.png" alt-text="Azure Storage アカウントから BLOB コンテナーを開く" lightbox="media/defender-for-storage-introduction/opening-storage-container.png":::
+
+1. ファイルをそのコンテナーにアップロードします。
+
+    > [!CAUTION]
+    > 機密データを含むファイルはアップロードしないでください。
+
+1. アップロードしたファイルのコンテキスト メニューを使用して、[SAS の生成] を選択します。
+
+    :::image type="content" source="media/defender-for-storage-introduction/generate-sas.png" alt-text="BLOB コンテナー内のファイルの [SAS の生成] オプション":::
+
+1. 既定のオプションをそのまま使用し、 **[SAS トークンおよび URL を生成]** を選択します。
+
+1. 生成された SAS URL をコピーします。
+
+1. ローカル コンピューターで、Tor ブラウザーを開きます。
+
+    > [!TIP]
+    > Tor は、Tor Project サイト [https://www.torproject.org/download/](https://www.torproject.org/download/) からダウンロードできます。
+
+1. Tor ブラウザーで SAS URL に移動します。
+
+1. 手順 3. でアップロードしたファイルをダウンロードします。
+
+    2 時間以内に、Security Center に次のセキュリティ アラートが表示されます。
+
+    :::image type="content" source="media/defender-for-storage-introduction/tor-access-alert-storage.png" alt-text="Tor 出口ノードからのアクセスに関するセキュリティ アラート":::
 
 ## <a name="next-steps"></a>次の手順
 

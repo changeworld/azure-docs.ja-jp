@@ -1,5 +1,5 @@
 ---
-title: パッケージ化と配信のシナリオ ベースの移行ガイダンス | Microsoft Docs
+title: パッケージ化と配信の移行ガイダンス
 description: この記事では、Azure Media Services v2 から v3 への移行に役立つパッケージ化と配信のシナリオ ベースのガイダンスを示します。
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 74437a4adee9e2853f7b932316d57e406b7d00be
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f28a95ce6ef5e87eed6e5efcd013cc40b102fcba
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689500"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721091"
 ---
 # <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>パッケージ化と配信のシナリオ ベースの移行ガイダンス
 
@@ -55,7 +55,7 @@ v3 API でコンテンツが発行される方法への主な変更点。 新し
 - [ストリーミング ロケーターの作成と URL の構築](create-streaming-locator-build-url.md)
 - [ジョブの結果をダウンロードする](download-results-howto.md)
 - [説明オーディオ トラックの通知](signal-descriptive-audio-howto.md)
-- [Azure Media Player のフル セットアップ](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup)
+- [Azure Media Player のフル セットアップ](../azure-media-player/azure-media-player-full-setup.md)
 - [Azure Media Services で Video.js プレーヤーを使用する方法](how-to-video-js-player.md)
 - [Azure Media Services で Shaka プレーヤーを使用する方法](how-to-shaka-player.md)
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 129897d3288a900803efbfba8abf86c276077fa8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 66687f5954894d962a67767669081de15a30c7c3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966073"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672619"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
@@ -33,7 +33,7 @@ Azure 仮想マシン (VM) 拡張機能は、Azure VM でのデプロイ後の�
 さまざまな Azure VM 拡張機能が存在しますが、そのユース ケースはそれぞれ異なります。 次に例をいくつか示します。
 
 - Linux 用の DSC 拡張機能を使って、VM に PowerShell Desired State Configuration を適用します。 詳細については、「[Azure Desired State configuration extension](https://github.com/Azure/azure-linux-extensions/tree/master/DSC)」(Azure Desired State Configuration 拡張機能) を参照してください。
-- Microsoft Monitoring Agent の VM 拡張機能を使用して VM の監視を構成します。 詳細については、[Linux VM の監視方法](../linux/tutorial-monitor.md)に関する記事を参照してください。
+- Microsoft Monitoring Agent の VM 拡張機能を使用して VM の監視を構成します。 詳細については、[Linux VM の監視方法](/previous-versions/azure/virtual-machines/linux/tutorial-monitor)に関する記事を参照してください。
 - Chef または Datadog 拡張機能を使って Azure インフラストラクチャの監視を構成します。 詳細については、[Chef のドキュメント](https://docs.chef.io/azure_portal.html)または [Datadog のブログ](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)を参照してください。
 
 プロセス固有の拡張機能のほか、カスタム スクリプト拡張機能を Windows と Linux の両方の仮想マシンで使用できます。 Linux 用カスタム スクリプト拡張機能では、VM で実行する任意の Bash スクリプトを使用できます。 カスタム スクリプトは、ネイティブの Azure ツールが提供可能な構成以上の構成を必要とする Azure のデプロイを設計する場合に役立ちます。 詳細については、[Linux VM カスタム スクリプト拡張機能](custom-script-linux.md)に関するページを参照してください。

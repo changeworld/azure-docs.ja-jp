@@ -6,34 +6,33 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 02/11/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6dd95fc8fd0ab0099ac7404d4ca4e4b1851f650f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 8a16ecd2ee6ed939b2afd0e51e9cf531e419c8af
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359610"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656399"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータへのアクセスをセキュリティで保護する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-この記事では、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
+この記事では、Azure Cosmos DB でのデータ アクセス制御の概要について説明します。
 
-Azure Cosmos DB では、2 種類のキーを使用してユーザーを認証し、そのデータとリソースへのアクセスを提供しています。 
+Azure Cosmos DB には、データへのアクセスを制御する方法が 3 つあります。
 
-|キーの種類|リソース|
+| アクセス制御の種類 | 特性 |
 |---|---|
-|[主キー](#primary-keys) |次の管理リソースで使用されます。データベース アカウント、データベース、ユーザー、およびアクセス許可|
-|[リソース トークン](#resource-tokens)|次のアプリケーション リソースで使用されます。コンテナー、ドキュメント、添付ファイル、ストアド プロシージャ、トリガー、UDF|
+| [主キー](#primary-keys) | 任意の管理操作またはデータ操作を行うことができる共有シークレット。 読み取り/書き込みと読み取り専用の両方の種類があります。 |
+| [ロールベースのアクセス制御](#rbac) (プレビュー) | 認証に Azure Active Directory (AAD) の ID を使用する、きめ細かいロールベースのアクセス許可モデル。 |
+| [リソース トークン](#resource-tokens)| ネイティブな Azure Cosmos DB のユーザーとアクセス許可に基づく、きめ細かいアクセス許可モデル。 |
 
-<a id="primary-keys"></a>
+## <a name="primary-keys"></a><a id="primary-keys"></a> 主キー
 
-## <a name="primary-keys"></a>主キー
+主キーは、データベース アカウントのすべての管理リソースへのアクセスを提供します。 各アカウントは、主キーとセカンダリ キーという 2 つの主キーで構成されます。 二重キーの目的は、キーを再生成 (ロール) して、アカウントとデータに継続的にアクセスできるようにすることです。 主キーの詳細については、[データベース セキュリティ](database-security.md#primary-keys)に関する記事を参照してください。
 
-主キーは、データベース アカウントのすべての管理リソースへのアクセスを提供します。 各アカウントは、主キーとセカンダリ キーという 2 つの主キーで構成されます。 二重キーの目的は、キーを再生成 (ロール) して、アカウントとデータに継続的にアクセスできるようにするためです。 主キーの詳細については、[データベース セキュリティ](database-security.md#primary-keys)に関する記事を参照してください。
-
-### <a name="key-rotation"></a>キーのローテーション<a id="key-rotation"></a>
+### <a name="key-rotation"></a><a id="key-rotation"></a> キーのローテーション
 
 主キーのローテーション プロセスは単純です。 
 
@@ -64,7 +63,23 @@ CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 
 :::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
-## <a name="resource-tokens"></a>リソース トークン <a id="resource-tokens"></a>
+## <a name="role-based-access-control-preview"></a><a id="rbac"></a> ロールベースのアクセス制御 (プレビュー)
+
+Azure Cosmos DB では、次のことを可能にする組み込みのロールベースのアクセス制御 (RBAC) システムを公開しています。
+
+- Azure Active Directory (AAD) の ID を使用してデータ要求を認証する。
+- きめ細かいロールベースのアクセス許可モデルを使用してデータ要求を認可する。
+
+Azure Cosmos DB RBAC は、次のような状況で理想的なアクセス制御方法です。
+
+- 主キーなどの共有シークレットを使用するのではなく、トークンベースの認証メカニズムを利用する
+- Azure AD の ID を使用して要求を認証する
+- 各 ID で実行が許可されるデータベース操作を厳密に制限する、きめ細かなアクセス許可モデルが必要である
+- 複数の ID に割り当てることができる "ロール" としてアクセス制御ポリシーを具現化する。
+
+Azure Cosmos DB RBAC の詳細については、[Azure Cosmos DB アカウントのロールベースのアクセス制御の構成](how-to-setup-rbac.md)に関するページを参照してください。
+
+## <a name="resource-tokens"></a><a id="resource-tokens"></a> リソース トークン
 
 リソース トークンは、データベース内のアプリケーション リソースへのアクセスを提供します。 リソース トークン:
 
@@ -97,7 +112,7 @@ Cosmos DB リソース トークンにより、付与されたアクセス許可
 
 ブローカー リソース トークンを生成するために使用する中間層サービスの例については、[ResourceTokenBroker アプリ](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)に関するページを参照してください。
 
-## <a name="users"></a>ユーザー<a id="users"></a>
+### <a name="users"></a>ユーザー<a id="users"></a>
 
 Azure Cosmos DB ユーザーは、Cosmos データベースに関連付けらていれます。  各データベースには、0 人以上の Cosmos DB ユーザーを含めることができます。 次のコード サンプルは、[Azure Cosmos DB .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement) を使用して Cosmos DB ユーザーを作成する方法を示しています。
 
@@ -111,7 +126,7 @@ User user = await database.CreateUserAsync("User 1");
 > [!NOTE]
 > 各 Cosmos DB ユーザーには、ユーザーに関連付けられた[アクセス許可](#permissions)の一覧を取得するために使用できる ReadAsync() メソッドがあります。
 
-## <a name="permissions"></a>アクセス許可<a id="permissions"></a>
+### <a name="permissions"></a>アクセス許可<a id="permissions"></a>
 
 アクセス許可リソースはユーザーに関連付けられ、コンテナーおよびパーティション キー レベルで割り当てられます。 各ユーザーには、0 個以上のアクセス許可を含めることができます。 アクセス許可リソースによって、ユーザーが特定のパーティション キー内の特定のコンテナーまたはデータにアクセスするときに必要なセキュリティ トークンへのアクセスが提供されます。 アクセス許可リソースによって提供できるアクセス レベルは 2 つあります。
 
@@ -127,7 +142,7 @@ User user = await database.CreateUserAsync("User 1");
 
 * **resourceTokenPermissionMode** - このプロパティは、リソース トークンの作成時に設定したアクセス許可モードを示します。 アクセス許可モードとして指定できるのは、"all" や "read" などの値です。
 
-### <a name="code-sample-to-create-permission"></a>アクセス許可を作成するコード サンプル
+#### <a name="code-sample-to-create-permission"></a>アクセス許可を作成するコード サンプル
 
 次のコード サンプルは、アクセス許可リソースを作成し、アクセス許可リソースのリソース トークンを読み取って、先ほど作成した[ユーザー](#users)にアクセス許可を関連付ける方法を示しています。
 
@@ -142,7 +157,7 @@ user.CreatePermissionAsync(
         resourcePartitionKey: new PartitionKey("012345")));
 ```
 
-### <a name="code-sample-to-read-permission-for-user"></a>ユーザーのアクセス許可を読み取るコード サンプル
+#### <a name="code-sample-to-read-permission-for-user"></a>ユーザーのアクセス許可を読み取るコード サンプル
 
 次のコード スニペットは、上で作成したユーザーに関連付けられているアクセス許可を取得し、1 つのパーティション キーにスコープを指定して、ユーザーに代わって新しい CosmosClient をインスタンス化する方法を示しています。
 
@@ -152,6 +167,15 @@ PermissionProperties permissionProperties = await user.GetPermission("permission
 
 CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrResourceToken: permissionProperties.Token);
 ```
+
+## <a name="differences-between-rbac-and-resource-tokens"></a>RBAC とリソース トークンの違い
+
+| サブジェクト | RBAC | リソース トークン |
+|--|--|--|
+| 認証  | Azure Active Directory (Azure AD) を使用。 | ネイティブな Azure Cosmos DB のユーザーに基づく<br>リソース トークンを Azure AD と統合するには、Azure AD の ID と Azure Cosmos DB のユーザーをブリッジするための追加の作業が必要となります。 |
+| 承認 | ロールベース: ロールの定義によって、許可されるアクションがマップされ、複数の ID に割り当てることができます。 | アクセス許可ベース: Azure Cosmos DB のユーザーごとに、データのアクセス許可を割り当てる必要があります。 |
+| トークンのスコープ | AAD トークンでは、要求元の ID が保持されます。 この ID は、割り当てられているすべてのロールの定義と照合され、認可が実行されます。 | リソース トークンでは、特定の Azure Cosmos DB ユーザーに付与された特定の Azure Cosmos DB リソースに対するアクセス許可が保持されます。 異なるリソースに対する認可要求では、異なるトークンが必要になる場合があります。 |
+| トークンの更新 | AAD トークンは、有効期限が切れると Azure Cosmos DB SDK によって自動的に更新されます。 | リソース トークンの更新はサポートされていません。 リソース トークンの有効期限が切れた場合は、新しいリソース トークンを発行する必要があります。 |
 
 ## <a name="add-users-and-assign-roles"></a>ユーザーの追加とロールの割り当てを行う
 

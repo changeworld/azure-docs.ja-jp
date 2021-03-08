@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 89a437504394797b8cbed5325210186248082c33
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 9831f70a88aba497eb7d6a759233c3d7d7be62c6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218232"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585112"
 ---
 # <a name="azure-security-baseline-for-azure-synapse-analytics"></a>Azure Synapse Analytics 用の Azure セキュリティ ベースライン
 
@@ -167,9 +167,9 @@ Azure Blueprints を使用して、Azure Resource Management テンプレート�
 
 **ガイダンス**:ネットワーク リソース構成を監視し、専用 SQL プールに関連したネットワーク リソースの変更を検出するには、Azure アクティビティ ログを使用します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -237,7 +237,7 @@ Azure Blueprints を使用して、Azure Resource Management テンプレート�
 
 * [Azure Blob Storage のライフサイクルの管理](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)
 
-* [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 * [Event Hubs でストリーミング イベントをキャプチャする](../event-hubs/event-hubs-capture-overview.md)
 
@@ -629,7 +629,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 また、Azure portal を使用して、SQL Synapse プールのデータベースに対するアラートを設定することもできます。 あるメトリック (データベース サイズや CPU 使用率など) がしきい値に達したら、アラートはユーザーに電子メールを送信するか、または Web フックを呼び出すことができます。
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 * [Azure SQL Synapse のアラートを作成する方法](../azure-sql/database/alerts-insights-configure-portal.md)
 
@@ -1111,7 +1111,7 @@ App Service、Data lake Storage、Blob Storage、Azure SQL Server などの非�
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Sentinel にストリーミングできます。
+**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
 * [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 11/03/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 735b1ce4391598d05a1bf0b4486503092f4de37d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: eb37434213dd756ba5d7137b93a1cd37da5bb9ae
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97837015"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523636"
 ---
 # <a name="the-dashboard"></a>ダッシュボード
 
@@ -28,7 +28,7 @@ ms.locfileid: "97837015"
 
 - 警告
 
-- ページの中央にある 2 つのゲージは、1 秒あたりのパケット数 (PPS) と未確認アラート数 (UA) を示しています。 **PPS** は、システムによって 1 秒あたりに確認されたパケットの数です。 **UA** は、まだ確認されていないアラートの数です。
+- ページの中央にある 2 つのインジケーターは、1 秒あたりのパケット数 (PPS) と未確認アラート数 (UA) を示しています。 **PPS** は、システムによって 1 秒あたりに確認されたパケットの数です。 **UA** は、まだ確認されていないアラートの数です。
 
 - 未確認アラートの一覧とその説明。
 
@@ -78,28 +78,28 @@ ms.locfileid: "97837015"
 
 :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/extended-alert-screen.png" alt-text="アラートのエントリとデバイスの情報":::
 
-- デバイスを選択するか、 **[デバイスの表示]** を選択して、物理モード マップを表示します。 対象デバイスが強調表示されます。
+- デバイスを選択して、物理モード マップを表示します。 対象デバイスが強調表示されます。
+
+- アラート ボックス内の任意の場所をクリックすると、そのアラートに関する詳細情報が表示されます。 ポップアップに以下のように表示されます。
 
 - アラートに関する CSV ファイルをエクスポートするには、:::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/excel-icon.png" alt-text="[Excel]"::: を選択します。
 
 - 管理者およびセキュリティ アナリストのみ - 関連付けられているアラートを **すべて確認** するには :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/approve-all-icon.png" alt-text="[Acknowledge all]\(すべて確認\)"::: を選択します。
 
-- アラート エントリを選択すると、アラートの種類と説明が表示されます。
-
 - アラート レポートを PDF ファイルとしてダウンロードするには :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/pdf-icon.png" alt-text="[PDF]"::: を選択します。
 
-- アラートをピン留めするかピン留めを外すには、:::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/pin-icon.png" alt-text="[ピン留め]"::: を選択します。
+- アラートをピン留めするかピン留めを外すには、:::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/pin-icon.png" alt-text="[ピン留め]"::: を選択します。 ピン留めを選択すると、 **[アラート]** 画面の **[Pinned Alerts]\(ピン留めされたアラート\)** に追加されます。
 
-- ネットワーク プロトコル分析を含む PCAP ファイルをダウンロードしてアラートを調査するには :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/download-icon.png" alt-text="[ダウンロード]"::: を選択します。
+- ネットワーク プロトコル分析を含む、関連する PCAP ファイルをダウンロードしてアラートを調査するには :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/download-icon.png" alt-text="[ダウンロード]"::: を選択します。
 
-- :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/cloud-download-icon.png" alt-text="[クラウド]"::: を選択すると、アラートに関連するパケットだけを含むフィルター済みの PCAP ファイルがダウンロードされます。これにより、出力ファイルのサイズが減少し、より焦点を絞った分析が可能になります。 [Wireshark](https://www.wireshark.org/)を使用してこれを表示できます。
+- :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/cloud-download-icon.png" alt-text="[クラウド]"::: を選択すると、アラート関連パケットだけを含むフィルター済みの関連する PCAP ファイルがダウンロードされます。これにより、出力ファイルのサイズが減少し、より焦点を絞った分析が可能になります。 [Wireshark](https://www.wireshark.org/)を使用してこれを表示できます。
 
-- 要求されたアラートの時刻のイベント タイムラインに移動するには :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/navigate-icon.png" alt-text="[ナビゲーション]"::: を選択します。
+- 要求されたアラートの時刻のイベント タイムラインに移動するには :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/navigate-icon.png" alt-text="[ナビゲーション]"::: を選択します。 これにより、特定のアラートの付近に発生している可能性のあるその他のイベントを評価できます。
 
 - 管理者およびセキュリティ アナリストのみ - アラートの状態を未確認から確認済みに変更します。 [詳細] を選択して検出されたアクティビティを承認します。
 
 :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/unauthorized-internet-connectivity-detection-v3.png" alt-text="不正なインターネット接続が検出されました":::
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 [センサー上でのアラートの操作](how-to-work-with-alerts-on-your-sensor.md)

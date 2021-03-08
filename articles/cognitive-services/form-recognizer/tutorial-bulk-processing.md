@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/04/2021
 ms.author: pafarley
-ms.openlocfilehash: 1780aebc113fa68a9a89cfce9fd67c9b5911fc58
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6faa612f55b4114b4242c48d43aae9aac8c56582
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98606709"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699999"
 ---
 # <a name="tutorial-extract-form-data-in-bulk-using-azure-data-factory"></a>チュートリアル:Azure Data Factory を使用したフォーム データの一括抽出
 
@@ -65,7 +65,7 @@ Form Recognizer REST API には、入力としていくつかのパラメータ�
 
 フォームのバックログは、オンプレミスの環境にある場合や、(s)FTP サーバー内にある場合があります。 このチュートリアルでは、Azure Data Lake Gen 2 ストレージ アカウント内のフォームを使用します。 そこには、Azure Data Factory、Azure Storage Explorer、または AzCopy を使用してファイルを転送できます。 トレーニング データセットとスコアリング データセットは異なるコンテナーに配置できますが、すべてのフォームの種類のトレーニング データセットは同じコンテナー内に配置する必要があります (ただし、異なるフォルダーでも構いません)。
 
-新しい Data Lake を作成するには、「[Azure Data Lake Storage Gen2 で使用するストレージ アカウントを作成する](https://docs.microsoft.com/azure/storage/blobs/create-data-lake-storage-account)」の手順に従います。
+新しい Data Lake を作成するには、「[Azure Data Lake Storage Gen2 で使用するストレージ アカウントを作成する](../../storage/blobs/create-data-lake-storage-account.md)」の手順に従います。
 
 ## <a name="create-a-parameterization-table"></a>パラメーター化テーブルを作成する
 
@@ -89,7 +89,7 @@ Form Recognizer REST API には、入力としていくつかのパラメータ�
 
 ### <a name="create-the-table"></a>テーブルの作成
 
-[Azure SQL データベースを作成](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase)した後、[クエリ エディター](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal)で次の SQL スクリプトを実行して、必要なテーブルを作成します。
+[Azure SQL データベースを作成](https://ms.portal.azure.com/#create/Microsoft.SQLDatabase)した後、[クエリ エディター](../../azure-sql/database/connect-query-portal.md)で次の SQL スクリプトを実行して、必要なテーブルを作成します。
 
 ```sql
 CREATE TABLE dbo.ParamFormRecogniser(
@@ -142,7 +142,7 @@ Azure portal で [Azure Databricks リソースを作成します](https://ms.po
 
 ### <a name="create-a-secret-scope-backed-by-azure-key-vault"></a>Azure Key Vault によってサポートされるシークレットのスコープを作成する
 
-上記で作成した Azure Key Vault のシークレットを参照するには、Databricks でシークレットのスコープを作成する必要があります。 「[Azure Key Vault を利用するシークレットのスコープを作成する](https://docs.microsoft.com/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope)」の手順に従ってください。
+上記で作成した Azure Key Vault のシークレットを参照するには、Databricks でシークレットのスコープを作成する必要があります。 「[Azure Key Vault を利用するシークレットのスコープを作成する](/azure/databricks/security/secrets/secret-scopes#--create-an-azure-key-vault-backed-secret-scope)」の手順に従ってください。
 
 ### <a name="create-a-databricks-cluster"></a>Databricks クラスターを作成する
 
@@ -461,7 +461,7 @@ Azure portal で [Azure Databricks リソースを作成します](https://ms.po
 
 ## <a name="automate-training-and-scoring-with-azure-data-factory"></a>Azure Data Factory でトレーニングとスコアリングを自動化する
 
-残っている最後の手順は、トレーニングとスコアリングのプロセスを自動化するために Azure Data Factory (ADF) サービスを設定することです。 まず、「[Data Factory の作成](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)」の手順に従います。 ADF リソースを作成したら、3 つのパイプラインを作成する必要があります。1 つはトレーニング用で、もう 2 つはスコアリング用です (以下で説明します)。
+残っている最後の手順は、トレーニングとスコアリングのプロセスを自動化するために Azure Data Factory (ADF) サービスを設定することです。 まず、「[Data Factory の作成](../../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)」の手順に従います。 ADF リソースを作成したら、3 つのパイプラインを作成する必要があります。1 つはトレーニング用で、もう 2 つはスコアリング用です (以下で説明します)。
 
 ### <a name="training-pipeline"></a>トレーニング パイプライン
 

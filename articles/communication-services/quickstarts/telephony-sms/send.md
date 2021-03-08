@@ -11,20 +11,20 @@ ms.topic: overview
 ms.service: azure-communication-services
 ms.custom: tracking-python, devx-track-js
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 60c51de4e4549649c681c961c6ddc1acdb12e698
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 061a7787183918aaee529b686c1478cd4d4b396b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659694"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101661598"
 ---
 # <a name="quickstart-send-an-sms-message"></a>クイック スタート:SMS メッセージを送信する
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 > [!IMPORTANT]
 > 米国の電話番号との間で携帯ショートメール (SMS) メッセージを送受信することができます。 他の地域の電話番号はまだ、Communication Services の SMS ではサポートされていません。
-> 詳細については、「 **[テレフォニーと SMS ソリューションを計画する](../../concepts/telephony-sms/plan-solution.md)** 」を参照してください。
+> 詳細については、 **[電話番号の種類](../../concepts/telephony-sms/plan-solution.md)** に関すページを参照してください。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Send SMS with .NET client library](./includes/send-sms-net.md)]
@@ -58,7 +58,7 @@ Communication Services サブスクリプションをクリーンアップして
 > [SMS イベントをサブスクライブする](./handle-sms-events.md)
 
 > [!div class="nextstepaction"]
-> [PSTN ソリューションを計画する](../../concepts/telephony-sms/plan-solution.md)
+> [電話番号の種類](../../concepts/telephony-sms/plan-solution.md)
 
 > [!div class="nextstepaction"]
 > [SMS に関する詳細](../../concepts/telephony-sms/concepts.md)

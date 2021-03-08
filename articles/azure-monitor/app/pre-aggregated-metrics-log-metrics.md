@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9b93ac774dffb837d93853353e83b8da4ab4d8d4
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: c419411b0956cdc42055f0e97a47fc8e4ddb38c9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027161"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589740"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights のログベースのメトリックと事前に集計されたメトリック
 
@@ -30,12 +30,12 @@ ms.locfileid: "93027161"
 
 ## <a name="pre-aggregated-metrics"></a>事前に集計されたメトリック
 
-ログベースのメトリックに加え、2018 年後半に、Application Insights チームによってパブリック プレビュー版のメトリックが提供されました。このメトリックは、タイム シリーズ用に最適化された特殊なリポジトリに格納されます。 新しいメトリックは、多くのプロパティを含む個々のイベントとして保持されなくなりました。 代わりに、事前に集計されたタイム シリーズとして格納され、主なディメンションのみが含まれます。 これにより、新しいメトリックはクエリ時に適したものとなります。データはより速く取得され、必要となるコンピューティング能力が減ります。 その結果、[メトリックのディメンションに関するほぼリアルタイムのアラート](../platform/alerts-metric-near-real-time.md)や応答性の高い[ダッシュボード](./overview-dashboard.md)など、新しいシナリオが有効になります。
+ログベースのメトリックに加え、2018 年後半に、Application Insights チームによってパブリック プレビュー版のメトリックが提供されました。このメトリックは、タイム シリーズ用に最適化された特殊なリポジトリに格納されます。 新しいメトリックは、多くのプロパティを含む個々のイベントとして保持されなくなりました。 代わりに、事前に集計されたタイム シリーズとして格納され、主なディメンションのみが含まれます。 これにより、新しいメトリックはクエリ時に適したものとなります。データはより速く取得され、必要となるコンピューティング能力が減ります。 その結果、[メトリックのディメンションに関するほぼリアルタイムのアラート](../alerts/alerts-metric-near-real-time.md)や応答性の高い[ダッシュボード](./overview-dashboard.md)など、新しいシナリオが有効になります。
 
 > [!IMPORTANT]
 > Application Insights では、ログベースのメトリックと事前に集計されたメトリックの両方が共存します。 2 つを区別するため、Application Insights UX では、事前に集計されたメトリックを "標準メトリック (プレビュー)" と呼ぶようになり、イベントからの従来のメトリックは "ログベースのメトリック" という名前に変更されました。
 
-新しい SDK (.NET 用の [Application Insights 2.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK 以降) では、収集時にメトリックが事前に集計されます。 これは、[既定で送信される標準メトリック](../platform/metrics-supported.md#microsoftinsightscomponents)に適用されるため、正確性がサンプリングやフィルター処理の影響を受けることはありません。 また、[GetMetric](./api-custom-events-metrics.md#getmetric) を使用して送信されるカスタム メトリックにも適用されるため、データ インジェストが減り、コストが削減されます。
+新しい SDK (.NET 用の [Application Insights 2.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK 以降) では、収集時にメトリックが事前に集計されます。 これは、[既定で送信される標準メトリック](../essentials/metrics-supported.md#microsoftinsightscomponents)に適用されるため、正確性がサンプリングやフィルター処理の影響を受けることはありません。 また、[GetMetric](./api-custom-events-metrics.md#getmetric) を使用して送信されるカスタム メトリックにも適用されるため、データ インジェストが減り、コストが削減されます。
 
 事前に集計しない SDK の場合 (つまり、古いバージョンの Application Insights SDK、またはブラウザー インストルメンテーションの場合)、Application Insights バックエンドでは引き続き、Application Insights イベント収集エンドポイントによって受信されるイベントを集計することで、新しいメトリックが設定されます。 つまり、ネットワーク経由で送信されるデータの量を減らせる利点はありませんが、引き続き事前に集計されたメトリックを使用でき、収集時にメトリックを事前に集計しない SDK でのほぼリアルタイムのディメンション アラートのパフォーマンスとサポートが向上します。
 
@@ -81,7 +81,7 @@ ms.locfileid: "93027161"
 
 ## <a name="creating-charts-and-exploring-log-based-and-standard-pre-aggregated-metrics"></a>グラフを作成して、ログベースのメトリックと標準の事前に集計されたメトリックを確認する
 
-[Azure Monitor メトリックス エクスプローラー](../platform/metrics-getting-started.md)を使用して、事前に集計されたメトリックとログベースのメトリックに基づいてグラフを描画し、そのグラフを使ってダッシュボードを作成します。 目的の Application Insights リソースを選択した後、名前空間ピッカーを使用して、標準 (プレビュー) メトリックとログベースのメトリックを切り替えるか、カスタム メトリック名前空間を作成します。
+[Azure Monitor メトリックス エクスプローラー](../essentials/metrics-getting-started.md)を使用して、事前に集計されたメトリックとログベースのメトリックに基づいてグラフを描画し、そのグラフを使ってダッシュボードを作成します。 目的の Application Insights リソースを選択した後、名前空間ピッカーを使用して、標準 (プレビュー) メトリックとログベースのメトリックを切り替えるか、カスタム メトリック名前空間を作成します。
 
 ![メトリック名前空間](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
@@ -89,9 +89,9 @@ ms.locfileid: "93027161"
 
 メトリックを Application Insights に取り込むと、[こちら](./pricing.md#pricing-model)で説明されているように、ログベースか事前に集計されているかにかかわらず、取り込まれたデータのサイズに基づいてコストが発生します。 すべてのディメンションを含むカスタム メトリックは常に Application Insights ログストアに格納されます。さらに、カスタム メトリックの事前に集計されたバージョン (ディメンションなし) は既定でメトリック ストアに転送されます。
 
-[[カスタム メトリック ディメンションに関するアラートを有効にします]](#custom-metrics-dimensions-and-pre-aggregation) オプションを選択して、事前に集計されたメトリックのすべてのディメンションをメトリック ストアに格納すると、 [カスタム メトリックの価格](https://azure.microsoft.com/pricing/details/monitor/)に基づいて **追加の** コストが生じる可能性があります。
+[[カスタム メトリック ディメンションに関するアラートを有効にします]](#custom-metrics-dimensions-and-pre-aggregation) オプションを選択して、事前に集計されたメトリックのすべてのディメンションをメトリック ストアに格納すると、[カスタム メトリックの価格](https://azure.microsoft.com/pricing/details/monitor/)に基づいて **追加の** コストが生じる可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ほぼリアルタイムのアラート](../platform/alerts-metric-near-real-time.md)
+* [ほぼリアルタイムのアラート](../alerts/alerts-metric-near-real-time.md)
 * [GetMetric と TrackValue](./api-custom-events-metrics.md#getmetric)

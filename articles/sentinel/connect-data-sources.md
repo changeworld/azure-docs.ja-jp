@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: cffc41264dfa30fd833aef465a13abc799334b2f
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: aeb92dce41c12ada41175964835d9c89a634a6e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567483"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590270"
 ---
 # <a name="connect-data-sources"></a>データ ソースの接続
 
@@ -66,11 +66,13 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 
 - **API による外部ソリューション**:一部のデータ ソースは、接続されるデータ ソースによって提供される API を使用して接続されます。 通常、ほとんどのセキュリティ テクノロジでは、イベント ログの取得に使用できる API のセットが提供されています。API を使用して、Azure Sentinel に接続し、特定の種類のデータを収集して、Azure Log Analytics に送信します。 API を使用して接続されるアプライアンスは次のとおりです。
     
+    - [Agari のフィッシング対策とブランド保護](connect-agari-phishing-defense.md)
     - [Alcide kAudit](connect-alcide-kaudit.md)
     - [Barracuda WAF](connect-barracuda.md)
     - [Barracuda CloudGen Firewall](connect-barracuda-cloudgen-firewall.md)
     - [BETTER Mobile Threat Defense](connect-better-mtd.md)
     - [Beyond Security beSECURE](connect-besecure.md)
+    - [Cisco Umbrella](connect-cisco-umbrella.md)
     - [Citrix Analytics (セキュリティ)](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
@@ -95,6 +97,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 
     - **ファイアウォール、プロキシ、エンドポイント - CEF:**
         - [AI Vectra 検出](connect-ai-vectra-detect.md)
+        - [Akamai セキュリティ イベント](connect-akamai-security-events.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
         - [Citrix WAF](connect-citrix-waf.md)
@@ -104,6 +107,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
         - [Forcepoint 製品](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
         - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
+        - [Imperva WAF Gateway](connect-imperva-waf-gateway.md)
         - [One Identity Safeguard](connect-one-identity.md)
         - [Palo Alto Networks](connect-paloalto.md)
         - [Thycotic Secret Server](connect-thycotic-secret-server.md)
@@ -113,6 +117,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
         - [Zscaler](connect-zscaler.md)
         - [その他の CEF ベースのアプライアンス](connect-common-event-format.md)
     - **ファイアウォール、プロキシ、エンドポイント - Syslog:**
+        - [Active Directory 用の Alsid](connect-alsid-active-directory.md)
         - [Cisco Unified Computing System (UCS)](connect-cisco-ucs.md)
         - [Infoblox NIOS](connect-infoblox.md)
         - [Juniper SRX](connect-juniper-srx.md)
@@ -122,6 +127,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
         - [Symantec Proxy SG](connect-symantec-proxy-sg.md)
         - [Symantec VIP](connect-symantec-vip.md)
         - [その他の Syslog ベースのアプライアンス](connect-syslog.md)
+    - [Apache HTTP Server](connect-apache-http-server.md)
     - DLP ソリューション
     - [脅威インテリジェンス プロバイダー](connect-threat-intelligence.md)
     - [DNS マシン](connect-dns.md) - DNS マシンに直接インストールされたエージェント
@@ -132,7 +138,6 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 ## <a name="agent-connection-options"></a>エージェントの接続オプション<a name="agent-options"></a>
 
 外部のアプライアンスを Azure Sentinel に接続するには、エージェントを専用のマシン (VM またはオンプレミス) に展開して、アプライアンスと Azure Sentinel の間の通信をサポートする必要があります。 エージェントのデプロイは、自動または手動で行うことができます。 自動デプロイは、専用マシンが Azure に作成中の新しい VM である場合にのみ使用できます。 
-
 
 ![Azure での CEF](./media/connect-cef/cef-syslog-azure.png)
 
@@ -146,7 +151,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 | **データの種類** | **接続する方法** | **データ コネクタか?** | **コメント** |
 |------|---------|-------------|------|
 | AWSCloudTrail | [AWS の接続](connect-aws.md) | &#10003; | |
-| AzureActivity | [Azure アクティビティの接続](connect-azure-activity.md)と[アクティビティ ログの概要](../azure-monitor/platform/platform-logs-overview.md)| &#10003; | |
+| AzureActivity | [Azure アクティビティの接続](connect-azure-activity.md)と[アクティビティ ログの概要](../azure-monitor/essentials/platform-logs-overview.md)| &#10003; | |
 | AuditLogs | [Azure AD の接続](connect-azure-active-directory.md)  | &#10003; | |
 | SigninLogs | [Azure AD の接続](connect-azure-active-directory.md)  | &#10003; | |
 | AzureFirewall |[Azure Diagnostics](../firewall/firewall-diagnostics.md) | &#10003; | |
@@ -159,9 +164,9 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 | Microsoft Web アプリケーション ファイアウォール (WAF) - (AzureDiagnostics) |[Microsoft Web アプリケーション ファイアウォールの接続](./connect-azure-waf.md) | &#10003; | |
 | SymantecICDx_CL | [Symantec の接続](connect-symantec.md) | &#10003; | |
 | ThreatIntelligenceIndicator  | [脅威インテリジェンスの接続](connect-threat-intelligence.md)  | &#10003; | |
-| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Monitor サービス マップ](../azure-monitor/insights/service-map.md)<br>[Azure Monitor VM の Insights のオンボード](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Azure Monitor VM の Insights を有効にする](../azure-monitor/insights/vminsights-enable-overview.md) <br> [シングル VM のオンボードでの使用](../azure-monitor/insights/vminsights-enable-portal.md)<br>  [ポリシーによるオンボードの使用](../azure-monitor/insights/vminsights-enable-policy.md)| &#10007; | VM Insights ブック  |
+| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Monitor サービス マップ](../azure-monitor/vm/service-map.md)<br>[Azure Monitor VM の Insights のオンボード](../azure-monitor/vm/vminsights-enable-overview.md) <br> [Azure Monitor VM の Insights を有効にする](../azure-monitor/vm/vminsights-enable-overview.md) <br> [シングル VM のオンボードでの使用](../azure-monitor/vm/vminsights-enable-portal.md)<br>  [ポリシーによるオンボードの使用](../azure-monitor/vm/vminsights-enable-policy.md)| &#10007; | VM Insights ブック  |
 | DnsEvents | [DNS の接続](connect-dns.md) | &#10003; | |
-| W3CIISLog | [IIS ログの接続](../azure-monitor/platform/data-sources-iis-logs.md)  | &#10007; | |
+| W3CIISLog | [IIS ログの接続](../azure-monitor/agents/data-sources-iis-logs.md)  | &#10007; | |
 | WireData | [ワイヤ データの接続](../azure-monitor/insights/wire-data.md) | &#10007; | |
 | WindowsFirewall | [Windows ファイアウォールの接続](connect-windows-firewall.md) | &#10003; | |
 | AADIP SecurityAlert  | [Azure AD Identity Protection への接続](connect-azure-ad-identity-protection.md)  | &#10003; | |
@@ -169,7 +174,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
 | ASC SecurityAlert  | Azure Security Center からの [Azure Defender アラート](connect-azure-security-center.md)の接続  | &#10003; | |
 | MCAS SecurityAlert  | [Microsoft Cloud App Security の接続](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
-| Sysmon (イベント) | [Sysmon の接続](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows イベントの接続](../azure-monitor/platform/data-sources-windows-events.md) <br> [Sysmon Parser の入手](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | 既定では、Sysmon コレクションは仮想マシンにインストールされません。 Sysmon エージェントのインストール方法の詳細については、[Sysmon](/sysinternals/downloads/sysmon) に関する記事を参照してください。 |
+| Sysmon (イベント) | [Sysmon の接続](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows イベントの接続](../azure-monitor/agents/data-sources-windows-events.md) <br> [Sysmon Parser の入手](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | 既定では、Sysmon コレクションは仮想マシンにインストールされません。 Sysmon エージェントのインストール方法の詳細については、[Sysmon](/sysinternals/downloads/sysmon) に関する記事を参照してください。 |
 | ConfigurationData  | [VM インベントリの自動化](../automation/change-tracking/overview.md)| &#10007; | |
 | ConfigurationChange  | [VM の追跡の自動化](../automation/change-tracking/overview.md) | &#10007; | |
 | F5 BIG-IP | [F5 BIG-IP の接続](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | &#10007; | |

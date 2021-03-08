@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ee4c364012b32ff8ee938dec2a7446853c32ba0b
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: e71beb4e4b5d23dcd1cffa1f60462d782d37db2e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203084"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572178"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Backup 用の Azure セキュリティ ベースライン
 
@@ -116,9 +116,9 @@ Backup 用の Azure セキュリティ ベースラインには、デプロイ�
 
 **ガイダンス**: NSG または Azure Firewall によって保護されている Azure 仮想マシンで MARS エージェントを使用している場合、Azure アクティビティ ログを使用して、NSG または Firewall の構成を監視します。 これらのリソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成できます。
 
-- [Azure アクティビティ ログ イベントを表示および取得する](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示および取得する](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -142,7 +142,7 @@ Backup 用の Azure セキュリティ ベースラインには、デプロイ�
 
 また、Azure Monitor を介してログを取り込み、Azure Backup によって生成されたセキュリティ データを集計します。 Azure Monitor 内で Log Analytics ワークスペースを使用してクエリを発行し、分析を実行して、長期/アーカイブ ストレージにはストレージ アカウントを使用します。 または、Azure Sentinel またはサードパーティのセキュリティ インシデントおよびイベント管理 (SIEM) に対してデータを有効にしてオンボードすることもできます。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Recovery Services コンテナーの診断設定を使用する](./backup-azure-diagnostic-events.md)
 
@@ -158,7 +158,7 @@ Backup 用の Azure セキュリティ ベースラインには、デプロイ�
 
 また、Azure Backup では、分析、アラート、レポートの目的で収集して使用できる診断イベントを送信します。 Azure portal を使用して、Recovery Services コンテナーの診断設定を構成できます。 1 つ以上の診断イベントをストレージ アカウント、イベント ハブ、Log Analytics ワークスペースに送信できます。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Recovery Services コンテナーの診断設定を使用する](./backup-azure-diagnostic-events.md)
 
@@ -178,7 +178,7 @@ Backup 用の Azure セキュリティ ベースラインには、デプロイ�
 
 **ガイダンス**: Azure Monitor で、組織のコンプライアンス規則に従って、Azure Recovery Services コンテナーに関連付けられている Log Analytics ワークスペースのログの保持期間を設定します。
 
-- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -192,9 +192,9 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 - [Azure Backup ワークロードの監視](./backup-azure-monitoring-built-in-monitor.md)
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
-- [Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する方法](../azure-monitor/platform/activity-log.md)
+- [Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する方法](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -212,7 +212,7 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Azure Monitor を使用してログ アラートを作成、表示、管理する](../azure-monitor/platform/alerts-log.md)
+- [Azure Monitor を使用してログ アラートを作成、表示、管理する](../azure-monitor/alerts/alerts-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -328,7 +328,7 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 - [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Azure AD のリスク検出について](../active-directory/identity-protection/overview-identity-protection.md)
+- [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center の監視**: はい
 
@@ -518,7 +518,7 @@ MARS エージェントでバックアップする場合、またはカスタマ
 
 **ガイダンス**:運用 Recovery Services コンテナーおよびその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -982,7 +982,7 @@ Azure Key Vault 内のカスタマー マネージド キーをバックアッ�
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用して、アラートの Sentinel のストリーミングを実行できます。
+**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
 - [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 

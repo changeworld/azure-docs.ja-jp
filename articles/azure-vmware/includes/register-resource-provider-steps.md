@@ -2,24 +2,23 @@
 title: Azure VMware Solution リソース プロバイダーの登録
 description: Azure VMware Solution リソース プロバイダーを登録する手順。
 ms.topic: include
-ms.date: 12/24/2020
-ms.openlocfilehash: 7d24ce86f24c941c7d48d3b73576dcdfda120f51
-ms.sourcegitcommit: 489ce69c0ff3f5188889ecfef5ffa76f7121e0d3
+ms.date: 02/17/2021
+ms.openlocfilehash: cd4a6f3003945973f0fe5367eb198823595a412e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97770829"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750064"
 ---
-<!-- Used in avs-deployment.md and tutorial-create-private-cloud.md -->
+<!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
-Azure VMware Solution を使用するには、最初にリソース プロバイダーをサブスクリプションに登録する必要があります。  
+Azure VMware Solution を使用するには、最初にリソース プロバイダーをサブスクリプションに登録する必要があります。 リソース プロバイダーの詳細については、「[Azure リソース プロバイダーと種類](../../azure-resource-manager/management/resource-providers-and-types.md)」を参照してください。
 
 ### <a name="azure-cli"></a>Azure CLI 
 
 ```azurecli-interactive
 az provider register -n Microsoft.AVS --subscription <your subscription ID>
 ```
-
 
 ### <a name="azure-portal"></a>Azure portal
  

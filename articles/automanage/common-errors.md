@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: alsin
-ms.openlocfilehash: 13388bf289c1d10a2e7da04a4dd5d26be109535e
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: df5133ad4bb3155afdc9d43e595591d9cfda4ea0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98697754"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644444"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>Automanage の一般的なオンボード エラーのトラブルシューティング
 Automanage は、サービスへのマシンのオンボードに失敗する場合があります。 このドキュメントでは、デプロイの失敗をトラブルシューティングする方法について説明し、デプロイが失敗する可能性があるいくつかの一般的な理由を示し、軽減策として考えられる次の手順について説明します。
@@ -37,7 +37,7 @@ Automanage は、サービスへのマシンのオンボードに失敗する場
 エラー |  対応策
 :-----|:-------------|
 Automanage アカウントのアクセス許可が不十分なエラー | これは、新しい Automanage アカウントを含むサブスクリプションを新しいテナントに最近移動した場合に発生する可能性があります。 これを解決する手順については、[こちら](./repair-automanage-account.md)を参照してください。
-ワークスペース リージョンがリージョン マッピング要件に一致しない | Automanage がマシンをオンボードできませんでしたが、マシンが現在リンクされている Log Analytics ワークスペースが、サポートされている Automation リージョンにマップされていません。 既存の Log Analytics ワークスペースと Automation アカウントが、[サポートされているリージョン マッピング](https://docs.microsoft.com/azure/automation/how-to/region-mappings)に配置されていることを確認します。
+ワークスペース リージョンがリージョン マッピング要件に一致しない | Automanage がマシンをオンボードできませんでしたが、マシンが現在リンクされている Log Analytics ワークスペースが、サポートされている Automation リージョンにマップされていません。 既存の Log Analytics ワークスペースと Automation アカウントが、[サポートされているリージョン マッピング](../automation/how-to/region-mappings.md)に配置されていることを確認します。
 "割り当てに失敗しました。入手できる情報は他にありません。" | Microsoft Azure サポートのケースを開いてください。
 
 ## <a name="next-steps"></a>次のステップ
@@ -46,4 +46,3 @@ Automanage アカウントのアクセス許可が不十分なエラー | これ
 
 > [!div class="nextstepaction"]
 > [Azure portal で Azure Automanage for virtual machines を有効にする](quick-create-virtual-machines-portal.md)
-

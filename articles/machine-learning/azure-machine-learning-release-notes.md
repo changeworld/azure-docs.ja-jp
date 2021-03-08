@@ -9,16 +9,62 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 6e92fb39845944898bebf6446c35f0932e13b5b8
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c54034ef927bb49a955ef6121f5a8d56b57f0bd3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788877"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375563"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の [**メインの SDK for Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) のリファレンス ページを参照してください。
+
+
+## <a name="2021-02-09"></a>2021-02-09
+
+### <a name="azure-machine-learning-sdk-for-python-v1220"></a>Azure Machine Learning SDK for Python v1.22.0
++ **バグの修正と機能強化**
+  + **azureml-automl-core**
+    + ビジョン モデルの conda yml ファイルに余分な pip 依存関係が追加されていたバグを修正しました。
+  + **azureml-automl-runtime**
+    + 従来の予測モデル (例: AutoArima) が、補完されたターゲット値を含む行が存在しないトレーニング データを受け取ることができたバグを修正しました。 これは、これらのモデルのデータ コントラクトに違反していました。 * 時系列遅延演算子の lag-by-occurrence 動作に関するさまざまなバグを修正しました。 以前は、補完されたすべての行が lag-by-occurrence 操作によって正しくマークされなかったため、常に正しい発生遅延値が生成されるとは限りませんでした。 また、遅延演算子と、lag-by-occurrence 動作を含むローリング ウィンドウ演算子との間のいくつか互換性の問題も修正しました。 これが原因で、以前はローリング ウィンドウ演算子によって本来なら使用される必要があるトレーニング データのいくつかの行が削除されていました。
+  + **azureml-core**
+    + 対象ユーザーによるトークン認証のサポートの追加。
+    + マルチプロセス マルチノード PyTorch ジョブをサポートするために `process_count` を [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) に追加します。
+  + **azureml-pipeline-steps**
+    + [CommandStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.commandstep?preserve-view=true&view=azure-ml-py) の一般提供が開始され、試験段階ではなくなりました。
+    + [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?preserve-view=true&view=azure-ml-py): ミニ バッチ レベルでのエラーしきい値を確認するために、引数 allowed_failed_count と allowed_failed_percent を追加します。 エラーしきい値には現在、3 つのフレーバーがあります。
+       + error_threshold - 失敗したミニ バッチ項目の許容数。 
+       + allowed_failed_count - 失敗したミニ バッチの許容数。 
+       + allowed_failed_percent - 失敗したミニ バッチの許容される割合。 
+       
+       これらのいずれかを超過すると、ジョブは停止します。 error_threshold は、下位互換性を維持するために必要です。 これを無視するには、値を -1 に設定してください。
+    + AutoMLStep 名に含まれる空白文字の処理を修正しました。
+    + ScriptRunConfig が HyperDriveStep でサポートされるようになりました
+  + **azureml-train-core**
+    + ScriptRun から呼び出された HyperDrive 実行は、子実行と見なされるようになります。
+    + マルチプロセス マルチノード PyTorch ジョブをサポートするために `process_count` を [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) に追加します。
+  + **azureml-widgets**
+    + ParallelRunStep の状態を視覚化するために、ウィジェット ParallelRunStepDetails を追加します。
+    + ハイパードライブ ユーザーが並列座標グラフに追加の軸を表示できるようになります。これには、各子実行のハイパーパラメーターの各セットに対応するメトリック値が表示されます。
+
+
+ ## <a name="2021-01-31"></a>2021-01-31
+### <a name="azure-machine-learning-studio-notebooks-experience-january-update"></a>Azure Machine Learning Studio のノートブック エクスペリエンス (1 月の更新)
++ **新機能**
+  + AzureML のネイティブ Markdown エディター。 ユーザーは、AzureML Studio で Markdown ファイルをネイティブに表示および編集できるようになりました。
+  + [スクリプトの [実行] ボタン (.py、.R と .sh)](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#run-a-notebook-or-python-script)。 ユーザーは、AzureML で Python、R および Bash スクリプトを簡単に実行できるようになりました
+  + [変数エクスプローラー](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#explore-variables-in-the-notebook)。 ポップアップ パネルで変数とデータ フレームの内容を調べます。 ユーザーは、データ型、サイズ、および内容を簡単に確認できます。
+  + [目次](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#navigate-with-a-toc)。 Markdown のヘッダーで示されているノートブックのセクションに移動します。
+  + ノートブックを Latex/HTML/Py としてエクスポートします。 LaTex、HTML、または .py にエクスポートすることで、共有しやすいノートブック ファイルを作成します
+  + IntelliCode。 ML を利用した結果により、[インテリジェントなオート コンプリート エクスペリエンス](https://docs.microsoft.com/visualstudio/intellicode/overview)が強化されます。
+
++ **バグの修正と機能強化**
+  + ページ読み込み時間の短縮
+  + パフォーマンスの向上 
+  + 高速化およびカーネルの信頼性の向上
+  
 
  ## <a name="2021-01-25"></a>2021-01-25
 
@@ -130,7 +176,7 @@ ms.locfileid: "98788877"
     + HyperDriveRun.get_children_sorted_by_primary_metric() はより高速に完了するようになりました
     + HyperDrive SDK でのエラー処理が改善されました。
     +  実験の実行を構成するために ScriptRunConfig を使用することを優先して、すべての Estimator クラスが非推奨になりました。 非推奨のクラスは次のとおりです。
-        + MMLBaseEstimator
+        + MMLBase
         + エスティメーター
         + PyTorch 
         + TensorFlow 
@@ -147,7 +193,7 @@ ms.locfileid: "98788877"
 ## <a name="2020-11-30"></a>2020-11-30
 ### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure Machine Learning Studio のノートブック エクスペリエンス (11 月の更新)
 + **新機能**
-   + ネイティブ ターミナル。 ユーザーは、統合ターミナル、およびその[統合ターミナル](./how-to-run-jupyter-notebooks.md#terminal)を使用して Git 操作にもアクセスできるようになりました。
+   + ネイティブ ターミナル。 ユーザーは、統合ターミナル、およびその[統合ターミナル](./how-to-access-terminal.md)を使用して Git 操作にもアクセスできるようになりました。
   + フォルダーの複製 
   + [Costing for Compute]\(コンピューティングのコスト計算\) ドロップダウン 
   + オフライン コンピューティング Pylance 

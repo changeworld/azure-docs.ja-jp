@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8221e814b4555a75d596cec3ab00aa3b63e41a14
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: fb3aeb732166537dd4aa98acad0c4dfa5788a8ca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197406"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732396"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>VPN Gateway に対する Azure セキュリティ ベースライン
 
@@ -78,9 +78,9 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 **ガイダンス**:Azure アクティビティ ログを使用して、リソースの構成を監視し、仮想ネットワーク リソースに対する変更を検出します。 Azure Monitor 内で、VPN ゲートウェイに関連する重要なリソースへの変更が発生するとトリガーされるアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -100,7 +100,7 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Azure Monitor とサードパーティの SIEM 統合を開始する方法](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -112,9 +112,9 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 **ガイダンス**:監査ログ、セキュリティ ログ、診断ログへのアクセスのため、お使いの VPN ゲートウェイ リソースに対する診断設定を有効にします。 自動的に使用できるアクティビティ ログには、イベント ソース、日付、ユーザー、タイムスタンプ、送信元アドレス、送信先アドレス、その他の役立つ要素が含まれています。 
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -124,9 +124,9 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 **ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期およびアーカイブ ストレージには Azure Storage アカウントを使用します。 
 
-- [Log Analytics でデータ保持期間を変更する](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 
+- [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 
 
-- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -140,9 +140,9 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics クエリの使用方法](../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Log Analytics クエリの使用方法](../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -158,7 +158,7 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 - [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: はい
 
@@ -382,7 +382,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [VPN Gateway からの診断ログ イベントにアラートを設定する](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 

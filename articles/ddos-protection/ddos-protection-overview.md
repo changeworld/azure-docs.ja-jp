@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 114c723b127a17ffdd9c7ed91c6e777838d68e8e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2b0f8a73a6852883f87ba9fc4333cb6fa8101a39
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223348"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703118"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard の概要
 
@@ -51,6 +51,10 @@ DDoS 保護プランには、1 か月あたり $2,944 の固定月額料金が�
 テナントでは、複数のサブスクリプションで 1 つの DDoS 保護プランを使用できるため、複数の DDoS 保護プランを作成する必要はありません。
 
 Azure DDoS Protection Standard の価格については、「[Azure DDoS Protection の価格](https://azure.microsoft.com/pricing/details/ddos-protection/)」を参照してください。
+
+## <a name="reference-architectures"></a>参照用アーキテクチャ
+
+DDoS Protection Standard は、[仮想ネットワークにデプロイされるサービス](../virtual-network/virtual-network-for-azure-services.md)用に設計されています。 他のサービスには、既定の DDoS Protection Basic が適用されます。 サポートされているアーキテクチャの詳細については、「[DDoS Protection の参照アーキテクチャ](./ddos-protection-reference-architectures.md)」を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

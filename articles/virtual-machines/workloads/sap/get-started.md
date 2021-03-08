@@ -1,7 +1,8 @@
 ---
 title: Azure VM 上で SAP の使用を開始する | Microsoft Docs
 description: Microsoft Azure において仮想マシン (VM) 上で実行される SAP ソリューションについて説明します
-services: virtual-machines-linux
+services: virtual-machines-sap
+ms.service: virtual-machines-sap
 documentationcenter: ''
 author: msjuergent
 manager: bburns
@@ -9,20 +10,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
-ms.service: virtual-machines-linux
-ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/23/2021
+ms.date: 02/03/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 992115a65ec015ca04990135975e0d4020764184
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 0d759ad0ebb1aa4f1b6a5f404812ab8149ed69e2
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98873775"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671852"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -84,6 +83,11 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 
 ## <a name="change-log"></a>変更履歴
 
+- 2021 年 2 月 11 日[Red Hat Enterprise Linux Server 上の Azure vm で IBM DB2 LUW の高可用性](./high-availability-guide-rhel-ibm-db2-luw.md) を変更し、RHEL 8.x 用の pacemaker クラスターコマンドを修正します。
+- 2021 年 2 月 3 日: stonith create コマンドの pcmk_host_map を更新するために、「[Azure での RHEL に対する Pacemaker の設定](./high-availability-guide-rhel-pacemaker.md)」を変更
+- 2021 年 2 月 3 日: stonith create コマンドの pcmk_host_map を追加するために、「[Azure での SLES に対する Pacemaker の設定](./high-availability-guide-suse-pacemaker.md)」を変更 
+- 2021 年 2 月 3 日: 記事「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」で SUSE 用の I/O スケジューラ設定をより詳細に記述
+- 2021 年 2 月 1 日: [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)へのリンクを追加するための [RHEL での ANF を使用した SAP HANA の高可用性のスケールアップ](./sap-hana-high-availability-netapp-files-red-hat.md)、[RHEL における Azure VM での Pacemaker を使用した SAP HANA スケールアウト HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md)、[SLES で ANF を使用した Azure VM のスタンバイ ノードでの SAP HANA スケールアウト](./sap-hana-scale-out-standby-netapp-files-suse.md)、[RHEL で ANF を使用した Azure VM のスタンバイ ノードでの SAP HANA スケールアウト](./sap-hana-scale-out-standby-netapp-files-rhel.md)の変更
 - 2021 年 1 月 23 日:記事「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」および「[SAP HANA 用 Azure NetApp Files 上の NFS v4.1](./hana-vm-operations-netapp.md)」のディスク ボリューム マネージャーを使用せずに、異なる Azure ディスクまたは NFS 共有間で HANA データ ファイルに対する I/O 操作をストライピングする機能として、HANA データ ボリューム パーティション分割機能が導入されました。
 - 2021 年 1 月 18 日: [SAP ワークロード用 Azure Virtual Machines Oracle DBMS のデプロイ](./dbms_guide_oracle.md)時の Oracle 向け Azure NetApp Files ベースの NFS のサポート追加、およびドキュメント「[SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)」の表内の小数の調整
 - 2021年 1 月 11 日:RHEL8 と RHEL7 および ENSA1 と ENSA2 の両方で動作するようにコマンドを調整するための [RHEL for SAP アプリケーションでの Azure VM 上の HA for SAP NW](./high-availability-guide-rhel.md)、[ANF を使用する RHEL での Azure VM 上の HA for SAP NW](./high-availability-guide-rhel-netapp-files.md)、[RHEL マルチ SID ガイドでの Azure VM 上の HA for SAP NW](./high-availability-guide-rhel-multi-sid.md) のマイナーな変更

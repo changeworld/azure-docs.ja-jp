@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 11e21f376ea3b5cf580d54780509529b4536718b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 6276527230cf889b471887fdb3da70e06a2fc8d6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734176"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582354"
 ---
 # <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure Monitor for Azure Data Explorer (プレビュー)
 
@@ -162,4 +162,4 @@ Azure Monitor for Azure Data Explorer では、ログとメトリックを組み
 
 ## <a name="next-steps"></a>次のステップ
 
-ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../platform/workbooks-overview.md)」で学習してください。
+ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../visualize/workbooks-overview.md)」で学習してください。

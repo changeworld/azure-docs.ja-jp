@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c15b6115c2b07503320cd7b5f3c790be03aeea94
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 5d26d36c9f4ecb4aa0c7114b1ebef066e104f175
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278122"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198865"
 ---
 # <a name="tutorial-configure-your-rules-engine"></a>チュートリアル:ルール エンジンを構成する
 
@@ -58,7 +58,7 @@ ms.locfileid: "92278122"
 
 ## <a name="configure-rules-engine-in-azure-cli"></a>Azure CLI でルール エンジンを構成する
 
-1. [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) をまだインストールしていない場合はインストールします。 "front-door" 拡張機能を追加します:- az extension add --name front-door。 次に、ログインし、お使いのサブスクリプションに切り替えます: az account set --subscription <名前または ID>。
+1. [Azure CLI](/cli/azure/install-azure-cli) をまだインストールしていない場合はインストールします。 "front-door" 拡張機能を追加します:- az extension add --name front-door。 次に、ログインし、お使いのサブスクリプションに切り替えます: az account set --subscription <名前または ID>。
 
 1. 最初に、ルール エンジンを作成します。この例は、1 つのヘッダーベースのアクションと 1 つの一致条件を持つ 1 つのルールを示しています。 
 
@@ -96,7 +96,7 @@ ms.locfileid: "92278122"
     az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --remove rulesEngine # case sensitive word ‘rulesEngine’
     ```
 
-詳細については、AFD ルール エンジン コマンドの完全な一覧を[こちら](/cli/azure/ext/front-door/network/front-door/rules-engine?preserve-view=true&view=azure-cli-latest)で確認してください。   
+詳細については、AFD ルール エンジン コマンドの完全な一覧を[こちら](/cli/azure/ext/front-door/network/front-door/rules-engine)で確認してください。   
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -108,11 +108,11 @@ ms.locfileid: "92278122"
 
 1. このルール エンジン構成が関連付けられているすべてのルーティング規則をオフにし、[Save]\(保存\) をクリックします。
 
-    :::image type="content" source="./media/front-door-rules-engine/front-door-routing-rule-association.png" alt-text="[Associate routing rules]\(ルーティング規則の関連付け\)":::
+    :::image type="content" source="./media/front-door-rules-engine/front-door-routing-rule-association.png" alt-text="[Routing rule association]\(ルーティング規則の関連付け\)":::
 
 1. これで、Front Door からルール エンジン構成を削除できるようになりました。
 
-    :::image type="content" source="./media/front-door-rules-engine/front-door-delete-rule-engine-configuration.png" alt-text="[Associate routing rules]\(ルーティング規則の関連付け\)":::
+    :::image type="content" source="./media/front-door-rules-engine/front-door-delete-rule-engine-configuration.png" alt-text="ルール エンジン構成を削除する":::
 
 ## <a name="next-steps"></a>次の手順
 

@@ -9,12 +9,12 @@ ms.subservice: faq
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3bc259f9ee6cb1e6fd927af82a1740403d3ae7d8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016711"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587956"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -71,15 +71,15 @@ VM イメージを作成しキャプチャしてから、それをスケール �
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Azure の自動スケールのベスト プラクティスを教えてください。
 
-自動スケールのベスト プラクティスについては、[仮想マシンの自動スケールのベスト プラクティス](../azure-monitor/platform/autoscale-best-practices.md)に関するページを参照してください。
+自動スケールのベスト プラクティスについては、[仮想マシンの自動スケールのベスト プラクティス](../azure-monitor/autoscale/autoscale-best-practices.md)に関するページを参照してください。
 
 ### <a name="where-do-i-find-metric-names-for-autoscaling-that-uses-host-based-metrics"></a>ホストベースのメトリックを使用した自動スケールのメトリック名はどこで確認できますか。
 
-ホストベースのメトリックを使用した自動スケールのメトリック名については、「[Azure Monitor のサポートされるメトリック](../azure-monitor/platform/metrics-supported.md)」を参照してください。
+ホストベースのメトリックを使用した自動スケールのメトリック名については、「[Azure Monitor のサポートされるメトリック](../azure-monitor/essentials/metrics-supported.md)」を参照してください。
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>Azure Service Bus のトピックとキューの長さに基づいた自動スケールの例はありますか。
 
-はい。 Azure Service Bus のトピックとキューの長さに基づいた自動スケールの例については、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/platform/autoscale-common-metrics.md)」を参照してください。
+はい。 Azure Service Bus のトピックとキューの長さに基づいた自動スケールの例については、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/autoscale/autoscale-common-metrics.md)」を参照してください。
 
 Service Bus キューの場合は、次の JSON を使用します。
 
@@ -104,9 +104,9 @@ Service Bus キューの場合は、次の JSON を使用します。
 
 VM の自動スケール設定は、ホストレベルのメトリックまたはゲスト OS ベースのメトリックを使用するように作成できます。
 
-サポートされるメトリックの一覧については、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/platform/autoscale-common-metrics.md)」を参照してください。
+サポートされるメトリックの一覧については、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/autoscale/autoscale-common-metrics.md)」を参照してください。
 
-仮想マシン スケール セットの完全なサンプルについては、[仮想マシン スケール セット向けの Resource Manager テンプレートを使用した高度な自動スケール構成](../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md)に関するページを参照してください。
+仮想マシン スケール セットの完全なサンプルについては、[仮想マシン スケール セット向けの Resource Manager テンプレートを使用した高度な自動スケール構成](../azure-monitor/autoscale/autoscale-virtual-machine-scale-sets.md)に関するページを参照してください。
 
 サンプルには、ホストレベル CPU のメトリックとメッセージ数のメトリックが使用されています。
 
@@ -114,13 +114,13 @@ VM の自動スケール設定は、ホストレベルのメトリックまた�
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>仮想マシン スケール セットに対するアラート ルールの設定方法を教えてください。
 
-仮想マシン スケール セットのメトリックに対するアラートは、PowerShell または Azure CLI で作成できます。 詳細については、「[Azure Monitor の PowerShell クイックスタート サンプル](../azure-monitor/samples/powershell-samples.md#create-metric-alerts)」と「[Azure Monitor クロスプラットフォーム CLI のクイックスタート サンプル](../azure-monitor/samples/cli-samples.md#work-with-alerts)」を参照してください。
+仮想マシン スケール セットのメトリックに対するアラートは、PowerShell または Azure CLI で作成できます。 詳細については、「[Azure Monitor の PowerShell クイックスタート サンプル](../azure-monitor/powershell-samples.md#create-metric-alerts)」と「[Azure Monitor クロスプラットフォーム CLI のクイックスタート サンプル](../azure-monitor/cli-samples.md#work-with-alerts)」を参照してください。
 
 仮想マシン スケール セットの TargetResourceId は次のような形式になっています。
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
-アラートは、メトリックとなる VM のパフォーマンス カウンターを自由に選んで設定することができます。 詳細については、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/platform/autoscale-common-metrics.md)」の記事の [Resource Manager ベースの Windows VM のゲスト OS メトリック](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms)と [Linux VM のゲスト OS メトリック](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-linux-vms)に関するセクションを参照してください。
+アラートは、メトリックとなる VM のパフォーマンス カウンターを自由に選んで設定することができます。 詳細については、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/autoscale/autoscale-common-metrics.md)」の記事の [Resource Manager ベースの Windows VM のゲスト OS メトリック](../azure-monitor/autoscale/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms)と [Linux VM のゲスト OS メトリック](../azure-monitor/autoscale/autoscale-common-metrics.md#guest-os-metrics-linux-vms)に関するセクションを参照してください。
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>仮想マシン スケール セットに対する自動スケールを PowerShell で設定する方法を教えてください。
 

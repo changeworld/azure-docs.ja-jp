@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7b7bc87f83925baed15bc6a411f5b4e4f78df6cc
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f97ff1c20b7edbf24e5a2c58e22097f88883ae4f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654509"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204033"
 ---
 # <a name="edit-storage-targets"></a>ストレージ ターゲットを編集する
 
@@ -161,7 +161,7 @@ Azure portal の **[ストレージ ターゲット]** ページで、使用モ�
 
 [Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
-[az hpc-cache nfs-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target?view=azure-cli-latest#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) コマンドを使用します。
+[az hpc-cache nfs-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) コマンドを使用します。
 
 update コマンドは、NFS ストレージ ターゲットを追加するために使用するコマンドとほぼ同じものです。 詳細と例については、「[NFS ストレージ ターゲットを作成する](hpc-cache-add-storage.md#create-an-nfs-storage-target)」を参照してください。
 

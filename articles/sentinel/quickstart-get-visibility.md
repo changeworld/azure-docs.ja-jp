@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 369847810cdb7f7e93a13f5d410f226d3663080d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 384c6df86b4aadb117bb31b4604fa4c2ffcda09a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188583"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570589"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>クイック スタート:Azure Sentinel の概要
 
@@ -52,7 +52,7 @@ ms.locfileid: "96188583"
 
 ## <a name="use-built-in-workbooks"></a>組み込みのブックを使用する<a name="dashboards"></a>
 
-組み込みのブックには、接続されたデータ ソースから統合されたデータが表示されるので、そのようなサービスで生成されたイベントを詳しく調べることができます。 組み込みのブックには、Azure AD、Azure アクティビティ イベント、およびオンプレミスのデータが表示されます。たとえば、サーバーからの Windows イベントのデータ、ファースト パーティ アラートのデータ、ファイアウォール トラフィック ログ、Office 365、Windows イベントに基づく安全ではないプロトコルを含むサード パーティからのデータです。 ブックは Azure Monitor Workbooks に基づいており、独自のブックを設計する際のカスタマイズ性と柔軟性が強化されています。 詳細については、[ブック](../azure-monitor/platform/workbooks-overview.md)に関する記事を参照してください。
+組み込みのブックには、接続されたデータ ソースから統合されたデータが表示されるので、そのようなサービスで生成されたイベントを詳しく調べることができます。 組み込みのブックには、Azure AD、Azure アクティビティ イベント、およびオンプレミスのデータが表示されます。たとえば、サーバーからの Windows イベントのデータ、ファースト パーティ アラートのデータ、ファイアウォール トラフィック ログ、Office 365、Windows イベントに基づく安全ではないプロトコルを含むサード パーティからのデータです。 ブックは Azure Monitor Workbooks に基づいており、独自のブックを設計する際のカスタマイズ性と柔軟性が強化されています。 詳細については、[ブック](../azure-monitor/visualize/workbooks-overview.md)に関する記事を参照してください。
 
 1. **[設定]** で **[ブック]** を選択します。 **[インストール済み]** には、インストールされているすべてのブックが表示されます。 **[すべて]** には、インストールできる組み込みのブックのギャラリー全体が表示されます。 
 2. 特定のブックを検索して、各オファーの一覧全体と説明を確認してください。 
@@ -66,14 +66,14 @@ ms.locfileid: "96188583"
       ![Palo Alto ダッシュボード](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-メイン クエリ ![クエリの編集ボタン](./media/qs-get-visibility/edit-query-button.png) を編集してブックをカスタマイズできます。 ボタン ![Log Analytics ボタン](./media/qs-get-visibility/go-to-la-button.png) をクリックして [Log Analytics に移動し、そこでクエリを編集](../azure-monitor/log-query/log-analytics-tutorial.md)できます。また、省略記号 (...) を選択し、 **[タイル データのカスタマイズ]** を選択して、メイン タイム フィルターを編集したり、ブックから特定のタイルを削除したりすることができます。
+メイン クエリ ![クエリの編集ボタン](./media/qs-get-visibility/edit-query-button.png) を編集してブックをカスタマイズできます。 ボタン ![Log Analytics ボタン](./media/qs-get-visibility/go-to-la-button.png) をクリックして [Log Analytics に移動し、そこでクエリを編集](../azure-monitor/logs/log-analytics-tutorial.md)できます。また、省略記号 (...) を選択し、 **[タイル データのカスタマイズ]** を選択して、メイン タイム フィルターを編集したり、ブックから特定のタイルを削除したりすることができます。
 
-クエリの使用方法の詳細については、「[チュートリアル:Log Analytics でのデータの視覚化](../azure-monitor/learn/tutorial-logs-dashboards.md)」を参照してください
+クエリの使用方法の詳細については、「[チュートリアル:Log Analytics でのデータの視覚化](../azure-monitor/visualize/tutorial-logs-dashboards.md)」を参照してください
 
 ### <a name="add-a-new-tile"></a>新しいタイルを追加する
 
 新しいタイルを追加する場合は、既存のブック (自分で作成したブックまたは Azure Sentinel の組み込みのブック) に追加できます。 
-1. Log Analytics で、「[チュートリアル:Log Analytics でのデータの視覚化](../azure-monitor/learn/tutorial-logs-dashboards.md)」の手順に従ってタイルを作成します。 
+1. Log Analytics で、「[チュートリアル:Log Analytics でのデータの視覚化](../azure-monitor/visualize/tutorial-logs-dashboards.md)」の手順に従ってタイルを作成します。 
 2. タイルが作成されたら、 **[ピン留め]** でタイルを表示するブックを選択します。
 
 ## <a name="create-new-workbooks"></a>新しいブックを作成する

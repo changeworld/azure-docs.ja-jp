@@ -8,13 +8,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
+ms.custom: subject-monitoring
 ms.date: 10/02/2020
-ms.openlocfilehash: d231de8e262194cd7dda2462a3f54d7d531eb63c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: f9f25ec2dd8fb8b859f7863c1e695e22cb9a9cec
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542084"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575083"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Azure Machine Learning データの監視のリファレンス
 
@@ -22,7 +23,7 @@ ms.locfileid: "95542084"
 
 ## <a name="metrics"></a>メトリック
 
-このセクションには、Azure Machine Learning 用に自動的に収集されたすべてのプラットフォーム メトリックが一覧表示されています。 これらのメトリックのリソース プロバイダーは、[Microsoft.MachineLearningServices/workspaces](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces) です。
+このセクションには、Azure Machine Learning 用に自動的に収集されたすべてのプラットフォーム メトリックが一覧表示されています。 これらのメトリックのリソース プロバイダーは、[Microsoft.MachineLearningServices/workspaces](../azure-monitor/essentials/metrics-supported.md#microsoftmachinelearningservicesworkspaces) です。
 
 **Model**
 
@@ -73,7 +74,7 @@ ms.locfileid: "95542084"
 
 ## <a name="metric-dimensions"></a>メトリック ディメンション
 
-メトリック ディメンションの詳細については、「[多次元メトリック](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics)」を参照してください。
+メトリック ディメンションの詳細については、「[多次元メトリック](../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics)」を参照してください。
 
 Azure Machine Learning では、次のディメンションがメトリックに関連付けられています。
 
@@ -116,7 +117,7 @@ RunType ディメンションの有効な値は次のとおりです。
 
 このセクションでは、Azure Machine Learning ワークスペース用に収集できるリソース ログの種類を示します。
 
-リソース プロバイダーと種類:[Microsoft.MachineLearningServices/workspace](../azure-monitor/platform/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces)。
+リソース プロバイダーと種類:[Microsoft.MachineLearningServices/workspace](../azure-monitor/essentials/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces)。
 
 | カテゴリ | 表示名 |
 | ----- | ----- |
@@ -231,4 +232,4 @@ RunType ディメンションの有効な値は次のとおりです。
 ## <a name="see-also"></a>関連項目
 
 - Azure Machine Learning の説明については、「[Azure Machine Learning の監視](monitor-azure-machine-learning.md)」を参照してください。
-- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。
+- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/essentials/monitor-azure-resource.md)」を参照してください。

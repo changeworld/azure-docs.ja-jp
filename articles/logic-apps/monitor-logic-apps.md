@@ -6,21 +6,21 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 356353da639ab97a1a4e5483abf56050f5a236f8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3c3d1930234c178a56227830ef0702450ddf4a8c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676050"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580666"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Azure Logic Apps での実行状態の監視、トリガー履歴の確認、アラートの設定
 
 [ロジック アプリを作成して実行する](../logic-apps/quickstart-create-first-logic-app-workflow.md)と、ロジック アプリの実行状態、[実行の履歴](#review-runs-history)、[トリガー履歴](#review-trigger-history)、およびパフォーマンスを確認できます。 エラーやその他考えられる問題に関する通知を受け取るには、[アラート](#add-azure-alerts)を設定します。 たとえば、"1 時間に 5 件を超える実行が失敗したとき" を検出するアラートを作成できます。
 
-リアルタイムでのイベントの監視と高度なデバッグを行うには、[Azure Monitor ログ](../azure-monitor/overview.md)を使用してロジック アプリの診断ログを設定します。 この Azure サービスを使用すると、クラウド環境とオンプレミス環境を監視して、可用性とパフォーマンスをより簡単に維持することができます。 これにより、トリガー イベント、実行イベント、アクション イベントなどのイベントを検索して表示できます。 この情報を [Azure Monitor ログ](../azure-monitor/platform/data-platform-logs.md)に格納することで、この情報の検索と分析に役立つ[ログ クエリ](../azure-monitor/log-query/log-query-overview.md)を作成できます。 この診断データは、Azure Storage や Azure Event Hubs などの他の Azure サービスで使用することもできます。 詳細については、「[Azure Monitor を使用してロジック アプリを監視する](../logic-apps/monitor-logic-apps-log-analytics.md)」を参照してください。
+リアルタイムでのイベントの監視と高度なデバッグを行うには、[Azure Monitor ログ](../azure-monitor/overview.md)を使用してロジック アプリの診断ログを設定します。 この Azure サービスを使用すると、クラウド環境とオンプレミス環境を監視して、可用性とパフォーマンスをより簡単に維持することができます。 これにより、トリガー イベント、実行イベント、アクション イベントなどのイベントを検索して表示できます。 この情報を [Azure Monitor ログ](../azure-monitor/logs/data-platform-logs.md)に格納することで、この情報の検索と分析に役立つ[ログ クエリ](../azure-monitor/logs/log-query-overview.md)を作成できます。 この診断データは、Azure Storage や Azure Event Hubs などの他の Azure サービスで使用することもできます。 詳細については、「[Azure Monitor を使用してロジック アプリを監視する](../logic-apps/monitor-logic-apps-log-analytics.md)」を参照してください。
 
 > [!NOTE]
-> [内部アクセス エンドポイント](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)を使用するように作成された [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) でロジック アプリを実行する場合、 *仮想ネットワーク内からのみ* 、ロジック アプリの実行履歴の入力と出力を表示してアクセスできます。 プライベート エンドポイントと、実行履歴へのアクセス元として使用するコンピューターの間にネットワーク接続があることを確認します。 たとえば、クライアント コンピューターは、ISE の仮想ネットワーク内、または ISE の仮想ネットワークに接続されている仮想ネットワーク内に配置できます (たとえば、ピアリングや仮想プライベート ネットワークを使用します)。 詳細については、「[ISE エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。 
+> [内部アクセス エンドポイント](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)を使用するように作成された [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) でロジック アプリを実行する場合、*仮想ネットワーク内からのみ*、ロジック アプリの実行履歴の入力と出力を表示してアクセスできます。 プライベート エンドポイントと、実行履歴へのアクセス元として使用するコンピューターの間にネットワーク接続があることを確認します。 たとえば、クライアント コンピューターは、ISE の仮想ネットワーク内、または ISE の仮想ネットワークに接続されている仮想ネットワーク内に配置できます (たとえば、ピアリングや仮想プライベート ネットワークを使用します)。 詳細については、「[ISE エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。 
 
 <a name="review-runs-history"></a>
 
@@ -54,9 +54,9 @@ ms.locfileid: "92676050"
    | **Aborted** | 外部に問題が発生したため、実行が停止したか、または完了しませんでした。たとえば、システムの停止や Azure サブスクリプションの中断などです。 |
    | **取り消し済み** | 実行がトリガーされ、開始されましたが、キャンセル要求を受け取りました。 |
    | **Failed** | 実行中に少なくとも 1 つのアクションが失敗しました。 ワークフローの後続のアクションは、エラーを処理するように設定されていません。 |
-   | **実行中** | 実行がトリガーされ、進行中です。ただし、この状態は、[アクション制限](logic-apps-limits-and-config.md)または[現在の料金プラン](https://azure.microsoft.com/pricing/details/logic-apps/)によって制限されている実行に対しても表示されます。 <p><p>**ヒント** :[診断ログ](monitor-logic-apps-log-analytics.md)を設定すると、発生するスロットル イベントに関する情報を取得することができます。 |
+   | **実行中** | 実行がトリガーされ、進行中です。ただし、この状態は、[アクション制限](logic-apps-limits-and-config.md)または[現在の料金プラン](https://azure.microsoft.com/pricing/details/logic-apps/)によって制限されている実行に対しても表示されます。 <p><p>**ヒント**:[診断ログ](monitor-logic-apps-log-analytics.md)を設定すると、発生するスロットル イベントに関する情報を取得することができます。 |
    | **Succeeded** | 実行は成功しました。 いずれかのアクションが失敗した場合、ワークフロー内の後続のアクションによってそのエラーが処理されます。 |
-   | **タイムアウト** | 現在の継続時間が実行継続時間の制限を超えたため、実行がタイムアウトしました。これは、 [ **[実行履歴の保持期間 (日数)]** 設定](logic-apps-limits-and-config.md#run-duration-retention-limits)によって制御されます。 実行の継続時間は、実行の開始時刻とその開始時刻での実行継続時間の制限を使用して計算されます。 <p><p>**注** :実行の継続時間が現在の " *実行履歴の保持期間の制限* " も超えている場合は、毎日のクリーンアップ ジョブによって実行履歴から実行が消去されます。これも、 [ **[実行履歴の保持期間 (日数)]** 設定](logic-apps-limits-and-config.md#run-duration-retention-limits)によって制御されます。 実行がタイムアウトしたか完了したかにかかわらず、保持期間は常に、実行の開始時刻と " *現在の* " 保持期間の制限を使用して計算されます。 そのため、処理中の実行の継続時間制限を短くすると、実行はタイムアウトします。ただし、実行が実行履歴に残るか消去されるかは、実行の継続時間が保持期間の制限を超えているかどうかに基づいて決まります。 |
+   | **タイムアウト** | 現在の継続時間が実行継続時間の制限を超えたため、実行がタイムアウトしました。これは、[ **[実行履歴の保持期間 (日数)]** 設定](logic-apps-limits-and-config.md#run-duration-retention-limits)によって制御されます。 実行の継続時間は、実行の開始時刻とその開始時刻での実行継続時間の制限を使用して計算されます。 <p><p>**注**:実行の継続時間が現在の *"実行履歴の保持期間の制限"* も超えている場合は、毎日のクリーンアップ ジョブによって実行履歴から実行が消去されます。これも、[ **[実行履歴の保持期間 (日数)]** 設定](logic-apps-limits-and-config.md#run-duration-retention-limits)によって制御されます。 実行がタイムアウトしたか完了したかにかかわらず、保持期間は常に、実行の開始時刻と "*現在の*" 保持期間の制限を使用して計算されます。 そのため、処理中の実行の継続時間制限を短くすると、実行はタイムアウトします。ただし、実行が実行履歴に残るか消去されるかは、実行の継続時間が保持期間の制限を超えているかどうかに基づいて決まります。 |
    | **待機中** | たとえば、その前のワークフロー インスタンスがまだ実行中である等の理由で、実行が開始されていないか、または一時停止しています。 |
    |||
 
@@ -76,7 +76,7 @@ ms.locfileid: "92676050"
 
    ![実行の各ステップの詳細を確認する](./media/monitor-logic-apps/review-logic-app-run-details.png)
 
-   たとえば、その実行の **関連付け ID** プロパティを取得できます。これは、 [Logic Apps 用の REST API](/rest/api/logic) を使用する際に必要になる場合があります。
+   たとえば、その実行の **関連付け ID** プロパティを取得できます。これは、[Logic Apps 用の REST API](/rest/api/logic) を使用する際に必要になる場合があります。
 
 1. 特定のステップに関する詳細情報を取得するには、次のいずれかのオプションを選択します。
 
@@ -143,7 +143,7 @@ ms.locfileid: "92676050"
 
 ## <a name="set-up-monitoring-alerts"></a>監視アラートを設定する
 
-ロジック アプリの特定のメトリックまたはしきい値の超過に基づいてアラートを発生させるには、[Azure Monitor のアラート](../azure-monitor/platform/alerts-overview.md)を設定します。 [Azure のメトリック](../azure-monitor/platform/data-platform.md)について確認してください。 [Azure Monitor](../azure-monitor/log-query/log-query-overview.md) を使用せずにアラートを設定するには、次の手順を実行します。
+ロジック アプリの特定のメトリックまたはしきい値の超過に基づいてアラートを発生させるには、[Azure Monitor のアラート](../azure-monitor/alerts/alerts-overview.md)を設定します。 [Azure のメトリック](../azure-monitor/data-platform.md)について確認してください。 [Azure Monitor](../azure-monitor/logs/log-query-overview.md) を使用せずにアラートを設定するには、次の手順を実行します。
 
 1. ロジック アプリのメニューで、 **[監視]** にある **[アラート]**  >  **[新しいアラート ルール]** を選択します。
 

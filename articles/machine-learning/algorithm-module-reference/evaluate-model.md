@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 9abf5a17330566aee2414b8499f228d297880cbf
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 39bdf9cb0c97e19a67b23046c6f06b60daa30147
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323800"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584942"
 ---
 # <a name="evaluate-model-module"></a>Evaluate Model (モデルの評価) モジュール
 
 この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
-このモジュールを使用して、トレーニング済みモデルの正確性を測定します。 モデルから生成されたスコアを含むデータセットを指定すると、 **Evaluate Model (モデルの評価)** モジュールが業界標準の一連の評価メトリックを計算します。
+このモジュールを使用して、トレーニング済みモデルの正確性を測定します。 モデルから生成されたスコアを含むデータセットを指定すると、**Evaluate Model (モデルの評価)** モジュールが業界標準の一連の評価メトリックを計算します。
   
  **Evaluate Model (モデルの評価)** で返されるメトリックは、評価するモデルの種類によって異なります。  
   
@@ -75,7 +75,7 @@ ms.locfileid: "93323800"
 
 ## <a name="metrics"></a>メトリック
 
-このセクションでは、 **Evaluate Model (モデルの評価)** で使用するためにサポートされているモデルの特定の種類に対して返されるメトリックについて説明します。
+このセクションでは、**Evaluate Model (モデルの評価)** で使用するためにサポートされているモデルの特定の種類に対して返されるメトリックについて説明します。
 
 + [分類モデル](#metrics-for-classification-models)
 + [回帰モデル](#metrics-for-regression-models)
@@ -94,7 +94,7 @@ ms.locfileid: "93323800"
   
 -   **F1 score (F1 スコア)** は、精度と再現率の加重平均として、0 から 1 の範囲で計算されます。理想的な F1 スコアの値は 1 です。  
   
--   **AUC** は、真陽性 を x 軸に、偽陽性を y 軸にプロットした曲線の下の領域を測定します。 このメトリックは、さまざまな種類のモデルを比較できる単一の数値を提供するのに役立ちます。  
+-   **AUC** は、真陽性 を x 軸に、偽陽性を y 軸にプロットした曲線の下の領域を測定します。 このメトリックは、さまざまな種類のモデルを比較できる単一の数値を提供するのに役立ちます。 AUC は、分類しきい値のインバリアントです。 選択された分類しきい値に関係なく、これによってモデルの予測の品質が測定されます。
 
 
 ### <a name="metrics-for-regression-models"></a>回帰モデルのメトリック

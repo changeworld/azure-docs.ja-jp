@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: 936e4f8f54e92ba90372fff1c9d8dfc1982bbd62
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: c84c81fa81cf4ba9be454eea5782927a09c3252a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325118"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690963"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Azure SQL Managed Instance の使用を開始する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "96325118"
   > - ローカル ネットワークから Express Route またはサイト間接続を使用することもできますが、このような方法はこれらのクイック スタートでは扱いません。
   > - リテンション期間を 0 (無制限のリテンション期間) から他の値に変更した場合、リテンション期間は、リテンション期間の値が変更された後に書き込まれたログにのみ適用されることに注意してください (リテンション期間が無制限に設定されている間に書き込まれたログは、リテンション期間が有効になった後も保持されます)。
 
-SQL Managed Instance を手動で作成する代わりに、[PowerShell](scripts/create-configure-managed-instance-powershell.md)、[PowerShell と Resource Manager テンプレート](scripts/create-powershell-azure-resource-manager-template.md)、または [Azure CLI](/cli/azure/sql/mi#az-sql-mi-create) を使用して、このプロセスをスクリプト化して自動化することもできます。
+SQL Managed Instance を手動で作成する代わりに、[PowerShell](scripts/create-configure-managed-instance-powershell.md)、[PowerShell と Resource Manager テンプレート](./create-template-quickstart.md)、または [Azure CLI](/cli/azure/sql/mi#az-sql-mi-create) を使用して、このプロセスをスクリプト化して自動化することもできます。
 
 ### <a name="migrate-your-databases"></a>データベースを移行する
 

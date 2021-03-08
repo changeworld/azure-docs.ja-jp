@@ -235,3 +235,11 @@
   items:
     - name: ASB と CIS ベンチマーク間のマッピング
       href: v2-cis-benchmark.md
+    - name: Azure セキュリティの基礎
+      href: ../fundamentals/index.yml
+    - name: クラウドにおける共同責任
+      href: ../fundamentals/shared-responsibility.md
+    - name: Azure Security Center
+      href: ../../security-center/index.yml
+    - name: Azure セキュリティ ベンチマーク基盤ブループリント サンプル
+      href: ../../governance/blueprints/samples/azure-security-benchmark-foundation/index.md

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: f66e13046a34bddfd27912e23ce51f75006fd9fa
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 309053c2d7a0f9482016f1bd83e0c61dcd31bec5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932155"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740666"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - インフラストラクチャのベスト プラクティス
 
@@ -36,7 +36,7 @@ Azure リージョンによって、クラスターを物理的にプロビジ�
 
 ## <a name="use-recommended-virtual-machine-type-for-cluster"></a>推奨される仮想マシンの種類をクラスターに使用する
 
-HDInsight クラスターの種類ごとに推奨される仮想マシンの種類については、[クラスターの既定のノード構成と仮想マシン サイズ](../hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)を参照してください。
+HDInsight クラスターの種類ごとに推奨される仮想マシンの種類については、[クラスターの既定のノード構成と仮想マシン サイズ](../hdinsight-supported-node-configuration.md)を参照してください。
 
 ## <a name="check-hadoop-components-availability-in-hdinsight"></a>HDInsight での Hadoop コンポーネントの可用性を確認する
 
@@ -73,7 +73,7 @@ HDInsight の各バージョンは、一連の Hadoop エコシステム コン�
 |Palantir|IaaS 
 |Sailpoint|IaaS 
 
-詳細については、[HDInsight の各バージョンで使用できる Apache Hadoop コンポーネント](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)を参照してください
+詳細については、[HDInsight の各バージョンで使用できる Apache Hadoop コンポーネント](../hdinsight-component-versioning.md)を参照してください
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>スクリプト アクションを使って HDInsight をカスタマイズする
 

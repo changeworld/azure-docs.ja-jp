@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 66d537b79819aecab4ce88a56ed465679363f421
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 9a347d57de540ed31c862f618be7c8a98b685348
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805196"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546926"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>テンプレートを使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
@@ -149,7 +149,7 @@ BLOB ストレージへの接続に使用するクライアント用に、hosts 
 
 ### <a name="optional-install-certificates"></a>(省略可能) 証明書をインストールする
 
-*http* を使用して Storage Explorer 経由で接続する場合は、この手順をスキップします。 *https* を使用している場合は、Storage Explorer に適切な証明書をインストールする必要があります。 この場合は、BLOB エンドポイント証明書をインストールします。 詳細については、[証明書を管理する](azure-stack-edge-j-series-manage-certificates.md)方法に関するページで、証明書を作成およびアップロードする方法を参照してください。 
+*http* を使用して Storage Explorer 経由で接続する場合は、この手順をスキップします。 *https* を使用している場合は、Storage Explorer に適切な証明書をインストールする必要があります。 この場合は、BLOB エンドポイント証明書をインストールします。 詳細については、[証明書を管理する](azure-stack-edge-gpu-manage-certificates.md)方法に関するページで、証明書を作成およびアップロードする方法を参照してください。 
 
 ### <a name="create-and-upload-a-vhd"></a>VHD を作成してアップロードする
 

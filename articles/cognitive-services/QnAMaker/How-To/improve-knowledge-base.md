@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6b9077fec13dd177ec4e07e7fbd7818ded2fd0a1
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 7c477655dfb24eebab9a2669697d9ef610088198
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98164942"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592026"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>ナレッジ ベースでアクティブ ラーニングにより提案された質問を受け入れる
 
@@ -49,28 +49,55 @@ ms.locfileid: "98164942"
 
 <a name="#score-proximity-between-knowledge-base-questions"></a>
 
+## <a name="active-learning-suggestions-are-saved-in-the-exported-knowledge-base"></a>アクティブ ラーニングの提案は、エクスポートされたナレッジ ベースに保存されます
+
+アプリでアクティブ ラーニングが有効になっている場合、アプリをエクスポートすると、tsv ファイル内の `SuggestedQuestions` 列にアクティブ ラーニング データが保持されます。
+
+`SuggestedQuestions` 列は、暗黙的 (`autosuggested`) および明示的 (`usersuggested`) なフィードバック情報の JSON オブジェクトです。 次に示すのは、ユーザーが送信した 1 つの `help` の質問に対応する、この JSON オブジェクトの例です。
+
+```JSON
+[
+    {
+        "clusterHead": "help",
+        "totalAutoSuggestedCount": 1,
+        "totalUserSuggestedCount": 0,
+        "alternateQuestionList": [
+            {
+                "question": "help",
+                "autoSuggestedCount": 1,
+                "userSuggestedCount": 0
+            }
+        ]
+    }
+]
+```
+
+このアプリを再インポートすると、アクティブ ラーニングは引き続き情報を収集し、ナレッジ ベースに対する提案を提示します。
+
+
 ### <a name="architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot"></a>ボットから GenerateAnswer および Train API を使用するためのアーキテクチャの流れ
 
 ボットやその他のクライアント アプリケーションは、次のアーキテクチャの流れを利用してアクティブ ラーニングを使用する必要があります。
 
 * ボットは、GenerateAnswer API で `top` プロパティを使用していくつかの回答を取得することによって、[ナレッジ ベースから回答を取得](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)します。
+
+    #### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>GenerateAnswer 要求で top プロパティを使用して、一致する回答をいくつか取得する
+
+    回答を求めて QnA Maker に質問を送信すると、JSON 本文の `top` プロパティにより、返す回答の数が設定されます。
+
+    ```json
+    {
+        "question": "wi-fi",
+        "isTest": false,
+        "top": 3
+    }
+    ```
+
 * ボットは次のようにして明示的フィードバックを特定します。
     * ユーザー独自の[カスタム ビジネス ロジック](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)を使用して、低いスコアを除外します。
     * ボットまたはクライアント アプリケーションでは、回答候補の一覧をユーザーに表示し、ユーザーが選択した回答を取得します。
 * ボットは [Train API](#train-api) によって、[選択された回答を QnA Maker に送り返します](#bot-framework-sample-code)。
 
-
-### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>GenerateAnswer 要求で top プロパティを使用して、一致する回答をいくつか取得する
-
-回答を求めて QnA Maker に質問を送信すると、JSON 本文の `top` プロパティにより、返す回答の数が設定されます。
-
-```json
-{
-    "question": "wi-fi",
-    "isTest": false,
-    "top": 3
-}
-```
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>ビジネス ロジックと一緒に score プロパティを使用して、ユーザーに表示する回答の一覧を取得する
 
@@ -309,33 +336,6 @@ async callTrain(stepContext){
     return await stepContext.next(stepContext.result);
 }
 ```
-
-## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>アクティブ ラーニングはエクスポートされたナレッジ ベースに保存されます
-
-アプリでアクティブ ラーニングが有効になっている場合、アプリをエクスポートすると、tsv ファイル内の `SuggestedQuestions` 列にアクティブ ラーニング データが保持されます。
-
-`SuggestedQuestions` 列は、暗黙的 (`autosuggested`) および明示的 (`usersuggested`) なフィードバック情報の JSON オブジェクトです。 次に示すのは、ユーザーが送信した 1 つの `help` の質問に対応する、この JSON オブジェクトの例です。
-
-```JSON
-[
-    {
-        "clusterHead": "help",
-        "totalAutoSuggestedCount": 1,
-        "totalUserSuggestedCount": 0,
-        "alternateQuestionList": [
-            {
-                "question": "help",
-                "autoSuggestedCount": 1,
-                "userSuggestedCount": 0
-            }
-        ]
-    }
-]
-```
-
-このアプリを再インポートすると、アクティブ ラーニングは引き続き情報を収集し、ナレッジ ベースに対する提案を提示します。
-
-
 
 ## <a name="best-practices"></a>ベスト プラクティス
 

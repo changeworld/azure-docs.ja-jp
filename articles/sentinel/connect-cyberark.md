@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2020
 ms.author: yelevin
-ms.openlocfilehash: c375595951eb760d5341db424c5572719b97046a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: aa57963ce369e4c8f84f4aae5f99fe343181ff6b
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102748"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530503"
 ---
 # <a name="connect-cyberark-enterprise-password-vault-epv-to-azure-sentinel"></a>CyberArk Enterprise Password Vault (EPV) を Azure Sentinel に接続する
 
@@ -38,7 +38,7 @@ CyberArk EPV ログは、コンテナーから Log Analytics エージェント�
 
 1. Azure Sentinel ポータルで、 **[データ コネクタ]** をクリックし、 **[CyberArk Enterprise Password Vault (EPV) イベント (プレビュー)]** 、次に **[コネクタ ページを開く]** を選択します。
 
-1. CyberArk EPV の指示に従って、ログ転送サーバーへの syslog データの送信を構成します。
+1. [CyberArk EPV の指示](https://docs.cyberark.com/Product-Doc/OnlineHelp/PAS/Latest/en/Content/PASIMP/DV-Integrating-with-SIEM-Applications.htm)に従って、ログ転送サーバーへの syslog データの送信を構成します。
 
 1. 接続を検証し、[こちらの手順](connect-cef-verify.md)を使用してデータ インジェストを確認します。 ログが Log Analytics に表示され始めるまで、最大 20 分かかることがあります。
 

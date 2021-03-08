@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4e8ba291f32456bf2b8432620d1f9ea313629c9d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 46c41a4868c80bf9ba1c2c6d4a8286c3a8f47c3d
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600501"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530435"
 ---
 # <a name="manage-digital-twins"></a>デジタル ツインを管理する
 
@@ -86,7 +86,7 @@ ms.locfileid: "98600501"
 
 この呼び出しからは、ツイン データが `BasicDigitalTwin` のような厳密に型指定されたオブジェクト型として返されます。 `BasicDigitalTwin` は、SDK に含まれているシリアル化ヘルパー クラスであり、ツインのコア メタデータとプロパティが解析済みの形で返されます。 これを使用してツインの詳細を表示する方法の例を次に示します。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin" highlight="2":::
 
 `GetDigitalTwin()` メソッドを使用してツインを取得すると、少なくとも 1 回は設定されたプロパティだけが返されます。
 
@@ -208,9 +208,9 @@ Azure Digital Twins では、すべての受信要求が確実に 1 つずつ処
 
 `DeleteDigitalTwin()` メソッドを使用してツインを削除することができます。 ただし、ツインを削除できるのは、ツインにリレーションシップがない場合だけです。 そのため、最初にツインの受信と送信のリレーションシップを削除します。
 
-ツインとそのリレーションシップを削除するコードの例を次に示します。
+ここに、ツインとそのリレーションシップを削除するコードの例を示します。 `DeleteDigitalTwin` SDK の呼び出しが強調表示されており、この例の幅広いコンテキストでの位置が明確になっています。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="DeleteTwin":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="DeleteTwin" highlight="7":::
 
 ### <a name="delete-all-digital-twins"></a>すべてのデジタル ツインを削除する
 

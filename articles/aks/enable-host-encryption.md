@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) でホストベースの暗号化を有効
 description: Azure Kubernetes Service (AKS) クラスターでホストベースの暗号化を構成する方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 07/10/2020
-ms.openlocfilehash: 531d1dc4169b5f4adecfb29c3e116049cb99c3c9
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.date: 01/27/2021
+ms.openlocfilehash: ac28c698a766f1f3febaff582038906f658d58dd
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787826"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071852"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) でのホストベースの暗号化 (プレビュー)
 
@@ -25,37 +25,7 @@ ms.locfileid: "98787826"
 
 ### <a name="prerequisites"></a>前提条件
 
-- `aks-preview` CLI 拡張機能 v0.4.55 以降がインストールされていることを確認します
-- `Microsoft.ContainerService` の `EnableEncryptionAtHostPreview` 機能フラグが有効になっていることを確認します。
-
-VM または仮想マシン スケール セットに対してホストでの暗号化を使用できるようにするには、サブスクリプションで機能が有効になっている必要があります。 サブスクリプション ID と共に encryptionAtHost@microsoft.com に電子メールを送信して、サブスクリプションに対して機能を有効にします。
-
-### <a name="register-encryptionathost--preview-features"></a>`EncryptionAtHost` プレビュー機能の登録
-
-> [!IMPORTANT]
-> コンピューティング リソースに対してこの機能を有効にするために、ご自分のサブスクリプション ID と共に encryptionAtHost@microsoft.com に電子メールを送信する必要があります。 これらのリソースに対して、自分でこれを有効にすることはできません。 コンテナー サービスでは自分で有効にすることができます。
-
-ホストベースの暗号化を使用する AKS クラスターを作成するには、サブスクリプションで `EnableEncryptionAtHostPreview` および `EncryptionAtHost` 機能フラグを有効にする必要があります。
-
-次の例に示すように [az feature register][az-feature-register] コマンドを使用して、`EncryptionAtHost` 機能フラグを登録します。
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
-```
-
-状態が *[登録済み]* と表示されるまでに数分かかります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHostPreview')].{Name:name,State:properties.state}"
-```
-
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、`Microsoft.ContainerService` および `Microsoft.Compute` の各リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+- `aks-preview` CLI 拡張機能 v0.4.73 以降のバージョンがインストールされていることを確認します。
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
@@ -77,23 +47,23 @@ az extension update --name aks-preview
 
 ## <a name="use-host-based-encryption-on-new-clusters-preview"></a>新しいクラスターでホストベースの暗号化を使用する (プレビュー)
 
-クラスターの作成時に、ホストベースの暗号化を使用するようにクラスター エージェント ノードを構成します。 `--aks-custom-headers` フラグを使用して `EnableEncryptionAtHost` ヘッダーを設定します。
+クラスターの作成時に、ホストベースの暗号化を使用するようにクラスター エージェント ノードを構成します。 
 
 ```azurecli-interactive
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers EnableEncryptionAtHost=true
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --enable-encryption-at-host
 ```
 
-ホストベースの暗号化を使用せずにクラスターを作成する場合は、カスタムの `--aks-custom-headers` パラメーターを省略できます。
+ホストベースの暗号化を使用せずにクラスターを作成する場合は、`--enable-encryption-at-host` パラメーターを省略できます。
 
 ## <a name="use-host-based-encryption-on-existing-clusters-preview"></a>既存のクラスターでホストベースの暗号化を使用する (プレビュー)
 
-新しいノード プールをクラスターに追加することによって、既存のクラスターでホストベースの暗号化を有効にできます。 `--aks-custom-headers` フラグを使用して、ホストベースの暗号化を使用するように新しいノード プールを構成します。
+新しいノード プールをクラスターに追加することによって、既存のクラスターでホストベースの暗号化を有効にできます。 `--enable-encryption-at-host` パラメーターを使用して、ホストベースの暗号化を使用するように新しいノード プールを構成します。
 
 ```azurecli
-az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --aks-custom-headers EnableEncryptionAtHost=true
+az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS2_v2 -l westus2 --enable-encryption-at-host
 ```
 
-ホストベースの暗号化機能を使用せずに新しいノード プールを作成する場合は、カスタムの `--aks-custom-headers` パラメーターを省略できます。
+ホストベースの暗号化機能を使用せずに新しいノード プールを作成する場合は、`--enable-encryption-at-host` パラメーターを省略できます。
 
 ## <a name="next-steps"></a>次のステップ
 

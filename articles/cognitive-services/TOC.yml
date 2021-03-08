@@ -51,7 +51,7 @@
     - name: コンテナー イメージ タグとリリース ノート
       href: ./containers/container-image-tags.md
     - name: コンテナーに関する FAQ
-      href: ./containers/container-faq.md
+      href: ./containers/container-faq.yml
     - name: コンテナーのレシピ
       items:
         - name: コンテナーの再利用

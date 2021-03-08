@@ -3,17 +3,17 @@ title: HC シリーズの VM サイズのパフォーマンス
 description: Azure での HC シリーズ VM サイズのパフォーマンス テスト結果について説明します。
 author: vermagit
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: hpc
 ms.topic: article
 ms.date: 09/10/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: e1abe4b87bd5be98dad8e43d604f833eae3854e7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0d164c19da1ed2cbf6930a92686b35690fb0afb5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966957"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666927"
 ---
 # <a name="hc-series-virtual-machine-sizes"></a>HC シリーズの仮想マシンのサイズ
 
@@ -59,4 +59,4 @@ numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ## <a name="next-steps"></a>次の手順
 
 - [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表およびハイ パフォーマンス コンピューティング (HPC) の例と結果について参照します。
-- HPC ワークロードの実行をアーキテクチャの面から見た概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](/azure/architecture/topics/high-performance-computing/)」をご覧ください。
+- アーキテクチャの面から見た HPC ワークロードの実行の概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](/azure/architecture/topics/high-performance-computing/)」を参照してください。

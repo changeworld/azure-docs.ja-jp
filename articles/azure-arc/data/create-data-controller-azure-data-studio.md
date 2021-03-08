@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 12/09/2020
 ms.topic: how-to
-ms.openlocfilehash: 22ad2d65710a3fc149f5a83fb511244ac3be2203
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2b35abf7f318d4db6166dd48c4f7bd35aaf4d98a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733242"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644410"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Azure Data Studio でデータ コントローラーを作成する
 
@@ -49,7 +49,7 @@ ms.locfileid: "98733242"
    
    ここで選択した Azure の場所は、データ コントローラーと管理されるデータベース インスタンスに関する *メタデータ* が格納される Azure 内の場所です。 実際には、データ コントローラーとデータベース インスタンスは、その場所がどこにあるのかに関係なく、Kubernetes クラスターに作成されます。
 
-10. 適切な接続モードを選択します。 詳細については、[接続モード](https://docs.microsoft.com/azure/azure-arc/data/connectivity)に関するページを参照してください。 **[次へ]** をクリックします。
+10. 適切な接続モードを選択します。 詳細については、[接続モード](./connectivity.md)に関するページを参照してください。 **[次へ]** をクリックします。
 
     直接接続モードを選択した場合は、「[サービス プリンシパルの作成](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)」で説明されているように、サービス プリンシパルの資格情報が必要です。
 

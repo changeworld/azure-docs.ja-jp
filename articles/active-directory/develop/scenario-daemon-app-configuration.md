@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c858f48a67cd434a620fb610046833d29b7475f7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 8a01ee4e2b0d4e72c1b17cf56953675e735ead79
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756602"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582892"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すデーモン アプリ - コードの構成
 
@@ -111,7 +111,7 @@ MSAL ライブラリでは、クライアントの資格情報 (シークレッ�
 
 ### <a name="instantiate-the-msal-application"></a>MSAL アプリケーションをインスタンス化する
 
-MSAL アプリケーションをインスタンス化するには、(言語に応じて) MSAL パッケージを追加、参照、またはインポートする必要があります。
+MSAL アプリケーションをインスタンス化するには、(言語に応じて) MSAL パッケージを追加、参照、またはインポートします。
 
 使用しているのがクライアント シークレットか証明書か (または高度なシナリオとして、署名付きアサーションか) によって、構築に違いがあります。
 
@@ -261,7 +261,7 @@ ConfidentialClientApplication cca =
                 .build();
 ```
 
-または
+or
 
 ```Java
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */
@@ -289,7 +289,7 @@ MSAL.NET には、機密クライアント アプリに署名付きアサーシ�
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-`WithClientAssertion` を使用する場合は、署名付き JWT を提供する必要があります。 この高度なシナリオの詳細については、[クライアント アサーション](msal-net-client-assertions.md)に関する記事を参照してください。
+`WithClientAssertion` を使用する場合は、署名付き JWT を提供します。 この高度なシナリオの詳細については、[クライアント アサーション](msal-net-client-assertions.md)に関する記事を参照してください。
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();

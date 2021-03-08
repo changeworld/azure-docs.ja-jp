@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 862e8f07e321975ec5b673cfe5c86de85c9d160b
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 2947faa8c7b56fdbe4cf549529b63d506b810750
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202302"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570854"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>Azure IoT Hub 用の Azure セキュリティ ベースライン
 
@@ -148,9 +148,9 @@ Azure DDoS Protection Basic は既に有効になっており、IoT Hub の一�
 
 **ガイダンス**:Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure IoT Hub に関連したネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -185,9 +185,9 @@ Azure DDoS Protection Basic は既に有効になっており、IoT Hub の一�
 
 - [Azure IoT Hub ログの設定](monitor-iot-hub-reference.md#resource-logs)
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center の監視**: はい
 
@@ -205,7 +205,7 @@ Azure DDoS Protection Basic は既に有効になっており、IoT Hub の一�
 
 **ガイダンス**: Azure Monitor で、組織のコンプライアンス規則に従って、Azure IoT Hub インスタンスに関連付けられている Log Analytics ワークスペースのログ保有期間を設定します。
 
-- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用外
 
@@ -220,9 +220,9 @@ Azure DDoS Protection Basic は既に有効になっており、IoT Hub の一�
 - [Azure IoT の正常性の監視](monitor-iot-hub.md)
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
   
-- [Log Analytics クエリの使用方法](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics クエリの使用方法](../azure-monitor/logs/log-analytics-tutorial.md)
    
-- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center の監視**: 適用外
 
@@ -236,7 +236,7 @@ Azure DDoS Protection Basic は既に有効になっており、IoT Hub の一�
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 - [Azure Security Center for IoT のアラート](../defender-for-iot/concept-security-alerts.md)
 
-- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: はい
 
@@ -527,7 +527,7 @@ Azure IoT Hub によって、データセンターに書き込まれる際の保
 
 **ガイダンス**: Azure IoT Hub の運用インスタンスやその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用外
 

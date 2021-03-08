@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: 0f92d8dbfe423efa58231831fe012a27e45f9208
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b10b00e724324779eb753bfefccce77a5eb2a39d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787690"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918082"
 ---
 # <a name="dynamic-data-masking"></a>動的データ マスク 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -26,7 +26,7 @@ Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analyt
 
 動的データ マスクでは、公開するデリケートなデータの量を指定することで、デリケートなデータに対する未承認のアクセスを防ぎ、アプリケーション レイヤーへの影響は最小限に抑えられます。 これはポリシー ベースのセキュリティ機能です。これにより、データベース内のデータはそのままで、指定されたデータベース フィールドに対するクエリの結果セットで機微なデータを非表示にすることができます。
 
-たとえば、コール センターのサポート担当者は、電子メール アドレスの一部の数字から電話の相手を特定できますが、このようなデータ項目をサポート担当者にすべて公開してはなりません。 クエリの結果セット内のすべての電子メール アドレスをマスクするマスク ルールを定義できます。 別の例として、開発者は、適切なデータ マスクを定義し、個人データを保護し、法令遵守規定に違反することなくトラブルシューティングの目的で運用環境に対して照会を行うことができます。
+たとえば、コール センターのサービス担当者は、メール アドレスのいくつかの文字を確認することによって発信者を識別できます。ただし、完全なメール アドレスをサービス担当者に開示すべきではありません。 クエリの結果セット内のすべての電子メール アドレスをマスクするマスク ルールを定義できます。 別の例として、開発者は、適切なデータ マスクを定義し、個人データを保護し、法令遵守規定に違反することなくトラブルシューティングの目的で運用環境に対して照会を行うことができます。
 
 ## <a name="dynamic-data-masking-basics"></a>動的データ マスキングの基礎
 

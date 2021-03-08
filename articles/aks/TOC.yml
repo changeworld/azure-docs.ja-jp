@@ -5,7 +5,7 @@
     - name: AKS について
       href: intro-kubernetes.md
     - name: ソリューションのアーキテクチャ
-      href: /azure/architecture/reference-architectures/containers/aks-start-here?bc=%2fazure%2faks%2fbreadcrumb%2ftoc.json&toc=%2fazure%2faks%2ftoc.json
+      href: /azure/architecture/reference-architectures/containers/aks-start-here?bc=%2fazure%2faks%2fbreadcrumb%2ftoc.json&toc=%2fazure%2faks%2ftoc.json?WT.mc_id=AKSDOCSTOC
 - name: クイックスタート
   expanded: true
   items:
@@ -262,8 +262,8 @@
           href: control-kubeconfig-access.md
         - name: ネットワーク ポリシーによるポッドのトラフィックのセキュリティ保護
           href: use-network-policies.md
-        - name: Azure Policy を使用したポッドのセキュリティ保護
-          href: use-pod-security-on-azure-policy.md
+        - name: Azure Policy を使用する
+          href: use-azure-policy.md
         - name: ポッド セキュリティ ポリシーの使用 (プレビュー)
           href: use-pod-security-policies.md
         - name: API サーバーの許可された IP 範囲の定義
@@ -294,14 +294,14 @@
     - name: 監視およびログ記録
       items:
         - name: コンテナーに対する Azure Monitor
-          href: ../azure-monitor/insights/container-insights-overview.md
+          href: ../azure-monitor/containers/container-insights-overview.md
           maintainContext: true
         - name: コントロール プレーン コンポーネントのログを表示する
           href: view-control-plane-logs.md
         - name: kubelet ログの表示
           href: kubelet-logs.md
         - name: コンテナー データをリアルタイムで表示する
-          href: ../azure-monitor/insights/container-insights-livedata-overview.md
+          href: ../azure-monitor/containers/container-insights-livedata-overview.md
           maintainContext: true
     - name: Windows Server コンテナーを使用する
       items:
@@ -338,7 +338,7 @@
         - name: MySQL を使用したアプリのビルド
           href: ../mysql/flexible-server/tutorial-deploy-wordpress-on-aks.md
           maintainContext: true
-        - name: Open Liberty または WebSphere Liberty アプリのデプロイ
+        - name: Open Liberty または WebSphere Liberty を使用したアプリのビルド
           href: howto-deploy-java-liberty-app.md
         - name: Azure API Management の使用
           href: ../api-management/api-management-kubernetes.md

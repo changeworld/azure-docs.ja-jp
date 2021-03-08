@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 345748380479d81f1ea0df9ecf327200482a6cd7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f28020ba431d3dfdc79c2d4a98b6e6138f563aeb
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937175"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096474"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Azure Data Share 用の Azure セキュリティ ベースライン
 
@@ -34,7 +34,7 @@ Azure Data Share を完全に Azure セキュリティ ベンチマークにマ�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md) 
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Azure Monitor とサードパーティの SIEM 統合を開始する方法](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
@@ -48,11 +48,11 @@ Azure Data Share を完全に Azure セキュリティ ベンチマークにマ�
 
 Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareSnapshotsLog &amp; MicrosoftDataShareReceivedShareSnapshotsLog の診断ログ) を有効にします。 これらのログを使用すると、同期の開始時刻、終了時刻、状態、その他の詳細など、重要な情報を取り込むことができます。 これらのログは、後でセキュリティ インシデントを調査し、フォレンジック演習を実行するために重要な場合があります。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [Azure アクティビティ ログ用に診断設定を構成する方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログ用に診断設定を構成する方法](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -62,9 +62,9 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 **ガイダンス**:Azure Data Share ログを格納するために使用されるすべてのストレージ アカウントまたは Log Analytics ワークスペースに、組織のコンプライアンス規則に従ってログの保有期間を確実に設定します。
 
-- [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/platform/manage-cost-storage.md)
+- [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/logs/manage-cost-storage.md)
 
-- [ Azure ストレージ アカウントでのリソース ログの格納](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [ Azure ストレージ アカウントでのリソース ログの格納](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -78,9 +78,9 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics クエリの使用方法](../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Log Analytics クエリの使用方法](../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md) 
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md) 
 
 **Azure Security Center の監視**: 適用なし
 
@@ -94,7 +94,7 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 - [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md) 
+- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md) 
 
 **Azure Security Center の監視**: 適用なし
 
@@ -199,7 +199,7 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 **ガイダンス**:Azure Data Share リソースに関連するデータとリソースへのアクセスを管理するには、Azure ロールベースのアクセス制御 (Azure RBAC) を使用します。それ以外の場合は、サービス固有のアクセス制御方法を使用します。
 
-- [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md) 
+- [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md) 
 
 **Azure Security Center の監視**: はい
 
@@ -209,7 +209,7 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 **ガイダンス**:Azure アクティビティ ログで Azure Monitor を使用して、重要な Azure リソースに変更が加えられたときの Azure Monitor アラートを作成します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md) 
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md) 
 
 **Azure Security Center の監視**: はい
 

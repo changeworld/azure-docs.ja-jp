@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: e9f46b11d9c0b5251ee4d52f64d657926f6f9c5e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 3752a36d22f879b95b02bd49436be78212fe56a2
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222991"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576043"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Load Balancer に関してよく寄せられる質問
 
@@ -49,8 +49,14 @@ nslookup コマンドを使用することで、名前 myip.opendns.com に関�
 ## <a name="can-i-add-a-vm-from-the-same-availability-set-to-different-backend-pools-of-a-load-balancer"></a>同じ可用性セットから Load Balancer の異なるバックエンド プールに VM を追加することはできますか?
 いいえ、それはできません。
 
+## <a name="what-is-the-maximum-data-throughput-that-can-be-achieved-via-an-azure-load-balancer"></a>Azure Load Balancer で実現できる最大データ スループットはどのくらいですか?
+Azure LB はパススルー ネットワーク ロード バランサーであるため、スループットの制限は、バックエンド プールで使用される仮想マシンの種類によって決まります。 その他のネットワーク スループットに関連する情報については、「[仮想マシンのネットワーク スループット](../virtual-network/virtual-machine-network-throughput.md)」を参照してください。
+
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>同じリージョン内の Azure Storage への接続はどのように機能しますか?
 上記のシナリオでの送信接続の使用では、VM と同じリージョン内の Storage に接続する必要はありません。 これを望まない場合は、前述のようにネットワーク セキュリティ グループ (NSG) を使用します。 他のリージョン内の Storage への接続では、送信接続が必要です。 同じリージョン内の VM から Storage に接続する場合、Storage 診断ログ内のソース IP アドレスは、VM のパブリック IP アドレスではなく、内部プロバイダー アドレスになることに注意してください。 お使いの Storage アカウントへのアクセスを、同じリージョン内の 1 つ以上の仮想ネットワーク サブネット内の VM に制限する場合は、ストレージ アカウントのファイアウォールを構成するときに、パブリック IP アドレスではなく、[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を使用します。 サービス エンドポイントを構成すると、診断ログには、内部プロバイダー アドレスではなく、お使いの仮想ネットワークのプライベート IP アドレスが表示されます。
+
+## <a name="does-azure-load-balancer-support-tlsssl-termination"></a>Azure Load Balancer は TLS/SSL 終端をサポートしていますか?
+いいえ。Azure Load Balancer はパススルー ネットワーク ロード バランサーであるため、現在、終端をサポートしていません。 お使いのアプリケーションでこれが必要な場合は、Application Gateway が解決策になる可能性があります。
 
 ## <a name="what-are-best-practises-with-respect-to-outbound-connectivity"></a>アウトバウンド接続に関するベスト プラクティスは何ですか。
 Standard Load Balancer および Standard パブリック IP では、アウトバウンド接続に機能とさまざまな動作が導入されています。 これらは Basic SKU と同じではありません。 Standard SKU を操作するときにアウトバウンド接続が必要な場合は、Standard パブリック IP アドレスまたは Standard パブリック Load Balancer で明示的に定義する必要があります。 これには、内部 Standard Load Balancer を使用する場合のアウトバウンド接続の作成が含まれます。 Standard パブリック Load Balancer では常にアウトバウンド規則を使用することをお勧めします。 つまり、内部 Standard Load Balancer が使用されているときに、アウトバウンド接続が必要な場合、バックエンド プール内の VM に対してアウトバウンド接続を作成する手順を行う必要があります。 アウトバウンド接続のコンテキストでは、単一スタンドアロン VM、可用性セット内のすべての VM、VMSS のすべてのインスタンスがグループとして動作します。 つまり、可用性セット内の単一 VM が Standard SKU に関連付けられている場合、この可用性セット内のすべての VM インスタンスが、Standard SKU に関連付けられている場合と同じ規則に従って動作するようになります。個々のインスタンスが直接関連付けられていない場合でも同様です。 この動作は、ロード バランサーに複数のネットワーク インターフェイスカードが接続されているスタンドアロン VM の場合にも見られます。 1 つの NIC をスタンドアロンとして追加された場合、同じ動作が行われます。 このドキュメント全体をよく読み、全体的な概念を理解し、SKU 間の違いについて [Standard Load Balancer](./load-balancer-overview.md) を確認し、[アウトバウンド規則](load-balancer-outbound-connections.md#outboundrules)を確認してください。

@@ -4,15 +4,15 @@ description: この記事では、お使いのリソースを堅牢化および�
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 01/26/2021
+ms.date: 02/16/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: f6d881036b0ebaa79d1052e41b8ec649bb1e8d6d
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: ecc9279b66f7dca431cc8c33a47b07a6349d8ed6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797175"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574461"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>セキュリティの推奨事項 - リファレンス ガイド
 

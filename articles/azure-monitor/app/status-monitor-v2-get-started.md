@@ -6,12 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 01/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f340b4fdf7fef6daecf8801d16d19aee9b89e4d5
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 21184e1623fd47e8367d4c5dfbc2c85debe93124
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746460"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587397"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>オンプレミス サーバー向け Azure Monitor Application Insights Agent の概要
 
@@ -79,9 +79,9 @@ Enable-ApplicationInsightsMonitoring -ConnectionString xxxxxxxx-xxxx-xxxx-xxxx-x
 
  テレメトリの表示:
 
-- パフォーマンスと使用状況を監視するための[メトリックを探索](../platform/metrics-charts.md)します。
+- パフォーマンスと使用状況を監視するための[メトリックを探索](../essentials/metrics-charts.md)します。
 - 問題を診断するために[イベントとログを検索](./diagnostic-search.md)します。
-- より高度なクエリのために[分析を使用](../log-query/log-query-overview.md)します。
+- より高度なクエリのために[分析を使用](../logs/log-query-overview.md)します。
 - [ダッシュボードを作成](./overview-dashboard.md)します。
 
  テレメトリの追加:

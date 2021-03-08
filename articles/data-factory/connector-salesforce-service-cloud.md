@@ -1,22 +1,18 @@
 ---
 title: Salesforce Service Cloud との間でデータをコピーする
 description: データ ファクトリ パイプラインでコピー アクティビティを使用して、Salesforce Service Cloud からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから Salesforce Service Cloud にデータをコピーする方法について説明します。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/02/2021
-ms.openlocfilehash: 91ab6ca1350a1c6964daeae401bf7b08c6b1cd91
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 4075552e2070eba653fba54c7db1d021016644c7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430766"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369766"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce Service Cloud をコピー元またはコピー先としてデータをコピーする
 

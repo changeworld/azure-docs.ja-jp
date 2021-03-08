@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: b7c683edd15ab05e9efc239ffe07759078754607
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: a68e1a3f60930e290e97084ff2ec9350b18e2873
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222651"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594965"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes ネットワーク ポリシーの概要
 
@@ -130,7 +130,7 @@ Azure NPM には、お客様の構成を監視して理解を深めることが�
 メトリックは、Azure Monitor for Containers または Prometheus 全体でスクレイピングできます。
 
 ### <a name="setup-for-azure-monitor"></a>Azure Monitor のセットアップ
-最初の手順は、Kubernetes クラスター用に Azure Monitor for containers を有効にします。 手順は「[Azure Monitor for containers の概要](../azure-monitor/insights/container-insights-overview.md)」から見つけることができます。 Azure Monitor for containers を有効にしたら、[Azure Monitor for containers ConfigMap](https://aka.ms/container-azm-ms-agentconfig) を構成して、NPM 統合と Prometheus NPM メトリックの収集を有効にします。 Azure monitor for containers ConfigMap には、NPM メトリックを収集するための設定を含む ```integrations``` セクションがあります。 これらの設定は、ConfigMap では既定で無効になっています。 基本設定 ```collect_basic_metrics = true``` を有効にすると、基本的な NPM メトリックが収集されます。 詳細設定 ```collect_advanced_metrics = true``` を有効にすると、基本メトリックに加えて高度なメトリックが収集されます。 
+最初の手順は、Kubernetes クラスター用に Azure Monitor for containers を有効にします。 手順は「[Azure Monitor for containers の概要](../azure-monitor/containers/container-insights-overview.md)」から見つけることができます。 Azure Monitor for containers を有効にしたら、[Azure Monitor for containers ConfigMap](https://aka.ms/container-azm-ms-agentconfig) を構成して、NPM 統合と Prometheus NPM メトリックの収集を有効にします。 Azure monitor for containers ConfigMap には、NPM メトリックを収集するための設定を含む ```integrations``` セクションがあります。 これらの設定は、ConfigMap では既定で無効になっています。 基本設定 ```collect_basic_metrics = true``` を有効にすると、基本的な NPM メトリックが収集されます。 詳細設定 ```collect_advanced_metrics = true``` を有効にすると、基本メトリックに加えて高度なメトリックが収集されます。 
 
 ConfigMap を編集したら、ローカルに保存し、次のように ConfigMap をクラスターに適用します。
 
@@ -143,7 +143,7 @@ integrations: |-
 ```
 高度なメトリックはオプションであり、オンにすると自動的に基本メトリックの収集が有効になります。 現在のところ、高度なメトリックには `npm_ipset_counts` のみが含まれています
 
-[構成マップでの Azure monitor for containers のコレクション設定](../azure-monitor/insights/container-insights-agent-config.md)の詳細を参照してください。
+[構成マップでの Azure monitor for containers のコレクション設定](../azure-monitor/containers/container-insights-agent-config.md)の詳細を参照してください。
 
 ### <a name="visualization-options-for-azure-monitor"></a>Azure Monitor の視覚化オプション
 NPM メトリック コレクションを有効にすると、Azure portal で Container Insights を使用して、または Grafana 内でメトリックを表示できます。
@@ -154,7 +154,7 @@ Azure portal を開きます。 クラスターの [分析情報] で、[ブッ�
 ブック (下の図) を表示するだけでなく、[分析情報] セクションの [ログ] で Prometheus メトリックを直接照会することもできます。 たとえば、次のクエリでは、収集されるすべてのメトリックが返されます。
 | where TimeGenerated > ago(5h) | where Name contains "npm_"
 
-また、Log Analytics でメトリックを直接照会することもできます。 詳細については、[Log Analytics クエリの使用方法](../azure-monitor/insights/container-insights-log-search.md)に関する記事を参照してください。 
+また、Log Analytics でメトリックを直接照会することもできます。 詳細については、[Log Analytics クエリの使用方法](../azure-monitor/containers/container-insights-log-search.md)に関する記事を参照してください。 
 
 #### <a name="viewing-in-grafana-dashboard"></a>Grafana ダッシュボードでの表示
 [ここ](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource)に説明されているように、Grafana サーバーを設定し、Log Analytics データ ソースを構成します。 次に、[Log Analytics バックエンドを含む Grafana ダッシュボード](https://grafana.com/grafana/dashboards/10956)を Grafana Labs にインポートします。

@@ -2,19 +2,16 @@
 title: Azure Data Factory での Excel 形式
 description: このトピックでは、Azure Data Factory で Excel 形式を処理する方法について説明します。
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 8f19ccc90c44ef90cee7bb1ae881086321e863b6
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: bef29bc958253be0498442f842dda67105ce799b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902036"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386528"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory での Excel 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -39,7 +36,7 @@ Excel 形式は、以下のコネクタでサポートされています。[Amaz
 | firstRowAsHeader | 指定したワークシート (または範囲) 内の先頭行を、列名を含んだヘッダー行として扱うかどうかを指定します。<br>使用できる値は **true** と **false** (既定値) です。 | いいえ       |
 | nullValue        | null 値の文字列表現を指定します。 <br>既定値は **空の文字列** です。 | いいえ       |
 | compression | ファイル圧縮を構成するためのプロパティのグループ。 アクティビティの実行中に圧縮/圧縮解除を行う場合は、このセクションを構成します。 | いいえ |
-| type<br/>( *`compression` の下にあります*) | JSON ファイルの読み取り/書き込みに使用される圧縮コーデックです。 <br>使用できる値は、**bzip2**、**gzip**、**deflate**、**ZipDeflate**、**TarGzip**、**Tar**、**snappy**、または **lz4** です。 既定では圧縮されません。<br>現在、コピー アクティビティによって "snappy" と "lz4" がサポートされておらず、マッピング データ フローによって "ZipDeflate"、"TarGzip"、"Tar" がサポートされていないことに **注意** してください。<br>コピー アクティビティを使用して **ZipDeflate** ファイルを展開し、ファイルベースのシンク データ ストアに書き込むと、`<path specified in dataset>/<folder named as source zip file>/` フォルダーにファイルが抽出されることに **注意** してください。 | いいえ。  |
+| type<br/>( *`compression` の下にあります*) | JSON ファイルの読み取り/書き込みに使用される圧縮コーデックです。 <br>使用できる値は、**bzip2**、**gzip**、**deflate**、**ZipDeflate**、**TarGzip**、**Tar**、**snappy**、または **lz4** です。 既定では圧縮されません。<br>現在、Copy アクティビティでは "snappy" と "lz4" がサポートされておらず、マッピング データ フローでは "ZipDeflate"、"TarGzip"、"Tar" がサポートされていないことに **注意してください**。<br>コピー アクティビティを使用して **ZipDeflate** ファイルを展開し、ファイルベースのシンク データ ストアに書き込むと、`<path specified in dataset>/<folder named as source zip file>/` フォルダーにファイルが抽出されることに **注意** してください。 | いいえ。  |
 | level<br/>( *`compression` の下にあります*) | 圧縮率です。 <br>使用できる値は、**Optimal** または **Fastest** です。<br>- **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、圧縮後のファイルが最適に圧縮されていない場合があります。<br>- **Optimal**: 圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。 詳細については、 [圧縮レベル](/dotnet/api/system.io.compression.compressionlevel) に関するトピックをご覧ください。 | いいえ       |
 
 Azure Blob Storage 上の Excel データセットの例を次に示します。
@@ -74,7 +71,7 @@ Azure Blob Storage 上の Excel データセットの例を次に示します。
 
 ### <a name="excel-as-source"></a>ソースとしての Excel 
 
-コピー アクティビティの **_\_source\*** * セクションでは、次のプロパティがサポートされます。
+コピー アクティビティの ***\*source\**** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ      | 説明                                                  | 必須 |
 | ------------- | ------------------------------------------------------------ | -------- |

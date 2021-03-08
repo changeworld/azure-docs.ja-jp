@@ -5,21 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 02/11/2021
 tags: connectors
-ms.openlocfilehash: b17c3d54b7065a18e015363a0362766f844e4e10
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: bec3416195358121b85eb61679ab39647e664a9e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355122"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382355"
 ---
 # <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Common Data Service (Microsoft Dataverse) のレコードを作成および管理する
 
 > [!NOTE]
 > 2020 年 11 月に Common Data Service は Microsoft Dataverse に名前が変更されました。
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Common Data Service コネクタ](/connectors/commondataservice/)を使用すると、[Common Data Service (現 Microsoft Dataverse)](/powerapps/maker/common-data-service/data-platform-intro) データベース内のレコードを管理する自動化されたワークフローを作成できます。 これらのワークフローでは、レコードの作成、レコードの更新、その他の操作を行うことができます。 また、Common Data Service データベースから情報を取得して、その出力を、ロジック アプリで使用される他のアクションで使用できるようにします。 たとえば、Common Data Service データベースでレコードが更新された場合、Office 365 Outlook コネクタを使用してメールを送信できます。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と [Common Data Service コネクタ](/connectors/commondataservice/)を使用すると、[Common Data Service (現 Microsoft Dataverse)](/powerapps/maker/common-data-service/data-platform-intro) データベース内のレコードを管理する自動化されたワークフローを作成できます。 これらのワークフローでは、レコードの作成、レコードの更新、その他の操作を行うことができます。 また、Dataverse データベースから情報を取得して、その出力を、ロジック アプリで使用される他のアクションで使用できるようにすることも可能です。 たとえば、Dataverse データベースでレコードが更新された場合、Office 365 Outlook コネクタを使用して電子メールを送信できます。
 
 この記事では、新しい潜在顧客レコードが作成されるたびにタスク レコードを作成するロジック アプリをビルドする方法について説明します。
 
@@ -32,7 +32,7 @@ ms.locfileid: "97355122"
   * [Learn: Common Data Service の開始方法](/learn/modules/get-started-with-powerapps-common-data-service/)
   * [Power Platform - 環境の概要](/power-platform/admin/environments-overview)
 
-* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)と、Common Data Service データベースのレコードにアクセスするロジック アプリに関する基本的な知識。 Common Data Service トリガーを使用してロジック アプリを起動するには、空のロジック アプリが必要です。 Azure Logic Apps を初めて使用する場合は、「[クイックスタート: Azure Logic Apps を使用して初めてのワークフローを作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md)」を参照してください。
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)と、Dataverse データベースのレコードにアクセスするロジック アプリに関する基本的な知識。 Common Data Service トリガーを使用してロジック アプリを起動するには、空のロジック アプリが必要です。 Azure Logic Apps を初めて使用する場合は、「[クイックスタート: Azure Logic Apps を使用して初めてのワークフローを作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md)」を参照してください。
 
 ## <a name="add-common-data-service-trigger"></a>Common Data Service トリガーを追加する
 
@@ -170,6 +170,62 @@ ms.locfileid: "97355122"
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
 トリガー、アクション、制限、その他の詳細など、コネクタの Swagger の説明に基づいた技術情報については、[コネクタのリファレンス ページ](/connectors/commondataservice/)を参照してください。
+
+## <a name="troubleshooting-problems"></a>問題のトラブルシューティング
+
+### <a name="calls-from-multiple-environments"></a>複数の環境からの呼び出し
+
+Common Data Service と Common Data Service (現在の環境) コネクタはどちらも、お使いの Microsoft Dataverse の `callbackregistrations` エンティティを使用して、エンティティの変更に関する通知を必要とし、取得するロジック アプリのワークフローに関する情報を格納します。 Dataverse 組織をコピーすると、すべての Webhook もコピーされます。 自分の組織にマップされているワークフローを無効にする前にその組織をコピーした場合、コピーされた Webhook も同じロジック アプリをポイントするため、複数の組織から通知を取得することになります。
+
+不要な通知を停止するには、これらの手順に従って、それらの通知を送信する組織からコールバック登録を削除します。
+
+1. 通知を削除する Dataverse 組織を特定し、その組織にサインインします。
+
+1. Chrome ブラウザーで、これらの手順に従って、削除するコールバック登録を見つけます。
+
+   1. 次の OData URI にあるすべてのコールバック登録のジェネリック リストを確認して、`callbackregistrations` エンティティ内のデータを表示できるようにします。
+
+      `https://{organization-name}.crm{instance-number}.dynamics.com/api/data/v9.0/callbackregistrations`:
+
+      > [!NOTE]
+      > 値が返されない場合は、このエンティティ型を表示するアクセス許可がないか、正しい組織にサインインしていない可能性があります。
+
+   1. トリガーしているエンティティの論理名 `entityname` と、お使いのロジック アプリのワークフロー (メッセージ) に一致する通知イベントに対してフィルター処理します。 イベントの種類はそれぞれ、次のようにメッセージの整数にマップされます。
+
+      | イベントの種類 | メッセージの整数 |
+      |------------|-----------------|
+      | 作成 | 1 |
+      | 削除 | 2 |
+      | 更新 | 3 |
+      | CreateOrUpdate | 4 |
+      | CreateOrDelete | 5 |
+      | UpdateOrDelete | 6 |
+      | CreateOrUpdateOrDelete | 7 |
+      |||
+
+      この例では、サンプル組織で次の OData URI を使用して `nov_validation` という名前のエンティティの `Create` 通知をフィルター処理する方法を示します。
+
+      `https://fabrikam-preprod.crm1.dynamics.com/api/data/v9.0/callbackregistrations?$filter=entityname eq 'nov_validation' and message eq 1`
+
+      ![アドレス バーに OData URI が表示されたブラウザー ウィンドウを示すスクリーンショット。](./media/connect-common-data-service/find-callback-registrations.png)
+
+      > [!TIP]
+      > 同じエンティティまたはイベントに対して複数のトリガーが存在する場合は、 `createdon` や `_owninguser_value` 属性などの追加のフィルターを使用して、一覧をフィルター処理できます。 所有者ユーザーの名前が `/api/data/v9.0/systemusers({id})` の下に表示されます。
+
+   1. 削除するコールバック登録の ID が見つかったら、これらの手順を実行します。
+   
+      1. Chrome ブラウザーで Chrome Developer Tools を開きます (キーボード:F12)。
+
+      1. ウィンドウの上部にある **[Console]** タブを選択します。
+
+      1. コマンド ライン プロンプトで、このコマンドを入力します。これにより、指定されたコールバック登録の削除要求が送信されます。
+
+         `fetch('http://{organization-name}.crm{instance-number}.dynamics.com/api/data/v9.0/callbackregistrations({ID-to-delete})', { method: 'DELETE'})`
+
+         > [!IMPORTANT]
+         > この要求は、OData または API 応答ページ自体など、統合されていないクライアント インターフェイス (UCI) ページから行うようにしてください。 そうしないと、app.js ファイル内のロジックがこの操作に干渉する可能性があります。
+
+   1. コールバック登録が存在しなくなったことを確認するには、コールバック登録の一覧を確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

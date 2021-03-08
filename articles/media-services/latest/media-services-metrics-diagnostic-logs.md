@@ -1,6 +1,5 @@
 ---
-title: Azure Monitor を使用した Media Services のメトリックと診断ログ
-titleSuffix: Azure Media Services
+title: Azure Monitor を使用したメトリックと診断ログ
 description: Azure Monitor 経由で Azure Media Services のメトリックと診断ログを監視する方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -14,26 +13,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: inhenkel
-ms.openlocfilehash: ed436336b9b1f9f5815938d13315e821694e5f1c
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: cd8c6ca67a1e475279cba8ccc3f4cb8cc7412d66
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685190"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590765"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Azure Monitor を使用した Media Services のメトリックと診断ログを監視する
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-[Azure Monitor](../../azure-monitor/overview.md) を使用すると、アプリの実行状況を理解するために役立つメトリックと診断ログを監視できます。 Azure Monitor によって収集されたすべてのデータは、2 つの基本的な種類であるメトリックとログのどちらかに該当します。 Media Services の診断ログを監視し、収集されたメトリックおよびログのアラートと通知を作成できます。 [メトリックス エクスプローラー](../../azure-monitor/platform/metrics-getting-started.md)を使用して、メトリック データを視覚化し、分析できます。 ログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信したり、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミングしたり、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) にエクスポートしたり、サードパーティのサービスを使用したりできます。
+[Azure Monitor](../../azure-monitor/overview.md) を使用すると、アプリの実行状況を理解するために役立つメトリックと診断ログを監視できます。 Azure Monitor によって収集されたすべてのデータは、2 つの基本的な種類であるメトリックとログのどちらかに該当します。 Media Services の診断ログを監視し、収集されたメトリックおよびログのアラートと通知を作成できます。 [メトリックス エクスプローラー](../../azure-monitor/essentials/metrics-getting-started.md)を使用して、メトリック データを視覚化し、分析できます。 ログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信したり、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミングしたり、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) にエクスポートしたり、サードパーティのサービスを使用したりできます。
 
-詳細については、[Azure Monitor メトリック](../../azure-monitor/platform/data-platform.md)および [Azure Monitor 診断ログ](../../azure-monitor/platform/platform-logs-overview.md)に関する記事をご覧ください。
+詳細については、[Azure Monitor メトリック](../../azure-monitor/data-platform.md)および [Azure Monitor 診断ログ](../../azure-monitor/essentials/platform-logs-overview.md)に関する記事をご覧ください。
 
 このトピックでは、サポートされている [Media Services のメトリック](#media-services-metrics)と [Media Services の診断ログ](#media-services-diagnostic-logs)について説明します。
 
 ## <a name="media-services-metrics"></a>Media Services メトリック
 
-メトリックは、値の変化とは無関係に、一定の間隔で収集されます。 これらは頻繁にサンプリングでき、比較的単純なロジックですばやく起動できるため、アラートを発行するときに役に立ちます。 メトリック アラートの作成方法の詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-metric.md)」を参照してください。
+メトリックは、値の変化とは無関係に、一定の間隔で収集されます。 これらは頻繁にサンプリングでき、比較的単純なロジックですばやく起動できるため、アラートを発行するときに役に立ちます。 メトリック アラートの作成方法の詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/alerts/alerts-metric.md)」を参照してください。
 
 Media Services では、次のリソースの監視メトリックがサポートされています。
 
@@ -90,7 +89,7 @@ Media Services では、次のリソースの監視メトリックがサポー�
 
 ## <a name="media-services-diagnostic-logs"></a>Media Services の診断ログ
 
-診断ログからは、Azure リソースの操作に関するデータが豊富かつ頻繁に提供されます。 詳細については、[Azure リソースからのログ データを収集して使用する方法](../../azure-monitor/platform/platform-logs-overview.md)に関するページをご覧ください。
+診断ログからは、Azure リソースの操作に関するデータが豊富かつ頻繁に提供されます。 詳細については、[Azure リソースからのログ データを収集して使用する方法](../../azure-monitor/essentials/platform-logs-overview.md)に関するページをご覧ください。
 
 Media Services では、次の診断ログがサポートされています。
 
@@ -117,7 +116,7 @@ Media Services では、次の診断ログがサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure リソースからログ データを収集して使用する方法](../../azure-monitor/platform/platform-logs-overview.md)
-* [Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-metric.md)
+* [Azure リソースからログ データを収集して使用する方法](../../azure-monitor/essentials/platform-logs-overview.md)
+* [Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/alerts/alerts-metric.md)
 * [Media Services のメトリックを監視する方法](media-services-metrics-howto.md)
 * [Media Services の診断ログを監視する方法](media-services-diagnostic-logs-howto.md)

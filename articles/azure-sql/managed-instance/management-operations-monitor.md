@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 0f76d2079b7ed5aacbf835540ea92febd034e2d0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6cdd3137798e221974dadda78dd55b6ae944bc78
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782452"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589340"
 ---
 # <a name="monitoring-azure-sql-managed-instance-management-operations"></a>Azure SQL Managed Instance の管理操作の監視
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -37,7 +37,7 @@ Azure SQL Managed Instance には、新しいマネージド インスタンス�
 マネージド インスタンスの管理操作を監視するには、いくつかの方法があります。
 
 - [リソース グループのデプロイ](../../azure-resource-manager/templates/deployment-history.md)
-- [アクティビティ ログ](../../azure-monitor/platform/activity-log.md)
+- [アクティビティ ログ](../../azure-monitor/essentials/activity-log.md)
 - [マネージド インスタンス操作 API](#managed-instance-operations-api)
 
 
@@ -75,7 +75,7 @@ API は次のとおりです。
 
 Azure portal で、マネージド インスタンスの **[概要]** ページを使用してマネージド インスタンスの操作を監視します。 
 
-たとえば、 **作成操作** は、作成プロセスの開始時に **[概要]** ページで確認できます。 
+たとえば、**作成操作** は、作成プロセスの開始時に **[概要]** ページで確認できます。 
 
 ![マネージド インスタンスの作成の進行状況](./media/management-operations-monitor/monitoring-create-operation.png)
 

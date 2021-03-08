@@ -38,7 +38,7 @@
     - name: コンテナー コンピューティング
       expanded: true
       items:
-        - name: 機密コンテナー (リフト アンド シフト)
+        - name: 機密コンテナー
           items:
             - name: 作業の開始
               href: confidential-containers.md
@@ -52,11 +52,13 @@
       href: application-development.md
 - name: 操作方法
   items:
+    - name: Fortanix Confidential Computing Manager
+      href: how-to-fortanix-confidential-computing-manager.md
     - name: Fortanix Enclave Manager
       href: how-to-fortanix-enclave-manager.md
 - name: リファレンス
   items:
-    - name: SGX の見積もりヘルパー機能
+    - name: SGX クォート ヘルパー機能
       href: confidential-nodes-out-of-proc-attestation.md
 - name: リソース
   items:

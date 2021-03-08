@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/20/2021
+ms.date: 02/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 0070a91706fc7efe81a7679801e8c10ea9a05242
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 64a8907ec359235c2856b1f92388d9daa38cd190
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624744"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651724"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshworks"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Freshworks の統合
 
@@ -40,7 +40,7 @@ ms.locfileid: "98624744"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Freshworks では、**SP** Initiated SSO がサポートされます
+* Freshworks では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="add-freshworks-from-the-gallery"></a>ギャラリーからの Freshworks の追加
 
@@ -76,14 +76,18 @@ Freshworks に対して Azure AD SSO を構成してテストするには、次�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.freshworks.com/login`
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.freshworks.com/sp/SAML/<MODULE_ID>/metadata`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.freshworks.com/sp/SAML/<MODULE_ID>/metadata`
+    b. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.freshworks.com/sp/SAML/CUSTOM_URL` のパターンを使用して URL を入力します
+
+1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
+
+    **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.freshworks.com/login` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Freshworks クライアント サポート チーム](mailto:support@freshworks.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL で更新してください。 これらの値を取得するには、[Freshworks クライアント サポート チーム](mailto:support@freshworks.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -157,12 +161,19 @@ Freshworks に対して Azure AD SSO を構成してテストするには、次�
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Freshworks のサインオン URL にリダイレクトされます。 
+#### <a name="sp-initiated"></a>SP Initiated:
+
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Freshworks のサインオン URL にリダイレクトされます。  
 
 * Freshworks のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Freshworks] タイルをクリックすると、SSO を設定した Freshworks に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+#### <a name="idp-initiated"></a>IDP Initiated:
+
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Freshworks に自動的にサインインされます 
+
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Freshworks] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Freshworks に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+
 
 ## <a name="next-steps"></a>次のステップ
 
-Freshworks を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Freshworks を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

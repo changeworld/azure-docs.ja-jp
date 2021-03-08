@@ -3,12 +3,12 @@ title: Azure 仮想マシン復元プロセスについて
 description: Azure Backup サービスで Azure Virtual Machines を復元する方法を説明します
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 436859bfb3cee37501e0605465d8e19856a846d6
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 62d1ff7973693f29c77c77fe2ad4fbbb598a5fa4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806826"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738414"
 ---
 # <a name="about-azure-vm-restore"></a>Azure VM の復元について
 
@@ -50,6 +50,6 @@ ms.locfileid: "98806826"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [VM の復元に関してよく寄せられる質問](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#restore)
+- [VM の復元に関してよく寄せられる質問](/azure/backup/backup-azure-vm-backup-faq#restore)
 - [サポートされる復元方法](./backup-support-matrix-iaas.md#supported-restore-methods)
 - [復元の問題のトラブルシューティング](./backup-azure-vms-troubleshoot.md#restore)

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 02/03/2020
-ms.openlocfilehash: a2b39f25aa2a8847697df8a5097f5ffdc9cbd212
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 9028d85346611341afec0d0598f27a77e4f37fdf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945881"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715498"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Azure CLI を使用した HDInsight クラスターの作成
 
@@ -42,7 +42,7 @@ ms.locfileid: "98945881"
     |`--workernode-count`| クラスター内のワーカー ノードの数。 この記事では、`--workernode-count` に渡される値として変数 `clusterSizeInNodes` を使用します。 |
     |`--version`| HDInsight クラスターのバージョン。 この記事では、`--version` に渡される値として変数 `clusterVersion` を使用します。 関連項目:[サポートされる HDInsight のバージョン](./hdinsight-component-versioning.md#supported-hdinsight-versions)。|
     |`--type`| hadoop、interactivehive、hbase、kafka、storm、spark、rserver、mlservices などの HDInsight クラスターの種類。  この記事では、`--type` に渡される値として変数 `clusterType` を使用します。 関連項目:[クラスターの種類と構成](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type)。|
-    |`--component-version`|さまざまな Hadoop コンポーネントのバージョン。バージョンは 'component=version' の形式でスペースで区切られます。 この記事では、`--component-version` に渡される値として変数 `componentVersion` を使用します。 関連項目:[Hadoop コンポーネント](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)。|
+    |`--component-version`|さまざまな Hadoop コンポーネントのバージョン。バージョンは 'component=version' の形式でスペースで区切られます。 この記事では、`--component-version` に渡される値として変数 `componentVersion` を使用します。 関連項目:[Hadoop コンポーネント](./hdinsight-component-versioning.md)。|
 
     `RESOURCEGROUPNAME`、`LOCATION`、`CLUSTERNAME`、`STORAGEACCOUNTNAME`、および `PASSWORD` を目的の値に置き換えます。 必要に応じて、他の変数の値を変更します。 続いて CLI コマンドを入力します。
 

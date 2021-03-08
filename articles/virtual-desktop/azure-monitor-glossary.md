@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f13909d3835bdbd2931277a88244abfae3f80759
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 29c49ceb3647964030f53c94276e831dc0f648c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465714"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576622"
 ---
 # <a name="azure-monitor-for-windows-virtual-desktop-preview-glossary"></a>Windows Virtual Desktop 向けの Azure Monitor (プレビュー) の用語集
 
@@ -24,7 +24,7 @@ ms.locfileid: "96465714"
 
 ## <a name="alerts"></a>アラート
 
-サブスクリプションで構成し、[重大度 1](#severity-1-alerts) として分類されているアクティブな Azure Monitor のアラートは、すべて概要ページに表示されます。 アラートの設定方法については、「[Azure Monitor のアラートを使用してイベントに応答する](../azure-monitor/learn/tutorial-response.md)」を参照してください。
+サブスクリプションで構成し、[重大度 1](#severity-1-alerts) として分類されているアクティブな Azure Monitor のアラートは、すべて概要ページに表示されます。 アラートの設定方法については、「[Azure Monitor のアラートを使用してイベントに応答する](../azure-monitor/alerts/tutorial-response.md)」を参照してください。
 
 ## <a name="available-sessions"></a>使用可能なセッション
 
@@ -128,7 +128,7 @@ Windows Virtual Desktop 向けの Azure Monitor の "入力遅延" は、各セ�
 |RemoteFX Network(\*)\\Current TCP RTT|30 秒|
 |RemoteFX Network(\*)\\Current UDP Bandwidth|30 秒|
 
-パフォーマンス カウンターの読み取り方法の詳細については、「[パフォーマンスカウンターの構成](../azure-monitor/platform/data-sources-performance-counters.md)」を参照してください。
+パフォーマンス カウンターの読み取り方法の詳細については、「[パフォーマンスカウンターの構成](../azure-monitor/agents/data-sources-performance-counters.md)」を参照してください。
 
 入力遅延パフォーマンス カウンターの詳細については、[ユーザー入力遅延のパフォーマンス カウンター](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)に関する記事を参照してください。
 
@@ -186,7 +186,7 @@ Windows イベント ログは、Windows 仮想マシン上で Log Analytics エ
 | Microsoft-FSLogix-Apps/Operational|エラー、警告、情報|
 |Microsoft-FSLogix-Apps/Admin|エラー、警告、情報|
 
-Windows イベントの詳細については、[Windows イベント レコードのプロパティ](../azure-monitor/platform/data-sources-windows-events.md)に関するページを参照してください。
+Windows イベントの詳細については、[Windows イベント レコードのプロパティ](../azure-monitor/agents/data-sources-windows-events.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

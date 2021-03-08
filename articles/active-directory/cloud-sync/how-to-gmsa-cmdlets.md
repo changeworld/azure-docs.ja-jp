@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d97128c15d974bfb704fdd446dbd9c727d7fa469
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 411a8e46151a762bcd270fb676f78a91f760ac4f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98612790"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653798"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-agent-gmsa-powershell-cmdlets"></a>Azure AD Connect クラウド プロビジョニング エージェント gMSA PowerShell コマンドレット
 
@@ -36,7 +36,7 @@ ms.locfileid: "98612790"
 2. プロビジョニング エージェント PS モジュールを PowerShell セッションにインポートします。 
 
  ```PowerShell
- Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Microsoft.CloudSync.Powershell.dll"  
+ Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Microsoft.CloudSync.Powershell.dll"  
  ```
 3. 既存のアクセス許可を削除します。  サービス アカウントの既存のアクセス許可を、自己使用を除いてすべて削除するには、`Set-AADCloudSyncRestrictedPermission` を使用します。  
 

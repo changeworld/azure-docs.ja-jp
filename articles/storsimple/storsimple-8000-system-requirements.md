@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/28/2017
+ms.date: 02/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 6dcaa83980210a1f5449e8a2e0982cb8e39ff03d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: fa7616a740e8246fa08e950494428095f41ee404
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966192"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382856"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 シリーズのソフトウェア、高可用性、ネットワークの要件
 
@@ -41,7 +41,7 @@ Microsoft Azure StorSimple へようこそ。 この記事では、StorSimple �
 
 | サポートされるオペレーティング システム | 必須のバージョン | その他の要件/注意事項 |
 | --- | --- | --- |
-| Windows Server |2008 R2 SP1、2012、2012 R2、2016 |StorSimple iSCSI ボリュームの使用は以下の Windows ディスク タイプのみでサポートされます。<ul><li>ベーシック ディスク上のシンプル ボリューム</li><li>ダイナミック ディスク上のシンプルおよびミラー ボリューム</li></ul>サポートされるのは、オペレーティング システムにネイティブで存在するソフトウェア iSCSI イニシエーターだけです。 ハードウェア iSCSI イニシエーターはサポートされません。<br></br>Windows Server 2012 および 2016 のシン プロビジョニングおよび ODX 機能は StorSimple iSCSI ボリュームを使用している場合にサポートされます。<br><br>StorSimple は、シン プロビジョニングされたボリュームと完全にプロビジョニングされたボリュームを作成できます。 部分的にプロビジョニングされたボリュームは作成できません。<br><br>シン プロビジョニングされたボリュームを再フォーマットすると長い時間がかかる場合があります。 再フォーマットするのではなく、ボリュームを削除して、新しいボリュームを作成することをお勧めします。 それでもボリュームを再フォーマットする場合は以下を実行します。<ul><li>領域の再利用による遅延を避けるために、再フォーマットする前に次のコマンドを実行します。 <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>フォーマットが完了したら、次のコマンドを使用して領域の再利用を再び有効にします。<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>[KB 2878635](https://support.microsoft.com/kb/2870270) の説明に従って、Windows Server 2012 の修正プログラムを Windows Server コンピューターに適用します。</li></ul></li></ul></ul> StorSimple Snapshot Manager または SharePoint 用 StorSimple アダプターを構成する場合は、「[オプション コンポーネントのソフトウェア要件](#software-requirements-for-optional-components)」を参照してください。 |
+| Windows Server |2008 R2 SP1、2012、2012 R2、2016 |StorSimple iSCSI ボリュームの使用は以下の Windows ディスク タイプのみでサポートされます。<ul><li>ベーシック ディスク上のシンプル ボリューム</li><li>ダイナミック ディスク上のシンプルおよびミラー ボリューム</li></ul>サポートされるのは、オペレーティング システムにネイティブで存在するソフトウェア iSCSI イニシエーターだけです。 ハードウェア iSCSI イニシエーターはサポートされません。<br></br>Windows Server 2012 および 2016 のシン プロビジョニングおよび ODX 機能は StorSimple iSCSI ボリュームを使用している場合にサポートされます。<br><br>StorSimple は、シン プロビジョニングされたボリュームと完全にプロビジョニングされたボリュームを作成できます。 部分的にプロビジョニングされたボリュームは作成できません。<br><br>シン プロビジョニングされたボリュームを再フォーマットすると長い時間がかかる場合があります。 再フォーマットするのではなく、ボリュームを削除して、新しいボリュームを作成することをお勧めします。 それでもボリュームを再フォーマットする場合は以下を実行します。<ul><li>領域の再利用による遅延を避けるために、再フォーマットする前に次のコマンドを実行します。 <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>フォーマットが完了したら、次のコマンドを使用して領域の再利用を再び有効にします。<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>[KB 2878635](https://support.microsoft.com/kb/2870270) の説明に従って、Windows Server 2012 の修正プログラムを Windows Server コンピューターに適用します。</li></ul></li></ul></ul> StorSimple Snapshot Manager または SharePoint 用 StorSimple アダプターを構成する場合は、「[オプション コンポーネントのソフトウェア要件](#software-requirements-for-optional-components)」を参照してください。 <br> Windows Server クライアントが SMB プロトコルを使用して StorSimple デバイスにアクセスしている場合、並列処理の増加に関するガイダンスを確認するには、「[SMB ファイル サーバーのパフォーマンス チューニング](/windows-server/administration/performance-tuning/role/file-server/smb-file-server)」を参照してください。|
 | VMware ESX |5.5 および 6.0 |iSCSI クライアントとして VMware vSphere でサポートされます。 VAAI ブロック機能は、StorSimple デバイス上の VMware vSphere でサポートされます。 |
 | Linux RHEL/CentOS |5、6 および 7 |Open-iSCSI イニシエーター バージョン 5、6 および 7 での Linux iSCSI クライアントのサポート。 |
 | Linux |SUSE Linux 11 | |
@@ -70,9 +70,9 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 | UDP 53 (DNS) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。 |
 | UDP 123 (NTP) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。 |
 | TCP 9354 |アウト |WAN |はい |送信ポートは、StorSimple デバイス マネージャー サービスと通信するために StorSimple デバイスによって使用されます。 |
-| 3260 (iSCSI) |場所 |LAN |いいえ |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
-| 5985 |場所 |LAN |いいえ |受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によって使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
-| 5986 |場所 |LAN |いいえ |このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+| 3260 (iSCSI) |/ |LAN |いいえ |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
+| 5985 |/ |LAN |いいえ |受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によって使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+| 5986 |/ |LAN |いいえ |このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
 
 <sup>1</sup> 受信ポートがパブリック インターネットで開かれている必要はありません。
 
@@ -157,7 +157,7 @@ Update 2 以降のバージョンに使用されるルーティング メトリ�
 * VIP エラーが発生すると、StorSimple デバイスでアラートも生成されます。 詳細については、 [アラートのクイック リファレンス](storsimple-8000-manage-alerts.md)に関するページを参照してください。
 * 再試行に関しては、クラウドよりも iSCSI が優先されます。
   
-    次の例を確認してください。StorSimple デバイスで、2 つのネットワーク インターフェイス Data 0 と Data 1 が有効になっています。 Data 0 はクラウド対応ですが、Data 1 はクラウドと iSCSI の両方に対応しています。 このデバイス上の他のネットワーク インターフェイスは、クラウドにも iSCSI にも対応していません。
+    次の例で考えてみましょう。StorSimple デバイスで、2 つのネットワーク インターフェイス Data 0 と Data 1 が有効になっているとします。 Data 0 はクラウド対応ですが、Data 1 はクラウドと iSCSI の両方に対応しています。 このデバイス上の他のネットワーク インターフェイスは、クラウドにも iSCSI にも対応していません。
   
     Data 1 が失敗した場合、これが最後の iSCSI ネットワーク インターフェイスであるため、他のコントローラー上の Data 1 に対するコントローラー フェールオーバーが発生します。
 

@@ -1,20 +1,17 @@
 ---
 title: 管理ハブ
 description: Azure Data Factory 管理ハブでの接続、ソース管理の構成、およびグローバル作成のプロパティの管理
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
-manager: anandsub
-ms.date: 06/02/2020
-ms.openlocfilehash: aa1246a65dc6971107abe35f4a418b0bbb05641b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 02/01/2021
+ms.openlocfilehash: b4b9ecef84f8ffcc82107299ad6603466380d1c0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486132"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371500"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Azure Data Factory の管理ハブ
 
@@ -40,7 +37,11 @@ Azure Data Factory UX の *[管理]* タブによってアクセスされる管�
 
 ### <a name="git-configuration"></a>Git 構成
 
-管理ハブで、構成されている Git リポジトリの設定を表示および編集します。 詳細については、「[Azure Data Factory でのソース管理](source-control.md)」を参照してください。
+管理ハブの Git 構成設定で、Git に関連するすべての情報を表示および編集することができます。 
+
+最後に発行されたコミット情報も一覧表示され、複数の環境を対象にして最後に発行またはデプロイされた正確なコミットを理解するのに役立ちます。 また、運用環境で修正プログラムを実行する場合にも役立ちます。
+
+詳細については、「[Azure Data Factory でのソース管理](source-control.md)」を参照してください。
 
 ![Git リポジトリの管理](media/author-management-hub/management-hub-git.png)
 

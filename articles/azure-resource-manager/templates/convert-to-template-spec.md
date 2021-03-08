@@ -2,31 +2,21 @@
 title: ポータルのテンプレートをテンプレート スペックに変換する
 description: Azure portal ギャラリー内の既存のテンプレートをテンプレート スペックに変換する方法について説明します。
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 02/04/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 8fe02f55348f2cdcabb43e05bb547819d4b51228
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c59275fca1eb3037b48b7293fc9e507df46b7fcb
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98739063"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555942"
 ---
 # <a name="convert-template-gallery-in-portal-to-template-specs"></a>ポータルのテンプレート ギャラリーをテンプレート スペックに変換する
 
-Azure portal には、お使いのアカウントに Azure Resource Manager テンプレート (ARM テンプレート) を格納する方法が用意されています。 **この機能は非推奨となりました。** このギャラリーでテンプレートを引き続き使用するには、[テンプレート スペック](template-specs.md)に変換します。
+Azure portal には、お使いのアカウントに Azure Resource Manager テンプレート (ARM テンプレート) を格納する方法が用意されています。 ただし、[テンプレート スペック](template-specs.md)を使用すると、より簡単な方法で、テンプレートを組織内のユーザーと共有でき、他のテンプレートとリンクできます。 この記事では、テンプレート ギャラリーの既存のテンプレートをテンプレート スペックに変換する方法について説明します。
 
-この記事では、テンプレート ギャラリーの既存のテンプレートをテンプレート スペックに変換する方法について説明します。
-
-ポータルで、非推奨とされる機能は **テンプレート (プレビュー)** と呼ばれています。 変換するテンプレートがあるかどうかを確認するには、[ポータルでテンプレート ギャラリー](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Gallery%2Fmyareas%2Fgalleryitems)を表示します。 これらのテンプレートのリソースの種類は `Microsoft.Gallery/myareas/galleryitems` です。
-
-## <a name="deprecation-of-portal-feature"></a>非推奨のポータル機能
-
-ポータルのテンプレート ギャラリーは、2021 年 1 月 21 日に非推奨となります。 2 月 21 日までは使用を継続できます。 2 月 22 日以降、ポータル ギャラリーで新しいテンプレートを作成できなくなりますが、既存のテンプレートの表示とデプロイは引き続き行うことができます。
-
-6 月 22 日に、この機能はポータルから削除され、すべての API 操作はブロックされます。 ギャラリーからのテンプレートの表示とデプロイの実行はできなくなります。
-
-使用を継続したいテンプレートは、6 月 22 日より前に移行する必要があります。 この記事に記載されているいずれかの方法を使用して、テンプレートを移行できます。 この機能が削除された後は、移行していないテンプレートを取得するには、サポート ケースを開く必要があります。
+変換するテンプレートがあるかどうかを確認するには、[ポータルでテンプレート ギャラリー](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Gallery%2Fmyareas%2Fgalleryitems)を表示します。 これらのテンプレートのリソースの種類は `Microsoft.Gallery/myareas/galleryitems` です。
 
 ## <a name="convert-with-powershell-script"></a>PowerShell スクリプトを使用して変換する
 

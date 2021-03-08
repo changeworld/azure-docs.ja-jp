@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/14/2021
+ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: c6932292b86924cfab6d17c315cbd6946bd63f61
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: d6a686b38c9b67ed8b1a7801c2a6ba95ef29558c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621331"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652986"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>チュートリアル: Azure Active Directory と Coupa の統合
 
@@ -28,10 +28,10 @@ ms.locfileid: "98621331"
 
 ## <a name="prerequisites"></a>前提条件
 
-Coupa と Azure AD の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の試用版を入手できます。
-* Coupa でのシングル サインオンが有効なサブスクリプション。
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Coupa でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -63,7 +63,7 @@ Coupa に対する Azure AD SSO を構成してテストするには、次の手
     1. **[Coupa のテスト ユーザーの作成](#create-coupa-test-user)** - Coupa で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
@@ -128,17 +128,17 @@ Coupa に対する Azure AD SSO を構成してテストするには、次の手
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-### <a name="configure-coupa-sso"></a>Coupa の SSO の構成
+## <a name="configure-coupa-sso"></a>Coupa の SSO の構成
 
 1. Coupa 企業サイトに管理者としてサインオンします。
 
 2. **[Setup]\>[Security Control]** の順に移動します。
 
-    ![セキュリティ制御](./media/coupa-tutorial/ic791900.png "シングル サインオンの設定")
+    ![セキュリティ制御](./media/coupa-tutorial/setup.png "シングル サインオンの設定")
 
 3. **[Coupa 資格情報を使用してログイン]** セクションで、次の手順に従います。
 
-    ![Coupa SP メタデータ](./media/coupa-tutorial/ic791901.png "Coupa SP メタデータ")
+    ![Coupa SP メタデータ](./media/coupa-tutorial/login.png "Coupa SP メタデータ")
 
     a. **[SAML を使用してログイン]** を選択します。
 
@@ -158,15 +158,15 @@ Azure AD ユーザーが Coupa にログインできるようにするには、�
 
 2. 上部のメニューで **[設定]** をクリックし、**[ユーザー]** をクリックします。
 
-    ![ユーザー](./media/coupa-tutorial/ic791908.png "ユーザー")
+    ![ユーザー](./media/coupa-tutorial/user.png "ユーザー")
 
 3. **Create** をクリックしてください。
 
-    ![ユーザーの作成](./media/coupa-tutorial/ic791909.png "ユーザーの作成")
+    ![ユーザーの作成](./media/coupa-tutorial/create.png "ユーザーの作成")
 
 4. **[ユーザーを作成]** セクションで、次の手順を実行します。
 
-    ![ユーザーの詳細](./media/coupa-tutorial/ic791910.png "[ユーザーの詳細]")
+    ![ユーザーの詳細](./media/coupa-tutorial/details.png "[ユーザーの詳細]")
 
     a. 関連テキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの **[ログイン]**、**[名]**、**[姓]**、**[シングル サインオン ID]**、**[メール]** を入力します。
 
@@ -179,7 +179,7 @@ Azure AD ユーザーが Coupa にログインできるようにするには、�
 >[!NOTE]
 >他の Coupa ユーザー アカウント作成ツールや、Coupa から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
@@ -187,8 +187,8 @@ Azure AD ユーザーが Coupa にログインできるようにするには、�
 
 * Coupa のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Coupa] タイルをクリックすると、SSO を設定した Coupa に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Coupa] タイルをクリックすると、SSO を設定した Coupa に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Coupa を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Coupa を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

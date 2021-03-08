@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 850d50bc9e427ff559782d587d74b33089332a8d
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: efc3bfef7c182ea005ac17a59793ac8f6484a424
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091665"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042013"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) の全体管理者には、自分のディレ�
 
 ## <a name="how-does-elevated-access-work"></a>昇格されたアクセスはどのように機能しますか?
 
-Azure AD と Azure リソースは互いに依存することなくセキュリティで保護されます。 つまり、Azure AD のロール割り当てによって Azure リソースにアクセス権が付与されることはなく、Azure のロール割り当てによって Azure AD にアクセス権が付与されることはありません。 ただし、Azure AD の[全体管理者](../active-directory/roles/permissions-reference.md#global-administrator-permissions)であれば、自分のディレクトリにあるすべての Azure サブスクリプションと管理グループに対するアクセス許可を自分に割り当てることができます。 仮想マシンやストレージ アカウントなど、Azure リソースへのアクセス許可が与えられていない場合、この機能を使用します。このようなリソースに対するアクセス権を得るには、全体管理者の特権を使用することをお勧めします。
+Azure AD と Azure リソースは互いに依存することなくセキュリティで保護されます。 つまり、Azure AD のロール割り当てによって Azure リソースにアクセス権が付与されることはなく、Azure のロール割り当てによって Azure AD にアクセス権が付与されることはありません。 ただし、Azure AD の[全体管理者](../active-directory/roles/permissions-reference.md#global-administrator)であれば、自分のディレクトリにあるすべての Azure サブスクリプションと管理グループに対するアクセス許可を自分に割り当てることができます。 仮想マシンやストレージ アカウントなど、Azure リソースへのアクセス許可が与えられていない場合、この機能を使用します。このようなリソースに対するアクセス権を得るには、全体管理者の特権を使用することをお勧めします。
 
 アクセス権を昇格させると、Azure のルート範囲 (`/`) で[ユーザー アクセスの管理者](built-in-roles.md#user-access-administrator)ロールが割り当てられます。 これにより、すべてのリソースを表示したり、ディレクトリにあるあらゆるサブスクリプションまたは管理グループでアクセス権を割り当てたりできます。 ユーザー アクセス管理者ロールの割り当ては Azure PowerShell、Azure CLI、または REST API を使用して削除できます。
 
@@ -80,7 +80,7 @@ Azure portal を使用して全体管理者のアクセス権を昇格するに�
 
 1. 昇格させたアクセス権で必要な変更を加えます。
 
-    ロールの割り当ての詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](role-assignments-portal.md)」をご覧ください。 Privileged Identity Management を使用している場合、[管理する Azure リソースの検出](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)または [Azure リソース ロールの割り当て](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)に関するページを参照してください。
+    ロールの割り当ての詳細については、「[Azure portal を使用して Azure ロールを割り当てる](role-assignments-portal.md)」をご覧ください。 Privileged Identity Management を使用している場合、[管理する Azure リソースの検出](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)または [Azure リソース ロールの割り当て](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)に関するページを参照してください。
 
 1. 次のセクションの手順を実行し、昇格したアクセス権を削除します。
 
@@ -149,7 +149,7 @@ CanDelegate        : False
 
 Azure CLI を使用して全体管理者のアクセス権を昇格するには、以下の基本的な手順を実行します。
 
-1. [az rest](/cli/azure/reference-index?view=azure-cli-latest#az-rest) コマンドを使用して `elevateAccess` エンドポイントを呼び出します。これにより、ユーザー アクセス管理者ロールがルート スコープ (`/`) で付与されます。
+1. [az rest](/cli/azure/reference-index#az_rest) コマンドを使用して `elevateAccess` エンドポイントを呼び出します。これにより、ユーザー アクセス管理者ロールがルート スコープ (`/`) で付与されます。
 
     ```azurecli
     az rest --method post --url "/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01"
@@ -157,7 +157,7 @@ Azure CLI を使用して全体管理者のアクセス権を昇格するには�
 
 1. 昇格させたアクセス権で必要な変更を加えます。
 
-    ロールの割り当ての詳細については、「[Azure CLI を使用して Azure ロールの割り当てを追加または削除する](role-assignments-cli.md)」をご覧ください。
+    ロールの割り当ての詳細については、「[Azure CLI を使用して Azure ロールを割り当てる](role-assignments-cli.md)」をご覧ください。
 
 1. 後述のセクションの手順を実行して、昇格したアクセス権を削除します。
 
@@ -213,7 +213,7 @@ REST API を使用して全体管理者のアクセス権を昇格するには�
 
 1. 昇格させたアクセス権で必要な変更を加えます。
 
-    ロールの割り当ての詳細については、「[REST API を使用して Azure ロールの割り当てを追加または削除する](role-assignments-rest.md)」を参照してください。
+    ロールの割り当ての詳細については、「[REST API を使用して Azure ロールを割り当てる](role-assignments-rest.md)」をご覧ください。
 
 1. 後述のセクションの手順を実行して、昇格したアクセス権を削除します。
 
@@ -330,4 +330,4 @@ REST API を使用して全体管理者のアクセス権を昇格するには�
 ## <a name="next-steps"></a>次のステップ
 
 - [各種ロールについて](rbac-and-directory-admin-roles.md)
-- [REST API を使用して Azure ロールの割り当てを追加または削除する](role-assignments-rest.md)
+- [REST API を使用して Azure ロールを割り当てる](role-assignments-rest.md)

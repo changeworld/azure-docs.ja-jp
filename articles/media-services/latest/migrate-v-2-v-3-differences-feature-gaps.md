@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2fa827bc2841a0bae4c9646c8a70e42dc2b500e3
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: f77a41a172bc868ad056d74d018b50f734286f0f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898411"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702455"
 ---
 # <a name="feature-gaps-between-azure-media-services-v2-and-v3"></a>Azure Media Services V2 と V3 の間の機能のギャップ
 
@@ -42,7 +42,7 @@ V3 API には、V2 API との間に次の機能のギャップがあります。
     - Standard Encoder へのオーディオ チャネル マッピングのサポートが追加されました。  [Media Services Encoding Swagger ドキュメントの Audio](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json) を参照してください。
     - MXF や ProRes などのサードパーティ ライセンス製品の高度な機能または出力形式を使用していた場合は、Telestream の Azure パートナー ソリューションをご利用ください。これは、V2 の廃止時までにトランザクション対応になります。 または、Imagine Communications や [Bitmovin](http://bitmovin.com) を使用できます。
 
-- V2 のストリーミング エンドポイントの "可用性セット" プロパティはサポートされなくなりました。 V3 API での[高可用性 VOD](https://docs.microsoft.com/azure/media-services/latest/media-services-high-availability-encoding) 配信に関するサンプル プロジェクトとガイダンスを参照してください。
+- V2 のストリーミング エンドポイントの "可用性セット" プロパティはサポートされなくなりました。 V3 API での[高可用性 VOD](./media-services-high-availability-encoding.md) 配信に関するサンプル プロジェクトとガイダンスを参照してください。
 
 - Media Services V3 では、FairPlay IV を指定できません。 パッケージ化とライセンス配信の両方で Media Services を使用するお客様には影響しませんが、サードパーティの DRM システムを使用して FairPlay ライセンス (ハイブリッド モード) を配信すると、問題になるおそれがあります。
 

@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 03/02/2021
 ms.author: aahi
 keywords: オンプレミス、Docker、コンテナー
-ms.openlocfilehash: 2bef6aa4e624386750a4c989d7e56cc1b22aaa5e
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: e157e976186f03aa984877435c42b996ce476740
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862010"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040194"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>LUIS 用の Docker コンテナーのインストールと実行
 
@@ -281,7 +281,7 @@ ApiKey={API_KEY}
 |`staging`|boolean|true に設定した場合、ステージング環境の結果からクエリが返されます。 |
 |`log`|boolean|クエリをログします。これは後で[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)に使用できます。 既定値は true です。|
 
-**_
+***
 
 ### <a name="query-the-luis-app"></a>LUIS アプリに対するクエリの実行
 
@@ -299,7 +299,7 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/production/predict"
 ```
 
-"*ステージング*" 環境に対するクエリを作成するには、ルート内の `production` を `staging` に置き換えます。
+**ステージング** 環境に対するクエリを作成するには、ルート内の `production` を `staging` に置き換えます。
 
 `http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/staging/predict`
 
@@ -335,7 +335,7 @@ curl -X GET \
 ```
 バージョン名は最大 10 文字で、URL に使用できる文字だけを含みます。
 
-**_
+***
 
 ## <a name="import-the-endpoint-logs-for-active-learning"></a>アクティブ ラーニングに使用するエンドポイント ログのインポート
 
@@ -346,7 +346,7 @@ LUIS コンテナーの出力マウントが指定された場合、アプリの
 /output/luis/{INSTANCE_ID}/
 ```
 
-LUIS ポータルから、お客様のアプリを選択し、 *[Import endpoint logs]\(エンドポイント ログのインポート\)* を選択して、それらのログをアップロードします。
+LUIS ポータルから、お客様のアプリを選択し、 **[Import endpoint logs]\(エンドポイント ログのインポート\)** を選択して、それらのログをアップロードします。
 
 ![アクティブ ラーニングに使用するコンテナーのログ ファイルをインポートする](./media/luis-container-how-to/upload-endpoint-log-files.png)
 

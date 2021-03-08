@@ -3,18 +3,18 @@ title: Azure portal を使用して新しい推奨事項に合わせて Azure Ad
 description: 新しい推奨事項に合わせて Azure Advisor アラートを作成する
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 837f12a12e532902ee76e345afa430f758f79c10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c51479821914ef34edcd13d8708344169f17aae
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90973647"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590117"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>Azure portal を使用して新しい推奨事項に合わせて Azure Advisor アラートを作成する 
 
 この記事では、Azure portal を使用して Azure Advisor から新しい推奨事項に合わせてアラートを設定する方法について説明します。 
 
-Azure Advisor でリソースの 1 つに対して新しい推奨事項が検出されるたびに、イベントが [Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に格納されます。 これらのイベントのアラートは、Azure Advisor から推奨事項固有のアラート作成操作を使用して設定できます。 サブスクリプションを選択し、必要に応じてリソース グループを選択して、アラートを受信するリソースを指定することができます。 
+Azure Advisor でリソースの 1 つに対して新しい推奨事項が検出されるたびに、イベントが [Azure アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)に格納されます。 これらのイベントのアラートは、Azure Advisor から推奨事項固有のアラート作成操作を使用して設定できます。 サブスクリプションを選択し、必要に応じてリソース グループを選択して、アラートを受信するリソースを指定することができます。 
 
 また、次のプロパティを使用して、推奨事項の種類を指定することもできます。
 
@@ -27,13 +27,13 @@ Azure Advisor でリソースの 1 つに対して新しい推奨事項が検出
 * 既存のアクション グループを選択する
 * 新しいアクション グループを作成する
 
-アクション グループの詳細については、[アクション グループの作成および管理](../azure-monitor/platform/action-groups.md)に関するページを参照してください。
+アクション グループの詳細については、[アクション グループの作成および管理](../azure-monitor/alerts/action-groups.md)に関するページを参照してください。
 
 > [!NOTE] 
 > 現在、Advisor アラートは、高可用性、パフォーマンス、コストに関する推奨事項にのみ使用できます。 セキュリティに関する推奨事項はサポートされていません。 
 
 ## <a name="create-alert-rule"></a>アラート ルールの作成
-1. **ポータル**で、 **[Azure Advisor]** を選択します。
+1. **ポータル** で、 **[Azure Advisor]** を選択します。
 
     ![ポータルの Azure Advisor](./media/advisor-alerts/create1.png)
 
@@ -57,7 +57,7 @@ Azure Advisor でリソースの 1 つに対して新しい推奨事項が検出
 
     ![Advisor アラートのアクション グループ](./media/advisor-alerts/create6.png)
 
-7. **[アクション グループ]** セクションで、 **[Add existing]\(既存の追加\)** を選択して既に作成したアクション グループを使用するか、 **[Create new]\(新規作成\)** を選択して新しい[アクション グループ](../azure-monitor/platform/action-groups.md)を設定します。 
+7. **[アクション グループ]** セクションで、 **[Add existing]\(既存の追加\)** を選択して既に作成したアクション グループを使用するか、 **[Create new]\(新規作成\)** を選択して新しい [アクション グループ](../azure-monitor/alerts/action-groups.md)を設定します。 
 
     ![Advisor アラートの既存の追加](./media/advisor-alerts/create7.png)
 
@@ -185,13 +185,13 @@ Webhook を使用して独自のシステムに Advisor アラートを統合す
 
 Azure Advisor から、推奨事項のアラートを編集、削除、または無効および有効にすることができます。 
 
-1. **ポータル**で、 **[Azure Advisor]** を選択します。
+1. **ポータル** で、 **[Azure Advisor]** を選択します。
 
-    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="[アラートの詳細] セクションのスクリーンショット。":::
+    :::image type="content" source="./media/advisor-alerts/create1.png" alt-text="Azure Advisor が選択されていることを示す Azure portal メニューのスクリーンショット。":::
 
 2. 左側のメニューの **[監視]** セクションで、 **[アラート]** を選択します。
 
-    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="[アラートの詳細] セクションのスクリーンショット。":::
+    :::image type="content" source="./media/advisor-alerts/create2.png" alt-text="[アラート] が選択されていることを示す Azure portal メニューのスクリーンショット。":::
 
 3. アラートを編集するには、アラート名をクリックしてアラートを開き、編集するフィールドを編集します。
 
@@ -199,5 +199,5 @@ Azure Advisor から、推奨事項のアラートを編集、削除、または
  
 
 ## <a name="next-steps"></a>次のステップ
-- [アクティビティ ログ アラートの概要](../azure-monitor/platform/alerts-overview.md)を把握し、アラートを受信する方法について学習します。
-- [アクション グループ](../azure-monitor/platform/action-groups.md)について学習します。
+- [アクティビティ ログ アラートの概要](../azure-monitor/alerts/alerts-overview.md)を把握し、アラートを受信する方法について学習します。
+- [アクション グループ](../azure-monitor/alerts/action-groups.md)について学習します。

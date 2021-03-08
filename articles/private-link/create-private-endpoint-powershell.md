@@ -7,14 +7,14 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 11/02/2020
 ms.author: allensu
-ms.openlocfilehash: 7add424c23e430a8ca5059d45acd037fff8836ad
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 68a4703cc2dc1b2898057e138fda7de9eff146e7
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368663"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807464"
 ---
-# <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>クイックスタート: Azure PowerShell を使用してプライベート エンドポイントを作成する
+# <a name="use-powershell-to-create-a-private-endpoint"></a>PowerShell を使用してプライベート エンドポイントを作成する
 
 プライベート エンドポイントを使用して Azure Web アプリに安全に接続することにより、Azure Private Link の使用を開始します。
 

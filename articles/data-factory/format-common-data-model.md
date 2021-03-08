@@ -3,16 +3,15 @@ title: Common Data Model 形式
 description: Common Data Model メタデータ システムを使用してデータを変換します
 author: kromerm
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 02/04/2021
 ms.author: makromer
-ms.openlocfilehash: e3152f1dff4a80ce3ae8bd121215ceb2595b9ee2
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 45f5334ebee3365c17bfa52c8d47ed75b82bdfa1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854008"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387701"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory での Common Data Model 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -85,6 +84,7 @@ CDM はインライン データセットとしてのみ利用でき、既定で
 2. partitions.Location プロパティを検索する 
 3. "blob.core.windows.net" を "dfs.core.windows.net" に変更する
 4. URL の "% 2F" エンコードを "/" に修正する
+5. ADF データ フローを使用する場合は、パーティション ファイル パス内の特殊文字を英数字に置き換えるか、Synapse データ フローに切り替える必要があります
 
 ### <a name="cdm-source-data-flow-script-example"></a>CDM ソース データ フロー スクリプトの例
 

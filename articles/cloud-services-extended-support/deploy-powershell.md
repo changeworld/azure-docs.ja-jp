@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 8bfa7c164f5b974a8cf8974b3ff346f3401dd218
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 08a8dde815a6dea5d69e5e2a385cbaa03fba681a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880222"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832696"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>Azure PowerShell を使用してクラウド サービス (延長サポート) をデプロイする
 
@@ -44,7 +44,7 @@ ms.locfileid: "98880222"
 
     ```powershell
     $storageAccount = New-AzStorageAccount -ResourceGroupName “ContosOrg” -Name “contosostorageaccount” -Location “East US” -SkuName “Standard_RAGRS” -Kind “StorageV2” 
-    $container = New-AzStorageContainer -Name “ContosoContainer” -Context $storageAccount.Context -Permission Blob 
+    $container = New-AzStorageContainer -Name “contosocontainer” -Context $storageAccount.Context -Permission Blob 
     ```
 
 4. ストレージ アカウントにクラウド サービス パッケージ (cspkg) をアップロードします。
@@ -52,8 +52,8 @@ ms.locfileid: "98880222"
     ```powershell
     $tokenStartTime = Get-Date 
     $tokenEndTime = $tokenStartTime.AddYears(1) 
-    $cspkgBlob = Set-AzStorageBlobContent -File “./ContosoApp/ContosoApp.cspkg” -Container “ContosoContainer” -Blob “ContosoApp.cspkg” -Context $storageAccount.Context 
-    $cspkgToken = New-AzStorageBlobSASToken -Container “ContosoContainer” -Blob $cspkgBlob.Name -Permission rwd -StartTime $tokenStartTime -ExpiryTime $tokenEndTime -Context $storageAccount.Context 
+    $cspkgBlob = Set-AzStorageBlobContent -File “./ContosoApp/ContosoApp.cspkg” -Container “contosocontainer” -Blob “ContosoApp.cspkg” -Context $storageAccount.Context 
+    $cspkgToken = New-AzStorageBlobSASToken -Container “contosocontainer” -Blob $cspkgBlob.Name -Permission rwd -StartTime $tokenStartTime -ExpiryTime $tokenEndTime -Context $storageAccount.Context 
     $cspkgUrl = $cspkgBlob.ICloudBlob.Uri.AbsoluteUri + $cspkgToken 
     ```
  
@@ -61,8 +61,8 @@ ms.locfileid: "98880222"
 5.  ストレージ アカウントにクラウド サービス構成 (cscfg) をアップロードします。 
 
     ```powershell
-    $cscfgBlob = Set-AzStorageBlobContent -File “./ContosoApp/ContosoApp.cscfg” -Container ContosoContainer -Blob “ContosoApp.cscfg” -Context $storageAccount.Context 
-    $cscfgToken = New-AzStorageBlobSASToken -Container “ContosoContainer” -Blob $cscfgBlob.Name -Permission rwd -StartTime $tokenStartTime -ExpiryTime $tokenEndTime -Context $storageAccount.Context 
+    $cscfgBlob = Set-AzStorageBlobContent -File “./ContosoApp/ContosoApp.cscfg” -Container contosocontainer -Blob “ContosoApp.cscfg” -Context $storageAccount.Context 
+    $cscfgToken = New-AzStorageBlobSASToken -Container “contosocontainer” -Blob $cscfgBlob.Name -Permission rwd -StartTime $tokenStartTime -ExpiryTime $tokenEndTime -Context $storageAccount.Context 
     $cscfgUrl = $cscfgBlob.ICloudBlob.Uri.AbsoluteUri + $cscfgToken 
     ```
 
@@ -88,16 +88,16 @@ ms.locfileid: "98880222"
     $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig} 
     ```
  
-9. キー コンテナーを作成する このキー コンテナーは、クラウド サービス (延長サポート) の各種ロールに関連付けられている証明書を格納するために使用します。 このキー コンテナーは、一意の名前を使用したうえで、クラウド サービスと同じリージョンおよびサブスクリプションに配置する必要があります。 詳細については、「[Azure Cloud Services (延長サポート) で証明書を使用する](certificates-and-key-vault.md)」を参照してください。
+9. キー コンテナーを作成する このキー コンテナーは、クラウド サービス (延長サポート) の各種ロールに関連付けられている証明書を格納するために使用します。 [Azure Virtual Machines (展開用)] と [Azure Resource Manager (テンプレートの展開用)] にアクセスできるように、(ポータルで) [アクセス ポリシー] が有効になっていることを確認します。 このキー コンテナーは、一意の名前を使用したうえで、クラウド サービスと同じリージョンおよびサブスクリプションに配置する必要があります。 詳細については、「[Azure Cloud Services (延長サポート) で証明書を使用する](certificates-and-key-vault.md)」を参照してください。
 
     ```powershell
-    New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosoOrg” -Location “East US” 
+    New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosOrg” -Location “East US” 
     ```
 
 10. キー コンテナーのアクセス ポリシーを更新し、自分のユーザー アカウントに証明書に関するアクセス許可を付与します。 
 
     ```powershell
-    Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosoOrg' -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete 
+    Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosOrg' -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete 
     ```
 
     または、ObjectId を使ってアクセス ポリシーを設定します (ObjectId は、`Get-AzADUser` を実行すると取得できます)。 
@@ -136,10 +136,19 @@ ms.locfileid: "98880222"
     ```powershell
     $credential = Get-Credential 
     $expiration = (Get-Date).AddYears(1) 
-    $extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension' -Credential $credential -Expiration $expiration -TypeHandlerVersion '1.2.1' 
+    $rdpExtension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension' -Credential $credential -Expiration $expiration -TypeHandlerVersion '1.2.1' 
 
-    $wadExtension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension" -ResourceGroupName "ContosOrg" -CloudServiceName "ContosCS" -StorageAccountName "ContosSA" -StorageAccountKey $storageAccountKey[0].Value -DiagnosticsConfigurationPath $configFile -TypeHandlerVersion "1.5" -AutoUpgradeMinorVersion $true 
+    $storageAccountKey = Get-AzStorageAccountKey -ResourceGroupName "ContosOrg" -Name "contosostorageaccount"
+    $configFile = "<WAD public configuration file path>"
+    $wadExtension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension" -ResourceGroupName "ContosOrg" -CloudServiceName "ContosCS" -StorageAccountName "contosostorageaccount" -StorageAccountKey $storageAccountKey[0].Value -DiagnosticsConfigurationPath $configFile -TypeHandlerVersion "1.5" -AutoUpgradeMinorVersion $true 
     $extensionProfile = @{extension = @($rdpExtension, $wadExtension)} 
+    ```
+    次のように、configFile には PublicConfig タグのみが含まれていること、また名前空間が含まれていることが必要です。
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
+        ...............
+    </PublicConfig>
     ```
 15. (省略可能) クラウド サービスに追加するタグを PowerShell ハッシュ テーブルとして定義します。 
 

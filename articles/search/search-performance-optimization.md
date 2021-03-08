@@ -5,16 +5,16 @@ description: Azure Cognitive Search のパフォーマンスを調整し、最�
 manager: nitinme
 author: LiamCavanagh
 ms.author: liamca
-ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 362d5f2046ff4e9ba52dd2e73433cc39e80f7a50
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 02/01/2021
+ms.custom: references_regions
+ms.openlocfilehash: bbd3e5774c6effa45888f6e59874d29f3b55b45f
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420599"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545583"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure Cognitive Search のパフォーマンスのためのスケーリング
 
@@ -86,6 +86,30 @@ ms.locfileid: "93420599"
 この詳細については、[Azure Cognitive Search のサービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)に関するページをご覧ください。
 
 レプリカはデータのコピーであるため、Azure Cognitive Search で複数のレプリカを用意すれば、あるレプリカでコンピューターの再起動やメンテナンスを行い、同時に他のレプリカでクエリの実行を続けることが可能になります。 逆に、レプリカを取り除くと、それらのレプリカは使用率が低いリソースだったと仮定して、クエリのパフォーマンスが低下します。
+
+<a name="availability-zones"></a>
+
+### <a name="availability-zones"></a>可用性ゾーン
+
+[Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) は、リージョンのデータ センターを個別の物理的な場所のグループに分割することで、同じリージョン内で高可用性を実現します。 Cognitive Search の場合、個々のレプリカがゾーン割り当ての単位です。 検索サービスは 1 つのリージョン内で実行され、そのレプリカは異なるゾーンで実行されます。
+
+検索サービスに 2 つ以上のレプリカを追加することで、Azure Cognitive Search で Availability Zones を利用することができます。 各レプリカは、リージョン内の異なる可用性ゾーンに配置されます。 Availability Zones よりも多くのレプリカがある場合、レプリカは Availability Zones 全体に可能な限り均等に配布されます。
+
+現在、Azure Cognitive Search では、次のいずれかのリージョンで作成された Standard レベル以上の検索サービスの Availability Zones がサポートされます。
+
++ オーストラリア東部 (2021 年 1 月 30 日以降に作成)
++ カナダ中部 (2021 年 1 月 30 日以降に作成)
++ 米国中部 (2020 年 12 月 4 日以降に作成)
++ 米国東部 2 (2021 年 1 月 30 日以降に作成)
++ フランス中部 (2020 年 10 月 23 日以降に作成)
++ 東日本 (2021 年 1 月 30 日以降に作成)
++ 北ヨーロッパ (2021 年 1 月 28 日以降に作成)
++ 東南アジア (2021 年 1 月 31 日以降に作成)
++ 英国南部 (2021 年 1 月 30 日以降に作成)
++ 西ヨーロッパ (2021 年 1 月 29 日以降に作成)
++ 米国西部 2 (2021 年 1 月 30 日以降に作成)
+
+Availability Zones は、[Azure Cognitive Search サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)には影響しません。 クエリの高可用性を実現するには、3 つ以上のレプリカが必要です。
 
 ## <a name="scale-for-geo-distributed-workloads-and-geo-redundancy"></a>地理的に分散したワークロードと Geo 冗長のためのスケーリング
 

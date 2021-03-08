@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 94a1db30419e5d7e52f369392d94b817d0dc273a
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: d326a90ffb957604dba74982d8983acedc6ab85d
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98623756"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522582"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>オンプレミス管理コンソールをアクティブにしてセットアップする 
 
@@ -316,6 +316,6 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
 3. 未割り当てのセンサーをサイトから削除するには、未割り当てのセンサーの一覧からセンサーを選択して、:::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: を選択します。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 [センサーとオンプレミスの管理コンソールのトラブルシューティング](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)

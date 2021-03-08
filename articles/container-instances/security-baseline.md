@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0f0c771b11dfc029f18681e7a4c11b8ee271252c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 107380dabc9c163aab6d0347f6e6cc2c1a718c0b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197695"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576361"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Container Instances の Azure セキュリティ ベースライン
 
@@ -192,9 +192,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: ネットワーク リソース構成を監視し、ご利用のコンテナー インスタンスに関連したネットワーク リソースに関する変更を検出するには、Azure アクティビティ ログを使用します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -251,7 +251,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
-* [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -263,9 +263,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 * [Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録](./container-instances-log-analytics.md)
 
-* [Log Analytics ワークスペースについて](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Log Analytics ワークスペースについて](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
+* [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -277,7 +277,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 * [Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録](./container-instances-log-analytics.md)
 
-* [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md)
+* [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -596,7 +596,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure アクティビティ ログで Azure Monitor を使用して、コンテナー グループとコンテナー インスタンスに対して変更が行われたときのアラートを作成します。 
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 
 **Azure Security Center の監視**: 適用なし
@@ -750,9 +750,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 * [Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録](./container-instances-log-analytics.md)
 
-* [Log Analytics ワークスペースについて](../azure-monitor/log-query/log-analytics-tutorial.md)
+* [Log Analytics ワークスペースについて](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
+* [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 * [Azure Container Instances のセキュリティに関する考慮事項](./container-instances-image-security.md)
 * [Azure Container Registry と Security Center の統合](../security-center/defender-for-container-registries-introduction.md)
@@ -1166,7 +1166,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Container Inst
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用して、アラートの Sentinel のストリーミングを実行できます。
+**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
 * [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 

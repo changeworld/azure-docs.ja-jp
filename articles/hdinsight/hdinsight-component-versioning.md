@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
-ms.openlocfilehash: 07db57ee36d39454e8a247be11dac4a9c51af3af
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d1f4c57986f356f267448ff43de23973534b8126
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946109"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006668"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Azure HDInsight で使用可能な Apache コンポーネントおよびバージョン
 
@@ -133,3 +133,5 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 - [Enterprise セキュリティ パッケージ](./enterprise-security-package.md)
 - [Azure HDInsight バージョンに対応する Hortonworks リリース ノート](./hortonworks-release-notes.md)
 - [Windows PC から HDInsight の Apache Hadoop で作業する](hdinsight-hadoop-windows-tools.md)
+
+

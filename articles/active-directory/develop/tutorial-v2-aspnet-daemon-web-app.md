@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 984b85ff831146060f1642b9eeec7079ff966db3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5816bc542ff550accedd33ba9a7fd9d98583b3d1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937836"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653764"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>チュートリアル:Microsoft ID プラットフォームを使用したマルチテナント デーモンを作成する
 
@@ -45,7 +45,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このサンプルの "デーモン" としてのコンポーネントは、API コントローラー `SyncController.cs` です。 このコントローラーを呼び出すと、顧客の Azure Active Directory (Azure AD) テナントに存在するユーザーのリストが Microsoft Graph からプルされます。 `SyncController.cs` は、Web アプリケーション内の AJAX 呼び出しによってトリガーされます。 Microsoft Graph のアクセス トークンの取得には、[Microsoft Authentication Library (MSAL) for .NET](msal-overview.md) が使用されます。
 
-このアプリは Microsoft の企業顧客を対象としたマルチテナント アプリであるため、顧客が "サインアップ" (つまり、その会社のデータにアプリケーションを "接続") する手段を備えている必要があります。 接続フローの過程で、社内管理者はまず、サインイン済みのユーザーがいなくてもアプリが非対話型形式で企業データにアクセスできるよう、*アプリケーションのアクセス許可* を直接アプリに付与します。 このサンプルのロジックの大部分は、ID プラットフォームの[管理者の同意](v2-permissions-and-consent.md#using-the-admin-consent-endpoint)エンドポイントを使用してこの接続フローを実現する方法を示します。
+このアプリは Microsoft の企業顧客を対象としたマルチテナント アプリであるため、顧客が "サインアップ" (つまり、その会社のデータにアプリケーションを "接続") する手段を備えている必要があります。 接続フローの過程で、全体管理者はまず、サインイン済みのユーザーがいなくてもアプリが非対話型形式で企業データにアクセスできるよう、"*アプリケーションのアクセス許可*" を直接アプリに付与します。 このサンプルのロジックの大部分は、ID プラットフォームの[管理者の同意](v2-permissions-and-consent.md#using-the-admin-consent-endpoint)エンドポイントを使用してこの接続フローを実現する方法を示します。
 
 ![Azure に接続する 3 つのローカル項目がある UserSync App を示す図。対話的にトークンを取得して Azure A D に接続する Start dot Auth、管理者の同意を得て Azure A D に接続する AccountController、およびユーザーを読み取って Microsoft Graph に接続する SyncController。](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
@@ -93,7 +93,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 ### <a name="choose-the-azure-ad-tenant"></a>Azure AD テナントを選択する
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 
 
@@ -110,7 +110,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 1. アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を見つけ、後で使用するために記録しておきます。 これは、このプロジェクトの Visual Studio 構成ファイルを構成するために必要になります。
 1. **[管理]** で、 **[認証]** を選択します。
 1. **[Front-channel logout URL]\(フロントチャネル ログアウト URL\)** を `https://localhost:44316/Account/EndSession` に設定します。
-1. **[暗黙的な許可]** セクションで、 **[アクセス トークン]** と **[ID トークン]** を選択します。 このサンプルでは、ユーザーのサインインと API の呼び出しのために、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。
+1. **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** セクションで、 **[アクセス トークン]** と **[ID トークン]** を選択します。 このサンプルでは、ユーザーのサインインと API の呼び出しのために、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。
 1. **[保存]** を選択します。
 1. **[管理]** で、 **[証明書とシークレット]** を選択します。
 1. **[クライアント シークレット]** セクションで、 **[新しいクライアント シークレット]** を選択します。 
@@ -203,7 +203,7 @@ Visual Studio でソリューションを開いて、プロジェクトを構成
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>dotnet-web-daemon-v2 を作成し、Azure Web サイトに発行する
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 1. 左上隅にある **[リソースの作成]** を選びます。
 1. **[Web]**  >  **[Web アプリ]** の順に選択し、Web サイトに名前を付けます。 たとえば、**dotnet-web-daemon-v2-contoso.azurewebsites.net** という名前を付けます。
 1. **サブスクリプション**、**リソース グループ**、**アプリ サービスのプランと場所** に関する情報を選択します。 **[OS]** は **[Windows]** 、 **[発行]** は **[コード]** とします。
@@ -224,7 +224,7 @@ Visual Studio によってプロジェクトが発行され、ブラウザーで
 
 ### <a name="update-the-azure-ad-tenant-application-registration-for-dotnet-web-daemon-v2"></a>dotnet-web-daemon-v2 用に Azure AD テナント アプリケーションの登録を更新する
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> に戻ります。
+1. <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> に戻ります。
 1. 左側のペインで、 **[Azure Active Directory]** サービス、 **[アプリの登録]** の順に選択します。
 1. **dotnet-web-daemon-v2** アプリケーションを選択します。
 1. アプリケーションの **[認証]** ページで、 **[Front-channel logout URL]\(フロントチャネル ログアウト URL\)** フィールドをサービスのアドレスで更新します。 たとえば、 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net/Account/EndSession`を使用します。
@@ -237,9 +237,9 @@ Visual Studio によってプロジェクトが発行され、ブラウザーで
 
 ## <a name="get-help"></a>ヘルプの参照
 
-[Stack Overflow](http://stackoverflow.com/questions/tagged/msal) を利用すれば、コミュニティからサポートを受けることができます。
-質問がある場合にはまず Stack Overflow に投稿してください。また、既存の問題を参照し、以前に同じ質問が挙がっていないかどうかを確認してください。
-ご質問またはコメントには "adal"、"msal"、"dotnet" タグを付けてください。
+[Microsoft Q&A](/answers/products/) を利用すれば、コミュニティからサポートを受けることができます。
+質問がある場合にはまず [Microsoft Q&A](/answers/products/) に投稿してください。また、既存の問題を参照し、以前に同じ質問が挙がっていないかどうかを確認してください。
+ご質問またはコメントには、"azure-ad-adal-deprecation"、"azure-ad-msal"、および "dotnet-standard" のタグを必ず付けてください。
 
 サンプルにバグを見つけた場合は、[GitHub の [Issues]](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/issues) で問題を提起してください。
 

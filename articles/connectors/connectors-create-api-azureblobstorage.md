@@ -129,7 +129,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    次に例を示します。
 
-   ![Azure BLOB ストレージ アカウント接続を作成する](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png) 
+   ![Azure Blob Storage アカウント接続を作成する](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png) 
 
 1. 準備ができたら、 **[作成]** を選択します
 

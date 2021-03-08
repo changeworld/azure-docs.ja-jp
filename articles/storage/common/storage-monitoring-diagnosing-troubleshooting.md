@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 50d78e83bbbeb4b0252c83f9f52e94599ea6946c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: d28cfd533caaef3fb80a63aea932e6418dff7e55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787962"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724253"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -94,7 +94,7 @@ ms.locfileid: "98787962"
 ## <a name="monitoring-your-storage-service"></a><a name="monitoring-your-storage-service"></a>Storage サービスの監視
 Windows のパフォーマンス監視に詳しい人は、Storage メトリックのことを Windows パフォーマンス モニターのカウンターに相当する Azure Storage の機能だと考えることができます。 Storage メトリックでは、サービス可用性、サービスに対する要求の総数、サービスに対する要求の成功率などの、包括的なメトリック (Windows パフォーマンス モニターの用語で言えばカウンター) のセットを利用できます。 使用可能なメトリックの詳細なリストについては、「 [Storage Analytics Metrics のテーブル スキーマ](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)」を参照してください。 Storage サービスでメトリックを収集および集計する間隔は、1 時間または 1 分を指定できます。 メトリックを有効にしてストレージ アカウントを監視する方法の詳細については、 [ストレージ メトリックの有効化とメトリック データの表示](../blobs/monitor-blob-storage.md)に関するページをご覧ください。
 
-[Azure Portal](https://portal.azure.com) に表示する時間単位のメトリックを選ぶことができます。また、時間単位メトリックが特定のしきい値を超えたときに必ず電子メールで管理者に通知するようにルールを構成することもできます。 詳しくは、「[アラート通知を受け取る](../../azure-monitor/platform/alerts-overview.md)」をご覧ください。
+[Azure Portal](https://portal.azure.com) に表示する時間単位のメトリックを選ぶことができます。また、時間単位メトリックが特定のしきい値を超えたときに必ず電子メールで管理者に通知するようにルールを構成することもできます。 詳しくは、「[アラート通知を受け取る](../../azure-monitor/alerts/alerts-overview.md)」をご覧ください。
 
 [Azure Monitor for Storage](../../azure-monitor/insights/storage-insights-overview.md) (プレビュー) を確認することをお勧めします。 これは、Azure Storage サービスのパフォーマンス、容量、可用性の統合されたビューが提供されることで、Azure Storage アカウントを包括的に監視できる Azure Monitor の機能です。 何も有効にしたり構成したりする必要はありません。これらのメトリックは、あらかじめ定義されている対話型のグラフやその他の含まれている視覚エフェクトからすぐに表示できます。
 
@@ -789,7 +789,7 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 
 Azure Storage の分析については、次のリソースを参照してください。
 
-* [Azure Portal でのストレージ アカウントの監視](storage-monitor-storage-account.md)
+* [Azure Portal でのストレージ アカウントの監視](./manage-storage-analytics-logs.md)
 * [Storage Analytics](storage-analytics.md)
 * [Storage Analytics のメトリック](storage-analytics-metrics.md)
 * [Storage Analytics Metrics のテーブル スキーマ](/rest/api/storageservices/storage-analytics-metrics-table-schema)

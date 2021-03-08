@@ -51,6 +51,9 @@
         - name: HTTP 拡張機能を使用した OVMS の使用
           displayName: 'intel, OpenVINO'
           href: use-intel-openvino-tutorial.md
+        - name: gRPC 拡張機能を使用した OV DL Streamer の使用
+          displayName: 'intel, OpenVINO DL Streamer'
+          href: use-intel-grpc-vas-tutorial.md
         - name: Custom Vision の使用
           href: custom-vision-tutorial.md
         - name: 空間分析の使用
@@ -90,6 +93,8 @@
       href: create-custom-azure-resource-manager-role-how-to.md
     - name: IoT Edge デバイスへのデプロイ
       href: deploy-iot-edge-device.md
+    - name: IoT Edge for Linux on Windows にデプロイする
+      href: deploy-iot-edge-linux-on-windows.md
     - name: 監視およびログ記録
       href: monitoring-logging.md
     - name: 記録の再生

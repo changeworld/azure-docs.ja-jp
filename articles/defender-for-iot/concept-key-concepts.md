@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 419e32a127947cde1d3761507f0df7a889528ff2
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: cb984ca1a74d8b3838b857f2f5679264d1445187
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621930"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508610"
 ---
 # <a name="basic-concepts"></a>基本的な概念 
 
@@ -20,9 +20,9 @@ ms.locfileid: "98621930"
 
 ## <a name="rapid-non-invasive-deployment-and-passive-monitoring"></a>迅速な非干渉型デプロイとパッシブ監視
 
-Defender for IoT センサーを SPAN ポートまたはネットワーク TAP に接続すると、パッシブ (エージェントレス) 監視によって ICS ネットワーク トラフィックの収集が直ちに開始されます。 シリアルとイーサネット両方の制御ネットワーク装置からのトラフィックを詳しく分析するためにディープ パケット インスペクション (DPI) が使用されます。 Defender for IoT は、データ パスに配置されておらず、OT デバイスを積極的にスキャンすることはないため、OT ネットワークに影響しません。 
+Defender for IoT センサーは、スイッチ SPAN (ミラー) ポートとネットワーク TAP に接続し、パッシブ (エージェントレス) 監視による ICS ネットワーク トラフィックの収集を直ちに開始します。 シリアルとイーサネット両方の制御ネットワーク装置からのトラフィックを詳しく分析するためにディープ パケット インスペクション (DPI) が使用されます。 Defender for IoT は、データ パスに配置されておらず、OT デバイスを積極的にスキャンすることはないため、OT ネットワークに影響しません。 
 
-詳細なデバイス情報のインスタント スナップショットを配信するために、Defender for IoT センサーは、オプションのアクティブ コンポーネントを使用してパッシブ監視を補足します。 このコンポーネントでは、安全でベンダーが承認したコマンドを使用して、Windows とコントローラーの両方のデバイスに対して必要な頻度でデバイス情報のクエリが実行されます。
+詳細な Windows デバイス情報のインスタント スナップショットを配信するために、Defender for IoT センサーは、オプションのアクティブ コンポーネントを使用してパッシブ監視を補足するように構成できます。 このコンポーネントでは、安全でベンダーが承認したコマンドを使用して、Windows デバイスに対して必要な頻度でデバイス情報のクエリが実行されます。
 
 ## <a name="embedded-knowledge-of-ics-protocols-devices-and-applications"></a>ICS プロトコル、デバイス、およびアプリケーションに関する組み込みのナレッジ
 

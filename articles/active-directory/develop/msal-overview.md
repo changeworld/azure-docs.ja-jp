@@ -13,12 +13,12 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c16eb2af5dfb103541c2eac207eb8ee5c303168f
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 55cecc658b11b7a09665af7128df25fbbff800ef
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754714"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559516"
 ---
 # <a name="overview-of-the-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) の概要
 Microsoft Authentication Library (MSAL) を使用すると、ユーザーを認証し、セキュリティで保護された Web API にアクセスする目的で、開発者は Microsoft ID プラットフォームから[トークン](developer-glossary.md#security-token)を取得できます。 これは、Microsoft Graph、その他の Microsoft API、サード パーティの Web API、または、独自の Web API へのセキュリティで保護されたアクセスを提供するために使用できます。 MSAL は、.NET、JavaScript、Java、Python、Android、iOS などの、さまざまなアプリケーション アーキテクチャとプラットフォームをサポートします。
@@ -50,12 +50,15 @@ MSAL は次のような多くのアプリケーション シナリオで使用�
 
 | ライブラリ | サポートされているプラットフォームとフレームワーク|
 | --- | --- |
-| [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework、.NET Core、Xamarin Android、Xamarin iOS、ユニバーサル Windows プラットフォーム|
-| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| AngularJS、Ember.js、Durandal.js など、JavaScript/TypeScript フレームワーク|
 | [MSAL for Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
+| [MSAL Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angular)| Angular と Angular.js のフレームワークを使用したシングルページ アプリ|
 | [iOS および macOS 用の MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS と macOS|
 | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Windows、macOS、Linux|
+| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)| Vue.js、Ember.js、Durandal.js など、JavaScript と TypeScript のフレームワーク|
+| [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework、.NET Core、Xamarin Android、Xamarin iOS、ユニバーサル Windows プラットフォーム|
+| [MSAL Node](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-node)|Express を使用した Web アプリ、Electron を使用したデスクトップ アプリ、クロスプラットフォーム コンソール アプリ|
 | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)|Windows、macOS、Linux|
+| [MSAL React](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react)| React と React ベースのライブラリ (Next.js、Gatsby.js) を使用したシングルページ アプリ|
 
 ## <a name="differences-between-adal-and-msal"></a>ADAL と MSAL の違い
 

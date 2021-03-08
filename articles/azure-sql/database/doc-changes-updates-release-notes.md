@@ -116,7 +116,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 |[Business Critical サービス レベルの Resource Governor をフェールオーバー後に再構成しなければならない場合がある](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|2019 年 9 月|回避策あり||
 |[サービス レベルのアップグレード後は、複数データベースにまたがる Service Broker のダイアログを再初期化する必要がある](#cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade)|2019 年 8 月|回避策あり||
 |[Azure AD ログイン タイプの偽装がサポートされない](#impersonation-of-azure-ad-login-types-is-not-supported)|2019 年 7 月|回避策なし||
-|[sp_send_db_mail の @query パラメーターはサポートされない](#-parameter-not-supported-in-sp_send_db_mail)|2019 年 4 月|解決済み|2021 年 1 月|
+|[sp_send_db_mail の @query パラメーターはサポートされない](#query-parameter-not-supported-in-sp_send_db_mail)|2019 年 4 月|解決済み|2021 年 1 月|
 |[geo フェールオーバー後、トランザクション レプリケーションを再構成する必要がある](#transactional-replication-must-be-reconfigured-after-geo-failover)|2019 年 3 月|回避策なし||
 |[一時的なデータベースが RESTORE 操作中に使用される](#temporary-database-is-used-during-restore-operation)||回避策あり||
 |[TEMPDB の構造と内容は再作成される](#tempdb-structure-and-content-is-re-created)||回避策なし||

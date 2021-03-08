@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5141c7fcfe1128574145930548f41731529c2ad8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 484e8853d02aa68c8a8695ba7cc724adb5a8766a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012463"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572975"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Stream Analytics ジョブ監視とクエリの監視方法の概要
 
@@ -48,7 +48,7 @@ Azure portal は、クエリとジョブ パフォーマンスの監視とトラ
 これらのメトリックを使用して、[Stream Analytics ジョブのパフォーマンスを監視](./stream-analytics-set-up-alerts.md#scenarios-to-monitor)することができます。 
 
 ## <a name="customizing-monitoring-in-the-azure-portal"></a>Azure ポータルでの監視のカスタマイズ
-グラフのタイプ、表示されるメトリック、および時間範囲を [グラフの編集] 設定で調整できます。 詳細については、「[監視のカスタマイズ方法](../azure-monitor/platform/data-platform.md)」をご覧ください。
+グラフのタイプ、表示されるメトリック、および時間範囲を [グラフの編集] 設定で調整できます。 詳細については、「[監視のカスタマイズ方法](../azure-monitor/data-platform.md)」をご覧ください。
 
   ![Stream Analytics クエリ モニター タイム グラフ](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
 

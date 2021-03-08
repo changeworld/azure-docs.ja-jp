@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: e3d3ce8218030bc8ba6c59b26b7360bf2299e02a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 308e1bcf042feb15179d32844d8c569af6166619
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499817"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571681"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure Monitor ログを使用した Site Recovery の監視
 
-この記事では、Azure [Site Recovery](site-recovery-overview.md) によってレプリケートされたマシンを [Azure Monitor ログ](../azure-monitor/platform/data-platform-logs.md)と [Log Analytics](../azure-monitor/log-query/log-query-overview.md) を使って監視する方法を説明します。
+この記事では、Azure [Site Recovery](site-recovery-overview.md) によってレプリケートされたマシンを [Azure Monitor ログ](../azure-monitor/logs/data-platform-logs.md)と [Log Analytics](../azure-monitor/logs/log-query-overview.md) を使って監視する方法を説明します。
 
 Azure Monitor ログは、アクティビティ ログとリソース ログを他の監視データと共に収集するログ データ プラットフォームです。 Azure Monitor ログ内で Log Analytics を使用し、ログ クエリを記述してテストしたり、ログ データを対話形式で分析したりすることができます。 ログの結果を可視化してクエリを実行したり、監視対象データに基づいてアクションを実行するようにアラートを構成したりすることが可能です。
 
@@ -35,8 +35,8 @@ Site Recovery での Azure Monitor ログの使用は、**Azure から Azure へ
 次のものが必要です。
 
 - Recovery Services コンテナー内で保護された少なくとも 1 つのマシン。
-- Site Recovery のログを格納するための Log Analytics ワークスペース。 ワークスペースの設定に関する[説明](../azure-monitor/learn/quick-create-workspace.md)を参照してください。
-- Log Analytics におけるログ クエリの記述、実行、分析の方法に関する基本的な理解。 [詳細については、こちらを参照してください](../azure-monitor/log-query/log-analytics-tutorial.md)。
+- Site Recovery のログを格納するための Log Analytics ワークスペース。 ワークスペースの設定に関する[説明](../azure-monitor/logs/quick-create-workspace.md)を参照してください。
+- Log Analytics におけるログ クエリの記述、実行、分析の方法に関する基本的な理解。 [詳細については、こちらを参照してください](../azure-monitor/logs/log-analytics-tutorial.md)。
 
 最初に、[監視についての一般的な質問](monitoring-common-questions.md)を確認しておくことをお勧めします。
 
@@ -62,9 +62,9 @@ Site Recovery での Azure Monitor ログの使用は、**Azure から Azure へ
 1. [Log Analytics] ワークスペースに移動し、 **[詳細設定]** をクリックします。
 2. **[接続されたソース]** ページをクリックし、 **[Windows サーバー]** を選択します。
 3. Windows エージェント (64 ビット) をプロセスサーバーにダウンロードします。 
-4. [ワークスペース ID とキーを取得する](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)
-5. [TLS 1.2 を使用するようにエージェントを構成する](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. 取得したワークスペース ID とキーを指定し、[エージェントのインストールを完了します](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard)。
+4. [ワークスペース ID とキーを取得する](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)
+5. [TLS 1.2 を使用するようにエージェントを構成する](../azure-monitor/agents/agent-windows.md#configure-agent-to-use-tls-12)
+6. 取得したワークスペース ID とキーを指定し、[エージェントのインストールを完了します](../azure-monitor/agents/agent-windows.md#install-agent-using-setup-wizard)。
 7. インストールが完了したら、Log Analytics ワークスペースに移動し、 **[詳細設定]** をクリックします。 **[データ]** ページに移動し、 **[Windows パフォーマンス カウンター]** をクリックします。 
 8. **+** をクリックすると、次の 2 つのカウンターが 300 秒のサンプル間隔で追加されます。
 
@@ -76,7 +76,7 @@ Site Recovery での Azure Monitor ログの使用は、**Azure から Azure へ
 
 ## <a name="query-the-logs---examples"></a>ログのクエリを実行する - 例
 
-ログからデータを取得するには、[Kusto 照会言語](../azure-monitor/log-query/get-started-queries.md)で記述されたログ クエリを使用します。 このセクションでは、Site Recovery の監視で一般的に使用されるクエリの例をいくつか紹介します。
+ログからデータを取得するには、[Kusto 照会言語](../azure-monitor/logs/get-started-queries.md)で記述されたログ クエリを使用します。 このセクションでは、Site Recovery の監視で一般的に使用されるクエリの例をいくつか紹介します。
 
 > [!NOTE]
 > 一部の例では、**replicationProviderName_s** を **A2A** に設定しています。 この場合、Site Recovery を使用してセカンダリ Azure リージョンにレプリケートされた Azure VM が取得されます。 それらの例で、Site Recovery を使用して Azure にレプリケートされたオンプレミスの VMware VM または物理サーバーを取得したい場合は、**A2A** を **InMageAzureV2** に置き換えてください。
@@ -252,7 +252,7 @@ AzureDiagnostics 
 
 ## <a name="set-up-alerts---examples"></a>アラートを設定する - 例
 
-Azure Monitor のデータに基づいて Site Recovery のアラートを設定できます。 ログ アラートの設定に関する[詳細情報](../azure-monitor/platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)を参照してください。 
+Azure Monitor のデータに基づいて Site Recovery のアラートを設定できます。 ログ アラートの設定に関する[詳細情報](../azure-monitor/alerts/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)を参照してください。 
 
 > [!NOTE]
 > 一部の例では、**replicationProviderName_s** を **A2A** に設定しています。 この場合、セカンダリ Azure リージョンにレプリケートされた Azure VM のアラートが設定されます。 それらの例で、Azure にレプリケートされたオンプレミスの VMware VM または物理サーバーのアラートを設定したい場合は、**A2A** を **InMageAzureV2** に置き換えてください。

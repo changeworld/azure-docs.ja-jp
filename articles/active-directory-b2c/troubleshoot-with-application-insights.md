@@ -12,12 +12,12 @@ ms.date: 10/16/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 33504487b6175023e18893812c533950305cb1d3
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: d4a68b492bad4ac091b4600c9ec81ac0de27cc05
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746004"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572904"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Application Insights を使用して Azure Active Directory B2C のログを収集する
 
@@ -101,7 +101,7 @@ Application Insights で新しいログが確認できるようになるまで�
 
 エントリは長い可能性があります。 詳細を確認する際は CSV にエクスポートしてください。
 
-クエリの実行について詳しくは、「[Azure Monitor のログ クエリの概要](../azure-monitor/log-query/log-query-overview.md)」をご覧ください。
+クエリの実行について詳しくは、「[Azure Monitor のログ クエリの概要](../azure-monitor/logs/log-query-overview.md)」をご覧ください。
 
 ## <a name="configure-application-insights-in-production"></a>運用環境で Application Insights を構成する
 

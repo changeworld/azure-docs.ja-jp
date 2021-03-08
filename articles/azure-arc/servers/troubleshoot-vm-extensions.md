@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバーの VM 拡張機能に関する問題のト�
 description: この記事では、Azure Arc 対応サーバーで発生する Azure VM 拡張機能に関する問題をトラブルシューティングして解決する方法について説明します。
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: ffd7db5ff7da3d7f60762117f80d7b9b5af6f646
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 799e5c8ec00a894c6a54c64494edd8f259faf2dc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91340502"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584665"
 ---
 # <a name="troubleshoot-arc-enabled-servers-vm-extension-issues"></a>Arc 対応サーバーの VM 拡張機能に関する問題のトラブルシューティング
 
@@ -38,11 +38,11 @@ ms.locfileid: "91340502"
 
 - Log Analytics エージェント バージョン 1.13.9 (対応する拡張機能バージョンは 1.13.15) によって、アップロードされたデータが Azure Arc 対応サーバーのリソース ID を使用して正しくマークされていません。 ログはサービスに送信されますが、選択した対応サーバーのデータを表示しようとして **[ログ]** または **[分析情報]** を選択した場合、データは返されません。 ワークスペースにスコープが設定されている Azure Monitor Logs または Azure Monitor for VMs からクエリを実行することで、データを表示できます。
 
-- 現在、一部のディストリビューションは、Linux 用 Log Analytics エージェントでサポートされていません。 エージェントには、Python 2 などの追加の依存関係をインストールする必要があります。 [こちら](../../azure-monitor/platform/agents-overview.md#supported-operating-systems)のサポート マトリックスと前提条件を確認してください。
+- 現在、一部のディストリビューションは、Linux 用 Log Analytics エージェントでサポートされていません。 エージェントには、Python 2 などの追加の依存関係をインストールする必要があります。 [こちら](../../azure-monitor/agents/agents-overview.md#supported-operating-systems)のサポート マトリックスと前提条件を確認してください。
 
 - ステータス メッセージのエラー コード 52 は、不足している依存関係があることを示しています。 不足している依存関係に関する詳細情報を出力とログで確認します。
 
-- インストールが失敗した場合は、拡張機能の概要に関するページの**トラブルシューティングとサポート**のセクションを確認してください。 ほとんどの場合、ステータス メッセージにはエラー コードが含まれています。 Linux 用 Log Analytics エージェントの場合、ステータス メッセージとこの VM 拡張機能の一般的なトラブルシューティング情報については、[こちら](../../virtual-machines/extensions/oms-linux.md#troubleshoot-and-support)を参照してください。
+- インストールが失敗した場合は、拡張機能の概要に関するページの **トラブルシューティングとサポート** のセクションを確認してください。 ほとんどの場合、ステータス メッセージにはエラー コードが含まれています。 Linux 用 Log Analytics エージェントの場合、ステータス メッセージとこの VM 拡張機能の一般的なトラブルシューティング情報については、[こちら](../../virtual-machines/extensions/oms-linux.md#troubleshoot-and-support)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 16b54e8a59eb42c6e2351d37ec0a29d775161493
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: fa5dd61c0764be45cdba68b73a4f55745ee5e55a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98739838"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585509"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service-classic"></a>Azure クラウド サービス (クラシック) のパフォーマンス カウンターを収集する
 
@@ -124,7 +124,7 @@ Cloud Services 用の Azure Diagnostics 拡張機能では、収集するパフ�
 
 収集するパフォーマンス カウンターは、**diagnostics.wadcfgx** ファイルで定義されています。 このファイル (ロールごとに定義されています) を Visual Studio で開き、**DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **PerformanceCounters** 要素を探します。 新しい **PerformanceCounterConfiguration** 要素を子として追加します。 この要素には、`counterSpecifier` と `sampleRate` の 2 つの属性があります。 `counterSpecifier` 属性では、収集するシステム パフォーマンス カウンター セット (前のセクションで説明) を定義します。 `sampleRate` 値は、その値がポーリングされる頻度を示します。 全体として、すべてのパフォーマンス カウンターは、親 `PerformanceCounters` 要素の `scheduledTransferPeriod` 属性値に従って Azure に転送されます。
 
-`PerformanceCounters` スキーマ要素の詳細については、[Azure Diagnostics スキーマ](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)に関するページを参照してください。
+`PerformanceCounters` スキーマ要素の詳細については、[Azure Diagnostics スキーマ](../azure-monitor/agents/diagnostics-extension-schema-windows.md#performancecounters-element)に関するページを参照してください。
 
 `sampleRate` 属性で定義された期間は、XML 期間データ型を使用して、パフォーマンス カウンターのポーリング頻度を示します。 下の例では、頻度が `PT3M` に設定されています。これは、`[P]eriod[T]ime[3][M]inutes` (3 分ごと) を意味します。
 
@@ -294,4 +294,4 @@ counterServiceUsed.Increment();
 - [Azure Cloud Services 向けの Application Insights](../azure-monitor/app/cloudservices.md#performance-counters)
 - [Application Insights のシステム パフォーマンス カウンター](../azure-monitor/app/performance-counters.md)
 - [カウンター パスの指定](/windows/win32/perfctrs/specifying-a-counter-path)
-- [Azure Diagnostics のスキーマ - パフォーマンス カウンター](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)
+- [Azure Diagnostics のスキーマ - パフォーマンス カウンター](../azure-monitor/agents/diagnostics-extension-schema-windows.md#performancecounters-element)

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 7173efd3dab0e8d2fd3c948a3a9bac07641e78f3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 565ba3f7cd02a5ca8a3a858dc29a8fa6c7df16c1
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792084"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546008"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Form Recognizer の事前構築済みレシート モデル
 
@@ -115,7 +115,12 @@ Form Recognizer レシート サービスを試すには、オンラインのサ
 
 ### <a name="sample-json-output"></a>サンプル JSON 出力
 
-成功した JSON 応答の例を次に示します。"readResults" ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 "documentResults" ノードには、モデルによって検出された名刺固有の値が格納されます。 名、姓、会社名など、大切なキーと値のペアが存在する場所です。
+
+Get Analyze Receipt Result 操作への応答は、抽出されたすべての情報が含まれるレシートの構造化表現になります。  [サンプルのレシート ファイル](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg)と、その構造化された出力である[サンプルのレシート出力](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json)を参照してください。
+
+成功した JSON 応答の例を次に示します。
+* `"readResults"` ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 
+* `"documentResults"` ノードには、モデルによって検出された名刺固有の値が格納されます。 名、姓、会社名など、大切なキーと値のペアが存在する場所です。
 
 ```json
 { 
@@ -467,7 +472,7 @@ Form Recognizer レシート サービスを試すには、オンラインのサ
 
 ## <a name="next-steps"></a>次のステップ
 
-- 選択した言語で Form Recognizer を使用して領収書処理アプリの作成を始めるには、[Form Recognizer のクイックスタート](quickstarts/client-library.md)を完了します。
+- 選択した開発言語で Form Recognizer を使用して領収書処理アプリの作成を始めるには、[Form Recognizer のクイックスタート](quickstarts/client-library.md)を完了します。
 
 ## <a name="see-also"></a>関連項目
 

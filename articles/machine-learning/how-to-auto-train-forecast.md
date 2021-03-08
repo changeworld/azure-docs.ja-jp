@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 2b24b6480e4331f3a9470dcbb49e7ad221809187
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 6e686c7b22eb834a096cdd7a67beb6d8d291ef20
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132084"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392325"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 
@@ -194,6 +194,14 @@ automl_config = AutoMLConfig(task='forecasting',
                              **forecasting_parameters)
 ```
 
+自動 ML で予測モデルを正常にトレーニングするために必要なデータ量は、`AutoMLConfig` の構成時に指定した `forecast_horizon`、`n_cross_validations`、および `target_lags` または `target_rolling_window_size` の値の影響を受けます。 
+
+次の式では、時系列機能を構築するために必要な履歴データ量が計算されます。
+
+必要な最小履歴データ: (2 x `forecast_horizon`) + #`n_cross_validations` + max (max (`target_lags`), `target_rolling_window_size`)
+
+指定された関連する設定に必要な履歴データ量が満たされていないデータセット内ではすべての系列に対してエラー例外が発生します。 
+
 ### <a name="featurization-steps"></a>特徴量化の手順
 
 自動機械学習におけるあらゆる実験では、自動スケーリングと正規化の手法が既定でデータに適用されます。 これらの手法は、さまざまなスケールの特徴に反応する "*特定*" のアルゴリズムを支援する **特徴量化** の一種です。 既定の特徴量化の手順の詳細については、[AutoML での特徴量化](how-to-configure-auto-features.md#automatic-featurization)に関するページを参照してください。
@@ -368,7 +376,7 @@ day_datetime,store,week_of_year
 必要な手順を繰り返して、この将来のデータをデータフレームに読み込んで、`best_run.predict(test_data)` を実行して将来の値を予測します。
 
 > [!NOTE]
-> `forecast_horizon` を超える数の期間について値を予測することはできません。 現在の期間を超えて将来の値を予測するには、さらに期間を長くしてモデルを再度トレーニングする必要があります。
+> `target_lags` や `target_rolling_window_size` が有効になっている場合、サンプル内の予測は、自動 ML を使用した予測ではサポートされません。
 
 
 ## <a name="example-notebooks"></a>サンプルの Notebook

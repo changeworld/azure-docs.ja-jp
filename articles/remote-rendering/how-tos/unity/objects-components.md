@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 662c28196b06f5fbe49f69cb7145fdd33805e000
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15822c357db63db81e6c1efda2467279a98d7c34
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019047"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594148"
 ---
 # <a name="interact-with-unity-game-objects-and-components"></a>Unity のゲーム オブジェクトとコンポーネントを操作する
 
@@ -25,42 +25,21 @@ Azure Remote Rendering (ARR) は、膨大な数のオブジェクト向けに最
 
 モデルを読み込むと、読み込まれたモデルのルート オブジェクトへの参照が取得されます。 この参照は Unity のゲーム オブジェクトではありませんが、拡張メソッド `Entity.GetOrCreateGameObject()` を使用してこれに変換することができます。 この関数には `UnityCreationMode` 型の引数が必要です。 `CreateUnityComponents` を渡すと、新しく作成された Unity のゲーム オブジェクトに、ホスト上に存在するすべての Remote Rendering コンポーネントのプロキシ コンポーネントが追加されます。 ただし、`DoNotCreateUnityComponents` を優先する場合は、オーバーヘッドを最小限に抑えることをお勧めします。
 
-### <a name="load-model-with-task"></a>タスクを使用したロード モデル
-
-```cs
-LoadModelAsync _pendingLoadTask = null;
-void LoadModelWithTask()
-{
-    _pendingLoadTask = RemoteManagerUnity.CurrentSession.Actions.LoadModelFromSASAsync(new LoadModelFromSASParams("builtin://Engine"));
-
-    _pendingLoadTask.Completed += (LoadModelAsync res) =>
-    {
-        // turn the root object into a Unity game object
-        var gameObject = res.Result.Root?.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
-        _pendingLoadTask = null;
-    };
-
-    // also listen to progress updates:
-    _pendingLoadTask.ProgressUpdated += (float progress) =>
-    {
-        // progress is a fraction in [0..1] range
-        int percentage = (int)(progress * 100.0f);
-        // do something...
-        // Since the updates are triggered by the main thread, we may access unity objects here.
-    };
-}
-```
-
 ### <a name="load-model-with-unity-coroutines"></a>Unity コルーチンを使用したロード モデル
 
 ```cs
-IEnumerator LoadModelWithCoroutine()
+IEnumerator LoadModelWithCoroutine(RenderingSession session)
 {
-    LoadModelAsync task = RemoteManagerUnity.CurrentSession.Actions.LoadModelFromSASAsync(new LoadModelFromSASParams("builtin://Engine"));
+    float currentProgress = 0.0f;
+    var task = session.Connection.LoadModelFromSasAsync(new LoadModelFromSasOptions("builtin://Engine"),
+        (float progress) =>
+        {
+            currentProgress = progress;
+        });
 
-    while (!task.IsCompleted)
+    while (!task.IsCompleted && !task.IsFaulted)
     {
-        int percentage = (int)(task.Progress * 100.0f);
+        int percentage = (int)(currentProgress * 100.0f);
         yield return null;
     }
 
@@ -68,22 +47,20 @@ IEnumerator LoadModelWithCoroutine()
     {
         var gameObject = task.Result.Root?.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
     }
-
-    task = null;
 }
 ```
 
 ### <a name="load-model-with-await-pattern"></a>await パターンを使用したロード モデル
 
 ```cs
-async void LoadModelWithAwait()
+async void LoadModelWithAwait(RenderingSession session)
 {
-    var result = await RemoteManagerUnity.CurrentSession.Actions.LoadModelFromSASAsync(new LoadModelFromSASParams("builtin://Engine")).AsTask();
+    var result = await session.Connection.LoadModelFromSasAsync(new LoadModelFromSasOptions("builtin://Engine"), null);
     var gameObject = result.Root?.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
 }
 ```
 
-上記のコード サンプルでは、組み込みモデルが読み込まれるため、SAS 経由でモデル読み込みパスを使用しました。 BLOB コンテナーを介してモデルにアドレスを指定 (`LoadModelAsync` と `LoadModelParams`を使用) しても、同様に機能します。
+上記のコード サンプルでは、組み込みモデルが読み込まれるため、SAS 経由でモデル読み込みパスを使用しました。 BLOB コンテナーを介してモデルにアドレスを指定 (`LoadModelAsync` と `LoadModelOptions`を使用) しても、同様に機能します。
 
 ## <a name="remoteentitysyncobject"></a>RemoteEntitySyncObject
 

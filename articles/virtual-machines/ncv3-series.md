@@ -1,18 +1,18 @@
 ---
 title: NCv3 シリーズ - Azure Virtual Machines
 description: NCv3 シリーズ VM の仕様。
-ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 0e3aa70a1a40e3878aea7b4f42f5aa167e4204c5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 313ca9ddb893ad2d84fdb3f808bdee38dfc9e846
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585389"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102119758"
 ---
 # <a name="ncv3-series"></a>NCv3 シリーズ
 
@@ -23,6 +23,8 @@ NCv3 シリーズ VM は NVIDIA Tesla V100 GPU を備えています。 これ�
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされていません<br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
 Nvidia NVLink Interconnect:サポートされていません<br>
 
 > [!IMPORTANT]

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 222c961f9e5587cd5526778e6ef1c800f5085a69
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 82c3dd4ce7f5e7e9f3d5a226bfe65e27eca2d3d4
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064302"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103245"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>独自に開発したアプリ用の Azure portal の登録フィールド
 
@@ -25,7 +25,7 @@ ms.locfileid: "98064302"
 
 ## <a name="register-a-new-application"></a>新しいアプリケーションの登録
 
--   新しいアプリケーションを登録するには、<a href="https://portal.azure.com/" target="_blank">Azure portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> に移動します。
+-   新しいアプリケーションを登録するには、<a href="https://portal.azure.com/" target="_blank">Azure portal</a> に移動します。
 
 -   左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** をクリックします。
 
@@ -61,7 +61,7 @@ ms.locfileid: "98064302"
 
 | フィールド           | 説明        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ログアウト URL      | これは、シングル サインアウトのログアウト URL です。 登録されているその他のアプリケーションを使用してユーザーが Azure AD とのセッションを消去した場合、Azure AD はログアウト要求をこの URL に送信します。|
+| フロントチャネル ログアウト URL      | これは、シングル サインアウトのログアウト URL です。 登録されているその他のアプリケーションを使用してユーザーが Azure AD とのセッションを消去した場合、Azure AD はログアウト要求をこの URL に送信します。|
 | サポートされているアカウントの種類  | このスイッチでは、アプリケーションが複数のテナントで使えるかどうかを指定します。 通常、マルチテナントを有効にすると、お客様のアプリケーションを外部組織が使用できるようになります。このとき、外部組織は自社のテナントにアプリケーションを登録して、自社のデータへのアクセスを許可します。|
 | リダイレクト URI      | リダイレクト (または応答) URL は、アプリケーションによって要求されたトークンを Azure AD が返すエンドポイントです。 ネイティブ アプリケーションの場合、ユーザーは承認が成功した後にこの URI に移動します。 Azure AD は、OAuth 2.0 要求でアプリケーションが使用したリダイレクト URI が、ポータルに登録されている値のいずれかと一致していることを確認します。|
 

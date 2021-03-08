@@ -3,14 +3,14 @@ title: Azure Kubernetes Service で Azure AD を使用する
 description: Azure Kubernetes Service (AKS) における Azure AD の使用方法
 services: container-service
 ms.topic: article
-ms.date: 08/26/2020
-ms.author: thomasge
-ms.openlocfilehash: f229075d0bad4f9522e02e30bdabc1d42bb086cf
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.date: 02/1/2021
+ms.author: miwithro
+ms.openlocfilehash: 7f6cf503a459175e3109a515b666bbeaa3a25b4d
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684187"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550001"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS マネージド Azure Active Directory 統合
 
@@ -46,7 +46,6 @@ kubelogin --version
 ```
 
 他のオペレーティング システムでは、[これらの手順](https://kubernetes.io/docs/tasks/tools/install-kubectl/)を使用します。
-
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -188,6 +187,50 @@ az aks update -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-gr
 
 継続的インテグレーション パイプラインなど、現在 kubectl で使用できない非対話型シナリオがいくつかあります。 [`kubelogin`](https://github.com/Azure/kubelogin) を使用して、非対話型サービス プリンシパル サインインでクラスターにアクセスできます。
 
+## <a name="use-conditional-access-with-azure-ad-and-aks"></a>Azure AD と AKS で条件付きアクセスを使用する
+
+Azure AD を AKS クラスターと統合する場合、[条件付きアクセス][aad-conditional-access]を使用してクラスターへのアクセスを制御することもできます。
+
+> [!NOTE]
+> Azure AD 条件付きアクセスは Azure AD Premium の機能です。
+
+AKS で使用する条件付きアクセス ポリシーの例を作成するには、次の手順を実行します。
+
+1. Azure portal の上部で、[Azure Active Directory] を検索して選択します。
+1. 左側の Azure Active Directory のメニューで、 *[エンタープライズ アプリケーション]* を選択します。
+1. 左側のエンタープライズ アプリケーションのメニューで、 *[条件付きアクセス]* を選択します。
+1. 左側の条件付きアクセスのメニューで、 *[ポリシー]* 、 *[新しいポリシー]* の順に選択します。
+    :::image type="content" source="./media/managed-aad/conditional-access-new-policy.png" alt-text="条件付きアクセス ポリシーの追加":::
+1. ポリシーの名前を入力します (例: *aks-policy*)。
+1. *[ユーザーとグループ]* を選択し、 *[含める]* で *[ユーザーとグループを選択]* を選択します。 ポリシーを適用するユーザーとグループを選択します。 この例では、クラスターへの管理アクセス権を持つ同じ Azure AD グループを選択します。
+    :::image type="content" source="./media/managed-aad/conditional-access-users-groups.png" alt-text="条件付きアクセス ポリシーを適用するユーザーまたはグループの選択":::
+1. *[クラウド アプリまたはアクション]* を選択し、 *[含める]* で *[アプリを選択]* を選択します。 *[Azure Kubernetes Service]* を検索し、 *[Azure Kubernetes Service AAD Server]* を選択します。
+    :::image type="content" source="./media/managed-aad/conditional-access-apps.png" alt-text="条件付きアクセスポリシーを適用するための Azure Kubernetes Service AD Server の選択":::
+1. *[アクセス制御]* で *[許可]* を選択します。 *[アクセス権の付与]* 、 *[デバイスは準拠としてマーク済みである必要があります]* の順に選択します。
+    :::image type="content" source="./media/managed-aad/conditional-access-grant-compliant.png" alt-text="準拠デバイスのみに条件付きアクセス ポリシーを許可する選択":::
+1. *[ポリシーを有効化する]* で、 *[オン]* 、 *[作成]* の順に選択します。
+    :::image type="content" source="./media/managed-aad/conditional-access-enable-policy.png" alt-text="条件付きアクセス ポリシーの有効化":::
+
+次のように、クラスターにアクセスするためのユーザー資格情報を取得します。
+
+```azurecli-interactive
+ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
+```
+
+手順に従ってサインインします。
+
+`kubectl get nodes` コマンドを使用してクラスター内のノードを表示します。
+
+```azurecli-interactive
+kubectl get nodes
+```
+
+手順に従ってもう一度サインインします。 正常にログインしているというエラー メッセージが表示されますが、管理者の要求により、アクセスを要求しているデバイスは Azure AD で管理されていないとリソースにアクセスできません。
+
+Azure portal で [Azure Active Directory] に移動し、 *[エンタープライズ アプリケーション]* を選択し、 *[アクティビティ]* で *[サインイン]* を選択します。一番上のエントリの *[状態]* が *[失敗]* 、 *[条件付きアクセス]* が *[成功]* になっています。 このエントリを選択し、 *[詳細]* で *[条件付きアクセス]* を選択します。 条件付きアクセス ポリシーが表示されます。
+
+:::image type="content" source="./media/managed-aad/conditional-access-sign-in-activity.png" alt-text="条件付きアクセス ポリシーにより失敗したサインインのエントリ":::
+
 ## <a name="next-steps"></a>次のステップ
 
 * [Kubernetes 承認用の Azure RBAC 統合][azure-rbac-integration]について学習する。
@@ -202,6 +245,7 @@ az aks update -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-gr
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
 
 <!-- LINKS - Internal -->
+[aad-conditional-access]: ../active-directory/conditional-access/overview.md
 [azure-rbac-integration]: manage-azure-rbac.md
 [aks-concepts-identity]: concepts-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md

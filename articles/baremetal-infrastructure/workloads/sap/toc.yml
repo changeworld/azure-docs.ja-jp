@@ -9,6 +9,7 @@
 - name: 操作方法ガイド
   items:
     - name: Azure での BareMetal インスタンス ユニットの管理
+      displayName: 'Azure CLI, az baremetalinstance, az baremetalinstance restart'
       href: baremetal-infrastructure-portal.md
 - name: 関連項目
   items:

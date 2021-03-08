@@ -3,12 +3,12 @@ title: モーションの検出、Azure Media Services へのビデオの記録
 description: このクイックスタートでは、Live Video Analytics on IoT Edge を使用して、ライブ ビデオ ストリーム内のモーションを検出し、ビデオ クリップを Azure Media Services に記録する方法を示します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 15a9def78c7dddda7e63db66d2b21794506f6a92
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 135e68e2630d74dace6c3a6b70bb3666f77aad89
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632726"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575536"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>クイック スタート:モーションの検出、Media Services へのビデオの記録
 
@@ -540,10 +540,15 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 
 1. Visual Studio Code の [エクスプローラー] ペインを開いて、左下隅の Azure IoT Hub を探します。
 1. [Devices] ノードを展開します。
-1. [lva-sample-device] を右クリックし、[Start Monitoring Built-in Event Monitoring]\(組み込みイベント モニタリングの監視を開始する\) オプションを選択します。
+1. [lva-sample-device] を右クリックし、[Start Monitoring Built-in Event Monitoring]\(組み込みイベント モニタリングの監視を開始する\) オプションを選択します
 
     ![組み込みイベント モニタリングの監視を開始する](./media/quickstarts/start-monitoring-iothub-events.png)
     
+    > [!NOTE]
+    > IoT ハブに使用する組み込みのエンドポイント情報を入力するよう求められる場合があります。 この情報を入手するには、Azure portal で IoT ハブに移動し、左側のナビゲーション ペインで **[組み込みのエンドポイント]** オプションを探します。 それをクリックし、 **[イベント ハブ互換エンドポイント]** セクションの **[イベント ハブ互換エンドポイント]** を探します。 ボックス内のテキストをコピーして使用します。 エンドポイントは次のようになります。  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
     数秒すると、出力ウィンドウに次のメッセージが表示されます。
 
 ```

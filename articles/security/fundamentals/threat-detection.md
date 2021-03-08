@@ -1,10 +1,10 @@
 ---
-title: Azure の高度な脅威検出 | Microsoft Docs
-description: Azure AD Identity Protection サービスなど、Azure 向けの高度な組み込みの脅威検出機能について説明します。
+title: Azure の脅威の防止 | Microsoft Docs
+description: Azure AD Identity Protection サービスなど、Azure 向けの組み込みの脅威防止機能について学習します。
 services: security
 documentationcenter: na
-author: UnifyCloud
-manager: barbkess
+author: TerryLanfear
+manager: rkarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2021
-ms.author: TomSh
-ms.openlocfilehash: c8fbb2f6d858b2f654ff404bef3b415bf170ab37
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.date: 02/03/2021
+ms.author: terrylan
+ms.openlocfilehash: 81b2227ac519de4d03bb63907d14c23b9c34dc64
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747275"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101037"
 ---
-# <a name="azure-advanced-threat-detection"></a>Azure の高度な脅威検出
+# <a name="azure-threat-protection"></a>Azure 脅威防止
 
-Azure では、Azure Active Directory (Azure AD)、Azure Monitor ログ、Azure Security Center などのサービスを通じて、高度な脅威検出を行う組み込み機能を提供しています。 このセキュリティ サービスと機能のコレクションにより、Azure デプロイの内部で起きている事象をシンプルかつ迅速に把握する方法が提供されます。
+Azure では、Azure Active Directory (Azure AD)、Azure Monitor ログ、Azure Security Center などのサービスを通じて、脅威を防止する組み込み機能を提供しています。 このセキュリティ サービスと機能のコレクションにより、Azure デプロイの内部で起きている事象をシンプルかつ迅速に把握する方法が提供されます。
 
 Azure では、アプリのデプロイ要件を満たすセキュリティを構成およびカスタマイズするための幅広いオプションを提供します。 この記事では、これらの要件を満たす方法について説明します。
 
@@ -84,46 +84,27 @@ Azure Monitor ログは、価値のある独自のサービスに加え、[Syste
 
 ### <a name="holistic-security-and-compliance-posture"></a>包括的なセキュリティおよびコンプライアンスの体制
 
-[Log Analytics の [セキュリティおよび監査] ダッシュボード](../../security-center/security-center-introduction.md)では、注意を必要とする重要な問題向けの組み込みの検索クエリと共に、組織の IT セキュリティ対策への包括的な視点が提供されます。 [セキュリティおよび監査] ダッシュボードは、Azure Monitor ログにおけるすべてのセキュリティ関連機能のホーム画面です。 この画面では、コンピューターのセキュリティの状態について大まかな情報を得ることができます。 また、過去の 24 時間、7 日間、またはそれ以外のカスタム期間に発生したすべてのイベントを表示することができます。
+[Azure Security Center](../../security-center/security-center-introduction.md) では、注意を必要とする重要な問題向けの組み込みの検索クエリと共に、組織の IT セキュリティ対策への包括的な視点が提供されます。 この画面では、コンピューターのセキュリティの状態について大まかな情報を得ることができます。 また、過去の 24 時間、7 日間、またはそれ以外のカスタム期間に発生したすべてのイベントを表示することができます。
 
 Azure Monitor ログのダッシュボードは、あらゆる環境における包括的なセキュリティ体制をすばやく簡単に理解するのに役立ちます。これはすべて、ソフトウェアの更新プログラムの評価、マルウェア対策の評価、構成基準などを含む IT オペレーションのコンテキストの中で行われます。 セキュリティ ログ データに容易にアクセスできるため、セキュリティとコンプライアンスを目的とする監査プロセスが合理化されます。
 
-![Log Analytics の [セキュリティおよび監査] ダッシュボード](./media/threat-detection/azure-threat-detection-fig3.jpg)
-
-Log Analytics の [セキュリティおよび監査] ダッシュボードは、次の 4 つの主要カテゴリで構成されています。
-
--   **セキュリティ ドメイン**: 時間の経過に伴うセキュリティ レコードを詳しく調査できます。また、マルウェアの評価へのアクセス、評価の更新、ネットワーク セキュリティ、ID、アクセス情報の表示、セキュリティ イベントが発生したコンピューターの表示を行うことができ、Azure Security Center のダッシュボードにも簡単にアクセスできます。
-
--   **注目に値する問題**: アクティブな問題の数と問題の重要度をすばやく特定できます。
-
--   **検出 (プレビュー)** : リソースに対して攻撃が発生したときにセキュリティ アラートを表示することで、攻撃パターンを特定できます。
-
--   **脅威インテリジェンス**: 悪意のあるアウトバウンド IP トラフィックを持つサーバーの総数、悪意のある脅威の種類、IP の場所のマップを表示することで、攻撃パターンを特定できます。
-
--   **一般的なセキュリティ クエリ**: 環境を監視するために使用できる最も一般的なセキュリティ クエリが一覧表示されます。 任意のクエリを選択すると、[検索] ウィンドウが開き、そのクエリの結果が表示されます。
-
 ### <a name="insight-and-analytics"></a>分析情報と分析
-[Azure Monitor ログ](../../azure-monitor/log-query/log-query-overview.md)の核となる機能は、Azure でホストされているリポジトリです。
+[Azure Monitor ログ](../../azure-monitor/logs/log-query-overview.md)の核となる機能は、Azure でホストされているリポジトリです。
 
 ![分析情報と分析の図](./media/threat-detection/azure-threat-detection-fig4.png)
 
 データ ソースを構成し、ソリューションをサブスクリプションに追加することによって、接続されているソースからリポジトリにデータを収集します。
 
-![Azure Monitor ログ ダッシュ ボード](./media/threat-detection/azure-threat-detection-fig5.png)
-
 データ ソースとソリューションは、独自のプロパティのセットを持つレコードの種類をそれぞれ別々に作成しますが、リポジトリに対するクエリでまとめて分析することもできます。 同じツールとメソッドを使用することで、さまざまなソースによって収集された各種のデータを使用することができます。
 
-
 Azure Monitor ログとのやり取りのほとんどは、任意のブラウザーで実行する Azure portal を通じて行います。ここから構成設定や複数のツールにアクセスして収集したデータの分析や操作ができる機能が提供されます。 ポータルでは、以下を使用できます。
-* [ログ検索](../../azure-monitor/log-query/log-query-overview.md)。収集されたデータを分析するためのクエリを構築します。
-* [ダッシュボード](../../azure-monitor/learn/tutorial-logs-dashboards.md)。最も重要な検索のグラフィカル表示でカスタマイズできます。
+* [ログ検索](../../azure-monitor/logs/log-query-overview.md)。収集されたデータを分析するためのクエリを構築します。
+* [ダッシュボード](../../azure-monitor/visualize/tutorial-logs-dashboards.md)。最も重要な検索のグラフィカル表示でカスタマイズできます。
 * [ソリューション](../../azure-monitor/insights/solutions.md)。追加の機能と分析ツールが提供されます。
-
-![分析ツール](./media/threat-detection/azure-threat-detection-fig6.png)
 
 ソリューションにより、Azure Monitor ログに機能が追加されます。 これらは主にクラウドで実行し、Log Analytics リポジトリで収集されたデータの分析を提供します。 また、ソリューションでは、新しいレコードの種類を収集対象として定義することもできます。それらは Log Analytics ダッシュボード内でソリューションによって提供される追加のユーザー インターフェイスを使用するか、ログ検索を使用して分析できます。
 
-[セキュリティおよび監査] ダッシュボードはこのような種類のソリューションの一例です。
+Security Center はこうした種類のソリューションの一例です。
 
 ### <a name="automation-and-control-alert-on-security-configuration-drifts"></a>Automation and Control: セキュリティ構成の誤差に関するアラート
 
@@ -216,7 +197,7 @@ Azure Security Center は、世界中のセキュリティ リサーチ チー�
 
 こうしたさまざまな取り組みの結果、新しく改善された検出が可能となり、その恩恵はすぐに得ることができるようになりました。 ユーザーが措置を講じる必要はありません。
 
-## <a name="advanced-threat-detection-features-other-azure-services"></a>高度な脅威検出: 他の Azure サービス
+## <a name="threat-protection-features-other-azure-services"></a>脅威防止機能:他の Azure サービス
 
 ### <a name="virtual-machines-microsoft-antimalware"></a>仮想マシン:Microsoft マルウェア対策
 
@@ -367,7 +348,7 @@ Cloud App Security は、次の作業によってクラウドの詳細を把握�
 
 Cloud App Security は、これらのソースからデータを収集することでデータに対する高度な分析を実行します。 Cloud App Security は、異常なアクティビティに迅速に通知し、クラウド環境をさらに詳しく把握できるようにします。 Cloud App Security にポリシーを構成することができ、これを使用して、クラウド環境内のすべてを保護することができます。
 
-## <a name="third-party-advanced-threat-detection-capabilities-through-the-azure-marketplace"></a>Azure Marketplace を介したサード パーティ製の高度な脅威検出機能
+## <a name="third-party-threat-protection-capabilities-through-the-azure-marketplace"></a>Azure Marketplace から入手できるサードパーティ製の脅威防止機能
 
 ### <a name="web-application-firewall"></a>Web アプリケーション ファイアウォール
 
@@ -387,6 +368,6 @@ Azure Marketplace で使用可能な Web アプリケーション ファイア�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [今日の脅威への対応](../../security-center/security-center-alerts-overview.md#respond-threats):Azure リソースをターゲットとするアクティブな脅威を特定し、迅速に対応するうえで必要な分析情報を取得するのに役立ちます。
+- [今日の脅威への対応](../../security-center/security-center-managing-and-responding-alerts.md):Azure リソースをターゲットとするアクティブな脅威を特定し、迅速に対応するうえで必要な分析情報を取得するのに役立ちます。
 
 - [Azure SQL Database の脅威の検出](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/): ご利用のデータベースに対する潜在的な脅威の問題に対処するのに役立ちます。

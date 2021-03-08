@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: d4bff4ee7980002d911426ed46ffef6fc28c43e9
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a0c8286b2fb36642723ae28b8bc88e9e49f8a8fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920748"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577948"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps におけるエラーと例外の処理
 
@@ -362,7 +362,7 @@ ms.locfileid: "96920748"
 
 ## <a name="set-up-azure-monitor-logs"></a>Azure Monitor ログを設定する
 
-ここで取り上げたパターンは、発生したエラーや例外を実行中に処理するうえで、きわめて効果的な方法です。しかし実行そのものとは切り離して、エラーを特定し、対応することもできます。 [Azure Monitor](../azure-monitor/overview.md) を使用すると、すべての実行とアクションの状態を含む、すべてのワークフロー イベントを [Log Analytics ワークスペース](../azure-monitor/platform/data-platform-logs.md)、[Azure ストレージ アカウント](../storage/blobs/storage-blobs-overview.md)、または [Azure Event Hubs](../event-hubs/event-hubs-about.md) に簡単に送信できます。
+ここで取り上げたパターンは、発生したエラーや例外を実行中に処理するうえで、きわめて効果的な方法です。しかし実行そのものとは切り離して、エラーを特定し、対応することもできます。 [Azure Monitor](../azure-monitor/overview.md) を使用すると、すべての実行とアクションの状態を含む、すべてのワークフロー イベントを [Log Analytics ワークスペース](../azure-monitor/logs/data-platform-logs.md)、[Azure ストレージ アカウント](../storage/blobs/storage-blobs-overview.md)、または [Azure Event Hubs](../event-hubs/event-hubs-about.md) に簡単に送信できます。
 
 ログやメトリックを監視したり、それらを好きな監視ツールに発行したりすることによって、実行の状態を評価することができます。 その中の一つの方法として、すべてのイベントを Event Hubs を介して [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) にストリーミングすることが考えられます。 Stream Analytics では、診断ログから得られる異常、平均値、またはエラーに基づいて適宜必要なクエリを記述できます。 Stream Analytics を使用して、キュー、トピック、SQL、Azure Cosmos DB、Power BI などのその他のデータ ソースに情報を送信できます。
 

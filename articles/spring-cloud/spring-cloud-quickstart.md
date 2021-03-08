@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 3c07d64fd046766521e030b6ee1b88a590246e24
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 123be57566a31d9831bfd0172373d571be2bf294
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226171"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035171"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>クイック スタート:初めての Azure Spring Cloud アプリケーションをデプロイする
 
@@ -242,7 +242,7 @@ Visual Studio で API プロジェクト テンプレートを使用して、"he
 1. パブリック エンドポイントが割り当てられた Azure Spring Cloud インスタンスでアプリを作成します。 *appsettings.json* で指定したものと同じアプリケーション名 "hello world" を使用します。
 
    ```console
-   az spring-cloud app create -n hello-world -s <service instance name> -g <resource group name> --is-public --runtime-version NetCore_31
+   az spring-cloud app create -n hello-world -s <service instance name> -g <resource group name> --assign-endpoint --runtime-version NetCore_31
    ```
 
 1. *.zip* ファイルをアプリにデプロイします。
@@ -416,7 +416,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4
 1. パブリック エンドポイントが割り当てられるアプリを作成します。
 
     ```azurecli
-    az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --is-public true
+    az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --assign-endpoint true
     ```
 
 1. アプリの Jar ファイルをデプロイします (Windows では `target\hellospring-0.0.1-SNAPSHOT.jar`)。

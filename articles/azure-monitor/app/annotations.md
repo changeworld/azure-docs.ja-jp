@@ -3,12 +3,12 @@ title: Application Insights のリリース注釈 | Microsoft Docs
 description: Application Insights で、メトリックス エクスプローラーのグラフにデプロイ マーカーまたはビルド マーカーを追加します。
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.openlocfilehash: 58f6603687838713fafbf4cd5cc3f100e22b7401
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c23c973bc02482e7000cfd1d066a322fff93542a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993722"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386035"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights のメトリック グラフの注釈
 
@@ -81,7 +81,7 @@ Azure Pipelines のリリース テンプレートごとに個別の API キー�
 
 これで、このリリース テンプレートを使用して新しいリリースをデプロイするたびに、注釈が Application Insights に送信されるようになります。 注釈は次の場所に表示できます。
 
-使用状況ペイン。ここではリリース注釈を手動で作成することもできます。
+**使用状況** ペイン。ここではリリース注釈を手動で作成することもできます。
 
 ![一定時間内のユーザーのアクセス数を表示した棒グラフのスクリーンショット。 リリース注釈は、リリースが発生した時刻を示すグラフの上の緑色のチェックマークとして表示されます。](./media/annotations/usage-pane.png)
 

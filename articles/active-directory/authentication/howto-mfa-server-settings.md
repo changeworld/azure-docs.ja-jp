@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53763e62e8d7aa5b77ae451ef6427c1e09bff9f0
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bb28f415b7d08b4c4430ed90a7ccbfe3a333416d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742699"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689047"
 ---
 # <a name="configure-mfa-server-settings"></a>MFA Server 設定の構成
 
@@ -44,7 +44,7 @@ ms.locfileid: "96742699"
 1. **[Azure Active Directory]** を探して選択してから、 **[セキュリティ]**  >  **[MFA]**  >  **[ワンタイム バイパス]** の順に選択します。
 1. **[追加]** を選択します。
 1. 必要に応じて、バイパスのレプリケーション グループを選択します。
-1. ユーザー名を「`username\@domain.com`」のように入力します。 バイパスが持続する秒数と、バイパスする理由を入力します。
+1. ユーザー名を「`username@domain.com`」のように入力します。 バイパスが持続する秒数と、バイパスする理由を入力します。
 1. **[追加]** を選択します。 制限時間はすぐに有効になります。 ユーザーはワンタイム バイパスの有効期限が切れる前にサインインする必要があります。
 
 この同じウィンドウから、ワンタイム バイパス レポートを表示することもできます。

@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 09/15/2020
+ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: b1fa4d3e6c017232922e500352558e34726b90cc
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 65c609343aece4e23917ede79dfb3c4723ffb70c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183083"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369061"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>チュートリアル:初めての機械学習モデルをトレーニングする (パート 3/4)
 
@@ -59,18 +59,8 @@ ms.locfileid: "98183083"
 
 これで、次のディレクトリ構造ができました。
 
-```txt
-tutorial
-└──.azureml
-|  └──config.json
-└──src
-|  └──hello.py
-|  └──model.py
-|  └──train.py
-└──01-create-workspace.py
-└──02-create-compute.py
-└──03-run-hello.py
-```
+:::image type="content" source="media/tutorial-1st-experiment-sdk-train/directory-structure.png" alt-text="src サブディレクトリの train.py を示すディレクトリ構造":::
+
 
 > [!div class="nextstepaction"]
 > [トレーニング スクリプトを作成しました](?success=create-scripts#environment) [問題が発生しました](https://www.research.net/r/7CTJQQN?issue=create-scripts)
@@ -104,7 +94,7 @@ python src/train.py                             # train model
 
 ## <a name="create-the-control-script"></a><a name="create-local"></a> コントロール スクリプトを作成する
 
-下のコントロール スクリプトと "Hello World" の送信に使用したコントロール スクリプトとの違いは、環境を設定するための行をいくつか追加することです。 is that you add a couple of extra lines to set the environment.
+下のコントロール スクリプトと "Hello World" の送信に使用したコントロール スクリプトとの違いは、 環境を設定するための行をいくつか追加することです。
 
 `tutorial` ディレクトリに `04-run-pytorch.py` という名前の新しい Python ファイルを作成します。
 

@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d5a90909345599b2389d1752e00a7bc917d06822
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 97ce1fe43bc831661a8590921d8121a8a82ba7e7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430413"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687177"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>SAML ベースのシングル サインオンで構成されたアプリへのサインインに関する問題
 以下のサインインに関する問題を解決する場合は、より優れた診断、および解決手順の自動化に向けて、次を行うことをお勧めします。
@@ -41,7 +41,8 @@ My Apps Secure Browser Extension を使用して、Azure portal で[テスト体
 1. [SAML ベースの SSO] を選択します。
 
 ## <a name="application-not-found-in-directory"></a>アプリケーションがディレクトリ内に見つからない
-`Error AADSTS70001: Application with Identifier 'https:\//contoso.com' was not found in the directory.`
+
+`Error AADSTS70001: Application with Identifier 'https://contoso.com' was not found in the directory.`
 
 **考えられる原因**
 
@@ -69,7 +70,7 @@ SAML 要求の `AssertionConsumerServiceURL` 値が、Azure AD で構成され�
 Azure AD で応答 URL の値を更新し、その URL 値が、アプリケーションが SAML 要求に含めて送信する値に一致していれば、アプリケーションにサインインできます。
 
 ## <a name="user-not-assigned-a-role"></a>ユーザーにロールが割り当てられていない
-`Error AADSTS50105: The signed in user 'brian\@contoso.com' is not assigned to a role for the application.`
+`Error AADSTS50105: The signed in user 'brian@contoso.com' is not assigned to a role for the application.`
 
 **考えられる原因**
 

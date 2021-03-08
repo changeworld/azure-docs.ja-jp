@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: c071cb9a8a27964a93e039e4d1536e078730bfc9
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 6e6eda3d711710ea7450165ab02d7a260067bfcb
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753633"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582555"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Web API を呼び出すモバイル アプリ トークンを取得する
 
@@ -26,7 +26,7 @@ ms.locfileid: "98753633"
 
 ## <a name="define-a-scope"></a>スコープの定義
 
-トークンを要求する場合、スコープを定義する必要があります。 スコープでは、お使いのアプリでアクセスできるデータを決定します。
+トークンを要求するときは、スコープを定義します。 スコープでは、お使いのアプリでアクセスできるデータを決定します。
 
 スコープを定義する最も簡単な方法は、必要な Web API `App ID URI` をスコープ `.default` と組み合わせることです。 この定義により、アプリで、ポータルに設定されているすべてのスコープが必要であることを Microsoft ID プラットフォームに通知できます。
 
@@ -236,7 +236,7 @@ Android では、`PublicClientApplicationBuilder` を使用してアプリの作
     このオプションは、トークンの取得に失敗し、ユーザーが再度サインインできるようにする場合に役立ちます。 この場合、MSAL から ID プロバイダーに `prompt=login` が送信されます。 このオプションは、組織のガバナンスにより、ユーザーがアプリケーションの特定の部分にアクセスするたびにサインインすることが求められるセキュリティ重視のアプリケーションで使用できます。
 - `Never` は、.NET 4.5 と Windows ランタイム (WinRT) のみに使用できます。 この定数を使用すると、ユーザーの操作を求めず、非表示の埋め込み Web ビューに格納された Cookie を使用しようとします。 詳細については、「[Web ブラウザーを使用する (MSAL.NET)](./msal-net-web-browsers.md)」を参照してください。
 
-    このオプションが失敗した場合は、`AcquireTokenInteractive` によって、UI 操作が必要であることを通知する例外がスローされます。 このとき、別の `Prompt` パラメーターを使用する必要があります。
+    このオプションが失敗した場合は、`AcquireTokenInteractive` によって、UI 操作が必要であることを通知する例外がスローされます。 次に、別の `Prompt` パラメーターが使用されます。
 - `NoPrompt` を使用すると、ID プロバイダーにプロンプトが送信されません。
 
     このオプションは、Azure Active Directory (Azure AD) B2C のプロファイルの編集ポリシーに対してのみ有効です。 詳細については、[B2C の詳細](https://aka.ms/msal-net-b2c-specificities)に関するページを参照してください。

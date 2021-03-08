@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 412556f3bd517539fc8ccad94c4de52226f16597
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: bb078b9738e995a1c507f7934a7dd64f075d5fe0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946220"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596528"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>ネットワーク セキュリティ グループのリソース ログ
 
@@ -28,7 +28,7 @@ NSG に対するログを有効にすると、次の種類のリソース ログ
 
 リソース ログは、Azure Resource Manager デプロイ モデルでデプロイされた NSG についてのみ使用できます。 クラシック デプロイ モデルでデプロイされた NSG についてはリソース ログを有効にできません。 2 つのモデルについて理解を深めるには、[Azure デプロイ モデルの理解](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
 
-リソース ログは、診断データの収集対象とする "*個々の*" NSG に対して個別に有効にします。 アクティビティ (操作) ログに関心がある場合は、Azure の [アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。
+リソース ログは、診断データの収集対象とする "*個々の*" NSG に対して個別に有効にします。 アクティビティ (操作) ログに関心がある場合は、Azure の [アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。
 
 ## <a name="enable-logging"></a>ログの有効化
 
@@ -87,7 +87,7 @@ Set-AzDiagnosticSetting `
   -Enabled $true
 ```
 
-両方ではなくどちらか一方のカテゴリのデータだけを記録したい場合は、前のコマンドに `-Categories` オプションを追加し、続けて *NetworkSecurityGroupEvent* または  *NetworkSecurityGroupRuleCounter* を指定します。 Log Analytics ワークスペース以外の[保存先](#log-destinations)にログを記録したい場合は、Azure [ストレージ アカウント](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)または [Event Hub](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs) の適切なパラメーターを使います。
+両方ではなくどちらか一方のカテゴリのデータだけを記録したい場合は、前のコマンドに `-Categories` オプションを追加し、続けて *NetworkSecurityGroupEvent* または  *NetworkSecurityGroupRuleCounter* を指定します。 Log Analytics ワークスペース以外の[保存先](#log-destinations)にログを記録したい場合は、Azure [ストレージ アカウント](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)または [Event Hub](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs) の適切なパラメーターを使います。
 
 ログを表示して分析します。 詳しくは、「[ログの表示と分析](#view-and-analyze-logs)」をご覧ください。
 
@@ -120,18 +120,18 @@ az monitor diagnostic-settings create \
   --resource-group myWorkspaces
 ```
 
-既存のワークスペースがない場合は、[Azure portal](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [PowerShell](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) を使って作成できます。 2 つのカテゴリのログを有効にすることができます。
+既存のワークスペースがない場合は、[Azure portal](../azure-monitor/logs/quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [PowerShell](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) を使って作成できます。 2 つのカテゴリのログを有効にすることができます。
 
-あるカテゴリまたは他のカテゴリのデータのみをログに記録する場合は、前のコマンドでデータをログに記録しないカテゴリを削除します。 Log Analytics ワークスペース以外の[保存先](#log-destinations)にログを記録したい場合は、Azure [ストレージ アカウント](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)または [Event Hub](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs) の適切なパラメーターを使います。
+あるカテゴリまたは他のカテゴリのデータのみをログに記録する場合は、前のコマンドでデータをログに記録しないカテゴリを削除します。 Log Analytics ワークスペース以外の[保存先](#log-destinations)にログを記録したい場合は、Azure [ストレージ アカウント](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)または [Event Hub](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs) の適切なパラメーターを使います。
 
 ログを表示して分析します。 詳しくは、「[ログの表示と分析](#view-and-analyze-logs)」をご覧ください。
 
 ## <a name="log-destinations"></a>ログの保存先
 
 診断データは次のようにすることができます。
-- 監査や手動での検査に使用するために、[Azure ストレージ アカウントに書き込みます](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)。 リソース診断設定を使用して、リテンション期間 (日数) を指定できます。
-- サード パーティーのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[Event ハブにストリーミングします](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)。
-- [Azure Monitor ログに書き込みます](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)。
+- 監査や手動での検査に使用するために、[Azure ストレージ アカウントに書き込みます](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)。 リソース診断設定を使用して、リテンション期間 (日数) を指定できます。
+- サード パーティーのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[Event ハブにストリーミングします](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)。
+- [Azure Monitor ログに書き込みます](../azure-monitor/essentials/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)。
 
 ## <a name="log-categories"></a>ログのカテゴリ
 
@@ -197,7 +197,7 @@ az monitor diagnostic-settings create \
 
 ## <a name="view-and-analyze-logs"></a>ログの表示と分析
 
-リソース ログのデータを表示する方法については、[Azure プラットフォーム ログの概要](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。 診断データの送信先に応じて、次のようになります。
+リソース ログのデータを表示する方法については、[Azure プラットフォーム ログの概要](../azure-monitor/essentials/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。 診断データの送信先に応じて、次のようになります。
 - **Azure Monitor ログ**: [ネットワーク セキュリティ グループ分析](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
 )ソリューションを使って、詳細な分析情報を取得できます。 このソリューションは、仮想マシン内のネットワーク インターフェイスのトラフィックを MAC アドレスに従って許可または拒否する NSG ルールの視覚化を提供します。
 - **Microsoft Azure Storage アカウント**:データは PT1H.json ファイルに書き込まれます。 各ログは次のパスで見つかります。
@@ -206,7 +206,7 @@ az monitor diagnostic-settings create \
 
 ## <a name="next-steps"></a>次のステップ
 
-- [アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の詳細について説明します。 どちらの Azure デプロイ モデルで作成された NSG に対しても、アクティビティ ログが既定で有効になります。 NSG で完了した操作を確認するには、アクティビティ ログで次のリソース タイプを含むエントリを探します。
+- [アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の詳細について説明します。 どちらの Azure デプロイ モデルで作成された NSG に対しても、アクティビティ ログが既定で有効になります。 NSG で完了した操作を確認するには、アクティビティ ログで次のリソース タイプを含むエントリを探します。
   - Microsoft.ClassicNetwork/networkSecurityGroups
   - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
   - Microsoft.Network/networkSecurityGroups
