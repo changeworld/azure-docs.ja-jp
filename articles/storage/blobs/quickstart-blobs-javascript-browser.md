@@ -70,7 +70,7 @@ Web アプリケーションでクライアントから BLOB ストレージに�
 
 Azure portal で、自分のストレージ アカウントを選択します。 新しい CORS ルールを定義するために、 **[設定]** セクションに移動し、 **[CORS]** を選択します。 このクイック スタートでは、オープン CORS ルールを作成します。
 
-![Azure BLOB ストレージ アカウントの CORS 設定](media/quickstart-blobs-javascript-browser/azure-blob-storage-cors-settings.png)
+![Azure Blob Storage アカウントの CORS 設定](media/quickstart-blobs-javascript-browser/azure-blob-storage-cors-settings.png)
 
 次の表は、各 CORS 設定の説明と、ルールを定義するために使用する値を示しています。
 
