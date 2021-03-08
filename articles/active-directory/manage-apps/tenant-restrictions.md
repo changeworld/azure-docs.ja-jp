@@ -12,12 +12,12 @@ ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b545afb370b84404d3e15f885464aabf00d2eaf2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a9a884cbe9ad30ce298318d217aa9ed1947c8f21
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687075"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123022"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
@@ -29,7 +29,7 @@ ms.locfileid: "101687075"
 
 この記事では Microsoft 365 のテナント制限に重点を置いていますが、この機能は、シングル サインオンのためにユーザーを Azure AD に送信するすべてのアプリを保護します。 Microsoft 365 で使用される Azure AD テナントとは異なるテナントで SaaS アプリを使用する場合は、必要なすべてのテナントが許可されていることをご確認ください (たとえば、B2B コラボレーション シナリオ内など)。 SaaS クラウド アプリの詳細については、[Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) をご覧ください。
 
-さらに、テナント制限機能では、OneDrive、Hotmail、Xbox.com などの[すべての Microsoft コンシューマー アプリケーション (MSA アプリ) の使用をブロック](#blocking-consumer-applications)できるようになりました。  これは、`login.live.com` エンドポイントに対して別のヘッダーを使用します。これについては、ドキュメントの最後で詳細に説明します。
+さらに、テナント制限機能では、OneDrive、Hotmail、Xbox.com などの[すべての Microsoft コンシューマー アプリケーション (MSA アプリ) の使用をブロック](#blocking-consumer-applications-public-preview)できるようになりました。  これは、`login.live.com` エンドポイントに対して別のヘッダーを使用します。これについては、ドキュメントの最後で詳細に説明します。
 
 ## <a name="how-it-works"></a>しくみ
 
@@ -178,9 +178,9 @@ Fiddler は無料の Web デバッグ プロキシです。Fiddler を使用し�
       }
    ```
 
-複数のテナントを許可する必要がある場合は、テナント名をコンマで区切ります。 次に例を示します。
+   複数のテナントを許可する必要がある場合は、テナント名をコンマで区切ります。 次に例を示します。
 
-      `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
+   `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 
 4. CustomRules ファイルを保存して閉じます。
 

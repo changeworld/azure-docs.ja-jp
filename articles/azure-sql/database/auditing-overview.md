@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/03/2021
+ms.date: 02/28/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 0e85019c8f02b8a4a97426d50a30d047b95378a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8635e3590d4196e407dfc591a55ee240806358ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572288"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691520"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -47,6 +47,8 @@ SQL Database 監査を使用して、以下を行うことができます。
 - **Premium Storage** は現在 **サポートされていません**。
 - **Azure Data Lake Storage Gen2 ストレージ アカウント** 用の **階層型名前空間** は現在 **サポートされていません**。
 - 一時停止中の **Azure Synapse** で監査を有効にすることはサポートされていません。 監査を有効にするには、Azure Synapse を再開します。
+- **Azure Synapse SQL プール** の監査では、既定の監査アクション グループ **のみ** がサポートされます。
+
 
 #### <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>サーバー レベルおよびデータベース レベルの監査ポリシーを定義する
 

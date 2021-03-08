@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: f0bb354bce0c4696f60e2be5c6186760518c7431
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: ad8a9f7af9ddabe969d090f80378ba5ff891d7f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99549188"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691945"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>チュートリアル:Azure Machine Learning の自動 ML で分類モデルを作成する
 
@@ -186,6 +186,30 @@ https://ml.azure.com で Azure Machine Learning Studio を使用して、次の�
 次の例では、 **[詳細]** と **[メトリック]** のタブを移動して、選択したモデルのプロパティ、メトリック、およびパフォーマンス グラフを表示しています。 
 
 ![イテレーションの実行の詳細](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
+
+## <a name="model-explanations"></a>モデルの説明
+
+モデルが完成するまで待つ間、モデルの説明を参照し、どのデータの特徴 (未加工または設計済み) が特定のモデルの予測に影響したかを確認することもできます。 
+
+これらのモデルの説明は、オンデマンドで生成することができます。モデルの説明ダッシュボードに **[説明 (プレビュー)]** タブの一部として概要が表示されます。
+
+モデルの説明を生成するには、 
+ 
+1. 上部にある **[実行 1]** を選択し、 **[モデル]** 画面に戻ります。 
+1. **[モデル]** タブを選択します。
+1. このチュートリアルでは、最初の **MaxAbsScaler、LightGBM** モデルを選択します。
+1. 上部にある **[Explain model]\(モデルの説明\)** ボタンを選択します。 右側には **[Explain model]\(モデルの説明\)** ペインが表示されます。 
+1. 以前に作成した **automl-compute** を選択します。 このコンピューティング クラスターにより、モデルの説明を生成する子の実行が開始されます。
+1. 下部にある **[作成]** を選択します。 画面の上部に緑色の成功メッセージが表示されます。 
+    >[!NOTE]
+    > 説明可能性の実行が完了するまでに約 2 分から 5 分かかります。
+1. **[説明 (プレビュー)]** ボタンを選択します。 説明可能性の実行が完了すると、このタブに設定されます。
+1. 左側にあるペインを展開し、 **[特徴]** の下にある **raw** という行を選択します。 
+1. 右側の **[Aggregate feature importance]\(特徴量の重要度の集計\)** タブを選択します。 このグラフは、選択したモデルの予測に影響を与えたデータの特徴を示しています。 
+
+    この例では、"*期間*" がこのモデルの予測に最も影響を与えているように見えます。
+    
+    ![モデルの説明ダッシュボード](media/tutorial-first-experiment-automated-ml/model-explanation-dashboard.png)
 
 ## <a name="deploy-the-best-model"></a>最適なモデルをデプロイする
 

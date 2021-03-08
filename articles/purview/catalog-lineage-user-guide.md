@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/29/2020
-ms.openlocfilehash: 6af183c16238c6630b194b112f0c09fd4399d443
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 47c5ad18f50bd25dd3bf351090ffc9ef5d54f0b2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694072"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202911"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Azure Purview Data Catalog の系列のユーザー ガイド
 
@@ -31,7 +31,7 @@ Azure Purview のプラットフォーム機能の 1 つに、データ プロ�
 
 | データ処理システム | サポートされるスコープ |
 | ---------------------- | ------------|
-| Azure Data Factory | [コピー アクティビティ](how-to-link-azure-data-factory.md#data-factory-copy-data-support) <br> [データ フロー アクティビティ](how-to-link-azure-data-factory.md#data-factory-data-flow-support) <br> [SSIS パッケージの実行アクティビティ](how-to-link-azure-data-factory.md#data-factory-execute-ssis-package-support) |
+| Azure Data Factory | [コピー アクティビティ](how-to-link-azure-data-factory.md#data-factory-copy-activity-support) <br> [データ フロー アクティビティ](how-to-link-azure-data-factory.md#data-factory-data-flow-support) <br> [SSIS パッケージの実行アクティビティ](how-to-link-azure-data-factory.md#data-factory-execute-ssis-package-support) |
 | Azure Data Share | [スナップショットの共有](how-to-link-azure-data-share.md) |
  
 ### <a name="data-storage-systems"></a>データ ストレージ システム
@@ -49,6 +49,8 @@ Azure ML や Power BI などデータ システムでは、Azure Purview に系�
 | Power BI | [データセット、データフロー、レポートとダッシュボード](register-scan-power-bi-tenant.md)
 
 ## <a name="get-started-with-lineage"></a>系列の使用を開始する
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE1XVQS]
 
 Purview の系列には、データセットとプロセスが含まれます。 データセットはノードとも呼ばれ、プロセスはエッジとも呼ばれます。
 
