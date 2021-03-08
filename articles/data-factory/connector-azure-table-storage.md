@@ -28,7 +28,7 @@ ms.locfileid: "100383774"
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-この Azure Table ストレージ コネクタは、次のアクティビティでサポートされます。
+この Azure Table Storage コネクタは、次のアクティビティでサポートされます。
 
 - [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
 - [Lookup アクティビティ](control-flow-lookup-activity.md)
