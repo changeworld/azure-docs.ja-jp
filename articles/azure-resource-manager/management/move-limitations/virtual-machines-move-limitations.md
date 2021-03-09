@@ -3,12 +3,12 @@ title: 新しいサブスクリプションまたはリソース グループへ
 description: Azure Resource Manager を使用して、新しいリソース グループまたはサブスクリプションに仮想マシンを移動します。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: b1032b5a632bcac82cb9ae1f1b3df7b49f5463f5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ad7023f309f1ca948711eaa9bdf3867d2ef7a6f8
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456319"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104911"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>仮想マシンの移動に関するガイダンス
 
@@ -58,7 +58,7 @@ Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
 
 Azure Backup で構成された仮想マシンを移動するには、その復元ポイントをコンテナーから削除する必要があります。
 
-仮想マシンに対して[論理的な削除](../../../backup/backup-azure-security-feature-cloud.md)が有効になっている場合は、その復元ポイントが保持されている間は仮想マシンを移動することはできません。 [論理的な削除を無効にする](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)か、復元ポイントの削除後、14 日間経過するまで待ってください。
+仮想マシンに対して[論理的な削除](../../../backup/soft-delete-virtual-machines.md)が有効になっている場合は、その復元ポイントが保持されている間は仮想マシンを移動することはできません。 [論理的な削除を無効にする](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)か、復元ポイントの削除後、14 日間経過するまで待ってください。
 
 ### <a name="portal"></a>ポータル
 

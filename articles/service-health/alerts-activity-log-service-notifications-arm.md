@@ -4,12 +4,12 @@ description: Azure サービスが発生したときに、SMS、電子メール�
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: 688314a2057964c66baeacbbc49736ea436f5ec5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 532fbae505e0bcaa6ab31a2e935362114537d134
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91630221"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594961"
 ---
 # <a name="quickstart-create-activity-log-alerts-on-service-notifications-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してサービス通知のアクティビティ ログ アラートを作成する
 
@@ -17,7 +17,7 @@ ms.locfileid: "91630221"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-サービス正常性通知は、[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に格納されます。 アクティビティ ログに大量の情報が格納されている可能性を考慮し、サービス正常性通知に関するアラートを表示および設定しやすくするための個別のユーザー インターフェイスがあります。
+サービス正常性通知は、[Azure アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)に格納されます。 アクティビティ ログに大量の情報が格納されている可能性を考慮し、サービス正常性通知に関するアラートを表示および設定しやすくするための個別のユーザー インターフェイスがあります。
 
 Azure でサービス正常性通知を Azure サブスクリプションに送信するときに、アラートを受け取ることができます。 次の情報に基づくアラートを構成できます。
 
@@ -34,7 +34,7 @@ Azure でサービス正常性通知を Azure サブスクリプションに送�
 - 既存のアクション グループを選択します。
 - 新しいアクション グループを作成します (将来のアラートで使用できます)。
 
-アクション グループの詳細については、[アクション グループの作成および管理](../azure-monitor/platform/action-groups.md)に関するページを参照してください。
+アクション グループの詳細については、[アクション グループの作成および管理](../azure-monitor/alerts/action-groups.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -138,7 +138,7 @@ Azure でサービス正常性通知を Azure サブスクリプションに送�
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-CLI と PowerShell を使用する次の例のような、[ARM テンプレートをデプロイする](../azure-resource-manager/templates/deploy-portal.md)ための標準的な方法を使ってテンプレートをデプロイします。 **リソース グループ**と **emailAddress** のサンプルの値を、ご利用の環境に適した値に置き換えます。
+CLI と PowerShell を使用する次の例のような、[ARM テンプレートをデプロイする](../azure-resource-manager/templates/deploy-portal.md)ための標準的な方法を使ってテンプレートをデプロイします。 **リソース グループ** と **emailAddress** のサンプルの値を、ご利用の環境に適した値に置き換えます。
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -159,7 +159,7 @@ New-AzResourceGroupDeployment -Name CreateServiceHealthAlert -ResourceGroupName 
 
 ## <a name="validate-the-deployment"></a>デプロイの検証
 
-次のコマンドのいずれかを使用して、ワークスペースが作成されたことを確認します。 **リソース グループ**のサンプルの値を、先ほど使用した値に置き換えます。
+次のコマンドのいずれかを使用して、ワークスペースが作成されたことを確認します。 **リソース グループ** のサンプルの値を、先ほど使用した値に置き換えます。
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -199,7 +199,7 @@ Remove-AzResourceGroup -Name my-resource-group
 - [Azure Service Health のモバイル プッシュ通知を設定](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw)する方法について学習します。
 - [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。
 - [サービス正常性の通知](service-notifications.md)について学習します。
-- [通知のレート制限](../azure-monitor/platform/alerts-rate-limiting.md)について学習します。
-- [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。
-- [アクティビティ ログ アラートの概要](../azure-monitor/platform/alerts-overview.md)を把握し、アラートを受信する方法について学習します。
-- [アクション グループ](../azure-monitor/platform/action-groups.md)について学習します。
+- [通知のレート制限](../azure-monitor/alerts/alerts-rate-limiting.md)について学習します。
+- [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/alerts/activity-log-alerts-webhook.md)を確認します。
+- [アクティビティ ログ アラートの概要](../azure-monitor/alerts/alerts-overview.md)を把握し、アラートを受信する方法について学習します。
+- [アクション グループ](../azure-monitor/alerts/action-groups.md)について学習します。

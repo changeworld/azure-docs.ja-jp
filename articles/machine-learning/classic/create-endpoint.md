@@ -3,18 +3,18 @@ title: 'ML Studio (classic): Web サービス エンドポイントを作成す�
 description: Azure Machine Learning Studio (クラシック) で Web サービスのエンドポイントを作成します。 Web サービスの各エンドポイントは、個別にアドレス指定、スロットル、および管理されます。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: 1032a90a35e60643e2ce937ed457a1fe3493d4d7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 36eb6a67aa2a8da80894c27937994afd4f263ecd
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322881"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517112"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>デプロイされた Azure Machine Learning Studio (クラシック) Web サービス用のエンドポイントを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "93322881"
 
 
 > [!NOTE]
-> このトピックでは、 **従来** の Machine Learning Web サービスに適用できる手法について説明します。
+> このトピックでは、**従来** の Machine Learning Web サービスに適用できる手法について説明します。
 
 Web サービスがデプロイされた後に、そのサービスに対して既定のエンドポイントが作成されます。 既定のエンドポイントは、その API キーを使用して呼び出すことができます。 Web サービス ポータルから、独自のキーでさらにエンドポイントを追加できます。
 Web サービスの各エンドポイントは、個別にアドレス指定、スロットル、および管理されます。 各エンドポイントは一意の URL と承認キーであり、お客様に配布することができます。

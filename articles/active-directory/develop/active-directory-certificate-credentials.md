@@ -13,18 +13,18 @@ ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f3222c790ccd0cee936b246253a16b5c434c61c8
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: cfbcc8523ff1d5858317a3654b58ec7b2d23607a
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602208"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582028"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft ID プラットフォーム アプリケーションの認証証明書資格情報
 
 Microsoft ID プラットフォームでは、OAuth 2.0 [クライアント資格情報付与](v2-oauth2-client-creds-grant-flow.md)フローや [On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md) (OBO) フローなど、クライアント シークレットを使用できるあらゆる場所で、アプリケーションが認証用の独自の資格情報を使用することが許可されています。
 
-アプリケーションが認証を行うために使用できる資格情報の 1 つの形式は、アプリケーションが所有する証明書を使用して署名された [JSON Web トークン](./security-tokens.md#json-web-tokens-jwts-and-claims) (JWT) アサーションです。
+アプリケーションが認証を行うために使用できる資格情報の 1 つの形式は、アプリケーションが所有する証明書を使用して署名された [JSON Web トークン](./security-tokens.md#json-web-tokens-and-claims) (JWT) アサーションです。
 
 ## <a name="assertion-format"></a>アサーションの形式
 
@@ -101,12 +101,12 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 ### <a name="updating-the-application-manifest"></a>アプリケーション マニフェストの更新
 
-証明書を入手したら、次を計算する必要があります。
+証明書を取得した後、これらの値を計算します。
 
 - `$base64Thumbprint` - Base64 でエンコードされた証明書ハッシュの値
 - `$base64Value` - Base64 でエンコードされた証明書生データの値
 
-また、GUID を指定して、アプリケーション マニフェストでキーを特定する必要もあります (`$keyId`)。
+GUID を指定して、アプリケーション マニフェストでキーを特定します (`$keyId`)。
 
 クライアント アプリケーションの Azure アプリ登録で、以下を実行します。
 1. **[マニフェスト]** を選択して、アプリケーション マニフェストを開きます。

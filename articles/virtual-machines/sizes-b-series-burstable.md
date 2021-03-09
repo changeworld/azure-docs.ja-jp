@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 14c8584699ddc981fc24cc29b78c187288c6fb57
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: e3a24e4c947afdc1970f6e624335ecc84dd8eff2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203390"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594397"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>負荷の急増に対応できる B シリーズ仮想マシンのサイズ
 
@@ -27,8 +27,13 @@ B シリーズには、次の VM サイズが用意されています。
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています \*\*<br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
+
+\* B シリーズの VM はバースト可能であるため、ACU の数はワークロードとコアの使用状況によって異なります。<br>
+**高速ネットワークは、*Standard_B12ms*、*Standard_B16ms*、*Standard_B20ms* でのみサポートされます。
 <br>
-\* B シリーズの VM はバースト可能であるため、ACU の数はワークロードとコアの使用状況によって異なります。
+<br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | VM のベース CPU パフォーマンス | VM の最大 CPU パフォーマンス | 初期のクレジット | 1 時間に蓄積されるクレジット | 蓄積できるクレジットの最大値 | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -104,7 +109,7 @@ B16 の特徴:
 
 **A**: **Credit** メトリックでは、VM で蓄積されたクレジットの数を確認できます。**ConsumedCredit** メトリックでは、蓄積した CPU クレジットをどれだけ消費したかを確認できます。    この 2 つのメトリックは、ポータルの [メトリック] ウィンドウのほか、プログラムを使って Azure Monitor API 経由で確認できるようにする予定です。
 
-Azure でメトリック データにアクセスする方法の詳細については、「[Microsoft Azure のメトリックの概要](../azure-monitor/platform/data-platform.md)」を参照してください。
+Azure でメトリック データにアクセスする方法の詳細については、「[Microsoft Azure のメトリックの概要](../azure-monitor/data-platform.md)」を参照してください。
 
 ### <a name="q-how-are-credits-accumulated-and-consumed"></a>Q:クレジットはどのように蓄積され、消費されますか?
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 758f7de46c524406f31a40072250eb7d59745d42
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 648e7991784212e4fe781efd5d9f01cb571c5012
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736090"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807854"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>App Service 用の Azure セキュリティ ベースライン
 
@@ -1111,7 +1111,7 @@ Azure Storage 暗号化は、Resource Manager と従来のストレージ アカ
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス**: 連続エクスポート機能を使用して Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 ビジネス ニーズに応じて、Security Center データ コネクタを使用してアラートを Sentinel にストリーミングします。
+**ガイダンス**: 連続エクスポート機能を使用して Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 ビジネス ニーズに応じて、Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングします。
 
 - [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 

@@ -5,20 +5,20 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 6dc3c582466fe0646b0350213947ff2173368bde
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 637f09c5ee52928631b965dfa6caea9368b44991
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936840"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550761"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
 [Azure Functions](functions-overview.md) には、関数を監視するための [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) とのビルトイン統合機能が用意されています。 この記事では、Azure Functions を監視するために Azure によって提供されている監視機能の概要について説明します。
 
-Application Insights を使用すると、ログ、パフォーマンス、およびエラー データを収集できます。 パフォーマンスの異常が自動的に検出されるほか、強力な分析ツールが特徴となっていて、より簡単に、問題を診断したり、関数がどのように使用されているかを理解したりすることができます。 これらのツールは、お使いの関数のパフォーマンスと使いやすさの継続的改善に役立つように設計されています。 ローカル関数アプリ プロジェクトの開発中に Application Insights を使用することもできます。 詳細については、「[Application Insights とは何か](../azure-monitor/app/app-insights-overview.md)」を参照してください。
+Application Insights を使用すると、ログ、パフォーマンス、およびエラー データを収集できます。 パフォーマンスの異常が自動的に検出されるほか、強力な分析ツールが特徴となっていて、より簡単に、問題を診断したり、関数がどのように使用されているかを理解したりすることができます。 これらのツールは、お使いの関数のパフォーマンスと使いやすさの継続的改善に役立つように設計されています。 ローカルFunction App  プロジェクトの開発中に Application Insights を使用することもできます。 詳細については、「[Application Insights とは何か](../azure-monitor/app/app-insights-overview.md)」を参照してください。
 
-Application Insights インストルメンテーションは Azure Functions に組み込まれているため、関数アプリを Application Insights リソースに接続するためには、有効なインストルメンテーション キーが必要です。 インストルメンテーション キーは、Azure 内に関数アプリのリソースを作成するときに、アプリケーション設定に追加されます。 関数アプリにまだこのキーがない場合は、[手動で設定](configure-monitoring.md#enable-application-insights-integration)できます。  
+Application Insights インストルメンテーションは Azure Functions に組み込まれているため、Function App を Application Insights リソースに接続するためには、有効なインストルメンテーション キーが必要です。 インストルメンテーション キーは、Azure 内にFunction App のリソースを作成するときに、アプリケーション設定に追加されます。 Function App にまだこのキーがない場合は、[手動で設定](configure-monitoring.md#enable-application-insights-integration)できます。  
 
 ## <a name="application-insights-pricing-and-limits"></a>Application Insights の価格と制限
 
@@ -33,7 +33,7 @@ Function App で使用できる Application Insights 機能の完全な一覧に
 
 ## <a name="application-insights-integration"></a>Application Insights の統合
 
-一般に、関数アプリを作成するときに Application Insights インスタンスを作成します。 この場合、統合に必要なインストルメンテーション キーは、*APPINSIGHTS_INSTRUMENTATIONKEY* という名前のアプリケーション設定として既に設定されています。 何らかの理由で関数アプリにインストルメンテーション キーが設定されていない場合は、[Application Insights の統合を有効にする](configure-monitoring.md#enable-application-insights-integration)必要があります。  
+一般に、Function App を作成するときに Application Insights インスタンスを作成します。 この場合、統合に必要なインストルメンテーション キーは、*APPINSIGHTS_INSTRUMENTATIONKEY* という名前のアプリケーション設定として既に設定されています。 何らかの理由でFunction App にインストルメンテーション キーが設定されていない場合は、[Application Insights の統合を有効にする](configure-monitoring.md#enable-application-insights-integration)必要があります。  
 
 ## <a name="collecting-telemetry-data"></a>利用統計情報の収集
 
@@ -50,7 +50,7 @@ Application Insights の統合が有効になっていると、利用統計情�
 
 ログ レベルの詳細については、「[ログ レベルを構成する](configure-monitoring.md#configure-log-levels)」を参照してください。
 
-ログに記録された項目をカテゴリに割り当てることで、関数アプリ内の特定のソースから生成されるテレメトリをより詳細に制御できます。 カテゴリを使用すると、収集されたデータに対する分析を実行しやすくなります。 関数コードから書き込まれるトレースは、関数名に基づいて個々のカテゴリに割り当てられます。 カテゴリの詳細については、「[カテゴリを構成する](configure-monitoring.md#configure-categories)」を参照してください。
+ログに記録された項目をカテゴリに割り当てることで、Function App 内の特定のソースから生成されるテレメトリをより詳細に制御できます。 カテゴリを使用すると、収集されたデータに対する分析を実行しやすくなります。 関数コードから書き込まれるトレースは、関数名に基づいて個々のカテゴリに割り当てられます。 カテゴリの詳細については、「[カテゴリを構成する](configure-monitoring.md#configure-categories)」を参照してください。
 
 ### <a name="custom-telemetry-data"></a>カスタム利用統計情報
 
@@ -80,7 +80,7 @@ Application Insights では、収集された依存関係データの "_アプ�
 
 ## <a name="writing-to-logs"></a>ログへの書き込み 
 
-ログに書き込む方法と、使用する API は、関数アプリ プロジェクトの言語によって異なります。   
+ログに書き込む方法と、使用する API は、Function App  プロジェクトの言語によって異なります。   
 関数からのログの書き込みの詳細については、お使いの言語の開発者ガイドを参照してください。
 
 + [C# (.NET クラス ライブラリ)](functions-dotnet-class-library.md#logging)
@@ -88,6 +88,10 @@ Application Insights では、収集された依存関係データの "_アプ�
 + [JavaScript](functions-reference-node.md#write-trace-output-to-logs) 
 + [PowerShell](functions-reference-powershell.md#logging)
 + [Python](functions-reference-python.md#logging)
+
+## <a name="analyze-data"></a>データを分析する
+
+既定では、関数アプリから収集されたデータは、Application Insights に格納されます。 [Azure portal](https://portal.azure.com) では、Application Insights によって、テレメトリ データの広範囲にわたるセットの視覚化が提供されます。 エラー ログ、クエリ イベント、メトリックの詳細を表示できます。 収集したデータを表示してクエリを実行する方法の基本的な例など、詳細については、「[Application Insights で Azure Functions のテレメトリを分析する](analyze-telemetry-data.md)」を参照してください。 
 
 ## <a name="streaming-logs"></a>ストリーミング ログ
 
@@ -97,7 +101,7 @@ Application Insights では、収集された依存関係データの "_アプ�
 
 * **組み込みのログ ストリーミング**: App Service プラットフォームでは、アプリケーション ログ ファイルのストリームを表示できます。 このストリームは、[ローカル開発](functions-develop-local.md)中に関数をデバッグするときや、ポータルで **[テスト]** タブを使用するときに表示される出力と同等です。 すべてのログベース情報が表示されます。 詳しくは、[ログのストリーミング](../app-service/troubleshoot-diagnostic-logs.md#stream-logs)に関する記事をご覧ください。 このストリーミング方法でサポートされるインスタンスは 1 つだけです。従量課金プランの Linux 上で実行されているアプリでは、この方法を使用できません。
 
-* **Live Metrics Stream**: 関数アプリが [Application Insights に接続されている](configure-monitoring.md#enable-application-insights-integration)ときには、[Live Metrics Stream](../azure-monitor/app/live-stream.md) を使用して、Azure portal でログ データやその他のメトリックをほぼリアルタイムで表示できます。 この方法は、複数のインスタンス上または従量課金プランの Linux 上で実行されている関数を監視する場合に使用します。 このメソッドでは、[サンプリングされたデータ](configure-monitoring.md#configure-sampling)が使用されます。
+* **Live Metrics Stream**: Function App が [Application Insights に接続されている](configure-monitoring.md#enable-application-insights-integration)ときには、[Live Metrics Stream](../azure-monitor/app/live-stream.md) を使用して、Azure portal でログ データやその他のメトリックをほぼリアルタイムで表示できます。 この方法は、複数のインスタンス上または従量課金プランの Linux 上で実行されている関数を監視する場合に使用します。 このメソッドでは、[サンプリングされたデータ](configure-monitoring.md#configure-sampling)が使用されます。
 
 ログ ストリームは、ポータル内とほとんどのローカル開発環境内の両方で表示できます。 ログ ストリームを有効にする方法については、「[Azure Functions でストリーミング実行ログを有効にする](streaming-logs.md)」を参照してください。
 
@@ -110,10 +114,10 @@ Application Insights を使用すると、利用統計情報を長期的スト�
 関数も Azure Monitor と統合されるため、診断設定を使用しても、Azure Monitor ログを含むさまざまな送信先に利用統計情報を送信できます。 詳細については、「[Azure Monitor ログを使用した Azure Functions の監視](functions-monitor-log-analytics.md)」を参照してください。
 
 ## <a name="scale-controller-logs"></a>コントローラー ログをスケーリングする
- 
+
 _この機能はプレビュー段階にあります。_ 
 
-[Azure Functions スケール コントローラー](./event-driven-scaling.md#runtime-scaling)は、アプリが実行されている Azure Functions ホストのインスタンスを監視します。 このコントローラーは、現在のパフォーマンスに基づいて、インスタンスを追加または削除するタイミングを決定します。 スケール コントローラーから Application Insights にログを出力させることで、関数アプリのためにスケール コントローラーで下されている決定をより詳細に理解できます。 生成されたログを、別のサービスによる分析のために BLOB ストレージに格納することもできます。 
+[Azure Functions スケール コントローラー](./event-driven-scaling.md#runtime-scaling)は、アプリが実行されている Azure Functions ホストのインスタンスを監視します。 このコントローラーは、現在のパフォーマンスに基づいて、インスタンスを追加または削除するタイミングを決定します。 スケール コントローラーから Application Insights にログを出力させることで、Function App のためにスケール コントローラーで下されている決定をより詳細に理解できます。 生成されたログを、別のサービスによる分析のために BLOB ストレージに格納することもできます。 
 
 この機能を有効にするには、`SCALE_CONTROLLER_LOGGING_ENABLED` という名前のアプリケーション設定を、ご利用の関数アプリの設定に追加します。 詳細については、「[スケール コントローラー ログを構成する](configure-monitoring.md#configure-scale-controller-logs)」を参照してください。
 

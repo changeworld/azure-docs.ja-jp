@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 4a798443560f62673ef8fcf0bce970a66071d011
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: e1dcd52660ff43a93c6a170912fea5a5847fe9d3
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232388"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575756"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft ID プラットフォーム アクセス トークン
 
@@ -241,7 +241,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 * `appidacr` を使用して、呼び出し元のクライアントの認証の状態を検証します。これは、パブリック クライアントが API の呼び出しを許可されていない場合は 0 になります。
 * 過去の `nonce` 要求のリストと照合して、トークンが再生されていないことを確認します。
 * `tid` が、API の呼び出しを許可されているテナントと一致することを確認します。
-* `acr` 要求を使用して、ユーザーが MFA を実行したことを確認します。 これは、[条件付きアクセス](../conditional-access/overview.md)を使用して適用する必要があります。
+* `amr` 要求を使用して、ユーザーが MFA を実行したことを確認します。 これは、[条件付きアクセス](../conditional-access/overview.md)を使用して適用する必要があります。
 * アクセス トークンで `roles` または `groups` 要求を要求した場合は、ユーザーが、このアクションの実行を許可されているグループに属していることを確認します。
   * 暗黙的フローを使用してトークンを取得した場合、このデータは大きすぎてトークンに収まらないことが多いため、データを [Microsoft Graph](https://developer.microsoft.com/graph/) に照会することが必要になる可能性があります。
 

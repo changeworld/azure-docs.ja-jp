@@ -10,29 +10,29 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 09/04/2019
-  ms.openlocfilehash: 950ed3c6c8a5d4b495dc3f72e1e6105c9391c3fa
-  ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+  ms.openlocfilehash: e7f3d47e17b090d04db6a52260c3a4c70db91fba
+  ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/26/2021
-  ms.locfileid: "98786224"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102199103"
 highlightedContent:
   items:
   - title: Azure IoT とは?
     itemType: overview
     url: ../iot-fundamentals/iot-introduction.md
+  - title: Azure IoT でのデバイス開発の概要
+    itemType: get-started
+    url: ../iot-develop/index.yml
   - title: Azure IoT 用 VS Code ツールのインストール
     itemType: download
     url: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools
   - title: Azure CLI を使用した Azure IoT の開発の開始
     itemType: reference
-    url: /cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest
+    url: /cli/azure/azure-cli-reference-for-IoT
   - title: Azure IoT のコード サンプルの参照
     itemType: overview
     url: /samples/browse/?term=iot
-  - title: Azure IoT デプロイのセキュリティ保護
-    itemType: concept
-    url: ../iot-fundamentals/security-recommendations.md
   - title: Azure IoT 参照アーキテクチャ
     itemType: architecture
     url: /azure/architecture/reference-architectures/iot/
@@ -75,7 +75,7 @@ conceptualContent:
       itemType: tutorial
       text: デバイスの接続
     footerLink:
-      url: ../iot-central/core/index.yml
+      url: ../iot-central/index.yml
       text: 詳細情報
   - title: エッジ デバイスでクラウド インテリジェンスを実行する
     links:

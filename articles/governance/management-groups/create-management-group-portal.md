@@ -1,14 +1,14 @@
 ---
 title: ポータルを使用して管理グループを作成する
 description: このクイックスタートでは、Azure portal を使用して、リソースを階層で整理する管理グループを作成します。
-ms.date: 08/31/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: c8cb7b8bd3ad33d1f315670bfbb1782972e6e97f
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 5a336fe4caf5d2f825a93b5c7b8f8d05f6255c39
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89661734"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592434"
 ---
 # <a name="quickstart-create-a-management-group"></a>クイック スタート:管理グループの作成
 
@@ -39,7 +39,7 @@ ms.locfileid: "89661734"
    - **[管理グループ ID]** は、この管理グループでコマンドを送信するために使用するディレクトリの一意識別子です。 この識別子は、このグループを識別するために Azure システム全体で使用されるため、作成後は編集できません。 [ルート管理グループ](./overview.md#root-management-group-for-each-directory)は、Azure Active Directory ID である ID を使用して自動的に作成されます。 他のすべての管理グループには、一意の ID を割り当てます。
    - 表示名フィールドは、Azure Portal 内で表示される名前です。 管理グループの作成時には別の表示名は省略可能なフィールドで、いつでも変更できます。
 
-   :::image type="content" source="./media/create_context_menu.png" alt-text="子管理グループとサブスクリプションが表示されている [管理グループ] ページのスクリーンショット。":::
+   :::image type="content" source="./media/create_context_menu.png" alt-text="新しい管理グループを作成するための [管理グループの追加] オプションのスクリーンショット。":::
 
 1. **[保存]** を選択します。
 

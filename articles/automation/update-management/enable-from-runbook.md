@@ -2,15 +2,16 @@
 title: Runbook から Azure Automation の Update Management を有効にする
 description: この記事では、Runbook から Update Management を有効にする方法について説明します。
 services: automation
+ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: mvc
-ms.openlocfilehash: 5a9f12a823a22bfb48ccb4482d3402464aa77fea
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5377a3ff7ef7033b57f8785baa615a717ef7fa0f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95908364"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575874"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Runbook から Update Management を有効にする
 
@@ -28,7 +29,7 @@ ms.locfileid: "95908364"
 
 * Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
 * マシンを管理する [Automation アカウント](../automation-security-overview.md)。
-* [Log Analytics ワークスペース](../../azure-monitor/platform/design-logs-deployment.md)
+* [Log Analytics ワークスペース](../../azure-monitor/logs/design-logs-deployment.md)
 * [仮想マシン](../../virtual-machines/windows/quick-create-portal.md)。
 * **Enable-AutomationSolution** Runbook によって使用される 2 つの Automation 資産。 この Runbook が Automation アカウントにまだ存在しない場合、最初の実行時に **Enable-MultipleSolution** Runbook によって自動的にインポートされます。
     * *LASolutionSubscriptionId*:Log Analytics ワークスペースが配置されているサブスクリプション ID。

@@ -4,12 +4,12 @@ description: Application Insights を使用して Node.js サービスのパフ�
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 7aea6c03b0ce35fa0e74c39ff5f94f714447ad6f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 9eba74bcf2b4b047b3ed881342db4f7b1011f928
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920573"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585760"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights を使用して Node.js サービスとアプリを監視する
 
@@ -335,6 +335,12 @@ server.on("listening", () => {
 });
 ```
 
+### <a name="flush"></a>フラッシュ
+
+既定では、テレメトリは 15 秒間バッファリングされた後、インジェスト サーバーへ送信されます。 存続期間の短いアプリケーションの場合 (CLI ツールなど) は、アプリケーションの終了時に、バッファリングされたテレメトリを手動でフラッシュすることが必要になる場合があります (`appInsights.defaultClient.flush()`)。
+
+SDK はアプリケーションがクラッシュしたことを検知すると、フラッシュを自動的に呼び出します (`appInsights.defaultClient.flush({ isAppCrashing: true })`)。 フラッシュ オプション (`isAppCrashing`) によって、アプリケーションが異常な状態であり、テレメトリ送信に適していないと見なされます。 代わりに、SDK はバッファリングしたすべてのテレメトリを[永続ストレージ](./data-retention-privacy.md#nodejs)に保存して、アプリケーションを終了させます。 アプリケーションは、再起動すると、永続ストレージに保存されたテレメトリを送信しようと試みます。
+
 ### <a name="preprocess-data-with-telemetry-processors"></a>テレメトリ プロセッサを使用したデータの前処理
 
 *テレメトリ プロセッサ* を使用して、収集されたデータを保持のために送信する前に、データ処理とフィルター処理を行うことができます。 テレメトリ プロセッサは、テレメトリ項目がクラウドに送信される前に、追加された順序で、1 つずつ呼び出されます。
@@ -419,7 +425,7 @@ client.config.PROPERTYNAME = VALUE;
 ## <a name="next-steps"></a>次のステップ
 
 * [ポータル内でテレメトリを監視する](./overview-dashboard.md)
-* [テレメトリに関する分析クエリを記述する](../log-query/log-analytics-tutorial.md)
+* [テレメトリに関する分析クエリを記述する](../logs/log-analytics-tutorial.md)
 
 <!--references-->
 

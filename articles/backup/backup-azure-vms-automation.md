@@ -3,12 +3,12 @@ title: PowerShell を使用して Azure VM をバックアップおよび復元�
 description: PowerShell を使用して Azure Backup によって Azure VM をバックアップおよび復旧する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 90bb6f60712fc59aec05ff2e85364fccf00ff1df
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: f59c18aecf577bc7f7d0b1360dd36504305af893
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804789"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633191"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップおよび復元する
 
@@ -527,6 +527,53 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
 ディスクを復元したら、次のセクションに移動して VM を作成します。
 
+#### <a name="restore-disks-to-a-secondary-region"></a>セカンダリ リージョンへのディスクの復元
+
+VM を保護したコンテナーでリージョンをまたがる復元が有効になっている場合、バックアップ データはセカンダリ リージョンにレプリケートされます。 バックアップ データを使用して復元を実行できます。 セカンダリ リージョンで復元をトリガーするには、次の手順を実行します。
+
+1. VM が保護されている[コンテナー ID をフェッチ](#fetch-the-vault-id)します。
+1. [復元する適切なバックアップ項目](#select-the-vm-when-restoring-files)を選択します。
+1. 復元を実行するために使用するセカンダリ リージョンの適切な回復ポイントを選択します。
+
+    この手順を完了するには、次のコマンドを実行します。
+
+    ```powershell
+    $rp=Get-AzRecoveryServicesBackupRecoveryPoint -UseSecondaryRegion -Item $backupitem -VaultId $targetVault.ID
+    $rp=$rp[0]
+    ```
+
+1. セカンダリ リージョンで復元をトリガーするには、`-RestoreToSecondaryRegion` パラメーターを指定して [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) コマンドレットを実行します。
+
+    この手順を完了するには、次のコマンドを実行します。
+
+    ```powershell
+    $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID -VaultLocation $targetVault.Location -RestoreToSecondaryRegion -RestoreOnlyOSDisk
+    ```
+
+    出力は次の例のようになります。
+
+    ```output
+    WorkloadName     Operation             Status              StartTime                 EndTime          JobID
+    ------------     ---------             ------              ---------                 -------          ----------
+    V2VM             CrossRegionRestore   InProgress           4/23/2016 5:00:30 PM                       cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
+    ```
+
+1. 復元ジョブを監視するには、`-UseSecondaryRegion` パラメーターを指定して、[Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) コマンドレットを実行します。
+
+    この手順を完了するには、次のコマンドを実行します。
+
+    ```powershell
+    Get-AzRecoveryServicesBackupJob -From (Get-Date).AddDays(-7).ToUniversalTime() -To (Get-Date).ToUniversalTime() -UseSecondaryRegion -VaultId $targetVault.ID
+    ```
+
+    出力は次の例のようになります。
+
+    ```output
+    WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+    ------------     ---------            ------               ---------                 -------                   -----
+    V2VM             CrossRegionRestore   InProgress           2/8/2021 4:24:57 PM                                 2d071b07-8f7c-4368-bc39-98c7fb2983f7
+    ```
+
 ## <a name="replace-disks-in-azure-vm"></a>Azure VM でディスクを置き換える
 
 ディスクと構成情報を置き換えるには、次の手順を行います。
@@ -575,7 +622,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 3. [ここ](../azure-resource-manager/templates/deploy-powershell.md)の説明に従って、テンプレートをデプロイして新しい VM を作成します。
 
     ```powershell
-    New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobFullURI -storageAccountType Standard_GRS
+    New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobFullURI
     ```
 
 ### <a name="create-a-vm-using-the-config-file"></a>構成ファイルを使用して VM を作成する

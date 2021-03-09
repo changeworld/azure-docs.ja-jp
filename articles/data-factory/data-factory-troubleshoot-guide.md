@@ -1,19 +1,17 @@
 ---
 title: Azure Data Factory のトラブルシューティング | Microsoft Docs
 description: Azure Data Factory における外部の制御アクティビティのトラブルシューティング方法について説明します。
-services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/30/2020
 ms.author: abnarain
-ms.reviewer: craigg
-ms.openlocfilehash: 922ec6c4b579a657e7ee5e872148f8126ce175e2
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 101e55188b8021040e2fd6bd573c1c6330241e72
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822286"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382805"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory のトラブルシューティング
 
@@ -1019,7 +1017,7 @@ ms.locfileid: "97822286"
 
 ### <a name="activity-stuck-issue"></a>アクティビティの停止に関する問題
 
-アクティビティが通常の実行時間を大幅に超えて実行され、ほとんど進行していない場合、そのアクティビティは停止している可能性があります。 取り消しを試みた後、再試行して問題が解決するかどうかを確認できます。 コピー アクティビティの場合は、パフォーマンスの監視とトラブルシューティングの詳細について「[コピーアクティビティのパフォーマンスのトラブルシューティング](copy-activity-performance-troubleshooting.md)」を参照してください。データ フローの場合は、[マッピング データ フローのパフォーマンスとチューニング ガイド](concepts-data-flow-performance.md)に関するページをご覧ください。
+アクティビティが通常の実行時間を大幅に超えて実行され、ほとんど進行していない場合、そのアクティビティは停止している可能性があります。 取り消しを試みた後、再試行して問題が解決するかどうかを確認できます。 コピー アクティビティの場合は、パフォーマンスの監視とトラブルシューティングの詳細について「[コピーアクティビティのパフォーマンスのトラブルシューティング](copy-activity-performance-troubleshooting.md)」を参照してください。データ フローの場合は、[マッピング データ フローのパフォーマンス](concepts-data-flow-performance.md)とチューニング ガイドに関するページを参照してください。
 
 ### <a name="payload-is-too-large"></a>ペイロードが大きすぎます
 

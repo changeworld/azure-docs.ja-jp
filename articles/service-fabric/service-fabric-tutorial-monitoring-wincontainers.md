@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure Service Fabric 上の Win
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: cf14cce631a505a951ec4d9c0955431b9a98527e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7689d6e259055137a8d1d3c61552790ab9f28d3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840678"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588244"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>チュートリアル:Azure Monitor ログを使用して Service Fabric で Windows コンテナーを監視する
 
@@ -181,19 +181,19 @@ ms.locfileid: "91840678"
 
 ## <a name="add-the-container-monitoring-solution-to-your-log-analytics-workspace"></a>Log Analytics ワークスペースにコンテナー監視ソリューションを追加する
 
-ワークスペースでコンテナー ソリューションを設定するには、*コンテナー監視ソリューション*を検索し、([監視 + 管理] カテゴリの下に) コンテナー リソースを作成します。
+ワークスペースでコンテナー ソリューションを設定するには、*コンテナー監視ソリューション* を検索し、([監視 + 管理] カテゴリの下に) コンテナー リソースを作成します。
 
 ![コンテナー ソリューションの追加](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 
 "*Log Analytics ワークスペース*" の入力を求められたら、リソース グループに作成したワークスペースを選択し、 **[作成]** を選択します。 "*コンテナー監視ソリューション*" がワークスペースに追加され、テンプレートによってデプロイされた Log Analytics エージェントが起動され、Docker ログと統計情報の収集が開始されます。
 
-*リソース グループ*に戻ると、新しく追加された監視ソリューションが表示されます。 それを選択すると、ランディング ページに実行中のコンテナー イメージ数が表示されます。
+*リソース グループ* に戻ると、新しく追加された監視ソリューションが表示されます。 それを選択すると、ランディング ページに実行中のコンテナー イメージ数が表示されます。
 
-*チュートリアルの[第 2 部](service-fabric-host-app-in-a-container.md)の fabrikam コンテナーのインスタンスが 5 個実行されていたことがわかります*
+*チュートリアルの [第 2 部](service-fabric-host-app-in-a-container.md)の fabrikam コンテナーのインスタンスが 5 個実行されていたことがわかります*
 
 ![コンテナー ソリューションのランディング ページ](./media/service-fabric-tutorial-monitoring-wincontainers/solution-landing.png)
 
-**コンテナー監視ソリューション**を選択すると、詳細なダッシュボードが表示されます。ここでは、複数のパネルをスクロールしたり、Azure Monitor ログでクエリを実行したりすることができます。
+**コンテナー監視ソリューション** を選択すると、詳細なダッシュボードが表示されます。ここでは、複数のパネルをスクロールしたり、Azure Monitor ログでクエリを実行したりすることができます。
 
 エージェントが Docker ログを選択しているので、既定で *stdout* と *stderr* が表示されます。 水平方向にスクロールすると、コンテナー イメージのインベントリ、状態、メトリック、さらに役立つデータを入手するために実行できるサンプル クエリが表示されます。
 
@@ -212,7 +212,7 @@ Log Analytics ワークスペースに移動します。ここでは、ソリュ
 * **[接続されたソース]**  >  **[Windows サーバー]** の順に選択し、"*5 台の Windows コンピューターが接続されています*" と表示されることを確認します。
 * **[データ]**  >  **[Windows パフォーマンス カウンター]** の順に選択し、新しいパフォーマンス カウンターを検索して追加します。 この画面には、収集できるパフォーマンス カウンターの Azure Monitor ログのレコメンデーション一覧と、他のカウンターを検索するオプションが表示されます。 **Processor(_Total)\% Processor Time** カウンターと **Memory(*)\Available MBytes** カウンターが収集されていることを確認します。
 
-数分後にコンテナー監視ソリューションを**更新**すると、*コンピューターのパフォーマンス* データが表示されるようになります。 このデータから、リソースの使用状況を把握することができます。 また、これらのメトリックを使用して、クラスターの拡大縮小に関する適切な判断を下すことができます。また、クラスターが期待どおりに負荷を分散しているかどうかを確認することができます。
+数分後にコンテナー監視ソリューションを **更新** すると、*コンピューターのパフォーマンス* データが表示されるようになります。 このデータから、リソースの使用状況を把握することができます。 また、これらのメトリックを使用して、クラスターの拡大縮小に関する適切な判断を下すことができます。また、クラスターが期待どおりに負荷を分散しているかどうかを確認することができます。
 
 *注: これらのメトリックを使用するには、時間フィルターが適切に設定されていることを確認します。*
 
@@ -230,6 +230,6 @@ Log Analytics ワークスペースに移動します。ここでは、ソリュ
 コンテナー化されたアプリケーションの監視を構成したので、以下を試してみましょう。
 
 * このチュートリアルと同様の手順で、Linux クラスター用に Azure Monitor ログを構成する。 [このテンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS)を参照して、Resource Manager テンプレートを変更してみましょう。
-* Azure Monitor ログを構成して、検出と診断に役立つ[自動アラート](../azure-monitor/platform/alerts-overview.md)を設定する。
+* Azure Monitor ログを構成して、検出と診断に役立つ[自動アラート](../azure-monitor/alerts/alerts-overview.md)を設定する。
 * Service Fabric の[推奨されるパフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)の一覧を参照して、実際のクラスターに合わせて構成する。
-* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../azure-monitor/log-query/log-query-overview.md)機能をよく理解します。
+* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../azure-monitor/logs/log-query-overview.md)機能をよく理解します。

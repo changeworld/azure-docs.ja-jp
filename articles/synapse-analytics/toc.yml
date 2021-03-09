@@ -1,6 +1,6 @@
 - name: Azure Synapse Analytics
   href: index.yml
-- name: 専用 SQL プールに切り替える (旧称 SQL DW)
+- name: 専用 SQL プールに切り替える (旧称 SQL DW) >
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: 概要
   items:
@@ -48,17 +48,19 @@
   items:
     - name: クイックスタート
       items:
-        - name: Azure portal を使用してワークスペースを作成する
-          href: quickstart-create-workspace.md
-          displayName: quickstart
-        - name: Azure CLI を使用してワークスペースを作成する
-          href: quickstart-create-workspace-cli.md
-          displayName: quickstart
-        - name: Azure PowerShell を使用してワークスペースを作成する
-          href: quickstart-create-workspace-powershell.md
-          displayName: quickstart
-        - name: テンプレートを使用したデプロイ
-          href: quickstart-deployment-template-workspaces.md
+        - name: ワークスペースの作成
+          items:
+            - name: Azure portal
+              href: quickstart-create-workspace.md
+              displayName: quickstart
+            - name: Azure CLI
+              href: quickstart-create-workspace-cli.md
+              displayName: quickstart
+            - name: Azure PowerShell
+              href: quickstart-create-workspace-powershell.md
+              displayName: quickstart
+            - name: ARM テンプレート
+              href: quickstart-deployment-template-workspaces.md
           displayName: quickstart
         - name: Power BI ワークスペースをリンクする
           href: quickstart-power-bi.md
@@ -96,6 +98,8 @@
           href: ./cicd/continuous-integration-deployment.md
         - name: セキュリティ
           items:
+            - name: Azure Policy によるセキュリティ制御
+              href: ./security-controls-policy.md
             - name: 暗号化
               href: ./security/workspaces-encryption.md
             - name: ネットワークのセキュリティ
@@ -111,6 +115,8 @@
                   href: ./security/workspace-data-exfiltration-protection.md
                 - name: プライベート リンク ハブの Synapse ワークスペース
                   href: ./security/synapse-private-link-hubs.md
+                - name: セキュリティで保護されたストレージ アカウントへの接続
+                  href: ./security/connect-to-a-secure-storage-account.md
             - name: 認証とパススルー
               items:
                 - name: Azure Active Directory
@@ -415,7 +421,7 @@
           items:
             - name: 復元ポイントの作成
               href: ./backuprestore/sqlpool-create-restore-point.md
-            - name: Synapse SQL プールを復元する
+            - name: 専用 SQL プールの復元
               href: ./backuprestore/restore-sql-pool.md
         - name: 管理および監視
           items:
@@ -548,6 +554,10 @@
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
         - name: Spark ジョブ定義の送信
           href: ./spark/apache-spark-job-definitions.md
+        - name: Azure Synapse Spark アプリケーション レベルのメトリックの接続と監視
+          href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
+        - name: Prometheus と Grafana を使用して Apache Spark アプリケーション レベルのメトリックを監視する
+          href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
     - name: 概念
       items:
         - name: Apache Spark
@@ -562,14 +572,24 @@
           href: ./spark/apache-spark-machine-learning-concept.md
         - name: ノートブック
           href: ./spark/apache-spark-notebook-concept.md
+        - name: パッケージの管理
+          href: ./spark/apache-spark-azure-portal-add-libraries.md
         - name: 監視ツール
           href: monitoring/how-to-monitor-spark-applications.md
     - name: 操作方法ガイド
       items:
         - name: Delta Lake を使用する
           href: ./spark/apache-spark-delta-lake-overview.md
-        - name: ライブラリを管理する
-          href: ./spark/apache-spark-azure-portal-add-libraries.md
+        - name: パッケージの管理
+          items:
+            - name: Python パッケージの管理
+              href: ./spark/apache-spark-manage-python-packages.md
+            - name: Scala パッケージの管理
+              href: ./spark/apache-spark-manage-scala-packages.md
+            - name: Python パッケージのインストール エラーのトラブルシューティング
+              href: ./spark/apache-spark-troubleshoot-library-errors.md
+            - name: Conda プライベート チャネルを作成する
+              href: ./spark/apache-spark-custom-conda-channel.md
         - name: ノートブックと IDE ツールを使用する
           items:
             - name: Notebooks を管理する

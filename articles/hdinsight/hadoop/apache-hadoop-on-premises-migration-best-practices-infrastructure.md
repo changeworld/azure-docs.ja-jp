@@ -1,19 +1,16 @@
 ---
 title: インフラストラクチャ:オンプレミスの Apache Hadoop から Azure HDInsight
 description: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行することについてのインフラストラクチャのベスト プラクティスについて説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: e412b82be911f0b4ba2e5cda51495cdcd7826917
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 309053c2d7a0f9482016f1bd83e0c61dcd31bec5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542303"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740666"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - インフラストラクチャのベスト プラクティス
 
@@ -39,7 +36,7 @@ Azure リージョンによって、クラスターを物理的にプロビジ�
 
 ## <a name="use-recommended-virtual-machine-type-for-cluster"></a>推奨される仮想マシンの種類をクラスターに使用する
 
-HDInsight クラスターの種類ごとに推奨される仮想マシンの種類については、[クラスターの既定のノード構成と仮想マシン サイズ](../hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)を参照してください。
+HDInsight クラスターの種類ごとに推奨される仮想マシンの種類については、[クラスターの既定のノード構成と仮想マシン サイズ](../hdinsight-supported-node-configuration.md)を参照してください。
 
 ## <a name="check-hadoop-components-availability-in-hdinsight"></a>HDInsight での Hadoop コンポーネントの可用性を確認する
 
@@ -76,11 +73,11 @@ HDInsight の各バージョンは、一連の Hadoop エコシステム コン�
 |Palantir|IaaS 
 |Sailpoint|IaaS 
 
-詳細については、[HDInsight の各バージョンで使用できる Apache Hadoop コンポーネント](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)を参照してください
+詳細については、[HDInsight の各バージョンで使用できる Apache Hadoop コンポーネント](../hdinsight-component-versioning.md)を参照してください
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>スクリプト アクションを使って HDInsight をカスタマイズする
 
-HDInsight には、 **スクリプト アクション** と呼ばれるクラスター構成のメソッドが提供されています。 スクリプト アクションは HDInsight クラスターのノードで実行される Bash スクリプトで、追加コンポーネントのインストールおよび構成設定を変更するために使用できます。
+HDInsight には、**スクリプト アクション** と呼ばれるクラスター構成のメソッドが提供されています。 スクリプト アクションは HDInsight クラスターのノードで実行される Bash スクリプトで、追加コンポーネントのインストールおよび構成設定を変更するために使用できます。
 
 スクリプト アクションは、HDInsight クラスターからアクセスできる URI に保存されている必要があります。 これらはクラスターの作成中または作成後に使用でき、特定のノード型でのみ実行するように制限することもできます。
 

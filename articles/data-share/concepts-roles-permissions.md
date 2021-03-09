@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: ed4b4d9c1de1e9024e8ea86d4661b42d6c68b0ae
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f5c5d6da239d302b57bdb37e9d49116a29c1ccb4
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460992"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558126"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share のロールと要件 
 
@@ -63,7 +63,7 @@ Azure Data Share にデータセットを追加するには、プロバイダー
 1. *[選択]* の下に、使用する Azure Data Share リソースの名前を入力します。
 1. [*保存*] をクリックします。
 
-ロールの割り当ての詳細については、[Azure portal を使用した Azure のロールの割り当ての追加または削除](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)に関するページを参照してください。 REST API を使用してデータを共有している場合は、「[REST API を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-rest.md)」を参照することによって、API を使用してロールの割り当てを作成できます。 
+ロールの割り当ての詳細については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。 REST API を使用してデータを共有している場合は、「[REST API を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-rest.md)」を参照することによって、API を使用してロールの割り当てを作成できます。 
 
 SQL ベースのソースの場合は、Azure Active Directory 認証を使用して SQL データベースに接続する一方で、SQL Database に、Azure Data Share リソースと同じ名前を使用して、外部プロバイダーから SQL ユーザーを作成する必要があります。 このユーザーには *db_datareader* アクセス許可を付与する必要があります。 サンプル スクリプトと、SQL ベースの共有に必要なその他の前提条件については、「[Azure SQL Database または Azure Synapse Analytics からの共有](how-to-share-from-sql.md)」のチュートリアルを参照してください。 
 
@@ -83,7 +83,7 @@ SQL ベースのソースの場合は、Azure Active Directory 認証を使用�
 1. *[選択]* の下に、使用する Azure Data Share リソースの名前を入力します。
 1. [*保存*] をクリックします。
 
-ロールの割り当ての詳細については、[Azure portal を使用した Azure のロールの割り当ての追加または削除](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)に関するページを参照してください。 REST API を使用してデータを受信している場合は、「[REST API を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-rest.md)」を参照することによって、API を使用してロールの割り当てを作成できます。 
+ロールの割り当ての詳細については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。 REST API を使用してデータを受信している場合は、「[REST API を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-rest.md)」を参照することによって、API を使用してロールの割り当てを作成できます。 
 
 SQL ベースのターゲットの場合は、Azure Active Directory 認証を使用して SQL データベースに接続する一方で、SQL Database に、Azure Data Share リソースと同じ名前を使用して、外部プロバイダーから SQL ユーザーを作成する必要があります。 このユーザーには、*db_datareader、db_datawriter、db_ddladmin* アクセス許可を付与する必要があります。 サンプル スクリプトと、SQL ベースの共有に必要なその他の前提条件については、「[Azure SQL Database または Azure Synapse Analytics からの共有](how-to-share-from-sql.md)」のチュートリアルを参照してください。 
 
@@ -107,4 +107,4 @@ Microsoft.DataShare リソース プロバイダーを Azure サブスクリプ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure でのロールの詳細 - [ロール定義について](../role-based-access-control/role-definitions.md)
+- Azure でのロールの詳細 - [Azure ロールの定義について](../role-based-access-control/role-definitions.md)

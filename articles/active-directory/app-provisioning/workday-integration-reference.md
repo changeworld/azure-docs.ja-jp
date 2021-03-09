@@ -3,19 +3,19 @@ title: Azure Active Directory と Workday の統合のリファレンス
 description: Workday による人事主導のプロビジョニングに関する技術的な詳細
 services: active-directory
 author: cmmdesai
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/18/2021
+ms.date: 02/09/2021
 ms.author: chmutali
-ms.openlocfilehash: 251e1d4249373ec52afb3d7edaa2325c992b66f1
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 2b1a43ee6b13d32c0eaed92538cf9c25405e061b
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570146"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104333"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Azure Active Directory のプロビジョニングと Workday の統合方法
 
@@ -43,7 +43,7 @@ Azure AD プロビジョニング サービスと Workday の間の接続をさ�
 1. *addressPrefixes* 要素内に列記されているすべての IP アドレス範囲をコピーし、その範囲を使用して IP アドレス リストを作成します。
 1. Workday 管理ポータルにログインします。 
 1. **[IP 範囲の管理]** タスクにアクセスして、Azure データセンターの新しい IP 範囲を作成します。 IP 範囲 (CIDR 表記を使用) をコンマ区切りのリストとして指定します。  
-1. **[認証ポリシーの管理]** タスクにアクセスして、新しい認証ポリシーを作成します。 認証ポリシーで、 **[認証ホワイトリスト]** を使用して、Azure AD の IP 範囲と、この IP 範囲からのアクセスを許可するセキュリティ グループを指定します。 変更を保存します。 
+1. **[認証ポリシーの管理]** タスクにアクセスして、新しい認証ポリシーを作成します。 認証ポリシーで、認証許可リストを使用して、Azure AD の IP 範囲と、この IP 範囲からのアクセスを許可するセキュリティ グループを指定します。 変更を保存します。 
 1. **[保留中のすべての認証ポリシーの変更をアクティブ化]** タスクにアクセスして、変更を確認します。
 
 ### <a name="limiting-access-to-worker-data-in-workday-using-constrained-security-groups"></a>制約付きセキュリティ グループを使用して Workday のワーカー データへのアクセスを制限する
@@ -348,7 +348,7 @@ Workday 主導のプロビジョニングのコンテキストにおける **完
 </Get_Workers_Request>
 ```
 
-### <a name="retrieving-worker-data-attributes"></a>ワーカー データ属性の取得
+## <a name="retrieving-worker-data-attributes"></a>ワーカー データ属性の取得
 
 *Get_Workers* API では、ワーカーに関連付けられたさまざまなデータ セットが返されます。 Workday から取得されるデータ セットは、プロビジョニング スキーマで構成された [XPATH API 式](workday-attribute-reference.md)に応じて、Azure AD プロビジョニング サービスによって決定されます。 それに応じて、*Get_Workers* 要求の *Response_Group* のフラグが設定されます。 
 
@@ -403,6 +403,9 @@ Workday 主導のプロビジョニングのコンテキストにおける **完
 | 45 | ユーザー アカウント データ                    | いいえ                  | wd:Worker\_Data/wd:User\_Account\_Data                                        |
 | 46 | ワーカー ドキュメント データ                 | いいえ                  | wd:Worker\_Data/wd:Worker\_Document\_Data                                     |
 
+>[!NOTE]
+>表に示されている各 Workday エンティティは、Workday の "**ドメイン セキュリティ ポリシー**" によって保護されています。 適切な XPATH を設定した後にエンティティに関連付けられている属性を取得できない場合は、Workday 管理者に問い合わせて、プロビジョニング アプリに関連付けられている統合システム ユーザーに適切なドメイン セキュリティ ポリシーが構成されていることを確認してください。 たとえば、*スキル データ* を取得するには、*Get* アクセスが Workday ドメイン *Worker Data: Skills and Experience* で必要です。 
+
 次に、Workday 統合を拡張して特定の要件を満たす方法の例をいくつか示します。 
 
 **例 1**
@@ -445,6 +448,21 @@ Workday から次のデータ セットを取得し、それらをプロビジ�
 あるワーカーに割り当てられている *プロビジョニング グループ* を取得するとします。 この情報は、*アカウント プロビジョニング データ* セットの一部として入手できます。 このデータ セットを *Get_Workers* 応答の一部として取得するには、次の XPATH を使用します。 
 
 `wd:Worker/wd:Worker_Data/wd:Account_Provisioning_Data/wd:Provisioning_Group_Assignment_Data[wd:Status='Assigned']/wd:Provisioning_Group/text()`
+
+## <a name="handling-different-hr-scenarios"></a>さまざまな HR シナリオの処理
+
+### <a name="retrieving-international-job-assignments-and-secondary-job-details"></a>国際的なジョブの割り当てとセカンダリ ジョブの詳細の取得
+
+既定で Workday コネクタによって取得されるのは、worker のプライマリ ジョブに関連付けられた属性です。 また、このコネクタでは、国際的なジョブの割り当てまたはセカンダリ ジョブに関連付けられた "*追加のジョブ データ*" を取得することもサポートされています。 
+
+国際的なジョブの割り当てに関連付けられた属性を取得するには、次の手順に従ってください。 
+
+1. Workday Web サービス API バージョン 30.0 以降を使用する Workday 接続 URL を設定します。 それに応じて、Workday プロビジョニング アプリで[適切な XPATH 値](workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)を設定します。 
+1. `Worker_Job_Data` ノードのセレクター `@wd:Primary_Job=0` を使用して、適切な属性を取得します。 
+   * **例 1:** `SecondaryBusinessTitle` を取得するには、XPATH `wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Worker_Job_Data[@wd:Primary_Job=0]/wd:Position_Data/wd:Business_Title/text()` を使用します
+   * **例 2:** `SecondaryBusinessLocation` を取得するには、XPATH `wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Worker_Job_Data[@wd:Primary_Job=0]/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Location_Reference/@wd:Descriptor` を使用します
+
+ 
 
 ## <a name="next-steps"></a>次の手順
 

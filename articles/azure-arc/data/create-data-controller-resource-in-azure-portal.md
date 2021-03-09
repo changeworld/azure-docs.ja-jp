@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 297efa83fb1563e3a360f652a6ac1bc2b1679998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c928040aa2ff5a6ebfb7102c03450d3d7297b59
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931614"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686480"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>Azure portal で Azure Arc データ コントローラーを作成する
 
@@ -40,12 +40,20 @@ Azure portal と Azure Data Studio を使用して Azure Arc データ コント
 6. **[データ コントローラーの詳細]** ボタンをクリックします。
 7. Azure portal で作成する他のリソースと同じように、サブスクリプション、リソース グループ、Azure の場所を選択します。 この場合、Azure の場所には、リソースに関するメタデータが格納される場所を選択します。  リソース自体は、選択するインフラストラクチャ上に作成されます。 必ずしも Azure インフラストラクチャを使用する必要はありません。
 8. データ コレクターの名前を入力します。
-9. 現在、プレビューでは、間接接続モードのみがサポートされています。
-10. デプロイ構成ファイルを選択します。
-11. **[Azure Studio で開く]** ボタンをクリックします。
-12. 次の画面には、選択内容の概要と、生成されたノートブックが表示されます。  **[プロビジョニングしているノートブックのダウンロード]** ボタンをクリックして、ノートブックをダウンロードできます。
-13. Azure Data Studio でノートブックを開き、上部にある **[すべて実行]** ボタンをクリックします。
-14. 表示されるプロンプトとノートブックの指示に従って、データ コントローラーの作成を完了します。
+9. データ コントローラーの接続モードを選択します。 [接続モードと要件](./connectivity.md)の詳細について確認してください。 
+
+   > [!NOTE] 
+   > **直接** 接続モードを選択した場合、「[サービス プリンシパルの作成](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)」の説明に従って、サービス プリンシパルの資格情報が環境変数を使用して設定されていることを確認してください。 
+
+1. デプロイ構成ファイルを選択します。
+1. **[Azure Studio で開く]** ボタンをクリックします。
+1. 次の画面には、選択内容の概要と、生成されたノートブックが表示されます。  **[プロビジョニングしているノートブックのダウンロード]** ボタンをクリックして、ノートブックをダウンロードできます。
+
+   > [!IMPORTANT]
+   > Azure Red Hat OpenShift または Red Hat OpenShift コンテナー プラットフォームでは、データ コントローラーを作成する前にセキュリティ コンテキスト制約を適用する必要があります。 「[OpenShift で Azure Arc 対応データ サービスのセキュリティ コンテキスト制約を適用する](how-to-apply-security-context-constraint.md)」の手順に従います。
+
+1. Azure Data Studio でノートブックを開き、上部にある **[すべて実行]** ボタンをクリックします。
+1. 表示されるプロンプトとノートブックの指示に従って、データ コントローラーの作成を完了します。
 
 ## <a name="monitoring-the-creation-status"></a>作成状態の監視
 

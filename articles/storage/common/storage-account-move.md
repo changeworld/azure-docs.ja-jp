@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: b70beb90fae794eb5512cb8b466524169c4c7b53
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: d894ce71e0ffa5a0894a1f6b0035efe66271ded8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "92792992"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591462"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure ストレージ アカウントを別のリージョンに移動する
 
@@ -35,7 +35,7 @@ ms.locfileid: "92792992"
 
 - お使いのアカウントで使用されるサービスと機能が、ターゲット リージョンでサポートされていることを確認してください。
 
-- プレビュー機能については、お使いのサブスクリプションがターゲット リージョンのホワイトリストに登録されていることを確認してください。
+- プレビュー機能については、お使いのサブスクリプションがターゲット リージョンの許可リストに登録されていることを確認してください。
 
 <a id="prepare"></a>
 
@@ -224,7 +224,7 @@ PowerShell を使用してテンプレートをデプロイするには:
 | **ライフサイクル管理ポリシー** | [Azure Blob Storage のライフサイクルの管理](../blobs/storage-lifecycle-management-concepts.md) |
 | **静的な Web サイト** | [Azure Storage で静的 Web サイトをホストする](../blobs/storage-blob-static-website-how-to.md) |
 | **イベントのサブスクリプション** | [Blob Storage のイベント処理](../blobs/storage-blob-event-overview.md) |
-| **警告** | [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-activity-log.md) |
+| **警告** | [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](../../azure-monitor/alerts/alerts-activity-log.md) |
 | **Content Delivery Network (CDN)** | [Azure CDN を使用して HTTPS 経由でカスタム ドメインを使用した BLOB にアクセスする](../blobs/storage-https-custom-domain-cdn.md) |
 
 > [!NOTE] 
@@ -236,7 +236,7 @@ AzCopy は、データの移動に推奨されるツールです。 パフォー
 
 Azure Data Factory を使用してデータを移動することもできます。 これには、直感的なユーザー インターフェイスが用意されています。 Azure Data Factory を使用するには、以下のリンクのいずれかを参照してください。 
 
-  - [Copy data to or from Azure Blob storage by using Azure Data Factory (Azure Data Factory を使用して、Azure Blob ストレージをコピー先、またはコピー元にして、データをコピーする)](/azure/data-factory/connector-azure-blob-storage)
+  - [Copy data to or from Azure Blob storage by using Azure Data Factory (Azure Data Factory を使用して、Azure Blob Storage をコピー先、またはコピー元にして、データをコピーする)](/azure/data-factory/connector-azure-blob-storage)
   - [Azure Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする](/azure/data-factory/connector-azure-data-lake-storage)
   - [Azure Data Factory を使用して File Storage をコピー元またはコピー先としてデータをコピーする](/azure/data-factory/connector-azure-file-storage)
   - [Azure Data Factory を使用した Azure Table Storage との間でのデータのコピー](/azure/data-factory/connector-azure-table-storage)

@@ -3,12 +3,12 @@ title: Azure Backup のレポートを構成する
 description: Log Analytics と Azure ブックを使用して Azure Backup のレポートを構成および表示する
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 2565fa1183635c10e45b247f723788b6fe371c14
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 62bb59a8a77d11e30e54298317a35e1f883a9622
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325249"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710619"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 
@@ -18,7 +18,7 @@ ms.locfileid: "96325249"
 - バックアップおよび復元の監査。
 - さまざまな細分性レベルで主要な傾向を特定する。
 
-現在、Azure Backup では、[Azure Monitor ログ](../azure-monitor/log-query/log-analytics-tutorial.md)と [Azure ブック](../azure-monitor/platform/workbooks-overview.md)を使用するレポート ソリューションが提供されます。 これらのリソースにより、バックアップ資産全体でバックアップに関する豊富な分析情報を得ることができます。 この記事では、Azure Backup レポートを構成および表示する方法について説明します。
+現在、Azure Backup では、[Azure Monitor ログ](../azure-monitor/logs/log-analytics-tutorial.md)と [Azure ブック](../azure-monitor/visualize/workbooks-overview.md)を使用するレポート ソリューションが提供されます。 これらのリソースにより、バックアップ資産全体でバックアップに関する豊富な分析情報を得ることができます。 この記事では、Azure Backup レポートを構成および表示する方法について説明します。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
@@ -41,9 +41,9 @@ ms.locfileid: "96325249"
 
 バックアップ レポート データを格納するために、1 つ以上の Log Analytics ワークスペースを設定します。 この Log Analytics ワークスペースを作成できる場所とサブスクリプションは、コンテナーが存在する場所とサブスクリプションとは関係ありません。
 
-Log Analytics ワークスペースを設定する場合は、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)」を参照してください。
+Log Analytics ワークスペースを設定する場合は、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/logs/quick-create-workspace.md)」を参照してください。
 
-既定では、Log Analytics ワークスペースのデータは 30 日間保持されます。 より長期間のデータを表示するには、Log Analytics ワークスペースの保持期間を変更します。 保持期間を変更するには、「[Azure Monitor ログで使用量とコストを管理する](../azure-monitor/platform/manage-cost-storage.md)」を参照してください。
+既定では、Log Analytics ワークスペースのデータは 30 日間保持されます。 より長期間のデータを表示するには、Log Analytics ワークスペースの保持期間を変更します。 保持期間を変更するには、「[Azure Monitor ログで使用量とコストを管理する](../azure-monitor/logs/manage-cost-storage.md)」を参照してください。
 
 ### <a name="2-configure-diagnostics-settings-for-your-vaults"></a>2.コンテナーの診断設定を構成する
 
@@ -139,6 +139,20 @@ SQL や SAP HANA のようなデータベース ワークロードの場合、�
 グリッドに予期したとおりデータベース ワークロードを表示できるようにするには、タブの上部にある **[バックアップ管理の種類]** フィルターでは、 **[Azure VM での SQL]** と **[Azure VM での SAP HANA]** の項目が選択されている必要があります。
 
 ![[最適化] タブ - [Backup Management Type]\(バックアップ管理の種類\)](./media/backup-azure-configure-backup-reports/optimize-backup-schedule.png)
+
+###### <a name="policy-adherence"></a>ポリシー準拠
+
+このタブを使用すると、すべてのバックアップ インスタンスで毎日少なくとも 1 回のバックアップが成功したかどうかを確認できます。 ポリシー準拠は、期間ごと、またはバックアップ インスタンスごとに確認できます。
+
+###### <a name="email-azure-backup-reports"></a>Azure Backup レポートをメールで送信する
+
+バックアップ レポートで使用できる **メール レポート** 機能を使用すると、自動化されたタスクを作成して、メールで定期的なレポートを受信できます。 この機能を利用するには、指定した入力に基づいて、選択した Log Analytics (LA) ワークスペースからデータのクエリを実行するロジック アプリを Azure 環境にデプロイします。
+
+ロジック アプリを作成したら、Azure Monitor Logs と Office 365 への接続を承認する必要があります。 これを行うには、Azure portal で **[ロジック アプリ]** に移動し、作成したタスクの名前を検索します。 **[API 接続]** メニュー項目を選択すると、承認する必要のある API 接続の一覧が開きます。
+
+###### <a name="customize-azure-backup-reports"></a>Azure Backup レポートをカスタマイズする
+
+バックアップ レポートには、Azure Monitor ログに対する関数が使用されます。 これらの関数を使用して、LA の未加工の Azure Backup テーブルのデータを操作し、書式を設定したデータを返すことができます。これにより、簡単なクエリを使用して、バックアップ関連のすべてのエンティティの情報を簡単に取得できます。
 
 ## <a name="export-to-excel"></a>Excel へのエクスポート
 

@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 421fb7b0c91171756f55ad25c918955870054e3e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 8e69803f4740a58adb4230bd82cc723221762cb4
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511282"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576618"
 ---
 # <a name="develop-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で開発する
 この記事では、クラウド向けのアプリケーションを開発するときに考慮するセキュリティ アクティビティとコントロールについて説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) の実装と検証のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションの開発に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -140,7 +140,7 @@ DAST は、静的アプリケーション セキュリティ テスト (SAST) �
 
 コードが完成した後で攻撃対象領域をレビューすると、アプリケーションやシステムに対して設計や実装の変更が考慮されたことを確認するのに役立ちます。 脅威モデルなど、変更の結果として作成された新しい攻撃ベクトルがレビューされて軽減されたことを確認するのに役立ちます。
 
-アプリケーションをスキャンすることで、攻撃対象領域の概要を作成できます。 Microsoft では、[Attack Surface Analyzer](https://www.microsoft.com/download/details.aspx?id=24487) と呼ばれる攻撃対象領域分析ツールが提供されています。 市販されている多くの動的テストおよび脆弱性スキャン ツールやサービスから選択できます ([OWASP Zed Attack Proxy Project](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)、[Arachni](http://arachni-scanner.com/)、[Skipfish](https://code.google.com/p/skipfish/)、[w3af](http://w3af.sourceforge.net/) など)。 これらのスキャン ツールでは、アプリがクロールされて、Web 経由でアクセスできるアプリケーションの部分がマップされます。 また、Azure Marketplace で同様の[開発者ツール](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1)を検索することもできます。
+アプリケーションをスキャンすることで、攻撃対象領域の概要を作成できます。 Microsoft では、[Attack Surface Analyzer](https://www.microsoft.com/download/details.aspx?id=58105) と呼ばれる攻撃対象領域分析ツールが提供されています。 市販されている多くの動的テストおよび脆弱性スキャン ツールやサービスから選択できます ([OWASP Zed Attack Proxy Project](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)、[Arachni](http://arachni-scanner.com/)、[Skipfish](https://code.google.com/p/skipfish/)、[w3af](http://w3af.sourceforge.net/) など)。 これらのスキャン ツールでは、アプリがクロールされて、Web 経由でアクセスできるアプリケーションの部分がマップされます。 また、Azure Marketplace で同様の[開発者ツール](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1)を検索することもできます。
 
 ### <a name="perform-security-penetration-testing"></a>セキュリティ侵入テストを実施する
 

@@ -3,16 +3,16 @@ title: Azure Red Hat OpenShift 4 クラスターで Red Hat プル シークレ�
 description: 既存の4.x ARO クラスターで Red Hat プル シークレットを追加または更新する
 author: sakthi-vetrivel
 ms.author: suvetriv
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 05/21/2020
 keywords: プル シークレット、aro、openshift、Red Hat
-ms.openlocfilehash: 769b7589fb6496fc2f4123665ad1f6fe61d0cce2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58c0eb2be3423783a69d005277ffe75aaf59415f
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294749"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633735"
 ---
 # <a name="add-or-update-your-red-hat-pull-secret-on-an-azure-red-hat-openshift-4-cluster"></a>Azure Red Hat OpenShift 4 クラスターで Red Hat プル シークレットを追加または更新する
 
@@ -231,6 +231,6 @@ openshift-marketplace   redhat-operators      Red Hat Operators     grpc   Red H
 プル シークレットが更新され、正常に動作していることを確認するには、OperatorHub を開き、Red Hat で確認されたオペレーターについて確認します。 たとえば、OpenShift Container Storage オペレーターが使用可能かどうかを確認し、インストールするためのアクセス許可を持っているかどうかを確認します。
 
 ## <a name="next-steps"></a>次のステップ
-Red Hat プル シークレットの詳細については、「[イメージ プル シークレットの使用](https://docs.openshift.com/container-platform/4.5/openshift_images/managing_images/using-image-pull-secrets.html)」を参照してください。
+Red Hat プル シークレットの詳細については、「[イメージ プル シークレットの使用](https://docs.openshift.com/container-platform/4.6/openshift_images/managing_images/using-image-pull-secrets.html)」を参照してください。
 
-Red Hat OpenShift 4 の詳細については、「[Azure Red Hat OpenShift 4](https://docs.openshift.com/aro/4/welcome/index.html)」を参照してください。
+Red Hat OpenShift 4 の詳細については、[Red Hat OpenShift Container Platform に関するドキュメント](https://docs.openshift.com/container-platform/4.6/welcome/index.html)を参照してください。

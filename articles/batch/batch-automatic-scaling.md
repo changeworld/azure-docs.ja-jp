@@ -4,12 +4,12 @@ description: クラウド プールで自動スケールを有効にして、プ
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 033272f22b98b27c67e9a551bce952368d35a043
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 06f717e7c3ab8285b494f89c39838af6b0d96c8f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95737294"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381428"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch プール内のコンピューティング ノードをスケーリングするための自動式を作成する
 
@@ -128,6 +128,7 @@ $NodeDeallocationOption = taskcompletion;
 | $PendingTasks |$ActiveTasks と $RunningTasks の合計。 |
 | $SucceededTasks |正常に完了したタスクの数。 |
 | $FailedTasks |失敗したタスクの数。 |
+| $TaskSlotsPerNode |プール内の単一の計算ノードで同時実行タスクを実行するために使用できるタスク スロットの数。 |
 | $CurrentDedicatedNodes |専用コンピューティング ノードの現在の数。 |
 | $CurrentLowPriorityNodes |優先順位の低い計算ノードの現在の数。割り込まれたノードも含まれます。 |
 | $PreemptedNodeCount | 割り込み状態にあるプール内のノードの数。 |

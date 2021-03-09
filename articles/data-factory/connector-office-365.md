@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して Office 365 からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Office 365 のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 365896fec555340c3932192aa82086d140d4db0c
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: a7df69e7c5701074b40d6fa8340d8a0e247f00de
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632993"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393005"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Azure Data Factory を使用して Office 365 から Azure にデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -28,7 +23,7 @@ Azure Data Factory は [Microsoft Graph データ接続](/graph/data-connect-con
 ## <a name="supported-capabilities"></a>サポートされる機能
 ADF Office 365 コネクタと Microsoft Graph データ接続を使用すると、アドレス帳の連絡先、予定表イベント、メール メッセージ、ユーザー情報、メールボックスの設定など、Exchange Email 対応のメールボックスからさまざまな種類のデータセットを大量に取り込むことができます。  使用できるデータセットの詳細な一覧については、[こちら](/graph/data-connect-datasets)を参照してください。
 
-現在、1 回のコピー操作の中で実行できるのは、 **Office 365 から [Azure Blob Storage](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2 への、](connector-azure-data-lake-storage.md)JSON 形式** (setOfObjects 型) でのデータ コピーのみとなっています。 Office 365 を他の種類のデータ ストアに読み込んだり、他の形式で読み込む必要がある場合は、最初のコピー アクティビティを後続のコピー アクティビティに連結して、[サポートされている ADF 変換先ストアに関する記事に記載されている、任意のストアにデータを読み込むことができます ](copy-activity-overview.md#supported-data-stores-and-formats) (「サポートされるデータ ストアと形式」表の "シンクとしてサポート" 列をご覧ください)。
+現在、1 回のコピー操作の中で実行できるのは、**Office 365 から [Azure Blob Storage](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2 への、](connector-azure-data-lake-storage.md)JSON 形式** (setOfObjects 型) でのデータ コピーのみとなっています。 Office 365 を他の種類のデータ ストアに読み込んだり、他の形式で読み込む必要がある場合は、最初のコピー アクティビティを後続のコピー アクティビティに連結して、[サポートされている ADF 変換先ストアに関する記事に記載されている、任意のストアにデータを読み込むことができます ](copy-activity-overview.md#supported-data-stores-and-formats) (「サポートされるデータ ストアと形式」表の "シンクとしてサポート" 列をご覧ください)。
 
 >[!IMPORTANT]
 >- データ ファクトリとシンク データ ストアを含んだ Azure サブスクリプションは、Office 365 テナントと同じ Azure Active Directory (Azure AD) テナントの下に配置する必要があります。
@@ -79,7 +74,7 @@ Office 365 のリンクされたサービスでは、次のプロパティがサ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります: **Office365** | はい |
+| type | type プロパティは、次のように設定する必要があります:**Office365** | はい |
 | office365TenantId | Office 365 アカウントが属している Azure テナント ID です。 | はい |
 | servicePrincipalTenantId | Azure AD Web アプリケーションが存在するテナントの情報を指定します。 | はい |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
@@ -89,7 +84,7 @@ Office 365 のリンクされたサービスでは、次のプロパティがサ
 >[!NOTE]
 > **office365TenantId** と **servicePrincipalTenantId** の違いと、対応する指定値:
 >- 自分の組織専用の Office 365 データに対してアプリケーションを開発している場合は、両方のプロパティに同じ ID を指定します (組織の AAD テナント ID)。
->- 顧客用のアプリケーションを開発している ISV デベロッパーの場合は、office365TenantId が顧客の (アプリケーション インストーラー) AAD テナント ID になり、servicePrincipalTenantId が自社の AAD テナント ID になります。
+>- 顧客用のアプリケーションを開発している ISV 開発者の場合は、office365TenantId が顧客の (アプリケーション インストーラー) AAD テナント ID になり、servicePrincipalTenantId が自社の AAD テナント ID になります。
 
 **例:**
 
@@ -119,7 +114,7 @@ Office 365 からのデータ コピーについては、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります: **Office365Table** に設定する必要があります。 | はい |
+| type | データセットの type プロパティは、次のように設定する必要があります:**Office365Table** に設定する必要があります。 | はい |
 | tableName | Office 365 から抽出するデータセットの名前です。 抽出に使用できる Office 365 データセットの一覧については、[こちら](/graph/data-connect-datasets#datasets)をご覧ください。 | はい |
 
 データセットに `dateFilterColumn`、`startTime`、`endTime`、`userScopeFilterUri` を設定していた場合は現状のまま引き続きサポートされますが、今後のアクティビティ ソースでは新しいモデルを使用することをお勧めします。
@@ -153,7 +148,7 @@ Office 365 からデータをコピーする場合、コピー アクティビ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります: **Office365Source** | はい |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**Office365Source** | はい |
 | allowedGroups | グループ選択の述語。  このプロパティを使用して、データの取得先のユーザー グループを最大 10 個まで選択します。  グループが指定されていない場合、組織全体のデータが返されます。 | いいえ |
 | userScopeFilterUri | `allowedGroups` プロパティが指定されていない場合、テナント全体に適用される述語式を使用して、特定の行をフィルター処理して Office 365 から抽出することができます。 述語の形式は、Microsoft Graph API のクエリ形式 (例: `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`) と一致している必要があります。 | いいえ |
 | dateFilterColumn | DateTime フィルター列の名前。 Office 365 データを抽出する時間範囲を制限するには、このプロパティを使用します。 | はい (データセットに DateTime 列が 1 つ以上ある場合)。 この DateTime フィルターが必要なデータセットの一覧については、[こちら](/graph/data-connect-filtering#filtering)を参照してください。 |

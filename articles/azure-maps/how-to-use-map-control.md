@@ -9,16 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: db7006c01f59e8a11872d99b3a16f24f65ef7588
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 27d9d5d30dc4c96516d23acba6a11b411827071e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413379"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100378708"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Maps のマップ コントロールを使用する
 
 マップ コントロール クライアント側 JavaScript ライブラリを使用すると、マップと埋め込まれた Azure Maps の機能を、Web アプリケーションまたはモバイル アプリケーションにレンダリングできます。
+
+このドキュメントでは Azure Maps Web SDK を使用しますが、Azure Maps サービスは任意のマップ コントロールで使用できます。 広く使用されているオープン ソースのマップ コントロールの一部で、それに対するプラグインが Azure Maps チームによって作成されているものが[こちら](open-source-projects.md#third-part-map-control-plugins)に記載されています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -258,7 +260,7 @@ JavaScript フレームワークを開発に使用している場合は、次の
 
 - [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps) - Azure Maps の Angular 10 ラッパー。
 - [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) - Azure Maps Blazor コンポーネント。
-- [Azure Maps React Component](https://github.com/WiredSolutions/react-azure-maps) - Azure Maps コントロールの React ラッパー。
+- [Azure Maps React Component](https://github.com/WiredSolutions/react-azure-maps) - Azure Maps コントロール用の React ラッパー。
 - [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) - Vue アプリケーション用の Azure Maps コンポーネント。
 
 ## <a name="next-steps"></a>次のステップ

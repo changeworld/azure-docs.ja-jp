@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 08ab78171376f702aecb1f49571dda583eae5d82
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: df53062c7c897493a47d88ea2873f9710b9825bf
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813872"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806258"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>DDoS Protection プランの管理: アクセス許可と制限
 
@@ -43,7 +43,7 @@ DDoS 保護プランに関する作業を行うには、使用するアカウン
 
 ほとんどの組織では、複数のプランを作成する必要はありません。 プランをサブスクリプション間で移行することはできません。 プランが関連付けられているサブスクリプションを変更する必要がある場合は、既存のプランを削除し、新しいプランを作成する必要があります。
 
-さまざまなサブスクリプションをお持ちで、コスト管理のために単一プランがテナント全体にデプロイされるようにしたいお客様は、Azure Policy を使用して [Azure DDoS Protection Standard プランの作成を制限](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Restrict%20creation%20of%20Azure%20DDoS%20Protection%20Standard%20Plans%20with%20Azure%20Policy)することができます。 サブスクリプションが以前に例外としてマークされていない限り、このポリシーにより、あらゆる DDoS プランの作成がブロックされます。 DDoS プランがデプロイされているがデプロイすべきではなく、コンプライアンス違反としてマークされているすべてのサブスクリプションの一覧もこのポリシーによって表示されます。
+さまざまなサブスクリプションをお持ちで、コスト管理のために単一プランがテナント全体にデプロイされるようにしたいお客様は、Azure Policy を使用して [Azure DDoS Protection Standard プランの作成を制限](https://aka.ms/ddosrestrictplan)することができます。 サブスクリプションが以前に例外としてマークされていない限り、このポリシーにより、あらゆる DDoS プランの作成がブロックされます。 DDoS プランがデプロイされているがデプロイすべきではなく、コンプライアンス違反としてマークされているすべてのサブスクリプションの一覧もこのポリシーによって表示されます。
 
 
 ## <a name="next-steps"></a>次のステップ

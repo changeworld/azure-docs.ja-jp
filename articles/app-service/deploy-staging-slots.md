@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ef90603e8c8cdd66d43b9f88f6d128d8a472fd8a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1c4cff264b63506432daf350be3557bae7234584
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150333"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594243"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -222,7 +222,7 @@ ms.locfileid: "92150333"
 
 ## <a name="monitor-a-swap"></a>スワップを監視する
 
-[スワップ操作](#AboutConfiguration)が完了するまで長い時間がかかる場合、[アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)でスワップ操作に関する情報を取得できます。
+[スワップ操作](#AboutConfiguration)が完了するまで長い時間がかかる場合、[アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)でスワップ操作に関する情報を取得できます。
 
 ポータルのアプリのリソース ページで、左側のウィンドウの **[アクティビティ ログ]** を選択します。
 

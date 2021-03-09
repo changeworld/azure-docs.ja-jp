@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 50188ad5fea0ee34a6896f0045e3bbcbfb553aaa
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 32fb95c88d632cc2c51cd2390f0244e9c1927051
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677300"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585887"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>Automation アカウントで変更履歴とインベントリを有効にする
 
@@ -22,7 +22,7 @@ ms.locfileid: "92677300"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
-* マシンを管理する [Automation アカウント](../index.yml)。
+* マシンを管理する [Automation アカウント](../automation-security-overview.md)。
 * [仮想マシン](../../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
@@ -53,7 +53,7 @@ Azure に存在しないマシンは手動で追加する必要があります�
 
 1. Automation アカウントから、 **[構成管理]** の **[インベントリ]** または **[Change tracking]\(変更履歴\)** を選択します。
 
-2. **[Add non-Azure machine]\(Azure 以外のマシンを追加する\)** をクリックします。 このアクションにより、新しいブラウザー ウィンドウが開きます。このウィンドウには、変更履歴とインベントリの操作に対するレポートをマシンが開始できるように、[Windows 用の Log Analytics エージェントをインストールして構成する方法](../../azure-monitor/platform/log-analytics-agent.md)が示されます。 Operations Manager によって現在管理されているマシンを有効にする場合、新しいエージェントは必要ありません。ワークスペース情報は、既存のエージェントに入力されます。
+2. **[Add non-Azure machine]\(Azure 以外のマシンを追加する\)** をクリックします。 このアクションにより、新しいブラウザー ウィンドウが開きます。このウィンドウには、変更履歴とインベントリの操作に対するレポートをマシンが開始できるように、[Windows 用の Log Analytics エージェントをインストールして構成する方法](../../azure-monitor/agents/log-analytics-agent.md)が示されます。 Operations Manager によって現在管理されているマシンを有効にする場合、新しいエージェントは必要ありません。ワークスペース情報は、既存のエージェントに入力されます。
 
 ## <a name="enable-machines-in-the-workspace"></a>ワークスペースでのマシンの有効化
 

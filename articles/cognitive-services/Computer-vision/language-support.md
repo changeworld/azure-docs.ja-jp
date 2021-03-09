@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1abb857c9f03be502db02099383c6fe0b5110461
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2e0cd424b71ff828ed0d8ad4c16d3333cf8a1c45
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736820"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575874"
 ---
 # <a name="language-support-for-computer-vision"></a>Computer Vision の言語サポート
 
@@ -25,34 +25,89 @@ Computer Vision の一部の機能では、複数の言語がサポートされ�
 
 Computer Vision の OCR API では複数の言語をサポートしています。 言語コードを指定する必要はありません。 詳細については、「[光学式文字認識 (OCR)](concept-recognizing-text.md)」を参照してください。
 
-|Language| 言語コード | OCR API | 3\.0 および 3.1 の読み取り | v3.2-preview.1 の読み取り |
+|Language| 言語コード | OCR API | Read 3.0/3.1 | Read v3.2 プレビュー |
 |:-----|:----:|:-----:|:---:|:---:|
+|アフリカーンス語|`af`| | |✔ |
+|アルバニア語 |`sq`| | |✔ |
 |アラビア語 | `ar`|✔ | | |
+|アストリア語 |`ast`| | |✔ |
+|バスク語  |`eu`| | |✔ |
+|ビスラマ語   |`bi`| | |✔ |
+|ブルトン語    |`br`| | |✔ |
+|カタロニア語    |`ca`| | |✔ |
+|セブアノ語    |`ceb`| | |✔ |
+|チャモロ語  |`ch`| | |✔ |
 |簡体中国語 | `zh-Hans`|✔ | |✔ |
-|繁体中国語 | `zh-Hant`|✔ | | |
-|チェコ語 | `cs` |✔ | | |
-|デンマーク語 | `da` |✔ | | |
+|繁体中国語 | `zh-Hant`|✔ | |✔ |
+|コーンウォール語     |`kw`| | |✔ |
+|コルシカ語      |`co`| | |✔ |
+|クリミア タタール語 (ラテン)  |`crh`| | |✔ |
+|チェコ語 | `cs` |✔ | |✔ |
+|デンマーク語 | `da` |✔ | |✔ |
 |オランダ語 | `nl` |✔ |✔ |✔ |
 |英語 | `en` |✔ |✔ |✔ |
-|フィンランド語 | `fi` |✔ | | |
+|エストニア語  |`crh`| | |✔ |
+|フィジー語 |`fj`| | |✔ |
+|フィリピン語  |`fil`| | |✔ |
+|フィンランド語 | `fi` |✔ | |✔ |
 |フランス語 | `fr` |✔ |✔ |✔ |
+|フリウリ語  | `fur` | | |✔ |
+|ガリシア語   | `gl` | | |✔ |
 |ドイツ語 | `de` |✔ |✔ |✔ |
+|キリバス語    | `gil` | | |✔ |
 |ギリシャ語 | `el` |✔ | | |
-|ハンガリー語 | `hu` |✔ | | |
+|グリーンランド語   | `kl` | | |✔ |
+|ハイチ・クレオール語  | `ht` | | |✔ |
+|ハニ語  | `hni` | | |✔ |
+|ミャオ語 (ラテン) | `mww` | | |✔ |
+|ハンガリー語 | `hu` |✔ | | ✔ |
+|インドネシア語   | `id` | | |✔ |
+|インターリングア  | `ia` | | |✔ |
+|イヌクティトット語 (ラテン)  | `iu` | | |✔ |
+|アイルランド語    | `ga` | | |✔ |
 |イタリア語 | `it` |✔ |✔ |✔ |
 |日本語 | `ja` |✔ | |✔ |
-|韓国語 | `ko` |✔ | | |
+|ジャワ文字 | `jv` | | |✔ |
+|カーボベルデ・クレオール語 | `kea` | | |✔ |
+|カチン語 (ラテン) | `kac` | | |✔ |
+|カラ・カルパク語 | `kaa` | | |✔ |
+|カシュビア語 | `csb` | | |✔ |
+|カシ語  | `kha` | | |✔ |
+|韓国語 | `ko` |✔ | |✔ |
+|キチェ語  | `quc` | | |✔ |
+|クルド語 (ラテン) | `kur` | | |✔ |
+|ルクセンブルク語  | `lb` | | |✔ |
+|マレー語 (ラテン)  | `ms` | | |✔ |
+|マン語  | `gv` | | |✔ |
+|ナポリ語   | `nap` | | |✔ |
 |ノルウェー語 | `nb` |✔ | | |
-|ポーランド語 | `pl` |✔ | | |
+|ノルウェー語 | `no` | | |✔ |
+|オクシタン語 | `oc` | | |✔ |
+|ポーランド語 | `pl` |✔ | |✔ |
 |Portuguese | `pt` |✔ |✔ |✔ |
 |ルーマニア語 | `ro` |✔ | | |
+|ロマンシュ語  | `rm` | | |✔ |
 |ロシア語 | `ru` |✔ | | |
+|スコットランド語  | `sco` | | |✔ |
+|スコットランド ゲール語  | `gd` | | |✔ |
 |セルビア語 (キリル) | `sr-Cyrl` |✔ | | |
 |セルビア語 (ラテン) | `sr-Latn` |✔ | | |
 |スロバキア語 | `sk` |✔ | | |
+|スロベニア語  | `slv` | | |✔ |
 |スペイン語 | `es` |✔ |✔ |✔ |
-|スウェーデン語 | `sw` |✔ | | |
-|トルコ語 | `tr` |✔ | | |
+|スワヒリ語 (ラテン)  | `sw` | | |✔ |
+|スウェーデン語 | `sv` |✔ | |✔ |
+|タタール語 (ラテン)  | `tat` | | |✔ |
+|テトゥン語    | `tet` | | |✔ |
+|トルコ語 | `tr` |✔ | |✔ |
+|高地ソルブ語  | `hsb` | | |✔ |
+|ウズベク語 (ラテン)     | `uz` | | |✔ |
+|ヴォラピュク   | `vo` | | |✔ |
+|ヴァリス語    | `wae` | | |✔ |
+|西フリジア語 | `fy` | | |✔ |
+|ユカテコ語 | `yua` | | |✔ |
+|チワン語 | `za` | | |✔ |
+|ズールー語  | `zu` | | |✔ |
 
 ## <a name="image-analysis"></a>画像分析
 
@@ -65,10 +120,3 @@ Computer Vision の OCR API では複数の言語をサポートしています�
 |日本語 | `ja`   | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Portuguese | `pt` | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |スペイン語 | `es`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
-
-## <a name="next-steps"></a>次のステップ
-
-このガイドで説明されている Computer Vision 機能を使ってみます。
-
-* [ローカル画像の分析 (REST)](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/REST/CSharp-analyze.md)
-* [印刷されたテキストの抽出 (REST)](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/REST/CSharp-print-text.md)

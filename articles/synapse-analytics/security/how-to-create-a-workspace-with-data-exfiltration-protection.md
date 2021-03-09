@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: f8ebbdf70836f3f2613183268f03dc43da1f0671
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 6fd28c9392d760888eafde37471a49ffaa2e4423
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590562"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694140"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>データ流出の防止が有効になっているワークスペースを作成する
 この記事では、データ流出の防止が有効になっているワークスペースを作成する方法と、このワークスペースに対して承認された Azure AD テナントを管理する方法について説明します。
@@ -49,6 +49,9 @@ ms.locfileid: "97590562"
 >[!IMPORTANT]
 >ワークスペースのテナント以外のテナント内のリソースには、SQL プールからそれらへの接続をブロックするファイアウォール規則を設定しないでください。 Spark クラスターなどワークスペースのマネージド仮想ネットワーク内のリソースは、マネージド プライベート リンクを介してファイアウォールで保護されたリソースに接続できます。
 
+## <a name="known-limitations"></a>既知の制限事項
+ユーザーは、PyPI などのパブリック リポジトリから Python パッケージをインストールするための、環境構成ファイルを提供できます。 データ流失が防止されたワークスペースでは、アウトバウンド リポジトリへの接続がブロックされます。 そのため、PyPI などのパブリック リポジトリからインストールされた Python ライブラリはサポートされません。 別の方法として、ユーザーは自分のプライマリ Azure Data Lake Storage アカウント内にプライベート チャネルを作成し、自分の Conda 環境構成ファイル内でそれを参照することができます。 
+  
 ## <a name="next-steps"></a>次の手順
 
 [Synapse ワークスペースでのデータ流出の防止](./workspace-data-exfiltration-protection.md)の詳細を学習する

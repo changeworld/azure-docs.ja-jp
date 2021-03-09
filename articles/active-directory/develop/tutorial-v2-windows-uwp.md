@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: bbcebfd69789eb6ec03e565b347d05533043781c
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 6383f63d2118d8618f07bf3cb6cd08a0b16140f3
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232337"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102650"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>チュートリアル:ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 
@@ -292,7 +292,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
     }
 ```
 
-MSAL.NET では、トークンの取得やアカウントの操作に非同期メソッドを使用しています。 UI スレッドでの UI 操作がサポートされている必要があります。 そのため、`Dispatcher.RunAsync` 呼び出しと、予防的な `ConfigureAwait(false)` 呼び出しが使用されています。
+MSAL.NET では、トークンの取得やアカウントの操作に非同期メソッドを使用しています。 したがって、UI スレッドでの UI 操作をサポートします。 そのため、`Dispatcher.RunAsync` 呼び出しと、予防的な `ConfigureAwait(false)` 呼び出しが使用されています。
 
 #### <a name="more-information-about-signing-out"></a>サインアウトに関する詳細情報<a name="more-information-on-sign-out"></a>
 
@@ -343,9 +343,9 @@ private async Task DisplayMessageAsync(string message)
 
 ## <a name="register-your-application"></a>アプリケーションの登録
 
-ここで、アプリケーションを登録する必要があります。
+次に、アプリケーションを登録します。
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
@@ -356,8 +356,8 @@ private async Task DisplayMessageAsync(string message)
 
 アプリケーションの認証を構成します。
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> に戻り、 **[管理]** で **[認証]**  >  **[プラットフォームを追加]** の順に選択し、 **[モバイル アプリケーションとデスクトップ アプリケーション]** を選択します。
-1. **[リダイレクト URI]** セクションで、 **https://login.microsoftonline.com/common/oauth2/nativeclient** を確認します。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> に戻り、 **[管理]** で **[認証]**  >  **[プラットフォームを追加]** の順に選択し、 **[モバイル アプリケーションとデスクトップ アプリケーション]** を選択します。
+1. **[リダイレクト URI]** セクションで、「`https://login.microsoftonline.com/common/oauth2/nativeclient`」と入力します。
 1. **[構成]** をクリックします。
 
 アプリケーション用に API アクセス許可を構成します。

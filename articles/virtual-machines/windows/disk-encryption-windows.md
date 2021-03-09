@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: df74a15a84ba04addb75b021d3b77b06cfe2ea48
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 29a63d598ada8c413316fbf18bb87597afdf62de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781115"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693834"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM での Azure Disk Encryption シナリオ
 
@@ -151,7 +151,7 @@ NVMe ディスクで暗号化を有効にするには、次の操作を実行し
 
 次のシナリオでは、暗号化は NVMe ディスクに保持されます。
 - VM の再起動
-- VMSS の再イメージ化
+- 仮想マシン スケール セットの再イメージ化
 - OS のスワップ
 
 次のシナリオでは、NVMe ディスクは初期化前の状態に戻ります。
@@ -262,7 +262,6 @@ Azure Disk Encryption は、次のシナリオ、機能、およびテクノロ�
 - DFS、GFS、DRDB、CephFS を含む (ただし、これだけではありません) 共有/分散ファイル システムの暗号化。
 - 暗号化された VM を別のサブスクリプションまたはリージョンに移動する。
 - 暗号化された VM のイメージまたはスナップショットを作成し、それを使用して追加の VM をデプロイする。
-- Gen2 VM (「[Azure での第 2 世代 VM のサポート](../generation-2.md#generation-1-vs-generation-2-capabilities)」を参照)
 - 書き込みアクセラレータ ディスクを備えた M シリーズの VM。
 - [カスタマー マネージド キーを使用したサーバー側暗号化](../disk-encryption.md) (SSE + CMK) で暗号化されたディスクがある VM に ADE を適用する。 ADE で暗号化された VM 上のデータ ディスクに SSE + CMK を適用することも、サポートされていないシナリオです。
 - ADE で暗号化されている、または ADE で暗号化 **されたことがある** VM を、[カスタマー マネージド キーを使用したサーバー側暗号化](../disk-encryption.md)に移行する。

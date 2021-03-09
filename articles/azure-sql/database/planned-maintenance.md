@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: sstein
-ms.date: 08/25/2020
-ms.openlocfilehash: 3f87f47f652f71a57796d1cacd047b0448b49b7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 1/21/2021
+ms.openlocfilehash: d38ac9731959cf9a23052753b09c9e7819846705
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333037"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101664119"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance での Azure メンテナンス イベントの計画
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -45,7 +45,12 @@ Azure SQL Database サービスと Azure SQL Managed Instance サービスのセ
 
 データベースでログオン エラーが発生している場合は、[Azure portal](https://portal.azure.com) の [[リソース正常性]](../../service-health/resource-health-overview.md#get-started) ウィンドウで、現在の状態を確認します。 [正常性の履歴] セクションには、(該当する場合は) イベントごとのダウンタイムの理由が含まれています。
 
+## <a name="maintenance-window-feature"></a>メンテナンス期間機能
+
+メンテナンス期間機能を使用すると、対象となる Azure SQL データベースと SQL マネージド インスタンスに対して、予測可能なメンテナンス期間スケジュールを構成できます。 詳細については、[メンテナンス期間](maintenance-window.md)に関するページをご覧ください。
+
 ## <a name="next-steps"></a>次のステップ
 
 - Azure SQL Database と Azure SQL Managed Instance の[リソース正常性](resource-health-to-troubleshoot-connectivity.md)について説明します。
 - 再試行ロジックの詳細については、「[一時エラーの再試行ロジック](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)」を参照してください。
+- [メンテナンス期間](maintenance-window.md)機能を使用して、メンテナンス期間のスケジュールを構成します。

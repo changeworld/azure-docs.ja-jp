@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 9da725c433ad5d6233fd164d256692ca407714fc
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 16546432c8c0a23d5c9dc471fe8c62ced5eca993
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206454"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687534"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>課金データを Azure にアップロードして Azure portal に表示する
 
@@ -111,8 +111,9 @@ azdata arc dc upload -p usage.json
 
 Azure portal で課金データを表示するには、次の手順のようにします。
 
-1. 特殊な URL [https://aka.ms/arcdata](https://aka.ms/arcdata) を使用して Azure portal を開きます。
-1. 画面の上部にある検索ボックスに「 **Cost Management** 」と入力し、Cost Management サービスをクリックします。
+1. [Azure Portal](https://portal.azure.com)を開きます。
+1. 画面の上部にある検索ボックスに「**Cost Management**」と入力し、Cost Management サービスをクリックします。
+1. **[Cost Management の概要]** で、 **[Cost Management]** タブをクリックします。
 1. 左側の **[コスト分析]** タブをクリックします。
 1. ビューの上部にある **[リソースごとのコスト]** ボタンをクリックします。
 1. スコープが、データ サービス リソースが作成されたサブスクリプションに設定されていることを確認します。
@@ -131,7 +132,7 @@ Azure portal で課金データを表示するには、次の手順のように�
 
 ## <a name="export-billing-data"></a>課金データをエクスポートする
 
-課金エクスポート ジョブを作成することにより、 **詳細な** 使用状況と課金データを Azure Storage コンテナーに定期的にエクスポートすることもできます。 これは、請求期間内に特定のインスタンスが課金された時間数など、課金の詳細を確認したい場合に便利です。
+課金エクスポート ジョブを作成することにより、**詳細な** 使用状況と課金データを Azure Storage コンテナーに定期的にエクスポートすることもできます。 これは、請求期間内に特定のインスタンスが課金された時間数など、課金の詳細を確認したい場合に便利です。
 
 課金エクスポート ジョブを設定するには、次の手順のようにします。
 
@@ -150,7 +151,7 @@ Azure portal で課金データ ファイルを検証できます。
 > [!IMPORTANT]
 > 課金エクスポート ジョブを作成した後、4 時間待ってから次の手順に進んでください。
 
-1. ポータルの上部にある検索ボックスに「 **ストレージ アカウント** 」と入力し、 **[ストレージ アカウント]** をクリックし ます。
+1. ポータルの上部にある検索ボックスに「**ストレージ アカウント**」と入力し、 **[ストレージ アカウント]** をクリックし ます。
 3. 上で課金エクスポート ジョブを作成するときに指定したストレージ アカウントをクリックします。
 4. 左側の [コンテナー] をクリックします。
 5. 上で課金エクスポート ジョブを作成するときに指定したコンテナーをクリックします。
@@ -158,5 +159,5 @@ Azure portal で課金データ ファイルを検証できます。
 7. 生成されたフォルダーとファイルにドリルダウンし、生成された .csv ファイルの 1 つをクリックします。
 8. **[ダウンロード]** ボタンをクリックすると、ファイルがローカル環境のダウンロード フォルダーに保存されます。
 9. Excel などの .csv ファイル ビューアーを使用してファイルを開きます。
-10. 結果をフィルター処理して、 **リソースの種類** = `Microsoft.AzureData/<data service resource type` の行のみを表示します。
+10. 結果をフィルター処理して、**リソースの種類** = `Microsoft.AzureData/<data service resource type` の行のみを表示します。
 11. 現在の 24 時間の期間中にインスタンスが使用された時間数が、UsageQuantity 列に表示されます。

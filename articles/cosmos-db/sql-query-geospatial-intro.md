@@ -5,23 +5,23 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 02/25/2021
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: a2e4e14927932575c9da42392329eea279f922fe
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b20c72ae3ed8a8fffa02fc3a2c86f9f73ba2663b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336165"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692132"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB の地理空間データと GeoJSON 位置データ
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-この記事では、Azure Cosmos DB の地理空間機能を紹介します。 現在、地理空間データの保存とアクセスは、Azure Cosmos DB SQL API アカウントのみでサポートされます。 地理空間インデックスに関するドキュメントを読むと、次の質問に答えられるようになります。
+この記事では、Azure Cosmos DB の地理空間機能を紹介します。 地理空間インデックスに関するドキュメントを読むと、次の質問に答えられるようになります。
 
 * 空間データを Azure Cosmos DB に保存する方法
-* Azure Cosmos DB 内の地理空間データを SQL や LINQ で照会する方法
+* Azure Cosmos DB 内の空間データを SQL や LINQ で照会する方法
 * Azure Cosmos DB の空間インデックスを有効または無効にする方法
 
 ## <a name="spatial-data-use-cases"></a>空間データのユース ケース
@@ -38,7 +38,7 @@ ms.locfileid: "93336165"
 
 空間データは、物体の空間における位置と形状を表現します。 ほとんどのアプリケーションにおける空間データは、地球上の物体、および地理空間データに対応します。 空間データを使用することで、人物の位置や、関心のある場所、都市や湖の境界を表現することができます。
 
-Azure Cosmos DB の SQL API では、 **geometry** データ型と **geography** データ型の 2 つの空間データ型がサポートされています。
+Azure Cosmos DB の SQL API では、**geometry** データ型と **geography** データ型の 2 つの空間データ型がサポートされています。
 
 - **geometry** 型では、ユークリッド (平面) 座標系でデータを表します。
 - **geography** 型は、球体地球座標系のデータを表します。
@@ -121,9 +121,9 @@ Azure Cosmos DB では座標が WGS-84 測地系で解釈されます。 座標�
     "type":"Polygon",
     "coordinates":[ [
         [ 31.8, -5 ],
-        [ 31.8, -4.7 ],
-        [ 32, -4.7 ],
         [ 32, -5 ],
+        [ 32, -4.7 ],
+        [ 31.8, -4.7 ],
         [ 31.8, -5 ]
     ] ]
 }

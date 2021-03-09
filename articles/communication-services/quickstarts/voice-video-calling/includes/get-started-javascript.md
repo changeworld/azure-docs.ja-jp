@@ -6,14 +6,18 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: f3d6023ffd3043bc57727fc39f077dd0ce7eccb8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d27a79e180a0219773a3094fb85f842773d75183
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024168"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656618"
 ---
 このクイックスタートでは、JavaScript 用の Azure Communication Services 通話クライアント ライブラリを使用して、通話を開始する方法について説明します。
+このドキュメントでは、呼び出し元ライブラリのバージョン 1.0.0-beta.5 の型を参照しています。
+
+> [!NOTE]
+> このドキュメントでは、呼び出し元のクライアント ライブラリのバージョン 1.0.0-beta.6 を使用します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -60,7 +64,7 @@ ms.locfileid: "98024168"
 
 ```javascript
 import { CallClient, CallAgent } from "@azure/communication-calling";
-import { AzureCommunicationUserCredential } from '@azure/communication-common';
+import { AzureCommunicationTokenCredential } from '@azure/communication-common';
 
 let call;
 let callAgent;
@@ -77,17 +81,17 @@ Azure Communication Services 通話クライアント ライブラリが備え�
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
 | CallClient                       | CallClient は、通話クライアント ライブラリへのメイン エントリ ポイントです。                                                                       |
 | CallAgent                        | CallAgent は、通話を開始および管理するために使用します。                                                                                            |
-| AzureCommunicationUserCredential | AzureCommunicationUserCredential クラスによって、CallAgent のインスタンス化に使用する CommunicationUserCredential インターフェイスが実装されます。 |
+| AzureCommunicationTokenCredential | AzureCommunicationTokenCredential クラスによって、CallAgent のインスタンス化に使用する CommunicationTokenCredential インターフェイスが実装されます。 |
 
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-`<USER_ACCESS_TOKEN>` を、リソース用の有効なユーザー アクセス トークンで置き換える必要があります。 まだトークンを入手していない場合は、[ユーザー アクセス トークン](../../access-tokens.md)に関するドキュメントを参照してください。 `CallClient` を使用して、`CallAgent` インスタンスを `CommunicationUserCredential` で初期化します。これにより、電話をかりたり受けたりすることができるようになります。 次のコードを **client.js** に追加します。
+`<USER_ACCESS_TOKEN>` を、リソース用の有効なユーザー アクセス トークンで置き換える必要があります。 まだトークンを入手していない場合は、[ユーザー アクセス トークン](../../access-tokens.md)に関するドキュメントを参照してください。 `CallClient` を使用して、`CallAgent` インスタンスを `CommunicationTokenCredential` で初期化します。これにより、電話をかりたり受けたりすることができるようになります。 次のコードを **client.js** に追加します。
 
 ```javascript
 async function init() {
     const callClient = new CallClient();
-    const tokenCredential = new AzureCommunicationUserCredential("<USER ACCESS TOKEN>");
+    const tokenCredential = new AzureCommunicationTokenCredential("<USER ACCESS TOKEN>");
     callAgent = await callClient.createCallAgent(tokenCredential);
     callButton.disabled = false;
 }
@@ -102,7 +106,7 @@ init();
 callButton.addEventListener("click", () => {
     // start a call
     const userToCall = calleeInput.value;
-    call = callAgent.call(
+    call = callAgent.startCall(
         [{ communicationUserId: userToCall }],
         {}
     );

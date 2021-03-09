@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
-ms.date: 03/03/2020
-ms.openlocfilehash: 4ea1982e7545f4ac39a5ecd15dc9e19a582ae31c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 02/03/2021
+ms.openlocfilehash: c6faa1703b0935d66d291281f33027b3a66a59d4
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459635"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526824"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database ハイパースケールに関する FAQ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "96459635"
 
 ### <a name="what-resource-types-and-purchasing-models-support-hyperscale"></a>ハイパースケールをサポートするリソースの種類と購入モデル
 
-ハイパースケール サービス レベルを利用できるのは、Azure SQL Database において仮想コアベースの購入モデルを使用する単一のデータベースのみです。  
+ハイパースケール サービス レベルを利用できるのは、Azure SQL データベース において仮想コアベースの購入モデルを使用する単一のデータベースのみです。  
 
 ### <a name="how-does-the-hyperscale-service-tier-differ-from-the-general-purpose-and-business-critical-service-tiers"></a>ハイパースケール サービス レベルと General Purpose サービス レベルおよび Business Critical サービス レベルとの違い
 
@@ -166,7 +166,7 @@ Hyperscale サービス レベルの対象として意図されているのは�
 
 ### <a name="what-is-the-smallest-database-size-that-hyperscale-supports-or-starts-with"></a>ハイパースケールでサポートされる最小データベース サイズ (ハイパースケールを使用開始できる最小サイズ) とは
 
-40 GB です。 ハイパースケール データベースは、標準サイズである 10 GB で作成されます。 その後、10 分ごとに 10 GB ずつ拡大し、最終的には 40 GB に達します。 IOPS とI/O 並列処理を向上させるために、これらの 10 GB チャンクはそれぞれ別のページ サーバーに割り当てられます。 この最適化により、初期データベースのサイズとして 40 GB 未満を選択しても、データベースは少なくとも 40 GB までは自動的に拡大します。
+40 GB です。 ハイパースケール データベースは、標準サイズである 10 GB で作成されます。 その後、10 分ごとに 10 GB ずつ拡大し、最終的には 40 GB に達します。 IOPS と I/O 並列処理を向上させるために、これらの 10 GB チャンクはそれぞれ別のページ サーバーに割り当てられます。 この最適化により、初期データベースのサイズとして 40 GB 未満を選択しても、データベースは少なくとも 40 GB までは自動的に拡大します。
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>データベースのサイズが拡張される単位とは
 
@@ -233,7 +233,7 @@ Hyperscale サービス レベルの対象として意図されているのは�
 
 クライアント アプリケーションで Azure Storage からデータを読み取り、ハイパースケール データベースに読み込むことができます (他の Azure SQL Database データベースの場合と同様です)。 Polybase は現在 Azure SQL Database でサポートされていません。 高速読み込みを提供する代替手段として、[Azure Data Factory](../../data-factory/index.yml) を使用するか、[SQL 用 Spark コネクタ](spark-connector.md)で Spark ジョブを [Azure Databricks](/azure/azure-databricks/) で使用できます。 SQL 用の Spark コネクタでは一括挿入がサポートされます。
 
-BULK INSERT または OPENROWSET を使用して、Azure BLOB ストアからデータを一括で読み取ることもできます。[Azure Blob Storage のデータに一括アクセスする例](/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location)。
+BULK INSERT または OPENROWSET を使用して、Azure BLOB ストアからデータを一括で読み取ることもできます。[Azure Blob Storage のデータに一括アクセスする例](/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location)。
 
 単純復旧モデルまたは一括ログ記録モデルはハイパースケールではサポートされていません。 高可用性を実現して特定の時点に復旧するには、完全復旧モデルが必要です。 ただし、ハイパースケール ログ アーキテクチャでは、他の Azure SQL Database サービス レベルと比較してデータ取り込み率が向上しています。
 

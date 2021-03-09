@@ -7,18 +7,17 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: f4981036ca92f6efe2d3e23ea1f507a3a1f3c70a
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: fd40ad41bda50d93943a514cd9cc3aeeab4ac948
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234258"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198882"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>チュートリアル:Kubernetes 上のシークレット ストア CSI ドライバー向けに Azure Key Vault プロバイダーを構成して実行する
 
 > [!IMPORTANT]
-> CSI ドライバーは、Azure テクニカル サポートではサポートされていないオープン ソース プロジェクトです。 CSI ドライバー Key Vault 統合に関連するすべてのフィードバックと問題は、[こちら](https://github.com/Azure/secrets-store-csi-driver-provider-azure/issues)の GitHub リンクでレポートしてください。 このツールはユーザーがクラスターに自己インストールし、コミュニティからフィードバックを収集するために提供されています。
-
+> シークレット ストア CSI ドライバーは、Azure テクニカル サポートではサポートされていないオープンソース プロジェクトです。 CSI ドライバー Key Vault 統合に関連するすべてのフィードバックと問題を、このページの下部にある github リンクで報告してください。 このツールはユーザーがクラスターに自己インストールし、コミュニティからフィードバックを収集するために提供されています。
 
 このチュートリアルでは、シークレット ストア コンテナー ストレージ インターフェイス (CSI) ドライバーを使用して Azure キー コンテナーにアクセスしてシークレットを取得し、そのシークレットを Kubernetes ポッドにマウントします。
 
@@ -27,7 +26,7 @@ ms.locfileid: "98234258"
 > [!div class="checklist"]
 > * マネージド ID を使用する。
 > * Azure CLI を使用して Azure Kubernetes Service (AKS) クラスターをデプロイする。
-> * Helm とシークレット ストア CSI ドライバーをインストールする。
+> * Helm、シークレット ストア CSI ドライバーおよびその CSI ドライバー用の Azure Key Vault プロバイダーをインストールする。
 > * Azure キー コンテナーを作成してシークレットを設定する。
 > * 独自の SecretProviderClass オブジェクトを作成する。
 > * キー コンテナーからマウントされたシークレットを使用してポッドをデプロイする。
@@ -36,9 +35,9 @@ ms.locfileid: "98234258"
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-* このチュートリアルを開始する前に、[Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) をインストールします。
+* このチュートリアルを開始する前に、[Azure CLI](/cli/azure/install-azure-cli-windows) をインストールします。
 
-このチュートリアルでは、Azure Kubernetes Service を Linux ノードで実行することを前提としています。
+このチュートリアルでは、Azure Kubernetes Service を Linux ノード上で実行することを前提としています。
 
 ## <a name="use-managed-identities"></a>マネージド ID の使用
 
@@ -53,22 +52,22 @@ Azure Cloud Shell を使用する必要はありません。 Azure CLI がイン
 [Azure CLI を使用した Azure Kubernetes Service クラスターのデプロイ](../../aks/kubernetes-walkthrough.md)に関するページの「リソース グループを作成する」、「AKS クラスターの作成」、および「クラスターに接続する」セクションを完了します。 
 
 > [!NOTE] 
-> ポッド ID を使用する予定の場合は、次のコマンドに示すように、Kubernetes クラスターを作成する際にそれを必ず有効にしてください。
+> ポッド ID の使用を予定している場合、推奨されるネットワーク プラグインは `azure` です。 詳細については、[ドキュメント](https://azure.github.io/aad-pod-identity/docs/configure/aad_pod_identity_on_kubenet/)を参照してください。 次のコマンドに示すように、Kubernetes クラスターを作成します。
 >
 > ```azurecli
 > az aks create -n contosoAKSCluster -g contosoResourceGroup --kubernetes-version 1.16.9 --node-count 1 --enable-managed-identity
 > ```
 
 1. [PATH 環境変数](https://www.java.com/en/download/help/path.xml)を、ダウンロードした *kubectl.exe* ファイルに設定します。
-1. 次のコマンドを使用して、Kubernetes バージョンを確認します。これにより、クライアントとサーバーのバージョンが出力されます。 クライアントのバージョンは、インストールした *kubectl.exe* ファイルであり、サーバーのバージョンは、クラスターが実行されている Azure Kubernetes Service (AKS) です。
+2. 次のコマンドを使用して、Kubernetes バージョンを確認します。これにより、クライアントとサーバーのバージョンが出力されます。 クライアントのバージョンは、インストールした *kubectl.exe* ファイルであり、サーバーのバージョンは、クラスターが実行されている Azure Kubernetes Service (AKS) です。
     ```azurecli
     kubectl version
     ```
-1. Kubernetes のバージョンが 1.16.0 以降であることを確認します。 Windows クラスターの場合、Kubernetes のバージョンが 1.18.0 以降であることを確認します。 次のコマンドを実行すると、Kubernetes クラスターとノード プールの両方がアップグレードされます。 このコマンドの実行には数分かかる場合があります。 この例では、リソース グループは *contosoResourceGroup*、Kubernetes クラスターは *contosoAKSCluster* です。
+3. Kubernetes のバージョンが 1.16.0 以降であることを確認します。 Windows クラスターの場合、Kubernetes のバージョンが 1.18.0 以降であることを確認します。 次のコマンドを実行すると、Kubernetes クラスターとノード プールの両方がアップグレードされます。 このコマンドの実行には数分かかる場合があります。 この例では、リソース グループは *contosoResourceGroup*、Kubernetes クラスターは *contosoAKSCluster* です。
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. 作成した AKS クラスターのメタデータを表示するには、次のコマンドを使用します。 後で使用するために、**principalId**、**clientId**、**subscriptionId**、**nodeResourceGroup** をコピーします。 マネージド ID を有効にして AKS クラスターを作成しなかった場合、**principalId** と **clientId** は null になります。 
+4. 作成した AKS クラスターのメタデータを表示するには、次のコマンドを使用します。 後で使用するために、**principalId**、**clientId**、**subscriptionId**、**nodeResourceGroup** をコピーします。 マネージド ID を有効にして AKS クラスターを作成しなかった場合、**principalId** と **clientId** は null になります。 
 
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup
@@ -80,11 +79,11 @@ Azure Cloud Shell を使用する必要はありません。 Azure CLI がイン
     
 ## <a name="install-helm-and-the-secrets-store-csi-driver"></a>Helm とシークレット ストア CSI ドライバーをインストールする
 > [!NOTE]
-> 以下のインストールは、Linux 上の AKS でのみ機能します。 シークレット ストア CSI ドライバーのインストールの詳細については、「[シークレット ストア CSI ドライバーの Azure Key Vault プロバイダー](https://github.com/Azure/secrets-store-csi-driver-provider-azure)」をご覧ください。 
+> 以下のインストールは、Linux 上の AKS でのみ機能します。 シークレット ストア CSI ドライバーのインストールの詳細については、「[シークレット ストア CSI ドライバーの Azure Key Vault プロバイダー](https://azure.github.io/secrets-store-csi-driver-provider-azure/getting-started/installation/)」をご覧ください。 
 
-シークレット ストア CSI ドライバーをインストールするには、最初に [Helm](https://helm.sh/docs/intro/install/) をインストールする必要があります。
+シークレット ストア CSI ドライバーと Azure Key Vault プロバイダーをインストールするには、最初に [Helm](https://helm.sh/docs/intro/install/) をインストールする必要があります。
 
-[シークレット ストア CSI](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/charts/csi-secrets-store-provider-azure/README.md) ドライバー インターフェイスを使用すると、自分の Azure キー コンテナー インスタンスに格納されているシークレットを取得し、シークレット コンテンツを Kubernetes ポッドにマウントすることができます。
+[シークレット ストア CSI](https://azure.github.io/secrets-store-csi-driver-provider-azure/) ドライバー インターフェイスを使用すると、自分の Azure Key Vault インスタンスに格納されているシークレットを取得してから、ドライバー インターフェイスを使用してシークレット コンテンツを Kubernetes ポッドにマウントすることができます。
 
 1. Helm のバージョンが v3 以降であることを確認します。
     ```azurecli
@@ -96,6 +95,8 @@ Azure Cloud Shell を使用する必要はありません。 Azure CLI がイン
 
     helm install csi-secrets-store-provider-azure/csi-secrets-store-provider-azure --generate-name
     ```
+> [!NOTE] 
+> Windows ノードでシークレット ストア CSI ドライバーと Azure Key Vault プロバイダーを使用する予定の場合は、[Helm 構成値](https://github.com/Azure/secrets-store-csi-driver-provider-azure/tree/master/charts/csi-secrets-store-provider-azure#configuration)を使用して Windows ノードでドライバーとプロバイダーを有効にしてください
 
 ## <a name="create-an-azure-key-vault-and-set-your-secrets"></a>Azure キー コンテナーを作成してシークレットを設定する
 
@@ -106,25 +107,22 @@ Azure Cloud Shell を使用する必要はありません。 Azure CLI がイン
 
 ## <a name="create-your-own-secretproviderclass-object"></a>独自の SecretProviderClass オブジェクトを作成する
 
-シークレット ストア CSI ドライバーのプロバイダー固有のパラメーターを使用して独自のカスタム SecretProviderClass オブジェクトを作成するには、[このテンプレートを使用](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/v1alpha1_secretproviderclass_service_principal.yaml)します。 このオブジェクトにより、自分のキー コンテナーへのアクセス権が ID に提供されます。
+シークレット ストア CSI ドライバーのプロバイダー固有のパラメーターを使用して独自のカスタム SecretProviderClass オブジェクトを作成するには、[このテンプレートを使用](https://raw.githubusercontent.com/Azure/secrets-store-csi-driver-provider-azure/master/examples/pod-identity/v1alpha1_secretproviderclass_pod_identity.yaml)します。 このオブジェクトにより、自分のキー コンテナーへのアクセス権が ID に提供されます。
 
 サンプルの SecretProviderClass YAML ファイルで、不足しているパラメーターを入力します。 次のパラメーターが必要です。
 
-* **userAssignedIdentityID**: # [必須] 値が空の場合、既定では VM のシステム割り当て ID が使用されます 
 * **keyvaultName**: キー コンテナーの名前
-* **objects**: マウントするすべてのシークレット コンテンツ用のコンテナー
+* **objects**: マウントするすべてのシークレット コンテンツの一覧
     * **objectName**: シークレット コンテンツの名前
     * **objectType**: オブジェクトの種類 (シークレット、キー、証明書)
-* **resourceGroup**: リソース グループの名前 # [0.0.4 より前のバージョンの場合は必須] キー コンテナーのリソース グループ
-* **subscriptionId**: キー コンテナーのサブスクリプション ID # [0.0.4 より前のバージョンの場合は必須] キー コンテナーのサブスクリプション ID
 * **tenantID**: お使いのキー コンテナーのテナント ID またはディレクトリ ID
 
-すべての必須フィールドに関するドキュメントは、次のページで入手できます: [リンク](https://github.com/Azure/secrets-store-csi-driver-provider-azure#create-a-new-azure-key-vault-resource-or-use-an-existing-one)
+すべての必須フィールドおよびサポートされている構成に関するドキュメントについては、こちらを参照してください: [リンク](https://azure.github.io/secrets-store-csi-driver-provider-azure/getting-started/usage/#create-your-own-secretproviderclass-object)
 
 更新されたテンプレートを次のコードに示します。 これを YAML ファイルとしてダウンロードし、必須フィールドに入力します。 この例のキー コンテナーは **contosoKeyVault5** です。 これには、**secret1** と **secret2** という 2 つのシークレットが含まれています。
 
 > [!NOTE] 
-> マネージド ID を使用している場合は、**usePodIdentity** 値を *true* として設定し、**userAssignedIdentityID** 値を引用符のペア ( **""** ) として設定します。 
+> ポッド ID を使用している場合は、**usePodIdentity** 値を *true* として設定し、**userAssignedIdentityID** 値を引用符のペア ( **""** ) として設定します。 マネージド ID を使用している場合は、**useVMManagedIdentity** 値を *true* として設定し、**userAssignedIdentityID** 値をユーザー割り当て ID の clientID として設定します。
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
@@ -134,39 +132,36 @@ metadata:
 spec:
   provider: azure
   parameters:
-    usePodIdentity: "false"                   # [REQUIRED] Set to "true" if using managed identities
-    useVMManagedIdentity: "false"             # [OPTIONAL] if not provided, will default to "false"
-    userAssignedIdentityID: "servicePrincipalClientID"       # [REQUIRED]  If you're using a user-assigned identity as the VM's managed identity, specify the identity's client id. If the value is empty, it defaults to use the system-assigned identity on the VM
-                                                         
-    keyvaultName: "contosoKeyVault5"          # [REQUIRED] the name of the key vault
-                                              #     az keyvault show --name contosoKeyVault5
-                                              #     the preceding command will display the key vault metadata, which includes the subscription ID, resource group name, key vault 
-    cloudName: ""                                # [OPTIONAL for Azure] if not provided, Azure environment will default to AzurePublicCloud
+    usePodIdentity: "false"                                                 # [OPTIONAL] if not provided, will default to "false". Set to "true" if using pod identities.
+    useVMManagedIdentity: "false"                                           # [OPTIONAL] if not provided, will default to "false". Set to "true" if using managed identities.
+    userAssignedIdentityID: "<clientID of user-assigned managed identity"   # [OPTIONAL] If you're using managed identities, use the client id to specify which user-assigned managed identity to use. If the value is empty, it defaults to use the system-assigned identity on the VM
+    keyvaultName: "contosoKeyVault5"                                        # [REQUIRED] the name of the key vault
+                                                                            #     az keyvault show --name contosoKeyVault5
+                                                                            #     the preceding command will display the key vault metadata, which includes the subscription ID, resource group name, key vault 
+    cloudName: ""                                                           # [OPTIONAL] if not provided, Azure environment will default to AzurePublicCloud
     objects:  |
       array:
         - |
-          objectName: secret1                 # [REQUIRED] object name
-                                              #     az keyvault secret list --vault-name "contosoKeyVault5"
-                                              #     the above command will display a list of secret names from your key vault
-          objectType: secret                  # [REQUIRED] object types: secret, key, or cert
-          objectVersion: ""                   # [OPTIONAL] object versions, default to latest if empty
+          objectName: secret1                                               # [REQUIRED] object name
+                                                                            #     az keyvault secret list --vault-name "contosoKeyVault5"
+                                                                            #     the above command will display a list of secret names from your key vault
+          objectType: secret                                                # [REQUIRED] object types: secret, key, or cert
+          objectVersion: ""                                                 # [OPTIONAL] object versions, default to latest if empty
         - |
           objectName: secret2
           objectType: secret
           objectVersion: ""
-    resourceGroup: "contosoResourceGroup"     # [REQUIRED] the resource group name of the key vault
-    subscriptionId: "subscriptionID"          # [REQUIRED] the subscription ID of the key vault
-    tenantId: "tenantID"                      # [REQUIRED] the tenant ID of the key vault
+    tenantId: "tenantID"                                                    # [REQUIRED] the tenant ID of the key vault
 ```
 次の画像は、**az keyvault show --name contosoKeyVault5** のコンソール出力を示しています。関連するメタデータが強調表示されています。
 
 !["az keyvault show --name contosoKeyVault5" のコンソール出力を示すスクリーンショット](../media/kubernetes-key-vault-4.png)
 
-## <a name="assign-managed-identity"></a>マネージド ID を割り当てる
+## <a name="install-azure-active-directory-azure-ad-pod-identity"></a>Azure Active Directory (Azure AD) ポッド ID をインストールする
 
-作成した AKS クラスターに特定のロールを割り当てます。 
+1. 作成した AKS クラスターに特定のロールを割り当てます。 
 
-1. ユーザー割り当てのマネージド ID の作成、一覧表示、または読み取りを行うには、AKS クラスターに[マネージド ID オペレーター](../../role-based-access-control/built-in-roles.md#managed-identity-operator) ロールを割り当てる必要があります。 **$clientId** が Kubernetes クラスターの clientId であることを確認します。 スコープについては、お使いの Azure サブスクリプション サービス、特に AKS クラスターの作成時に作成されたノード リソース グループの下に配置されます。 このスコープによって、そのグループ内のリソースのみが、以下に割り当てられたロールの影響を受けるようになります。 
+    すべての必須のロールの割り当てと Azure Active Directory (Azure AD) ポッド ID に関するドキュメントについては、こちらを参照してください: [リンク](https://azure.github.io/aad-pod-identity/docs/getting-started/role-assignment/)
 
     ```azurecli
     RESOURCE_GROUP=contosoResourceGroup
@@ -176,24 +171,27 @@ spec:
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$RESOURCE_GROUP
     ```
 
-1. AKS に Azure Active Directory (Azure AD) ID をインストールします。
+2. AKS に Azure Active Directory (Azure AD) ID をインストールします。
+
+    > [!NOTE] 
+    > kubenet ネットワーク プラグインと共に AKS クラスターを使用している場合は、クラスターにポッド ID をデプロイする方法について、こちらの[ドキュメント](https://azure.github.io/aad-pod-identity/docs/configure/aad_pod_identity_on_kubenet/)を確認してください。
+
     ```azurecli
     helm repo add aad-pod-identity https://raw.githubusercontent.com/Azure/aad-pod-identity/master/charts
 
     helm install pod-identity aad-pod-identity/aad-pod-identity
     ```
 
-1. Azure AD ID を作成します。 後で使用するために、出力の **clientId** と **principalId** をコピーします。
+3. ユーザー割り当てマネージド ID を作成します。 後で使用するために、出力の **clientId** をコピーします。
     ```azurecli
     az identity create -g $resourceGroupName -n $identityName
     ```
 
-1. 対象のキー コンテナー用に前の手順で作成した Azure AD ID に "*閲覧者*" ロールを割り当てた後、キー コンテナーからシークレットを取得するためのアクセス許可をその ID に付与します。 Azure AD ID の **clientId** と **principalId** を使用します。
+4. その ID に対して、キー コンテナーからシークレットを取得するためのアクセス許可を付与します。 ユーザー割り当てマネージド ID から **clientId** を使用します。
     ```azurecli
-    az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/<SUBID>/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
-
     az keyvault set-policy -n contosoKeyVault5 --secret-permissions get --spn $clientId
     az keyvault set-policy -n contosoKeyVault5 --key-permissions get --spn $clientId
+    az keyvault set-policy -n contosoKeyVault5 --certificate-permissions get --spn $clientId
     ```
 
 ## <a name="deploy-your-pod-with-mounted-secrets-from-your-key-vault"></a>キー コンテナーからマウントされたシークレットを使用してポッドをデプロイする
@@ -205,17 +203,17 @@ kubectl apply -f secretProviderClass.yaml
 
 ### <a name="use-managed-identities"></a>マネージド ID の使用
 
-マネージド ID を使用している場合は、前に作成した ID を参照する *AzureIdentity* をクラスター内に作成します。 次に、作成した AzureIdentity を参照する *AzureIdentityBinding* を作成します。 次のテンプレートにパラメーターを入力した後、*podIdentityAndBinding.yaml* として保存します。  
+ポッド ID を使用している場合は、前に作成した ID を参照する *AzureIdentity* をクラスター内に作成します。 次に、作成した AzureIdentity を参照する *AzureIdentityBinding* を作成します。 次のテンプレートにパラメーターを入力した後、*podIdentityAndBinding.yaml* として保存します。  
 
 ```yml
 apiVersion: aadpodidentity.k8s.io/v1
 kind: AzureIdentity
 metadata:
-    name: "azureIdentityName"               # The name of your Azure identity
+    name: azureIdentityName                 # The name of your Azure identity
 spec:
-    type: 0                                 # Set type: 0 for managed service identity
+    type: 0                                 # Set type: 0 for managed identity
     resourceID: /subscriptions/<SUBID>/resourcegroups/<RESOURCEGROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<AZUREIDENTITYNAME>
-    clientID: "managedIdentityClientId"     # The clientId of the Azure AD identity that you created earlier
+    clientID: "<managed identity clientID>"   # The clientId of the User-assigned managed identity that you created earlier
 ---
 apiVersion: aadpodidentity.k8s.io/v1
 kind: AzureIdentityBinding
@@ -226,7 +224,7 @@ spec:
     selector: azure-pod-identity-binding-selector
 ```
     
-次のコマンドを実行して、バインドを実行します。
+次のコマンドを実行して、バインドを構成します。
 
 ```azurecli
 kubectl apply -f podIdentityAndBinding.yaml
@@ -240,7 +238,7 @@ kind: Pod
 metadata:
   name: nginx-secrets-store-inline
   labels:
-    aadpodidbinding: azure-pod-identity-binding-selector
+    aadpodidbinding: azure-pod-identity-binding-selector # The selector defined in AzureIdentityBinding in the previous step
 spec:
   containers:
     - name: nginx
@@ -284,12 +282,12 @@ kubectl describe pod/nginx-secrets-store-inline
 
 ポッドに含まれるすべてのシークレットを表示するには、次のコマンドを実行します。
 ```azurecli
-kubectl exec -it nginx-secrets-store-inline -- ls /mnt/secrets-store/
+kubectl exec nginx-secrets-store-inline -- ls /mnt/secrets-store/
 ```
 
 特定のシークレットの内容を表示するには、次のコマンドを実行します。
 ```azurecli
-kubectl exec -it nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
+kubectl exec nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 ```
 
 シークレットの内容が表示されていることを確認します。

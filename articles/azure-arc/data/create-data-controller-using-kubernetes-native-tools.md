@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: e8d00055d9a4d7355ccd8a33c8a9b811b852f5c8
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 45ba08193d4907126bd51412805f04b7aec4fce0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955282"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686395"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Kubernetes ツールを使用した Azure Arc データ コントローラーの作成
 
@@ -175,16 +175,27 @@ kubectl create --namespace arc -f C:\arc-data-services\controller-login-secret.y
 **見直してできれば既定値を変更することを推奨**
 - **storage..className**: データ コントローラーのデータ ファイルとログ ファイルに使用するストレージ クラス。  Kubernetes クラスターで使用できるストレージ クラスがわからない場合は、次のコマンドを実行します。`kubectl get storageclass`  既定値は `default` で、既定のストレージ クラスではなく、`default` という名前の既存のストレージ クラスがあることを前提としています。  注:目的のストレージ クラスに設定される className 設定は 2 つあり、1 つはデータ用で、もう 1 つはログ用です。
 - **serviceType**:LoadBalancer を使用していない場合は、サービス タイプを `NodePort` に変更します。  注:2 つの serviceType 設定を変更する必要があります。
+- Azure Red Hat OpenShift または Red Hat OpenShift コンテナー プラットフォームでは、データ コントローラーを作成する前にセキュリティ コンテキスト制約を適用する必要があります。 「[OpenShift で Azure Arc 対応データ サービスのセキュリティ コンテキスト制約を適用する](how-to-apply-security-context-constraint.md)」の手順に従います。
+- **Security**: Azure Red Hat OpenShift または Red Hat OpenShift コンテナー プラットフォームの場合は、データ コントローラーの yaml ファイルで、`security:` 設定を下記の値に置き換えます。 
+
+```yml
+  security:
+    allowDumps: true
+    allowNodeMetricsCollection: false
+    allowPodMetricsCollection: false
+    allowRunAsRoot: false
+```
 
 **省略可能**
 - **name**:データ コントローラーの既定の名前は `arc` ですが、必要に応じて変更できます。
 - **displayName**:ファイルの先頭にある name 属性と同じ値に設定します。
 - **registry**:既定では Microsoft Container Registry です。  Microsoft Container Registry からイメージを取得して[プライベート コンテナー レジストリにプッシュ](offline-deployment.md)している場合は、ここでレジストリの IP アドレスまたは DNS 名を入力します。
 - **dockerRegistry**:必要に応じて、プライベート コンテナー レジストリからイメージをプルするために使用するイメージのプル シークレット。
-- **repository**:Microsoft Container Registry 上の既定のリポジトリは `arcdata` です。  プライベート コンテナー レジストリを使用している場合は、Azure Arr が有効になっているデータ サービスのコンテナーイメージが格納されているフォルダーまたはリポジトリのパスを入力します。
+- **repository**:Microsoft Container Registry 上の既定のリポジトリは `arcdata` です。  プライベート コンテナー レジストリを使用している場合は、Azure Arc 対応データ サービスのコンテナーイメージが格納されているフォルダーまたはリポジトリのパスを入力します。
 - **imageTag**: テンプレート内には最新バージョンのタグが既定で設定されていますが、古いバージョンを使用する必要がある場合は変更できます。
 
-完成したデータ コントローラーの yaml ファイルの例を次に示します。
+次の例は、完成したデータ コントローラーの yaml ファイルを示しています。 お客様の要件と、上記の情報に基づいて、実際の環境に合わせて例を更新します。
+
 ```yaml
 apiVersion: arcdata.microsoft.com/v1alpha1
 kind: datacontroller
@@ -194,7 +205,7 @@ metadata:
 spec:
   credentials:
     controllerAdmin: controller-login-secret
-    #dockerRegistry: mssql-private-registry - optional if you are using a private container registry that requires authentication using an image pull secret
+    #dockerRegistry: arc-private-registry - optional if you are using a private container registry that requires authentication using an image pull secret
     serviceAccount: sa-mssql-controller
   docker:
     imagePullPolicy: Always

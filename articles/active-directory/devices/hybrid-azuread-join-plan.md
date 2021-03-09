@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f13dfa4221f8f09c24cce3a451f3180d15ee3b99
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 0c4ed5dfee80c33009874361ae6b4d23ec00bc26
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435759"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573332"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -81,6 +81,8 @@ Windows デスクトップ オペレーティング システムを実行して�
 - 資格情報のローミングや、ユーザー プロファイルまたは必須のプロファイルのローミングを使用している場合、Hybrid Azure AD 参加は Windows ダウンレベル デバイスではサポートされていません。
 
 - Server Core OS では、どの種類のデバイス登録もサポートされていません。
+
+- ユーザー状態移行ツール (USMT) では、デバイス登録は処理されません。  
 
 ### <a name="os-imaging-considerations"></a>OS イメージングの考慮事項
 - システム準備ツール (Sysprep) を使用していて、インストールに **pre-Windows 10 1809** イメージを使用している場合は、そのイメージが既にハイブリッド Azure AD 参加として Azure AD に登録されているデバイスからのものではないことを確認します。

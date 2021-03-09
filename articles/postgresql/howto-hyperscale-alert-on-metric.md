@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 73705434aef3ee438c02fbfd6502d30e7620b695
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f5557140d77865a6d4c44316cecd512f877736e0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026456"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577082"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure portal を使用して Azure Database for PostgreSQL でのメトリックに対するアラートを設定する - Hyperscale (Citus)
 
@@ -26,8 +26,8 @@ ms.locfileid: "95026456"
 * Webhook を呼び出す。
 
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
-* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
-* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure Portal](../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Azure 監視 REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Azure Portal でメトリックのアラート ルールを作成する
@@ -109,5 +109,5 @@ ms.locfileid: "95026456"
 CPU 使用率の監視は、パフォーマンスのベースラインを確立するのに役立ちます。 たとえば、CPU 使用率が通常は約 40 - 60% であるとします。 CPU 使用率が急に 95% 程度まで上昇し始めたら、異常があることがわかります。 CPU 使用率は、有機的成長を反映する場合もありますが、不適切なクエリを示していることもあります。 CPU アラートを作成するときは、長期間の増加が検出されて、瞬間的な急増が無視されるように、集計単位を長く設定します。
 
 ## <a name="next-steps"></a>次のステップ
-* [アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)に関する詳細情報を確認します。
-* [メトリック収集の概要](../azure-monitor/platform/data-platform.md) 情報を入手して、サービスの可用性と応答性を確認します。
+* [アラートでの webhook の構成](../azure-monitor/alerts/alerts-webhooks.md)に関する詳細情報を確認します。
+* [メトリック収集の概要](../azure-monitor/data-platform.md) 情報を入手して、サービスの可用性と応答性を確認します。

@@ -12,14 +12,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: b9f0b3219a75900a44a73ca0fc3e453f023bddb8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: aeabfb42d378f22ff660214517fea031d678b208
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787161"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635576"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>チュートリアル:セキュリティ アラートのトリアージ、調査、対応
 Security Center では、高度な分析および脅威インテリジェンスを使用してハイブリッド クラウド ワークロードを継続的に分析し、クラウド リソースでの潜在的な悪意のあるアクティビティに関するアラートを受け取ることができます。 さらに、他のセキュリティ製品およびサービスからのアラートを Security Center に統合することもできます。 アラートが発生したら、潜在的なセキュリティの問題の調査と修復を行うために、迅速なアクションが必要になります。 
@@ -42,7 +42,7 @@ Security Center では、すべてのセキュリティ アラートを統合さ
 
 **[セキュリティ アラート]** ページからアラートをトリアージします。
 
-:::image type="content" source="./media/tutorial-security-incident/alerts-list.png" alt-text="セキュリティ アラートの一覧ページ" lightbox="./media/tutorial-security-incident/alerts-list.png":::
+:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure Security Center のセキュリティ アラートの一覧":::
 
 このページを使用して、自分の環境内で発生しているセキュリティ アラートを確認し、最初に調査するアラートを決めます。
 
@@ -60,7 +60,7 @@ Security Center では、すべてのセキュリティ アラートを統合さ
 1. アラートの概要ページから、最初に調査するリソースを選択します。
 1. セキュリティ アラートの概要が表示される左ペインから調査を開始します。
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="セキュリティ アラートの一覧ページ":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="概要情報が強調表示されている、アラートの詳細ページの左ペイン":::
 
     このペインには、次の情報が表示されます。
     - アラートの重要度、状態、アクティビティの時刻
@@ -80,16 +80,16 @@ Security Center では、すべてのセキュリティ アラートを統合さ
 
 1.  **[アクションの実行]** タブを開いて推奨される対応を確認します。
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="セキュリティ アラートの一覧ページ" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="セキュリティ アラートの [アクションの実行] タブ" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
 
 1.  **[Mitigate the threat]\(脅威の軽減\)** セクションで、問題の軽減に必要な手作業による調査手順を確認します。
 1.  リソースのセキュリティを強化し、今後、この種の攻撃を防止するには、 **[Prevent future attacks]\(将来の攻撃防止\)** セクションで、セキュリティに関する推奨事項を修正します。
 1.  自動化された対応手順でロジック アプリをトリガーする場合は、 **[Trigger automated response]\(自動応答のトリガー\)** セクションを使用します。
-1.  検出されたアクティビティが悪質 " *ではない* " 場合は、 **[類似のアラートの抑制]** セクションを使用して、今後はこの種のアラートが表示されないようにすることができます。
+1.  検出されたアクティビティが悪質 "*ではない*" 場合は、 **[類似のアラートの抑制]** セクションを使用して、今後はこの種のアラートが表示されないようにすることができます。
 
 1.  アラートの調査が完了し、適切に対応したら、その状態を **[Dismissed]\(無視\)** に変更します。
 
-    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="セキュリティ アラートの一覧ページ":::
+    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="アラートの状態の設定":::
 
     そのアラートがメインのアラート一覧から削除されます。 アラートの一覧ページからフィルターを使用して、 **[Dismissed]\(無視\)** 状態のアラートをすべて表示することができます。
 
@@ -97,7 +97,7 @@ Security Center では、すべてのセキュリティ アラートを統合さ
     1. アラートが **役に立った** か **役に立たなかった** かを選択します。
     1. 理由を選択し、コメントを追加します。
 
-        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="セキュリティ アラートの一覧ページ":::
+        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="アラートが役に立ったかどうかに関するフィードバックの Microsoft への提供":::
 
     > [!TIP]
     > Microsoft は、お客様からのフィードバックを確認してアルゴリズムを改良し、セキュリティ アラートの向上に努めています。

@@ -3,18 +3,18 @@ title: 'ML Studio (classic): API Management を使用して Web サービスを�
 description: API Management を使用した AzureML Web サービスの管理方法について説明するガイドです。 ユーザー アクセス、使用帯域幅の調整、ダッシュボードの監視を定義することで、REST API エンドポイントを管理します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: b00e75c5fda8a05f4ed0f3a756ba20cca570ba5c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 293643ab5354c51142baaf281b1845cfc9fa6f23
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305991"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518030"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>API Management を使用して Azure Machine Learning Studio (クラシック) Web サービスを管理する
 
@@ -137,7 +137,7 @@ API を作成するには、次の手順に従います。
 
 ## <a name="call-an-operation-from-the-developer-portal"></a>開発者ポータルから操作を呼び出す
 
-開発者ポータルには、API の操作を見てテストするための便利が環境が用意されており、操作を直接呼び出すことができます。 この手順では、 **AzureML Demo API** に追加された **RRS Execute** メソッドを呼び出します。 
+開発者ポータルには、API の操作を見てテストするための便利が環境が用意されており、操作を直接呼び出すことができます。 この手順では、**AzureML Demo API** に追加された **RRS Execute** メソッドを呼び出します。 
 
 1. **[開発者ポータル]** をクリックします。
 
@@ -151,9 +151,9 @@ API を作成するには、次の手順に従います。
 
    ![スクリーンショットは、[RRS Execute] が選択されている [AzureML Demo API] ダイアログ ボックスと [試用版] ボタンを示しています。](./media/manage-web-service-endpoints-using-api-management/try-it.png)
 
-4. **[要求パラメーター]** の **[ワークスペース]** と **[サービス]** を入力し、 **[apiversion]** に「2.0」を、 **[詳細]** に「true」を入力します。 AzureML Web サービスのダッシュボードに **ワークスペース** と **サービス** が表示されます (付録 A の「 **Web サービスをテストする** 」をご覧ください)。
+4. **[要求パラメーター]** の **[ワークスペース]** と **[サービス]** を入力し、 **[apiversion]** に「2.0」を、 **[詳細]** に「true」を入力します。 AzureML Web サービスのダッシュボードに **ワークスペース** と **サービス** が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
 
-   **[要求ヘッダー]** で **[ヘッダーの追加]** をクリックし、「Content-Type」と「application/json」を入力します。 **[ヘッダーの追加]** をもう一度クリックし、「Authorization」と「Bearer *\<your service API-KEY\>* 」を入力します。 AzureML Web サービスのダッシュボードに API キーが表示されます (付録 A の「 **Web サービスをテストする** 」をご覧ください)。
+   **[要求ヘッダー]** で **[ヘッダーの追加]** をクリックし、「Content-Type」と「application/json」を入力します。 **[ヘッダーの追加]** をもう一度クリックし、「Authorization」と「Bearer *\<your service API-KEY\>* 」を入力します。 AzureML Web サービスのダッシュボードに API キーが表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
 
    **[要求本文]** に「`{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`」と入力します。
 
@@ -163,7 +163,7 @@ API を作成するには、次の手順に従います。
 
    ![このスクリーンショットは、[送信] ボタンを示しています。](./media/manage-web-service-endpoints-using-api-management/send.png)
 
-操作を呼び出すと、バックエンド サービスの **要求された URL** 、 **応答のステータス** 、 **応答ヘッダー** 、 **応答内容** が開発者ポータルに表示されます。
+操作を呼び出すと、バックエンド サービスの **要求された URL**、**応答のステータス**、**応答ヘッダー**、**応答内容** が開発者ポータルに表示されます。
 
 ![スクリーンショットは、応答のステータス、応答の待機時間、応答ヘッダー、および応答内容が表示された開発者ポータルを示しています。](./media/manage-web-service-endpoints-using-api-management/response-status.png)
 
@@ -187,7 +187,7 @@ API を作成するには、次の手順に従います。
 
 ![書評データセット モジュールをプロジェクト列モジュールに接続する](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
 
-**[データセット内の列の選択]** をクリックし、次に **[列セレクターの起動]** をクリックし、 **Col2** を選択します。 チェック マークをクリックして、これらの変更を適用します。
+**[データセット内の列の選択]** をクリックし、次に **[列セレクターの起動]** をクリックし、**Col2** を選択します。 チェック マークをクリックして、これらの変更を適用します。
 
 ![列名を使用して列を選択する](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
 
@@ -195,7 +195,7 @@ API を作成するには、次の手順に従います。
 
 ![スクリーンショットは、ワークスペースに追加される特徴ハッシュ項目を示しています。](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
 
-**Hashing bitsize** に「 **3** 」を入力します。 これにより、8 (23) 列が作成されます。
+**Hashing bitsize** に「**3**」を入力します。 これにより、8 (23) 列が作成されます。
 
 ![スクリーンショットは、[特徴ハッシュ] が選択された [プロパティ] を示しています。また、ハッシュ ビットサイズを入力できることを示しています。](./media/manage-web-service-endpoints-using-api-management/hashing-bitsize.png)
 
@@ -219,7 +219,7 @@ Web サービスを作成します。 **[Web サービス]** を展開し、 **[
 ### <a name="test-the-web-service"></a>Web サービスをテストする
 AzureML web サービスは、RSS (要求/応答サービス) と BES (バッチ実行サービス) のエンドポイントで構成されます。 RSS は、同期の実行用です。 BES は、同期ジョブの実行用です。 次のサンプルの Python ソースを使用して、Web サービスをテストするには、Azure SDK for Python をダウンロードして、インストールする必要があります (「[Python のインストール方法](/azure/developer/python/azure-sdk-install)」を参照)。
 
-次のサンプルのソースには、実験の **workspace** 、 **service** 、 **api_key** が必要です。 Web サービス ダッシュボードの実験の **[要求/応答]** か **[バッチ実行]** をクリックするとワークスペースとサービスが表示されます。
+次のサンプルのソースには、実験の **workspace**、**service**、**api_key** が必要です。 Web サービス ダッシュボードの実験の **[要求/応答]** か **[バッチ実行]** をクリックするとワークスペースとサービスが表示されます。
 
 ![スクリーンショットは、[要求] ウィンドウを示しています。このウィンドウでは、ワークスペースとサービスの値を確認できます。](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
 
@@ -233,7 +233,7 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 
 ![スクリーンショットは、[テスト] ボタンのある Web サービス ダッシュボード内の実験を示しています。](./media/manage-web-service-endpoints-using-api-management/test.png)
 
-**[col2]** に「 **This is a good day** 」と入力します。 チェック マークをクリックします。
+**[col2]** に「**This is a good day**」と入力します。 チェック マークをクリックします。
 
 ![スクリーンショットは、[予測するデータの入力] ダイアログ ボックスを示しています。そこには、例の「This is a good day」のようなテキストを入力できます。](./media/manage-web-service-endpoints-using-api-management/enter-data.png)
 
@@ -244,7 +244,7 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 ##### <a name="sample-code"></a>サンプル コード
 クライアント コードから RRS テストする方法もあります。 ダッシュボードで **[要求/応答]** をクリックし、最下部までスクロールすると、C#、Python、R のサンプル コードが表示されます。また、要求 URI、ヘッダー、本文を含む RRS 要求の構文も表示されます。
 
-このガイドでは、Python の機能例について説明します。 実験の **workspace** 、 **service** 、 **api_key** を使用して変更する必要があります。
+このガイドでは、Python の機能例について説明します。 実験の **workspace**、**service**、**api_key** を使用して変更する必要があります。
 
 ```python
 import urllib2
@@ -278,7 +278,7 @@ try:
 #### <a name="test-bes-endpoint"></a>BES エンドポイントのテスト
 ダッシュボードの **[バッチ実行]** をクリックして、最下部までスクロールします。 C# の場合、Python、R のサンプル コードが表示されます。また、ジョブを送信する、ジョブを送信する、ジョブを開始する、ジョブのステータスか結果を取得する、ジョブを削除するなどの BES 要求の構文も表示されます。
 
-このガイドでは、Python の機能例について説明します。 実験の **workspace** 、 **service** 、 **api_key** を使用して変更する必要があります。 また、 **ストレージ アカウント名** 、 **ストレージ アカウント キー** 、 **ストレージ コンテナー名** を変更するがあります。 最後に、 **[入力ファイル]** の場所と **[出力ファイル]** の場所を変更する必要があります。
+このガイドでは、Python の機能例について説明します。 実験の **workspace**、**service**、**api_key** を使用して変更する必要があります。 また、**ストレージ アカウント名**、**ストレージ アカウント キー**、**ストレージ コンテナー名** を変更するがあります。 最後に、 **[入力ファイル]** の場所と **[出力ファイル]** の場所を変更する必要があります。
 
 ```python
 import urllib2

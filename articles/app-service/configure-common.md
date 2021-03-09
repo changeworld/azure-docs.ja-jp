@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: ec9e3b6ca4b07003852681523a21b87ab7b8671b
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: a865c1070150b31399b5b738a0a469a07e0b13de
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825964"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122359"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal で App Service アプリを構成する
 
@@ -271,8 +271,6 @@ Windows アプリの場合は、IIS ハンドラー マッピングや仮想ア�
 詳細については、「[App Service 内のコンテナーからネットワーク共有としての Azure Storage にアクセスする](configure-connect-to-azure-storage.md)」を参照してください。
 
 ## <a name="configure-language-stack-settings"></a>言語スタックの設定を構成する
-
-Linux アプリについては、次を参照してください。
 
 - [ASP.NET Core](configure-language-dotnetcore.md)
 - [Node.js](configure-language-nodejs.md)

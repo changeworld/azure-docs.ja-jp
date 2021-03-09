@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 11/20/2020
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 7b97edcac8bed23e03569d733746b547f5440cee
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 843f957ef8871f6372c1b08a5534f6e90098cc85
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609496"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095122"
 ---
 # <a name="user-collections-preview-in-my-apps"></a>[マイ アプリ] でのユーザー コレクション (プレビュー)
 
@@ -33,6 +33,12 @@ ms.locfileid: "97609496"
 - コレクションを非表示にする
 - 非表示のコレクションを表示する
 - コレクションを削除する
+
+>[!Note]
+>個人用 Microsoft アカウントでのサインイン時にエラーが発生した場合でも、組織のドメイン名 (contoso.com など) または組織の **テナント ID** (管理者から入手) を使用して、次のいずれかの URL でサインインできます。
+>
+>   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+>   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="create-a-collection"></a>コレクションの作成
 
@@ -103,6 +109,7 @@ ms.locfileid: "97609496"
 非表示のコレクションを表示するには:
 
 1. [マイ アプリ コレクション](https://myapplications.microsoft.com/?endUserCollections)にアクセスし、職場または学校アカウントを使用してサインインします。
+
 1. ページ メニューを開き :::image type="content" source="media/my-apps-portal-user-collections/17-ellipsis-icon.png" alt-text="ページ レベル メニューの省略記号アイコンを選択します":::、 **[管理]** を選択します。
 
     :::image type="content" source="media/my-apps-portal-user-collections/13-manage-apps-again.png" alt-text="ページ メニューには、アプリを管理するための [管理] コマンドが含まれています":::

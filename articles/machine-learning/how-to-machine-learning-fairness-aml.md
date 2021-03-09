@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: ee589aed2b8f3c53d21c1f762a5d2027f3762649
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 322b036fee840db58ed610795155af6c9e1320cc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222770"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100366971"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Azure Machine Learning と Fairlearn オープンソース パッケージを使用して ML モデルの公平性を評価する (プレビュー)
 
@@ -214,10 +214,15 @@ pip install fairlearn==0.4.6
     1. 左側のウィンドウの **[実験]** を選択して、Azure Machine Learning で実行した実験の一覧を表示します。
     1. 特定の実験を選択して、その実験内のすべての実行を表示します。
     1. 実行を選択してから **[Fairness]\(公平性\)** タブを選択して、説明の視覚化ダッシュボードを表示します。
+    1. **[公平性]** タブが表示されたら、右側のメニューで **公平性 ID** をクリックします。
+    1. 公平性の評価ページで、重要な属性、パフォーマンス メトリック、および対象となる公平性メトリックを選択して、ダッシュボードを構成します。
+    1. グラフの種類を別の種類に切り替えて、**割り当て** の害と **サービス品質** の害の両方を観察します。
 
 
-    [![公平性ダッシュボード](./media/how-to-machine-learning-fairness-aml/dashboard.png)](./media/how-to-machine-learning-fairness-aml/dashboard.png#lightbox)
+
+    [![公平性ダッシュボードの割り当て](./media/how-to-machine-learning-fairness-aml/dashboard-1.png)](./media/how-to-machine-learning-fairness-aml/dashboard-1.png#lightbox)
     
+    [![公平性ダッシュボードのサービス品質](./media/how-to-machine-learning-fairness-aml/dashboard-2.png)](./media/how-to-machine-learning-fairness-aml/dashboard-2.png#lightbox)
     * **[モデル] ペイン**
     1. 前の手順に従って元のモデルを登録した場合は、左側のペインの **[モデル]** を選択してそれを表示できます。
     1. モデルを選択してから **[Fairness]\(公平性\)** タブを選択して、説明の視覚化ダッシュボードを表示します。

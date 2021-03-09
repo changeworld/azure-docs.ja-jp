@@ -3,17 +3,17 @@ title: ML Studio (classic):アプリケーション ライフサイクル管理 
 description: アプリケーションライフサイクル管理のベストプラクティスを Azure Machine Learning Studio (クラシック) に適用する
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: f5c9e27e894541d71986fe929cbc5d6fde31bc18
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 82d6f1fd250621ec34015970e1339ccfbd134675
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308809"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518404"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でのアプリケーション ライフサイクル管理
 
@@ -78,7 +78,7 @@ Azure Machine Learning Studio のクラシック バージョンの実験から�
 また、多数の同一の Web サービス エンドポイントを作成した後、異なるバージョンの iLearner ファイルのパッチをエンドポイントに適用して同様の効果を得ることもできます。 この[記事](create-models-and-endpoints-with-powershell.md)では、これを実現する方法について詳しく説明します。
 
 ### <a name="new-web-service"></a>新しい Web サービス
-新しい Azure Resource Manager ベースの Web サービスを作成する場合は、エンドポイント コンストラクトを使用できなくなります。 代わりに、 [Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell コマンドレットを使用するか、デプロイされた Resource Manager ベースの Web サービスから [*Export-AzMlWebservice*](/powershell/module/az.machinelearning/export-azmlwebservice) PowerShell コマンドレットを使用して、予測実験から Web サービス定義 (WSD) ファイルを JSON 形式で生成できます。
+新しい Azure Resource Manager ベースの Web サービスを作成する場合は、エンドポイント コンストラクトを使用できなくなります。 代わりに、[Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell コマンドレットを使用するか、デプロイされた Resource Manager ベースの Web サービスから [*Export-AzMlWebservice*](/powershell/module/az.machinelearning/export-azmlwebservice) PowerShell コマンドレットを使用して、予測実験から Web サービス定義 (WSD) ファイルを JSON 形式で生成できます。
 
 WSD ファイルをエクスポートしてそれをバージョン管理した後で、別の Azure リージョンで別の Web サービス プランの新しい Web サービスとして WSD をデプロイすることもできます。 適切なストレージ アカウント構成だけではなく、新しい Web サービス プラン ID を指定してください。 異なる iLearner ファイルにパッチを適用するには、WSD ファイルを変更し、トレーニング済みのモデルの場所の参照を更新して、それを新しい Web サービスとしてデプロイできます。
 

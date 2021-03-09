@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9672d18fe99d8baae3c73fa3782531eb84114713
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 05d312296b48f35ea87c5443cc587989e2d11fd5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97515636"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587961"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Windows Virtual Desktop (クラシック) の診断ツールをデプロイする
 
@@ -116,7 +116,7 @@ PowerShell スクリプトを実行するには:
     -   Processor Information(\*)\\Processor Time
     -   User Input Delay per Session(\*)\\Max Input Delay
 
-パフォーマンス カウンターの詳細については、「[Azure Monitor での Windows および Linux のパフォーマンス データ ソース](../../azure-monitor/platform/data-sources-performance-counters.md)」を参照してください。
+パフォーマンス カウンターの詳細については、「[Azure Monitor での Windows および Linux のパフォーマンス データ ソース](../../azure-monitor/agents/data-sources-performance-counters.md)」を参照してください。
 
 >[!NOTE]
 >構成した追加のカウンターは、診断ツール自体には表示されません。 診断ツールに表示されるようにするには、ツールの構成ファイルを構成する必要があります。 詳細な管理でこれを行う方法の手順については、後日 GitHub で提供されます。
@@ -199,7 +199,7 @@ VM の正常性を確認できるようにするには、Log Analytics 接続を
 
 ユーザーが診断ツールを使用できるようにする前に、ユーザーが次のアクセス許可を持っていることを確認してください。
 
-- ユーザーは、Log Analytics の読み取りアクセス権が必要です。 詳細については、[「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../../azure-monitor/platform/roles-permissions-security.md)を参照してください。
+- ユーザーは、Log Analytics の読み取りアクセス権が必要です。 詳細については、[「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../../azure-monitor/roles-permissions-security.md)を参照してください。
 -  ユーザーは、Windows Virtual Desktop テナントに対する読み取りアクセス権 (RDS 閲覧者ロール) も必要です。 詳細については、「[Windows Virtual Desktop における委任されたアクセス](delegated-access-virtual-desktop-2019.md)」を参照してください。
 
 また、ユーザーに次の情報を提供する必要もあります。

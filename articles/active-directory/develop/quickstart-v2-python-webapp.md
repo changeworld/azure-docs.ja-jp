@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 3c3eaddf1767a3fa4a2ba73ae7a27f1f7df13990
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: fb38140f09fc7c1eb2c40fc02e8c113cbc6f94a0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178206"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103517"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>クイック スタート: Python Web アプリに Microsoft でサインインを追加する
 
@@ -40,7 +40,7 @@ ms.locfileid: "98178206"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>オプション 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
-> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録<span class="docon docon-navigate-external x-hidden-focus"></span></a>クイックスタート エクスペリエンスに移動します。
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録</a>クイックスタート エクスペリエンスに移動します。
 > 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 > 1. 指示に従って新しいアプリケーションをダウンロードし、自動構成します。
 >
@@ -50,7 +50,7 @@ ms.locfileid: "98178206"
 >
 > アプリケーションを登録し、その登録情報をソリューションに手動で追加するには、次の手順を実行します。
 >
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 > 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 > 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
 > 1. アプリケーションの **名前** を入力します (例: `python-webapp`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
@@ -65,7 +65,7 @@ ms.locfileid: "98178206"
 > 1. キーの説明 (アプリのシークレットなど) を入力し、既定の有効期限のままにして、 **[追加]** を選択します。
 > 1. 後で使用するために、 **[クライアント シークレット]** の **値** を書き留めます。
 > 1. **[管理]** で、 **[API のアクセス許可]**  >  **[アクセス許可の追加]** の順に選択します。
->1.  **[Microsoft API]** タブが選択されていることを確認します。
+> 1. **[Microsoft API]** タブが選択されていることを確認します。
 > 1. *[よく使用される Microsoft API]* セクションで、 **[Microsoft Graph]** を選択します。
 > 1. **[委任されたアクセス許可]** セクションで、適切なアクセス許可がオンになっていることを確認します: **User.ReadBasic.All**。 必要に応じて検索ボックスを使用します。
 > 1. **[アクセス許可の追加]** ボタンを選択します
@@ -74,7 +74,7 @@ ms.locfileid: "98178206"
 >
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
 >
-> このクイックスタートのコード サンプルを動作させるには、以下の操作が必要です。
+> このクイックスタートのコード サンプルを動作させるには、次のことを行います。
 >
 > 1. 応答 URL を `http://localhost:5000/getAToken` として追加する
 > 1. クライアント シークレットを作成します。

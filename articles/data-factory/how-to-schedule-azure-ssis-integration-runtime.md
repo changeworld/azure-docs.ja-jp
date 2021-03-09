@@ -1,24 +1,18 @@
 ---
 title: Azure-SSIS Integration Runtime のスケジュールを設定する方法
 description: この記事では、Azure Data Factory を使用して、Azure-SSIS Integration Runtime の開始と停止のスケジュールを設定する方法を説明します。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 07/09/2020
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
-manager: anandsub
-ms.openlocfilehash: 2d9be3ec005b2eb6c1cc8e530c44117ba8fbb401
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 40c3b8ab228c93fd4c681281d89d16f88ddf30f1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635033"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384369"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime をスケジュールに従って開始および停止する方法
 
@@ -53,7 +47,7 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
    
    ![New->DataFactory](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
    
-3. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「 **MyAzureSsisDataFactory** 」と入力します。 
+3. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**MyAzureSsisDataFactory**」と入力します。 
       
    ![[新しいデータ ファクトリ] ページ](./media/tutorial-create-azure-ssis-runtime-portal/new-azure-data-factory.png)
  
@@ -89,7 +83,7 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
 
    ![開始ページ](./media/how-to-schedule-azure-ssis-integration-runtime/get-started-page.png)
    
-2. **[アクティビティ]** ツールボックスの **[全般]** メニューを展開し、 **[Web]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。 アクティビティ プロパティ ウィンドウの **[全般]** タブで、アクティビティの名前を「 **startMyIR** 」に変更します。 **[設定]** タブに切り替えて、次の操作を実行します。
+2. **[アクティビティ]** ツールボックスの **[全般]** メニューを展開し、 **[Web]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。 アクティビティ プロパティ ウィンドウの **[全般]** タブで、アクティビティの名前を「**startMyIR**」に変更します。 **[設定]** タブに切り替えて、次の操作を実行します。
 
     1. **[URL]** に、Azure-SSIS IR を開始する REST API の次の URL を入力します。`{subscriptionId}`、`{resourceGroupName}`、`{factoryName}`、`{integrationRuntimeName}` を、自分の IR の実際の値に置き換えます。`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01` または、ADF UI/アプリの監視ページから、IR のリソース ID をコピーして貼り付け、上記の URL の次の部分を置き換えてもかまいません。 `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`
     
@@ -97,18 +91,18 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
   
     2. **[メソッド]** では、 **[POST]** を選択します。 
     3. **[本文]** には、「`{"message":"Start my IR"}`」を入力します。 
-    4. **[認証]** において **[MSI]** を選択して、ADF にマネージド ID を使用します。詳しくは、「 [Data Factory のマネージド ID](./data-factory-service-identity.md)」をご覧ください。
+    4. **[認証]** において **[MSI]** を選択して、ADF にマネージド ID を使用します。詳しくは、「[Data Factory のマネージド ID](./data-factory-service-identity.md)」をご覧ください。
     5. **[リソース]** に、「`https://management.azure.com/`」と入力します。
     
        ![ADF Web アクティビティのスケジュールの SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
   
-3. 1 つ目のパイプラインを複製して 2 つ目を作成し、アクティビティ名を「 **stopMyIR** 」に変更して、次のプロパティを置き換えます。
+3. 1 つ目のパイプラインを複製して 2 つ目を作成し、アクティビティ名を「**stopMyIR**」に変更して、次のプロパティを置き換えます。
 
     1. **[URL]** に、Azure-SSIS IR を停止する REST API の次の URL を入力します。`{subscriptionId}`、`{resourceGroupName}`、`{factoryName}`、`{integrationRuntimeName}` を、自分の IR の実際の値に置き換えます。`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`
     
     2. **[本文]** には、「`{"message":"Stop my IR"}`」を入力します。 
 
-4. 3 つ目のパイプラインを作成し、 **[アクティビティ]** ツールボックスから **[SSIS パッケージの実行]** アクティビティをドラッグして、パイプライン デザイナー画面にドロップします。そして、 [ADF で SSIS パッケージの実行アクティビティを使用して、SSIS パッケージを呼び出す方法](how-to-invoke-ssis-package-ssis-activity.md)に関する記事に従って構成します。  または、代わりに **ストアド プロシージャ** アクティビティを使用し、 [ADF でストアド プロシージャ アクティビティを使用して、SSIS パッケージを呼び出す方法](how-to-invoke-ssis-package-stored-procedure-activity.md)に関する記事に従って構成することもできます。  次に、1 つ目/2 つ目のパイプラインでの Web アクティビティと同じように、IR を開始/停止する 2 つの Web アクティビティの間に SSIS パッケージの実行/ストアド プロシージャ アクティビティを連結します。
+4. 3 つ目のパイプラインを作成し、 **[アクティビティ]** ツールボックスから **[SSIS パッケージの実行]** アクティビティをドラッグして、パイプライン デザイナー画面にドロップします。そして、[ADF で SSIS パッケージの実行アクティビティを使用して、SSIS パッケージを呼び出す方法](how-to-invoke-ssis-package-ssis-activity.md)に関する記事に従って構成します。  または、代わりに **ストアド プロシージャ** アクティビティを使用し、[ADF でストアド プロシージャ アクティビティを使用して、SSIS パッケージを呼び出す方法](how-to-invoke-ssis-package-stored-procedure-activity.md)に関する記事に従って構成することもできます。  次に、1 つ目/2 つ目のパイプラインでの Web アクティビティと同じように、IR を開始/停止する 2 つの Web アクティビティの間に SSIS パッケージの実行/ストアド プロシージャ アクティビティを連結します。
 
    ![ADF Web アクティビティのオンデマンド SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-on-demand-ssis-ir.png)
 
@@ -133,7 +127,7 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
     
 2. 3 つ目のパイプラインをテストするには、SQL Server Management Studio (SSMS) を起動します。 **[サーバーへの接続]** ウィンドウで、次の操作を行います。 
 
-    1. **[サーバー名]** に、「 **&lt;自分のサーバー名&gt;.database.windows.net** 」と入力します。
+    1. **[サーバー名]** に、「 **&lt;自分のサーバー名&gt;.database.windows.net**」と入力します。
     2. **[オプション >>]** を選択します。
     3. **[データベースの接続]** では **[SSISDB]** を選択します。
     4. **[接続]** を選択します。 
@@ -157,7 +151,7 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
 
 3. **[新しいトリガー]** ウィンドウで、次の操作を行います。 
 
-    1. **[名前]** に、エトリガーの名前を入力します。 次の例では、「 **Run daily** 」がトリガーの名前です。 
+    1. **[名前]** に、エトリガーの名前を入力します。 次の例では、「**Run daily**」がトリガーの名前です。 
     2. **[種類]** では **[スケジュール]** を選択します。 
     3. **[開始日 (UTC)]** に、開始日時を UTC で入力します。 
     4. **[繰り返し]** に、トリガーの周期を入力します。 次の例では **毎日** 1 回です。 
@@ -214,9 +208,9 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
 
 ### <a name="create-your-azure-automation-account"></a>Azure Automation アカウントを作成する
 
-Azure Automation アカウントをまだ持っていない場合は、この手順の説明に従って作成します。 手順について詳しくは、「[Azure Automation アカウントを作成する](../automation/automation-quickstart-create-account.md)」をご覧ください。 この手順の中で、 **Azure 実行** アカウント (Azure Active Directory のサービス プリンシパル) を作成し、Azure サブスクリプションの **共同作成者** ロールを割り当てます。 Azure SSIS IR が存在する ADF を含む同じサブスクリプションであることを確認します。 Azure Automation はこのアカウントを使用して、Azure Resource Manager に対して認証し、リソースを処理します。 
+Azure Automation アカウントをまだ持っていない場合は、この手順の説明に従って作成します。 手順について詳しくは、「[Azure Automation アカウントを作成する](../automation/automation-quickstart-create-account.md)」をご覧ください。 この手順の中で、**Azure 実行** アカウント (Azure Active Directory のサービス プリンシパル) を作成し、Azure サブスクリプションの **共同作成者** ロールを割り当てます。 Azure SSIS IR が存在する ADF を含む同じサブスクリプションであることを確認します。 Azure Automation はこのアカウントを使用して、Azure Resource Manager に対して認証し、リソースを処理します。 
 
-1. Web ブラウザー ( **Microsoft Edge** または **Google Chrome** ) を起動します。 現在、ADF UI/アプリがサポートされる Web ブラウザーは、Microsoft Edge と Google Chrome だけです。
+1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、ADF UI/アプリがサポートされる Web ブラウザーは、Microsoft Edge と Google Chrome だけです。
 2. [Azure ポータル](https://portal.azure.com/)にサインインします。    
 3. 左側のメニューで **[新規]** を選択し、 **[監視 + 管理]** を選択し、 **[Automation]** を選択します。 
 
@@ -248,17 +242,17 @@ Azure Automation アカウントをまだ持っていない場合は、この手
 
    ![必要なモジュールの確認](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 
-2.  **Az.DataFactory** がない場合は、 [Az.DataFactory モジュール](https://www.powershellgallery.com/packages/Az.DataFactory/)の PowerShell ギャラリーに移動して、 **[Deploy to Azure Automation]\(Azure Automation にデプロイする\)** 、自分の Azure Automation アカウントの順に選択し、 **[OK]** を選択します。 左側のメニューの **[共有リソース]** セクションの **[モジュール]** の表示に戻り、 **Az.DataFactory** モジュールの **[状態]** が **利用可能** に変わるまで待ちます。
+2.  **Az.DataFactory** がない場合は、[Az.DataFactory モジュール](https://www.powershellgallery.com/packages/Az.DataFactory/)の PowerShell ギャラリーに移動して、 **[Deploy to Azure Automation]\(Azure Automation にデプロイする\)** 、自分の Azure Automation アカウントの順に選択し、 **[OK]** を選択します。 左側のメニューの **[共有リソース]** セクションの **[モジュール]** の表示に戻り、**Az.DataFactory** モジュールの **[状態]** が **利用可能** に変わるまで待ちます。
 
     ![データ ファクトリ モジュールの確認](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
 
-3.  **Az.Profile** がない場合は、 [Az.Profile モジュール](https://www.powershellgallery.com/packages/Az.profile/)の PowerShell ギャラリーに移動して、 **[Deploy to Azure Automation]\(Azure Automation にデプロイする\)** 、自分の Azure Automation アカウントの順に選択し、 **[OK]** を選択します。 左側のメニューの **[共有リソース]** セクションの **[モジュール]** の表示に戻り、 **Az.Profile** モジュールの **[状態]** が **利用可能** に変わるまで待ちます。
+3.  **Az.Profile** がない場合は、[Az.Profile モジュール](https://www.powershellgallery.com/packages/Az.profile/)の PowerShell ギャラリーに移動して、 **[Deploy to Azure Automation]\(Azure Automation にデプロイする\)** 、自分の Azure Automation アカウントの順に選択し、 **[OK]** を選択します。 左側のメニューの **[共有リソース]** セクションの **[モジュール]** の表示に戻り、**Az.Profile** モジュールの **[状態]** が **利用可能** に変わるまで待ちます。
 
     ![プロファイル モジュールの確認](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
 
 ### <a name="create-your-powershell-runbook"></a>PowerShell Runbook を作成する
 
-次のセクションでは、PowerShell Runbook を作成する手順を説明します。 Runbook に関連付けられるスクリプトは、 **OPERATION** パラメーターに指定するコマンドに応じて、Azure-SSIS IR を開始または停止します。 このセクションでは、Runbook を作成するためのすべての詳細は説明しません。 詳しくは、[Runbook の作成](../automation/automation-quickstart-create-runbook.md)に関する記事をご覧ください。
+次のセクションでは、PowerShell Runbook を作成する手順を説明します。 Runbook に関連付けられるスクリプトは、**OPERATION** パラメーターに指定するコマンドに応じて、Azure-SSIS IR を開始または停止します。 このセクションでは、Runbook を作成するためのすべての詳細は説明しません。 詳しくは、[Runbook の作成](../automation/automation-quickstart-create-runbook.md)に関する記事をご覧ください。
 
 1. **[Runbook]** タブに切り替え、ツールバーから **[+ Runbook の追加]** を選択します。 
 
@@ -266,7 +260,7 @@ Azure Automation アカウントをまだ持っていない場合は、この手
    
 2. **[新しい Runbook の作成]** を選択して、次のようにします。 
 
-    1. **[名前]** に、「 **StartStopAzureSsisRuntime** 」と入力します。
+    1. **[名前]** に、「**StartStopAzureSsisRuntime**」と入力します。
     2. **[Runbook の種類]** で、 **[PowerShell]** を選びます。
     3. **［作成］** を選択します
     
@@ -338,7 +332,7 @@ Azure Automation アカウントをまだ持っていない場合は、この手
     1. **[RESOURCEGROUPNAME]** には、ADF と Azure-SSIS IR が含まれるリソース グループの名前を入力します。 
     2. **[DATAFACTORYNAME]** には、ADF と Azure-SSIS IR の名前を入力します。 
     3. **[AZURESSISNAME]** には、Azure-SSIS IR の名前を入力します。 
-    4. **[OPERATION]** には、「 **START** 」を入力します。 
+    4. **[OPERATION]** には、「**START**」を入力します。 
     5. **[OK]** を選択します。  
 
    ![[Runbook の開始] ウィンドウ](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-window.png)
@@ -347,13 +341,13 @@ Azure Automation アカウントをまだ持っていない場合は、この手
 
    ![[出力] タイルが強調表示されているスクリーンショット。](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
     
-7. 前の 2 つの手順を繰り返し、今度は **OPERATION** の値として **STOP** を使用します。 ツール バーの **[開始]** ボタンを選択して、再び Runbook を開始します。 リソース グループ、ADF、Azure-SSIS IR の名前を入力します。 **[OPERATION]** には「 **STOP** 」を入力します。 出力ウィンドウで、メッセージ " **##### Completed #####** " が " **##### Stopping #####** " の後に表示されるまで待機します。 Azure-SSIS IR の停止には、開始ほどは時間がかかりません。 **[ジョブ]** ウィンドウを閉じて、 **[Runbook]** ウィンドウに戻ります。
+7. 前の 2 つの手順を繰り返し、今度は **OPERATION** の値として **STOP** を使用します。 ツール バーの **[開始]** ボタンを選択して、再び Runbook を開始します。 リソース グループ、ADF、Azure-SSIS IR の名前を入力します。 **[OPERATION]** には「**STOP**」を入力します。 出力ウィンドウで、メッセージ " **##### Completed #####** " が " **##### Stopping #####** " の後に表示されるまで待機します。 Azure-SSIS IR の停止には、開始ほどは時間がかかりません。 **[ジョブ]** ウィンドウを閉じて、 **[Runbook]** ウィンドウに戻ります。
 
 8. **[Webhook]** メニュー項目を選択することで作成できる Webhook、または次に示す **[スケジュール]** メニュー項目を選択することで作成できるスケジュールを使用して、Runbook をトリガーすることもできます。  
 
 ## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Azure-SSIS IR を開始/停止する Rrunbook のスケジュールを作成する
 
-前のセクションでは、Azure-SSIS IR を開始または停止する Azure Automation Runbook を作成しました。 このセクションでは、Runbook の 2 つのスケジュールを作成します。 1 つ目のスケジュールを構成するときは、 **OPERATION** に **START** を指定します。 同様に、2 つ目のスケジュールを構成するときは、 **OPERATION** パラメーターに **STOP** を指定します。 スケジュールを作成する手順について詳しくは、「[スケジュールを作成する](../automation/shared-resources/schedules.md#create-a-schedule)」をご覧ください。
+前のセクションでは、Azure-SSIS IR を開始または停止する Azure Automation Runbook を作成しました。 このセクションでは、Runbook の 2 つのスケジュールを作成します。 1 つ目のスケジュールを構成するときは、**OPERATION** に **START** を指定します。 同様に、2 つ目のスケジュールを構成するときは、**OPERATION** パラメーターに **STOP** を指定します。 スケジュールを作成する手順について詳しくは、「[スケジュールを作成する](../automation/shared-resources/schedules.md#create-a-schedule)」をご覧ください。
 
 1. **[Runbook]** ウィンドウで **[スケジュール]** を選択し、ツールバーの **[+ スケジュールの追加]** を選択します。 
 
@@ -363,19 +357,19 @@ Azure Automation アカウントをまだ持っていない場合は、この手
 
     1. **[スケジュールを Runbook にリンクします]** を選択します。 
     2. **[新しいスケジュールを作成します]** を選択します。
-    3. **[新しいスケジュール]** ウィンドウで、 **[名前]** に「 **毎日 IR を開始** 」と入力します。 
+    3. **[新しいスケジュール]** ウィンドウで、 **[名前]** に「**毎日 IR を開始**」と入力します。 
     4. **[開始]** に、現在時刻より数分後の時刻を入力します。 
     5. **[繰り返し]** では **[定期的]** を選択します。 
-    6. **[繰り返し間隔]** に「 **1** 」と入力して、 **[日]** を選択します。 
+    6. **[繰り返し間隔]** に「**1**」と入力して、 **[日]** を選択します。 
     7. **［作成］** を選択します 
 
    ![Azure SSIS IR 開始のスケジュール](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
     
-3. **[パラメーターと実行設定]** タブに切り替えます。リソース グループ、ADF、Azure-SSIS IR の名前を指定します。 **[OPERATION]** に「 **START** 」と入力して、 **[OK]** を選択します。 **[OK]** を再び選択すると、Runbook の **[スケジュール]** ページにスケジュールが表示されます。 
+3. **[パラメーターと実行設定]** タブに切り替えます。リソース グループ、ADF、Azure-SSIS IR の名前を指定します。 **[OPERATION]** に「**START**」と入力して、 **[OK]** を選択します。 **[OK]** を再び選択すると、Runbook の **[スケジュール]** ページにスケジュールが表示されます。 
 
    ![[操作] フィールドが強調表示されているスクリーンショット。](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
     
-4. 前の 2 つの手順を繰り返して、「 **毎日 IR を停止** 」という名前のスケジュールを作成します。 " **毎日 IR を開始** " スケジュールで指定した時刻から 30 分以上後の時刻を入力します。 **[OPERATION]** に「 **STOP** 」と入力して、 **[OK]** を選択します。 **[OK]** を再び選択すると、Runbook の **[スケジュール]** ページにスケジュールが表示されます。 
+4. 前の 2 つの手順を繰り返して、「**毎日 IR を停止**」という名前のスケジュールを作成します。 "**毎日 IR を開始**" スケジュールで指定した時刻から 30 分以上後の時刻を入力します。 **[OPERATION]** に「**STOP**」と入力して、 **[OK]** を選択します。 **[OK]** を再び選択すると、Runbook の **[スケジュール]** ページにスケジュールが表示されます。 
 
 5. **[Runbook]** ウィンドウで、左側のメニューの **[ジョブ]** を選択します。 指定時刻にスケジュールによって作成されたジョブとその状態が表示されます。 Runbook をテストした後と同じように、出力などのジョブの詳細を確認できます。 
 

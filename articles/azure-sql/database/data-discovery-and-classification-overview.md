@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 12/01/2020
+ms.date: 02/17/2021
 tags: azure-synapse
-ms.openlocfilehash: 41ad711de81f075727e4c177c318054677cb0ece
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: f47303a953dbb06b4c9efdfbbae41715cad81d2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185359"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690806"
 ---
 # <a name="data-discovery--classification"></a>データの検出と分類
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -184,7 +184,15 @@ REST API を使用して、分類および推奨事項をプログラムで管�
 - [現在の内容をデータベース別に一覧表示](/rest/api/sql/sensitivitylabels/listcurrentbydatabase):指定されたデータベースの現在の機密ラベルを取得します。
 - [推奨される内容をデータベース別に一覧表示](/rest/api/sql/sensitivitylabels/listrecommendedbydatabase):指定されたデータベースの推奨される機密ラベルを取得します。
 
+
+## <a name="faq---advanced-classification-capabilities"></a>FAQ - 高度な分類機能
+
+**質問**: SQL データの検出と分類は [Azure Purview](../../purview/overview.md) によって置き換えられますか、または SQL データの検出と分類は間もなく廃止されますか?
+**回答**: SQL データ検出と分類は引き続きサポートされます。また、高度な分類機能とデータ ガバナンスを推進するための、より豊富な機能を備えた [Azure Purview](../../purview/overview.md) を導入することをお勧めします。 サービス、機能、API、または SKU の廃止が決定された場合は、移行または切り替えパスを含む事前通知がお客様に送信されます。 Microsoft ライフサイクル ポリシーの詳細については、こちらをご覧ください。
+
+
 ## <a name="next-steps"></a><a id="next-steps"></a>次のステップ
 
 - 分類済みの機密データへのアクセスを監視および監査するように [Azure SQL Auditing](../../azure-sql/database/auditing-overview.md) を構成することを検討します。
 - データの検出と分類に関するプレゼンテーションについては、「[SQL データの検出、分類、ラベル付け、保護 | | Data Exposed](https://www.youtube.com/watch?v=itVi9bkJUNc)」を参照してください。
+- T-SQL コマンドを使用し、Azure SQL Databases と Azure Synapse Analytics を Azure Purview ラベルで分類する方法については、「[Azure Purview ラベルを使用して Azure SQL データを分類する](../../sql-database/scripts/sql-database-import-purview-labels.md)」を参照してください。

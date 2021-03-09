@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/07/2020
 ms.topic: article
-ms.openlocfilehash: 76bb9d289e984dd8c229bdaaab09e679e11283fe
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: dbe86313054706af974ccb324a39e942e9b5ca44
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246283"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594131"
 ---
 # <a name="camera"></a>カメラ
 
@@ -57,14 +57,14 @@ ms.locfileid: "98246283"
 Azure Remote Rendering API は、リモート深度をローカル深度バッファーに正しく構成するために、ローカル レンダラーの深度バッファー規則を認識している必要があります。 深度バッファーの範囲が [0;1] の場合、このフラグは `false` のままにします。 [1;0] の範囲の反転深度バッファーを使用する場合は、`InverseDepth` フラグを `true` に設定します。
 
 > [!NOTE]
-> Unity の場合、正しい設定は `RemoteManager` によって既に適用されているため、手動で介入する必要はありません。
+> Unity の場合、正しい設定は `RenderingConnection` によって既に適用されているため、手動で介入する必要はありません。
 
 カメラの設定の変更は、次のように行うことができます。
 
 ```cs
-void ChangeCameraSetting(AzureSession session)
+void ChangeCameraSetting(RenderingSession session)
 {
-    CameraSettings settings = session.Actions.CameraSettings;
+    CameraSettings settings = session.Connection.CameraSettings;
 
     settings.SetNearAndFarPlane(0.1f, 20.0f);
     settings.EnableDepth = false;
@@ -73,9 +73,9 @@ void ChangeCameraSetting(AzureSession session)
 ```
 
 ```cpp
-void ChangeStageSpace(ApiHandle<AzureSession> session)
+void ChangeCameraSetting(ApiHandle<RenderingSession> session)
 {
-    ApiHandle<CameraSettings> settings = session->Actions()->GetCameraSettings();
+    ApiHandle<CameraSettings> settings = session->Connection()->GetCameraSettings();
 
     settings->SetNearAndFarPlane(0.1f, 20.0f);
     settings->SetEnableDepth(false);

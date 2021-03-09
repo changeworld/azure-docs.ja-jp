@@ -7,12 +7,12 @@ ms.date: 02/25/2020
 ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: 270f8d471a95e67939a31357bc1cc056fe8ea4a1
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5424b776b977d8a6939bbb28c5d4c9c428cac444
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072800"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179614"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Azure App Configuration でマネージド ID を使用する方法
 
@@ -99,12 +99,12 @@ Azure CLI を使用してマネージド ID を設定するには、既存の構
 
 ## <a name="removing-an-identity"></a>ID の削除
 
-システム割り当て ID は、Azure CLI で [az appconfig identity remove](/cli/azure/appconfig/identity?view=azure-cli-latest#az-appconfig-identity-remove) コマンドを使用してその機能を無効にすることによって削除できます。 ユーザー割り当て ID は個別に削除することはできません。 この方法でシステム割り当て ID を削除すると、AAD からも削除されます。 システム割り当て ID は、アプリ リソースが削除されると、AAD からも自動的に削除されます。
+システム割り当て ID は、Azure CLI で [az appconfig identity remove](/cli/azure/appconfig/identity#az-appconfig-identity-remove) コマンドを使用してその機能を無効にすることによって削除できます。 ユーザー割り当て ID は個別に削除することはできません。 この方法でシステム割り当て ID を削除すると、AAD からも削除されます。 システム割り当て ID は、アプリ リソースが削除されると、AAD からも自動的に削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure App Configuration を使用して ASP.NET Core アプリを作成する](quickstart-aspnet-core-app.md)
 
-[az appconfig identity assign]: /cli/azure/appconfig/identity?view=azure-cli-latest#az-appconfig-identity-assign
+[az appconfig identity assign]: /cli/azure/appconfig/identity#az-appconfig-identity-assign
 [az login]: /cli/azure/reference-index#az-login

@@ -9,13 +9,13 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 01/11/2021
-ms.openlocfilehash: cb5bac06ab6eeaa00e72ba6068328a972b8ac37b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 03/01/2021
+ms.openlocfilehash: 25340af243217313ce6d3f7205c102d4bcd350b4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119361"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101698112"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>クイック スタート:Azure Time Series Insights Gen2 デモ環境を探索する
 
@@ -129,13 +129,6 @@ Azure Time Series Insights Gen2 とセンサー テレメトリを使用して�
     * 同じグラフ スケール上に **Generator System** のセンサーをすべてオーバーレイ表示するように変更します。
 
       [![すべてを含めるように表示を変更](media/v2-update-quickstart/quick-start-generator-system.png)](media/v2-update-quickstart/quick-start-generator-system.png#lightbox)
-
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
-
-クイックスタートを完了したので、作成したリソースをクリーンアップします。
-
-1. [Azure portal](https://portal.azure.com) の左側のメニューにある **[すべてのリソース]** を選択し、目的の Azure Time Series Insights Gen2 リソース グループを見つけます。
-1. **[削除]** を選択してリソース グループ全体 (およびその中に含まれるすべてのリソース) を削除するか、各リソースを個別に削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

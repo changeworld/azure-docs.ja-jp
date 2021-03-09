@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3fe87f94ce05efa4a784ba7e3f65e53abb00fd05
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 481a4ff21c361e4cf82a21d9e98357a4c8b7b1b4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914248"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663674"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Agent 拡張機能を使用して管理を自動化する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ SQL Server IaaS Agent 拡張機能 (SQLIaaSExtension) は、管理タスクを�
 
 ## <a name="overview"></a>概要
 
-SQL Server IaaS Agent 拡張機能を使用すると、Azure VM 上の SQL Server でさまざまな利点を活用できます。 
+SQL Server IaaS Agent 拡張機能を使用すると、Azure portal との統合が可能になり、管理モードによっては、Azure VM 上の SQL Server のいくつかの機能の利点が明らかになります。 
 
 - **機能面の利点**: この拡張機能では、ポータル管理、ライセンスの柔軟性、自動バックアップ、自動修正といった、自動化機能のさまざまな利点を活用できます。 詳細については、この記事の後半にある「[機能面の利点](#feature-benefits)」を参照してください。 
 
@@ -74,12 +74,13 @@ SQL Server IaaS Agent 拡張機能には、SQL Server VM を管理するため�
 
 | 機能 | 説明 |
 | --- | --- |
-| **ポータル管理** | [ポータルで管理することができます](manage-sql-vm-portal.md)。このため、すべての SQL Server VM を 1 か所に表示でき、ポータルから SQL 固有の機能を直接有効または無効にすることができます。 
-| **自動バックアップ** |VM 上の SQL Server の既定のインスタンスまたは[適切にインストールされた](frequently-asked-questions-faq.md#administration)名前付きインスタンスについて、すべてのデータベースのバックアップを自動的にスケジュールします。 詳細については、[Azure 仮想マシンでの SQL Server の自動バックアップ (Resource Manager)](automated-backup-sql-2014.md) に関する記事を参照してください。 |
-| **自動修正** |VM で Windows と SQL Server の重要なセキュリティ更新プログラムを実行できるメンテナンス期間を構成します。こうすることで、ワークロードのピーク時に更新が実行されるのを回避できます。 詳細については、「[Azure Virtual Machines での SQL Server の自動修正 (Resource Manager)](automated-patching.md)」をご覧ください。 |
-| **Azure Key Vault の統合** |SQL Server VM に Azure Key Vault を自動的にインストールして構成できます。 詳細については、「[Azure Virtual Machines 上の SQL Server 向け Azure Key Vault 統合の構成 (Resource Manager)](azure-key-vault-integration-configure.md)」をご覧ください。 |
-| **柔軟なライセンス** | ライセンス持ち込み (「Azure ハイブリッド特典」とも呼ばれます) から従量課金制のライセンス モデルに、またはその逆に[シームレスに移行](licensing-model-azure-hybrid-benefit-ahb-change.md)することで、コストを節約できます。 | 
-| **柔軟なバージョン/エディション** | SQL Server の[バージョン](change-sql-server-version.md)または[エディション](change-sql-server-edition.md)を変更する場合は、SQL Server VM 全体を再デプロイすることなく、Azure portal 内のメタデータを更新できます。  | 
+| **ポータル管理** | [ポータルで管理することができます](manage-sql-vm-portal.md)。このため、すべての SQL Server VM を 1 か所に表示でき、ポータルから SQL 固有の機能を直接有効または無効にすることができます。 <br/> 管理モード: Lightweight および完全|  
+| **自動バックアップ** |VM 上の SQL Server の既定のインスタンスまたは[適切にインストールされた](frequently-asked-questions-faq.md#administration)名前付きインスタンスについて、すべてのデータベースのバックアップを自動的にスケジュールします。 詳細については、[Azure 仮想マシンでの SQL Server の自動バックアップ (Resource Manager)](automated-backup-sql-2014.md) に関する記事を参照してください。 <br/> 管理モード: [完全]|
+| **自動修正** |VM で Windows と SQL Server の重要なセキュリティ更新プログラムを実行できるメンテナンス期間を構成します。こうすることで、ワークロードのピーク時に更新が実行されるのを回避できます。 詳細については、「[Azure Virtual Machines での SQL Server の自動修正 (Resource Manager)](automated-patching.md)」をご覧ください。 <br/> 管理モード: [完全]|
+| **Azure Key Vault の統合** |SQL Server VM に Azure Key Vault を自動的にインストールして構成できます。 詳細については、「[Azure Virtual Machines 上の SQL Server 向け Azure Key Vault 統合の構成 (Resource Manager)](azure-key-vault-integration-configure.md)」をご覧ください。 <br/> 管理モード: [完全]|
+| **ポータルでディスク使用率を表示する** | Azure portal 内の SQL データ ファイルのディスク使用率をグラフィカルに表示できます。  <br/> 管理モード: [完全] | 
+| **柔軟なライセンス** | ライセンス持ち込み (「Azure ハイブリッド特典」とも呼ばれます) から従量課金制のライセンス モデルに、またはその逆に[シームレスに移行](licensing-model-azure-hybrid-benefit-ahb-change.md)することで、コストを節約できます。 <br/> 管理モード: Lightweight および完全| 
+| **柔軟なバージョン/エディション** | SQL Server の[バージョン](change-sql-server-version.md)または[エディション](change-sql-server-edition.md)を変更する場合は、SQL Server VM 全体を再デプロイすることなく、Azure portal 内のメタデータを更新できます。  <br/> 管理モード: Lightweight および完全| 
 
 
 ## <a name="management-modes"></a>管理モード
@@ -115,7 +116,7 @@ Azure portal を介して SQL Server VM の Azure Marketplace イメージをデ
 
 ### <a name="named-instance-support"></a>名前付きインスタンスのサポート
 
-SQL Server IaaS 拡張機能は、SQL Server の名前付きインスタンスが仮想マシンで使用できる唯一の SQL Server インスタンスである場合に、そのインスタンスで動作します。 複数の SQL Server インスタンスがある VM には、この拡張機能はインストールできません。 
+SQL Server IaaS Agent 拡張機能は、それが仮想マシンで使用できる唯一の SQL Server インスタンスである場合に、SQL Server の名前付きインスタンスを使用して動作します。 VM 上に既定のインスタンスが存在しない場合、拡張機能は複数の名前付き SQL Server インスタンスを持つ VM にインストールできません。 
 
 SQL Server の名前付きインスタンスを使用するには、Azure 仮想マシンをデプロイし、1 つの名前付き SQL Server インスタンスをそれにインストールし、その後、[SQL IaaS 拡張機能](sql-agent-extension-manually-register-single-vm.md)にそれを登録します。
 
@@ -228,7 +229,7 @@ NoAgent モードでは、SQL Server のバージョンとエディションの�
 
 **複数の SQL Server インスタンスがある場合、VM を SQL IaaS Agent 拡張機能に登録できますか?**
 
-はい。 SQL IaaS Agent 拡張機能では、1 つの SQL Server (データベース エンジン) インスタンスのみ登録されます。 複数のインスタンスがある場合、SQL IaaS Agent 拡張機能では、既定の SQL Server インスタンスが登録されます。 既定のインスタンスがない場合、軽量モードでの登録のみがサポートされます。 軽量から完全管理モードにアップグレードするには、既定の SQL Server インスタンスが存在するか、VM に名前付き SQL Server インスタンスが 1 つだけ存在する必要があります。
+はい。VM 上に既定のインスタンスがあることが前提です。 SQL IaaS Agent 拡張機能では、1 つの SQL Server (データベース エンジン) インスタンスのみ登録されます。 複数のインスタンスがある場合、SQL IaaS Agent 拡張機能では、既定の SQL Server インスタンスが登録されます。
 
 **SQL Server フェールオーバー クラスター インスタンスを SQL IaaS Agent 拡張機能に登録できますか?**
 

@@ -6,12 +6,16 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 5e2d21a5f9f764f260695f17c93d5a615fc62efa
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+adobe-target: true
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./create-first-function-cli-python-uiex
+ms.openlocfilehash: 1b6805434f8c697c1ea13925ee681fdc7b5f1a29
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937214"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704754"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に Python 関数を作成する
 
@@ -37,7 +41,7 @@ ms.locfileid: "97937214"
 
     + [Azure PowerShell](/powershell/azure/install-az-ps) バージョン 5.0 以降。
 
-+ [Python 3.8 (64 ビット)](https://www.python.org/downloads/release/python-382/)、[Python 3.7 (64 ビット)](https://www.python.org/downloads/release/python-375/)、[Python 3.6 (64 ビット)](https://www.python.org/downloads/release/python-368/)。これらはいずれも、バージョン 3.x の Azure Functions でサポートされています。
++ [Azure Functions でサポートされているバージョンの Python](supported-languages.md#languages-by-runtime-version)
 
 ### <a name="prerequisite-check"></a>前提条件のチェック
 

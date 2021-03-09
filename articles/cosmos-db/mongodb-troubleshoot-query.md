@@ -5,15 +5,15 @@ author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
 ms.subservice: cosmosdb-mongo
-ms.date: 10/12/2020
+ms.date: 03/02/2021
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 88ef081c75a64b5cb7517ba6994834b3a64a0e6f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 5302cb7bb3f4683d200f6f9ea106991bb934fc17
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340891"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659904"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>MongoDB 用 Azure Cosmos DB API を使用する場合のクエリの問題のトラブルシューティング
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -30,7 +30,7 @@ Azure Cosmos DB でのクエリの最適化は、次のように大きく分類�
 この記事では、[栄養データセット](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)を使用して再作成できる例を示します。
 
 > [!NOTE] 
-> この記事では、Azure Cosmos DB の MongoDB 用 API のバージョン 3.6 を使用していることを前提としています。 バージョン 3.2 でパフォーマンスが良くなかった一部のクエリは、バージョン 3.6 で大幅に改善されています。 [サポート リクエスト](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)を提出して、バージョン 3.6 にアップグレードします。
+> この記事では、バージョン 3.6 以降の MongoDB アカウントを対象とする Azure Cosmos DB の API を使用していることを前提としています。 バージョン 3.2 でパフォーマンスが良くなかった一部のクエリは、バージョン 3.6 以上で大幅に改善されています。 [サポート リクエスト](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)を提出して、バージョン 3.6 にアップグレードします。
 
 ## <a name="use-explain-command-to-get-metrics"></a>$explain コマンドを使用してメトリックを取得する
 

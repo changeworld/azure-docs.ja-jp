@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff2651d2fed9c307bbb90623572b4a74d750d3a4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 29c0ae8ec210356f6027a46ed01f2a7126ea4a49
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836072"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644733"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -162,8 +162,8 @@ Microsoft では、Azure AD Connect サーバーを強化して、お客様の I
 **Q:Azure AD の userPrincipalName (UPN) 属性がオンプレミス UPN と一致しないのはなぜですか。**  
 詳細については、以下の記事を参照してください。
 
-* [Microsoft 365、Azure、Intune におけるユーザー名が、オンプレミスの UPN または代替ログイン ID と一致しない](https://support.microsoft.com/kb/2523192)
-* [異なるフェデレーション ドメインを使用するようにユーザー アカウントの UPN を変更した後、Azure Active Directory 同期ツールによって変更が同期されない](https://support.microsoft.com/kb/2669550)
+* [Microsoft 365、Azure、Intune におけるユーザー名が、オンプレミスの UPN または代替ログイン ID と一致しない](https://mskb.pkisolutions.com/kb/2523192)
+* [異なるフェデレーション ドメインを使用するようにユーザー アカウントの UPN を変更した後、Azure Active Directory 同期ツールによって変更が同期されない](https://mskb.pkisolutions.com/kb/2669550)
 
 また、「[Azure AD Connect 同期サービスの機能](how-to-connect-syncservice-features.md)」に記載された手順に従って、同期エンジンによる UPN の更新が許可されるように Azure AD を構成することもできます。
 
@@ -201,7 +201,7 @@ Microsoft では、すべてのお客様に対し、Azure AD Connect インス�
 **Q:自動アップグレードが動作しなくなっているため、新しいバージョンをインストールする必要があるという内容の電子メールが送られてきました。なぜそうしなければならないのですか。**  
 昨年リリースされた Azure AD Connect のバージョンでは、特定の状況において、自動アップグレード機能がサーバー上で無効になることがあります。 この問題は、Azure AD Connect バージョン 1.1.750.0 で修正しました。 問題の影響を受けている場合は、PowerShell スクリプトを実行して修復するか、手動で最新バージョンの Azure AD Connect にアップグレードすることで軽減できます。 
 
-PowerShell スクリプトを実行するには、[スクリプトをダウンロード](https://aka.ms/repairaadconnect)して、管理 PowerShell ウィンドウの Azure AD Connect サーバー上で実行します。 スクリプトの実行方法については、[この短い動画](https://aka.ms/repairaadcau)をご覧ください。
+PowerShell スクリプトを実行するには、[スクリプトをダウンロード](/samples/browse/?redirectedfrom=TechNet-Gallery)して、管理 PowerShell ウィンドウの Azure AD Connect サーバー上で実行します。 スクリプトの実行方法については、[この短い動画](https://aka.ms/repairaadcau)をご覧ください。
 
 手動でアップグレードするには、AADConnect.msi ファイルの最新バージョンをダウンロードし、実行する必要があります。
  

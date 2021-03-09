@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.custom: devx-track-python
-ms.openlocfilehash: b4455f21ae7243ab7a15e8d746d6674289f9fdb5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 56e92a698446bd417c74820d6da662ad9ee55c77
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953019"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555688"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>チュートリアル:Python Web アプリケーションで Azure AD B2C を使用して認証を行う
 
@@ -185,4 +185,4 @@ CLIENT_SECRET = "22222222-2222-2222-2222-222222222222" # Placeholder - for use O
 この後は、Azure AD B2C によってユーザーに表示されるユーザー フロー ページの UI をカスタマイズする方法について見ていきましょう。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Azure AD B2C でユーザー エクスペリエンスのインターフェイスをカスタマイズする >](tutorial-customize-ui.md)
+> [Azure AD B2C でユーザー エクスペリエンスのインターフェイスをカスタマイズする >](customize-ui.md)

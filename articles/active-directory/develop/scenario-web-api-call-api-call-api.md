@@ -1,5 +1,6 @@
 ---
-title: Web API を呼び出す Web API - Microsoft ID プラットフォ―ム | Azure
+title: Web API を呼び出す Web API | Azure
+titleSuffix: Microsoft identity platform
 description: Web API を呼び出す Web API を構築する方法について説明します。
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b8eb737752741dc55da24ad6b605b081053b8a11
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f4dfd2c7f9dbdd111f70a5dd5a648c11eacbf7b0
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443703"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038545"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Web API を呼び出す Web API: API を呼び出す
 
@@ -28,7 +29,7 @@ ms.locfileid: "94443703"
 
 *Microsoft.Identity.Web* を使用する場合、3 つの使用シナリオがあります。
 
-- [オプション 1: Microsoft Graph SDK を使用して Microsoft Graph を呼び出す](#option-1-call-microsoft-graph-with-the-sdk)
+- [オプション 1: SDK を使用して Microsoft Graph を呼び出す](#option-1-call-microsoft-graph-with-the-sdk)
 - [オプション 2: ヘルパー クラスを使用してダウンストリーム Web API を呼び出す](#option-2-call-a-downstream-web-api-with-the-helper-class)
 - [オプション 3:ヘルパー クラスを使用せずにダウンストリーム Web API を呼び出す](#option-3-call-a-downstream-web-api-without-the-helper-class)
 
@@ -158,7 +159,7 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 ```
 
 # <a name="python"></a>[Python](#tab/python)
-このフローを MSAL Python でデモンストレーションするサンプルはまだ用意されていません。
+このフローを MSAL Python でデモンストレーションするサンプルは、[ms-identity-python-on-behalf-of](https://github.com/Azure-Samples/ms-identity-python-on-behalf-of) で入手できます。
 
 ---
 

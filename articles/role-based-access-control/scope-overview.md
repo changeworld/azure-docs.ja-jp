@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/08/2020
 ms.author: rolyon
-ms.openlocfilehash: ad906e3665c6ffc354cf6292c2559d1184037594
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: deee42c46c9b08bb265c972695b9319413d4fcb1
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856154"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555911"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>Azure RBAC のスコープについて
 
@@ -32,7 +32,7 @@ Azure では、4 つのレベル ([管理グループ](../governance/management-
 
 ## <a name="scope-format"></a>スコープの形式
 
-コマンド ラインを使用してロールの割り当てを追加する場合は、スコープを指定する必要があります。 コマンド ライン ツールでは、スコープはロールの割り当ての正確なスコープを識別する文字列で、長い場合があります。 Azure portal では、通常、このスコープは "*リソース ID*" として表示されます。
+コマンド ラインを使用してロールを割り当てる場合は、スコープを指定する必要があります。 コマンド ライン ツールでは、スコープはロールの割り当ての正確なスコープを識別する文字列で、長い場合があります。 Azure portal では、通常、このスコープは "*リソース ID*" として表示されます。
 
 スコープは、スラッシュ (/) 文字で区切られた一連の識別子で構成されます。 この文字列は、次の階層を表すと考えることができます。ここで、プレースホルダー (`{}`) のないテキストは固定識別子です。
 
@@ -122,6 +122,6 @@ Azure では、4 つのレベル ([管理グループ](../governance/management-
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ロールの割り当てを追加する手順](role-assignments-steps.md)
+- [Azure ロールを割り当てる手順](role-assignments-steps.md)
 - [Azure サービスのリソース プロバイダー](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Azure 管理グループとは](../governance/management-groups/overview.md)

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: tisande
-ms.openlocfilehash: 09148e65e446d723fbfe7a54602db59ee0739f83
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4711401172c4a2b224c231db4a773e0c4219d3a7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599359"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659836"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB でのキーワード
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -113,7 +113,7 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 特定の文字列が指定されたパターンに一致するかどうかによって、ブール値を返します。 パターンは、標準の文字とワイルドカード文字を含むことができます。 `LIKE` キーワードまたは [RegexMatch](sql-query-regexmatch.md) システム関数のいずれかを使用して、論理的に等価のクエリを記述できます。 どちらを選択しても、インデックスの使用率は同じになります。 したがって、正規表現よりも構文を選ぶ場合は、`LIKE` を使用する必要があります。
 
 > [!NOTE]
-> `LIKE` はインデックスを利用できるため、`LIKE` を使用して比較するプロパティの[範囲インデックスを作成](indexing-policy.md)する必要があります。
+> `LIKE` はインデックスを利用できるため、`LIKE` を使用して比較するプロパティの[範囲インデックスを作成](./index-policy.md)する必要があります。
 
 LIKE で使用できるワイルドカード文字は次のとおりです。
 

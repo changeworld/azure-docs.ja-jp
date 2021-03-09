@@ -2,13 +2,13 @@
 title: 概念 - vSphere ロールベースのアクセス制御 (vSphere RBAC)
 description: Azure VMware Solution の vSphere ロールベースのアクセス制御の主な機能について説明します
 ms.topic: conceptual
-ms.date: 10/23/2020
-ms.openlocfilehash: fbd5b48ce30a6612c45ebd97f08812efd29c50b3
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.date: 02/02/2021
+ms.openlocfilehash: 9d7c724fba194d86c2d73bb8323439de7c83c170
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888404"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537020"
 ---
 # <a name="vsphere-role-based-access-control-vsphere-rbac-for-azure-vmware-solution"></a>Azure VMware Solution の vSphere ロールベースのアクセス制御 (vSphere RBAC)
 
@@ -22,9 +22,6 @@ vCenter と ESXi のオンプレミスのデプロイでは、管理者は vCent
 Azure VMware Solution のデプロイでは、管理者が管理者ユーザー アカウントにアクセスすることはできません。 ただし、AD ユーザーとグループを vCenter の CloudAdmin ロールに割り当てることができます。  
 
 プライベート クラウド ユーザーは、Microsoft によってサポートと管理が行われている特定の管理コンポーネントにアクセスすることも構成することもできません (クラスター、ホスト、データストア、分散仮想スイッチなど)。
-
-
-
 
 ## <a name="azure-vmware-solution-cloudadmin-role-on-vcenter"></a>VCenter の Azure VMware Solution の CloudAdmin ロール
 
@@ -63,7 +60,11 @@ Azure VMware Solution の CloudAdmin ロールには、vCenter に対する次�
 
 ## <a name="next-steps"></a>次のステップ
 
-各特権の詳細については、[VMware の製品ドキュメント](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)を参照してください。
+Azure VMware Solution の vSphere ロールベースのアクセス制御の基礎を学習した後は、次に移ることをお勧めします。
+
+- [VMware 製品ドキュメント](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)に記載されている各アクセス許可の詳細。
+- [Azure VMware Solution でプライベート クラウドを監視し、修復するしくみ](concepts-monitor-repair-private-cloud.md)。
+- [Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)。
 
 <!-- LINKS - internal -->
 

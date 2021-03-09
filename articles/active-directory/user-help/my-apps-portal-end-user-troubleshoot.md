@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 03/21/2019
+ms.date: 01/19/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 5ae946f82590f2270719570e4b589d49542ffec8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4377ed76de971f78336ea9024b59dafc5d513487
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833981"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094969"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>My Apps ポータルに関する問題を解決する
 
@@ -31,9 +31,9 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 
     - **Microsoft Edge。** Windows 10 Anniversary Edition 以降で実行。
 
-    - **Google Chrome。** Windows 7 以降か Mac OS X 以降で実行。
+    - **Google Chrome。** Windows 7 以降か macOS X 以降で実行。
 
-    - **Mozilla Firefox 26.0 以降。** Windows XP SP2 以降か Mac OS X 10.6 以降で実行。
+    - **Mozilla Firefox 26.0 以降。** Windows XP SP2 以降か macOS X 10.6 以降で実行。
 
     - **Internet Explorer 11。** Windows 7 以降で実行 (制限付きサポート)。
 
@@ -46,6 +46,11 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 ## <a name="i-cant-sign-in-to-the-my-apps-portal"></a>**My Apps** ポータルにサインインできません
 
 **My Apps** ポータルにサインインできない場合、次をお試しください。
+
+- 個人用 Microsoft アカウントでのサインインでエラーが発生した場合でも、組織のドメイン名 (contoso.com など) または組織の **テナント ID** (管理者から入手) を使用して、次のいずれかの URL でサインインできます。
+
+   - https://myapplications.microsoft.com?tenantId=*your_domain_name*
+   - https://myapplications.microsoft.com?tenant=*your_tenant_ID*
 
 - 使用している URL が正しいことを確認します。 [https://myapps.microsoft.com](https://myapps.microsoft.com ) のようになるか、 https://myapps.microsoft.com/contoso.com のような組織向けにカスタマイズされたページになるはずです。
 

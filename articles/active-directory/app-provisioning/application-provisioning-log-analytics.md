@@ -3,7 +3,7 @@ title: プロビジョニングを Azure Active Directory の Azure Monitor ロ�
 description: プロビジョニングを Azure Active Directory の Azure Monitor ログと統合する方法について説明します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 167ed7e5c00452db4ee77e10236fec3ff86f0439
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 0593d2b675da533035a70c66784812543909c9db
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175102"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574198"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>プロビジョニングを Azure Monitor ログと統合する方法の概要
 
@@ -24,7 +24,7 @@ ms.locfileid: "96175102"
 
 ## <a name="enabling-provisioning-logs"></a>プロビジョニング ログの有効化
 
-Azure Monitoring と Log Analytics については既に理解している必要があります。 そうでない場合は、別のページでそれらについて学習してから、このページに戻ってアプリケーションのプロビジョニング ログについて学習してください。 Azure Monitoring の詳細については、「[Azure Monitor の概要](../../azure-monitor/overview.md)」を参照してください。 Azure Monitor ログと Log Analytics の詳細については、「[Azure Monitor のログ クエリの概要](../../azure-monitor/log-query/log-query-overview.md)」を参照してください。
+Azure Monitoring と Log Analytics については既に理解している必要があります。 そうでない場合は、別のページでそれらについて学習してから、このページに戻ってアプリケーションのプロビジョニング ログについて学習してください。 Azure Monitoring の詳細については、「[Azure Monitor の概要](../../azure-monitor/overview.md)」を参照してください。 Azure Monitor ログと Log Analytics の詳細については、「[Azure Monitor のログ クエリの概要](../../azure-monitor/logs/log-query-overview.md)」を参照してください。
 
 Azure Monitoring を構成すると、アプリケーションのプロビジョニングのログを有効にすることができます。 このオプションは、 **[診断設定]** ページにあります。
 
@@ -47,7 +47,7 @@ Azure Monitoring を構成すると、アプリケーションのプロビジョ
 
 ## <a name="azure-monitor-workbooks"></a>Azure Monitor ブック
 
-Azure Monitor ブックには、データ分析用の柔軟なキャンバスが用意されています。 また、Azure portal 内で上質なビジュアル レポートを作成することもできます。 詳細については、[Azure Monitor ブックの概要](../../azure-monitor/platform/workbooks-overview.md)に関するページを参照してください。
+Azure Monitor ブックには、データ分析用の柔軟なキャンバスが用意されています。 また、Azure portal 内で上質なビジュアル レポートを作成することもできます。 詳細については、[Azure Monitor ブックの概要](../../azure-monitor/visualize/workbooks-overview.md)に関するページを参照してください。
 
 アプリケーションのプロビジョニングには、あらかじめ構築された一連のブックが付属しています。 これらは、[ブック] ページで確認できます。 データを表示するには、すべてのフィルター (timeRange、jobID、appName) を設定する必要があります。 また、アプリをプロビジョニングしておく必要があります。そうしないと、ログにデータが記録されません。
 
@@ -57,7 +57,7 @@ Azure Monitor ブックには、データ分析用の柔軟なキャンバスが
 
 ## <a name="custom-queries"></a>カスタム クエリ
 
-カスタム クエリを作成し、Azure ダッシュボードにデータを表示することができます。 方法については、[Log Analytics データのダッシュボードの作成と共有](../../azure-monitor/log-query/get-started-queries.md)に関するページを参照してください。 また、[Azure Monitor のログ クエリの概要](../../azure-monitor/log-query/log-query-overview.md)に関するページも参照してください。
+カスタム クエリを作成し、Azure ダッシュボードにデータを表示することができます。 方法については、[Log Analytics データのダッシュボードの作成と共有](../../azure-monitor/logs/get-started-queries.md)に関するページを参照してください。 また、[Azure Monitor のログ クエリの概要](../../azure-monitor/logs/log-query-overview.md)に関するページも参照してください。
 
 アプリケーション プロビジョニングを始めるためのいくつかのサンプルを次に示します。
 
@@ -96,7 +96,7 @@ AADProvisioningLogs
 
 Azure Monitor を使用すると、プロビジョニングに関連する主要なイベントに関する通知を受け取ることができるように、カスタム アラートを構成することができます。 たとえば、障害が急増した場合にアラートを受け取ることができます。 また、無効または削除が急増することもあります。 アラートが必要なもう 1 つの例として、プロビジョニングがないことがあります。これは、何かがうまく行っていないことを示します。
 
-アラートの詳細については、「[Azure Monitor のアラートを使用してイベントに応答する](../../azure-monitor/learn/tutorial-response.md)」を参照してください。
+アラートの詳細については、「[Azure Monitor のアラートを使用してイベントに応答する](../../azure-monitor/alerts/tutorial-response.md)」を参照してください。
 
 障害が急増した場合にアラートを発します。 jobID は、お使いのアプリケーションの jobID に置き換えてください。
 
@@ -118,7 +118,7 @@ Microsoft では、アプリケーションのプロビジョニングのクエ�
 ## <a name="next-steps"></a>次のステップ
 
 - [ログ分析](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md)
-- [Azure Monitor ログでクエリの使用を開始する](../../azure-monitor/log-query/get-started-queries.md)
-- [Create and manage alert groups in the Azure portal](../../azure-monitor/platform/action-groups.md)
+- [Azure Monitor ログでクエリの使用を開始する](../../azure-monitor/logs/get-started-queries.md)
+- [Create and manage alert groups in the Azure portal](../../azure-monitor/alerts/action-groups.md)
 - [Azure Active Directory ログ分析用のビューのインストールと使用](../reports-monitoring/howto-install-use-log-analytics-views.md)
 - [プロビジョニング ログ API](/graph/api/resources/provisioningobjectsummary?preserve-view=true&view=graph-rest-beta.md)

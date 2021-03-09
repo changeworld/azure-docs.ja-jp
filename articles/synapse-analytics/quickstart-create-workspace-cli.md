@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 08/25/2020
 ms.author: alehall
 ms.reviewer: jrasnick
-ms.openlocfilehash: d4beef9383b8e51e1295639c18e745fd0fdf8588
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 8a56b325dd5e1180b1229465965167241fab76a8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796946"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676454"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Synapse ワークスペースを作成する
 
@@ -27,7 +27,7 @@ Azure CLI は、Azure リソースを管理するための、Azure のコマン�
 ## <a name="prerequisites"></a>前提条件
 
 - 軽量で柔軟性の高いコマンド ライン JSON プロセッサ、[jq](https://stedolan.github.io/jq/download/) をダウンロードしてインストールします。
-- [Azure Data Lake Storage Gen2 ストレージ アカウント](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Azure Data Lake Storage Gen2 ストレージ アカウント](../storage/common/storage-account-create.md)
 
     > [!IMPORTANT]
     > Azure Synapse ワークスペースは、選択した ADLS Gen2 アカウントの読み取りと書き込みを行うことができる必要があります。 加えて、プライマリ ストレージ アカウントとしてリンクするストレージ アカウントについては、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account)」ページの説明に従って、その作成時に **階層型名前空間** を有効にする必要があります。 

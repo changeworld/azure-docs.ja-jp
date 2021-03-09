@@ -3,12 +3,12 @@ title: Kubernetes 用の Azure Policy の概要
 description: Azure Policy で Rego および Open Policy Agent を使用して、Azure 内またはオンプレミスで Kubernetes を実行しているクラスターを管理する方法について説明します。
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: f25b64bc28535d125c7883f16c9e747d6250ca96
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 0aaf610cd5712ee195ed2a4108cf9e5ca9c65183
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789740"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577097"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes 用の Azure Policy について理解する
 
@@ -447,7 +447,7 @@ Kubernetes クラスターでは、名前空間に次のラベルのいずれか
 ## <a name="logging"></a>ログ記録
 
 _azure-policy_ と _gatekeeper_ のポッドはどちらも、Kubernetes のコントローラーおよびコンテナーとして、Kubernetes クラスター内にログを保持します。 このログは Kubernetes クラスターの **[Insights]** ページに公開されます。
-詳細については、「[Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを監視する](../../../azure-monitor/insights/container-insights-analyze.md)」を参照してください。
+詳細については、「[Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを監視する](../../../azure-monitor/containers/container-insights-analyze.md)」を参照してください。
 
 アドオンのログを表示するには、`kubectl` を使用します。
 

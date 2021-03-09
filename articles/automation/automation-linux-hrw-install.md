@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 20683808c81b32560170b175edf1c37c332f47ad
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 58c340c97bd8e46c5a588b4bf0ba2673712ffb95
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183619"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581201"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker を展開する
 
@@ -26,13 +26,13 @@ Runbook Worker が正常にデプロイされたら、「[Hybrid Runbook Worker 
 
 ### <a name="a-log-analytics-workspace"></a>Log Analytics ワークスペース
 
-Hybrid Runbook Worker ロールでは、Azure Monitor Log Analytics ワークスペースに依存してロールがインストールおよび構成されます。 [Azure Resource Manager](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace)、[PowerShell](../azure-monitor/scripts/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)、[Azure portal](../azure-monitor/learn/quick-create-workspace.md) のいずれかを使用して作成できます。
+Hybrid Runbook Worker ロールでは、Azure Monitor Log Analytics ワークスペースに依存してロールがインストールおよび構成されます。 [Azure Resource Manager](../azure-monitor/logs/resource-manager-workspace.md#create-a-log-analytics-workspace)、[PowerShell](../azure-monitor/logs/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)、[Azure portal](../azure-monitor/logs/quick-create-workspace.md) のいずれかを使用して作成できます。
 
-Azure Monitor Log Analytics ワークスペースがない場合は、ワークスペースを作成する前に、[Azure Monitor ログの設計ガイダンス](../azure-monitor/platform/design-logs-deployment.md)を確認してください。
+Azure Monitor Log Analytics ワークスペースがない場合は、ワークスペースを作成する前に、[Azure Monitor ログの設計ガイダンス](../azure-monitor/logs/design-logs-deployment.md)を確認してください。
 
 ### <a name="log-analytics-agent"></a>Log Analytics エージェント
 
-Hybrid Runbook Worker ロールには、サポートされている Linux オペレーティング システム用の [Log Analytics エージェント](../azure-monitor/platform/log-analytics-agent.md)が必要です。 Azure の外部でホストされているサーバーまたはマシンの場合、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用すれば Log Analytics エージェントをインストールできます。
+Hybrid Runbook Worker ロールには、サポートされている Linux オペレーティング システム用の [Log Analytics エージェント](../azure-monitor/agents/log-analytics-agent.md)が必要です。 Azure の外部でホストされているサーバーまたはマシンの場合、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用すれば Log Analytics エージェントをインストールできます。
 
 >[!NOTE]
 >Linux 用 Log Analytics エージェントをインストールした後は、`sudoers.d` フォルダーまたはその所有権のアクセス許可を変更しないでください。 sudo アクセス許可は **nxautomation** アカウントに必要です。これは Hybrid Runbook Worker を実行するユーザー コンテキストです。 アクセス許可は削除しないでください。 これを特定のフォルダーまたはコマンドに制限すると、破壊的変更が発生する可能性があります。

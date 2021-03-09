@@ -8,19 +8,19 @@ ms.subservice: core
 ms.reviewer: sgilley
 ms.author: nilsp
 author: NilsPohlmann
-ms.date: 12/10/2020
+ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 168e5340842dca3c26e4fa48d2f14b8ade529cd9
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 75d241840ecfc8520989342d9def8186de922c0d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505671"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691860"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK で機械学習パイプラインを作成して管理する
 
-この記事では、[Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) を使用して、[機械学習パイプライン](concept-ml-pipelines.md)を作成して実行する方法について説明します。 **ML パイプライン** を使用して、さまざまな ML フェーズをつなぎ合わせるするワークフローを作成します。 その後、後でアクセスしたり、他のユーザーと共有したりするために、パイプラインを公開します。 ML パイプラインを追跡して、実際にモデルがどのように実行されているかを確認し、データ ドリフトを検出します。 ML パイプラインは、さまざまなコンピューティングを使用し、ステップを再実行する代わりに再利用し、ML ワークフローを他のユーザーと共有する、バッチ スコアリングのシナリオに最適です。
+この記事では、[Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) を使用して、[機械学習パイプライン](concept-ml-pipelines.md)を作成して実行する方法について説明します。 **ML パイプライン** を使用して、さまざまな ML フェーズをつなぎ合わせるするワークフローを作成します。 その後、後でアクセスしたり、他のユーザーと共有したりするために、パイプラインを公開します。 ML パイプラインを追跡して、実際にモデルがどのように実行されているかを確認し、データ ドリフトを検出します。 ML パイプラインは、バッチ スコアリングのシナリオ、さまざまなコンピューティングの使用、ステップの再実行ではなく再利用、他のユーザーとの ML ワークフローの共有に最適です。
 
 この記事はチュートリアルではありません。 最初のパイプラインを作成する方法に関するガイダンスについては、「[チュートリアル:バッチ スコアリング用の Azure Machine Learning パイプラインを作成する](tutorial-pipeline-batch-scoring-classification.md)」、または「[Python の Azure Machine Learning パイプラインで自動 ML を使用する](how-to-use-automlstep-in-pipelines.md)」を参照してください。 
 
@@ -53,16 +53,13 @@ ML パイプラインの実行に必要なリソースを作成します。
 
 * パイプラインの手順で必要なデータへのアクセスに使用されるデータストアを設定します。
 
-* データストアに存在する永続データまたはデータストアでアクセス可能な永続データを指し示すように、`Dataset` オブジェクトを構成します。 パイプライン ステップ間で渡される一時データの `PipelineData` オブジェクトを構成します。 
-
-    > [!TIP]
-    > パイプライン ステップ間で一時データを渡すための改善されたエクスペリエンスは、パブリック プレビュー クラス [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) で使用できます。  このクラスは[試験段階](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental)のプレビュー機能であり、いつでも変更される可能性があります。
+* データストアに存在する永続データまたはデータストアでアクセス可能な永続データを指し示すように、`Dataset` オブジェクトを構成します。 パイプラインの手順間で一時データを渡すために `OutputFileDatasetConfig` オブジェクトを構成します。 
 
 * パイプラインの手順が実行される[コンピューティング先](concept-azure-machine-learning-architecture.md#compute-targets)を設定します。
 
 ### <a name="set-up-a-datastore"></a>データストアをセットアップする
 
-データストアには、パイプラインでアクセスするデータが格納されます。 各ワークスペースに既定のデータストアがあります。 データストアを追加登録できます。 
+データストアには、パイプラインでアクセスするデータが格納されます。 各ワークスペースに既定のデータストアがあります。 データストアをさらに登録することも可能です。 
 
 ワークスペースを作成すると、[Azure Files](../storage/files/storage-files-introduction.md) と [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) がワークスペースに接続されます。 既定のデータストアが、Azure Blob Storage に接続するために登録されています。 詳細については、[Azure Files、Azure BLOB、Azure ディスクの使い分け](../storage/common/storage-introduction.md)に関するページを参照してください。 
 
@@ -80,10 +77,9 @@ def_file_store = Datastore(ws, "workspacefilestore")
 
 通常、ステップではデータが消費され、出力データが生成されます。 ステップでは、モデルなどのデータ、モデル ファイルと依存ファイルを含むディレクトリ、一時データが作成されることがあります。 このデータは、パイプラインの後続の他のステップで使用できます。 パイプラインをデータに接続する方法の詳細については、[データへのアクセス方法](how-to-access-data.md)および[データセットの登録方法](how-to-create-register-datasets.md)に関する記事を参照してください。 
 
-### <a name="configure-data-with-dataset-and-pipelinedata-objects"></a>`Dataset` オブジェクトと `PipelineData` オブジェクトを使用してデータを構成する
+### <a name="configure-data-with-dataset-and-outputfiledatasetconfig-objects"></a>`Dataset` オブジェクトと `OutputFileDatasetConfig` オブジェクトを使用してデータを構成する
 
 パイプラインにデータを提供する方法には、[データセット](/python/api/azureml-core/azureml.core.dataset.Dataset) オブジェクトを使用することをお勧めします。 `Dataset` オブジェクトでは、データストアに存在するデータ、データストアからアクセス可能なデータ、または Web URL でアクセス可能なデータが指し示されています。 `Dataset` クラスは抽象クラスであるため、`FileDataset` (1 つ以上のファイルを参照)、または区切られたデータ列を含む 1 つ以上のファイルによって作成された `TabularDataset` のいずれかのインスタンスを作成します。
-
 
 `Dataset` は、[from_file](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?preserve-view=true&view=azure-ml-py#&preserve-view=truefrom-files-path--validate-true-) や [from_delimited_files](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?preserve-view=true&view=azure-ml-py#&preserve-view=truefrom-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) などのメソッドを使用して作成します。
 
@@ -92,20 +88,22 @@ from azureml.core import Dataset
 
 my_dataset = Dataset.File.from_files([(def_blob_store, 'train-images/')])
 ```
-中間データ (またはステップの出力) は、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) オブジェクトによって表されます。 `output_data1` は、ステップの出力として生成され、後続の 1 つまたは複数のステップの入力として使われます。 `PipelineData` では、ステップの間にデータの依存関係が導入され、パイプライン内に暗黙的な実行順序が作成されます。 このオブジェクトは、後でパイプラインのステップを作成するときに使用されます。
+
+中間データ (またはステップの出力) は、[OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) オブジェクトによって表されます。 ステップの出力として `output_data1` が作成されます。 このデータは、必要に応じて `register_on_complete` を呼び出して、データセットとして登録できます。 あるステップで `OutputFileDatasetConfig` を作成し、別のステップでそれを入力として使用する場合、ステップ間のデータの依存関係によって、パイプラインで暗黙的な実行順序が作成されます。
+
+`OutputFileDatasetConfig` オブジェクトはディレクトリを返し、既定では、ワークスペースの既定のデータストアに出力を書き込みます。
 
 ```python
-from azureml.pipeline.core import PipelineData
+from azureml.data import OutputFileDatasetConfig
 
-output_data1 = PipelineData(
-    "output_data1",
-    datastore=def_blob_store,
-    output_name="output_data1")
+output_data1 = OutputFileDatasetConfig(destination = (datastore, 'outputdataset/{run-id}'))
+output_data_dataset = output_data1.register_on_complete(name = 'prepared_output_data')
 
 ```
 
-> [!TIP]
-> パイプライン ステップ間での中間データの永続化は、パブリック プレビュー クラス [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) でも可能です。 `OutputFileDatasetConfig` クラスを使用したコード例については、[2 ステップの ML パイプラインを構築する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)方法を参照してください。
+> [!IMPORTANT]
+> `OutputFileDatasetConfig` を使用して格納した中間データは、Azure では自動的に削除されません。
+> パイプラインの実行の最後で中間データが削除されるようプログラムするか、短いデータ保持ポリシーのデータストアを使用するか、手動で定期的にクリーンアップする必要があります。
 
 > [!TIP]
 > アップロードするファイルは、手持ちのジョブに関連するものに限定してください。 データ ディレクトリ内のファイルに変更があった場合は、再利用が指定されていても、次回のパイプライン実行時にステップを再実行する理由としてみなされます。 
@@ -120,7 +118,7 @@ Azure Machine Learning での "__コンピューティング__" (または "__�
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning コンピューティング
 
-ステップを実行するための Azure Machine Learning コンピューティングを作成できます。 他のコンピューティング先のコードは、非常に似ていますが、種類に応じてパラメーターが多少異なります。 
+ステップを実行するための Azure Machine Learning コンピューティングを作成できます。 他のコンピューティング先のコードも似ていますが、種類に応じてパラメーターが多少異なります。 
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -176,7 +174,7 @@ else:
         pin_sdk_version=False)
 ```
 
-上記のコードは、依存関係を処理するための 2 つのオプションを示しています。 表示されているとおり、`USE_CURATED_ENV = True` の場合、その構成はキュレートされた環境に基づいています。 キュレートされた環境は、共通の相互依存ライブラリを使用して "あらかじめベイク" されており、オンラインになるまでにかかる時間が大幅に短縮されます。 キュレートされた環境には、[Microsoft Container Registry](https://hub.docker.com/publishers/microsoftowner) にあらかじめビルドされた Docker イメージが用意されています。 詳細については、「[Azure Machine Learning のキュレーションされた環境](resource-curated-environments.md)」を参照してください。
+上記のコードは、依存関係を処理するための 2 つのオプションを示しています。 表示されているとおり、`USE_CURATED_ENV = True` の場合、その構成はキュレートされた環境に基づいています。 キュレートされた環境は、共通の相互依存ライブラリを使用して "事前作成" されているため、より迅速にオンラインにできます。 キュレートされた環境には、[Microsoft Container Registry](https://hub.docker.com/publishers/microsoftowner) にあらかじめビルドされた Docker イメージが用意されています。 詳細については、「[Azure Machine Learning のキュレーションされた環境](resource-curated-environments.md)」を参照してください。
 
 `USE_CURATED_ENV` を `False` に変更した場合にたどるパスは、依存関係を明示的に設定するためのパターンを示します。 このシナリオでは、新しいカスタム Docker イメージが作成され、リソース グループ内の Azure Container Registry に登録されます (「[Azure のプライベート Docker コンテナー レジストリの概要](../container-registry/container-registry-intro.md)」を参照してください)。 このイメージのビルドと登録には数分かかることがあります。
 
@@ -196,8 +194,6 @@ data_prep_step = PythonScriptStep(
     script_name=entry_point,
     source_directory=dataprep_source_dir,
     arguments=["--input", ds_input.as_download(), "--output", output_data1],
-    inputs=[ds_input],
-    outputs=[output_data1],
     compute_target=compute_target,
     runconfig=aml_run_config,
     allow_reuse=True
@@ -206,9 +202,7 @@ data_prep_step = PythonScriptStep(
 
 上記のコードには、一般的な初期パイプライン ステップが表示されます。 データ準備コードはサブディレクトリにあります (この例では、ディレクトリ `"./dataprep.src"` にある `"prepare.py"`)。 パイプライン作成プロセスの一環として、このディレクトリが圧縮され、`compute_target` にアップロードされ、`script_name`の値として指定されたスクリプトがステップによって実行されます。
 
-`arguments`、`inputs`、および `outputs` の値によって、ステップの入力と出力が指定されます。 上の例で、ベースライン データは `my_dataset` データセットです。 対応するデータはコードにより `as_download()` と指定されているので、コンピューティング リソースにダウンロードされます。 スクリプト `prepare.py` により、目下のタスクに適したデータ変換タスクが行われ、データが `PipelineData` 型の `output_data1` に出力されます。 詳細については、「[ML パイプラインのステップ間でのデータの移動 (Python)](how-to-move-data-in-out-of-pipelines.md)」を参照してください。 
-
-このステップは、構成 `aml_run_config` を使用して `compute_target` によって定義されたコンピューターで実行されます。 
+`arguments` の値によって、ステップの入力と出力が指定されます。 上の例で、ベースライン データは `my_dataset` データセットです。 対応するデータはコードにより `as_download()` と指定されているので、コンピューティング リソースにダウンロードされます。 スクリプト `prepare.py` により、目下のタスクに適したデータ変換タスクが行われ、データが `OutputFileDatasetConfig` 型の `output_data1` に出力されます。 詳細については、「[ML パイプラインのステップ間でのデータの移動 (Python)](how-to-move-data-in-out-of-pipelines.md)」を参照してください。 このステップは、構成 `aml_run_config` を使用して `compute_target` によって定義されたコンピューターで実行されます。 
 
 共同環境でパイプラインを使用する際は、前の結果 (`allow_reuse`) の再利用が鍵となります。不要な再実行を除去することで機敏性が提供されるからです。 ステップの script_name、inputs、およびパラメーターが同じままのときは、再利用が既定の動作になります。 再利用が許可された場合、前回の実行の結果はすぐに次のステップに送信されます。 `allow_reuse` が `False` に設定されている場合は、パイプライン実行中、このステップの新規実行が常に生成されます。
 
@@ -218,9 +212,8 @@ data_prep_step = PythonScriptStep(
 train_source_dir = "./train_src"
 train_entry_point = "train.py"
 
-training_results = PipelineData(name = "training_results", 
-                                datastore=def_blob_store,
-                                output_name="training_results")
+training_results = OutputFileDatasetConfig(name = "training_results",
+    destination = def_blob_store)
 
     
 train_step = PythonScriptStep(
@@ -233,11 +226,9 @@ train_step = PythonScriptStep(
 )
 ```
 
-上記のコードは、データの準備のステップの場合とよく似ています。 トレーニングのコードは、データの準備のコードとは別のディレクトリにあります。 データの準備のステップの `PipelineData` 出力である `output_data1` は、トレーニング ステップへの "_入力_" として使用されます。 新しい `PipelineData` オブジェクトである `training_results` が作成され、これによって、その後の比較またはデプロイのステップの結果が保持されます。 
+上記のコードは、データの準備のステップのコードとよく似ています。 トレーニングのコードは、データの準備のコードとは別のディレクトリにあります。 データの準備のステップの `OutputFileDatasetConfig` 出力である `output_data1` は、トレーニング ステップへの "_入力_" として使用されます。 新しい `OutputFileDatasetConfig` オブジェクトである `training_results` が作成され、これによって、その後の比較またはデプロイのステップの結果が保持されます。 
 
-
-> [!TIP]
-> 改善されたエクスペリエンスとパイプライン実行の最後に中間データをデータ ストアに書き戻す機能を使用するには、パブリック プレビュー クラス [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) を使用します。 コード例については、[2 ステップの ML パイプラインを構築する方法](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)に関するページと、[実行完了時にデータ ストアにデータを書き戻す方法](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/scriptrun-with-data-input-output/how-to-use-scriptrun.ipynb)に関するページを参照してください。
+その他のコード例については、[2 ステップの ML パイプラインを構築する方法](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)に関するページと、[実行完了時にデータ ストアにデータを書き戻す方法](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/scriptrun-with-data-input-output/how-to-use-scriptrun.ipynb)に関するページを参照してください。
 
 ステップを定義した後は、それらのステップの一部またはすべてを使用してパイプラインをビルドします。
 
@@ -254,26 +245,12 @@ from azureml.pipeline.core import Pipeline
 pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 ```
 
-### <a name="how-python-environments-work-with-pipeline-parameters"></a>Python 環境でパイプライン パラメーターを操作する方法
-
-上記の「[トレーニングの実行環境を構成する](#configure-the-training-runs-environment)」で説明したように、環境状態と Python ライブラリの依存関係を、`Environment` オブジェクトを使用して指定します。 一般的に、名前、および必要に応じてバージョンを参照することによって、既存の `Environment` を指定できます。
-
-```python
-aml_run_config = RunConfiguration()
-aml_run_config.environment.name = 'MyEnvironment'
-aml_run_config.environment.version = '1.0'
-```
-
-ただし、`PipelineParameter` オブジェクトを使用してパイプラインのステップの実行時に変数を動的に設定する場合は、既存の `Environment` を参照するこの手法を使用することはできません。 代わりに、`PipelineParameter` オブジェクトを使用する場合は、`RunConfiguration` の `environment` フィールドを `Environment` オブジェクトに設定する必要があります。 このような `Environment` に、外部の Python パッケージへの依存関係が適切に設定されていることを確実にする必要があります。
-
 ### <a name="use-a-dataset"></a>データセットを使用する 
 
-Azure Blob storage、Azure Files、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL Database、および Azure Database for PostgreSQL から作成されたデータセットは、任意のパイプライン ステップへの入力として使用できます。 [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py) または [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?preserve-view=true&view=azure-ml-py) に出力を書き込むことができます。また、特定のデータストアにデータを書き込む場合は、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) を使用します。 
+Azure Blob storage、Azure Files、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL Database、および Azure Database for PostgreSQL から作成されたデータセットは、任意のパイプライン ステップへの入力として使用できます。 [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py) または [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?preserve-view=true&view=azure-ml-py) に出力を書き込むことができます。また、特定のデータストアにデータを書き込む場合は、[OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) を使用します。 
 
 > [!IMPORTANT]
-> PipelineData を使用してデータストアに出力データを書き戻すことができるのは、Azure BLOB と Azure ファイル共有データストアだけです。 
->
-> 出力データを Azure BLOB、Azure ファイル共有、ADLS Gen 1 および ADLS Gen 2 データ ストアに書き戻すには、パブリック プレビュー クラス [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) を使用します。
+> `OutputFileDatasetConfig` を使用してデータストアに出力データを書き戻すことができるのは、Azure BLOB、Azure ファイル共有、ADLS Gen 1、および Gen 2 データストアだけです。 
 
 ```python
 dataset_consuming_step = PythonScriptStep(
@@ -344,7 +321,7 @@ pipeline_run1.wait_for_completion()
 * ワークスペースに関連付けられた BLOB ストレージからコンピューティング先に、プロジェクトのスナップショットをダウンロードします。
 * パイプラインの各ステップに対応した Docker イメージをビルドします。
 * 各ステップの Docker イメージをコンテナー レジストリからコンピューティング先にダウンロードします。
-* `Dataset` オブジェクトと `PipelineData` オブジェクトへのアクセスを構成します。 `as_mount()` アクセス モードとしては、FUSE は仮想アクセスを提供するために使用されます。 マウントがサポートされていない場合、またはユーザーがアクセスを `as_download()` として指定した場合は、代わりにデータがコンピューティング先にコピーされます。
+* `Dataset` オブジェクトと `OutputFileDatasetConfig` オブジェクトへのアクセスを構成します。 `as_mount()` アクセス モードでは、FUSE は仮想アクセスを提供するために使用されます。 マウントがサポートされていない場合、またはユーザーがアクセスを `as_upload()` として指定した場合は、代わりにデータがコンピューティング先にコピーされます。
 
 * ステップの定義で指定されているコンピューティング先で、ステップを実行します。 
 * ログ、stdout と stderr、メトリック、ステップによって指定されている出力などの成果物を作成します。 その後、これらの成果物がアップロードされて、ユーザーの既定のデータストアに保持されます。
@@ -354,6 +331,31 @@ pipeline_run1.wait_for_completion()
 詳細については、「[Experiment class](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py)」リファレンスを参照してください。
 
 ## <a name="use-pipeline-parameters-for-arguments-that-change-at-inference-time"></a>推論時に変化する引数にパイプライン パラメーターを使用する
+
+パイプライン内の個々のステップへの引数が、開発とトレーニングの期間 (トレーニングの速度や勢い、データや構成ファイルへのパスなど) と関係する場合があります。 ただし、モデルが配置されている場合、推論している引数 (つまり、モデルで回答するために作成したクエリ) を動的に渡したい場合があります。 これらの引数の型は、パイプライン パラメーターにする必要があります。 これを Python で行うには、次のコード スニペットのとおり、`azureml.pipeline.core.PipelineParameter` クラスを使用します。
+
+```python
+from azureml.pipeline.core import PipelineParameter
+
+pipeline_param = PipelineParameter(name="pipeline_arg", default_value="default_val")
+train_step = PythonScriptStep(script_name="train.py",
+                            arguments=["--param1", pipeline_param],
+                            target=compute_target,
+                            source_directory=project_folder)
+```
+
+### <a name="how-python-environments-work-with-pipeline-parameters"></a>Python 環境でパイプライン パラメーターを操作する方法
+
+上記の「[トレーニングの実行環境を構成する](#configure-the-training-runs-environment)」で説明したとおり、環境の状態と Python ライブラリの依存関係は、`Environment` オブジェクトを使用して指定します。 一般的に、名前、および必要に応じてバージョンを参照することによって、既存の `Environment` を指定できます。
+
+```python
+aml_run_config = RunConfiguration()
+aml_run_config.environment.name = 'MyEnvironment'
+aml_run_config.environment.version = '1.0'
+```
+
+ただし、`PipelineParameter` オブジェクトを使用してパイプラインのステップの実行時に変数を動的に設定する場合は、既存の `Environment` を参照するこの手法を使用することはできません。 代わりに、`PipelineParameter` オブジェクトを使用する場合は、`RunConfiguration` の `environment` フィールドを `Environment` オブジェクトに設定する必要があります。 このような `Environment` に、外部の Python パッケージへの依存関係が適切に設定されていることを確実にする必要があります。
+
 
 ## <a name="view-results-of-a-pipeline"></a>パイプラインの結果を表示する
 

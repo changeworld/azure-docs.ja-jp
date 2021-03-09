@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/26/2020
+ms.date: 2/18/2021
 ms.author: shhazam
-ms.openlocfilehash: 82fcf7f129d5caba471d6d72da83a317b26c638c
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: c224dc3f919471e769717f308aff9ae58630d421
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98807882"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712761"
 ---
 # <a name="get-started-with-defender-for-iot"></a>Defender for IoT での作業を開始する
 
@@ -69,6 +69,8 @@ Azure Defender for IoT では、物理的な配置と仮想デプロイの両方
 1. **[Onboard subscription]\(サブスクリプションのオンボード\)** を選択します。
 1. **[価格]** ページでサブスクリプションを選択するか、新しいサブスクリプションを作成してコミット済みデバイスの数を追加します。
 1. **[Download the on-premises management console]\(オンプレミス管理コンソールのダウンロード\)** タブを選択し、ダウンロードしたアクティブ化ファイルを保存します。 このファイルには、定義したコミット済みデバイスがまとめられています。 このファイルは、最初のサインイン後に管理コンソールにアップロードされます。
+
+サブスクリプションをオフボードする方法について詳しくは、「[サブスクリプションをオフボードする](how-to-manage-sensors-on-the-cloud.md#offboard-a-subscription)」を参照してください。
 
 ## <a name="3-install-and-set-up-the-on-premises-management-console"></a>3.オンプレミス管理コンソールをインストールして設定する
 

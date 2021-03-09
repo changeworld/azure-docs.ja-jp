@@ -12,21 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/22/2020
 ms.author: apimpm
-ms.openlocfilehash: a8ed834c9ab093ae063e386978bca4d73fa46543
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 2e45d1274cf7332dbca70eaa8fc51f0ac98e5359
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400728"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648018"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>Visual Studio Code で Azure API Management ポリシーをデバッグする
 
 Azure API Management の[ポリシー](api-management-policies.md)では、API パブリッシャーが、認証、承認、スロットリング、キャッシュ、変換などの横断的問題に対応する助けになる強力な機能が提供されます。 API の要求または応答に対して順に実行される一連のステートメントが集まってポリシーが形成されます。 
 
 この記事では、[Visual Studio Code 用の Azure API Management 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement)を使用して、API Management ポリシーをデバッグする方法について説明します。 
-
-> [!NOTE]
-> この機能はパブリック プレビュー段階にあります。
 
 ## <a name="prerequisites"></a>前提条件
 

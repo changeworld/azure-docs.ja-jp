@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56ac58e47bffc73c7079af043ad567a77e8f3323
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083771"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735507"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>多層 IIS ベース Web アプリケーションのディザスター リカバリーの設定
 
@@ -122,10 +122,10 @@ Web 層の接続文字列を更新するには、復旧計画のグループ 3 �
 
 ![TLS/SSL バインドの設定画面を示すスクリーンショット](./media/site-recovery-iis/sslbinding.png)
 
-IP アドレスをサイトに関連付けた場合は、すべてのサイト バインドを新しい IP アドレスで更新する必要があります。 サイト バインドを変更するには、復旧計画のグループ 3 の後に、[IIS Web 層更新スクリプト](https://aka.ms/asr-web-tier-update-runbook-classic)を追加します。
+IP アドレスをサイトに関連付けた場合は、すべてのサイト バインドを新しい IP アドレスで更新する必要があります。 サイト バインドを変更するには、復旧計画のグループ 3 の後に、[IIS Web 層更新スクリプト](/samples/browse/?redirectedfrom=TechNet-Gallery)を追加します。
 
 #### <a name="update-the-load-balancer-ip-address"></a>ロード バランサーの IP アドレスの更新
-ARR 仮想マシンがある場合、IP アドレスを更新するには、グループ 4 の後に [IIS ARR フェールオーバー スクリプト](https://aka.ms/asr-iis-arrtier-failover-script-classic)を追加します。
+ARR 仮想マシンがある場合、IP アドレスを更新するには、グループ 4 の後に [IIS ARR フェールオーバー スクリプト](/samples/browse/?redirectedfrom=TechNet-Gallery)を追加します。
 
 #### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>HTTPS 接続用の TLS/SSL 証明書バインド
 Web サイトには、Web サーバーとユーザーのブラウザー間の通信をセキュリティで保護するための、TLS/SSL 証明書が関連付けられている場合があります。 Web サイトで HTTPS 接続が使用されていて、かつ IIS サーバーの IP アドレスへの HTTPS サイト バインドが TLS/SSL 証明書バインドに関連付けられている場合は、フェールオーバー後に IIS 仮想マシンの IP アドレスを使用して、証明書の新しいサイト バインドを追加する必要があります。

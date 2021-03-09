@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3876b44bc6bb1ddbc5398126421fb9651003838f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 13ac18abd0a557d02435c3805e1ab86bcbf1ff84
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678825"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100391985"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub に対するダウンストリーム デバイスの認証を行う
 
@@ -68,6 +68,11 @@ Azure portal、Azure CLI、Visual Studio Code の IoT 拡張機能のいずれ�
 * **[親デバイスの設定]** を選択し、このダウンストリーム デバイスが経由して接続する IoT Edge ゲートウェイ デバイスを選択します。 親は後でいつでも変更できます。
 
    ![ポータルで対称キー認証を使用したデバイス ID の作成](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
+
+   >[!NOTE]
+   >親デバイスの設定は、以前は対称キーの認証を使用するダウンストリーム デバイス用の省略可能な手順でした。 しかし、IoT Edge バージョン 1.1.0 以降は、すべてのダウンストリーム デバイスが親デバイスに割り当てられている必要があります。
+   >
+   >環境変数 **AuthenticationMode** を値 **CloudAndScope** に設定することで、以前の動作に戻るように IoT Edge ハブを構成できます。
 
 [Azure CLI の IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)を使用しても同じ操作を完了できます。 次の例では、[az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) コマンドを使用し、対称キー認証で新しい IoT デバイスが作成され、親デバイスが割り当てられます。
 

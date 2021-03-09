@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bdf3a763dc71eb842496775b6cc91b8ca39b4b3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ca84fa57cb3a26337038275d1b7491154915c90e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96343843"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574371"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>チュートリアル:ログ分析ウィザードを構成する
 
@@ -41,7 +41,7 @@ ms.locfileid: "96343843"
 
 以下の記事の内容を確認します。
 
-- [チュートリアル:Azure リソースからリソース ログを収集して分析する](../../azure-monitor/learn/tutorial-resource-logs.md)
+- [チュートリアル:Azure リソースからリソース ログを収集して分析する](../../azure-monitor/essentials/tutorial-resource-logs.md)
 
 - [アクティビティ ログを Log Analytics と統合する方法](./howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -49,7 +49,7 @@ ms.locfileid: "96343843"
 
 - [KQL クイック リファレンス](/azure/data-explorer/kql-quick-reference)
 
-- [Azure Monitor ブック](../../azure-monitor/platform/workbooks-overview.md)
+- [Azure Monitor ブック](../../azure-monitor/visualize/workbooks-overview.md)
 
 
 

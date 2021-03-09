@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 11/08/2020
+ms.date: 02/28/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: b09eb03994098f8cb68033f3c42309a77e15f91c
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 8635e3590d4196e407dfc591a55ee240806358ed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620993"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691520"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -47,6 +47,8 @@ SQL Database 監査を使用して、以下を行うことができます。
 - **Premium Storage** は現在 **サポートされていません**。
 - **Azure Data Lake Storage Gen2 ストレージ アカウント** 用の **階層型名前空間** は現在 **サポートされていません**。
 - 一時停止中の **Azure Synapse** で監査を有効にすることはサポートされていません。 監査を有効にするには、Azure Synapse を再開します。
+- **Azure Synapse SQL プール** の監査では、既定の監査アクション グループ **のみ** がサポートされます。
+
 
 #### <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>サーバー レベルおよびデータベース レベルの監査ポリシーを定義する
 
@@ -139,7 +141,7 @@ Log Analytics ワークスペースへの監査ログの書き込みを構成す
 
    ![Log Analytics ワークスペース](./media/auditing-overview/auditing_select_oms.png)
 
-Azure Log Analytics ワークスペースの詳細については、「[Azure Monitor ログのデプロイの設計](../../azure-monitor/platform/design-logs-deployment.md)」を参照してください。
+Azure Log Analytics ワークスペースの詳細については、「[Azure Monitor ログのデプロイの設計](../../azure-monitor/logs/design-logs-deployment.md)」を参照してください。
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>イベント ハブ保存先への監査
 
@@ -170,7 +172,7 @@ Azure Log Analytics ワークスペースの詳細については、「[Azure Mo
     ![Log Analytics のセキュリティ分析情報](media/auditing-overview/auditing-log-analytics-dashboard-data.png)
 
 - また、Log Analytics ブレードから監査ログにアクセスすることもできます。 ご自身の Log Analytics ワークスペースを開いて、 **[全般]** セクションで **[ログ]** をクリックします。 監査ログを表示するには、*search "SQLSecurityAuditEvents"* などの単純なクエリから始めることができます。
-    ここから [Azure Monitor ログ](../../azure-monitor/log-query/log-query-overview.md) を使用して、監査ログのデータに対して詳細検索を実行することもできます。 Azure Monitor ログにより、統合された検索とカスタム ダッシュボードを使用してオペレーション インサイトがリアルタイムで得られるため、ワークロードやサーバー全体に散在する何百万件のレコードもすぐに分析できます。 Azure Monitor ログの検索言語とコマンドに関する有用な追加情報については、[Azure Monitor ログ検索リファレンス](../../azure-monitor/log-query/log-query-overview.md)に関するページをご覧ください。
+    ここから [Azure Monitor ログ](../../azure-monitor/logs/log-query-overview.md) を使用して、監査ログのデータに対して詳細検索を実行することもできます。 Azure Monitor ログにより、統合された検索とカスタム ダッシュボードを使用してオペレーション インサイトがリアルタイムで得られるため、ワークロードやサーバー全体に散在する何百万件のレコードもすぐに分析できます。 Azure Monitor ログの検索言語とコマンドに関する有用な追加情報については、[Azure Monitor ログ検索リファレンス](../../azure-monitor/logs/log-query-overview.md)に関するページをご覧ください。
 
 監査ログをイベント ハブに書き込む場合:
 
@@ -273,6 +275,11 @@ WHERE 句のサポートによってフィルタリングを強化した拡張�
 - [サーバー "*拡張*" 監査ポリシーの作成または更新](/rest/api/sql/server%20auditing%20settings/createorupdate)
 - [データベース "*拡張*" 監査ポリシーの取得](/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [サーバー "*拡張*" 監査ポリシーの取得](/rest/api/sql/server%20auditing%20settings/get)
+
+### <a name="using-azure-cli"></a>Azure CLI の使用
+
+- [サーバーの監査ポリシーを管理する](/cli/azure/sql/server/audit-policy?view=azure-cli-latest)
+- [データベースの監査ポリシーを管理する](/cli/azure/sql/db/audit-policy?view=azure-cli-latest)
 
 ### <a name="using-azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレートを作成する
 

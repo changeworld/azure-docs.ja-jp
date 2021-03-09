@@ -1,23 +1,18 @@
 ---
 title: Data Factory を使用して Oracle との間でデータをコピーする
 description: Azure Data Factory を使用してオンプレミスの Oracle データベースとの間でデータをコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 3c20aa95-a8a1-4aae-9180-a6a16d64a109
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1aa8708701af37834ae3b6cdc42de9c691ccacec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02fc142a08176aa577250417c0e394218e832f34
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084292"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387344"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Oracle との間でデータをコピーする
 
@@ -33,11 +28,11 @@ ms.locfileid: "86084292"
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
-*Oracle データベースから*以下のデータ ストアにデータをコピーできます。
+*Oracle データベースから* 以下のデータ ストアにデータをコピーできます。
 
 [!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
 
-以下のデータ ストアから *Oracle データベースに*データをコピーできます。
+以下のデータ ストアから *Oracle データベースに* データをコピーできます。
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
@@ -86,10 +81,10 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
-1. **Data Factory**を作成します。 データ ファクトリには、1 つまたは複数のパイプラインを設定できます。
-2. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。 たとえば、Oralce データベースから Azure BLOB ストレージにデータをコピーする場合、リンクされたサービスを 2 つ作成して、Oralce データベースと Azure ストレージ アカウントをデータ ファクトリにリンクします。 Oralce に固有のリンクされたサービスのプロパティについては、「[リンクされたサービスのプロパティ](#linked-service-properties)」を参照してください。
-3. コピー操作用の入力データと出力データを表す**データセット**を作成します。 前述の手順の例では、データセットを作成して入力データを含む Oralce データベース内のテーブルを指定します。 もう 1 つのデータセットを作成して、BLOB コンテナーと Oralce データベースからコピーされたデータを保持するフォルダーを指定します。 Oralce に固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」を参照してください。
-4. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティがある**パイプライン**を作成します。 前述の例では、コピー アクティビティのソースとして **OracleSource** を、シンクとして **BlobSink** を使用します。 同様に、Azure BLOB ストレージから Oracle データベースにコピーする場合は、**BlobSource** と **OracleSink** をコピー アクティビティで使います。 Oracle データベースに固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」を参照してください。 データ ストアをソースまたはシンクとして使用する方法の詳細については、前のセクションに記載されているデータ ストアのリンクを選択してください。
+1. **Data Factory** を作成します。 データ ファクトリには、1 つまたは複数のパイプラインを設定できます。
+2. **リンクされたサービス** を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。 たとえば、Oralce データベースから Azure BLOB ストレージにデータをコピーする場合、リンクされたサービスを 2 つ作成して、Oralce データベースと Azure ストレージ アカウントをデータ ファクトリにリンクします。 Oralce に固有のリンクされたサービスのプロパティについては、「[リンクされたサービスのプロパティ](#linked-service-properties)」を参照してください。
+3. コピー操作用の入力データと出力データを表す **データセット** を作成します。 前述の手順の例では、データセットを作成して入力データを含む Oralce データベース内のテーブルを指定します。 もう 1 つのデータセットを作成して、BLOB コンテナーと Oralce データベースからコピーされたデータを保持するフォルダーを指定します。 Oralce に固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」を参照してください。
+4. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティがある **パイプライン** を作成します。 前述の例では、コピー アクティビティのソースとして **OracleSource** を、シンクとして **BlobSink** を使用します。 同様に、Azure BLOB ストレージから Oracle データベースにコピーする場合は、**BlobSource** と **OracleSink** をコピー アクティビティで使います。 Oracle データベースに固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」を参照してください。 データ ストアをソースまたはシンクとして使用する方法の詳細については、前のセクションに記載されているデータ ストアのリンクを選択してください。
 
 ウィザードを使用すると、リンクされたサービス、データ セット、パイプラインでなどの Data Factory エンティティの JSON 定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 オンプレミスの Oracle データベースとの間でデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、JSON の例を参照してください。
 
@@ -171,7 +166,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| oracleReaderQuery |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、"select \* from **MyTable**"。 <br/><br/>指定されていない場合、SQL ステートメント "select \* from **MyTable**" が実行されます |いいえ<br />(**データセット**の **tableName** が指定されている場合) |
+| oracleReaderQuery |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、"select \* from **MyTable**"。 <br/><br/>指定されていない場合、SQL ステートメント "select \* from **MyTable**" が実行されます |いいえ<br />(**データセット** の **tableName** が指定されている場合) |
 
 ### <a name="oraclesink"></a>パイプライン
 
@@ -376,7 +371,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 **例:Azure Blob Storage から Oracle にデータをコピーする**
 
-このサンプルは、Azure BLOB ストレージ アカウントからオンプレミスの Oracle データベースにデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、「[Supported data stores and formats](data-factory-data-movement-activities.md#supported-data-stores-and-formats)」(サポートされているデータ ストアと形式) に記載されているいずれかのソースからデータを*直接*コピーできます。
+このサンプルは、Azure BLOB ストレージ アカウントからオンプレミスの Oracle データベースにデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、「[Supported data stores and formats](data-factory-data-movement-activities.md#supported-data-stores-and-formats)」(サポートされているデータ ストアと形式) に記載されているいずれかのソースからデータを *直接* コピーできます。
 
 このサンプルでは、次の Data Factory のエンティティがあります。
 

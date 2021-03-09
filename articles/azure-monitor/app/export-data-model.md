@@ -3,17 +3,17 @@ title: Azure Application Insights のデータ モデル | Microsoft Docs
 description: JSON の連続エクスポートからエクスポートされ、フィルターとして使用されるプロパティについて説明します。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 29ad999c307d1c11e7a584b61d85ed73b9448cb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4609d54c1c3c33a654dd58a3bceaca4974fda15
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324388"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584222"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights エクスポート データ モデル
 次のテーブルは、 [Application Insights SDK](./app-insights-overview.md) からポータルに送信されるテレメトリのプロパティを一覧表示したものです。
 [連続エクスポート](export-telemetry.md)からのデータ出力で、テレメトリのプロパティが表示されます。
-テレメトリは[メトリック エクスプローラー](../platform/metrics-charts.md)と[診断検索](./diagnostic-search.md)のプロパティ フィルターでも表示されます。
+テレメトリは[メトリック エクスプローラー](../essentials/metrics-charts.md)と[診断検索](./diagnostic-search.md)のプロパティ フィルターでも表示されます。
 
 注意する点:
 

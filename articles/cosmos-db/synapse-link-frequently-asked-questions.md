@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 82133f990c1714276aa13ff22c3f19d0993d16df
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9fb6e94062639d32707f52f66e0b99531884a636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488716"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692268"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -68,6 +68,16 @@ Azure Synapse Link は、Azure Cosmos DB SQL (Core) API と、Azure Cosmos DB �
 
 Azure Cosmos DB では、トランザクション ワークロードと分析ワークロード間のパフォーマンスの分離が保証されています。 コンテナーで分析ストアを有効にしても、Azure Cosmos DB トランザクション ストアにプロビジョニングされた RU には影響しません。 分析ストアのトランザクション (読み取りおよび書き込み) とストレージのコストは個別に課金されます。 詳細については、[Azure Cosmos DB 分析ストアの価格](analytical-store-introduction.md#analytical-store-pricing)に関するセクションを参照してください。
 
+### <a name="can-i-restrict-access-to-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアへのアクセスを制限することはできますか?
+
+はい。[マネージド プライベート エンドポイント](analytical-store-private-endpoints.md)を構成して、分析ストアのネットワーク アクセスを Azure Synapse のマネージド仮想ネットワークに制限することができます。 マネージド プライベート エンドポイントによって、分析ストアへのプライベート リンクが確立されます。 また、他の Azure データ サービスの中で特に、トランザクション ストアへの書き込みアクセスも、このプライベート エンドポイントによって制限されます。
+
+Azure Synapse Analytics ワークスペース内で、トランザクション ストアと分析ストアの両方のプライベート エンドポイントを同じ Azure Cosmos DB アカウントに追加できます。 実行するのが分析クエリのみであれば、マップする必要があるのは、分析のプライベート エンドポイントのみです。
+
+### <a name="can-i-use-customer-managed-keys-with-the-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB の分析ストアでカスタマー マネージド キーを使用することはできますか?
+
+同じカスタマー マネージド キーを自動かつ透過的な方法で使用して、トランザクション ストアおよび分析ストア全体のデータをシームレスに暗号化できます。 現在、Azure Cosmos DB の分析ストアでカスタマー マネージド キーを使用するためには、ご利用のアカウントに特別な構成が必要となります。 詳細については、[Azure Cosmos DB チーム](mailto:azurecosmosdbcmk@service.microsoft.com)にお問い合わせください。
+
 ### <a name="are-delete-and-update-operations-on-the-transactional-store-reflected-in-the-analytical-store"></a>トランザクション ストアに対する削除と更新の操作は分析ストアに反映されますか?
 
 はい。トランザクション ストア内のデータの削除と更新は分析ストアに反映されます。 履歴データを含めるようにコンテナーで Time to live (TTL) を構成して、分析 TTL の条件を満たすすべてのバージョンの項目が分析ストアに保持されるようにすることができます。 詳細については、[分析 TTL の概要](analytical-store-introduction.md#analytical-ttl)に関するセクションを参照してください。
@@ -111,7 +121,7 @@ Azure Cosmos DB では、トランザクション ワークロードと分析ワ
 
 ### <a name="is-ttl-for-analytical-data-supported-at-both-container-and-item-level"></a>分析データの TTL はコンテナーと項目の両方のレベルでサポートされますか?
 
-現時点では、分析データの TTL はコンテナー レベルでのみ構成でき、項目レベルでの分析の TTL の設定はサポートされていません。
+現時点では、分析データの TTL はコンテナー レベルでのみ構成でき、項目レベルでの分析 TTL の設定はサポートされていません。
 
 ### <a name="after-setting-the-container-level--analytical-ttl-on-an-azure-cosmos-db-container-can-i-change-to-a-different-value-later"></a>Azure Cosmos DB コンテナーでコンテナー レベルの分析の TTL を設定した後に、別の値に変更できますか?
 

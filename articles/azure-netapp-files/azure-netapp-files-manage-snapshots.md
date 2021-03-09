@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 02/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 35fce3723e92a3a7c68aaa62b28b756432182a8c
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4d992bcc202dc8bdacdda6426371df1adb1ec3e6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629665"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379116"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files を使用して、スナップショットを管理する
 
@@ -187,7 +187,9 @@ Azure NetApp Files では、オンデマンドのスナップショットの作�
 
 マウントされたボリュームには、クライアントからアクセス可能な `.snapshot` (NFS クライアントの場合) または`~snapshot` (SMB クライアントの場合) という名前のスナップショットディレクトリが含まれています。 スナップショット ディレクトリには、ボリュームのスナップショットに対応するサブディレクトリが含まれています。 各サブディレクトリには、スナップショットのファイルが含まれます。 ファイルを誤って削除または上書きした場合、ファイルをスナップショットのサブディレクトリから読み取り/書き込みディレクトリにコピーすることで、ファイルを親の読み取り/書き込みディレクトリに復元できます。 
 
-スナップショット ディレクトリが表示されない場合は、[スナップショット パスを非表示にする] オプションが現在有効になっているため、非表示になっている可能性があります。 [[スナップショット パスを非表示にする]](#edit-the-hide-snapshot-path-option) オプションを編集して無効にすることができます。  
+[[スナップショット パスを非表示にする] オプション](#edit-the-hide-snapshot-path-option)を使用することで、スナップショット ディレクトリへのアクセスを制御できます。 このオプションによって、ディレクトリをクライアントに対して非表示にするかどうかが制御されます。 したがって、スナップショット内のファイルとフォルダーへのアクセスも制御されます。  
+
+NFSv4.1 では `.snapshot` ディレクトリ (`ls -la`) は表示されません。 しかし、[スナップショット パスを非表示にする] オプションが設定されていないときは、クライアントのコマンド ラインから `cd <snapshot-path>` コマンドを使用して NFSv4.1 経由で `.snapshot` ディレクトリにアクセスできます。 
 
 ### <a name="restore-a-file-by-using-a-linux-nfs-client"></a>Linux NFS クライアントを使用してファイルを復元する 
 

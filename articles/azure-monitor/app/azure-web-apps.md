@@ -4,16 +4,16 @@ description: Azure App Services のアプリケーション パフォーマン�
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: c0ee68659f4729ed8f63b9ea990343adf51513bd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7661066bc2666070c8b3ed9263b1223c09d6c720
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186373"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734725"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
-[Azure App Services](../../app-service/index.yml) 上で実行されているご利用の ASP.NET および ASP.NET Core ベースの Web アプリケーションで、これまでよりも簡単に監視を有効にすることができるようになりました。 以前は手動でサイト拡張機能をインストールする必要がありましたが、最新の拡張機能/エージェントが既定でアプリ サービス イメージに組み込まれました。 この記事では、Application Insights の監視を有効にする手順を説明し、大規模なデプロイ プロセスを自動化する準備となるガイダンスを提供します。
+[Azure App Services](../../app-service/index.yml) 上で実行されている ASP.NET、ASP.NET Core、Node.js ベースの Web アプリケーションで、これまでよりも簡単に監視を有効にすることができるようになりました。 以前は手動でサイト拡張機能をインストールする必要がありましたが、最新の拡張機能/エージェントが既定でアプリ サービス イメージに組み込まれました。 この記事では、Application Insights の監視を有効にする手順を説明し、大規模なデプロイ プロセスを自動化する準備となるガイダンスを提供します。
 
 > [!NOTE]
 > **[開発ツール]**  >  **[拡張機能]** を使用して Application Insights のサイト拡張機能を手動で追加することは、非推奨になりました。 この拡張機能のインストール方法は、新しい各バージョンの手動更新が必要でした。 拡張機能の最新の安定版リリースが、App Service イメージの一部として[プレインストール](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)されるようになりました。 これらのファイルは `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` にあり、安定版リリースごとに自動的に更新されます。 以下の監視を有効にするエージェント ベースの手順を実行すると、非推奨の拡張機能は自動的に削除されます。
@@ -75,7 +75,8 @@ Azure App Services がホストするアプリケーションについてアプ�
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
-次のバージョンの ASP.NET Core がサポートされます。ASP.NET Core 2.1、ASP.NET Core 2.2、ASP.NET Core 3.0、ASP.NET Core 3.1
+> [!IMPORTANT]
+> 次のバージョンの ASP.NET Core がサポートされます。ASP.NET Core 2.1 および 3.1。 バージョン 2.0、2.2、3.0 は廃止され、サポートされなくなりました。 自動インストルメンテーションを機能させるには、[サポートされているバージョン](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)の .NET Core にアップグレードしてください。
 
 現時点では、ASP.NET Core の完全なフレームワーク、自己完結型のデプロイ、および Linux ベースのアプリケーションをターゲットにすることは、エージェント/拡張機能ベースの監視では **サポートされていません**。 (コードによる[手動インストルメンテーション](./asp-net-core.md)は、上記のすべてのシナリオで機能します)。
 
@@ -90,13 +91,13 @@ Azure App Services がホストするアプリケーションについてアプ�
 
      ![Web アプリをインストルメント化する](./media/azure-web-apps/create-resource-01.png)
 
-2. 使用するリソースを指定した後、アプリケーションのプラットフォームごとのデータを Application Insights でどのように収集するかを選択できます。 ASP.NET Core では、ASP.NET Core 2.1、2.2、3.0 および 3.1 の場合、 **[Recommended collection (推奨収集)]** または **[Disabled (無効)]** が提供されます。
+2. 使用するリソースを指定した後、アプリケーションのプラットフォームごとのデータを Application Insights でどのように収集するかを選択できます。 ASP.NET Core では、ASP.NET Core 2.1 および 3.1 の場合、 **[Recommended collection (推奨収集)]** または **[Disabled (無効)]** が提供されます。
 
     ![プラットフォームごとのオプションを選択する](./media/azure-web-apps/choose-options-new-net-core.png)
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-**[Settings]\(設定\)**  >  **[select Application Insights]\(Application Insights の選択\)**  >  **[Enable]\(有効化\)** の App Service の Web アプリで選択します。 Node.js エージェント ベースの監視は、現在プレビューの段階です。
+Windows エージェント ベースの監視はサポートされていません。Linux で有効にするには、[Node.js App Service のドキュメント](../../app-service/configure-language-nodejs.md?pivots=platform-linux#monitor-with-application-insights)を参照してください。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -169,6 +170,7 @@ Application Insights を使用したテレメトリの収集を有効にする�
 |XDT_MicrosoftApplicationInsights_Mode |  既定モードのみ、最適なパフォーマンスを保証するため重要な機能が有効になります。 | `default` または `recommended`。 |
 |InstrumentationEngine_EXTENSION_VERSION | バイナリ再書き込みエンジン `InstrumentationEngine` がオンにされるかどうかを制御します。 この設定は、パフォーマンスに影響し、コールド スタート/起動時間に影響を与えます。 | `~1` |
 |XDT_MicrosoftApplicationInsights_BaseExtensions | SQL と Azure テーブル テキストが依存関係呼び出しと共にキャプチャされるかどうかを制御します。 パフォーマンスの警告: アプリケーションのコールド スタートアップ時間が影響を受けます。 この設定には `InstrumentationEngine` が必要です。 | `~1` |
+|XDT_MicrosoftApplicationInsights_PreemptSdk | ASP.NET Core アプリの場合のみ。 Application Insights SDK で相互運用を有効にします。 拡張機能を SDK とサイドバイサイドで読み込み、それを使用してテレメトリを送信します (Application Insights SDK を無効にします)。 |`1`|
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>Azure Resource Manager を使用した App Service のアプリケーション設定
 
@@ -420,6 +422,12 @@ Azure App Services Web アプリで ASP.NET または ASP.NET Core に対する�
 
 コード不要の監視を使用している場合は、接続文字列のみが必要です。 ただし、手動のインストルメンテーションを実行する場合は、SDK の以前のバージョンとの下位互換性を維持するためにインストルメンテーション キーを設定することをお勧めします。
 
+### <a name="difference-between-standard-metrics-from-application-insights-vs-azure-app-service-metrics"></a>Application Insights の標準メトリックと Azure App Service メトリックの違い
+
+Application Insights では、アプリケーションに対して行われた要求のテレメトリを収集します。 WebApps/IIS でエラーが発生し、要求がユーザー アプリケーションに到達しなかった場合、Application Insights にはそれに関するテレメトリがありません。
+
+Application Insights によって計算された `serverresponsetime` の期間は、必ずしも Web Apps によって監視されているサーバーの応答時間と一致しません。 これは、Application Insights では、要求がユーザー アプリケーションに実際に到達した場合の期間のみがカウントされるためです。 IIS で要求が停止しているか、キューに入れられた場合、その待機時間は Web Apps のメトリックに含まれますが、Application Insights のメトリックには含まれません。
+
 ## <a name="release-notes"></a>リリース ノート
 
 最新の更新プログラムとバグ修正については、[リリース ノートを参照してください](./web-app-extension-release-notes.md)。
@@ -427,8 +435,8 @@ Azure App Services Web アプリで ASP.NET または ASP.NET Core に対する�
 ## <a name="next-steps"></a>次のステップ
 * [実行中のアプリに対してプロファイラーを実行](./profiler.md)します。
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - Application Insights で Azure Functions を監視する
-* [Azure Diagnostics](../platform/diagnostics-extension-to-application-insights.md) が Application Insights に送信されるように設定します。
-* [サービスの正常性メトリックを監視](../platform/data-platform.md)して、サービスの可用性と応答性を確認します。
-* 操作イベントが発生したり、メトリックがしきい値を超えたりするたびに、[アラート通知を受け取り](../platform/alerts-overview.md)ます。
+* [Azure Diagnostics](../agents/diagnostics-extension-to-application-insights.md) が Application Insights に送信されるように設定します。
+* [サービスの正常性メトリックを監視](../data-platform.md)して、サービスの可用性と応答性を確認します。
+* 操作イベントが発生したり、メトリックがしきい値を超えたりするたびに、[アラート通知を受け取り](../alerts/alerts-overview.md)ます。
 * [JavaScript のアプリや Web ページに Application Insights](javascript.md) を使用して、Web ページを参照しているブラウザーからクライアント テレメトリを取得します。
 * [可用性 Web テストを設定](monitor-web-app-availability.md) して、サイトがダウンした場合にアラートを送信するようにします。

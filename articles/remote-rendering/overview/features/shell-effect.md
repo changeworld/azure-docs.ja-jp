@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 10/23/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f59c4f8225d31b61df08f30863c8b9300e20e820
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 7af95cba807cea340438a7de30f096758d0369ad
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447321"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594165"
 ---
 # <a name="shell-rendering"></a>シェル レンダリング
 
@@ -42,18 +42,18 @@ ms.locfileid: "94447321"
 次のコードは、API を使用した `ShellRenderingSettings` 状態の使用例を示しています。
 
 ```cs
-void SetShellSettings(AzureSession session)
+void SetShellSettings(RenderingSession session)
 {
-    ShellRenderingSettings shellRenderingSettings = session.Actions.ShellRenderingSettings;
+    ShellRenderingSettings shellRenderingSettings = session.Connection.ShellRenderingSettings;
     shellRenderingSettings.Desaturation = 0.5f;
     shellRenderingSettings.Opacity = 0.1f;
 }
 ```
 
 ```cpp
-void SetShellSettings(ApiHandle<AzureSession> session)
+void SetShellSettings(ApiHandle<RenderingSession> session)
 {
-    ApiHandle<ShellRenderingSettings> shellRenderingSettings = session->Actions()->GetShellRenderingSettings();
+    ApiHandle<ShellRenderingSettings> shellRenderingSettings = session->Connection()->GetShellRenderingSettings();
     shellRenderingSettings->SetDesaturation(0.5f);
     shellRenderingSettings->SetOpacity(0.1f);
 }

@@ -3,18 +3,18 @@ title: 'ML Studio (classic): データのエクスポートと削除 - Azure'
 description: Azure Machine Learning Studio (クラシック) によって格納された製品内データは、Azure portal 経由のほか、認証済み REST API 経由でもエクスポートおよび削除できます。 テレメトリ データには、Azure Privacy Portal を介してアクセスすることができます。 この記事では、その方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 550603b9315c1abaa025aac804afc4fe674159d2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b2d797cc6cb45a76a61a235e7c4c66ac6f243580
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310014"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519866"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) から製品内ユーザー データをエクスポートおよび削除する
 

@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: 1485adc1407720343c27e07c2d2f4a13ba037a90
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ad83ef0f3f4c0717a3cb669c34145572d44be09a
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511372"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99616274"
 ---
 ## <a name="model-id-announcement"></a>モデル ID のアナウンス
 
@@ -25,6 +25,9 @@ iothubResult = IoTHubDeviceClient_LL_SetOption(
 
 > [!TIP]
 > モジュールと IoT Edge には、`IoTHubDeviceClient_LL` ではなく `IoTHubModuleClient_LL` を使用します。
+
+> [!TIP]
+> デバイスでモデル ID を設定できるのは、このときだけです。デバイスを接続した後に更新することはできません。
 
 ## <a name="dps-payload"></a>DPS ペイロード
 

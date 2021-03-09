@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: オンプレミス、OCR、Docker、コンテナー
-ms.openlocfilehash: a9eae2e547b347c88f8e745742ed34194c37a3b2
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 93d59e78241dcc94785ca139818d72908c7184a4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862486"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043917"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Read OCR Docker コンテナー (プレビュー) をインストールする 
 
@@ -32,17 +32,17 @@ ms.locfileid: "97862486"
 > [!NOTE]
 > Read 3.0-preview コンテナーは非推奨となりました。 
 
-Read 3.2-preview コンテナーは、次のものを備えています。
+Read 3.2-preview OCR コンテナーは、次のものを備えています。
 * 精度の向上のための新しいモデル。
-* 同じドキュメント内での複数言語のサポート
-* サポート対象:オランダ語、英語、フランス語、ドイツ語、イタリア語、ポルトガル語、およびスペイン語。
+* 同じドキュメント内での複数言語のサポート。
+* 合計 73 言語のサポート。 [OCR でサポートされている言語](./language-support.md#optical-character-recognition-ocr)の完全な一覧を参照してください。
 * ドキュメントとイメージの両方に対する 1 つの操作。
 * 大きなドキュメントとイメージのサポート。
-* 0 から 1 までの信頼度スコア。
-* 印刷および手書きの両方のテキストを含むドキュメントのサポート
-* 簡体字中国語と日本語のサポート。
-* 印刷および手書きのテキストに対する信頼スコアとラベル。 
+* 信頼度スコア。
+* 印刷および手書きの両方のテキストを含むドキュメントのサポート。
 * ドキュメント内の選択したページからのみテキストを抽出する機能。
+* テキスト行の出力順序の既定からより自然な読み取り順序への選択 (ラテン語系の言語のみ)。
+* 手書きスタイルとしての、またはラテン言語に対してのみでないテキスト行の分類。
 
 現時点で Read 2.0 コンテナーを使用している場合は、 [移行ガイド](read-container-migration-guide.md)に関する記事を参照して、新しいバージョンの変更点を確認してください。
 
@@ -92,7 +92,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 | コンテナー | コンテナー レジストリ / リポジトリ / イメージ名 |
 |-----------|------------|
 | Read 2.0-preview | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Read 3.2-プレビュー | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1` |
+| Read 3.2-プレビュー | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2` |
 
 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、コンテナー イメージをダウンロードします。
 
@@ -101,7 +101,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 # <a name="version-32-preview"></a>[Version 3.2-preview](#tab/version-3-2)
 
 ```bash
-docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1
+docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2
 ```
 
 # <a name="version-20-preview"></a>[Version 2.0-preview](#tab/version-2)
@@ -131,7 +131,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -207,7 +207,7 @@ ApiKey={API_KEY}
 Computer Vision サービスで該当する REST 操作を使用する方法と同じように、`POST /vision/v3.2/read/analyze` 操作と `GET /vision/v3.2/read/operations/{operationId}` 操作を同時に使用して、画像を非同期に読み取ることができます。 非同期 POST メソッドでは、HTTP GET 要求に対する識別子として使用される `operationId` が返されます。
 
 
-Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開します。 次に、 **[Try it out]\(使ってみる\)**  >  **[Choose file]\(ファイルの選択\)** を選択します。 この例では、次の画像を使用します。
+Swagger UI で `Analyze` を選択し、ブラウザーで展開します。 次に、 **[Try it out]\(試してみる\)**  >  **[Choose file]\(ファイルの選択\)** を選択します。 この例では、次の画像を使用します。
 
 ![タブとスペース](media/tabs-vs-spaces.png)
 
@@ -225,51 +225,99 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 ```json
 {
   "status": "succeeded",
-  "createdDateTime": "2020-09-02T10:30:14Z",
-  "lastUpdatedDateTime": "2020-09-02T10:30:15Z",
+  "createdDateTime": "2021-02-04T06:32:08.2752706+00:00",
+  "lastUpdatedDateTime": "2021-02-04T06:32:08.7706172+00:00",
   "analyzeResult": {
     "version": "3.2.0",
     "readResults": [
       {
         "page": 1,
-        "angle": 2.12,
+        "angle": 2.1243,
         "width": 502,
         "height": 252,
         "unit": "pixel",
-        "language": "",
         "lines": [
           {
-            "boundingBox": [58, 42, 314, 59, 311, 123, 56, 121],
+            "boundingBox": [
+              58,
+              42,
+              314,
+              59,
+              311,
+              123,
+              56,
+              121
+            ],
             "text": "Tabs vs",
             "appearance": {
-              "style": "handwriting",
-              "styleConfidence": 0.999
+              "style": {
+                "name": "handwriting",
+                "confidence": 0.96
+              }
             },
             "words": [
               {
-                "boundingBox": [85, 45, 242, 62, 241, 122, 83, 123],
+                "boundingBox": [
+                  68,
+                  44,
+                  225,
+                  59,
+                  224,
+                  122,
+                  66,
+                  123
+                ],
                 "text": "Tabs",
-                "confidence": 0.981
+                "confidence": 0.933
               },
               {
-                "boundingBox": [258, 64, 314, 72, 314, 123, 256, 123],
+                "boundingBox": [
+                  241,
+                  61,
+                  314,
+                  72,
+                  314,
+                  123,
+                  239,
+                  122
+                ],
                 "text": "vs",
-                "confidence": 0.958
+                "confidence": 0.977
               }
             ]
           },
           {
-            "boundingBox": [286, 171, 415, 165, 417, 197, 287, 201],
+            "boundingBox": [
+              286,
+              171,
+              415,
+              165,
+              417,
+              197,
+              287,
+              201
+            ],
             "text": "paces",
             "appearance": {
-              "style": "print",
-              "styleConfidence": 0.603
+              "style": {
+                "name": "handwriting",
+                "confidence": 0.746
+              }
             },
             "words": [
               {
-                "boundingBox": [303, 175, 415, 167, 415, 198, 306, 199],
+                "boundingBox": [
+                  286,
+                  179,
+                  404,
+                  166,
+                  405,
+                  198,
+                  290,
+                  201
+                ],
                 "text": "paces",
-                "confidence": 0.918
+                "confidence": 0.938
               }
             ]
           }
@@ -284,7 +332,7 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 
 Computer Vision サービスで該当する REST 操作を使用する方法と同じように、`POST /vision/v2.0/read/core/asyncBatchAnalyze` 操作と `GET /vision/v2.0/read/operations/{operationId}` 操作を同時に使用して、画像を非同期に読み取ることができます。 非同期 POST メソッドでは、HTTP GET 要求に対する識別子として使用される `operationId` が返されます。
 
-Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開します。 次に、 **[Try it out]\(使ってみる\)**  >  **[Choose file]\(ファイルの選択\)** を選択します。 この例では、次の画像を使用します。
+Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開します。 次に、 **[Try it out]\(試してみる\)**  >  **[Choose file]\(ファイルの選択\)** を選択します。 この例では、次の画像を使用します。
 
 ![タブとスペース](media/tabs-vs-spaces.png)
 
@@ -388,7 +436,7 @@ Cognitive Services コンテナーでは、Azure アカウントの対応する�
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-これらのオプションの詳細については、「[コンテナーの構成](./computer-vision-resource-container-config.md)」を参照してください。
+これらのオプションの詳細については、「[コンテナーの構成](./computer-vision-resource-container-config.md)」を参照してください。 
 
 ## <a name="summary"></a>まとめ
 

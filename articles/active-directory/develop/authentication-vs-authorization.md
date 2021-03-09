@@ -1,7 +1,7 @@
 ---
 title: 認証と承認 | Azure
 titleSuffix: Microsoft identity platform
-description: Microsoft ID プラットフォーム (v2.0) の認証と承認の基本について説明します。
+description: Microsoft ID プラットフォームの認証と承認の基本について説明します。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: d4abc9e1bba151f46adf71dd0185ddddad916a38
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5244a8e572abb56c00d87d0bdd7e8d1291af9b9e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216463"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581909"
 ---
 # <a name="authentication-vs-authorization"></a>認証と承認
 
@@ -34,7 +34,7 @@ ms.locfileid: "98216463"
 
 ## <a name="authentication-and-authorization-using-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームを使用した認証と承認
 
-それぞれ独自のユーザー名とパスワードの情報を保持するアプリを作成することで、複数のアプリにまたがってユーザーを追加または削除する必要があるときに管理上の負担が大きくなります。 アプリでは、代わりにその責任を一元化された ID プロバイダーに委任できます。
+それぞれ独自のユーザー名とパスワードの情報を保持するアプリを作成した場合、複数のアプリにまたがってユーザーを追加または削除するときに管理上の負担が大きくなります。 アプリでは、代わりにその責任を一元化された ID プロバイダーに委任できます。
 
 Azure Active Directory (Azure AD) は、クラウド内の一元化された ID プロバイダーです。 認証と承認をこれに委任することで、次のようなシナリオが可能になります。
 
@@ -51,7 +51,7 @@ Microsoft ID プラットフォームでは、ID をサービスとして提供�
 Microsoft ID プラットフォームで使用されるプロトコルの比較を次に示します。
 
 * **OAuth と OpenID Connect**:このプラットフォームでは、OAuth が承認に使用され、OpenID Connect (OIDC) が認証に使用されます。 OpenID Connect は OAuth 2.0 に基づいて構築されているため、これら 2 つの間では用語とフローが似ています。 さらに、(OpenID Connect を使用して) ユーザーを認証することと、(OAuth 2.0 を使用して) ユーザーが所有する保護されたリソースにアクセスするための承認を得ることを、1 回の要求で行うこともできます。 詳細については、[OAuth 2.0 と OpenID Connect プロトコル](active-directory-v2-protocols.md)および [OpenID Connect プロトコル](v2-protocols-oidc.md)に関するページを参照してください。
-* **OAuth と SAML**:このプラットフォームでは、OAuth 2.0 が承認に使用され、SAML が認証に使用されます。 これらのプロトコルを一緒に使用することで、ユーザーの認証および保護されたリソースにアクセスするための承認の取得の両方を行う方法の詳細については、「[Microsoft ID プラットフォームと OAuth 2.0 SAML ベアラー アサーション フロー](v2-saml-bearer-assertion.md)」を参照してください。
+* **OAuth と SAML**:このプラットフォームでは、OAuth 2.0 が承認に使用され、SAML が認証に使用されます。 これらのプロトコルを一緒に使用することで、ユーザーの認証および保護されたリソースにアクセスするための承認の取得の両方を行う方法の詳細については、「[Microsoft ID プラットフォームと OAuth 2.0 SAML ベアラー アサーション フロー](./scenario-token-exchange-saml-oauth.md)」を参照してください。
 * **OpenID Connect と SAML**:このプラットフォームでは OpenID Connect と SAML の両方が、ユーザーを認証し、シングル サインオンを有効にするために使用されます。 SAML 認証は一般的に、Azure AD にフェデレーションされた Active Directory フェデレーション サービス (AD FS) などの ID プロバイダーと一緒に使用されるため、エンタープライズ アプリケーションで多く使用されます。 OpenID Connect は一般的に、モバイル アプリ、Web サイト、Web API など、純粋にクラウド内にあるアプリに対して使用されます。
 
 ## <a name="next-steps"></a>次の手順

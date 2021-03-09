@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/08/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: de3ff6ead1f0dd86e07c86b992a720a676a2095c
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 81ede3506337e76c84e20203ac27a3d441fdcef8
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97837163"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522276"
 ---
 # <a name="define-global-access-control"></a>グローバル アクセス制御の定義
 
@@ -20,7 +20,7 @@ ms.locfileid: "97837163"
 
 グローバルかつ複雑なユーザー アクセス許可の需要に応えるために、事業単位、リージョン、およびサイトに基づいたグローバル ビジネス トポロジを作成できます。 その後、これらのエンティティに関してユーザー アクセス許可を定義できます。
 
-ビジネス トポロジ用のアクセス ツールを使用すると、Azure Defender for IoT プラットフォームでのユーザーによる資産の管理と分析を適切に制御できるようになり、組織がゼロ トラスト戦略を実装するのに役立ちます。
+ビジネス トポロジ用のアクセス ツールを使用すると、Azure Defender for IoT プラットフォームでのユーザーによるデバイスの管理と分析を適切に制御できるようになり、組織がゼロ トラスト戦略を実装するのに役立ちます。
 
 ## <a name="about-access-groups"></a>アクセス グループについて
 
@@ -88,6 +88,6 @@ ms.locfileid: "97837163"
 
 - 事業単位またはリージョンが選択されていない場合、ユーザーは定義されているすべての事業単位とリージョンにアクセスできます。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 [About Defender for IoT コンソール ユーザーについて](how-to-create-and-manage-users.md)

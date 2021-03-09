@@ -1,5 +1,5 @@
 ---
-title: ロールの割り当てを追加する手順 - Azure RBAC
+title: Azure ロールを割り当てる手順 - Azure RBAC
 description: Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に対して Azure ロールを割り当てる手順について説明します。
 services: active-directory
 author: rolyon
@@ -7,18 +7,18 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: e746c7d09bb568d457ab1037b56c7c2973b29ad7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 081335779ffc4b3a6ddf09e56b773c6d34b210be
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117250"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556037"
 ---
-# <a name="steps-to-add-a-role-assignment"></a>ロールの割り当てを追加する手順
+# <a name="steps-to-assign-an-azure-role"></a>Azure ロールを割り当てる手順
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] この記事では、[Azure portal](role-assignments-portal.md)、[Azure PowerShell](role-assignments-powershell.md)、[Azure CLI](role-assignments-cli.md)、または [REST API](role-assignments-rest.md)を使用して、ロールの割り当てを追加する手順の概要について説明します。
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] この記事では、[Azure portal](role-assignments-portal.md)、[Azure PowerShell](role-assignments-powershell.md)、[Azure CLI](role-assignments-cli.md)、または [REST API](role-assignments-rest.md)を使用して、Azure ロールを割り当てる手順の概要について説明します。
 
 ## <a name="step-1-determine-who-needs-access"></a>手順 1:アクセスが必要なユーザーを決定する
 
@@ -79,16 +79,16 @@ ms.locfileid: "98117250"
 
 ご自分のサブスクリプション内でロールを割り当てるためのアクセス許可がご自分のユーザー アカウントにない場合は、ご自分のアカウントが "does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' ('Microsoft.Authorization/roleAssignments/write' に対するアクションの実行を承認されていません)" というエラー メッセージが表示されます。この場合は、自分の代わりにアクセス許可を割り当てることができるサブスクリプションの管理者に連絡してください。
 
-## <a name="step-5-add-role-assignment"></a>手順 5. ロールの割り当ての追加
+## <a name="step-5-assign-role"></a>手順 5. ロールを割り当てる
 
-セキュリティ プリンシパル、ロール、およびスコープについて理解できたら、ロールを割り当てることができます。 ロールの割り当ては、Azure portal、Azure PowerShell、Azure CLI、Azure SDK、または REST API を使用して追加できます。 各サブスクリプションには、最大 **2,000** 個のロールの割り当てを保持できます。 この制限には、サブスクリプション、リソース グループ、およびリソースのスコープでのロールの割り当てが含まれます。 各管理グループには、最大 **500** 個のロールの割り当てを保持できます。
+セキュリティ プリンシパル、ロール、およびスコープについて理解できたら、ロールを割り当てることができます。 ロールは Azure portal、Azure PowerShell、Azure CLI、Azure SDK、または REST API を使用して割り当てることができます。 各サブスクリプションには、最大 **2,000** 個のロールの割り当てを保持できます。 この制限には、サブスクリプション、リソース グループ、およびリソースのスコープでのロールの割り当てが含まれます。 各管理グループには、最大 **500** 個のロールの割り当てを保持できます。
 
-ロールの割り当てを追加する方法の詳細な手順については、次の記事をご覧ください。
+ロールを割り当てる方法の詳細な手順については、次の記事をご覧ください。
 
-- [Azure portal を使用して Azure ロールの割り当てを追加または削除する](role-assignments-portal.md)
-- [Azure PowerShell を使用して Azure でのロールの割り当てを追加または削除する](role-assignments-powershell.md)
-- [Azure CLI を使用して Azure ロールの割り当てを追加または削除する](role-assignments-cli.md)
-- [REST API を使用して Azure ロールの割り当てを追加または削除する](role-assignments-rest.md)
+- [Azure portal を使用して Azure ロールを割り当てる](role-assignments-portal.md)
+- [Azure PowerShell を使用して Azure ロールを割り当てる](role-assignments-powershell.md)
+- [Azure CLI を使用して Azure ロールを割り当てる](role-assignments-cli.md)
+- [REST API を使用して Azure ロールを割り当てる](role-assignments-rest.md)
 
 ## <a name="next-steps"></a>次のステップ
 

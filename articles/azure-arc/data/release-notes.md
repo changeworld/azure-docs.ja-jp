@@ -7,18 +7,64 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 12/09/2020
+ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2c9b239269aa00255aa08d6c233cd7978b253d94
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: d3eb4e4b45a13872a11515dd4f53fcbbc069a954
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653573"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686684"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>リリースノート - Azure Arc 対応データ サービス (プレビュー)
 
+この記事では、Azure Arc 対応データ サービスで最近リリースされた、または強化された機能と機能強化について説明します。 
+
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="new-capabilities-and-features"></a>新機能
+
+Azure データ CLI (`azdata`) バージョン番号: 20.3.1。 [https://aka.ms/azdata](https://aka.ms/azdata) でダウンロードします。 `azdata` は、「[Azure Data CLI (`azdata`) のインストール](/sql/azdata/install/deploy-install-azdata)」に従ってインストールできます。
+
+追加の更新プログラムには以下が含まれます。
+
+- Azure Arc 対応 SQL Managed Instance
+   - Always On 可用性グループによる高可用性
+
+- Azure Arc 対応 PostgreSQL Hyperscale Azure Data Studio: 
+   - 概要ページに、ノードごとのサーバー グループの状態が表示されるようになりました
+   - 新しいプロパティ ページを使用してサーバー グループに関する詳細を表示できるようになりました
+   - **[ノード パラメーター]** ページから Postgres エンジン パラメーターを構成します
+
+このリリースに関連する問題については、「[既知の問題 - Azure Arc 対応データ サービス (プレビュー)](known-issues.md)」を参照してください
+
+## <a name="january-2021"></a>2021 年 1 月
+
+### <a name="new-capabilities-and-features"></a>新機能
+
+Azure データ CLI (`azdata`) バージョン番号:20.3.0。 [https://aka.ms/azdata](https://aka.ms/azdata) でダウンロードします。 `azdata` は、「[Azure Data CLI (`azdata`) のインストール](/sql/azdata/install/deploy-install-azdata)」に従ってインストールできます。
+
+追加の更新プログラムには以下が含まれます。
+- 17 の新しい言語で使用できるローカライズされたポータル
+- Kube ネイティブの .yaml ファイルに対する軽微な変更
+- 新しいバージョンの Grafana と Kibana
+- Azure Data Studio のノートブックで azdata を使用する場合の Python 環境に関する問題が解決されました
+- pg_audit 拡張機能を PostgreSQL Hyperscale で使用できるようになりました
+- PostgreSQL Hyperscale データベースの完全復元を実行する場合、バックアップ ID は不要になりました
+- サーバー グループを構成する PostgreSQL インスタンスごとに状態 (正常性状態) が報告されます
+
+   以前のリリースでは、状態はサーバー グループ レベルで集計され、PostgreSQL ノード レベルでは項目別にまとめられませんでした。
+
+- PostgreSQL のデプロイでは、create コマンドに指定されたボリューム サイズのパラメーターが受け入れられるようになりました
+- サーバー グループを編集するときに、エンジンのバージョン パラメーターが受け入れられるようになりました
+- Azure Arc 対応 PostgreSQL Hyperscale のポッドの名前付け規則が変更されました
+
+    現在は `ServergroupName{c, w}-n` の形式になっています。 たとえば、3 つのノード (1 つのコーディネーター ノードと 2 つのワーカー ノード) を持つサーバー グループは次のように表されます。
+   - `Postgres01c-0` (コーディネーター ノード)
+   - `Postgres01w-0` (ワーカー ノード)
+   - `Postgres01w-1` (ワーカー ノード)
 
 ## <a name="december-2020"></a>2020 年 12 月
 

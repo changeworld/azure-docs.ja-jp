@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: 6ffb6ced6fc828733dd627943a3d4b54e8293ad2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3ddc385b9d489e0c2ab4abf35a6ade011970342b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791904"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572954"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>SIEM、SOAR、または IT サービス管理ソリューションにアラートをストリーミングする
 
@@ -57,28 +57,28 @@ Azure Sentinel で Security Center アラートを調査する別の方法とし
 
 Security Center は、Microsoft Graph Security API とすぐに統合できます。 構成は不要であり、追加のコストは発生しません。 
 
-この API を使用して、 **テナント全体** (およびその他の多くの Microsoft セキュリティ製品のデータ) から、サードパーティ製の SIEM と その他の一般的なプラットフォームにアラートをストリーミングできます。
+この API を使用して、**テナント全体** (およびその他の多くの Microsoft セキュリティ製品のデータ) から、サードパーティ製の SIEM と その他の一般的なプラットフォームにアラートをストリーミングできます。
 
 - **Splunk Enterprise と Splunk Cloud** - [Splunk 用の Microsoft Graph Security API アドオンを使用します](https://splunkbase.splunk.com/app/4564/) 
 - **Power BI** - [Power BI Desktop で Microsoft Graph Security API に接続します](/power-bi/connect-data/desktop-connect-graph-security)
 - **ServiceNow** - [ServiceNow Store から Microsoft Graph Security API アプリケーションをインストールして構成する手順に従います](https://docs.servicenow.com/bundle/orlando-security-management/page/product/secops-integration-sir/secops-integration-ms-graph/task/ms-graph-install.html)
 - **QRadar** - [Microsoft Graph API を介した Azure Security Center 用の IBM のデバイス サポート モジュール](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/c_dsm_guide_ms_azure_security_center_overview.html) 
-- **Palo Alto Networks** 、 **Anomali** 、 **Lookout** 、 **InSpark** など - [Microsoft Graph Security API](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji)
+- **Palo Alto Networks**、**Anomali**、**Lookout**、**InSpark** など - [Microsoft Graph Security API](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji)
 
 [Microsoft Graph Security API の詳細](https://www.microsoft.com/security/business/graph-security-api)。
 
 
 ## <a name="stream-alerts-with-azure-monitor"></a>Azure Monitor を使用してアラートをストリーミングする 
 
-**ArcSight** 、 **Splunk** 、 **SumoLogic** 、Syslog servers、 **LogRhythm** 、 **Logz.io Cloud Observability Platform** 、およびその他の監視ソリューションにアラートをストリーミングするには、 Azure Event Hubs 経由で Security Center を Azure Monitor に接続します。
+**ArcSight**、**Splunk**、**SumoLogic**、Syslog servers、**LogRhythm**、**Logz.io Cloud Observability Platform**、およびその他の監視ソリューションにアラートをストリーミングするには、 Azure Event Hubs 経由で Security Center を Azure Monitor に接続します。
 
 1. サブスクリプション レベルで Security Center アラートを専用の Azure イベント ハブにストリーミングするために、[連続エクスポート](continuous-export.md)を有効にします。 
     > [!TIP]
     > Azure Policy を使用して管理グループ レベルでこれを行うには、「[連続エクスポートの自動化の構成を大規模に作成する](continuous-export.md?tabs=azure-policy#configure-continuous-export-at-scale-using-the-supplied-policies)」を参照してください。
 
-1. [Azure Monitor の組み込みコネクタを使用して、Azure イベント ハブを任意のソリューションに接続します](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)。
+1. [Azure Monitor の組み込みコネクタを使用して、Azure イベント ハブを任意のソリューションに接続します](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)。
 
-1. 必要に応じて、未加工のログを Azure イベント ハブにストリーミングし、任意のソリューションに接続します。 「[使用可能なデータの監視](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#monitoring-data-available)」で詳細を確認してください。
+1. 必要に応じて、未加工のログを Azure イベント ハブにストリーミングし、任意のソリューションに接続します。 「[使用可能なデータの監視](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md#monitoring-data-available)」で詳細を確認してください。
 
 > [!TIP]
 > エクスポートされたデータ型のイベント スキーマを表示するには、[イベント ハブのイベント スキーマ](https://aka.ms/ASCAutomationSchemas)にアクセスします。

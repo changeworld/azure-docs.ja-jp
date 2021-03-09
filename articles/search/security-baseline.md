@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f393c5df23b9552f598e05d25aaf09e529324abe
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 4f54eab9616aa014e6f3a59b5c79e268450ecfce
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201996"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668352"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>Azure Cognitive Search の Azure セキュリティ ベースライン
 
@@ -171,7 +171,7 @@ Azure PowerShell または Azure CLI を使用すると、タグに基づいた�
 
 - [Azure Monitor とサードパーティの SIEM 統合を開始する方法](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -185,7 +185,7 @@ Azure PowerShell または Azure CLI を使用すると、タグに基づいた�
 
 - [Azure Cognitive Search のログ データを収集して分析する方法](./search-monitor-logs.md)
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md) 
 
 **Azure Security Center の監視**: はい
 
@@ -205,9 +205,9 @@ Azure PowerShell または Azure CLI を使用すると、タグに基づいた�
 
 Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期およびアーカイブ ストレージには Azure Storage アカウントを使用します。 
 
-- [Log Analytics でデータ保持期間を変更する](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure Security Center の監視**: はい
 
@@ -223,9 +223,9 @@ Azure Monitor 内で、組織のコンプライアンス規則に従って Log A
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics の詳細情報](../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics の詳細情報](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -239,7 +239,7 @@ Azure Monitor 内で、組織のコンプライアンス規則に従って Log A
 
 - [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -495,7 +495,7 @@ Microsoft では、基になるプラットフォームを管理し、顧客の�
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
 **ガイダンス**:サービスの管理については、Azure のロールベースのアクセス制御 (Azure RBAC) を使用してキーと構成へのアクセスを管理します。 インデックス作成やクエリなどのコンテンツ操作については、Cognitive Search では ID ベースのアクセス制御モデルの代わりにキーを使用します。 Azure RBAC を使用してキーへのアクセスを制御します。
-- [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md) 
+- [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md) 
 
  
 - [Cognitive Search に対する管理アクセス用のロールを使用する方法](./search-security-rbac.md)
@@ -532,7 +532,7 @@ Microsoft では、Cognitive Search 用の基になるインフラストラク�
 
 **ガイダンス**:Cognitive Search の運用インスタンスやその他の重要または関連リソースに変更が発生したときにアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Cognitive Search アクティビティのアラートを作成する方法](./search-monitor-logs.md)
 

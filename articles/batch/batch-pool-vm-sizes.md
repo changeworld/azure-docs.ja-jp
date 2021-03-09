@@ -4,12 +4,12 @@ description: Azure Batch プールのコンピューティング ノード用に
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8bb54a4db62f56f442f7cec81e6768241a05ffee
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: de1f61bb2bdc83377887fda726a65c1900f36d55
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895232"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576703"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズとイメージを選択する
 
@@ -29,46 +29,44 @@ Batch プールの VM サイズを選択するには、次のような例外と�
 | VM シリーズ  | サポートされるサイズ |
 |------------|---------|
 | Basic A | Basic_A0 (A0) を *除く* すべてのサイズ |
-| A | Standard_A0 を *除く* すべてのサイズ |
+| A | Standard_A0、Standard_A8、Standard_A9、Standard_A10、Standard_A11 を *除く* すべてのサイズ |
 | Av2 | すべてのサイズ |
 | B | サポートされていません |
 | DC | サポートされていません |
 | Dv2、DSv2 | すべてのサイズ |
 | Dv3、Dsv3 | すべてのサイズ |
-| Dav4<sup>1</sup> | すべてのサイズ |
-| Dasv4<sup>1</sup> | すべてのサイズ |
+| Dav4 | すべてのサイズ |
+| Dasv4 | すべてのサイズ |
 | Ddv4、Ddsv4 |  すべてのサイズ |
 | Dv4、Dsv4 | サポートされていません |
 | Ev3、Esv3 | E64is_v3 を除くすべてのサイズ |
-| Eav4<sup>1</sup> | すべてのサイズ |
-| Easv4<sup>1</sup> | すべてのサイズ |
+| Eav4 | すべてのサイズ |
+| Easv4 | すべてのサイズ |
 | Edv4、Edsv4 |  すべてのサイズ |
 | Ev4、Esv4 | サポートされていません |
 | F、Fs | すべてのサイズ |
 | Fsv2 | すべてのサイズ |
 | G、Gs | すべてのサイズ |
 | H | すべてのサイズ |
-| HB<sup>1</sup> | すべてのサイズ |
-| HBv2<sup>1</sup> | すべてのサイズ |
-| HC<sup>1</sup> | すべてのサイズ |
+| HB | すべてのサイズ |
+| HBv2 | すべてのサイズ |
+| HC | すべてのサイズ |
 | Ls | すべてのサイズ |
-| Lsv2<sup>1</sup> | すべてのサイズ |
-| M<sup>1</sup> | すべてのサイズ |
-| Mv2<sup>1、2</sup> | すべてのサイズ |
+| Lsv2 | すべてのサイズ |
+| M | すべてのサイズ |
+| Mv2<sup>1</sup> | すべてのサイズ |
 | NC | すべてのサイズ |
-| NCv2<sup>1</sup> | すべてのサイズ |
-| NCv3<sup>1</sup> | すべてのサイズ |
+| NCv2 | すべてのサイズ |
+| NCv3 | すべてのサイズ |
 | NCasT4_v3 | なし - まだ使用できません |
-| ND<sup>1</sup> | すべてのサイズ |
-| NDv2<sup>1</sup> | なし - まだ使用できません |
+| ND | すべてのサイズ |
+| NDv2 | なし - まだ使用できません |
 | NV | すべてのサイズ |
-| NVv3<sup>1</sup> | すべてのサイズ |
-| NVv4<sup>1</sup> | すべてのサイズ |
+| NVv3 | すべてのサイズ |
+| NVv4 | すべてのサイズ |
 | SAP HANA | サポートされていません |
 
-<sup>1</sup> これらの VM シリーズは仮想マシン構成の Batch プールに割り当てることができますが、新しい Batch アカウントを作成し、特定の[クォータ引き上げ](batch-quota-limit.md#increase-a-quota)を要求する必要があります。 この制限は、VM シリーズごとの vCPU クォータが Batch アカウントで完全にサポートされると削除されます。
-
-<sup>2</sup> これらの VM シリーズは第 2 世代の VM イメージでのみ使用できます。
+<sup>1</sup> これらの VM シリーズは第 2 世代の VM イメージでのみ使用できます。
 
 ### <a name="using-generation-2-vm-images"></a>第 2 世代 VM イメージの使用
 

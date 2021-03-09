@@ -5,18 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 03/04/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aef4ff77eb02723bcd95dcc99a55094bd10acd4c
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: df867059a7d4020952f71ca8d663a644ee2428fd
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355479"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199630"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B コラボレーションの招待の利用
 
@@ -26,23 +25,22 @@ ms.locfileid: "97355479"
 
    > [!IMPORTANT]
    > - **2021 年 1 月 4 日以降**、Google は [WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 Gmail で Google フェデレーションまたはセルフサービス サインアップを使用している場合は、[基幹業務ネイティブ アプリケーションの互換性をテストする](google-federation.md#deprecation-of-webview-sign-in-support)必要があります。
-   > - **2021 年 3 月 31 日以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
+   > - **2021 年 10 月以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
 
-## <a name="redemption-through-the-invitation-email"></a>招待メールによる利用
+## <a name="redemption-and-sign-in-through-a-common-endpoint"></a>共通のエンドポイントを使用した引き換えとサインイン
 
-[Azure portal](./b2b-quickstart-add-guest-users-portal.md) を使用してディレクトリにゲスト ユーザーを追加すると、そのプロセスで招待メールがゲストに送信されます。 ゲスト ユーザーをディレクトリに追加するために [PowerShell を使用する](./b2b-quickstart-invite-powershell.md)際に、招待メールを送信するように選択することもできます。 以下は、メールのリンクを利用する場合のゲストのエクスペリエンスの説明です。
+ゲスト ユーザーは、`https://myapps.microsoft.com` のような共通のエンドポイント (URL) を介して、マルチテナント アプリまたは Microsoft のファーストパーティ アプリにサインインできるようになりました。 これまで、ゲスト ユーザーは認証のために共通 URL によって、リソース テナントではなくホーム テナントにリダイレクトされていたため、テナント固有のリンク (例: `https://myapps.microsoft.com/?tenantid=<tenant id>`) が必要でした。 現在、ゲスト ユーザーはアプリケーションの共通 URL にアクセスして、 **[サインイン オプション]** を選択し、 **[Sign in to an organization]\(組織にサインイン\)** を選択できます。 次に、ユーザーは組織の名前を入力します。
 
-1. ゲストは、**Microsoft Invitations** から送信される [招待メール](./invitation-email-elements.md)を受け取ります。
-2. ゲストは、電子メールで **[招待の承諾]** を選択します。
-3. ゲストは、自分の資格情報を使用してディレクトリにサインインします。 ゲストがディレクトリにフェデレーションできるアカウントを持っておらず、[電子メール ワンタイム パスコード (OTP)](./one-time-passcode.md) 機能が有効になっていない場合、ゲストは個人用 [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) または [Azure AD セルフサービス アカウント](../enterprise-users/directory-self-service-signup.md)を作成するように求められます。 詳細については、「[招待の引き換えフロー](#invitation-redemption-flow)」を参照してください。
-4. ゲストには、以下に説明されている[同意エクスペリエンス](#consent-experience-for-the-guest)が示されます。
+![共通のエンドポイントへのサインイン](media/redemption-experience/common-endpoint-flow-small.png)
+
+その後、ユーザーはテナント エンドポイントにリダイレクトされます。このエンドポイントでは、メール アドレスを使用してサインインするか、構成済みの ID プロバイダーを選択することができます。
 
 ## <a name="redemption-through-a-direct-link"></a>直接リンクによる利用
 
-招待メールの代わりに、アプリまたはポータルへの直接リンクをゲストに提供することができます。 まず、[Azure portal](./b2b-quickstart-add-guest-users-portal.md) または [PowerShell](./b2b-quickstart-invite-powershell.md) を介して、ゲスト ユーザーをディレクトリに追加する必要があります。 その後、直接サインオン リンクを含む、[ユーザーにアプリケーションをデプロイするためのカスタマイズ可能な方法](../manage-apps/end-user-experiences.md)のいずれかを使用できます。 ゲストには、招待メールではなく直接リンクを使用する際にも、初回の同意エクスペリエンスが示されます。
+招待メールまたはアプリケーションの共通 URL の代わりに、アプリまたはポータルへの直接リンクをゲストに提供することができます。 まず、[Azure portal](./b2b-quickstart-add-guest-users-portal.md) または [PowerShell](./b2b-quickstart-invite-powershell.md) を介して、ゲスト ユーザーをディレクトリに追加する必要があります。 その後、直接サインオン リンクを含む、[ユーザーにアプリケーションをデプロイするためのカスタマイズ可能な方法](../manage-apps/end-user-experiences.md)のいずれかを使用できます。 ゲストには、招待メールではなく直接リンクを使用する際にも、初回の同意エクスペリエンスが示されます。
 
-> [!IMPORTANT]
-> 直接リンクはテナントに固有である必要があります。 つまり、共有アプリが配置されている、テナントでゲストを認証できるように、テナント ID または確認済みドメインが含まれている必要があります。 https://myapps.microsoft.com のような一般的な URL では、認証のためにホーム テナントにリダイレクトされるため、ゲスト向けには機能しません。 テナント コンテキストを含む直接リンクの例をいくつか以下に示します。
+> [!NOTE]
+> 直接リンクはテナント固有です。 つまり、共有アプリが配置されている、テナントでゲストを認証できるように、テナント ID または確認済みドメインが含まれています。 テナント コンテキストを含む直接リンクの例をいくつか以下に示します。
  > - アプリ アクセス パネル: `https://myapps.microsoft.com/?tenantid=<tenant id>`
  > - 確認済みドメインのアプリ アクセス パネル: `https://myapps.microsoft.com/<;verified domain>`
  > - Azure portal: `https://portal.azure.com/<tenant id>`
@@ -53,6 +51,14 @@ ms.locfileid: "97355479"
  - 連絡先オブジェクト (Outlook の連絡先オブジェクトなど) と競合するため、招待されたユーザー オブジェクトにメール アドレスを持っていないことがあります。 この場合、ユーザーは招待メールの利用 URL をクリックする必要があります。
  - ユーザーは、招待されたメール アドレスの別名でサインインすることができます (エイリアスは、メール アカウントに関連付けられた追加のメール アドレスです)。この場合、ユーザーは招待メールの利用 URL をクリックする必要があります。
 
+## <a name="redemption-through-the-invitation-email"></a>招待メールによる利用
+
+[Azure portal](./b2b-quickstart-add-guest-users-portal.md) を使用してディレクトリにゲスト ユーザーを追加すると、そのプロセスで招待メールがゲストに送信されます。 ゲスト ユーザーをディレクトリに追加するために [PowerShell を使用する](./b2b-quickstart-invite-powershell.md)際に、招待メールを送信するように選択することもできます。 以下は、メールのリンクを利用する場合のゲストのエクスペリエンスの説明です。
+
+1. ゲストは、**Microsoft Invitations** から送信される [招待メール](./invitation-email-elements.md)を受け取ります。
+2. ゲストは、電子メールで **[招待の承諾]** を選択します。
+3. ゲストは、自分の資格情報を使用してディレクトリにサインインします。 ゲストがディレクトリにフェデレーションできるアカウントを持っておらず、[電子メール ワンタイム パスコード (OTP)](./one-time-passcode.md) 機能が有効になっていない場合、ゲストは個人用 [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) または [Azure AD セルフサービス アカウント](../enterprise-users/directory-self-service-signup.md)を作成するように求められます。 詳細については、「[招待の引き換えフロー](#invitation-redemption-flow)」を参照してください。
+4. ゲストには、以下に説明されている[同意エクスペリエンス](#consent-experience-for-the-guest)が示されます。
 ## <a name="invitation-redemption-flow"></a>招待の引き換えフロー
 
 ユーザーが [招待メール](invitation-email-elements.md)の **[招待の承諾]** リンクをクリックすると、Azure AD では下の画像のように、引き換えフローに基づいて招待が自動的に引き換えられます。
@@ -67,7 +73,7 @@ ms.locfileid: "97355479"
 
 3. 管理者が [Google フェデレーション](./google-federation.md)を有効にしている場合、Azure AD では、ユーザーのドメイン サフィックスが gmail.com か googlemail.com であるかどうかが確認され、ユーザーが Google にリダイレクトされます。
 
-4. 引き換えプロセスでは、ユーザーに個人用の [Microsoft アカウント (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) が既に与えられているかどうかが確認されます。
+4. 引き換えプロセスでは、Just-In-Time (JIT) 引き換えの場合、ユーザーに既存の個人用 [Microsoft アカウント (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) があるかどうかが確認されます (ただし、招待メール リンクの引き換えの場合は除外)。 ユーザーに既存の MSA がある場合は、既存の MSA でサインインします。
 
 5. ユーザーの **ホーム ディレクトリ** が確認されると、ユーザーはサインインするため、それに対応する ID プロバイダーの元に送られます。  
 

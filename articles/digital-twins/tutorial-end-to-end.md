@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8933dd6655223db092597aedf839fd800119864a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: cff40385edc89c0f6d2d105d089b66c046b0c04b
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684007"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545940"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>チュートリアル:エンド ツー エンドのソリューションを構築する
 
@@ -124,8 +124,6 @@ _**AdtE2ESample**_ プロジェクトを開いている Visual Studio ウィン�
 ### <a name="assign-permissions-to-the-function-app"></a>関数アプリにアクセス許可を割り当てる
 
 次の手順では、関数アプリから Azure Digital Twins にアクセスできるよう、アプリの設定を構成し、システムによって管理される Azure AD ID をアプリに割り当てて、その ID に Azure Digital Twins インスタンスの "*Azure Digital Twins データ所有者*" ロールを付与します。 このロールは、インスタンスに対して多くのデータ プレーン アクティビティを実行するすべてのユーザーまたは関数に必要です。 セキュリティとロールの割り当ての詳細については、[*概念: Azure Digital Twins ソリューションのセキュリティ*](concepts-security.md)に関するページを参照してください。
-
-[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 Azure Cloud Shell で次のコマンドを使用して、関数アプリが Azure Digital Twins インスタンスを参照する目的で使用するアプリケーション設定を構成します。 プレースホルダーにリソースの詳細を入力します (お使いの Azure Digital Twins インンスタンスの URL は、*https://* で始まるホスト名であることに注意してください)。
 
@@ -401,18 +399,15 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このチュートリアルで作成したリソースが不要であれば、次の手順に従って削除してください。 
+このチュートリアルを終えたら、次に行う作業に応じて、削除するリソースを選択できます。
 
-[Azure Cloud Shell](https://shell.azure.com) から [az group delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) コマンドを使用すると、リソース グループ内の Azure リソースをすべて削除できます。 これにより、リソース グループが削除され、Azure Digital Twins インスタンス、IoT ハブとハブ デバイスの登録、Event Grid トピックとそれに関連するサブスクリプション、Azure Functions アプリが、両方の機能やストレージなどの関連するリソースを含めて削除されます。
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-> [!IMPORTANT]
-> リソース グループを削除すると、元に戻すことができません。 リソース グループとそこに含まれるすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 
+* **この記事でセットアップした Azure Digital Twins インスタンスは引き続き使用するものの、そのモデル、ツイン、関係の一部または全部を削除する場合** は、[Azure Cloud Shell](https://shell.azure.com) ウィンドウから [az dt](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true) という CLI コマンドを使用して、目的の要素を削除することができます。
 
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
+    この方法では、このチュートリアルで作成した他の Azure リソース (IoT ハブ、Azure Functions アプリなど) は一切削除されません。 これらのリソースは、それぞれの種類に合った適切な [dt コマンド](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true)を使用して個別に削除できます。
 
-最後に、ローカル コンピューターにダウンロードしたプロジェクトのサンプル フォルダーを削除します。
+さらに、プロジェクト フォルダーもローカル コンピューターから削除してください。
 
 ## <a name="next-steps"></a>次のステップ
 

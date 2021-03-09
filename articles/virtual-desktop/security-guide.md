@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a106455ea9d7b7a64fecd7c4255c294d0bd62db8
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cfc980fdabdb9c6e7085088db12754243f133d89
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562618"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581394"
 ---
 # <a name="security-best-practices"></a>セキュリティの運用方法
 
@@ -80,10 +80,10 @@ Windows Virtual Desktop のすべてのユーザーと管理者に多要素認�
 
 監査ログの収集を有効にすると、Windows Virtual Desktop に関連するユーザーと管理者のアクティビティを表示できます。 主要な監査ログの例を次に示します。
 
--   [Azure アクティビティ ログ](../azure-monitor/platform/activity-log.md)
+-   [Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md)
 -   [Azure Active Directory アクティビティ ログ](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
--   [セッション ホスト](../azure-monitor/platform/agent-windows.md)
+-   [セッション ホスト](../azure-monitor/agents/agent-windows.md)
 -   [Windows Virtual Desktop 診断ログ](../virtual-desktop/diagnostics-log-analytics.md)
 -   [Key Vault ログ](../key-vault/general/logging.md)
 

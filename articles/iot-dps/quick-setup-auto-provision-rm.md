@@ -3,17 +3,17 @@ title: クイックスタート - Azure Resource Manager テンプレート (ARM
 description: Azure クイックスタート - Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure IoT Hub デバイス プロビジョニング サービス (DPS) を作成する方法について説明します。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 12/03/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 73beed4e4262d911f68c2b4b33bc0c1ee24164f8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 505859075ce58c5db6873544123710a11135651a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746210"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198610"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して IoT Hub デバイス プロビジョニング サービス (DPS) を設定する
 
@@ -35,6 +35,9 @@ ms.locfileid: "96746210"
 ## <a name="review-the-template"></a>テンプレートを確認する
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-iothub-device-provisioning/)からのものです。
+
+> [!NOTE]
+> 現在、新しい DPS リソースで加入契約を作成するための ARM テンプレートのサポートはありません。 その機能を希望する声が多く寄せられていることから現在、実装を検討中です。
 
 :::code language="json" source="~/quickstart-templates/101-iothub-device-provisioning/azuredeploy.json":::
 
@@ -133,13 +136,13 @@ Azure アカウントにサインインしてサブスクリプションを選�
 
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
-1. デプロイを確認するには、次に示す[リソースを一覧表示するコマンド](/cli/azure/resource?view=azure-cli-latest#az-resource-list&preserve-view=true)を実行し、その出力で新しいプロビジョニング サービスと IoT ハブを探します。
+1. デプロイを確認するには、次に示す[リソースを一覧表示するコマンド](/cli/azure/resource#az-resource-list)を実行し、その出力で新しいプロビジョニング サービスと IoT ハブを探します。
 
     ```azurecli
      az resource list -g "${projectName}rg"
     ```
 
-2. ハブが DPS リソースに既にリンクされていることを確認するには、次の [DPS 拡張 show コマンド](/cli/azure/iot/dps?view=azure-cli-latest#az_iot_dps_show&preserve-view=true)を実行します。
+2. ハブが DPS リソースに既にリンクされていることを確認するには、次の [DPS 拡張 show コマンド](/cli/azure/iot/dps#az_iot_dps_show)を実行します。
 
     ```azurecli
      az iot dps show --name <Your provisioningServiceName>

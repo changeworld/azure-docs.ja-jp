@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ba06a0f9d520f445965329203aecd6c576666737
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: d4cd673b5029d8379a699becd7339a265c787390
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209731"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586400"
 ---
 # <a name="using-an-app-service-environment"></a>App Service Environment の使用
 
@@ -143,7 +143,7 @@ Log Analytics と統合している場合は、ASE ポータルから **[ログ]
 
 **アラートの作成**
 
-ログに対してアラートを作成するには、「[Azure Monitor を使用したログ アラートの作成、表示、管理](../../azure-monitor/platform/alerts-log.md)」の手順に従います。 概要:
+ログに対してアラートを作成するには、「[Azure Monitor を使用したログ アラートの作成、表示、管理](../../azure-monitor/alerts/alerts-log.md)」の手順に従います。 概要:
 
 * ASE ポータルで [アラート] ページを開く
 * **[新しいアラート ルール]** を選択する
@@ -206,4 +206,4 @@ ASE を削除するには、次の手順に従います。
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
-[logalerts]: ../../azure-monitor/platform/alerts-log.md
+[logalerts]: ../../azure-monitor/alerts/alerts-log.md

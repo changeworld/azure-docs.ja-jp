@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: 5ad40ca051677ced0c6d8b5c35e8563272ff598f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5650ff0e039d1e9211b8d0013726e101efdfab78
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183976"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572255"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Azure SignalR Service のリソース ログ
 
@@ -20,8 +20,8 @@ ms.locfileid: "96183976"
 ## <a name="prerequisites"></a>前提条件
 リソース ログを有効にするには、ログ データを格納する場所が必要になります。 このチュートリアルでは、Azure Storage と Log Analytics を使用します。
 
-* [Azure Storage](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) - ポリシー監査、スタティック分析、またはバックアップのリソース ログを保持します。
-* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) - Azure リソースによって生成された生ログの分析を可能にする柔軟なログ検索および分析ツール。
+* [Azure Storage](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) - ポリシー監査、スタティック分析、またはバックアップのリソース ログを保持します。
+* [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) - Azure リソースによって生成された生ログの分析を可能にする柔軟なログ検索および分析ツール。
 
 ## <a name="set-up-resource-logs-for-an-azure-signalr-service"></a>Azure SignalR Service のリソース ログの設定
 
@@ -50,7 +50,7 @@ Azure SignalR Service のリソース ログを表示できます。 これら�
 
 新しい設定は、10 分ほどで有効になります。 その後、構成されたアーカイブ ターゲットのログが **[診断ログ]** ウィンドウに表示されます。
 
-診断の構成の詳細については、[Azure リソース ログの概要](../azure-monitor/platform/platform-logs-overview.md)に関するページを参照してください。
+診断の構成の詳細については、[Azure リソース ログの概要](../azure-monitor/essentials/platform-logs-overview.md)に関するページを参照してください。
 
 ### <a name="resource-logs-categories"></a>リソース ログのカテゴリ
 
@@ -122,7 +122,7 @@ message | ログ イベントの詳細なメッセージ
 
     ![Log Analytics メニュー項目](./media/signalr-tutorial-diagnostic-logs/log-analytics-menu-item.png)
 
-2. 「`SignalRServiceDiagnosticLogs`」と入力し、リソース ログのクエリを実行する時間の範囲を選択します。 詳細なクエリについては、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/log-query/log-analytics-tutorial.md)」を参照してください。
+2. 「`SignalRServiceDiagnosticLogs`」と入力し、リソース ログのクエリを実行する時間の範囲を選択します。 詳細なクエリについては、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/logs/log-analytics-tutorial.md)」を参照してください。
 
     ![Log Analytics のクエリ ログ](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
 

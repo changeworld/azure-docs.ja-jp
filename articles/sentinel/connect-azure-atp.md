@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: b0cafcbc9fa6f0fcb31f44b44dfbe4fc3e10c17d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1fe36dc7b3c04f033c1b693b657e07bcf42e3223
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656073"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715005"
 ---
 # <a name="connect-data-from-microsoft-defender-for-identity-formerly-azure-advanced-threat-protection"></a>Microsoft Defender for Identity (旧称 Azure Advanced Threat Protection) からデータを接続する
 
@@ -27,7 +27,9 @@ ms.locfileid: "94656073"
 > Azure Sentinel での Microsoft Defender for Identity データ コネクタは、現在パブリック プレビューです。
 > この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-[Microsoft Defender for Identity](/azure-advanced-threat-protection/what-is-atp) から Azure Sentinel にシングル クリックでログをストリーミングできます。
+この記事では、[Microsoft Defender for Identity](/azure-advanced-threat-protection/what-is-atp) から Azure Sentinel にセキュリティ アラートをストリーミングする方法について説明します。 
+
+セキュリティ アラートに加えて正常性アラートを転送するには、Microsoft Defender for Identity を Syslog サーバーと統合します。 詳細については、[Microsoft Defender for Identity のドキュメント](/defender-for-identity/setting-syslog)を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 

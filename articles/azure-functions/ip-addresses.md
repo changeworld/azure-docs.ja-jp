@@ -3,12 +3,12 @@ title: Azure Functions の IP アドレス
 description: 関数アプリの着信 IP アドレスと送信 IP アドレスを確認する方法、およびこれらのアドレスが変更される理由について説明します。
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 291a1cda7b8a2acc5426ea255519e1c2e58a2d7c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: fcc92e61e180d25bc67d5ca3f9e2bff4af01fd3f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936721"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726733"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions の IP アドレス
 
@@ -27,8 +27,7 @@ IP アドレスは、個々の関数ではなく、関数アプリに関連付�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 関数アプリに移動します。
-3. **[プラットフォーム機能]** を選択します。
-4. **[プロパティ]** を選択すると、 **[仮想 IP アドレス]** の下に着信 IP アドレスが表示されます。
+3. **[設定]** で **[プロパティ]** を選択します。 受信 IP アドレスは **[仮想 IP アドレス]** の下に表示されます。
 
 ## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>関数アプリの送信 IP アドレス
 

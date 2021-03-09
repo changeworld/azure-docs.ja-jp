@@ -1,22 +1,17 @@
 ---
 title: オンプレミスの SQL Server Integration Services (SSIS) ワークロードを Azure Data Factory (ADF) の SSIS に移行する
 description: ADF でオンプレミスの SSIS ワークロードを SSIS に移行します。
-services: data-factory
-documentationcenter: ''
 author: chugugrace
 ms.author: chugu
-ms.reviewer: ''
-manager: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: ef4b01e38a60d6770ba476988fab934ada0bc631
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 78c488302a874319f79a143e4657d161fe849855
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635696"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373608"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>ADF でオンプレミスの SSIS ワークロードを SSIS に移行する
 
@@ -28,7 +23,7 @@ ms.locfileid: "92635696"
 
 Azure Data Factory (ADF) の Azure-SSIS Integration Runtime (IR) では、SSIS パッケージの実行がサポートされています。 Azure-SSIS IR がプロビジョニングされると、SQL Server Data Tools (SSDT)/SQL Server Management Studio (SSMS) などの使い慣れたツールや dtinstall/dtutil/dtexec などのコマンドライン ユーティリティを使用して、Azure でパッケージをデプロイして実行できます。 詳細については、[Azure SSIS のリフトアンドシフトの概要](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview)に関する記事を参照してください。
 
-この記事では、オンプレミスの SSIS から ADF の SSIS への ETL ワークロードの移行プロセスについて説明します。 移行プロセスは、2 つのフェーズで構成されます。 **評価** と **移行** です。
+この記事では、オンプレミスの SSIS から ADF の SSIS への ETL ワークロードの移行プロセスについて説明します。 移行プロセスは、2 つのフェーズで構成されます。**評価** と **移行** です。
 
 ## <a name="assessment"></a>評価
 
@@ -49,13 +44,13 @@ Data Migration Assistant (DMA) は、この目的のために自由にダウン�
   - MSDB。SSIS パッケージの格納に使用される SQL Server 内のシステム データベースです。
   - マネージド ファイル システム。SSIS パッケージの格納に使用される SQL Server インストール パス内の特定のフォルダーです。
 
-現在、DMA は、 **DMA バージョン v5.0** 以降、 **ファイル システム** 、 **パッケージ ストア** 、および **SSIS カタログ** に格納されているパッケージのバッチ評価をサポートしています。
+現在、DMA は、**DMA バージョン v5.0** 以降、**ファイル システム**、**パッケージ ストア**、および **SSIS カタログ** に格納されているパッケージのバッチ評価をサポートしています。
 
 [DMA](/sql/dma/dma-overview) を取得し、[それを使用してパッケージの評価を実行します](/sql/dma/dma-assess-ssis)。
 
 ## <a name="migration"></a>移行
 
-ソース SSIS パッケージの [ストレージの種類](#four-storage-types-for-ssis-packages)とデータベース ワークロードの移行先によって、 **SSIS パッケージ** と SSIS パッケージ実行をスケジュールする **SQL Server エージェント ジョブ** を移行する手順は異なる場合があります。 次の 2 つのシナリオがあります。
+ソース SSIS パッケージの [ストレージの種類](#four-storage-types-for-ssis-packages)とデータベース ワークロードの移行先によって、**SSIS パッケージ** と SSIS パッケージ実行をスケジュールする **SQL Server エージェント ジョブ** を移行する手順は異なる場合があります。 次の 2 つのシナリオがあります。
 
 - [**データベース ワークロードの宛先としての** Azure SQL Database Managed Instance](#azure-sql-managed-instance-as-database-workload-destination)
 - [データベース ワークロードの宛先としての **Azure SQL Database**](#azure-sql-database-as-database-workload-destination)

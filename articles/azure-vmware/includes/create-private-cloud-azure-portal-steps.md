@@ -1,14 +1,14 @@
 ---
-title: Azure VMware Solution のデプロイ
-description: Azure portal を使用して Azure VMware Solution をデプロイする手順。
+title: Azure VMware Solution のプライベート クラウドを作成する
+description: Azure portal を使用して、Azure VMware Solution のプライベート クラウドを作成する手順です。
 ms.topic: include
-ms.date: 09/28/2020
-ms.openlocfilehash: 4d0881721cd8c13d1b6c9fb3a29e4cdb6d6a753f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/17/2021
+ms.openlocfilehash: da79881e609f982960468a8f26c98178f972ad43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578319"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725406"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
@@ -22,12 +22,10 @@ ms.locfileid: "91578319"
    | ---| --- |
    | **サブスクリプション** | デプロイに使用する予定のサブスクリプション。|
    | **リソース グループ** | プライベート クラウド リソースのリソース グループ。 |
-   | **場所** | 場所 (**米国東部**など) を選択します。|
+   | **場所** | 場所 (**米国東部** など) を選択します。|
    | **リソース名** | Azure VMware Solution のプライベート クラウドの名前。 |
    | **SKU** | 次の SKU 値を選択します。AV36 |
    | **ホスト** | プライベート クラウド クラスターに追加するホストの数。 既定値は 3 です。この値は、デプロイ後に増減できます。  |
-   | **vCenter 管理者パスワード** | クラウド管理者のパスワードを入力します。 |
-   | **NSX-T Manager のパスワード** | NSX-T 管理者のパスワードを入力します。 |
    | **アドレス ブロック** | プライベート クラウドの CIDR ネットワークの IP アドレス ブロックを入力します (例: 10.175.0.0/22)。 |
    | **Virtual Network** | Virtual Network を選択するか、Azure VMware Solution プライベート クラウド用に新しいものを作成します。  |
 
@@ -40,4 +38,4 @@ ms.locfileid: "91578319"
 
 1. デプロイが成功したことを確認します。 作成したリソース グループに移動し、プライベート クラウドを選択します。  デプロイが完了すると、状態が **[成功]** として表示されます。 
 
-   :::image type="content" source="../media/tutorial-create-private-cloud/validate-deployment.png" alt-text="[基本] タブで、フィールドの値を入力します。" border="true":::
+   :::image type="content" source="../media/tutorial-create-private-cloud/validate-deployment.png" alt-text="デプロイが成功したことを確認します。" border="true":::

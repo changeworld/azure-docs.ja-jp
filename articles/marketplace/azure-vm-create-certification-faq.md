@@ -4,15 +4,15 @@ description: Azure Marketplace での仮想マシン (VM) イメージのテス�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
-author: iqshahmicrosoft
-ms.author: iqshah
+author: mathapli
+ms.author: mathapli
 ms.date: 01/18/2021
-ms.openlocfilehash: 80dc19a58d212bb6ab8d608e222cd3a0bd3990d1
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: adcd91d58b3bb5fde3ffa81c828c58d4b6db48d4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600977"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721159"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>仮想マシンの認定に関するトラブルシューティング
 
@@ -594,8 +594,37 @@ Bash 履歴を削除するには:
 
 公開のプロセスを完了するには、[オファーのレビューと公開](review-publish-offer.md)に関するページを参照してください。
 
+### <a name="vm-images-with-limited-access-or-requiring-custom-templates"></a>アクセスが制限されているかカスタム テンプレートが必要な VM イメージ
+
+#### <a name="locked-down-or-ssh-disabled-offer"></a>ロック ダウン (または) SSH 無効のオファー
+
+  SSH 無効 (Linux 用) または RDP 無効 (Windows 用) で公開されているイメージは、ロック ダウンされた VM として扱われます。 公開元がアクセスを許可しない、または少数のユーザーにのみ制限付きアクセスを許可する、特殊なビジネス シナリオが存在します。 検証チェック中に、ロック ダウンされた VM では、特定の認証コマンドの実行を許可しない場合があります。
+
+
+#### <a name="custom-templates"></a>カスタム テンプレート
+
+   一般に、単一の VM オファーの下で公開されているすべてのイメージのデプロイは、標準の ARM テンプレートに従います。 ただし、公開元が VM をデプロイする際にカスタマイズが必要になる場合があります (複数の NIC を構成する必要があるなど)。
+    
+   以下のシナリオによっては、公開元は VM のデプロイにカスタム テンプレートを使用します (ただし、これらに限定されません)。
+
+   * VM に追加のネットワーク サブネットが必要である。
+   * ARM テンプレートに追加のメタデータが挿入される。
+   * ARM テンプレートの実行の前提条件となるコマンド。
+
+### <a name="vm-extensions"></a>VM 拡張機能   
+
+   Azure 仮想マシン (VM) 拡張機能は、Azure VM でのデプロイ後の構成と自動タスクを提供する複数の小さなアプリケーションです。 たとえば、仮想マシンでソフトウェアのインストールやウイルス対策保護が必要な場合、あるいは、仮想マシン内でスクリプトを実行するために、VM 拡張機能を使用できます。 
+
+   Linux VM 拡張機能の検証には、次のものがイメージの一部である必要があります。
+* 2\.2.41 以上の Azure Linux エージェント
+* バージョン 2.8 以上の Python 
+
+
+詳細については、[VM 拡張機能](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux)に関するページをご覧ください。
+     
 ## <a name="next-steps"></a>次の手順
 
 - [VM オファーのプロパティを構成する](azure-vm-create-properties.md)
 - [マーケットプレースのアクティブな報奨](partner-center-portal/marketplace-rewards.md)
 - 改善に関するご質問またはご意見につきましては、[パートナー センターのサポート](https://aka.ms/marketplacepublishersupport)までご連絡ください。
+ 

@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: fc32b4f583aea2fa9a34ab8b235f3f99fe4def9d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: ea902b8b609d226f6bb9e61ec0bfd60f75a3825d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562170"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038579"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Android デバイスの共有デバイス モード
 
@@ -34,13 +34,13 @@ ms.locfileid: "94562170"
 共有デバイス モード アプリを作成するには、開発者とクラウド デバイス管理者が協力して作業します。
 
 - 開発者は、単一アカウント アプリ (共有デバイス モードでは複数アカウント アプリはサポートされていません) を記述し、アプリの構成に `"shared_device_mode_supported": true` を追加して、共有デバイスのサインアウトなどを処理するためのコードを記述します。
-- デバイス管理者は、認証アプリをインストールし、その認証アプリを使用してデバイスを共有モードに設定することによって、共有されるデバイスを準備します。 [認証アプリ](../user-help/user-help-auth-app-overview.md)を使用してデバイスを共有モードにすることができるのは、[クラウド デバイス管理者](../roles/permissions-reference.md#cloud-device-administrator-permissions)ロールのユーザーだけです。 組織ロールのメンバーシップは、Azure portal で次のコマンドを使用して構成できます。 **[Azure Active Directory]**  >  **[ロールと管理者]**  >  **[クラウド デバイス管理者]** 。
+- デバイス管理者は、認証アプリをインストールし、その認証アプリを使用してデバイスを共有モードに設定することによって、共有されるデバイスを準備します。 [認証アプリ](../user-help/user-help-auth-app-overview.md)を使用してデバイスを共有モードにすることができるのは、[クラウド デバイス管理者](../roles/permissions-reference.md#cloud-device-administrator)ロールのユーザーだけです。 組織ロールのメンバーシップは、Azure portal で次のコマンドを使用して構成できます。 **[Azure Active Directory]**  >  **[ロールと管理者]**  >  **[クラウド デバイス管理者]** 。
 
  この記事では主に、開発者が考慮すべき事項に重点を置いています。
 
 ## <a name="single-vs-multiple-account-applications"></a>単一アカウント アプリケーションと複数アカウント アプリケーションの選択
 
-Microsoft Authentication Library SDK (MSAL) を使用して記述されたアプリケーションは、単一のアカウントまたは複数のアカウントを管理できます。 詳細については、[単一アカウント モードまたは複数アカウント モード](single-multi-account.md)に関するページを参照してください。 アプリで使用できる Microsoft ID プラットフォーム機能は、アプリケーションが単一アカウント モードまたは複数アカウント モードのどちらで実行されているかによって異なります。
+Microsoft Authentication Library SDK (MSAL) を使用して記述されたアプリケーションは、単一のアカウントまたは複数のアカウントを管理できます。 詳細については、[単一アカウント モードまたは複数アカウント モード](single-multi-account.md)に関するページを参照してください。 お使いのアプリで使用できる Microsoft ID プラットフォーム機能は、アプリケーションが単一アカウント モードと複数アカウント モードのどちらで実行されているかによって異なります。
 
 **共有デバイス モード アプリは、単一アカウント モードでのみ動作します**。
 

@@ -9,14 +9,14 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f7a0190d664e3330d2a6205014c00c61c1183dd3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 886b87adeabdc0aadde04c189b78739435aabede
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936245"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100527025"
 ---
-# <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する (プレビュー)
+# <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する
 
 > [!NOTE]
 > Key Vault リソース プロバイダーでは、**コンテナー** と **マネージド HSM** という 2 種類のリソースがサポートされています。 この記事で説明するアクセス制御は、**コンテナー** にのみ適用されます。 マネージド HSM のアクセス制御の詳細については、「[マネージド HSM アクセス制御](../managed-hsm/access-control.md)」を参照してください。
@@ -44,20 +44,20 @@ Azure Key Vault 管理ガイドラインの詳細については、以下を参�
 - [Azure Key Vault のセキュリティの概要](security-overview.md)
 - [Azure Key Vault サービスの制限](service-limits.md)
 
-## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>Key Vault データ プレーン操作のための Azure の組み込みロール (プレビュー)
+## <a name="azure-built-in-roles-for-key-vault-data-plane-operations"></a>Key Vault データ プレーン操作のための Azure の組み込みロール
 > [!NOTE]
 > `Key Vault Contributor` ロールは、キー コンテナーを管理するための管理プレーン操作用です。 キー、シークレット、証明書へのアクセスは許可されていません。
 
 | 組み込みのロール | 説明 | id |
 | --- | --- | --- |
-| Key Vault Administrator (プレビュー) | キー コンテナーとその内部にあるすべてのオブジェクト (証明書、キー、シークレットを含む) に対して、すべてのデータ プレーン操作を実行します。 キー コンテナー リソースの管理やロール割り当ての管理はできません。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
-| Key Vault Certificates Officer (プレビュー) | キーコンテナーの証明書に対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | a4417e6f-fecd-4de8-b567-7b0420556985 |
-| Key Vault Crypto Officer (プレビュー)| キーコンテナーのキーに対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
-| Key Vault Crypto Service Encryption (プレビュー) | キーのメタデータを読み取り、wrap および unwrap 操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
-| Key Vault Crypto User (プレビュー) | キーを使用した暗号化操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 12338af0-0e69-4776-bea7-57ae8d297424 |
-| Key Vault Reader (プレビュー)| キー コンテナーとその証明書、キー、シークレットのメタデータを読み取ります。 シークレット コンテンツやキー マテリアルなどの機密値を読み取ることはできません。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 21090545-7ca7-4776-b22c-e363652d74d2 |
-| Key Vault Secrets Officer (プレビュー)| キーコンテナーのシークレットに対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
-| Key Vault Secrets User (プレビュー)| シークレット コンテンツを読み取ります。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 4633458b-17de-408a-b874-0445c86b69e6 |
+| Key Vault Administrator| キー コンテナーとその内部にあるすべてのオブジェクト (証明書、キー、シークレットを含む) に対して、すべてのデータ プレーン操作を実行します。 キー コンテナー リソースの管理やロール割り当ての管理はできません。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
+| Key Vault Certificates Officer | キーコンテナーの証明書に対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | a4417e6f-fecd-4de8-b567-7b0420556985 |
+| Key Vault Crypto Officer | キーコンテナーのキーに対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
+| Key Vault Crypto Service Encryption User | キーのメタデータを読み取り、wrap および unwrap 操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+| Key Vault Crypto User  | キーを使用した暗号化操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 12338af0-0e69-4776-bea7-57ae8d297424 |
+| Key Vault Reader | キー コンテナーとその証明書、キー、シークレットのメタデータを読み取ります。 シークレット コンテンツやキー マテリアルなどの機密値を読み取ることはできません。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 21090545-7ca7-4776-b22c-e363652d74d2 |
+| Key Vault Secrets Officer| キーコンテナーのシークレットに対して、アクセス許可の管理を除く任意の操作を実行します。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
+| Key Vault Secrets User | シークレット コンテンツを読み取ります。 「Azure ロールベースのアクセス制御」アクセス許可モデルを使用するキー コンテナーでのみ機能します。 | 4633458b-17de-408a-b874-0445c86b69e6 |
 
 Azure 組み込みロールの定義の詳細については、「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
@@ -74,8 +74,8 @@ Key Vault の新しい Azure RBAC アクセス許可モデルには、コンテ�
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Key Vault で Azure RBAC アクセス許可を有効にする
 
-> [!IMPORTANT]
-> Azure RBAC アクセス許可モデルを設定すると、すべてのアクセス ポリシーのアクセス許可が無効になります。 同等の Azure ロールが割り当てられていない場合、停止が発生する可能性があります。
+> [!NOTE]
+> アクセス許可モデルを変更するには、[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールと[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)ロールの一部である、"Microsoft.Authorization/roleAssignments/write" アクセス許可が必要です。 "サービス管理者" や "共同管理者" などの従来のサブスクリプション管理者ロールはサポートされていません。
 
 1.  新しいキー コンテナーで Azure RBAC アクセス許可を有効にします。
 
@@ -85,10 +85,13 @@ Key Vault の新しい Azure RBAC アクセス許可モデルには、コンテ�
 
     ![Azure RBAC アクセス許可を有効にする - 既存のコンテナー](../media/rbac/image-2.png)
 
+> [!IMPORTANT]
+> Azure RBAC アクセス許可モデルを設定すると、すべてのアクセス ポリシーのアクセス許可が無効になります。 同等の Azure ロールが割り当てられていない場合、停止が発生する可能性があります。
+
 ### <a name="assign-role"></a>ロールを割り当てる
 
 > [!Note]
-> スクリプトでは、ロール名ではなく一意のロール ID を使用することをお勧めします。 こうすると、ロールの名前が変更されても、スクリプトは引き続き機能します。 プレビュー中は、すべてのロールに "(プレビュー)" というサフィックスが付きます。これは後で削除されます。 このドキュメントでは、読みやすいようにロール名を使用しています。
+> スクリプトでは、ロール名ではなく一意のロール ID を使用することをお勧めします。 こうすると、ロールの名前が変更されても、スクリプトは引き続き機能します。 このドキュメントでは、読みやすいようにロール名を使用しています。
 
 ロールの割り当てを作成する Azure CLI コマンド:
 
@@ -107,13 +110,13 @@ Azure portal では、[アクセス制御 (IAM)] タブのすべてのリソー�
 
 2.  [アクセス制御 (IAM)] \> [ロールの割り当ての追加] \> [追加] をクリックします
 
-3.  現在のユーザーの Key Vault Reader ロール "Key Vault Reader (プレビュー)" を作成する
+3.  現在のユーザーに対して Key Vault Reader ロール "Key Vault Reader" を作成する
 
     ![ロールの追加 - リソース グループ](../media/rbac/image-5.png)
 
 Azure CLI:
 ```azurecli
-az role assignment create --role "Key Vault Reader (preview)" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
+az role assignment create --role "Key Vault Reader" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
 ```
 
 前述のロール割り当てには、Key Vault 内の Key Vault オブジェクトを一覧表示する機能があります。
@@ -124,14 +127,14 @@ az role assignment create --role "Key Vault Reader (preview)" --assignee {i.e us
 
 2. [ロールの割り当ての追加]\>[追加] をクリックします
 
-3. 現在のユーザーについて、Key Secrets Officer ロール "Key Vault Secrets Officer (プレビュー)" を作成します。
+3. 現在のユーザーに対して Key Secrets Officer ロール "Key Vault Secrets Officer" を作成します。
 
     ![ロールの割り当て - Key Vault](../media/rbac/image-6.png)
 
  Azure CLI:
 
 ```azurecli
-az role assignment create --role "Key Vault Secrets Officer (preview)" --assignee {i.e jalichwa@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
+az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e jalichwa@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
 ```
 
 前述のロールの割り当てを作成した後は、シークレットの作成、更新、削除を行うことができます。
@@ -142,18 +145,18 @@ az role assignment create --role "Key Vault Secrets Officer (preview)" --assigne
 
 ### <a name="secret-scope-role-assignment"></a>シークレット スコープのロールの割り当て
 
-1. 以前に作成したシークレットのいずれかを開くと、[概要] と [アクセス制御 (IAM) (プレビュー)] があります
+1. 以前に作成したシークレットのいずれかを開くと、[概要] と [アクセス制御 (IAM)] があります 
 
-2. [アクセス制御 (IAM) (プレビュー)] タブをクリックします
+2. [アクセス制御 (IAM)] タブをクリックします
 
     ![ロールの割り当て - シークレット](../media/rbac/image-8.png)
 
-3. 前述のキー コンテナーの場合と同じように、現在のユーザーに対して Key Secrets Officer ロール "Key Vault Secrets Officer (プレビュー)" を作成します。
+3. 前述のキー コンテナーの場合と同じように、現在のユーザーに対して Key Secrets Officer ロール "Key Vault Secrets Officer" を作成します。
 
 Azure CLI:
 
 ```azurecli
-az role assignment create --role "Key Vault Secrets Officer (preview)" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
+az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
 ```
 
 ### <a name="test-and-verify"></a>テストして検証する
@@ -164,7 +167,7 @@ az role assignment create --role "Key Vault Secrets Officer (preview)" --assigne
 
 1. Key Vault レベルで "Key Vault Secrets Officer" ロールを使用せずに新しいシークレットの追加を検証します。
 
-Key Vault の [アクセス制御 (IAM)] タブに移動し、このリソースの "Key Vault Secrets Officer (プレビュー)" ロールの割り当てを削除します。
+キー コンテナーの [アクセス制御 (IAM)] タブに移動し、このリソースへの "Key Vault Secrets Officer" ロールの割り当てを削除します。
 
 ![割り当ての削除 - Key Vault](../media/rbac/image-9.png)
 
@@ -178,7 +181,7 @@ Key Vault の [アクセス制御 (IAM)] タブに移動し、このリソース
 
 2.  シークレット レベルで "Key Vault Secret Officer" ロールを使用せずにシークレットの編集を検証します。
 
--   以前に作成したシークレットの [アクセス制御 (IAM) (プレビュー)] タブに移動し、このリソースに対する "Key Vault Secrets Officer (プレビュー)" ロールの割り当てを削除します。
+-   以前に作成したシークレットの [アクセス制御 (IAM)] タブに移動し、このリソースへの "Key Vault Secrets Officer" ロールの割り当てを削除します。
 
 -   以前に作成したシークレットに移動します。 シークレットのプロパティが表示されます。
 
@@ -186,7 +189,7 @@ Key Vault の [アクセス制御 (IAM)] タブに移動し、このリソース
 
 3. Key Vault レベルで Reader ロールを使用せずにシークレットの閲覧を検証します。
 
--   Key Vault リソース グループの [アクセス制御 (IAM)] タブに移動し、"Key Vault Reader (プレビュー)" ロールの割り当てを削除します。
+-   キー コンテナーのリソース グループの [アクセス制御 (IAM)] タブに移動し、"Key Vault Reader" ロールの割り当てを削除します。
 
 -   Key Vault の [シークレット] タブに移動すると、次のエラーが表示されます。
 

@@ -3,12 +3,12 @@ title: Azure Functions の専用ホスティング
 description: 専用の App Service ホスティング プランで Azure Functions を実行する利点について説明します。
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 0ebf83aa919d91f161b247539ae20873242a8ed8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: a9f976eda4a551c302ba7df92fbdbbf7a4fce1d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937501"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704567"
 ---
 # <a name="dedicated-hosting-plans-for-azure-functions"></a>Azure Functions の専用ホスティング プラン
 
@@ -33,7 +33,7 @@ App Service プランを実行する場合、関数アプリが正常に実行�
 
 ## <a name="scaling"></a>Scaling
 
-App Service プランを使用し、VM インスタンスを追加して、手動でスケールアウトできます。 自動スケーリングを有効にすることもできます。ただし、自動スケーリングは、Premium プランのエラスティック スケールより遅くなります。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)」を参照してください。 別の App Service プランを選択してスケールアップすることもできます。 詳細については、 [Azure でのアプリのスケールアップ](../app-service/manage-scale-up.md) に関するページを参照してください。 
+App Service プランを使用し、VM インスタンスを追加して、手動でスケールアウトできます。 自動スケーリングを有効にすることもできます。ただし、自動スケーリングは、Premium プランのエラスティック スケールより遅くなります。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../azure-monitor/autoscale/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)」を参照してください。 別の App Service プランを選択してスケールアップすることもできます。 詳細については、 [Azure でのアプリのスケールアップ](../app-service/manage-scale-up.md) に関するページを参照してください。 
 
 > [!NOTE] 
 > App Service プランで JavaScript (Node.js) 関数を実行している場合は、vCPU の数が少ないプランを選択する必要があります。 詳細については、[シングルコア App Service プランの選択](functions-reference-node.md#choose-single-vcpu-app-service-plans)に関するページをご覧ください。 
@@ -41,7 +41,7 @@ App Service プランを使用し、VM インスタンスを追加して、手�
 
 ## <a name="app-service-environments"></a>App Service Environment
 
-[App Service Environment](../app-service/environment/intro.md) (ASE) で実行すると、関数を完全に分離し、App Service プランより多い数のインスタンスを利用できます。 開始するには、「」を参照してください。
+App Service Environment (ASE) で実行すると、関数を完全に分離し、App Service プランより多い数のインスタンスを利用できます。 開始するには、「[App Service 環境の概要](../app-service/environment/intro.md)」を参照してください。
 
 関数アプリを仮想ネットワークで実行するだけであれば、[Premium プラン](functions-premium-plan.md)を使用してそれを行うことができます。 詳細については、[Azure Functions のプライベート サイト アクセスの設定](functions-create-private-site-access.md)に関するページを参照してください。 
 

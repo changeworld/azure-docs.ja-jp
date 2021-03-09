@@ -1,21 +1,17 @@
 ---
 title: Azure Data Factory でサポートされるコンピューティング環境
 description: Azure Data Factory パイプライン (Azure HDInsight など) でデータの変換または処理に使用できるコンピューティング環境。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
 ms.date: 05/08/2019
-ms.openlocfilehash: f2a0784b2795b82131880d73a6d9217acc1d72d3
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 7dae067b5d8648f1441047c26f8792e55591b64d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606217"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368525"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 
@@ -547,7 +543,7 @@ Azure Machine Learning のリンクされたサービスを作成して、Azure 
 | name                 | リンクされたサービスの名前               | はい   |
 | type                 | type プロパティは次の値に設定されます。**Azure Databricks**。 | はい                                      |
 | domain               | Databricks ワークスペースのリージョンに基づき Azure リージョンを指定します。 例: https://eastus.azuredatabricks.net | はい                                 |
-| accessToken          | Data Factory の Azure Databricks の認証にはアクセス トークンが必要です。 アクセス トークンは、Databricks ワークスペースから生成する必要があります。 アクセス トークンを見つける詳細な手順については、[こちら](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)を参照してください。  | No                                       |
+| accessToken          | Data Factory の Azure Databricks の認証にはアクセス トークンが必要です。 アクセス トークンは、Databricks ワークスペースから生成する必要があります。 アクセス トークンを見つける詳細な手順については、[こちら](/azure/databricks/dev-tools/api/latest/authentication#generate-token)を参照してください。  | No                                       |
 | MSI          | Data Factory のマネージド ID (システム割り当て) を使用して、Azure Databricks に対する認証を行います。 'MSI' 認証を使用する場合、アクセス トークンは必要ありません  | No                                       |
 | existingClusterId    | このすべてのジョブを実行する既存のクラスターのクラスター ID。 これは作成済みの対話型クラスターでなければなりません。 応答が停止した場合は、クラスターの手動再起動が必要になることがあります。 Databricks では、信頼性を高めるために新しいクラスターでジョブを実行することをお勧めします。 対話型クラスターのクラスター ID は Databricks ワークスペース -> クラスター -> 対話型クラスター名 -> 構成 -> タグで見つけることができます。 [[詳細]](https://docs.databricks.com/user-guide/clusters/tags.html) | いいえ 
 | instancePoolId    | Databricks ワークスペース内の既存のプールのインスタンス プール ID。  | いいえ  |

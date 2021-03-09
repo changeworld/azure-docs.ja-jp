@@ -3,22 +3,22 @@ title: 'ML Studio (classic): 従来の Web サービスの再トレーニング 
 description: Azure Machine Learning Studio (クラシック) でモデルの再トレーニングをして従来の Web サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 158541d34568b7ea02ea82dbfe90f5801824716f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 90c968ee953e80238775639964cb09a25741b33d
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325791"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517571"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>従来の Studio (クラシック) Web サービスの再トレーニングとデプロイ
 
-**適用対象:** ![緑のチェック マーク。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![「いいえ」を意味する「X」。 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**適用対象:** ![緑のチェック マーク。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![「いいえ」を意味する「X」。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 機械学習モデルの再トレーニングは、モデルが正確であり、利用できる最も関連性のあるデータに基づいていることを確認するための 1 つの方法です。 この記事では、従来の Studio (クラシック) Web サービスを再トレーニングする方法を示します。 新しい Studio (クラシック) Web サービスを再トレーニングする方法のガイドについては、[こちらのハウツー記事を参照](retrain-machine-learning-model.md)してください。
@@ -76,7 +76,7 @@ PATCH ヘルプ ページには、使用する必要のある PATCH URL が含�
 
 これで、トレーニング済みモデルを使用して、前に作成したスコア付けエンドポイントを更新できます。
 
-次のサンプル コードは、 *BaseLocation* 、 *RelativeLocation* 、 *SasBlobToken* 、および PATCH URL を使用して、エンドポイントを更新する方法を示しています。
+次のサンプル コードは、*BaseLocation*、*RelativeLocation*、*SasBlobToken*、および PATCH URL を使用して、エンドポイントを更新する方法を示しています。
 
 ```csharp
 private async Task OverwriteModel()

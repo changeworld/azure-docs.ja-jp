@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 4db42d8fa8c676b20b236577ce6646b909df7c3a
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: bd3a63db7dd4946a9836b3978992fb544b9ab0ab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638888"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688044"
 ---
 # <a name="api-management-caching-policies"></a>API Management のキャッシュ ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。
@@ -248,7 +248,7 @@ ms.locfileid: "94638888"
 `cache-store-value` は、キーごとに記憶域のキャッシュを実行します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。
 
 > [!NOTE]
-> このポリシーには、対応する[キャッシュから値を取得](#GetFromCacheByKey)ポリシーが必要です。
+> このポリシーによって実行される、キャッシュに値を格納する操作は非同期です。 格納された値は、[キャッシュから値を取得](#GetFromCacheByKey)ポリシーを使用して取得できます。 ただし、キャッシュに値を格納する非同期操作がまだ進行中である可能性もあるため、格納されている値をすぐに使用できない場合があります。 
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 

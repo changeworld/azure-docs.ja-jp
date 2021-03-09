@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight でクラスターを作成する - エラー ディクショナリ
 description: Azure HDInsight クラスターの作成時に発生するエラーのトラブルシューティング方法について説明します
-author: karkrish
-ms.author: v-todmc
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
-ms.openlocfilehash: 97cad12ad1854df37b54ff663385fe79ca15b7c2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 469adf1c0e5108f7a8c89a7c3a4bebba5d42b431
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543102"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183966"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: クラスター作成時のエラー
 
@@ -24,7 +21,7 @@ ms.locfileid: "92543102"
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>エラー コード: DeploymentDocument 'CsmDocument_2_0' で検証に失敗しました
 
-**Error** : ""スクリプト操作の場所を次のアクセスされた URI にすることはできません:\<SCRIPT ACTION URL\>"
+**Error**: ""スクリプト操作の場所を次のアクセスされた URI にすることはできません:\<SCRIPT ACTION URL\>"
 
 ### <a name="error-message-1"></a>エラー メッセージ 1
 
@@ -106,7 +103,7 @@ HDInsight サービスから、クラスター作成要求の一部として指�
 
 ### <a name="resolution"></a>解決方法
 
-スクリプトはカスタム スクリプトであるため、問題のトラブルシューティングを行い、必要に応じてスクリプトを再実行することをお勧めします。 スクリプト エラーのトラブルシューティングを行うには、/var/lib/ambari-agent/* フォルダー内のログを調べます。 または、Ambari UI の **[操作]** ページを開き、 **run_customscriptaction** 操作を選択して、エラーの詳細を表示します。
+スクリプトはカスタム スクリプトであるため、問題のトラブルシューティングを行い、必要に応じてスクリプトを再実行することをお勧めします。 スクリプト エラーのトラブルシューティングを行うには、/var/lib/ambari-agent/* フォルダー内のログを調べます。 または、Ambari UI の **[操作]** ページを開き、**run_customscriptaction** 操作を選択して、エラーの詳細を表示します。
 
 ---
 

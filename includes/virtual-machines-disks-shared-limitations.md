@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/30/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 76e52758bf88dde9cdc68dad974f0b65fd55140f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4a61399bbb75639fdf4f03da7b77f22a2136adbe
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025946"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99628945"
 ---
 一部の種類のディスクでのみ、共有ディスクを有効にできます。 現在のところ、Ultra ディスクと Premium SSD のみで共有ディスクを有効にできます。 共有ディスクが有効になっているマネージド ディスクはそれぞれ、次の制約を受けます。制限はディスクの種類別に整理されています。
 
@@ -37,7 +37,8 @@ Ultra ディスクを共有するとき、次の追加制限があります。
 - Azure 共有ディスクで可用性セットと仮想マシン スケール セットを使用している場合、仮想マシン障害ドメインによる[ストレージ障害ドメイン配置](../articles/virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)は共有データ ディスクには適用されません。
 - [近接配置グループ (PPG)](../articles/virtual-machines/windows/proximity-placement-groups.md) を使用する場合は、ディスクを共有するすべての仮想マシンが同じ PPG に含まれている必要があります。
 - Windows Server フェールオーバー クラスターの一部のバージョンでは、ベーシック ディスクのみを使用できます。詳細については、「[フェールオーバー クラスタリングのハードウェア要件と記憶域オプション](/windows-server/failover-clustering/clustering-requirements)」を参照してください。
-- Azure Backup および Azure Site Recovery のサポートは、まだ使用できません。
+- Azure Site Recovery のサポートは、まだ使用できません。
+- Azure Backup は [Azure ディスク バックアップ (プレビュー)](../articles/backup/disk-backup-overview.md) を通じて利用できます。
 
 #### <a name="regional-availability"></a>リージョン別の提供状況
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 2da90a2c8950d85d8db2a414bbe63dfc7b94cf01
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 75882701984dfff3005aa3661274a8dc94b22a28
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601321"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596349"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Azure Machine Learning でソフトウェア環境を作成して使用する
 
@@ -205,7 +205,8 @@ myenv = Environment.from_existing_conda_environment(name="myenv",
 環境定義は、[`save_to_directory()`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=truesave-to-directory-path--overwrite-false-) メソッドを使用して、簡単に編集できる形式でディレクトリに保存できます。 変更が完了すると、そのディレクトリからファイルを読み込んで、新しい環境をインスタンス化できます。
 
 ```python
-myenv = Environment.save_to_directory(path="path-to-destination-directory", overwrite=False)
+# save the enviroment
+myenv.save_to_directory(path="path-to-destination-directory", overwrite=False)
 # modify the environment definition
 newenv = Environment.load_from_directory(path="path-to-source-directory")
 ```
@@ -398,7 +399,7 @@ service = Model.deploy(
 
 ## <a name="notebooks"></a>ノートブック
 
-こちらの[記事](./how-to-run-jupyter-notebooks.md#add-new-kernels)では、Conda 環境をカーネルとしてノートブックにインストールする方法についての情報が提供されています。
+こちらの[記事](./how-to-access-terminal.md#add-new-kernels)では、Conda 環境をカーネルとしてノートブックにインストールする方法についての情報が提供されています。
 
 [カスタム Docker イメージを使用するモデルのデプロイ方法](how-to-deploy-custom-docker-image.md)に関するページでは、カスタム Docker ベース イメージを使用してモデルをデプロイする方法を示します。
 

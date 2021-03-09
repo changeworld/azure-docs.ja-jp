@@ -27,7 +27,7 @@ Azure portal を使用して新しい Azure HPC Cache を作成する前に、�
 
   [![ビデオのサムネイル画像:Azure HPC Cache:しくみ (クリックするとビデオ ページに移動します)](media/video-2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
 
-* [前提条件](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/) - NAS ストレージ、Azure BLOB ストレージ、ネットワーク アクセス、およびクライアント アクセスの要件について説明します
+* [前提条件](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/) - NAS ストレージ、Azure Blob Storage、ネットワーク アクセス、およびクライアント アクセスの要件について説明します
 
   [![ビデオのサムネイル画像:Azure HPC Cache:前提条件 (クリックするとビデオ ページに移動します)](media/video-3-prerequisites.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
 

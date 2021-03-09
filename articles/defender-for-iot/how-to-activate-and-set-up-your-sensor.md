@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4ad1562bdd9853b6ff3c537790a54dbeab96b5b8
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 56f6c9d3ff3093c3acd28b670e37f823ad5e9f9a
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538568"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522514"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>センサーをアクティブ化してセットアップする
 
@@ -81,7 +81,7 @@ ms.locfileid: "98538568"
 
     :::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-sensor-log-in-screen.png" alt-text="Azure Defender for IoT センサー。":::
 
-1. センサーのインストール中に定義された資格情報を入力します。 Arrow から構成済みセンサーを購入した場合は、まずパスワードを生成します。 パスワードの回復の詳細については、[初回サインインでのパスワード エラーの調査](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md#investigate-password-failure-at-initial-sign-in)に関する記事を参照してください。
+1. センサーのインストール中に定義された資格情報を入力するか、 **[パスワードの回復]** オプションを選択します。 Arrow から構成済みセンサーを購入した場合は、まずパスワードを生成します。 パスワードの回復の詳細については、[初回サインインでのパスワード エラーの調査](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md#investigate-password-failure-at-initial-sign-in)に関する記事を参照してください。
 
 1. サインインすると、 **[Activation]\(アクティブ化\)** ダイアログ ボックスが開きます。 **[アップロード]** を選択し、センサーのオンボード中にダウンロードしたアクティブ化ファイルにアクセスします。
 
@@ -134,9 +134,9 @@ CA 署名証明書のアップロード後に、画面を更新する必要が�
 
 ## <a name="initial-setup-and-learning-for-administrators"></a>初期セットアップと学習 (管理者向け)
 
-初めてサインインすると、Azure Defender for IoT センサーによってネットワークの監視が自動的に開始されます。 資産マップと資産インベントリのセクションにネットワーク資産が表示されます。 Azure Defender for IoT によって、ネットワークで発生するすべてのセキュリティと運用上のインシデントの検出とアラートが開始されます。 その後、検出された情報に基づいてレポートとクエリを作成できます。
+初めてサインインすると、Azure Defender for IoT センサーによってネットワークの監視が自動的に開始されます。 ネットワーク デバイスがデバイス マップとデバイス インベントリのセクションに表示されます。 Azure Defender for IoT によって、ネットワークで発生するすべてのセキュリティと運用上のインシデントの検出とアラートが開始されます。 その後、検出された情報に基づいてレポートとクエリを作成できます。
 
-最初、このアクティビティは学習モードで実行されます。これは、ネットワークの通常のアクティビティを学習するようセンサーに指示するものです。 たとえば、ネットワークで検出された資産、ネットワークで検出されたプロトコル、特定の資産間で発生するファイル転送がセンサーによって学習されます。 このアクティビティがネットワークのベースライン アクティビティになります。
+最初、このアクティビティは学習モードで実行されます。これは、ネットワークの通常のアクティビティを学習するようセンサーに指示するものです。 たとえば、ネットワークで検出されたデバイス、ネットワークで検出されたプロトコル、特定のデバイス間で発生するファイル転送がセンサーによって学習されます。 このアクティビティがネットワークのベースライン アクティビティになります。
 
 ### <a name="review-and-update-basic-system-settings"></a>基本システム設定を確認および更新する
 
@@ -181,7 +181,7 @@ CA 署名証明書のアップロード後に、画面を更新する必要が�
 | -----------|--|--|
 | ダッシュボード | :::image type="icon" source="media/concept-sensor-console-overview/dashboard-icon-azure.png" border="false"::: | ネットワークのセキュリティの状態に関する直感的なスナップショットを表示します。 |
 | デバイス マップ | :::image type="icon" source="media/concept-sensor-console-overview/asset-map-icon-azure.png" border="false"::: | マップ内のネットワーク デバイス、デバイス接続、およびデバイス プロパティを表示します。 さまざまなズーム、強調表示、およびフィルターのオプションを使用して、ネットワークを表示できます。 |
-| デバイスのインベントリ | :::image type="icon" source="media/concept-sensor-console-overview/asset-inventory-icon-azure.png" border="false":::  | デバイス インベントリには、センサーによって検出されたさまざまなデバイス属性が表示されます。 次のオプションを使用できます。 <br /> - テーブルのフィールドに従って情報をフィルター処理し、フィルター処理された情報を表示します。 <br /> - CSV ファイルに情報をエクスポートします。 <br /> - Windows レジストリの詳細をインポートします。|
+| デバイスのインベントリ | :::image type="icon" source="media/concept-sensor-console-overview/asset-inventory-icon-azure.png" border="false":::  | デバイス インベントリには、センサーによって検出されたデバイス属性の一覧が表示されます。 次のオプションを使用できます。 <br /> - テーブルのフィールドに従って情報を並び変えるかフィルター処理し、フィルター処理された情報を表示します。 <br /> - CSV ファイルに情報をエクスポートします。 <br /> - Windows レジストリの詳細をインポートします。|
 | 警告 | :::image type="icon" source="media/concept-sensor-console-overview/alerts-icon-azure.png" border="false"::: | ポリシー違反が発生した場合、ベースライン動作からの逸脱が発生した場合、またはネットワーク内で各種の疑わしいアクティビティが検出された場合にアラートを表示します。 |
 | Reports | :::image type="icon" source="media/concept-sensor-console-overview/reports-icon-azure.png" border="false"::: | データ マイニング クエリに基づくレポートを表示します。 |
 
@@ -196,7 +196,7 @@ CA 署名証明書のアップロード後に、画面を更新する必要が�
 | ウィンドウ | アイコン | 説明 |
 |---|---|---|
 | データ マイニング | :::image type="icon" source="media/concept-sensor-console-overview/data-mining-icon-azure.png" border="false"::: | さまざまなレイヤーにおけるネットワーク デバイスに関する包括的で詳細な情報を生成します。 |
-| 傾向と統計 | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | さまざまなウィジェットでの傾向と統計を表示します。 |
+| 調査 | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | さまざまなウィジェットでの傾向と統計を表示します。 |
 | リスク評価 | :::image type="icon" source="media/concept-sensor-console-overview/vulnerabilities-icon-azure.png" border="false"::: | **[Vulnerabilities]\(脆弱性\)** ウィンドウを表示します。 |
 
 **管理者**
@@ -204,7 +204,7 @@ CA 署名証明書のアップロード後に、画面を更新する必要が�
 | ウィンドウ | アイコン | 説明 |
 |---|---|---|
 | Users | :::image type="icon" source="media/concept-sensor-console-overview/users-icon-azure.png" border="false"::: | さまざまなアクセス レベルでユーザーとロールを定義します。 |
-| 転送 | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Defender for IoT と統合しているパートナーへのアラート情報を、電子メール アドレスや Webhook サーバーなどに転送します。 <br /> 詳細については、「[アラート情報を転送する](how-to-forward-alert-information-to-partners.md)」を参照してください。 |
+| 転送 | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Defender for IoT と統合しているパートナーおよび内部ソース (Azure Sentinel など) へのアラート情報を、電子メール アドレスや Webhook サーバーなどに転送します。 <br /> 詳細については、「[アラート情報を転送する](how-to-forward-alert-information-to-partners.md)」を参照してください。 |
 | システムの設定 | :::image type="icon" source="media/concept-sensor-console-overview/system-settings-icon-azure.png" border="false"::: | システム設定を構成します。 たとえば、DHCP 設定を定義したり、メール サーバーの詳細を指定したり、ポートのエイリアスを作成したりします。 |
 | 設定のインポート | :::image type="icon" source="media/concept-sensor-console-overview/import-settings-icon-azure.png" border="false"::: | **[設定のインポート]** ウィンドウを表示します。 デバイスの情報は手動で変更できます。<br /> 詳細については、「[デバイス情報をインポートする](how-to-import-device-information.md)」を参照してください。 |
 
@@ -214,7 +214,7 @@ CA 署名証明書のアップロード後に、画面を更新する必要が�
 |----|---|---|
 | サポート | :::image type="icon" source="media/concept-sensor-console-overview/support-icon-azure.png" border="false"::: | ヘルプが必要な場合は、[Microsoft サポート](https://support.microsoft.com/)にご連絡ください。 |
 
-### <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 [センサーをオンボードする](getting-started.md#4-onboard-a-sensor)
 

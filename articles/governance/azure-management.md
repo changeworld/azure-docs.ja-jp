@@ -1,14 +1,14 @@
 ---
 title: Azure 管理の概要 - Azure のガバナンス
 description: Azure 管理ツールに関するコンテンツへのリンクを含む、Azure のアプリケーションおよびリソースの管理の領域の概要です。
-ms.date: 09/09/2020
+ms.date: 02/05/2021
 ms.topic: overview
-ms.openlocfilehash: 8ffb37cd1db5740ed022b52cd9687bb3db1632bb
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 754fe496b790a7ee32eb840109a60a04ee66ef97
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949498"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593927"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Azure 管理の領域とは
 
@@ -33,7 +33,7 @@ Azure のガバナンスには、その一部として監視が含まれてい�
 ## <a name="configure"></a>構成
 
 構成とは、リソースの初期デプロイと構成、および継続的な保守のことです。
-これらのタスクを自動化すれば、冗長性を排除し、時間と手間を最小限に抑えて正確性と効率性を高めることができます。 [Azure Automation](../automation/automation-intro.md) は、構成タスクを自動化するためのサービスを多数提供します。 Runbook はプロセスの自動化を処理しますが、構成を管理する際には、構成および更新の管理が役立ちます。
+これらのタスクを自動化すれば、冗長性を排除し、時間と手間を最小限に抑えて正確性と効率性を高めることができます。 [Azure Automation](../automation/automation-intro.md) は、構成タスクを自動化するためのサービスを多数提供します。 Runbook がプロセスの自動化を処理する一方で、構成および更新管理は構成の管理に役立ちます。
 
 ## <a name="govern"></a>ガバナンス
 

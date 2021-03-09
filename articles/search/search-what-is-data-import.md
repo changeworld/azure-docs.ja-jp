@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: b57d55e91918ba612ad42acd5e6059ae0dbd0090
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: aa44a27fa5bf6b7b4ea649e1a9b9a69ef8cd78d3
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422452"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049323"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>データ インポートの概要 - Azure Cognitive Search
 
-Azure Cognitive Search では、[検索インデックス](search-what-is-an-index.md)に読み込まれて保存されたコンテンツに対してクエリが実行されます。 この記事では、インデックスを取り込む 2 つの基本的な手法について詳しく見ていきます。1 つは、プログラムを使用してデータをインデックスに " *プッシュ* " する方法、もう 1 つは、サポート対象データ ソースで [Azure Cognitive Search のインデクサー](search-indexer-overview.md)をポイントしてデータを " *プル* " する方法です。
+Azure Cognitive Search では、[検索インデックス](search-what-is-an-index.md)に読み込まれて保存されたコンテンツに対してクエリが実行されます。 この記事では、インデックスを取り込む 2 つの基本的な手法について詳しく見ていきます。1 つは、プログラムを使用してデータをインデックスに "*プッシュ*" する方法、もう 1 つは、サポート対象データ ソースで [Azure Cognitive Search のインデクサー](search-indexer-overview.md)をポイントしてデータを "*プル*" する方法です。
 
 どちらの方法も、目的は外部データ ソースから Azure Cognitive Search インデックスにデータを読み込むことです。 Azure Cognitive Search では空のインデックスを作成できますが、そのインデックスには、データをプッシュまたはプルするまでクエリを実行できません。
 
@@ -63,7 +63,7 @@ REST API では、JSON 要求本文を利用して HTTP POST 要求を Azure Cog
 
 [REST API を使用してインデックスを検索する](/rest/api/searchservice/Search-Documents)方法は 2 とおりあります。 その 1 つは、要求本文の JSON オブジェクトにクエリ パラメーターが定義された HTTP POST 要求を発行する方法です。 もう 1 つは、要求 URL にクエリ パラメーターが定義された HTTP GET 要求を発行する方法です。 POST の方が GET よりもクエリ パラメーターのサイズの[制限が緩やか](/rest/api/searchservice/Search-Documents)です。 そのため、GET の方が便利である特殊な状況を除いて、POST を使用することをお勧めします。
 
-POST と GET のどちらについても、要求 URL で *サービス名* 、 *インデックス名* 、および *API バージョン* を指定する必要があります。 
+POST と GET のどちらについても、要求 URL で *サービス名*、*インデックス名*、および *API バージョン* を指定する必要があります。 
 
 GET の場合は、URL の末尾の *クエリ文字列* でクエリ パラメーターを指定します。 この URL の形式については、以下を参照してください。
 
@@ -75,12 +75,14 @@ POST の形式も同じですが、クエリ文字列のパラメーターで `a
 
 ## <a name="pulling-data-into-an-index"></a>インデックスへのデータのプル
 
-プル モデルは、サポートされているデータ ソースをクロールし、データをインデックスに自動的にアップロードします。 Azure Cognitive Search では、この機能が " *インデクサー* " を使用して実装され、現時点ではこれらのプラットフォームで利用可能です。
+プル モデルは、サポートされているデータ ソースをクロールし、データをインデックスに自動的にアップロードします。 Azure Cognitive Search では、この機能が "*インデクサー*" を使用して実装され、現時点ではこれらのプラットフォームで利用可能です。
 
 + [Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Table Storage](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure SQL Database、SQL Managed Instance、および Azure VM 上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [SharePoint Online (プレビュー)](search-howto-index-sharepoint-online.md)
++ [Azure Data Lake Storage Gen2 (プレビュー)](search-howto-index-azure-data-lake-storage.md)
 
 インデクサーは、インデックスをデータ ソース (通常はテーブル、ビュー、または同等の構造体) に接続し、ソース フィールドをインデックスの同等のフィールドにマップします。 実行中、行セットが自動的に JSON に変換され、指定したインデックスに読み込まれます。 すべてのインデクサーはスケジューリングをサポートしているため、データの更新頻度を指定できます。 ほとんどのインデクサーは、変更の追跡を提供します (データ ソースでサポートされている場合)。 インデクサーは、新しいドキュメントを認識するだけでなく、既存のドキュメントの変更と削除を追跡するため、インデックス内のデータをアクティブに管理する必要がありません。
 

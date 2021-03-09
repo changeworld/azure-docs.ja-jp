@@ -7,31 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/14/2020
-ms.openlocfilehash: 3f55e2a7d62d2f32173d382dc9be0d6eb4f83fae
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 02/15/2021
+ms.openlocfilehash: 8a61ad1599a2d4d1aeaf8b36d2f92d95ec1896a0
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249756"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573040"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>クイック スタート:ポータルで Azure Cognitive Search サービスを作成する
 
-Azure Cognitive Search は、カスタム アプリに検索エクスペリエンスを追加するために使用されるスタンドアロンのリソースです。 Cognitive Search は、他の Azure サービス、ネットワーク サーバー上のアプリ、または他のクラウド プラットフォーム上で実行されているソフトウェアと簡単に統合できます。
+[Azure Cognitive Search](search-what-is-azure-search.md) は、カスタム アプリにフルテキスト検索エクスペリエンスを追加する際に使用される Azure リソースです。 データや二次的な処理を提供する他の Azure サービス、ネットワーク サーバー上のアプリ、他のクラウド プラットフォーム上で実行されているソフトウェアと簡単に統合できます。
 
-この記事では、[Azure portal](https://portal.azure.com/) 内でリソースを作成する方法を説明します。
+検索サービスは、[Azure portal](https://portal.azure.com/) を使用して作成できます。この記事で取り上げているのは、その方法です。 その他、[Azure PowerShell](search-manage-powershell.md)、[Azure CLI](/cli/azure/search)、[Azure Resource Manager サービス テンプレート](https://azure.microsoft.com/resources/templates/101-azure-search-create/)を使用することもできます。
 
 [![アニメーション GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
-
-PowerShell をお好みですか? Azure Resource Manager [サービス テンプレート](https://azure.microsoft.com/resources/templates/101-azure-search-create/)をご使用ください。 作業の開始にあたっては、[PowerShell を使用して Azure Cognitive Search サービスを管理する方法](search-manage-powershell.md)に関するページを参照してください。
 
 ## <a name="before-you-start"></a>開始する前に
 
 次のサービス プロパティは、サービスの有効期間にわたって固定されます。これらのいずれかを変更するには、新しいサービスが必要です。 これらは固定されているため、各プロパティを入力するときに使用の影響を考慮してください。
 
-* サービス名は URL エンドポイントの一部になります (有用なサービス名については、[ヒントを再確認](#name-the-service)してください)。
-* [サービス レベル](search-sku-tier.md)によって料金が変わり、容量の上限が設定されます。 一部の機能は、Free レベルでは使用できません。
-* サービス リージョンによって、特定のシナリオの可用性が決まる場合があります。 [高セキュリティ機能](search-security-overview.md)または [AI エンリッチメント](cognitive-search-concept-intro.md)が必要な場合は、Azure Cognitive Search を他のサービスと同じリージョンに配置するか、対象の機能が提供されているリージョンに配置する必要があります。 
++ サービス名は URL エンドポイントの一部になります (有用なサービス名については、[ヒントを再確認](#name-the-service)してください)。
++ [サービス レベル](search-sku-tier.md)によって料金が変わり、容量の上限が設定されます。 一部の機能は、Free レベルでは使用できません。
++ サービス リージョンによって、特定のシナリオの可用性が決まる場合があります。 [高セキュリティ機能](search-security-overview.md)または [AI エンリッチメント](cognitive-search-concept-intro.md)が必要な場合は、Azure Cognitive Search を他のサービスと同じリージョンに作成するか、対象の機能が提供されているリージョンに作成する必要があります。 
 
 ## <a name="subscribe-free-or-paid"></a>サブスクリプション (無料または有料)
 
@@ -43,7 +41,7 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-1. 左上隅のプラス記号 ([+ リソースの作成]) をクリックします。
+1. 左上隅のプラス記号 ( **[+ リソースの作成]** ) をクリックします。
 
 1. 検索バーを使用して "Azure Cognitive Search" を検索するか、 **[Web]**  >  **[Azure Cognitive Search]** を選択してリソースに移動します。
 
@@ -74,33 +72,30 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 
 サービス名の要件:
 
-* search.windows.net 名前空間内で一意である
-* 長さは 2 文字から 60 文字の範囲にする
-* 小文字、数字、ダッシュ ("-") を使用する
-* 最初の 2 文字または最後の 1 文字にダッシュ ("-") を使用しない
-* 連続するダッシュ ("-") はどこにも使用しない
++ search.windows.net 名前空間内で一意である
++ 長さは 2 文字から 60 文字の範囲にする
++ 小文字、数字、ダッシュ ("-") を使用する
++ 最初の 2 文字または最後の 1 文字にダッシュ ("-") を使用しない
++ 連続するダッシュ ("-") はどこにも使用しない
 
 > [!TIP]
 > 複数のサービスを使用する予定がある場合、名前付け規則として、サービス名にリージョン (場所) を含めることをお勧めします。 同じリージョン内のサービスはデータを無料で交換することができます。したがって、Azure Cognitive Search とそれ以外のサービスが米国西部にある場合、`mysearchservice-westus` のような名前を付けておけば、リソースの組み合わせ (関連付け) を決めるときに逐一プロパティ ページを確認する手間が省けます。
 
 ## <a name="choose-a-location"></a>場所を選択する
 
-Azure Cognitive Search はほとんどのリージョンで利用できます。 サポートされているリージョンの一覧は、[価格のページ](https://azure.microsoft.com/pricing/details/search/)にあります。
+Azure Cognitive Search は、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=search)」に記載されているように、ほとんどのリージョンで利用できます。 一般に、複数の Azure サービスを使用している場合は、データまたはアプリケーション サービスもホストしているリージョンを選択します。 そのようにすることで、送信データの帯域幅使用料を最小限またはゼロに抑えられます (サービスが同じリージョンにある場合、送信データには課金されません)。
 
-> [!Note]
-> インド中部とアラブ首長国連邦北部では、現在、新しいサービスを使用できません。 既にそれらのリージョンで使用できるサービスについては、制限なしでスケールアップでき、サービスはそのリージョンで完全にサポートされます。 制限は一時的なものであり、新しいサービスのみに限定されます。 制限が適用されなくなったら、この注記を削除する予定です。
->
-> 二重暗号化は特定のリージョンでのみ利用できます。 詳細については、[二重暗号化](search-security-overview.md#double-encryption)に関するページを参照してください。
++ [AI エンリッチメント](cognitive-search-concept-intro.md)を使用するには、Cognitive Services が Azure Cognitive Search と同じ物理リージョンに存在する必要があります。 そのため、片方の機能しか提供していないリージョンは少数です。 「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=search)」ページで、縦にチェック マークが 2 つ並んでいれば、両方の機能が利用できます。 どちらも利用できなければ、チェックマークは表示されません。
 
-### <a name="requirements"></a>必要条件
+  :::image type="content" source="media/search-create-service-portal/region-availability.png" alt-text="リージョン別の提供状況" border="true":::
 
- AI エンリッチメントを使用している場合は、Cognitive Services と同じリージョンに検索サービスを作成します。 *Azure Cognitive Search と Cognitive Services を同じリージョンに配置することは、AI エンリッチメントの要件です*。
++ 事業継続とディザスター リカバリー (BCDR) の要件は、[リージョン ペア](../best-practices-availability-paired-regions.md#azure-regional-pairs)に複数の検索サービスを作成することによって満たすことができます。 たとえば、北米で活動している場合は、各検索サービスについて米国東部と米国西部や、米国中北部と米国中南部などを選択できます。
 
- 事業継続とディザスター リカバリー (BCDR) の要件を持つお客様は、[リージョンのペア](../best-practices-availability-paired-regions.md#azure-regional-pairs)にそれらのサービスを作成する必要があります。 たとえば、北米で活動している場合は、各サービスについて米国東部と米国西部や、米国中北部と米国中南部などを選択できます。
+いくつかの機能は、リージョンによっては利用が制限されています。 制限事項については、機能のドキュメントを参照してください。
 
-### <a name="recommendations"></a>Recommendations
++ [二重暗号化](search-security-overview.md#double-encryption)
 
-複数の Azure サービスを使用している場合は、データまたはアプリケーション サービスもホストしているリージョンを選択します。 そのようにすることで、送信データの帯域幅使用料を最小限またはゼロに抑えられます (サービスが同じリージョンにある場合、送信データには課金されません)。
++ [可用性ゾーン (「パフォーマンスのためのスケール」)](search-performance-optimization.md#availability-zones)
 
 ## <a name="choose-a-pricing-tier"></a>Choose a pricing tier
 
@@ -126,7 +121,7 @@ Azure Cognitive Search は現在、[複数の価格レベル](https://azure.micr
 
 1. **[概要]** ページの右側から、URL エンドポイントを探してコピーします。
 
-2. **[キー]** のページで、いずれかの管理者キー (同等) をコピーします。 ご利用のサービスのオブジェクトを作成、更新、削除するためには、管理者の API キーが必要です。 これに対し、クエリ キーはインデックス コンテンツへの読み取りアクセスを提供します。
+1. **[キー]** のページで、いずれかの管理者キー (同等) をコピーします。 ご利用のサービスのオブジェクトを作成、更新、削除するためには、管理者の API キーが必要です。 これに対し、クエリ キーはインデックス コンテンツへの読み取りアクセスを提供します。
 
    :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="URL エンドポイントを含むサービスの概要ページ" border="false":::
 
@@ -136,9 +131,9 @@ Azure Cognitive Search は現在、[複数の価格レベル](https://azure.micr
 
 サービスのプロビジョニングが完了したら、ニーズに合わせてサービスを拡張できます。 Azure Cognitive Search サービスの Standard レベルを選択している場合は、レプリカとパーティションの 2 つのディメンションでご利用のサービスをスケーリングできます。 Basic レベルを選択した場合は、レプリカのみ追加できます。 無料サービスをプロビジョニングした場合、拡張は利用できません。
 
-"**_パーティション_* _" を使用すると、サービスでより多くのドキュメントを格納し、検索できます。
+***パーティション*** を使用すると、サービスでより多くのドキュメントを格納し、検索できます。
 
-"_*_レプリカ_*_" を使用すると、より大きい検索クエリの負荷をサービスが処理できます。
+***レプリカ*** を使用すると、より大きい検索クエリの負荷をサービスが処理できます。
 
 リソースを追加すると、月ごとの請求が増加します。 [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使うと、リソース追加の課金への影響を把握できます。 負荷に基づいてリソースを調整できることに注意してください。 たとえば、リソースを増やして完全な初期インデックスを作成した後、増分インデックス作成に適したレベルまでリソースを減らすことができます。
 
@@ -146,8 +141,8 @@ Azure Cognitive Search は現在、[複数の価格レベル](https://azure.micr
 > サービスでは、[読み取り専用の SLA の場合は 2 つのレプリカ、読み取り/書き込み SLA の場合は 3 つのレプリカ](https://azure.microsoft.com/support/legal/sla/search/v1_0/)が必要です。
 
 1. Azure Portal で検索サービス ページを開きます。
-2. 左側のナビゲーション ペインで、_ *[設定]* * > **[スケール]** を選択します。
-3. スライダーを使って、いずれかの種類のリソースを追加します。
+1. 左のナビゲーション ウィンドウで、 **[設定]**  >  **[スケール]** を選択します。
+1. スライダーを使って、いずれかの種類のリソースを追加します。
 
 :::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="レプリカとパーティションを使用して容量を追加する" border="false":::
 

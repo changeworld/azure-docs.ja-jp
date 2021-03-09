@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: ba5dd0ccc06a443378f87cfb92da76616ad67263
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 80abe036ef4a08f7ed6f0f19cffc2abde70a6ea9
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029517"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981308"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning 推論環境をセキュリティで保護する
 
@@ -205,6 +205,7 @@ except:
     prov_config.service_cidr = "10.0.0.0/16"
     prov_config.dns_service_ip = "10.0.0.10"
     prov_config.subnet_name = subnet_name
+    prov_config.load_balancer_subnet = subnet_name
     prov_config.docker_bridge_cidr = "172.17.0.1/16"
 
     # Create compute target
@@ -256,7 +257,7 @@ Azure Container Instances は、モデルのデプロイ時に動的に作成さ
 > * Azure Machine Learning ワークスペースと同じリソース グループ内にあること。
 > * ワークスペースに __プライベート エンドポイント__ がある場合、Azure Container Instances に使用される仮想ネットワークは、ワークスペースのプライベート エンドポイントで使用されているものと同じである必要があります。
 >
-> 仮想ネットワーク内で Azure Container Instances を使用する場合、ご使用のワークスペースの Azure Container Registry (ACR) もその仮想ネットワーク内に配置することはできません。
+> 仮想ネットワーク内で Azure Container Instances を使用する場合、ご使用のワークスペースの Azure Container Registry (ACR) をその仮想ネットワーク内に配置することはできません。
 
 ワークスペースに対する仮想ネットワークで ACI を使用するには、次の手順のようにします。
 

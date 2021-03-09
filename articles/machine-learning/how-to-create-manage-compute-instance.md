@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 40882f2a0c1a65650d633d0784214afbeef9ae63
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5fc5b52cb8fb4d654bef136f44d8579036921364
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842891"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097196"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスを作成して管理する
 
@@ -44,7 +44,7 @@ Azure Machine Learning ワークスペースで[コンピューティング イ�
 
 **推定所要時間**: 約 5 分です。
 
-コンピューティング インスタンスの作成は、ワークスペースに対する 1 回限りのプロセスです。 このコンピューティングは、開発ワークステーションとして、またはトレーニング用のコンピューティング ターゲットとして再利用できます。 ワークスペースには複数のコンピューティング インスタンスをアタッチすることができます。
+コンピューティング インスタンスの作成は、ワークスペースに対する 1 回限りのプロセスです。 このコンピューティングは、開発ワークステーションとして、またはトレーニング用のコンピューティング先として再利用できます。 ワークスペースには複数のコンピューティング インスタンスをアタッチすることができます。
 
 コンピューティング インスタンスの作成に適用されるリージョンあたりの専用コア数は、VM ファミリ クォータ別およびリージョン合計クォータ別に、Azure Machine Learning コンピューティング クラスターのクォータと統合され、共有されます。 コンピューティング インスタンスを停止しても、コンピューティング インスタンスを再起動できるように、クォータは解放されません。 コンピューティング インスタンスを一旦作成したら、その仮想マシンのサイズを変更できないことにご注意ください。
 
@@ -125,7 +125,7 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
 
 ## <a name="manage"></a>管理する
 
-コンピューティング インスタンスを開始、停止、再起動、および削除します。 コンピューティング インスタンスは自動的にスケールダウンされません。そのため、継続して課金されることがないように、リソースを必ず停止してください。
+コンピューティング インスタンスを開始、停止、再起動、削除します。 コンピューティング インスタンスは自動的にスケールダウンされません。そのため、継続して課金されることがないように、リソースを必ず停止してください。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -226,7 +226,7 @@ Azure Machine Learning Studio 内のご利用のワークスペースで、 **[�
 
 ---
 
-[Azure RBAC](../role-based-access-control/overview.md) を使用すると、ワークスペース内のどのユーザーにコンピューティング インスタンスの作成、削除、開始、停止、再起動を許可するかを制御できます。 ワークスペースの共同作成者および所有者ロール内のユーザーはすべて、ワークスペース全体でコンピューティング インスタンスを作成、削除、開始、停止、および再起動することができます。 ただし、特定のコンピューティング インスタンスの作成者、またはその作成者に代わって作成された場合は割り当てられたユーザーのみが、そのコンピューティング インスタンス上の Jupyter、JupyterLab、および RStudio にアクセスすることが許可されます。 コンピューティング インスタンスは、ルート アクセス権を持つ 1 人のユーザー専用で、Jupyter/JupyterLab/RStudio を介してターミナルを使用できます。 コンピューティング インスタンスには、シングルユーザー ログインが用意され、すべてのアクションで、そのユーザーの ID が Azure RBAC と実験実行の属性で使用されます。 SSH アクセスは、公開/秘密キーのメカニズムを通じて制御されます。
+[Azure RBAC](../role-based-access-control/overview.md) を使用すると、ワークスペース内のどのユーザーにコンピューティング インスタンスの作成、削除、開始、停止、再起動を許可するかを制御できます。 ワークスペースの共同作成者および所有者ロール内のユーザーはすべて、ワークスペース全体でコンピューティング インスタンスを作成、削除、開始、停止、および再起動することができます。 ただし、特定のコンピューティング インスタンスの作成者、またはその作成者に代わって作成された場合は割り当てられたユーザーのみが、そのコンピューティング インスタンス上の Jupyter、JupyterLab、および RStudio にアクセスすることが許可されます。 コンピューティング インスタンスは、ルート アクセス権を持つ 1 人のユーザー専用で、Jupyter/JupyterLab/RStudio を介してターミナルを使用できます。 コンピューティング インスタンスには、シングルユーザー サインインが用意され、すべてのアクションで、そのユーザーの ID が Azure RBAC と実験実行の属性で使用されます。 SSH アクセスは、公開/秘密キーのメカニズムを通じて制御されます。
 
 Azure RBAC によって、次のアクションを制御できます。
 * *Microsoft.MachineLearningServices/workspaces/computes/read*
@@ -236,62 +236,8 @@ Azure RBAC によって、次のアクションを制御できます。
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
 
+## <a name="next-steps"></a>次のステップ
 
-## <a name="access-the-terminal-window"></a>ターミナル ウィンドウにアクセスする
-
-次のいずれかの方法で、コンピューティング インスタンスのターミナル ウィンドウを開きます。
-
-* RStudio: 左上にある **[Terminal]** を選択します。
-* Jupyter Lab: [Launcher] タブの見出し **[Other]** の下にある **[Terminal]** タイルを選択します。
-* Jupyter: [Files] タブの右上にある **[New] > [Terminal]** を選択します。
-* コンピューティング インスタンスの作成時に SSH アクセスを有効にした場合は、マシンに SSH 接続します。
-
-ターミナル ウィンドウを使用して、パッケージのインストールおよび追加のカーネルの作成を行います。
-
-## <a name="install-packages"></a>パッケージをインストールする
-
-パッケージを Jupyter Notebook または RStudio に直接インストールできます。
-
-* RStudio: 右下にある **[Packages]** タブ、または左上にある **[Console]** タブを使用します。  
-* Python: インストール コードを追加して、Jupyter Notebook のセルで実行します。
-
-または、ターミナル ウィンドウからインストールすることもできます。 Python パッケージを **Python 3.6 - AzureML** 環境にインストールします。  R パッケージを **R** 環境にインストールします。
-
-> [!NOTE]
-> Notebook 内のパッケージ管理については、すべてのパッケージ (現在実行されているカーネルの外部のパッケージを含む) を参照する **!pip** または **!conda** ではなく、 **%pip** または **%conda** マジック関数を使用して、**現在実行中のカーネル** にパッケージを自動的にインストールします
-
-## <a name="add-new-kernels"></a>新しいカーネルを追加する
-
-> [!WARNING]
->  コンピューティング インスタンスをカスタマイズするときは、**azureml_py36** conda 環境も **Python 3.6 - AzureML** カーネルも決して削除しないようにしてください。 Jupyter/JupyterLab 機能に必要です
-
-新しい Jupyter カーネルをコンピューティング インスタンスに追加するには、次のようにします。
-
-1. Jupyter、JupyterLab から、または [ノートブック] ウィンドウから新しいターミナルを作成するか、またはコンピューティング インスタンスに SSH 接続します
-2. ターミナル ウィンドウを使用して、新しい環境を作成します。  たとえば、次のコードでは `newenv` が作成されます。
-
-    ```shell
-    conda create --name newenv
-    ```
-
-3. 環境をアクティブにします。  `newenv` を作成した後の例を次に示します。
-
-    ```shell
-    conda activate newenv
-    ```
-
-4. pip と ipykernel パッケージを新しい環境にインストールし、その conda 環境用のカーネルを作成します
-
-    ```shell
-    conda install pip
-    conda install ipykernel
-    python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
-    ```
-
-任意の[使用可能な Jupyter カーネル](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels)をインストールできます。
-
-
-
-## <a name="next-steps"></a>次の手順
-
+* [コンピューティング インスタンス ターミナルにアクセスする](how-to-access-terminal.md)
+* [ファイルの作成と管理](how-to-manage-files.md)
 * [トレーニングの実行を送信する](how-to-set-up-training-targets.md)

@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 02/16/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 02661c9c2a581ab21a2ae9dc31e5da95426c0edd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 24fbe843986b732a04c9e356c54f3d768d6739be
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843385"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558182"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>Azure Key Vault に格納されているカスタマー マネージド キーによる暗号化を構成する
 
@@ -175,10 +175,11 @@ Azure Storage では、暗号化に使用されているカスタマー マネ�
 Azure portal でキーのバージョンを自動更新するようにカスタマー マネージド キーを構成するには、次の手順を実行します。
 
 1. ストレージ アカウントに移動します。
-1. ストレージ アカウントの **[設定]** ブレードで、 **[暗号化]** をクリックします。 次の図に示すように、 **[カスタマー マネージド キー]** オプションを選択します。
+1. ストレージ アカウントの **[設定]** ブレードで、 **[暗号化]** をクリックします。 次の図に示すように、既定ではキー管理は **[Microsoft マネージド キー]** に設定されています。
 
     ![暗号化オプションが表示されているポータルのスクリーンショット](./media/customer-managed-keys-configure-key-vault/portal-configure-encryption-keys.png)
 
+1. **[カスタマー マネージド キー]** オプションを選択します。
 1. **[Select from Key Vault]\(キー コンテナーから選択\)** オプションを選択します。
 1. **[Select a key vault and key] (キー コンテナーとキーを選択する)** を選択します。
 1. 使用するキーを含むキー コンテナーを選択します。

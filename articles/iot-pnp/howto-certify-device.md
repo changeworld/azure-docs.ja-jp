@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b3ba007f03b3aa4883d9455dc43b2bc19676da59
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 43a568149ccf85579b4f8190974fff872d6e09ea
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803971"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199647"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>IoT プラグ アンド プレイ デバイスを認定する方法
 
@@ -51,13 +51,13 @@ IoT プラグ アンド プレイで実行されるアプリケーション コ�
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>Azure IoT 拡張機能 CLI でテストする
 
-Azure Certified Device ポータルを通じて認定を行うためにデバイスを送信する前に、[Azure IoT CLI 拡張機能](/cli/azure/ext/azure-iot/iot/product?preserve-view=true&view=azure-cli-latest)を使用して、デバイスの実装がモデルと一致することを確認できます。
+Azure Certified Device ポータルを通じて認定を行うためにデバイスを送信する前に、[Azure IoT CLI 拡張機能](/cli/azure/ext/azure-iot/iot/product)を使用して、デバイスの実装がモデルと一致することを確認できます。
 
 次の手順は、CLI を使用して認定テストを準備し、実行する方法を示しています。
 
 ### <a name="install-the-azure-iot-extension-for-the-azure-cli"></a>Azure CLI 用 Azure IoT 拡張機能をインストールする
 
-インストール手順を参照し、ご利用の環境に [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) を設定します。
+インストール手順を参照し、ご利用の環境に [Azure CLI](/cli/azure) を設定します。
 
 Azure IoT 拡張機能をインストールするには、次のコマンドを実行します。
 
@@ -65,7 +65,7 @@ Azure IoT 拡張機能をインストールするには、次のコマンドを�
 az extension add --name azure-iot
 ```
 
-詳細については、「[Azure IoT の Azure CLI](/cli/azure/azure-cli-reference-for-iot?preserve-view=true&view=azure-cli-latest)」を参照してください。
+詳細については、「[Azure IoT の Azure CLI](/cli/azure/azure-cli-reference-for-iot)」を参照してください。
 
 ### <a name="create-a-new-product-test"></a>新しい製品のテストを作成する
 
@@ -79,7 +79,7 @@ az iot product test create --badge-type Pnp --at SymmetricKey --device-type Fini
 ```
 
 > [!NOTE]
-> CLI を使用する場合は、サブスクリプションに[サインインする](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest)必要があります。
+> CLI を使用する場合は、サブスクリプションに[サインインする](/cli/azure/authenticate-azure-cli)必要があります。
 
 コマンドからの JSON 出力には、デバイスを接続するときに使用する `primaryKey`、`registrationId`、`scopeID` が含まれています。
 

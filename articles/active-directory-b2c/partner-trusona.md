@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a0d5b369e1c143b3df4157329bcf7d3a3f7142d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99368da8b4018e93ad537e4722ffefd476e61291
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87489471"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573689"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>Trusona と Azure Active Directory B2C の統合
 
@@ -28,7 +28,7 @@ Trusona は、パスワードレス認証、多要素認証、およびデジタ
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](tutorial-create-tenant.md)。
-* Trusona の[試用版アカウント](https://www.trusona.com/aadb2c)
+* Trusona の[試用版アカウント](https://www.trusona.com/)
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -53,7 +53,7 @@ Trusona は、パスワードレス認証、多要素認証、およびデジタ
 
 ## <a name="onboard-with-trusona"></a>Trusona を使用してオンボードする
 
-1. [フォーム](https://www.trusona.com/aadb2c)に入力して、Trusona アカウントを作成し、作業を開始します。
+1. [フォーム](https://www.trusona.com/)に入力して、Trusona アカウントを作成し、作業を開始します。
 
 2. App Store から Trusona モバイル アプリをダウンロードします。 アプリをインストールし、電子メールを登録します。
 
@@ -67,7 +67,7 @@ Trusona は、パスワードレス認証、多要素認証、およびデジタ
 
 7. **[Create OpenID Connect Integration] (OpenID Connect 統合の作成)** を選択します。
 
-8. 任意の **[名前]** を指定し、以前に **[Client Redirect Host] (クライアント リダイレクト ホスト) フィールド**に入力したドメイン情報 (Contoso など) を使用します。  
+8. 任意の **[名前]** を指定し、以前に **[Client Redirect Host] (クライアント リダイレクト ホスト) フィールド** に入力したドメイン情報 (Contoso など) を使用します。  
 
    > [!NOTE]
    > Azure Active Directory の初期ドメイン名が、クライアント リダイレクト ホストとして使用されます。
@@ -125,7 +125,7 @@ Trusona は、パスワードレス認証、多要素認証、およびデジタ
 
 ### <a name="create-a-user-flow-policy"></a>ユーザー フロー ポリシーの作成
 
-これで、B2C ID プロバイダー内に Trusona が**新しい OpenID Connect ID プロバイダー**として表示されるはずです。
+これで、B2C ID プロバイダー内に Trusona が **新しい OpenID Connect ID プロバイダー** として表示されるはずです。
 
 1. Azure AD B2C テナントの **[ポリシー]** で、 **[ユーザー フロー]** を選択します。
 
@@ -135,7 +135,7 @@ Trusona は、パスワードレス認証、多要素認証、およびデジタ
 
 1. ポリシーの **[名前]** を入力します。
 
-1. **[ID プロバイダー]** セクションで、新しく作成した **Trusona ID プロバイダー**を選択します。
+1. **[ID プロバイダー]** セクションで、新しく作成した **Trusona ID プロバイダー** を選択します。
 
    > [!NOTE]
    > Trusona は本質的に多要素であるため、多要素認証を無効にしておくことをお勧めします。

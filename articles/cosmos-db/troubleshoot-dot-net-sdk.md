@@ -3,18 +3,18 @@ title: Azure Cosmos DB .NET SDK の使用時の問題を診断しトラブルシ
 description: クライアント側のログや他のサード パーティ製ツールなどの機能を使って、.NET SDK 使用時の Azure Cosmos DB の問題を特定、診断、およびトラブルシューティングします。
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 09/12/2020
+ms.date: 02/05/2021
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6a78b38bd71a2822d94e58834ab17824c9ef6ec6
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 04813b9d70557314e619fded5294644f5f6fadf5
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683105"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831248"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK の使用時の問題を診断しトラブルシューティングする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -67,6 +67,7 @@ SDK での再試行が可能な場合、すべての IO エラーで Cosmos DB S
 |----------|-------------|
 | 400 | 無効な要求 (エラー メッセージによって異なります)| 
 | 401 | [許可されていません](troubleshoot-unauthorized.md) | 
+| 403 | [Forbidden](troubleshoot-forbidden.md) |
 | 404 | [リソースが見つかりません](troubleshoot-not-found.md) |
 | 408 | [要求がタイムアウトしました](troubleshoot-dot-net-sdk-request-timeout.md) |
 | 409 | 失敗の競合は、書き込み操作でリソースに指定された ID が既存のリソースにより取得された場合に発生します。 この問題を解決するには、リソースに別の ID を使用します。同じパーティション キー値が含まれるすべてのドキュメント内で、ID が一意であるためです。 |

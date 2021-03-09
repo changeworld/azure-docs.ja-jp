@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: ca0e95d311adedf613ed168927491dfa85b1cabd
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 7ec938a13d04cf3400e4d3df0eeda051c61d35ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095323"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724270"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure Storage のコンプライアンス認証
 
 個人データの収集と使用に関する国、地域、業界固有の要件に組織が準拠できるように、Microsoft Azure と Azure Storage では、クラウド サービス プロバイダーの広範な認定と認証を提供しています。
 
-ご利用のサービスが Azure Storage サービスを使用して確実に規制されるように、Azure Storage では以下のコンプライアンス認証を見つけることができます。 これらは、次の Azure Storage オファリングに適用できます。BLOB、ファイル、キュー、テーブル、ディスク、クール ストレージ、Premium Storage。
+ご利用のサービスが Azure Storage サービスを使用して確実に規制されるように、Azure Storage では以下のコンプライアンス認証を見つけることができます。 コンプライアンス認証は、次の Azure Storage サービスに適用できます: BLOB (ADLS Gen2)、キュー、テーブル、ディスク、クール ストレージ、Premium Storage。
 
 ## <a name="global"></a>グローバル
 

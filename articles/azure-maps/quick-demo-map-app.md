@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: c017ae8044c14a579190f5f1e76cfb1a73e3ce66
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 24a834c87fe34d90dec5961bb3f8d376c6e5e62d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896193"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373217"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>クイック スタート:Azure Maps を使用して対話形式の検索マップを作成する
 
@@ -23,6 +23,8 @@ ms.locfileid: "92896193"
 * 自分用の Azure Maps アカウントを作成する。
 * デモ版の Web アプリケーションで使用する主キーを取得する。
 * デモ マップ アプリケーションをダウンロードして開く。
+
+このクイックスタートでは Azure Maps Web SDK を使用しますが、Azure Maps サービスは任意のマップ コントロールで使用できます。 Azure Maps チームによって対応するプラグインが作成されている、いくつかのよく知られているオープン ソースのマップ コントロールは[こちら](open-source-projects.md#third-part-map-control-plugins)に記載されています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,13 +39,13 @@ ms.locfileid: "92896193"
 次の手順で、新しい Azure Maps アカウントを作成します。
 
 1. [Azure Portal](https://portal.azure.com) の左上隅にある **[リソースの作成]** をクリックします。
-2. *[Marketplace を検索]* ボックスに「 **Azure Maps** 」と入力します。
+2. *[Marketplace を検索]* ボックスに「**Azure Maps**」と入力します。
 3. *[結果]* から **[Azure Maps]** を選択します。 マップの下に表示される **[作成]** ボタンをクリックします。
 4. **[Azure Maps アカウントの作成]** ページで、次の値を入力します。
-    * このアカウントで使う " *サブスクリプション* "。
-    * このアカウントの " *リソース グループ* " の名前。 *[新規作成]* を選んで新しく作成することも、 *[既存のものを使用]* を選んで既存のリソース グループを使うこともできます。
-    * 新しいアカウントの " *名前* "。
-    * このアカウントの " *価格レベル* "。
+    * このアカウントで使う "*サブスクリプション*"。
+    * このアカウントの "*リソース グループ*" の名前。 *[新規作成]* を選んで新しく作成することも、 *[既存のものを使用]* を選んで既存のリソース グループを使うこともできます。
+    * 新しいアカウントの "*名前*"。
+    * このアカウントの "*価格レベル*"。
     * *[ライセンス]* と *[プライバシーに関する声明]* の内容を読み、チェック ボックスをオンにして条件に同意します。
     * **[作成]** ボタンをクリックします。
 
@@ -62,7 +64,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 >[!NOTE]
 > 主キーの代わりにサブスクリプション キーを使用する場合、マップは正しく表示されません。 また、セキュリティ上の理由から、主キーとセカンダリ キーをローテーションすることをお勧めします。 キーをローテーションするには、セカンダリ キーを使用するようにアプリを更新してデプロイします。次に、主キーの横にある [cycle/refresh]\(サイクル/更新\) ボタンを押して、新しい主キーを生成します。 古い主キーは無効になります。 キー ローテーションの詳細については、「[キー ローテーションと監査で Azure Key Vault を設定する](../key-vault/secrets/tutorial-rotation-dual.md)」を参照してください。
 
-:::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="ポータルで Maps アカウントを作成する":::
+:::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="Azure portal で主キー Azure Maps キーを取得する":::
 
 ## <a name="download-the-demo-application"></a>デモ アプリケーションをダウンロードする
 
@@ -75,10 +77,10 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 1. **AzureMapDemo.html** ファイルを任意のブラウザーで開きます。
 2. 表示されたロサンゼルス市の地図を見てください。 拡大/縮小すると、ズームのレベルに応じて、マップに表示される情報が自動的に増減します。
 3. マップの既定の中心を変更します。 **AzureMapDemo.html** ファイルで **center** という名前の変数を検索します。 この変数の緯度と経度のペア値を、新しい値 **[-74.0060, 40.7128]** に置き換えます。 ファイルを保存し、ブラウザーを更新します。
-4. これで、対話形式の検索を実行できます。 デモ版の Web アプリケーションの左上隅にある検索ボックスに「 **レストラン** 」と入力します。
+4. これで、対話形式の検索を実行できます。 デモ版の Web アプリケーションの左上隅にある検索ボックスに「**レストラン**」と入力します。
 5. 検索ボックスの下に表示された住所/場所のリストにマウスを合わせます。 対応するピンがマップに現れ、その場所に関する情報がポップアップに表示されることがわかります。 民間事業のプライバシー保護のために、架空の名前と住所が表示されています。
 
-    :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="ポータルで Maps アカウントを作成する":::
+    :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="対話型のマップ検索 Web アプリケーション":::
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

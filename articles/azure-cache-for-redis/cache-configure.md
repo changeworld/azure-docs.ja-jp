@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 2ff97dd30d9b993385f52ea531653a89197f8756
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: ba021d280f71504ad5c1e1aea0dc1c8c6b507b1e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734625"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581076"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache for Redis の構成方法
 このトピックでは、Azure Cache for Redis インスタンスで利用可能な構成について説明します。 このトピックでは、Azure Cache for Redis インスタンスの既定の Redis サーバー構成についても説明します。
@@ -236,10 +236,7 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 
 メンテナンス時間を指定するには、目的の曜日をオンにし、曜日ごとにメンテナンス時間の開始時刻を指定して、 **[OK]** をクリックします。 メンテナンス時間の時刻は UTC 時間です。
 
-> [!IMPORTANT]
-> **更新のスケジュール** 機能は Premium レベルのキャッシュにのみ使用できます。 詳細および手順については、[Azure Cache for Redis の管理の、更新のスケジュール](cache-administration.md#schedule-updates)に関するページをご覧ください。
->
->
+詳細および手順については、[Azure Cache for Redis の管理の更新のスケジュール](cache-administration.md#schedule-updates)に関するページを参照してください
 
 ### <a name="geo-replication"></a>geo レプリケーション
 
@@ -344,10 +341,10 @@ Azure Cache for Redis の監視と診断の詳細については、「[Azure Cac
 
 ### <a name="diagnostics"></a>診断
 
-既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../azure-monitor/platform/data-platform-metrics.md)され、その後削除されます。 キャッシュ メトリックを 30 日よりも長く保持するには、 **[診断]** をクリックし、キャッシュ診断の格納に使用する [ストレージ アカウントを構成](cache-how-to-monitor.md#export-cache-metrics)します。
+既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../azure-monitor/essentials/data-platform-metrics.md)され、その後削除されます。 キャッシュ メトリックを 30 日よりも長く保持するには、 **[診断]** をクリックし、キャッシュ診断の格納に使用する [ストレージ アカウントを構成](cache-how-to-monitor.md#export-cache-metrics)します。
 
 >[!NOTE]
->キャッシュ メトリックをストレージにアーカイブする以外に、[イベント ハブにストリーム配信したり、Azure Monitor ログに送信したり](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)できます。
+>キャッシュ メトリックをストレージにアーカイブする以外に、[イベント ハブにストリーム配信したり、Azure Monitor ログに送信したり](../azure-monitor/essentials/stream-monitoring-data-event-hubs.md)できます。
 >
 >
 

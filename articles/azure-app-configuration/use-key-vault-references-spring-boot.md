@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: alkemper
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: ede8203078a3d496975e208622ef61018997cf8d
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 04d9c7a343570349851a206fd69fdda822f790a4
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929219"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981478"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>チュートリアル:Java Spring アプリで Key Vault 参照を使用する
 
@@ -93,7 +93,7 @@ App Configuration に格納されているその他のキーの場合と同様�
 
 ## <a name="connect-to-key-vault"></a>Key Vault に接続する
 
-1. このチュートリアルでは、Key Vault の認証にサービス プリンシパルを使用します。 このサービス プリンシパルを作成するには、Azure CLI の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用します。
+1. このチュートリアルでは、Key Vault の認証にサービス プリンシパルを使用します。 このサービス プリンシパルを作成するには、Azure CLI の [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) コマンドを使用します。
 
     ```azurecli
     az ad sp create-for-rbac -n "http://mySP" --sdk-auth

@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 61d07c1ba912a0e24b2f4e5fa67243b4525db367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e2fcf2dc0dc53038b82bbf182cb12f580d88357
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81536184"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583588"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>v1.0 トークンを受け入れる Web API のスコープ
 
@@ -37,7 +37,7 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-Microsoft Graph API (https:\//graph.microsoft.com/) を使用して、MSAL.NET Azure AD で読み取りと書き込みを行うには、次の例に示すようにスコープの一覧を作成する必要があります。
+Microsoft Graph API (https:\//graph.microsoft.com/) を使用して、MSAL.NET Azure AD で読み取りと書き込みを行うには、次の例に示すようにスコープの一覧を作成します。
 
 ```csharp
 string ResourceId = "https://graph.microsoft.com/";
@@ -49,7 +49,7 @@ var ResourceId = "https://graph.microsoft.com/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 
-Azure Resource Manager API (https:\//management.core.windows.net/) に対応するスコープを書き込むには、次のスコープを要求する必要があります (2 つのスラッシュに注意してください)。
+Azure Resource Manager API (https:\//management.core.windows.net/) に対応するスコープを書き込むには、次のスコープを要求します (2 つのスラッシュにご注意ください)。
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -59,12 +59,12 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 ```
 
 > [!NOTE]
-> Azure Resource Manager API ではその対象ユーザーの要求 (aud) でスラッシュが予期されるため、2 つのスラッシュを使用する必要があり、したがって、API 名をスコープと区別するためのスラッシュがあります。
+> Azure Resource Manager API ではその対象ユーザーの要求 (aud) でスラッシュが予期されるため、2 つのスラッシュを使用しており、したがって、API 名をスコープと区別するためのスラッシュがあります。
 
 Azure AD で使用されるロジックは次のとおりです。
 
 - v1.0 アクセス トークン (使用可能な場合のみ) を使用する ADAL (Azure AD v1.0) エンドポイントの場合、aud=resource となります
-- v2.0 トークンを受け入れるリソースのためにアクセス トークンを要求する MSAL (Microsoft ID プラットフォーム (v2.0)) エンドポイントの場合は、`aud=resource.AppId` となります
+- v2.0 トークンを受け入れるリソースのためにアクセス トークンを要求する MSAL (Microsoft ID プラットフォーム) の場合は、`aud=resource.AppId` となります
 - v1.0 アクセス トークンを受け入れるリソースのためにアクセス トークンを要求する MSAL (v2.0 エンドポイント) の場合 (上記の例の場合)、Azure AD では、最後のスラッシュの前のすべてを取得し、それをリソース ID として使用することで、要求されたスコープからの目的の対象ユーザーを解析します。 そのため、https:\//database.windows.net で "https:\//database.windows.net/" の対象ユーザーを必要とする場合、"https:\//database.windows.net//.default" のスコープを要求する必要があります。 GitHub の問題「[#747:リソース URL の末尾のスラッシュが省略されたため、SQL 認証エラーが発生した](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)」も参照してください。
 
 ## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>v1.0 アプリケーションのすべてのアクセス許可へのアクセス権を要求するスコープ

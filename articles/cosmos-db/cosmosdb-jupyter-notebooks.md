@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 8dca9e3e29796618b905c4d266eb674f82565969
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4f57d2793a28f4bbb201764c67af82f31d0b9333
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097619"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369800"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Azure Cosmos DB に組み込まれている Jupyter Notebook のサポート (プレビュー)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -61,5 +61,7 @@ Jupyter Notebook には、複数の種類のコンポーネントを含めるこ
 Azure Cosmos DB で組み込みの Jupyter Notebook の使用を開始するには、次の記事を参照してください。
 
 * [Azure Cosmos アカウントでノートブックを有効にする](enable-notebooks.md)
+* [ノートブックのサンプル ギャラリーを参照する](https://cosmos.azure.com/gallery.html)
 * [Python ノートブックの機能とコマンドを使用する](use-python-notebook-features-and-commands.md)
 * [C# ノートブックの機能とコマンドを使用する](use-csharp-notebook-features-and-commands.md)
+* [GitHub リポジトリからノートブックをインポートする](import-github-notebooks.md)

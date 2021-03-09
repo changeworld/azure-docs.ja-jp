@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: b183abf8d42e6f4b1c43db2d87b2650721e0c2a9
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: eec88bf85f1b7a2ec8db2bf23c43629d84cc5106
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567844"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090447"
 ---
 # <a name="connect-your-squid-proxy-to-azure-sentinel"></a>Squid Proxy を Azure Sentinel に接続する
 
 > [!IMPORTANT]
 > Squid Proxy コネクタは、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-この記事では、Squid Proxy アプライアンスを Azure Sentinel に接続する方法について説明します。 Squid Proxy データ コネクタを使用すると、Squid ログを Azure Sentinel に簡単に接続できます。これにより、そのデータをブックで表示したり、カスタム アラートの作成に利用したり、調査の改善のために取り込んだりできます。 Squid Proxy と Azure Sentinel の統合には、Syslog を使用します。
+この記事では、Squid Proxy アプライアンスを Azure Sentinel に接続する方法について説明します。 Squid Proxy データ コネクタを使用すると、Squid ログを Azure Sentinel に簡単に接続できます。これにより、そのデータをブックで表示したり、カスタム アラートの作成に利用したり、調査の改善のために取り込んだりできます。 Squid Proxy と Azure Sentinel の統合には、Log Analytics エージェントによるローカル ファイル処理が使用されます。
 
 > [!NOTE]
 > データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
@@ -35,9 +35,9 @@ ms.locfileid: "98567844"
 
 - Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
 
-## <a name="forward-squid-proxy-logs-to-the-syslog-agent"></a>Squid Proxy ログを Syslog エージェントに転送する  
+## <a name="forward-squid-proxy-logs-to-the-log-analytics-agent"></a>Squid Proxy ログを Log Analytics エージェントに転送する  
 
-Syslog エージェントを使用して Azure ワークスペースに Syslog メッセージを転送するように Squid Proxy を構成します。
+Log Analytics エージェントを使用して Azure ワークスペースにログ ファイルを送信するように Squid Proxy を構成します。
 
 1. Azure Sentinel のナビゲーション メニューで、 **[データ コネクタ]** を選択します。
 

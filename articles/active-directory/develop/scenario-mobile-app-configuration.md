@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ebc22e3cf300b664aae5842f7cf924769d4d907e
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 1187c768a54dd04d25b6de0e6785ebb81a7dfc24
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756501"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584433"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Web API を呼び出すモバイル アプリを構成する
 
@@ -82,7 +82,7 @@ var app = PublicClientApplicationBuilder.Create(clientId)
 
 ##### <a name="specify-the-parent-ui-window-or-activity"></a>親 UI、ウィンドウ、またはアクティビティを指定する
 
-Android では、対話型認証を行う前に親アクティビティを渡す必要があります。 iOS でブローカーを使用する場合は、`ViewController` に渡す必要があります。 UWP の場合と同じように、親ウィンドウを渡すことができます。 トークンを取得するときに、それを渡します。 ただし、アプリを作成するときに、コールバックを `UIParent` を返すデリゲートとして指定することもできます。
+Android では、対話型認証を行う前に親アクティビティを渡します。 iOS でブローカーを使用する場合は、`ViewController` を渡します。 UWP の場合と同じように、親ウィンドウを渡すことができます。 トークンを取得するときに、それを渡します。 ただし、アプリを作成するときに、コールバックを `UIParent` を返すデリゲートとして指定することもできます。
 
 ```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)

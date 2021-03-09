@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor で SQL Server 環境を最適化する | Microsoft Docs
 description: Azure Monitor では、SQL 正常性チェック ソリューションを使用して、環境のリスクと正常性を定期的に評価できます。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 98caca31e172f54c3e37f33c5a463790d9d27032
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f2319ea6ba314c08a67651667837f05df5765a1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325986"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723233"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Azure Monitor で SQL Server 正常性チェック ソリューションを使用して SQL 環境を最適化する
 
@@ -44,9 +43,9 @@ SQL 正常性チェック ソリューションを使用して、サーバー環
 
 SQL Server サーバーに対して正常性チェックを実行するには、サポートされている次のいずれかの方法を使用して、これらのサーバーにエージェントおよび Azure Monitor への接続を設定する必要があります。
 
-1. サーバーが System Center 2016 (Operations Manager または Operations Manager 2012 R2) でまだ監視されていない場合は、[Microsoft Monitoring Agent (MMA)](../platform/agent-windows.md) をインストールします。
+1. サーバーが System Center 2016 (Operations Manager または Operations Manager 2012 R2) でまだ監視されていない場合は、[Microsoft Monitoring Agent (MMA)](../agents/agent-windows.md) をインストールします。
 2. System Center 2016 (Operations Manager または Operations Manager 2012 R2) で監視され、かつ管理グループが Azure Monitor と統合されていない場合は、サーバーを Log Analytics とマルチホームにすることにより、データを収集してサービスに転送しながら、引き続き Operations Manager によって監視されるようにすることができます。  
-3. それ以外の場合、Operations Manager 管理グループがサービスと統合されている場合は、ワークスペースでソリューションを有効にした後に、[エージェントが管理するコンピューターの追加](../platform/om-agents.md#connecting-operations-manager-to-azure-monitor)に関するセクションの手順に従って、サービスによるデータ収集用にドメイン コントローラーを追加する必要があります。  
+3. それ以外の場合、Operations Manager 管理グループがサービスと統合されている場合は、ワークスペースでソリューションを有効にした後に、[エージェントが管理するコンピューターの追加](../agents/om-agents.md#connecting-operations-manager-to-azure-monitor)に関するセクションの手順に従って、サービスによるデータ収集用にドメイン コントローラーを追加する必要があります。  
 
 Operations Manager 管理グループに報告する SQL Server 上のエージェントは、データを収集し、割り当てられている管理サーバーに転送します。その後、そのデータは管理サーバーから直接 Azure Monitor に送信されます。  データは Operations Manager データベースに書き込まれません。  
 
@@ -257,5 +256,5 @@ SQLAssessmentRecommendation
 * はい。前のセクション「[推奨事項を無視する](#ignore-recommendations)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-* [ログ クエリ](../log-query/log-query-overview.md)で、詳細な SQL 正常性チェック データと推奨事項を分析する方法を学習します。
+* [ログ クエリ](../logs/log-query-overview.md)で、詳細な SQL 正常性チェック データと推奨事項を分析する方法を学習します。
 

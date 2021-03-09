@@ -2,13 +2,13 @@
 title: Apache Kafka クライアントの推奨される構成 - Azure Event Hubs
 description: この記事では、Apache Kafka 用の Azure Event Hubs と対話するクライアントに推奨される Apache Kafka 構成について説明します。
 ms.topic: reference
-ms.date: 01/07/2021
-ms.openlocfilehash: 713900a3cc7e2b9f6f176edb21455faa577098d6
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.date: 03/03/2021
+ms.openlocfilehash: be009aae41b2cb26ab02fdbe14bc4e18311ad235
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028830"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042353"
 ---
 # <a name="recommended-configurations-for-apache-kafka-clients"></a>Apache Kafka クライアントに推奨される構成
 Apache Kafka クライアント アプリケーションから Azure Event Hubs を使用する場合に推奨される構成を以下に示します。 
@@ -33,7 +33,6 @@ Apache Kafka クライアント アプリケーションから Azure Event Hubs 
 `metadata.max.idle.ms` | 180000 | > 5000 | プロデューサーでアイドル状態のトピックのメタデータがキャッシュされる期間を制御します。 トピックが最後に作成されてからの経過時間がメタデータのアイドル期間を超えた場合、トピックのメタデータは忘れられ、次のアクセスでメタデータ フェッチ要求が強制的に実行されます。
 `linger.ms` | > 0 | | 高スループットのシナリオでは、バッチ処理を利用するために、待機値を許容可能な最大値と等しくする必要があります。
 `delivery.timeout.ms` | | | 数式 (`request.timeout.ms` + `linger.ms`) * `retries` に従って設定します。
-`enable.idempotence` | false | | べき等性は現在サポートされていません。
 `compression.type` | `none` | | 現在、圧縮はサポートされていません。
 
 ### <a name="consumer-configurations-only"></a>コンシューマーの構成のみ
@@ -62,7 +61,6 @@ Apache Kafka クライアント アプリケーションから Azure Event Hubs 
 `retries` | > 0 | | 既定値は 2 です。 この値をそのまま使用することをお勧めします。 
 `request.timeout.ms` | 30000 .. 60000 | > 20000| EH は、内部では既定値で最小 20,000 ミリ秒以上に設定されます。  `librdkafka` の既定値は 5000 であり、問題が発生する可能性があります。 "*タイムアウト値の低い要求は受け入れられますが、クライアントの動作は保証されません。* "
 `partitioner` | `consistent_random` | librdkafka のドキュメントを参照してください | `consistent_random` は既定値であり、最適です。  空のキーと null キーは、ほとんどの場合に最適に処理されます。
-`enable.idempotence` | false | | べき等性は現在サポートされていません。
 `compression.codec` | `none` || 圧縮は現在サポートされていません。
 
 ### <a name="consumer-configurations-only"></a>コンシューマーの構成のみ

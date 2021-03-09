@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: c2f6f386f4a8ea062980c0efc97d0cfb4f37f4f2
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: cbff2e774fae1f71624aa3cdbd83bfb21e3a9586
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124896"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721465"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>チュートリアル:ライブ ビデオ分析ゲートウェイ モジュールの変更とビルド
 
@@ -25,11 +25,13 @@ ms.locfileid: "92124896"
 
 このチュートリアルを完了するには、以下が必要になります。
 
-* [Node.js](https://nodejs.org/en/download/) v10 以降
-* [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) 拡張機能がインストールされた [Visual Studio Code](https://code.visualstudio.com/Download)
-* [Docker](https://www.docker.com/products/docker-desktop) エンジン
-* モジュールのバージョンをホストするための [Azure Container Registry](../../container-registry/index.yml)。
-* [Azure Media Services](../../media-services/index.yml) アカウント。 先行するチュートリアルが済んでいる場合は、以前に作成したものを再利用してかまいません。
+
+> [!div class="checklist"]
+> * [Node.js](https://nodejs.org/en/download/) v10 以降
+> * [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) 拡張機能がインストールされた [Visual Studio Code](https://code.visualstudio.com/Download)
+> * [Docker](https://www.docker.com/products/docker-desktop) エンジン
+> * モジュールのバージョンをホストするための [Azure Container Registry](../../container-registry/index.yml)。
+> * [Azure Media Services](../../media-services/index.yml) アカウント。 先行するチュートリアルが済んでいる場合は、以前に作成したものを再利用してかまいません。
 
 ## <a name="clone-the-repository"></a>リポジトリの複製
 
@@ -73,6 +75,13 @@ VS Code で、ローカルの *live-video-analytics* リポジトリ フォル�
 1. VS Code ターミナルを使用して **npm version patch** コマンドを実行します。 このビルド スクリプトは、コンテナー レジストリにイメージをデプロイします。 ビルドが成功したかどうかは、VS Code のターミナル ウィンドウの出力に表示されます。
 
 1. ビルドが完了するたびに、**LvaEdgeGatewayModule** イメージのバージョンが増分されます。 配置マニフェスト ファイルには、このバージョンを使用する必要があります。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+アプリケーションを使い終えたら、次の手順で、作成したリソースをすべて削除することができます。
+
+1. IoT Central アプリケーションの **[管理]** セクションの **[お客様のアプリケーション]** ページに移動します。 次に、 **[削除]** を選択します。
+1. Azure portal で、**lva-rg** リソース グループを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

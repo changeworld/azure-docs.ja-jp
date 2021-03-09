@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/30/2020
-ms.openlocfilehash: 7ed1d9db09357b0702188c01a802600ff6350aff
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.date: 02/19/2021
+ms.openlocfilehash: b8754742c572a8dbc1f55c64e47bec640d757d65
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147268"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739370"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>マッピング データ フローでの参照変換
 
@@ -39,8 +39,6 @@ ms.locfileid: "93147268"
 
 **[Lookup conditions]\(参照条件\):** 一致対象の列を選択します。 等値条件が満たされた場合、行は一致と見なされます。 [データ フロー式言語](data-flow-expression-functions.md)を使用して値を抽出するには、ポイントして [Computed column]\(計算列\) を選択します。
 
-参照変換では、等値一致のみがサポートされています。 "より大きい" などの他の演算子を含むように参照式をカスタマイズするには、[結合変換のクロス結合](data-flow-join.md#custom-cross-join)を使用することをお勧めします。 クロス結合を使用すると、実行時に発生する可能性のあるデカルト積エラーを回避できます。
-
 両方のストリームのすべての列が、出力データに含まれます。 重複する列または不要な列を削除するには、参照変換の後に[選択変換](data-flow-select.md)を追加します。 シンク変換で列を削除したり、名前を変更したりすることもできます。
 
 ### <a name="non-equi-joins"></a>非等結合
@@ -65,7 +63,7 @@ ms.locfileid: "93147268"
 
 ![ブロードキャスト結合](media/data-flow/broadcast.png "ブロードキャスト結合")
 
-結合変換、参照変換、および存在変換では、一方または両方のデータ ストリームがワーカー ノードのメモリに収まる場合、 **ブロードキャスト** を有効にすることでパフォーマンスを最適化できます。 既定では、ある一方をブロードキャストするかどうかは、Spark エンジンによって自動的に決定されます。 ブロードキャストする側を手動で選択するには **[Fixed]\(固定\)** を選択します。
+結合変換、参照変換、および存在変換では、一方または両方のデータ ストリームがワーカー ノードのメモリに収まる場合、**ブロードキャスト** を有効にすることでパフォーマンスを最適化できます。 既定では、ある一方をブロードキャストするかどうかは、Spark エンジンによって自動的に決定されます。 ブロードキャストする側を手動で選択するには **[Fixed]\(固定\)** を選択します。
 
 **Off** オプションを使用してブロードキャストを無効にすることは、タイムアウト エラーが発生していない限り推薦されません。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/04/2020
 ms.author: b-juche
-ms.openlocfilehash: bba3dce2a2a18888cb88f4cf8b33cd48d6a4cd69
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: b40bbd6c470302b78b78744307805021a3649376
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631161"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571023"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files の新機能
 
@@ -99,7 +99,7 @@ Azure NetApp Files は定期的に更新されています。 この記事では
 
 ## <a name="may-2020"></a>2020 年 5 月
 
-* [バックアップ ポリシー ユーザー](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection) (プレビュー)
+* [バックアップ ポリシー ユーザー](create-active-directory-connections.md) (プレビュー)
 
     Azure NetApp Files では、Azure NetApp Files で使用するために作成されたコンピューター アカウントに対して昇格された特権を必要とする追加のアカウントを含めることができます。 指定したアカウントは、ファイルまたはフォルダー レベルで NTFS アクセス許可を変更できます。 たとえば、Azure NetApp Files の SMB ファイル共有にデータを移行するために使用される非特権サービス アカウントを指定できます。 バックアップ ポリシー ユーザー機能は、現在プレビューの段階です。
 

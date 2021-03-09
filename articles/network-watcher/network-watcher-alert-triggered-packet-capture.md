@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 3b6cb195f44bf6c868402481480d9b10802c4d59
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8e2af73be0fc887b132f523133159472ce1d1f98
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965676"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570981"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する
 
@@ -332,7 +332,7 @@ $Encryptedpassword
 
     ![関数の URL のコピー][2]
 
-webhook POST 要求のペイロードでカスタム プロパティが必要な場合は、「[Azure メトリック アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)」をご覧ください。
+webhook POST 要求のペイロードでカスタム プロパティが必要な場合は、「[Azure メトリック アラートでの webhook の構成](../azure-monitor/alerts/alerts-webhooks.md)」をご覧ください。
 
 ## <a name="configure-an-alert-on-a-vm"></a>VM のアラートの構成
 
@@ -340,7 +340,7 @@ webhook POST 要求のペイロードでカスタム プロパティが必要な
 
 ### <a name="create-the-alert-rule"></a>アラート ルールの作成
 
-既存の仮想マシンに移動してアラート ルールを追加します。 アラートの構成について詳しくは、「[Azure Monitorでの Azure サービス アラートの作成 - Azure Portal](../azure-monitor/platform/alerts-classic-portal.md)」をご覧ください。 **[アラート ルール]** ブレードに次の値を入力して、 **[OK]** を選びます。
+既存の仮想マシンに移動してアラート ルールを追加します。 アラートの構成について詳しくは、「[Azure Monitorでの Azure サービス アラートの作成 - Azure Portal](../azure-monitor/alerts/alerts-classic-portal.md)」をご覧ください。 **[アラート ルール]** ブレードに次の値を入力して、 **[OK]** を選びます。
 
   |**設定** | **Value** | **詳細** |
   |---|---|---|

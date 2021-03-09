@@ -2,21 +2,21 @@
 title: Windows 向けの Azure カスタム スクリプト拡張機能
 description: カスタム スクリプト拡張機能を使用して Windows VM の構成タスクを自動化します。
 services: virtual-machines-windows
-manager: carmonm
-author: bobbytreed
+manager: gwallace
+author: amjads1
 ms.service: virtual-machines-windows
 ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
-ms.author: robreed
-ms.openlocfilehash: d336d38465d601c1cbd4c1e88c0928ab17a1a18f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.author: amjads
+ms.openlocfilehash: d06be4efae895cfe6903be4451f892660ce689f3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735715"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390132"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -32,6 +32,7 @@ ms.locfileid: "98735715"
 ### <a name="operating-system"></a>オペレーティング システム
 
 Windows 用カスタム スクリプト拡張機能は、サポートされている拡張機能 OS で動作します。
+
 ### <a name="windows"></a>Windows
 
 * Windows Server 2008 R2
@@ -67,7 +68,7 @@ CustomScript 拡張機能には、証明書の検証を省略する方法がな�
 * 拡張機能ではスクリプトを 1 回だけ実行します。すべての起動時にスクリプトを実行する場合は、拡張機能を使用して Windows スケジュール化タスクを作成する必要があります。
 * スクリプトを実行する時期をスケジュールする場合は、拡張機能を使用して Windows スケジュール化タスクを作成する必要があります。
 * スクリプトが実行されている場合は、Azure Portal または CLI には拡張機能の状態が「移行中」とのみ表示されます。 実行中のスクリプトのステータスをより高い頻度で更新するには、独自のソリューションを作成する必要があります。
-* カスタム スクリプト拡張機能では、プロキシ サーバーはネイティブではサポートされていませんが、*Curl* などの、プロキシ サーバーをサポートするファイル転送ツールをスクリプト内で使用することができます。
+* カスタム スクリプト拡張機能では、プロキシ サーバーはネイティブではサポートされていませんが、*Invoke-WebRequest* などの、プロキシ サーバーをサポートするファイル転送ツールをスクリプト内で使用できます
 * スクリプトまたはコマンドで使用している既定以外のディレクトリの場所に注意し、この状況を処理するロジックを用意してください。
 * カスタム スクリプト拡張機能は LocalSystem アカウントで実行されます
 * *storageAccountName* プロパティと *storageAccountKey* プロパティの使用を計画している場合は、これらのプロパティを *protectedSettings* に併置する必要があります。
@@ -247,8 +248,8 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
     -Publisher "Microsoft.Compute" `
     -ExtensionType "CustomScriptExtension" `
     -TypeHandlerVersion "1.10" `
-    -Settings $settings    `
-    -ProtectedSettings $protectedSettings `
+    -Settings $settings `
+    -ProtectedSettings $protectedSettings;
 ```
 
 ### <a name="running-scripts-from-a-local-share"></a>ローカルの共有からスクリプトを実行する

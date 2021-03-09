@@ -9,62 +9,67 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 03/12/2020
+ms.date: 02/15/2021
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 869b37aea823cf91dc59211b23fcaccd7646afb9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: cb4995c0c71d0bcebb3cdd8ec471a92b7820cb9d
+ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012021"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100535163"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>クイック スタート:テナントを設定する
 
-Microsoft ID プラットフォームでは、開発者がさまざまなカスタムの Microsoft 365 環境と ID を対象とするアプリをビルドできます。 Microsoft ID プラットフォームの使用を開始するには、アプリの登録と管理、Microsoft 365 のデータへのアクセス、およびカスタムの条件付きアクセスとテナント制限のデプロイが可能な環境 (Azure AD テナントとも言う) にアクセスする必要があります。
+ID とアクセスの管理に Microsoft ID プラットフォームを使用するアプリを構築するには、Azure Active Directory (Azure AD) "*テナント*" にアクセスする必要があります。 アプリの登録と管理、Microsoft 365 や他の Web API のデータへのアクセスの構成、条件付きアクセスなどの機能の有効化は、Azure AD テナント内で行います。
 
-テナントは、組織を表したものです。 これは、組織やアプリの開発者が、Azure、Microsoft Intune、または Microsoft 365 へのサインアップのような Microsoft とのリレーションシップを作成するときに受信する Azure AD の専用インスタンスです。
+テナントは組織を表します。 これは、組織やアプリ開発者が Microsoft との関係を築いたときに受け取る Azure AD の専用インスタンスです。 この関係は、たとえば、Azure、Microsoft Intune、または Microsoft 365 へのサインアップから始めることができます。
 
-Azure AD テナントはそれぞれ異なり、その他の Azure AD とは分離されていて、職場や学校の ID、コンシューマー ID (Azure AD B2C テナントの場合)、およびアプリの登録の独自の表現があります。 テナント内部のアプリの登録では、自分のテナント内のみ、またはすべてのテナント内のアカウントからの認証を許可できます。
+各 Azure AD テナントは独立しており、他の Azure AD テナントとは切り離されています。 テナントには、職場および学校の ID、コンシューマー ID (Azure AD B2C テナントの場合)、アプリの登録の独自の表現があります。 テナント内のアプリの登録では、自分のテナント内のみまたはすべてのテナント内のアカウントからの認証を許可できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="determining-environment-type"></a>環境の種類の決定
+## <a name="determining-the-environment-type"></a>環境の種類の決定
 
-次の 2 種類の環境を作成できます。 必要なものは、アプリが認証するユーザーのタイプのみに基づいて決定します。
+2 種類の環境を作成できます。 環境は、アプリが認証するユーザーの種類だけで決まります。 
 
-* 職場や学校のアカウント (Azure AD アカウント) または Microsoft アカウント (outlook.com や live.com など)
-* ソーシャル アカウントとローカル アカウント (Azure AD B2C)
+このクイックスタートは、構築するアプリの種類に応じて、次の 2 つのシナリオに対応しています。
 
-このクイック スタートは、ビルドするアプリの種類に応じて 2 つのシナリオに分けられています。
+* 職場および学校 (Azure AD) アカウントまたは Microsoft アカウント (outlook.com や live.com など)
+* ソーシャルおよびローカル (Azure AD B2C) アカウント
 
 ## <a name="work-and-school-accounts-or-personal-microsoft-accounts"></a>職場や学校のアカウント、または個人用 Microsoft アカウント
 
-### <a name="use-an-existing-tenant"></a>既存のテナントの使用
+職場および学校アカウントまたは個人用 Microsoft アカウント向けの環境を構築するには、既存の Azure AD テナントを使用するか、新しいテナントを作成します。
+### <a name="use-an-existing-azure-ad-tenant"></a>既存の Azure AD テナントの使用
 
 多くの開発者は、Azure AD テナントに関連付けられたサービスまたはサブスクリプション (Microsoft 365 や Azure サブスクリプションなど) を通じてテナントを既に持っています。
 
-1. テナントを確認するには、アプリケーションの管理に使用するアカウントで <a href="https://portal.azure.com/" target="_blank">Azure portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
-1. 右上隅を確認します。 テナントがある場合、自動的にそのテナントにログインされ、アカウント名のすぐ下でテナント名を確認できます。
-   * Azure portal の右上のアカウント名をポイントすると、名前、電子メール、ディレクトリ/テナント ID (GUID)、ドメインが表示されます。
+テナントを確認するには、次の手順を実行します。
+
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。 アプリケーションの管理に使用するアカウントを使用します。
+1. 右上隅を確認します。 テナントがある場合は、自動的にサインインされます。 テナント名は、アカウント名のすぐ下に表示されます。
+   * アカウント名をポイントすると、名前、メール アドレス、ディレクトリまたはテナント ID (GUID)、ドメインが表示されます。
    * アカウントが複数のテナントに関連付けられている場合は、アカウント名を選択してメニューを開き、そこでテナントを切り替えることができます。 各テナントには独自の ID があります。
 
 > [!TIP]
-> テナント ID を調べる必要がある場合は、次の操作を実行できます。
-> * アカウント名をポイントして、ディレクトリ/テナント ID を取得します。または、
-> * Azure portal で **[Azure Active Directory] を検索し、[プロパティ] > [テナント ID]** を選択します
+> テナント ID を確認するには、次の操作を行います。
+> * アカウント名をポイントして、ディレクトリまたはテナント ID を表示します。
+> * Azure portal で、 **[Azure Active Directory]**  >  **[プロパティ]**  >  **[テナント ID]** を探して選択します。
 
-アカウントに関連付けられた既存のテナントがない場合は、アカウント名の下に GUID が表示されます。次のセクションの手順に従うまで、アプリの登録などのアクションは実行できません。
+アカウントにテナントが関連付けられていない場合は、アカウント名の下に GUID が表示されます。 Azure AD テナントを作成するまで、アプリの登録などの操作は実行できません。
 
 ### <a name="create-a-new-azure-ad-tenant"></a>新しい Azure AD テナントの作成
 
-Azure AD テナントがない場合、または開発用の新しいテナントを作成する場合は、[クイックスタート](../fundamentals/active-directory-access-create-new-tenant.md)を参照するか、[ディレクトリ作成エクスペリエンス](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)に従ってください。 新しいテナントを作成するには、次の情報を提供する必要があります。
+Azure AD テナントがまだない場合や、開発用の新しいテナントを作成する場合は、[Azure AD での新しいテナントの作成](../fundamentals/active-directory-access-create-new-tenant.md)に関する記事をご覧ください。 または、Azure portal で[ディレクトリ作成エクスペリエンス](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)を使用します。 
+
+新しいテナントを作成するには、次の情報を入力します。
 
 - **組織名**
-- **初期ドメイン** - これは *. onmicrosoft.com の一部となります。 ドメインは後でカスタマイズできます。
+- **初期ドメイン** - このドメインは、*.onmicrosoft.com の一部です。 ドメインは後でカスタマイズできます。
 - **国または地域**
 
 > [!NOTE]
@@ -72,7 +77,7 @@ Azure AD テナントがない場合、または開発用の新しいテナン�
 
 ## <a name="social-and-local-accounts"></a>ソーシャル アカウントとローカル アカウント
 
-ソーシャル アカウントとローカル アカウントにサインインするアプリをビルドするには、Azure AD B2C テナントを作成する必要があります。 最初に、[Azure AD B2C テナントの作成](../../active-directory-b2c/tutorial-create-tenant.md)に従ってください。
+ソーシャルおよびローカル アカウントにサインインするアプリを構築するには、Azure AD B2C テナントを作成します。 開始するには、[Azure AD B2C テナントの作成](../../active-directory-b2c/tutorial-create-tenant.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

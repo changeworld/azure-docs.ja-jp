@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: c8d52609043f173e896668eadeb8c59493739859
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c58b267874f013a4660428e23abd41810a0fbf34
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95521140"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093167"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift のサポート ポリシー
 
@@ -26,6 +26,7 @@ Azure Red Hat OpenShift 4 クラスターの一部の構成は、クラスター
 * クラスターには、少なくとも 2 つのワーカー ノードが必要です。 クラスター ワーカーをゼロに変更しないでください。また、クラスターをグレースフル シャットダウンしないでください。
 * クラスターの Prometheus および Alertmanager サービスを削除または変更しないでください。
 * Service Alertmanager ルールを削除しないでください。
+* ネットワーク セキュリティ グループを削除したり変更したりしないでください。
 * Azure Red Hat OpenShift サービス ログ (mdsd ポッド) を削除または変更しないでください。
 * 'arosvc.azurecr.io' クラスターのプル シークレットを削除または変更しないでください。
 * すべてのクラスター仮想マシンには、少なくとも Azure Resource Manager (ARM) とサービス ログ (Geneva) エンドポイントへの直接送信インターネット アクセスが必要です。  HTTPS プロキシの形式はサポートされていません。

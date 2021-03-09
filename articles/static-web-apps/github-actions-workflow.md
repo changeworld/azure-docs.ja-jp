@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 02/05/2021
 ms.author: cshoe
-ms.openlocfilehash: 5e6188ca2e8e0972e86bed578144a29a96570876
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 785fd535c46b67cfd631cd18560f396a6901e5c0
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901200"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593955"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューの GitHub Actions ワークフロー
 
@@ -38,11 +38,11 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
-    - master
+    - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - master
+    - main
 
 jobs:
   build_and_deploy_job:
@@ -87,16 +87,16 @@ GitHub Actions の[トリガー](https://help.github.com/actions/reference/event
 on:
   push:
     branches:
-    - master
+    - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-    - master
+    - main
 ```
 
 `on` プロパティに関連付けられている設定を使用して、ジョブをトリガーするブランチを定義し、さまざまな pull request の状態に対してトリガーを起動するように設定できます。
 
-この例では、_master_ ブランチが変更されるとワークフローが開始されます。 ワークフローを開始する変更としては、選択したブランチに対するコミットのプッシュと pull request のオープンがあります。
+この例では、_main_ ブランチが変更されるとワークフローが開始されます。 ワークフローを開始する変更としては、選択したブランチに対するコミットのプッシュと pull request のオープンがあります。
 
 ## <a name="jobs"></a>ジョブ
 
@@ -118,7 +118,7 @@ Static Web Apps ワークフロー ファイルには、2 つの使用可能な�
 | ジョブ  | 手順  |
 |---------|---------|
 | `build_and_deploy_job` |<ol><li>Action の環境のリポジトリをチェックアウトします。<li>リポジトリをビルドして Azure Static Web Apps にデプロイします。</ol>|
-| `close_pull_request_job` | <ol><li>pull request が終了したことを Azure Static Web Apps に通知します。</ol>|
+| `close_pull_request_job` | <ol><li> pull request が終了したことを Azure Static Web Apps に通知します。</ol>|
 
 ## <a name="build-and-deploy"></a>ビルドとデプロイ
 
@@ -194,6 +194,54 @@ jobs:
         env: # Add environment variables here
           HUGO_VERSION: 0.58.0
 ```
+
+## <a name="monorepo-support"></a>Monorepo のサポート
+
+Monorepo は、複数のアプリケーションのコードが格納されているリポジトリです。 既定で、Static Web Apps ワークフロー ファイルでは、リポジトリ内のすべてのファイルが追跡されますが、1 つのアプリを対象とするように調整することができます。 このため、Monorepo の場合、各静的アプリには、リポジトリの *.github/workflows* フォルダー内にサイド バイ サイドで存在するその固有の構成ファイルがあります。
+
+```files
+├── .github
+│   └── workflows
+│       ├── azure-static-web-apps-purple-pond.yml
+│       └── azure-static-web-apps-yellow-shoe.yml
+│
+├── app1  👉 controlled by: azure-static-web-apps-purple-pond.yml
+├── app2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
+│
+├── api1  👉 controlled by: azure-static-web-apps-purple-pond.yml
+├── api2  👉 controlled by: azure-static-web-apps-yellow-shoe.yml
+│
+└── README.md
+```
+
+1 つのアプリに対してワークフロー ファイルをターゲットにするには、`push` セクションと `pull_request` セクションにパスを指定します。
+
+次の例では、_azure-static-web-apps-purple-pond.yml_ という名前のファイルの `push` セクションと `pull_request` セクションに `paths` ノードを追加する方法を示しています。
+
+```yml
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - app1/**
+      - api1/**
+      - .github/workflows/azure-static-web-apps-purple-pond.yml
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+    paths:
+      - app1/**
+      - api1/**
+      - .github/workflows/azure-static-web-apps-purple-pond.yml
+```
+
+このインスタンスでは、次のファイルに加えられた変更によってのみ、新しいビルドがトリガーされます。
+
+- *app1* フォルダー内のすべてのファイル
+- *api1* フォルダー内のすべてのファイル
+- アプリの *azure-static-web-apps-purple-pond.yml* ワークフロー ファイルへの変更
 
 ## <a name="next-steps"></a>次のステップ
 

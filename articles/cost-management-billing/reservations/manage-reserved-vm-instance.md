@@ -6,14 +6,14 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 02/09/2021
 ms.author: banders
-ms.openlocfilehash: 2cd0611d5701f5ca407afd6d4e3b1b0ae22b6c12
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 717cf5acb63ee04852ccbb9aae2f7aed2b3c179a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562975"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392274"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
 
@@ -35,7 +35,7 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 
 ![予約注文 ID を表示した予約注文の詳細の例 ](./media/manage-reserved-vm-instance/reservation-order-details.png)
 
-予約は、予約注文からアクセス許可を継承します。
+予約は、予約注文からアクセス許可を継承します。 予約を交換または払い戻しするには、予約注文にユーザーを追加する必要があります。
 
 ## <a name="change-the-reservation-scope"></a>予約のスコープの変更
 

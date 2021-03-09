@@ -3,12 +3,12 @@ title: Azure Functions のセキュリティ保護
 description: 一般的な攻撃に対して、Azure で実行される関数コードのセキュリティを強化する方法について説明します。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: ee54ff8c1efaee00999888891e6de255060aa416
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 351bdca7ff94b6c058b5ab62fd9c16d707e7dc78
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491326"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368491"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions のセキュリティ保護
 
@@ -107,6 +107,8 @@ HTTPS を必須にする場合は、最新の TLS バージョンも必須にす
 
 [!INCLUDE [app-service-managed-identities](../../includes/app-service-managed-identities.md)]
 
+マネージド ID は、一部のトリガーとバインドから接続するために、シークレットの代わりに使用できます。 「[ID ベースの接続](#identity-based-connections)」を参照してください。
+
 詳細については、「[App Service と Azure Functions でマネージド ID を使用する方法](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json)」を参照してください。
 
 #### <a name="restrict-cors-access"></a>CORS アクセスを制限する
@@ -136,6 +138,14 @@ HTTPS を必須にする場合は、最新の TLS バージョンも必須にす
 ほとんどの関数ではアプリケーション設定で十分ですが、複数サービスにわたって同一のシークレットを共有する必要がある場合もあります。 この場合、シークレットのストレージが余分にあると、潜在的な脆弱性が高まります。 より安全な方法としては、一元的なシークレット ストレージ サービスを利用し、シークレット自体ではなくこのサービスを参照します。      
 
 [Azure Key Vault](../key-vault/general/overview.md) は、アクセス ポリシーと監査履歴を完全制御する、一元化されたシークレット管理を提供するサービスです。 アプリケーション設定の接続文字列またはキーの代わりに、Key Vault 参照を使用できます。 詳細については、「[App Service と Azure Functions の Key Vault 参照を使用する](../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json)」を参照してください。
+
+### <a name="identity-based-connections"></a>ID ベースの接続
+
+一部のリソースに接続するために、シークレットの代わりに ID を使用できます。 これには、シークレットの管理を必要としないという利点があり、よりきめ細かなアクセスの制御と監査が提供されます。 
+
+[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)への接続を作成するコードを記述する場合は、シークレットや接続文字列の代わりに ID を使用することを選択できます。 両方の接続方法の詳細については、各サービスのドキュメントを参照してください。
+
+一部の Azure Functions トリガーおよびバインド拡張機能は、ID ベースの接続を使用して構成できます。 現時点では、これには [Azure BLOB](./functions-bindings-storage-blob.md) と [Azure Queue](./functions-bindings-storage-queue.md) の拡張機能が含まれます。 ID を使用するようにこれらの拡張機能を構成する方法については、[Azure Functions で ID ベースの接続を使用する方法](./functions-reference.md#configure-an-identity-based-connection)に関する記事を参照してください。
 
 ### <a name="set-usage-quotas"></a>使用量クォータを設定する
 

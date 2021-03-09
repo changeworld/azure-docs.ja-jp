@@ -9,12 +9,12 @@ ms.service: industrial-iot
 ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 1c12b1c7fd393227cb22d011f8b88f914cfded59
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 38235f9b01b321e27664ee837763732971f0b85c
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445482"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201500"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Twin モジュールおよび依存関係をゼロからデプロイする
 
@@ -182,7 +182,7 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
 
 ### <a name="prerequisites"></a>前提条件
 
-1. [こちら](/cli/azure/install-azure-cli?view=azure-cli-latest)から [Azure コマンド ライン インターフェイス (AZ)](/cli/azure/?view=azure-cli-latest) の最新バージョンをインストールします。
+1. [こちら](/cli/azure/install-azure-cli)から [Azure コマンド ライン インターフェイス (AZ)](/cli/azure/) の最新バージョンをインストールします。
 
 ### <a name="quickstart"></a>クイック スタート
 

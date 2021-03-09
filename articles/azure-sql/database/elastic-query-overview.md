@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
-ms.openlocfilehash: c8f0bb6e0e58d672faa0929d6266e5e2c5a4f1f1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cac17bbac96d44d8d9bfce2e168de4ea6d4c5c08
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781058"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364955"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database のエラスティック クエリの概要 (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -120,7 +120,7 @@ DDL ステートメントを実行すると、ローカル テーブルである
 コーディングを開始するには、「[クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)](elastic-query-getting-started.md)」をご覧ください。
 
 > [!IMPORTANT]
-> 多数のデータベースに対するエラスティック クエリの正常な実行は、クエリの実行中に各データベースを使用できることに大きく依存しています。 いずれかのデータベースが使用できない場合は、クエリ全体が失敗します。 数百または数千のデータベースに対するクエリを一度に実行することを計画している場合は、クライアント アプリケーションに再試行ロジックが埋め込まれていることを確認してください。または、[Elastic Database Jobs](./job-automation-overview.md#elastic-database-jobs-preview) (プレビュー) を活用して、データベースの小さなサブセットに対してクエリを実行し、各クエリの結果を単一の宛先に統合することを検討してください。
+> 多数のデータベースに対するエラスティック クエリの正常な実行は、クエリの実行中に各データベースを使用できることに大きく依存しています。 いずれかのデータベースが使用できない場合は、クエリ全体が失敗します。 数百または数千のデータベースに対するクエリを一度に実行することを計画している場合は、クライアント アプリケーションに再試行ロジックが埋め込まれていることを確認してください。または、[Elastic Database Jobs](./job-automation-overview.md) (プレビュー) を活用して、データベースの小さなサブセットに対してクエリを実行し、各クエリの結果を単一の宛先に統合することを検討してください。
 
 ## <a name="t-sql-querying"></a>T-SQL クエリの実行
 

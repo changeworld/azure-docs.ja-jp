@@ -26,8 +26,6 @@
     - name: データファクトリの作成 - Resource Manager テンプレート
       displayName: Resource Manager
       href: quickstart-create-data-factory-resource-manager-template.md
-    - name: セキュリティ - カスタマー マネージド キーの暗号化を有効にする
-      href: enable-customer-managed-key.md
     - name: データ フローの作成
       href: data-flow-create.md
 - name: チュートリアル
@@ -105,6 +103,8 @@
       items:
         - name: マッピング データ フローを使用してデータを変換する
           items:
+            - name: Delta Lake を使用してレイク内のデータを変換する
+              href: tutorial-data-flow-delta-lake.md
             - name: マッピング データ フローを使用してデータを変換する
               href: tutorial-data-flow.md
             - name: マッピング データ フローのビデオ チュートリアル
@@ -171,10 +171,6 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
-    - name: セキュリティ
-      items:
-        - name: セキュリティ ベースライン
-          href: security-baseline.md
     - name: データ フロー
       items:
         - name: マッピング データ フローを使用してデータを変換する
@@ -223,6 +219,8 @@
           href: source-control.md
         - name: 継続的インテグレーションと配信
           href: continuous-integration-deployment.md
+        - name: 自動発行
+          href: continuous-integration-deployment-improvements.md
     - name: Connectors
       items:
         - name: コネクタの概要
@@ -433,7 +431,7 @@
           href: copy-activity-overview.md
         - name: コピー アクティビティの監視
           href: copy-activity-monitoring.md
-        - name: 削除アクティビティを使用したファイルの削除
+        - name: Delete アクティビティを使用したファイルの削除
           href: delete-activity.md
         - name: データのコピー ツール
           href: copy-data-tool.md
@@ -462,17 +460,17 @@
     - name: データを変換する
       href: transform-data.md
       items:
-        - name: データ フローの実行アクティビティ
+        - name: Data Flow の実行アクティビティ
           href: control-flow-execute-data-flow-activity.md
         - name: Power Query の実行アクティビティ
           href: control-flow-power-query-activity.md
-        - name: Azure 関数アクティビティ
+        - name: Azure Functions アクティビティ
           href: control-flow-azure-function-activity.md
         - name: カスタム アクティビティ
           href: transform-data-using-dotnet-custom-activity.md
         - name: Databricks Jar アクティビティ
           href: transform-data-databricks-jar.md
-        - name: Databricks ノートブック アクティビティ
+        - name: Databricks Notebook アクティビティ
           href: transform-data-databricks-notebook.md
         - name: Databricks Python アクティビティ
           href: transform-data-databricks-python.md
@@ -490,11 +488,11 @@
           href: transform-data-using-spark.md
         - name: HDInsight Streaming アクティビティ
           href: transform-data-using-hadoop-streaming.md
-        - name: Machine Learning パイプラインの実行アクティビティ
+        - name: Machine Learning の Execute Pipeline アクティビティ
           href: transform-data-machine-learning-service.md
-        - name: Machine Learning Studio (classic) のバッチ実行アクティビティ
+        - name: Machine Learning Studio (クラシック) の Batch Execution アクティビティ
           href: transform-data-using-machine-learning.md
-        - name: Machine Learning Studio (classic) の更新リソース アクティビティ
+        - name: Machine Learning Studio (クラシック) のリソースの更新アクティビティ
           href: update-machine-learning-models.md
         - name: ストアド プロシージャ アクティビティ
           href: transform-data-using-stored-procedure.md
@@ -502,27 +500,27 @@
           href: compute-linked-services.md
     - name: 制御フロー
       items:
-        - name: 変数アクティビティの追加
+        - name: Append Variable アクティビティ
           href: control-flow-append-variable-activity.md
-        - name: パイプラインの実行アクティビティ
+        - name: Execute Pipeline アクティビティ
           href: control-flow-execute-pipeline-activity.md
-        - name: アクティビティのフィルター処理
+        - name: Filter アクティビティ
           href: control-flow-filter-activity.md
         - name: For Each アクティビティ
           href: control-flow-for-each-activity.md
-        - name: メタデータの取得アクティビティ
+        - name: Get Metadata アクティビティ
           href: control-flow-get-metadata-activity.md
-        - name: If 条件アクティビティ
+        - name: If Condition アクティビティ
           href: control-flow-if-condition-activity.md
         - name: ルックアップ アクティビティ
           href: control-flow-lookup-activity.md
-        - name: 変数アクティビティの設定
+        - name: Set Variable アクティビティ
           href: control-flow-set-variable-activity.md
         - name: Switch アクティビティ
           href: control-flow-switch-activity.md
         - name: Until アクティビティ
           href: control-flow-until-activity.md
-        - name: 検証アクティビティ
+        - name: Validation アクティビティ
           href: control-flow-validation-activity.md
         - name: Wait アクティビティ
           href: control-flow-wait-activity.md
@@ -554,6 +552,8 @@
           href: data-flow-lookup.md
         - name: 新しいブランチ
           href: data-flow-new-branch.md
+        - name: '[解析]'
+          href: data-flow-parse.md
         - name: ピボット
           href: data-flow-pivot.md
         - name: 順位
@@ -592,7 +592,7 @@
           href: data-movement-security-considerations.md
         - name: データ アクセス戦略
           href: data-access-strategies.md
-        - name: Azure Integration Runtime の IP アドレス
+        - name: Azure 統合ランタイムの IP アドレス
           href: azure-integration-runtime-ip-addresses.md
         - name: Azure Key Vault への資格情報の格納
           href: store-credentials-in-key-vault.md
@@ -602,12 +602,14 @@
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Data Factory のマネージド ID
           href: data-factory-service-identity.md
-        - name: カスタマー マネージド キーの暗号化
+        - name: カスタマー マネージド キーを使用したデータ ファクトリの暗号化
           href: enable-customer-managed-key.md
         - name: マネージド仮想ネットワーク
           href: managed-virtual-network-private-endpoint.md
-        - name: Data Factory の Azure Private Link
+        - name: Data Factory の Azure プライベート リンク
           href: data-factory-private-link.md
+        - name: Azure セキュリティ ベースライン
+          href: security-baseline.md
     - name: 監視と管理
       items:
         - name: 視覚的な監視
@@ -690,7 +692,7 @@
           href: azure-ssis-integration-runtime-package-store.md
     - name: トリガーの作成
       items:
-        - name: イベントベースのトリガーの作成
+        - name: ストレージ イベント トリガーの作成
           href: how-to-create-event-trigger.md
         - name: スケジュール トリガーの作成
           href: how-to-create-schedule-trigger.md
@@ -698,10 +700,14 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: タンブリング ウィンドウ トリガーの依存関係の作成
           href: tumbling-window-trigger-dependency.md
-    - name: 系列
+        - name: パイプラインでのトリガー メタデータの参照
+          href: how-to-use-trigger-parameterization.md
+    - name: Data Catalog とガバナンス
       items:
         - name: Data Factory を Azure Purview に接続する
           href: connect-data-factory-to-azure-purview.md
+        - name: Purview を使用した ADF でのデータの検出と探索
+          href: how-to-discover-explore-purview-data.md
     - name: シナリオ
       items:
         - name: データ レイクおよび EDW のデータ移行
@@ -714,6 +720,10 @@
               href: data-migration-guidance-hdfs-azure-storage.md
             - name: オンプレミスの Netezza サーバーから Azure へのデータの移行
               href: data-migration-guidance-netezza-azure-sqldw.md
+        - name: Azure Machine Learning
+          items:
+            - name: データ インジェスト
+              href: ../machine-learning/how-to-data-ingest-adf.md?toc=/azure/data-factory/toc.json&bc=/azure/data-factory/breadcrumb/toc.json
         - name: マッピング データ フローを使用した変換
           items:
             - name: 固定幅のテキスト ファイルを処理する
@@ -724,6 +734,8 @@
               href: how-to-sqldb-to-cosmosdb.md
             - name: スニペットを使用した重複除去と null 値チェック
               href: how-to-data-flow-dedupe-nulls-snippets.md
+            - name: データ フローを使用して AML モデルからのデータを処理する
+              href: scenario-dataflow-process-data-aml-models.md
         - name: オンプレミスからの SSIS の移行
           items:
             - name: SSIS の移行の概要
@@ -752,6 +764,10 @@
           href: solution-template-databricks-notebook.md
     - name: 価格について
       items:
+        - name: データ フロー予約容量の概要
+          href: data-flow-reserved-capacity-overview.md
+        - name: データ フローの予約料金について
+          href: data-flow-understand-reservation-charges.md
         - name: コストの計画と管理
           href: plan-manage-costs.md
         - name: 価格の例
@@ -794,12 +810,10 @@
       href: /azure/templates/microsoft.datafactory/allversions
     - name: Python
       href: /python/api/overview/azure/datafactory
+    - name: Azure Policy の組み込み
+      href: policy-reference.md
 - name: リソース
   items:
-    - name: データ フロー予約容量の概要
-      href: data-flow-reserved-capacity-overview.md
-    - name: データ フローの予約料金について
-      href: data-flow-understand-reservation-charges.md
     - name: ホワイトペーパー
       href: whitepapers.md
     - name: よく寄せられる質問

@@ -2,19 +2,16 @@
 title: Azure Data Factory での Parquet 形式
 description: このトピックでは、Azure Data Factory で Parquet 形式を処理する方法について説明します。
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/27/2020
 ms.author: jingwang
-ms.openlocfilehash: c99225b53266fc74ea357151de824cd8d8ed2088
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a10403b5f26b551458a9e20330bc817512f707de
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011610"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386393"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure Data Factory での Parquet 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,7 +28,7 @@ Parquet 形式は次のコネクタでサポートされています。[Amazon S
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | データセットの type プロパティは **Parquet** に設定する必要があります。 | はい      |
 | location         | ファイルの場所の設定。 ファイル ベースの各コネクタには、固有の場所の種類と `location` でサポートされるプロパティがあります。 **詳細については、コネクタの記事でデータセットのプロパティに関するセクションを参照してください**。 | はい      |
-| compressionCodec | Parquet ファイルへの書き込み時に使用する圧縮コーデック。 データ ファクトリーは、Parquet ファイルから読み取るときに、ファイルのメタデータに基づいて圧縮コーデックを自動的に決定します。<br>サポートされている種類は、"**なし**"、"**gzip**"、"**snappy**" (既定)、および "**lzo**" です。 Parquet ファイルの読み取りおよび書き込みの場合、コピー アクティビティでは現在、LZO がサポートされていないことにご注意ください。 | いいえ       |
+| compressionCodec | Parquet ファイルへの書き込み時に使用する圧縮コーデック。 データ ファクトリーは、Parquet ファイルから読み取るときに、ファイルのメタデータに基づいて圧縮コーデックを自動的に決定します。<br>サポートされている種類は、"**なし**"、"**gzip**"、"**snappy**" (既定値)、および "**lzo**" です。 Parquet ファイルの読み取りおよび書き込みの場合、コピー アクティビティでは現在、LZO がサポートされていないことにご注意ください。 | いいえ       |
 
 > [!NOTE]
 > Parquet ファイルでは、列名に空白文字はサポートされません。
@@ -66,7 +63,7 @@ Azure Blob Storage の Parquet データセットの例を次に示します。
 
 ### <a name="parquet-as-source"></a>ソースとしての Parquet
 
-コピー アクティビティの **_\_source\*** * セクションでは、次のプロパティがサポートされます。
+コピー アクティビティの ***\*source\**** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ      | 説明                                                  | 必須 |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -75,7 +72,7 @@ Azure Blob Storage の Parquet データセットの例を次に示します。
 
 ### <a name="parquet-as-sink"></a>シンクとしての Parquet
 
-コピー アクティビティの **_\_sink\*** * セクションでは、次のプロパティがサポートされます。
+コピー アクティビティの ***\* sink \**** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ      | 説明                                                  | 必須 |
 | ------------- | ------------------------------------------------------------ | -------- |

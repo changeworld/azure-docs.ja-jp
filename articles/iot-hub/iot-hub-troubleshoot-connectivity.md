@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Technical Support'
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 81558526500f3c01e975d9a963b4a6a98ec6d753
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8bd20e3c7207c75e87a2132fca89906885de2676
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446401"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579254"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub との切断に関する監視、診断、およびトラブルシューティング
 
@@ -82,7 +82,7 @@ IoT Hub によって出力されたプラットフォーム メトリックに�
 
 メトリック アラート ルールを使用して、デバイスの切断時の異常を大規模に監視できます。 つまり、多数のデバイスが予期せず切断された場合です。 このような現象が検出された場合は、ログを確認して問題のトラブルシューティングに役立てることができます。 ただし、デバイスごとの切断および重要なデバイスの切断を監視するには、Event Grid を使用する必要があります。 また Event Grid は、Azure メトリックよりもリアルタイムのエクスペリエンスを提供します。
 
-IoT Hub でのアラートの詳細については、[IoT Hub の監視でのアラート](monitor-iot-hub.md#alerts)に関するページを参照してください。 IoT Hub でのアラート作成のチュートリアルについては、[メトリックとログの使用に関するチュートリアル](tutorial-use-metrics-and-diags.md)を参照してください。 アラートの詳細な概要については、Azure Monitor のドキュメントの「[Microsoft Azure のアラートの概要](../azure-monitor/platform/alerts-overview.md)」を参照してください。
+IoT Hub でのアラートの詳細については、[IoT Hub の監視でのアラート](monitor-iot-hub.md#alerts)に関するページを参照してください。 IoT Hub でのアラート作成のチュートリアルについては、[メトリックとログの使用に関するチュートリアル](tutorial-use-metrics-and-diags.md)を参照してください。 アラートの詳細な概要については、Azure Monitor のドキュメントの「[Microsoft Azure のアラートの概要](../azure-monitor/alerts/alerts-overview.md)」を参照してください。
 
 ## <a name="azure-monitor-use-logs-to-resolve-connectivity-errors"></a>Azure Monitor:ログを使用して接続に関するエラーを解決する
 

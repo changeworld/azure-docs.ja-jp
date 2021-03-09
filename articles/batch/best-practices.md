@@ -1,14 +1,14 @@
 ---
 title: ベスト プラクティス
 description: Azure Batch ソリューションを開発するためのベスト プラクティスと役立つヒントについて説明します。
-ms.date: 12/18/2020
+ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 95dca907f9380de29bd3c9b0e52b120c9114b5ee
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 278aae410af536a5cc41e55dabf1dd71de04151b
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732413"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550863"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch のベスト プラクティス
 
@@ -169,6 +169,8 @@ Batch ノードでタスクをスケジュールするとき、それをタス�
 
 ユーザー サブスクリプション モードの Batch アカウントの場合、実行時間の長いタスクでは特に、OS の自動アップグレードによってタスクの進行が中断される場合があります。 [べき等タスクを構築](#build-durable-tasks)することで、こうした中断によるエラーを減らすことができます。 また、[タスクの実行が予期されない時間に OS イメージのアップグレードをスケジュール設定](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades)することもお勧めします。
 
+Windows プールの場合、`enableAutomaticUpdates` は既定で `true` に設定されます。 自動更新を許可することをお勧めしますが、OS の更新が予期せずに行われないようにする必要がある場合は、この値を `false` に設定できます。
+
 ## <a name="isolation-security"></a>分離のセキュリティ
 
 分離のために、シナリオでジョブを相互に分離する必要がある場合は、それらのジョブを別々のプールに配置することで行います。 プールは、Batch のセキュリティ分離の境界であり、既定では、2つのプールは表示されないか、相互に通信できません。 分離の手段として、別個の Batch アカウントを使用しないでください。
@@ -189,8 +191,7 @@ Batch ソリューションの接続に関する次のガイダンスを確認�
 
 ### <a name="network-security-groups-nsgs-and-user-defined-routes-udrs"></a>ネットワーク セキュリティ グループ (NSG) とユーザー定義ルート (UDR)
 
-[仮想ネットワークに Batch プール](batch-virtual-network.md)をプロビジョニングするときは、必ず `BatchNodeManagement` サービス タグ、ポート、プロトコル、およびルールの方向の使用に関するガイドラインを厳守してください。
-基になる Batch サービスの IP アドレスを使用するのではなく、サービス タグを使用することを強くお勧めします。 これは、IP アドレスは、時間の経過と共に変化することがあるためです。 Batch サービスの IP アドレスを直接使用すると、Batch プールの不安定性、中断、または障害が発生する可能性があります。
+[仮想ネットワークに Batch プール](batch-virtual-network.md)をプロビジョニングするときは、必ず `BatchNodeManagement` サービス タグ、ポート、プロトコル、およびルールの方向の使用に関するガイドラインを厳守してください。 基になる Batch サービスの IP アドレスを使用するのではなく、サービス タグを使用することを強くお勧めします。 これは、IP アドレスは、時間の経過と共に変化することがあるためです。 Batch サービスの IP アドレスを直接使用すると、Batch プールの不安定性、中断、または障害が発生する可能性があります。
 
 ユーザー定義ルート (UDR) では、IP アドレスは時間の経過と共に変更されるため、ルート テーブル内の Batch サービスの IP アドレスを定期的に更新するプロセスがあることを確認します。 Batch サービスの IP アドレスの一覧を取得する方法については、「[オンプレミスのサービス タグ](../virtual-network/service-tags-overview.md)」をご覧ください。 Batch サービスの IP アドレスは、`BatchNodeManagement` サービス タグ (または Batch アカウント リージョンと一致するリージョン バリアント) に関連付けられます。
 

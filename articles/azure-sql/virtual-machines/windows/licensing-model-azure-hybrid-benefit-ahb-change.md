@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: da136c1f3ce36bf85592c3c73c9e8f92c41c7442
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 5813331d5eafd953d776dd19d9cc885ff71b8be0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357910"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361555"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Azure で SQL 仮想マシンのライセンス モデルを変更する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ SQL Server をホストする Azure VM には、従量課金制、Azure ハイ�
 
 Azure ハイブリッド特典では、Azure 仮想マシン上で SQL Server ライセンスをソフトウェア アシュアランス ("条件を満たしたライセンス") 付きで使用できます。 Azure ハイブリッド特典の場合、VM 上での SQL Server ライセンスの使用に対してお客様は課金されません。 ただし、基になるクラウド コンピューティング (基本料金)、ストレージ、およびバックアップのコストについては、引き続き料金を支払う必要があります。 また、サービスの使用に関連付けられている I/O についても支払う必要があります (該当する場合)。
 
-Microsoft 製品の利用規約に従って、"お客様は、Azure 上でワークロードを構成時に、SQL Server 向け Azure ハイブリッド特典に基づいて Azure SQL Database (Managed Instance、Elastic Pool、Single Database)、Azure Data Factory、SQL Server Integration Services、または SQL Server Virtual Machines を使用していることを示す必要があります。"
+Microsoft [製品の利用規約](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzureServices/EAEAS)に従って:"お客様は、Azure 上でワークロードを構成時に、SQL Server 向け Azure ハイブリッド特典に基づいて Azure SQL Database (Managed Instance、Elastic Pool、Single Database)、Azure Data Factory、SQL Server Integration Services、または SQL Server Virtual Machines を使用していることを示す必要があります。"
 
 Azure VM 上の SQL Server 向け Azure ハイブリッド特典を使用していることと、準拠していることを示すには、次の 3 つのオプションがあります。
 
@@ -119,7 +119,6 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
    - SQL Server の Standard および Enterprise エディションでのみサポートされています。 Express、Web、Developer のライセンス変更はサポートされていません。 
    - Azure Resource Manager モデルを介してデプロイされた仮想マシンでのみサポートされます。 クラシック モデルを介してデプロイされた仮想マシンはサポートされていません。 
    - パブリック クラウドまたは Azure Government クラウドでのみ使用できます。 
-   - 1 つのネットワークインターフェイス (NIC) を持つ仮想マシンでのみサポートされます。 
 
 > [!Note]
 > Azure ハイブリッド特典の対象となるのは、ソフトウェア アシュアランスまたはサブスクリプション ライセンス付きの SQL Server コア ベース ライセンスのみです。 SQL Server に Server + CAL ライセンスを使用していて、ソフトウェア アシュアランスをお持ちの場合は、Azure SQL Server 仮想マシン イメージに対してライセンス持ち込みを使用することで、これらのサーバーのライセンス モビリティを利用できますが、Azure ハイブリッド特典の他の機能は利用できません。 
@@ -136,10 +135,6 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
 
 リソース プロバイダーにサブスクリプションを登録してから、[SQL Server IaaS Agent 拡張機能にご利用の SQL Server VM を登録する](sql-agent-extension-manually-register-single-vm.md)必要があります。 
 
-
-**仮想マシン '\<vmname\>' に複数の NIC が関連付けられています**
-
-このエラーは、複数の NIC を持つ仮想マシンで発生します。 ライセンスモデルを変更する前に、いずれかの NIC を削除します。 ライセンスモデルを変更した後に NIC を VM に再び追加することはできますが、自動バックアップや修正プログラム適用などの Azure portal の操作はサポートされなくなります。 
 
 
 ## <a name="next-steps"></a>次のステップ

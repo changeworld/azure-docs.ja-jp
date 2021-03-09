@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: b263d3e62ae97914fc8e06580486bddd0cb9b3b7
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: fc3ba062f4995e975015d7c4db145ccde0c3f701
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968451"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705213"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移行のサポートマトリックス
 
@@ -29,8 +29,8 @@ VMware VM は、次のいくつかの方法で移行できます。
 
 ## <a name="migration-limitations"></a>移行の上限
 
-- レプリケーションでは、一度に最大 10 個の VM を選択できます。 より多くのマシンを移行する場合は、10 個単位のグループでレプリケートします。
-- VMware のエージェントレス移行では、最大 300 個のレプリケーションを同時に実行できます。
+- Azure portal を通じて、レプリケーションのために最大 10 台の VM を一度に選択できます。 より多くのマシンを移行する場合は、10 個単位のグループでレプリケートします。 PowerShell コマンドレットを使用してレプリケートできる VM の台数に制限はありません。 最適なパフォーマンスを得るために、PowerShell で 1 つの vCenter から一度に 500 台を超える VM のレプリケートは実行しないことをお勧めします。
+- VMware のエージェントレス移行では、vCenter Server ごとに最大 500 件のレプリケーションを同時に実行できます。
 
 ## <a name="agentless-migration"></a>エージェントレス型移行 
 
@@ -56,7 +56,7 @@ VMware VM は、次のいくつかの方法で移行できます。
 --- | ---
 **サポートされているオペレーティング システム** | Azure でサポートされている [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) および [Linux](../virtual-machines/linux/endorsed-distros.md) オペレーティング システムを移行できます。
 **Azure での Windows VM** | 場合によっては、移行前に VM に[いくつかの変更を加える](prepare-for-migration.md#verify-required-changes-before-migrating)必要があります。 
-**Azure での Linux VM** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。<br/><br/> Linux の場合、Azure Migrate によって、次のオペレーティング システム用に自動的に変更が行われます。<br/> - Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、6.x<br/> - Cent OS 7.7、7.6、7.5、7.4、6.x</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - SUSE Linux Enterprise Server 15 SP1 <br/>- Ubuntu 19.04、19.10、14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8 <br/> Oracle Linux 7.7、7.7-CI<br/> その他のオペレーティング システムの場合は、手動で[必要な変更](prepare-for-migration.md#verify-required-changes-before-migrating)を行います。
+**Azure での Linux VM** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。<br/><br/> Linux の場合、Azure Migrate によって、次のオペレーティング システム用に自動的に変更が行われます。<br/> - Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、6.x<br/> - Cent OS 7.7、7.6、7.5、7.4、6.x</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - SUSE Linux Enterprise Server 15 SP1 <br/>- Ubuntu 19.04、19.10、14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8、9 <br/> Oracle Linux 7.7、7.7-CI<br/> その他のオペレーティング システムの場合は、手動で[必要な変更](prepare-for-migration.md#verify-required-changes-before-migrating)を行います。
 **Linux ブート** | /boot が専用パーティションに存在する場合は、OS ディスク上に存在する必要があり、複数のディスクに分散していてはいけません。<br/> /boot がルート (/) パーティションに含まれている場合は、"/" パーティションは OS ディスク上に存在する必要があり、他のディスクにまたがっていてはいけません。
 **UEFI ブート** | サポートされています。 UEFI ベースの VM は、Azure 第 2 世代 VM に移行されます。 
 **ディスク サイズ** | 2 TB の OS ディスク。データ ディスク用に 32 TB。
@@ -72,7 +72,7 @@ VMware VM は、次のいくつかの方法で移行できます。
 **チーミングされた NIC** | サポートされていません。
 **IPv6** | サポートされていません。
 **ターゲット ディスク** | VM は、Azure のマネージド ディスク (Standard HDD、Standard SSD、Premium SSD) にのみ移行できます。
-**同時レプリケーション** | vCenter Server あたり 300 台の VM。 それ以上ある場合は、300 台単位のバッチで移行します。
+**同時レプリケーション** | vCenter Server あたり 500 台の VM。 それ以上ある場合は、500 単位のバッチで移行します。
 **Azure VM エージェントの自動インストール (Windows エージェント)** | Windows Server 2008 R2 以降でサポートされています。
 
 ### <a name="appliance-requirements-agentless"></a>アプライアンスの要件 (エージェントレス)
@@ -166,7 +166,7 @@ VM | VM 上で実行される Mobility Service は、レプリケーション管
 オペレーティング システムのディスク サイズ | 最大 2,048 GB。 
 オペレーティング システムのディスク数 | 1 
 データ ディスク数 | 64 以下。 
-データ ディスク サイズ | 最大 8,095 GB
+データ ディスク サイズ | 最大 32 TB
 ネットワーク アダプター | 複数のアダプターがサポートされます。
 共有 VHD | サポートされていません。 
 FC ディスク | サポートされていません。 

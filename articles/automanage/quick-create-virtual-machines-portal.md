@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: quickstart
-ms.date: 09/04/2020
+ms.date: 02/17/2021
 ms.author: jushiman
-ms.openlocfilehash: 69f43b626bb50171ceaca1b7a8761bec040d1dd6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 5f5f1e70d9ae309c90291ccac1e6dd61e7a9d056
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897230"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102038425"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>クイック スタート:Azure portal で仮想マシンに対して Azure Automanage を有効にする
 
@@ -33,12 +33,25 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://aka.ms/AutomanagePortal-Ignite21) にサインインします。
 
+## <a name="enable-automanage-for-a-single-vm"></a>単一の VM に対して Automanage を有効にする
 
-## <a name="enable-automanage-for-vms-on-an-existing-vm"></a>既存の VM で VM に対して Automanage を有効にする
+1. 有効にする仮想マシンを参照します。
 
-1. 検索バーで、 **[Automanage – Azure virtual machine best practices]\(Automanage - Azure 仮想マシンのベスト プラクティスの有効化)** を検索して選択します。
+2. **[操作]** の下の目次にある **[Automanage (プレビュー)]** エントリをクリックします。
+
+3. **[開始]** を選択します。
+
+    :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-getstartedbutton.png" alt-text="単一の VM を使用開始する。":::
+
+4. 目的の Automanage 設定 (環境、ユーザー設定、Automanage アカウント) を選択し、 **[有効化]** をクリックします。
+
+    :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-enablepane.png" alt-text="単一の VM を有効にする。":::
+
+## <a name="enable-automanage-for-multiple-vms"></a>複数の VM に対して Automanage を有効にする
+
+1. 検索バーで、 **[Automanage – Azure machine best practices]\(Automanage - Azure マシンのベスト プラクティスの有効化)** を検索して選択します。
 
 2. **[Enable on existing VM]\(既存の VM で有効にする\)** を選択します。
 
@@ -49,44 +62,47 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     1. オンボードする各仮想マシンのチェック ボックスをオンにします。
     1. **[選択]** ボタンをクリックします。
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="[Enable on existing VM]\(既存の VM で有効にする\)":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="使用可能な VM のリストから既存の VM を選択します。":::
 
-4. **[構成プロファイル]** で、 **[Browse and change profiles and preferences]\(プロファイルと基本設定を参照して変更\)** をクリックします。
+4. **[環境]** で、環境の種類として **[Dev/Test]** または **[運用]** を選択します。 
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="[Enable on existing VM]\(既存の VM で有効にする\)" は運用環境用です。
-    1. **[選択]** ボタンをクリックします。
+    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="環境を選択します。":::
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="[Enable on existing VM]\(既存の VM で有効にする\)":::
+   環境の相違点を確認するには、 **[環境の詳細を比較]** をクリックします。
+    1. ドロップダウンで環境を選択します。テストの場合は *[Dev/Test]* 、運用環境の場合は *[運用]* 。
+    1. **[OK]** をクリックします。
+
+    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="運用環境を参照する。":::
+
+5. 既定では、構成設定に対して **[Azure のベスト プラクティス]** 設定が選択されています。 これを変更するには、新しい設定を作成するか、既存のものを選択します。 
+
+    :::image type="content" source="media\quick-create-virtual-machine-portal\create-preference.png" alt-text="設定を作成する。":::
 
 6. **[有効]** ボタンをクリックします。
 
 
-## <a name="enable-automanage-for-vms-on-a-new-vm"></a>新規の VM で VM に対して Automanage を有効にする
+## <a name="enable-automanage-for-a-new-vm"></a>新規の VM に対して Automanage を有効にする
 
-Azure portal の[こちら](https://aka.ms/automanageportalnextstep)にサインインして、新しい VM を作成し、Automanage を有効にします。
+Azure portal の[こちら](https://aka.ms/AzureAutomanagePreview)にサインインして、新しい VM を作成し、Automanage を有効にします。
 
-1. [Azure portal で Windows VM を作成するチュートリアル](..\virtual-machines\windows\quick-create-portal.md)の作成手順に従います。
+1. **[基本]** タブに VM の詳細を入力します。
 
-2. VM がデプロイされると、デプロイ ステータスのページが表示され、下部には推奨される **[次の手順]** が表示されます。
+> [!NOTE]
+> Automanage が[サポートされているリージョン](automanage-virtual-machines.md#supported-regions)と、Automanage がサポートされている [Linux ディストリビューション](automanage-linux.md#supported-linux-distributions-and-versions)および [Windows Server バージョン](automanage-windows-server.md#supported-windows-server-versions)をご確認ください。
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\create-next-steps.png" alt-text="[Enable on existing VM]\(既存の VM で有効にする\)":::
+2. **[管理]** タブに移動して、ご使用の **Automanage 環境** を選択します。
 
-3. **[次の手順]** で、 **[Enable Automanage virtual machine best practices]\(仮想マシンの Automanage のベスト プラクティスを有効にする\)** を選択します。
+    :::image type="content" source="media\quick-create-virtual-machine-portal\vmcreate-managementtab.png" alt-text="[管理] タブで Automanage を有効にする。":::
 
-4. **[Automanage – Azure virtual machine best practices]\(Automanage – Azure 仮想マシンのベストプラクティスの有効化\)** ページの **[マシン]** は、新しく作成された VM によって自動的に設定されます。
+3. 残りの既定値はそのままにして、ページの一番下にある **[Review + create] (確認および作成)** ボタンを選択します。
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\create-new-enable-overview.png" alt-text="[Enable on existing VM]\(既存の VM で有効にする\)" は運用環境用です。
-    1. **[選択]** ボタンをクリックします。
-
-    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="[Enable on existing VM]\(既存の VM で有効にする\)":::
-
-7. **[有効]** ボタンをクリックします。
+4. 検証が成功したことを示すメッセージが表示されたら、 **[作成]** を選択します。
 
 ## <a name="disable-automanage-for-vms"></a>VM の Automanage を無効にする
 
 自動管理を無効にすることで、仮想マシンに対する Azure Automanage の使用をすばやく停止します。
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="[Enable on existing VM]\(既存の VM で有効にする\)":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="仮想マシンでの Automanage の無効化。":::
 
 1. 自動管理されている VM がすべて表示されている **[Automanage – Azure virtual machine best practices]\(Automanage - Azure 仮想マシンのベスト プラクティス)** ページに移動します。
 1. 無効にする仮想マシンの横にあるチェック ボックスをオンにします。
@@ -107,9 +123,9 @@ Azure Automanage では、リソースを格納するための既定のリソー
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、VM に対して Azure Automanage を有効にしました。 
+このクイックスタートでは、VM に対して Azure Automanage を有効にしました。
 
-仮想マシンで Automanage を有効にする際に、カスタマイズした基本設定を作成して適用する方法を確認してください。 
+仮想マシンで Automanage を有効にする際に、カスタマイズした基本設定を作成して適用する方法を確認してください。
 
 > [!div class="nextstepaction"]
-> [VM の Azure Automanage - カスタム構成プロファイル](virtual-machines-custom-preferences.md)
+> [Azure Automanage for VMs - カスタム構成設定](virtual-machines-custom-preferences.md)

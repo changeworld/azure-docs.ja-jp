@@ -1,20 +1,20 @@
 ---
-title: Azure Cosmos DB 用の Azure Synapse Link (プレビュー) でサポートされる機能
+title: Azure Cosmos DB 用の Azure Synapse Link でサポートされる機能
 description: Azure Cosmos DB 用の Azure Synapse Link で現在サポートされているアクションの一覧を把握する
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: synapse-link
-ms.date: 09/15/2020
+ms.date: 03/02/2021
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: b58474758ac4d26b347dc72d84be401d15a3846b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: cb2cadadacd914bfa5473b512255c1ab0f856150
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119817"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666312"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Azure Cosmos DB 用の Azure Synapse Link でサポートされる機能
 
@@ -33,7 +33,7 @@ Synapse Link を有効にしなくても、Azure Cosmos DB コンテナーに接
 
 | カテゴリ              | 説明 |[Apache Spark プール](../sql/on-demand-workspace-overview.md) | [サーバーレス SQL プール](../sql/on-demand-workspace-overview.md) |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
-| **ランタイム サポート** |Azure Cosmos DB にアクセスするためにサポートされている Azure Synapse ランタイム| ✓ | プレビュー |
+| **ランタイム サポート** |Azure Cosmos DB にアクセスするためにサポートされている Azure Synapse ランタイム| ✓ | ✓ |
 | **Azure Cosmos DB API サポート** | サポートされている Azure Cosmos DB API の種類 | SQL / MongoDB | SQL / MongoDB |
 | **Object**  |Azure Cosmos DB コンテナーを直接指す、作成できるテーブルなどのオブジェクト| データフレーム、ビュー、テーブル | 表示 |
 | **読み取り**    | 読み取り可能な Azure Cosmos DB コンテナーのタイプ | OLTP / HTAP | HTAP  |
@@ -51,7 +51,6 @@ Synapse Link を有効にしなくても、Azure Cosmos DB コンテナーに接
 | **コンテナーへのデータフレームの書き込み** |コンテナーにデータを書き込みます|✓| ✓ |
 | **コンテナーからのストリーミング データフレームの読み込み** |Azure Cosmos DB の変更フィードを使用してデータをストリーミングします|✓| ✓ |
 | **コンテナーへのストリーミング データフレームの書き込み** |Azure Cosmos DB の変更フィードを使用してデータをストリーミングします|✓| ✓ |
-
 
 ## <a name="supported-code-generated-actions-for-serverless-sql-pool"></a>サーバーレス SQL プールに対してサポートされているコード生成アクション
 

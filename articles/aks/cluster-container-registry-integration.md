@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 01/08/2021
-ms.openlocfilehash: 4157195260e5c685faaddeaca87db81d199ffb23
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: fd599c69b3072831461acc94827d97c4520292e9
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043848"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182453"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes Service から Azure Container Registry の認証を受ける
 
@@ -150,9 +150,10 @@ nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 ```
 
 ### <a name="troubleshooting"></a>トラブルシューティング
+* [az aks check-acr](/cli/azure/aks#az_aks_check_acr) コマンドを実行して、レジストリに AKS クラスターからアクセスできることを確認します。
 * ACR 診断の詳細については、[こちら](../container-registry/container-registry-diagnostics-audit-logs.md)を参照してください。
 * ACR の正常性の詳細については、[こちら](../container-registry/container-registry-check-health.md)を参照してください。
 
 <!-- LINKS - external -->
-[AKS AKS CLI]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[AKS AKS CLI]: /cli/azure/aks#az-aks-create
 [Image Pull secret]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/

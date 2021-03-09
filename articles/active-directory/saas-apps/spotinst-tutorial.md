@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: d9c9ac87e655cf9178d58f04b502f7e781d1fef7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 402b5a975b3ded8327edcea81b680e9990bac39e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181409"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686569"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Spotinst の統合
 
@@ -171,9 +171,9 @@ Spotinst に対する Azure AD SSO を構成してテストするには、次の
 
     ![[Add user]\(ユーザーの追加\) セクションを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/spotinst-tutorial/adduser2.png)
 
-    * **[Full Name]\(フルネーム\)** ボックスに、ユーザーの氏名 (**BrittaSimon** など) を入力します。
+    * **[Full Name]\(フルネーム\)** ボックスに、ユーザーの氏名 (`BrittaSimon` など) を入力します。
 
-    * **[Email]\(電子メール\)** テキスト ボックスに、ユーザーのメール アドレスを入力します (`brittasimon\@contoso.com` など)。
+    * **[Email]\(電子メール\)** テキスト ボックスに、ユーザーのメール アドレスを入力します (`brittasimon@contoso.com` など)。
 
     * **[Organization Role, Account Role, and Accounts]\(組織ロール、アカウント ロール、アカウント\)** で組織に固有の詳細を選択します。
 

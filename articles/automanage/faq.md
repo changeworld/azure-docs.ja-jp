@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: troubleshooting
-ms.date: 09/04/2020
+ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: b8f2b3e1ffde49c8df3c3a6d7c0b9b3751fda5fa
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 0b4e116210cf68dc672122ad4ddc98f85067f3b8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696178"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688010"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Azure Automanage for VMs に関してよく寄せられる質問
 
@@ -27,7 +27,7 @@ ms.locfileid: "98696178"
 **Azure Automanage を有効にするために必要な前提条件は何ですか?**
 
 Azure Automanage を有効にするための前提条件は次のとおりです。
-- Windows Server VM のみ
+- サポートされている [Windows Server のバージョン](automanage-windows-server.md#supported-windows-server-versions)と [Linux ディストリビューション](automanage-linux.md#supported-linux-distributions-and-versions)
 - VM はサポート対象のリージョンに存在する必要があります
 - ユーザーは正しいアクセス許可を持っている必要があります
 - スケール セット以外の VM のみ
@@ -42,12 +42,12 @@ Azure Automanage を有効にするための前提条件は次のとおりです
 
 **どのリージョンがサポートされていますか?**
 
-次のリージョンの VM がサポートされています。西ヨーロッパ、米国東部、米国西部 2、カナダ中部、米国中西部、東日本。
+サポートされているリージョンの完全な一覧については、[こちら](./automanage-virtual-machines.md#supported-regions)で確認できます。
 
 
 **Azure Automanage によって自動化されるのはどのような機能ですか?**
 
-Automanage を使用すると、VM のライフサイクル全体を通して、[こちら](virtual-machines-best-practices.md)の一覧に記載されているサービスの登録、構成、監視が行われます。
+Automanage を使用すると、VM のライフサイクル全体を通して、[こちら](automanage-virtual-machines.md)の一覧に記載されているサービスの登録、構成、監視が行われます。
 
 **Azure Automanage は Azure Arc 対応 VM で動作しますか?**
 
@@ -55,12 +55,12 @@ Automanage を使用すると、VM のライフサイクル全体を通して、
 
 **Azure Automanage の構成をカスタマイズできますか?**
 
-お客様は、構成設定を使用して、Azure Backup の保持期間など、特定のサービスの設定をカスタマイズできます。 変更できる設定の完全な一覧については、[こちら](virtual-machines-best-practices.md)のドキュメントを参照してください。
+お客様は、構成設定を使用して、Azure Backup の保持期間など、特定のサービスの設定をカスタマイズできます。 変更できる設定の完全な一覧については、[こちら](automanage-virtual-machines.md#customizing-an-environment-using-preferences)のドキュメントを参照してください。
 
 
 **Azure Automanage は、Linux と Windows 両方の VM で動作しますか?**
 
-現在、Automanage では Windows Server Azure VM がサポートされています。
+はい、サポートされている [Windows Server のバージョン](automanage-windows-server.md#supported-windows-server-versions)と [Linux ディストリビューション](automanage-linux.md#supported-linux-distributions-and-versions)をご確認ください。
 
 
 **VM のセットに対してだけ Automanage を選択的に適用できますか?**
@@ -80,7 +80,7 @@ Automanage は、選択した新規および既存の VM をクリックして�
 
 **Azure Policy を使用して Automanage を適用できますか?**
 
-はい、ユーザーが定義したスコープ内のすべての VM に Automanage を自動的に適用する組み込みのポリシーがあります。 また、Automanage アカウントと共に構成プロファイル (DevTest または Production) も指定します。 Azure Policy による Automanage の有効化の詳細については、[こちら](virtual-machines-policy-enable.md)を参照してください。
+はい、ユーザーが定義したスコープ内のすべての VM に Automanage を自動的に適用する組み込みのポリシーがあります。 また、Automanage アカウントと共に環境構成 (DevTest または運用) も指定します。 Azure Policy による Automanage の有効化の詳細については、[こちら](virtual-machines-policy-enable.md)を参照してください。
 
 
 **Automanage アカウントとは何ですか?**
@@ -93,9 +93,9 @@ Automanage アカウントは、自動化された操作が行われるセキュ
 VM が既存の Log Analytics ワークスペースにリンクされている場合は、そのワークスペースを再利用して次のソリューションを適用します。Change Tracking、インベントリ、Update Management。 そのワークスペースに接続されているすべての VM で、これらのソリューションが有効になります。
 
 
-**自分の VM の構成プロファイルを変更できますか?**
+**自分の VM の環境を変更することはできますか?**
 
-現時点では、その VM の Automanage を無効にしてから、必要な構成プロファイルと設定を使用して Automanage を再度有効にする必要があります。
+現時点では、その VM の Automanage を無効にしてから、必要な環境と基本設定を使用して Automanage を再度有効にする必要があります。
 
 
 **Update Management などのサービス用に VM が既に構成されている場合、Automanage によってそれが再構成されますか?**

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
-ms.openlocfilehash: b33c456d47426a3721e8582f24ffd603db0429c9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: feb84a1261e37600c68d8e372162033d4021f564
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340035"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522922"
 ---
 # <a name="security-module"></a>セキュリティ モジュール
 
@@ -40,7 +40,7 @@ Defender for IoT により、サービス内の各デバイスのセキュリテ
 
 ツインの作成、カスタマイズ、および構成方法の詳細については、[セキュリティ モジュール ツインの作成](quickstart-create-security-twin.md)および[セキュリティ エージェントの構成](how-to-agent-configuration.md)に関するページを参照してください。 IoT Hub でのモジュール ツインの概念の詳細については、[モジュール ツインの理解](../iot-hub/iot-hub-devguide-module-twins.md)に関するページを参照してください。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 - [Defender for IoT の概要](overview.md)
 - [セキュリティ エージェントをデプロイする](how-to-deploy-agent.md)

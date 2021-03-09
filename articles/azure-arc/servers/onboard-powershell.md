@@ -3,12 +3,12 @@ title: PowerShell を使用してハイブリッド マシンを Azure に接続
 description: この記事では、Azure Arc 対応サーバーを使用して、エージェントをインストールし、マシンを Azure に接続する方法について説明します。 これは PowerShell で行うことができます。
 ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0218235179e1a8a883360d0061e685c04079cbf4
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 07a00de9077378ce3e3f7a7578b66e93d1b04f2b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95492943"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584932"
 ---
 # <a name="connect-hybrid-machines-to-azure-by-using-powershell"></a>PowerShell を使用してハイブリッド マシンを Azure に接続する
 
@@ -103,6 +103,6 @@ Azure Arc 対応サーバーで 1 つ以上の Windows サーバーを構成す�
 
 * 必要に応じて、[Connected Machine エージェントのトラブルシューティング ガイド](troubleshoot-agent-onboard.md)を参照してください。
 
-* [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法について説明します。 VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)を使用したり、マシンの報告先が想定されている Log Analytics ワークスペースであることを確認したり、[VM での Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) を使用した監視を有効化したりできます。
+* [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法について説明します。 VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)を使用したり、マシンの報告先が想定されている Log Analytics ワークスペースであることを確認したり、[VM での Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) を使用した監視を有効化したりできます。
 
-* [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の詳細を確認します。 オペレーティング システムとワークロードの監視データを収集したい場合、またはそれを Azure Automation Runbook や Update Management などの機能を使用して管理したい場合は、Windows 用および Linux 用の Log Analytics エージェントが必要となります。 このエージェントは、[Azure Security Center](../../security-center/security-center-introduction.md) など、他の Azure サービスを使用するためにも必要です。
+* [Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)の詳細を確認します。 オペレーティング システムとワークロードの監視データを収集したい場合、またはそれを Azure Automation Runbook や Update Management などの機能を使用して管理したい場合は、Windows 用および Linux 用の Log Analytics エージェントが必要となります。 このエージェントは、[Azure Security Center](../../security-center/security-center-introduction.md) など、他の Azure サービスを使用するためにも必要です。

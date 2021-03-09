@@ -4,12 +4,12 @@ description: X.509 証明書で保護された Service Fabric クラスターで
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: 722c84c25cb5188e45dd96363bab9af6ff93f6dc
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: a8a7e8954f3c9d5b54c2e1ed9caa330ef92d4512
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901268"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099508"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric クラスターでの証明書管理
 
@@ -427,6 +427,7 @@ KVVM 拡張機能は、プロビジョニング エージェントとして、�
 KVVM 拡張機能の "linkOnRenewal" フラグと、それが false に設定されていることに気づいたかもしれません。 ここでは、このフラグによって制御される動作と、クラスターの機能への影響について詳しく説明します。 この動作は Windows に固有のものです。
 
 その[定義](../virtual-machines/extensions/key-vault-windows.md#extension-schema)に従って次のようにします。
+
 ```json
 "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
 ```

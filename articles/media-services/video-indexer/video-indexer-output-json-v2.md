@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: bf48f873127a12c3cabb28da33d34cedcda2793b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2ac7c3c2149ce43c860c7726381733ef377de8d3
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831568"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530741"
 ---
 # <a name="examine-the-video-indexer-output"></a>Video Indexer の出力を調べる
 
@@ -104,7 +104,7 @@ ms.locfileid: "94831568"
 |faces/animatedCharacters|0 以上の顔を含めることができます。 詳細については、「[faces/animatedCharacters](#facesanimatedcharacters)」を参照してください。|
 |keywords|0 個以上のキーワードを含めることができます。 詳しくは、「[キーワード](#keywords)」をご覧ください。|
 |sentiments|0 個以上のセンチメントを含めることができます。 詳しくは、「[センチメント](#sentiments)」をご覧ください。|
-|audioEffects| 0 個以上の audioEffects を含めることができます。 詳しくは、「[audioEffects](#audioeffects)」をご覧ください。|
+|audioEffects| 0 個以上の audioEffects を含めることができます。 詳しくは、「[audioEffects](#audioeffects-public-preview)」をご覧ください。|
 |labels| 0 以上のラベルを含めることができます。 詳細については、「[ラベル](#labels)」をご覧ください。|
 |brands| 0 以上のブランドを含めることができます。 詳しくは、「[ブランド](#brands)」をご覧ください。|
 |statistics | 詳しくは、「[統計](#statistics)」をご覧ください。|
@@ -181,7 +181,7 @@ ms.locfileid: "94831568"
 |labels|[labels](#labels) 分析情報。|
 |shots|[shots](#shots) 分析情報。|
 |brands|[brands](#brands) 分析情報。|
-|audioEffects|[audioEffects](#audioeffects) 分析情報。|
+|audioEffects|[audioEffects](#audioeffects-public-preview) 分析情報。|
 |sentiments|[sentiments](#sentiments) 分析情報。|
 |visualContentModeration|[visualContentModeration](#visualcontentmoderation) 分析情報。|
 |textualContentModeration|[textualContentModeration](#textualcontentmoderation) 分析情報。|
@@ -590,26 +590,28 @@ instances|このブロックの時間範囲の一覧|
 |SpeakerLongestMonolog|話者の最も長いモノローグ。 モノローグでの話者の沈黙がある場合、それも含まれます。 モノローグの先頭と末尾の無音は削除されます。| 
 |SpeakerTalkToListenRatio|計算は、ビデオの合計時間で割られた話者のモノローグに費やされた時間に基づきます (間の無音は含みません)。 時間は、小数点第 3 位に丸められます。|
 
-#### <a name="audioeffects"></a>audioEffects
+#### <a name="audioeffects-public-preview"></a>audioEffects (パブリック プレビュー)
 
-|名前|説明|
+|名前|説明
 |---|---|
-|id|オーディオ エフェクト ID。|
-|type|オーディオ エフェクトの種類 (例: 拍手、発話、無音)。|
-|instances|このオーディオ エフェクトが出現する時間範囲の一覧。|
+|id|オーディオ エフェクト ID|
+|type|オーディオ エフェクトの種類|
+|instances|このオーディオ エフェクトが出現する時間範囲の一覧。 各インスタンスに confidence フィールドがあります。|
 
 ```json
 "audioEffects": [
 {
     "id": 0,
-    "type": "Clapping",
+    "type": "Siren",
     "instances": [
     {
+       "confidence": 0.87,
         "start": "00:00:00",
         "end": "00:00:03"
     },
     {
-        "start": "00:01:13",
+       "confidence": 0.87,
+       "start": "00:01:13",
         "end": "00:01:21"
     }
     ]

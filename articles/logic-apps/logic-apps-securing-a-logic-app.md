@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: c889498d6341875682055e9d67b8d2b958bac70a
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 02/12/2021
+ms.openlocfilehash: d7ed3fb268920d6f4d015886c560b2d9fcbdc632
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251065"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104503"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -123,11 +123,11 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="enable-azure-active-directory-open-authentication-azure-ad-oauth"></a>Azure Active Directory Open Authentication の有効化 (Azure AD OAuth)
 
-要求ベースのトリガーによって作成されたエンドポイントへの受信呼び出しの場合、ロジック アプリのために承認ポリシーを定義または追加することによって、[Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml) を有効にできます。 このように、受信呼び出しでは、承認のために OAuth [アクセス トークン](../active-directory/develop/access-tokens.md)を使用します。
+要求ベースのトリガーによって作成されたエンドポイントへの受信呼び出しの場合、ロジック アプリのために承認ポリシーを定義または追加することによって、[Azure AD OAuth](../active-directory/develop/index.yml) を有効にできます。 このように、受信呼び出しでは、承認のために OAuth [アクセス トークン](../active-directory/develop/access-tokens.md)を使用します。
 
 ロジック アプリが OAuth アクセス トークンを含む受信要求を受信すると、Azure Logic Apps サービスによって、トークンのクレームが、各承認ポリシーによって指定されたクレームと比較されます。 トークンのクレームと、少なくとも 1 つのポリシーに含まれるすべてのクレームが一致した場合、受信要求に対して承認が成功します。 トークンは、承認ポリシーで指定された数よりも多くのクレームを持つことができます。
 
-Azure AD OAuth を有効にする前に、以下の考慮事項について再検討してください。
+#### <a name="considerations-before-you-enable-azure-ad-oauth"></a>Azure AD OAuth を有効にする前の考慮事項
 
 * 要求エンドポイントへの受信呼び出しでは、Azure AD OAuth または [Shared Access Signature (SAS)](#sas) のいずれか 1 つの承認スキームのみを使用できます。 1 つのスキームを使用しても他方のスキームは無効にされませんが、両方のスキームを同時に使用すると、どちらのスキームを選択するか Logic Apps サービスでは不明なため、エラーが発生します。
 
@@ -180,11 +180,15 @@ Azure AD OAuth を有効にする前に、以下の考慮事項について再�
    }
    ```
 
+#### <a name="enable-azure-ad-oauth-for-your-logic-app"></a>ロジック アプリに対して OAuth Azure AD を有効にする
+
+Azure portal または Azure Resource Manager テンプレートについて、次の手順を実行します。
+
 <a name="define-authorization-policy-portal"></a>
 
-#### <a name="define-authorization-policy-in-azure-portal"></a>Azure portal で認可ポリシーを定義する
+#### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-Azure portal でロジック アプリの Azure AD OAuth を有効にするには、次の手順に従って、ロジック アプリに 1 つ以上の認可ポリシーを追加します。
+[Azure portal](https://portal.azure.com) で、ロジック アプリに 1 つ以上の承認ポリシーを追加します。
 
 1. [Azure portal](https://portal.microsoft.com) のロジック アプリ デザイナーで、ロジック アプリを探して開きます。
 
@@ -216,9 +220,9 @@ Azure portal でロジック アプリの Azure AD OAuth を有効にするに�
 
 <a name="define-authorization-policy-template"></a>
 
-#### <a name="define-authorization-policy-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートで認可ポリシーを定義する
+#### <a name="resource-manager-template"></a>[Resource Manager テンプレート](#tab/azure-resource-manager)
 
-ロジック アプリをデプロイするための ARM テンプレートで Azure AD OAuth を有効にするには、以下に示す手順と構文に従います。
+ARM テンプレートで、次の手順と構文に従って承認ポリシーを定義します。
 
 1. [ロジック アプリのリソース定義](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)の `properties` セクションで、`triggers` オブジェクトを含む `accessControl` オブジェクトを追加します (1 つもない場合)。
 
@@ -271,6 +275,8 @@ Azure portal でロジック アプリの Azure AD OAuth を有効にするに�
 ],
 ```
 
+---
+
 <a name="include-auth-header"></a>
 
 #### <a name="include-authorization-header-in-request-trigger-outputs"></a>要求トリガーの出力に "Authorization" ヘッダーを含める
@@ -310,11 +316,13 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 指定する IP アドレスに関わらず、[Logic Apps REST API: Workflow Triggers - Run](/rest/api/logic/workflowtriggers/run) 要求または API Management を使用することで、要求ベースのトリガーを備えたロジック アプリを引き続き実行できます。 ただし、このシナリオでも Azure REST API に対する[認証](../active-directory/develop/authentication-vs-authorization.md)が必要です。 すべてのイベントが Azure の監査ログに表示されます。 アクセス制御ポリシーを適切に設定するようにしてください。
 
+ロジック アプリの受信 IP アドレスを制限するには、Azure portal または Azure Resource Manager テンプレートに対して次の手順を実行します。
+
 <a name="restrict-inbound-ip-portal"></a>
 
-#### <a name="restrict-inbound-ip-ranges-in-azure-portal"></a>Azure portal で受信 IP 範囲を制限する
+#### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-ポータルを使用してロジック アプリの受信 IP アドレスを制限すると、これらの制限は、ポータルの **[許可された着信 IP アドレス]** 下にある説明にかかわらず、トリガー "*およｂ*" アクションの両方に影響します。 アクションとは別にトリガーに対する制限を設定するには、[ロジック アプリの Azure Resource Manager テンプレートの `accessControl` オブジェクト](#restrict-inbound-ip-template) または次を使用します: [Logic Apps REST API:[Workflow - Create Or Update]\(ワークフロー - 作成または更新\) 操作](/rest/api/logic/workflows/createorupdate)。
+[Azure portal](https://portal.azure.com) では、ポータルの **使用できる受信 IP アドレス** の説明とは対称的に、このフィルターは、トリガー *と* アクションの両方に影響します。 トリガー用とアクション用に分けてこのフィルターを設定するには、ロジック アプリの Azure Resource Manager テンプレートの `accessControl` オブジェクト、または次を使用します: [Logic Apps REST API:[Workflow - Create Or Update]\(ワークフロー - 作成または更新\) 操作](/rest/api/logic/workflows/createorupdate)。
 
 1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 
@@ -323,23 +331,23 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 1. **[アクセス制御の構成]** セクションの **[許可された着信 IP アドレス]** で、シナリオのパスを選択します。
 
    * 組み込みの [Azure Logic Apps アクション](../logic-apps/logic-apps-http-endpoint.md)を使用して、ロジック アプリを入れ子になったロジック アプリとしてのみ呼び出し可能にするには、 **[Only other Logic Apps]\(他のロジック アプリのみ\)** を選択します。これは、**Azure Logic Apps** アクションを使用して入れ子になったロジック アプリを呼び出す場合に "*のみ*" 機能します。
-   
+
      このオプションを使用すると、ロジック アプリのリソースに空の配列が書き込まれ、組み込みの **Azure Logic Apps** アクションが使用されている親ロジック アプリからの呼び出しでのみ、入れ子になったロジック アプリをトリガーできるように要求できます。
 
    * HTTP アクションを使用してロジック アプリを入れ子になったアプリとしてのみ呼び出せるようにするには、 **[Only other Logic Apps]\(他のロジック アプリのみ\)** "*ではなく*"、 **[特定の IP 範囲]** を選択します。 **[トリガーの IP 範囲]** ボックスが表示されたら、親ロジック アプリの [送信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#outbound)を入力します。 有効な IP 範囲には、*x.x.x.x/x* または *x.x.x.x-x.x.x.x* の形式が使用されます。
-   
+
      > [!NOTE]
      > **[Only other Logic Apps]\(他のロジック アプリのみ\)** オプションと HTTP アクションを使用して入れ子になったロジック アプリを呼び出すと、呼び出しはブロックされ、"401 未承認" エラーが発生します。
-        
+
    * 他の IP からの着信呼び出しを制限するシナリオでは、 **[トリガーの IP 範囲]** ボックスが表示されたら、トリガーで使用できる IP アドレス範囲を指定します。 有効な IP 範囲には、*x.x.x.x/x* または *x.x.x.x-x.x.x.x* の形式が使用されます。
 
 1. 必要に応じて、 **[Restrict calls to get input and output messages from run history to the provided IP addresses]\(実行履歴からの入力と出力メッセージを取得するための呼び出しを指定した IP アドレスに制限する\)** で、実行履歴の入力メッセージと出力メッセージにアクセスできる着信呼び出しの IP アドレス範囲を指定できます。
 
 <a name="restrict-inbound-ip-template"></a>
 
-#### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートで受信 IP 範囲を制限する
+#### <a name="resource-manager-template"></a>[Resource Manager テンプレート](#tab/azure-resource-manager)
 
-[Resource Manager テンプレートを使用してロジック アプリのデプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)場合、ロジック アプリのリソース定義の `accessControl` セクションを使用して、許可される着信 IP アドレス範囲を指定できます。 このセクションでは、`triggers`、`actions`、およびオプションの `contents` セクションを適宜使用し、`allowedCallerIpAddresses` セクションに `addressRange` プロパティを含め、プロパティ値に許可される IP 範囲を *x.x.x.x/x* または *x.x.x.x-x.x.x.x* 形式で設定します。
+ARM テンプレートで、ロジック アプリのリソース定義で許可されている受信 IP アドレス範囲を、`accessControl` セクションを使用して指定します。 このセクションでは、`triggers`、`actions`、およびオプションの `contents` セクションを適宜使用し、`allowedCallerIpAddresses` セクションに `addressRange` プロパティを含め、プロパティ値に許可される IP 範囲を *x.x.x.x/x* または *x.x.x.x-x.x.x.x* 形式で設定します。
 
 * 入れ子になったロジック アプリで、Azure Logic Apps アクションを使用する他のロジック アプリからのみ着信呼び出しを許可する **[Only other Logic Apps]\(他のロジック アプリのみ\)** オプションが使用されている場合は、`addressRange` プロパティを空の配列 ( **[]** ) に設定します。
 
@@ -439,6 +447,8 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 }
 ```
 
+---
+
 <a name="secure-operations"></a>
 
 ## <a name="access-to-logic-app-operations"></a>ロジック アプリの操作へのアクセス
@@ -473,11 +483,15 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 ### <a name="restrict-access-by-ip-address-range"></a>IP アドレス範囲でアクセスを制限する
 
-ロジック アプリの実行履歴に含まれる入力と出力へのアクセスは、特定の IP アドレス範囲からの要求のみでそのデータを表示できるように制限できます。 たとえば、すべてのユーザーが入力および出力にアクセスできないようにするには、IP アドレス範囲を「`0.0.0.0-0.0.0.0`」のように指定します。 この制限を削除できるのは管理者アクセス許可を持つ人物のみであるため、自分のロジック アプリのデータに対する "ジャストインタイム" アクセスが可能になります。 制限する IP 範囲を指定するには、Azure portal を使用するか、ロジック アプリのデプロイに使用する Azure Resource Manager テンプレートで実行することができます。
+ロジック アプリの実行履歴に含まれる入力と出力へのアクセスは、特定の IP アドレス範囲からの要求のみでそのデータを表示できるように制限できます。
 
-#### <a name="restrict-ip-ranges-in-azure-portal"></a>Azure portal で IP 範囲を制限する
+たとえば、すべてのユーザーが入力および出力にアクセスできないようにするには、IP アドレス範囲を「`0.0.0.0-0.0.0.0`」のように指定します。 この制限を削除できるのは管理者アクセス許可を持つ人物のみであるため、自分のロジック アプリのデータに対する "ジャストインタイム" アクセスが可能になります。
 
-1. Azure portal のロジック アプリ デザイナーでお客様のロジック アプリを開きます。
+許可される IP 範囲を指定するには、Azure portal または Azure Resource Manager テンプレートに対して、次の手順を実行します。
+
+#### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 
 1. ロジック アプリのメニューの **[設定]** で、 **[ワークフロー設定]** を選択します。
 
@@ -487,9 +501,9 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
    有効な IP 範囲では、*x.x.x.x/x* または *x.x.x.x-x.x.x.x* の形式が使用されます。
 
-#### <a name="restrict-ip-ranges-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートで IP 範囲を制限する
+#### <a name="resource-manager-template"></a>[Resource Manager テンプレート](#tab/azure-resource-manager)
 
-[Resource Manager テンプレートを使用してロジック アプリのデプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)場合、次の例のように、ロジック アプリのリソース定義の `accessControl` セクションで `contents` セクションを使用して、IP 範囲を指定できます。
+ARM テンプレートで、ロジック アプリのリソース定義で `accessControl` セクションと `contents` セクションを使用して IP 範囲を指定します。たとえば、次のように指定します。
 
 ``` json
 {
@@ -528,11 +542,41 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 }
 ```
 
+---
+
 <a name="obfuscate"></a>
 
 ### <a name="secure-data-in-run-history-by-using-obfuscation"></a>難読化を使用して実行履歴のデータをセキュリティで保護する
 
-多くのトリガーおよびアクションには、ロジック アプリの実行履歴から、入力と出力のどちらかまたは両方をセキュリティで保護するための設定があります。 これらの設定を使用してこのデータをセキュリティで保護する前に、[これらの考慮事項を確認してください](#obfuscation-considerations)。
+多くのトリガーおよびアクションには、ロジック アプリの実行履歴から、入力と出力のどちらかまたは両方をセキュリティで保護するための設定があります。 これらの設定を使用してこのデータをセキュリティで保護する前に、これらの考慮事項を確認してください。
+
+* トリガーまたはアクションの入力または出力を隠すと、Logic Apps から Azure Log Analytics にそのセキュリティで保護されたデータが送信されません。 また、そのトリガーまたはアクションに[追跡対象プロパティ](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)を追加して監視することもできません。
+
+* セキュリティで保護された出力は、[ワークフロー履歴を処理するための Logic Apps API](/rest/api/logic/) から返されません。
+
+* 入力を隠すか出力を明示的に隠すアクションからの出力をセキュリティで保護するには、そのアクションで **[セキュリティで保護された出力]** を手動で有効にします。
+
+* ダウンストリームのアクションで、実行履歴にそのデータを隠すよう求める場合は、 **[セキュリティで保護された入力]** または **[セキュリティで保護された出力]** を確実にオンにしてください。
+
+  **[セキュリティで保護された出力] の設定**
+
+  トリガーまたはアクションで **[セキュリティで保護された出力]** を手動でオンにすると、Logic Apps により、実行履歴でその出力が非表示になります。 それらのセキュリティで保護された出力がダウンストリームのアクションで明示的に入力として使用されている場合、そのアクションの入力が実行履歴では非表示となりますが、アクションの **[セキュリティで保護された入力]** の設定は "*有効になりません*"。
+
+  ![入力としてのセキュリティで保護された出力とダウンストリームによるほとんどのアクションへの影響](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
+
+  [作成]、[JSON の解析]、[応答] の各アクションには、 **[セキュリティで保護された入力]** の設定しかありません。 この設定をオンにした場合、それらのアクションの出力も非表示になります。 セキュリティで保護されたアップストリームの出力がそれらのアクションの入力として明示的に使用された場合、Logic Apps によってそれらのアクションの入力と出力は非表示となりますが、それらのアクションの **[セキュリティで保護された入力]** の設定は "*有効になりません*"。 [作成]、[JSON の解析]、[応答] のいずれかのアクションからの非表示の出力がダウンストリームのアクションで明示的に入力として使用された場合、"*そのダウンストリームのアクションの入力と出力は非表示になりません*"。
+
+  ![入力としてのセキュリティで保護された出力とダウンストリームによる特定のアクションへの影響](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
+
+  **[セキュリティで保護された入力] の設定**
+
+  トリガーまたはアクションで **[セキュリティで保護された入力]** を手動でオンにすると、Logic Apps により、実行履歴でその入力が非表示になります。 そのトリガーまたはアクションからの表示可能な出力がダウンストリームのアクションの入力として明示的に使用されている場合、そのダウンストリームのアクションの入力が実行履歴では非表示となりますが、このアクションの **[セキュリティで保護された入力]** は "*有効にならず*"、そのアクションの出力が非表示になることもありません。
+
+  ![セキュリティで保護された入力とダウンストリームのほとんどのアクションへの影響](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
+
+  セキュリティで保護された入力を持つトリガーまたはアクションからの表示可能な出力が、[作成]、[JSON の解析]、[応答] の各アクションで明示的に使用された場合、これらのアクションの入力と出力は非表示となりますが、そのアクションの **[セキュリティで保護された入力]** の設定は "*有効になりません*"。 [作成]、[JSON の解析]、[応答] のいずれかのアクションからの非表示の出力がダウンストリームのアクションで明示的に入力として使用された場合、"*そのダウンストリームのアクションの入力と出力は非表示になりません*"。
+
+  ![セキュリティで保護された入力とダウンストリームの特定のアクションへの影響](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
 #### <a name="secure-inputs-and-outputs-in-the-designer"></a>デザイナーで入力と出力のセキュリティを保護する
 
@@ -575,8 +619,6 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 * `"inputs"`:実行履歴における入力のセキュリティを保護します。
 * `"outputs"`:実行履歴における出力のセキュリティを保護します。
 
-ここでは、それらの設定を使用してこのデータをセキュリティで保護する際に[確認すべきいくつかの考慮事項](#obfuscation-considerations)について取り上げます。
-
 ```json
 "<trigger-or-action-name>": {
    "type": "<trigger-or-action-type>",
@@ -594,38 +636,6 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
    <other-attributes>
 }
 ```
-
-<a name="obfuscation-considerations"></a>
-
-#### <a name="considerations-when-securing-inputs-and-outputs"></a>入力と出力をセキュリティで保護する際の考慮事項
-
-* トリガーまたはアクションの入力または出力を隠すと、Logic Apps から Azure Log Analytics にそのセキュリティで保護されたデータが送信されません。 また、そのトリガーまたはアクションに[追跡対象プロパティ](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)を追加して監視することもできません。
-
-* セキュリティで保護された出力は、[ワークフロー履歴を処理するための Logic Apps API](/rest/api/logic/) から返されません。
-
-* 入力を隠すか出力を明示的に隠すアクションからの出力をセキュリティで保護するには、そのアクションで **[セキュリティで保護された出力]** を手動で有効にします。
-
-* ダウンストリームのアクションで、実行履歴にそのデータを隠すよう求める場合は、 **[セキュリティで保護された入力]** または **[セキュリティで保護された出力]** を確実にオンにしてください。
-
-  **[セキュリティで保護された出力] の設定**
-
-  トリガーまたはアクションで **[セキュリティで保護された出力]** を手動でオンにすると、Logic Apps により、実行履歴でその出力が非表示になります。 それらのセキュリティで保護された出力がダウンストリームのアクションで明示的に入力として使用されている場合、そのアクションの入力が実行履歴では非表示となりますが、アクションの **[セキュリティで保護された入力]** の設定は "*有効になりません*"。
-
-  ![入力としてのセキュリティで保護された出力とダウンストリームによるほとんどのアクションへの影響](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
-
-  [作成]、[JSON の解析]、[応答] の各アクションには、 **[セキュリティで保護された入力]** の設定しかありません。 この設定をオンにした場合、それらのアクションの出力も非表示になります。 セキュリティで保護されたアップストリームの出力がそれらのアクションの入力として明示的に使用された場合、Logic Apps によってそれらのアクションの入力と出力は非表示となりますが、それらのアクションの **[セキュリティで保護された入力]** の設定は "*有効になりません*"。 [作成]、[JSON の解析]、[応答] のいずれかのアクションからの非表示の出力がダウンストリームのアクションで明示的に入力として使用された場合、"*そのダウンストリームのアクションの入力と出力は非表示になりません*"。
-
-  ![入力としてのセキュリティで保護された出力とダウンストリームによる特定のアクションへの影響](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
-
-  **[セキュリティで保護された入力] の設定**
-
-  トリガーまたはアクションで **[セキュリティで保護された入力]** を手動でオンにすると、Logic Apps により、実行履歴でその入力が非表示になります。 そのトリガーまたはアクションからの表示可能な出力がダウンストリームのアクションの入力として明示的に使用されている場合、そのダウンストリームのアクションの入力が実行履歴では非表示となりますが、このアクションの **[セキュリティで保護された入力]** は "*有効にならず*"、そのアクションの出力が非表示になることもありません。
-
-  ![セキュリティで保護された入力とダウンストリームのほとんどのアクションへの影響](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
-
-  セキュリティで保護された入力を持つトリガーまたはアクションからの表示可能な出力が、[作成]、[JSON の解析]、[応答] の各アクションで明示的に使用された場合、これらのアクションの入力と出力は非表示となりますが、そのアクションの **[セキュリティで保護された入力]** の設定は "*有効になりません*"。 [作成]、[JSON の解析]、[応答] のいずれかのアクションからの非表示の出力がダウンストリームのアクションで明示的に入力として使用された場合、"*そのダウンストリームのアクションの入力と出力は非表示になりません*"。
-
-  ![セキュリティで保護された入力とダウンストリームの特定のアクションへの影響](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
 <a name="secure-action-parameters"></a>
 
@@ -866,7 +876,7 @@ TLS/SSL 自己署名証明書に関する情報を次に示します。
 
 * ロジック アプリの IP アドレスからのアクセスを制限する。
 
-  ロジック アプリからエンドポイントへの呼び出しはすべて、ロジック アプリのリージョンに基づいて指定される特定の IP アドレスが起点となります。 これらの IP アドレスからのみ要求を受け入れるフィルターを追加できます。 これらの IP アドレスを取得するには、[Azure Logic Apps の制限と構成](logic-apps-limits-and-config.md#configuration)に関するページを参照してください。
+  ロジック アプリからエンドポイントへの呼び出しはすべて、ロジック アプリのリージョンに基づいて指定される特定の IP アドレスが起点となります。 これらの IP アドレスからのみ要求を受け入れるフィルターを追加できます。 これらの IP アドレスを取得するには、[Azure Logic Apps の制限と構成](logic-apps-limits-and-config.md#firewall-ip-configuration)に関するページを参照してください。
 
 * オンプレミス システムへの接続のセキュリティを強化する。
 
@@ -966,7 +976,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 | プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | 説明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | **クライアント証明書** <br>or <br>`ClientCertificate` | 使用する認証の種類。 [Azure API Management](../api-management/api-management-howto-mutual-certificates.md) で証明書を管理できます。 <p></p>**注**:カスタム コネクタでは、受信と送信両方の呼び出しに対して証明書ベースの認証はサポートされていません。 |
-| **Pfx** | `pfx` | はい | <*encoded-pfx-file-content*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ <p><p>PFX ファイルを Base64 でエンコードされた形式に変換するには、次の手順に従って PowerShell を使用します。 <p>1.証明書の内容を変数に保存します。 <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2.`ToBase64String()` 関数を使用して証明書の内容を変換し、その内容をテキスト ファイルに保存します。 <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
+| **Pfx** | `pfx` | はい | <*encoded-pfx-file-content*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ <p><p>PFX ファイルを Base64 でエンコードされた形式に変換するには、次の手順に従って PowerShell を使用します。 <p>1.証明書の内容を変数に保存します。 <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2.`ToBase64String()` 関数を使用して証明書の内容を変換し、その内容をテキスト ファイルに保存します。 <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` <p><p>**トラブルシューティング**: `cert mmc/PowerShell` コマンドを使用すると、次のエラーが表示される場合があります。 <p><p>`Could not load the certificate private key. Please check the authentication certificate password is correct and try again.` <p><p>このエラーを解決するには、`openssl` コマンドを使用して PFX ファイルを PEM ファイルに変換し、それからもう一度元に戻します。 <p><p>`openssl pkcs12 -in certificate.pfx -out certificate.pem` <br>`openssl pkcs12 -in certificate.pem -export -out certificate2.pfx` <p><p>その後は、証明書の新しく変換された PFX ファイルに対して base64 でエンコードされた文字列を取得すると、文字列は Azure Logic Apps で機能するようになります。 |
 | **パスワード** | `password`| いいえ | <*password-for-pfx-file*> | PFX ファイルにアクセスするためのパスワード |
 |||||
 

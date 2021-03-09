@@ -7,12 +7,12 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 2579326e92144149472874611b5307920a93c049
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e0c795484bf860402d05c1dc5779633962a44ec2
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031405"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979506"
 ---
 # <a name="command-line-and-powershell-reference-for-azure-cosmos-db-emulator"></a>Azure Cosmos DB Emulator のコマンドラインと PowerShell リファレンス
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -75,10 +75,10 @@ Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort]
 Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
 ```
 
-このほか、`PSModulesPath` に `PSModules` ディレクトリを追加したうえで、次のコマンドを使用してインポートする方法もあります。
+このほか、`PSModulePath` に `PSModules` ディレクトリを追加したうえで、次のコマンドを使用してインポートする方法もあります。
 
 ```powershell
-$env:PSModulesPath += "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules"
+$env:PSModulePath += "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules"
 Import-Module Microsoft.Azure.CosmosDB.Emulator
 ```
 

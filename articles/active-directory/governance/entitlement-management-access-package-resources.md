@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b6e2ac9d80c1c3bf76b4a3d4c44f0654100670f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65f69cf492ec3e28d7f4aa86971dc6c91b34bdf5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89567420"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644181"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージのリソース ロールを変更する
 
@@ -143,6 +143,8 @@ ms.locfileid: "89567420"
 Azure AD では、ユーザーにアクセス パッケージが割り当てられたときに、そのユーザーに自動的に SharePoint Online サイトまたは SharePoint Online のサイト コレクションへのアクセス権を割り当てられることができます。
 
 1. **[リソースのロールをアクセス パッケージに追加する]** ページで、 **[SharePoint サイト]** をクリックして [Select SharePoint Online sites]\(SharePoint Online サイトの選択) ウィンドウを開きます。
+
+    :::image type="content" source="media/entitlement-management-access-package-resources/resource-sharepoint-add.png" alt-text="アクセス パッケージ - リソース ロールの追加 - SharePoint サイトの選択 - ポータル ビュー":::
 
 1. アクセス パッケージに含める SharePoint Online サイトを選択します。
 

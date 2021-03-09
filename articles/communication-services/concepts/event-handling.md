@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e661b99e3c5028f40ea69ddedc22c7ee2895acec
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: cb253ebfd8269779adf02dcbc01d7998590ce78c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888727"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657164"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Azure Communication Services でのイベント処理
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure Communication Services は [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) と統合され、信頼性が高く、スケーラブルで安全な方法でリアルタイムのイベント通知を配信します。 この記事の目的は、ご利用のアプリケーションを構成して Communication Services イベントをリッスンできるようにすることです。 たとえば、Communication Services リソースに関連付けられている電話番号で SMS メッセージを受信するたびに、データベースを更新し、作業項目を作成し、プッシュ通知を配信したい場合があります。
 
@@ -26,9 +24,12 @@ Azure Event Grid は、発行 - サブスクライブ モデルを使用する�
 
 :::image type="content" source="https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png" alt-text="Azure Event Grid のイベント モデルを示す図。":::
 
+> [!NOTE]
+> データ所在地とイベント処理の関係の詳細については、[データ所在地の概念説明ドキュメント](./privacy.md)を参照してください。
+
 ## <a name="events-types"></a>イベントの種類
 
-Event Grid は、[イベント サブスクリプション](../../event-grid/concepts.md#event-subscriptions)を使って、イベント メッセージをサブスクライバーにルーティングします。 
+Event Grid は、[イベント サブスクリプション](../../event-grid/concepts.md#event-subscriptions)を使って、イベント メッセージをサブスクライバーにルーティングします。
 
 Azure Communication Services から出力されるイベントの種類は次のとおりです。
 
@@ -204,7 +205,7 @@ Azure portal または Azure CLI を使用して、Communication Services リソ
 }]
 ```
 
-### <a name="microsoftcommunicationchatthreadcreatedwithuser-event"></a>Microsoft.Communication.ChatThreadCreatedWithUser イベント 
+### <a name="microsoftcommunicationchatthreadcreatedwithuser-event"></a>Microsoft.Communication.ChatThreadCreatedWithUser イベント
 
 ```json
 [{
@@ -262,7 +263,7 @@ Azure portal または Azure CLI を使用して、Communication Services リソ
 }]
 ```
 
-### <a name="microsoftcommunicationchatthreadpropertiesupdatedperuser-event"></a>Microsoft.Communication.ChatThreadPropertiesUpdatedPerUser イベント 
+### <a name="microsoftcommunicationchatthreadpropertiesupdatedperuser-event"></a>Microsoft.Communication.ChatThreadPropertiesUpdatedPerUser イベント
 
 ```json
 [{

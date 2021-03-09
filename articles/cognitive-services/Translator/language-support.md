@@ -3,23 +3,23 @@ title: 言語のサポート - Translator
 titleSuffix: Azure Cognitive Services
 description: Cognitive Services Translator では、Neural Machine Translation (NMT) を利用したテキスト対テキストの翻訳で、以下の言語をサポートしています。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
-ms.author: swmachan
-ms.openlocfilehash: 6163f059581c2699d0b2780545c3ad5ec80f2907
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.author: lajanuar
+ms.openlocfilehash: b114c4f3e6646f68e7a1068be8dd52778a26fb58
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882417"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738142"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>テキストおよび音声翻訳の言語と地域のサポート
 
-翻訳を使用すると、70 を超えるテキスト翻訳言語間で翻訳を行うことができます。 Neural Machine Translation (NMT) は、AI を使用する高品質機械翻訳の新しい標準で、ニューラル システムが使用できる場合に Translator の V3 を使用して既定で提供されます。
+Translator を使用すると、90 のテキスト翻訳言語および方言の間で翻訳を行うことができます。 Neural Machine Translation (NMT) は、AI を使用する高品質機械翻訳の新しい標準で、ニューラル システムが使用できる場合に Translator の V3 を使用して既定で提供されます。
 
 また、翻訳をカスタム翻訳ツールと組み合わせて使用することで、お客様のビジネスや業界で使用されている用語を理解するニューラル翻訳システムを構築したり、Microsoft Speech Service を使用して音声翻訳をアプリに追加することもできます。
 
@@ -37,8 +37,12 @@ ms.locfileid: "97882417"
 | Language | 言語コード |
 |:-|:-:|
 | アフリカーンス語 | `af` |
+| アルバニア語 | `sq` |
+| アムハラ語 | `am` |
 | アラビア語 | `ar` |
+| アルメニア語 | `hy` |
 | アッサム語 | `as` |
+| アゼルバイジャン語 | `az` |
 | ベンガル語 | `bn` |
 | ボスニア語 (ラテン) | `bs` |
 | ブルガリア語 | `bg` |
@@ -68,16 +72,19 @@ ms.locfileid: "97882417"
 | ハンガリー語 | `hu` |
 | アイスランド語 | `is` |
 | インドネシア語 | `id` |
+| イヌクティトット語 | `iu` |
 | アイルランド語 | `ga` |
 | イタリア語 | `it` |
 | 日本語 | `ja` |
 | カンナダ語 | `kn` |
 | カザフ語 | `kk` |
+| クメール語 | `km` |
 | クリンゴン語 | `tlh-Latn` |
 | クリンゴン語 (plqaD) | `tlh-Piqd` |
 | 韓国語 | `ko` |
 | クルド語 (中央) | `ku` |
 | クルド語 (北) | `kmr` |
+| ラオス語 | `lo` |
 | ラトビア語 | `lv` |
 | リトアニア語 | `lt` |
 | マダガスカル語 | `mg` |
@@ -86,12 +93,14 @@ ms.locfileid: "97882417"
 | マルタ語 | `mt` |
 | マオリ語 | `mi` |
 | マラーティー語 | `mr` |
+| ミャンマー | `my` |
+| ネパール語 | `ne` |
 | ノルウェー語 | `nb` |
 | オディア語 | `or` |
 | パシュトウ語 | `ps` |
 | ペルシャ語 | `fa` |
 | ポーランド語 | `pl` |
-| ポルトガル語 (ブラジル) | `pt-br` |
+| ポルトガル語 (ブラジル) | `pt` |
 | ポルトガル語 (ポルトガル) | `pt-pt` |
 | パンジャーブ語 | `pa` |
 | オトミ語 | `otq` |
@@ -109,6 +118,7 @@ ms.locfileid: "97882417"
 | タミル語 | `ta` |
 | テルグ語 | `te` |
 | タイ語 | `th` |
+| ティグリニア語 | `ti` |
 | トンガ語 | `to` |
 | トルコ語 | `tr` |
 | ウクライナ語 | `uk` |
@@ -129,6 +139,7 @@ ms.locfileid: "97882417"
 | Language | 言語コード |
 |:-|:-:|
 | アフリカーンス語 | `af` |
+| アルバニア語 | `sq` |
 | アラビア語 | `ar` |
 | ブルガリア語 | `bg` |
 | カタロニア語 | `ca` |
@@ -151,6 +162,7 @@ ms.locfileid: "97882417"
 | ハンガリー語 | `hu` |
 | アイスランド語 | `is` |
 | インドネシア語 | `id` |
+| イヌクティトット語 | `iu` |
 | アイルランド語 | `ga` |
 | イタリア語 | `it` |
 | 日本語 | `ja` |
@@ -165,7 +177,7 @@ ms.locfileid: "97882417"
 | パシュトウ語 | `ps` |
 | ペルシャ語 | `fa` |
 | ポーランド語 | `pl` |
-| Portuguese | `pt` |
+| ポルトガル語 | `pt` |
 | ルーマニア語 | `ro` |
 | ロシア語 | `ru` |
 | セルビア語 (キリル) | `sr-Cyrl` |
@@ -194,25 +206,42 @@ ms.locfileid: "97882417"
 | Language    | 言語コード | スクリプト | ソース言語/ターゲット言語 | スクリプト|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | アラビア語 | `ar` | アラビア語 `Arab` | <--> | ラテン語 `Latn` |
+| アッサム語 | `as` | ベンガル語 `Beng` | <--> | ラテン語 `Latn` |
 | ベンガル語  | `bn` | ベンガル語 `Beng` | <--> | ラテン語 `Latn` |
+|ベラルーシ語| `be` | キリル語 `Cyrl`  | <--> | ラテン語 `Latn` |
+|ブルガリア語| `bg` | キリル語 `Cyrl`  | <--> | ラテン語 `Latn` |
 | 簡体中国語 | `zh-Hans` | 中国語簡体字 `Hans`| <--> | ラテン語 `Latn` |
 | 簡体中国語 | `zh-Hans` | 中国語簡体字 `Hans`| <--> | 中国語繁体字 `Hant`|
 | 繁体中国語 | `zh-Hant` | 中国語繁体字 `Hant`| <--> | ラテン語 `Latn` |
 | 繁体中国語 | `zh-Hant` | 中国語繁体字 `Hant`| <--> | 中国語簡体字 `Hans` |
+|ギリシャ語| `el` | ギリシャ語 `Grek`  | <--> | ラテン語 `Latn` |
 | グジャラート語 | `gu`  | グジャラート語 `Gujr` | <--> | ラテン語 `Latn` |
 | ヘブライ語 | `he` | ヘブライ語 `Hebr` | <--> | ラテン語 `Latn` |
 | ヒンディー語 | `hi` | デーヴァナーガリー `Deva` | <--> | ラテン語 `Latn` |
 | 日本語 | `ja` | 日本語 `Jpan` | <--> | ラテン語 `Latn` |
 | カンナダ語 | `kn` | カンナダ語 `Knda` | <--> | ラテン語 `Latn` |
+|カザフ語| `kk` | キリル語 `Cyrl`  | <--> | ラテン語 `Latn` |
+|韓国語| `ko` | 韓国語 `Kore`  | <--> | ラテン語 `Latn` |
+|キルギス語| `ky` | キリル語 `Cyrl`  | <--> | ラテン語 `Latn` |
+|マケドニア語| `mk` | キリル語 `Cyrl`  | <--> | ラテン語 `Latn` |
 | マラヤーラム語 | `ml` | マラヤーラム語 `Mlym` | <--> | ラテン語 `Latn` |
 | マラーティー語 | `mr` | デーヴァナーガリー `Deva` | <--> | ラテン語 `Latn` |
+|モンゴル語| `mn` | キリル語 `Cyrl`  | <--> | ラテン語 `Latn` |
 | オディア語 | `or` | オリヤー語 `Orya` | <--> | ラテン語 `Latn` |
+|ペルシャ語| `fa` | アラビア語 `Arab`  | <--> | ラテン語 `Latn` |
 | パンジャーブ語 | `pa` | グルムキー文字 `Guru`  | <--> | ラテン語 `Latn`  |
+|ロシア語| `ru` | キリル語 `Cyrl`  | <--> | ラテン語 `Latn` |
 | セルビア語 (キリル) | `sr-Cyrl` | キリル語 `Cyrl`  | --> | ラテン語 `Latn` |
 | セルビア語 (ラテン) | `sr-Latn` | ラテン語 `Latn` | --> | キリル語 `Cyrl`|
+|シンド語| `sd` | アラビア語 `Arab`  | <--> | ラテン語 `Latn` |
+|シンハラ語| `si` | シンハラ語 `Sinh`  | <--> | ラテン語 `Latn` |
+|タジク語| `tg` | キリル語 `Cyrl`  | <--> | ラテン語 `Latn` |
 | タミル語 | `ta` | タミール語 `Taml` | <--> | ラテン語 `Latn` |
+|タタール語| `tt` | キリル語 `Cyrl`  | <--> | ラテン語 `Latn` |
 | テルグ語 | `te` | テルグ語 `Telu` | <--> | ラテン語 `Latn` |
 | タイ語 | `th` | タイ語 `Thai` | --> | ラテン語 `Latn` |
+|ウクライナ語| `uk` | キリル語 `Cyrl`  | <--> | ラテン語 `Latn` |
+|ウルドゥ語| `ur` | アラビア語 `Arab`  | <--> | ラテン語 `Latn` |
 
 ### <a name="dictionary"></a>Dictionary
 
@@ -326,7 +355,7 @@ Languages メソッドを使用して、翻訳でサポートされている言�
 | ノルウェー語      | `nb`          |
 | ペルシャ語      | `fa`          |
 | ポーランド語      | `pl`          |
-| ポルトガル語 (ブラジル) | `pt-br` |
+| ポルトガル語 (ブラジル) | `pt` |
 | パンジャーブ語|`pa`|
 | ルーマニア語      | `ro`          |
 | ロシア語      | `ru`          |

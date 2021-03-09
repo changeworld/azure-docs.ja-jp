@@ -6,14 +6,19 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1d594001340f76c6dde9f3e00de2d76ee4e5104b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d78e1e27d70b147bb52dff13675e63b79335d62
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843330"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625467"
 ---
 # <a name="tutorial-remove-azure-resources"></a>チュートリアル: Azure のリソースを削除する
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 Service Fabric Mesh API による新しいデプロイは許可されなくなります。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、「[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)」を参照してください。
 
 このチュートリアルはシリーズの第 5 部であり、課金されないようにアプリとそのリソースを削除する方法を示します。
 
@@ -39,7 +44,7 @@ ms.locfileid: "91843330"
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-これは、チュートリアルの最後です。 作成したリソースの作業が終わったら、使用しなくなったリソースに課金されないように削除します。 Mesh は 1 秒単位で課金されるサーバーレス サービスのため、これは特に重要です。 Mesh の価格について詳しくは、 https://aka.ms/sfmeshpricing をご覧ください。
+これは、チュートリアルの最後です。 作成したリソースの作業が終わったら、使用しなくなったリソースに課金されないように削除します。 Mesh は 1 秒単位で課金されるサーバーレス サービスのため、これは特に重要です。 Mesh の価格について詳しくは、https://aka.ms/sfmeshpricing をご覧ください。
 
 Azure が便利な点の 1 つは、作成したリソースを特定のリソース グループに関連付けた場合、リソース グループを削除すると関連付けられているリソースもすべて削除されることです。 1 つずつ削除する必要はありません。
 
@@ -55,7 +60,7 @@ Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 
 **sfmeshTutorial1RG** リソース グループは、[ポータルから](../azure-resource-manager/management/manage-resource-groups-portal.md#delete-resource-groups)削除することもできます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Service Fabric Mesh アプリケーションを Azure に発行したら、次のことを行ってみてください。
 

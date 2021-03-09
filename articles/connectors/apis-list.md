@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 01/07/2021
-ms.openlocfilehash: c2b89450c0e474f5030f8812e888890f1fedde7e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.date: 02/12/2021
+ms.openlocfilehash: 4b431220dbab49b74f38a8f37be8aac1a0c5c460
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019637"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382890"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps のコネクタ
 
@@ -452,15 +452,21 @@ SQL や SFTP SSH などの定期的な接続ベース トリガーでは、実�
 >
 > ISE の作成について詳しくは、[Azure Logic Apps から Azure Virtual Network への接続](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)に関するページをご覧ください。
 
+## <a name="get-ready-for-deployment"></a>展開の準備
+
+ロジック アプリ内から接続を作成しますが、接続は独自のリソース定義を持つ個別の Azure リソースです。 これらの接続リソース定義を確認するには、[Azure から Visual Studio にロジック アプリをダウンロード](../logic-apps/manage-logic-apps-with-visual-studio.md)します。これは、デプロイの準備がほとんど整っているパラメーター化された有効なロジック アプリ テンプレートを作成するための最も簡単な方法です。
+
 <a name="block-connections"></a>
 
 ## <a name="block-creating-connections"></a>接続の作成をブロックする
 
 Azure Logic Apps でコネクタを使用して特定のリソースに接続することが組織で許可されていない場合は、[Azure Policy](../governance/policy/overview.md) を使用して、ロジック アプリのワークフロー内の特定のコネクタについて、[接続を作成する機能をブロックする](../logic-apps/block-connections-connectors.md)ことができます。 詳細については、[Azure Logic Apps での特定のコネクタによって作成される接続のブロック](../logic-apps/block-connections-connectors.md)に関するページを参照してください。
 
-## <a name="get-ready-for-deployment"></a>展開の準備
+## <a name="known-issues"></a>既知の問題
 
-ロジック アプリ内から接続を作成しますが、接続は独自のリソース定義を持つ個別の Azure リソースです。 これらの接続リソース定義を確認するには、[Azure から Visual Studio にロジック アプリをダウンロード](../logic-apps/manage-logic-apps-with-visual-studio.md)します。これは、デプロイの準備がほとんど整っているパラメーター化された有効なロジック アプリ テンプレートを作成するための最も簡単な方法です。
+#### <a name="error-badgateway-client-request-id-guid"></a>エラー:BadGateway。 クライアント要求 ID: '{GUID}'
+
+このエラーは、 1 つ以上の接続で SFTP や SQL などの Azure Active Directory (Azure AD) OAuth 認証がサポートされていないロジック アプリでタグを更新した場合に発生し、それらの接続が切断されます。 この動作を回避するには、それらのタグを更新しないようにします。
 
 ## <a name="next-steps"></a>次のステップ
 

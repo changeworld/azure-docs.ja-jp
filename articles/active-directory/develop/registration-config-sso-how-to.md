@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4665e4240d7563a585b7c224365172d69d7efddf
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 60a07145e38c19f577ad9864efb599e7b244aa83
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753875"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653713"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>アプリケーションのシングル サインオンを構成する方法
 
@@ -43,4 +43,4 @@ iOS については、[iOS でクロス アプリ SSO を有効にする方法](
 
 [Microsoft ID プラットフォームでのアクセス許可と同意](./v2-permissions-and-consent.md)<br>
 
-[Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD Microsoft Q&A](/answers/topics/azure-active-directory.html)

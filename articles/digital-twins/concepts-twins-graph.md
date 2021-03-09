@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a4875c2c75b133f0ab4046266d6aac36d5478fe4
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 00058f75a2c4378371c427ff9ebabe7e2336b06a
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664046"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576550"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>デジタル ツインとツイン グラフについて理解する
 
-Azure Digital Twins ソリューションでは、環境内のエンティティは Azure **デジタル ツイン** で表されます。 デジタル ツインは、カスタム定義[モデル](concepts-models.md)のいずれかのインスタンスです。 それを **リレーションシップ** によって他のデジタル ツインに接続して、**ツイン グラフ** を形成できます。このツイン グラフは、環境全体を表しています。
+Azure Digital Twins ソリューションでは、環境内のエンティティは **デジタル ツイン** で表されます。 デジタル ツインは、カスタム定義[モデル](concepts-models.md)のいずれかのインスタンスです。 それを **リレーションシップ** によって他のデジタル ツインに接続して、**ツイン グラフ** を形成できます。このツイン グラフは、環境全体を表しています。
 
 > [!TIP]
 > "Azure Digital Twins" は、この Azure サービス全体を指します。 "デジタル ツイン" または単に "ツイン" は、サービスのインスタンス内の個々のツイン ノードを指します。
@@ -58,9 +58,9 @@ Azure Digital Twins インスタンスでデジタル ツインを作成する�
 
 ### <a name="create-relationships"></a>リレーションシップの作成
 
-[DigitalTwins API](/rest/api/digital-twins/dataplane/twins) を使用して、*GroundFloor* という *Floor* 型デジタル ツインと *Cafe* という *Room* 型デジタル ツインの間のリレーションシップを構築するクライアント コードの例を次に示します。
+ここでは、[DigitalTwins API](/rest/api/digital-twins/dataplane/twins) を使用して、あるデジタル ツイン ("ソース" ツイン) から別のデジタル ツイン ("ターゲット" ツイン) への関係を構築するクライアント コードの例を示します。
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_3":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_short":::
 
 ## <a name="json-representations-of-graph-elements"></a>グラフ要素の JSON 表現
 

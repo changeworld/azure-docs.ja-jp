@@ -3,12 +3,12 @@ title: FedRAMP High ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含む FedRAMP High ブループリント サンプルのデプロイ手順。
 ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 065f1343066f5d0ac9b0846de790124e907a5e24
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 53d48eff79f7227373c1e7dfb0c34ef17a00e125
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034868"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594774"
 ---
 # <a name="deploy-the-fedramp-high-blueprint-sample"></a>FedRAMP High ブループリント サンプルをデプロイする
 
@@ -94,7 +94,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |アーティファクト名|アーティファクトの種類|パラメーター名|説明|
 |-|-|-|-|
 |\[プレビュー\]:FedRAMP High コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|VM で構成する必要がある Log Analytics ワークスペース ID|これは、VM で構成する必要がある Log Analytics ワークスペース ID (GUID) です。|
-|\[プレビュー\]:FedRAMP High コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。|
+|\[プレビュー\]:FedRAMP High コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。|
 |\[プレビュー\]:FedRAMP High コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|Windows VM Administrators グループから除外する必要があるユーザーの一覧|ローカルの Administrators グループで除外する必要があるメンバーのセミコロン区切りリスト。 例:Administrator; myUser1; myUser2|
 |\[プレビュー\]:FedRAMP High コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|Windows VM Administrators グループに含める必要があるユーザーの一覧|ローカルの Administrators グループに含める必要があるメンバーのセミコロン区切りリスト。 例:Administrator; myUser1; myUser2|
 |\[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ|ポリシー割り当て|Linux VM スケール セット (VMSS) 用の Log Analytics ワークスペース|このワークスペースが割り当てのスコープの外部にある場合は、ポリシー割り当てのプリンシパル ID に "Log Analytics 共同作成者" 権限 (または同等の権限) を手動で付与する必要があります。|
@@ -111,7 +111,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |ネットワーク セキュリティ グループの診断設定のデプロイ|ポリシー割り当て|ネットワーク セキュリティ グループの診断用のストレージ アカウント プレフィックス|このプレフィックスがネットワーク セキュリティ グループの場所と組み合わされて、作成されるストレージ アカウント名となります。|
 |ネットワーク セキュリティ グループの診断設定のデプロイ|ポリシー割り当て|ネットワーク セキュリティ グループの診断用のストレージ アカウントのリソース グループ名 (存在する必要があります)|ストレージ アカウントが作成されるリソース グループ。 このリソース グループは、既に存在している必要があります。|
 |\[プレビュー\]:FedRAMP High コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|リソースとリソース グループが許可される場所|リソースをデプロイする際に組織が指定できる Azure の場所の一覧。 ここで指定された値は、ポリシーのイニシアティブ内の "許可されている場所" ポリシーでも使用されます。|
-|\[プレビュー\]:FedRAMP High コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|脆弱性評価を SQL Managed Instance 上で有効にする必要がある|ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。|
+|\[プレビュー\]:FedRAMP High コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある|ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。|
 |\[プレビュー\]:FedRAMP High コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|脆弱性評価を SQL サーバー上で有効にする必要がある|ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。|
 |\[プレビュー\]:FedRAMP High コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|Virtual Machines で脆弱性評価を有効にする必要がある|ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。|
 |\[プレビュー\]:FedRAMP High コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|ストレージ アカウントの geo 冗長ストレージを有効にする必要がある|ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。|

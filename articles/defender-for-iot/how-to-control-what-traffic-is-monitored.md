@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b2f95ddb13896ed461a20f1948fef34569586d1f
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: a7af817074400bedd8f07adaefc35309566dc931
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97977076"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522395"
 ---
 # <a name="control-what-traffic-is-monitored"></a>監視するトラフィックを制御する
 
@@ -186,11 +186,11 @@ DHCP アドレス範囲を設定するには:
 
 ## <a name="configure-dns-servers-for-reverse-lookup-resolution"></a>逆引き参照の解決のために DNS サーバーを構成する
 
-資産エンリッチメントを強化するために、複数の DNS サーバーが逆引き参照を実行するように構成できます。 ネットワーク サブネットで検出された IP アドアレスと関連付けられたホスト名または FQDN を解決できます。 たとえば、センサーが IP アドレスを検出した場合、ホスト名を解決するために複数の DNS サーバーにクエリを実行することがあります。
+デバイス エンリッチメントを強化するために、複数の DNS サーバーが逆引き参照を実行するように構成できます。 ネットワーク サブネットで検出された IP アドアレスと関連付けられたホスト名または FQDN を解決できます。 たとえば、センサーが IP アドレスを検出した場合、ホスト名を解決するために複数の DNS サーバーにクエリを実行することがあります。
 
 すべての CIDR 形式がサポートされています。
 
-ホスト名は、レポートだけでなく、資産インベントリと資産マップにも表示されます。
+ホスト名は、デバイス インベントリ、デバイス マップ、およびレポートに表示されます。
 
 逆引き参照解決スケジュールは、12 時間ごとなど、特定の時間間隔でスケジュール設定できます。 または、特定の時刻をスケジュール設定することもできます。
 
@@ -212,7 +212,7 @@ DNS サーバーを定義するには:
 
 5. **[DNS Server Port]\(DNS サーバー ポート\)** フィールドに、DNS ポートを入力します。
 
-6. ネットワーク IP アドレスを資産の FQDN に解決します。 **[Number of Labels]\(ラベル数\)** フィールドに、表示するドメイン ラベルの数を追加します。 最大 30 文字が左から右に表示されます。
+6. ネットワーク IP アドレスをデバイスの FQDN に解決します。 **[Number of Labels]\(ラベル数\)** フィールドに、表示するドメイン ラベルの数を追加します。 最大 30 文字が左から右に表示されます。
 
 7. **[サブネット]** フィールドに、DNS サーバーに対してクエリを実行するサブネットを入力します。
 
@@ -220,7 +220,7 @@ DNS サーバーを定義するには:
 
 ### <a name="test-the-dns-configuration"></a>DNS 構成をテストする 
 
-テスト資産を使用して、定義した設定が適切に機能することを確認します。
+テスト デバイスを使用して、定義した設定が適切に機能することを確認します。
 
 1. **[DNS の参照]** トグルを有効にします。
 
@@ -295,7 +295,7 @@ Windows エンドポイント監視機能を使用して、Windows システム�
 
 1. スキャンが完了したら、 **[操作]** ペインで **[View Scan Results]\(スキャン結果の表示\)** を選択します。 スキャン結果を含む CSV ファイルがコンピューターにダウンロードされます。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 [デバイス インベントリでのセンサー検出を調査する](how-to-investigate-sensor-detections-in-a-device-inventory.md)
 [デバイス マップでのセンサー検出を調査する](how-to-work-with-the-sensor-device-map.md)

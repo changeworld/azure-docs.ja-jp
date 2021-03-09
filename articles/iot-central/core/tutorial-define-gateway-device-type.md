@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: f95df6fb74071dc16814f11fb48521f984c89778
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e42e1791693342592e391a14422b1441c9cbbd31
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995524"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832387"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>チュートリアル - Azure IoT Central アプリケーションで新しい種類の IoT ゲートウェイ デバイスを定義する
 
@@ -51,11 +51,11 @@ ms.locfileid: "95995524"
 
 1. **[Review]\(確認\)** ページで **[作成]** を選択して、アプリケーションにデバイス テンプレートを追加します。 
 
-**_RS40 混雑状況センサー_* デバイスのデバイス テンプレートを作成するには、次の手順を実行します。
+***RS40 混雑状況センサー** デバイスのデバイス テンプレートを作成するには、次の手順を実行します。
 
 1. 左側のペインで **[デバイス テンプレート]** を選択します。 次に、 **+** を選択して、テンプレートの追加を開始します。
 
-1. **_RS40 混雑状況センサー_* デバイスのタイルが表示されるまで下にスクロールします。 タイルを選択し、 **[次のステップ: カスタマイズ]** を選択します。
+1. **RS40 混雑状況センサー** デバイスのタイルが表示されるまで、下にスクロールします。 タイルを選択し、 **[次のステップ: カスタマイズ]** を選択します。
 
 1. **[Review]\(確認\)** ページで **[作成]** を選択して、アプリケーションにデバイス テンプレートを追加します。 
 
@@ -198,6 +198,10 @@ ms.locfileid: "95995524"
 
 ゲートウェイ デバイス テンプレート、ゲートウェイ デバイス インスタンスを選択し、 **[Join]\(結合\)** を選択します。
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
@@ -208,9 +212,6 @@ ms.locfileid: "95995524"
 * デバイス テレメトリの視覚化の定義。
 * リレーションシップの追加。
 * デバイス テンプレートの公開。
-
-> [!NOTE]
-> 現在、IoT Central でモデル化されたゲートウェイ デバイスでは、VS Code ベースのコード生成はサポートされていません。
 
 次に、デバイス開発者は、以下の方法を学ぶことができます。
 

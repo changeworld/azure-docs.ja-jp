@@ -25,6 +25,8 @@
   items:
     - name: セキュリティ
       items:
+        - name: オンプレミスの攻撃から Microsoft 365 を保護する
+          href: protect-m365-from-on-premises-attacks.md
         - name: セキュリティで保護された外部コラボレーション
           items:
             - name: セキュリティで保護された外部アクセスの概要
@@ -47,8 +49,28 @@
               href: 8-secure-access-sensitivity-labels.md
             - name: 9 Teams、SharePoint、OneDrive へのアクセスをセキュリティで保護する
               href: 9-secure-access-teams-sharepoint.md
-        - name: オンプレミスの攻撃から Microsoft 365 を保護する
-          href: protect-m365-from-on-premises-attacks.md
+        - name: サービス アカウントのセキュリティ保護
+          items:
+            - name: Azure サービス アカウントの概要
+              href: service-accounts-introduction-azure.md
+            - name: マネージド ID のセキュリティ保護
+              href: service-accounts-managed-identities.md
+            - name: サービス プリンシパルのセキュリティ保護
+              href: service-accounts-principal.md
+            - name: Azure サービス アカウントの管理
+              href: service-accounts-governing-azure.md
+            - name: オンプレミス サービス アカウントの概要
+              href: service-accounts-on-premises.md
+            - name: グループ MSA のセキュリティ保護
+              href: service-accounts-group-managed.md
+            - name: スタンドアロン MSA のセキュリティ保護
+              href: service-accounts-standalone-managed.md
+            - name: コンピューター アカウントのセキュリティ保護
+              href: service-accounts-computer.md
+            - name: ユーザーベースのサービス アカウントのセキュリティ保護
+              href: service-accounts-user-on-premises.md
+            - name: オンプレミス サービス アカウントを管理する
+              href: service-accounts-govern-on-premises.md
         - name: MFA の有効化
           href: concept-fundamentals-mfa-get-started.md
         - name: セキュリティの既定値群
@@ -143,6 +165,8 @@
                   href: resilience-client-app.md
                 - name: デーモン アプリケーション
                   href: resilience-daemon-app.md
+            - name: 回復性に対するアプリケーションの正常性を監視する
+              href: monitor-sign-in-health-for-resilience.md
         - name: Azure で使用される証明機関
           href: certificate-authorities.md
     - name: デプロイ ガイド

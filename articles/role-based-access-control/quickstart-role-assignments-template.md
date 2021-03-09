@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure Resource Manager テンプレートを使用して Azure でのロールの割り当てを追加する - Azure RBAC
+title: 'クイックスタート: Azure Resource Manager テンプレートを使用して Azure でのロールを割り当てる - Azure RBAC'
 description: Azure Resource Manager テンプレートと Azure ロール ベースのアクセス制御 (Azure RBAC) を使用して、Azure リソースへのアクセス権をリソース グループのスコープのユーザーに付与する方法について学習します。
 services: role-based-access-control,azure-resource-manager
 author: rolyon
@@ -8,16 +8,16 @@ ms.service: role-based-access-control
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.workload: identity
-ms.date: 05/21/2020
+ms.date: 02/15/2021
 ms.author: rolyon
-ms.openlocfilehash: 622f37fa4fda20fdc854edf5cd7c192b4113c4e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6e8f194cd85a3c381bdabf206777a99dce3c29b6
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88690444"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559264"
 ---
-# <a name="quickstart-add-an-azure-role-assignment-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure でのロールの割り当てを追加する
+# <a name="quickstart-assign-an-azure-role-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure でのロールを割り当てる
 
 [Azure ロールベースのアクセス制御 (Azure RBAC)](overview.md) は、Azure のリソースに対するアクセスを管理するための手法です。 このクイックスタートでは、リソース グループを作成し、リソース グループ内で仮想マシンを作成および管理するアクセス権をユーザーに付与します。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用してアクセス権を付与します。
 
@@ -29,11 +29,11 @@ ms.locfileid: "88690444"
 
 ## <a name="prerequisites"></a>前提条件
 
-ロールの割り当てを追加するには、以下が必要です。
+Azure ロールを割り当てたりロール割り当てを削除したりするには、以下が必要です。
 
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 - `Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)や[所有者](built-in-roles.md#owner)など)
-- ロールの割り当てを追加するには、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素を指定する必要があります。 このクイックスタートでは、セキュリティ プリンシパルは自分またはディレクトリ内の別のユーザーであり、ロールの定義は[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)、スコープは指定したリソース グループです。
+- ロールを割り当てるには、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素を指定する必要があります。 このクイックスタートでは、セキュリティ プリンシパルは自分またはディレクトリ内の別のユーザーであり、ロールの定義は[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)、スコープは指定したリソース グループです。
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
@@ -112,7 +112,7 @@ ms.locfileid: "88690444"
 
 1. **[ロールの割り当て]** タブをクリックします。
 
-1. 指定したユーザーに**仮想マシン共同作成者**ロールが割り当てられていることを確認します。
+1. 指定したユーザーに **仮想マシン共同作成者** ロールが割り当てられていることを確認します。
 
    ![New role assignment](./media/quickstart-role-assignments-template/role-assignment-portal.png)
 

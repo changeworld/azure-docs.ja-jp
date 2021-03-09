@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: b7eaf374e72997013f09b1c94ce16c67d115a818
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a4f15a1a0911e5a33da8b5f9445709cb42e7e10e
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987373"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981512"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>ラベル付き Azure Machine Learning データセットを作成して探索する
 
@@ -39,6 +39,9 @@ ms.locfileid: "94987373"
 ### <a name="coco"></a>COCO 
 
  COCO ファイルは、Azure Machine Learning ワークスペースの既定の BLOB ストアにある *export/coco* 内のフォルダーに作成されます。 
+ 
+>[!NOTE]
+>物体検出プロジェクトでは、COCO ファイルのエクスポートされた "bbox": [x,y,width,height]" 値が正規化されます。 これらは 1 にスケーリングされます。 例: 640 x 480 ピクセルのイメージでは、(10, 10) の位置にある境界ボックス (幅 30 ピクセル、高さ 60 ピクセル) に次のような注釈が付けられます: (0.015625. 0.02083, 0.046875, 0.125)。 座標は正規化されているため、すべてのイメージの "幅" と "高さ" が "0.0" として表示されます。 実際の幅と高さは、OpenCV や Pillow (PIL) などの Python ライブラリを使用して取得できます。
 
 ### <a name="azure-machine-learning-dataset"></a>Azure Machine Learning のデータセット
 

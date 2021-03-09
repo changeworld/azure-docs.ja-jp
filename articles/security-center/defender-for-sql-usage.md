@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/23/2020
+ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: c9d11f1ddc3e1dd2239bdfce9c41f58fe9e20497
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 96af34b5b68fca5ab8061c8c99f03bee094dc175
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539960"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590379"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender for SQL servers on machines 
 
@@ -33,7 +33,7 @@ ms.locfileid: "98539960"
 |リリース状態:|一般提供 (GA)|
 |価格:|**Azure Defender for SQL servers on machines** は、[価格ページ](security-center-pricing.md)に記載されているように課金されます|
 |保護される SQL のバージョン:|Azure SQL Server (Microsoft サポートの対象となるすべてのバージョン)|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![いいえ](./media/icons/no-icon.png) China Gov、その他の Gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>Azure Defender for SQL servers on machines の設定
@@ -55,7 +55,7 @@ ms.locfileid: "98539960"
     
     - **Azure Arc をデプロイする** - 任意の Windows マシンを Security Center に接続できます。 ただし、Azure Arc を使用すると、Azure 環境の *すべて* がより緊密に統合されます。 Azure Arc を設定すると、ポータルに **[SQL Server - Azure Arc]** ページが表示され、セキュリティ アラートはそのページの専用の **[セキュリティ]** タブに表示されます。 そのため、最初に推奨されるオプションは、[ホストで Azure Arc を設定](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows)し、前述の **Azure Arc 上の SQL Server** の手順に従うことです。
         
-    - **Azure Arc を使用せずに Windows マシンを接続する** - Azure Arc を使用せずに Windows マシンで実行されている SQL Server を接続する場合は、「[Windows コンピューターを Azure Monitor に接続する](../azure-monitor/platform/agent-windows.md)」の手順に従ってください。
+    - **Azure Arc を使用せずに Windows マシンを接続する** - Azure Arc を使用せずに Windows マシンで実行されている SQL Server を接続する場合は、「[Windows コンピューターを Azure Monitor に接続する](../azure-monitor/agents/agent-windows.md)」の手順に従ってください。
 
 
 ### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>手順 2. Security Center の価格と設定ページで、オプションのプランを有効にする
@@ -70,12 +70,12 @@ ms.locfileid: "98539960"
 
 1. **Azure Defender for SQL servers on machines** プランのオプションを **オン** に設定します。 
 
-    ![オプションのプランを含む Security Center の価格ページ](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)
+    :::image type="content" source="./media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png" alt-text="オプションのプランを含む Security Center の価格ページ":::
 
     選択したワークスペースに接続されているすべての SQL サーバーでプランが有効になります。 この保護は、SQL Server インスタンスの最初の再起動後に完全にアクティブになります。
 
     >[!TIP] 
-    > 新しいワークスペースを作成するには、[Log Analytics ワークスペースの作成](../azure-monitor/learn/quick-create-workspace.md)に関する記事の手順に従います。
+    > 新しいワークスペースを作成するには、[Log Analytics ワークスペースの作成](../azure-monitor/logs/quick-create-workspace.md)に関する記事の手順に従います。
 
 
 1. 必要に応じて、セキュリティ アラートのメール通知を構成します。 

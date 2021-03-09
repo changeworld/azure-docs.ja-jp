@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory を使用したファイル システムとの間でのデータのコピー
 description: Azure Data Factory を使用して、オンプレミスのファイル システムとの間でデータをコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: ce19f1ae-358e-4ffc-8a80-d802505c9c84
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d298c83c0c1a0f33f28644e2e467ad5035300221
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9acd2adb68347978bb123d2239eedbb3e5595bc3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847609"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387395"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -37,7 +32,7 @@ ms.locfileid: "85847609"
 
 [!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
 
-以下のデータ ストアから、**オンプレミスのファイル システムに**データをコピーできます。
+以下のデータ ストアから、**オンプレミスのファイル システムに** データをコピーできます。
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
@@ -52,23 +47,23 @@ Linux ファイル共有を使用するには、Linux サーバーの場合は [
 ## <a name="getting-started"></a>作業の開始
 さまざまなツール/API を使用して、ファイル システムとの間でデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード** を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
 また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
-1. **Data Factory**を作成します。 データ ファクトリには、1 つまたは複数のパイプラインを設定できます。
-2. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。 たとえば、Azure Blob Storage からオンプレミスのファイル システムにデータをコピーする場合、リンクされたサービスを 2 つ作成して、オンプレミスのファイル システムと Azure Storage アカウントをデータ ファクトリにリンクします。 オンプレミスのファイル システムに固有のリンクされたサービスのプロパティについては、「[リンクされたサービスのプロパティ](#linked-service-properties)」セクションを参照してください。
-3. コピー操作用の入力データと出力データを表す**データセット**を作成します。 最後の手順で説明されている例では、データセットを作成して入力データを含む BLOB コンテナーとフォルダーを指定します。 また、別のデータセットを作成してファイル システムにフォルダーとファイル名 (省略可能) を指定します。 オンプレミスのファイル システムに固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」セクションを参照してください。
-4. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 前に説明した例では、コピー アクティビティのソースとして BlobSource を、シンクとして FileSystemSink を使います。 同様に、オンプレミスのファイル システムから Azure Blob Storage にコピーする場合は、FileSystemSource と BlobSink をコピー アクティビティで使います。 オンプレミスのファイル システムに固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」セクションを参照してください。 ソースまたはシンクとしてデータ ストアを使う方法について詳しくは、前のセクションのデータ ストアのリンクをクリックしてください。
+1. **Data Factory** を作成します。 データ ファクトリには、1 つまたは複数のパイプラインを設定できます。
+2. **リンクされたサービス** を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。 たとえば、Azure Blob Storage からオンプレミスのファイル システムにデータをコピーする場合、リンクされたサービスを 2 つ作成して、オンプレミスのファイル システムと Azure Storage アカウントをデータ ファクトリにリンクします。 オンプレミスのファイル システムに固有のリンクされたサービスのプロパティについては、「[リンクされたサービスのプロパティ](#linked-service-properties)」セクションを参照してください。
+3. コピー操作用の入力データと出力データを表す **データセット** を作成します。 最後の手順で説明されている例では、データセットを作成して入力データを含む BLOB コンテナーとフォルダーを指定します。 また、別のデータセットを作成してファイル システムにフォルダーとファイル名 (省略可能) を指定します。 オンプレミスのファイル システムに固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」セクションを参照してください。
+4. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む **パイプライン** を作成します。 前に説明した例では、コピー アクティビティのソースとして BlobSource を、シンクとして FileSystemSink を使います。 同様に、オンプレミスのファイル システムから Azure Blob Storage にコピーする場合は、FileSystemSource と BlobSink をコピー アクティビティで使います。 オンプレミスのファイル システムに固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」セクションを参照してください。 ソースまたはシンクとしてデータ ストアを使う方法について詳しくは、前のセクションのデータ ストアのリンクをクリックしてください。
 
 ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  ファイル システムとの間でデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples-for-copying-data-to-and-from-file-system)」を参照してください。
 
 次のセクションでは、ファイル システムに固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
-**オンプレミスのファイル サーバー**のリンクされているサービスで、オンプレミスのファイル システムを Azure Data Factory にリンクできます。 次の表は、オンプレミスのファイル サーバーのリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+**オンプレミスのファイル サーバー** のリンクされているサービスで、オンプレミスのファイル システムを Azure Data Factory にリンクできます。 次の表は、オンプレミスのファイル サーバーのリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
@@ -133,7 +128,7 @@ typeProperties セクションは、データセットの型ごとに異なり�
 | fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに **fileName** が指定されておらず、アクティビティ シンクで **preserveHierarchy** が指定されていない場合は、生成されるファイル名は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ |
 | fileFilter |すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。 <br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/><br/>例 1: "fileFilter": "*.log"<br/>例 2: "fileFilter":2014-1-?.txt"<br/><br/>fileFilter は FileShare 入力データセットに適用されることに注意してください。 |いいえ |
 | partitionedBy |partitionedBy を使用して時系列データに動的な folderPath/fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ |
-| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
+| format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で **ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
 | compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ |
 
 > [!NOTE]
@@ -175,7 +170,7 @@ typeProperties セクションは、データセットの型ごとに異なり�
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。 プロパティ (名前、説明、入力データセット、出力データセット、ポリシーなど) は、あらゆる種類のアクティビティで使用できます。 一方、アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。
 
-コピー アクティビティの場合、ソースとシンクの種類によって異なります。 オンプレミスのファイル システムからデータを移動する場合は、コピー アクティビティのソースの種類を **FileSystemSource**に設定します。 同様に、オンプレミスのファイル システムにデータを移動する場合は、コピー アクティビティのシンクの種類を **FileSystemSink**に設定します。 このセクションでは、FileSystemSource と FileSystemSink でサポートされるプロパティの一覧を示します。
+コピー アクティビティの場合、ソースとシンクの種類によって異なります。 オンプレミスのファイル システムからデータを移動する場合は、コピー アクティビティのソースの種類を **FileSystemSource** に設定します。 同様に、オンプレミスのファイル システムにデータを移動する場合は、コピー アクティビティのシンクの種類を **FileSystemSink** に設定します。 このセクションでは、FileSystemSource と FileSystemSink でサポートされるプロパティの一覧を示します。
 
 **FileSystemSource** では次のプロパティがサポートされます。
 
@@ -205,7 +200,7 @@ typeProperties セクションは、データセットの型ごとに異なり�
 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」に関する記事を参照してください。
 
 ## <a name="json-examples-for-copying-data-to-and-from-file-system"></a>ファイル システムとの間でのデータのコピーに関する JSON の例
-次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、オンプレミスのファイル システムと Azure Blob Storage の間でデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、[サポートされているソースとシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に記載されているいずれかのシンクに、任意のソースからデータを*直接*コピーできます。
+次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、オンプレミスのファイル システムと Azure Blob Storage の間でデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、[サポートされているソースとシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に記載されているいずれかのシンクに、任意のソースからデータを *直接* コピーできます。
 
 ### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>例:オンプレミスのファイル システムから Azure Blob Storage へのデータのコピー
 このサンプルは、オンプレミスのファイル システムから Azure Blob Storage にデータをコピーする方法を示しています。 このサンプルでは、次の Data Factory のエンティティがあります。
@@ -477,7 +472,7 @@ typeProperties セクションは、データセットの型ごとに異なり�
 
 このサンプルでは、Azure SQL で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestampcolumn」という名前の列が含まれているものと想定しています。
 
-``“external”: ”true”`` の設定により、このデータセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory に通知されます。
+``"external": "true"`` の設定により、このデータセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory に通知されます。
 
 ```JSON
 {

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: f6df8c6ff0db74798b71d57feae91e5245f2a6c2
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6d5198f47b6089730ff345eb12ab522fc5ce58a1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028720"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575389"
 ---
 # <a name="analyze-unexpected-charges"></a>想定外の料金を分析する
 
@@ -76,7 +76,7 @@ VM が作成されると、各メーターが使用状況レコードの出力�
 
 ### <a name="analyze-the-audit-logs-for-the-resource"></a>リソースの監査ログを分析する
 
-リソースを表示するアクセス許可があれば、その監査ログにアクセスすることができます。 そのログを確認して、リソースへの直近の変更を担当したユーザーを見つけてください。 詳細については、「[Azure アクティビティ ログ イベントを表示して取得する](../../azure-monitor/platform/activity-log.md#view-the-activity-log)」を参照してください。
+リソースを表示するアクセス許可があれば、その監査ログにアクセスすることができます。 そのログを確認して、リソースへの直近の変更を担当したユーザーを見つけてください。 詳細については、「[Azure アクティビティ ログ イベントを表示して取得する](../../azure-monitor/essentials/activity-log.md#view-the-activity-log)」を参照してください。
 
 ### <a name="analyze-user-permissions-to-the-resources-parent-scope"></a>リソースの親スコープに対するユーザーのアクセス許可を分析する
 

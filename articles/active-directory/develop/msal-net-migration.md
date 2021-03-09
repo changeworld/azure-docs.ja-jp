@@ -13,18 +13,18 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: c6049bf55e379a2629e8cd4ef1427f91fc31d2cd
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 64107c3f667dd7e59fcf6d191e83457029b3a277
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063605"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546348"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET へのアプリケーションの移行
 
 Azure AD エンティティを認証し、Azure AD からのトークンを要求する場合、Microsoft Authentication Library for .NET (MSAL.NET) と Azure AD Authentication Library for .NET (ADAL.NET) の両方が使用されます。 これまで、ほとんどの開発者は、開発者プラットフォーム用の Azure AD (v1.0) で、Azure AD Authentication Library (ADAL) を使用してトークンを要求することで、Azure AD ID (職場と学校のアカウント) を認証していました。 MSAL を使用すると、次のようになります。
 
-- Microsoft ID プラットフォーム エンドポイントを使用するため、より広範な Microsoft ID (Azure AD の ID と Microsoft アカウント、および Azure AD B2C 経由のソーシャル アカウントとローカル アカウント) を認証できます。
+- Microsoft ID プラットフォームを使用するため、より広範な Microsoft ID (Azure AD の ID と Microsoft アカウント、Azure AD B2C 経由のソーシャルおよびローカル アカウント) を認証できます。
 - ユーザーの優れたシングルサインオン エクスペリエンスが実現します。
 - アプリケーションでは、増分同意を有効にできるほか、条件付きアクセスのサポートがより簡単になります。
 - イノベーションを活用できます。
@@ -35,9 +35,9 @@ Azure AD エンティティを認証し、Azure AD からのトークンを要�
 
 ## <a name="differences-between-adal-and-msal-apps"></a>ADAL アプリと MSAL アプリの違い
 
-ほとんどの場合、MSAL.NET と Microsoft ID プラットフォーム エンドポイント (最新世代の Microsoft 認証ライブラリ) を使用します。 MSAL.NET を使用して、Azure AD (職場と学校のアカウント)、Microsoft (個人用) アカウント (MSA)、または Azure AD B2C でアプリケーションにサインインしているユーザーのためにトークンを取得します。
+ほとんどの場合、MSAL.NET と Microsoft ID プラットフォーム (最新世代の Microsoft 認証ライブラリ) を使用します。 MSAL.NET を使用して、Azure AD (職場と学校のアカウント)、Microsoft (個人用) アカウント (MSA)、または Azure AD B2C でアプリケーションにサインインしているユーザーのためにトークンを取得します。
 
-開発者向け Azure AD (v1.0) エンドポイント (および ADAL.NET) を既に使い慣れている場合は、[Microsoft ID プラットフォーム (v2.0) エンドポイントの違い](../azuread-dev/azure-ad-endpoint-comparison.md)に関するページをお読みください。
+開発者向け Azure AD (v1.0) エンドポイント (および ADAL.NET) について既によく理解している場合は、[Microsoft ID プラットフォームの違い](../azuread-dev/azure-ad-endpoint-comparison.md)に関するページをお読みください。
 
 ただし、アプリケーションで以前のバージョンの [Active Directory フェデレーション サービス (AD FS)](/windows-server/identity/active-directory-federation-services) を使用してユーザーをサインインさせる必要がある場合は、引き続き ADAL.NET を使用する必要があります。 詳細については、「[ADFS support](https://aka.ms/msal-net-adfs-support)」 (ADFS のサポート) を参照してください。
 
@@ -145,7 +145,7 @@ MSAL.NET では、トークン キャッシュがシールド クラスとなり
 
 V1.0 では、`https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーが (組織用の) AAD アカウントでサインインできるようにします。 [ADAL.NET での機関の検証](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)に関するページを参照してください
 
-v2.0 で `https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーが AAD 組織または Microsoft の個人用アカウント (MSA) でサインインできるようにします。 MSAL.NET では、AAD アカウントへのログインを制限する場合 (ADAL.NET の動作と同じ)、`https://login.microsoftonline.com/organizations` を使用する必要があります。 詳細については、[パブリック クライアント アプリケーション](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication)に関するページの `authority` パラメーターについての記事を参照してください。
+v2.0 で `https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーが AAD 組織または Microsoft の個人用アカウント (MSA) でサインインできるようにします。 MSAL.NET では、AAD アカウントへのログインを制限する場合 (ADAL.NET の動作と同じ)、`https://login.microsoftonline.com/organizations` を使用します。 詳細については、[パブリック クライアント アプリケーション](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication)に関するページの `authority` パラメーターについての記事を参照してください。
 
 ## <a name="v10-and-v20-tokens"></a>v1.0 トークンと v2.0 トークン
 
@@ -170,7 +170,7 @@ Microsoft Graph API (https://graph.microsoft.com) など、v1.0 トークンを�
 たとえば、App ID URI が `ResourceId` である v1.0 Web API にユーザーの名前でアクセスするには、以下を使用します。
 
 ```csharp
-var scopes = new [] {  ResourceId+"/user_impersonation"};
+var scopes = new [] { ResourceId+"/user_impersonation" };
 ```
 
 Microsoft Graph API (https://graph.microsoft.com/) を使用して、MSAL.NET Azure Active Directory で読み取りと書き込みを行う場合、次のスニペットのようにスコープのリストを作成します。
@@ -182,7 +182,7 @@ string[] scopes = { ResourceId + "Directory.Read", ResourceId + "Directory.Write
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>警告:v1.0 Web API に対応するスコープに 1 つまたは 2 つのスラッシュがある場合
 
-Azure Resource Manager API (https://management.core.windows.net/) に対応するスコープを書き込む場合は、次のスコープを要求する必要があります (2 つのスラッシュに注意)
+Azure Resource Manager API (https://management.core.windows.net/) ) に対応するスコープを書き込む場合は、次のスコープを要求します (2 つのスラッシュに注意してください)。
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -205,7 +205,7 @@ Azure AD で使用されるロジックは次のとおりです。
 
 ```csharp
 ResourceId = "someAppIDURI";
-var scopes = new [] {  ResourceId+"/.default"};
+var scopes = new [] { ResourceId+"/.default" };
 ```
 
 ### <a name="scopes-to-request-in-the-case-of-client-credential-flow--daemon-app"></a>クライアント資格証明フロー / デーモン アプリの場合に要求するスコープ
@@ -266,4 +266,4 @@ AuthenticationResult result = await appRt.AcquireTokenByRefreshToken(null, rt)
 
 ## <a name="next-steps"></a>次のステップ
 
-スコープの詳細については、[Microsoft ID プラットフォーム エンドポイントでのスコープ、アクセス許可、および同意](v2-permissions-and-consent.md)に関するページを参照してください
+スコープの詳細については、[Microsoft ID プラットフォームでのスコープ、アクセス許可、同意](v2-permissions-and-consent.md)に関するページを参照してください

@@ -4,12 +4,12 @@ description: 独自の基本設定を実現するために Azure portal の既�
 keywords: 設定, タイムアウト, 言語, 地域
 ms.date: 08/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 07dd3eb5cb132adf87852f29d867be772294d189
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 591b1ce6c2c069f9c0266588bf32f7303bf49708
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745640"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588795"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Azure portal の設定を管理する
 
@@ -71,7 +71,7 @@ Azure portal にサインインするときに、既定で開かれるページ�
 
 ![通知が強調表示された Azure portal のグローバル ヘッダーを示すスクリーンショット](./media/set-preferences/read-notifications.png)
 
-以前のセッションからの通知を読む場合は、アクティビティ ログでイベントを検索します。 詳細については、「[アクティビティ ログを表示する](../azure-monitor/platform/activity-log.md#view-the-activity-log)」を参照してください。 
+以前のセッションからの通知を読む場合は、アクティビティ ログでイベントを検索します。 詳細については、「[アクティビティ ログを表示する](../azure-monitor/essentials/activity-log.md#view-the-activity-log)」を参照してください。 
 
 ## <a name="change-the-inactivity-timeout-setting"></a>非アクティブ タイムアウト設定を変更する
 
@@ -91,7 +91,7 @@ Azure portal にサインインするときに、既定で開かれるページ�
 
 ### <a name="change-the-directory-timeout-setting-admin"></a>ディレクトリ タイムアウト設定を変更する (管理者)
 
-[グローバル管理者ロール](../active-directory/roles/permissions-reference.md#global-administrator--company-administrator)の管理者は、セッションがサインアウトするまでの最大アイドル時間を適用できます。非アクティブ タイムアウト ポリシーは、ディレクトリ レベルで適用されます。 この設定は、新しいセッションに対して有効になります。 既にサインインしているユーザーには、すぐには適用されません。 ディレクトリの詳細については、「[Active Directory Domain Services の概要](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)」を参照してください。
+[グローバル管理者ロール](../active-directory/roles/permissions-reference.md#global-administrator)の管理者は、セッションがサインアウトするまでの最大アイドル時間を適用できます。非アクティブ タイムアウト ポリシーは、ディレクトリ レベルで適用されます。 この設定は、新しいセッションに対して有効になります。 既にサインインしているユーザーには、すぐには適用されません。 ディレクトリの詳細については、「[Active Directory Domain Services の概要](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)」を参照してください。
 
 グローバル管理者として、Azure portal のすべてのユーザーに対してアイドル タイムアウト設定を適用する場合は、これらの手順に従います。
 

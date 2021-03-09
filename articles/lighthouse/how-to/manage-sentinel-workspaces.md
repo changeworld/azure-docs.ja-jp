@@ -1,14 +1,14 @@
 ---
 title: Azure Sentinel ワークスペースの大規模な管理を行う
 description: 委任された顧客リソースで Azure Sentinel を効果的に管理する方法を学習します。
-ms.date: 09/30/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 91e2f875aa2fc067420c0c6eda4e7dd56bd2b088
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 009edaefe021dedb5d9a40a8cc3bac2c2974ae10
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424104"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702523"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel ワークスペースの大規模な管理を行う
 
@@ -80,9 +80,9 @@ MSSP によって管理される各顧客サブスクリプションは、[Azure
 
 オートメーションを使用して複数の Azure Sentinel ワークスペースを管理し、[ハンティング クエリ](../../sentinel/hunting.md)、プレイブック、ブックを構成することができます。 詳細については、「[オートメーションを使用するワークスペース間の管理](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-management-using-automation)」を参照してください。
 
-## <a name="manage-security-of-office-365-environments"></a>Office 365 環境のセキュリティの管理
+## <a name="monitor-security-of-office-365-environments"></a>Office 365 環境のセキュリティを監視する
 
-複数のテナントにまたがって Office 365 環境のセキュリティを管理するには、Azure Lighthouse と Azure Sentinel を組み合わせて使用します。 まず、すぐに使える [Office 365 データ コネクタを管理対象テナントで有効にする必要があります](../../sentinel/connect-office-365.md)。これによって、Exchange と SharePoint (OneDrive を含む) でのユーザーと管理者のアクティビティに関する情報を、管理対象テナント内の Azure Sentinel ワークスペースに取り込めるようにします。 これには、ファイルのダウンロードなどのアクション、送信されたアクセス要求、グループ イベントへの変更、メールボックスの操作に関する詳細と、アクションを実行したユーザーの情報が含まれます。 [Office 365 DLP アラート](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820)も、組み込みの Office 365 コネクタの一部としてサポートされています。
+複数のテナントにまたがる Office 365 環境のセキュリティを監視するには、Azure Lighthouse と Azure Sentinel を組み合わせて使用します。 まず、すぐに使える [Office 365 データ コネクタを管理対象テナントで有効にする必要があります](../../sentinel/connect-office-365.md)。これによって、Exchange と SharePoint (OneDrive を含む) でのユーザーと管理者のアクティビティに関する情報を、管理対象テナント内の Azure Sentinel ワークスペースに取り込めるようにします。 これには、ファイルのダウンロードなどのアクション、送信されたアクセス要求、グループ イベントへの変更、メールボックスの操作に関する詳細と、アクションを実行したユーザーの情報が含まれます。 [Office 365 DLP アラート](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-office-365-dlp-events-into-azure-sentinel/ba-p/1031820)も、組み込みの Office 365 コネクタの一部としてサポートされています。
 
 [Microsoft Cloud App Security (MCAS) コネクタ](../../sentinel/connect-cloud-app-security.md)を有効にすると、アラートと Cloud Discovery のログを Azure Sentinel にストリーミングできます。 これにより、クラウド アプリを可視化し、サイバー脅威を特定して対処するための高度な分析を入手し、データの移動を制御できるようになります。 MCAS のアクティビティ ログは [Common Event Format (CEF) を使用して処理する](https://techcommunity.microsoft.com/t5/azure-sentinel/ingest-box-com-activity-events-via-microsoft-cloud-app-security/ba-p/1072849)ことができます。
 

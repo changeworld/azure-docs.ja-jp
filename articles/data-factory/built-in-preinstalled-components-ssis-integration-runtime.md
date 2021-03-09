@@ -1,23 +1,18 @@
 ---
 title: Azure-SSIS Integration Runtime の組み込みコンポーネントとプレインストール コンポーネント
 description: すべての組み込みコンポーネントとプレインストール コンポーネント (クライアント、ドライバー、プロバイダー、接続マネージャー、データ ソース/変換先/変換、および Azure-SSIS Integration Runtime 上のタスクなど) を一覧表示します。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
-manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 05/14/2020
-ms.openlocfilehash: 2f152cddf506c160e686e404b9ba199fbc4c4c37
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 2f5ad8deb702e312f7dd7275128e8ca8098ab90c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556326"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393787"
 ---
 # <a name="built-in-and-preinstalled-components-on-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime の組み込みコンポーネントとプレインストール コンポーネント
 

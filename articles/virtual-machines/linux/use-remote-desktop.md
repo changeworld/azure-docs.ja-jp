@@ -1,26 +1,23 @@
 ---
-title: Azure の Linux VM にリモート デスクトップを使用する
+title: Linux で xrdp を使用する
 description: リモート デスクトップ (xrdp) をインストールして、Azure の Linux VM に接続するように構成する方法を説明します。
 services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.collection: linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
-ms.date: 09/12/2019
+ms.date: 03/01/2021
 ms.author: cynthn
-ms.openlocfilehash: bea7e38c35ceddafb64937d6e1a6f69d7c727f44
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 448e9f6487b5afc51be9b3dee8e07007c8534a0b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196386"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695177"
 ---
-# <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する
+# <a name="install-and-configure-xrdp-to-use-remote-desktop-with-a-linux-vm"></a>xrdp をインストールして、Linux VM でリモート デスクトップを使用するように構成する
+
 Azure の Linux 仮想マシン (VM) は、通常、セキュリティで保護された shell (SSH) 接続を使用してコマンド ラインから管理します。 Linux にまだ慣れていない場合や、簡単にトラブルシューティングする場合などは、リモート デスクトップを使用する方が操作が簡単なことがあります。 この記事では、Resource Manager デプロイ モデルを使用して、Linux VM のデスクトップ環境 ([xfce](https://www.xfce.org)) とリモート デスクトップ ([xrdp](http://xrdp.org)) をインストールして構成する方法を詳しく説明します。
 
 
@@ -32,6 +29,7 @@ Azure の Linux 仮想マシン (VM) は、通常、セキュリティで保護�
 
 
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Linux VM にデスクトップ環境をインストールする
+
 Azure のほとんどの Linux VM では、デスクトップ環境は既定でインストールされていません。 通常、Linux VM は、デスクトップ環境ではなく、SSH 接続を使用して管理されます。 Linux で利用できるデスクトップ環境にはさまざまな種類があります。 選択したデスクトップ環境によっては、ディスク容量を 1 ～ 2 GB 使用し、必要なパッケージのすべてのインストールと構成が完了するまでに 5 ～ 10 分かかるものもあります。
 
 次の例では、軽量 [xfce4](https://www.xfce.org/) デスクトップ環境を Ubuntu 18.04 LTS VM にインストールします。 他のディストリビューションではコマンドが若干異なります (たとえば、Red Hat Enterprise Linux をインストールし、適切な `selinux` 規則をする場合は `yum` を使用し、SUSE にインストールするには `zypper` を使用します)。
@@ -94,9 +92,14 @@ az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 
 
 ## <a name="connect-your-linux-vm-with-a-remote-desktop-client"></a>Linux VM をリモート デスクトップ クライアントに接続する
-ローカルのリモート デスクトップ クライアントを開き、Linux VM の DNS 名または IP アドレスに接続します。 VM でユーザー アカウントのユーザー名とパスワードを次のように入力します。
 
-![リモート デスクトップ クライアントを使用して xrdp に接続する](./media/use-remote-desktop/remote-desktop-client.png)
+ローカルのリモート デスクトップ クライアントを開き、Linux VM の DNS 名または IP アドレスに接続します。 
+
+:::image type="content" source="media/use-remote-desktop/remote-desktop.png" alt-text="リモート デスクトップ クライアントのスクリーンショット。":::
+
+VM でユーザー アカウントのユーザー名とパスワードを次のように入力します。
+
+:::image type="content" source="media/use-remote-desktop/xrdp-login.png" alt-text="xrdp ログイン画面のスクリーンショット。":::
 
 認証後、xfce デスクトップ環境が読み込まれ、次の例のように表示されます。
 

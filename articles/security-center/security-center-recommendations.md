@@ -11,30 +11,47 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/25/2020
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 115d89783a849a9c4c7adb2fceceaf8d1575c785
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 3b2f111f83dbd731b69671e58d4bf9dc648a596f
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795990"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526526"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Security recommendations in Azure Security Center 
+
 このトピックでは、Azure セキュリティ センターで推奨事項を確認し、理解し、Azure リソースの保護に役立てる方法について説明します。
 
 
 ## <a name="what-are-security-recommendations"></a>セキュリティに関する推奨事項とは
 
-推奨事項とは、リソースを保護するために実行する操作です。
-
 Security Center では、Azure リソースのセキュリティの状態が定期的に分析されて、潜在的なセキュリティ脆弱性が特定されます。 その後、これらの脆弱性を修正する方法に関する推奨事項が提供されます。
+
+推奨事項とは、リソースをセキュリティで保護および強化するために実行する操作です。 
 
 それぞれの推奨事項の内容は次のとおりです。
 
 - 問題の簡単な説明
 - 推奨事項を実装するために実行する修復手順
 - 影響を受けるリソース
+
+## <a name="how-does-microsoft-decide-what-needs-securing-and-hardening"></a>Microsoft では、セキュリティ保護とセキュリティ強化が必要な対象はどのように決定されますか?
+
+Security Center の推奨事項は、Azure セキュリティ ベンチマークに基づいています。 ほとんどすべての推奨事項には、ベンチマークの要件から派生した基になるポリシーがあります。
+
+Azure セキュリティ ベンチマークは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインのセットです。 この広く遵守されているベンチマークは、クラウド中心のセキュリティに重点を置いた [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) と [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) の統制に基づいています。 詳細については、[Azure セキュリティ ベンチマーク](../security/benchmarks/introduction.md)に関する記事を参照してください。
+
+推奨事項の詳細を確認するときに、基になるポリシーを確認できると有益な場合が多くあります。 ポリシーでサポートされているすべての推奨事項について、推奨事項の詳細ページの **[ポリシー定義の表示]** リンクを使用して、関連するポリシーの Azure Policy エントリに直接アクセスします。
+
+:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="推奨事項をサポートする特定のポリシーの Azure Policy ページへのリンク":::
+
+ポリシー定義を表示し、評価ロジックを確認するには、このリンクを使用します。 
+
+『[セキュリティの推奨事項のリファレンス ガイド](recommendations-reference.md)』に記載されている推奨事項の一覧を確認している場合は、ポリシー定義のページへのリンクも表示されます。
+
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="Azure Security Center 推奨事項のリファレンス ページから、特定のポリシーの Azure Policy ページへの直接アクセス":::
 
 ## <a name="monitor-recommendations"></a>推奨事項の監視<a name="monitor-recommendations"></a>
 
@@ -54,9 +71,12 @@ Security Center はリソースのセキュリティの状態を分析して、�
 
     このページには次の項目が含まれています。
 
-    1. サポートされている推奨事項の **[適用]** と **[拒否]** ボタン (「[適用/拒否の推奨事項を使用した構成ミスの防止](prevent-misconfigurations.md)」を参照)
+    1. サポートされている推奨事項については、上部のツールバーに次のボタンのいずれか、またはすべてが表示されます。
+        - **適用** および **拒否** (「[適用/拒否の推奨事項を使用した構成ミスの防止](prevent-misconfigurations.md)」を参照)
+        - 基になるポリシーの Azure Policy エントリに直接アクセスするための **ポリシー定義の表示**
     1. **重大度インジケーター**
-    1. **更新間隔** (該当する場合) 
+    1. **更新間隔** (該当する場合)
+    1. この推奨事項に対して除外が存在する場合は、除外されたリソースの数を示す **除外されたリソースの数**
     1. **説明** - 問題の簡単な説明
     1. **修正手順** - 影響を受けるリソースのセキュリティの問題を修正するために必要な手動の手順の説明。 "クイック修正" を含む推奨事項の場合は、推奨される修正プログラムをリソースに適用する前に、 **[修正ロジックを表示]** を選択することができます。 
     1. **影響を受けるリソース** - リソースはタブにグループ化されています。

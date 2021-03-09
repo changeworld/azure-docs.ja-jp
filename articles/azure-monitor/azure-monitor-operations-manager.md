@@ -1,17 +1,16 @@
 ---
 title: Operations Manager の既存のお客様向けの Azure Monitor
 description: Operations Manager の既存のユーザーが、クラウドへの移行の一環として特定のワークロードの監視を Azure Monitor に移行する場合のガイダンス。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: c213a38286de05df5c3be8e3498bcca4ab6e1fbf
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 6d92b7c2f01a7e9ef12bc2bb422cfb6ed0076f73
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736147"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039378"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Operations Manager の既存のお客様向けの Azure Monitor
 この記事では、[System Center Operations Manager](/system-center/scom/welcome) を現在使用しており、ビジネス アプリケーションやその他のリソースを Azure に移行する際に [Azure Monitor](overview.md) への移行を計画しているお客様に向けたガイダンスを提供します。 最終的な目標はクラウドへの全面的な移行であり、ビジネス面と IT 運用の要件について妥協することなく、可能な限り多くの Operations Manager 機能を Azure Monitor に置き換えると想定しています。 
@@ -56,18 +55,18 @@ ms.locfileid: "98736147"
 
 Azure への移行は IaaS を使用して始まり、ビジネス アプリケーションをサポートする仮想マシンを Azure に移行します。 これらのアプリケーションと、それらが依存するサーバー ソフトウェアの監視要件は変わらないため、既存の管理パックを使用して、これらのサーバーで引き続き Operations Manager を使用します。 
 
-Azure サブスクリプションを作成するとすぐに、Azure のサービスに対して Azure Monitor が有効になります。 プラットフォーム メトリックとアクティビティ ログは、自動的に収集されます。また、リソース ログが収集されるように構成し、ログ クエリを使用して、利用できるすべてのテレメトリを対話的に分析できるようにします。 仮想マシン上で Azure Monitor for VMs を有効にして、環境全体にわたって監視データをまとめて分析し、マシンとプロセスとの間の関係を検出します。 オンプレミスの物理マシンと仮想マシンで Azure Arc 対応サーバーを有効にして、それらのマシンまで Azure Monitor の使用を拡張します。 
+Azure サブスクリプションを作成するとすぐに、Azure のサービスに対して Azure Monitor が有効になります。 プラットフォーム メトリックとアクティビティ ログは、自動的に収集されます。また、リソース ログが収集されるように構成し、ログ クエリを使用して、利用できるすべてのテレメトリを対話的に分析できるようにします。 仮想マシンで VM insights を有効にして、環境全体にわたって監視データをまとめて分析し、マシンとプロセスとの間の関係を検出します。 オンプレミスの物理マシンと仮想マシンで Azure Arc 対応サーバーを有効にして、それらのマシンまで Azure Monitor の使用を拡張します。 
 
 お使いのビジネス アプリケーションごとに Application Insights を有効にします。 これは、各アプリケーションのさまざまなコンポーネントを識別し、使用状況とパフォーマンスのデータの収集を開始して、発生したすべてのエラーをコードで識別します。 可用性テストを作成して、外部アプリケーションを事前にテストし、パフォーマンスや可用性の問題があればアラートを受け取ります。 Application Insights では Operations Manager にない強力な機能が提供されますが、ビジネス アプリケーション用に開発したカスタム管理パックの利用を続行します。これは、管理パックに、Azure Monitor がまだ対応していない監視シナリオが含まれるためです。 
 
 Azure Monitor に慣れるにつれて、いくつかの管理パックの機能を置き換えることができるアラート ルールの作成を開始し、新しい監視プラットフォームを使用するためのビジネス プロセスの開発を開始します。 これで、Operations Manager 管理グループからマシンと管理パックの削除を開始できます。 重要なサーバー ソフトウェアとオンプレミスのインフラストラクチャについては、引き続き管理パックを使用しますが、追加の機能をインベントリから削除できるようになる Azure Monitor の新機能を待ち続けます。
 
 ## <a name="monitor-azure-services"></a>Azure サービスを監視する
-Azure サービスでは、テレメトリを収集するために実際には Azure Monitor が必要であり、Azure サブスクリプションを作成した時点でそれが有効にされます。 サブスクリプションに対して[アクティビティ ログ](platform/activity-log.md)が自動的に収集され、作成したすべての Azure リソースから[プラットフォーム メトリック](platform/data-platform-metrics.md)が自動的に収集されます。 [メトリックス エクスプローラー](platform/metrics-getting-started.md)の使用をすぐに開始できます。これは、オペレーション コンソールのパフォーマンス ビューに似ていますが、対話的な分析と、データの[高度な集計](platform/metrics-charts.md)が可能です。 値がしきい値を超えたときに通知されるように[メトリック アラートを作成する](platform/alerts-metric.md)か、表示のために [Azure ダッシュボードにグラフを追加します](platform/metrics-charts.md#pinning-to-dashboards)。
+Azure サービスでは、テレメトリを収集するために実際には Azure Monitor が必要であり、Azure サブスクリプションを作成した時点でそれが有効にされます。 サブスクリプションに対して[アクティビティ ログ](essentials/activity-log.md)が自動的に収集され、作成したすべての Azure リソースから[プラットフォーム メトリック](essentials/data-platform-metrics.md)が自動的に収集されます。 [メトリックス エクスプローラー](essentials/metrics-getting-started.md)の使用をすぐに開始できます。これは、オペレーション コンソールのパフォーマンス ビューに似ていますが、対話的な分析と、データの[高度な集計](essentials/metrics-charts.md)が可能です。 値がしきい値を超えたときに通知されるように[メトリック アラートを作成する](alerts/alerts-metric.md)か、表示のために [Azure ダッシュボードにグラフを追加します](essentials/metrics-charts.md#pinning-to-dashboards)。
 
 [![メトリックス エクスプローラー](media/azure-monitor-operations-manager/metrics-explorer.png)](media/azure-monitor-operations-manager/metrics-explorer.png#lightbox)
 
-各 Azure リソースの[診断設定を作成](platform/diagnostic-settings.md)して、メトリックと[リソース ログ](platform/resource-logs.md)を送信します。これらからは、各リソースの内部操作に関する詳細情報が、Log Analytics ワークスペースに提供されます。 これで、リソースについて利用できるすべてのテレメトリが得られ、[Log Analytics](log-query/log-analytics-overview.md) を使用して、Operations Manager には同等の機能がない高度なクエリ言語を使用したログとパフォーマンス データの対話形式での分析が可能になります。 また、[ログ クエリ アラート](platform/alerts-log-query.md)を作成できます。このアラートでは、複雑なロジックを使用してアラート発生の状態を判断し、複数のリソースにわたってデータを関連付けることができます。
+各 Azure リソースの[診断設定を作成](essentials/diagnostic-settings.md)して、メトリックと[リソース ログ](essentials/resource-logs.md)を送信します。これらからは、各リソースの内部操作に関する詳細情報が、Log Analytics ワークスペースに提供されます。 これで、リソースについて利用できるすべてのテレメトリが得られ、[Log Analytics](logs/log-analytics-overview.md) を使用して、Operations Manager には同等の機能がない高度なクエリ言語を使用したログとパフォーマンス データの対話形式での分析が可能になります。 また、[ログ クエリ アラート](alerts/alerts-log-query.md)を作成できます。このアラートでは、複雑なロジックを使用してアラート発生の状態を判断し、複数のリソースにわたってデータを関連付けることができます。
 
 [![Logs Analytics](media/azure-monitor-operations-manager/log-analytics.png)](media/azure-monitor-operations-manager/log-analytics.png#lightbox)
 
@@ -76,7 +75,7 @@ Azure Monitor の[分析情報](monitor-reference.md)は、特定の Azure サ�
 [![分析情報の例](media/azure-monitor-operations-manager/insight.png)](media/azure-monitor-operations-manager/insight.png#lightbox)
 
 
-分析情報は、メトリックとログ クエリを内容豊富な対話型レポートに結合する、Azure Monitor の[ブック](platform/workbooks-overview.md)に基づいています。 オペレーション コンソールでカスタムのビューやレポートを作成する方法と同様に、複数のサービスからのデータを結合する独自のブックを作成します。
+分析情報は、メトリックとログ クエリを内容豊富な対話型レポートに結合する、Azure Monitor の[ブック](visualize/workbooks-overview.md)に基づいています。 オペレーション コンソールでカスタムのビューやレポートを作成する方法と同様に、複数のサービスからのデータを結合する独自のブックを作成します。
 
 ### <a name="azure-management-pack"></a>Azure 管理パック
 [Azure 管理パック](https://www.microsoft.com/download/details.aspx?id=50013)を使用すると、Operations Manager で、特定の監視シナリオのセットに基づいて Azure リソースを検出し、それらの正常性を監視できます。 この管理パックでは、Azure の各リソースに対して追加の構成を実行する必要がありますが、Azure Monitor に焦点を合わせたビジネス プロセスを開発するまでは、オペレーション コンソールで Azure リソースをある程度表示できると便利な場合があります。
@@ -89,21 +88,21 @@ Azure Monitor の[分析情報](monitor-reference.md)は、特定の Azure サ�
 ## <a name="monitor-server-software-and-local-infrastructure"></a>サーバー ソフトウェアとローカル インフラストラクチャを監視する
 マシンをクラウドに移動するときに、マシンのソフトウェアの監視要件は変化しません。 それらは仮想化されるため、物理コンポーネントを監視する必要はなくなりますが、ゲスト オペレーティング システムとそのワークロードには、環境とは無関係に同じ要件があります。
 
-[Azure Monitor for VMs](insights/vminsights-overview.md) は、仮想マシンと、そのゲスト オペレーティング システムおよびワークロードを監視するための、Azure Monitor の主要機能です。 Operations Manager と同様に、Azure Monitor for VMs はエージェントを使用して、仮想マシンのゲスト オペレーティング システムからデータを収集します。 これは、分析とアラートのために一般に管理パックによって使用されるのと同じパフォーマンスおよびイベントのデータです。 ただし、これらのマシンで実行されているビジネス アプリケーションやサーバー ソフトウェアの問題を識別し、アラートを発行するための既存のルールは存在しません。 検出された問題を事前に通知するには、独自のアラート ルールを作成する必要があります。
+[VM insights](vm/vminsights-overview.md) は、仮想マシンと、そのゲスト オペレーティング システムおよびワークロードを監視するための、Azure Monitor の主要機能です。 Operations Manager と同様に、VM insights により、エージェントを使用して、仮想マシンのゲスト オペレーティング システムからデータが収集されます。 これは、分析とアラートのために一般に管理パックによって使用されるのと同じパフォーマンスおよびイベントのデータです。 ただし、これらのマシンで実行されているビジネス アプリケーションやサーバー ソフトウェアの問題を識別し、アラートを発行するための既存のルールは存在しません。 検出された問題を事前に通知するには、独自のアラート ルールを作成する必要があります。
 
-[![Azure Monitor for VMs のパフォーマンス](media/azure-monitor-operations-manager/vm-insights-performance.png)](media/azure-monitor-operations-manager/vm-insights-performance.png#lightbox)
+[![VM insights のパフォーマンス](media/azure-monitor-operations-manager/vm-insights-performance.png)](media/azure-monitor-operations-manager/vm-insights-performance.png#lightbox)
 
 Azure Monitor は、仮想マシンで実行されているさまざまなアプリケーションとサービスの正常性を測定するものでもありません。 メトリック アラートは、値がしきい値を下回ると自動的に解決されますが、Azure Monitor には、現在のところ、マシンで実行されているアプリケーションとサービスの正常性基準を定義する機能がなく、関連するコンポーネントの正常性をグループ化するための正常性ロールアップも提供されていません。
 
 > [!NOTE]
-> 新しい [Azure Monitor for VMs のゲスト正常性機能](insights/vminsights-health-overview.md)は、現在パブリック プレビューの段階にあり、一連のパフォーマンス メトリックの正常性状態に基づいてアラートを発します。 ただしこれは、仮想マシンで実行されているアプリケーションやその他のワークロードではなく、ゲスト オペレーティング システムに関連する、特定のセットのパフォーマンス カウンターに限られています。
+> 新しい [VM insights のゲスト正常性機能](vm/vminsights-health-overview.md)は、現在パブリック プレビューの段階にあり、一連のパフォーマンス メトリックの正常性状態に基づいてアラートが生成されます。 ただしこれは、仮想マシンで実行されているアプリケーションやその他のワークロードではなく、ゲスト オペレーティング システムに関連する、特定のセットのパフォーマンス カウンターに限られています。
 > 
-> [![Azure Monitor for VMs のゲスト正常性](media/azure-monitor-operations-manager/vm-insights-guest-health.png)](media/azure-monitor-operations-manager/vm-insights-guest-health.png#lightbox)
+> [![VM insights のゲストの正常性](media/azure-monitor-operations-manager/vm-insights-guest-health.png)](media/azure-monitor-operations-manager/vm-insights-guest-health.png#lightbox)
 
-ハイブリッド環境でお使いのマシン上のソフトウェアを監視するには、通常、各コンピューターの要件と、Azure Monitor 関連の運用プロセス開発の成熟度に応じて、Azure Monitor for VMs と Operations Manager を組み合わせて使用します。 Microsoft Management Agent (Azure Monitor では Log Analytics エージェントと呼ばれます) は両方のプラットフォームで使用されるので、1 台のマシンが両方から同時に監視されるようにできます。
+ハイブリッド環境でコンピューターのソフトウェアを監視するには、通常、各コンピューターの要件と、Azure Monitor 関連の運用プロセス開発の成熟度に応じて、VM insights と Operations Manager を組み合わせて使用します。 Microsoft Management Agent (Azure Monitor では Log Analytics エージェントと呼ばれます) は両方のプラットフォームで使用されるので、1 台のマシンが両方から同時に監視されるようにできます。
 
 > [!NOTE]
-> 今後、Azure Monitor for VMs は、現在パブリック プレビューの段階にある [Azure Monitor エージェント](platform/azure-monitor-agent-overview.md)に移行する予定です。 両方のプラットフォームで引き続き同じ仮想マシンを監視できるように、Microsoft Monitoring Agent との互換性が保たれる予定です。
+> 今後、VM insights は、現在パブリック プレビューの段階にある [Azure Monitor エージェント](agents/azure-monitor-agent-overview.md)に移行する予定です。 両方のプラットフォームで引き続き同じ仮想マシンを監視できるように、Microsoft Monitoring Agent との互換性が保たれる予定です。
 
 Azure Monitor ではまだ提供できない機能については、引き続き Operations Manager を使用します。 これには、IIS、SQL Server、Exchange などの重要なサーバー ソフトウェア用の管理パックが含まれます。 Azure Monitor ではアクセスできない、オンプレミスのインフラストラクチャ用に開発されたカスタム管理パックがある可能性もあります。 また、運用プロセスに緊密に統合されている場合は、Azure Monitor やその他の Azure サービスで拡張または置き換えが可能なサービス操作の最新化に移行できるようになるまで、引き続き Operations Manager を使用します。 
 
@@ -111,12 +110,12 @@ Azure Monitor ではまだ提供できない機能については、引き続き
 
 - 仮想マシンとその外部依存先との間の関係を検出し、監視します。
 - 対話型のグラフやブック内の複数の仮想マシンにわたって集計されたパフォーマンス データを表示します。
-- [ログ クエリ](log-query/log-query-overview.md)を使用して、他の Azure リソースのデータを取得し、仮想マシンからのテレメトリを対話形式で分析します。
-- 複数の仮想マシンにわたる複雑なロジックに基づいて、[ログ アラート ルール](platform/alerts-log-query.md)を作成します。
+- [ログ クエリ](logs/log-query-overview.md)を使用して、他の Azure リソースのデータを取得し、仮想マシンからのテレメトリを対話形式で分析します。
+- 複数の仮想マシンにわたる複雑なロジックに基づいて、[ログ アラート ルール](alerts/alerts-log-query.md)を作成します。
 
-[![Azure Monitor for VMs のマップ](media/azure-monitor-operations-manager/vm-insights-map.png)](media/azure-monitor-operations-manager/vm-insights-map.png#lightbox)
+[![VM insights のマップ](media/azure-monitor-operations-manager/vm-insights-map.png)](media/azure-monitor-operations-manager/vm-insights-map.png#lightbox)
 
-Azure Monitor for VMs では、Azure 仮想マシンに加えてオンプレミスや他のクラウド内のマシンを、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用して監視できます。 Arc 対応サーバーを使用すると、Azure の外部 (企業ネットワークや Azure 以外のクラウド プロバイダー) でホストされている Windows と Linux のマシンを、ネイティブの Azure 仮想マシンと同じように管理することができます。
+VM insights を使用すると、Azure Virtual Machines に加えて、オンプレミスのマシンや、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用する他のクラウド内のマシンを、監視することができます。 Arc 対応サーバーを使用すると、Azure の外部 (企業ネットワークや Azure 以外のクラウド プロバイダー) でホストされている Windows と Linux のマシンを、ネイティブの Azure 仮想マシンと同じように管理することができます。
 
 
 
@@ -130,8 +129,8 @@ Operations Manager でのビジネス アプリケーションの監視が、[.N
 - ページ ビューや読み込みパフォーマンスなどのブラウザー データを収集します。
 - 例外を検出し、スタック トレースと関連する要求の詳細を表示します。
 - [分散トレース](app/distributed-tracing.md)や[スマート検出](app/proactive-diagnostics.md)などの機能を使用して、高度な分析を実行します。
-- [メトリックス エクスプローラー](platform/metrics-getting-started.md)を使用して、パフォーマンス データを対話形式で分析します。
-- [ログ クエリ](log-query/log-query-overview.md)を使用して、収集されたテレメトリを、Azure サービスおよび Azure Monitor for VMs 用に収集されたデータと一緒に、対話形式で分析します。
+- [メトリックス エクスプローラー](essentials/metrics-getting-started.md)を使用して、パフォーマンス データを対話形式で分析します。
+- [ログ クエリ](logs/log-query-overview.md)を使用して、収集されたテレメトリを、Azure サービスおよび VM insights 用に収集されたデータと一緒に、対話形式で分析します。
 
 [![Application Insights](media/azure-monitor-operations-manager/application-insights.png)](media/azure-monitor-operations-manager/application-insights.png#lightbox)
 
@@ -148,7 +147,7 @@ Operations Manager でのビジネス アプリケーションの監視が、[.N
 ## <a name="next-steps"></a>次の手順
 
 - Azure Monitor と System Center Operations Manager の詳細な比較や、ハイブリッド監視環境の設計と実装の詳細については、[クラウド監視ガイド](/azure/cloud-adoption-framework/manage/monitor/)を参照してください。
-- [Azure Monitor での Azure リソースの監視](insights/monitor-azure-resource.md)の詳細を確認します。
-- [Azure Monitor での Azure 仮想マシンの監視](insights/monitor-vm-azure.md)の詳細を確認します。
-- [Azure Monitor for VMs](insights/vminsights-overview.md) の詳細を確認します。
+- [Azure Monitor での Azure リソースの監視](essentials/monitor-azure-resource.md)の詳細を確認します。
+- [Azure Monitor での Azure 仮想マシンの監視](vm/monitor-vm-azure.md)の詳細を確認します。
+- [VM insights](vm/vminsights-overview.md) の詳細を確認します。
 - [Application Insights](app/app-insights-overview.md) の詳細を確認します。

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 8de95a56f3da928997a97ff216b13d522c82afca
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 8e860bf47420f2b58c44df695da7761bcc2aa0ce
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814195"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521783"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS Rapid Response
 
@@ -30,7 +30,7 @@ ms.locfileid: "97814195"
 
 次の場合にのみ、DRR に問い合わせる必要があります。 
 
-- DDoS 攻撃中に、保護されたリソースのパフォーマンスが著しく低下したり、リソースが使用できなくなったことを検出した場合。 前述の手順 2 で、リソースの可用性とパフォーマンスの問題を検出するモニターの構成方法を確認します。
+- DDoS 攻撃中に、保護されたリソースのパフォーマンスが著しく低下したり、リソースが使用できなくなったことを検出した場合。 
 - リソースが DDoS 攻撃を受けている一方で、DDoS Protection サービスが攻撃を効果的に軽減していないと思われる場合。
 - ネットワーク トラフィックが大幅に増大するバイラル イベントを計画している場合。
 - 攻撃が事業に大きな影響を与えている場合。

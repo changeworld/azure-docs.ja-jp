@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/08/2021
-ms.openlocfilehash: 0c75f9938b3bc4fa8a2e650f77a3708e91180fea
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 3ee8d5f36977a5a9f20c7e636118ffa9f6ee0b6d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059222"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570989"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB サーバーレス (プレビュー)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -64,7 +64,7 @@ Azure Cosmos DB サーバーレスは、アイドル時間が長く、**断続�
 
 :::image type="content" source="./media/serverless/request-units-consumed.png" alt-text="消費された要求ユニットを示すグラフ" border="false":::
 
-[こちら](monitor-request-unit-usage.md)に説明されているように、Azure Monitor を使用して同じグラフを見つけることができます。 Azure Monitor では、[アラート](../azure-monitor/platform/alerts-metric-overview.md)を設定でき、要求ユニットの消費量が特定のしきい値を越えたときに通知を受け取ることに使用できます。
+[こちら](monitor-request-unit-usage.md)に説明されているように、Azure Monitor を使用して同じグラフを見つけることができます。 Azure Monitor では、[アラート](../azure-monitor/alerts/alerts-metric-overview.md)を設定でき、要求ユニットの消費量が特定のしきい値を越えたときに通知を受け取ることに使用できます。
 
 ## <a name="performance"></a><a id="performance"></a>パフォーマンス
 

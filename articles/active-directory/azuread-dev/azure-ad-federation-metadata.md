@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: bcc44f61ccb7b4a19e7df39ab979669c5aa37da1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f3bd8851fe723461c618499e539c987d79c0d68
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80154901"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650143"
 ---
 # <a name="federation-metadata"></a>フェデレーション メタデータ
 
@@ -36,7 +36,7 @@ Azure AD は、テナント固有のエンドポイントとテナント独立�
 ## <a name="federation-metadata-endpoints"></a>フェデレーション メタデータ エンドポイント
 Azure AD は、フェデレーション メタデータを `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`で発行します。
 
-**テナント固有のエンドポイント**の場合、`TenantDomainName` に次の種類のいずれかを指定できます。
+**テナント固有のエンドポイント** の場合、`TenantDomainName` に次の種類のいずれかを指定できます。
 
 * `contoso.onmicrosoft.com`など、Azure AD のテナントの登録済みのドメイン名。
 * `72f988bf-86f1-41af-91ab-2d7cd011db45`など、ドメインの変更できないテナント ID。
@@ -96,7 +96,7 @@ WS-Federation 固有のセクションで、WS-Federation メタデータ リー
 `RoleDescriptor` 要素の例を次に示します。
 
 ```
-<RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType"protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
+<RoleDescriptor xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:fed="https://docs.oasis-open.org/wsfed/federation/200706" xsi:type="fed:SecurityTokenServiceType" protocolSupportEnumeration="https://docs.oasis-open.org/wsfed/federation/200706">
 ```
 
 SAML に固有のセクションで、WS-Federation メタデータ リーダーは、 `IDPSSODescriptor` 要素から証明書を読み取ります。

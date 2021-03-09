@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 96b6467d0d529f5839c33182057f3aa3c39cb6e7
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: a214e91307308e191ce92b6461c1454d2cc7dd2b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132552"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370480"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Azure アカウントにパートナー ID をリンクする
 
@@ -43,7 +43,7 @@ PAL を使用することで、Microsoft は、Azure の利用者を成功に導
 
 2. Azure portal にサインインします。
 
-3. Microsoft パートナー ID を入力します。 パートナー ID は、貴社の組織の [Microsoft Partner Network](https://partner.microsoft.com/) ID です。 パートナー プロファイルに表示されている**関連付けられている MPN ID** を必ず使用してください。
+3. Microsoft パートナー ID を入力します。 パートナー ID は、貴社の組織の [Microsoft Partner Network](https://partner.microsoft.com/) ID です。 パートナー プロファイルに表示されている **関連付けられている MPN ID** を必ず使用してください。
 
    ![パートナー ID へのリンクを示すスクリーンショット](./media/link-partner-id/link-partner-id01.png)
 
@@ -61,7 +61,7 @@ PAL を使用することで、Microsoft は、Azure の利用者を成功に導
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
    ```
 
-3. 新しいパートナー ID にリンクします。 パートナー ID は、貴社の組織の [Microsoft Partner Network](https://partner.microsoft.com/) ID です。 パートナー プロファイルに表示されている**関連付けられている MPN ID** を必ず使用してください。
+3. 新しいパートナー ID にリンクします。 パートナー ID は、貴社の組織の [Microsoft Partner Network](https://partner.microsoft.com/) ID です。 パートナー プロファイルに表示されている **関連付けられている MPN ID** を必ず使用してください。
 
 
     ```azurepowershell-interactive
@@ -142,7 +142,7 @@ C:\ az managementpartner delete --partner-id 12345
 
 **会社に複数の MPN ID がある場合は、どれを使用すべきですか。**
 
-パートナー プロファイルに表示されている**関連付けられている MPN ID** を必ず使用してください。
+パートナー プロファイルに表示されている **関連付けられている MPN ID** を必ず使用してください。
 
 **リンク済みのパートナー ID の影響を受ける収益レポートはどこで確認できますか。**
 
@@ -162,9 +162,7 @@ C:\ az managementpartner delete --partner-id 12345
 
 **会社で [Azure Lighthouse](../../lighthouse/overview.md) を使用して顧客のリソースにアクセスする場合、どのようにすればパートナー ID をリンクできますか。**
 
-[マネージド サービス プランを Azure Marketplace に発行する](../../lighthouse/how-to/publish-managed-services-offers.md)ことによって顧客を Azure の委任されたリソース管理にオンボードすると、自動的に MPN ID が関連付けられます。
-
-[Azure Resource Manager テンプレートをデプロイして顧客をオンボードする](../../lighthouse/how-to/onboard-customer.md)場合は、MPN ID を、オンボードされた各サブスクリプションへのアクセス権を持つ少なくとも 1 つのユーザー アカウントに関連付ける必要があります。 これは、各顧客テナントではなく、サービス プロバイダー テナントで行う必要があることにご注意ください。 わかりやすくするために、テナントにサービス プリンシパル アカウントを作成して MPN ID に関連付け、[パートナー獲得クレジットの対象となる Azure の組み込みロール](/partner-center/azure-roles-perms-pec)を使用してオンボードするすべての顧客へのアクセス権を付与することをお勧めします。 詳細については、「[パートナー ID をリンクして、委任されたリソースで影響を追跡する](../../lighthouse/how-to/partner-earned-credit.md)」を参照してください。
+Azure Lighthouse アクティビティが認識されるようにするには、MPN ID を、各オンボード サブスクリプションへのアクセス権を持つ少なくとも 1 つのユーザー アカウントに関連付ける必要があります。 これは、各顧客テナントではなく、サービス プロバイダー テナントで行う必要があることにご注意ください。 わかりやすくするために、テナントにサービス プリンシパル アカウントを作成して MPN ID に関連付け、[パートナー獲得クレジットの対象となる Azure の組み込みロール](/partner-center/azure-roles-perms-pec)を使用してオンボードするすべての顧客へのアクセス権を付与することをお勧めします。 詳細については、「[パートナー ID をリンクして、委任されたリソースで影響を追跡する](../../lighthouse/how-to/partner-earned-credit.md)」を参照してください。
 
 **パートナー管理リンク (PAL) については、顧客にどのように説明すればよいでしょうか。**
 

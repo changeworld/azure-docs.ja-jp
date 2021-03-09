@@ -4,12 +4,12 @@ description: Linux VM に対する Azure Policy のゲスト構成ポリシー�
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 705c12cff5f4377249674ef9db155d1ed321ce42
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 352c8b1936c38c9b5f706ac88bd4fd06e008b892
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755873"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525349"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux 用のゲスト構成ポリシーを作成する方法
 
@@ -204,10 +204,20 @@ Test-GuestConfigurationPackage `
 New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefInspecProfilePath './' | Test-GuestConfigurationPackage
 ```
 
-次の手順はファイルの Azure Blob Storage への発行です。  コマンド `Publish-GuestConfigurationPackage` には `Az.Storage` モジュールが必要です。
+次の手順はファイルの Azure Blob Storage への発行です。 コマンド `Publish-GuestConfigurationPackage` には `Az.Storage` モジュールが必要です。
+
+`Publish-GuestConfigurationPackage` コマンドレットのパラメーター:
+
+- **パス**:発行するパッケージの場所
+- **ResourceGroupName**:ストレージ アカウントが配置されているリソース グループの名前
+- **StorageAccountName**:パッケージを発行する必要があるストレージ アカウントの名前
+- **StorageContainerName**: (既定: *guestconfiguration*) ストレージ アカウントのストレージ コンテナーの名前
+- **Force**:同じ名前のストレージ アカウント内の既存のパッケージを上書きする
+
+次の例では、パッケージをストレージ コンテナー名 'guestconfiguration' に発行します。
 
 ```azurepowershell-interactive
-Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName myResourceGroupName -StorageAccountName myStorageAccountName
+Publish-GuestConfigurationPackage -Path ./AuditFilePathExists/AuditFilePathExists.zip -ResourceGroupName myResourceGroupName -StorageAccountName myStorageAccountName
 ```
 
 ゲスト構成のカスタム ポリシー パッケージを作成してアップロードした後、ゲスト構成ポリシー定義を作成します。 `New-GuestConfigurationPolicy` コマンドレットは、カスタム ポリシー パッケージを受け取り、ポリシー定義を作成します。
@@ -281,35 +291,8 @@ describe file(attr_path) do
 end
 ```
 
-`New-GuestConfigurationPolicy` と `Test-GuestConfigurationPolicyPackage` のコマンドレットには、**Parameters** という名前のパラメーターが含まれています。 このパラメーターは、各パラメーターの詳細をすべて含むハッシュテーブルを受け取り、各 Azure Policy 定義の作成に使用されるファイルのすべての必要なセクションが自動的に作成されます。
-
-次の例では、ファイル パスを監査するポリシー定義を作成します。このパスは、ポリシーの割り当て時にユーザーが指定します。
-
-```azurepowershell-interactive
-$PolicyParameterInfo = @(
-    @{
-        Name = 'FilePath'                             # Policy parameter name (mandatory)
-        DisplayName = 'File path.'                    # Policy parameter display name (mandatory)
-        Description = "File path to be audited."      # Policy parameter description (optional)
-        ResourceType = "ChefInSpecResource"           # Configuration resource type (mandatory)
-        ResourceId = 'Audit Linux path exists'        # Configuration resource property name (mandatory)
-        ResourcePropertyName = "AttributesYmlContent" # Configuration resource property name (mandatory)
-        DefaultValue = '/tmp'                         # Policy parameter default value (optional)
-    }
-)
-
-# The hashtable also supports a property named 'AllowedValues' with an array of strings to limit input to a list
-
-New-GuestConfigurationPolicy
-    -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditFilePathExists.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' `
-    -DisplayName 'Audit Linux file path.' `
-    -Description 'Audit that a file path exists on a Linux machine.' `
-    -Path './policies' `
-    -Parameter $PolicyParameterInfo `
-    -Version 1.0.0
-```
-
-Linux ポリシーの場合は、構成に **AttributesYmlContent** プロパティを含め、必要に応じて値を上書きします。 ゲスト構成エージェントでは、属性を格納するために InSpec によって使われる AML ファイルが自動的に作成されます。 次の例を見てください。
+プロパティ **AttributesYmlContent** を構成に追加します。値として任意の文字列を含めます。
+ゲスト構成エージェントでは、属性を格納するために InSpec によって使われる AML ファイルが自動的に作成されます。 次の例を見てください。
 
 ```powershell
 Configuration AuditFilePathExists
@@ -321,11 +304,44 @@ Configuration AuditFilePathExists
         ChefInSpecResource 'Audit Linux path exists'
         {
             Name = 'linux-path'
-            AttributesYmlContent = "path: /tmp"
+            AttributesYmlContent = "fromParameter"
         }
     }
 }
 ```
+
+このドキュメントに含まれる例を使用し、MOF ファイルを再コンパイルします。
+
+`New-GuestConfigurationPolicy` と `Test-GuestConfigurationPolicyPackage` のコマンドレットには、**Parameters** という名前のパラメーターが含まれています。 このパラメーターは、各パラメーターの詳細をすべて含むハッシュテーブルを受け取り、各 Azure Policy 定義の作成に使用されるファイルのすべての必要なセクションが自動的に作成されます。
+
+次の例では、ファイル パスを監査するポリシー定義を作成します。このパスは、ポリシーの割り当て時にユーザーが指定します。
+
+```azurepowershell-interactive
+$PolicyParameterInfo = @(
+    @{
+        Name = 'FilePath'                             # Policy parameter name (mandatory)
+        DisplayName = 'File path.'                    # Policy parameter display name (mandatory)
+        Description = 'File path to be audited.'      # Policy parameter description (optional)
+        ResourceType = 'ChefInSpecResource'           # Configuration resource type (mandatory)
+        ResourceId = 'Audit Linux path exists'        # Configuration resource property name (mandatory)
+        ResourcePropertyName = 'AttributesYmlContent' # Configuration resource property name (mandatory)
+        DefaultValue = '/tmp'                         # Policy parameter default value (optional)
+    }
+)
+
+# The hashtable also supports a property named 'AllowedValues' with an array of strings to limit input to a list
+
+$uri = 'https://storageaccountname.blob.core.windows.net/packages/AuditFilePathExists.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D'
+
+New-GuestConfigurationPolicy -ContentUri $uri `
+    -DisplayName 'Audit Linux file path.' `
+    -Description 'Audit that a file path exists on a Linux machine.' `
+    -Path './policies' `
+    -Parameter $PolicyParameterInfo `
+    -Platform 'Linux' `
+    -Version 1.0.0
+```
+
 
 ## <a name="policy-lifecycle"></a>ポリシーのライフサイクル
 

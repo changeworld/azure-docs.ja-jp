@@ -18,6 +18,9 @@
           href: get-started-cli.md
 - name: 概念
   items:
+    - name: 構成
+      href: configuration.md
+      displayName: Routing
     - name: Azure Functions での API サポート
       href: apis.md
     - name: ルート
@@ -42,6 +45,8 @@
       href: application-settings.md
     - name: フロントエンド フレームワークとライブラリの構成
       href: front-end-frameworks.md
+    - name: デプロイ トークンのリセット
+      href: deployment-token-management.md
 - name: チュートリアル
   items:
     - name: 静的サイト ジェネレーターからの発行

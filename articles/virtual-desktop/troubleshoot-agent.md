@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 5f9d772a4cc5722201891450707a68fe487acc3a
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 1500a635d5177ed8899cdc3f1364e57a8525892c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540421"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099950"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Windows Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする
 
@@ -174,7 +174,7 @@ Windows Virtual Desktop エージェントでは、次の複数の要因のた�
 
 7. **[HKEY_LOCAL_MACHINE]**  >  **[SYSTEM]**  >  **[CurrentControlSet]**  >  **[Control]**  >  **[Terminal Server]**  >  **[ClusterSettings]** の順に移動します。
 8. **[ClusterSettings]** で、**SessionDirectoryListener** を見つけ、そのデータ値が **rdp-sxs...** であることを確認します。
-9. **SessionDirectoryListener** が **rdp-sxs...** に設定されていない場合は、[エージェントとブート ローダーのアンインストール](#step-1-uninstall-all-agent-boot-loader-and-stack-component-programs)のセクションの手順に従って、最初にエージェント、ブート ローダー、スタック コンポーネントをアンインストールし、次に[エージェントとブート ローダーを再インストールする](#step-4-reinstall-the-agent-and-boot-loader)必要があります。 これにより、サイドバイサイド スタックが再インストールされます。
+9. **SessionDirectoryListener** が **rdp-sxs...** に設定されていない場合は、[エージェントとブート ローダーのアンインストール](#step-1-uninstall-all-agent-boot-loader-and-stack-component-programs)のセクションの手順に従って、最初にエージェント、ブート ローダー、スタック コンポーネントをアンインストールし、次に [エージェントとブート ローダーを再インストールする](#step-4-reinstall-the-agent-and-boot-loader)必要があります。 これにより、サイドバイサイド スタックが再インストールされます。
 
 ## <a name="error-users-keep-getting-disconnected-from-session-hosts"></a>エラー:ユーザーがセッション ホストから切断されたままになる
 
@@ -184,7 +184,7 @@ Windows Virtual Desktop エージェントでは、次の複数の要因のた�
 1. 管理者としてコマンド プロンプトを開きます。
 2. **qwinsta** コマンドを入力して実行します。
 3. **rdp-tcp** と **rdp-sxs** の 2 つのスタック コンポーネントが表示されます。 
-   - 使用している OS のバージョンによっては、次のスクリーンショットに示すように、**rdp-sxs** の後にビルド番号が表示されることがあります。 その場合は、後のために、この番号を書き留めておくようにしてください。
+   - 使用している OS のバージョンによっては、**rdp-sxs** の後にビルド番号が表示されることがあります。 その場合は、後のために、この番号を書き留めておくようにしてください。
 4. レジストリ エディターを開きます。
 5. **[HKEY_LOCAL_MACHINE]**  >  **[SYSTEM]**  >  **[CurrentControlSet]**  >  **[Control]**  >  **[Terminal Server]**  >  **[WinStations]** の順に移動します。
 6. **[WinStations]** には、さまざまなスタック バージョン用のいくつかのフォルダーが表示されることがあります。 手順 3. のバージョン番号に一致するフォルダーを選択します。
@@ -207,7 +207,7 @@ Windows Virtual Desktop エージェントでは、次の複数の要因のた�
 管理者として PowerShell ウィンドウを開き、次のコマンドレットを実行します。
 
 ```powershell
-Get-AzWvdSessionHost -TenantName <tenantname> -HostPoolName <hostpoolname>|Select-Object*
+Get-AzWvdSessionHost -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> | Select-Object *
 ```
 
 ホスト プール内の 1 つまたは複数のセッション ホストに対して表示されている状態が常に **[使用不可]** または **[アップグレード中]** である場合は、エージェントまたはスタックのインストールが失敗している可能性があります。

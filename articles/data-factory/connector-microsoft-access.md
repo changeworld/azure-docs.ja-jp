@@ -1,22 +1,18 @@
 ---
 title: Microsoft Access をコピー元またはコピー先としてデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Microsoft Access をコピー元またはコピー先としてデータをコピーする方法について説明します。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/28/2020
-ms.openlocfilehash: 00966af4e0fc83015726d86a4c7cb5724ad38633
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a17876385e3a48543c8185a0f48a3e4016afa1a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513367"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374390"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-using-azure-data-factory"></a>Azure Data Factory を使用して Microsoft Access データ ストアをコピー元またはコピー先としてデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -55,7 +51,7 @@ Microsoft Access のリンクされたサービスでは、次のプロパティ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**MicrosoftAccess** | はい |
-| connectionString | 資格情報部分を除外した ODBC 接続文字列。 接続文字列を指定するか、Integration Runtime マシンに設定したシステム DSN (データ ソース名) を使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。<br> パスワードを Azure Key Vault に格納して、接続文字列から  `password`  構成をプルすることもできます。 詳細については、「 [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md) 」を参照してください。| はい |
+| connectionString | 資格情報部分を除外した ODBC 接続文字列。 接続文字列を指定するか、Integration Runtime マシンに設定したシステム DSN (データ ソース名) を使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。<br> パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。| はい |
 | authenticationType | Microsoft Access データ ストアへの接続に使用される認証の種類です。<br/>使用できる値は、以下のとおりです。**Basic** と **Anonymous**。 | はい |
 | userName | 基本認証を使用している場合は、ユーザー名を指定します。 | いいえ |
 | password | userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 3fc880e238c1c9f45c663975470a6ab57267a648
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a46ddeddfcefcd4d6e7f87747fe36cfc6ec82e35
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879546"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737564"
 ---
 # <a name="monitoring-time-series-insights"></a>Time Series Insights の監視
 
@@ -29,7 +29,7 @@ Azure portal の各 Time Series Insights 環境に対する **[概要]** ペー�
 
 Time Series Insights により、[Azure Monitor](../azure-monitor/overview.md) を使用して監視データが作成されます。Azure Monitor は Azure のフル スタックの監視サービスであり、他のクラウドやオンプレミスのリソースに加えて、Azure リソースを監視するための完全な機能セットが提供されます。
 
-まず「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/insights/monitor-azure-resource.md)」の記事にある次の概念の説明をお読みください。
+まず「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/essentials/monitor-azure-resource.md)」の記事にある次の概念の説明をお読みください。
 
 - Azure Monitor とは
 - 監視に関連するコスト
@@ -40,11 +40,11 @@ Time Series Insights により、[Azure Monitor](../azure-monitor/overview.md) �
 以下のセクションでは、この記事に基づき、Azure Time Series Insights のために収集される特定のデータについて説明します。 これらのセクションでは、Azure ツールを使用してデータ収集を構成し、このデータを分析する例も紹介します。
 
 > [!TIP]
-> Azure Monitor に関連したコストを把握するには、[使用量と推定コスト](../azure-monitor/platform/usage-estimated-costs.md)に関する記事を参照してください。 データが Azure Monitor に表示されるまでにかかる時間を把握するには、[ログ データのインジェスト時間](../azure-monitor/platform/data-ingestion-time.md)に関する記事を参照してください。
+> Azure Monitor に関連したコストを把握するには、[使用量と推定コスト](../azure-monitor//usage-estimated-costs.md)に関する記事を参照してください。 データが Azure Monitor に表示されるまでにかかる時間を把握するには、[ログ データのインジェスト時間](../azure-monitor/logs/data-ingestion-time.md)に関する記事を参照してください。
 
 ## <a name="monitoring-data-from-azure-time-series-insights"></a>Azure Time Series Insights からのデータの監視
 
-Azure Time Series Insights により、他の Azure リソースと同じ種類の監視データが収集されます。これについては、[Azure リソースからの監視データ](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)に関するページを参照してください。 
+Azure Time Series Insights により、他の Azure リソースと同じ種類の監視データが収集されます。これについては、[Azure リソースからの監視データ](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)に関するページを参照してください。 
 
 収集できるログとメトリックの詳細なリファレンスについては、[Azure Time Series Insights の監視データのリファレンス](how-to-monitor-tsi-reference.md)に関するページを参照してください。
 
@@ -53,7 +53,7 @@ Azure Time Series Insights により、他の Azure リソースと同じ種類�
 プラットフォームのメトリックは自動的に収集および格納されますが、診断設定を使用して他の場所にルーティングすることもできます。
 
 リソース ログは、診断設定を作成して 1 つ以上の場所にルーティングするまでは収集および格納されません。
-Azure portal、CLI、または PowerShell を使用して診断設定を作成するプロセスの詳細については、「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../azure-monitor/platform/diagnostic-settings.md)」を参照してください。 診断設定を作成するときは、収集するログのカテゴリを指定します。
+Azure portal、CLI、または PowerShell を使用して診断設定を作成するプロセスの詳細については、「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../azure-monitor/essentials/diagnostic-settings.md)」を参照してください。 診断設定を作成するときは、収集するログのカテゴリを指定します。
 
 Azure Time Series Insights については、次のカテゴリからログを収集できます。
 
@@ -63,7 +63,7 @@ Azure Time Series Insights については、次のカテゴリからログを�
 
 ## <a name="analyzing-metrics"></a>メトリックの分析
 
-Azure Monitor のメニューから [メトリック] を開くことにより、Azure Time Series Insights のメトリックを、他の Azure サービスからのメトリックと一緒に分析することができます。 このツールの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../azure-monitor/platform/metrics-getting-started.md)」を参照してください。
+Azure Monitor のメニューから [メトリック] を開くことにより、Azure Time Series Insights のメトリックを、他の Azure サービスからのメトリックと一緒に分析することができます。 このツールの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../azure-monitor/essentials/metrics-getting-started.md)」を参照してください。
 
 収集されるプラットフォーム メトリックの一覧については、「[Azure Time Series Insights 監視データ リファレンス](how-to-monitor-tsi-reference.md#metrics)」を参照してください
 
@@ -80,7 +80,7 @@ Azure Monitor のメニューから [メトリック] を開くことにより�
 
 Azure Monitor のログのデータはテーブルに格納され、各テーブルには独自の一意のプロパティ セットがあります。
 
-Azure Monitor 内のすべてのリソース ログには、同じフィールドの後にサービス固有のフィールドがあります。 共通のスキーマの概要については、[Azure Monitor リソース ログのスキーマ](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)に関する記事をご覧ください。 Azure Time Series Insights に関して収集されるリソース ログの種類の一覧については、[Azure Time Series Insights 監視データ リファレンス](how-to-monitor-tsi-reference.md#resource-logs)に関するページを参照してください。
+Azure Monitor 内のすべてのリソース ログには、同じフィールドの後にサービス固有のフィールドがあります。 共通のスキーマの概要については、[Azure Monitor リソース ログのスキーマ](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema)に関する記事をご覧ください。 Azure Time Series Insights に関して収集されるリソース ログの種類の一覧については、[Azure Time Series Insights 監視データ リファレンス](how-to-monitor-tsi-reference.md#resource-logs)に関するページを参照してください。
 
 Azure Time Series Insights のデータは、次のテーブルに格納されます。
 
@@ -115,11 +115,11 @@ Azure Time Series Insights のデータは、次のテーブルに格納され�
 
 ## <a name="alerts"></a>警告
 
-Azure Monitor のアラートは、監視データで重要な状態が見つかると事前に通知します。 これにより、ユーザーが気付く前に、管理者が問題を識別して対処できます。 アラートは[メトリック](../azure-monitor/platform/alerts-metric-overview.md)、[ログ](../azure-monitor/platform/alerts-unified-log.md)、[アクティビティ ログ](../azure-monitor/platform/activity-log-alerts.md)に対して設定できます。 アラートの種類に応じて、さまざまな利点と欠点があります。
+Azure Monitor のアラートは、監視データで重要な状態が見つかると事前に通知します。 これにより、ユーザーが気付く前に、管理者が問題を識別して対処できます。 アラートは[メトリック](../azure-monitor/alerts/alerts-metric-overview.md)、[ログ](../azure-monitor/alerts/alerts-unified-log.md)、[アクティビティ ログ](../azure-monitor/alerts/activity-log-alerts.md)に対して設定できます。 アラートの種類に応じて、さまざまな利点と欠点があります。
 
 プラットフォーム メトリックに基づいてアラート ルールを作成する場合は、カウント単位で収集される Time Series Insights のプラットフォーム メトリックについて、一部の集計が有効でない場合や使用できない場合があることにご注意ください。
 
 ## <a name="next-steps"></a>次の手順
 
 * Azure Time Series Insights によって作成されるログとメトリックのリファレンスについては、[Azure Time Series Insights の監視データのリファレンス](how-to-monitor-tsi-reference.md)に関するページを参照してください。
-* Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。
+* Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/essentials/monitor-azure-resource.md)」を参照してください。

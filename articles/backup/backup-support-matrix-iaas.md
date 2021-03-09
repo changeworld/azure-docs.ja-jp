@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Azure VM をバックア�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: ade92e445897e36139e74353fa703ddf50d3f9b3
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 2536ae0d33767de5ad53740407622e67c582cc37
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562728"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710670"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 
@@ -43,7 +43,7 @@ Azure VM の直接バックアップ (Windows のみ)  | 特定のファイル�
 VM のバックアップ ポリシーを変更する | サポートされています。<br/><br/> VM は、新しいポリシーのスケジュールおよびリテンション期間の設定を使用してバックアップされます。 リテンション期間の設定が延長されている場合、既存の復旧ポイントがマークされ、保持されます。 短縮されている場合、既存の復旧ポイントは次のクリーンアップ ジョブで取り除かれ、最終的に削除されます。
 バックアップ ジョブを取り消す| スナップショットの処理中にサポートされます。<br/><br/> スナップショットがコンテナーに転送されているときはサポートされません。
 別のリージョンまたはサブスクリプションに VM をバックアップする |サポートされていません。<br><br>正常にバックアップするには、仮想マシンがバックアップ用のコンテナーと同じサブスクリプションに含まれている必要があります。
-1 日あたりのバックアップ回数 (Azure VM 拡張機能を使用した場合) | 1 日あたり 1 回のスケジュール済みバックアップ。<br/><br/>Azure Backup サービスでは、1 日あたり最大 9 回のオンデマンド バックアップがサポートされますが、最高のパフォーマンスを得るためには、1 日ごとのオンデマンド バックアップを 4 回に抑えることをお勧めします。
+1 日あたりのバックアップ回数 (Azure VM 拡張機能を使用した場合) | 1 日あたり 1 回のスケジュール済みバックアップ。<br/><br/>Azure Backup サービスでは、1 日あたり最大 3 回のオンデマンド バックアップと、スケジュール済みバックアップを追加で 1 回サポートします。
 1 日あたりのバックアップ回数 (MARS エージェントを使用した場合) | 1 日あたり 3 回のスケジュール済みバックアップ。
 1 日あたりのバックアップ回数 (DPM/MABS を使用した場合) | 1 日あたり 2 回のスケジュール済みバックアップ。
 毎月/毎年のバックアップ| Azure VM 拡張機能を使用してバックアップする場合、サポートされません。 毎日および毎週のみサポートされます。<br/><br/> 毎月/毎年のリテンション期間の間、毎日/毎週のバックアップを保持するようにポリシーを設定できます。
@@ -81,6 +81,7 @@ Azure VM Linux のバックアップでは、Azure Backup は、[Azure で承認
 - Azure Backup は 32 ビットのオペレーティング システムをサポートしていません。
 - 他の個人所有の Linux ディストリビューションは、VM 上で [Linux 用の Azure VM エージェント](../virtual-machines/extensions/agent-linux.md)が動作し、かつ Python がサポートされていれば使用できます。
 - Azure Backup は、プロキシが構成された Linux VM を、Python バージョン 2.7 がインストールされていない場合はサポートしていません。
+- Azure Backup では、ストレージまたはその他の NFS サーバーから Linux または Windows コンピューターにマウントされた NFS ファイルのバックアップはサポートされません。 VM にローカルに接続されているディスクのみがバックアップされます。
 
 ## <a name="backup-frequency-and-retention"></a>バックアップの頻度とリテンション期間
 
@@ -101,7 +102,7 @@ DPM または MABS ディスクの復旧ポイント数 | ファイル サーバ
 --- | ---
 **新しい VM を作成する** | 基本的な VM を復元ポイントからすばやく作成し、起動して実行します。<br/><br/> VM の名前を指定し、配置先のリソース グループと仮想ネットワーク (VNet) を選択して、復元された VM のストレージ アカウントを指定することができます。 新しい VM は、ソース VM と同じリージョンに作成する必要があります。
 **ディスクを復元する** | 新しい VM を作成するために使用できる VM ディスクを復元します。<br/><br/> Azure Backup は、VM のカスタマイズと作成に役立つテンプレートを提供します。 <br/><br> 復元ジョブによって生成されるテンプレートをダウンロードして使用することで、カスタム VM 設定を指定したり、VM を作成したりできます。<br/><br/> ディスクは、指定したリソース グループにコピーされます。<br/><br/> または、ディスクを既存の VM に接続することや、PowerShell を使用して新しい VM を作成することもできます。<br/><br/> このオプションは、VM をカスタマイズする場合や、バックアップの時点では存在していなかった構成設定を追加する場合や、テンプレートまたは PowerShell を使用して構成する必要がある設定を追加する場合に役立ちます。
-**既存のものを置き換える** | ディスクを復元し、それを使用して既存の VM 上のディスクを置き換えることができます。<br/><br/> 現在の VM が存在する必要があります。 削除されている場合、このオプションは使用できません。<br/><br/> ディスクを交換する前に、Azure Backup によって既存の VM のスナップショットが取得され、指定したステージングの場所に格納されます。 VM に接続されている既存のディスクが、選択した復元ポイントを使用して置き換えられます。<br/><br/> スナップショットはコンテナーにコピーされ、アイテム保持ポリシーに従って保持されます。 <br/><br/> ディスクの交換操作の後、元のディスクはリソース グループに保持されます。 元のディスクが必要ない場合は、それを手動で削除することを選択できます。 <br/><br/>[既存のものを置き換える] は、暗号化されていないマネージド VM と[カスタム イメージを使用して作成された](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) VM でサポートされます。 アンマネージド ディスクと[一般化された VM](../virtual-machines/windows/capture-image-resource.md) ではサポートされません。<br/><br/> 復元ポイントにあるディスクの数が現在の VM よりも多い (または少ない) 場合、復元ポイントのディスク数だけが VM 構成に反映されます。<br><br> 既存のものの置き換えは、[ユーザー割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) や [Key Vault](../key-vault/general/overview.md) など、リンクされたリソースを持つ VM でもサポートされます。
+**既存のものを置き換える** | ディスクを復元し、それを使用して既存の VM 上のディスクを置き換えることができます。<br/><br/> 現在の VM が存在する必要があります。 削除されている場合、このオプションは使用できません。<br/><br/> ディスクを交換する前に、Azure Backup によって既存の VM のスナップショットが取得され、指定したステージングの場所に格納されます。 VM に接続されている既存のディスクが、選択した復元ポイントを使用して置き換えられます。<br/><br/> スナップショットはコンテナーにコピーされ、アイテム保持ポリシーに従って保持されます。 <br/><br/> ディスクの交換操作の後、元のディスクはリソース グループに保持されます。 元のディスクが必要ない場合は、それを手動で削除することを選択できます。 <br/><br/>[既存のものを置き換える] は、暗号化されていないマネージド VM と[カスタム イメージを使用して作成された](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) VM でサポートされます。 アンマネージド ディスクと VM、クラシック VM、[一般化された VM](../virtual-machines/windows/capture-image-resource.md) ではサポートされません。<br/><br/> 復元ポイントにあるディスクの数が現在の VM よりも多い (または少ない) 場合、復元ポイントのディスク数だけが VM 構成に反映されます。<br><br> 既存のものの置き換えは、[ユーザー割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) や [Key Vault](../key-vault/general/overview.md) など、リンクされたリソースを持つ VM でもサポートされます。
 **リージョンをまたがる (セカンダリ リージョン)** | リージョンをまたがる復元を使用すると、Azure VM をセカンダリ リージョン ([Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md#what-are-paired-regions)) に復元できます。<br><br> セカンダリ リージョンにバックアップが実行されている場合は、選択されている回復ポイントのすべての Azure VM を復元できます。<br><br> この機能は、次のオプションで使用できます。<br> <li> [VM を作成します](./backup-azure-arm-restore-vms.md#create-a-vm) <br> <li> [ディスクを復元する](./backup-azure-arm-restore-vms.md#restore-disks) <br><br> 現時点では、[[既存のディスクの置き換え]](./backup-azure-arm-restore-vms.md#replace-existing-disks) オプションはサポートされていません。<br><br> アクセス許可<br> セカンダリ リージョンでの復元操作は、バックアップ管理者とアプリ管理者が実行できます。
 
 ## <a name="support-for-file-level-restore"></a>ファイル レベルの復元のサポート
@@ -114,6 +115,7 @@ DPM または MABS ディスクの復旧ポイント数 | ファイル サーバ
 Windows 記憶域スペースを使用して VM でファイルを復元する | 同じ VM での復元はサポートされていません。<br/><br/> 代わりに、互換性のある VM でファイルを復元します。
 LVM/RAID アレイを使用して Linux VM でファイルを復元する | 同じ VM での復元はサポートされていません。<br/><br/> 互換性のある VM で復元を行います。
 特別なネットワーク設定でファイルを復元する | 同じ VM での復元はサポートされていません。 <br/><br/> 互換性のある VM で復元を行います。
+共有ディスク、一時ドライブ、重複除去されたディスク、ウルトラ ディスク、および書き込みアクセラレータが有効なディスクからファイルを復元する | 復元はサポートされていません。 <br/><br/>「[Azure VM ストレージのサポート](#vm-storage-support)」を参照してください。
 
 ## <a name="support-for-vm-management"></a>VM 管理のサポート
 
@@ -143,11 +145,13 @@ VM サイズ |少なくとも 2 つの CPU コアと 1 GB の RAM を備えた�
 カスタム イメージ (サード パーティ) からデプロイ済みの VM をバックアップする |サポートされています。<br/><br/> VM はサポートされているオペレーティング システムを実行している必要があります。<br/><br/> VM でファイルを復元する場合、(古いまたは新しい OS ではなく) 互換性のある OS に対してのみ復元できます。
 Azure に移行済みの VM をバックアップする| サポートされています。<br/><br/> VM をバックアップするには、移行済みマシンに VM エージェントをインストールする必要があります。
 マルチ VM 整合性をバックアップする | Azure Backup では、複数の VM 間でのデータとアプリケーションの整合性は提供されません。
-[[診断設定]](../azure-monitor/platform/platform-logs-overview.md) でバックアップする  | サポートされていません。 <br/><br/> 診断設定を使った Azure VM の復元が [[新規作成]](backup-azure-arm-restore-vms.md#create-a-vm) オプションを使用してトリガーされた場合、復元は失敗します。
-ゾーン固定 VM の復元 | サポートされています (2019 年 1 月以降にバックアップされた、[可用性ゾーン](https://azure.microsoft.com/global-infrastructure/availability-zones/)が使用可能な VM の場合)。<br/><br/>現在は、VM で固定されているものと同じゾーンへの復元がサポートされています。 ただし、ゾーンが使用できない場合、復元は失敗します。
+[[診断設定]](../azure-monitor/essentials/platform-logs-overview.md) でバックアップする  | サポートされていません。 <br/><br/> 診断設定を使った Azure VM の復元が [[新規作成]](backup-azure-arm-restore-vms.md#create-a-vm) オプションを使用してトリガーされた場合、復元は失敗します。
+ゾーン固定 VM の復元 | サポートされています (2019 年 1 月以降にバックアップされた、[可用性ゾーン](https://azure.microsoft.com/global-infrastructure/availability-zones/)が使用可能な VM の場合)。<br/><br/>現在は、VM で固定されているものと同じゾーンへの復元がサポートされています。 ただし、障害が原因でゾーンが使用できない場合、復元は失敗します。
 Gen2 VM | サポートされています <br> Azure Backup では、[Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) のバックアップと復元がサポートされます。 これらの VM は、復旧ポイントから復元される場合、[Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) として復元されます。
 ロックされた Azure VM のバックアップ | アンマネージド VM では、サポートされていません。 <br><br> マネージド VM ではサポートされています。
 [スポット VM](../virtual-machines/spot-vms.md) | サポートされていません。 Azure Backup では、Spot VM が通常の Azure VM として復元されます。
+[Azure Dedicated Host](../virtual-machines/dedicated-hosts.md) | サポートされています
+スタンドアロン Azure VM の Windows 記憶域スペース構成 | サポートされています
 
 ## <a name="vm-storage-support"></a>VM ストレージのサポート
 
@@ -164,7 +168,8 @@ Azure VM のデータ ディスク数 | 最大 32 のディスクを使用した
 保護された VM でディスクのサイズを変更する | サポートされています。
 共有ストレージ| クラスターの共有ボリューム (CSV) またはスケールアウト ファイル サーバーを使用した VM のバックアップはサポートされていません。 バックアップ中に CSV ライターが失敗する可能性があります。 また、復元時に CSV ボリュームを含むディスクが起動しない可能性があります。
 [共有ディスク](../virtual-machines/disks-shared-enable.md) | サポートされていません。
-Ultra SSD ディスク | サポートされていません。 詳細については、こちらの[制限](selective-disk-backup-restore.md#limitations)を参照してください。
+Ultra SSD ディスク | サポートされていません。 詳細については、[制限](selective-disk-backup-restore.md#limitations)に関するページを参照してください。
+[一時ディスク](../virtual-machines/managed-disks-overview.md#temporary-disk) | 一時ディスクは Azure Backup ではバックアップされません。
 
 ## <a name="vm-network-support"></a>VM ネットワークのサポート
 

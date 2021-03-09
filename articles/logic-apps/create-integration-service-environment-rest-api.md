@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/30/2020
-ms.openlocfilehash: ee6c116d02a7be1682d9e8379037ef1b8c92bce8
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.date: 02/03/2021
+ms.openlocfilehash: d4500229800fa5d1743779b29927637777647e47
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967040"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550659"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Logic Apps REST API を使用して統合サービス環境 (ISE) を作成する
 
@@ -188,17 +188,28 @@ ISE の作成時に使用するプロパティを記述する要求本文の構�
 
 ## <a name="add-custom-root-certificates"></a>カスタム ルート証明書の追加
 
-ISE を、仮想ネットワーク上またはオンプレミスのカスタム サービスに接続するために使用することがよくあります。 多くの場合、これらのカスタム サービスは、エンタープライズ証明機関などのカスタムのルート証明機関によって発行された証明書、または自己署名証明書によって保護されます。 自己署名証明書の使用の詳細については、[アクセスとデータのセキュリティ保護 - 他のサービスやシステムへの発信呼び出しのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)に関するページを参照してください。 ISE がトランスポート層セキュリティ (TLS) を使用してこれらのサービスに正常に接続するためには、ISE がこれらのルート証明書にアクセスできる必要があります。 カスタムの信頼されたルート証明書で ISE を更新するには、次の HTTPS `PATCH` 要求を行います。
+ISE を、仮想ネットワーク上またはオンプレミスのカスタム サービスに接続するために使用することがよくあります。 多くの場合、これらのカスタム サービスは、エンタープライズ証明機関などのカスタムのルート証明機関によって発行された証明書、または自己署名証明書によって保護されます。 自己署名証明書の使用の詳細については、[アクセスとデータのセキュリティ保護 - 他のサービスやシステムへの発信呼び出しのアクセス](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)に関するページを参照してください。 ISE がトランスポート層セキュリティ (TLS) を使用してこれらのサービスに正常に接続するためには、ISE がこれらのルート証明書にアクセスできる必要があります。
 
-`PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
+#### <a name="considerations-for-adding-custom-root-certificates"></a>カスタム ルート証明書の追加に関する考慮事項
 
-この操作を実行する前に、次の考慮事項を確認してください。
+カスタムの信頼されたルート証明書を使用して ISE を更新する前に、次の考慮事項を確認してください。
 
 * 必ず、ルート証明書 *および* すべての中間証明書をアップロードしてください。 証明書の最大数 は 20 です。
 
 * ルート証明書のアップロードは、最新のアップロードによって前のアップロードが上書きされる置換操作です。 たとえば、ある証明書をアップロードする要求を送信した後に、別の証明書をアップロードする別の要求を送信した場合、2 番目の証明書のみが ISE によって使用されます。 両方の証明書を使用する必要がある場合は、同じ要求内に一緒に追加します。  
 
 * ルート証明書のアップロードは、時間がかかる可能性がある非同期操作です。 状態または結果を確認するには、同じ URI を使用して `GET` 要求を送信します。 応答メッセージには、アップロード操作がまだ実行中の場合に `InProgress` 値を返す `provisioningState` フィールドがあります。 `provisioningState` 値が `Succeeded` の場合、アップロード操作は完了しています。
+
+#### <a name="request-syntax"></a>要求の構文
+
+カスタムの信頼されたルート証明書を使用して ISE を更新するには、次の HTTPS PATCH 要求を [Azure Resource Manager の URL (お使いの Azure 環境によって異なる)](../azure-resource-manager/management/control-plane-and-data-plane.md#control-plane) に送信します。次に例を示します。
+
+| 環境 | Azure Resource Manager URL |
+|-------------|----------------------------|
+| Azure グローバル (マルチテナント) | `PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01` |
+| Azure Government | `PATCH https://management.usgovcloudapi.net/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01` |
+| Microsoft Azure China 21Vianet | `PATCH https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01` |
+|||
 
 #### <a name="request-body-syntax-for-adding-custom-root-certificates"></a>カスタム ルート証明書を追加するための要求本文の構文
 

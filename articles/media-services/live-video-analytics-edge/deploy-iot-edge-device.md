@@ -3,12 +3,12 @@ title: IoT Edge デバイスに Live Video Analytics をデプロイする - Azu
 description: この記事では、IoT Edge デバイスに Live Video Analytics をデプロイするときに役立つ手順を示します。 たとえば、ローカル Linux コンピューターにアクセスできる場合や、以前に Azure Media Services アカウントを作成してある場合などに、これを行います。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 38d138b43441016e06fca5003bc09c940cb23efe
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 01b98c7a1f4073adcd8dea7cbfbfc57abc3787c1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883318"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718932"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge デバイスに Live Video Analytics をデプロイする
 
@@ -23,7 +23,7 @@ ms.locfileid: "97883318"
 * [サポートされている Linux オペレーティング システム](../../iot-edge/support.md#operating-systems)のいずれかを実行している x86-64 または ARM64 デバイス
 * [所有者特権](../../role-based-access-control/built-in-roles.md#owner)がある Azure サブスクリプション
 * [IoT Hub を作成してセットアップします](../../iot-hub/iot-hub-create-through-portal.md)
-* [IoT Edge デバイスを登録します](../../iot-edge/how-to-manual-provision-symmetric-key.md)
+* [IoT Edge デバイスを登録します](../../iot-edge/how-to-register-device.md)
 * [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../../iot-edge/how-to-install-iot-edge.md)
 * [Azure Media Services アカウントを作成します](../latest/create-account-howto.md)
 
@@ -61,8 +61,8 @@ az ams streaming-endpoint start --resource-group $RESOURCE_GROUP --account-name 
 Live Video Analytics on IoT Edge モジュールを実行するには、可能な限り少ない権限でローカル ユーザー アカウントを作成します。 たとえば、Linux コンピューターで次のコマンドを実行します。
 
 ```
-sudo groupadd -g 1010 localuser
-sudo adduser --home /home/edgeuser --uid 1010 -gid 1010 edgeuser
+sudo groupadd -g 1010 localusergroup
+sudo useradd --home-dir /home/edgeuser --uid 1010 --gid 1010 lvaedgeuser
 ```
 
 ## <a name="granting-permissions-to-device-storage"></a>デバイスのストレージへのアクセス許可を付与する
@@ -72,15 +72,15 @@ sudo adduser --home /home/edgeuser --uid 1010 -gid 1010 edgeuser
 * アプリケーション構成データを格納するためのローカル フォルダーが必要です。 次のコマンドを使用して、フォルダーを作成し、ローカル ユーザー アカウントにそのフォルダーへの書き込みアクセス許可を付与します。
 
 ```
-sudo mkdir /var/lib/azuremediaservices
-sudo chown -R edgeuser /var/lib/azuremediaservices
+sudo mkdir -p /var/lib/azuremediaservices
+sudo chown -R lvaedgeuser /var/lib/azuremediaservices
 ```
 
 * また、[ビデオをローカル ファイルに記録する](event-based-video-recording-concept.md#video-recording-based-on-events-from-other-sources)ためのフォルダーも必要です。 次のコマンドを使用して、同じようにローカル フォルダーを作成します。
 
 ```
-sudo mkdir /var/media
-sudo chown -R edgeuser /var/media
+sudo mkdir -p /var/media
+sudo chown -R lvaedgeuser /var/media
 ```
 
 ## <a name="deploy-live-video-analytics-edge-module"></a>Live Video Analytics Edge モジュールをデプロイする
@@ -99,7 +99,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
 
 #### <a name="configure-a-deployment-manifest"></a>配置マニフェストを構成する
 
-配置マニフェストは、デプロイするモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 Azure portal には、配置マニフェストを作成する手順を示すウィザードがあります。 タブには次の3つの手順が構成されています:**モジュール**、**ルート**、および **レビューと作成** を行います。
+配置マニフェストは、デプロイするモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 Azure portal には、配置マニフェストを作成する手順を示すウィザードがあります。 タブには次の3つの手順が構成されています:**モジュール**、**ルート**、および **レ表示と作成** を行います。
 
 #### <a name="add-modules"></a>モジュールを追加する
 
@@ -240,7 +240,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
     
     ```
     {
-        "@apiVersion" : "1.0"
+        "@apiVersion" : "2.0"
     }
     ```
 1. ページの上部にある [メソッドの呼び出し] オプションをクリックします

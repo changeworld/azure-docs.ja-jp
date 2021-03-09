@@ -2,13 +2,13 @@
 title: Azure での BareMetal インスタンス ユニット
 description: Azure portal を通じて BareMetal インスタンス ユニットを識別および操作する方法について説明します。
 ms.topic: how-to
-ms.date: 1/4/2021
-ms.openlocfilehash: b089b45c35ff05f10ae59f8ce793645361be1e9b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 02/17/2021
+ms.openlocfilehash: 076e84473a7d067712625dd12a2d5cae42bfa91a
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733265"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100548167"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>Azure portal を使用して BareMetal インスタンスを管理する
  
@@ -17,25 +17,9 @@ ms.locfileid: "98733265"
 ## <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
 BareMetal インスタンス用の Azure リソースプロバイダーでは、現在パブリック プレビュー中である Azure portal 内インスタンスの可視性が提供されています。 既定では、BareMetal インスタンスのデプロイに使用する Azure サブスクリプションによって、*BareMetalInfrastructure* リソース プロバイダーが登録されます。 デプロイ済みの BareMetal インスタンス ユニットが表示されない場合は、リソース プロバイダーをサブスクリプションに登録する必要があります。 
 
-BareMetal インスタンス リソース プロバイダーを登録するには、2 つの方法があります。
- 
-* [Azure CLI](#azure-cli)
- 
-* [Azure Portal](#azure-portal)
- 
-### <a name="azure-cli"></a>Azure CLI
- 
-Azure CLI を使用して、BareMetal インスタンスのデプロイに使用する Azure サブスクリプションにサインインします。 BareMetalInfrastructure リソース プロバイダーを登録するには、次のようにします。
+BareMetal インスタンス リソース プロバイダーを登録するには、Azure portal または Azure CLI を使用します。
 
-```azurecli-interactive
-az provider register --namespace Microsoft.BareMetalInfrastructure
-```
- 
-詳細については、「[Azure リソース プロバイダーと種類](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)」の記事を参照してください。
- 
-### <a name="azure-portal"></a>Azure portal
- 
-Azure portal を使用して BareMetalInfrastructure リソース プロバイダーを登録するには、次のようにします。
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
  
 Azure portal でサブスクリプションを一覧表示し、BareMetal インスタンス ユニットのデプロイに使用したサブスクリプションをダブル クリックする必要があります。
  
@@ -53,12 +37,32 @@ Azure portal でサブスクリプションを一覧表示し、BareMetal イン
 >リソース プロバイダーが登録済みでない場合は、 **[登録]** を選択します。
  
 :::image type="content" source="media/baremetal-infrastructure-portal/register-resource-provider-azure-portal.png" alt-text="登録済みの BareMetal インスタンス ユニットを示すスクリーンショット":::
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI の使用を開始するには:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Azure CLI を使用して、BareMetal インスタンスのデプロイに使用する Azure サブスクリプションにサインインします。 [az provider register](/cli/azure/provider#az_provider_register) コマンドを使用して、`BareMetalInfrastructure` リソース プロバイダーを登録します。
+
+```azurecli
+az provider register --namespace Microsoft.BareMetalInfrastructure
+```
+
+[az provider list](/cli/azure/provider#az_provider_list) コマンドを使用すると、使用可能なすべてのプロバイダーを表示できます。
+
+---
+
+リソース プロバイダーの詳細については、「[Azure リソース プロバイダーと種類](../../../azure-resource-manager/management/resource-providers-and-types.md)」を参照してください。
+
 ## <a name="baremetal-instance-units-in-the-azure-portal"></a>Azure portal での BareMetal インスタンス ユニット
  
 BareMetal インスタンスのデプロイ要求を送信するときに、BareMetal インスタンスに接続している Azure サブスクリプションを指定します。 BareMetal インスタンス ユニットに対して動作するアプリケーション レイヤーのデプロイに使っているのと同じサブスクリプションを使用してください。
  
 BareMetal インスタンスのデプロイ中に、デプロイ要求で使用した Azure サブスクリプションに新しい [Azure リソース グループ](../../../azure-resource-manager/management/manage-resources-portal.md)が作成されます。 この新しいリソース グループには、特定のサブスクリプションにデプロイしたすべての BareMetal インスタンス ユニットが一覧表示されます。
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. BareMetal サブスクリプションの Azure portal で、 **[リソース グループ]** を選びます。
  
@@ -75,10 +79,27 @@ BareMetal インスタンスのデプロイ中に、デプロイ要求で使用�
    
    >[!NOTE]
    >同じ Azure サブスクリプションに複数の BareMetal インスタンス テナントをデプロイした場合は、複数の Azure リソース グループが表示されます。
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+すべての BareMetal インスタンスを表示するには、リソース グループに対して [az baremetalinstance list](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_list) コマンドを実行します。
+
+```azurecli
+az baremetalinstance list --resource-group DSM05A-T550 –output table
+```
+
+> [!TIP]
+> `--output` パラメーターはグローバル パラメーターであり、すべてのコマンドで使用できます。 **table** 値を指定すると、出力がわかりやすい形式で表示されます。 詳細については、「[Azure CLI コマンドの出力形式](/cli/azure/format-output-azure-cli)」をご覧ください。
+
+---
+
 ## <a name="view-the-attributes-of-a-single-instance"></a>単一インスタンスの属性の表示
- 
-単一ユニットの詳細を表示できます。 BareMetal インスタンスの一覧で、表示する単一インスタンスを選択します。
+
+単一ユニットの詳細を表示できます。
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+BareMetal インスタンスの一覧で、表示する単一インスタンスを選択します。
  
 :::image type="content" source="media/baremetal-infrastructure-portal/view-attributes-single-baremetal-instance.png" alt-text="単一インスタンスの BareMetal インスタンス ユニットの属性を示すスクリーンショット" lightbox="media/baremetal-infrastructure-portal/view-attributes-single-baremetal-instance.png":::
  
@@ -86,7 +107,7 @@ BareMetal インスタンスのデプロイ中に、デプロイ要求で使用�
  
 右側には、ユニットの名前、オペレーティング システム (OS)、IP アドレス、および CPU スレッドとメモリの数を示す SKU が表示されます。 また、電源の状態とハードウェアのバージョン (BareMetal インスタンス スタンプのリビジョン) も表示されます。 電源状態では、ハードウェア ユニットの電源がオンであるかオフであるかが示されます。 ただし、オペレーティング システムの詳細では、起動して実行されているかどうかは示されません。
  
-考えられるハードウェア リビジョンは次のとおりです。
+ハードウェア リビジョンは次のいずれかになります。
 
 * リビジョン 3 (Rev 3)
 
@@ -101,6 +122,18 @@ BareMetal インスタンスのデプロイ中に、デプロイ要求で使用�
  
 >[!TIP]
 >リビジョン 4.x と同じ Azure データセンターでアプリケーション レイヤーを検索するには、[最適なネットワーク待ち時間のための Azure 近接配置グループ](../../../virtual-machines/workloads/sap/sap-proximity-placement-scenarios.md)に関するページを参照してください。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+BareMetal インスタンスの詳細を表示するには、[az baremetalinstance show](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_show) コマンドを実行します。
+
+```azurecli
+az baremetalinstance show --resource-group DSM05A-T550 --instance-name orcllabdsm01
+```
+
+インスタンス名がわからない場合は、上記で説明した `az baremetalinstance list` コマンドを実行します。
+
+---
  
 ## <a name="check-activities-of-a-single-instance"></a>単一インスタンスのアクティビティを確認する
  
@@ -113,11 +146,31 @@ Azure でユニットのメタデータに加えられた変更も、アクテ�
 記録されるもう 1 つのアクティビティは、インスタンスに対する[タグ](../../../azure-resource-manager/management/tag-resources.md)の追加または削除です。
  
 ## <a name="add-and-delete-an-azure-tag-to-an-instance"></a>インスタンスの Azure タグを追加および削除する
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
  
 Azure タグは、BareMetal インスタンス ユニットに追加することも削除することもできます。 タグが割り当てられる方法は、VM へのタグの割り当てと異なりません。 VM と同様に、タグは Azure メタデータ内に存在し、BareMetal インスタンスには VM のタグと同じ制限があります。
  
 タグの削除は VM と同じように動作します。 タグの適用と削除は、BareMetal インスタンス ユニットのアクティビティ ログに一覧表示されます。
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+BareMetal インスタンスへのタグの割り当ては、仮想マシンの場合と同様に機能します。 タグは Azure メタデータ内に存在し、BareMetal インスタンスでも、VM のタグと同じ制限があります。
+
+BareMetal インスタンス ユニットにタグを追加するには、[az baremetalinstance update](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_update) コマンドを実行します。
+
+```azurecli
+az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllabdsm01 --set tags.Dept=Finance tags.Status=Normal
+```
+
+同じコマンドを使用して、タグを削除します。
+
+```azurecli
+az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllabdsm01 --remove tags.Dept
+```
+
+---
+
 ## <a name="check-properties-of-an-instance"></a>インスタンスのプロパティを確認する
  
 インスタンスを取得すると、[プロパティ] セクションに移動して、インスタンスについて収集されたデータを表示できます。 収集されるデータには、Azure 接続性、ストレージ バックエンド、ExpressRoute 回線 ID、一意のリソース ID、およびサブスクリプション ID が含まれます。 この情報は、サポート要求で、またはストレージ スナップショット構成を設定するときに使用します。
@@ -127,15 +180,29 @@ Azure タグは、BareMetal インスタンス ユニットに追加すること
 :::image type="content" source="media/baremetal-infrastructure-portal/baremetal-instance-properties.png" alt-text="BareMetal インスタンスのプロパティ設定を示すスクリーンショット" lightbox="media/baremetal-infrastructure-portal/baremetal-instance-properties.png":::
  
 ## <a name="restart-a-unit-through-the-azure-portal"></a>Azure portal を使用したユニットの再起動
- 
-OS が再起動を完了しないさまざまな状況があります。この場合、BareMetal インスタンス ユニットの電源再起動が必要になります。 ユニットの電源再起動は、Azure portal から直接行うことができます。
+
+OS が再起動を完了しないさまざまな状況があります。この場合、BareMetal インスタンス ユニットの電源再起動が必要になります。
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+ユニットの電源再起動は、Azure portal から直接行うことができます。
  
 **[再起動]** 、次に **[はい]** を選択して、ユニットの再起動を確認します。
  
 :::image type="content" source="media/baremetal-infrastructure-portal/baremetal-instance-restart.png" alt-text="BareMetal インスタンス ユニットを再起動する方法を示すスクリーンショット":::
  
 BareMetal インスタンス ユニットを再起動すると、遅延が発生します。 この遅延中、電源状態が **[開始中]** から **[開始]** に移行し、OS が完全に起動したことが示されます。 その結果、再起動後、状態が **[開始]** に切り替わったらすぐにユニットにログインすることはできません。
- 
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+BareMetal インスタンス ユニットを再起動するには、[az baremetalinstance restart](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_restart) コマンドを使用します。
+
+```azurecli
+az baremetalinstance restart --resource-group DSM05a-T550 --instance-name orcllabdsm01
+```
+
+---
+
 >[!IMPORTANT]
 >BareMetal インスタンス ユニットのメモリ容量によっては、ハードウェアとオペレーティング システムの再開と再起動に最大 1 時間かかることがあります。
  

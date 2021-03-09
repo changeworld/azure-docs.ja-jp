@@ -108,7 +108,7 @@
       href: operating-system-functionality.md
     - name: デプロイのベスト プラクティス
       href: deploy-best-practices.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: 推奨事項
           href: security-recommendations.md
@@ -187,8 +187,6 @@
               href: deploy-ci-cd-custom-container.md
             - name: ローカル Git からのデプロイ
               href: deploy-local-git.md
-            - name: GitHub アクション
-              href: deploy-github-actions.md
             - name: コンテナーの GitHub アクション
               href: deploy-container-github-action.md
             - name: テンプレートを使用したデプロイ
@@ -248,7 +246,7 @@
         - name: PremiumV3 レベルの構成
           href: app-service-configure-premium-tier.md
         - name: 複数のインスタンスへのスケールアウト
-          href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
+          href: ../azure-monitor/autoscale/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
         - name: 高密度ホスティング
           href: manage-scale-per-app.md
     - name: アプリの監視

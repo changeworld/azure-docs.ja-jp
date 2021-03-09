@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af9921510ba11ab1bd7d0664b2c4c19e042864d3
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 1a7f0d937d41ee42bf0fe678eb2f49e78882f881
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746645"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577866"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure Monitor での Azure AD のエンタイトルメント管理に関するアーカイブ ログとレポート
 
@@ -59,7 +59,7 @@ Azure AD 監査ログをアーカイブするには、Azure サブスクリプ�
 
 ## <a name="view-events-for-an-access-package"></a>アクセス パッケージのイベントを表示する  
 
-アクセス パッケージのイベントを表示するには、次のいずれかのロールで、基になる Azure Monitor ワークスペースにアクセスできる必要があります (詳細については、「[Azure Monitor のログ データとワークスペースへのアクセスを管理する](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions)」を参照してください)。 
+アクセス パッケージのイベントを表示するには、次のいずれかのロールで、基になる Azure Monitor ワークスペースにアクセスできる必要があります (詳細については、「[Azure Monitor のログ データとワークスペースへのアクセスを管理する](../../azure-monitor/logs/manage-access.md#manage-access-using-azure-permissions)」を参照してください)。 
 
 - 全体管理者  
 - セキュリティ管理者  
@@ -189,4 +189,4 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>次のステップ:
-- [Azure Monitor ブックを使用した対話型レポートの作成](../../azure-monitor/platform/workbooks-overview.md)
+- [Azure Monitor ブックを使用した対話型レポートの作成](../../azure-monitor/visualize/workbooks-overview.md)

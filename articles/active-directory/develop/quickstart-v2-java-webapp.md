@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 91aa6c96c714bff26ea7e0df5b2b6971c68edec0
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: a7337175241834cef862b4af07c7bcf7c8b845d0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178570"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103772"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する
 
@@ -38,7 +38,7 @@ ms.locfileid: "98178570"
 >
 > ### <a name="option-1-register-and-automatically-configure-your-app-and-then-download-the-code-sample"></a>オプション 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
-> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録<span class="docon docon-navigate-external x-hidden-focus"></span></a>クイックスタート エクスペリエンスに移動します。
+> 1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録</a>クイックスタート エクスペリエンスに移動します。
 > 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 > 1. ポータルのクイックスタート エクスペリエンスの案内に従って、自動的に構成されたアプリケーション コードをダウンロードします。
 >
@@ -48,7 +48,7 @@ ms.locfileid: "98178570"
 >
 > アプリケーションを登録し、それにアプリの登録情報を手動で追加するには、次の手順を実行します。
 >
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 > 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントを選択します。
 > 1. **Azure Active Directory** を検索して選択します。
 > 1. **[管理]** の **[アプリの登録]** を選択します。
@@ -68,7 +68,7 @@ ms.locfileid: "98178570"
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
 >
-> このクイックスタートのコード サンプルを使用するには、以下を行う必要があります。
+> このクイックスタートのコード サンプルを使用するには、次のことを行います。
 >
 > 1. 応答 URL として `https://localhost:8443/msal4jsample/secure/aad` および `https://localhost:8443/msal4jsample/graph/me` を追加します。
 > 1. クライアント シークレットを作成します。
@@ -161,7 +161,7 @@ IDE から Web アプリケーションを実行するには、[実行] を選�
 
 ##### <a name="running-the-project-from-tomcat"></a>Tomcat からのプロジェクトの実行
 
-Web サンプルを Tomcat にデプロイする場合は、ソース コードにいくつかの変更を加える必要があります。
+Web サンプルを Tomcat にデプロイする場合は、ソース コードにいくつかの変更を加えます。
 
 1. *ms-identity-java-webapp/pom.xml* を開きます。
     - `<name>msal-web-sample</name>` の下に `<packaging>war</packaging>` を追加します。

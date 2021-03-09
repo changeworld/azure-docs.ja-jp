@@ -5,14 +5,14 @@ services: azure-app-configuration
 author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: fd3f7dbfd824360dcba9f8a166c579e3b55527ba
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 7d343e07414dd1c3f9786c1684eb6f14d5f45e51
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932117"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718184"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Azure Pipelines を使用して App Configuration に設定をプッシュする
 
@@ -56,7 +56,7 @@ ms.locfileid: "96932117"
 
 このセクションでは、Azure DevOps ビルド パイプラインで Azure App Configuration Push タスクを使用する方法について説明します。
 
-1. **[パイプライン]**  >  **[パイプライン]** の順にクリックして、ビルド パイプラインのページに移動します。 ビルド パイプラインについては、[こちらのドキュメント](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2&view=azure-devops)を参照してください。
+1. **[パイプライン]**  >  **[パイプライン]** の順にクリックして、ビルド パイプラインのページに移動します。 ビルド パイプラインについては、[こちらのドキュメント](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2)を参照してください。
       - 新しいビルド パイプラインを作成する場合は、パイプラインの右側にある **[アシスタントを表示する]** を選択し、 **[Azure App Configuration Push]** タスクを検索します。
       - 既存のビルド パイプラインを使用する場合は、パイプラインを編集するときに **[タスク]** タブに移動し、 **[Azure App Configuration Push]** タスクを検索します。
 2. キー値を構成ファイルから App Configuration ストアにプッシュするために必要なタスクのパラメーターを構成します。 **[構成ファイルのパス]** パラメーターは、ファイル リポジトリのルートから始まります。
@@ -66,10 +66,10 @@ ms.locfileid: "96932117"
 
 このセクションでは、Azure DevOps リリース パイプラインで Azure App Configuration Push タスクを使用する方法について説明します。
 
-1. **[パイプライン]**  >  **[リリース]** の順に選択して、リリース パイプラインのページに移動します。 リリース パイプラインについては、[こちらのドキュメント](/azure/devops/pipelines/release?view=azure-devops)を参照してください。
+1. **[パイプライン]**  >  **[リリース]** の順に選択して、リリース パイプラインのページに移動します。 リリース パイプラインについては、[こちらのドキュメント](/azure/devops/pipelines/release)を参照してください。
 1. 既存のリリース パイプラインを選択します。 ない場合は、 **[+ 新規]** を選択して、新規作成します。
 1. 右上隅にある **[編集]** ボタンを選択して、リリース パイプラインを編集します。
-1. **[ステージ]** を選択して、タスクを追加します。 ステージの詳細については、[こちら](/azure/devops/pipelines/release/environments?view=azure-devops)を参照してください。
+1. **[ステージ]** を選択して、タスクを追加します。 ステージの詳細については、[こちら](/azure/devops/pipelines/release/environments)を参照してください。
 1. そのジョブの **+** を選択し、 **[デプロイ]** タブで **[Azure App Configuration Push]** タスクを追加します。
 1. キー値を構成ファイルから App Configuration ストアにプッシュするために必要なタスク内のパラメーターを構成します。 パラメーターの説明は、以下の「**パラメーター**」セクション、および各パラメーターの横にあるヒントを参照してください。
 1. リリースを保存してキューに登録します。 リリース ログに、タスクの実行中に発生したすべてのエラーが表示されます。
@@ -80,7 +80,7 @@ App Configuration Push タスクによって、次のパラメーターが使用
 
 - **Azure サブスクリプション**:利用可能な Azure サービス接続を含むドロップダウン。 利用可能な Azure サービス接続の一覧を最新の情報に更新するには、テキストボックスの右側にある **[Azure サブスクリプションの更新]** ボタンを押します。
 - **App Configuration の名前**: 選択したサブスクリプションで利用可能な Configuration ストアが読み込まれるドロップダウン。 利用可能な Configuration ストアの一覧を最新の情報に更新するには、テキストボックスの右側にある **[App Configuration 名の更新]** ボタンを押します。
-- **構成ファイルのパス**: 構成ファイルへのパス。 ビルド成果物を参照して、構成ファイルを選択することができます (テキストボックスの右側にある `...` ボタン)。
+- **構成ファイルのパス**: 構成ファイルへのパス。 ビルド成果物を参照して、構成ファイルを選択することができます (テキストボックスの右側にある `...` ボタン)。 サポートされているファイル形式は、yaml、json、properties です。
 - **区切り記号**: .json および .yml ファイルをフラット化するために使用する区切り記号。
 - **深さ**: .json および .yml ファイルをフラット化する深さ。
 - **プレフィックス**: App Configuration ストアにプッシュされる各キーの先頭に追加される文字列。

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: d4189e466d5e9b41247723165ce2a5c14c4a8dfa
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9366bb5b2bb5820245ec1b699bbf2ddda0dd9f9d
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756407"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103177"
 ---
 # <a name="single-page-application-app-registration"></a>シングルページ アプリケーション：アプリの登録
 
@@ -27,7 +27,7 @@ Microsoft ID プラットフォームにシングル ページ アプリケー�
 
 MSAL.js 1.0 ベースと MSAL.js 2.0 ベースの両方のアプリケーションで、次の手順を完了して最初のアプリ登録を作成します。
 
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
@@ -47,7 +47,7 @@ MSAL.js 2.0 以降を使用するアプリのリダイレクト URI を追加す
 1. Azure portal で、「[アプリの登録を作成する](#create-the-app-registration)」で前に作成したアプリの登録を選択します。
 1. **[管理]** で、 **[認証]**  >  **[プラットフォームを追加]** の順に選択します。
 1. **[Web アプリケーション]** の下で、 **[シングル ページ アプリケーション]** タイルを選択します。
-1. **[リダイレクト URI]** の下で、[リダイレクト URI](reply-url.md) を入力します。 **[暗黙的な許可]** の下にあるチェック ボックスをオンに **しないでください**。
+1. **[リダイレクト URI]** の下で、[リダイレクト URI](reply-url.md) を入力します。 **[暗黙的な許可およびハイブリッド フロー]** の下にあるチェック ボックスをオンに **しないでください**。
 1. **[構成]** を選択して、リダイレクト URI の追加を完了します。
 
 これで、シングル ページ アプリケーション (SPA) の登録が完了し、クライアントがリダイレクトされ、セキュリティ トークンが送信されるリダイレクト URI が構成されました。 **[プラットフォームの追加]** ウィンドウの **[シングル ページ アプリケーション]** タイルを使用してリダイレクト URI を構成すると、アプリケーションの登録は、PKCE と CORS を使用した承認コード フローをサポートするように構成されます。
@@ -62,7 +62,7 @@ MSAL.js 2.0 以降を使用するアプリのリダイレクト URI を追加す
 1. **[管理]** で、 **[認証]**  >  **[プラットフォームを追加]** の順に選択します。
 1. **[Web アプリケーション]** の下で、 **[シングル ページ アプリケーション]** タイルを選択します。
 1. **[リダイレクト URI]** の下で、[リダイレクト URI](reply-url.md) を入力します。
-1. **暗黙的なフロー** を有効にします。
+1. **[暗黙的な許可およびハイブリッド フロー]** を有効にします。
     - アプリケーションでユーザーがサインインする場合は、 **[ID トークン]** を選択します。
     - アプリケーションでも保護された Web API を呼び出す必要がある場合は、 **[アクセス トークン]** を選択します。 これらのトークンの種類の詳細については、[ID トークン](id-tokens.md)と[アクセス トークン](access-tokens.md)に関するページを参照してください。
 1. **[構成]** を選択して、リダイレクト URI の追加を完了します。

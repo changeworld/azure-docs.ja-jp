@@ -15,12 +15,12 @@ ms.custom:
 - cog-serv-seo-aug-2020
 - contperf-fy21q2
 keywords: computer vision, computer vision アプリケーション, computer vision サービス
-ms.openlocfilehash: 62d82388d975f36c422f7eb1e9feff8ce2725d54
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 69edbf558b4bd452c67478bac828bfde26be5a70
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033291"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575942"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
@@ -32,7 +32,7 @@ Computer Vision アプリケーションを作成するには、[クライアン
 
 ## <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
 
-Computer Vision には、[光学式文字認識 (OCR)](concept-recognizing-text.md) 機能が含まれています。 新しい Read API を使用して、印刷されたテキストと手書きのテキストを画像やドキュメントから抽出することができます。 最新のモデルを使用して、さまざまなサーフェスや背景でテキストを操作します。 これらには、レシート、ポスター、名刺、レター、ホワイトボードが含まれます。 2 つの OCR API では、[複数の言語](./language-support.md)で印刷されたテキストの抽出がサポートされます。 [クイックスタート](./quickstarts-sdk/client-library.md)に従って始めてください。
+Computer Vision には、[光学式文字認識 (OCR)](concept-recognizing-text.md) 機能が含まれています。 新しい Read API を使用して、印刷されたテキストと手書きのテキストを画像やドキュメントから抽出することができます。 ディープ ラーニング ベースのモデルを使用して、さまざまなサーフェスや背景のテキストを操作します。 たとえば、ビジネス ドキュメント、請求書、レシート、ポスター、名刺、レター、ホワイトボードが対象となります。 OCR API では、[複数の言語](./language-support.md)で印刷されたテキストの抽出がサポートされます。 [クイックスタート](./quickstarts-sdk/client-library.md)に従って始めてください。
 
 ## <a name="computer-vision-for-digital-asset-management"></a>デジタル資産管理用の Computer Vision
 
