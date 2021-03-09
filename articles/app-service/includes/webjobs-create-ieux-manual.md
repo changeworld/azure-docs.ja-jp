@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.title: include
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5ef61502d0b2fccc92ca606992e965b45764baa0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5687fb99c27b8b2141e0a2a817327cfbb124951a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743832"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109392"
 ---
 ## <a name="create-a-manually-triggered-webjob"></a><a name="CreateOnDemand"></a>手動でトリガーされる Web ジョブを作成する
 
@@ -28,8 +28,8 @@ ms.locfileid: "101743832"
 
     ![手動でトリガーされる Web ジョブを作成するために指定する必要がある設定を示すスクリーンショット。](../media/web-sites-create-web-jobs/addwjtriggered.png)
     
-    | 設定      | 値の例   | 説明  |
-    | ------------ | ----------------- | ------------ |
+    | 設定      | 値の例   | 
+    | ------------ | ----------------- | 
    | <abbr title="App Service アプリ内で一意の名前。 文字または数字で始まる必要があり、`-` と `_` 以外の特殊文字を使用することはできません。">名前</abbr> | myTriggeredWebJob | 
     | <abbr title="実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。">ファイルのアップロード</abbr> | ConsoleApp.zip |
     | <abbr title="種類には、継続的とトリガーがあります。">Type</abbr> | トリガー | 
