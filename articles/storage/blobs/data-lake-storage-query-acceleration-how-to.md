@@ -178,7 +178,7 @@ Update-Module -Name Az
    cd myProject
    ```
 
-2. `dotnet add package` コマンドを使用して、.NET パッケージ用 Azure Blob ストレージ クライアント ライブラリの `12.5.0-preview.6` バージョン以降をインストールします。 
+2. `dotnet add package` コマンドを使用して、.NET パッケージ用 Azure Blob Storage クライアント ライブラリの `12.5.0-preview.6` バージョン以降をインストールします。 
 
    ```console
    dotnet add package Azure.Storage.Blobs -v 12.8.0
