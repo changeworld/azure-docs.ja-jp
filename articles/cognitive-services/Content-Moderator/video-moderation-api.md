@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b389841bdba107ba27371387d4a6e5d1f009d41
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4f98eac4305333ec7225c90da2777b7e02f050a0
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919354"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853534"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>C# で好ましくない要素を検出するためにビデオ コンテンツを分析する
 
@@ -29,11 +29,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="set-up-azure-resources"></a>Azure リソースの設定
 
-Content Moderator のビデオのモデレーション機能は、Azure Media Services (AMS) の無料のパブリック プレビュー **メディア プロセッサ**として利用できます。 Azure Media Services は、ビデオ コンテンツを格納およびストリーミングするために特殊化された Azure サービスです。 
+Content Moderator のビデオのモデレーション機能は、Azure Media Services (AMS) の無料のパブリック プレビュー **メディア プロセッサ** として利用できます。 Azure Media Services は、ビデオ コンテンツを格納およびストリーミングするために特殊化された Azure サービスです。 
 
 ### <a name="create-an-azure-media-services-account"></a>Azure Media Services アカウントの作成
 
-[Azure Media Services アカウントの作成](https://docs.microsoft.com/azure/media-services/media-services-portal-create-account)の指示に従って、AMS をサブスクライブし、関連付けられた Azure ストレージ アカウントを作成します。 そのストレージ アカウントで、新しい BLOB ストレージ コンテナーを作成します。
+[Azure Media Services アカウントの作成](../../media-services/previous/media-services-portal-create-account.md)の指示に従って、AMS をサブスクライブし、関連付けられた Azure ストレージ アカウントを作成します。 そのストレージ アカウントで、新しい BLOB ストレージ コンテナーを作成します。
 
 ### <a name="create-an-azure-active-directory-application"></a>Azure Active Directory アプリケーションを作成する
 
@@ -43,7 +43,7 @@ Azure portal で新しい AMS サブスクリプションに移動し、サイ�
 
 アプリの登録を選択し、その下の **[アプリケーションの管理]** ボタンをクリックします。 **[アプリケーション ID]** フィールドの値をメモします。この値は後で必要になります。 **[設定]**  >  **[キー]** の順に選択し、新しいキーの説明 ("VideoModKey" など) を入力します。 **[保存]** をクリックして、新しいキー値に注目します。 この文字列をコピーし、それをどこか安全な場所に保存します。
 
-上記のプロセスのより詳細なチュートリアルについては、[Azure AD 認証を開始する](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad)のページを参照してください。
+上記のプロセスのより詳細なチュートリアルについては、[Azure AD 認証を開始する](../../media-services/previous/media-services-portal-get-started-with-aad.md)のページを参照してください。
 
 これを完了すると、ビデオ モデレーション メディア プロセッサを 2 通りの方法で使用できます。
 
@@ -55,7 +55,7 @@ Azure Media Services エクスプローラーは、AMS のユーザー フレン
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトの作成
 
-1. Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プロジェクトを作成し、**VideoModeration** という名前を付けます。 
+1. Visual Studio で、新しい **コンソール アプリ (.NET Framework)** プロジェクトを作成し、**VideoModeration** という名前を付けます。 
 1. ソリューションに他のプロジェクトがある場合は、これを単一のスタートアップ プロジェクトとして選択します。
 1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
     - windowsazure.mediaservices
@@ -84,7 +84,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>リソース参照を設定する
 
-次の静的フィールドを _Program.cs_ 内の **Program** クラスに追加します。 これらのフィールドには、AMS サブスクリプションに接続するために必要な情報が保持されます。 上記の手順で取得した値を使用して、これらのフィールドに入力します。 `CLIENT_ID` はご使用の Azure AD アプリの**アプリケーション ID** 値で、`CLIENT_SECRET` はそのアプリ用に作成した "VideoModKey" の値です。
+次の静的フィールドを _Program.cs_ 内の **Program** クラスに追加します。 これらのフィールドには、AMS サブスクリプションに接続するために必要な情報が保持されます。 上記の手順で取得した値を使用して、これらのフィールドに入力します。 `CLIENT_ID` はご使用の Azure AD アプリの **アプリケーション ID** 値で、`CLIENT_SECRET` はそのアプリ用に作成した "VideoModKey" の値です。
 
 ```csharp
 // declare constants and globals
@@ -197,7 +197,7 @@ static void CreateStorageContext()
 
 ### <a name="add-the-code-to-create-azure-media-assets-from-local-file-and-blob"></a>ローカル ファイルと BLOB から Azure メディア資産を作成するコードを追加する
 
-Content Moderator メディア プロセッサは、Azure Media Services プラットフォーム内の**資産**に対してジョブを実行します。
+Content Moderator メディア プロセッサは、Azure Media Services プラットフォーム内の **資産** に対してジョブを実行します。
 以下のメソッドでは、ローカル ファイルまたは関連付けられた BLOB から資産が作成されます。
 
 ```csharp
@@ -430,9 +430,5 @@ Content Moderation ジョブが完了したら、JSON 応答を分析します�
 ## <a name="next-steps"></a>次のステップ
 
 モデレーション出力から[ビデオ レビュー](video-reviews-quickstart-dotnet.md)を生成する方法について説明する。
-
-ビデオ レビューに[トランスクリプト モデレーション](video-transcript-moderation-review-tutorial-dotnet.md)を追加する。
-
-[完全なビデオおよびトランスクリプト モデレーション ソリューション](video-transcript-moderation-review-tutorial-dotnet.md)をビルドする方法に関する詳細なチュートリアルを確認する。
 
 .NET 用のこのクイック スタートや他の Content Moderator のクイックスタートの [Visual Studio ソリューションをダウンロードする](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)。

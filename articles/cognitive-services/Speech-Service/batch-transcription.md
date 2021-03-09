@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 12/23/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5be3b4ce5d89a15009f2b9b31183400890dbefb5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e48fead4d4364fd84f178388dbfb9158296e687b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918946"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659973"
 ---
 # <a name="how-to-use-batch-transcription"></a>バッチ文字起こしの使用方法
 
-バッチ文字起こしは、ストレージ内の大量のオーディオを文字起こしできる一連の REST API 操作です。 一般的な URI または Shared Access Signatures (SAS) URI を使用してオーディオ ファイルを示し、非同期に文字起こしの結果を受け取ることができます。 v3.0 API では、1 つ以上のオーディオ ファイルを文字起こしするか、またはストレージ コンテナー全体を処理することがきます。
+バッチ文字起こしは、ストレージ内の大量のオーディオを文字起こしできる一連の REST API 操作です。 一般的な URI または [Shared Access Signatures (SAS)](../../storage/common/storage-sas-overview.md) URI を使用してオーディオ ファイルを示し、非同期に文字起こしの結果を受け取ることができます。 v3.0 API では、1 つ以上のオーディオ ファイルを文字起こしするか、またはストレージ コンテナー全体を処理することがきます。
 
 バッチ文字起こし REST API を使用すると、次のメソッドを呼び出すことができます。
 
@@ -36,19 +36,20 @@ ms.locfileid: "88918946"
 
 詳細な API を確認してテストできます。これは、[Swagger ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)で入手できます。
 
-この API にはカスタム エンドポイントは必要ありません。また、同時実行要件はありません。
-
 バッチ文字起こしジョブは、ベスト エフォート ベースでスケジュールされます。
 ジョブが実行状態になるタイミングを見積もることはできませんが、通常のシステム負荷では数分以内に発生します。 いったん実行状態になると、文字起こしはオーディオのランタイム再生速度よりも速く発生します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Speech Service の他の機能と同様に、[使用開始ガイド](get-started.md)に従って [Azure portal](https://portal.azure.com) でサブスクリプション キーを作成します。
+Speech Service の他の機能と同様に、[使用開始ガイド](overview.md#try-the-speech-service-for-free)に従って [Azure portal](https://portal.azure.com) でサブスクリプション キーを作成します。
 
 >[!NOTE]
 > バッチ文字起こしを使用するには、音声サービスの Standard サブスクリプション (S0) が必要です。 Free サブスクリプション キー (F0) は機能しません。 詳細については、[価格と制限](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページを参照してください。
 
-モデルをカスタマイズする予定がある場合は、[音響のカスタマイズ](how-to-customize-acoustic-models.md)と[言語のカスタマイズ](how-to-customize-language-model.md)の手順に従ってください。 作成されたモデルをバッチ文字起こしで使用するには、モデルの場所が必要です。 モデルの詳細 (`self` プロパティ) を調べると、モデルの場所を取得できます。 デプロイされたカスタム エンドポイントは、バッチ文字起こしサービスには "*必要ありません*"。
+モデルをカスタマイズする予定がある場合は、[音響のカスタマイズ](./how-to-custom-speech-train-model.md)と[言語のカスタマイズ](./how-to-custom-speech-train-model.md)の手順に従ってください。 作成されたモデルをバッチ文字起こしで使用するには、モデルの場所が必要です。 モデルの詳細 (`self` プロパティ) を調べると、モデルの場所を取得できます。 デプロイされたカスタム エンドポイントは、バッチ文字起こしサービスには "*必要ありません*"。
+
+>[!NOTE]
+> REST API の一部として、バッチ文字起こしには[クォータと制限](speech-services-quotas-and-limits.md#batch-transcription)のセットがあり、これらはレビューすることをお勧めします。 大量のオーディオ ファイルを効率的に文字起こしするためのバッチ文字起こし機能を最大限に活用するには、要求ごとに常に複数のファイルを送信するか、または文字起こしするオーディオ ファイルを含む Blob Storage コンテナーを指定することをお勧めします。 このサービスにより、ターンアラウンド時間を短縮しながらファイルの文字起こしが同時に行われます。 1 つの要求での複数ファイルの使用は非常に単純で簡単です。「[構成](#configuration)」セクションを参照してください。 
 
 ## <a name="batch-transcription-api"></a>バッチ文字起こし API
 
@@ -65,12 +66,16 @@ Speech Service の他の機能と同様に、[使用開始ガイド](get-started
 
 ### <a name="configuration"></a>構成
 
-構成パラメーターは JSON (1 つ以上の個別ファイル) として指定されています。
+構成パラメーターは JSON として提供されます。 
+
+**1 つ以上の個別のファイルを文字起こししています。** 複数のファイルを文字起こしする場合は、1 つの要求で複数のファイルを送信することをお勧めします。 次の例では、3 つのファイルを使用しています。
 
 ```json
 {
   "contentUrls": [
-    "<URL to an audio file to transcribe>",
+    "<URL to an audio file 1 to transcribe>",
+    "<URL to an audio file 2 to transcribe>",
+    "<URL to an audio file 3 to transcribe>"
   ],
   "properties": {
     "wordLevelTimestampsEnabled": true
@@ -80,7 +85,7 @@ Speech Service の他の機能と同様に、[使用開始ガイド](get-started
 }
 ```
 
-構成パラメーターは JSON (ストレージ コンテナー全体の処理) として指定されています。
+**ストレージ コンテナー全体の処理。** コンテナー [SAS](../../storage/common/storage-sas-overview.md) には、`r` (読み取り) と `l` (一覧) のアクセス許可が含まれている必要があります。
 
 ```json
 {
@@ -93,12 +98,14 @@ Speech Service の他の機能と同様に、[使用開始ガイド](get-started
 }
 ```
 
-次の JSON では、バッチ文字起こしで使用するカスタムのトレーニング済みモデルが指定されています。
+**バッチ文字起こしでカスタム トレーニング済みのモデルを使用します。** この例では、3 つのファイルを使用しています。
 
 ```json
 {
   "contentUrls": [
-    "<URL to an audio file to transcribe>",
+    "<URL to an audio file 1 to transcribe>",
+    "<URL to an audio file 2 to transcribe>",
+    "<URL to an audio file 3 to transcribe>"
   ],
   "properties": {
     "wordLevelTimestampsEnabled": true
@@ -170,12 +177,12 @@ Speech Service の他の機能と同様に、[使用開始ガイド](get-started
       `destinationContainerUrl`
    :::column-end:::
    :::column span="2":::
-      Azure の書き込み可能なコンテナーに対する[サービス SAS](../../storage/common/storage-sas-overview.md) のオプションの URL。 結果はこのコンテナーに格納されます。 指定しない場合、Microsoft では、Microsoft が管理するストレージ コンテナーに結果を格納します。 [文字起こしの削除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)を呼び出して文字起こしを削除すると、結果データも削除されます。
+      Azure の書き込み可能なコンテナーに対する[アドホック SAS](../../storage/common/storage-sas-overview.md) のオプションの URL。 結果はこのコンテナーに格納されます。 保存されているアクセス ポリシーによる SAS は **サポートされていません**。 指定しない場合、Microsoft では、Microsoft が管理するストレージ コンテナーに結果を格納します。 [文字起こしの削除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)を呼び出して文字起こしを削除すると、結果データも削除されます。
 :::row-end:::
 
 ### <a name="storage"></a>ストレージ
 
-バッチ文字起こしでは、公開されているインターネット URI からオーディオを読み取ることができます、また、[Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) で SAS URI を使用してオーディオを読み取ったり、文字起こしを書き込んだりできます。
+バッチ文字起こしでは、公開されているインターネット URI からオーディオを読み取ることができます、また、[Azure Blob Storage](../../storage/blobs/storage-blobs-overview.md) で SAS URI を使用してオーディオを読み取ったり、文字起こしを書き込んだりできます。
 
 ## <a name="batch-transcription-result"></a>バッチ文字起こしの結果
 
@@ -201,23 +208,23 @@ Speech Service の他の機能と同様に、[使用開始ガイド](get-started
   ],
   "recognizedPhrases": [                // results for each phrase and each channel individually
     {
-      "recognitionStatus": "Success",   // recognition state, e.g. "Success", "Failure"
+      "recognitionStatus": "Success",   // recognition state, e.g. "Success", "Failure"          
+      "speaker": 1,                     // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
       "channel": 0,                     // channel number of the result
       "offset": "PT0.07S",              // offset in audio of this phrase, ISO 8601 encoded duration 
       "duration": "PT1.59S",            // audio duration of this phrase, ISO 8601 encoded duration
       "offsetInTicks": 700000.0,        // offset in audio of this phrase in ticks (1 tick is 100 nanoseconds)
       "durationInTicks": 15900000.0,    // audio duration of this phrase in ticks (1 tick is 100 nanoseconds)
-      
+
       // possible transcriptions of the current phrase with confidences
       "nBest": [
         {
           "confidence": 0.898652852,    // confidence value for the recognition of the whole phrase
-          "speaker": 1,                 // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
           "lexical": "hello world",
           "itn": "hello world",
           "maskedITN": "hello world",
           "display": "Hello world.",
-          
+
           // if wordLevelTimestampsEnabled is `true`, there will be a result for each word of the phrase, otherwise this property is not present
           "words": [
             {
@@ -238,7 +245,7 @@ Speech Service の他の機能と同様に、[使用開始ガイド](get-started
             }
           ]
         }
-      ]    
+      ]
     }
   ]
 }
@@ -323,7 +330,80 @@ Speech Service の他の機能と同様に、[使用開始ガイド](get-started
 
 サンプル コードでは、クライアントが設定されて、文字起こし要求が送信されます。 その後、状態情報がポーリングされて、文字起こしの進行状況に関する詳細が表示されます。
 
-[!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#transcriptionstatus)]
+```csharp
+// get the status of our transcriptions periodically and log results
+int completed = 0, running = 0, notStarted = 0;
+while (completed < 1)
+{
+    completed = 0; running = 0; notStarted = 0;
+
+    // get all transcriptions for the user
+    paginatedTranscriptions = null;
+    do
+    {
+        // <transcriptionstatus>
+        if (paginatedTranscriptions == null)
+        {
+            paginatedTranscriptions = await client.GetTranscriptionsAsync().ConfigureAwait(false);
+        }
+        else
+        {
+            paginatedTranscriptions = await client.GetTranscriptionsAsync(paginatedTranscriptions.NextLink).ConfigureAwait(false);
+        }
+
+        // delete all pre-existing completed transcriptions. If transcriptions are still running or not started, they will not be deleted
+        foreach (var transcription in paginatedTranscriptions.Values)
+        {
+            switch (transcription.Status)
+            {
+                case "Failed":
+                case "Succeeded":
+                    // we check to see if it was one of the transcriptions we created from this client.
+                    if (!createdTranscriptions.Contains(transcription.Self))
+                    {
+                        // not created form here, continue
+                        continue;
+                    }
+
+                    completed++;
+
+                    // if the transcription was successful, check the results
+                    if (transcription.Status == "Succeeded")
+                    {
+                        var paginatedfiles = await client.GetTranscriptionFilesAsync(transcription.Links.Files).ConfigureAwait(false);
+
+                        var resultFile = paginatedfiles.Values.FirstOrDefault(f => f.Kind == ArtifactKind.Transcription);
+                        var result = await client.GetTranscriptionResultAsync(new Uri(resultFile.Links.ContentUrl)).ConfigureAwait(false);
+                        Console.WriteLine("Transcription succeeded. Results: ");
+                        Console.WriteLine(JsonConvert.SerializeObject(result, SpeechJsonContractResolver.WriterSettings));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Transcription failed. Status: {0}", transcription.Properties.Error.Message);
+                    }
+
+                    break;
+
+                case "Running":
+                    running++;
+                    break;
+
+                case "NotStarted":
+                    notStarted++;
+                    break;
+            }
+        }
+
+        // for each transcription in the list we check the status
+        Console.WriteLine(string.Format("Transcriptions status: {0} completed, {1} running, {2} not started yet", completed, running, notStarted));
+    }
+    while (paginatedTranscriptions.NextLink != null);
+
+    // </transcriptionstatus>
+    // check again after 1 minute
+    await Task.Delay(TimeSpan.FromMinutes(1)).ConfigureAwait(false);
+}
+```
 
 前の呼び出しに関する詳細については、[Swagger ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)を参照してください。 ここに示すすべてのサンプルについては、[GitHub](https://aka.ms/csspeech/samples) の `samples/batch` サブディレクトリにアクセスしてください。
 

@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
-ms.openlocfilehash: 0f20bb5fb249ad6bac862afe2b0e8eee4b32e2a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 470857883144f4bf8c21a1921afacb7ba3f5ca00
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75666552"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788097"
 ---
 # <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure サーバーレス: Azure Logic Apps と Azure Functions を使用してクラウド ベースのアプリおよびソリューションを構築するための概要
 
@@ -35,7 +35,7 @@ Logic Apps の操作を開始するには、[最初のロジック アプリの�
 
 Azure Functions は、コード ("関数") をクラウドで手軽に実行できるサービスです。 アプリ全体や必要なインフラストラクチャを気にせずに、現在の問題に必要なコードのみを記述できます。 Functions は開発の生産性をさらに向上させることができ、またユーザーは C#、F#、Node.js、Python、PHP などの任意の開発言語を使用できます。 支払いはコードの実行時間に対してだけであり、Azure が必要に応じてスケールします。
 
-Azure Functions の使用を開始するには、最初に「[Azure Portal で初めての関数を作成する](../azure-functions/functions-create-first-azure-function.md)」を参照してください。 Functions の技術情報の詳細については、「[Azure Functions の開発者向けガイド](../azure-functions/functions-reference.md)」を参照してください。
+Azure Functions の使用を開始するには、最初に「[Azure Portal で初めての関数を作成する](../azure-functions/functions-get-started.md)」を参照してください。 Functions の技術情報の詳細については、「[Azure Functions の開発者向けガイド](../azure-functions/functions-reference.md)」を参照してください。
 
 ## <a name="how-can-i-build-and-deploy-serverless-apps-in-azure"></a>Azure でサーバーレス アプリを構築してデプロイするにはどうすればよいですか。
 

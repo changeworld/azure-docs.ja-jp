@@ -8,13 +8,13 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 08/27/2020
 ms.author: cherylmc
-ms.custom: contperfq1
-ms.openlocfilehash: 23d8d28a03217b1359462332da736f852cfaf8ea
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: c19e1156f897873defaba4cebaabb904d034ead3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015392"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032747"
 ---
 # <a name="what-is-vpn-gateway"></a>VPN ゲートウェイとは
 

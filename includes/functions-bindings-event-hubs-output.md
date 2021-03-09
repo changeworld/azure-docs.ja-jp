@@ -4,14 +4,14 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 78836ca4e51875be4237267b3bb9256cc4541fe2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11ad3bdcaa40c479c9358fd623edf0e6fdafa0d6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81791646"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002079"
 ---
-Event Hubs 出力バインドを使用して、イベント ストリームにイベントを書き込みます。 イベントを書き込むには、イベント ハブへの送信アクセス許可が必要です。
+Event Hubs 出力バインドを使用して、イベント ストリームにイベントを書き込みます。 イベントを書き込むには、Event Hub への送信アクセス許可が必要です。
 
 出力バインディングを実装する前に、必要なパッケージ参照が用意されていることを確認してください。
 
@@ -19,7 +19,7 @@ Event Hubs 出力バインドを使用して、イベント ストリームに�
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-次の例は、メソッドの戻り値を出力として使用してメッセージをイベント ハブに書き込む [C# 関数](../articles/azure-functions/functions-dotnet-class-library.md)を示しています。
+次の例は、メソッドの戻り値を出力として使用してメッセージを Event Hub に書き込む [C# 関数](../articles/azure-functions/functions-dotnet-class-library.md)を示しています。
 
 ```csharp
 [FunctionName("EventHubOutput")]
@@ -31,7 +31,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-次の例では、`IAsyncCollector` インターフェイスを使用してメッセージのバッチを送信する方法を示します。 これは、1 つのイベント ハブから送信されるメッセージを処理し、その結果を別のイベント ハブに送信する場合の一般的なシナリオです。
+次の例では、`IAsyncCollector` インターフェイスを使用してメッセージのバッチを送信する方法を示します。 これは、1 つの Event Hub から送信されるメッセージを処理し、その結果を別の Event Hub に送信する場合の一般的なシナリオです。
 
 ```csharp
 [FunctionName("EH2EH")]
@@ -53,7 +53,7 @@ public static async Task Run(
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
-次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [C# スクリプト関数](../articles/azure-functions/functions-reference-csharp.md)を示しています。 この関数では、メッセージをイベント ハブに書き込みます。
+次の例は、*function.json* ファイルの Event Hub トリガー バインドと、そのバインドが使用される [C# スクリプト関数](../articles/azure-functions/functions-reference-csharp.md)を示しています。 この関数では、メッセージを Event Hub に書き込みます。
 
 次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 最初の例は Functions 2.x 以降用で、2 つ目の例は Functions 1.x 用です。 
 
@@ -105,7 +105,7 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [JavaScript 関数](../articles/azure-functions/functions-reference-node.md)を示しています。 この関数では、メッセージをイベント ハブに書き込みます。
+次の例は、*function.json* ファイルの Event Hub トリガー バインドと、そのバインドが使用される [JavaScript 関数](../articles/azure-functions/functions-reference-node.md)を示しています。 この関数では、メッセージを Event Hub に書き込みます。
 
 次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 最初の例は Functions 2.x 以降用で、2 つ目の例は Functions 1.x 用です。 
 
@@ -157,7 +157,7 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [Python 関数](../articles/azure-functions/functions-reference-python.md)を示しています。 この関数では、メッセージをイベント ハブに書き込みます。
+次の例は、*function.json* ファイルの Event Hub トリガー バインドと、そのバインドが使用される [Python 関数](../articles/azure-functions/functions-reference-python.md)を示しています。 この関数では、メッセージを Event Hub に書き込みます。
 
 次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。
 
@@ -208,7 +208,7 @@ public String sendTime(
 
 [C# クラス ライブラリ](../articles/azure-functions/functions-dotnet-class-library.md)では、[EventHubAttribute](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubAttribute.cs) 属性を使用します。
 
-この属性のコンストラクターは、イベント ハブの名前のほか、接続文字列が含まれたアプリ設定の名前を受け取ります。 これらの設定の詳細については、「[出力 - 構成](#configuration)」を参照してください。 `EventHub` 属性の例を次に示します。
+この属性のコンストラクターは、Event Hub の名前のほか、接続文字列が含まれたアプリ設定の名前を受け取ります。 これらの設定の詳細については、「[出力 - 構成](#configuration)」を参照してください。 `EventHub` 属性の例を次に示します。
 
 ```csharp
 [FunctionName("EventHubOutput")]
@@ -235,7 +235,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 # <a name="java"></a>[Java](#tab/java)
 
-[Java 関数ランタイム ライブラリ](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)で、その値が Event Hub に公開されるパラメーター上で [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) 注釈を使用します。 パラメーターの型は `OutputBinding<T>` にする必要があります。`T` は POJO または Java の任意のネイティブ型です。
+[Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が Event Hub に公開されるパラメーター上で [EventHubOutput](/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) 注釈を使用します。 パラメーターの型は `OutputBinding<T>` にする必要があります。`T` は POJO または Java の任意のネイティブ型です。
 
 ---
 
@@ -248,9 +248,9 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 |**type** | 該当なし | "eventHub" に設定する必要があります。 |
 |**direction** | 該当なし | "out" に設定する必要があります。 このパラメーターは、Azure Portal でバインドを作成するときに自動で設定されます。 |
 |**name** | 該当なし | イベントを表す関数コードに使用される変数の名前。 |
-|**path** |**EventHubName** | Functions 1.x のみ。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 |
-|**eventHubName** |**EventHubName** | Functions 2.x 以降。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 |
-|**connection** |**Connection** | イベント ハブの名前空間への接続文字列が含まれたアプリ設定の名前。 この接続文字列をコピーするには、イベント ハブ自体ではなく、"*名前空間*" の **[接続情報]** をクリックします。 この接続文字列には、イベント ストリームにメッセージを送信するための送信アクセス許可が必要です。|
+|**path** |**EventHubName** | Functions 1.x のみ。 Event Hub の名前。 Event Hub の名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 |
+|**eventHubName** |**EventHubName** | Functions 2.x 以降。 Event Hub の名前。 Event Hub の名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 |
+|**connection** |**Connection** | Event Hub の名前空間への接続文字列が含まれたアプリ設定の名前。 この接続文字列をコピーするには、Event Hub 自体ではなく、"*名前空間*" の **[接続情報]** をクリックします。 この接続文字列には、イベント ストリームにメッセージを送信するための送信アクセス許可が必要です。|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -270,19 +270,19 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 # <a name="python"></a>[Python](#tab/python)
 
-関数からイベント ハブ メッセージを出力するには、次の 2 つのオプションがあります。
+関数から Event Hub メッセージを出力するには、次の 2 つのオプションがあります。
 
-- **戻り値**:*function.json* 内の `name` プロパティを `$return` に設定します。 この構成では、関数の戻り値はイベント ハブ メッセージとして永続化されます。
+- **戻り値**:*function.json* 内の `name` プロパティを `$return` に設定します。 この構成では、関数の戻り値は Event Hub メッセージとして永続化されます。
 
-- **命令型**:[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) 型として宣言されたパラメーターの [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) メソッドに値を渡します。 `set` に渡された値は、イベント ハブ メッセージとして永続化されます。
+- **命令型**:[Out](/python/api/azure-functions/azure.functions.out?view=azure-python) 型として宣言されたパラメーターの [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) メソッドに値を渡します。 `set` に渡された値は、Event Hub メッセージとして永続化されます。
 
 # <a name="java"></a>[Java](#tab/java)
 
-[EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) 注釈を使用して関数からイベント ハブ メッセージを出力するには、次の 2 つのオプションがあります。
+[EventHubOutput](/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) 注釈を使用して関数から Event Hub メッセージを出力するには、次の 2 つのオプションがあります。
 
 - **戻り値**:関数自体に注釈を適用すると、関数の戻り値がイベントハブ メッセージとして永続化されます。
 
-- **命令型**:メッセージ値を明示的に設定するには、[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) 型の特定のパラメーターに注釈を適用します。 ここで、`T` は POJO または任意のネイティブ Java 型です。 この構成では、`setValue` メソッドに値を渡すと、その値がイベント ハブ メッセージとして保持されます。
+- **命令型**:メッセージ値を明示的に設定するには、[`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.OutputBinding) 型の特定のパラメーターに注釈を適用します。 ここで、`T` は POJO または任意のネイティブ Java 型です。 この構成では、`setValue` メソッドに値を渡すと、その値が Event Hub メッセージとして保持されます。
 
 ---
 
@@ -290,4 +290,4 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 | バインド | リファレンス |
 |---|---|
-| イベント ハブ | [運用ガイド](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
+| Event Hub | [運用ガイド](/rest/api/eventhub/publisher-policy-operations) |

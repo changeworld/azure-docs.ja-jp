@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 08/07/2020
 ms.author: irenehua
-ms.openlocfilehash: 10a0c186bb1a0d9f974d485e7d2d1d7326bd849c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 1b7bdbdb9e1d642f2ef4a715d4993e4f449ccd0a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033157"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050699"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Azure Internal Load Balancer のアップグレード - 送信接続は不要
-[Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](https://docs.microsoft.com/azure/load-balancer/skus#skus)を参照してください。
+[Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](./skus.md#skus)を参照してください。
 
 この記事では、Basic Load Balancer と同じ構成で Standard Load Balancer を作成し、Basic Load Balancer から Standard Load Balancer にトラフィックを移行する PowerShell スクリプトについて説明します。
 
@@ -23,14 +23,14 @@ ms.locfileid: "88033157"
 
 次の処理を行う Azure PowerShell スクリプトが用意されています。
 
-* 指定した場所に Standard Internal SKU Load Balancer を作成します。 Standard Internal Load Balancer によって[送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)が提供されないことに注意してください。
+* 指定した場所に Standard Internal SKU Load Balancer を作成します。 Standard Internal Load Balancer によって[送信接続](./load-balancer-outbound-connections.md)が提供されないことに注意してください。
 * 新しく作成した Standard Load Balancer に Basic SKU Load Balancer の構成をシームレスにコピーします。
 * 新しく作成した Standard Load Balancer に Basic Load Balancer からプライベート IP をシームレスに移動します。
 * Standard Load Balancer のバックエンド プールに Basic Load Balancer のバックエンド プールから VM をシームレスに移動します。
 
 ### <a name="caveatslimitations"></a>注意事項と制限事項
 
-* スクリプトでは、送信接続の必要がない Internal Load Balancer のアップグレードのみをサポートしています。 一部の VM に[送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)が必要な場合は、この[ページ](upgrade-InternalBasic-To-PublicStandard.md)の説明をご覧ください。 
+* スクリプトでは、送信接続の必要がない Internal Load Balancer のアップグレードのみをサポートしています。 一部の VM に[送信接続](./load-balancer-outbound-connections.md)が必要な場合は、この[ページ](upgrade-InternalBasic-To-PublicStandard.md)の説明をご覧ください。 
 * Basic Load Balancer は、バックエンド VM および NIC と同じリソース グループに存在する必要があります。
 * Standard Load Balancer が別のリージョンに作成されている場合、以前のリージョンに存在する VM を新しく作成した Standard Load Balancer に関連付けることはできません。 この制限を回避するには、必ず新しいリージョンに新しい VM を作成してください。
 * Load Balancer にフロントエンド IP 構成またはバックエンド プールがない場合は、スクリプトの実行中にエラーが発生する可能性があります。 それらが空でないことを確認してください。
@@ -48,7 +48,7 @@ ms.locfileid: "88033157"
 
 ## <a name="download-the-script"></a>スクリプトのダウンロード
 
-[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureILBUpgrade/4.0)から移行スクリプトをダウンロードします。
+[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureILBUpgrade/5.0)から移行スクリプトをダウンロードします。
 ## <a name="use-the-script"></a>スクリプトの使用
 
 ローカルの PowerShell 環境のセットアップと設定に応じて、次の 2 つのオプションがあります。
@@ -101,10 +101,6 @@ Azure Az モジュールがインストールされていて、それらをア�
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell スクリプトでは、Basic Load Balancer から新しく作成した Standard Load Balancer にトラフィックを切り替えることもできますか?
 
 はい、トラフィックは移行されます。 トラフィックを個人的に移行する場合は、VM を移動しない[このスクリプト](https://www.powershellgallery.com/packages/AzureILBUpgrade/1.0)を使用します。
-
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>このスクリプトの使用中に問題が発生しました。 どこに問い合わせればよいですか?
-  
-slbupgradesupport@microsoft.com 宛に電子メールを送信する方法と、Azure サポートでサポート ケースを開く方法があります (両方利用できます)。
 
 ## <a name="next-steps"></a>次のステップ
 

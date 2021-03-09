@@ -4,12 +4,12 @@ description: この記事では、Azure Monitor を使用して Azure Relay の�
 services: service-bus-relay
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5fcc0f820983da388d808cadf8ce64a555e8ef0a
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 7f91ac0aec46d0fc24901585156dceabb18640c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532885"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586822"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Monitor の Azure リレー メトリック 
 Azure リレー メトリックによって、Azure サブスクリプション内のリソースの状態が提供されます。 豊富な一連のメトリック データにより、名前空間レベルだけでなくエンティティ レベルでも、リレー リソースの全体的な正常性を評価できます。 これらの統計は Azure リレーの状態の監視に役立つため、重要になる場合があります。 メトリックはまた、Azure サポートに問い合わせることなく、根本的な問題をトラブルシューティングするのにも役立ちます。
@@ -21,9 +21,9 @@ Azure Monitor には、さまざまな Azure サービスにわたって監視�
 
 ## <a name="access-metrics"></a>メトリックにアクセスする
 
-Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure Portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Operation Management Suite や Event Hubs などの分析ソリューションを使用できます。 詳細については、「[Azure Monitor によって収集された監視データ](../azure-monitor/platform/data-platform.md)」をご覧ください。
+Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure Portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Operation Management Suite や Event Hubs などの分析ソリューションを使用できます。 詳細については、「[Azure Monitor によって収集された監視データ](../azure-monitor/data-platform.md)」をご覧ください。
 
-メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../azure-monitor/platform/diagnostic-settings.md)で構成されます。
+メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../azure-monitor/essentials/diagnostic-settings.md)で構成されます。
 
 ## <a name="access-metrics-in-the-portal"></a>ポータルでメトリックにアクセスする
 
@@ -31,7 +31,7 @@ Azure Monitor では、複数の方法でメトリックにアクセスできま
 
 !["[モニター] - [メトリック] (プレビュー)" というタイトルのページに、過去 30 日間のメモリ使用量の折れ線グラフが表示されます。][1]
 
-また、名前空間経由でメトリックに直接アクセスすることもできます。 それを行うには、名前空間を選択してから、[**Metrics **] (**メトリック **) をクリックします。 
+また、名前空間経由でメトリックに直接アクセスすることもできます。 それを行うには、名前空間を選択してから、 **[Metrics]\(メトリック\)** をクリックします。 
 
 ディメンションをサポートするメトリックについては、目的のディメンション値でフィルター処理する必要があります。
 

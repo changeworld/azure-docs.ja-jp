@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の TAN
 description: Azure Cosmos DB の SQL システム関数 TAN について説明します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9d7187ba116067445e835769fc33aa70677ef80b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eeff0f8a98333da4b143bef88bc7f8d5fe73fecb
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78301983"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340798"
 ---
 # <a name="tan-azure-cosmos-db"></a>TAN (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  式で指定されたラジアン単位の角度のタンジェントを返します。  
   
 ## <a name="syntax"></a>構文

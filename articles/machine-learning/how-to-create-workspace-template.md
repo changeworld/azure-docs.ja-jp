@@ -6,20 +6,20 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
+ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/27/2020
-ms.openlocfilehash: 1d405aff5233f38aee2031220fd119693da64abb
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.date: 09/30/2020
+ms.openlocfilehash: 06614fc33910eda44bf6bf8369c4ad4b3c0b25fe
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892866"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986024"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成します。
 
-[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 <br>
 
 この記事では、Azure Resource Manager テンプレートを使用して Azure Machine Learning ワークスペースを作成するさまざまな方法について説明します。 Resource Manager テンプレートを使用すると、1 つの調整された操作でリソースを簡単に作成できます。 テンプレートは、デプロイに必要なリソースを定義する JSON ドキュメントです。 デプロイ パラメーターを指定することもできます。 パラメーターは、テンプレートの使用時に入力値を指定するために使用します。
@@ -30,7 +30,18 @@ ms.locfileid: "88892866"
 
 * **Azure サブスクリプション**。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 
-* CLI からテンプレートを使用するには、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) または [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) が必要です。
+* CLI からテンプレートを使用するには、[Azure PowerShell](/powershell/azure/?view=azps-1.2.0) または [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) が必要です。
+
+* 一部のシナリオでは、サポート チケットを開く必要があります。 そのシナリオを次に示します。
+
+    * __カスタマーマネージド キーを使用する Private Link 対応ワークスペース__
+    * __仮想ネットワークの背後にあるワークスペースの Azure Container Registry__
+
+    詳細については、[クォータの管理と増加](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)に関するページを参照してください。
+
+## <a name="limitations"></a>制限事項
+
+[!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
 
 ## <a name="workspace-resource-manager-template"></a>ワークスペースの Resource Manager テンプレート
 
@@ -46,7 +57,7 @@ ms.locfileid: "88892866"
 
 リソース グループは、サービスを保持するコンテナーです。 Azure Machine Learning ワークスペースにはさまざまなサービスが必要です。
 
-サンプルのテンプレートには、次に示す 2 つの**必須**パラメーターがあります。
+サンプルのテンプレートには、次に示す 2 つの **必須** パラメーターがあります。
 
 * **location** は、リソースが作成される場所です。
 
@@ -62,7 +73,7 @@ ms.locfileid: "88892866"
 > [!TIP]
 > このドキュメントに関連付けられているテンプレートでは新しい Azure コンテナー レジストリが作成されますが、コンテナー レジストリを作成せずに新しいワークスペースを作成することもできます。 コンテナー レジストリが必要な操作を実行すると、それが 1 つ作成されます。 たとえば、モデルのトレーニングやデプロイなどです。
 >
-> 新しいコンテナー レジストリまたはストレージ アカウントを作成するのではなく、Azure Resource Manager テンプレートで既存のものを参照することもできます。 ただし、使用するコンテナー レジストリでは、__管理者アカウント__ を有効にする必要があります。 管理者アカウントを有効にする方法の詳細については、「[管理者アカウント](/azure/container-registry/container-registry-authentication#admin-account)」を参照してください。
+> 新しいコンテナー レジストリまたはストレージ アカウントを作成するのではなく、Azure Resource Manager テンプレートで既存のものを参照することもできます。 これを行う場合、[マネージド ID を使用するか](how-to-use-managed-identities.md) (プレビュー)、コンテナー レジストリの[管理者アカウントを有効にする](../container-registry/container-registry-authentication.md#admin-account)必要があります。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
@@ -70,7 +81,7 @@ ms.locfileid: "88892866"
 
 * [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)
-* [Microsoft.MachineLearningServices resource types (Microsoft.MachineLearningServices リソースの種類)](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
+* [Microsoft.MachineLearningServices resource types (Microsoft.MachineLearningServices リソースの種類)](/azure/templates/microsoft.machinelearningservices/allversions)
 
 ## <a name="deploy-template"></a>テンプレートのデプロイ
 
@@ -120,7 +131,7 @@ New-AzResourceGroupDeployment `
 既定では、テンプレートの一部として作成されるすべてのリソースは新規です。 ただし、既存のリソースを使用することもできます。 テンプレートに追加のパラメーターを指定することで、既存のリソースを使用できます。 たとえば、既存のストレージ アカウントを使用する場合は、**storageAccountOption** の値を **existing** に設定し、**storageAccountName** パラメーターにストレージ アカウントの名前を指定します。
 
 > [!IMPORTANT]
-> 既存の Azure Storage アカウントを使用する場合は、Premium アカウント (Premium_LRS と Premium_GRS) にすることはできません。 また、階層的名前空間 (Azure Data Lake Storage Gen2 で使用されます) を含めることもできません。 ワークスペースの既定のストレージ アカウントでは、Premium Storage と階層型名前空間はサポートされていません。 ワークスペースの_既定の_ストレージ アカウントでは、Premium Storage と階層型名前空間はサポートされていません。 "_既定以外_" のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
+> 既存の Azure Storage アカウントを使用する場合は、Premium アカウント (Premium_LRS と Premium_GRS) にすることはできません。 また、階層的名前空間 (Azure Data Lake Storage Gen2 で使用されます) を含めることもできません。 ワークスペースの既定のストレージ アカウントでは、Premium Storage と階層型名前空間はサポートされていません。 ワークスペースの _既定の_ ストレージ アカウントでは、Premium Storage と階層型名前空間はサポートされていません。 "_既定以外_" のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -154,14 +165,16 @@ New-AzResourceGroupDeployment `
 
 次のテンプレート例では、3 つの設定を使用してワークスペースを作成する方法を示します。
 
-* ワークスペースの高機密性の設定を有効にする
-* ワークスペースの暗号化を有効にする
-* 既存の Azure Key Vault を使用して、カスタマー マネージド キーを取得する
+* ワークスペースの高機密性の設定を有効にする。 これにより、新しい Cosmos DB インスタンスが作成されます。
+* ワークスペースの暗号化を有効にする。
+* 既存の Azure Key Vault を使用して、カスタマー マネージド キーを取得する。 カスタマー マネージド キーは、ワークスペースの新しい Cosmos DB インスタンスを作成するために使用されます。
+
+    [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 > [!IMPORTANT]
 > ワークスペースが作成されたら、機密データ、暗号化、Key Vault ID、またはキー識別子の設定を変更することはできません。 これらの値を変更するには、新しい値を使用して新しいワークスペースを作成する必要があります。
 
-詳細については、「[保存時の暗号化](concept-enterprise-security.md#encryption-at-rest)」を参照してください。
+詳細については、「[保存時の暗号化](concept-data-encryption.md#encryption-at-rest)」を参照してください。
 
 > [!IMPORTANT]
 > このテンプレートを使用する前に、サブスクリプションで満たしている必要がある特定の要件がいくつかあります。
@@ -243,7 +256,7 @@ New-AzResourceGroupDeployment `
 ```
 ---
 
-カスタマー マネージド キーを使用する場合、Azure Machine Learning により、Cosmos DB インスタンスを含むセカンダリ リソース グループが作成されます。 詳細については、「[保存時の暗号化 - Cosmos DB](concept-enterprise-security.md#encryption-at-rest)」を参照してください。
+カスタマー マネージド キーを使用する場合、Azure Machine Learning により、Cosmos DB インスタンスを含むセカンダリ リソース グループが作成されます。 詳細については、「[保存時の暗号化 - Cosmos DB](concept-data-encryption.md#encryption-at-rest)」を参照してください。
 
 データに対して提供できる追加の構成は、**confidential_data** パラメーターを **true** に設定することです。 これにより、次の処理が行われます。
 
@@ -255,7 +268,7 @@ New-AzResourceGroupDeployment `
     > [!IMPORTANT]
     > ワークスペースが作成されたら、機密データ、暗号化、Key Vault ID、またはキー識別子の設定を変更することはできません。 これらの値を変更するには、新しい値を使用して新しいワークスペースを作成する必要があります。
 
-  詳細については、「[保存時の暗号化](concept-enterprise-security.md#encryption-at-rest)」を参照してください。
+  詳細については、「[保存時の暗号化](concept-data-encryption.md#encryption-at-rest)」を参照してください。
 
 ## <a name="deploy-workspace-behind-a-virtual-network"></a>仮想ネットワークの背後にワークスペースをデプロイする
 
@@ -272,7 +285,7 @@ New-AzResourceGroupDeployment `
 関連付けられたリソースが仮想ネットワークの背後にない場合、**privateEndpointType** パラメーターを `AutoAproval` または `ManualApproval` に設定すると、ワークスペースをプライベート エンドポイントの背後にデプロイできます。 これは、新規および既存のワークスペースの両方に対して行うことができます。 既存のワークスペースを更新する場合は、テンプレート パラメーターに既存のワークスペースの情報を入力します。
 
 > [!IMPORTANT]
-> Azure Private Link を使用した Azure Machine Learning ワークスペース用プライベート エンドポイントの作成は、現在パブリック プレビュー段階です。 この機能は**米国東部**と**米国西部 2** リージョン でのみ利用できます。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> Azure Government リージョンまたは Azure China 21Vianet リージョンでは、プライベート リンクで Azure Machine Learning ワークスペースを使用することはできません。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -415,7 +428,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="use-an-existing-virtual-network--resources"></a>既存の仮想ネットワークとリソースを使用する
 
-既存の関連付けられたリソースと共にワークスペースをデプロイするには、サブネット パラメーターと共に **vnetOption** パラメーターを **existing** に設定する必要があります。 ただし、デプロイの**前に**、各リソースの仮想ネットワークにサービス エンドポイントを作成する必要があります。 新しい仮想ネットワークのデプロイと同様に、1 つまたはすべてのリソースを仮想ネットワークの背後にデプロイできます。
+既存の関連付けられたリソースと共にワークスペースをデプロイするには、サブネット パラメーターと共に **vnetOption** パラメーターを **existing** に設定する必要があります。 ただし、デプロイの **前に**、各リソースの仮想ネットワークにサービス エンドポイントを作成する必要があります。 新しい仮想ネットワークのデプロイと同様に、1 つまたはすべてのリソースを仮想ネットワークの背後にデプロイできます。
 
 > [!IMPORTANT]
 > サブネットには `Microsoft.Storage` サービス エンドポイントが必要です。
@@ -532,7 +545,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
-1. 「[カスタム テンプレートからリソースをデプロイする](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)」の手順に従います。 __[テンプレートの選択]__ 画面に到達したら、**201-machine-learning-advanced** テンプレートをドロップダウンから選択します。
+1. 「[カスタム テンプレートからリソースをデプロイする](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)」の手順に従います。 __[テンプレートの選択]__ 画面に到達したら、**201-machine-learning-advanced** テンプレートをドロップダウンから選択します。
 1. テンプレートを使用するには、 __[テンプレートの選択]__ を選択します。 デプロイのシナリオに応じて、以下の必須情報とその他のパラメーターを指定します。
 
    * サブスクリプション:これらのリソースに使用する Azure サブスクリプションを選択します。
@@ -567,11 +580,11 @@ New-AzResourceGroupDeployment `
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
-    テンプレートの `accessPolicies` セクションの使用方法の詳細については、[AccessPolicyEntry オブジェクトのリファレンス](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)を参照してください。
+    テンプレートの `accessPolicies` セクションの使用方法の詳細については、[AccessPolicyEntry オブジェクトのリファレンス](/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)を参照してください。
 
 * Key Vault リソースが既に存在しているかどうかを確認します。 存在している場合は、テンプレートを使ってそれを再作成しないでください。 たとえば、新規作成するのではなく、既存の Key Vault を使用するには、テンプレートに次の変更を加えます。
 
-    * 既存の Key Vault リソースの ID を受け入れるパラメーターを**追加**します。
+    * 既存の Key Vault リソースの ID を受け入れるパラメーターを **追加** します。
 
         ```json
         "keyVaultId":{
@@ -582,7 +595,7 @@ New-AzResourceGroupDeployment `
         }
       ```
 
-    * Key Vault リソースを作成するセクションを**削除**します。
+    * Key Vault リソースを作成するセクションを **削除** します。
 
         ```json
         {
@@ -602,7 +615,7 @@ New-AzResourceGroupDeployment `
         },
         ```
 
-    * ワークスペースの `dependsOn` セクションから `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` の行を**削除**します。 また、`keyVaultId` パラメーターを参照するために、ワークスペースの `properties` セクションの `keyVault` エントリを**変更**します。
+    * ワークスペースの `dependsOn` セクションから `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` の行を **削除** します。 また、`keyVaultId` パラメーターを参照するために、ワークスペースの `properties` セクションの `keyVault` エントリを **変更** します。
 
         ```json
         {

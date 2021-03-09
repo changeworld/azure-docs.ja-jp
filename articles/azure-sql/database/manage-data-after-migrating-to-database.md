@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 4c6904cfa2a7a3c3281da9a930fd59e8d511ac89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b34ac24cb26bf5db4a49a5ad5b531deb252f4695
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249280"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446112"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>クラウドの新しい DBA – 移行後の Azure SQL Database の管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -102,19 +102,21 @@ SQL Database ではセキュリティとプライバシーが非常に重視さ�
 SQL Database では 2 種類の認証方法が提供されています。
 
 - [Azure Active Directory 認証](authentication-aad-overview.md)
-- [SQL 認証](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
+- [SQL 認証](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-従来の Windows 認証はサポートされていません。 Azure Active Directory (Azure AD) は、ID とアクセスの集中管理サービスです。 組織内のすべての担当者にシングル サインオン (SSO) アクセスを非常に簡単に提供できます。 つまり、認証が簡単なように、資格情報はすべての Azure サービスで共有されます。 Azure AD は [Azure Multi-Factor Authentication](authentication-mfa-ssms-overview.md) をサポートします。[数クリック](../../active-directory/hybrid/how-to-connect-install-express.md)で Azure AD を Windows Server Active Directory と統合できます。 SQL 認証はこれまでとまったく同じように動作します。 ユーザー名とパスワードを提供すると、特定のサーバーの任意のデータベースでユーザーを認証できます。 このサービスを使用すると、SQL Database および SQL Data Warehouse で、Azure AD ドメイン内において Multi-Factor Authentication とゲスト ユーザー アカウントを提供できます。 既に Active Directory をオンプレミスで使用している場合、そのディレクトリを Azure Active Directory とフェデレーションして Azure へ拡張できます。
+従来の Windows 認証はサポートされていません。 Azure Active Directory (Azure AD) は、ID とアクセスの集中管理サービスです。 組織内のすべての担当者にシングル サインオン (SSO) アクセスを非常に簡単に提供できます。 つまり、認証が簡単なように、資格情報はすべての Azure サービスで共有されます。 
 
-|**ユーザーの条件**|**SQL Database/SQL Data Warehouse**|
+Azure AD は [Azure AD Multi-Factor Authentication](authentication-mfa-ssms-overview.md) をサポートします。[数クリック](../../active-directory/hybrid/how-to-connect-install-express.md)で Azure AD を Windows Server Active Directory と統合できます。 SQL 認証はこれまでとまったく同じように動作します。 ユーザー名とパスワードを提供すると、特定のサーバーの任意のデータベースでユーザーを認証できます。 これを使用すると、SQL Database および Azure Synapse Analytics で、Azure AD ドメイン内において Multi-Factor Authentication とゲスト ユーザー アカウントを提供できます。 既に Active Directory をオンプレミスで使用している場合、そのディレクトリを Azure Active Directory とフェデレーションして Azure へ拡張できます。
+
+|**ユーザーの条件**|**SQL Database / Azure Synapse Analytics**|
 |---|---|
 |Azure で Azure Active Directory (Azure AD) を使用しない|[SQL 認証](security-overview.md)を使用します。|
 |オンプレミスの SQL Server で AD を使用している|[AD と Azure AD をフェデレーションして](../../active-directory/hybrid/whatis-hybrid-identity.md)、Azure AD 認証を使用します。 これにより、シングル サインオンを使用できます。|
 |Multi-Factor Authentication を適用する必要がある|[Microsoft 条件付きアクセス](conditional-access-configure.md)で Multi-Factor Authentication をポリシーとして必須にして、[ サポート付きの Azure AD ユニバーサル認証](authentication-mfa-ssms-overview.md)を使用します。|
-|Microsoft アカウント (live.com、outlook.com) または他のドメイン (gmail.com など) のゲスト アカウントを持っている|SQL Database/Data Warehouse で、[Azure AD B2B コラボレーション](../../active-directory/b2b/what-is-b2b.md)を利用する [Azure AD ユニバーサル認証](authentication-mfa-ssms-overview.md)を使用します。|
+|Microsoft アカウント (live.com、outlook.com) または他のドメイン (gmail.com など) のゲスト アカウントを持っている|SQL Database/Data Warehouse で、[Azure AD B2B コラボレーション](../../active-directory/external-identities/what-is-b2b.md)を利用する [Azure AD ユニバーサル認証](authentication-mfa-ssms-overview.md)を使用します。|
 |フェデレーション ドメインから Azure AD の資格情報を使用して Windows にログオンしている|[Azure AD 統合認証](authentication-aad-configure.md)を使用します。|
 |Azure にフェデレーションされていないドメインから資格情報を使用して Windows にログオンしている|[Azure AD 統合認証](authentication-aad-configure.md)を使用します。|
-|SQL Database または SQL Data Warehouse への接続が必要な中間層サービスを使用している|[Azure AD 統合認証](authentication-aad-configure.md)を使用します。|
+|SQL Database または Azure Synapse Analytics への接続が必要な中間層サービスを使用している|[Azure AD 統合認証](authentication-aad-configure.md)を使用します。|
 |||
 
 ### <a name="how-do-i-limit-or-control-connectivity-access-to-my-database"></a>データベースへの接続アクセスを制限または制御する方法

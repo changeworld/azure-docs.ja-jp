@@ -8,12 +8,12 @@ metadata:
   author: rboucher
   ms.author: robb
   ms.date: 10/16/2019
-  ms.openlocfilehash: e7cf35654bec7302423a62e66a39651ad1745651
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: ae106903af027630968adf2f87962d1ef20e5de8
+  ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "75768658"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102178866"
 landingContent:
 - title: Azure Advisor について
   linkLists:
@@ -25,18 +25,18 @@ landingContent:
     links:
     - text: Azure Advisor のビデオ
       url: https://azure.microsoft.com/resources/videos/index/?services=advisor
-- title: はじめに
+- title: 作業開始
   linkLists:
   - linkListType: get-started
     links:
     - text: Azure Advisor の使用を開始する
       url: advisor-get-started.md
-- title: リファレンス
+- title: 関連項目
   linkLists:
   - linkListType: reference
     links:
     - text: 共通言語基盤 (CLI)
-      url: /cli/azure/advisor?view=azure-cli-latest
+      url: /cli/azure/advisor
     - text: PowerShell
       url: /powershell/module/az.advisor/?view=azps-1.2.0
     - text: REST API

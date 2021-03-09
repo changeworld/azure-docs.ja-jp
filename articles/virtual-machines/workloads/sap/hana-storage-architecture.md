@@ -6,25 +6,25 @@ documentationcenter: ''
 author: msjuergent
 manager: bburns
 editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aff1c8f68e3950b49a0a1bd8e99020b77e0f2019
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cff0a674e4f07dd38eaab2ffdbafe1f39e44e6ee
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677306"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676843"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA (Large Instances) のストレージ アーキテクチャ
 
 SAP HANA on Azure (L インスタンス) のストレージ レイアウトは、SAP 推奨ガイドラインに従い、クラシック デプロイ モデルで SAP HANA によって構成されます。 これらのガイドラインは、ホワイト ペーパー「[SAP HANA Storage Requirements (SAP HANA ストレージ要件)](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)」に記載されています。
 
-Type I クラスの HANA L インスタンスは、ストレージ ボリュームの 4 倍のメモリ ボリュームを備えています。 Type II クラスの HANA L インスタンス ユニットの場合、ストレージが 4 倍以上になることはありません。 これらのユニットは、HANA トランザクション ログ バックアップを保存するためのボリュームを備えています。 詳細については、[SAP HANA on Azure (L インスタンス) のインストールと構成](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。
+Type I クラスの HANA L インスタンスは、ストレージ ボリュームの 4 倍のメモリ ボリュームを備えています。 Type II クラスの HANA L インスタンス ユニットの場合、ストレージが 4 倍以上になることはありません。 これらのユニットは、HANA トランザクション ログ バックアップを保存するためのボリュームを備えています。 詳細については、[SAP HANA on Azure (L インスタンス) のインストールと構成](hana-installation.md)に関する記事をご覧ください。
 
 記憶域割り当てに関しては、次の表を参照してください。 この表は、各種 HANA L インスタンス ユニットで提供されるさまざまなボリュームのおおよその容量を示しています。
 
@@ -93,7 +93,7 @@ HANA L インスタンス SKU を分割する場合、考えられる各分割�
 
 ストレージを増やすことが必要な場合があります。 ストレージを追加するには、1 TB 単位で追加のストレージを購入します。 この追加のストレージは、ボリュームとして追加できます。 また、1 つ以上の既存のボリュームを拡張するために使用することもできます。 もともとデプロイされているボリュームのサイズ (上記の表に記載) を減らすことはできません。 また、ボリュームの名前やマウント名を変更することもできません。 上記のストレージ ボリュームは、NFS4 ボリュームとして HANA L インスタンス ユニットに接続されます。
 
-バックアップ/復元とディザスター リカバリーのために、ストレージ スナップショットをご利用いただけます。 詳細については、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
+バックアップ/復元とディザスター リカバリーのために、ストレージ スナップショットをご利用いただけます。 詳細については、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)」をご覧ください。
 
 ご使用のシナリオの記憶域レイアウトの詳細については、[HLI でサポートされるシナリオ](hana-supported-scenario.md)に関する記事を参照してください。
 

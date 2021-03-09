@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 1e08968034134e2b9ab3b8064387d18663d5c866
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: eb558d967ad657d14158684fba92b13979ea5fe2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "71200145"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281590"
 ---
 # <a name="opc-vault-architecture"></a>OPC Vault のアーキテクチャ
+
+> [!IMPORTANT]
+> この記事は更新を行いますが、最新の内容については、「[Azure Industrial IoT](https://azure.github.io/Industrial-IoT/)」 (Azure 産業用 IoT) を参照してください。
 
 この記事では、OPC Vault マイクロサービスおよび OPC Vault IoT Edge モジュールの概要を示します。
 
@@ -33,10 +36,10 @@ Azure Industrial IoT の OPC UA 証明書管理サービスを利用すると、
 
 OPC Vault マイクロサービスは、Azure Key Vault の署名権限を持つセキュリティ管理者や承認者が要求を承認または拒否する、ロールベースのワークフローをサポートするように設計されています。
 
-既存の OPC UA ソリューションとの互換性のために、サービスには OPC Vault マイクロサービスによって支援されるエッジ モジュールのサポートが含まれています。 これには、仕様のパート 12 に従って証明書と信頼リストを配布するために、**OPC UA Global Discovery Server および Certificate Management**  インターフェイスが実装されています。 
+既存の OPC UA ソリューションとの互換性のために、サービスには OPC Vault マイクロサービスによって支援されるエッジ モジュールのサポートが含まれています。 これには、仕様のパート 12 に従って証明書と信頼リストを配布するために、**OPC UA Global Discovery Server および Certificate Management ** インターフェイスが実装されています。 
 
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>アーキテクチャ
 
 アーキテクチャは OPC Vault マイクロサービスをベースとしており、ファクトリ ネットワーク用に OPC Vault IoT Edge モジュール、ワークフローを制御するための Web サンプル UX が付属しています。
 
@@ -81,7 +84,7 @@ OPC Vault マイクロサービスは、OPC UA アプリケーション用の会
 ## <a name="opc-vault-iot-edge-module"></a>OPC Vault IoT Edge モジュール
 ファクトリ ネットワークの Global Discovery Server をサポートするために、エッジに OPC Vault モジュールをデプロイできます。 それをローカルの .NET Core アプリケーションとして実行するか、または、Docker コンテナー内で開始します。 現在の OPC UA .NET Standard スタックでは、Auth2 認証がサポートされていないため、OPC Vault エッジ モジュールの機能は閲覧者ロールに制限されていることに注意してください。 OPC UA GDS の標準インターフェイスを使用して、ユーザーをエッジ モジュールからマイクロサービスに借用することはできません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ここでは、OPC Vault アーキテクチャについて学習しました。以下に進むことができます。
 

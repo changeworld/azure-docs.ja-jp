@@ -1,27 +1,13 @@
 - name: Translator のドキュメント
   href: index.yml
-- name: 'Translator'
+- name: '[Translator]'
   items:
-    - name: 概要
-      items:
-        - name: Translator とは
-          href: translator-info-overview.md
-        - name: 言語サポート
-          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
+    - name: Translator とは
+      href: translator-info-overview.md
     - name: クイックスタート
-      items:
-        - name: テキストを翻訳する
-          href: quickstart-translate.md
-        - name: テキストを表記変換する
-          href: quickstart-transliterate.md
-        - name: 言語を検出する
-          href: quickstart-detect.md
-        - name: 単語の訳を検索する
-          href: quickstart-dictionary.md
-        - name: サポートされている言語を取得する
-          href: quickstart-languages.md
-        - name: 文の長さを決定する
-          href: quickstart-sentences.md
+      href: quickstart-translator.md
+    - name: 言語サポート
+      href: language-support.md
     - name: チュートリアル
       items:
         - name: Translator の WPF アプリの作成 (C#)
@@ -36,8 +22,8 @@
           href: character-counts.md
     - name: 操作方法ガイド
       items:
-        - name: Translator にサインアップする
-          href: translator-text-how-to-signup.md
+        - name: Translator リソースを作成する
+          href: ./translator-how-to-signup.md
         - name: V3 Text API に移行する
           href: migrate-to-v3.md
         - name: 不適切な表現のフィルターを追加する
@@ -70,34 +56,26 @@
       items:
         - name: v3 Translator リファレンス
           href: reference/v3-0-reference.md
-          items:
-            - name: Languages
-              href: reference/v3-0-languages.md
-            - name: Translate
-              href: reference/v3-0-translate.md
-            - name: Transliterate
-              href: reference/v3-0-transliterate.md
-            - name: Detect
-              href: reference/v3-0-detect.md
-            - name: BreakSentence
-              href: reference/v3-0-break-sentence.md
-            - name: 辞書検索
-              href: reference/v3-0-dictionary-lookup.md
-            - name: 辞書の例
-              href: reference/v3-0-dictionary-examples.md
-        - name: v2 Translator リファレンス (非推奨)
-          href: reference/v2-0-reference.md
-          items:
-            - name: テキストの変換
-              href: transform-text.md
-            - name: コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法
-              href: ctf-reporting.md
-            - name: N-Best の翻訳結果を返す
-              href: return-n-best-translations.md
+        - name: Languages
+          href: reference/v3-0-languages.md
+        - name: Translate
+          href: reference/v3-0-translate.md
+        - name: Transliterate
+          href: reference/v3-0-transliterate.md
+        - name: Detect
+          href: reference/v3-0-detect.md
+        - name: BreakSentence
+          href: reference/v3-0-break-sentence.md
+        - name: 辞書検索
+          href: reference/v3-0-dictionary-lookup.md
+        - name: 辞書の例
+          href: reference/v3-0-dictionary-examples.md
         - name: 要求の制限
           href: request-limits.md
     - name: リソース
       items:
+        - name: サポートとヘルプのオプション
+          href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
         - name: コード サンプル (GitHub)
           href: 'https://aka.ms/TranslatorGitHub'
         - name: よく寄せられる質問
@@ -108,8 +86,22 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: コンプライアンス
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
+- name: ドキュメント変換
+  items:
+    - name: 概要
+      items:
+        - name: ドキュメント変換とは
+          href: document-translation/overview.md
+    - name: 操作方法ガイド
+      items:
+        - name: ドキュメント変換を使ってみる
+          href: document-translation/get-started-with-document-translation.md
+        - name: SAS トークンを作成する
+          href: document-translation/create-sas-tokens.md
+    - name: リファレンス
+      items:
+        - name: Document Translation API のリファレンス
+          href: /rest/api/cognitiveservices/translator/documenttranslation
 - name: Custom Translator
   items:
     - name: 概要
@@ -162,6 +154,8 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: リソース
       items:
+        - name: サポートとヘルプのオプション
+          href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
         - name: 用語集
           href: custom-translator/glossary.md
         - name: よく寄せられる質問
@@ -171,6 +165,4 @@
         - name: コンプライアンス
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: 暗号化
-          href: translator-encryption-of-data-at-rest.md
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
+          href: encrypt-data-at-rest.md

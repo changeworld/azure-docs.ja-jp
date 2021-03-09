@@ -1,19 +1,16 @@
 ---
 title: 外部メタデータ ストアの使用 - Azure HDInsight
 description: Azure HDInsight クラスターで外部メタデータ ストアを使用します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 08/06/2020
-ms.openlocfilehash: 78c0526ac750977115a88e96bb5f7d5cb4e9803f
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: d36c8f1f592bbe714a9e31cad8131523049f29ad
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873094"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931351"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight での外部メタデータ ストアの使用
 
@@ -63,11 +60,11 @@ HDInsight では、カスタム metastore もサポートします。運用ク�
 
 ### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>カスタム metastore 用の Azure SQL Database を作成および構成する
 
-HDInsight クラスター用のカスタム Hive メタストアを設定する前に、Azure SQL Database を作成するか、既存のものを用意します。  詳細については、「[クイック スタート: Azure SQL Database の単一データベースを作成する](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)」を参照してください。
+HDInsight クラスター用のカスタム Hive メタストアを設定する前に、Azure SQL Database を作成するか、既存のものを用意します。  詳細については、「[クイック スタート: Azure SQL Database の単一データベースを作成する](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)」を参照してください。
 
-クラスターの作成時には、HDInsight サービスによって外部メタストアに接続され、資格情報が確認される必要があります。 Azure SQL Database のファイアウォール規則を構成して、Azure サービスとリソースがサーバーにアクセスできるようにします。 Azure portal で **[サーバー ファイアウォールの設定]** を選択して、このオプションを有効にします。 次に、Azure SQL Database に対して、 **[Deny public network access]\(パブリック ネットワーク アクセスを拒否する\)** の下の **[いいえ]** と、 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** の下の **[はい]** を選択します。 詳細については、「[IP ファイアウォール規則の作成および管理](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)」を参照してください。
+クラスターの作成時には、HDInsight サービスによって外部メタストアに接続され、資格情報が確認される必要があります。 Azure SQL Database のファイアウォール規則を構成して、Azure サービスとリソースがサーバーにアクセスできるようにします。 Azure portal で **[サーバー ファイアウォールの設定]** を選択して、このオプションを有効にします。 次に、Azure SQL Database に対して、 **[Deny public network access]\(パブリック ネットワーク アクセスを拒否する\)** の下の **[いいえ]** と、 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** の下の **[はい]** を選択します。 詳細については、「[IP ファイアウォール規則の作成および管理](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)」を参照してください。
 
-SQL ストアのプライベート エンドポイントはサポートされていません。
+SQL ストアのプライベート エンドポイントは、`outbound` ResourceProviderConnection を使用して作成されたクラスターでのみサポートされます。 詳細については、こちらの[ドキュメント](./hdinsight-private-link.md)を参照してください。
 
 ![[サーバー ファイアウォールの設定] ボタン](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 

@@ -7,18 +7,19 @@ ms.date: 07/15/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: c850fccf5a86df4c35ce4db53b5b40d5e8588210
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b5051a5e29f9e34c43963a9a264ee47e2ad7b04a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089415"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490783"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する
 
 Azurite オープンソース エミュレーターには、Azure Blob およびキュー ストレージ アプリケーションをテストするための無料のローカル環境が用意されています。 ローカルでのアプリケーションの動作に満足できたら、クラウドでの Azure Storage アカウントの使用に切り替えることができます。 エミュレーターは、Windows、Linux、および macOS でのクロスプラットフォーム サポートを提供します。
 
-Azurite は今後のストレージ エミュレーター プラットフォームです。 Azurite は [Azure ストレージ エミュレーター](storage-use-emulator.md)よりも優先されます。 Azurite は、最新バージョンの Azure Storage API をサポートするために引き続き更新されます。
+Azurite は今後のストレージ エミュレーター プラットフォームです。 Azurite は [Azure Storage Emulator](storage-use-emulator.md)よりも優先されます。 Azurite は、最新バージョンの Azure Storage API をサポートするために引き続き更新されます。
 
 Azurite をローカル システムにインストールして実行するには、次のようないくつかの方法があります。
 
@@ -281,7 +282,7 @@ azurite --version
 
 ### <a name="certificate-configuration-https"></a>証明書の構成 (HTTPS)
 
-**オプション** - 既定では、Azurite は HTTP プロトコルを使用します。 HTTPS モードを有効にするには、Privacy Enhanced Mail (.pem) または [Personal Information Exchange (.pfx)](https://docs.microsoft.com/windows-hardware/drivers/install/personal-information-exchange---pfx--files) 証明書ファイルへのパスを `--cert` スイッチに指定します。
+**オプション** - 既定では、Azurite は HTTP プロトコルを使用します。 HTTPS モードを有効にするには、Privacy Enhanced Mail (.pem) または [Personal Information Exchange (.pfx)](/windows-hardware/drivers/install/personal-information-exchange---pfx--files) 証明書ファイルへのパスを `--cert` スイッチに指定します。
 
 PEM ファイルに `--cert` が指定されている場合、対応する `--key` スイッチを指定する必要があります。
 
@@ -327,7 +328,7 @@ Azure SDK を使用している場合は、`--oauth basic and --cert --key/--pwd
 
 ### <a name="well-known-storage-account-and-key"></a>既知のストレージ アカウントとキー
 
-Azurite は、従来の Azure Storage エミュレーターで使用されるものと同じ既知のアカウントとキーを受け入れます。
+Azurite は、従来の Azure ストレージ エミュレーターで使用されるものと同じ既知のアカウントとキーを受け入れます。
 
 - アカウント名: `devstoreaccount1`
 - アカウント キー: `Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
@@ -555,11 +556,17 @@ Azurite は、読み取りアクセス geo 冗長レプリケーション (RA-GR
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
 
+### <a name="table-support"></a>テーブル サポート
+
+Azurite でのテーブルのサポートは現在開発中であり、協力を歓迎しています。 最新の進行状況については、[Azurite V3 テーブル](https://github.com/Azure/Azurite/wiki/Azurite-V3-Table) プロジェクトを確認してください。
+
+持続的関数のサポートにはテーブルが必要です。
+
 ## <a name="azurite-is-open-source"></a>Azurite はオープンソースです
 
 Azurite への参加や提案をお待ちしています。 近日公開される機能やバグ修正のために追跡しているマイルストーンと作業項目については、Azurite の [GitHub プロジェクト](https://github.com/Azure/Azurite/projects) ページまたは [GitHub の課題](https://github.com/Azure/Azurite/issues)を参照してください。 GitHub では詳細な作業項目も追跡されています。
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure ストレージ エミュレーターを使用した開発とテスト](storage-use-emulator.md)」には、Azurite によって置き換えられつつある従来の Azure ストレージ エミュレーターについて記載されています。
+- 「[開発とテストに Azure Storage Emulator を使用する](storage-use-emulator.md)」には、Azurite によって置き換えられつつある従来の  Azure Storage Emulator についての記述があります。
 - 「[Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)」では、有効な Azure Storage の接続文字列をアセンブルする方法が説明されています。

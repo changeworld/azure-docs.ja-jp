@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: a4e240837dd3c95efc4dc83a7491f2ad9163435a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7dd881d130b9df19335ac64be501553af99d58d8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373319"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179546"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Java と Eclipse を使用して初めての関数を作成する 
 
@@ -68,13 +68,13 @@ IDE を使用して、ブレークポイントを設定し、関数内のオブ�
 
 ## <a name="deploy-the-function-to-azure"></a>関数を Azure にデプロイする
 
-Azure Functions へのデプロイ プロセスでは、Azure CLI からアカウントの資格情報を使います。 コンピューターのコマンド プロンプトを使用し続ける前に、[Azure CLI でログイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)します。
+Azure Functions へのデプロイ プロセスでは、Azure CLI からアカウントの資格情報を使います。 コンピューターのコマンド プロンプトを使用し続ける前に、[Azure CLI でログイン](/cli/azure/authenticate-azure-cli)します。
 
 ```azurecli
 az login
 ```
 
-新しい**別のユーザーとして実行**構成で `azure-functions:deploy`Maven 目標を使用して、新しい関数アプリにコードを展開します。
+新しい **別のユーザーとして実行** 構成で `azure-functions:deploy`Maven 目標を使用して、新しい関数アプリにコードを展開します。
 
 デプロイが完了すると、Azure Functions アプリへのアクセスに使うことができる URL が表示されます。
 

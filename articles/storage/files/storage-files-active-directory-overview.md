@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 65d7845763b60a66f396d9081f3c9c6e1d04c1bc
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 0493b66928d944e251e6fe4abda4f1d3d8fb7e23
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447248"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695896"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>SMB アクセスの Azure Files ID ベース認証オプションの概要
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -26,15 +26,15 @@ SMB を使用した Azure ファイル共有の Azure AD Domain Service 認証�
 
 -   **Kerberos 認証**
 
-    Kerberos は、ユーザーまたはホストの身元を確認するために使用される認証プロトコルです。 Kerberos の詳細については、「[Kerberos 認証の概要](https://docs.microsoft.com/windows-server/security/kerberos/kerberos-authentication-overview)」を参照してください。
+    Kerberos は、ユーザーまたはホストの身元を確認するために使用される認証プロトコルです。 Kerberos の詳細については、「[Kerberos 認証の概要](/windows-server/security/kerberos/kerberos-authentication-overview)」を参照してください。
 
 -  **サーバー メッセージ ブロック (SMB) プロトコル**
 
-    SMB は、業界標準のネットワーク ファイル共有プロトコルです。 SMB は、Common Internet File System (CIFS) とも呼ばれます。 SMB の詳細については、「[Microsoft SMB プロトコルと CIFS プロトコルの概要](https://docs.microsoft.com/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview)」を参照してください。
+    SMB は、業界標準のネットワーク ファイル共有プロトコルです。 SMB は、Common Internet File System (CIFS) とも呼ばれます。 SMB の詳細については、「[Microsoft SMB プロトコルと CIFS プロトコルの概要](/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview)」を参照してください。
 
 -   **Azure Active Directory (Azure AD)**
 
-    Azure Active Directory (Azure AD) は、Microsoft のマルチテナント クラウド ベースのディレクトリおよび ID 管理サービスです。 Azure AD には、主要なディレクトリ サービス、アプリケーション アクセスの管理、ID 保護の機能が一つのソリューションとして統合されています。 Azure AD に参加している Windows 仮想マシン (VM) は、Azure AD 資格情報を使用して Azure ファイル共有にアクセスできます。 詳細については、「[Azure Active Directory とは](../../active-directory/fundamentals/active-directory-whatis.md)」を参照してください。
+    Azure Active Directory (Azure AD) は、Microsoft のマルチテナント クラウド ベースのディレクトリおよび ID 管理サービスです。 Azure AD には、主要なディレクトリ サービス、アプリケーション アクセスの管理、ID 保護の機能が一つのソリューションとして統合されています。 Azure AD に参加している Windows 仮想マシン (VM) は、Azure AD 資格情報を使用して Azure ファイル共有にアクセスできません。 詳細については、「[Azure Active Directory とは](../../active-directory/fundamentals/active-directory-whatis.md)」を参照してください。
 
 -   **Azure Active Directory Domain Services (Azure AD DS)**
 
@@ -42,11 +42,11 @@ SMB を使用した Azure ファイル共有の Azure AD Domain Service 認証�
 
 - **オンプレミス Active Directory Domain Services (AD DS)**
 
-    オンプレミス Active Directory Domain Services (AD DS) の Azure Files との統合により、ディレクトリ データをネットワークのユーザーと管理者が使用できるようにしながら、それを格納するための方法が提供されます。 AD DS のセキュリティは、ログオン認証とディレクトリ内のオブジェクトに対するアクセス制御によって実現されています。 管理者は、シングル ネットワーク ログオンで、ネットワーク全体のディレクトリ データおよび組織を管理できます。また、承認されたネットワーク ユーザーは、ネットワーク上の任意の場所にあるリソースにアクセスできます。 AD DS は、通常、オンプレミス環境の企業によって採用され、アクセス制御の ID として AD DS 資格情報が使用されます。 詳細については、「[Active Directory Domain Services の概要](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)」を参照してください。
+    オンプレミス Active Directory Domain Services (AD DS) の Azure Files との統合により、ディレクトリ データをネットワークのユーザーと管理者が使用できるようにしながら、それを格納するための方法が提供されます。 AD DS のセキュリティは、ログオン認証とディレクトリ内のオブジェクトに対するアクセス制御によって実現されています。 管理者は、シングル ネットワーク ログオンで、ネットワーク全体のディレクトリ データおよび組織を管理できます。また、承認されたネットワーク ユーザーは、ネットワーク上の任意の場所にあるリソースにアクセスできます。 AD DS は、通常、オンプレミス環境の企業によって採用され、アクセス制御の ID として AD DS 資格情報が使用されます。 詳細については、「[Active Directory Domain Services の概要](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)」を参照してください。
 
 -   **Azure ロールベースのアクセス制御 (Azure RBAC)**
 
-    Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 RBAC を使用して業務遂行に必要な最小限の権限をユーザーに付与することで、リソースへのアクセスを管理できます。 RBAC の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
+    Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 Azure RBAC を使用して業務遂行に必要な最小限の権限をユーザーに付与することで、リソースへのアクセスを管理できます。 Azure RBAC の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
 
 ## <a name="common-use-cases"></a>一般的なユース ケース
 
@@ -78,6 +78,7 @@ ID ベースの認証と Azure Files での Windows ACL のサポートは、次
 - Azure AD DS とオンプレミス AD DS の認証では、コンピューター アカウントに対する認証はサポートされていません。 代わりに、サービス ログオン アカウントを使用することを検討してください。
 - Azure AD 参加済みデバイスまたは Azure AD 登録済みデバイスに対しては、Azure AD DS 認証もオンプレミス AD DS 認証もサポートされていません。
 - Azure ファイル共有では、[Azure Active Directory Domain Services (Azure AD DS)](#azure-ad-ds) または[オンプレミスの Active Directory Domain Services (AD DS)](#ad-ds) のいずれか 1 つのドメイン サービスに対する ID ベースの認証のみがサポートされます。
+- Network File System (NFS) はプレビュー段階なので、どちらの ID ベースの認証方法もサポートしていません。
 
 ## <a name="advantages-of-identity-based-authentication"></a>ID ベースの認証の利点
 Azure Files に対する ID ベースの認証には、共有キー認証と比較して、以下のようなさまざまな利点があります。
@@ -103,7 +104,7 @@ Azure ファイル共有で ID ベースの認証を有効にする前に、ま�
 
 次の図は、SMB 経由の Azure ファイル共有に対するオンプレミス AD DS 認証を示しています。 オンプレミスの AD DS は、Azure AD Connect 同期を使用して Azure AD に同期する必要があります。オンプレミスの AD DS と Azure AD の両方に存在するハイブリッド ユーザーのみを、Azure ファイル共有アクセスに対して認証および承認できます。 これは、Azure AD ではAD DS 内の ID に対してディレクトリ/ファイル レベルのアクセス許可が 適用されており、Azure AD 内に示されている ID に対しては共有レベルのアクセス許可が構成されているためです。 同じハイブリッド ユーザーに対してアクセス許可を正しく構成するようにしてください。
 
-:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="Diagram (ダイアグラム)":::
+:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="SMB 経由の Azure ファイル共有に対するオンプレミスの AD DS 認証を示す図。":::
 
 ### <a name="azure-ad-ds"></a>Azure AD DS
 
@@ -113,7 +114,7 @@ Azure AD DS 認証の場合、Azure AD Domain Services を有効にし、ファ�
 
 - まず、ストレージ アカウントを表すために Azure AD DS で ID を作成する必要はありません。 これは、バックグラウンドで有効化プロセスによって実行されます。
 
-- 2 つ目に、Azure AD に存在するすべてのユーザーを、認証および承認できます。 ユーザーは、クラウドのみまたはハイブリッドにすることができます。 Azure AD から Azure AD DS への同期は、ユーザー構成を必要とせずに、プラットフォームによって管理されます。 ただし、クライアントは Azure AD DS にドメイン参加している必要があり、Azure AD に参加も登録もできません。 
+- 2 つ目に、Azure AD に存在するすべてのユーザーを、認証および認可できます。 ユーザーは、クラウドのみまたはハイブリッドにすることができます。 Azure AD から Azure AD DS への同期は、ユーザー構成を必要とせずに、プラットフォームによって管理されます。 ただし、クライアントは Azure AD DS にドメイン参加している必要があり、Azure AD に参加も登録もできません。 
 
 :::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Diagram (ダイアグラム)":::
 
@@ -127,7 +128,7 @@ Azure AD DS またはオンプレミス AD DS 認証のいずれかを有効に�
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>Azure Files のディレクトリ レベルまたはファイル レベルの権限を構成する
 
-Azure ファイル共有では、ルート ディレクトリを含む、ディレクトリとファイルの両方のレベルで標準の Windows ファイルのアクセス許可が適用されます。 ディレクトリ レベルまたはファイル レベルの権限の構成は、SMB 経由および REST 経由での構成がサポートされています。 VM 上で対象のファイル共有をマウントし、Windows のエクスプローラー、Windows の [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) または [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6) コマンドを使用して権限を構成します。
+Azure ファイル共有では、ルート ディレクトリを含む、ディレクトリとファイルの両方のレベルで標準の Windows ファイルのアクセス許可が適用されます。 ディレクトリ レベルまたはファイル レベルの権限の構成は、SMB 経由および REST 経由での構成がサポートされています。 VM 上で対象のファイル共有をマウントし、Windows のエクスプローラー、Windows の [icacls](/windows-server/administration/windows-commands/icacls) または [Set-ACL](/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6) コマンドを使用して権限を構成します。
 
 ### <a name="use-the-storage-account-key-for-superuser-permissions"></a>スーパーユーザーの権限でストレージ アカウントのキーを使用する
 
@@ -138,7 +139,7 @@ Azure ファイル共有では、ルート ディレクトリを含む、ディ�
 
 ### <a name="preserve-directory-and-file-acls-when-importing-data-to-azure-file-shares"></a>Azure ファイル共有にデータをインポートするときに、ディレクトリとファイル ACL を保持する
 
-Azure Files では、Azure ファイル共有にデータをコピーする際、ディレクトリまたはファイル レベルの ACL の保持がサポートされています。 Azure File Sync または一般的なファイル移動ツールセットを使用して、ディレクトリまたはファイルの ACL を Azure ファイル共有にコピーできます。 たとえば、[robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) を `/copy:s` フラグと共に使用して、Azure ファイル共有にデータや ACL をコピーすることができます。 ACL は既定で保持されます。ACL を維持するために、ストレージ アカウントで ID ベースの認証を有効にする必要はありません。
+Azure Files では、Azure ファイル共有にデータをコピーする際、ディレクトリまたはファイル レベルの ACL の保持がサポートされています。 Azure File Sync または一般的なファイル移動ツールセットを使用して、ディレクトリまたはファイルの ACL を Azure ファイル共有にコピーできます。 たとえば、[robocopy](/windows-server/administration/windows-commands/robocopy) を `/copy:s` フラグと共に使用して、Azure ファイル共有にデータや ACL をコピーすることができます。 ACL は既定で保持されます。ACL を維持するために、ストレージ アカウントで ID ベースの認証を有効にする必要はありません。
 
 ## <a name="pricing"></a>価格
 お使いのストレージ アカウントで SMB 経由の ID ベースの認証を有効にする場合、追加のサービス料金は発生しません。 価格の詳細については、「[Azure Files の価格](https://azure.microsoft.com/pricing/details/storage/files/)」と「[Azure AD Domain Services の価格](https://azure.microsoft.com/pricing/details/active-directory-ds/)」を参照してください。

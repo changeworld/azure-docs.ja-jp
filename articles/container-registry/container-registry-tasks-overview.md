@@ -2,13 +2,13 @@
 title: ACR タスクの概要
 description: クラウド内でのコンテナー イメージの安全で自動化されたビルド、管理、修正プログラム適用を提供する、Azure Container Registry の機能スイートである ACR タスクの概要。
 ms.topic: article
-ms.date: 01/22/2020
-ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/12/2020
+ms.openlocfilehash: b6df415bd55979ef00f6921321dbc254ef7a7e59
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79087284"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562856"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR タスクでコンテナー イメージのビルドとメンテナンスを自動化する
 
@@ -16,14 +16,14 @@ ms.locfileid: "79087284"
 
 ## <a name="what-is-acr-tasks"></a>ACR タスクとは
 
-**ACR タスク**は、Azure Container Registry 内の一連の機能です。 Linux、Windows、ARM などの[プラットフォーム](#image-platforms)用のクラウドベースのコンテナー イメージのビルド機能があり、Docker コンテナーの [OS とフレームワークのパッチ適用](#automate-os-and-framework-patching)を自動化できます。 ACR タスクでは、オンデマンドのコンテナー イメージのビルドによって "内部ループ" 型の開発サイクルをクラウドに拡張するだけでなく、ソース コードの更新、コンテナーの基本イメージの更新、またはタイマーによってトリガーされるビルドの自動化を有効にすることもできます。 たとえば、基本イメージの更新のトリガーを使用することで、OS とアプリケーション フレームワークの修正プログラム適用のワークフローを自動化したり、不変のコンテナーの原則に従いながら、セキュリティで保護された環境を維持したりできます。
+**ACR タスク** は、Azure Container Registry 内の一連の機能です。 Linux、Windows、ARM などの[プラットフォーム](#image-platforms)用のクラウドベースのコンテナー イメージのビルド機能があり、Docker コンテナーの [OS とフレームワークのパッチ適用](#automate-os-and-framework-patching)を自動化できます。 ACR タスクでは、オンデマンドのコンテナー イメージのビルドによって "内部ループ" 型の開発サイクルをクラウドに拡張するだけでなく、ソース コードの更新、コンテナーの基本イメージの更新、またはタイマーによってトリガーされるビルドの自動化を有効にすることもできます。 たとえば、基本イメージの更新のトリガーを使用することで、OS とアプリケーション フレームワークの修正プログラム適用のワークフローを自動化したり、不変のコンテナーの原則に従いながら、セキュリティで保護された環境を維持したりできます。
 
 ## <a name="task-scenarios"></a>一般的なシナリオ
 
 ACR タスクでは、コンテナー イメージやその他の成果物をビルドし、保守管理するためのシナリオをいくつかサポートしています。 詳細については、この記事の次のセクションを参照してください。
 
 * **[クイック タスク](#quick-task)** - ローカル Docker エンジンをインストールすることなく、Azure で 1 つのコンテナー イメージをオンデマンドでビルドし、コンテナー レジストリにプッシュします。 クラウドでの `docker build` や `docker push` を思い浮かべてください。
-* **自動的にトリガーされたタスク** - イメージをビルドする目的で 1 つまたは複数の*トリガー*を有効にします。
+* **自動的にトリガーされたタスク** - イメージをビルドする目的で 1 つまたは複数の *トリガー* を有効にします。
   * **[ソース コードの更新でトリガー](#trigger-task-on-source-code-update)** 
   * **[基本イメージの更新でトリガー](#automate-os-and-framework-patching)** 
   * **[スケジュールに従ってトリガー](#schedule-a-task)** 
@@ -52,7 +52,7 @@ ACR タスクは、コンテナー ライフサイクル プリミティブと�
 
 ## <a name="trigger-task-on-source-code-update"></a>ソース コードの更新でタスクをトリガーする
 
-GitHub または Azure DevOps の公開または非公開 Git リポジトリに対して、コードがコミットされたとき、または pull request が作成または更新されたときに、コンテナー イメージのビルドまたはマルチステップタスクをトリガーします。 たとえば、Azure CLI コマンドの [az acr task create][az-acr-task-create] でビルド タスクを構成し、その際、Git リポジトリと任意でブランチと Dockerfile を指定します。 チームがリポジトリのコードを更新すると、ACR タスクで作成された Webhook が、リポジトリで定義されているコンテナー イメージのビルドをトリガーします。 
+GitHub または Azure DevOps の公開または非公開 Git リポジトリに対して、コードがコミットされたとき、またはプルリクエストが作成または更新されたときに、コンテナー イメージのビルドまたはマルチステップタスクをトリガーします。 たとえば、Azure CLI コマンドの [az acr task create][az-acr-task-create] でビルド タスクを構成し、その際、Git リポジトリと任意でブランチと Dockerfile を指定します。 チームがリポジトリのコードを更新すると、ACR タスクで作成された Webhook が、リポジトリで定義されているコンテナー イメージのビルドをトリガーします。 
 
 ACR タスクでは、Git リポジトリをタスクのコンテキストとして設定すると、次のトリガーがサポートされます。
 
@@ -70,7 +70,7 @@ ACR タスクでは、Git リポジトリをタスクのコンテキストとし
 
 ## <a name="automate-os-and-framework-patching"></a>OS とフレームワークの修正プログラムの適用を自動化する
 
-ACR タスクがコンテナー ビルド ワークフローを真に強化する能力は、*基本イメージ*に対する更新を検出する機能に由来します。 ほとんどのコンテナー イメージの機能である基本イメージは、1 つ以上のアプリケーション イメージの基になる親イメージです。 通常、基本イメージにはオペレーティング システムが含まれ、場合によってはアプリケーション フレームワークが含まれます。 
+ACR タスクがコンテナー ビルド ワークフローを真に強化する能力は、*基本イメージ* に対する更新を検出する機能に由来します。 ほとんどのコンテナー イメージの機能である基本イメージは、1 つ以上のアプリケーション イメージの基になる親イメージです。 通常、基本イメージにはオペレーティング システムが含まれ、場合によってはアプリケーション フレームワークが含まれます。 
 
 アプリケーション イメージをビルドするときに基本イメージ上の依存関係を追跡するように ACR タスクを設定できます。 更新された基本イメージがレジストリにプッシュされると、または基本イメージが Docker Hub などのパブリック リポジトリで更新されると、ACR タスクではそれに基づいてすべてのアプリケーション イメージを自動的にビルドできます。
 ACR タスクはこの自動検出とリビルドによって、更新された基本イメージを参照しているすべてのアプリケーション イメージを手動で追跡し、更新するために通常は必要となる時間と労力を削減しています。
@@ -105,12 +105,13 @@ ACR タスクはこの自動検出とリビルドによって、更新された�
 | コンテキストの場所 | 説明 | 例 |
 | ---------------- | ----------- | ------- |
 | ローカル ファイルシステム | ローカル ファイル システム上のディレクトリ内のファイル。 | `/home/user/projects/myapp` |
-| GitHub master ブランチ | 公開または非公開 GitHub リポジトリのマスター（または他のデフォルト）ブランチ内のファイル。  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub メイン ブランチ | 公開または非公開 GitHub リポジトリのメイン (または他の既定) ブランチ内のファイル。  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub ブランチ | 公開または非公開 GitHub リポジトリの特定のブランチ。| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | GitHub のサブフォルダー | 公開または非公開 GitHub リポジトリのサブフォルダー内のファイル。 例では、ブランチとサブフォルダーの指定の組み合わせが示されています。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | GitHub コミット | 公開または非公開 GitHub リポジトリの特定のコミット。 例では、コミット ハッシュ (SHA) とサブフォルダーの指定の組み合わせが示されています。 | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
 | Azure DevOps サブフォルダー | 公開または非公開 Azure リポジトリのサブフォルダー内のファイル。 例では、ブランチとサブフォルダーの指定の組み合わせが示されています。 | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | リモート tarball | リモート Web サーバー上の圧縮されたアーカイブ内のファイル。 | `http://remoteserver/myapp.tar.gz` |
+| コンテナー レジストリの成果物 | コンテナー レジストリ リポジトリ内の [OCI 成果物](container-registry-oci-artifacts.md)ファイル。 | `oci://myregistry.azurecr.io/myartifact:mytag` |
 
 > [!NOTE]
 > 非公開 Git リポジトリをタスクのコンテキストとして使用する場合、非公開アクセストークン（PAT）を提供する必要があります。
@@ -137,10 +138,6 @@ ACR タスクはこの自動検出とリビルドによって、更新された�
 Azure コンテナー レジストリを操作するには、必要に応じて [Visual Studio Code 用の Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)と [Azure アカウント](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)拡張機能をインストールします。 Azure コンテナー レジストリとの間でイメージをプルおよびプッシュしたり、ACR タスクを実行したりします。すべて Visual Studio Code 内で実行します。
 
 <!-- LINKS - External -->
-[base-alpine]: https://hub.docker.com/_/alpine/
-[base-dotnet]: https://hub.docker.com/r/microsoft/dotnet/
-[base-node]: https://hub.docker.com/_/node/
-[base-windows]: https://hub.docker.com/r/microsoft/nanoserver/
 [sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 

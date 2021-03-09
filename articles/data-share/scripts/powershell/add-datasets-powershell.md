@@ -1,20 +1,18 @@
 ---
-title: 'PowerShell スクリプト: Azure Data Share に BLOB データセットを追加する | Microsoft Docs'
+title: 'PowerShell スクリプト: Azure Data Share に BLOB データセットを追加する'
 description: この PowerShell スクリプトでは、既存の共有に BLOB データ セットを追加します。
 services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
-ms.author: joanpo
-ms.openlocfilehash: 95a10b112c9f6448c437f20ee95f808632a31d2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f2a2dded0b9c817e0700f4f93782d3b5c11ac3f
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70307302"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221385"
 ---
 # <a name="use-powershell-to-create-a-data-share-in-azure"></a>PowerShell を使用して Azure 内にデータ共有を作成する
 
@@ -44,11 +42,11 @@ New-AzDataShareDataSet -ResourceGroupName $resourceGroupName -AccountName $dataS
 
 | command | Notes |
 |---|---|
-| [New-AzDataShareDataSet](/powershell/module/az.datashare/new-azdatasharedataset?view=azps-2.6.0) | データセットをデータ共有に追加します。 |
+| [New-AzDataShareDataSet](/powershell/module/az.datashare/new-azdatasharedataset) | データセットをデータ共有に追加します。 |
 |||
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
+Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/)を参照してください。
 
 Azure Data Share のその他の PowerShell サンプル スクリプトについては、[Azure Data Share の PowerShell のサンプル](../../samples-powershell.md)に関する記事をご覧ください。

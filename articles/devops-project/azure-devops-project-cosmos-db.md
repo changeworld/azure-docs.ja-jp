@@ -8,13 +8,13 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 47e175a47d3548962f63e283c80abe8333e9ecc4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: de98d9db515e4ed88759efa7f22dddcca06151c8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421622"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854683"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>DevOps Starter を使用して、Azure Cosmos DB を使用する Node.js アプリをデプロイする
 
@@ -167,6 +167,4 @@ App Service に最新の作業をデプロイする CI/CD プロセスを使用�
 > * 変更を Git にコミットし、Azure に自動的にデプロイする
 > * リソースをクリーンアップする
 
-詳細および次の手順については、「[複数ステージの継続的デプロイ (CD) パイプラインを定義する](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts)」を参照してください。
-
-
+詳細および次の手順については、「[複数ステージの継続的デプロイ (CD) パイプラインを定義する](/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts)」を参照してください。

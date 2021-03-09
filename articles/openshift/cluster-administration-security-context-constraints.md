@@ -4,17 +4,23 @@ description: Azure Red Hat OpenShift クラスター管理者に対するセキ�
 services: container-service
 author: troy0820
 ms.author: b-trconn
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: 24163adcec889e9eedc2362ff1f01f00257a98f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 977504c1faec9bd8134646a8cbe31f9eea665edd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063174"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636205"
 ---
-# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Azure Red Hat OpenShift でセキュリティ コンテンツ制約を管理する 
+# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Azure Red Hat OpenShift でセキュリティ コンテンツ制約を管理する
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 は、2022 年 6 月 30 日に廃止されます。 新しい Azure Red Hat OpenShift 3.11 クラスターの作成のサポートは、2020 年 11 月 30 日まで継続されます。 廃止された後、残っている Azure Red Hat OpenShift 3.11 クラスターは、セキュリティの脆弱性を防ぐためにシャットダウンされます。
+> 
+> このガイドに従って、[Azure Red Hat OpenShift 4 クラスターを作成](tutorial-create-cluster.md)します。
+> ご質問がある場合は、[お問い合わせください](mailto:arofeedback@microsoft.com)。
 
 セキュリティ コンテキスト制約 (SCC) を利用することで、クラスター管理者はポッドのアクセス許可を制御できます。 この API タイプの詳細については、[SCC のアーキテクチャ ドキュメント](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html)を参照してください。 インスタンス内の SCC は、CLI を使用して通常の API オブジェクトとして管理できます。
 
@@ -71,6 +77,6 @@ Settings:
   Supplemental Groups Strategy: RunAsAny
     Ranges:                <none>
 ```
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
 > [Azure Red Hat OpenShift クラスターを作成する](tutorial-create-cluster.md) 

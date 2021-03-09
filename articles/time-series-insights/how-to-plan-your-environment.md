@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 76e49393b1d26e6db85146a204911ba164d3ffc0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c8d96d7b5952c020493af278ee1ea8ad5ff46716
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289888"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016787"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2 環境の計画
 
@@ -37,7 +37,6 @@ Azure Time Series Insights では、従量課金制のビジネス モデルが�
 
 Azure Time Series Insights Gen2 環境をプロビジョニングするときは、次の 2 つの Azure リソースを作成します。
 
-
 * Azure Time Series Insights Gen2 環境
 * Azure ストレージ アカウント
 
@@ -46,7 +45,7 @@ Azure Time Series Insights Gen2 環境をプロビジョニングするときは
 ウォーム ストアのクエリは無料ですが、コールド ストアのクエリにはコストが発生します。 クエリ パターンを理解し、それに従ってウォーム ストア構成を計画することが重要です。 最新データに対する対話型分析はウォーム ストアに配置し、パターン分析と長期的傾向はコールド ストアに配置することをお勧めします。
 
 > [!NOTE]
-> ウォーム データに対してクエリを実行する方法の詳細については、[API リファレンス](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters)に関するページを参照してください。
+> ウォーム データに対してクエリを実行する方法の詳細については、[API リファレンス](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters)に関するページを参照してください。
 
 始めに、3 つの追加項目が必要です。
 
@@ -65,20 +64,17 @@ Azure Time Series Insights Gen2 環境をプロビジョニングするときは
 > [!IMPORTANT]
 > タイム シリーズ ID *は、後で変更できません*。 最終的な選択と初めて使用する前に、それぞれを確認してください。
 
-リソースを一意に区別するために、最大 3 つのキーを選択できます。 詳細については、「[タイム シリーズ ID の選択に関するベスト プラクティス](./time-series-insights-update-how-to-id.md)」および「[取り込み規則](concepts-json-flattening-escaping-rules.md)」を参照してください。
+リソースを一意に区別するために、最大 3 つのキーを選択できます。 詳細については、「[タイム シリーズ ID の選択に関するベスト プラクティス](./how-to-select-tsid.md)」および「[取り込み規則](concepts-json-flattening-escaping-rules.md)」を参照してください。
 
 **Timestamp** プロパティも重要です。 イベント ソースを追加する際に、このプロパティを指定できます。 各イベント ソースには、時間の経過と共にイベント ソースを追跡するために使用されるオプションの Timestamp プロパティがあります。 Timestamp の値は大文字と小文字が区別され、各イベント ソースの個々の仕様に書式設定される必要があります。
 
-> [!TIP]
-> イベント ソースの書式設定と解析の要件を確認します。
-
-空白のままにすると、イベント ソースのイベント エンキュー時間が、イベント タイムスタンプとして使用されます。 履歴データまたはバッチ処理されたイベントを送信する場合は、既定のイベント エンキュー時間より、Timestamp プロパティをカスタマイズすることが役立ちます。 詳細については、[Azure IoT Hub にイベント ソースを追加する](./time-series-insights-how-to-add-an-event-source-iothub.md)方法に関するページを参照してください。
+空白のままにすると、イベントが IoT ハブまたはイベント ハブにエンキューされた時刻が、イベントのタイムスタンプとして使用されます。 通常、ユーザーは、タイムスタンプ プロパティをカスタマイズし、ハブ エンキュー時刻ではなく、センサーまたはタグによって読み取りが生成された時刻を使用する必要があります。 詳細およびタイム ゾーン オフセットの読み取りについては、「[イベント ソースのタイムスタンプ](./concepts-streaming-ingestion-event-sources.md#event-source-timestamp)」を参照してください。
 
 ## <a name="understand-the-time-series-model"></a>タイム シリーズ モデルについて
 
 Azure Time Series Insights 環境の時系列モデルを構成できるようになりました。 新しいモデルにより、IoT データの検索と分析が簡単になります。 時系列データのキュレーション、メンテナンス、およびエンリッチメントが可能になり、コンシューマー対応データ セットの準備に役立ちます。 モデルでは、タイム シリーズ ID が使われ、これは、型と呼ばれる変数と階層に一意のリソースを関連付けるインスタンスにマップされます。 詳細については、[時系列モデル](./concepts-model-overview.md)の概要に関する記事を参照してください。
 
-モデルは動的であるため、いつでも構築できます。 すばやく開始するには、データを Azure Time Series Insights にプッシュする前に、モデルを構築してアップロードします。 モデルを構築するには、[タイム シリーズ モデルの使用](/azure/time-series-insights/concepts-model-overview)に関するページを参照してください。
+モデルは動的であるため、いつでも構築できます。 すばやく開始するには、データを Azure Time Series Insights にプッシュする前に、モデルを構築してアップロードします。 モデルを構築するには、[タイム シリーズ モデルの使用](./concepts-model-overview.md)に関するページを参照してください。
 
 多くのお客様で、タイム シリーズ モデルは既存の資産モデルや既に設置されている ERP システムにマップされます。 既存のモデルがない場合は、迅速に開始できるように、事前構築済みのユーザー エクスペリエンスが[提供されて](https://github.com/Microsoft/tsiclient)います。 モデルがどのように役立つかを考えるため、[サンプル デモ環境](https://insights.timeseries.azure.com/preview/demo)を参照してください。
 
@@ -91,14 +87,14 @@ Azure Time Series Insights にイベントを送信する方法を確認でき�
 * タイム シリーズ モデルにメタデータを格納します。
 * タイム シリーズ モード、インスタンス フィールド、およびイベントに、必要な情報 (タイム シリーズ ID や Timestamp プロパティなど) のみが含まれるようにします。
 
-詳細については、[イベントの調整](./time-series-insights-send-events.md#supported-json-shapes)に関するページを参照してください。
+詳細およびイベントがフラット化および格納される方法については、「[JSON のフラット化とエスケープの規則](./concepts-json-flattening-escaping-rules.md)」を参照してください。
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Advisor](../advisor/advisor-overview.md) を確認して、ビジネス復旧の構成オプションを計画します。
-- [Azure Advisor](../advisor/advisor-overview.md) を確認して、ビジネス復旧の構成オプションを計画します。
-- Azure Time Series Insights Gen2 での[データ インジェスト](./concepts-ingestion-overview.md)についてさらに確認します。
-- Azure Time Series Insights Gen2 での[データ ストレージ](./concepts-storage.md)についての記事を確認します。
-- Azure Time Series Insights Gen2 での[データ モデリング](./concepts-model-overview.md)について確認します。
+* [Azure Advisor](../advisor/advisor-overview.md) を確認して、ビジネス復旧の構成オプションを計画します。
+* [Azure Advisor](../advisor/advisor-overview.md) を確認して、ビジネス復旧の構成オプションを計画します。
+* Azure Time Series Insights Gen2 での[データ インジェスト](./concepts-ingestion-overview.md)についてさらに確認します。
+* Azure Time Series Insights Gen2 での[データ ストレージ](./concepts-storage.md)についての記事を確認します。
+* Azure Time Series Insights Gen2 での[データ モデリング](./concepts-model-overview.md)について確認します。

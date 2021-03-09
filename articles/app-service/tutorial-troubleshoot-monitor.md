@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: c34cf47a5b8c20c10b160ac6e55309b3c18448f3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: d45a8b8f426df32b9f5ac6f64237107083e0f9ab
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959019"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586287"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>チュートリアル:Azure Monitor を使用した App Service アプリのトラブルシューティング
 
@@ -52,7 +52,7 @@ az webapp deployment user set --user-name <username> --password <password>
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku B1 --is-linux
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.3" --deployment-local-git
 git remote add azure <url_from_previous_step>
-git push azure master
+git push azure main
 ```
 
 ## <a name="configure-azure-monitor-preview"></a>Azure Monitor を構成する (プレビュー)
@@ -78,7 +78,7 @@ az monitor log-analytics workspace create --resource-group myResourceGroup --wor
 次のコマンドを実行して、AppServiceConsoleLogs (標準出力またはエラー) と AppServiceHTTPLogs (Web サーバー ログ) の診断設定を作成します。 _\<app-name>_ と _\<workspace-name>_ を独自の値で置き換えます。 
 
 > [!NOTE]
-> 最初の 2 つのコマンド `resourceID` と `workspaceID` は、`az monitor diagnostic-settings create` コマンドで使用する変数です。 このコマンドの詳細については、「[Azure CLI を使用して診断設定を作成する](../azure-monitor/platform/diagnostic-settings.md#create-using-azure-cli)」を参照してください。
+> 最初の 2 つのコマンド `resourceID` と `workspaceID` は、`az monitor diagnostic-settings create` コマンドで使用する変数です。 このコマンドの詳細については、「[Azure CLI を使用して診断設定を作成する](../azure-monitor/essentials/diagnostic-settings.md#create-using-azure-cli)」を参照してください。
 >
 
 ```bash
@@ -129,7 +129,7 @@ Azure Portal で、Log Analytics ワークスペースを選びます。
 
 ### <a name="log-queries"></a>ログ クエリ
 
-ログ クエリは、Azure Monitor ログ内に収集されたデータの価値を最大限に活用するのに役立ちます。 ログ クエリを使用して、AppServiceHTTPLogs と AppServiceConsoleLogs の両方でログを特定します。 ログ クエリの詳細については、[ログ クエリの概要](../azure-monitor/log-query/log-query-overview.md)に関するページを参照してください。
+ログ クエリは、Azure Monitor ログ内に収集されたデータの価値を最大限に活用するのに役立ちます。 ログ クエリを使用して、AppServiceHTTPLogs と AppServiceConsoleLogs の両方でログを特定します。 ログ クエリの詳細については、[ログ クエリの概要](../azure-monitor/logs/log-query-overview.md)に関するページを参照してください。
 
 ### <a name="view-appservicehttplogs-with-log-query"></a>ログ クエリを使用して AppServiceHTTPLogs を確認する
 
@@ -171,11 +171,11 @@ where ResultDescription  contains "error"
 
 `ResultDescription` 列に、次のエラーが表示されます。
 
-<pre>
+```output
 PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted 
 (tried to allocate 16384 bytes) in /home/site/wwwroot/process.php on line 20, 
 referer: http://<app-name>.azurewebsites.net/
-</pre>
+```
 
 ### <a name="join-appservicehttplogs-and-appserviceconsolelogs"></a>AppServiceHTTPLogs と AppServiceConsoleLogs を結合する
 
@@ -201,11 +201,11 @@ myHttp | join myConsole on TimeGen | project TimeGen, CsUriStem, ScStatus, Resul
 
 `ResultDescription` 列に、Web サーバー エラーと同時に次のエラーが表示されます。
 
-<pre>
+```output
 PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted 
 (tried to allocate 16384 bytes) in /home/site/wwwroot/process.php on line 20, 
 referer: http://<app-name>.azurewebsites.net/
-</pre>
+```
 
 このメッセージは、`process.php` の 20 行目でメモリが使い果たされたことを示します。 これで、HTTP 500 エラーの発生中にアプリケーションでエラーが発生したことが確認されました。 問題を特定するコードを見てみましょう。
 
@@ -243,7 +243,7 @@ Git で変更をコミットしてから、コード変更を Azure にプッシ
 
 ```bash
 git commit -am "Load images on-demand in process.php"
-git push azure master
+git push azure main
 ```
 
 ### <a name="browse-to-the-azure-app"></a>Azure アプリを参照する
@@ -269,6 +269,6 @@ az monitor diagnostic-settings delete --resource $resourceID -n myMonitorLogs
 > * ログ クエリを使用して Web アプリのエラーを特定し、トラブルシューティングを行いました
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> 次のステップ
-* [Azure Monitor でログにクエリを実行する](../azure-monitor/log-query/log-query-overview.md)
+* [Azure Monitor でログにクエリを実行する](../azure-monitor/logs/log-query-overview.md)
 * [Visual Studio での Azure App Service のトラブルシューティング](troubleshoot-dotnet-visual-studio.md)
 * [HDInsight でのアプリ ログの分析](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

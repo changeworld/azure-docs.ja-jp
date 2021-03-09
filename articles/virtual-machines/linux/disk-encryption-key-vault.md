@@ -1,18 +1,18 @@
 ---
 title: Azure Disk Encryption 用のキー コンテナーの作成と構成
-description: この記事では、Azure Disk Encryption で使用するためのキー コンテナーを作成および構成する手順について説明します
+description: この記事では、Linux VM の Azure Disk Encryption で使用するためのキー コンテナーを作成および構成する手順について説明します。
 ms.service: virtual-machines-linux
 ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ecbc44a3fe376d41b245c88ab11c5937f57155a9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 03536bbfedc7f5ecf2fe8d8bb6bd3035f27b72c7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372690"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737882"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Azure Disk Encryption 用のキー コンテナーの作成と構成
 
@@ -45,7 +45,7 @@ Azure Disk Encryption で使用するためのキー コンテナーの作成と
 
 ### <a name="connect-to-your-azure-account"></a>Azure アカウントに接続する
 
-Azure CLI または Azure PowerShell を使用する前に、まず Azure サブスクリプションに接続する必要があります。 これは、[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)、[Azure PowerShell を使用してサインインする](/powershell/azure/authenticate-azureps?view=azps-2.5.0)、または、メッセージが表示されたときに資格情報を Azure portal に提供する、のいずれかの方法で行います。
+Azure CLI または Azure PowerShell を使用する前に、まず Azure サブスクリプションに接続する必要があります。 これは、[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli)、[Azure PowerShell を使用してサインインする](/powershell/azure/authenticate-azureps)、または、メッセージが表示されたときに資格情報を Azure portal に提供する、のいずれかの方法で行います。
 
 ```azurecli-interactive
 az login

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ddfa12bd758ffc362c51e10f63800665109d54a6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 536cd01fbcf2c5d18a8c12030b709427d9bb91b1
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534075"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703608"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Azure CLI を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する
 
@@ -36,13 +36,13 @@ Azure CLI を使用してユーザー委任 SAS を作成するには、バー�
 
 Azure AD の資格情報を使用して、Azure CLI にサインインします。 詳細については、[Azure CLI を使用したサインイン](/cli/azure/authenticate-azure-cli)に関するページを参照してください。
 
-## <a name="assign-permissions-with-rbac"></a>RBAC を使用してアクセス許可を割り当てる
+## <a name="assign-permissions-with-azure-rbac"></a>Azure RBAC を使用してアクセス許可を割り当てる
 
-Azure PowerShell からユーザー委任 SAS を作成するには、Azure CLI へのサインインに使用する Azure AD アカウントに、**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを含むロールが割り当てられている必要があります。 このアクセス許可により、Azure AD アカウントが*ユーザー委任キー*を要求できるようにします。 ユーザー委任キーは、ユーザー委任 SAS に署名するために使用されます。 **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを提供するロールは、ストレージ アカウント、リソース グループ、またはサブスクリプションのレベルで割り当てられている必要があります。
+Azure PowerShell からユーザー委任 SAS を作成するには、Azure CLI へのサインインに使用する Azure AD アカウントに、**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを含むロールが割り当てられている必要があります。 このアクセス許可により、Azure AD アカウントが *ユーザー委任キー* を要求できるようにします。 ユーザー委任キーは、ユーザー委任 SAS に署名するために使用されます。 **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを提供するロールは、ストレージ アカウント、リソース グループ、またはサブスクリプションのレベルで割り当てられている必要があります。
 
 Azure AD セキュリティ プリンシパルに Azure ロールを割り当てるための十分なアクセス許可がない場合は、アカウント所有者または管理者に依頼して、必要なアクセス許可を割り当ててもらう必要がある場合があります。
 
-次の例では、**ストレージ BLOB データ共同作成者**ロールを割り当てます。これには、**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションが含まれます。 ロールは、ストレージ アカウントのレベルでスコープ設定されます。
+次の例では、**ストレージ BLOB データ共同作成者** ロールを割り当てます。これには、**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションが含まれます。 ロールは、ストレージ アカウントのレベルでスコープ設定されます。
 
 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
 
@@ -61,7 +61,7 @@ Azure CLI を使用してユーザー委任 SAS を作成すると、SAS への�
 
 ユーザー委任キーが有効な最大間隔は開始日から 7 日であるため、SAS の有効期限を開始時刻から 7 日以内で指定する必要があります。 ユーザー委任キーの有効期限が切れると SAS は無効になるため、有効期限が 7 日を超える SAS でも、7 日間だけ有効になります。
 
-ユーザー委任 SAS を作成する場合は、`--auth-mode login` と `--as-user parameters` が必要です。 Azure Storage に対して行われた要求が Azure AD の資格情報で承認されるように、`--auth-mode` パラメーターに*ログイン*を指定します。 `--as-user` パラメーターを指定して、返される SAS がユーザー委任 SAS である必要があることを示します。
+ユーザー委任 SAS を作成する場合は、`--auth-mode login` と `--as-user parameters` が必要です。 Azure Storage に対して行われた要求が Azure AD の資格情報で承認されるように、`--auth-mode` パラメーターに *ログイン* を指定します。 `--as-user` パラメーターを指定して、返される SAS がユーザー委任 SAS である必要があることを示します。
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>コンテナー用にユーザー委任 SAS を作成する
 
@@ -103,7 +103,7 @@ az storage blob generate-sas \
     --permissions acdrw \
     --expiry <date-time> \
     --auth-mode login \
-    --as-user
+    --as-user \
     --full-uri
 ```
 

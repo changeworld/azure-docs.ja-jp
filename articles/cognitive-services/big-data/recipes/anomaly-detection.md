@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: 4f6fa73130e3e78b573a866dbb6524acbc88c50c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d2995f39bc61ae5bb87abafd674f411271e57ca2
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691464"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366283"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>レシピ: ビッグ データの Cognitive Services を使用した予測メンテナンス
 
-このレシピでは、IoT デバイス予測メンテナンスのために Spark で Azure Synapse Analytics および Cognitive Services を使用する方法を説明します。 [CosmosDB と Synapse Link](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) のサンプルに基づいて進めていきます。 単純にするために、このレシピでは、CosmosDB および Synapse Link を通じてストリーミング データを取得するのではなく、CSV ファイルから直接データを読み取ります。 Synapse Link のサンプルを参照することを強くお勧めします。
+このレシピでは、IoT デバイス予測メンテナンスのために Apache Spark で Azure Synapse Analytics および Cognitive Services を使用する方法を説明します。 [CosmosDB と Synapse Link](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) のサンプルに基づいて進めていきます。 単純にするために、このレシピでは、CosmosDB および Synapse Link を通じてストリーミング データを取得するのではなく、CSV ファイルから直接データを読み取ります。 Synapse Link のサンプルを参照することを強くお勧めします。
 
 ## <a name="hypothetical-scenario"></a>架空のシナリオ
 
@@ -31,13 +31,13 @@ ms.locfileid: "88691464"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
-* [Spark プール](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)で構成された [Azure Synapse ワークスペース](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)
+* [サーバーレス Apache Spark プール](../../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)で構成された [Azure Synapse ワークスペース](../../../synapse-analytics/quickstart-create-workspace.md)
 
 ## <a name="setup"></a>セットアップ
 
 ### <a name="create-an-anomaly-detector-resource"></a>Anomaly Detector リソースを作成する
 
-Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、Translator のリソースを作成します。 次のこともできます。
+Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](../../cognitive-services-apis-create-account.md) または [Azure CLI](../../cognitive-services-apis-create-account-cli.md) を使用して、Translator のリソースを作成します。 次のこともできます。
 
 - [Azure portal](https://portal.azure.com/) で既存のリソースを表示する。
 

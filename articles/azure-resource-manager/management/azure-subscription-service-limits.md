@@ -3,18 +3,18 @@ title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 87018f58a59c34c5027ca63102e4c5ca841e652b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: fd9f8c9fff60ea9f7c24eb5d6f35542a197fe366
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376225"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734086"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。
 
-Azure の価格の詳細については、[Azure の価格の概要](https://azure.microsoft.com/pricing/)に関するページをご覧ください。 そこでは、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用してコストを見積もることができます。 [Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows) などの特定のサービスに関する価格詳細ページに移動することもできます。 コスト管理に役立つヒントについては、「[Azure の課金とコスト管理で予想外のコストを防ぐ](../../cost-management-billing/manage/getting-started.md)」をご覧ください。
+Azure の価格の詳細については、[Azure の価格の概要](https://azure.microsoft.com/pricing/)に関するページをご覧ください。 そこでは、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用してコストを見積もることができます。 [Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows) などの特定のサービスに関する価格詳細ページに移動することもできます。 コスト管理に役立つヒントについては、「[Azure の課金とコスト管理で予想外のコストを防ぐ](../../cost-management-billing/cost-management-billing-overview.md)」をご覧ください。
 
 ## <a name="managing-limits"></a>管理の制限
 
@@ -26,6 +26,9 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
 > 制限を調整できる場合、表には "**既定の制限**" および "**最大制限**" の見出しが含まれます。 既定の制限を超えて制限を引き上げることはできますが、最大制限を超えることはできません。
 >
 > 制限を引き上げるまたは既定の制限を超えるクォータが必要な場合は、[オンライン カスタマー サポートに申請 (無料)](../templates/error-resource-quota.md) してください。
+>
+> "*ソフト制限*" と "*ハード制限*" という用語が、現在調整可能な制限 (ソフト制限) と最大の制限 (ハード制限) を言い表すために非公式に使用されることがよくあります。 制限を調整できない場合、ソフト制限はなく、ハード制限のみ存在します。
+>
 
 [無料試用版サブスクリプション](https://azure.microsoft.com/offers/ms-azr-0044p)は、制限およびクォータ引き上げの適用対象外です。 [無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p)をお持ちの場合は、[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)サブスクリプションにアップグレードしてください。 詳しくは、[無料試用版の従量課金制へのアップグレード](../../cost-management-billing/manage/upgrade-azure-subscription.md)および[無料試用版サブスクリプションの FAQ](https://azure.microsoft.com/free/free-account-faq) に関する記事をご覧ください。
 
@@ -74,6 +77,10 @@ Resource Manager API の読み取りと書き込みの制限については、�
 ## <a name="automation-limits"></a>Automation の制限
 
 [!INCLUDE [automation-limits](../../../includes/azure-automation-service-limits.md)]
+
+## <a name="azure-app-configuration"></a>Azure App Configuration
+
+[!INCLUDE [app-configuration-limits](../../../includes/app-configuration-limits.md)]
 
 ## <a name="azure-cache-for-redis-limits"></a>Azure Cache for Redis の制限
 
@@ -125,7 +132,7 @@ Azure Database for PostgreSQL の制限については、「[Azure Database for 
 
 [!INCLUDE [functions-limits](../../../includes/functions-limits.md)]
 
-詳細については、[Functions のホスティング プランの比較](../../azure-functions/functions-scale.md#hosting-plans-comparison)に関するページを参照してください。
+詳細については、[Functions のホスティング プランの比較](../../azure-functions/functions-scale.md)に関するページを参照してください。
 
 ## <a name="azure-kubernetes-service-limits"></a>Azure Kubernetes Service の制限
 
@@ -149,6 +156,10 @@ Azure Machine Learning コンピューティング クォータの最新の値�
 
 [!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-action-groups.md)]
 
+### <a name="autoscale"></a>自動スケール
+
+[!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-autoscale.md)]
+
 ### <a name="log-queries-and-language"></a>ログ クエリと言語
 
 [!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-log-queries.md)]
@@ -159,15 +170,27 @@ Azure Machine Learning コンピューティング クォータの最新の値�
 
 ### <a name="application-insights"></a>Application Insights
 
-[!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-app-insights.md)]
+[!INCLUDE [monitoring-limits](../../../includes/application-insights-limits.md)]
 
 ## <a name="azure-policy-limits"></a>Azure Policy の制限
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
+## <a name="azure-quantum-limits"></a>Azure Quantum の制限
+
+[!INCLUDE [quantum-limits](../../../includes/azure-quantum-limits.md)]
+
+## <a name="azure-role-based-access-control-limits"></a>Azure のロールベースのアクセス制御の制限
+
+[!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control/limits.md)]
+
 ## <a name="azure-signalr-service-limits"></a>Azure SignalR Service の制限
 
 [!INCLUDE [signalr-service-limits](../../../includes/signalr-service-limits.md)]
+
+## <a name="azure-vmware-solution-limits"></a>Azure VMware Solution の制限
+
+[!INCLUDE [azure-vmware-solutions-limits](../../azure-vmware/includes/azure-vmware-solutions-limits.md)]
 
 ## <a name="backup-limits"></a>Backup の制限
 
@@ -205,7 +228,7 @@ Azure Resource Manager デプロイ モデルではなくクラシック デプ�
 
 [!INCLUDE [azure-data-lake-analytics-limits](../../../includes/azure-data-lake-analytics-limits.md)]
 
-## <a name="data-lake-store-limits"></a>Data Lake Store の制限
+## <a name="data-lake-storage-limits"></a>Data Lake Storage の制限
 
 [!INCLUDE [azure-data-lake-store-limits](../../../includes/azure-data-lake-store-limits.md)]
 
@@ -220,7 +243,7 @@ Azure Resource Manager デプロイ モデルではなくクラシック デプ�
 ## <a name="digital-twins-limits"></a>Digital Twins の制限
 
 > [!NOTE]
-> このサービスには、調整可能な制限がある領域と、そうではない領域があります。 これは、次の表の*調整可能?* 列に示されています。 制限が調整可能な場合、*調整可能?* の値は*はい*になります。
+> このサービスには、調整可能な制限がある領域と、そうではない領域があります。 これは、次の表の *調整可能?* 列に示されています。 制限が調整可能な場合、*調整可能?* の値は *はい* になります。
 
 [!INCLUDE [digital-twins-limits](../../../includes/digital-twins-limits.md)]
 
@@ -231,10 +254,6 @@ Azure Resource Manager デプロイ モデルではなくクラシック デプ�
 ## <a name="event-hubs-limits"></a>Event Hubs の制限
 
 [!INCLUDE [azure-servicebus-limits](../../../includes/event-hubs-limits.md)]
-
-## <a name="identity-manager-limits"></a>Identity Manager の制限
-
-[!INCLUDE [automation-limits](~/includes/managed-identity-limits.md)]
 
 ## <a name="iot-central-limits"></a>IoT Central の制限
 [!INCLUDE [iot-central-limits](../../../includes/iot-central-limits.md)]
@@ -250,6 +269,11 @@ Azure Resource Manager デプロイ モデルではなくクラシック デプ�
 ## <a name="key-vault-limits"></a>Key Vault の制限
 
 [!INCLUDE [key-vault-limits](../../../includes/key-vault-limits.md)]
+
+## <a name="managed-identity-limits"></a>マネージド ID の制限
+
+[!INCLUDE [Managed-Identity-Limits](../../../includes/managed-identity-limits.md)]
+
 
 ## <a name="media-services-limits"></a>Media Services の制限
 
@@ -277,7 +301,11 @@ Media Services v2 (レガシ) に固有の制限については、「[Media Serv
 
 ### <a name="virtual-network-gateway-limits"></a>仮想ネットワーク ゲートウェイの制限
 
-[!INCLUDE [virtual-wan-limits](../../../includes/azure-virtual-network-gateway-limits.md)]
+[!INCLUDE [virtual-network-gateway-limits](../../../includes/azure-virtual-network-gateway-limits.md)]
+
+### <a name="nat-gateway-limits"></a>NAT Gateway の制限
+
+[!INCLUDE [nat-gateway-limits](../../../includes/azure-nat-gateway-limits.md)]
 
 ### <a name="virtual-wan-limits"></a>Virtual WAN の制限
 
@@ -295,6 +323,10 @@ Media Services v2 (レガシ) に固有の制限については、「[Media Serv
 ### <a name="private-link-limits"></a>Private Link の制限
 
 [!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)]
+
+## <a name="purview-limits"></a>Purview の制限
+
+Azure Purview のクォータの最新の値については、 [Azure Purview のクォータに関するページ](../../purview/how-to-manage-quotas.md)を参照してください
 
 ### <a name="traffic-manager-limits"></a>Traffic Manager の制限
 
@@ -320,10 +352,6 @@ Media Services v2 (レガシ) に固有の制限については、「[Media Serv
 
 [!INCLUDE [notification-hub-limits](../../../includes/notification-hub-limits.md)]
 
-## <a name="role-based-access-control-limits"></a>ロール ベースのアクセス制御の制限
-
-[!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control-limits.md)]
-
 ## <a name="service-bus-limits"></a>Service Bus の制限
 
 [!INCLUDE [azure-servicebus-limits](../../../includes/service-bus-quotas-table.md)]
@@ -340,6 +368,9 @@ SQL Database の制限については、[単一データベースの SQL Databas
 
 Azure Synapse Analytics の制限については、[Azure Synaplse リソースの制限](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)に関する記事を参照してください。
 
+## <a name="azure-files-and-azure-file-sync"></a>Azure Files と Azure File Sync
+Azure Files と Azure File Sync の制限については、「[Azure Files のスケーラビリティおよびパフォーマンスのターゲット](../../storage/files/storage-files-scale-targets.md)」を参照してください。
+
 ## <a name="storage-limits"></a>ストレージの制限
 
 <!--like # storage accts -->
@@ -354,16 +385,6 @@ Standard ストレージ アカウントの制限について詳しくは、[Sta
 ### <a name="azure-blob-storage-limits"></a>Azure BLOB ストレージの制限
 
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
-
-### <a name="azure-files-limits"></a>Azure Files の制限
-
-ストレージ アカウントの制限について詳しくは、「[Azure Files のスケーラビリティおよびパフォーマンスのターゲット](../../storage/files/storage-files-scale-targets.md)」をご覧ください。
-
-[!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
-
-### <a name="azure-file-sync-limits"></a>Azure File Sync の制限
-
-[!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
 ### <a name="azure-queue-storage-limits"></a>Azure Queue Storage の制限
 
@@ -382,7 +403,7 @@ Standard ストレージ アカウントの制限について詳しくは、[Sta
 
 #### <a name="disk-encryption-sets"></a>ディスク暗号化セット
 
-リージョンごと、サブスクリプションごとに、50 のディスク暗号化セットという制限があります。 詳細については、[Linux](../../virtual-machines/linux/disk-encryption.md#restrictions) または [Windows](../../virtual-machines/windows/disk-encryption.md#restrictions) 仮想マシンの暗号化ドキュメントを参照してください。 クォータを増やす必要がある場合は、Azure サポートにお問い合わせください。
+リージョンごと、サブスクリプションごとに、1000 のディスク暗号化セットという制限があります。 詳細については、[Linux](../../virtual-machines/disk-encryption.md#restrictions) または [Windows](../../virtual-machines/disk-encryption.md#restrictions) 仮想マシンの暗号化ドキュメントを参照してください。 クォータを増やす必要がある場合は、Azure サポートにお問い合わせください。
 
 ### <a name="managed-virtual-machine-disks"></a>管理対象の仮想マシン ディスク
 

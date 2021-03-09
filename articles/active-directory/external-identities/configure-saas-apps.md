@@ -1,6 +1,6 @@
 ---
 title: B2B コラボレーション用の SaaS アプリの構成 - Azure AD
-description: Azure Active Directory B2B コラボレーションのコードと PowerShell サンプル
+description: Azure Active Directory B2B コラボレーション用の SaaS アプリを構成したり、追加の使用可能なリソースを表示したりする方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b8f38d42003645e6d6544d5c2064a0c8e692c0f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e0db5e609a5e6b7d74809810a50f86d72ae85675
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907755"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90705512"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>B2B コラボレーション用の SaaS アプリの構成
 
@@ -105,5 +105,5 @@ Azure AD B2B コラボレーションに関する以下の記事を参照して�
 - [Azure AD B2B コラボレーションとは](what-is-b2b.md)
 - [動的グループと B2B コラボレーション](use-dynamic-groups.md)
 - [B2B コラボレーション ユーザーの要求マッピング](claims-mapping.md)
-- [Office 365 の外部共有](o365-external-user.md)
+- [Microsoft 365 の外部共有](o365-external-user.md)
 

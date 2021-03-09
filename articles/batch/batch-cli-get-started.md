@@ -4,12 +4,12 @@ description: Azure Batch サービスのリソースを管理するために使�
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 048dbad89893354ae78c03fc522f8ebeeb6a80f4
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: bee25d9b8985f1627a5cfc05bfb336b83be60f74
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531679"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144756"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Azure CLI で Batch リソースを管理する
 
@@ -79,7 +79,7 @@ Batch アカウントでの認証には、次の 2 つの選択肢がありま�
     
     前のセクションで説明したように、対話形式で Azure にログインすると資格情報がキャッシュされるため、Azure CLI でそれらの資格情報を使用して Batch アカウントにログインすることができます。 サービス プリンシパルを使用して Azure にログインする場合は、Batch アカウントへのログインにもこれらの資格情報が使用されます。
 
-    Azure AD の利点は、ロール ベースのアクセス制御 (RBAC) を利用できることです。 RBAC でのユーザーのアクセスは、アカウント キーを所有しているかどうかではなく、割り当てられているロールに依存します。 アカウント キーを管理する代わりに、Azure ロールを管理して、Azure AD にアクセスと認証を処理させることができます。  
+    Azure AD の利点は、Azure ロールベースのアクセス制御 (Azure RBAC) を利用できることです。 Azure RBAC でのユーザーのアクセスは、アカウント キーを所有しているかどうかではなく、割り当てられているロールに依存します。 アカウント キーを管理する代わりに、Azure ロールを管理して、Azure AD にアクセスと認証を処理させることができます。  
 
      Azure AD を使用して Batch アカウントにログインするには、[az batch account login](/cli/azure/batch/account#az-batch-account-login) コマンドを呼び出します。 
 
@@ -107,7 +107,7 @@ Azure Batch CLI 拡張機能をインストールすると、コードを記述�
 
 ## <a name="script-examples"></a>スクリプトの例
 
-Batch で一般的なタスクを実行する [CLI スクリプトの例](cli-samples.md)を参照してください。 これらの例では、Batch でアカウント、プール、ジョブ、タスクを作成して管理するために Azure CLI で使用できるコマンドの多くがカバーされています。 
+Batch で一般的なタスクを実行する [CLI スクリプトの例](./scripts/batch-cli-sample-create-account.md)を参照してください。 これらの例では、Batch でアカウント、プール、ジョブ、タスクを作成して管理するために Azure CLI で使用できるコマンドの多くがカバーされています。
 
 ## <a name="json-files-for-resource-creation"></a>リソースを作成するための JSON ファイル
 
@@ -119,7 +119,7 @@ az batch pool create my_batch_pool.json
 
 ほとんどの Batch リソースはコマンド ライン オプションのみを使用して作成できますが、一部の機能では、リソースの詳細が含まれている JSON 形式のファイルを指定する必要があります。 たとえば、開始タスクのリソース ファイルを指定する場合は、JSON ファイルを使用する必要があります。
 
-リソースの作成に必要な JSON 構文を確認するには、[Batch の REST API リファレンス][rest_api]のドキュメントを参照してください。 REST API リファレンスの "*リソースの種類*" の追加に関する各トピックには、そのリソースを作成するためのサンプル JSON スクリプトが含まれています。 これらのサンプル JSON スクリプトは、Azure CLI で使用する JSON ファイルのテンプレートとして使用できます。 たとえば、プールを作成する JSON 構文を確認するには、[アカウントにプールを追加する][rest_add_pool]方法に関するページを参照してください。
+リソースの作成に必要な JSON 構文を確認するには、[Batch の REST API リファレンス][rest_api]のドキュメントを参照してください。 REST API リファレンスの " *リソースの種類* " の追加に関する各トピックには、そのリソースを作成するためのサンプル JSON スクリプトが含まれています。 これらのサンプル JSON スクリプトは、Azure CLI で使用する JSON ファイルのテンプレートとして使用できます。 たとえば、プールを作成する JSON 構文を確認するには、[アカウントにプールを追加する][rest_add_pool]方法に関するページを参照してください。
 
 JSON ファイルを指定するサンプル スクリプトについては、[Batch でのジョブとタスクの実行](./scripts/batch-cli-sample-run-job.md)に関するページを参照してください。
 
@@ -156,8 +156,8 @@ OData 句で効率的なリスト クエリを実行する方法の詳細につ�
 Azure CLI の問題をトラブルシューティングするときに、以下のヒントが役に立ちます。
 
 * `-h` を使用して、任意の CLI コマンドの **ヘルプ テキスト** を取得します。
-* `-v` と `-vv` を使用して、**詳細**なコマンド出力を表示します。 `-vv` フラグを指定すると、Azure CLI は実際の REST 要求および応答を表示します。 これらのスイッチは、完全なエラー出力を表示する場合に便利です。
-* `--json` オプションを使用すると、**コマンド出力を JSON として**表示できます。 たとえば、 `az batch pool show pool001 --json` を実行すると、pool001 のプロパティが JSON 形式で表示されます。 この出力をコピーして変更し、`--json-file` で使用できます (この記事の前半で説明した JSON ファイルの項目を参照してください)。
+* `-v` と `-vv` を使用して、 **詳細** なコマンド出力を表示します。 `-vv` フラグを指定すると、Azure CLI は実際の REST 要求および応答を表示します。 これらのスイッチは、完全なエラー出力を表示する場合に便利です。
+* `--json` オプションを使用すると、 **コマンド出力を JSON として** 表示できます。 たとえば、 `az batch pool show pool001 --json` を実行すると、pool001 のプロパティが JSON 形式で表示されます。 この出力をコピーして変更し、`--json-file` で使用できます (この記事の前半で説明した JSON ファイルの項目を参照してください)。
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 
 ## <a name="next-steps"></a>次のステップ

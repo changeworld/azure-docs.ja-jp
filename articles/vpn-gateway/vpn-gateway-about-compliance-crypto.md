@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 12/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 499d184d373b896ba7bffcf990693ef5e6ac466b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 47d14c5ee7f6c4816bf15351e9cb28a2aaa72b4c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032426"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546847"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>暗号化要件と Azure VPN ゲートウェイについて
 
@@ -20,7 +20,7 @@ ms.locfileid: "88032426"
 
 ## <a name="about-ikev1-and-ikev2-for-azure-vpn-connections"></a>Azure VPN 接続のための IKEv1 と IKEv2 について
 
-従来から、IKEv1 接続は Basic SKU に対してのみ許可し、IKEv2 接続は Basic SKU 以外のすべての VPN ゲートウェイ SKU に対して許可してきました。 Basic SKU では 1 つの接続のみが許可され、パフォーマンスなどの他の制限と共に、IKEv1 プロトコルのみをサポートするレガシ デバイスを使用している顧客はエクスペリエンスが制限されました。 IKEv1 プロトコルを使用している顧客のエクスペリエンスを拡張するために、Basic SKU を除くすべての VPN ゲートウェイ SKU に対して IKEv1 接続が許可されるようになりました。 詳細については、[VPN ゲートウェイの SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku) に関するページを参照してください。
+従来から、IKEv1 接続は Basic SKU に対してのみ許可し、IKEv2 接続は Basic SKU 以外のすべての VPN ゲートウェイ SKU に対して許可してきました。 Basic SKU では 1 つの接続のみが許可され、パフォーマンスなどの他の制限と共に、IKEv1 プロトコルのみをサポートするレガシ デバイスを使用している顧客はエクスペリエンスが制限されました。 IKEv1 プロトコルを使用している顧客のエクスペリエンスを拡張するために、Basic SKU を除くすべての VPN ゲートウェイ SKU に対して IKEv1 接続が許可されるようになりました。 詳細については、[VPN ゲートウェイの SKU](./vpn-gateway-about-vpn-gateway-settings.md#gwsku) に関するページを参照してください。
 
 ![Azure VPN Gateway の IKEv1 および IKEv2 接続](./media/vpn-gateway-about-compliance-crypto/ikev1-ikev2-connections.png)
 
@@ -29,6 +29,8 @@ IKEv1 および IKEv2 接続が同じ VPN ゲートウェイに適用されて�
 ## <a name="about-ipsec-and-ike-policy-parameters-for-azure-vpn-gateways"></a>Azure VPNゲートウェイの IPsec/IKE ポリシーのパラメーターについて
 
 IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさまざまな組み合わせでサポートしています。 暗号化アルゴリズムとパラメーターの特定の組み合わせを要求しない場合、Azure VPN ゲートウェイは一連の既定の提案を使用します。 既定の構成では、幅広いサード パーティ製 VPN デバイスとの相互運用性を最大化できるように、既定のポリシー セットが選択されています。 そのため、ポリシーと提案の数は、使用可能な暗号化アルゴリズムとキーの強度の可能な組み合わせのすべてには対応できません。
+
+### <a name="default-policy"></a>既定のポリシー
 
 Azure VPN ゲートウェイの既定のポリシー セットは、「[サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて](vpn-gateway-about-vpn-devices.md)」のドキュメントに示されています。
 

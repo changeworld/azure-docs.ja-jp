@@ -3,14 +3,13 @@ title: Windows で Azure Service Fabric サービスをコンテナー化する
 description: Windows で Service Fabric Reliable Services と Reliable Actors サービスをコンテナー化する方法について説明します。
 ms.topic: conceptual
 ms.date: 5/23/2018
-ms.author: anmola
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16840eb397dad697d4f3b9f361225e98442ae39e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e0c5f3ecf0334ad2190d8542e54388a2a25d30fb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016208"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999809"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Windows で Service Fabric Reliable Services と Reliable Actors をコンテナー化する
 

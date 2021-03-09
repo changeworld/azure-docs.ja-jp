@@ -9,10 +9,10 @@ ms.date: 03/20/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 10fb9e8169b7f4159ccbf4a0ff36021f6033f811
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75552421"
 ---
 このチュートリアルを完了するには、次の要件を満たす必要があります。
@@ -24,7 +24,7 @@ ms.locfileid: "75552421"
 **Docker**:このチュートリアルを完了するには、Docker がローカル環境にインストールされている必要があります。 Docker には、[macOS][docker-mac]、[Windows][docker-windows]、[Linux][docker-linux] 上で Docker 環境の構成を行うパッケージが用意されています。
 
 > [!IMPORTANT]
-> Azure Cloud Shell には Docker デーモンが含まれていないため、このチュートリアルを完了するためには、Azure CLI と Docker エンジンの両方を自分で*ローカル コンピューター*にインストールする*必要があります*。 このチュートリアルで Azure Cloud Shell を使用することはできません。
+> Azure Cloud Shell には Docker デーモンが含まれていないため、このチュートリアルを完了するためには、Azure CLI と Docker エンジンの両方を自分で *ローカル コンピューター* にインストールする *必要があります*。 このチュートリアルで Azure Cloud Shell を使用することはできません。
 
 <!-- LINKS - External -->
 [docker-get-started]: https://docs.docker.com/engine/docker-overview/

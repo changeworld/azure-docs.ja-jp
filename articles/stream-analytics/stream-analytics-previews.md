@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics のプレビュー機能
 description: この記事では、現在プレビュー段階にある Azure Stream Analytics の機能を示します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 8/07/2020
-ms.openlocfilehash: e11d5b14bdf6b134fefea79a1f709ec73499bd20
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: d07a2364cbd2b63ef9e38387b6e915f7e63676ae
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815710"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012157"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics のプレビュー機能
 
@@ -22,13 +21,9 @@ ms.locfileid: "88815710"
 
 以下の機能はパブリック プレビュー段階です。 これらの機能は現在でも利用できますが、運用環境では使用しないでください。
 
-### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>マネージド ID を使用して SQL Database の出力に対する認証を行う
+### <a name="authenticate-to-sql-database-output-with-managed-identities-preview"></a>マネージド ID を使用して SQL Database の出力に対する認証を行う (プレビュー)
 
 Azure Stream Analytics では、Azure SQL Database 出力シンクに対する[マネージド ID 認証](../active-directory/managed-identities-azure-resources/overview.md)がサポートされています。 マネージド ID を使用すると、パスワードの変更による再認証の必要性など、ユーザー ベースの認証方法に伴う制限がなくなります。 
-
-### <a name="output-to-azure-synapse-analytics"></a>Azure Synapse Analytics に対する出力
-
-Azure Stream Analytics ジョブで、[Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) 内の SQL プール テーブルに出力でき、最大 200 MB/秒のスループット レートを処理できます。これにより、レポートやダッシュボードなどのワークロードに対して、最も要求の厳しいリアルタイム分析とホットパス データ処理がサポートされます。  
 
 ### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Azure Machine Learning によって管理されるカスタム ML モデルを使用したリアルタイムのハイ パフォーマンス スコアリング
 
@@ -52,7 +47,7 @@ Visual Studio Tools for Azure Stream Analytics ではローカル テスト機�
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>Azure Stream Analytics 用の Visual Studio Code
 
-Visual Studio Code で Azure Stream Analytics のジョブを作成できます。 [VS Code の使用に関するチュートリアル](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code)をご覧ください。
+Visual Studio Code で Azure Stream Analytics のジョブを作成できます。 [VS Code の使用に関するチュートリアル](./quick-create-visual-studio-code.md)をご覧ください。
 
 ### <a name="local-testing-with-live-data-in-visual-studio-code"></a>Visual Studio Code でのライブ データを使用したローカル テスト
 

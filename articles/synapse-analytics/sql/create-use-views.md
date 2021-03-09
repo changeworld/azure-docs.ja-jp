@@ -1,24 +1,24 @@
 ---
-title: SQL オンデマンド (プレビュー) でビューを作成および使用する
-description: このセクションでは、ビューを作成および使用して、SQL オンデマンド (プレビュー) クエリをラップする方法を学習します。 ビューを使用すると、これらのクエリを再利用できます。 ビューは、Power BI などのツールを SQL オンデマンドと組み合わせて使用する場合にも必要になります。
+title: サーバーレス SQL プールでビューを作成および使用する
+description: このセクションでは、ビューを作成および使用して、サーバーレス SQL プール クエリをラップする方法を学習します。 ビューを使用すると、これらのクエリを再利用できます。 ビューは、Power BI などのツールをサーバーレス SQL プールと組み合わせて使用する場合にも必要になります。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 79206ffb51b41c3d7e671bb37353548b47190f6b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.author: stefanazaric
+ms.reviewer: jrasnick
+ms.openlocfilehash: 0948c7c82d7577bae07057bff9d1be4d7e09f978
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206464"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462287"
 ---
-# <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Azure Synapse Analytics を使用して SQL オンデマンド (プレビュー) でビューを作成および使用する
+# <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用してビューを作成および使用する
 
-このセクションでは、ビューを作成および使用して、SQL オンデマンド (プレビュー) クエリをラップする方法を学習します。 ビューを使用すると、これらのクエリを再利用できます。 ビューは、Power BI などのツールを SQL オンデマンドと組み合わせて使用する場合にも必要になります。
+このセクションでは、ビューを作成および使用して、サーバーレス SQL プール クエリをラップする方法を学習します。 ビューを使用すると、これらのクエリを再利用できます。 ビューは、Power BI などのツールをサーバーレス SQL プールと組み合わせて使用する場合にも必要になります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -57,7 +57,7 @@ WITH (
 
 この例のビューでは、基になるファイルへの絶対パスを使用する `OPENROWSET` 関数が使用されます。 ストレージのルート URL の `EXTERNAL DATA SOURCE` がある場合は、`DATA_SOURCE` と相対ファイル パスと共に `OPENROWSET` を使用できます。
 
-```
+```sql
 CREATE VIEW TaxiView
 AS SELECT *, nyc.filepath(1) AS [year], nyc.filepath(2) AS [month]
 FROM

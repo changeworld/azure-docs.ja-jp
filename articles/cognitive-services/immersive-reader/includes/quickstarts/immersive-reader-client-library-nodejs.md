@@ -3,28 +3,28 @@ title: イマーシブ リーダー Node.js クライアント ライブラリ�
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、Web アプリを一から構築してイマーシブ リーダー API 機能を追加します。
 services: cognitive-services
-author: pasta
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: immersive-reader
 ms.topic: include
-ms.date: 05/20/2020
-ms.author: pasta
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 91adff9a8330defb6c2b9f1e915c46886649fed3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 09/14/2020
+ms.author: nitinme
+ms.custom: devx-track-js
+ms.openlocfilehash: c34ed97339076a4412f8b6bf36ddf342205c88be
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602561"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91376380"
 ---
-[イマーシブ リーダー](https://www.onenote.com/learningtools)は、読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
+[Immersive Reader](https://www.onenote.com/learningtools) は、新しい読者、言語学習者、ディスレクシア (失読症) などの学習障碍者の読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。 アプリケーションに Immersive Reader を使用すると、テキストを分離することによって、集中しやすくする、よく用いられる単語に画像を表示する、品詞を強調表示する、選択テキストを読み上げる、単語や文章をリアルタイムで翻訳する、といったことができます。
 
-このクイックスタートでは、Web アプリを一から構築し、イマーシブ リーダー クライアント ライブラリを使用してイマーシブ リーダーを統合します。 このクイック スタートの完全なサンプルは[こちら](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs)で入手できます。
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
+このクイックスタートでは、Web アプリを一から構築し、Immersive Reader クライアント ライブラリを使用して Immersive Reader を統合します。 このクイックスタートの完全なサンプルは [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
 * Azure Active Directory 認証用に構成されたイマーシブ リーダー リソース。 設定するには、[これらの手順](../../how-to-create-immersive-reader.md)に従ってください。 環境のプロパティを構成するときに、ここで作成した値の一部が必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
 * [Node.js](https://nodejs.org/) と [Yarn](https://yarnpkg.com)
 * [Visual Studio Code](https://code.visualstudio.com/) などの IDE
@@ -246,13 +246,13 @@ npm start
 
 ブラウザーを開き、 _http://localhost:3000_ に移動します。 次のように表示されます。
 
-![サンプル アプリ](../../media/quickstart-nodejs/1-buildapp.png)
+![サンプル アプリ - Node.js](../../media/quickstart-nodejs/1-buildapp.png)
 
 ## <a name="launch-the-immersive-reader"></a>イマーシブ リーダーの起動
 
 [イマーシブ リーダー] ボタンをクリックすると、イマーシブ リーダーが起動し、ページのコンテンツが表示されます。
 
-![Immersive Reader](../../media/quickstart-nodejs/2-viewimmersivereader.png)
+![Immersive Reader - Node.js](../../media/quickstart-nodejs/2-viewimmersivereader.png)
 
 ## <a name="next-steps"></a>次のステップ
 

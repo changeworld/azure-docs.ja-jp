@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight での YARN のトラブルシューティング
 description: Apache Hadoop YARN と Azure HDInsight の操作についてよく寄せられる質問とその回答を示します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5b8ccbfd3e39415416cfc8fabcf9614f5934042
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233539"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931417"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Hadoop YARN のトラブルシューティング
 
@@ -38,7 +35,7 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 2. **default** キューを選びます。
 
     ![Apache Ambari YARN での default キューの選択](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
-3. **default** キューで、**容量**を 50% から 25% に変更します。 **thriftsvr** キューで、**容量**を 25% に変更します。
+3. **default** キューで、**容量** を 50% から 25% に変更します。 **thriftsvr** キューで、**容量** を 25% に変更します。
 
     ![default キューと thriftsvr キューの容量を 25% に変更する](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
 4. 新しいキューを作成し、 **[キューの追加]** を選択します。
@@ -131,15 +128,9 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 
 ### <a name="additional-reading"></a><a name="additional-reading-2"></a>その他の情報
 
-- [SSH を使用して HDInsight (Apache Hadoop) に接続する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [SSH を使用して HDInsight (Apache Hadoop) に接続する](./hdinsight-hadoop-linux-use-ssh-unix.md)
 - [Apache Hadoop YARN の概念とアプリケーション](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
 ## <a name="next-steps"></a>次のステップ
 
-問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
-
-- [Azure コミュニティのサポート](https://azure.microsoft.com/support/community/)を通じて Azure エキスパートから回答を得る。
-
-- [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
-
-- さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

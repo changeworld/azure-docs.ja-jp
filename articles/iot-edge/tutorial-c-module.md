@@ -2,19 +2,19 @@
 title: 'チュートリアル: Linux 用の C モジュールを開発する - Azure IoT Edge | Microsoft Docs'
 description: このチュートリアルでは、C コードで IoT Edge モジュールを作成し、IoT Edge を実行する Linux デバイスに展開する方法について説明します
 services: iot-edge
-author: shizn
+author: kgremban
 manager: philmea
-ms.author: xshi
+ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: cf9fb8a95be9a5ba025534508139a0e300036542
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 470f82026cc27431555336570ef6f41063442c1e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064844"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964543"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の C IoT Edge モジュールを開発する
 
@@ -33,9 +33,9 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>ソリューション スコープ
+## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、**Visual Studio Code** を使用して **C** でモジュールを開発し、そのモジュールを **Linux デバイス**に展開する方法について説明します。 Windows デバイス用のモジュールを開発する場合は、「[Develop a C IoT Edge module for Windows devices (Windows デバイス用の C IoT Edge モジュールを開発する)](tutorial-c-module-windows.md)」を参照してください。
+このチュートリアルでは、**Visual Studio Code** を使用して **C** でモジュールを開発し、そのモジュールを **Linux デバイス** に展開する方法について説明します。 Windows デバイス用のモジュールを開発する場合は、「[Develop a C IoT Edge module for Windows devices (Windows デバイス用の C IoT Edge モジュールを開発する)](tutorial-c-module-windows.md)」を参照してください。
 
 次の表を使用し、C モジュールを開発して Linux にデプロイする際のオプションをご確認ください。
 
@@ -44,13 +44,11 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 | **Linux AMD64** | ![Linux AMD64 の C モジュール用の VS Code を使用します](./media/tutorial-c-module/green-check.png) | ![Linux AMD64 の C モジュール用の VS を使用します](./media/tutorial-c-module/green-check.png) |
 | **Linux ARM32** | ![Linux ARM32 の C モジュール用の VS Code を使用します](./media/tutorial-c-module/green-check.png) | ![Linux ARM32 の C モジュール用の VS を使用します](./media/tutorial-c-module/green-check.png) |
 
-## <a name="prerequisites"></a>前提条件
-
 このチュートリアルを開始する前に、前のチュートリアルを完了して、Linux コンテナー開発用の開発環境を設定しておく必要があります。[Linux デバイス用の IoT Edge モジュールを開発する](tutorial-develop-for-linux.md)。 このチュートリアルを完了すると、次の前提条件が満たされます。
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
 * [Azure IoT Edge を実行している Linux デバイス](quickstart-linux.md)
-* コンテナー レジストリ ([Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) など)。
+* コンテナー レジストリ ([Azure Container Registry](../container-registry/index.yml) など)。
 * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して構成された [Visual Studio Code](https://code.visualstudio.com/)。
 * Linux コンテナーを実行するように構成された [Docker CE](https://docs.docker.com/install/)。
 
@@ -78,9 +76,9 @@ C で IoT Edge モジュールを開発するには、開発用マシンに次�
    | ----- | ----- |
    | フォルダーの選択 | VS Code によってソリューション ファイルが作成される、開発マシン上の場所を選択します。 |
    | Provide a solution name (ソリューション名の指定) | ソリューションのためにわかりやすい名前を入力するか、既定値の **EdgeSolution** をそのまま使用します。 |
-   | Select module template (モジュール テンプレートの選択) | **C モジュール**を選択します。 |
+   | Select module template (モジュール テンプレートの選択) | **C モジュール** を選択します。 |
    | Provide a module name (モジュール名の指定) | ご自身のモジュール **CModule** に名前を付けます。 |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの**ログイン サーバー**の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br> 最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/cmodule のようになります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの **ログイン サーバー** の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br> 最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/cmodule のようになります。 |
 
    ![Docker イメージ リポジトリを指定する](./media/tutorial-c-module/repository.png)
 
@@ -91,7 +89,7 @@ C で IoT Edge モジュールを開発するには、開発用マシンに次�
 IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格情報をプルし、それらを環境ファイルに取り込もうとします。 資格情報が既に含まれているかどうかを確認します。 含まれていない場合は、次のようにして追加します。
 
 1. VS Code エクスプローラーで、.env ファイルを開きます。
-2. ご自身の Azure コンテナー レジストリからコピーした**ユーザー名**と**パスワード**の値を使用して、フィールドを更新します。
+2. ご自身の Azure コンテナー レジストリからコピーした **ユーザー名** と **パスワード** の値を使用して、フィールドを更新します。
 3. このファイルを保存します。
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する
@@ -364,7 +362,7 @@ IoT Edge デバイスに配置マニフェストを適用すると、デバイ�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードを含む IoT Edge モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[独自の IoT Edge モジュールの開発](module-development.md)または [Visual Studio Code を使用してモジュールを開発](how-to-vs-code-develop-module.md)する方法の詳細をご確認ください。 シミュレート済み温度モジュールを含む IoT Edge モジュールの例については、[IoT Edge モジュールのサンプル](https://github.com/Azure/iotedge/tree/master/edge-modules)および [IoT C SDK のサンプル](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples)を参照してください。
+このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードを含む IoT Edge モジュールを作成しました。
 
 次のチュートリアルに進むと、Azure のクラウド サービスをデプロイしてエッジでデータの処理と分析を行ううえで、Azure IoT Edge がどのように役立つかを確認できます。
 

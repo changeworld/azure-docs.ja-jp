@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9ddfe3ea0d26a9032922423e7f2c2a2b6c3e411a
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 1ca526b7ecbe20a54ec115521cdfbc93c713e0da
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89295563"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360056"
 ---
 # <a name="input-metadata"></a>入力メタデータ
 

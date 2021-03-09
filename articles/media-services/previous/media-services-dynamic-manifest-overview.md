@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2d83b114487f882b7ee38d3d71c84b6abec04a2b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 96f0c4d4ea7c32e2b58807204ef45b75feae7132
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266920"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727330"
 ---
 # <a name="filters-and-dynamic-manifests"></a>フィルターと動的マニフェスト
 
@@ -29,7 +29,7 @@ ms.locfileid: "89266920"
 > * [Version 2](media-services-dynamic-manifest-overview.md)
 > * [Version 3](../latest/filters-dynamic-manifest-overview.md)
 
-Media Services のリリース 2.17 以降では、資産にフィルターを定義できます。 これらのフィルターは、ビデオの 1 つのセクションのみの再生や (ビデオ全体を再生するのではなく)、顧客のデバイスが処理できるオーディオ サブセットとビデオ演奏のみの再生 (資産に関連付けられているすべての演奏ではなく) などを顧客が選択できるようにする、サーバー側のルールです。 この資産のフィルター処理は**動的マニフェスト**によって実行されます。これは、指定したフィルターに基づいてビデオをストリームする必要がある顧客のリクエストに応じて作成されます。
+Media Services のリリース 2.17 以降では、資産にフィルターを定義できます。 これらのフィルターは、ビデオの 1 つのセクションのみの再生や (ビデオ全体を再生するのではなく)、顧客のデバイスが処理できるオーディオ サブセットとビデオ演奏のみの再生 (資産に関連付けられているすべての演奏ではなく) などを顧客が選択できるようにする、サーバー側のルールです。 この資産のフィルター処理は **動的マニフェスト** によって実行されます。これは、指定したフィルターに基づいてビデオをストリームする必要がある顧客のリクエストに応じて作成されます。
 
 このトピックでは、顧客にとってどのフィルターを使用することが効果的であるか一般的なシナリオを示し、プログラムによるフィルターの作成方法を説明するトピックへのリンクを示します。
 
@@ -88,11 +88,11 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
 
 フィルターを使用した MPEG DASH URL
 
-`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=MyLocalFilter)`
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=MyLocalFilter)`
 
 フィルターを使用した Smooth Streaming URL
 
-`http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)`
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)`
 
 
 コンテンツを配信してストリーミング URL をビルドする方法の詳細については、「 [コンテンツの配信の概要](media-services-deliver-content-overview.md)」をご覧ください。
@@ -111,7 +111,7 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
 グローバル フィルターとローカル フィルターのプロパティはまったく同じです。 この 2 つのフィルターの主な違いは、適しているシナリオが異なることです。 グローバル フィルターは通常、デバイス プロファイル (演奏フィルター処理) に適していますが、ローカル フィルターは特定のアセットのトリミングに使用できます。
 
 ## <a name="common-scenarios"></a><a id="scenarios"></a>一般的なシナリオ
-コンテンツ (ストリーミング ライブ イベントまたはビデオ オンデマンド) を顧客に配信する場合、その目標は、異なるネットワーク条件におけるさまざまなデバイスに高品質のビデオを配信することにあると既に説明しました。 それに加えて、アセットのフィルタ―処理や、 **動的マニフェスト**の使用に関するその他の要件も考慮する必要があります。 次のセクションでは、さまざまなフィルター処理のシナリオについて、簡単に説明します。
+コンテンツ (ストリーミング ライブ イベントまたはビデオ オンデマンド) を顧客に配信する場合、その目標は、異なるネットワーク条件におけるさまざまなデバイスに高品質のビデオを配信することにあると既に説明しました。 それに加えて、アセットのフィルタ―処理や、 **動的マニフェスト** の使用に関するその他の要件も考慮する必要があります。 次のセクションでは、さまざまなフィルター処理のシナリオについて、簡単に説明します。
 
 * 特定のデバイスで処理できるオーディオやビデオ演奏のサブセットのみを指定する (アセットに関連付けられているすべての演奏ではなく)。 
 * ビデオの 1 つのセクションのみを再生する (ビデオ全体を再生するのではなく)。

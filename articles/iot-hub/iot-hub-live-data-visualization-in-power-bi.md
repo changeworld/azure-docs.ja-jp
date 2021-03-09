@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
-ms.openlocfilehash: ed429d2f584da20439b0cb0eedcf4742b9ae4599
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d10d0202e9e4c813cffe6373acfb5200ebb3266
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84634517"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146771"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する
 
@@ -24,7 +24,7 @@ ms.locfileid: "84634517"
 
 ## <a name="what-you-learn"></a>学習内容
 
-Azure IoT Hub が受信したリアルタイム センサー データを Power BI を使用して視覚化する方法について説明します。 Web アプリを使用して IoT Hub 内のデータを視覚化しようとする場合は、[Web アプリを使用した Azure IoT Hub からのリアルタイム センサー データの視覚化](iot-hub-live-data-visualization-in-web-apps.md)に関するページを参照してください。
+Azure IoT ハブが受信したリアルタイム センサー データを Power BI を使用して視覚化する方法について説明します。 Web アプリを使用して IoT ハブ内のデータを視覚化しようとする場合は、[Web アプリを使用した Azure IoT Hub からのリアルタイム センサー データの視覚化](iot-hub-live-data-visualization-in-web-apps.md)に関するページを参照してください。
 
 ## <a name="what-you-do"></a>作業内容
 
@@ -84,7 +84,7 @@ Azure IoT Hub が受信したリアルタイム センサー データを Power 
 
    **エンドポイント**: **[メッセージング]** を選びます。
 
-   **共有アクセス ポリシー名**:Stream Analytics ジョブで IoT Hub に使用する共有アクセス ポリシーの名前を選択します。 このチュートリアルでは、*service* を選択できます。 *service* ポリシーは、新しい IoT Hub 上で既定で作成され、IoT Hub によって公開されるクライアント側エンドポイント上で送受信するためのアクセス許可を付与します。 詳細については、「[アクセス制御とアクセス許可](iot-hub-devguide-security.md#access-control-and-permissions)」を参照してください。
+   **共有アクセス ポリシー名**:Stream Analytics ジョブで IoT ハブに使用する共有アクセス ポリシーの名前を選択します。 このチュートリアルでは、*service* を選択できます。 *service* ポリシーは、新しい IoT ハブ上で既定で作成され、IoT ハブによって公開されるクライアント側エンドポイント上で送受信するためのアクセス許可を付与します。 詳細については、「[アクセス制御とアクセス許可](iot-hub-devguide-security.md#access-control-and-permissions)」を参照してください。
 
    **[共有アクセス ポリシー キー]** :このフィールドは、共有アクセス ポリシー名の選択内容に基づいて自動的に入力されます。
 
@@ -140,9 +140,9 @@ Stream Analytics ジョブで、 **[概要]** を選択してから、 **[開始
 
 ## <a name="create-and-publish-a-power-bi-report-to-visualize-the-data"></a>データを視覚化する Power BI レポートの作成と公開
 
-次の手順では、Power BI サービスを使用してレポートの作成と公開を行う方法を示しています。 Power BI で "新しい外観" を使用する場合は、いくつかの変更を加えて次の手順を実行できます。 "新しい外観" の相違点と移動方法を理解するには、「[Power BI サービスの "新しい外観"](https://docs.microsoft.com/power-bi/consumer/service-new-look)」を参照してください。
+次の手順では、Power BI サービスを使用してレポートの作成と公開を行う方法を示しています。 Power BI で "新しい外観" を使用する場合は、いくつかの変更を加えて次の手順を実行できます。 "新しい外観" の相違点と移動方法を理解するには、「[Power BI サービスの "新しい外観"](/power-bi/consumer/service-new-look)」を参照してください。
 
-1. デバイスでサンプル アプリケーションが実行されていることを確認します。 実行されていない場合、チュートリアルの「[デバイスのセットアップ](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started)」を参照してください。
+1. デバイスでサンプル アプリケーションが実行されていることを確認します。 実行されていない場合、チュートリアルの「[デバイスのセットアップ](./iot-hub-raspberry-pi-kit-node-get-started.md)」を参照してください。
 
 2. [Power BI](https://powerbi.microsoft.com/en-us/) アカウントにサインインします。
 

@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.custom: amqp, devx-track-javascript
-ms.openlocfilehash: 214c0533e6aefcfa496533359221f7a3061031b8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: amqp, devx-track-js
+ms.openlocfilehash: 9de3f45a9d62a9d131583c133440ac8a311a468d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420738"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993250"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>IoT Hub モジュール ID とモジュール ツイン (Node.js) の概要
 
@@ -217,4 +217,4 @@ ms.locfileid: "87420738"
 
 * [デバイス管理の概要](iot-hub-node-node-device-management-get-started.md)
 
-* [IoT Edge の概要](../iot-edge/tutorial-simulate-device-linux.md)
+* [IoT Edge の概要](../iot-edge/quickstart-linux.md)

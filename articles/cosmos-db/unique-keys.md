@@ -4,23 +4,25 @@ description: Azure Cosmos データベースの一意のキーを定義して使
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f5a867a00fa28dcd03842d02be16d88e3a7d2e9f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9eb2b916bfe6c73a1535afb077b04fbb081dd5f1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132655"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685722"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Azure Cosmos DB の一意キー制約
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-一意キーを使用すると、Azure Cosmos コンテナーにデータ整合性のレイヤーが追加されます。 一意キー ポリシーは、Azure Cosmos コンテナーを作成するときに作成します。 一意キーを使用して、論理パーティション内にある 1 つ以上の値が一意であることを保証します。 また、[パーティション キー](partition-data.md)ごとの一意性を保証することもできます。
+一意キーを使用すると、Azure Cosmos コンテナーにデータ整合性のレイヤーが追加されます。 一意キー ポリシーは、Azure Cosmos コンテナーを作成するときに作成します。 一意キーを使用して、論理パーティション内にある 1 つ以上の値が一意であることを保証します。 また、[パーティション キー](partitioning-overview.md)ごとの一意性を保証することもできます。
 
 一意キー ポリシーを使用してコンテナーを作成した後は、論理パーティション内に新しく項目を作成したり既存の項目を更新したりして重複項目を作成することは、一意キー制約で指定されているためできなくなります。 パーティション キーと一意キーを組み合わせることで、コンテナーのスコープ内にある項目の一意性が確保されます。
 
-たとえば、メール アドレスを一意キー制約にし、`CompanyID` をパーティション キーにして、Azure Cosmos コンテナーを作成するものとします。 ユーザーのメール アドレスを一意キーとして構成すると、各項目は特定の `CompanyID` 内で一意のメール アドレスを持つようになります。 重複する電子メール アドレスを同じパーティション キー値と組み合わせて、2 つの項目を作成することはできません。 Azure Cosmos DB の SQL (Core) API では、項目は JSON 値として保存されます。 これらの JSON 値では、大文字と小文字が区別されます。 プロパティを一意のキーとして選択すると、そのプロパティに大文字と小文字を区別する値を挿入できます。 たとえば、name プロパティに一意のキーが定義されている場合、"Gaby" は "gaby" とは異なるため、これらの両方をコンテナーに挿入できます。
+たとえば、`Email address` を一意キー制約にし、`CompanyID` をパーティション キーにして、Azure Cosmos コンテナーを作成するものとします。 ユーザーのメール アドレスを一意キーとして構成すると、各項目は特定の `CompanyID` 内で一意のメール アドレスを持つようになります。 重複する電子メール アドレスを同じパーティション キー値と組み合わせて、2 つの項目を作成することはできません。 Azure Cosmos DB の SQL (Core) API では、項目は JSON 値として保存されます。 これらの JSON 値では、大文字と小文字が区別されます。 プロパティを一意のキーとして選択すると、そのプロパティに大文字と小文字を区別する値を挿入できます。 たとえば、name プロパティに一意のキーが定義されている場合、"Gaby" は "gaby" とは異なるため、これらの両方をコンテナーに挿入できます。
 
 メール アドレスは同じでも、姓と名とメール アドレスは異なる項目を作成するには、一意キー ポリシーにさらにパスを追加します。 つまり、メール アドレスだけに基づいて一意なキーを作成するのではなく、姓、名、メール アドレスの組み合わせを使用して、一意キーを作成することもできます。 このキーは、複合一意キーと呼ばれます。 その場合、指定した `CompanyID` 内では、3 つの値の一意な組み合わせだけが使用できるようになります。 
 
@@ -43,7 +45,7 @@ ms.locfileid: "87132655"
 
 * 異なる一意キーを使用するように、既存のコンテナーを更新することはできません。 つまり、一意キー ポリシーを指定してコンテナーを作成した後で、ポリシーを変更することはできません。
 
-* 既存のコンテナーに対して一意キーを設定するには、一意キー制約を持つ新しいコンテナーを作成します。 適切なデータ移行ツールを使用して、既存のコンテナーから新しいコンテナーにデータを移動します。 SQL コンテナーの場合は、[データ移行ツール](import-data.md)を使用してデータを移動します。 MongoDB コンテナーの場合は、[mongoimport.exe または mongorestore.exe](mongodb-migrate.md) を使用してデータを移動します。
+* 既存のコンテナーに対して一意キーを設定するには、一意キー制約を持つ新しいコンテナーを作成します。 適切なデータ移行ツールを使用して、既存のコンテナーから新しいコンテナーにデータを移動します。 SQL コンテナーの場合は、[データ移行ツール](import-data.md)を使用してデータを移動します。 MongoDB コンテナーの場合は、[mongoimport.exe または mongorestore.exe](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json) を使用してデータを移動します。
 
 * 一意キー ポリシーでは、最大で 16 個のパス値を使用できます。 たとえば、`/firstName`、`/lastName`、`/address/zipCode` を値として使用できます。 一意キー ポリシーには、それぞれ最大 10 個の一意キー制約または一意なキーの組み合わせを含めることができます。 一意インデックス制約ごとの結合されたパスの長さは、60 バイトを超えないようにする必要があります。 上の例では、姓、名、メール アドレスの組み合わせで 1 つの制約になっています。 この制約では、可能な 16 個のパスのうち 3 個が使用されています。
 
@@ -55,5 +57,5 @@ ms.locfileid: "87132655"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [論理パーティション](partition-data.md)の詳細を確認する
+* [論理パーティション](partitioning-overview.md)の詳細を確認する
 * コンテナーの作成時に[一意キーを定義する方法](how-to-define-unique-keys.md)を確認する

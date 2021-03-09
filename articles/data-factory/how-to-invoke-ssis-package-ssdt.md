@@ -1,23 +1,18 @@
 ---
 title: SSDT から SSIS パッケージを実行する
 description: SSDT から Azure 内で SSIS パッケージを実行する方法について説明します。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.author: sawinark
 author: swinarko
-ms.reviewer: douglasl
-manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 08/10/2020
-ms.openlocfilehash: 006b7db9f63f5ba74fee936383206b18c42aa038
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.date: 09/06/2020
+ms.openlocfilehash: f11a3845e8644f3f60425538b2ef32cff668d88d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041852"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384930"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSDT から Azure 内で SSIS パッケージを実行する
 
@@ -29,7 +24,7 @@ ms.locfileid: "88041852"
 
 ## <a name="prerequisites"></a>前提条件
 
-この機能を使うには、Visual Studio 用の SSIS プロジェクト拡張機能を含む最新の SSDT を[こちら](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)からダウンロードしてインストールしてください。 または、最新の SSDT をスタンドアロン インストーラーとして[こちら](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)からダウンロードしてインストールすることもできます。
+この機能を使うには、Visual Studio 用の SSIS プロジェクト拡張機能を含む最新の SSDT を[こちら](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)からダウンロードしてインストールしてください。 または、最新の SSDT をスタンドアロン インストーラーとして[こちら](/sql/ssdt/download-sql-server-data-tools-ssdt#ssdt-for-vs-2017-standalone-installer)からダウンロードしてインストールすることもできます。
 
 ## <a name="azure-enable-ssis-projects"></a>Azure 対応の SSIS プロジェクト
 
@@ -49,15 +44,15 @@ Azure-SSIS IR にすぐに接続する場合、詳細については「[Azure-SS
 
 既存の SSIS プロジェクトの場合は、次の手順に従って Azure 対応にすることができます。
 
-1. SSDT の [ソリューション エクスプローラー] ウィンドウでプロジェクト ノードを右クリックして、メニューをポップアップ表示します。 次に、 **[Azure Data Factory の SSIS]** サブメニューで **[Azure 対応プロジェクト]** 項目を選択し、**Azure 対応プロジェクト ウィザード**を起動します。
+1. SSDT の [ソリューション エクスプローラー] ウィンドウでプロジェクト ノードを右クリックして、メニューをポップアップ表示します。 次に、 **[Azure Data Factory の SSIS]** サブメニューで **[Azure 対応プロジェクト]** 項目を選択し、**Azure 対応プロジェクト ウィザード** を起動します。
 
    ![既存の SSIS プロジェクトを Azure 対応にする](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-for-existing-project.png)
 
-2. **[Visual Studio の構成を選択]** ページで、Azure でパッケージの実行設定を適用する既存の VS の構成を選択します。 VS 構成を作成していない場合は、新しい VS 構成を作成することもできます ([新しい VS 構成の作成](https://docs.microsoft.com/visualstudio/ide/how-to-create-and-edit-configurations?view=vs-2019)に関する記事を参照してください)。 ローカル環境とクラウド環境でパッケージを実行する場合は、少なくとも 2 つの異なる VS 構成を使用することをお勧めします。これにより、クラウド構成に対してプロジェクトを Azure 対応にすることができます。 このようにして、プロジェクトまたはパッケージをパラメーター化した場合は、さまざまな実行環境 (ローカル コンピューターまたは Azure のいずれか) に基づいて、実行時にプロジェクトまたはパッケージのパラメーターに異なる値を割り当てることができます。 例については、「[パッケージ実行環境の切り替え](#switchenvironment)」を参照してください。
+2. **[Visual Studio の構成を選択]** ページで、Azure でパッケージの実行設定を適用する既存の VS の構成を選択します。 VS 構成を作成していない場合は、新しい VS 構成を作成することもできます ([新しい VS 構成の作成](/visualstudio/ide/how-to-create-and-edit-configurations)に関する記事を参照してください)。 ローカル環境とクラウド環境でパッケージを実行する場合は、少なくとも 2 つの異なる VS 構成を使用することをお勧めします。これにより、クラウド構成に対してプロジェクトを Azure 対応にすることができます。 このようにして、プロジェクトまたはパッケージをパラメーター化した場合は、さまざまな実行環境 (ローカル コンピューターまたは Azure のいずれか) に基づいて、実行時にプロジェクトまたはパッケージのパラメーターに異なる値を割り当てることができます。 例については、「[パッケージ実行環境の切り替え](#switchenvironment)」を参照してください。
 
    ![Visual Studio の構成を選択](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-select-visual-studio-configurations.png)
 
-3. 既存の SSIS プロジェクトを Azure 対応にするには、ターゲット サーバーのバージョンを Azure-SSIS IR でサポートされている最新のバージョンに設定する必要があります。 現時点では、Azure-SSIS IR の既定の互換性レベルは 140 で、**SQL Server 2017** に相当します。 SQL Server 2017 でサポートされない追加のコンポーネントがパッケージに含まれていないことを確認してください。 また、互換性のあるすべての追加コンポーネントがカスタム セットアップを使用して Azure-SSIS IR にインストールされていることも確認してください ([Azure-SSIS IR のカスタマイズ](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)に関する記事を参照してください)。 **[次へ]** ボタンをクリックして続行します。
+3. 既存の SSIS プロジェクトを Azure 対応にするには、ターゲット サーバーのバージョンを Azure-SSIS IR でサポートされている最新のバージョンに設定する必要があります。 Azure-SSIS IR は現在、**SQL Server 2017** に基づいています。 SQL Server 2017 でサポートされない追加のコンポーネントがパッケージに含まれていないことを確認してください。 また、互換性のあるすべての追加コンポーネントがカスタム セットアップを使用して Azure-SSIS IR にインストールされていることも確認してください ([Azure-SSIS IR のカスタマイズ](./how-to-configure-azure-ssis-ir-custom-setup.md)に関する記事を参照してください)。 **[次へ]** ボタンをクリックして続行します。
 
    ![ターゲット サーバーのバージョンの切り替え](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-switch-target-server-version-step.png)
 
@@ -74,7 +69,7 @@ Azure 対応プロジェクトを ADF の SSIS に接続することにより、
 2. **[ADF で SSIS IR を選択]** ページで、パッケージを実行する既存の ADF と Azure-SSIS IR を選択します。 また、それらがない場合は新規に作成することもできます。
    - 既存の Azure-SSIS IR を選択するには、まず、関連する Azure サブスクリプションと ADF を選択します。
    - Azure-SSIS IR がない既存の ADF を選択した場合は、 **[SSIS IR の作成]** ボタンを選択して、ADF ポータルに新しく作成します。 作成したら、このページに戻って、新しい Azure-SSIS IR を選択できます。
-   - ADF がない既存の Azure サブスクリプションを選択した場合は、 **[SSIS IR の作成]** ボタンを選択して、**統合ランタイム作成ウィザード**を起動します。 このウィザードでは、指定された場所とプレフィックスを入力して、新しい Azure リソース グループ、Data Factory、SSIS IR を自動的に作成することができます。これには、次のパターンの名前が付けられます。**YourPrefix-RG/DF/IR-YourCreationTime**. 作成したら、このページに戻って、新しい ADF と Azure-SSIS IR を選択できます。
+   - ADF がない既存の Azure サブスクリプションを選択した場合は、 **[SSIS IR の作成]** ボタンを選択して、**統合ランタイム作成ウィザード** を起動します。 このウィザードでは、指定された場所とプレフィックスを入力して、新しい Azure リソース グループ、Data Factory、SSIS IR を自動的に作成することができます。これには、次のパターンの名前が付けられます。**YourPrefix-RG/DF/IR-YourCreationTime**. 作成したら、このページに戻って、新しい ADF と Azure-SSIS IR を選択できます。
 
    ![ADF で SSIS IR を選択する](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard2.png)
 
@@ -180,7 +175,7 @@ Azure での SSIS パッケージの実行では、**EncryptSensitiveWithUserKey
 
    ![ソース接続をパラメーター化する](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-update-task-with-parameters.png)
 
-3. 既定では、**Development** という名前のローカル環境にパッケージ実行用の既存の VS 構成があります。 **Azure** というクラウド環境にパッケージ実行のための新しい VS 構成を作成します。まだ作成していない場合は、[新しい VS 構成の作成](https://docs.microsoft.com/visualstudio/ide/how-to-create-and-edit-configurations?view=vs-2019)に関する記事を参照してください。
+3. 既定では、**Development** という名前のローカル環境にパッケージ実行用の既存の VS 構成があります。 **Azure** というクラウド環境にパッケージ実行のための新しい VS 構成を作成します。まだ作成していない場合は、[新しい VS 構成の作成](/visualstudio/ide/how-to-create-and-edit-configurations)に関する記事を参照してください。
 
 4. パッケージのパラメーターを表示する場合は、 **[構成にパラメーターを追加]** ボタンを選択して、パッケージの **[パラメーター値の管理]** ウィンドウを開きます。 次に、**Development** および **Azure** 構成の **FilePath** パッケージ パラメーターに、異なる値のターゲット ファイル パスを割り当てます。
 
@@ -206,4 +201,4 @@ Azure での SSIS パッケージの実行では、**EncryptSensitiveWithUserKey
 
 ## <a name="next-steps"></a>次の手順
 
-SSDT から Azure でのパッケージの実行に問題がなければ、ADF パイプラインに SSIS パッケージ実行アクティビティとしてそれらをデプロイし、実行できます。[ADF パイプラインの SSIS パッケージ実行アクティビティとしての SSIS パッケージの実行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)に関する記事を参照してください。
+SSDT から Azure でのパッケージの実行に問題がなければ、ADF パイプラインに SSIS パッケージ実行アクティビティとしてそれらをデプロイし、実行できます。[ADF パイプラインの SSIS パッケージ実行アクティビティとしての SSIS パッケージの実行](./how-to-invoke-ssis-package-ssis-activity.md)に関する記事を参照してください。

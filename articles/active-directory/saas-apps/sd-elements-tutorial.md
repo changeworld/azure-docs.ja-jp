@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 323d6324bc99028a3df4cb9cada133ad8cd990aa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a9bcda4affa19cf8793cd078fdc5b96d842eb42b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543263"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893598"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sd-elements"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SD Elements の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543263"
 * ユーザーが自分の Azure AD アカウントを使用して SD Elements に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SD Elements では、**IDP** Initiated SSO がサポートされます
+* SD Elements では、 **IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-sd-elements-from-the-gallery"></a>ギャラリーから SD Elements を追加します。
 
@@ -49,7 +49,7 @@ Azure AD への SD Elements の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**SD Elements**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **SD Elements** 」と入力します。
 1. 結果のパネルから **[SD Elements]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -143,7 +143,7 @@ SD Elements で Azure AD SSO を構成してテストするには、次の構成
 
 1. 上部のメニューで **[System]\(システム\)** をクリックし、 **[Single Sign-on]\(シングル サインオン\)** をクリックします。
 
-    ![Configure single sign-on](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
+    ![[System]\(システム\) が選択され、ドロップダウン メニューから [Single Sign-On]\(シングル サインオン\) が選択されていることを示すスクリーンショット。](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
 
 1. **[Single Sign-On Settings]** ダイアログで、次の手順を実行します。
 
@@ -151,9 +151,9 @@ SD Elements で Azure AD SSO を構成してテストするには、次の構成
 
     a. **SSO 型** として **SAML** を選びます。
 
-    b. **[Identity Provider Entity ID]\(ID プロバイダーのエンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+    b. **[Identity Provider Entity ID]\(ID プロバイダーのエンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。
 
-    c. **[Identity Provider Single Sign-On Service]\(ID プロバイダーのシングル サインオン サービス\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    c. **[Identity Provider Single Sign-On Service]\(ID プロバイダーのシングル サインオン サービス\)** テキスト ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     d. **[保存]** をクリックします。
 
@@ -167,11 +167,11 @@ SD Elements で Azure AD SSO を構成してテストするには、次の構成
 
 1. 上部のメニューで、 **[ユーザー管理]** 、 **[ユーザー]** の順にクリックします。
 
-    ![SD Elements テスト ユーザーの作成](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
+    ![[ユーザー管理] ドロップダウンから [ユーザー] が選択されていることを示すスクリーンショット。](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
 
 1. **[新しいユーザーの追加]** をクリックします。
 
-    ![SD Elements テスト ユーザーの作成](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
+    ![[新規ユーザーの追加] ボタンが選択されている画面のスクリーンショット。](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
 
 1. **[新規ユーザーの追加]** ダイアログで、次の手順を実行します。
 
@@ -181,7 +181,7 @@ SD Elements で Azure AD SSO を構成してテストするには、次の構成
 
     b. **[First Name]\(名\)** テキストボックスに、ユーザーの名前 (名) を入力します (この例では **B.** )。
 
-    c. **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
+    c. **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon** )。
 
     d. **[ロール]** として **[ユーザー]** を選びます。
 
@@ -191,14 +191,14 @@ SD Elements で Azure AD SSO を構成してテストするには、次の構成
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [SD Elements] タイルをクリックすると、SSO を設定した SD Elements に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [SD Elements] タイルをクリックすると、SSO を設定した SD Elements に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で SD Elements を試す](https://aad.portal.azure.com/)

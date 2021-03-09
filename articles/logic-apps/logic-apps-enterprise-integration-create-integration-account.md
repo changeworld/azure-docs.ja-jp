@@ -7,39 +7,49 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/26/2019
-ms.openlocfilehash: 4a0d3c344d19d0831dd8525ddf3311e0ce7cd682
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 11/04/2020
+ms.openlocfilehash: 51059dd1c4c5c93e155cd7a2d34c3cbaf29db6e2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520819"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705587"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps で B2B エンタープライズ統合用の統合アカウントを作成および管理する
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) を使用して[エンタープライズ統合および B2B ソリューション](../logic-apps/logic-apps-enterprise-integration-overview.md)をビルドする前に、統合アカウントを作成する必要があります。これは、ロジック アプリ ワークフローで定義して使用する統合成果物のためのセキュリティで保護され、スケーラブルで管理可能なコンテナーを提供する個別の Azure リソースです。
 
-たとえば、取引先、契約、マップ、スキーマ、証明書、バッチ構成などの B2B 成果物を作成、保存、管理できます。 また、ロジック アプリでこれらの成果物を操作し、Logic Apps B2B コネクタを使用できるようにするには、お使いのロジック アプリと[ご自分の統合アカウントをリンクさせる](#link-account)必要があります。 統合アカウントとロジック アプリは、どちらも*同じ*場所またはリージョンに存在する必要があります。
+たとえば、取引先、契約、マップ、スキーマ、証明書、バッチ構成などの B2B 成果物を作成、保存、管理できます。 また、ロジック アプリでこれらの成果物を操作し、Logic Apps B2B コネクタを使用できるようにするには、お使いのロジック アプリと[ご自分の統合アカウントをリンクさせる](#link-account)必要があります。 統合アカウントとロジック アプリは、どちらも *同じ* 場所またはリージョンに存在する必要があります。
 
-> [!TIP]
-> [統合サービス環境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)内で統合アカウントを作成するには、「[ISE で統合アカウントを作成する](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)」を参照してください。
+> [!IMPORTANT]
+> 選択した統合アカウントの種類に基づいて、統合アカウントを作成するとコストが発生します。 詳細については、「[Logic Apps の価格モデルと課金モデル](logic-apps-pricing.md#integration-accounts)」と「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)」をご覧ください。
 
 このトピックでは、次のタスクの実行方法について説明します。
 
 * 統合アカウントの作成
+
+  > [!TIP]
+  > [統合サービス環境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)内で統合アカウントを作成するには、「[ISE で統合アカウントを作成する](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)」を参照してください。
+
 * ロジック アプリへの統合アカウントのリンク
+
 * 統合アカウントの価格レベルを変更する。
+
 * ロジック アプリから統合アカウントのリンクを解除する。
+
 * 別の Azure リソース グループまたはサブスクリプションへの統合アカウントの移動
+
 * 統合アカウントの削除
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 ## <a name="create-integration-account"></a>統合アカウントを作成する
 
-このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount)、または [Azure CLI](/cli/azure/resource?view=azure-cli-latest#az-resource-create) のいずれかを使用できます。
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount)、または [Azure CLI](/cli/azure/resource#az-resource-create) のいずれかを使用できます。
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -73,6 +83,81 @@ ms.locfileid: "86520819"
 
 1. ロジック アプリで統合アカウントを使用するには、次の手順に従って、事前に統合アカウントとロジック アプリをリンクします。
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+このセクションの Azure CLI コマンドを使用すると、統合アカウントを作成できます。
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+### <a name="create-an-integration-account"></a>統合アカウントの作成
+
+統合アカウントを作成するには、こちらのコマンドを使用します。
+
+1. [az logic integration-account](/cli/azure/ext/logic/logic/integration-account) 拡張機能を追加するには、[az extension add](/cli/azure/extension#az_extension_add)コマンドを使用します。
+
+   ```azurecli
+   az extension add –-name logic
+   ```
+
+1. リソース グループを作成するか、既存のリソース グループを使用するには、[az group create](/cli/azure/group#az_group_create) コマンドを実行します。
+
+   ```azurecli
+   az group create --name myresourcegroup --location westus
+   ```
+
+   リソース グループの統合アカウントの一覧を表示するには、[az logic integration-account list](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_list) コマンドを使用します。
+
+   ```azurecli
+   az logic integration-account list --resource-group myresourcegroup
+   ```
+
+1. 統合アカウントを作成するには、[az logic integration-account create](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_create) コマンドを実行します。
+
+   ```azurecli
+   az logic integration-account create --resource-group myresourcegroup \
+       --name integration_account_01 --location westus --sku name=Standard
+   ```
+
+   統合アカウントの名前には、文字、数字、ハイフン (-)、アンダースコア (_)、かっこ ((、))、およびピリオド (.) のみを含めることができます。
+
+   > [!TIP]
+   > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 内で統合アカウントを作成するには、その ISE を場所として選択します。 詳細については、「[ISE で統合アカウントを作成する](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)」を参照してください。
+
+   特定の統合アカウントを表示するには、[az logic integration-account show](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_show) コマンドを使用します。
+
+   ```azurecli
+   az logic integration-account show --name integration_account_01 --resource-group myresourcegroup
+   ```
+
+   [az logic integration-account update](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_update) コマンドを使用すると、SKU または価格レベルを変更できます。
+
+   ```azurecli
+   az logic integration-account update --sku name=Basic --name integration_account_01 \
+       --resource-group myresourcegroup
+   ```
+
+   価格の詳細については、こちらのリソースを参照してください。
+
+   * [Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#integration-accounts)
+   * [Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)
+   * [Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)
+
+JSON ファイルを使用して統合アカウントをインポートするには、[az logic integration-account import](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_import) コマンドを使用します。
+
+```azurecli
+az logic integration-account import --name integration_account_01 \
+    --resource-group myresourcegroup --input-path integration.json
+```
+
+[az logic integration-account delete](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_delete) コマンドを使用すると、統合アカウントを削除できます。
+
+```azurecli
+az logic integration-account delete --name integration_account_01 --resource-group myresourcegroup
+```
+
+ロジック アプリで統合アカウントを使用するには、事前に統合アカウントとロジック アプリをリンクします。 次のセクションではリンクについて説明します。
+
+---
 <a name="link-account"></a>
 
 ## <a name="link-to-logic-app"></a>ロジック アプリにリンクする
@@ -89,7 +174,7 @@ ms.locfileid: "86520819"
 
 1. リンクを終了するには、 **[保存]** を選択します。
 
-   ![統合アカウントを選択する](./media/logic-apps-enterprise-integration-create-integration-account/save-link.png)
+   ![統合アカウントを選択するために [保存] を選択する場所を示すスクリーンショット。](./media/logic-apps-enterprise-integration-create-integration-account/save-link.png)
 
    統合アカウントが正常にリンクされると、Azure によって確認メッセージが表示されます。
 
@@ -110,9 +195,9 @@ ms.locfileid: "86520819"
 
 ### <a name="upgrade-pricing-tier"></a>価格レベルのアップグレード
 
-この変更を行うには、このセクションの手順に従って Azure portal を使用するか、[Azure CLI](#upgrade-tier-azure-cli) のいずれかを使用できます。
+この変更を行うには、Azure portal または Azure CLI のいずれかを使用できます。
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -130,15 +215,15 @@ ms.locfileid: "86520819"
 
 <a name="upgrade-tier-azure-cli"></a>
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. [Azure CLI の前提条件をインストールします](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (まだインストールしていない場合)。
+1. [Azure CLI の前提条件をインストールします](/cli/azure/get-started-with-azure-cli) (まだインストールしていない場合)。
 
-1. Azure portal で、Azure [**Cloud Shell**](../cloud-shell/overview.md?view=azure-cli-latest) 環境を開きます。
+1. Azure portal で、[Azure Cloud Shell](../cloud-shell/overview.md) 環境を開きます。
 
    ![Azure Cloud Shell を開く](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. コマンド プロンプトで [**az resource** コマンド](/cli/azure/resource?view=azure-cli-latest#az-resource-update)を入力し、`skuName` を目的の上位レベルに設定します。
+1. コマンド プロンプトで [**az resource** コマンド](/cli/azure/resource#az-resource-update)を入力し、`skuName` を目的の上位レベルに設定します。
 
    ```azurecli
    az resource update --resource-group {ResourceGroupName} --resource-type Microsoft.Logic/integrationAccounts --name {IntegrationAccountName} --subscription {AzureSubscriptionID} --set sku.name={SkuName}
@@ -150,19 +235,21 @@ ms.locfileid: "86520819"
    az resource update --resource-group FabrikamIntegration-RG --resource-type Microsoft.Logic/integrationAccounts --name Fabrikam-Integration --subscription XXXXXXXXXXXXXXXXX --set sku.name=Standard
    ```
 
+---
+
 <a name="downgrade-pricing-tier"></a>
 
 ### <a name="downgrade-pricing-tier"></a>価格レベルのダウングレード
 
-この変更を行うには、[Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) を使用します。
+この変更を行うには、[Azure CLI](/cli/azure/get-started-with-azure-cli) を使用します。
 
-1. [Azure CLI の前提条件をインストールします](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (まだインストールしていない場合)。
+1. [Azure CLI の前提条件をインストールします](/cli/azure/get-started-with-azure-cli) (まだインストールしていない場合)。
 
-1. Azure portal で、Azure [**Cloud Shell**](../cloud-shell/overview.md?view=azure-cli-latest) 環境を開きます。
+1. Azure portal で、[Azure Cloud Shell](../cloud-shell/overview.md) 環境を開きます。
 
    ![Azure Cloud Shell を開く](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. コマンド プロンプトで、[**az resource** コマンド](/cli/azure/resource?view=azure-cli-latest#az-resource-update)を入力し、`skuName` を目的のレベルに設定します。
+1. コマンド プロンプトで、[**az resource** コマンド](/cli/azure/resource#az-resource-update)を入力し、`skuName` を目的のレベルに設定します。
 
    ```azurecli
    az resource update --resource-group <resourceGroupName> --resource-type Microsoft.Logic/integrationAccounts --name <integrationAccountName> --subscription <AzureSubscriptionID> --set sku.name=<skuName>
@@ -214,7 +301,7 @@ ms.locfileid: "86520819"
 
    ![変更を保存するために [Put] を選択](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-save-changes.png)
 
-1. Azure portal で、ご利用のロジック アプリを探して選択します。 アプリの**ワークフロー設定**で、**統合アカウント** プロパティが空になっていることを確認します。
+1. Azure portal で、ご利用のロジック アプリを探して選択します。 アプリの **ワークフロー設定** で、**統合アカウント** プロパティが空になっていることを確認します。
 
    ![統合アカウントがリンクされていないことを確認](./media/logic-apps-enterprise-integration-create-integration-account/unlinked-account.png)
 
@@ -222,7 +309,7 @@ ms.locfileid: "86520819"
 
 統合アカウントを別の Azure リソース グループまたは Azure サブスクリプションに移動できます。 リソースを移動すると、Azure によって新しいリソース ID が作成されるため、代わりに新しい ID を使用し、移動したリソースに関連付けられているスクリプトまたはツールを更新してください。 サブスクリプションを変更する場合は、既存のリソース グループまたは新しいリソース グループも指定する必要があります。
 
-このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure CLI](/cli/azure/resource?view=azure-cli-latest#az-resource-move) のいずれかを使用できます。
+このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure CLI](/cli/azure/resource#az-resource-move) のいずれかを使用できます。
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -254,7 +341,7 @@ ms.locfileid: "86520819"
 
 ## <a name="delete-integration-account"></a>統合アカウントの削除
 
-このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure CLI](/cli/azure/resource?view=azure-cli-latest#az-resource-delete)、または [Azure PowerShell](/powershell/module/az.logicapp/remove-azintegrationaccount) のいずれかを使用できます。
+このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure CLI](/cli/azure/resource#az-resource-delete)、または [Azure PowerShell](/powershell/module/az.logicapp/remove-azintegrationaccount) のいずれかを使用できます。
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 

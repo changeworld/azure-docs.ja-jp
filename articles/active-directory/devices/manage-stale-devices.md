@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc8f599860b6095e1bab90e8e29818d8079e89a9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d12679e64d690614aaf788837a02af007448f83d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184943"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393678"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>方法:Azure AD で古いデバイスを管理する
 
@@ -37,7 +37,7 @@ Azure AD 内の古いデバイスは、組織内のデバイスの一般的な�
 
 ## <a name="detect-stale-devices"></a>古いデバイスの検出
 
-一定期間にわたってクラウド アプリへのアクセスに使用されていない登録済みデバイス、というのが古いデバイスの定義であるため、古いデバイスの検出にはタイムスタンプ関連のプロパティが必要です。 Azure AD では、このプロパティは **ApproximateLastLogonTimestamp** または**アクティビティ タイムスタンプ**と呼ばれます。 現在の時間と**アクティビティ タイムスタンプ**の値の差が、アクティブなデバイスの基準として定義されている期間を超えている場合、デバイスは無効と見なされます。 この**アクティビティ タイムスタンプ**は現在パブリック プレビューです。
+一定期間にわたってクラウド アプリへのアクセスに使用されていない登録済みデバイス、というのが古いデバイスの定義であるため、古いデバイスの検出にはタイムスタンプ関連のプロパティが必要です。 Azure AD では、このプロパティは **ApproximateLastLogonTimestamp** または **アクティビティ タイムスタンプ** と呼ばれます。 現在の時間と **アクティビティ タイムスタンプ** の値の差が、アクティブなデバイスの基準として定義されている期間を超えている場合、デバイスは無効と見なされます。 この **アクティビティ タイムスタンプ** は現在パブリック プレビューです。
 
 ## <a name="how-is-the-value-of-the-activity-timestamp-managed"></a>アクティビティ タイムスタンプの値の管理のしくみは?  
 
@@ -53,13 +53,13 @@ Azure AD 内の古いデバイスは、組織内のデバイスの一般的な�
 
 アクティビティ タイムスタンプの値を取得する方法には、次の 2 つがあります。
 
-- Azure portal の[デバイス ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)の **[アクティビティ]** 列
+- Azure portal の [デバイス ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)の **[アクティビティ]** 列
 
-    ![アクティビティ タイムスタンプ](./media/manage-stale-devices/01.png)
+    :::image type="content" source="./media/manage-stale-devices/01.png" alt-text="Azure portal のページに、デバイスの名前、所有者、およびその他の情報が一覧表示されたスクリーンショット。1 つの列には、アクティビティのタイム スタンプが表示されます。" border="false":::
 
 - [Get-AzureADDevice](/powershell/module/azuread/Get-AzureADDevice) コマンドレット
 
-    ![アクティビティ タイムスタンプ](./media/manage-stale-devices/02.png)
+    :::image type="content" source="./media/manage-stale-devices/02.png" alt-text="コマンド ライン出力を示すスクリーンショット。1 行が強調表示され、ApproximateLastLogonTimeStamp 値のタイム スタンプが一覧表示されます。" border="false":::
 
 ## <a name="plan-the-cleanup-of-your-stale-devices"></a>古いデバイスのクリーンアップを計画する
 
@@ -147,7 +147,7 @@ Get-AzureADDevice -All:$true | select-object -Property Enabled, DeviceId, Displa
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
-Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
+Get-AzureADDevice -All:$true | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
 ```
 
 ## <a name="what-you-should-know"></a>知っておくべきこと
@@ -163,9 +163,9 @@ Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-ob
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Windows Autopilot デバイスに気を付ける必要があるのはなぜですか?
 
 Windows Autopilot オブジェクトに関連付けられていた Azure AD デバイスを削除した場合、デバイスが将来再利用される場合に、次の 3 つのシナリオが発生する可能性があります。
-- ホワイト グローブを使用しない Windows Autopilot のユーザー主導型のデプロイでは、新しい Azure AD デバイスが作成されますが、ZTDID にタグ付けされることはありません。
+- 事前プロビジョニングを使用しない Windows Autopilot のユーザー主導型のデプロイを実行すると、新しい Azure AD デバイスが作成されますが、ZTDID にタグ付けされることはありません。
 - Windows Autopilot の自己デプロイ モードのデプロイでは、Azure AD デバイスの関連付けが見つからないため、これらのデプロイは失敗します  (これは、"なりすました" デバイスが資格情報なしで Azure AD への参加を試行しないようにするためのセキュリティ メカニズムです)。このエラーでは、ZTDID の不一致が示されます。
-- Windows Autopilot のホワイト グローブ デプロイでは、Azure AD デバイスの関連付けが見つからないため、これらのデプロイは失敗します (バックグラウンドでは、ホワイト グローブ デプロイで同じ自己デプロイ モード プロセスが使用されるため、同じセキュリティ メカニズムが適用されます)。
+- Windows Autopilot の事前プロビジョニング デプロイの場合、Azure AD デバイスの関連付けが見つからないため、これらのデプロイは失敗します。 (バックグラウンドでは、事前プロビジョニング デプロイで同じ自己デプロイ モード プロセスが使用されるため、同じセキュリティ メカニズムが適用されます。)
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>すべての参加済みデバイスのタイプを知るにはどうすればよいですか?
 
@@ -175,9 +175,9 @@ Windows Autopilot オブジェクトに関連付けられていた Azure AD デ�
 
 Azure AD への認証にデバイスが使用されているすべての認証は拒否されます。 一般的な例を次に示します。
 
-- **Hybrid Azure AD 参加済みデバイス** - ユーザーはデバイスを使用してオンプレミス ドメインにサインインできます。 ただし、Office 365 などの Azure AD リソースにはアクセスできません。
+- **Hybrid Azure AD 参加済みデバイス** - ユーザーはデバイスを使用してオンプレミス ドメインにサインインできます。 ただし、Microsoft 365 などの Azure AD リソースにはアクセスできません。
 - **Azure AD 参加済みデバイス** - ユーザーはデバイスを使用してサインインできません。 
-- **モバイル デバイス** - ユーザーは Office 365 などの Azure AD リソースにアクセスできません。 
+- **モバイル デバイス** - ユーザーは Microsoft 365 などの Azure AD リソースにアクセスできません。 
 
 ## <a name="next-steps"></a>次のステップ
 

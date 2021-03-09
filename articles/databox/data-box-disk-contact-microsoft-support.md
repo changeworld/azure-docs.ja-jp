@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: d4622ae1fa87a47915094b7ab90390c753b82dbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0c45626016049424c8028eea7ffbd7f281e9012
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609116"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744153"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Azure Data Box のサポート チケットを開く
 
@@ -76,7 +76,7 @@ ms.locfileid: "84609116"
 
 2. **[ヘルプとサポート]** に **[最近のサポート要求]** の表形式の一覧が表示されます。
 
-    ![サポート要求を管理する](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png)
+    ![サポート要求を管理する 2](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png)
 
 3. サポート要求を選択してクリックします。 この要求のステータスと詳細を表示することができます。 この要求をフォローアップする場合は、 **[+ 新しいメッセージ]** をクリックします。
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 08/03/2020
+ms.date: 01/19/2021
 ms.author: curtand
-ms.openlocfilehash: d9023579b6627e9dab9feac8dfaccd94dc9f5c12
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 1062c8dfe416af2d39063bf71f39d52e151e28d3
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798127"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096074"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>[自分のサインイン] ページから最近のサインイン アクティビティを表示および検索する
 
@@ -25,6 +25,12 @@ ms.locfileid: "88798127"
 - だれかがパスワードを推測しようとしているような痕跡。
 - 普段の利用場所とは異なるところから攻撃者が自分のアカウントへのサインインに成功したこと。
 - 攻撃者がアクセスしようとしたアプリ。
+
+>[!Note]
+> 個人用 Microsoft アカウントでのサインイン時にエラーが発生した場合でも、組織のドメイン名 (contoso.com など) または組織の **テナント ID** (管理者から入手) を使用して、次のいずれかの URL でサインインできます。
+>
+>   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
+>   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
 
 ## <a name="view-your-recent-sign-in-activity"></a>最近のサインイン アクティビティを表示する
 
@@ -46,7 +52,7 @@ ms.locfileid: "88798127"
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>サインインの失敗が表示される場合
 
-サインインの失敗が表示される場合は、資格情報を誤って入力した可能性があります。 攻撃者がパスワードを推測しようとしている可能性もあります。 このリスクに対応するには、パスワードを変更する必要はありませんが、Azure Multi-Factor Authentication (MFA) に登録することをお勧めします。 多要素認証を使用すると、ハッカーがパスワードを推測したとしても、それだけではアカウントにアクセスできません。
+サインインの失敗が表示される場合は、資格情報を誤って入力した可能性があります。 攻撃者がパスワードを推測しようとしている可能性もあります。 このリスクに対応するには、パスワードを変更する必要はありませんが、Azure AD Multi-Factor Authentication (MFA) に登録することをお勧めします。 多要素認証を使用すると、ハッカーがパスワードを推測したとしても、それだけではアカウントにアクセスできません。
 
 ![サインインの失敗のタイル](media/my-account-portal-sign-ins-page/unsuccessful.png)
 
@@ -56,9 +62,9 @@ ms.locfileid: "88798127"
 
 利用可能な情報によって、最近のサインイン アクティビティを検索することができます。 たとえば、オペレーティング システム、場所、アプリなどによって、最近のサインイン アクティビティを検索できます。
 
-1. **[最近のアクティビティを確認する]** ページで、**検索**バーに検索する情報を入力します。 たとえば、「`Unsuccessful`」と入力すると、マイ アカウント アプリによって収集されたすべてのサインインの失敗アクティビティが検索されます。
+1. **[最近のアクティビティを確認する]** ページで、**検索** バーに検索する情報を入力します。 たとえば、「`Unsuccessful`」と入力すると、マイ アカウント アプリによって収集されたすべてのサインインの失敗アクティビティが検索されます。
 
-2. 検索を開始するには、**検索**ボタンを選択します。
+2. 検索を開始するには、**検索** ボタンを選択します。
 
     ![検索バー、検索ボタン、結果が強調表示された [最近のアクティビティ] ページ](media/my-account-portal-sign-ins-page/sign-in-search.png)
 

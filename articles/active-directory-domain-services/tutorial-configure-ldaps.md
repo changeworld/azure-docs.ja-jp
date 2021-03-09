@@ -1,20 +1,20 @@
 ---
 title: チュートリアル - Azure Active Directory Domain Services 用に LDAPS を構成する | Microsoft Docs
 description: このチュートリアルでは、Azure Active Directory Domain Services のマネージド ドメイン用に、セキュリティで保護されたライトウェイト ディレクトリ アクセス プロトコル (LDAPS) を構成する方法について説明します。
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 1164d838a45496a075d356995a60beb967cdfcca
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.author: justinha
+ms.openlocfilehash: 6da1d285440daa5d1d5a230905a77057728d4ae6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054342"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256544"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメイン用に Secure LDAP を構成する
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
     * 必要に応じて、[Azure Active Directory Domain Services のマネージド ドメインを作成して構成][create-azure-ad-ds-instance]します。
 * ご利用のコンピューターにインストールされた *LDP.exe* ツール。
-    * 必要に応じて、*Active Directory Domain Services と LDAP* 用に[リモート サーバー管理ツール (RSAT)][rsat] をインストールしてください。
+    * 必要に応じて、*Active Directory Domain Services と LDAP* 用に [リモート サーバー管理ツール (RSAT)][rsat] をインストールしてください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -74,7 +74,7 @@ OpenSSL、Keytool、MakeCert、[New-SelfSignedCertificate][New-SelfSignedCertifi
 
 このチュートリアルでは、[New-SelfSignedCertificate][New-SelfSignedCertificate] コマンドレットを使用して Secure LDAP 用の自己署名証明書を作成してみましょう。
 
-**管理者**として PowerShell ウィンドウを開き、次のコマンドを実行します。 *$dnsName* 変数は、実際のマネージド ドメインで使用されている DNS 名に置き換えてください (例: *aaddscontoso.com*)。
+**管理者** として PowerShell ウィンドウを開き、次のコマンドを実行します。 *$dnsName* 変数は、実際のマネージド ドメインで使用されている DNS 名に置き換えてください (例: *aaddscontoso.com*)。
 
 ```powershell
 # Define your own DNS name used by your managed domain
@@ -107,11 +107,11 @@ Thumbprint                                Subject
 
 Secure LDAP を使用するために、ネットワーク トラフィックは、公開鍵基盤 (PKI) を使用して暗号化されます。
 
-* マネージド ドメインには**秘密**キーが適用されます。
+* マネージド ドメインには **秘密** キーが適用されます。
     * Secure LDAP トラフィックの "*暗号化を解除する*" には、この秘密キーが使用されます。 秘密キーの適用先はマネージド ドメインに限定する必要があります。クライアント コンピューターに広く秘密キーを配布しないでください。
     * 秘密キーを含んだ証明書では、 *.PFX* ファイル形式が使用されます。
     * 証明書の暗号化アルゴリズムは、*TripleDES-SHA1* である必要があります。
-* クライアント コンピューターには**公開**キーが適用されます。
+* クライアント コンピューターには **公開** キーが適用されます。
     * この公開キーは、Secure LDAP トラフィックの "*暗号化*" に使用されます。 公開キーは、クライアント コンピューターに配布することができます。
     * 秘密キーを含まない証明書には、 *.CER* ファイル形式が使用されます。
 
@@ -138,7 +138,7 @@ Secure LDAP を使用するために、ネットワーク トラフィックは�
 
     ![Microsoft 管理コンソールで証明書をエクスポートする](./media/tutorial-configure-ldaps/export-cert.png)
 
-1. **証明書のエクスポート ウィザード**で **[次へ]** を選択します。
+1. **証明書のエクスポート ウィザード** で **[次へ]** を選択します。
 1. 証明書の秘密キーをエクスポートする必要があります。 エクスポートした証明書に秘密キーが含まれていない場合、マネージド ドメインに対して Secure LDAP を有効にする操作は失敗します。
 
     **[秘密キーのエクスポート]** ページで **[はい、秘密キーをエクスポートします]** を選択し、 **[次へ]** を選択します。
@@ -162,7 +162,7 @@ LDAPS を使用してマネージド ドメインに正常に接続できるよ�
 このチュートリアルでは自己署名証明書を使用しており、先行する手順では、秘密キーを含んだ証明書を生成しました。 自己署名証明書をエクスポートし、クライアント コンピューター上の信頼された証明書ストアにインストールしましょう。
 
 1. MMC の *[証明書 (ローカル コンピューター)] > [個人] > [証明書]* ストアに戻ります。 前の手順で作成した自己署名証明書が表示されます (例: *aaddscontoso.com*)。 この証明書を右クリックし、 **[すべてのタスク] > [エクスポート]** の順に選択します。
-1. **証明書のエクスポート ウィザード**で **[次へ]** を選択します。
+1. **証明書のエクスポート ウィザード** で **[次へ]** を選択します。
 1. クライアントに秘密キーは不要であるため、 **[秘密キーのエクスポート]** ページで **[いいえ、秘密キーをエクスポートしません]** を選択し、 **[次へ]** を選択します。
 1. **[エクスポート ファイルの形式]** ページで、エクスポートした証明書のファイル形式として **[Base 64 encoded X.509 (.CER)]** を選択します。
 
@@ -175,7 +175,7 @@ LDAPS を使用してマネージド ドメインに正常に接続できるよ�
 
 1. エクスプローラーを開いて、 *.CER* 証明書ファイルの保存先を参照します (例: *C:\Users\accountname\azure-ad-ds-client.cer*)。
 1. *.CER* 証明書ファイルを右クリックし、 **[証明書のインストール]** を選択します。
-1. **証明書のインポート ウィザード**で、 *[ローカル コンピューター]* を証明書の保存先として選択し、 **[次へ]** を選択します。
+1. **証明書のインポート ウィザード** で、 *[ローカル コンピューター]* を証明書の保存先として選択し、 **[次へ]** を選択します。
 
     ![ローカル コンピューター ストアに証明書をインポートするオプションを選択する](./media/tutorial-configure-ldaps/import-cer-file.png)
 
@@ -213,6 +213,12 @@ LDAPS を使用してマネージド ドメインに正常に接続できるよ�
 
 エラーの一般的な原因としては、ドメイン名が正しくない、証明書の暗号化アルゴリズムが *TripleDES-SHA1* ではない、または証明書が間もなく期限切れになるか、既に期限切れになっている、などがあります。 有効なパラメーターで証明書を再作成し、その更新済みの証明書を使用して、Secure LDAP を有効にしてください。
 
+## <a name="change-an-expiring-certificate"></a>期限切れが近づいている証明書を更新する
+
+1. 交換用の Secure LDAP 証明書を作成するには、「[Secure LDAP 用の証明書を作成する](#create-a-certificate-for-secure-ldap)」の手順を実行してください。
+1. 交換用の証明書を Azure AD DS に適用するには、Azure portal の Azure AD DS の左側にあるメニューで、 **[Secure LDAP]** を選択し、 **[証明書の変更]** を選択します。
+1. Secure LDAP を使用して接続するすべてのクライアントに証明書を配布します。 
+
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>インターネット経由での Secure LDAP アクセスをロック ダウンする
 
 マネージド ドメインに対するインターネット経由での Secure LDAP アクセスを有効にすると、セキュリティ上の脅威が形成されます。 マネージド ドメインには、インターネットから TCP ポート 636 で到達できます。 マネージド ドメインへのアクセスは、ご利用の環境で使用されている特定の既知の IP アドレスに制限することをお勧めします。 Secure LDAP へのアクセスは、Azure ネットワーク セキュリティ グループの規則を使用して制限できます。
@@ -229,7 +235,7 @@ LDAPS を使用してマネージド ドメインに正常に接続できるよ�
     | source                            | IP アドレス |
     | ソース IP アドレス/CIDR 範囲 | 実際の環境の有効な IP アドレスまたはその範囲 |
     | Source port ranges                | *            |
-    | 到着地                       | Any          |
+    | 宛先                       | Any          |
     | 宛先ポート範囲           | 636          |
     | Protocol                          | TCP          |
     | アクション                            | Allow        |

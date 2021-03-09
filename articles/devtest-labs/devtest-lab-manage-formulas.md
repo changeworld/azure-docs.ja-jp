@@ -3,12 +3,12 @@ title: VM を作成するための Azure DevTest Labs 数式の管理 | Microsof
 description: この記事では、ベース (カスタム イメージ、Marketplace イメージ、他の数式) または既存の VM から数式を作成する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0a254d306ad2417c500571df4b8f2d852d21e7ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f012a8c59a8e938334c3e1abc4c7b3ccd0e48d3e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480407"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308896"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs 数式の管理
 
@@ -39,7 +39,7 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
     ![数式の追加](./media/devtest-lab-create-formulas/add-formula.png)
 6. **[ベースの選択]** ページで、数式を作成する際のベース (カスタム イメージ、Marketplace イメージ、または Shared Image Gallery イメージ) を選択します。
 
-    :::image type="content" source="./media/devtest-lab-create-formulas/select-base.png" alt-text="基本イメージを選択する":::
+    :::image type="content" source="./media/devtest-lab-create-formulas/select-base.png" alt-text="基本イメージを選択する&quot;:::
 1. **[Create formula]\(数式の作成\)** ページの **[Basic Settings]\(基本設定\)** タブで、次の値を指定します。
    
     * **Formula name** (数式の名前) - 数式の名前を入力します。 この値は、VM を作成するときに基本イメージの一覧に表示されます。 入力した名前は検証され、有効でない場合は有効な名前の要件を示すメッセージが表示されます。
@@ -58,9 +58,9 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
     - **サブネット** - サブネットを変更するには、 **[サブネットの変更]** を選択します。 
     - **IP アドレス構成** -パブリック IP アドレス、プライベート IP アドレス、または共有 IP アドレスが必要かどうかを指定します。 共有 IP アドレスの詳細については、[Azure DevTest Labs の共有 IP アドレスに関する説明](./devtest-lab-shared-ip.md)をご覧ください。
     - **有効期限日時** - このフィールドを編集することはできません。 
-    - **このコンピューターを要求可能にする** - コンピューターを "要求可能" にすると、作成時に所有権が割り当てられません。 代わりに、ラボ ユーザーが、ラボのページでコンピューターの所有権を取得 ("要求") できるようになります。  
+    - **このコンピューターを要求可能にする** - コンピューターを &quot;要求可能" にすると、作成時に所有権が割り当てられません。 代わりに、ラボ ユーザーが、ラボのページでコンピューターの所有権を取得 ("要求") できるようになります。  
 
-        ![[詳細設定] ページ](./media/devtest-lab-create-formulas/advanced-settings.png)
+        ![[数式の作成 (再利用可能なベース)] ページの [詳細設定] を示すスクリーンショット。](./media/devtest-lab-create-formulas/advanced-settings.png)
     - ベースとして Shared Image Gallery イメージを選択した場合は、ベースとして使用するイメージのバージョンをギャラリーから選択できる **[イメージ バージョン]** フィールドも表示されます。 
 
         ![[詳細設定] ページ](./media/devtest-lab-create-formulas/advanced-settings-shared-image-gallery.png)
@@ -98,7 +98,7 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
 3. ラボの一覧で目的のラボを選択します。  
 4. ラボのページで、 **[数式 (再利用可能なベース)]** を選択します。
    
-    ![Formula menu](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
+    ![[数式 (再利用可能なベース)] が選択されたラボのページを示すスクリーンショット。](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 5. **[Lab formulas]\(ラボの数式\)** ページで、変更する数式を選択します。
 6. **[数式の更新]** ページで、必要な編集を行い、 **[更新]** を選択します。
 
@@ -113,7 +113,7 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
     ![Formula menu](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
 5. **[Lab formulas]\(ラボの数式\)** ページで、削除する数式の右側にある省略記号を選択します。
    
-    ![Formula menu](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
+    ![[Lab formulas]\(ラボの数式\) ページで数式のオプションの省略記号が強調表示されたスクリーンショット。](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
 6. 数式のコンテキスト メニューで、 **[削除]** を選択します。
    
     ![Formula context menu](./media/devtest-lab-manage-formulas/formula-delete-context-menu.png)

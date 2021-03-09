@@ -3,7 +3,7 @@ title: Azure AD アプリケーション プロキシのための PowerShell サ
 description: Azure AD アプリケーション プロキシのためのこれらの PowerShell サンプルを使用して、ディレクトリ内のアプリケーション プロキシ アプリとコネクタに関する情報を取得し、ユーザーとグループをアプリに割り当て、証明書情報を取得します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,19 +12,19 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57efd88b9d194442920496107d4c37ba2baf94d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 117b4fec13c22ffb2f3163d50be44734d24ef3fa
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554985"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259103"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシのための Azure AD PowerShell の例
 
-次の表には、Azure AD アプリケーション プロキシのための PowerShell スクリプトの例へのリンクが含まれています。 これらのサンプルには、特に明記されていない限り、[Graph 用 AzureAD V2 PowerShell モジュール](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)または [Graph 用 AzureAD V2 PowerShell モジュール プレビュー バージョン](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)が必要です。
+次の表には、Azure AD アプリケーション プロキシのための PowerShell スクリプトの例へのリンクが含まれています。 これらのサンプルには、特に明記されていない限り、[Graph 用 AzureAD V2 PowerShell モジュール](/powershell/azure/active-directory/install-adv2)または [Graph 用 AzureAD V2 PowerShell モジュール プレビュー バージョン](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)が必要です。
 
 
-これらのサンプルで使用されるコマンドレットの詳細については、「[アプリケーション プロキシ アプリケーションの管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)」および「[アプリケーション プロキシ コネクタの管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management)」を参照してください。
+これらのサンプルで使用されるコマンドレットの詳細については、「[アプリケーション プロキシ アプリケーションの管理](/powershell/module/azuread/#application_proxy_application_management)」および「[アプリケーション プロキシ コネクタの管理](/powershell/module/azuread/#application_proxy_connector_management)」を参照してください。
 
 | Link | 説明 |
 |---|---|
@@ -32,7 +32,7 @@ ms.locfileid: "85554985"
 | [すべてのアプリケーション プロキシ アプリに関する基本情報を一覧表示する](scripts/powershell-get-all-app-proxy-apps-basic.md) | ディレクトリ内のすべてのアプリケーション プロキシ アプリに関する基本情報 (AppId、DisplayName、ObjId) を一覧表示します。 |
 | [すべてのアプリケーション プロキシ アプリに関する拡張情報を一覧表示する](scripts/powershell-get-all-app-proxy-apps-extended.md) | ディレクトリ内のすべてのアプリケーション プロキシ アプリに関する拡張情報 (AppId、DisplayName、ExternalUrl、InternalUrl、ExternalAuthenticationType) を一覧表示します。  |
 | [すべてのアプリケーション プロキシ アプリをコネクタ グループ別に一覧表示する](scripts/powershell-get-all-app-proxy-apps-by-connector-group.md) | ディレクトリ内のすべてのアプリケーション プロキシ アプリに関する情報と、どのコネクタ グループにアプリが割り当てられているかを一覧表示します。 |
-| [トークンの有効期間ポリシーを使用しているすべてのアプリケーション プロキシ アプリを取得する](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | トークンの有効期間ポリシーを使用しているディレクトリ内のすべてのアプリケーション プロキシ アプリを、ポリシーの詳細と共に一覧表示します。 このサンプルには、[Graph 用 AzureAD V2 PowerShell モジュール プレビュー バージョン](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)が必要です。 |
+| [トークンの有効期間ポリシーを使用しているすべてのアプリケーション プロキシ アプリを取得する](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | トークンの有効期間ポリシーを使用しているディレクトリ内のすべてのアプリケーション プロキシ アプリを、ポリシーの詳細と共に一覧表示します。 このサンプルには、[Graph 用 AzureAD V2 PowerShell モジュール プレビュー バージョン](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)が必要です。 |
 |**コネクタ グループ**||
 | [ディレクトリ内のすべてのコネクタ グループとコネクタを取得する](scripts/powershell-get-all-connectors.md) | ディレクトリ内のすべてのコネクタ グループとコネクタを一覧表示します。 |
 | [あるコネクタ グループに割り当てられているすべてのアプリを別のコネクタ グループに移動する](scripts/powershell-move-all-apps-to-connector-group.md) | あるコネクタ グループに現在割り当てられているすべてのアプリケーションを別のコネクタ グループに移動します。 |

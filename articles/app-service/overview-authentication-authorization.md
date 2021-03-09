@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 19d6a646df22e2f8c9bdfc03f15453a520e527a4
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1b95b1e96dc26fb72338518fc969c69b035d5f68
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962827"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095238"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service および Azure Functions での認証と承認
 
@@ -29,7 +29,7 @@ Azure App Service は組み込みの認証と認可のサポートを提供す�
 > 認証/承認機能は、"簡単認証" と呼ばれることもあります。
 
 > [!NOTE]
-> この機能を有効にすると、[HTTPS を適用](configure-ssl-bindings.md#enforce-https)するための App Service 構成設定に関係なく、アプリケーションへのセキュリティで保護されていない HTTP 要求が**すべて** HTTPS に自動的にリダイレクトされます。 必要に応じて、[認証設定構成ファイル](app-service-authentication-how-to.md#configuration-file-reference)の `requireHttps` 設定を使用してこれを無効にすることができますが、セキュリティで保護されていない HTTP 接続でセキュリティ トークンが送信されないように注意する必要があります。
+> この機能を有効にすると、[HTTPS を適用](configure-ssl-bindings.md#enforce-https)するための App Service 構成設定に関係なく、アプリケーションへのセキュリティで保護されていない HTTP 要求が **すべて** HTTPS に自動的にリダイレクトされます。 必要に応じて、[認証設定構成ファイル](app-service-authentication-how-to.md#configuration-file-reference)の `requireHttps` 設定を使用してこれを無効にすることができますが、セキュリティで保護されていない HTTP 接続でセキュリティ トークンが送信されないように注意する必要があります。
 
 ネイティブ モバイル アプリに固有の情報については、[Azure App Service でのモバイル アプリ用のユーザー認証と認可](/previous-versions/azure/app-service-mobile/app-service-mobile-auth)に関する記事をご覧ください。
 
@@ -77,7 +77,7 @@ App Service が提供する組み込みのトークン ストアは、Web アプ
 
 ID トークン、アクセス トークン、更新トークンは認証されたセッションに対してキャッシュされ、関連付けられているユーザーだけがアクセスできます。  
 
-お使いのアプリでトークンを使う必要がない場合は、お使いのアプリの**認証と承認**のページでトークン ストアを無効にできます。
+お使いのアプリでトークンを使う必要がない場合は、お使いのアプリの **認証と承認** のページでトークン ストアを無効にできます。
 
 ### <a name="logging-and-tracing"></a>ログとトレース
 
@@ -147,13 +147,17 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 > [!CAUTION]
 > この方法でのアクセスの制限は、アプリへのすべての呼び出しに適用されますが、これは、多くのシングルページ アプリケーションのように、一般公開されているホーム ページを必要とするアプリには適切でない場合があります。
 
+> [!NOTE]
+> 既定では、Azure AD テナント内のすべてのユーザーが Azure AD にアプリケーションのトークンを要求できます。 定義されている一連のユーザーに対してアプリへのアクセスを制限する場合は、[Azure AD でアプリケーションを構成](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)できます。
+
 ## <a name="more-resources"></a>その他のリソース
 
-[チュートリアル:Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および認可する](tutorial-auth-aad.md)  
-[チュートリアル:Linux 用 Azure App Service でユーザーをエンド ツー エンドで認証および認可する](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
-[App Service での認証と認可のカスタマイズ ](app-service-authentication-how-to.md)
-[Azure AppService EasyAuth の .NET Core 統合 (サード パーティ) ](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
-[.NET Core で Azure App Service 認証を使用する (サード パーティ)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
+* [チュートリアル: Azure Storage と Microsoft Graph にアクセスする Web アプリでユーザーを認証および認可する](scenario-secure-app-authentication-app-service.md)
+* [チュートリアル:Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および認可する](tutorial-auth-aad.md)  
+* [チュートリアル:Linux 用 Azure App Service でユーザーをエンド ツー エンドで認証および認可する](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
+* [App Service での認証と認可のカスタマイズ](app-service-authentication-how-to.md)
+* [Azure AppService EasyAuth の .NET Core 統合 (サードパーティ)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
+* [.NET Core を使用した Azure App Service 認証の取得 (サードパーティ)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 プロバイダー固有の手順ガイド:
 
@@ -163,6 +167,7 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 * [Microsoft アカウント ログインを使用するようにアプリを構成する方法][MSA]
 * [Twitter ログインを使用するようにアプリを構成する方法][Twitter]
 * [ログインに OpenID Connect プロバイダーを使用するようにアプリを構成する方法 (プレビュー)][OIDC]
+* [Sign in with Apple を使用するようにアプリを構成する方法 (プレビュー)][Apple]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md
@@ -170,6 +175,7 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 [MSA]: configure-authentication-provider-microsoft.md
 [Twitter]: configure-authentication-provider-twitter.md
 [OIDC]: configure-authentication-provider-openid-connect.md
+[Apple]: configure-authentication-provider-apple.md
 
 [custom-auth]: /previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#custom-auth
 

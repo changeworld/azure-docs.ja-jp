@@ -10,25 +10,25 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c0121c42c5d498aa79109c874981b9de0f8f4b7c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 9c522d870a25b3df34ab6a0cf1c1e944a6462685
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588876"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013991"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Logic Apps を使用して Key Vault シークレットの状態変更に関するメールを受け取る
 
 このガイドでは、[Azure Logic Apps](../../logic-apps/index.yml) を使用して、[Azure Event Grid](../../event-grid/index.yml) 経由で受信した Azure Key Vault イベントに応答する方法について説明します。 最終的に、Azure Key Vault でシークレットが作成されるたびに通知メールを送信するように Azure Logic Apps が設定されます。
 
-Azure Key Vault/Azure Event Grid 統合の概要については、「[Azure Event Grid による Key Vault の監視 (プレビュー)](event-grid-overview.md)」を参照してください。
+Azure Key Vault と Azure Event Grid の統合の概要については、「[Azure Event Grid による Key Vault の監視](event-grid-overview.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure Logic Apps がサポートするメール プロバイダー (Office 365 Outlook など) のメール アカウント。 このメール アカウントは、イベント通知の送信に使われます。 サポートされている Logic App コネクタの完全な一覧については、「[コネクタの概要](/connectors)」をご覧ください
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 - ご自身の Azure サブスクリプションのキー コンテナー。 新しいキー コンテナーをすばやく作成するには、[Azure CLI を使用した Azure Key Vault からのシークレットの設定と取得](../secrets/quick-create-cli.md)に関するページの手順に従います。
-- リソース プロバイダーとして登録済みの Event Grid。[リソース プロバイダーの登録](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)に関するページを参照してください
+- リソース プロバイダーとして登録済みの Event Grid。[リソース プロバイダーの登録](../../azure-resource-manager/management/resource-providers-and-types.md)に関するページを参照してください
 
 ## <a name="create-a-logic-app-via-event-grid"></a>Event Grid を使用してロジック アプリを作成する
 
@@ -41,7 +41,7 @@ Azure Event Grid サブスクリプションを作成するには、次の手順
     
     ![Key Vault - [イベント] ページ](../media/eventgrid-logicapps-kvsubs.png)
 
-1. **Logic Apps デザイナー**で接続を検証し、**[続行]** をクリックします。 
+1. **Logic Apps デザイナー** で接続を検証し、**[続行]** をクリックします。 
  
     ![Logic Apps デザイナー - 接続](../media/eventgrid-logicappdesigner1.png)
 
@@ -56,7 +56,7 @@ Azure Event Grid サブスクリプションを作成するには、次の手順
 1. **[電子メール]** を検索します。 電子メール プロバイダーに基づいて、一致するコネクタを検索して選択します。 このチュートリアルでは、**Office 365 Outlook** を使います。 他のメール プロバイダーの手順も同様です。
 1. **[メールの送信 (V2)]** アクションを選択します。
 
-   ![Logic Apps デザイナー - メールの追加](../media/eventgrid-logicappdesigner3.png)
+   ![Logic Apps デザイナー - メールの送信](../media/eventgrid-logicappdesigner3.png)
 
 1. メール テンプレートを作成します。
     - **To:** 通知メールを受信するメール アドレスを入力します。 このチュートリアルでは、テストの目的でアクセスできる電子メール アカウントを使用します。
@@ -64,18 +64,18 @@ Azure Event Grid サブスクリプションを作成するには、次の手順
 
     メール テンプレートは次の例のようになります。
 
-    ![Logic Apps デザイナー - メールの追加](../media/eventgrid-logicappdesigner4.png)
+    ![Logic Apps デザイナー - メールの本文](../media/eventgrid-logicappdesigner4.png)
 
 8. **[名前を付けて保存]** をクリックします。
 9. 新しいロジック アプリの **[名前]** を入力し、**[作成]** をクリックします。
     
-    ![Logic Apps デザイナー - メールの追加](../media/eventgrid-logicappdesigner5.png)
+    ![Logic Apps デザイナー - 作成](../media/eventgrid-logicappdesigner5.png)
 
 ## <a name="test-and-verify"></a>テストして検証する
 
 1.  Azure portal でキー コンテナーにアクセスし、**[イベント] > [イベント サブスクリプション]** を選択します。  新しいサブスクリプションが作成されたことを確認します。
     
-    ![Logic Apps デザイナー - メールの追加](../media/eventgrid-logicapps-kvnewsubs.png)
+    ![Logic Apps デザイナー - テストと検証](../media/eventgrid-logicapps-kvnewsubs.png)
 
 1.  キー コンテナーにアクセスして **[シークレット]** を選択し、**[Generate/Import]\(生成/インポート\)** を選択します。 テスト用に新しいシークレットを作成し、キーに名前を付け、残りのパラメーターは既定の設定のままにします。
 
@@ -87,8 +87,8 @@ Azure Event Grid サブスクリプションを作成するには、次の手順
 
 ## <a name="next-steps"></a>次のステップ
 
-- 概要:[Azure Event Grid での Key Vault の監視 (プレビュー)](event-grid-overview.md)
+- 概要:[Azure Event Grid での Key Vault の監視](event-grid-overview.md)
 - 方法:[Azure Automation へのキー コンテナー通知のルーティング](event-grid-tutorial.md)
-- [Azure Key Vault 用の Azure Event Grid イベント スキーマ (プレビュー)](../../event-grid/event-schema-key-vault.md)
+- [Azure Key Vault 用の Azure Event Grid イベント スキーマ](../../event-grid/event-schema-key-vault.md)
 - [Azure Event Grid](../../event-grid/index.yml) について学習します。
 - [Azure App Service の Logic Apps 機能](../../logic-apps/index.yml)について学習します。

@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: b9b72e8340722f8ddc97b3769ce22e607974a508
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 3d4f232d87209a3a5676cac22e67a38b17af6917
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297401"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844320"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API に接続する - .NET
 
@@ -43,7 +43,7 @@ ms.locfileid: "89297401"
 
 このトピックのサンプル アプリの対象は `netcoreapp2.0` です。 コードでは "async main" が使用されています。これは、C# 7.1 以降で利用できます。 詳しくは、こちらの[ブログ](/archive/blogs/benwilli/async-main-is-available-but-hidden)をご覧ください。
 
-## <a name="add-required-nuget-packages"></a>必要な NuGet パッケージを追加する
+## <a name="add-required-nuget-packagesassemblies"></a>必要な NuGet パッケージおよびアセンブリを追加する
 
 1. Visual Studio で、 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[NuGet Manager Console]\(NuGet マネージャー コンソール\)** の順に選択します。
 2. **[パッケージ マネージャー コンソール]** ウィンドウで、`Install-Package` コマンドを使用して次の NuGet パッケージを追加します。 たとえば、「 `Install-Package Microsoft.Azure.Management.Media` 」のように入力します。
@@ -51,10 +51,14 @@ ms.locfileid: "89297401"
 |Package|説明|
 |---|---|
 |`Microsoft.Azure.Management.Media`|Azure Media Services SDK。 <br/>最新の Azure Media Services パッケージを使用していることを確認するには、[Microsoft.Azure.Management.Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media) をチェックします。|
-|`Microsoft.Rest.ClientRuntime.Azure.Authentication`|Azure SDK for NET 用の ADAL 認証ライブラリ|
-|`Microsoft.Extensions.Configuration.EnvironmentVariables`|環境変数とローカル JSON ファイルから構成値を読み取ります|
-|`Microsoft.Extensions.Configuration.Json`|環境変数とローカル JSON ファイルから構成値を読み取ります
-|`WindowsAzure.Storage`|Storage SDK|
+
+### <a name="other-required-assemblies"></a>その他の必要なアセンブリ
+
+- Azure.Storage.Blobs
+- Microsoft.Extensions.Configuration
+- Microsoft.Extensions.Configuration.EnvironmentVariables
+- Microsoft.Extensions.Configuration.Json
+- Microsoft.Rest.ClientRuntime.Azure.Authentication
 
 ## <a name="create-and-configure-the-app-settings-file"></a>アプリ設定ファイルを作成して構成する
 
@@ -136,9 +140,9 @@ namespace ConsoleApp1
             get { return new Uri(_config["ArmEndpoint"]); }
         }
 
-        public string Region
+        public string Location
         {
-            get { return _config["Region"]; }
+            get { return _config["Location"]; }
         }
     }
 }
@@ -231,9 +235,9 @@ namespace ConsoleApp1
 
 ## <a name="next-steps"></a>次のステップ
 
-- [チュートリアル:ビデオのアップロード、エンコード、ストリーミング - .NET](stream-files-tutorial-with-api.md) 
-- [チュートリアル:Media Services v3 によるライブ ストリーミング - .NET](stream-live-tutorial-with-api.md)
-- [チュートリアル:Media Services v3 でビデオを分析する - .NET](analyze-videos-tutorial-with-api.md)
+- [チュートリアル: ビデオのアップロード、エンコード、ストリーミング - .NET](stream-files-tutorial-with-api.md) 
+- [チュートリアル: Media Services v3 によるライブ ストリーミング - .NET](stream-live-tutorial-with-api.md)
+- [チュートリアル: Media Services v3 でビデオを分析する - .NET](analyze-videos-tutorial-with-api.md)
 - [ローカル ファイルからジョブの入力を作成する - .NET](job-input-from-local-file-how-to.md)
 - [HTTPS URL からジョブの入力を作成する - .NET](job-input-from-http-how-to.md)
 - [カスタム変換を使用してエンコードする - .NET](customize-encoder-presets-how-to.md)
@@ -245,5 +249,5 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>関連項目
 
-* [.NET リファレンス](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+* [.NET リファレンス](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet&preserve-view=true)
 * コードの例について詳しくは、[.NET SDK サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet) リポジトリをご覧ください。

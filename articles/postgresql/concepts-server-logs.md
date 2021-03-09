@@ -1,17 +1,17 @@
 ---
 title: ログ - Azure Database for PostgreSQL - Single Server
 description: Azure Database for PostgreSQL - Single Server でのログの構成、保存、分析について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 506bd79a512a5d8d143f582ee84d292dff86d9df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 621d5a6a91a8c22c52e6febc7c2638571f5bf113
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392813"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595802"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server 内のログ
 
@@ -23,7 +23,7 @@ Azure Database for PostgreSQL では、Postgres の標準ログを構成して�
 ## <a name="configure-logging"></a>ログの構成 
 サーバー パラメーターのログを使用して、サーバー上で Postgres 標準ログを構成できます。 各 Azure Database for PostgreSQL サーバーでは、`log_checkpoints` と `log_connections` が既定でオンになっています。 ログのニーズに合わせて調整できる追加のパラメーターがあります。 
 
-![Azure Database for PostgreSQL - ログ パラメーター](./media/concepts-server-logs/log-parameters.png)
+:::image type="content" source="./media/concepts-server-logs/log-parameters.png" alt-text="Azure Database for PostgreSQL - ログ パラメーター":::
 
 Postgres ログ パラメーターの詳細については、Postgres ドキュメントの[ログに記録するタイミング](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN)と[ログに記録する内容](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT)のセクションを参照してください。 すべてではありませんがほとんどの Postgre ログ パラメーターを Azure Database for PostgreSQL で構成できます。
 
@@ -68,13 +68,13 @@ Azure portal を使用してリソース ログを有効にするには
    5. ログの種類 **PostgreSQLLogs** を選択します。
    7. 設定を保存します。
 
-Powershell、CLI、または REST API を使用してリソース ログを有効にするには、[診断の設定](../azure-monitor/platform/diagnostic-settings.md)に関する記事をご覧ください。
+Powershell、CLI、または REST API を使用してリソース ログを有効にするには、[診断の設定](../azure-monitor/essentials/diagnostic-settings.md)に関する記事をご覧ください。
 
 ### <a name="access-resource-logs"></a>リソース ログへのアクセス
 
-ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ログ ストレージ アカウント](../azure-monitor/platform/resource-logs-collect-storage.md)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../azure-monitor/platform/resource-logs-stream-event-hubs.md)に関する記事を参照してください。
+ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ログ ストレージ アカウント](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)に関する記事を参照してください。
 
-Azure Monitor ログの場合は、選択したワークスペースにログが送信されます。 Postgres ログでは **AzureDiagnostics** コレクション モードが使用されるため、AzureDiagnostics テーブルからクエリを実行できます。 表内のフィールドについては、以下で説明します。 クエリとアラートの詳細については、[Azure Monitor のログ クエリ](../azure-monitor/log-query/log-query-overview.md)の概要に関する記事を参照してください。
+Azure Monitor ログの場合は、選択したワークスペースにログが送信されます。 Postgres ログでは **AzureDiagnostics** コレクション モードが使用されるため、AzureDiagnostics テーブルからクエリを実行できます。 表内のフィールドについては、以下で説明します。 クエリとアラートの詳細については、[Azure Monitor のログ クエリ](../azure-monitor/logs/log-query-overview.md)の概要に関する記事を参照してください。
 
 次に、作業を開始するために試すことのできるクエリを示します。 クエリに基づいてアラートを構成できます。
 

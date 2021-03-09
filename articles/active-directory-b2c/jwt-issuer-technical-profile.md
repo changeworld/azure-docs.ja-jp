@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/07/2020
+ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e8f5564f9e7e1176db1fed5fae38eee58874c2eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4faa7e68b50b83368837b75cd04be566d816f6d3
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204203"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102119809"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで JWT トークン発行者用の技術プロファイルを定義する
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) は、各認証フローを処理す�
 
 ## <a name="protocol"></a>Protocol
 
-**Protocol** 要素の **Name** 属性は `None` に設定する必要があります。 **OutputTokenFormat** 要素を `JWT` に設定します。
+**Protocol** 要素の **Name** 属性は `OpenIdConnect` に設定する必要があります。 **OutputTokenFormat** 要素を `JWT` に設定します。
 
 次の例は、`JwtIssuer` 用の技術プロファイルを示しています。
 
@@ -54,7 +54,7 @@ Azure Active Directory B2C (Azure AD B2C) は、各認証フローを処理す�
 
 ## <a name="metadata"></a>Metadata
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | issuer_refresh_token_user_identity_claim_type | はい | OAuth2 認証コードと更新トークン内で、ユーザー ID の要求として使用されることになる要求。 既定では、別の SubjectNamingInfo 要求タイプを指定しない限り、`objectId` に設定するようにしてください。 |
 | SendTokenResponseBodyWithJsonNumbers | いいえ | 常に `true` に設定します。 数値が JSON 番号の代わりに文字列として指定されているレガシー形式の場合は、`false` に設定します。 この属性は、文字列などのプロパティを返す以前の実装に依存しているクライアントに必要です。 |
@@ -71,7 +71,7 @@ Azure Active Directory B2C (Azure AD B2C) は、各認証フローを処理す�
 
 CryptographicKeys 要素には次の属性が存在します。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | issuer_secret | はい | JWT トークンを署名するために使用する X509 証明書 (RSA キー セット)。 これは、「[カスタム ポリシーの概要](custom-policy-get-started.md)」で構成した `B2C_1A_TokenSigningKeyContainer` キーです。 |
 | issuer_refresh_token_key | はい | 更新トークンを暗号化するために使用する X509 証明書 (RSA キー セット)。 「[カスタム ポリシー作業の開始](custom-policy-get-started.md)」で `B2C_1A_TokenEncryptionKeyContainer` キーを構成しました。 |

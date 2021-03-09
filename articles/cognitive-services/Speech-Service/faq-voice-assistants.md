@@ -1,7 +1,7 @@
 ---
 title: 音声アシスタントについてよく寄せられる質問
 titleSuffix: Azure Cognitive Services
-description: カスタム コマンド (プレビュー) または Direct Line Speech チャネルを使用した音声アシスタントに関してよく寄せられる質問の回答を紹介します。
+description: Custom Commands または Direct Line Speech チャネルを使用した音声アシスタントに関してよく寄せられる質問への回答を紹介します。
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,34 +10,34 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b0bbb982ed48dc052b1a15514ad36b1d69b62b5
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74110345"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599416"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>音声アシスタントについてよく寄せられる質問
 
-疑問点への回答がこのドキュメントで見つからない場合は、[その他のサポート オプション](support.md)を確認してください。
+疑問点への回答がこのドキュメントで見つからない場合は、[その他のサポート オプション](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)を確認してください。
 
 ## <a name="general"></a>全般
 
 **Q:音声アシスタントとは**
 
-**A:** 音声アシスタントは、Cortana と同様に、ユーザーの発話を聞き取り、その発話の内容を分析して意味を取り、発話の意図に応答して 1 つ以上のアクションを実行し、多くの場合に読み上げコンポーネントを含む応答をユーザーに提供するソリューションです。 これは、システムと対話するための "音声入力、音声出力" のエクスペリエンスです。 音声アシスタントの作成者は、Speech SDK の `DialogServiceConnector` を使用してデバイス上のアプリケーションを作成し、[カスタム コマンド (プレビュー)](custom-commands.md) またはボット フレームワークの [Direct Line Speech](direct-line-speech.md) チャネルを使用して作成されたアシスタントと通信します。 これらのアシスタントは、カスタム キーワードおよびカスタム音声を使用して、お客様のブランドや製品に合わせたエクスペリエンスを提供できます。
+**A:** 音声アシスタントは、Cortana と同様に、ユーザーの発話を聞き取り、その発話の内容を分析して意味を取り、発話の意図に応答して 1 つ以上のアクションを実行し、多くの場合に読み上げコンポーネントを含む応答をユーザーに提供するソリューションです。 これは、システムと対話するための "音声入力、音声出力" のエクスペリエンスです。 音声アシスタントの作成者は、Speech SDK の `DialogServiceConnector` を使用してデバイス上のアプリケーションを作成し、[Custom Commands](custom-commands.md) またはボット フレームワークの [Direct Line Speech](direct-line-speech.md) チャネルを使用して作成されたアシスタントと通信します。 これらのアシスタントは、カスタム キーワードおよびカスタム音声を使用して、お客様のブランドや製品に合わせたエクスペリエンスを提供できます。
 
-**Q:カスタム コマンド (プレビュー) または Direct Line Speech のどちらを使用すればよいですか。違いは何でしょうか。**
+**Q:Custom Commands または Direct Line Speech のどちらを使用すればよいですか。違いは何でしょうか。**
 
-**A:** [カスタム コマンド (プレビュー)](custom-commands.md) は、タスク実行シナリオに適しているアシスタントを簡単に作成してホストするための、複雑さを抑えたツール セットです。 [Direct Line Speech](direct-line-speech.md) は、信頼性の高い会話シナリオを可能にする、高度でリッチな機能を提供します。 詳細については、[アシスタント ソリューションの比較](voice-assistants.md#choosing-an-assistant-solution)に関する記事を参照してください。
+**A:** [Custom Commands](custom-commands.md) は、タスク実行シナリオに適したアシスタントを簡単に作成してホストするための、複雑さを抑えたツール セットです。 [Direct Line Speech](direct-line-speech.md) は、信頼性の高い会話シナリオを可能にする、高度でリッチな機能を提供します。 詳細については、[アシスタント ソリューションの比較](voice-assistants.md#choosing-an-assistant-solution)に関する記事を参照してください。
 
 **Q:始めにどうすればよいですか。**
 
 **A:** カスタム コマンド (プレビュー) アプリケーションまたは基本的な Bot Framework ボットの作成から始めるのが最適な方法です。
 
-- [カスタム コマンド (プレビュー) アプリケーションを作成する](quickstart-custom-speech-commands-create-new.md)
-- [基本的な Bot Framework ボットを作成する](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-- [ボットを Direct Line Speech チャネルに接続する](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [カスタム コマンド (プレビュー) アプリケーションを作成する](./quickstart-custom-commands-application.md)
+- [基本的な Bot Framework ボットを作成する](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [ボットを Direct Line Speech チャネルに接続する](/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>デバッグ
 
@@ -61,8 +61,8 @@ ms.locfileid: "74110345"
 
 **A:** このエラーは、アシスタントと音声アシスタント サービスの間の通信の問題を示しています。
 
-- カスタム コマンド (プレビュー) の場合は、カスタム コマンド (プレビュー) アプリケーションが発行されていることを確認します
-- Direct Line Speech の場合、[Direct Line Speech チャネルにボットを接続し](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)、(関連する Web ソケット サポートと共に) [ストリーミング プロトコル サポートをボットに追加し](https://aka.ms/botframework/addstreamingprotocolsupport)ていることを確認してから、ボットがチャネルからの受信要求に応答していることを確認します。
+- Custom Commands の場合は、Custom Commands アプリケーションが発行されていることを確認します
+- Direct Line Speech の場合、[Direct Line Speech チャネルにボットを接続し](/azure/bot-service/bot-service-channel-connect-directlinespeech)、(関連する Web ソケット サポートと共に) [ストリーミング プロトコル サポートをボットに追加し](/azure/bot-service/directline-speech-bot)ていることを確認してから、ボットがチャネルからの受信要求に応答していることを確認します。
 
 **Q:このコードがまだ動作しないか、`DialogServiceConnector` を使用すると別のエラーが発生するか、あるいはこの両方が発生します。どうすればよいですか。**
 

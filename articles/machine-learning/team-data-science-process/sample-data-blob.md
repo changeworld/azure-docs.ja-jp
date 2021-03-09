@@ -1,6 +1,6 @@
 ---
-title: Azure Blob ストレージのデータをサンプリングする - Team Data Science Process
-description: Azure Blob Storage に格納されたデータをサンプリングするには、プログラムでデータをダウンロードしてから、Python で記述されたプロシージャを使用してサンプリングします。
+title: Azure Blob Storage のデータをサンプリングする - Team Data Science Process
+description: プログラムでダウンロードした後、Python で記述されたプロシージャを使用してサンプリングすることによって、Azure Blob Storage に格納されているデータをサンプリングします。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,24 +11,24 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 04528d28e9f54710cd0a63372e32b099c2e07fb5
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: c5827a0e07e537b66684f852d8f3e1500cd9febb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026170"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788843"
 ---
-# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Azure BLOB ストレージのデータをサンプリングする
+# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Azure Blob Storage のデータをサンプリングする
 
-この記事では、Azure Blob Storage に格納されたデータのサンプリングについて説明します。プログラムからデータをダウンロードし、Python で記述されたプロシージャを使ってそのデータをサンプリングします。
+この記事では、プログラムでダウンロードした後、Python で記述されたプロシージャを使用してサンプリングすることによって、Azure Blob Storage に格納されているデータをサンプリングする方法について説明します。
 
 **データをサンプリングする理由**
 分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。 サンプリングすると、データの理解、探索、および特徴エンジニアリングが容易になります。 Cortana Analytics Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
 
-このサンプリング タスクは、 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)の 1 ステップです。
+このサンプリング タスクは、 [Team Data Science Process (TDSP)](./index.yml)の 1 ステップです。
 
 ## <a name="download-and-down-sample-data"></a>データのダウンロードとダウン サンプリング
-1. 次の Python のサンプル コードから、Blob service を使用して Azure BLOB ストレージからデータをダウンロードします。 
+1. 次の Python のサンプル コードから、Blob service を使用して Azure Blob Storage からデータをダウンロードします。 
 
     ```python
     from azure.storage.blob import BlobService
@@ -102,7 +102,6 @@ ms.locfileid: "86026170"
         print ("Something went wrong with uploading to the blob:"+ BLOBNAME)
     ```
 
-3. 次のスクリーン ショットに示すように、Azure Machine Learning の[データのインポート](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/)を使用して Azure BLOB からデータを読み取ります。
+3. 次のスクリーン ショットに示すように、Azure Machine Learning の[データのインポート](/azure/machine-learning/studio-module-reference/import-data)を使用して Azure BLOB からデータを読み取ります。
 
 ![リーダー BLOB](./media/sample-data-blob/reader_blob.png)
-

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: jeedes
-ms.openlocfilehash: f0d240819f3690292c572a350f387cd025c24737
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b7c1c995ead9a8d66cd11fb4579cc49e12b487df
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519293"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351590"
 ---
 # <a name="tutorial-configure-leapsome-for-automatic-user-provisioning"></a>チュートリアル:Leapsome を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -60,7 +60,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Leapsome で SCIM を追加する](media/Leapsome-provisioning-tutorial/leapsome-add-scim.png)
 
-3.  **SCIM 認証トークン**をコピーします。 この値を、Azure portal の Leapsome アプリケーションの [プロビジョニング] タブの [シークレット トークン] フィールドに入力します。
+3.  **SCIM 認証トークン** をコピーします。 この値を、Azure portal の Leapsome アプリケーションの [プロビジョニング] タブの [シークレット トークン] フィールドに入力します。
 
     ![Leapsome でトークンを作成する](media/Leapsome-provisioning-tutorial/leapsome-create-token.png)
 
@@ -105,13 +105,13 @@ Azure AD で自動ユーザー プロビジョニング用に Leapsome を構成
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://www.leapsome.com/api/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した**SCIM 認証トークン**の値を入力します。 **[接続テスト]** をクリックして、Azure AD から Leapsome に接続できることを確認します。 接続できない場合は、使用中の Leapsome アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://www.leapsome.com/api/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した **SCIM 認証トークン** の値を入力します。 **[接続テスト]** をクリックして、Azure AD から Leapsome に接続できることを確認します。 接続できない場合は、使用中の Leapsome アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 

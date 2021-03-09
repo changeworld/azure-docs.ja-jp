@@ -1,22 +1,17 @@
 ---
 title: Amazon Redshift からデータをコピーする
 description: Azure Data Factory を使用して、Amazon Redshift からサポートされているシンク データ ストアにデータをコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2018
-ms.openlocfilehash: ce63da745fb84ebccd57b246fc934f595dd7cda1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 12/09/2020
+ms.openlocfilehash: 9441885766dad97dfc237ab81a59710245bf13ce
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418254"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364258"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -24,7 +19,6 @@ ms.locfileid: "81418254"
 > * [現在のバージョン](connector-amazon-redshift.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Amazon Redshift からデータコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
@@ -164,11 +158,11 @@ Amazon Redshift からデータをコピーするには、コピー アクティ
 
 [UNLOAD](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) は、Amazon Redshift が提供するメカニズムであり、Amazon Simple Storage Service (Amazon S3) 上に 1 つまたは複数のファイルへのクエリの結果をアンロードできます。 これは、Redshift から大きなデータ セットをコピーするために、Amazon から推奨されている方法です。
 
-**例: UNLOAD、段階的コピーおよび PolyBase を使用して、Amazon Redshift から Azure SQL Data Warehouse にデータをコピーする**
+**例: UNLOAD、段階的コピーおよび PolyBase を使用して、Amazon Redshift から Azure Synapse Analytics にデータをコピーする**
 
-このサンプルのユース ケースでは、コピー アクティビティは "redshiftUnloadSettings" での構成に従って Amazon Redshift から Amazon S3 へデータをアンロードした後、Amazon S3 から "stagingSettings" に指定された Azure Blob へデータをコピーし、最後に、PolyBase を使用して SQL Data Warehouse にデータを読み込みます。 すべての中間形式が、コピー アクティビティによって正しく処理されます。
+このサンプルのユース ケースでは、コピー アクティビティは "redshiftUnloadSettings" での構成に従って Amazon Redshift から Amazon S3 へデータをアンロードした後、Amazon S3 から "stagingSettings" に指定された Azure Blob へデータをコピーし、最後に、PolyBase を使用して Azure Synapse Analytics にデータを読み込みます。 すべての中間形式が、コピー アクティビティによって正しく処理されます。
 
-![Redshift から SQL DW へのコピーのワークフロー](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
+![Redshift から Azure Synapse Analytics へのコピー ワークフロー](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 "activities":[

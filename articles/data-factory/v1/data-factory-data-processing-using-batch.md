@@ -1,23 +1,19 @@
 ---
 title: Data Factory と Batch を使用して大規模なデータセットを処理する
 description: Azure Batch の並列処理機能を使用して、Azure Data Factory パイプラインで膨大な量のデータを処理する方法について説明します。
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d0e608e1afae77afd44d7351b7c3f1f269bd8a8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ec04000e678cd3fc55f4681781f91b6d98ea41f5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998086"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730866"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
@@ -42,7 +38,7 @@ Batch サービスでは、複数のアプリケーションを並列で大規�
 * [Batch の基本](../../azure-sql/database/sql-database-paas-overview.md)
 * [Batch 機能の概要](../../batch/batch-service-workflow-features.md)
 
-必要な場合は、「[Batch のドキュメント](https://docs.microsoft.com/azure/batch/)」で Batch の詳細を確認してください。
+必要な場合は、「[Batch のドキュメント](../../batch/index.yml)」で Batch の詳細を確認してください。
 
 ## <a name="why-azure-data-factory"></a>Azure Data Factory を選ぶ理由
 Data Factory は、データの移動や変換を調整し自動化するクラウドベースのデータ統合サービスです。 Data Factory を使用すると、オンプレミスおよびクラウドのデータ ストアから中央のデータ ストアにデータを移動する、マネージド データ パイプラインを作成できます。 たとえば、Azure BLOB ストレージなどです。 Data Factory を使用すると、Azure HDInsight や Azure Machine Learning などのサービスを利用してデータを処理または変換することができます。 スケジュールされた方法 (たとえば、時間単位、日単位、週単位) でデータ パイプラインを実行するようにスケジュールを設定することもできます。 パイプラインを一目で監視および管理して、問題を特定し、行動を取ることができます。
@@ -52,7 +48,7 @@ Data Factory は、データの移動や変換を調整し自動化するクラ�
 * [Data Factory の概要](data-factory-introduction.md)
 * [最初のデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)   
 
-必要な場合は、「[the Data Factory documentation](https://docs.microsoft.com/rest/api/datafactory/v1/data-factory-data-factory)」 (Data Factory のドキュメント) で Data Factory の詳細を確認してください。
+必要な場合は、「[the Data Factory documentation](/rest/api/datafactory/v1/data-factory-data-factory)」 (Data Factory のドキュメント) で Data Factory の詳細を確認してください。
 
 ## <a name="data-factory-and-batch-together"></a>Data Factory と Batch の連携
 Data Factory には組み込みのアクティビティが含まれています。 たとえば、コピー アクティビティは、コピー元データ ストアからコピー先データ ストアにデータをコピーまたは移動するために使用されます。 Hive アクティビティは、Azure で Hadoop クラスター (HDInsight) を使用してデータを処理するために使用されます。 サポートされている変換アクティビティの一覧については、[データの変換アクティビティ](data-factory-data-transformation-activities.md)に関する記事を参照してください。
@@ -76,11 +72,11 @@ Data Factory には組み込みのアクティビティが含まれています�
 
 * **Azure Storage に大量の入力データを BLOB として格納します。** データは、論理スライス (通常は時間) に分割されます。
 
-* **並行して処理されるデータを Data Factory が 2 次拠点にコピー**します。
+* **並行して処理されるデータを Data Factory が 2 次拠点にコピー** します。
 
 * **Data Factory は、Batch によって割り当てられたプールを使用してカスタム アクティビティを実行します。** Data Factory は、アクティビティを同時に実行できます。 各アクティビティは、データのスライスを処理します。 結果はストレージに格納されます。
 
-* アプリによる配布、または他のツールによる追加処理のために、**Data Factory は最終的な結果を 3 次拠点に移動**させます。
+* アプリによる配布、または他のツールによる追加処理のために、**Data Factory は最終的な結果を 3 次拠点に移動** させます。
 
 ## <a name="implementation-of-the-sample-solution"></a>サンプル ソリューションの実装
 サンプル ソリューションは意図的に単純にしています。 Data Factory と Batch を併用してデータセットを処理する方法を示すために設計されています。 このソリューションでは、時系列で編成された入力ファイル内の検索語句 "Microsoft" の出現回数をカウントします。 出力ファイルにその数を出力します。
@@ -95,7 +91,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 このチュートリアルでは、ストレージ アカウントを使用してデータを保存します。 ストレージ アカウントがない場合は、[ストレージ アカウントの作成](../../storage/common/storage-account-create.md)に関するページを参照してください。 サンプル ソリューションでは、Blob Storage を使用します。
 
 #### <a name="azure-batch-account"></a>Azure Batch アカウント
-[Azure Portal](https://portal.azure.com/) を使用して Batch アカウントを作成します。 詳細については、[Batch アカウントの作成と管理](../../batch/batch-account-create-portal.md)に関するページを参照してください。 Batch のアカウント名とアカウント キーをメモしておきます。 また、[New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) コマンドレットを使用して Batch アカウントを作成することもできます。 このコマンドレットの使用手順については、[Batch PowerShell コマンドレットの概要](../../batch/batch-powershell-cmdlets-get-started.md)に関するページを参照してください。
+[Azure Portal](https://portal.azure.com/) を使用して Batch アカウントを作成します。 詳細については、[Batch アカウントの作成と管理](../../batch/batch-account-create-portal.md)に関するページを参照してください。 Batch のアカウント名とアカウント キーをメモしておきます。 また、[New-AzBatchAccount](/powershell/module/az.batch/new-azbatchaccount) コマンドレットを使用して Batch アカウントを作成することもできます。 このコマンドレットの使用手順については、[Batch PowerShell コマンドレットの概要](../../batch/batch-powershell-cmdlets-get-started.md)に関するページを参照してください。
 
 サンプル ソリューションでは、(データ ファクトリ パイプラインを通じて間接的に) Batch を使用して、VM の管理コレクションであるコンピューティング ノードのプールで、同じ方法でデータを処理します。
 
@@ -114,7 +110,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 
    b. **[オペレーティング システム ファミリ]** 設定には、 **[Windows Server 2012 R2]** を指定します。
 
-   c. **ノード価格レベル**を選択します。
+   c. **ノード価格レベル** を選択します。
 
    d. **[ターゲットの専用数]** の設定値として、「**2**」と入力します。
 
@@ -122,7 +118,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 
    f. **[OK]** を選択してプールを作成します。
 
-#### <a name="azure-storage-explorer"></a>Azure Storage Explorer
+#### <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
 [Azure Storage Explorer 6](https://azurestorageexplorer.codeplex.com/) または [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) (ClumsyLeaf Software 製) を使用して、Storage プロジェクトのデータを検査し、変更します。 また、クラウドホスト型アプリケーションのログのデータを検査して変更することもできます。
 
 1. プライベートなアクセス (匿名アクセスなし) で **mycontainer** という名前のコンテナーを作成します。
@@ -145,7 +141,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 
 1. `customactivitycontainer` という名前の別のコンテナーを作成します。 カスタム アクティビティの zip ファイルを、このコンテナーにアップロードします。
 
-#### <a name="visual-studio"></a>Visual Studio
+#### <a name="visual-studio"></a>Visual Studio
 Visual Studio 2012 以降をインストールして、データ ファクトリ ソリューションで使用するカスタム Batch アクティビティを作成します。
 
 ### <a name="high-level-steps-to-create-the-solution"></a>ソリューションを作成する手順の概要
@@ -408,7 +404,7 @@ public IDictionary<string, string> Execute(
 #### <a name="execute-method"></a>Execute メソッド
 ここでは、Execute メソッドのコードの詳細について説明します。
 
-1. 入力コレクションを反復処理するメンバーは、 [Microsoft.WindowsAzure.Storage.Blob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob) 名前空間にあります。 BLOB コレクションの反復処理では、**BlobContinuationToken** クラスを使用する必要があります。 基本的に、既存のループのメカニズムとして、トークンに do-while ループを使用する必要があります。 詳細については、[.NET から BLOB ストレージを使用する方法](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)に関するページを参照してください。 基本的なループを次に示します。
+1. 入力コレクションを反復処理するメンバーは、 [Microsoft.WindowsAzure.Storage.Blob](/java/api/com.microsoft.azure.storage.blob) 名前空間にあります。 BLOB コレクションの反復処理では、**BlobContinuationToken** クラスを使用する必要があります。 基本的に、既存のループのメカニズムとして、トークンに do-while ループを使用する必要があります。 詳細については、[.NET から BLOB ストレージを使用する方法](../../storage/blobs/storage-quickstart-blobs-dotnet.md)に関するページを参照してください。 基本的なループを次に示します。
 
     ```csharp
     // Initialize the continuation token.
@@ -431,7 +427,7 @@ public IDictionary<string, string> Execute(
     } while (continuationToken != null);
 
     ```
-   詳細については、[ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented) メソッドのドキュメントを参照してください。
+   詳細については、[ListBlobsSegmented](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented) メソッドのドキュメントを参照してください。
 
 1. 論理的には、BLOB セットを操作するコードを do-while ループ内に配置します。 **Execute** メソッドの場合、do-while ループは BLOB の一覧を **Calculate** というメソッドに渡します。 Calculate メソッドは、セグメント内のすべての BLOB を反復処理した結果である **output** という文字列変数を返します。
 
@@ -579,9 +575,7 @@ test custom activity Microsoft test custom activity Microsoft
    d. **batchUri** JSON プロパティにバッチ URI を入力します。
 
       > [!IMPORTANT]
-      > **[Batch アカウント]** ブレードの URL は、\<accountname\>.\<region\>.batch.azure.com という形式です。 JSON の **batchUri** プロパティでは、URL から a88"accountname."** を削除する必要があります。 たとえば `"batchUri": "https://eastus.batch.azure.com"` です。
-      >
-      >
+      > **[Batch アカウント]** ブレードの URL は、`<accountname>.<region>.batch.azure.com` という形式です。 JSON スクリプトの `batchUri` プロパティでは、URL から `<accountname>.` を削除する必要があります。 たとえば `"batchUri": "https://eastus.batch.azure.com"` です。
 
       ![[Batch アカウント] ブレード](./media/data-factory-data-processing-using-batch/image9.png)
 
@@ -668,21 +662,21 @@ test custom activity Microsoft test custom activity Microsoft
 
     | **スライス** | **[開始時刻]**          |
     |-----------|-------------------------|
-    | 1         | 2015-11-16T**00**:00:00 |
-    | 2         | 2015-11-16T**01**:00:00 |
-    | 3         | 2015-11-16T**02**:00:00 |
-    | 4         | 2015-11-16T**03**:00:00 |
-    | 5         | 2015-11-16T**04**:00:00 |
+    | 1         | 2015-11-16T **00**:00:00 |
+    | 2         | 2015-11-16T **01**:00:00 |
+    | 3         | 2015-11-16T **02**:00:00 |
+    | 4         | 2015-11-16T **03**:00:00 |
+    | 5         | 2015-11-16T **04**:00:00 |
 
     **folderPath** は、スライス開始時間 (**SliceStart**) の年、月、日、時間の部分を使用して計算されます。 入力フォルダーをスライスにマップする方法を次に示します。
 
     | **スライス** | **[開始時刻]**          | **入力フォルダー**  |
     |-----------|-------------------------|-------------------|
-    | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00** |
-    | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01** |
-    | 3         | 2015-11-16T**02**:00:00 | 2015-11-16-**02** |
-    | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03** |
-    | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04** |
+    | 1         | 2015-11-16T **00**:00:00 | 2015-11-16-**00** |
+    | 2         | 2015-11-16T **01**:00:00 | 2015-11-16-**01** |
+    | 3         | 2015-11-16T **02**:00:00 | 2015-11-16-**02** |
+    | 4         | 2015-11-16T **03**:00:00 | 2015-11-16-**03** |
+    | 5         | 2015-11-16T **04**:00:00 | 2015-11-16-**04** |
 
 1. ツール バーの **[デプロイ]** を選択し、**InputDataset** テーブルを作成してデプロイします。
 
@@ -725,11 +719,11 @@ test custom activity Microsoft test custom activity Microsoft
 
     | **スライス** | **[開始時刻]**          | **[出力ファイル]**       |
     |-----------|-------------------------|-----------------------|
-    | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00.txt** |
-    | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01.txt** |
-    | 3         | 2015-11-16T**02**:00:00 | 2015-11-16-**02.txt** |
-    | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03.txt** |
-    | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04.txt** |
+    | 1         | 2015-11-16T **00**:00:00 | 2015-11-16-**00.txt** |
+    | 2         | 2015-11-16T **01**:00:00 | 2015-11-16-**01.txt** |
+    | 3         | 2015-11-16T **02**:00:00 | 2015-11-16-**02.txt** |
+    | 4         | 2015-11-16T **03**:00:00 | 2015-11-16-**03.txt** |
+    | 5         | 2015-11-16T **04**:00:00 | 2015-11-16-**04.txt** |
 
     入力フォルダー (例: 2015-11-16-00) 内のすべてのファイルは、開始時刻が 2015-11-16-00 であるスライスの一部です。 このスライスを処理すると、カスタム アクティビティは各ファイルをスキャンし、出力ファイルに、検索語句 ("Microsoft") の出現回数が記述された 1 行を生成します。 2015-11-16-00 フォルダーに 3 つのファイルがある場合は、出力ファイル (2015-11-16-00.txt) に 3 行が出力されます。
 
@@ -823,7 +817,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. **[ダイアグラム]** ビューで、 **[OutputDataset]** を選択します。
 
-1. 出力スライスが作成された場合、5 個の出力スライスが**準備完了**の状態で表示されます。
+1. 出力スライスが作成された場合、5 個の出力スライスが **準備完了** の状態で表示されます。
 
    ![出力スライスの開始時刻と終了時刻](./media/data-factory-data-processing-using-batch/image13.png)
 
@@ -931,7 +925,7 @@ Data Factory サービスによって、Batch に `adf-poolname:job-xxx` とい�
 #### <a name="extend-the-sample"></a>サンプルの拡張
 Data Factory および Batch の機能の詳細については、このサンプルを拡張することができます。 たとえば、異なる時間範囲でスライスを処理するには、次の手順を実行します。
 
-1. `inputfolder` にサブフォルダー2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08、および 2015-11-16-09 を追加します。 これらのフォルダーに入力ファイルを配置します。 パイプラインの終了時刻を `2015-11-16T05:00:00Z` から `2015-11-16T10:00:00Z` に変更します。 **[ダイアグラム]** ビューで、 **[InputDataset]** をダブルクリックして、入力スライスが準備完了であることを確認します。 **[OutputDataset]** をダブルクリックして、出力スライスの状態を表示します。 **準備完了**の状態である場合、出力フォルダーで出力ファイルを確認します。
+1. `inputfolder` にサブフォルダー2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08、および 2015-11-16-09 を追加します。 これらのフォルダーに入力ファイルを配置します。 パイプラインの終了時刻を `2015-11-16T05:00:00Z` から `2015-11-16T10:00:00Z` に変更します。 **[ダイアグラム]** ビューで、 **[InputDataset]** をダブルクリックして、入力スライスが準備完了であることを確認します。 **[OutputDataset]** をダブルクリックして、出力スライスの状態を表示します。 **準備完了** の状態である場合、出力フォルダーで出力ファイルを確認します。
 
 1. 特に Batch 上で発生する処理のように、どのようにソリューションのパフォーマンスに影響するかを理解するには、**concurrency** の設定を増加または減少させます。 **concurrency** 設定の詳細については、「手順 4:カスタム アクティビティを使用して、パイプラインを作成して実行する」を参照してください。
 
@@ -953,7 +947,7 @@ Data Factory および Batch の機能の詳細については、このサンプ
 
    詳細については、[Batch プール内のコンピューティング ノードの自動スケール](../../batch/batch-automatic-scaling.md)に関するページを参照してください。
 
-   プールで既定の [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx) を使用する場合、Batch サービスがカスタム アクティビティを実行する前に VM を準備するのに 15 ～ 30 分かかることがあります。 プールが異なる autoScaleEvaluationInterval を使用する場合、Batch サービスは autoScaleEvaluationInterval + 10 分を要することがあります。
+   プールで既定の [autoScaleEvaluationInterval](/rest/api/batchservice/pool/enableautoscale) を使用する場合、Batch サービスがカスタム アクティビティを実行する前に VM を準備するのに 15 ～ 30 分かかることがあります。 プールが異なる autoScaleEvaluationInterval を使用する場合、Batch サービスは autoScaleEvaluationInterval + 10 分を要することがあります。
 
 1. サンプル ソリューションで、**Execute** メソッドは、出力データ スライスを生成するために入力データ スライスを処理する、**Calculate** メソッドを呼び出します。 入力データを処理し、**Execute** メソッドで呼び出される **Calculate** メソッドを、メソッドの呼び出しに置換する独自のメソッドを記述することができます。
 
@@ -961,7 +955,7 @@ Data Factory および Batch の機能の詳細については、このサンプ
 データを処理した後、Power BI などのオンライン ツールで使用することができます。 Power BI や Azure で使用する方法を理解するために役立つリンクを次に示します。
 
 * [Power BI でのデータセットの参照](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
-* [Power BI Desktop の概要](https://docs.microsoft.com/power-bi/fundamentals/desktop-getting-started)
+* [Power BI Desktop の概要](/power-bi/fundamentals/desktop-getting-started)
 * [Power BI でのデータの更新](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure と Power BI:基本的な概要](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
@@ -979,4 +973,4 @@ Data Factory および Batch の機能の詳細については、このサンプ
   * [.NET 向け Batch クライアント ライブラリの概要](../../batch/quick-run-dotnet.md)
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
-[batch-explorer-walkthrough]: https://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
+[batch-explorer-walkthrough]: /archive/blogs/windowshpc/azure-batch-explorer-sample-walkthrough

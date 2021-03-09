@@ -1,14 +1,14 @@
 ---
 title: DoD 影響レベル 4 ブループリント サンプルのコントロール
-description: DoD 影響レベル 4 ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
-ms.date: 06/30/2020
+description: DoD 影響レベル 4 ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: a704731f4fe8e810235507fd84c90b17571a8442
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4345cd67cda5b00d89d9eae1f8abaedb40228759
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923290"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035106"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>DoD 影響レベル 4 ブループリント サンプルのコントロール マッピング
 
@@ -17,8 +17,7 @@ ms.locfileid: "87923290"
 以下のマッピングは、**DoD 影響レベル 4** のコントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 続いて、次を探して選択します: **[\[Preview\]:DoD Impact Level 4]** 組み込みのポリシー イニシアチブ。
 
 > [!IMPORTANT]
-> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールに対する[コンプライアンスを評価](../../../policy/how-to/get-compliance-data.md)するのに役立つ場合があります。ただし、多くの場合、コントロールと 1 つまたは複数のポリシーとの間に 1:1 または完全な一致はありません。 そのため、Azure Policy での**準拠**は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。
-> 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-4/control-mapping.md)に関するページを参照してください。
+> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールに対する[コンプライアンスの評価](../../../policy/how-to/get-compliance-data.md)に役立つ場合があります。ただし、多くの場合、コントロールと 1 つ以上のポリシーとの間には、一対一での一致、または完全な一致はありません。 そのため、Azure Policy での **準拠** は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-4/control-mapping.md)に関するページを参照してください。
 
 ## <a name="ac-2-account-management"></a>AC-2 アカウント管理
 
@@ -32,7 +31,7 @@ ms.locfileid: "87923290"
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) アカウント管理 | ロールベースのスキーム
 
-Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../../../role-based-access-control/overview.md) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 また、このブループリントでは、SQL Server と Service Fabric に対する Azure Active Directory 認証の使用状況を監査するための [Azure Policy](../../../policy/overview.md) 定義も割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。 さらに、このブルー プリントでは、カスタム RBAC ルールの使用状況を監査するための Azure Policy 定義が割り当てられます。 カスタム RBAC ルールの実装状況を把握することで、それらの実装ニーズや実装の適切性を確認することができます (カスタム RBAC ルールはエラーを起こしやすいので、これは非常に重要です)。
+Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../../../role-based-access-control/overview.md) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 また、このブループリントでは、SQL Server と Service Fabric に対する Azure Active Directory 認証の使用状況を監査するための [Azure Policy](../../../policy/overview.md) 定義も割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。 さらに、このブループリントでは、カスタム Azure RBAC 規則の使用状況を監査するための Azure Policy 定義が割り当てられます。 カスタム Azure RBAC 規則ではエラーが発生しやすいため、カスタム Azure RBAC 規則の実装状況を把握しておくと、実装の必要性や適切性の確認に役立ちます。
 
 - SQL Server に対して Azure Active Directory 管理者をプロビジョニングする必要がある
 - カスタム RBAC 規則の使用監査
@@ -102,11 +101,11 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 Azure Monitor で収集されたログ データは、Log Analytics ワークスペースに保存されるので、集中的に構成と管理が可能です。 このブループリントは、Azure 仮想マシンに対する Log Analytics エージェントのデプロイを監査および強制するための [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、イベントのログ記録の徹底を支援するものです。
 
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- Virtual Machine Scale Sets における Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
 - \[プレビュー\]:VM 用 Audit Log Analytics ワークスペース - 不一致の報告
-- \[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ
+- Linux 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
-- \[プレビュー\]:Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ
+- Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-5 監査処理エラーへの対応
@@ -123,11 +122,11 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 Azure Monitor で収集されたログ データは、Log Analytics ワークスペースに保存されるので、集中的にレポートと分析が可能です。 このブループリントは、Azure 仮想マシンに対する Log Analytics エージェントのデプロイを監査および強制するための [Azure Policy](../../../policy/overview.md) 定義を割り当てることによって、イベントのログ記録の徹底を支援するものです。
 
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- Virtual Machine Scale Sets における Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
 - \[プレビュー\]:VM 用 Audit Log Analytics ワークスペース - 不一致の報告
-- \[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ
+- Linux 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
-- \[プレビュー\]:Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ
+- Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) 監査の確認、分析、および報告 | 統合/スキャンおよび監視機能
@@ -144,7 +143,7 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 - 脆弱性評価ソリューションによって脆弱性を修復する必要がある
 - 仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- Virtual Machine Scale Sets における Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
 
 ## <a name="au-12-audit-generation"></a>AU-12 監査の生成
 
@@ -152,11 +151,11 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 また、これらのポリシー定義では、診断ログの構成も監査され、Azure リソース内で実行された処理に関する分析情報が提供されます。 さらに、SQL Server には監査と Advanced Data Security が構成されます。
 
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- Virtual Machine Scale Sets における Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
 - \[プレビュー\]:VM 用 Audit Log Analytics ワークスペース - 不一致の報告
-- \[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ
+- Linux 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
-- \[プレビュー\]:Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ
+- Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 - 診断設定の監査
 - SQL Server の高度なデータ セキュリティ設定で監査を有効にする必要がある
@@ -336,11 +335,8 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 
 ## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06) 欠陥の修復 | 以前のバージョンのソフトウェアおよびファームウェアの削除
 
-このブループリントでは、最新バージョンの .NET Framework、HTTP、Java、PHP、Python、および TLS がアプリに使用されていることの確認に役立つポリシー定義を割り当てます。 また、このブループリントは、Kubernetes サービスが脆弱性のないバージョンにアップグレードされることを保証するポリシー定義も割り当てます。
+このブループリントでは、最新バージョンの HTTP、Java、PHP、Python、および TLS がアプリに使用されていることの確認に役立つポリシー定義を割り当てます。 また、このブループリントは、Kubernetes サービスが脆弱性のないバージョンにアップグレードされることを保証するポリシー定義も割り当てます。
 
-- API アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
-- 関数アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
-- Web アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
 - API アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
 - 関数アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
 - Web アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
@@ -348,7 +344,6 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - 関数アプリの一部として使用された "Java のバージョン" が最新であることを確認する
 - Web アプリの一部として使用された "Java のバージョン" が最新であることを確認する
 - API アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
-- 関数アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
 - Web アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
 - API アプリの一部として使用された "Python のバージョン" が最新であることを確認する
 - 関数アプリの一部として使用された "Python のバージョン" が最新であることを確認する
@@ -356,7 +351,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - API アプリでは最新の TLS バージョンを使用する必要がある
 - 関数アプリでは最新の TLS バージョンを使用する必要がある
 - Web アプリでは最新の TLS バージョンを使用する必要がある
-- \[プレビュー\]:Kubernetes Service を脆弱性のない Kubernetes バージョンにアップグレードする必要がある
+- Kubernetes Service を脆弱性のない Kubernetes バージョンにアップグレードする必要がある
 
 ## <a name="si-3-malicious-code-protection"></a>SI-3 悪意のあるコードからの保護
 
@@ -378,11 +373,11 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 このブループリントは、さまざまな Azure リソースを対象にログ記録とデータ セキュリティを監査および適用することによって、システムの監視を支援するものです。 具体的には、割り当てられるポリシーによって、Log Analytics エージェントのデプロイが監査および実施されるほか、SQL データベース、ストレージ アカウント、ネットワーク リソースの高度なセキュリティ設定が監査および適用されます。 これらの機能は、異常な動作や攻撃の兆候の検出に役立つので、適切な措置を講じることができるようになります。
 
 - \[プレビュー\]:Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
-- \[プレビュー\]:VMSS の Log Analytics エージェントのデプロイの監査 - VM イメージ (OS) が一覧にない
+- Virtual Machine Scale Sets における Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
 - \[プレビュー\]:VM 用 Audit Log Analytics ワークスペース - 不一致の報告
-- \[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ
+- Linux 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
-- \[プレビュー\]:Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ
+- Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ
 - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
 - Advanced Data Security を、SQL Server 上で有効にする必要がある

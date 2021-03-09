@@ -1,22 +1,23 @@
 ---
 title: Gremlin API を使用して Azure Cosmos DB Node.js アプリケーションを構築する
 description: Azure Cosmos DB への接続とデータの照会に使用できる Node.js コード サンプルについて説明します
-author: luisbosquez
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
-ms.author: lbosq
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f1e619468ecbcd533c8cda725cb316d1e2a0e256
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.author: chrande
+ms.custom: devx-track-js
+ms.openlocfilehash: 0b88456bd245f79c38d7829dca76de702f768c06
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420432"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360141"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>クイック スタート:Azure Cosmos DB Gremlin API アカウントを使用して Node.js アプリケーションをビルドする
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Gremlin コンソール](create-graph-gremlin-console.md)
@@ -95,7 +96,7 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 
     ```
 
-  構成はすべて、*config.js* に含まれています。これは[次のセクション](#update-your-connection-string)で編集します。
+  構成はすべて、 *config.js* に含まれています。これは [次のセクション](#update-your-connection-string)で編集します。
 
 * さまざまな Gremlin 操作を実行する一連の関数が定義されています。 その一例を次に示します。
 

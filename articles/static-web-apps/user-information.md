@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7e1f56fc4601b271bf4a0718a944741016509ce4
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: d5a1d810c357aa83b8069023b00d76352da124df
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430520"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844797"
 ---
 # <a name="accessing-user-information-in-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューでのユーザー情報へのアクセス
 
@@ -64,6 +64,10 @@ console.log(getUserInfo());
 
 ## <a name="api-functions"></a>API 関数
 
+Azure Functions バックエンドを介して Static Web Apps で使用できる API 関数では、クライアント アプリケーションと同じユーザー情報にアクセスできます。 API では、ユーザーを特定できる情報を受け取りますが、ユーザーが認証されているか、必要なロールと一致する場合は、独自のチェックを実行しません。 アクセス制御規則は、[`routes.json`](routes.md) ファイルで定義されています。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
 クライアント プリンシパル データは、`x-ms-client-principal` 要求ヘッダーで API 関数に渡されます。 クライアント プリンシパル データは、シリアル化された JSON オブジェクトを含む [Base64](https://www.wikipedia.org/wiki/Base64) でエンコードされた文字列として送信されます。
 
 次の関数の例では、ユーザー情報を読み取って返す方法を示します。
@@ -92,8 +96,54 @@ async function getUser() {
   return clientPrincipal;
 }
 
-console.log(getUser());
+console.log(await getUser());
 ```
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+C# 関数では、`ClaimsPrincipal` オブジェクトまたは独自のカスタム型に逆シリアル化できる `x-ms-client-principal` ヘッダーにあるユーザー情報を使用できます。 次のコードは、ヘッダーを中間の型、`ClientPrincipal` にアンパックする方法を示します。これは、その後、`ClaimsPrincipal` インスタンスになります。
+
+```csharp
+  public static class StaticWebAppsAuth
+  {
+    private class ClientPrincipal
+    {
+        public string IdentityProvider { get; set; }
+        public string UserId { get; set; }
+        public string UserDetails { get; set; }
+        public IEnumerable<string> UserRoles { get; set; }
+    }
+
+    public static ClaimsPrincipal Parse(HttpRequest req)
+    {
+        var principal = new ClientPrincipal();
+
+        if (req.Headers.TryGetValue("x-ms-client-principal", out var header))
+        {
+            var data = header[0];
+            var decoded = Convert.FromBase64String(data);
+            var json = Encoding.ASCII.GetString(decoded);
+            principal = JsonSerializer.Deserialize<ClientPrincipal>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        }
+
+        principal.UserRoles = principal.UserRoles?.Except(new string[] { "anonymous" }, StringComparer.CurrentCultureIgnoreCase);
+
+        if (!principal.UserRoles?.Any() ?? true)
+        {
+            return new ClaimsPrincipal();
+        }
+
+        var identity = new ClaimsIdentity(principal.IdentityProvider);
+        identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, principal.UserId));
+        identity.AddClaim(new Claim(ClaimTypes.Name, principal.UserDetails));
+        identity.AddClaims(principal.UserRoles.Select(r => new Claim(ClaimTypes.Role, r)));
+
+        return new ClaimsPrincipal(identity);
+    }
+  }
+```
+
+---
 
 <sup>1</sup> [fetch](https://caniuse.com/#feat=fetch) API と [await](https://caniuse.com/#feat=mdn-javascript_operators_await) 演算子は、Internet Explorer ではサポートされていません。
 

@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.openlocfilehash: a254465d9055fcf1cf10a2a1d6eb82b2afc16f0b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: f73091552a78760024189b173897913edca724bb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692264"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593407"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Azure NetApp Files のパフォーマンス ベンチマークのテスト レコメンデーション
 
@@ -24,7 +24,7 @@ Azure NetApp Files ボリュームのパフォーマンス特性を理解する�
 
 ### <a name="vm-instance-sizing"></a>VM インスタンスのサイズ設定
 
-最良の結果を得るには、テストを実行するために適切なサイズの仮想マシン (VM) インスタンスを使用していることを確認してください。 次の例では Standard_D32s_v3 インスタンスを使用します。 VM インスタンスのサイズの詳細について、Windows ベースの VM の場合は「[Azure の Windows 仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)」、Linux ベースの VM の場合は「[Azure の Linux 仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+最良の結果を得るには、テストを実行するために適切なサイズの仮想マシン (VM) インスタンスを使用していることを確認してください。 次の例では Standard_D32s_v3 インスタンスを使用します。 VM インスタンスのサイズの詳細について、Windows ベースの VM の場合は「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」、Linux ベースの VM の場合は「[Azure の Linux 仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
 ### <a name="azure-netapp-files-volume-sizing"></a>Azure NetApp Files ボリュームのサイズ設定
 
@@ -113,7 +113,7 @@ Azure NetApp Files 用のダッシュボードを Azure Monitor に作成する�
 
 ### <a name="azure-monitor-api-access"></a>Azure Monitor API アクセス
 
-REST API 呼び出しを使用して Azure NetApp Files カウンターにアクセスできます。 「[Azure Monitor のサポートされるメトリック: Microsoft.NetApp/netAppAccounts/capacityPools/Volumes](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes)」で、容量プールおよびボリュームのカウンターを確認してください。
+REST API 呼び出しを使用して Azure NetApp Files カウンターにアクセスできます。 「[Azure Monitor のサポートされるメトリック: Microsoft.NetApp/netAppAccounts/capacityPools/Volumes](../azure-monitor/essentials/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes)」で、容量プールおよびボリュームのカウンターを確認してください。
 
 次の例は、論理ボリューム サイズを確認するための GET URL を示しています。
 

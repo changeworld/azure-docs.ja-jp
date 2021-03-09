@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 5a3aacd1d07ff068fe50312b2c1d47ac080e5c2c
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 736d135323e2a2df38a13dc46189e2a243fbe381
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391725"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097536"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Custom Vision Service を使用したモデルのテストと再トレーニング
 
@@ -59,4 +59,4 @@ ms.locfileid: "85391725"
 
 ## <a name="next-steps"></a>次のステップ
 
-[分類器の改善](getting-started-improving-your-classifier.md)
+[モデルを改良する](getting-started-improving-your-classifier.md)

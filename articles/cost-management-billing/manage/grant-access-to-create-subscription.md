@@ -4,30 +4,33 @@ description: ユーザーまたはサービス プリンシパルがプログラ
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.reviewer: amberb
+ms.reviewer: andalmia
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 01/13/2021
 ms.author: banders
-ms.openlocfilehash: b154d723e82d02ea864459ef65eb5c05c14ae336
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 039e728f6518d21ddfb9c7c359a6cf2ec743f232
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88943183"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185106"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Azure Enterprise サブスクリプションを作成する権限を付与する (プレビュー)
 
 [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)を結んでいる Azure の顧客は、自分のアカウントに課金されるサブスクリプションを別のユーザーまたはサービス プリンシパルが作成することを許可できます。 この記事では、[Azure ロール ベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) を使用して、サブスクリプションの作成機能を共有する方法と、サブスクリプションの作成を監査する方法について説明します。 共有するアカウントに所有者ロールが必要です。
 
+> [!NOTE]
+> この API は、[サブスクリプション作成用のプレビュー API](programmatically-create-subscription-preview.md) との組み合わせでのみ正しく動作します。 [GA バージョン](programmatically-create-subscription-enterprise-agreement.md)を使用したい場合は、[2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) の最新の API バージョンを使用してください。 より新しい API を使用するために移行する場合は、[2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) を使用して、所有者のアクセス許可を再度付与する必要があります。 以下の API を使用する以前の構成が、より新しい API で使用できるよう自動的に変換されることはありません。
+
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="grant-access"></a>アクセス権の付与
 
-[登録アカウントでサブスクリプションを作成する](programmatically-create-subscription.md)には、ユーザーがそのアカウントに対して [RBAC 所有者ロール](../../role-based-access-control/built-in-roles.md#owner)を持っている必要があります。 次の手順に従うことによって、ユーザーまたはユーザー グループに、登録アカウントに対する RBAC 所有者ロールを付与できます。
+[登録アカウントでサブスクリプションを作成する](programmatically-create-subscription-enterprise-agreement.md)には、ユーザーがそのアカウントに対して Azure RBAC [所有者ロール](../../role-based-access-control/built-in-roles.md#owner)を持っている必要があります。 次の手順に従うことによって、ユーザーまたはユーザー グループに、登録アカウントに対する Azure RBAC 所有者ロールを付与できます。
 
 1. アクセス権を付与する登録アカウントのオブジェクト ID を取得します
 
-    登録アカウントに対する RBAC 所有者ロールを他のユーザーに付与するには、アカウント オーナーまたはそのアカウントの RBAC 所有者である必要があります。
+    登録アカウントに対する Azure RBAC 所有者ロールを他のユーザーに付与するには、アカウント オーナーまたはそのアカウントの Azure RBAC 所有者である必要があります。
 
     # <a name="rest"></a>[REST](#tab/rest)
 
@@ -62,7 +65,7 @@ ms.locfileid: "88943183"
     }
     ```
 
-    `principalName` プロパティを使用して、RBAC 所有者のアクセス権を付与するアカウントを指定します。 そのアカウントの `name` をコピーします。 たとえば、SignUpEngineering@contoso.com 登録アカウントに RBAC 所有者のアクセス権を付与する場合、```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` をコピーします。 それは登録アカウントのオブジェクト ID です。 次のステップでこの値を `enrollmentAccountObjectId` として使用できるよう、どこかに貼り付けておきます。
+    `principalName` プロパティを使用して、Azure RBAC 所有者のアクセス権を付与するアカウントを指定します。 そのアカウントの `name` をコピーします。 たとえば、SignUpEngineering@contoso.com 登録アカウントに Azure RBAC 所有者のアクセス権を付与する場合、```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` をコピーします。 それは登録アカウントのオブジェクト ID です。 次のステップでこの値を `enrollmentAccountObjectId` として使用できるよう、どこかに貼り付けておきます。
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -80,11 +83,11 @@ ms.locfileid: "88943183"
     4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
     ```
 
-    `principalName` プロパティを使用して、RBAC 所有者のアクセス権を付与するアカウントを指定します。 そのアカウントの `ObjectId` をコピーします。 たとえば、SignUpEngineering@contoso.com 登録アカウントに RBAC 所有者のアクセス権を付与する場合、```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` をコピーします。 次の手順で `enrollmentAccountObjectId` として使用できるように、このオブジェクト ID をどこかに貼り付けておきます。
+    `principalName` プロパティを使用して、Azure RBAC 所有者のアクセス権を付与するアカウントを指定します。 そのアカウントの `ObjectId` をコピーします。 たとえば、SignUpEngineering@contoso.com 登録アカウントに Azure RBAC 所有者のアクセス権を付与する場合、```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` をコピーします。 次の手順で `enrollmentAccountObjectId` として使用できるように、このオブジェクト ID をどこかに貼り付けておきます。
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-    [az billing enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) コマンドを使用して、自分がアクセスできるすべての登録アカウントを一覧表示します。 **[使ってみる]** を選択して、[Azure Cloud Shell](https://shell.azure.com/) を開きます。 コードを貼り付けるには、シェル ウィンドウを右クリックして、 **[貼り付け]** を選択します。
+    [az billing enrollment-account list](/cli/azure/billing) コマンドを使用して、自分がアクセスできるすべての登録アカウントを一覧表示します。 **[使ってみる]** を選択して、[Azure Cloud Shell](https://shell.azure.com/) を開きます。 コードを貼り付けるには、シェル ウィンドウを右クリックして、 **[貼り付け]** を選択します。
 
     ```azurecli-interactive
     az billing enrollment-account list
@@ -111,18 +114,18 @@ ms.locfileid: "88943183"
 
     ---
 
-    `principalName` プロパティを使用して、RBAC 所有者のアクセス権を付与するアカウントを指定します。 そのアカウントの `name` をコピーします。 たとえば、SignUpEngineering@contoso.com 登録アカウントに RBAC 所有者のアクセス権を付与する場合、```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` をコピーします。 それは登録アカウントのオブジェクト ID です。 次のステップでこの値を `enrollmentAccountObjectId` として使用できるよう、どこかに貼り付けておきます。
+    `principalName` プロパティを使用して、Azure RBAC 所有者のアクセス権を付与するアカウントを指定します。 そのアカウントの `name` をコピーします。 たとえば、SignUpEngineering@contoso.com 登録アカウントに Azure RBAC 所有者のアクセス権を付与する場合、```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` をコピーします。 それは登録アカウントのオブジェクト ID です。 次のステップでこの値を `enrollmentAccountObjectId` として使用できるよう、どこかに貼り付けておきます。
 
-1. <a id="userObjectId"></a>RBAC 所有者ロールを付与するユーザーまたはグループのオブジェクト ID を取得します
+1. <a id="userObjectId"></a>Azure RBAC 所有者ロールを付与するユーザーまたはグループのオブジェクト ID を取得します
 
     1. Azure portal で、**Azure Active Directory** を検索します。
     1. ユーザーにアクセス権を付与する場合は、左側のメニューで **[ユーザー]** を選択します。 グループにアクセス権を付与するには、 **[グループ]** を選択します。
-    1. RBAC 所有者ロールを付与するユーザーまたはグループを選択します。
+    1. Azure RBAC 所有者ロールを付与するユーザーまたはグループを選択します。
     1. ユーザーを選択した場合、オブジェクト ID は [プロファイル] ページにあります。 グループを選択した場合、オブジェクト ID は [概要] ページにあります。 テキスト ボックスの右側にあるアイコンを選択して、**ObjectID** をコピーします。 次のステップで `userObjectId` として使用できるように、それをどこかに貼り付けておきます。
 
-1. ユーザーまたはグループに、登録アカウントに対する RBAC 所有者ロールを付与します
+1. ユーザーまたはグループに、登録アカウントに対する Azure RBAC 所有者ロールを付与します
 
-    最初の 2 つの手順で収集した値を使用して、ユーザーまたはグループに、登録アカウントに対する RBAC 所有者ロールを付与します。
+    最初の 2 つの手順で収集した値を使用して、ユーザーまたはグループに、登録アカウントに対する Azure RBAC 所有者ロールを付与します。
 
     # <a name="rest"></a>[REST](#tab/rest-2)
 
@@ -174,7 +177,7 @@ ms.locfileid: "88943183"
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
     ```
 
-    登録アカウントの RBAC 所有者になったユーザーは、そのアカウントで[プログラミングによってサブスクリプションを作成](programmatically-create-subscription.md)できるようになります。 委任されたユーザーによって作成されたサブスクリプションには、元のアカウント所有者がサービス管理者として設定されたままになりますが、既定で委任されたユーザーも RBAC 所有者として設定されています。
+    登録アカウントの Azure RBAC 所有者になったユーザーは、そのアカウントで[プログラミングによってサブスクリプションを作成](programmatically-create-subscription-enterprise-agreement.md)できるようになります。 委任されたユーザーによって作成されたサブスクリプションには、元のアカウント所有者がサービス管理者として設定されたままになりますが、既定で委任されたユーザーも Azure RBAC 所有者として設定されています。
 
     ---
 
@@ -193,7 +196,7 @@ ms.locfileid: "88943183"
 
 ## <a name="next-steps"></a>次のステップ
 
-* これで、ユーザーまたはサービス プリンシパルにサブスクリプションを作成する権限が与えられたので、その ID を使って [Azure Enterprise サブスクリプションをプログラムで作成](programmatically-create-subscription.md)できます。
+* これで、ユーザーまたはサービス プリンシパルにサブスクリプションを作成する権限が与えられたので、その ID を使って [Azure Enterprise サブスクリプションをプログラムで作成](programmatically-create-subscription-enterprise-agreement.md)できます。
 * .NET を使用してサブスクリプションを作成する例については、[GitHub のサンプル コード](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core)を参照してください。
 * Azure Resource Manager とその API については、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」を参照してください。
 * 管理グループを使用して大量のサブスクリプションを管理する方法については、「[Azure 管理グループのリソースを整理する](../../governance/management-groups/overview.md)」を参照してください。

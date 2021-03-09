@@ -7,13 +7,13 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: duau
-ms.custom: contperfq1
-ms.openlocfilehash: 14a61d33ef2e4d4fc80770f5c86e33d34ec860cd
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 24ad325cae2ee71ad49ee8ee055a83ceb8fa7ef2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401437"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721737"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー
 
@@ -77,8 +77,12 @@ PowerShell、Azure portal、または CLI を使用して ExpressRoute 回線の
 
 Azure 仮想ネットワーク内にデプロイされている VM およびクラウド サービスに接続するには、プライベート ピアリングを有効にします。
 
-* パス 1 のピアリング サブネット (/30)
-* パス 2 のピアリング サブネット (/30)
+* IPv4 サブネット:
+    * パス 1 のピアリング サブネット (/30)
+    * パス 2 のピアリング サブネット (/30)
+* IPv6 サブネット (省略可能):
+    * パス 1 のピアリング サブネット (/126)
+    * パス 2 のピアリング サブネット (/126)
 * ピアリングの VLAN ID
 * ピアリングの AS 番号
 * ExpressRoute の AS 番号 = 12076
@@ -86,10 +90,14 @@ Azure 仮想ネットワーク内にデプロイされている VM およびク�
 
 #### <a name="for-microsoft-peering"></a>Microsoft ピアリングの場合
 
-Office 365 などの Microsoft オンライン サービスにアクセスするには、これを有効にします。 さらに、すべての Azure PaaS サービスは、Microsoft ピアリング経由でアクセスできます。 Microsoft への接続には、インターネットに使用しているものとは別のプロキシ/エッジを必ず使用する必要があります。 ExpressRoute とインターネットの両方に同じエッジを使用すると、ルーティングが非同期になり、ネットワークの接続が停止します。
+Microsoft 365 などの Microsoft オンライン サービスにアクセスするには、これを有効にします。 さらに、すべての Azure PaaS サービスは、Microsoft ピアリング経由でアクセスできます。 Microsoft への接続には、インターネットに使用しているものとは別のプロキシ/エッジを必ず使用する必要があります。 ExpressRoute とインターネットの両方に同じエッジを使用すると、ルーティングが非同期になり、ネットワークの接続が停止します。
 
-* パス 1 のピアリング サブネット (/30) - パブリック IP である必要があります
-* パス 2 のピアリング サブネット (/30) - パブリック IP である必要があります
+* IPv4 サブネット:
+    * パス 1 のピアリング サブネット (/30) - パブリック IP である必要があります
+    * パス 2 のピアリング サブネット (/30) - パブリック IP である必要があります
+* IPv6 サブネット (省略可能):
+    * パス 1 のピアリング サブネット (/126) - パブリック IP である必要があります
+    * パス 2 のピアリング サブネット (/126) - パブリック IP である必要があります
 * ピアリングの VLAN ID
 * ピアリングの AS 番号
 * アドバタイズされたプレフィックス - パブリック IP プレフィックスである必要があります
@@ -160,7 +168,7 @@ Status                           : Enabled
 
 ## <a name="routing-session-configuration-state"></a>ルーティング セッション構成の状態
 
-BGP プロビジョニング状態は、Microsoft エッジで BGP セッションが有効になっているかどうかを報告します。 プライベートまたは Microsoft ピアリングを使用するには、状態を有効にする必要があります。
+BGP プロビジョニング状態では、Microsoft Edge で BGP セッションが有効になっているかどうかを報告します。 プライベートまたは Microsoft ピアリングを使用するには、状態を有効にする必要があります。
 
 特に Microsoft ピアリングの場合、BGP セッションの状態を確認することが重要です。 BGP プロビジョニング状態に加え、「 *アドバタイズされたパブリック プレフィックス*」と呼ばれているもう 1 つの状態があります。 BGP セッションを開始し、ルーティングをエンド ツー エンドで動作させるには、「アドバタイズされたパブリック プレフィックス」状態を「*構成済み*」にする必要があります。 
 

@@ -1,21 +1,17 @@
 ---
 title: 'Azure Data Factory で Spark を使用してデータを変換する '
 description: このチュートリアルでは、Azure Data Factory で Spark アクティビティを使用してデータを変換するための詳細な手順を説明します。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
-ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.openlocfilehash: 5b0bcdd66e17fb93a560b6073c13e3170e3ab37b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.date: 01/10/2018
+ms.openlocfilehash: 2e2a50a96402f01fe914c79d5257fc5bb4dc57a0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81409257"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377790"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Azure Data Factory で Spark アクティビティを使用してクラウドのデータを変換する
 
@@ -93,7 +89,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
       
    ![[新しいデータ ファクトリ] ウィンドウ](./media/tutorial-transform-data-spark-portal/new-azure-data-factory.png)
  
-   Azure データ ファクトリの名前は *グローバルに一意*にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更してください ( **&lt;yourname&gt;ADFTutorialDataFactory** など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
+   Azure データ ファクトリの名前は *グローバルに一意* にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更してください ( **&lt;yourname&gt;ADFTutorialDataFactory** など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
   
    ![名前が使用できないときのエラー](./media/tutorial-transform-data-spark-portal/name-not-available-error.png)
 1. **[サブスクリプション]** で、データ ファクトリを作成する Azure サブスクリプションを選択します。 
@@ -165,7 +161,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
    i. **[クラスター ユーザー名]** に名前を入力します。 
    
-   j. そのユーザーの**クラスター パスワード**を入力します。 
+   j. そのユーザーの **クラスター パスワード** を入力します。 
    
    k. **[完了]** を選択します。 
 

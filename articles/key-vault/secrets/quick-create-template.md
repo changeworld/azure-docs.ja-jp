@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: cff67e99d40b092341e89c96a9f1e037d8572248
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 1cbe5f986ca36ecc3b45cf4bb7ecffa7067a27bd
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690631"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936619"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -125,7 +125,7 @@ Write-Host "Press [ENTER] to continue..."
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
-![ARM テンプレート、Key Vault 統合、デプロイ ポータル検証の出力](../media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
+![CLI でのデプロイ ポータル検証の出力を示すスクリーンショット。](../media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -163,4 +163,4 @@ Write-Host "Press [ENTER] to continue..."
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - [Azure Resource Manager](../../azure-resource-manager/management/overview.md) の詳細を確認する
-- [Azure Key Vault のベスト プラクティス](../general/best-practices.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する

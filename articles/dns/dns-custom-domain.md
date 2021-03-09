@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 7/13/2019
 ms.author: rohink
-ms.openlocfilehash: f4eb26678dee161451ff10144c2eaa3321ecc011
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d8af5815e544698ab833001e5ce6d0f4a30a264
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84693114"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487400"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Azure DNS を使用して Azure サービス用のカスタム ドメイン設定を提供する
 
@@ -103,9 +103,9 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 カスタム ドメイン名が構成されているアプリ サービスに戻ります。 **[Custom domains] \(カスタム ドメイン)** をクリックし、 **[Hostnames] \(ホスト名)** をクリックします。 作成した CNAME レコードを追加するには、 **[+ Add hostname] \(ホスト名の追加)** をクリックします。
 
-![図 1](./media/dns-custom-domain/figure1.png)
+![[+ ホスト名の追加] ボタンが強調表示されているスクリーンショット。](./media/dns-custom-domain/figure1.png)
 
-プロセスが完了したら、**nslookup** を実行して、名前解決が機能していることを検証します。
+プロセスが完了したら、 **nslookup** を実行して、名前解決が機能していることを検証します。
 
 ![図 1](./media/dns-custom-domain/finalnslookup.png)
 
@@ -136,7 +136,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 **[Storage] \(ストレージ)**  >  **[Storage Accounts] \(ストレージ アカウント)** をクリックしてストレージ アカウントに戻り、ストレージ アカウントを選択して **[Custom domain] \(カスタム ドメイン)** をクリックします。 作成した別名から asverify プレフィックスを除いたものをテキスト ボックスに入力し、 **[間接 CNAME 検証を使用する]** をオンにし、 **[保存]** をクリックします。 この手順が完了したら、DNS ゾーンに戻り、asverify プレフィックスなしで CNAME レコードを作成します。  それ以降は、cdnverify プレフィックスの付いた CNAME レコードを削除しても安全です。
 
-![BLOB ストレージのカスタム ドメイン](./media/dns-custom-domain/indirectvalidate.png)
+![[カスタム ドメイン] ページを示しているスクリーンショット。](./media/dns-custom-domain/indirectvalidate.png)
 
 `nslookup` を実行して DNS 解決を検証する
 

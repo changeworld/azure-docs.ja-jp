@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 0498823e1b730db6425d255b6de4b826dd05a6a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa90fcb9ebc17be9a658b08873234eada98b0fba
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749497"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90898455"
 ---
 # <a name="pca-based-anomaly-detection-module"></a>PCA ベースの異常検出モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) の PCA ベースの異常検出モジュールを使用して、主成分分析 (PCA) に基づく異常検出モデルを作成する方法について説明します。
+この記事では Azure Machine Learning デザイナーの PCA ベースの異常検出モジュールを使用して、主成分分析 (PCA) に基づく異常検出モデルを作成する方法について説明します。
 
 このモジュールは、有効なトランザクションなど、1 つのクラスからトレーニング データを簡単に取得できるが、対象となる異常の十分なサンプルを取得するのが困難なシナリオでモデルを構築するのに役立ちます。 
 
@@ -109,4 +109,4 @@ PCA のしくみ、および異常検出の実装に関する詳細について�
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
 
-デザイナー モジュール固有のエラーの一覧については、「[デザイナーの例外とエラー コード (プレビュー)](designer-error-codes.md)」を参照してください。
+デザイナー モジュール固有のエラーの一覧については、「[デザイナーの例外とエラー コード](designer-error-codes.md)」を参照してください。

@@ -1,18 +1,18 @@
 ---
 title: Azure File Sync エージェントをデプロイする
-description: Azure File Sync エージェントのデプロイ。 移行ドキュメント間で共有される一般的なテキスト ブロック。
+description: Azure File Sync エージェントをデプロイします。 移行ドキュメント間で共有される一般的なテキスト ブロック。
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 66388f14949b4f398de18c9162ca453e7fb3cbe1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f038392f03b94aa2c2450531c9da4a11d9900295
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143587"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043183"
 ---
 このセクションでは、Azure File Sync エージェントをご利用の Windows Server インスタンスにインストールします。
 
@@ -31,10 +31,10 @@ Install-Module -Name Az.StorageSync
 
 また、ファイアウォール全体を開かない、より保守的なアプローチに従うこともできますが、サーバーは上位レベルの DNS 名前空間との通信に制限されます。 詳細については、「[Azure File Sync のプロキシとファイアウォールの設定](../articles/storage/files/storage-sync-files-firewall-and-proxy.md)」をご覧ください。 ご自分のネットワークのベスト プラクティスに従ってください。
 
-サーバーの "*インストール*" ウィザードの終了時に、サーバーの "*登録*" ウィザードが開きます。 以前からご利用のストレージ同期サービスの Azure リソースにサーバーを登録します。
+サーバーのインストール ウィザードの終了時に、サーバーの登録ウィザードが開きます。 以前からご利用のストレージ同期サービスの Azure リソースにサーバーを登録します。
 
-最初にインストールする必要がある PowerShell モジュールを含め、これらの手順については、デプロイ ガイドで詳しく説明されています: [Azure File Sync エージェントのインストール](../articles/storage/files/storage-sync-files-deployment-guide.md)。
+最初にインストールする必要がある PowerShell モジュールを含め、これらの手順については、デプロイ ガイドで詳しく説明されています。[Azure File Sync エージェントのインストール](../articles/storage/files/storage-sync-files-deployment-guide.md)。
 
 最新のエージェントを使用してください。 Microsoft ダウンロード センターからダウンロードできます。[Azure File Sync エージェント](https://aka.ms/AFS/agent "Azure File Sync エージェントのダウンロード")。
 
-インストールとサーバーの登録が正常に完了したら、この手順が正常に完了したことを確認できます。 Azure portal でストレージ同期サービス リソースに移動し、左側のメニューの **[登録済みサーバー]** に進みます。 ご利用のサーバーがそこに一覧表示されます。
+インストールとサーバーの登録が正常に完了したら、この手順が正常に完了したことを確認できます。 Azure portal のストレージ同期サービス リソースに移動します。 左側のメニューで、 **[登録済みサーバー]** に移動します。 ご利用のサーバーがそこに一覧表示されます。

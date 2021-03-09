@@ -3,13 +3,13 @@ title: 認証/承認の高度な使用方法
 description: App Service でさまざまなシナリオに合わせて認証および承認機能をカスタマイズし、ユーザーの要求とさまざまなトークンを取得する方法について説明します。
 ms.topic: article
 ms.date: 07/08/2020
-ms.custom: seodec18
-ms.openlocfilehash: 2fa2e3463e057062ba743c2f6989aa571c85c983
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 50587feff29e1c02a639d63d0c99156dcec4f68e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962470"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180872"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 上での認証と承認の高度な使用方法
 
@@ -24,6 +24,7 @@ ms.locfileid: "88962470"
 * [Microsoft アカウント ログインを使用するようにアプリを構成する方法](configure-authentication-provider-microsoft.md)
 * [Twitter ログインを使用するようにアプリを構成する方法](configure-authentication-provider-twitter.md)
 * [OpenID Connect プロバイダーを使用してログインするようにアプリを構成する方法 (プレビュー)](configure-authentication-provider-openid-connect.md)
+* [Sign in with Apple を使用してログインするようにアプリを構成する方法 (プレビュー)](configure-authentication-provider-apple.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>複数のサインイン プロバイダーを使用する
 
@@ -41,6 +42,7 @@ ms.locfileid: "88962470"
 <a href="/.auth/login/facebook">Log in with Facebook</a>
 <a href="/.auth/login/google">Log in with Google</a>
 <a href="/.auth/login/twitter">Log in with Twitter</a>
+<a href="/.auth/login/apple">Log in with Apple</a>
 ```
 
 ユーザーがいずれかのリンクをクリックすると、それぞれのサインイン ページが開き、ユーザーがサインインできます。
@@ -172,7 +174,7 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 
 - **Google**: `access_type=offline` クエリ文字列パラメーターを `/.auth/login/google` API 呼び出しに追加します。 Mobile Apps SDK を使用している場合は、`LogicAsync` オーバーロードの 1 つにパラメーターを追加できます ([Google 更新トークン](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)に関するページをご覧ください)。
 - **Facebook**: 更新トークンを提供しません。 長期間維持されるトークンの有効期限は 60 日間です ([Facebook のアクセス トークンの有効期限と延長](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)に関するページをご覧ください)。
-- **Twitter**: アクセス トークンに有効期限はありません ([Twitter OAuth の FAQ](https://developer.twitter.com/en/docs/basics/authentication/FAQ) に関するページを参照してください)。
+- **Twitter**: アクセス トークンに有効期限はありません ([Twitter OAuth の FAQ](https://developer.twitter.com/en/docs/authentication/faq) に関するページを参照してください)。
 - **Microsoft アカウント**: [Microsoft アカウント認証設定を構成する](configure-authentication-provider-microsoft.md)場合は、`wl.offline_access` スコープを選択します。
 - **Azure Active Directory**: [https://resources.azure.com](https://resources.azure.com) で、次の手順を実行します。
     1. ページの上部にある **[Read/Write]** を選択します。
@@ -272,11 +274,155 @@ Windows アプリでは、*Web.config* ファイルを編集して IIS Web サ�
 ID プロバイダーによって特定のターンキー承認が提供される場合があります。 次に例を示します。
 
 - [Azure App Service](configure-authentication-provider-aad.md) の場合、Azure AD で直接、[エンタープライズ レベルのアクセスを管理](../active-directory/manage-apps/what-is-access-management.md)できます。 説明については、「[アプリケーションへのユーザー アクセスの削除方法](../active-directory/manage-apps/methods-for-removing-user-access.md)」をご覧ください。
-- [Google](configure-authentication-provider-google.md) の場合、特定の[組織](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)に属する Google API プロジェクトを、その組織内のユーザーだけにアクセスを許可するように構成できます ([Google の「**Setting up OAuth 2.0**」サポート ページ](https://support.google.com/cloud/answer/6158849?hl=en)をご覧ください)。
+- [Google](configure-authentication-provider-google.md) の場合、特定の [組織](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)に属する Google API プロジェクトを、その組織内のユーザーだけにアクセスを許可するように構成できます ([Google の「**Setting up OAuth 2.0**」サポート ページ](https://support.google.com/cloud/answer/6158849?hl=en)をご覧ください)。
 
 ### <a name="application-level"></a>アプリケーション レベル
 
 他のいずれのレベルでも必要な承認が提供されない場合、またはお使いのプラットフォームまたは ID プロバイダーがサポートされていない場合、[ユーザーの要求](#access-user-claims)に基づいてユーザーを承認するカスタム コードを記述する必要があります。
+
+## <a name="updating-the-configuration-version-preview"></a>構成バージョンの更新 (プレビュー)
+
+認証および承認機能用の管理 API には、2 つのバージョンがあります。 Azure portal での "認証 (プレビュー)" エクスペリエンスには、プレビュー V2 バージョンが必要です。 V1 の API が既に使用されているアプリは、いくつかの変更が行われた後に、V2 バージョンにアップグレードできます。 具体的には、シークレット構成を、スロット固定のアプリケーション設定に移動する必要があります。 Microsoft アカウント プロバイダーの構成も、V2 では現在サポートされていません。
+
+> [!WARNING]
+> V2 プレビューに移行すると、Azure portal、Azure CLI、Azure PowerShell の既存のエクスペリエンスなど、一部のクライアントを介したアプリケーションに対する App Service の認証または承認機能の管理が無効になります。 これを元に戻すことはできません。 プレビュー期間中は、運用ワークロードの移行は推奨されず、サポートもされていません。 このセクションの手順は、テスト アプリケーションのみを対象に実行してください。
+
+### <a name="moving-secrets-to-application-settings"></a>シークレットをアプリケーション設定に移動
+
+1. V1 API を使用して既存の構成を取得します。
+
+   ```azurecli
+   # For Web Apps
+   az webapp auth show -g <group_name> -n <site_name>
+
+   # For Azure Functions
+   az functionapp auth show -g <group_name> -n <site_name>
+   ```
+
+   結果として取得した JSON ペイロードで、構成した各プロバイダーに使用されているシークレット値をメモします。
+
+   * AAD: `clientSecret`
+   * Google: `googleClientSecret`
+   * Facebook: `facebookAppSecret`
+   * Twitter: `twitterConsumerSecret`
+   * Microsoft アカウント: `microsoftAccountClientSecret`
+
+   > [!IMPORTANT]
+   > シークレット値は重要なセキュリティ資格情報であり、慎重に扱う必要があります。 これらの値を共有したり、ローカル マシン上に保持したりしないでください。
+
+1. 各シークレット値のスロット固定アプリケーション設定を作成します。 各アプリケーション設定の名前を選択できます。 この値は、前の手順で取得した値と一致しているか、その値を使用して作成した [Key Vault シークレットを参照](./app-service-key-vault-references.md?toc=/azure/azure-functions/toc.json)している必要があります。
+
+   この設定を作成するには、Azure portal を使用するか、プロバイダーごとに次の方法を実行できます。
+
+   ```azurecli
+   # For Web Apps, Google example    
+   az webapp config appsettings set -g <group_name> -n <site_name> --slot-settings GOOGLE_PROVIDER_AUTHENTICATION_SECRET=<value_from_previous_step>
+
+   # For Azure Functions, Twitter example
+   az functionapp config appsettings set -g <group_name> -n <site_name> --slot-settings TWITTER_PROVIDER_AUTHENTICATION_SECRET=<value_from_previous_step>
+   ```
+
+   > [!NOTE]
+   > この構成のアプリケーション設定はスロット固定としてマークする必要があります。つまり、それらは、[スロット スワップ操作](./deploy-staging-slots.md)中に環境間を移動しません。 これは、認証構成自体が環境に関連付けられているからです。 
+
+1. `authsettings.json` という名前の新しい JSON ファイルを作成します。前に受け取った出力から各シークレット値を削除します。 シークレットが含まれていないことを確認して、残りの出力をファイルに書き込みます。 場合によっては、空の文字列を含む配列が構成に含まれていることがあります。 `microsoftAccountOAuthScopes` がそうでないことを確認し、そうである場合は、その値を `null` に切り替えます。
+
+1. 前の手順で作成した各プロバイダーのアプリケーション設定名を指すプロパティを `authsettings.json` に追加します。
+ 
+   * AAD: `clientSecretSettingName`
+   * Google: `googleClientSecretSettingName`
+   * Facebook: `facebookAppSecretSettingName`
+   * Twitter: `twitterConsumerSecretSettingName`
+   * Microsoft アカウント: `microsoftAccountClientSecretSettingName`
+
+   この操作後のサンプル ファイルは、次のようになります。この場合は、AAD 用にのみ構成されています。
+
+   ```json
+   {
+       "id": "/subscriptions/00d563f8-5b89-4c6a-bcec-c1b9f6d607e0/resourceGroups/myresourcegroup/providers/Microsoft.Web/sites/mywebapp/config/authsettings",
+       "name": "authsettings",
+       "type": "Microsoft.Web/sites/config",
+       "location": "Central US",
+       "properties": {
+           "enabled": true,
+           "runtimeVersion": "~1",
+           "unauthenticatedClientAction": "AllowAnonymous",
+           "tokenStoreEnabled": true,
+           "allowedExternalRedirectUrls": null,
+           "defaultProvider": "AzureActiveDirectory",
+           "clientId": "3197c8ed-2470-480a-8fae-58c25558ac9b",
+           "clientSecret": null,
+           "clientSecretSettingName": "MICROSOFT_IDENTITY_AUTHENTICATION_SECRET",
+           "clientSecretCertificateThumbprint": null,
+           "issuer": "https://sts.windows.net/0b2ef922-672a-4707-9643-9a5726eec524/",
+           "allowedAudiences": [
+               "https://mywebapp.azurewebsites.net"
+           ],
+           "additionalLoginParams": null,
+           "isAadAutoProvisioned": true,
+           "aadClaimsAuthorization": null,
+           "googleClientId": null,
+           "googleClientSecret": null,
+           "googleClientSecretSettingName": null,
+           "googleOAuthScopes": null,
+           "facebookAppId": null,
+           "facebookAppSecret": null,
+           "facebookAppSecretSettingName": null,
+           "facebookOAuthScopes": null,
+           "gitHubClientId": null,
+           "gitHubClientSecret": null,
+           "gitHubClientSecretSettingName": null,
+           "gitHubOAuthScopes": null,
+           "twitterConsumerKey": null,
+           "twitterConsumerSecret": null,
+           "twitterConsumerSecretSettingName": null,
+           "microsoftAccountClientId": null,
+           "microsoftAccountClientSecret": null,
+           "microsoftAccountClientSecretSettingName": null,
+           "microsoftAccountOAuthScopes": null,
+           "isAuthFromFile": "false"
+       }   
+   }
+   ```
+
+1. このファイルをアプリの新しい認証および承認構成として送信します。
+
+   ```azurecli
+   az rest --method PUT --url "/subscriptions/<subscription_id>/resourceGroups/<group_name>/providers/Microsoft.Web/sites/<site_name>/config/authsettings?api-version=2020-06-01" --body @./authsettings.json
+   ```
+
+1. この後もアプリが想定どおりに動作していることを確認します。
+
+1. 前の手順で使用したファイルを削除します。
+
+これで、ID プロバイダーのシークレットをアプリケーション設定として格納するためにアプリが移行されました。
+
+### <a name="support-for-microsoft-account-registrations"></a>Microsoft アカウント登録のサポート
+
+V2 API では、現在、Microsoft アカウントは個別のプロバイダーとしてサポートされていません。 むしろ、集中型 [Microsoft ID プラットフォーム](../active-directory/develop/v2-overview.md)を活用し、個人の Microsoft アカウントを使用してユーザーをサインインさせます。 V2 API に切り替えるときは、V1 の Azure Active Directory 構成を使用して Microsoft ID プラットフォーム プロバイダーが構成されます。
+
+既存の構成に Microsoft アカウント プロバイダーが含まれており、Azure Active Directory プロバイダーが含まれていない場合は、構成を Azure Active Directory プロバイダーに切り替えてから、移行を実行できます。 これを行うには、次の手順を実行します。
+
+1. Azure portal で [ **[アプリの登録]**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) に移動して、お使いの Microsoft アカウント プロバイダーに関連付けられている登録を見つけます。 [個人用アカウントからのアプリケーション] という見出しの下に表示されている場合があります。
+1. その登録の [認証] ページに移動します。 [リダイレクト URI] の下に、末尾が `/.auth/login/microsoftaccount/callback` のエントリが表示されます。 この URI をコピーします。
+1. コピーしたものと一致する新しい URI を追加します。ただし、末尾は `/.auth/login/aad/callback` にする必要があります。 これにより、App Service の認証および承認構成でこの登録を使用できるようになります。
+1. アプリの App Service 認証および承認構成に移動します。
+1. Microsoft アカウント プロバイダーの構成を収集します。
+1. 前の手順で収集したクライアント ID とクライアント シークレットの値を指定し、"詳細" 管理モードを使用して Azure Active Directory プロバイダーを構成します。 発行者の URL については、`<authentication-endpoint>/<tenant-id>/v2.0` を使用し、 *\<authentication-endpoint>* を [クラウド環境の認証エンドポイント](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (たとえば、グローバル Azure の場合、"https://login.microsoftonline.com") に置き換え、さらに、 *\<tenant-id>* を **ディレクトリ (テナント) ID** に置き換えます。
+1. 構成を保存したら、ブラウザーでサイトの `/.auth/login/aad` エンドポイントに移動し、サインイン フローを完了して、ログイン フローをテストします。
+1. この時点で、構成は正常にコピーされましたが、既存の Microsoft アカウント プロバイダーの構成はそのまま残っています。 それを削除する前に、アプリのすべての部分で、ログイン リンクなどを使用して Azure Active Directory プロバイダーが参照されていることを確認してください。アプリのすべての部分が想定どおりに動作することを確認します。
+1. AAD Azure Active Directory プロバイダーに対して機能することを検証したら、Microsoft アカウント プロバイダーの構成を削除できます。
+
+一部のアプリでは、Azure Active Directory と Microsoft アカウント用に別々の登録が既に存在している場合があります。 現時点では、これらのアプリを移行することはできません。 
+
+> [!WARNING]
+> AAD アプリの登録で[サポートされているアカウントの種類](../active-directory/develop/supported-accounts-validation.md)を変更することにより、この 2 つの登録を集中させることができます。 ただし、これにより、Microsoft アカウント ユーザーに対して新しい同意プロンプトが強制され、それらのユーザーの ID 要求の構造が異なるものになる場合があります。特に、新しいアプリ ID が使用されてから、`sub` で値が変化します。 この方法は、十分に理解している場合を除き、推奨されません。 代わりに、V2 API でこの 2 つの登録に対するサポートが提供されるのを待つことをお勧めします。
+
+### <a name="switching-to-v2"></a>V2 への切り替え
+
+上記の手順を実行したら、Azure portal でアプリに移動します。 [認証 (プレビュー)] セクションを選択します。 
+
+または、サイト リソースの下にある `config/authsettingsv2` リソースに対して PUT 要求を行うこともできます。 ペイロードのスキーマは、「[ファイルを使用して構成する](#config-file)」セクションで取り込まれるものと同じです。
 
 ## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>ファイルを使用して構成する (プレビュー)
 
@@ -315,13 +461,52 @@ ID プロバイダーによって特定のターンキー承認が提供され�
         "enabled": <true|false>
     },
     "globalValidation": {
-        "requireAuthentication": <true|false>,
         "unauthenticatedClientAction": "RedirectToLoginPage|AllowAnonymous|Return401|Return403",
         "redirectToProvider": "<default provider alias>",
         "excludedPaths": [
             "/path1",
             "/path2"
         ]
+    },
+    "httpSettings": {
+        "requireHttps": <true|false>,
+        "routes": {
+            "apiPrefix": "<api prefix>"
+        },
+        "forwardProxy": {
+            "convention": "NoProxy|Standard|Custom",
+            "customHostHeaderName": "<host header value>",
+            "customProtoHeaderName": "<proto header value>"
+        }
+    },
+    "login": {
+        "routes": {
+            "logoutEndpoint": "<logout endpoint>"
+        },
+        "tokenStore": {
+            "enabled": <true|false>,
+            "tokenRefreshExtensionHours": "<double>",
+            "fileSystem": {
+                "directory": "<directory to store the tokens in if using a file system token store (default)>"
+            },
+            "azureBlobStorage": {
+                "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
+            }
+        },
+        "preserveUrlFragmentsForLogins": <true|false>,
+        "allowedExternalRedirectUrls": [
+            "https://uri1.azurewebsites.net/",
+            "https://uri2.azurewebsites.net/",
+            "url_scheme_of_your_app://easyauth.callback"
+        ],
+        "cookieExpiration": {
+            "convention": "FixedTime|IdentityDerived",
+            "timeToExpiration": "<timespan>"
+        },
+        "nonce": {
+            "validateNonce": <true|false>,
+            "nonceExpirationInterval": "<timespan>"
+        }
     },
     "identityProviders": {
         "azureActiveDirectory": {
@@ -353,7 +538,7 @@ ID プロバイダーによって特定のターンキー承認が提供され�
             "graphApiVersion": "v3.3",
             "login": {
                 "scopes": [
-                    "profile",
+                    "public_profile",
                     "email"
                 ]
             },
@@ -397,13 +582,26 @@ ID プロバイダーによって特定のターンキー承認が提供され�
                 "consumerSecretSettingName": "APP_SETTING_CONTAINING TWITTER_CONSUMER_SECRET"
             }
         },
+        "apple": {
+            "enabled": <true|false>,
+            "registration": {
+                "clientId": "<client id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_APPLE_SECRET"
+            },
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            }
+        },
         "openIdConnectProviders": {
-            "provider name": {
+            "<providerName>": {
                 "enabled": <true|false>,
                 "registration": {
                     "clientId": "<client id>",
                     "clientCredential": {
-                        "secretSettingName": "<name of app setting containing client secret>"
+                        "clientSecretSettingName": "<name of app setting containing client secret>"
                     },
                     "openIdConnectConfiguration": {
                         "authorizationEndpoint": "<url specifying authorization endpoint>",
@@ -415,7 +613,7 @@ ID プロバイダーによって特定のターンキー承認が提供され�
                 },
                 "login": {
                     "nameClaimType": "<name of claim containing name>",
-                    "scope": [
+                    "scopes": [
                         "openid",
                         "profile",
                         "email"
@@ -427,45 +625,6 @@ ID プロバイダーによって特定のターンキー承認が提供され�
                 }
             },
             //...
-        },
-        "login": {
-            "routes": {
-                "logoutEndpoint": "<logout endpoint>"
-            },
-            "tokenStore": {
-                "enabled": <true|false>,
-                "tokenRefreshExtensionHours": "<double>",
-                "fileSystem": {
-                    "directory": "<directory to store the tokens in if using a file system token store (default)>"
-                },
-                "azureBlobStorage": {
-                    "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
-                }
-            },
-            "preserveUrlFragmentsForLogins": <true|false>,
-            "allowedExternalRedirectUrls": [
-                "https://uri1.azurewebsites.net/",
-                "https://uri2.azurewebsites.net/"
-            ],
-            "cookieExpiration": {
-                "convention": "FixedTime|IdentityProviderDerived",
-                "timeToExpiration": "<timespan>"
-            },
-            "nonce": {
-                "validateNonce": <true|false>,
-                "nonceExpirationInterval": "<timespan>"
-            }
-        },
-        "httpSettings": {
-            "requireHttps": <true|false>,
-            "routes": {
-                "apiPrefix": "<api prefix>"
-            },
-            "forwardProxy": {
-                "convention": "NoProxy|Standard|Custom",
-                "customHostHeaderName": "<host header value>",
-                "customProtoHeaderName": "<proto header value>"
-            }
         }
     }
 }
@@ -489,7 +648,7 @@ ID プロバイダーによって特定のターンキー承認が提供され�
 
 ##### <a name="from-the-azure-cli"></a>Azure CLI から
 
-Azure CLI を使用して、[az webapp auth show](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) コマンドで現在のミドルウェア バージョンを表示します。
+Azure CLI を使用して、[az webapp auth show](/cli/azure/webapp/auth#az-webapp-auth-show) コマンドで現在のミドルウェア バージョンを表示します。
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -520,7 +679,7 @@ CLI 出力に `runtimeVersion` フィールドが表示されます。 次の出
 
 #### <a name="update-the-current-runtime-version"></a>現在のランタイム バージョンの更新
 
-Azure CLI を使用すると、[az webapp auth update](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) コマンドでアプリの `runtimeVersion` 設定を更新できます。
+Azure CLI を使用すると、[az webapp auth update](/cli/azure/webapp/auth#az-webapp-auth-update) コマンドでアプリの `runtimeVersion` 設定を更新できます。
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \

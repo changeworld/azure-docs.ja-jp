@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84e92cbac064106ca95277288eb773e311798930
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08b08e3e799ff7b579889a62ecec70677a3cbce9
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203454"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059060"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーでセルフ アサート技術プロファイルを定義します。
 
@@ -26,7 +26,7 @@ ms.locfileid: "85203454"
 
 ## <a name="protocol"></a>Protocol
 
-**Protocol** 要素の **Name** 属性は `Proprietary` に設定する必要があります。 セルフ アサートのために**ハンドラー**属性は、Azure AD B2C で使用されるプロトコル ハンドラーのアセンブリの完全修飾名を含める必要があります。 `Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+**Protocol** 要素の **Name** 属性は `Proprietary` に設定する必要があります。 セルフ アサートのために **ハンドラー** 属性は、Azure AD B2C で使用されるプロトコル ハンドラーのアセンブリの完全修飾名を含める必要があります。 `Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
 次の例は、電子メールのサインアップ用のセルフ アサート技術プロファイルを示しています。
 
@@ -53,7 +53,7 @@ ms.locfileid: "85203454"
 
 ## <a name="display-claims"></a>表示要求
 
-表示要求機能は、現在、**プレビュー**段階です。
+表示要求機能は、現在、**プレビュー** 段階です。
 
 **DisplayClaims** 要素には、ユーザーからデータを収集するために画面に提示される要求の一覧が含まれます。 表示要求の値を事前入力するには、以前に説明した入力要求を使用します。 要素は、既定値を含めることもできます。
 
@@ -91,7 +91,7 @@ ms.locfileid: "85203454"
 
 セルフアサート技術プロファイルに 1 つ以上の **DisplayClaim** 要素を指定する場合は、画面に表示してユーザーからデータを収集する "*すべての*" 要求に対して DisplayClaim を使用する必要があります。 少なくとも 1 つの表示要求が含まれるセルフアサート技術プロファイルでは、出力要求はまったく表示されません。
 
-基本ポリシー内に `age` 要求が**出力**要求として定義されている次の例を考えてみます。 セルフアサート技術プロファイルに表示要求を追加する前に、ユーザーからデータを収集するために、`age` 要求が画面に表示されます。
+基本ポリシー内に `age` 要求が **出力** 要求として定義されている次の例を考えてみます。 セルフアサート技術プロファイルに表示要求を追加する前に、ユーザーからデータを収集するために、`age` 要求が画面に表示されます。
 
 ```xml
 <TechnicalProfile Id="id">
@@ -101,7 +101,7 @@ ms.locfileid: "85203454"
 </TechnicalProfile>
 ```
 
-その後、基本を継承するリーフ ポリシーで、**表示**要求として `officeNumber` が指定された場合:
+その後、基本を継承するリーフ ポリシーで、**表示** 要求として `officeNumber` が指定された場合:
 
 ```xml
 <TechnicalProfile Id="id">
@@ -134,9 +134,9 @@ ms.locfileid: "85203454"
 出力要求は、次の場合に使用します。
 
 - **要求が出力要求変換による出力の場合**。
-- **出力要求に既定値を設定する**。ユーザーからデータを収集しない、または検証技術プロファイルからデータを返さない場合。 `LocalAccountSignUpWithLogonEmail`セルフ アサート技術プロファイルは、**実行済みのセルフ アサート入力**の要求を`true`に設定します。
+- **出力要求に既定値を設定する**。ユーザーからデータを収集しない、または検証技術プロファイルからデータを返さない場合。 `LocalAccountSignUpWithLogonEmail`セルフ アサート技術プロファイルは、**実行済みのセルフ アサート入力** の要求を`true`に設定します。
 - **検証技術プロファイルは、出力要求を返します。** - 技術プロファイルは、いくつかの要求を返す検証技術プロファイルを呼び出すことがあります。 要求をバブルアップして、ユーザー体験の次のオーケストレーション ステップに戻すことができます。 たとえば、ローカル アカウントでサインインすると、`SelfAsserted-LocalAccountSignin-Email`という名前のセルフ アサート技術プロファイルが`login-NonInteractive`という名前の検証技術プロファイルを呼び出します。 この技術プロファイルは、ユーザーの資格情報を検証し、ユーザー プロファイルを返します。 'UserPrincipalName'、'displayName'、'givenName' および 'surName' など。
-- **表示コントロールによって出力要求が返される**。技術プロファイルに[表示コントロール](display-controls.md)への参照を含めることができます。 表示コントロールによって、検証済みの電子メール アドレスなどの要求が返されます。 要求をバブルアップして、ユーザー体験の次のオーケストレーション ステップに戻すことができます。 表示制御機能は、現在、**プレビュー**段階です。
+- **表示コントロールによって出力要求が返される**。技術プロファイルに [表示コントロール](display-controls.md)への参照を含めることができます。 表示コントロールによって、検証済みの電子メール アドレスなどの要求が返されます。 要求をバブルアップして、ユーザー体験の次のオーケストレーション ステップに戻すことができます。 表示制御機能は、現在、**プレビュー** 段階です。
 
 次の例では、表示要求と出力要求の両方を使用するセルフアサート技術プロファイルの使用法を示します。
 
@@ -175,6 +175,14 @@ ms.locfileid: "85203454"
 </TechnicalProfile>
 ```
 
+### <a name="output-claims-sign-up-or-sign-in-page"></a>出力要求サインアップまたはサインイン ページ
+
+結合されたサインアップおよびサインイン ページで、`unifiedssp` または `unifiedssd` のページの種類を指定するコンテンツ定義 [DataUri](contentdefinitions.md#datauri) 要素を使用する場合、次の点に注意してください。
+
+- ユーザー名とパスワードの要求のみがレンダリングされます。
+- 最初の 2 つの出力要求は、ユーザー名とパスワード (この順序で) である必要があります。 
+- その他の要求はすべてレンダリングされません。これらの要求については、`defaultValue` を設定するか、要求フォーム検証技術プロファイルを呼び出す必要があります。 
+
 ## <a name="persist-claims"></a>永続化した要求
 
 PersistedClaims 要素は使用されません。 セルフ アサート技術プロファイルでは、データが Azure AD B2C に保持されません。 代わりに、データの永続化を担当する検証技術プロファイルが呼び出されます。 たとえば、サインアップ ポリシーは、新しいユーザー プロファイルを収集するために`LocalAccountSignUpWithLogonEmail`セルフ アサート技術プロファイルを使用します。 `LocalAccountSignUpWithLogonEmail`技術プロファイルは、Azure AD B2C でアカウントを作成するには、検証技術プロファイルを呼び出します。
@@ -189,7 +197,7 @@ PersistedClaims 要素は使用されません。 セルフ アサート技術�
 
 ## <a name="metadata"></a>Metadata
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | setting.operatingMode <sup>1</sup>| いいえ | サインイン ページのために、このプロパティは、入力検証とエラー メッセージなど [ユーザー名] フィールドの動作を制御します。 期待される値は`Username`または`Email`です。  |
 | AllowGenerationOfClaimsWithNullValues| いいえ| null 値を含む要求を生成することを許可します。 たとえば、ユーザーがチェックボックスをオンにしていない場合などです。|
@@ -200,13 +208,15 @@ PersistedClaims 要素は使用されません。 セルフ アサート技術�
 | setting.showCancelButton | いいえ | [キャンセル] ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
 | setting.showContinueButton | いいえ | [続行する] ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
 | setting.showSignupLink <sup>2</sup>| いいえ | サインアップ ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
-| setting.forgotPasswordLinkLocation <sup>2</sup>| いいえ| パスワードを忘れた場合のリンクを表示します。 使用可能な値: `AfterInput` (既定) ではリンクがページ下部に表示される、`None` ではパスワードを忘れた場合のリンクが削除される。|
-| setting.enableRememberMe <sup>2</sup>| いいえ| [[サインインしたままにする]](custom-policy-keep-me-signed-in.md) チェックボックスを表示します。 指定できる値: `true` または `false` (既定値)。 |
-| IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
+| setting.forgotPasswordLinkLocation <sup>2</sup>| いいえ| パスワードを忘れた場合のリンクを表示します。 使用可能な値: `AfterLabel` (既定) では、ラベルの直後にリンクが表示されます。ラベルがない場合はパスワード入力フィールドの後にリンクが表示されます。`AfterInput` では、パスワード入力フィールドの後にリンクが表示されます。`AfterButtons` では、フォーム下部のボタンの後にリンクが表示されます。`None` では、パスワードを忘れた場合のリンクは削除されます。|
+| setting.enableRememberMe <sup>2</sup>| いいえ| [[サインインしたままにする]](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) チェックボックスを表示します。 指定できる値: `true` または `false` (既定値)。 |
+| setting.inputVerificationDelayTimeInMilliseconds <sup>3</sup>| いいえ| ユーザーが入力を停止するのを待って、値を検証することで、ユーザー エクスペリエンスを向上させます。 既定値は、2000 ミリ秒です。 |
+| IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
 
-注:
+メモ:
 1. コンテンツ定義 [DataUri](contentdefinitions.md#datauri) `unifiedssp`または`unifiedssd`の種類に使用できます。
 1. コンテンツ定義 [DataUri](contentdefinitions.md#datauri) `unifiedssp`または`unifiedssd`の種類に使用できます。 [ページ レイアウトバージョン](page-layout.md) 1.1.0 以降。
+1. [ページ レイアウト バージョン](page-layout.md) 1.2.0 以降に使用できます。
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 

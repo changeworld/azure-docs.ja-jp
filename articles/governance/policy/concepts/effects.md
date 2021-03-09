@@ -1,14 +1,14 @@
 ---
 title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0cfa8215d828de6d5426c3883ca1968e7a7cb542
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e72e94766dce2660409e729bc43eb107fb9ab39a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544725"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883080"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -24,7 +24,7 @@ Azure Policy 内の各ポリシー定義には単一の効果があります。 
 - [Disabled](#disabled)
 - [Modify](#modify)
 
-次の効果は_非推奨_となっています。
+次の効果は "_非推奨_" です。
 
 - [EnforceOPAConstraint](#enforceopaconstraint)
 - [EnforceRegoPolicy](#enforceregopolicy)
@@ -42,6 +42,8 @@ Azure Policy 内の各ポリシー定義には単一の効果があります。 
 - **Audit** が最後に評価されます。
 
 リソース マネージャー モードの要求では、リソース プロバイダーによって成功コードが返された後、**AuditIfNotExists** と **DeployIfNotExists** が評価され、追加のコンプライアンスのログ記録またはアクションが必要かどうかが判断されます。
+
+さらに、`tags` の関連フィールドだけを変更する `PATCH` 要求では、ポリシーの評価が、`tags` の関連フィールドを検査する条件を含むポリシーに限定されます。
 
 ## <a name="append"></a>Append
 
@@ -98,7 +100,7 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 
 ### <a name="audit-evaluation"></a>Audit の評価
 
-Audit は、リソースの作成中または更新中に Azure Policy によって確認される最後の効果です。 リソース マネージャー モードの場合、その後でリソースが Azure Policy によってリソース プロバイダーに送信されます。 Audit は、リソース要求でも評価サイクルでも同じように動作します。 Azure Policy によって `Microsoft.Authorization/policies/audit/action` 操作がアクティビティ ログに追加され、リソースが非準拠としてマークされます。
+Audit は、リソースの作成中または更新中に Azure Policy によって確認される最後の効果です。 リソース マネージャー モードの場合、その後でリソースが Azure Policy によってリソース プロバイダーに送信されます。 Audit は、リソース要求でも評価サイクルでも同じように動作します。 新規および更新されたリソースの場合、Azure Policy によってアクティビティ ログに `Microsoft.Authorization/policies/audit/action` 操作が追加され、リソースは非準拠とマークされます。
 
 ### <a name="audit-properties"></a>Audit のプロパティ
 
@@ -141,11 +143,11 @@ Audit は、リソースの作成中または更新中に Azure Policy によっ
 
 ## <a name="auditifnotexists"></a>AuditIfNotExists
 
-AuditIfNotExists は、**if** 条件に一致するリソースに_関連する_リソースで監査を有効にしますが、**then** 条件の **details** で指定されるプロパティはありません。
+AuditIfNotExists は、**if** 条件に一致するリソースに _関連する_ リソースで監査を有効にしますが、**then** 条件の **details** で指定されるプロパティはありません。
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists の評価
 
-AuditIfNotExists は、リソース プロバイダーでリソースの作成または更新要求が処理され、成功を示す状態コードが返された後で実行されます。 関連するリソースがない場合、または **ExistenceCondition** によって定義されたリソースが true と評価されない場合、監査が発生します。 Audit 効果と同じ方法で、Azure Policy によって `Microsoft.Authorization/policies/audit/action` 操作がアクティビティ ログに追加されます。 トリガーされた場合、**if** 条件を満たしているリソースは、非準拠としてマークされているリソースです。
+AuditIfNotExists は、リソース プロバイダーでリソースの作成または更新要求が処理され、成功を示す状態コードが返された後で実行されます。 関連するリソースがない場合、または **ExistenceCondition** によって定義されたリソースが true と評価されない場合、監査が発生します。 新規および更新されたリソースの場合、Azure Policy によってアクティビティ ログに `Microsoft.Authorization/policies/audit/action` 操作が追加され、リソースは非準拠とマークされます。 トリガーされた場合、**if** 条件を満たしているリソースは、非準拠としてマークされているリソースです。
 
 ### <a name="auditifnotexists-properties"></a>AuditIfNotExists のプロパティ
 
@@ -156,7 +158,8 @@ AuditIfNotExists 効果の **details** プロパティは、照合する関連�
   - **details.type** が **if** 条件リソース下にあるリソースの型である場合、この **type** のリソースが、ポリシーによって評価対象リソースのスコープ内から照会されます。 それ以外の場合は、評価対象リソースと同じリソース グループ内から照会されます。
 - **Name** (省略可能)
   - 照合するリソースの正確な名前を指定して、指定した型のすべてのリソースではなく 1 つの特定のリソースを取得します。
-  - **if.field.type** と **then.details.type** の条件値が一致する場合、**Name** は "_必須_" になり、`[field('name')]` であることが必要です。 ただし、代わりに [audit](#audit) の影響を考慮する必要があります。
+  - **if.field.type** と **then.details.type** の条件値が一致する場合、**Name** は "_必須_" になり、子リソースに対し `[field('name')]` または `[field('fullName')]` であることが必要です。
+    ただし、代わりに [audit](#audit) の影響を考慮する必要があります。
 - **ResourceGroupName** (省略可能)
   - 別のリソース グループに由来する関連リソースを照合できるようにします。
   - **type** が **if** 条件リソースの下にあるリソースである場合は適用されません。
@@ -277,7 +280,7 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
   - 最初に **if** 条件リソースの下にあるリソースを取得しようとし、次に **if** 条件リソースと同じリソース グループ内を検索します。
 - **Name** (省略可能)
   - 照合するリソースの正確な名前を指定して、指定した型のすべてのリソースではなく 1 つの特定のリソースを取得します。
-  - **if.field.type** と **then.details.type** の条件値が一致する場合、**Name** は "_必須_" になり、`[field('name')]` であることが必要です。
+  - **if.field.type** と **then.details.type** の条件値が一致する場合、**Name** は "_必須_" になり、子リソースに対し `[field('name')]` または `[field('fullName')]` であることが必要です。
 - **ResourceGroupName** (省略可能)
   - 別のリソース グループに由来する関連リソースを照合できるようにします。
   - **type** が **if** 条件リソースの下にあるリソースである場合は適用されません。
@@ -300,7 +303,7 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
   - このプロパティには、サブスクリプションでアクセス可能なロールベースのアクセス制御ロール ID と一致する文字列の配列を含める必要があります。 詳細については、[修復 - ポリシー定義を構成する](../how-to/remediate-resources.md#configure-policy-definition)を参照してください。
 - **DeploymentScope** (省略可能)
   - 使用できる値は _Subscription_ と _ResourceGroup_ です。
-  - トリガーされるデプロイの種類を設定します。 _Subscription_ は[サブスクリプション レベルでのデプロイ](../../../azure-resource-manager/templates/deploy-to-subscription.md)を示し、_ResourceGroup_ はリソース グループへのデプロイを示します。
+  - トリガーされるデプロイの種類を設定します。 _Subscription_ は [サブスクリプション レベルでのデプロイ](../../../azure-resource-manager/templates/deploy-to-subscription.md)を示し、_ResourceGroup_ はリソース グループへのデプロイを示します。
   - サブスクリプション レベルのデプロイを使用する場合は、_Deployment_ で _location_ プロパティを指定する必要があります。
   - 既定値は _ResourceGroup_ です。
 - **Deployment** (必須)
@@ -371,10 +374,10 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
 
 ## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-この効果は、`Microsoft.Kubernetes.Data` のポリシー定義_モード_で使用されます。 これは、[OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) で [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に対して定義された Gatekeeper v3 受付制御ルールを、Azure 上の Kubernetes クラスターに渡すために使用されます。
+この効果は、`Microsoft.Kubernetes.Data` のポリシー定義 _モード_ で使用されます。 これは、[OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) で [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に対して定義された Gatekeeper v3 受付制御ルールを、Azure 上の Kubernetes クラスターに渡すために使用されます。
 
-> [!NOTE]
-> [Kubernetes 用の Azure Policy](./policy-for-kubernetes.md) はプレビュー中であり、Linux ノード プールと組み込みのポリシー定義のみをサポートします。 組み込みのポリシー定義は、**Kubernetes** カテゴリ内にあります。 **EnforceOPAConstraint** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは、_非推奨_になっています。 代わりに、リソース プロバイダー モード `Microsoft.Kubernetes.Data` で _Audit_ 効果と _Deny_ 効果を使用します。
+> [!IMPORTANT]
+> **EnforceOPAConstraint** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは、"_非推奨_" になっています。 代わりに、リソース プロバイダー モード `Microsoft.Kubernetes.Data` で _Audit_ 効果と _Deny_ 効果を使用します。
 
 ### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint の評価
 
@@ -427,10 +430,10 @@ EnforceOPAConstraint 効果の **details** プロパティには、Gatekeeper v3
 
 ## <a name="enforceregopolicy"></a>EnforceRegoPolicy
 
-この効果は、`Microsoft.ContainerService.Data` のポリシー定義_モード_で使用されます。 これは、[Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) で定義されている Gatekeeper v2 受付制御ルールを [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) 上の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に渡すために使用されます。
+この効果は、`Microsoft.ContainerService.Data` のポリシー定義 _モード_ で使用されます。 これは、[Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) で定義されている Gatekeeper v2 受付制御ルールを [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) 上の [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) に渡すために使用されます。
 
-> [!NOTE]
-> [Kubernetes 用の Azure Policy](./policy-for-kubernetes.md) はプレビュー中であり、Linux ノード プールと組み込みのポリシー定義のみをサポートします。 組み込みのポリシー定義は、**Kubernetes** カテゴリ内にあります。 **EnforceRegoPolicy** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは、_非推奨_になっています。 代わりに、リソース プロバイダー モード `Microsoft.Kubernetes.Data` で _Audit_ 効果と _Deny_ 効果を使用します。
+> [!IMPORTANT]
+> **EnforceRegoPolicy** 効果を持つ限定プレビュー ポリシー定義と、関連する **Kubernetes Service** カテゴリは、_非推奨_ になっています。 代わりに、リソース プロバイダー モード `Microsoft.Kubernetes.Data` で _Audit_ 効果と _Deny_ 効果を使用します。
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy の評価
 
@@ -479,14 +482,33 @@ EnforceRegoPolicy 効果の **details** プロパティには、Gatekeeper v2 �
 
 ## <a name="modify"></a>変更
 
-Modify は、作成時または更新時にリソースのタグを追加、更新、または削除するために使用されます。 一般的な例としては、コスト センターなどのリソースでタグを更新することが挙げられます。 ターゲット リソースがリソース グループでない限り、変更ポリシーでは常に `mode` が _[インデックス設定済み]_ に設定されている必要があります。 準拠していない既存のリソースは、[修復タスク](../how-to/remediate-resources.md)で修復できます。 1 つの Modify 規則には、任意の数の操作を含めることができます。
+Modify は、作成時または更新時にリソースのプロパティまたはタグを追加、更新、または削除するために使用されます。
+一般的な例としては、コスト センターなどのリソースでタグを更新することが挙げられます。 準拠していない既存のリソースは、[修復タスク](../how-to/remediate-resources.md)で修復できます。 1 つの Modify 規則には、任意の数の操作を含めることができます。
+
+Modify では次の操作がサポートされています。
+
+- リソース タグの追加、置換、または削除。 タグに関して、ターゲット リソースがリソース グループでない限り、Modify ポリシーでは常に `mode` が _[インデックス設定済み]_ に設定されている必要があります。
+- 仮想マシンと仮想マシン スケール セットのマネージド ID の種類 (`identity.type`) の値の追加または置換。
+- 特定のエイリアスの値の追加または置換 (プレビュー)。
+  - `Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | Where-Object { $_.DefaultMetadata.Attributes -eq 'Modifiable' }` を使用します
+    Modify で使用できるエイリアスの一覧を取得するには、Azure PowerShell **4.6.0** 以降で上記を使用します。
 
 > [!IMPORTANT]
-> Modify は現在、タグでのみ使用されます。 タグを管理している場合は、Append ではなく Modify を使用することをお勧めします。Modify では、追加の操作タイプが使用でき、既存のリソースを修復する機能が提供されます。 ただし、マネージド ID を作成できない場合は、Append を追加することをお勧めします。
+> タグを管理している場合は、Append ではなく Modify を使用することをお勧めします。Modify では追加の操作タイプが使用でき、既存のリソースを修復する機能が提供されるためです。 ただし、マネージド ID を作成できない場合や、リソース プロパティのエイリアスが Modify でまだサポートされていない場合は、Append を使用することをお勧めします。
 
 ### <a name="modify-evaluation"></a>Modify の評価
 
-リソースを作成中または更新中に、リソース プロバイダーによって要求が処理される前に Modify による評価が行われます。 Modify では、ポリシー規則の **if** 条件が満たされた場合、リソースのフィールドが追加または更新されます。
+リソースを作成中または更新中に、リソース プロバイダーによって要求が処理される前に Modify による評価が行われます。 ポリシー ルールの **if** 条件が満たされた場合、要求コンテンツに Modify 操作が適用されます。 各 Modify 操作では、適用されるタイミングを決定する条件を指定できます。 条件が _false_ と評価された操作はスキップされます。
+
+エイリアスを指定すると次の追加のチェックが実行され、要求コンテンツが Modify 操作によって、リソース プロバイダーに拒否されるような形に変更されることがないようにします。
+
+- エイリアスのマップ先のプロパティは、要求の API バージョンでは 'Modifiable' としてマークされています。
+- Modify 操作のトークンの種類は、要求の API バージョンのプロパティで想定されるトークンの種類と一致します。
+
+これらのチェックのいずれかが失敗した場合、ポリシー評価は指定された **conflictEffect** にフォールバックします。
+
+> [!IMPORTANT]
+> マップされたプロパティが 'Modifiable' でない API バージョンを使用した要求の失敗を回避するために、エイリアスを含む Modify の定義には _audit_ **conflict effect** を使用することを推奨します。 API バージョン間で同じエイリアスの動作が異なる場合は、条件付き変更操作を使用して、各 API バージョンで使用される変更操作を決定できます。
 
 Modify 効果を使用するポリシー定義が評価サイクルの一部として実行される場合、既存のリソースに対する変更は行われません。 代わりに、**if** 条件を満たすリソースが非準拠とマークされます。
 
@@ -498,9 +520,9 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
   - このプロパティには、サブスクリプションでアクセス可能なロールベースのアクセス制御ロール ID と一致する文字列の配列を含める必要があります。 詳細については、[修復 - ポリシー定義を構成する](../how-to/remediate-resources.md#configure-policy-definition)を参照してください。
   - 定義されたロールには、[Contributor](../../../role-based-access-control/built-in-roles.md#contributor) ロールに与えられているすべての操作が含まれている必要があります。
 - **conflictEffect** (省略可能)
-  - 複数のポリシー定義によって同じプロパティが変更された場合に、どのポリシー定義が "優先" されるかを決定します。
+  - 複数のポリシー定義によって同じプロパティが変更された場合、または Modify 操作が指定したエイリアスで動作しない場合に、どのポリシー定義を "優先" するかを決定します。
     - 新規または更新されたリソースについては、_Deny_ を持つポリシー定義が優先されます。 _Audit_ のポリシー定義では、すべての **operations** がスキップされます。 複数のポリシー定義に _Deny_ がある場合、その要求は競合として拒否されます。 すべてのポリシー定義に _Audit_ がある場合、競合しているポリシー定義のどの **operations** も処理されません。
-    - 既存のリソースについては、複数のポリシー定義に _Deny_ がある場合、コンプライアンス状態は_競合_になります。 _Deny_ があるポリシー定義が 1 つ以下の場合、各割り当ては_非準拠_のコンプライアンス状態を返します。
+    - 既存のリソースについては、複数のポリシー定義に _Deny_ がある場合、コンプライアンス状態は _競合_ になります。 _Deny_ があるポリシー定義が 1 つ以下の場合、各割り当ては _非準拠_ のコンプライアンス状態を返します。
   - 使用可能な値は、_Audit_、_Deny_、_Disabled_ です。
   - 既定値は _Deny_ です。
 - **operations** (必須)
@@ -513,6 +535,9 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
     - **value** (オプション)
       - タグに設定する値です。
       - このプロパティは、**operation** が _addOrReplace_ または _Add_ の場合に必要です。
+    - **condition** (オプション)
+      - _true_ または _false_ として評価される [ポリシー関数](./definition-structure.md#policy-functions)による Azure Policy 言語式を含む文字列です。
+      - `field()`、`resourceGroup()`、`subscription()` の各ポリシー関数はサポートされていません。
 
 ### <a name="modify-operations"></a>Modify の操作
 
@@ -548,9 +573,9 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
 
 |操作 |説明 |
 |-|-|
-|addOrReplace |定義済みのタグと値をリソースに追加します (タグに別の値が既に存在する場合でも)。 |
-|追加 |定義済みのタグと値をリソースに追加します。 |
-|[削除] |定義済みのタグをリソースから削除します。 |
+|addOrReplace |プロパティまたはタグが別の値で既に存在する場合でも、定義されたプロパティまたはタグと値をリソースに追加します。 |
+|追加 |定義されたプロパティまたはタグと値をリソースに追加します。 |
+|[削除] |定義されたプロパティまたはタグをリソースから削除します。 |
 
 ### <a name="modify-examples"></a>Modify の例
 
@@ -599,6 +624,28 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
 }
 ```
 
+例 3: ストレージ アカウントで BLOB のパブリック アクセスが許可されていないことを確認します。Modify 操作は、API バージョンが '2019-04-01' 以上の要求を評価する場合にのみ適用されます。
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/17d1049b-9a84-46fb-8f53-869881c3d3ab"
+        ],
+        "conflictEffect": "audit",
+        "operations": [
+            {
+                "condition": "[greaterOrEquals(requestContext().apiVersion, '2019-04-01')]",
+                "operation": "addOrReplace",
+                "field": "Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+                "value": false
+            }
+        ]
+    }
+}
+```
+
 ## <a name="layering-policy-definitions"></a>ポリシー定義を階層化する
 
 リソースは複数の割り当ての影響を受ける可能性があります。 これらの割り当てのスコープは、同じ場合も異なっている場合もあります。 これらの各割り当てにもさまざまな効果が定義されている可能性があります。 各ポリシーの条件と効果は個別に評価されます。 次に例を示します。
@@ -626,7 +673,7 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
 - サブスクリプション A の新しいリソースで、場所が 'westus' でないリソースは、ポリシー 1 によって拒否される
 - サブスクリプション A のリソース グループ B の新しいリソースは、すべて拒否される
 
-各割り当ては個別に評価されます。 そのため、スコープの違いによって発生する隙間をリソースがすり抜けるチャンスはありません。 ポリシー定義の階層化による最終的な結果は、**累積的に最も制限が厳しい**と考えられます。 たとえば、ポリシー 1 とポリシー 2 の両方に拒否効果が設定されている場合、重複するポリシー定義と競合するポリシー定義によって、リソースがブロックされます。 リソースを対象のスコープ内に必ず作成する必要がある場合は、それぞれの割り当ての除外を見直して、適切なポリシー割り当てが適切なスコープに影響を与えていることを確認してください。
+各割り当ては個別に評価されます。 そのため、スコープの違いによって発生する隙間をリソースがすり抜けるチャンスはありません。 ポリシー定義の階層化による最終的な結果は、**累積的に最も制限が厳しい** と考えられます。 たとえば、ポリシー 1 とポリシー 2 の両方に拒否効果が設定されている場合、重複するポリシー定義と競合するポリシー定義によって、リソースがブロックされます。 リソースを対象のスコープ内に必ず作成する必要がある場合は、それぞれの割り当ての除外を見直して、適切なポリシー割り当てが適切なスコープに影響を与えていることを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

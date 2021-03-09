@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: aa8cf0d2a48c75b71895eb75db362c4ec4e291c5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 27594ff4d7673038e9de38c5969a615be60aeadf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925047"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844695"
 ---
 # <a name="create-an-additional-azure-subscription"></a>追加 Azure サブスクリプションの作成
 
@@ -30,12 +30,12 @@ Microsoft Online Services プログラム (MOSP) の課金アカウントをお�
 |---------|---------|
 |Enterprise Agreement (EA) |  マイクロソフト エンタープライズ契約の加入契約におけるアカウント オーナー ロール。 詳細については、「[Understand Azure Enterprise Agreement administrative roles in Azure](understand-ea-roles.md)」(Azure の Azure Enterprise Agreement 管理者ロールを理解する) を参照してください。    |
 |Microsoft 顧客契約 (MCA) |  請求書セクション、課金プロファイル、または課金アカウントにおける所有者ロールまたは投稿者ロール。 または、請求書セクションにおける Azure サブスクリプションの作成者ロール。  詳細については、「[サブスクリプションの課金ロールとタスク](understand-mca-roles.md#subscription-billing-roles-and-tasks)」を参照してください。    |
-|Microsoft Partner Agreement (MPA) |   CSP パートナー組織の全体管理者ロールおよび管理者エージェント ロール。 詳細については、[パートナー センターでのユーザー ロールとアクセス許可の割り当て](https://docs.microsoft.com/partner-center/permissions-overview)に関するページを参照してください。  Azure サブスクリプションを作成するためには、ユーザーがパートナー テナントにサインインする必要があります。   |
+|Microsoft Partner Agreement (MPA) |   CSP パートナー組織の全体管理者ロールおよび管理者エージェント ロール。 詳細については、[パートナー センターでのユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)に関するページを参照してください。  Azure サブスクリプションを作成するためには、ユーザーがパートナー テナントにサインインする必要があります。   |
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Azure portal にサブスクリプションを作成する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. **サブスクリプション**を検索します。
+1. **サブスクリプション** を検索します。
 
    ![サブスクリプション用のポータルでの検索を示すスクリーン ショット](./media/create-subscription/billing-search-subscription-portal.png)
 
@@ -73,13 +73,17 @@ Microsoft Online Services プログラム (MOSP) の課金アカウントをお�
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>追加の Azure サブスクリプションをプログラムから作成する
 
-追加サブスクリプションをプログラムで作成することもできます。 詳細については、[Azure サブスクリプションをプログラムで作成する方法](programmatically-create-subscription.md)に関するページを参照してください。
+追加サブスクリプションをプログラムで作成することもできます。 詳細については、次を参照してください。
+
+- [最新の API を使用してプログラムで EA のサブスクリプションを作成する](programmatically-create-subscription-enterprise-agreement.md)
+- [最新の API を使用してプログラムで MCA のサブスクリプションを作成する](programmatically-create-subscription-microsoft-customer-agreement.md)
+- [最新の API を使用してプログラムで MPA のサブスクリプションを作成する](Programmatically-create-subscription-microsoft-customer-agreement.md)
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure サブスクリプション管理者を追加または変更する](add-change-subscription-administrator.md)
 - [新しいリソース グループまたはサブスクリプションへのリソースの移動](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
-- [リソースの整理と管理のための管理グループを作成する](../../governance/management-groups/create.md)
+- [リソースの整理と管理のための管理グループを作成する](../../governance/management-groups/create-management-group-portal.md)
 - [Azure のサブスクリプションの取り消し](cancel-azure-subscription.md)
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。

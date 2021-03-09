@@ -4,16 +4,16 @@ description: Azure File Sync を使用したデプロイを計画します。こ
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: c2d3237e629c7ed5d2931e15939b154e0239f259
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 65293df5fae523bff36240273afb93c4dd8485df
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553109"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219478"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 
@@ -37,7 +37,7 @@ ms.locfileid: "88553109"
 ## <a name="management-concepts"></a>管理の概念
 Azure File Sync のデプロイには、次の 3 つの基本的な管理オブジェクトがあります。
 
-- **Azure ファイル共有**: Azure ファイル共有はサーバーレス クラウド ファイル共有であり、Azure File Sync の同期関係の*クラウド エンドポイント*を提供します。 Azure ファイル共有内のファイルには、SMB または FileREST プロトコルを使用して直接アクセスできます。ただし、Azure ファイル共有が Azure File Sync で使用されている場合は、主に Windows Server キャッシュを介してファイルにアクセスすることをお勧めします。これは、現在 Azure Files には Windows Server のような効率的な変更検出メカニズムがないため、Azure ファイル共有に直接加えた変更がサーバー エンドポイントに反映されるまでに時間がかかるためです。
+- **Azure ファイル共有**: Azure ファイル共有はサーバーレス クラウド ファイル共有であり、Azure File Sync の同期関係の *クラウド エンドポイント* を提供します。 Azure ファイル共有内のファイルには、SMB または FileREST プロトコルを使用して直接アクセスできます。ただし、Azure ファイル共有が Azure File Sync で使用されている場合は、主に Windows Server キャッシュを介してファイルにアクセスすることをお勧めします。これは、現在 Azure Files には Windows Server のような効率的な変更検出メカニズムがないため、Azure ファイル共有に直接加えた変更がサーバー エンドポイントに反映されるまでに時間がかかるためです。
 - **サーバー エンドポイント**:Azure ファイル共有に同期されている Windows Server 上のパス。 これには、ボリューム上の特定のフォルダー、またはボリュームのルートを指定できます。 名前空間が重複していなければ、同じボリューム上に複数のサーバー エンドポイントが存在できます。
 - **同期グループ**:**クラウド エンドポイント**、Azure ファイル共有、およびサーバー エンドポイント間の同期関係を定義するオブジェクト。 同期グループ内のエンドポイントは、相互に同期を維持されます。 たとえば、Azure File Sync で管理するファイル セットが 2 組ある場合、2 つの同期グループを作成し、各同期グループに別のエンドポイントを追加します。
 
@@ -45,11 +45,14 @@ Azure File Sync のデプロイには、次の 3 つの基本的な管理オブ�
 [!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
 
 ### <a name="azure-file-sync-management-concepts"></a>Azure File Sync の管理の概念
-同期グループは、**ストレージ同期サービス**にデプロイされます。これは、Azure File Sync で使用するサーバーを登録する最上位のオブジェクトで、同期グループのリレーションシップが含まれています。 ストレージ同期サービス リソースは、ストレージ アカウント リソースのピアであり、同じように Azure リソース グループにデプロイできます。 ストレージ同期サービスでは、複数のストレージ アカウントと複数の登録済み Windows サーバー間で Azure ファイル共有を含む同期グループを作成できます。
+同期グループは、**ストレージ同期サービス** にデプロイされます。これは、Azure File Sync で使用するサーバーを登録する最上位のオブジェクトで、同期グループのリレーションシップが含まれています。 ストレージ同期サービス リソースは、ストレージ アカウント リソースのピアであり、同じように Azure リソース グループにデプロイできます。 ストレージ同期サービスでは、複数のストレージ アカウントと複数の登録済み Windows サーバー間で Azure ファイル共有を含む同期グループを作成できます。
 
 ストレージ同期サービスで同期グループを作成する前に、まずストレージ同期サービスで Windows Server を登録する必要があります。 これにより、**登録済みサーバー** オブジェクトが作成され、これはサーバー (またはクラスター) とストレージ同期サービス間の信頼関係を表します。 ストレージ同期サービスを登録するには、まずサーバーに Azure File Sync エージェントをインストールする必要があります。 個々のサーバーまたはクラスターは、同時に 1 つのストレージ同期サービスのみに登録できます。
 
-同期グループには、1 つのクラウド エンドポイント (Azure ファイル共有) と 1 つ以上のサーバー エンドポイントが含まれます。 サーバー エンドポイント オブジェクトには、**クラウドを使った階層化**機能を構成する設定が含まれています。これにより Azure File Sync のキャッシュ機能が提供されます。Azure ファイル共有と同期するには、Azure ファイル共有を含むストレージ アカウントが、ストレージ同期サービスと同じ Azure リージョンに存在している必要があります。
+同期グループには、1 つのクラウド エンドポイント (Azure ファイル共有) と 1 つ以上のサーバー エンドポイントが含まれます。 サーバー エンドポイント オブジェクトには、**クラウドを使った階層化** 機能を構成する設定が含まれています。これにより Azure File Sync のキャッシュ機能が提供されます。Azure ファイル共有と同期するには、Azure ファイル共有を含むストレージ アカウントが、ストレージ同期サービスと同じ Azure リージョンに存在している必要があります。
+
+> [!Important]  
+> 同期グループ内の任意のクラウド エンドポイントまたはサーバー エンドポイントで変更を行うことにより、ファイルを同期グループ内の他のエンドポイントに同期できます。 クラウド エンドポイント (Azure ファイル共有) を直接変更した場合、その変更は、Azure File Sync の変更検出ジョブによって最初に認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回のみ起動されます。 詳細については、「[Azure Files についてよく寄せられる質問 (FAQ)](storage-files-faq.md#afs-change-detection)」を参照してください。
 
 ### <a name="management-guidance"></a>管理ガイダンス
 Azure File Sync をデプロイする場合は、次のことをお勧めします。
@@ -115,7 +118,7 @@ Azure File Sync には、少なくとも 1 つの CPU と最低 2 GiB のメモ�
 ### <a name="evaluation-cmdlet"></a>評価コマンドレット
 Azure File Sync をデプロイする前に、Azure File Sync 評価コマンドレットを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このコマンドレットでは、サポートされていない文字やサポートされていないオペレーティング システム バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 そのチェックでは、以下で説明する機能のほとんどがカバーされていますが、すべてではありません。デプロイが円滑に進むように、このセクションの残りの部分をよく読むことをお勧めします。 
 
-評価コマンドレットをインストールするには、Az PowerShell モジュールをインストールします。これは、次の手順に従ってインストールできます。[Azure PowerShell をインストールして構成](https://docs.microsoft.com/powershell/azure/install-Az-ps)します。
+評価コマンドレットをインストールするには、Az PowerShell モジュールをインストールします。これは、次の手順に従ってインストールできます。[Azure PowerShell をインストールして構成](/powershell/azure/install-Az-ps)します。
 
 #### <a name="usage"></a>使用法  
 複数の方法で評価ツールを呼び出すことができます。システム チェックとデータセット チェックのどちらか一方または両方を行うことができます。 システム チェックとデータセット チェックの両方を実行するには: 
@@ -136,7 +139,7 @@ Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name> -SkipNamesp
  
 CSV で結果を表示するには:
 ```powershell
-$validation = Invoke-AzStorageSyncCompatibilityCheck […]
+$validation = Invoke-AzStorageSyncCompatibilityCheck C:\DATA
 $validation.Results | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path C:\results.csv -Encoding utf8
 ```
 
@@ -147,7 +150,7 @@ NTFS ボリュームのみがサポートされます。ReFS、FAT、FAT32 お�
 
 次の表に、NTFS ファイル システムの機能の相互運用の状態を示します。 
 
-| 特徴量 | サポートの状態 | Notes |
+| 機能 | サポートの状態 | Notes |
 |---------|----------------|-------|
 | アクセス制御リスト (ACL) | 完全にサポートされています | Windows スタイルの随意アクセス制御リストは Azure File Sync に保持され、サーバー エンドポイント上の Windows Server によって適用されます。 Azure ファイル共有を直接マウントするときに ACL を適用することもできますが、これには追加の構成が必要です。 詳細については、[ID に関するセクション](#identity)を参照してください。 |
 | ハード リンク | スキップ | |
@@ -183,7 +186,7 @@ Windows Server フェールオーバー クラスタリングは、Azure ファ�
 
 ### <a name="data-deduplication"></a>データ重複除去
 **Windows Server 2016 および Windows Server 2019**   
-データ重複除去は、Windows Server 2016 および Windows Server 2019 でクラウドを使った階層化が有効になっているボリュームでサポートされます。 クラウドを使った階層化が有効なボリュームでデータ重複除去を有効にすると、より多くのストレージをプロビジョニングしなくても、より多くのファイルをオンプレミスでキャッシュできます。 
+データ重複除去は、Windows Server 2016 と Windows Server 2019 のボリューム上の 1 つまたは複数のサーバー エンドポイントでクラウドを使った階層化が有効になっているか無効になっているかに関係なく、サポートされています。 クラウドを使った階層化が有効なボリュームでデータ重複除去を有効にすると、より多くのストレージをプロビジョニングしなくても、より多くのファイルをオンプレミスでキャッシュできます。 
 
 クラウドを使った階層化が有効なボリュームでデータ重複除去が有効になっている場合、サーバー エンドポイントの場所にある重複除去最適化ファイルは、クラウドを使った階層化のポリシー設定に基づいて、通常のファイルと同様に階層化されます。 重複除去最適化ファイルが階層化された後、データ重複除去ガベージ コレクション ジョブが自動的に実行され、ボリューム上の他のファイルから参照されなくなった不要なチャンクを削除することによって、ディスク領域が解放されます。
 
@@ -200,7 +203,7 @@ Azure File Sync については、データ重複除去とクラウドを使っ�
 - クラウドを使った階層化を有効にした後にボリューム上のデータ重複除去を有効にする場合、最初の重複除去最適化ジョブで、そのボリューム上のまだ階層化されていないファイルが最適化され、クラウドを使った階層化に次のような影響を与えます。
     - 空き領域ポリシーに従い、ボリューム上の空き領域に応じて、ヒートマップを使用してファイルが継続的に階層化されます。
     - 重複除去最適化ジョブがファイルにアクセスしているために、本来ならば階層化の対象となっていたかもしれないファイルの階層化が日付ポリシーによってスキップされます。
-- 進行中の重複除去最適化ジョブについては、ファイルがまだ階層化されていない場合は、データ ポリシーでのクラウドを使った階層化が、データ重複除去の [MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps) 設定により遅延します。 
+- 進行中の重複除去最適化ジョブについては、ファイルがまだ階層化されていない場合は、データ ポリシーでのクラウドを使った階層化が、データ重複除去の [MinimumFileAgeDays](/powershell/module/deduplication/set-dedupvolume?view=win10-ps) 設定により遅延します。 
     - 例:MinimumFileAgeDays 設定が 7 日、クラウドを使った階層化の日付ポリシーが 30 日の場合、日付ポリシーによって 37 日後にファイルが階層化されます。
     - 注:Azure File Sync によってファイルが階層化されると、重複除去最適化ジョブによってそのファイルはスキップされます。
 - インストールされている Azure File Sync エージェントを使用して Windows Server 2012 R2 を実行しているサーバーが、Windows Server 2016 または Windows Server 2019 にアップグレードされる場合、同じボリューム上でのデータ重複除去およびクラウドを使った階層化がサポートされるには次の手順を行う必要があります。  
@@ -213,7 +216,7 @@ Azure File Sync については、データ重複除去とクラウドを使っ�
 ### <a name="distributed-file-system-dfs"></a>分散ファイル システム (DFS)
 Azure File Sync は、DFS 名前空間 (DFS-N) および DFS レプリケーション (DFS-R) との相互運用をサポートします。
 
-**DFS 名前空間 (DFS-N)** :Azure File Sync は DFS-N サーバーで完全にサポートされます。 1 つまたは複数の DFS-N メンバーに Azure File Sync をインストールして、サーバー エンドポイントとクラウド エンドポイントの間でデータを同期できます。 詳しくは、「[DFS 名前空間の概要](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview)」をご覧ください。
+**DFS 名前空間 (DFS-N)** :Azure File Sync は DFS-N サーバーで完全にサポートされます。 1 つまたは複数の DFS-N メンバーに Azure File Sync をインストールして、サーバー エンドポイントとクラウド エンドポイントの間でデータを同期できます。 詳しくは、「[DFS 名前空間の概要](/windows-server/storage/dfs-namespaces/dfs-overview)」をご覧ください。
  
 **DFS レプリケーション (DFS-R)** :DFS-R と Azure File Sync はどちらもレプリケーション ソリューションなので、ほとんどの場合は、DFS-R を Azure File Sync に置き換えることをお勧めします。ただし、DFS-R と Azure File Sync を併用するのが望ましいシナリオがいくつかあります。
 
@@ -226,7 +229,7 @@ Azure File Sync と DFS-R を併用するには、次のことが必要です。
 1. DFS-R でレプリケートされるフォルダーを含むボリュームで、Azure File Sync のクラウドの階層化を無効にする必要があります。
 2. DFS-R の読み取り専用レプリケーション フォルダーには、サーバー エンドポイントを構成しないようにする必要があります。
 
-詳しくは、[DFS レプリケーションの概要](https://technet.microsoft.com/library/jj127250)に関するページをご覧ください。
+詳しくは、[DFS レプリケーションの概要](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj127250(v=ws.11))に関するページをご覧ください。
 
 ### <a name="sysprep"></a>Sysprep
 Azure File Sync エージェントがインストールされているサーバー上で sysprep を使用することはサポートされていません。予期しない結果になる可能性があります。 エージェントのインストールとサーバーの登録は、サーバー イメージの展開と sysprep ミニ セットアップの完了後に行われます。
@@ -263,7 +266,7 @@ Azure File Sync を使用する場合、Windows Server のストレージの保�
 ### <a name="windows-server-encryption-at-rest"></a>Windows Server の保存時の 暗号化 
 一般的に Azure File Sync で機能する Windows Server 上のデータを暗号化する方法には、ファイル システムとそれに書き込まれたすべてのデータが暗号化されるファイル システムにおける暗号化と、ファイル形式自体での暗号化という、2 つの方法があります。 これらのメソッドは相互に排他的ではありません。暗号化の目的が異なるため、必要に応じて組み合わせて使用できます。
 
-そのファイル システムにおける暗号化機能を提供するために、Windows Server は BitLocker 受信トレイを提供します。 BitLocker は Azure File Sync に対して完全に透過的です。BitLocker などの暗号化メカニズムを使用する主な理由は、ディスクの盗難によるオンプレミスのデータセンターからの物理的なデータの流出を防ぎ、権限のない OS によってデータへの不正読み取り、または不正書き込みが行われるのを防ぐためです。 BitLocker の詳細については、「[BitLocker の概要](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)」を参照してください。
+そのファイル システムにおける暗号化機能を提供するために、Windows Server は BitLocker 受信トレイを提供します。 BitLocker は Azure File Sync に対して完全に透過的です。BitLocker などの暗号化メカニズムを使用する主な理由は、ディスクの盗難によるオンプレミスのデータセンターからの物理的なデータの流出を防ぎ、権限のない OS によってデータへの不正読み取り、または不正書き込みが行われるのを防ぐためです。 BitLocker の詳細については、「[BitLocker の概要](/windows/security/information-protection/bitlocker/bitlocker-overview)」を参照してください。
 
 NTFS ボリューム下に配置されるという点で BitLocker と同様に機能するサード パーティ製品は、Azure File Sync で同様に完全に透過的に機能するはずです。 
 
@@ -299,48 +302,16 @@ Azure ストレージ アカウントには、転送中の暗号化を要求す�
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
 ## <a name="azure-file-sync-region-availability"></a>Azure File Sync の利用可能なリージョン
-Azure File Sync は、次のリージョンで利用できます。
 
-| Azure cloud | 地理的リージョン | Azure リージョン | リージョン コード |
-|-------------|-------------------|--------------|-------------|
-| パブリック | アジア | 東アジア | `eastasia` |
-| パブリック | アジア | 東南アジア | `southeastasia` |
-| パブリック | オーストラリア | オーストラリア東部 | `australiaeast` |
-| パブリック | オーストラリア | オーストラリア南東部 | `australiasoutheast` |
-| パブリック | ブラジル | ブラジル南部 | `brazilsouth` |
-| パブリック | Canada | カナダ中部 | `canadacentral` |
-| パブリック | Canada | カナダ東部 | `canadaeast` |
-| パブリック | ヨーロッパ | 北ヨーロッパ | `northeurope` |
-| パブリック | ヨーロッパ | 西ヨーロッパ | `westeurope` |
-| パブリック | フランス | フランス中部 | `francecentral` |
-| パブリック | フランス | フランス南部* | `francesouth` |
-| パブリック | インド | インド中部 | `centralindia` |
-| パブリック | インド | インド南部 | `southindia` |
-| パブリック | 日本 | 東日本 | `japaneast` |
-| パブリック | 日本 | 西日本 | `japanwest` |
-| パブリック | 韓国 | 韓国中部 | `koreacentral` |
-| パブリック | 韓国 | 韓国南部 | `koreasouth` |
-| パブリック | 南アフリカ | 南アフリカ北部 | `southafricanorth` |
-| パブリック | 南アフリカ | 南アフリカ西部* | `southafricawest` |
-| パブリック | UAE | アラブ首長国連邦中部* | `uaecentral` |
-| パブリック | UAE | アラブ首長国連邦北部 | `uaenorth` |
-| パブリック | 英国 | 英国南部 | `uksouth` |
-| パブリック | 英国 | 英国西部 | `ukwest` |
-| パブリック | US | 米国中部 | `centralus` |
-| パブリック | US | 米国東部 | `eastus` |
-| パブリック | US | 米国東部 2 | `eastus2` |
-| パブリック | US | 米国中北部 | `northcentralus` |
-| パブリック | US | 米国中南部 | `southcentralus` |
-| パブリック | US | 米国中西部 | `westcentralus` |
-| パブリック | US | 米国西部 | `westus` |
-| パブリック | US | 米国西部 2 | `westus2` |
-| US Gov | US | US Gov アリゾナ | `usgovarizona` |
-| US Gov | US | US Gov テキサス | `usgovtexas` |
-| US Gov | US | US Gov バージニア州 | `usgovvirginia` |
+リージョン別の提供状況については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)」を参照してください。
 
-Azure File Sync は、ストレージ同期サービスと同じリージョンの Azure ファイル共有との同期のみをサポートしています。
+次のリージョンでは、Azure File Sync を使用する前に、Azure Storage へのアクセス権を要求する必要があります。
 
-アスタリスクが付いているリージョンでは、Azure サポートに連絡して、これらのリージョンの Azure Storage へのアクセス権を要求する必要があります。 このプロセスについては、[このドキュメント](https://azure.microsoft.com/global-infrastructure/geographies/)で概説されています。
+- フランス南部
+- 南アフリカ西部
+- アラブ首長国連邦中部
+
+これらのリージョンへのアクセス権を要求するには、[このドキュメント](https://azure.microsoft.com/global-infrastructure/geographies/)の手順に従ってください。
 
 ## <a name="redundancy"></a>冗長性
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
@@ -368,7 +339,7 @@ Microsoft の社内ウイルス対策ソリューションである Windows Defe
 > ウイルス対策ソフトウェア ベンダーは、その製品と Azure File Sync との間の互換性を、[Azure File Sync Antivirus Compatibility Test Suite](https://www.microsoft.com/download/details.aspx?id=58322) を使用して確認することができます。これは、Microsoft ダウンロード センターでダウンロードできます。
 
 ## <a name="backup"></a>バックアップ 
-クラウドを使った階層化が有効になっている場合、サーバー エンドポイント、またはサーバー エンドポイントが配置されている VM を直接バックアップするソリューションは使用しないでください。 クラウドを使った階層化では、データのサブセットのみがサーバー エンドポイントに格納され、完全なデータセットは Azure ファイル共有に保存されます。 使用されるバックアップ ソリューションによっては、階層化されたファイルはスキップされ、バックアップされないか (FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性が設定されているため)、ディスクに再呼び出しされるため、エグレス料金が高額になります。 Azure ファイル共有を直接バックアップするには、クラウド バックアップ ソリューションを使用することをお勧めします。 詳細については、「[Azure ファイル共有のバックアップについて](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)」を参照するか、バックアップ プロバイダーに問い合わせて、Azure ファイル共有のバックアップがサポートされているかどうかを確認してください。
+クラウドを使った階層化が有効になっている場合、サーバー エンドポイント、またはサーバー エンドポイントが配置されている VM を直接バックアップするソリューションは使用しないでください。 クラウドを使った階層化では、データのサブセットのみがサーバー エンドポイントに格納され、完全なデータセットは Azure ファイル共有に保存されます。 使用されるバックアップ ソリューションによっては、階層化されたファイルはスキップされ、バックアップされないか (FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性が設定されているため)、ディスクに再呼び出しされるため、エグレス料金が高額になります。 Azure ファイル共有を直接バックアップするには、クラウド バックアップ ソリューションを使用することをお勧めします。 詳細については、「[Azure ファイル共有のバックアップについて](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照するか、バックアップ プロバイダーに問い合わせて、Azure ファイル共有のバックアップがサポートされているかどうかを確認してください。
 
 オンプレミス バックアップ ソリューションを使用する場合、クラウドを使った階層化が無効な同期グループ内のサーバーに対してバックアップを実行する必要があります。 復元を実行するときは、ボリューム レベルまたはファイル レベルの復元オプションを使用します。 ファイル レベルの復元オプションを使用して復元されたファイルは、同期グループ内のすべてのエンドポイントに同期され、既存のファイルはバックアップから復元されたバージョンに置き換えられます。  ボリューム レベルの復元では、Azure ファイル共有やその他のサーバー エンドポイントの新しいファイル バージョンに置き換えられません。
 
@@ -384,6 +355,6 @@ Microsoft の社内ウイルス対策ソリューションである Windows Defe
 ## <a name="next-steps"></a>次のステップ
 * [ファイアウォールとプロキシの設定の考慮事項](storage-sync-files-firewall-and-proxy.md)
 * [Azure Files のデプロイの計画](storage-files-planning.md)
-* [Azure Files をデプロイする](storage-files-deployment-guide.md)
+* [Azure Files をデプロイする](./storage-how-to-create-file-share.md)
 * [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md)
 * [Azure File Sync の監視](storage-sync-files-monitoring.md)

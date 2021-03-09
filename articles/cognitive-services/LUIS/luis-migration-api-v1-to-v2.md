@@ -3,26 +3,24 @@ title: v1 から v2 への API の移行
 titleSuffix: Azure Cognitive Services
 description: バージョン 1 のエンドポイントとオーサリングに関する Language Understanding API は非推奨となりました。 このガイドでは、バージョン 2 のエンドポイントとオーサリング API に移行する方法について説明します。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.author: diberry
-ms.openlocfilehash: c5880aac01e0611565afb825a61b682197baf5d6
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 867ae2cc7567077786bb0840cd11c47b786be423
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344749"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018754"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS アプリの API v1 から v2 への移行ガイド
 バージョン 1 の[エンドポイント](https://aka.ms/v1-endpoint-api-docs)と[オーサリング](https://aka.ms/v1-authoring-api-docs) API は非推奨となりました。 このガイドでは、バージョン 2 の[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)と[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API に移行する方法について説明します。
 
 ## <a name="new-azure-regions"></a>新しい Azure リージョン
-LUIS では、LUIS API 用の新しい[リージョン](https://aka.ms/LUIS-regions)が用意されています。 LUIS ではリージョン グループごとに異なるポータルが用意されています。 アプリケーションは、クエリを実行するリージョンと同じリージョンに作成する必要があります。 アプリケーションによって、リージョンが自動的に移行されることはありません。 アプリはリージョンからエクスポートして、新しいリージョンで使用できるようにインポートします。
+LUIS では、LUIS API 用の新しい[リージョン](./luis-reference-regions.md)が用意されています。 LUIS ではリージョン グループごとに異なるポータルが用意されています。 アプリケーションは、クエリを実行するリージョンと同じリージョンに作成する必要があります。 アプリケーションによって、リージョンが自動的に移行されることはありません。 アプリはリージョンからエクスポートして、新しいリージョンで使用できるようにインポートします。
 
 ## <a name="authoring-route-changes"></a>オーサリング ルートの変更
 オーサリング API ルートは、前は **prog** ルートが使用されていましたが、**api** ルートを使用するように変更されました。
@@ -145,7 +143,7 @@ LUIS では、モデルを強化する可能性がある既存の[エンドポ�
 
 
 ## <a name="create-app-from-prebuilt-domains"></a>事前構築済みドメインからのアプリの作成
-[事前構築済みのドメイン](luis-how-to-use-prebuilt-domains.md)により、定義済みドメイン モデルが提供されます。 事前構築済みのドメインを使用すると、一般的なドメインの LUIS アプリケーションを迅速に開発できます。 この API により、事前構築済みのドメインに基づいて、新しいアプリを作成することができます。 応答は新しい appID です。
+[事前構築済みのドメイン](./howto-add-prebuilt-models.md)により、定義済みドメイン モデルが提供されます。 事前構築済みのドメインを使用すると、一般的なドメインの LUIS アプリケーションを迅速に開発できます。 この API により、事前構築済みのドメインに基づいて、新しいアプリを作成することができます。 応答は新しい appID です。
 
 |v2 ルート|Verb|
 |--|--|
@@ -156,7 +154,7 @@ LUIS では、モデルを強化する可能性がある既存の[エンドポ�
 エクスポートされた 1.x アプリの JSON には、[LUIS][LUIS] 2.0 にインポートする前に変更しなければならない領域があります。
 
 ### <a name="prebuilt-entities"></a>事前構築済みのエンティティ
-[事前構築済みのエンティティ](luis-prebuilt-entities.md)は変更されました。 V2 の事前構築済みのエンティティが使用されていることを確認してください。 これには、datetime の代わりの [datetimeV2](luis-reference-prebuilt-datetimev2.md) の使用も含まれます。
+[事前構築済みのエンティティ](./howto-add-prebuilt-models.md)は変更されました。 V2 の事前構築済みのエンティティが使用されていることを確認してください。 これには、datetime の代わりの [datetimeV2](luis-reference-prebuilt-datetimev2.md) の使用も含まれます。
 
 ### <a name="actions"></a>アクション
 アクション プロパティが有効ではなくなりました。 これは空にする必要があります
@@ -171,4 +169,4 @@ V1 のラベル付きの発話では、単語またはフレーズの先頭と�
 
 v2 API のドキュメントを使用して、LUIS [エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)および[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API に対する既存の REST 呼び出しを更新します。
 
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+[LUIS]: ./luis-reference-regions.md

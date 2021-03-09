@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 9c258d8d0a7aa26c96ab4f64017770ebdd153e60
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8d99b4d1fbf227d850de387b7ca24dcd3fd40646
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257507"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791157"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric でのディザスター リカバリー
 高可用性を実現するうえで欠かせないのは、サービスがあらゆる種類の障害を切り抜けられるようにすることです。 これは、計画外の障害や、制御できない障害に関しては特に重要です。 
@@ -172,7 +172,7 @@ Azure で Service Fabric を実行している場合、障害ドメインおよ�
 >
 
 - `Repair-ServiceFabricPartition -PartitionId` または `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` API を使用します。 この API により、クォーラム損失から潜在的なデータ損失に移行するために、パーティションの ID を指定できます。
-- クォーラム損失の状態をサービスに引き起こすような障害がクラスターで頻繁に発生する場合で、かつ潜在的な "_データ損失が許容できる_" 場合は、適切な [QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) 値を指定することが、サービスの自動復旧に役立つことがあります。 Service Fabric は、指定された `QuorumLossWaitDuration` 値 (既定では無期限) 待機した後、復旧を実行します。 この方法は予期しないデータ損失につながるおそれがあるため "*お勧めしません*"。
+- クォーラム損失の状態をサービスに引き起こすような障害がクラスターで頻繁に発生する場合で、かつ潜在的な "_データ損失が許容できる_" 場合は、適切な [QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice) 値を指定することが、サービスの自動復旧に役立つことがあります。 Service Fabric は、指定された `QuorumLossWaitDuration` 値 (既定では無期限) 待機した後、復旧を実行します。 この方法は予期しないデータ損失につながるおそれがあるため "*お勧めしません*"。
 
 ## <a name="availability-of-the-service-fabric-cluster"></a>Service Fabric クラスターの可用性
 一般的に、Service Fabric クラスターは高度な分散環境で、単一障害点がありません。 どのノードで障害が発生しても、クラスターの可用性または信頼性で問題が発生することはありません。これは主に Service Fabric システム サービスが、前に説明したものと同じガイドラインに従っているためです。 つまり、既定で常に 3 つ以上のレプリカで実行され、ステートレスのシステム サービスはすべてのノードで実行されています。 

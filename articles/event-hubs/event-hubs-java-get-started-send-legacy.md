@@ -4,12 +4,12 @@ description: この記事では、以前の azure-eventhubs パッケージを�
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1b973f8c132d9faec4fd6c9185345c0926cc35e1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e86ca76f3eb661e1407a02b58e60b62b391f5702
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942261"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607985"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Java を使用して Azure Event Hubs との間でイベントを送受信する (azure-eventhubs)
 
@@ -17,7 +17,6 @@ ms.locfileid: "88942261"
 
 > [!WARNING]
 > このクイックスタートでは、以前の **azure-eventhubs** パッケージと **azure-eventhubs-eph** パッケージを使用します。 最新の **azure-messaging-eventhubs** パッケージを使用するクイックスタートについては、[azure-messaging-eventhubs を使用したイベントの送受信](event-hubs-java-get-started-send.md)に関するページを参照してください。 古いパッケージではなく新しいパッケージを使用するようにアプリケーションを移行するには、[azure-eventhubs から azure-messaging-eventhubs への移行ガイド](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)に関するページを参照してください。 
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -74,8 +73,7 @@ public class SimpleSend {
 
     public static void main(String[] args)
             throws EventHubException, ExecutionException, InterruptedException, IOException {
-            
-            
+
     }
  }
 ```
@@ -109,7 +107,6 @@ ConnectionStringBuilder クラスを使用して、Event Hubs クライアント
         // Each EventHubClient instance spins up a new TCP/TLS connection, which is expensive.
         // It is always a best practice to reuse these instances. The following sample shows this.
         final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
-
 
         try {
             for (int i = 0; i < 10; i++) {
@@ -178,11 +175,11 @@ EventProcessorHost を使用するには、[Azure Storage アカウント][Azure
 
 1. [Azure portal](https://portal.azure.com) にサインインし、画面左側の **[Create a resource]\(リソースの作成\)** を選択します。
 2. **[ストレージ]** を選択し、**[ストレージ アカウント]** を選択します。 **[ストレージ アカウントの作成]** ウィンドウで、ストレージ アカウントの名前を入力します。 残りのフィールドを完了し、目的の地域を選択し、**[作成]** を選択します。
-   
+
     ![Azure portal でストレージ アカウントを作成する](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
 
 3. 新しく作成したストレージ アカウントを選択し、**[アクセス キー]** を選択します。
-   
+
     ![Azure portal でアクセス キーを取得する](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
 
     key1 の値を一時的な場所にコピーします。 このチュートリアルの後の方で、それを使用します。
@@ -207,11 +204,11 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
 ビルド環境の種類に応じて、[Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22) から最新リリースの JAR ファイルを明示的に取得できます。
 
 1. 次のサンプルでは、最初に、好みの Java 開発環境でコンソール/シェル アプリケーション用の新しい Maven プロジェクトを作成します。 このクラスは `ErrorNotificationHandler`と呼ばれます。     
-   
+
     ```java
     import java.util.function.Consumer;
     import com.microsoft.azure.eventprocessorhost.ExceptionReceivedEventArgs;
-   
+
     public class ErrorNotificationHandler implements Consumer<ExceptionReceivedEventArgs>
     {
         @Override
@@ -222,7 +219,7 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
     }
     ```
 2. 次のコードで `EventProcessorSample`という新しいクラスを作成します。 プレースホルダーを、イベント ハブとストレージ アカウントの作成時に使用した値に置き換えます。
-   
+
    ```java
    package com.microsoft.azure.eventhubs.samples.eventprocessorsample;
 
@@ -250,13 +247,13 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
            String storageConnectionString = "----AzureStorageConnectionString----";
            String storageContainerName = "----StorageContainerName----";
            String hostNamePrefix = "----HostNamePrefix----";
-        
+
            ConnectionStringBuilder eventHubConnectionString = new ConnectionStringBuilder()
                 .setNamespaceName(namespaceName)
                 .setEventHubName(eventHubName)
                 .setSasKeyName(sasKeyName)
                 .setSasKey(sasKey);
-        
+
            EventProcessorHost host = new EventProcessorHost(
                 EventProcessorHost.createHostName(hostNamePrefix),
                 eventHubName,
@@ -264,7 +261,7 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
                 eventHubConnectionString.toString(),
                 storageConnectionString,
                 storageContainerName);
-        
+
            System.out.println("Registering host named " + host.getHostName());
            EventProcessorOptions options = new EventProcessorOptions();
            options.setExceptionNotification(new ErrorNotificationHandler());
@@ -284,7 +281,7 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
            .thenAccept((unused) ->
            {
                System.out.println("Press enter to stop.");
-               try 
+                 try 
                {
                    System.in.read();
                }
@@ -294,8 +291,8 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
                }
            })
            .thenCompose((unused) ->
-           {
-               return host.unregisterEventProcessor();
+            {
+                return host.unregisterEventProcessor();
            })
            .exceptionally((e) ->
            {
@@ -307,13 +304,13 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
                return null;
            })
            .get(); // Wait for everything to finish before exiting main!
-        
+
            System.out.println("End of sample");
        }
    }
    ```
 3. 次のコードを使用して、`EventProcessor` という名前のクラスをもう 1 つ作成します。
-   
+
     ```java
     public static class EventProcessor implements IEventProcessor
     {
@@ -332,7 +329,7 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
         {
             System.out.println("SAMPLE: Partition " + context.getPartitionId() + " is closing for reason " + reason.toString());
         }
-        
+
         // onError is called when an error occurs in EventProcessorHost code that is tied to this partition, such as a receiver failure.
         @Override
         public void onError(PartitionContext context, Throwable error)
@@ -353,7 +350,7 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
                     System.out.println("SAMPLE (" + context.getPartitionId() + "," + data.getSystemProperties().getOffset() + "," +
                             data.getSystemProperties().getSequenceNumber() + "): " + new String(data.getBytes(), "UTF8"));
                     eventCount++;
-                    
+
                     // Checkpointing persists the current position in the event stream for this partition and means that the next
                     // time any host opens an event processor on this event hub+consumer group+partition combination, it will start
                     // receiving at the event after this one. 
@@ -361,7 +358,7 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
                     if ((checkpointBatchingCount % 5) == 0)
                     {
                         System.out.println("SAMPLE: Partition " + context.getPartitionId() + " checkpointing at " +
-                            data.getSystemProperties().getOffset() + "," + data.getSystemProperties().getSequenceNumber());
+                               data.getSystemProperties().getOffset() + "," + data.getSystemProperties().getSequenceNumber());
                         // Checkpoints are created asynchronously. It is important to wait for the result of checkpointing
                         // before exiting onEvents or before creating the next checkpoint, to detect errors and to ensure proper ordering.
                         context.checkpoint(data).get();
@@ -419,11 +416,9 @@ eventHubClient.sendSync(sendEvent, partitionKey);
 
 com.microsoft.azure.eventprocessorhost.EventProcessorHost クラスには、EventProcessorHost のチェックポイント マネージャーをオーバーライドする際に使用できる 2 つのコンストラクターがあります。
 
-
 ## <a name="next-steps"></a>次のステップ
 次の記事を参照してください。 
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Azure Event Hubs の機能と用語](event-hubs-features.md)
 - [Event Hubs の FAQ](event-hubs-faq.md)
-

@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: a76f61902c6affdab9f70526d2de40852747f34e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 984efe73b072a356b738acc9f162ecaded995ef1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181223"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360679"
 ---
 #### <a name="to-get-the-storsimple-service-registration-key"></a>StorSimple サービス登録キーを取得するには
 
@@ -19,7 +19,7 @@ ms.locfileid: "67181223"
 
 2.  **[管理]、[キー]** の順に移動します。
    
-     ![キー ブレード](./media/storsimple-8000-get-service-registration-key/getregkey2.png)
+     ![[管理]、[キー] ブレード](./media/storsimple-8000-get-service-registration-key/getregkey2.png)
 
 3.  表示されたブレードで、コピー アイコンをクリックして、サービス登録キーをコピーし、後で使用できるように保存します。
 

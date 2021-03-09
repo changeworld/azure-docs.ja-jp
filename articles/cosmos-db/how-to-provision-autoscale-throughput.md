@@ -1,22 +1,26 @@
 ---
-title: Azure Cosmos DB で、自動スケーリングのスループットをプロビジョニングする
-description: Azure portal、CLI、PowerShell、その他のさまざまな SDK を使用して、Azure Cosmos DB のコンテナーおよびデータベース レベルで自動スケーリングのスループットをプロビジョニングする方法について説明します。
+title: Azure Cosmos DB SQL API で自動スケーリングのスループットをプロビジョニングする
+description: Azure portal、CLI、PowerShell、およびその他のさまざまな SDK を使用して、Azure Cosmos DB SQL API のコンテナーおよびデータベース レベルで自動スケーリングのスループットをプロビジョニングする方法について説明します。
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 07/30/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 4e7c5f3f4bf84b7a267cb883df5f375f2a8cf981
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 10/15/2020
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 52904296df77d9097a6180345388e8e702e2bca0
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017143"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357628"
 ---
-# <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Azure Cosmos DB のデータベースまたはコンテナーで、自動スケーリングのスループットをプロビジョニングする
+# <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>Azure Cosmos DB - SQL API のデータベースまたはコンテナーで、自動スケーリングのスループットをプロビジョニングする
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-この記事では、Azure Cosmos DB のデータベースまたはコンテナー (コレクション、グラフ、またはテーブル) で、自動スケーリングのスループットをプロビジョニングする方法について説明します。 自動スケーリングは、単一のコンテナーを対象に有効にできるほか、データベースを対象に自動スケーリングのスループットをプロビジョニングして、それをデータベースのすべてのコンテナーで共有することもできます。
+この記事では、Azure Cosmos DB SQL API のデータベースまたはコンテナー (コレクション、グラフ、またはテーブル) で、自動スケーリングのスループットをプロビジョニングする方法について説明します。 自動スケーリングは、単一のコンテナーを対象に有効にできるほか、データベースを対象に自動スケーリングのスループットをプロビジョニングして、それをデータベースのすべてのコンテナーで共有することもできます。
+
+別の API を使用している場合は、[MongoDB 用 API](how-to-provision-throughput-mongodb.md)、[Cassandra API](how-to-provision-throughput-cassandra.md)、[Gremlin API](how-to-provision-throughput-gremlin.md) のスループット プロビジョニングに関する記事を参照してください。
 
 ## <a name="azure-portal"></a>Azure portal
 
@@ -52,7 +56,7 @@ ms.locfileid: "89017143"
 > [!NOTE]
 > 既存のデータベースまたはコンテナーで自動スケーリングを有効にする場合、最大 RU/s の開始値は、現在の手動でプロビジョニングされたスループットの設定とストレージに基づいて、システムによって決定されます。 操作が完了したら、必要に応じて最大 RU/s を変更できます。 [詳細情報。](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
 
-## <a name="azure-cosmos-db-net-v3-sdk-for-sql-api"></a>Azure Cosmos DB .NET V3 SDK for SQL API
+## <a name="azure-cosmos-db-net-v3-sdk"></a>Azure Cosmos DB .NET V3 SDK
 
 [バージョン 3.9 以上](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)の Azure Cosmos DB .NET SDK for SQL API を使用して、自動スケーリング リソースを管理します。 
 
@@ -109,7 +113,7 @@ int? currentThroughput = autoscaleContainerThroughput.Throughput;
 await container.ReplaceThroughputAsync(ThroughputProperties.CreateAutoscaleThroughput(newAutoscaleMaxThroughput));
 ```
 
-## <a name="azure-cosmos-db-java-v4-sdk-for-sql-api"></a>Azure Cosmos DB Java V4 SDK for SQL API
+## <a name="azure-cosmos-db-java-v4-sdk"></a>Azure Cosmos DB Java V4 SDK
 
 [バージョン 4.0 以上](https://mvnrepository.com/artifact/com.azure/azure-cosmos)の Azure Cosmos DB Java SDK for SQL API を使用して、自動スケーリング リソースを管理できます。
 
@@ -124,7 +128,7 @@ await container.ReplaceThroughputAsync(ThroughputProperties.CreateAutoscaleThrou
 // Create instance of CosmosClient
 CosmosAsyncClient client = new CosmosClientBuilder()
     .setEndpoint(HOST)
-    .setKey(MASTER)
+    .setKey(PRIMARYKEY)
     .setConnectionPolicy(CONNECTIONPOLICY)
     .buildAsyncClient();
 
@@ -141,7 +145,7 @@ CosmosAsyncDatabase database = client.createDatabase(databaseName, autoscaleThro
 // Create instance of CosmosClient
 CosmosClient client = new CosmosClientBuilder()
     .setEndpoint(HOST)
-    .setKey(MASTER)
+    .setKey(PRIMARYKEY)
     .setConnectionPolicy(CONNECTIONPOLICY)
     .buildClient();
 
@@ -243,17 +247,9 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 
 ---
 
-## <a name="cassandra-api"></a>Cassandra API
-
-Cassandra API 用の Azure Cosmos DB アカウントは、[CQL コマンド](manage-scale-cassandra.md#use-autoscale)、[Azure CLI](cli-samples.md)、[Azure PowerShell](powershell-samples.md)、または [Azure Resource Manager テンプレート](resource-manager-samples.md)を使用して、自動スケーリング用にプロビジョニングできます。
-
-## <a name="azure-cosmos-db-api-for-mongodb"></a>MongoDB 用 Azure Cosmos DB API
-
-MongoDB API 用の Azure Cosmos DB アカウントは、[MongoDB 拡張コマンド](mongodb-custom-commands.md)、[Azure CLI](cli-samples.md)、[Azure PowerShell](powershell-samples.md)、または [Azure Resource Manager テンプレート](resource-manager-samples.md)を使用して、自動スケーリング用にプロビジョニングできます。
-
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Azure Resource Manager テンプレートを使用すると、すべての Azure Cosmos DB API に対して、データベースまたはコンテナー レベルのリソースへの自動スケーリングのスループットをプロビジョニングできます。 サンプルについては、「[Azure Cosmos DB の Azure Resource Manager テンプレート](resource-manager-samples.md)」を参照してください。
+Azure Resource Manager テンプレートを使用すると、すべての Azure Cosmos DB API に対して、データベースまたはコンテナー レベルのリソースへの自動スケーリングのスループットをプロビジョニングできます。 サンプルについては、「[Azure Cosmos DB の Azure Resource Manager テンプレート](./templates-samples-sql.md)」を参照してください。
 
 ## <a name="azure-cli"></a>Azure CLI
 

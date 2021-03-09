@@ -3,34 +3,34 @@ title: Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル �
 description: Azure Service Bus と Event Hubs で使用されている AMQP 1.0 プロトコルの式と記述に関するガイド
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ffccd49d37dbf2a8fc404e9895b648e53007675c
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 2154221ebfe69b659ff83100ed614133e178ccdb
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064538"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624491"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 
-Advanced Message Queueing Protocol 1.0 は、2 つの当事者間でメッセージを非同期で、安全かつ確実に転送することを目的に標準化されたフレーミングと転送のためのプロトコルです。 Azure Service Bus メッセージングと Azure Event Hubs の主要なプロトコルとなっています。 どちらのサービスも HTTPS をサポートしています。 同じくサポートされている独自開発の SBMP プロトコルは今後、徐々に AMQP に置き換わっていく予定です。
+Advanced Message Queueing Protocol 1.0 は、2 つの当事者間でメッセージを非同期で、安全かつ確実に転送することを目的に標準化されたフレーミングと転送のためのプロトコルです。 Azure Service Bus メッセージングと Azure Event Hubs の主要なプロトコルとなっています。  
 
-AMQP 1.0 は、ミドルウェア ベンダー (Microsoft、Red Hat など) と各種メッセージング ミドルウェア ユーザー (金融サービス業界を代表する JP モルガン・チェースなど) とを結び付ける、あまねく業界の協業の成果として生まれました。 AMQP プロトコルと拡張仕様の技術的な標準化は OASIS が担っており、今や国際標準の ISO/IEC 19494 として正式に認定されるに至っています。
+AMQP 1.0 は、ミドルウェア ベンダー (Microsoft、Red Hat など) と各種メッセージング ミドルウェア ユーザー (金融サービス業界を代表する JP モルガン・チェースなど) とを結び付ける、あまねく業界の協業の成果として生まれました。 AMQP プロトコルと拡張仕様の技術的な標準化は OASIS が担っており、今や国際標準の ISO/IEC 19494:2014 として正式に認定されるに至っています。 
 
 ## <a name="goals"></a>目標
 
-この記事は、AMQP 1.0 メッセージング仕様の核となる概念を、現在 OASIS AMQP 技術委員会で最終承認に向けて調整されている一部の拡張仕様の草案と併せて簡単に紹介したものです。また、それらの仕様が Azure Service Bus でどのように実装され、構築されているかについても説明します。
+この記事は、AMQP 1.0 メッセージング仕様の核となる概念を、[OASIS AMQP 技術委員会](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)で策定された拡張機能の仕様と併せて紹介したものです。また、それらの仕様が Azure Service Bus でどのように実装され、構築されているかについても説明します。
 
 この記事の目的は、あらゆるプラットフォームで既存の AMQP 1.0 クライアント スタックを使用している開発者が、AMQP 1.0 を介して Azure Service Bus と連携できるよう支援することです。
 
-広く普及している汎用 AMQP 1.0 スタック (Apache Proton、AMQP.NET Lite など) には既に、AMQP 1.0 の主要なプロトコルがすべて実装されています。 こうした基礎となるジェスチャはしばしば、上位の API にラップされます。たとえば Apache Proton には実に 2 つの API が用意されています (命令型の Messenger API とリアクション型の Reactor API)。
+広く普及している汎用 AMQP 1.0 スタック ([Apache Qpid Proton](https://qpid.apache.org/proton/index.html)、[AMQP.NET Lite](https://github.com/Azure/amqpnetlite) など) には既に、セッションやリンクなど AMQP 1.0 プロトコルの主要な要素がすべて実装されています。 こうした基礎となる要素はしばしば、上位の API にラップされます。たとえば Apache Proton には実に 2 つの API が用意されています (命令型の Messenger API とリアクション型の Reactor API)。
 
-以降の解説は、AMQP の接続とセッションとリンクの管理、さらにはフレーム転送の処理とフロー制御が、それぞれのスタック (Apache Proton-C など) で処理され、アプリケーションの開発者が気にかけるべき点は、たとえあってもごくわずかであることを想定しています。 たとえば接続するための機能や、何らかの形態の抽象オブジェクトとして*送信側*と*受信側*を作成する機能があって、そこに何らかの形でそれぞれ `send()` 操作と `receive()` 操作が存在するなど、概念上いくつかの基本的な API が存在するものとして話を進めます。
+以降の解説は、AMQP の接続とセッションとリンクの管理、さらにはフレーム転送の処理とフロー制御が、それぞれのスタック (Apache Proton-C など) で処理され、アプリケーションの開発者が気にかけるべき点は、たとえあってもごくわずかであることを想定しています。 たとえば接続するための機能や、何らかの形態の抽象オブジェクトとして *送信側* と *受信側* を作成する機能があって、そこに何らかの形でそれぞれ `send()` 操作と `receive()` 操作が存在するなど、概念上いくつかの基本的な API が存在するものとして話を進めます。
 
 メッセージの読み取りやセッションの管理など、Azure Service Bus の高度な機能に触れる際は、AMQP の観点で説明しますが、これらの機能も、前提となる抽象化された API の上に階層化された擬似的な実装として解説します。
 
 ## <a name="what-is-amqp"></a>AMQP とは何か
 
-AMQP は、フレーミングと転送のプロトコルです。 フレーミングとは、ネットワーク接続のいずれかの方向に流れるバイナリ データ ストリームに構造を与えることです。 接続された当事者間で交換される、*フレーム*と呼ばれる個々のデータ ブロックには、この構造によって輪郭が与えられます。 フレームをいつ転送するかや何をもって転送の完了と見なすかについて、通信を行う両方の当事者が共有の認識を持てるようにするのが、転送機能の役割となります。
+AMQP は、フレーミングと転送のプロトコルです。 フレーミングとは、ネットワーク接続のいずれかの方向に流れるバイナリ データ ストリームに構造を与えることです。 接続された当事者間で交換される、*フレーム* と呼ばれる個々のデータ ブロックには、この構造によって輪郭が与えられます。 フレームをいつ転送するかや何をもって転送の完了と見なすかについて、通信を行う両方の当事者が共有の認識を持てるようにするのが、転送機能の役割となります。
 
 かつて AMQP の作業部会によって作成されて既に失効している草案版が今も、一部のメッセージ ブローカーで使用されています。しかし作業部会によって最終的に標準化された AMQP 1.0 プロトコルでは、こうした草案版とは異なり、メッセージ ブローカーの存在や、メッセージ ブローカー内のエンティティに対する特定のトポロジについては一切規定されていません。
 
@@ -42,7 +42,7 @@ AMQP 1.0 プロトコルでは拡張性を意図した設計が採用され、�
 
 このセクションでは、Azure Service Bus での AMQP 1.0 の基本的な処理について説明します。接続やセッション、リンクを作成したり、Service Bus の各種エンティティ (キュー、トピック、サブスクリプションなど) との間でメッセージをやり取りしたりする方法を見ていきましょう。
 
-AMQP の動作について最も権威のある情報源は AMQP 1.0 仕様です。しかし仕様の目的は、実装上の指針を厳密に記述することであり、プロトコルについてわかりやすく解説することではありません。 このセクションでは、Service Bus での AMQP 1.0 の使われ方を理解するうえで最低限必要な用語のみを紹介することに重点を置いています。 AMQP について大局的に扱った入門情報が必要な場合や、AMQP 1.0 についての広範な解説が必要である場合は、[こちらのビデオ コース][this video course]をご覧ください。
+AMQP の動作について最も権威のある情報源は [AMQP 1.0 仕様](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html)です。しかし仕様の目的は、実装上の指針を厳密に記述することであり、プロトコルについてわかりやすく解説することではありません。 このセクションでは、Service Bus での AMQP 1.0 の使われ方を理解するうえで最低限必要な用語のみを紹介することに重点を置いています。 AMQP について大局的に扱った入門情報が必要な場合や、AMQP 1.0 についての広範な解説が必要である場合は、[こちらのビデオ コース][this video course]をご覧ください。
 
 ### <a name="connections-and-sessions"></a>接続とセッション
 
@@ -63,17 +63,17 @@ Service Bus では、接続と TLS のセットアップ後、SASL の機構に�
 
 またコンテナーは、同時にサポートされるチャネルの数も宣言します。 チャネルは、接続の上に形成される内から外に向かう一方向の仮想的な転送経路です。 セッションは、相互接続された個々のコンテナーからチャネルを取得して、双方向の通信経路を形成します。
 
-セッションには、ウィンドウ型のフロー制御モデルが採用されています。つまりセッションの作成時に、それぞれの当事者が、その受信ウィンドウに受け入れるフレームの数を宣言します。 通信の当事者がフレームを交換する際、転送済みのフレームによってウィンドウが埋められていき、それが一杯になると、ウィンドウが *flow パフォーマティブ*を使って拡張されるか、リセットされるまで転送は中止されます (*パフォーマティブ*は、2 つの当事者間でやり取りされるプロトコル レベルのジェスチャに使用される AMQP 用語)。
+セッションには、ウィンドウ型のフロー制御モデルが採用されています。つまりセッションの作成時に、それぞれの当事者が、その受信ウィンドウに受け入れるフレームの数を宣言します。 通信の当事者がフレームを交換する際、転送済みのフレームによってウィンドウが埋められていき、それが一杯になると、ウィンドウが *flow パフォーマティブ* を使って拡張されるか、リセットされるまで転送は中止されます (*パフォーマティブ* は、2 つの当事者間でやり取りされるプロトコル レベルのジェスチャに使用される AMQP 用語)。
 
 基本的にこのウィンドウ型のモデルは、TCP のウィンドウ型フロー制御の概念と似ていますが、ソケット内のセッション レベルの概念である点が異なります。 このプロトコルの概念は、複数の同時セッションを可能にするものであり、ちょうど高速道路の追い越し車線のように、優先度の高いトラフィックが、抑制された通常のトラフィックを追い越すことができるようになっています。
 
-現在、Azure Service Bus では各接続につき厳密に 1 つのセッションが使用されます。 Service Bus Standard と Event Hubs の場合､Service Bus の最大フレーム サイズは 262,144 バイト (256KB) です｡ Service Bus Premium の場合は、これが 1,048,576 (1 MB) になります。 セッション レベルで特定のスロットル ウィンドウを Service Bus が強制的に適用することはありませんが、リンク レベルのフロー制御の一環として Service Bus は、ウィンドウを定期的にリセットします ([次のセクション](#links)を参照)。
+現在、Azure Service Bus では各接続につき厳密に 1 つのセッションが使用されます。 Service Bus Standard の場合､Service Bus の最大フレーム サイズは 262,144 バイト (256 KB) です｡ Service Bus Premium および Event Hubs の場合は、これが 1,048,576 (1 MB) になります。 セッション レベルで特定のスロットル ウィンドウを Service Bus が強制的に適用することはありませんが、リンク レベルのフロー制御の一環として Service Bus は、ウィンドウを定期的にリセットします ([次のセクション](#links)を参照)。
 
 接続、チャネル、セッションは一時的にしか存在しません。 根底の接続がダウンした場合、接続、TLS トンネル、SASL 承認コンテキスト、セッションを再度確立する必要があります。
 
 ### <a name="amqp-outbound-port-requirements"></a>AMQP 送信ポートの要件
 
-TCP 経由で AMQP 接続を使用するクライアントでは、ローカル ファイアウォールでポート 5671 と 5672 を開く必要があります。 これらのポートと共に、[EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) 機能が有効になっている場合は、追加のポートを開く必要がある場合があります。 `EnableLinkRedirect` は、メッセージの受信中に 1 ホップをスキップし、スループットを向上させることができるようにする新しいメッセージング機能です。 クライアントは、次の図に示すように、ポート範囲 104XX 経由でバックエンド サービスとの直接通信を開始します。 
+TCP 経由で AMQP 接続を使用するクライアントでは、ローカル ファイアウォールでポート 5671 と 5672 を開く必要があります。 これらのポートと共に、[EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect) 機能が有効になっている場合は、追加のポートを開く必要がある場合があります。 `EnableLinkRedirect` は、メッセージの受信中に 1 ホップをスキップし、スループットを向上させることができるようにする新しいメッセージング機能です。 クライアントは、次の図に示すように、ポート範囲 104XX 経由でバックエンド サービスとの直接通信を開始します。 
 
 ![宛先ポートの一覧][4]
 
@@ -122,7 +122,7 @@ Service Bus は、リンクの復旧をサポートしていません。クラ�
 
 ![送信元、送信先、送信元ポート、宛先ポート、およびプロトコル名を示すログのスクリーンショット。 宛先ポート 10401 (0x28 A 1) の最初の行が黒で囲まれています。][4]
 
-リンク上で転送が行われるのは、送信側に十分な*リンク クレジット*があるときだけです。 リンク クレジットは、受信側が *flow* パフォーマティブ (適用対象はリンク) を使って設定するカウンターです。 送信側は、自身にリンク クレジットが割り当てられているとき、メッセージを配信することでそのクレジットを消費します。 メッセージを配信するたびに、残りのリンク クレジットが 1 つ減らされます。 リンク クレジットを使い果たすと、配信は停止します。
+リンク上で転送が行われるのは、送信側に十分な *リンク クレジット* があるときだけです。 リンク クレジットは、受信側が *flow* パフォーマティブ (適用対象はリンク) を使って設定するカウンターです。 送信側は、自身にリンク クレジットが割り当てられているとき、メッセージを配信することでそのクレジットを消費します。 メッセージを配信するたびに、残りのリンク クレジットが 1 つ減らされます。 リンク クレジットを使い果たすと、配信は停止します。
 
 Service Bus は受信側ロールになるとすぐ、メッセージを直ちに送信できるよう送信側に対して十分なリンク クレジットを与えます。 リンク クレジットが使用される過程で、Service Bus は送信側に対して、ときどき *flow* パフォーマティブを送信し、リンク クレジットの残数を更新します。
 
@@ -240,14 +240,14 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 
 | 注釈マップ キー | 使用法 | API 名 |
 | --- | --- | --- |
-| x-opt-scheduled-enqueue-time | メッセージがエンティティ上に出現する時刻を宣言します。 |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
-| x-opt-partition-key | メッセージを受信するパーティションを指示する、アプリケーションで定義されたキー。 | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
-| x-opt-via-partition-key | 転送キュー経由でメッセージを送信するためにトランザクションが使用される場合の、アプリケーションで定義されたパーティション キーの値。 | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
-| x-opt-enqueued-time | メッセージをエンキューする実際の時刻を表す、サービスで定義された UTC 時刻。 インポート時には無視されます。 | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
-| x-opt-sequence-number | メッセージに割り当てられる、サービスで定義された一意の番号。 | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
-| x-opt-offset | サービスで定義された、エンキューされるメッセージのシーケンス番号。 | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
-| x-opt-locked-until | サービスで定義される。 メッセージがキュー/サブスクリプションでロックされるまでの日時。 | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
-| x-opt-deadletter-source | サービスで定義される。 配信不能キューからメッセージが受信された場合の、元のメッセージのソース。 | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
+| x-opt-scheduled-enqueue-time | メッセージがエンティティ上に出現する時刻を宣言します。 |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc) |
+| x-opt-partition-key | メッセージを受信するパーティションを指示する、アプリケーションで定義されたキー。 | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey) |
+| x-opt-via-partition-key | 転送キュー経由でメッセージを送信するためにトランザクションが使用される場合の、アプリケーションで定義されたパーティション キーの値。 | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey) |
+| x-opt-enqueued-time | メッセージをエンキューする実際の時刻を表す、サービスで定義された UTC 時刻。 インポート時には無視されます。 | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) |
+| x-opt-sequence-number | メッセージに割り当てられる、サービスで定義された一意の番号。 | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) |
+| x-opt-offset | サービスで定義された、エンキューされるメッセージのシーケンス番号。 | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber) |
+| x-opt-locked-until | サービスで定義される。 メッセージがキュー/サブスクリプションでロックされるまでの日時。 | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc) |
+| x-opt-deadletter-source | サービスで定義される。 配信不能キューからメッセージが受信された場合の、元のメッセージのソース。 | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource) |
 
 ### <a name="transaction-capability"></a>トランザクション機能
 
@@ -281,7 +281,7 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 | :--- | :---: | :--- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
-| | 。 。 。 <br/>トランザクション作業<br/>(別のリンク上で)<br/> . . . |
+| | . . 。 <br/>トランザクション作業<br/>(別のリンク上で)<br/> . . . |
 | transfer(<br/>delivery-id=57, ...)<br/>{ AmqpValue (<br/>**Discharge(txn-id=0,<br/>fail=false)** )}| ------> |  |
 | | <------ | disposition( <br/> first=57, last=57, <br/>state=**Accepted()** )|
 

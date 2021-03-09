@@ -1,18 +1,17 @@
 ---
 title: REST API を使用して Azure Stream Analytics on IoT Edge の CI/CD を行う
 description: REST API を使用して Azure Stream Analytics のための継続的インテグレーションと継続的なデプロイのパイプラインを実装する方法について説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: su-jie
+ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: ed11488f397704be782a092d6cdc6463449cc71e
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 3c3f776ad0996fa0b7422f0fca2d899a35e853d1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039077"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016135"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>API を使用して IoT Edge 上に Stream Analytics 向けの CI/CD を実装する
 
@@ -136,7 +135,7 @@ JSON での要求本文の例:
 } 
 ```
  
-詳しくは、[API のドキュメント](/rest/api/streamanalytics/stream-analytics-job)をご覧ください。  
+詳しくは、[API のドキュメント](/rest/api/streamanalytics/)をご覧ください。  
  
 ## <a name="publish-edge-package"></a>Edge パッケージを発行する 
  
@@ -258,5 +257,5 @@ curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/res
 ## <a name="next-steps"></a>次のステップ 
  
 * [Azure Stream Analytics on IoT Edge](stream-analytics-edge.md)
-* [ASA on IoT Edge チュートリアル](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
+* [ASA on IoT Edge チュートリアル](../iot-edge/tutorial-deploy-stream-analytics.md)
 * [Visual Studio Tools を使用して Stream Analytics Edge ジョブを作成する](stream-analytics-tools-for-visual-studio-edge-jobs.md)

@@ -1,14 +1,16 @@
 ---
 title: LUIS ポータルでアプリをテストする
 description: Language Understanding (LUIS) を使用して、アプリケーションの改善とその言語解釈の向上に継続的に取り組みます。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/02/2020
-ms.openlocfilehash: 574bacdb5e1f167c9c9174d4a119552391059004
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 31885eba16d59e2e48a08f84c56271b84e6c565f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677740"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790920"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>LUIS ポータルで LUIS アプリをテストする
 
@@ -22,7 +24,7 @@ ms.locfileid: "84677740"
 
 ## <a name="train-before-testing"></a>テストの前にトレーニングする
 
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の **サブスクリプション** と **作成リソース** を選択して、その作成リソースに割り当てられているアプリを表示します。
 1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
 1. アクティブなアプリの最新バージョンに対してテストを行うには、テストの前に、上部のメニューから **[トレーニング]** を選択します。
 
@@ -30,7 +32,7 @@ ms.locfileid: "84677740"
 
 テストの発話は、アプリでの発話の例とまったく同じにすることはできません。 テストの発話には、ユーザーが使用すると予想される単語の選択、語句の長さ、エンティティの使用法を含める必要があります。
 
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の **サブスクリプション** と **作成リソース** を選択して、その作成リソースに割り当てられているアプリを表示します。
 1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
 
 1. スライド式の **[Test]\(テスト\)** パネルにアクセスするには、アプリケーションの上部パネルにある **[Test]\(テスト\)** を選択します。
@@ -87,7 +89,7 @@ ms.locfileid: "84677740"
 
 ## <a name="view-sentiment-results"></a>センチメント結果の表示
 
-**[[Publish]\(公開\)](luis-how-to-publish-app.md#enable-sentiment-analysis)** ページで**感情分析**が構成されている場合、テスト結果には、発話で見つかったセンチメントが含まれます。
+**[[Publish]\(公開\)](luis-how-to-publish-app.md#enable-sentiment-analysis)** ページで **感情分析** が構成されている場合、テスト結果には、発話で見つかったセンチメントが含まれます。
 
 ## <a name="correct-matched-patterns-intent"></a>一致したパターンの意図の修正
 
@@ -117,7 +119,7 @@ LUIS エンドポイントが複数ある場合は、テストの [公開済み]
 
 
 ## <a name="batch-testing"></a>バッチ テスト
-バッチ テストの[概念](luis-concept-batch-test.md)と、発話のバッチをテストする[方法](luis-how-to-batch-test.md)を参照してください。
+バッチ テストの[概念](./luis-how-to-batch-test.md)と、発話のバッチをテストする[方法](luis-how-to-batch-test.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

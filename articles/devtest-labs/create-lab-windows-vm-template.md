@@ -4,15 +4,15 @@ description: このクイックスタートでは、Azure Resource Manager テ�
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/26/2020
-ms.openlocfilehash: 93bc4cf91b228de72c217c61ec03d61e87046dd3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 2b825b4d4485f401199556b6faaef0017f583cc1
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653955"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461191"
 ---
 # <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>クイック スタート:Azure DevTest Labs の ARM テンプレートを使用してラボを設定する
-このクイックスタートでは、Azure Resource Manager (ARM) テンプレートを使用して、Windows Server 2019 Datacenter VM を含むラボを作成します。 
+このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Windows Server 2019 Datacenter VM を含むラボを作成します。 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -65,16 +65,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="validate-the-deployment"></a>デプロイの検証
 1. 上部にある **[通知]** を選択して、デプロイの状態を確認し、 **[デプロイは進行中です]** リンクをクリックします。
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="デプロイの通知":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="[テンプレートのデプロイ] ページ":::
 2. **デプロイの概要**ページで、デプロイが完了するまで待ちます。 この工程 (特に VM の作成) は、完了までにしばらく時間がかかります。 次に、 **[リソース グループに移動]** または**リソース グループの名前**を選択します (下図参照)。 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/navigate-resource-group.png" alt-text="リソース グループに移動する":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/navigate-resource-group.png" alt-text="[テンプレートのデプロイ] ページ":::
 3. **リソース グループ** ページで、リソース グループ内のリソースを一覧表示します。 リソースに `DevTest Lab` タイプのラボが表示されていることを確認します。 仮想ネットワークや仮想マシンなど、リソース グループ内の依存リソースも表示されます。 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/resource-group-home-page.png" alt-text="リソース グループのホーム ページ":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/resource-group-home-page.png" alt-text="[テンプレートのデプロイ] ページ":::
 4. リソースの一覧から目的のラボを選択して、そのラボのホーム ページを表示します。 **[自分の仮想マシン]** の一覧に Windows Server 2019 Datacenter VM が表示されていることを確認します。 次の画像では、 **[基本]** セクションが最小化されています。 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/lab-home-page.png" alt-text="ラボのホーム ページ":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/lab-home-page.png" alt-text="[テンプレートのデプロイ] ページ":::
 
     > [!IMPORTANT] 
     > このページ開いたままにしておいてください。Azure でラボと VM を実行するコストが課金されないよう、次のセクションの手順に従ってリソースをクリーンアップします。 次のチュートリアルに進んでラボの VM へのアクセス テストを行う場合は、そのチュートリアルを終えてからリソースをクリーンアップしてください。 
@@ -83,14 +83,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. まず、リソース グループを削除できるようにラボを削除します。 ラボが含まれているとリソース グループを削除できません。 ラボを削除するには、ツール バーの **[削除]** を選択します。 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/delete-lab-button.png" alt-text="ラボの削除ボタン":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/delete-lab-button.png" alt-text="[テンプレートのデプロイ] ページ":::
  2. 確認ページで**ラボ名**を入力し、 **[削除]** を選択します。 
  3. ラボが削除されるまで待ちます。 **ベル**のアイコンを選択すると、削除操作からの通知が表示されます。 このプロセスには、ある程度時間がかかります。 ラボが削除されたのを確認して、階層リンク メニューの **[リソース グループ]** を選択します。 
  
-    :::image type="content" source="./media/create-lab-windows-vm-template/confirm-lab-deletion.png" alt-text="VM が削除されたことを通知で確認する":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/confirm-lab-deletion.png" alt-text="[テンプレートのデプロイ] ページ":::
  1. **[リソース グループ]** ページで、ツール バーの **[リソース グループの削除]** を選択します。 確認ページで**リソース グループ名**を入力し、 **[削除]** を選択します。 通知をチェックして、リソース グループが削除されたことを確認します。
  
-    :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="[リソース グループの削除] ボタン":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="[テンプレートのデプロイ] ページ":::
 
 ## <a name="next-steps"></a>次のステップ
 このクイックスタートでは、VM を備えたラボを作成しました。 ラボにアクセスする方法を学習するには、次のチュートリアルに進んでください。

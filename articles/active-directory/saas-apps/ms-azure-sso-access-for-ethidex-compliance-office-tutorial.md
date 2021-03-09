@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: jeedes
-ms.openlocfilehash: cee76d78e934931e6f2d0ff6787d755717ea8b0b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7ef219ca147fe96fc65f14bbf3ba6a565adc95ec
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549026"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520916"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ms-azure-sso-access-for-ethidex-compliance-office"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と MS Azure SSO Access for Ethidex Compliance Office™ の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88549026"
 * ユーザーが自分の Azure AD アカウントを使用して MS Azure SSO Access for Ethidex Compliance Office™ に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* MS Azure SSO Access for Ethidex Compliance Office™ では、**IDP** Initiated SSO がサポートされます
+* MS Azure SSO Access for Ethidex Compliance Office™ では、 **IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-ms-azure-sso-access-for-ethidex-compliance-office-from-the-gallery"></a>ギャラリーからの MS Azure SSO Access for Ethidex Compliance Office™ の追加
 
@@ -49,7 +49,7 @@ Azure AD への MS Azure SSO Access for Ethidex Compliance Office™ の統合�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**MS Azure SSO Access for Ethidex Compliance Office™**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **MS Azure SSO Access for Ethidex Compliance Office™** 」と入力します。
 1. 結果のパネルから **MS Azure SSO Access for Ethidex Compliance Office™** を選択し、そのアプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-ms-azure-sso-access-for-ethidex-compliance-office"></a>MS Azure SSO Access for Ethidex Compliance Office™ の Azure AD シングル サインオンの構成とテスト
@@ -84,7 +84,7 @@ MS Azure SSO Access for Ethidex Compliance Office™ に対する Azure AD SSO �
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 この値を取得するには、[MS Azure SSO Access for Ethidex Compliance Office™ サポート チーム](mailto:support@ethidex.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. MS Azure SSO Access for Ethidex Compliance Office™ アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 MS Azure SSO Access for Ethidex Compliance Office™ アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. MS Azure SSO Access for Ethidex Compliance Office™ アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier** は **user.userprincipalname** にマップされています。 MS Azure SSO Access for Ethidex Compliance Office™ アプリケーションでは、 **nameidentifier** が **user.mail** にマップされると想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -128,25 +128,24 @@ MS Azure SSO Access for Ethidex Compliance Office™ に対する Azure AD SSO �
 
 ## <a name="configure-ms-azure-sso-access-for-ethidex-compliance-office-sso"></a>MS Azure SSO Access for Ethidex Compliance Office の SSO の構成
 
-**MS Azure SSO Access for Ethidex Compliance Office™** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (未加工)** と Azure portal からコピーした適切な URL を [MS Azure SSO Access for Ethidex Compliance Office™ サポート チーム](mailto:support@ethidex.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**MS Azure SSO Access for Ethidex Compliance Office™** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (未加工)** と Azure portal からコピーした適切な URL を [MS Azure SSO Access for Ethidex Compliance Office™ サポート チーム](mailto:support@ethidex.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-ms-azure-sso-access-for-ethidex-compliance-office-test-user"></a>MS Azure SSO Access for Ethidex Compliance Office のテスト ユーザーの作成
 
-このセクションでは、MS Azure SSO Access for Ethidex Compliance Office™ で B.Simon というユーザーを作成します。  [MS Azure SSO Access for Ethidex Compliance Office™ サポート チーム](mailto:support@ethidex.com)と連携し、MS Azure SSO Access for Ethidex Compliance Office™ プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、MS Azure SSO Access for Ethidex Compliance Office™ で B.Simon というユーザーを作成します。 [MS Azure SSO Access for Ethidex Compliance Office™ サポート チーム](mailto:support@ethidex.com)と連携して、MS Azure SSO Access for Ethidex Compliance Office™ プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [MS Azure SSO Access for Ethidex Compliance Office™] タイルをクリックすると、SSO を設定した MS Azure SSO Access for Ethidex Compliance Office™ アプリケーションに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [MS Azure SSO Access for Ethidex Compliance Office™] タイルをクリックすると、SSO を設定した MS Azure SSO Access for Ethidex Compliance Office™ アプリケーションに自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で MS Azure SSO Access for Ethidex Compliance Office™ を試す](https://aad.portal.azure.com/)
-

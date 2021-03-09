@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 7909f793407956247a8378a86e20bbe7b1bcddb6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9967f349011b52a2218681956885c33456ba1d46
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542804"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672765"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>チュートリアル:Azure Active Directory と Brightidea の統合
 
@@ -27,7 +27,7 @@ Azure AD と Brightidea の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Brightidea に自動的にサインイン (シングル サインオン) することを可能にします。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -66,7 +66,7 @@ Azure AD への Brightidea の統合を構成するには、ギャラリーか�
 
 4. 検索ボックスに「**Brightidea**」と入力し、結果ウィンドウから **[Brightidea]** を選択し、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
-     ![結果一覧にある Brightidea](common/search-new-app.png)
+    ![結果一覧にある Brightidea](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -100,30 +100,30 @@ Brightidea によって Azure AD のシングル サインオンを構成する�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **サービス プロバイダー メタデータ ファイル**を保持しており、**IDP** によって開始されるモードに構成したい場合は、 **[基本的な SAML 構成]** セクション上で次の手順を実行します。
+4. **サービス プロバイダー メタデータ ファイル** を保持しており、**IDP** によって開始されるモードに構成したい場合は、 **[基本的な SAML 構成]** セクション上で次の手順を実行します。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
     ![メタデータ ファイルをアップロードする](common/upload-metadata.png)
 
-    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
+    b. **フォルダー ロゴ** をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
     ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
 
-    c. メタデータ ファイルが正常にアップロードされると、**識別子**と**応答 URL** の値が、Brightidea セクションのテキスト ボックスに自動的に設定されます。
+    c. メタデータ ファイルが正常にアップロードされると、**識別子** と **応答 URL** の値が、Brightidea セクションのテキスト ボックスに自動的に設定されます。
 
-    ![image](common/idp-intiated.png)
+    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     > [!Note]
-    > **識別子**と**応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
+    > **識別子** と **応答 URL** の値が自動的に設定されない場合は、要件に応じて手動で値を入力してください。
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.brightidea.com` という形式で URL を入力します。
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -141,35 +141,35 @@ Brightidea によって Azure AD のシングル サインオンを構成する�
 
 1. 別の Web ブラウザー ウィンドウで、管理者の資格情報を使って Brightidea にサインインします。
 
-2. Brightidea システム内の SSO 機能にアクセスするために、 **[Enterprise Setup]\(エンタープライズ セットアップ\)**  ->  **[認証] タブ**の順に移動します。サブ タブとして[Auth Selection]\(認証の選択\) と [SAML Profiles]\(SAML プロファイル\) の 2 つが表示されます。
+2. Brightidea システム内の SSO 機能にアクセスするために、 **[Enterprise Setup]\(エンタープライズ セットアップ\)**  ->  **[認証] タブ** の順に移動します。サブ タブとして[Auth Selection]\(認証の選択\) と [SAML Profiles]\(SAML プロファイル\) の 2 つが表示されます。
 
-    ![Brightidea の構成](./media/brightidea-tutorial/configure1.png)
+    ![このスクリーンショットは、[認証] タブが選択された状態の Brightidea サイトを示しています。](./media/brightidea-tutorial/configure1.png)
 
 3. **[Auth Selection]\(認証の選択\)** を選択します。 既定では、2 つの標準的な方法として、"Brightidea ログイン" と "登録" だけが表示されます。 SSO の方法が追加されると、一覧に表示されるようになります。
 
-    ![Brightidea の構成](./media/brightidea-tutorial/configure2.png)
+    ![Brightidea の [認証] タブのスクリーンショット。[Auth Selection]\(認証の選択\) が選択されています。](./media/brightidea-tutorial/configure2.png)
 
 4. **[SAML Profiles]\(SAML プロファイル\)** を選択し、次の手順を実行します。
 
-    ![Brightidea の構成](./media/brightidea-tutorial/configure3.png)
+    ![Brightidea の [認証] タブのスクリーンショット。[Download Metadata]\(メタデータのダウンロード\) と [Add New]\(新規追加\) オプションを備えた [SAML Profiles]\(SAML プロファイル\) が選択されています。](./media/brightidea-tutorial/configure3.png)
 
     a. **[メタデータのダウンロード]** をクリックして、Azure portal 内の **[基本的な SAML 構成]** セクションからアップロードを行います。
 
     b. **[Identity Provider Setting]\(ID プロバイダー設定\)** 下にある **[新規追加]** ボタンをクリックして、次の手順を実行します。
-    
-    ![Brightidea の構成](./media/brightidea-tutorial/configure4.png)
-    
+
+    ![情報の入力先となる Brightidea の [Identity Provider Setting]\(ID プロバイダー設定\) のスクリーンショット。](./media/brightidea-tutorial/configure4.png)
+
    * たとえば `Azure Ad SSO` のように、 **[SAML Profile Name]\(SAML プロファイル名\)** に入力します。
-    
+
    * **[Upload Metadata]\(メタデータのアップロード\)** において、[ファイルの選択] をクリックして、Azure portal からダウンロード済みのメタデータ ファイルをアップロードします。
 
      > [!NOTE]
      > メタデータ ファイルをアップロードすると、残りのフィールド ( **[シングル サインオン サービス]、[ID プロバイダーの発行者]、[公開キーのアップロード ]** ) は自動的に入力されます。
 
    * **[電子メール]** ボックスに、`mail` の値を入力します。
-     
+
    * **[画面の名前]** ボックスに、`givenName` の値を入力します。
-     
+
    * **[変更を保存]** をクリックします。  
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
@@ -189,7 +189,7 @@ Brightidea によって Azure AD のシングル サインオンを構成する�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -231,13 +231,12 @@ Brightidea によって Azure AD のシングル サインオンを構成する�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル内の [Brightidea] タイルをクリックすると、SSO を設定した Brightidea に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル内の [Brightidea] タイルをクリックすると、SSO を設定した Brightidea に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

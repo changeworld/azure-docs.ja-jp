@@ -1,14 +1,16 @@
 ---
 title: 学習ポリシー - Personalizer
 description: 学習の設定では、モデル トレーニングの "*ハイパーパラメーター*" が決定されます。 同じデータの 2 つのモデルが、異なる学習設定でトレーニングされると、最終的には別のものになります。
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: abe6a2a2ec9b9978230d894c69193469f6e932e6
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 1d2038e3796df843736eb80f7e5645f4141c82f4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84700734"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91253634"
 ---
 # <a name="learning-policy-and-settings"></a>学習ポリシーと設定
 

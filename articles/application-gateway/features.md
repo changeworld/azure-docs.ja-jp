@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 04/07/2020
+ms.date: 09/25/2020
 ms.author: victorh
-ms.openlocfilehash: 560d836f99f7a1be85007bb9d488f80a68d7999b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ba9f42bc932a37e1052f17db2ae00413e0769d59
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067982"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355739"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway の機能
 
@@ -22,7 +22,7 @@ ms.locfileid: "87067982"
 
 Application Gateway には、次のような機能があります。
 
-- [Secure Sockets Layer (SSL/TLS) ターミネーション](#secure-sockets-layer-ssltls-termination)
+- [Secure Sockets Layer (SSL/TLS) 終了](#secure-sockets-layer-ssltls-termination)
 - [自動スケーリング](#autoscaling)
 - [ゾーン冗長性](#zone-redundancy)
 - [静的 VIP](#static-vip)
@@ -38,9 +38,9 @@ Application Gateway には、次のような機能があります。
 - [HTTP ヘッダーと URL の書き換え](#rewrite-http-headers-and-url)
 - [サイズ設定](#sizing)
 
-## <a name="secure-sockets-layer-ssltls-termination"></a>Secure Sockets Layer (SSL/TLS) ターミネーション
+## <a name="secure-sockets-layer-ssltls-termination"></a>Secure Sockets Layer (SSL/TLS) 終了
 
-Application Gateway は、ゲートウェイの SSL ターミネーションをサポートします。その後、通常、トラフィックは、暗号化されないままバックエンド サーバーに渡されます。 この機能により、Web サーバーは、負荷の大きい暗号化と復号化のオーバーヘッドから開放されます。 ただし、サーバーに対する暗号化されていない通信を利用できない場合があります。 これは、セキュリティ要件やコンプライアンス要件が理由であったり、セキュリティで保護された接続以外はアプリケーションで受け入れられないためであったりします。 このようなアプリケーションのために、Application Gateway では、エンド ツー エンドの SSL/TLS 暗号化がサポートされています。
+Application Gateway は、ゲートウェイの SSL 終了をサポートします。その後、通常、トラフィックは、暗号化されないままバックエンド サーバーに渡されます。 この機能により、Web サーバーは、負荷の大きい暗号化と復号化のオーバーヘッドから開放されます。 ただし、サーバーに対する暗号化されていない通信を利用できない場合があります。 これは、セキュリティ要件やコンプライアンス要件が理由であったり、セキュリティで保護された接続以外はアプリケーションで受け入れられないためであったりします。 このようなアプリケーションのために、Application Gateway では、エンド ツー エンドの SSL/TLS 暗号化がサポートされています。
 
 詳細については、「[Application Gateway での SSL ターミネーションとエンド ツー エンド SSL の概要](ssl-overview.md)」を参照してください
 
@@ -117,13 +117,13 @@ Application Gateway は、WebSocket および HTTP/2 プロトコルをネイテ
 
 WebSocket および HTTP/2 プロトコルによって、長時間実行されている TCP 接続上でサーバーとクライアント間の全二重通信が可能になります。 この機能により、HTTP ベースの実装では必須だったポーリングを使用することなく、Web サーバーとクライアントの間により対話的な双方向通信が可能になります。 これらのプロトコルは、HTTP とは異なってオーバーヘッドが少なく、複数の要求や応答で同じ TCP 接続を再利用できるため、リソースをより効率的に使用できます。 これらのプロトコルは、従来の HTTP ポート 80 および 443 上で動作するよう設計されています。
 
-詳細については、[WebSocket のサポート](application-gateway-websocket.md)と [HTTP/2 のサポート](configuration-overview.md#http2-support)に関するページを参照してください。
+詳細については、[WebSocket のサポート](application-gateway-websocket.md)と [HTTP/2 のサポート](configuration-listeners.md#http2-support)に関するページを参照してください。
 
 ## <a name="connection-draining"></a>接続のドレイン
 
 接続のドレインを使用すると、計画的なサービスの更新中にバックエンド プール メンバーを正常に削除することができます。 この設定は、バックエンド http 設定を通じて有効にされ、ルールの作成中にバックエンド プールのすべてのメンバーに適用することができます。 Application Gateway が有効になると、バックエンド プールのすべての登録解除インスタンスが新しい要求を受け取らなくなり、既存の要求は構成された制限時間内に完了するようになります。 これは、ユーザーの構成変更によってバックエンド プールから明示的に削除されたバックエンド インスタンスと、正常性プローブの判断によって異常であるとレポートされたバックエンド インスタンスの両方に適用されます。 これに対する唯一の例外は、ゲートウェイによって管理されるセッション アフィニティのために登録を解除するインスタンス (明示的に登録が解除されています) 宛ての要求です。これらは、登録を解除するインスタンスによって引き続きプロキシ処理されます。
 
-詳細については、「[アプリケーション ゲートウェイ構成の概要](configuration-overview.md#connection-draining)」を参照してください。
+詳細については、「[アプリケーション ゲートウェイ構成の概要](configuration-http-settings.md#connection-draining)」を参照してください。
 
 ## <a name="custom-error-pages"></a>カスタム エラー ページ
 
@@ -147,9 +147,9 @@ Application Gateway と WAF v2 SKU では、要求/応答パケットがクラ�
 
 ## <a name="sizing"></a>サイズ変更
 
-Application Gateway Standard_v2 は、自動スケーリング用、または固定サイズ デプロイ用に構成できます。 この SKU では、異なるインスタンスのサイズは提供されません。 v2 のパフォーマンスと料金の詳細については、[v2 SKU の自動スケーリング](application-gateway-autoscaling-zone-redundant.md#pricing)に関するページをご覧ください。
+Application Gateway Standard_v2 は、自動スケーリング用、または固定サイズ デプロイ用に構成できます。 v2 SKU には、さまざまなインスタンス サイズは用意されていません。 v2 のパフォーマンスと料金の詳細については、[v2 の自動スケーリング](application-gateway-autoscaling-zone-redundant.md)に関するページと[価格の理解](understanding-pricing.md)に関するページをご覧ください。
 
-Application Gateway Standard は、**Small**、**Medium**、**Large** の 3 つのサイズで提供されています。 Small サイズのインスタンスは、開発用およびシナリオのテスト用です。
+Application Gateway Standard (v1) は、**Small**、**Medium**、**Large** の 3 つのサイズで提供されています。 Small サイズのインスタンスは、開発用およびシナリオのテスト用です。
 
 アプリケーション ゲートウェイの制限の詳細な一覧については、[Application Gateway サービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)に関するページをご覧ください。
 

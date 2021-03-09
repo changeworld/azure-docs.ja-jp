@@ -3,20 +3,18 @@ title: datetimeV2 作成済みエンティティ - LUIS
 titleSuffix: Azure Cognitive Services
 description: この記事には、Language Understanding (LUIS) での datetimeV2 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/13/2020
-ms.author: diberry
-ms.openlocfilehash: 33f8b787119e1c5d6d1a1bb28c94d9791a1c048e
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 83522de9c00056a3808b002b3103f45c72553399
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272612"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013073"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの datetimeV2 作成済みエンティティ
 

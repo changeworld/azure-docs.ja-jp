@@ -9,16 +9,16 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: yelevin
-ms.openlocfilehash: 8f21b415ef36442d6ac1aac518cd1327f70b8927
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: c554f3582e67622a5a1739c9e410328c902d491b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263855"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655903"
 ---
 # <a name="connect-data-from-azure-web-application-firewall-waf"></a>Azure Web アプリケーション ファイアウォール (WAF) からデータを接続する
 
-Web アプリケーションが、一般的な既知の脆弱性を悪用した悪意のある攻撃の標的になるケースが増えています。 Azure Web アプリケーション ファイアウォール (WAF) には、コード インジェクションやクロスサイトスクリプティングなどの一般的な悪用や脅威から Web アプリケーションを一元的に保護する機能があります。 Azure WAF は、[Azure Content Delivery Network (CDN)](https://docs.microsoft.com/azure/web-application-firewall/cdn/cdn-overview) WAF ポリシーを介して、[Azure Application Gateway](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview) サービスと [Azure Front Door](https://docs.microsoft.com/azure/web-application-firewall/afds/afds-overview) サービスにデプロイできます (後者は現在パブリック プレビュー段階です)。
+Web アプリケーションが、一般的な既知の脆弱性を悪用した悪意のある攻撃の標的になるケースが増えています。 Azure Web アプリケーション ファイアウォール (WAF) には、コード インジェクションやクロスサイトスクリプティングなどの一般的な悪用や脅威から Web アプリケーションを一元的に保護する機能があります。 Azure WAF は、[Azure Content Delivery Network (CDN)](../web-application-firewall/cdn/cdn-overview.md) WAF ポリシーを介して、[Azure Application Gateway](../web-application-firewall/ag/ag-overview.md) サービスと [Azure Front Door](../web-application-firewall/afds/afds-overview.md) サービスにデプロイできます (後者は現在パブリック プレビュー段階です)。
 Azure WAF ログを Azure Sentinel に接続すると、ブック内でログ データを表示し、それを使用してカスタム アラートを作成し、組み込んで、調査を改善することができます。
 
 ## <a name="prerequisites"></a>前提条件

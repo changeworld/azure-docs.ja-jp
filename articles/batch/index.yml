@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: JnHs
   ms.author: jenhayes
-  ms.date: 09/23/2019
-  ms.openlocfilehash: 632f95724c8a7f122153d278521f612208e95766
-  ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+  ms.date: 10/09/2020
+  ms.openlocfilehash: ca8ef13ac3440d2298b817c12d1126e1526a74c1
+  ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/30/2020
-  ms.locfileid: "89146457"
+  ms.lasthandoff: 01/15/2021
+  ms.locfileid: "98234384"
 landingContent:
 - title: Azure Batch について
   linkLists:
@@ -40,8 +40,12 @@ landingContent:
       url: quick-run-python.md
   - linkListType: concept
     links:
-    - text: 開発者向けのワークフローと機能の概要
+    - text: ワークフローと機能の概要
       url: batch-service-workflow-features.md
+    - text: ジョブとタスク
+      url: jobs-and-tasks.md
+    - text: ノードとプール
+      url: nodes-and-pools.md
 - title: ステップバイステップ ガイド
   linkLists:
   - linkListType: tutorial
@@ -50,14 +54,10 @@ landingContent:
       url: tutorial-parallel-dotnet.md
     - text: ファイルの並列処理 - Python
       url: tutorial-parallel-python.md
+    - text: Data Factory を使用した Python スクリプト
+      url: tutorial-run-python-batch-azure-data-factory.md
     - text: Batch と Functions を使用した OCR
       url: tutorial-batch-functions.md
-    - text: Arnold を使用したシーンのレンダリング
-      url: tutorial-rendering-cli.md
-    - text: Batch Explorer を使用したレンダリング
-      url: tutorial-rendering-batchexplorer-blender.md
-    - text: 並列 R シミュレーション
-      url: tutorial-r-doazureparallel.md
 - title: リソースの設定と管理
   linkLists:
   - linkListType: how-to-guide
@@ -65,11 +65,13 @@ landingContent:
     - text: Batch アカウントを作成する
       url: batch-account-create-portal.md
     - text: プールの作成と管理
-      url: batch-custom-images.md
+      url: batch-sig-images.md
     - text: タスクの同時実行
       url: batch-parallel-node-tasks.md
-    - text: アプリケーション パッケージの使用
+    - text: アプリケーション パッケージを使用する
       url: batch-application-packages.md
+    - text: コンテナー アプリケーションを実行する
+      url: batch-docker-container-workloads.md
   - linkListType: concept
     links:
     - text: サポートされる VM のサイズ
@@ -96,3 +98,5 @@ landingContent:
       url: /python/api/overview/azure/batch
     - text: REST
       url: /rest/api/batchservice/
+    - text: Batch API のライフサイクル
+      url: /rest/api/batchservice/batch-api-status

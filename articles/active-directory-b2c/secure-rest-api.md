@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 206768604c6d08a32c0caaf9b53a1417cfa1344b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6907db7f6e53247a8f2fc0042e8c8e6b081dbd3
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385333"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516367"
 ---
 # <a name="secure-your-restful-services"></a>お使いの RESTful サービスを保護する 
 
@@ -111,7 +111,7 @@ HTTP 基本認証を使用して構成された RESTful 技術プロファイル
 
 ### <a name="prepare-a-self-signed-certificate-optional"></a>自己署名証明書を準備する (省略可能)
 
-非運用環境では、証明書をまだ持っていない場合は、自己署名証明書を使用できます。 Windows では、PowerShell の [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) コマンドレットを使用して証明書を生成できます。
+非運用環境では、証明書をまだ持っていない場合は、自己署名証明書を使用できます。 Windows では、PowerShell の [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) コマンドレットを使用して証明書を生成できます。
 
 1. この PowerShell コマンドを実行して、自己署名証明書を生成します。 アプリケーションと Azure AD B2C のテナント名に合わせて `-Subject` 引数を変更します。 また、証明書に別の有効期限を指定するように `-NotAfter` 日付を調整することもできます。
     ```powershell
@@ -230,9 +230,9 @@ Authorization: Bearer <token>
 
 ### <a name="acquiring-an-access-token"></a>アクセス トークンの取得 
 
-アクセス トークンは、[フェデレーション ID プロバイダーから](idp-pass-through-custom.md)取得する方法、アクセス トークンを返す REST API を呼び出す方法、[ROPC フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)を使用する方法、または[クライアント資格情報フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)を使用する方法のいずれかで取得できます。  
+アクセス トークンは、[フェデレーション ID プロバイダーから](idp-pass-through-user-flow.md)取得する方法、アクセス トークンを返す REST API を呼び出す方法、[ROPC フロー](../active-directory/develop/v2-oauth-ropc.md)を使用する方法、または[クライアント資格情報フロー](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)を使用する方法のいずれかで取得できます。  
 
-次の例では、REST API の技術プロファイルを使用し、HTTP 基本認証として渡されたクライアント資格情報を使用して Azure AD トークン エンドポイントに要求を行います。 Azure AD でこれを構成するには、「[Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)」をご覧ください。 お使いの ID プロバイダーとのインターフェイスを提供するようにこれを変更する必要があることがあります。 
+次の例では、REST API の技術プロファイルを使用し、HTTP 基本認証として渡されたクライアント資格情報を使用して Azure AD トークン エンドポイントに要求を行います。 Azure AD でこれを構成するには、「[Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)」をご覧ください。 お使いの ID プロバイダーとのインターフェイスを提供するようにこれを変更する必要があることがあります。 
 
 ServiceUrl で、your-tenant-name を Azure AD テナントの名前に置き換えます。 使用可能なすべてのオプションについては、[RESTful 技術プロファイル](restful-technical-profile.md)のリファレンスを参照してください。
 
@@ -312,15 +312,15 @@ ServiceUrl で、your-tenant-name を Azure AD テナントの名前に置き換
 
 ### <a name="add-the-oauth2-bearer-token-policy-key"></a>OAuth2 ベアラー トークン ポリシー キーを追加する
 
-ベアラー トークン値を格納するポリシー キーを作成します。
+OAuth2 ベアラー トークンを使用して REST API の技術プロファイルを構成するには、REST API 所有者からアクセス トークンを取得します。 次に、ベアラー トークンを格納するための次の暗号化キーを作成します。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C ディレクトリを選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-1. **オプション**については、`Manual`を選択します。
-1. ポリシー キーの**名前**を入力します。 たとえば、「 `RestApiBearerToken` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+1. **オプション** については、`Manual`を選択します。
+1. ポリシー キーの **名前** を入力します。 たとえば、「 `RestApiBearerToken` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
 1. **[シークレット]** に、前に記録したクライアント シークレットを入力します。
 1. **[キー使用法]** として [`Encryption`] を選択します。
 1. **［作成］** を選択します
@@ -365,6 +365,69 @@ ServiceUrl で、your-tenant-name を Azure AD テナントの名前に置き換
 </ClaimsProvider>
 ```
 
+## <a name="api-key-authentication"></a>API キー認証
+
+API キーは、REST API エンドポイントにアクセスするユーザーを認証するために使用される一意の識別子です。 キーはカスタム HTTP ヘッダーで送信されます。 たとえば、[Azure Functions HTTP トリガー](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)は、`x-functions-key` HTTP ヘッダーを使用して要求者を識別します。  
+
+### <a name="add-api-key-policy-keys"></a>API キーのポリシー キーを追加する
+
+API キー認証を使用して REST API の技術プロファイルを構成するには、API キーを格納するために次の暗号化キーを作成します。
+
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C ディレクトリを選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
+1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
+1. **[オプション]** には **[手動]** を選択します。
+1. **[名前]** に「**RestApiKey**」と入力します。
+    プレフィックス *B2C_1A_* が自動的に追加される場合があります。
+1. **[秘密]** ボックスに、REST API キーを入力します。
+1. **[キー使用法]** には **[暗号化]** を選択します。
+1. **［作成］** を選択します
+
+
+### <a name="configure-your-rest-api-technical-profile-to-use-api-key-authentication"></a>API キー認証を使用するように REST API の技術プロファイルを構成する
+
+必要なキーを作成した後、資格情報を参照するように REST API の技術プロファイル メタデータを構成します。
+
+1. 作業ディレクトリで、拡張ポリシー ファイル (TrustFrameworkExtensions.xml) を開きます。
+1. REST API の技術プロファイルを検索します。 例: `REST-ValidateProfile`、または `REST-GetProfile`。
+1. `<Metadata>` 要素を見つけます。
+1. *AuthenticationType* を `ApiKeyHeader` に変更します。
+1. *AllowInsecureAuthInProduction* を `false` に変更します。
+1. `</Metadata>` 要素の終了直後に、次の XML スニペットを追加します。
+    ```xml
+    <CryptographicKeys>
+        <Key Id="x-functions-key" StorageReferenceId="B2C_1A_RestApiKey" />
+    </CryptographicKeys>
+    ```
+
+暗号化キーの **ID** によって、HTTP ヘッダーが定義されます。 この例では、API キーは **x-functions-key** として送信されます。
+
+API キー認証で Azure 関数を呼び出すように構成された RESTful 技術プロファイルの例を次に示します。
+
+```xml
+<ClaimsProvider>
+  <DisplayName>REST APIs</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="REST-GetProfile">
+      <DisplayName>Get user extended profile Azure Function web hook</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
+        <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/GetProfile?code=your-code</Item>
+        <Item Key="SendClaimsIn">Body</Item>
+        <Item Key="AuthenticationType">ApiKeyHeader</Item>
+        <Item Key="AllowInsecureAuthInProduction">false</Item>
+      </Metadata>
+      <CryptographicKeys>
+        <Key Id="x-functions-key" StorageReferenceId="B2C_1A_RestApiKey" />
+      </CryptographicKeys>
+      ...
+    </TechnicalProfile>
+  </TechnicalProfiles>
+</ClaimsProvider>
+```
+
 ## <a name="next-steps"></a>次のステップ
 
-- IEF のリファレンスで [Restful 技術プロファイル](restful-technical-profile.md)要素についてさらに学習します。 
+- IEF のリファレンスで [Restful 技術プロファイル](restful-technical-profile.md)要素についてさらに学習します。

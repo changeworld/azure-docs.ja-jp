@@ -4,20 +4,20 @@ description: Azure Active Directory を使用してエンタープライズ ア�
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 02/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9c42a83b4f7f3c6b5ff501525a04ebd96c2a692a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 02d415bd957b0490857081b996c592f90365f031
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88234841"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555631"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure Portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する
 
@@ -63,7 +63,7 @@ Azure Active Directory ポータルを使用して、ディレクトリでのシ
 
 **[マッピング]** を展開し、ユーザー アカウントをプロビジョニングまたは更新する場合に、Azure AD とターゲット アプリケーションの間でフローするユーザー属性を表示および編集します。
 
-Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オブジェクトの間には、構成済みの一連のマッピングが存在します。 アプリによっては、グループや連絡先といった他のタイプのオブジェクトを管理するものもあります。 テーブルでマッピングを選択すると右側にマッピング エディターが開き、それらを表示してカスタマイズできます。
+Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オブジェクトの間には、構成済みの一連のマッピングが存在します。 一部のアプリではグループ オブジェクトも管理します。 テーブルでマッピングを選択すると右側にマッピング エディターが開き、それらを表示してカスタマイズできます。
 
 ![[属性マッピング] 画面を表示します](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 
@@ -85,4 +85,4 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 **[プロビジョニング状態]** を **[オフ]** に変更すると、プロビジョニング サービスが一時停止します。 この状態では、アプリのユーザーやグループ オブジェクトの作成、更新、削除が行われることはありません。 状態を **[オン]** に戻すと、サービスは中断したところから再開します。
 
-**現在の状態を消去して、同期を再開する**ことで、初期周期がトリガーされます。 このサービスでは、ソース システム内のすべてのユーザーを再度評価し、プロビジョニングの対象になっているかどうかを判断します。 これは、アプリケーションが現在検査中である場合や、属性マッピングを変更する必要がある場合に便利です。 初期サイクルは、評価が必要なオブジェクトの数が多いため、通常の増分サイクルよりも完了までに時間がかかることに注意してください。 初期サイクルと増分サイクルのパフォーマンスの詳細については、[こちら](application-provisioning-when-will-provisioning-finish-specific-user.md)を参照してください。
+**現在の状態を消去して、同期を再開する** ことで、初期周期がトリガーされます。 このサービスでは、ソース システム内のすべてのユーザーを再度評価し、プロビジョニングの対象になっているかどうかを判断します。 これは、アプリケーションが現在検査中である場合や、属性マッピングを変更する必要がある場合に便利です。 初期サイクルは、評価が必要なオブジェクトの数が多いため、通常の増分サイクルよりも完了までに時間がかかることに注意してください。 初期サイクルと増分サイクルのパフォーマンスの詳細については、[こちら](application-provisioning-when-will-provisioning-finish-specific-user.md)を参照してください。

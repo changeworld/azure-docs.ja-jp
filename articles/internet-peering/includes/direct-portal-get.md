@@ -8,22 +8,22 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: e50f53c65c330265d3d9ec1b1804a7910b632b1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3507aacc68de25f7368cbe3cda917077564c56eb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678860"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356246"
 ---
 1. **[リソース グループ]** に移動し、**ピアリング** リソースの作成時に選択したリソース グループを選択します。 リソース グループが多すぎる場合は、**フィルター** ボックスを使用します。
 
     > [!div class="mx-imgBorder"]
     > ![リソース グループ](../media/setup-direct-get-resourcegroup.png)
 
-1. 作成した**ピアリング** リソースを選択します。
+1. 作成した **ピアリング** リソースを選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![ピアリング リソース ビュー](../media/setup-direct-get-open.png)
+    > ![左側のペインで、[概要] ページが選択されています。 PeeringResourceGroup に関する情報が表示されています。 ピアリングの一覧で、AshburnPeering が強調表示されています。](../media/setup-direct-get-open.png)
 
 1. **[概要]** ページには、次に示すように概要情報が表示されます。
 
@@ -41,5 +41,5 @@ ms.locfileid: "81678860"
     > ![ピアリング リソースの [接続]](../media/setup-direct-get-connectionssummary.png)
 
     * **[接続状態]** は、ピアリング接続の設定の状態に対応しています。 このフィールドに表示される状態は、「[Direct ピアリングのチュートリアル](../walkthrough-direct-all.md)」に示されている状態図に従います。
-    * **IPv4 セッション状態**と **IPv6 セッション状態**は、それぞれ IPv4 と IPv6 BGP のセッション状態に対応しています。 
+    * **IPv4 セッション状態** と **IPv6 セッション状態** は、それぞれ IPv4 と IPv6 BGP のセッション状態に対応しています。 
     * 画面上部の行を選択すると、下部の **[接続]** セクションに各接続の詳細が表示されます。 矢印を選択して、 **[構成]** 、 **[IPv4 アドレス]** 、 **[IPv6 アドレス]** を展開します。

@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-python
-ms.openlocfilehash: 68620b644ef85f7b627b7b6380c16959b25299f0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 76df8baaf170b05762b93478a496eb1e9ed802d5
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297333"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916748"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Media Services v3 API に接続する - Python
 
@@ -44,11 +44,13 @@ Python を使用して Azure Media Services を操作するには、以下のモ
 * `azure-mgmt-resource` モジュール。これには、Active Directory 用の Azure モジュールが含まれています。
 * `azure-mgmt-media` モジュール。これには、Media Services エンティティが含まれています。
 
+    [Media Services SDK for Python の最新バージョン](https://pypi.org/project/azure-mgmt-media/)を取得していることを確認してください。
+
 コマンド ライン ツールを開き、以下のコマンドを使用してモジュールをインストールします。
 
 ```
 pip3 install azure-mgmt-resource
-pip3 install azure-mgmt-media==1.1.1
+pip3 install azure-mgmt-media==3.0.0
 ```
 
 ## <a name="connect-to-the-python-client"></a>Python クライアントに接続する
@@ -107,4 +109,4 @@ pip3 install azure-mgmt-media==1.1.1
 ## <a name="next-steps"></a>次のステップ
 
 - [Python SDK](https://aka.ms/ams-v3-python-sdk) を使用します。
-- Media Services の [Python リファレンス](https://aka.ms/ams-v3-python-ref) ドキュメントを確認してください。
+- Media Services の [Python リファレンス](/python/api/overview/azure/mediaservices/management) ドキュメントを確認してください。

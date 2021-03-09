@@ -7,12 +7,12 @@ ms.date: 3/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: da163e902d06bd98ac47a24256cb809cb222173b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12f0af5f051d02945eeb9b1f7d4bfc50ef98f281
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80804624"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014688"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>IoT Edge モジュール上の Azure Blob Storage を自分のデバイスにデプロイする
 
@@ -21,7 +21,10 @@ IoT Edge デバイスにモジュールをデプロイするにはいくつか�
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション内の [IoT ハブ](../iot-hub/iot-hub-create-through-portal.md)。
-- IoT Edge ランタイムがインストールされた [IoT Edge デバイス](how-to-register-device.md)。
+- IoT Edge デバイス。
+
+  IoT Edge デバイスを設定していない場合は、Azure 仮想マシンで作成できます。 クイックスタートの記事のいずれかの手順に従って、[仮想 Linux デバイスを作成](quickstart-linux.md)するか、[仮想 Windows デバイスを作成](quickstart.md)します。
+
 - Visual Studio Code からデプロイする場合は、[Visual Studio Code](https://code.visualstudio.com/) と [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)。
 
 ## <a name="deploy-from-the-azure-portal"></a>Azure portal からデプロイする
@@ -37,7 +40,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
 
 ### <a name="configure-a-deployment-manifest"></a>配置マニフェストを構成する
 
-配置マニフェストは、デプロイするモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 Azure portal には、配置マニフェストを作成する手順を示すウィザードがあります。 タブには次の3つの手順が構成されています:**モジュール**、**ルート**、および **レビューと作成** を行います。
+配置マニフェストは、デプロイするモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 Azure portal には、配置マニフェストを作成する手順を示すウィザードがあります。 タブには次の3つの手順が構成されています:**モジュール**、**ルート**、および **レ表示と作成** を行います。
 
 #### <a name="add-modules"></a>モジュールを追加する
 
@@ -50,7 +53,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
    - **IoT Edge モジュールの名前**: `azureblobstorageoniotedge`
    - **[イメージの URI]** : `mcr.microsoft.com/azure-blob-storage:latest`
 
-   ![モジュール ツインの設定](./media/how-to-deploy-blob/addmodule-tab1.png)
+   ![スクリーンショットには、[I o T Edge モジュールの追加] ページの [モジュールの設定] タブが示されています。](./media/how-to-deploy-blob/addmodule-tab1.png)
 
    この手順の説明に従って、 **[モジュール設定]** タブ、 **[コンテナ作成オプション]** タブ、および **[モジュールツイン設定]** タブで値を指定するまで、 **[追加]** を選択しないでください。
 
@@ -59,7 +62,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
 
 3. **[コンテナーの作成オプション]** タブを開きます。
 
-   ![モジュール ツインの設定](./media/how-to-deploy-blob/addmodule-tab3.png)
+   ![スクリーンショットには、[I o T Edge モジュールの追加] ページの [コンテナーの作成オプション] タブが示されています。](./media/how-to-deploy-blob/addmodule-tab3.png)
 
    次の JSON をコピーしてボックスに貼り付け、ストレージ アカウント情報とデバイス上のストレージのマウントを提供します。
   
@@ -101,7 +104,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
 
 5. **[モジュール ツインの設定]** タブで、以降の JSON をコピーし、ボックスに貼り付けます。
 
-   ![モジュール ツインの設定](./media/how-to-deploy-blob/addmodule-tab4.png)
+   ![スクリーンショットには、[I o T Edge モジュールの追加] ページの [モジュール ツインの設定] タブが示されています。](./media/how-to-deploy-blob/addmodule-tab4.png)
 
    プレースホルダーに示されているように、各プロパティを適切な値で構成します。 IoT Edge シミュレーターを使用している場合は、値を、これらのプロパティの関連する環境変数 ([deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) と [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) の説明セクションに記載) に設定します。
 
@@ -134,7 +137,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
 
 #### <a name="specify-routes"></a>ルートを指定する
 
-既定のルートをそのまま保持して、[**次へ] を選択します:[確認と作成]** で、[レビュー] セクションに進みます。
+既定のルートをそのまま保持して、[**次へ] を選択します:[確認と作成]** で、[レ表示] セクションに進みます。
 
 #### <a name="review-deployment"></a>デプロイを確認する
 
@@ -206,7 +209,7 @@ Azure IoT Edge では、エッジ ソリューションの開発に役立つ、V
      - Windows コンテナーの場合、形式は **\<your storage path or volume>:C:/BlobRoot** です。 次に例を示します。
          - [ボリューム マウント](https://docs.docker.com/storage/volumes/)を使用する: `my-volume:C:/BlobRoot`。
          - [バインド マウント](https://docs.docker.com/storage/bind-mounts/)を使用する: `C:/ContainerData:C:/BlobRoot`。
-         - ローカル ドライブを使用する代わりに、SMB ネットワークの場所をマップすることができます。詳細については、[SMB 共有をローカル ストレージとして使用する](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)方法に関するページを参照してください
+         - ローカル ドライブを使用する代わりに、SMB ネットワークの場所をマップすることができます。 詳細については、「[ローカル ストレージとして SMB 共有を使用する](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)」を参照してください。
 
      > [!IMPORTANT]
      > IoT Edge モジュールの Blob Storage の特定の位置を指す、ストレージ マウント値の後半を変更しないでください。 ストレージ マウントは常に、Linux コンテナーの場合は **:/blobroot** で、Windows コンテナーの場合は **:C:/BlobRoot** 終わる必要があります。
@@ -283,7 +286,7 @@ IoT Edge モジュールで Azure Blob Storage の複数のインスタンスを
 
 1. **[名前]** に `HTTPS_PROXY` を、 **[値]** にプロキシ URL を追加します。
 
-      ![HTTPS_PROXY 環境変数を設定する](./media/how-to-deploy-blob/https-proxy-config.png)
+      ![スクリーンショットには、指定した値を入力できる [I o T Edge モジュールの更新] ウィンドウが示されています。](./media/how-to-deploy-blob/https-proxy-config.png)
 
 1. **[更新]** 、 **[確認および作成]** の順にクリックします。
 
@@ -291,7 +294,7 @@ IoT Edge モジュールで Azure Blob Storage の複数のインスタンスを
 
 1. デバイス詳細ページからモジュールを選択して設定を確認し、 **[IoT Edge Modules Details]/(IoT Edge モジュールの詳細/)** ページの下部にある **[環境変数]** タブを選択します。
 
-      ![HTTPS_PROXY 環境変数を設定する](./media/how-to-deploy-blob/verify-proxy-config.png)
+      ![[環境変数] タブが示されているスクリーンショット。](./media/how-to-deploy-blob/verify-proxy-config.png)
 
 ## <a name="next-steps"></a>次のステップ
 

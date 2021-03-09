@@ -1,19 +1,19 @@
 ---
 title: Azure File Sync ネットワーク エンドポイントの構成 | Microsoft Docs
-description: Azure File Sync のネットワーク オプションの概要。
+description: Azure File Sync ネットワーク エンドポイントを構成する方法について説明します。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7210d414c06f154395b9128be6ed10175ad1e838
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 64d66e1b9eab225b38ee21306fea6f9534a708f3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077060"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673852"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Azure File Sync ネットワーク エンドポイントの構成
 Azure Files および Azure File Sync では、Azure ファイル共有にアクセスするための次の主な 2 種類のエンドポイントが提供されます。 
@@ -33,8 +33,8 @@ Azure Files と Azure File Sync はどちらも、それぞれに Azure 管理�
 - ストレージ同期サービスを既に作成し、それにご使用の Windows ファイル サーバーを登録している。 Azure File Sync をデプロイする方法については、[Azure File Sync のデプロイ](storage-sync-files-deployment-guide.md)に関するページを参照してください。
 
 追加として:
-- Azure PowerShell を使用する場合は、[最新バージョンをインストールしてください](https://docs.microsoft.com/powershell/azure/install-az-ps)。
-- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- Azure PowerShell を使用する場合は、[最新バージョンをインストールしてください](/powershell/azure/install-az-ps)。
+- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
 ## <a name="create-the-private-endpoints"></a>プライベート エンドポイントを作成する
 Azure リソースのプライベート エンドポイントを作成すると、次のリソースがデプロイされます。
@@ -52,13 +52,13 @@ Azure リソースのプライベート エンドポイントを作成すると�
 
 ご使用の仮想ネットワーク内に仮想マシンがある場合、または「[Azure Files の DNS 転送の構成](storage-files-networking-dns.md)」で説明されているような DNS 転送を構成してある場合は、PowerShell、コマンド ライン、またはターミナル (Windows、Linux、または macOS で動作) から次のコマンドを実行して、ご使用のプライベート エンドポイントが正しく設定されていることをテストできます。 `<storage-account-name>` を適切なストレージ アカウント名に置き換える必要があります。
 
-```
+```console
 nslookup <storage-account-name>.file.core.windows.net
 ```
 
 すべてが正常に動作した場合は、次のような出力が表示されます。`192.168.0.5` は、仮想ネットワーク内のプライベート エンドポイントのプライベート IP アドレスです (Windows の場合に表示される出力)。
 
-```Output
+```output
 Server:  UnKnown
 Address:  10.2.4.4
 
@@ -73,7 +73,7 @@ Aliases:  storageaccount.file.core.windows.net
 
 ご使用の仮想ネットワーク内に仮想マシンがある場合、または「[Azure Files の DNS 転送の構成](storage-files-networking-dns.md)」で説明されているような DNS 転送を構成してある場合は、次のコマンドを使用して、ご使用のプライベート エンドポイントが正しく設定されていることをテストできます。
 
-```PowerShell
+```powershell
 $storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.file) | `
     Select-Object -ExpandProperty Host
 
@@ -82,7 +82,7 @@ Resolve-DnsName -Name $storageAccountHostName
 
 すべてが正常に動作した場合は、次のような出力が表示されます。`192.168.0.5` は、仮想ネットワーク内のプライベート エンドポイントのプライベート IP アドレスです。
 
-```Output
+```output
 Name                             Type   TTL   Section    NameHost
 ----                             ----   ---   -------    --------
 storageaccount.file.core.windows CNAME  60    Answer     storageaccount.privatelink.file.core.windows.net
@@ -113,7 +113,7 @@ nslookup $hostName
 
 すべてが正常に動作した場合は、次のような出力が表示されます。`192.168.0.5` は、仮想ネットワーク内のプライベート エンドポイントのプライベート IP アドレスです。
 
-```Output
+```output
 Server:         127.0.0.53
 Address:        127.0.0.53#53
 
@@ -130,7 +130,7 @@ Address: 192.168.0.5
 > ストレージ同期サービス リソースに対してプライベート エンドポイントを使用するには、Azure File Sync エージェント バージョン10.1 以降を使用する必要があります。 10.1 より前のバージョンのエージェントでは、ストレージ同期サービスに対するプライベート エンドポイントはサポートされません。 以前のすべてのエージェント バージョンでは、ストレージ アカウント リソースに対するプライベート エンドポイントがサポートされています。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
-Azure portal の上部にある検索バーに「*プライベート リンク*」と入力して、**プライベート リンク センター**に移動します。 プライベート リンク センターの目次で **[プライベート エンドポイント]** を選択した後、 **[+ 追加]** を選択して、新しいプライベート エンドポイントを作成します。
+Azure portal の上部にある検索バーに「*プライベート リンク*」と入力して、**プライベート リンク センター** に移動します。 プライベート リンク センターの目次で **[プライベート エンドポイント]** を選択した後、 **[+ 追加]** を選択して、新しいプライベート エンドポイントを作成します。
 
 [![プライベート リンク センターのスクリーンショット](media/storage-sync-files-networking-endpoints/create-storage-sync-private-endpoint-0.png)](media/storage-sync-files-networking-endpoints/create-storage-sync-private-endpoint-0.png#lightbox)
 
@@ -168,7 +168,7 @@ Get-AzPrivateEndpoint `
 
 すべてが正常に動作した場合は、次のような出力が表示されます。`192.168.1.4`、`192.168.1.5`、`192.168.1.6`、`192.168.1.7` は、プライベート エンドポイントに割り当てられているプライベート IP アドレスです。
 
-```Output
+```output
 Name     : mysssmanagement.westus2.afs.azure.net
 Type     : CNAME
 TTL      : 60
@@ -244,7 +244,7 @@ if ($null -eq $storageSyncService) {
 
 プライベート エンドポイントを作成するには、ストレージ同期サービスに対するプライベート リンク サービス接続を作成する必要があります。 プライベート リンク接続は、プライベート エンドポイントの作成に対する入力です。
 
-```PowerShell 
+```powershell 
 # Disable private endpoint network policies
 $subnet.PrivateEndpointNetworkPolicies = "Disabled"
 $virtualNetwork = $virtualNetwork | `
@@ -325,7 +325,7 @@ if ($null -eq $dnsZone) {
 ```
 これで、プライベート DNS ゾーンへの参照を用意できたので、ご使用のストレージ同期サービスの A レコードを作成する必要があります。
 
-```PowerShell 
+```powershell 
 $privateEndpointIpFqdnMappings = $privateEndpoint | `
     Select-Object -ExpandProperty NetworkInterfaces | `
     Select-Object -ExpandProperty Id | `
@@ -588,7 +588,7 @@ done
 Azure File Sync を使用すると、プライベート エンドポイントによるアクセスを特定の仮想ネットワークのみに制限できます。Azure File Sync では、サービス エンドポイントによって、パブリック エンドポイントへのアクセスを特定の仮想ネットワークに制限することはサポートされていません。 つまり、ストレージ同期サービスのパブリックエンドポイントには有効と無効の 2 つの状態があるということです。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
-これは、Azure portal では実行できません。 ストレージ同期サービスのパブリック エンドポイントを無効にする方法については、Azure PowerShell または Azure CLI のタブの手順を選択してください。 
+これは、Azure portal では実行できません。 ストレージ同期サービスのパブリック エンドポイントを無効にする方法については、Azure PowerShell タブの手順を選択してください。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ストレージ同期サービスのパブリック エンドポイントへのアクセスを無効にするには、ストレージ同期サービスの `incomingTrafficPolicy` プロパティを `AllowVirtualNetworksOnly` に設定します。 ストレージ同期サービスのパブリック エンドポイントへのアクセスを有効にする場合は、代わりに `incomingTrafficPolicy` を `AllowAllTraffic` に設定します。 `<storage-sync-service-resource-group>` と `<storage-sync-service>` を必ず置き換えてください。
@@ -603,23 +603,12 @@ $storageSyncService = Get-AzResource `
         -ResourceType "Microsoft.StorageSync/storageSyncServices"
 
 $storageSyncService.Properties.incomingTrafficPolicy = "AllowVirtualNetworksOnly"
-$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force
+$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force -UsePatchSemantics
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-ストレージ同期サービスのパブリック エンドポイントへのアクセスを無効にするには、ストレージ同期サービスの `incomingTrafficPolicy` プロパティを `AllowVirtualNetworksOnly` に設定します。 ストレージ同期サービスのパブリック エンドポイントへのアクセスを有効にする場合は、代わりに `incomingTrafficPolicy` を `AllowAllTraffic` に設定します。 `<storage-sync-service-resource-group>` と `<storage-sync-service>` を必ず置き換えてください。
+Azure CLI では、Storage Sync Service に `incomingTrafficPolicy` プロパティを設定できません。 ストレージ同期サービスのパブリック エンドポイントを無効にする方法については、Azure PowerShell タブの手順を選択してください。
 
-```bash
-storageSyncServiceResourceGroupName="<storage-sync-service-resource-group>"
-storageSyncServiceName="<storage-sync-service>"
-
-az resource update \
-        --resource-group $storageSyncServiceResourceGroupName \
-        --name $storageSyncServiceName \
-        --resource-type "Microsoft.StorageSync/storageSyncServices" \
-        --set "properties.incomingTrafficPolicy=AllowVirtualNetworksOnly" \
-        --output none
-```
 ---
 
 ## <a name="see-also"></a>関連項目

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
-ms.openlocfilehash: bd6b4831b29a99ed6694f75e64202f339385b7ea
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191170"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018683"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Azure CDN での課金について
 
@@ -38,7 +38,7 @@ ms.locfileid: "88191170"
 
 - ゾーン 5:インド
 
-ポイント オブ プレゼンス (POP) のリージョンについては、[リージョン別の Azure CDN POP の場所](https://docs.microsoft.com/azure/cdn/cdn-pop-locations)についてのページを参照してください。 たとえば、メキシコに置かれた POP は北米リージョン内にあり、そのためゾーン 1 に含まれます。 
+ポイント オブ プレゼンス (POP) のリージョンについては、[リージョン別の Azure CDN POP の場所](./cdn-pop-locations.md)についてのページを参照してください。 たとえば、メキシコに置かれた POP は北米リージョン内にあり、そのためゾーン 1 に含まれます。 
 
 Azure CDN の価格については、「[Content Delivery Network の価格](https://azure.microsoft.com/pricing/details/cdn/)」をご覧ください。
 
@@ -66,7 +66,7 @@ Azure CDN の使用により、オブジェクトの配信元として使用さ�
 
 Azure Storage の課金の詳細については、「[Azure Storage の課金について - 帯域幅、トランザクション、容量](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)」を参照してください。
 
-*ホステッド サービス配信*を使用している場合は、次のように料金が発生します。
+*ホステッド サービス配信* を使用している場合は、次のように料金が発生します。
 
 - Azure のコンピューティング時間:配信元として動作するコンピューティング インスタンス。
 
@@ -74,7 +74,7 @@ Azure Storage の課金の詳細については、「[Azure Storage の課金に
 
 クライアントが (配信元サービスとは無関係に) バイト範囲要求を使用している場合は、次の考慮事項が適用されます。
 
-- *バイト範囲要求*は、CDN での課金対象トランザクションです。 クライアントがバイト範囲要求を発行する場合、この要求は、オブジェクトのサブセット (範囲) 用です。 CDN は、要求されたコンテンツの一部分のみで応答します。 この部分的応答は課金対象トランザクションで、転送量は範囲応答 (とヘッダー) のサイズに限られています。
+- *バイト範囲要求* は、CDN での課金対象トランザクションです。 クライアントがバイト範囲要求を発行する場合、この要求は、オブジェクトのサブセット (範囲) 用です。 CDN は、要求されたコンテンツの一部分のみで応答します。 この部分的応答は課金対象トランザクションで、転送量は範囲応答 (とヘッダー) のサイズに限られています。
 
 - オブジェクトの一部のみに対する要求が (バイト範囲ヘッダーの指定によって) 到着すると、CDN はオブジェクト全体をキャッシュにフェッチする可能性があります。 結果として、CDN からの課金対象トランザクションが部分的応答に対するものであっても、配信元からの課金対象トランザクションにはフル サイズのオブジェクトが含まれることがあります。
 
@@ -119,4 +119,4 @@ CDN の配信元として次のいずれかの Azure サービスを使用した
 - Azure Cache for Redis
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>最も効果的にコストを管理する方法を教えてください。
-コンテンツにはできるだけ長い TTL を設定します。 
+コンテンツにはできるだけ長い TTL を設定します。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: 5e995d008b441e122f9e93e5f7c29f0bb9bf9c53
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 293a47bc3e8499d7eda4e64bb68bc95eb4c85ab0
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254692"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108400"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Azure Kubernetes Service にデプロイされたマイクロサービスで Azure API Management を使用する
 
@@ -99,7 +99,7 @@ API にアクセスするためのサブスクリプション キーを取得す
 
 [VNet への API Management のデプロイ](./api-management-using-with-vnet.md)には、外部と内部の 2 つのモードがあります。 
 
-API コンシューマーがクラスター VNet に存在しない場合は、外部モード (図 4) を使用する必要があります。 このモードでは、API Management ゲートウェイはクラスター VNet に挿入されますが、外部ロード バランサー経由でパブリック インターネットからアクセスできます。 外部クライアントでマイクロサービスを使用できるようにしながら、クラスターを完全に隠ぺいすることができます。 さらに、ネットワーク セキュリティ グループ (NSG) などの Azure のネットワーク機能を使用して、ネットワーク トラフィックを制限することもできます。
+API コンシューマーがクラスター VNet に存在しない場合は、外部モード (図 4) を使用する必要があります。 このモードでは、API Management ゲートウェイはクラスター VNet に挿入されますが、外部ロード バランサー経由でパブリック インターネットからアクセスできます。 外部クライアントでマイクロサービスを使用できるようにしながら、クラスターを完全に隠すことができます。 さらに、ネットワーク セキュリティ グループ (NSG) などの Azure のネットワーク機能を使用して、ネットワーク トラフィックを制限することもできます。
 
 ![外部 VNet モード](./media/api-management-aks/vnet-external.png)
 

@@ -8,16 +8,16 @@ author: KumudD
 manager: twooley
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 5c175a1575a4efbdc2294412e3743e201d8c4bb1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 86e4bb52f2a97bf36dc4be86289bd513a9f05091
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653306"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538257"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure Virtual Network の IPv6 の概要
 
@@ -61,7 +61,7 @@ Azure VNet の IPv6 には、以下の機能が含まれています。
     - 注:IPv6 は、Azure VM 上のプライマリ ネットワーク インターフェイス (NIC) に対してのみ負荷分散できます。 
 - Azure VNET 内に弾力性のある多層アプリケーションを作成するための、[Standard IPv6 内部 Load Balancer](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) のサポート。   
 - レガシ デプロイとの互換性のための Basic IPv6 パブリック Load Balancer のサポート
-- [予約された IPv6 パブリック IP アドレスおよびアドレス範囲](ipv6-public-ip-address-prefix.md)により、安定した予測可能な IPv6 アドレスが提供されます。これにより、会社や顧客向けに Azure でホストされるアプリケーションを簡単にホワイトリストに登録できます。
+- [予約された IPv6 パブリック IP アドレスおよびアドレス範囲](ipv6-public-ip-address-prefix.md)により、安定した予測可能な IPv6 アドレスが提供されます。これにより、会社や顧客向けに、Azure でホストされているアプリケーションを簡単にフィルター処理することができます。
 - インスタンスレベル パブリック IP アドレスにより、個々の VM に対する IPv6 インターネットの直接接続が提供されます。
 - [既存の IPv4 のみのデプロイに対する IPv6 の追加](ipv6-add-to-existing-vnet-powershell.md) - この機能を使うと、既存の IPv4 のみのデプロイに IPv6 接続を簡単に追加でき、デプロイを作成しなおす必要はありません。  このプロセスの間、IPv4 のネットワーク トラフィックは影響を受けないため、アプリケーションと OS によっては、ライブ サービスに対しても IPv6 を追加できる場合があります。    
 - インターネット クライアントが、最適なプロトコルと、IPv6 (AAAA) レコードに対する Azure DNS サポートを使用して、デュアル スタック アプリケーションにシームレスにアクセスできるようにします。 

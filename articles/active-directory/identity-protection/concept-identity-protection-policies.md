@@ -11,24 +11,24 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7587ed6d414a69cff67aca9446aebf6260c99fcd
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 28a9080ce878e262573adf0b3c79394079c09ca2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736502"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835970"
 ---
 # <a name="identity-protection-policies"></a>Identity Protection ポリシー
 
-Azure Active Directory Identity Protection には、管理者が有効にすることを選択できる 3 つの既定のポリシーが含まれています。 これらのポリシーには限定されたカスタマイズが含まれていますが、ほとんどの組織に適用できます。 すべてのポリシーで、[緊急時の管理者アカウント](../users-groups-roles/directory-emergency-access.md)などのユーザーを除外できます。
+Azure Active Directory Identity Protection には、管理者が有効にすることを選択できる 3 つの既定のポリシーが含まれています。 これらのポリシーには限定されたカスタマイズが含まれていますが、ほとんどの組織に適用できます。 すべてのポリシーで、[緊急時の管理者アカウント](../roles/security-emergency-access.md)などのユーザーを除外できます。
 
 ![Identity Protection ポリシー](./media/concept-identity-protection-policies/identity-protection-policies.png)
 
-## <a name="azure-mfa-registration-policy"></a>Azure MFA 登録ポリシー
+## <a name="azure-ad-mfa-registration-policy"></a>Azure AD MFA 登録ポリシー
 
-Identity Protection を使用すると、組織は、サインイン時に登録を要求する条件付きアクセス ポリシーを使用して Azure Multi-Factor Authentication (MFA) をロールアウトできます。 このポリシーの有効化は、組織内の新しいユーザーに初日に MFA に確実に登録させるための優れた方法です。 多要素認証は、Identity Protection 内のリスク イベントの自己修復方法の 1 つです。 自己修復機能を使用すると、ユーザーは自分でアクションを実行でき、ヘルプデスクへの問い合わせを減らすことができます。
+Identity Protection を使用すると、組織は、サインイン時に登録を要求する条件付きアクセス ポリシーを使用して Azure AD Multi-Factor Authentication (MFA) をロールアウトできます。 このポリシーの有効化は、組織内の新しいユーザーに初日に MFA に確実に登録させるための優れた方法です。 多要素認証は、Identity Protection 内のリスク イベントの自己修復方法の 1 つです。 自己修復機能を使用すると、ユーザーは自分でアクションを実行でき、ヘルプデスクへの問い合わせを減らすことができます。
 
-この記事で説明した Azure Multi-Factor Authentication の詳細については、「[しくみ: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)」を参照してください。
+この記事で説明した Azure AD Multi-Factor Authentication の詳細については、「[しくみ: Azure AD Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)」を参照してください。
 
 ## <a name="sign-in-risk-policy"></a>サインインのリスク ポリシー
 
@@ -37,7 +37,7 @@ Identity Protection では、リアルタイムとオフラインの両方で各
 リスクが検出された場合、ユーザーは、多要素認証を実行して自己修復し、危険なサインイン イベントを閉じて、管理者に対する不要なノイズが発生しないようにすることができます。
 
 > [!NOTE] 
-> サインイン リスク ポリシーをトリガーする前に、ユーザーが Azure Multi-Factor Authentication に登録済みである必要があります。
+> サインイン リスク ポリシーをトリガーする前に、ユーザーが Azure AD Multi-Factor Authentication に登録済みである必要があります。
 
 ### <a name="custom-conditional-access-policy"></a>カスタム条件付きアクセス ポリシー
 
@@ -58,8 +58,8 @@ Identity Protection では、ユーザーの標準的な行動であると確信
 
 - [Azure AD のセルフサービス パスワード リセット を有効にする](../authentication/howto-sspr-deployment.md)
 
-- [Azure Multi-Factor Authentication を有効にする](../authentication/howto-mfa-getstarted.md)
+- [Azure AD の Multi-Factor Authentication を有効にする](../authentication/howto-mfa-getstarted.md)
 
-- [Azure Multi-Factor Authentication 登録ポリシーを有効にする](howto-identity-protection-configure-mfa-policy.md)
+- [Azure AD Multi-Factor Authentication 登録ポリシーを有効にする](howto-identity-protection-configure-mfa-policy.md)
 
 - [サインインとユーザー リスク ポリシーを有効にする](howto-identity-protection-configure-risk-policies.md)

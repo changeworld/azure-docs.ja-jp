@@ -1,24 +1,19 @@
 ---
 title: Azure Data Factory のトラブルシューティング
 description: Azure Data Factory の使用に関する問題のトラブルシューティングを行う方法について説明します。
-services: data-factory
-documentationcenter: ''
-ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: 45aa444393ed81bc320a770203ca114c35e16107
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: ed831e5f07eb29110b858dfb16b73f276926424f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195895"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388245"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory のトラブルシューティング
 > [!NOTE]
@@ -35,14 +30,15 @@ ms.locfileid: "84195895"
 1. Azure PowerShell を起動します。
 2. 次のコマンドを使用して、Azure アカウントにログインします。
 
-    ```powershell
-    Connect-AzAccount
-    ```
+   ```powershell
+   Connect-AzAccount
+   ```
+
 3. 次のコマンドを実行して、Azure Data Factory プロバイダーを登録します。
 
-    ```powershell        
-    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
-    ```
+   ```powershell
+   Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
+   ```
 
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>問題: Data Factory コマンドレットを実行する際の未承認エラー
 Azure PowerShell で使用する Azure アカウントまたはサブスクリプションが正しくない可能性があります。 次のコマンドレットを使用して、Azure PowerShell で使用する適切な Azure アカウントとサブスクリプションを選択してください。
@@ -62,7 +58,7 @@ Data Management Gateway の高速セットアップを起動するには、Inter
 * ポータルの同じブレードに表示される **[手動セットアップ]** リンクを使用します。 この方法を使用して、インストール ファイルをダウンロードし、手動で実行します。 インストールが成功すると、[Data Management Gateway Configuration (Data Management Gateway の構成)] ダイアログ ボックスが表示されます。 ポータル画面の **キー** をコピーし、構成マネージャーでそれを使用して、手動でゲートウェイをサービスに登録します。  
 
 ### <a name="problem-fail-to-connect-to-sql-server"></a>問題: SQL Server に接続できない
-ゲートウェイ コンピューターで **Data Management Gateway 構成マネージャー**を起動し、 **[トラブルシューティング]** タブを使用して、ゲートウェイ コンピューターから SQL Server への接続をテストします。 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。   
+ゲートウェイ コンピューターで **Data Management Gateway 構成マネージャー** を起動し、 **[トラブルシューティング]** タブを使用して、ゲートウェイ コンピューターから SQL Server への接続をテストします。 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。   
 
 ### <a name="problem-input-slices-are-in-waiting-state-forever"></a>問題: 入力スライスの状態が Waiting のままになっている
 このスライスの状態は、さまざまな理由から **Waiting** になっている可能性があります。 一般的な理由の 1 つとして、**external** プロパティが **true** に設定されていないことが挙げられます。 Azure Data Factory の範囲外で生成されるデータセットの場合、 **external** プロパティによるマーキングが必要です。 このプロパティは、データが外部データであり、データ ファクトリ内のパイプラインでサポートされていないことを示します。 それぞれのストアでデータが使用可能になると、データ スライスは **Ready** とマーキングされます。
@@ -130,9 +126,9 @@ Failed to create cluster. Exception: Unable to complete the cluster create opera
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md
-[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[developer-reference]: /previous-versions/azure/dn834987(v=azure.100)
 [cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
-[json-scripting-reference]: https://go.microsoft.com/fwlink/?LinkId=516971
+[json-scripting-reference]: /previous-versions/azure/dn835050(v=azure.100)
 
 [azure-portal]: https://portal.azure.com/
 

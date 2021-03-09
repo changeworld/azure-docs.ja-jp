@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Data Science Virtual Machine にあらかじめインストールされている機械学習ツールとフレームワークについて学習します。
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 15c3f3994b9d519a4144fa2c2e1418e92cdbd6ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ac71d8d7830f1d740d0156886a364b1d53ab247f
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012408"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519560"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 上の機械学習ツールとデータ サイエンス ツール
 Azure Data Science Virtual Machine (DSVM) には、Python、R、Julia などの一般的な言語で使用できる、機械学習のための豊富な一連のツールやライブラリが備わっています。
@@ -24,7 +23,7 @@ Azure Data Science Virtual Machine (DSVM) には、Python、R、Julia などの�
 
 ## <a name="azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK for Python
 
-[Azure Machine Learning SDK for Python の詳細についてはこちら ](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) を参照してください。
+[Azure Machine Learning SDK for Python の詳細についてはこちら ](../overview-what-is-azure-ml.md) を参照してください。
 
 | カテゴリ | 値 |
 | ------------- | ------------- |
@@ -113,5 +112,3 @@ DSVM には、DSVM 用の Anaconda Python ディストリビューションの�
 | 標準的な使用      |  抽出、変換、読み込み (ETL) を必要としない、インプレース データ探索用。 CSV、JSON、リレーショナル テーブル、および Hadoop などのさまざまなデータ ソースとフォーマットのクエリ。     |
 | 使用と実行方法      | デスクトップ ショートカット  <br/> [10 分で Drill を使ってみる](https://drill.apache.org/docs/drill-in-10-minutes/)  |
 | DSVM 上の関連ツール      |   Rattle、Weka、SQL Server Management Studio      |
-
-

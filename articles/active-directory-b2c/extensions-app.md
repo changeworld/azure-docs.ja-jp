@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/06/2017
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: accd32f376c6030900a9f9a3c29547118d0a1a7b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc536fa4292d794e8d89a2564ad10a3c10dd0a3d
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388512"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560856"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: Extensions アプリ
 
@@ -39,7 +39,7 @@ b2c-extensions-app を誤って削除してしまった場合でも、30 日以�
 1. [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/) を参照します。
 1. グローバル管理者としてサイトにログインし、削除したアプリの復元場所にする Azure AD B2C ディレクトリに移動します。 このグローバル管理者は、次のような電子メール アドレスを持つ必要があります: `username@{yourTenant}.onmicrosoft.com`。
 1. `https://graph.windows.net/myorganization/deletedApplications` という URL に対して、api-version=1.6 で HTTP GET を発行します。 この操作を行うと、過去 30 日以内に削除されたすべてのアプリケーションの一覧が表示されます。
-1. 一覧の中から 'b2c-extension-app’ から始まる名前のアプリケーションを探して、その `objectid` プロパティの値をコピーします。
+1. 一覧の中から 'b2c-extensions-app' から始まる名前のアプリケーションを探して、その `objectid` プロパティの値をコピーします。
 1. `https://graph.windows.net/myorganization/deletedApplications/{OBJECTID}/restore` という URL に対して、HTTP POST を発行します。 URL の `{OBJECTID}` という部分を、前の手順で説明した `objectid` に置き換えます。
 
 Azure Portal で[復元されたアプリを確認](#verifying-that-the-extensions-app-is-present)できるようになりました。

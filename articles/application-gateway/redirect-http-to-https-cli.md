@@ -1,38 +1,37 @@
 ---
 title: CLI を使用した HTTP から HTTPS へのリダイレクト
 titleSuffix: Azure Application Gateway
-description: Azure CLI を使用して、アプリケーション ゲートウェイを作成し、TLS 終端の証明書を追加する方法について説明します。
+description: Azure CLI を使用し、HTTP から HTTPS へのリダイレクトを作成し、TLS 終端の証明書を追加する方法について説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/15/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 19bfaf611093f6ca178a627123d4d0f9c8ccf3ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d56a1c46f251307755416ef44991ac6f809f330
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804407"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566743"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Azure CLI を使用して HTTP から HTTPS へのリダイレクトと共にアプリケーション ゲートウェイを作成する
 
-Azure CLI で TLS または SSL 終端の証明書を使用して[アプリケーション ゲートウェイ](overview.md)を作成できます。 アプリケーション ゲートウェイで HTTP トラフィックを HTTPS ポートにリダイレクトするために、ルーティング規則が使用されます。 また、この例では、2 つの仮想マシン インスタンスが含まれるアプリケーション ゲートウェイのバックエンド プールのために[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を作成します。
+Azure CLI で TLS または SSL 終端の証明書を使用して[アプリケーション ゲートウェイ](overview.md)を作成できます。 アプリケーション ゲートウェイで HTTP トラフィックを HTTPS ポートにリダイレクトするために、ルーティング規則が使用されます。 また、この例では、2 つの仮想マシン インスタンスが含まれるアプリケーション ゲートウェイのバックエンド プールのために[仮想マシン スケール セット](../virtual-machine-scale-sets/overview.md)を作成します。
 
 この記事では、次のことについて説明します。
 
-> [!div class="checklist"]
-> * 自己署名証明書の作成
-> * ネットワークの設定
-> * 証明書でのアプリケーション ゲートウェイの作成
-> * リスナーとリダイレクト規則の追加
-> * 既定のバックエンド プールでの仮想マシン スケール セットの作成
+* 自己署名証明書の作成
+* ネットワークの設定
+* 証明書でのアプリケーション ゲートウェイの作成
+* リスナーとリダイレクト規則の追加
+* 既定のバックエンド プールでの仮想マシン スケール セットの作成
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+ - このチュートリアルには、Azure CLI のバージョン 2.0.4 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 
@@ -224,13 +223,4 @@ az network public-ip show \
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、以下の内容を学習しました。
-
-> [!div class="checklist"]
-> * 自己署名証明書の作成
-> * ネットワークの設定
-> * 証明書でのアプリケーション ゲートウェイの作成
-> * リスナーとリダイレクト規則の追加
-> * 既定のバックエンド プールでの仮想マシン スケール セットの作成
-
-
+- [Azure CLI を使用して内部リダイレクトと共にアプリケーション ゲートウェイを作成する](redirect-internal-site-cli.md)

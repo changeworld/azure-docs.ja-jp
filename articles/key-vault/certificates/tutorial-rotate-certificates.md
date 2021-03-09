@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: eeceb1279579055bfff33f0a4413f0798418faed
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 78cdc0b59fd178049e755cca5e1e909ac24483f2
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201507"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204050"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>チュートリアル:Key Vault における証明書の自動ローテーションを構成する
 
@@ -41,13 +41,13 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-vault"></a>コンテナーの作成
 
-操作を実行するためのキー コンテナーを作成するか、既存のコンテナーを選択します ([キー コンテナーを作成する手順](../quick-create-portal.md)に関するページを参照してください)。 この例では、**Example-Vault** というキー コンテナー名を使用します。
+[Azure portal](../general/quick-create-portal.md)、[Azure CLI](../general/quick-create-cli.md)、または [Azure PowerShell](../general/quick-create-powershell.md) を使用して、Azure Key Vault を作成します。 この例では、**Example-Vault** というキー コンテナー名を使用します。
 
 ![キー コンテナーの作成が完了した後の出力](../media/certificates/tutorial-import-cert/vault-properties.png)
 
 ## <a name="create-a-certificate-in-key-vault"></a>Key Vault に証明書を作成する
 
-証明書を作成するか、証明書をキー コンテナーにインポートします ([Key Vault で証明書を作成する手順](../quick-create-portal.md)に関するページを参照してください)。 この例では、**ExampleCertificate** という証明書を操作します。
+証明書を作成するか、証明書をキー コンテナーにインポートします ([Key Vault で証明書を作成する手順](../secrets/quick-create-portal.md)に関するページを参照してください)。 この例では、**ExampleCertificate** という証明書を操作します。
 
 ## <a name="update-certificate-lifecycle-attributes"></a>証明書のライフサイクル属性を更新する
 
@@ -95,7 +95,7 @@ Key Vault では、CA との確立されたパートナーシップを通じて�
 1. 更新する証明書を選択します。 この例では、**ExampleCertificate** という証明書を操作します。
 1. 上部のメニュー バーから **[発行ポリシー]** を選択します。
 
-   ![証明書のプロパティ](../media/certificates/tutorial-rotate-cert/cert-issuance-policy.png)
+   ![[発行ポリシー] ボタンが強調表示されているスクリーンショット。](../media/certificates/tutorial-rotate-cert/cert-issuance-policy.png)
 
 1. **[発行ポリシー]** 画面で、次の値を更新します。
 
@@ -134,7 +134,7 @@ Set-AzureKeyVaultCertificatePolicy -VaultName $vaultName
 > }
 >  ```
 > 
-パラメーターの詳細については、[az keyvault certificate](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-set-attributes) に関するページを参照してください。
+パラメーターの詳細については、[az keyvault certificate](/cli/azure/keyvault/certificate#az-keyvault-certificate-set-attributes) に関するページを参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -143,7 +143,7 @@ Key Vault に関する他のチュートリアルは、このチュートリア�
 
 ポータルを使用してリソース グループを削除するには:
 
-1. ポータルの上部にある**検索**ボックスにリソース グループの名前を入力します。 このクイックスタートで使用されているリソース グループが検索結果に表示されたら、それを選択します。
+1. ポータルの上部にある **検索** ボックスにリソース グループの名前を入力します。 このクイックスタートで使用されているリソース グループが検索結果に表示されたら、それを選択します。
 1. **[リソース グループの削除]** を選択します。
 1. **[リソース グループ名を入力してください:]** ボックスにリソース グループの名前を入力し、 **[削除]** を選択します。
 
@@ -152,5 +152,5 @@ Key Vault に関する他のチュートリアルは、このチュートリア�
 
 このチュートリアルでは、証明書のライフサイクル属性を更新しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
-- [Azure Key Vault での証明書作成の管理](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios)の詳細をご覧ください。
+- [Azure Key Vault での証明書作成の管理](./create-certificate-scenarios.md)の詳細をご覧ください。
 - [Key Vault の概要](../general/overview.md)を確認してください。

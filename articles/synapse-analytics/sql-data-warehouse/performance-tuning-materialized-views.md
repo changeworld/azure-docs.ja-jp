@@ -1,6 +1,6 @@
 ---
 title: マテリアライズドビューを使用したパフォーマンスのチューニング
-description: マテリアライズドビューを使用したクエリ パフォーマンスの向上に関して知っておくべき推奨事項と考慮事項
+description: マテリアライズドビューを使用したクエリ パフォーマンスの向上に関して知っておくべき推奨事項と考慮事項について説明します。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -9,31 +9,31 @@ ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
-ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: e624cf343209af722bfd007bd66a5e48b56eaff2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.reviewer: nibruno; jrasnick; azure-synapse
+ms.openlocfilehash: e137611809e2d2beefecfeaea11b4295bf6ba141
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956391"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678493"
 ---
 # <a name="performance-tune-with-materialized-views"></a>マテリアライズドビューを使用したパフォーマンスのチューニング
 
-Synapse SQL プールのマテリアライズドビューは、複雑な分析クエリを少ないメンテナンスで維持し、クエリには一切変更を加えることなく高速なパフォーマンスが得られる手法です。 この記事では、マテリアライズドビューを使用するうえでの一般的なガイダンスを説明します。
+Azure Synapse SQL プールのマテリアライズドビューは、複雑な分析クエリを少ないメンテナンスで維持し、クエリには一切変更を加えることなく高速なパフォーマンスが得られる手法です。 この記事では、マテリアライズドビューを使用するうえでの一般的なガイダンスを説明します。
 
 ## <a name="materialized-views-vs-standard-views"></a>マテリアライズドビューと標準ビュー
 
-SQL プールでは、標準ビューとマテリアライズドビューがサポートされます。  どちらも SELECT 式を使って作成され、クエリからは論理テーブルとして認識される仮想テーブルです。  ビューでは一般的なデータ計算に伴う複雑さがカプセル化され、計算の変更に抽象化レイヤーが追加されます。これにより、クエリの書き換えが不要になります。  
+Azure Synapse の SQL プールでは、標準ビューとマテリアライズドビューがサポートされます。  どちらも SELECT 式を使って作成され、クエリからは論理テーブルとして認識される仮想テーブルです。  ビューでは一般的なデータ計算に伴う複雑さがカプセル化され、計算の変更に抽象化レイヤーが追加されます。これにより、クエリの書き換えが不要になります。  
 
-標準ビューでは、ビューを使用するたびにそのデータが計算されます。  ディスクには一切データは格納されません。 通常、標準ビューは、データベース内の論理オブジェクトとクエリを体系化しやすくするツールとして使用されます。  標準ビューを使用するには、クエリでそれを直接参照する必要があります。
+標準ビューでは、ビューを使用するたびにそのデータが計算されます。  ディスクには一切データは格納されません。 通常、標準ビューは、SQL プール内の論理オブジェクトとクエリを体系化しやすくするツールとして使用されます。  標準ビューを使用するには、クエリでそれを直接参照する必要があります。
 
 マテリアライズドビューでは、そのデータが事前に計算され、テーブルと同じように SQL プールに格納して管理されます。  マテリアライズドビューは、使用のたびに再計算を実行する必要がありません。  そのため、マテリアライズドビューに存在するデータの一部または全部を使用するクエリでは、パフォーマンスを向上させることができます。  さらに、マテリアライズドビューは、クエリで直接参照することなく使用できるので、アプリケーション コードに変更を加える必要がありません。  
 
-標準ビューの要件のほとんどは、マテリアライズドビューにも当てはまります。 マテリアライズドビューの構文とその他の要件の詳細については、[CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) に関するページを参照してください
+標準ビューの要件のほとんどは、マテリアライズドビューにも当てはまります。 マテリアライズドビューの構文とその他の要件の詳細については、[CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関するページを参照してください
 
-| 比較                     | ビュー　                                         | マテリアライズドビュー
+| 比較                     | ビュー                                         | マテリアライズドビュー
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
-|ビュー定義                 | SQL プールに格納されます。              | SQL プールに格納されます。
+|ビューの表示                 | SQL プールに格納されます。              | SQL プールに格納されます。
 |ビューの内容                    | ビューが使用されるたびに生成されます。   | ビューの作成中に前処理されて SQL プールに格納されます。 基になるテーブルにデータが追加されると更新されます。
 |データ更新                    | 常時更新                               | 常時更新
 |複雑なクエリからビューのデータを取得する速度     | 遅い                                         | 速い  
@@ -52,11 +52,11 @@ SQL プールでは、標準ビューとマテリアライズドビューがサ�
 
 SQL プールに実装されているマテリアライズドビューには、さらに次の追加の利点があります。
 
-他のデータ ウェアハウス プロバイダーと比較して、Azure SQL Data Warehouse に実装されているマテリアライズドビューには、さらに次の追加の利点があります。
+他のデータ ウェアハウス プロバイダーと比較して、Azure Synapse Analytics に実装されているマテリアライズドビューには、さらに次の追加の利点があります。
 
 - ベース テーブル内のデータ変更で自動的かつ同期的にデータが更新されます。 ユーザーによる操作は不要です。
-- 幅広い集計関数がサポートされます。 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) に関するページを参照してください。
-- クエリに固有のマテリアライズドビューに関する推奨情報が得られます。  「[EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
+- 幅広い集計関数がサポートされます。 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関するページを参照してください。
+- クエリに固有のマテリアライズドビューに関する推奨情報が得られます。  「[EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
 
 ## <a name="common-scenarios"></a>一般的なシナリオ  
 
@@ -79,7 +79,7 @@ SQL プールに実装されているマテリアライズドビューには、�
 
 **クエリ パフォーマンスを向上させるために別のデータ分散方法が必要である**
 
-SQL プールは、分散型の超並列処理 (MPP) システムです。   SQL プール テーブル内のデータは、3 つの[分散方式](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (ハッシュ、ラウンド ロビン、レプリケート) のいずれかを使用して 60 のノードに分散されます。  
+Azure Synapse Analytics は分散クエリ処理システムです。  SQL テーブル内のデータは、3 つの[分散方式](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (ハッシュ、ラウンド ロビン、レプリケート) のいずれかを使用して 60 のノードに分散されます。   
 
 データ分散はテーブルの作成時に指定され、テーブルが削除されるまで変更されることなく維持されます。 マテリアライズドビューはディスク上の仮想テーブルであるため、ハッシュとラウンド ロビンによるデータ分散がサポートされます。  ユーザーは、ベース テーブルとは異なっているものの、ビューの使用頻度がきわめて高いクエリのパフォーマンスに最適なデータ分散を選択できます。  
 
@@ -97,11 +97,11 @@ SQL プールは、分散型の超並列処理 (MPP) システムです。   SQL
 
 **クエリの高速化とそのコストのトレードオフに注意する**
 
-マテリアライズドビューにはそれぞれ、データ ストレージにかかるコストとビューのメンテナンス コストとがかかります。  ベース テーブルのデータが変更されると、マテリアライズドビューのサイズが増え、物理構造体も変化します。  クエリ パフォーマンスの低下を回避するため、具体化された各ビューは、SQL プール エンジンによって個別に保持されます。  
+マテリアライズドビューにはそれぞれ、データ ストレージにかかるコストとビューのメンテナンス コストとがかかります。  ベース テーブルのデータが変更されると、マテリアライズドビューのサイズが増え、物理構造体も変化します。  クエリ パフォーマンスの低下を回避するため、具体化された各ビューは、SQL Analytics エンジンによって個別に保持されます。  
 
 マテリアライズドビューとベース テーブルへの変更数が増えると、メンテナンス ワークロードが増えます。   すべてのマテリアライズドビューから発生するコストをクエリのパフォーマンス向上で相殺できるかどうかをユーザーがチェックする必要があります。  
 
-データベース内のマテリアライズドビューのリストを得るには、このクエリを実行します。
+SQL プール内のマテリアライズドビューのリストを得るには、このクエリを実行します。
 
 ```sql
 SELECT V.name as materialized_view, V.object_id
@@ -141,7 +141,7 @@ GROUP BY A, C
 
 **クエリの変更を必要としないパフォーマンス チューニングもある**
 
-SQL プール オプティマイザーでは、クエリ パフォーマンスを向上させるために、デプロイされているマテリアライズドビューを自動的に使用します。  この機能は、ビューを参照しないクエリや、マテリアライズドビューの作成ではサポートされない集計を使用したクエリに対して透過的に適用されます。  クエリの変更は必要ありません。 マテリアライズドビューが使用されているかどうかは、推定されるクエリの実行プランをチェックすることで確認できます。  
+SQL Analytics オプティマイザーでは、クエリ パフォーマンスを向上させるために、デプロイされているマテリアライズドビューを自動的に使用します。  この機能は、ビューを参照しないクエリや、マテリアライズドビューの作成ではサポートされない集計を使用したクエリに対して透過的に適用されます。  クエリの変更は必要ありません。 マテリアライズドビューが使用されているかどうかは、推定されるクエリの実行プランをチェックすることで確認できます。  
 
 **マテリアライズドビューを監視する**
 
@@ -151,7 +151,7 @@ SQL プール オプティマイザーでは、クエリ パフォーマンス�
 
 **マテリアライズドビューと結果セットのキャッシュ**
 
-これらの 2 つの機能は、クエリ パフォーマンスのチューニングと同時期に SQL プールに導入されました。  結果セットのキャッシュは、静的データに対する反復的なクエリからの高速な応答と高いコンカレンシーを得る目的で使用されます。  
+これらの 2 つの機能は、クエリ パフォーマンスのチューニングと同時期に SQL Analytics に導入されました。  結果セットのキャッシュは、静的データに対する反復的なクエリからの高速な応答と高いコンカレンシーを得る目的で使用されます。  
 
 キャッシュされた結果を使用するには、キャッシュを要求するクエリの形式が、そのキャッシュを生成したクエリと一致している必要があります。  加えて、キャッシュされた結果は、クエリ全体に当てはまるものでなければなりません。  
 

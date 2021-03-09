@@ -3,16 +3,13 @@ title: Azure HDInsight のリージョン サーバーに関する問題
 description: Azure HDInsight のリージョン サーバーに関する問題
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/16/2019
-ms.openlocfilehash: 85aeafb2c4461b50d399e40d9abff2ac04b677c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 968a0c6e1717245171bf84821a58cad4e440046e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707652"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936614"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Azure HDInsight のリージョン サーバーに関する問題
 
@@ -34,7 +31,7 @@ Apache HBase Master UI から、すべてのリージョン サーバーのバ�
 
 この穴は、オフライン リージョンによって生じた可能性があります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 割り当てを修正します。 以下の手順に従って、未割り当てのリージョンを通常の状態に戻してください。
 
@@ -66,7 +63,7 @@ WAL ディレクトリが複数に分割されています。
 
 1. `wals.out` ファイルを確認します。 (*-splitting で始まる) 分割ディレクトリの数が多すぎる場合、これらのディレクトリのためにリージョン サーバーが失敗している可能性があります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 1. Ambari ポータルから HBase を停止します。
 
@@ -88,4 +85,4 @@ WAL ディレクトリが複数に分割されています。
 
 * [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
 
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。

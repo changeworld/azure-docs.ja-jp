@@ -1,18 +1,18 @@
 ---
 title: CLI を使用して Internet Analyzer テストを作成する | Microsoft Docs
-description: この記事では、最初の Internet Analyzer テストを作成する方法について説明します。
+description: この記事では、Azure CLI を使用して最初の Internet Analyzer テストを作成する方法について説明します。
 services: internet-analyzer
 author: diego-perez-botero
 ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: d474442086e2a114f26df279ab2682cd7628a5f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a9a9fe93ebe302a76d69249dc56933e1bcc924d1
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74184279"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200089"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>CLI を使用した Internet Analyzer テストの作成 (プレビュー)
 
@@ -25,7 +25,7 @@ Internet Analyzer リソースを作成する方法は 2 つあります。Azure
 
 ## <a name="before-you-begin"></a>開始する前に
 
-パブリック プレビューは世界中で使用できます。ただしデータ ストレージは、プレビュー期間中は*米国西部 2* に限定されます。
+パブリック プレビューは世界中で使用できます。ただしデータ ストレージは、プレビュー期間中は *米国西部 2* に限定されます。
 
 ## <a name="object-model"></a>オブジェクト モデル
 Internet Analyzer CLI では、次の種類のリソースが公開されます。
@@ -37,7 +37,7 @@ Internet Analyzer CLI では、次の種類のリソースが公開されます�
 
 ## <a name="profile-and-test-creation"></a>プロファイルとテストの作成
 1. [Azure Internet Analyzer の FAQ](internet-analyzer-faq.md) に記載されている「**プレビューに参加するにはどうすればよいですか?** 」の指示に従って、Internet Analyzer プレビュー版へのアクセスを取得します。
-2. [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)を実行します。
+2. [Azure CLI のインストール](/cli/azure/install-azure-cli)を実行します。
 3. `login` コマンドを実行して CLI セッションを開始します。
     ```azurecli-interactive
     az login
@@ -50,9 +50,9 @@ Internet Analyzer CLI では、次の種類のリソースが公開されます�
 
 5. Internet Analyzer パブリック プレビューへのアクセスが与えられているサブスクリプション ID を選択します。
 
-    ログインすると、ご使用のアカウントに関連付けられているサブスクリプションの一覧が表示されます。 `isDefault: true` が示されているサブスクリプション情報が、ログイン後に、現在アクティブになっているサブスクリプションです。 別のサブスクリプションを選択するには、切り替え先のサブスクリプション ID を指定して [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) コマンドを実行します。 サブスクリプションの選択の詳細については、「[複数の Azure サブスクリプションの使用](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)」を参照してください。
+    ログインすると、ご使用のアカウントに関連付けられているサブスクリプションの一覧が表示されます。 `isDefault: true` が示されているサブスクリプション情報が、ログイン後に、現在アクティブになっているサブスクリプションです。 別のサブスクリプションを選択するには、切り替え先のサブスクリプション ID を指定して [az account set](/cli/azure/account#az-account-set) コマンドを実行します。 サブスクリプションの選択の詳細については、「[複数の Azure サブスクリプションの使用](/cli/azure/manage-azure-subscriptions-azure-cli)」を参照してください。
 
-    対話型以外のサインイン方法も用意されています。詳細については、「[Azure CLI を使用してサインインする](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)」を参照してください。
+    対話型以外のサインイン方法も用意されています。詳細については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli)」を参照してください。
 
 6. **[任意]** 新しい Azure リソース グループを作成します。
     ```azurecli-interactive
@@ -132,6 +132,6 @@ Internet Analyzer CLI では、次の種類のリソースが公開されます�
 
 ## <a name="next-steps"></a>次のステップ
 
-* サポートされているコマンドと使用例の完全な一覧については、[Internet Analyzer の CLI リファレンス](https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest)を参照してください。
+* サポートされているコマンドと使用例の完全な一覧については、[Internet Analyzer の CLI リファレンス](/cli/azure/ext/internet-analyzer/internet-analyzer)を参照してください。
 * [Internet Analyzer の FAQ](internet-analyzer-faq.md) を読む。
-* [Internet Analyzer クライアント](internet-analyzer-embed-client.md)の埋め込みと[カスタム エンドポイント](internet-analyzer-custom-endpoint.md)の作成の詳細を確認する。 
+* [Internet Analyzer クライアント](internet-analyzer-embed-client.md)の埋め込みと[カスタム エンドポイント](internet-analyzer-custom-endpoint.md)の作成の詳細を確認する。

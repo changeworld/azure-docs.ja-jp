@@ -2,13 +2,13 @@
 title: Azure Batch プール作成イベント
 description: プールが作成されると生成される Batch プール作成イベントのリファレンスです。 ログの内容はプールに関する一般的な情報です。
 ms.topic: reference
-ms.date: 04/20/2017
-ms.openlocfilehash: eee512bbeed223269c43bde77435fbff2b67b533
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 10/08/2020
+ms.openlocfilehash: f8b020401443b2a9e80837599d6fd4b2a3001d27
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147315"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609005"
 ---
 # <a name="pool-create-event"></a>プール作成イベント
 
@@ -41,7 +41,7 @@ ms.locfileid: "86147315"
     "resizeTimeout": "300000",
     "targetDedicatedNodes": 2,
     "targetLowPriorityNodes": 2,
-    "maxTasksPerNode": 1,
+    "taskSlotsPerNode": 1,
     "vmFillType": "Spread",
     "enableAutoScale": false,
     "enableInterNodeCommunication": false,
@@ -53,7 +53,7 @@ ms.locfileid: "86147315"
 |-------------|----------|-----------|
 |`id`|String|プールの ID。|
 |`displayName`|String|プールの表示名。|
-|`vmSize`|String|プール内の仮想マシンのサイズ。 プール内の仮想マシンのサイズはすべて同じです。 <br/><br/> クラウド サービスのプール (cloudServiceConfiguration で作成されたプール) で利用可能な仮想マシンのサイズについては、[クラウド サービスのサイズ](../cloud-services/cloud-services-sizes-specs.md)を参照してください。 Batch は、`ExtraSmall` を除くすべての Cloud Services VM サイズに対応しています。<br/><br/> Virtual Machines Marketplace から、イメージを使用して利用可能なプール (virtualMachineConfiguration で作成されたプール) の VM サイズについては、[仮想マシンのサイズ](../virtual-machines/linux/sizes.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json) (Linux) または[仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) (Windows) を参照してください。 Batch は、Premium Storage を使用する VM (`STANDARD_GS`、`STANDARD_DS`、`STANDARD_DSV2` シリーズ) と `STANDARD_A0` を除くすべての Azure VM サイズに対応しています。|
+|`vmSize`|String|プール内の仮想マシンのサイズ。 プール内の仮想マシンのサイズはすべて同じです。 <br/><br/> クラウド サービスのプール (cloudServiceConfiguration で作成されたプール) で利用可能な仮想マシンのサイズについては、[クラウド サービスのサイズ](../cloud-services/cloud-services-sizes-specs.md)を参照してください。 Batch は、`ExtraSmall` を除くすべての Cloud Services VM サイズに対応しています。<br/><br/> Virtual Machines Marketplace から、イメージを使用して利用可能なプール (virtualMachineConfiguration で作成されたプール) の VM サイズについては、[仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) または[仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows) を参照してください。 Batch は、Premium Storage を使用する VM (`STANDARD_GS`、`STANDARD_DS`、`STANDARD_DSV2` シリーズ) と `STANDARD_A0` を除くすべての Azure VM サイズに対応しています。|
 |`imageType`|String|イメージの配置方法。 サポートされる値は `virtualMachineConfiguration` または `cloudServiceConfiguration` です。|
 |[`cloudServiceConfiguration`](#bk_csconf)|複合型|プールのクラウドサービス構成。|
 |[`virtualMachineConfiguration`](#bk_vmconf)|複合型|プールの仮想マシン構成。|
@@ -64,7 +64,7 @@ ms.locfileid: "86147315"
 |`enableAutoScale`|Bool|プールのサイズを自動的に調整し続けるかどうかを指定します。|
 |`enableInterNodeCommunication`|Bool|ノード間の直接的な通信に対し、プールが設定されるかどうかを指定します。|
 |`isAutoPool`|Bool|プールがジョブの AutoPool メカニズムを介して作成されたかどうかを指定します。|
-|`maxTasksPerNode`|Int32|プール内の単一コンピューティング ノードで同時に実行できるタスクの最大数。|
+|`taskSlotsPerNode`|Int32|プール内の単一コンピューティング ノードで同時に実行できるタスクの最大数。|
 |`vmFillType`|String|プール内のコンピューティング ノード間で Batch サービスがタスクを分散する方法を定義します。 有効な値は、分散またはパックです。|
 
 ###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a> cloudServiceConfiguration

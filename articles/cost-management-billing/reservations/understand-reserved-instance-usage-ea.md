@@ -1,24 +1,24 @@
 ---
-title: Enterprise Agreement に適用される Azure の予約の使用状況について
-description: 使用状況を読み、エンタープライズ加入契約に Azure の予約がどのように適用されているかを把握する方法について説明します。
+title: マイクロソフト エンタープライズ契約と Microsoft 顧客契約に適用される Azure の予約の使用状況について
+description: マイクロソフト エンタープライズ契約と Microsoft 顧客契約の利用に対して Azure の予約がどのように適用されているかを、使用状況情報を読んで把握する方法について説明します。
 author: bandersmsft
 ms.reviewer: yashar
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 01/19/2020
 ms.author: banders
-ms.openlocfilehash: 20a9fb6a158134ffc18dc5bbb7eddd34d2b79562
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0c69e9533130d6ca70c57422c7cdd5fc75adff72
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682010"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683719"
 ---
-# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Enterprise Agreement の予約のコストと使用状況を取得する
+# <a name="get-enterprise-agreement-and-microsoft-customer-agreement-reservation-costs-and-usage"></a>マイクロソフト エンタープライズ契約と Microsoft 顧客契約の予約コストと使用状況を把握する
 
-Enterprise Agreement のお客様は、Azure portal と REST API で予約のコストと使用状況データを使用できます。 この記事は次のことに役立ちます。
+マイクロソフト エンタープライズ契約 (EA) と Microsoft 顧客契約 (MCA) の利用について、予約のコストと使用状況に関する増強されたデータを Cost management で入手できます。 この記事は次のことに役立ちます。
 
 - 予約購入データの取得
 - どのサブスクリプション、リソース グループ、またはリソースによって予約が使用されたかを把握する
@@ -55,15 +55,13 @@ Azure の使用状況データで使用できるその他の情報が変更さ�
 - Term: 12 か月間または 36 か月間。
 - RINormalizationRatio: AdditionalInfo で使用できます。 これは、予約が使用状況レコードに適用される比率です。 予約でインスタンス サイズの柔軟性が有効になっている場合は、他のサイズに適用できます。 この値は、予約が使用状況レコードに適用された比率を示します。
 
-[フィールド定義を参照してください](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#definitions)
+[フィールド定義を参照してください](/rest/api/consumption/usagedetails/list#definitions)
 
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>API を使用して Azure の従量課金と予約の使用状況データを取得する
 
 データは API を使用して取得することも、Azure portal からダウンロードすることもできます。
 
-新しいデータを取得するには、[使用状況の詳細 API](/rest/api/consumption/usagedetails/list) を呼び出します。 用語に関する詳細については、[利用料金の用語](../understand/understand-usage.md)のページを参照してください。 呼び出し元は、[EA ポータル](https://ea.azure.com)を使用するエンタープライズ契約のエンタープライズ管理者である必要があります。 読み取り専用のエンタープライズ管理者は、データを取得もできます。
-
-このデータは[企業ユーザー向けの Reporting API シリーズの Usage Details API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) では利用できないことにご注意ください。
+新しいデータを取得するには、[使用状況の詳細 API](/rest/api/consumption/usagedetails/list) を呼び出します。 用語に関する詳細については、[利用料金の用語](../understand/understand-usage.md)のページを参照してください。
 
 Usage Details API への呼び出しの例を次に示します。
 
@@ -71,7 +69,7 @@ Usage Details API への呼び出しの例を次に示します。
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
 ```
 
-{billingPeriodId} と {enrollmentId} の詳細については、「[Usage Details – List](https://docs.microsoft.com/rest/api/consumption/usagedetails/list)」 (使用方法の詳細 – 一覧) の API 記事を参照してください。
+{billingPeriodId} と {enrollmentId} の詳細については、「[Usage Details – List](/rest/api/consumption/usagedetails/list)」 (使用方法の詳細 – 一覧) の API 記事を参照してください。
 
 メトリックとフィルターに関する次の表の情報は、予約の一般的な問題の解決に役立ちます。
 
@@ -140,15 +138,17 @@ Azure portal で [[コストの管理と請求]](https://portal.azure.com/#blade
 2. 予約コストを取得します。 _Cost_ の値を合計して、予約インスタンスに支払った金額を取得します。 これには、予約の使用済みコストと未使用コストが含まれます。
 3. 従量課金制の概算コストから予約コストを減算して、削減されるコストの推定額を取得します。
 
+予約の使用率が低い場合は、_ChargeType_ の _UnusedReservation_ エントリが考慮すべき要素になることに注意してください。 予約が十分に活用されていると、最大限の節約が可能になります。 _UnusedReservation_ の数量があると、削減額が減少します。
+
 ## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>予約購入と償却コストの分析
 
-予約コストは、[コスト分析](https://aka.ms/costanalysis)で確認できます。 既定では、コスト分析には請求書に記載されるコストである **[実際のコスト]** が表示されます。 予約購入の内訳や特典を使用したリソースとの関連を確認するには、 **[分散コスト]** に切り替えます。
+予約コストは、[コスト分析](https://aka.ms/costanalysis)で確認できます。 既定では、コスト分析には請求書に記載されるコストである **[実際のコスト]** が表示されます。 予約購入の内訳や特典を使用したリソースとの関連を確認するには、**[分散コスト]** に切り替えます。
 
 ![コスト分析で分散コストを選択する場所を示す例](./media/understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
 料金タイプ別にグループ化して、利用状況、購入、および返金の内訳を確認します。または、予約別にグループ化して、予約およびオンデマンド コストの内訳を確認します。 実際のコストを表示したときに確認できる予約コストは購入のみですが、分散コストを表示したときに確認できるコストは、特典を使用した個々のリソースに割り当てられた状態となります。 また、分散コストを表示したときは、新しい **UnusedReservation** 料金タイプも確認できます。
 
-## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
@@ -157,7 +157,7 @@ Azure portal で [[コストの管理と請求]](https://portal.azure.com/#blade
 Azure の予約の詳細については、次の記事を参照してください。
 
 - [Azure の予約とは](save-compute-costs-reservations.md)
-- [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../../azure-sql/database/reserved-capacity-overview.md)
 - [Azure の予約の管理](manage-reserved-vm-instance.md)
 - [予約割引の適用方法について](../manage/understand-vm-reservation-charges.md)

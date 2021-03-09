@@ -1,16 +1,16 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 520cbeab2e6edc707299119ca4073668245a57c0
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: bbd7091eb2139801956d77ec8b3ca821c935ac64
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406208"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109504"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>定型コードを使用して開始する
 
@@ -187,6 +187,14 @@ ms.locfileid: "87406208"
           recognizer.addAllIntents(lm);
         }
 ```
+
+> [!NOTE]
+> Speech SDK では、LUIS v2.0 エンドポイントのみがサポートされています。
+> V2.0 URL パターンを使用するには、例のクエリ フィールドにある v3.0 エンドポイントの URL を手動で変更する必要があります。
+> LUIS v2.0 エンドポイントは、常に次の 2 つのパターンのいずれかに従います。
+> * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+> * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+
 ## <a name="recognize-an-intent"></a>意図を認識する
 
 `IntentRecognizer` オブジェクトから、`recognizeOnceAsync()` メソッドを呼び出します。 認識の対象として 1 つの語句を送信しようとしていること、また、その語句が識別された後で、音声認識を停止しようとしていることが、このメソッドを通じて Speech サービスに伝えられます。

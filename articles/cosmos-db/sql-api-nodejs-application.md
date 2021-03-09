@@ -8,21 +8,22 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 9554fa63d13c5da465653064d69d7950d91f0300
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 49cf54bda985f7d97b2db6a3ada7859aee829cff
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421877"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359542"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>チュートリアル:JavaScript SDK を使用して Node.js Web アプリを構築して Azure Cosmos DB の SQL API アカウントを管理する 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
 > * [Java](sql-api-java-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
-> * [Python](sql-api-python-application.md)
+> * [Python](./create-sql-api-python.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
@@ -64,7 +65,7 @@ ms.locfileid: "87421877"
 
 1. 新しいアプリケーションを保存するディレクトリに移動します。
 
-1. Express ジェネレーターを使用し、 **todo**という名前の新しいアプリケーションを作成します。
+1. Express ジェネレーターを使用し、 **todo** という名前の新しいアプリケーションを作成します。
 
    ```bash
    express todo
@@ -469,7 +470,7 @@ ms.locfileid: "87421877"
 3. アプリケーションをリモートにプッシュすることによって、アプリケーションをデプロイします。
    
    ```bash
-   git push azure master
+   git push azure main
    ```
 
 4. 数秒後に、Web アプリケーションが公開され、ブラウザーで起動されます。
@@ -487,4 +488,3 @@ ms.locfileid: "87421877"
 [Node.js]: https://nodejs.org/
 [Git]: https://git-scm.com/
 [GitHub]: https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-todo-app
-

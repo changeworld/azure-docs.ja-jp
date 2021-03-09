@@ -1,18 +1,18 @@
 ---
 title: サーバーを再起動する - Azure PowerShell - Azure Database for MySQL
 description: この記事では、PowerShell を使用して Azure Database for MySQL サーバーを再起動する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71d10078a704b2905cf055347f5ed4272ca8ef72
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 94b3586f13ad1f5bf5f042ef1dc824bd0a5da0d1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502785"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542203"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-powershell"></a>PowerShell を使用して Azure Database for MySQL サーバーを再起動する
 

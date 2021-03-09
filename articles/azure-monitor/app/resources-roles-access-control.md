@@ -4,12 +4,12 @@ description: 組織の insights の所有者、共同作成者、閲覧者。
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cd1e69ecd121380353ad6400d473d572b7b7bb3e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 4254170ad100b634439cc846dc381e305ae71d1f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076686"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589600"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights のリソース、ロール、アクセス制御
 
@@ -76,7 +76,7 @@ Azure のロールベースのアクセス制御のすべての組み込みロ�
 | [Reader](../../role-based-access-control/built-in-roles.md#reader) |表示はできますが、何も変更することはできません。 |
 | [Application Insights Snapshot Debugger](../../role-based-access-control/built-in-roles.md#application-insights-snapshot-debugger) | Application Insights スナップショット デバッガー機能を使用するためのアクセス許可をユーザーに付与します。 このロールは、所有者ロールにも共同作成者ロールにも含まれていないことに注意してください。 |
 | Azure Service Deploy リリース管理の共同作成者 | Azure Service Deploy を使用してデプロイするサービスの共同作成者ロール。 |
-| [Data Purger](../../role-based-access-control/built-in-roles.md#data-purger) | 個人データを消去するための特殊なロール。 詳細については、[個人データに関するガイダンス](../platform/personal-data-mgmt.md)についての記事をご覧ください。   |
+| [Data Purger](../../role-based-access-control/built-in-roles.md#data-purger) | 個人データを消去するための特殊なロール。 詳細については、[個人データに関するガイダンス](../logs/personal-data-mgmt.md)についての記事をご覧ください。   |
 | ExpressRoute 管理者 | Express Route を作成、削除、管理できます。|
 | [Log Analytics Contributor](../../role-based-access-control/built-in-roles.md#log-analytics-contributor) | Log Analytics 共同作成者は、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure Diagnostics の構成が含まれます。  |
 | [Log Analytics Reader](../../role-based-access-control/built-in-roles.md#log-analytics-reader) | Log Analytics Reader は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure Diagnostics 構成の表示など、監視設定の表示を行うことができます。 |

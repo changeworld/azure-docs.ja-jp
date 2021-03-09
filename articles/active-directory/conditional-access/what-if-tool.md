@@ -11,28 +11,28 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db76ec2bc2fc8640214f962a809fee559b4c4af3
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: a3ac799203cade3a907acbe28dee3a8023891db2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948200"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077644"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>What If ツールを使用した条件付きアクセスのトラブルシューティング
 
-[条件付きアクセス](./overview.md)は、承認されたユーザーによるクラウド アプリへのアクセスを制御できるようにする、Azure Active Directory (Azure AD) の機能です。 環境内で条件付きアクセス ポリシーから予期される事柄を知るにはどうすればよいでしょうか。 この質問に答えるために、**条件付きアクセスの What If ツール**を使用できます。
+[条件付きアクセス](./overview.md)は、承認されたユーザーによるクラウド アプリへのアクセスを制御できるようにする、Azure Active Directory (Azure AD) の機能です。 環境内で条件付きアクセス ポリシーから予期される事柄を知るにはどうすればよいでしょうか。 この質問に答えるために、 **条件付きアクセスの What If ツール** を使用できます。
 
 この記事では、このツールを使用して、条件付きアクセス ポリシーをテストする方法について説明します。
 
 ## <a name="what-it-is"></a>説明
 
-**条件付きアクセスの What If ポリシー ツール**によって、条件付きアクセス ポリシーが環境に与える影響を理解することができます。 複数のサインインを手動で実行することでポリシーの適用をテストする代わりに、このツールを使用して、ユーザーのシミュレートされたサインインを評価できます。 シミュレーションでは、サインインがポリシーに与える影響を推定し、シミュレーション レポートが生成されます。 レポートには、適用された条件付きアクセス ポリシーだけではなく、[クラシック ポリシー](policy-migration.md#classic-policies)が存在する場合はそれらも一覧表示されます。    
+**条件付きアクセスの What If ポリシー ツール** によって、条件付きアクセス ポリシーが環境に与える影響を理解することができます。 複数のサインインを手動で実行することでポリシーの適用をテストする代わりに、このツールを使用して、ユーザーのシミュレートされたサインインを評価できます。 シミュレーションでは、サインインがポリシーに与える影響を推定し、シミュレーション レポートが生成されます。 レポートには、適用された条件付きアクセス ポリシーだけではなく、[クラシック ポリシー](policy-migration.md#classic-policies)が存在する場合はそれらも一覧表示されます。    
 
 **What If** ツールは、特定のユーザーに適用されるポリシーをすばやく判断する方法も提供します。 この情報は、たとえば問題をトラブルシューティングする必要がある場合に使用できます。    
 
 ## <a name="how-it-works"></a>しくみ
 
-**条件付きアクセスの What If ツール**では、シミュレートするサインイン シナリオの設定を最初に構成する必要があります。 これらの設定には、以下が含まれます。
+**条件付きアクセスの What If ツール** では、シミュレートするサインイン シナリオの設定を最初に構成する必要があります。 これらの設定には、以下が含まれます。
 
 - テストするユーザー 
 - ユーザーがアクセスを試みるクラウド アプリ
@@ -48,7 +48,7 @@ ms.locfileid: "88948200"
 
 ツールを起動するには、ポリシーの一覧の上部にあるツール バーで、 **[What If]** をクリックします。
 
-![What If](./media/what-if-tool/01.png)
+:::image type="content" source="./media/what-if-tool/01.png" alt-text="Azure portal の [条件付きアクセス - ポリシー] ページのスクリーンショット。ツールバーで、[What If] 項目が強調表示されていることを確認します。" border="false":::
 
 評価を実行する前に、設定を構成する必要があります。
 
@@ -56,7 +56,7 @@ ms.locfileid: "88948200"
 
 このセクションでは、シミュレーションの実行の設定について説明します。
 
-![What If](./media/what-if-tool/02.png)
+:::image type="content" source="./media/what-if-tool/02.png" alt-text="Azure portal の [What If] ページに、ユーザー、クラウド アプリ、IP アドレス、デバイス プラットフォーム、クライアント アプリ、サインイン リスクのフィールドがあるスクリーンショット。" border="false":::
 
 ### <a name="user"></a>User
 
@@ -72,7 +72,7 @@ IP アドレスは、[場所の条件](location-condition.md)を模倣するた�
 
 ### <a name="device-platforms"></a>デバイス プラットフォーム
 
-この設定は、[デバイス プラットフォームの条件](concept-conditional-access-conditions.md#device-platforms)を模倣し、 **[すべてのプラットフォーム (サポート対象外を含む)]** に相当します。 
+この設定は、 [デバイス プラットフォームの条件](concept-conditional-access-conditions.md#device-platforms)を模倣し、 **[すべてのプラットフォーム (サポート対象外を含む)]** に相当します。 
 
 ### <a name="client-apps"></a>クライアント アプリ
 
@@ -90,7 +90,7 @@ IP アドレスは、[場所の条件](location-condition.md)を模倣するた�
 
 **[What If]** をクリックして評価を開始します。 以下で構成されるレポートによって評価結果が示されます。 
 
-![What If](./media/what-if-tool/03.png)
+:::image type="content" source="./media/what-if-tool/03.png" alt-text="評価レポートのスクリーンショット。テキストは、少なくとも 1 つのクラシック ポリシーが構成されていることを示します。タブは、ポリシーを表示するために使用できます。" border="false":::
 
 - 環境内にクラシック ポリシーが存在するかどうかを示すインジケーター
 - ユーザーに適用されるポリシー

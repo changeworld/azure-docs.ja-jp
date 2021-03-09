@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: data-movement
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: carlrab
+ms.topic: how-to
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 46b95c438830a488494d50308d71a115d6f0da42
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: ae6c87c9eabea837ba9c43676d4ca712caa385cb
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982162"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594166"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>新しいリージョンへのリソースの移動 - Azure SQL Database および Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -170,7 +170,7 @@ ms.locfileid: "85982162"
 
 ### <a name="monitor-the-preparation-process"></a>準備プロセスを監視する
 
-[Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) を定期的に呼び出して、ソースからターゲットへのデータベースのレプリケーションを監視することができます。 `Get-AzSqlDatabaseFailoverGroup` の出力オブジェクトには、**ReplicationState** のプロパティが含まれます。
+[Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) を定期的に呼び出して、ソースからターゲットへのデータベースのレプリケーションを監視することができます。 `Get-AzSqlDatabaseFailoverGroup` の出力オブジェクトには、**ReplicationState** のプロパティが含まれます。
 
 - **ReplicationState = 2** (CATCH_UP) は、データベースが同期されており、安全にフェールオーバーできることを示します。
 - **ReplicationState = 0** (SEEDING) は、データベースがまだシード処理されておらず、フェールオーバーの試行が失敗することを示します。
@@ -182,7 +182,7 @@ ms.locfileid: "85982162"
 ### <a name="initiate-the-move"></a>移動を開始する
 
 1. セカンダリ エンドポイント `<fog-name>.secondary.database.windows.net` を使用して、ターゲット マネージド インスタンスに接続します。
-1. [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup?view=azps-2.3.2) を使用して、セカンダリ マネージド インスタンスを完全に同期したプライマリに切り替えます。 この操作は成功するか、そうでなければロールバックします。
+1. [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) を使用して、セカンダリ マネージド インスタンスを完全に同期したプライマリに切り替えます。 この操作は成功するか、そうでなければロールバックします。
 1. `nslook up <fog-name>.secondary.database.windows.net` を使用してコマンドが正常に完了したことを検証して、DNS CNAME エントリがターゲット リージョンの IP アドレスを指していることを確認します。 switch コマンドが失敗した場合、CNAME は更新されません。
 
 ### <a name="remove-the-source-managed-instances"></a>ソース マネージド インスタンスを削除する

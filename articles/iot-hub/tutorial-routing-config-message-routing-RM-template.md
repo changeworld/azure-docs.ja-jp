@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager テンプレートを使用して Azure IoT Hub のメッセージ ルーティングを構成する
-description: Azure Resource Manager テンプレートを使用して Azure IoT Hub のメッセージ ルーティングを構成する
+title: チュートリアル - Azure Resource Manager テンプレートを使用して Azure IoT Hub のメッセージ ルーティングを構成する
+description: チュートリアル - Azure Resource Manager テンプレートを使用して Azure IoT Hub のメッセージ ルーティングを構成する
 author: robinsh
 manager: philmeagit st
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 53217340b0d91f3de77e5e0d8c0a82e30599d6ed
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74084404"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621430"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure Resource Manager テンプレートを使用して IoT Hub のメッセージ ルーティングを構成する
 
@@ -358,13 +358,13 @@ Service Bus キューの承認規則は、Service Bus キューの接続文字�
 
 ファイルをアップロードするには、メニュー バーの **[ファイルのアップロード/ダウンロード]** アイコンを選択して、[アップロード] を選択します。
 
-![[ファイルのアップロード/ダウンロード] が強調表示された Cloud Shell のメニュー バー](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
+![[ファイルのアップロード/ダウンロード] アイコンが強調表示されているスクリーンショット。](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
 
 表示されたエクスプローラーを使用して、自分のローカル ディスク上のファイルを探して選択し、 **[開く]** を選択します。
 
 ファイルのアップロード後、次の画像のような結果のダイアログが表示されます。
 
-![[ファイルのアップロード/ダウンロード] が強調表示された Cloud Shell のメニュー バー](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
+![結果のアップロードとダウンロードが強調表示された Cloud Shell のメニュー バー](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
 
 Cloud Shell インスタンスによって使用される共有にファイルがアップロードされます。 
 

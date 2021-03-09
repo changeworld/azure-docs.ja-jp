@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 24d50635efb4d7fe18db9836311cf0a85dfcc734
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d0282e4f52db8557364cdabe197fa0da63204e42
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118622"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752636"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft ID プラットフォームと OAuth 2.0 リソース所有者のパスワード資格情報
 
@@ -29,7 +29,7 @@ Microsoft ID プラットフォームでは、[OAuth 2.0 リソース所有者�
 
 > [!IMPORTANT]
 >
-> * Microsoft ID プラットフォーム エンドポイントでは、Azure AD テナントに対してのみ ROPC をサポートしています。個人アカウントは対象外です。 そのため、テナント固有のエンドポイント (`https://login.microsoftonline.com/{TenantId_or_Name}`) または `organizations` エンドポイントを使用する必要があります。
+> * Microsoft ID プラットフォームでは、Azure AD テナントに対してのみ ROPC をサポートしています。個人アカウントは対象外です。 そのため、テナント固有のエンドポイント (`https://login.microsoftonline.com/{TenantId_or_Name}`) または `organizations` エンドポイントを使用する必要があります。
 > * Azure AD テナントに招待された個人アカウントでは、ROPC を使用できません。
 > * パスワードがないアカウントでは、ROPC 経由でサインインできません。 このシナリオでは、代わりに、自分のアプリに対して別のフローを使用することをお勧めします。
 > * ユーザーが[多要素認証 (MFA)](../authentication/concept-mfa-howitworks.md) を使用してアプリケーションにログインすると、ログインできずにブロックされます。
@@ -112,5 +112,4 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 ## <a name="learn-more"></a>詳細情報
 
-* [サンプル コンソール アプリケーション](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)を利用し、ROPC をご自分でお試しください。
-* v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[Microsoft ID プラットフォームの制限事項](../azuread-dev/azure-ad-endpoint-comparison.md)に関する記事を参照してください。
+ROPC の使用例については、GitHub で [.NET Core コンソール アプリケーション](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)のコード サンプルをご覧ください。

@@ -1,35 +1,36 @@
 ---
 title: ONNX を使用してデプロイと予測を行う
-description: モデルをトレーニングし、ONNX に変換して、Azure SQL Edge (プレビュー) または Azure SQL Managed Instance (プレビュー) にデプロイした後で、アップロードされた ONNX モデルを使用してネイティブ PREDICT をデータに対して実行する方法について説明します。
+titleSuffix: SQL machine learning
+description: モデルをトレーニングし、ONNX に変換して、Azure SQL Edge または Azure SQL Managed Instance (プレビュー) にデプロイした後で、アップロードされた ONNX モデルを使用してネイティブ PREDICT をデータに対して実行する方法について説明します。
 keywords: SQL Edge をデプロイする
 ms.prod: sql
 ms.technology: machine-learning
-ms.topic: conceptual
+ms.topic: quickstart
 author: dphansen
 ms.author: davidph
-ms.date: 07/14/2020
-ms.openlocfilehash: eeb50f682c8b3b225c6574b5276722b79465a511
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.date: 10/13/2020
+ms.openlocfilehash: 755111b2fc48ec119c30d09f2e51b9db6c333848
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718783"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653212"
 ---
-# <a name="deploy-and-make-predictions-with-an-onnx-model"></a>ONNX モデルを使用してデプロイと予測を行う
+# <a name="deploy-and-make-predictions-with-an-onnx-model-and-sql-machine-learning"></a>ONNX モデルおよび SQL 機械学習を使用したデプロイと予測
 
-モデルをトレーニングし、ONNX に変換して、[Azure SQL Edge (プレビュー)](onnx-overview.md) または [Azure SQL Managed Instance (プレビュー)](../azure-sql/managed-instance/machine-learning-services-overview.md) にデプロイした後で、アップロードされた ONNX モデルを使用してネイティブ PREDICT をデータに対して実行する方法について説明します。
+モデルをトレーニングし、ONNX に変換して、[Azure SQL Edge](onnx-overview.md) または [Azure SQL Managed Instance (プレビュー)](../azure-sql/managed-instance/machine-learning-services-overview.md) にデプロイした後で、アップロードされた ONNX モデルを使用してネイティブ PREDICT をデータに対して実行する方法について説明します。
 
 このクイックスタートは **scikit-learn** に基づいており、[Boston Housing データセット](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)を使用します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-* Azure SQL Edge を使用していて、Azure SQL Edge モジュールをデプロイしていない場合は、[Azure portal を使用して SQL Edge (プレビュー) をデプロイする](deploy-portal.md)手順に従います。
+* Azure SQL Edge を使用していて、Azure SQL Edge モジュールをデプロイしていない場合は、[Azure portal を使用して SQL Edge をデプロイする](deploy-portal.md)手順に従います。
 
-* [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download) をインストールします。
+* [Azure Data Studio](/sql/azure-data-studio/download) をインストールします。
 
 * このクイックスタートに必要な Python パッケージをインストールします。
 
-  1. Python 3 カーネルに接続された[新しいノートブック](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks)を開きます。 
+  1. Python 3 カーネルに接続された[新しいノートブック](/sql/azure-data-studio/sql-notebooks)を開きます。 
   1. **[パッケージの管理]** をクリックします
   1. **[インストール済み]** タブの、インストール済みパッケージの一覧で、以下の Python パッケージを探します。 これらのパッケージのいずれかがインストールされていない場合は、 **[新規追加]** タブを選択し、そのパッケージを検索して、 **[インストール]** をクリックします。
      - **scikit-learn**
@@ -176,7 +177,7 @@ def convert_dataframe_schema(df, drop=None, batch_axis=False):
 
 ```python
 # Convert the scikit model to onnx format
-onnx_model = skl2onnx.convert_sklearn(model, 'Boston Data', convert_dataframe_schema(x_train))
+onnx_model = skl2onnx.convert_sklearn(model, 'Boston Data', convert_dataframe_schema(x_train), final_types=[('variable1',FloatTensorType([1,1]))])
 # Save the onnx model locally
 onnx_model_path = 'boston1.model.onnx'
 onnxmltools.utils.save_model(onnx_model, onnx_model_path)
@@ -226,7 +227,7 @@ MSE are equal
 
 ## <a name="insert-the-onnx-model"></a>ONNX モデルを挿入する
 
-Azure SQL Edge または Azure SQL Managed Instance で、`onnx` データベースの `models` テーブルにモデルを格納します。 接続文字列に、**サーバー アドレス**、**ユーザー名**、**パスワード**を指定します。
+Azure SQL Edge または Azure SQL Managed Instance で、`onnx` データベースの `models` テーブルにモデルを格納します。 接続文字列に、**サーバー アドレス**、**ユーザー名**、**パスワード** を指定します。
 
 ```python
 import pyodbc

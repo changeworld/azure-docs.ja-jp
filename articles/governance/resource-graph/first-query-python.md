@@ -1,15 +1,15 @@
 ---
 title: クイック スタート:初めての Python クエリ
 description: このクイックスタートでは、手順に従って、Python 用の Resource Graph ライブラリを有効にし、初めてのクエリを実行します。
-ms.date: 07/15/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: a92eda343e8c0c38b9c9ebebb16d5c102d1b3f19
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 6fc7b8f6a6fa7cde8d10dec6a4b2b834d41325e6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873672"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920124"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>クイック スタート:Python を使用して初めての Resource Graph クエリを実行する
 
@@ -32,7 +32,7 @@ Python で Azure Resource Graph のクエリを実行できるようにするに
 1. 最新の Azure CLI がインストールされていることを確認します (**2.5.1** 以降)。 まだインストールされていない場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
    > [!NOTE]
-   > 次の例で、Python で **CLI ベースの認証**を使用できるようにするには、Azure CLI が必要です。 その他のオプションの詳細については、[Python 用 Azure 管理ライブラリを使用した認証](/azure/developer/python/azure-sdk-authenticate)に関するページを参照してください。
+   > 次の例で、Python で **CLI ベースの認証** を使用できるようにするには、Azure CLI が必要です。 その他のオプションの詳細については、[Python 用 Azure 管理ライブラリを使用した認証](/azure/developer/python/azure-sdk-authenticate)に関するページを参照してください。
 
 1. Azure CLI から認証します。
 
@@ -65,7 +65,7 @@ Python で Azure Resource Graph のクエリを実行できるようにするに
 
 ## <a name="run-your-first-resource-graph-query"></a>最初の Resource Graph クエリを実行する
 
-選択した環境に Python ライブラリを追加したので、簡単な Resource Graph クエリを試してみましょう。 このクエリでは、各リソースの**名前**と**リソースの種類**を使用して、最初の 5 つの Azure リソースが返されます。
+選択した環境に Python ライブラリを追加したので、簡単な Resource Graph クエリを試してみましょう。 このクエリでは、各リソースの **名前** と **リソースの種類** を使用して、最初の 5 つの Azure リソースが返されます。
 
 1. インストールしたライブラリと `resources` メソッドを使用して、初めての Azure Resource Graph を実行します。
 

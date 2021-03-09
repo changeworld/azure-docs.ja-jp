@@ -1,25 +1,25 @@
 ---
 title: Azure IoT Central アプリケーションで請求書を管理し、無料の料金プランから切り替える | Microsoft Docs
 description: 管理者として Azure IoT Central アプリケーションで請求書を管理し、無料の料金プランから標準の料金プランに切り替える方法を学習します。
-author: v-krghan
-ms.author: v-krghan
-ms.date: 12/09/2019
+author: dominicbetts
+ms.author: dobett
+ms.date: 11/23/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 888b9f31b8082ac124a773cc489293b335d7d255
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50d0119b08d2c76a5f6111e485408ebcdace83c6
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157515"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549023"
 ---
 # <a name="manage-your-bill-in-an-iot-central-application"></a>IoT Central アプリケーションでの請求書の管理
 
-この記事では、管理者として Azure IoT Central アプリケーションの管理セクションで請求書を管理する方法について説明します。 無料の料金プランから標準の料金プランにアプリケーションを切り替える方法について学習し、料金プランをアップグレードまたはダウングレードする方法についても学習します。
+この記事では、管理者が Azure IoT Central の課金を管理する方法について説明します。 無料の料金プランから標準の料金プランにアプリケーションを切り替えることや、料金プランをアップグレードまたはダウングレードすることができます。
 
-**[管理]** セクションにアクセスして使用するには、*管理者*ロールか、Azure IoT Central アプリケーションの請求を表示できる*カスタム ユーザー ロール*が必要です。 Azure IoT Central アプリケーションを作成したユーザーは、自動的にそのアプリケーションの**管理者**ロールに割り当てられます。
+**[管理]** セクションにアクセスするには、"*管理者*" ロールであるか、課金を表示できる "*カスタム ユーザー ロール*" を持っている必要があります。 Azure IoT Central アプリケーションを作成したユーザーには、自動的に **管理者** ロールが割り当てられます。
 
 ## <a name="move-from-free-to-standard-pricing-plan"></a>無料から標準に料金プランを切り替える
 
@@ -34,11 +34,11 @@ ms.locfileid: "80157515"
 
 1. **[管理]** セクションの **[価格]** ページに移動します。
 
-    ![試用版の状態](media/howto-view-bill/freetrialbilling.png)
+    :::image type="content" source="media/howto-view-bill/freetrialbilling.png" alt-text="試用版の状態":::
 
 1. **[Convert to a paid plan]\(有料プランに切り替える\)** を選択します。
 
-    ![試用版を変換する](media/howto-view-bill/convert.png)
+    :::image type="content" source="media/howto-view-bill/convert.png" alt-text="試用版を変換する":::
 
 1. 適切な Azure Active Directory を選択し、有料プランが使用されるアプリケーションに使用する Azure サブスクリプションを選択します。
 
@@ -55,9 +55,9 @@ ms.locfileid: "80157515"
 
 1. **[管理]** セクションの **[価格]** ページに移動します。
 
-    ![試用版の状態](media/howto-view-bill/pricing.png)
+    :::image type="content" source="media/howto-view-bill/pricing.png" alt-text="料金プランのアップグレード":::
 
-1. **[プラン]** を選択し、 **[保存]** をクリックするとアップグレードまたはダウングレードされます。
+1. **[プラン]** を選択し、 **[保存]** を選択してアップグレードまたはダウングレードします。
 
 ## <a name="view-your-bill"></a>課金状況の表示
 

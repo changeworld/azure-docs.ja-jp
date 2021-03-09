@@ -8,17 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 05/22/2020
+ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-csharp
-ms.openlocfilehash: 2760e6a46801871a25ecbe23a2400211ae312650
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 201fcf80e26aaaed78e1f6a78eb0dab5a345ba50
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88921700"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350604"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>クイック スタート:Bing Web Search REST API と C# を使用して Web を検索する
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関するページを参照してください。
 
 このクイックスタートを使用して、Bing Web Search API を初めて呼び出してみましょう。 この C# アプリケーションは、API に検索要求を送信して、JSON 応答を表示します。 このアプリケーションは C# で記述されていますが、この API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
@@ -29,14 +34,14 @@ ms.locfileid: "88921700"
 このクイック スタートを実行するには、以下のものが必要です。
 
 * Windows: [Visual Studio 2017 以降](https://www.visualstudio.com/downloads/)
-* Linux/macOS:[モノラル](https://www.mono-project.com/)  
-* サブスクリプション キー
+* Linux/macOS:[Visual Studio Code](https://code.visualstudio.com/) と [.NET Core](https://dotnet.microsoft.com/download)
+* [無料の Azure サブスクリプション](https://azure.microsoft.com/free/dotnet)
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-dependencies"></a>プロジェクトの作成と依存関係の宣言
 
-Visual Studio または Mono で、新しいプロジェクトを作成します。 次のコードを使用して、必要な名前空間と型をインポートします。
+Visual Studio または VS Code で、コンソール プロジェクトを作成します。 次のコードを使用して、必要な名前空間と型をインポートします。
 
 ```csharp
 using System;

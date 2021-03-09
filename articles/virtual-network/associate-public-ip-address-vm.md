@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 9b5fc9e4118d98905138b7f205f61d85a96b60b0
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 6ea16da3844b8098d87d65e1016f92c69ae34067
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035469"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945150"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>仮想マシンへのパブリック IP アドレスの関連付け
 
@@ -65,7 +65,7 @@ ms.locfileid: "88035469"
 [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) をインストールするか、または Azure Cloud Shell を使用します。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 次の CLI コマンドの **[使ってみる]** ボタンを選択します。 **[使ってみる]** を選択すると Cloud Shell が起動され、お使いの Azure アカウントにサインインできます。
 
 1. Bash でローカルに CLI を使用している場合は、`az login` を使って Azure にサインインします。
-2. パブリック IP アドレスが、VM にアタッチされているネットワーク インターフェイスの IP 構成に関連付けられます。 [az network nic-ip-config update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) コマンドを使用して、IP 構成にパブリック IP アドレスを関連付けます。 次の例では、*myVMPublicIP* という既存のパブリック IP アドレスを、*myResourceGroup* というリソース グループ内に存在する *myVMVMNic* という既存のネットワーク インターフェイスの *ipconfigmyVM* という名前の IP 構成に関連付けています。
+2. パブリック IP アドレスが、VM にアタッチされているネットワーク インターフェイスの IP 構成に関連付けられます。 [az network nic-ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) コマンドを使用して、IP 構成にパブリック IP アドレスを関連付けます。 次の例では、*myVMPublicIP* という既存のパブリック IP アドレスを、*myResourceGroup* というリソース グループ内に存在する *myVMVMNic* という既存のネットワーク インターフェイスの *ipconfigmyVM* という名前の IP 構成に関連付けています。
   
    ```azurecli-interactive
    az network nic ip-config update \
@@ -75,7 +75,7 @@ ms.locfileid: "88035469"
      --public-ip-address myVMPublicIP
    ```
 
-   - 既存のパブリック IP アドレスがない場合は、[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) コマンドを使用して作成します。 たとえば、次のコマンドでは、*myResourceGroup* というリソース グループに、*myVMPublicIP* という名前のパブリック IP アドレスを作成します。
+   - 既存のパブリック IP アドレスがない場合は、[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) コマンドを使用して作成します。 たとえば、次のコマンドでは、*myResourceGroup* というリソース グループに、*myVMPublicIP* という名前のパブリック IP アドレスを作成します。
   
      ```azurecli-interactive
      az network public-ip create --name myVMPublicIP --resource-group myResourceGroup
@@ -84,7 +84,7 @@ ms.locfileid: "88035469"
      > [!NOTE]
      > 上記のコマンドでは、カスタマイズ可能ないくつかの設定には既定値を使用して、パブリック IP アドレスを作成しています。 すべてのパブリック IP アドレス設定について詳しくは、「[パブリック IP アドレスの作成](virtual-network-public-ip-address.md#create-a-public-ip-address)」をご覧ください。 アドレスは、各 Azure リージョンに使用されるパブリック IP アドレスのプールから割り当てられます。 各リージョン内で使用されるアドレス プールの一覧を表示するには、[Microsoft Azure データ センターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページをご覧ください。
 
-   - VM にアタッチされているネットワーク インターフェイスの名前がわからない場合は、[az vm nic list](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) コマンドを使用して表示します。 たとえば、次のコマンドは、*myResourceGroup* というリソース グループ内の *myVM* という VM にアタッチされているネットワーク インターフェイスの名前を一覧表示します。
+   - VM にアタッチされているネットワーク インターフェイスの名前がわからない場合は、[az vm nic list](/cli/azure/vm/nic#az-vm-nic-list) コマンドを使用して表示します。 たとえば、次のコマンドは、*myResourceGroup* というリソース グループ内の *myVM* という VM にアタッチされているネットワーク インターフェイスの名前を一覧表示します。
 
      ```azurecli-interactive
      az vm nic list --vm-name myVM --resource-group myResourceGroup
@@ -98,13 +98,13 @@ ms.locfileid: "88035469"
 
      上記の例では、*myVMVMNic* がネットワーク インターフェイスの名前です。
 
-   - ネットワーク インターフェイスの IP 構成の名前がわからない場合は、[az network nic ip-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) コマンドを使用して取得します。 たとえば、次のコマンドは、*myResourceGroup* というリソース グループ内の *myVMVMNic* というネットワーク インターフェイスに対応する IP 構成の名前を一覧表示します。
+   - ネットワーク インターフェイスの IP 構成の名前がわからない場合は、[az network nic ip-config list](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-list) コマンドを使用して取得します。 たとえば、次のコマンドは、*myResourceGroup* というリソース グループ内の *myVMVMNic* というネットワーク インターフェイスに対応する IP 構成の名前を一覧表示します。
 
      ```azurecli-interactive
      az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
      ```
 
-3. [az vm list-ip-addresses](/cli/azure/vm?view=azure-cli-latest#az-vm-list-ip-addresses) コマンドを使って、IP 構成に割り当てられているパブリック IP アドレスを表示します。 次の例は、*myResourceGroup* というリソース グループ内の *myVM* という既存の VM に割り当てられている IP アドレスを表示します。
+3. [az vm list-ip-addresses](/cli/azure/vm#az-vm-list-ip-addresses) コマンドを使って、IP 構成に割り当てられているパブリック IP アドレスを表示します。 次の例は、*myResourceGroup* というリソース グループ内の *myVM* という既存の VM に割り当てられている IP アドレスを表示します。
 
    ```azurecli-interactive
    az vm list-ip-addresses --name myVM --resource-group myResourceGroup --out table
@@ -214,4 +214,4 @@ ms.locfileid: "88035469"
 
 ## <a name="next-steps"></a>次のステップ
 
-ネットワーク セキュリティ グループを利用して、VM への受信インターネット トラフィックを許可します。 ネットワーク セキュリティ グループを作成する方法については、[ネットワーク セキュリティ グループの操作](manage-network-security-group.md#work-with-network-security-groups)に関するページをご覧ください。 ネットワーク セキュリティ グループの詳細については、[セキュリティ グループ](security-overview.md)に関するページをご覧ください。
+ネットワーク セキュリティ グループを利用して、VM への受信インターネット トラフィックを許可します。 ネットワーク セキュリティ グループを作成する方法については、[ネットワーク セキュリティ グループの操作](manage-network-security-group.md#work-with-network-security-groups)に関するページをご覧ください。 ネットワーク セキュリティ グループの詳細については、[セキュリティ グループ](./network-security-groups-overview.md)に関するページをご覧ください。

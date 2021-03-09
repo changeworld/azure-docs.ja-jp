@@ -7,13 +7,13 @@ author: LiamCavanagh
 ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ea0dac74d4f995e41513b3451dd28d177040e672
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: cd21197d6d1559b681ae622b974f6eb7ba95ad3d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935026"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91397370"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>マルチテナント SaaS アプリケーションと Azure Cognitive Search の設計パターン
 
@@ -76,7 +76,8 @@ Azure Cognitive Search は、テナントのデータとワークロードの分
 3. *両パターンの組み合わせ:* 大規模でアクティブなテナントには専用のサービスを割り当て、小規模なテナントには共有サービス内の個々のインデックスを割り当てます。
 
 ## <a name="1-index-per-tenant"></a>1.テナントごとのインデックス
-![テナントごとのインデックス モデルの図](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
+
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png" alt-text="テナントごとのインデックス モデルの図" border="false":::
 
 テナントごとのインデックス モデルでは、複数のテナントが 1 つの Azure Cognitive Search サービスを使用し、各テナントがサービス内に独自のインデックスを持ちます。
 
@@ -93,7 +94,8 @@ Azure Cognitive Search では、個々のインデックスとインデックス
 1 つのサービスのインデックスの総数が増えすぎた場合は、新しいテナントに対応するためにサービスをもう 1 つプロビジョニングする必要があります。 新しいサービスを追加したときに、検索サービス間でインデックスを移動する必要がある場合、Azure Cognitive Search ではインデックスを移動することはできないため、インデックスのデータをインデックス間で手動でコピーする必要があります。
 
 ## <a name="2-service-per-tenant"></a>2.テナントごとのサービス
-![テナントごとのサービス モデルの図](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
+
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="テナントごとのインデックス モデルの図" border="false":::
 
 テナントごとのサービス アーキテクチャでは、各テナントが独自の検索サービスを使用します。
 

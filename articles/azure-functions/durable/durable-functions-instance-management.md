@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 2b99d032b953caecfca2b34d5eadafe94f45f307
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 2121ad4f908d28ab30f15be261b3f155ab6dd983
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809376"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039701"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Azure における Durable Functions でのインスタンスの管理
 
@@ -231,6 +231,7 @@ module.exports = async function(context, instanceId) {
 
     const status = await client.getStatus(instanceId);
     // do something based on the current status.
+    // example: if status.runtimeStatus === df.OrchestrationRuntimeStatus.Running: ...
 }
 ```
 
@@ -247,6 +248,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
     status = await client.get_status(instance_id)
     # do something based on the current status
+    # example: if (existing_instance.runtime_status is df.OrchestrationRuntimeStatus.Running) { ...
 ```
 
 ---
@@ -300,6 +302,10 @@ public static async Task Run(
     {
         log.LogInformation(JsonConvert.SerializeObject(instance));
     }
+    
+    // Note: ListInstancesAsync only returns the first page of results.
+    // To request additional pages provide the result.ContinuationToken
+    // to the OrchestrationStatusQueryCondition's ContinuationToken property.
 }
 ```
 
@@ -800,7 +806,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.co
 > [!NOTE]
 > この API は、適切なエラー処理や再試行ポリシーの代わりとなるものではありません。 予期しない理由でオーケストレーション インスタンスが失敗する場合にのみ使用するものです。 エラー処理と再試行ポリシーについて詳しくは、[エラー処理](durable-functions-error-handling.md)に関する記事をご覧ください。
 
-[オーケストレーション クライアントのバインド](durable-functions-bindings.md#orchestration-client)上の `RewindAsync` (.NET) または `rewind` (JavaScript) メソッドを使用して、オーケストレーションを*実行中*の状態に戻します。 またこのメソッドは、オーケストレーション エラーの原因となったアクティビティやサブ オーケストレーションの実行失敗も再実行します。
+[オーケストレーション クライアントのバインド](durable-functions-bindings.md#orchestration-client)上の `RewindAsync` (.NET) または `rewind` (JavaScript) メソッドを使用して、オーケストレーションを *実行中* の状態に戻します。 またこのメソッドは、オーケストレーション エラーの原因となったアクティビティやサブ オーケストレーションの実行失敗も再実行します。
 
 たとえば、一連の[人による承認](durable-functions-overview.md#human)が含まれるワークフローがあるものとします。 承認が必要であることをユーザーに通知し、リアルタイムの応答を待機する一連のアクティビティ関数があるとします。 すべての承認アクティビティが応答を受信するかタイムアウトになった後、アプリケーションの構成ミス (無効なデータベース接続文字列など) により別のアクティビティが失敗します。 結果として、ワークフローの深い部分でオーケストレーションが失敗します。 `RewindAsync` (.NET) または `rewind` (JavaScript) API を使用すると、アプリケーション管理者は構成エラーを修正し、失敗したオーケストレーションを失敗の直前の状態に巻き戻すことができます。 人間の対話手順はいずれも再承認が不要で、オーケストレーションは正常に完了できるようになります。
 
@@ -988,8 +994,8 @@ from datetime import datetime, timedelta
 
 async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
     client = df.DurableOrchestrationClient(starter)
-    created_time_from = datetime.datetime()
-    created_time_to = datetime.datetime.today + timedelta(days = -30)
+    created_time_from = datetime.min
+    created_time_to = datetime.today() + timedelta(days = -30)
     runtime_statuses = [OrchestrationRuntimeStatus.Completed]
 
     return client.purge_instance_history_by(created_time_from, created_time_to, runtime_statuses)
@@ -997,7 +1003,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 ---
 
 > [!NOTE]
-> 履歴の消去の操作を成功させるには、ターゲット インスタンスの実行時の状態が**完了**、**終了**、または**失敗**になっている必要があります。
+> 履歴の消去の操作を成功させるには、ターゲット インスタンスの実行時の状態が **完了**、**終了**、または **失敗** になっている必要があります。
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 

@@ -8,18 +8,19 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.subservice: management
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 42738ff71432284a156d0dfbb1f6cf160cbf4032
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 42d7760d25f6ab591c19889eb2159711d6de1b07
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653251"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356754"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>ログ ディスクを Ultra Disk に移行する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -50,7 +51,7 @@ Ultra Disk は、VM のサイズとリージョンのサブセットでサポー
 
 1. **[Ultra Disk の互換性を有効にする]** に対して **[はい]** を選択します。 
 
-   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Azure portal の [設定] で [ディスク] の追加設定を選択する":::
+   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="[はい] オプションを示すスクリーンショット。":::
 
 1. **[保存]** を選択します。 
 
@@ -58,7 +59,7 @@ Ultra Disk は、VM のサイズとリージョンのサブセットでサポー
 
 ### <a name="attach-disk"></a>ディスクをアタッチする
 
-Azure portal を使用して、Ultra Disk を仮想マシンにアタッチします。 詳細については、[Ultra Disk のアタッチ](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal)に関するページを参照してください
+Azure portal を使用して、Ultra Disk を仮想マシンにアタッチします。 詳細については、[Ultra Disk のアタッチ](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk)に関するページを参照してください。
 
 ディスクをアタッチしたら、Azure portal を使用して VM をもう一度起動します。 
 
@@ -150,7 +151,7 @@ SSMS を使用して既存のファイルを新しい場所に移動します。
 1. ウィザードに従って、データベースをデタッチします。 
 1. ファイル エクスプローラーを使用して、ログ ファイルを新しい場所に手動で移動します。
 1. SQL Server Management Studio でデータベースをアタッチします。
-   1. **オブジェクト エクスプローラー**で **[データベース]** を右クリックして、 **[データベースのアタッチ]** を選択します。 
+   1. **オブジェクト エクスプローラー** で **[データベース]** を右クリックして、 **[データベースのアタッチ]** を選択します。 
    1. ダイアログ ボックスを使用して、新しい場所にあるログ ファイルを含めて各ファイルを追加します。 
    1. **[OK]** を選択し、データベースをアタッチします。 
 

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: b96166b789471e746e2a6434c5e0aa9b9a945ab3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8fdd2c8a326fbdc68d1aec65377f4c465c5ee4c1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550556"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353903"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>チュートリアル:Infor CloudSuite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -50,7 +50,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ## <a name="set-up-infor-cloudsuite-for-provisioning"></a>プロビジョニングのために Infor CloudSuite を設定する
 
-1. [Infor CloudSuite 管理コンソール](https://www.infor.com/customer-center)にサインインします。 ユーザー アイコンをクリックし、**ユーザー管理**に移動します。
+1. [Infor CloudSuite 管理コンソール](https://www.infor.com/customer-center)にサインインします。 ユーザー アイコンをクリックし、**ユーザー管理** に移動します。
 
     ![Infor CloudSuite 管理コンソール](media/infor-cloudsuite-provisioning-tutorial/admin.png)
 
@@ -68,11 +68,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
     
     ![Infor CloudSuite パスワード](media/infor-cloudsuite-provisioning-tutorial/password.png)
 
-    ![Infor CloudSuite ID](media/infor-cloudsuite-provisioning-tutorial/identifier.png)
+    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/identifier.png" alt-text="強調表示されたテーブルの行が表示されている Infor CloudSuite 管理コンソールのスクリーンショット。この行には、ユーザー ID、パスワード、およびタイムスタンプが含まれています。" border="false":::
 
 5. ベアラー トークンを生成するには、 **[User Identifier]\(ユーザー ID\)** と **[SCIM Password]\(SCIM パスワード\)** をコピーします。 コロンで区切って notepad++ に貼り付けます。 **[Plugins] (プラグイン) > MIME Tools (MIME ツール) > Basic64 Encode (Basic64 エンコード)** の順に選択して文字列値をエンコードします。 
 
-    ![Infor CloudSuite ID](media/infor-cloudsuite-provisioning-tutorial/token.png)
+    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/token.png" alt-text="Notepad++ ドキュメントのスクリーンショット。[Plugins]\(プラグイン\) メニューの [MIME tools]\(MIME ツール\) が強調表示されています。[MIME tools]\(MIME ツール\) メニューの [Base64 encode]\(Base64 エンコード\) が強調表示されています。" border="false":::
 
 3.  ベアラー トークンをコピーします。 この値を、Azure portal で Infor CloudSuite アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
 
@@ -103,7 +103,7 @@ Azure AD での自動ユーザー プロビジョニング用に Infor CloudSuit
 このセクションでは、Azure AD プロビジョニング サービスを構成し、Azure AD でのユーザーやグループの割り当てに基づいて Infor CloudSuite のユーザーやグループを作成、更新、無効化する手順について説明します。
 
 > [!TIP]
-> [Infor CloudSuite のシングル サインオンのチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloud-suite-tutorial)で説明している手順に従って、Infor CloudSuite で SAML ベースのシングル サインオンを有効にすることも選択できます。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> Infor CloudSuite で SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Infor CloudSuite シングル サインオンのチュートリアル](./infor-cloud-suite-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 > [!NOTE]
 > Infor CloudSuite の SCIM エンドポイントの詳細については、[こちら](https://docs.infor.com/mingle/12.0.x/en-us/minceolh/jho1449382121585.html#)を参照してください。
@@ -120,11 +120,11 @@ Azure AD での自動ユーザー プロビジョニング用に Infor CloudSuit
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://mingle-t20b-scim.mingle.awsdev.infor.com/INFORSTS_TST/v2/scim`」と入力します。 **[シークレット トークン]** に、先ほど取得したベアラー トークンの値を入力します。 **[テスト接続]** をクリックして、Azure AD から Infor CloudSuite への接続を確保します。 接続できない場合は、使用中の Infor CloudSuite アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

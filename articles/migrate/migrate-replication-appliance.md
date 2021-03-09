@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate レプリケーション アプライアンス
 description: エージェントベースの VMWare の移行のための Azure Migrate レプリケーション アプライアンスについて説明します。
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 8149613effc4519638cc9b80f7894874ef3eafe3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ec277bcc3e361561f54e72c54526d65487c113b4
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122100"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754098"
 ---
 # <a name="replication-appliance"></a>レプリケーション アプライアンス
 
@@ -129,7 +132,7 @@ VM | VM 上で実行される Mobility Service は、レプリケーション管
     - プロセス サーバーは、レプリケーション データを受信し、データを最適化して暗号化し、アウトバウンド ポート 443 経由で Azure ストレージに送信します。
 5. レプリケーション データ ログは、まず Azure のキャッシュ ストレージ アカウントに記録されます。 これらのログは処理され、データは Azure マネージド ディスクに格納されます。
 
-![Architecture](./media/migrate-replication-appliance/architecture.png)
+![図はレプリケーション プロセスのアーキテクチャを示しています。](./media/migrate-replication-appliance/architecture.png)
 
 ## <a name="appliance-upgrades"></a>アプライアンスのアップグレード
 

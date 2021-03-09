@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 38816b616179ec16e06e987f82b498085c34ba3f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2a02dc94c0dc0939e6c1eef624fc6fe65fb98ac6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327584"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147016"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする (Java)
 
@@ -48,9 +48,11 @@ ms.locfileid: "87327584"
 > [!NOTE]
 > IoT Hub は、Azure IoT Device SDK を介して多数のデバイス プラットフォームと言語 (C、.NET、Javascript など) をサポートしています。 Azure IoT Hub にデバイスを接続するための詳しい手順については、[Azure IoT デベロッパー センター](https://azure.microsoft.com/develop/iot)を参照してください。
 
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
-* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 JDK 8 のダウンロードを利用するには、「**長期サポート**」の「**Java 8**」を選択します。
+* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable)。 JDK 8 のダウンロードを利用するには、「**長期サポート**」の「**Java 8**」を選択します。
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -282,4 +284,4 @@ mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [IoT Edge を使用したデバイスのシミュレーション](../iot-edge/tutorial-simulate-device-linux.md)
+* [IoT Edge を使用したデバイスのシミュレーション](../iot-edge/quickstart-linux.md)

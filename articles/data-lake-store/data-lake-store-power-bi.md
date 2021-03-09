@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 282ac6f87d5ecff75e77b075ee1092f79b4923ad
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: bcc561cd5eea4372d798fff4580362ba0879c3a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192854"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91574196"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Power BI を使用して Azure Data Lake Storage Gen1 のデータを分析する
 この記事では、Power BI Desktop を使用して Azure Data Lake Storage Gen1 に格納されているデータを分析し、視覚化する方法を説明します。
@@ -27,7 +27,7 @@ ms.locfileid: "88192854"
 1. コンピューターで Power BI Desktop を起動します。
 2. **[ホーム]** リボンの **[データの取得]** をクリックしてから [詳細] をクリックします。 **[データの取得]** ダイアログ ボックスで、 **[Azure]** 、 **[Azure Data Lake Store]** 、 **[接続]** の順にクリックします。
    
-    ![Data Lake Storage Gen1 への接続](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Data Lake Storage Gen1 への接続")
+    ![[データの取得] ダイアログ ボックスのスクリーンショット。[Azure Data Lake Store] オプションが強調表示されて [接続] オプションが選択されています。](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Data Lake Storage Gen1 への接続")
 3. 開発段階にあるコネクタに関するダイアログ ボックスが表示された場合は、続行することを選択します。
 4. **[Azure Data Lake Store]** ダイアログ ボックスで、Data Lake Storage Gen1 アカウントの URL を指定してから **[OK]** をクリックします。
    
@@ -37,7 +37,7 @@ ms.locfileid: "88192854"
     ![Data Lake Storage Gen1 へのサインイン](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "Data Lake Storage Gen1 へのサインイン")
 6. 正常にサインインしたら、 **[接続]** をクリックします。
    
-    ![Data Lake Storage Gen1 への接続](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Data Lake Storage Gen1 への接続")
+    ![[Azure Data Lake Store] ダイアログ ボックスのスクリーンショット。[接続] オプションが選択されています。](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Data Lake Storage Gen1 への接続")
 7. 次のダイアログ ボックスに、Data Lake Storage Gen1 アカウントにアップロードしたファイルが表示されます。 情報を確認してから **[ロード]** をクリックします。
    
     ![Data Lake Storage Gen1 からデータをダウンロードする](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Data Lake Storage Gen1 からデータをダウンロードする")
@@ -52,19 +52,19 @@ ms.locfileid: "88192854"
     次の手順では、必要な形式でインポートされたデータを変換するためにクエリを更新します。
 9. **[ホーム]** リボンの **[クエリの編集]** をクリックします。
    
-    ![クエリの編集](./media/data-lake-store-power-bi/edit-queries.png "[クエリの編集]")
+    ![[ホーム] リボンのスクリーンショット。[クエリの編集] オプションが選択されています。](./media/data-lake-store-power-bi/edit-queries.png "[クエリの編集]")
 10. クエリ エディターで、 **[コンテンツ]** 列の下にある **[バイナリ]** をクリックします。
     
-    ![クエリの編集](./media/data-lake-store-power-bi/convert-query1.png "[クエリの編集]")
+    ![クエリ エディターのスクリーンショット。[コンテンツ] 列が選択されています。](./media/data-lake-store-power-bi/convert-query1.png "[クエリの編集]")
 11. アップロードした **Drivers.txt** ファイルを表すファイル アイコンが表示されます。 このファイルを右クリックしてから **[CSV]** をクリックします。    
     
-    ![クエリの編集](./media/data-lake-store-power-bi/convert-query2.png "[クエリの編集]")
+    ![クエリ エディターのスクリーンショット。[CSV] オプションが選択されています。](./media/data-lake-store-power-bi/convert-query2.png "[クエリの編集]")
 12. 出力は次のようになります。 これで、データは視覚エフェクトの作成に使用できる形式で利用できるようになりました。
     
-    ![クエリの編集](./media/data-lake-store-power-bi/convert-query3.png "[クエリの編集]")
+    ![クエリ エディターのスクリーンショット。想定どおりの出力が表示されています。](./media/data-lake-store-power-bi/convert-query3.png "[クエリの編集]")
 13. **[ホーム]** リボンで、 **[閉じて適用]** 、 **[閉じて適用]** の順にクリックします。
     
-    ![クエリの編集](./media/data-lake-store-power-bi/load-edited-query.png "[クエリの編集]")
+    ![[ホーム] リボンのスクリーンショット。[閉じて適用] オプションが選択されています。](./media/data-lake-store-power-bi/load-edited-query.png "[クエリの編集]")
 14. クエリが更新されたら、 **[フィールド]** タブに、視覚エフェクトで使用可能な新しいフィールドが表示されます。
     
     ![更新されたフィールド](./media/data-lake-store-power-bi/updated-query-fields.png "更新されたフィールド")

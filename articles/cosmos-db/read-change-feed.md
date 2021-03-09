@@ -4,19 +4,21 @@ description: この記事では、Azure Cosmos DB 内の変更フィードの読
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 23f99dc5c648948ce07f1b40106667d24906328a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 7021367e1230573343ddf57ccd399d998ad5280e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236796"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339276"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB の変更フィードの読み取り
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB の変更フィードは、プッシュ モデルかプル モデルのいずれかを使用して操作できます。 プッシュ モデルでは、サーバー (変更フィード) によって作業が、その作業を処理するためのビジネス ロジックを備えたクライアントにプッシュされます。 ただし、作業を確認して最後に処理された作業の状態を保存する場合の複雑さは、サーバー上で処理されます。
+Azure Cosmos DB の変更フィードは、プッシュ モデルかプル モデルのいずれかを使用して操作できます。 プッシュ モデルでは、変更フィード プロセッサによって、作業が、その作業を処理するためのビジネス ロジックを備えたクライアントにプッシュされます。 ただし、作業を確認して最後に処理された作業の状態を保存する場合の複雑さは、変更フィード プロセッサ内で処理されます。
 
 プル モデルでは、クライアントによって作業がサーバーからプルされる必要があります。 この場合、クライアントでは、作業を処理するだけでなく、最後に処理された作業の状態を格納したり、作業を並列処理する複数のクライアント間での負荷分散を処理したり、エラーを処理したりするためのビジネス ロジックが使用されます。
 
@@ -39,7 +41,7 @@ Azure Cosmos DB の変更フィードを使用するシナリオの多くでは�
 
 ### <a name="azure-functions"></a>Azure Functions
 
-変更フィードの使用にまだ慣れていない場合は、Azure Functions を使用するのが最も簡単な方法です。 シンプルな方法なので、変更フィードのほとんどのユース ケースで推奨されるオプションでもあります。 Azure Cosmos DB 用の Azure Functions トリガーを作成する場合、接続先のコンテナーを選択すれば、そのコンテナーに変更が加えられるたびに Azure Function がトリガーされます。 Azure Functions では、変更フィード プロセッサがバックグラウンドで使用されるため、変更処理がコンテナーの[パーティション](partition-data.md)間で自動的に並列化されます。
+変更フィードの使用にまだ慣れていない場合は、Azure Functions を使用するのが最も簡単な方法です。 シンプルな方法なので、変更フィードのほとんどのユース ケースで推奨されるオプションでもあります。 Azure Cosmos DB 用の Azure Functions トリガーを作成する場合、接続先のコンテナーを選択すれば、そのコンテナーに変更が加えられるたびに Azure Function がトリガーされます。 Azure Functions では、変更フィード プロセッサがバックグラウンドで使用されるため、変更処理がコンテナーの[パーティション](partitioning-overview.md)間で自動的に並列化されます。
 
 Azure Functions を使うと開発作業が簡単ですし、自分で変更フィード プロセッサをデプロイするよりもスピーディです。 トリガーは、Azure Functions ポータルを使用して作成することもできますし、SDK を使用してプログラムで作成することもできます。 Visual Studio と VS Code では、Azure Functions の作成がサポートされ、クロスプラットフォーム開発のために Azure Functions CLI を使用することもできます。 デスクトップでコードを記述してデバッグを行い、1 回のクリック操作で関数をデプロイできます。 詳しくは、[Azure Functions を使用したサーバーレス データベース コンピューティング](serverless-computing-database.md)および[変更フィードと Azure Functions の使用](change-feed-functions.md)に関する記事をご覧ください。
 
@@ -68,7 +70,7 @@ Azure Functions と同様、変更フィード プロセッサ ライブラリ�
 プル モデルでは、"最低 1 回" の配信保証は組み込まれていません。 プル モデルは、エラーの処理方法を決定するための、低レベルな制御を提供するものでます。
 
 > [!NOTE]
-> 変更フィード プル モデルは、現時点では、[Azure Cosmos DB .NET SDK でのみプレビュー](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.9.0-preview)段階です。 このプレビューは、他の SDK バージョンではまだ使用できません。
+> 変更フィード プル モデルは、現時点では、[Azure Cosmos DB .NET SDK でのみプレビュー](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.15.0-preview)段階です。 このプレビューは、他の SDK バージョンではまだ使用できません。
 
 ## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Cassandra と MongoDB の API の変更フィード
 

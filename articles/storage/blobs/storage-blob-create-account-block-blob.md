@@ -5,25 +5,22 @@ author: tamram
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/10/2020
+ms.date: 10/30/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 0e312cf49ee54020d0feb8d8e2f4c7a9bb77215a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 9350f9aeff90b75a4e1362f6fa2fa1b0d07f20cf
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89074544"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95997088"
 ---
 # <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage アカウントを作成する
 
 BlockBlobStorage アカウントの種類を使用すると、Premium のパフォーマンス特性を持つブロック BLOB を作成できます。 この種類のストレージ アカウントは、トランザクション レートが高い、または非常に高速なアクセス時間を必要とするワークロードに最適化されています。 この記事では、Azure portal、Azure CLI、または Azure PowerShell を使用して、BlockBlobStorage カウントを作成する方法について説明します。
 
-> [!NOTE]
-> ブロック BLOB ストレージ アカウントの階層型名前空間機能はパブリック プレビュー段階であり、米国東部、米国東部 2、米国中部、米国中南部、米国西部 2、英国南部、カナダ中部、オーストラリア東部の各リージョンで利用できます。 制限事項については、「[Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能](data-lake-storage-supported-blob-storage-features.md)」および「[既知の問題](data-lake-storage-known-issues.md)」を参照してください。 プレビューに登録するには、[こちらのフォーム](https://aka.ms/adlspremiumonboard)を参照してください。
-
-BlockBlobStorage アカウントの詳細については、「[Azure ストレージ アカウントの概要](https://docs.microsoft.com/azure/storage/common/storage-account-overview)」を参照してください。
+BlockBlobStorage アカウントの詳細については、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -119,12 +116,7 @@ Azure portal で BlockBlobStorage アカウントを作成するには、次の�
 
 8. **[詳細]** タブを選択します。
 
-9. データ分析用にストレージ アカウントを最適化する場合は、 **[階層構造の名前空間]** を **[有効]** に設定します。 それ以外の場合は、このオプションを既定値のままにします。
-
-   詳細については、「[Azure Data Lake Storage Gen2 の概要](data-lake-storage-introduction.md)」を参照してください。
-
-   > [!NOTE]
-   > ブロック BLOB ストレージ アカウントの階層型名前空間機能はパブリック プレビュー段階であり、米国東部、米国東部 2、米国中部、米国中南部、米国西部 2、英国南部、カナダ中部、オーストラリア東部の各リージョンで利用できます。 制限事項については、「[Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能](data-lake-storage-supported-blob-storage-features.md)」および「[既知の問題](data-lake-storage-known-issues.md)」を参照してください。 プレビューに登録するには、[こちらのフォーム](https://aka.ms/adlspremiumonboard)を参照してください。
+9. データ分析用にストレージ アカウントを最適化する場合は、 **[階層構造の名前空間]** を **[有効]** に設定します。 それ以外の場合は、このオプションを既定値のままにします。 BlockBlobStorage アカウントでこの設定を有効にすると、[Data Lake Storage の Premium レベル](premium-tier-for-data-lake-storage.md)が提供されます。  Data Lake Storage について詳しくは、「[Azure Data Lake Storage Gen2 の概要](data-lake-storage-introduction.md)」をご覧ください。
 
 8. **[確認および作成]** を選択して、ストレージ アカウントの設定を確認します。
 
@@ -165,10 +157,7 @@ Azure portal で BlockBlobStorage アカウントを作成するには、次の�
 
    New-AzStorageAccount -ResourceGroupName $resourcegroup -Name $storageaccount -Location $location -Kind "BlockBlobStorage" -SkuName "Premium_LRS"
    ```
-   データ分析用にストレージ アカウントを最適化する場合は、コマンドに `-EnableHierarchicalNamespace $True` を追加します。 詳細については、「[Azure Data Lake Storage Gen2 の概要](data-lake-storage-introduction.md)」を参照してください。
-
-   > [!NOTE]
-   > ブロック BLOB ストレージ アカウントの階層型名前空間機能はパブリック プレビュー段階であり、米国東部、米国東部 2、米国中部、米国中南部、米国西部 2、英国南部、カナダ中部、オーストラリア東部の各リージョンで利用できます。 制限事項については、「[Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能](data-lake-storage-supported-blob-storage-features.md)」および「[既知の問題](data-lake-storage-known-issues.md)」を参照してください。 プレビューに登録するには、[こちらのフォーム](https://aka.ms/adlspremiumonboard)を参照してください。
+   データ分析用にストレージ アカウントを最適化する場合は、コマンドに `-EnableHierarchicalNamespace $True` を追加します。 BlockBlobStorage アカウントでこの設定を有効にすると、[Data Lake Storage の Premium レベル](premium-tier-for-data-lake-storage.md)が提供されます。  Data Lake Storage について詳しくは、「[Azure Data Lake Storage Gen2 の概要](data-lake-storage-introduction.md)」をご覧ください。
 
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -199,15 +188,12 @@ Azure CLI を使用して、ブロック BLOB アカウントを作成するに�
     --sku "Premium_LRS"
    ```
 
-   データ分析用にストレージ アカウントを最適化する場合は、コマンドに `--hierarchical-namespace true` を追加します。 詳細については、「[Azure Data Lake Storage Gen2 の概要](data-lake-storage-introduction.md)」を参照してください。
+   データ分析用にストレージ アカウントを最適化する場合は、コマンドに `--hierarchical-namespace true` を追加します。 BlockBlobStorage アカウントでこの設定を有効にすると、[Data Lake Storage の Premium レベル](premium-tier-for-data-lake-storage.md)が提供されます。  Data Lake Storage について詳しくは、「[Azure Data Lake Storage Gen2 の概要](data-lake-storage-introduction.md)」をご覧ください。
 
-   > [!NOTE]
-   > ブロック BLOB ストレージ アカウントの階層型名前空間機能はパブリック プレビュー段階であり、米国東部、米国東部 2、米国中部、米国中南部、米国西部 2、英国南部、カナダ中部、オーストラリア東部の各リージョンで利用できます。 制限事項については、「[Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能](data-lake-storage-supported-blob-storage-features.md)」および「[既知の問題](data-lake-storage-known-issues.md)」を参照してください。 プレビューに登録するには、[こちらのフォーム](https://aka.ms/adlspremiumonboard)を参照してください。
-   
 ---
 
 ## <a name="next-steps"></a>次のステップ
 
-- ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](https://docs.microsoft.com/azure/storage/common/storage-account-overview)」をご覧ください。
+- ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。
 
-- リソース グループの詳細については、「[Azure Resource Manager の概要](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)」を参照してください。
+- リソース グループの詳細については、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」を参照してください。

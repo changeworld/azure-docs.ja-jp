@@ -7,12 +7,12 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: dms
-ms.openlocfilehash: 24a0d16a6ff052df4b7a9bcdd078542987b4fd50
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: a9c68bca4d50af734a0a2cd8a91c7e46d9b56ff1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661182"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963217"
 ---
 # <a name="quickstart-create-instance-of-azure-database-migration-service-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Database Migration Service のインスタンスを作成する
 
@@ -109,7 +109,7 @@ Write-Host "Press [ENTER] to continue..."
 テンプレートの作成手順について説明したチュートリアルについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [ チュートリアル: 初めての ARM テンプレートを作成してデプロイする](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [ チュートリアル: 初めての ARM テンプレートを作成してデプロイする](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 Azure Database Migration Service をデプロイするその他の方法については、以下を参照してください。 
 - [Azure Portal](quickstart-create-data-migration-service-portal.md)

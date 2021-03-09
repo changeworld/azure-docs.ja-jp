@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5189270a7b9de9ff5a222ad76ce46254ae5d2ee3
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d7d438b369c863660a032f101e466b6fadf639fa
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542961"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879716"
 ---
 # <a name="azure-encryption-overview"></a>Azure の暗号化の概要
 
@@ -53,7 +53,7 @@ Azure では、サービスが管理するキー、Key Vault でユーザーが�
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Windows 仮想マシンと Linux 仮想マシンは [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) を使用して保護できます。この暗号化サービスは、[Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) テクノロジと Linux [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) を使用してオペレーティング システム ディスクとデータ ディスクの両方をフル ボリューム暗号化で保護します。
+Windows 仮想マシンと Linux 仮想マシンは [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md) を使用して保護できます。この暗号化サービスは、[Windows BitLocker](/previous-versions/windows/it-pro/windows-vista/cc766295(v=ws.10)) テクノロジと Linux [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) を使用してオペレーティング システム ディスクとデータ ディスクの両方をフル ボリューム暗号化で保護します。
 
 暗号化キーとシークレットは、[Azure Key Vault](../../key-vault/general/overview.md) サブスクリプションで保護されます。 Azure Backup サービスを使うことにより、キー暗号化キー (KEK) 構成を使う暗号化された仮想マシン (VM) をバックアップしたり復元したりできます。
 
@@ -83,13 +83,13 @@ Key Vault のクライアント側暗号化の詳細について確認し、手�
 
 #### <a name="transparent-data-encryption"></a>透過的なデータ暗号化
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) は、[SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)、[Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) のデータ ファイルをリアルタイムで暗号化するために使用されます。その際、復旧時の可用性のためにデータベースのブート レコードに格納されるデータベース暗号化キー (DEK) が使用されます。
+[TDE](/sql/relational-databases/security/encryption/transparent-data-encryption-tde) は、[SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)、[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) のデータ ファイルをリアルタイムで暗号化するために使用されます。その際、復旧時の可用性のためにデータベースのブート レコードに格納されるデータベース暗号化キー (DEK) が使用されます。
 
 TDE は、AES と Triple Data Encryption Standard (3DES) の暗号化アルゴリズムを使用して、データとログ ファイルを保護します。 データベース ファイルの暗号化は、ページ レベルで実行されます。 暗号化されたデータベース内のページは、ディスクに書き込まれる前に暗号化され、メモリに読み込まれるときに暗号化が解除されます。 現在、新しく作成された Azure SQL データベースでは、TDE は既定で有効になっています。
 
 #### <a name="always-encrypted-feature"></a>Always Encrypted 機能
 
-Azure SQL の [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) 機能を使うと、クライアント アプリケーション内のデータを、Azure SQL Database に格納される前に暗号化することができます。 また、オンプレミス データベースの管理をサード パーティに委任することができ、データを所有して見ることができるユーザーと、データを管理するがデータにアクセスする必要のないユーザーの分離を維持できます。
+Azure SQL の [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 機能を使うと、クライアント アプリケーション内のデータを、Azure SQL Database に格納される前に暗号化することができます。 また、オンプレミス データベースの管理をサード パーティに委任することができ、データを所有して見ることができるユーザーと、データを管理するがデータにアクセスする必要のないユーザーの分離を維持できます。
 
 #### <a name="cell-level-or-column-level-encryption"></a>セル レベルまたは列レベルの暗号化
 
@@ -125,9 +125,9 @@ Microsoft を利用する顧客は、クラウド サービスと顧客の間を
 
 Azure Portal で Azure Storage を操作する際は、すべてのトランザクションが HTTPS 経由で行われます。 HTTPS 経由で Storage REST API を使用して Azure Storage を操作することもできます。 ストレージ アカウントに対して必要な安全な転送を有効にすると、ストレージ アカウント内のオブジェクトにアクセスするための REST API を呼び出す際に HTTPS の使用を強制できます。
 
-Azure Storage オブジェクトへのアクセス権を委任するときに使用できる Shared Access Signature ([SAS](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)) には、Shared Access Signature の使用時に HTTPS プロトコルのみを使用するよう指定できるオプションがあります。 この方法により、SAS トークンを指定したリンクを送信するときに誰でも適切なプロトコルを使用できます。
+Azure Storage オブジェクトへのアクセス権を委任するときに使用できる Shared Access Signature ([SAS](../../storage/common/storage-sas-overview.md)) には、Shared Access Signature の使用時に HTTPS プロトコルのみを使用するよう指定できるオプションがあります。 この方法により、SAS トークンを指定したリンクを送信するときに誰でも適切なプロトコルを使用できます。
 
-Azure File 共有にアクセスするために使用される [SMB 3.0](https://technet.microsoft.com/library/dn551363(v=ws.11).aspx#BKMK_SMBEncryption) は暗号化をサポートしており、Windows Server 2012 R2、Windows 8、Windows 8.1、Windows 10 で使用できます。 リージョンをまたがるアクセスや、デスクトップ上のアクセスも許可されます。
+Azure File 共有にアクセスするために使用される [SMB 3.0](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn551363(v=ws.11)#BKMK_SMBEncryption) は暗号化をサポートしており、Windows Server 2012 R2、Windows 8、Windows 8.1、Windows 10 で使用できます。 リージョンをまたがるアクセスや、デスクトップ上のアクセスも許可されます。
 
 クライアント側暗号化では、Azure Storage インスタンスに送信する前にデータを暗号化するため、ネットワーク間を行き交う際にはデータは暗号化されています。
 
@@ -143,7 +143,7 @@ Windows を実行している VM との間でやり取りされる転送中デ�
 
 ### <a name="rdp-sessions"></a>RDP セッション
 
-Windows クライアント コンピューターの[リモート デスクトップ プロトコル](https://msdn.microsoft.com/library/aa383015(v=vs.85).aspx) (RDP)、または RDP クライアントがインストールされた Mac を使用して、VM に接続し、サインインすることができます。 ネットワーク上の RDP セッション内の転送中データは TLS で保護できます。
+Windows クライアント コンピューターの[リモート デスクトップ プロトコル](/windows/win32/termserv/remote-desktop-protocol) (RDP)、または RDP クライアントがインストールされた Mac を使用して、VM に接続し、サインインすることができます。 ネットワーク上の RDP セッション内の転送中データは TLS で保護できます。
 
 リモート デスクトップを使用して、Azure の Linux VM に接続することもできます。
 
@@ -163,7 +163,7 @@ Windows クライアント コンピューターの[リモート デスクトッ
 
 ### <a name="point-to-site-vpns"></a>ポイント対サイト VPN
 
-ポイント対サイト VPN は、個々のクライアント コンピューターが Azure 仮想ネットワークにアクセスできるようにします。 VPN トンネルを作成するには、[Secure Socket Tunneling Protocol (SSTP)](https://technet.microsoft.com/library/2007.06.cableguy.aspx) が使われます。 VPN トンネルはファイアウォールを横断できます (トンネルは HTTPS 接続として認識されます)。 独自の内部公開キー基盤 (PKI) ルート証明機関 (CA) をポイント対サイト接続に使用できます。
+ポイント対サイト VPN は、個々のクライアント コンピューターが Azure 仮想ネットワークにアクセスできるようにします。 VPN トンネルを作成するには、[Secure Socket Tunneling Protocol (SSTP)](/previous-versions/technet-magazine/cc162322(v=msdn.10)) が使われます。 VPN トンネルはファイアウォールを横断できます (トンネルは HTTPS 接続として認識されます)。 独自の内部公開キー基盤 (PKI) ルート証明機関 (CA) をポイント対サイト接続に使用できます。
 
 Azure Portal を使用して、証明書認証または PowerShell を使用した仮想ネットワークへのポイント対サイト VPN 接続を構成できます。
 
@@ -181,7 +181,7 @@ Azure Portal、PowerShell、または Azure CLI を使用して、仮想ネッ�
 
 詳細については、次を参照してください。
 
-[Azure Portal でサイト間接続を作成する](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+[Azure Portal でサイト間接続を作成する](../../vpn-gateway/tutorial-site-to-site-portal.md)
 
 [PowerShell でサイト間接続を作成する](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 
@@ -201,9 +201,9 @@ Key Vault を使用すれば、組織はハードウェア セキュリティ �
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティの概要](get-started-overview.md)
+- [Azure セキュリティの概要](./overview.md)
 - [Azure のネットワーク セキュリティの概要](network-overview.md)
-- [Azure のデータベース セキュリティの概要](database-security-overview.md)
+- [Azure のデータベース セキュリティの概要](../../azure-sql/database/security-overview.md)
 - [Azure 仮想マシンのセキュリティの概要](virtual-machines-overview.md)
 - [保存データの暗号化](encryption-atrest.md)
 - [データ セキュリティと暗号化のベスト プラクティス](data-encryption-best-practices.md)

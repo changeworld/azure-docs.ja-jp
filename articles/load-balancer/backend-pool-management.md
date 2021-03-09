@@ -6,14 +6,14 @@ services: load-balancer
 author: asudbring
 ms.service: load-balancer
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 81fad1c77b917c1e3eaf7ddd200c3fea83cb0e0a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 0218bfef66e779a31d999c8d58bc1ce2691f46d4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589675"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179223"
 ---
 # <a name="backend-pool-management"></a>バックエンド プールの管理
 バックエンド プールは、ロード バランサーの重要なコンポーネントです。 バックエンド プールは、指定された負荷分散規則のトラフィックを処理するリソースのグループを定義します。
@@ -25,6 +25,8 @@ ms.locfileid: "88589675"
 既存の仮想マシンと仮想マシン スケール セットを使用する場合は、NIC によってバックエンド プールを構成します。 この方法では、リソースとバックエンド プールの間に最も直接的なリンクが構築されます。 
 
 後で仮想マシンと仮想マシン スケール セットを作成する予定の IP アドレス範囲を使用してバックエンド プールを事前に割り当てる場合は、IP アドレスと VNET ID の組み合わせによってバックエンド プールを構成します。
+
+同じロード バランサーに対して IP ベースおよび NIC ベースのバックエンド プールを構成することはできますが、NIC の対象となる背景のアドレスと IP アドレスとが同じプール内に混在する単一のバックエンド プールを作成することはできません。
 
 この記事の構成セクションでは、次のことに焦点を当てます。
 
@@ -45,14 +47,14 @@ ms.locfileid: "88589675"
 
 ### <a name="powershell"></a>PowerShell
 新しいバックエンド プールを作成します。
- 
+ 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"
 $loadBalancerName = "myLoadBalancer"
 $backendPoolName = "myBackendPool"
 
-$backendPool = 
-New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
+$backendPool = 
+New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
 ```
 
 新しいネットワーク インターフェイスを作成して、バックエンド プールに追加します。
@@ -81,7 +83,7 @@ $backendPoolName = "myBackendPool"
 
 $lb =
 Get-AzLoadBalancer -ResourceGroupName $res
-Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName 
+Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName 
 ```
 
 新しい仮想マシンを作成し、ネットワーク インターフェイスをアタッチして、バックエンド プールに配置します。
@@ -115,7 +117,7 @@ $vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -V
 
 ```azurecli-interactive
 az network lb address-pool create \
---resourceGroup myResourceGroup \
+--resource-group myResourceGroup \
 --lb-name myLB \
 --name myBackendPool 
 ```
@@ -179,9 +181,11 @@ JSON 要求本文:
           "subnet": {
             "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}/subnets/{subnet-name}"
           },
-          "loadBalancerBackendAddressPools": {
-                                    "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}"
-          }
+          "loadBalancerBackendAddressPools": [
+            {
+              "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}"
+            }
+          ]
         }
       }
     ]
@@ -253,15 +257,17 @@ JSON 要求本文:
 
 バックエンド プールのすべての管理は、次の例で強調されているように、バックエンド プール オブジェクトで直接実行されます。
 
-  >[!IMPORTANT] 
-  >この機能は現在プレビュー段階であり、次の制限事項があります。
-  >* 標準のロード バランサーのみ
-  >* バックエンド プール内の IP アドレスの上限は 100 個
-  >* バックエンド リソースは、ロード バランサーと同じ仮想ネットワークに存在する必要がある
-  >* この機能は Azure portal では現在サポートされていない
-  >* この機能では、ACI コンテナーは現在サポートされていない
-  >* ロード バランサーまたはロード バランサーに面するサービスは、ロード バランサーのバックエンド プールに配置できない
-  
+### <a name="limitations"></a>制限事項
+IP アドレスで構成されたバックエンド プールには、次の制限があります。
+  * 使用できるのは Standard ロード バランサーのみ
+  * バックエンド プール内の IP アドレスの上限は 100 個
+  * バックエンド リソースは、ロード バランサーと同じ仮想ネットワークに存在する必要がある
+  * IP ベースのバックエンド プールを使用するロード バランサーは、Private Link サービスとして機能することはできない
+  * この機能は Azure portal では現在サポートされていない
+  * この機能では、ACI コンテナーは現在サポートされていない
+  * ロード バランサーまたはロード バランサーに面するサービスは、ロード バランサーのバックエンド プールに配置できない
+  * インバウンド NAT 規則を IP アドレスで指定することはできない
+
 ### <a name="powershell"></a>PowerShell
 新しいバックエンド プールを作成します。
 
@@ -273,18 +279,18 @@ $vnetName = "myVnet"
 $location = "eastus"
 $nicName = "myNic"
 
-$backendPool = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName  
+$backendPool = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName  
 ```
 
 既存の仮想ネットワークから新しい IP を使用してバックエンド プールを更新します。
- 
+ 
 ```azurepowershell-interactive
-$virtualNetwork = 
-Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup 
- 
-$ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
- 
-$backendPool.LoadBalancerBackendAddresses.Add($ip1) 
+$virtualNetwork = 
+Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup 
+ 
+$ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
+ 
+$backendPool.LoadBalancerBackendAddresses.Add($ip1) 
 
 Set-AzLoadBalancerBackendAddressPool -InputObject $backendPool
 ```
@@ -292,7 +298,7 @@ Set-AzLoadBalancerBackendAddressPool -InputObject $backendPool
 ロード バランサーのバックエンド プール情報を取得して、そのバックエンド アドレスがバックエンド プールに追加されていることを確認します。
 
 ```azurepowershell-interactive
-Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName 
+Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName 
 ```
 ネットワーク インターフェイスを作成して、バックエンド プールに追加します。 IP アドレスをバックエンド アドレスの 1 つに設定します。
 
@@ -521,325 +527,7 @@ JSON 要求本文:
   }
 }
 ```
-
-### <a name="resource-manager-template"></a>Resource Manager テンプレート
-ロード バランサーとバックエンド プールを作成し、バックエンド プールにバックエンド アドレスを設定します。
-```
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "loadBalancers_myLB_location": {
-            "type": "SecureString"
-        },
-        "loadBalancers_myLB_location_1": {
-            "type": "SecureString"
-        },
-        "backendAddressPools_myBackendPool_location": {
-            "type": "SecureString"
-        },
-        "backendAddressPools_myBackendPool_location_1": {
-            "type": "SecureString"
-        },
-        "loadBalancers_myLB_name": {
-            "defaultValue": "myLB",
-            "type": "String"
-        },
-        "virtualNetworks_myVNET_externalid": {
-            "defaultValue": "/subscriptions/6bb4a28a-db84-4e8a-b1dc-fabf7bd9f0b2/resourceGroups/ErRobin4/providers/Microsoft.Network/virtualNetworks/myVNET",
-            "type": "String"
-        }
-    },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Network/loadBalancers",
-            "apiVersion": "2020-04-01",
-            "name": "[parameters('loadBalancers_myLB_name')]",
-            "location": "eastus",
-            "sku": {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "LoadBalancerFrontEnd",
-                        "properties": {
-                            "privateIPAddress": "10.0.0.7",
-                            "privateIPAllocationMethod": "Dynamic",
-                            "subnet": {
-                                "id": "[concat(parameters('virtualNetworks_myVNET_externalid'), '/subnets/Subnet-1')]"
-                            },
-                            "privateIPAddressVersion": "IPv4"
-                        }
-                    }
-                ],
-                "backendAddressPools": [
-                    {
-                        "name": "myBackendPool",
-                        "properties": {
-                            "loadBalancerBackendAddresses": [
-                                {
-                                    "name": "addr1",
-                                    "properties": {
-                                        "ipAddress": "10.0.0.4",
-                                        "virtualNetwork": {
-                                            "location": "[parameters('loadBalancers_myLB_location')]"
-                                        }
-                                    }
-                                },
-                                {
-                                    "name": "addr2",
-                                    "properties": {
-                                        "ipAddress": "10.0.0.5",
-                                        "virtualNetwork": {
-                                            "location": "[parameters('loadBalancers_myLB_location_1')]"
-                                        }
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                ],
-                "loadBalancingRules": [],
-                "probes": [],
-                "inboundNatRules": [],
-                "outboundRules": [],
-                "inboundNatPools": []
-            }
-        },
-        {
-            "type": "Microsoft.Network/loadBalancers/backendAddressPools",
-            "apiVersion": "2020-04-01",
-            "name": "[concat(parameters('loadBalancers_myLB_name'), '/myBackendPool')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_myLB_name'))]"
-            ],
-            "properties": {
-                "loadBalancerBackendAddresses": [
-                    {
-                        "name": "addr1",
-                        "properties": {
-                            "ipAddress": "10.0.0.4",
-                            "virtualNetwork": {
-                                "location": "[parameters('backendAddressPools_myBackendPool_location')]"
-                            }
-                        }
-                    },
-                    {
-                        "name": "addr2",
-                        "properties": {
-                            "ipAddress": "10.0.0.5",
-                            "virtualNetwork": {
-                                "location": "[parameters('backendAddressPools_myBackendPool_location_1')]"
-                            }
-                        }
-                    }
-                ]
-            }
-        }
-    ]
-}
-```
-
-仮想マシンとアタッチされたネットワーク インターフェイスを作成します。 ネットワーク インターフェイスの IP アドレスをバックエンド アドレスの 1 つに設定します。
-```
-{
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storageAccountName": {
-      "type": "String",
-      "metadata": {
-        "description": "Name of storage account"
-      }
-    },
-    "storageAccountDomain": {
-      "type": "String",
-      "metadata": {
-        "description": "The domain of the storage account to be created."
-      }
-    },
-    "adminUsername": {
-      "type": "String",
-      "metadata": {
-        "description": "Admin username"
-      }
-    },
-    "adminPassword": {
-      "type": "SecureString",
-      "metadata": {
-        "description": "Admin password"
-      }
-    },
-    "vmName": {
-      "defaultValue": "myVM",
-      "type": "String",
-      "metadata": {
-        "description": "Prefix to use for VM names"
-      }
-    },
-    "imagePublisher": {
-      "type": "String",
-      "metadata": {
-        "description": "Image Publisher"
-      }
-    },
-    "imageOffer": {
-      "defaultValue": "WindowsServer",
-      "type": "String",
-      "metadata": {
-        "description": "Image Offer"
-      }
-    },
-    "imageSKU": {
-      "defaultValue": "2012-R2-Datacenter",
-      "type": "String",
-      "metadata": {
-        "description": "Image SKU"
-      }
-    },
-    "lbName": {
-      "defaultValue": "myLB",
-      "type": "String",
-      "metadata": {
-        "description": "Load Balancer name"
-      }
-    },
-    "nicName": {
-      "defaultValue": "nic",
-      "type": "String",
-      "metadata": {
-        "description": "Network Interface name prefix"
-      }
-    },
-    "privateIpAddress": {
-      "defaultValue": "10.0.0.5",
-      "type": "String",
-      "metadata": {
-        "description": "Private IP Address of the VM"
-      }
-    },
-    "vnetName": {
-      "defaultValue": "myVNET",
-      "type": "String",
-      "metadata": {
-        "description": "VNET name"
-      }
-    },
-    "vmSize": {
-      "defaultValue": "Standard_A1",
-      "type": "String",
-      "metadata": {
-        "description": "Size of the VM"
-      }
-    },
-    "storageLocation": {
-      "type": "String",
-      "metadata": {
-        "description": "Location of the Storage Account."
-      }
-    },
-    "location": {
-      "type": "String",
-      "metadata": {
-        "description": "Location to deploy all the resources in."
-      }
-    }
-  },
-  "variables": {
-    "networkSecurityGroupName": "networkSecurityGroup1",
-    "storageAccountType": "Standard_LRS",
-    "subnetName": "Subnet-1",
-    "publicIPAddressType": "Static",
-    "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('vnetName'))]",
-    "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables ('subnetName'))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2015-05-01-preview",
-      "name": "[parameters('storageAccountName')]",
-      "location": "[parameters('storageLocation')]",
-      "properties": {
-        "accountType": "[variables('storageAccountType')]"
-      }
-    },
-    {
-      "type": "Microsoft.Network/networkSecurityGroups",
-      "apiVersion": "2016-03-30",
-      "name": "[variables('networkSecurityGroupName')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "securityRules": []
-      }
-    },
-    {
-      "type": "Microsoft.Network/networkInterfaces",
-      "apiVersion": "2015-05-01-preview",
-      "name": "[parameters('nicName')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "ipConfigurations": [
-          {
-            "name": "ipconfig1",
-            "properties": {
-              "privateIPAllocationMethod": "Static",
-              "privateIpAddress": "[parameters('privateIpAddress')]",
-              "subnet": {
-                "id": "[variables('subnetRef')]"
-              }
-            }
-          }
-        ]
-      }
-    },
-    {
-      "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2015-05-01-preview",
-      "name": "[parameters('vmName')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]",
-        "[parameters('nicName')]"
-      ],
-      "properties": {
-        "hardwareProfile": {
-          "vmSize": "[parameters('vmSize')]"
-        },
-        "osProfile": {
-          "computername": "[parameters('vmName')]",
-          "adminUsername": "[parameters('adminUsername')]",
-          "adminPassword": "[parameters('adminPassword')]"
-        },
-        "storageProfile": {
-          "imageReference": {
-            "publisher": "[parameters('imagePublisher')]",
-            "offer": "[parameters('imageOffer')]",
-            "sku": "[parameters('imageSKU')]",
-            "version": "latest"
-          },
-          "osDisk": {
-            "name": "osdisk",
-            "vhd": {
-              "uri": "[concat('http://',parameters('storageAccountName'),'.blob.',parameters('storageAccountDomain'),'/vhds/','osdisk', '.vhd')]"
-            },
-            "caching": "ReadWrite",
-            "createOption": "FromImage"
-          }
-        },
-        "networkProfile": {
-          "networkInterfaces": [
-            {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('nicName'))]"
-            }
-          ]
-        }
-      }
-    }
-  ]
-}
-```
+  
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure Load Balancer のバックエンド プール管理についてと、IP アドレスと仮想ネットワークを使用してバックエンド プールを構成する方法について学習しました。
 

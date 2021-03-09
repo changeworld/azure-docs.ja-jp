@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 396344ba90aa3850d7d23dc40d6df95f6d1f6c3f
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279518"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996578"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>ユーザー プライバシーと Azure Active Directory パススルー認証
 
@@ -67,9 +67,9 @@ Foreach ($file in $Files) {
 
 ### <a name="delete-authentication-agent-event-logs"></a>認証エージェントのイベント ログを削除する
 
-この製品では、**Windows イベント ログ**が作成されることもあります。 詳細については、[こちらの記事](/windows/win32/wes/windows-event-log)をご覧ください。
+この製品では、**Windows イベント ログ** が作成されることもあります。 詳細については、[こちらの記事](/windows/win32/wes/windows-event-log)をご覧ください。
 
-パススルー認証エージェントに関するログを表示するには、サーバーで**イベント ビューアー** アプリケーションを開き、**アプリケーションとサービス ログ\Microsoft\AzureAdConnect\AuthenticationAgent\Admin** の下を調べます。
+パススルー認証エージェントに関するログを表示するには、サーバーで **イベント ビューアー** アプリケーションを開き、**アプリケーションとサービス ログ\Microsoft\AzureAdConnect\AuthenticationAgent\Admin** の下を調べます。
 
 ### <a name="delete-authentication-agent-trace-log-files"></a>認証エージェント トレース ログ ファイルを削除する
 
@@ -91,11 +91,11 @@ Foreach ($file in $files) {
 このスクリプトを 48 時間ごとに実行するようにスケジュールするには、次の手順に従います。
 
 1.  拡張子が ".PS1" のファイルにスクリプトを保存します。
-2.  **コントロール パネル**を開き、 **[システムとセキュリティ]** をクリックします。
+2.  **コントロール パネル** を開き、 **[システムとセキュリティ]** をクリックします。
 3.  **[管理ツール]** で、 **[タスクのスケジュール]** をクリックします。
-4.  **タスク スケジューラ**で、 **[Task Schedule Library]\(タスク スケジュール ライブラリ\)** を右クリックし、 **[基本タスクの作成...]** をクリックします
+4.  **タスク スケジューラ** で、 **[Task Schedule Library]\(タスク スケジュール ライブラリ\)** を右クリックし、 **[基本タスクの作成...]** をクリックします
 5.  新しいタスクの名前を入力し、 **[次へ]** をクリックします。
-6.  **タスク トリガー**として **[毎日]** を選択し、 **[次へ]** をクリックします。
+6.  **タスク トリガー** として **[毎日]** を選択し、 **[次へ]** をクリックします。
 7.  繰り返しを [2 日] に設定し、 **[次へ]** をクリックします。
 8.  アクションとして **[プログラムを起動する]** を選択し、 **[次へ]** をクリックします。
 9.  プログラム/スクリプトのボックスに「**PowerShell**」と入力し、 **[引数の追加 (オプション)]** というラベルの付いたボックスに、先ほど作成したスクリプトへの完全なパスを入力して、 **[次へ]** をクリックします。

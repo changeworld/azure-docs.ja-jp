@@ -1,20 +1,20 @@
 ---
-title: クイック スタート:Azure CLI で Azure Static Web Apps を使用して静的 Web アプリを初めてビルドする
-description: Azure CLI を使用して Azure Static Web Apps インスタンスをビルドする方法について学習します。
+title: 'クイックスタート: CLI を使用して Azure Static Web Apps で最初の静的サイトを構築する'
+description: Azure CLI を使用して、静的サイトを Azure Static Web Apps にデプロイする方法について説明します。
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 7e0fdbc50dd36e4ea23903a5929735c1c83bd394
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 0de65c4546f5e87377b119370ee629f5a365b24e
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752870"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650536"
 ---
-# <a name="quickstart-building-your-first-static-web-app-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して静的 Web アプリを初めてビルドする
+# <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>クイックスタート: Azure CLI を使用して最初の静的サイトを構築する
 
 Azure Static Web Apps では、GitHub リポジトリからアプリをビルドすることによって、運用環境に Web サイトが発行されます。 このクイックスタートでは、Azure CLI を使用して、Web アプリケーションを Azure Static Web Apps にデプロイします。
 
@@ -25,7 +25,7 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 - [GitHub](https://github.com) アカウント
 - [GitHub の個人用アクセス トークン](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)
 - [Azure](https://portal.azure.com) アカウント
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) のインストール (バージョン 2.8.0 以上)
+- [Azure CLI](/cli/azure/install-azure-cli) のインストール (バージョン 2.8.0 以上)
 
 [!INCLUDE [create repository from template](../../includes/static-web-apps-get-started-create-repo.md)]
 
@@ -46,7 +46,7 @@ cd my-first-static-web-app
 
 1. 次のコマンドを使用して、Azure CLI にサインインします。
 
-    ```bash
+    ```azurecli
     az login
     ```
 
@@ -54,51 +54,51 @@ cd my-first-static-web-app
 
     # <a name="no-framework"></a>[フレームワークなし](#tab/vanilla-javascript)
 
-    ```bash
+    ```azurecli
     az staticwebapp create \
         -n my-first-static-web-app \
         -g <RESOURCE_GROUP_NAME> \
         -s https://github.com/<YOUR_GITHUB_ACCOUNT_NAME>/my-first-static-web-app \
         -l <LOCATION> \
-        -b master \
+        -b main \
         --token <YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>
     ```
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    ```bash
+    ```azurecli
     az staticwebapp create \
         -n my-first-static-web-app \
         -g <RESOURCE_GROUP_NAME> \
         -s https://github.com/<YOUR_GITHUB_ACCOUNT_NAME>/my-first-static-web-app \
         -l <LOCATION> \
-        -b master \
+        -b main \
         --app-artifact-location "dist/angular-basic" \
         --token <YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>
     ```
 
     # <a name="react"></a>[React](#tab/react)
 
-    ```bash
+    ```azurecli
     az staticwebapp create \
         -n my-first-static-web-app \
         -g <RESOURCE_GROUP_NAME> \
         -s https://github.com/<YOUR_GITHUB_ACCOUNT_NAME>/my-first-static-web-app \
         -l <LOCATION> \
-        -b master \
+        -b main \
         --app-artifact-location "build" \
         --token <YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>
     ```
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
-    ```bash
+    ```azurecli
     az staticwebapp create \
         -n my-first-static-web-app \
         -g <RESOURCE_GROUP_NAME> \
         -s https://github.com/<YOUR_GITHUB_ACCOUNT_NAME>/my-first-static-web-app \
         -l <LOCATION> \
-        -b master \
+        -b main \
         --app-artifact-location "dist" \
         --token <YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>
     ```
@@ -127,9 +127,9 @@ cd my-first-static-web-app
 
 このアプリケーションを引き続き使用しない場合は、次のコマンドを実行して Azure Static Web Apps インスタンスを削除することができます。
 
-```bash
+```azurecli
 az staticwebapp delete \
-    --name my-first-static-web-app
+    --name my-first-static-web-app \
     --resource-group my-first-static-web-app
 ```
 

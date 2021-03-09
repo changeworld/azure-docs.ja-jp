@@ -2,14 +2,14 @@
 title: 仮想ネットワークでプールをプロビジョニングする
 description: コンピューティング ノードがネットワーク内の他の VM (ファイル サーバーなど) と安全に通信できるように、Azure 仮想ネットワークで Batch プールを作成する方法。
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 01/13/2021
 ms.custom: seodec18
-ms.openlocfilehash: cb5cda16cd9405f0cbe91a3f88be7dc3f582d21b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: bedb0cbd826e2891560320ed11c0ba28e07f8e88
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142773"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165758"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>仮想ネットワーク内に Azure Batch プールを作成する
 
@@ -35,7 +35,7 @@ Azure Batch プールを作成すると、指定した [Azure 仮想ネットワ
 
 ## <a name="create-a-pool-with-a-vnet-in-the-azure-portal"></a>Azure portal で VNet を含むプールを作成する
 
-VNet を作成し、それにサブネットを割り当てたら、その VNet で Batch プールを作成できます。 次の手順に従って、Azure Portal でプールを作成します。 
+VNet を作成し、それにサブネットを割り当てたら、その VNet で Batch プールを作成できます。 次の手順に従って、Azure Portal でプールを作成します。 
 
 1. Azure Portal の Batch アカウントに移動します。 このアカウントは、使用する予定の VNet を含むリソース グループと同じサブスクリプションおよびリージョン内にある必要があります。
 2. 左側の **[設定]** ウィンドウで、 **[プール]** メニュー項目を選択します。

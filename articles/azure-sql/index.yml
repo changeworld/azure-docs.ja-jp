@@ -10,16 +10,16 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: landing-page
-  author: MashaMSFT
-  ms.author: mathoma
-  ms.reviewer: carlrab
+  author: stevestein
+  ms.author: sstein
+  ms.reviewer: 
   ms.date: 10/30/2019
-  ms.openlocfilehash: 03f1f908983487bb3ee5be88ced36a0848a731cc
-  ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+  ms.openlocfilehash: 91221735001f55974f6aba4b6fcae39a92834da8
+  ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/19/2020
-  ms.locfileid: "88590440"
+  ms.lasthandoff: 11/13/2020
+  ms.locfileid: "94593894"
 landingContent:
 - title: Azure SQL Database
   linkLists:
@@ -117,6 +117,16 @@ landingContent:
       url: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
     - text: パフォーマンスに関するガイドライン
       url: virtual-machines/windows/performance-guidelines-best-practices.md
+- title: SQL Server からの移行
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Azure SQL データベース
+      url: migration-guides/database/sql-server-to-sql-database-overview.md
+    - text: Azure SQL Managed Instance
+      url: migration-guides/managed-instance/sql-server-to-managed-instance-overview.md
+    - text: Azure VM での SQL Server
+      url: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
 - title: 接続とクエリ
   linkLists:
   - linkListType: quickstart
@@ -137,40 +147,6 @@ landingContent:
       url: database/connect-query-dotnet-core.md
     - text: Python
       url: database/connect-query-python.md
-- title: 開発
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: アプリケーション開発
-      url: database/develop-overview.md
-    - text: ディザスター リカバリー アプリの設計
-      url: database/designing-cloud-solutions-for-disaster-recovery.md
-    - text: ローリング アップグレードの管理 (SQL DB)
-      url: database/manage-application-rolling-upgrade.md
-    - text: 開発戦略 (SQL VM)
-      url: virtual-machines/windows/application-patterns-development-strategies.md
-    - text: SaaS データベース テナント パターン
-      url: database/saas-tenancy-app-design-patterns.md
-  - linkListType: how-to-guide
-    links:
-    - text: 最初のデータベースの設計 (SSMS)
-      url: database/design-first-database-tutorial.md
-    - text: 最初のデータベースの設計 (C#)
-      url: database/design-first-database-csharp-tutorial.md
-- title: Azure SQL について学習する
-  linkLists:
-  - linkListType: learn
-    links:
-    - text: 初心者向け Azure SQL
-      url: https://aka.ms/azuresql4beginners
-    - text: Azure SQL の基礎
-      url: https://docs.microsoft.com/learn/paths/azure-sql-fundamentals/
-    - text: Azure SQL のハンズオン ラボ
-      url: https://aka.ms/asqlworkshop
-    - text: Azure SQL の短期集中講座
-      url: https://aka.ms/azuresqlbootcamp
-    - text: 学習用 SQL リソース
-      url: /sql/sql-server/educational-sql-resources
 - title: リファレンス
   linkLists:
   - linkListType: deploy
@@ -198,8 +174,42 @@ landingContent:
     - text: Transact-SQL (T-SQL)
       url: /sql/t-sql/language-reference
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/sql
+      url: /cli/azure/sql
     - text: PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.sql
+      url: /powershell/module/az.sql
     - text: REST API
-      url: https://docs.microsoft.com/rest/api/sql/
+      url: /rest/api/sql/
+- title: Azure SQL について学習する
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: 初心者向け Azure SQL
+      url: https://aka.ms/azuresql4beginners
+    - text: Azure SQL の基礎
+      url: /learn/paths/azure-sql-fundamentals/
+    - text: Azure SQL のハンズオン ラボ
+      url: https://aka.ms/asqlworkshop
+    - text: Azure SQL の短期集中講座
+      url: https://aka.ms/azuresqlbootcamp
+    - text: 学習用 SQL リソース
+      url: /sql/sql-server/educational-sql-resources
+- title: 開発
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: アプリケーション開発
+      url: database/develop-overview.md
+    - text: ディザスター リカバリー アプリの設計
+      url: database/designing-cloud-solutions-for-disaster-recovery.md
+    - text: ローリング アップグレードの管理 (SQL DB)
+      url: database/manage-application-rolling-upgrade.md
+    - text: 開発戦略 (SQL VM)
+      url: virtual-machines/windows/application-patterns-development-strategies.md
+    - text: SaaS データベース テナント パターン
+      url: database/saas-tenancy-app-design-patterns.md
+  - linkListType: how-to-guide
+    links:
+    - text: 最初のデータベースの設計 (SSMS)
+      url: database/design-first-database-tutorial.md
+    - text: 最初のデータベースの設計 (C#)
+      url: database/design-first-database-csharp-tutorial.md

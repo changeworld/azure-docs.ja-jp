@@ -12,24 +12,24 @@ ms.workload: identity
 ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: aaddev devx-track-js
+ms.openlocfilehash: 53294a30b38bed7ab7516443277cac24e4fef4c1
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119792"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063724"
 ---
-# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>JavaScript 用 Microsoft Authentication Library を使用して Azure AD B2C と連携する
+# <a name="use-the-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>JavaScript 用 Microsoft Authentication Library を使用して Azure AD B2C と連携する
 
-[JavaScript 用 Microsoft Authentication Library (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) を使用すると、JavaScript 開発者は [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/overview.md) を使用して、ソーシャルおよびローカル ID でユーザーを認証できます。
+[JavaScript 用 Microsoft Authentication Library (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) を使用すると、JavaScript 開発者は [Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure AD B2C) を使用して、ソーシャルおよびローカル ID でユーザーを認証できます。
 
 ID 管理サービスとして Azure AD B2C を使用すると、顧客がアプリケーションを使用するときにサインアップ、サインイン、自分のプロファイルの管理を行う方法をカスタマイズして制御できます。 Azure AD B2C では、認証プロセス中にアプリケーションで表示される UI をブランド化し、カスタマイズすることもできます。
 
 以降のセクションでは、次の方法について説明します。
 
 - Node.js Web API を保護する
-- シングルページ アプリケーション (SPA) でのサインインをサポートし、*その*保護された Web API を呼び出す
+- シングルページ アプリケーション (SPA) でのサインインをサポートし、*その* 保護された Web API を呼び出す
 - パスワード リセットのサポートを有効にする
 
 ## <a name="prerequisites"></a>前提条件
@@ -56,22 +56,28 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="step-3-configure-authentication"></a>手順 3:認証を構成する。
 
-1. サンプルの `config.js` ファイルを開きます。
+1. サンプルの *config.json* ファイルを開きます。
 
-2. 以前にアプリケーションの登録中に取得したアプリケーション資格情報を使用してサンプルを構成します。 次のコード行を、その各値をクライアント ID、ホスト、テナント ID、ポリシー名の名前に置き換えることによって変更します。
+2. 以前にアプリケーションの登録中に取得したアプリケーション資格情報を使用してサンプルを構成します。 次のコード行の値を実際のテナント名、クライアント ID、ポリシー名に置き換えて変更します。
 
-```JavaScript
-const clientID = "<Application ID for your Node.js web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
-const b2cDomainHost = "<Domain of your B2C host eg. fabrikamb2c.b2clogin.com>";
-const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (GUID)
-const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
-```
+    ```json
+         "credentials": {
+             "tenantName": "<your-tenant-name>",
+             "clientID": "<your-webapi-application-ID>"
+         },
+         "policies": {
+             "policyName": "B2C_1_signupsignin1"
+         },
+         "resource": {
+             "scope": ["demo.read"] 
+         },
+    ```
 
 詳細については、この [Node.js B2C Web API のサンプル](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)を確認してください。
 
 ## <a name="javascript-spa"></a>JavaScript SPA
 
-次の手順は、**シングルページ アプリケーション**が Azure AD B2C を使用して、サインアップ、サインイン、保護された Web API の呼び出しを行う方法を示しています。
+次の手順は、**シングルページ アプリケーション** が Azure AD B2C を使用して、サインアップ、サインイン、保護された Web API の呼び出しを行う方法を示しています。
 
 ### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 
@@ -203,7 +209,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
     :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Azure AD B2C によって示されるパスワード リセット フロー画面" border="false":::
 
-    エラーコードと例外の処理の詳細については、[MSAL のエラーと例外コード](msal-handling-exceptions.md)に関するページを参照してください。
+    エラーコードと例外の処理の詳細については、[MSAL のエラーと例外コード](msal-error-handling-js.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -211,4 +217,4 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 - [ユーザー フロー](../../active-directory-b2c/tutorial-create-user-flows.md)
 - [カスタム ポリシー](../../active-directory-b2c/custom-policy-get-started.md)
-- [UX のカスタマイズ](../../active-directory-b2c/custom-policy-configure-user-input.md)
+- [UX のカスタマイズ](../../active-directory-b2c/configure-user-input.md)

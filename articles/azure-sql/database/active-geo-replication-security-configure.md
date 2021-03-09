@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3699191229a53735a62235cf8688cdfab9335339
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 317b530fbaa34ca5689bb505126892e4eba06bd9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963650"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674807"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database のセキュリティを geo リストアやフェールオーバー用に構成し、管理する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "85963650"
 
 ## <a name="disaster-recovery-with-contained-users"></a>包含ユーザーによる障害復旧
 
-従来のユーザーは master データベース内のログインにマップする必要がありましたが、包含ユーザーは、データベース自体で完全に管理されます。 これには 2 つ利点があります。 ディザスター リカバリーのシナリオでは、データベースがユーザーを管理するため、ユーザーは追加の構成なしで、新しいプライマリ データベースまたは geo リストアを使用して復旧されたデータベースに引き続き接続できます。 また、ログインの観点からは、この構成を使用することで、スケーラビリティとパフォーマンスを向上できる可能性があります。 詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
+従来のユーザーは master データベース内のログインにマップする必要がありましたが、包含ユーザーは、データベース自体で完全に管理されます。 これには 2 つ利点があります。 ディザスター リカバリーのシナリオでは、データベースがユーザーを管理するため、ユーザーは追加の構成なしで、新しいプライマリ データベースまたは geo リストアを使用して復旧されたデータベースに引き続き接続できます。 また、ログインの観点からは、この構成を使用することで、スケーラビリティとパフォーマンスを向上できる可能性があります。 詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](/sql/relational-databases/security/contained-database-users-making-your-database-portable)」を参照してください。
 
 主なトレードオフは、大規模なディザスター リカバリー プロセスの管理が困難になることです。 同じログインを使用するデータベースが複数ある場合、複数のデータベースで包含ユーザーを使用して資格情報を維持すると、包含ユーザーの利点が損なわれる場合があります。 たとえば、パスワード ローテーション ポリシーでは、マスター データベースで 1 回だけログイン用パスワードを変更するのではなく、複数のデータベースで一貫して変更を行う必要があります。 このような理由から、同じユーザー名とパスワードを使用するデータベースが複数ある場合、包含ユーザーの使用は推奨されません。
 
@@ -34,7 +34,7 @@ ms.locfileid: "85963650"
 包含ユーザーではなくログインとユーザーを使用している場合は、追加の手順を実行して、マスター データベースに同じログインが存在することを確認する必要があります。 次のセクションでは、関連する手順とその他の考慮事項について概要を説明します。
 
   >[!NOTE]
-  > Azure Active Directory (AAD) ログインを使用してデータベースを管理することもできます。 詳細については、[Azure SQL のログインとユーザー](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins)に関する記事を参照してください。
+  > Azure Active Directory (AAD) ログインを使用してデータベースを管理することもできます。 詳細については、[Azure SQL のログインとユーザー](./logins-create-manage.md)に関する記事を参照してください。
 
 ### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>セカンダリ データベースまたは復旧されたデータベースへのユーザー アクセスの設定
 
@@ -82,7 +82,7 @@ WHERE [type_desc] = 'SQL_USER'
 ```
 
 > [!NOTE]
-> **INFORMATION_SCHEMA** ユーザーと **sys** ユーザーの SID は *NULL* で、**ゲスト** SID は **0x00** です。 データベースの作成者が **DbManager** のメンバーではなくサーバー管理者だった場合、**dbo** SID は *0x01060000000001648000000000048454* で始まることがあります。
+> **INFORMATION_SCHEMA** ユーザーと **sys** ユーザーの SID は *NULL* で、 **ゲスト** SID は **0x00** です。 データベースの作成者が **DbManager** のメンバーではなくサーバー管理者だった場合、 **dbo** SID は *0x01060000000001648000000000048454* で始まることがあります。
 
 #### <a name="3-create-the-logins-on-the-target-server"></a>3.ターゲット サーバーへのログインを作成する
 
@@ -106,7 +106,7 @@ SID = <desired login SID>
 ## <a name="next-steps"></a>次のステップ
 
 * データベースへのアクセスとログインの管理の詳細については、[SQL Database のセキュリティ:データベースのアクセスとログインのセキュリティの管理](logins-create-manage.md)を参照してください。
-* 包含データベース ユーザーの詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
+* 包含データベース ユーザーの詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](/sql/relational-databases/security/contained-database-users-making-your-database-portable)」を参照してください。
 * アクティブ geo レプリケーションについては、[アクティブ geo レプリケーション](active-geo-replication-overview.md)に関するページを参照してください。
 * 自動フェールオーバー グループについては、[自動フェールオーバー グループ](auto-failover-group-overview.md)に関するページを参照してください。
 * geo リストアの使用方法については、[geo リストア](recovery-using-backups.md#geo-restore)を参照してください。

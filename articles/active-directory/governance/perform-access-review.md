@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b672cca97e70c97a5dccb1ca54daccd6c171932
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5cd7a5737b2d13e63eabbbddd076cfc7aff83ac
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077987"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746798"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループおよびアプリケーションに対するアクセスをレビューする
 
@@ -33,11 +33,11 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 - **電子メール**:
 
 >[!IMPORTANT]
-> 電子メールの受信に遅延が生じる可能性があり、場合によっては最大 24 時間かかることがあります。 すべての電子メールを確実に受信するために azure-noreply@microsoft.com をホワイトリストに登録します。
+> 電子メールの受信に遅延が生じる可能性があり、場合によっては最大 24 時間かかることがあります。 すべてのメールを確実に受信するため、azure-noreply@microsoft.com を信頼できる宛先のリストに追加してください。
 
 1. アクセス レビューを実行するように求める Microsoft からのメールを見つけます。 グループに対するアクセスをレビューするように求めるメールの例を次に示します。
 
-    ![グループに対するアクセスをレビューするための Microsoft からのメールの例](./media/perform-access-review/access-review-email.png)
+    ![グループに対するアクセスをレビューするための Microsoft からのメールの例を示すスクリーンショット。](./media/perform-access-review/access-review-email.png)
 
 1. **[レビューの開始]** リンクをクリックして、アクセス レビューを開きます。
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
         > [!NOTE]
         > **[アクセス レビュー]** タイルが表示されない場合は、その組織に対して実施するアクセス レビューがないので、現時点で必要な対応はありません。
 
-        ![アプリとグループについての保留中のアクセス レビューの一覧](./media/perform-access-review/access-reviews-list.png)
+        ![アプリとグループの保留中のアクセス レビューの一覧を示すスクリーンショット。](./media/perform-access-review/access-reviews-list.png)
 
     1. 実行するアクセス レビューの **[レビューの開始]** リンクをクリックします。
 
@@ -99,7 +99,7 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 
 1. ページの下部にある青色のバーで、 **[推奨事項の承認]** をクリックします。
 
-    ![[推奨事項の承認] ボタン表示する、開かれたアクセス レビューの一覧](./media/perform-access-review/accept-recommendations.png)
+    ![[推奨事項の承認] ボタンが選択された、開かれたアクセス レビューの一覧を示すスクリーンショット。](./media/perform-access-review/accept-recommendations.png)
 
     推奨されているアクションの概要が表示されます。
 
@@ -129,7 +129,7 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 ### <a name="email"></a>Email
 
   >[!IMPORTANT]
-> 電子メールの受信に遅延が生じる可能性があり、場合によっては最大 24 時間かかることがあります。 すべての電子メールを確実に受信するために azure-noreply@microsoft.com をホワイトリストに登録します。
+> 電子メールの受信に遅延が生じる可能性があり、場合によっては最大 24 時間かかることがあります。 すべてのメールを確実に受信するため、azure-noreply@microsoft.com を信頼できる宛先のリストに追加してください。
 
    1. アクセス レビューを実行するように求める Microsoft からのメールを見つけます。 電子メール メッセージの例は次のとおりです。
 
@@ -138,7 +138,7 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
    2. **[レビューの開始]** リンクをクリックして、アクセス レビューを開きます。
 
 >[!NOTE]
->[レビューの開始] をクリックすると、**マイ アプリ**に移動する場合は、前述の「**マイ アプリ ポータル**」というタイトルのセクションに記載されている手順に従ってください。
+>[レビューの開始] をクリックすると、**マイ アプリ** に移動する場合は、前述の「**マイ アプリ ポータル**」というタイトルのセクションに記載されている手順に従ってください。
 
 ### <a name="navigate-to-my-access-directly"></a>マイ アクセスに直接移動する
 
@@ -206,4 +206,3 @@ Azure Active Directory (Azure AD) には、Azure AD をはじめとする Micros
 ## <a name="next-steps"></a>次のステップ
 
 - [グループまたはアプリケーションのアクセス レビューを完了する](complete-access-review.md)
-

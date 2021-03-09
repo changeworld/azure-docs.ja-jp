@@ -2,23 +2,19 @@
 title: Azure Automation の Change Tracking とインベントリに関する問題のトラブルシューティング
 description: この記事では、Azure Automation の Change Tracking とインベントリ機能に関する問題のトラブルシューティングを行い、解決する方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: change-inventory-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/31/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: ddd41756f0e373e3bf627a88f441512fe0db91b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.topic: troubleshooting
+ms.openlocfilehash: 516f1a4e5e7c677b17a2941ee3c300db44d49a3b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187236"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896547"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Change Tracking と Inventory に関する問題のトラブルシューティング
 
-この記事では、Azure Automation の Change Tracking とインベントリの問題のトラブルシューティングを行い、解決する方法について説明します。 Change Tracking とインベントリの一般的な情報については、「[変更履歴とインベントリの概要](../change-tracking.md)」を参照してください。
+この記事では、Azure Automation の Change Tracking とインベントリの問題のトラブルシューティングを行い、解決する方法について説明します。 Change Tracking とインベントリの一般的な情報については、「[変更履歴とインベントリの概要](../change-tracking/overview.md)」を参照してください。
 
 ## <a name="windows"></a>Windows
 
@@ -108,11 +104,11 @@ Heartbeat
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>Linux 用 Log Analytics エージェントが正しく構成されていない
 
-Linux 用 Log Analytics エージェントは、OMS Log Collector ツールを使用したログおよびコマンド ライン出力収集用に正しく構成されていない可能性があります。 「[変更履歴とインベントリの概要](../change-tracking.md)」を参照してください。
+Linux 用 Log Analytics エージェントは、OMS Log Collector ツールを使用したログおよびコマンド ライン出力収集用に正しく構成されていない可能性があります。 「[変更履歴とインベントリの概要](../change-tracking/overview.md)」を参照してください。
 
 ##### <a name="fim-conflicts"></a>FIM の競合
 
-Azure Security Center の FIM 機能で、Linux ファイルの整合性が正しく検証されていない可能性があります。 FIM が動作し、Linux ファイル監視用に正しく構成されていることを確認します。 「[変更履歴とインベントリの概要](../change-tracking.md)」を参照してください。
+Azure Security Center の FIM 機能で、Linux ファイルの整合性が正しく検証されていない可能性があります。 FIM が動作し、Linux ファイル監視用に正しく構成されていることを確認します。 「[変更履歴とインベントリの概要](../change-tracking/overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,17 +1,16 @@
 ---
 title: Azure の Office 365 管理ソリューション
 description: この記事では、Azure での Office 365 ソリューションの構成と使用について詳しく説明します。  Azure Monitor で作成された Office 365 レコードの詳細な説明が含まれています。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 14f7b5546d30d98adf4a14408882c972687a2d71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: be5409f7130f0e79b77871a2657609e8ddb76e36
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498799"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728639"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -104,12 +103,12 @@ ms.locfileid: "86498799"
 > 
 > ###    <a name="q-what-will-happen-on-october-31-do-i-need-to-offboard-beforehand"></a>Q:10 月 31 日には何が行われるのですか。 事前にオフボードする必要はありますか。
 > 
-> - **Office365** ソリューションからデータを受信することができなくなります。 このソリューションは Marketplace で使用できなくなります
+> - **Office365** ソリューションからデータを受信することができなくなります。 ソリューションはワークスペースから削除され、Marketplace で入手できなくなります。
 > - Azure Sentinel のお客様については、Log Analytics ワークスペース ソリューション **Office365** が Azure Sentinel **SecurityInsights** ソリューションに含まれるようになります。
-> - ソリューションを手動でオフボードしない場合、データは 10 月 31 日に自動的に切断されます。
+> - 10 月 31 日までに手動でソリューションをオフボードしない場合、データは自動的に切断され、**OfficeActivity** テーブルは削除されます。 このような場合でも、以下で説明するように、Azure Sentinel で Office 365 コネクタを有効にすると、テーブルを復元できます。
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>Q:データは新しいソリューションに転送されますか。
-> はい。 **Office 365** ソリューションをワークスペースから削除すると、スキーマが削除されるため、そのデータは一時的に使用できなくなります。 新しい **Office 365** コネクタを Sentinel で有効にすると、スキーマがワークスペースに復元され、既に収集されたデータが使用できるようになります。 
+> はい。 **Office 365** ソリューションをワークスペースから削除すると、スキーマが削除されるため、そのデータは一時的に使用できなくなります。 新しい **Office 365** コネクタを Azure Sentinel で有効にすると、スキーマがワークスペースに復元され、既に収集されたデータが使用できるようになります。 
  
 
 Office 365 管理ソリューションでは、Azure Monitor で Office 365 環境を監視できます。
@@ -118,7 +117,7 @@ Office 365 管理ソリューションでは、Azure Monitor で Office 365 環�
 - 管理者のアクティビティを監視し、構成変更や高権限操作を追跡します。
 - 不必要なユーザーの行動を検出および調査します。これは、組織のニーズに合わせてカスタマイズできます。
 - 監査とコンプライアンスを実証します。 たとえば、機密ファイルに対するファイル アクセス操作を監視でき、これは監査とコンプライアンスのプロセスに役立ちます。
-- 組織の Office 365 アクティビティ データに対して[ログ クエリ](../log-query/log-query-overview.md)を使用し、運用上のトラブルシューティングを実行します。
+- 組織の Office 365 アクティビティ データに対して[ログ クエリ](../logs/log-query-overview.md)を使用し、運用上のトラブルシューティングを実行します。
 
 
 ## <a name="uninstall"></a>アンインストール
@@ -255,7 +254,7 @@ Log Analytics ワークスペースに Office 365 ソリューションを追加
 
 ## <a name="azure-monitor-log-records"></a>Azure Monitor のログ レコード
 
-Azure Monitor の Log Analytics ワークスペースで Office 365 ソリューションによって作成されたすべてのレコードは、**型** が **OfficeActivity** です。  **OfficeWorkload**プロパティは、レコードが参照する Office 365 サービス (Exchange、AzureActiveDirectory、SharePoint、または OneDrive) を決定します。  **RecordType** プロパティは操作の種類を指定します。  プロパティは操作の種類ごとに異なり、次の表に示しています。
+Azure Monitor の Log Analytics ワークスペースで Office 365 ソリューションによって作成されたすべてのレコードは、**型** が **OfficeActivity** です。  **OfficeWorkload** プロパティは、レコードが参照する Office 365 サービス (Exchange、AzureActiveDirectory、SharePoint、または OneDrive) を決定します。  **RecordType** プロパティは操作の種類を指定します。  プロパティは操作の種類ごとに異なり、次の表に示しています。
 
 ### <a name="common-properties"></a>共通プロパティ
 
@@ -266,7 +265,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | Type | *OfficeActivity* |
 | ClientIP | アクティビティが記録されたときに使用されたデバイスの IP アドレス。 IP アドレスは IPv4 または IPv6 アドレスの形式で表示されます。 |
 | OfficeWorkload | レコードが参照する Office 365 サービス。<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
-| 操作 | ユーザーまたは管理者アクティビティの名前。  |
+| Operation | ユーザーまたは管理者アクティビティの名前。  |
 | OrganizationId | 組織の Office 365 テナントの GUID。 どの Office 365 サービスで発生するかにかかわらず、この値は組織に対して常に同じになります。 |
 | RecordType | 実行する操作の種類。 |
 | ResultStatus | (Operation プロパティで指定された) アクションが正常に終了したかどうかを示します。 値は Succeeded、PartiallySucceeded、Failed のいずれかです。 Exchange 管理者アクティビティの場合、値は True または False です。 |
@@ -473,6 +472,6 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Monitor でログ クエリ](../log-query/log-query-overview.md)を使用して、詳細な更新プログラムのデータを表示します。
-* [独自のダッシュボードを作成](../learn/tutorial-logs-dashboards.md)して、お気に入りの Office 365 検索クエリを表示します。
-* [アラートを作成](../platform/alerts-overview.md)して、重要な Office 365 アクティビティがあらかじめ通知されるようにします。  
+* [Azure Monitor でログ クエリ](../logs/log-query-overview.md)を使用して、詳細な更新プログラムのデータを表示します。
+* [独自のダッシュボードを作成](../visualize/tutorial-logs-dashboards.md)して、お気に入りの Office 365 検索クエリを表示します。
+* [アラートを作成](../alerts/alerts-overview.md)して、重要な Office 365 アクティビティがあらかじめ通知されるようにします。  

@@ -3,20 +3,19 @@ title: Azure App Configuration の使用方法を学習するためのクイッ�
 description: このクイックスタートでは、Azure App Configuration でコードとは別にアプリケーション設定のストレージと管理を一元化して、Java Spring アプリを作成します。
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
-ms.author: lcozzens
-ms.openlocfilehash: 10b38d5c5802ec4f6bc33b15b3ddef12e8256a78
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.author: alkemper
+ms.openlocfilehash: 40c8fae292f465b3ecc8778a21e4903bdf423a3a
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586455"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932032"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して Java Spring アプリを作成する
 
@@ -25,14 +24,14 @@ ms.locfileid: "88586455"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-- バージョン 8 を含む、サポートされている [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk)。
+- バージョン 8 を含む、サポートされている [Java Development Kit (JDK)](/java/azure/jdk)。
 - [Apache Maven](https://maven.apache.org/download.cgi) バージョン 3.0 以降。
 
 ## <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[構成エクスプローラー]**  >  **[+ 作成]**  >  **[キー値]** の順に選択して、次のキーと値のペアを追加します。
+7. **[構成エクスプローラー]**  >  **[+ 作成]**  >  **[キー値]** の順に選択して、次のキーと値のペアを追加します。
 
     | Key | Value |
     |---|---|
@@ -40,7 +39,7 @@ ms.locfileid: "88586455"
 
     **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。
 
-7. **[適用]** を選択します。
+8. **[適用]** を選択します。
 
 ## <a name="create-a-spring-boot-app"></a>Spring Boot アプリを作成する
 
@@ -52,7 +51,7 @@ ms.locfileid: "88586455"
 
    - **Java** で **Maven** プロジェクトを生成します。
    - **Spring Boot** のバージョンとして、2.0 以降を指定します。
-   - アプリケーションの**グループ (Group)** と**成果物 (Artifact)** の名前を指定します。
+   - アプリケーションの **グループ (Group)** と **成果物 (Artifact)** の名前を指定します。
    - **Spring Web** の依存関係を追加します。
 
 1. 前の各オプションを指定してから、 **[プロジェクトの生成]** を選択します。 メッセージが表示されたら、ローカル コンピューター上のパスにプロジェクトをダウンロードします。
@@ -188,7 +187,7 @@ ms.locfileid: "88586455"
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、新しい App Configuration ストアを作成して、Java Spring アプリで使用しました。 詳細については、「[Azure の Spring](https://docs.microsoft.com/java/azure/spring-framework/)」を参照してください。 Java Spring アプリで構成設定を動的に更新できるようにする方法については、次のチュートリアルに進んでください。
+このクイックスタートでは、新しい App Configuration ストアを作成して、Java Spring アプリで使用しました。 詳細については、「[Azure の Spring](/java/azure/spring-framework/)」を参照してください。 Java Spring アプリで構成設定を動的に更新できるようにする方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [動的な構成を有効にする](./enable-dynamic-configuration-java-spring-app.md)

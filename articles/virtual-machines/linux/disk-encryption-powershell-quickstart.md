@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 05/17/2019
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 32387ed6c124798155b912bc88cd717a30cb264c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89074323"
 ---
-# <a name="quickstart-create-and-encrypt-a-linux-vm-in-azure-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure で Linux VM を作成、暗号化する
+# <a name="quickstart-create-and-encrypt-a-linux-vm-in-azure-with-azure-powershell"></a>クイックスタート: Azure PowerShell を使用して Azure で Linux VM を作成、暗号化する
 
 Azure PowerShell モジュールは、PowerShell コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイックスタートでは、Azure PowerShell モジュールを使用して Linux 仮想マシン (VM) を作成し、暗号化キーを格納するためのキー コンテナーを作成し、VM を暗号化する方法を説明します。 このクイックスタートでは、Canonical の Ubuntu 16.04 LTS マーケットプレース イメージと VM Standard_D2S_V3 サイズを使用します。 
 

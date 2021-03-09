@@ -5,21 +5,21 @@ author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 10/20/2019
 ms.custom: mqtt
-ms.openlocfilehash: 8925b98269b67bfb8a96cb057982ee4e396f17ed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d1e17dce80c313bf726451c36ec06dd393549600
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81686219"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832421"
 ---
 # <a name="architecture-of-iot-central-connected-logistics-application-template"></a>IoT Central のコネクテッド ロジスティクス アプリケーション テンプレートのアーキテクチャ
 
 
 
-パートナーと顧客は、アプリ テンプレートと以下のガイダンスを使用して、エンド ツー エンドの**コネクテッド ロジスティクス** ソリューションを開発することができます。
+パートナーと顧客は、アプリ テンプレートと以下のガイダンスを使用して、エンド ツー エンドの **コネクテッド ロジスティクス** ソリューションを開発することができます。
 
 > [!div class="mx-imgBorder"]
 > ![コネクテッド ロジスティクスのダッシュボード](./media/concept-connected-logistics-architecture/connected-logistics-architecture.png)
@@ -27,7 +27,7 @@ ms.locfileid: "81686219"
 1. ゲートウェイ デバイスにテレメトリ データを送信している IoT タグのセット
 2. テレメトリと集計された分析情報を IoT Central に送信しているゲートウェイ デバイス
 3. データは、操作のために目的の Azure サービスにルーティングされます
-4. ASA や Azure Functions などの Azure サービスを使用して、データ ストリームの形式を再設定し、目的のストレージ アカウントに送信できます 
+4. ASA や Azure Functions などの Azure サービスを使用して、データ ストリームの形式を再設定し、目的のストレージ アカウントに送信できます
 5. エンド ユーザーのビジネス アプリケーションでさまざまなビジネス ワークフローを利用できます
 
 ## <a name="details"></a>詳細
@@ -37,7 +37,7 @@ ms.locfileid: "81686219"
 IoT タグを使うと、温度、湿度、ショック、チルト、光など、物理的、アンビエント、環境センサーの機能が提供されます。 IoT タグは、通常、Zigbee (802.15.4) を通じてゲートウェイ デバイスに接続されます。 タグはより安価なセンサーであるため、リバース ロジスティクスでの課題を避けるため、一般的なロジスティクス過程の最後に破棄することができます。
 
 ## <a name="gateway"></a>Gateway
-また、ゲートウェイは、アンビエント検出機能を備えた IoT タグとして機能することもできます。 ゲートウェイにより、携帯電話の Wi-Fi チャネルを使用して、アップストリームの Azure IoT クラウド接続 (MQTT) が有効になります。  IoT タグとのダウンストリーム通信には、Bluetooth、NFC、および 802.15.4 ワイヤレス センサー ネットワーク (WSN) モードが使用されます。 ゲートウェイでは、エンドツーエンドのセキュリティで保護されたクラウド接続、IoT タグのペアリング、センサー データの集計、データの保持、およびアラームしきい値の構成機能が提供されます。
+また、ゲートウェイは、アンビエント検出機能を備えた IoT タグとして機能することもできます。 ゲートウェイにより、携帯電話の Wi-Fi チャネルを使用して、アップストリームの Azure IoT クラウド接続 (MQTT) が有効になります。  IoT タグとのダウンストリーム通信には、Bluetooth、NFC、および 802.15.4 ワイヤレス センサー ネットワーク (WSN) モードが使用されます。 ゲートウェイでは、セキュリティで保護されたエンド ツー エンドのクラウド接続、IoT タグのペアリング、センサー データの集計、データ保持、アラームしきい値の構成機能が提供されます。
 
 ## <a name="device-management-with-iot-central"></a>IoT Central によるデバイス管理 
 Azure IoT Central はソリューション開発プラットフォームであり、IoT デバイスの接続、構成、管理が簡単になります。 このプラットフォームを使うと、IoT デバイスの管理、運用、関連開発の負担とコストが大幅に削減されます。 顧客とパートナーは、エンドツーエンドのエンタープライズ ソリューションを構築し、ロジスティクスでデジタル フィードバック ループを実現できます。

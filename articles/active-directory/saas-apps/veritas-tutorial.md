@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: cdb3f30813d2650737cfa43507cef2b1d456573d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5e777a27e793b1f4ef5489248c170824d69d615c
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88532536"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517686"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>チュートリアル: Azure Active Directory と Veritas Enterprise Vault.cloud SSO の統合
 
@@ -27,7 +27,7 @@ Veritas Enterprise Vault.cloud SSO と Azure AD の統合には、次の利点�
 * ユーザーが自分の Azure AD アカウントで Veritas Enterprise Vault.cloud SSO に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Veritas Enterprise Vault.cloud SSO と Azure AD の統合を構成するには�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Veritas Enterprise Vault.cloud SSO では、**SP** によって開始される SSO がサポートされます
+* Veritas Enterprise Vault.cloud SSO では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-veritas-enterprise-vaultcloud-sso-from-the-gallery"></a>ギャラリーからの Veritas Enterprise Vault.cloud SSO の追加
 
@@ -61,13 +61,13 @@ Azure AD への Veritas Enterprise Vault.cloud SSO の統合を構成するに�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Veritas Enterprise Vault.cloud SSO**」と入力し、結果パネルから **[Veritas Enterprise Vault.cloud SSO]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Veritas Enterprise Vault.cloud SSO** 」と入力し、結果パネルから **[Veritas Enterprise Vault.cloud SSO]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果一覧の Veritas Enterprise Vault.cloud SSO](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Veritas Enterprise Vault.cloud SSO で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Veritas Enterprise Vault.cloud SSO で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Veritas Enterprise Vault.cloud SSO の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 Veritas Enterprise Vault.cloud SSO で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -122,7 +122,7 @@ Veritas Enterprise Vault.cloud SSO で Azure AD シングル サインオンを�
     > [!NOTE]
     > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Veritas Enterprise Vault.cloud SSO クライアント サポート チーム](https://www.veritas.com/support/.html)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -138,7 +138,7 @@ Veritas Enterprise Vault.cloud SSO で Azure AD シングル サインオンを�
 
 ### <a name="configure-veritas-enterprise-vaultcloud-sso-single-sign-on"></a>Veritas Enterprise Vault.cloud SSO シングル サインオンの構成
 
-**Veritas Enterprise Vault.cloud SSO** 側にシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** および Azure portal からコピーした適切な URL を [Veritas Enterprise Vault.cloud SSO サポート チーム](https://www.veritas.com/support/.html)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Veritas Enterprise Vault.cloud SSO** 側にシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** および Azure portal からコピーした適切な URL を [Veritas Enterprise Vault.cloud SSO サポート チーム](https://www.veritas.com/support/.html)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -156,7 +156,7 @@ Veritas Enterprise Vault.cloud SSO で Azure AD シングル サインオンを�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -192,19 +192,18 @@ Veritas Enterprise Vault.cloud SSO で Azure AD シングル サインオンを�
 
 ### <a name="create-veritas-enterprise-vaultcloud-sso-test-user"></a>Veritas Enterprise Vault.cloud SSO テスト ユーザーの作成
 
-このセクションでは、Veritas Enterprise Vault.cloud SSO で Britta Simon というユーザーを作成します。  [Veritas Enterprise Vault.cloud SSO サポート チーム](https://www.veritas.com/support/.html)と連携して、Veritas Enterprise Vault.cloud SSO プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Veritas Enterprise Vault.cloud SSO で Britta Simon というユーザーを作成します。 [Veritas Enterprise Vault.cloud SSO サポート チーム](https://www.veritas.com/support/.html)と連携して、Veritas Enterprise Vault.cloud SSO プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Veritas Enterprise Vault.cloud SSO] タイルをクリックすると、SSO を設定した Veritas Enterprise Vault.cloud SSO に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Veritas Enterprise Vault.cloud SSO] タイルをクリックすると、SSO を設定した Veritas Enterprise Vault.cloud SSO に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

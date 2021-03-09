@@ -1,38 +1,42 @@
 ---
-title: Azure Stack Edge の制限 | Microsoft Docs
-description: Azure Stack Edge をデプロイして操作する際の制限 (サービスの制限、デバイスの制限、記憶域の制限など) と推奨されるサイズについて説明します。
+title: Azure Stack Edge Pro の制限 | Microsoft Docs
+description: Azure Stack Edge Pro を配置して操作するときの制限 (サービスの制限、デバイスの制限、記憶域の制限など) と推奨されるサイズについて説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/28/2020
+ms.date: 10/12/2020
 ms.author: alkohli
-ms.openlocfilehash: e21f5a89d9f1f21eb99071a141794f99c07a8dfa
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f1bb5662b48765c08ec58d1f7fa9d341de4937bc
+ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079814"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91992766"
 ---
-# <a name="azure-stack-edge-limits"></a>Azure Stack Edge の制限
+# <a name="azure-stack-edge-pro-limits"></a>Azure Stack Edge Pro の制限
 
-Microsoft Azure Stack Edge ソリューションを配置および操作するときは、以下の制限事項を考慮してください。 
+Microsoft Azure Stack Edge Pro ソリューションを配置および操作するときは、以下の制限事項を考慮してください。 
 
 ## <a name="azure-stack-edge-service-limits"></a>Azure Stack Edge サービスの制限
 
 [!INCLUDE [data-box-edge-gateway-service-limits](../../includes/data-box-edge-gateway-service-limits.md)]
 
-## <a name="azure-stack-device-limits"></a>Azure Stack デバイスの制限
+## <a name="azure-stack-edge-device-limits"></a>Azure Stack Edge デバイスの制限
 
-次の表では、Azure Stack Edge デバイスの制限について説明します。 
+次の表では、Azure Stack Edge Pro デバイスの制限について説明します。 
+
+次の表では、Azure Stack Edge デバイスの制限について説明します。
 
 | 説明 | 値 |
 |---|---|
 |いいえ。 デバイスあたりのファイル数 |1 億 |
-|いいえ。 デバイスあたりの共有数 |24 |
 |いいえ。 コンテナーあたりの共有数 |1 |
+|最大の デバイスあたり共有エンドポイントと REST エンドポイントの数| 24 |
+|最大の デバイスあたり階層化ストレージ アカウント数| 24|
 |1 つの共有に書き込まれる最大サイズ ファイル| 5 TB |
+|最大のデバイスあたりリソース グループ数| 800 |
 
 ## <a name="azure-storage-limits"></a>Azure Storage の制限
 
@@ -53,4 +57,4 @@ Microsoft Azure Stack Edge ソリューションを配置および操作する�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Stack Edge の配置を準備する](azure-stack-edge-deploy-prep.md)
+- [Azure Stack Edge Pro の配置を準備する](azure-stack-edge-deploy-prep.md)

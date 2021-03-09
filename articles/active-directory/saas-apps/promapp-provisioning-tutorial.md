@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7ef00026072d2c0afc1c6c6a57c225e271e0ac0f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5ba9adbc8553e92eb76a4d3327681f798db19218
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553542"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359104"
 ---
 # <a name="tutorial-configure-promapp-for-automatic-user-provisioning"></a>チュートリアル:Promapp を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "88553542"
 
 ## <a name="assigning-users-to-promapp"></a>Promapp へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成し、有効にする前に、Promapp へのアクセスが必要な Azure AD のユーザー、グループ、またはその両方を特定する必要があります。 特定した後、次の手順に従い、これらのユーザー、グループ、またはその両方を Promapp に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -84,7 +84,7 @@ Azure AD での自動ユーザー プロビジョニング用に Promapp を構�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Promapp**」と入力し、結果パネルで **[Promapp]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Promapp** 」と入力し、結果パネルで **[Promapp]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の Promapp](common/search-new-app.png)
 
@@ -93,7 +93,7 @@ Azure AD での自動ユーザー プロビジョニング用に Promapp を構�
 このセクションでは、Azure AD でのユーザー、グループ、またはその両方の割り当てに基づいて、Promapp でユーザー、グループ、またはその両方が作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!TIP]
-> Promapp では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Promapp シングル サインオンのチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/promapp-tutorial)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> Promapp では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Promapp シングル サインオンのチュートリアル](./promapp-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-promapp-in-azure-ad"></a>Azure AD で Promapp の自動ユーザー プロビジョニングを構成するには、次の操作を行います。
 
@@ -107,13 +107,13 @@ Azure AD での自動ユーザー プロビジョニング用に Promapp を構�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://api.promapp.com/api/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した**SCIM 認証トークン**の値を入力します。 **[接続テスト]** をクリックして、Azure AD から Promapp に接続できることを確認します。 接続できない場合は、使用中の Promapp アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://api.promapp.com/api/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した **SCIM 認証トークン** の値を入力します。 **[接続テスト]** をクリックして、Azure AD から Promapp に接続できることを確認します。 接続できない場合は、使用中の Promapp アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -127,7 +127,7 @@ Azure AD での自動ユーザー プロビジョニング用に Promapp を構�
 
     ![Promapp のユーザー マッピング](media/promapp-provisioning-tutorial/usermappings.png)
 
-9. **[属性マッピング]** セクションで、Azure AD から Promapp に同期されるユーザー属性を確認します。 **照合**用プロパティとして選択されている属性は、更新処理で Promapp のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+9. **[属性マッピング]** セクションで、Azure AD から Promapp に同期されるユーザー属性を確認します。 **照合** 用プロパティとして選択されている属性は、更新処理で Promapp のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
     ![Promapp のユーザー属性](media/promapp-provisioning-tutorial/userattributes.png)
 
@@ -157,4 +157,3 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="next-steps"></a>次のステップ
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
-

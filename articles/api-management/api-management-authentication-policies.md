@@ -11,17 +11,17 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/12/2020
+ms.date: 01/27/2021
 ms.author: apimpm
-ms.openlocfilehash: 4d077f6b3c84b0279a7a1c99243240192c2b45d1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 22d2960801cac2222f868c384a55b4bf436bc75b
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243717"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492605"
 ---
 # <a name="api-management-authentication-policies"></a>API Management の認証ポリシー
-このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
+このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。
 
 ##  <a name="authentication-policies"></a><a name="AuthenticationPolicies"></a> 認証ポリシー
 
@@ -67,7 +67,10 @@ ms.locfileid: "86243717"
 -   **ポリシー スコープ:** すべてのスコープ
 
 ##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a> クライアント証明書による認証
- `authentication-certificate` ポリシーを使用し、クライアント証明書を使用してバックエンド サービスで認証します。 証明書は最初に [API Management にインストール](https://go.microsoft.com/fwlink/?LinkID=511599)する必要があります。サムプリントによって識別されます。
+ `authentication-certificate` ポリシーを使用し、クライアント証明書を使用してバックエンド サービスで認証します。 証明書は最初に [API Management にインストール](./api-management-howto-mutual-certificates.md)する必要があります。サムプリントまたは証明書 ID (リソース名) によって識別されます。 
+
+> [!CAUTION]
+> 証明書が Azure Key Vault に格納されている証明書を参照している場合は、証明書 ID を使用して識別します。 キー コンテナー証明書がローテーションされると、API Management のサムプリントが変更され、サムプリントによって識別された場合、新しい証明書はポリシーによって解決されません。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
@@ -77,18 +80,17 @@ ms.locfileid: "86243717"
 
 ### <a name="examples"></a>例
 
-この例では、クライアント証明書はサムプリントによって識別されます。
-
-```xml
-<authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
-```
-
-この例では、クライアント証明書はリソース名によって識別されます。
+この例では、クライアント証明書は証明書 ID によって識別されます。
 
 ```xml  
 <authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
 ``` 
 
+この例では、クライアント証明書はサムプリントによって識別されます。
+
+```xml
+<authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
+```
 この例では、クライアント証明書は、組み込みの証明書ストアから取得されるのではなく、ポリシーで設定されています。
 
 ```xml
@@ -200,4 +202,4 @@ ms.locfileid: "86243717"
 + [API Management のポリシー](api-management-howto-policies.md)
 + [API を変換する](transform-api.md)
 + ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
-+ [ポリシーのサンプル](policy-samples.md)
++ [ポリシーのサンプル](./policy-reference.md)

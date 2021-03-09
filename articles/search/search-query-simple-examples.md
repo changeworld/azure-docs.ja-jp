@@ -1,300 +1,538 @@
 ---
-title: 簡単なクエリを作成する
+title: 単純な Lucene クエリ構文を使用する
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search インデックスに対するフルテキスト検索、フィルター検索、地理検索、ファセット検索の簡単な構文を基にしてクエリを実行することにより、例を使用して学習します。
+description: Azure Cognitive Search インデックスに対するフルテキスト検索、フィルター検索、および地理検索の簡単な構文を示すクエリの例。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: afc9f8e29cf27734787da9cab3e3456e5414d9ac
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 03/03/2021
+ms.openlocfilehash: 2abe19351c92bf9cea85c85dd55f47b5ee6d1625
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918028"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694038"
 ---
-# <a name="create-a-simple-query-in-azure-cognitive-search"></a>Azure Cognitive Search で簡単なクエリを作成する
+# <a name="use-the-simple-search-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での "単純な" 検索構文を使用する
 
-Azure Cognitive Search では、[単純なクエリ構文](query-simple-syntax.md)で既定のクエリ パーサーが呼び出されて、インデックスに対してフルテキスト検索クエリが実行されます。 このパーサーは高速で、フルテキスト検索、フィルター検索、ファセット検索、地理検索などの一般的なシナリオに対応します。 
+Azure Cognitive Search では、[単純なクエリ構文](query-simple-syntax.md)で既定のクエリ パーサーが呼び出されて、フルテキスト検索が実行されます。 このパーサーは高速で、フルテキスト検索、フィルター検索、ファセット検索、プレフィックス検索などの一般的なシナリオに対応します。 この記事では、例を使用して、[ドキュメントの検索 (REST API)](/rest/api/searchservice/search-documents) 要求での単純な構文の使用方法を示します。
 
-この記事では、例を使用して、単純な構文を説明し、[ドキュメントの検索](/rest/api/searchservice/search-documents)操作の `search=` パラメーターを設定します。
+> [!NOTE]
+> 代替のクエリ構文は[完全な Lucene](query-lucene-syntax.md) であり、あいまい検索、ワイルドカード検索などのより複雑なクエリ構造をサポートしています。 詳細と例については、[完全な Lucene 構文の使用](search-query-lucene-examples.md)に関するページをご覧ください。
 
-代替のクエリ構文には[完全な Lucene](query-lucene-syntax.md) 構文があります。この構文は、あいまい検索、ワイルドカード検索などのより複雑なクエリ構造をサポートし、処理に時間がかかります。 完全な構文の詳細と例については、[完全な Lucene 構文の使用](search-query-lucene-examples.md)に関するページを参照してください。
+## <a name="hotels-sample-index"></a>ホテルのサンプル インデックス
 
-## <a name="formulate-requests-in-postman"></a>Postman で要求を作成する
+以下のクエリは、この[クイックスタート](search-get-started-portal.md)の手順に従って作成できる hotels-sample-index に基づいています。
 
-次の例では、[City of New York OpenData](https://nycopendata.socrata.com/) イニシアティブが提供するデータセットに基づいて利用可能なジョブで構成される NYC ジョブ検索インデックスを活用します。 このデータが最新のものであるとか、完全であるとはお考えにならないでください。 インデックスは、Microsoft が提供するサンドボックス サービス上にあります。つまり、これらのクエリを試すのに Azure サブスクリプションまたは Azure Cognitive Search は必要ありません。
+クエリの例は、REST API および POST 要求を使用して表されています。 [Postman](search-get-started-rest.md) または [Cognitive Search 拡張機能を備えた Visual Studio Code](search-get-started-vs-code.md) に貼り付けて実行できます。
 
-必要になるのは、GET で HTTP 要求を発行するための Postman または同等のツールです。 詳細については、「[クイック スタート: Postman を使用して Azure Cognitive Search REST API を調べる](search-get-started-postman.md)方法に関する記事を参照してください。
+要求ヘッダーには次の値が必要です。
 
-### <a name="set-the-request-header"></a>要求ヘッダーを設定する
+| Key | 値 |
+|-----|-------|
+| Content-Type | application/json|
+| api-key  | `<your-search-service-api-key>`、クエリまたは管理者キーのいずれか |
 
-1. 要求ヘッダーで、**Content-Type** を `application/json` に設定します。
-
-2. **api-key** を追加して文字列 `252044BE3886FE4A8E3BAA4F595114BB` に設定します。 これは、NYC ジョブ インデックスをホストするサンドボックス検索サービスのクエリ キーです。
-
-要求ヘッダーを指定した後は、**search=** 文字列のみを入れ替えることで、この記事のすべてのクエリに対して要求ヘッダーを再利用できます。 
-
-  ![Postman の要求ヘッダー](media/search-query-lucene-examples/postman-header.png)
-
-### <a name="set-the-request-url"></a>要求 URL を設定する
-
-要求は、Azure Cognitive Search のエンドポイントと検索文字列を含む URL と GET コマンドを組み合わせたものです。
-
-  ![Postman の要求ヘッダー](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
-
-URL は、次の要素から構成されます。
-
-+ **`https://azs-playground.search.windows.net/`** は、Azure Cognitive Search の開発チームによって管理されているサンドボックス検索サービスです。 
-+ **`indexes/nycjobs/`** は、そのサービスのインデックス コレクション内の NYC ジョブ インデックスです。 要求にはサービス名とインデックスの両方が必要です。
-+ **`docs`** は、検索可能なすべてのコンテンツを含むドキュメント コレクションです。 要求ヘッダーに指定されたクエリ api-key は、ドキュメント コレクションを対象とする読み取り操作に対してのみ機能します。
-+ **`api-version=2020-06-30`** は、すべての要求に必須のパラメーターである api-version を設定します。
-+ **`search=*`** はクエリ文字列です。最初のクエリでは null で、最初の 50 件の結果が返されます (既定値)。
-
-## <a name="send-your-first-query"></a>初めてクエリを送信する
-
-確認手順として、次の要求を GET に貼り付け、 **[送信]** をクリックします。 結果は冗長な JSON ドキュメントとして返されます。 ドキュメント全体が返され、すべてのフィールドとすべての値を確認することができます。
-
-次の URL を検証手順として REST クライアントに貼り付けて、ドキュメントの構造を表示します。
-
-  ```http
-  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=*
-  ```
-
-クエリ文字列 **`search=*`** は、null または空の検索に相当する未指定の検索です。 これは特に有用ではありませんが、実行できる最も簡単な検索です。
-
-オプションで、URL に **`$count=true`** を追加して、検索基準に一致するドキュメントの数を返すことができます。 空の検索文字列では、これはインデックス内のすべてのドキュメントです (NYC ジョブの場合は約 2800)。
-
-## <a name="how-to-invoke-simple-query-parsing"></a>単純なクエリの解析を呼び出す方法
-
-対話型クエリでは何も指定する必要はありません。既定値は simple です。 コードでは、以前に完全なクエリ構文用に **queryType=full** を呼び出している場合は、**queryType=simple** を使用して既定値にリセットすることができます。
-
-## <a name="example-1-field-scoped-query"></a>例 1:フィールド スコープ クエリ
-
-この最初の例はパーサー固有ではありませんが、最初の基本的なクエリの概念である包含を紹介するために利用します。 この例では、クエリの実行とその応答の範囲をいくつかの特定のフィールドに制限しています。 ツールが Postman または Search エクスプローラーの場合、読みやすい JSON 応答を構成する方法を理解することが重要です。 
-
-簡潔にするため、このクエリでは *business_title* フィールドのみを対象として、肩書きのみが返されるよう指定しています。 構文は、クエリの実行を business_title フィールドのみに制限する **searchFields** と、応答に含まれるフィールドを指定する **select** です。
-
-### <a name="partial-query-string"></a>部分クエリ文字列
+次の例のように、URI パラメーターには、検索サービスのエンドポイントと、インデックス名、docs コレクション、search コマンド、および API バージョンを含める必要があります。
 
 ```http
-searchFields=business_title&$select=business_title&search=*
+https://{{service-name}}.search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 ```
 
-次のクエリは、コンマ区切りのリストに複数のフィールドを持つ同じクエリです。
+要求本文は有効な JSON の形式である必要があります。
+
+```json
+{
+    "search": "*",
+    "queryType": "simple",
+    "select": "HotelId, HotelName, Category, Tags, Description",
+    "count": true
+}
+```
+
++ `*` に設定された "search" は null または空の検索に相当する未指定のクエリです。 これは特に便利なわけではありませんが、最も簡単な検索方法であり、インデックス内の取得可能なすべてのフィールドに値がすべて入った状態で表示されます。
+
++ "simple" に設定された "queryType" は既定値であり、省略可能ですが、この記事中のクエリの例が単純な構文で表現されていることを強調するために含めています。
+
++ フィールドのコンマ区切りリストに設定した "select" は、検索結果のコンテキストで有用なフィールドのみが含まれるように検索結果を構成するために使用されます。
+
++ "count"は、検索条件に一致するドキュメントの数を返します。 空の検索文字列では、この数はインデックス内のすべてのドキュメントになります (hotels-sample-index の場合は 50)。
+
+## <a name="example-1-full-text-search"></a>例 1: フルテキスト検索
+
+フルテキスト検索では、ブール演算子の有無にかかわらず、スタンドアロンの用語または引用符で囲んだ語句をいくつでも使用できます。 
 
 ```http
-search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
+POST /indexes/hotel-samples-index/docs/search?api-version=2020-06-30
+{
+    "search": "pool spa +airport",
+    "searchMode": any,
+    "queryType": "simple",
+    "select": "HotelId, HotelName, Category, Description",
+    "count": true
+}
 ```
 
-### <a name="full-url"></a>完全な URL
+重要な用語または語句で構成したキーワード検索が、最もよく機能する傾向があります。 文字列フィールドでは、インデックス作成およびクエリ中にテキスト分析が行われ、"the"、"and"、"it" などの不必要な単語が削除されます。 クエリ文字列がインデックスでどのようにトークン化されるかを確認するには、[Analyze Text](/rest/api/searchservice/test-analyzer) 呼び出しで文字列をインデックスに渡します。
 
-```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchFields=business_title&$select=business_title&search=*
+"searchMode" パラメーターは、精度とリコールを制御します。 リコールを増やしたい場合、既定の "any" 値を使用して、クエリ文字列の一部でも一致した場合に結果を返すようにします。 精度を優先し、文字列の全部が一致することを必須にする場合は、searchMode を "all" に変更します。 両方のやり方で上記のクエリを試して、searchMode によって結果がどのように変わるかを確認してください。
+
+"pool spa +airport" クエリの応答は次の例のようになります (簡潔にするために省略しています)。
+
+```json
+"@odata.count": 6,
+"value": [
+    {
+        "@search.score": 7.3617697,
+        "HotelId": "21",
+        "HotelName": "Nova Hotel & Spa",
+        "Description": "1 Mile from the airport.  Free WiFi, Outdoor Pool, Complimentary Airport Shuttle, 6 miles from the beach & 10 miles from downtown.",
+        "Category": "Resort and Spa",
+        "Tags": [
+            "pool",
+            "continental breakfast",
+            "free parking"
+        ]
+    },
+    {
+        "@search.score": 2.5560288,
+        "HotelId": "25",
+        "HotelName": "Scottish Inn",
+        "Description": "Newly Redesigned Rooms & airport shuttle.  Minutes from the airport, enjoy lakeside amenities, a resort-style pool & stylish new guestrooms with Internet TVs.",
+        "Category": "Luxury",
+        "Tags": [
+            "24-hour front desk service",
+            "continental breakfast",
+            "free wifi"
+        ]
+    },
+    {
+        "@search.score": 2.2988036,
+        "HotelId": "35",
+        "HotelName": "Suites At Bellevue Square",
+        "Description": "Luxury at the mall.  Located across the street from the Light Rail to downtown.  Free shuttle to the mall and airport.",
+        "Category": "Resort and Spa",
+        "Tags": [
+            "continental breakfast",
+            "air conditioning",
+            "24-hour front desk service"
+        ]
+    }
 ```
 
-このクエリの応答は、次のスクリーンショットのようになります。
+応答の検索スコアに注目してください。 これは一致の関連性スコアです。 既定では、検索サービスはこのスコアに基づいて上位 50 件の一致を返します。
 
-  ![Postman の応答のサンプル](media/search-query-lucene-examples/postman-sample-results.png)
-
-応答の検索スコアに気付いたかもしれません。 検索がフルテキスト検索でなかった、または適用された基準がないという理由でランクがない場合は、1 の均一のスコアが発生します。 条件なしの null 検索では、任意の順序で行が返されます。 実際の基準を含めると、検索スコアは意味のある値に変化します。
+検索がフルテキスト検索でないか、条件が指定されていないためランクがない場合は、"1.0" の均一のスコアが発生します。 たとえば、空の検索 (search=`*`) の場合、行は任意の順序で返されます。 実際の基準を含めると、検索スコアは意味のある値に変化します。
 
 ## <a name="example-2-look-up-by-id"></a>例 2:ID による参照
 
-この例は少し特殊ですが、検索動作を評価する際、検索結果から除外されている理由や検索結果に含まれている理由を理解するために、特定のドキュメントの内容全体を調べることが必要になる場合があります。 1 つのドキュメントを全部返すには、[参照操作](/rest/api/searchservice/lookup-document)を使用してドキュメント ID を渡します。
-
-すべてのドキュメントは一意の識別子を持ちます。 参照クエリの構文を試す場合、使用する ID を見つけるために、最初にドキュメント ID の一覧を返します。 NYC ジョブの場合、識別子は `id` フィールドに格納されます。
+クエリで検索結果を返す場合は、次の論理的な手順として、ドキュメントから多くのフィールドを含む詳細ページを指定します。 この例では、[Lookup Document](/rest/api/searchservice/lookup-document) を使用してドキュメント ID を渡して 1 つのドキュメントを返す方法を示します。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchFields=id&$select=id&search=*
+GET /indexes/hotels-sample-index/docs/41?api-version=2020-06-30
 ```
 
-次の例は、前の応答で最初に出現した `id` "9E1E3AF9-0660-4E00-AF51-9B654925A2D5" に基づいて特定のドキュメントを返す検索クエリです。 次のクエリでは、選択したフィールドだけでなく、ドキュメント全体が返されます。 
+すべてのドキュメントは一意の識別子を持ちます。 ポータルを使用している場合は、 **[インデックス]** タブからインデックスを選択し、フィールド定義を見てどのフィールドがキーであるかを判断します。 [Get Index](/rest/api/searchservice/get-index) 呼び出しでは、REST を使用して、応答本文にインデックス定義を返します。
 
-```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2020-06-30&$count=true&search=*
+上記のクエリに対する応答は、そのキーが 41 であるドキュメントで構成されます。 インデックス定義で "retrievable" とマークされているすべてのフィールドが検索結果で返され、アプリに表示されます。
+
+```json
+{
+    "HotelId": "41",
+    "HotelName": "Ocean Air Motel",
+    "Description": "Oceanfront hotel overlooking the beach features rooms with a private balcony and 2 indoor and outdoor pools. Various shops and art entertainment are on the boardwalk, just steps away.",
+    "Description_fr": "L'hôtel front de mer surplombant la plage dispose de chambres avec balcon privé et 2 piscines intérieures et extérieures. Divers commerces et animations artistiques sont sur la promenade, à quelques pas.",
+    "Category": "Budget",
+    "Tags": [
+        "pool",
+        "air conditioning",
+        "bar"
+    ],
+    "ParkingIncluded": true,
+    "LastRenovationDate": "1951-05-10T00:00:00Z",
+    "Rating": 3.5,
+    "Location": {
+        "type": "Point",
+        "coordinates": [
+            -157.846817,
+            21.295841
+        ],
+        "crs": {
+            "type": "name",
+            "properties": {
+                "name": "EPSG:4326"
+            }
+        }
+    },
+    "Address": {
+        "StreetAddress": "1450 Ala Moana Blvd 2238 Ala Moana Ctr",
+        "City": "Honolulu",
+        "StateProvince": "HI",
+        "PostalCode": "96814",
+        "Country": "USA"
+    },
 ```
 
-## <a name="example-3-filter-queries"></a>例 3: フィルター クエリ
+## <a name="example-3-filter-on-text"></a>例 3: テキストのフィルター
 
-[フィルター構文](./search-query-odata-filter.md) は、**search** と一緒に使用することも、単独で使用することもできる OData 式です。 search パラメーターがないスタンドアロン フィルターは、関心があるドキュメントをフィルター式で完全に修飾できる場合に役立ちます。 クエリ文字列がない場合、字句または言語の分析なし、スコア付けなし (すべて 1 にスコア付け)、および優先度付けなしになります。 検索文字列が空である点に注目してください。
+[フィルター構文](search-query-odata-filter.md)は、単独で使用することも、"search" と一緒に使用することもできる OData 式です。 一緒に使用した場合、"filter" が最初にインデックス全体に適用され、次にフィルター処理の結果に対して検索が実行されます。 フィルターはクエリのパフォーマンス向上に役立つ手法です。フィルターを使うと、検索クエリで処理が必要なドキュメントの数が減ります。
+
+フィルターは、インデックス定義で "filterable" とマークされている任意のフィールドに対して定義できます。 hotel-sample-index の場合、フィルター可能なフィールドには、Category、Tags、ParkingIncluded、Rating、ほとんどの Address フィールドが含まれます。
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "search": "art tours",
+    "queryType": "simple",
+    "filter": "Category eq 'Resort and Spa'",
+    "select": "HotelId,HotelName,Description,Category",
+    "count": true
+}
+```
+
+上記のクエリに対する応答は、"Report and Spa" に分類され、用語 "art" または "tour" を含むホテルのみがスコープになっています。 この場合、一致するのは 1 件だけです。
+
+```json
+{
+    "@search.score": 2.8576312,
+    "HotelId": "31",
+    "HotelName": "Santa Fe Stay",
+    "Description": "Nestled on six beautifully landscaped acres, located 2 blocks from the Plaza. Unwind at the spa and indulge in art tours on site.",
+    "Category": "Resort and Spa"
+}
+```
+
+## <a name="example-4-filter-functions"></a>例 4: フィルター関数
+
+フィルター式に ["search.ismatch" および "search.ismatchscoring" 関数](search-query-odata-full-text-search-functions.md)を含めて、フィルターの中で検索クエリを構築することができます。 このフィルター式では、無料 Wi-Fi、無料駐車場などのアメニティを選択するために、*free* にワイルドカードを使用しています。
+
+```http
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+  {
+    "search": "",
+    "filter": "search.ismatch('free*', 'Tags', 'full', 'any')",
+    "select": "HotelId, HotelName, Category, Description",
+    "count": true
+  }
+```
+
+上記のクエリに対する応答は、無料のアメニティを提供する 19 のホテルに一致します。 結果全体で検索スコアが均一の "1.0" であることに注目してください。 これは、検索式が null または空で、結果は逐語的フィルターの一致であり、フルテキスト検索は行われないためです。 関連性スコアは、フルテキスト検索でのみ返されます。 "search" なしでフィルターを使用している場合は、検索順位を制御できるよう、並べ替え可能なフィールドが十分にあることを確認してください。
+
+```json
+"@odata.count": 19,
+"value": [
     {
-      "search": "",
-      "filter": "salary_frequency eq 'Annual' and salary_range_from gt 90000",
-      "select": "job_id, business_title, agency, salary_range_from",
-      "count": "true"
+        "@search.score": 1.0,
+        "HotelId": "31",
+        "HotelName": "Santa Fe Stay",
+        "Tags": [
+            "view",
+            "restaurant",
+            "free parking"
+        ]
+    },
+    {
+        "@search.score": 1.0,
+        "HotelId": "27",
+        "HotelName": "Super Deluxe Inn & Suites",
+        "Tags": [
+            "bar",
+            "free wifi"
+        ]
+    },
+    {
+        "@search.score": 1.0,
+        "HotelId": "39",
+        "HotelName": "Whitefish Lodge & Suites",
+        "Tags": [
+            "continental breakfast",
+            "free parking",
+            "free wifi"
+        ]
+    },
+    {
+        "@search.score": 1.0,
+        "HotelId": "11",
+        "HotelName": "Regal Orb Resort & Spa",
+        "Tags": [
+            "free wifi",
+            "restaurant",
+            "24-hour front desk service"
+        ]
+    },
+```
+
+## <a name="example-5-range-filters"></a>例 5: 範囲フィルター
+
+範囲フィルターは、任意のデータ型のフィルター式を通してサポートされます。 次の例は、数値と文字列の範囲を示しています。 範囲フィルターではデータ型が重要であり、数値フィールドにある数値データと文字列フィールドにある文字列データで最もうまく機能します。 数値文字列を比較できないため、文字列フィールドの数値データは範囲には適していません。
+
+次のクエリは数値範囲です。 hotel-sample-index では、フィルター処理可能な数値フィールドは Rating のみです。
+
+```http
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "search": "*",
+    "filter": "Rating ge 2 and Rating lt 4",
+    "select": "HotelId, HotelName, Rating",
+    "orderby": "Rating desc",
+    "count": true
+}
+```
+
+このクエリの応答は、次の例のようになります (簡潔にするため省略しています)。
+
+```json
+"@odata.count": 27,
+"value": [
+    {
+        "@search.score": 1.0,
+        "HotelId": "22",
+        "HotelName": "Stone Lion Inn",
+        "Rating": 3.9
+    },
+    {
+        "@search.score": 1.0,
+        "HotelId": "25",
+        "HotelName": "Scottish Inn",
+        "Rating": 3.8
+    },
+    {
+        "@search.score": 1.0,
+        "HotelId": "2",
+        "HotelName": "Twin Dome Motel",
+        "Rating": 3.6
     }
 ```
 
-一緒に使用した場合、フィルターが最初にインデックス全体に適用され、次にフィルター処理の結果に対して検索が実行されます。 フィルターはクエリのパフォーマンス向上に役立つ手法です。フィルターを使うと、検索クエリで処理が必要なドキュメントの数が減ります。
-
-  ![フィルター クエリの応答](media/search-query-simple-examples/filtered-query.png)
-
-Postman で GET を使用して試す場合は、次の文字列を貼り付けることができます。
+次のクエリは、文字列フィールド (Address/StateProvince) に対する範囲フィルターです。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "search": "*",
+    "filter": "Address/StateProvince ge 'A*' and Address/StateProvince lt 'D*'",
+    "select": "HotelId, HotelName, Address/StateProvince",
+    "count": true
+}
 ```
 
-フィルターと検索を組み合わせる別の強力な方法は、フィルター式の中で **`search.ismatch*()`** を使用することです。この場合、フィルター内で検索クエリを使用できます。 次のフィルター式では、*plan* でワイルドカードを使用して、plan、planner、planning などの用語が含まれる business_title を選択します。
+このクエリの応答は、下記の例のようになります (簡潔にするため省略しています)。 この例では、インデックス定義で StateProvince の属性が "sortable" でないため、このフィールドによる並べ替えはできません。
 
-```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
-```
-
-この関数の詳細については、[「フィルターの例」の search.ismatch](./search-query-odata-full-text-search-functions.md#examples) を参照してください。
-
-## <a name="example-4-range-filters"></a>例 4: 範囲フィルター
-
-範囲フィルターは、任意のデータ型の **`$filter`** 式を通してサポートされます。 次の例では、数値フィールドと文字列フィールドを検索します。 
-
-範囲フィルターではデータ型が重要であり、数値フィールドにある数値データと文字列フィールドにある文字列データで最もうまく機能します。 Azure Cognitive Search では数値文字列を比較できないため、文字列フィールドの数値データは範囲には適していません。 
-
-次の例は、読みやすくするために POST 形式になっています (数値範囲の後ろにテキスト範囲が続きます)。
-
-```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+```json
+"@odata.count": 9,
+"value": [
     {
-      "search": "",
-      "filter": "num_of_positions ge 5 and num_of_positions lt 10",
-      "select": "job_id, business_title, num_of_positions, agency",
-      "orderby": "agency",
-      "count": "true"
-    }
-```
-  ![数値範囲用の範囲フィルター](media/search-query-simple-examples/rangefilternumeric.png)
-
-
-```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+        "@search.score": 1.0,
+        "HotelId": "9",
+        "HotelName": "Smile Hotel",
+        "Address": {
+            "StateProvince": "CA "
+        }
+    },
     {
-      "search": "",
-      "filter": "business_title ge 'A*' and business_title lt 'C*'",
-      "select": "job_id, business_title, agency",
-      "orderby": "business_title",
-      "count": "true"
-    }
-```
-
-  ![テキスト範囲用の範囲フィルター](media/search-query-simple-examples/rangefiltertext.png)
-
-Postman で GET を使用して試すこともできます。
-
-```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&search=&$filter=num_of_positions ge 5 and num_of_positions lt 10&$select=job_id, business_title, num_of_positions, agency&$orderby=agency&$count=true
-```
-
-```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&search=&$filter=business_title ge 'A*' and business_title lt 'C*'&$select=job_id, business_title, agency&$orderby=business_title&$count=true
-```
-
-> [!NOTE]
-> 検索アプリケーションでは値の範囲に対するファセットが一般に必要になります。 ファセット ナビゲーション構造に対するフィルターの作成に関する情報と例については、[ *「ファセット ナビゲーションを実装する方法」の「範囲に基づくフィルター」* ](search-faceted-navigation.md#filter-based-on-a-range)を参照してください。
-
-## <a name="example-5-geo-search"></a>例 5:地理空間検索
-
-サンプル インデックスには、緯度と経度の座標を持つ geo_location フィールドが含まれています。 この例では、[geo.distance 関数](./search-query-odata-geo-spatial-functions.md#examples)を使用して、開始点を中心に、指定された距離 (キロメートル単位) に収まるドキュメントをフィルター処理します。 クエリの最後の値 (4) を調整して、クエリのサーフェス領域を拡大または縮小できます。
-
-次の例は、読みやすくするために POST 形式になっています。
-
-```http
-POST /indexes/nycjobs/docs/search?api-version=2020-06-30
+        "@search.score": 1.0,
+        "HotelId": "39",
+        "HotelName": "Whitefish Lodge & Suites",
+        "Address": {
+            "StateProvince": "CO"
+        }
+    },
     {
-      "search": "",
-      "filter": "geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4",
-      "select": "job_id, business_title, work_location",
-      "count": "true"
-    }
-```
-結果をさらに読みやすくするために、検索結果は、ジョブ ID、役職、および勤務地を含むようにトリミングされます。 開始座標は、インデックス内のランダムなドキュメントから取得されています (ここではスタテン島の勤務地)。
-
-Postman で GET を使用して試すこともできます。
-
-```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
+        "@search.score": 1.0,
+        "HotelId": "7",
+        "HotelName": "Countryside Resort",
+        "Address": {
+            "StateProvince": "CA "
+        }
+    },
 ```
 
-## <a name="example-6-search-precision"></a>例 6:検索の精度
+## <a name="example-6-geo-search"></a>例 6: 地理検索
 
-用語のクエリは、単一の用語を対象とし、おそらくその多くは個別に評価されます。 語句のクエリは引用符で囲まれ、逐語的な文字列として評価されます。 一致の精度は、演算子と searchMode によって制御されます。
-
-例 1: **`&search=fire`** は、150 件の結果を返します。すべての一致に、ドキュメントのどこかに出現する単語 fire が含まれています。
+hotels-sample インデックスには、緯度と経度の座標を持つ geo_location フィールドが含まれています。 この例では、[geo.distance 関数](search-query-odata-geo-spatial-functions.md#examples)を使用して、開始点を中心に、指定された距離 (キロメートル単位) に収まるドキュメントをフィルター処理します。 クエリの最後の値 (10) を調整して、クエリのサーフェス領域を拡大または縮小できます。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=fire
+POST /indexes/v/docs/search?api-version=2020-06-30
+{
+    "search": "*",
+    "filter": "geo.distance(Location, geography'POINT(-122.335114 47.612839)') le 10",
+    "select": "HotelId, HotelName, Address/City, Address/StateProvince",
+    "count": true
+}
 ```
 
-例 2: **`&search=fire department`** は、2,002 件の結果を返します。 fire または department を含むドキュメントについて一致が返されます。
+このクエリに対する応答は、指定された座標から 10 km 以内の距離にあるすべてのホテルを返します。
 
-```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=fire department
-```
-
-例 3: **`&search="fire department"`** は、82 件の結果を返します。 文字列を二重引用符で囲むと両方の用語に対して逐語的検索を実行することを表します。一致は、結合された用語で構成されるインデックス内のトークン化された用語で検出されます。 これが、 **`search=+fire +department`** のような検索と同等でない理由です。 どちらの用語も必須ですが、これらは個別にスキャンされます。 
-
-```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search="fire department"
+```json
+{
+    "@odata.count": 3,
+    "value": [
+        {
+            "@search.score": 1.0,
+            "HotelId": "45",
+            "HotelName": "Arcadia Resort & Restaurant",
+            "Address": {
+                "City": "Seattle",
+                "StateProvince": "WA"
+            }
+        },
+        {
+            "@search.score": 1.0,
+            "HotelId": "24",
+            "HotelName": "Gacc Capital",
+            "Address": {
+                "City": "Seattle",
+                "StateProvince": "WA"
+            }
+        },
+        {
+            "@search.score": 1.0,
+            "HotelId": "16",
+            "HotelName": "Double Sanctuary Resort",
+            "Address": {
+                "City": "Seattle",
+                "StateProvince": "WA"
+            }
+        }
+    ]
+}
 ```
 
 ## <a name="example-7-booleans-with-searchmode"></a>例 7:searchMode によるブール値
 
-単純な構文では、文字形式のブール演算子 (`+, -, |`) がサポートされています。 searchMode パラメーターは、精度と再現率のトレードオフを示します。`searchMode=any` は再現率を優先し (任意の条件で一致すると結果セットとしてドキュメントが適格になります)、`searchMode=all` は精度を優先します (すべての条件が一致する必要があります)。 既定値は `searchMode=any` です。これは、クエリに複数の演算子を含めて、絞り込んだ結果ではなくより広範な結果を取得した場合に、混乱を招く可能性があります。 これは特に NOT に当てはまります。NOT では、特定の用語を "含まない" すべてのドキュメントが結果に含まれます。
+単純構文では、AND、OR、NOT のクエリ ロジックをサポートするために、文字 (`+, -, |`) の形式のブール演算子をサポートしています。 ブール型の検索は想定どおりに動作しますが、いくつかの注目すべき例外があります。 
 
-既定の searchMode (any) を使用した場合、2,800 件のドキュメントが返されます。これは、複合語 "fire department" を含むドキュメントと、用語 "Metrotech Center" を含まないすべてのドキュメントの合計です。
+以前の例では、"searchMode" パラメーターについて、精度とリコールに影響するメカニズムとして紹介しました。"searchMode=any" はリコールを優先し (一部でも条件を満たすドキュメントは一致と見なされます)、"searchMode=all" は精度を優先します (すべての条件がドキュメント内で一致する必要があります)。 
 
-```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
-```
+ブール検索のコンテキストでは、複数の演算子を使用してクエリをスタックし、結果を狭めるのではなく広げようとしている場合に、既定の "searchMode=any" は混乱を招く可能性があります。 これは特に NOT に当てはまります。NOT では、特定の用語または語句を "含まない" すべてのドキュメントが結果に含まれます。
 
-  ![検索モード any](media/search-query-simple-examples/searchmodeany.png)
+具体的な例を次に示します。 searchMode (any) を使用して次のクエリを実行すると、42 個のドキュメントが返されます。用語 "restaurant" を含むものに加えて、語句 "air conditioning" が存在しないすべてのドキュメントです。 
 
-searchMode を `all` に変更すると、条件に累積的な効果が適用され、より小さな結果セット (21 個のドキュメント) が返されます。これは、"fire department" という語句全体を含むドキュメントから、Metrotech Center のアドレスのジョブを除いた結果です。
+ブール演算子 (`-`) と語句 "air conditioning" の間にスペースがないことに注目してください。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "search": "restaurant -\"air conditioning\"",
+    "searchMode": "any",
+    "searchFields": "Tags",
+    "select": "HotelId, HotelName, Tags",
+    "count": true
+}
 ```
-  ![検索モード all](media/search-query-simple-examples/searchmodeall.png)
 
-## <a name="example-8-structuring-results"></a>例 8:結果の構造化
+"searchMode=all" に変更すると、条件に対する累積効果が適用され、用語 "restaurant" を含むドキュメントから、語句 "air conditioning" を含むものを除いて構成される、より小さな結果セット (7 件の一致) が返されます。
 
-いくつかのパラメーターは、検索結果に含まれるフィールド、各バッチで返されるドキュメントの数、および並べ替え順を制御します。 この例では、前の例のいくつかを再利用し、 **$select** ステートメントと逐語検索基準を使用して結果を特定のフィールドに限定し、82 件の一致を返します 
+このクエリの応答は、次の例のようになりました (簡潔にするため省略しています)。
+
+```json
+"@odata.count": 7,
+"value": [
+    {
+        "@search.score": 2.5460577,
+        "HotelId": "11",
+        "HotelName": "Regal Orb Resort & Spa",
+        "Tags": [
+            "free wifi",
+            "restaurant",
+            "24-hour front desk service"
+        ]
+    },
+    {
+        "@search.score": 2.166792,
+        "HotelId": "10",
+        "HotelName": "Countryside Hotel",
+        "Tags": [
+            "24-hour front desk service",
+            "coffee in lobby",
+            "restaurant"
+        ]
+    },
+```
+
+## <a name="example-8-paging-results"></a>例 8: 結果のページング
+
+以前の例では、検索結果の構成に影響を与えるパラメーターについて説明しました。たとえば "select" は、結果に含まれるフィールド、並べ替え順序、および、すべての一致のカウントを含める方法を決定します。 今回の例は、検索結果の構成の続きです。特定のページに表示する複数の結果をバッチ化するためのページング パラメーターの形式について扱います。 
+
+既定では、検索サービスは上位 50 件の一致を返します。 各ページの一致の数を制御するには、"top" を使用してバッチのサイズを定義した後、"skip" を使用して後続のバッチを取得します。
+
+並べ替えた結果に対するページングの影響のほうが確認しやすいため、次の例では、Rating フィールドでフィルターと並べ替え順序を使用しています (Rating はフィルター処理と並べ替えの両方が可能です)。 通常の完全検索クエリでは、上位の一致は "@search.score" によって順位付けおよびページングされます。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "search": "*",
+    "filter": "Rating gt 4",
+    "select": "HotelName, Rating",
+    "orderby": "Rating desc",
+    "top": "5",
+    "count": true
+}
 ```
-前の例に付加して、タイトルで並べ替えることができます。 この並べ替えは、インデックス内で civil_service_title が *sortable* であるために機能します。
 
-```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
-```
-
-結果のページングは、 **$top** パラメーターを使用して実装できます。このケースでは、上位 5 つのドキュメントが返されます。
-
-```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=0
-```
+このクエリでは 21 件の一致するドキュメントが見つかりますが、"top" を指定したため、応答では上位 5 件の一致のみが返され、評価は 4.9 が最高、"Lady of the Lake B & B" の 4.7 が最低になります。 
 
 次の 5 件を取得するには、最初のバッチをスキップします。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "search": "*",
+    "filter": "Rating gt 4",
+    "select": "HotelName, Rating",
+    "orderby": "Rating desc",
+    "top": "5",
+    "skip": "5",
+    "count": true
+}
+```
+
+2 番目のバッチの応答では、最初の 5 件の一致をスキップして、"Pull'r Inn Motel" から始まる次の 5 件を返します。 それ以降のバッチを取得するには、"top" は 5 のままにして、(skip=5、skip=10、skip=15 というように) 新しい要求のたびに "skip" を 5 ずつ大きくします。
+
+```json
+"value": [
+    {
+        "@search.score": 1.0,
+        "HotelName": "Pull'r Inn Motel",
+        "Rating": 4.7
+    },
+    {
+        "@search.score": 1.0,
+        "HotelName": "Sublime Cliff Hotel",
+        "Rating": 4.6
+    },
+    {
+        "@search.score": 1.0,
+        "HotelName": "Antiquity Hotel",
+        "Rating": 4.5
+    },
+    {
+        "@search.score": 1.0,
+        "HotelName": "Nordick's Motel",
+        "Rating": 4.5
+    },
+    {
+        "@search.score": 1.0,
+        "HotelName": "Winter Panorama Resort",
+        "Rating": 4.5
+    }
+]
 ```
 
 ## <a name="next-steps"></a>次のステップ
-コードでクエリを指定してみてください。 次のリンクでは、既定の単純な構文を使用して .NET と REST API の両方の検索クエリを設定する方法について説明しています。
 
-* [.NET SDK を使用したインデックスのクエリ実行](./search-get-started-dotnet.md)
-* [REST API を使用したインデックスのクエリ実行](./search-get-started-powershell.md)
+基本的なクエリの構文がある程度理解できたら、次は、コードでクエリを指定してみましょう。 次のリンクは、Azure SDK を使用して検索クエリを設定する方法について説明しています。
+
++ [.NET SDK を使用したインデックスのクエリ実行](search-get-started-dotnet.md)
++ [Python SDK を使用したインデックスのクエリ実行](search-get-started-python.md)
++ [JavaScript SDK を使用したインデックスのクエリ実行](search-get-started-javascript.md)
 
 追加の構文リファレンス、クエリ アーキテクチャ、およびサンプルについては、次のリンク先を参照してください。
 
 + [高度なクエリを作成するための Lucene 構文のクエリの例](search-query-lucene-examples.md)
 + [Azure Cognitive Search でのフルテキスト検索のしくみ](search-lucene-query-architecture.md)
-+ [単純なクエリ構文](/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [完全な Lucene クエリ](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [フィルター構文と並べ替え構文](/rest/api/searchservice/odata-expression-syntax-for-azure-search)
++ [単純なクエリ構文](query-simple-syntax.md)
++ [Full Lucene クエリ構文](query-lucene-syntax.md)
++ [フィルターの構文](search-query-odata-filter.md)

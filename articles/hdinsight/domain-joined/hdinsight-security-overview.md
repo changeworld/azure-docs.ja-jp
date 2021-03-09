@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight のエンタープライズ セキュリティの概要
 description: Azure HDInsight でエンタープライズ セキュリティを確保するためのさまざまな方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: 9cfda93cb7f99851109ab7c4a4590517f785c8a1
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f4fa1e64e00f2ae027d80960072da7d73d3a89cb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292981"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946829"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight のエンタープライズ セキュリティの概要
 
@@ -78,23 +75,25 @@ Azure コンプライアンス認証は、正式な認定資格を含むさま�
 | データ アクセス セキュリティ | Azure Data Lake Storage Gen1 および Gen2 対象の[アクセス制御リスト ACL](../../storage/blobs/data-lake-storage-access-control.md) を構成する  | Customer |
 |  | ストレージ アカウントで [[安全な転送が必須]](../../storage/common/storage-require-secure-transfer.md) プロパティを有効にします。 | Customer |
 |  | [Azure Storage ファイアウォール](../../storage/common/storage-network-security.md)および仮想ネットワークを構成する | Customer |
-|  | Cosmos DB と [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) 用に [Azure 仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を構成する | Customer |
+|  | Cosmos DB と [Azure SQL DB](../../azure-sql/database/vnet-service-endpoint-rule-overview.md) 用に [Azure 仮想ネットワーク サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)を構成する | Customer |
 |  | クラスター内通信に TLS と IPSec を使用するには、[転送中の暗号化](./encryption-in-transit.md)の機能が有効になっていることを確認します。 | Customer |
-|  | Azure Storage 暗号化用に[顧客管理のキー](../../storage/common/storage-encryption-keys-portal.md)を構成する | Customer |
-|  | [カスタマー ロックボックス](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)を使用し、Azure サポートによりデータ アクセスを制御する | Customer |
-| アプリケーションとミドルウェアのセキュリティ | AAD-DS と統合して[認証を構成する](apache-domain-joined-configure-using-azure-adds.md) | Customer |
+|  | Azure Storage 暗号化用に[顧客管理のキー](../../storage/common/customer-managed-keys-configure-key-vault.md)を構成する | Customer |
+|  | [カスタマー ロックボックス](../../security/fundamentals/customer-lockbox-overview.md)を使用し、Azure サポートによりデータ アクセスを制御する | Customer |
+| アプリケーションとミドルウェアのセキュリティ | AAD-DS と統合して [ESP を構成](apache-domain-joined-configure-using-azure-adds.md)するか、[HIB による OAuth 認証](identity-broker.md)を使用する| Customer |
 |  | [Apache Ranger 認証](apache-domain-joined-run-hive.md)ポリシーを構成する | Customer |
 |  | [Azure Monitor ログ](../hdinsight-hadoop-oms-log-analytics-tutorial.md)を使用する | Customer |
 | オペレーティング システムのセキュリティ | 最新の安全な基本イメージを使用してクラスターを作成する | Customer |
 |  | [OS の修正プログラム](../hdinsight-os-patching.md)が定期的に適用されるようにする | Customer |
+|  | [VM に対し、CMK によるディスク暗号化](../disk-encryption.md)を行う | Customer |
 | ネットワークのセキュリティ | [仮想ネットワーク](../hdinsight-plan-virtual-network-deployment.md)を構成する |
-|  | [ネットワーク セキュリティ グループ (NSG) の受信規則](../control-network-traffic.md)を構成する | Customer |
+|  | [ネットワーク セキュリティ グループ (NSG) の受信規則](../control-network-traffic.md)または[プライベート リンク](../hdinsight-private-link.md)を構成する | Customer |
 |  | ファイアウォールを使用して[送信トラフィックの制限](../hdinsight-restrict-outbound-traffic.md)を構成する | Customer |
+|  | クラスター ノード間で、[転送中の IPsec 暗号化](encryption-in-transit.md)を構成する | Customer |
 | 仮想化インフラストラクチャ | 該当なし | HDInsight (クラウド プロバイダー) |
 | 物理インフラのセキュリティ | 該当なし | HDInsight (クラウド プロバイダー) |
 
 ## <a name="next-steps"></a>次のステップ
 
 * [ESP を使用する HDInsight クラスターを計画する](apache-domain-joined-architecture.md)
-* [ESP を使用する HDInsight クラスターを構成する](apache-domain-joined-configure.md)
+* [ESP を使用する HDInsight クラスターを構成する](./apache-domain-joined-configure-using-azure-adds.md)
 * [ESP を使用する HDInsight クラスターを管理する](apache-domain-joined-manage.md)

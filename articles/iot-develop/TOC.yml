@@ -1,0 +1,113 @@
+- name: IoT デバイス開発
+  href: index.yml
+- name: 概要
+  items:
+    - name: IoT デバイス開発とは
+      href: about-iot-develop.md
+    - name: 使用する SDK
+      href: about-iot-sdks.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: デバイス アプリケーション開発の概要
+      items:
+        - name: テレメトリを IoT Central に送信する (Python)
+          href: quickstart-send-telemetry-python.md
+        - name: テレメトリを IoT Hub に送信する (Python)
+          href: quickstart-send-telemetry-cli-python.md
+        - name: テレメトリを IoT Hub に送信する (Node)
+          href: quickstart-send-telemetry-cli-node.md
+    - name: 埋め込み開発の概要
+      href: quickstart-device-development.md
+- name: チュートリアル
+  items:
+    - name: IoT デバイスをクラウドに安全に接続する
+      href: /learn/paths/securely-connect-iot-devices/
+- name: 概念
+  items:
+    - name: デバイス開発者向けの接続オプション
+      href: concepts-overview-connection-options.md
+    - name: デバイスの種類の概要
+      href: concepts-iot-device-types.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-IoT
+    - name: Azure PowerShell
+      href: /powershell/module/az.iothub#iothub
+    - name: C (デバイス)
+      href: /azure/iot-hub/iot-c-sdk-ref/
+    - name: 埋め込み C (デバイス)
+      href: 'https://azure.github.io/azure-sdk-for-c/'
+    - name: Azure RTOS ミドルウェア (デバイス)
+      href: /azure/rtos/threadx
+    - name: .NET (デバイス)
+      href: /dotnet/api/microsoft.azure.devices.client
+    - name: .NET (サービス)
+      href: /dotnet/api/microsoft.azure.devices
+    - name: .NET (管理)
+      href: /dotnet/api/overview/azure/iot/management
+    - name: Java (デバイス)
+      href: /java/api/com.microsoft.azure.sdk.iot.device
+    - name: Java (サービス)
+      href: /java/api/com.microsoft.azure.sdk.iot.service
+    - name: Node.js (デバイス)
+      href: /javascript/api/azure-iot-device/
+    - name: Node.js (サービス)
+      href: /javascript/api/azure-iothub/
+    - name: Node.js (管理)
+      href: /javascript/api/overview/azure/iothub/management
+    - name: Python (デバイス)
+      href: /python/api/azure-iot-device
+    - name: Python (サービス)
+      href: /python/api/azure-iot-hub
+    - name: Python (管理)
+      href: /python/api/azure-mgmt-iothub
+    - name: REST (デバイス)
+      href: /rest/api/iothub/device
+    - name: REST (サービス)
+      href: /rest/api/iothub/service/configuration
+    - name: REST (IoT Hub リソース)
+      href: /rest/api/iothub/iothubresource
+    - name: REST (証明書)
+      href: /rest/api/iothub/certificates
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.devices/iothub-allversions
+- name: リソース
+  items:
+    - name: サポート オプションとヘルプ オプション
+      href: ../iot-fundamentals/iot-support-help.md
+    - name: Azure IoT サンプル
+      items:
+        - name: C# (.NET)
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+        - name: Node.js
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+        - name: Java
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+        - name: Python
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+        - name: iOS プラットフォーム
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
+    - name: IoT デバイス カタログ向けの Azure 認定
+      href: 'https://catalog.azureiotsolutions.com/'
+    - name: Azure IoT デベロッパー センター
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
+    - name: Azure IoT Tools
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools'
+    - name: Azure IoT エクスプローラー ツール
+      href: 'https://github.com/Azure/azure-iot-explorer'
+    - name: iothub-diagnostics ツール
+      href: 'https://github.com/Azure/iothub-diagnostics'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=iot-hub'
+    - name: 技術的なケース スタディ
+      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-hub'

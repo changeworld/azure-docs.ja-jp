@@ -1,17 +1,15 @@
 ---
 title: Visual Studio でアプリケーションをデバッグする
 description: Visual Studio とローカル開発クラスターを使用してサービスを開発、デバッグし、サービスの信頼性とパフォーマンスを改善します。
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2bec6667ea44e195ea1fccb5313b45ed060312a1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0b7d08d610c883240abedc66c55abba64a74c8e3
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000109"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576317"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Visual Studio による Service Fabric アプリケーションのデバッグ
 > [!div class="op_single_selector"]
@@ -26,7 +24,7 @@ ms.locfileid: "89000109"
 1. 「 [Service Fabric 開発環境の設定](service-fabric-get-started.md)」にある手順に従って、ローカル開発クラスターを開始してください。
 2. **F5** キーを押すか、 **[デバッグ]**  >  **[デバッグの開始]** の順にクリックします
    
-    ![アプリケーションのデバッグを開始する][startdebugging]
+    ![[デバッグ] メニューを示すスクリーンショット。][startdebugging]
 3. コードにブレークポイントを設定し、 **[デバッグ]** メニューのコマンドをクリックしてアプリケーションをステップ実行します。
    
    > [!NOTE]

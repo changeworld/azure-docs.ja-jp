@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 912f8bdf90e2b45932a73e5bd99190f58cf546a7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f6c43f943bb12e8230772f2d195589ecc4543030
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89265951"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705315"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft&reg; Smooth Streaming Client Porting Kit のライセンス
 
@@ -46,7 +46,7 @@ SSPK は、高い事業価値を提供する契約条件に基づいて使用許
   * ハードウェア A/V デコーダー (デコード、レンダリング) との連携を可能にするプログラミング インターフェイス
 * DRM (デジタル著作権管理) インターフェイス 
   * DRM アブストラクション レイヤー (DAL) を介して DRM を処理するためのプログラミング インターフェイス
-  * Microsoft PlayReady Porting Kit は別々に出荷されますが、このインターフェイスを介して連携します。 Microsoft PlayReady デバイスのライセンスの詳細については、 [ここ](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl)をクリックしてください。
+  * Microsoft PlayReady Porting Kit は別々に出荷されますが、このインターフェイスを介して連携します。 [Microsoft PlayReady デバイスのライセンスの詳細を参照してください](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl)。
 * 実装サンプル 
   * サンプル PAL 実装 (Linux)
   * サンプル HAL 実装 (GStreamer)
@@ -116,22 +116,25 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft Smooth Streaming Client 最終製品契約ライセンシー
 * Advanced Digital Broadcast SA
 * AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
+* AmTRAN Technology Co., Ltd 
 * Arcadyan Technology Corporation
 * Arcelik A.S
 * Compal Electronics, Inc.
 * EXPRESS LUCK TECHNOLOGY LIMITED
 * Fluendo S.A.
 * FUNAI ELECTRIC CO., LTD
-* Hisense International Co., Ltd. 
+* Hisense International Co., Ltd.
+* Hisense Visual Technology Co., Ltd
 * HKC Corporation Limited
 * Hong Kong Konka Ltd
 * Innolux Corporation
-* Innopia Technologies, Inc
+* Jinpin Electrical Company Ltd.Zhuhai.S.E.Z
 * K-Tronics (Suzhou) Technology Co., Ltd. 
 * Kaonmedia Co., Ltd.
 * KDDI Corporation
 * Mega Fame Electronics Co. Limited
 * MIRC Electronics Limited
+* MOKA INTERNATIONAL LIMITED
 * Nintendo Co., Ltd.
 * ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
 * Panasonic Corporation
@@ -145,6 +148,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * Shenzhen Skyworth Digital Technology Co., Ltd
 * Sichuan Changhong Electric Co., Ltd.
 * Skardin Industrial Corp.
+* Sky CP Ltd
 * Sky Deutschland Fernsehen GmbH & Co. KG
 * SMARDTV GLOBAL SAS
 * SoftAtHome
@@ -152,6 +156,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * Technicolor Delivery Technologies, SAS
 * Top Victory Investments, Ltd.
 * UMC Poland sp. z .o.o.
+* Vizio, Inc.
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス

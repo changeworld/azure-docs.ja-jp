@@ -4,12 +4,12 @@ description: Service Fabric Reliable Actors のタイマーとアラームにつ
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2b97b15ca4eb287f8d8f2c1af932f22acafae546
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f77eb29c9146fe66d5d2b6073c33e30fbab649c2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89016548"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791796"
 ---
 # <a name="actor-timers-and-reminders"></a>アクターのタイマーとアラーム
 アクターは、タイマーまたはアラームを登録することで、自身の定期的な作業をスケジュールできます。 ここでは、タイマーとアラームの使用方法と、これらの違いについて説明します。
@@ -131,7 +131,7 @@ public class VisualObjectActorImpl extends FabricActor implements VisualObjectAc
 > [!NOTE]
 > アラートの信頼性は、アクター状態プロバイダーが提供する状態の信頼性の保証に関連付けられています。 つまり、状態の永続性が "*なし*" に設定されているアクターの場合、フェールオーバー後にアラートが起動しません。
 
-アラームを登録するには、次の例に示すように、アクターが基本クラスで提供される [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) メソッドを呼び出します。
+アラームを登録するには、次の例に示すように、アクターが基本クラスで提供される [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync#remarks) メソッドを呼び出します。
 
 ```csharp
 protected override async Task OnActivateAsync()

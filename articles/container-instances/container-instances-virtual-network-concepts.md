@@ -3,13 +3,12 @@ title: 仮想ネットワークを使用するシナリオ
 description: コンテナー グループを Azure 仮想ネットワークにデプロイするシナリオ、リソース、制限。
 ms.topic: article
 ms.date: 08/11/2020
-ms.author: danlep
-ms.openlocfilehash: 0474a5f85829080a89a74195483484c464de5840
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 65d7fa46ebbb9b072b50731bff68b9b88809075d
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870767"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033831"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>仮想ネットワークのシナリオとリソース
 
@@ -34,6 +33,7 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 * **Azure Load Balancer** - ネットワーク接続されたコンテナー グループ内のコンテナー インスタンスの前に Azure Load Balancer を配置することはサポートされていません
 * **グローバル仮想ネットワーク ピアリング** - グローバル ピアリング (Azure リージョンをまたぐ仮想ネットワークの接続) はサポートされていません
 * **パブリック IP または DNS ラベル** - 仮想ネットワークにデプロイされたコンテナー グループでは現在、パブリック IP アドレスまたは完全修飾ドメイン名を使用してコンテナーをインターネットに直接公開することはサポートされていません
+* **Virtual Network NAT** - 仮想ネットワークにデプロイされたコンテナー グループでは、現在、送信インターネット接続に NAT ゲートウェイ リソースを使用することはサポートされていません。
 
 ## <a name="other-limitations"></a>その他の制限事項
 
@@ -42,6 +42,7 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 * 仮想ネットワークにデプロイされたコンテナー グループ内で[マネージド ID](container-instances-managed-identity.md) を使用することはできません。
 * 仮想ネットワークにデプロイされているコンテナー グループ内の [liveness probe](container-instances-liveness-probe.md) または [readiness probe](container-instances-readiness-probe.md) を有効にすることはできません。
 * 追加のネットワーク リソースが関係しているため、通常、仮想ネットワークへのデプロイには標準のコンテナー インスタンスをデプロイするよりも時間がかかります。
+* コンテナー グループを Azure Storage アカウントに接続する場合は、そのリソースに[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を追加する必要があります。
 
 [!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 

@@ -8,12 +8,12 @@ ms.topic: include
 author: sdgilley
 ms.author: sgilley
 ms.date: 10/14/2019
-ms.openlocfilehash: ea5f893008bee41fd24312036a210215c8a29e54
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 119d9579cb139a6b1611b8ccec4ebf271e610d3c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73476193"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91841853"
 ---
 コンピューティング インスタンスまたは Notebook VM を使用していた場合は、使用していない VM を停止してコストを削減します。
 

@@ -3,13 +3,13 @@ title: JavaScript Web アプリのための Azure Application Insights
 description: ページ ビューとセッション数、Web クライアントのデータ、シングル ページ アプリケーション (SPA) を取得し、使用パターンを追跡します。 JavaScript Web ページの例外とパフォーマンスの問題を検出します。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 3acb7379644b5bfcb22ed86b6bde7031095fef24
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.custom: devx-track-js
+ms.openlocfilehash: 58f17deb20a43a76a9b7813e25b16d0ee3770c71
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224855"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708426"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -19,8 +19,11 @@ Web ページまたはアプリのパフォーマンスと使用状況につい�
 
 ## <a name="adding-the-javascript-sdk"></a>JavaScript SDK を追加する
 
+> [!IMPORTANT]
+> 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./sdk-connection-string.md?tabs=js)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
+
 1. まず Application Insights リソースが必要です。 リソースとインストルメンテーション キーがまだない場合は、[新しいリソースの作成手順](create-new-resource.md)に従います。
-2. (手順 1. の) JavaScript テレメトリの送信先となるリソースの "_インストルメンテーション キー_" ("iKey" とも呼ばれます) をコピーします。これを Application Insights JavaScript SDK の `instrumentationKey` 設定に追加します。
+2. (手順 1. の) JavaScript テレメトリの送信先となるリソースの "_インストルメンテーション キー_" ("iKey" とも呼ばれます) または [接続文字列](#connection-string-setup)をコピーします。これを Application Insights JavaScript SDK の `instrumentationKey` または `connectionString` 設定に追加します。
 3. 次の 2 つの方法のいずれかを使用して、Application Insights JavaScript SDK を Web ページまたはアプリに追加します。
     * [npm のセットアップ](#npm-based-setup)
     * [JavaScript スニペット](#snippet-based-setup)
@@ -40,7 +43,7 @@ npm i --save @microsoft/applicationinsights-web
 ```
 
 > [!Note]
-> **typings はこのパッケージに含まれている**ため、typings パッケージを別途インストールする必要は**ありません**。
+> **typings はこのパッケージに含まれている** ため、typings パッケージを別途インストールする必要は **ありません**。
     
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -59,16 +62,17 @@ appInsights.trackPageView(); // Manually call trackPageView to establish the cur
 
 アプリケーションで使用されているスニペットのバージョンの追跡を支援するために、バージョン 2.5.5 以降では、識別されたスニペット バージョンを含む "ai.internal.snippet" という新しいタグがページ ビュー イベントに含まれます。
 
-現在のスニペット (下記) は、バージョン "3" として識別されます。
+現在のスニペット (下に示されています) はバージョン "5" で、バージョンは sv: "#" としてスニペットでエンコードされています。[現在のバージョンは GitHub で入手することもできます](https://go.microsoft.com/fwlink/?linkid=2156318)。
 
 ```html
 <script type="text/javascript">
-!function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
-src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", // The SDK URL Source
-//name: "appInsights", // Global SDK Instance name defaults to "appInsights" when not supplied
-//ld: 0, // Defines the load delay (in ms) before attempting to load the sdk. -1 = block page load and add to head. (default) = 0ms load after timeout,
-//useXhr: 1, // Use XHR instead of fetch to report failures (if available),
-//crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag 
+!function(T,l,y){var S=T.location,k="script",D="instrumentationKey",C="ingestionendpoint",I="disableExceptionTracking",E="ai.device.",b="toLowerCase",w="crossOrigin",N="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"5",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[b](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,u,p,l;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][b]()]=i[1])}if(!e[C]){var r=e.endpointsuffix,o=r?e.location:null;e[C]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[D]||d[D]||"",u=s[C],p=u?u+"/v2/track":d.endpointUrl,(l=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=p,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),l.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,p)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:N,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(N,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(l,p))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(k);n.src=h;var e=y[w];return!e&&""!==e||"undefined"==n[w]||(n[w]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(k)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[I]&&!0!==s[I]){var c="onerror";t(["_"+c]);var u=T[c];T[c]=function(e,t,n,a,i){var r=u&&u(e,t,n,a,i);return!0!==r&&m["_"+c]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);function a(){y.onInit&&y.onInit(n)}(T[t]=n).queue&&0===n.queue.length?(n.queue.push(a),n.trackPageView({})):a()}(window,document,{nConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js", // The SDK URL Source
+// name: "appInsights", // Global SDK Instance name defaults to "appInsights" when not supplied
+// ld: 0, // Defines the load delay (in ms) before attempting to load the sdk. -1 = block page load and add to head. (default) = 0ms load after timeout,
+// useXhr: 1, // Use XHR instead of fetch to report failures (if available),
+crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag
+// onInit: null, // Once the application insights instance has loaded and initialized this callback function will be called with 1 argument -- the sdk instance (DO NOT ADD anything to the sdk.queue -- As they won't get called)
 cfg: { // Application Insights Configuration
     instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
     /* ...Other Configuration Options... */
@@ -102,7 +106,7 @@ SDK の読み込みに失敗する原因となるだけでなく、エラーの�
 
 上記では、各構成オプションが新しい行に示されています。[省略可能] と示されている項目の既定値を上書きしたくない場合は、その行を削除することで、返されるページのサイズを最小限に抑えることができます。
 
-使用できる構成オプションは次のとおりです。 
+使用できる構成オプションは次のとおりです。
 
 | 名前 | Type | 説明
 |------|------|----------------
@@ -113,16 +117,30 @@ SDK の読み込みに失敗する原因となるだけでなく、エラーの�
 | crossOrigin | string *[省略可能]* | この設定を含めると、SDK をダウンロードするために追加されたスクリプト タグに、この文字列値が設定された crossOrigin 属性が含まれるようになります。 定義されていない場合 (既定値)、crossOrigin 属性は追加されません。 推奨値は未定義 (既定値) を表す ""、または "anonymous" です (すべての有効な値については、[HTML 属性: `crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) のドキュメントをご覧ください)。
 | cfg | object **[必須]** | 初期化中に Application Insights SDK に渡される構成。
 
+### <a name="connection-string-setup"></a>接続文字列の設定
+
+NPM またはスニペットのセットアップでは、接続文字列を使用して Application Insights のインスタンスを構成することもできます。 単に `instrumentationKey` フィールドを `connectionString` フィールドに置き換えるだけです。
+```js
+import { ApplicationInsights } from '@microsoft/applicationinsights-web'
+
+const appInsights = new ApplicationInsights({ config: {
+  connectionString: 'YOUR_CONNECTION_STRING_GOES_HERE'
+  /* ...Other Configuration Options... */
+} });
+appInsights.loadAppInsights();
+appInsights.trackPageView();
+```
+
 ### <a name="sending-telemetry-to-the-azure-portal"></a>テレメトリを Azure portal に送信する
 
 既定では Application Insights JavaScript SDK は、アプリケーションの正常性や基になるユーザー エクスペリエンスを判別するのに役立つ多くのテレメトリ項目を自動収集します。 これには以下が含まれます。
 
-- アプリでの**キャッチされない例外** (以下の情報が含まれる)
+- アプリでの **キャッチされない例外** (以下の情報が含まれる)
     - スタック トレース
     - 例外の詳細とエラーに付随するメッセージ
     - エラーの行番号と列番号
     - エラーが発生した URL
-- アプリの **XHR** および **Fetch** (フェッチ コレクションは既定では無効) 要求によって実行される**ネットワーク依存関係要求** (以下の情報が含まれる)
+- アプリの **XHR** および **Fetch** (フェッチ コレクションは既定では無効) 要求によって実行される **ネットワーク依存関係要求** (以下の情報が含まれる)
     - 依存関係ソースの URL
     - 依存関係の要求に使用されたコマンドとメソッド
     - 要求の期間
@@ -163,7 +181,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | maxBatchInterval | 15000 | 送信前にテレメトリをバッチ処理する時間 (ミリ秒) |
 | disableExceptionTracking | false | true の場合、例外は自動収集されません。 既定値は false です。 |
 | disableTelemetry | false | true の場合、テレメトリは収集または送信されません。 既定値は false です。 |
-| enableDebug | false | true の場合、SDK ログ設定に関わらず、**内部**デバッグ データはログに記録される**代わりに**例外としてスローされます。 既定値は false です。 <br>***注:*** この設定を有効にすると、内部エラーが発生するたびにテレメトリが削除されます。 これは、SDK の構成または使用に関する問題をすばやく特定するのに役立ちます。 デバッグ時にテレメトリが削除されないようにするには、`enableDebug` の代わりに `consoleLoggingLevel` または `telemetryLoggingLevel` の使用を検討してください。 |
+| enableDebug | false | true の場合、SDK ログ設定に関わらず、**内部** デバッグ データはログに記録される **代わりに** 例外としてスローされます。 既定値は false です。 <br>**_注:_** この設定を有効にすると、内部エラーが発生するたびにテレメトリが削除されます。 これは、SDK の構成または使用に関する問題をすばやく特定するのに役立ちます。 デバッグ時にテレメトリが削除されないようにするには、`enableDebug` の代わりに `consoleLoggingLevel` または `telemetryLoggingLevel` の使用を検討してください。 |
 | loggingLevelConsole | 0 | **内部** Application Insights エラーをコンソールに記録します。 <br>0: オフ <br>1:重大なエラーのみ <br>2:すべて (エラーおよび警告) |
 | loggingLevelTelemetry | 1 | **内部** Application Insights エラーをテレメトリとして送信します。 <br>0: オフ <br>1:重大なエラーのみ <br>2:すべて (エラーおよび警告) |
 | diagnosticLogInterval | 10000 | 内部ログ キューの (内部) ポーリング間隔 (ミリ秒) |
@@ -179,7 +197,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | correlationHeaderDomains |  | 特定のドメインの関連付けヘッダーを有効にします。 |
 | disableFlushOnBeforeUnload | false | 既定値は false です。 true の場合、onBeforeUnload イベントによってトリガーされても、flush メソッドは呼び出されません。 |
 | enableSessionStorageBuffer | true | 既定値は true です。 true の場合、未送信のすべてのテレメトリを含むバッファーがセッション ストレージに格納されます。 バッファーはページの読み込み時に復元されます。 |
-| isCookieUseDisabled | false | 既定値は false です。 true の場合、SDK によって cookie に対するデータの格納や読み取りは行われません。|
+| isCookieUseDisabled | false | 既定値は false です。 true の場合、SDK によって cookie に対するデータの格納や読み取りは行われません。 これにより、ユーザーとセッションの Cookie が無効になり、使用状況ブレードとエクスペリエンスが利用できなくなります。 |
 | cookieDomain | null | カスタム Cookie ドメイン。 これは、サブドメイン間で Application Insights Cookie を共有する場合に便利です。 |
 | isRetryDisabled | false | 既定値は false です。 false の場合、206 (部分的な成功)、408 (タイムアウト)、429 (要求が多すぎる)、500 (内部サーバー エラー)、503 (サービス利用不可)、および 0 (オフライン、検出された場合のみ) で再試行します。 |
 | isStorageUseDisabled | false | true の場合、SDK によってローカルおよびセッション ストレージに対するデータの格納や読み取りは行われません。 既定値は false です。 |
@@ -200,57 +218,57 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | ajaxPerfLookupDelay | 25 | 既定値は 25 ミリ秒です。 `ajax` 要求で windows.performance のタイミングの検索を再試行するまでの待ち時間。時間はミリ秒単位であり、setTimeout() に直接渡されます。
 | enableUnhandledPromiseRejectionTracking | false | true の場合、未処理の Promise 拒否が自動収集され、JavaScript エラーとしてレポートされます。 disableExceptionTracking が true (例外を追跡しない) の場合、この構成値は無視され、未処理の Promise 拒否はレポートされません。
 
-## <a name="single-page-applications"></a>シングル ページ アプリケーション
+## <a name="enable-time-on-page-tracking"></a>ページ滞在時間の追跡を有効にする
 
-既定では、この SDK では、シングル ページ アプリケーションで発生する状態ベースのルート変更は処理され**ません**。 シングル ページ アプリケーションの自動ルート変更追跡を有効にするには、`enableAutoRouteTracking: true` をセットアップ構成に追加します。
+`autoTrackPageVisitTime: true` を設定することで、ユーザーが各ページで費やした時間が追跡されます。 新しい PageView のたびに、"*前の*" ページでユーザーが費やした時間が `PageVisitTime` という名前の [カスタム メトリック](../essentials/metrics-custom-overview.md)に送信されます。 このカスタム メトリックは、"ログベースのメトリック" として[メトリックス エクスプローラー](../essentials/metrics-getting-started.md)に表示されます。
 
-現在、この SDK で初期化できる個別の [React プラグイン](#react-extensions)が提供されています。 これによって、ルート変更追跡が実現し、[他の React 固有テレメトリ](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)の収集も行われます。
+## <a name="enable-correlation"></a>関連付けを有効にする
 
-> [!NOTE]
-> `enableAutoRouteTracking: true` は、React プラグインを使用して**いない**場合にのみ使用します。 いずれも、ルートの変更時、新しい PageViews を送信できます。 両方が有効になっている場合、PageViews が重複して送信されることがあります。
+関連付けにより、分散トレースを有効にするデータが生成および送信され、[アプリケーション マップ](../app/app-map.md)、[エンド ツー エンド トランザクション ビュー](../app/app-map.md#go-to-details)、その他の診断ツールが強化されます。
 
-## <a name="configuration-autotrackpagevisittime"></a>構成: autoTrackPageVisitTime
-
-`autoTrackPageVisitTime: true` を設定することで、ユーザーが各ページで費やした時間が追跡されます。 新しい PageView のたびに、"*前の*" ページでユーザーが費やした時間が `PageVisitTime` という名前の[カスタム メトリック](../platform/metrics-custom-overview.md)に送信されます。 このカスタム メトリックは、"ログベースのメトリック" として[メトリックス エクスプローラー](../platform/metrics-getting-started.md)に表示されます。
-
-## <a name="react-extensions"></a>React の拡張機能
-
-| 拡張機能 |
-|---------------|
-| [React](javascript-react-plugin.md)|
-| [React Native](javascript-react-native-plugin.md)|
-
-## <a name="correlation"></a>相関関係
-
-クライアントからサーバー側への相関関係は、次に対してサポートされます。
-
-- XHR/AJAX 要求 
-- フェッチ要求 
-
-クライアントからサーバー側への相関関係は、`GET` および `POST` 要求に対しては**サポートされません**。
-
-### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>クライアント AJAX とサーバー要求の間でコンポーネント間の相関関係を有効にする
-
-`CORS` の相関関係を有効にするには、クライアントは 2 つの追加の要求ヘッダー `Request-Id` と `Request-Context` を送信する必要があり、サーバー側では、これらのヘッダーがある接続を受け入れられる必要があります。 これらのヘッダーの送信は、JavaScript SDK 構成内に `enableCorsCorrelation: true` を設定することによって有効になります。 
-
-サーバー側の `Access-Control-Allow-Headers` 構成によっては、`Request-Id` と `Request-Context` を手動で追加してサーバー側の一覧を拡張することが必要になることがよくあります。
-
-Access-Control-Allow-Headers: `Request-Id`、`Request-Context`、`<your header>`
-
-クライアントが通信するサードパーティのサーバーが `Request-Id` と `Request-Context` ヘッダーを受け入れられず、構成を更新できない場合は、`correlationHeaderExcludeDomains` 構成プロパティを使用してそれらを除外リストに入れる必要があります。 このプロパティでは、ワイルドカードがサポートされています。
+次の例は、関連付けを有効にするために必要なすべての構成を示しており、それに続いてシナリオ固有の注意事項があります。
 
 ```javascript
 // excerpt of the config section of the JavaScript SDK snippet with correlation
 // between client-side AJAX and server requests enabled.
 cfg: { // Application Insights Configuration
     instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    disableFetchTracking: false,
     enableCorsCorrelation: true,
+    enableRequestHeaderTracking: true,
+    enableResponseHeaderTracking: true,
     correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
     /* ...Other Configuration Options... */
 }});
 </script>
 
 ``` 
+
+クライアントが通信するサードパーティのサーバーが `Request-Id` と `Request-Context` ヘッダーを受け入れられず、構成を更新できない場合は、`correlationHeaderExcludeDomains` 構成プロパティを使用してそれらを除外リストに入れる必要があります。 このプロパティでは、ワイルドカードがサポートされています。
+
+サーバー側は、これらのヘッダーが存在する接続を受け入れる必要があります。 サーバー側の `Access-Control-Allow-Headers` 構成によっては、`Request-Id` と `Request-Context` を手動で追加してサーバー側の一覧を拡張することが必要になることがよくあります。
+
+Access-Control-Allow-Headers: `Request-Id`、`Request-Context`、`<your header>`
+
+> [!NOTE]
+> 2020 年以降にリリースされた OpenTelemtry または Application Insights SDK を使用している場合は、[WC3 TraceContext](https://www.w3.org/TR/trace-context/) を使用することをお勧めします。 [こちら](../app/correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)の構成ガイダンスを参照してください。
+
+## <a name="single-page-applications"></a>シングル ページ アプリケーション
+
+既定では、この SDK では、シングル ページ アプリケーションで発生する状態ベースのルート変更は処理され **ません**。 シングル ページ アプリケーションの自動ルート変更追跡を有効にするには、`enableAutoRouteTracking: true` をセットアップ構成に追加します。
+
+現在、この SDK で初期化できる個別の [React プラグイン](javascript-react-plugin.md)が提供されています。 これによって、ルート変更追跡が実現し、他の React 固有テレメトリの収集も行われます。
+> [!NOTE]
+> `enableAutoRouteTracking: true` は、React プラグインを使用して **いない** 場合にのみ使用します。 いずれも、ルートの変更時、新しい PageViews を送信できます。 両方が有効になっている場合、PageViews が重複して送信されることがあります。
+
+## <a name="extensions"></a>拡張機能
+
+| 拡張機能 |
+|---------------|
+| [React](javascript-react-plugin.md)|
+| [React Native](javascript-react-native-plugin.md)|
+| [Angular](javascript-angular-plugin.md)|
+| [クリック分析自動収集](javascript-click-analytics-plugin.md)|
 
 ## <a name="explore-browserclient-side-data"></a>ブラウザー/クライアント側データの参照
 
@@ -315,7 +333,7 @@ npm i --save @microsoft/applicationinsights-web-basic
 
 ## <a name="examples"></a>例
 
-実行できる例については、[Application Insights JavaScript SDK サンプル](https://github.com/topics/applicationinsights-js-demo)を参照してください。
+実行できる例については、[Application Insights JavaScript SDK サンプル](https://github.com/Azure-Samples?q=applicationinsights-js-demo)を参照してください。
 
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>以前のバージョンの Application Insights からのアップグレード
 
@@ -323,7 +341,7 @@ SDK V2 バージョンでの破壊的変更:
 - API 署名の向上のため、trackPageView や trackException などの一部の API 呼び出しが更新されています。 Internet Explorer 8 以前のバージョンのブラウザーでの実行はサポートされません。
 - データ スキーマの更新により、テレメトリ エンベロープのフィールド名と構造が変更されています。
 - `context.operation` が `context.telemetryTrace` に移動されました。 一部のフィールドも変更されました (`operation.id` --> `telemetryTrace.traceID`)。
-  - (たとえば、SPA アプリで) 現在のページビュー ID を手動で更新するには、`appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()` を使用します。
+  - (たとえば、SPA アプリで) 現在のページビュー ID を手動で更新するには、`appInsights.properties.context.telemetryTrace.traceID = Microsoft.ApplicationInsights.Telemetry.Util.generateW3CId()` を使用します。
     > [!NOTE]
     > トレース ID を一意に保つには、以前に `Util.newId()` を使用した場所で今度は `Util.generateW3CId()` を使用します。 両方とも、最終的には操作 ID になります。
 
@@ -331,7 +349,7 @@ SDK V2 バージョンでの破壊的変更:
 
 - CDN を使用したダウンロードのシナリオ:現在使用しているコード スニペットが次の URL を指すように更新します。
    ```
-   "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
+   "https://js.monitor.azure.com/scripts/b/ai.2.min.js"
    ```
 
 - npm のシナリオ:`downloadAndSetup` を呼び出して、完全な ApplicationInsights スクリプトを CDN からダウンロードし、インストルメンテーション キーを使用して初期化します。
@@ -339,7 +357,7 @@ SDK V2 バージョンでの破壊的変更:
    ```ts
    appInsights.downloadAndSetup({
      instrumentationKey: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
-     url: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
+     url: "https://js.monitor.azure.com/scripts/b/ai.2.min.jss"
      });
    ```
 

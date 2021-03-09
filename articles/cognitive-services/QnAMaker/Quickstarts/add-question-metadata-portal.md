@@ -1,16 +1,18 @@
 ---
-title: クイック スタート:QnA Maker ポータルで質問と回答を追加する
-description: このクイックスタートでは、ユーザーが自分の質問に対する適切な回答を見つけられるように、質問と回答のペアをメタデータと共に追加する方法について説明します。
+title: QnA Maker ポータルで質問と回答を追加する
+description: この記事では、ユーザーが自分の質問に対する適切な回答を見つけられるように、質問と回答のペアをメタデータと共に追加する方法について説明します。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: a832d9f421d3a1851401c286f129e29d0196ec99
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 53c0afa1cdb8c9920875b7ba694339107714bd54
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331391"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462208"
 ---
-# <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>クイック スタート:QnA Maker ポータルで質問と回答を追加する
+# <a name="add-questions-and-answer-with-qna-maker-portal"></a>QnA Maker ポータルで質問と回答を追加する
 
 ナレッジ ベースを作成したら、質問と回答 (QnA) のペアを、回答をフィルター処理するためのメタデータと共に追加します。 次の表には Azure サービスの制限についての質問が記載されていますが、関係する Azure Search サービスはそれぞれ異なります。
 
@@ -18,7 +20,7 @@ ms.locfileid: "84331391"
 
 |ペア|疑問がある場合|Answer|Metadata|
 |--|--|--|--|
-|1 番|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
+|1 番|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](../concepts/azure-resources.md) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |2 番|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
 
 QnA ペアにメタデータが追加されると、クライアント アプリケーションでは次のことを実行できます。
@@ -35,7 +37,7 @@ QnA ペアにメタデータが追加されると、クライアント アプリ
 
 1. [QnA Maker](https://www.qnamaker.ai) ポータルにサインインします。
 
-1. [前のクイックスタート](../how-to/create-knowledge-base.md)から既存のナレッジ ベースを選択します。
+1. [前のクイックスタート](./create-publish-knowledge-base.md)から既存のナレッジ ベースを選択します。
 
 ## <a name="add-additional-alternatively-phrased-questions"></a>言い回しを変えて質問を追加する
 
@@ -60,7 +62,7 @@ QnA ペアにメタデータが追加されると、クライアント アプリ
 
     次のようにマークダウン形式で正しい回答が返されます:
 
-    `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
+    `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](../concepts/azure-resources.md) for more details.`
 
     返された回答の下にある **[検査]** を選択すると、異なる信頼度で質問を満たした回答が他にも表示されます。
 

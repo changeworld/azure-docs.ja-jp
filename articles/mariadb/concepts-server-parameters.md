@@ -1,17 +1,17 @@
 ---
 title: サーバー パラメーター - Azure Database for MariaDB
 description: このトピックでは、Azure Database for MariaDB でのサーバー パラメーターの構成に関するガイドラインを示します。
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: 7d530180b499495e97cb635186fc6a0d5cbd9044
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca1acfd6891c9389363fceb7eccec6f460537399
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392728"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664148"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのサーバー パラメーター
 
@@ -28,6 +28,12 @@ Azure Database for MariaDB では、さまざまな MariaDB サーバー パラ�
 サポートされるサーバー パラメーターの一覧は、拡大を続けています。 Azure portal の [サーバー パラメーター] タブを使用して完全な一覧を表示し、サーバー パラメーターの値を構成できます。
 
 よく更新されるいくつかのサーバー パラメーターに関する制限の詳細については、以下のセクションを参照してください。 制限は、サーバーの価格レベルと仮想コアによって決まります。
+
+### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
+
+Azure Database for MariaDB では、バイナリ ログは常に有効になっています (つまり、`log_bin` が ON に設定されています)。 トリガーを使用したい場合、"*SUPER 特権を持っておらず、バイナリ ログが有効になっています (より安全度の低い `log_bin_trust_function_creators` 変数を使用することもできます)"* のようなエラーが表示されます。
+
+バイナリ ログ形式は常に **行** であり、サーバーへのすべての接続では **常に** 行ベースのバイナリ ログが使用されます。 行ベースのバイナリ ログでは、セキュリティ上の問題が存在せず、バイナリ ログを中断できないため、[`log_bin_trust_function_creators`](https://mariadb.com/docs/reference/mdb/system-variables/log_bin_trust_function_creators/) を安全に **TRUE** に設定できます。
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -104,7 +110,7 @@ Azure Database for MariaDB は 1 つのデータ ファイル内で、最大 **1
 |---|---|---|---|---|
 |Basic|1|50|10|50|
 |Basic|2|100|10|100|
-|General Purpose|2|該当なし|10|600|
+|General Purpose|2|300|10|600|
 |General Purpose|4|625|10|1250|
 |General Purpose|8|1250|10|2500|
 |General Purpose|16|2500|10|5000|
@@ -153,7 +159,7 @@ MariaDB への新しいクライアント接続を作成するには時間がか
 
 このパラメーターの詳細については、[MariaDB のドキュメント](https://mariadb.com/kb/en/server-system-variables/#query_cache_size)を確認してください。
 
-|**価格レベル**|**仮想コア数**|**既定値 (バイト)**|**最小値 (バイト)**|**最大値 **|
+|**価格レベル**|**仮想コア数**|**既定値 (バイト)**|**最小値 (バイト)**|**最大値 (バイト)**|
 |---|---|---|---|---|
 |Basic|1|Basic レベルでは構成できません|該当なし|該当なし|
 |Basic|2|Basic レベルでは構成できません|該当なし|該当なし|

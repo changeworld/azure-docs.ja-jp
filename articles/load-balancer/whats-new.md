@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: ffea6cdd1c8558a07559829b025cb5338cc59ee3
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: a30a42e8a8c4049b53274da512089dd29965e775
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586717"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573155"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Azure Load Balancer の最新情報
 
@@ -29,6 +29,7 @@ Azure Load Balancer は定期的に更新されます。 最新のお知らせ�
 
 | Type |名前 |説明  |追加日  |
 | ------ |---------|---------|---------|
+| 特徴量 | リソース グループ間の移動のサポート | Standard Load Balancer および Standard パブリック IP は、[リソース グループの移動](https://azure.microsoft.com/updates/standard-resource-group-move/)をサポートしています。 | 2020 年 10 月 |
 | 機能 | IP ベースのバックエンド プール管理のサポート (プレビュー) | Azure Load Balancer では、IPv4 または IPv6 アドレスを使用したバックエンド プールのリソースの追加と削除がサポートされます。 これにより、Load Balancer に関連付けられたコンテナー、仮想マシン、および仮想マシン スケール セットを簡単に管理できるようになります。 また、関連付けられたリソースが作成される前に、バックエンド プールの一部として IP アドレスを予約することもできます。 詳しくは[こちら](backend-pool-management.md)をご覧ください|2020 年 7 月 |
 | 機能| Azure Monitor を使用した Azure Load Balancer の分析情報 | Azure Monitor for Networks の一部として構築された、すべての Load Balancer 構成のトポロジ・マップと事前にメトリックを使用して構成された Standard Load Balancer 用の正常性ダッシュボードを Azure portal で利用できます。 [詳細を確認して作業を開始する](https://azure.microsoft.com/blog/introducing-azure-load-balancer-insights-using-azure-monitor-for-networks/) | 2020 年 6 月 |
 | 検証 | HA ポートの検証の追加 | Floating IP が有効になっているときにのみ、HA ポート ルールと非 HA ポート ルールを確実に構成できるようにする検証が追加されました。 以前は、この構成をしても意図どおりに機能しませんでした。 機能は変更されていません。 詳細については、[こちら](load-balancer-ha-ports-overview.md#limitations)を参照してください。| 2020 年 6 月 |
@@ -41,7 +42,7 @@ Azure Load Balancer は定期的に更新されます。 最新のお知らせ�
 
 |問題 |説明  |対応策  |
 | ---------- |---------|---------|
-| Log Analytics のエクスポート | Log Analytics で、Standard Load Balancer に対するメトリックまたは Basic Load Balancer に対する正常性プローブ状態ログをエクスポートできません  | [Standard Load Balancer に対する多次元メトリックの場合は Azure Monitor を利用します](load-balancer-standard-diagnostics.md)。 監視に Log Analytics を使用することはできませんが、Azure Monitor により多次元メトリックの豊富なセットが視覚化されます。 Load Balancer の [分析情報] サブブレードを使用して、構成済みのメトリック ダッシュボードを利用できます。 Basic Load Balancer を使用している場合、運用レベルのメトリック監視のためには [Standard にアップグレード](upgrade-basic-standard.md)します。
+| ロード バランサーのアラート イベントと正常性プローブの状態ログ | Basic Load Balancer および Standard Load Balancer に関してロード バランサーのアラート イベントのログが機能せず、また、Basic Load Balancer に関しては正常性プローブの状態ログも機能しません  | [Standard Load Balancer に対する多次元メトリックの場合は Azure Monitor を利用します](load-balancer-standard-diagnostics.md)。 Azure Monitor により多次元メトリックの豊富なセットが視覚化されます。このメトリックをログとしてエクスポートすることもできます。 Load Balancer の [分析情報] サブブレードを使用して、構成済みのメトリック ダッシュボードを利用できます。 Basic Load Balancer を使用している場合、運用レベルのメトリック監視のためには [Standard にアップグレード](upgrade-basic-standard.md)します。
 
   
 

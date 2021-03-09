@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 542c9374b70cd765ed27dd4dd158ad81035269f0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: aada418b4f74c38a2a35c793deb85b94b703fb89
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018843"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629359"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure ページ BLOB の概要
 
@@ -25,9 +25,13 @@ Azure Storage には、3 つの種類の BLOB ストレージが用意されて�
 
 Azure のページ BLOB の重要な機能は、その REST インターフェイス、基礎をなすストレージの耐久性、および Azure へのシームレスな移行機能です。 これらの機能については、次のセクションで詳しく説明します。 さらに、Azure のページ BLOB は、現時点では次の 2 種類のストレージでサポートされています。Premium Storage と Standard Storage。 Premium Storage は、特に一貫したハイ パフォーマンスと待機時間の短縮を必要とするワークロード向けに設計されているため、Premium ページ BLOB をハイ パフォーマンスのストレージ シナリオに最適なものにします。 Standard ストレージ アカウントは、待機時間の影響を受けないワークロードを実行する場合はコスト効率に優れています。
 
+## <a name="restrictions"></a>制限
+
+ページ BLOB で使用できるのは、**ホット** アクセス層のみであり、**クール** または **アーカイブ** 層を使用することはできません。 アクセス層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md)」を参照してください。
+
 ## <a name="sample-use-cases"></a>サンプル ユース ケース
 
-ページ BLOB のいくつかのユース ケースについて、Azure IaaS ディスクから説明します。 Azure のページ BLOB は、Azure IaaS の仮想ディスクのプラットフォームのバックボーンです。 Azure の OS とデータ ディスクは両方とも仮想ディスクとして実装され、そこでデータは Azure Storage プラットフォームで永続化され、その後、パフォーマンスを最大にするために仮想マシンに配信されます。 Azure ディスクは HYPER-V [VHD 形式](https://technet.microsoft.com/library/dd979539.aspx)で永続化され、Azure Storage に[ページ BLOB](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) として格納されます。 ページ BLOB は、Azure IaaS VM の仮想ディスクを使用するだけでなく、現時点で SQL データの格納のためにページ BLOB を使用している Azure SQL DB サービスなどの PaaS と DBaaS のシナリオも実現して、データベースの高速でランダムな読み取り/書き込み操作を可能にします。 もう 1 つの例として、コラボレーション用のビデオ編集アプリケーションの共有メディアへのアクセスに PaaS サービスを使用している場合は、ページ BLOB によってメディア内のランダムな場所への高速アクセスが可能になります。 また、複数のユーザーが同じメディアを高速かつ効率的に編集したりマージしたりできるようにもなります。 
+ページ BLOB のいくつかのユース ケースについて、Azure IaaS ディスクから説明します。 Azure のページ BLOB は、Azure IaaS の仮想ディスクのプラットフォームのバックボーンです。 Azure の OS とデータ ディスクは両方とも仮想ディスクとして実装され、そこでデータは Azure Storage プラットフォームで永続化され、その後、パフォーマンスを最大にするために仮想マシンに配信されます。 Azure ディスクは HYPER-V [VHD 形式](/previous-versions/windows/it-pro/windows-7/dd979539(v=ws.10))で永続化され、Azure Storage に[ページ BLOB](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) として格納されます。 ページ BLOB は、Azure IaaS VM の仮想ディスクを使用するだけでなく、現時点で SQL データの格納のためにページ BLOB を使用している Azure SQL DB サービスなどの PaaS と DBaaS のシナリオも実現して、データベースの高速でランダムな読み取り/書き込み操作を可能にします。 もう 1 つの例として、コラボレーション用のビデオ編集アプリケーションの共有メディアへのアクセスに PaaS サービスを使用している場合は、ページ BLOB によってメディア内のランダムな場所への高速アクセスが可能になります。 また、複数のユーザーが同じメディアを高速かつ効率的に編集したりマージしたりできるようにもなります。 
 
 Azure Site Recovery、Azure Backup のようなファースト パーティの Microsoft サービスと、多くのサード パーティの開発者は、ページ BLOB の REST インターフェイスを使用して、業界をリードするイノベーションを実装しています。 Azure に実装されている固有のシナリオの一部を、次に示します。 
 
@@ -43,7 +47,7 @@ Azure Site Recovery、Azure Backup のようなファースト パーティの M
 
 ### <a name="rest-api"></a>REST API
 
-[ページ BLOB を使用した開発](storage-dotnet-how-to-use-blobs.md)の概要については、次のドキュメントを参照してください。 例として、.NET 用ストレージ クライアント ライブラリを使用してページ BLOB にアクセスする方法について見てみましょう。 
+[ページ BLOB を使用した開発](./storage-quickstart-blobs-dotnet.md)の概要については、次のドキュメントを参照してください。 例として、.NET 用ストレージ クライアント ライブラリを使用してページ BLOB にアクセスする方法について見てみましょう。 
 
 次の図は、アカウント、コンテナー、およびページ BLOB の全体的な関係を示しています。
 
@@ -53,7 +57,7 @@ Azure Site Recovery、Azure Backup のようなファースト パーティの M
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-最初に、コンテナーへの参照を取得します。 ページ BLOB を作成するには、[GetPageBlobClient](/dotnet/api/azure.storage.blobs.specialized.specializedblobextensions.getpageblobclient) メソッドを呼び出してから、[PageBlobClient.Create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create) メソッドを呼び出します。 作成する BLOB の最大サイズを渡します。 サイズは 512 バイトの倍数にする必要があります。
+最初に、コンテナーへの参照を取得します。 ページ BLOB を作成するには、GetPageBlobClient メソッドを呼び出してから、[PageBlobClient.Create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create) メソッドを呼び出します。 作成する BLOB の最大サイズを渡します。 サイズは 512 バイトの倍数にする必要があります。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_CreatePageBlob":::
 
@@ -90,7 +94,7 @@ pageBlob.Create(16 * OneGigabyteAsBytes);
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-ページ BLOB のサイズを作成後に変更するには、[Resize](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.resize?view=azure-dotnet) メソッドを使用します。 要求するサイズは 512 バイトの倍数でなければなりません。
+ページ BLOB のサイズを作成後に変更するには、[Resize](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.resize) メソッドを使用します。 要求するサイズは 512 バイトの倍数でなければなりません。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ResizePageBlob":::
 

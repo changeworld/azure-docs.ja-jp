@@ -10,22 +10,22 @@ ms.custom: sqldbrb=2
 ms.topic: conceptual
 author: monhaber
 ms.author: ronmat
-ms.reviewer: vanto, carlrab
-ms.date: 02/05/2020
+ms.reviewer: vanto, sstein
+ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: 822d4267d5b163ddda50302e2caea5c3ade3b7c4
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 931e914cd3c184136395a9bb9a7e148a90e9fb91
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985373"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461938"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Azure SQL Database、SQL Managed Instance、Azure Synapse Analytics のための Advanced Threat Protection
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 [Azure SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) の Advanced Threat Protection では、データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティが検出されます。
 
-Advanced Threat Protection は、高度な SQL セキュリティ機能の統合パッケージである [Advanced Data Security](advanced-data-security.md) オファリングの一部です。 Advanced Threat Protection は、SQL ADS ポータルを使用して一元的にアクセスおよび管理できます。
+Advanced Threat Protection は、高度な SQL セキュリティ機能の統合パッケージである [Azure Defender for SQL](azure-defender-for-sql.md) オファリングの一部です。 Advanced Threat Protection は、Azure Defender for SQL ポータルを使用して一元的にアクセスおよび管理できます。
 
 ## <a name="overview"></a>概要
 
@@ -35,7 +35,7 @@ Advanced Threat Protection で提供される新しいセキュリティ階層�
 
 ## <a name="alerts"></a>警告
 
-Advanced Threat Protection for Azure SQL Database では、データベースへのアクセスや悪用を試みる、通常とは異なる、害を及ぼす可能性がある異常なアクティビティが検出されます。 Azure SQL Database のアラートの一覧については、[Azure Security Center の SQL Database および SQL Data Warehouse のアラート](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-sql-db-and-warehouse)を参照してください。
+Advanced Threat Protection for Azure SQL Database では、データベースへのアクセスや悪用を試みる、通常とは異なる、害を及ぼす可能性がある異常なアクティビティが検出されます。 Azure SQL Database のアラートの一覧については、[Azure Security Center の SQL Database および Azure Synapse Analytics のアラート](../../security-center/alerts-reference.md#alerts-sql-db-and-warehouse)に関するセクションを参照してください。
 
 ## <a name="explore-detection-of-a-suspicious-event"></a>疑わしいイベントの検出を試す
 
@@ -55,19 +55,19 @@ Advanced Threat Protection for Azure SQL Database では、データベースへ
 
 ## <a name="explore-alerts-in-the-azure-portal"></a>Azure portal でアラートを調べる
 
-Advanced Threat Protection では、アラートが [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合されています。 データベース内のライブ SQL Advanced Threat Protection タイルと Azure portal の SQL ADS ブレードでは、アクティブな脅威の状態が追跡されます。
+Advanced Threat Protection では、アラートが [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合されています。 データベース内のライブ SQL Advanced Threat Protection タイルと Azure portal の SQL Azure Defender ブレードでは、アクティブな脅威の状態を追跡できます。
 
 **[Advanced Threat Protection アラート]** をクリックすると、Azure Security Center のアラート ページが起動され、データベースに対して検出されたアクティブな SQL 脅威の概要が表示されます。
 
-   ![Advanced Threat Protection アラート](./media/threat-detection-overview/threat_detection_alert.png)
+:::image type="content" source="media/azure-defender-for-sql/advanced-threat-protection-alerts.png" alt-text="データベースでの Advanced Threat Protection のアラートに関する概要":::
 
-   ![Advanced Threat Protection アラート 2](./media/threat-detection-overview/threat_detection_alert_atp.png)
+:::image type="content" source="media/azure-defender-for-sql/advanced-threat-protection.png" alt-text="Security Center での脅威の防止":::
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure SQL Database と Azure Synapse の Advanced Threat Protection](threat-detection-configure.md) について説明します。
 - [Azure SQL Managed Instance の Advanced Threat Protection](../managed-instance/threat-detection-configure.md) について説明します。
-- [Advanced Data Security](advanced-data-security.md) の詳細について学習します。
+- [Azure Defender for SQL](azure-defender-for-sql.md) についてさらに詳しく学習します。
 - [Azure SQL Database 監査](../../azure-sql/database/auditing-overview.md)の詳細について参照してください
-- [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) の詳細について学習します。
-- 価格の詳細については、[Azure SQL Database の価格のページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。  
+- [Azure Security Center](../../security-center/security-center-introduction.md) の詳細について学習します。
+- 価格の詳細については、[Azure SQL Database の価格のページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。

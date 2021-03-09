@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces に使用する Azure Kubernetes Service クラスターのセットアップの実際について説明します。
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 41b955fac7abcc700d73d8ace601f80982b2253d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 841e67b96e95aa251fa5bf1ef469b68de30f54d9
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207948"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91972681"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Azure Dev Spaces に使用するクラスターのセットアップの実際
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces には、Kubernetes アプリケーションを迅速に反復処理してデバッグし、Azure Kubernetes Service (AKS) クラスターでチームと共同作業を行うための複数の方法が用意されています。 1 つの方法は、[サービスを直接クラスター上で実行][how-it-works-up]し、[追加のネットワーク機能とルーティング機能][how-it-works-routing]を使用できるよう、ご利用の AKS クラスター上で Azure Dev Spaces を有効にすることです。 この記事では、クラスターの準備と Azure Dev Spaces の有効化について説明します。
 

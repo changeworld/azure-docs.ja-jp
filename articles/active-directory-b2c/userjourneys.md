@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d705c7fbdb744082b402f4dd598551107563ed2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce41edd2c0048a20368dd02c2dd6101248e26c14
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203165"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400015"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -43,7 +43,38 @@ ms.locfileid: "85203165"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
+| AuthorizationTechnicalProfiles | 0:1 | 承認技術プロファイルの一覧。 | 
 | OrchestrationSteps | 1:n | トランザクションを成功させるために従う必要のあるオーケストレーション シーケンス。 すべてのユーザー体験は、シーケンスで実行されるオーケストレーション手順の順序付きリストで構成されます。 いずれかの手順に失敗した場合、トランザクションは失敗します。 |
+
+## <a name="authorizationtechnicalprofiles"></a>AuthorizationTechnicalProfiles
+
+ユーザーが UserJourney を完了し、アクセス トークンまたは ID トークンを取得したとします。 [UserInfo エンドポイント](userinfo-endpoint.md)などの追加リソースを管理するためには、ユーザーを識別する必要があります。 このプロセスを開始するには、有効な Azure AD B2C ポリシーによって元々認証されていたことを証明するものとして、以前に発行されたアクセス トークンを提示する必要があります。 ユーザーがこの要求を行うことができるようにするため、このプロセスの間、ユーザーの有効なトークンは常に存在していなければなりません。 承認技術プロファイルにより、受信トークンが検証され、トークンから要求が抽出されます。
+
+**AuthorizationTechnicalProfiles** 要素には、次の要素が含まれています。
+
+| 要素 | 発生回数 | 説明 |
+| ------- | ----------- | ----------- |
+| AuthorizationTechnicalProfile | 0:1 | 承認技術プロファイルの一覧。 | 
+
+**AuthorizationTechnicalProfile** 要素には、次の属性が含まれています。
+
+| 属性 | Required | 説明 |
+| --------- | -------- | ----------- |
+| TechnicalProfileReferenceId | Yes | 実行される技術プロファイルの識別子。 |
+
+次の例は、承認技術プロファイルを持つユーザー体験要素を示しています。
+
+```xml
+<UserJourney Id="UserInfoJourney" DefaultCpimIssuerTechnicalProfileReferenceId="UserInfoIssuer">
+  <Authorization>
+    <AuthorizationTechnicalProfiles>
+      <AuthorizationTechnicalProfile ReferenceId="UserInfoAuthorization" />
+    </AuthorizationTechnicalProfiles>
+  </Authorization>
+  <OrchestrationSteps>
+    <OrchestrationStep Order="1" Type="ClaimsExchange">
+     ...
+```
 
 ## <a name="orchestrationsteps"></a>OrchestrationSteps
 
@@ -61,13 +92,12 @@ ms.locfileid: "85203165"
 
 **OrchestrationStep** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | `Order` | はい | オーケストレーション手順の順序。 |
-| `Type` | はい | オーケストレーション手順の種類。 指定できる値 <ul><li>**ClaimsProviderSelection** -オーケストレーション手順が、様々な要求プロバイダーをユーザーに選択肢として表示することを示します。</li><li>**CombinedSignInAndSignUp** - オーケストレーション手順がサインインとローカル アカウントのサインアップ ページを結合ソーシャル プロバイダーに提示することを示します。</li><li>**ClaimsExchange** - オーケストレーション手順が要求プロバイダーと要求を交換することを示します。</li><li>**GetClaims** - オーケストレーション手順で、`InputClaims` 構成を使用して、証明書利用者から Azure AD B2C に送信される要求データを処理するように指定します。</li><li>**SendClaims** - オーケストレーション手順が証明書利用者に対して、要求発行者によって発行されたトークンを使用して要求を送信することを示します。</li></ul> |
-| ContentDefinitionReferenceId | いいえ | このオーケストレーション手順に関連付けられた[コンテンツ定義](contentdefinitions.md)の識別子。 通常、コンテンツ定義参照識別子は、セルフアサート技術プロファイルで定義されます。 ただし、Azure AD B2C が技術プロファイルなしで何かを表示することが必要となる場合もあります。 2 つの例があります。オーケストレーション手順の種類が `ClaimsProviderSelection` または `CombinedSignInAndSignUp` の場合、Azure AD B2C は技術的なプロファイルを持たずに ID プロバイダーの選択を表示する必要があります。 |
-| CpimIssuerTechnicalProfileReferenceId | いいえ | オーケストレーション手順の種類は `SendClaims` です。 このプロパティは、証明書利用者のトークンを発行する要求プロバイダーの技術プロファイル識別子を定義します。  省略すると、証明書利用者のトークンは作成されません。 |
-
+| `Type` | はい | オーケストレーション手順の種類。 指定できる値 <ul><li>**ClaimsProviderSelection** -オーケストレーション手順が、様々な要求プロバイダーをユーザーに選択肢として表示することを示します。</li><li>**CombinedSignInAndSignUp** - オーケストレーション手順がサインインとローカル アカウントのサインアップ ページを結合ソーシャル プロバイダーに提示することを示します。</li><li>**ClaimsExchange** - オーケストレーション手順が要求プロバイダーと要求を交換することを示します。</li><li>**GetClaims** - オーケストレーション手順で、`InputClaims` 構成を使用して、証明書利用者から Azure AD B2C に送信される要求データを処理するように指定します。</li><li>**InvokeSubJourney** - オーケストレーション手順によって要求が [サブ体験](subjourneys.md)と交換されることを示します (パブリック プレビュー段階)。</li><li>**SendClaims** - オーケストレーション手順が証明書利用者に対して、要求発行者によって発行されたトークンを使用して要求を送信することを示します。</li></ul> |
+| ContentDefinitionReferenceId | No | このオーケストレーション手順に関連付けられた[コンテンツ定義](contentdefinitions.md)の識別子。 通常、コンテンツ定義参照識別子は、セルフアサート技術プロファイルで定義されます。 ただし、Azure AD B2C が技術プロファイルなしで何かを表示することが必要となる場合もあります。 2 つの例があります。オーケストレーション手順の種類が `ClaimsProviderSelection` または `CombinedSignInAndSignUp` の場合、Azure AD B2C は技術的なプロファイルを持たずに ID プロバイダーの選択を表示する必要があります。 |
+| CpimIssuerTechnicalProfileReferenceId | No | オーケストレーション手順の種類は `SendClaims` です。 このプロパティは、証明書利用者のトークンを発行する要求プロバイダーの技術プロファイル識別子を定義します。  省略すると、証明書利用者のトークンは作成されません。 |
 
 **OrchestrationStep** 要素には、次の要素を含めることができます。
 
@@ -76,6 +106,7 @@ ms.locfileid: "85203165"
 | Preconditions | 0:n | オーケストレーション手順を実行するために満たす必要がある前提条件の一覧。 |
 | ClaimsProviderSelections | 0:n | オーケストレーション手順のための要求プロバイダーの選定一覧。 |
 | ClaimsExchanges | 0:n | オーケストレーション手順のための要求交換一覧。 |
+| JourneyList | 0:1 | オーケストレーション手順でのサブ体験候補の一覧。 |
 
 ### <a name="preconditions"></a>Preconditions
 
@@ -90,10 +121,10 @@ ms.locfileid: "85203165"
 
 **Precondition** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | `Type` | はい | この前提条件に対して実行するチェックまたはクエリの種類。 値に **ClaimsExist** を指定すると、指定した要求がユーザーの現在の要求セット内に存在する場合にアクションが実行されます。または、**ClaimEquals** を指定すると、指定した要求が存在し、その値が指定値と等しい場合にアクションが実行されます。 |
-| `ExecuteActionsIf` | はい | 前提条件内のアクションを実行する必要があるかどうかを true または false を使用して決定します。 |
+| `ExecuteActionsIf` | Yes | 前提条件内のアクションを実行する必要があるかどうかを true または false を使用して決定します。 |
 
 **Precondition** 要素には、次の要素が含まれています。
 
@@ -143,7 +174,7 @@ Preconditions では複数の前提条件を確認できます。 次の例で�
 ```xml
 <OrchestrationStep Order="4" Type="ClaimsExchange">
   <Preconditions>
-  <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
+    <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
       <Value>objectId</Value>
       <Action>SkipThisOrchestrationStep</Action>
     </Precondition>
@@ -170,16 +201,16 @@ Preconditions では複数の前提条件を確認できます。 次の例で�
 
 **ClaimsProviderSelections** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| DisplayOption| いいえ | 単一の要求プロバイダーの選択が可能な場合の動作を制御します。 使用可能な値: `DoNotShowSingleProvider` (既定値)。ユーザーはフェデレーション ID プロバイダーに直ちにリダイレクトされます。 または、 `ShowSingleProvider` Azure AD B2C では、単一の ID プロバイダーの選択があるサインイン ページが表示されます。 この属性を使用するには、[コンテンツ定義のバージョン](page-layout.md)が  `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` 以上になっている必要があります。|
+| DisplayOption| No | 単一の要求プロバイダーの選択が可能な場合の動作を制御します。 使用可能な値: `DoNotShowSingleProvider` (既定値)。ユーザーはフェデレーション ID プロバイダーに直ちにリダイレクトされます。 または、`ShowSingleProvider`。Azure AD B2C では、単一の ID プロバイダーの選択があるサインイン ページが表示されます。 この属性を使用するには、[コンテンツ定義のバージョン](page-layout.md)が `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` 以上になっている必要があります。|
 
 **ClaimsProviderSelection** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | TargetClaimsExchangeId | いいえ | 要求プロバイダー選定の次のオーケストレーション手順で実行される、要求交換の識別子。 この属性、または ValidationClaimsExchangeId 属性を指定する必要がありますが、両方を指定することはできません。 |
-| ValidationClaimsExchangeId | いいえ | 要求プロバイダー選定を検証するために現在のオーケストレーション手順で実行される、要求交換の識別子。 この属性、または TargetClaimsExchangeId 属性を指定する必要がありますが、両方を指定することはできません。 |
+| ValidationClaimsExchangeId | No | 要求プロバイダー選定を検証するために現在のオーケストレーション手順で実行される、要求交換の識別子。 この属性、または TargetClaimsExchangeId 属性を指定する必要がありますが、両方を指定することはできません。 |
 
 ### <a name="claimsproviderselection-example"></a>ClaimsProviderSelection の例
 
@@ -187,17 +218,17 @@ Preconditions では複数の前提条件を確認できます。 次の例で�
 
 ```xml
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
-    <ClaimsProviderSelections>
+  <ClaimsProviderSelections>
     <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />
     <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
     <ClaimsProviderSelection TargetClaimsExchangeId="TwitterExchange" />
     <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
     <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
-    </ClaimsProviderSelections>
-    <ClaimsExchanges>
-    <ClaimsExchange Id="LocalAccountSigninEmailExchange"
-                    TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
-    </ClaimsExchanges>
+  </ClaimsProviderSelections>
+  <ClaimsExchanges>
+  <ClaimsExchange Id="LocalAccountSigninEmailExchange"
+        TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
+  </ClaimsExchanges>
 </OrchestrationStep>
 
 
@@ -211,7 +242,7 @@ Preconditions では複数の前提条件を確認できます。 次の例で�
   <ClaimsExchanges>
     <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
     <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
-    <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
+  <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
   </ClaimsExchanges>
@@ -228,7 +259,23 @@ Preconditions では複数の前提条件を確認できます。 次の例で�
 
 **ClaimsExchange** 要素には、次の属性が含まれています。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 要求交換手順の識別子。 この識別子は、ポリシーの要求プロバイダー選定手順から要求交換を参照するために使用されます。 |
-| TechnicalProfileReferenceId | はい | 実行される技術プロファイルの識別子。 |
+| TechnicalProfileReferenceId | Yes | 実行される技術プロファイルの識別子。 |
+
+## <a name="journeylist"></a>JourneyList
+
+**JourneyList** 要素には、次の要素が含まれています。
+
+| 要素 | 発生回数 | 説明 |
+| ------- | ----------- | ----------- |
+| 候補 | 1:1 | 呼び出されるサブ体験への参照。 |
+
+### <a name="candidate"></a>候補
+
+**Candidate** 要素には、次の属性が含まれています。
+
+| 属性 | 必須 | 説明 |
+| --------- | -------- | ----------- |
+| SubJourneyReferenceId | Yes | 実行される[サブ体験](subjourneys.md)の識別子。 |

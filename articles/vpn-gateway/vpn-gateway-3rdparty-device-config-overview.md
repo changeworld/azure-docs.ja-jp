@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 01ceb067f589ef04b04ff0bf05e2971ee30f407c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 484dad65310efaa60e8744b2f122b5e44ae13565
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400162"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880154"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>パートナー VPN デバイス構成の概要
 この記事では、オンプレミスの VPN デバイスを Azure VPN ゲートウェイに接続するための構成の概要について説明します。 サンプルの Azure 仮想ネットワークと VPN ゲートウェイの設定を使って、同じパラメーターで異なるオンプレミス VPN デバイス構成に接続する方法を紹介します。
@@ -27,7 +27,7 @@ Azure VPN ゲートウェイは、標準の IPsec/IKE プロトコル スイー�
 
 ![単一の S2S VPN トンネルの図](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
 
-単一の VPN トンネルを設定する具体的な手順については、[サイト対サイト接続の構成](vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関するページを参照してください。 以降のセクションでは、サンプル構成の接続パラメーターについて詳しく説明すると共に、基本的な PowerShell スクリプトを紹介します。
+単一の VPN トンネルを設定する具体的な手順については、[サイト対サイト接続の構成](./tutorial-site-to-site-portal.md)に関するページを参照してください。 以降のセクションでは、サンプル構成の接続パラメーターについて詳しく説明すると共に、基本的な PowerShell スクリプトを紹介します。
 
 ### <a name="connection-parameters"></a>接続パラメーター
 このセクションでは、前のセクションで説明した例に使用されている一連のパラメーターを列挙しています。
@@ -150,4 +150,3 @@ S2S VPN 接続を作成するとき、必要に応じて [VPN ゲートウェイ
 
 ## <a name="next-steps"></a>次のステップ
 アクティブ/アクティブ VPN ゲートウェイを設定する具体的な手順については、[クロスプレミス接続と VNet 間接続にアクティブ/アクティブ VPN ゲートウェイを構成する方法](vpn-gateway-activeactive-rm-powershell.md)に関するページを参照してください。
-

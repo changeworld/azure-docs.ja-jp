@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: a74d9347d0050a2970e698ae616eb09fe32bdc5b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4b86d0c189bcf0687a703f2338188df2090feaf0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135443"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368028"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーの容量とスケーリングを計画する
 
@@ -20,7 +20,7 @@ ms.locfileid: "86135443"
 
 ## <a name="how-do-i-start-capacity-planning"></a>容量計画はどのように開始すればよいか
 
-Azure Site Recovery インフラストラクチャの要件を理解するには、VMware のレプリケーションに対して [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner-doc) を実行することで、レプリケーション環境に関する情報を収集します。 詳しくは、「[VMware から Azure 用の Azure Site Recovery Deployment Planner について](site-recovery-deployment-planner.md)」をご覧ください。 
+Azure Site Recovery インフラストラクチャの要件を理解するには、VMware のレプリケーションに対して [Azure Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) を実行することで、レプリケーション環境に関する情報を収集します。 詳しくは、「[VMware から Azure 用の Azure Site Recovery Deployment Planner について](site-recovery-deployment-planner.md)」をご覧ください。 
 
 Site Recovery Deployment Planner では、互換および非互換の VM、VM あたりのディスク数、およびディスクあたりのデータ チャーンに関するレポートが提供されます。 また、このツールでは、ターゲットの RPO を満たすためにネットワーク帯域幅の要件を要約し、レプリケーションとテスト フェールオーバーを正常に実行するために必要な Azure インフラストラクチャについても要約されます。
 
@@ -28,7 +28,7 @@ Site Recovery Deployment Planner では、互換および非互換の VM、VM �
 
 コンポーネント | 詳細
 --- | ---
-**レプリケーション** | **日次変化率の上限**:保護されたマシンが使用できるプロセス サーバーは 1 つだけです。 1 台のプロセス サーバーでは、1 日あたり最大 2 TB の変化率を処理できます。 したがって、保護されたマシンでサポートされるデータの日次変化率の上限は 2 TB になります。<br /><br /> **最大スループット**:レプリケートされたマシンは、Azure の 1 つのストレージ アカウントに属することができます。 Standard Azure Storage アカウントでは、1 秒間に最大 20,000 要求を処理できます。 ソース マシン全体の 1 秒あたりの入出力操作 (IOPS) 数を、20,000 以下に制限することをお勧めします。 たとえば、5 個のディスクが搭載されたソース マシンで、各ディスクから 120 IOPS (8K サイズ) が生成される場合、Azure 内のディスクごとの IOPS 制限は 500 になります。 (必要なストレージ アカウントの数は、ソース マシンの合計 IOPS を 20000 で割った値です。)
+**レプリケーション** | **日次変化率の上限** :保護されたマシンが使用できるプロセス サーバーは 1 つだけです。 1 台のプロセス サーバーでは、1 日あたり最大 2 TB の変化率を処理できます。 したがって、保護されたマシンでサポートされるデータの日次変化率の上限は 2 TB になります。<br /><br /> **最大スループット** :レプリケートされたマシンは、Azure の 1 つのストレージ アカウントに属することができます。 Standard Azure Storage アカウントでは、1 秒間に最大 20,000 要求を処理できます。 ソース マシン全体の 1 秒あたりの入出力操作 (IOPS) 数を、20,000 以下に制限することをお勧めします。 たとえば、5 個のディスクが搭載されたソース マシンで、各ディスクから 120 IOPS (8K サイズ) が生成される場合、Azure 内のディスクごとの IOPS 制限は 500 になります。 (必要なストレージ アカウントの数は、ソース マシンの合計 IOPS を 20000 で割った値です。)
 **構成サーバー** | 構成サーバーは、保護されたマシンで実行されているすべてのワークロードの日次変更率容量を処理できる必要があります。 構成マシンには、Azure Storage にデータを継続的にレプリケートできる十分な帯域幅が必要です。<br /><br /> ベスト プラクティスとして、保護対象のマシンと同じネットワークおよび LAN セグメントに構成サーバーを配置します。 構成サーバーを別のネットワークに配置することもできますが、保護対象のマシンにはレイヤー 3 のネットワーク可視性が必要です。<br /><br /> 構成サーバーのサイズの推奨事項を次のセクションの表に示します。
 **プロセス サーバー** | 最初のプロセス サーバーは、構成サーバーに既定でインストールされます。 追加のプロセス サーバーをデプロイして環境を拡張できます。 <br /><br /> プロセス サーバーは、保護対象のマシンからレプリケーション データを受け取ります。 プロセス サーバーでは、キャッシュ、圧縮、暗号化によってデータが最適化されます。 その後、プロセス サーバーはデータを Azure に送信します。 プロセス サーバー マシンには、これらのタスクを実行できる十分なリソースが必要です。<br /><br /> プロセス サーバーは、ディスクベースのキャッシュを使用します。 ネットワークのボトルネックや障害が発生した場合に、格納されているデータの変更を処理できるように、600 GB 以上のキャッシュ ディスクを別に使用します。
 
@@ -77,8 +77,8 @@ CPU | メモリ | キャッシュ ディスク サイズ | データ変化率 | 
 
 [Site Recovery Deployment Planner](site-recovery-deployment-planner.md) を使用して、レプリケーションに必要な帯域幅 (初期レプリケーションと差分) を計算した後、次の 2 つのオプションを使用してレプリケーションに使用する帯域幅の量を制御できます。
 
-* **帯域幅を調整する**: Azure にレプリケートされる VMware トラフィックは、特定のプロセス サーバーを経由します。 プロセス サーバーとして実行されているマシンの帯域幅を調整できます。
-* **帯域幅に影響を与える**: レジストリ キーをいくつか使用して、レプリケーションに使用される帯域幅に影響を与えることができます。
+* **帯域幅を調整する** : Azure にレプリケートされる VMware トラフィックは、特定のプロセス サーバーを経由します。 プロセス サーバーとして実行されているマシンの帯域幅を調整できます。
+* **帯域幅に影響を与える** : レジストリ キーをいくつか使用して、レプリケーションに使用される帯域幅に影響を与えることができます。
   * **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** レジストリ値は、ディスクのデータ転送 (初期レプリケーションまたは差分レプリケーション) に使用されるスレッドの数を指定します。 値を大きくすると、レプリケーションに使用されるネットワーク帯域幅が増加します。
   * **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** レジストリ値は、フェールバック時にデータ転送に使用されるスレッドの数を指定します。
 
@@ -104,9 +104,9 @@ Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "
 
 ### <a name="alter-the-network-bandwidth-for-a-vm"></a>VM のネットワーク帯域幅を変更する
 
-1. VM のレジストリで、**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication** に移動します。
-   * レプリケートするディスクで帯域幅のトラフィックを変更するには、**UploadThreadsPerVM** の値を変更します。 存在しない場合はキーを作成します。
-   * Azure からのフェールバックのトラフィックの帯域幅を変更するには、**DownloadThreadsPerVM** の値を変更します。
+1. VM のレジストリで、 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication** に移動します。
+   * レプリケートするディスクで帯域幅のトラフィックを変更するには、 **UploadThreadsPerVM** の値を変更します。 存在しない場合はキーを作成します。
+   * Azure からのフェールバックのトラフィックの帯域幅を変更するには、 **DownloadThreadsPerVM** の値を変更します。
 2. 各キーの既定値は **4** です。 "プロビジョニング超過" 状態のネットワークの場合、このレジストリ キーを既定値から変更する必要があります。 使用できる最大値は **32** です。 トラフィックを監視して値を最適化できます。
 
 ## <a name="set-up-the-site-recovery-infrastructure-to-protect-more-than-500-vms"></a>500 台を超える VM を保護するために Site Recovery インフラストラクチャを設定する

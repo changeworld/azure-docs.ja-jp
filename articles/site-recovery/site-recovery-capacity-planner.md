@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a5764e44db31755110ac99a3e8e8e0984cdf9604
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: aa96845a2bd2f4659da1155c4f75281268dce76d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87490576"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737717"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Hyper-V VM のディザスター リカバリーの容量を計画する 
 
@@ -43,7 +43,7 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 
 
 ## <a name="run-the-quick-planner"></a>クイック プランナーの実行
-1. [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel) をダウンロードして起動します。 マクロを実行する必要があります。 メッセージが表示されたら、編集とコンテンツを有効にするよう選択します。
+1. [Site Recovery Capacity Planner](/samples/browse/?redirectedfrom=TechNet-Gallery) をダウンロードして起動します。 マクロを実行する必要があります。 メッセージが表示されたら、編集とコンテンツを有効にするよう選択します。
 
 2. **[Select a planner type]\(プランナーの種類を選択する\)** リスト ボックスから **[Quick Planner]\(クイック プランナー\)** を選択します。
 
@@ -81,7 +81,7 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 
 ## <a name="run-the-detailed-planner"></a>詳細なプランナーの実行
 
-1. [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel) をダウンロードして起動します。 マクロを実行する必要があります。 メッセージが表示されたら、編集とコンテンツを有効にするよう選択します。
+1. [Site Recovery Capacity Planner](/samples/browse/?redirectedfrom=TechNet-Gallery) をダウンロードして起動します。 マクロを実行する必要があります。 メッセージが表示されたら、編集とコンテンツを有効にするよう選択します。
 
 2. **[Select a planner type (プランナーの種類を選択する]** リスト ボックスから **[Detailed Planner (詳細なプランナー)]** を選択します。
 

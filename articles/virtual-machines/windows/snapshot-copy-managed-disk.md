@@ -1,6 +1,6 @@
 ---
-title: 仮想ハード ドライブのスナップショットを Azure 上に作成する
-description: バックアップまたは問題のトラブルシューティングに使うために、Azure VM のコピーを作成する方法について説明します。
+title: ポータルまたは PowerShell を使用して仮想ハード ドライブのスナップショットを作成する
+description: バックアップまたは問題のトラブルシューティングに使うために、ポータルまたは PowerShell を使用して Azure VM のコピーを作成する方法について説明します。
 author: roygara
 manager: twooley
 ms.service: virtual-machines-windows
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e5ecb99c7f64d81d57c5d6d2cb25967913a752b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dd19729f8b119946a12220d4b0c434f0b039989a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074133"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879665"
 ---
-# <a name="create-a-snapshot"></a>スナップショットの作成
+# <a name="create-a-snapshot-using-the-portal-or-powershell"></a>ポータルまたは PowerShell を使用してスナップショットを作成する
 
 スナップショットは、仮想ハード ドライブ (VHD) の完全な読み取り専用コピーです。 バックアップ、または仮想マシン (VM) の問題を解決するために、OS またはデータ ディスク VHD のスナップショットを取得できます。
 
@@ -30,7 +30,7 @@ ms.locfileid: "87074133"
 3. **スナップショット** ウィンドウで、 **[作成]** を選択します。 **[スナップショットの作成]** ウィンドウが表示されます。
 4. スナップショットの **[名前]** を入力します。
 5. 既存の[リソース グループ](../../azure-resource-manager/management/overview.md#resource-groups)を選択するか、新しいリソース グループの名前を入力します。 
-6. Azure データセンターの**場所**を選択します。  
+6. Azure データセンターの **場所** を選択します。  
 7. **[ソース ディスク]** で、スナップショットを作成するマネージド ディスクを選びます。
 8. スナップショットの保存に使う **[アカウントの種類]** を選びます。 スナップショットを高パフォーマンスのディスクに保存する必要がある場合を除き、 **[Standard_HDD]** を選択します。
 9. **作成** を選択します。
@@ -82,4 +82,4 @@ ms.locfileid: "87074133"
 
 ## <a name="next-steps"></a>次のステップ
 
-スナップショットからマネージド ディスクを作成し、その新しいマネージド ディスクを OS ディスクとして接続することで、スナップショットから仮想マシンを作成します。 詳細については、「[PowerShell でスナップショットから仮想マシンを作成する](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)」のサンプルを参照してください。
+スナップショットからマネージド ディスクを作成し、その新しいマネージド ディスクを OS ディスクとして接続することで、スナップショットから仮想マシンを作成します。 詳細については、「[PowerShell でスナップショットから仮想マシンを作成する](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot)」のサンプルを参照してください。

@@ -2,20 +2,20 @@
 title: Azure Functions で関数を無効にする方法
 description: Azure Functions で関数を無効または有効にする方法を学びます。
 ms.topic: conceptual
-ms.date: 04/08/2020
+ms.date: 02/03/2021
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 761a78f050aa25a62075dd7a53836afb48f89cd7
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: cbb84308507ea15f1c44c00122a9a59472f12a88
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213150"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551045"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Functions で関数を無効にする方法
 
-この記事では、Azure Functions で関数を無効にする方法について説明します。 関数を*無効にする*には、その関数用に定義された自動トリガーをランタイムが無視するようにします。 これにより、Function App 全体を停止することなく、特定の関数の実行を防ぐことができます。
+この記事では、Azure Functions で関数を無効にする方法について説明します。 関数を *無効にする* には、その関数用に定義された自動トリガーをランタイムが無視するようにします。 これにより、Function App 全体を停止することなく、特定の関数の実行を防ぐことができます。
 
-関数を無効にするに方法としては、`AzureWebJobs.<FUNCTION_NAME>.Disabled` の形式のアプリの設定を使用するようお勧めします。 このアプリケーション設定は、[Azure CLI](/cli/azure/) を使用したり、[Azure portal](https://portal.azure.com) で関数の **[管理]** タブを使用したりするなど、さまざまな方法で作成または編集できます。 
+関数を無効にするに方法として推奨されるのは、アプリの設定で形式 `AzureWebJobs.<FUNCTION_NAME>.Disabled` を `true` に設定することです。 このアプリケーション設定は、[Azure CLI](/cli/azure/) を使用したり、[Azure portal](https://portal.azure.com) で関数の **[概要]** タブを使用したりするなど、さまざまな方法で作成または編集できます。 
 
 > [!NOTE]  
 > この記事で説明されている方法を使用して、HTTP によってトリガーされる機能を無効にしても、ご利用のローカル コンピューター上で実行すると、エンドポイントにアクセスできる可能性があります。  
@@ -40,9 +40,11 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ## <a name="use-the-portal"></a>ポータルを使用する
 
-関数の **[概要]** ページの **[有効にする]** ボタンと **[無効にする]** ボタンを使用することもできます。 これらのボタンを機能させるには、`AzureWebJobs.<FUNCTION_NAME>.Disabled` アプリ設定を作成および削除します。
+関数の **[概要]** ページの **[有効にする]** ボタンと **[無効にする]** ボタンを使用することもできます。 `AzureWebJobs.<FUNCTION_NAME>.Disabled` アプリ設定の値を変更することでこれらのボタンは機能します。 この関数固有設定は、初めて無効にしたときに作成されます。 
 
 ![[関数の状態] スイッチ](media/disable-function/function-state-switch.png)
+
+ローカル プロジェクトから関数アプリに公開しても、引き続きポータルを使用して関数アプリ内の関数を無効にすることができます。 
 
 > [!NOTE]  
 > ポータルに統合されたテスト機能では、`Disabled` 設定が無視されます。 つまり、ポータルの **[テスト]** ウィンドウから開始した場合、関数は無効にされていても実行されます。 
@@ -68,23 +70,7 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ### <a name="c-class-libraries"></a>C# クラス ライブラリ
 
-クラス ライブラリ関数では、`Disable` 属性を使用して、関数がトリガーされないようにすることもできます。 次の例に示すように、コンストラクターのパラメーターを指定せずに属性を使用できます。
-
-```csharp
-public static class QueueFunctions
-{
-    [Disable]
-    [FunctionName("QueueTrigger")]
-    public static void QueueTrigger(
-        [QueueTrigger("myqueue-items")] string myQueueItem, 
-        TraceWriter log)
-    {
-        log.Info($"C# function processed: {myQueueItem}");
-    }
-}
-```
-
-コンストラクターのパラメーターを指定せずに属性を使用するには、プロジェクトを再コンパイルおよび再デプロイして関数の無効状態を変更する必要があります。 より柔軟性に優れた方法でこの属性を使用するには、次の例に示すように、ブール値のアプリ設定を参照するコンストラクターのパラメーターを含めます。
+クラス ライブラリ関数では、`Disable` 属性を使用して、関数がトリガーされないようにすることもできます。 この属性を使用すると、関数の無効化に使用する設定の名前をカスタマイズできます。 次の例に示すように、ブール値アプリ設定を参照するコンストラクター パラメーターを定義できる属性のバージョンを使用します。
 
 ```csharp
 public static class QueueFunctions
@@ -102,12 +88,7 @@ public static class QueueFunctions
 
 この方法では、アプリ設定を変更することで、関数を有効および無効にすることができます。再コンパイルや再デプロイは必要ありません。 アプリ設定を変更すると Function App が再起動されるため、無効状態の変更がすぐに認識されます。
 
-> [!IMPORTANT]
-> `Disabled` 属性は、クラス ライブラリの関数を無効にする唯一の方法です。 クラス ライブラリの関数用に生成される *function.json* ファイルは直接編集することを意図したものではありません。 そのファイルを編集する場合、`disabled` プロパティに対してどのような処理を行っても効果はありません。
->
-> **[管理]** タブの **[関数の状態]** スイッチについても同様です。このスイッチを機能させるには、*function.json* ファイルを変更する必要があるためです。
->
-> また、無効でない関数が無効であるとポータルに表示される可能性があることに注意してください。
+設定名の文字列を受け取らないパラメーターのコンストラクターもあります。 このバージョンの属性は推奨されません。 このバージョンを使用する場合は、プロジェクトを再コンパイルして再デプロイし、関数の無効状態を変更する必要があります。
 
 ### <a name="functions-1x---scripting-languages"></a>Functions 1.x - スクリプト言語
 
@@ -139,7 +120,7 @@ or
 2 つ目の例では、`true` または 1 に設定されている IS_DISABLED という名前のアプリ設定がある場合に関数が無効になります。
 
 >[!IMPORTANT]  
->ポータルでは、アプリケーション設定を使用して v1.x 関数を無効にするようになりました。 アプリケーション設定が function.json ファイルと競合するとき、エラーが発生することがあります。 エラーを回避するには、function.json ファイルから `disabled` プロパティを削除してください。 
+>ポータルでは、アプリケーション設定を使用して v1.x 関数を無効にします。 アプリケーション設定が function.json ファイルと競合するとき、エラーが発生することがあります。 エラーを回避するには、function.json ファイルから `disabled` プロパティを削除してください。 
 
 
 ## <a name="next-steps"></a>次のステップ

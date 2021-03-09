@@ -1,17 +1,16 @@
 ---
 title: Azure Policy を使用して大規模に Azure Monitor をデプロイする
 description: Azure Policy を使用して大規模に Azure Monitor 機能をデプロイします。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: a69a58da85cf1ee03046626bb076c5cd44196279
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: cc55cd17a547b9c63f2c26479d5797fae016d8d7
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828712"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044070"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Policy を使用して大規模に Azure Monitor をデプロイする
 Azure Monitor の一部の機能は構成を 1 回または限られた回数行うだけで済みますが、それ以外の機能については監視するリソースごとに繰り返す必要があります。 この記事では、Azure Policy を使用して Azure Monitor を大規模に実装し、監視がすべての Azure リソースに対して確実に一貫して正確に構成されるようにする方法について説明します。
@@ -33,7 +32,7 @@ Azure Policy は、次の表に示されるオブジェクトで構成されま�
 | 割り当て | ポリシー定義またはイニシアティブは、スコープに割り当てられるまで有効になりません。 たとえば、ポリシーをリソース グループに割り当てて、そのリソースに作成されたすべてのリソースに適用するか、サブスクリプションに適用してそのサブスクリプションのすべてのリソースに適用します。  詳細については、「[Azure Policy の割り当ての構造](../governance/policy/concepts/assignment-structure.md)」を参照してください。 |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>Azure Monitor 用の組み込みポリシー定義
-Azure Policy には、Azure Monitor に関連するいくつかの定義があらかじめ組み込まれています。 これらのポリシー定義は、既存のサブスクリプションに割り当てることも、独自のカスタム定義を作成するための基礎として使用することもできます。 **[監視]** カテゴリの組み込みポリシーの完全な一覧については、[Azure Monitor 用の Azure Policy 組み込みポリシー定義](samples/policy-samples.md)に関するページを参照してください。
+Azure Policy には、Azure Monitor に関連するいくつかの定義があらかじめ組み込まれています。 これらのポリシー定義は、既存のサブスクリプションに割り当てることも、独自のカスタム定義を作成するための基礎として使用することもできます。 **[監視]** カテゴリの組み込みポリシーの完全な一覧については、[Azure Monitor 用の Azure Policy 組み込みポリシー定義](.//policy-reference.md)に関するページを参照してください。
 
 監視に関連する組み込みポリシー定義を表示するには、次の手順を実行します。
 
@@ -41,11 +40,11 @@ Azure Policy には、Azure Monitor に関連するいくつかの定義があ�
 2. **[定義]** を選択します。
 3. **[種類]** で *[組み込み]* を選択し、 **[カテゴリ]** で *[監視]* を選択します。
 
-  ![組み込みのポリシー定義](media/deploy-scale/builtin-policies.png)
+  ![監視カテゴリおよび組み込みの種類のポリシー定義の一覧を示す Azure portal 内の [Azure Policy Definitions]\(Azure Policy 定義\) ページのスクリーンショット。](media/deploy-scale/builtin-policies.png)
 
 
 ## <a name="diagnostic-settings"></a>診断設定
-[診断設定](platform/diagnostic-settings.md)を使用して、リソース ログとメトリックを Azure リソースから複数の場所 (通常は Log Analytics ワークスペース) に収集します。これにより、[ログ クエリ](log-query/log-query-overview.md)と[ログ アラート](platform/alerts-log.md)を使用してデータを分析できます。 Policy を使用して、リソースを作成するたびに診断設定を自動的に作成します。
+[診断設定](essentials/diagnostic-settings.md)を使用して、リソース ログとメトリックを Azure リソースから複数の場所 (通常は Log Analytics ワークスペース) に収集します。これにより、[ログ クエリ](logs/log-query-overview.md)と[ログ アラート](alerts/alerts-log.md)を使用してデータを分析できます。 Policy を使用して、リソースを作成するたびに診断設定を自動的に作成します。
 
 Azure リソースの種類にはそれぞれ、診断設定に一覧表示する必要がある一意のカテゴリのセットがあります。 このため、リソースの種類ごとに別個のポリシー定義が必要です。 一部のリソースの種類には、変更せずに割り当てることができる組み込みのポリシー定義があります。 その他のリソースの種類については、カスタム定義を作成する必要があります。
 
@@ -54,7 +53,7 @@ Azure リソースの種類にはそれぞれ、診断設定に一覧表示す�
 
 たとえば、次の画像は、Data Lake Analytics の組み込みの診断設定ポリシー定義を示しています。
 
-  ![組み込みのポリシー定義](media/deploy-scale/builtin-diagnostic-settings.png)
+  ![Data Lake Analytics 用の 2 つの組み込み診断設定ポリシー定義を示す [Azure Policy Definitions]\(Azure Policy 定義\) ページの部分的なスクリーンショット。](media/deploy-scale/builtin-diagnostic-settings.png)
 
 ### <a name="custom-policy-definitions"></a>カスタム ポリシー定義
 組み込みポリシーがないリソースの種類の場合、カスタム ポリシー定義を作成する必要があります。 これは、既存の組み込みポリシーをコピーし、リソースの種類に合わせて変更することによって、Azure portal で手動で行えます。 ただし、PowerShell ギャラリーにあるスクリプトを使用して、プログラムによってポリシーを作成する方が効率的です。
@@ -83,7 +82,7 @@ Azure リソースの種類にはそれぞれ、診断設定に一覧表示す�
 
 5. このスクリプトでは、ポリシー定義ごとに、azurepolicy.json、azurepolicy.rules.json、azurepolicy.parameters.json という名前の 3 つのファイルを含む個別のフォルダーが作成されます。 Azure portal でポリシーを手動で作成する場合は、ポリシー定義全体が含まれている azurepolicy.json の内容をコピーして貼り付けることができます。 PowerShell または CLI で他の 2 つのファイルを使用して、コマンド ラインからポリシー定義を作成します。
 
-    次の例は、PowerShell と CLI の両方からポリシー定義をインストールする方法を示しています。 それぞれには、組み込みポリシー定義を使用して新しいポリシー定義をグループ化するために、**監視**カテゴリを指定するメタデータが含まれています。
+    次の例は、PowerShell と CLI の両方からポリシー定義をインストールする方法を示しています。 それぞれには、組み込みポリシー定義を使用して新しいポリシー定義をグループ化するために、**監視** カテゴリを指定するメタデータが含まれています。
 
       ```azurepowershell
       New-AzPolicyDefinition -name "Deploy Diagnostic Settings for SQL Server database to Log Analytics workspace" -policy .\Apply-Diag-Settings-LA-Microsoft.Sql-servers-databases\azurepolicy.rules.json -parameter .\Apply-Diag-Settings-LA-Microsoft.Sql-servers-databases\azurepolicy.parameters.json -mode All -Metadata '{"category":"Monitoring"}'
@@ -109,7 +108,7 @@ Azure リソースの種類にはそれぞれ、診断設定に一覧表示す�
 ### <a name="assignment"></a>割り当て 
 監視対象のリソースのスコープに応じて、イニシアティブを Azure 管理グループ、サブスクリプション、またはリソース グループに割り当てます。 [管理グループ](../governance/management-groups/overview.md)は、特に組織に複数のサブスクリプションがある場合に、ポリシーのスコープ設定に特に役立ちます。
 
-![イニシアチブ割り当て](media/deploy-scale/initiative-assignment.png)
+![Azure portal 内の [Diagnostic settings to Log Analytics workspace]\(Log Analytics ワークスペースに対する診断設定\) の [イニシアティブの割り当て] セクションにある [基本] タブの設定のスクリーンショット。](media/deploy-scale/initiative-assignment.png)
 
 イニシアティブ パラメーターを使用すると、イニシアティブ内のすべてのポリシー定義に対して 1 回でワークスペースまたはその他の詳細を指定することができます。 
 
@@ -121,34 +120,34 @@ Azure リソースの種類にはそれぞれ、診断設定に一覧表示す�
 ![イニシアティブの修復](media/deploy-scale/initiative-remediation.png)
 
 
-## <a name="azure-monitor-for-vms"></a>VM に対する Azure Monitor
-[Azure Monitor for VMs](insights/vminsights-overview.md) は、仮想マシンを監視するための Azure Monitor の主要なツールです。 Azure Monitor for VMs を有効にすると、Log Analytics エージェントと Dependency Agent の両方がインストールされます。 これらのタスクを手動で実行するのではなく、Azure Policy を使用して、作成時に各仮想マシンが構成されるようにします。
+## <a name="vm-insights"></a>VM 分析情報
+[VM 分析情報](vm/vminsights-overview.md)は、仮想マシンを監視するための Azure Monitor の主要なツールです。 VM 分析情報を有効にすると、Log Analytics エージェントと Dependency Agent の両方がインストールされます。 これらのタスクを手動で実行するのではなく、Azure Policy を使用して、作成時に各仮想マシンが構成されるようにします。
 
 > [!NOTE]
-> Azure Monitor for VMs には、環境内の準拠していない VM を検出して修復することを可能にする **Azure Monitor for VMs のポリシー カバレッジ**と呼ばれる機能が含まれています。 Azure VM 用と Azure Arc に接続されているハイブリッド仮想マシン用の Azure Policy を直接操作する代わりに、この機能を使用できます。Azure 仮想マシン スケール セットの場合は、Azure Policy を使用する割り当てを作成する必要があります。
+> VM 分析情報には、環境内の準拠していない VM を検出して修復することを可能にする **VM 分析情報ポリシー カバレッジ** と呼ばれる機能が含まれています。 Azure VM 用と Azure Arc に接続されているハイブリッド仮想マシン用の Azure Policy を直接操作する代わりに、この機能を使用できます。Azure 仮想マシン スケール セットの場合は、Azure Policy を使用する割り当てを作成する必要があります。
  
 
-Azure Monitor for VMs には、両方のエージェントをインストールして完全な監視を可能にする、次の組み込みのイニシアチブが含まれています。 
+VM 分析情報には、両方のエージェントをインストールして完全な監視を可能にする、次の組み込みのイニシアチブが含まれています。 
 
 |名前 |説明 |
 |:---|:---|
-|Azure Monitor for VMs の有効化 | Azure Arc に接続されている Azure VM とハイブリッド VM に、Log Analytics エージェントと依存関係エージェントをインストールします。 |
+|VM 分析情報の有効化 | Azure Arc に接続されている Azure VM とハイブリッド VM に、Log Analytics エージェントと依存関係エージェントをインストールします。 |
 |仮想マシン スケール セットに対して Azure Monitor を有効にする | Azure 仮想マシン スケール セットに Log Analytics エージェントと依存関係エージェントをインストールします。 |
 
 
 ### <a name="virtual-machines"></a>仮想マシン
-Azure Policy インターフェイスを使用してこれらのイニシアティブの割り当てを作成する代わりに、Azure Monitor for VMs の機能を使用して、各スコープ内の仮想マシンの数を調べてイニシアティブが適用されているかどうかを判断することができます。 その後、ワークスペースを構成し、そのインターフェイスを使用して必要な割り当てを作成できます。
+Azure Policy インターフェイスを使用してこれらのイニシアティブの割り当てを作成する代わりに、VM 分析情報の機能を使用して、各スコープ内の仮想マシンの数を調べてイニシアティブが適用されているかどうかを判断することができます。 その後、ワークスペースを構成し、そのインターフェイスを使用して必要な割り当てを作成できます。
 
-このプロセスの詳細については、「[Azure Policy を使用して Azure Monitor for VMs を有効にする](./insights/vminsights-enable-policy.md)」を参照してください。
+このプロセスの詳細については、「[Azure Policy を使用してVM 分析情報を有効にする](./vm/vminsights-enable-policy.md)」を参照してください。
 
-![Azure Monitor for VMs ポリシー](media/deploy-scale/vminsights-policy.png)
+![VM 分析情報ポリシー](media/deploy-scale/vminsights-policy.png)
 
 ### <a name="virtual-machine-scale-sets"></a>仮想マシン スケール セット
-Azure Policy を使用して仮想マシン スケール セットの監視を有効にするには、監視するリソースのスコープに応じて、Azure 管理グループ、サブスクリプション、またはリソース グループに対して、**仮想マシン スケール セットに対して Azure Monitor を有効にする**イニシアティブを割り当てます。 [管理グループ](../governance/management-groups/overview.md)は、特に組織に複数のサブスクリプションがある場合に、ポリシーのスコープ設定に特に役立ちます。
+Azure Policy を使用して仮想マシン スケール セットの監視を有効にするには、監視するリソースのスコープに応じて、Azure 管理グループ、サブスクリプション、またはリソース グループに対して、**仮想マシン スケール セットに対して Azure Monitor を有効にする** イニシアティブを割り当てます。 [管理グループ](../governance/management-groups/overview.md)は、特に組織に複数のサブスクリプションがある場合に、ポリシーのスコープ設定に特に役立ちます。
 
-![イニシアチブ割り当て](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
+![Azure portal 内の [イニシアティブの割り当て] ページのスクリーンショット。 [イニシアティブ定義] は [Virtual Machine Scale Sets 用の Azure Monitor の有効化] に設定されています。](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
 
-データの送信先となるワークスペースを選択します。 このワークスペースには、[]()の説明に従って、*VMInsights* ソリューションがインストールされている必要があります。
+データの送信先となるワークスペースを選択します。 「[VM 分析情報の Log Analytics ワークスペースの構成](vm/vminsights-configure-workspace.md)」で説明されているように、このワークスペースには *VM 分析情報* ソリューションがインストールされている必要があります。
 
 ![ワークスペースを選択](media/deploy-scale/virtual-machine-scale-set-workspace.png)
 
@@ -157,7 +156,7 @@ Azure Policy を使用して仮想マシン スケール セットの監視を�
 ![修復タスク](media/deploy-scale/virtual-machine-scale-set-remediation.png)
 
 ### <a name="log-analytics-agent"></a>Log Analytics エージェント
-シナリオによっては、Log Analytics エージェントはインストールするが、依存関係エージェントをインストールする必要がない場合があります。 エージェントに組み込みのイニシアチブはありませんが、Azure Monitor for VMs に用意されている組み込みのポリシー定義に基づいて独自に作成することができます。
+シナリオによっては、Log Analytics エージェントはインストールするが、依存関係エージェントをインストールする必要がない場合があります。 エージェントに組み込みのイニシアチブはありませんが、VM 分析情報に用意されている組み込みのポリシー定義に基づいて独自に作成できます。
 
 > [!NOTE]
 > Azure Monitor へのデータ配信に Log Analytics エージェントが必要なため、依存関係エージェントを独自にデプロイする理由がありません。
@@ -168,10 +167,10 @@ Azure Policy を使用して仮想マシン スケール セットの監視を�
 |Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS) |VM イメージ (OS) が一覧で定義されておらず、このエージェントがインストールされていない場合は、VM を非準拠として報告します。 |
 |Linux VM への Log Analytics エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、Log Analytics エージェントがインストールされていない場合は、Linux VM にこのエージェントをデプロイします。 |
 |Windows VM への Log Analytics エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、Log Analytics エージェントがインストールされていない場合は、Windows VM にこのエージェントをデプロイします。 |
-| [プレビュー]:Log Analytics エージェントは Linux Azure Arc マシンにインストールされる必要がある |VM イメージ (OS) が一覧で定義されており、エージェントがインストールされていない場合は、ハイブリッド Azure Arc マシンを Linux VM に準拠しないものとして報告します。 |
-| [プレビュー]:Log Analytics エージェントは Windows Azure Arc マシンにインストールされる必要がある |VM イメージ (OS) が一覧で定義されており、エージェントがインストールされていない場合は、ハイブリッド Azure Arc マシンを Windows VM に準拠しないものとして報告します。 |
-| [プレビュー]:Linux Azure Arc マシンに Log Analytics エージェントをデプロイする |VM イメージ (OS) が一覧で定義されており、Linux ハイブリッド Azure Arc マシン用の Log Analytics エージェントがインストールされていない場合は、このエージェントをデプロイします。 |
-| [プレビュー]:Windows Azure Arc マシンに Log Analytics エージェントをデプロイする |VM イメージ (OS) が一覧で定義されており、Windows ハイブリッド Azure Arc マシン用の Log Analytics エージェントがインストールされていない場合は、このエージェントをデプロイします。 |
+| [プレビュー]\:Log Analytics エージェントは Linux Azure Arc マシンにインストールされる必要がある |VM イメージ (OS) が一覧で定義されており、エージェントがインストールされていない場合は、ハイブリッド Azure Arc マシンを Linux VM に準拠しないものとして報告します。 |
+| [プレビュー]\:Log Analytics エージェントは Windows Azure Arc マシンにインストールされる必要がある |VM イメージ (OS) が一覧で定義されており、エージェントがインストールされていない場合は、ハイブリッド Azure Arc マシンを Windows VM に準拠しないものとして報告します。 |
+| [プレビュー]\:Linux Azure Arc マシンに Log Analytics エージェントをデプロイする |VM イメージ (OS) が一覧で定義されており、Linux ハイブリッド Azure Arc マシン用の Log Analytics エージェントがインストールされていない場合は、このエージェントをデプロイします。 |
+| [プレビュー]\:Windows Azure Arc マシンに Log Analytics エージェントをデプロイする |VM イメージ (OS) が一覧で定義されており、Windows ハイブリッド Azure Arc マシン用の Log Analytics エージェントがインストールされていない場合は、このエージェントをデプロイします。 |
 |仮想マシン スケール セットにおける依存関係エージェントのデプロイの監査 - 一覧にない VM イメージ (OS) |VM イメージ (OS) が一覧で定義されておらず、このエージェントがインストールされていない場合は、仮想マシン スケール セットを非準拠として報告します。 |
 |仮想マシン スケール セットにおける Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS) |VM イメージ (OS) が一覧で定義されておらず、このエージェントがインストールされていない場合は、仮想マシン スケール セットを非準拠として報告します。 |
 |Linux 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、Linux 仮想マシン スケール セット用の Log Analytics エージェントがインストールされていない場合は、このエージェントをデプロイします。 |
@@ -181,4 +180,4 @@ Azure Policy を使用して仮想マシン スケール セットの監視を�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Policy](../governance/policy/overview.md) の詳細を確認する。
-- [診断設定](platform/diagnostic-settings.md)の詳細を確認する。
+- [診断設定](essentials/diagnostic-settings.md)の詳細を確認する。

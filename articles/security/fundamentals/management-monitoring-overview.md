@@ -13,25 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2019
+ms.date: 01/24/2021
 ms.author: terrylan
-ms.openlocfilehash: 7e6fe4f0db31687d402f960f2752fe021d3ec9d3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: f87ea1e1c9f43de4e9e0f94d1cd855615a0a880c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448351"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101712047"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure セキュリティの管理と監視の概要
 この記事では、Azure クラウド サービスと仮想マシンの管理と監視を支援するために Azure が提供するセキュリティ機能とサービスの概要を説明します。
 
-## <a name="role-based-access-control"></a>ロールベースのアクセス制御
+## <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 
-ロールベースのアクセス制御 (RBAC) は、Azure リソースのアクセス権を詳細に管理できるようにします。 RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。 RBAC は、ユーザーが組織を離れるときに、クラウド内のリソースへのアクセス権を失うようにするためにも役立ちます。
+Azure ロールベースのアクセス制御 (Azure RBAC) は、Azure リソースのアクセス権を詳細に管理できるようにします。 Azure RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。 Azure RBAC は、ユーザーが組織を離れるときに、クラウド内のリソースへのアクセス権を失うようにするためにも役立ちます。
 
 詳細情報:
 
-* [RBAC に関する Active Directory チームのブログ](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
+* [Azure RBAC に関する Active Directory チームのブログ](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
 * [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>マルウェア対策
@@ -48,25 +48,25 @@ Symantec Endpoint Protection (SEP) も、Azure でサポートされています
 
 * [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [Azure Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](antimalware.md)
-* [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](/azure/virtual-machines/windows/classic/install-trend)
-* [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](/azure/virtual-machines/windows/classic/install-symantec)
+* [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](/previous-versions/azure/virtual-machines/extensions/trend)
+* [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](../../virtual-machines/extensions/symantec.md)
 * [Azure Virtual Machines を保護するための新しいマルウェア対策オプション](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Azure Multi-Factor Authentication は、複数の検証方法の使用を要求する認証の方法です。 ユーザーのサインインとトランザクションに重要な第 2 のセキュリティ レイヤーを追加できます。
+Azure AD Multi-Factor Authentication は、複数の検証方法の使用を要求する認証の方法です。 ユーザーのサインインとトランザクションに重要な第 2 のセキュリティ レイヤーを追加できます。
 
 Multi-Factor Authentication を使えば、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護できます。 電話やテキスト メッセージ、モバイル アプリによる通知のほか、確認コードやサード パーティの OATH トークンなど、一連の照合方法を通じて確実な認証を行うことができます。
 
 詳細情報:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Azure Multi-Factor Authentication とは](/azure/active-directory/authentication/multi-factor-authentication)
-* [Azure Multi-Factor Authentication のしくみ](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication とは](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Azure AD の Multi-Factor Authentication の仕組み](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
 
-Azure ExpressRoute を使うと、接続プロバイダーが提供する専用プライベート接続で、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 ExpressRoute では、Azure、Office 365、CRM Online などの Microsoft クラウド サービスへの接続を確立できます。 以下のものから接続できます。
+Azure ExpressRoute を使うと、接続プロバイダーが提供する専用プライベート接続で、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 ExpressRoute では、Azure、Microsoft 365、CRM Online などの Microsoft クラウド サービスへの接続を確立できます。 以下のものから接続できます。
 
 * 任意の環境間 (VPN IP) ネットワーク。
 * ポイント ツー ポイントのイーサネット ネットワーク。
@@ -112,25 +112,28 @@ Identity Protection は、通知と推奨される修復を提供することで
 
 詳細情報:
 
-* [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection)
+* [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)
 * [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Security Center
 
-Azure Security Center は、脅威の防御、検出、対応を可能にする機能です。 Security Center により、Azure リソースのセキュリティの可視化を向上させ、コントロールすることができます。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 Security Center は、見つけにくい脅威の検出を支援すると共に、さまざまなセキュリティ ソリューションをまとめた広範なエコシステムとして機能します。
+Azure Security Center は、脅威の防御、検出、対応を可能にする機能です。 Security Center により、Azure リソースやハイブリッド クラウド環境内のリソースのセキュリティの可視性が向上すると共に、そのきめ細かい制御が可能になります。 
+
+Security Center では、接続されているリソースの継続的なセキュリティ評価を実行し、それらの構成やデプロイを [Azure セキュリティ ベンチマーク](../benchmarks/introduction.md)と比較して、その環境向けに調整されたセキュリティに関する詳細な推奨事項を提供します。
 
 Security Center は、Azure リソースのセキュリティの最適化と監視に役立つ次の機能を備えています。
 
-* 以下に従って、Azure サブスクリプション リソースに対するポリシーを定義できるようにします。
-  * 会社のセキュリティ ニーズ。
-  * 各サブスクリプション内のアプリケーションの種類またはデータの機密度。
-* Azure 仮想マシン、ネットワーク、およびアプリケーションの状態を監視します。
-* 統合パートナー ソリューションからのアラートなど、優先度の高いセキュリティ アラートの一覧を提供します。 迅速に攻撃を調査するために必要な情報と、修復方法に関する推奨事項も提供します。
+- 以下に従って、Azure サブスクリプション リソースに対するポリシーを定義できるようにします。
+    - 組織のセキュリティ ニーズ。
+    - 各サブスクリプション内のアプリケーションの種類またはデータの機密度。
+    - サブスクリプションに適用する業界または規制の基準やベンチマーク。 
+- Azure 仮想マシン、ネットワーク、およびアプリケーションの状態を監視します。
+- 統合パートナー ソリューションからのアラートなど、優先度の高いセキュリティ アラートの一覧を提供します。 迅速に攻撃を調査するために必要な情報と、修復方法に関する推奨事項も提供します。
 
 詳細情報:
 
-* [Azure Security Center 入門](../../security-center/security-center-intro.md)
-* [Azure Security Center 上のセキュリティ スコアの向上](../../security-center/security-center-secure-score.md)
+* [Azure Security Center 入門](../../security-center/security-center-introduction.md)
+* [Azure Security Center 上のセキュリティ スコアの向上](../../security-center/secure-score-security-controls.md)
 
 ## <a name="intelligent-security-graph"></a>インテリジェント セキュリティ グラフ
 

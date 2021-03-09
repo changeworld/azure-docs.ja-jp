@@ -3,15 +3,15 @@ title: Azure Site Recovery を使用してディザスター リカバリーの�
 description: この記事では、Azure Site Recovery サービスを使用して、ディザスター リカバリーのために VMware VM のレプリケーションを有効にする方法について説明します
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 04/01/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 19a98b5786f35839d84e1e969c29e45e2b5e8dea
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86129927"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573396"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Azure への VMware VM のレプリケーションを有効にする
 
@@ -61,7 +61,7 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 1. **[ソース]** ページで **[ソース]** をクリックし、構成サーバーを選択します。
 1. **[マシンの種類]** で、 **[仮想マシン]** または **[物理マシン]** を選択します。
 1. **[vCenter/vSphere Hypervisor] \(vCenter/vSphere ハイパーバイザー)** で、vSphere ホストを管理する vCenter サーバーを選択するか、ホストを選択します。 物理コンピューターをレプリケートする場合、この設定は関係ありません。
-1. プロセス サーバーを選択します。 サーバーによって作成された追加のプロセスがない場合は、ドロップダウン メニューにおいて構成サーバーの組み込みのプロセス サーバーを利用できます。 各プロセス サーバーの正常性状態が、推奨される制限とその他のパラメーターに従って示されます。 正常なプロセス サーバーを選択します。 [クリティカル](vmware-physical-azure-monitor-process-server.md#process-server-alerts)であるプロセス サーバーは選択できません。 エラーを[トラブルシューティングして解決](vmware-physical-azure-troubleshoot-process-server.md)するか、**または**[スケールアウト プロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定できます。
+1. プロセス サーバーを選択します。 サーバーによって作成された追加のプロセスがない場合は、ドロップダウン メニューにおいて構成サーバーの組み込みのプロセス サーバーを利用できます。 各プロセス サーバーの正常性状態が、推奨される制限とその他のパラメーターに従って示されます。 正常なプロセス サーバーを選択します。 [クリティカル](vmware-physical-azure-monitor-process-server.md#process-server-alerts)であるプロセス サーバーは選択できません。 エラーを [トラブルシューティングして解決](vmware-physical-azure-troubleshoot-process-server.md)するか、**または**[スケールアウト プロセス サーバー](vmware-azure-set-up-process-server-scale.md)を設定できます。
 
    :::image type="content" source="./media/vmware-azure-enable-replication/ps-selection.png" alt-text="[レプリケーションを有効にする] [ソース] ウィンドウ":::
 
@@ -93,7 +93,42 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="[レプリケーションを有効にする] ウィンドウ":::
 
-1. **[レプリケーションを有効にする]** を選択します。 **保護の有効化**ジョブの進行状況は、 **[設定]**  >  **[ジョブ]**  >  **[Site Recovery ジョブ]** で追跡できます。 **保護の最終処理**ジョブが実行されると、仮想マシンはフェールオーバーを実行できる状態になります。
+1. **[レプリケーションを有効にする]** を選択します。 **保護の有効化** ジョブの進行状況は、 **[設定]**  >  **[ジョブ]**  >  **[Site Recovery ジョブ]** で追跡できます。 **保護の最終処理** ジョブが実行されると、仮想マシンはフェールオーバーを実行できる状態になります。
+
+## <a name="monitor-initial-replication"></a>初期レプリケーションをモニターする
+
+保護された項目の "レプリケーションの有効化" が完了すると、Azure Site Recovery でソース マシンからターゲット リージョンへのデータのレプリケーション (同期と同義) が開始されます。 この期間中、ソース ディスクのレプリカが作成されます。 元のディスクのコピーが完了した後にのみ、差分変更がターゲット リージョンにコピーされます。 元のディスクのコピーにかかる時間は、次のような複数のパラメーターによって異なります。
+
+- ソース マシンのディスクのサイズ
+- Azure にデータを転送するために使用できる帯域幅 (Deployment Planner を利用して、必要とする最適な帯域幅を特定することができます)
+- メモリ、空きディスク領域、保護されたアイテムから受け取ったデータのキャッシュと処理のために使用可能な CPU などのプロセス サーバー リソース (プロセス サーバーを確実に[正常](vmware-physical-azure-monitor-process-server.md#monitor-proactively)にします)
+
+初期レプリケーションの進行状況を追跡するには、Azure portal で Recovery Services コンテナーの [レプリケートされたアイテム] に移動し、レプリケートされたアイテムの [状態] 列の値をモニターします。 状態は、初期レプリケーションの完了率を示します。 [状態] にマウス ポインターを合わせると、[転送されたデータの合計] が表示されます。 状態をクリックすると、コンテキスト ページが開き、次のパラメーターが表示されます。
+
+- [最終更新日時] - コンピューター全体のレプリケーション情報がサービスによって更新された最新の時刻を示します。
+- [完了率] - VM の初期レプリケーションが完了した割合を示します
+- [転送されたデータの合計] - VM から Azure に転送されたデータの量
+
+    :::image type="content" source="media/vmware-azure-enable-replication/initial-replication-state.png" alt-text="レプリケーションの状態" lightbox="media/vmware-azure-enable-replication/initial-replication-state.png":::
+
+- 同期の進行状況 (ディスク レベルで詳細を追跡する場合)
+    - レプリケーションの状態
+      - レプリケーションがまだ開始されていない場合、状態は "キュー内" に更新されます。 初期レプリケーション中は、一度に 3 台のディスクのみがレプリケートされます。 プロセス サーバーでの調整を回避するために、このメカニズムが適用されます。
+      - レプリケーションが開始されると、状態が "進行中" として更新されます。
+      - 初期レプリケーションが完了すると、状態は "完了" としてマークされます。        
+   - Site Recovery で元のディスクが読み取られ、データが Azure に転送されて、ディスク レベルで進行状況が取得されます。 ディスクの非占有サイズは Site Recovery でレプリケーションがスキップされ、完了したデータに追加されることにご注意ください。 そのため、すべてのディスクの転送されたデータの合計が、VM レベルの "転送されたデータの合計" にならないことがあります。
+   - ディスクの情報バルーンをクリックすると、ディスクに対してレプリケーション (同期と同義) がトリガーされた日時、直近 15 分間に Azure に転送されたデータに続いて、最終更新のタイムスタンプに関する詳細情報が表示されます。 このタイムスタンプは、Azure サービスによってソース マシンからの情報が受信された最新日時を示します:::image type="content" source="media/vmware-azure-enable-replication/initial-replication-info-balloon.png" alt-text="初期レプリケーションの情報バルーンの詳細" lightbox="media/vmware-azure-enable-replication/initial-replication-info-balloon.png":::
+   - 表示される各ディスクの正常性
+      - レプリケーションが予想よりも遅い場合は、ディスクの状態が [警告] に変わります
+      - レプリケーションが進んでいない場合、ディスクの状態は [重大] に変わります
+
+正常性が重大または警告状態の場合は、マシンのレプリケーションの正常性と [プロセス サーバー](vmware-physical-azure-monitor-process-server.md)が正常であることを確認します。 
+
+レプリケーションの有効化ジョブが完了してすぐのときは、レプリケーションの進行状況は 0% になり、転送されたデータの合計は NA になります。 クリックすると、識別された各ディスクに対するデータは "NA" となります。これは、レプリケーションがまだ開始されておらず、Azure Site Recovery で最新の統計情報がまだ受信されていないことを示しています。 進行状況は 30 分間隔で更新されます。
+
+> [!NOTE]
+> 正確な進行状況が取得されて Site Recovery サービスに送信されるように、構成サーバー、スケールアウト プロセス サーバー、およびモビリティ エージェントをバージョン 9.36 以降に更新してください。
+
 
 ## <a name="view-and-manage-vm-properties"></a>VM プロパティを表示して管理する
 
@@ -106,9 +141,9 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
    :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="[コンピューティングとネットワークのプロパティ] ウィンドウ":::
 
    - **Azure VM 名**:必要に応じて、Azure の要件を満たすように名前を変更します。
-   - **ターゲット VM のサイズまたは VM の種類**:既定の VM サイズは、ターゲットとなる Azure リージョン内のディスク数、NIC 数、CPU コア数、メモリ、利用可能な VM ロール サイズを含むパラメーターに基づいて選択されます。 Azure Site Recovery では、すべての条件を満たす最初の使用可能な VM サイズが選択されます。 必要に応じて、フェールオーバーの前にいつでも、別の VM サイズを選択することができます。 VM ディスクのサイズは、ソース ディスクのサイズにも基づいており、フェールオーバー後にしか変更できません。 ディスク サイズと IOPS レートの詳細については、「[Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](../virtual-machines/windows/disk-scalability-targets.md)」をご覧ください。
-   - **[リソース グループ]** :フェールオーバー後に仮想マシンが属する[リソース グループ](../azure-resource-manager/management/overview.md#resource-groups)を選択できます。 この設定は、フェールオーバー前であればいつでも変更できます。 フェールオーバー後に、仮想マシンを別のリソース グループに移行すると、その仮想マシンの保護設定が解除されます。
-   - **可用性セット**:仮想マシンがフェールオーバー後に[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)に属する必要がある場合は、可用性セットを選択できます。 可用性セットを選択するときは、以下のことに注意してください。
+   - **ターゲット VM のサイズまたは VM の種類**:既定の VM サイズは、ターゲットとなる Azure リージョン内のディスク数、NIC 数、CPU コア数、メモリ、利用可能な VM ロール サイズを含むパラメーターに基づいて選択されます。 Azure Site Recovery では、すべての条件を満たす最初の使用可能な VM サイズが選択されます。 必要に応じて、フェールオーバーの前にいつでも、別の VM サイズを選択することができます。 VM ディスクのサイズは、ソース ディスクのサイズにも基づいており、フェールオーバー後にしか変更できません。 ディスク サイズと IOPS レートの詳細については、「[VM ディスクのスケーラビリティおよびパフォーマンスの目標](../virtual-machines/disks-scalability-targets.md)」を参照してください。
+   - **[リソース グループ]** :フェールオーバー後に仮想マシンが属する [リソース グループ](../azure-resource-manager/management/overview.md#resource-groups)を選択できます。 この設定は、フェールオーバー前であればいつでも変更できます。 フェールオーバー後に、仮想マシンを別のリソース グループに移行すると、その仮想マシンの保護設定が解除されます。
+   - **可用性セット**:仮想マシンがフェールオーバー後に [可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)に属する必要がある場合は、可用性セットを選択できます。 可用性セットを選択するときは、以下のことに注意してください。
      - 指定されたリソース グループに属している可用性セットだけが一覧表示されます。
      - 異なる仮想ネットワーク上にある VM が同じ可用性セットに属することはできません。
      - 同じサイズの仮想マシンだけが同じ可用性セットに属することができます。

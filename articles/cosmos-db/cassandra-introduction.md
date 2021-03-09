@@ -7,19 +7,23 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
-ms.date: 05/21/2019
-ms.openlocfilehash: 70dbceb51ed030124d1b793d77c6bc287da91065
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.date: 11/25/2020
+ms.openlocfilehash: 2a778c2e9a44bda148fd40112776858943cffe4e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687634"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188617"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API の概要
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Azure Cosmos DB の Cassandra API は、[Apache Cassandra](https://cassandra.apache.org) 向けに作成されたアプリのデータ ストアとして使用できます。 つまり、CQLv4 に準拠した既存の [Apache ドライバー](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)を使用することにより、既存の Cassandra アプリケーションが Azure Cosmos DB の Cassandra API と通信できるようになりました。 多くの場合、接続文字列を変更するだけで、Apache Cassandra の使用から Azure Cosmos DB の Cassandra API の使用に切り替えることができます。 
 
 Cassandra API を使用すると、使い慣れた Cassandra クエリ言語 (CQL)、Cassandra ベースのツール (cqlsh など)、および Cassandra クライアント ドライバーを使用して、Azure Cosmos DB に格納されたデータを操作できます。
+
+> [!NOTE]
+> Azure Cosmos DB の Cassandra API で[サーバーレス容量モード](serverless.md)が利用できるようになりました。
 
 ## <a name="what-is-the-benefit-of-using-apache-cassandra-api-for-azure-cosmos-db"></a>Azure Cosmos DB 用の Apache Cassandra API を使用するメリット
 
@@ -31,7 +35,7 @@ Cassandra API を使用すると、使い慣れた Cassandra クエリ言語 (CQ
 
 **既存のコードとツールを使用可能**:Azure Cosmos DB では、既存の Cassandra SDK およびツールとのワイヤ プロトコル レベルの互換性が提供されます。 この互換性により、Azure Cosmos DB の Cassandra API を少し変更するだけで、既存のコードベースを使用できることが保証されます。
 
-**スループットとストレージの柔軟性**:Azure Cosmos DB は、すべてのリージョンにまたがる保証されたスループットを提供し、プロビジョニングされたスループットを Azure portal、PowerShell、または CLI 操作でスケーリングできます。 予測可能なパフォーマンスの必要に応じて、テーブルのストレージやスループットを[エラスティックにスケーリング](manage-scale-cassandra.md)できます。
+**スループットとストレージの柔軟性**:Azure Cosmos DB は、すべてのリージョンにまたがるスループットを提供し、プロビジョニングされたスループットを Azure portal、PowerShell、または CLI の操作でスケーリングできます。 予測可能なパフォーマンスの必要に応じて、テーブルのストレージやスループットを[エラスティックにスケーリング](manage-scale-cassandra.md)できます。
 
 **グローバル配布および可用性**:Azure Cosmos DB では、低待ち時間のデータ アクセスと高可用性を確保しながら、すべての Azure リージョンにまたがってデータをグローバルに配布し、それらのデータをローカルで処理する機能が提供されます。 Azure Cosmos DB では、リージョン内では 99.99% の高可用性を、複数のリージョン間では 99.999% の読み取りと書き込みの可用性を提供し、操作のオーバーヘッドはありません。 詳細については、「[データのグローバル配布](distribute-data-globally.md)」の記事を参照してください。 
 

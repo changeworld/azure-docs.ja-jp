@@ -9,10 +9,10 @@ ms.author: kecheung
 author: kcheeeung
 ms.date: 08/12/2020
 ms.openlocfilehash: d0a0df4791492c1c9f0d600630d723024c46c1b8
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88226911"
 ---
 # <a name="scale-hiveserver2-on-azure-hdinsight-clusters-for-high-availability"></a>高可用性を実現するために Azure HDInsight クラスター上で HiveServer2 をスケーリングする
@@ -37,13 +37,13 @@ ms.locfileid: "88226911"
 
 2. [追加] ボタンをクリックし、[HiveServer2] をクリックします。
 
-:::image type="content" source="media/hdinsight-apps-install-hiveserver2/hdinsight-install-hiveserver2-b.png" alt-text="ホストの HiveServer2 パネルを追加します。":::
+:::image type="content" source="media/hdinsight-apps-install-hiveserver2/hdinsight-install-hiveserver2-b.png" alt-text="Ambari の [ホスト] メニュー。":::
 
 3. 確定して、プロセスを実行します。 必要なすべてのホストに対して 1 から 3 を繰り返します。
 
 4. インストールが完了したら、古い構成ですべてのサービスを再起動し、HiveServer2 を開始します。
 
-:::image type="content" source="media/hdinsight-apps-install-hiveserver2/hdinsight-install-hiveserver2-c.png" alt-text="HiveServer2 パネルを起動します。":::
+:::image type="content" source="media/hdinsight-apps-install-hiveserver2/hdinsight-install-hiveserver2-c.png" alt-text="Ambari の [ホスト] メニュー。":::
 
 ## <a name="next-steps"></a>次のステップ
 

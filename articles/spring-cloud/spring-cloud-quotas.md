@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 7d47311385848f96a12a50c1dcf8b8284869c71d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 496f2e812a102e85fea92a535552daaaadf5f31e
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260358"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093431"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Azure Spring Cloud のクォータとサービス プラン
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
 
 すべての Azure サービスには、リソースと機能に対する既定の制限とクォータが設定されています。   Azure Spring Cloud には、2 つの価格レベルがあります。Basic と Standard です。 この記事では、両方のレベルの制限について詳しく説明します。
 
@@ -30,4 +32,4 @@ Azure Spring Cloud サービス インスタンスあたりのアプリ イン�
 
 ## <a name="next-steps"></a>次のステップ
 
-一部の既定の制限は引き上げることができます。 設定を増やす必要がある場合は、[サポート リクエストを作成してください](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
+一部の既定の制限は引き上げることができます。 設定を増やす必要がある場合は、[サポート リクエストを作成してください](../azure-portal/supportability/how-to-create-azure-support-request.md)。

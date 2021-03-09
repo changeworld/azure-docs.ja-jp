@@ -1,31 +1,30 @@
 ---
 author: paulbouwer
 ms.topic: include
-ms.date: 11/15/2019
+ms.date: 10/02/2020
 ms.author: pabouwer
-ms.openlocfilehash: 74f5b22ccc822a188059b29d9c661a15cf8412bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5dc9686e4a9994a085cc9f4a4631e66b05d7949d
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77593986"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666719"
 ---
 ## <a name="download-and-install-the-istio-istioctl-client-binary"></a>Istio istioctl クライアント バイナリをダウンロードしてインストールする
 
-MacOS の bash ベース シェルの場合、次のように `curl` を使用して Istio のリリースをダウンロードし、`tar` で解凍します。
+macOS の bash ベース シェルの場合、次のように `curl` を使用して Istio のリリースをダウンロードし、`tar` で解凍します。
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
-ISTIO_VERSION=1.4.0
+ISTIO_VERSION=1.7.3
 
-curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-osx.tar.gz" | tar xz
+curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istioctl-$ISTIO_VERSION-osx.tar.gz" | tar xz
 ```
 
-`istioctl` クライアント バイナリはクライアント コンピューターで実行されます。このバイナリによって、Istio サービス メッシュの対話型操作が可能になります。 MacOS で bash ベースのシェルで次のコマンドを使用して、Istio `istioctl` クライアント バイナリをインストールします。 これらのコマンドによって、`istioctl` の標準ユーザー プログラムの場所に `PATH` クライアント バイナリがコピーされます。
+`istioctl` クライアント バイナリはクライアント コンピューターで実行され、これを使用して Istio を AKS クラスターにインストールして管理できます。 macOS で bash ベースのシェルで次のコマンドを使用して、Istio `istioctl` クライアント バイナリをインストールします。 これらのコマンドによって、`istioctl` の標準ユーザー プログラムの場所に `PATH` クライアント バイナリがコピーされます。
 
 ```bash
-cd istio-$ISTIO_VERSION
-sudo cp ./bin/istioctl /usr/local/bin/istioctl
+sudo mv ./istioctl /usr/local/bin/istioctl
 sudo chmod +x /usr/local/bin/istioctl
 ```
 

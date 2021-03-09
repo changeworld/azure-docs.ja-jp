@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 9946abc89a924b1577743b64de234805e411793d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0650e77b2207c71e9ef8d91b659aba570a6bc702
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520096"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455852"
 ---
 # <a name="tutorial-integrate-clever-nelly-with-azure-active-directory"></a>チュートリアル:Clever Nelly と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88520096"
 * ユーザーが自分の Azure AD アカウントを使用して Clever Nelly に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Clever Nelly では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Clever Nelly では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます。
 
 ## <a name="adding-clever-nelly-from-the-gallery"></a>ギャラリーからの Clever Nelly の追加
 
@@ -47,7 +47,7 @@ Azure AD への Clever Nelly の統合を構成するには、ギャラリーか
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Clever Nelly**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Clever Nelly** 」と入力します。
 1. 結果ウィンドウで **[Clever Nelly]** を選択してそのアプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -111,7 +111,7 @@ Clever Nelly で Azure AD SSO を構成してテストするには、次の構�
 
 ### <a name="configure-clever-nelly-sso"></a>Clever Nelly SSO の構成
 
-**Clever Nelly** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Clever Nelly サポート チーム](mailto:support@elephantsdontforget.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Clever Nelly** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Clever Nelly サポート チーム](mailto:support@elephantsdontforget.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -145,18 +145,18 @@ Clever Nelly で Azure AD SSO を構成してテストするには、次の構�
 
 ### <a name="create-clever-nelly-test-user"></a>Clever Nelly テスト ユーザーの作成
 
-このセクションでは、Clever Nelly で Britta Simon というユーザーを作成します。  [Clever Nelly サポート チーム](mailto:support@elephantsdontforget.com)と協力して、Clever Nelly プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Clever Nelly で Britta Simon というユーザーを作成します。 [Clever Nelly サポート チーム](mailto:support@elephantsdontforget.com)と連携して、Clever Nelly プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Clever Nelly] タイルを選択すると、SSO を設定した Clever Nelly に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Clever Nelly] タイルを選択すると、SSO を設定した Clever Nelly に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

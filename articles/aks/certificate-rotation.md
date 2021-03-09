@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターで証明書をロー
 services: container-service
 ms.topic: article
 ms.date: 11/15/2019
-ms.openlocfilehash: 90526b78e65c335f07a2a9d2d152b54b47233082
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1871a8deed4d189534915a9b46b6ace071c1126c
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211042"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181773"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での証明書のローテーション
 
@@ -60,7 +60,7 @@ az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
 > [!IMPORTANT]
-> `az aks rotate-certs` が完了するまでに最大で 30 分かかる場合があります。 コマンドが完了する前に失敗した場合は、`az aks show` を使用して、クラスターの状態が *証明書のローテーション中*になっていることを確認します。 クラスターがエラー状態になっている場合は、`az aks rotate-certs` を再実行して、証明書をもう一度ローテーションします。
+> `az aks rotate-certs` が完了するまでに最大で 30 分かかる場合があります。 コマンドが完了する前に失敗した場合は、`az aks show` を使用して、クラスターの状態が *証明書のローテーション中* になっていることを確認します。 クラスターがエラー状態になっている場合は、`az aks rotate-certs` を再実行して、証明書をもう一度ローテーションします。
 
 `kubectl` コマンドを実行して、古い証明書が無効になっていることを確認します。 `kubectl` によって使用される証明書を更新していないため、エラーが表示されます。  次に例を示します。
 
@@ -90,7 +90,7 @@ kubectl get no
 
 
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [aks-best-practices-security-upgrades]: operator-best-practices-cluster-security.md

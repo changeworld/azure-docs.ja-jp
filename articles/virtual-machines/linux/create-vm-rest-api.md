@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: d6e5195f43991f4d40af57c1ab4b87aaca475b64
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b3eeaf5f343b6026e02d17e4d3bd90dba4b991c4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373404"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737047"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH 認証を使用する Linux 仮想マシンを REST API で作成する
 
@@ -26,7 +26,7 @@ Azure portal、Azure CLI 2.0、多くの Azure SDK、Azure Resource Manager テ�
 要求を作成して送信する前に、次のものが必要になります。
 
 * ご自分のサブスクリプションの `{subscription-id}`
-  * 複数のサブスクリプションをお持ちの場合は、[複数のサブスクリプションの操作](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+  * 複数のサブスクリプションをお持ちの場合は、[複数のサブスクリプションの操作](/cli/azure/manage-azure-subscriptions-azure-cli)に関するページを参照してください。
 * 事前に作成した `{resourceGroupName}`
 * 同じリソース グループ内の[仮想ネットワーク インターフェイス](../../virtual-network/virtual-network-network-interface.md)
 * SSH キー ペア (お持ちでない場合は、[新しいものを作成](mac-create-ssh-keys.md)できます)

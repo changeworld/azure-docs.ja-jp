@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/16/2017
 ms.author: cynthn
-ms.openlocfilehash: 38f231e63ad4974a23a1201aad4d290685860b50
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3d68ac7aa9927e62011c58b17139d7232ce4a10c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292151"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200755"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>仮想ネットワーク インターフェイス カードを作成して Azure での VM の名前解決に内部 DNS を使用する
 
@@ -22,7 +22,7 @@ ms.locfileid: "87292151"
 要件は次のとおりです。
 
 * [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
-* [SSH パブリック キー ファイルおよびプライベート キー ファイル](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [SSH パブリック キー ファイルおよびプライベート キー ファイル](mac-create-ssh-keys.md)
 
 ## <a name="quick-commands"></a>クイック コマンド
 タスクをすばやく実行する必要がある場合のために、次のセクションでは、必要なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#detailed-walkthrough)。 これらの手順を実行するには、[Azure CLI](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/reference-index) を使用して Azure アカウントにログインする必要があります。
@@ -71,7 +71,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-the-virtual-network"></a>仮想ネットワークの作成
 
-次に、VM をデプロイする仮想ネットワークを構築します。 このチュートリアルでは、仮想ネットワークにサブネットを 1 つ含めます。 Azure 仮想ネットワークの詳細については、[仮想ネットワークの作成](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)に関するページを参照してください。 
+次に、VM をデプロイする仮想ネットワークを構築します。 このチュートリアルでは、仮想ネットワークにサブネットを 1 つ含めます。 Azure 仮想ネットワークの詳細については、[仮想ネットワークの作成](../../virtual-network/manage-virtual-network.md#create-a-virtual-network)に関するページを参照してください。 
 
 [az network vnet create](/cli/azure/network/vnet) で仮想ネットワークを作成します。 次の例では、`myVnet` という名前の仮想ネットワークと `mySubnet` という名前のサブネットを作成します。
 
@@ -85,7 +85,7 @@ az network vnet create \
 ```
 
 ## <a name="create-the-network-security-group"></a>ネットワーク セキュリティ グループを作成する
-Azure ネットワーク セキュリティ グループは、ネットワーク層のファイアウォールに相当します。 ネットワーク セキュリティ グループの詳細については、[Azure CLI での NSG の作成方法](../../virtual-network/tutorial-filter-network-traffic-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。 
+Azure ネットワーク セキュリティ グループは、ネットワーク層のファイアウォールに相当します。 ネットワーク セキュリティ グループの詳細については、[Azure CLI での NSG の作成方法](../../virtual-network/tutorial-filter-network-traffic-cli.md)に関するページを参照してください。 
 
 [az network nsg create](/cli/azure/network/nsg) で、ネットワーク セキュリティ グループを作成します。 次の例では、`myNetworkSecurityGroup` という名前のネットワーク セキュリティ グループを作成します。
 
@@ -157,5 +157,5 @@ az vm create \
 CLI フラグを使用して既存のリソースを呼び出すことで、既存のネットワーク内に VM をデプロイするよう Azure に指示します。 繰り返しますが、VNet とサブネットをデプロイしたら、Azure リージョン内でこれらを静的または永続的なリソースにしておくことができます。  
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [テンプレートを使用して Azure に Linux VM を作成する](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](create-cli-complete.md)
+* [テンプレートを使用して Azure に Linux VM を作成する](create-ssh-secured-vm-from-template.md)

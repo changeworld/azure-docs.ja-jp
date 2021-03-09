@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: 4ecce689e287673a3b08f8f90f87c28e021106d6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 64cdb41540d9750be8664dc60c2b6ceda6c324ca
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037939"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831928"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>チュートリアル:ビデオ分析用の IoT Edge インスタンスを作成する (Intel NUC)
 
@@ -35,15 +35,15 @@ IoT Edge では、これらのサービスがクロスプラットフォーム�
 
 ## <a name="prerequisites"></a>前提条件
 
-* 開始する前に、[Azure IoT Central でライブ ビデオ分析アプリケーションを作成する](./tutorial-video-analytics-create-app.md)方法に関する前のチュートリアルを完了しておく必要があります。
+* 開始する前に、これよりも前の [Azure IoT Central でのライブ ビデオ分析アプリケーションの作成 (YOLO v3)](./tutorial-video-analytics-create-app-yolo-v3.md) に関するチュートリアルか、[Azure IoT Central でのビデオ分析の作成 (OpenVINO&trade;)](tutorial-video-analytics-create-app-openvino.md) に関するチュートリアルを完了しておく必要があります。
 * Linux を実行するデバイス (Intel NUC など)。Docker コンテナーを実行でき、なおかつビデオ分析を実行できるだけの処理能力を備えている必要があります。
-* デバイスに [IoT Edge ランタイムがインストール](../../iot-edge/how-to-install-iot-edge-linux.md)され、実行されていること。
+* デバイスに [IoT Edge ランタイムがインストール](../../iot-edge/how-to-install-iot-edge.md)され、実行されていること。
 * Windows マシンから IoT Edge デバイスに接続できること。[PuTTY SSH クライアント](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)または同等のユーティリティが必要です。
 * さらに、Azure サブスクリプションが必要となります。 Azure サブスクリプションがない場合は、[Azure サインアップ ページ](https://aka.ms/createazuresubscription)で無料で作成できます。
 
 ## <a name="configure-the-iot-edge-device"></a>IoT Edge デバイスを構成する
 
-Intel NUC マシンに IoT Edge ランタイムがインストールされていない場合は、「[Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../../iot-edge/how-to-install-iot-edge-linux.md)」の手順を参照してください。
+Intel NUC マシンに IoT Edge ランタイムがインストールされていない場合は、「[Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../../iot-edge/how-to-install-iot-edge.md)」の手順を参照してください。
 
 IoT Edge ランタイムを更新するには:
 
@@ -117,9 +117,9 @@ IoT Central アプリケーションに登録、接続するように IoT Edge �
 
 1. `{scope_id}` を、前のチュートリアルで *scratchpad.txt* ファイルに書き留めた **ID Scope** に置き換えます。
 
-1. `{registration_id}` を *lva-gateway-001* (前のチュートリアルで作成したデバイス) に置き換えます。
+1. `{registration_id}` を *gateway-001* (前のチュートリアルで作成したデバイス) に置き換えます。
 
-1. `{symmetric_key}` を、前のチュートリアルで *scratchpad.txt* ファイルに書き留めた **lva-gateway-001** デバイスの**プライマル キー**に置き換えます。
+1. `{symmetric_key}` を、前のチュートリアルで *scratchpad.txt* ファイルに書き留めた **gateway-001** デバイスの **主キー** に置き換えます。
 
 1. 次のコマンドを実行して、IoT Edge デーモンを再起動します。
 
@@ -140,7 +140,7 @@ IoT Central アプリケーションに登録、接続するように IoT Edge �
 
 IoT Edge モジュールが正しく起動しない場合は、「[IoT Edge デバイスのトラブルシューティング](../../iot-edge/troubleshoot.md)」を参照してください。
 
-## <a name="collect-the-rstp-stream-from-your-camera"></a>カメラから RSTP ストリームを収集する
+## <a name="collect-the-rtsp-stream-from-your-camera"></a>カメラから RTSP ストリームを収集する
 
 IoT Edge デバイスに接続されたカメラの RTSP ストリームの URL を識別します。その例を次に示します。
 
@@ -148,6 +148,14 @@ IoT Edge デバイスに接続されたカメラの RTSP ストリームの URL 
 
 > [!TIP]
 > IoT Edge コンピューターで、VLC などのメディア プレーヤーを使用してカメラ ストリームを表示してみましょう。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+アプリケーションを使い終えたら、次の手順で、作成したリソースをすべて削除することができます。
+
+1. IoT Central アプリケーションの **[管理]** セクションの **[お客様のアプリケーション]** ページに移動します。 次に、 **[削除]** を選択します。
+1. Azure portal で、**lva-rg** リソース グループを削除します。
+1. ローカル コンピューターで、**amp-viewer** Docker コンテナーを停止します。
 
 ## <a name="next-steps"></a>次のステップ
 

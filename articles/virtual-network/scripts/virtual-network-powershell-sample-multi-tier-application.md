@@ -1,6 +1,6 @@
 ---
 title: 多層アプリケーション用の仮想ネットワークの作成 - Azure PowerShell スクリプト サンプル
-description: Azure PowerShell スクリプト サンプル - 多層アプリケーション用の仮想ネットワークの作成。
+description: 多層アプリケーション用の仮想ネットワークの作成 - Azure PowerShell スクリプト サンプル。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1c592681cc2aeb900a5b7e370277aa0d148bb37e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 51cafb0a344c5b6226b3b033d8c60327eaf2c05f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078488"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91267943"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>多層アプリケーション用のネットワークの作成のスクリプト サンプル
 

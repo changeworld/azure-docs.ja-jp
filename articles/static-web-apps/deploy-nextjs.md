@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:サーバーでレンダリングされた Next.js の Web サイトを Azure Static Web Apps にデプロイする
+title: チュートリアル:静的にレンダリングされた Next.js の Web サイトを Azure Static Web Apps にデプロイする
 description: Next.js の動的サイトを生成し、Azure Static Web Apps を使用してデプロイします。
 services: static-web-apps
 author: christiannwamba
@@ -7,15 +7,15 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c5afd7d912142dd8556e71ba9e0a522b2fa0da1c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-js
+ms.openlocfilehash: a22d06137c3ec17851280605ac85c94ef8b342cd
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684594"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563077"
 ---
-# <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>サーバーでレンダリングされた Next.js の Web サイトを Azure Static Web Apps プレビューにデプロイする
+# <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>静的にレンダリングされた Next.js の Web サイトを Azure Static Web Apps プレビューにデプロイする
 
 このチュートリアルでは、[Next.js](https://nextjs.org) で生成された静的 Web サイトを [Azure Static Web Apps](overview.md) にデプロイする方法について説明します。 まず、Next.js アプリを設定、構成、デプロイする方法を学習します。 このプロセスの間に、Next.js を使用して静的ページを生成するときによく発生する一般的な課題に対処する方法についても学習します
 
@@ -29,9 +29,9 @@ ms.locfileid: "88684594"
 
 Next.js CLI を使用してアプリを作成するのではなく、既存の Next.js アプリを含むスターター リポジトリを使用できます。 このリポジトリには動的ルートを使用する Next.js アプリが用意されており、デプロイに関する一般的な問題が明らかになっています。 動的ルートには、後で詳しく説明する追加のデプロイ構成が必要です。
 
-最初に、お使いの GitHub アカウントに、テンプレート リポジトリから新しいリポジトリを作成します。 
+最初に、お使いの GitHub アカウントに、テンプレート リポジトリから新しいリポジトリを作成します。
 
-1. <http://github.com/staticwebdev/nextjs-starter/generate> に移動します
+1. [https://github.com/staticwebdev/nextjs-starter/generate](https://github.com/login?return_to=/staticwebdev/nextjs-starter/generate) に移動します
 1. リポジトリに **nextjs-starter** という名前を設定します
 1. 次に、新しいリポジトリをお使いのコンピューターに複製します。 `<YOUR_GITHUB_ACCOUNT_NAME>` をアカウント名に置き換えます。
 
@@ -73,7 +73,7 @@ Next.js CLI を使用してアプリを作成するのではなく、既存の N
 
     ```javascript
     module.exports = {
-      exportTrailingSlash: true,
+      trailingSlash: true,
       exportPathMap: function() {
         return {
           '/': { page: '/' }
@@ -125,7 +125,7 @@ Azure Static Web Apps により、GitHub リポジトリからアプリがデプ
 1. 変更を GitHub にプッシュします。
 
     ```bash
-    git push origin master
+    git push origin main
     ```
 
 ## <a name="deploy-your-static-website"></a>静的 Web サイトをデプロイする
@@ -155,7 +155,7 @@ Azure Static Web Apps により、GitHub リポジトリからアプリがデプ
 1. **[GitHub でサインイン]** ボタンをクリックします
 1. Next.js プロジェクト用のリポジトリを作成した **[組織]** を選択します。これは、GitHub のユーザー名である場合があります。
 1. 前に作成したリポジトリの名前を探して選択します。
-1. *[ブランチ]* ドロップダウンから、ブランチとして **master** を選択します。
+1. *[ブランチ]* ドロップダウンから、ブランチとして **main** を選択します。
 
    :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="GitHub に接続する":::
 
@@ -189,7 +189,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nextjs-starter/actions
 
 アプリを作成すると、Azure Static Web Apps によってリポジトリに GitHub Actions ワークフロー ファイルが作成されます。 git 履歴が同期されるように、このファイルをローカル リポジトリに取り込む必要があります。
 
-ターミナルに戻り、`git pull origin master` コマンドを実行します。
+ターミナルに戻り、`git pull origin main` コマンドを実行します。
 
 ## <a name="configure-dynamic-routes"></a>動的なルートを構成する
 
@@ -207,7 +207,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nextjs-starter/actions
    const data = require('./utils/projectsData');
 
    module.exports = {
-     exportTrailingSlash: true,
+     trailingSlash: true,
      exportPathMap: async function () {
        const { projects } = data;
        const paths = {

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: zhshang
-ms.openlocfilehash: 5483e10e817ce8a0a7e7c82d817b7bdbbdd9176b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 9d0e94cf2318db777bb44c15037f73531cd969fa
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853451"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593314"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Azure SignalR Service でのメッセージと接続
 
@@ -62,7 +62,7 @@ ASP.NET SignalR では、サーバー接続数の計算方法が異なります�
 
 ## <a name="related-resources"></a>関連リソース
 
-- [Azure Monitor での集計の種類](/azure/azure-monitor/platform/metrics-supported#microsoftsignalrservicesignalr )
+- [Azure Monitor での集計の種類](../azure-monitor/essentials/metrics-supported.md#microsoftsignalrservicesignalr )
 - [ASP.NET Core SignalR の構成](/aspnet/core/signalr/configuration)
 - [JSON](https://www.json.org/)
 - [MessagePack](/aspnet/core/signalr/messagepackhubprotocol)

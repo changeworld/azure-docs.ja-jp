@@ -1,19 +1,19 @@
 ---
 title: サポートされている Azure Resource Manager のリソースの種類
 description: Azure Resource Graph でサポートされている Azure Resource Manager のリソースの種類と変更履歴の一覧を示します。
-ms.date: 08/10/2020
+ms.date: 02/04/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 91b8a88fd056db2fd8495c85dccbcc08f4a94fda
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 865aed468f8a6bcb848b77a82467efc2c531398b
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066000"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594335"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph のテーブルとリソースの種類のリファレンス
 
-Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-manager/management/overview.md) の次の**リソースの種類**がサポートされています。 各**リソースの種類**は、Resource Graph の**テーブル**に含まれます。
+Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-manager/management/overview.md) の次の **リソースの種類** がサポートされています。 各 **リソースの種類** は、Resource Graph の **テーブル** に含まれます。
 
 ## <a name="advisorresources"></a>advisorresources
 
@@ -26,56 +26,98 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 
 - microsoft.alertsmanagement/alerts
 
-## <a name="healthresources"></a>healthresources
+## <a name="guestconfigurationresources"></a>guestconfigurationresources
 
-- microsoft.resourcehealth/events
+- microsoft.guestconfiguration/guestconfigurationassignments
 
 ## <a name="maintenanceresources"></a>maintenanceresources
 
 - microsoft.maintenance/configurationassignments
 - microsoft.maintenance/updates
 
+## <a name="patchassessmentresources"></a>patchassessmentresources
+
+- microsoft.compute/virtualmachines/patchassessmentresults
+- microsoft.compute/virtualmachines/patchassessmentresults/softwarepatches
+- microsoft.hybridcompute/machines/patchassessmentresults
+- microsoft.hybridcompute/machines/patchassessmentresults/softwarepatches
+
+## <a name="patchinstallationresources"></a>patchinstallationresources
+
+- microsoft.compute/virtualmachines/patchinstallationresults
+- microsoft.compute/virtualmachines/patchinstallationresults/softwarepatches
+- microsoft.hybridcompute/machines/patchinstallationresults
+- microsoft.hybridcompute/machines/patchinstallationresults/softwarepatches
+
+## <a name="policyresources"></a>policyresources
+
+- microsoft.policyinsights/policystates
+
+## <a name="recoveryservicesresources"></a>recoveryservicesresources
+
+- microsoft.dataprotection/backupvaults/backupinstances
+- microsoft.dataprotection/backupvaults/backupjobs
+- microsoft.dataprotection/backupvaults/backuppolicies
+- microsoft.recoveryservices/vaults/alerts
+- Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems (バックアップ項目)
+- microsoft.recoveryservices/vaults/backupjobs
+- microsoft.recoveryservices/vaults/backuppolicies
+
 ## <a name="resourcecontainers"></a>resourcecontainers
 
-- microsoft.resources/subscriptions
-- microsoft.resources/subscriptions/resourcegroups
+- microsoft.resources/subscriptions (サブスクリプション)
+- Microsoft.Resources/subscriptions/resourceGroups (リソース グループ)
 
 ## <a name="resources"></a>resources
 
-- 84codes.cloudamqp/servers
-- citrix.services/xenappessentials
-- citrix.services/xendesktopessentials
-- conexlink.mycloudit/accounts
-- crypteron.datasecurity/apps
+- 84codes.CloudAMQP/servers (CloudAMQP)
+- Citrix.Services/XenAppEssentials (Citrix Virtual Apps Essentials)
+- Citrix.Services/XenDesktopEssentials (Citrix Virtual Desktops Essentials)
+- Conexlink.MyCloudIt/accounts (MyCloudIT - Azure デスクトップ ホスティング)
+- Crypteron.DataSecurity/apps (Crypteron)
 - gridpro.evops/accounts
 - gridpro.evops/accounts/eventrules
 - gridpro.evops/accounts/requesttemplates
 - gridpro.evops/accounts/views
-- hive.streaming/services
+- Hive.Streaming/services (Hive Streaming)
 - incapsula.waf/accounts
-- livearena.broadcast/services
-- mailjet.email/services
-- microsoft.aad/domainservices
-- microsoft.aadiam/privatelinkforazuread
+- LiveArena.Broadcast/services (LiveArena ブロードキャスト)
+- Mailjet.Email/services (Mailjet メール サービス)
+- Microsoft.AAD/domainServices (Azure AD Domain Services)
+- microsoft.aadiam/azureadmetrics
+- microsoft.aadiam/privateLinkForAzureAD (Azure AD 用プライベート リンク)
 - microsoft.aadiam/tenants
+- microsoft.agfoodplatform/farmbeats
 - microsoft.aisupercomputer/accounts
 - microsoft.aisupercomputer/accounts/jobgroups
 - microsoft.aisupercomputer/accounts/jobgroups/jobs
 - microsoft.alertsmanagement/actionrules
+- microsoft.alertsmanagement/resourcehealthalertrules
 - microsoft.alertsmanagement/smartdetectoralertrules
-- microsoft.analysisservices/servers
-- microsoft.apimanagement/service
-- microsoft.appconfiguration/configurationstores
-- microsoft.appplatform/spring
+- Microsoft.AnalysisServices/servers (Analysis Services)
+- microsoft.anybuild/clusters
+- Microsoft.ApiManagement/service (API Management サービス)
+- microsoft.appassessment/migrateprojects
+- Microsoft.AppConfiguration/configurationStores (App Configuration)
+- Microsoft.AppPlatform/Spring (Azure Spring Cloud)
 - microsoft.archive/collections
-- microsoft.attestation/attestationproviders
-- microsoft.automation/automationaccounts
+- Microsoft.Attestation/attestationProviders (構成証明プロバイダー)
+- Microsoft.Authorization/resourceManagementPrivateLinks (リソース管理のプライベート リンク)
+- microsoft.automanage/accounts
+- microsoft.automanage/configurationprofilepreferences
+- Microsoft.Automation/AutomationAccounts (Automation アカウント)
 - microsoft.automation/automationaccounts/configurations
-- microsoft.automation/automationaccounts/runbooks
-- microsoft.autonomoussystems/workspaces
-- microsoft.avs/privateclouds
+- Microsoft.Automation/automationAccounts/runbooks (Runbook)
+- microsoft.autonomousdevelopmentplatform/accounts
+- Microsoft.AutonomousSystems/workspaces (Bonsai)
+- Microsoft.AVS/privateClouds (AVS プライベート クラウド)
 - microsoft.azconfig/configurationstores
-- microsoft.azureactivedirectory/b2cdirectories
+- Microsoft.AzureActiveDirectory/b2cDirectories (B2C テナント)
+- Microsoft.AzureActiveDirectory/guestUsages (ゲストの使用状況)
+- Microsoft.AzureArcData/dataControllers (Azure Arc データ コントローラー)
+- Microsoft.AzureArcData/postgresInstances (Azure Database for PostgreSQL サーバー グループ - Azure Arc)
+- Microsoft.AzureArcData/sqlManagedInstances (SQL マネージド インスタンス - Azure Arc)
+- Microsoft.AzureArcData/sqlServerInstances (SQL Server - Azure Arc)
 - microsoft.azuredata/datacontrollers
 - microsoft.azuredata/hybriddatamanagers
 - microsoft.azuredata/postgresinstances
@@ -83,408 +125,520 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.azuredata/sqlinstances
 - microsoft.azuredata/sqlmanagedinstances
 - microsoft.azuredata/sqlserverinstances
-- microsoft.azuredata/sqlserverregistrations
-- microsoft.azurestack/registrations
-- microsoft.azurestackhci/clusters
+- Microsoft.AzureData/sqlServerRegistrations (SQL Server レジストリ)
+- microsoft.azurestack/edgesubscriptions
+- microsoft.azurestack/linkedsubscriptions
+- Microsoft.Azurestack/registrations (Azure Stack Hub)
+- Microsoft.AzureStackHCI/clusters (Azure Stack HCI)
+- microsoft.azurestackhci/galleryimages
+- microsoft.azurestackhci/networkinterfaces
+- microsoft.azurestackhci/virtualnetworks
 - microsoft.baremetal/consoleconnections
-- microsoft.baremetal/crayservers
-- microsoft.baremetal/monitoringservers
-- microsoft.batch/batchaccounts
+- Microsoft.BareMetal/crayServers (Cray サーバー)
+- Microsoft.BareMetal/monitoringServers (監視サーバー)
+- Microsoft.BareMetalInfrastructure/bareMetalInstances (BareMetal インスタンス)
+- Microsoft.Batch/batchAccounts (Batch アカウント)
 - microsoft.batchai/clusters
 - microsoft.batchai/fileservers
 - microsoft.batchai/jobs
 - microsoft.batchai/workspaces
-- microsoft.bingmaps/mapapis
+- Microsoft.Bing/accounts (Bing リソース)
+- Microsoft.BingMaps/mapApis (Bing Maps API for Enterprise)
 - microsoft.biztalkservices/biztalk
-- microsoft.blockchain/blockchainmembers
-- microsoft.blockchain/cordamembers
-- microsoft.blockchain/watchers
-- microsoft.botservice/botservices
-- microsoft.cache/redis
-- microsoft.cache/redisenterprise
-- microsoft.cdn/cdnwebapplicationfirewallpolicies
-- microsoft.cdn/profiles
-- microsoft.cdn/profiles/endpoints
-- microsoft.certificateregistration/certificateorders
-- microsoft.classiccompute/domainnames
-- microsoft.classiccompute/virtualmachines
-- microsoft.classicnetwork/networksecuritygroups
-- microsoft.classicnetwork/reservedips
-- microsoft.classicnetwork/virtualnetworks
-- microsoft.classicstorage/storageaccounts
+- Microsoft.Blockchain/blockchainMembers (Azure Blockchain Service)
+- Microsoft.Blockchain/cordaMembers (Corda)
+- Microsoft.Blockchain/watchers (Blockchain Data Manager)
+- Microsoft.BotService/botServices (Bot Service)
+- Microsoft.Cache/Redis (Azure Cache for Redis)
+- Microsoft.Cache/RedisEnterprise (Redis Enterprise)
+- Microsoft.Cdn/CdnWebApplicationFirewallPolicies (Web アプリケーション ファイアウォール ポリシー (WAF))
+- microsoft.cdn/profiles (CDN プロファイル)
+- microsoft.cdn/profiles/afdendpoints
+- microsoft.cdn/profiles/endpoints (エンドポイント)
+- Microsoft.CertificateRegistration/certificateOrders (App Service 証明書)
+- microsoft.chaos/chaosexperiments
+- microsoft.classicCompute/domainNames (クラウド サービス (クラシック))
+- Microsoft.ClassicCompute/VirtualMachines (仮想マシン (クラシック))
+- Microsoft.ClassicNetwork/networkSecurityGroups (ネットワーク セキュリティ グループ (クラシック))
+- Microsoft.ClassicNetwork/reservedIps (予約済み IP アドレス (クラシック))
+- Microsoft.ClassicNetwork/virtualNetworks (仮想ネットワーク (クラシック))
+- Microsoft.ClassicStorage/StorageAccounts (ストレージ アカウント (クラシック))
 - microsoft.cloudes/accounts
 - microsoft.cloudsearch/indexes
-- microsoft.cognition/syntheticsaccounts
-- microsoft.cognitiveservices/accounts
-- microsoft.compute/availabilitysets
-- microsoft.compute/diskaccesses
-- microsoft.compute/diskencryptionsets
-- microsoft.compute/disks
-- microsoft.compute/galleries
+- Microsoft.CloudTest/accounts (CloudTest アカウント)
+- Microsoft.CloudTest/hostedpools (1ES ホステッド プール)
+- Microsoft.CloudTest/images (CloudTest イメージ)
+- Microsoft.CloudTest/pools (CloudTest プール)
+- microsoft.codespaces/plans
+- Microsoft.Cognition/syntheticsAccounts (Synthetics アカウント)
+- Microsoft.CognitiveServices/accounts (Cognitive Services)
+- Microsoft.Compute/availabilitySets (可用性セット)
+- microsoft.compute/capacityreservationgroups
+- microsoft.compute/capacityreservationgroups/capacityreservations
+- microsoft.compute/capacityreservations
+- Microsoft.Compute/cloudServices (クラウド サービス (延長サポート))
+- Microsoft.Compute/diskAccesses (ディスク アクセス)
+- Microsoft.Compute/diskEncryptionSets (ディスク暗号化セット)
+- Microsoft.Compute/disks (ディスク)
+- Microsoft.Compute/galleries (共有イメージ ギャラリー)
 - microsoft.compute/galleries/applications
 - microsoft.compute/galleries/applications/versions
-- microsoft.compute/galleries/images
-- microsoft.compute/galleries/images/versions
-- microsoft.compute/hostgroups
-- microsoft.compute/hostgroups/hosts
-- microsoft.compute/images
-- microsoft.compute/proximityplacementgroups
+- Microsoft.Compute/galleries/images (イメージ定義)
+- Microsoft.Compute/galleries/images/versions (イメージ バージョン)
+- Microsoft.Compute/hostgroups (ホスト グループ)
+- Microsoft.Compute/hostgroups/hosts (ホスト)
+- Microsoft.Compute/images (イメージ)
+- Microsoft.Compute/ProximityPlacementGroups (近接配置グループ)
 - microsoft.compute/restorepointcollections
 - microsoft.compute/sharedvmextensions
 - microsoft.compute/sharedvmextensions/versions
 - microsoft.compute/sharedvmimages
 - microsoft.compute/sharedvmimages/versions
-- microsoft.compute/snapshots
-- microsoft.compute/sshpublickeys
+- Microsoft.Compute/snapshots (スナップショット)
+- Microsoft.Compute/sshPublicKeys (SSH キー)
 - microsoft.compute/swiftlets
-- microsoft.compute/virtualmachines
+- Microsoft.Compute/VirtualMachines (仮想マシン)
 - microsoft.compute/virtualmachines/extensions
 - microsoft.compute/virtualmachines/runcommands
-- microsoft.compute/virtualmachinescalesets
-- microsoft.containerinstance/containergroups
-- microsoft.containerregistry/registries
+- Microsoft.Compute/virtualMachineScaleSets (仮想マシン スケール セット)
+- Microsoft.Confluent/organizations (Confluent 組織)
+- Microsoft.ConnectedCache/cacheNodes (接続キャッシュ リソース)
+- microsoft.connectedvehicle/platformaccounts
+- Microsoft.ContainerInstance/containerGroups (コンテナー インスタンス)
+- Microsoft.ContainerRegistry/registries (コンテナー レジストリ)
 - microsoft.containerregistry/registries/agentpools
 - microsoft.containerregistry/registries/buildtasks
-- microsoft.containerregistry/registries/replications
+- Microsoft.ContainerRegistry/registries/replications (コンテナー レジストリ レプリケーション)
 - microsoft.containerregistry/registries/taskruns
 - microsoft.containerregistry/registries/tasks
-- microsoft.containerregistry/registries/webhooks
-- microsoft.containerservice/containerservices
-- microsoft.containerservice/managedclusters
+- Microsoft.ContainerRegistry/registries/webhooks (コンテナー レジストリ Webhook)
+- Microsoft.ContainerService/containerServices (コンテナー サービス (非推奨))
+- Microsoft.ContainerService/managedClusters (Kubernetes サービス)
 - microsoft.containerservice/openshiftmanagedclusters
+- microsoft.contoso/clusters
 - microsoft.contoso/employees
+- microsoft.contoso/towers
 - microsoft.costmanagement/connectors
 - microsoft.customproviders/resourceproviders
-- microsoft.databox/jobs
-- microsoft.databoxedge/databoxedgedevices
-- microsoft.databricks/workspaces
-- microsoft.datacatalog/catalogs
+- microsoft.d365customerinsights/instances
+- Microsoft.DataBox/jobs (Data Box)
+- Microsoft.DataBoxEdge/dataBoxEdgeDevices (Azure Stack Edge / Data Box Gateway)
+- Microsoft.Databricks/workspaces (Azure Databricks サービス)
+- Microsoft.DataCatalog/catalogs (Data Catalog)
 - microsoft.datacatalog/datacatalogs
-- microsoft.datadog/monitors
-- microsoft.datafactory/datafactories
-- microsoft.datafactory/factories
-- microsoft.datalakeanalytics/accounts
-- microsoft.datalakestore/accounts
-- microsoft.datamigration/services
-- microsoft.datamigration/services/projects
+- Microsoft.DataCollaboration/workspaces (データ コラボレーション)
+- Microsoft.Datadog/monitors (Datadog)
+- Microsoft.DataFactory/dataFactories (データ ファクトリ)
+- Microsoft.DataFactory/factories (データ ファクトリ (V2))
+- Microsoft.DataLakeAnalytics/accounts (Data Lake Analytics)
+- Microsoft.DataLakeStore/accounts (Data Lake Storage Gen1)
+- microsoft.datamigration/controllers
+- Microsoft.DataMigration/services (Azure Database Migration Service)
+- Microsoft.DataMigration/services/projects (Azure Database Migration プロジェクト)
 - microsoft.datamigration/slots
-- microsoft.dataprotection/backupvaults
-- microsoft.datashare/accounts
-- microsoft.dbformariadb/servers
-- microsoft.dbformysql/servers
-- microsoft.dbforpostgresql/servergroups
-- microsoft.dbforpostgresql/servers
-- microsoft.dbforpostgresql/serversv2
+- Microsoft.DataProtection/BackupVaults (バックアップ コンテナー)
+- microsoft.dataprotection/resourceoperationgatekeepers
+- Microsoft.DataShare/accounts (データ共有)
+- Microsoft.DBforMariaDB/servers (Azure Database for MariaDB サーバー)
+- Microsoft.DBforMySQL/flexibleServers (Azure Database for MySQL フレキシブル サーバー)
+- Microsoft.DBforMySQL/servers (Azure Database for MySQL サーバー)
+- Microsoft.DBforPostgreSQL/flexibleServers (Azure Database for PostgreSQL フレキシブル サーバー)
+- Microsoft.DBforPostgreSQL/serverGroups (Azure Database for PostgreSQL サーバー グループ)
+- Microsoft.DBforPostgreSQL/servers (Azure Database for PostgreSQL サーバー)
+- Microsoft.DBforPostgreSQL/serversv2 (Azure Database for PostgreSQL サーバー v2)
 - microsoft.dbforpostgresql/singleservers
+- microsoft.delegatednetwork/controller
+- microsoft.delegatednetwork/delegatedsubnets
+- microsoft.delegatednetwork/orchestratorinstances
 - microsoft.deploymentmanager/artifactsources
-- microsoft.deploymentmanager/rollouts
+- Microsoft.DeploymentManager/Rollouts (ロールアウト)
 - microsoft.deploymentmanager/servicetopologies
 - microsoft.deploymentmanager/servicetopologies/services
 - microsoft.deploymentmanager/servicetopologies/services/serviceunits
 - microsoft.deploymentmanager/steps
-- microsoft.desktopvirtualization/applicationgroups
-- microsoft.desktopvirtualization/hostpools
-- microsoft.desktopvirtualization/workspaces
+- Microsoft.DesktopVirtualization/ApplicationGroups (アプリケーション グループ)
+- Microsoft.DesktopVirtualization/HostPools (ホスト プール)
+- microsoft.desktopvirtualization/scalingplans
+- Microsoft.DesktopVirtualization/Workspaces (ワークスペース)
 - microsoft.devices/elasticpools
 - microsoft.devices/elasticpools/iothubtenants
-- microsoft.devices/iothubs
-- microsoft.devices/provisioningservices
-- microsoft.devops/pipelines
+- Microsoft.Devices/IotHubs (IoT Hub)
+- Microsoft.Devices/ProvisioningServices (デバイス プロビジョニング サービス)
+- Microsoft.DeviceUpdate/Accounts (IoT ハブ用のデバイス更新)
+- microsoft.deviceupdate/accounts/instances
+- microsoft.devops/pipelines (DevOps Starter)
 - microsoft.devspaces/controllers
 - microsoft.devtestlab/labcenters
-- microsoft.devtestlab/labs
+- Microsoft.DevTestLab/labs (DevTest Labs)
 - microsoft.devtestlab/labs/servicerunners
-- microsoft.devtestlab/labs/virtualmachines
+- Microsoft.DevTestLab/labs/virtualMachines (仮想マシン)
 - microsoft.devtestlab/schedules
-- microsoft.digitaltwins/digitaltwinsinstances
-- microsoft.documentdb/databaseaccounts
-- microsoft.domainregistration/domains
+- Microsoft.DigitalTwins/digitalTwinsInstances (Azure Digital Twins)
+- Microsoft.DocumentDb/databaseAccounts (Azure Cosmos DB アカウント)
+- Microsoft.DomainRegistration/domains (App Service ドメイン)
+- Microsoft.Elastic/monitors (エラスティック)
 - microsoft.enterpriseknowledgegraph/services
-- microsoft.eventgrid/domains
-- microsoft.eventgrid/partnernamespaces
-- microsoft.eventgrid/partnerregistrations
-- microsoft.eventgrid/partnertopics
-- microsoft.eventgrid/systemtopics
-- microsoft.eventgrid/topics
-- microsoft.eventhub/clusters
-- microsoft.eventhub/namespaces
-- microsoft.experimentation/experimentworkspaces
+- Microsoft.EventGrid/domains (Event Grid ドメイン)
+- Microsoft.EventGrid/partnerNamespaces (Event Grid パートナー名前空間)
+- Microsoft.EventGrid/partnerRegistrations (Event Grid パートナー登録)
+- Microsoft.EventGrid/partnerTopics (Event Grid パートナー トピック)
+- Microsoft.EventGrid/systemTopics (Event Grid システム トピック)
+- Microsoft.EventGrid/topics (Event Grid トピック)
+- Microsoft.EventHub/clusters (Event Hubs クラスター)
+- Microsoft.EventHub/namespaces (Event Hubs 名前空間)
+- Microsoft.Experimentation/experimentWorkspaces (実験ワークスペース)
+- Microsoft.ExtendedLocation/CustomLocations (カスタムの場所)
 - microsoft.falcon/namespaces
+- microsoft.footprintmonitoring/profiles
 - microsoft.gaming/titles
-- microsoft.genomics/accounts
+- Microsoft.Genomics/accounts (Genomics アカウント)
 - microsoft.guestconfiguration/automanagedaccounts
-- microsoft.hanaonazure/hanainstances
-- microsoft.hanaonazure/sapmonitors
+- Microsoft.HanaOnAzure/hanaInstances (SAP HANA on Azure)
+- Microsoft.HanaOnAzure/sapMonitors (SAP ソリューション向け Azure Monitor)
 - microsoft.hardwaresecuritymodules/dedicatedhsms
-- microsoft.hdinsight/clusters
-- microsoft.healthcareapis/services
+- Microsoft.HDInsight/clusters (HDInsight クラスター)
+- Microsoft.HealthBot/healthBots (Azure Health Bot)
+- Microsoft.HealthcareApis/services (Azure API for FHIR)
 - microsoft.healthcareapis/services/privateendpointconnections
-- microsoft.hybridcompute/machines
+- microsoft.healthcareapis/workspaces
+- microsoft.healthcareapis/workspaces/dicomservices
+- Microsoft.HybridCompute/machines (サーバー - Azure Arc)
 - microsoft.hybridcompute/machines/extensions
-- microsoft.hybriddata/datamanagers
-- microsoft.importexport/jobs
+- Microsoft.HybridCompute/privateLinkScopes (Azure Arc プライベート リンク スコープ)
+- Microsoft.HybridData/dataManagers (StorSimple Data Managers)
+- Microsoft.HybridNetwork/devices (Azure ネットワーク機能マネージャー – デバイス)
+- Microsoft.HybridNetwork/networkFunctions (Azure ネットワーク機能マネージャー – ネットワーク機能)
+- microsoft.hybridnetwork/virtualnetworkfunctions
+- Microsoft.ImportExport/jobs (インポート/エクスポート ジョブ)
+- microsoft.industrydatalifecycle/basemodels
+- microsoft.industrydatalifecycle/custodiancollaboratives
 - microsoft.industrydatalifecycle/derivedmodels
+- microsoft.industrydatalifecycle/membercollaboratives
+- microsoft.industrydatalifecycle/modelmappings
+- microsoft.industrydatalifecycle/pipelinesets
 - microsoft.insights/actiongroups
 - microsoft.insights/activitylogalerts
 - microsoft.insights/alertrules
 - microsoft.insights/autoscalesettings
-- microsoft.insights/components
-- microsoft.insights/datacollectionrules
+- microsoft.insights/components (Application Insights)
+- microsoft.insights/datacollectionrules (データ収集ルール)
 - microsoft.insights/guestdiagnosticsettings
 - microsoft.insights/metricalerts
 - microsoft.insights/notificationgroups
 - microsoft.insights/notificationrules
-- microsoft.insights/privatelinkscopes
+- Microsoft.Insights/privateLinkScopes (Azure Monitor プライベート リンク スコープ)
+- microsoft.insights/querypacks
 - microsoft.insights/scheduledqueryrules
-- microsoft.insights/webtests
-- microsoft.insights/workbooks
-- microsoft.insights/workbooktemplates
-- microsoft.iotcentral/iotapps
-- microsoft.iotspaces/graph
+- microsoft.insights/webtests (可用性テスト)
+- microsoft.insights/workbooks (Azure ブック)
+- microsoft.insights/workbooktemplates (Azure ブック テンプレート)
+- Microsoft.IntelligentITDigitalTwin/digitalTwins (Minervas)
+- microsoft.intelligentitdigitaltwin/digitaltwins/assets
+- microsoft.intelligentitdigitaltwin/digitaltwins/executionplans
+- microsoft.intelligentitdigitaltwin/digitaltwins/testplans
+- microsoft.intelligentitdigitaltwin/digitaltwins/tests
+- Microsoft.IoTCentral/IoTApps (IoT Central アプリケーション)
+- Microsoft.IoTSpaces/Graph (Digital Twins (非推奨))
 - microsoft.keyvault/hsmpools
-- microsoft.keyvault/vaults
-- microsoft.kubernetes/connectedclusters
-- microsoft.kusto/clusters
-- microsoft.kusto/clusters/databases
-- microsoft.labservices/labaccounts
-- microsoft.logic/integrationaccounts
-- microsoft.logic/integrationserviceenvironments
-- microsoft.logic/integrationserviceenvironments/managedapis
-- microsoft.logic/workflows
-- microsoft.machinelearning/commitmentplans
-- microsoft.machinelearning/webservices
-- microsoft.machinelearning/workspaces
+- microsoft.keyvault/managedhsms
+- Microsoft.KeyVault/vaults (キー コンテナー)
+- Microsoft.Kubernetes/connectedClusters (Kubernetes - Azure Arc)
+- Microsoft.Kusto/clusters (Azure Data Explorer クラスター)
+- Microsoft.Kusto/clusters/databases (Azure Data Explorer データベース)
+- Microsoft.LabServices/labAccounts (ラボ サービス)
+- Microsoft.LoadTestService/LoadTests (クラウド ネイティブ ロード テスト)
+- Microsoft.Logic/integrationAccounts (統合アカウント)
+- Microsoft.Logic/integrationServiceEnvironments (統合サービス環境)
+- Microsoft.Logic/integrationServiceEnvironments/managedApis (マネージド コネクタ)
+- Microsoft.Logic/workflows (ロジック アプリ)
+- Microsoft.Logz/monitors (Logz メイン アカウント)
+- Microsoft.Logz/monitors/accounts (Logz サブ アカウント)
+- Microsoft.MachineLearning/commitmentPlans (Machine Learning スタジオ (クラシック) Web サービス プラン)
+- Microsoft.MachineLearning/webServices (Machine Learning スタジオ (クラシック) Web サービス)
+- Microsoft.MachineLearning/workspaces (Machine Learning スタジオ (クラシック) ワークスペース)
 - microsoft.machinelearningcompute/operationalizationclusters
-- microsoft.machinelearningservices/workspaces
-- microsoft.maintenance/maintenanceconfigurations
+- microsoft.machinelearningservices/modelinventories
+- microsoft.machinelearningservices/modelinventory
+- Microsoft.MachineLearningServices/workspaces (Machine Learning)
+- microsoft.machinelearningservices/workspaces/batchendpoints
+- microsoft.machinelearningservices/workspaces/batchendpoints/deployments
+- microsoft.machinelearningservices/workspaces/inferenceendpoints
+- microsoft.machinelearningservices/workspaces/inferenceendpoints/deployments
+- Microsoft.MachineLearningServices/workspaces/onlineEndpoints (ML アプリ)
+- Microsoft.MachineLearningServices/workspaces/onlineEndpoints/deployments (ML アプリのデプロイ)
+- Microsoft.Maintenance/maintenanceConfigurations (メンテナンス構成)
 - microsoft.maintenance/maintenancepolicies
 - microsoft.managedidentity/groups
-- microsoft.managedidentity/userassignedidentities
+- Microsoft.ManagedIdentity/userAssignedIdentities (マネージド ID)
 - microsoft.managednetwork/managednetworkgroups
 - microsoft.managednetwork/managednetworkpeeringpolicies
 - microsoft.managednetwork/managednetworks
 - microsoft.managednetwork/managednetworks/managednetworkgroups
 - microsoft.managednetwork/managednetworks/managednetworkpeeringpolicies
-- microsoft.maps/accounts
-- microsoft.maps/accounts/privateatlases
-- microsoft.marketplaceapps/classicdevservices
-- microsoft.media/mediaservices
-- microsoft.media/mediaservices/liveevents
-- microsoft.media/mediaservices/streamingendpoints
+- Microsoft.Maps/accounts (Azure Maps アカウント)
+- microsoft.maps/accounts/creators
+- Microsoft.Maps/accounts/privateAtlases (Azure Maps Creator リソース)
+- Microsoft.MarketplaceApps/classicDevServices (従来の開発サービス)
+- microsoft.media/mediaservices (Media Services)
+- microsoft.media/mediaservices/liveevents (ライブ イベント)
+- microsoft.media/mediaservices/streamingEndpoints (ストリーミング エンドポイント)
 - microsoft.media/mediaservices/transforms
 - microsoft.microservices4spring/appclusters
 - microsoft.migrate/assessmentprojects
 - microsoft.migrate/migrateprojects
 - microsoft.migrate/movecollections
-- microsoft.migrate/projects
-- microsoft.mixedreality/holographicsbroadcastaccounts
-- microsoft.mixedreality/objectunderstandingaccounts
-- microsoft.mixedreality/remoterenderingaccounts
-- microsoft.mixedreality/spatialanchorsaccounts
+- Microsoft.Migrate/projects (移行プロジェクト)
+- Microsoft.MixedReality/holographicsBroadcastAccounts (Holographics Broadcast アカウント)
+- Microsoft.MixedReality/objectUnderstandingAccounts (Object Understanding アカウント)
+- Microsoft.MixedReality/remoteRenderingAccounts (Remote Rendering アカウント)
+- Microsoft.MixedReality/spatialAnchorsAccounts (Spatial Anchors アカウント)
 - microsoft.mixedreality/surfacereconstructionaccounts
-- microsoft.netapp/netappaccounts
+- Microsoft.NetApp/netAppAccounts (NetApp アカウント)
 - microsoft.netapp/netappaccounts/backuppolicies
-- microsoft.netapp/netappaccounts/capacitypools
-- microsoft.netapp/netappaccounts/capacitypools/volumes
+- Microsoft.NetApp/netAppAccounts/capacityPools (容量プール)
+- Microsoft.NetApp/netAppAccounts/capacityPools/Volumes (ボリューム)
 - microsoft.netapp/netappaccounts/capacitypools/volumes/mounttargets
-- microsoft.netapp/netappaccounts/capacitypools/volumes/snapshots
-- microsoft.network/applicationgateways
-- microsoft.network/applicationgatewaywebapplicationfirewallpolicies
-- microsoft.network/applicationsecuritygroups
-- microsoft.network/azurefirewalls
-- microsoft.network/bastionhosts
-- microsoft.network/connections
+- Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots (スナップショット)
+- Microsoft.Network/applicationGateways (アプリケーション ゲートウェイ)
+- Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies (Web アプリケーション ファイアウォール ポリシー (WAF))
+- Microsoft.Network/applicationSecurityGroups (アプリケーションのセキュリティ グループ)
+- Microsoft.Network/azureFirewalls (ファイアウォール)
+- Microsoft.Network/bastionHosts (Bastions)
+- Microsoft.Network/connections (接続)
+- microsoft.network/customipprefixes
 - microsoft.network/ddoscustompolicies
-- microsoft.network/ddosprotectionplans
-- microsoft.network/dnszones
-- microsoft.network/expressroutecircuits
+- Microsoft.Network/ddosProtectionPlans (DDoS 保護プラン)
+- Microsoft.Network/dnsZones (DNS ゾーン)
+- microsoft.network/dscpconfigurations
+- Microsoft.Network/expressRouteCircuits (ExpressRoute 回線)
 - microsoft.network/expressroutecrossconnections
 - microsoft.network/expressroutegateways
-- microsoft.network/expressrouteports
-- microsoft.network/firewallpolicies
-- microsoft.network/frontdoors
-- microsoft.network/frontdoorwebapplicationfirewallpolicies
+- Microsoft.Network/expressRoutePorts (ExpressRoute Direct)
+- Microsoft.Network/firewallPolicies (ファイアウォール ポリシー)
+- Microsoft.Network/frontdoors (フロント ドア)
+- Microsoft.Network/FrontDoorWebApplicationFirewallPolicies (Web アプリケーション ファイアウォール ポリシー (WAF))
 - microsoft.network/ipallocations
-- microsoft.network/ipgroups
-- microsoft.network/loadbalancers
-- microsoft.network/localnetworkgateways
-- microsoft.network/natgateways
-- microsoft.network/networkexperimentprofiles
+- Microsoft.Network/ipGroups (IP グループ)
+- Microsoft.Network/LoadBalancers (ロード バランサー)
+- Microsoft.Network/localnetworkgateways (ローカル ネットワーク ゲートウェイ)
+- microsoft.network/mastercustomipprefixes
+- Microsoft.Network/natGateways (NAT ゲートウェイ)
+- Microsoft.Network/NetworkExperimentProfiles (Internet Analyzer プロファイル)
 - microsoft.network/networkintentpolicies
-- microsoft.network/networkinterfaces
-- microsoft.network/networkmanagers
+- Microsoft.Network/networkinterfaces (ネットワーク インターフェイス)
+- Microsoft.Network/networkManagers (ネットワーク マネージャー)
 - microsoft.network/networkprofiles
-- microsoft.network/networksecuritygroups
+- Microsoft.Network/NetworkSecurityGroups (ネットワーク セキュリティ グループ)
 - microsoft.network/networkvirtualappliances
-- microsoft.network/networkwatchers
+- microsoft.network/networkwatchers (ネットワーク ウォッチャー)
 - microsoft.network/networkwatchers/connectionmonitors
-- microsoft.network/networkwatchers/flowlogs
+- microsoft.network/networkwatchers/flowlogs (NSG フロー ログ)
 - microsoft.network/networkwatchers/lenses
 - microsoft.network/networkwatchers/pingmeshes
 - microsoft.network/p2svpngateways
-- microsoft.network/privatednszones
+- Microsoft.Network/privateDnsZones (プライベート DNS ゾーン)
 - microsoft.network/privatednszones/virtualnetworklinks
 - microsoft.network/privateendpointredirectmaps
-- microsoft.network/privateendpoints
-- microsoft.network/privatelinkservices
-- microsoft.network/publicipaddresses
-- microsoft.network/publicipprefixes
-- microsoft.network/routefilters
-- microsoft.network/routetables
+- Microsoft.Network/privateEndpoints (プライベート エンドポイント)
+- Microsoft.Network/privateLinkServices (プライベート リンク サービス)
+- Microsoft.Network/PublicIpAddresses (パブリック IP アドレス)
+- Microsoft.Network/publicIpPrefixes (パブリック IP プレフィックス)
+- Microsoft.Network/routeFilters (ルート フィルター)
+- Microsoft.Network/routeTables (ルート テーブル)
 - microsoft.network/sampleresources
 - microsoft.network/securitypartnerproviders
-- microsoft.network/serviceendpointpolicies
-- microsoft.network/trafficmanagerprofiles
+- Microsoft.Network/serviceEndpointPolicies (サービス エンドポイント ポリシー)
+- Microsoft.Network/trafficmanagerprofiles (Traffic Manager プロファイル)
 - microsoft.network/virtualhubs
-- microsoft.network/virtualnetworkgateways
-- microsoft.network/virtualnetworks
+- microsoft.network/virtualhubs/bgpconnections
+- microsoft.network/virtualhubs/ipconfigurations
+- Microsoft.Network/virtualNetworkGateways (仮想ネットワーク ゲートウェイ)
+- Microsoft.Network/virtualNetworks (仮想ネットワーク)
 - microsoft.network/virtualnetworktaps
 - microsoft.network/virtualrouters
-- microsoft.network/virtualwans
+- Microsoft.Network/virtualWans (仮想 WAN)
 - microsoft.network/vpngateways
 - microsoft.network/vpnserverconfigurations
 - microsoft.network/vpnsites
-- microsoft.notificationhubs/namespaces
-- microsoft.notificationhubs/namespaces/notificationhubs
+- Microsoft.NotificationHubs/namespaces (通知ハブの名前空間)
+- Microsoft.NotificationHubs/namespaces/notificationHubs (通知ハブ)
+- microsoft.nutanix/interfaces
+- microsoft.nutanix/nodes
 - microsoft.objectstore/osnamespaces
 - microsoft.offazure/hypervsites
 - microsoft.offazure/importsites
+- microsoft.offazure/mastersites
 - microsoft.offazure/serversites
 - microsoft.offazure/vmwaresites
+- Microsoft.OpenLogisticsPlatform/workspaces (オープン サプライ チェーン プラットフォーム)
 - microsoft.operationalinsights/clusters
-- microsoft.operationalinsights/workspaces
-- microsoft.operationsmanagement/solutions
+- Microsoft.OperationalInsights/querypacks (Log Analytics クエリ パック)
+- Microsoft.OperationalInsights/workspaces (Log Analytics ワークスペース)
+- Microsoft.OperationsManagement/solutions (ソリューション)
 - microsoft.operationsmanagement/views
-- microsoft.peering/peerings
-- microsoft.peering/peeringservices
-- microsoft.portal/dashboards
+- microsoft.orbital/contactprofiles
+- microsoft.orbital/spacecrafts
+- Microsoft.Peering/peerings (ピアリング)
+- Microsoft.Peering/peeringServices (ピアリング サービス)
+- Microsoft.Portal/dashboards (共有ダッシュボード)
 - microsoft.portalsdk/rootresources
+- microsoft.powerbi/privatelinkservicesforpowerbi
+- microsoft.powerbi/tenants
 - microsoft.powerbi/workspacecollections
-- microsoft.powerbidedicated/capacities
-- microsoft.projectbabylon/accounts
-- microsoft.quantum/workspaces
-- microsoft.recoveryservices/vaults
-- microsoft.redhatopenshift/openshiftclusters
-- microsoft.relay/namespaces
+- Microsoft.PowerBIDedicated/capacities (Power BI Embedded)
+- Microsoft.ProjectBabylon/Accounts (Babylon アカウント)
+- Microsoft.Purview/Accounts (Purview アカウント)
+- Microsoft.Quantum/Workspaces (Quantum ワークスペース)
+- Microsoft.RecoveryServices/vaults (Recovery Services コンテナー)
+- Microsoft.RedHatOpenShift/openShiftClusters (OpenShift クラスター)
+- Microsoft.Relay/namespaces (リレー)
 - microsoft.remoteapp/collections
-- microsoft.resourcegraph/queries
-- microsoft.resources/deploymentscripts
-- microsoft.resources/templatespecs
+- microsoft.resiliency/chaosexperiments
+- microsoft.resourceconnector/appliances
+- Microsoft.resourcegraph/queries (Resource Graph クエリ)
+- Microsoft.Resources/deploymentScripts (デプロイ スクリプト)
+- Microsoft.Resources/templateSpecs (テンプレート スペック)
 - microsoft.resources/templatespecs/versions
-- microsoft.saas/applications
-- microsoft.scheduler/jobcollections
-- microsoft.search/searchservices
+- Microsoft.SaaS/applications (サービスとしてのソフトウェア (クラシック))
+- Microsoft.SaaS/resources (CPX-Placeholder)
+- Microsoft.Scheduler/jobCollections (スケジューラ ジョブ コレクション)
+- microsoft.scvmm/clouds
+- Microsoft.scvmm/virtualMachines (SCVMM 仮想マシン - Azure Arc)
+- microsoft.scvmm/virtualmachinetemplates
+- microsoft.scvmm/virtualnetworks
+- microsoft.scvmm/vmmservers
+- Microsoft.Search/searchServices (Search Service)
 - microsoft.security/automations
 - microsoft.security/iotsecuritysolutions
-- microsoft.securitydetonation/chambers
-- microsoft.servicebus/namespaces
-- microsoft.servicefabric/clusters
+- Microsoft.SecurityDetonation/chambers (セキュリティ デトネーション チャンバー)
+- Microsoft.ServiceBus/namespaces (Service Bus 名前空間)
+- Microsoft.ServiceFabric/clusters (Service Fabric クラスター)
 - microsoft.servicefabric/containergroupsets
-- microsoft.servicefabric/managedclusters
-- microsoft.servicefabricmesh/applications
+- Microsoft.ServiceFabric/managedclusters (マネージド Service Fabric クラスター)
+- Microsoft.ServiceFabricMesh/applications (メッシュ アプリケーション)
 - microsoft.servicefabricmesh/gateways
 - microsoft.servicefabricmesh/networks
 - microsoft.servicefabricmesh/secrets
 - microsoft.servicefabricmesh/volumes
-- microsoft.serviceshub/connectors
-- microsoft.signalrservice/signalr
+- Microsoft.ServicesHub/connectors (サービス ハブ コネクタ)
+- Microsoft.SignalRService/SignalR (SignalR)
+- microsoft.singularity/accounts
 - microsoft.solutions/appliancedefinitions
 - microsoft.solutions/appliances
-- microsoft.solutions/applicationdefinitions
-- microsoft.solutions/applications
+- Microsoft.Solutions/applicationDefinitions (サービス カタログのマネージド アプリケーションの定義)
+- Microsoft.Solutions/applications (マネージド アプリケーション)
 - microsoft.solutions/jitrequests
 - microsoft.spoolservice/spools
-- microsoft.sql/instancepools
-- microsoft.sql/managedinstances
-- microsoft.sql/managedinstances/databases
-- microsoft.sql/servers
-- microsoft.sql/servers/databases
-- microsoft.sql/servers/elasticpools
+- Microsoft.Sql/instancePools (インスタンス プール)
+- Microsoft.Sql/managedInstances (SQL マネージド インスタンス)
+- Microsoft.Sql/managedInstances/databases (マネージド データベース)
+- Microsoft.Sql/servers (SQL サーバー)
+- Microsoft.Sql/servers/databases (SQL データベース)
+- Microsoft.Sql/servers/elasticpools (SQL エラスティック プール)
 - microsoft.sql/servers/jobaccounts
-- microsoft.sql/servers/jobagents
-- microsoft.sql/virtualclusters
+- Microsoft.Sql/servers/jobAgents (エラスティック ジョブ エージェント)
+- Microsoft.Sql/virtualClusters (仮想クラスター)
 - microsoft.sqlvirtualmachine/sqlvirtualmachinegroups
-- microsoft.sqlvirtualmachine/sqlvirtualmachines
+- Microsoft.SqlVirtualMachine/SqlVirtualMachines (SQL 仮想マシン)
 - microsoft.sqlvm/dwvm
-- microsoft.storage/storageaccounts
-- microsoft.storagecache/caches
-- microsoft.storagesync/storagesyncservices
-- microsoft.storagesyncdev/storagesyncservices
-- microsoft.storagesyncint/storagesyncservices
-- microsoft.storsimple/managers
-- microsoft.streamanalytics/streamingjobs
-- microsoft.synapse/workspaces
-- microsoft.synapse/workspaces/bigdatapools
-- microsoft.synapse/workspaces/sqlpools
+- Microsoft.Storage/StorageAccounts (ストレージ アカウント)
+- Microsoft.StorageCache/caches (HPC キャッシュ)
+- microsoft.storagepool/diskpools
+- Microsoft.StorageSync/storageSyncServices (ストレージ同期サービス)
+- Microsoft.StorageSyncDev/storageSyncServices (ストレージ同期サービス)
+- Microsoft.StorageSyncInt/storageSyncServices (ストレージ同期サービス)
+- Microsoft.StorSimple/Managers (StorSimple デバイス マネージャー)
+- Microsoft.StreamAnalytics/clusters (Stream Analytics クラスター)
+- Microsoft.StreamAnalytics/StreamingJobs (Stream Analytics ジョブ)
+- microsoft.swiftlet/virtualmachines
+- microsoft.swiftlet/virtualmachinesnapshots
+- Microsoft.Synapse/privateLinkHubs (Azure Synapse Analytics (プライベート リンク ハブ))
+- Microsoft.Synapse/workspaces (Azure Synapse Analytics)
+- Microsoft.Synapse/workspaces/bigDataPools (Apache Spark プール)
+- microsoft.synapse/workspaces/sqldatabases
+- Microsoft.Synapse/workspaces/sqlPools (専用 SQL プール)
 - microsoft.terraformoss/providerregistrations
-- microsoft.timeseriesinsights/environments
-- microsoft.timeseriesinsights/environments/eventsources
-- microsoft.timeseriesinsights/environments/referencedatasets
+- Microsoft.TimeSeriesInsights/environments (Time Series Insights 環境)
+- Microsoft.TimeSeriesInsights/environments/eventsources (Time Series Insights イベント ソース)
+- Microsoft.TimeSeriesInsights/environments/referenceDataSets (Time Series Insights 参照データ セット)
 - microsoft.token/stores
 - microsoft.tokenvault/vaults
 - microsoft.virtualmachineimages/imagetemplates
-- microsoft.visualstudio/account
+- microsoft.visualstudio/account (Azure DevOps 組織)
 - microsoft.visualstudio/account/extension
-- microsoft.visualstudio/account/project
+- microsoft.visualstudio/account/project (DevOps スターター)
 - microsoft.vmware/arczones
 - microsoft.vmware/resourcepools
 - microsoft.vmware/vcenters
-- microsoft.vmware/virtualmachines
+- Microsoft.VMware/VirtualMachines (AVS 仮想マシン)
 - microsoft.vmware/virtualmachinetemplates
 - microsoft.vmware/virtualnetworks
-- microsoft.vmwarecloudsimple/dedicatedcloudnodes
-- microsoft.vmwarecloudsimple/dedicatedcloudservices
-- microsoft.vmwarecloudsimple/virtualmachines
+- Microsoft.VMwareCloudSimple/dedicatedCloudNodes (CloudSimple ノード)
+- Microsoft.VMwareCloudSimple/dedicatedCloudServices (CloudSimple サービス)
+- Microsoft.VMwareCloudSimple/virtualMachines (CloudSimple 仮想マシン)
 - microsoft.vmwareonazure/privateclouds
 - microsoft.vmwarevirtustream/privateclouds
 - microsoft.vsonline/accounts
-- microsoft.vsonline/plans
+- Microsoft.VSOnline/Plans (Visual Studio Online プラン)
+- microsoft.web/apimanagementaccounts
 - microsoft.web/apimanagementaccounts/apis
 - microsoft.web/certificates
-- microsoft.web/connectiongateways
-- microsoft.web/connections
-- microsoft.web/customapis
-- microsoft.web/hostingenvironments
-- microsoft.web/kubeenvironments
-- microsoft.web/serverfarms
-- microsoft.web/sites
+- Microsoft.Web/connectionGateways (オンプレミス データ ゲートウェイ)
+- Microsoft.Web/connections (API 接続)
+- Microsoft.Web/customApis (Logic Apps カスタム コネクタ)
+- Microsoft.Web/HostingEnvironments (App Service 環境)
+- Microsoft.Web/KubeEnvironments (App Service Kubernetes 環境)
+- Microsoft.Web/serverFarms (App Service プラン)
+- Microsoft.Web/sites (App Services)
 - microsoft.web/sites/premieraddons
-- microsoft.web/sites/slots
-- microsoft.web/staticsites
-- microsoft.windowsesu/multipleactivationkeys
-- microsoft.windowsiot/deviceservices
-- myget.packagemanagement/services
-- paraleap.cloudmonix/services
-- pokitdok.platform/services
-- providers.test/statefulibizaengines
+- Microsoft.Web/sites/slots (App Service (スロット))
+- Microsoft.Web/StaticSites (Static Web Apps (プレビュー))
+- Microsoft.WindowsESU/multipleActivationKeys (Windows マルチ ライセンス認証キー)
+- Microsoft.WindowsIoT/DeviceServices (Windows 10 IoT Core Services)
+- microsoft.workloadbuilder/migrationagents
+- microsoft.workloadbuilder/workloads
+- MyGet.PackageManagement/services (MyGet - ホスト型 NuGet、NPM、Bower、Vsix)
+- Paraleap.CloudMonix/services (CloudMonix)
+- Pokitdok.Platform/services (PokitDok プラットフォーム)
+- Providers.Test/statefulIbizaEngines (アプリケーション評価)
 - providers.test/statefulresources
 - providers.test/statefulresources/nestedresources
 - providers.test/statelessresources
-- ravenhq.db/databases
-- raygun.crashreporting/apps
-- sendgrid.email/accounts
-- sparkpost.basic/services
-- stackify.retrace/services
+- RavenHq.Db/databases (RavenHQ)
+- Raygun.CrashReporting/apps (Raygun)
+- Sendgrid.Email/accounts (SendGrid アカウント)
+- Sparkpost.Basic/services (SparkPost)
+- stackify.retrace/services (Stackify)
 - test.shoebox/testresources
 - test.shoebox/testresources2
-- trendmicro.deepsecurity/accounts
-- u2uconsult.theidentityhub/services
-- wandisco.fusion/fusiongroups
-- wandisco.fusion/fusiongroups/azurezones
-- wandisco.fusion/fusiongroups/azurezones/plugins
-- wandisco.fusion/fusiongroups/hivereplicationrules
-- wandisco.fusion/fusiongroups/managedonpremzones
+- TrendMicro.DeepSecurity/accounts (Deep Security SaaS)
+- U2uconsult.TheIdentityHub/services (ID ハブ)
+- Wandisco.Fusion/fusionGroups (LiveData プレーン)
+- Wandisco.Fusion/fusionGroups/azureZones (Azure ゾーン)
+- Wandisco.Fusion/fusionGroups/azureZones/plugins (プラグイン)
+- Wandisco.Fusion/fusionGroups/hiveReplicationRules (Hive レプリケーション規則)
+- Wandisco.Fusion/fusionGroups/managedOnPremZones (オンプレミス ゾーン)
 - wandisco.fusion/fusiongroups/onpremzones
-- wandisco.fusion/fusiongroups/replicationrules
+- Wandisco.Fusion/fusionGroups/replicationRules (レプリケーション規則)
+- Wandisco.Fusion/migrators (LiveData Migrator)
+- Wandisco.Fusion/migrators/liveDataMigrations (移行)
+- Wandisco.Fusion/migrators/targets (ターゲット)
 
 ## <a name="securityresources"></a>securityresources
 
 - microsoft.security/assessments
 - microsoft.security/assessments/subassessments
+- microsoft.security/locations/alerts (セキュリティ アラート (プレビュー))
 - microsoft.security/pricings
 - microsoft.security/regulatorycompliancestandards
 - microsoft.security/regulatorycompliancestandards/regulatorycompliancecontrols
 - microsoft.security/regulatorycompliancestandards/regulatorycompliancecontrols/regulatorycomplianceassessments
+- microsoft.security/securescores
+- microsoft.security/securescores/securescorecontrols
+
+## <a name="servicehealthresources"></a>servicehealthresources
+
+- microsoft.resourcehealth/events
 
 ## <a name="next-steps"></a>次のステップ
 

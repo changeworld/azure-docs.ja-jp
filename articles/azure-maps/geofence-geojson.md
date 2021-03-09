@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 27a2fee04afc559a8564aea5e112de07e9c0dcf6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e880710b93a6764df50780e685c89b5f569b4ec0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037407"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897196"
 ---
 # <a name="geofencing-geojson-data"></a>GeoJSON データのジオフェンシング
 
@@ -40,7 +40,7 @@ Azure Maps の [GET Geofence](/rest/api/maps/spatial/getgeofence) および [POS
 
 * すべての座標値は、`WGS84` で定義されているように、[経度, 緯度] として表されます。
 * `MultiPoint`、`MultiLineString`、`MultiPolygon`、または `GeometryCollection` を含む各フィーチャーでは、プロパティがすべての要素に適用されます。 次に例を示します。`MultiPoint` 内のすべてのポイントでは、同じ radius を使用して、複数の円ジオフェンスが形成されます。
-* ポイントと円のシナリオでは、「[GeoJSON ジオメトリの拡張](https://docs.microsoft.com/azure/azure-maps/extend-geojson)」で詳しく説明されているプロパティを含む `Point` geometry オブジェクトを使用して、円のジオメトリを表すことができます。      
+* ポイントと円のシナリオでは、「[GeoJSON ジオメトリの拡張](./extend-geojson.md)」で詳しく説明されているプロパティを含む `Point` geometry オブジェクトを使用して、円のジオメトリを表すことができます。      
 
 中心点と半径を使用して `GeoJSON` 内の円ジオフェンス ジオメトリとして表されたジオフェンスに対する要求本文のサンプルを次に示します。 ジオフェンス データの有効期間は、2018 年 10 月 22 日に開始し (午前 9 時から午後 5 時まで)、週末を除いて毎日繰り返されます。 `expiredTime` は、要求の `userTime` が `2019-01-01` より後の場合、このジオフェンス データは期限切れと見なされることを示します。  
 

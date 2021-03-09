@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:Ruby を使用して接続する - Azure Database for PostgreSQL - Single Server
 description: このクイックスタートでは、Azure Database for PostgreSQL - Single Server に接続してデータを照会するために使用できる、Ruby コード サンプルを紹介します。
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 98814060fb9ae669fc4e9a90fcda6319bbfaeacf
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 20e45454284af230da74896d5b3f5e9da676dbb4
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182546"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831705"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Ruby を使用して Azure Database for PostgreSQL - Single Server に接続してデータを照会する
 
@@ -26,7 +26,7 @@ ms.locfileid: "88182546"
 
 また、以下のものもインストールしておく必要があります。
 - [Ruby](https://www.ruby-lang.org/en/downloads/)
-- Ruby pg、Ruby 用の PostgreSQL モジュール
+- [Ruby pg](https://rubygems.org/gems/pg/)、Ruby 用の PostgreSQL モジュール
 
 ## <a name="get-connection-information"></a>接続情報の取得
 Azure Database for PostgreSQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
@@ -35,17 +35,17 @@ Azure Database for PostgreSQL に接続するために必要な接続情報を�
 2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したサーバー (例: **mydemoserver**) を検索します。
 3. サーバー名をクリックします。
 4. サーバーの **[概要]** パネルから、 **[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
- ![Azure Database for PostgreSQL サーバーの名前](./media/connect-ruby/1-connection-string.png)
+ :::image type="content" source="./media/connect-ruby/1-connection-string.png" alt-text="Azure Database for PostgreSQL サーバーの名前":::
 
 > [!NOTE]
-> Azure Postgres ユーザー名の `@` 記号は、すべての接続文字列で `%40` として URL エンコードされています。 
+> Azure Postgres ユーザー名の `@` 記号は、すべての接続文字列で `%40` として URL エンコードされています。
 
 ## <a name="connect-and-create-a-table"></a>接続とテーブルの作成
 接続し、**CREATE TABLE** SQL ステートメントでテーブルを作成してから、**INSERT INTO** SQL ステートメントでそのテーブルに行を追加するには、次のコードを使用します。
 
-このコードでは、[new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) コンストラクターを使用した [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) オブジェクトを使用して、Azure Database for PostgreSQL に接続します。 次に、[exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) メソッドを呼び出して、DROP、CREATE TABLE、INSERT INTO の各コマンドを実行します。 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) クラスを使用して、エラーをチェックします。 その後、[close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードでは、```new``` コンストラクターを使用した ```PG::Connection``` オブジェクトを使用して、Azure Database for PostgreSQL に接続します。 次に、```exec()``` メソッドを呼び出して、DROP、CREATE TABLE、INSERT INTO の各コマンドを実行します。 ```PG::Error``` クラスを使用して、エラーをチェックします。 その後、```close()``` メソッドを呼び出して、終了する前に接続を閉じます。 これらのクラスとメソッドの詳細については、Ruby Pg リファレンス ドキュメントを参照してください。
 
-`host`、`database`、`user`、`password` の各文字列は、実際の値に置き換えてください。 
+`host`、`database`、`user`、`password` の各文字列は、実際の値に置き換えてください。
 
 
 ```ruby
@@ -77,19 +77,19 @@ begin
     puts 'Inserted 3 rows of data.'
 
 rescue PG::Error => e
-    puts e.message 
-    
+    puts e.message
+
 ensure
     connection.close if connection
 end
 ```
 
 ## <a name="read-data"></a>データの読み取り
-接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
+接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。
 
-このコードでは、[new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) コンストラクターを使用した [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) オブジェクトを使用して、Azure Database for PostgreSQL に接続します。 次に、[exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) メソッドを呼び出して SELECT コマンドを実行します。その際、結果は結果セットに保持されます。 結果セットのコレクションは `resultSet.each do` ループを使用して反復処理され、現在の行の値が `row` 変数に保持されます。 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) クラスを使用して、エラーをチェックします。 その後、[close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードでは、```new``` コンストラクターを使用した ```PG::Connection``` オブジェクトを使用して、Azure Database for PostgreSQL に接続します。 次に、```exec()``` メソッドを呼び出して SELECT コマンドを実行します。その際、結果は結果セットに保持されます。 結果セットのコレクションは `resultSet.each do` ループを使用して反復処理され、現在の行の値が `row` 変数に保持されます。 ```PG::Error``` クラスを使用して、エラーをチェックします。 その後、```close()``` メソッドを呼び出して、終了する前に接続を閉じます。 これらのクラスとメソッドの詳細については、Ruby Pg リファレンス ドキュメントを参照してください。
 
-`host`、`database`、`user`、`password` の各文字列は、実際の値に置き換えてください。 
+`host`、`database`、`user`、`password` の各文字列は、実際の値に置き換えてください。
 
 ```ruby
 require 'pg'
@@ -111,8 +111,8 @@ begin
     end
 
 rescue PG::Error => e
-    puts e.message 
-    
+    puts e.message
+
 ensure
     connection.close if connection
 end
@@ -121,9 +121,9 @@ end
 ## <a name="update-data"></a>データの更新
 接続し、**UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。
 
-このコードでは、[new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) コンストラクターを使用した [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) オブジェクトを使用して、Azure Database for PostgreSQL に接続します。 次に、[exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) メソッドを呼び出し、DELETE コマンドを実行します。 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) クラスを使用して、エラーをチェックします。 その後、[close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードでは、```new``` コンストラクターを使用した ```PG::Connection``` オブジェクトを使用して、Azure Database for PostgreSQL に接続します。 次に、```exec()``` メソッドを呼び出し、DELETE コマンドを実行します。 ```PG::Error``` クラスを使用して、エラーをチェックします。 その後、```close()``` メソッドを呼び出して、終了する前に接続を閉じます。 これらのクラスとメソッドの詳細については、[Ruby Pg リファレンス ドキュメント](https://rubygems.org/gems/pg)を参照してください。
 
-`host`、`database`、`user`、`password` の各文字列は、実際の値に置き換えてください。 
+`host`、`database`、`user`、`password` の各文字列は、実際の値に置き換えてください。
 
 ```ruby
 require 'pg'
@@ -144,8 +144,8 @@ begin
     puts 'Updated 1 row of data.'
 
 rescue PG::Error => e
-    puts e.message 
-    
+    puts e.message
+
 ensure
     connection.close if connection
 end
@@ -153,11 +153,11 @@ end
 
 
 ## <a name="delete-data"></a>データの削除
-接続し、**DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 
+接続し、**DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。
 
-このコードでは、[new()](https://www.rubydoc.info/gems/pg/PG%2FConnection:initialize) コンストラクターを使用した [PG::Connection](https://www.rubydoc.info/gems/pg/PG/Connection) オブジェクトを使用して、Azure Database for PostgreSQL に接続します。 次に、[exec()](https://www.rubydoc.info/gems/pg/PG/Connection#exec-instance_method) メソッドを呼び出し、DELETE コマンドを実行します。 [PG::Error](https://www.rubydoc.info/gems/pg/PG/Error) クラスを使用して、エラーをチェックします。 その後、[close()](https://www.rubydoc.info/gems/pg/PG/Connection#lo_close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
+このコードでは、```new``` コンストラクターを使用した ```PG::Connection``` オブジェクトを使用して、Azure Database for PostgreSQL に接続します。 次に、```exec()``` メソッドを呼び出し、DELETE コマンドを実行します。 ```PG::Error``` クラスを使用して、エラーをチェックします。 その後、```close()``` メソッドを呼び出して、終了する前に接続を閉じます。
 
-`host`、`database`、`user`、`password` の各文字列は、実際の値に置き換えてください。 
+`host`、`database`、`user`、`password` の各文字列は、実際の値に置き換えてください。
 
 ```ruby
 require 'pg'
@@ -178,13 +178,26 @@ begin
     puts 'Deleted 1 row of data.'
 
 rescue PG::Error => e
-    puts e.message 
-    
+    puts e.message
+
 ensure
     connection.close if connection
 end
 ```
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このクイックスタートで使用したすべてのリソースをクリーンアップするには、次のコマンドを使用してリソース グループを削除します。
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
+```
+
 ## <a name="next-steps"></a>次のステップ
+
 > [!div class="nextstepaction"]
-> [エクスポートとインポートを使用したデータベースの移行](./howto-migrate-using-export-and-import.md)
+> [エクスポートとインポートを使用したデータベースの移行](./howto-migrate-using-export-and-import.md) <br/>
+> [!div class="nextstepaction"]
+> [Ruby Pg リファレンス ドキュメント](https://rubygems.org/gems/pg)

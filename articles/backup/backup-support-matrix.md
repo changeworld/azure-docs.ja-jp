@@ -4,12 +4,12 @@ description: Azure Backup サービスのサポート設定と制限事項の概
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9b0698b16d3432c1bfefd3cf909cdfdf5529200e
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 9e20c21694678acf7be13ccbbe9cce9af38c32c5
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892186"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915711"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -25,7 +25,7 @@ ms.locfileid: "88892186"
 
 ## <a name="vault-support"></a>コンテナーのサポート
 
-Azure Backup では、Recovery Services コンテナーを使用して、バックアップを調整および管理しています。 また、コンテナーを使用してバックアップ データを格納しています。
+Azure Backup は Recovery Services コンテナーを使用して、各種のワークロード (Azure VM、Azure VM の SQL、Azure VM の SAP HANA、Azure ファイル共有、および Azure Backup エージェント、Azure Backup Server、および System Center DPM を使用したオンプレミスのワークロード) を調整および管理します。 また、Recovery Services コンテナーを使用して、これらのワークロードのバックアップ データを格納します。
 
 次の表では、Recovery Services コンテナーの機能について説明します。
 
@@ -39,6 +39,7 @@ Azure Backup では、Recovery Services コンテナーを使用して、バッ�
 **コンテナーの移動** | 異なるサブスクリプション間で、または同じサブスクリプション内のリソース グループ間で、[コンテナーを移動](./backup-azure-move-recovery-services-vault.md)できます。 ただし、リージョン間でのコンテナーの移動はサポートされていません。
 **コンテナー間のデータの移動** | コンテナー間でのバックアップ データの移動はサポートされていません。
 **コンテナー ストレージの種類の変更** | コンテナー ストレージのレプリケーションの種類 (geo 冗長ストレージまたはローカル冗長ストレージのいずれか) は、バックアップを格納する前に変更できます。 コンテナーでバックアップが開始された後は、レプリケーションの種類を変更できません。
+**ゾーン冗長ストレージ (ZRS)** | 英国南部 (UKS) リージョンと東南アジア (SEA) リージョンで利用できます。
 
 ## <a name="on-premises-backup-support"></a>オンプレミス バックアップのサポート
 
@@ -66,7 +67,7 @@ Azure VM をバックアップしたい場合に何がサポートされるか�
 
 **マシン** | **バックアップされる項目** | **場所** | **機能**
 --- | --- | --- | ---
-**VM 拡張機能を使用した Azure VM のバックアップ** | VM 全体 | コンテナーへのバックアップ。 | VM のバックアップを有効にするときにインストールされる拡張機能。<br/><br/> 1 日 1 回のバックアップ。<br/><br/> Windows VM の場合はアプリ対応バックアップ、Linux VM の場合はファイル整合性バックアップ。 Linux マシンでは、カスタム スクリプトを使用して、アプリ整合性を構成できます。<br/><br/> VM またはディスクの復元。<br/><br/> Azure VM は、オンプレミスの場所へはバックアップできません。
+**VM 拡張機能を使用した Azure VM のバックアップ** | VM 全体 | コンテナーへのバックアップ。 | VM のバックアップを有効にするときにインストールされる拡張機能。<br/><br/> 1 日 1 回のバックアップ。<br/><br/> Windows VM の場合はアプリ対応バックアップ、Linux VM の場合はファイル整合性バックアップ。 Linux マシンでは、カスタム スクリプトを使用して、アプリ整合性を構成できます。<br/><br/> VM またはディスクの復元。<br/><br/>[Active Directory ドメイン コントローラーのバックアップおよび復元](active-directory-backup-restore.md)がサポートされています。<br><br> Azure VM は、オンプレミスの場所へはバックアップできません。
 **MARS エージェントを使用する Azure VM のバックアップ** | ファイル、フォルダー、システム状態 | コンテナーへのバックアップ。 | 1 日に 3 回のバックアップ。<br/><br/> VM 全体ではなく特定のファイルまたはフォルダーをバックアップしたい場合は、MARS エージェントを VM 拡張機能と共に実行できます。
 **Azure VM (DPM あり)** | ファイル、フォルダー、ボリューム、システム状態、アプリ データ | DPM が実行されている Azure VM のローカル ストレージへのバックアップ。 DPM はその後、コンテナーにバックアップされます。 | アプリ対応のスナップショット。<br/><br/> バックアップと回復の完全な細分性。<br/><br/> VM (Hyper-V または VMware) で Linux がサポートされています。<br/><br/> Oracle はサポートされていません。
 **Azure VM (MABS あり)** | ファイル、フォルダー、ボリューム、システム状態、アプリ データ | MABS が実行されている Azure VM のローカル ストレージへのバックアップ。 MABS はその後、コンテナーにバックアップされます。 | アプリ対応のスナップショット。<br/><br/> バックアップと回復の完全な細分性。<br/><br/> VM (Hyper-V または VMware) で Linux がサポートされています。<br/><br/> Oracle はサポートされていません。
@@ -107,7 +108,7 @@ Azure Backup では、転送中のデータと保存データの暗号化をサ�
 
 - バックアップ データは、暗号化された形式で Recovery Services コンテナーに格納されます。
 - MARS エージェントを使用してオンプレミスのサーバーからデータをバックアップする場合、データは Azure Backup にアップロードする前にパスフレーズを使用して暗号化され、Azure Backup からダウンロードされた後に初めて暗号化が解除されます。
-- Azure VM をバックアップする場合は、仮想マシン*内*で暗号化を設定する必要があります。
+- Azure VM をバックアップする場合は、仮想マシン *内* で暗号化を設定する必要があります。
 - Azure Backup は Azure Disk Encryption をサポートしており、Windows 仮想マシンでは BitLocker が、Linux 仮想マシンでは **dm-crypt** が使用されます。
 - Azure Backup のバックエンドでは [Azure Storage Service Encryption](../storage/common/storage-service-encryption.md) が使用されており、これによって保存データが保護されます。
 
@@ -149,10 +150,10 @@ Azure Backup に、データの可用性と回復性の機能を強化するた�
 
 | バックアップの管理の種類 | サポートされています                                                    | サポートされているリージョン |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | はい。   暗号化された VM と 4 TB 未満のディスクがある VM でのサポート | すべての Azure パブリック リージョン。  |
-| MARS エージェント/オンプレミス | いいえ                                                           | 該当なし               |
-| SQL/SAP HANA          | いいえ                                                           | 該当なし               |
-| AFS                    | いいえ                                                           | 該当なし               |
+| Azure VM               | マネージド ディスクとアンマネージド ディスク両方の Azure VM でサポートされています。 クラシックVM に関してはサポートされていません。 | フランス中部、オーストラリア中部、南アフリカ北部、アラブ首長国連邦北部、スイス北部、ドイツ中西部、ノルウェー東部を除くすべての Azure パブリック リージョンで利用できます。 <br>これらのリージョンでの使用については、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) までお問い合わせください。 |
+| SQL/SAP HANA | プレビュー段階                                                      | フランス中部、オーストラリア中部、南アフリカ北部、アラブ首長国連邦北部、スイス北部、ドイツ中西部、ノルウェー東部を除くすべての Azure パブリック リージョンで利用できます。 <br>これらのリージョンでの使用については、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) までお問い合わせください。 |
+| MARS エージェント/オンプレミス  | いいえ                                                           | 該当なし               |
+| AFS (Azure ファイル共有)                 | いいえ                                                           | 該当なし               |
 
 ## <a name="next-steps"></a>次のステップ
 

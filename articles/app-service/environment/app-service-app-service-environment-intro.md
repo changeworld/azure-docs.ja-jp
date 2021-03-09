@@ -8,11 +8,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 878cef39ade0487c03dba83c9e3631fe3c72088f
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962385"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008628"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>App Service Environment v1 の概要
 
@@ -60,7 +60,7 @@ App Service 環境でサポートされる使用可能なコンピューティ�
 
 ## <a name="virtual-network-support"></a>Virtual Network のサポート
 
-App Service 環境は、Azure Resource Manager 仮想ネットワーク、**または**クラシック デプロイ モデル仮想ネットワークの**どちらにでも**作成できます ([仮想ネットワークについて詳しくはこちら][MoreInfoOnVirtualNetworks])。  App Service 環境は常に仮想ネットワーク (もっと正確に言えば、仮想ネットワークのサブネット内) に存在するため、仮想ネットワークのセキュリティ機能を使用して、受信と送信の両方のネットワーク通信を制御できます。  
+App Service 環境は、Azure Resource Manager 仮想ネットワーク、**または** クラシック デプロイ モデル仮想ネットワークの **どちらにでも** 作成できます ([仮想ネットワークについて詳しくはこちら][MoreInfoOnVirtualNetworks])。  App Service 環境は常に仮想ネットワーク (もっと正確に言えば、仮想ネットワークのサブネット内) に存在するため、仮想ネットワークのセキュリティ機能を使用して、受信と送信の両方のネットワーク通信を制御できます。  
 
 App Service Environment は、パブリック IP アドレスでインターネットに接続することも、Azure 内部ロード バランサー (ILB) アドレスだけで内部接続することもできます。
 

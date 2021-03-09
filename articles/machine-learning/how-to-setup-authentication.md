@@ -1,83 +1,60 @@
 ---
 title: 認証の設定
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning で、さまざまなリソースとワークフローの認証を設定して構成する方法について説明します。 サービス内で認証を構成して使用するには、開発またはテストの目的で単純な UI ベースの認証を使用する方法から、完全な Azure Active Directory サービス プリンシパル認証を使用する方法まで、幅広い複数の方法があります。
+description: Azure Machine Learning で、さまざまなリソースとワークフローの認証を設定して構成する方法について説明します。
 services: machine-learning
-author: larryfr
-ms.author: larryfr
+author: cjgronlund
+ms.author: cgronlun
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 06/17/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
-ms.custom: how-to, has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 9d73492110703e64df5f948ad8a2a1ed8d2c63b9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
+ms.openlocfilehash: 27c8a0b80068124613af15565f387f15ac6b8e57
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904540"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027256"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning のリソースとワークフローの認証を設定する
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning ワークスペース、および Web サービスとしてデプロイされたモデルに対して認証する方法について説明します。
 
-通常、Azure Machine Learning で使用できる認証には、次の 2 種類があります。
+お使いの Azure Machine Learning のワークスペースに認証を設定する方法について説明します。 お使いの Azure Machine Learning ワークスペースには、多くの場合、__Azure Active Directory__ (Azure AD) を使用して認証されます。 ワークスペースに接続するときに使用できる認証ワークフローには、一般に次の 3 つがあります。
 
-* __対話型__:Azure Active Directory でアカウントを使用して、直接認証するか、認証に使用されるトークンを取得します。 対話型認証は、実験および反復開発中に使用されます。 または、ユーザーごとにリソース (Web サービスなど) へのアクセスを制御する場合に使用されます。
-* __サービス プリンシパル__: Azure Active Directory でサービス プリンシパル アカウントを作成し、それを使用して認証を行うか、トークンを取得します。 サービス プリンシパルは、サービスに対する認証を自動化して、ユーザーによる操作を不要にする必要がある場合に使用します。 たとえば、トレーニング コードが変更されるたびにモデルをトレーニングおよびテストする継続的インテグレーションとデプロイ スクリプトです。 サービスのエンド ユーザーに認証を要求しない場合は、サービス プリンシパルを使用して、Web サービスに対して認証を行うためのトークンを取得することもできます。 また、エンド ユーザー認証が Azure Active Directory を使用して直接実行されない場合も同様です。
+* __対話型__:Azure Active Directory でアカウントを使用して、直接認証するか、認証に使用されるトークンを取得します。 対話型認証は、"_実験および反復開発_" 時に使用します。 対話型認証では、(Web サービスなどの) リソースへのアクセスを、ユーザーごとに制御できます。
 
-使用される認証の種類に関係なく、ロールベースのアクセス制御 (RBAC) を使用して、リソースに対して許可されるアクセス レベルの範囲を設定します。 たとえば、デプロイされたモデルのアクセス トークンを取得するために使用されるアカウントには、ワークスペースへの読み取りアクセス権のみが必要となります。 RBAC の詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](how-to-assign-roles.md)」を参照してください。
+* __サービス プリンシパル__: Azure Active Directory でサービス プリンシパル アカウントを作成し、それを使用して認証を行うか、トークンを取得します。 サービス プリンシパルは、ユーザーが操作をせず、サービスに "_自動認証されるプロセス_" が必要な場合に使用します。 たとえば、トレーニング コードが変更されるたびにモデルをトレーニングおよびテストする継続的インテグレーションとデプロイ スクリプトです。
+
+* __マネージド ID__:Azure Machine Learning SDK を "_Azure 仮想マシンで_" 使用する場合は Azure のマネージド ID を使用できます。 このワークフローでは、Python コードに資格情報を保存したり、ユーザーに認証を求めずに、マネージド ID を使用して VM をワークスペースに接続したりすることが許可されます。 "_モデルのトレーニング時_" に、Azure Machine Learning コンピューティング クラスターをマネージド ID を使用してワークスペースにアクセスするように構成することもできます。
+
+> [!IMPORTANT]
+> Azure ロールベースのアクセス制御 (Azure RBAC) は、使用する認証のワークフローに関係なく、リソースに対して許可するアクセス レベル (認証) の範囲の設定に使用します。 たとえば、管理者または自動化プロセスには、コンピューティング インスタンスを作成するアクセス権は持っていても、それを使用できない場合があり、それを使用できるデータ サイエンティストが、それを削除または作成できない場合があります。 詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](how-to-assign-roles.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)を作成します。
-* [開発環境を構成](how-to-configure-environment.md)して Azure Machine Learning SDK をインストールするか、SDK が既にインストールされている [Azure Machine Learning Notebook VM](concept-azure-machine-learning-architecture.md#compute-instance) を使用します。
+* [開発環境を構成](how-to-configure-environment.md)して Azure Machine Learning SDK をインストールするか、SDK が既にインストールされている [Azure Machine Learning コンピューティング インスタンス](concept-azure-machine-learning-architecture.md#compute-instance)を使用します。
 
-## <a name="interactive-authentication"></a>対話型認証
+## <a name="azure-active-directory"></a>Azure Active Directory
 
-> [!IMPORTANT]
-> 対話型認証では、ブラウザーが使用され、Cookie (サードパーティの Cookie を含む) が必要です。 Cookie を無効にしている場合は、"サインインできませんでした" などのエラーを受け取る場合があります。 このエラーは、[Azure Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-howitworks) を有効にしている場合にも発生する場合があります。
+お使いのワークスペースのすべての認証ワークフローは、Azure Active Directory に依存しています。 ユーザーに個人アカウントを使用して認証してもらいたい場合、自分の Azure AD にアカウントが必要です。 サービス プリンシパルを使用する場合は、それらが自分の Azure AD にある必要があります。 マネージド ID は Azure AD の機能でもあります。 
 
-ドキュメントとサンプルのほとんどの例では、対話型認証が使用されています。 たとえば、SDK を使用する場合は、UI ベースの認証フローを使用して自動的に入力を求める関数呼び出しが 2 つあります。
+Azure AD の詳細については、「[Azure Active Directory 認証とは](..//active-directory/authentication/overview-authentication.md)」を参照してください。
 
-* `from_config()` 関数を呼び出すと、プロンプトが表示されます。
+Azure AD アカウントを作成したら、ワークスペースにアクセスする方法および Azure Machine Learning でのその他の操作に関する情報を、「[Azure Machine Learning ワークスペースへのアクセスの管理](how-to-assign-roles.md)」でご確認ください。
 
-    ```python
-    from azureml.core import Workspace
-    ws = Workspace.from_config()
-    ```
+## <a name="configure-a-service-principal"></a>サービス プリンシパルの構成
 
-    `from_config()` 関数は、ワークスペースの接続情報を含む JSON ファイルを検索します。
-
-* `Workspace` コンストラクターを使用して、サブスクリプション、リソース グループ、およびワークスペースの情報を指定する場合も、対話型認証が求められます。
-
-    ```python
-    ws = Workspace(subscription_id="your-sub-id",
-                  resource_group="your-resource-group-id",
-                  workspace_name="your-workspace-name"
-                  )
-    ```
-
-> [!TIP]
-> 複数のテナントにアクセスできる場合は、クラスをインポートし、ターゲットとするテナントを明示的に定義する必要があります。 `InteractiveLoginAuthentication` のコンストラクターを呼び出すと、上記の呼び出しと同様にログインするよう求められます。
->
-> ```python
-> from azureml.core.authentication import InteractiveLoginAuthentication
-> interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
-> ```
-
-## <a name="service-principal-authentication"></a>サービス プリンシパルの認証
-
-サービス プリンシパル (SP) の認証を使用するには、最初に SP を作成して、ワークスペースへのアクセス権を付与する必要があります。 既に説明したように、Azure のロールベースのアクセス制御 (Azure RBAC) を使用してアクセスを制御するため、SP に付与するアクセス権も決定する必要があります。
+サービス プリンシパル (SP) を使用するには、最初に SP を作成し、それにお使いのワークスペースに対するアクセス許可を付与する必要があります。 既に説明したように、Azure のロールベースのアクセス制御 (Azure RBAC) を使用してアクセスを制御するため、SP に付与するアクセス権も決定する必要があります。
 
 > [!IMPORTANT]
 > サービス プリンシパルを使用する場合は、使用する __タスクに必要な最小限のアクセス権__ を付与します。 たとえば、サービス プリンシパルが Web デプロイのアクセス トークンを読み取るためにのみ使用される場合は、所有者または共同作成者のアクセス権は付与しません。
 >
 > 最小限のアクセス権を付与する理由は、サービス プリンシパルがパスワードを使用して認証を行うためであり、パスワードがオートメーション スクリプトの一部として格納される可能性があるからです。 パスワードが漏洩した場合、特定のタスクに必要な最小限のアクセス権のみを保持しているため、SP が悪意を持って使用される可能性が最小限に抑えられます。
 
-SP を作成し、ワークスペースへのアクセス権を付与する最も簡単な方法は、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)を使用することです。 サービス プリンシパルを作成して、ワークスペースへのアクセス権を付与するには、次の手順に従います。
+SP を作成し、ワークスペースへのアクセス権を付与する最も簡単な方法は、[Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)を使用することです。 サービス プリンシパルを作成して、ワークスペースへのアクセス権を付与するには、次の手順に従います。
 
 > [!NOTE]
 > これらのすべての手順を実行するには、サブスクリプションの管理者である必要があります。
@@ -90,9 +67,9 @@ SP を作成し、ワークスペースへのアクセス権を付与する最�
 
     CLI で既定のブラウザーを開くことができる場合、開いたブラウザにサインイン ページが読み込まれます。 それ以外の場合は、ブラウザーを開き、コマンド ラインの指示に従う必要があります。 この手順では、[https://aka.ms/devicelogin](https://aka.ms/devicelogin) にアクセスして認証コードを入力する必要があります。
 
-    [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
+    Azure のサブスクリプションが複数ある場合、`az account set -s <subscription name or ID>` コマンドを使用してサブスクリプションを設定できます。 詳しくは、「[Use multiple Azure subscriptions (複数の Azure サブスクリプションを使用する)](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)」をご覧ください。
 
-    その他の認証方法については、「[Azure CLI を使用してサインインする](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)」を参照してください。
+    その他の認証方法については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest)」を参照してください。
 
 1. Azure Machine Learning 拡張機能をインストールします。
 
@@ -144,10 +121,10 @@ SP を作成し、ワークスペースへのアクセス権を付与する最�
     }
     ```
 
-1. SP が Azure Machine Learning ワークスペースにアクセスできるようにします。 `-w` と `-g` のパラメーターに、それぞれワークスペース名とリソース グループ名が必要になります。 `--user` パラメーターには、前の手順の `objectId` 値を使用します。 `--role` パラメーターを使用すると、サービス プリンシパルのアクセス ロールを設定できます。 次の例では、SP に **所有者**ロールが割り当てられています。 
+1. SP が Azure Machine Learning ワークスペースにアクセスできるようにします。 `-w` と `-g` のパラメーターに、それぞれワークスペース名とリソース グループ名が必要になります。 `--user` パラメーターには、前の手順の `objectId` 値を使用します。 `--role` パラメーターを使用すると、サービス プリンシパルのアクセス ロールを設定できます。 次の例では、SP に **所有者** ロールが割り当てられています。 
 
     > [!IMPORTANT]
-    > 所有者アクセスを使用すると、サービス プリンシパルは、ワークスペースでほぼすべての操作を実行できます。 このドキュメントでは、アクセス権を付与する方法を説明するために使用されています。運用環境では、目的のロールを実行するために必要な最小限のアクセス権をサービス プリンシパルに付与することをお勧めします。 詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](how-to-assign-roles.md)」を参照してください。
+    > 所有者アクセスを使用すると、サービス プリンシパルは、ワークスペースでほぼすべての操作を実行できます。 このドキュメントでは、アクセス権を付与する方法を説明するために使用されています。運用環境では、目的のロールを実行するために必要な最小限のアクセス権をサービス プリンシパルに付与することをお勧めします。 自分のシナリオに必要なアクセス権を持つカスタム ロールの作成に関する情報については、「[Azure Machine Learning ワークスペースへのアクセスの管理](how-to-assign-roles.md)」を参照してください。
 
     ```azurecli-interactive
     az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
@@ -155,9 +132,78 @@ SP を作成し、ワークスペースへのアクセス権を付与する最�
 
     この呼び出しでは、成功しても出力は生成されません。
 
-### <a name="use-a-service-principal-from-the-sdk"></a>SDK からのサービス プリンシパルの使用
+## <a name="configure-a-managed-identity"></a>マネージド ID の構成
 
-サービス プリンシパルを使用して SDK からワークスペースに対して認証を行うには、`ServicePrincipalAuthentication` クラス コンストラクターを使用します。 サービス プロバイダーの作成時に取得した値をパラメーターとして使用します。 `tenant_id` パラメーターは上記の `tenantId` にマップされ、`service_principal_id` は `clientId` にマップされ、`service_principal_password` は `clientSecret` にマップされます。
+> [!IMPORTANT]
+> マネージド ID は、Azure Machine Learning SDK を Azure Virtual Machine から、または Azure Machine Learning コンピューティング クラスターを使用して使用する場合のみサポートされています。 コンピューティング クラスターでのマネージド ID の使用は、現在プレビュー段階です。
+
+### <a name="managed-identity-with-a-vm"></a>VM でのマネージド ID
+
+1. [VM 上の Azure リソースに対して、システムで割り当てられたマネージド ID を有効にしてください](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)。
+
+1. [Azure portal](https://portal.azure.com) からお使いのワークスペースを選択し、 __[アクセス制御 (IAM)]__ 、 __[ロールの割り当ての追加]__ を順に選択し、 __[アクセスの割り当て先]__ ドロップダウンから __[仮想マシン]__ を選択します。 最後にお使いの VM の ID を選択します。
+
+1. この ID に割り当てるロールを選択します。 たとえば、共同作成者やカスタム ロールです。 詳細については、[リソースへのアクセスの制御](how-to-assign-roles.md)に関するページを参照してください。
+
+### <a name="managed-identity-with-compute-cluster"></a>コンピューティング クラスターでのマネージド ID
+
+詳細については、[コンピューティング クラスターでのマネージド ID の設定](how-to-create-attach-compute-cluster.md#managed-identity)に関する説明を参照してください。
+
+<a id="interactive-authentication"></a>
+
+## <a name="use-interactive-authentication"></a>対話型認証の使用
+
+> [!IMPORTANT]
+> 対話型認証では、ブラウザーが使用され、Cookie (サードパーティの Cookie を含む) が必要です。 Cookie を無効にしている場合は、"サインインできませんでした" などのエラーを受け取る場合があります。 このエラーは、[Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) を有効にしている場合にも発生する場合があります。
+
+ドキュメントとサンプルのほとんどの例では、対話型認証が使用されています。 たとえば、SDK を使用する場合は、UI ベースの認証フローを使用して自動的に入力を求める関数呼び出しが 2 つあります。
+
+* `from_config()` 関数を呼び出すと、プロンプトが表示されます。
+
+    ```python
+    from azureml.core import Workspace
+    ws = Workspace.from_config()
+    ```
+
+    `from_config()` 関数は、ワークスペースの接続情報を含む JSON ファイルを検索します。
+
+* `Workspace` コンストラクターを使用して、サブスクリプション、リソース グループ、およびワークスペースの情報を指定する場合も、対話型認証が求められます。
+
+    ```python
+    ws = Workspace(subscription_id="your-sub-id",
+                  resource_group="your-resource-group-id",
+                  workspace_name="your-workspace-name"
+                  )
+    ```
+
+> [!TIP]
+> 複数のテナントにアクセスできる場合は、クラスをインポートし、ターゲットとするテナントを明示的に定義する必要があります。 `InteractiveLoginAuthentication` のコンストラクターを呼び出すと、上記の呼び出しと同様にログインするよう求められます。
+>
+> ```python
+> from azureml.core.authentication import InteractiveLoginAuthentication
+> interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
+> ```
+
+Azure CLI を使用する場合、CLI セッションの認証には `az login` コマンドを使用します。 詳細については、[Azure CLI の概要](/cli/azure/get-started-with-azure-cli)に関するページをご覧ください。
+
+> [!TIP]
+> 以前 Azure CLI を使用して対話的に認証した環境から SDK を使用している場合は、CLI にキャッシュされた資格情報を使用して `AzureCliAuthentication` クラスで、ワークスペースに認証できます。
+>
+> ```python
+> from azureml.core.authentication import AzureCliAuthentication
+> cli_auth = AzureCliAuthentication()
+> ws = Workspace(subscription_id="your-sub-id",
+>                resource_group="your-resource-group-id",
+>                workspace_name="your-workspace-name",
+>                auth=cli_auth
+>                )
+> ```
+
+<a id="service-principal-authentication"></a>
+
+## <a name="use-service-principal-authentication"></a>サービス プリンシパル認証を使用する
+
+サービス プリンシパルを使用して SDK からお使いのワークスペースに認証するには、`ServicePrincipalAuthentication` クラス コンストラクターを使用します。 サービス プロバイダーの作成時に取得した値をパラメーターとして使用します。 `tenant_id` パラメーターは上記の `tenantId` にマップされ、`service_principal_id` は `clientId` にマップされ、`service_principal_password` は `clientSecret` にマップされます。
 
 ```python
 from azureml.core.authentication import ServicePrincipalAuthentication
@@ -190,11 +236,11 @@ ws.get_details()
 
 ### <a name="use-a-service-principal-from-the-azure-cli"></a>Azure CLI からのサービス プリンシパルの使用
 
-サービス プリンシパルは Azure CLI コマンドに使用できます。 詳細については、「[サービス プリンシパルを使用したサインイン](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#sign-in-using-a-service-principal)」を参照してください。
+サービス プリンシパルは Azure CLI コマンドに使用できます。 詳細については、「[サービス プリンシパルを使用したサインイン](/cli/azure/create-an-azure-service-principal-azure-cli?preserve-view=true&view=azure-cli-latest#sign-in-using-a-service-principal)」を参照してください。
 
 ### <a name="use-a-service-principal-with-the-rest-api-preview"></a>REST API でのサービス プリンシパルの使用 (プレビュー)
 
-サービス プリンシパルを使用して、Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/) (プレビュー) に対する認証を行うこともできます。 Azure Active Directory の[クライアント資格情報付与フロー](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)を使用します。これにより、自動化されたワークフローでヘッドレス認証に対するサービス間の呼び出しが許可されます。 これらの例は、Python と Node.js の両方で [ADAL ライブラリ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)と共に実装されていますが、OpenID Connect 1.0 をサポートする任意のオープンソース ライブラリを使用することもできます。
+サービス プリンシパルを使用して、Azure Machine Learning [REST API](/rest/api/azureml/) (プレビュー) に対する認証を行うこともできます。 Azure Active Directory の[クライアント資格情報付与フロー](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)を使用します。これにより、自動化されたワークフローでヘッドレス認証に対するサービス間の呼び出しが許可されます。 これらの例は、Python と Node.js の両方で [ADAL ライブラリ](../active-directory/azuread-dev/active-directory-authentication-libraries.md)と共に実装されていますが、OpenID Connect 1.0 をサポートする任意のオープンソース ライブラリを使用することもできます。
 
 > [!NOTE]
 > MSAL js は ADAL より新しいライブラリですが、MSAL.js によってクライアント資格情報を使用したサービス間認証を行うことはできません。これは、主に、特定のユーザーに関連付けられた対話型/UI 認証を目的とするクライアント側ライブラリであるためです。 次に示すように、ADAL を使用して、REST API で自動化されたワークフローを構築することをお勧めします。
@@ -281,108 +327,80 @@ print(token_response)
 
 `token_response["accessToken"]` を使用して、認証トークンをフェッチします。 トークンを使用して API を呼び出す方法の例については、[REST API のドキュメント](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API)を参照してください。
 
-## <a name="web-service-authentication"></a>Web サービス認証
+#### <a name="java"></a>Java
 
-Azure Machine Learning によって作成されたモデル デプロイには、次の 2 つの認証方法があります。
+Java では、標準の REST 呼び出しを使用してベアラー トークンを取得します。
 
-* **キーベース**:静的キーを使用して、Web サービスに対する認証が行われます。
-* **トークンベース**:ワークスペースから一時トークンを取得して、Web サービスに対する認証に使用する必要があります。 このトークンは、一定の時間が経過すると期限切れになり、Web サービスの操作を続行するには更新する必要があります。
+```java
+String tenantId = "your-tenant-id";
+String clientId = "your-client-id";
+String clientSecret = "your-client-secret";
+String resourceManagerUrl = "https://management.azure.com";
 
-    > [!NOTE]
-    > トークンベースの認証は、Azure Kubernetes Service にデプロイする場合にのみ使用できます。
+HttpRequest tokenAuthenticationRequest = tokenAuthenticationRequest(tenantId, clientId, clientSecret, resourceManagerUrl);
 
-### <a name="key-based-web-service-authentication"></a>キーベースの Web サービスの認証
+HttpClient client = HttpClient.newBuilder().build();
+Gson gson = new Gson();
+HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+if (response.statusCode == 200)
+{
+     body = gson.fromJson(body, AuthenticationBody.class);
 
-Azure Kubernetes Service (AKS) にデプロイされた Web サービスでは、キーベースの認証が既定で*有効*になっています。 Azure Container Instances (ACI) のデプロイ サービスでは、キーベースの認証が既定で*無効*になっていますが、ACI Web サービスの作成時に `auth_enabled=True` を設定して有効にすることができます。 キーベースの認証が有効になっている ACI デプロイ構成を作成するコードの例を次に示します。
+    // ... etc ... 
+}
+// ... etc ...
 
-```python
-from azureml.core.webservice import AciWebservice
+static HttpRequest tokenAuthenticationRequest(String tenantId, String clientId, String clientSecret, String resourceManagerUrl){
+    String authUrl = String.format("https://login.microsoftonline.com/%s/oauth2/token", tenantId);
+    String clientIdParam = String.format("client_id=%s", clientId);
+    String resourceParam = String.format("resource=%s", resourceManagerUrl);
+    String clientSecretParam = String.format("client_secret=%s", clientSecret);
 
-aci_config = AciWebservice.deploy_configuration(cpu_cores = 1,
-                                                memory_gb = 1,
-                                                auth_enabled=True)
+    String bodyString = String.format("grant_type=client_credentials&%s&%s&%s", clientIdParam, resourceParam, clientSecretParam);
+
+    HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create(authUrl))
+            .POST(HttpRequest.BodyPublishers.ofString(bodyString))
+            .build();
+    return request;
+}
+
+class AuthenticationBody {
+    String access_token;
+    String token_type;
+    int expires_in;
+    String scope;
+    String refresh_token;
+    String id_token;
+    
+    AuthenticationBody() {}
+}
 ```
 
-次に、`Model` クラスを使用して、デプロイでカスタム ACI 構成を使用できます。
+上記のコードでは、 例外と `200 OK` 以外の状態コードを処理する必要がありますが、パターンが示されています。 
+
+- クライアント ID とシークレットを使用して、お使いのプログラムがアクセス可能であることを確認する
+- 自分のテナント ID を使用して、`login.microsoftonline.com` の参照先を指定する
+- 認証トークンのソースとして Azure Resource Manager を使用する
+
+## <a name="use-managed-identity-authentication"></a>マネージド ID 認証を使用する
+
+マネージド ID を使用して構成されている VM またはコンピューティング クラスターからワークスペースに認証するには、`MsiAuthentication` クラスを使用します。 次の例は、このクラスを使用してワークスペースに対して認証する方法を示しています。
 
 ```python
-from azureml.core.model import Model, InferenceConfig
+from azureml.core.authentication import MsiAuthentication
 
+msi_auth = MsiAuthentication()
 
-inference_config = InferenceConfig(entry_script="score.py",
-                                   environment=myenv)
-aci_service = Model.deploy(workspace=ws,
-                       name="aci_service_sample",
-                       models=[model],
-                       inference_config=inference_config,
-                       deployment_config=aci_config)
-aci_service.wait_for_deployment(True)
+ws = Workspace(subscription_id="your-sub-id",
+                resource_group="your-resource-group-id",
+                workspace_name="your-workspace-name",
+                auth=msi_auth
+                )
 ```
-
-認証キーをフェッチするには、`aci_service.get_keys()` を使用します。 キーを再生成するには、`regen_key()` 関数を使用して、**Primary** または **Secondary** のいずれかを渡します。
-
-```python
-aci_service.regen_key("Primary")
-# or
-aci_service.regen_key("Secondary")
-```
-
-配置済みモデルに対する認証の詳細については、[Web サービスとしてデプロイされたモデルのクライアントの作成](how-to-consume-web-service.md)に関するページを参照してください。
-
-### <a name="token-based-web-service-authentication"></a>トークンベースの Web サービス認証
-
-Web サービスのトークン認証を有効にする場合、ユーザーは、Web サービスにアクセスするために Azure Machine Learning JSON Web トークンを提示する必要があります。 トークンは、指定された期間後に期限切れとなり、呼び出しを続行するには更新する必要があります。
-
-* Azure Kubernetes Service にデプロイする場合、トークン認証は**既定で無効**になります。
-* Azure Container Instances にデプロイする場合、トークン認証は**サポートされません**。
-* トークン認証は、**キーベースの認証と同時に使用することはできません**。
-
-トークン認証を制御するには、デプロイの作成時や更新時に `token_auth_enabled` パラメーターを使用します。
-
-```python
-from azureml.core.webservice import AksWebservice
-from azureml.core.model import Model, InferenceConfig
-
-# Create the config
-aks_config = AksWebservice.deploy_configuration()
-
-#  Enable token auth and disable (key) auth on the webservice
-aks_config = AksWebservice.deploy_configuration(token_auth_enabled=True, auth_enabled=False)
-
-aks_service_name ='aks-service-1'
-
-# deploy the model
-aks_service = Model.deploy(workspace=ws,
-                           name=aks_service_name,
-                           models=[model],
-                           inference_config=inference_config,
-                           deployment_config=aks_config,
-                           deployment_target=aks_target)
-
-aks_service.wait_for_deployment(show_output = True)
-```
-
-トークン認証が有効になっている場合は、`get_token` メソッドを使用して、JSON Web トークン (JWT) とそのトークンの有効期限を取得できます。
-
-> [!TIP]
-> サービス プリンシパルを使用してトークンを取得し、トークンの取得に必要な最小限のアクセス権を付与する場合は、ワークスペースで**閲覧者**ロールに割り当てます。
-
-```python
-token, refresh_by = aks_service.get_token()
-print(token)
-```
-
-> [!IMPORTANT]
-> トークンの `refresh_by` 時刻の後に新しいトークンを要求する必要があります。 Python SDK の外部でトークンを更新する必要がある場合は、前に説明したように、サービス プリンシパル認証で REST API を使用して定期的に `service.get_token()` 呼び出しを行う方法があります。
->
-> Azure Machine Learning ワークスペースは、ご利用の Azure Kubernetes Service クラスターと同じリージョンに作成することを強くお勧めします。
->
-> トークンを使用して認証するために、Web サービスは、Azure Machine Learning ワークスペースの作成先のリージョンに対して呼び出しを行います。 ワークスペースのリージョンが利用不可になった場合、ワークスペースとは異なるリージョンにクラスターがあったとしても、Web サービスのトークンがフェッチできなくなります。 その結果、ワークスペースのリージョンが再び使用可能になるまで Azure AD Authentication は使用できなくなります。
->
-> また、クラスターのリージョンとワークスペースのリージョンとの間の距離が長くなるほど、トークンのフェッチにかかる時間も長くなります。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [トレーニングでシークレットを使用する方法](how-to-use-secrets-in-runs.md)。
-* [画像分類モデルをトレーニングし、デプロイする](tutorial-train-models-with-aml.md)。
+* [Web サービスとしてデプロイされたモデルの認証を構成する方法](how-to-authenticate-web-service.md).
 * [Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する](how-to-consume-web-service.md)。

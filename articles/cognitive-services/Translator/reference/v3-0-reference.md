@@ -3,19 +3,19 @@ title: Translator V3.0 リファレンス
 titleSuffix: Azure Cognitive Services
 description: Translator V3.0 のリファレンス ドキュメント。 Translator のバージョン 3 には、最新の JSON ベースの Web API が用意されています。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
-ms.author: swmachan
-ms.openlocfilehash: 6b211dd8ca735ea9ee4a5209aa6030398cca472e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.author: lajanuar
+ms.openlocfilehash: 021a65ba69b9d1909df4a86d92b660c0c1033a3b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121019"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895460"
 ---
 # <a name="translator-v30"></a>Translator v3.0
 
@@ -39,9 +39,9 @@ Microsoft Translator のサービスは、複数のデータセンター拠点�
 
 Microsoft Translator への要求は、ほとんどの場合、その要求の送信元に最も近いデータセンターによって処理されます。 データセンターに障害が発生している場合は、その Azure 地域以外に要求がルーティングされます。
 
-要求を特定の Azure 地域に強制的に処理させるには、API 要求内のグローバル エンドポイントを目的のリージョンのエンドポイントに変更します。
+要求を特定の Azure 地域に強制的に処理させるには、API 要求内のグローバル エンドポイントを目的の地域のエンドポイントに変更します。
 
-|説明|Azure 地域|ベース URL|
+|説明|Azure 地域|ベース URL (地域のエンドポイント)|
 |:--|:--|:--|
 |Azure|グローバル (リージョンなし)|   api.cognitive.microsofttranslator.com|
 |Azure|米国|   api-nam.cognitive.microsofttranslator.com|
@@ -147,7 +147,7 @@ Authorization: Bearer <Base64-access_token>
 
 ## <a name="virtual-network-support"></a>仮想ネットワークのサポート
 
-翻訳サービスは、Azure パブリック クラウドのすべてのリージョンの Virtual Network (VNET) 機能で使用できるようになりました。 Virtual Network を有効にするには、「[Azure Cognitive Services 仮想ネットワークを構成する](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)」を参照してください。 
+翻訳サービスは、Azure パブリック クラウドのすべてのリージョンの Virtual Network (VNET) 機能で使用できるようになりました。 Virtual Network を有効にするには、「[Azure Cognitive Services 仮想ネットワークを構成する](../../cognitive-services-virtual-networks.md?tabs=portal)」を参照してください。 
 
 この機能を有効にした後、カスタム エンドポイントを使用して Translator を呼び出す必要があります。 グローバル トランスレーター エンドポイント ("api.cognitive.microsofttranslator.com") は使用できず、アクセス トークンで認証することはできません。
 
@@ -230,7 +230,7 @@ curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translato
 | 503000| サービスが一時的に利用できません。 もう一度試してください。 エラーが解決しない場合は、エラーの発生日時と応答ヘッダーの要求識別子 X-RequestID、要求ヘッダーのクライアント識別子 X-ClientTraceID を添えてその旨をご報告ください。|
 
 ## <a name="metrics"></a>メトリック 
-メトリックを使用すると、次のスクリーンショットに示すように、Azure portal の [メトリック] セクションで、トランスレーターの使用状況と可用性の情報を表示できます。 詳細については、[データとプラットフォームのメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)に関するページを参照してください。
+メトリックを使用すると、次のスクリーンショットに示すように、Azure portal の [メトリック] セクションで、トランスレーターの使用状況と可用性の情報を表示できます。 詳細については、[データとプラットフォームのメトリック](../../../azure-monitor/platform/data-platform-metrics.md)に関するページを参照してください。
 
 ![トランスレーター メトリック](../media/translatormetrics.png)
 

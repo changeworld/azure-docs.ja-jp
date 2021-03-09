@@ -1,7 +1,7 @@
 ---
-title: Azure Functions アプリを API として API Management にインポートする
+title: Azure 関数アプリを API として API Management にインポートする
 titleSuffix: Azure API Management
-description: このチュートリアルでは、Azure Function App を API として Azure API Management にインポートする方法について説明します。
+description: この記事では、Azure Function App を API として Azure API Management にインポートする方法について説明します。
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -10,15 +10,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: c6ec2be6daee931a4066ff5ce4f64fc949d497ac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f66395b1e0f45f1e80cd0ac93bf8c9ae8674a0f2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243428"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732964"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure API Management で Azure Function App を API としてインポートする
 
@@ -38,7 +38,7 @@ Azure API Management は、Azure Function App の新しい API としてのイ�
 ## <a name="prerequisites"></a>前提条件
 
 * [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
-* サブスクリプションに Azure Functions アプリがあることを確認します。 詳細については、[Azure Function App の作成](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)に関するページを参照してください。 Azure Function App には、HTTP トリガーと *Anonymous* または *Function* に設定された承認レベルの設定を備えた関数が含まれている必要があります。
+* サブスクリプションに Azure Functions アプリがあることを確認します。 詳細については、[Azure Function App の作成](../azure-functions/functions-get-started.md)に関するページを参照してください。 Azure Function App には、HTTP トリガーと *Anonymous* または *Function* に設定された承認レベルの設定を備えた関数が含まれている必要があります。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -50,28 +50,28 @@ Azure API Management は、Azure Function App の新しい API としてのイ�
 
 2. **[Add a new API]\(新しい API の追加\)** の一覧で **[Functions App]\(Function App\)** を選択します。
 
-    ![Function App から追加する](./media/import-function-app-as-api/add-01.png)
+    ![[Function App] タイルを示すスクリーンショット。](./media/import-function-app-as-api/add-01.png)
 
 3. **[参照する]** をクリックして、インポートする Function を選択します。
 
-    ![Function App から追加する](./media/import-function-app-as-api/add-02.png)
+    ![[参照する] ボタンが強調表示されているスクリーンショット。](./media/import-function-app-as-api/add-02.png)
 
 4. **[Functions App]\(Function App\)** セクションをクリック、使用可能な Function App の一覧から選択します。
 
-    ![Function App から追加する](./media/import-function-app-as-api/add-03.png)
+    ![[Function App] セクションが強調表示されているスクリーンショット。](./media/import-function-app-as-api/add-03.png)
 
 5. 関数のインポート元となる Function App を検索してクリックし、 **[選択]** をクリックします。
 
-    ![Function App から追加する](./media/import-function-app-as-api/add-04.png)
+    ![関数のインポート元となる Function App と [選択] ボタンが強調表示されているスクリーンショット。](./media/import-function-app-as-api/add-04.png)
 
 6. インポートする Function を選択して、 **[選択]** をクリックします。
 
-    ![Function App から追加する](./media/import-function-app-as-api/add-05.png)
+    ![インポートする Function と [選択] ボタンが強調表示されているスクリーンショット。](./media/import-function-app-as-api/add-05.png)
 
     > [!NOTE]
     > HTTP トリガーに基づかない Function のみをインポートして、承認レベル設定を *Anonymous* または *Function* に設定できます。
 
-7. **[完全]** ビューに切り替え、 **[製品]** を新しい API に割り当てます。 必要に応じて、作成時に他のフィールドを指定することも、後で **[設定]** タブに移動して構成することもできます。設定については、「[最初の API のインポートと発行](import-and-publish.md#-import-and-publish-a-backend-api)」のチュートリアルで説明されています。
+7. **[完全]** ビューに切り替え、 **[製品]** を新しい API に割り当てます。 必要に応じて、作成時に他のフィールドを指定することも、後で **[設定]** タブに移動して構成することもできます。設定については、「[最初の API のインポートと発行](import-and-publish.md#import-and-publish-a-backend-api)」のチュートリアルで説明されています。
 8. **Create** をクリックしてください。
 
 ## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a> Azure Function App を既存の API に追加する
@@ -82,27 +82,27 @@ Azure API Management は、Azure Function App の新しい API としてのイ�
 
 2. Azure Function App のインポート先となる API を選択します。 **[...]** をクリックして、コンテキスト メニューから **[インポート]** を選択します。
 
-    ![Function App から追加する](./media/import-function-app-as-api/append-01.png)
+    ![[インポート] メニュー オプションが強調表示されているスクリーンショット。](./media/import-function-app-as-api/append-01.png)
 
 3. **[Function App]** タイルをクリックします。
 
-    ![Function App から追加する](./media/import-function-app-as-api/append-02.png)
+    ![[Function App] タイルが強調表示されているスクリーンショット。](./media/import-function-app-as-api/append-02.png)
 
 4. ポップアップ ウィンドウで、 **[参照]** をクリックします。
 
-    ![Function App から追加する](./media/import-function-app-as-api/append-03.png)
+    ![[参照] ボタンを示すスクリーンショット。](./media/import-function-app-as-api/append-03.png)
 
 5. **[Functions App]\(Function App\)** セクションをクリック、使用可能な Function App の一覧から選択します。
 
-    ![Function App から追加する](./media/import-function-app-as-api/add-03.png)
+    ![Function App の一覧が強調表示されているスクリーンショット。](./media/import-function-app-as-api/add-03.png)
 
 6. 関数のインポート元となる Function App を検索してクリックし、 **[選択]** をクリックします。
 
-    ![Function App から追加する](./media/import-function-app-as-api/add-04.png)
+    ![関数のインポート元となる Function App が強調表示されているスクリーンショット。](./media/import-function-app-as-api/add-04.png)
 
 7. インポートする Function を選択して、 **[選択]** をクリックします。
 
-    ![Function App から追加する](./media/import-function-app-as-api/add-05.png)
+    ![インポートする関数が強調表示されているスクリーンショット。](./media/import-function-app-as-api/add-05.png)
 
 8. **[インポート]** をクリックします。
 
@@ -128,11 +128,11 @@ Azure Function App のインポートによって、次が自動的に生成さ�
 
 2. 概要から **[Function App settings]\(Function App の設定\)** を選択します。
 
-    ![Function App から追加する](./media/import-function-app-as-api/keys-02-a.png)
+    ![[Function App settings]\(Function App の設定\) オプションが強調表示されているスクリーンショット。](./media/import-function-app-as-api/keys-02-a.png)
 
 3. キーは **[ホスト キー]** セクションに配置されています。
 
-    ![Function App から追加する](./media/import-function-app-as-api/keys-02-b.png)
+    ![[ホスト キー] セクションが強調表示されているスクリーンショット。](./media/import-function-app-as-api/keys-02-b.png)
 
 ### <a name="access-the-named-value-in-azure-api-management"></a>Azure API Management の名前付きの値にアクセスする
 

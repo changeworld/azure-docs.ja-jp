@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - Private Cloud 上で ID ソースとして Azure AD を使用する
 description: CloudSimple Private Cloud 上で ID プロバイダーとして Azure AD を追加し、Azure から CloudSimple にアクセスするユーザーを認証する方法について説明します。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f90f5f4298fcca77e293965ddd377598bcfd1930
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f55a0f52f5e028f9cbf7a9fabbb3c24ad43c3800
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077312"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898608"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>CloudSimple Private Cloud 上で vCenter の ID プロバイダーとして Azure AD を使用する
 
@@ -64,7 +64,7 @@ vCenter で ID ソースとして Azure AD を使用するには、Azure AD と 
 3. [Azure portal を使用して Azure Active Directory Domain Services を有効にする](../active-directory-domain-services/tutorial-create-instance.md)方法の記事の説明に従って、Azure AD Domain Services を管理する管理者グループを構成します。
 4. [Azure Active Directory Domain Services を有効にする](../active-directory-domain-services/tutorial-create-instance.md)方法の記事の説明に従って、Azure AD Domain Services の DNS 設定を更新します。  インターネット経由で AD に接続する場合は、Azure AD Domain Services のパブリック IP アドレスの DNS レコードをドメイン名に設定します。
 5. ユーザーのパスワード ハッシュ同期を有効にします。  この手順で、NT LAN Manager (NTLM) および Kerberos 認証に必要なパスワード ハッシュが Azure AD Domain Services との間で同期されるようになります。 パスワード ハッシュの同期をセットアップすると、ユーザーは自社の資格情報を使用して、マネージド ドメインにサインインできます。 「[Azure Active Directory Domain Services とのパスワード ハッシュの同期を有効にする](../active-directory-domain-services/tutorial-create-instance.md)」を参照してください。
-    1. クラウド専用ユーザーが存在する場合は、<a href="http://myapps.microsoft.com/" target="_blank">Azure AD アクセス パネル</a>を使用してパスワードを変更し、パスワード ハッシュが NTLM または Kerberos で必要な形式で格納されるようにする必要があります。  [クラウド専用ユーザー アカウントのマネージド ドメインとのパスワード ハッシュ同期を有効にする方法](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)の記事の手順に従います。  この手順は、個々のユーザーと、Azure portal または Azure AD PowerShell コマンドレットを使用して Azure AD ディレクトリに作成される新しいユーザーに対して行う必要があります。 Azure AD Domain Services へのアクセスを必要とするユーザーは、<a href="http://myapps.microsoft.com/" target="_blank">Azure AD アクセス パネル</a>を使用し、そのプロファイルにアクセスしてパスワードを変更する必要があります。
+    1. クラウド専用ユーザーが存在する場合は、<a href="https://myapps.microsoft.com/" target="_blank">Azure AD アクセス パネル</a>を使用してパスワードを変更し、パスワード ハッシュが NTLM または Kerberos で必要な形式で格納されるようにする必要があります。  [クラウド専用ユーザー アカウントのマネージド ドメインとのパスワード ハッシュ同期を有効にする方法](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)の記事の手順に従います。  この手順は、個々のユーザーと、Azure portal または Azure AD PowerShell コマンドレットを使用して Azure AD ディレクトリに作成される新しいユーザーに対して行う必要があります。 Azure AD Domain Services へのアクセスを必要とするユーザーは、<a href="https://myapps.microsoft.com/" target="_blank">Azure AD アクセス パネル</a>を使用し、そのプロファイルにアクセスしてパスワードを変更する必要があります。
 
         > [!NOTE]
         > 組織にクラウド専用ユーザー アカウントが存在する場合、Azure Active Directory Domain Services を使用する必要があるすべてのユーザーは、自分のパスワードを変更しなければなりません。 クラウド専用ユーザー アカウントとは、Azure Portal または Azure AD PowerShell コマンドレットを使って Azure AD ディレクトリに作成されたアカウントです。 そのようなユーザー アカウントは、オンプレミス ディレクトリとの間で同期されません。
@@ -90,9 +90,9 @@ vCenter で ID ソースとして Azure AD を使用するには、Azure AD と 
     | **ドメイン名** | ドメインの FQDN (例: example.com)。 このテキスト ボックスには IP アドレスを指定しないでください。 |
     | **Domain alias** (ドメイン エイリアス) | *(省略可能)* ドメインの NetBIOS 名。 SSPI 認証を使用している場合は、Active Directory ドメインの NetBIOS 名を ID ソースのエイリアスとして追加します。 |
     | **Base DN for groups** (グループのベース DN) | グループのベース識別名。 Azure AD の場合、次のように使用します。`OU=AADDC Users,DC=<domain>,DC=<domain suffix>`  例: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
-    | **Primary Server URL** (プライマリ サーバーの URL) | ドメインのプライマリ ドメイン コントローラー LDAP サーバー。<br><br> `ldaps://hostname:port` の形式を使用します。 LDAPS 接続の場合、通常、このポートは 636 です。 <br><br>プライマリまたはセカンダリの LDAP URL で  `ldaps://`  を使用するときは、Active Directory サーバーの LDAPS エンドポイントに対して信頼を確立する証明書が必要です。 |
+    | **Primary Server URL** (プライマリ サーバーの URL) | ドメインのプライマリ ドメイン コントローラー LDAP サーバー。<br><br>「`ldaps://hostname:port`」の形式を使用します。 LDAPS 接続の場合、通常、このポートは 636 です。 <br><br>プライマリまたはセカンダリの LDAP URL で `ldaps://` を使用するときは、Active Directory サーバーの LDAPS エンドポイントに対して信頼を確立する証明書が必要です。 |
     | **Secondary server URL** (セカンダリ サーバーの URL) | フェールオーバーに使用するセカンダリ ドメイン コントローラー LDAP サーバーのアドレス。 |
-    | **Choose certificate** (証明書の選択) | Active Directory LDAP サーバーまたは OpenLDAP サーバーの ID ソースで LDAPS を使用する場合は、URL テキスト ボックスに「 `ldaps://` 」と入力した後に [証明書の選択] ボタンが表示されます。 セカンダリの URL は必須ではありません。 |
+    | **Choose certificate** (証明書の選択) | Active Directory LDAP サーバーまたは OpenLDAP サーバーの ID ソースで LDAPS を使用する場合は、URL テキスト ボックスに「`ldaps://`」と入力すると、[証明書の選択] ボタンが表示されます。 セカンダリの URL は必須ではありません。 |
     | **ユーザー名** | ユーザーおよびグループのベース DN への最小限の読み取り専用アクセス権を持つドメイン内のユーザーの ID。 |
     | **パスワード** | [ユーザー名] で指定したユーザーのパスワード。 |
 

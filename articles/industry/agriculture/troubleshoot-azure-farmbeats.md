@@ -4,17 +4,17 @@ description: この記事では、Azure FarmBeats のトラブルシューティ
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: c66d3d6fd3ee0bcba01db61183f40cd3ccf3f39d
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.author: v-ummehabiba
+ms.openlocfilehash: c45b6196b82682b37e253a33eed3940b68b4d61e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797940"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172986"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Azure FarmBeats のトラブルシューティング
 
-この記事では、Azure FarmBeats の一般的な問題の解決策を示します。 さらに支援が必要な場合は、[Q&A サポート フォーラム](https://aka.ms/farmbeatssupport)に問い合わせるか、farmbeatssupport@microsoft.com にメールでご連絡ください。
+この記事では、Azure FarmBeats の一般的な問題の解決策を示します。 さらに支援が必要な場合は、[Q&A サポート フォーラム](/answers/topics/azure-farmbeats.html)に問い合わせるか、farmbeatssupport@microsoft.com にメールでご連絡ください。
 
 > [!NOTE]
   > 4 月中に FarmBeats をインストールし、ジョブが空のエラー メッセージで失敗する場合は、重要な保健機関や安全機関へのサポートを優先するために、インストールにバッチ クォータが割り当てられていない可能性があります。 詳細については、 [こちら](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) をご覧ください。 ジョブを正常に実行するには、Batch アカウントへの VM の割り当てを要求する必要があります。
@@ -22,7 +22,7 @@ ms.locfileid: "88797940"
 ## <a name="install-issues"></a>インストールの問題
 
   > [!NOTE]
-  > エラーが発生したためにインストールを開始し直す場合は、インストールを再トリガーする前に、必ず**リソース グループ**を削除するか、リソース グループからすべてのリソースを削除してください。
+  > エラーが発生したためにインストールを開始し直す場合は、インストールを再トリガーする前に、必ず **リソース グループ** を削除するか、リソース グループからすべてのリソースを削除してください。
 
 ### <a name="invalid-sentinel-credentials"></a>無効な Sentinel 資格情報
 
@@ -34,7 +34,7 @@ ms.locfileid: "88797940"
 
 ### <a name="invalid-resource-group-location"></a>無効なリソース グループの場所
 
-**リソース グループ**が、インストール時に指定した**リージョン**と同じ場所にあることを確認します。
+**リソース グループ** が、インストール時に指定した **リージョン** と同じ場所にあることを確認します。
 
 ### <a name="other-install-issues"></a>他のインストールの問題
 
@@ -59,7 +59,7 @@ ms.locfileid: "88797940"
 **是正措置**:
 
 1. FarmBeats リソース グループにアクセスします。
-2. **イベント ハブ**名前空間 ("sensor-partner-eh-namespace-xxxx") を選択し、[Event Hubs] をクリックして、パートナーに割り当てられているイベント ハブの受信メッセージの数を確認します
+2. **イベント ハブ** 名前空間 ("sensor-partner-eh-namespace-xxxx") を選択し、[Event Hubs] をクリックして、パートナーに割り当てられているイベント ハブの受信メッセージの数を確認します
 3. 以下のいずれかを実行します。
 
    - "*受信メッセージがない*" 場合は、デバイス パートナーにお問い合わせください。  
@@ -174,7 +174,7 @@ ms.locfileid: "88797940"
 
 既にアクセスを付与されているにもかかわらずこのエラーが発生する場合は、ページを最新の情報に更新して再試行してください。 エラーが引き続き発生する場合は、エラー メッセージとログを添えてお問い合わせください。
 
-![プロジェクト FarmBeats](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
+![認可エラーを示すスクリーンショット。](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
 
 ### <a name="accelerator-issues"></a>Accelerator の問題  
 
@@ -273,7 +273,7 @@ ms.locfileid: "88797940"
 
 ### <a name="soil-moisture-map-has-white-areas"></a>土壌水分マップに空白がある
 
-**問題点**: **土壌水分マップ**が生成されましたが、マップのほとんどの部分が空白です。
+**問題点**: **土壌水分マップ** が生成されましたが、マップのほとんどの部分が空白です。
 
 **是正措置**:この問題は、マップが要求された時間に対して生成されたサテライト インデックスの NDVI 値が 0.3 未満の場合に発生する可能性があります。 詳細については、「[Sentinel の テクニカルガイド](https://earth.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm)」を参照してください。
 
@@ -289,11 +289,11 @@ ms.locfileid: "88797940"
 2. **[検索]** ボックスで、FarmBeats Datahub リソース グループを探します。
 3. **[リソース グループ]** ダッシュボードで、*datahublogs\** ストレージ アカウントを探します。 たとえば、*datahublogsmvxmq* のようになります。  
 4. **[名前]** 列でストレージ アカウントを選択し、 **[ストレージ アカウント]** ダッシュボードを表示します。
-5. **[datahubblogs\*]** ペインで **[Explorer で開く]** を選択し、 **[Azure Storage Explorer を開く]** アプリケーションを表示します。
+5. **[datahubblogs\*] *_ ペインで _* [Explorer で開く]** を選択し、 **[Azure Storage Explorer を開く]** アプリケーションを表示します。
 6. 左側のペインで **[BLOB コンテナー]** を選択した後、Azure Data Factory ログの **job-logs** または App Service ログの **appinsights-logs** を選択します。
 7. **[ダウンロード]** を選択して、コンピューター上のローカル フォルダーにログをダウンロードします。
 
-    ![プロジェクト FarmBeats](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
+    ![ダウンロードされたログ ファイルを示すスクリーンショット。](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Accelerator に対する Azure Data Factory ジョブのログまたは App Service のログを収集する
 
@@ -301,7 +301,7 @@ ms.locfileid: "88797940"
 2. **[検索]** ボックスで、FarmBeats Accelerator リソース グループを探します。
 3. **[リソース グループ]** ダッシュボードで、*storage\** ストレージ アカウントを探します。 たとえば、*storagedop4k\** のようになります。
 4. **[名前]** 列のストレージ アカウントを選択し、**ストレージ アカウント** ダッシュボードを表示します。
-5. **[storage\*]** ペインで **[Explorer で開く]** を選択し、Azure Storage Explorer アプリケーションを開きます。
+5. **[storage\*] *_ ペインで _* [Explorer で開く]** を選択し、Azure Storage Explorer アプリケーションを開きます。
 6. 左側のペインで **[BLOB コンテナー]** を選択した後、Azure Data Factory ログの **job-logs** または App Service ログの **appinsights-logs** を選択します。
 7. **[ダウンロード]** を選択して、コンピューター上のローカル フォルダーにログをダウンロードします。
 
@@ -327,23 +327,23 @@ ms.locfileid: "88797940"
 > [!NOTE]
 > リソース グループ内のサービスのタグを表示するには、[列の編集] をクリックし、リソース グループ ビューに [タグ] を追加します。
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="プロジェクト FarmBeats":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="Sku: Datahub タグが強調表示されているスクリーンショット。":::
 
 3. Data Factory の [概要] ページで、 **[Author and Monitor]\(作成と監視\)** をクリックします。 ブラウザーに新しいタブが表示されます。 **[監視]** をクリックします。
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="プロジェクト FarmBeats":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="[監視] メニュー オプションが強調表示されているスクリーンショット。":::
 
 4. 気象ジョブの実行の一部であるパイプライン実行の一覧が表示されます。 ログを収集するジョブをクリックします。
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="プロジェクト FarmBeats":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="[パイプラインの実行] メニュー オプションと選択されたジョブが強調表示されているスクリーンショット。":::
 
 5. パイプラインの概要ページに、アクティビティの実行の一覧が表示されます。 ログを収集するアクティビティの実行 ID をメモします。
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="プロジェクト FarmBeats":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="アクティビティの実行の一覧を示すスクリーンショット。":::
 
 6. Azure portal の FarmBeats リソース グループに戻り、名前が **datahublogs-XXXX** のストレージ アカウントをクリックします。
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="プロジェクト FarmBeats":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="datahublogs-XXXX という名前のストレージ アカウントが強調表示されているスクリーンショット。":::
 
 7. **[Containers]\(コンテナー\)**  ->  **[adfjobs]** をクリックします。 検索ボックスに、上記の手順 5 でメモしたジョブの実行 ID を入力します。
  

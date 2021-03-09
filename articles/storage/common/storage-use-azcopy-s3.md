@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: ac093f707167160e916c15b935cb3d8ff6bbc748
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b94cb6d6302cd92816fe25f6e672b1ce3bb9398d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037118"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791999"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>AzCopy を使用して Amazon S3 から Azure Storage にデータをコピーする
 
-AzCopy は、ストレージ アカウント間の BLOB またはファイル コピーに利用できるコマンドライン ユーティリティです。 この記事は、AzCopy を使用して Amazon Web Services (AWS) S3 から Azure BLOB ストレージにオブジェクト、ディレクトリ、およびバケットをコピーする場合に役立ちます。
+AzCopy は、ストレージ アカウント間の BLOB またはファイル コピーに利用できるコマンドライン ユーティリティです。 この記事は、AzCopy を使用して Amazon Web Services (AWS) S3 から Azure Blob Storage にオブジェクト、ディレクトリ、バケットをコピーする場合に役立ちます。
 
 ## <a name="choose-how-youll-provide-authorization-credentials"></a>認証資格情報の提供方法を選択する
 
@@ -44,11 +44,11 @@ AWS アクセス キーとシークレット アクセス キーを収集して�
 |--------|-----------|
 | **Windows** | `set AWS_ACCESS_KEY_ID=<access-key>`<br>`set AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **Linux** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
-| **MacOS** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>`|
+| **macOS** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>`|
 
 ## <a name="copy-objects-directories-and-buckets"></a>オブジェクト、ディレクトリ、バケットをコピーする
 
-AzCopy では、[URL からブロックの配置](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API が使用されます。そのため、データは AWS S3 とストレージ サーバー間で直接コピーされます。 これらのコピー操作では、コンピューターのネットワーク帯域幅が使用されません。
+AzCopy では、[URL からブロックの配置](/rest/api/storageservices/put-block-from-url) API が使用されます。そのため、データは AWS S3 とストレージ サーバー間で直接コピーされます。 これらのコピー操作では、コンピューターのネットワーク帯域幅が使用されません。
 
 > [!TIP]
 > このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
@@ -135,7 +135,7 @@ AzCopy は、発生する可能性のある最も一般的な 2 つの問題を�
 
 ## <a name="handle-differences-in-object-metadata"></a>オブジェクトのメタデータの違いに対処する
 
-AWS S3 と Azure では、オブジェクト キーの名前にさまざまな文字セットを使用できます。 AWS S3 で使用する文字の詳細については、[こちら](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)をご覧ください。 Azure 側では、BLOB オブジェクト キーは [C# 識別子](https://docs.microsoft.com/dotnet/csharp/language-reference/)の名前付け規則に従います。
+AWS S3 と Azure では、オブジェクト キーの名前にさまざまな文字セットを使用できます。 AWS S3 で使用する文字の詳細については、[こちら](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)をご覧ください。 Azure 側では、BLOB オブジェクト キーは [C# 識別子](/dotnet/csharp/language-reference/)の名前付け規則に従います。
 
 AzCopy の `copy` コマンドの一部として、オプションの `s2s-handle-invalid-metadata` フラグの値を指定することができます。これは、ファイルのメタデータに互換性のないキー名が含まれているファイルを処理する方法を指定します。 次の表は、それぞれのフラグ値の説明です。
 
@@ -155,10 +155,10 @@ AzCopy では次の手順が実行されます。
 
 2. 文字列 `rename_` を新しい有効なキーの先頭に追加します。
 
-   このキーは、元のメタデータ**値**を保存するために使用されます。
+   このキーは、元のメタデータ **値** を保存するために使用されます。
 
 3. 文字列 `rename_key_` を新しい有効なキーの先頭に追加します。
-   このキーは、元のメタデータの無効な**キー**を保存するために使用されます。
+   このキーは、元のメタデータの無効な **キー** を保存するために使用されます。
    メタデータ キーは BLOB ストレージ サービスに値として保持されるため、このキーを使用して、Azure 側でメタデータを試して復元することができます。
 
 ## <a name="next-steps"></a>次のステップ
@@ -167,7 +167,7 @@ AzCopy では次の手順が実行されます。
 
 - [AzCopy を使ってみる](storage-use-azcopy-v10.md)
 
-- [AzCopy と Blob Storage でデータを転送する](storage-use-azcopy-blobs.md)
+- [データの転送](storage-use-azcopy-v10.md#transfer-data)
 
 - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
 

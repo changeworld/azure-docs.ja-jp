@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: ac37dc66c9861c974c2d5fea435a3ae6771e6c7d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 7ec938a13d04cf3400e4d3df0eeda051c61d35ad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035010"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724270"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure Storage のコンプライアンス認証
 
 個人データの収集と使用に関する国、地域、業界固有の要件に組織が準拠できるように、Microsoft Azure と Azure Storage では、クラウド サービス プロバイダーの広範な認定と認証を提供しています。
 
-ご利用のサービスが Azure Storage サービスを使用して確実に規制されるように、Azure Storage では以下のコンプライアンス認証を見つけることができます。 これらは、次の Azure Storage オファリングに適用できます。BLOB、ファイル、キュー、テーブル、ディスク、クール ストレージ、Premium Storage。
+ご利用のサービスが Azure Storage サービスを使用して確実に規制されるように、Azure Storage では以下のコンプライアンス認証を見つけることができます。 コンプライアンス認証は、次の Azure Storage サービスに適用できます: BLOB (ADLS Gen2)、キュー、テーブル、ディスク、クール ストレージ、Premium Storage。
 
 ## <a name="global"></a>グローバル
 
@@ -27,7 +27,7 @@ ms.locfileid: "88035010"
 * [CSA-Star-Certification](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)
 * [CSA-STAR-Self-Assessment](https://www.microsoft.com/trustcenter/compliance/csa-self-assessment)
 * [ISO 20000-1:2011](https://www.microsoft.com/TrustCenter/Compliance/ISO-20000-1)
-* [ISO 22301](https://www.microsoft.com/trustcenter/compliance/iso-22301)
+* [ISO 22301](/compliance/regulatory/offering-iso-22301)
 * [ISO 27001](https://www.microsoft.com/trustcenter/compliance/iso-iec-27017)
 * [ISO 27017](https://www.microsoft.com/trustcenter/compliance/iso-iec-27017)
 * [ISO 27018](https://www.microsoft.com/trustcenter/compliance/iso-iec-27018)
@@ -58,7 +58,7 @@ ms.locfileid: "88035010"
 * [FISC (日本)](https://www.microsoft.com/trustcenter/compliance/fisc)
 * [GLBA](https://aka.ms/AzureCompliance)
 * [GxP](https://www.microsoft.com/TrustCenter/Compliance/FDA)
-* [HIPAA/HITECH](https://www.microsoft.com/trustcenter/compliance/hipaa)
+* [HIPAA/HITECH](/compliance/regulatory/offering-hipaa-hitech)
 * [HITRUST](https://www.microsoft.com/trustcenter/Compliance/HITRUST)
 * [MARS-E](https://www.microsoft.com/trustcenter/compliance/mars-e)
 * [MAS + ABS (シンガポール)](https://aka.ms/AzureCompliance)

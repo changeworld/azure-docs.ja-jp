@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 51fdbda755b98b47b700f57bf990b5c5356854a9
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 11aa0eb07ed9cb3a1a785b3155b832f8b447708f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037611"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896873"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps の交通情報の対象範囲
 
-Azure Maps は、交通の**流れ**と**事故**の形式で豊富な交通情報を提供します。 このデータは、マップ上で視覚化することができます。また、このデータを使用し、実際の運転条件を考慮して、より優れたルートが生成されます。
+Azure Maps は、交通の **流れ** と **事故** の形式で豊富な交通情報を提供します。 このデータは、マップ上で視覚化することができます。また、このデータを使用し、実際の運転条件を考慮して、より優れたルートが生成されます。
 
 しかし、Maps は、すべての国と地域に対して同じレベルの情報と精度を備えているわけではありません。 次の表は、国や地域ごとにどのような種類の交通情報を要求できるかを示しています。 
 
@@ -135,4 +135,4 @@ Azure Maps は、交通の**流れ**と**事故**の形式で豊富な交通情�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Maps の交通情報データの詳細については、[交通情報](https://docs.microsoft.com/rest/api/maps/traffic)のリファレンス ページを参照してください。
+Azure Maps の交通情報データの詳細については、[交通情報](/rest/api/maps/traffic)のリファレンス ページを参照してください。

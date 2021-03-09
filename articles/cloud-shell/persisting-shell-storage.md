@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 37005a722d4a1962b4f6e1ddb8bb1c7a1229d28a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1846c126e81ca5851cfbb1d782e5315ae10a82a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81273292"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152274"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Azure Cloud Shell でファイルを永続化する
-Cloud Shell では Azure File ストレージを使用してセッション間でファイルを維持します。 Cloud Shell の初回起動時に、セッション間でファイルを維持するために新しいまたは既存のファイル共有を関連付けることを求められます。
+Cloud Shell では Azure File Storage を使用してセッション間でファイルを維持します。 Cloud Shell の初回起動時に、セッション間でファイルを維持するために新しいまたは既存のファイル共有を関連付けることを求められます。
 
 > [!NOTE]
 > Bash と PowerShell は、同じファイル共有を共有します。 Cloud Shell で自動マウントと関連付けることができるのは、1 つのファイル共有のみです。
@@ -55,7 +55,7 @@ Cloud Shell では Azure File ストレージを使用してセッション間�
 ![リソース グループ設定](media/persisting-shell-storage/advanced-storage.png)
 
 ## <a name="securing-storage-access"></a>ストレージ アクセスのセキュリティ保護
-セキュリティのために、各ユーザーが自分のストレージ アカウントをプロビジョニングする必要があります。  ロールベースのアクセス制御 (RBAC) では、ユーザーはストレージ アカウント レベルで共同作成者以上のアクセス権を持つ必要があります。
+セキュリティのために、各ユーザーが自分のストレージ アカウントをプロビジョニングする必要があります。  Azure ロールベースのアクセス制御 (Azure RBAC) では、ユーザーはストレージ アカウント レベルで共同作成者以上のアクセス権を持つ必要があります。
 
 Cloud Shell では、指定されたサブスクリプション内のストレージ アカウントで Azure ファイル共有が使用されます。 アクセス許可が継承されるため、サブスクリプションに対する十分なアクセス権を持つユーザーは、サブスクリプションに含まれるすべてのストレージ アカウントとファイル共有にアクセスできます。
 
@@ -83,7 +83,7 @@ Cloud Shell マシンは、次の各リージョンに存在します。
 ユーザーは、PowerShell で `(Get-CloudDrive | Get-AzStorageAccount).Location` を実行して、ファイル共有の場所を確認できます。
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Azure リソース ポリシーによるリソース作成の制限
-Cloud Shell で作成したストレージ アカウントは `ms-resource-usage:azure-cloud-shell` でタグ付けされます。 Cloud Shell からストレージ アカウントを作成できないようにするには、この固有のタグによってトリガーされる[タグの Azure リソース ポリシー](../azure-policy/json-samples.md)を作成します。
+Cloud Shell で作成したストレージ アカウントは `ms-resource-usage:azure-cloud-shell` でタグ付けされます。 Cloud Shell からストレージ アカウントを作成できないようにするには、この固有のタグによってトリガーされる[タグの Azure リソース ポリシー](../governance/policy/samples/index.md)を作成します。
 
 ## <a name="how-cloud-shell-storage-works"></a>Cloud Shell のストレージのしくみ 
 Cloud Shell は、次の両方の方法を使用してファイルを永続化します。 
@@ -170,4 +170,4 @@ Cloud Shell にマウントされた Azure ファイル共有は、いつでも�
 ## <a name="next-steps"></a>次のステップ
 [Cloud Shell のクイック スタート](quickstart.md) <br>
 [Microsoft Azure Files ストレージについて](../storage/files/storage-files-introduction.md) <br>
-[ストレージのタグについて](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>
+[ストレージのタグについて](../azure-resource-manager/management/tag-resources.md) <br>

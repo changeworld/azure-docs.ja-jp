@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
-ms.custom: contperfq4
-ms.openlocfilehash: 7d209b3434eae20b4c9a7b328f5c15032315b178
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 937b5ebb13bfbf27ff04b6944f2de7e32e7e656c
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203554"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185854"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Azure Machine Learning Visual Studio Code 拡張機能 (プレビュー) を使用して画像分類 TensorFlow モデルをトレーニングおよびデプロイする
 
@@ -61,7 +61,7 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
 1. **[Create a new resource group]\(新しいリソース グループの作成\)** を選択します。 
 1. リソース グループに "TeamWorkspace-rg" という名前を付けて **Enter** キーを押します。 
 1. ワークスペースの場所を選択します。 モデルをデプロイする予定の場所に最も近い場所を選択することをお勧めします。 たとえば "米国西部 2" にします。
-1. ワークスペースの種類を選択するよう求められたら、 **[Basic]** を選択して Basic のワークスペースを作成します。 ワークスペースの各種プランの詳細については、[Azure Machine Learning の概要](./overview-what-is-azure-ml.md#sku)に関するページを参照してください。
+1. ワークスペースの種類を選択するように求めるメッセージが表示されたら、 **[基本]** を選択します。
 
 この時点で、新しいワークスペースをアカウントに作成するための要求が Azure に送信されます。 数分後、ご利用のサブスクリプションのノードに新しいワークスペースが表示されます。 
 
@@ -72,13 +72,13 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
 1. Visual Studio Code アクティビティ バーで、**Azure** アイコンを選択します。 Azure Machine Learning ビューが表示されます。
 1. ご利用のサブスクリプションのノードを展開します。
 1. **TeamWorkspace** ノードを展開します。 
-1. **[Experiments]\(実験\)** ノードを右クリックします。
+1. **[Experiments]** ノードを右クリックします。
 1. コンテキスト メニューから **[Create Experiment]\(実験の作成\)** を選択します。
 
     > [!div class="mx-imgBorder"]
     > ![実験を作成する](./media/tutorial-train-deploy-image-classification-model-vscode/create-experiment.png)
 
-1. 実験に「MNIST」という名前を付け、**Enter** キーを押して新しい実験を作成します。 
+1. 実験に「Tutorial-VSCode-MNIST」という名前を付け、**Enter** キーを押して新しい実験を作成します。 
 
 ワークスペースと同様、指定した構成で実験を作成するための要求が Azure に送信されます。 数分後、ワークスペースの *[実験]* ノードに新しい実験が表示されます。 
 
@@ -97,7 +97,7 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
     > ![コンピューティング先を作成する](./media/tutorial-train-deploy-image-classification-model-vscode/create-compute.png)
 
 1. **[Azure Machine Learning コンピューティング (AmlCompute)]** を選択します。 Azure Machine Learning コンピューティングとは、マネージド コンピューティング インフラストラクチャで、これにより、ユーザーは、ワークスペース内の他のユーザーと一緒に使用できるシングルノードまたはマルチノードのコンピューティングを簡単に作成できます。
-1. VM のサイズを選択します。 オプションの一覧から **[Standard_F2s_v2]** を選択します。 使用する VM のサイズは、モデルのトレーニングの所要時間に影響します。 VM サイズの詳細については、「[Azure の Linux 仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)」を参照してください。
+1. VM のサイズを選択します。 オプションの一覧から **[Standard_F2s_v2]** を選択します。 使用する VM のサイズは、モデルのトレーニングの所要時間に影響します。 VM サイズの詳細については、「[Azure の Linux 仮想マシンのサイズ](../virtual-machines/sizes.md)」を参照してください。
 1. コンピューティングに「TeamWkspc-com」という名前を付け、**Enter** キーを押してコンピューティングを作成します。
 
     次のような内容を含むファイルが VS Code に表示されます。
@@ -148,7 +148,7 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
 1. コマンド パレットのプロンプトで、実行構成に「MNIST-rc」という名前を付け、**Enter** キーを押して実行構成を作成します。
 1. 次に、 **[Create new Azure ML Environment]\(新しい Azure ML 環境の作成\)** を選択します。 スクリプトを実行するために必要な依存関係は、環境によって定義されます。
 1. 環境に "MNIST-env" という名前を付け、**Enter** キーを押します。
-1. 一覧から **Conda 依存関係ファイル**を選択します。
+1. 一覧から **Conda 依存関係ファイル** を選択します。
 1. **Enter** キーを押して、Conda の依存関係ファイルを参照します。 このケースの依存関係ファイルは、`vscode-tools-for-ai/mnist-vscode-docs-sample` ディレクトリにある `env.yml` ファイルです。
 
     次のような内容を含むファイルが VS Code に表示されます。
@@ -324,7 +324,7 @@ Azure Machine Learning 実験を実行するには:
     > ![モデルを登録する](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)
 
 1. モデルに「MNIST-TensorFlow-model」という名前を付けて、**Enter** キーを押します。
-1. TensorFlow モデルは、複数のファイルで構成されています。 モデル パスの形式として、オプションの一覧から **Model フォルダー**を選択します。 
+1. TensorFlow モデルは、複数のファイルで構成されています。 モデル パスの形式として、オプションの一覧から **Model フォルダー** を選択します。 
 1. `azureml_outputs/Run_1/outputs/outputs/model` ディレクトリを選択します。
 
     モデルの構成を含んだファイルが Visual Studio Code に表示されます。これには、次のような内容が記述されています。
@@ -414,4 +414,3 @@ Web サービスを ACI としてデプロイするには:
 
 * Visual Studio Code 以外で Azure Machine Learning をトレーニングする方法のチュートリアルについては、[Azure Machine Learning を使用したモデルのトレーニングに関するチュートリアル](tutorial-train-models-with-aml.md)を参照してください。
 * コードをローカルで編集、実行、およびデバッグする方法のチュートリアルについては、[Python hello-world チュートリアル](https://code.visualstudio.com/docs/Python/Python-tutorial)を参照してください。
-

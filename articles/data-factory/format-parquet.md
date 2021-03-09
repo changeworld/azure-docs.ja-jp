@@ -2,24 +2,21 @@
 title: Azure Data Factory での Parquet 形式
 description: このトピックでは、Azure Data Factory で Parquet 形式を処理する方法について説明します。
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 09/27/2020
 ms.author: jingwang
-ms.openlocfilehash: 9ad0ccdabd0320d8821d0760ca9802db37049149
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a10403b5f26b551458a9e20330bc817512f707de
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84611044"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386393"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure Data Factory での Parquet 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-**Parquet ファイルの解析または Parquet 形式でのデータの書き込み**を行う場合は、この記事に従ってください。 
+**Parquet ファイルの解析または Parquet 形式でのデータの書き込み** を行う場合は、この記事に従ってください。 
 
 Parquet 形式は次のコネクタでサポートされています。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。
 
@@ -31,7 +28,7 @@ Parquet 形式は次のコネクタでサポートされています。[Amazon S
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | データセットの type プロパティは **Parquet** に設定する必要があります。 | はい      |
 | location         | ファイルの場所の設定。 ファイル ベースの各コネクタには、固有の場所の種類と `location` でサポートされるプロパティがあります。 **詳細については、コネクタの記事でデータセットのプロパティに関するセクションを参照してください**。 | はい      |
-| compressionCodec | Parquet ファイルへの書き込み時に使用する圧縮コーデック。 データ ファクトリーは、Parquet ファイルから読み取るときに、ファイルのメタデータに基づいて圧縮コーデックを自動的に決定します。<br>サポートされている種類は、"**なし**"、"**gzip**"、"**snappy**" (既定)、および "**lzo**" です。 Parquet ファイルの読み取りおよび書き込みの場合、コピー アクティビティでは現在、LZO がサポートされていないことにご注意ください。 | いいえ       |
+| compressionCodec | Parquet ファイルへの書き込み時に使用する圧縮コーデック。 データ ファクトリーは、Parquet ファイルから読み取るときに、ファイルのメタデータに基づいて圧縮コーデックを自動的に決定します。<br>サポートされている種類は、"**なし**"、"**gzip**"、"**snappy**" (既定値)、および "**lzo**" です。 Parquet ファイルの読み取りおよび書き込みの場合、コピー アクティビティでは現在、LZO がサポートされていないことにご注意ください。 | いいえ       |
 
 > [!NOTE]
 > Parquet ファイルでは、列名に空白文字はサポートされません。
@@ -79,8 +76,17 @@ Azure Blob Storage の Parquet データセットの例を次に示します。
 
 | プロパティ      | 説明                                                  | 必須 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | コピー アクティビティのソースの type プロパティは **ParquetSink** に設定する必要があります。 | はい      |
+| type          | コピー アクティビティ シンクの type プロパティには **ParquetSink** を設定する必要があります。 | はい      |
+| formatSettings | プロパティのグループ。 後の **Parquet の書き込み設定** に関する表を参照してください。 |    いいえ      |
 | storeSettings | データ ストアにデータを書き込む方法を指定するプロパティのグループ。 ファイル ベースの各コネクタには、`storeSettings` に、固有のサポートされる書き込み設定があります。 **詳細については、コネクタの記事でコピー アクティビティのプロパティに関するセクションを参照してください**。 | いいえ       |
+
+`formatSettings` でサポートされている **Parquet 書き込み設定**:
+
+| プロパティ      | 説明                                                  | 必須                                              |
+| ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
+| type          | formatSettings の type は、**ParquetWriteSettings** に設定する必要があります。 | Yes                                                   |
+| maxRowsPerFile | データをフォルダーに書き込むときに、複数のファイルに書き込むことを選択でき、ファイルあたりの最大行数を指定できます。  | No |
+| fileNamePrefix | `maxRowsPerFile` が構成されている場合に使用されます。<br> 複数のファイルにデータを書き込むときの、ファイル名のプレフィックスを指定します。結果として `<fileNamePrefix>_00000.<fileExtension>` のパターンになります。 指定されていない場合、ファイル名のプレフィックスは自動生成されます。 このプロパティは、ソースがファイルベース ストアまたは[パーティションオプション対応データ ストア](copy-activity-performance-features.md)である場合には適用されません。  | いいえ |
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
@@ -93,12 +99,13 @@ Azure Blob Storage の Parquet データセットの例を次に示します。
 | 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Format | 形式は `parquet` である必要があります | はい | `parquet` | format |
-| Wild card paths (ワイルドカード パス) | ワイルドカード パスに一致するすべてのファイルが処理されます。 データセットで設定されているフォルダーとファイル パスを上書きします。 | no | String[] | wildcardPaths |
-| Partition root path (パーティション ルート パス) | パーティション分割されたファイル データについては、パーティション分割されたフォルダーを列として読み取るためにパーティション ルート パスを入力できます。 | no | String | partitionRootPath |
-| List of files (ファイルの一覧) | 処理するファイルを一覧表示しているテキスト ファイルをソースが指しているかどうか | no | `true` または `false` | fileList |
-| Column to store file name (ファイル名を格納する列) | ソース ファイル名とパスを使用して新しい列を作成します | no | String | rowUrlColumn |
-| After completion (完了後) | 処理後にファイルを削除または移動します。 ファイル パスはコンテナー ルートから始まります | no | 削除: `true` または `false` <br> 移動: `[<from>, <to>]` | purgeFiles <br> moveFiles |
-| Filter by last modified (最終更新日時でフィルター処理) | 最後に変更された日時に基づいてファイルをフィルター処理することを選択します | no | Timestamp | modifiedAfter <br> modifiedBefore |
+| Wild card paths (ワイルドカード パス) | ワイルドカードのパスに一致するすべてのファイルが処理されます。 データセットで設定されているフォルダーとファイル パスはオーバーライドされます。 | no | String[] | wildcardPaths |
+| パーティションのルート パス | パーティション分割されたファイル データについては、パーティション フォルダーを列として読み取るためにパーティションのルート パスを入力できます | no | String | partitionRootPath |
+| ファイルの一覧 | 処理するファイルを一覧表示しているテキスト ファイルをソースが指しているかどうか | no | `true` または `false` | fileList |
+| ファイル名を格納する列 | ソース ファイル名とパスを使用して新しい列を作成します | no | String | rowUrlColumn |
+| 完了後 | 処理後にファイルを削除または移動します。 ファイル パスはコンテナー ルートから始まります | no | 削除: `true` または `false` <br> 移動: `[<from>, <to>]` | purgeFiles <br> moveFiles |
+| 最終更新日時でフィルター処理 | 最後に変更された日時に基づいてファイルをフィルター処理する場合に選択 | no | Timestamp | modifiedAfter <br> modifiedBefore |
+| [Allow no files found]\(ファイルの未検出を許可\) | true の場合、ファイルが見つからない場合でもエラーはスローされない | no | `true` または `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>ソースの例
 
@@ -117,13 +124,13 @@ source(allowSchemaDrift: true,
 
 ### <a name="sink-properties"></a>シンクのプロパティ
 
-次の表に、Parquet ソースでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[ソース オプション]** タブで編集できます。
+次の表に、Parquet シンクでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[設定]** タブで編集できます。
 
 | 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Format | 形式は `parquet` である必要があります | はい | `parquet` | format |
-| Clear the folder (フォルダーのクリア) | 書き込みの前に宛先フォルダーをクリアするかどうか | no | `true` または `false` | truncate |
-| File name option (ファイル名オプション) | 書き込まれたデータの名前付け形式です。 既定では、`part-#####-tid-<guid>` という形式で、パーティションごとに 1 ファイルです | no | パターン:String <br> [Per partition] (パーティションごと): String[] <br> [As data in column] (列内のデータとして): String <br> Output to a single file (1 つのファイルに出力する): `['<fileName>']` | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
+| Clear the folder (フォルダーのクリア) | 書き込みの前に宛先フォルダーがクリアされるかどうか | no | `true` または `false` | truncate |
+| ファイル名のオプション | 書き込まれたデータの名前付け形式です。 既定では、`part-#####-tid-<guid>` という形式で、パーティションごとに 1 ファイルです | no | パターン:String <br> [Per partition] (パーティションごと): String[] <br> [As data in column] (列内のデータとして): String <br> 1 つのファイルに出力する: `['<fileName>']` | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
 
 ### <a name="sink-example"></a>シンクの例
 
@@ -146,12 +153,12 @@ ParquetSource sink(
 
 ## <a name="data-type-support"></a>データ型のサポート
 
-Parquet の複合データ型は、現在サポートされていません (MAP、LIST、STRUCT など)。
+Parquet 複合データ型 (MAP、LIST、STRUCT など) は、現在、コピー アクティビティではなくデータ フローでのみサポートされています。 データ フローで複合型を使用するには、データセットにファイル スキーマをインポートしないで、データセット内のスキーマを空白のままにしておきます。 次に、ソース変換で、プロジェクションをインポートします。
 
 ## <a name="using-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムの使用
 
 > [!IMPORTANT]
-> オンプレミスとクラウドのデータ ストアの間など、セルフホステッド統合ランタイムを利用したコピーでは、Parquet ファイルを **そのまま**コピーしない場合は、**64-bit JRE 8 (Java Runtime Environment) または OpenJDK** と **Microsoft Visual C++ 2010 再頒布可能パッケージ** を IR マシンにインストールする必要があります。 詳細については、次の段落をご確認ください。
+> オンプレミスとクラウドのデータ ストアの間など、セルフホステッド統合ランタイムを利用したコピーでは、Parquet ファイルを **そのまま** コピーしない場合は、**64-bit JRE 8 (Java Runtime Environment) または OpenJDK** と **Microsoft Visual C++ 2010 再頒布可能パッケージ** を IR マシンにインストールする必要があります。 詳細については、次の段落をご確認ください。
 
 Parquet ファイルのシリアル化/逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーでは、ADF は最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* を調べ、見つからない場合は次に OpenJDK のシステム変数 *`JAVA_HOME`* を調べることで、Java ランタイムを見つけます。
 

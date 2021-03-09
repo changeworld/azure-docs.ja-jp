@@ -13,19 +13,16 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8f6170de65ae5e1ca8ecb5f7cc8a78f4f194ac41
+ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116395"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92055292"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Microsoft ID プラットフォーム (v2.0) に更新する理由
 
 新しいアプリケーションを開発する場合、Microsoft ID プラットフォーム (v2.0) エンドポイントと Azure Active Directory (v1.0) エンドポイントの相違点を把握しておくことが重要です。 この記事では、各エンドポイントの主な相違点と、Microsoft ID プラットフォームに関する既存の制限について説明します。
-
-> [!NOTE]
-> Microsoft ID プラットフォームのエンドポイントでは、すべての Azure AD シナリオや機能をサポートしているわけではありません。 Microsoft ID プラットフォーム エンドポイントを使用すべきかどうかを判定するには、[Microsoft ID プラットフォームの制限](#limitations)に関するページを参照してください。
 
 ## <a name="who-can-sign-in"></a>サインインできるユーザー
 
@@ -35,7 +32,7 @@ ms.locfileid: "88116395"
 * Microsoft ID プラットフォーム エンドポイントでは、Azure AD からの職場と学校のアカウント、および個人の Microsoft アカウント (MSA) (hotmail.com、outlook.com、msn.com など) でサインインできます。
 * 両方のエンドポイントで、 *[シングルテナント](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* として構成されているアプリケーション、またはテナント固有のエンドポイント (`https://login.microsoftonline.com/{TenantId_or_Name}`) を指すように構成されている*マルチテナント* アプリケーションに対する Azure AD ディレクトリの *[ゲスト ユーザー](../external-identities/what-is-b2b.md)* によるサインインも受け入れられます。
 
-Microsoft ID プラットフォーム エンドポイントを使用した場合は、個人の Microsoft アカウントに加え、職場や学校のアカウントからのサインインを受け付けるアプリを記述することができます。 そのため、完全にアカウント非依存のアプリを作成することができます。 たとえば、アプリで [Microsoft Graph](https://graph.microsoft.io) を呼び出す場合、SharePoint サイトやディレクトリ データなど、いくつかの追加の機能とデータを職場のアカウントで使用できます。 しかし、[ユーザーのメールの読み取り](/graph/api/user-list-messages?view=graph-rest-1.0)など、多くのアクションでは、同じコードで個人アカウントおよび職場と学校のアカウントの両方のメールにアクセスすることができます。
+Microsoft ID プラットフォーム エンドポイントを使用した場合は、個人の Microsoft アカウントに加え、職場や学校のアカウントからのサインインを受け付けるアプリを記述することができます。 そのため、完全にアカウント非依存のアプリを作成することができます。 たとえば、アプリで [Microsoft Graph](https://graph.microsoft.io) を呼び出す場合、SharePoint サイトやディレクトリ データなど、いくつかの追加の機能とデータを職場のアカウントで使用できます。 しかし、[ユーザーのメールの読み取り](/graph/api/user-list-messages)など、多くのアクションでは、同じコードで個人アカウントおよび職場と学校のアカウントの両方のメールにアクセスすることができます。
 
 Microsoft ID プラットフォーム エンドポイントの場合、Microsoft Authentication Library (MSAL) を使用して、コンシューマー向け、教育向け、エンタープライズ向けのいずれの環境にもアクセスできます。 Azure AD v1.0 エンドポイントでは、職場と学校のアカウントのみからのサインインが受け入れられます。
 
@@ -114,7 +111,7 @@ OAuth 2.0、`refresh_tokens`、および `access_tokens` の詳細について�
 Microsoft ID プラットフォーム エンドポイントでは、ペイロードを小さくするため、トークン内の一部の要求のみが既定で発行されます。 Microsoft ID プラットフォーム トークンの既定では提供されない v1.0 トークン内の特定の要求に依存するアプリやサービスがある場合は、[省略可能な要求](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)の機能を使用してそのクレームを含めることを検討してください。
 
 > [!IMPORTANT]
-> v1.0 および v2.0 のトークンは、v1.0 と v2.0 のどちらのエンドポイントからでも発行できます。 id_tokens は "*必ず*" その要求元のエンドポイントと一致し、アクセス トークンは "*必ず*"、そのトークンを使用してクライアントが呼び出す Web API で想定された形式と一致します。  したがって、アプリで v2.0 エンドポイントを使用して、Microsoft Graph を呼び出すためのトークンを取得する場合、v1.0 形式のアクセス トークンが想定されているため、アプリは v1.0 形式でトークンを受け取ります。  
+> v1.0 および v2.0 のトークンは、v1.0 と v2.0 のどちらのエンドポイントからでも発行できます。 id_tokens は "*必ず*" その要求元のエンドポイントと一致し、アクセス トークンは "*必ず*"、そのトークンを使用してクライアントが呼び出す Web API で想定された形式と一致します。  したがって、アプリで v2.0 エンドポイントを使用して、Microsoft Graph を呼び出すためのトークンを取得する場合、v1.0 形式のアクセス トークンが想定されているため、アプリは v1.0 形式でトークンを受け取ります。
 
 ## <a name="limitations"></a>制限事項
 
@@ -153,18 +150,22 @@ Microsoft ID プラットフォームで使用するアプリを登録する方�
 * デスクトップまたはモバイル アプリケーションを構築する場合は、Microsoft の認証ライブラリ (MSAL) のいずれかを使用できます。 これらのライブラリは、一般提供されているか運用環境でサポートされているプレビュー版なので、実稼働アプリケーションで使用しても安全です。 プレビューの使用条件と使用可能なライブラリの詳細については、[認証ライブラリのリファレンス](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)に関するページをご覧ください。
 * Microsoft ライブラリの対象ではないプラットフォームでは、アプリケーション コードで直接プロトコル メッセージを送受信することで Microsoft ID プラットフォーム エンドポイントと統合できます。 OpenID Connect プロトコルと OAuth プロトコルについては、このような統合の実施に役立つように、[明確に文書化](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)されています。
 * オープン ソースの OpenID Connect および OAuth のライブラリを使用して、Microsoft ID プラットフォーム エンドポイントと統合できます。 Microsoft ID プラットフォームのエンドポイントは通常、変更を加えなくても、多数のオープンソース プロトコル ライブラリと互換性があります。 これらのライブラリが使用可能かどうかは、言語とプラットフォームによって異なります。 [OpenID Connect](https://openid.net/connect/) および [OAuth 2.0](https://oauth.net/2/) の Web サイトでは、一般的な実装のリストを公開しています。 詳細については、[Microsoft ID プラットフォームと認証ライブラリ](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)に関するページと、Microsoft ID プラットフォーム エンドポイントでテスト済みのオープンソース クライアント ライブラリとサンプルの一覧を参照してください。
-* 参照情報: Microsoft ID プラットフォーム共通エンドポイントの `.well-known` エンドポイントは `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` です。 `common` とテナント ID を置き換えて、お使いのテナントに固有のデータを取得します。  
+* 参照情報: Microsoft ID プラットフォーム共通エンドポイントの `.well-known` エンドポイントは `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` です。 `common` とテナント ID を置き換えて、お使いのテナントに固有のデータを取得します。
 
 ### <a name="protocol-changes"></a>プロトコルの変更
 
-Microsoft ID プラットフォーム エンドポイントは SAML と WS-Federation をサポートしていません。OpenID 接続と OAuth 2.0 のみをサポートしています。  OAuth 2.0 プロトコルに加えられた、ｖ1.0 エンドポイントからの主な変更点は次のとおりです。 
+Microsoft ID プラットフォーム エンドポイントは SAML と WS-Federation をサポートしていません。OpenID 接続と OAuth 2.0 のみをサポートしています。  OAuth 2.0 プロトコルに加えられた、ｖ1.0 エンドポイントからの主な変更点は次のとおりです。
 
-* `email` 要求は、省略可能な要求が構成されている場合、**または**その要求の中で scope=email が指定されている場合に返されます。 
-* `resource` パラメーターに代わって、`scope` パラメーターがサポートされるようになりました。  
-* OAuth 2.0 仕様への準拠性を高めるため、多くの応答に変更が加えられました (たとえば、`expires_in` を文字列ではなく整数として正しく返すなど)。  
+* `email` 要求は、省略可能な要求が構成されている場合、**または**その要求の中で scope=email が指定されている場合に返されます。
+* `resource` パラメーターに代わって、`scope` パラメーターがサポートされるようになりました。
+* OAuth 2.0 仕様への準拠性を高めるため、多くの応答に変更が加えられました (たとえば、`expires_in` を文字列ではなく整数として正しく返すなど)。
 
 Microsoft ID プラットフォーム エンドポイントでサポートされているプロトコル機能の範囲について詳しく理解するには、[OpenID Connect および OAuth 2.0 プロトコルに関するリファレンス](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)を参照してください。
 
-#### <a name="saml-restrictions"></a>SAML の制限事項
+#### <a name="saml-usage"></a>SAML の使用状況
 
-Windows アプリケーションで Active Directory Authentication Library (ADAL) を使用している場合は、Windows 統合認証を活用している可能性がありますが、これは Security Assertion Markup Language (SAML) アサーション付与を使用しています。 この付与により、フェデレーション Azure AD テナントのユーザーは資格情報を入力せずに、オンプレミスの Active Directory インスタンスで自動的に認証できます。 SAML アサーションの付与は、Microsoft ID プラットフォーム エンドポイントではサポートされていません。
+Windows アプリケーションで Active Directory Authentication Library (ADAL) を使用している場合は、Windows 統合認証を活用している可能性がありますが、これは Security Assertion Markup Language (SAML) アサーション付与を使用しています。 この付与により、フェデレーション Azure AD テナントのユーザーは資格情報を入力せずに、オンプレミスの Active Directory インスタンスで自動的に認証できます。 SAML はエンタープライズ ユーザーで使用するために[引き続きサポートされているプロトコル](../develop/active-directory-saml-protocol-reference.md)ですが、v2.0 エンドポイントは OAuth 2.0 アプリケーションでのみ使用されます。
+
+## <a name="next-steps"></a>次の手順
+
+[Microsoft ID プラットフォームのドキュメント](../develop/index.yml)で詳細を確認してください。

@@ -10,20 +10,25 @@ ms.subservice: bing-custom-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 010f2960693a06a50cd15ac3bac2fe35b6c0985f
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: e70d4d83fcd9641fa86f013688b5a3a6e3652919
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434580"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338403"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Bing Custom Search API とは
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関するページを参照してください。
 
 Bing Custom Search API を使用すると、関心のあるトピックに合わせてカスタマイズした、広告なしの検索エクスペリエンスを作成できます。 Bing で検索するドメインと Web ページを指定できるほか、特定のコンテンツをピン留め、ブースト、またはレベル下げすることもできます。そのようにして Web の表示をカスタムすれば、適合度の高い検索結果をユーザーがすばやく見つけることができるようになります。 
 
 ## <a name="features"></a>特徴
 
-|特徴量  |説明  |
+|機能  |説明  |
 |---------|---------|
 |[カスタム リアルタイム検索候補](define-custom-suggestions.md)     | ユーザーが入力するときにドロップダウン リストとして表示される検索候補を提供します。       | 
 |[カスタム画像検索エクスペリエンス](get-images-from-instance.md)     | カスタム検索インスタンスで指定されたドメインや Web サイトから画像を検索する機能を実現できます。        |        
@@ -45,16 +50,15 @@ Bing Custom Search API を使用すると、関心のあるトピックに合わ
 
 検索インスタンスのカスタマイズについて詳しくは、[カスタム検索インスタンスの定義](define-your-custom-view.md)に関するページをご覧ください。
 
-既存のサービスやアプリケーションにおける検索結果の使用については、[Bing の利用と表示の要件](./use-and-display-requirements.md)に関するページを必ずお読みください。
+既存のサービスやアプリケーションにおける検索結果の使用については、[Bing の利用と表示の要件](../bing-web-search/use-display-requirements.md)に関するページを必ずお読みください。
 
-その他の提供されている API については、[Bing Search API ハブ ページ](../bing-web-search/search-the-web.md)をご覧ください。
+その他の提供されている API については、[Bing Search API ハブ ページ](../bing-web-search/overview.md)をご覧ください。
 
 各カスタム検索エンドポイントのリファレンス コンテンツをよく理解してください。 リファレンスには、検索結果を要求するときに使用するエンドポイント、ヘッダー、クエリ パラメーターが記載されています。 また、応答オブジェクトの定義も記載されています。
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
-- [Custom Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
-- [Custom Image API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference)
-- [Custom Video API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference)
-- [Custom Autosuggest API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-autosuggest-api-v7-reference)
-
+- [Custom Search API](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
+- [Custom Image API](/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference)
+- [Custom Video API](/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference)
+- [Custom Autosuggest API](/rest/api/cognitiveservices-bingsearch/bing-custom-autosuggest-api-v7-reference)

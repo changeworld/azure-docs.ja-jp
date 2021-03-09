@@ -1,14 +1,16 @@
 ---
 title: 制限と境界 - QnA Maker
 description: QnA Maker には、ナレッジ ベースとサービスの一部について、メタデータの制限があります。 テストして発行するためには、これらの制限内にナレッジ ベースを維持することが重要です。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 02/14/2020
-ms.openlocfilehash: cce95574c8ffc245818b61e9843c5f7984de972f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 11/09/2020
+ms.openlocfilehash: 1e57ae537c271e61f0b2d37f5320cb177b04802b
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524439"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164874"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 
@@ -49,6 +51,9 @@ ms.locfileid: "86524439"
 
 抽出できるファイルの最大数と最大ファイル サイズは、 **[QnA Maker の価格レベルの制限](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** に基づきます。
 
+> [!NOTE]
+> QnA Maker マネージド (プレビュー) は、追加できるソースの数に制限がない無料のサービスです。 管理 API と予測 API の両方に対して、スループットは現在、毎秒 10 トランザクションに制限されています。
+
 ### <a name="maximum-number-of-deep-links-from-url"></a>URL からのディープリンクの最大数
 
 URL ページから QnA を抽出するためにクロールできるディープリンクの最大数は **20** です。
@@ -77,10 +82,10 @@ URL ページから QnA を抽出するためにクロールできるディー�
 
 ## <a name="knowledge-base-content-limits"></a>ナレッジ ベースのコンテンツの制限
 ナレッジ ベース内のコンテンツの全体的な制限は以下のとおりです。
-* 回答のテキストの長さ: 25,000
-* 質問のテキストの長さ: 1,000
-* メタデータ キーのテキストの長さ: 100
-* メタデータ値のテキストの長さ: 500
+* 回答のテキストの長さ: 25,000 文字
+* 質問のテキストの長さ: 1,000 文字
+* メタデータ キーのテキストの長さ: 100 文字
+* メタデータ値のテキストの長さ: 500 文字
 * メタデータ名でサポートされる文字: アルファベット、数字、`_`
 * メタデータ値でサポートされる文字: `:` と `|` を除くすべての文字
 * ファイル名の長さ: 200
@@ -91,16 +96,18 @@ URL ページから QnA を抽出するためにクロールできるディー�
 
 ## <a name="create-knowledge-base-call-limits"></a>ナレッジ ベースの作成の呼び出しの制限
 これらは、ナレッジ ベース作成操作 (つまり、 *[KB を作成する]* のクリック、または CreateKnowledgeBase API の呼び出し) ごとの制限を表します。
-* 回答ごとの代替の質問の最大数: 該当なし
+* 回答ごとの代替質問の推奨最大数:該当なし
 * URL の最大数: 10
 * ファイルの最大数: 10
+* 呼び出しごとに許可される QnA の最大数:1000
 
 ## <a name="update-knowledge-base-call-limits"></a>ナレッジ ベースの更新の呼び出しの制限
 これらは、更新操作 (つまり、 *[Save and train]\(保存してトレーニング\)* のクリック、または UpdateKnowledgeBase API の呼び出し) ごとの制限を表します。
 * 各ソース名の長さ: 該当なし
-* 追加または削除される代替の質問の最大数: 該当なし
+* 追加または削除される代替質問の推奨最大数:該当なし
 * 追加または削除されるメタデータ フィールドの最大数: 10
 * 更新可能な URL の最大数: 5
+* 呼び出しごとに許可される QnA の最大数:1000
 
 ## <a name="next-steps"></a>次のステップ
 

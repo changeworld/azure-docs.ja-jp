@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 4d578e089edbd99f8a0d37d805c297b42f60b3f4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 263a67fd8fba2c336d1ed4d91475386a8ae175dd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555665"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005794"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Dynamic Signal を構成する
 
@@ -90,21 +90,21 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションで、手順 6 で説明するように、Dynamic Signal アカウントの **[テナント URL]** と **[シークレット トークン]** を入力します。
 
 6. Dynamic Signal 管理コンソールで、 **[Admin]\(管理者\) > [Advanced]\(詳細設定\) > [API]** に移動します。
 
-    ![Dynamic Signal のプロビジョニング](./media/dynamic-signal-provisioning-tutorial/secret-token-1.png)
+    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-1.png" alt-text="Dynamic Signal 管理コンソールのスクリーンショット。[Admin]\(管理\) メニューの [Advanced]\(詳細設定\) が強調表示されています。[詳細設定] メニューも表示されており、A P I が強調表示されています。" border="false":::
 
     **[SCIM API URL]** を **[Tenant URL]\(テナント URL\)** にコピーします。 **[Generate New Token]\(新しいトークンの生成\)** をクリックして、 **[Bearer Token]\(ベアラー トークン\)** を生成し、その値を **[Secret Token]\(シークレット トークン\)** にコピーします。
 
-    ![Dynamic Signal のプロビジョニング](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
+    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-2.png" alt-text="S C I M A P I U R L、[Generate New Token]\(新しいトークンの生成\)、および [Bearer Token]\(ベアラー トークン\) が強調表示され、[Bearer Token]\(ベアラー トークン\) ボックスにプレース ホルダーが表示されているスクリーンショット。" border="false":::
 
 7. 手順 5 の各フィールドに値を入力したら、 **[テスト接続]** をクリックして、Azure AD が Dynamic Signal に接続できることを確認します。 接続できない場合は、使用中の Dynamic Signal アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

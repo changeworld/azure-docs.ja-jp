@@ -1,19 +1,16 @@
 ---
 title: Livy Spark を使用した Azure HDInsight での Spark クラスターへのジョブの送信
 description: Apache Spark REST API を使用して Spark ジョブを Azure HDInsight クラスターにリモート送信する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: e5ed8fd2eba175a170c12c032e7c6ecf6a926b64
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ff63f4fbadd7cb9e7584e2aa045583a35e0363fd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084615"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930120"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Apache Spark REST API を使用してリモート ジョブを HDInsight Spark クラスターに送信する
 
@@ -27,7 +24,7 @@ HDInsight での Apache Spark クラスター。 手順については、「 [Cr
 
 ## <a name="submit-an-apache-livy-spark-batch-job"></a>Apache Livy Spark バッチ ジョブの送信
 
-バッチ ジョブを送信する前に、クラスターに関連付けられているクラスター ストレージにアプリケーション jar をアップロードする必要があります。 コピーには、[AzCopy](../../storage/common/storage-use-azcopy.md) コマンドライン ユーティリティを使用できます。 データのアップロードに使用できるクライアントは、他にも多数あります。 詳細については、[HDInsight での Apache Hadoop ジョブ用データのアップロード](../hdinsight-upload-data.md)に関するページを参照してください。
+バッチ ジョブを送信する前に、クラスターに関連付けられているクラスター ストレージにアプリケーション jar をアップロードする必要があります。 コピーには、[AzCopy](../../storage/common/storage-use-azcopy-v10.md) コマンドライン ユーティリティを使用できます。 データのアップロードに使用できるクライアントは、他にも多数あります。 詳細については、[HDInsight での Apache Hadoop ジョブ用データのアップロード](../hdinsight-upload-data.md)に関するページを参照してください。
 
 ```cmd
 curl -k --user "admin:password" -v -H "Content-Type: application/json" -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
@@ -155,7 +152,7 @@ Livy は、クラスター上で実行される Spark ジョブに対する高�
     {"id":0,"state":"starting","log":[]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    出力の最後の行に **state:starting**とある点に注意してください。 また、 **id:0**とも表示されています。 ここで、**0** はバッチ ID です。
+    出力の最後の行に **state:starting** とある点に注意してください。 また、 **id:0** とも表示されています。 ここで、**0** はバッチ ID です。
 
 1. これで、バッチ ID を使用して、この特定のバッチの状態を取得できるようになりました。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 3bb03444062a5652e4e0aad24560b90acd2ce2d2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 32c1dd06186f3485fe48b2831516661fb5f05ef3
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544819"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517839"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-syxsense"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Syxsense の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88544819"
 * ユーザーが自分の Azure AD アカウントを使用して Syxsense に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Syxsense では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Syxsense を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Syxsense では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Syxsense を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-syxsense-from-the-gallery"></a>ギャラリーからの Syxsense の追加
 
@@ -50,7 +50,7 @@ Azure AD への Syxsense の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Syxsense**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Syxsense** 」と入力します。
 1. 結果のパネルから **Syxsense** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -134,13 +134,13 @@ Syxsense に対する Azure AD SSO を構成してテストするには、次の
 
 1. 別のブラウザー ウィンドウで、Syxsense Web サイトに管理者としてサインインします。
 
-1. **設定アイコン**をクリックします。
+1. **設定アイコン** をクリックします。
 
-    ![Syxsense の構成](./media/syxsense-tutorial/configure1.png)
+    ![スクリーンショットは、設定アイコンを示しています。](./media/syxsense-tutorial/configure1.png)
 
 1. **[External Authentication]\(外部認証\)** をクリックし、 **[アプリのフェデレーション メタデータ URL]** の値を **[SAML2.0 Metadata]\(SAML2.0 メタデータ\)** ボックスに入力して、 **[Save]\(保存\)** をクリックします。
 
-    ![Syxsense の構成](./media/syxsense-tutorial/configure2.png)
+    ![[External Authentication]\(外部認証\) ページを示すスクリーンショット。ここで、アプリのフェデレーション メタデータ URL 値を入力できます。](./media/syxsense-tutorial/configure2.png)
 
 ### <a name="create-syxsense-test-user"></a>Syxsense のテスト ユーザーの作成
 
@@ -148,32 +148,32 @@ Syxsense に対する Azure AD SSO を構成してテストするには、次の
 
 1. 左側のナビゲーション パネルから、 **[User Accounts]\(ユーザー アカウント\)** をクリックします。
 
-    ![Syxsense の構成](./media/syxsense-tutorial/user1.png)
+    ![ナビゲーション パネルから [User Accounts]\(ユーザー アカウント\) が選択されていることを示すスクリーンショット。](./media/syxsense-tutorial/user1.png)
 
 1. **[追加]** をクリックします。
 
-    ![Syxsense の構成](./media/syxsense-tutorial/user2.png)
+    ![[User Accounts]\(ユーザー アカウント\) ページを示すスクリーンショット。ここで [追加] を選択できます。](./media/syxsense-tutorial/user2.png)
 
 1. 所属する組織の要件に従ってユーザーの詳細を入力し、 **[Save]\(保存\)** をクリックします。
 
-    ![Syxsense の構成](./media/syxsense-tutorial/user3.png)
+    ![情報を入力できるページを示すスクリーンショット。](./media/syxsense-tutorial/user3.png)
 
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Syxsense] タイルをクリックすると、SSO を設定した Syxsense に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Syxsense] タイルをクリックすると、SSO を設定した Syxsense に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Syxsense を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって Syxsense を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって Syxsense を保護する方法](/cloud-app-security/proxy-intro-aad)

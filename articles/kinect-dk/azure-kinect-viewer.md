@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, センサー, ビューアー, 視覚化, 深度, RGB, 色, IMU, オーディオ, マイク, ポイント クラウド
-ms.openlocfilehash: 57cf7df831e97da4143a7f196b69a3a10609a017
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f411de5854d516586dc64701cca729c692ce40e0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85276675"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166107"
 ---
 # <a name="azure-kinect-viewer"></a>Azure Kinect ビューアー
 
@@ -36,11 +36,11 @@ Azure Kinect ビューアーは[オープンソース](https://github.com/micros
 
 `k4aviewer.exe` を実行してアプリケーションを起動します。
 
-![ビューアーを使用したデバイスのファームウェア バージョンの確認](./media/how-to-guides/open-viewer.png)
+![起動されたビューアー アプリケーションを示すスクリーンショット。](./media/how-to-guides/open-viewer.png)
 
 ### <a name="use-the-viewer-with-live-data"></a>ライブ データでビューアーを使用する
 
-1. **[Open Device]\(デバイスを開く\)** セクションで、開くデバイスの**シリアル番号**を選択して開きます。 このときデバイスが見つからない場合は、 **[Refresh]\(更新\)** を選択します。
+1. **[Open Device]\(デバイスを開く\)** セクションで、開くデバイスの **シリアル番号** を選択して開きます。 このときデバイスが見つからない場合は、 **[Refresh]\(更新\)** を選択します。
 2. **[Open Device]\(デバイスを開く\)** ボタンをクリックします。
 3. **[Start]\(開始\)** を選択すると、既定の設定でデータのストリーミングが開始します。
 
@@ -60,8 +60,8 @@ Azure Kinect ビューアーは[オープンソース](https://github.com/micros
 
 深度カメラ ビューアーには、次の 2 つのウィンドウが表示されます。
 
-* 1 つ目は、IR 輝度を示すグレースケール イメージである*アクティブ輝度*と呼ばれます。
-* 2 つ目は、*深度*と呼ばれ、その深度データが色分け表示されます。
+* 1 つ目は、IR 輝度を示すグレースケール イメージである *アクティブ輝度* と呼ばれます。
+* 2 つ目は、 *深度* と呼ばれ、その深度データが色分け表示されます。
 
 次に示すように、深度ウィンドウのピクセルにカーソルを置くと、深度センサーの値が表示されます。
 

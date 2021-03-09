@@ -5,18 +5,15 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 81480bea735017d3fc59e9c6cf126c2146a0c968
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: references_regions
+ms.openlocfilehash: dd91622344263dc366a76c913ce0be95718550cd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798467"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705162"
 ---
 # <a name="system-requirements"></a>システム要件
-
-> [!IMPORTANT]
-> 現在、**Azure Remote Rendering** はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 この章では、*Azure Remote Rendering* (ARR) を操作するための最小システム要件を一覧表示します。
 
@@ -37,7 +34,7 @@ ms.locfileid: "88798467"
 
 | GPU 製造元 | サポートされているモデル |
 |-----------|:-----------|
-| NVIDIA | [このページの下部にある](https://developer.nvidia.com/video-encode-decode-gpu-support-matrix) **NVDEC サポート マトリックス**を確認してください。 GPU には、**H.265 4:2:0 8 ビット** 列が YES となっているものが必要です。 |
+| NVIDIA | [このページの下部にある](https://developer.nvidia.com/video-encode-decode-gpu-support-matrix) **NVDEC サポート マトリックス** を確認してください。 GPU には、**H.265 4:2:0 8 ビット** 列が YES となっているものが必要です。 |
 | AMD | 少なくともバージョン 6 の AMD の [Unified Video Decoder](https://en.wikipedia.org/wiki/Unified_Video_Decoder#UVD_6) を搭載した GPU。 |
 | Intel | Skylake 以降の CPU |
 
@@ -64,12 +61,48 @@ ms.locfileid: "88798467"
 
 ネットワーク問題のトラブルシューティングについては、[トラブルシューティング ガイド](../resources/troubleshoot.md#unstable-holograms)を参照してください。
 
+### <a name="network-firewall"></a>ネットワーク ファイアウォール
+
+### <a name="sdk-version--0176"></a>SDK バージョン >= 0.1.76
+
+Remote Rendering 仮想マシンでは、次の IP 範囲からの共有 IP アドレスを使用します。
+
+| 名前             | リージョン         | IP プレフィックス         |
+|------------------|:---------------|:------------------|
+| オーストラリア東部   | australiaeast  | 20.53.44.240/28   |
+| 米国東部          | eastus         | 20.62.129.224/28  |
+| 米国東部 2        | eastus2        | 20.49.103.240/28  |
+| 東日本       | japaneast      | 20.191.165.112/28 |
+| 北ヨーロッパ     | northeurope    | 52.146.133.64/28  |
+| 米国中南部 | southcentralus | 20.65.132.80/28   |
+| 東南アジア   | southeastasia  | 20.195.64.224/28  |
+| 英国南部         | uksouth        | 51.143.209.144/28 |
+| 西ヨーロッパ      | westeurope     | 20.61.99.112/28   |
+| 米国西部 2        | westus2        | 20.51.9.64/28     |
+
+(デバイス上やルーター内などの) ファイアウォールでこれらの IP 範囲と次のポート範囲がブロックされないようにします。
+
+| Port              | Protocol  | Allow    |
+|-------------------|---------- |----------|
+| 49152-65534       | TCP / UDP | 送信 |
+
+#### <a name="sdk-version--0176"></a>SDK バージョン < 0.1.76
+
+(デバイス上やルーター内などの) ファイアウォールが次のポートをブロックしていないことを確認します。
+
+| Port              | Protocol | Allow    | 説明 |
+|-------------------|----------|----------|-------------|
+| 50051             | TCP      | 送信 | 初期接続 (HTTP ハンドシェイク) |
+| 8266              | UDP      | 送信 | データ転送 |
+| 5000、5433、8443  | TCP      | 送信 | [ArrInspector ツール](../resources/tools/arr-inspector.md)に必要です|
+
+
 ## <a name="software"></a>ソフトウェア
 
 次のソフトウェアがインストールされている必要があります。
 
 * 最新バージョンの **Visual Studio 2019** [(ダウンロード)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* [Visual Studio tools for Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 特に、次の*ワークロード*のインストールは必須です。
+* [Visual Studio tools for Mixed Reality](/windows/mixed-reality/install-the-tools)。 特に、次の *ワークロード* のインストールは必須です。
   * **C++ によるデスクトップ開発**
   * **ユニバーサル Windows プラットフォーム (UWP) の開発**
 * **Windows SDK 10.0.18362.0** [(ダウンロード)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)

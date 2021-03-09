@@ -4,7 +4,6 @@ description: PowerShell を使用してプライベート IP アドレスを持�
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d5f18929-15e3-40a2-9ee3-8188bc248ed8
@@ -17,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: ced76b73a8a08e6886cf0cef04c74a82d05c75dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43c2e2c8905ca60e59caed3fdf1b4920f509fd88
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708129"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98783786"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>PowerShell を使用して静的プライベート IP アドレスを持つ仮想マシンを作成する
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+静的プライベート IP アドレスを持つ仮想マシン (VM) を作成できます。 サブネットのどのアドレスを VM に割り当てるかを選択する場合は、動的アドレスではなく、静的プライベート IP アドレスを割り当てます。 [静的プライベート IP アドレス](./public-ip-addresses.md#allocation-method)の詳細を参照してください。 既存の VM に割り当てられたプライベート IP アドレスの動的から静的への変更、またはパブリック IP アドレスの操作については、[IP アドレスの追加、変更、または削除](virtual-network-network-interface-addresses.md)に関する記事を参照してください。
 
-静的プライベート IP アドレスを持つ仮想マシン (VM) を作成できます。 サブネットのどのアドレスを VM に割り当てるかを選択する場合は、動的アドレスではなく、静的プライベート IP アドレスを割り当てます。 [静的プライベート IP アドレス](virtual-network-ip-addresses-overview-arm.md#allocation-method)の詳細を参照してください。 既存の VM に割り当てられたプライベート IP アドレスの動的から静的への変更、またはパブリック IP アドレスの操作については、[IP アドレスの追加、変更、または削除](virtual-network-network-interface-addresses.md)に関する記事を参照してください。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
@@ -109,5 +108,5 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>次のステップ
 
-- [プライベート IP アドレス](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)と Azure 仮想マシンへの[静的プライベート IP アドレス](virtual-network-network-interface-addresses.md#add-ip-addresses)の割り当ての詳細を確認します。
+- [プライベート IP アドレス](./private-ip-addresses.md)と Azure 仮想マシンへの[静的プライベート IP アドレス](virtual-network-network-interface-addresses.md#add-ip-addresses)の割り当ての詳細を確認します。
 - [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) と [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の仮想マシンの作成の詳細を確認します。

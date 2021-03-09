@@ -1,7 +1,7 @@
 ---
-title: Azure AD トークンと要求の種類
-description: Azure Active Directory (AAD) によって発行された SAML 2.0 トークンおよび JSON Web トークン (JWT) のクレームを、理解および評価するためのガイド
-documentationcenter: na
+title: SAML 2.0 トークン要求のリファレンス | Azure
+titleSuffix: Microsoft identity platform
+description: Microsoft の ID プラットフォームから発行された SAML 2.0 トークンに含まれる要求の詳細と、JWT のそれに相当するものなど、要求のリファレンス。
 author: kenwith
 services: active-directory
 manager: CelesteDG
@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 06/22/2018
+ms.date: 09/09/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: bab21bfc6dba6e9cd35c8053e943cb76339e2254
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 9c3132985866a4c245984ef632107c05ca1b3350
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114967"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348384"
 ---
-# <a name="azure-ad-saml-token-reference"></a>Azure AD SAML のトークン リファレンス
+# <a name="saml-token-claims-reference"></a>SAML トークン要求のリファレンス
 
-Azure Active Directory (Azure AD) は、各認証フローを処理する際に、複数の種類のセキュリティ トークンを出力します。 このドキュメントでは、各トークンの種類の形式、セキュリティ特性、内容について説明します。
+認証フローの処理ごとに、Microsoft ID プラットフォームから数種類のセキュリティ トークンが発行されます。 このドキュメントでは、SAML 2.0 トークンの形式、セキュリティ特性、内容について説明します。
 
 ## <a name="claims-in-saml-tokens"></a>SAML トークンの要求
 
@@ -30,11 +30,11 @@ Azure Active Directory (Azure AD) は、各認証フローを処理する際に�
 > | 名前 | 同等の JWT 要求 | 説明 | 例 |
 > | --- | --- | --- | ------------|
 > |対象ユーザー | `aud` |トークンの対象となる受信者。 トークンを受信するアプリケーションは、対象ユーザーの値が正しいことを検証し、異なる対象ユーザー向けのトークンをすべて拒否する必要があります。 | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
-> | 認証のインスタント | |認証が行われた日時を記録します。 | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
+> | 認証のインスタント | |認証が行われた日時を記録します。 | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` |
 > |認証方法 | `amr` |トークンのサブジェクトが認証された方法を示します。 | `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` |
 > |名 | `given_name` |Azure AD ユーザー オブジェクトに設定されたユーザーの名を示します。 | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname">`<br>`<AttributeValue>Frank<AttributeValue>`  |
-> |グループ | `groups` |サブジェクトのグループ メンバーシップを表すオブジェクト ID です。 これらの値は一意 (「オブジェクト ID」を参照) であり、アクセスの管理 (リソースへのアクセスを承認するなど) に安全に使用できます。 グループ クレームに含まれるグループは、アプリケーションごとに、アプリケーション マニフェストの ”groupMembershipClaims” プロパティを介して構成されます。 値が null の場合はすべてのグループが除外され、値が ”SecurityGroup” の場合は Active Directory セキュリティ グループのメンバーシップのみが含まれ、値が ”All” の場合はセキュリティ グループと Office 365 配布リストの両方が含まれます。 <br><br> **注**: <br> ユーザーが属するグループの数が制限 (SAML の場合は 150、JWT の場合は 200) を超える場合、超過分要求に、ユーザーのグループ リストを含む、Graph エンドポイントを指す要求ソースが追加されます 。 | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
-> | グループ超過分インジケーター | `groups:src1` | 長さは制限されていないが (上記 `hasgroups` を参照)、トークンには大きすぎるトークン要求の場合、ユーザーのすべてのグループ リストへのリンクが含まれます。 SAML の場合、これは `groups` 要求の代わりに新しい要求として追加されます。 | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
+> |グループ | `groups` |サブジェクトのグループ メンバーシップを表すオブジェクト ID です。 これらの値は一意 (「オブジェクト ID」を参照) であり、アクセスの管理 (リソースへのアクセスを承認するなど) に安全に使用できます。 グループ クレームに含まれるグループは、アプリケーションごとに、アプリケーション マニフェストの ”groupMembershipClaims” プロパティを介して構成されます。 値が null の場合はすべてのグループが除外され、値が "SecurityGroup" の場合は Active Directory セキュリティ グループのメンバーシップのみが含まれ、値が ”All” の場合はセキュリティ グループと Microsoft 365 配布リストの両方が含まれます。 <br><br> **注**: <br> ユーザーが属するグループの数が制限 (SAML の場合は 150、JWT の場合は 200) を超える場合、超過分要求に、ユーザーのグループ リストを含む、Graph エンドポイントを指す要求ソースが追加されます | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` |
+> | グループ超過分インジケーター | `groups:src1` | 長さは制限されていなくても、トークンには大きすぎるトークン要求の場合、ユーザーのすべてのグループ リストへのリンクが含まれます。 SAML の場合、これは `groups` 要求の代わりに新しい要求として追加されます。 | `<Attribute Name=" http://schemas.microsoft.com/claims/groups.link">`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` |
 > |ID プロバイダー | `idp` |トークンのサブジェクトを認証した ID プロバイダーを記録します。 この値は、ユーザー アカウントが発行者とは異なるテナントにある場合を除いて、発行者クレームの値と同じです。 | `<Attribute Name=" http://schemas.microsoft.com/identity/claims/identityprovider">`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` |
 > |IssuedAt | `iat` |トークンが発行された時刻が格納されます。 このクレームは、トークンの鮮度を測定するためによく使用されます。 | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |発行者 | `iss` |トークンを構築して返す Security Token Service (STS) を識別します。 Azure AD が返すトークンでは、発行者は sts.windows.net です。 発行者クレーム値の GUID は、Azure AD ディレクトリのテナント ID です。 テナント ID は、変更不可で信頼性の高いディレクトリの識別子です。 | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
@@ -152,10 +152,9 @@ Azure Active Directory (Azure AD) は、各認証フローを処理する際に�
 </t:RequestSecurityTokenResponse>
 ```
 
-## <a name="related-content"></a>関連コンテンツ
+## <a name="next-steps"></a>次の手順
 
-* Microsoft Graph API を使用してトークンの有効期間ポリシーを管理する方法の詳細については、[ポリシー リソース](/graph/api/resources/policy?view=graph-rest-beta)に関するページをご覧ください。
-* PowerShell コマンドレットを使用したポリシー管理の詳細およびサンプルについては、「[Configurable token lifetimes in Azure AD](../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) (Azure AD で構成可能なトークンの有効期間)」を参照してください。 
-* [カスタムの要求と省略可能な要求](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)をアプリケーションのトークンに追加します。
+* Microsoft Graph API を使用してトークンの有効期間ポリシーを管理する方法の詳細については、[Azure AD ポリシー リソースの概要](/graph/api/resources/policy)に関するページを参照してください。
+* [カスタムの要求と省略可能な要求](active-directory-optional-claims.md)をアプリケーションのトークンに追加します。
 * [SAML で シングル サインオン (SSO)](single-sign-on-saml-protocol.md) を使用します。
 * [Azure シングル サイン アウト SAML プロトコル](single-sign-out-saml-protocol.md) を使用します

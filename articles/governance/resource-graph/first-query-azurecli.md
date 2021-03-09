@@ -1,15 +1,15 @@
 ---
 title: クイック スタート:初めての Azure CLI クエリ
 description: このクイックスタートでは、手順に従って、Azure CLI の Resource Graph 拡張機能を有効にし、最初のクエリを実行します。
-ms.date: 08/10/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7d55aaae30176b3f0246dd254496465fb89b0e99
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 5111f59eb760afda4e206837ca5bdf8bcc201338
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051000"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917843"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>クイック スタート:Azure CLI を使用して最初の Resource Graph クエリを実行します
 
@@ -25,7 +25,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="add-the-resource-graph-extension"></a>Resource Graph 拡張機能を追加する
 
-Azure CLI を Azure Resource Graph のクエリに対して有効にするには、拡張機能を追加する必要があります。 [Windows 10上の bash](/windows/wsl/install-win10)、 [Cloud Shell](https://shell.azure.com) (スタンドアロンと内部の両方のポータル)、 [Azure CLI Docker 画像](https://hub.docker.com/r/microsoft/azure-cli/)、または、ローカルにインストールされた場合を含め、この拡張機能はAzure CLI を使用できる場合はいつでも動作します。
+Azure CLI を Azure Resource Graph のクエリに対して有効にするには、拡張機能を追加する必要があります。 [Windows 10上の bash](/windows/wsl/install-win10)、 [Cloud Shell](https://shell.azure.com) (スタンドアロンと内部の両方のポータル)、 [Azure CLI Docker 画像](https://hub.docker.com/_/microsoft-azure-cli)、または、ローカルにインストールされた場合を含め、この拡張機能はAzure CLI を使用できる場合はいつでも動作します。
 
 1. 最新の Azure CLI がインストールされていることを確認します (**2.0.76** 以降)。 インストールされていない場合は、こちらの[手順](/cli/azure/install-azure-cli-windows)に従ってください。
 
@@ -48,7 +48,7 @@ Azure CLI を Azure Resource Graph のクエリに対して有効にするには
 
 ## <a name="run-your-first-resource-graph-query"></a>最初の Resource Graph クエリを実行する
 
-選択した環境に Azure CLI 拡張機能が追加されたので、簡単な Resource Graph クエリを試してみましょう。 クエリは、各リソースの**名前**および**リソースの種類**を使用して、最初の 5 つの Azure リソースを返します。
+選択した環境に Azure CLI 拡張機能が追加されたので、簡単な Resource Graph クエリを試してみましょう。 クエリは、各リソースの **名前** および **リソースの種類** を使用して、最初の 5 つの Azure リソースを返します。
 
 1. `graph`拡張機能と`query`コマンドを使用して、最初の Azure Resource Graph クエリを実行します。
 
@@ -62,7 +62,7 @@ Azure CLI を Azure Resource Graph のクエリに対して有効にするには
    > [!NOTE]
    > このクエリは`order by`などの並べ替え修飾子を示しませんので、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。
 
-1. `order by`**名前**プロパティに対するクエリを更新します。
+1. `order by`**名前** プロパティに対するクエリを更新します。
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with 'order by'
@@ -72,7 +72,7 @@ Azure CLI を Azure Resource Graph のクエリに対して有効にするには
    > [!NOTE]
    > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 このコマンドの順序によって、まずクエリ結果が制限され、次にその結果が並べ替えられます。
 
-1. 最初に**名前**プロパティで並べ替え (`order by`) を行ってから結果を上位 5 件に制限 (`limit`) するようにクエリを更新します。
+1. 最初に **名前** プロパティで並べ替え (`order by`) を行ってから結果を上位 5 件に制限 (`limit`) するようにクエリを更新します。
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`

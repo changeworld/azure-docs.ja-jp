@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 12/04/2020
 ms.author: banders
-ms.openlocfilehash: 787d54ba2050a0293957310dbc8377b83a7f7bfc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c7c28e64822a6aefa17e8baa4ef42a3b3fea8adb
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690053"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589778"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Azure 無料アカウントで無料サービスの使用状況を確認する
 
@@ -22,18 +22,13 @@ Azure 無料アカウントに含まれる無料サービスは、そのサー�
 ## <a name="check-usage-in-the-azure-portal"></a>Azure portal で使用状況を確認する
 
 1.  [Azure portal](https://portal.azure.com) にサインインします。
-
-2.  **サブスクリプション**を検索します。
-
+1.  **サブスクリプション** を検索します。  
     ![ポータルでのサブスクリプションの検索を示すスクリーン ショット](./media/check-free-service-usage/billing-search-subscriptions.png)
-
-3.  Azure の無料アカウントにサインアップしたときに作成されたサブスクリプションを選択します。
-
-4.  下へスクロールして、無料のサービス使用量を示す表を見つけます。
-
+1.  Azure の無料アカウントにサインアップしたときに作成されたサブスクリプションを選択します。
+1.  下へスクロールして、無料のサービス使用量を示す表を見つけます。  
     ![無料サービスの使用状況を表示したスクリーンショット](./media/check-free-service-usage/subscription-usage-free-services.png)
 
-    表には次の列が含まれています。
+表には次の列が含まれています。
 
 * **測定:** 使用しているサービスの測定単位を示します。
 * **使用状況/使用制限:** 当月の使用状況とメーターの使用制限。

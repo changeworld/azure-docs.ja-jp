@@ -1,0 +1,41 @@
+### YamlMime:Landing
+title: IoT デバイス開発のドキュメント
+summary: クラウドに接続された組み込みデバイスとデバイス アプリケーションを開発するための Azure IoT ドキュメントを紹介します。
+metadata:
+  title: IoT デバイス開発
+  description: クラウドに接続された組み込みデバイスとデバイス アプリケーションを開発するために Azure IoT を使用する方法について説明します。
+  services: iot-develop
+  ms.service: iot-develop
+  ms.topic: landing-page
+  author: timlt
+  ms.author: timlt
+  ms.date: 01/11/2021
+  ms.openlocfilehash: bb3bd1766e20fd16fa996eb66008140009f6bd5d
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101721448"
+landingContent:
+- title: IoT デバイスの開発の概要
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure IoT デバイスの開発とは
+      url: about-iot-develop.md
+    - text: 使用する SDK
+      url: about-iot-sdks.md
+- title: デバイス アプリケーション開発の概要
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: デバイス テレメトリを IoT Central に送信する
+      url: quickstart-send-telemetry-python.md
+    - text: デバイス テレメトリを IoT Hub に送信する
+      url: quickstart-send-telemetry-cli-python.md
+- title: 埋め込みデバイス開発の概要
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 埋め込みデバイス開発の概要
+      url: quickstart-device-development.md

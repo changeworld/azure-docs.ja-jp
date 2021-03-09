@@ -3,20 +3,18 @@ title: 予測に役立つパターン - LUIS
 titleSuffix: Azure Cognitive Services
 description: パターンを使用すると、さらに多くの発話を提供しなくても意図の精度を高めることができます。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.author: diberry
-ms.openlocfilehash: 1ecdbaa28cad633817497f4af2091b9e38ba7db2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cda71c6e825ff27ba9b03e1306ccb287663e8613
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538056"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025961"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>パターンは予測精度を改善する
 パターンは、複数の発話が非常に似ているときに、精度を改善するように設計されています。  パターンを使用すると、さらに多くの発話を提供しなくても意図の精度を高めることができます。
@@ -50,7 +48,7 @@ ms.locfileid: "86538056"
 複数の発話を 1 つのパターンにまとめた場合は、エンティティ予測の向上を期待しないでください。 単純エンティティを動作させるには、発話を追加するか、リスト エンティティを使用する必要があります。そうでないと、パターンは動作しません。
 
 ## <a name="patterns-use-entity-roles"></a>パターンはエンティティのロールを使用する
-パターン内の 2 つ以上のエンティティがコンテキスト上関連性がある場合、パターンはエンティティの[ロール](luis-concept-roles.md)を使用して、エンティティに関するコンテキスト情報を抽出します。
+パターン内の 2 つ以上のエンティティがコンテキスト上関連性がある場合、パターンはエンティティの[ロール](./luis-concept-entity-types.md)を使用して、エンティティに関するコンテキスト情報を抽出します。
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>パターンありとなしの場合の予測スコア
 発話例が十分に指定されている場合、LUIS はパターンなしで予測の信頼度を改善できます。 パターンがあれば、それほど多くの発話を指定しなくても信頼度スコアを改善できます。

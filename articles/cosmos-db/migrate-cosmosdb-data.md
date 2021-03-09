@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b24ea79737c9e1f64abb7f62807352dbd9573695
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263546"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018073"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>数百テラバイトのデータを Azure Cosmos DB に移行する 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB には、テラバイト単位のデータを格納できます。 大規模なデータ移行を実行して、運用ワークロードを Azure Cosmos DB に移動することができます。 この記事では、Azure Cosmos DB への大規模なデータの移行に伴う課題について説明し、それらの課題に対応して Azure Cosmos DB にデータを移行するツールについて説明します。 このケース スタディでは、顧客は Cosmos DB SQL API を使用しています。  
 
@@ -38,11 +39,11 @@ Azure Cosmos DB にデータを移行するための既存のツールには、�
 
 ## <a name="custom-tool-with-bulk-executor-library"></a>Bulk Executor ライブラリを使用するカスタム ツール 
 
-上記のセクションで説明した課題は、複数のインスタンス間で簡単にスケールアウトできるカスタム ツールを使用することによって解決できます。また、このツールには、一時的な障害に対する回復力があります。 さらに、このカスタム ツールでは、さまざまなチェックポイントで移行を一時停止したり再開したりできます。 Azure Cosmos DB には、これらの機能の一部が組み込まれた [Bulk Executor ライブラリ](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview)が既に用意されています。 たとえば、Bulk Executor ライブラリには、一時的なエラーを処理する機能が既にあり、単一ノード内でスレッドをスケールアウトして、ノードあたり約 500 K の RU を使用することができます。 また、Bulk Executor ライブラリは、ソース データセットを、チェックポイント処理として独立して操作されるマイクロバッチにパーティション分割します。  
+上記のセクションで説明した課題は、複数のインスタンス間で簡単にスケールアウトできるカスタム ツールを使用することによって解決できます。また、このツールには、一時的な障害に対する回復力があります。 さらに、このカスタム ツールでは、さまざまなチェックポイントで移行を一時停止したり再開したりできます。 Azure Cosmos DB には、これらの機能の一部が組み込まれた [Bulk Executor ライブラリ](./bulk-executor-overview.md)が既に用意されています。 たとえば、Bulk Executor ライブラリには、一時的なエラーを処理する機能が既にあり、単一ノード内でスレッドをスケールアウトして、ノードあたり約 500 K の RU を使用することができます。 また、Bulk Executor ライブラリは、ソース データセットを、チェックポイント処理として独立して操作されるマイクロバッチにパーティション分割します。  
 
 このカスタム ツールでは、Bulk Executor ライブラリを使用して複数のクライアント間でのスケールアウトをサポートし、取り込みプロセス中のエラーを追跡します。 このツールを使用するには、Azure Data Lake Storage (ADLS) でソース データを個別のファイルにパーティション分割して、異なる移行ワーカーが各ファイルを取得して Azure Cosmos DB に取り込めるようにする必要があります。 カスタム ツールでは、個別のコレクションが使用されます。それには ADLS 内の個々のソース ファイルの移行の進行状況に関するメタデータが格納されており、それらに関連したエラーが追跡されています。  
 
-次の図は、このカスタム ツールを使用した移行プロセスについて説明しています。 このツールは一連の仮想マシンで実行されており、各仮想マシンは Azure Cosmos DB の追跡コレクションに対してクエリを実行し、いずれかのソース データ パーティションでリースを取得します。 この処理が完了すると、ソース データ パーティションはツールによって読み取られ、Bulk Executor ライブラリを使用して Azure Cosmos DB に取り込まれます。 次に、追跡コレクションが更新されて、データ インジェストの進行状況と発生したエラーが記録されます。 データ パーティションが処理された後、ツールは次に使用可能なソース パーティションを照会しようとします。 すべてのデータが移行されるまで、次のソース パーティションの処理が続行されます。 ツールのソース コードは、[こちら](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion)から入手できます。  
+次の図は、このカスタム ツールを使用した移行プロセスについて説明しています。 このツールは一連の仮想マシンで実行されており、各仮想マシンは Azure Cosmos DB の追跡コレクションに対してクエリを実行し、いずれかのソース データ パーティションでリースを取得します。 この処理が完了すると、ソース データ パーティションはツールによって読み取られ、Bulk Executor ライブラリを使用して Azure Cosmos DB に取り込まれます。 次に、追跡コレクションが更新されて、データ インジェストの進行状況と発生したエラーが記録されます。 データ パーティションが処理された後、ツールは次に使用可能なソース パーティションを照会しようとします。 すべてのデータが移行されるまで、次のソース パーティションの処理が続行されます。 このツールのソース コードは、[Azure Cosmos DB 一括インジェスト](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion) リポジトリで入手できます。  
 
  
 :::image type="content" source="./media/migrate-cosmosdb-data/migrationsetup.png" alt-text="移行ツールの設定" border="false":::
@@ -142,14 +143,8 @@ Azure Cosmos DB ではストレージは自動的にスケールアウトされ�
 
 移行が完了したら、Azure Cosmos DB のドキュメント数がソース データベースのドキュメント数と同じであることを確認できます。 この例では Azure Cosmos DB の合計サイズは 65 テラバイトになりました。 移行後は、インデックス作成を選択的に有効にし、RU をワークロードの操作に必要なレベルまで下げることができます。
 
-## <a name="contact-the-azure-cosmos-db-team"></a>Azure Cosmos DB チームへの問い合わせ
-このガイドに従えば、大きなデータセットを適切に Azure Cosmos DB に移行することができます。ただし、移行の規模が大きい場合は、Azure Cosmos DB 製品チームに連絡して、データ モデルと全般的なアーキテクチャ レビューの検証を依頼することをお勧めします。 実際のデータセットとワークロードに基づいて、製品チームは、パフォーマンスとコストに関して、お客様に妥当な他の最適化案を提示することもできます。 大規模な移行に関して Azure Cosmos DB チームに支援を要請するには、問題のタイプに "General Advisory (一般的な勧告)" を、問題のサブタイプに "Large (TB+) migrations (大規模な (TB 以上の) 移行)" を選択してサポート チケットを開きます。以下にその例を示します。
-
-:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="移行のサポート トピック":::
-
-
 ## <a name="next-steps"></a>次のステップ
 
 * [.NET](bulk-executor-dot-net.md) と [Java](bulk-executor-java.md) で Bulk Executor ライブラリを使用するサンプル アプリケーションを試して、さらに詳しく学習します。 
 * Bulk Executor ライブラリは Cosmos DB Spark コネクタに統合されています。詳細については、[Azure Cosmos DB Spark コネクタ](spark-connector.md)に関する記事をご覧ください。  
-* 大規模な移行に関して別途支援が必要な場合は、問題のタイプに "General Advisory (一般的な勧告)" を、問題のサブタイプに "Large (TB+) migrations (大規模な (TB 以上の) 移行)" を選択してサポート チケットを開き、Azure Cosmos DB 製品チームに連絡します。 
+* 大規模な移行に関して別途支援が必要な場合は、問題のタイプに "General Advisory (一般的な勧告)" を、問題のサブタイプに "Large (TB+) migrations (大規模な (TB 以上の) 移行)" を選択してサポート チケットを開き、Azure Cosmos DB 製品チームに連絡します。

@@ -3,7 +3,7 @@ title: Azure Media Services の概要 | Microsoft Docs
 description: Microsoft Azure Media Services は拡張可能なクラウド ベースのプラットフォームです。これにより、開発者はスケーラブルなメディア管理の構築、アプリケーションの配信を実行できます。 この記事では、Azure Media Services の概要を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2019
-ms.author: juliako
-ms.openlocfilehash: 0d896b0ce23116f1b87718f492d407ac094b9e6a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.date: 11/03/2020
+ms.author: inhenkel
+ms.openlocfilehash: 08a419f021e0315468cb6fa5917b30bb2977d958
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89261157"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695511"
 ---
 # <a name="azure-media-services-overview"></a>Azure Media Services の概要
 
@@ -29,7 +29,7 @@ ms.locfileid: "89261157"
 > * [Version 2](media-services-overview.md)
 
 > [!NOTE]
-> Media Services v2 に新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 に新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 Microsoft Azure Media Services (AMS) は拡張可能なクラウド ベースのプラットフォームです。これにより、開発者はスケーラブルなメディア管理の構築、アプリケーションの配信を実行できます。 Media Services は、各種クライアント (TV、PC、モバイル デバイスなど) へのオンデマンドとライブ ストリーミングでの配信でビデオやオーディオのコンテンツの安全なアップロード、格納、エンコード、パッケージ化を可能にする REST API に基づいています。
 
@@ -86,13 +86,12 @@ Azure Media Services の概念については、「 [概念](media-services-conc
 
 ## <a name="supported-scenarios-and-availability-of-media-services-across-data-centers"></a>Media Services のサポートされているシナリオとデータ センター全体における可用性
 
-詳細については、[AMS のシナリオおよびデータ センター全体における機能とサービスの可用性](scenarios-and-availability.md)に関する記事を参照してください。
+Azure の一般的なシナリオの詳細については、[AMS のシナリオ](scenarios-and-availability.md)に関するページを参照してください。
+リージョン別の提供状況については、[メディア サービスの提供状況](availability-regions-v-2.md)に関するページを参照してください。
 
 ## <a name="service-level-agreement-sla"></a>サービス レベル アグリーメント (SLA)
 
 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」参照してください。
-
-データ センターにおける可用性については、[可用性](scenarios-and-availability.md#availability)に関するセクションを参照してください。
 
 ## <a name="support"></a>サポート
 

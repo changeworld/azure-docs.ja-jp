@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure Stack Edge と Azure Data Box Gateway のドキュメント - オンライン転送
-summary: ネットワーク経由で高パフォーマンスのデータ転送を行うには、Azure Data Box Gateway および Azure Stack Edge デバイスを使用します。 クラウド アーカイブ、ディザスター リカバリー、またはクラウド規模でのデータ処理のためにデータを送信する場合は、Data Box Gateway を選択します。 データを Azure に移動する前に、そのデータのフィルター処理、分析、変換を行う場合は Data Box Edge を使用します。 Azure Data Box Edge は、最近、Azure Stack Edge にブランドが変更されました。
+title: Azure Stack Edge のドキュメント
+summary: Azure Stack Edge デバイスを使用して、コンピューティング、ストレージ、ネットワーク、ハードウェアアクセラレータによる機械学習などの Azure の機能を任意のエッジ ロケーションに提供します。
 metadata:
-  title: Azure Stack Edge と Azure Data Box Gateway のドキュメント - オンライン転送
-  description: Azure に対してネットワーク経由で高パフォーマンスのデータ転送を行うための Data Box Gateway と (Data Box Edge が変更された) Azure Stack Edge のドキュメント。
+  title: Azure Stack Edge のドキュメント
+  description: Azure に対してネットワーク経由でハイ パフォーマンスのデータ転送を行うための Azure Stack Edge のドキュメント。
   services: databox
   ms.service: databox
   ms.subservice: edge
@@ -11,52 +11,58 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 11/04/2019
-  ms.openlocfilehash: bf4f5d7589bdf9ae9b456f7dbe24c8d5fc02afaf
-  ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+  ms.date: 10/27/2020
+  ms.openlocfilehash: 654c55436a47d91318548997aecc2605ae342099
+  ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "82562357"
+  ms.lasthandoff: 01/25/2021
+  ms.locfileid: "98763067"
 landingContent:
-- title: Azure Stack Edge と Data Box Gateway について
+- title: Azure Stack Edge について
   linkLists:
   - linkListType: overview
     links:
-    - text: Data Box Gateway とは
-      url: data-box-gateway-overview.md
-    - text: Azure Stack Edge とは
+    - text: Azure Stack Edge Pro GPU とは
+      url: azure-stack-edge-gpu-overview.md
+    - text: Azure Stack Edge Pro FPGA とは
       url: azure-stack-edge-overview.md
+    - text: Azure Stack Edge R とは
+      url: azure-stack-edge-j-series-overview.md
+    - text: Azure Stack Edge Mini R とは
+      url: azure-stack-edge-k-series-overview.md
   - linkListType: architecture
     links:
     - text: Azure のデータ転送オプションの選択
-      url: /azure/storage/common/storage-choose-data-transfer-solution
+      url: ../storage/common/storage-choose-data-transfer-solution.md
     - text: ネットワーク転送またはオフライン転送の使用
-      url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
+      url: ../storage/common/storage-solution-large-dataset-low-network.md#offline-transfer-or-network-transfer
   - linkListType: whats-new
     links:
-    - text: 1905 リリース ノート
-      url: data-box-gateway-1905-release-notes.md
+    - text: 2101 リリース ノート
+      url: azure-stack-edge-gpu-2101-release-notes.md
 - title: 要件と制限
   linkLists:
   - linkListType: concept
     links:
-    - text: Data Box Gateway の要件
-      url: data-box-gateway-system-requirements.md
-    - text: Azure Stack Edge の要件
-      url: azure-stack-edge-system-requirements.md
-    - text: Data Box Gateway の制限
-      url: data-box-gateway-limits.md
-    - text: Azure Stack Edge の制限
+    - text: Azure Stack Edge Pro GPU の要件
+      url: azure-stack-edge-gpu-system-requirements.md
+    - text: Azure Stack Edge Pro FPGA の要件
+      url: azure-stack-edge-gpu-system-requirements.md
+    - text: Azure Stack Edge Pro の制限
       url: azure-stack-edge-limits.md
 - title: 配置
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Data Box Gateway
-      url: data-box-gateway-deploy-prep.md
-    - text: Azure Stack Edge
-      url: azure-stack-edge-deploy-prep.md
+    - text: デプロイ前のチェックリストを見る
+      url: azure-stack-edge-gpu-deploy-checklist.md
+    - text: Azure Stack Edge Pro GPU
+      url: azure-stack-edge-gpu-deploy-prep.md
+    - text: Marketplace 経由の GPU モジュール
+      url: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+    - text: IoT Edge 経由の Kubernetes ワークロード
+      url: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
 - title: 開発
   linkLists:
   - linkListType: how-to-guide
@@ -65,31 +71,27 @@ landingContent:
       url: azure-stack-edge-create-iot-edge-module.md
   - linkListType: download
     links:
-    - text: サンプル - Azure Stack Edge 向けの C#
-      url: https://docs.microsoft.com/samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
+    - text: サンプル - Azure Stack Edge Pro GPU 向けの C#
+      url: /samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
 - title: 管理する
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Data Box Gateway の共有
-      url: data-box-gateway-manage-shares.md
-    - text: Azure Stack Edge の共有
+    - text: Azure Stack Edge Pro の共有
       url: azure-stack-edge-manage-shares.md
     - text: Edge コンピューティング
       url: azure-stack-edge-manage-compute.md
-    - text: Edge コンピューティングのネットワーク
-      url: azure-stack-edge-extend-compute-access-modules.md
-- title: '[トラブルシューティング]'
+    - text: Edge ストレージ アカウント
+      url: azure-stack-edge-j-series-manage-storage-accounts.md
+- title: トラブルシューティング
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Data Box Gateway
-      url: data-box-gateway-troubleshoot.md
-    - text: Azure Stack Edge
-      url: azure-stack-edge-troubleshoot.md
+    - text: Azure Stack Edge GPU
+      url: azure-stack-edge-gpu-troubleshoot.md
     - text: Edge コンピューティング モジュール
-      url: azure-stack-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules
-    - text: Azure Stack Edge の返却または交換
+      url: azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge
+    - text: Azure Stack Edge GPU を返却する
       url: azure-stack-edge-return-device.md
     - text: サポート チケットを開く
       url: azure-stack-edge-contact-microsoft-support.md

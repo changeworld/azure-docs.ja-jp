@@ -3,18 +3,20 @@ title: 変更フィード プロセッサ ライブラリから Azure Cosmos DB 
 description: ご利用のアプリケーションを、変更フィード プロセッサ ライブラリの使用から、Azure Cosmos DB SDK V3 の使用に移行する方法について説明します。
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 7a15e5135cd89d7360a1357e3518b1253e80ee65
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ce2d4d3ad3ae349718f01584ec077b18e11e4f8d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019523"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341265"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>変更フィード プロセッサ ライブラリから Azure Cosmos DB .NET V3 SDK に移行する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、[変更フィード プロセッサ ライブラリ](https://github.com/Azure/azure-documentdb-changefeedprocessor-dotnet)を使用する既存のアプリケーションのコードを、最新バージョンの .NET SDK (.NET V3 SDK とも呼ばれる) の[変更フィード](change-feed.md)機能に移行するために必要な手順について説明します。
 
@@ -23,7 +25,7 @@ ms.locfileid: "89019523"
 .NET V3 SDK には、いくつかの破壊的変更があります。ご利用のアプリケーションを移行する上で重要な手順を次に示します。
 
 1. `DocumentCollectionInfo` インスタンスを、監視されているコンテナーおよびリース コンテナーに対する `Container` 参照に変換します。
-1. `WithProcessorOptions` を使用しているカスタマイズについては、間隔に `WithLeaseConfiguration` と `WithPollInterval` を使用し、`WithStartTime`開始時刻[に ](how-to-configure-change-feed-start-time.md) を使用し、最大項目数を定義するために `WithMaxItems` を使用するように更新する必要があります。
+1. `WithProcessorOptions` を使用しているカスタマイズについては、間隔に `WithLeaseConfiguration` と `WithPollInterval` を使用し、`WithStartTime`開始時刻[に ](./change-feed-processor.md#starting-time) を使用し、最大項目数を定義するために `WithMaxItems` を使用するように更新する必要があります。
 1. `GetChangeFeedProcessorBuilder` 上の `processorName` については `ChangeFeedProcessorOptions.LeasePrefix` 上で構成されている値と一致するように設定します。それ以外の場合は `string.Empty` を使用します。
 1. 変更は `IReadOnlyList<Document>` として配信されなくなりました。代わりに、それは `IReadOnlyCollection<T>` となります。ここで、`T` は定義する必要のある型です。基本項目クラスはもうありません。
 1. 変更を処理する場合、実装は不要になりました。その代わりに、[デリゲートを定義](change-feed-processor.md#implementing-the-change-feed-processor)する必要があります。 デリゲートは静的関数とすることができます。実行中に状態を維持する必要がある場合は、独自のクラスを作成して、インスタンス メソッドをデリゲートとして渡すこともできます。
@@ -60,4 +62,4 @@ SDK V3 変更フィード プロセッサでは、移行されたアプリケー
 
 * [変更フィード プロセッサの概要](change-feed-processor.md)
 * [変更フィード推定機能の使用](how-to-use-change-feed-estimator.md)
-* [変更フィード プロセッサの開始時刻](how-to-configure-change-feed-start-time.md)
+* [変更フィード プロセッサの開始時刻](./change-feed-processor.md#starting-time)

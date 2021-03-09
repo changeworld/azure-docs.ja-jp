@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: ed1c5b749b778ef8334ea3b31ef17d3bf106484f
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 66a135cd1629aa2befcd4c56d835473791d62ce8
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835546"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91974007"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>複数の NIC を持つ Windows 仮想マシンの作成と管理
 Azure の仮想マシン (VM) は、複数の仮想ネットワーク インターフェイス カード (NIC) を持つことができます。 一般的なシナリオは、フロントエンドとバックエンドの接続に異なるサブネットを使用する場合です。 VM 上の複数の NIC を複数のサブネットに関連付けることはできますが、それらのサブネットはすべて同じ仮想ネットワーク (vNet) 内に存在する必要があります。 この記事では、複数の NIC を持つ VM を作成する方法について説明します。 既存の VM に NIC を追加するまたはそこから NIC を削除する方法についても説明します。 [VM のサイズ](../sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
@@ -70,7 +70,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     -SubnetId $backEnd.Id
 ```
 
-一般に、[ネットワーク セキュリティ グループ](../../virtual-network/security-overview.md)を作成して、VM へのネットワーク トラフィックをフィルターし、[ロード バランサー](../../load-balancer/load-balancer-overview.md)を作成して、複数の VM 間でトラフィックを分散します。
+一般に、[ネットワーク セキュリティ グループ](../../virtual-network/network-security-groups-overview.md)を作成して、VM へのネットワーク トラフィックをフィルターし、[ロード バランサー](../../load-balancer/load-balancer-overview.md)を作成して、複数の VM 間でトラフィックを分散します。
 
 ### <a name="create-the-virtual-machine"></a>仮想マシンの作成
 では、VM 構成を構築してみましょう。 各 VM サイズについて、1 つの VM に追加できる NIC の合計数には制限があります。 詳細については、「[Windows VM のサイズ](../sizes.md)」をご覧ください。
@@ -288,4 +288,4 @@ Azure では、既定のゲートウェイが、仮想マシンにアタッチ�
     リストされたルートのうち、**Gateway** の値が *192.168.1.1* になっているルートは、プライマリ ネットワーク インターフェイスの既定のルートです。 **Gateway** の値が *192.168.2.1* になっているルートは、追加したルートです。
 
 ## <a name="next-steps"></a>次のステップ
-複数の NIC を持つ VM を作成する場合、「[Windows VM のサイズ](../sizes.md)」を確認してください。 VM の各サイズでサポートされている NIC の最大数に注意してください。 
+複数の NIC を持つ VM を作成する場合、「[Windows VM のサイズ](../sizes.md)」を確認してください。 VM の各サイズでサポートされている NIC の最大数に注意してください。

@@ -3,26 +3,24 @@ title: 複合エンティティ型 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 複合エンティティは、事前構築済みエンティティ、シンプル、正規表現、リスト エンティティなどの他のエンティティで構成されます。 個別のエンティティが、エンティティ全体を形成します。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.author: diberry
-ms.openlocfilehash: 81299751affe5f59e1132950ccb80844fcc1fae3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3d936555a4d9a9c80718a24ba892c762f5a8354a
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681391"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608394"
 ---
 # <a name="composite-entity"></a>複合エンティティ
 
 複合エンティティは、事前構築済みエンティティ、シンプル、正規表現、リスト エンティティなどの他のエンティティで構成されます。 個別のエンティティが、エンティティ全体を形成します。
 
 > [!CAUTION]
-> このエンティティは**非推奨**です。 [機械学習エンティティ](reference-entity-machine-learned-entity.md)に移行してください。
+> このエンティティは **非推奨** です。 [機械学習エンティティ](reference-entity-machine-learned-entity.md)に移行してください。
 
 **このエンティティは、次のようなデータに最適です。**
 
@@ -173,7 +171,6 @@ number の `2` と ToLocation `cairo` の間には、どのエンティティに
 ```
 
 * * *
-
 
 |データ オブジェクト|エンティティ名|値|
 |--|--|--|

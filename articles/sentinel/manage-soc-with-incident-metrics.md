@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 9d8d0fc46a463bda31595988d807854ef146d333
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 408913fed864ee5f966b96c81afbfee4b2dc8678
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761724"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660731"
 ---
 # <a name="manage-your-soc-better-with-incident-metrics"></a>インシデント メトリックを使用して SOC をより適切に管理する
 
@@ -39,7 +39,7 @@ ms.locfileid: "88761724"
 
 インシデントを作成または更新するたびに、新しいログ エントリがテーブルに追加されます。 これにより、インシデントに加えられた変更を追跡し、さらに強力な SOC メトリックを使用できます。ただし、(実行中のクエリによっては) 重複するインシデント エントリを削除する必要もあるため、このテーブルに対するクエリの構築時は、このことに注意する必要があります。 
 
-たとえば、すべてのインシデントのリストがインシデント番号で並べ替えられて返されるが、インシデントごとに最新のログのみが返されようにする場合は、`arg_max()` [集計関数](https://docs.microsoft.com/azure/data-explorer/kusto/query/arg-max-aggfunction)とともに KQL [集計演算子](https://docs.microsoft.com/azure/data-explorer/kusto/query/summarizeoperator) 使用すれば実行できます。
+たとえば、すべてのインシデントのリストがインシデント番号で並べ替えられて返されるが、インシデントごとに最新のログのみが返されようにする場合は、`arg_max()` [集計関数](/azure/data-explorer/kusto/query/arg-max-aggfunction)とともに KQL [集計演算子](/azure/data-explorer/kusto/query/summarizeoperator) 使用すれば実行できます。
 
 
 ```Kusto

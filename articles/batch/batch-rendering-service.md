@@ -3,14 +3,14 @@ title: レンダリングの概要
 description: Azure を使用したレンダリングと Azure Batch Rendering 機能の概要
 author: mscurrell
 ms.author: markscu
-ms.date: 08/02/2018
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: 9fac5d3efabc5d9f796c91d688f35e01aeefdca3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1cd07f9322837c03e15aaeabec993820deb3170a
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092764"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232116"
 ---
 # <a name="rendering-using-azure"></a>Azure を使用したレンダリング
 
@@ -18,11 +18,11 @@ ms.locfileid: "87092764"
 
 レンダリング ワークロードは、メディアおよびエンターテイメント業界で特殊効果 (VFX) によく使用されています。 また、広告、小売、石油とガス、製造など、他にもレンダリングが使用されている業界は多数あります。
 
-レンダリングのプロセスは演算の負荷が大きく、生成されるフレームや画像が大量になるため、各画像をレンダリングするのに何時間もかかることがあります。  このため、レンダリングは、Azure および Azure Batch を利用して多数のレンダーを並列実行できる、最適なバッチ処理ワークロードです。
+レンダリングのプロセスは演算の負荷が大きく、生成されるフレームや画像が大量になるため、各画像をレンダリングするのに何時間もかかることがあります。  このため、レンダリングは、Azure を活用して多数のレンダーを並列実行したり、GPU を含む広範なハードウェアを利用したりすることができる最適なバッチ処理ワークロードです。
 
 ## <a name="why-use-azure-for-rendering"></a>レンダリングに Azure を使用する理由
 
-レンダリングが Azure および Azure Batch に最適なワークロードである理由は多数あります。
+レンダリングが Azure に最適なワークロードである理由は数多くあります。
 
 * レンダリング ジョブを複数の処理に分割し、複数の VM を使って並列実行できる。
   * アニメーションは多数のフレームで構成され、各フレームを並列レンダリングできます。  各フレームの処理に使用できる VM が多いほど、すべてのフレームとアニメーションを速く生成できます。
@@ -36,68 +36,31 @@ ms.locfileid: "87092764"
 * アプリケーション、ワークロード、および期間に従って、さまざまなハードウェアから選択可能。
   * Azure では様々なハードウェアが用意されており、Batch での割り当ておよび管理が可能です。
   * プロジェクトごとに、要件として最適な価格やパフォーマンスが求められる場合や、最適な全体的パフォーマンスが求められる場合があります。  シーンやレンダリング アプリケーションが違えば、メモリ要件も異なってきます。  レンダリング アプリケーションの中には、最高のパフォーマンスまたは特定の機能を実現するために GPU を活用するものもあります。 
-* 低優先度 VM によるコスト削減。
-  * 低優先度 VM により、通常のオンデマンド VM と比較して大幅な割引が実現します。これは一部のジョブの種類に適しています。
-  * Azure Batch によって低優先度 VM を割り当てることができます。この Batch では、VM を柔軟に使用して広範な要件に対応できます。  Batch プールは専用 VM と低優先度 VM の両方で構成されます。VM の種類の組み合わせはいつでも変更できます。
+* 低優先度または[スポット VM](https://azure.microsoft.com/pricing/spot/)のコスト削減:
+  * 低優先度およびスポット VM は、Standard VM に比べて大幅な割引を実現できるように提供されており、一部のジョブの種類に適しています。
+  
+## <a name="existing-on-premises-rendering-environment"></a>既存のオンプレミスのレンダリング環境
 
-## <a name="options-for-rendering-on-azure"></a>Azure でのレンダリング オプション
+最もよくあるケースは、PipelineFX Qube、Royal Render、Thinkbox Deadline、カスタム アプリケーションなどのレンダー管理アプリケーションによって管理されている既存のオンプレミス レンダー ファームです。  要件は、Azure VM を使用してオンプレミス レンダー ファームの容量を拡張することです。
 
-Azure ではさまざまな機能をレンダリング ワークロードに使用できます。  どの機能を使用するかは、既存の環境および要件によって異なります。
+Azure インフラストラクチャおよびサービスを使用すると、オンプレミスの容量を補うために Azure が使用されるハイブリッド環境を作成することができます。 以下に例を示します。
 
-### <a name="existing-on-premises-rendering-environment-using-a-render-management-application"></a>レンダー管理アプリケーションを使用した既存のオンプレミス レンダリング環境
+* [Virtual Network](../virtual-network/virtual-networks-overview.md) を使用して、オンプレミスのレンダー ファームと同じネットワーク上に Azure リソースを配置します。
+* [Avere vFXT for Azure](../avere-vfxt/avere-vfxt-overview.md) または [Azure HPC Cache](../hpc-cache/hpc-cache-overview.md) を使用してソース ファイルを Azure にキャッシュし、帯域幅の使用と待機時間を削減して、パフォーマンスが最大限に高めます。
+* 既存のライセンス サーバーを仮想ネットワーク上に確実に配置し、Azure ベースの追加容量に対応するために必要な追加のライセンスを購入します。
 
-最もよくあるのは、PipelineFX Qube、Royal Render、Thinkbox Deadline などのレンダー管理アプリケーションによって管理されている既存のオンプレミス レンダー ファームです。  要件は、Azure VM を使用してオンプレミス レンダー ファームの容量を拡張することです。
+## <a name="no-existing-render-farm"></a>既存のレンダー ファームなし
 
-レンダー管理ソフトウェアには Azure サポートが組み込まれている場合と、Microsoft で Azure サポートを追加するプラグインを利用できるようにする場合があります。 サポートされているレンダー マネージャーおよび有効な機能の詳細については、[レンダー マネージャーの使用](./batch-rendering-render-managers.md)に関する記事をご覧ください。
+クライアント ワークステーションでレンダリングを実行することもできますが、レンダリングの負荷が増加しており、ワークステーションの能力だけを使用すると時間がかかり過ぎます。
 
-### <a name="custom-rendering-workflow"></a>カスタム レンダリング ワークフロー
+主に次の 2 つのオプションを使用できます。
 
-要件は、VM で既存のレンダー ファームを拡張することです。  Azure Batch プールでは多数の VM を割り当てて、低優先度 VM の使用を許可し、フルプライスの VM とともに動的に自動スケーリングできます。また、一般的なレンダリング アプリケーションについては従量課金制のライセンスが用意されています。
+* Royal Render などのオンプレミスのレンダー マネージャーをデプロイし、容量またはパフォーマンスがさらに必要な場合に Azure を使用できるようにハイブリッド環境を構成する。 レンダー マネージャーは、レンダリング ワークロード向けに特別に調整されていて、一般的なクライアント アプリケーション用のプラグインが含まれるため、レンダリング ジョブを簡単に送信することが可能。
 
-### <a name="no-existing-render-farm"></a>既存のレンダー ファームなし
+* Azure Batch を使用してコンピューティング能力を割り当ておよび管理するほか、ジョブ スケジュールを指定してレンダー ジョブを実行するカスタム ソリューション。
 
-クライアント ワークステーションでレンダリングを実行できる場合もありますが、レンダリング ワークロードが増加してしまい、ワークステーションの能力を占有するには時間がかかり過ぎることがあります。  Azure Batch を使用すると、レンダー ファームのコンピューティングをオンデマンドで割り当てることも、レンダリング ジョブのスケジュールを Azure レンダー ファームに設定することもできます。
+## <a name="next-steps"></a>次の手順
 
-## <a name="azure-batch-rendering-capabilities"></a>Azure Batch Rendering の機能
+ [Azure インフラストラクチャおよびサービスを使用して、既存のオンプレミスのレンダー ファームを拡張する](https://azure.microsoft.com/solutions/high-performance-computing/rendering/)方法について学習します。
 
-Azure Batch を使用すると、Azure で並列ワークロードを実行できます。  これにより、アプリケーションがインストールおよび実行されている VM を多数作成して管理することができます。  また、これらのアプリケーションのインスタンスを実行するための包括的なジョブ スケジュール機能も用意されており、VM へのタスクの割り当て、キュー登録、アプリケーション監視などが可能です。
-
-多くのワークロードで Azure Batch を使用できますが、次の機能は、特にレンダリング ワークロードをよりすばやく簡単に実行するために利用できます。
-
-* 事前インストールされたグラフィックスおよびレンダリング アプリケーションを含む VM イメージ:
-  * Azure Marketplace VM イメージを使用でき、これには一般的なグラフィックスおよびレンダリング アプリケーションが含まれます。自分でアプリケーションをインストールしたり、アプリケーションがインストールされている独自のカスタム イメージを作成したりする必要はありません。 
-* レンダリング アプリケーション用の従量課金制ライセンス:
-  * コンピューティング VM に対する支払いに加え、アプリケーションへの分単位での課金を選択できます。これにより、ライセンスを購入したり、アプリケーション用にライセンス サーバーを構成したりする必要がなくなります。  また、従量課金制では、ライセンス数が固定されていないため、負荷の変化や予期しない負荷に対応することもできます。
-  * 従量課金制ライセンスを使用せずに、事前インストールされたアプリケーションを、ご自身のライセンスで使用することもできます。 通常､このためには、オンプレミスまたは Azure ベースのライセンス サーバーをインストールし､Azure 仮想ネットワークを使用して、ライセンス サーバーにレンダリング プールを接続します。
-* クライアント設計およびモデリング アプリケーション用のプラグイン:
-  * プラグインを使用すると、エンドユーザーが、Autodesk Maya などのクライアント アプリケーションから直接 Azure Batch を利用して、プールの作成やジョブの送信を行うことができます。また、より多くのコンピューティング能力を活用すれば、レンダリング処理を高速化できます。
-* レンダー マネージャーの統合:
-  * Azure Batch がレンダー管理アプリケーションに統合されているか、プラグインを使用して Azure Batch 統合が提供されます。
-
-Azure Batch は複数の方法で使用できますが、そのすべての方法が Azure Batch Rendering に適用されます。
-
-* API:
-  * [REST](/rest/api/batchservice)、[.NET](/dotnet/api/overview/azure/batch)、[Python](/python/api/overview/azure/batch)、[Java](/java/api/overview/azure/batch)、またはその他のサポートされている API を使用してコードを記述します。  開発者は、クラウドかオンプレミス ベースかにかかわらず、既存のアプリケーションまたはワークフローに Azure Batch 機能を統合できます。  たとえば、[Autodesk Maya プラグイン](https://github.com/Azure/azure-batch-maya)では、Batch の呼び出しに Batch Python API が使用され、プールの作成と管理、ジョブおよびタスクの送信、ステータスの監視が行われます。
-* コマンドライン ツール:
-  * [Azure コマンド ライン](/cli/azure/)または[Azure PowerShell](/powershell/azure/) を使用すると、Batch の使用のスクリプトを作成できます。
-  * 特に、Batch CLI テンプレートのサポートにより、プールの作成とジョブの送信が大幅に容易になります。
-* UI:
-  * [Batch Explorer](https://github.com/Azure/BatchExplorer) は、Batch アカウントを管理および監視することもできるクロス プラットフォーム クライアント ツールですが、Azure portal の UI よりも充実した機能がいくつか用意されています。  サポートされている各アプリケーション用にカスタマイズされた一連のプールおよびジョブ テンプレートがあり、このようなテンプレートを使うことで、プールの作成やジョブの送信を容易に行うことができます。
-  * Azure portal を使用して、Azure Batch を管理および監視できます。
-* クライアント アプリケーション プラグイン:
-  * Batch レンダリングをクライアント設計およびモデリング アプリケーション内から直接使えるようにするプラグインを使用できます。 このプラグインでは、主に、現在の 3D モデルに関するコンテキスト情報が含まれる Batch Explorer アプリケーションが呼び出されます。
-  * 次のプラグインを使用できます。
-    * [Azure Batch for Maya](https://github.com/Azure/azure-batch-maya)
-    * [3DS Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
-    * [Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
-
-## <a name="getting-started-with-azure-batch-rendering"></a>Azure Batch Rendering の使用開始
-
-Azure Batch Rendering を試すには、次の入門チュートリアルを参照してください。
-
-* [Batch Explorer を使って Blender シーンをレンダリングする](./tutorial-rendering-batchexplorer-blender.md)
-* [Batch CLI を使用して、Autodesk 3DS Max シーンをレンダリングする](./tutorial-rendering-cli.md)
-
-## <a name="next-steps"></a>次のステップ
-
-[こちらの記事](./batch-rendering-applications.md)で、Azure Marketplace VM イメージに含まれているレンダリング アプリケーションとバージョンの一覧を確認します。
+[Azure Batch のレンダリング機能](batch-rendering-functionality.md)について詳細を学習します。

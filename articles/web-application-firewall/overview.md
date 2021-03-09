@@ -8,10 +8,10 @@ ms.date: 03/18/2020
 ms.author: victorh
 ms.topic: overview
 ms.openlocfilehash: 49024c86d09f5cdd9e8b04d5a49f60021660b0c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "79475789"
 ---
 # <a name="what-is-azure-web-application-firewall"></a>Azure Web アプリケーション ファイアウォールとは
@@ -28,7 +28,7 @@ WAF のソリューションでは、個々の Web アプリケーションを�
 
 WAF は Microsoft の Azure Application Gateway、Azure Front Door、Azure Content Delivery Network (CDN) サービスでデプロイすることができます。 Azure CDN の WAF は現在、パブリック プレビューの段階にあります。  WAF には、特定のサービスごとにカスタマイズされた機能があります。 各サービスの WAF 機能の詳細については、各サービスの概要に関するトピックを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Application Gateway 上の Web アプリケーション ファイアウォールの詳細については、「[Application Gateway 上の Web アプリケーション ファイアウォール](./ag/ag-overview.md)」を参照してください。
 - Azure Front Door Service 上の Web アプリケーション ファイアウォールの詳細については、[Azure Front Door Service 上の Web アプリケーション ファイアウォール](./afds/afds-overview.md)に関するページを参照してください。

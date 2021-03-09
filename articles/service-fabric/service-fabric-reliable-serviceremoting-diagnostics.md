@@ -5,15 +5,15 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
-ms.openlocfilehash: 89a7a545dd334f892ee27b97995de40d7b6416dc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9c7d466d6e8fd36b4445966b92ee753becf96c64
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245927"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791763"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Reliable Service Remoting の診断とパフォーマンス監視
-Reliable ServiceRemoting ランタイムからは[パフォーマンス カウンター](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1)が出力されます。 パフォーマンス カウンターは ServiceRemoting の動作状況を示し、トラブルシューティングとパフォーマンス監視に役立ちます。
+Reliable ServiceRemoting ランタイムからは[パフォーマンス カウンター](/dotnet/api/system.diagnostics.performancecounter)が出力されます。 パフォーマンス カウンターは ServiceRemoting の動作状況を示し、トラブルシューティングとパフォーマンス監視に役立ちます。
 
 
 ## <a name="performance-counters"></a>パフォーマンス カウンター
@@ -36,7 +36,7 @@ Reliable ServiceRemoting ランタイムは、次のパフォーマンス カウ
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*ServiceFabricPartitionID* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric パーティション ID の文字列表現です。 パーティション ID は GUID で、その文字列表現は、書式指定子 "D" を持つ [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) メソッドを使用して生成されます。
+*ServiceFabricPartitionID* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric パーティション ID の文字列表現です。 パーティション ID は GUID で、その文字列表現は、書式指定子 "D" を持つ [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) メソッドを使用して生成されます。
 
 *ServiceReplicaOrInstanceId* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric レプリカ/インスタンス ID の文字列表現です。
 
@@ -57,7 +57,7 @@ Reliable ServiceRemoting ランタイムは、次のパフォーマンス カウ
 
 *ServiceRuntimeMethodId* は、内部使用のために Fabric サービス ランタイムによって生成される 32 ビット整数の文字列表現です。 これは、その一意性を確保し、他のパフォーマンス カウンター インスタンス名と競合しないようにするために、パフォーマンス カウンター インスタンス名に含まれます。 パフォーマンス カウンター インスタンス名のこの部分を解釈しようとしないでください。
 
-*ServiceFabricPartitionID* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric パーティション ID の文字列表現です。 パーティション ID は GUID で、その文字列表現は、書式指定子 "D" を持つ [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) メソッドを使用して生成されます。
+*ServiceFabricPartitionID* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric パーティション ID の文字列表現です。 パーティション ID は GUID で、その文字列表現は、書式指定子 "D" を持つ [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) メソッドを使用して生成されます。
 
 *ServiceReplicaOrInstanceId* は、パフォーマンス カウンター インスタンスが関連付けられている Service Fabric レプリカ/インスタンス ID の文字列表現です。
 

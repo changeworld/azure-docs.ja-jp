@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: f176e8fceb4d3e2e07398e6cb878180c8fe2321b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2cc9d3e0fb711a0662852ce4f2c5a08dc626f246
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533157"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854735"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files の NFS ボリュームを作成する
 
-Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMBv3、またはデュアル プロトコル (NFSv3 and SMB) を使用したボリュームの作成がサポートされています。 ボリュームの容量消費は、そのプールのプロビジョニング容量を前提としてカウントされます。 この記事では、NFS ボリュームを作成する方法について説明します。 
+Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュアル プロトコル (NFSv3 と SMB) を使用したボリュームの作成がサポートされています。 ボリュームの容量消費は、そのプールのプロビジョニング容量を前提としてカウントされます。 この記事では、NFS ボリュームを作成する方法について説明します。 
 
 ## <a name="before-you-begin"></a>開始する前に 
 * あらかじめ容量プールを設定しておく必要があります。  
@@ -62,7 +62,7 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMBv3、またはデュア
 
         ボリューム名は、各容量プール内で一意である必要があります。 3 文字以上になるようにしてください。 任意の英数字を使用できます。   
 
-        ボリューム名として `default` を使用することはできません。
+        `default` または `bin` をボリューム名として使用することはできません。
 
     * **容量プール**  
         ボリュームを作成する容量プールを指定します。
@@ -71,6 +71,11 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMBv3、またはデュア
         ボリュームに割り当てられる論理ストレージの量を指定します。  
 
         **[使用可能なクォータ]** フィールドには、選択した容量プール内の未使用の領域のうち、新しいボリュームの作成に使用できる領域の量が示されます。 新しいボリュームのサイズが、使用可能なクォータを超えてはいけません。  
+
+    * **スループット (MiB/秒)**    
+        ボリュームが手動 QoS 容量プールで作成されている場合は、ボリュームに必要なスループットを指定します。   
+
+        ボリュームが自動 QoS 容量プールで作成されている場合は、このフィールドに表示される値は (クォータ x サービス レベルのスループット) です。   
 
     * **Virtual Network**  
         ボリュームへのアクセス元となる Azure 仮想ネットワーク (VNet) を指定します。  
@@ -87,7 +92,7 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMBv3、またはデュア
     
         ![サブネットの作成](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * 既存のスナップショット ポリシーをボリュームに適用する場合は、 **[詳細セクションの表示]** をクリックして展開し、プルダウン メニューでスナップショット ポリシーを選択します。 
+    * 既存のスナップショット ポリシーをボリュームに適用する場合は、 **[詳細セクションの表示]** をクリックして展開し、スナップショットのパスを非表示にするかどうかを指定して、プルダウン メニューでスナップショット ポリシーを選択します。 
 
         スナップショット ポリシーの作成については、「[スナップショット ポリシーを管理する](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)」を参照してください。
 
@@ -95,7 +100,7 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMBv3、またはデュア
 
 3. **[プロトコル]** をクリックし、次のアクションを実行します。  
     * ボリュームのプロトコルの種類として **[NFS]** を選択します。   
-    * 新しいボリュームのエクスポート パスを作成する際に使用する**ファイル パス**を指定します。 ボリュームのマウントとアクセスには、このエクスポート パスが使用されます。
+    * 新しいボリュームのエクスポート パスを作成する際に使用する **ファイル パス** を指定します。 ボリュームのマウントとアクセスには、このエクスポート パスが使用されます。
 
         ファイル パス名には、文字、数字、ハイフン ("-") のみを含めることができます。 長さは 16 文字から 40 文字でなければなりません。 
 
@@ -125,4 +130,4 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMBv3、またはデュア
 * [Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [NFS ボリュームのエクスポート ポリシーを構成する](azure-netapp-files-configure-export-policy.md)
 * [Azure NetApp Files のリソース制限](azure-netapp-files-resource-limits.md)
-* [Azure サービスの仮想ネットワーク統合について理解する](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
+* [Azure サービスの仮想ネットワーク統合について理解する](../virtual-network/virtual-network-for-azure-services.md)

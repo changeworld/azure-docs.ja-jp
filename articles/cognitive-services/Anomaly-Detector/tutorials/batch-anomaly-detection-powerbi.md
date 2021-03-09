@@ -3,19 +3,19 @@ title: チュートリアル:バッチ検出と Power BI を使用して異常�
 titleSuffix: Azure Cognitive Services
 description: Anomaly Detector API と Power BI を使用して、時系列データ全体を通しての異常を視覚化する方法について説明します。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 06/17/2020
-ms.author: aahi
-ms.openlocfilehash: 527ce1c7d434ae94c91c78c865c00aa0687a73cb
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.date: 09/10/2020
+ms.author: mbullwin
+ms.openlocfilehash: a17301e0807877662ae1bf34ade48e90a1d30c0c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245504"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006202"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>チュートリアル:バッチ検出と Power BI を使用して異常を視覚化する
 
@@ -56,7 +56,7 @@ Power BI は、最初の列のタイムスタンプを `Date/Time` データ型�
 
 Power Query エディターで **[変換]** リボンをクリックします。 **[任意の列]** グループで **[データ型:]** ドロップダウン メニューを開き、 **[テキスト]** を選択します。
 
-![Power BI のデータ ソースの "ナビゲーター" 画面のイメージ](../media/tutorials/data-type-drop-down.png)
+![[データ型] ドロップ ダウンの画像](../media/tutorials/data-type-drop-down.png)
 
 列の型の変更について通知されたら、 **[現在のものを置換]** をクリックします。 その後、 **[ホーム]** リボンの **[閉じて適用]** または **[適用]** をクリックします。
 
@@ -66,7 +66,7 @@ Power Query エディターで **[変換]** リボンをクリックします。
 
 新しいクエリが選択されていることを確認してから、 **[詳細エディター]** をクリックします。
 
-![Power BI の "詳細エディター" ボタンのイメージ](../media/tutorials/advanced-editor-screen.png)
+![[詳細エディター] 画面の画像](../media/tutorials/advanced-editor-screen.png)
 
 詳細エディター内で、次の Power Query M スニペットを使用して、テーブルから列を抽出して API に送信します。 その後、クエリにより JSON 応答からテーブルが作成されて返されます。 `apiKey` 変数を有効な Anomaly Detector API キーに置き換え、`endpoint` をエンドポイントに置き換えます。 詳細エディターにクエリを入力したら、 **[完了]** をクリックします。
 
@@ -80,7 +80,7 @@ Power Query エディターで **[変換]** リボンをクリックします。
     jsonbody    = "{ ""Granularity"": ""daily"", ""Sensitivity"": 95, ""Series"": "& jsontext &" }",
     bytesbody   = Text.ToBinary(jsonbody),
     headers     = [#"Content-Type" = "application/json", #"Ocp-Apim-Subscription-Key" = apikey],
-    bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
+    bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody, ManualStatusHandling={400}]),
     jsonresp    = Json.Document(bytesresp),
 
     respTable = Table.FromColumns({
@@ -114,12 +114,12 @@ Power Query エディターで **[変換]** リボンをクリックします。
 
 **[パラメーターの入力]** の下にある `Sheet1` を選択してデータ シートでクエリを呼び出して、 **[呼び出し]** をクリックします。
 
-!["詳細エディター" ボタンのイメージ](../media/tutorials/invoke-function-screenshot.png)
+![呼び出し機能の画像](../media/tutorials/invoke-function-screenshot.png)
 
 ## <a name="data-source-privacy-and-authentication"></a>データ ソースのプライバシーと認証
 
 > [!NOTE]
-> データのプライバシーとアクセスのための組織のポリシーに注意してください。 詳細については、[Power BI Desktop のプライバシー レベル](https://docs.microsoft.com/power-bi/desktop-privacy-levels)に関するページを参照してください。
+> データのプライバシーとアクセスのための組織のポリシーに注意してください。 詳細については、[Power BI Desktop のプライバシー レベル](/power-bi/desktop-privacy-levels)に関するページを参照してください。
 
 クエリは外部データ ソースを利用するため、実行しようとすると警告メッセージが表示されることがあります。
 
@@ -148,11 +148,11 @@ Power BI のメイン画面で、上で作成したクエリの使用を開始�
 * LowerMargins
 * ExpectedValues
 
-![新しいクイック メジャー画面のイメージ](../media/tutorials/chart-settings.png)
+![グラフ設定の画像](../media/tutorials/chart-settings.png)
 
 フィールドを追加したら、グラフをクリックし、すべてのデータ ポイントが表示されるようにサイズを変更します。 次のようなスクリーンショットのようなグラフが表示されます。
 
-![新しいクイック メジャー画面のイメージ](../media/tutorials/chart-visualization.png)
+![グラフの視覚化の画像](../media/tutorials/chart-visualization.png)
 
 ### <a name="display-anomaly-data-points"></a>異常データ ポイントを表示する
 
@@ -162,15 +162,15 @@ Power BI ウィンドウの右側にある **[フィールド]** ウィンドウ
 
 表示される画面で、計算として **[フィルターされた値]** を選択します。 **[基準値]** を `Sum of Value` に設定します。 次に、 **[呼び出された関数]** フィールドの `IsAnomaly` を **[フィルター]** までドラッグします。 **[フィルター]** ドロップダウン メニューから `True` を選択します。
 
-![新しいクイック メジャー画面のイメージ](../media/tutorials/new-quick-measure-2.png)
+![新しいクイック メジャー画面のイメージ 2](../media/tutorials/new-quick-measure-2.png)
 
 **[OK]** をクリックすると、フィールドの一覧の下部に `Value for True` フィールドが表示されます。 これを右クリックして、名前を「**異常**」に変更します。 これをグラフの **[値]** に追加します。 次に、 **[形式]** ツールを選択し、X 軸の種類を **[カテゴリ別]** に設定します。
 
-![新しいクイック メジャー画面のイメージ](../media/tutorials/format-x-axis.png)
+![X 軸の形式変更の画像](../media/tutorials/format-x-axis.png)
 
 **[形式]** ツールで **[データの色]** をクリックして、グラフに色を適用します。 次のようなグラフが表示されます。
 
-![新しいクイック メジャー画面のイメージ](../media/tutorials/final-chart.png)
+![完成したグラフの画像](../media/tutorials/final-chart.png)
 
 ## <a name="next-steps"></a>次のステップ
 

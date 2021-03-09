@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: c9e9ea2e59537a1c0c8e372a766fba3aa9a1b9a0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: bc0ac1a6e882f4197828bf79c7989c16b2eb16f7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88122160"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217670"
 ---
 # <a name="quickstart-create-a-virtual-network---resource-manager-template"></a>クイック スタート:仮想ネットワークを作成する - Resource Manager テンプレート
 
@@ -36,8 +36,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 :::code language="json" source="~/quickstart-templates/101-vnet-two-subnets/azuredeploy.json" range="001-96" highlight="56-92":::
 
 このテンプレートには、次の Azure リソースが定義されています。
-- [**Microsoft.Network/virtualNetworks**](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks): Azure 仮想ネットワークを作成します。
--  [**Microsoft.Network/virtualNetworks/subnets**](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks/subnets): サブネットを作成します。
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks): Azure 仮想ネットワークを作成します。
+-  [**Microsoft.Network/virtualNetworks/subnets**](/azure/templates/microsoft.network/virtualnetworks/subnets): サブネットを作成します。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
@@ -56,7 +56,7 @@ Azure への Resource Manager テンプレートのデプロイ:
 
 仮想ネットワークを使用して作成されたリソースを探索します。
 
-テンプレートにある仮想ネットワークの JSON の構文とプロパティに関する詳細については、[Microsoft.Network/virtualNetworks](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks) に関する記事を参照してください。
+テンプレートにある仮想ネットワークの JSON の構文とプロパティに関する詳細については、[Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks) に関する記事を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

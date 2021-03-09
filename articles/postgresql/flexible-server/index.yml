@@ -1,0 +1,110 @@
+### YamlMime:Landing
+title: フレキシブル サーバー (プレビュー) のドキュメント
+summary: Azure Database for PostgreSQL - フレキシブル サーバー (プレビュー) は、フル マネージドのサービスとしての PostgreSQL データベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。 Azure Database for PostgreSQL では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。 クイックスタート、チュートリアル、およびサンプルを使用して、フレキシブル サーバーの使用方法を学習してください。
+metadata:
+  title: Azure Database for PostgreSQL - フレキシブル サーバー (プレビュー)
+  description: Azure Database for PostgreSQL - フレキシブル サーバー (プレビュー) は、PostgreSQL Community Edition を基盤として開発者向けに構築されている、Microsoft クラウドのリレーショナル データベース サービスです。
+  author: sunilagarwal
+  ms.author: sunila
+  ms.date: 09/22/2020
+  ms.service: postgresql
+  ms.topic: landing-page
+  ms.openlocfilehash: 215a34c7adcd9f5628bb164deecaf94d2b885b1d
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "91710670"
+landingContent:
+- title: フレキシブル サーバー (プレビュー) について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: フレキシブル サーバーとは
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: フレキシブル サーバーを作成する
+      url: quickstart-create-server-portal.md
+  - linkListType: tutorial
+    links:
+    - text: フレキシブル サーバーを使用して Django アプリを作成する
+      url: tutorial-django-app-service-postgres.md
+  - linkListType: whats-new
+    links:
+    - text: ブログを確認する
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
+- title: 管理する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 計算とストレージのオプション
+      url: concepts-compute-storage.md
+    - text: ネットワーキング
+      url: concepts-networking.md
+    - text: Postgres のバージョン
+      url: concepts-supported-versions.md
+    - text: 拡張機能
+      url: concepts-extensions.md
+    - text: Monitor
+      url: concepts-monitoring.md
+    - text: 論理レプリケーション
+      url: concepts-logical.md
+  - linkListType: how-to-guide
+    links:
+    - text: サーバーを管理する
+      url: how-to-manage-server-portal.md
+    - text: サーバーを停止または起動する
+      url: how-to-stop-start-server-portal.md
+    - text: スケールアップ
+      url: how-to-scale-compute-storage-portal.md
+    - text: サーバーを再起動する
+      url: how-to-restart-server-portal.md
+    - text: ログの構成とアクセス
+      url: howto-configure-and-access-logs.md
+    - text: メンテナンスのスケジュール
+      url: how-to-maintenance-portal.md
+- title: ビジネス継続性
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ビジネス継続性の概要
+      url: concepts-business-continuity.md
+    - text: 高可用性
+      url: concepts-high-availability.md
+    - text: バックアップと復元
+      url: concepts-backup-restore.md
+  - linkListType: how-to-guide
+    links:
+    - text: 高可用性を管理する
+      url: how-to-manage-high-availability-portal.md
+    - text: サーバーの復元
+      url: how-to-restore-server-portal.md
+- title: 接続する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Python を使用して接続する
+      url: connect-python.md
+  - linkListType: tutorial
+    links:
+    - text: 仮想ネットワークで Web アプリを接続する
+      url: tutorial-webapp-server-vnet.md
+- title: 移行
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: pg_dump と pg_restore を使用してデータベースを移行する
+      url: ../howto-migrate-using-dump-and-restore.md
+    - text: オンラインで移行する
+      url: ../howto-migrate-online.md
+- title: 関連項目
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI の開発者用リファレンス
+      url: /cli/azure/postgres
+    - text: REST API の開発者用リファレンス
+      url: /rest/api/postgresql/
+    - text: Azure Resource Manager のテンプレート
+      url: /azure/templates/microsoft.dbforpostgresql/allversions

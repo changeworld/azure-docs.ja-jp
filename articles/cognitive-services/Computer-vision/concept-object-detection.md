@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3957e15a09bd7e7ecd814d169451af3241108b64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4269209017ecc0afa740bc3ed56cbdcbd915201e
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131674"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533844"
 ---
 # <a name="detect-common-objects-in-images"></a>画像内の一般的なオブジェクトを検出する
 
@@ -97,7 +97,6 @@ Detect API は、画像内で特定されたオブジェクトや生物に応じ
 
 ## <a name="use-the-api"></a>API の使用
 
-オブジェクト検出機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API に含まれています。 ネイティブ SDK または REST を呼び出すことでこの API を呼び出すことができます。 `Objects` を **visualFeatures** クエリ パラメーターに追加します。 その後、完全な JSON 応答が得られたら、`"objects"` セクションのコンテンツを対象に文字列を解析します。
+オブジェクト検出機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API に含まれています。 ネイティブ SDK または REST を呼び出すことでこの API を呼び出すことができます。 `Objects` を **visualFeatures** クエリ パラメーターに追加します。 その後、完全な JSON 応答が得られたら、`"objects"` セクションのコンテンツを対象に文字列を解析します。
 
-* [クイック スタート: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-* [クイック スタート: 画像の分析 (REST API)](./quickstarts/csharp-analyze.md)
+* [クイック スタート: Computer Vision REST API またはクライアント ライブラリ](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)

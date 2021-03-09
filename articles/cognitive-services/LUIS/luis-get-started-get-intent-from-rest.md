@@ -1,20 +1,22 @@
 ---
-title: クイック スタート:REST API で意図を取得する - LUIS
-description: この REST API のクイックスタートでは、利用可能なパブリック LUIS アプリを使用して、会話形式のテキストからユーザーの意図を判断します。
-ms.topic: quickstart
-ms.date: 05/18/2020
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+title: REST API を使用して意図を取得する方法
+description: この記事では、利用可能なパブリック LUIS アプリを使用して、会話形式のテキストからユーザーの意図を判断します。
+ms.service: cognitive-services
+ms.subservice: language-understanding
+ms.topic: conceptual
+ms.date: 11/30/2020
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 977348fcaf0cabf92268d71282222e1652321fac
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b49d90ffe2a262895727fdd4ef5f8a7950104102
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919278"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437016"
 ---
-# <a name="quickstart-get-intent-with-rest-apis"></a>クイック スタート:REST API で意図を取得する
+# <a name="how-to-get-an-intent-using-the-rest-apis"></a>REST API を使用して意図を取得する方法
 
-このクイック スタートでは、LUIS アプリを使用し、会話形式のテキストからユーザーの意図を判断します。 Pizza アプリの HTTP 予測エンドポイントにユーザーの意図をテキストとして送信します。 エンドポイントでは、LUIS によって Pizza アプリのモデルが適用されます。これにより自然言語テキストの意味が分析され、全体的な意図が特定されて、アプリのサブジェクト ドメインに関連したデータが抽出されます。
+この記事では、LUIS アプリを使用し、会話形式のテキストからユーザーの意図を判断します。 Pizza アプリの HTTP 予測エンドポイントにユーザーの意図をテキストとして送信します。 エンドポイントでは、LUIS によって Pizza アプリのモデルが適用されます。これにより自然言語テキストの意味が分析され、全体的な意図が特定されて、アプリのサブジェクト ドメインに関連したデータが抽出されます。
 
 この記事には、無料の [LUIS](https://www.luis.ai) アカウントが必要です。
 

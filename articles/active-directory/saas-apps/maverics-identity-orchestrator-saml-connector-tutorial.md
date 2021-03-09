@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: 116ee7c8db3070a667c21a052bec739fd397a2dd
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 31392c1fa3d14d6f1e01a8b302575e9b592e42cd
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825564"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183151"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>チュートリアル:Azure AD シングル サインオンと Maverics Identity Orchestrator SAML Connector を統合する
 
@@ -36,7 +36,7 @@ Strata には、オンプレミスまたはクラウドにデプロイできる�
 4. Azure Key Vault を設定し、これをシークレット管理プロバイダーとして使用するように Maverics を構成します。
 5. オンプレミスの Java Web アプリケーションへのアクセスを提供するために、Maverics を使用したユーザーの移行とセッションの抽象化を実行します。
 
-インストールと構成のその他の手順については、[Strata の Web サイト](https://strata.io/docs)を参照してください。
+インストールと構成のその他の手順については、[Strata の Web サイト](https://www.strata.io)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +45,7 @@ Strata には、オンプレミスまたはクラウドにデプロイできる�
 
 ## <a name="install-maverics-identity-orchestrator"></a>Maverics Identity Orchestrator をインストールする
 
-Maverics Identity Orchestrator のインストールを開始するには、[インストール手順](https://strata.io/docs)を参照してください。
+Maverics Identity Orchestrator のインストールを開始するには、[インストール手順](https://www.strata.io)を参照してください。
 
 ### <a name="system-requirements"></a>システム要件
 * サポートされるオペレーティング システム
@@ -158,36 +158,36 @@ Azure portal または Azure CLI のいずれかを使用して、Azure Key Vaul
 
 **Azure Portal の使用**
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. [新しいキー コンテナーを作成します](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault)。
-1. [キー コンテナーにシークレットを追加します](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault)。
-1. [アプリケーションを Azure AD に登録します](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)。
-1. [アプリケーションによるシークレットの使用を承認します](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault)。
+1. [新しいキー コンテナーを作成します](../../key-vault/general/quick-create-portal.md)。
+1. [キー コンテナーにシークレットを追加します](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)。
+1. [アプリケーションを Azure AD に登録します](../develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。
+1. [アプリケーションによるシークレットの使用を承認します](../../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)。
 
 **Azure CLI の使用**
 
-1. [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を開き、次のコマンドを入力します。
+1. [Azure CLI](/cli/azure/install-azure-cli) を開き、次のコマンドを入力します。
 
-    ```shell
+    ```azurecli
     az login
     ```
 
 1. 次のコマンドを実行して、新しいキー コンテナーを作成します。
-    ```shell
+    ```azurecli
     az keyvault create --name "[VAULT_NAME]" --resource-group "[RESOURCE_GROUP]" --location "[REGION]"
     ```
 
 1. 次のコマンドを実行して、キー コンテナーにシークレットを追加します。
-    ```shell
+    ```azurecli
     az keyvault secret set --vault-name "[VAULT_NAME]" --name "[SECRET_NAME]" --value "[SECRET_VALUE]"
     ```
 
 1. 次のコマンドを実行して、Azure AD にアプリケーションを登録します。
-    ```shell
+    ```azurecli
     az ad sp create-for-rbac -n "MavericsKeyVault" --skip-assignment > azure-credentials.json
     ```
 
 1. 次のコマンドを実行して、アプリケーションによるシークレットの使用を承認します。
-    ```shell
+    ```azurecli
     az keyvault set-policy --name "[VAULT_NAME]" --spn [APPID] --secret-permissions list get
     #APPID can be found in the azure-credentials.json
     generated in the previous step
@@ -239,7 +239,7 @@ Maverics Identity Orchestrator Azure AD Connector では、OpenID Connect と SA
 
 1. [OpenSSL ツール](https://www.openssl.org/source/)を使用して、Maverics Identity Orchestrator セッション情報の保護に使用される JSON Web トークン (JWT) 署名キーを生成します。
 
-    ```shell 
+    ```console 
     openssl rand 64 | base64
     ```
 1. `jwtSigningKey` 構成プロパティに応答をコピーします: `jwtSigningKey: TBHPvTtu6NUqU84H3Q45grcv9WDJLHgTioqRhB8QGiVzghKlu1mHgP1QHVTAZZjzLlTBmQwgsSoWxGHRcT4Bcw==`。

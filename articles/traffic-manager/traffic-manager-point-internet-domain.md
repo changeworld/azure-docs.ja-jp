@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: duau
-ms.openlocfilehash: 93a8076f12b8f006d600cbd32ce39169f4b47c67
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e0e2acfb0ec0068dcd08ae660e397f65e039a665
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89392597"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183746"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>会社のインターネット ドメインで Azure Traffic Manager ドメインが参照されるようにする
 
@@ -28,10 +28,10 @@ Traffic Manager プロファイルを作成すると、Azure では、そのプ�
 これで、*www\.contoso.com* へのすべてのトラフィック要求が *contoso.trafficmanager.net* にリダイレクトされるようになります。
 
 > [!IMPORTANT]
-> *contoso.com*などの第 2 レベル ドメインで、Traffic Manager ドメインを参照させることはできません。 DNS プロトコルの標準では、第 2 レベル ドメイン名の CNAME レコードは許可されません。
+> *contoso.com* などの第 2 レベル ドメインで、Traffic Manager ドメインを参照させることはできません。 DNS プロトコルの標準では、第 2 レベル ドメイン名の CNAME レコードは許可されません。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Traffic Manager のルーティング方法](traffic-manager-routing-methods.md)
-* [Traffic Manager  - プロファイルの無効化、有効化、または削除](disable-enable-or-delete-a-profile.md)
-* [Traffic Manager - エンドポイントの無効化または有効化](disable-or-enable-an-endpoint.md)
+* [Traffic Manager  - プロファイルの無効化、有効化、または削除](./traffic-manager-manage-profiles.md)
+* [Traffic Manager - エンドポイントの無効化または有効化](./traffic-manager-manage-endpoints.md)

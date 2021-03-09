@@ -1,17 +1,17 @@
 ---
 title: パフォーマンスに関する推奨事項 - Azure Database for MariaDB
 description: この記事では、Azure Database for MariaDB のパフォーマンスの推奨事項機能について説明します。
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 05bc0f1ae50f74cc7c8ab2b236d73bdb4a6fe787
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5949c6ba1ed176a609d3ceed4150ac06855440e9
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484698"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664318"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB のパフォーマンスの推奨事項
 
@@ -21,7 +21,7 @@ ms.locfileid: "84484698"
 
 ## <a name="permissions"></a>アクセス許可
 
-パフォーマンスに関する推奨事項機能を使用して分析を実行するには、**所有者**または**共同作成者**の許可が必要です。
+パフォーマンスに関する推奨事項機能を使用して分析を実行するには、**所有者** または **共同作成者** の許可が必要です。
 
 ## <a name="performance-recommendations"></a>パフォーマンスに関する推奨事項
 
@@ -29,7 +29,7 @@ ms.locfileid: "84484698"
 
 Azure portal の MariaDB サーバーに関するページで、メニュー バーの **[インテリジェント パフォーマンス]** セクションから、 **[パフォーマンスの推奨事項]** を開きます。
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="パフォーマンスに関する推奨事項のランディング ページ":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="パフォーマンスに関する推奨事項ランディング ページ":::
 
 **[解析]** を選択してデータベースを選択すると、分析が開始されます。 ワークロードによっては、分析が完了するまでに数分かかる場合があります。 分析が完了すると、ポータルで通知があります。 分析では、データベースの詳細な検査が行われます。 分析はピーク時を避けて実行することをお勧めします。
 

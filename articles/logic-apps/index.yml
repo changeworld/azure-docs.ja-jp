@@ -10,12 +10,12 @@ metadata:
   author: ecfan
   ms.author: estfan; logicappspm
   ms.date: 09/18/2019
-  ms.openlocfilehash: 1b3d77631e547038c3efc4589727c0ba2d7a7006
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: c801c46424f7128577e1426ae5f15a8623359d6a
+  ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87086423"
+  ms.lasthandoff: 12/08/2020
+  ms.locfileid: "96852763"
 landingContent:
 - title: Azure Logic Apps について
   linkLists:
@@ -31,6 +31,8 @@ landingContent:
       url: concepts-schedule-automated-recurring-tasks-workflows.md
     - text: B2B エンタープライズ統合
       url: logic-apps-enterprise-integration-overview.md
+    - text: ロジック アプリのリソース正常性
+      url: healthy-unhealthy-resource.md
   - linkListType: learn
     links:
     - text: Azure Logic Apps の概要
@@ -129,8 +131,10 @@ landingContent:
     links:
     - text: Logic Apps テンプレートの作成
       url: logic-apps-create-azure-resource-manager-templates.md
-    - text: Logic Apps テンプレートのデプロイ
+    - text: ロジック アプリ テンプレートのデプロイ
       url: logic-apps-deploy-azure-resource-manager-templates.md
+    - text: Power Automate と Power Apps からロジック アプリを呼び出す
+      url: call-from-power-automate-power-apps.md
   - linkListType: learn
     links:
     - text: Resource Manager テンプレートを使って作成およびデプロイする

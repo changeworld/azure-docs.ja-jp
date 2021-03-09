@@ -4,22 +4,16 @@ description: Azure Content Delivery Network でコンテンツの種類に基づ
 services: cdn
 documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: ''
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 0710f2f31510ae299fafe89dc1798f40e325e8b4
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 3d207ee09a76509a65a2645515b182f8d92753b0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192591"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387922"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>コンテンツ配信の種類に応じて Azure CDN を最適化する
 
@@ -39,7 +33,7 @@ ms.locfileid: "88192591"
 * [一般的な Web 配信](#general-web-delivery)。 この最適化は、メディア ストリーミングと大きなファイルのダウンロードにも使用できます。
 
 > [!NOTE]
-> Microsoft の動的サイト アクセラレーションは、[Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) により提供されます。
+> Microsoft の動的サイト アクセラレーションは、[Azure Front Door Service](../frontdoor/front-door-overview.md) により提供されます。
 
 **Azure CDN Standard from Verizon** プロファイルおよび **Azure CDN Premium from Verizon** プロファイルでは、次の最適化がサポートされます。
 
@@ -64,7 +58,11 @@ ms.locfileid: "88192591"
 
 ## <a name="select-and-configure-optimization-types"></a>最適化の種類の選択と構成
 
-CDN エンドポイントを作成するときに、エンドポイントが配信するコンテンツの種類とシナリオに最も適した最適化の種類を選択します。 **General web delivery** (一般的な Web 配信) が既定値です。 既存の **Azure CDN Standard from Akamai** エンドポイントに対してのみ、いつでも最適化オプションを更新できます。 この変更によって、Azure CDN からの配信が中断されることはありません。 
+CDN エンドポイントを作成するときに、エンドポイントが配信するコンテンツの種類とシナリオに最も適した最適化の種類を選択します。 
+
+**General web delivery** (一般的な Web 配信) が既定値です。 **Azure CDN Standard from Akamai** エンドポイントの最適化のみ、いつでも更新できます。 
+
+**Azure CDN Standard from Microsoft**、**Azure CDN Standard from Verizon**、**Azure CDN Premium from Verizon** の場合はできません。
 
 1. **Azure CDN Standard from Akamai** プロファイルで、エンドポイントを選択します。
 
@@ -124,13 +122,10 @@ CDN エンドポイントを作成するときに、エンドポイントが配�
  動的サイト アクセラレーション (DSA) は、**Azure CDN Standard from Akamai** プロファイル、**Azure CDN Standard from Verizon** プロファイル、および **Azure CDN Premium from Verizon** プロファイルで使用できます。 この最適化を使用すると追加料金が発生します。詳細については、「[Content Delivery Network の価格](https://azure.microsoft.com/pricing/details/cdn/)」を参照してください。
 
 > [!NOTE]
-> Microsoft の動的サイト アクセラレーションは、Microsoft のプライベート グローバル ネットワークを利用してご自身のアプリのワークロードを提供するグローバル [エニー キャスト](https://en.wikipedia.org/wiki/Anycast) サービス、[Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) によって提供されます。
+> Microsoft の動的サイト アクセラレーションは、Microsoft のプライベート グローバル ネットワークを利用してご自身のアプリのワークロードを提供するグローバル [エニー キャスト](https://en.wikipedia.org/wiki/Anycast) サービス、[Azure Front Door Service](../frontdoor/front-door-overview.md) によって提供されます。
 
 DSA には、動的なコンテンツの遅延とパフォーマンスを改善するさまざまな技術が取り入れられています。 それらの技術には、ルートとネットワークの最適化、TCP の最適化などがあります。 
 
 この最適化で、キャッシュ不可能な多数の応答を含む Web アプリを高速化することができます。 たとえば、検索結果、チェック アウト トランザクション、リアルタイム データなどを高速化できます。 静的なデータでは、主要な Azure CDN のキャッシュ機能を継続して使用することができます。 
 
 動的サイトの高速化の詳細については、[動的サイトの高速化](cdn-dynamic-site-acceleration.md)に関するページを参照してください。
-
-
-

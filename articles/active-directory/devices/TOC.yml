@@ -30,8 +30,6 @@
       href: azuread-join-sso.md
     - name: プライマリ更新トークン
       href: concept-primary-refresh-token.md
-    - name: Azure マネージド ワークステーション
-      href: concept-azure-managed-workstation.md
 - name: 操作方法ガイド
   expanded: false
   items:
@@ -55,8 +53,6 @@
       href: howto-vm-sign-in-azure-ad-windows.md
     - name: 仮想デスクトップ インフラストラクチャ
       href: howto-device-identity-virtual-desktop-infrastructure.md
-    - name: Azure マネージド ワークステーションをデプロイする
-      href: howto-azure-managed-workstation.md
     - name: デバイス ID のトラブルシューティング
       items:
         - name: ハイブリッド Azure AD 参加済みの最新 Windows デバイスのトラブルシューティングを行う

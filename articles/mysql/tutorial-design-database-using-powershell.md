@@ -1,19 +1,19 @@
 ---
 title: チュートリアル:サーバーを設計する - Azure PowerShell - Azure Database for MySQL
 description: このチュートリアルでは、PowerShell を使用して、Azure Database for MySQL サーバーとデータベースを作成および管理する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 32efda0c97bec10f2c8aa29d6f83a28538d64468
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: fd8294d60ed0af4e8d1eeb8a3cd07c737b69aadd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496765"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011457"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-powershell"></a>チュートリアル:PowerShell を使用して Azure Database for MySQL を設計する
 
@@ -54,9 +54,9 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、[Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、[Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
 
-次の例では、**myresourcegroup** という名前のリソース グループを**米国西部**リージョンに作成します。
+次の例では、**myresourcegroup** という名前のリソース グループを **米国西部** リージョンに作成します。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myresourcegroup -Location westus
@@ -66,7 +66,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 `New-AzMySqlServer` コマンドレットを使用して、Azure Database for MySQL サーバーを作成します。 1 つのサーバーで複数のデータベースを管理できます。 通常は、プロジェクトまたはユーザーごとに個別のデータベースを使用します。
 
-次の例では、**米国西部**リージョンの **myresourcegroup** リソース グループに **mydemoserver** という名前の MySQL サーバーを作成しています。サーバー管理者ログインは **myadmin** です。 これは、2 つの仮想コアを備え geo 冗長バックアップが有効になっている、汎用価格レベルの Gen 5 サーバーです。 例の最初の行に使用されているパスワードは MySQL server 管理者アカウントのパスワードであるため、これを記録しておきます。
+次の例では、**米国西部** リージョンの **myresourcegroup** リソース グループに **mydemoserver** という名前の MySQL サーバーを作成しています。サーバー管理者ログインは **myadmin** です。 これは、2 つの仮想コアを備え geo 冗長バックアップが有効になっている、汎用価格レベルの Gen 5 サーバーです。 例の最初の行に使用されているパスワードは MySQL server 管理者アカウントのパスワードであるため、これを記録しておきます。
 
 > [!TIP]
 > サーバー名は DNS 名に対応しており、Azure 内でグローバルに一意であることが必要です。
@@ -207,6 +207,24 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 復元プロセスが完了したら、新しいサーバーを検索して、想定どおりにデータが復元できたかどうかを確認します。 新しいサーバーには、復元が開始された時点の既存のサーバーで有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 
 復元中に作成される新しいサーバーには、元のサーバーに存在した VNet サービス エンドポイントはありません。 新しいサーバー用に、これらの規則を個別に設定する必要があります。 元のサーバーのファイアウォール規則は復元されます。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このチュートリアルで作成したリソースが別のクイックスタートまたはチュートリアルで必要でない場合は、次の例を実行して削除できます。
+
+> [!CAUTION]
+> 次の例では、指定されたリソース グループとそれに含まれるすべてのリソースを削除します。
+> 指定したリソース グループにこのチュートリアルの範囲外のリソースが含まれている場合、それらも削除されます。
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name myresourcegroup
+```
+
+リソース グループを削除せずに、このチュートリアルで作成したサーバーのみを削除するには、`Remove-AzMySqlServer` コマンドレットを使用します。
+
+```azurepowershell-interactive
+Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
+```
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,0 +1,37 @@
+- name: Azure Automanage
+  href: automanage-virtual-machines.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: Azure portal による VM 上での有効化
+      href: quick-create-virtual-machines-portal.md
+- name: 概念
+  expanded: true
+  items:
+    - name: Linux 用 Automanage
+      href: automanage-linux.md
+    - name: Windows Server 用 Automanage
+      href: automanage-windows-server.md
+      items:
+        - name: 新しい仮想マシンのホットパッチ
+          href: automanage-hotpatch.md
+- name: 方法
+  expanded: true
+  items:
+    - name: カスタム設定の作成
+      href: virtual-machines-custom-preferences.md
+    - name: Azure Policy を介した VM 上での有効化
+      href: virtual-machines-policy-enable.md
+    - name: オンボーディング エラーのトラブルシューティング
+      href: common-errors.md
+    - name: 切断された Automanage アカウントの修復
+      href: repair-automanage-account.md
+    - name: 自動管理仮想マシンのリージョン間での移動
+      href: move-automanaged-vms.md
+- name: リソース
+  expanded: true
+  items:
+    - name: よく寄せられる質問
+      href: faq.md
+    - name: クラウド導入フレームワーク
+      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management'

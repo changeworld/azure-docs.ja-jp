@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c4332f3e5a1ca6d434671d3a2cfe100a5d12795d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4a847b273472ecc9d2aaa3993ec9d88aa46f2e7f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182017"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017170"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>StorSimple 8000 シリーズのサポート パッケージの作成と管理
 
@@ -71,7 +71,7 @@ Export-HcsSupportPackage コマンドレットには、次のパラメーター�
 | `-Credential` |省略可能 |ネットワーク共有フォルダーのアクセス資格情報を指定するために使用します。 |
 | `-Force` |省略可能 |暗号化パスフレーズの確認手順をスキップするために使用します。 |
 | `-PackageTag` |省略可能 |サポート パッケージが配置される、 *Path* で指定した場所の下のディレクトリを指定するために使用します。 既定値は [デバイス名]-[現在の日時 (yyyy-MM-dd-HH-mm-ss)] です。 |
-| `-Scope` |省略可能 |両方のコントローラーのサポート パッケージを作成する場合は、 **Cluster** (既定値) と指定します。 現在のコントローラーのみのパッケージを作成する場合は、 **Controller**を指定します。 |
+| `-Scope` |省略可能 |両方のコントローラーのサポート パッケージを作成する場合は、 **Cluster** (既定値) と指定します。 現在のコントローラーのみのパッケージを作成する場合は、 **Controller** を指定します。 |
 
 ## <a name="edit-a-support-package"></a>サポート パッケージを編集する
 
@@ -108,7 +108,7 @@ Export-HcsSupportPackage コマンドレットには、次のパラメーター�
    
     `Close-HcsSupportPackage <Path to the folder that contains support package files>`
    
-    ![サポート パッケージの編集](./media/storsimple-8000-create-manage-support-package/IC750707.png)
+    ![サポート パッケージの編集 2](./media/storsimple-8000-create-manage-support-package/IC750707.png)
 8. 入力を求められたら、変更したサポート パッケージの暗号化パスフレーズを入力します。
    
     ```powershell

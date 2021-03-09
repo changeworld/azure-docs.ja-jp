@@ -1,23 +1,18 @@
 ---
 title: MongoDB からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、MongoDB のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 08/12/2019
-ms.openlocfilehash: eba63ff500aad4538f5b30f11bac168cf14816c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 01/08/2021
+ms.openlocfilehash: eae2d2adfe2cfdd7e47f2ace9ede9253003aa5bf
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558159"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368780"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB のデータをコピーする
 
@@ -28,21 +23,25 @@ ms.locfileid: "84558159"
 >[!IMPORTANT]
 >ADF は、MongoDB のネイティブ サポートを向上させる、この新しいバージョンの MongoDB コネクタをリリースします。 旧バージョンとの互換性のため引き続きサポートされている以前の MongoDB コネクタをソリューションで使用している場合は、「[MongoDB コネクタ (レガシ)](connector-mongodb-legacy.md)」の記事を参照してください。
 
+
 ## <a name="supported-capabilities"></a>サポートされる機能
 
 MongoDB データベースのデータを、サポートされているシンク データ ストアにコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-具体的には、この MongoDB コネクタは **3.4 までのバージョン**をサポートしています。
+具体的には、この MongoDB コネクタでは **4.2 までのバージョン** がサポートされます。
+
 
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
 
 ## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、MongoDB コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
+
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
@@ -51,7 +50,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type |type プロパティは、次のように設定する必要があります:**MongoDbV2** |はい |
-| connectionString |MongoDB 接続文字列 (例: `mongodb://[username:password@]host[:port][/[database][?options]]`) を指定します。 詳細については、[MongoDB のマニュアルの接続文字列に関するページ](https://docs.mongodb.com/manual/reference/connection-string/)を参照してください。 <br/><br /> パスワードを Azure Key Vault に格納して、接続文字列から  `password`  構成をプルすることもできます。 詳細については、「 [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 |はい |
+| connectionString |MongoDB 接続文字列 (例: `mongodb://[username:password@]host[:port][/[database][?options]]`) を指定します。 詳細については、[MongoDB のマニュアルの接続文字列に関するページ](https://docs.mongodb.com/manual/reference/connection-string/)を参照してください。 <br/><br /> 接続文字列を Azure Key Vault に格納することもできます。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 |はい |
 | database | アクセスするデータベースの名前。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
@@ -102,6 +101,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 }
 ```
 
+
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、MongoDB ソースでサポートされるプロパティの一覧を示します。
@@ -121,7 +121,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 | batchSize | MongoDB インスタンスからの応答の各バッチで返されるドキュメントの数を指定します。 ほとんどの場合、バッチ サイズを変更しても、ユーザーまたはアプリケーションへの影響はありません。 Cosmos DB では各バッチのサイズが 40 MB を超過しないように制限されていますが、これはドキュメントが batchSize の数だけ存在するときの合計サイズなので、ドキュメントのサイズが大きくなる場合はこの値を減らしてください。 | いいえ<br/>(既定値は **100**) |
 
 >[!TIP]
->ADF は、**厳格モード**での BSON ドキュメントの利用をサポートしています。 フィルター クエリがシェル モードではなく厳格モードであることを確認してください。 詳細については、[MongoDB のマニュアル](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)を参照してください。
+>ADF は、**厳格モード** での BSON ドキュメントの利用をサポートしています。 フィルター クエリがシェル モードではなく厳格モードであることを確認してください。 詳細については、[MongoDB のマニュアル](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)を参照してください。
 
 **例:**
 
@@ -161,13 +161,16 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 ]
 ```
 
+
 ## <a name="export-json-documents-as-is"></a>JSON ドキュメントをそのままエクスポートする
 
 この MongoDB コネクタを使用すると、JSON ドキュメントを MongoDB コレクションからさまざまなファイル ベースのストアまたは Azure Cosmos DB にそのままエクスポートできます。 このようなスキーマに依存しないコピーを実現するには、データセットの "構造" ("*スキーマ*" とも呼ばれる) のセクションと、コピー アクティビティでのスキーマ マッピングをスキップします。
 
+
 ## <a name="schema-mapping"></a>スキーマ マッピング
 
 MongoDB から表形式のシンクにデータをコピーするには、「[スキーマ マッピング](copy-activity-schema-and-type-mapping.md#schema-mapping)」を参照してください。
+
 
 ## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

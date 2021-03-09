@@ -1,15 +1,15 @@
 ---
 title: クイック スタート:初めての JavaScript クエリ
 description: このクイックスタートでは、手順に従って、JavaScript 用の Resource Graph ライブラリを有効にし、初めてのクエリを実行します。
-ms.date: 06/23/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: fc9809dbe615950b4f5c9e4dc66cefcd054f5ebf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 97cbd9ddf65a4135f55304f6dd67c704c6fcac5d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415926"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917523"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>クイック スタート:JavaScript を使用して初めての Resource Graph クエリを実行する
 
@@ -19,15 +19,15 @@ ms.locfileid: "87415926"
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+- **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 - **Node.js**:[Node.js](https://nodejs.org/) バージョン 12 以降が必須です。
 
-## <a name="application-setup"></a>アプリケーションのセットアップ
+## <a name="application-initialization"></a>アプリケーションの初期化
 
-JavaScript で Azure Resource Graph にクエリを実行するには、環境をセットアップする必要があります。 [Windows 10 上での Bash](/windows/wsl/install-win10) など、JavaScript を利用できる場所であればどこでもこのセットアップは機能します。
+JavaScript で Azure Resource Graph にクエリを実行できるようにするには、環境を構成する必要があります。 [Windows 10 上での Bash](/windows/wsl/install-win10) など、JavaScript を利用できる場所であればどこでもこのセットアップは機能します。
 
-1. 次のコマンドを実行し、新しい Node.js プロジェクトをセットアップします。
+1. 次のコマンドを実行し、新しい Node.js プロジェクトを初期化します。
 
    ```bash
    npm init -y

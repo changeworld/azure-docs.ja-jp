@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 90becfb79973ba45851b0e30384b0f05a7b887e3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: a427fbc6fad1566ae10e11b61de981aded32e64a
+ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962249"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "92000279"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>チュートリアル:Azure SQL Database を使用して Azure に ASP.NET アプリをデプロイする
 
@@ -65,20 +65,18 @@ Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイル
 
 ![ソリューション エクスプローラーから発行する](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
-**[Microsoft Azure App Service]** が選択されていることを確認し、 **[発行]** をクリックします。
+ターゲットとして **[Azure]** を選択し、[次へ] をクリックし、 **[Azure App Service (Windows)]** が選択されていることを確認してもう一度 [次へ] をクリックします。
 
 ![プロジェクトの概要ページから発行する](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-to-app-service.png)
 
-発行すると **[App Service の作成]** ダイアログ ボックスが表示されます。このダイアログ ボックスで、Azure で ASP.NET アプリを実行するために必要なすべての Azure リソースを作成できます。
-
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-**[App Service の作成]** ダイアログ ボックスで、 **[アカウントの追加]** をクリックし、Azure サブスクリプションにサインインします。 既に Microsoft アカウントにサインインしている場合は、アカウントが Azure サブスクリプションを保持していることを確認します。 サインインしている Microsoft アカウントが Azure サブスクリプションを備えていない場合は、正しいアカウントをクリックして追加します。
+**[発行]** ダイアログのアカウント マネージャーのドロップ ダウンで **[アカウントの追加]** をクリックし、Azure サブスクリプションにサインインします。 既に Microsoft アカウントにサインインしている場合は、アカウントが Azure サブスクリプションを保持していることを確認します。 サインインしている Microsoft アカウントが Azure サブスクリプションを備えていない場合は、正しいアカウントをクリックして追加します。
+
+![Azure へのサインイン](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
 > [!NOTE]
 > 既にサインインしている場合は、まだ **[作成]** を選択しないでください。
-
-![Azure へのサインイン](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
 
 ### <a name="configure-the-web-app-name"></a>Web アプリ名を構成する
 
@@ -112,15 +110,20 @@ Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイル
    |**場所**| 西ヨーロッパ | [Azure リージョン](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
    |**[サイズ]**| Free | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
+3. 構成したリソースが **[発行]** ダイアログに表示されます。 **[完了]** をクリックします。
+
+   ![作成したリソース](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
+
+
 ### <a name="create-a-server"></a>サーバーの作成
 
 データベースを作成するには、[論理 SQL サーバー](../azure-sql/database/logical-servers.md)が必要です。 論理 SQL サーバーは、1 つのグループとして管理される一連のデータベースを含む論理コンストラクトです。
 
-1. **[SQL Database の作成]** をクリックします。
+1. **[接続済みサービス]** の下で [SQL Server データベース] の横にある **[構成]** をクリックします。
 
    ![SQL Database の作成](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
-2. **[SQL Database の構成]** ダイアログで、 **[SQL Server]** の隣にある **[New (新規)]** をクリックします。
+2. **[Azure SQL データベース]** ダイアログで、 **[データベース サーバー]** の隣にある **[新規]** をクリックします。
 
    一意のサーバー名が生成されます。 この名前はサーバーの既定の URL (`<server_name>.database.windows.net`) の一部として使用されます。 これは、Azure SQL のすべてのサーバーで一意である必要があります。 サーバー名は変更できますが、このチュートリアルでは生成された名前をそのまま使用します。
 
@@ -128,28 +131,31 @@ Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイル
 
    このユーザー名とパスワードを覚えておいてください。 これらは、後でサーバーを管理する際に必要になります。
 
+   ![Create server](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
+
    > [!IMPORTANT]
    > (Visual Studio および App Service で) 接続文字列のパスワードがマスクされていても、それがどこかに保持されているのは事実であり、アプリの攻撃対象領域が増えることになります。 App Service では、[マネージド サービス ID](overview-managed-identity.md) を使用して、コードやアプリの構成にシークレットを保持する必要性をなくすことで、このリスクを排除できます。 詳細については、「[次のステップ](#next-steps)」を参照してください。
-
-   ![Create server](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
 4. **[OK]** をクリックします。 **[SQL Database の構成]** ダイアログはまだ閉じないでください。
 
 ### <a name="create-a-database-in-azure-sql-database"></a>Azure SQL Database でデータベースを作成する
 
-1. **[SQL Database の構成]** ダイアログで、次の操作を行います。
+1. **[Azure SQL Database]** ダイアログで:
 
    * 生成された既定の **[データベース名]** をそのまま使用します。
-   * **[接続文字列名]** に「*MyDbConnection*」と入力します。 この名前は、*Models/MyDatabaseContext.cs* で参照されている接続文字列と一致する必要があります。
-   * **[OK]** を選択します。
+   * **［作成］** を選択します
 
     ![データベースを構成する](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-2. 構成したリソースが **[App Service の作成]** ダイアログに表示されます。 **Create** をクリックしてください。
+2. **[データベース接続文字列名]** に「_MyDbConnection_」と入力します。 この名前は、_Models/MyDatabaseContext.cs_ で参照されている接続文字列と一致する必要があります。
 
-   ![作成したリソース](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
+3. 手順 3 の「[サーバーの作成](#create-a-server)」で使用した管理者のユーザー名とパスワードをデータベースのユーザー名とパスワードにそれぞれ入力します。
 
-ウィザードで Azure リソースの作成が完了すると、ASP.NET アプリが Azure に発行されます。 既定のブラウザーが、デプロイされたアプリの URL を参照した状態で起動します。
+    ![データベース接続文字列を構成する](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-connection.png)
+
+4. **[完了]** を選択します。
+
+ウィザードで Azure リソースの作成が完了したら、 **[発行]** をクリックし、ASP.NET アプリを Azure に発行します。 既定のブラウザーが、デプロイされたアプリの URL を参照した状態で起動します。
 
 いくつかの To Do アイテムを追加します。
 

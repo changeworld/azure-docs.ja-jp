@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:Xamarin Android アプリを作成する
 description: このクイックスタートでは、Spatial Anchors を使用する Android アプリを Xamarin でビルドする方法について説明します。
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 07/22/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8a7bb300bb634b342b1141d175b0046c7d2d7e2b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 1626dfa739df6b7cf971aa570f14d36ac6c532e7
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810311"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96022617"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用して Xamarin Android アプリを作成する
 
@@ -37,10 +37,10 @@ ms.locfileid: "87810311"
     - <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>。
     - <a href="https://git-lfs.github.com/">Git LFS</a>。
   - macOS を使っている場合:
-    - 最新バージョンの <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio for Mac 8.1 以上</a>。
+    - 最新バージョンの <a href="/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio for Mac 8.1 以上</a>。
     - <a href="https://git-scm.com/download/mac" target="_blank">Git for macOS</a>。
     - <a href="https://git-lfs.github.com/">Git LFS</a>。
-- 適切なプラットフォームに最新バージョンの Xamarin.Android がインストールされ、実行されていること。 Xamarin.Android のインストールガイドについては、[Xamarin.Android のインストール](https://docs.microsoft.com/xamarin/android/get-started/installation/index)に関するガイドを参照してください。
+- 適切なプラットフォームに最新バージョンの Xamarin.Android がインストールされ、実行されていること。 Xamarin.Android のインストールガイドについては、[Xamarin.Android のインストール](/xamarin/android/get-started/installation/index)に関するガイドを参照してください。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">開発者向け</a>の <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 対応</a> Android デバイス。
   - コンピューターが Android デバイスと通信するには、追加のデバイス ドライバーが必要になることがあります。 詳細については、[このページ](https://developer.android.com/studio/run/device.html)を参照してください。
 - アプリでは、ARCore **1.8** をターゲットにする必要があります。
@@ -73,7 +73,7 @@ Android デバイスの電源をオンにしてサインインし、USB ケー�
 
 # <a name="windows"></a>[Windows](#tab/deploy-windows)
 
-![Visual Studio の構成](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
+![Windows のプロジェクトとデバイスを選択するメニューを示すスクリーンショット。](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
 **[デバッグ]**  >  **[デバッグの開始]** の順に選択して、アプリをデプロイし、起動します。
 

@@ -3,12 +3,12 @@ title: Azure DevTest Labs でのラボのポリシーの管理 | Microsoft Docs
 description: VM サイズ、ユーザーごとの VM の最大数、シャットダウンの自動化など、ラボのポリシーを定義する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ab2e2b1905a515d3a85339099f02d93d8e5c0424
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a7ada980b2a251b8164f2e1a20f65da54c89ba72
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290416"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90530354"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボのすべてのポリシーを管理
 
@@ -105,7 +105,7 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 
 1. ラボの **[構成とポリシー]** ウィンドウで **[自動開始]** を選択します。
    
-    ![自動開始](./media/devtest-lab-set-lab-policy/auto-start.png)
+    ![仮想マシンの自動開始オプションが表示されている画面キャプチャ。](./media/devtest-lab-set-lab-policy/auto-start.png)
 
 2. このポリシーを有効にするには **[オン]** を選択し、無効にするには **[オフ]** を選択します。
 

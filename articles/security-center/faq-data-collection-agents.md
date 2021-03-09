@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/25/2020
+ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 0bcf81e0c762dd2a8e63ae242fec77d30f5b2c3d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 30744ab97549d585cb6893dc2e2e12009e8cd3fb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011856"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595776"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>FAQ - データ収集、エージェント、およびワークスペースに関する質問
 
@@ -29,9 +29,9 @@ Security Center では、セキュリティの脆弱性と脅威を監視する�
 
 いいえ。 ノードごとの Azure Monitor ログの課金が構成されている場合でも、Security Center で作成されるワークスペースに Azure Monitor ログの料金はかかりません。 Security Center の課金は、常に Security Center セキュリティ ポリシーとワークスペースにインストールされているソリューションに基づいています。
 
-- **Free レベル** - Security Center によって既定のワークスペースに 'SecurityCenterFree' ソリューションが有効化されます。 Free レベルの料金はかかりません。
+- **Azure Defender オフ** – Security Center によって、既定のワークスペースで 'SecurityCenterFree' ソリューションが有効化されます。 Azure Defender がオフになっている場合は課金されません。
 
-- **Standard レベル** - Security Center によって既定のワークスペースに 'Security' ソリューションが有効化されます。
+- **Azure Defender オン** – Security Center によって、既定のワークスペースで 'Security' ソリューションが有効化されます。
 
 価格の詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
 
@@ -43,7 +43,7 @@ Security Center では、セキュリティの脆弱性と脅威を監視する�
 
 ## <a name="what-is-the-log-analytics-agent"></a>Log Analytics エージェントとは
 
-セキュリティの脆弱性と脅威を監視するために、Azure Security Center は [Log Analytics エージェント](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)に依存しています。これは、Azure Monitor サービスで使用されるのと同じエージェントです。 
+セキュリティの脆弱性と脅威を監視するために、Azure Security Center は [Log Analytics エージェント](../azure-monitor/agents/log-analytics-agent.md)に依存しています。これは、Azure Monitor サービスで使用されるのと同じエージェントです。 
 
 このエージェントは、Microsoft Monitoring Agent ("MMA") と呼ばれることもあります。 
 
@@ -51,9 +51,9 @@ Security Center では、セキュリティの脆弱性と脅威を監視する�
 
 次のページの説明に従って、このエージェントでサポートされているオペレーティング システムのいずれかがマシンで実行されていることを確認してください。
 
-* [Windows 用の Log Analytics エージェントでサポートされているオペレーティング システム ](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Windows 用の Log Analytics エージェントでサポートされているオペレーティング システム ](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
-* [Linux 用の Log Analytics エージェントでサポートされているオペレーティング システム](../azure-monitor/platform/agents-overview.md#supported-operating-systems)
+* [Linux 用の Log Analytics エージェントでサポートされているオペレーティング システム](../azure-monitor/agents/agents-overview.md#supported-operating-systems)
 
 詳細については、[Log Analytics エージェントによって収集されたデータ](security-center-enable-data-collection.md)に関する記事をご覧ください。
 
@@ -66,7 +66,7 @@ Windows または Linux IaaS VM は、次の条件で適格とします。
 
 - 現在、Log Analytics エージェント拡張機能が VM にインストールされていない。
 - VM が実行状態である。
-- Windows または Linux [Azure 仮想マシン エージェント](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)がインストールされている。
+- Windows または Linux [Azure 仮想マシン エージェント](../virtual-machines/extensions/agent-windows.md)がインストールされている。
 - VM は、Web アプリケーション ファイアウォールや次世代ファイアウォールなどのアプライアンスとしては使用されません。
 
 
@@ -86,9 +86,9 @@ Windows または Linux IaaS VM は、次の条件で適格とします。
 - オーストラリアの VM の場合、ワークスペースの場所はオーストラリアです
 
 
-## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Log Analytics エージェントによって収集されるのはどのようなデータですか?
+## <a name="what-security-events-are-collected-by-the-log-analytics-agent"></a>Log Analytics エージェントではどのようなセキュリティ イベントが収集されますか?
 
-エージェントによって監視されるアプリケーションとサービスの完全な一覧については、「[Azure Monitor によって監視される内容](https://docs.microsoft.com/azure/azure-monitor/monitor-reference#azure-services)」を参照してください。
+エージェントによって収集されるセキュリティ イベントの完全な一覧については、["共通" と "最小" のセキュリティ イベント設定で保存されるイベントの種類](security-center-enable-data-collection.md#what-event-types-are-stored-for-common-and-minimal)に関するページを参照してください。
 
 > [!IMPORTANT]
 > Azure Firewall などの一部のサービスでは、ログ記録を有効にし、頻度の高いリソースをログ記録するよう選択した場合 (たとえば、ログを *verbose* に設定した場合)、Log Analytics ワークスペースのストレージ ニーズに大きな影響を与える可能性があります。 
@@ -109,24 +109,28 @@ Security Center によって収集されたデータを保存する既存の Log
 
 既存の Log Analytics ワークスペースを選択するには、次の手順に従います。
 
-1. **[セキュリティ ポリシー - データ収集]** で、 **[Use another workspace]\(別のワークスペースを使用する\)** を選択します。
+1. Security Center のメニューから、 **[価格と設定]** を選択します。
+1. 関連するサブスクリプションを選択します。
+1. **[自動プロビジョニング]** ページを開きます。
+1. Log Analytics エージェントの場合は、 **[構成の編集]** を選択します。 
 
-    ![別のワークスペースを使用する][4]
+    :::image type="content" source="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png" alt-text="自動デプロイの使用時に使用する Log Analytics エージェントの構成" lightbox="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png":::
 
-1. プルダウン メニューから、収集したデータを保存するワークスペースを選択します。
+1. **[Connect Azure VMs to a different workspace]\(Azure VM の別のワークスペースへの接続\)** を選択し、既存のワークスペースを選択します。
 
-    > [!NOTE]
-    > プルダウン メニューには、Azure サブスクリプション内の、アクセスできるワークスペースだけが表示されます。
+    :::image type="content" source="./media/security-center-enable-data-collection/choose-workspace.png" alt-text="Log Analytics エージェントに対してレポート先の既定のワークスペース以外のワークスペースを選択する" lightbox="./media/security-center-enable-data-collection/choose-workspace.png":::
+
+    > [!TIP]
+    > このリストには、アクセス権を持っており、Azure サブスクリプション内にあるワークスペースのみが含められます。
 
 1. **[保存]** を選択します。 監視対象の VM を再構成するかどうかをたずねられます。
 
-    - 新しいワークスペース設定を**新しい VM にのみ適用**する場合は、 **[いいえ]** を選択します。 新しいワークスペース設定は、エージェントの新しいインストール (Log Analytics エージェントがインストールされていない、新たに検出された VM) にのみ適用されます。
-    - 新しいワークスペース設定を**すべての VM に適用**する場合は、 **[はい]** を選択します。 この場合、Security Center によって作成されたワークスペースに接続されているすべての VM が、新しいターゲット ワークスペースに再接続されます。
+    - 新しいワークスペース設定を **新しい VM にのみ適用** する場合は、 **[いいえ]** を選択します。 新しいワークスペース設定は、エージェントの新しいインストール (Log Analytics エージェントがインストールされていない、新たに検出された VM) にのみ適用されます。
+    - 新しいワークスペース設定を **すべての VM に適用** する場合は、 **[はい]** を選択します。 この場合、Security Center によって作成されたワークスペースに接続されているすべての VM が、新しいターゲット ワークスペースに再接続されます。
 
     > [!NOTE]
     > **[はい]** を選択した場合、すべての VM が新しいターゲット ワークスペースに再接続されるまで、Security Center によって作成されたワークスペースを削除しないでください。 ワークスペースの削除が早すぎると、この操作は失敗します。
 
-    - 操作を取り消すには、 **[キャンセル]** を選択します。
 
 ## <a name="what-if-the-log-analytics-agent-was-already-installed-as-an-extension-on-the-vm"></a>Log Analytics エージェントが拡張機能として VM に既にインストールされている場合はどうなりますか?<a name="mmaextensioninstalled"></a>
 
@@ -162,14 +166,19 @@ Microsoft Monitoring Extension を削除すると、Security Center は VM か�
 
 ## <a name="how-do-i-stop-the-automatic-agent-installation-and-workspace-creation"></a>自動的なエージェントのインストールとワークスペースの作成をオプトアウトするにはどうすればよいですか?
 
-セキュリティ ポリシーでサブスクリプションの自動プロビジョニングを無効にすることはできますが、これは推奨されません。 自動プロビジョニングを無効にすると、Security Center の推奨事項とアラートが制限されます。 自動プロビジョニングを無効にするには、次の手順に従います。
+セキュリティ ポリシーでサブスクリプションの自動プロビジョニングを無効にすることはできますが、これは推奨されません。 自動プロビジョニングを無効にすると、Security Center のレコメンデーションとアラートが制限されます。 自動プロビジョニングを無効にするには、次の手順に従います。
 
-1. Standard レベルのサブスクリプションを構成する場合、そのサブスクリプションのセキュリティ ポリシーを開き、 **[Free]** レベルを選択します。
+1. Security Center のメニューから、 **[価格と設定]** を選択します。
+1. 関連するサブスクリプションを選択します。
+1. サブスクリプションで Azure Defender が有効になっている場合は、**Azure Defender プラン** を開き、 **[Azure Defender off]\(Azure Defender をオフ\)** を選択します。
 
-   ![Pricing tier][1]
+    :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Azure Defender を有効または無効にする":::
 
-1. 次に、 **[セキュリティ ポリシー - データ収集]** ページで **[オフ]** を選択して自動プロビジョニングを無効にします。
-   ![データ収集][2]
+1. **[自動プロビジョニング]** ページから、ペンを選択して **[セキュリティ ポリシー - データ収集]** ページで自動プロビジョニングを無効にします。
+
+    :::image type="content" source="./media/security-center-enable-data-collection/agent-toggles.png" alt-text="Log Analytics エージェントの自動デプロイを有効にする":::
+
+1. **[保存]** を選択します。
 
 
 ## <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>自動的なエージェントのインストールとワークスペースの作成をオプトアウトすべきでしょうか?
@@ -200,7 +209,7 @@ Log Analytics エージェントの拡張機能を手動でインストールし
 
 エージェントをいずれかの既存のカスタム ワークスペースまたは Security Center が作成したワークスペースに接続できます。 カスタム ワークスペースの 'Security' または 'SecurityCenterFree' ソリューションが有効になっていない場合は、ソリューションを適用する必要があります。 適用するには、 **[セキュリティ ポリシー – 価格レベル]** ページを利用して、カスタム ワークスペースまたはサブスクリプションを選択します。
 
-   ![Pricing tier][1]
+:::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Azure Defender を有効または無効にする":::
 
 Security Center は、選択された価格レベルに基づいて、ワークスペース上で適切なソリューションを有効にします。
 
@@ -232,13 +241,11 @@ Log Analytics エージェントは手動で削除できます。 ただし、Se
 
 有効にした後で無効にする必要がある場合は、次のようにします。
 
-1. [Azure portal](https://portal.azure.com) で **Security Center** を開いて、 **[セキュリティ ポリシー]** を選択します。
+1. [Azure portal](https://portal.azure.com) から、**Security Center** を開いて、 **[Pricing and settings]\(価格と設定\)** を選択します。
 
 1. 自動プロビジョニングを無効にするサブスクリプションを選択します。
 
-    **[Security policy - Data collection]\(セキュリティ ポリシー - データ収集\)** が開きます。
-
-1. **[自動プロビジョニング]** で **[オフ]** を選びます。
+1. **[自動プロビジョニング]** で、Log Analytics エージェントの切り替えをオフにします。
 
 
 ## <a name="how-do-i-enable-data-collection"></a>データ収集を有効にするにはどうしたらよいですか。
@@ -248,7 +255,7 @@ Azure サブスクリプションのデータ収集の有効化は、セキュ�
 
 ## <a name="what-happens-when-data-collection-is-enabled"></a>データ収集を有効にするとどうなりますか。
 
-自動プロビジョニングを有効にすると、Security Center は、サポートされているすべての Azure VM と新しく作成される VM に Log Analytics エージェントをプロビジョニングします。 自動プロビジョニングをお勧めしますが、エージェントを手動でインストールすることもできます。 [Log Analytics エージェントの拡張機能をインストールする方法を確認してください](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。 
+自動プロビジョニングを有効にすると、Security Center は、サポートされているすべての Azure VM と新しく作成される VM に Log Analytics エージェントをプロビジョニングします。 自動プロビジョニングをお勧めしますが、エージェントを手動でインストールすることもできます。 [Log Analytics エージェントの拡張機能をインストールする方法を確認してください](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。 
 
 エージェントで、プロセス作成イベント 4688 とイベント 4688 内の *CommandLine* フィールドが有効になります。 VM に作成された新しいプロセスは EventLog に記録され、Security Center の検出サービスによって監視されます。 新しいプロセスごとに記録される詳細については、[4688 の説明フィールド](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields)を参照してください。 また、エージェントは VM に作成された 4688 イベントも収集し、検索に保存します。
 
@@ -260,7 +267,7 @@ Azure サブスクリプションのデータ収集の有効化は、セキュ�
 ## <a name="will-security-center-work-using-an-oms-gateway"></a>Security Center は OMS ゲートウェイを使用して動作しますか。
 
 はい。 Azure Security Center は、Log Analytics エージェントを使用して、Azure VM およびサーバーからのデータ収集に Azure Monitor を活用します。
-データを収集するには、各 VM とサーバーが HTTPS を使用してインターネットに接続する必要があります。 インターネット接続には、直接接続、プロキシを使用した接続、[OMS ゲートウェイ](../azure-monitor/platform/gateway.md)を介した接続を使用できます。
+データを収集するには、各 VM とサーバーが HTTPS を使用してインターネットに接続する必要があります。 インターネット接続には、直接接続、プロキシを使用した接続、[OMS ゲートウェイ](../azure-monitor/agents/gateway.md)を介した接続を使用できます。
 
 
 ## <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Monitoring Agent はサーバーのパフォーマンスに影響しますか。
@@ -271,7 +278,6 @@ Azure サブスクリプションのデータ収集の有効化は、セキュ�
 
 
 <!--Image references-->
-[1]: ./media/security-center-platform-migration-faq/pricing-tier.png
 [2]: ./media/security-center-platform-migration-faq/data-collection.png
 [3]: ./media/security-center-platform-migration-faq/remove-the-agent.png
 [4]: ./media/security-center-platform-migration-faq/use-another-workspace.png

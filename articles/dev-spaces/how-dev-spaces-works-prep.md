@@ -5,14 +5,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces でプロジェクトを準備する方法について説明します
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 61351072494b51d02a1d6c31399208b9e9b54fce
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d2da69dd8a8c2683ff584dfd0ffc61cb023f2ece
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213430"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91968159"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Azure Dev Spaces のためにプロジェクトを準備する方法
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../includes/dev-spaces-deprecation.md)]
 
 Azure Dev Spaces には、Kubernetes アプリケーションを迅速に反復処理してデバッグし、Azure Kubernetes Service (AKS) クラスターでチームと共同作業を行うための複数の方法が用意されています。 Dev Spaces では、プロジェクトの Dockerfile と Helm チャートを生成できます。 また、Dev Spaces では、AKS で Kubernetes アプリケーションをデプロイ、実行、およびデバッグするための構成ファイルが作成されて使用されます。 これらのファイルはすべて、アプリケーションのコードと共に存在し、バージョン コントロール システムに追加することができます。
 

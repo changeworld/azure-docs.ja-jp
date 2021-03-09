@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight クラスターの仮想ネットワークの作成
 description: Azure Virtual Network を作成して HDInsight を他のクラウド リソースまたはデータセンター内のリソースに接続する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/16/2020
-ms.openlocfilehash: 8e68bd2d164e3a8de60a9061363b839c4dfd4777
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43d57eac94cabb5c648183911e0c0bf72889946d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074754"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946072"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Azure HDInsight クラスターの仮想ネットワークの作成
 
@@ -27,8 +24,8 @@ Azure HDInsight での仮想ネットワークの使用に関する背景情報�
 
 この記事のサンプルに関するその他の前提条件には、次の項目があります。
 
-* PowerShell を使用する場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/)をインストールする必要があります。
-* Azure CLI を使用する予定で、まだインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+* PowerShell を使用する場合は、[AZ モジュール](/powershell/azure/)をインストールする必要があります。
+* Azure CLI を使用する予定で、まだインストールしていない場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 > [!IMPORTANT]  
 > Azure Virtual Network を使用して HDInsight をオンプレミス ネットワークに接続するための詳しい手順については、「[オンプレミス ネットワークへの HDInsight の接続](connect-on-premises-network.md)」を参照してください。
@@ -377,6 +374,6 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 * Apache HBase geo レプリケーションの構成については、「[Azure 仮想ネットワーク内で Apache HBase クラスターのレプリケーションを設定する](hbase/apache-hbase-replication.md)」を参照してください。
 * Azure 仮想ネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページをご覧ください。
 
-* ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)に関するページをご覧ください。
+* ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)に関するページをご覧ください。
 
 * ユーザー定義のルートについて詳しくは、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」をご覧ください。

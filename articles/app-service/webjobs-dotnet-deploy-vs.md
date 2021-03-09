@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp, vs-azure
 ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 14bb693ccaa1b1d16a1d07b7ee1cdeb4493960f5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212871"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89226031"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>Visual Studio を使用して Web ジョブの開発とデプロイを行う
 
@@ -55,7 +55,7 @@ Web ジョブ対応のプロジェクトには、Visual Studio によって以�
 
 ### <a name="prerequisites"></a>前提条件
 
-[Azure 開発ワークロード](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads)と共に Visual Studio 2017 または Visual Studio 2019 をインストールします。
+[Azure 開発ワークロード](/visualstudio/install/install-visual-studio#step-4---choose-workloads)と共に Visual Studio 2017 または Visual Studio 2019 をインストールします。
 
 ### <a name="enable-webjobs-deployment-for-an-existing-console-app-project"></a><a id="convert"></a> 既存のコンソール アプリ プロジェクトに対する Web ジョブのデプロイを有効にする
 
@@ -184,9 +184,9 @@ Web ジョブのデプロイ情報:
 
 Web ジョブの種類は、*トリガー*または*継続的*です。
 
-- トリガー (既定値):トリガー Web ジョブは、バインディング イベントまたは[スケジュール](#scheduling-a-triggered-webjob)に基づいて開始されるか、手動でトリガーされたときに開始されます (オンデマンド)。 これは Web アプリの実行場所となっているすべてのインスタンスで実行されますが、必要に応じて Web ジョブを 1 つのインスタンスに制限することができます。
+- トリガー (既定値):トリガー Web ジョブは、バインディング イベントまたは[スケジュール](#scheduling-a-triggered-webjob)に基づいて開始されるか、手動でトリガーされたときに開始されます (オンデマンド)。 Web アプリが実行されている 1 つのインスタンスで実行されます。
 
-- 継続的:[継続的](#continuous-execution) Web ジョブは、作成されるとすぐに開始されます。 この種類の Web ジョブは、バインドされていないジョブや長時間実行されるジョブに最適です。 ジョブが終了した場合でも、再開することができます。  
+- 継続的:[継続的](#continuous-execution) Web ジョブは、作成されるとすぐに開始されます。 既定では、すべての Web アプリのスケーリングされたインスタンスで実行されますが、*settings.job* を使用して 1 つのインスタンスとして実行するように構成できます。
 
 [!INCLUDE [webjobs-alwayson-note](../../includes/webjobs-always-on-note.md)]
 

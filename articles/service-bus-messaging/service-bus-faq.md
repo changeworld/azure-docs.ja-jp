@@ -2,19 +2,18 @@
 title: Azure Service Bus のよく寄せられる質問 (FAQ) | Microsoft Docs
 description: この記事では、Azure Service Bus に関連する、よく寄せられる質問 (FAQ) の一部の回答を示します。
 ms.topic: article
-ms.date: 07/15/2020
-ms.openlocfilehash: e098b05dba25a51d5d6ef7c50a1b73730828357a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 01/20/2021
+ms.openlocfilehash: 3a96cf94ca4a7edd115f12b3e2eded11a5894e04
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080815"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693404"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus - よく寄せられる質問 (FAQ)
 
 この記事では、Microsoft Azure Service Bus についてよく寄せられる質問 (FAQ) とその回答について説明します。 Azure の価格およびサポートに関する一般的な情報については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」も参照してください。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-questions-about-azure-service-bus"></a>Azure Service Bus に関する一般的な質問
 ### <a name="what-is-azure-service-bus"></a>Azure Service Bus とは
@@ -36,20 +35,32 @@ ms.locfileid: "88080815"
 
  パーティション分割されたエンティティは [Premium SKU](service-bus-premium-messaging.md) ではサポートされなくなりました。 
 
+### <a name="where-does-azure-service-bus-store-data"></a><a name="in-region-data-residency"></a>Azure Service Bus ではデータはどこに格納されますか。
+Azure Service Bus の Standard レベルでは、Azure SQL Database をそのバックエンド ストレージ レイヤーに利用します。 ブラジル南部と東南アジアを除くすべてのリージョンでは、データベース バックアップは別のリージョン (通常は Azure ペア リージョン) でホストされます。 ブラジル南部および東南アジア リージョンでは、データベース バックアップは、これらのリージョンのデータ所在地の要件に対応するために同じリージョンに格納されます。
+
+Azure Service Bus の Premium レベルでは、選択されたリージョンにメタデータとデータが格納されます。 Azure Service Bus の Premium 名前空間に対して geo ディザスター リカバリーを設定すると、メタデータは、選択されたセカンダリ リージョンにコピーされます。
+
+
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>ファイアウォールで開く必要があるのはどのポートですか。 
 Azure Service Bus でメッセージを送受信する場合、次のプロトコルを使用できます。
 
-- Advanced Message Queuing Protocol (AMQP)
-- Service Bus メッセージング プロトコル (SBMP)
-- HTTP
+- Advanced Message Queuing Protocol 1.0 (AMQP)
+- TLS を使用したハイパーテキスト転送プロトコル 1.1 (HTTPS)
 
-これらのプロトコルを使用して Azure Event Hubs と通信するために開く必要がある送信ポートについては、次の表を参照してください。 
+これらのプロトコルを使用して Azure Service Bus と通信するために開く必要がある送信 TCP ポートについては、次の表を参照してください。
 
-| Protocol | Port | 詳細 | 
+| Protocol | ポート | 詳細 | 
 | -------- | ----- | ------- | 
-| AMQP | 5671 と 5672 | [AMQP プロトコル ガイド](service-bus-amqp-protocol-guide.md)に関するページを参照してください | 
-| SBMP | 9350 から 9354 | 「[Connectivity mode](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet)」 (接続モード) を参照してください。 |
-| HTTP、HTTPS | 80、443 | 
+| AMQP | 5671 | TLS を使用した AMQP。 [AMQP プロトコル ガイド](service-bus-amqp-protocol-guide.md)に関するページを参照してください | 
+| HTTPS | 443 | このポートは、HTTP/REST API と AMQP (WebSocket 経由) で使用されます。 |
+
+通常、HTTPS ポートは、ポート 5671 で AMQP が使用されている場合に送信通信にも必要です。これは、クライアント SDK によって実行されるいくつかの管理操作と Azure Active Directory からのトークンの取得 (使用する場合) が HTTPS 経由で実行されるためです。 
+
+公式の Azure SDK では、通常、Service Bus に対するメッセージの送受信で AMQP プロトコルが使用されます。 
+
+[!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
+
+.NET Framework の以前の WindowsAzure.ServiceBus パッケージには、従来の "Service Bus Messaging Protocol" (SBMP) を使用するオプションがあります。これは "NetMessaging" とも呼ばれます。 このプロトコルでは、TCP ポート 9350 から 9354 が使用されます。 このパッケージの既定のモードでは、これらのポートが通信に使用できるかどうかが自動的に検出されます。そうでない場合は、ポート 443 経由での TLS を使用した WebSocket に切り替えられます。 この設定をオーバーライドきして、このモードを強制するには、[`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity) 設定に `Https` [CConnectivityMode](/dotnet/api/microsoft.servicebus.connectivitymode) を設定します。これは、アプリケーションにグローバルに適用されます。
 
 ### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>どのような IP アドレスを許可リストに追加する必要がありますか。
 接続の許可リストに追加する適切な IP アドレスを検索するには、次の手順を実行します。
@@ -59,9 +70,9 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. `Non-authoritative answer` で返された IP アドレスをメモします。 この IP アドレスは静的です。 これが変更されるのは、名前空間を別のクラスターに復元する場合のみです。
+2. `Non-authoritative answer` で返された IP アドレスをメモします。 
 
-名前空間にゾーン冗長性を使用している場合は、次の追加手順を実行する必要があります。 
+名前空間に **ゾーン冗長性** を使用している場合は、次の追加手順を実行する必要があります。 
 
 1. まず、名前空間に対して nslookup を実行します。
 
@@ -77,8 +88,11 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
     ```
 3. s1、s2、s3 のサフィックスが付いているそれぞれについて nslookup を実行し、3 つの可用性ゾーンで実行されている 3 つのインスタンスすべての IP アドレスを取得します。 
 
+    > [!NOTE]
+    > `nslookup` コマンドによって返された IP アドレスは、静的 IP アドレスではありません。 ただし、基になるデプロイが削除されるか別のクラスターに移動されるまでは変わりません。
+
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>名前空間との間でメッセージを送受信するクライアントの IP アドレスはどこで確認できますか。 
-名前空間との間でメッセージを送受信しているクライアントの IP アドレスはログに記録されません。 すべての既存クライアントの認証が失敗するようにキーを再生成し、ロールベースのアクセス制御 ([RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)) の設定を確認して、許可されているユーザーまたはアプリケーションのみが名前空間にアクセスできることを確認します。 
+名前空間との間でメッセージを送受信しているクライアントの IP アドレスはログに記録されません。 すべての既存クライアントの認証が失敗するようにキーを再生成し、Azure ロールベースのアクセス制御 ([Azure RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)) の設定を確認して、許可されているユーザーまたはアプリケーションのみが名前空間にアクセスできることを確認します。 
 
 **Premium** 名前空間を使用している場合は、名前空間へのアクセスを制限するには、[IP フィルタリング](service-bus-ip-filtering.md)、[仮想ネットワーク サービス エンドポイント](service-bus-service-endpoints.md)、[プライベート エンドポイント](private-link-service.md)を使用します。 
 
@@ -157,6 +171,8 @@ Select-AzSubscription -SubscriptionId 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
 $res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsoft.ServiceBus/namespaces'
 Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
+## <a name="is-it-possible-to-disable-tls-10-or-11-on-service-bus-namespaces"></a>Service Bus 名前空間で TLS 1.0 または 1.1 を無効にすることはできますか。
+いいえ。 Service Bus 名前空間で TLS 1.0 または 1.1 を無効にすることはできません。 Service Bus に接続するクライアント アプリケーションでは、TLS 1.2 以降を使用してください。 詳細については、「[Azure Service Bus での TLS 1.2 の使用の強制 - Microsoft Tech Community](https://techcommunity.microsoft.com/t5/messaging-on-azure/enforcing-tls-1-2-use-with-azure-service-bus/ba-p/370912)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 Service Bus の詳細については、次の記事をご覧ください。

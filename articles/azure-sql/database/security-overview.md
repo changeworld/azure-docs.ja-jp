@@ -10,25 +10,25 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
-ms.reviewer: vanto, carlrab, emlisa
-ms.date: 05/14/2019
-ms.openlocfilehash: bfb7c94f1a29eaaf849dbf18a2b6137102617be8
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.reviewer: vanto, emlisa
+ms.date: 10/26/2020
+ms.openlocfilehash: 39119f62fa938f5f4f6529539d4ca9a84bdf8fd7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986850"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989192"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL Database と SQL Managed Instance のセキュリティ機能の概要
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-この記事では、[Azure SQL Database](sql-database-paas-overview.md) と [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) を使用して、アプリケーションのデータ層をセキュリティで保護するための基本の概要を示します。 説明されているセキュリティ戦略では、下の図に示すように多層防御アプローチに従い、外側から内側に移動します。
+この記事では、[Azure SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) を使用して、アプリケーションのデータ層をセキュリティで保護するための基本の概要を示します。 説明されているセキュリティ戦略では、下の図に示すように多層防御アプローチに従い、外側から内側に移動します。
 
-![sql-security-layer.png](./media/security-overview/sql-security-layer.png)
+![多層防御の図。 顧客データは、ネットワーク セキュリティ、アクセス管理、および脅威の防止と情報の保護のレイヤーに入れられています。](./media/security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-Microsoft Azure SQL Database と SQL Managed Instance では、クラウドおよびエンタープライズ アプリケーション用のリレーショナル データベース サービスを提供します。 顧客データを保護できるように、IP アドレスまたは Azure 仮想ネットワーク トラフィック元に基づいてアクセス権が明示的に付与されるまで、ファイアウォールによってサーバーへのネットワーク アクセスが遮断されます。
+Microsoft Azure SQL Database、SQL Managed Instance、Azure Synapse Analytics では、クラウドおよびエンタープライズ アプリケーション用のリレーショナル データベース サービスを提供します。 顧客データを保護できるように、IP アドレスまたは Azure 仮想ネットワーク トラフィック元に基づいてアクセス権が明示的に付与されるまで、ファイアウォールによってサーバーへのネットワーク アクセスが遮断されます。
 
 ### <a name="ip-firewall-rules"></a>IP ファイアウォール規則
 
@@ -36,7 +36,7 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 
 ### <a name="virtual-network-firewall-rules"></a>仮想ネットワーク ファイアウォールの規則
 
-[仮想ネットワーク サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)では、Azure バックボーン経由で仮想ネットワーク接続を拡張し、Azure SQL Database でトラフィック元の仮想ネットワーク サブネットを識別できるようにします。 Azure SQL Database にトラフィックが到達できるようにするには、SQL の[サービス タグ](../../virtual-network/security-overview.md)を使用して、ネットワーク セキュリティ グループを介したアウトバウンド トラフィックを許可します。
+[仮想ネットワーク サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)では、Azure バックボーン経由で仮想ネットワーク接続を拡張し、Azure SQL Database でトラフィック元の仮想ネットワーク サブネットを識別できるようにします。 Azure SQL Database にトラフィックが到達できるようにするには、SQL の[サービス タグ](../../virtual-network/network-security-groups-overview.md)を使用して、ネットワーク セキュリティ グループを介したアウトバウンド トラフィックを許可します。
 
 [仮想ネットワーク規則](vnet-service-endpoint-rule-overview.md)を使用すると、Azure SQL Database は、仮想ネットワーク内の選択されたサブネットから送信される通信のみを受け入れるようにすることができます。
 
@@ -46,7 +46,7 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 ## <a name="access-management"></a>アクセス管理
 
 > [!IMPORTANT]
-> Azure 内でのデータベースとサーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、「[Azure portal でのロール ベースのアクセス制御](../../role-based-access-control/overview.md)」を参照してください。
+> Azure 内でのデータベースとサーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、[Azure portal での Azure ロールベースのアクセス制御](../../role-based-access-control/overview.md)に関する記事を参照してください。
 
 ### <a name="authentication"></a>認証
 
@@ -54,18 +54,18 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 
 - **SQL 認証**:
 
-    SQL 認証とは、ユーザーがユーザー名とパスワードを使用して Azure SQL Database または Azure SQL Managed Instance に接続するときに、そのユーザーを認証することを指します。 サーバーの作成時には、ユーザー名とパスワードを使用して**サーバー管理者**ログインを指定する必要があります。 これらの資格情報を使用することで、**サーバー管理者**はデータベース所有者として、そのサーバーまたはインスタンスにある任意のデータベースを認証できます。 その後、サーバー管理者は、追加の SQL ログインとユーザーを作成できます。これにより、ユーザーはユーザー名とパスワードを使用して接続できるようになります。
+    SQL 認証とは、ユーザーがユーザー名とパスワードを使用して Azure SQL Database または Azure SQL Managed Instance に接続するときに、そのユーザーを認証することを指します。 サーバーの作成時には、ユーザー名とパスワードを使用して **サーバー管理者** ログインを指定する必要があります。 これらの資格情報を使用することで、**サーバー管理者** はデータベース所有者として、そのサーバーまたはインスタンスにある任意のデータベースを認証できます。 その後、サーバー管理者は、追加の SQL ログインとユーザーを作成できます。これにより、ユーザーはユーザー名とパスワードを使用して接続できるようになります。
 
 - **Azure Active Directory 認証**:
 
     Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を使用して [Azure SQL Database](sql-database-paas-overview.md)、[Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md)、[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。 Azure AD 認証では、管理者は、データベース ユーザーの ID とアクセス許可を他の Azure サービスと共に一元管理できます。 これにはパスワード ストレージの最小化が含まれます。また、これにより一元化されたパスワードのローテーション ポリシーが有効になります。
 
-     SQL Database で Azure AD 認証を使用するには、**Active Directory 管理者**と呼ばれるサーバー管理者を作成する必要があります。 詳細については、[Azure Active Directory 認証を使用した SQL Database への接続](authentication-aad-overview.md)に関するページを参照してください。 Azure AD 認証では、マネージド アカウントとフェデレーション アカウントの両方がサポートされます。 フェデレーション アカウントでは、Azure AD とフェデレーションされた顧客ドメインの Windows ユーザーとグループがサポートされます。
+     SQL Database で Azure AD 認証を使用するには、**Active Directory 管理者** と呼ばれるサーバー管理者を作成する必要があります。 詳細については、[Azure Active Directory 認証を使用した SQL Database への接続](authentication-aad-overview.md)に関するページを参照してください。 Azure AD 認証では、マネージド アカウントとフェデレーション アカウントの両方がサポートされます。 フェデレーション アカウントでは、Azure AD とフェデレーションされた顧客ドメインの Windows ユーザーとグループがサポートされます。
 
     使用できる追加の Azure AD 認証オプションには、[多要素認証](../../active-directory/authentication/concept-mfa-howitworks.md)と[条件付きアクセス](conditional-access-configure.md)を含む、[SQL Server Management Studio 用の Active Directory ユニバーサル認証](authentication-mfa-ssms-overview.md)接続があります。
 
 > [!IMPORTANT]
-> Azure 内でのデータベースとサーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、「[Azure Portal でのロール ベースのアクセス制御](../../role-based-access-control/overview.md)」を参照してください。 ファイアウォール規則でのアクセスの制御は、**SQL Managed Instance** には適用され "*ません*"。 必要なネットワーク構成の詳細については、[マネージド インスタンスへの接続](../managed-instance/connect-application-instance.md)に関する次の記事をご覧ください。
+> Azure 内でのデータベースとサーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、[Azure portal での Azure ロールベースのアクセス制御](../../role-based-access-control/overview.md)に関する記事を参照してください。 ファイアウォール規則でのアクセスの制御は、**SQL Managed Instance** には適用され "*ません*"。 必要なネットワーク構成の詳細については、[マネージド インスタンスへの接続](../managed-instance/connect-application-instance.md)に関する次の記事をご覧ください。
 
 ## <a name="authorization"></a>承認
 
@@ -77,7 +77,7 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 
 行レベル セキュリティにより、顧客はクエリを実行するユーザーの特性に基づき、データベース テーブルの行へのアクセスを制御できます (たとえば、グループのメンバーシップや実行コンテキストなど)。 また、行レベル セキュリティを使用して、ラベルに基づくカスタム セキュリティ概念を実装することもできます。 詳細については、「[行レベルのセキュリティ](/sql/relational-databases/security/row-level-security)」を参照してください。
 
-![azure-database-rls.png](./media/security-overview/azure-database-rls.png)
+![行レベルのセキュリティにより、SQL データベースの個々の行が、クライアントアプリ経由でのユーザーによるアクセスから保護されていることを示す図。](./media/security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>脅威の防止
 
@@ -91,17 +91,17 @@ SQL Database と SQL Managed Instance の監査はデータベース アクテ�
 
 Advanced Threat Protection では、ログを分析し、通常とは異なる動作と、データベースへのアクセスまたは悪用を試みる有害な可能性がある試行を検出します。 SQL インジェクション、潜在的なデータ侵入、ブルートフォース攻撃などの疑わしいアクティビティや、特権の昇格と不正な資格情報の使用を検出するアクセス パターンの異常に対してアラートが作成されます。 アラートは、[Azure Security Center](https://azure.microsoft.com/services/security-center/) で表示されます。ここでは、疑わしいアクティビティの詳細が提供され、また、脅威を軽減するためのアクションと共に、より詳しい調査のためのレコメンデーションが示されます。 Advanced Threat Protection は追加料金でサーバーごとに有効にすることができます。 詳細については、[SQL Database の Advanced Threat Protection の概要](threat-detection-configure.md)に関する記事を参照してください。
 
-![azure-database-td.jpg](./media/security-overview/azure-database-td.jpg)
+![外部の攻撃者や悪意のある内部関係者による Web アプリの SQL データベースへのアクセスを監視する SQL 脅威の検出を示す図。](./media/security-overview/azure-database-td.jpg)
 
 ## <a name="information-protection-and-encryption"></a>情報の保護と暗号化
 
 ### <a name="transport-layer-security-encryption-in-transit"></a>トランスポート層セキュリティ (転送中の暗号化)
 
-SQL Database と SQL Managed Instance では、[トランスポート層セキュリティ (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) を使用して、移動中のデータを暗号化することで、顧客データをセキュリティで保護します。
+SQL Database、SQL Managed Instance、Azure Synapse Analytics では、[トランスポート層セキュリティ (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) を使用して、移動中のデータを暗号化することで、顧客データをセキュリティで保護します。
 
-SQL Database と SQL Managed Instance では、すべての接続に対して常に暗号化 (SSL/TLS) が適用されます。 これにより、接続文字列での **Encrypt** または **TrustServerCertificate** の設定に関係なく、すべてのデータがクライアントとサーバー間の "移動中" に暗号化されることが保証されます。
+SQL Database、SQL Managed Instance、Azure Synapse Analytics では、すべての接続に対して常に暗号化 (SSL/TLS) が適用されます。 これにより、接続文字列での **Encrypt** または **TrustServerCertificate** の設定に関係なく、すべてのデータがクライアントとサーバー間の "移動中" に暗号化されることが保証されます。
 
-ベスト プラクティスとして、アプリケーションで使用される接続文字列に、暗号化接続を指定し、サーバー証明書を信頼_**しない**_ ことをお勧めします。 これにより、アプリケーションはサーバー証明書を強制的に検証するため、アプリケーションの man in the middle 攻撃に対する脆弱性を防ぎます。
+ベスト プラクティスとして、アプリケーションで使用される接続文字列に、暗号化接続を指定し、サーバー証明書を信頼 _**しない**_ ことをお勧めします。 これにより、アプリケーションはサーバー証明書を強制的に検証するため、アプリケーションの man in the middle 攻撃に対する脆弱性を防ぎます。
 
 たとえば、ADO.NET ドライバーを使用している場合、これは、**Encrypt=True** と **TrustServerCertificate=False** によって達成されます。 Azure portal から接続文字列を取得する場合は、正しい設定になっています。
 
@@ -112,7 +112,7 @@ SQL Database と SQL Managed Instance では、すべての接続に対して常
 
 ### <a name="transparent-data-encryption-encryption-at-rest"></a>Transparent Data Encryption (保存時の暗号化)
 
-[Azure SQL Database と SQL Managed Instance の Transparent Data Encryption (TDE)](transparent-data-encryption-tde-overview.md) ではセキュリティ層が追加されており、生ファイルまたはバックアップへの未承認またはオフライン アクセスから保存データを保護するのに役立ちます。 一般的なシナリオには、ディスク ドライブやバックアップ テープなどのハードウェアまたはメディアの、データ センターでの盗用や非セキュアな破棄が含まれます。 TDE では、アプリケーション開発者が既存のアプリケーションを変更する必要がない、AES 暗号化アルゴリズムを使用して、データベース全体を暗号化します。
+[SQL Database、SQL Managed Instance、Azure Synapse Analytics の Transparent Data Encryption (TDE)](transparent-data-encryption-tde-overview.md) ではセキュリティ層が追加されており、生ファイルまたはバックアップへの未認可またはオフライン アクセスから保存データを保護するのに役立ちます。 一般的なシナリオには、ディスク ドライブやバックアップ テープなどのハードウェアまたはメディアの、データ センターでの盗用や非セキュアな破棄が含まれます。 TDE では、アプリケーション開発者が既存のアプリケーションを変更する必要がない、AES 暗号化アルゴリズムを使用して、データベース全体を暗号化します。
 
 Azure では、新しく作成されたすべてのデータベースが既定で暗号化され、データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。  証明書のメンテナンスとローテーションはサービスによって管理され、ユーザーによる入力は必要ありません。 暗号化キーの制御を望まれるお客様は、[Azure Key Vault](../../key-vault/general/secure-your-key-vault.md) でキーを管理できます。
 
@@ -122,13 +122,13 @@ Azure では、新しく作成されたすべてのデータベースが既定�
 
 ### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (使用時の暗号化)
 
-![azure-database-ae.png](./media/security-overview/azure-database-ae.png)
+![Always Encrypted 機能の基本を示す図。 ロックを使用する SQL データベースへは、キーが含まれるアプリからのみアクセスできます。](./media/security-overview/azure-database-ae.png)
 
 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) は、特定のデータベース列に格納された機微なデータ (クレジット カード番号、国民識別番号、_知る必要性_ に基づくデータなど) がアクセスされないようにすることを目的とした機能です。 これには、データベース管理者や、管理タスクを実行するためにデータベースへのアクセスを許可されているものの、暗号化された列の特定のデータには業務上、アクセスする必要がない他の特権ユーザーが含まれます。 データは常に暗号化されます。つまり、暗号化されたデータは、暗号化キーにアクセスできるクライアント アプリケーションによって処理される場合にのみ、暗号化解除されます。 暗号化キーは SQL Database または SQL Managed Instance に公開されることはなく、[Windows 証明書ストア](always-encrypted-certificate-store-configure.md)または [Azure Key Vault](always-encrypted-azure-key-vault-configure.md) に格納できます。
 
 ### <a name="dynamic-data-masking"></a>動的データ マスク
 
-![azure-database-ddm.png](./media/security-overview/azure-database-ddm.png)
+![動的データ マスキングを示す図。 データは、ビジネス アプリによって SQL Database に送信され、そこでマスキングされてから、ビジネス アプリに戻されます。](./media/security-overview/azure-database-ddm.png)
 
 動的データ マスクは、特権のないユーザーに対してデリケートなデータをマスクし、データの公開を制限します。 動的データ マスクは、Azure SQL Database と SQL Managed Instance の中で機密の可能性があるデータを自動的に検出し、アプリケーション層への影響を最小限に抑えながらそれらのフィールドをマスクするための具体的な推奨事項を提示します。 指定されたデータベース フィールドに対するクエリの結果セットに含まれる機密データを難読化しますが、データベース内のデータは変更しません。 詳細については、[SQL Database と SQL Managed Instance の動的データ マスク](dynamic-data-masking-overview.md)に関するページを参照してください。
 
@@ -136,7 +136,7 @@ Azure では、新しく作成されたすべてのデータベースが既定�
 
 ### <a name="vulnerability-assessment"></a>脆弱性評価
 
-[脆弱性評価](sql-vulnerability-assessment.md)では、全体的なデータベース セキュリティを積極的に向上させる目的で、データベースの潜在的な脆弱性を検出、追跡、修復できるサービスを簡単に構成できます。 脆弱性評価 (VA) は、高度な SQL セキュリティ機能の統合パッケージである Advanced Data Security オファリングの一部です。 脆弱性評価は、SQL Advanced Data Security ポータルを使って一元的にアクセスおよび管理できます。
+[脆弱性評価](sql-vulnerability-assessment.md)では、全体的なデータベース セキュリティを積極的に向上させる目的で、データベースの潜在的な脆弱性を検出、追跡、修復できるサービスを簡単に構成できます。 脆弱性評価 (VA) は、高度な SQL セキュリティ機能の統合パッケージである Azure Defender for SQL オファリングの一部です。 脆弱性評価は、Azure Defender for SQL ポータルを使用して、一元的にアクセスおよび管理できます。
 
 ### <a name="data-discovery-and-classification"></a>データの検出と分類
 
@@ -150,7 +150,7 @@ Azure では、新しく作成されたすべてのデータベースが既定�
 
 ### <a name="compliance"></a>コンプライアンス
 
-アプリケーションでさまざまなセキュリティ要件を満たすのに役立つ上記の機能以外にも、Azure SQL Database では定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。 詳細については、[Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)に関するページを参照してください。ここから最新の SQL Database コンプライアンス証明書の一覧を入手できます。
+アプリケーションでさまざまなセキュリティ要件を満たすのに役立つ上記の機能以外にも、Azure SQL Database では定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。 詳細については、[Microsoft Azure Trust Center](https://www.microsoft.com/trust-center/compliance/compliance-overview)に関するページを参照してください。ここから最新の SQL Database コンプライアンス証明書の一覧を入手できます。
 
 ## <a name="next-steps"></a>次のステップ
 

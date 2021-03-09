@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor for Storage で Azure Storage サービスを監視する | Microsoft Docs
 description: この記事では、ストレージ管理者が Azure Storage アカウントのパフォーマンスと使用状況の問題をすばやく把握できる Azure Monitor for Storage の機能について説明します。
-ms.subservice: ''
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 05/11/2020
-ms.openlocfilehash: 7daba35b9247443c84cedad03f252ea6858da236
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0baaca8df8865061b51f1629da14c3b18a527047
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327346"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708069"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Azure Monitor for Storage でストレージ サービスを監視する
 
@@ -31,14 +30,11 @@ Azure Monitor for Storage では、Azure Storage サービスのパフォーマ�
 
 * **カスタマイズ可能**: 表示するメトリックの変更したり、制限に合わせたしきい値の変更または設定、独自のブックとして保存することができます。 ブック内のグラフは、Azure ダッシュボードにピン留めできます。  
 
-この機能を使用するために有効にしたり構成したりする必要があるものはなく、ストレージ メトリックはストレージ アカウントから既定で収集されます。 Azure Storage で使用できるメトリックについて詳しく理解したい場合は、[Azure Storage メトリック](../../storage/common/monitor-storage.md)に関する記事で Azure Storage のメトリックの説明と定義を確認してください。
+この機能を使用するために有効にしたり構成したりする必要があるものはなく、ストレージ メトリックはストレージ アカウントから既定で収集されます。 Azure Storage で使用できるメトリックについて詳しく理解したい場合は、[Azure Storage メトリック](../../storage/blobs/monitor-blob-storage.md)に関する記事で Azure Storage のメトリックの説明と定義を確認してください。
 
 >[!NOTE]
 >この機能へのアクセスに対して料金はかからず、構成または有効にした Azure Monitor の基本機能に対してのみ課金されます。[Azure Monitor の価格の詳細](https://azure.microsoft.com/pricing/details/monitor/)に関するページをご覧ください。
 
->[!NOTE]
->Azure Monitor for Storage では、[汎用 v1 アカウント](../../storage/common/storage-account-overview.md#general-purpose-v1-accounts)をサポートしていません。
->
 
 ## <a name="view-from-azure-monitor"></a>Azure Monitor から表示する
 
@@ -54,11 +50,11 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 ### <a name="overview-workbook"></a>[概要] ブック
 
-選択したサブスクリプションの **[概要]** ブックでは、サブスクリプション内でグループ化されている最大 10 個のストレージ アカウントについて、ストレージ メトリックとサービスの可用性の状態がテーブルに対話的に表示されます。 次のドロップダウン リストから選択するオプションに基づいて、結果をフィルター処理できます。
+選択したサブスクリプションの **[概要]** ブックでは、サブスクリプション内でグループ化されている最大 5 個のストレージ アカウントについて、ストレージ メトリックとサービスの可用性の状態がテーブルに対話的に表示されます。 次のドロップダウン リストから選択するオプションに基づいて、結果をフィルター処理できます。
 
 * **[サブスクリプション]** - ストレージ アカウントを持つサブスクリプションのみが表示されます。  
 
-* **[ストレージ アカウント]** - 既定では、10 個のストレージ アカウントがあらかじめ選択されています。 スコープ セレクターですべてまたは複数のストレージ アカウントを選択すると、最大 200 個のストレージ アカウントが返されます。 たとえば、選択した 3 つのサブスクリプションに全部で 573 個のストレージ アカウントがある場合は、200 個のアカウントのみが表示されます。 
+* **[ストレージ アカウント]** - 既定では、5 個のストレージ アカウントがあらかじめ選択されています。 スコープ セレクターですべてまたは複数のストレージ アカウントを選択すると、最大 200 個のストレージ アカウントが返されます。 たとえば、選択した 3 つのサブスクリプションに全部で 573 個のストレージ アカウントがある場合は、200 個のアカウントのみが表示されます。 
 
 * **[時間の範囲]** - 既定では、選択結果に応じて過去 4 時間の情報が表示されます。
 
@@ -67,7 +63,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 **[可用性]** 、 **[E2E Latency]\(E2E 待機時間\)** 、 **[Server Latency]\(サーバー待機時間\)** 、 **[transaction error type/Errors]\(<トランザクション エラーの種類>/エラー\)** の列で値を選択すると、ストレージ アカウントに対して選択した列と一致する、特定の種類のストレージ メトリックに合わせて調整されたレポートに移動します。 各カテゴリのブックの詳細については、後述の「[詳細なストレージ ブック](#detailed-storage-workbooks)」セクションを参照してください。 
 
 >[!NOTE]
->レポートに表示できるエラーの詳細については、[応答の種類のスキーマ](../../storage/common/monitor-storage-reference.md#metrics-dimensions)に関する記事で、**ServerOtherError**、**ClientOtherError**、**ClientThrottlingError** などの応答の種類を参照してください。 選択したストレージ アカウントに応じて、3 種類より多くのエラーが報告される場合、他のすべてのエラーは **[その他]** のカテゴリの下に表示されます。
+>レポートに表示できるエラーの詳細については、[応答の種類のスキーマ](../../storage/blobs/monitor-blob-storage-reference.md#metrics-dimensions)に関する記事で、**ServerOtherError**、**ClientOtherError**、**ClientThrottlingError** などの応答の種類を参照してください。 選択したストレージ アカウントに応じて、3 種類より多くのエラーが報告される場合、他のすべてのエラーは **[その他]** のカテゴリの下に表示されます。
 
 既定の **[可用性]** のしきい値は次のとおりです。
 
@@ -88,13 +84,13 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 ## <a name="view-from-a-storage-account"></a>ストレージ アカウントから表示する
 
-ストレージ アカウントから直接 Azure Monitor for VMs にアクセスするには:
+ストレージ アカウントから VM インサイトに直接アクセスするには、次のようにします。
 
 1. Azure portal で [ストレージ アカウント] を選択します。
 
 2. 一覧からストレージ アカウントを選択します。 [監視] セクションで、[分析情報] を選択します。
 
-    ![選択されたストレージ アカウントの [概要] ページ](./media/storage-insights-overview/storage-account-direct-overview-01.png)
+    ![ストレージ アカウントの [概要] ブック ページを示すスクリーンショット。](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
 ストレージアカウントの **[概要]** ブックには、複数のストレージ パフォーマンス メトリックが表示され、次の情報をすばやく評価するのに役立ちます。
 
@@ -120,7 +116,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
     ![パフォーマンス レポートの例](./media/storage-insights-overview/storage-account-performance-01.png)
 
-* グリッドに表示されているエラー カテゴリのいずれかを選択して、 **[Failure]\(エラー\)** ブックを開きます。 レポートには、説明されているものと成功した要求を除く他のすべてのクライアント側エラーのメトリック タイル、ClientOtherError 属性に固有のトランザクション**応答の種類**ディメンション メトリックのパフォーマンス グラフ、および **[Transactions by API name]\(API 名別トランザクション\)** と **[Transactions by Response type]\(応答の種類別トランザクション\)** の 2 つのテーブルが表示されます。
+* グリッドに表示されているエラー カテゴリのいずれかを選択して、 **[Failure]\(エラー\)** ブックを開きます。 レポートには、説明されているものと成功した要求を除く他のすべてのクライアント側エラーのメトリック タイル、ClientOtherError 属性に固有のトランザクション **応答の種類** ディメンション メトリックのパフォーマンス グラフ、および **[Transactions by API name]\(API 名別トランザクション\)** と **[Transactions by Response type]\(応答の種類別トランザクション\)** の 2 つのテーブルが表示されます。
 
    ![エラー レポートの例](./media/storage-insights-overview/storage-account-failures-01.png)
 
@@ -269,9 +265,9 @@ n 種類のエラーを表示する場合は、splitByLimit を n+1 として指
 
 ## <a name="next-steps"></a>次のステップ
 
-* [メトリック アラート](../platform/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications-portal.md)を構成して、問題の検出に役立つ自動アラートを設定します。
+* [メトリック アラート](../alerts/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications-portal.md)を構成して、問題の検出に役立つ自動アラートを設定します。
 
-* ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../platform/workbooks-overview.md)」で学習してください。
+* ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../visualize/workbooks-overview.md)」で学習してください。
 
-* Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「 [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
+* Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
 

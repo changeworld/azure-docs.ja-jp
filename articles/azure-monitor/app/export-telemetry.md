@@ -3,12 +3,12 @@ title: Application Insights からのテレメトリの連続エクスポート 
 description: 診断および利用状況データを Microsoft Azure のストレージにエクスポートし、そこからダウンロードします。
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: f67a5c555c438298cee701ca065aaf8c01c6406e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 23405faeb7d2151ce0f6492c0d522e0a7f9b84a8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324337"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100584234"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights からのテレメトリのエクスポート
 標準的なリテンション期間より長くテレメトリを残しておきたい、 または特別な方法でテレメトリを処理したい、 そのようなケースには、連続エクスポートが最適です。 Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。 そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。  
@@ -21,7 +21,7 @@ ms.locfileid: "87324337"
 
 * メトリック タブや検索タブの上部にある [エクスポート] ボタンを使用すると、テーブルやグラフを Excel のスプレッドシートに転送できます。
 
-* [Analytics](../log-query/log-query-overview.md) にはテレメトリ用の強力なクエリ言語があります。 結果をエクスポートすることもできます。
+* [Analytics](../logs/log-query-overview.md) にはテレメトリ用の強力なクエリ言語があります。 結果をエクスポートすることもできます。
 * [Power BI でデータを探索](./export-power-bi.md)する場合は、連続エクスポートを使用せずに実行できます。
 * [データ アクセス REST API](https://dev.applicationinsights.io/) を使用すると、テレメトリにプログラムでアクセスすることができます。
 * [PowerShell を使用して連続エクスポート](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)の設定にアクセスすることもできます。
@@ -30,13 +30,16 @@ ms.locfileid: "87324337"
 
 ## <a name="continuous-export-advanced-storage-configuration"></a>連続エクスポートの高度なストレージ構成
 
-連続エクスポートでは、次の Azure のストレージ機能または構成は**サポートされません**。
+連続エクスポートでは、次の Azure のストレージ機能または構成は **サポートされません**。
 
-* [VNET/Azure Storage ファイアウォール](../../storage/common/storage-network-security.md)と Azure BLOB ストレージの併用。
+* [VNET/Azure Storage ファイアウォール](../../storage/common/storage-network-security.md)と Azure Blob Storage の併用。
 
 * [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md)。
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a>連続エクスポートを作成する
+
+> [!NOTE]
+> アプリケーションでは、1 日に 3 TB を超えるデータをエクスポートできません。 1 日あたり 3 TB を超える場合、エクスポートは無効になります。 制限なしでエクスポートするには、[診断設定ベースのエクスポート](#diagnostic-settings-based-export)を使用します。
 
 1. アプリの Application Insights リソースで、左側の [構成] の下の [連続エクスポート] を開き、 **[追加]** を選択します。
 
@@ -56,7 +59,7 @@ ms.locfileid: "87324337"
 
 ストレージにデータが表示されるまで、約 1 時間の遅延が発生する可能性があります。
 
-最初のエクスポートが完了すると、Azure BLOB ストレージ コンテナーに次のような構造が表示されます。(これは収集するデータに応じて異なります。)
+最初のエクスポートが完了すると、Azure Blob Storage コンテナーに次のような構造が表示されます。(これは収集するデータに応じて異なります。)
 
 |名前 | 説明 |
 |:----|:------|
@@ -207,6 +210,19 @@ private IEnumerable<T> DeserializeMany<T>(string folderName)
 * [Stream Analytics のサンプル](export-stream-analytics.md)
 * [Stream Analytics を使用して SQL にエクスポートする][exportasa]
 * [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](export-data-model.md)
+
+## <a name="diagnostic-settings-based-export"></a>診断設定ベースのエクスポート
+
+診断設定ベースのエクスポートでは、連続エクスポートとは異なるスキーマが使用されます。 また、連続エクスポートではサポートされない次のような機能もサポートします。
+
+* VNet、ファイアウォール、およびプライベート リンクがある Azure ストレージ アカウント。
+* イベント ハブへのエクスポート。
+
+診断設定ベースのエクスポートに移行するには:
+
+1. 現在の連続エクスポートを無効にします。
+2. [アプリケーションをワークスペースベース](convert-classic-resource.md)に移行します。
+3. [診断設定のエクスポートを有効にします](create-workspace-resource.md#export-telemetry)。 Application Insights リソース内で、 **[診断設定] > [診断設定を追加する]** を選択します。
 
 <!--Link references-->
 

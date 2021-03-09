@@ -12,16 +12,16 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
-ms.date: 07/07/2020
+ms.date: 01/12/2021
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/23/2019
-ms.openlocfilehash: 165d6c2578ba9ec0c939e4f1c1eaa497c9dff24d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ff1e5edad05ebd7157f71ad2e099ea88905be4f3
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998256"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221138"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して Xamarin.iOS アプリにプッシュ通知を送信する
 
@@ -88,14 +88,20 @@ ms.locfileid: "88998256"
 7. `AppDelegate.cs` に次の using ステートメントを追加します。
 
     ```csharp
-    using WindowsAzure.Messaging;
+    using WindowsAzure.Messaging.NotificationHubs;
     using UserNotifications
     ```
 
-8. `SBNotificationHub` のインスタンスを宣言します。
+8. `AppDelegate.cs` に、`MSNotificationHubDelegate` の実装を作成します。
 
     ```csharp
-    private SBNotificationHub Hub { get; set; }
+    public class AzureNotificationHubListener : MSNotificationHubDelegate
+    {
+        public override void DidReceivePushNotification(MSNotificationHub notificationHub, MSNotificationHubMessage message)
+        {
+
+        }
+    }
     ```
 
 9. `AppDelegate.cs` で、次のコードと一致するように `FinishedLaunching()` を更新します。
@@ -103,105 +109,32 @@ ms.locfileid: "88998256"
     ```csharp
     public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
     {
-        if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
-        {
-            UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound,
-                                                                    (granted, error) => InvokeOnMainThread(UIApplication.SharedApplication.RegisterForRemoteNotifications));
-        }
-        else if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
-        {
-            var pushSettings = UIUserNotificationSettings.GetSettingsForTypes(
-                    UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
-                    new NSSet());
-
-            UIApplication.SharedApplication.RegisterUserNotificationSettings(pushSettings);
-            UIApplication.SharedApplication.RegisterForRemoteNotifications();
-        }
-        else
-        {
-            UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
-            UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationTypes);
-        }
+        // Set the Message listener
+        MSNotificationHub.SetDelegate(new AzureNotificationHubListener());
+        
+        // Start the SDK
+        MSNotificationHub.Start(ListenConnectionString, NotificationHubName);
 
         return true;
     }
     ```
 
-10. `AppDelegate.cs` で、`RegisteredForRemoteNotifications()` メソッドをオーバーライドします。
+10. `AppDelegate.cs` で、`AzureNotificationHubListener` クラスの `DidReceivePushNotification` メソッドを実装します。
 
     ```csharp
-    public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
+    public override void DidReceivePushNotification(MSNotificationHub notificationHub, MSNotificationHubMessage message)
     {
-        Hub = new SBNotificationHub(Constants.ListenConnectionString, Constants.NotificationHubName);
+        // This sample assumes { aps: { alert: { title: "Hello", body: "World" } } }
+        var alertTitle = message.Title ?? "Notification";
+        var alertBody = message.Body;
 
-        Hub.UnregisterAll (deviceToken, (error) => {
-            if (error != null)
-            {
-                System.Diagnostics.Debug.WriteLine("Error calling Unregister: {0}", error.ToString());
-                return;
-            }
-
-            NSSet tags = null; // create tags if you want
-            Hub.RegisterNativeAsync(deviceToken, tags, (errorCallback) => {
-                if (errorCallback != null)
-                    System.Diagnostics.Debug.WriteLine("RegisterNativeAsync error: " + errorCallback.ToString());
-            });
-        });
+        var myAlert = UIAlertController.Create(alertTitle, alertBody, UIAlertControllerStyle.Alert);
+        myAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+        UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(myAlert, true, null);
     }
     ```
 
-11. `AppDelegate.cs` で、`ReceivedRemoteNotification()` メソッドをオーバーライドします。
-
-    ```csharp
-    public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
-    {
-        ProcessNotification(userInfo, false);
-    }
-    ```
-
-12. `AppDelegate.cs` で、`ProcessNotification()` メソッドを作成します。
-
-    ```csharp
-    void ProcessNotification(NSDictionary options, bool fromFinishedLaunching)
-    {
-        // Check to see if the dictionary has the aps key.  This is the notification payload you would have sent
-        if (null != options && options.ContainsKey(new NSString("aps")))
-        {
-            //Get the aps dictionary
-            NSDictionary aps = options.ObjectForKey(new NSString("aps")) as NSDictionary;
-
-            string alert = string.Empty;
-
-            //Extract the alert text
-            // NOTE: If you're using the simple alert by just specifying
-            // "  aps:{alert:"alert msg here"}  ", this will work fine.
-            // But if you're using a complex alert with Localization keys, etc.,
-            // your "alert" object from the aps dictionary will be another NSDictionary.
-            // Basically the JSON gets dumped right into a NSDictionary,
-            // so keep that in mind.
-            if (aps.ContainsKey(new NSString("alert")))
-                alert = (aps [new NSString("alert")] as NSString).ToString();
-
-            //If this came from the ReceivedRemoteNotification while the app was running,
-            // we of course need to manually process things like the sound, badge, and alert.
-            if (!fromFinishedLaunching)
-            {
-                //Manually show an alert
-                if (!string.IsNullOrEmpty(alert))
-                {
-                    var myAlert = UIAlertController.Create("Notification", alert, UIAlertControllerStyle.Alert);
-                    myAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
-                    UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(myAlert, true, null);
-                }
-            }
-        }
-    }
-    ```
-
-    > [!NOTE]
-    > ネットワーク接続がないなどの状況に対処するために、`FailedToRegisterForRemoteNotifications()` をオーバーライドすることを選択できます。 これは、ユーザーがオフラインモード (Airplane など) でアプリケーションを起動し、アプリケーション固有のプッシュメッセージングシナリオを処理する場合に特に重要です。
-
-13. デバイスでアプリケーションを実行します。
+11. デバイスでアプリケーションを実行します。
 
 ## <a name="send-test-push-notifications"></a>テスト プッシュ通知を送信する
 
@@ -211,7 +144,7 @@ ms.locfileid: "88998256"
 
 プッシュ通知は通常、互換性のあるライブラリを使用して Mobile Apps などのバックエンド サービスや ASP.NET に送信されます。 ライブラリがバックエンドに使用できない場合は、REST API を直接使用して通知メッセージを送信することもできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、バックエンドに登録されているすべての iOS デバイスにブロードキャスト通知を送信しました。 特定の iOS デバイスにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 

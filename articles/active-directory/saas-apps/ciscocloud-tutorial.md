@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 9d86ed8303d14a30cd4f03c9b174b91ea81f41cb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d861f8a1befa0facb634615348fd61b1ae44dcb0
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551338"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670130"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>チュートリアル: Azure Active Directory と Cisco Cloud の統合
 
@@ -27,7 +27,7 @@ Cisco Cloud と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで Cisco Cloud に自動的にサインイン (シングル サインオン) されるように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -63,7 +63,7 @@ Azure AD への Cisco Cloud の統合を構成するには、ギャラリーか�
 
 4. 検索ボックスに「**Cisco Cloud**」と入力して、結果パネルから **[Cisco Cloud]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
 
-     ![結果リスト内の Cisco Cloud](common/search-new-app.png)
+    ![結果リスト内の Cisco Cloud](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -99,7 +99,7 @@ Cisco Cloud で Azure AD シングル サインオンを構成するには、次
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Cisco Cloud のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![スクリーンショットは、[基本的な SAML 構成] を示しています。ここに、識別子と応答 URL の値が表示されます。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`<subdomain>.cisco.com` の形式で URL を入力します。
 
@@ -107,7 +107,7 @@ Cisco Cloud で Azure AD シングル サインオンを構成するには、次
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Cisco Cloud のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://<subdomain>.cloudapps.cisco.com` という形式で URL を入力します。
 
@@ -116,7 +116,7 @@ Cisco Cloud で Azure AD シングル サインオンを構成するには、次
 
 6. Cisco Cloud アプリケーションでは、特定の形式の SAML アサーションを受け取るため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![このスクリーンショットは、[編集] アイコンが選択された状態の [User Attributes]\(ユーザー属性\) を示しています。](common/edit-attribute.png)
 
 7. その他に、Cisco Cloud アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
@@ -128,9 +128,9 @@ Cisco Cloud で Azure AD シングル サインオンを構成するには、次
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![image](common/new-save-attribute.png)
+    ![[新しい要求の追加] オプションが備わっている [ユーザー要求] のスクリーンショット。](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![スクリーンショットは、説明されている値を入力できる [ユーザー要求の管理] ダイアログ ボックスを示しています。](common/new-attribute-details.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -169,7 +169,7 @@ Cisco Cloud で Azure AD シングル サインオンを構成するには、次
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -211,12 +211,12 @@ Cisco Cloud で Azure AD シングル サインオンを構成するには、次
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Cisco Cloud] タイルをクリックすると、SSO を設定した Cisco Cloud に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Cisco Cloud] タイルをクリックすると、SSO を設定した Cisco Cloud に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

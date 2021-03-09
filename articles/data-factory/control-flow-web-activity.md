@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory の Web アクティビティ
 description: Data Factory によってサポートされている制御フロー アクティビティの 1 つである Web アクティビティを使用して、パイプラインから REST エンドポイントを呼び出す方法について説明します。
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
-ms.reviewer: douglasl
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 95cbb509beba82a14b9f8f8a11c603a6d7b8689d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e4578b41e5cbb62c8a1bfa0c48d4fd60d042a506
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280802"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361521"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory の Web アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,6 +21,9 @@ Web アクティビティを使用すると、Data Factory パイプラインか
 
 > [!NOTE]
 > Web アクティビティは、自己ホスト型統合ランタイムを利用することで、プライベート仮想ネットワークでホストされる URL の呼び出しでもサポートされています。 統合ランタイムでは、URL エンドポイントへの通信経路が必要です。 
+
+> [!NOTE]
+> サポートされている出力応答ペイロードの最大サイズは 4 MB です。  
 
 ## <a name="syntax"></a>構文
 
@@ -81,7 +79,7 @@ body | エンドポイントに送信されるペイロードを表します。 
 認証 | エンドポイントを呼び出すために使用される認証方法。 サポートされるタイプは "Basic" または "ClientCertificate" です。 詳細については、「[認証](#authentication)」セクションを参照してください。 認証が必要ない場合は、このプロパティを除外します。 | 文字列 (または文字列の resultType を含む式) | いいえ
 datasets | エンドポイントに渡されるデータセットの一覧。 | データセット参照の配列。 空の配列にすることができます。 | はい
 linkedServices | エンドポイントに渡されるリンクされたサービスの一覧。 | リンクされたサービスの参照の配列。 空の配列にすることができます。 | はい
-connectVia | データ ストアに接続するために使用される[統合ランタイム](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、サービスでは、既定の Azure Integration Runtime が使用されます。 | 統合ランタイム参照。 | いいえ 
+connectVia | データ ストアに接続するために使用される[統合ランタイム](./concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、サービスでは、既定の Azure Integration Runtime が使用されます。 | 統合ランタイム参照。 | いいえ 
 
 > [!NOTE]
 > Web アクティビティが呼び出す REST エンドポイントは、型 JSON の応答を返す必要があります。 エンドポイントからの応答がない場合、アクティビティは 1 分でタイムアウトになり、エラーが発生します。
@@ -90,7 +88,7 @@ connectVia | データ ストアに接続するために使用される[統合�
 
 | 値の型 | 要求本文 | 応答本文 |
 |---|---|---|
-|JSON オブジェクト | サポート | サポート |
+|JSON オブジェクト | サポート | サポートされています |
 |JSON 配列 | サポートされています <br/>(バグがあるため、現在、JSON 配列は動作していません。 修正が進行中です)。 | サポートされていない |
 | JSON 値 | サポートされています | サポートされていない |
 | 非 JSON 型 | サポートされていない | サポートされていない |
@@ -130,7 +128,7 @@ PFX ファイルの Base64 でエンコードされたコンテンツとパス�
 
 ### <a name="managed-identity"></a>マネージド ID
 
-データ ファクトリのマネージド ID を使用してアクセス トークンの要求対象となるリソース URI を指定します。 Azure Resource Management API を呼び出すには、`https://management.azure.com/` を使用します。 マネージド ID が機能する方法について詳しくは、[Azure リソースのマネージド ID の概要](/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
+データ ファクトリのマネージド ID を使用してアクセス トークンの要求対象となるリソース URI を指定します。 Azure Resource Management API を呼び出すには、`https://management.azure.com/` を使用します。 マネージド ID が機能する方法について詳しくは、[Azure リソースのマネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。
 
 ```json
 "authentication": {

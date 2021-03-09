@@ -9,14 +9,15 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: 67813aa36b0e0824db3ed89c7b7dbc06c3fd46d8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cba8b97adb40ca2c277268188ff6ad541c7e9676
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321039"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596475"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>SQL API アカウントで Azure Cosmos DB Java SDK v4 を使用する場合の問題のトラブルシューティング
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
@@ -38,6 +39,13 @@ Azure Cosmos DB Java SDK v4 には、Azure Cosmos DB SQL API にアクセスす�
 * Azure Cosmos DB Java SDK v4 の[パフォーマンスに関するヒント](performance-tips-java-sdk-v4-sql.md)を確認し、推奨される方法に従います。
 * この記事の残りの部分を読みます。解決策が見つからない場合は、 [GitHub の問題](https://github.com/Azure/azure-sdk-for-java/issues)を提出します。 GitHub の問題にタグを追加するオプションがある場合は、*cosmos:v4-item* タグを追加します。
 
+### <a name="retry-logic"></a>再試行ロジック <a id="retry-logics"></a>
+SDK での再試行が可能な場合、すべての IO エラーで Cosmos DB SDK は、失敗した操作の再試行を試みます。 エラーが発生した場合に再試行を行うことをお勧めしますが、特に書き込みエラーの処理と再試行は必要です。 再試行ロジックが継続的に改善されているため、最新の SDK を使用することをお勧めします。
+
+1. 読み取りおよびクエリ IO エラーは、エンド ユーザーにはわからないまま SDK によって再試行されます。
+2. 書き込み (Create、Upsert、Replace、Delete) はべき等では "なく"、したがって SDK は必ずしも無条件に、失敗した書き込み操作を再試行できるわけではありません。 エラーを処理して再試行するには、ユーザーのアプリケーション ロジックが必要です。
+3. [SDK の可用性のトラブルシューティング](troubleshoot-sdk-availability.md)に関するページでは、複数リージョンの Cosmos DB アカウントの再試行について説明しています。
+
 ## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>一般的な問題と対処法
 
 ### <a name="network-issues-netty-read-timeout-failure-low-throughput-high-latency"></a>ネットワークの問題、Netty の読み取りタイムアウト エラーの発生、低いスループット、長い待機時間
@@ -46,7 +54,7 @@ Azure Cosmos DB Java SDK v4 には、Azure Cosmos DB SQL API にアクセスす�
 パフォーマンスを最大限高めるためのヒントを示します。
 * アプリが Azure Cosmos DB アカウントと同じリージョンで実行されていることを確認します。 
 * アプリが実行されているホストの CPU 使用率を確認します。 CPU 使用率が 50% 以上の場合は、より高度な構成のホスト上でアプリを実行します。 また、より多数のマシンに負荷を分散することもできます。
-    * Azure Kubernetes Service でアプリケーションを実行している場合は、[Azure Monitor を使用して CPU 使用率を監視する](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze)ことができます。
+    * Azure Kubernetes Service でアプリケーションを実行している場合は、[Azure Monitor を使用して CPU 使用率を監視する](../azure-monitor/containers/container-insights-analyze.md)ことができます。
 
 #### <a name="connection-throttling"></a>接続の帯域幅調整
 接続の帯域幅調整は、[ホスト マシンの接続制限]、または [Azure SNAT (PAT) ポート不足]のいずれかが原因で発生します。
@@ -62,13 +70,13 @@ ulimit -a
 
 ##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) ポート不足
 
-パブリック IP アドレスを使わずにアプリを Azure Virtual Machines にデプロイした場合、既定では [Azure SNAT ポート](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)によって VM 外の任意のエンドポイントへの接続が確立されます。 VM から Azure Cosmos DB エンドポイントへの許可される接続の数は、[Azure SNAT 構成](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)によって制限されます。
+パブリック IP アドレスを使わずにアプリを Azure Virtual Machines にデプロイした場合、既定では [Azure SNAT ポート](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)によって VM 外の任意のエンドポイントへの接続が確立されます。 VM から Azure Cosmos DB エンドポイントへの許可される接続の数は、[Azure SNAT 構成](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)によって制限されます。
 
  Azure SNAT ポートが使用されるのは、VM がプライベート IP アドレスを持ち、VM からのプロセスが、パブリック IP アドレスに接続しようとしている場合に限られます。 Azure SNAT の制限を回避するには次の 2 つの回避策があります。
 
-* Azure Virtual Machines 仮想ネットワークのサブネットに Azure Cosmos DB サービス エンドポイントを追加します。 詳細については、[Azure 仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)に関するページを参照してください。 
+* Azure Virtual Machines 仮想ネットワークのサブネットに Azure Cosmos DB サービス エンドポイントを追加します。 詳細については、[Azure 仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)に関するページを参照してください。 
 
-    サービス エンドポイントが有効になると、要求はパブリック IP から Azure Cosmos DB に送信されなくなります。 代わりに、仮想ネットワークとサブネット ID が送信されます。 この変更により、パブリック IP のみが許可された場合はファイアウォール ドロップが発生することがあります。 ファイアウォールを使用している場合、サービス エンドポイントを有効にするときに、[Virtual Network ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) を使用してファイアウォールにサブネットを追加します。
+    サービス エンドポイントが有効になると、要求はパブリック IP から Azure Cosmos DB に送信されなくなります。 代わりに、仮想ネットワークとサブネット ID が送信されます。 この変更により、パブリック IP のみが許可された場合はファイアウォール ドロップが発生することがあります。 ファイアウォールを使用している場合、サービス エンドポイントを有効にするときに、[Virtual Network ACL](/previous-versions/azure/virtual-network/virtual-networks-acl) を使用してファイアウォールにサブネットを追加します。
 * Azure VM にパブリック IP を割り当てます。
 
 ##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>サービスに到達できない - ファイアウォール
@@ -177,12 +185,12 @@ Azure Cosmos DB Java SDK v4 では、log4j や logback などの一般的なロ�
 ```
 # this is a sample log4j configuration
 
-# Set root logger level to DEBUG and its only appender to A1.
+# Set root logger level to INFO and its only appender to A1.
 log4j.rootLogger=INFO, A1
 
-log4j.category.com.microsoft.azure.cosmosdb=DEBUG
-#log4j.category.io.netty=INFO
-#log4j.category.io.reactivex=INFO
+log4j.category.com.azure.cosmos=INFO
+#log4j.category.io.netty=OFF
+#log4j.category.io.projectreactor=OFF
 # A1 is set to be a ConsoleAppender.
 log4j.appender.A1=org.apache.log4j.ConsoleAppender
 
@@ -217,5 +225,3 @@ Azure Cosmos DB エンドポイントへの接続の多くが `CLOSE_WAIT` 状�
 [Enable client SDK logging]: #enable-client-sice-logging
 [ホスト マシンの接続制限]: #connection-limit-on-host
 [Azure SNAT (PAT) ポート不足]: #snat
-
-

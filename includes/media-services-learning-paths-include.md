@@ -4,25 +4,25 @@ ms.service: media-services
 ms.topic: include
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 135232e3e9894bcef1ef657e41f5ad3a5e307289
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e865a648a5086f96222e4e1c0af33c37995aa808
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "69014659"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693640"
 ---
 ### <a name="media-services-v3-latest"></a>Media Services v3 (最新)
 
 Azure Media Services の最新のバージョンをご確認ください。 
 
-* [概要](https://docs.microsoft.com/azure/media-services/latest/media-services-overview)
-* [概念](https://docs.microsoft.com/azure/media-services/latest/concepts-overview)
-* [開発を始める](https://docs.microsoft.com/azure/media-services/latest/developers-guide)
-* [v2 から v3 への移行ガイダンス](https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3)
+* [概要](../articles/media-services/latest/media-services-overview.md)
+* [概念](../articles/media-services/latest/concepts-overview.md)
+* [開発を始める](../articles/media-services/latest/media-services-apis-overview.md)
+* [v2 から v3 への移行ガイダンス](../articles/media-services/latest/migrate-v-2-v-3-migration-introduction.md)
 
 ### <a name="media-services-v2-legacy"></a>Media Services v2 (レガシ)
 
-* [概要](https://docs.microsoft.com/azure/media-services/previous/media-services-overview)
-* [アカウントの作成](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-create-account)
-* [オンデマンド配信](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-vod-get-started)
-* [ライブ配信](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-live-passthrough-get-started)
+* [概要](../articles/media-services/previous/media-services-overview.md)
+* [アカウントの作成](../articles/media-services/previous/media-services-portal-create-account.md)
+* [オンデマンド配信](../articles/media-services/previous/media-services-portal-vod-get-started.md)
+* [ライブ配信](../articles/media-services/previous/media-services-portal-live-passthrough-get-started.md)

@@ -9,16 +9,16 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: a1dd88e9007a878ffdf6e5d836391c30c952c35a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 04e4801c26b0ac8ef91af0b028d9dc2bb9a3cd1c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923026"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358628"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL に接続し、Azure Cognitive Search インデクサーを使用してコンテンツのインデックスを作成する
 
-[Azure Search インデックス](search-what-is-an-index.md)を照会するには、先に Azure Cognitive Search インデックスにデータを入力する必要があります。 データが Azure SQL Database または SQL Managed Instance に存在する場合は、**Azure SQL Database 用 Azure Cognitive Search インデクサー** (**Azure SQL インデクサー**) でインデックス作成プロセスを自動化できます。これにより、記述するコードと対処するインフラストラクチャが減ります。
+[Azure Search インデックス](search-what-is-an-index.md)を照会するには、先に Azure Cognitive Search インデックスにデータを入力する必要があります。 データが Azure SQL Database または SQL Managed Instance に存在する場合は、 **Azure SQL Database 用 Azure Cognitive Search インデクサー** ( **Azure SQL インデクサー** ) でインデックス作成プロセスを自動化できます。これにより、記述するコードと対処するインフラストラクチャが減ります。
 
 この記事では[インデクサー](search-indexer-overview.md)を使用するしくみだけでなく、Azure SQL Database または SQL Managed Instance でのみ使用できる機能 (統合された変更追跡など) についても説明します。 
 
@@ -26,9 +26,9 @@ Azure SQL Database と SQL Managed Instance に加え、Azure Cognitive Search �
 
 ## <a name="indexers-and-data-sources"></a>インデクサーとデータ ソース
 
-**データ ソース**では、インデックスを作成するデータ、データにアクセスするための資格情報、およびデータの変更 (新しい行、変更された行、削除された行) を効率よく識別するためのポリシーを指定します。 データ ソースは複数のインデクサーで使用できるように独立したリソースとして定義します。
+**データ ソース** では、インデックスを作成するデータ、データにアクセスするための資格情報、およびデータの変更 (新しい行、変更された行、削除された行) を効率よく識別するためのポリシーを指定します。 データ ソースは複数のインデクサーで使用できるように独立したリソースとして定義します。
 
-**インデクサー**は、単一のデータ ソースと検索対象のインデックスをつなげるリソースです。 インデクサーは次のように使用されます。
+**インデクサー** は、単一のデータ ソースと検索対象のインデックスをつなげるリソースです。 インデクサーは次のように使用されます。
 
 * 1 回限りのデータのコピーを実行して、インデックスを作成する。
 * スケジュールに従ってデータ ソースの変更とインデックスを更新する。
@@ -39,10 +39,10 @@ Azure SQL Database と SQL Managed Instance に加え、Azure Cognitive Search �
 Azure SQL インデクサーのセットアップと構成には次を使用できます。
 
 * [Azure Portal](https://portal.azure.com) のデータのインポート ウィザード
-* Azure Cognitive Search [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
+* Azure Cognitive Search [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 * Azure Cognitive Search [REST API](/rest/api/searchservice/indexer-operations)
 
-この記事では、REST API を使用して、**インデクサー**と**データソース**を作成します。
+この記事では、REST API を使用して、 **インデクサー** と **データソース** を作成します。
 
 ## <a name="when-to-use-azure-sql-indexer"></a>Azure SQL インデクサーの使用に適した場合
 データに関連する複数の要因により、Azure SQL インデクサーを使用するのが適切な場合と、適切ではない場合があります。 データが次の要件を満たす場合、Azure SQL インデクサーを使用できます。
@@ -74,7 +74,9 @@ Azure SQL インデクサーのセットアップと構成には次を使用で�
     }
    ```
 
-   [Azure ポータル](https://portal.azure.com)から接続文字列を取得し、`ADO.NET connection string` オプションを使用できます。
+   接続文字列は次のいずれかの形式に従います。
+    1. [Azure ポータル](https://portal.azure.com)から接続文字列を取得し、`ADO.NET connection string` オプションを使用できます。
+    1. アカウント キーを含まない `Initial Catalog|Database=<your database name>;ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Sql/servers/<your SQL Server name>/;Connection Timeout=connection timeout length;` の形式のマネージド ID 接続文字列。 この接続文字列を使用するには、[マネージド ID を使用して Azure SQL データベースへのインデクサー接続を設定する](search-howto-managed-identities-sql.md)ための手順に従います。
 
 2. まだない場合は、ターゲットの Azure Cognitive Search インデックスを作成します。 インデックスを作成するには、[ポータル](https://portal.azure.com)または[インデックス作成 API](/rest/api/searchservice/Create-Index) を使用します。 ターゲット インデックスのスキーマとソース テーブルのスキーマに互換性があることを確認します。詳しくは、「[SQL データ型と Azure Cognitive Search データ型間のマッピング](#TypeMapping)」を参照してください。
 
@@ -149,7 +151,7 @@ Azure サービスにデータベースへの接続を許可することが必�
 応答の詳細については、「 [Get Indexer Status (インデクサーの状態の取得)](/rest/api/searchservice/get-indexer-status)
 
 ## <a name="run-indexers-on-a-schedule"></a>スケジュールに従ったインデクサーの実行
-スケジュールに従って定期的に実行するようにインデクサーを調整することもできます。 そのためには、インデクサーを作成または更新するときに、**schedule** プロパティを追加します。 次の例では、インデクサーを更新する PUT 要求を示します。
+スケジュールに従って定期的に実行するようにインデクサーを調整することもできます。 そのためには、インデクサーを作成または更新するときに、 **schedule** プロパティを追加します。 次の例では、インデクサーを更新する PUT 要求を示します。
 
 ```
     PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2020-06-30
@@ -171,10 +173,10 @@ Azure サービスにデータベースへの接続を許可することが必�
 
 ## <a name="capture-new-changed-and-deleted-rows"></a>新しい行、変更された行、削除された行の取得
 
-Azure Cognitive Search では**増分インデックス作成**を使用することで、インデクサーを実行するたびにテーブルまたはビュー全体のインデックスを再作成する必要を回避できます。 Azure Cognitive Search は、増分インデックス作成をサポートする 2 つの変更検出ポリシーを備えています。 
+Azure Cognitive Search では **増分インデックス作成** を使用することで、インデクサーを実行するたびにテーブルまたはビュー全体のインデックスを再作成する必要を回避できます。 Azure Cognitive Search は、増分インデックス作成をサポートする 2 つの変更検出ポリシーを備えています。 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>SQL 統合変更追跡ポリシー
-SQL データベースが [変更追跡](/sql/relational-databases/track-changes/about-change-tracking-sql-server)をサポートする場合、 **SQL 統合変更追跡ポリシー**の使用が推奨されます。 これは最も効率的なポリシーです。 また、テーブルに明示的な "論理削除" 列を追加しなくても、Azure Cognitive Search で削除済み行を特定できます。
+SQL データベースが [変更追跡](/sql/relational-databases/track-changes/about-change-tracking-sql-server)をサポートする場合、 **SQL 統合変更追跡ポリシー** の使用が推奨されます。 これは最も効率的なポリシーです。 また、テーブルに明示的な "論理削除" 列を追加しなくても、Azure Cognitive Search で削除済み行を特定できます。
 
 #### <a name="requirements"></a>必要条件 
 
@@ -368,7 +370,7 @@ SQL インデクサーが公開している構成設定をいくつか次に示�
 
 はい。 インデクサーは検索サービス内のノードの 1 つで実行し、そのノードのリソースは、インデックスの作成、クエリ トラフィックの提供、およびその他の API 要求で共有されます。 大量のインデックス作成とクエリ ワークロードを実行し、503 エラーが高率で発生するか、または応答時間が長くなる場合は、[検索サービスのスケールアップ](search-capacity-planning.md)を検討してください。
 
-**Q:[フェールオーバー クラスター](../azure-sql/database/auto-failover-group-overview.md)でデータ ソースとしてセカンダリ レプリカを使用できますか?**
+**Q: [フェールオーバー クラスター](../azure-sql/database/auto-failover-group-overview.md)でデータ ソースとしてセカンダリ レプリカを使用できますか?**
 
 一概には言えません。 テーブルまたはビューのインデックスの完全作成の場合、セカンダリ レプリカを使用できます。 
 
@@ -384,7 +386,7 @@ Azure Cognitive Searchでは、増分インデックス作成用に、SQL 統合
 
 **Q:高基準変更追跡に代替の非 rowversion 列を使用することはできますか?**
 
-それはお勧めしません。 信頼性の高いデータ同期を実行できるのは、**rowversion** のみです。 ただし、アプリケーション ロジックによっては、次の条件を満たせば、その信頼性が高まる可能性があります。
+それはお勧めしません。 信頼性の高いデータ同期を実行できるのは、 **rowversion** のみです。 ただし、アプリケーション ロジックによっては、次の条件を満たせば、その信頼性が高まる可能性があります。
 
 + インデクサーの実行時に、インデックスが作成されるテーブルに未処理のトランザクションがない (すべてのテーブルの更新がスケジュールに従ってバッチ操作として実行され、Azure Cognitive Search インデクサーのスケジュールがテーブル更新スケジュールと重ならないように設定されているなど)。  
 

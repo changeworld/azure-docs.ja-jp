@@ -1,5 +1,6 @@
 ---
-title: デスクトップ アプリから Web API を呼び出す - Microsoft ID プラットフォーム | Azure
+title: デスクトップ アプリから Web API を呼び出す | Azure
+titleSuffix: Microsoft identity platform
 description: Web API を呼び出すデスクトップ アプリを構築する方法について説明します
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 753892790a6f6b898b48d955e6806837967f3e92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51619fe049d580c21b338af2f86b2afea6765b04
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882966"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756526"
 ---
 # <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Web API を呼び出すデスクトップ アプリ:Web API を呼び出す
 
@@ -129,5 +130,4 @@ catch(MsalUiRequiredException ex)
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [運用環境への移行](scenario-desktop-production.md)
+このシナリオの次の記事「[運用環境に移行する](scenario-desktop-production.md)」に進みます。

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 03/05/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e4797c3e089e0ae9d15cc604e9f93605978b36c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f2e11fa1bb9f1d3a3986a19da8ed44229829ec81
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419769"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741781"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>オンプレミスの Azure Active Directory パスワード保護を有効にする
 

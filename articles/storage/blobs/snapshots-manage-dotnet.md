@@ -1,26 +1,27 @@
 ---
 title: .NET での BLOB スナップショットの作成と管理
 titleSuffix: Azure Storage
-description: BLOB の読み取り専用スナップショットを作成して、特定の時点での BLOB データをバックアップする方法について説明します。
+description: .NET クライアント ライブラリを使用して BLOB の読み取り専用スナップショットを作成することにより、特定の時刻に BLOB データをバックアップする方法について説明します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9404cc8037b9cd7ef3e6f74265ce803177eb0465
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ae1d72c30fb7c45c92f24ec5132859a45c6ae953
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185283"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543376"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>.NET での BLOB スナップショットの作成と管理
 
-スナップショットは、ある時点で作成された読み取り専用の BLOB です。 この記事では、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage?view=azure-dotnet)を使用して BLOB スナップショットを作成および管理する方法について説明します。
+スナップショットは、ある時点で作成された読み取り専用の BLOB です。 この記事では、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage)を使用して BLOB スナップショットを作成および管理する方法について説明します。
 
-Azure Storage での BLOB スナップショットの詳細については、[.NET で BLOB スナップショットを作成して管理する](snapshots-overview.md)方法に関するページを参照してください。
+Azure Storage での BLOB のスナップショットの詳細については、「[BLOB のスナップショット](snapshots-overview.md)」を参照してください。
 
 ## <a name="create-a-snapshot"></a>スナップショットの作成
 
@@ -161,5 +162,5 @@ await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null
 ## <a name="next-steps"></a>次のステップ
 
 - [BLOB のスナップショット](snapshots-overview.md)
-- [BLOB のバージョン (プレビュー)](versioning-overview.md)
-- [BLOB の論理的な削除](storage-blob-soft-delete.md)
+- [BLOB のバージョン](versioning-overview.md)
+- [BLOB の論理的な削除](./soft-delete-blob-overview.md)

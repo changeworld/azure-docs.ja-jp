@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/15/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d6f72231e84650a17850932979b43c21dd045f30
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 40e4a3d3a819280255ee931e5e12206f99ef28fe
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069325"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051515"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する
 
@@ -28,7 +28,7 @@ Azure サブネットから外に向かうアウトバウンド ネットワー�
 
 このチュートリアルでは、デプロイしやすいように、2 つのサブネットを含む簡単な VNet を 1 つ作成します。
 
-運用環境のデプロイでは、[ハブとスポーク モデル](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)を採用して、独自の VNet にファイアウォールを配置することをお勧めします。 ワークロード サーバーは、1 つ以上のサブネットを含む同じリージョンのピアリングされた VNet に配置されます。
+運用環境のデプロイでは、[ハブとスポーク モデル](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)を採用して、独自の VNet にファイアウォールを配置することをお勧めします。 ワークロード サーバーは、1 つ以上のサブネットを含む同じリージョンのピアリングされた VNet に配置されます。
 
 * **AzureFirewallSubnet** - このサブネットにファイアウォールが存在します。
 * **Workload-SN** - このサブネットにはワークロード サーバーがあります。 このサブネットのネットワーク トラフィックは、ファイアウォールを通過します。
@@ -72,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 この VNet には 3 つのサブネットが含まれます。
 
 > [!NOTE]
-> AzureFirewallSubnet サブネットのサイズは /26 です。 サブネットのサイズの詳細については、「[Azure Firewall に関する FAQ](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)」を参照してください。
+> AzureFirewallSubnet サブネットのサイズは /26 です。 サブネットのサイズの詳細については、「[Azure Firewall に関する FAQ](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size)」を参照してください。
 
 1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。
 1. **[ネットワーク]**  >  **[仮想ネットワーク]** を選びます。
@@ -132,7 +132,7 @@ VNet にファイアウォールをデプロイします。
 3. **[ファイアウォール]** を選択し、 **[作成]** を選択します。
 4. **[ファイアウォールの作成]** ページで、次の表を使用してファイアウォールを構成します。
 
-   |設定  |値  |
+   |設定  |[値]  |
    |---------|---------|
    |サブスクリプション     |\<your subscription\>|
    |Resource group     |**Test-FW-RG** |
@@ -226,8 +226,8 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 5. **[ルール]** の **[名前]** に「**rdp-nat**」と入力します。
 6. **[プロトコル]** で **[TCP]** を選択します。
 7. **[Source type]\(送信元の種類\)** で、 **[IP アドレス]** を選択します。
-8. **[送信元]** に「 **\*** 」と入力します。
-9. **[宛先アドレス]** に、ファイアウォールのパブリック IP アドレスを入力します。
+8. **[送信元]** に「* *\** _」と入力します。
+9. _*[宛先アドレス]** に、ファイアウォールのパブリック IP アドレスを入力します。
 10. **[宛先ポート]** に「**3389**」と入力します。
 11. **[変換されたアドレス]** に、**Srv-work** のプライベート IP アドレスを入力します。
 12. **[Translated port] (変換されたポート)** に「**3389**」と入力します。
@@ -272,4 +272,4 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Azure Firewall のログを監視する](./tutorial-diagnostics.md)
+> [チュートリアル:Azure Firewall のログを監視する](./firewall-diagnostics.md)

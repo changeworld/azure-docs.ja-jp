@@ -6,22 +6,22 @@ ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, carlrab
-ms.date: 06/12/2020
-ms.openlocfilehash: 329d3208037548bd1cb5a5564a4a393747ed48f0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.reviewer: wiassaf, sstein
+ms.date: 1/14/2021
+ms.openlocfilehash: 17ea6716f090144e8dfef16721bfb69dc23e9912
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017279"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589321"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Azure SQL Database と Azure SQL Managed Instance のパフォーマンスに関する問題を Intelligent Insights でトラブルシューティングする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-このページでは、[Intelligent Insights](intelligent-insights-overview.md) のリソース ログによって検出された、Azure SQL Database と Azure SQL Managed Instance のパフォーマンスに関する問題について説明します。 [Azure Monitor ログ](../../azure-monitor/insights/azure-sql.md)、[Azure Event Hubs](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)、[Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションに、メトリックとリソース ログをストリーミングできます。
+このページでは、[Intelligent Insights](intelligent-insights-overview.md) のリソース ログによって検出された、Azure SQL Database と Azure SQL Managed Instance のパフォーマンスに関する問題について説明します。 [Azure Monitor ログ](../../azure-monitor/insights/azure-sql.md)、[Azure Event Hubs](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)、[Azure Storage](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションに、メトリックとリソース ログをストリーミングできます。
 
 > [!NOTE]
 > Intelligent Insights を使ったパフォーマンスのトラブルシューティングに関するクイック ガイドについては、このドキュメントの「[推奨されるトラブルシューティングのフロー](intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow)」のフローチャートを参照してください。
@@ -32,7 +32,7 @@ ms.locfileid: "89017279"
 
 Intelligent Insights は、クエリ実行の待機時間、エラー、またはタイムアウトに基づいて、パフォーマンスの問題を自動的に検出します。 Intelligent Insights では、検出されたパフォーマンス パターンがリソース ログに出力されます。 検出可能なパフォーマンス パターンの概要を次の表に示します。
 
-| 検出可能なパフォーマンス パターン | Azure SQL Database | Azure SQL Managed Instance |
+| 検出可能なパフォーマンス パターン | Azure SQL データベース | Azure SQL Managed Instance |
 | :------------------- | ------------------- | ------------------- |
 | [リソースの上限に到達](intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | 監視対象サブスクリプションで使用可能なリソース (DTU)、データベース ワーカー スレッド、またはデータベース ログイン セッションの消費量がそのリソースの制限に達しました。 そのことがパフォーマンスに影響を及ぼしています。 | CPU リソースの消費量がその制限に達しそうです。 これは SQL データベースのパフォーマンスに影響しています。 |
 | [ワークロードの増加](intelligent-insights-troubleshoot-performance.md#workload-increase) | データベースでのワークロードの増加またはワークロードの継続的な蓄積が検出されました。 そのことがパフォーマンスに影響を及ぼしています。 | ワークロードの増加が検出されました。 これは SQL データベースのパフォーマンスに影響しています。 |
@@ -74,7 +74,7 @@ Intelligent Insights は、クエリ実行の待機時間、エラー、また�
 
 使用可能なセッションの上限に到達した場合は、データベースへのログイン数を減らすことで、アプリケーションを最適化できます。 アプリケーションからデータベースへのログイン数を減らすことができない場合は、データベース サブスクリプションの価格レベルを上げることを検討します。 または、データベースを分割して複数のデータベースに移動させ、より均等にワークロードを分散させることができます。
 
-セッションの上限に対応するためのその他の推奨事項については、[最大ログイン数の上限に対応する方法](https://blogs.technet.microsoft.com/latam/20../../how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)に関するページを参照してください。 サーバーおよびサブスクリプション レベルの制限については、[サーバー上のリソース制限の概要](resource-limits-logical-server.md)に関するページを参照してください。
+セッションの上限に対応するためのその他の推奨事項については、[最大ログイン数の上限に対応する方法](/archive/blogs/latam/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins)に関するページを参照してください。 サーバーおよびサブスクリプション レベルの制限については、[サーバー上のリソース制限の概要](resource-limits-logical-server.md)に関するページを参照してください。
 
 ## <a name="workload-increase"></a>ワークロードの増加
 
@@ -118,7 +118,7 @@ Intelligent Insights は、クエリ実行の待機時間、エラー、また�
 
 このパフォーマンス パターンは、過去 7 日間のパフォーマンス ベースラインとの比較により、データベースの過剰なロックが検出された、現在のデータベース パフォーマンスの低下を表します。
 
-最新の RDBMS では、マルチスレッド化されたシステムを実装するために、ロックが不可欠です。そこでは、複数の worker を同時に実行し、可能な場合はデータベースでトランザクションを並列処理して、パフォーマンスが最大化されます。 この場合のロックは、1 つのトランザクションのみが必要かつ他のリソースのトランザクションと競合しない行、ページ、表、ファイルに排他的にアクセスできる、組み込みのアクセス メカニズムを指します。 リソースの使用をロックしたトランザクションでリソースの使用が完了すると、これらのリソースのロックが解除されて、他のトランザクションが必要なリソースにアクセスできるようになります。 ロックについて詳しくは、「[データベース エンジンのロック](https://msdn.microsoft.com/library/ms190615.aspx)」をご覧ください。
+最新の RDBMS では、マルチスレッド化されたシステムを実装するために、ロックが不可欠です。そこでは、複数の worker を同時に実行し、可能な場合はデータベースでトランザクションを並列処理して、パフォーマンスが最大化されます。 この場合のロックは、1 つのトランザクションのみが必要かつ他のリソースのトランザクションと競合しない行、ページ、表、ファイルに排他的にアクセスできる、組み込みのアクセス メカニズムを指します。 リソースの使用をロックしたトランザクションでリソースの使用が完了すると、これらのリソースのロックが解除されて、他のトランザクションが必要なリソースにアクセスできるようになります。 ロックについて詳しくは、「[データベース エンジンのロック](/previous-versions/sql/sql-server-2008-r2/ms190615(v=sql.105))」をご覧ください。
 
 SQL エンジンで実行されたトランザクションが、使用がロックされたリソースにアクセスするために長時間待機している場合は、この待機時間がワークロード実行のパフォーマンス低下の原因になります。
 
@@ -128,7 +128,9 @@ SQL エンジンで実行されたトランザクションが、使用がロッ�
 
 問題を緩和する最も簡単で安全な方法は、トランザクションを常に短くして、最もコストの高いクエリのロック フットプリントを低減させることです。 大きい操作のバッチを小さい操作に分割できます。 クエリをできるだけ効率化して、クエリのロック フットプリントを低減させることをお勧めします。 大規模なスキャンは、デッドロックの可能性を高め、データベースの全体のパフォーマンスに悪影響を及ぼすので、減らします。 ロックの原因として特定されたクエリについては、新しいインデックスを作成したり、既存のインデックスに列を追加したりして、テーブル スキャンを回避できます。
 
-その他の推奨事項については、「[SQL Server でロックのエスカレーションが原因で発生するブロッキング問題を解決する方法](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)」をご覧ください。
+その他の提案については、以下を参照してください。
+- [Azure SQL のブロックの問題を理解して解決する](understand-resolve-blocking.md)
+- [SQL Server でロックのエスカレーションが原因で発生するブロッキング問題を解決する方法](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)
 
 ## <a name="increased-maxdop"></a>MAXDOP の増加
 
@@ -144,7 +146,7 @@ SQL エンジンで実行されたトランザクションが、使用がロッ�
 
 診断ログには、必要以上に並列処理されているために実行時間が増加しているクエリに関連するクエリ ハッシュが出力されます。 また、CXP 待機時間も出力されます。 この時間は、1 つのオーガナイザーまたはコーディネーター スレッド (thread 0) が、結果をマージして先に進む前に、他のすべてのスレッドが終了するのを待機している時間を表します。 さらに、診断ログには、パフォーマンスの低いクエリが実行で待機していた全体の待機時間も出力されます。 トラブルシューティングのための基準としてこの情報を使うことができます。
 
-最初に、複雑なクエリを最適化または単純化します。 長いバッチ ジョブを細かく分割することをお勧めします。 さらに、クエリをサポートするためのインデックスを作成したことを確認します。 また、パフォーマンスが低いことを示すフラグが設定されたクエリに対しては、最大限の並列化 (MAXDOP) を手動で強制することもできます。 T-SQL を使ってこの操作を構成する方法については、「[max degree of parallelism サーバー構成オプションの構成](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option)」をご覧ください。
+最初に、複雑なクエリを最適化または単純化します。 長いバッチ ジョブを細かく分割することをお勧めします。 さらに、クエリをサポートするためのインデックスを作成したことを確認します。 また、パフォーマンスが低いことを示すフラグが設定されたクエリに対しては、最大限の並列化 (MAXDOP) を手動で強制することもできます。 T-SQL を使ってこの操作を構成する方法については、「[max degree of parallelism サーバー構成オプションの構成](/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option)」をご覧ください。
 
 MAXDOP サーバー構成オプションを既定値のゼロ (0) に設定すると、データベースは、使用可能なすべての CPU コアを 1 つのクエリを実行するスレッドの並列処理に使うことができます。 MAXDOP を 1 に設定することは、1 つのクエリ実行に使えるコアが 1 つだけであることを示します。 実際には、これは並列処理がオフであるという意味です。 場合によっては、データベースで使用できるコア数、および診断ログの情報に応じて、MAXDOP オプションを調整し、クエリの並列実行に使用できるコア数をそれぞれのケースで問題を解決できる可能性がある値に設定できます。
 
@@ -196,7 +198,7 @@ MAXDOP サーバー構成オプションを既定値のゼロ (0) に設定す�
 
 このパフォーマンス パターンは、過去 7 日間のパフォーマンス ベースラインとの比較により、パフォーマンスが低く、ワークロードのパフォーマンスに影響を与える新しいクエリが検出されたことを表します。
 
-優れたパフォーマンスのクエリを作成することは、困難なタスクです。 クエリの作成について詳しくは、[クエリの作成](https://msdn.microsoft.com/library/bb264565.aspx)に関するページをご覧ください。 既存のクエリのパフォーマンスを最適化する方法については、「[クエリのチューニング](https://msdn.microsoft.com/library/ms176005.aspx)」をご覧ください。
+優れたパフォーマンスのクエリを作成することは、困難なタスクです。 クエリの作成について詳しくは、[クエリの作成](/previous-versions/sql/sql-server-2005/express-administrator/bb264565(v=sql.90))に関するページをご覧ください。 既存のクエリのパフォーマンスを最適化する方法については、「[クエリのチューニング](/previous-versions/sql/sql-server-2008-r2/ms176005(v=sql.105))」をご覧ください。
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
@@ -218,7 +220,7 @@ Azure SQL Database では、[Query Performance Insight](query-performance-insigh
 
 システムでパフォーマンスの低いクエリの根本原因を特定できなかったため、診断情報が手動でトラブルシューティングを行うための第一歩として役立ちます。 これらのクエリのパフォーマンスを最適化することができます。 使う必要のあるデータだけをフェッチして単純化し、複雑なクエリは細かく分割することをお勧めします。
 
-クエリのパフォーマンスの最適化について詳しくは、「[クエリのチューニング](https://msdn.microsoft.com/library/ms176005.aspx)」をご覧ください。
+クエリのパフォーマンスの最適化について詳しくは、「[クエリのチューニング](/previous-versions/sql/sql-server-2008-r2/ms176005(v=sql.105))」をご覧ください。
 
 ## <a name="tempdb-contention"></a>TempDB の競合
 
@@ -230,7 +232,7 @@ Azure SQL Database では、[Query Performance Insight](query-performance-insigh
 
 診断ログには、tempDB の競合の詳細が出力されます。 トラブルシューティングの出発点としてこの情報を使うことができます。 この種の競合を軽減し、ワークロード全体のスループットを増やすためにできることが 2 つあります。まず、一時テーブルの使用をやめることができます。 また、メモリ最適化テーブルを使うこともできます。
 
-詳しくは、「[メモリ最適化テーブルの概要](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables)」をご覧ください。
+詳しくは、「[メモリ最適化テーブルの概要](/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables)」をご覧ください。
 
 ## <a name="elastic-pool-dtu-shortage"></a>エラスティック プールの DTU の不足
 
@@ -260,7 +262,7 @@ DTU を最も多く消費するデータベースで、現在のワークロー�
 
 新しいプランへの回帰の状態は、前のプランほど効率的ではない、新しいクエリ実行プランの実行がデータベース エンジンで開始されている状態を表します。 前のプランへの回帰の状態は、データベース エンジンで、新しくより効率的なプランから、新しいプランほど効率的ではない前のプランの使用に切り替わった状態を表します。 ワークロードが変更された既存のプランへの回帰は、前のプランと新しいプランが継続的に交互に行われつつ、パフォーマンスの低いプランへの比重が高まっている状態を表します。
 
-プランの回帰について詳しくは、「[What is plan regression in SQL Server?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/)」(SQL server のプランの回帰とは) をご覧ください。
+プランの回帰について詳しくは、「[What is plan regression in SQL Server?](/archive/blogs/sqlserverstorageengine/what-is-plan-regression-in-sql-server)」(SQL server のプランの回帰とは) をご覧ください。
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
@@ -268,7 +270,7 @@ DTU を最も多く消費するデータベースで、現在のワークロー�
 
 提供されたクエリ ハッシュを使用して特定できるクエリに対して、どのプランのパフォーマンスが優れているかを分析できます。 クエリに対してパフォーマンスが優れているプランを判断した後、手動で適用できます。
 
-詳しくは、「[Learn how SQL Server prevents plan regressions](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/)」(SQL Server がプランの回帰を回避するしくみ) をご覧ください。
+詳しくは、「[Learn how SQL Server prevents plan regressions](/archive/blogs/sqlserverstorageengine/you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions)」(SQL Server がプランの回帰を回避するしくみ) をご覧ください。
 
 > [!TIP]
 > 組み込みのインテリジェンス機能によって、お使いのデータベースに最適なクエリ実行プランが自動的に管理されます。
@@ -287,7 +289,7 @@ DTU を最も多く消費するデータベースで、現在のワークロー�
 
 診断ログには、過去 7 日間のワークロードの動作と比較して、パフォーマンスの低下の原因となった、最近加えられたデータベース スコープの構成の変更が出力されます。 構成の変更を前の値に元に戻すことができます。 目的のパフォーマンス レベルに達するまで、値を 1 つずつチューニングすることもできます。 満足のいくパフォーマンスを達成している同様のデータベースから、データベース スコープの構成値をコピーできます。 パフォーマンスのトラブルシューティングが難しい場合は、既定値に戻して、この基準値から微調整を行います。
 
-データベース スコープの構成の最適化と、構成の変更に使用する T-SQL 構文について詳しくは、「[ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx)」をご覧ください。
+データベース スコープの構成の最適化と、構成の変更に使用する T-SQL 構文について詳しくは、「[ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)」をご覧ください。
 
 ## <a name="slow-client"></a>処理速度が低いクライアント
 
@@ -326,11 +328,11 @@ Azure SQL Analytics に移動して、Azure Portal から Intelligent Insights �
 > [!TIP]
 > PDF バージョンをダウンロードするには、フローチャートを選びます。
 
-Intelligent Insights では、パフォーマンスの問題の根本原因の解析に通常 1 時間かかります。 Intelligent Insights で問題を見つけることができず、問題を見つけることが重要であるときは、クエリ データ ストアを使って、手動でパフォーマンスの問題の根本原因を特定します (通常、これらの問題とは 1 時間以内のものです)。詳しくは、「[クエリのストアを使用した、パフォーマンスの監視](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)」をご覧ください。
+Intelligent Insights では、パフォーマンスの問題の根本原因の解析に通常 1 時間かかります。 Intelligent Insights で問題を見つけることができず、問題を見つけることが重要であるときは、クエリ データ ストアを使って、手動でパフォーマンスの問題の根本原因を特定します (通常、これらの問題とは 1 時間以内のものです)。詳しくは、「[クエリのストアを使用した、パフォーマンスの監視](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Intelligent Insights](intelligent-insights-overview.md) の概念の習得。
 - [Intelligent Insights パフォーマンス診断ログ](intelligent-insights-use-diagnostics-log.md)の使用。
-- [Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) を使用した監視。
-- [Azure リソースからのログ データの収集と使用](../../azure-monitor/platform/platform-logs-overview.md)の習得。
+- [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) を使用した監視。
+- [Azure リソースからのログ データの収集と使用](../../azure-monitor/essentials/platform-logs-overview.md)の習得。

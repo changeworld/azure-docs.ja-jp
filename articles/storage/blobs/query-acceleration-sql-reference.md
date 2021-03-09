@@ -1,28 +1,25 @@
 ---
-title: クエリ アクセラレーション SQL 言語リファレンス (プレビュー)
+title: クエリ アクセラレーション SQL 言語リファレンス
 titleSuffix: Azure Storage
 description: クエリ アクセラレーション SQL 構文を使用する方法について説明します。
 services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/21/2020
+ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: 3408970bcf5e34ce9f0f0afe9e723b4877dcd694
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2eda67e377a3b61e696e732b916d788c00a18eae
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193404"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908780"
 ---
-# <a name="query-acceleration-sql-language-reference-preview"></a>クエリ アクセラレーション SQL 言語リファレンス (プレビュー)
+# <a name="query-acceleration-sql-language-reference"></a>クエリ アクセラレーション SQL 言語リファレンス
 
 クエリ アクセラレーションでは、BLOB コンテンツに対するクエリを表現するための ANSI SQL に似た言語をサポートしています。  クエリ アクセラレーション SQL 言語は ANSI SQL のサブセットであり、サポートされるデータ型、演算子などのセットは限定されていますが、JSON などの階層型の半構造化データ形式に対するクエリをサポートするために、ANSI SQL を拡張している部分もあります。 
-
-> [!NOTE]
-> クエリ アクセラレーション機能はパブリック プレビュー段階であり、カナダ中部およびフランス中部リージョンで利用可能です。 制限事項を確認するには、[既知の問題](data-lake-storage-known-issues.md)に関する記事を参照してください。 プレビューに登録するには、[こちらのフォーム](https://aka.ms/adls/qa-preview-signup)を参照してください。 
 
 ## <a name="select-syntax"></a>SELECT 構文
 
@@ -66,7 +63,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 |timestamp|特定の時点。                           |
 |BOOLEAN  |true または false                             |
 
-CSV 形式のデータから値を読み取ると、すべての値が文字列として読み取られます。  文字列値は、キャスト式を使用して他の型に変換される場合があります。  値は、コンテキストに応じて、暗黙的に他の型にキャストされる場合があります。 詳細については、「[データ型の優先順位 (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017)」を参照してください。
+CSV 形式のデータから値を読み取ると、すべての値が文字列として読み取られます。  文字列値は、キャスト式を使用して他の型に変換される場合があります。  値は、コンテキストに応じて、暗黙的に他の型にキャストされる場合があります。 詳細については、「[データ型の優先順位 (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql)」を参照してください。
 
 ## <a name="expressions"></a>式
 
@@ -80,15 +77,36 @@ JSON 形式のデータ、またはヘッダー行を含む CSV 形式のデー�
 
 次の標準の SQL 演算子がサポートされています。
 
-``=``、``!=``、``<>``、``<``、``<=``、``>``、``>=``、``+``、``-``、``/``、``*``、``%``、``AND``、``OR``、``NOT``、``CAST``、``BETWEEN``、``IN``、``NULLIF``、``COALESCE``
+|演算子|説明|
+|--|--|
+|[=](/sql/t-sql/language-elements/equals-transact-sql)    |2 つの式の等価性を比較します (比較演算子)。|
+|[!=](/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |一方の式がもう一方の式と等しくないかどうかをテストします (比較演算子)。|
+|[<>](/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |2 つの式を比較して "等しくない" かどうかを判定します (比較演算子)。|
+|[<](/sql/t-sql/language-elements/less-than-transact-sql)    |2 つの式を比較して "より小さい" かどうかを判定します (比較演算子)。|
+|[<=](/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |2 つの式を比較して "以下" であるかどうかを判定します (比較演算子)。|
+|[>](/sql/t-sql/language-elements/greater-than-transact-sql)    |2 つの式を比較して "より大きい" かどうかを判定します (比較演算子)。 |
+|[>=](/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |2 つの式を比較して "以上" であるかどうかを判定します (比較演算子)。|
+|[+](/sql/t-sql/language-elements/add-transact-sql)    |2 つの値を加算します。 この加算算術演算子を使用して、日付に日数を加算することもできます。|
+|[-](/sql/t-sql/language-elements/subtract-transact-sql)    |2 つの値で減算を行います (算術減算演算子)。 |
+|[/](/sql/t-sql/language-elements/divide-transact-sql)    |1 つの値を別の値で除算します (算術除算演算子)。|
+|[*](/sql/t-sql/language-elements/multiply-transact-sql)    |2 つの式を乗算します (算術乗算演算子)。|
+|[%](/sql/t-sql/language-elements/modulo-transact-sql)    |ある値を別の値で除算した結果の余りを返します。|
+|[AND](/sql/t-sql/language-elements/bitwise-and-transact-sql)    |2 つの整数値の間でビットごとの論理積演算を実行します。|
+|[OR](/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Transact-SQL ステートメントの中で、バイナリ式に変換された 2 つの指定される整数値に対して、ビットごとの論理和演算を実行します。|
+|[NOT](/sql/t-sql/language-elements/not-transact-sql)    |ブール値を否定します。|
+|[CAST](/sql/t-sql/functions/cast-and-convert-transact-sql)    |あるデータ型の式を別のデータ型に変換します。|
+|[BETWEEN](/sql/t-sql/language-elements/between-transact-sql)    |テスト範囲を指定します。|
+|[IN](/sql/t-sql/language-elements/in-transact-sql)    |指定された値が、サブクエリまたは一覧内の値と一致するかどうかを判断します。|
+|[NULLIF](/sql/t-sql/language-elements/nullif-transact-sql)    |指定された 2 つの式が等しい場合に NULL 値を返します。|
+|[COALESCE](/sql/t-sql/language-elements/coalesce-transact-sql)    |引数を順番に評価し、NULL と評価されない最初の式の現在の値を返します。|
 
-演算子の左右のデータ型が異なる場合は、こちらで指定されている規則に従って自動変換が実行されます: 「[データ型の優先順位 (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017)」。
+演算子の左右のデータ型が異なる場合は、こちらで指定されている規則に従って自動変換が実行されます: 「[データ型の優先順位 (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql)」。
 
 クエリ アクセラレーション SQL 言語では、その記事で説明されているデータ型のごく一部のみがサポートされています。  この記事の「[データ型](#data-types)」セクションを参照してください。
 
 ### <a name="casts"></a>キャスト
 
-クエリ アクセラレーション SQL 言語では、こちらの規則に従って CAST 演算子がサポートされています: 「[データ型の変換 (データベース エンジン)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine?view=sql-server-2017)」。  
+クエリ アクセラレーション SQL 言語では、こちらの規則に従って CAST 演算子がサポートされています: 「[データ型の変換 (データベース エンジン)](/sql/t-sql/data-types/data-type-conversion-database-engine)」。  
 
 クエリ アクセラレーション SQL 言語では、その記事で説明されているデータ型の一部のみがサポートされています。  この記事の「[データ型](#data-types)」セクションを参照してください。
 
@@ -96,7 +114,16 @@ JSON 形式のデータ、またはヘッダー行を含む CSV 形式のデー�
 
 クエリ アクセラレーション SQL 言語では、以下の標準の SQL 文字列関数がサポートされています。
 
-``LIKE``、``CHAR_LENGTH``、``CHARACTER_LENGTH``、``LOWER``、``UPPER``、``SUBSTRING``、``TRIM``、``LEADING``、``TRAILING``。
+|機能|説明|
+|--|--|
+|CHAR_LENGTH    | 文字列式のデータ型が文字である場合は、文字列式の文字の長さを返します。それ以外の場合は、文字列式の長さをバイト単位 (ビット数を 8 で割った数より小さい最小の整数) で返します (この関数は CHARACTER_LENGTH 関数と同じです)。|
+|CHARACTER_LENGTH    |文字列式のデータ型が文字である場合は、文字列式の文字の長さを返します。それ以外の場合は、文字列式の長さをバイト単位 (ビット数を 8 で割った数より小さい最小の整数) で返します (この関数は CHAR_LENGTH 関数と同じです)。|
+|[LOWER](/sql/t-sql/functions/lower-transact-sql)    |大文字のデータが小文字に変換された状態の文字式を返します。|
+|[UPPER](/sql/t-sql/functions/upper-transact-sql)    |小文字データを大文字に変換して文字式を返します。|
+|[SUBSTRING](/sql/t-sql/functions/substring-transact-sql)    |SQL Server で、文字、バイナリ、テキスト、またはイメージ型の式の一部を返します。|
+|[TRIM](/sql/t-sql/functions/trim-transact-sql)    |文字列の先頭と末尾にあるスペース文字 (32) または他の指定した文字を削除します。|
+|LEADING    |説明|
+|TRAILING    |説明|
 
 以下にいくつか例を示します。
 
@@ -109,21 +136,11 @@ JSON 形式のデータ、またはヘッダー行を含む CSV 形式のデー�
 |SUBSTRING|``SUBSTRING('123456789', 1, 5)``|``23456``|
 |TRIM|``TRIM(BOTH '123' FROM '1112211Microsoft22211122')``|``Microsoft``|
 
-[LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) 関数は、パターンの検索に役立ちます。 [LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) 関数を使用してデータ文字列 ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i `` を検索する例を次にいくつか示します。
-
-|クエリ|例|
-|--|--|
-|``SELECT _1, _2, _3 from BlobStorage where _2 LIKE 'a%'``|``abc,abd,cd\n``|
-|``SELECT * from BlobStorage where _1 LIKE 'a[bcd]c``|``abc,abd,cd\n``|
-|``SELECT _1 from BlobStorage where _2 LIKE '[^xyz]%'``|``abc\ntest\n``|
-|``SELECT * from BlobStorage where _1 LIKE 'a_``|``abc,abd,cd\n``|
-|``SELECT _2,_3 from BlobStorage where _3 LIKE '[g-h]_![[a-j]' Escape '!'``|``xc%d^e,gh[i\n``|
-
 ### <a name="date-functions"></a>データ関数
 
 次の標準の SQL 日付関数がサポートされています。
 
-``DATE_ADD``、``DATE_DIFF``、``EXTRACT``、``TO_STRING``、``TO_TIMESTAMP``。
+``DATE_ADD``, ``DATE_DIFF``, ``EXTRACT``, ``TO_STRING``, ``TO_TIMESTAMP``.
 
 現在、[標準 IS08601 の日付形式](https://www.w3.org/TR/NOTE-datetime)はすべて変換されます。 
 
@@ -133,14 +150,12 @@ JSON 形式のデータ、またはヘッダー行を含む CSV 形式のデー�
 
 例 :
 
-```sql
-DATE_ADD(datepart, quantity, timestamp)
-DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
+``sql DATE_ADD(datepart, quantity, timestamp) DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
 ```
 
-#### <a name="date_diff-function"></a>DATE_DIFF 関数
+#### DATE_DIFF function
 
-クエリ アクセラレーション SQL 言語では、``DATE_DIFF`` 関数で年、月、日、時間、分、秒をサポートしています。
+The query acceleration SQL language supports year, month, day, hour, minute, second for the ``DATE_DIFF`` function.
 
 ```sql
 DATE_DIFF(datepart, timestamp, timestamp)
@@ -220,12 +235,12 @@ SELECT ステートメントには、1 つ以上のプロジェクション式�
 
 |式|説明|
 |--|--|
-|[COUNT(\*)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |述語式と一致したレコードの数を返します。|
-|[COUNT(expression)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |式が null 以外のレコードの数を返します。|
-|[AVERAGE(expression)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql?view=sql-server-ver15)    |式の null 以外の値の平均を返します。|
-|[MIN(expression)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql?view=sql-server-ver15)    |式の null 以外の最小値を返します。|
-|[MAX(expression](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql?view=sql-server-ver15))    |式の null 以外の最大値を返します。|
-|[SUM(expression)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql?view=sql-server-ver15)    |式の null 以外のすべての値の合計を返します。|
+|[COUNT(\*)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql)    |述語式と一致したレコードの数を返します。|
+|[COUNT(expression)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql)    |式が null 以外のレコードの数を返します。|
+|[AVERAGE(expression)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql)    |式の null 以外の値の平均を返します。|
+|[MIN(expression)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql)    |式の null 以外の最小値を返します。|
+|[MAX(expression)](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql)    |式の null 以外の最大値を返します。|
+|[SUM(expression)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql)    |式の null 以外のすべての値の合計を返します。|
 
 ### <a name="missing"></a>MISSING
 
@@ -323,6 +338,5 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 ## <a name="see-also"></a>関連項目
 
-- [Azure Data Lake Storage のクエリ アクセラレーション (プレビュー)](data-lake-storage-query-acceleration.md)
-- [Azure Data Lake Storage のクエリ アクセラレーションを使用してデータをフィルター処理する (プレビュー)](data-lake-storage-query-acceleration-how-to.md)
-
+- [Azure Data Lake Storage のクエリ アクセラレーション](data-lake-storage-query-acceleration.md)
+- [Azure Data Lake Storage のクエリ アクセラレーションを使用してデータをフィルター処理する](data-lake-storage-query-acceleration-how-to.md)

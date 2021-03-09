@@ -38,8 +38,7 @@
         - name: Azure Portal で管理する
           href: storsimple-virtual-array-manager-service-administration.md
           items:
-            - name: 最新の更新プログラムをインストールする
-              href: storsimple-virtual-array-install-update-11.md
+            - name: の更新プログラムをインストールする
               items:
                 - name: Update 1 をインストールする
                   href: storsimple-virtual-array-install-update-1.md
@@ -87,10 +86,10 @@
           href: storsimple-ova-web-ui-admin.md
     - name: リリース ノート
       items:
-        - name: Update 1.2 - 最新
+        - name: Update 1.3 - 最新
+          href: storsimple-virtual-array-update-13-release-notes.md
+        - name: Update 1.2
           href: storsimple-virtual-array-update-12-release-notes.md
-        - name: Update 1.1
-          href: storsimple-virtual-array-update-11-release-notes.md
         - name: Update 1
           href: storsimple-virtual-array-update-1-release-notes.md
         - name: アーカイブ
@@ -130,7 +129,7 @@
             - name: 制限を理解する
               href: storsimple-8000-limits.md
             - name: ベスト プラクティス
-              href: 'https://gallery.technet.microsoft.com/Azure-StorSimple-8000-72b01b68'
+              href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_BestPractices_V1.1.pdf'
         - name: インストール
           items:
             - name: 安全性を確認する
@@ -194,7 +193,7 @@
                   items:
                     - name: 'よくあるご質問: ローカル固定ボリューム'
                       href: storsimple-8000-local-volume-faq.md
-                - name: ロールベースのアクセス制御
+                - name: Azure ロールベースのアクセス制御
                   href: storsimple-8000-role-based-access-control.md
                 - name: ACR を管理する
                   href: storsimple-8000-manage-acrs.md
@@ -263,11 +262,11 @@
             - name: Azure へのファイル サーバー DR を自動化する
               href: storsimple-disaster-recovery-using-azure-site-recovery.md
             - name: Express Route を使用した StorSimple
-              href: 'https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content'
-            - name: StorSimple と VMware
-              href: 'https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463'
+              href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_ExpressRoute.pdf'
             - name: StorSimple と Hyper-V
-              href: 'https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6'
+              href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_HyperVDeployment_v1.0.pdf'
+            - name: StorSimple と VMware
+              href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_VMware_v10.pdf'
             - name: 分散されたグローバル名前空間
               href: 'https://www.microsoft.com/download/details.aspx?id=45507'
         - name: モニター
@@ -323,8 +322,6 @@
               items:
                 - name: StorSimple 8000 シリーズ デバイスへ
                   href: storsimple-8000-migrate-from-5000-7000.md
-                - name: Azure File Sync へ
-                  href: storsimple-5000-7000-afs-migration.md
             - name: 他のストレージ デバイスから
               href: 'https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf'
         - name: 更新
@@ -354,19 +351,19 @@
             - name: Update 1
               href: storsimple-update1-release-notes.md
             - name: Update 0.3
-              href: storsimple-february-2015-release-notes.md
+              href: ./index.yml
             - name: Update 0.2
-              href: storsimple-january-2015-release-notes.md
+              href: ./index.yml
             - name: Update 0.1
-              href: storsimple-october-2014-release-notes.md
+              href: ./index.yml
             - name: リリース - GA
-              href: storsimple-july-2014-release-notes.md
+              href: ./index.yml
     - name: リファレンス
       items:
         - name: REST API
-          href: 'https://docs.microsoft.com/rest/api/storsimple'
+          href: /rest/api/storsimple
         - name: StorSimple 用 Windows PowerShell のコマンドレット
-          href: 'https://technet.microsoft.com/library/dn688168.aspx'
+          href: /powershell/module/hcs/?viewFallbackFrom=winserverr2-ps
         - name: Resource Manager テンプレート
           href: /azure/templates/microsoft.storsimple/allversions
 - name: StorSimple Data Manager
@@ -400,7 +397,7 @@
     - name: リリース ノート
       items:
         - name: StorSimple のリリース ノート
-          href: 'https://aka.ms/storsimple-virtual-array-latest-relnote'
+          href: ./storsimple-virtual-array-update-04-release-notes.md
         - name: CSP のリリース ノート
           href: 'https://partner.microsoft.com/Support/whats-new'
         - name: 'CSP 向け StorSimple: よく寄せられる質問'
@@ -414,13 +411,13 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: マーケティング ブログ
-      href: 'https://blogs.technet.com/b/cis/'
+      href: /archive/blogs/cis/
     - name: マーケティング
       href: 'https://azure.microsoft.com/services/storsimple/'
     - name: StorSimple サポート オプション
       href: storsimple-8000-support-options.md
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-storsimple.html'
+      href: /answers/topics/azure-storsimple.html
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/storsimple/'
     - name: 料金計算ツール
@@ -428,7 +425,7 @@
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=storsimple'
     - name: サポート ブログ
-      href: 'https://docs.microsoft.com/archive/blogs/storsimple/'
+      href: /archive/blogs/storsimple/
     - name: サード パーティに関する通知
       href: 'https://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip'
     - name: ビデオ

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 7f5ce25edfc4c3afd8a30528396f1f285b9af571
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 55fa106f0515405dcad969f05d28e0bc7b975b40
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080696"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922299"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure の SQL データ同期とは
 
@@ -32,9 +32,9 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 データ同期は、データを同期するために、ハブとスポークのトポロジを使用します。 同期グループ内のいずれかのデータベースを、ハブ データベースとして定義します。 他のデータベースは、メンバー データベースです。 同期は、ハブと個々のメンバー間でのみ発生します。
 
-- **ハブ データベース**は、Azure SQL Database にする必要があります。
-- **メンバー データベース**にできるのは、Azure SQL Database 内のデータベースか、SQL Server のインスタンス内のデータベースです。
-- **同期メタデータ データベース**には、データ同期のメタデータとログが含まれています。同期メタデータ データベースは、ハブ データベースと同じリージョンにある Azure SQL Database である必要があります。 同期メタデータ データベースは、お客様が作成し、所有します。 同期メタデータ データベースは、リージョンおよびサブスクリプションごとに 1 つだけ作成できます。 同期グループまたは同期エージェントが存在する間は、同期メタデータ データベースを削除したり、名前を変更したりすることはできません。 Microsoft では、同期メタデータ データベースとして使用する新しい空のデータベースを作成することをお勧めしています。 データ同期は、このデータベースにテーブルを作成し、頻繁に発生するワークロードを実行します。
+- **ハブ データベース** は、Azure SQL Database にする必要があります。
+- **メンバー データベース** にできるのは、Azure SQL Database 内のデータベースか、SQL Server のインスタンス内のデータベースです。
+- **同期メタデータ データベース** には、データ同期のメタデータとログが含まれています。同期メタデータ データベースは、ハブ データベースと同じリージョンにある Azure SQL Database である必要があります。 同期メタデータ データベースは、お客様が作成し、所有します。 同期メタデータ データベースは、リージョンおよびサブスクリプションごとに 1 つだけ作成できます。 同期グループまたは同期エージェントが存在する間は、同期メタデータ データベースを削除したり、名前を変更したりすることはできません。 Microsoft では、同期メタデータ データベースとして使用する新しい空のデータベースを作成することをお勧めしています。 データ同期は、このデータベースにテーブルを作成し、頻繁に発生するワークロードを実行します。
 
 > [!NOTE]
 > オンプレミスのデータベースをメンバー データベースとして使用している場合は、[ローカル同期エージェントをインストールして構成する](sql-data-sync-sql-server-configure.md#add-on-prem)必要があります。
@@ -43,10 +43,10 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 同期グループには、次のプロパティがあります。
 
-- **同期スキーマ**は、どのデータが同期されるかについて説明します。
-- **同期の方向**は、双方向にするか、一方向だけのフローにすることができます。 つまり、同期の方向は、" *[Hub to Member]\(ハブからメンバーへ\)* " または " *[Member to Hub]\(メンバーからハブへ\)* "、あるいはその両方にすることができます。
-- **同期間隔**は、同期が発生する頻度を示します。
-- **競合解決ポリシー**は、グループ レベルのポリシーであり、 *[ハブ側に合わせる]* と *[Member wins]\(メンバー側に合わせる\)* のどちらかにすることができます。
+- **同期スキーマ** は、どのデータが同期されるかについて説明します。
+- **同期の方向** は、双方向にするか、一方向だけのフローにすることができます。 つまり、同期の方向は、" *[Hub to Member]\(ハブからメンバーへ\)* " または " *[Member to Hub]\(メンバーからハブへ\)* "、あるいはその両方にすることができます。
+- **同期間隔** は、同期が発生する頻度を示します。
+- **競合解決ポリシー** は、グループ レベルのポリシーであり、 *[ハブ側に合わせる]* と *[Member wins]\(メンバー側に合わせる\)* のどちらかにすることができます。
 
 ## <a name="when-to-use"></a>使用する場合
 
@@ -62,11 +62,9 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 |----------|----------------------------|
 | ディザスター リカバリー | [Azure 地理冗長のバックアップ](automated-backups-overview.md) |
 | 読み取りスケール | [読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する (プレビュー)](read-scale-out.md) |
-| ETL (OLTP から OLAP へ) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) または [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
-| SQL Server から Azure SQL Database への移行 | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
+| ETL (OLTP から OLAP へ) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) または [SQL Server Integration Services](/sql/integration-services/sql-server-integration-services) |
+| SQL Server から Azure SQL Database への移行。 ただし、移行の完了後に SQL データ同期を使用して、ソースとターゲットの同期を確実に維持することができます。  | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
-
-
 
 ## <a name="how-it-works"></a>しくみ
 
@@ -81,7 +79,15 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 | | データ同期 | トランザクション レプリケーション |
 |---|---|---|
 | **長所** | - アクティブ/アクティブのサポート<br/>- オンプレミスと Azure SQL Database 間で双方向 | - 待ち時間の短縮<br/>- トランザクションの整合性<br/>- 移行後に既存のトポロジの再利用 <br/>\- Azure SQL Managed Instance のサポート |
-| **短所** | - 5 分以上の待機時間<br/>- トランザクションの整合性なし<br/>- パフォーマンスへの影響が大きい | - Azure SQL Database からは発行できない <br/>- 高いメンテナンス コスト |
+| **短所** | - トランザクションの整合性なし<br/>- パフォーマンスへの影響が大きい | - Azure SQL Database からは発行できない <br/>- 高いメンテナンス コスト |
+
+## <a name="private-link-for-data-sync-preview"></a>データ同期用のプライベート リンク (プレビュー)
+新しいプライベート リンク (プレビュー) 機能を使用すると、サービス マネージド プライベート エンドポイントを選択して、データの同期処理中に同期サービスとメンバー/ハブ データベースの間にセキュリティで保護された接続を確立できます。 サービス マネージド プライベート エンドポイントは、特定の仮想ネットワークおよびサブネット内のプライベート IP アドレスです。 データ同期では、サービス マネージド プライベート エンドポイントが Microsoft によって作成され、特定の同期操作でデータ同期サービスによって排他的に使用されます。 プライベート リンクを設定する前に、この機能の[一般的な要件](sql-data-sync-data-sql-server-sql-database.md#general-requirements)を確認してください。 
+
+![データ同期用のプライベート リンク](./media/sql-data-sync-data-sql-server-sql-database/sync-private-link-overview.png)
+
+> [!NOTE]
+> 同期グループのデプロイ中に Azure portal の **[プライベート エンドポイント接続]** ページで、または PowerShell を使用して、サービス マネージド プライベート エンドポイントを手動で承認する必要があります。
 
 ## <a name="get-started"></a>はじめに 
 
@@ -101,7 +107,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 ### <a name="did-something-go-wrong"></a>何か問題が起きた場合
 
-- [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](../../sql-database/sql-database-troubleshoot-data-sync.md)
+- [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](./sql-data-sync-troubleshoot.md)
 
 ## <a name="consistency-and-performance"></a>一貫性とパフォーマンス
 
@@ -126,7 +132,9 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 > - 同期の問題がレポートされなくても、ハブとメンバーとの間でデータの損失が生じる可能性があります。
 > - 同期に失敗する可能性があります。主キーの変更で、追跡しているテーブルに、同期元からの存在しない行が含まれることが原因です。
 
-- スナップショット分離を有効にする必要があります。 詳しくは、「[SQL Server でのスナップショット分離](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)」をご覧ください。
+- 同期のメンバーとハブの両方に対してスナップショット分離を有効にする必要があります。 詳しくは、「[SQL Server でのスナップショット分離](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)」をご覧ください。
+
+- データ同期でプライベート リンクを使用するには、メンバーとハブの両方のデータベースが、同じ種類のクラウド (パブリック クラウドまたは政府のクラウド) で、Azure (同じリージョンまたは異なるリージョン) でホストされている必要があります。 また、プライベート リンクを使用するには、ハブ サーバーとメンバー サーバーをホストするサブスクリプションに対して、Microsoft.Network リソース プロバイダーを登録する必要があります。 最後に、同期構成中、Azure portal の [プライベート エンドポイント接続] セクション内で、または PowerShell を使用して、データ同期用にプライベート リンクを手動で承認する必要があります。 プライベート リンクを承認する方法の詳細については、「[SQL データ同期の設定](./sql-data-sync-sql-server-configure.md)」を参照してください。サービス マネージド プライベート エンドポイントを承認すると、同期サービスとメンバー/ハブ データベースとの間のすべての通信が、プライベート リンクを介して行われます。 既存の同期グループを更新して、この機能を有効にすることができます。
 
 ### <a name="general-limitations"></a>一般的な制限事項
 
@@ -135,8 +143,9 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 - 主キーに、次のデータ型を含めることはできません。sql_variant、binary、varbinary、image、xml。
 - サポートされている精度は秒に対してのみであるため、次のデータの種類を主キーとして使用するときは注意してください。time、datetime、datetime2、datetimeoffset。
 - オブジェクト (データベース、テーブル、および列) の名前には、印刷可能な文字のピリオド (.)、左角かっこ ([)、または右角かっこ (]) を使用できません。
+- テーブル名に印刷可能文字を含めることはできません: ! " # $ % ' ( ) * + - 空白
 - Azure Active Directory 認証はサポートされていません。
-- 名前が同じでスキーマが異なるテーブル (たとえば、dbo.customers や sales.customers など) はサポートされていません。
+- 名前が同じでスキーマが異なるテーブル (たとえば dbo.customers と sales.customers) がある場合は、一方のテーブルのみを同期に追加できます。
 - ユーザー定義データ型の列はサポートされていません
 - 異なるサブスクリプション間でのサーバーの移動はサポートされていません。 
 
@@ -165,12 +174,14 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 | 同期グループ内のテーブル数                                          | 500                    | 複数の同期グループを作成する |
 | 同期グループ内のテーブルの列数                              | 1000                   |                             |
 | テーブルでのデータ行のサイズ                                        | 24 Mb                  |                             |
-| 最小同期間隔                                           | 5 分              |                             |
 
 > [!NOTE]
 > 同期グループが 1 つだけの場合は、 1 つの同期グループで最大 30 個のエンドポイントを持つことができます。 同期グループが 2 つ以上ある場合は、すべての同期グループでのエンドポイントの合計数が最大 30 個に制限されます。 データベースが複数の同期グループに属している場合、それは 1 つではなく、複数のエンドポイントとしてカウントされます。
 
 ### <a name="network-requirements"></a>ネットワークの要件
+
+> [!NOTE]
+> プライベート リンクを使用する場合、これらのネットワーク要件は適用されません。 
 
 同期グループが確立されるときに、データ同期サービスはハブ データベースに接続する必要があります。 同期グループを確立する時点で、Azure SQL サーバーの `Firewalls and virtual networks` 設定は次のように構成されている必要があります。
 
@@ -223,7 +234,7 @@ SQL データ同期を使ってデータのバックアップを作成するこ�
 
 ### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>データ同期では、暗号化されたテーブルと列を同期できますか?
 
-- データベースが [Always Encrypted (常に暗号化)] を使用する場合、暗号化*されていない*テーブルおよび列のみを同期できます。 データ同期はデータを暗号化解除できないため、暗号化された列を同期することはできません。
+- データベースが [Always Encrypted (常に暗号化)] を使用する場合、暗号化 *されていない* テーブルおよび列のみを同期できます。 データ同期はデータを暗号化解除できないため、暗号化された列を同期することはできません。
 - 列が列レベルの暗号化 (CLE) を使用している場合、行サイズが 24 Mb の最大サイズより小さい場合に限り、列を同期できます。 データ同期は、鍵によって暗号化された列 (CLE) を通常のバイナリ データとして処理します。 他の同期メンバーのデータを暗号化解除するには、同じ証明書を持っている必要があります。
 
 ### <a name="is-collation-supported-in-sql-data-sync"></a>SQL データ同期では照合順序はサポートされていますか?
@@ -239,7 +250,7 @@ SQL データ同期を使ってデータのバックアップを作成するこ�
 
 ### <a name="can-i-use-data-sync-to-sync-data-exported-from-dynamics-365-using-bring-your-own-database-byod-feature"></a>データ同期を使用して、Dynamics 365 からエクスポートされたデータを、独自データベースの持ち込み (BYOD) 機能によって同期することはできますか?
 
-管理者は、Dynamics 365 の独自データベースの持ち込み機能を使用して、データ エンティティをアプリケーションから自分の Microsoft Azure SQL Database にエクスポートできます。 **増分プッシュ**を使用してデータをエクスポートし (完全プッシュはサポートされていません)、かつ **[ターゲット データベースのトリガーを有効にする]** を **[はい]** に設定している場合、データ同期を使用してこのデータを他のデータベースに同期することができます。
+管理者は、Dynamics 365 の独自データベースの持ち込み機能を使用して、データ エンティティをアプリケーションから自分の Microsoft Azure SQL Database にエクスポートできます。 **増分プッシュ** を使用してデータをエクスポートし (完全プッシュはサポートされていません)、かつ **[ターゲット データベースのトリガーを有効にする]** を **[はい]** に設定している場合、データ同期を使用してこのデータを他のデータベースに同期することができます。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -247,20 +258,19 @@ SQL データ同期を使ってデータのバックアップを作成するこ�
 
 同期グループ内のデータベースのスキーマを更新する必要がある場合、 スキーマ変更は自動的にはレプリケートされません。 いくつかのソリューションについては、次の記事を参照してください。
 
-- [Azure の SQL データ同期でスキーマ変更のレプリケートを自動化する](../../sql-database/sql-database-update-sync-schema.md)
+- [Azure の SQL データ同期でスキーマ変更のレプリケートを自動化する](./sql-data-sync-update-sync-schema.md)
 - [PowerShell を使用して、既存の同期グループの同期スキーマを更新する](scripts/update-sync-schema-in-sync-group.md)
 
 ### <a name="monitor-and-troubleshoot"></a>監視とトラブルシューティング
 
 SQL データ同期が想定どおりに行われているかどうかを確認したい場合に、 アクティビティを監視して問題のトラブルシューティングを行うには、次の記事を参照してください。
 
-- [Azure Monitor ログによる SQL データ同期の監視](../../sql-database/sql-database-sync-monitor-oms.md)
-- [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](../../sql-database/sql-database-troubleshoot-data-sync.md)
+- [Azure Monitor ログによる SQL データ同期の監視](./monitor-tune-overview.md)
+- [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](./sql-data-sync-troubleshoot.md)
 
 ### <a name="learn-more-about-azure-sql-database"></a>Azure SQL Database の詳細
 
 Azure SQL Database の詳細については、以下の記事を参照してください。
 
 - [SQL Database の概要](sql-database-paas-overview.md)
-- [データベースのライフサイクル管理](https://msdn.microsoft.com/library/jj907294.aspx)
- 
+- [データベースのライフサイクル管理](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

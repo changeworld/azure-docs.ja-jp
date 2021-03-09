@@ -79,6 +79,8 @@
       href: durable-functions-perf-and-scale.md
     - name: 高可用性
       href: durable-functions-disaster-recovery-geo-distribution.md
+    - name: データの永続化とシリアル化
+      href: durable-functions-serialization-and-persistence.md
 - name: リファレンス
   items:
     - name: host.json 設定
@@ -91,6 +93,8 @@
       href: /dotnet/api/microsoft.azure.webjobs.extensions.durabletask?view=azure-dotnet
     - name: Node.js API
       href: /javascript/api/durable-functions/?view=azure-node-latest
+    - name: Python API
+      href: /python/api/azure-functions-durable/azure.durable_functions?view=azure-python
 - name: 操作方法ガイド
   items:
     - name: 開発

@@ -1,19 +1,19 @@
 ---
 title: アカウント管理 - Azure VMware Solution by CloudSimple ポータル
 description: Azure VMware Solution by CloudSimple ポータルでアカウントを管理する方法について説明します。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 00348d36c38fdbfdf69a2e4e80a4c720268b40c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c26d5accce77ce6fd8c9b6c2b519b93f95013ce
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025369"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895174"
 ---
 # <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>Azure VMware Solution by CloudSimple ポータルでアカウントを管理する
 

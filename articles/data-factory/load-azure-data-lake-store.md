@@ -1,26 +1,22 @@
 ---
 title: Azure Data Lake Storage Gen1 にデータを読み込む
 description: Azure Data Factory を使用して Azure Data Lake Storage Gen1 にデータをコピーします
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/17/2018
-ms.openlocfilehash: 1b1b19814709451bdbbea97462c459149484e71f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 02/18/2021
+ms.openlocfilehash: 1e75fc65b4afea9dc895580e4711e0050cb7c64f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415864"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716416"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Data Lake Storage Gen1 へのデータの読み込み
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) (旧称 Azure Data Lake Store) は、ビッグ データの分析ワークロードに対応するエンタープライズ規模のハイパースケール リポジトリです。 Azure Data Lake Storage Gen1 では、任意のサイズ、型、および取り込み速度のデータをキャプチャできます。 データは、運用分析や調査分析のために 1 か所でキャプチャされます。
 
@@ -88,11 +84,11 @@ Azure Data Factory には、Data Lake Storage Gen1 にデータを読み込む�
    2. **[シークレット アクセス キー]** の値を指定します。
    3. **[完了]** を選択します。
    
-      ![Amazon S3 アカウントの指定](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
+      ![[新規のリンクされたサービス] ウィンドウを示すスクリーンショット。ここでは、値を入力できます。](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
    4. 新しい接続が表示されます。 **[次へ]** を選択します。
    
-   ![Amazon S3 アカウントの指定](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
+   ![新しい接続を示すスクリーンショット。](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
 5. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ページで、コピーするフォルダーとファイルを参照します。 フォルダーまたはファイルを選択し、 **[選択]** 、 **[次へ]** の順に選択します。
 
@@ -100,7 +96,7 @@ Azure Data Factory には、Data Lake Storage Gen1 にデータを読み込む�
 
 6. **[Copy files recursively]\(ファイルを再帰的にコピー\)** オプションと **[バイナリ コピー]** (ファイルをそのままコピー) オプションをオンにして、コピーの動作を選択します。 **[次へ]** を選択します。
 
-    ![出力フォルダーの指定](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
+    ![[入力ファイルまたはフォルダーの選択] を示すスクリーンショット。ここでは、[Copy file recursively]\(ファイルを再帰的にコピー\) と [Binary Copy]\(バイナリ コピー\) を選択できます。](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
     
 7. **[配布先データ ストア]** ページで、 **[+ 新しい接続の作成]** をクリックし、 **[Azure Data Lake Storage Gen1]** を選択して、 **[続行]** を選択します。
 
@@ -118,7 +114,7 @@ Azure Data Factory には、Data Lake Storage Gen1 にデータを読み込む�
    ![Data Lake Storage Gen1 アカウントの指定](./media/load-data-into-azure-data-lake-store/specify-adls.png)
 9. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、出力フォルダー名として「**copyfroms3**」と入力し、 **[次へ]** を選択します。 
 
-    ![出力フォルダーの指定](./media/load-data-into-azure-data-lake-store/specify-adls-path.png)
+    ![入力したフォルダーのパスを示すスクリーンショット。](./media/load-data-into-azure-data-lake-store/specify-adls-path.png)
 
 10. **[設定]** ページで **[次へ]** を選択します。
 

@@ -6,14 +6,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 3/11/2019
+ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: 3b34b45cba805d748dcc8a0c31340cd8116e1c80
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: be76a7902c2747c7a8dc1bfc21d58ae88f3ff343
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82160768"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282151"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure DNS ゾーンおよびレコードを作成する
 
@@ -31,6 +31,14 @@ You can also perform these steps using [Azure PowerShell](dns-getstarted-powersh
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ポータルでのすべての手順では、[Azure portal](https://portal.azure.com) にサインインします。
+
+## <a name="prerequisites"></a>前提条件
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
+
+Azure アカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 
 ## <a name="create-a-dns-zone"></a>DNS ゾーンの作成
 
@@ -97,7 +105,7 @@ DNS ゾーン内にドメインの DNS エントリまたはレコードを作�
 
    次のような画面が表示されます。
 
-   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+   ![n s lookup コマンドと、Server、Address、Name、Address の値を表示するコマンド プロンプト ウィンドウを示すスクリーンショット。](media/dns-getstarted-portal/nslookup.PNG)
 
 ホスト名 **www\.contoso.xyz** は、構成したとおり、**10.10.10.10** に名前解決されています。 この結果で、名前解決が正常に機能していることを確認できます。 
 

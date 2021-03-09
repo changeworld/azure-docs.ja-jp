@@ -1,19 +1,16 @@
 ---
 title: HDInsight での Apache Kafka の概要 - Azure
 description: HDInsight での Apache Kafka について説明します。その機能と役割について説明し、例と概要情報の入手先を紹介します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
-ms.openlocfilehash: 8c22ff3cc79d326da09c44167519adbea48b5643
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fbe4041b74f90b2ef8a9ef4384e83c7aa2d56461
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651337"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939276"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight での Apache Kafka の概要
 
@@ -33,7 +30,9 @@ ms.locfileid: "88651337"
 
     詳細については、[HDInsight 上の Apache Kafka による高可用性](apache-kafka-high-availability.md)に関するページを参照してください。
 
-* HDInsight を使用すると、クラスターの作成後に、worker ノード (Kafka ブローカーをホストするノード) の数を変更することができます。 スケーリングは、Azure Portal、Azure PowerShell、およびその他の Azure 管理インターフェイスで実行できます。 Kafka では、スケーリング操作の後で、パーティションのレプリカを再調整する必要があります。 パーティションを再調整することで、Kafka は新しい数のワーカー ノードを活用することができます。
+* HDInsight を使用すると、クラスターの作成後に、worker ノード (Kafka ブローカーをホストするノード) の数を変更することができます。 スケール アップは、Azure Portal、Azure PowerShell、およびその他の Azure 管理インターフェイスで実行できます。 Kafka では、スケーリング操作の後で、パーティションのレプリカを再調整する必要があります。 パーティションを再調整することで、Kafka は新しい数のワーカー ノードを活用することができます。
+
+   HDInsight Kafka では、スケール ダウンまたはクラスター内のブローカー数を減らすことはサポートされていません。 ノード数を減らそうとすると、`InvalidKafkaScaleDownRequestErrorCode` エラーが返されます。
 
     詳細については、[HDInsight 上の Apache Kafka による高可用性](apache-kafka-high-availability.md)に関するページを参照してください。
 
@@ -49,7 +48,7 @@ ms.locfileid: "88651337"
 
 Apache ZooKeeper は Kafka クラスターの状態を管理します。 Zookeeper は同時、耐障害性、および待機時間の短いトランザクション用に作成されています。
 
-Kafka では、**トピック**にレコード (データ) が格納されます。 レコードは、**プロデューサー**によって生成され、**コンシューマー**によって消費されます。 プロデューサーは Kafka **ブローカー**にレコードを送信します。 HDInsight クラスターの各ワーカー ノードが、Kafka のブローカーです。
+Kafka では、**トピック** にレコード (データ) が格納されます。 レコードは、**プロデューサー** によって生成され、**コンシューマー** によって消費されます。 プロデューサーは Kafka **ブローカー** にレコードを送信します。 HDInsight クラスターの各ワーカー ノードが、Kafka のブローカーです。
 
 トピックは、ブローカー間でレコードを分割します。 レコードの使用時に、パーティションあたり最大 1 つのコンシューマーを使用して、データの並列処理を実現できます。
 
@@ -59,7 +58,7 @@ Kafka では、**トピック**にレコード (データ) が格納されます
 
 以下に、HDInsight 上の Kafka を使用して実行できる一般的なタスクと パターンを示します。
 
-|用途 |説明 |
+|使用 |説明 |
 |---|---|
 |Apache Kafka のデータのレプリケーション|Kafka には、MirrorMaker ユーティリティが用意されています。このユーティリティにより、Kafka クラスター間でデータがレプリケートされます。 MirrorMaker の使用方法については、[HDInsight 上の Apache Kafka を使用した Apache Kafka トピックのレプリケート](apache-kafka-mirroring.md)に関するページを参照してください。|
 |発行-購読のメッセージング パターン|Kafka では、Kafka トピックにレコードを発行するためのプロデューサー API が提供されます。 コンシューマー API は、トピックの購読に使用されます。 詳細については、[HDInsight での Apache Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。|
@@ -81,4 +80,4 @@ Kafka では、**トピック**にレコード (データ) が格納されます
 
 * [チュートリアル: HDInsight 上の Apache Kafka で Apache Spark を使用する](../hdinsight-apache-spark-with-kafka.md)
 
-* [チュートリアル: HDInsight 上の Apache Kafka で Apache Storm を使用する](../hdinsight-apache-storm-with-kafka.md)
+* [チュートリアル:HDInsight 上の Apache Kafka で Apache Storm を使用する](../hdinsight-apache-storm-with-kafka.md)

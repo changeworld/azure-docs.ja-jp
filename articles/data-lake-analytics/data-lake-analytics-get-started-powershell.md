@@ -3,16 +3,15 @@ title: Azure Data Lake Analytics の作成とクエリ - PowerShell
 description: Azure PowerShell を使って Azure Data Lake Analytics アカウントを作成し、U-SQL ジョブを送信します。
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 8a4e901e-9656-4a60-90d0-d78ff2f00656
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 61177d1338be30ae14ccea3ff94c5e0e554aa331
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 93a05231bc971737a08d74ad04150e5449dfc792
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077315"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220943"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Azure PowerShell で Azure Data Lake Analytics の使用を開始する
 
@@ -26,12 +25,12 @@ Azure PowerShell を使って Azure Data Lake Analytics アカウントを作成
 
 このチュートリアルを開始する前に、次の条件を満たしておく必要があります。
 
-* **Azure Data Lake Analytics アカウント**。 「[Data Lake Analytics の使用を開始する](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal)」を参照してください。
+* **Azure Data Lake Analytics アカウント**。 「[Data Lake Analytics の使用を開始する](./data-lake-analytics-get-started-portal.md)」を参照してください。
 * **Azure PowerShell を実行できるワークステーション**。 「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/)」を参照してください。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-このチュートリアルでは、既に Azure PowerShell を使い慣れていることを前提としています。 特に、Azure にログインする方法を理解している必要があります。 ヘルプが必要な場合は、[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/get-started-azureps)に関するページを参照してください。
+このチュートリアルでは、既に Azure PowerShell を使い慣れていることを前提としています。 特に、Azure にログインする方法を理解している必要があります。 ヘルプが必要な場合は、[Azure PowerShell の概要](/powershell/azure/get-started-azureps)に関するページを参照してください。
 
 サブスクリプション名でログインするには:
 

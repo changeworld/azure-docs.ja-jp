@@ -3,7 +3,7 @@ title: SaaS アプリケーションへの自動ユーザー アカウント プ
 description: 自動ユーザー アカウント プロビジョニング ジョブの状態を確認する方法と、個々のユーザーのプロビジョニングをトラブルシューティングする方法について説明します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 2de6c07395a559085db237eb1bc7f885998860d0
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: e6839026c83a10a4acebd7b7a6ab55b210e7ef14
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235079"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256679"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>チュートリアル:自動ユーザー アカウント プロビジョニングについてのレポート
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) には、エンド ツー エンドの ID ラ�
 プロビジョニング コネクタは、[Azure Portal](https://portal.azure.com) を使用してセットアップおよび構成します。サポートされているアプリケーションに[提供されているドキュメント](../saas-apps/tutorial-list.md)に従ってください。 構成を完了し実行すると、以下の 2 つの方法のいずれかで、プロビジョニング ジョブをレポートできます。
 
 * **Azure portal** - この記事では、主に、[Azure portal](https://portal.azure.com) からレポート情報を取得する方法について説明します。このポータルでは、プロビジョニングの概要レポートと、特定のアプリケーションの詳細なプロビジョニング監査ログの両方が提供されます。
-* **監査 API** - Azure Active Directory には、プログラムで詳細なプロビジョニング監査ログを取得することができる監査 API も用意されています。 この API の使用を取り上げたドキュメントについては、[Azure Active Directory 監査 API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)を参照してください。 この記事では、API を使用する方法については具体的に説明していませんが、監査ログに記録されるプロビジョニング イベントの種類については詳細に説明しています。
+* **監査 API** - Azure Active Directory には、プログラムで詳細なプロビジョニング監査ログを取得することができる監査 API も用意されています。 この API の使用を取り上げたドキュメントについては、[Azure Active Directory 監査 API リファレンス](/graph/api/resources/directoryaudit)を参照してください。 この記事では、API を使用する方法については具体的に説明していませんが、監査ログに記録されるプロビジョニング イベントの種類については詳細に説明しています。
 
 ### <a name="definitions"></a>定義
 
@@ -57,7 +57,7 @@ Azure Active Directory (Azure AD) には、エンド ツー エンドの ID ラ�
 
 **[現在の状態]** は、プロビジョニング ジョブの操作の正常性をチェックするために、管理者が最初に確認するものです。
 
- ![概要レポート](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
+ ![概要レポート](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
 
 ## <a name="provisioning-logs-preview"></a>プロビジョニング ログ (プレビュー)
 

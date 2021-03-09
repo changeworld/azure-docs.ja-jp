@@ -8,18 +8,51 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 06/29/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 13129d5a2540548b8532b14593de60fdca73efef
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 57f3cf0cb15243d054da0111366f3a1dc0fb5349
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560772"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95739759"
 ---
 # <a name="whats-new-in-custom-vision"></a>Custom Vision の新機能
 
 サービス内の新機能について説明します。 以下の項目には、リリース ノート、ビデオ、ブログの投稿、およびその他の種類の情報が含まれる可能性があります。 このページをブックマークして、常にサービスの最新情報を確認してください。
+
+
+## <a name="october-2020"></a>2020 年 10 月 
+
+### <a name="custom-base-model"></a>カスタムの基本モデル
+
+- 一部のアプリケーションには、大量の共同トレーニング データがありますが、それらのモデルは個別に微調整する必要があります。これにより、異なるソースからの若干の差異があるイメージのパフォーマンスを向上させることができます。 この場合、大量のトレーニング データを使用して、最初のモデルを通常どおりトレーニングできます。 その後、要求本文で _CustomBaseModelInfo_ を使用して 3.4 パブリック プレビュー API の **TrainProject** を呼び出して、ダウンストリーム プロジェクトの基本モデルとして、この最初の段階のトレーニング済みモデルを使用します。 ソース プロジェクトとダウンストリーム ターゲット プロジェクトでイメージ特性が類似している場合は、パフォーマンスの向上を期待できます。 
+
+### <a name="new-domain-information"></a>新しいドメインの情報
+
+- Custom Vision 3.4 パブリック プレビュー API の **GetDomains** から返されるドメイン情報に、サポートされるエクスポート可能なプラットフォーム、モデル アーキテクチャの簡単な説明、およびコンパクト ドメイン用のモデルのサイズが含まるようになりました。
+
+### <a name="training-divergence-feedback"></a>トレーニングの相違に関するフィードバック
+
+- Custom Vision 3.4 パブリック プレビュー API で、**GetIteration** の呼び出しから **TrainingErrorDetails** が返されるようになりました。 反復が失敗した場合、これにより、トレーニングの相違が原因で失敗したかどうかが分かります。これは、より多くの高品質なトレーニング データを使用して修正できます。
+
+## <a name="july-2020"></a>2020 年 7 月
+
+### <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
+
+* Custom Vision では、Azure リソースへの個々のアクセスを管理するための認可システムである、Azure のロールベースのアクセス制御 (Azure RBAC) がサポートされています。 Custom Vision プロジェクトへのアクセスを管理する方法については、「[Azure ロールベースのアクセス制御](./role-based-access-control.md)」を参照してください。
+
+### <a name="subset-training"></a>サブセット トレーニング
+
+* 物体検出プロジェクトをトレーニングするときに、必要に応じて、適用したタグのサブセットのみでトレーニングできます。 ある特定のタグが十分に適用されていないが、他のタグが十分に適用されている場合に、これを行うことができます。 詳しくは、C# または Python の[クライアント ライブラリのクイックスタート](./quickstarts/object-detection.md)に従ってください。
+
+### <a name="azure-storage-notifications"></a>Azure ストレージ通知
+
+* Custom Vision プロジェクトを Azure Blob Storage キューと統合して、プロジェクトのトレーニングのプッシュ通知を取得したり、公開されたモデルのアクティビティ コピーやバック アップコピーをエクスポートしたりすることができます。 この機能は、長い操作が実行されているときに、サービスで結果をポーリングし続けなくて済むようにするのに役立ちます。 代わりに、ストレージ キュー通知をワークフローに統合できます。 詳細については、[ストレージの統合](./storage-integration.md)ガイドを参照してください。
+
+### <a name="copy-and-move-projects"></a>プロジェクトをコピーおよび移動する
+
+* プロジェクトを 1 つの Custom Vision アカウントから別のものにコピーできるようになりました。 プロジェクトを開発環境から運用環境に移動することや、データのセキュリティを強化するために別の Azure リージョンのアカウントにプロジェクトをバックアップすることが必要になる場合があります。 詳細については、[プロジェクトのコピーと移動](./copy-move-projects.md)のガイドを参照してください。
 
 ## <a name="september-2019"></a>2019 年 9 月
 

@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect の複数のドメイン
-description: このドキュメントでは、O365 と Azure AD で複数の最上位レベル ドメインを構成する方法について説明します。
+description: このドキュメントでは、Microsoft 365 と Azure AD で複数の最上位レベル ドメインを構成する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,15 +16,15 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1607bf1cd6f25f56c6819a2ea3194244e10df8dd
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 53a0da5b5db21c9a543d39d1b252b0b4c64e2a56
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277539"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306363"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Azure AD とのフェデレーションに使用する複数ドメインのサポート
-ここでは、Office 365 または Azure AD のドメインとのフェデレーション時に、複数のトップレベル ドメインとサブドメインを使用する方法について説明します。
+ここでは、Microsoft 365 または Azure AD のドメインとのフェデレーション時に、複数のトップレベル ドメインとサブドメインを使用する方法について説明します。
 
 ## <a name="multiple-top-level-domain-support"></a>複数のトップレベル ドメインのサポート
 複数のトップレベル ドメインと Azure AD のフェデレーションを行うには、単一のトップレベル ドメインを使用するフェデレーションでは行う必要のない構成を、いくつか実施する必要があります。
@@ -38,15 +38,15 @@ ms.locfileid: "89277539"
 
 IssuerUri を表示するには、PowerShell コマンド `Get-MsolDomainFederationSettings -DomainName <your domain>` を使用します。
 
-![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
+![PowerShell で "Get-MsolDomainFederationSettings" コマンドを入力した後の結果を示すスクリーンショット。](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
 複数のトップレベル ドメインを追加しようとすると、問題が生じます。  たとえば、Azure AD とオンプレミス環境の間でフェデレーションを設定しているとします。  このドキュメントでは、ドメインとして bmcontoso.com が使用されています。  ここでは、2 番目のトップレベル ドメインとして bmfabrikam.com が追加されています。
 
-![ドメイン](./media/how-to-connect-install-multiple-domains/domains.png)
+![複数のトップレベル ドメインのスクリーンショット。](./media/how-to-connect-install-multiple-domains/domains.png)
 
 bmfabrikam.com ドメインを変換してフェデレーションしようとすると、エラーが発生します。  その原因は、IssuerUri プロパティで複数のドメインに同じ値を設定できないという Azure AD の制約にあります。  
 
-![Federation error](./media/how-to-connect-install-multiple-domains/error.png)
+![PowerShell でのフェデレーション エラーを示すスクリーンショット。](./media/how-to-connect-install-multiple-domains/error.png)
 
 ### <a name="supportmultipledomain-parameter"></a>SupportMultipleDomain パラメーター
 この制約を回避するには、別の IssuerUri を追加する必要があります。これは `-SupportMultipleDomain` パラメーターを使用して実行できます。  このパラメーターは以下のコマンドレットで使用します。
@@ -57,17 +57,17 @@ bmfabrikam.com ドメインを変換してフェデレーションしようと�
 
 このパラメーターを使用すると、Azure AD で IssuerUri がドメイン名に基づくように構成されます。  IssuerUri は Azure AD 内のディレクトリ間で一意になります。  このパラメーターを指定することで、PowerShell コマンドが正常に実行されます。
 
-![Federation error](./media/how-to-connect-install-multiple-domains/convert.png)
+![PowerShell コマンドが正常に完了したことを示すスクリーンショット。](./media/how-to-connect-install-multiple-domains/convert.png)
 
 bmfabrikam.com ドメインの設定は、以下のようになっています。
 
-![Federation error](./media/how-to-connect-install-multiple-domains/settings.png)
+!["bmfabrikam.com" ドメインの設定を示すスクリーンショット。](./media/how-to-connect-install-multiple-domains/settings.png)
 
 `-SupportMultipleDomain` は、adfs.bmcontoso.com 上のフェデレーション サービスをポイントするように構成されている他のエンドポイントを変更しません。
 
 また、 `-SupportMultipleDomain` を使用すると、AD FS システムが Azure AD 用に発行するトークンに、適切な Issuer (発行者) の値を確実に含めることができます。 この値は、ユーザーの UPN のドメイン部分を取得し、その値を IssuerUri でドメインとして設定することで設定されます (つまり、 https://{upn suffix}/adfs/services/trust)。
 
-そのため、Azure AD または Office 365 に対する認証中に、ユーザーのトークンに含まれる IssuerUri 要素を使用して、Azure AD 内のドメインが特定されます。  一致するものが見つからなければ、認証は失敗します。
+そのため、Azure AD または Microsoft 365 に対する認証中に、ユーザーのトークンに含まれる IssuerUri 要素を使用して、Azure AD 内のドメインが特定されます。 一致するものが見つからなければ、認証は失敗します。
 
 たとえば、ユーザーの UPN が bsimon@bmcontoso.com である場合、AD FS が発行するトークンの IssuerUri 要素は `http://bmcontoso.com/adfs/services/trust` に設定されます。 この要素は Azure AD の構成と一致し、認証は成功します。
 
@@ -88,11 +88,11 @@ AD FS と Azure AD インスタンスとの間でフェデレーションによ�
 
 Azure AD ポータルに新しいドメインを正常に追加した後、`Convert-MsolDomaintoFederated -DomainName <your domain>` を使用してドメインを変換しようとすると、次のエラーが発生します。
 
-![Federation error](./media/how-to-connect-install-multiple-domains/trust1.png)
+!["Convert-MsolDomaintoFederated" コマンドを使用して新しいドメインを変換しようとした後の PowerShell でのフェデレーション エラーを示すスクリーンショット。](./media/how-to-connect-install-multiple-domains/trust1.png)
 
 そこで、`-SupportMultipleDomain` スイッチを追加して試してみると、次のエラーが発生します。
 
-![Federation error](./media/how-to-connect-install-multiple-domains/trust2.png)
+!["-SupportMultipleDomain" スイッチを追加した後のフェデレーション エラーを示すスクリーンショット。](./media/how-to-connect-install-multiple-domains/trust2.png)
 
 単純に元のドメインで `Update-MsolFederatedDomain -DomainName <your domain> -SupportMultipleDomain` を実行してみても、エラーが生じます。
 
@@ -121,7 +121,7 @@ Azure AD ポータルに新しいドメインを正常に追加した後、`Conv
 次の手順で、Azure AD Connect を使用して新しいトップレベル ドメインを追加します。
 
 1. デスクトップまたは [スタート] メニューから、Azure AD Connect を起動します。
-2. [Azure AD ドメインを追加します] を選択します。![Add an additional Azure AD domain](./media/how-to-connect-install-multiple-domains/add1.png)
+2. [Add an additional Azure AD Domain]\(Azure AD ドメインを追加します\) を選択します。![[Add an additional Azure AD domain]\(Azure AD ドメインを追加します\) が選択された [追加タスク] ページを示すスクリーンショット。](./media/how-to-connect-install-multiple-domains/add1.png)
 3. Azure AD と Active Directory の資格情報を入力します。
 4. フェデレーションを構成する 2 つ目のドメインを選択します。
    ![Add an additional Azure AD domain](./media/how-to-connect-install-multiple-domains/add2.png)
@@ -130,7 +130,7 @@ Azure AD ポータルに新しいドメインを正常に追加した後、`Conv
 ### <a name="verify-the-new-top-level-domain"></a>新しいトップレベル ドメインの確認
 PowerShell コマンド `Get-MsolDomainFederationSettings -DomainName <your domain>`を使用して、更新された IssuerUri を確認できます。  下のスクリーンショットは、元のドメイン `http://bmcontoso.com/adfs/services/trust` でフェデレーション設定が更新されたことを示しています。
 
-![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
+![元のドメインでフェデレーション設定が更新されたことを示すスクリーンショット。](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
 また、新しいドメインの IssuerUri として、`https://bmfabrikam.com/adfs/services/trust` が設定されています。
 

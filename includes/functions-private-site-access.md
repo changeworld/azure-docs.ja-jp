@@ -4,19 +4,17 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
-ms.openlocfilehash: 5e0cff7bde6e80a776d694820ca7b69dafa7c0d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c9679f3d66d58c7a6c847b54c84438c979ecd39
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648823"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936866"
 ---
-プライベート サイト アクセスとは、Azure 仮想ネットワークなどのプライベート ネットワークからのみアプリにアクセスできるようにすることです。
+[Azure プライベート エンドポイント](../articles/private-link/private-endpoint-overview.md)は、Azure Private Link を使用するサービスに、プライベートで安全に接続するためのネットワーク インターフェイスです。  プライベート エンドポイントでは、仮想ネットワークのプライベート IP アドレスを使用して、サービスが仮想ネットワークに実質的に組み込まれます。
 
-* プライベート サイトへのアクセスは、サービス エンドポイントが構成されている場合に [Premium](../articles/azure-functions/functions-premium-plan.md)、[従量課金](../articles/azure-functions/functions-scale.md#consumption-plan)、および [App Service](../articles/azure-functions/functions-scale.md#app-service-plan) の各プランで利用できます。
-    * サービス エンドポイントは、 **[プラットフォーム機能]**  >  **[ネットワーク]**  >  **[アクセス制限を構成する]**  >  **[ルールの追加]** から、アプリごとに構成できます。 これで、仮想ネットワークをルールの種類として選択できるようになりました。
-    * 詳細については、[仮想ネットワーク サービス エンドポイント](../articles/virtual-network/virtual-network-service-endpoints-overview.md)に関するページを参照してください。
-    * サービス エンドポイントがあれば、仮想ネットワーク統合が構成されていても、関数はインターネットへの完全な送信アクセスを引き続き持つことに注意してください。
-* プライベート サイトへのアクセスは、内部ロード バランサー (ILB) を使用して構成されている App Service Environment 内でも使用可能です。 詳細については、「[App Service Environment で内部ロード バランサーを作成して使用する](../articles/app-service/environment/create-ilb-ase.md)」を参照してください。
+[Premium](../articles/azure-functions/functions-premium-plan.md) および [App Service](../articles/azure-functions/dedicated-plan.md) の各プランでホストされている機能にプライベート エンドポイントを使用することができます。
 
-プライベート サイト アクセスを設定する方法については、[Azure Functions のプライベート サイト アクセスの設定](../articles/azure-functions/functions-create-private-site-access.md)に関するページ参照してください。
+機能に対して受信プライベート エンドポイント接続を作成する場合は、プライベート アドレスを解決するための DNS レコードも必要です。  既定では、Azure portal を使用してプライベート エンドポイントを作成するときに、プライベート DNS レコードが作成されます。
+
+詳細については、[Web Apps でのプライベート エンドポイントの使用](../articles/app-service/networking/private-endpoint.md)に関する記事を参照してください。

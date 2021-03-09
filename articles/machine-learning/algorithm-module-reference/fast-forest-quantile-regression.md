@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 5f00164e90d625c5343103290e9272f15d164cd8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d59d2fabb0b74ef12e33f55467b0ba68e0b7386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095395"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90907947"
 ---
 # <a name="fast-forest-quantile-regression"></a>高速フォレスト分位点回帰
 
-この記事では、Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 このモジュールを使用して、パイプラインで高速フォレスト分位点回帰モデルを作成します。 高速フォレスト分位点回帰は、1 つの平均予測値を取得するのではなく、予測された値の分布をより詳細に把握する場合に便利です。 この手法には、次のような多くの用途があります。  
   
@@ -32,7 +32,7 @@ ms.locfileid: "87095395"
 
 ## <a name="more-about-quantile-regression"></a>分位点回帰の詳細
 
-回帰にはさまざまな種類があります。 回帰は、最も基本的な意味として、数値ベクトルで表された対象にモデルを合わせることを指します。 しかし、より高度な回帰の手法の開発が統計学者によって進められています。
+回帰にはさまざまな種類があります。 簡単に言えば、回帰は数値ベクトルで表された対象にモデルを合わせることを指します。 しかし、より高度な回帰の手法の開発が統計学者によって進められています。
 
 *分位点*の最も簡単な定義は、一連のデータを同じサイズのグループに分割する値であるため、分位点値はグループ間の境界をマークします。 統計的に述べると、分位点は、ランダム変数の累積分布関数 (CDF) の逆数から一定の間隔で取得した値です。
 

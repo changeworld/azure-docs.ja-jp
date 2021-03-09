@@ -1,33 +1,37 @@
 ---
 title: チュートリアル:既存のカスタム DNS 名をマップする
-description: 既存のカスタム DNS ドメイン名 (バニティ ドメイン) を、Azure App Service の Web アプリ、モバイル アプリ バックエンド、または API アプリに追加する方法について説明します。
+description: 既存のカスタム DNS ドメイン名 (カスタム ドメイン) を、Azure App Service の Web アプリ、モバイル アプリ バックエンド、または API アプリに追加する方法について説明します。
 keywords: App Service, Azure App Service, ドメイン マッピング, ドメイン名, 既存のドメイン, ホスト名
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 4a2c65e2685dada6412adf8c8ad9c63f472b91e8
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+adobe-target: true
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./app-service-web-tutorial-custom-domain-uiex
+ms.openlocfilehash: 79599ce04b93409c67342be73cf88d5e20621c1d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962283"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182589"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
-[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、既存のカスタム DNS 名を Azure App Service にマップする方法について説明します。
+[Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、既存のカスタム ドメイン ネーム システム (DNS) 名を App Service にマップする方法について説明します。
 
-![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
+![Azure アプリへの Azure portal ナビゲーションを示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * CNAME レコードを使用してサブドメイン (たとえば `www.contoso.com`) をマップする
-> * A レコードを使用してルート ドメイン (たとえば `contoso.com`) をマップする
-> * CNAME レコードを使用してワイルドカード ドメイン (たとえば `*.contoso.com`) をマップする
-> * 既定の URL をカスタム ディレクトリにリダイレクトする
-> * スクリプトでドメイン マッピングを自動化する
+> * CNAME レコードを使用してサブドメイン (たとえば `www.contoso.com`) をマップする。
+> * A レコードを使用してルート ドメイン (たとえば `contoso.com`) をマップする。
+> * CNAME レコードを使用してワイルドカード ドメイン (たとえば `*.contoso.com`) をマップする。
+> * 既定の URL をカスタム ディレクトリにリダイレクトする。
+> * スクリプトでドメイン マッピングを自動化する。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,7 +47,7 @@ ms.locfileid: "88962283"
 
 ## <a name="prepare-the-app"></a>アプリの準備
 
-Web アプリにカスタム DNS 名をマップするには、Web アプリの [App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が有料レベル (Azure Functions の **Shared**、**Basic**、**Standard**、**Premium**、または **従量課金**) である必要があります。 この手順では、App Service アプリがサポートされている価格レベルであることを確認します。
+Web アプリにカスタム DNS 名をマップするには、Web アプリの [App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が有料レベル (Azure Functions の Shared、Basic、Standard、Premium、または従量課金) である必要があります。 この手順では、App Service アプリがサポートされている価格レベルであることを確認します。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -53,58 +57,58 @@ Web アプリにカスタム DNS 名をマップするには、Web アプリの 
 
 ### <a name="select-the-app-in-the-azure-portal"></a>Azure portal でアプリを選択します
 
-**[App Services]** を検索して選択します。
+1. **[App Services]** を検索して選択します。
 
-![[App Services] を選択します](./media/app-service-web-tutorial-custom-domain/app-services.png)
+   ![App Services の選択を示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/app-services.png)
 
-**[App Services]** ページで、Azure アプリの名前を選択します。
+1. **[App Services]** ページで、Azure アプリの名前を選択します。
 
-![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/select-app.png)
+   ![Azure アプリへのポータル ナビゲーションを示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/select-app.png)
 
-App Service アプリの管理ページが表示されます。  
+App Service アプリの管理ページが表示されます。
 
 <a name="checkpricing" aria-hidden="true"></a>
 
 ### <a name="check-the-pricing-tier"></a>価格レベルの確認
 
-アプリ ページの左側のナビゲーションで、 **[設定]** セクションまでスクロールし、 **[スケール アップ (App Service のプラン)]** を選択します。
+1. アプリ ページの左側のウィンドウで、 **[設定]** セクションまでスクロールし、 **[スケール アップ (App Service プラン)]** を選択します。
 
-![スケール アップ メニュー](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
+   ![[スケール アップ (App Service プラン)] メニューを示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-アプリの現在のレベルが青色の枠線で強調表示されます。 アプリが **F1** レベルに含まれていないことを確認します。 カスタム DNS は、**F1** レベルではサポートされていません。 
+1. アプリの現在のレベルが青色の枠線で強調表示されます。 アプリが **F1** レベルに含まれていないことを確認します。 カスタム DNS は、**F1** レベルではサポートされていません。
 
-![価格レベルの確認](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
+   ![[推奨される価格レベル] を示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-App Service プランが **F1** レベルではない場合は、 **[スケール アップ]** ページを閉じて、「[CNAME レコードのマップ](#cname)」に進みます。
+1. App Service プランが **F1** レベルではない場合は、 **[スケール アップ]** ページを閉じて、「[CNAME レコードのマップ](#map-a-cname-record)」に進みます。
 
 <a name="scaleup" aria-hidden="true"></a>
 
 ### <a name="scale-up-the-app-service-plan"></a>App Service プランをスケール アップする
 
-非 Free レベルのいずれかを選びます (**D1**、**B1**、**B2**、**B3**、または**運用**カテゴリのいずれかのレベル)。 その他のオプションについては、 **[See additional options]\(その他のオプションを参照する\)** をクリックします。
+1. 非 Free レベルのいずれかを選びます (**D1**、**B1**、**B2**、**B3**、または **運用** カテゴリのいずれかのレベル)。 その他のオプションについては、 **[その他のオプションを参照する]** をクリックします。
 
-**[Apply]** をクリックします。
+1. **[適用]** を選択します。
 
-![価格レベルの確認](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
+   ![価格レベルの確認を示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
-次の通知が表示されたら、スケール操作は完了です。
+   次の通知が表示されたら、スケール操作は完了です。
 
-![スケール操作の確認](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
+   ![スケール操作の確認を示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
 <a name="cname" aria-hidden="true"></a>
 
-## <a name="get-domain-verification-id"></a>ドメイン検証 ID を取得する
+## <a name="get-a-domain-verification-id"></a>ドメイン検証 ID を取得する
 
-アプリにカスタム ドメインを追加するには、ドメイン プロバイダーで検証 ID を TXT レコードとして追加して、ドメインの所有権を確認する必要があります。 アプリ ページの左側のナビゲーションで、 **[カスタム ドメイン]** をクリックします。 次のステップのために、 **[カスタム ドメイン]** ページの **[Custom Domain Verification ID]\(カスタム ドメイン検証 ID\)** をコピーしておきます。
+アプリにカスタム ドメインを追加するには、ドメイン プロバイダーで検証 ID を TXT レコードとして追加して、ドメインの所有権を確認する必要があります。 アプリ ページの左側のウィンドウで、 **[カスタム ドメイン]** を選択します。 次の手順のために、 **[カスタム ドメイン]** ページの **[カスタム ドメイン検証 ID]** をコピーしておきます。
 
-![カスタム ドメイン検証 ID を取得する](./media/app-service-web-tutorial-custom-domain/get-custom-domain-verification-id.png)
+![[カスタム ドメイン検証 ID] ボックスの ID を示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/get-custom-domain-verification-id.png)
 
 > [!WARNING]
-> ドメイン検証 ID をカスタム ドメインに追加すると、未解決の DNS エントリが回避され、サブドメインの乗っ取りを防ぐことができます。 この一般的な重大度の高い脅威の詳細については、[サブドメインの乗っ取り](../security/fundamentals/subdomain-takeover.md)に関するページを参照してください。
+> ドメイン検証 ID をカスタム ドメインに追加すると、未解決の DNS エントリが回避され、サブドメインの乗っ取りを防ぐのに役立ちます。 前にこの検証 ID を使わずに構成したカスタム ドメインについては、DNS レコードに検証 ID を追加して、同じリスクからそれらを保護する必要があります。 この一般的な重大度の高い脅威の詳細については、[サブドメインの乗っ取り](../security/fundamentals/subdomain-takeover.md)に関するページを参照してください。
 
 ## <a name="map-your-domain"></a>ドメインをマップする
 
-**CNAME レコード**または **A レコード**のいずれかを使用して、カスタム DNS 名を App Service にマップします。 それぞれに対応する手順を実行します。
+CNAME レコードまたは A レコードのいずれかを使用して、カスタム DNS 名を App Service にマップします。 それぞれに対応する手順を実行します。
 
 - [CNAME レコードのマップ](#map-a-cname-record)
 - [A レコードのマップ](#map-an-a-record)
@@ -119,7 +123,7 @@ App Service プランが **F1** レベルではない場合は、 **[スケー�
 
 `www` 以外のサブドメインがある場合は、`www` を自分のサブドメインに置き換えます (たとえば、カスタム ドメインが `sub.constoso.com` の場合は、`sub` に置き換えます)。
 
-#### <a name="access-dns-records-with-domain-provider"></a>ドメイン プロバイダーで DNS レコードにアクセスする
+#### <a name="access-dns-records-with-a-domain-provider"></a>ドメイン プロバイダーで DNS レコードにアクセスする
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
@@ -130,42 +134,42 @@ App Service プランが **F1** レベルではない場合は、 **[スケー�
 | レコード タイプ | Host | 値 | 説明 |
 | - | - | - |
 | CNAME | `www` | `<app-name>.azurewebsites.net` | ドメイン マッピング自体。 |
-| TXT | `asuid.www` | [前に取得した検証 ID](#get-domain-verification-id) | App Service は、`asuid.<subdomain>` TXT レコードにアクセスして、カスタム ドメインの所有権を確認します。 |
+| TXT | `asuid.www` | [前に取得した検証 ID](#get-a-domain-verification-id) | App Service は、`asuid.<subdomain>` TXT レコードにアクセスして、カスタム ドメインの所有権を確認します。 |
 
 CNAME レコードと TXT レコードを追加した後の DNS レコード ページは次の例のようになります。
 
-![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/cname-record.png)
+![Azure アプリへのポータルのナビゲーションを示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/cname-record.png)
 
 #### <a name="enable-the-cname-record-mapping-in-azure"></a>Azure で CNAME レコード マッピングを有効にする
 
-1. Azure Portal のアプリ ページの左側のナビゲーションで、 **[カスタム ドメイン]** を選択します。
+1. Azure Portal のアプリ ページの左側に表示されるウィンドウで、 **[カスタム ドメイン]** を選択します。
 
-    ![[カスタム ドメイン] メニュー](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![[カスタム ドメイン] メニューを示しているスクリーンショット。](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
 1. アプリの **[カスタム ドメイン]** ページで、完全修飾カスタム DNS 名 (`www.contoso.com`) を一覧に追加します。
 
 1. **[カスタム ドメインの追加]** を選択します。
 
-    ![ホスト名の追加](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![[ホスト名の追加] 項目を示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
 1. 先ほど CNAME レコードを追加した完全修飾ドメイン名 (`www.contoso.com` など) を入力します。
 
-1. **[検証]** を選択します。 **[カスタム ドメインの追加]** ページが開きます。
+1. **[検証]** を選択します。 **[カスタム ドメインの追加]** ページが表示されます。
 
 1. **[ホスト名レコード タイプ]** が **[CNAME (www\.example.com または任意のサブドメイン)]** に設定されていることを確認します。 **[カスタム ドメインの追加]** を選択します。
 
-    ![アプリへの DNS 名の追加](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
+    ![[カスタム ドメインの追加] ボタンを示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-    アプリの **[カスタム ドメイン]** ページに新しいカスタム ドメインが反映されるまで時間がかかることがあります。 データを更新するために、ブラウザーの表示を更新してみてください。
+    アプリの **[カスタム ドメイン]** ページに新しいカスタム ドメインが反映されるまで時間がかかることがあります。 ブラウザーを最新の情報に更新して、データを更新してみてください。
 
-    ![追加された CNAME レコード](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
+    ![CNAME レコードの追加を示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
     > [!NOTE]
-    > カスタム ドメインの警告ラベルは、それがまだ TLS/SSL 証明書にバインドされていないことを意味し、ブラウザーによっては、ブラウザーからカスタム ドメインへの HTTPS 要求でエラーまたは警告が発生します。 TLS バインドを追加するには、「[Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)」を参照してください。
+    > カスタム ドメインの警告ラベルは、まだ TLS/SSL 証明書にバインドされていないことを意味します。 ブラウザーからカスタム ドメインへの HTTPS 要求を実行すると、ブラウザーに応じてエラーまたは警告が表示されます。 TLS バインドを追加するには、「[Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)」を参照してください。
 
-    手順を飛ばしていたり、どこかで入力ミスがあったりした場合、ページの下部に検証エラーが表示されます。
+    手順を行っていなかったり、どこかで入力ミスがあったりした場合、ページの下部に検証エラーが表示されます。
 
-    ![検証エラー](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
+    ![検証エラーを示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
 
 <a name="a" aria-hidden="true"></a>
 
@@ -179,15 +183,15 @@ CNAME レコードと TXT レコードを追加した後の DNS レコード ペ
 
 A レコードをマップするには、アプリの外部 IP アドレスが必要です。 この IP アドレスは、Azure Portal のアプリの **[カスタム ドメイン]** ページで見つけることができます。
 
-Azure Portal のアプリ ページの左側のナビゲーションで、 **[カスタム ドメイン]** を選択します。
+1. Azure Portal のアプリ ページの左側に表示されるウィンドウで、 **[カスタム ドメイン]** を選択します。
 
-![[カスタム ドメイン] メニュー](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+   ![[カスタム ドメイン] メニューを示しているスクリーンショット。](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-**[カスタム ドメイン]** ページで、アプリの IP アドレスをコピーします。
+1. **[カスタム ドメイン]** ページで、アプリの IP アドレスをコピーします。
 
-![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
+   ![Azure アプリへの portal ナビゲーションを示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
-#### <a name="access-dns-records-with-domain-provider"></a>ドメイン プロバイダーで DNS レコードにアクセスする
+#### <a name="access-dns-records-with-a-domain-provider"></a>ドメイン プロバイダーで DNS レコードにアクセスする
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
@@ -198,20 +202,20 @@ A レコードをアプリ (通常はルート ドメイン) にマップする�
 | レコード タイプ | Host | 値 | 説明 |
 | - | - | - |
 | A | `@` | 「[アプリの IP アドレスをコピーする](#info)」で取得した IP アドレス | ドメイン マッピング自体 (通常、`@` はルート ドメインを表します)。 |
-| TXT | `asuid` | [前に取得した検証 ID](#get-domain-verification-id) | App Service は、`asuid.<subdomain>` TXT レコードにアクセスして、カスタム ドメインの所有権を確認します。 ルート ドメインの場合は、`asuid` を使用します。 |
+| TXT | `asuid` | [前に取得した検証 ID](#get-a-domain-verification-id) | App Service は、`asuid.<subdomain>` TXT レコードにアクセスして、カスタム ドメインの所有権を確認します。 ルート ドメインの場合は、`asuid` を使用します。 |
 
 > [!NOTE]
-> 推奨される [CNAME レコード](#map-a-cname-record)の代わりに A レコードを使用してサブドメイン (`www.contoso.com`など) を追加するには、A レコードと TXT レコードが次の表のようになっている必要があります。
+> 推奨される [CNAME レコード](#map-a-cname-record)の代わりに A レコードを使用してサブドメイン (`www.contoso.com` など) を追加するには、A レコードと TXT レコードの値が次の表のように設定されている必要があります。
 >
 > | レコード タイプ | Host | 値 |
 > | - | - | - |
 > | A | `www` | 「[アプリの IP アドレスをコピーする](#info)」で取得した IP アドレス |
-> | TXT | `asuid.www` | `<app-name>.azurewebsites.net` |
+> | TXT | `asuid.www` | [前に取得した検証 ID](#get-a-domain-verification-id) |
 >
 
 レコードが追加されると、DNS レコード ページは次の例のようになります。
 
-![DNS レコード ページ](./media/app-service-web-tutorial-custom-domain/a-record.png)
+![DNS レコード ページを示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
 <a name="enable-a" aria-hidden="true"></a>
 
@@ -221,7 +225,7 @@ Azure Portal のアプリの **[カスタム ドメイン]** ページに戻り�
 
 1. **[カスタム ドメインの追加]** を選択します。
 
-    ![ホスト名の追加](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![ホスト名の追加を示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
 1. 先ほど A レコードを構成した完全修飾ドメイン名 (`contoso.com` など) を入力します。 
 
@@ -229,18 +233,18 @@ Azure Portal のアプリの **[カスタム ドメイン]** ページに戻り�
 
 1. **[ホスト名レコード タイプ]** が **[A レコード (example.com)]** に設定されていることを確認します。 **[カスタム ドメインの追加]** を選択します。
 
-    ![アプリへの DNS 名の追加](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
+    ![アプリへの DNS 名の追加を示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
 
-    アプリの **[カスタム ドメイン]** ページに新しいカスタム ドメインが反映されるまで時間がかかることがあります。 データを更新するために、ブラウザーの表示を更新してみてください。
+    アプリの **[カスタム ドメイン]** ページに新しいカスタム ドメインが反映されるまで時間がかかることがあります。 ブラウザーを最新の情報に更新して、データを更新してみてください。
 
-    ![追加された A レコード](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
+    ![A レコードの追加を示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
     > [!NOTE]
-    > カスタム ドメインの警告ラベルは、それがまだ TLS/SSL 証明書にバインドされていないことを意味し、ブラウザーによっては、ブラウザーからカスタム ドメインへの HTTPS 要求でエラーまたは警告が発生します。 TLS バインドを追加するには、「[Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)」を参照してください。
+    > カスタム ドメインの警告ラベルは、まだ TLS/SSL 証明書にバインドされていないことを意味します。 ブラウザーからカスタム ドメインへの HTTPS 要求を実行すると、ブラウザーに応じてエラーまたは警告が表示されます。 TLS バインドを追加するには、「[Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)」を参照してください。
     
-    手順を飛ばしていたり、どこかで入力ミスがあったりした場合、ページの下部に検証エラーが表示されます。
+    手順を行っていなかったり、どこかで入力ミスがあったりした場合、ページの下部に検証エラーが表示されます。
     
-    ![検証エラー](./media/app-service-web-tutorial-custom-domain/verification-error.png)
+    ![検証エラーを示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/verification-error.png)
     
 <a name="wildcard" aria-hidden="true"></a>
 
@@ -248,7 +252,7 @@ Azure Portal のアプリの **[カスタム ドメイン]** ページに戻り�
 
 このチュートリアルの例では、CNAME レコードを追加して、[ワイルドカード DNS 名](https://en.wikipedia.org/wiki/Wildcard_DNS_record) (たとえば `*.contoso.com`) を App Service アプリにマップします。
 
-#### <a name="access-dns-records-with-domain-provider"></a>ドメイン プロバイダーで DNS レコードにアクセスする
+#### <a name="access-dns-records-with-a-domain-provider"></a>ドメイン プロバイダーで DNS レコードにアクセスする
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
@@ -259,25 +263,25 @@ Azure Portal のアプリの **[カスタム ドメイン]** ページに戻り�
 | レコード タイプ | Host | 値 | 説明 |
 | - | - | - |
 | CNAME | `*` | `<app-name>.azurewebsites.net` | ドメイン マッピング自体。 |
-| TXT | `asuid` | [前に取得した検証 ID](#get-domain-verification-id) | App Service は、`asuid` TXT レコードにアクセスして、カスタム ドメインの所有権を確認します。 |
+| TXT | `asuid` | [前に取得した検証 ID](#get-a-domain-verification-id) | App Service は、`asuid` TXT レコードにアクセスして、カスタム ドメインの所有権を確認します。 |
 
 `*.contoso.com` ドメインの例では、CNAME レコードは名前 `*` を `<app-name>.azurewebsites.net` にマップします。
 
 CNAME が追加されると、DNS レコード ページは次の例のようになります。
 
-![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
+![Azure アプリへのナビゲーションを示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
 
 #### <a name="enable-the-cname-record-mapping-in-the-app"></a>アプリの CNAME レコード マッピングを有効にする
 
 これで、ワイルドカード名と一致するすべてのサブドメインをアプリに追加できるようになりました (たとえば、`sub1.contoso.com`、`sub2.contoso.com`、`*.contoso.com` は、いずれも `*.contoso.com` に一致します)。
 
-1. Azure Portal のアプリ ページの左側のナビゲーションで、 **[カスタム ドメイン]** を選択します。
+1. Azure Portal のアプリ ページの左側に表示されるウィンドウで、 **[カスタム ドメイン]** を選択します。
 
-    ![[カスタム ドメイン] メニュー](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![[カスタム ドメイン] メニューを示しているスクリーンショット。](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
 1. **[カスタム ドメインの追加]** を選択します。
 
-    ![ホスト名の追加](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
+    ![ホスト名の追加を示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
 1. ワイルドカード ドメインと一致する完全修飾ドメイン名 (たとえば `sub1.contoso.com`) を入力し、 **[検証]** を選択します。
 
@@ -285,55 +289,55 @@ CNAME が追加されると、DNS レコード ページは次の例のように
 
 1. **[ホスト名レコード タイプ]** が **[CNAME レコード (www\.example.com または任意のサブドメイン)]** に設定されていることを確認します。 **[カスタム ドメインの追加]** を選択します。
 
-    ![アプリへの DNS 名の追加](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
+    ![アプリへの DNS 名の追加を示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
 
-    アプリの **[カスタム ドメイン]** ページに新しいカスタム ドメインが反映されるまで時間がかかることがあります。 データを更新するために、ブラウザーの表示を更新してみてください。
+    アプリの **[カスタム ドメイン]** ページに新しいカスタム ドメインが反映されるまで時間がかかることがあります。 ブラウザーを最新の情報に更新して、データを更新してみてください。
 
 1. **+** アイコンをもう一度選択して、ワイルドカード ドメインと一致する別のカスタム ドメインを追加します。 たとえば、`sub2.contoso.com` を追加します。
 
-    ![追加された CNAME レコード](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard-2.png)
+    ![CNAME レコードの追加を示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard-2.png)
 
     > [!NOTE]
-    > カスタム ドメインの警告ラベルは、それがまだ TLS/SSL 証明書にバインドされていないことを意味し、ブラウザーによっては、ブラウザーからカスタム ドメインへの HTTPS 要求でエラーまたは警告が発生します。 TLS バインドを追加するには、「[Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)」を参照してください。
+    > カスタム ドメインの警告ラベルは、まだ TLS/SSL 証明書にバインドされていないことを意味します。 ブラウザーからカスタム ドメインへの HTTPS 要求を実行すると、ブラウザーに応じてエラーまたは警告が表示されます。 TLS バインドを追加するには、「[Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)」を参照してください。
     
-## <a name="test-in-browser"></a>ブラウザーでテストする
+## <a name="test-in-a-browser"></a>ブラウザーでテストする
 
-先ほど構成した DNS 名 (たとえば、`contoso.com`、`www.contoso.com`、`sub1.contoso.com`、および `sub2.contoso.com`) を参照します。
+先ほど構成した DNS 名 (たとえば、`contoso.com`、`www.contoso.com`、`sub1.contoso.com`、`sub2.contoso.com`) を参照します。
 
-![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
+![Azure アプリへのナビゲーションを示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
 ## <a name="resolve-404-not-found"></a>404 "Not Found" (見つかりません) を解決する
 
-カスタム ドメインの URL 参照時に HTTP 404 (Not Found) エラーが発生した場合は、<a href="https://www.whatsmydns.net/" target="_blank">WhatsmyDNS.net</a> を使用して、お客様のドメインがアプリの IP アドレスに解決されることを確認します。 解決されない場合、次のいずれかの理由が考えられます。
-
-- 構成されているカスタム ドメインに A レコードまたは CNAME レコード (またはその両方) がない。
-- クライアントのブラウザーが、ドメインの古い IP アドレスをキャッシュしている。 キャッシュをクリアして、DNS の解決をもう一度テストします。 Windows コンピューターでは、`ipconfig /flushdns` でキャッシュをクリアします。
-
-<a name="virtualdir" aria-hidden="true"></a>
+カスタム ドメインの URL 参照時に HTTP 404 (Not Found) エラーが発生した場合は、<a href="https://www.nslookup.io/" target="_blank">nslookup.io</a> を使用して、ご利用のドメインがアプリの IP アドレスに解決されることを確認します。 されない場合は、A および CNAME レコードが同じサイトを使用して正しく構成されていることを確認します。 IP が正しく解決されても 404 が表示されている場合は、お使いのブラウザーにドメインの古い IP アドレスがキャッシュされている可能性があります。 キャッシュをクリアして、DNS 解決をもう一度テストします。 Windows コンピューターでは、`ipconfig /flushdns` でキャッシュをクリアします。
 
 ## <a name="migrate-an-active-domain"></a>アクティブなドメインの移行
 
 ライブ サイトとその DNS ドメイン名を App Service にダウンタイムなしで移行する方法については、「[Azure App Service へのアクティブな DNS 名の移行](manage-custom-dns-migrate-domain.md)」をご覧ください。
 
+<a name="virtualdir" aria-hidden="true"></a>
+
 ## <a name="redirect-to-a-custom-directory"></a>カスタム ディレクトリにリダイレクトする
 
-既定では、App Service は Web 要求をアプリ コードのルート ディレクトリに送信します。 ただし、特定の Web フレームワークはルート ディレクトリで開始されません。 たとえば、[Laravel](https://laravel.com/) は `public` サブディレクトリで開始されます。 `contoso.com` の DNS の例を継続する場合、そのようなアプリには `http://contoso.com/public` でアクセス可能ですが、実際は `http://contoso.com` を `public` ディレクトリに転送したいと考えます。 この手順に DNS の解決は含まれませんが、仮想ディレクトリのカスタマイズは含まれます。
+既定では、App Service は Web 要求をアプリ コードのルート ディレクトリに送信します。 しかし、特定の Web フレームワークはルート ディレクトリで開始されません。 たとえば、[Laravel](https://laravel.com/) は `public` サブディレクトリで開始されます。 `contoso.com` の DNS の例を引き続き使用すると、このようなアプリには `http://contoso.com/public` でアクセスできますが、代わりに`http://contoso.com` を `public` ディレクトリにダイレクトするという方法もあります。 この手順は、DNS 解決に関わるものではなく、仮想ディレクトリのカスタマイズに関するものです。
 
-これを行うには、Web アプリ ページの左側のナビゲーションで **[アプリケーション設定]** を選択します。 
+Windows アプリの仮想ディレクトリをカスタマイズするには、Web アプリ ページの左ペインで、 **[アプリケーション設定]** を選択します。 
+
+> [!NOTE]
+> Linux アプリにはこのページがありません。 Linux アプリのサイト ルートを変更するには、言語固有の構成ガイド ([PHP](configure-language-php.md?pivots=platform-linux#change-site-root) など) を参照してください。
 
 ページの下部でルート仮想ディレクトリ `/` が既定で `site\wwwroot` をポイントしていますが、これがお客様のアプリ コードのルート ディレクトリです。 たとえば、代わりに `site\wwwroot\public` をポイントするように変更して、変更内容を保存できます。
 
-![仮想ディレクトリのカスタマイズ](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
+![仮想ディレクトリのカスタマイズを示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
 
-操作が完了すると、アプリからルート パスの正しいページが返されます (`http://contoso.com` など)。
+操作が完了すると、アプリからルート パス (たとえば、`http://contoso.com`) の正しいページが返されます。
 
 ## <a name="automate-with-scripts"></a>スクリプトで自動化する
 
-[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/) を使用すると、カスタム ドメインの管理をスクリプトで自動化できます。 
+[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/) を使用すると、カスタム ドメインの管理をスクリプトで自動化できます。
 
-### <a name="azure-cli"></a>Azure CLI 
+### <a name="azure-cli"></a>Azure CLI
 
-次のコマンドでは、構成済みカスタム DNS 名を App Service アプリに追加します。 
+次のコマンドでは、構成済みカスタム DNS 名を App Service アプリに追加します。
 
 ```bash 
 az webapp config hostname add \
@@ -344,7 +348,7 @@ az webapp config hostname add \
 
 詳細については、「[カスタム ドメインを Web アプリにマップする](scripts/cli-configure-custom-domain.md)」を参照してください
 
-### <a name="azure-powershell"></a>Azure PowerShell 
+### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -364,11 +368,11 @@ Set-AzWebApp `
 このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
-> * CNAME レコードを使用してサブドメインをマップする
-> * A レコードを使用してルート ドメインをマップする
-> * CNAME レコードを使用してワイルドカード ドメインをマップする
-> * 既定の URL をカスタム ディレクトリにリダイレクトする
-> * スクリプトでドメイン マッピングを自動化する
+> * CNAME レコードを使用してサブドメインをマップする。
+> * A レコードを使用してルート ドメインをマップする。
+> * CNAME レコードを使用してワイルドカード ドメインをマップする。
+> * 既定の URL をカスタム ディレクトリにリダイレクトする。
+> * スクリプトでドメイン マッピングを自動化する。
 
 次のチュートリアルに進み、カスタム TLS/SSL 証明書を Web アプリにバインドする方法を学習してください。
 

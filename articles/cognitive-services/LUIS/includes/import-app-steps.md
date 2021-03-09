@@ -1,18 +1,17 @@
 ---
 title: アプリのインポート手順
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: include
-ms.date: 06/22/2020
-ms.author: diberry
-ms.openlocfilehash: 37f1b85b4ce8510d5e288df985a55dba659f0c9b
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 10/16/2020
+ms.openlocfilehash: b70a22e502de5441b5c91a8f33357375834f54e1
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "86035879"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130729"
 ---
 1. [LUIS ポータル](https://www.luis.ai)の **[マイ アプリ]** ページで、 **[+ New app for conversation]\(+ 会話用の新しいアプリ\)** を選択し、次に **[Import as JSON]\(JSON としてインポート\)** を選択します。 前の手順で保存した JSON ファイルを見つけます。 アプリの名前を変更する必要はありません。 **[完了]** を選択します
 
@@ -21,6 +20,4 @@ ms.locfileid: "86035879"
     > [!TIP]
     > アプリを変更する前に、新しいバージョンにクローンすることをお勧めします。 バージョンの変更が完了したら、そのバージョンを (.json または .lu ファイル) としてエクスポートし、ソース管理システムにそのファイルをチェックインします。
 
-1. **[ビルド]** を選択してから **[Intents]\(意図\)** を選択して、LUIS アプリのメインの構成要素である意図を確認します。
-
-    ![[バージョン] ページから [Intents]\(意図\) ページに移動します。](../media/tutorial-machine-learned-entity/new-version-imported-app.png)
+1. 画面上部の **[ビルド]** を選択し、次に左側のナビゲーション メニューにある **[意図]** をクリックします。 LUIS アプリの主な構成要素である、アプリの意図が表示されます。

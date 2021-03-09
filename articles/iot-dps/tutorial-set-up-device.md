@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6ff732888e416fcd51216070b3b30ed37b79e92c
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: dd82b8ac3a510d1b16b0d2f42d3e50803162a119
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84687121"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959800"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>チュートリアル:Azure IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスの設定
 
-前のチュートリアルでは、デバイスを IoT ハブに自動的にプロビジョニングするために、Azure IoT Hub Device Provisioning Service を設定する方法を説明しました。 このチュートリアルでは、製造プロセス中にデバイスをセットアップし、IoT Hub で自動プロビジョニングされるようにする方法について説明します。 デバイスは、初めて起動してプロビジョニング サービスに接続するときに、[構成証明メカニズム](concepts-device.md#attestation-mechanism)に基づいてプロビジョニングされます。 このチュートリアルに含まれるタスクは次のとおりです。
+前のチュートリアルでは、デバイスを IoT ハブに自動的にプロビジョニングするために、Azure IoT Hub Device Provisioning Service を設定する方法を説明しました。 このチュートリアルでは、製造プロセス中にデバイスをセットアップし、IoT Hub で自動プロビジョニングされるようにする方法について説明します。 デバイスは、初めて起動してプロビジョニング サービスに接続するときに、[構成証明メカニズム](concepts-service.md#attestation-mechanism)に基づいてプロビジョニングされます。 このチュートリアルに含まれるタスクは次のとおりです。
 
 > [!div class="checklist"]
 > * プラットフォーム固有の Device Provisioning Services Client SDK を構築する
@@ -29,7 +29,7 @@ ms.locfileid: "84687121"
 
 このチュートリアルでは、[Azure IoT SDKs and libraries for C repository (C 用の Azure IoT SDK とライブラリのリポジトリ)](https://github.com/Azure/azure-iot-sdk-c) を使用します。これには、Device Provisioning Service Client SDK for C が含まれています。この SDK は、現在、Windows または Ubuntu 実装上で実行されているデバイスに対して TPM および X.509 サポートを提供しています。 このチュートリアルは、Windows 開発クライアントの使用をベースとしています。また、Visual Studio に関する基本的な知識を前提としています。 
 
-自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](concepts-auto-provisioning.md)」を読んでから先に進んでください。 
+自動プロビジョニングの処理に慣れていない場合は、[プロビジョニング](about-iot-dps.md#provisioning-process)の概要を読んでから先に進んでください。 
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "84687121"
 
 Windows 開発環境の前提条件は次のとおりです。 Linux または macOS については、SDK ドキュメントの「[開発環境を準備する](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)」の該当するセクションを参照してください。
 
-* [C++ によるデスクトップ開発](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
+* [C++ によるデスクトップ開発](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
 
 * [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
@@ -48,7 +48,7 @@ Device Provisioning Service Client SDK は、デバイス登録ソフトウェ�
 
 1. [CMake ビルド システム](https://cmake.org/download/)をダウンロードします。
 
-    `CMake` のインストールを開始する**前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
+    `CMake` のインストールを開始する **前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
 
 2. SDK の[最新リリース](https://github.com/Azure/azure-iot-sdk-c/releases/latest)のタグ名を見つけます。
 
@@ -96,13 +96,13 @@ Device Provisioning Service Client SDK は、デバイス登録ソフトウェ�
 
 物理 TPM/HSM に構成証明を使用する SDK を構築したのか X.509 証明書を使用するのかに応じて、セキュリティ アーチファクトを収集する方法は次のとおりです。
 
-- TPM デバイスの場合、デバイスに関連付けられている、TPM チップの製造元の**保証キー**を判断する必要があります。 保証キーをハッシュすることによって、TPM デバイスの一意の**登録 ID** を派生させることができます。  
+- TPM デバイスの場合、デバイスに関連付けられている、TPM チップの製造元の **保証キー** を判断する必要があります。 保証キーをハッシュすることによって、TPM デバイスの一意の **登録 ID** を派生させることができます。  
 
 - X.509 デバイスの場合、デバイスに発行された証明書を取得する必要があります。 プロビジョニング サービスでは、X.509 構成証明メカニズムを使用するデバイスのアクセスを制御する、次の 2 種類の登録エントリが公開されています。 必要な証明書は、使用する登録の種類によって異なります。
 
-    - 個々の登録: 特定の 1 つのデバイスの登録。 この種類の登録エントリには、[エンド エンティティ、"リーフ"、証明書](concepts-security.md#end-entity-leaf-certificate)が必要です。
+    - 個々の登録: 特定の 1 つのデバイスの登録。 この種類の登録エントリには、[エンド エンティティ、"リーフ"、証明書](concepts-x509-attestation.md#end-entity-leaf-certificate)が必要です。
     
-    - 登録グループ: この種類の登録エントリには、中間証明書またはルート証明書が必要です。 詳細については、「[X.509 証明書を使用してプロビジョニング サービスへのデバイスのアクセスを制御する](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)」を参照してください。
+    - 登録グループ: この種類の登録エントリには、中間証明書またはルート証明書が必要です。 詳細については、「[X.509 証明書を使用してプロビジョニング サービスへのデバイスのアクセスを制御する](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)」を参照してください。
 
 ### <a name="simulated-devices"></a>シミュレートされたデバイス
 

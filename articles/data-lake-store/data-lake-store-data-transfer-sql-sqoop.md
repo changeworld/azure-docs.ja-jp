@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: c61862ccc7bac839627e9e7a9fbff9859155c6a2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9bb787138267fd8a9fab4dea233c1c828b457d67
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323079"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "92109189"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Sqoop を使用して Data Lake Storage Gen1 と Azure SQL Database の間でデータをコピーする
 
@@ -31,7 +31,7 @@ Apache Sqoop を使用して Azure SQL Database と Azure Data Lake Storage Gen1
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * **Azure Data Lake Storage Gen1 アカウント**。 アカウントを作成する手順については、「[Azure Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-portal.md)」を参照してください
 * Data Lake Storage Gen1 アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Storage Gen1 を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 この記事では、Data Lake Storage Gen1 にアクセスできる HDInsight Linux クラスターがあることを前提とします。
-* **Azure SQL データベース**。 Azure SQL Database でデータベースを作成する方法については、「[Azure SQL Database にデータベースを作成する](../sql-database/sql-database-get-started.md)」を参照してください
+* **Azure SQL データベース**。 Azure SQL Database でデータベースを作成する方法については、「[Azure SQL Database にデータベースを作成する](../azure-sql/database/single-database-create-quickstart.md)」を参照してください
 
 ## <a name="create-sample-tables-in-the-database"></a>データベースにサンプル テーブルを作成する
 
@@ -121,7 +121,7 @@ HDInsight クラスターには、使用可能な Sqoop パッケージが既に
     -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
     ```
 
-   各 **part-m-** * ファイルは、ソース テーブル **Table1** 内の行に対応します。 検証する part-m-* ファイルのコンテンツを表示できます。
+   各 **part-m-** _ ファイルは、ソース テーブル _ *Table1** 内の行に対応します。検証する part-m-* ファイルのコンテンツを表示できます。
 
 ### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Data Lake Storage Gen1 から Azure SQL Database にデータをエクスポートする
 
@@ -156,7 +156,7 @@ HDInsight クラスターには、使用可能な Sqoop パッケージが既に
 
 ## <a name="performance-considerations-while-using-sqoop"></a>Sqoop を使用するときのパフォーマンスに関する考慮事項
 
-Data Lake Storage Gen1 にデータをコピーする Sqoop ジョブのパフォーマンス調整の詳細については、[Sqoop のパフォーマンスに関するブログ記事](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)を参照してください。
+Data Lake Storage Gen1 にデータをコピーする Sqoop ジョブのパフォーマンス調整の詳細については、[Sqoop のパフォーマンスに関するブログ記事](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

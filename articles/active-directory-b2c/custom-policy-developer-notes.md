@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 23e443a542ed22906abb237e402834b707e623a9
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 76dcb9aec935dd4ea4f57a1362953d9741d8eaf0
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88852046"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095801"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーに関する開発者向けのメモ
 
@@ -44,7 +44,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 - カスタム ポリシーとキー/シークレット管理の構成言語について理解を深める。 詳細については、「[TrustFrameworkPolicy](trustframeworkpolicy.md)」を参照してください。
 - シナリオおよびカスタム統合の主導権を得る。 ご自分の作業内容を文書化し、ライブ サイト組織に通知します。
 - シナリオの体系的なテストを実行する。
-- ソフトウェアの開発とステージングのベスト プラクティスに従い、少なくとも 1 つの開発/テスト環境と 1 つの運用環境を用意する。
+- ソフトウェア開発とステージングのベスト プラクティスに従ってください。 少なくとも 1 つの開発およびテスト環境が推奨されます。
 - ID プロバイダーによる新しい開発と、統合するサービスに関する情報を常に入手する。 たとえば、シークレットの変更や、サービスの予定された変更と予定外の変更を把握します。
 - アクティブな監視を設定し、運用環境の応答性を監視する。 Application Insights との統合の詳細については、[Azure Active Directory B2C: ログの収集](analytics-with-application-insights.md)に関するページを参照してください。
 - Azure サブスクリプションの連絡先のメール アドレスを最新に保ち、Microsoft のライブ サイト チームのメールに対応できるようにしておく。
@@ -58,7 +58,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 
 ## <a name="features-by-stage-and-known-issues"></a>段階別の機能と既知の問題
 
-カスタム ポリシー/Identity Experience Framework 機能は、継続的かつ迅速に開発されています。 次の表は、機能およびコンポーネントの可用性のインデックスです。
+カスタム ポリシー機能は、継続的に開発されています。 次の表は、機能およびコンポーネントの可用性のインデックスです。
 
 
 ### <a name="protocols-and-authorization-flows"></a>プロトコルと承認フロー
@@ -66,11 +66,11 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | 機能 | 開発 | プレビュー | GA | Notes |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OAuth2 承認コード](authorization-code-flow.md) |  |  | X |  |
-| PKCE を使用した OAuth2 承認コード |  |  | X | モバイル アプリケーションのみ  |
+| PKCE を使用した OAuth2 承認コード |  |  | X | [パブリック クライアントとシングルページ アプリケーション](authorization-code-flow.md)  |
 | [OAuth2 暗黙的フロー](implicit-flow-single-page-application.md) |  |  | X |  |
 | [OAuth2 リソース所有者のパスワード資格情報](ropc-custom.md) |  | X |  |  |
 | [OIDC Connect](openid-connect.md) |  |  | X |  |
-| [SAML2](connect-with-saml-service-providers.md)  |  |  |X  | POST とリダイレクトのバインディング。 |
+| [SAML2](saml-service-provider.md)  |  |  |X  | POST とリダイレクトのバインディング。 |
 | OAuth1 |  |  |  | サポートされていません。 |
 | WSFED | X |  |  |  |
 
@@ -81,7 +81,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | 例: Google+。  |
 | [OAuth2](oauth2-technical-profile.md) |  |  | X | 例: Facebook。  |
 | [OAuth1](oauth1-technical-profile.md) |  | X |  | 例: Twitter。 |
-| [SAML2](saml-identity-provider-technical-profile.md) |  |   | X | 例: Salesforce、ADFS。 |
+| [SAML2](identity-provider-generic-saml.md) |  |   | X | 例: Salesforce、ADFS。 |
 | WSFED| X |  |  |  |
 
 
@@ -98,7 +98,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | 機能 | 開発 | プレビュー | GA | Notes |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [電話要素認証](phone-factor-technical-profile.md) |  |  | X |  |
-| [Azure MFA 認証](multi-factor-auth-technical-profile.md) |  | X |  |  |
+| [Azure AD MFA 認証](multi-factor-auth-technical-profile.md) |  | X |  |  |
 | [ワンタイム パスワード](one-time-password-technical-profile.md) |  | X |  |  |
 | ローカル ディレクトリとしての [Azure Active Directory](active-directory-technical-profile.md) |  |  | X |  |
 | 電子メール検証のための Azure 電子メール サブシステム |  |  | X |  |
@@ -108,16 +108,6 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | [表示コントロール](display-controls.md) |  |X  |  |  |
 
 
-### <a name="page-layout-versions"></a>ページ レイアウト バージョン
-
-| 機能 | 開発 | プレビュー | GA | Notes |
-| ------- | :-----------: | :-------: | :--: | ----- |
-| [2.0.0](page-layout.md) |  | X |  |  |
-| [1.2.0](page-layout.md) |  | X |  |  |
-| [1.1.0](page-layout.md) |  |  | X |  |
-| [1.0.0](page-layout.md) |  |  | X |  |
-| [JavaScript のサポート](javascript-samples.md) |  | X |  |  |
-
 ### <a name="app-ief-integration"></a>アプリケーションと IEF の統合
 
 | 機能 | 開発 | プレビュー | GA | Notes |
@@ -126,7 +116,8 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | クエリ文字列パラメーター `login_hint` |  |  | X | 要求として使用可能、IDP に渡すことができる。 |
 | `client_assertion` を使用して JSON をユーザー体験に挿入 | X |  |  | 非推奨となる予定。 |
 | `id_token_hint` として JSON をユーザー体験に挿入 |  | X |  | JSON を渡す順方向の転送方法。 |
-| [ID プロバイダー トークンをアプリケーションに渡す](idp-pass-through-custom.md) |  | X |  | 例: Facebook からアプリへ。 |
+| [ID プロバイダー トークンをアプリケーションに渡す](idp-pass-through-user-flow.md) |  | X |  | 例: Facebook からアプリへ。 |
+
 
 ### <a name="session-management"></a>セッションの管理
 
@@ -136,7 +127,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | [外部ログイン セッション プロバイダー](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
 | [SAML SSO セッション プロバイダー](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | X |  |
 | [OAuthSSOSessionProvider](custom-policy-reference-sso.md#oauthssosessionprovider)  |  | X |  |  |
-| [シングル サインアウト](session-overview.md#sign-out)  |  | X |  |  |
+| [シングル サインアウト](session-behavior.md#sign-out)  |  | X |  |  |
 
 ### <a name="security"></a>Security
 
@@ -153,7 +144,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | Azure Portal - IEF UX |  |  | X |  |
 | ポリシーのアップロード |  |  | X |  |
 | [Application Insights のユーザー体験ログ](troubleshoot-with-application-insights.md) |  | X |  | 開発中のトラブルシューティングに使用される。  |
-| [Application Insights のイベント ログ](application-insights-technical-profile.md) |  | X |  | 運用環境内でユーザー フローを監視するために使用される。 |
+| [Application Insights のイベント ログ](analytics-with-application-insights.md) |  | X |  | 運用環境内でユーザー フローを監視するために使用される。 |
 
 
 ## <a name="next-steps"></a>次のステップ

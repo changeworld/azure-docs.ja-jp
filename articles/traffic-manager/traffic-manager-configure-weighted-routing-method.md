@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure Traffic Manager を使用した重み付けラウンドロビンによるトラフィック ルーティングの構成
+title: チュートリアル:Azure Traffic Manager を使用した重み付けラウンドロビンによるトラフィック ルーティングの構成
 description: このチュートリアルでは、Traffic Manager でラウンドロビン方式を使用してトラフィックの負荷分散を行う方法について説明します
 services: traffic-manager
 documentationcenter: ''
@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/20/2017
+ms.date: 10/19/2020
 ms.author: duau
-ms.openlocfilehash: dff7d4ec02c5a17b51d73b9d81f93984b95a7d22
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: abcfce43b90c7371d5b38aa5b7a6d478e9d6a0dd
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401352"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207841"
 ---
 # <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>チュートリアル:Traffic Manager の重み付けトラフィック ルーティング方法の構成
 
@@ -25,31 +25,102 @@ ms.locfileid: "89401352"
 > [!NOTE]
 > Azure Web App では、Azure リージョン (複数のデータセンターで構成される場合があります) 内の Web サイトに対するラウンド ロビン負荷分散の機能が既に用意されています。 Traffic Manager を使用すると、さまざまなデータ センター内の Web サイト間でトラフィックを分散できます。
 
-## <a name="to-configure-the-weighted-traffic-routing-method"></a>重み付けによるトラフィック ルーティング方法を構成するには
+このチュートリアルでは、以下の内容を学習します。
+> [!div class="checklist"]
+> - 重み付けによるルーティングを使用して Traffic Manager プロファイルを作成する。
+> - Traffic Manager プロファイルを使用する。
+> - Traffic Manager プロファイルを削除する。
 
-1. ブラウザーから [Azure Portal](https://portal.azure.com) にサインインします。 まだアカウントを持っていない場合は、[1 か月間の無料試用版](https://azure.microsoft.com/free/)にサインアップできます。 
-2. ポータルの検索バーで、**Traffic Manager プロファイル**を検索し、ルーティング方法を構成するプロファイル名をクリックします。
-3. **[Traffic Manager プロファイル]** ブレードで、構成に追加するクラウド サービスと Web サイトの両方があることを確認します。
-4. **[設定]** セクションで **[構成]** をクリックして、 **[構成]** ブレードで次のように実行します。
-    1. **トラフィック ルーティング方法の設定**では、トラフィック ルーティング方法が **[重み付け]** に設定されていることを確認します。 他の方法に設定されている場合は、ドロップダウン リストから **[重み付け]** をクリックします。
-    2. 次のように **[エンドポイント モニターの設定]** をこのプロファイル内のすべてのエンドポイントに対して同じに設定します。
-        1. 適切な**プロトコル**を選択し、**ポート**番号を指定します。 
-        2. **[パス]** にはスラッシュ (" */* ") を入力します。 エンドポイントを監視するには、パスとファイル名を指定する必要があります。 スラッシュ "/" は、相対パスの有効な入力値で、ファイルがルート ディレクトリ (既定のディレクトリ) にあることを意味します。
-        3. ページの上部にある **[保存]** をクリックします。
-5. 次のように構成の変更をテストします。
-    1.  ポータルの検索バーで、Traffic Manager プロファイル名を検索し、表示された結果内で Traffic Manager プロファイルをクリックします。
-    2.  **[Traffic Manager プロファイル]** ブレードで、 **[概要]** をクリックします。
-    3.  **[Traffic Manager プロファイル]** ブレードに、新しく作成した Traffic Manager プロファイルの DNS 名が表示されます。 これを任意のクライアントで使用して (たとえば、Web ブラウザーを使用して移動します)、ルーティングの種類によって決まる適切なエンドポイントにルーティングすることができます。 この場合、すべての要求がラウンド ロビン方式で各エンドポイントにルーティングされます。
-6. Traffic Manager プロファイルが機能したら、権限のある DNS サーバー上の DNS レコードを編集して、会社のドメイン名が Traffic Manager ドメイン名を参照するようにします。
+## <a name="prerequisites"></a>前提条件
 
-![Traffic Manager を使用した重み付けによるトラフィック ルーティング方法の構成][1]
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/)。
+
+## <a name="configure-the-weighted-traffic-routing-method"></a>重み付けによるトラフィック ルーティング方法を構成する
+
+1. ブラウザーから [Azure Portal](https://portal.azure.com) にサインインします。
+
+1. ポータルの検索バーで、前のセクションで作成した **Traffic Manager プロファイル** の名前を検索し、表示された結果内で Traffic Manager プロファイルを選択します。
+
+    :::image type="content" source="./media/traffic-manager-weighted-routing-method/search-traffic-manager-weighted-profile.png" alt-text="Traffic Manager プロファイルを検索する&quot;:::
+
+1. **[構成]** を選択し、次の設定値を選択するか入力します。
+
+    | 設定         | [値]                                              |
+    | ---             | ---                                                |
+    | ルーティング方法            | **[重み付け]** を選択します。 |    
+    | DNS の有効期限 (TTL) | この値は、クライアントのローカル キャッシュ ネーム サーバーが、DNS エントリの更新について Traffic Manager システムにクエリを実行する頻度を制御します。 Traffic Manager で発生した変更 (トラフィック ルーティング方法の変更や追加されたエンドポイントの可用性の変更など) は、この期間ごとに、DNS サーバーのグローバル システム全体で更新されます。 |
+    | Protocol    | エンドポイント監視用のプロトコルを選択します。 &quot; *オプション: HTTP、HTTPS、および TCP* &quot; |
+    | Port | ポート番号を指定します。 |
+    | Path | エンドポイントを監視するには、パスとファイル名を指定する必要があります。 スラッシュ &quot;/" は、相対パスの有効な入力値で、ファイルがルート ディレクトリ (既定のディレクトリ) にあることを意味します。 |
+    | カスタム ヘッダーの設定 | host:contoso.com,newheader:newvalue の形式でカスタム ヘッダーを構成します。 サポートされるペアの最大数は 8 です。 HTTP および HTTPS プロトコルに適用されます。 プロファイル内のすべてのエンドポイントに適用されます |
+    | 予測される状態コードの範囲 (既定値: 200) | 状態コードの範囲は、200-299、301-301 という形式で構成します。 サポートされる範囲の最大数は 8 です。 HTTP および HTTPS プロトコルに適用されます。 プロファイル内のすべてのエンドポイントに適用されます |
+    | プローブ間隔 | エンドポイントの正常性プローブ間の時間間隔を構成します。 10 または 30 秒を選択できます。 |
+    | 障害の許容数 | エンドポイントの障害がトリガーされるまで、正常性プローブで許容される障害の数を構成します。 0 から 9 の範囲の数値を入力できます。 | 
+    | プローブのタイムアウト | エンドポイントの正常性プローブがタイムアウトするまでに必要な時間を構成します。この値は 5 以上で、かつプローブ間隔の値より小さくなければなりません。 |
+
+1. **[保存]** を選択して構成を完了します。
+
+    :::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-configuration.png" alt-text="Traffic Manager プロファイルを検索する&quot;:::
+
+1. **[構成]** を選択し、次の設定値を選択するか入力します。
+
+    | 設定         | [値]                                              |
+    | ---             | ---                                                |
+    | ルーティング方法            | **[重み付け]** を選択します。 |    
+    | DNS の有効期限 (TTL) | この値は、クライアントのローカル キャッシュ ネーム サーバーが、DNS エントリの更新について Traffic Manager システムにクエリを実行する頻度を制御します。 Traffic Manager で発生した変更 (トラフィック ルーティング方法の変更や追加されたエンドポイントの可用性の変更など) は、この期間ごとに、DNS サーバーのグローバル システム全体で更新されます。 |
+    | Protocol    | エンドポイント監視用のプロトコルを選択します。 &quot; *オプション: HTTP、HTTPS、および TCP* &quot; |
+    | Port | ポート番号を指定します。 |
+    | Path | エンドポイントを監視するには、パスとファイル名を指定する必要があります。 スラッシュ &quot;/"::: 
+
+1. **[エンドポイント]** を選択し、各エンドポイントの重みを構成します。 重みは 1 と 1000 の間にすることができます。 重みが大きくなると、優先順位がそれだけ上がります。  
+
+    :::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-configure-endpoints-weighted.png" alt-text="Traffic Manager プロファイルを検索する&quot;:::
+
+1. **[構成]** を選択し、次の設定値を選択するか入力します。
+
+    | 設定         | [値]                                              |
+    | ---             | ---                                                |
+    | ルーティング方法            | **[重み付け]** を選択します。 |    
+    | DNS の有効期限 (TTL) | この値は、クライアントのローカル キャッシュ ネーム サーバーが、DNS エントリの更新について Traffic Manager システムにクエリを実行する頻度を制御します。 Traffic Manager で発生した変更 (トラフィック ルーティング方法の変更や追加されたエンドポイントの可用性の変更など) は、この期間ごとに、DNS サーバーのグローバル システム全体で更新されます。 |
+    | Protocol    | エンドポイント監視用のプロトコルを選択します。 &quot; *オプション: HTTP、HTTPS、および TCP* &quot; |
+    | Port | ポート番号を指定します。 |
+    | Path | エンドポイントを監視するには、パスとファイル名を指定する必要があります。 スラッシュ &quot;/"::: 
+
+## <a name="use-the-traffic-manager-profile"></a>Traffic Manager プロファイルの使用
+
+**[Traffic Manager プロファイル]** に、新しく作成した Traffic Manager プロファイルの DNS 名が表示されます。 この名前を任意のクライアントで使用して (たとえば、Web ブラウザーを使用して移動します)、ルーティングの種類によって決まる適切なエンドポイントにルーティングすることができます。 この場合、すべての要求がラウンドロビン方式で各エンドポイントにルーティングされます。
+
+:::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-overview.png" alt-text="Traffic Manager プロファイルを検索する&quot;:::
+
+1. **[構成]** を選択し、次の設定値を選択するか入力します。
+
+    | 設定         | [値]                                              |
+    | ---             | ---                                                |
+    | ルーティング方法            | **[重み付け]** を選択します。 |    
+    | DNS の有効期限 (TTL) | この値は、クライアントのローカル キャッシュ ネーム サーバーが、DNS エントリの更新について Traffic Manager システムにクエリを実行する頻度を制御します。 Traffic Manager で発生した変更 (トラフィック ルーティング方法の変更や追加されたエンドポイントの可用性の変更など) は、この期間ごとに、DNS サーバーのグローバル システム全体で更新されます。 |
+    | Protocol    | エンドポイント監視用のプロトコルを選択します。 &quot; *オプション: HTTP、HTTPS、および TCP* &quot; |
+    | Port | ポート番号を指定します。 |
+    | Path | エンドポイントを監視するには、パスとファイル名を指定する必要があります。 スラッシュ &quot;/"::: 
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+Traffic Manager プロファイルが不要になったら、プロファイルを検索し、 **[プロファイルの削除]** を選択します。
+
+:::image type="content" source="./media/traffic-manager-weighted-routing-method/delete-traffic-manager-weighted-profile.png" alt-text="Traffic Manager プロファイルを検索する&quot;:::
+
+1. **[構成]** を選択し、次の設定値を選択するか入力します。
+
+    | 設定         | [値]                                              |
+    | ---             | ---                                                |
+    | ルーティング方法            | **[重み付け]** を選択します。 |    
+    | DNS の有効期限 (TTL) | この値は、クライアントのローカル キャッシュ ネーム サーバーが、DNS エントリの更新について Traffic Manager システムにクエリを実行する頻度を制御します。 Traffic Manager で発生した変更 (トラフィック ルーティング方法の変更や追加されたエンドポイントの可用性の変更など) は、この期間ごとに、DNS サーバーのグローバル システム全体で更新されます。 |
+    | Protocol    | エンドポイント監視用のプロトコルを選択します。 &quot; *オプション: HTTP、HTTPS、および TCP* &quot; |
+    | Port | ポート番号を指定します。 |
+    | Path | エンドポイントを監視するには、パスとファイル名を指定する必要があります。 スラッシュ &quot;/":::
 
 ## <a name="next-steps"></a>次のステップ
 
-- [優先順位によるトラフィック ルーティング方法](traffic-manager-configure-priority-routing-method.md)について学習します。
-- [パフォーマンスによるトラフィック ルーティング方法](traffic-manager-configure-performance-routing-method.md)について学習します。
-- [地理的なルーティング方法](traffic-manager-configure-geographic-routing-method.md)について学習します。
-- [Traffic Manager の設定のテスト](traffic-manager-testing-settings.md)方法について学習します。
+重み付けによるルーティング方法の詳細については、以下を参照してください。
 
-<!--Image references-->
-[1]: ./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-routing-method.png
+> [!div class="nextstepaction"]
+> [重み付けによるトラフィック ルーティング方法](traffic-manager-routing-methods.md#weighted)

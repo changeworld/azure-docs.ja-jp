@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1140b65cf56125b23ef3c616e597aafba989b197
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 2a0089d246169ad4215075662500794e7143940e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993858"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90601811"
 ---
 # <a name="conditional-access-session"></a>条件付きアクセス:Session
 
@@ -57,7 +57,7 @@ ms.locfileid: "83993858"
 - Word、Excel、PowerPoint Online
 - OneNote Online
 - Office.com
-- O365 管理ポータル
+- Microsoft 365 管理者ポータル
 - Exchange Online
 - SharePoint と OneDrive
 - Teams Web クライアント

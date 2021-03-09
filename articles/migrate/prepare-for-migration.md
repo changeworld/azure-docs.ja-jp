@@ -1,15 +1,17 @@
 ---
 title: Azure Migrate での移行に向けてマシンを準備する
 description: Azure Migrate での移行に向けてオンプレミス マシンを準備する方法について説明します。
-ms.topic: tutorial
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
+ms.topic: how-to
 ms.date: 06/08/2020
-ms.custom: MVC
-ms.openlocfilehash: 8acbb867d98a547787e207c410d4e1a852aa68f3
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 543fb7474c0a9efc41667945c89489054a44d657
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606828"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724491"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure への移行に向けてオンプレミスのマシンの準備を整える
 
@@ -33,7 +35,7 @@ ms.locfileid: "88606828"
 
 **シナリオ** | **プロジェクト** | **検出と評価** | **移行**
 --- | --- | --- | ---
-**VMware VM** | 1 つの Azure Migrate プロジェクトで最大 35,000 台の VM を検出して評価します。 | 1 つの VMware 用 [Azure Migrate アプライアンス](common-questions-appliance.md)を使用して最大 10,000 台の VMware VM を検出します。 | **エージェントレス移行**: 最大 300 台の VM を同時にレプリケートできます。 最大限のパフォーマンスを確保するために、VM が 50 台を超える場合は、複数のバッチを作成するようお勧めします。<br/><br/> **エージェントベース移行**: [レプリケーション アプライアンス](migrate-replication-appliance.md)を[スケールアウト](./agent-based-migration-architecture.md#performance-and-scaling)することで、多数の VM をレプリケートすることができます。<br/><br/> ポータルでは、レプリケーションのために一度に最大 10 台のマシンを選択できます。 レプリケートするマシンの台数がそれを超える場合は、10 台のバッチ単位で追加してください。
+**VMware VM** | 1 つの Azure Migrate プロジェクトで最大 35,000 台の VM を検出して評価します。 | 1 つの VMware 用 [Azure Migrate アプライアンス](common-questions-appliance.md)を使用して最大 10,000 台の VMware VM を検出します。 | **エージェントレス移行**: vCenter Server から最大 500 台の VM を同時にレプリケートできます。 **エージェントベース移行**: [レプリケーション アプライアンス](migrate-replication-appliance.md)を [スケールアウト](./agent-based-migration-architecture.md#performance-and-scaling)することで、多数の VM をレプリケートすることができます。<br/><br/> ポータルでは、レプリケーションのために一度に最大 10 台のマシンを選択できます。 レプリケートするマシンの台数がそれを超える場合は、10 台のバッチ単位で追加してください。
 **Hyper-V VM** | 1 つの Azure Migrate プロジェクトで最大 35,000 台の VM を検出して評価します。 | 単一の Azure Migrate アプライアンスで最大 5,000 台の Hyper-V VM を検出します。 | Hyper-V の移行にアプライアンスは使用されません。 代わりに、それぞれの Hyper-V ホスト上で Hyper-V レプリケーション プロバイダーが実行されます。<br/><br/> レプリケーション容量は、パフォーマンス要因 (VM のチャーンなど) とレプリケーション データのアップロード帯域幅に左右されます。<br/><br/> ポータルでは、レプリケーションのために一度に最大 10 台のマシンを選択できます。 レプリケートするマシンの台数がそれを超える場合は、10 台のバッチ単位で追加してください。
 **物理マシン** | 1 つの Azure Migrate プロジェクトで最大 35,000 台のマシンを検出して評価します。 | 物理サーバー用の 1 つの Azure Migrate アプライアンスを使用して最大 250 台の物理サーバーを検出します。 | [レプリケーション アプライアンス](migrate-replication-appliance.md)を[スケールアウト](./agent-based-migration-architecture.md#performance-and-scaling)することで、多数のサーバーをレプリケートすることができます。<br/><br/> ポータルでは、レプリケーションのために一度に最大 10 台のマシンを選択できます。 レプリケートするマシンの台数がそれを超える場合は、10 台のバッチ単位で追加してください。
 
@@ -109,11 +111,13 @@ Azure に VM を移行する前に、それらに対していくつかの変更�
 
 次のバージョンについては、各アクションが Azure Migrate によって自動的に実行されます。
 
-- Red Hat Enterprise Linux 7.0+、6.5+
-- CentOS 7.0+、6.5+
+- Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、6.x
+- Cent OS 7.7、7.6、7.5、7.4、6.x
 - SUSE Linux Enterprise Server 12 SP1+
-- Ubuntu 18.04LTS、16.04LTS、14.04LTS
-- Debian 8、7
+- SUSE Linux Enterprise Server 15 SP1
+- Ubuntu 19.04、19.10、18.04LTS、16.04LTS、14.04LTS
+- Debian 9、8、7
+- Oracle Linux 7.7、7.7-CI
 
 その他のバージョンでは、表に記載された情報に従ってマシンを準備してください。  
 
@@ -192,6 +196,6 @@ Azure に [VMware VM を移行する](server-migrate-overview.md)のか、[Hyper
 
 VMware VM については、Server Migration で[エージェントレスとエージェントベースの 2 種類の移行](server-migrate-overview.md)がサポートされています。
 
-- **VMware VM**:VMware VM の[移行の要件とサポート](migrate-support-matrix-vmware-migration.md)を確認してください。
+- **VMware VM**:VMware VM の [移行の要件とサポート](migrate-support-matrix-vmware-migration.md)を確認してください。
 - **Hyper-V VM**:Hyper-V VM については、[移行の要件とサポート](migrate-support-matrix-hyper-v-migration.md)を確認してください。
 - **物理マシン**: オンプレミスの物理マシンおよび他の仮想化されたサーバーについては、[移行の要件とサポート](migrate-support-matrix-physical-migration.md)を確認してください。 

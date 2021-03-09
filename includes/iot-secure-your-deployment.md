@@ -9,11 +9,11 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76748875"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010702"
 ---
 この記事では、Azure の IoT インフラストラクチャを保護する詳細事項の次のレベルを説明します。 各コンポーネントを設定し、デプロイする実装レベルの詳細へリンクします。 また、さまざまな方法の比較や選択肢についても説明しています。
 
@@ -91,7 +91,7 @@ Azure IoT Hub ではセキュリティ キーごとに[アクセス制御ポリ�
 
 * **DeviceConnect**。 デバイス向けのエンドポイントへのアクセスを許可します。 たとえば、D2C メッセージの送信と、C2D メッセージの受信のアクセス許可を付与します。 このアクセス許可はデバイスによって使用されます。
 
-IoT Hub と[セキュリティ トークン](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)を使用して **DeviceConnect** アクセス許可を取得するには、デバイス ID キーを使用する方法と共有アクセス キーを使用する方法の 2 とおりがあります。 さらに、デバイスからアクセスできるすべての機能は、仕様により、 `/devices/{deviceId}`というプレフィックスを持つエンドポイントで公開されることに注意することが重要です。
+IoT Hub と [セキュリティ トークン](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)を使用して **DeviceConnect** アクセス許可を取得するには、デバイス ID キーを使用する方法と共有アクセス キーを使用する方法の 2 とおりがあります。 さらに、デバイスからアクセスできるすべての機能は、仕様により、 `/devices/{deviceId}`というプレフィックスを持つエンドポイントで公開されることに注意することが重要です。
 
 [サービス コンポーネントでは、適切なアクセス許可を付与する共有アクセス ポリシーを使用した場合にのみセキュリティ トークンを生成できます](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components)。
 

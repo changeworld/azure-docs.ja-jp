@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 02/28/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: 45c316c1d1dd56f6d920423a725b2488df1a5032
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: ae508754775d4eb622d8e91ef58eb0d6e1c45692
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527423"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94889016"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure Virtual Machine Scale Sets の自動インスタンス修復
 
@@ -36,9 +36,9 @@ Azure Virtual Machine Scale Sets の自動インスタンス修復を有効に�
 
 "異常" とマークされているインスタンスの場合、自動修復はスケール セットによってトリガーされます。 エンドポイントの構成中に予期せずインスタンスが修復されることを回避するため、アプリケーション エンドポイントが正しく構成されていることを確認してから、自動修復ポリシーを有効にします。
 
-**1 つの配置グループを有効にする**
+**スケール セット内のインスタンスの最大数**
 
-現在、この機能は 1 つのデプロイ グループとしてデプロイされたスケール セットに対してのみ使用できます。 スケール セットで自動インスタンス修復機能を使用するには、プロパティ *singlePlacementGroup* が *true* に設定されている必要があります。 [配置グループ](./virtual-machine-scale-sets-placement-groups.md#placement-groups)の詳細を確認してください。
+この機能は現在、インスタンスの数が 200 個以下のスケール セットに対してのみ使用できます。 スケール セットは、1 つの配置グループまたは複数の配置グループとしてデプロイできます。ただし、スケール セットに対して自動インスタンス修復が有効になっている場合、インスタンス数は 200 を超えることはできません。
 
 **API バージョン**
 

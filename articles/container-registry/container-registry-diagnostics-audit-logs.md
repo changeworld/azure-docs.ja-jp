@@ -3,16 +3,16 @@ title: リソース ログの収集と分析
 description: 認証、イメージのプッシュ、イメージのプルなど、Azure Container Registry のリソース ログ イベントを記録および分析します。
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: 63ccb944b9c3de9941acf55ca5ea85fda70a7008
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 952f239e94df6b3b21317985f56d3d7a999813fe
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553378"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572000"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>診断の評価と監査のための Azure Container Registry ログ
 
-この記事では、[Azure Monitor](../azure-monitor/overview.md) の機能を使用して Azure コンテナー レジストリのログ データを収集する方法について説明します。 Azure Monitor を使用すると、レジストリ内のユーザー駆動型イベントの[リソース ログ](../azure-monitor/platform/platform-logs-overview.md) (以前は "*診断ログ*" と呼ばれていました) を収集できます。 このデータは、次のようなニーズに対応するために収集して使用します。
+この記事では、[Azure Monitor](../azure-monitor/overview.md) の機能を使用して Azure コンテナー レジストリのログ データを収集する方法について説明します。 Azure Monitor を使用すると、レジストリ内のユーザー駆動型イベントの [リソース ログ](../azure-monitor/essentials/platform-logs-overview.md) (以前は "*診断ログ*" と呼ばれていました) を収集できます。 このデータは、次のようなニーズに対応するために収集して使用します。
 
 * レジストリ認証イベントを監査して、セキュリティとコンプライアンスを確保する 
 
@@ -28,7 +28,7 @@ Azure Monitor を使用してリソース ログ データを収集すると、�
 * **プル**
 * **タグの解除**
 * **削除** (リポジトリの削除イベントを含む)
-* **タグの消去**および**マニフェストの消去**
+* **タグの消去** および **マニフェストの消去**
 
 > [!NOTE]
 > 消去イベントは、レジストリ[保持ポリシー](container-registry-retention-policy.md)が構成されている場合にのみ記録されます。
@@ -39,21 +39,21 @@ Azure Monitor を使用してリソース ログ データを収集すると、�
 
 * **ContainerRegistryLoginEvents** - 受信 ID および IP アドレスを含むレジストリ認証イベントと状態
 * **ContainerRegistryRepositoryEvents** - レジストリ リポジトリ内のイメージとその他の成果物のプッシュやプルなどの操作
-* **AzureMetrics** - 集計されたプッシュ数やプル数など、[コンテナー レジストリのメトリック](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries)。
+* **AzureMetrics** - 集計されたプッシュ数やプル数など、[コンテナー レジストリのメトリック](../azure-monitor/essentials/metrics-supported.md#microsoftcontainerregistryregistries)。
 
 操作のログ データには以下が含まれます。
   * 成功または失敗の状態
   * 開始および終了のタイム スタンプ
 
-Azure には、リソース ログに加えて、[アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)が用意されています。これは、コンテナー レジストリの作成や削除など、Azure 管理イベントの単一サブスクリプションレベルのレコードです。
+Azure には、リソース ログに加えて、[アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)が用意されています。これは、コンテナー レジストリの作成や削除など、Azure 管理イベントの単一サブスクリプションレベルのレコードです。
 
 ## <a name="enable-collection-of-resource-logs"></a>リソース ログの収集を有効にする
 
-コンテナー レジストリのリソース ログの収集は、既定では有効になっていません。 監視したい各レジストリの診断設定を明示的に有効にします。 診断設定を有効にするオプションについては、「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../azure-monitor/platform/diagnostic-settings.md)」を参照してください。
+コンテナー レジストリのリソース ログの収集は、既定では有効になっていません。 監視したい各レジストリの診断設定を明示的に有効にします。 診断設定を有効にするオプションについては、「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../azure-monitor/essentials/diagnostic-settings.md)」を参照してください。
 
 たとえば、Azure Monitor でコンテナー レジストリのログとメトリックをほぼリアルタイムで表示するには、Log Analytics ワークスペースでリソース ログを収集します。 Azure portal を使用してこの診断設定を有効にするには:
 
-1. ワークスペースがまだない場合は、[Azure portal](../azure-monitor/learn/quick-create-workspace.md) を使用してワークスペースを作成します。 データ収集での待ち時間を最小限に抑えるために、ワークスペースをご自分のコンテナー レジストリと**同じリージョン**に配置するようにします。
+1. ワークスペースがまだない場合は、[Azure portal](../azure-monitor/logs/quick-create-workspace.md) を使用してワークスペースを作成します。 データ収集での待ち時間を最小限に抑えるために、ワークスペースをご自分のコンテナー レジストリと **同じリージョン** に配置するようにします。
 1. ポータルでレジストリを選択し、 **[監視]、[診断設定]、[診断設定を追加する]** の順に選択します。
 1. 設定の名前を入力し、 **[Log Analytics への送信]** を選択します。
 1. レジストリ診断ログのワークスペースを選択します。
@@ -81,9 +81,9 @@ ContainerRegistryRepositoryEvents
 
 ![ログ データのクエリ](media/container-registry-diagnostics-audit-logs/azure-monitor-query.png)
 
-Azure portal での Log Analytics の使用に関するチュートリアルについては、[Azure Monitor Log Analytics の使用開始](../azure-monitor/log-query/get-started-portal.md)に関するページを参照するか、Log Analytics の[デモ環境](https://portal.loganalytics.io/demo)をお試しください。 
+Azure portal での Log Analytics の使用に関するチュートリアルについては、[Azure Monitor Log Analytics の使用開始](../azure-monitor/logs/log-analytics-tutorial.md)に関するページを参照するか、Log Analytics の[デモ環境](https://portal.loganalytics.io/demo)をお試しください。 
 
-ログ クエリの詳細については、「[Azure Monitor のログ クエリの概要](../azure-monitor/log-query/log-query-overview.md)」を参照してください。
+ログ クエリの詳細については、「[Azure Monitor のログ クエリの概要](../azure-monitor/logs/log-query-overview.md)」を参照してください。
 
 ## <a name="query-examples"></a>クエリのサンプル
 
@@ -146,5 +146,5 @@ ContainerRegistryLoginEvents
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Log Analytics](../azure-monitor/log-query/get-started-portal.md) の使用と[ログ クエリ](../azure-monitor/log-query/get-started-queries.md)の作成の詳細について学習します。
-* 「[Azure プラットフォーム ログの概要](../azure-monitor/platform/platform-logs-overview.md)」を参照して、Azure のさまざまなレイヤーで使用できるプラットフォーム ログについて学習します。
+* [Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) の使用と[ログ クエリ](../azure-monitor/logs/get-started-queries.md)の作成の詳細について学習します。
+* 「[Azure プラットフォーム ログの概要](../azure-monitor/essentials/platform-logs-overview.md)」を参照して、Azure のさまざまなレイヤーで使用できるプラットフォーム ログについて学習します。

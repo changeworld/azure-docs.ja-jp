@@ -2,10 +2,10 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Stream Analytics とは
+    - name: Stream Analytics へようこそ
       href: stream-analytics-introduction.md
-    - name: エンドツーエンド ソリューション パターン
-      href: stream-analytics-solution-patterns.md
+    - name: Stream Analytics クラスター
+      href: cluster-overview.md
 - name: クイックスタート
   expanded: true
   items:
@@ -23,25 +23,32 @@
         - name: "Visual\_Studio"
           href: stream-analytics-quick-create-vs.md
         - name: Visual Studio Code
-          href: quick-create-vs-code.md
+          href: quick-create-visual-studio-code.md
+    - name: クラスターの作成
+      items:
+        - name: Azure portal
+          href: create-cluster.md
 - name: チュートリアル
   items:
-    - name: 1 - ジョブの作成/管理
-      href: stream-analytics-manage-job.md
-    - name: 2 - Azure Functions の実行
+    - name: Power BI で不正な呼び出しを視覚化する
+      href: stream-analytics-real-time-fraud-detection.md
+    - name: Azure Functions の実行
       href: stream-analytics-with-azure-functions.md
-    - name: 3 - Azure Pipelines での CI/CD によるデプロイ
-      href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: 4 - C# UDF の実行
+    - name: C# UDF の実行
       href: stream-analytics-edge-csharp-udf.md
-    - name: 5 - カスタム .NET 逆シリアライザーの作成
+    - name: カスタム .NET 逆シリアライザーの作成
       href: custom-deserializer.md
+    - name: IoT Edge ジョブを作成する
+      href: ../iot-edge/tutorial-deploy-stream-analytics.md?view=iotedge-2018-06
+      maintainContext: true
 - name: サンプル
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
 - name: 概念
   items:
+    - name: エンドツーエンド ソリューション パターン
+      href: stream-analytics-solution-patterns.md
     - name: ストリーミング分析テクノロジの選択
       href: streaming-technologies.md
     - name: ジョブ開発ツールの選択
@@ -50,6 +57,8 @@
       href: develop-locally.md
     - name: セキュリティ
       items:
+        - name: Azure Virtual Network (VNet) にジョブを接続する
+          href: connect-job-to-vnet.md
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -72,9 +81,9 @@
           displayName: 'adls, sql, blob, event hubs, power bi, table, service bus, cosmos, functions'
         - name: Azure Data Lake Storage Gen 1
           href: azure-data-lake-storage-gen1-output.md
-        - name: Azure SQL Database
+        - name: Azure SQL データベース
           href: sql-database-output.md
-        - name: SQL Database のパフォーマンス
+        - name: SQL データベースのパフォーマンス
           href: stream-analytics-sql-output-perf.md
         - name: Azure Synapse Analytics
           href: azure-synapse-analytics-output.md
@@ -86,7 +95,7 @@
           href: event-hubs-output.md
         - name: Power BI
           href: power-bi-output.md
-        - name: Table ストレージ
+        - name: テーブル ストレージ
           href: table-storage-output.md
         - name: Service Bus キュー
           href: service-bus-queues-output.md
@@ -123,6 +132,8 @@
           href: repartition.md
         - name: ジョブのスループットを高くする
           href: stream-analytics-scale-jobs.md
+    - name: IoT Edge
+      href: stream-analytics-edge.md
     - name: ジョブの状態
       href: job-states.md
     - name: ウィンドウ関数
@@ -145,6 +156,14 @@
   items:
     - name: 管理する
       items:
+        - name: クラスター
+          items:
+            - name: プライベート エンドポイントの作成と削除
+              href: private-endpoints.md
+            - name: ジョブの追加と削除
+              href: manage-jobs-cluster.md
+            - name: クラスター サイズのスケーリング
+              href: scale-cluster.md
         - name: ジョブの自動スケーリング
           href: stream-analytics-autoscale.md
         - name: 資格情報の更新
@@ -167,32 +186,31 @@
           href: stream-analytics-job-reliability.md
         - name: SQL リファレンス データを使用する
           href: sql-reference-data.md
-        - name: マネージド ID による認証
-          items:
-            - name: ADLS Gen 1
-              href: stream-analytics-managed-identities-adls.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: BLOB ストレージ
-              href: blob-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Power BI
-              href: powerbi-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Azure SQL DB
-              href: sql-database-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
         - name: データを暗号化する
           href: data-protection.md
         - name: geo 冗長
           href: geo-redundancy.md
+    - name: マネージド ID による認証
+      items:
+        - name: ADLS Gen 1
+          href: stream-analytics-managed-identities-adls.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: BLOB ストレージ
+          href: blob-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Event Hubs
+          href: event-hubs-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Power BI
+          href: powerbi-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Azure SQL と Azure Synapse
+          href: sql-database-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
     - name: ソリューションを構築する
       items:
         - name: Twitter センチメントの分析
           href: stream-analytics-twitter-sentiment-analysis-trends.md
-        - name: リアルタイムでの不正検出
-          href: stream-analytics-real-time-fraud-detection.md
-        - name: IoT Edge でのジョブの実行
-          href: stream-analytics-edge.md
         - name: Azure Stack でのジョブの実行
           href: on-azure-stack.md
         - name: 料金所のセンサー データの分析
@@ -210,7 +228,7 @@
           href: ../event-hubs/process-data-azure-stream-analytics.md
           maintainContext: true
         - name: Azure SQL Database の処理
-          href: ../sql-database/sql-database-stream-analytics.md
+          href: ../azure-sql/database/stream-data-stream-analytics-integration.md
           maintainContext: true
         - name: 地理空間のシナリオ
           href: geospatial-scenarios.md
@@ -234,6 +252,14 @@
           href: stream-analytics-cicd-api.md
         - name: Azure Resource Manager を使用したエクスポートおよびデプロイ
           href: resource-manager-export.md
+    - name: 継続的インテグレーションと継続的配置
+      items:
+        - name: CI/CD の概要
+          href: cicd-overview.md
+        - name: PowerShell を使用したビルド、テスト、デプロイ
+          href: cicd-tools.md
+        - name: Azure DevOps を使用したパイプラインの設定
+          href: set-up-cicd-pipeline.md
     - name: "Visual\_Studio"
       items:
         - name: ツールをインストールする
@@ -260,10 +286,10 @@
           href: visual-studio-code-local-run-live-input.md
         - name: ジョブ ダイアグラムを使用してクエリをデバッグする
           href: debug-locally-using-job-diagram-vs-code.md
-        - name: CI/CD パイプラインの設定
-          href: setup-cicd-vs-code.md
         - name: ジョブの探索
           href: visual-studio-code-explore-jobs.md
+        - name: .NET カスタム逆シリアライザーを作成およびデバッグする
+          href: visual-studio-code-custom-deserializer.md
         - name: JobConfig.json のフィールド
           href: job-config-json.md
     - name: トラブルシューティング
@@ -666,7 +692,7 @@
     - name: フィードバック フォーラム
       href: 'https://feedback.azure.com/forums/270577-azure-stream-analytics'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-stream-analytics.html'
+      href: /answers/topics/azure-stream-analytics.html
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/stream-analytics/'
     - name: 料金計算ツール

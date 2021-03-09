@@ -1,17 +1,17 @@
 ---
 title: Azure App Configuration の回復性とディザスター リカバリー
 description: Azure App Configuration を使用して回復性とディザスター リカバリーを実装する方法を説明します。
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 02/20/2020
-ms.openlocfilehash: 5c62f10d67345d68cde27af7d0a7663b22d978a0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 07/09/2020
+ms.openlocfilehash: 7910e2092259081aade799fc662052e5a1375e25
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207192"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930485"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>回復性とディザスター リカバリー
 
@@ -68,7 +68,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ### <a name="backup-manually-using-the-export-function"></a>エクスポート機能を使用して手動でバックアップする
 
-App Configuration の**エクスポート**機能を使用することで、プライマリ ストアからセカンダリにオンデマンドでデータをコピーできます。 この機能は Azure portal と CLI の両方で使用できます。
+App Configuration の **エクスポート** 機能を使用することで、プライマリ ストアからセカンダリにオンデマンドでデータをコピーできます。 この機能は Azure portal と CLI の両方で使用できます。
 
 Azure portal からは、次の手順に従って、別の構成ストアに変更をプッシュできます。
 

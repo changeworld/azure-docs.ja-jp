@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/20/2020
 ms.author: yelevin
 ms.openlocfilehash: 448998328ff15b74b0aa0b17e2435a7ff55c54a5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83124181"
 ---
 # <a name="work-with-incidents-in-many-workspaces-at-once"></a>多くのワークスペースのインシデントを一度に操作する 

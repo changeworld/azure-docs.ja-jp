@@ -5,12 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 6c45d2da8658740b5e5e7e3dceb7478ea28d712c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 8742b590af89954cb8480e5282827bcd5228673b
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962028"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095828"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Azure でマイクロサービスを予測どおりにデプロイする
 このチュートリアルでは、[Azure App Service](https://azure.microsoft.com/services/app-service/) の[マイクロサービス](https://en.wikipedia.org/wiki/Microservices)で構成されるアプリケーションを、JSON リソース グループ テンプレートと PowerShell スクリプトを使用して、1 つのユニットとして予測どおりにプロビジョニングしてデプロイする方法を示します。 
@@ -45,14 +45,14 @@ Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モ
 この[プレビュー ツール](https://resources.azure.com)を使用して、サブスクリプション内のすべてのリソース グループの JSON 定義と個々のリソースを調べることができます。 このツールでは、リソースの JSON 定義の編集、リソースの階層全体の削除、新しいリソースの作成を実行できます。  このツールですぐに利用できる情報は、特定の種類のリソースに設定する必要のあるプロパティ、適切な値などを示すため、テンプレートの作成に非常に役立ちます。[Azure Portal](https://portal.azure.com/) でリソース グループを作成し、エクスプローラー ツールで JSON 定義を調べてリソース グループのテンプレート化に利用できます。
 
 ### <a name="deploy-to-azure-button"></a>[Azure にデプロイ] ボタン
-ソース管理に GitHub を使用する場合、README.MD に [[Azure にデプロイ]](https://azure.microsoft.com/blog/2014/11/13/deploy-to-azure-button-for-azure-websites-2/) ボタンを配置できます。これにより、設定することなく Azure にデプロイする UI が実現します。 任意の単純なアプリでこの処理が可能ですが、これを拡張すると、リポジトリのルートに azuredeploy.json ファイルを配置することでリソース グループ全体をデプロイできるようになります。 この JSON ファイルは、リソース グループ テンプレートを含んでおり、[Azure にデプロイ] ボタンでリソース グループを作成するために使用されます。 例については、このチュートリアルで使用する [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) サンプルを参照してください。
+ソース管理に GitHub を使用する場合、README.MD に [[Azure にデプロイ]](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-to-azure-button) ボタンを配置できます。これにより、設定することなく Azure にデプロイする UI が実現します。 任意の単純なアプリでこの処理が可能ですが、これを拡張すると、リポジトリのルートに azuredeploy.json ファイルを配置することでリソース グループ全体をデプロイできるようになります。 この JSON ファイルは、リソース グループ テンプレートを含んでおり、[Azure にデプロイ] ボタンでリソース グループを作成するために使用されます。 例については、このチュートリアルで使用する [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) サンプルを参照してください。
 
 ## <a name="get-the-sample-resource-group-template"></a>リソース グループ テンプレートのサンプルを入手する
 それでは早速本題に入りましょう。
 
 1. [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) App Service のサンプルに移動します。
 2. readme.md の **[Azure にデプロイ]** をクリックします。
-3. [deploy-to-azure](https://deploy.azure.com) サイトが表示され、デプロイメント パラメーターの入力が求められます。 ほとんどのフィールドにはリポジトリ名が設定されていますが、一部にランダムな文字列が設定されていることに注意してください。 必要に応じてすべてのフィールドを変更できますが、入力する必要があるのは SQL Server の管理用のログインとパスワードだけです。 **[次へ]** をクリックします。
+3. [deploy-to-azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure-appservice-samples%2FToDoApp%2Fmaster%2Fazuredeploy.json) サイトが表示され、デプロイメント パラメーターの入力が求められます。 ほとんどのフィールドにはリポジトリ名が設定されていますが、一部にランダムな文字列が設定されていることに注意してください。 必要に応じてすべてのフィールドを変更できますが、入力する必要があるのは SQL Server の管理用のログインとパスワードだけです。 **[次へ]** をクリックします。
    
    ![deploy-to-azure サイトの入力デプロイ パラメーターが示されています。](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
 4. 次に、 **[デプロイ]** をクリックしてデプロイメント プロセスを開始します。 プロセスの実行が完了したら、 http://todoapp*XXXX*.azurewebsites.net リンクをクリックし、デプロイされたアプリケーションを参照します。 
@@ -209,7 +209,7 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 11. `location` プロパティと `isEnabled` プロパティを見つけて次のように設定します。 他の 3 つのアラート (紫色の電球) についても同様の操作を行います。
     
     ![CPUHigh appInsights JSON コードの location プロパティと isEnabled プロパティ、およびそれらに設定する必要がある値が示されています。](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
-12. これで、デプロイする準備が整いました。 プロジェクトを右クリックして **[デプロイ]**  > **New [デプロイ]ment**に関するページをご覧ください。
+12. これで、デプロイする準備が整いました。 プロジェクトを右クリックして **[デプロイ]**  > **New [デプロイ]ment** に関するページをご覧ください。
     
     ![新しいプロジェクトをデプロイする方法が示されています。](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
 13. ログインしていない場合は、Azure アカウントにログインします。
@@ -228,7 +228,7 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
     > 自動スケールは、**Standard** レベル以上で提供される機能です。プラン レベルのアラートは、**Basic** レベル以上で提供される機能です。AppInsights の新しいリソースすべてが点灯されたことがわかるように、**sku** パラメーターを **Standard** または **Premium** に設定する必要があります。
     > 
     > 
-16. **[デプロイ]** をクリックします。 **[パスワードの保存]** を選択した場合、パスワードはパラメーター ファイルに**プレーン テキストで**保存されます。 それ以外の場合は、デプロイメント プロセス中にデータベースのパスワードを入力するように求められます。
+16. **[デプロイ]** をクリックします。 **[パスワードの保存]** を選択した場合、パスワードはパラメーター ファイルに **プレーン テキストで** 保存されます。 それ以外の場合は、デプロイメント プロセス中にデータベースのパスワードを入力するように求められます。
 
 これで終了です。 後は、[Azure Portal](https://portal.azure.com/) と [Azure Resource Explorer](https://resources.azure.com) ツールに移動して、JSON でデプロイされたアプリケーションに追加された新しいアラートと自動スケールの設定を表示するだけです。
 

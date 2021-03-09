@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 07/15/2018
+ms.date: 02/03/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa2ac203f92d401095194bb3f1b5f3ef3c52093b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: bb5a785cba4a560fc15963363d4e5f6b811af97a
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907800"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548833"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>B2B ユーザーに対する特定組織からの招待を許可またはブロックする
 
@@ -27,13 +27,13 @@ B2B ユーザーに対する特定組織からの招待を許可またはブロ�
 
 - 許可リストまたは拒否リストのいずれかを作成できます。 両方の種類のリストを設定することはできません。 既定では、許可リストに含まれないドメインはすべて拒否リストに含まれます。また、その逆も言えます。 
 - 各組織に作成できるポリシーは 1 つだけです。 ポリシーを更新してより多くのドメインを含めることも、ポリシーを削除して新規に作成することもできます。 
-- 許可リストまたは拒否リストに追加できるドメインの数は、ポリシーのサイズによってのみ制限されます。 ポリシー全体の最大サイズは 25 KB (25,000 文字) です。これには、許可リストまたは拒否リストと、他の機能向けに構成された他のパラメーターが含まれます。
+- 許可リストまたは拒否リストに追加できるドメインの数は、ポリシーのサイズによってのみ制限されます。 この制限は文字数に適用されるため、短いドメインを多く使用するか、少数の長いドメインを使用できます。 ポリシー全体の最大サイズは 25 KB (25,000 文字) です。これには、許可リストまたは拒否リストと、他の機能向けに構成された他のパラメーターが含まれます。
 - このリストは、OneDrive for Business や SharePoint Online の許可/ブロック リストとは無関係に機能します。 SharePoint Online で個々のファイルの共有を制限する場合は、OneDrive for Business および SharePoint Online の許可リストまたは拒否リストを設定する必要があります。 詳細については、「[SharePoint Online と OneDrive for Business の制限付きドメイン共有](https://support.office.com/article/restricted-domains-sharing-in-sharepoint-online-and-onedrive-for-business-5d7589cd-0997-4a00-a2ba-2320ec49c4e9)」を参照してください。
 - このリストは、招待を既に使用した外部ユーザーには適用されません。 リストは、リストの設定後に適用されます。 ユーザーの招待が保留中の状態にあり、ドメインをブロックするポリシーを設定した場合、ユーザーが招待の使用を試みると失敗します。
 
 ## <a name="set-the-allow-or-deny-list-policy-in-the-portal"></a>ポータルで許可リストまたは拒否リストのポリシーを設定する
 
-既定では、 **[Allow invitations to be sent to any domain (most inclusive) (どのドメインに送信される招待も許可する (最も包括的)]** の設定が有効になっています。 この場合、任意の組織から B2B ユーザーを招待できます。
+既定では、**[Allow invitations to be sent to any domain (most inclusive) (どのドメインに送信される招待も許可する (最も包括的)]** の設定が有効になっています。 この場合、任意の組織から B2B ユーザーを招待できます。
 
 ### <a name="add-a-deny-list"></a>拒否リストを追加する
 
@@ -41,15 +41,15 @@ B2B ユーザーに対する特定組織からの招待を許可またはブロ�
 
 拒否リストを追加するには:
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[Azure Active Directory]**  >  **[ユーザー]**  >  **[ユーザー設定]** の順に選択します。
 3. **[外部ユーザー]** で、 **[Manage external collaboration settings (外部コラボレーション設定の管理)]** を選択します。
-4. **[Collaboration restrictions (コラボレーション制限)]** で、 **[Deny invitations to the specified domains (指定したドメインへの招待を拒否)]** を選択します。
+4. **[Collaboration restrictions (コラボレーション制限)]** で、**[Deny invitations to the specified domains (指定したドメインへの招待を拒否)]** を選択します。
 5. **[TARGET DOMAINS (ターゲット ドメイン)]** で、ブロックするドメインの 1 つの名前を入力します。 複数ドメインの場合は、それぞれのドメインを新しい行に入力します。 次に例を示します。
 
    ![追加したドメインと共に拒否オプションを表示する](./media/allow-deny-list/DenyListSettings.png)
  
-6. 終了したら **[保存]** をクリックします。
+6. 終了したら、 **[保存]** をクリックします。
 
 ポリシーの設定後、ブロックしたドメインからユーザーを招待しようとすると、ユーザーのドメインは現在、招待ポリシーによってブロックされていることを示すメッセージが表示されます。
  
@@ -62,7 +62,7 @@ B2B ユーザーに対する特定組織からの招待を許可またはブロ�
 
 許可リストを追加するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[Azure Active Directory]**  >  **[ユーザー]**  >  **[ユーザー設定]** の順に選択します。
 3. **[外部ユーザー]** で、 **[Manage external collaboration settings (外部コラボレーション設定の管理)]** を選択します。
 4. **[Collaboration restrictions]\(コラボレーション制限\)** の **[Allow invitations only to the specified domains (most restrictive)]\(指定したドメインへの招待を許可 (制限が最も厳しい)\)** を選択します。
@@ -70,7 +70,7 @@ B2B ユーザーに対する特定組織からの招待を許可またはブロ�
 
    ![追加したドメインと共に許可オプションを表示する](./media/allow-deny-list/AllowListSettings.png)
  
-6. 終了したら **[保存]** をクリックします。
+6. 終了したら、 **[保存]** をクリックします。
 
 ポリシーの設定後、許可リストにないドメインからユーザーを招待しようとすると、ユーザーのドメインは現在、招待ポリシーによってブロックされていることを示すメッセージが表示されます。
 
@@ -126,7 +126,7 @@ PowerShell を使用して許可リストまたは拒否リストを設定する
 
 ### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>AzureADPolicy コマンドレットを使用してポリシーを構成する
 
-許可リストまたは拒否リストを作成するには、[New-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) コマンドレットを使用します。 次の例は、"live.com" ドメインをブロックする拒否リストの設定方法を示しています。
+許可リストまたは拒否リストを作成するには、[New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) コマンドレットを使用します。 次の例は、"live.com" ドメインをブロックする拒否リストの設定方法を示しています。
 
 ```powershell 
 $policyValue = @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}")
@@ -140,19 +140,19 @@ New-AzureADPolicy -Definition $policyValue -DisplayName B2BManagementPolicy -Typ
 New-AzureADPolicy -Definition @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}") -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
 ```
 
-許可リストまたは拒否リストのポリシーを設定するには、[Set-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) コマンドレットを使用します。 次に例を示します。
+許可リストまたは拒否リストのポリシーを設定するには、[Set-AzureADPolicy](/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) コマンドレットを使用します。 次に例を示します。
 
 ```powershell   
 Set-AzureADPolicy -Definition $policyValue -Id $currentpolicy.Id 
 ```
 
-ポリシーを取得するには、[Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) コマンドレットを使用します。 次に例を示します。
+ポリシーを取得するには、[Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) コマンドレットを使用します。 次に例を示します。
 
 ```powershell
-$currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
+$currentpolicy = Get-AzureADPolicy -All $true | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
 ```
 
-ポリシーを削除するには、[Remove-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) コマンドレットを使用します。 次に例を示します。
+ポリシーを削除するには、[Remove-AzureADPolicy](/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) コマンドレットを使用します。 次に例を示します。
 
 ```powershell
 Remove-AzureADPolicy -Id $currentpolicy.Id 
@@ -162,6 +162,3 @@ Remove-AzureADPolicy -Id $currentpolicy.Id
 
 - Azure AD B2B の概要については、「[Azure AD B2B コラボレーションとは](what-is-b2b.md)」を参照してください。
 - 条件付きアクセスと B2B コラボレーションについては、「[B2B コラボレーション ユーザーの条件付きアクセス](conditional-access.md)」を参照してください。
-
-
-

@@ -1,19 +1,16 @@
 ---
 title: HDInsight 上で Curl を使用して Apache Hadoop Hive を使用する - Azure
 description: Curl を使用して Apache Pig ジョブを Azure HDInsight にリモートで送信する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
-ms.openlocfilehash: 87feba3bc79e39f1379a25fa55fe0186d5605e4a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 124661c57f779b9f8a639debcc093ed15e717694
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085550"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946456"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>HDInsight 上の Apache Hadoop で REST を使用して Apache Hive クエリを実行する
 
@@ -25,13 +22,13 @@ WebHCat REST API を使用して Azure HDInsight クラスター上の Apache Ha
 
 * HDInsight の Apache Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
-* REST クライアント。 このドキュメントでは、Windows PowerShell の [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) と [Bash](https://docs.microsoft.com/windows/wsl/install-win10) の [Curl](https://curl.haxx.se/) を使用します。
+* REST クライアント。 このドキュメントでは、Windows PowerShell の [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) と [Bash](/windows/wsl/install-win10) の [Curl](https://curl.haxx.se/) を使用します。
 
 * Bash を使用する場合は、コマンド ライン JSON プロセッサである jq も必要になります。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)に関するページを参照してください。
 
 ## <a name="base-uri-for-rest-api"></a>Rest API のベース URI
 
-HDInsight の REST API のベース URI (Uniform Resource Identifier) は、`https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` です。`CLUSTERNAME` は実際のクラスターの名前です。  URI のクラスター名では、**大文字と小文字が区別**されます。  URI (`CLUSTERNAME.azurehdinsight.net`) の FQDN (完全修飾ドメイン名) 部分のクラスター名では大文字と小文字が区別されませんが、URI の他の部分で出現するときは大文字と小文字が区別されます。
+HDInsight の REST API のベース URI (Uniform Resource Identifier) は、`https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` です。`CLUSTERNAME` は実際のクラスターの名前です。  URI のクラスター名では、**大文字と小文字が区別** されます。  URI (`CLUSTERNAME.azurehdinsight.net`) の FQDN (完全修飾ドメイン名) 部分のクラスター名では大文字と小文字が区別されませんが、URI の他の部分で出現するときは大文字と小文字が区別されます。
 
 ## <a name="authentication"></a>認証
 
@@ -152,7 +149,7 @@ $clusterName
      > [!NOTE]  
      > 基になるデータが外部ソースによって更新されると考えられる場合は、外部テーブルを使用する必要があります。 たとえば、データの自動アップロード処理や別の MapReduce 操作の場合です。
      >
-     > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
+     > 外部テーブルを削除しても、データは削除 **されません**。テーブル定義のみが削除されます。
 
    * `ROW FORMAT` - データがどのように書式設定されるか。 各ログのフィールドは、スペースで区切られています。
    * `STORED AS TEXTFILE LOCATION` - データが格納されている場所 (example/data ディレクトリ) と、それがテキストとして格納されていること。
@@ -185,7 +182,7 @@ $clusterName
 
 1. ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには、出力ファイルの場所が含まれます。この場合は、`/example/rest` です。 このアドレスは、クラスターの既定ストレージに `example/curl` ディレクトリの出力を格納します。
 
-    これらのファイルを一覧表示およびダウンロードするには [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)を使用します。 Azure Storage での Azure CLI の使用の詳細については、[Azure Storage での Azure CLI の使用](https://docs.microsoft.com/azure/storage/storage-azure-cli)に関するページを参照してください。
+    これらのファイルを一覧表示およびダウンロードするには [Azure CLI](/cli/azure/install-azure-cli)を使用します。 Azure Storage での Azure CLI の使用の詳細については、[Azure Storage での Azure CLI の使用](../../storage/blobs/storage-quickstart-blobs-cli.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

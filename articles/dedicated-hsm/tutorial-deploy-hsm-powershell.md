@@ -12,13 +12,13 @@ ms.custom: mvc, seodec18, devx-track-azurepowershell
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/14/2020
-ms.author: johndaw
-ms.openlocfilehash: fc67012dff5931fb86452ea95c2ea074a426953c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.author: mbaldwin
+ms.openlocfilehash: 52b62e463edc51b3d93d7af69623a88abd9cc6be
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89075673"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108604"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>チュートリアル - PowerShell を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -233,7 +233,7 @@ SSH を使用して HSM デバイスに接続されている場合、HSM が動�
 
 出力は次の画像のようになります。
 
-![プロビジョニングの状態](media/tutorial-deploy-hsm-powershell/output.png)
+![hsm show コマンドの出力を示すスクリーンショット。](media/tutorial-deploy-hsm-powershell/output.png)
 
 この時点で、高可用性のためのリソースをすべて割り当て、2 つの HSM をデプロイし、アクセスと動作状態を検証しました。 以降の構成やテストでは、HSM デバイス自体の操作が多くなります。 そのため、Gemalto Luna Network HSM 7 の管理ガイド第 7 章の指示に従って、HSM を初期化し、パーティションを作成する必要があります。 Gemalto のカスタマー サポート ポータルで登録し、利用者 ID を取得すると、すべてのドキュメントとソフトウェアを Gemalto から直接ダウンロードして入手できます。 すべての必須コンポーネントを入手するには、クライアント ソフトウェア バージョン 7.2 をダウンロードします。
 

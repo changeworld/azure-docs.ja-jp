@@ -13,42 +13,44 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 36118bb99da5f0c7f918009413394d931415886f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 366a9a63e4577a9b8470faec68f8d4a25114dd48
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076374"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133703"
 ---
 # <a name="protect-your-network-resources"></a>ネットワーク リソースの保護
 Azure Security Center では、ネットワーク セキュリティのベスト プラクティスに対して Azure リソースのセキュリティ状態が継続的に分析されます。 Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
 
-この記事では、Security Center のリソース セキュリティ セクションの **[ネットワーク]** ページについて説明します。
-
-ネットワークに関するすべての推奨事項の覧については、[ネットワークに関する推奨事項](recommendations-reference.md#recs-network)のページを参照してください。
+ネットワークに関するすべての推奨事項の覧については、[ネットワークに関する推奨事項](recommendations-reference.md#recs-networking)のページを参照してください。
 
 この記事では、ネットワーク セキュリティの観点から Azure リソースに適用される推奨事項について説明します。 ネットワークに関する推奨事項は、次世代ファイアウォール、ネットワーク セキュリティ グループ、JIT VM アクセス、過度に許容されるインバウンド トラフィック規則などが中心です。 ネットワークの推奨事項の一覧および修復アクションについては、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」をご覧ください。
 
-> [!NOTE]
-> **[ネットワーク]** ページでは、ネットワークの観点から、Azure リソースの正常性を詳しく確認できます。 ネットワーク マップとアダプティブ ネットワーク コントロールは、Azure Security Center Standard レベルでのみ使用できます。 [Free レベルを使用する場合は、ボタンをクリックして**レガシ ネットワークを表示**し、ネットワーク リソースの推奨事項を受信できます](#legacy-networking)。
->
+Security Center の **ネットワーク** 機能は次のとおりです。 
 
-**[ネットワーク]** ページにはセクションの概要が表示され、そこから詳細を表示できるので、ネットワーク リソースの正常性に関する詳細を取得できます。
-
-- ネットワーク マップ (Azure Security Center Standard レベルのみ)
-- アダプティブ ネットワークのセキュリティ強化機能
-- ネットワーク セキュリティに関する推奨事項。
-- レガシ **[ネットワーク]** ブレード (以前のネットワーク ブレード) 
+- ネットワーク マップ (Azure Defender が必要)
+- [アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md) (Azure Defender が必要)
+- ネットワーク セキュリティに関する推奨事項
  
-[![[ネットワーク] ウィンドウ](./media/security-center-network-recommendations/networking-pane.png)](./media/security-center-network-recommendations/networking-pane.png#lightbox)
+## <a name="view-your-networking-resources-and-their-recommendations"></a>ネットワーク リソースとその推奨事項の表示
+
+[資産インベントリ ページ](asset-inventory.md)で、リソースの種類のフィルターを使用して、調査するネットワーク リソースを選択します。
+
+:::image type="content" source="./media/security-center-network-recommendations/network-filters-inventory.png" alt-text="資産インベントリのネットワーク リソースの種類" lightbox="./media/security-center-network-recommendations/network-filters-inventory.png":::
+
 
 ## <a name="network-map"></a>ネットワーク マップ
+
 対話型のネットワーク マップには、ネットワーク リソースを堅牢化するための推奨事項と分析情報を提供するセキュリティ オーバーレイを含むグラフィカル ビューが表示されます。 マップを使用して、Azure ワークロードのネットワーク トポロジ、仮想マシンとサブネット間の接続、およびマップから特定のリソースとそれらのリソースの推奨事項にドリル ダウンする機能を表示できます。
 
 ネットワーク マップを開くには:
 
-1. Security Center の [リソース セキュリティの検疫] で、 **[ネットワーク]** を選択します。
-2. **[ネットワーク マップ]** で、 **[See topology]\(トポロジを参照\)** をクリックします。
+1. Security Center のメニューから Azure Defender ダッシュボードを開き、 **[ネットワーク マップ]** を選択します。
+
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="Azure Defender ダッシュボードからネットワーク マップを開く" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+
+1. **[レイヤー]** メニューを選択し、 **[トポロジ]** を選択します。
  
 トポロジ マップの既定のビューが表示されます。
 
@@ -63,7 +65,7 @@ Azure Security Center では、ネットワーク セキュリティのベスト
 
 ## <a name="understanding-the-network-map"></a>ネットワーク マップについて
 
-ネットワーク マップでは、Azure リソースを **[トポロジ]** ビューと **[トラフィック]** ビューに表示できます。 
+ネットワーク マップでは、 **[トポロジ]** ビューと **[トラフィック]** ビューに Azure リソースを表示できます。 
 
 ### <a name="the-topology-view"></a>[トポロジ] ビュー
 
@@ -114,31 +116,8 @@ Azure Security Center では、ネットワーク セキュリティのベスト
 [![ネットワーク トラフィック マップ](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
 
 
-## <a name="legacy-networking"></a>レガシ ネットワーク <a name ="legacy-networking"></a>
-
-このセクションではネットワークに関する無料の推奨事項を表示する方法について説明します。Security Center Standard レベルがない場合に参照してください。
-
-この情報にアクセスするには、[ネットワーク] ブレードで、 **[レガシ ネットワークの表示]** をクリックします。 
-
-[![レガシ ネットワーク](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
-
-### <a name="internet-facing-endpoints-section"></a>[Internet facing endpoints (インターネット接続エンドポイント)] セクション
-**[インターネットに接続するエンドポイント]** セクションでは、インターネット接続エンドポイントで現在構成されている仮想マシンとその状態を確認できます。
-
-この表には、エンドポイント名、インターネット接続 IP アドレス、ネットワーク セキュリティ グループと NGFW の推奨事項の現在の重大度状態が示されています。 この表は、項目が重大度に従って並んでいます。
-
-### <a name="networking-topology-section"></a>[Networking topology (ネットワーク トポロジ)] セクション
-**[ネットワーク トポロジ]** セクションには、リソースが階層として表示されます。
-
-このテーブルは、項目 (仮想マシンとサブネット) が重大度に従って順に並んでいます。
-
-このトポロジ ビューでは、最初のレベルに Vnet が表示されます。 2 番目のレベルにはサブネット、3 番目のレベルにはそれらのサブネットに属している仮想マシンが表示されます。 右側の列には、これらのリソースのネットワーク セキュリティ グループに関する推奨事項の現在の状態が表示されます。
-
-3 番目のレベルには、前述したような仮想マシンが表示されます。 リソースをクリックして詳細を確認したり、必要なセキュリティ制御または構成を適用したりできます。
-
 ## <a name="next-steps"></a>次のステップ
 
 その他の Azure リソースの種類に適用される推奨事項の詳細については、次をご覧ください。
 
-* [Azure Security Center でのマシンとアプリケーションの保護](security-center-virtual-machine-protection.md)
-* [Azure Security Center での Azure SQL サービスの保護](security-center-sql-service-recommendations.md)
+- [Azure Security Center でのマシンとアプリケーションの保護](./asset-inventory.md)

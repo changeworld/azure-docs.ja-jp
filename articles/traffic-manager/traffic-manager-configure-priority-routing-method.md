@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure Traffic Manager を使用した優先順位によるトラフィック ルーティング
+title: チュートリアル:Azure Traffic Manager を使用した優先順位によるトラフィック ルーティングの構成
 description: このチュートリアルでは、Traffic Manager で優先順位によるトラフィック ルーティング方法を構成する方法について説明します
 services: traffic-manager
 documentationcenter: ''
@@ -9,52 +9,104 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/20/2017
+ms.date: 10/16/2020
 ms.author: duau
-ms.openlocfilehash: 404338c3e36216833d39c3551ae2dee0be304d24
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 1835377f4690097c8390957bf7d897242ba7aace
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401012"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208058"
 ---
 # <a name="tutorial-configure-priority-traffic-routing-method-in-traffic-manager"></a>チュートリアル:Traffic Manager での優先順位によるトラフィック ルーティング方法の構成
 
-Azure Websites では、Web サイトのモードにかかわらず、データセンター ("リージョン" と呼びます) 内の Web サイト用に、フェールオーバー機能があらかじめ用意されています。 Traffic Manager は、さまざまなデータセンター内の Web サイトにフェールオーバーを提供します。
+このチュートリアルでは、Azure Traffic Manager を使用して、優先順位によるルーティング方法で特定のエンドポイントにユーザー トラフィックをルーティングする方法について説明します。 このルーティング方法では、Traffic Manager プロファイル構成に含まれる各エンドポイントの順序を定義します。 ユーザーからのトラフィックは、一覧に示されている順序でエンドポイントにルーティングされます。 このルーティング方法は、サービスのフェールオーバー用に構成する場合に便利です。 プライマリ エンドポイントは、優先順位番号 "1" となり、すべての受信要求を処理します。 これより優先順位の低いエンドポイントはバックアップとして機能します。
 
-サービスのフェールオーバーの一般的なパターンでは、トラフィックをプライマリ サービスに送信する一方で、フェールオーバー用に同じ一連のバックアップ サービスを提供します。 次の手順では、Azure のクラウド サービスと Web サイトを使用してこの優先フェールオーバーを構成する方法について説明します。
+このチュートリアルでは、以下の内容を学習します。
+
+> [!div class="checklist"]
+> - 優先順位によるルーティングを使用して Traffic Manager プロファイルを作成する。
+> - エンドポイントを追加する。
+> - エンドポイントの優先順位を構成する。
+> - Traffic Manager プロファイルを使用する。
+> - Traffic Manager プロファイルを削除する。
+
+## <a name="prerequisites"></a>前提条件
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="to-configure-the-priority-traffic-routing-method"></a>優先順位によるトラフィック ルーティング方法を構成するには
+1. ブラウザーから [Azure Portal](https://portal.azure.com) にサインインします。
 
-1. ブラウザーから [Azure Portal](https://portal.azure.com) にサインインします。 まだアカウントを持っていない場合は、[1 か月間の無料試用版](https://azure.microsoft.com/free/)にサインアップできます。 
-2. ポータルの検索バーで、**Traffic Manager プロファイル**を検索し、ルーティング方法を構成するプロファイル名をクリックします。
-3. **[Traffic Manager プロファイル]** ブレードで、構成に追加するクラウド サービスと Web サイトの両方があることを確認します。
-4. **[設定]** セクションで **[構成]** をクリックして、 **[構成]** ブレードで次のように実行します。
-    1. **トラフィック ルーティング方法の設定**では、トラフィック ルーティング方法が **[優先順位]** に設定されていることを確認します。 他の方法に設定されている場合は、ドロップダウン リストから **[優先順位]** をクリックします。
-    2. 次のように **[エンドポイント モニターの設定]** をこのプロファイル内のすべてのエンドポイントに対して同じに設定します。
-        1. 適切な**プロトコル**を選択し、**ポート**番号を指定します。 
-        2. **[パス]** にはスラッシュ (" */* ") を入力します。 エンドポイントを監視するには、パスとファイル名を指定する必要があります。 スラッシュ "/" は、相対パスの有効な入力値で、ファイルがルート ディレクトリ (既定のディレクトリ) にあることを意味します。
-        3. ページの上部にある **[保存]** をクリックします。
-5. **[設定]** セクションで **[エンドポイント]** をクリックします。
-6. **[エンドポイント]** ブレードで、エンドポイントの優先順位を確認します。 **優先順位**によるトラフィック ルーティング方法を選択する場合、選択したエンドポイントの順序が重要です。 エンドポイントの優先順位を確認します。  最上位のエンドポイントがプライマリ エンドポイントになります。 表示されたら、順序を再確認してください。 すべての要求が最初のエンドポイントにルーティングされますが、Traffic Manager によって異常状態が検出された場合は、トラフィックが自動的に次のエンドポイントにフェールオーバーされます。 
-7. エンドポイントの優先順位を変更するには、エンドポイントをクリックし、表示された **[エンドポイント]** ブレードで **[編集]** をクリックして、必要に応じて**優先順位**の値を変更します。 
-8. **[保存]** をクリックして、エンドポイントの設定の変更を保存します。
-9. 構成の変更が完了したら、ページの下部にある **[保存]** をクリックします。
-10. 次のように構成の変更をテストします。
-    1.  ポータルの検索バーで、Traffic Manager プロファイル名を検索し、表示された結果内で Traffic Manager プロファイルをクリックします。
-    2.  **[Traffic Manager プロファイル]** ブレードで、 **[概要]** をクリックします。
-    3.  **[Traffic Manager プロファイル]** ブレードに、新しく作成した Traffic Manager プロファイルの DNS 名が表示されます。 これを任意のクライアントで使用して (たとえば、Web ブラウザーを使用して移動します)、ルーティングの種類によって決まる適切なエンドポイントにルーティングすることができます。 この場合、すべての要求が最初のエンドポイントにルーティングされますが、Traffic Manager によって異常状態が検出された場合は、トラフィックが自動的に次のエンドポイントにフェールオーバーされます。
-11. Traffic Manager プロファイルが機能したら、権限のある DNS サーバー上の DNS レコードを編集して、会社のドメイン名が Traffic Manager ドメイン名を参照するようにします。
+1. 左側で **[+ リソースの作成]** を選択します。 「 **Traffic Manager プロファイル** 」を検索し、 **[作成]** を選択します。
 
-![Traffic Manager を使用した優先順位によるトラフィック ルーティング方法の構成][1]
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/create-traffic-manager-priority-profile.png" alt-text="優先順位によって Traffic Manager プロファイルを作成する":::
+
+1. *[Traffic Manager プロファイルの作成]* ページで、次の設定を定義します。
+
+    | 設定         | [値]                                              |
+    | ---             | ---                                                |
+    | 名前            | プロファイルの名前を指定します。 この名前は、trafficmanager.net zone 内で一意である必要があります。 Traffic Manager プロファイルにアクセスするには、ご自分の DNS 名 `<profilename>.trafficmanager.net` を使用します。 |    
+    | ルーティング方法  | **[優先順位]** を選択します。 |
+    | サブスクリプション    | サブスクリプションを選択します。 |
+    | Resource group   | 既存のリソース グループを使用するか、新しいリソース グループを作成して、その下にこのプロファイルを配置します。 新しいリソース グループを作成する場合は、 *[リソース グループの場所]* ドロップダウンを使用して、リソース グループの場所を指定します。 これはリソース グループの場所を指定する設定であり、グローバルにデプロイされる Traffic Manager プロファイルには影響しません。 |
+
+1. **[作成]** を選択し、Traffic Manager プロファイルをデプロイします。
+
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/create-traffic-manager-profile-priority.png" alt-text="優先順位によって Traffic Manager プロファイルを作成する":::
+
+## <a name="add-endpoints"></a>エンドポイントの追加
+
+1. 一覧から Traffic Manager プロファイルを選択します。
+
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-profile-list.png" alt-text="優先順位によって Traffic Manager プロファイルを作成する":::
+
+1. *[設定]* の下にある **[エンドポイント]** を選択し、 **[+ 追加]** を選択して新しいエンドポイントを追加します。
+
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-add-endpoints.png" alt-text="優先順位によって Traffic Manager プロファイルを作成する":::
+
+1. 以下の設定値を選択するか入力します。 
+
+    | 設定                | [値]                                              |
+    | ---                    | ---                                                |
+    | 種類                   | エンドポイントの種類を選択します。 |    
+    | 名前                   | このエンドポイントを識別する名前を指定します。 |
+    | ターゲット リソースの種類   | ターゲットのリソースの種類を選択します。 |
+    | ターゲット リソース        | 一覧からリソースを選択します。 |
+    | 優先度               | このエンドポイントの優先順位番号を指定します。 1 を設定すると、最も優先度が高くなります。 |
+
+
+1. **[追加]** を選択してエンドポイントを追加します。 手順 2. と 3. を繰り返して、他のエンドポイントを追加します。 必ず適切な優先順位番号を設定してください。
+
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/add-endpoint.png" alt-text="優先順位によって Traffic Manager プロファイルを作成する":::
+
+1. **[エンドポイント]** ページで、エンドポイントの優先順位を確認します。 **優先順位** によるトラフィック ルーティング方法を選択する場合、選択したエンドポイントの順序が重要です。 エンドポイントの優先順位を確認します。  最上位のエンドポイントがプライマリ エンドポイントになります。 表示されている順序を再確認してください。 すべての要求が最初のエンドポイントにルーティングされますが、Traffic Manager によって異常状態が検出された場合は、トラフィックが自動的に次のエンドポイントにフェールオーバーされます。 
+
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/endpoints-list.png" alt-text="優先順位によって Traffic Manager プロファイルを作成する":::
+
+1. エンドポイントの優先順位を変更するには、エンドポイントを選択して、優先順位の値を変更し、 **[保存]** を選択してエンドポイントの設定を保存します。
+
+## <a name="use-the-traffic-manager-profile"></a>Traffic Manager プロファイルの使用
+
+1.  ポータルの検索バーで、前のセクションで作成した **Traffic Manager プロファイル** の名前を検索し、表示された結果内で Traffic Manager プロファイルを選択します。
+
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/search-traffic-manager-profile.png" alt-text="優先順位によって Traffic Manager プロファイルを作成する":::
+
+1.  **Traffic Manager プロファイル** の概要ページに、新しく作成した Traffic Manager プロファイルの DNS 名が表示されます。 これを任意のクライアントで使用して (たとえば、Web ブラウザーを使用して移動します)、ルーティングの種類によって決まる適切なエンドポイントにルーティングすることができます。 この場合、すべての要求が最初のエンドポイントにルーティングされますが、Traffic Manager によって異常状態が検出された場合は、トラフィックが自動的に次のエンドポイントにフェールオーバーされます。
+
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-profile-dns-name.png" alt-text="優先順位によって Traffic Manager プロファイルを作成する":::
+
+1. Traffic Manager プロファイルが機能したら、権限のある DNS サーバー上の DNS レコードを編集して、会社のドメイン名が Traffic Manager ドメイン名を参照するようにします。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+Traffic Manager プロファイルが不要になったら、プロファイルを検索し、 **[プロファイルの削除]** を選択します。
+
+:::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-delete-priority-profile.png" alt-text="優先順位によって Traffic Manager プロファイルを作成する":::
 
 ## <a name="next-steps"></a>次のステップ
 
+優先順位によるルーティング方法の詳細については、以下を参照してください。
 
-- [重み付けによるトラフィック ルーティング方法](traffic-manager-configure-weighted-routing-method.md)について学習します。
-- [パフォーマンスによるトラフィック ルーティング方法](traffic-manager-configure-performance-routing-method.md)について学習します。
-- [地理的なルーティング方法](traffic-manager-configure-geographic-routing-method.md)について学習します。
-- [Traffic Manager の設定のテスト](traffic-manager-testing-settings.md)方法について学習します。
-
-<!--Image references-->
-[1]: ./media/traffic-manager-priority-routing-method/traffic-manager-priority-routing-method.png
+> [!div class="nextstepaction"]
+> [優先順位によるルーティング方法](traffic-manager-routing-methods.md#priority-traffic-routing-method)

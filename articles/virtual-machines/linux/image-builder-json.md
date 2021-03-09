@@ -4,16 +4,16 @@ description: Azure Image Builder で使用するテンプレートを作成す�
 author: danielsollondon
 ms.author: danis
 ms.date: 08/13/2020
-ms.topic: conceptual
-ms.service: virtual-machines-linux
+ms.topic: reference
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 6ed95f87d2b2a5f811531a5ff258ebe97a9b892a
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 9ae477dd04237e285915157615dcb6a6b841ca99
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869203"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678257"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>プレビュー:Azure Image Builder テンプレートを作成する 
 
@@ -87,7 +87,7 @@ location は、カスタム イメージを作成するリージョンです。 
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-既定では Image Builder はイメージのサイズを変更しません。ソース イメージのサイズが使用されます。 OS ディスク (Win および Linux) のサイズは増やすこと**だけ**が可能です。これは省略可能であり、値 0 はソース イメージと同じサイズを維持することを意味します。 OS ディスクのサイズをソース イメージのサイズより小さくすることはできません。
+既定では Image Builder はイメージのサイズを変更しません。ソース イメージのサイズが使用されます。 OS ディスク (Win および Linux) のサイズは増やすこと **だけ** が可能です。これは省略可能であり、値 0 はソース イメージと同じサイズを維持することを意味します。 OS ディスクのサイズをソース イメージのサイズより小さくすることはできません。
 
 ```json
  {
@@ -96,7 +96,7 @@ location は、カスタム イメージを作成するリージョンです。 
 ```
 
 ## <a name="vnetconfig"></a>vnetConfig
-VNET プロパティを指定しない場合、Image Builder によって独自の VNET、パブリック IP、および NSG が作成されます。 パブリック IP は、サービスがビルド VM と通信するときに使用されますが、パブリック IP が不要な場合、または Image Builder が既存の VNET リソース (構成サーバー (DSC、Chef、Puppet、Ansible)、ファイル共有など) にアクセスできるようにする場合は、VNET を指定できます。 詳細については、[ネットワークに関するドキュメント](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibNetworking.md#networking-with-azure-vm-image-builder)をご確認ください。これは省略可能です。
+VNET プロパティを指定しない場合、Image Builder によって独自の VNET、パブリック IP、および NSG が作成されます。 パブリック IP は、サービスがビルド VM と通信するときに使用されますが、パブリック IP が不要な場合、または Image Builder が既存の VNET リソース (構成サーバー (DSC、Chef、Puppet、Ansible)、ファイル共有など) にアクセスできるようにする場合は、VNET を指定できます。 詳細については、[ネットワークに関するドキュメント](image-builder-networking.md)をご確認ください。これは省略可能です。
 
 ```json
     "vnetConfig": {
@@ -120,7 +120,7 @@ VNET プロパティを指定しない場合、Image Builder によって独自�
 
 ## <a name="identity"></a>ID
 
-必須 - スクリプトで Azure Storage から読み取られたイメージを読み書きするアクセスが Image Builder に許可されるようにするには、個々のリソースに対するアクセス許可を持つ Azure ユーザー割り当て ID を作成する必要があります。 Image Builder のアクセス許可のしくみと関連する手順の詳細については、[ドキュメント](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)を参照してください。
+必須 - スクリプトで Azure Storage から読み取られたイメージを読み書きするアクセスが Image Builder に許可されるようにするには、個々のリソースに対するアクセス許可を持つ Azure ユーザー割り当て ID を作成する必要があります。 Image Builder のアクセス許可のしくみと関連する手順の詳細については、[ドキュメント](image-builder-user-assigned-identity.md)を参照してください。
 
 
 ```json
@@ -142,7 +142,7 @@ Image Builder によるユーザー割り当て ID のサポート:
 
 ## <a name="properties-source"></a>プロパティ: source
 
-現在、Image Builder では 第 1 世代の HyperV のイメージと VM のみがサポートされています。`source` セクションには、Image Builder で使用されるソース イメージに関する情報が含まれています。
+`source` セクションには、Image Builder によって使われるソース イメージについての情報が含まれます。 現在 Image Builder でネイティブにサポートされているのは、Azure Shared Image Gallery (SIG) への Hyper-V 第 1 世代 (Gen1) のイメージ、またはマネージド イメージの作成のみです。 Gen2 イメージを作成する場合は、ソース Gen2 イメージを使用し、VHD に配布する必要があります。 その後、VHD からマネージド イメージを作成し、これを Gen2 イメージとして SIG に挿入する必要があります。
 
 API ではイメージ ビルド用のソースを定義する "SourceType" が必要であり、現在は次の 3 つの種類があります。
 - PlatformImage - ソース イメージが Marketplace イメージであることを示します。
@@ -154,7 +154,7 @@ API ではイメージ ビルド用のソースを定義する "SourceType" が�
 > 既存の Windows カスタム イメージを使用する場合は、単一の Windows イメージで Sysprep コマンドを最大で 8 回実行できます。詳細については、[sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) に関するドキュメントを参照してください。
 
 ### <a name="platformimage-source"></a>PlatformImage ソース 
-Azure Image Builder では、Windows Server とクライアント、および Linux Azure Marketplace のイメージがサポートされます。完全な一覧については、[こちら](../windows/image-builder-overview.md#os-support)を参照してください。 
+Azure Image Builder では、Windows Server とクライアント、および Linux Azure Marketplace のイメージがサポートされます。完全な一覧については、[こちら](../image-builder-overview.md#os-support)を参照してください。 
 
 ```json
         "source": {
@@ -233,7 +233,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 [ERROR] complete: 'context deadline exceeded'
 ```
 
-buildTimeoutInMinutes の値を指定しなかった場合、または 0 に設定した場合は、既定値が使用されます。 値は、最大で 960 分 (16 時間) まで増減できます。 Windows の場合、この値を 60 分未満に設定することはお勧めしません。 タイムアウトに達していることがわかった場合は、[ログ](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-image-build-logs)を確認し、カスタマイズの手順がユーザー入力などで待機しているかどうかを確認します。 
+buildTimeoutInMinutes の値を指定しなかった場合、または 0 に設定した場合は、既定値が使用されます。 値は、最大で 960 分 (16 時間) まで増減できます。 Windows の場合、この値を 60 分未満に設定することはお勧めしません。 タイムアウトに達していることがわかった場合は、[ログ](image-builder-troubleshoot.md#customization-log)を確認し、カスタマイズの手順がユーザー入力などで待機しているかどうかを確認します。 
 
 カスタマイズを完了するためにより多くの時間が必要な場合は、オーバーヘッドが小さい必要と思われるものに設定します。 ただし、エラーが表示される前にタイムアウトするまで待機する必要があるため、設定値を大きくしすぎないでください。 
 
@@ -481,7 +481,7 @@ Write-Output '>>> Sysprep complete ...'
 * Windows: c:\DeprovisioningScript.ps1
 * Linux: /tmp/DeprovisioningScript.sh
 
-Image Builder では、これらのコマンドが読み取られて、AIB ログ "customization.log" に書き込まれます。 ログを収集する方法については、[troubleshooting (トラブルシューティング)](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs) に関する記事をご覧ください。
+Image Builder では、これらのコマンドが読み取られて、AIB ログ "customization.log" に書き込まれます。 ログを収集する方法については、[troubleshooting (トラブルシューティング)](image-builder-troubleshoot.md#customization-log) に関する記事をご覧ください。
  
 ## <a name="properties-distribute"></a>プロパティ: distribute
 
@@ -571,7 +571,7 @@ Azure 共有イメージ ギャラリーは新しいイメージ管理サービ�
 
 ```json
 {
-    "type": "sharedImage",
+    "type": "SharedImage",
     "galleryImageId": "<resource ID>",
     "runOutputName": "<name>",
     "artifactTags": {
@@ -658,7 +658,7 @@ az resource invoke-action \
 ### <a name="cancelling-an-image-build"></a>イメージ ビルドの取り消し
 イメージのビルドを実行しているときに、正しくないと思われる場合、ユーザーの入力を待っている場合、または正常に完了しないと考えられる場合は、ビルドを取り消すことができます。
 
-ビルドはいつでも取り消すことができます。 配布フェーズが始まっている場合でも取り消しはできますが、完了していない可能性があるイメージをクリーンアップする必要があります。 cancel コマンドで取り消しの完了は待機されません。取り消しの進行状況については、状態[コマンド](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#get-statuserror-of-the-template-submission-or-template-build-status)を使用して `lastrunstatus.runstate` を監視してください。
+ビルドはいつでも取り消すことができます。 配布フェーズが始まっている場合でも取り消しはできますが、完了していない可能性があるイメージをクリーンアップする必要があります。 cancel コマンドで取り消しの完了は待機されません。取り消しの進行状況については、状態[コマンド](image-builder-troubleshoot.md#customization-log)を使用して `lastrunstatus.runstate` を監視してください。
 
 
 `cancel` コマンドの例を次に示します。

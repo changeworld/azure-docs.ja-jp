@@ -4,18 +4,18 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 12/30/2019
 ms.author: kgremban
-ms.openlocfilehash: 0c43c6dcced94225e9ab9ae903535ce74286ad9a
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 8cae7ac2d3b961120cb9100f5072dc141769afff
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406718"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557530"
 ---
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-このチュートリアルでは、Azure IoT Tools の拡張機能を使用してモジュールをビルドし、ファイルから**コンテナー イメージ**を作成します。 その後、このイメージを**レジストリ**にプッシュし、格納および管理します。 最後に、レジストリからイメージを展開し、IoT Edge デバイスで実行します。
+このチュートリアルでは、Azure IoT Tools の拡張機能を使用してモジュールをビルドし、ファイルから **コンテナー イメージ** を作成します。 その後、このイメージを **レジストリ** にプッシュし、格納および管理します。 最後に、レジストリからイメージを展開し、IoT Edge デバイスで実行します。
 
-コンテナー イメージは、Docker と互換性のある任意のレジストリを使用して格納できます。 2 つの一般的な Docker レジストリ サービスは、[Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) と [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags) です。 このチュートリアルでは、Azure Container Registry を使用します。
+コンテナー イメージは、Docker と互換性のある任意のレジストリを使用して格納できます。 2 つの一般的な Docker レジストリ サービスは、[Azure Container Registry](../articles/container-registry/index.yml) と [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags) です。 このチュートリアルでは、Azure Container Registry を使用します。
 
 コンテナー レジストリがまだない場合は、次の手順に従って、Azure に新しいコンテナー レジストリを作成します。
 
@@ -35,8 +35,8 @@ ms.locfileid: "87406718"
 
 4. コンテナー レジストリが作成された後、それを参照し、左側のペインの **[設定]** の下にあるメニューから **[アクセス キー]** を選択します。 
 
-5. クリックして管理者ユーザーを有効にし、コンテナー レジストリの**ユーザー名**と**パスワード**を表示します。
+5. クリックして管理者ユーザーを有効にし、コンテナー レジストリの **ユーザー名** と **パスワード** を表示します。
 
-6. **ログイン サーバー**、**ユーザー名**、および**パスワード**の値をコピーして、どこか都合のいい場所に保存します。 このチュートリアルではこれらの値を使用して、コンテナー レジストリへのアクセスを提供します。
+6. **ログイン サーバー**、**ユーザー名**、および **パスワード** の値をコピーして、どこか都合のいい場所に保存します。 このチュートリアルではこれらの値を使用して、コンテナー レジストリへのアクセスを提供します。
 
    ![コンテナー レジストリのログイン サーバー、ユーザー名、パスワードをコピーします。](./media/iot-edge-create-container-registry/registry-access-key.png)

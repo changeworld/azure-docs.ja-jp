@@ -1,16 +1,14 @@
 ---
 title: 複数の環境向けのアプリの管理
 description: Azure Service Fabric アプリケーションは、1 台から数千台のコンピューターで構成されたさまざまな規模のクラスターで実行できます。 場合によっては、このようなさまざまな環境に合わせて異なる方法でアプリケーションを構成したい場合があります。 この記事では、環境ごとに異なるアプリケーション パラメーターを定義する方法について説明します。
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: mikhegn
-ms.openlocfilehash: b6d6ff37024a3181a43b67d2af26b067225654fe
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c907540c03788ab5f4087a96e301f18ab7ced4ca
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257486"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787979"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>複数の環境向けのアプリケーションの管理
 
@@ -40,7 +38,7 @@ Azure Service Fabric クラスターは、1 台から数千台のコンピュー
 
 Service Fabric で名前付きアプリケーション インスタンスを作成するときは、パラメーターで渡すことができます。 その方法は、アプリケーション インスタンスの作成方法によって異なります。
 
-  - PowerShell では、[`New-ServiceFabricApplication`](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) コマンドレットはハッシュテーブルとしてアプリケーション パラメーターを受け取ります。
+  - PowerShell では、[`New-ServiceFabricApplication`](/powershell/module/servicefabric/new-servicefabricapplication) コマンドレットはハッシュテーブルとしてアプリケーション パラメーターを受け取ります。
   - sfctl では、[`sfctl application create`](./service-fabric-sfctl-application.md#sfctl-application-create) コマンドは JSON 文字列としてパラメーターを受け取ります。 install.sh スクリプトは sfctl を使います。
   - Visual Studio では、アプリケーション プロジェクトの Parameters フォルダーにパラメーター ファイルのセットが用意されています。 これらのパラメーター ファイルは、Azure DevOps Services または Azure DevOps Server を使って、Visual Studio から発行するときに使われます。 Visual Studio では、パラメーター ファイルは Deploy-FabricApplication.ps1 スクリプトに渡されます。
 

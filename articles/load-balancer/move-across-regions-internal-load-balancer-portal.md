@@ -6,18 +6,18 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/18/2019
 ms.author: allensu
-ms.openlocfilehash: eb3605249578b15d67bdd9764490d61812b21c18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68a2cb6926cb41956711a9e3c15d21c250d27f0b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808438"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698491"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>Azure portal を使用して Azure 内部ロード バランサーを別のリージョンに移動する
 
 既存の内部ロード バランサーをリージョン間で移動することが必要になるさまざまなシナリオがあります。 たとえば、テスト用に同じ構成で内部ロード バランサーを作成したい場合があります。 また、ディザスター リカバリー計画の一環として、内部ロード バランサーを別のリージョンに移動したい場合もあります。
 
-Azure 内部ロード バランサーは、リージョン間で移動することはできません。 ただし、Azure Resource Manager テンプレートを使用すると、内部ロード バランサーの既存の構成と仮想ネットワークをエクスポートできます。  その後、そのロード バランサーと仮想ネットワークをテンプレートにエクスポートし、宛先リージョンに合わせてパラメーターを変更して、そのテンプレートを新しいリージョンにデプロイすることで、リソースを別のリージョンにステージングすることができます。  Resource Manager とテンプレートの詳細については、「[クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)」を参照してください。
+Azure 内部ロード バランサーは、リージョン間で移動することはできません。 ただし、Azure Resource Manager テンプレートを使用すると、内部ロード バランサーの既存の構成と仮想ネットワークをエクスポートできます。  その後、そのロード バランサーと仮想ネットワークをテンプレートにエクスポートし、宛先リージョンに合わせてパラメーターを変更して、そのテンプレートを新しいリージョンにデプロイすることで、リソースを別のリージョンにステージングすることができます。  Resource Manager とテンプレートの詳細については、「[クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)」を参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -32,7 +32,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
 
 - 自分の Azure サブスクリプションで、使用するターゲット リージョンに内部ロード バランサーを作成できることを確認します。 サポートに連絡して、必要なクォータを有効にしてください。
 
-- 自分のサブスクリプションに、このプロセスでロード バランサーの追加をサポートするのに十分なリソースがあることを確認してください。  「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)」をご覧ください。
+- 自分のサブスクリプションに、このプロセスでロード バランサーの追加をサポートするのに十分なリソースがあることを確認してください。  「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)」をご覧ください。
 
 
 ## <a name="prepare-and-move"></a>準備と移動
@@ -221,7 +221,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
     1. 別のブラウザー タブまたはウィンドウで、[Azure portal](https://portal.azure.com) >  **[リソース グループ]** にログインします。
     2. 前の手順で移動した仮想ネットワークが含まれているターゲット リソース グループを探し、それをクリックします。
     3. **[設定]**  >  **[プロパティ]** を選択します。
-    4. 右側のブレードで**リソース ID** を強調表示し、それをクリップボードにコピーします。  または、 **[リソース ID]** パスの右側にある **[クリップボードにコピー]** ボタンをクリックすることもできます。
+    4. 右側のブレードで **リソース ID** を強調表示し、それをクリップボードにコピーします。  または、 **[リソース ID]** パスの右側にある **[クリップボードにコピー]** ボタンをクリックすることもできます。
     5. 別のブラウザー ウィンドウまたはタブに開いた **[パラメーターの編集]** エディターで、**defaultValue** プロパティにリソース ID を貼り付けます。
 
         ```json
@@ -273,7 +273,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
                 "tier": "Regional"
             },
         ```
-      Basic SKU と Standard SKU のロード バランサーの違いの詳細については、「[Azure Standard Load Balancer の概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)」を参照してください。
+      Basic SKU と Standard SKU のロード バランサーの違いの詳細については、「[Azure Standard Load Balancer の概要](./load-balancer-overview.md)」を参照してください。
 
     * **負荷分散規則** - 構成の負荷分散規則を追加または削除できます。そのためには、**template.json** ファイルの **loadBalancingRules** セクションでエントリを追加または削除します。
 
@@ -305,7 +305,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
                     }
                 ]
         ```
-       負荷分散規則の詳細については、「[Azure Load Balancer とは](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」を参照してください。
+       負荷分散規則の詳細については、「[Azure Load Balancer とは](./load-balancer-overview.md)」を参照してください。
 
     * **プローブ** - 構成のロード バランサーのプローブを追加または削除できます。そのためには、**template.json** ファイルの **probes** セクションでエントリを追加または削除します。
 
@@ -325,7 +325,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
                     }
                 ],
         ```
-       Azure Load Balancer の正常性プローブの詳細については、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください。
+       Azure Load Balancer の正常性プローブの詳細については、「[Load Balancer の正常性プローブ](./load-balancer-custom-probe-overview.md)」を参照してください。
 
     * **インバウンド NAT 規則** - ロード バランサーのインバウンド NAT 規則を追加または削除できます。そのためには、**template.json** ファイルの **inboundNatRules** セクションでエントリを追加または削除します。
 
@@ -373,7 +373,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
             }
         }
         ```
-        インバウンド NAT 規則の詳細については、「[Azure Load Balancer とは](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」を参照してください。
+        インバウンド NAT 規則の詳細については、「[Azure Load Balancer とは](./load-balancer-overview.md)」を参照してください。
 
 12. オンライン エディターで **[保存]** をクリックします。
 
@@ -402,5 +402,5 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
 このチュートリアルでは、Azure 内部ロード バランサーをリージョン間で移動し、ソース リソースをクリーンアップしました。  リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、以下を参照してください。
 
 
-- [リソースを新しいリソース グループまたはサブスクリプションに移動する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Azure VM を別のリージョンに移動する](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Azure VM を別のリージョンに移動する](../site-recovery/azure-to-azure-tutorial-migrate.md)

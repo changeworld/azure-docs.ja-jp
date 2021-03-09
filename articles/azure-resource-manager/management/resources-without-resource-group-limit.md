@@ -2,13 +2,13 @@
 title: 数が 800 に制限されないリソース
 description: リソース グループ内に 800 より多くのインスタンスを作成できる Azure リソースの種類の一覧を示します。
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 6f7b45ec3691bc3a48d9aa3dfa072c1c68189007
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 01/08/2021
+ms.openlocfilehash: 6a63fd7e41c03b542f4a43b483243702c5be5f14
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040761"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034936"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>リソース グループあたり 800 インスタンスに制限されないリソース
 
@@ -22,6 +22,8 @@ ms.locfileid: "87040761"
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
+* edgeSubscriptions
+* linkedSubscriptions
 * registrations
 * registrations/customerSubscriptions
 * registrations/products
@@ -38,6 +40,7 @@ ms.locfileid: "87040761"
 * galleries/images/versions
 * images
 * スナップショット
+* virtualMachineScaleSets - 既定では、800 インスタンスに制限されています。 この制限を増やすには、サポートにご連絡ください。
 * virtualMachines
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
@@ -55,24 +58,30 @@ ms.locfileid: "87040761"
 * registries/tasks
 * registries/webhooks
 
+## <a name="microsoftd365customerinsights"></a>Microsoft.D365CustomerInsights
+
+* instances
+
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
 * servers
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
+* flexibleServers
 * servers
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
+* flexibleServers
 * serverGroups
 * servers
 * serversv2
-* singleServers
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
-* schedules - 既定では、800 インスタンスに制限されています。 この制限を増やすには、サポートにご連絡ください。
+* labs/virtualMachines - 既定では、800 インスタンスに制限されています。 
+* schedules
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
@@ -96,6 +105,11 @@ ms.locfileid: "87040761"
 * softwareUpdateProfile
 * softwareUpdates
 
+## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
+
+* machines - 最大 5,000 インスタンスをサポートします
+* extensions - 無制限の数の VM 拡張機能インスタンスをサポートします
+
 ## <a name="microsoftinsights"></a>microsoft.insights
 
 * metricalerts
@@ -104,6 +118,10 @@ ms.locfileid: "87040761"
 
 * integrationAccounts
 * workflows
+
+## <a name="microsoftmedia"></a>Microsoft.Media
+
+* mediaservices/liveEvents
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
@@ -160,6 +178,10 @@ ms.locfileid: "87040761"
 
 * workspaceCollections - 既定では、800 インスタンスに制限されています。 この制限を増やすには、サポートにご連絡ください。
 
+## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
+
+* capacities - 既定では、800 インスタンスに制限されています。 この制限を増やすには、サポートにご連絡ください。
+
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
 * namespaces
@@ -172,18 +194,21 @@ ms.locfileid: "87040761"
 
 * namespaces
 
-## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
+## <a name="microsoftsingularity"></a>Microsoft.Singularity
 
-* applications
-* containerGroups
-* gateways
-* networks
-* secrets
-* volumes
+* accounts
+* accounts/accountQuotaPolicies
+* accounts/groupPolicies
+* accounts/jobs
+* accounts/storageContainers
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 * storageAccounts
+
+## <a name="microsoftsql"></a>Microsoft.Sql
+
+* servers/databases
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 

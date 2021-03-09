@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 30c4838dd5a6f4e8b08d3619588ee3ae746349ef
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 456e881d84697f4542f972ac0798cc95a3455b3c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042137"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322412"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Azure VM 上の SQL Server にデータを高速に並列でインポートするためのテーブルの作成と最適化
 
-この記事では、データを SQL Server データベースに高速に並列一括インポートするためのパーティション分割されたテーブルを作成する方法について説明します。 SQL データベースへのビッグ データの読み込み/転送では、"*パーティション テーブルとビュー*" を使用することによって、SQL データベースへのデータのインポートと以降のクエリを向上させることができます。 
+この記事では、データを SQL Server データベースに高速に並列一括インポートするためのパーティション分割されたテーブルを作成する方法について説明します。 SQL データベースへのビッグ データの読み込み/転送では、" *パーティション テーブルとビュー* " を使用することによって、SQL データベースへのデータのインポートと以降のクエリを向上させることができます。 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>新しいデータベースとファイル グループのセットの作成
-* [新しいデータベースを作成します](https://technet.microsoft.com/library/ms176061.aspx) (まだ存在しない場合)。
+* [新しいデータベースを作成します](/sql/t-sql/statements/create-database-transact-sql) (まだ存在しない場合)。
 * パーティション分割された物理ファイルを格納するデータベースにデータベース ファイル グループを追加します。 
-* これは、新規の場合は [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) を、データベースが既に存在する場合は [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) を使用して実行できます。
+* これは、新規の場合は [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql) を、データベースが既に存在する場合は [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options) を使用して実行できます。
 * 1 つまたは複数のファイル (必要に応じて) を各データベース ファイルグループに追加します。
   
   > [!NOTE]
@@ -33,7 +33,7 @@ ms.locfileid: "86042137"
   > 
   > 
 
-次の例では、それぞれに 1 つの物理ファイルが含まれている、プライマリとログ グループ以外に 3 つのファイル グループを持つ新しいデータベースを作成します。 データベース ファイルは、SQL Server インスタンスで構成されているとおりに、既定の SQL Server データ フォルダーに作成されます。 既定のファイルの場所の詳細については、「[SQL Server の既定のインスタンスおよび名前付きインスタンスのファイルの場所](https://msdn.microsoft.com/library/ms143547.aspx)」を参照してください。
+次の例では、それぞれに 1 つの物理ファイルが含まれている、プライマリとログ グループ以外に 3 つのファイル グループを持つ新しいデータベースを作成します。 データベース ファイルは、SQL Server インスタンスで構成されているとおりに、既定の SQL Server データ フォルダーに作成されます。 既定のファイルの場所の詳細については、「[SQL Server の既定のインスタンスおよび名前付きインスタンスのファイルの場所](/sql/sql-server/install/file-locations-for-default-and-named-instances-of-sql-server)」を参照してください。
 
 ```sql
    DECLARE @data_path nvarchar(256);
@@ -60,7 +60,7 @@ ms.locfileid: "86042137"
 データ スキーマに従って、前の手順で作成されたデータベースのファイル グループにマッピングされる、パーティション分割されたテーブルを作成するには、まずパーティション関数とパーティション構成を作成する必要があります。 パーティション分割されたテーブルにデータが一括インポートされると、以下に説明されるように、パーティション構成に従ってレコードがファイル グループ間で配布されます。
 
 ### <a name="1-create-a-partition-function"></a>1.パーティション関数の作成
-[パーティション関数を作成します](https://msdn.microsoft.com/library/ms187802.aspx)。この関数は、個別のパーティション テーブルに含める値/境界の範囲を定義します。たとえば、2013 年の月別 (some\_datetime\_field) にパーティションを制限するには以下のようにします。
+[パーティション関数を作成します](/sql/t-sql/statements/create-partition-function-transact-sql)。この関数は、個別のパーティション テーブルに含める値/境界の範囲を定義します。たとえば、2013 年の月別 (some\_datetime\_field) にパーティションを制限するには以下のようにします。
   
 ```sql
    CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
@@ -71,7 +71,7 @@ ms.locfileid: "86042137"
 ```
 
 ### <a name="2-create-a-partition-scheme"></a>2.パーティション構成の作成
-[パーティション構成を作成します](https://msdn.microsoft.com/library/ms179854.aspx)。 この構成はパーティション関数の各パーティションの範囲を物理ファイル グループにマッピングします。たとえば、以下のようにします。
+[パーティション構成を作成します](/sql/t-sql/statements/create-partition-scheme-transact-sql)。 この構成はパーティション関数の各パーティションの範囲を物理ファイル グループにマッピングします。たとえば、以下のようにします。
   
 ```sql
       CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
@@ -94,24 +94,24 @@ ms.locfileid: "86042137"
 ```
 
 ### <a name="3-create-a-partition-table"></a>3.パーティション テーブルの作成
-データ スキーマに従って[パーティション テーブルを作成](https://msdn.microsoft.com/library/ms174979.aspx)し、テーブルのパーティション分割に使用されるパーティション構成と制約フィールドを指定します。たとえば、以下のようにします。
+データ スキーマに従って[パーティション テーブルを作成](/sql/t-sql/statements/create-table-transact-sql)し、テーブルのパーティション分割に使用されるパーティション構成と制約フィールドを指定します。たとえば、以下のようにします。
   
 ```sql
    CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
 ```
 
-詳細については、「 [パーティション テーブルとパーティション インデックスの作成](https://msdn.microsoft.com/library/ms188730.aspx)」を参照してください。
+詳細については、「 [パーティション テーブルとパーティション インデックスの作成](/sql/relational-databases/partitions/create-partitioned-tables-and-indexes)」を参照してください。
 
 ## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>個別のパーティション テーブルごとにデータを一括インポートする
 
 * BCP、BULK INSERT、 [SQL Server 移行ウィザード](https://sqlazuremw.codeplex.com/)などの他の方法を使用することができます。 ここで示されている例では BCP による方法を使用します。
-* [データベースを変更](https://msdn.microsoft.com/library/bb522682.aspx)して、トランザクション ログの設定を BULK_LOGGED に変更し、ログのオーバーヘッドを最小限に抑えます。たとえば、以下のようにします。
+* [データベースを変更](/sql/t-sql/statements/alter-database-transact-sql-set-options)して、トランザクション ログの設定を BULK_LOGGED に変更し、ログのオーバーヘッドを最小限に抑えます。たとえば、以下のようにします。
   
    ```sql
       ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
    ```
-* データの読み込み時間を短縮するには、一括インポート操作を並列に起動します。 SQL Server データベースへのビッグ データの一括インポートを高速化するヒントについては、「[1 時間未満で 1 TB を読み込む](https://docs.microsoft.com/archive/blogs/sqlcat/load-1tb-in-less-than-1-hour)」を参照してください。
+* データの読み込み時間を短縮するには、一括インポート操作を並列に起動します。 SQL Server データベースへのビッグ データの一括インポートを高速化するヒントについては、「[1 時間未満で 1 TB を読み込む](/archive/blogs/sqlcat/load-1tb-in-less-than-1-hour)」を参照してください。
 
 次の PowerShell スクリプトは、BCP を使用した並行データ読み込みの例を示しています。
 
@@ -180,7 +180,7 @@ ms.locfileid: "86042137"
 
 ## <a name="create-indexes-to-optimize-joins-and-query-performance"></a>インデックスを作成して結合およびクエリのパフォーマンスを最適化する
 * 複数のテーブルからモデリング用のデータを抽出する場合、結合のパフォーマンスを向上させるには、結合キーのインデックスを作成します。
-* パーティションごとに同じファイル グループをターゲットとする (クラスター化または非クラスター化された) [インデックスを作成](https://technet.microsoft.com/library/ms188783.aspx)します。たとえば、以下のようにします。
+* パーティションごとに同じファイル グループをターゲットとする (クラスター化または非クラスター化された) [インデックスを作成](/sql/t-sql/statements/create-index-transact-sql)します。たとえば、以下のようにします。
   
 ```sql
    CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
@@ -198,4 +198,3 @@ ms.locfileid: "86042137"
 
 ## <a name="advanced-analytics-process-and-technology-in-action-example"></a>実行中の Advanced Analytics Process and Technology の例
 パブリック データセットと共に Team Data Science Process を使用したエンド ツー エンドのチュートリアル例については、「[Team Data Science Process の活用: SQL Server の使用](sql-walkthrough.md)」を参照してください。
-

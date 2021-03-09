@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/30/2017
+ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 69aca5e0901a0da8aa98fe310ac220898bf650b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6f6fe81c121f547f79fa34be77aab1fb6c0875a
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845008"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899356"
 ---
 # <a name="introduction-to-ip-flow-verify-in-azure-network-watcher"></a>Azure Network Watcher の IP フロー検証の概要
 

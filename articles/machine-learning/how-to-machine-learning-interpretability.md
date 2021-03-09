@@ -1,29 +1,29 @@
 ---
 title: Azure Machine Learning におけるモデルの解釈可能性 (プレビュー)
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning SDK を使用して、モデルから得られる予測の理由を説明する方法について説明します。 トレーニング中と推論中に、モデルで予測が行われる方法を理解するために使用できます。
+description: Azure Machine Learning Python SDK を使用したトレーニング中および推論中に、機械学習モデルで予測を行う方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
-ms.date: 07/09/2020
-ms.openlocfilehash: 533ecbaebc5d36f8a6660ce22e5cab3630e3655f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 02/25/2021
+ms.openlocfilehash: 2c61cfaf0e97f7d483239a23e5eea52b51c6a126
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306402"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690211"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning におけるモデルの解釈可能性 (プレビュー)
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-## <a name="overview-of-model-interpretability"></a>モデルの解釈可能性の概要
 
-データ サイエンティスト、監査者、ビジネスの意思決定者にとって、解釈可能性は会社のポリシー、業界標準、政府の規制に準拠する上で、次のように重要です。
+## <a name="model-interpretability-overview"></a>モデルの解釈可能性の概要
+
+データ サイエンティスト、監査者、ビジネスの意思決定者にとって、モデルの解釈可能性は会社のポリシー、業界標準、政府の規制に準拠する上で、次のように重要です。
 
 + データ サイエンティストは、モデルの結果が生み出す価値と正確性を経営陣や利害関係者が理解できるよう、説明する必要があります。 また、モデルをデバッグし、その改善方法についての情報に基づく決定を行うための解釈可能性も必要です。 
 
@@ -31,28 +31,19 @@ ms.locfileid: "87306402"
 
 + ビジネスの意思決定者は、エンド ユーザーに透明性を提供できるという安心感を求めています。 これにより、信頼を獲得して維持することができます。
 
-
 モデル開発における次の 2 つの主なフェーズでは、機械学習モデルを説明できるようにすることが重要です。
+
 + トレーニング フェーズでは、モデル設計者と評価者が、モデルの解釈可能性出力を使用して仮説を検証し、利害関係者との信頼を構築できます。 また、モデルの分析情報をデバッグに使用したり、モデルの動作が目標に一致しているか検証したり、モデルの偏りや重要度の低い機能がないか検査したりできます。
 
 + 推論フェーズでは、透過性があるモデルをデプロイすることで、経営者は、モデルがどのように動作しているか、およびその意思決定が実際のユーザーにどのように作用し、どのように影響を与えているかを把握することができます。 
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Azure Machine Learning での解釈可能性
 
-解釈可能性クラスは、複数の SDK パッケージを介して利用可能になります。[Azure Machine Learning 用の SDK パッケージをインストールする](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)方法を確認してください。
+モデルの解釈可能性クラスは、次の SDK パッケージを介して利用可能になります。[Azure Machine Learning 用の SDK パッケージをインストールする](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)方法を確認してください。
 
-* `azureml.interpret`。Microsoft でサポートされている機能を含むメイン パッケージ。
+* `azureml.interpret`。Microsoft でサポートされている機能が含まれます。
 
-* `azureml.contrib.interpret`。試すことができるプレビュー機能と実験的機能。
-
-一般的な用途には `pip install azureml-interpret` と `pip install azureml-contrib-interpret` を使用します。
-
-
-> [!IMPORTANT]
-> `contrib` 名前空間のコンテンツは完全にはサポートされていません。 実験的な機能が成熟すると、メインの名前空間に徐々に移動されます。
-。
-
-
+一般的な用途には `pip install azureml-interpret` を使用します。
 
 ## <a name="how-to-interpret-your-model"></a>モデルを解釈する方法
 
@@ -61,11 +52,7 @@ SDK のクラスとメソッドを使用して、次のことを行うことが�
 + トレーニングおよび推論中の実際の大規模データセットに関するモデルの解釈可能性を実現する。
 + 対話型の視覚化ダッシュボードを使用して、トレーニング時のデータと説明のパターンを検出する。
 
-
-機械学習では、**特徴**は、ターゲット データ ポイントの予測に使用されるデータ フィールドです。 たとえば、信用リスクを予測するために、年齢、アカウント サイズ、およびアカウントの有効期間のデータ フィールドが使用されるとします。 この場合、年齢、アカウント サイズ、およびアカウントの有効期間が**特徴**です。 特徴の重要度から、各データ フィールドがモデルの予測にどのような影響を与えたかがわかります。 たとえば、年齢は予測で頻繁に使用されるが、アカウントのサイズと有効期間は予測値に大きな影響を与えない場合があります。 このプロセスにより、データ サイエンティストは結果の予測を説明でき、利害関係者はモデルで最も重要な機能を認識できます。
-
-サポートされている解釈可能性の手法、サポートされる機械学習モデル、およびサポートされている実行環境については、こちらをご覧ください。
-
+機械学習では、**特徴** は、ターゲット データ ポイントの予測に使用されるデータ フィールドです。 たとえば、信用リスクを予測するために、年齢、アカウント サイズ、およびアカウントの有効期間のデータ フィールドが使用されるとします。 この場合、年齢、アカウント サイズ、およびアカウントの有効期間が **特徴** です。 特徴の重要度から、各データ フィールドがモデルの予測にどのような影響を与えたかがわかります。 たとえば、年齢は予測で頻繁に使用されるが、アカウントのサイズと有効期間は予測値に大きな影響を与えない場合があります。 このプロセスにより、データ サイエンティストは結果の予測を説明でき、利害関係者はモデルで最も重要な機能を認識できます。
 
 ## <a name="supported-interpretability-techniques"></a>サポートされている解釈可能性の手法
 
@@ -73,15 +60,12 @@ SDK のクラスとメソッドを使用して、次のことを行うことが�
 
 |解釈可能性の手法|説明|Type|
 |--|--|--------------------|
-|SHAP Tree Explainer| [SHAP](https://github.com/slundberg/shap) の Tree Explainer は、**ツリーおよびツリーのアンサンブル**に固有の多項式時間高速 SHAP 値推定アルゴリズムに注目します。|モデル固有|
+|SHAP Tree Explainer| [SHAP](https://github.com/slundberg/shap) の Tree Explainer は、**ツリーおよびツリーのアンサンブル** に固有の多項式時間高速 SHAP 値推定アルゴリズムに注目します。|モデル固有|
 |SHAP Deep Explainer| SHAP による説明に基づくと、Deep Explainer は [SHAP NIPS の論文](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)で説明されている DeepLIFT との接続上に構築されているディープ ラーニング モデルでの SHAP 値に対する高速近似アルゴリズムです。 **TensorFlow** モデルおよび TensorFlow バックエンドを使用する **Keras** モデルがサポートされています (PyTorch の暫定サポートもあります)"。|モデル固有|
-|SHAP Linear Explainer| SHAP の Linear Explainer では、**線形モデル**の SHAP 値を計算し、必要に応じて機能間の相関関係を考慮します。|モデル固有|
-|SHAP Kernel Explainer| SHAP の Kernel Explainer では、特別に重み付けされたローカル線形回帰を使用して、**任意のモデル**の SHAP 値を推定します。|モデル非依存|
-|Mimic Explainer (グローバル サロゲート)| Mimic Explainer は、[グローバル サロゲート モデル](https://christophm.github.io/interpretable-ml-book/global.html)をトレーニングしてブラックボックス モデルを模倣するアイデアに基づいています。 グローバル サロゲート モデルは、**任意のブラック ボックス モデル**の予測をできる限り正確に近似するためにトレーニングされた本質的に解釈可能なモデルです。 データ サイエンティストは、サロゲート モデルを解釈してブラック ボックス モデルについての結論を導き出すことができます。 サロゲート モデルとして、次のいずれかの解釈可能なモデルを使用できます。LightGBM (LGBMExplainableModel)、線形回帰 (LinearExplainableModel)、確率勾配降下説明可能モデル (SGDExplainableModel)、およびデシジョン ツリー (DecisionTreeExplainableModel)。|モデル非依存|
-|Permutation Feature Importance Explainer (PFI)| Permutation Feature Importance は、[Breiman のランダム フォレスト論文](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (セクション 10 を参照してください) から着想を得た、分類および回帰モデルの説明に使用される手法です。 概要を説明すると、データセット全体に対して一度に 1 つの特徴のデータをランダムにシャッフルし、対象のパフォーマンス メトリックがどのくらい変化するかを計算するしくみです。 変化が大きいほど、その特徴の重要度は高くなります。 PFI では、**基になる任意のモデル**の全体的な動作を説明できますが、個々の予測については説明しません。 |モデル非依存|
-
-
-
+|SHAP Linear Explainer| SHAP の Linear Explainer では、**線形モデル** の SHAP 値を計算し、必要に応じて機能間の相関関係を考慮します。|モデル固有|
+|SHAP Kernel Explainer| SHAP の Kernel Explainer では、特別に重み付けされたローカル線形回帰を使用して、**任意のモデル** の SHAP 値を推定します。|モデル非依存|
+|Mimic Explainer (グローバル サロゲート)| Mimic Explainer は、[グローバル サロゲート モデル](https://christophm.github.io/interpretable-ml-book/global.html)をトレーニングしてブラックボックス モデルを模倣するアイデアに基づいています。 グローバル サロゲート モデルは、**任意のブラック ボックス モデル** の予測をできる限り正確に近似するためにトレーニングされた本質的に解釈可能なモデルです。 データ サイエンティストは、サロゲート モデルを解釈してブラック ボックス モデルについての結論を導き出すことができます。 サロゲート モデルとして、次のいずれかの解釈可能なモデルを使用できます。LightGBM (LGBMExplainableModel)、線形回帰 (LinearExplainableModel)、確率勾配降下説明可能モデル (SGDExplainableModel)、およびデシジョン ツリー (DecisionTreeExplainableModel)。|モデル非依存|
+|Permutation Feature Importance Explainer (PFI)| Permutation Feature Importance は、[Breiman のランダム フォレスト論文](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (セクション 10 を参照してください) から着想を得た、分類および回帰モデルの説明に使用される手法です。 概要を説明すると、データセット全体に対して一度に 1 つの特徴のデータをランダムにシャッフルし、対象のパフォーマンス メトリックがどのくらい変化するかを計算するしくみです。 変化が大きいほど、その特徴の重要度は高くなります。 PFI では、**基になる任意のモデル** の全体的な動作を説明できますが、個々の予測については説明しません。 |モデル非依存|
 
 前述の解釈可能性の手法に加えて、`TabularExplainer` と呼ばれる別の SHAP ベースの Explainer がサポートされています。 モデルによっては、`TabularExplainer` はサポートされている SHAP Explainers のいずれかを使用します。
 

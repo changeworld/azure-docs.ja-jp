@@ -1,19 +1,16 @@
 ---
 title: Azure Toolkit for IntelliJ:Spark アプリ - HDInsight
 description: Azure Toolkit for IntelliJ を使用して Scala で記述された Spark アプリケーションを開発し、HDInsight Spark クラスターに送信します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/13/2020
-ms.openlocfilehash: 370ac9528b023f01aaff5e5a7ec62785a02bb4bd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0b2c2a91ba9d029bcf24b0980d0a2339194e6d8a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085346"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931038"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
 
@@ -39,7 +36,7 @@ ms.locfileid: "86085346"
 
 * IntelliJ IDEA。 この記事では、[IntelliJ IDEA Community Version 2018.3.4](https://www.jetbrains.com/idea/download/) を使用します。
 
-* Azure Toolkit for IntelliJ。  「[Azure Toolkit for IntelliJ のインストール](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable)」を参照してください。
+* Azure Toolkit for IntelliJ。  「[Azure Toolkit for IntelliJ のインストール](/azure/developer/java/toolkit-for-intellij/)」を参照してください。
 
 ## <a name="install-scala-plugin-for-intellij-idea"></a>IntelliJ IDEA 用の Scala プラグインをインストールする
 
@@ -216,7 +213,7 @@ Apache Ambari マネージド ユーザー名を使用して、HDInsight クラ�
 
    ![Azure Explorer のリンクされたクラスター 1](./media/apache-spark-intellij-tool-plugin/hdinsight-linked-cluster.png)
 
-1. また、**Azure 用エクスプローラー**からクラスターのリンクを解除することもできます。
+1. また、**Azure 用エクスプローラー** からクラスターのリンクを解除することもできます。
 
    ![Azure Explorer からクラスターのリンクを解除する](./media/apache-spark-intellij-tool-plugin/hdi-unlinked-cluster.png)
 
@@ -239,7 +236,7 @@ Scala アプリケーションを作成した後に、クラスターに送信�
     |メイン クラス名|既定値は、選択したファイルのメイン クラスです。 クラスを変更するには、省略記号 ( **...** ) をクリックし、別のクラスを選択します。|
     |ジョブの構成|既定のキーと値のどちらかまたは両方を変更できます。 詳細については、[Apache Livy REST API](https://livy.incubator.apache.org/docs/latest/rest-api.html) に関するページを参照してください。|
     |コマンド ライン引数|必要に応じて、main クラスの引数をスペースで区切って入力できます。|
-    |参照される JAR と参照されるファイル|参照されている Jar およびファイルのパスを入力できます (存在する場合)。 現在 ADLS Gen 2 クラスターのみをサポートする Azure 仮想ファイル システム内のファイルを参照することもできます。 詳細情報:[Apache Spark 構成](https://spark.apache.org/docs/latest/configuration.html#runtime-environment)。  [リソースをクラスターにアップロードする方法](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)に関するページも参照してください。|
+    |参照される JAR と参照されるファイル|参照されている Jar およびファイルのパスを入力できます (存在する場合)。 現在 ADLS Gen 2 クラスターのみをサポートする Azure 仮想ファイル システム内のファイルを参照することもできます。 詳細情報:[Apache Spark 構成](https://spark.apache.org/docs/latest/configuration.html#runtime-environment)。  [リソースをクラスターにアップロードする方法](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md)に関するページも参照してください。|
     |ジョブ アップロード ストレージ|展開して追加のオプションを表示します。|
     |ストレージ型|ドロップダウン リストから **[Use Azure Blob to upload]\(Azure BLOB を使用してアップロード\)** を選択します。|
     |ストレージ アカウント|ストレージ アカウントを入力します。|
@@ -254,7 +251,7 @@ Scala アプリケーションを作成した後に、クラスターに送信�
 
 ## <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster"></a>HDInsight クラスターで Apache Spark アプリケーションをローカルまたはリモートでデバッグする
 
-クラスターに Spark アプリケーションを送信するお勧めの方法はほかにもあります。 それは、**実行/デバッグ構成**の IDE でパラメーターを設定する方法です。 [Azure Toolkit for IntelliJ を使用した HDInsight クラスター上での SSH による Apache Spark アプリケーションのローカルまたはリモートでのデバッグ](apache-spark-intellij-tool-debug-remotely-through-ssh.md)に関するページを参照してください。
+クラスターに Spark アプリケーションを送信するお勧めの方法はほかにもあります。 それは、**実行/デバッグ構成** の IDE でパラメーターを設定する方法です。 [Azure Toolkit for IntelliJ を使用した HDInsight クラスター上での SSH による Apache Spark アプリケーションのローカルまたはリモートでのデバッグ](apache-spark-intellij-tool-debug-remotely-through-ssh.md)に関するページを参照してください。
 
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ を使用して HDInsight Spark クラスターにアクセスして管理する
 
@@ -468,7 +465,7 @@ IntelliJ IDEA で作成した既存の Spark Scala アプリケーションを�
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-1. 上部の**検索**ボックスに「**HDInsight**」と入力します。
+1. 上部の **検索** ボックスに「**HDInsight**」と入力します。
 
 1. **[サービス]** の下の **[HDInsight クラスター]** を選択します。
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate での評価のためにマシンをグループ化する | Microsoft Docs
 description: Azure Migrate サービスでアセスメントを実行する前にマシンをグループ化する方法について説明します。
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 07/17/2019
-ms.author: hamusa
-ms.openlocfilehash: 867124a08bbad88b7dac5386ee6bc1c9c4d99c12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 364b5949e944a4317aa25f1f1b12545122881cec
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549925"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752109"
 ---
 # <a name="create-a-group-for-assessment"></a>評価用のグループを作成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "85549925"
 
 1. Azure Migrate プロジェクトの **[概要]** で、 **[サーバーの評価と移行]** をクリックします。 **Azure Migrate:Server Assessment** で、 **[グループ]** をクリックします。
     - まだ Azure Migrate:Server Assessment ツールを追加していない場合は、クリックして追加します。 [詳細については、こちらを参照してください](how-to-assess.md)。
-    - Azure Migrate プロジェクトをまだ作成していない場合は、[詳細を参照してください](how-to-add-tool-first-time.md)。
+    - Azure Migrate プロジェクトをまだ作成していない場合は、[詳細を参照してください](./create-manage-projects.md)。
 
     ![グループを選択する](./media/how-to-create-a-group/select-groups.png)
 
@@ -89,4 +89,3 @@ ms.locfileid: "85549925"
 ## <a name="next-steps"></a>次のステップ
 
 [依存関係マッピング](how-to-create-group-machine-dependencies.md)を設定し、使用して、信頼度の高いグループを作成する方法を確認します。
-

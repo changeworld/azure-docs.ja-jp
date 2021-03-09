@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: f43f7894c46a75894eb648f02ec378f3a8b2633d
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: f7e29fab542db79b22a9ace7371bc22d3526ac33
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628046"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710500"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -31,7 +31,7 @@ ms.locfileid: "84628046"
 * モデルが使用されるさまざまな環境 (屋内、屋外、交通騒音) からのサンプルを含める必要があります。
 * オーディオは、実稼働システムで使用するハードウェア デバイスを使用して収集する必要があります。 モデルで、さまざまな品質の記録デバイスで記録された音声を識別する必要がある場合は、モデルをトレーニングするために提供するオーディオ データでも、これらの多様なシナリオを表している必要があります。
 * 後でモデルにデータを追加することもできますが、データセットの多様性とプロジェクトのニーズの表現を維持するように注意してください。
-* カスタム モデル認識のニーズの範囲に*ない*データを含めると、認識品質全体に害を及ぼす可能性があるため、モデルで文字起こしする必要がないデータは含めないでください。
+* カスタム モデル認識のニーズの範囲に *ない* データを含めると、認識品質全体に害を及ぼす可能性があるため、モデルで文字起こしする必要がないデータは含めないでください。
 
 シナリオのサブセットでトレーニングされたモデルは、それらのシナリオでのみ適切に実行できます。 カスタム モデルで認識する必要があるシナリオの完全な範囲を表すデータを慎重に選択します。
 
@@ -47,19 +47,31 @@ ms.locfileid: "84628046"
 | データ型 | テストに使用 | 推奨数量 | トレーニングに使用 | 推奨数量 |
 |-----------|-----------------|----------|-------------------|----------|
 | [オーディオ](#audio-data-for-testing) | はい<br>目視検査に使用 | 5 つ以上のオーディオ ファイル | いいえ | 該当なし |
-| [オーディオ + 人間というラベルが付いたトランスクリプト](#audio--human-labeled-transcript-data-for-testingtraining) | はい<br>精度を評価するために使用 | 0.5-5 時間のオーディオ | はい | 1 - 1,000 時間のオーディオ |
+| [オーディオ + 人間というラベルが付いたトランスクリプト](#audio--human-labeled-transcript-data-for-testingtraining) | はい<br>精度を評価するために使用 | 0.5-5 時間のオーディオ | はい | 1 - 20 時間のオーディオ |
 | [関連するテキスト](#related-text-data-for-training) | いいえ | 該当なし | はい | 1 - 200 MB の関連テキスト |
+
+新しいモデルをトレーニングするときには、[関連テキスト](#related-text-data-for-training)から開始します。 このデータでは、特殊な用語や語句の認識が既に改善されています。 テキストを使用したトレーニングは、オーディオによるトレーニングよりもはるかに高速です (分単位と日単位)。
 
 ファイルは、型別にデータセットにグループ化し、ZIP ファイルとしてアップロードする必要があります。 各データセットには、1 つのデータの種類のみを含めることができます。
 
 > [!TIP]
 > すぐに始めるには、サンプルデータの使用を検討してください。 <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">サンプル Custom Speech データ <span class="docon docon-navigate-external x-hidden-focus"></span></a>については、こちらの GitHub リポジトリを参照する
 
-## <a name="upload-data"></a>データのアップロード
+> [!NOTE]
+> すべての基本モデルでオーディオのトレーニングがサポートされるわけではありません。 基本モデルでサポートされていない音声サービスは、トランスクリプトのテキストのみを使用し、オーディオを無視します。 オーディオ データを使用したトレーニングをサポートする基本モデルの一覧については、「[言語のサポート](language-support.md#speech-to-text)」を参照してください。 基本モデルでオーディオ データを使用したトレーニングがサポートされている場合でも、サービスによってオーディオの一部しか使用されないことがあります。 その場合も、すべてのトランスクリプトが使用されます。
 
-データをアップロードするには、<a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech ポータル <span class="docon docon-navigate-external x-hidden-focus"></span></a>に移動します。 ポータルで、 **[データのアップロード]** をクリックしてウィザードを起動し、最初のデータセットを作成します。 データのアップロードが許可される前に、データセットにより音声データ型を選択するように求められます。
+> [!NOTE]
+> トレーニングに使用する基本モデルを変更し、トレーニング データセットにオーディオが含まれる場合は、選択した新しい基本モデルが [オーディオ データを使用したトレーニングをサポート](language-support.md#speech-to-text)しているかどうかを "*常に*" 確認します。 以前使用した基本モデルでオーディオ データを使用したトレーニングがサポートされておらず、トレーニング データセットにオーディオが含まれる場合は、新しい基本モデルを使用したトレーニングの時間が **大幅に** 増加し、数時間から数日以上かかる可能性が大いにあります。 これは特に、音声サービスのサブスクリプションが、トレーニング用の [専用ハードウェアがあるリージョン](custom-speech-overview.md#set-up-your-azure-account)に **存在しない** 場合に当てはまります。
+>
+> 上の段落で説明されている問題が発生した場合、データセット内のオーディオの量を減らすか、完全に削除してテキストのみを残すことで、トレーニング時間を簡単に短縮できます。 音声サービスのサブスクリプションが、トレーニング用の [専用ハードウェアがあるリージョン](custom-speech-overview.md#set-up-your-azure-account)に **存在しない** 場合、後者のオプションを強くお勧めします。
+>
+> トレーニング用の専用ハードウェアがあるリージョンでは、音声サービスは最大 20 時間のオーディオをトレーニングに使用します。 他のリージョンでは、最大 8 時間のオーディオのみが使用されます。
 
-![Speech ポータルからオーディオを選択する](./media/custom-speech/custom-speech-select-audio.png)
+## <a name="upload-data"></a>データをアップロードする
+
+データをアップロードするには、<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a> に移動します。 ポータルで、 **[データのアップロード]** をクリックしてウィザードを起動し、最初のデータセットを作成します。 データのアップロードが許可される前に、データセットにより音声データ型を選択するように求められます。
+
+![Speech ポータルのオーディオ アップロード オプションが強調表示されているスクリーンショット。](./media/custom-speech/custom-speech-select-audio.png)
 
 アップロードする各データセットでは、選択したデータの種類の要件が満たされている必要があります。 アップロードする前に、データの書式を正しく設定する必要があります。 データが正しくフォーマットされていれば、Custom Speech サービスによって正確に処理されます。 要件は、以降のセクションに示されています。
 
@@ -117,13 +129,16 @@ ms.locfileid: "84628046"
 > [!NOTE]
 > トレーニング データとテスト データをアップロードする場合、.zip ファイルのサイズは 2 GB を超えることはできません。 *単一* のデータセットからのみテストできます。確認して、適切なファイルサイズで保持するようにしてください。 また、各トレーニング ファイルは 60 秒を超えることはできません。超えてしまうと、エラーが発生します。
 
-単語の削除や置換のような問題に対処するには、認識を向上させるために大量のデータが必要です。 一般に、約 10 から 1,000 時間分のオーディオについて単語単位の文字起こしを提供することをお勧めします。 すべての WAV ファイルの文字起こしは、1 つのプレーン テキスト ファイルに格納されている必要があります。 文字起こしファイルの各行には、いずれかのオーディオ ファイルの名前に続けて、対応する文字起こしが含まれている必要があります。 ファイル名と文字起こしは、タブ (\t) で区切る必要があります。
+単語の削除や置換のような問題に対処するには、認識を向上させるために大量のデータが必要です。 一般に、1 時間から 20 時間分のオーディオについて単語単位の文字起こしを提供することをお勧めします。 ただし、30 分程度でも、認識結果の向上に役立つことがあります。 すべての WAV ファイルの文字起こしは、1 つのプレーン テキスト ファイルに格納されている必要があります。 文字起こしファイルの各行には、いずれかのオーディオ ファイルの名前に続けて、対応する文字起こしが含まれている必要があります。 ファイル名と文字起こしは、タブ (\t) で区切る必要があります。
 
-  次に例を示します。
-```
-  speech01.wav  speech recognition is awesome
-  speech02.wav  the quick brown fox jumped all over the place
-  speech03.wav  the lazy dog was not amused
+次に例を示します。
+
+<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
+
+```input
+speech01.wav    speech recognition is awesome
+speech02.wav    the quick brown fox jumped all over the place
+speech03.wav    the lazy dog was not amused
 ```
 
 > [!IMPORTANT]
@@ -131,10 +146,14 @@ ms.locfileid: "84628046"
 
 文字起こしに対しては、システムによって処理できるように、テキストの正規化が行われます。 ただし、データを Speech Studio にアップロードする前に実行する必要がある重要な正規化がいくつかあります。 文字起こしを準備する際に使用する適切な言語については、「[How to create a human-labeled transcription](how-to-custom-speech-human-labeled-transcriptions.md)」(人間とラベル付けされた文字起こしの作成方法) を参照してください。
 
-オーディオ ファイルと対応する文字起こしを収集した後、<a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech ポータル <span class="docon docon-navigate-external x-hidden-focus"></span></a>にアップロードする前に、それらを1つの .zip ファイルとしてパッケージ化します。 3 つのオーディオ ファイルと、人間とラベル付けされた文字起こしファイルを含むデータセットの例を示します:
+オーディオ ファイルと対応する文字起こしを収集した後、<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a> にアップロードする前に、それらを 1 つの .zip ファイルとしてパッケージ化します。 3 つのオーディオ ファイルと、人間とラベル付けされた文字起こしファイルを含むデータセットの例を示します:
 
 > [!div class="mx-imgBorder"]
 > ![Speech ポータルからオーディオを選択する](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
+
+Speech サービスのサブスクリプションで推奨されるリージョンの一覧については、「[Azure アカウントの設定](custom-speech-overview.md#set-up-your-azure-account)」をご覧ください。 これらのリージョンのいずれかで Speech サブスクリプションを設定すると、モデルのトレーニングにかかる時間が短縮されます。 他のリージョンでトレーニングによって処理できるオーディオが 1 日 1 時間のみであるのに対し、これらのリージョンでは、1 日 10 時間程度のオーディオ処理を行うことができます。 1 週間以内にモデル トレーニングを完了できない場合、モデルは失敗とマークされます。
+
+すべての基本モデルでオーディオ データを使用したトレーニングがサポートされるわけではありません。 基本モデルでサポートされていない場合、サービスではオーディオが無視され、文字起こしされたテキストのみでトレーニングが行われます。 この場合、トレーニングは、関連するテキストを使用したトレーニングと同じになります。 オーディオ データを使用したトレーニングをサポートする基本モデルの一覧については、「[言語のサポート](language-support.md#speech-to-text)」を参照してください。
 
 ## <a name="related-text-data-for-training"></a>トレーニング用の関連するテキスト データ
 
@@ -145,11 +164,13 @@ ms.locfileid: "84628046"
 | 文 (発話) | 製品名を認識する場合や、文のコンテキスト内で業界固有の語彙を認識する場合の精度を向上させます。 |
 | 発音 | 一般的でない用語、略語、またはその他の発音が定義されていない単語の発音を向上させることができます。 |
 
-発話は、1 つまたは複数のテキスト ファイルとして提供できます。 正確性を高めるには、読み上げられる発話に近いテキスト データを使用します。 発音は、1 つのテキスト ファイルとして指定する必要があります。 すべてを 1つの zip ファイルとしてパッケージ化し、<a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech ポータル <span class="docon docon-navigate-external x-hidden-focus"></span></a>にアップロードできます。
+発話は、1 つまたは複数のテキスト ファイルとして提供できます。 正確性を高めるには、読み上げられる発話に近いテキスト データを使用します。 発音は、1 つのテキスト ファイルとして指定する必要があります。 すべてを 1 つの zip ファイルとしてパッケージ化し、<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a> にアップロードできます。
+
+通常、関連するテキストを使用したトレーニングは数分で完了します。
 
 ### <a name="guidelines-to-create-a-sentences-file"></a>発話ファイルを作成するためのガイドライン
 
-関連する文を使用してカスタム モデルを作成するには、サンプルの発話の一覧を提供する必要があります。 発話は、完全または文法的に正しい_必要はありません_が、運用環境で期待される音声入力を正確に反映する必要があります。 特定の用語の重みを付けるには、これらの特定の用語を含む複数の文を追加します。
+関連する文を使用してカスタム モデルを作成するには、サンプルの発話の一覧を提供する必要があります。 発話は、完全または文法的に正しい _必要はありません_ が、運用環境で期待される音声入力を正確に反映する必要があります。 特定の用語の重みを付けるには、これらの特定の用語を含む複数の文を追加します。
 
 一般的なガイダンスとして、モデル適応は、トレーニングテキストが運用環境で予想される実際のテキストにできるだけ近い場合に最も効果的です。 強化する対象として、ドメイン固有の用語や語句をトレーニングテキストに含める必要があります。 可能であれば、1つの文またはキーワードを別の行に制御してみてください。 ユーザーにとって重要なキーワードと語句 (製品名など) は、数回コピーできます。 しかし、コピーしすぎないでください。これは、全体的な認識率に影響する可能性があります。
 
@@ -163,7 +184,7 @@ ms.locfileid: "84628046"
 
 さらに、次の制限を考慮します。
 
-* 文字を 5 回以上繰り返さないようにします。 例: "aaaa" や "uuuu"。
+* 文字、単語、または単語のグループを 3 回より多く繰り返すことは避けます。 たとえば、"aaaa"、"yeah yeah yeah yeah"、または "that's it that's it that's it that's it" です。 繰り返し回数が多すぎる行は、Speech サービスによって削除される可能性があります。
 * 特殊文字または 上記 `U+00A1` の UTF-8 文字は使用しないでください。
 * URI は拒否されます。
 
@@ -204,4 +225,4 @@ ms.locfileid: "84628046"
 * [データを検査する](how-to-custom-speech-inspect-data.md)
 * [データを評価する](how-to-custom-speech-evaluate-data.md)
 * [モデルをトレーニングする](how-to-custom-speech-train-model.md)
-* [モデルをデプロイする](how-to-custom-speech-deploy-model.md)
+* [モデルをデプロイする](./how-to-custom-speech-train-model.md)

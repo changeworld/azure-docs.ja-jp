@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 08/24/2020
+ms.date: 01/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f6ec9c1fb5ae359ca88b48dea97c6a00c0f2b40
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6e274d35fde6a3d55c05bcb5a9f22e75a37aa3c6
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815183"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955401"
 ---
 # <a name="what-is-identity-protection"></a>Identity Protection とは
 
@@ -49,17 +49,20 @@ Identity Protection は、次の分類のリスクを識別します。
 
 | リスク検出の種類 | 説明 |
 | --- | --- |
-| 特殊な移動 | ユーザーの最近のサインインに基づき特殊と判断された場所からのサインイン。 |
 | 匿名 IP アドレス | 匿名の IP アドレスからのサインイン (例:Tor Browser、Anonymizer VPN)。 |
-| 通常とは異なるサインイン プロパティ | 指定されたユーザーで最近観察されていないプロパティを使用したサインイン。 |
+| 特殊な移動 | ユーザーの最近のサインインに基づき特殊と判断された場所からのサインイン。 |
 | マルウェアにリンクした IP アドレス | マルウェアにリンクした IP アドレスからのサインイン |
-| 資格情報の漏洩 | このリスク検出は、ユーザーの有効な資格情報が漏洩したことを示します。 |
+| 通常とは異なるサインイン プロパティ | 指定されたユーザーで最近観察されていないプロパティを使用したサインイン。 |
+| 資格情報の漏洩 | ユーザーの有効な資格情報が漏洩したことを示します。 |
 | パスワード スプレー | ブルート フォースを束ねた手法で、複数のユーザー名が共通のパスワードを使用して攻撃されていることを示します。 |
 | Azure AD 脅威インテリジェンス | Microsoft の内部および外部の脅威インテリジェンス ソースが既知の攻撃パターンを特定しました。 |
+| 初めての国 | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country) によって検出されます。 |
+| 匿名 IP アドレスからのアクティビティ | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses) によって検出されます。 |
+| 受信トレイからの疑わしい転送 | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding) によって検出されます。 |
 
 これらのリスクとその計算方法の詳細については、「[リスクとは](concept-identity-protection-risks.md)」を説明する記事を参照してください。
 
-リスクシグナルは、Azure Multi-Factor Authentication の実行、セルフサービス パスワード リセットを使用したパスワードのリセット、管理者がアクションを実行するまでのブロックなど、修復作業をトリガーすることができます。
+リスク シグナルは、Azure AD Multi-Factor Authentication の実行、セルフサービス パスワード リセットを使用したパスワードのリセット、管理者がアクションを実行するまでのブロックなど、修復作業をトリガーすることができます。
 
 ## <a name="risk-investigation"></a>リスクの調査
 
@@ -96,23 +99,25 @@ Identity Protection にユーザーがにアクセスするためには、セキ
 
 現在のところ、セキュリティ オペレーター ロールでは危険なサインイン レポートにアクセスできません。
 
-条件付きアクセス管理者は、条件としてサインイン リスクを考慮に入れるポリシーを作成することもできます。詳細については、「[条件付きアクセス: 条件](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)」を参照してください。
+条件付きアクセス管理者は、条件としてサインイン リスクを考慮に入れるポリシーを作成することもできます。 詳細については、「[条件付きアクセス:条件](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)」を参照してください。
 
 ## <a name="license-requirements"></a>ライセンスの要件
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| 機能 | 詳細 | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Free / Office 365 アプリ |
+| 機能 | 詳細  | Azure AD Free / Microsoft 365 Apps | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
-| リスク ポリシー | ユーザー リスク ポリシー (Identity Protection 経由) | はい | いいえ | いいえ |
-| リスク ポリシー | サインイン リスク ポリシー (Identity Protection または条件付きアクセス経由) | はい | いいえ | いいえ |
-| セキュリティ レポート | 概要 | はい | いいえ | いいえ |
-| セキュリティ レポート | 危険なユーザー | フル アクセス | 限定的な情報 | 限定的な情報 |
-| セキュリティ レポート | リスクの高いサインイン | フル アクセス | 限定的な情報 | 限定的な情報 |
-| セキュリティ レポート | リスク検出 | フル アクセス | 限定的な情報 | いいえ |
-| 通知 | 危険な状態のユーザーが検出されたアラート | はい | いいえ | いいえ |
-| 通知 | 週間ダイジェスト | はい | いいえ | いいえ |
-| | MFA 登録ポリシー | はい | いいえ | いいえ |
+| リスク ポリシー | ユーザー リスク ポリシー (Identity Protection 経由)  | いいえ | いいえ |はい | 
+| リスク ポリシー | サインイン リスク ポリシー (Identity Protection または条件付きアクセス経由)  | いいえ |  いいえ |はい |
+| セキュリティ レポート | 概要 |  いいえ | いいえ |はい |
+| セキュリティ レポート | 危険なユーザー  | 限定的な情報。 リスクの程度が中から高のユーザーのみが表示されます。 詳細ドロアーやリスクの履歴は提供されません。 | 限定的な情報。 リスクの程度が中から高のユーザーのみが表示されます。 詳細ドロアーやリスクの履歴は提供されません。 | フル アクセス|
+| セキュリティ レポート | リスクの高いサインイン  | 限定的な情報。 リスクの詳細やリスク レベルは表示されません。 | 限定的な情報。 リスクの詳細やリスク レベルは表示されません。 | フル アクセス|
+| セキュリティ レポート | リスク検出   | いいえ | 限定的な情報。 詳細ドロアーは提供されません。| フル アクセス|
+| 通知 | 危険な状態のユーザーが検出されたアラート  | いいえ | いいえ |はい |
+| 通知 | 週間ダイジェスト| いいえ | いいえ | はい | 
+| | MFA 登録ポリシー | いいえ | いいえ | はい |
+
+これらの高度なレポートの詳細については次の記事を参照してください。[リスクを調査する方法](howto-identity-protection-investigate-risk.md#navigating-the-reports)。
 
 ## <a name="next-steps"></a>次のステップ
 

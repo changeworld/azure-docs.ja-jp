@@ -1,230 +1,294 @@
 ---
-title: Azure PowerShell を使用して Azure プライベート エンドポイントを作成する | Microsoft Docs
-description: Azure Private Link について学習する
+title: クイック スタート - Azure PowerShell を使用して Azure プライベート エンドポイントを作成する
+description: このクイックスタートを使用して、Azure PowerShell を使用してプライベート エンドポイントを作成する方法について学習します。
 services: private-link
-author: malopMSFT
+author: asudbring
 ms.service: private-link
-ms.topic: how-to
-ms.date: 09/16/2019
+ms.topic: quickstart
+ms.date: 11/02/2020
 ms.author: allensu
-ms.openlocfilehash: 0c6fc36be101679cea3a770f311005f63c3f0d66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68a4703cc2dc1b2898057e138fda7de9eff146e7
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737378"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807464"
 ---
-# <a name="create-a-private-endpoint-using-azure-powershell"></a>Azure PowerShell を使用してプライベート エンドポイントを作成する
-プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 
+# <a name="use-powershell-to-create-a-private-endpoint"></a>PowerShell を使用してプライベート エンドポイントを作成する
 
-このクイック スタートでは、Azure PowerShell を使用して、Azure 仮想ネットワーク上の VM と、Azure プライベート エンドポイントを含む論理 SQL サーバーを作成する方法を説明します。 その後、VM から SQL Database に安全にアクセスできます。
+プライベート エンドポイントを使用して Azure Web アプリに安全に接続することにより、Azure Private Link の使用を開始します。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+このクイックスタートでは、Azure Web アプリのプライベート エンドポイントを作成し、仮想マシンをデプロイしてプライベート接続をテストします。  
+
+プライベート エンドポイントは、Azure SQL や Azure Storage などのさまざまな種類の Azure サービスに対して作成できます。
+
+## <a name="prerequisites"></a>前提条件
+
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 対象の Azure サブスクリプションにデプロイされている **PremiumV2 レベル** 以上のアプリ サービス プランを持つ Azure Web アプリ。  
+    * 詳細および例については、「[クイックスタート: Azure に ASP.NET Core Web アプリを作成する](../app-service/quickstart-dotnetcore.md)」を参照してください。 
+    * Web アプリとエンドポイントの作成に関する詳細なチュートリアルについては「[チュートリアル: Azure プライベート エンドポイントを使用して Web アプリに接続する](tutorial-private-endpoint-webapp-portal.md)」を参照してください。
+
+PowerShell をインストールしてローカルで使用する場合、この記事では Azure PowerShell モジュール バージョン 5.4.1 以降が必要になります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-リソースを作成する前に、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して、仮想ネットワークとプライベート エンドポイントをホストするリソース グループを作成する必要があります。 次の例では、*myResourceGroup* という名前のリソース グループを場所 *WestUS* に作成します。
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-```azurepowershell
-
-New-AzResourceGroup `
-  -ResourceGroupName myResourceGroup `
-  -Location westcentralus
-```
-
-## <a name="create-a-virtual-network"></a>仮想ネットワークを作成します
-このセクションでは、仮想ネットワークとサブネットを作成します。 次に、サブネットを仮想ネットワークに関連付けます。
-
-### <a name="create-a-virtual-network"></a>仮想ネットワークを作成します
-
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用してプライベート エンドポイント用の仮想ネットワークを作成します。 次の例では、*MyVirtualNetwork* という名前の仮想ネットワークを作成します。
- 
-```azurepowershell
-
-$virtualNetwork = New-AzVirtualNetwork `
-  -ResourceGroupName myResourceGroup `
-  -Location westcentralus `
-  -Name myVirtualNetwork `
-  -AddressPrefix 10.0.0.0/16
-```
-
-### <a name="add-a-subnet"></a>サブネットを追加する
-
-Azure では、仮想ネットワーク内のサブネットにリソースがデプロイされるため、サブネットを作成する必要があります。 [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) を使用して、*mySubnet* というサブネット構成を作成します。 次の例では、プライベート エンドポイントのネットワーク ポリシー フラグを **Disabled** に設定して、*mySubnet* という名前のサブネットを作成します。
-
-```azurepowershell
-$subnetConfig = Add-AzVirtualNetworkSubnetConfig `
-  -Name mySubnet `
-  -AddressPrefix 10.0.0.0/24 `
-  -PrivateEndpointNetworkPoliciesFlag "Disabled" `
-  -VirtualNetwork $virtualNetwork
-```
-
-> [!CAUTION]
-> いずれも長い言葉であり、見た目が似ているため、`PrivateEndpointNetworkPoliciesFlag` パラメーターと利用できる別のフラグ `PrivateLinkServiceNetworkPoliciesFlag` は混同しやすくなっています。  必ず正しい方を、つまり、`PrivateEndpointNetworkPoliciesFlag` を使用してください。
-
-### <a name="associate-the-subnet-to-the-virtual-network"></a>サブネットを仮想ネットワークに関連付ける
-
-[Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) を使用して、仮想ネットワークにサブネット構成を書き込むことができます。 このコマンドで、サブネットが作成されます。
-
-```azurepowershell
-$virtualNetwork | Set-AzVirtualNetwork
-```
-
-## <a name="create-a-virtual-machine"></a>仮想マシンを作成する
-
-[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して、仮想ネットワーク内に VM を作成します。 次のコマンドを実行すると、資格情報の入力が求められます。 VM のユーザー名とパスワードを入力します。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して、次のようにリソース グループを作成します。
 
 ```azurepowershell-interactive
-New-AzVm `
-    -ResourceGroupName "myResourceGroup" `
-    -Name "myVm" `
-    -Location "westcentralus" `
-    -VirtualNetworkName "MyVirtualNetwork" `
-    -SubnetName "mySubnet" `
-    -SecurityGroupName "myNetworkSecurityGroup" `
-    -PublicIpAddressName "myPublicIpAddress" `
-    -OpenPorts 80,3389 `
-    -AsJob  
+New-AzResourceGroup -Name 'CreatePrivateEndpointQS-rg' -Location 'eastus'
 ```
 
-`-AsJob` オプションを使用すると、バックグラウンドで VM が作成されます。 次の手順に進むことができます。
+## <a name="create-a-virtual-network-and-bastion-host"></a>仮想ネットワークと bastion ホストの作成
 
-Azure でバックグラウンドで VM の作成を開始すると、次のような内容が返されます。
+このセクションでは、仮想ネットワーク、サブネット、bastion ホストを作成します。 
 
-```powershell
-Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
---     ----            -------------   -----         -----------     --------             -------
-1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM
-```
+bastion ホストは、プライベート エンドポイントをテストする目的で、仮想マシンに安全に接続するために使用されます。
 
-## <a name="create-a-logical-sql-server"></a>論理 SQL サーバーの作成 
+次を使用して仮想ネットワークと bastion ホストを作成します。
 
-New-AzSqlServer コマンドを使用して論理 SQL サーバーを作成します。 サーバーの名前は Azure 全体で一意である必要があるため、角かっこ内のプレースホルダーの値を独自の一意の値に必ず置き換えてください。
+* [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)
+* [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)
+* [New-AzBastion](/powershell/module/az.network/new-azbastion)
 
 ```azurepowershell-interactive
-$adminSqlLogin = "SqlAdmin"
-$password = "ChangeYourAdminPassword1"
+## Create backend subnet config. ##
+$subnetConfig = New-AzVirtualNetworkSubnetConfig -Name myBackendSubnet -AddressPrefix 10.0.0.0/24
 
-$server = New-AzSqlServer -ResourceGroupName "myResourceGroup" `
-    -ServerName "myserver" `
-    -Location "WestCentralUS" `
-    -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminSqlLogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
+## Create Azure Bastion subnet. ##
+$bastsubnetConfig = New-AzVirtualNetworkSubnetConfig -Name AzureBastionSubnet -AddressPrefix 10.0.1.0/24
 
-New-AzSqlDatabase  -ResourceGroupName "myResourceGroup" `
-    -ServerName "myserver"`
-    -DatabaseName "myda"`
-    -RequestedServiceObjectiveName "S0" `
-    -SampleName "AdventureWorksLT"
+## Create the virtual network. ##
+$parameters1 = @{
+    Name = 'MyVNet'
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Location = 'eastus'
+    AddressPrefix = '10.0.0.0/16'
+    Subnet = $subnetConfig, $bastsubnetConfig
+}
+$vnet = New-AzVirtualNetwork @parameters1
+
+## Create public IP address for bastion host. ##
+$parameters2 = @{
+    Name = 'myBastionIP'
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Location = 'eastus'
+    Sku = 'Standard'
+    AllocationMethod = 'Static'
+}
+$publicip = New-AzPublicIpAddress @parameters2
+
+## Create bastion host ##
+$parameters3 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Name = 'myBastion'
+    PublicIpAddress = $publicip
+    VirtualNetwork = $vnet
+}
+New-AzBastion @parameters3
 ```
 
-## <a name="create-a-private-endpoint"></a>プライベート エンドポイントを作成する
+Azure Bastion ホストがデプロイされるまでに数分かかる場合があります。
 
-[New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection) を使用した仮想ネットワーク内のサーバーのプライベート エンドポイント: 
+## <a name="create-test-virtual-machine"></a>テスト用の仮想マシンを作成する
 
-```azurepowershell
+このセクションでは、プライベート エンドポイントのテストに使用する仮想マシンを作成します。
 
-$privateEndpointConnection = New-AzPrivateLinkServiceConnection -Name "myConnection" `
-  -PrivateLinkServiceId $server.ResourceId `
-  -GroupId "sqlServer" 
- 
-$virtualNetwork = Get-AzVirtualNetwork -ResourceGroupName  "myResourceGroup" -Name "MyVirtualNetwork"  
- 
-$subnet = $virtualNetwork `
-  | Select -ExpandProperty subnets `
-  | Where-Object  {$_.Name -eq 'mysubnet'}  
- 
-$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
-  -Name "myPrivateEndpoint" `
-  -Location "westcentralus" `
-  -Subnet  $subnet `
-  -PrivateLinkServiceConnection $privateEndpointConnection
-``` 
+次のコマンドを使用して、仮想マシンを作成します。
 
-## <a name="configure-the-private-dns-zone"></a>プライベート DNS ゾーンを構成する 
-SQL Database ドメイン用のプライベート DNS ゾーンを作成し、Virtual Network に対する関連付けリンクを作成します。また、プライベート エンドポイントをプライベート DNS ゾーンに関連付けるために、DNS ゾーン グループを作成します。
-
-```azurepowershell
-
-$zone = New-AzPrivateDnsZone -ResourceGroupName "myResourceGroup" `
-  -Name "privatelink.database.windows.net" 
- 
-$link  = New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "myResourceGroup" `
-  -ZoneName "privatelink.database.windows.net"`
-  -Name "mylink" `
-  -VirtualNetworkId $virtualNetwork.Id  
-
-$config = New-AzPrivateDnsZoneConfig -Name "privatelink.database.windows.net" -PrivateDnsZoneId $zone.ResourceId
-
-$privateDnsZoneGroup = New-AzPrivateDnsZoneGroup -ResourceGroupName "myResourceGroup" `
- -PrivateEndpointName "myPrivateEndpoint" -name "MyZoneGroup" -PrivateDnsZoneConfig $config
-``` 
-  
-## <a name="connect-to-a-vm-from-the-internet"></a>インターネットから VM に接続する
-
-[Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) を使用して、VM のパブリック IP アドレスを返します。 この例では、*myVM* VM のパブリック IP アドレスを返しています。
-
-```azurepowershell
-Get-AzPublicIpAddress `
-  -Name myPublicIpAddress `
-  -ResourceGroupName myResourceGroup `
-  | Select IpAddress 
-```  
-お使いのローカル コンピューターでコマンド プロンプトを開きます。 mstsc コマンドを実行します。 <publicIpAddress> を最後の手順で返されたパブリック IP アドレスに置き換えます。 
+  * [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential)
+  * [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 
+  * [New-AzVM](/powershell/module/az.compute/new-azvm)
+  * [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
+  * [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem)
+  * [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage)
+  * [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface)
 
 
-> [!NOTE]
-> ローカル コンピューター上の PowerShell プロンプトからこれらのコマンドを実行済みで、Az PowerShell モジュール バージョン 1.0 以降を使用している場合、そのインターフェイスで続行できます。
-```
-mstsc /v:<publicIpAddress>
+```azurepowershell-interactive
+## Set credentials for server admin and password. ##
+$cred = Get-Credential
+
+## Command to get virtual network configuration. ##
+$vnet = Get-AzVirtualNetwork -Name myVNet -ResourceGroupName CreatePrivateEndpointQS-rg
+
+## Command to create network interface for VM ##
+$parameters1 = @{
+    Name = 'myNicVM'
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Location = 'eastus'
+    Subnet = $vnet.Subnets[0]
+}
+$nicVM = New-AzNetworkInterface @parameters1
+
+## Create a virtual machine configuration.##
+$parameters2 = @{
+    VMName = 'myVM'
+    VMSize = 'Standard_DS1_v2'
+}
+$parameters3 = @{
+    ComputerName = 'myVM'
+    Credential = $cred
+}
+$parameters4 = @{
+    PublisherName = 'MicrosoftWindowsServer'
+    Offer = 'WindowsServer'
+    Skus = '2019-Datacenter'
+    Version = 'latest'
+}
+$vmConfig = 
+New-AzVMConfig @parameters2 | Set-AzVMOperatingSystem -Windows @parameters3 | Set-AzVMSourceImage @parameters4 | Add-AzVMNetworkInterface -Id $nicVM.Id
+
+## Create the virtual machine ##
+New-AzVM -ResourceGroupName 'CreatePrivateEndpointQS-rg' -Location 'eastus' -VM $vmConfig
 ```
 
-1. メッセージが表示されたら、 **[Connect]** を選択します。 
-2. VM の作成時に指定したユーザー名とパスワードを入力します。
-  > [!NOTE]
-  > 場合によっては、[その他] > [別のアカウントを使用する] を選択して、VM の作成時に入力した資格情報を指定する必要があります。 
-  
-3. **[OK]** を選択します。 
-4. 証明書の警告を受け取ることがあります。 この場合は、 **[はい]** または **[続行]** を選択します。 
+## <a name="create-private-endpoint"></a>プライベート エンドポイントの作成
 
-## <a name="access-sql-database-privately-from-the-vm"></a>VM から SQL Database にプライベートにアクセスする
+このセクションでは、次を使用してプライベート エンドポイントと接続を作成します。
 
-1. myVM のリモート デスクトップで、PowerShell を開きます。
-2. 「`nslookup myserver.database.windows.net`」と入力します。 `myserver` は必ず SQL サーバー名に置き換えてください。
+* [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection)
+* [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint)
 
-    次のようなメッセージが返されます。
-    
-    ```azurepowershell
+```azurepowershell-interactive
+## Place web app into variable. Replace <webapp-resource-group-name> with the resource group of your webapp. ##
+## Replace <your-webapp-name> with your webapp name ##
+$webapp = Get-AzWebApp -ResourceGroupName <webapp-resource-group-name> -Name <your-webapp-name>
+
+## Create private endpoint connection. ##
+$parameters1 = @{
+    Name = 'myConnection'
+    PrivateLinkServiceId = $webapp.ID
+    GroupID = 'sites'
+}
+$privateEndpointConnection = New-AzPrivateLinkServiceConnection @parameters1
+
+## Place virtual network into variable. ##
+$vnet = Get-AzVirtualNetwork -ResourceGroupName 'CreatePrivateEndpointQS-rg' -Name 'myVNet'
+
+## Disable private endpoint network policy ##
+$vnet.Subnets[0].PrivateEndpointNetworkPolicies = "Disabled"
+$vnet | Set-AzVirtualNetwork
+
+## Create private endpoint
+$parameters2 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Name = 'myPrivateEndpoint'
+    Location = 'eastus'
+    Subnet = $vnet.Subnets[0]
+    PrivateLinkServiceConnection = $privateEndpointConnection
+}
+New-AzPrivateEndpoint @parameters2
+```
+## <a name="configure-the-private-dns-zone"></a>プライベート DNS ゾーンを構成する
+
+このセクションでは、次を使用してプライベート DNS ゾーンを作成し、構成します。
+
+* [New-AzPrivateDnsZone](/powershell/module/az.privatedns/new-azprivatednszone)
+* [New-AzPrivateDnsVirtualNetworkLink](/powershell/module/az.privatedns/new-azprivatednsvirtualnetworklink)
+* [New-AzPrivateDnsZoneConfig](/powershell/module/az.network/new-azprivatednszoneconfig)
+* [New-AzPrivateDnsZoneGroup](/powershell/module/az.network/new-azprivatednszonegroup)
+
+```azurepowershell-interactive
+## Place virtual network into variable. ##
+$vnet = Get-AzVirtualNetwork -ResourceGroupName 'CreatePrivateEndpointQS-rg' -Name 'myVNet'
+
+## Create private dns zone. ##
+$parameters1 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Name = 'privatelink.azurewebsites.net'
+}
+$zone = New-AzPrivateDnsZone @parameters1
+
+## Create dns network link. ##
+$parameters2 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    ZoneName = 'privatelink.azurewebsites.net'
+    Name = 'myLink'
+    VirtualNetworkId = $vnet.Id
+}
+$link = New-AzPrivateDnsVirtualNetworkLink @parameters2
+
+## Create DNS configuration ##
+$parameters3 = @{
+    Name = 'privatelink.azurewebsites.net'
+    PrivateDnsZoneId = $zone.ResourceId
+}
+$config = New-AzPrivateDnsZoneConfig @parameters3
+
+## Create DNS zone group. ##
+$parameters4 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    PrivateEndpointName = 'myPrivateEndpoint'
+    Name = 'myZoneGroup'
+    PrivateDnsZoneConfig = $config
+}
+New-AzPrivateDnsZoneGroup @parameters4
+```
+
+## <a name="test-connectivity-to-private-endpoint"></a>プライベート エンドポイントへの接続のテスト
+
+このセクションでは、前の手順で作成した仮想マシンを使用し、プライベート エンドポイントを通じて SQL サーバーに接続します。
+
+1. [Azure ポータル](https://portal.azure.com) 
+ 
+2. 左側のナビゲーション ペインで **[リソース グループ]** を選択します。
+
+3. **[CreatePrivateEndpointQS-rg]** を選択します。
+
+4. **[myVM]** を選択します。
+
+5. **myVM** の [概要] ページで **[接続]** 、 **[Bastion]** の順に選択します。
+
+6. 青色の **[Bastion を使用する]** ボタンを選択します。
+
+7. 仮想マシンの作成時に入力したユーザー名とパスワードを入力します。
+
+8. 接続後にサーバーで Windows PowerShell を開きます。
+
+9. 「`nslookup <your-webapp-name>.azurewebsites.net`」と入力します。 **\<your-webapp-name>** を、前の手順で作成した Web アプリの名前に置き換えます。  以下に表示されるようなメッセージが返されます。
+
+    ```powershell
     Server:  UnKnown
     Address:  168.63.129.16
-    Non-authoritative answer:
-    Name:    myserver.privatelink.database.windows.net
-    Address:  10.0.0.5
-    Aliases:   myserver.database.windows.net
-    ```
-    
-3. [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15) をインストールします。
-4. **[サーバーに接続]** で、次の情報を入力または選択します。
 
-    | 設定 | 値 |
-    | --- | --- |
-    | サーバーの種類 | データベース エンジン |
-    | サーバー名 | myserver.database.windows.net |
-    | ユーザー名 | 作成時に指定したユーザー名を入力します |
-    | Password | 作成時に指定したパスワードを入力します |
-    | パスワードを保存する | はい |
-    
-5. **[接続]** を選択します。
-6. 左側のメニューで **[データベース]** を参照します。 
-7. (省略可能) 情報を作成するか、mydatabase に対して情報のクエリを実行します。
-8. *myVM* へのリモート デスクトップ接続を閉じます。 
+    Non-authoritative answer:
+    Name:    mywebapp8675.privatelink.azurewebsites.net
+    Address:  10.0.0.5
+    Aliases:  mywebapp8675.azurewebsites.net
+    ```
+
+    Web アプリ名に対応する **10.0.0.5** というプライベート IP アドレスが返されます。  このアドレスは、先ほど作成した仮想ネットワークのサブネット内に存在します。
+
+10. **myVM** への bastion 接続で、Internet Explorer を開きます。
+
+11. Web アプリの URL **https://\<your-webapp-name>.azurewebsites.net** を入力します。
+
+12. アプリケーションがデプロイされていない場合は、既定の Web アプリ ページが表示されます。
+
+    :::image type="content" source="./media/create-private-endpoint-portal/web-app-default-page.png" alt-text="既定の Web アプリ ページ。" border="true":::
+
+13. **myVM** への接続を閉じます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする 
-プライベート エンドポイント、SQL Database、VM を使いおわったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとそのすべてのリソースを削除します。
+プライベート エンドポイントと VM を使いおわったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとそのすべてのリソースを削除します。
 
 ```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name CreatePrivateEndpointQS-rg -Force
 ```
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure Private Link](private-link-overview.md) の詳細
+
+このクイックスタートでは、次のものを作成しました。
+
+* 仮想ネットワークと bastion ホスト。
+* 仮想マシン。
+* Azure Web アプリのプライベート エンドポイント。
+
+仮想マシンを使用して、プライベート エンドポイントを介した Web アプリへの接続を安全にテストしました。
+
+プライベート エンドポイントをサポートするサービスの詳細については、以下を参照してください。
+> [!div class="nextstepaction"]
+> [Private Link の可用性](private-link-overview.md#availability)

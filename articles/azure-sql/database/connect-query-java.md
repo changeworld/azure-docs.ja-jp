@@ -8,26 +8,26 @@ ms.service: sql-database
 ms.subservice: development
 ms.topic: quickstart
 ms.devlang: java
-ms.date: 08/05/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 4269ac63b7c1af219d8158953abbc0919a2256b7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 06/26/2020
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: badf6b8887c356c2a7fc7308f6aa15f551e4bb67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833591"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972676"
 ---
 # <a name="use-java-and-jdbc-with--azure-sql-database"></a>Azure SQL Database で Java と JDBC を使用する
 
-このトピックでは、Java と [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) を使って [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) で情報を格納および取得するサンプル アプリケーションを作成する方法を説明します。
+このトピックでは、Java と [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) を使って [Azure SQL Database](/azure/sql-database/) で情報を格納および取得するサンプル アプリケーションを作成する方法を説明します。
 
 JDBC は、従来のリレーショナル データベースに接続するための標準の Java API です。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure アカウント。 所有していない場合は、[無料試用版を入手](https://azure.microsoft.com/free/)してください。
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) または [Azure CLI](/cli/azure/install-azure-cli)。 Azure Cloud Shell をお勧めします。これにより、自動的にログインし、必要なすべてのツールにアクセスできるようになります。
-- サポートされている [Java 開発キット](https://aka.ms/azure-jdks)、バージョン 8 (Azure Cloud Shell に含まれます)。
+- [Azure Cloud Shell](../../cloud-shell/quickstart.md) または [Azure CLI](/cli/azure/install-azure-cli)。 Azure Cloud Shell をお勧めします。これにより、自動的にログインし、必要なすべてのツールにアクセスできるようになります。
+- サポートされている [Java 開発キット](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン 8 (Azure Cloud Shell に含まれます)。
 - [Apache Maven](https://maven.apache.org/) ビルド ツール。
 
 ## <a name="prepare-the-working-environment"></a>作業環境を準備する
@@ -69,7 +69,7 @@ az group create \
 最初に作成するのは、マネージド Azure SQL Database サーバーです。
 
 > [!NOTE]
-> Azure SQL Database サーバーの作成の詳細については、「[クイックスタート:Azure SQL Database の単一データベースを作成する](/azure/sql-database/sql-database-single-database-get-started)」を参照してください。
+> Azure SQL Database サーバーの作成の詳細については、「[クイックスタート:Azure SQL Database の単一データベースを作成する](./single-database-create-quickstart.md)」を参照してください。
 
 [Azure Cloud Shell](https://shell.azure.com/) で次のコマンドを実行します。
 
@@ -137,7 +137,7 @@ az sql db create \
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
-            <version>8.2.2.jre8</version>
+            <version>7.4.1.jre8</version>
         </dependency>
     </dependencies>
 </project>
@@ -498,4 +498,4 @@ az group delete \
 
 - [Azure SQL Database で最初のデータベースを設計する](design-first-database-tutorial.md)  
 - [SQL Server 用 Microsoft JDBC ドライバー](https://github.com/microsoft/mssql-jdbc)  
-- [問題の報告/質問](https://github.com/microsoft/mssql-jdbc/issues)  
+- [問題の報告/質問](https://github.com/microsoft/mssql-jdbc/issues)

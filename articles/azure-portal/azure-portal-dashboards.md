@@ -1,24 +1,15 @@
 ---
 title: Azure Portal でのダッシュボードの作成と共有
 description: この記事では、Azure portal でダッシュボードを作成、カスタマイズ、発行、共有する方法について説明します。
-services: azure-portal
-documentationcenter: ''
-author: sewatson
-manager: mtillman
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
-ms.service: azure-portal
-ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: na
 ms.date: 03/23/2020
-ms.author: mblythe
-ms.openlocfilehash: 06cf0a5692b3d80a07c305f53c9e3801cbdb5110
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10c322c9d9d18f7b79a4419bd9efa2e366a5b7c3
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764011"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745827"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Azure Portal でのダッシュボードの作成と共有
 
@@ -106,7 +97,7 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 ダッシュボードのデータには、過去 24 時間のアクティビティが自動的に表示されます。 このタイルでのみ異なる期間を表示するには、次の手順に従います。
 
-1. コンテキストメニューから**タイルデータのカスタマイズ**を選択するか、タイルの左上隅から![フィルター アイコン](./media/azure-portal-dashboards/dashboard-filter.png)フィルターを選択します。
+1. コンテキストメニューから **タイルデータのカスタマイズ** を選択するか、タイルの左上隅から![フィルター アイコン](./media/azure-portal-dashboards/dashboard-filter.png)フィルターを選択します。
 
     ![タイルのコンテキスト メニューのスクリーンショット](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
@@ -138,11 +129,11 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 1. ページ ヘッダーで、![複製アイコン](./media/azure-portal-dashboards/dashboard-clone.png) **[複製]** を選択します。
 
-1. *ダッシュボード名*の**複製**という名前のダッシュボードのコピーが編集モードで開きます。 この記事の前の手順を使用して、ダッシュボードの名前を変更し、カスタマイズします。
+1. *ダッシュボード名* の **複製** という名前のダッシュボードのコピーが編集モードで開きます。 この記事の前の手順を使用して、ダッシュボードの名前を変更し、カスタマイズします。
 
 ## <a name="publish-and-share-a-dashboard"></a>ダッシュボードを発行して共有する
 
-作成したダッシュボードは、既定でプライベートになります。つまり、ダッシュボードを表示できるのは、その作成者に限られます。 他のユーザーがダッシュボードを利用できるようにするには、それらを発行して共有できます。 詳細については、「[ロールベースのアクセス制御を使用して Azure ダッシュボードを共有する](azure-portal-dashboard-share-access.md)」を参照してください。
+作成したダッシュボードは、既定でプライベートになります。つまり、ダッシュボードを表示できるのは、その作成者に限られます。 他のユーザーがダッシュボードを利用できるようにするには、それらを発行して共有できます。 詳細については、「[Azure ロールベースのアクセス制御を使用した Azure ダッシュボードの共有](azure-portal-dashboard-share-access.md)」を参照してください。
 
 ### <a name="open-a-shared-dashboard"></a>共有ダッシュボードを開く
 
@@ -178,5 +169,5 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ロールベースのアクセス制御を使用して Azure ダッシュボードを共有する](azure-portal-dashboard-share-access.md)
+* [Azure ロールベースのアクセス制御を使用した Azure ダッシュボードの共有](azure-portal-dashboard-share-access.md)
 * [プログラムによる Azure ダッシュボードの作成](azure-portal-dashboards-create-programmatically.md)

@@ -4,25 +4,23 @@ description: ユニバーサル Windows プラットフォーム (UWP) アプリ
 documentationcenter: windows
 author: sethmanheim
 manager: femila
-editor: jwargo
 services: notification-hubs
-ms.assetid: 012529f2-fdbc-43c4-8634-2698164b5880
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.custom: mvc, devx-track-csharp
-ms.date: 03/22/2019
+ms.custom: mvc
+ms.date: 08/17/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 865aaf748fd8fad5f10350cb5b57d31b3eadf7a0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 97a6a45ab01fc113b79a48ba7fcb246d528684be
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018044"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019482"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定のユーザーに通知を送信する
 
@@ -66,7 +64,7 @@ ms.locfileid: "89018044"
 5. 結果の一覧で、 **[System.Net.Http]** をクリックし、 **[インストール]** をクリックします。 インストールを完了します。
 6. NuGet **[検索]** ボックスに戻り、「**Json.net**」と入力します。 **Newtonsoft.json** パッケージをインストールしてから、NuGet パッケージ マネージャー ウィンドウを閉じます。
 7. ソリューション エクスプローラーで、**WindowsApp** プロジェクトの **[MainPage.xaml]** をダブルクリックして、それを Visual Studio エディターで開きます。
-8. `MainPage.xaml` XML コードの `<Grid>` セクションを次のコードで置き換えます。このコードは、ユーザーを認証するためのユーザー名とパスワードのテキスト ボックスを追加します。 さらに、通知メッセージと通知を受け取るユーザー名タグのテキスト ボックスも追加します。
+8. `MainPage.xaml` ファイルの `<Grid>` セクションを次のコードで置き換えます。このコードは、ユーザーを認証するためのユーザー名とパスワードのテキスト ボックスを追加します。 さらに、通知メッセージと通知を受け取るユーザー名タグのテキスト ボックスも追加します。
 
     ```xml
     <Grid>
@@ -118,6 +116,7 @@ ms.locfileid: "89018044"
         </StackPanel>
     </Grid>
     ```
+
 9. ソリューション エクスプローラーで、 **(Windows 8.1)** プロジェクトと **(Windows Phone 8.1)** プロジェクトの `MainPage.xaml.cs` ファイルを開きます。 次の `using` ステートメントを両方のファイルの先頭に追加します。
 
     ```csharp
@@ -128,11 +127,13 @@ ms.locfileid: "89018044"
     using Windows.UI.Popups;
     using System.Threading.Tasks;
     ```
+
 10. **WindowsApp** プロジェクトの `MainPage.xaml.cs` で、`MainPage` クラスに次のメンバーを追加します。 `<Enter Your Backend Endpoint>` を、前に取得した実際のバックエンド エンドポイントに必ず置き換えてください。 たとえば、「 `http://mybackend.azurewebsites.net` 」のように入力します。
 
     ```csharp
     private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
     ```
+
 11. 次のコードを、 **(Windows 8.1)** プロジェクトと **(Windows Phone 8.1)** プロジェクトの `MainPage.xaml.cs` 内の MainPage クラスに追加します。
 
     `PushClick` メソッドは、 **[プッシュを送信する]** ボタン用のクリック ハンドラーです。 それは、バックエンドを呼び出して、ユーザー名タグが `to_tag` パラメーターと一致するすべてのデバイスへの通知をトリガーします。 通知メッセージは、要求本文で JSON コンテンツとして送信されます。
@@ -215,6 +216,7 @@ ms.locfileid: "89018044"
         ApplicationData.Current.LocalSettings.Values["AuthenticationToken"] = token;
     }
     ```
+
 12. `App.xaml.cs` を開いて、`OnLaunched()` イベント ハンドラーから `InitNotificationsAsync()` の呼び出しを見つけます。 `InitNotificationsAsync()`への呼び出しをコメント アウトするか削除します。 ボタン ハンドラーは、通知の登録を初期化します。
 
     ```csharp
@@ -222,6 +224,7 @@ ms.locfileid: "89018044"
     {
         //InitNotificationsAsync();
     ```
+
 13. **[WindowsApp]** プロジェクトを右クリックし、 **[追加]** をクリックしてから、 **[クラス]** をクリックします。 クラスに `RegisterClient.cs` という名前を付け、 **[OK]** をクリックしてクラスを生成します。
 
     このクラスは、プッシュ通知用に登録するために、アプリ バックエンドに接続するために必要な REST 呼び出しをラップします。 「 *アプリ バックエンドからの登録* 」で説明しているとおり、Notification Hubs によって作成された [registrationIds](/previous-versions/azure/azure-services/dn743807(v=azure.100))もローカルに格納されます。 **[ログインして登録]** ボタンをクリックすると、ローカル ストレージに格納されている承認トークンが使用されます。
@@ -236,6 +239,7 @@ ms.locfileid: "89018044"
     using System.Threading.Tasks;
     using System.Linq;
     ```
+
 15. `RegisterClient` クラス定義内で、次のコードを追加します。
 
     ```csharp
@@ -323,6 +327,7 @@ ms.locfileid: "89018044"
 
     }
     ```
+
 16. すべての変更を保存します。
 
 ## <a name="test-the-application"></a>アプリケーションをテストする
@@ -332,8 +337,8 @@ ms.locfileid: "89018044"
 3. **[ログインして登録]** をクリックし、ログインしたことを示すダイアログを確認します。 このコードにより、 **[プッシュを送信する]** ボタンも有効になります。
 
     ![ユーザー名とパスワードが入力された Notification Hubs アプリケーションのスクリーンショット。][14]
-5. 次に、 **[受信ユーザー タグ]** フィールドに、登録されているユーザー名を入力します。 通知メッセージを入力し、 **[プッシュを送信する]** をクリックします。
-6. 一致するユーザー名タグが登録されているデバイスだけが通知メッセージを受信します。
+4. 次に、 **[受信ユーザー タグ]** フィールドに、登録されているユーザー名を入力します。 通知メッセージを入力し、 **[プッシュを送信する]** をクリックします。
+5. 一致するユーザー名タグが登録されているデバイスだけが通知メッセージを受信します。
 
     ![プッシュされたメッセージが表示された Notification Hubs アプリケーションのスクリーンショット。][15]
 

@@ -9,18 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/15/2020
+ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: 9978137edb7874a8b93e0c9a5f1f9979ce449277
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4947585b1f20b8142c51d9d7e28c6d8504b6d6d5
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893172"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669637"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする 
 
@@ -59,6 +59,10 @@ ms.locfileid: "88893172"
 
 構成例やインストール コマンドなどでは、HANA インスタンスは **03**、HANA システム ID は **HN1** です。 例は HANA 2.0 SP4 と Red Hat Enterprise Linux for SAP 7.6 に基づいています。 
 
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*マスター*" と "*スレーブ*" という用語への言及があります。 ソフトウェアからこれらの用語が削除された時点で、この記事から削除します。
+
+
 始める前に、次の SAP のノートとホワイトペーパーを参照してください。
 
 * [Azure NetApp Files のドキュメント][anf-azure-doc] 
@@ -87,7 +91,7 @@ ms.locfileid: "88893172"
 * Azure 固有の RHEL ドキュメント:
   * [Microsoft Azure で使用するために Red Hat Enterprise Linux に SAP HANA をインストールする](https://access.redhat.com/public-cloud/microsoft-azure)
 * [Azure NetApp Files を使用した Microsoft Azure 上の NetApp SAP アプリケーション][anf-sap-applications-azure]
-
+* [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)
 
 ## <a name="overview"></a>概要
 
@@ -365,11 +369,13 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     # Add the following entries in the configuration file
     net.ipv6.conf.all.disable_ipv6 = 1
     net.ipv4.tcp_max_syn_backlog = 16348
-    net.ipv4.ip_local_port_range = 40000 65300
     net.ipv4.conf.all.rp_filter = 0
     sunrpc.tcp_slot_table_entries = 128
     vm.swappiness=10
     </code></pre>
+
+> [!TIP]
+> SAP ホスト エージェントからポート範囲を管理できるように、sysctl 構成ファイルで明示的に net.ipv4.ip_local_port_range と net.ipv4.ip_local_reserved_ports を設定しないようにしてください。 詳細については、SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421) を参照してください。  
 
 5. **[A]** 「[Azure NetApp Files を使用した Microsoft Azure 上での NetApp SAP アプリケーション][anf-sap-applications-azure]」で推奨されているように、sunrpc 設定を調整します。  
 
@@ -531,7 +537,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     yum install libgcc_s1 libstdc++6 compat-sap-c++-7 libatomic1 
     </code></pre>
 
-4. **[2]、[3]** SAP HANA の `data` と `log` のディレクトリの所有権を **hn1**adm に変更します。   
+4. **[2]、[3]** SAP HANA の `data` と `log` のディレクトリの所有権を **hn1** adm に変更します。   
 
     <pre><code>
     # Execute as root
@@ -566,11 +572,11 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
      * **[comma-separated host names to add]\(追加するコンマ区切りホスト名\)** : 「**hanadb2, hanadb3**」と入力します
      * **[Root User Name]\(ルート ユーザー名\)** [root]\: Enter キーを押して既定値をそのまま使用します
      * [roles for host hanadb2]\(host hanadb2 のロール\)\: 「**1**」と入力します (ワーカーの場合)
-     * ホスト hanadb2 の **[Host Failover Group]\(ホスト フェールオーバー グループ\)** [既定値]: Enter キーを押して既定値をそのまま使用します
+     * ホスト hanadb2 の **[Host Failover Group]\(ホスト フェールオーバー グループ\)** [既定値]\: Enter キーを押して既定値をそのまま使用します
      * ホスト hanadb2 の **[Storage Partition Number]\(ストレージ パーティション番号\)** [<<assign automatically>>]\: Enter キーを押して既定値をそのまま使用します
      * ホスト hanadb2 の **[Worker Group]\(ワーカー グループ\)** [既定値]: Enter キーを押して既定値をそのまま使用します
      * ホスト hanadb3 の **[Select roles]\(ロールの選択\)** : 「**2**」と入力します (スタンバイ)
-     * ホスト hanadb3 の **[Host Failover Group]\(ホスト フェールオーバー グループ\)** [既定値]: Enter キーを押して既定値をそのまま使用します
+     * ホスト hanadb3 の **[Host Failover Group]\(ホスト フェールオーバー グループ\)** [既定値]\: Enter キーを押して既定値をそのまま使用します
      * ホスト hanadb3 の **[Worker Group]\(ワーカー グループ\)** [既定値]: Enter キーを押して既定値をそのまま使用します
      * **[SAP HANA System ID]\(SAP HANA システム ID\)** : 「**HN1**」と入力します
      * **[Instance number]\(インスタンス番号\)** [00]: 「**03**」と入力します
@@ -730,7 +736,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
 
 1. SAP HANA ワーカー ノードでノード クラッシュをシミュレートします。 次の操作を行います。 
 
-   a. ノード クラッシュをシミュレートする前に、**hn1**adm として次のコマンドを実行して環境の状態をキャプチャします。  
+   a. ノード クラッシュをシミュレートする前に、**hn1** adm として次のコマンドを実行して環境の状態をキャプチャします。  
 
    <pre><code>
     # Check the landscape status
@@ -786,7 +792,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
 
 2. 次のようにして、ネーム サーバーを強制終了します。
 
-   a. テストの前に、**hn1**adm として次のコマンドを実行し、環境の状態を確認します。  
+   a. テストの前に、**hn1** adm として次のコマンドを実行し、環境の状態を確認します。  
 
    <pre><code>
     #Landscape status 
@@ -808,7 +814,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     hanadb1, 3, 50313, 50314, 0.3, HDB|HDB_WORKER, GREEN
    </code></pre>
 
-   b. アクティブなマスター ノード (この場合は **hanadb1**) で **hn1**adm として次のコマンドを実行します。  
+   b. アクティブなマスター ノード (この場合は **hanadb1**) で **hn1** adm として次のコマンドを実行します。  
 
     <pre><code>
         hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB kill
@@ -842,7 +848,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB start
    </code></pre>
 
-   **hanadb1**で SAP HANA が起動されると、次のような状態になります。  
+   **hanadb1** で SAP HANA が起動されると、次のような状態になります。  
 
    <pre><code>
     # Check the instance status
@@ -928,4 +934,5 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
 * [SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
+* [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)
 * Azure VM 上の SAP HANA の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]」を参照してください。

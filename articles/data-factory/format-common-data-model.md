@@ -1,28 +1,24 @@
 ---
 title: Common Data Model 形式
 description: Common Data Model メタデータ システムを使用してデータを変換します
-author: djpmsft
+author: kromerm
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/05/2020
-ms.author: daperlov
-ms.openlocfilehash: 483e26cf4044b909c8d7923cfd74bd6fcf871e2a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.date: 02/04/2021
+ms.author: makromer
+ms.openlocfilehash: 45f5334ebee3365c17bfa52c8d47ed75b82bdfa1
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905299"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387701"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory での Common Data Model 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Common Data Model (CDM) メタデータ システムを使用すると、データとその意味をアプリケーションやビジネス プロセス間で簡単に共有できます。 詳しくは、「[Common Data Model](https://docs.microsoft.com/common-data-model/)」の概要を参照してください。
+Common Data Model (CDM) メタデータ システムを使用すると、データとその意味をアプリケーションやビジネス プロセス間で簡単に共有できます。 詳しくは、「[Common Data Model](/common-data-model/)」の概要を参照してください。
 
 Azure Data Factory では、マッピング データ フローを使用して、[Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) に格納されている model.json およびマニフェスト形式の両方の CDM エンティティのデータの変換を行うことができます。 また、データをパーティション分割されたフォルダーに CSV または Parquet 形式で格納する CDM エンティティ参照を使用して、データを CDM 形式でシンクすることもできます。 
-
-> [!NOTE]
-> ADF データ フロー用の Common Data Model (CDM) 形式コネクタは、現在パブリック プレビューとして利用できます。
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
@@ -37,7 +33,7 @@ Common Data Model は、マッピング データ フローの[インライン �
 
 | 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Format | [形式] は必ず `cdm` | はい | `cdm` | format |
+| Format | 形式は `cdm` である必要があります | はい | `cdm` | format |
 | メタデータ形式 | データへのエンティティ参照が置かれている場所。 CDM バージョン 1.0 を使用する場合は、manifest を選択します。 1\.0 より前のバージョンの CDM を使用している場合は、model.json を選択します。 | はい | `'manifest'` または `'model'` | manifestType |
 | ルートの場所: コンテナー | CDM フォルダーのコンテナー名 | はい | String | fileSystem |
 | ルートの場所: フォルダー パス | CDM フォルダーのルート フォルダーの場所 | はい | String | folderPath |
@@ -51,6 +47,12 @@ Common Data Model は、マッピング データ フローの[インライン �
 | コーパス フォルダー | コーパスのルートの場所 | はい (マニフェストを使用する場合) | String | corpusPath |
 | コーパス エンティティ | エンティティ参照のパス | はい | String | エンティティ |
 | [Allow no files found]\(ファイルの未検出を許可\) | true の場合、ファイルが見つからない場合でもエラーはスローされない | no | `true` または `false` | ignoreNoFilesFound |
+
+ソース変換とシンク変換の両方で "エンティティ参照" を選択する際に、以下の 3 つのオプションからエンティティ参照の場所を選択できます。
+
+* ローカル- ADF によって既に使用されているマニフェスト ファイルで定義されているエンティティを使用します。
+* カスタム - ADF によって使用されているマニフェスト ファイルとは異なるエンティティ マニフェスト ファイルを指定するように求めるメッセージが表示されます。
+* 標準 - ```Github``` に保持されている CDM エンティティの標準ライブラリにあるエンティティ参照を使用します。
 
 ### <a name="sink-settings"></a>シンクの設定
 
@@ -82,7 +84,7 @@ CDM はインライン データセットとしてのみ利用でき、既定で
 2. partitions.Location プロパティを検索する 
 3. "blob.core.windows.net" を "dfs.core.windows.net" に変更する
 4. URL の "% 2F" エンコードを "/" に修正する
- 
+5. ADF データ フローを使用する場合は、パーティション ファイル パス内の特殊文字を英数字に置き換えるか、Synapse データ フローに切り替える必要があります
 
 ### <a name="cdm-source-data-flow-script-example"></a>CDM ソース データ フロー スクリプトの例
 

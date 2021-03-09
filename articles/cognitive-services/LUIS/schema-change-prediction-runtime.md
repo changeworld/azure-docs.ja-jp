@@ -1,14 +1,16 @@
 ---
 title: ランタイムのアプリの拡張 - LUIS
-description: ''
+description: 既に公開されている予測エンドポイントを拡張して新しい情報を渡す方法について説明します。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: c0f9d71f5d89d73d9cdce2a2f646859d8eba3adc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 1d94e9f59062e4d730b8f3b71022442e81e6eeda
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538397"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953023"
 ---
 # <a name="extend-app-at-prediction-runtime"></a>予測ランタイムにアプリを拡張する
 

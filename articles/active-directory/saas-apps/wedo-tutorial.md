@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/22/2020
 ms.author: jeedes
-ms.openlocfilehash: 364bb71ff9ec1cc948f9631f50ac4444c16ea4d1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 529c4e6433d16f9d70530ba516b5ec1426806984
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523390"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519233"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wedo"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と WEDO の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88523390"
 * ユーザーが自分の Azure AD アカウントを使用して WEDO に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* WEDO では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* WEDO では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
-* [WEDO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。セッション制御は、条件付きアクセスを拡張したものです。Microsoft Cloud App Security でセッション制御を強制する方法をご覧ください](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* [WEDO を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。セッション制御は、条件付きアクセスを拡張したものです。Microsoft Cloud App Security でセッション制御を強制する方法をご覧ください](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-wedo-from-the-gallery"></a>ギャラリーからの WEDO の追加
 
@@ -51,7 +51,7 @@ Azure AD への WEDO の統合を構成するには、ギャラリーからマ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**WEDO**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **WEDO** 」と入力します。
 1. 結果のパネルから **[WEDO]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -142,23 +142,23 @@ WEDO で Azure AD SSO を構成してテストするには、次の構成要素�
 
 WEDO で Azure AD SSO を有効にするには、以下の手順に従います。
 
-1. [WEDO](https://login.wedo.swiss/) にログインします。 **管理者ロール**を持っている必要があります。
+1. [WEDO](https://login.wedo.swiss/) にログインします。 **管理者ロール** を持っている必要があります。
 1. [Profile settings]\(プロファイル設定\) で、 **[Network settings]\(ネットワーク設定\)** セクションの **[Authentication]\(認証\)** メニューを選択します。
 1. **[SAML Authentication]\(SAML 認証\)** ページで、次の手順を実行します。
 
    ![SAML 認証のリンク](media/wedo-tutorial/network-security-authentification.png)
 
-   a. **SAML 認証**を有効にします。
+   a. **SAML 認証** を有効にします。
 
    b. **[Identity Provider metadata (XML)]\(ID プロバイダー メタデータ (XML)\)** タブを選択します。
 
-   c. Azure portal からダウンロードした**フェデレーション メタデータ XML** をメモ帳で開き、メタデータ XML の内容をコピーして、 **[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
+   c. Azure portal からダウンロードした **フェデレーション メタデータ XML** をメモ帳で開き、メタデータ XML の内容をコピーして、 **[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
 
    d. [設定] メニューの **[保存]**
 
 ### <a name="create-wedo-test-user"></a>WEDO テスト ユーザーの作成
 
-このセクションでは、WEDO で Bob Simon というテスト ユーザーを作成します。 情報は、「*Azure AD のテスト ユーザーの作成*」と一致している必要があります。
+このセクションでは、WEDO で Bob Simon というテスト ユーザーを作成します。 情報は、「 *Azure AD のテスト ユーザーの作成* 」と一致している必要があります。
 
 1. WEDO の [Profile setting]\(プロファイル設定\) で、 *[Network settings]\(ネットワーク設定\)* セクションの **[Users]\(ユーザー\)** を選択します。
 1. **[ユーザーの追加]** をクリックします。
@@ -187,18 +187,18 @@ WEDO で Azure AD SSO を有効にするには、以下の手順に従います�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [WEDO] タイルをクリックすると、SSO を設定した WEDO に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [WEDO] タイルをクリックすると、SSO を設定した WEDO に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で WEDO を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって WEDO を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって WEDO を保護する方法](/cloud-app-security/proxy-intro-aad)

@@ -7,18 +7,21 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a01d9e90e87d1c23b9aefc5f2d9ba3ba84d0f59f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e680ba10c507ef83591b56652ee8e95c4d665dda
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904923"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492065"
 ---
-# <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux での Azure Files に関する問題のトラブルシューティング
+# <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Linux での Azure Files に関する問題のトラブルシューティング (SMB)
 
 この記事では、Linux クライアントから接続するときに生じる、Azure File に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。 
 
 この記事のトラブルシューティングの手順のほかに、[AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) を使用して、Linux クライアントが前提条件を適切に満たしていることを確認できます。 AzFileDiagnostics では、この記事で説明しているほとんどの症状が自動的に検出されます。 最適なパフォーマンスが得られる環境をセットアップするために役立ちます。 この情報は、[Azure ファイル共有のトラブルシューティング ツール](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)で入手することもできます。 トラブルシューティング ツールには、Azure Files 共有の接続、マッピング、およびマウントに関する問題の解決に役立つ手順が用意されています。
+
+> [!IMPORTANT]
+> この記事の内容は SMB 共有にのみ適用されます。 NFS 共有の詳細については、「[Azure NFS ファイル共有に関するトラブルシューティング](storage-troubleshooting-files-nfs.md)」を参照してください。
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Azure ファイル共有を接続またはマウントできない
 
@@ -46,7 +49,7 @@ ms.locfileid: "87904923"
 
 ### <a name="solution"></a>解決策
 
-この問題を解決するには、「[Troubleshooting tool for Azure Files mounting errors on Linux (Linux での Azure Files のマウント エラー用トラブルシューティング ツール)](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089)」を使用します。 このツールには、以下の機能があります。
+この問題を解決するには、「[Troubleshooting tool for Azure Files mounting errors on Linux (Linux での Azure Files のマウント エラー用トラブルシューティング ツール)](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux)」を使用します。 このツールには、以下の機能があります。
 
 * クライアントの実行環境の検証を支援します。
 * Azure Files へのアクセス エラーの原因となる、互換性のないクライアント構成を検出します。
@@ -58,14 +61,14 @@ ms.locfileid: "87904923"
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>原因 1:通信チャネルが暗号化されていない
 
-通信チャネルが暗号化されていない場合や、接続の試行が Azure ファイル共有と同じデータセンターから行われていない場合、セキュリティ上の理由により、Azure ファイル共有への接続がブロックされます。 ストレージ アカウントで [[安全な転送が必須]](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 設定が有効になっている場合は、同じデータセンター内の暗号化されていない接続もブロックされる可能性があります。 ユーザーのクライアント OS が SMB 暗号化をサポートしている場合に限り、暗号化された通信チャネルを利用できます。
+通信チャネルが暗号化されていない場合や、接続の試行が Azure ファイル共有と同じデータセンターから行われていない場合、セキュリティ上の理由により、Azure ファイル共有への接続がブロックされます。 ストレージ アカウントで [[安全な転送が必須]](../common/storage-require-secure-transfer.md) 設定が有効になっている場合は、同じデータセンター内の暗号化されていない接続もブロックされる可能性があります。 ユーザーのクライアント OS が SMB 暗号化をサポートしている場合に限り、暗号化された通信チャネルを利用できます。
 
 詳しくは、[「Linux で cifs-utils パッケージを使用してAzure ファイル共有をマウントするための前提条件」](storage-how-to-use-files-linux.md#prerequisites)をご覧ください。 
 
 ### <a name="solution-for-cause-1"></a>原因 1 の解決策
 
 1. SMB 暗号化をサポートするクライアントから接続するか、Azure ファイル共有に使用されている Azure ストレージ アカウントと同じデータ センターにある仮想マシンから接続します。
-2. クライアントが SMB 暗号化をサポートしていない場合、ストレージ アカウントで [[安全な転送が必須]](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 設定が無効になっていることを確認します。
+2. クライアントが SMB 暗号化をサポートしていない場合、ストレージ アカウントで [[安全な転送が必須]](../common/storage-require-secure-transfer.md) 設定が無効になっていることを確認します。
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 2:ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが有効になっている 
 
@@ -73,7 +76,7 @@ ms.locfileid: "87904923"
 
 ### <a name="solution-for-cause-2"></a>原因 2 の解決策
 
-ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが適切に構成されていることを確認します。 仮想ネットワークまたはファイアウォール ルールが問題の原因となっているかどうかをテストするには、ストレージ アカウントの設定を一時的に **[Allow access from all networks]\(すべてのネットワークからのアクセスを許可する\)** に変更する必要があります。 詳細については、[「Azure Storage ファイアウォールおよび仮想ネットワークを構成する」](https://docs.microsoft.com/azure/storage/common/storage-network-security)を参照してください。
+ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが適切に構成されていることを確認します。 仮想ネットワークまたはファイアウォール ルールが問題の原因となっているかどうかをテストするには、ストレージ アカウントの設定を一時的に **[Allow access from all networks]\(すべてのネットワークからのアクセスを許可する\)** に変更する必要があります。 詳細については、[「Azure Storage ファイアウォールおよび仮想ネットワークを構成する」](../common/storage-network-security.md)を参照してください。
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>ファイルを開こうとしたときの "[アクセス許可が拒否されました] ディスク クォータを超えました"
@@ -92,19 +95,19 @@ Linux では、次のようなエラー メッセージが表示されます。
 
 ハンドルをいくつか閉じて、同時に開いているハンドルの数を減らしてから、操作を再試行します。
 
-ファイル共有、ディレクトリ、またはファイルの開いているハンドルを表示するには、[Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell コマンドレットを使用します。  
+ファイル共有、ディレクトリ、またはファイルの開いているハンドルを表示するには、[Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) PowerShell コマンドレットを使用します。  
 
-ファイル共有、ディレクトリ、またはファイルの開いているハンドルを閉じるには、[Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell コマンドレットを使用します。
+ファイル共有、ディレクトリ、またはファイルの開いているハンドルを閉じるには、[Close-AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) PowerShell コマンドレットを使用します。
 
 > [!Note]  
-> Get-AzStorageFileHandle および Close-AzStorageFileHandle コマンドレットは、Az PowerShell モジュールのバージョン 2.4 以降に含まれています。 最新の Az PowerShell モジュールをインストールするには、「[Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)」(Azure PowerShell モジュールのインストール) を参照してください。
+> Get-AzStorageFileHandle および Close-AzStorageFileHandle コマンドレットは、Az PowerShell モジュールのバージョン 2.4 以降に含まれています。 最新の Az PowerShell モジュールをインストールするには、「[Install the Azure PowerShell module](/powershell/azure/install-az-ps)」(Azure PowerShell モジュールのインストール) を参照してください。
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Linux で Azure Files との間でのファイルのコピーが遅い
 
 - 特定の最小 I/O サイズ要件がない場合は、最適なパフォーマンスを得るために I/O サイズとして 1 MiB を使用することをお勧めします。
 - 次のように適切なコピー方法を使用します。
-    - 2 つのファイル共有間の転送には、[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) を使用します。
+    - 2 つのファイル共有間の転送には、[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) を使用します。
     - Parallel と一緒に cp または dd を使用することで、コピー速度が向上し、スレッド数はユース ケースとワークロードで決まります。 次の例では、6 を使用しています。 
     - cp の例 (cp はファイル システムの既定のブロック サイズをチャンク サイズとして使用します): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`。
     - dd の例 (このコマンドは、チャンク サイズを明示的に 1 MiB に設定します): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`。
@@ -141,13 +144,13 @@ Linux SMB クライアントが暗号化をサポートしていない場合は�
 
 ### <a name="solution-for-cause-1"></a>原因 1 の解決策
 
-ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが適切に構成されていることを確認します。 仮想ネットワークまたはファイアウォール ルールが問題の原因となっているかどうかをテストするには、ストレージ アカウントの設定を一時的に **[Allow access from all networks]\(すべてのネットワークからのアクセスを許可する\)** に変更する必要があります。 詳細については、[「Azure Storage ファイアウォールおよび仮想ネットワークを構成する」](https://docs.microsoft.com/azure/storage/common/storage-network-security)を参照してください。
+ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが適切に構成されていることを確認します。 仮想ネットワークまたはファイアウォール ルールが問題の原因となっているかどうかをテストするには、ストレージ アカウントの設定を一時的に **[Allow access from all networks]\(すべてのネットワークからのアクセスを許可する\)** に変更する必要があります。 詳細については、[「Azure Storage ファイアウォールおよび仮想ネットワークを構成する」](../common/storage-network-security.md)を参照してください。
 
 ### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>原因 2:現在のユーザー アカウントには、ストレージ アカウントへのアクセス権がありません
 
 ### <a name="solution-for-cause-2"></a>原因 2 の解決策
 
-Azure ファイル共有が置かれたストレージ アカウントを参照して、 **[アクセス制御 (IAM)]** をクリックし、ユーザー アカウントにストレージ アカウントへのアクセス権があることを確認します。 詳しくは、「[ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)」をご覧ください。
+Azure ファイル共有が置かれたストレージ アカウントを参照して、 **[アクセス制御 (IAM)]** をクリックし、ユーザー アカウントにストレージ アカウントへのアクセス権があることを確認します。 詳しくは、[ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法](../blobs/security-recommendations.md#data-protection)に関するページをご覧ください。
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Azure ファイル共有のファイルまたはディレクトリを削除できない
@@ -159,12 +162,12 @@ Azure ファイル共有が置かれたストレージ アカウントを参照�
 
 開いているすべてのハンドルを SMB クライアントで閉じた後も問題が引き続き発生する場合は、次の手順を行います。
 
-- [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell コマンドレットを使用して、開いているハンドルを表示します。
+- [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) PowerShell コマンドレットを使用して、開いているハンドルを表示します。
 
-- [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell コマンドレットを使用して、開いているハンドルを閉じます。 
+- [Close-AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) PowerShell コマンドレットを使用して、開いているハンドルを閉じます。 
 
 > [!Note]  
-> Get-AzStorageFileHandle および Close-AzStorageFileHandle コマンドレットは、Az PowerShell モジュールのバージョン 2.4 以降に含まれています。 最新の Az PowerShell モジュールをインストールするには、「[Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)」(Azure PowerShell モジュールのインストール) を参照してください。
+> Get-AzStorageFileHandle および Close-AzStorageFileHandle コマンドレットは、Az PowerShell モジュールのバージョン 2.4 以降に含まれています。 最新の Az PowerShell モジュールをインストールするには、「[Install the Azure PowerShell module](/powershell/azure/install-az-ps)」(Azure PowerShell モジュールのインストール) を参照してください。
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Linux VM にマウントされている Azure ファイル共有のパフォーマンスが低下している
@@ -189,11 +192,11 @@ Azure ファイル共有が置かれたストレージ アカウントを参照�
 //azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)
 ```
 
-**cache=strict** または **serverino** オプションが存在しない場合は、[ドキュメント](../storage-how-to-use-files-linux.md)のマウント コマンドを実行して、Azure Files をマウント解除してから再マウントします。 その後、 **/etc/fstab** エントリに正しいオプションが指定されていることを再確認します。
+**cache=strict** または **serverino** オプションが存在しない場合は、[ドキュメント](./storage-how-to-use-files-linux.md)のマウント コマンドを実行して、Azure Files をマウント解除してから再マウントします。 その後、 **/etc/fstab** エントリに正しいオプションが指定されていることを再確認します。
 
 ### <a name="cause-2-throttling"></a>原因 2:Throttling
 
-スロットリングが生じたり、要求がキューに送信されたりしている可能性があります。 [Azure Monitor の Azure Storage メトリック](../common/storage-metrics-in-azure-monitor.md)を利用して、これを確認することができます。
+スロットリングが生じたり、要求がキューに送信されたりしている可能性があります。 [Azure Monitor の Azure Storage メトリック](../blobs/monitor-blob-storage.md)を利用して、これを確認することができます。
 
 ### <a name="solution-for-cause-2"></a>原因 2 の解決策
 
@@ -291,10 +294,36 @@ Linux カーネルの再接続に関するこの問題は、以下の変更の�
 ## <a name="cifs-vfs-error--22-on-ioctl-to-get-interface-list-when-you-mount-an-azure-file-share-by-using-smb-30"></a>SMB 3.0 を使用して Azure ファイル共有をマウントするときの、"CIFS VFS: error -22 on ioctl to get interface list" (CIFS VFS: インターフェイス リストを取得するための ioctl でのエラー -22)
 
 ### <a name="cause"></a>原因
-このエラーは、Azure Files では[現在 SMB マルチチャネルがサポートされていない](https://docs.microsoft.com/rest/api/storageservices/features-not-supported-by-the-azure-file-service)ために、ログに記録されます。
+このエラーは、Azure Files では[現在 SMB マルチチャネルがサポートされていない](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)ために、ログに記録されます。
 
 ### <a name="solution"></a>解決策
 このエラーは無視してかまいません。
+
+
+### <a name="unable-to-access-folders-or-files-which-name-has-a-space-or-a-dot-at-the-end"></a>名前の終わりにスペースまたはドットが含まれるフォルダーまたはファイルにアクセスできない
+
+Linux 上にマウントされているとき、Azure ファイル共有からフォルダーまたはファイルにアクセスできません。共有にアクセスしようとすると、du や Is のようなコマンド、あるいはサードパーティ アプリケーションが失敗し、"ファイルまたはディレクトリが存在しません" というエラーが表示されることがあります。しかし、そのようなフォルダーには、ポータルからファイルをアップロードできます。
+
+### <a name="cause"></a>原因
+
+名前の終わりの文字を別の文字にエンコードするシステムからフォルダーまたはファイルがアップロードされました。Macintosh コンピューターからアップロードされたファイルの場合、0x20 (スペース) または 0X2E (ドット) ではなく、"0xF028" または "0xF029" 文字が使用されている可能性があります。
+
+### <a name="solution"></a>解決策
+
+Linux に共有をマウントするとき、共有で mapchars オプションを使用します。 
+
+次の代わりに
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
+```
+
+を使う代わりに、
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino,mapchars
+```
+
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 

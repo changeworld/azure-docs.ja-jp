@@ -5,21 +5,21 @@ description: この記事では、Azure SQL Database Machine Learning Services �
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
-ms.custom: sqldbrb=2 
+ms.custom: sqldbrb=2
 ms.devlang: python
 ms.topic: quickstart
 author: garyericson
 ms.author: garye
-ms.reviewer: davidph, carlrab
+ms.reviewer: davidph, sstein
 manager: cgronlun
 ms.date: 05/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: adc3cbd7b98d915a0b598227b459891cb0e0bfff
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2e32a4abeae78aa7105f21ecffbb18c2eae841a4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042511"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185625"
 ---
 # <a name="quickstart-use-r-with-azure-sql-database-machine-learning-services-preview-to-query-a-database"></a>クイック スタート:Azure SQL Database Machine Learning Services (プレビュー) で R を使用してデータベースに対してクエリを実行する 
 
@@ -33,7 +33,7 @@ ms.locfileid: "86042511"
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Azure SQL Database](single-database-create-quickstart.md)
-- R が有効な [Machine Learning Services](machine-learning-services-overview.md)。
+- R が有効な [Machine Learning Services](../managed-instance/machine-learning-services-overview.md)。
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!IMPORTANT]
@@ -57,7 +57,7 @@ Azure SQL Database のデータベースに接続するために必要な接続�
 
    接続についてご不明な点がある場合は、「[クイック スタート: SQL Server Management Studio を使用して Azure SQL Database 内のデータベースに接続しクエリを実行する](connect-query-ssms.md)」を参照してください。
 
-1. R スクリプト全体を [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) ストアド プロシージャに渡します。
+1. R スクリプト全体を [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) ストアド プロシージャに渡します。
 
    このスクリプトは、`@script` 引数を通して渡されます。 `@script`引数内のすべては、有効な R コードである必要があります。
    
@@ -76,12 +76,12 @@ Azure SQL Database のデータベースに接続するために必要な接続�
 
 ## <a name="run-the-code"></a>コードの実行
 
-1. [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) ストアド プロシージャを実行します。
+1. [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) ストアド プロシージャを実行します。
 
 1. 上位 20 カテゴリ/製品の行が **[メッセージ]** ウィンドウに返されることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure SQL Database で最初のデータベースを設計する](design-first-database-tutorial.md)
-- [Azure SQL Database の Machine Learning Services と R (プレビュー)](machine-learning-services-overview.md)
-- [Azure SQL Database Machine Learning Services (プレビュー) で簡単な R スクリプトを作成して実行する](r-script-create-quickstart.md)
+- [Azure SQL Database の Machine Learning Services と R (プレビュー)](../managed-instance/machine-learning-services-overview.md)
+- [Azure SQL Database Machine Learning Services (プレビュー) で簡単な R スクリプトを作成して実行する](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context)

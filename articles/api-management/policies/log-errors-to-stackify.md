@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 6662761df005211729dffb16282b8e0a8e2a8444
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89428e9a64c6d4ae78d333c0cf597531588b1638
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442438"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072069"
 ---
 # <a name="send-errors-to-stackify-for-logging"></a>ログ記録のために Stackify にエラーを送信する
 
-この記事では、Azure API Management ポリシーのサンプルを示し、エラー ログ ポリシーを追加して、ログ記録のために Stackify にエラーを送信する　方法を説明します。 ポリシー コードを設定または編集するには、[ポリシーの設定または編集](../set-edit-policies.md)に関するページで説明されている手順に従います。 他の例については、[ポリシーのサンプル](../policy-samples.md)に関するページをご覧ください。
+この記事では、Azure API Management ポリシーのサンプルを示し、エラー ログ ポリシーを追加して、ログ記録のために Stackify にエラーを送信する　方法を説明します。 ポリシー コードを設定または編集するには、[ポリシーの設定または編集](../set-edit-policies.md)に関するページで説明されている手順に従います。 他の例については、[ポリシーのサンプル](../policy-reference.md)に関するページをご覧ください。
 
 ## <a name="policy"></a>ポリシー
 
@@ -35,5 +35,4 @@ ms.locfileid: "75442438"
 APIM ポリシーの詳細については、以下をご覧ください。
 
 + [変換ポリシー](../api-management-transformation-policies.md)
-+ [ポリシーのサンプル](../policy-samples.md)
-
++ [ポリシーのサンプル](../policy-reference.md)

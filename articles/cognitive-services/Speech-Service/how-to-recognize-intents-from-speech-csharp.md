@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1138a970bf7c52182f13d0fd14d0178a2d0cfeba
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 93a3adf00203e317be912e3e72de7a3f7ca666c6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918793"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001102"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Speech SDK for C# を使用して音声の意図を認識する方法
 
-Cognitive Services [Speech SDK](speech-sdk.md) は [Language Understanding サービス (LUIS)](https://www.luis.ai/home) と統合して**意図認識**機能を提供します。 意図は、航空機の予約や天気のチェック、あるいは電話を掛けるなどのユーザーが実行したい行動です。 ユーザーは、自然だと思われるどのような用語でも使用できます。 LUIS では機械学習を使用して、定義されている意図にユーザーの要求をマップします。
+Cognitive Services [Speech SDK](speech-sdk.md) は [Language Understanding サービス (LUIS)](https://www.luis.ai/home) と統合して **意図認識** 機能を提供します。 意図は、航空機の予約や天気のチェック、あるいは電話を掛けるなどのユーザーが実行したい行動です。 ユーザーは、自然だと思われるどのような用語でも使用できます。 LUIS では機械学習を使用して、定義されている意図にユーザーの要求をマップします。
 
 > [!NOTE]
 > LUIS アプリケーションでは、認識する意図およびエンティティを定義します。 これは Speech サービスを使用する C# アプリケーションとは別のものです。 この記事では、「アプリ」は LUIS アプリを意味し、「アプリケーション」は C# のコードを意味します。
@@ -55,7 +55,7 @@ LUIS は、次の 3 種類のキーを使用します。
 | スターター   | テキストのみを使用して LUIS アプリケーションをテストできる   |
 | エンドポイント  | 特定の LUIS アプリへのアクセスを承認する            |
 
-このガイドには、エンドポイント タイプのキーが必要です。 このガイドでは、[事前構築済みホーム オートメーション アプリの使用](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)に関するクイックスタートに従って作成できるホーム オートメーション LUIS アプリのサンプルを使用します。 独自の LUIS アプリを作成した場合は、代わりにそれを使用することができます。
+このガイドには、エンドポイント タイプのキーが必要です。 このガイドでは、[事前構築済みホーム オートメーション アプリの使用](../luis/luis-get-started-create-app.md)に関するクイックスタートに従って作成できるホーム オートメーション LUIS アプリのサンプルを使用します。 独自の LUIS アプリを作成した場合は、代わりにそれを使用することができます。
 
 LUIS アプリを作成すると、テキスト クエリを使用してアプリをテストできるようにスターター キーが自動的に生成されます。 このキーでは Speech Service との統合が有効にならないため、このガイドでこれを使用することはできません。 Azure ダッシュボードで LUIS リソースを作成して LUIS アプリに割り当ててください。 このガイドでは、無料のサブスクリプション階層を使用することができます。
 
@@ -63,7 +63,7 @@ Azure ダッシュ ボードで LUIS のリソースを作成した後、[LUIS �
 
 ![LUIS のポータル キーとエンドポイントの設定](media/sdk/luis-keys-endpoints-page.png)
 
-**[Keys and Endpoint]\(キーとエンドポイント\) の設定**ページで:
+**[Keys and Endpoint]\(キーとエンドポイント\) の設定** ページで:
 
 1. **[Resources and Keys]\(リソースとキー\)** セクションまでスクロールし、 **[Assign resource]\(リソースの割り当て\)** を選択します。
 1. **[Assign a key to your app]\(アプリへのキーの割り当て\)** ダイアログ ボックスに次の変更を加えます。
@@ -86,7 +86,7 @@ Azure ダッシュ ボードで LUIS のリソースを作成した後、[LUIS �
 
 次に、プロジェクトにコードを追加します。
 
-1. **ソリューション エクスプローラー**で **Program.cs** ファイルを開きます。
+1. **ソリューション エクスプローラー** で **Program.cs** ファイルを開きます。
 
 1. ファイルの先頭にある `using` ステートメントのブロックを次の宣言に置き換えます。
 
@@ -119,7 +119,7 @@ Azure ダッシュ ボードで LUIS のリソースを作成した後、[LUIS �
 
    | プレースホルダー | 置換後の文字列 |
    | ----------- | ------------ |
-   | `YourLanguageUnderstandingSubscriptionKey` | LUIS エンドポイント キー。 前と同様に、この項目は Azure ダッシュボードから取得する必要があります ("スターター キー" は使用しません)。 [LUIS ポータル](https://www.luis.ai/home)の、アプリの**キーとエンドポイント**のページ ( **[Manage]\(管理\)** の下) で見つけることができます。 |
+   | `YourLanguageUnderstandingSubscriptionKey` | LUIS エンドポイント キー。 前と同様に、この項目は Azure ダッシュボードから取得する必要があります ("スターター キー" は使用しません)。 [LUIS ポータル](https://www.luis.ai/home)の、アプリの **キーとエンドポイント** のページ ( **[Manage]\(管理\)** の下) で見つけることができます。 |
    | `YourLanguageUnderstandingServiceRegion` | LUIS サブスクリプションが存在するリージョンの短い識別子で、たとえば米国西部の場合は `westus` です。 [リージョン](regions.md)を参照してください。 |
    | `YourLanguageUnderstandingAppId` | LUIS アプリ ID。 [LUIS ポータル](https://www.luis.ai/home)のアプリの **[Settings]\(設定\)** ページで確認できます。 |
 
@@ -201,4 +201,4 @@ result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_Js
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [クイック スタート: マイクから音声を認識する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)
+> [クイック スタート: マイクから音声を認識する](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore)

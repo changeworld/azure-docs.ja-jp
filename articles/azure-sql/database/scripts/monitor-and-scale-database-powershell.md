@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: juliemsft
-ms.author: jrasnick
-ms.reviewer: carlrab
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 3c4695bb9dfeb9f0122d39dd335c9b733fe039b2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04c19ca8fbdaed85225b5af128c72d393e5350e8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085046"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573256"
 ---
 # <a name="use-powershell-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>PowerShell を使用して Azure SQL Database の単一データベースを監視およびスケーリングする
 
@@ -35,7 +35,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 [!code-powershell-interactive[main](../../../../powershell_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.ps1?highlight=15-16 "Monitor and scale single database")]
 
 > [!NOTE]
-> 詳細なメトリックの一覧については、[サポートされるメトリック](../../../azure-monitor/platform/metrics-supported.md#microsoftsqlserversdatabases)を参照してください。
+> 詳細なメトリックの一覧については、[サポートされるメトリック](../../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserversdatabases)を参照してください。
 > [!TIP]
 > [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) を使用してデータベース操作の状態を取得し、[Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity) を使用してデータベースの更新操作を取り消します。
 

@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: acaab8aaa12a107f4d0f8a8aac0baf7d5ebb8e4c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5a1ed6c43e4d3a96e0e19d7be50e1e16bcab780e
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012760"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071240"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX と Azure Machine Learning:ML モデルの作成と能率化
 
@@ -29,9 +28,9 @@ ONNX は、機械学習モデルを表現するためのオープン スタン�
 [ONNX Runtime](https://onnxruntime.ai) は、ONNX モデルを運用環境にデプロイするためのハイパフォーマンスの推論エンジンです。 クラウドとエッジの両方に最適化され、Linux、Windows、Mac で動作します。 C++ で記述されていますが、さまざまな環境で使用するために、C、Python、C#、Java、Javascript (Node.js) API も用意されています。 ONNX ランタイムは、DNN と従来の ML モデルの両方をサポートし、NVidia GPU 上の TensorRT、Intel プロセッサ上の OpenVINO、Windows 上の DirectML などのさまざまなハードウェアのアクセラレータと統合されます。 ONNX Runtime を使用することにより、広範囲にわたる運用グレードの最適化、テスト、継続的改善の恩恵が得られます。
 
 ONNX Runtime は、Bing、Office、Azure Cognitive Services といった高スケールの Microsoft サービスで使用されています。 パフォーマンス向上はさまざまな要素に左右されますが、これらの Microsoft サービスは、__CPU のパフォーマンスが平均 2 倍に向上__ しています。 ONNX ランタイムは、Azure Machine Learning サービスに加えて、Machine Learning のワークロードをサポートする次のような他の製品でも実行できます。
-+ Windows: ランタイムは [Windows Machine Learning](https://docs.microsoft.com/windows/ai/windows-ml/) の一部として Windows に組み込まれており、数億台のデバイスで実行されています。 
-+ Azure SQL 製品ファミリ:[Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/onnx-overview) および [Azure SQL Managed Instance](https://docs.microsoft.com/azure/azure-sql/managed-instance/machine-learning-services-overview) のデータに対して、ネイティブなスコアリングを実行します。
-+ ML.NET:[ML.NET で ONNX モデルを実行します](https://docs.microsoft.com/dotnet/machine-learning/tutorials/object-detection-onnx)。
++ Windows: ランタイムは [Windows Machine Learning](/windows/ai/windows-ml/) の一部として Windows に組み込まれており、数億台のデバイスで実行されています。 
++ Azure SQL 製品ファミリ:[Azure SQL Edge](../azure-sql-edge/onnx-overview.md) および [Azure SQL Managed Instance](../azure-sql/managed-instance/machine-learning-services-overview.md) のデータに対して、ネイティブなスコアリングを実行します。
++ ML.NET:[ML.NET で ONNX モデルを実行します](/dotnet/machine-learning/tutorials/object-detection-onnx)。
 
 
 [![トレーニング、コンバーター、デプロイを示す ONNX フロー図](./media/concept-onnx/onnx.png)](././media/concept-onnx/onnx.png#lightbox)
@@ -42,7 +41,7 @@ ONNX モデルは、さまざまな方法で取得できます。
 + Azure Machine Learning (この記事の末尾にある例を参照してください) または[自動機械学習機能](concept-automated-ml.md#automl--onnx)で新しい ONNX モデルをトレーニングする
 + 別の形式で作成された既存のモデルを ONNX に変換する ([チュートリアル](https://github.com/onnx/tutorials)を参照) 
 + 事前トレーニング済みの ONNX モデルを [ONNX モデル ズー](https://github.com/onnx/models)から取得する
-+ カスタマイズされた ONNX モデルを [Azure Custom Vision サービス](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/)から生成する 
++ カスタマイズされた ONNX モデルを [Azure Custom Vision サービス](../cognitive-services/custom-vision-service/index.yml)から生成する 
 
 画像の分類、オブジェクトの検出、テキスト処理など、多くのモデルは、ONNX モデルとして表現することができます。 モデルを正常に変換できない問題が発生した場合は、使用したコンバーターの GitHub で問題を報告してください。 問題が解決されるまでは、既存の形式のモデルを引き続きご使用ください。
 
@@ -98,5 +97,3 @@ ONNX モデルを作成してデプロイする Python ノートブックの例�
 **ONNX Runtime** の詳細を確認するか、プロジェクトに協力します。
 + [ONNX Runtime プロジェクトの Web サイト](https://onnxruntime.ai)
 + [ONNX Rumtime GitHub リポジトリ](https://github.com/Microsoft/onnxruntime)
-
-

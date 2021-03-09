@@ -1,19 +1,16 @@
 ---
 title: HDInsight での Apache Phoenix - Azure HDInsight
 description: Apache Phoenix の概要
-author: ashishthaps
-ms.author: ashishth
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 14591f334801329e78000a007783c3d6c4c3b5ae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3af48c93633709c9b5814caa99c222e24e402a4a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082541"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945223"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight の Apache Phoenix
 
@@ -37,7 +34,7 @@ HBase には、プライマリ行キーについて辞書式に並べ替えら�
 CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) INCLUDE (bookname, quantity);
 ```
 
-この方法を使うと、単一インデックスでクエリを実行するより、パフォーマンスが大幅に向上します。 この種のセカンダリ インデックスは**カバリング インデックス**であり、クエリに含まれるすべての列を含みます。 したがって、テーブル参照は必要なく、インデックスがクエリ全体を満たします。
+この方法を使うと、単一インデックスでクエリを実行するより、パフォーマンスが大幅に向上します。 この種のセカンダリ インデックスは **カバリング インデックス** であり、クエリに含まれるすべての列を含みます。 したがって、テーブル参照は必要なく、インデックスがクエリ全体を満たします。
 
 ### <a name="views"></a>ビュー
 

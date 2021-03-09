@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
-ms.openlocfilehash: 9f92a6277765447cbc1a9b12f06c3ec49548f4d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15c35fb314af27b1ced129a12f752d0a2794e0f8
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513457"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949906"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>StorSimple Manager サービスを使用してアクセス制御レコードを管理する
 
@@ -63,11 +63,11 @@ ACR を追加するには、StorSimple デバイス マネージャー サービ
 
     3. **[追加]** をクリックして、ACR を作成します。
 
-        ![[ACR の追加] をクリックする](./media/storsimple-8000-manage-acrs/createacr2.png)
+        ![[追加] のクリック ACR 2](./media/storsimple-8000-manage-acrs/createacr2.png)
 
 4.  新しく追加した ACR が、表形式の ACR の一覧に表示されます。
 
-    ![[ACR の追加] をクリックする](./media/storsimple-8000-manage-acrs/createacr5.png)
+    ![[追加] のクリック ACR 3](./media/storsimple-8000-manage-acrs/createacr5.png)
 
 
 ## <a name="edit-an-access-control-record"></a>アクセス制御レコードの編集
@@ -89,11 +89,11 @@ ACR を編集するには、StorSimple デバイス マネージャー サービ
 
 3. **[アクセス制御レコードの編集]** ブレードで、もう一方のホストに対応する別の IQN を指定します。
 
-    ![アクセス制御レコードの編集](./media/storsimple-8000-manage-acrs/editacr2.png)
+    ![アクセス制御レコードの編集 2](./media/storsimple-8000-manage-acrs/editacr2.png)
 
 4. **[保存]** をクリックします。 確認を求められたら、 **[はい]** をクリックします。 
 
-    ![アクセス制御レコードの編集](./media/storsimple-8000-manage-acrs/editacr3.png)
+    ![アクセス制御レコードの編集 3](./media/storsimple-8000-manage-acrs/editacr3.png)
 
 5. ACR が更新されると通知されます。 また、表形式の一覧が更新され、変更が反映されます。
 
@@ -109,23 +109,23 @@ ACR を削除するには、StorSimple デバイス マネージャー サービ
 #### <a name="to-delete-an-access-control-record"></a>アクセス制御レコードを削除するには
 1.  StorSimple デバイス マネージャー サービスに移動し、サービス名をダブルクリックした後、 **[構成]** セクションで **[アクセス制御レコード]** をクリックします。
 
-    ![[アクセス制御レコード] に移動する](./media/storsimple-8000-manage-acrs/createacr1.png)
+    ![[アクセス制御レコード] に移動する 1b](./media/storsimple-8000-manage-acrs/createacr1.png)
 
 2. アクセス制御レコードの表形式の一覧で、削除する ACR をクリックして選択します。
 
-    ![[アクセス制御レコード] に移動する](./media/storsimple-8000-manage-acrs/deleteacr1.png)
+    ![[アクセス制御レコード] に移動する 2](./media/storsimple-8000-manage-acrs/deleteacr1.png)
 
 3. 右クリックしてコンテキスト メニューを起動し、 **[削除]** を選択します。
 
-    ![[アクセス制御レコード] に移動する](./media/storsimple-8000-manage-acrs/deleteacr2.png)
+    ![[アクセス制御レコード] に移動する 3](./media/storsimple-8000-manage-acrs/deleteacr2.png)
 
 4. 確認を求められたら、情報を確認して **[削除]** をクリックします。
 
-    ![[アクセス制御レコード] に移動する](./media/storsimple-8000-manage-acrs/deleteacr3.png)
+    ![[アクセス制御レコード] に移動する 4](./media/storsimple-8000-manage-acrs/deleteacr3.png)
 
 5. 削除が完了すると通知されます。 表形式の一覧が更新され、削除が反映されます。
 
-    ![[アクセス制御レコード] に移動する](./media/storsimple-8000-manage-acrs/deleteacr5.png)
+    ![[アクセス制御レコード] に移動する 5](./media/storsimple-8000-manage-acrs/deleteacr5.png)
 
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple ボリュームの管理の詳細](storsimple-8000-manage-volumes-u2.md)

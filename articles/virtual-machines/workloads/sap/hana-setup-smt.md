@@ -6,19 +6,19 @@ documentationcenter: ''
 author: hermanndms
 manager: juergent
 editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 699a8a69621642d07d3547c07bb20c0d32ca7686
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 990274f34dac0234c2c2d521ca6a260f999671bb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616988"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101674516"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>SUSE Linux 用 SMT サーバーの設定
 SAP HANA の L インスタンスは、インターネットに直接接続していません。 このようなユニットをオペレーティング システム プロバイダーに登録し、更新プログラムをダウンロードして適用するのは、簡単なプロセスではありません。 SUSE Linux の場合の解決策は、Azure 仮想マシンに SMT サーバーを設定することです。 仮想マシンは、HANA L インスタンスに接続されている Azure 仮想ネットワークでホストする必要があります。 HANA L インスタンス ユニットは、このような SMT サーバーを使用して登録や更新プログラムのダウンロードを実行できます。 
@@ -44,7 +44,7 @@ HANA L インスタンスのタスクを実行する SMT サーバーのイン�
 
 ディスクを仮想マシンに追加します。 このディスクを使用して更新プログラムを保持します。ブート ディスク自体が小さすぎる可能性もあります。 次のスクリーンショットに示すように、ここでは、/srv/www/htdocs にディスクがマウントされています。 100 GB のディスクで十分です。
 
-![SMT サーバーの仮想マシンのデプロイのスクリーンショット](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
+![[PuTTy] ウィンドウに追加されたディスクを示すスクリーンショット。](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
 
 HANA L インスタンス ユニットにサインインして /etc/hosts を維持し、SMT サーバーを実行することになっている Azure 仮想マシンにネットワーク経由で到達できるかどうかをチェックします。
 

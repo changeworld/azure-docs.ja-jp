@@ -4,17 +4,17 @@ description: IoT Central でマイクロフルフィルメント センター �
 author: avneet723
 ms.author: avneets
 ms.date: 10/13/2019
-ms.topic: overview
+ms.topic: conceptual
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: b0d030240ebe22886826b7a25bd5ca7b8f54e358
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 23e1880a3abac6ebda71eaa36276d2bf5815048e
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81001111"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833781"
 ---
 # <a name="micro-fulfillment-center-architecture"></a>マイクロフルフィルメント センターのアーキテクチャ
 
@@ -22,11 +22,11 @@ ms.locfileid: "81001111"
 
 ![Azure IoT Central のストアの分析](./media/architecture/micro-fulfillment-center-architecture-frame.png)
 
-- ゲートウェイ デバイスにテレメトリ データを送信している IoT センサーのセット
-- テレメトリと集計された分析情報を IoT Central に送信しているゲートウェイ デバイス
-- 操作のために目的の Azure サービスへの継続的データ エクスポート
-- データを必要な形式で構造化し、ストレージ サービスに送信できます
-- ビジネス アプリケーションを使って、データのクエリを実行し、小売りの活動に役立つ分析情報を生成することができます
+1. ゲートウェイ デバイスにテレメトリ データを送信している IoT センサーのセット
+2. テレメトリと集計された分析情報を IoT Central に送信しているゲートウェイ デバイス
+3. 操作のために目的の Azure サービスへの継続的データ エクスポート
+4. データを必要な形式で構造化し、ストレージ サービスに送信できます
+5. ビジネス アプリケーションを使って、データのクエリを実行し、小売りの活動に役立つ分析情報を生成することができます
  
 マイクロフルフィルメント センター ソリューションで一般的に役立つ主要なコンポーネントについて見ていきましょう。
 

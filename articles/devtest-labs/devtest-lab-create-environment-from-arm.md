@@ -4,10 +4,10 @@ description: Azure Resource Manager テンプレートから Azure DevTest Labs 
 ms.topic: article
 ms.date: 08/12/2020
 ms.openlocfilehash: 97659d4ab95fdbe75460161d0ceed71a1cb5cf82
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88182410"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する
@@ -78,12 +78,12 @@ Azure DevTest Labs には、[Azure Resource Manager テンプレートのパブ�
 1. **[リポジトリ]** ウィンドウで、次の情報を入力します。
 
    - **[Name]/(名前)/**:ラボで使用するリポジトリ名を入力します。
-   - **[Git clone URL]/(Git クローン URL/)** :GitHub または Azure Repos から Git HTTPS クローン URL を入力します。
-   - **[Branch]/(ブランチ)/** (省略可能):Azure Resource Manager テンプレートの定義にアクセスするためのブランチ名を入力します。
-   - **[Personal access token]/(個人用アクセス トークン)/** :リポジトリに安全にアクセスするために使用される個人用アクセス トークンを入力します。
+   - **[Git clone URL]**/ :GitHub または Azure Repos から Git HTTPS クローン URL を入力します。
+   - **[Branch]**/ (省略可能):Azure Resource Manager テンプレートの定義にアクセスするためのブランチ名を入力します。
+   - **[Personal access token]**/ :リポジトリに安全にアクセスするために使用される個人用アクセス トークンを入力します。
      - Azure Repos からトークンを取得するには、自分のプロファイルで **[ユーザー設定]**  >  **[セキュリティ]**  >  **[個人用アクセス トークン]** を選択します。
      - GitHub からトークンを取得するには、自分のプロファイルで、 **[Settings]\(設定\)**  >  **[Developer Settings]\(開発者の設定\)**  >  **[Personal access tokens]\(個人用アクセス トークン\)** を選択します。
-   - **[Folder paths]/(フォルダー パス)/** :アーティファクトの定義または Azure Resource Manager テンプレートの定義の Git クローン URI に対する相対フォルダー パスを入力します。
+   - **[Folder paths]**/ :アーティファクトの定義または Azure Resource Manager テンプレートの定義の Git クローン URI に対する相対フォルダー パスを入力します。
 
 1. **[保存]** を選択します。
 
@@ -93,9 +93,9 @@ Azure DevTest Labs には、[Azure Resource Manager テンプレートのパブ�
 
 ## <a name="configure-access-rights-for-lab-users"></a>ラボ ユーザーのアクセス権を構成する
 
-ラボ ユーザーは既定で**閲覧者**ロールを持っているので、環境リソース グループ内のリソースを変更できません。 たとえば、リソースを停止または開始できません。
+ラボ ユーザーは既定で **閲覧者** ロールを持っているので、環境リソース グループ内のリソースを変更できません。 たとえば、リソースを停止または開始できません。
 
-環境内のリソースを編集できるようにラボ ユーザーに**共同作成者**ロールを付与するには、次の手順を実行します。
+環境内のリソースを編集できるようにラボ ユーザーに **共同作成者** ロールを付与するには、次の手順を実行します。
 
 1. [Azure portal](https://portal.azure.com) のラボの **[概要]** ウィンドウで、 **[構成とポリシー]** を選択し、 **[ラボの設定]** を選択します。
 
@@ -125,7 +125,7 @@ Azure DevTest Labs には、[Azure Resource Manager テンプレートのパブ�
 
    Azure Resource Manager テンプレートで、入力フィールドの残りの部分を定義します。 テンプレート *azuredeploy.parameter.json* ファイルに既定値が定義されている場合は、入力フィールドにそれらの値が表示されます。
 
-   *セキュリティで保護された文字列*型のパラメーターの場合、Azure キー コンテナーのシークレットを使用することができます。 キー コンテナーにシークレットを格納し、ラボ リソースの作成時に使用する方法については、[Azure Key Vault にシークレットを格納する](devtest-lab-store-secrets-in-key-vault.md)方法に関する記事を参照してください。  
+   *セキュリティで保護された文字列* 型のパラメーターの場合、Azure キー コンテナーのシークレットを使用することができます。 キー コンテナーにシークレットを格納し、ラボ リソースの作成時に使用する方法については、[Azure Key Vault にシークレットを格納する](devtest-lab-store-secrets-in-key-vault.md)方法に関する記事を参照してください。  
 
    ![[追加] ウィンドウ](./media/devtest-lab-create-environment-from-arm/add.png)
 

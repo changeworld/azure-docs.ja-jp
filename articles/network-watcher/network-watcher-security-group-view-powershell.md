@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 69fe84d6546e3fcb9e905a6b77ad3d9af3ed4d51
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2da4ebfa6a9ce64b03e6e1d29956f740f6cb3c1b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077955"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960614"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>PowerShell を使用してセキュリティ グループ ビューで仮想マシンのセキュリティを分析する
 
@@ -27,7 +27,7 @@ ms.locfileid: "87077955"
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 > [!NOTE]
-> セキュリティ グループ ビュー API は管理されなくなったため、間もなく非推奨となる予定です。 同じ機能を提供する[有効なセキュリティ ルール機能](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview)を使用してください。 
+> セキュリティ グループ ビュー API は管理されなくなったため、間もなく非推奨となる予定です。 同じ機能を提供する[有効なセキュリティ ルール機能](./network-watcher-security-group-view-overview.md)を使用してください。 
 
 セキュリティ グループ ビューは、仮想マシンに適用される構成済みの効果的なネットワーク セキュリティ規則を返します。 この機能は、ネットワーク セキュリティ グループおよび VM に構成されている規則を監査および診断して、トラフィックが正常に許可または拒否されていることを確認する際に役立ちます。 この記事では、PowerShell を使用して、仮想マシンに適用される構成済みの効果的なセキュリティ規則を取得する方法を説明します。
 
@@ -132,5 +132,3 @@ NetworkInterfaces : [
 ## <a name="next-steps"></a>次のステップ
 
 [Network Watcher を使用したネットワーク セキュリティ グループ (NSG) の監査](network-watcher-nsg-auditing-powershell.md)にアクセスして、ネットワーク セキュリティ グループの自動検証の方法を確認する。
-
-

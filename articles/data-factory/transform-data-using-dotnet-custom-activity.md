@@ -1,21 +1,18 @@
 ---
 title: パイプラインでカスタム アクティビティを使用する
-description: カスタム アクティビティを作成して Azure Data Factory パイプラインで使用する方法について説明します。
-services: data-factory
+description: .NET を使用してカスタム アクティビティを作成し、Azure Data Factory パイプラインでアクティビティを使用する方法について説明します。
 ms.service: data-factory
 author: nabhishek
 ms.author: abnarain
-manager: anandsub
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64588d5968df635c3bb017bd1ff1d10951968f32
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84019964"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724950"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 
@@ -29,15 +26,18 @@ Azure Data Factory パイプラインでは、2 種類のアクティビティ�
 - [サポートされるソース データ ストアとシンク データ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の間でデータを移動する[データ移動アクティビティ](copy-activity-overview.md)。
 - Azure HDInsight、Azure Batch、Azure Machine Learning などのコンピューティング サービスを使用してデータを変換する[データ変換アクティビティ](transform-data.md)。
 
-Data Factory でサポートされていないデータ ストアとの間でデータを移動する場合や、Data Factory でサポートされていない方法でデータを変換/処理する場合は、独自のデータ移動ロジックまたはデータ変換ロジックで**カスタム アクティビティ**を作成し、パイプラインでそのアクティビティを使用します。 カスタム アクティビティでは、仮想マシンの **Azure Batch** プールでカスタマイズされたコード ロジックを実行します。
+Data Factory でサポートされていないデータ ストアとの間でデータを移動する場合や、Data Factory でサポートされていない方法でデータを変換/処理する場合は、独自のデータ移動ロジックまたはデータ変換ロジックで **カスタム アクティビティ** を作成し、パイプラインでそのアクティビティを使用します。 カスタム アクティビティでは、仮想マシンの **Azure Batch** プールでカスタマイズされたコード ロジックを実行します。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Azure Batch サービスを初めて利用する場合は、次の記事をご覧ください。
 
 * [Azure Batch の基本](../batch/batch-technical-overview.md) 」をご覧ください。
-* Azure Batch アカウントの作成方法については、[New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) コマンドレットをご覧ください。Azure portal を使用した Azure Batch アカウントの作成方法については、[Azure portal](../batch/batch-account-create-portal.md) をご覧ください。 このコマンドレットの使用方法の詳細については、[PowerShell を使用した Azure Batch アカウントの管理](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)に関する記事をご覧ください。
+* Azure Batch アカウントの作成方法については、[New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) コマンドレットをご覧ください。Azure portal を使用した Azure Batch アカウントの作成方法については、[Azure portal](../batch/batch-account-create-portal.md) をご覧ください。 このコマンドレットの使用方法の詳細については、[PowerShell を使用した Azure Batch アカウントの管理](/archive/blogs/windowshpc/using-azure-powershell-to-manage-azure-batch-account)に関する記事をご覧ください。
 * Azure Batch プールの作成方法については、[New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) コマンドレットをご覧ください。
+
+> [!IMPORTANT]
+> 新しい Azure Batch プールを作成するときは、'CloudServiceConfiguration' ではなく 'VirtualMachineConfiguration' を使用する必要があります。 詳細については、[Azure Batch プールの移行](../batch/batch-pool-cloud-service-to-virtual-machine-configuration.md)に関するガイダンスを参照してください。 
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch のリンクされたサービス
 
@@ -301,7 +301,7 @@ Activity Error section:
 ダウンストリームのアクティビティで stdout.txt の内容を使用する場合は、式 "\@activity('MyCustomActivity').output.outputs[0]" で stdout.txt ファイルへのパスを取得できます。
 
 > [!IMPORTANT]
-> - activity.json、linkedServices.json、datasets.json は、Batch タスクのランタイム フォルダーに格納されます。 この例では、activity.json、linkedServices.json、datasets.json は、`"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` パスに格納されています。 必要に応じて、パスを個別にクリーンアップする必要があります。
+> - activity.json、linkedServices.json、datasets.json は、Batch タスクのランタイム フォルダーに格納されます。 この例では、activity.json、linkedServices.json、datasets.json は、`https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/` パスに格納されています。 必要に応じて、パスを個別にクリーンアップする必要があります。
 > - セルフホステッド統合ランタイムを使用しているリンクされたサービスでは、顧客が定義したプライベート ネットワーク環境内に資格情報を保持できるように、セルフホステッド統合ランタイムによってキーやパスワードなどの機密情報が暗号化されます。 この場合、カスタム アプリケーション コードから一部の機密フィールドを参照したときにフィールドが見つからない可能性があります。 必要に応じて、リンクされたサービスの参照を使用するのではなく、extendedProperties で SecureString を使用してください。
 
 ## <a name="pass-outputs-to-another-activity"></a>別のアクティビティに出力を渡す
@@ -356,7 +356,7 @@ Data Factory V2 カスタム アクティビティに導入された変更によ
   - Microsoft.Azure.Management.DataFactories NuGet パッケージは、もはや必要ありません。
   - コードをコンパイルし、実行可能ファイルとその依存関係を Azure Storage にアップロードし、`folderPath` プロパティにパスを定義します。
 
-Data Factory バージョン 1 の記事「[Azure Data Factory パイプラインでカスタム アクティビティを使用する](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)」で説明されているエンド ツー エンドの DLL とパイプラインを Data Factory カスタム アクティビティとして書き直す詳細な例については、[Data Factory カスタム アクティビティのサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample)に関するページを参照してください。
+Data Factory バージョン 1 の記事「[Azure Data Factory パイプラインでカスタム アクティビティを使用する](./v1/data-factory-use-custom-activities.md)」で説明されているエンド ツー エンドの DLL とパイプラインを Data Factory カスタム アクティビティとして書き直す詳細な例については、[Data Factory カスタム アクティビティのサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample)に関するページを参照してください。
 
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch の自動スケール
 
@@ -376,7 +376,7 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 
 詳細については、「 [Azure Batch プール内のコンピューティング ノードの自動スケール](../batch/batch-automatic-scaling.md) 」をご覧ください。
 
-プールで既定の [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)を使用する場合、Batch サービスがカスタム アクティビティを実行する前に VM を準備するのに 15 ～ 30 分かかることがあります。 プールが異なる 　autoScaleEvaluationInterval を使用する場合、Batch サービスは autoScaleEvaluationInterval + 10 分を要することがあります。
+プールで既定の [autoScaleEvaluationInterval](/rest/api/batchservice/pool/enableautoscale)を使用する場合、Batch サービスがカスタム アクティビティを実行する前に VM を準備するのに 15 ～ 30 分かかることがあります。 プールが異なる 　autoScaleEvaluationInterval を使用する場合、Batch サービスは autoScaleEvaluationInterval + 10 分を要することがあります。
 
 ## <a name="next-steps"></a>次のステップ
 別の手段でデータを変換する方法を説明している次の記事を参照してください。
@@ -387,5 +387,5 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 * [MapReduce アクティビティ](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop Streaming アクティビティ](transform-data-using-hadoop-streaming.md)
 * [Spark アクティビティ](transform-data-using-spark.md)
-* [Machine Learning バッチ実行アクティビティ](transform-data-using-machine-learning.md)
+* [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](transform-data-using-machine-learning.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)

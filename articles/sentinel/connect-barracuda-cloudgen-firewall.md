@@ -14,19 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: aaedbfdd3b1bbbc653756d74ee86fc277b21caec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e0aa186e742318ab5793fa8390251d94327bf08
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588503"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632709"
 ---
 # <a name="connect-barracuda-cloudgen-firewall"></a>Barracuda CloudGen Firewall の接続
 
 Barracuda CloudGen Firewall (CGFW) コネクタを使用すると、Barracuda CGFW のログを Azure Sentinel に簡単に接続して、ダッシュボードの表示、カスタム アラートの作成、調査の改善を行うことができます。 これにより、組織のネットワークに関するより詳細な分析情報が得られ、セキュリティ運用機能が向上します。
-
-
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,15 +35,14 @@ Barracuda CloudGen Firewall (CGFW) コネクタを使用すると、Barracuda CG
 
 1. Azure portal で、 **[Azure Sentinel]**  >  **[Data connectors]\(データ コネクタ\)** に移動し、 **[Barracuda CloudGen Firewall]** コネクタを選択します。
 
-2. **[Open connector page]\(コネクタ ページを開く\)** を選択します。
+1. **[Open connector page]\(コネクタ ページを開く\)** を選択します。
 
-3. **[Barracuda CloudGen Firewall]** ページの指示に従います。
-
+1. **[Barracuda CloudGen Firewall]** ページの指示に従います。
 
 ## <a name="next-steps"></a>次のステップ
+
 このドキュメントでは、Barracuda CloudGen Firewall を Azure Sentinel に接続する方法を説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
 - [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
-
-

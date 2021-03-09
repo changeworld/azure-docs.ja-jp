@@ -1,5 +1,5 @@
 ---
-title: Azure Spring Cloud マイクロサービス アプリ用の Java と基本 OS
+title: Azure Spring Cloud マイクロサービス アプリ用の Java および基本 OS
 description: Azure Spring Cloud マイクロサービス アプリ用の Java および基本オペレーティング システムを正常に維持するための原則
 author: MikeDodaro
 ms.author: brendm
@@ -7,14 +7,17 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1c403398f7320cefa16a4a570645a6d7d750acc7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 0c90062f1968cc7be5a742a67363f57b9632fdfa
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297503"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090677"
 ---
 # <a name="java-and-base-os-for-spring-microservice-apps"></a>Spring マイクロサービス アプリ用の Java とベ基本 OS
+
+**この記事の適用対象:** ✔️ Java
+
 以下に示すのは、Azure Spring Cloud マイクロサービス アプリ用の Java および基本オペレーティング システムを正常に維持するための原則です。
 ## <a name="principles-for-healthy-java-and-base-os"></a>正常な Java および基本 OS の原則
 * すべてのサービス レベル (Basic、Standard、Premium) で同じ基本オペレーティング システムを使用する必要があります。
@@ -25,8 +28,8 @@ ms.locfileid: "89297503"
 * 基本オペレーティング システムからは、セキュリティ上の脆弱性が排除されている必要があります。
     * Debian 10 基本オペレーティング システムでは、147 の CVE が開かれています。
     * Ubuntu 18.04 基本オペレーティング システムでは、132 の CVE が開かれています。
-* ヘッドレス JRE を使用する必要があります。
-    * 現在、Azure Spring Cloud 上のアプリでは JDK を使用しています。 ヘッドレス JRE は、より小さいイメージです。
+* JRE-headless を使用する必要があります。
+    * 現在、Azure Spring Cloud 上のアプリでは JDK を使用しています。 JRE-headless は、より小さいイメージです。
 * Java の最新ビルドを使用する必要があります。
     * 現在、Azure Spring Cloud 上のアプリでは、Java 8 ビルド 242 を使用しています。 これは古いビルドです。
  
@@ -43,7 +46,7 @@ Azul Systems では、基本オペレーティング システムに対する変
     * Ubuntu 20.04 LTS (Focal Fossa) です。 アプリは Ubuntu の最新 LTS バージョン上で継続的に使用できます。
     * 「[Ubuntu 20.04 LTS (Focal Fossa)](http://releases.ubuntu.com/focal/)」を参照してください。
 * サポートされている Java ランタイムをローカル開発用にダウンロードするにはどうすればよいですか。 
-    * 「[Azure 用の JDK および Azure Stack をインストールする](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)」を参照してください
+    * 「[Azure 用の JDK および Azure Stack をインストールする](/azure/developer/java/fundamentals/java-jdk-install)」を参照してください
 * Java ランタイム レベルの問題についてサポートを受けるにはどうすればよいですか。
     * Azure サポートでサポート チケットを開いてください。
  
@@ -52,5 +55,6 @@ Azul Systems では、基本オペレーティング システムに対する変
 > ![既定のデプロイ](media/spring-cloud-principles/spring-cloud-default-deployment.png)
  
 ## <a name="next-steps"></a>次のステップ
-* [クイック スタート: Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](spring-cloud-quickstart.md)」をご覧ください。
-* [Azure および Azure Stack の Java 長期サポート](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)
+
+* [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)
+* [Azure および Azure Stack の Java 長期サポート](/azure/developer/java/fundamentals/java-jdk-long-term-support)

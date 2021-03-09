@@ -5,16 +5,16 @@ description: Azure portal を使用して、信頼されたデーモン アプ�
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2b09163137bbfb6b8a7b0e2b8ddd6d7cccc52cc5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2dd04f404330a6c86e2df09da610e16ba9b721f3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006640"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895649"
 ---
 # <a name="secure-a-daemon-application"></a>デーモン アプリケーションをセキュリティで保護する
 
@@ -27,11 +27,11 @@ ms.locfileid: "88006640"
 
 ## <a name="scenario-shared-key-authentication"></a>シナリオ:共有キー認証
 
-Azure Maps アカウントの作成後、主キーと 2 次キーが生成されます。 [共有キー認証を使用して Azure Maps を呼び出す](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication)場合は、サブスクリプション キーとして主キーを使用することをお勧めします。 2 次キーは、キー変更のローリングなどのシナリオで使用できます。 詳細については、「[Azure Maps による認証](https://aka.ms/amauth)」をご覧ください。
+Azure Maps アカウントの作成後、主キーと 2 次キーが生成されます。 [共有キー認証を使用して Azure Maps を呼び出す](./azure-maps-authentication.md#shared-key-authentication)場合は、サブスクリプション キーとして主キーを使用することをお勧めします。 2 次キーは、キー変更のローリングなどのシナリオで使用できます。 詳細については、「[Azure Maps による認証](./azure-maps-authentication.md)」をご覧ください。
 
 ### <a name="securely-store-shared-key"></a>共有キーを安全に格納する
 
-主および 2 次キーを使用すると、Maps アカウントのすべての API に対して認証を行うことができます。 アプリケーションでは、キーを Azure Key Vault などのセキュリティで保護されたストアに格納する必要があります。 アプリケーションの構成で共有キーをプレーン テキストで格納しないようにするには、アプリケーションで共有キーを Azure Key Vault シークレットとして取得する必要があります。 Azure Key Vault の構成方法については、[Azure Key Vault 開発者ガイド](https://docs.microsoft.com/azure/key-vault/general/developers-guide)に関するページを参照してください。
+主および 2 次キーを使用すると、Maps アカウントのすべての API に対して認証を行うことができます。 アプリケーションでは、キーを Azure Key Vault などのセキュリティで保護されたストアに格納する必要があります。 アプリケーションの構成で共有キーをプレーン テキストで格納しないようにするには、アプリケーションで共有キーを Azure Key Vault シークレットとして取得する必要があります。 Azure Key Vault の構成方法については、[Azure Key Vault 開発者ガイド](../key-vault/general/developers-guide.md)に関するページを参照してください。
 
 以下の手順では、このプロセスの概要を示します。
 
@@ -44,7 +44,7 @@ Azure Maps アカウントの作成後、主キーと 2 次キーが生成され
 7. 共有キーを使用して、Azure Maps REST API 要求を作成します。
 
 > [!Tip]
-> アプリが Azure 環境でホストされている場合、マネージド ID を実装し、Azure Key Vault に対して認証するためのシークレットの管理のコストと複雑さを軽減する必要があります。 Azure Key Vault の[マネージド ID を使用して接続するためのチュートリアル](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)に関するページを参照してください。
+> アプリが Azure 環境でホストされている場合、マネージド ID を実装し、Azure Key Vault に対して認証するためのシークレットの管理のコストと複雑さを軽減する必要があります。 Azure Key Vault の[マネージド ID を使用して接続するためのチュートリアル](../key-vault/general/tutorial-net-create-vault-azure-web-app.md)に関するページを参照してください。
 
 デーモン アプリケーションでは、セキュリティで保護されたストレージからの共有キーの取得を担当します。 Azure Key Vault を使用する実装では、シークレットにアクセスするために Azure AD による認証が必要です。 代わりに、共有キー認証を使用する場合に増す複雑さと運用要件の結果として、Azure Maps に対する直接の Azure AD 認証をお勧めします。
 
@@ -62,7 +62,7 @@ Azure Maps アカウントが作成されると、Azure portal の認証の詳�
 
 Azure リソースで実行する場合は、低コストで最小限の資格情報管理作業を可能にするために Azure マネージド ID を構成します。 
 
-マネージド ID へのアプリケーション アクセスを有効にする場合は、[マネージド ID の概要](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
+マネージド ID へのアプリケーション アクセスを有効にする場合は、[マネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。
 
 マネージド ID の利点:
 
@@ -102,7 +102,7 @@ Azure 以外の環境で実行する場合、マネージド ID は使用でき�
         > [!div class="mx-imgBorder"]
         > ![クライアント シークレットを作成する](./media/how-to-manage-authentication/app-keys.png)
 
-    * **[追加]** を選択した後、シークレットをコピーし、Azure Key Vault などのサービスに安全に格納します。 証明書またはシークレットを安全に格納する場合は、[Azure Key Vault 開発者ガイド](https://docs.microsoft.com/azure/key-vault/general/developers-guide) に関するページをご確認ください。 Azure AD からトークンを取得するには、このシークレットを使用します。
+    * **[追加]** を選択した後、シークレットをコピーし、Azure Key Vault などのサービスに安全に格納します。 証明書またはシークレットを安全に格納する場合は、[Azure Key Vault 開発者ガイド](../key-vault/general/developers-guide.md) に関するページをご確認ください。 Azure AD からトークンを取得するには、このシークレットを使用します。
 
         > [!div class="mx-imgBorder"]
         > ![クライアント シークレットを追加する](./media/how-to-manage-authentication/add-key.png)
@@ -119,21 +119,21 @@ Azure 以外の環境で実行する場合、マネージド ID は使用でき�
     > [!div class="mx-imgBorder"]
     > ![Azure RBAC を使用してアクセス権を付与する](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. **[ロールの割り当て]** タブで、ロールの割り当てを**追加**します。 
-    
+2. **[ロールの割り当て]** タブで、ロールの割り当てを **追加** します。 
+
     > [!div class="mx-imgBorder"]
-    > ![ロールの割り当てを追加する](./media/how-to-manage-authentication/add-role-assignment.png)
+    > ![[追加] が選択されているロールの割り当てを示すスクリーンショット。](./media/how-to-manage-authentication/add-role-assignment.png)
 
 3. **[Azure Maps データ閲覧者]** や **[Azure Maps データ共同作成者]** などの組み込みの Azure Maps ロールの定義を選択します。 **[アクセスの割り当て先]** で、 **[Azure AD のユーザー、グループ、またはサービス プリンシパル]** 、または **[ユーザー割り当てマネージド ID]**  /  **[システム割り当てマネージド ID]** のマネージド ID を選択します。 プリンシパルを選択します。 次に、 **[保存]** を選択します。
 
     > [!div class="mx-imgBorder"]
-    > ![ロールの割り当てを追加する](./media/how-to-manage-authentication/how-to-add-role-assignment.png)
+    > ![ロールの割り当てを追加する方法](./media/how-to-manage-authentication/how-to-add-role-assignment.png)
 
 4. ロールの割り当てタブで、ロールの割り当てが適用されたことを確認できます。
 
 ## <a name="request-token-with-managed-identity"></a>マネージド ID を使用してトークンを要求する
 
-ホスト リソース用にマネージド ID が構成されたら、Azure SDK または REST API を使用して Azure Maps のトークンを取得します。詳細については、[アクセス トークンの取得](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token)に関するページを参照してください。 このガイドに従って、REST API 要求で使用できるアクセス トークンが返されることが想定されます。
+ホスト リソース用にマネージド ID が構成されたら、Azure SDK または REST API を使用して Azure Maps のトークンを取得します。詳細については、[アクセス トークンの取得](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)に関するページを参照してください。 このガイドに従って、REST API 要求で使用できるアクセス トークンが返されることが想定されます。
 
 ## <a name="request-token-with-application-registration"></a>アプリケーションの登録を使用してトークンを要求する
 
@@ -168,7 +168,7 @@ client_id=<Azure AD App ID>&resource=https://atlas.microsoft.com/&client_secret=
 }
 ```
 
-詳細な例については、[Azure AD の認証シナリオ](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)に関するページを参照してください。
+詳細な例については、[Azure AD の認証シナリオ](../active-directory/develop/authentication-vs-authorization.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,17 +3,16 @@ title: チュートリアル - Azure IoT Central アプリケーションでル�
 description: このチュートリアルでは、Azure IoT Central のルールを使用して、ほぼリアルタイムでデバイスを監視し、ルールがトリガーされたときに、電子メールの送信などのアクションを自動的に呼び出す方法について説明します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/06/2020
+ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-manager: philmea
-ms.openlocfilehash: 555da74da65f3b1897a276cf819a263334cfa053
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: b0b5aafd85fe6d992afa9d879f73ef0ec43e00d3
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80999054"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834376"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Central アプリケーションで規則を作成して通知を設定する
 
@@ -21,9 +20,9 @@ ms.locfileid: "80999054"
 
 Azure IoT Central を使用して、接続されたデバイスをリモートで監視できます。 Azure IoT Central のルールを使用すると、ほぼリアルタイムでデバイスを監視し、電子メールの送信などのアクションを自動的に呼び出すことができます。 この記事では、自分のデバイスから送信されるテレメトリを監視するルールを作成する方法について説明します。
 
-デバイスは、テレメトリを使用してデバイスから数値データを送信します。 選択したデバイスのテレメトリが、指定したしきい値を超えると、ルールがトリガーされます。
+デバイスは、テレメトリを使用してデバイスから数値データを送信します。 選択したテレメトリが指定されたしきい値を超えると、ルールがトリガーされます。
 
-このチュートリアルでは、シミュレートされた環境センサー デバイスの温度が華氏 70&deg; を超えたら電子メールを送信するルールを作成します。
+このチュートリアルでは、シミュレートされたセンサー デバイスの温度が華氏 70&deg; を超えたときにメールを送信するルールを作成します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -34,25 +33,28 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
 
 ## <a name="prerequisites"></a>前提条件
 
-作業を開始する前に、「[Azure IoT Central アプリケーションの作成](./quick-deploy-iot-central.md)」および「[IoT Central アプリケーションにシミュレートされたデバイスを追加する](./quick-create-simulated-device.md)」クイックスタートを完了して、作業に使用する **MXChip IoT DevKit** デバイス テンプレートを作成しておきます。
+作業を開始する前に、「[Azure IoT Central アプリケーションを作成する](./quick-deploy-iot-central.md)」と「[IoT Central アプリケーションにシミュレートされたデバイスを追加する](./quick-create-simulated-device.md)」の各クイックスタートを完了して、作業に使用する **Sensor Controller** デバイス テンプレートを作成しておきます。
 
 ## <a name="create-a-rule"></a>規則を作成する
 
-テレメトリ ルールを作成するには、デバイス テンプレートに少なくとも 1 つのテレメトリ値が含まれている必要があります。 このチュートリアルでは、シミュレートされた **MXChip IoT DevKit** デバイスを使用し、温度と湿度のテレメトリを送信します。 「[シミュレートされたデバイスを IoT Central アプリケーションに追加する](./quick-create-simulated-device.md)」クイックスタートで、このデバイス テンプレートを追加し、シミュレートされたデバイスを作成しました。 ルールは、デバイスによってレポートされる温度を監視し、70 度を超えたときに電子メールを送信します。
+テレメトリ ルールを作成するには、デバイス テンプレートに少なくとも 1 つのテレメトリ値が含まれている必要があります。 このチュートリアルでは、温度と湿度のテレメトリを送信する、シミュレートされた **Sensor Controller** デバイスを使用します。 「[シミュレートされたデバイスを IoT Central アプリケーションに追加する](./quick-create-simulated-device.md)」クイックスタートで、このデバイス テンプレートを追加し、シミュレートされたデバイスを作成しました。 ルールは、デバイスによってレポートされる温度を監視し、70 度を超えたときに電子メールを送信します。
+
+> [!NOTE]
+> 1 アプリケーションあたり 50 個がルール数の上限となります。
 
 1. 左側のペインで、 **[ルール]** を選択します。
 
 1. まだルールを作成していない場合は、次の画面が表示されます。
 
-    ![ルールがまだありません](media/tutorial-create-telemetry-rules/rules-landing-page1.png)
+    :::image type="content" source="media/tutorial-create-telemetry-rules/rules-landing-page.png" alt-text="ルールの空の一覧を示すスクリーンショット":::
 
-1. **[+]** を選択して、新しいルールを追加します。
+1. **[+ 新規]** を選択して新しいルールを追加します。
 
 1. ルールを識別するために「_Temperature monitor_」という名前を入力して、Enter キーを押します。
 
-1. **MXChip IoT DevKit** デバイス テンプレートを選択します。 既定では、このルールはデバイス テンプレートに関連付けられたすべてのデバイスに自動的に適用されます。 デバイスのサブセットのためのフィルター処理を行うには、 **[+ フィルター]** を選択し、デバイス プロパティを使用してデバイスを識別します。 ルールを無効にするには、ルール ヘッダーで **[有効/無効]** ボタンを切り替えます。
+1. **[Sensor Controller]** デバイス テンプレートを選択します。 既定では、このルールはデバイス テンプレートに関連付けられたすべてのデバイスに自動的に適用されます。 デバイスのサブセットのためのフィルター処理を行うには、 **[+ フィルター]** を選択し、デバイス プロパティを使用してデバイスを識別します。 ルールを無効にするには、 **[有効/無効]** ボタンを切り替えます。
 
-    ![フィルターと有効化](media/tutorial-create-telemetry-rules/device-filters.png)
+    :::image type="content" source="media/tutorial-create-telemetry-rules/device-filters.png" alt-text="ルール定義でのデバイス テンプレートの選択を示すスクリーンショット":::
 
 ### <a name="configure-the-rule-conditions"></a>ルールの条件を構成する
 
@@ -62,14 +64,14 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
 
 1. 次に、 **[演算子]** として **[次の値より大きい]** を選択し、 **[値]** に「_70_」を入力します。
 
-    ![条件](media/tutorial-create-telemetry-rules/condition-filled-out1.png)
+    :::image type="content" source="media/tutorial-create-telemetry-rules/condition-filled-out.png" alt-text="ルールの温度条件を示すスクリーンショット":::
 
 1. 必要に応じて、 **[時間の集計]** を設定できます。 時間の集計を選択する場合は、集計ドロップダウンから [平均] や [合計] などの集計の種類も選択する必要があります。
 
     * 集計を選択しない場合、条件を満たすテレメトリ データ ポイントごとにルールがトリガーします。 たとえば、温度が 70 度を超えるとトリガーされるようにルールを構成している場合、その値をデバイスの温度が超えると、ほぼ即座にルールがトリガーされます。
     * 集計を使用している場合は、時間枠のテレメトリ データ ポイントの集計値が条件を満たすとルールがトリガーされます。 たとえば、平均集計時間を 10 分として、温度が 70 度を超えたらトリガーされるように構成している場合、10 分の間隔で計算が行われ、70 度を越える平均温度がデバイスによってレポートされると、ルールがトリガーされます。
 
-     ![集計条件](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
+    :::image type="content" source="media/tutorial-create-telemetry-rules/aggregate-condition-filled-out.png" alt-text="入力された集計条件を示すスクリーンショット":::
 
 複数の条件をルールに追加するには、 **[+ 条件]** を選択します。 複数の条件を指定する場合、ルールをトリガーするためにはすべての条件が満たされる必要があります。 各条件は、暗黙的な `AND` 句によって結合されます。 複数の条件で時間の集計を使用している場合は、すべてのテレメトリ値を集計する必要があります。
 
@@ -84,7 +86,7 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
     > [!NOTE]
     > 電子メールは、アプリケーションに追加されており、少なくとも 1 回はログインしているユーザーにのみ送信されます。 Azure IoT Central での[ユーザー管理](howto-administer.md)について詳しくは、こちらをご覧ください。
 
-   ![アクションを構成する](media/tutorial-create-telemetry-rules/configure-action1.png)
+    :::image type="content" source="media/tutorial-create-telemetry-rules/configure-action.png" alt-text="ルールの電子メール アクションを示すスクリーンショット":::
 
 1. アクションを保存するには、 **[Done]\(完了\)** を選択します。 ルールには複数のアクションを追加できます。
 
@@ -92,7 +94,7 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
 
 しばらくしてから、ルールがトリガーされると電子メール メッセージを受け取ります。
 
-![電子メールの例](media/tutorial-create-telemetry-rules/email.png)
+:::image type="content" source="media/tutorial-create-telemetry-rules/email.png" alt-text="通知メールを示すスクリーンショット":::
 
 ## <a name="delete-a-rule"></a>規則を削除する
 
@@ -106,6 +108,10 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
 
 カスタマイズしたいルールを選択します。 **[ターゲット デバイス]** セクションで 1 つ以上のフィルターを使用して、監視したいデバイスに対してルールのスコープを絞り込むことができます。
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
@@ -116,4 +122,4 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
 しきい値に基づくルールを定義したので、次の手順では次の方法を学習することをお勧めします。
 
 > [!div class="nextstepaction"]
-> [連続データ エクスポートを構成する](./howto-export-data.md)。
+> [規則に基づいて Webhook を作成する](./howto-create-webhooks.md)

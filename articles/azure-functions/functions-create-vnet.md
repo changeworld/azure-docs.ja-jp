@@ -3,12 +3,12 @@ title: Azure Functions を Azure 仮想ネットワークに統合する
 description: 関数を Azure 仮想ネットワークに接続する方法を説明するステップ バイ ステップ チュートリアル
 ms.topic: article
 ms.date: 4/23/2020
-ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: efc936111d162d73b1cc5465ae6b677c9006ab32
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387525"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937020"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>チュートリアル: Functions を Azure 仮想ネットワークに統合する
 
@@ -49,7 +49,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. ポータルで、左側のナビゲーション ウィンドウで **[+ リソースの作成]** を選択し、検索フィールドに「`WordPress LEMP7 Max Performance`」と入力して Enter キーを押します。
 
-1. 検索結果で **[Wordpress LEMP Max Performance]** を選択します。 **ソフトウェア プラン**として **Wordpress LEMP Max Performance for CentOS** のソフトウェア プランを選択し、 **[作成]** を選択します。
+1. 検索結果で **[Wordpress LEMP Max Performance]** を選択します。 **ソフトウェア プラン** として **Wordpress LEMP Max Performance for CentOS** のソフトウェア プランを選択し、 **[作成]** を選択します。
 
 1. **[基本]** タブで、画像の下の表で指定されているように VM 設定を使用します。
 
@@ -58,7 +58,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     | 設定      | 推奨値  | 説明      |
     | ------------ | ---------------- | ---------------- |
     | **サブスクリプション** | 該当するサブスクリプション | リソースが作成されるサブスクリプション。 | 
-    | **[リソース グループ](../azure-resource-manager/management/overview.md)**  | myResourceGroup | `myResourceGroup` または Function App で作成したリソース グループを選択します。 Function App、WordPress VM、およびホスティング プランに同じリソース グループを使用すれば、このチュートリアルの完了時にリソースを簡単にクリーンアップできます。 |
+    | **[リソース グループ](../azure-resource-manager/management/overview.md)**  | myResourceGroup | `myResourceGroup` または関数アプリで作成したリソース グループを選択します。 関数アプリ、WordPress VM、およびホスティング プランに同じリソース グループを使用すれば、このチュートリアルの完了時にリソースを簡単にクリーンアップできます。 |
     | **仮想マシン名** | VNET Wordpress | VM 名は、リソース グループ内で一意である必要があります |
     | **[リージョン](https://azure.microsoft.com/regions/)** | (ヨーロッパ) 西ヨーロッパ | 近くのリージョン、または VM にアクセスする関数に近いリージョンを選択します。 |
     | **[サイズ]** | B1s | **[サイズの変更]** を選択してから、B1s 標準イメージを選択します。これには 1 つの vCPU と 1 GB のメモリがあります。 |
@@ -121,7 +121,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. **[OK]** を選択して、サブネットを追加します。 **[VNet 統合]** ページおよび **[ネットワーク機能の状態]** ページを閉じ、Function App のページに戻ります。
 
-Function App から WordPress サイトが実行している仮想ネットワークにアクセスできるようになりました。 次に、[Azure Functions プロキシ](functions-proxies.md)を使用して、WordPress サイトからファイルを返します。
+関数アプリから WordPress サイトが実行している仮想ネットワークにアクセスできるようになりました。 次に、[Azure Functions プロキシ](functions-proxies.md)を使用して、WordPress サイトからファイルを返します。
 
 ## <a name="create-a-proxy-to-access-vm-resources"></a>VM リソースにアクセスするためのプロキシを作成する
 
@@ -160,4 +160,4 @@ Premium プランで実行されている関数は、PremiumV2 プラン上の W
 > [!div class="nextstepaction"]
 > [関数のネットワーク オプションに関する詳細情報](./functions-networking-options.md)
 
-[Premium プラン]: functions-scale.md#premium-plan
+[Premium プラン]: functions-premium-plan.md

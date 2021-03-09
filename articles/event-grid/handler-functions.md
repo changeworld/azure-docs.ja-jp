@@ -1,22 +1,31 @@
 ---
-title: Azure Event Grid イベントに対するイベント ハンドラーとしての Azure Functions
-description: Event Grid イベントのイベント ハンドラーとして Azure Functions を使用する方法について説明します。
+title: Azure Event Grid イベントのイベント ハンドラーとして Azure の関数を使用する
+description: Azure Functions 内で作成されてホストされる関数を、Event Grid イベントのイベント ハンドラーとして使用する方法について説明します。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 8e48949bb5fecdf370fdf23146209ad757ffa062
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/18/2020
+ms.openlocfilehash: beddc35f2dd8db974492d14aec27ce754a74737c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105763"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632514"
 ---
-# <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Event Grid イベントに対するイベント ハンドラーとしての Azure Functions
+# <a name="use-a-function-as-an-event-handler-for-event-grid-events"></a>Event Grid イベントのイベント ハンドラーとして関数を使用する
 
 イベント ハンドラーは、イベントの送信先となる場所です。 ハンドラーでは、イベントを処理するアクションが実行されます。 一部の Azure サービスは、イベントを処理するように自動的に構成されます。**Azure Functions** はその 1 つです。 
 
-サーバーレス アーキテクチャで Event Grid からのイベントに応答するには、**Azure Functions** を使用します。 ハンドラーとして Azure Functions を使用する場合は、汎用 HTTP トリガーではなく Event Grid トリガーを使用します。 Event Grid では、Event Grid トリガーが自動的に検証されます。 汎用 HTTP トリガーの場合は、[検証応答](webhook-event-delivery.md)を開発者自身が実装する必要があります。
 
-関数での Event Grid トリガーの使用の詳細については、「[Azure Functions の Event Grid トリガー](../azure-functions/functions-bindings-event-grid.md)」を参照してください。
+Azure の関数をイベントのハンドラーとして使用するには、次のいずれかの方法に従います。 
+
+-   [Event Grid トリガー](../azure-functions/functions-bindings-event-grid-trigger.md)を使用する。  **エンドポイントのタイプ** として **Azure 関数** を指定します。 さらに、関数アプリと、イベントを処理する関数を指定します。 
+-   [HTTP トリガー](../azure-functions/functions-bindings-http-webhook.md)を使用する。  **エンドポイントのタイプ** として **Webhook** を指定します。 さらに、イベントを処理する関数の URL を指定します。 
+
+お勧めするのは最初の方法 (Event Grid トリガー) です。この方法には、2 番目の方法と比較して次の利点があります。
+-   Event Grid では、Event Grid トリガーが自動的に検証されます。 汎用 HTTP トリガーの場合は、[検証応答](webhook-event-delivery.md)を開発者自身が実装する必要があります。
+-   Event Grid は、Event Grid イベントによってトリガーされる関数にイベントを配信する速度を、その関数がイベントを処理できるとみなされた速度に基づいて自動的に調整します。 この速度調整機能により、関数のイベント処理速度の経時的な変化が原因で関数がイベントを処理できなくなるために生じる配信エラーを防止できます。 スループットを高めて効率を向上させるには、イベント サブスクリプションでのバッチ処理を有効にします。 詳細については、「[バッチ処理を有効にする](#enable-batching)」をご覧ください。
+
+    > [!NOTE]
+    > 現時点では、**CloudEvents** スキーマでイベントが配信される場合に、関数アプリに対して Event Grid トリガーを使用できません。 代わりに、HTTP トリガーを使用してください。
 
 ## <a name="tutorials"></a>チュートリアル
 
@@ -39,8 +48,8 @@ ms.locfileid: "86105763"
             "properties": 
             {
                 "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Web/sites/<FUNCTION APP NAME>/functions/<FUNCTION NAME>",
-                "maxEventsPerBatch": 1,
-                "preferredBatchSizeInKilobytes": 64
+                "maxEventsPerBatch": 10,
+                "preferredBatchSizeInKilobytes": 6400
             }
         },
         "eventDeliverySchema": "EventGridSchema"
@@ -48,5 +57,28 @@ ms.locfileid: "86105763"
 }
 ```
 
+## <a name="enable-batching"></a>バッチ処理を有効にする
+スループットを高めるには、サブスクリプションでバッチ処理を有効にします。 Azure portal を使用する場合は、サブスクリプションの作成時または作成後に、バッチごとの最大イベント数と優先バッチ サイズ (KB 単位) を設定できます。 
+
+バッチ設定の構成には、Azure portal、PowerShell、CLI、または Resource Manager テンプレートを使用できます。 
+
+### <a name="azure-portal"></a>Azure portal
+UI でサブスクリプションを作成するときに、 **[イベント サブスクリプションの作成]** ページの **[高度な機能]** タブで、 **[バッチごとの最大イベント数]** と **[優先バッチ サイズ (KB 単位)]** の値を設定します。 
+    
+:::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="サブスクリプション作成時にバッチ処理を有効にする":::
+
+既存のサブスクリプションについては、 **[Event Grid トピック]** ページの **[機能]** タブでこれらの値を更新できます。 
+
+:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="作成後にバッチ処理を有効にする":::
+
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
+Azure Resource Manager テンプレートで **maxEventsPerBatch** と **preferredBatchSizeInKilobytes** を設定できます。 詳細については、[Microsoft.EventGrid eventSubscriptions テンプレートのリファレンス](/azure/templates/microsoft.eventgrid/eventsubscriptions)をご覧ください。
+
+### <a name="azure-cli"></a>Azure CLI
+コマンド [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create&preserve-view=true) または [az eventgrid event-subscription update](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_update&preserve-view=true) でパラメーター `--max-events-per-batch` または `--preferred-batch-size-in-kilobytes` を使用して、バッチ関連の設定を構成できます。
+
+### <a name="azure-powershell"></a>Azure PowerShell
+コマンドレット [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription) または [Update-AzEventGridSubscription](/powershell/module/az.eventgrid/update-azeventgridsubscription) でパラメーター `-MaxEventsPerBatch` または `-PreferredBatchSizeInKiloBytes` を使用して、バッチ関連の設定を構成できます。
+
 ## <a name="next-steps"></a>次のステップ
-サポートされているイベント ハンドラーの一覧については、「[イベント ハンドラー](event-handlers.md)」を参照してください。 
+サポートされているイベント ハンドラーの一覧については、「[イベント ハンドラー](event-handlers.md)」を参照してください。

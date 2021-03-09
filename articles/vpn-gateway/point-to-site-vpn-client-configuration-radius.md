@@ -1,22 +1,22 @@
 ---
 title: Azure VPN Gateway:VPN クライアント構成ファイルを作成してインストールする - P2S RADIUS 接続
-description: RADIUS 認証を使用する接続用の Windows、Mac OS X、および Linux の VPN クライアント構成ファイルを作成します。
+description: RADIUS 認証を使用する接続用の Windows、OS X、Linux の VPN クライアント構成ファイルを作成します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5f16a902980b8cf88fb3e8a7f888a0f58ed34355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6d811e19bb19c8c8bf96764cfcca2b1294f4a85
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986554"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91440062"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>P2S RADIUS 認証用の VPN クライアント構成ファイルを作成およびインストールする
 
-仮想ネットワークにポイント対サイト (P2S) 接続するには、接続元のクライアント デバイスを構成する必要があります。 Windows、Mac OS X、および Linux のクライアント デバイスから P2S VPN 接続を作成できます。 
+仮想ネットワークにポイント対サイト (P2S) 接続するには、接続元のクライアント デバイスを構成する必要があります。 Windows、OS X、Linux のクライアント デバイスから P2S VPN 接続を作成できます。 
 
 RADIUS 認証を使用する場合、認証には複数のオプションがあります (ユーザー名/パスワード認証、証明書認証、その他の認証の種類)。 VPN クライアント構成は、認証の種類ごとに異なります。 VPN クライアントを構成するには、必要な設定を含むクライアント構成ファイルを使用します。 この記事は、使用する RADIUS 認証の種類用の VPN クライアント構成を作成してインストールするのに役立ちます。
 
@@ -36,7 +36,7 @@ P2S RADIUS 認証の構成ワークフローは次のとおりです。
 >
 >
 
-この記事のセクションを使用するには、最初に使用する認証の種類 (ユーザー名/パスワード、証明書、またはその他の認証の種類) を決定します。 各セクションに、Windows、Mac OS X、Linux 向けの手順があります (現時点では、利用できる手順は限られています)。
+この記事のセクションを使用するには、最初に使用する認証の種類 (ユーザー名/パスワード、証明書、またはその他の認証の種類) を決定します。 各セクションに、Windows、OS X、Linux 向けの手順があります (現時点では、利用できる手順は限られています)。
 
 
 ## <a name="usernamepassword-authentication"></a><a name="adeap"></a>ユーザー名/パスワード認証
@@ -144,7 +144,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
     ![VPN 接続の詳細](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
 11. **[認証設定]** を選択します。 一覧で **[ユーザー名]** を選択し、資格情報を入力します。 以前に資格情報を入力した場合は、一覧で **[ユーザー名]** が自動的に選択され、ユーザー名とパスワードがあらかじめ入力されています。 **[OK]** を選択して設定を保存します。
 
-    ![[認証設定]](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
+    ![[ユーザー名] が選択されている [認証設定] ドロップダウンを示すスクリーンショット。](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
 12. **[ネットワーク]** ダイアログ ボックスに戻り、 **[適用]** を選択して、変更を保存します。 接続を開始するには、 **[接続]** を選択します。
 
 #### <a name="linux-vpn-client-setup-through-strongswan"></a><a name="adlinuxcli"></a>strongSwan を使用した Linux VPN クライアントの設定

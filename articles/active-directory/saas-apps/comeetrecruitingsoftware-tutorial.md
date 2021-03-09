@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
-ms.openlocfilehash: a47721122456d32cef91de4bd5ef2b92738bf496
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d458d94a4bee4fce523819af2fd3e555db6e70df
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520143"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672115"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comeet-recruiting-software"></a>チュートリアル: Azure Active Directory と Comeet Recruiting Software の統合
 
@@ -27,7 +27,7 @@ Comeet Recruiting Software と Azure AD の統合には、次の利点があり�
 * ユーザーが自分の Azure AD アカウントで Comeet Recruiting Software に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -63,7 +63,7 @@ Azure AD への Comeet Recruiting Software の統合を構成するには、ギ�
 
 4. 検索ボックスに「**Comeet Recruiting Software**」と入力し、結果ウィンドウで **Comeet Recruiting Software** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果一覧の Comeet Recruiting Software](common/search-new-app.png)
+    ![結果一覧の Comeet Recruiting Software](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -99,7 +99,7 @@ Comeet Recruiting Software で Azure AD シングル サインオンを構成す
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Comeet Recruiting Software のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![[保存] アクション、[識別子] フィールド、[応答 U R L] フィールドが強調表示された [基本的な S A M L 構成] セクションを示すスクリーンショット。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://app.comeet.co/adfs_auth/acs/<UNIQUEID>/` の形式で URL を入力します。
 
@@ -116,9 +116,9 @@ Comeet Recruiting Software で Azure AD シングル サインオンを構成す
 
 5. Comeet Recruiting Software アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![[編集] ボタンが選択されている [ユーザー属性] セクションを示すスクリーンショット。](common/edit-attribute.png)
 
-6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
+6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
 
     | Name |  ソース属性|
     | ---------------| --------------- |
@@ -127,7 +127,7 @@ Comeet Recruiting Software で Azure AD シングル サインオンを構成す
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![image](common/new-save-attribute.png)
+    ![[新しい要求の追加] および [保存] アクションが強調表示されている [ユーザーの要求] セクションを示すスクリーンショット。](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
@@ -143,7 +143,7 @@ Comeet Recruiting Software で Azure AD シングル サインオンを構成す
 
     g. **[保存]** をクリックします。
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -159,7 +159,7 @@ Comeet Recruiting Software で Azure AD シングル サインオンを構成す
 
 ### <a name="configure-comeet-recruiting-software-single-sign-on"></a>Comeet Recruiting Software のシングル サインオンの構成
 
-**Comeet Recruiting Software** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Comeet Recruiting Software サポート チーム](https://support.comeet.co/knowledgebase/adfs-single-sign-on/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Comeet Recruiting Software** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Comeet Recruiting Software サポート チーム](https://support.comeet.co/knowledgebase/adfs-single-sign-on/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -178,7 +178,7 @@ Comeet Recruiting Software で Azure AD シングル サインオンを構成す
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -220,13 +220,12 @@ Comeet Recruiting Software で Azure AD シングル サインオンを構成す
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Comeet Recruiting Software] タイルをクリックすると、SSO を設定した Comeet Recruiting Software に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Comeet Recruiting Software] タイルをクリックすると、SSO を設定した Comeet Recruiting Software に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

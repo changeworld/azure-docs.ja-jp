@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
-ms.date: 08/02/2020
+ms.date: 01/03/2021
 ms.author: guybo
-ms.openlocfilehash: 0b3a598213545bbad833e9b8036f65b999df1c76
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 9d278582840404702bfef3e5fc9af395f659d844
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607004"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898081"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure で動作保証済みの Linux ディストリビューション
 
@@ -36,10 +36,10 @@ Azure Linux エージェントは、Azure Marketplace イメージにプレイ�
 | --- | --- | --- | --- |
 | Rogue Wave Software の CentOS |CentOS 6.x、7.x、8.x |CentOS 6.3:[LIS のダウンロード](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 以降:カーネル内 |パッケージ:[リポジトリ](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> CoreOS は、2020 年 5 月 26 日付けで[サポートが終了](https://coreos.com/os/eol/)します。 |利用不可 | | |
-| Credativ の Debian |8.x、9.x |カーネル内 |パッケージ:リポジトリ内の "waagent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
-|Kinvolk の Flatcar Container Linux| Stable、Edge| | |
+| Credativ の Debian |8.x、9.x、10.x |カーネル内 |パッケージ:リポジトリ内の "waagent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
+|Kinvolk の Flatcar Container Linux| Pro、安定版、ベータ版| カーネル内 | wa-linux-agent は /usr/share/oem/bin/waagent に既にインストールされています |
 | Oracle の Oracle Linux |6.x、7.x、8.x |カーネル内 |パッケージ:リポジトリ内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| [Red Hat の Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x、7.x、8.x |カーネル内 |パッケージ:リポジトリ内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
+| [Red Hat の Red Hat Enterprise Linux](../workloads/redhat/overview.md) |6.x、7.x、8.x |カーネル内 |パッケージ:リポジトリ内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE の SUSE Linux Enterprise |SLES/SLES for SAP 11.x、12.x、15.x <br/> [SUSE Public Cloud Image Lifecycle (SUSE パブリック クラウドのイメージのライフ サイクル)](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |カーネル内 |パッケージ:<p> [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の 11 の場合<br>"python-azure-agent" の下の "パブリック クラウド" モジュールに含まれる 12 の場合<br/>ソース コード:[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | SUSE の openSUSE |openSUSE Leap 15.x |カーネル内 |パッケージ:[Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の "python-azure-agent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
 | Canonical の Ubuntu |Ubuntu Server および Pro 16.x、18.x、20.x<p>Ubuntu 12.04 および 14.04 の拡張サポートについては、「[Ubuntu Extended Security Maintenance (Ubuntu 拡張セキュリティのメンテナンス)](https://www.ubuntu.com/esm)」を参照してください。 |カーネル内 |パッケージ:リポジトリ内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
@@ -58,6 +58,7 @@ Azure は、各種の動作保証済み Linux ディストリビューション�
 - [Debian クラウド カーネル - Azure 上の Debian 10 および Debian 9 の "backports" イメージで使用可能](https://wiki.debian.org/Cloud/MicrosoftAzure)
 - [SLES の Azure で調整されたカーネル](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
 - [Ubuntu の Azure で調整されたカーネル](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+- [Flatcar Container Linux Pro](https://azuremarketplace.microsoft.com/marketplace/apps/kinvolk.flatcar_pro)
 
 ## <a name="partners"></a>パートナー
 
@@ -69,11 +70,11 @@ Microsoft では、CoreOS ユーザー向けに 2 つの移行チャネルを用
 - Kinvolk の Flatcar ("Kinvolk の Flatcar Container Linux" 項目を参照してください。)
 - [Fedora Core OS](https://docs.fedoraproject.org/en-US/fedora-coreos/provisioning-azure/) (顧客は独自のイメージをアップロードする必要があります。 こちらに[移行に関するドキュメント](https://docs.fedoraproject.org/en-US/fedora-coreos/migrate-cl/)があります)。
 
-### <a name="credativ"></a>Credativ
+### <a name="credativ"></a>credativ
 
-[https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
+[https://www.credativ.de/en/portfolio/support/open-source-support-center/](https://www.credativ.de/en/portfolio/support/open-source-support-center/)
 
-Credativ は、無償のソフトウェアを使用したプロフェッショナルなソリューションの開発および実装を専門とする、独立したコンサルティングおよびサービス企業です。 大手のオープン ソース スペシャリストとして、Credativ のサポートを利用している多くの IT 部門から国際的に認知されています。 Credativ は現在、マイクロソフトと協力して、Debian 8 (Jessie) および 7 より前の Debian (Wheezy) に対応する Debian イメージを準備しています。 両方のイメージは、Azure で実行するために特別に設計され、プラットフォーム経由で簡単に管理できます。 Credativ では、自社のオープン ソース サポート センターを通じて、Azure 用の Debian イメージの長期にわたる保守および更新もサポートします。
+credativ は、無償のソフトウェアを使用したプロフェッショナルなソリューションの開発および実装を専門とする、独立したコンサルティングおよびサービス企業です。 大手のオープン ソース スペシャリストとして、credativ のサポートを利用している多くの IT 部門から国際的に認知されています。 Microsoft との業務提携で credativ は Debian イメージを準備しています。 イメージは、Azure で実行するために特別に設計され、プラットフォーム経由で簡単に管理できます。 credativ では、自社のオープン ソース サポート センターを通じて、Azure 用の Debian イメージの長期にわたる保守および更新もサポートします。
 
 ### <a name="kinvolk"></a>Kinvolk
 [https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)

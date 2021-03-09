@@ -7,15 +7,15 @@ metadata:
   services: service
   ms.service: stream-analytics
   ms.topic: landing-page
-  author: mamccrea
-  ms.author: mamccrea
+  author: sidram
+  ms.author: sidram
   ms.date: 09/16/2019
-  ms.openlocfilehash: 2ef6663ce3ebf21227635fff763d45391281c955
-  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+  ms.openlocfilehash: 2567279bd2c22a2b6f0ff7bf5203efcce56b2466
+  ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/08/2020
-  ms.locfileid: "86119652"
+  ms.lasthandoff: 01/08/2021
+  ms.locfileid: "98015574"
 landingContent:
 - title: Azure Stream Analytics について
   linkLists:
@@ -143,7 +143,7 @@ landingContent:
       url: stream-analytics-machine-learning-anomaly-detection.md
     - text: Azure Machine Learning Studio で感情分析を実行する (クラシック)
       url: stream-analytics-machine-learning-integration-tutorial.md
-    - text: Machine Learning Studio 関数を使用してジョブをスケーリングする
+    - text: Azure Machine Learning Studio (クラシック) 関数を使用してジョブをスケーリングする
       url: stream-analytics-scale-with-machine-learning-functions.md
 - title: 開発者ツールを使用したジョブの作成と管理
   linkLists:
@@ -171,8 +171,8 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: ジョブの作成と管理
-      url: stream-analytics-manage-job.md
+    - text: リアルタイムでの不正検出
+      url: stream-analytics-real-time-fraud-detection.md
     - text: Azure 関数をトリガーする
       url: stream-analytics-with-azure-functions.md
   - linkListType: how-to-guide
@@ -183,8 +183,6 @@ landingContent:
       url: stream-analytics-edge.md
     - text: 感情分析ソリューションを構築する
       url: stream-analytics-twitter-sentiment-analysis-trends.md
-    - text: リアルタイムでの不正検出
-      url: stream-analytics-real-time-fraud-detection.md
     - text: IoT ソリューションを構築する
       url: stream-analytics-build-an-iot-solution-using-stream-analytics.md
     - text: 高頻度取引のシミュレーション
@@ -193,14 +191,10 @@ landingContent:
       url: stream-analytics-threshold-based-rules.md
 - title: Stream Analytics ジョブをデプロイする
   linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Azure Pipelines を使用して CI/CD によるジョブをデプロイする
-      url: stream-analytics-tools-visual-studio-cicd-vsts.md
   - linkListType: how-to-guide
     links:
     - text: Visual Studio Code を使用して CI/CD パイプラインを設定する
-      url: setup-cicd-vs-code.md
+      url: ./cicd-overview.md
     - text: Visual Studio を使用して CI/CD パイプラインを設定する
       url: stream-analytics-tools-for-visual-studio-cicd.md
     - text: REST API を使用して IoT Edge ジョブの CI/CD を設定する

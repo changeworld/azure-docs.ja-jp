@@ -3,21 +3,25 @@ title: Java Web アプリのパフォーマンスの監視 - Azure Application I
 description: Application Insights を使用した Java Web サイトのパフォーマンスおよび利用状況の監視拡張。
 ms.topic: conceptual
 ms.date: 01/10/2019
+author: MS-jgol
 ms.custom: devx-track-java
-ms.openlocfilehash: 9cce87fa742df2e623217b5b0f72ad19814fd3b7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.author: jgol
+ms.openlocfilehash: 50c5a8a0c1e7c5d554e19ffcbc9a78bc0a385a5c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371364"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131731"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Java Web アプリでの依存関係、キャッチされた例外、メソッド実行時間の監視
 
+> [!IMPORTANT]
+> Java アプリケーションを監視する際に推奨される方法は、コードを変更せずに自動インストルメンテーションを使用することです。 [Application Insights Java 3.0 エージェント](./java-in-process-agent.md)のガイドラインに従ってください。
 
-[Java Web アプリを Application Insights][java] でインストルメント化した場合、Java エージェントを使用して、コードを変更することなく、詳細な分析を行うことができます。
+[Java Web アプリを Application Insights SDK でインストルメント化][java]した場合、Java エージェントを使用して、コードを変更することなく、詳細な分析を行うことができます。
 
 * **依存関係:** アプリケーションが他のコンポーネントに対して行った呼び出しについてのデータであり、次のものを含みます。
-  * Apache HttpClient、OkHttp、`java.net.HttpURLConnection` 経由で**発信された HTTP 呼び出し**がキャプチャされます。
+  * Apache HttpClient、OkHttp、`java.net.HttpURLConnection` 経由で **発信された HTTP 呼び出し** がキャプチャされます。
   * Jedis クライアント経由で行われた **Redis** 呼び出しがキャプチャされます。
   * **JDBC クエリ** - MySQL と PostgreSQL で呼び出しにかかる時間が 10 秒を超えた場合、エージェントはクエリ プランをレポートします。
 
@@ -33,7 +37,7 @@ ms.locfileid: "87371364"
 Java エージェントを使用するには、これをサーバーにインストールします。 Web アプリを [Application Insights Java SDK][java] を使用してインストルメント化する必要があります。 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>Jave 用の Application Insights エージェントのインストール
-1. Java サーバーを実行しているコンピューターで [エージェントをダウンロード](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)します。 Application Insights の Java SDK コアおよび Web パッケージと同じバージョンの Java エージェントをダウンロードするようにしてください。
+1. Java サーバーを実行しているコンピューターで [2.x エージェントをダウンロード](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/2.6.2)します。 使用する 2.x Java エージェントのバージョンが、使用する 2.x Application Insights Java SDK のバージョンと一致していることを確認してください。
 2. アプリケーション サーバーのスタートアップ スクリプトを編集し、次の JVM 引数を追加します。
    
     `-javaagent:<full path to the agent JAR file>`
@@ -85,10 +89,7 @@ Azure App Services については、次のようにします。
 * [設定]、[アプリケーションの設定] の順に選択します
 * [アプリ設定] で、新しいキー値ペアを追加します。
 
-キー:`JAVA_OPTS`値:`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
-
-Java の最新バージョンについては、[ここ](https://github.com/Microsoft/ApplicationInsights-Java/releases
-)でリリースを確認してください。 
+キー:`JAVA_OPTS`値:`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.6.2.jar`
 
 エージェントは、D:/home/site/wwwroot/ directory で終わるようにプロジェクト内でリソースとしてパッケージ化する必要があります。 **[開発ツール]**  >  **[高度なツール]**  >  **[デバッグ コンソール]** に進み、サイト ディレクトリの内容を調べることで、エージェントが正しい App Service ディレクトリにあることを確認できます。    
 

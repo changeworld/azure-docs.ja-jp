@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnick, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: b33d8db9d43b151cb0405ea24e0bea87e21cbdc9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: wiassaf, sstein
+ms.date: 1/14/2021
+ms.openlocfilehash: 4d0f5404a64eae99ced0dd797954ba042b50060f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345344"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217228"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Azure SQL Database での検出可能なクエリ パフォーマンス ボトルネックの種類
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -44,15 +44,15 @@ SQL クエリ オプティマイザーによって生成された最適化され
   - [Intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#missing-index) を使用する。
   - 単一およびプールされたデータベースの [Database Advisor](database/database-advisor-implement-performance-recommendations.md)。
   - DMV。 この例では、不足しているインデックスの影響、DMV を使用して[不足しているインデックス](database/performance-guidance.md#identifying-and-adding-missing-indexes)を検出する方法、また、不足しているインデックスの推奨事項を実装した場合の影響について示します。
-- より適切なプランを取得するためには、[クエリ ヒント](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query)の適用、[統計の更新](https://docs.microsoft.com/sql/t-sql/statements/update-statistics-transact-sql)、または [インデックスの再構成](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)を試してみます。 Azure SQL Database で[自動プラン修正](../azure-sql/database/automatic-tuning-overview.md)を有効にして、これらの問題を自動的に軽減します。
+- より適切なプランを取得するためには、[クエリ ヒント](/sql/t-sql/queries/hints-transact-sql-query)の適用、[統計の更新](/sql/t-sql/statements/update-statistics-transact-sql)、または [インデックスの再構成](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)を試してみます。 Azure SQL Database で[自動プラン修正](../azure-sql/database/automatic-tuning-overview.md)を有効にして、これらの問題を自動的に軽減します。
 
   この[例](database/performance-guidance.md#query-tuning-and-hinting)では、パラメーター化されたクエリに起因する最適化されていないクエリ プランの影響、この条件を検出する方法、およびクエリ ヒントを使用して解決する方法を示します。
 
-- データベース互換性レベルの変更と、インテリジェント クエリ処理の実装を試してみます。 SQL クエリ オプティマイザーでは、データベースの互換性レベルに応じて、異なるクエリ プランが生成される場合があります。 互換性レベルが高いほど、より[インテリジェントなクエリ処理機能](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing)が提供されます。
+- データベース互換性レベルの変更と、インテリジェント クエリ処理の実装を試してみます。 SQL クエリ オプティマイザーでは、データベースの互換性レベルに応じて、異なるクエリ プランが生成される場合があります。 互換性レベルが高いほど、より[インテリジェントなクエリ処理機能](/sql/relational-databases/performance/intelligent-query-processing)が提供されます。
 
-  - クエリ処理の詳細については、「[クエリ処理アーキテクチャ ガイド](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide)」を参照してください。
-  - データベースの互換性レベルを変更するため、また、互換性レベル間の違いを詳しく確認するためには、[ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level)に関する記事を参照してください。
-  - カーディナリティ推定について詳しく確認するには、[カーディナリティ推定](https://docs.microsoft.com/sql/relational-databases/performance/cardinality-estimation-sql-server)に関する記事を参照してください。
+  - クエリ処理の詳細については、「[クエリ処理アーキテクチャ ガイド](/sql/relational-databases/query-processing-architecture-guide)」を参照してください。
+  - データベースの互換性レベルを変更するため、また、互換性レベル間の違いを詳しく確認するためには、[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level)に関する記事を参照してください。
+  - カーディナリティ推定について詳しく確認するには、[カーディナリティ推定](/sql/relational-databases/performance/cardinality-estimation-sql-server)に関する記事を参照してください。
 
 ## <a name="resolving-queries-with-suboptimal-query-execution-plans"></a>クエリ実行プランが最適でないクエリの解決
 
@@ -66,19 +66,19 @@ SQL クエリ オプティマイザーによって生成された最適化され
 
 いくつかの回避策を使用して、PSP の問題を軽減できます。 それぞれの回避策には、関連するトレードオフと欠点があります。
 
-- 各クエリ実行で [RECOMPILE](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用します。 この回避策では、プランの品質の向上と引き換えに、コンパイル時間が長くなって CPU 使用率が増加します。 高スループットを必要とするワークロードでは、`RECOMPILE` オプションを使用できないことがよくあります。
-- [OPTION (OPTIMIZE FOR…)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用して、実際のパラメーター値を、可能性のあるほとんどのパラメーター値に対して十分良好なプランを生成する一般的なパラメーター値でオーバーライドします。 このオプションを使用するには、最適なパラメーター値および関連するプランの特性をよく理解している必要があります。
-- [OPTION (OPTIMIZE FOR UNKNOWN)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用して、実際のパラメーター値をオーバーライドし、代わりに密度ベクトルの平均を使用します。 また、受け取ったパラメーター値をローカル変数に取り込み、述語内ではパラメーター自体を使用する代わりにローカル変数を使用することによって、これを行うこともできます。 この修正では、平均密度は "*十分によい*" ものでなければなりません。
-- [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用して、パラメーター スニッフィング全体を無効にします。
-- [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用して、キャッシュ内の再コンパイルが行われないようにします。 この回避策では、"十分によい" 一般的なプランがキャッシュ内に既にあることを前提としています。 よいプランが破棄されて新しい悪いプランがコンパイルされる可能性を減らすため、統計の自動更新を無効にすることもできます。
-- クエリを書き直してクエリ テキストにヒントを追加することによって [USE PLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを明示的に使用することで、プランを強制します。 または、クエリ ストアを使用するか、[自動チューニング](../azure-sql/database/automatic-tuning-overview.md)を有効にして、特定のプランを設定します。
+- 各クエリ実行で [RECOMPILE](/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用します。 この回避策では、プランの品質の向上と引き換えに、コンパイル時間が長くなって CPU 使用率が増加します。 高スループットを必要とするワークロードでは、`RECOMPILE` オプションを使用できないことがよくあります。
+- [OPTION (OPTIMIZE FOR…)](/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用して、実際のパラメーター値を、可能性のあるほとんどのパラメーター値に対して十分良好なプランを生成する一般的なパラメーター値でオーバーライドします。 このオプションを使用するには、最適なパラメーター値および関連するプランの特性をよく理解している必要があります。
+- [OPTION (OPTIMIZE FOR UNKNOWN)](/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用して、実際のパラメーター値をオーバーライドし、代わりに密度ベクトルの平均を使用します。 また、受け取ったパラメーター値をローカル変数に取り込み、述語内ではパラメーター自体を使用する代わりにローカル変数を使用することによって、これを行うこともできます。 この修正では、平均密度は "*十分によい*" ものでなければなりません。
+- [DISABLE_PARAMETER_SNIFFING](/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用して、パラメーター スニッフィング全体を無効にします。
+- [KEEPFIXEDPLAN](/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用して、キャッシュ内の再コンパイルが行われないようにします。 この回避策では、"十分によい" 一般的なプランがキャッシュ内に既にあることを前提としています。 よいプランが破棄されて新しい悪いプランがコンパイルされる可能性を減らすため、統計の自動更新を無効にすることもできます。
+- クエリを書き直してクエリ テキストにヒントを追加することによって [USE PLAN](/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを明示的に使用することで、プランを強制します。 または、クエリ ストアを使用するか、[自動チューニング](../azure-sql/database/automatic-tuning-overview.md)を有効にして、特定のプランを設定します。
 - 1 つのプロシージャを、それぞれが条件付きロジックと関連するパラメーター値に基づいて使用できる入れ子になったプロシージャのセットに置き換えます。
 - 静的なプロシージャ定義の代わりに、動的文字列の実行を作成します。
 
 PSP 問題の解決方法について詳しくは、これらのブログ記事をご覧ください。
 
-- 「[パラメーターのスニッフィング](https://docs.microsoft.com/archive/blogs/queryoptteam/i-smell-a-parameter)」
-- 「[パラメーター化クエリに対する Conor、動的 SQL、プロシージャ、プランの品質の比較](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)」
+- 「[パラメーターのスニッフィング](/archive/blogs/queryoptteam/i-smell-a-parameter)」
+- 「[パラメーター化クエリに対する Conor、動的 SQL、プロシージャ、プランの品質の比較](/archive/blogs/conor_cunningham_msft/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries)」
 - 「[SQL Server での SQL クエリの最適化技法:パラメーター スニッフィング](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)」
 
 ### <a name="compile-activity-caused-by-improper-parameterization"></a>不適切なパラメーター化によって発生するコンパイル アクティビティ
@@ -90,7 +90,7 @@ PSP 問題の解決方法について詳しくは、これらのブログ記事�
 ```sql
 SELECT *
 FROM t1 JOIN t2 ON t1.c1 = t2.c1
-WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
+WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F';
 ```
 
 この例では、`t1.c1` は `@p1` を受け取りますが、`t2.c2` は引き続きリテラルとして GUID を受け取ります。 この場合、`c2` の値を変更すると、クエリは異なるクエリとして扱われて、新しいコンパイルが発生します。 この例でコンパイルを減らすためには、GUID もパラメーター化します。
@@ -115,7 +115,7 @@ WHERE
   rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
   AND query_parameterization_type_desc IN ('User', 'None')
 GROUP BY q.query_hash
-ORDER BY count (distinct p.query_id) DESC
+ORDER BY count (distinct p.query_id) DESC;
 ```
 
 ### <a name="factors-that-affect-query-plan-changes"></a>クエリ プランの変更に影響する要因
@@ -141,7 +141,7 @@ RECOMPILE ヒントを使用した場合、プランはキャッシュされま�
 
 - **サーバー リソースの違い**:あるシステムのプランが別のシステムのプランと異なる場合、利用可能なプロセッサの数などのリソースの可用性が、生成されるプランに影響を与える可能性があります。 たとえば、1 つのシステムでプロセッサの数が多い場合は、並列プランが選択される可能性があります。
 
-- **異なる統計**:参照されているオブジェクトに関連する統計情報が変更されていたり、元のシステムの統計と実質的に異なる場合があります。 統計が変更され再コンパイルが発生すると、クエリ オプティマイザーは、変更された時点からの統計を使用します。 変更された統計のデータの分布と頻度は、元のコンパイルのものとは異なる可能性があります。 これらの変更は、カーディナリティ推定を作成するために使用されます。 (*カーディナリティ推定*は、論理クエリ ツリーを経由してフローすると予想される行数です。)カーディナリティ推定が変更されると、異なる物理演算子、および関連する操作順序の選択が必要になる場合があります。 統計に対する変更が小さくても、クエリ実行プランが変更される可能性があります。
+- **異なる統計**:参照されているオブジェクトに関連する統計情報が変更されていたり、元のシステムの統計と実質的に異なる場合があります。 統計が変更され再コンパイルが発生すると、クエリ オプティマイザーは、変更された時点からの統計を使用します。 変更された統計のデータの分布と頻度は、元のコンパイルのものとは異なる可能性があります。 これらの変更は、カーディナリティ推定を作成するために使用されます。 (*カーディナリティ推定* は、論理クエリ ツリーを経由してフローすると予想される行数です。)カーディナリティ推定が変更されると、異なる物理演算子、および関連する操作順序の選択が必要になる場合があります。 統計に対する変更が小さくても、クエリ実行プランが変更される可能性があります。
 
 - **データベースの互換性レベルまたはカーディナリティ推定機能のバージョンが変更された**:データベースの互換性レベルの変更により、新しい戦略や機能が有効になり、それによって、異なるクエリ実行プランが作成される可能性があります。 データベースの互換性レベルのほかに、無効または有効になったトレース フラグ 4199 またはデータベース スコープ構成 QUERY_OPTIMIZER_HOTFIXES の変更された状態が、コンパイル時のクエリ実行プランの選択に影響する可能性があります。 トレース フラグ 9481 (レガシ CE を強制) と 2312 (既定の CE を強制) もプランに影響を与えます。
 
@@ -187,7 +187,7 @@ Intelligent Insights を使用して[ワークロードの増加](database/intel
 
 - **ブロック**:
 
-  あるクエリがデータベースのオブジェクトに対するロックを保持している間に、他のクエリが同じオブジェクトにアクセスしようとしています。 ブロックしているクエリは、[DMV](database/monitoring-with-dmvs.md#monitoring-blocked-queries) または [Intelligent Insights ](database/intelligent-insights-troubleshoot-performance.md#locking)を使って識別できます。
+  あるクエリがデータベースのオブジェクトに対するロックを保持している間に、他のクエリが同じオブジェクトにアクセスしようとしています。 ブロックしているクエリは、[DMV](database/monitoring-with-dmvs.md#monitoring-blocked-queries) または [Intelligent Insights ](database/intelligent-insights-troubleshoot-performance.md#locking)を使って識別できます。 詳細については、「[Azure SQL のブロックの問題を理解して解決する](database/understand-resolve-blocking.md)」を参照してください。
 - **IO の問題**
 
   ページがデータ ファイルまたはログ ファイルに書き込まれるのをクエリが待機している可能性があります。 この場合は、DMV で `INSTANCE_LOG_RATE_GOVERNOR`、`WRITE_LOG`、または `PAGEIOLATCH_*` の待機統計を確認します。 DMV を使用した「[IO パフォーマンスに関する問題の特定](database/monitoring-with-dmvs.md#identify-io-performance-issues)」を参照してください。
@@ -203,16 +203,16 @@ Intelligent Insights を使用して[ワークロードの増加](database/intel
 これらの方法は、通常、待機の種類の上位カテゴリを表示するために使用されます。
 
 - Intelligent Insights を使用して、[待機の増加](database/intelligent-insights-troubleshoot-performance.md#increased-wait-statistic)に起因してパフォーマンスが低下しているクエリを特定します。
-- [クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)を使用して、一定期間の各クエリの待機統計を検索します。 クエリ ストアでは、待機の種類は待機カテゴリに結合されます。 待機カテゴリから待機の種類へのマッピングは、[sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table) にあります。
-- [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) を使用して、クエリの操作中に実行されたスレッドによって発生したすべての待機に関する情報を返します。 この集計ビューを使用して、Azure SQL Database のほか、特定のクエリやバッチに関するパフォーマンスの問題を診断できます。 クエリの待機は、リソース、キュー待機、または外部待機で発生する場合があります。
-- [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) を使用して、何らかのリソースを待機しているタスクのキューに関する情報を返します。
+- [クエリ ストア](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)を使用して、一定期間の各クエリの待機統計を検索します。 クエリ ストアでは、待機の種類は待機カテゴリに結合されます。 待機カテゴリから待機の種類へのマッピングは、[sys.query_store_wait_stats](/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table) にあります。
+- [sys.dm_db_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) を使用して、クエリの操作中に実行されたスレッドによって発生したすべての待機に関する情報を返します。 この集計ビューを使用して、Azure SQL Database のほか、特定のクエリやバッチに関するパフォーマンスの問題を診断できます。 クエリの待機は、リソース、キュー待機、または外部待機で発生する場合があります。
+- [sys.dm_os_waiting_tasks](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) を使用して、何らかのリソースを待機しているタスクのキューに関する情報を返します。
 
 CPU の使用率が高いシナリオでは、次の場合にクエリ ストアと待機の統計に CPU 使用率が反映されない可能性があります。
 
 - CPU 消費量の高いクエリがまだ実行中である。
 - フェールオーバーが発生したときに、CPU 消費量の高いクエリが実行されていた。
 
-クエリ ストアと待機の統計を追跡する DMV は、正常に完了したクエリとタイムアウトしたクエリのみの結果を表示します。 ステートメントが終了するまで、現在実行中のステートメントのデータは表示されません。 動的管理ビュー [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) を使用して、現在実行中のクエリとそれに関連するワーカーの時間を追跡します。
+クエリ ストアと待機の統計を追跡する DMV は、正常に完了したクエリとタイムアウトしたクエリのみの結果を表示します。 ステートメントが終了するまで、現在実行中のステートメントのデータは表示されません。 動的管理ビュー [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) を使用して、現在実行中のクエリとそれに関連するワーカーの時間を追跡します。
 
 > [!TIP]
 > その他のツール:

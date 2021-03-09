@@ -9,36 +9,47 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 10/27/2020
 ms.author: hirsin
-ms.reviewer: hirsin
+ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 3054180f65a7d65300067edadee5e9507bb92414
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e1dcd52660ff43a93c6a170912fea5a5847fe9d3
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88796172"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575756"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft ID プラットフォーム アクセス トークン
 
-アクセス トークンにより、クライアントは保護された API を安全に呼び出すことができます。 Microsoft ID プラットフォーム アクセス トークンは [JWT](https://tools.ietf.org/html/rfc7519)、つまり Microsoft ID プラットフォームによって署名された Base64 でエンコードされた JSON オブジェクトです。 アクセス トークンの内容は特定のリソースのみを対象としているため、クライアントはトークンを不透明型の文字列として扱う必要があります。 検証とデバッグを目的として、開発者は [jwt.ms](https://jwt.ms) などのサイトを使用して、JWT (JSON Web トークン) をデコードすることができます。 クライアントは、さまざまなプロトコルを使用して、v1.0 エンドポイントまたは v2.0 エンドポイントのどちらからでもアクセス トークンを取得できます。
+アクセス トークンによって、クライアントは保護された Web API を安全に呼び出すことができます。Web API は、認証と認可を実行するためにアクセス トークンを使用します。 OAuth 仕様によると、アクセス トークンは、設定された形式を持たない不透明型の文字列です。ID プロバイダー (IDP) の中には GUID を使用するものもあれば、暗号化された BLOB を使用するものもあります。 Microsoft ID プラットフォームでは、トークンを受け入れる API の構成に応じて、さまざまなアクセス トークン形式が使用されます。 Microsoft ID プラットフォームで[開発者によって登録されるカスタム API](quickstart-configure-app-expose-web-apis.md) では、"v1" および "v2" と呼ばれる 2 つの異なる形式の JSON Web Token (JWT) のいずれかを選択できます。また、Microsoft Graph などの Microsoft が開発した API や Azure の API には、追加の専用トークン形式があります。 これらの専用形式は、暗号化トークン、JWT、または検証を行わない特殊な JWT 類似トークンである可能性があります。
 
-クライアントがアクセス トークンを要求すると、Microsoft ID プラットフォームからは、アプリで消費されるそのアクセス トークンに関する何らかのメタデータも返されます。 この情報には、アクセス トークンの有効期限や、それが有効なスコープが含まれます。 このデータを使用すると、アプリはアクセス トークン自体を解析しなくても、そのアクセス トークンのインテリジェントなキャッシュを実行できます。
+トークンの内容は特定のリソース (API) のみを対象としているため、クライアントはアクセス トークンを不透明型の文字列として扱う必要があります。 検証とデバッグ "*のみ*" を目的として、開発者は [jwt.ms](https://jwt.ms) などのサイトを使用して JWT をデコードできます。 ただし、Microsoft API 用に受信するトークンは常に JWT であるとは限らず、それを常にデコードできるとは限らないことに注意してください。
 
-ご自分のアプリケーションが、クライアントからアクセス要求が可能なリソース (Web API) である場合、アクセス トークンを使って、認証と承認に使用する有用な情報 (ユーザー、クライアント、発行元、アクセス許可など) を提供できます。
+アクセス トークン内の内容の詳細については、クライアントは、アクセス トークンと共にクライアントに返されるトークン応答データを使用する必要があります。 クライアントがアクセス トークンを要求すると、Microsoft ID プラットフォームからは、アプリで使用されるそのアクセス トークンに関する何らかのメタデータも返されます。 この情報には、アクセス トークンの有効期限や、それが有効なスコープが含まれます。 このデータを使用すると、アプリはアクセス トークン自体を解析しなくても、そのアクセス トークンのインテリジェントなキャッシュを実行できます。
 
-リソースでアクセス トークン内のクレームを検証して使用する方法については、以下のセクションをご覧ください。
+API でアクセス トークン内の要求を検証して使用する方法については、次のセクションをご覧ください。  
 
-> [!IMPORTANT]
-> アクセス トークンは、トークンの*対象ユーザー*、つまりそのトークン内のスコープを所有するアプリケーションに基づいて作成されます。  これは、[アプリ マニフェスト](reference-app-manifest.md#manifest-reference)内の `accessTokenAcceptedVersion` を `2` に設定しているリソースにより、v1.0 エンドポイントを呼び出しているクライアントがどのように v2.0 アクセス トークンを受信できるかを示しています。  同様に、これはクライアントのアクセス トークンの[省略可能な要求](active-directory-optional-claims.md)を変更しても、リソースによって所有される `user.read` に対してトークンが要求されたときに受信されるアクセス トークンが変更されない理由でもあります。
-> 同じ理由で、個人アカウント (hotmail.com や outlook.com など) によるクライアント アプリケーションをテストしたときに、クライアントが受け取ったアクセス トークンが不透明型の文字列であることがわかります。 これは、アクセス対象のリソースが、暗号化されていてクライアントが認識できない従来の MSA (Microsoft アカウント) チケットを要求したためです。
+> [!NOTE]
+> このページのすべてのドキュメントは、特に記載がある場合を除き、登録した API に対して発行されるトークンにのみ適用されます。  Microsoft が所有する API に対して発行されるトークンには適用されません。また、それらのトークンを使用して、Microsoft ID プラットフォームが、作成した API に対してトークンを発行する方法を検証することもできません。  
 
-## <a name="sample-tokens"></a>サンプル トークン
+## <a name="token-formats-and-ownership"></a>トークンの形式と所有権
 
-v1.0 トークンと v2.0 トークンは似ており、同じクレームが多く含まれています。 各トークンの例を次に示します。
+### <a name="v10-and-v20"></a>v1.0 および v2.0 
 
-### <a name="v10"></a>v1.0
+Microsoft ID プラットフォームで使用できるアクセス トークンには、v1.0 と v2.0 の 2 つのバージョンがあります。  これらのバージョンによって、トークン内の要求の内容が管理され、それにより Web API はトークンの状態を制御できます。 Web API では、これらのいずれかが登録時に既定として選択されます。Azure AD 専用アプリでは v1.0、コンシューマー アカウントをサポートするアプリでは v2.0 です。  これは、[アプリ マニフェスト](reference-app-manifest.md#manifest-reference)の `accessTokenAcceptedVersion` 設定を使用してアプリケーションで制御できます。この場合、`null` および `1` では v1.0 トークンになり、`2` では v2.0 トークンになります。
+
+### <a name="what-app-is-a-token-for"></a>どのようなアプリがトークンの "対象" となるか
+
+アクセス トークン要求には、トークンを要求するクライアントと、API 呼び出し時にトークンを受け入れるリソース (API) の 2 つのパーティが関与します。 トークン内の `aud` 要求は、トークンが対象とするリソース (その "*対象者*") を示します。 クライアントはトークンを使用しますが、それを理解したり解析しようとしたりすることはできません。 リソースはトークンを受け入れます。  
+
+Microsoft ID プラットフォームでは、任意のバージョンのエンドポイントからの任意のトークン バージョンの発行がサポートされています。これらは関連性がありません。 このため、`accessTokenAcceptedVersion` を `2` に設定したリソースでは、v1.0 エンドポイントを呼び出してその API のトークンを取得するクライアントは、v2.0 アクセス トークンを受け取ることになります。  リソースはトークン (その `aud` 要求を含むもの) を常に所有し、トークンの詳細を変更できる唯一のアプリケーションになります。 このため、"*クライアント*" のアクセス トークンの [省略可能な要求](active-directory-optional-claims.md)を変更しても、Microsoft Graph リソースが所有する `user.read` に対してトークンが要求されたときに受信されるアクセス トークンは変更されません。
+
+### <a name="sample-tokens"></a>サンプル トークン
+
+v1.0 トークンと v2.0 トークンは似ており、同じクレームが多く含まれています。 各トークンの例を次に示します。 ただし、これらの例のトークンは、発行前にキーがローテーションされ、その個人情報が削除されているため、[検証](#validating-tokens)されません。
+
+#### <a name="v10"></a>v1.0
 
 ```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSJ9.eyJhdWQiOiJlZjFkYTlkNC1mZjc3LTRjM2UtYTAwNS04NDBjM2Y4MzA3NDUiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTUyMjIyOS8iLCJpYXQiOjE1MzcyMzMxMDYsIm5iZiI6MTUzNzIzMzEwNiwiZXhwIjoxNTM3MjM3MDA2LCJhY3IiOiIxIiwiYWlvIjoiQVhRQWkvOElBQUFBRm0rRS9RVEcrZ0ZuVnhMaldkdzhLKzYxQUdyU091TU1GNmViYU1qN1hPM0libUQzZkdtck95RCtOdlp5R24yVmFUL2tES1h3NE1JaHJnR1ZxNkJuOHdMWG9UMUxrSVorRnpRVmtKUFBMUU9WNEtjWHFTbENWUERTL0RpQ0RnRTIyMlRJbU12V05hRU1hVU9Uc0lHdlRRPT0iLCJhbXIiOlsid2lhIl0sImFwcGlkIjoiNzVkYmU3N2YtMTBhMy00ZTU5LTg1ZmQtOGMxMjc1NDRmMTdjIiwiYXBwaWRhY3IiOiIwIiwiZW1haWwiOiJBYmVMaUBtaWNyb3NvZnQuY29tIiwiZmFtaWx5X25hbWUiOiJMaW5jb2xuIiwiZ2l2ZW5fbmFtZSI6IkFiZSAoTVNGVCkiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMjIyNDcvIiwiaXBhZGRyIjoiMjIyLjIyMi4yMjIuMjIiLCJuYW1lIjoiYWJlbGkiLCJvaWQiOiIwMjIyM2I2Yi1hYTFkLTQyZDQtOWVjMC0xYjJiYjkxOTQ0MzgiLCJyaCI6IkkiLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzdWIiOiJsM19yb0lTUVUyMjJiVUxTOXlpMmswWHBxcE9pTXo1SDNaQUNvMUdlWEEiLCJ0aWQiOiJmYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTU2ZmQ0MjkiLCJ1bmlxdWVfbmFtZSI6ImFiZWxpQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJGVnNHeFlYSTMwLVR1aWt1dVVvRkFBIiwidmVyIjoiMS4wIn0.D3H6pMUtQnoJAGq6AHd
@@ -46,7 +57,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEps
 
 この v1.0 トークンは [JWT.ms](https://jwt.ms/#access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSJ9.eyJhdWQiOiJlZjFkYTlkNC1mZjc3LTRjM2UtYTAwNS04NDBjM2Y4MzA3NDUiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTUyMjIyOS8iLCJpYXQiOjE1MzcyMzMxMDYsIm5iZiI6MTUzNzIzMzEwNiwiZXhwIjoxNTM3MjM3MDA2LCJhY3IiOiIxIiwiYWlvIjoiQVhRQWkvOElBQUFBRm0rRS9RVEcrZ0ZuVnhMaldkdzhLKzYxQUdyU091TU1GNmViYU1qN1hPM0libUQzZkdtck95RCtOdlp5R24yVmFUL2tES1h3NE1JaHJnR1ZxNkJuOHdMWG9UMUxrSVorRnpRVmtKUFBMUU9WNEtjWHFTbENWUERTL0RpQ0RnRTIyMlRJbU12V05hRU1hVU9Uc0lHdlRRPT0iLCJhbXIiOlsid2lhIl0sImFwcGlkIjoiNzVkYmU3N2YtMTBhMy00ZTU5LTg1ZmQtOGMxMjc1NDRmMTdjIiwiYXBwaWRhY3IiOiIwIiwiZW1haWwiOiJBYmVMaUBtaWNyb3NvZnQuY29tIiwiZmFtaWx5X25hbWUiOiJMaW5jb2xuIiwiZ2l2ZW5fbmFtZSI6IkFiZSAoTVNGVCkiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMjIyNDcvIiwiaXBhZGRyIjoiMjIyLjIyMi4yMjIuMjIiLCJuYW1lIjoiYWJlbGkiLCJvaWQiOiIwMjIyM2I2Yi1hYTFkLTQyZDQtOWVjMC0xYjJiYjkxOTQ0MzgiLCJyaCI6IkkiLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzdWIiOiJsM19yb0lTUVUyMjJiVUxTOXlpMmswWHBxcE9pTXo1SDNaQUNvMUdlWEEiLCJ0aWQiOiJmYTE1ZDY5Mi1lOWM3LTQ0NjAtYTc0My0yOWYyOTU2ZmQ0MjkiLCJ1bmlxdWVfbmFtZSI6ImFiZWxpQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJGVnNHeFlYSTMwLVR1aWt1dVVvRkFBIiwidmVyIjoiMS4wIn0.D3H6pMUtQnoJAGq6AHd) で表示できます。
 
-### <a name="v20"></a>v2.0
+#### <a name="v20"></a>v2.0
 
 ```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSJ9.eyJhdWQiOiI2ZTc0MTcyYi1iZTU2LTQ4NDMtOWZmNC1lNjZhMzliYjEyZTMiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3YyLjAiLCJpYXQiOjE1MzcyMzEwNDgsIm5iZiI6MTUzNzIzMTA0OCwiZXhwIjoxNTM3MjM0OTQ4LCJhaW8iOiJBWFFBaS84SUFBQUF0QWFaTG8zQ2hNaWY2S09udHRSQjdlQnE0L0RjY1F6amNKR3hQWXkvQzNqRGFOR3hYZDZ3TklJVkdSZ2hOUm53SjFsT2NBbk5aY2p2a295ckZ4Q3R0djMzMTQwUmlvT0ZKNGJDQ0dWdW9DYWcxdU9UVDIyMjIyZ0h3TFBZUS91Zjc5UVgrMEtJaWpkcm1wNjlSY3R6bVE9PSIsImF6cCI6IjZlNzQxNzJiLWJlNTYtNDg0My05ZmY0LWU2NmEzOWJiMTJlMyIsImF6cGFjciI6IjAiLCJuYW1lIjoiQWJlIExpbmNvbG4iLCJvaWQiOiI2OTAyMjJiZS1mZjFhLTRkNTYtYWJkMS03ZTRmN2QzOGU0NzQiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhYmVsaUBtaWNyb3NvZnQuY29tIiwicmgiOiJJIiwic2NwIjoiYWNjZXNzX2FzX3VzZXIiLCJzdWIiOiJIS1pwZmFIeVdhZGVPb3VZbGl0anJJLUtmZlRtMjIyWDVyclYzeERxZktRIiwidGlkIjoiNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3IiwidXRpIjoiZnFpQnFYTFBqMGVRYTgyUy1JWUZBQSIsInZlciI6IjIuMCJ9.pj4N-w_3Us9DrBLfpCt
@@ -64,10 +75,9 @@ JWT (JSON Web トークン) は 3 つの部分に分かれています。
 
 各部分はピリオド (`.`) で区切られ、Base64 で個別にエンコードされます。
 
-クレームは、そこに入力される値が存在する場合にのみ存在します。 そのため、アプリはクレームの存在に依存することはできません。 例として、`pwd_exp` (すべてのテナントでパスワードを期限切れにする必要があるわけではありません) や、`family_name` (名前のないアプリケーションに代わって、クライアント資格情報 ([v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md)) フローが使用されます) などがあります。 アクセス トークンの検証に使用されるクレームは常に存在します。
+クレームは、そこに入力される値が存在する場合にのみ存在します。 アプリは要求の存在に依存することはできません。 例として、`pwd_exp` (すべてのテナントがパスワードを期限切れにする必要があるわけではありません) や、`family_name` (名前のないアプリケーションに代わって、[クライアント資格情報フロー](v2-oauth2-client-creds-grant-flow.md)が使用されます) などがあります。 アクセス トークンの検証に使用されるクレームは常に存在します。
 
-> [!NOTE]
-> 再利用に備え、Azure AD を使ったトークンのセキュリティ保護に活用されるクレームもあります。 これらは公開されないものとして、記述で "Opaque" としてマークされます。 これらのクレームはトークンに表示される場合とされない場合があり、新しいものが予告なく追加される場合もあります。
+再利用に備え、Azure AD を使ったトークンのセキュリティ保護に活用されるクレームもあります。 これらは公開されないものとして、記述で "Opaque" としてマークされます。 これらのクレームはトークンに表示される場合とされない場合があり、新しいものが予告なく追加される場合もあります。
 
 ### <a name="header-claims"></a>ヘッダーのクレーム
 
@@ -83,8 +93,8 @@ JWT (JSON Web トークン) は 3 つの部分に分かれています。
 
 | 要求 | Format | 説明 |
 |-----|--------|-------------|
-| `aud` | 文字列、アプリケーション ID URI | トークンの受信者を示します。 ID トークンでは、オーディエンスは Azure portal でアプリに割り当てられたアプリのアプリケーション ID です。 アプリでは、この値を検証し、値が一致しない場合はトークンを拒否する必要があります。 |
-| `iss` | 文字列、STS URI | トークンを作成して返したセキュリティ トークン サービス (STS)、およびユーザーが認証された Azure AD テナントを示します。 発行されたトークンが v2.0 トークンである場合 (`ver` 要求を参照)、URI は `/v2.0` で終了します。 ユーザーが Microsoft アカウントを持つコンシューマー ユーザーであることを示す GUID は `9188040d-6c67-4c5b-b112-36a304b66dad` です。 要求の GUID 部分を使用して、アプリにサインインできるテナントのセットを制限します (該当する場合)。 |
+| `aud` | 文字列、アプリ ID URI、または GUID | トークンの目的の受信者 (その対象者) を示します。  API でこの値を検証し、値が一致しない場合はトークンを拒否する必要があります。 v2.0 トークンでは、これは常に API のクライアント ID です。一方 v1.0 トークンでは、これは、クライアントがトークンを要求した方法に応じて、クライアント ID、または要求で使用されるリソース URI になります。|
+| `iss` | 文字列、STS URI | トークンを作成して返したセキュリティ トークン サービス (STS)、およびユーザーが認証された Azure AD テナントを示します。 発行されたトークンが v2.0 トークンである場合 (`ver` 要求を参照)、URI は `/v2.0` で終了します。 ユーザーが Microsoft アカウントを持つコンシューマー ユーザーであることを示す GUID は `9188040d-6c67-4c5b-b112-36a304b66dad` です。 お使いのアプリで、要求の GUID 部分を使用して、アプリにサインインできるテナントのセットを制限できます (該当する場合)。 |
 |`idp`| 文字列 (通常は STS URI) | トークンのサブジェクトを認証した ID プロバイダーを記録します。 この値は、発行者とテナントが異なるユーザー アカウント (たとえばゲスト) の場合を除いて、発行者クレームの値と同じです。 クレームが存在しない場合は、代わりに `iss` の値を使用できることを示しています。  個人用アカウントが組織のコンテキストで使用されている場合 (たとえば、個人用アカウントが Azure AD テナントに招待された場合)、`idp` 要求は 'live.com' または Microsoft アカウント テナント `9188040d-6c67-4c5b-b112-36a304b66dad` を含む STS URI である可能性があります。 |
 | `iat` | int、UNIX タイムスタンプ | "Issued At" は、このトークンの認証がいつ行われたのかを示します。 |
 | `nbf` | int、UNIX タイムスタンプ | "nbf" (not before) 要求は JWT が有効になる日時を示します。これ以前にその JWT を受け入れて処理することはできません。 |
@@ -93,15 +103,15 @@ JWT (JSON Web トークン) は 3 つの部分に分かれています。
 | `acr` | 文字列、"0" または "1" | v1.0 トークンにのみ存在します。 "認証コンテキスト クラス" 要求。 値 「0」 は、エンドユーザーの認証が ISO/IEC 29115 の要件を満たしていないことを示します。 |
 | `amr` | 文字列の JSON 配列 | v1.0 トークンにのみ存在します。 トークンのサブジェクトが認証された方法を示します。 詳細については、「[amr 要求](#the-amr-claim)」をご覧ください。 |
 | `appid` | 文字列、GUID | v1.0 トークンにのみ存在します。 トークンを使用するクライアントのアプリケーションID。 アプリケーションとして識別することもできますが、アプリケーションを使用しているユーザーとして識別することもできます。 アプリケーション ID は通常、アプリケーション オブジェクトを表しますが、Azure AD 内のサービス プリンシパル オブジェクトを表すこともできます。 |
-| `appidacr` | "0"、"1"、または "2" | v1.0 トークンにのみ存在します。 クライアントが認証された方法を示します。 パブリック クライアントの場合、値は "0" です。 クライアント ID とクライアント シークレットが使用されている場合、値は "1" です。 クライアント証明書が認証に使用された場合、値は "2" です。 |
 | `azp` | 文字列、GUID | V2.0 トークンにのみ存在します。`appid` に代わるものです。 トークンを使用するクライアントのアプリケーションID。 アプリケーションとして識別することもできますが、アプリケーションを使用しているユーザーとして識別することもできます。 アプリケーション ID は通常、アプリケーション オブジェクトを表しますが、Azure AD 内のサービス プリンシパル オブジェクトを表すこともできます。 |
+| `appidacr` | "0"、"1"、または "2" | v1.0 トークンにのみ存在します。 クライアントが認証された方法を示します。 パブリック クライアントの場合、値は "0" です。 クライアント ID とクライアント シークレットが使用されている場合、値は "1" です。 クライアント証明書が認証に使用された場合、値は "2" です。 |
 | `azpacr` | "0"、"1"、または "2" | V2.0 トークンにのみ存在します。`appidacr` に代わるものです。 クライアントが認証された方法を示します。 パブリック クライアントの場合、値は "0" です。 クライアント ID とクライアント シークレットが使用されている場合、値は "1" です。 クライアント証明書が認証に使用された場合、値は "2" です。 |
-| `preferred_username` | String | ユーザーを表すプライマリ ユーザー名です。 電子メール アドレス、電話番号、または指定された書式のない一般的なユーザー名を指定できます。 その値は、変更可能であり、時間の経過と共に変化することがあります。 これは変更可能であるため、この値は、承認の決定には使用できません。  ただしユーザー名のヒントには使用できます。 この要求を受け取るには、 `profile` スコープが必要です。 |
+| `preferred_username` | String | ユーザーを表すプライマリ ユーザー名です。 電子メール アドレス、電話番号、または指定された書式のない一般的なユーザー名を指定できます。 その値は、変更可能であり、時間の経過と共に変化することがあります。 これは変更可能であるため、この値は、承認の決定には使用できません。  ただし、これを、ユーザー名のヒントとして使用することや、人間が判読できる UI でユーザー名として使用することができます。 この要求を受け取るには、 `profile` スコープが必要です。 v2.0 トークンにのみ存在します。 |
 | `name` | String | トークンのサブジェクトを識別する、人間が判読できる値を提供します。 この値は、一意であるとは限らず、変更可能であり、表示目的でのみ使用されます。 この要求を受け取るには、 `profile` スコープが必要です。 |
 | `scp` | 文字列、スコープのスペース区切りリスト | クライアント アプリケーションが同意を要求し、同意を得た、アプリケーションによって公開されているスコープのセット。 アプリでは、これらのスコープがアプリによって公開されている有効なスコープであることを確認し、これらのスコープの値に基づいて承認を決定する必要があります。 [ユーザー トークン](#user-and-application-tokens)にのみ含まれます。 |
 | `roles` | 文字列の配列、アクセス許可の一覧 | 要求元のアプリケーションに呼び出しのアクセス許可が付与されている、アプリケーションまたはユーザーによって公開されているアクセス許可のセット。 [アプリケーション トークン](#user-and-application-tokens)では、これはユーザー スコープの代わりにクライアント資格情報フロー ([v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md)) で使用されます。  [ユーザー トークン](#user-and-application-tokens)では、これにはターゲット アプリケーションでユーザーに割り当てられたロールが設定されます。 |
-| `wids` | [RoleTemplateID](../users-groups-roles/directory-assign-admin-roles.md#role-template-ids) GUID の配列 | [管理者ロール ページ](../users-groups-roles/directory-assign-admin-roles.md#role-template-ids)に存在するロールのセクションから、このユーザーに割り当てられたテナント全体のロールを示します。  この要求は、[アプリケーション マニフェスト](reference-app-manifest.md)の `groupMembershipClaims` プロパティを介して、アプリケーションごとに構成されます。  これを "All" または "DirectoryRole" に設定することが必要です。  トークンの長さの問題のため、暗黙的フローを介して取得されたトークンには存在しない可能性があります。 |
-| `groups` | GUID の JSON 配列 | サブジェクトのグループ メンバーシップを表すオブジェクト ID です。 これらの値は一意 (「オブジェクト ID」を参照) であり、アクセスの管理 (リソースへのアクセスを承認するなど) に安全に使用できます。 groups 要求に含まれるグループは、[アプリケーション マニフェスト](reference-app-manifest.md)の `groupMembershipClaims` プロパティを使用してアプリケーションごとに構成されます。 値が null の場合はすべてのグループが除外され、値が ”SecurityGroup” の場合は Active Directory セキュリティ グループのメンバーシップのみが含まれ、値が ”All” の場合はセキュリティ グループと Office 365 配布リストの両方が含まれます。 <br><br>暗黙的な許可での `groups` 要求の使用の詳細については、以下の `hasgroups` 要求を参照してください。 <br>他のフローでは、ユーザーが属するグループの数が上限 (SAML の場合は 150、JWT の場合は 200) を超えた場合、ユーザーのグループのリストを含む Microsoft Graph エンドポイントを参照する要求ソースに超過要求が追加されます。 |
+| `wids` | [RoleTemplateID](../roles/permissions-reference.md#role-template-ids) GUID の配列 | [管理者ロール ページ](../roles/permissions-reference.md#role-template-ids)に存在するロールのセクションから、このユーザーに割り当てられたテナント全体のロールを示します。  この要求は、[アプリケーション マニフェスト](reference-app-manifest.md)の `groupMembershipClaims` プロパティを介して、アプリケーションごとに構成されます。  これを "All" または "DirectoryRole" に設定することが必要です。  トークンの長さの問題のため、暗黙的フローを介して取得されたトークンには存在しない可能性があります。 |
+| `groups` | GUID の JSON 配列 | サブジェクトのグループ メンバーシップを表すオブジェクト ID です。 これらの値は一意 (「オブジェクト ID」を参照) であり、アクセスの管理 (リソースへのアクセスを承認するなど) に安全に使用できます。 groups 要求に含まれるグループは、[アプリケーション マニフェスト](reference-app-manifest.md)の `groupMembershipClaims` プロパティを使用してアプリケーションごとに構成されます。 値が null の場合はすべてのグループが除外され、値が "SecurityGroup" の場合は Active Directory セキュリティ グループのメンバーシップのみが含まれ、値が ”All” の場合はセキュリティ グループと Microsoft 365 配布リストの両方が含まれます。 <br><br>暗黙的な許可での `groups` 要求の使用の詳細については、以下の `hasgroups` 要求を参照してください。 <br>他のフローでは、ユーザーが属するグループの数が上限 (SAML の場合は 150、JWT の場合は 200) を超えた場合、ユーザーのグループのリストを含む Microsoft Graph エンドポイントを参照する要求ソースに超過要求が追加されます。 |
 | `hasgroups` | Boolean | 存在する場合、常に `true` であり、ユーザーが 1 つ以上のグループに属していることを示します。 すべてのグループ要求で URL 長の制限 (現在は 6 以上のグループ) を超えて URI フラグメントが拡張された場合、暗黙的な許可フローの JWT で `groups` 要求の代わりに使用されます。 クライアントが Microsoft Graph API を使用して、ユーザーのグループを決定する必要があることを示します (`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects`)。 |
 | `groups:src1` | JSON オブジェクト | 長さは制限されていないが (上記 `hasgroups` を参照)、トークンには大きすぎるトークン要求の場合、ユーザーのすべてのグループ リストへのリンクが含まれます。 SAML では `groups` 要求の代わりに新しい要求として、JWT では分散要求として使用されます。 <br><br>**JWT 値の例**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
 | `sub` | String | トークンが情報をアサートするプリンシパルです (アプリのユーザーなど)。 この値は変更不可で、再割り当ても再利用もできません。 そのため、この値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。また、データベース テーブルのキーとして使用することもできます。 サブジェクトは、Azure AD が発行するトークン内に常に存在するため、汎用性のある承認システムでこの値を使用することをお勧めします。 ただし、サブジェクトはペアワイズ識別子で、特定のアプリケーション ID に一意です。 そのため、1 人のユーザーが 2 つの異なるクライアント ID を使用して 2 つの異なるアプリにサインインすると、そのアプリは、サブジェクト要求に対して 2 つの異なる値を受け取ることになります。 この動作が求められているかどうかは、アーキテクチャやプライバシーの要件によって異なります。 `oid` 要求 (テナント内のアプリ全体で同じままです) も参照してください。 |
@@ -114,7 +124,7 @@ JWT (JSON Web トークン) は 3 つの部分に分かれています。
 
 **グループ超過要求**
 
-トークンのサイズが HTTP ヘッダー サイズの上限を超えないよう、Azure AD では、グループ要求に含まれるオブジェクト ID の数が制限されます。 超過制限 (SAML トークンの場合は 150、JWT トークンの場合は 200) を超えるグループのメンバーにユーザーがなっている場合、Azure AD は、グループ要求をトークンに出力しません。 代わりに、Microsoft Graph API に照会してユーザーのグループ メンバーシップを取得するようアプリケーションに指示する超過要求がトークンに追加されます。
+トークンのサイズが HTTP ヘッダー サイズの上限を超えないよう、Azure AD では、グループ要求に含まれるオブジェクト ID の数が制限されます。 超過制限 (SAML トークンの場合は 150、JWT トークンの場合は 200、暗黙的フローによって発行される場合は 6 のみ) を超えるグループのメンバーにユーザーがなっている場合、Azure AD は、グループ要求をトークンに出力しません。 代わりに、Microsoft Graph API に照会してユーザーのグループ メンバーシップを取得するようアプリケーションに指示する超過要求がトークンに追加されます。
 
 ```JSON
 {
@@ -130,8 +140,8 @@ JWT (JSON Web トークン) は 3 つの部分に分かれています。
        }
      }
   ...
- }
- ```
+}
+```
 
 超過のシナリオは、[App Creation Scripts](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-2-Groups/AppCreationScripts) フォルダーにある `BulkCreateGroups.ps1` を使用してテストできます。
 
@@ -169,15 +179,22 @@ Microsoft ID は、アプリケーションに関連している可能性のあ�
 
 ## <a name="validating-tokens"></a>トークンの検証
 
-id_token または access_token を検証するには、アプリはトークンの署名と要求の両方を検証する必要があります。 アクセス トークンを検証するには、アプリは発行者、対象ユーザー、および署名トークンも検証する必要があります。 これらの検証は、OpenID 探索ドキュメント内の値に対して行ってください。 たとえば、テナントに依存しないバージョンのドキュメントは [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration) にあります。
+すべてのアプリでトークンを検証する必要はありません。 アプリでトークンを検証する必要があるのは、特定のシナリオのみです。
 
-Azure AD ミドルウェアにはアクセス トークンを検証するための機能が組み込まれており、選択した言語の[サンプル](../azuread-dev/sample-v1-code.md)を参照できます。
+* [Web API](quickstart-configure-app-expose-web-apis.md) は、クライアントから自身に送信されたアクセス トークンを検証する必要があります。  `aud` 要求を含むトークンのみを受け入れる必要があります。
+* ASP.NET Core のような機密性の高い Web アプリは、ユーザーのデータへのアクセスを許可したり、セッションを確立したりする前に、ハイブリッド フローでユーザーのブラウザーを介して自身に送信された ID トークンを検証する必要があります。
 
-トークンの検証を処理する方法を示すライブラリとコード サンプルが用意されています。 以下の情報は、基になるプロセスを理解することを望む開発者を対象としています。 JWT の検証に使用できるサードパーティのオープン ソース ライブラリもいくつか存在し、ほぼすべてのプラットフォームと言語に対して少なくとも 1 つのオプションがあります。 Azure AD 認証ライブラリとコード サンプルの詳細については、[v1.0 認証ライブラリ](../azuread-dev/active-directory-authentication-libraries.md)に関する記事および [v2.0 認証ライブラリ](reference-v2-libraries.md)に関する記事をご覧ください。
+上記のシナリオのいずれにも当てはまらない場合、アプリケーションはトークンの検証からメリットを受けることはなく、トークンの有効性に基づいて判断が行われた場合、セキュリティと信頼性のリスクが発生する可能性があります。  ネイティブ アプリや SPA のようなパブリック クライアントはトークンの検証からメリットを受けることはありません。このアプリは IDP と直接通信するため、SSL 保護によってトークンが有効であることが保証されます。
+
+API と Web アプリは、アプリケーションに一致する `aud` 要求を含むトークンのみを検証する必要があります。その他のリソースには、カスタム トークン検証規則がある場合があります。 たとえば、Microsoft Graph のトークンは、専用の形式であるため、これらの規則に従って検証することはできません。 別のリソースを対象とするトークンを検証して受け入れることは、[混乱した使節 (Confused Deputy)](https://cwe.mitre.org/data/definitions/441.html) の問題にたとえることができます。
+
+アプリケーションで上記に従って id_token または access_token を検証する必要がある場合は、アプリで最初に OpenID 探索ドキュメントの値と突き合わせてトークンの署名と発行者を検証する必要があります。 たとえば、テナントに依存しないバージョンのドキュメントは [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration) にあります。
+
+次の情報は、基になるプロセスを理解する必要があるユーザーを対象としています。 Azure AD ミドルウェアにはアクセス トークンを検証するための機能が組み込まれており、選択した言語の[サンプル](sample-v2-code.md)を参照できます。 JWT の検証に使用できるサードパーティのオープン ソース ライブラリもいくつか存在し、ほぼすべてのプラットフォームと言語に対して少なくとも 1 つのオプションがあります。 Azure AD 認証ライブラリとコード サンプルの詳細については、[認証ライブラリ](reference-v2-libraries.md)に関する記事を参照してください。
 
 ### <a name="validating-the-signature"></a>署名の検証
 
-JWT には 3 つのセグメントがあり、 `.` 文字で区切られています。 1 番目のセグメントは**ヘッダー**、2 番目は**本文**、3 番目は**署名**と呼ばれます。 署名セグメントを使用してトークンの信頼性を検証し、アプリで信頼できることを確認できます。
+JWT には 3 つのセグメントがあり、 `.` 文字で区切られています。 1 番目のセグメントは **ヘッダー**、2 番目は **本文**、3 番目は **署名** と呼ばれます。 署名セグメントを使用してトークンの信頼性を検証し、アプリで信頼できることを確認できます。
 
 Azure AD によって発行されるトークンは、RS256 などの業界標準の非対称暗号アルゴリズムを使用して署名されます。 JWT のヘッダーには、トークンの署名に使用されたキーと暗号方法に関する情報が含まれます。
 
@@ -209,9 +226,9 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 * トークンの署名に使用される公開キーのセットの場所を示す `jwks_uri` が含まれます。 `jwks_uri` にある JSON Web キー (JWK) には、特定の時点で使用されているすべての公開キー情報が含まれます。  JWK 形式については [RFC 7517](https://tools.ietf.org/html/rfc7517) を参照してください。  アプリでは、 `kid` 要求を JWT ヘッダーで使用して、特定のトークンの署名に使用されたこのドキュメント内の公開キーを選択できます。 その後、正しい公開キーと指定されたアルゴリズムを使用して、署名の検証を実行できます。
 
 > [!NOTE]
-> V1.0 エンドポイントは `x5t` および `kid` の両方の要求を返すのに対して、v2.0 エンドポイントは `kid` 要求のみで応答します。 いずれは、`kid` 要求を利用してトークンを検証することをお勧めします。
+> `kid` 要求を利用してトークンを検証することをお勧めします。 v1.0 トークンには `x5t` と `kid` の両方の要求が含まれますが、v2.0 トークンには `kid` 要求のみ含まれます。
 
-署名の検証の実行は、このドキュメントの範囲外です。必要に応じて、それを実行するために役立つオープン ソース ライブラリが多数存在します。  ただし、Microsoft Identity プラットフォームには、標準に対する 1 つのトークン署名拡張であるカスタム署名トークンがあります。
+署名の検証の実行は、このドキュメントの範囲外です。必要に応じて、それを実行するために役立つオープン ソース ライブラリが多数存在します。  ただし、Microsoft ID プラットフォームには、標準に対する 1 つのトークン署名拡張であるカスタム署名キーがあります。
 
 [claims-mapping](active-directory-claims-mapping.md) 機能を使用した結果としてアプリにカスタム署名キーがある場合は、アプリの署名キー情報 (検証に使用する必要があります) を指す `jwks_uri` を取得するために、アプリ ID を含む `appid` クエリ パラメーターを追加する必要があります。 例: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` には、`https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` の `jwks_uri` が含まれます。
 
@@ -224,7 +241,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 * `appidacr` を使用して、呼び出し元のクライアントの認証の状態を検証します。これは、パブリック クライアントが API の呼び出しを許可されていない場合は 0 になります。
 * 過去の `nonce` 要求のリストと照合して、トークンが再生されていないことを確認します。
 * `tid` が、API の呼び出しを許可されているテナントと一致することを確認します。
-* `acr` 要求を使用して、ユーザーが MFA を実行したことを確認します。 これは、[条件付きアクセス](../conditional-access/overview.md)を使用して適用する必要があります。
+* `amr` 要求を使用して、ユーザーが MFA を実行したことを確認します。 これは、[条件付きアクセス](../conditional-access/overview.md)を使用して適用する必要があります。
 * アクセス トークンで `roles` または `groups` 要求を要求した場合は、ユーザーが、このアクションの実行を許可されているグループに属していることを確認します。
   * 暗黙的フローを使用してトークンを取得した場合、このデータは大きすぎてトークンに収まらないことが多いため、データを [Microsoft Graph](https://developer.microsoft.com/graph/) に照会することが必要になる可能性があります。
 
@@ -232,11 +249,10 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 アプリケーションでは、ユーザー用トークンを受信する (通常のフロー) か、アプリケーションから直接受信します ([クライアント資格情報フロー](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)を通じて)。 これらのアプリ専用トークンは、この呼び出しがアプリケーションからのものであり、その背後にユーザーがいないことを示します。 これらのトークンは、ほぼ同じように処理されます。
 
-* `roles` を使用して、トークンの対象 (この場合はユーザーではなく、サービス プリンシパル) に付与されているアクセス許可が確認されます。
+* トークンのサブジェクトに付与されているアクセス許可を確認するには、`roles` を使用します。
 * `oid` または `sub` を使用して、呼び出し元のサービス プリンシパルが想定されているものであることが検証されます。
 
 アプリでアプリ専用アクセス トークンとユーザー用アクセス トークンを区別する必要がある場合は、`idtyp` [ オプション要求](active-directory-optional-claims.md)が使用されます。  `accessToken` フィールドに `idtyp` 要求を追加し、`app` の値を確認することで、アプリ専用のアクセス トークンを検出できます。  ユーザー用の ID トークンとアクセス トークンには、`idtyp` 要求は含まれません。
-
 
 ## <a name="token-revocation"></a>トークンの失効
 
@@ -244,7 +260,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 ### <a name="token-timeouts"></a>トークンのタイムアウト
 
-[トークンの有効期間の構成](active-directory-configurable-token-lifetimes.md)を使用すると、更新トークンの有効期間を変更できます。  一部のトークンが使用されない場合 (たとえば、ユーザーがアプリを 3 か月間開いていない場合)、有効期限が切れますが、これは正常です。  アプリでは、ログイン サーバーが期限切れのために更新トークンを拒否するシナリオが発生します。 
+[トークンの有効期間の構成](active-directory-configurable-token-lifetimes.md)を使用すると、更新トークンの有効期間を変更できます。  一部のトークンが使用されない場合 (たとえば、ユーザーがアプリを 3 か月間開いていない場合)、有効期限が切れますが、これは正常です。  アプリでは、ログイン サーバーが期限切れのために更新トークンを拒否するシナリオが発生します。
 
 * MaxInactiveTime:更新トークンが MaxInactiveTime で指示された時間内に使用されなかった場合、更新トークンは無効になります。
 * MaxSessionAge:MaxAgeSessionMultiFactor または MaxAgeSessionSingleFactor が既定値 (Until-revoked) 以外に設定されている場合、MaxAgeSession* に設定された時間が経過すると、再認証が必要になります。
@@ -254,7 +270,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 ### <a name="revocation"></a>無効化
 
-更新トークンは、資格情報の変更、または管理者の操作により、サーバーによって取り消される場合があります。  更新トークンは、機密クライアント (右端の列) に対して発行されたクラスと、パブリック クライアント (その他すべての列) に対して発行されたクラスの 2 つのクラスに分類されます。   
+更新トークンは、資格情報の変更、または管理者の操作により、サーバーによって取り消される場合があります。  更新トークンは、機密クライアント (右端の列) に対して発行されたクラスと、パブリック クライアント (その他すべての列) に対して発行されたクラスの 2 つのクラスに分類されます。
 
 | Change | パスワードに基づくクッキー | パスワードに基づくトークン | パスワードに基づかないクッキー | パスワードに基づかないトークン | 機密のクライアントのトークン |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
@@ -266,12 +282,17 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 | 管理者が [PowerShell によって、](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)ユーザーのすべての更新トークンを無効にする | 取り消し | 取り消し |取り消し | 取り消し | 取り消し |
 | Web 上でのシングル サインアウト ([v1.0](../azuread-dev/v1-protocols-openid-connect-code.md#single-sign-out)、[v2.0](v2-protocols-oidc.md#single-sign-out)) | 取り消し | 存続 | 取り消し | 存続 | 存続 |
 
-> [!NOTE]
-> ｢パスワード基づかない｣ログインは、ユーザーがそれを得るために、パスワードをタイプしなかった場合です。 たとえば、Windows Hello、FIDO2 キー、または PIN で自分の顔を使用する場合です。
->
-> Windows 10 のプライマリ更新トークン (PRT) は、資格情報に基づいて分離されます。 たとえば、Windows Hello とパスワードにはそれぞれ独立した PRT があります。 ユーザーが Hello の資格情報 (PIN または生体認証) を使用してサインインし、パスワードを変更すると、以前に取得したパスワードベースの PRT が取り消されます。 パスワードを使用して再度サインインすると、古い PRT が無効になり、新しい PRT が要求されます。
->
-> 更新トークンは、新しいアクセス トークンや更新トークンのフェッチに使用されるときに無効になる、または取り消されることはありません。  ただし、新しいトークンには新しい有効期限があるため、アプリでは古いものを使用後すぐに破棄して、新しいトークンで置き換える必要があります。 
+#### <a name="non-password-based"></a>パスワードに基づかない
+
+"*パスワードに基づかない*" ログインは、ユーザーがそれを取得する際にパスワードを入力しないことを意味します。 パスワードに基づかないログインの例を次に示します。
+
+- 顔を使用する Windows Hello
+- FIDO2 キー
+- SMS
+- 音声
+- PIN
+
+プライマリ更新トークンの詳細については、[プライマリ更新トークン](../devices/concept-primary-refresh-token.md)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

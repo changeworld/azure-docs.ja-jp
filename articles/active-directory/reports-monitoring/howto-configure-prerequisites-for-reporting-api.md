@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22a8a0efe16b4ab2ea7b8a647284a3449741ac02
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4ca618dc234ff4383083ff5eb21299fb1e3e7128
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226966"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348740"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API にアクセスするための前提条件
 
@@ -55,9 +55,9 @@ API を介してレポート データにアクセスするには、次のいず
 
 ## <a name="register-an-application"></a>アプリケーションを登録する
 
-スクリプトを使用してレポート API にアクセスする場合でも、登録する必要があります。 登録することで、承認の呼び出しと、コードによるトークンの受信に必要な**アプリケーション ID** が得られます。
+スクリプトを使用してレポート API にアクセスする場合でも、登録する必要があります。 登録することで、承認の呼び出しと、コードによるトークンの受信に必要な **アプリケーション ID** が得られます。
 
-Azure AD Reporting API にアクセスするようにディレクトリを構成するには、Azure AD テナントの**グローバル管理者**ディレクトリ ロールのメンバーでもある Azure 管理者アカウントで [Azure portal](https://portal.azure.com) にサインインする必要があります。
+Azure AD Reporting API にアクセスするようにディレクトリを構成するには、Azure AD テナントの **グローバル管理者** ディレクトリ ロールのメンバーでもある Azure 管理者アカウントで [Azure portal](https://portal.azure.com) にサインインする必要があります。
 
 > [!IMPORTANT]
 > このような管理者特権を備えた資格情報で実行されるアプリケーションは、きわめて強力です。アプリケーションの IDとシークレットの資格情報は必ず安全な場所に保管してください。
@@ -67,19 +67,19 @@ Azure AD Reporting API にアクセスするようにディレクトリを構成
 
 1. [Azure portal](https://portal.azure.com) で、左側のナビゲーション ウィンドウから **[Azure Active Directory]** を選択します。
    
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![スクリーンショットには、Azure portal メニューで選択されている [Azure Active Directory] が示されています。](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. **[Azure Active Directory]** ページで、 **[アプリの登録]** を選択します。
 
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
+    ![スクリーンショットには、[管理] メニューで選択されている [アプリの登録] が示されています。](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
 
 3. **[アプリの登録]** ページから、 **[New registration]\(新しい登録\)** を選択します。
 
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/03.png)
+    ![スクリーンショットには、選択されている [New registration]\(新しい登録\) が示されています。](./media/howto-configure-prerequisites-for-reporting-api/03.png)
 
 4. **[アプリケーションの登録]** ページ:
 
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/04.png)
+    ![スクリーンショットには、このステップの値を入力できる [アプリケーションの登録] ページが示されています。](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
     a. **[名前]** ボックスに、「`Reporting API application`」と入力します。
 
@@ -99,8 +99,7 @@ Azure AD Reporting API にアクセスするようにディレクトリを構成
 | Windows Azure Active Directory | ディレクトリ データの読み取り |
 | Microsoft Graph | すべての監査ログ データの読み取り |
 
-
-![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/36.png)
+![スクリーンショットには、[A P I のアクセス許可] ウィンドウで [アクセス許可の追加] を選択できる場所が示されています。](./media/howto-configure-prerequisites-for-reporting-api/36.png)
 
 次のセクションでは、両方の API の手順を示します。 どちらかの API にアクセスしない場合は、関連する手順を省略できます。
 
@@ -109,23 +108,23 @@ Azure AD Reporting API にアクセスするようにディレクトリを構成
 
 1. **[API のアクセス許可]** 、 **[アクセス許可の追加]** の順に選択します。 
 
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/05.png)
+    ![スクリーンショットには、[アクセス許可の追加] を選択できる [A P I アクセス許可] ページが示されています。](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-2. **[API アクセス許可の要求] ページ**で、 **[サポートされているレガシ API]** の **[Azure Active Directory Graph]** を見つけます。 
+2. **[API アクセス許可の要求] ページ** で、 **[サポートされているレガシ API]** の **[Azure Active Directory Graph]** を見つけます。 
 
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/06.png)
+    ![スクリーンショットには、Azure Active Directory グラフを選択できる [A P I アクセス許可の要求] ページが示されています。](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
 3. **[必要なアクセス許可]** ページで、 **[アプリケーションのアクセス許可]** を選択し、 **[ディレクトリ]** を展開して、 **[Directory.ReadAll]** チェック ボックスをオンにします。  **[アクセス許可の追加]** を選択します.
 
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/07.png)
+    ![スクリーンショットには、アプリケーションのアクセス許可を選択できる [A P I アクセス許可の要求] ページが示されています。](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
 4. **[Reporting API Application - API Permissions]\(レポート API アプリケーション - API のアクセス許可\)** ページで、 **[Grant admin consent]\(管理者の同意の付与\)** を選択します。 
 
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/08.png)
+    ![スクリーンショットには、[Grant admin consent]\(管理者の同意の付与\) を選択できる [Reporting A P I Application]\(レポート API アプリケーション\) ページが示されています。](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
 5. 注:**Microsoft Graph** は、API の登録時に既定で追加されます。
 
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/15.png)
+    ![スクリーンショットには、[アクセス許可の追加] を選択できる [A P I アクセス許可] ページが示されています。](./media/howto-configure-prerequisites-for-reporting-api/15.png)
 
 ## <a name="gather-configuration-settings"></a>構成設定を収集する 
 
@@ -143,11 +142,11 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
 1. [Azure portal](https://portal.azure.com) の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** を選択します。
    
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![スクリーンショットには、Azure portal メニューで選択されている [Azure Active Directory] が示されています。](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. **[Azure Active Directory]** ページで、 **[カスタム ドメイン名]** を選択します。
 
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
+    ![スクリーンショットには、Azure Active Directory で選択されたカスタム ドメイン名が示されています。](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
 
 3. ドメインの一覧からドメイン名をコピーします。
 
@@ -158,13 +157,13 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
 1. [Azure Portal](https://portal.azure.com) の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** をクリックします。
    
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![スクリーンショットには、Azure portal メニューで選択されている [Azure Active Directory] が示されています。](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. **[アプリの登録]** ページから、アプリケーションを選択します。
 
 3. アプリケーション ページから、 **[アプリケーション ID]** へ移動して、 **[Click to copy]\(クリックしてコピー\)** を選択します。
 
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
+    ![スクリーンショットには、アプリケーション I D をコピーできる [Reporting A P I Application]\(レポート API アプリケーション\) ページのスクリーンショットが示されています。](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
 
 
 ### <a name="get-your-applications-client-secret"></a>アプリケーションのクライアント シークレットを取得する
@@ -174,13 +173,13 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
 1. [Azure Portal](https://portal.azure.com) の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** をクリックします。
    
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![スクリーンショットには、Azure portal メニューで選択されている [Azure Active Directory] が示されています。](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2.  **[アプリの登録]** ページから、アプリケーションを選択します。
 
 3.  **[API Application]\(API アプリケーション\)** ページで **[Certificates and Secrets]\(証明書とシークレット\)** を選択し、 **[Client Secrets]\(クライアント シークレット\)** セクションで **[+ New Client Secret]\(+ 新しいクライアント シークレット\)** をクリックします。 
 
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/12.png)
+    ![スクリーンショットには、クライアント シークレットを追加できる [Certificates and Secrets]\(証明書とシークレット\) ページが示されています。](./media/howto-configure-prerequisites-for-reporting-api/12.png)
 
 5. **[クライアント シークレットの追加]** ページで、以下を追加します。
 
@@ -214,7 +213,7 @@ Graph エクスプローラーを使用してサインインにアクセスし�
 
 ### <a name="error-the-allowed-roles-does-not-include-user"></a>エラー:許可されたロールにユーザーが含まれません。 
 
- API を使用して監査ログへのアクセスまたはサインインを試みるときにエラーが発生しないようにします。 アカウントが Azure Active Directory テナントの**セキュリティ閲覧者**ロールまたは**レポート閲覧者**ロールの一部であることを確認します。
+ API を使用して監査ログへのアクセスまたはサインインを試みるときにエラーが発生しないようにします。 アカウントが Azure Active Directory テナントの **セキュリティ閲覧者** ロールまたは **レポート閲覧者** ロールの一部であることを確認します。
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>エラー:アプリケーションに AAD の 'ディレクトリ データの読み取り' アクセス許可がありません 
 

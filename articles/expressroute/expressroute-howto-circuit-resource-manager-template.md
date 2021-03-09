@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: duau
-ms.openlocfilehash: 73efae90f4403d1fbab3319ce0288761d3867340
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 2e9b6ddc9da4467590946af12a47f1473a4ea494
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396167"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202057"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ExpressRoute 回線を作成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "89396167"
 > * [PowerShell (クラシック)](expressroute-howto-circuit-classic.md)
 >
 
-Azure PowerShell を使用して、Azure Resource Manager テンプレートをデプロイすることで、ExpressRoute 回線を作成する方法について説明します。 Resource Manager テンプレートの開発に関する詳細については、[Resource Manager ドキュメント](/azure/azure-resource-manager/)と[テンプレート リファレンス](/azure/templates/microsoft.network/expressroutecircuits)をご覧ください。
+Azure PowerShell を使用して、Azure Resource Manager テンプレートをデプロイすることで、ExpressRoute 回線を作成する方法について説明します。 Resource Manager テンプレートの開発に関する詳細については、[Resource Manager ドキュメント](../azure-resource-manager/index.yml)と[テンプレート リファレンス](/azure/templates/microsoft.network/expressroutecircuits)をご覧ください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -63,12 +63,12 @@ Azure PowerShell を使用して、Azure Resource Manager テンプレートを�
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **SKU レベル**によって、ExpressRoute 回線が [Local](expressroute-faqs.md#expressroute-local)、Standard、[Premium](expressroute-faqs.md#expressroute-premium) のどれであるかが決まります。 *Local*、*Standard、または *Premium* を指定できます。
-   * **SKU ファミリ**によって、課金の種類が決まります。 従量制課金データ プランの場合は *Metereddata*、無制限データ プランの場合は *Unlimiteddata* を指定できます。 課金の種類は *Metereddata* から *Unlimiteddata* に変更できますが、*Unlimiteddata* から *Metereddata* に変更することはできません。 "*Local*" 回線は "*Unlimiteddata*" のみです。
-   * **ピアリングの場所**とは、Microsoft とピアリングしている物理的な場所です。
+   * **SKU レベル** によって、ExpressRoute 回線が [Local](expressroute-faqs.md#expressroute-local)、Standard、[Premium](expressroute-faqs.md#expressroute-premium) のどれであるかが決まります。 *Local*、*Standard、または *Premium* を指定できます。 SKU を *[Standard] または [Premium]* から *[Local]* に変更することはできません。
+   * **SKU ファミリ** によって、課金の種類が決まります。 従量制課金データ プランの場合は *Metereddata*、無制限データ プランの場合は *Unlimiteddata* を指定できます。 課金の種類は *Metereddata* から *Unlimiteddata* に変更できますが、*Unlimiteddata* から *Metereddata* に変更することはできません。 "*Local*" 回線は "*Unlimiteddata*" のみです。
+   * **ピアリングの場所** とは、Microsoft とピアリングしている物理的な場所です。
 
      > [!IMPORTANT]
-     > ピアリングの場所は、Microsoft とピアリングしている[物理的な場所](expressroute-locations.md)を示します。 この場所は "Location" プロパティに**リンクされていません**。それは、Azure Network Resource Provider が配置されている地理的な場所を参照します。 それらは関連付けられていませんが、回路のピアリングの場所と地理的に近い場所にある Network Resource Provider を選択することをお勧めします。
+     > ピアリングの場所は、Microsoft とピアリングしている[物理的な場所](expressroute-locations.md)を示します。 この場所は "Location" プロパティに **リンクされていません**。それは、Azure Network Resource Provider が配置されている地理的な場所を参照します。 それらは関連付けられていませんが、回路のピアリングの場所と地理的に近い場所にある Network Resource Provider を選択することをお勧めします。
 
     リソース グループ名は、**rg** が追加された Service Bus 名前空間名です。
 
@@ -88,8 +88,8 @@ Azure PowerShell を使用して、Azure Resource Manager テンプレートを�
 **[削除]** アイコンを選択し、ExpressRoute 回線を削除できます。 次の情報をメモしておきます。
 
 * ExpressRoute 回線からすべての仮想ネットワークのリンクを解除する必要があります。 この操作が失敗した場合は、回線にリンクされている仮想ネットワークがないか確認してください。
-* ExpressRoute 回線サービス プロバイダーのプロビジョニング状態が**プロビジョニング中**または**プロビジョニング済み**の場合、サービス プロバイダー側の回線のプロビジョニングを解除するには、サービス プロバイダーに連絡する必要があります。 Microsoft は、サービス プロバイダーが回線のプロビジョニング解除を完了し、通知するまで、リソースの予約と課金を続行します。
-* サービス プロバイダーが回線のプロビジョニングを解除済み (サービス プロバイダーのプロビジョニング状態が**未プロビジョニング**に設定されている) の場合、回線を削除することができます。 これによって回線の課金が停止されます。
+* ExpressRoute 回線サービス プロバイダーのプロビジョニング状態が **プロビジョニング中** または **プロビジョニング済み** の場合、サービス プロバイダー側の回線のプロビジョニングを解除するには、サービス プロバイダーに連絡する必要があります。 Microsoft は、サービス プロバイダーが回線のプロビジョニング解除を完了し、通知するまで、リソースの予約と課金を続行します。
+* サービス プロバイダーが回線のプロビジョニングを解除済み (サービス プロバイダーのプロビジョニング状態が **未プロビジョニング** に設定されている) の場合、回線を削除することができます。 これによって回線の課金が停止されます。
 
 ExpressRoute 回線は、次の PowerShell コマンドを実行して削除できます。
 

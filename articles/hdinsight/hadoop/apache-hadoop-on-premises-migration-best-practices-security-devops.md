@@ -1,19 +1,17 @@
 ---
 title: セキュリティ:Azure HDInsight へのオンプレミスの Apache Hadoop の 移行
 description: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行することについてのセキュリティおよび DevOps のベスト プラクティスについて説明します。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 99c5ff39820b652a33ab670e63ca709f8747c4cf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: fa6a4a8686fe5a33a6f240a8e972a687e872732a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751282"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939736"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - セキュリティおよび DevOps のベスト プラクティス
 
@@ -84,7 +82,7 @@ ESP は、次のクラスターの種類で使用できます。Apache Hadoop、
 詳細については、次の記事を参照してください。
 
 - [Azure Virtual Network の概要](../../virtual-network/virtual-networks-overview.md)
-- [Azure ネットワーク セキュリティ グループの概要](../../virtual-network/security-overview.md)
+- [Azure ネットワーク セキュリティ グループの概要](../../virtual-network/network-security-groups-overview.md)
 - [Azure Virtual Network ピアリング](../../virtual-network/virtual-network-peering-overview.md)
 - [Azure Storage セキュリティ ガイド](../../storage/blobs/security-recommendations.md)
 - [保存時の Azure Storage Service Encryption](../../storage/common/storage-service-encryption.md)
@@ -122,4 +120,4 @@ ESP は、次のクラスターの種類で使用できます。Apache Hadoop、
 
 ## <a name="next-steps"></a>次のステップ
 
-[HDInsight 4.0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction) の詳細を参照します。
+[HDInsight 4.0](./apache-hadoop-introduction.md) の詳細を参照します。

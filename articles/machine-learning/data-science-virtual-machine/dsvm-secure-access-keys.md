@@ -4,26 +4,25 @@ titleSuffix: Azure Data Science Virtual Machine
 description: Data Science Virtual Machine にアクセス資格情報を安全に保存する方法を説明します。 マネージド サービス ID と Azure Key Vault を使用してアクセス資格情報を格納する方法を学習します。
 keywords: ディープ ラーニング, AI, データ サイエンス ツール, データ サイエンス仮想マシン, 地理空間分析, チーム データ サイエンス プロセス
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 1cb0c5094d49eac5a1c8f63406a28d2927d8fa94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adc66fc794ac6cce3fc0f8fd1552f701a4968860
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477325"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100519679"
 ---
 # <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine にアクセス資格情報を安全に保存する
 
 クラウド アプリケーションのコードには、クラウド サービスを認証するための資格情報を含めるのが一般的です。 これらの資格情報をどのように管理し、セキュリティで保護するかは、クラウド アプリケーションを構築する際によく知られている課題です。 資格情報は、開発者のワークステーションに一切表示されず、ソース管理でも確認されないことが理想的です。
 
-[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) 機能を使用すると、Azure Active Directory (Azure AD) 内で自動的にマネージド ID を Azure サービスに付与することで、この問題が簡単に解決されます。 この ID を使用すると、コードに資格情報が含まれていなくても、Azure AD 認証をサポートする任意のサービスの認証を行えます。
+[Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) 機能を使用すると、Azure Active Directory (Azure AD) 内で自動的にマネージド ID を Azure サービスに付与することで、この問題が簡単に解決されます。 この ID を使用すると、コードに資格情報が含まれていなくても、Azure AD 認証をサポートする任意のサービスの認証を行えます。
 
-資格情報をセキュリティで保護するには、Windows インストーラー (MSI) と、シークレットおよび暗号化キーを安全に格納するための Azure のマネージド サービスである [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) を組み合わせて使用する方法があります。 マネージド ID を使用してキー コンテナーにアクセスし、キー コンテナーから承認済みのシークレットと暗号化キーを取得することができます。
+資格情報をセキュリティで保護するには、Windows インストーラー (MSI) と、シークレットおよび暗号化キーを安全に格納するための Azure のマネージド サービスである [Azure Key Vault](../../key-vault/index.yml) を組み合わせて使用する方法があります。 マネージド ID を使用してキー コンテナーにアクセスし、キー コンテナーから承認済みのシークレットと暗号化キーを取得することができます。
 
 Azure リソースのマネージド ID と Key Vault に関するドキュメントは、これらのサービスの詳細情報についての包括的なリソースで構成されています。 この記事の残りの部分では、データ サイエンス仮想マシン (DSVM) で MSI と Key Vault を使用して Azure リソースにアクセスする基本的な方法について説明します。 
 

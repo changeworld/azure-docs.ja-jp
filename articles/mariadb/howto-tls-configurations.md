@@ -1,17 +1,17 @@
 ---
 title: TLS の構成 - Azure portal - Azure Database for MariaDB
 description: Azure portal を使用して Azure Database for MariaDB に対する TLS の構成を設定する方法について説明します
-author: kummanish
-ms.author: manishku
-ms.service: mariadb
+author: mksuni
+ms.author: sumuth
+ms.service: jroth
 ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: fac719daf05e8b319db7c86d0dbc61c2814b0a0c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b4e167714ffccd20b4628fd21fb6b284d5400112
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120349"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664768"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-mariadb-using-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB で TLS の設定を構成する
 

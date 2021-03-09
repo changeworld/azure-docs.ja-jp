@@ -1,19 +1,24 @@
 ---
 title: チュートリアル - Azure Service Fabric Mesh で実行されているアプリを削除する
 description: このチュートリアルでは、Service Fabric Mesh で実行されているアプリケーションを削除する方法について説明し、リソースを削除します。
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 4780f81d23f0183837d2aafb9a8e5e2c41faa1cf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d449343fd00ff958470a71ecb3a37d585d7ff8ed
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75351794"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626613"
 ---
 # <a name="tutorial-remove-an-application-and-resources"></a>チュートリアル: アプリケーションとリソースを削除します
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 Service Fabric Mesh API による新しいデプロイは許可されなくなります。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、「[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)」を参照してください。
 
 このチュートリアルは、シリーズの第 4 部です。 [Service Fabric Mesh に対し事前に展開されていた](service-fabric-mesh-tutorial-template-deploy-app.md)実行中のアプリケーションを削除する方法について説明します。 
 

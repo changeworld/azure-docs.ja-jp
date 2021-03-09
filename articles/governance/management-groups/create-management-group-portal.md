@@ -1,14 +1,14 @@
 ---
-title: クイック スタート:ポータルを使用して管理グループを作成する
+title: ポータルを使用して管理グループを作成する
 description: このクイックスタートでは、Azure portal を使用して、リソースを階層で整理する管理グループを作成します。
-ms.date: 08/31/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: 28b530e1da6b75dcc20e4a5dfebc494a959040b3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 5a336fe4caf5d2f825a93b5c7b8f8d05f6255c39
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237093"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592434"
 ---
 # <a name="quickstart-create-a-management-group"></a>クイック スタート:管理グループの作成
 
@@ -26,20 +26,20 @@ ms.locfileid: "89237093"
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
-1. **[すべてのサービス]**  >  **[管理 + ガバナンス]** を選択します。
+1. **[すべてのサービス]** > **[管理 + ガバナンス]** を選択します。
 
 1. **[管理グループ]** を選択します。
 
 1. **[+ 管理グループの追加]** を選択します。
 
-   :::image type="content" source="./media/main.png" alt-text="管理グループを操作するためのページ" border="false":::
+   :::image type="content" source="./media/main.png" alt-text="子管理グループとサブスクリプションが表示されている [管理グループ] ページのスクリーンショット。" border="false":::
 
 1. **[新規作成]** をオンのままにして、管理グループ ID をフィールドに入力します。
 
    - **[管理グループ ID]** は、この管理グループでコマンドを送信するために使用するディレクトリの一意識別子です。 この識別子は、このグループを識別するために Azure システム全体で使用されるため、作成後は編集できません。 [ルート管理グループ](./overview.md#root-management-group-for-each-directory)は、Azure Active Directory ID である ID を使用して自動的に作成されます。 他のすべての管理グループには、一意の ID を割り当てます。
    - 表示名フィールドは、Azure Portal 内で表示される名前です。 管理グループの作成時には別の表示名は省略可能なフィールドで、いつでも変更できます。
 
-   :::image type="content" source="./media/create_context_menu.png" alt-text="新しい管理グループを作成するための [オプション] ペイン":::
+   :::image type="content" source="./media/create_context_menu.png" alt-text="新しい管理グループを作成するための [管理グループの追加] オプションのスクリーンショット。":::
 
 1. **[保存]** を選択します。
 
@@ -47,12 +47,12 @@ ms.locfileid: "89237093"
 
 作成した管理グループを削除するには、次の手順に従います。
 
-1. **[すべてのサービス]**  >  **[管理 + ガバナンス]** を選択します。
+1. **[すべてのサービス]** > **[管理 + ガバナンス]** を選択します。
 
 1. **[管理グループ]** を選択します。
 
 1. 先ほど作成した管理グループを見つけて選択し、名前の横にある **[詳細]** を選択します。
-   次に、 **[削除]** を選択して操作を確定します。
+   次に、**[削除]** を選択して操作を確定します。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -61,4 +61,4 @@ ms.locfileid: "89237093"
 管理グループについて、またリソース階層の管理方法について詳しくは、次の記事に進んでください。
 
 > [!div class="nextstepaction"]
-> [管理グループを使用してリソースを管理する](./manage.md)
+> 管理グループを使用してリソースを管理する

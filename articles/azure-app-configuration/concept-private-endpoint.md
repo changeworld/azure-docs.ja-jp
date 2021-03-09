@@ -2,17 +2,17 @@
 title: Azure App Configuration でのプライベート エンドポイントの使用
 description: プライベート エンドポイントを使用した App Configuration ストアのセキュリティ保護
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 3/12/2020
-ms.author: lcozzens
-ms.openlocfilehash: 3ec2a0e38f3bead5fbab8a119099bb5bbc3ded2e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/15/2020
+ms.openlocfilehash: 6cadadfb3623d05dd3ae3851acd5eaca13860023
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042111"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929845"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Azure App Configuration でのプライベート エンドポイントの使用
 
@@ -71,5 +71,5 @@ App Configuration ストアのプライベート エンドポイントの作成�
 
 プライベート エンドポイントを使用して DNS サーバーを構成する方法を学習します。
 
-- [Azure 仮想ネットワーク内のリソースの名前解決](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [プライベート エンドポイントの DNS 構成](/azure/private-link/private-endpoint-overview#dns-configuration)
+- [Azure 仮想ネットワーク内のリソースの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+- [プライベート エンドポイントの DNS 構成](../private-link/private-endpoint-overview.md#dns-configuration)

@@ -1,20 +1,18 @@
 ---
-title: 'PowerShell スクリプト: Azure Data Share の既存の共有を一覧表示する | Microsoft Docs'
+title: 'PowerShell スクリプト: Azure Data Share の既存の共有を一覧表示する'
 description: この PowerShell スクリプトでは、共有の詳細を一覧表示します。
 services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
-ms.author: joanpo
-ms.openlocfilehash: 6314bd348c22c901001b88eda6875181a2f69df4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54b4b6cedc2dc09e4a9d5c4b7b937e80750e17c6
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70307137"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220824"
 ---
 # <a name="use-powershell-to-view-the-details-of-a-sent-data-share"></a>PowerShell を使用して、送信されたデータ共有の詳細を表示する
 
@@ -45,11 +43,11 @@ Get-AzDataShare -ResourceGroupName $resourceGroupName -AccountName $dataShareAcc
 
 | command | Notes |
 |---|---|
-| [Get-AzDataShare](/powershell/module/az.datashare/get-azdatashare?view=azps-2.6.0) | アカウント内の共有を取得し一覧表示します。 |
+| [Get-AzDataShare](/powershell/module/az.datashare/get-azdatashare) | アカウント内の共有を取得し一覧表示します。 |
 |||
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
+Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/)を参照してください。
 
 Azure Data Share のその他の PowerShell サンプル スクリプトについては、[Azure Data Share の PowerShell のサンプル](../../samples-powershell.md)に関する記事をご覧ください。

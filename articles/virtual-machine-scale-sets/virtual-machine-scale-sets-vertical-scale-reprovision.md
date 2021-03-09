@@ -9,18 +9,18 @@ ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 37602f7b9a8669ce0e8db984f7f7617cffdd431c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b172f1f7137b53e98384d92c9c709694eaf0b7e9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029282"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594496"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットを使用した垂直方向の自動スケール
 
 この記事では、再プロビジョニングありまたはなしで Azure [仮想マシン スケール セット](https://azure.microsoft.com/services/virtual-machine-scale-sets/) を垂直方向にスケーリングする方法について説明します。 
 
-*スケール アップ*および*スケール ダウン*とも呼ばれる垂直スケーリングとは、ワークロードに応じて仮想マシン (VM) のサイズを増減させることを意味します。 この動作を、*スケール アウト*および*スケール イン*とも呼ばれる、VM の数がワークロードに応じて変更される[水平方向のスケーリング](virtual-machine-scale-sets-autoscale-overview.md)と比較してください。
+*スケール アップ* および *スケール ダウン* とも呼ばれる垂直スケーリングとは、ワークロードに応じて仮想マシン (VM) のサイズを増減させることを意味します。 この動作を、*スケール アウト* および *スケール イン* とも呼ばれる、VM の数がワークロードに応じて変更される [水平方向のスケーリング](virtual-machine-scale-sets-autoscale-overview.md)と比較してください。
 
 再プロビジョニングとは、既存の仮想マシンを削除して、新しい仮想マシンで置き換えることを意味します。 仮想マシン スケール セットの VM のサイズを増減する場合、既存の VM のサイズを変更してデータを保持することも、新しいサイズの新しい VM をデプロイする必要があることもあります。 このドキュメントでは、どちらの場合についても説明します。
 
@@ -118,7 +118,7 @@ Runbook をインポートしたら、仮想マシン スケール セットか�
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>仮想マシン スケール セットにアラートを追加する
 
-仮想マシン スケール セットにアラートを追加する方法を説明する PowerShell スクリプトを以下に示します。 アラートを発生させるメトリックの名前を取得するには、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/platform/autoscale-common-metrics.md)」をご覧ください。
+仮想マシン スケール セットにアラートを追加する方法を説明する PowerShell スクリプトを以下に示します。 アラートを発生させるメトリックの名前を取得するには、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/autoscale/autoscale-common-metrics.md)」をご覧ください。
 
 ```powershell
 $actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com
@@ -153,8 +153,8 @@ Add-AzMetricAlertRule  -Name  $alertName `
 
 アラートを作成する方法について詳しくは、次の記事を参照してください。
 
-* [Azure Monitor PowerShell のサンプル](../azure-monitor/samples/powershell-samples.md)
-* [Azure Monitor クロスプラットフォーム CLI のサンプル](../azure-monitor/samples/cli-samples.md)
+* [Azure Monitor PowerShell のサンプル](../azure-monitor/powershell-samples.md)
+* [Azure Monitor クロスプラットフォーム CLI のサンプル](../azure-monitor/cli-samples.md)
 
 ## <a name="summary"></a>まとめ
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04e265ea0128411eb483c84b1317051089a0550a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 3edc63a1532bb6889fc490e400dbb57e7bce10d0
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260239"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360413"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>チュートリアル:Linux VM のシステム割り当て ID を使用して SAS 資格情報で Azure Storage にアクセスする
 
@@ -50,7 +50,7 @@ Service SAS は、アカウント アクセス キーを公開することなく
 
 1. Azure Portal の左上隅にある **[+/新しいサービスの作成]** ボタンをクリックします。
 2. **[ストレージ]** 、次に **[ストレージ アカウント]** をクリックすると、新しい [ストレージ アカウントの作成] パネルが表示されます。
-3. 後で使用する、ストレージ アカウントの**名前**を入力します。  
+3. 後で使用する、ストレージ アカウントの **名前** を入力します。  
 4. **[デプロイ モデル]** と **[アカウントの種類]** が "Resource manager" と "General purpose" にそれぞれ設定されている必要があります。 
 5. **[サブスクリプション]** と **[リソース グループ]** が、前の手順で VM を作成したときに指定したものと一致していることを確認します。
 6. **Create** をクリックしてください。
@@ -68,7 +68,7 @@ Service SAS は、アカウント アクセス キーを公開することなく
 
     ![ストレージ コンテナーの作成](./media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-a-storage-sas"></a>VM のシステム割り当てマネージド ID にストレージ SAS を使用するためのアクセス権を付与する 
+## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-a-storage-sas"></a>VM のシステム割り当てマネージド ID にストレージ SAS を使用するためのアクセス権を付与する
 
 Azure Storage は、ネイティブでは Azure AD 認証をサポートしていません。  ただし、VM のシステム割り当てマネージド ID を使用して Resource Manager からストレージ SAS を取得し、その SAS を使用してストレージにアクセスできます。  この手順では、ストレージ アカウントの SAS へのアクセス権を VM のシステム割り当てマネージド ID に付与します。   
 
@@ -90,7 +90,7 @@ Azure Storage は、ネイティブでは Azure AD 認証をサポートして�
 
 1. Azure Portal で **[Virtual Machines]** にナビゲートして Linux 仮想マシンに移動し、 **[概要]** ページの上部にある **[接続]** をクリックします。 VM に接続する文字列をコピーします。 
 2. SSH クライアントを使用して VM に接続します。  
-3. 次に、**Linux VM** の作成時に追加した**パスワード**の入力を求められます。 パスワードを入力すると、正常にサインインできます。  
+3. 次に、 **Linux VM** の作成時に追加した **パスワード** の入力を求められます。 パスワードを入力すると、正常にサインインできます。  
 4. CURL を使用して Azure Resource Manager のアクセス トークンを取得します。  
 
     アクセス トークンの CURL 要求と応答を次に示します。
@@ -154,7 +154,7 @@ echo "This is a test file." > test.txt
 
 次に、SAS 資格情報を使用して CLI `az storage` コマンドで認証を行い、ファイルを BLOB コンテナーにアップロードします。 この手順では、VM に[最新の Azure CLI をインストールする](/cli/azure/install-azure-cli)必要があります (まだインストールされていない場合)。
 
-```azurecli-interactive
+```azurecli
  az storage blob upload --container-name 
                         --file 
                         --name
@@ -176,7 +176,7 @@ Finished[#############################################################]  100.000
 
 要求: 
 
-```azurecli-interactive
+```azurecli
 az storage blob download --container-name
                          --file 
                          --name 

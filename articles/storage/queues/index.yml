@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure Queue storage のドキュメント
-summary: Azure Queue storage は、多数のメッセージを格納するためのサービスです。 世界中のどこからでも HTTP または HTTPS 経由でメッセージにアクセスできます。
+title: Azure Queue Storage のドキュメント
+summary: Azure Queue Storage は、多数のメッセージを格納するためのサービスです。 世界中のどこからでも HTTP または HTTPS 経由でメッセージにアクセスできます。
 metadata:
-  title: Azure Queue storage のドキュメント
-  description: Azure Queue storage は、多数のメッセージを格納するためのサービスです。 世界中のどこからでも HTTP または HTTPS 経由でメッセージにアクセスできます。
+  title: Azure Queue Storage のドキュメント
+  description: Azure Queue Storage は、多数のメッセージを格納するためのサービスです。 世界中のどこからでも HTTP または HTTPS 経由でメッセージにアクセスできます。
   services: storage
   ms.service: storage
   ms.subservice: queues
@@ -13,19 +13,19 @@ metadata:
   ms.author: mhopkins
   ms.date: 08/27/2019
   ms.openlocfilehash: 871447957b905157625ab487269b9ce1ca105935
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
+  ms.lasthandoff: 10/09/2020
   ms.locfileid: "75457289"
 landingContent:
-- title: Azure キューについて
+- title: Azure Queue について
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure キューとは
+    - text: Azure Queue とは
       url: storage-queues-introduction.md
-- title: はじめに
+- title: 作業開始
   linkLists:
   - linkListType: quickstart
     links:
@@ -47,13 +47,13 @@ landingContent:
     links:
     - text: .NET を使用して Azure Queue Storage を使用する
       url: storage-dotnet-how-to-use-queues.md
-    - text: Java から Queue ストレージを使用する方法
+    - text: Java から Queue Storage を使用する方法
       url: storage-java-how-to-use-queue-storage.md
-    - text: Node.js から Queue ストレージを使用する方法
+    - text: Node.js から Queue Storage を使用する方法
       url: storage-nodejs-how-to-use-queues.md
-    - text: C++ から Queue ストレージを使用する方法
+    - text: C++ から Queue Storage を使用する方法
       url: storage-c-plus-plus-how-to-use-queues.md
-    - text: Python から Queue ストレージを使用する方法
+    - text: Python から Queue Storage を使用する方法
       url: storage-python-how-to-use-queue-storage.md
 - title: キューの管理
   linkLists:

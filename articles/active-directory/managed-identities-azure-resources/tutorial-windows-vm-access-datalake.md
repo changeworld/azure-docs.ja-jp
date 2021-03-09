@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/14/2018
+ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d29edec6145ebc03218264532cae07b6afc9654c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 908fb1ac869ec2b22085af2e07ced6ff64229308
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254204"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592485"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>チュートリアル: Windows VM のシステム割り当てマネージド ID を使用して Azure Data Lake Store にアクセスする方法
 
@@ -34,11 +34,16 @@ ms.locfileid: "89254204"
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+- マネージド ID の知識。 Azure リソースのマネージド ID 機能に慣れていない場合は、こちらの[概要](overview.md)を参照してください。 
+- Azure アカウント。[無料アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+- 必要なリソース作成とロール管理の手順を実行するための、適切なスコープ (サブスクリプションまたはリソース グループ) の "所有者" アクセス許可。 ロールの割り当てに関するサポートが必要な場合は、「[ロールベースのアクセス制御を使用して Azure サブスクリプション リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+- システム割り当てマネージド ID が有効になっている Windows 仮想マシンも必要です。
+  - このチュートリアル用に仮想マシンを作成する必要がある場合は、[システム割り当てマネージド ID を有効にした仮想マシンの作成](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity)に関する記事に従ってください。
 
 
 
-## <a name="enable"></a>[有効化]
+
+## <a name="enable"></a>有効化
 
 [!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
 
@@ -54,13 +59,13 @@ Data Lake Store で新しいフォルダーを作成し、VM のシステム割�
 2. このチュートリアルで使用する Data Lake Store をクリックします。
 3. コマンド バーの **[データ エクスプローラー]** をクリックします。
 4. Data Lake Store のルート フォルダーが選択されます。  コマンド バーの **[アクセス]** をクリックします。
-5. **[追加]** をクリックします。  **[選択]** フィールドにお使いの VM の名前 (例: **DevTestVM**) を入力します。  検索結果からお使いの VM をクリックして選択し、 **[選択]** をクリックします。
+5. **[追加]** をクリックします。  **[選択]** フィールドにお使いの VM の名前 (例: **DevTestVM**) を入力します。  検索結果からお使いの VM をクリックして選択し、**[選択]** をクリックします。
 6. **[アクセス許可の選択]** をクリックします。  **[読み取り]** と **[実行]** を選択して **[このフォルダー]** に追加し、 **[An access permission only]\(アクセス許可のみ\)** として追加します。  **[OK]** をクリックします。  アクセス許可が正常に追加されます。
 7. **[アクセス]** ブレードを閉じます。
 8. このチュートリアル用に新しいフォルダーを作成します。  コマンド バーの **[新しいフォルダー]** をクリックし、この新しいフォルダーに名前 (例: **TestFolder**) を付けます。  **[OK]** をクリックします。
 9. 作成したフォルダーをクリックし、コマンド バーの **[アクセス]** をクリックします。
-10. 手順 5 と同様に **[追加]** をクリックし、 **[選択]** フィールドに VM の名前を入力したあと、この VM を選択して **[選択]** をクリックします。
-11. 手順 6 と同様に **[アクセス許可の選択]** を選択し、 **[読み取り]** 、 **[書き込み]** および **[実行]** を選択して **[このフォルダー]** に追加したあと、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加します。  **[OK]** をクリックします。  アクセス許可が正常に追加されます。
+10. 手順 5 と同様に **[追加]** をクリックし、**[選択]** フィールドに VM の名前を入力したあと、この VM を選択して **[選択]** をクリックします。
+11. 手順 6 と同様に **[アクセス許可の選択]** を選択し、**[読み取り]**、**[書き込み]** および **[実行]** を選択して **[このフォルダー]** に追加したあと、**[アクセス許可エントリと既定のアクセス許可エントリ]** として追加します。  **[OK]** をクリックします。  アクセス許可が正常に追加されます。
 
 この時点で VM のシステム割り当てマネージド ID は、作成したフォルダーのファイルに対してすべての操作を実行できます。  Data Lake Store のアクセス管理の詳細については、[Data Lake Store のアクセスの制御](../../data-lake-store/data-lake-store-access-control.md)に関するページの記事をご覧ください。
 
@@ -73,9 +78,9 @@ Azure Data Lake Store は Azure AD 認証をネイティブにサポートする
 
 このチュートリアルでは、PowerShell を使用して Data Lake Store ファイルシステムの REST API と認証し、REST 要求を行います。 VM のシステム割り当てマネージド ID を認証で使用するには、VM から要求を行う必要があります。
 
-1. ポータルで **[仮想マシン]** を開いてお客様の Windows VM に移動し、 **[概要]** の **[接続]** をクリックします。
-2. Windows VM を作成したときに追加した**ユーザー名**と**パスワード**を入力します。 
-3. これで、仮想マシンを使用する**リモート デスクトップ接続**が作成されました。リモート セッションで **PowerShell** を開きます。 
+1. ポータルで **[仮想マシン]** を開いてお客様の Windows VM に移動し、**[概要]** の **[接続]** をクリックします。
+2. Windows VM を作成したときに追加した **ユーザー名** と **パスワード** を入力します。 
+3. これで、仮想マシンを使用する **リモート デスクトップ接続** が作成されました。リモート セッションで **PowerShell** を開きます。 
 4. PowerShell の `Invoke-WebRequest` を使用して、Azure リソース エンドポイントのローカル マネージド ID に、Azure Data Lake Store のアクセス トークンを取得するよう要求します。  Data Lake Store のリソース識別子は `https://datalake.azure.net/` です。  Data Lake はリソース識別子と正確に一致します。末尾のスラッシュが重要です。
 
    ```powershell

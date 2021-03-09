@@ -2,19 +2,15 @@
 title: Azure Automation の Start/Stop VMs during off-hours の問題のトラブルシューティング
 description: この記事では、Start/Stop VMs during off-hours 機能の使用中に発生する問題のトラブルシューティングと解決方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/04/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: bb8fa53fa07d666693ae545c193faaf3d6d0a30c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.topic: troubleshooting
+ms.openlocfilehash: ff2ef8970afa21c0218da20a5b79ea2fb782dd5c
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187151"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053586"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>Start/Stop VMs during off-hours の問題のトラブルシューティング
 
@@ -64,7 +60,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 - Log Analytics ワークスペースがロックされている。
 - AzureRM モジュールまたは Start/Stop VMs during off-hours 機能のバージョンが古い。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 考えられる解決策について、次の修正を確認してください。
 
@@ -95,7 +91,7 @@ Start/Stop VMs during off-hours を構成したが、すべての VM が起動�
 - Runbook でエラーが発生した可能性がある。
 - VM が除外されている可能性がある。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 考えられる解決策について、次の一覧を確認してください。
 
@@ -113,7 +109,7 @@ Start/Stop VMs during off-hours を構成したが、すべての VM が起動�
   * **ScheduledStartStop_Parent**
   * **SequencedStartStop_Parent**
 
-* 起動または停止しようとしている VM に対する適切なアクセス許可が[実行アカウント](../manage-runas-account.md)にあることを確認します。 リソースに対するアクセス許可を確認する方法については、「[クイック スタート:Azure portal を使用してユーザーに割り当てられているロールを表示する](../../role-based-access-control/check-access.md)」を参照してください。 実行アカウントで使用されるサービス プリンシパルのアプリケーション ID を指定する必要があります。 この値は、Azure portal の Automation アカウントに移動して取得できます。 **[アカウント設定]** で **[実行アカウント]** を選択し、適切な実行アカウントを選択します。
+* 起動または停止しようとしている VM に対する適切なアクセス許可が[実行アカウント](../automation-security-overview.md#run-as-accounts)にあることを確認します。 リソースに対するアクセス許可を確認する方法については、「[クイック スタート:Azure portal を使用してユーザーに割り当てられているロールを表示する](../../role-based-access-control/check-access.md)」を参照してください。 実行アカウントで使用されるサービス プリンシパルのアプリケーション ID を指定する必要があります。 この値は、Azure portal の Automation アカウントに移動して取得できます。 **[アカウント設定]** で **[実行アカウント]** を選択し、適切な実行アカウントを選択します。
 
 * 明示的に除外されている場合は、VM を起動または停止できない可能性があります。 除外対象の VM は、その機能のデプロイ先の Automation アカウントの `External_ExcludeVMNames` 変数で設定されます。 次の例は、PowerShell を使用してその値のクエリを実行する方法を示しています。
 
@@ -136,7 +132,7 @@ Start/Stop VMs during off-hours を構成したが、構成されている一部
 - 実行アカウントが、VM に対する十分なアクセス許可を持っていない可能性がある。
 - VM の起動または停止を妨げる問題が発生している可能性がある。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 考えられる解決策について、次の一覧を確認してください。
 
@@ -153,7 +149,7 @@ Start/Stop VMs during off-hours を構成したが、構成されている一部
   ```
 
 * VM を起動および停止するには、Automation アカウントの実行アカウントが、VM に対する適切なアクセス許可を持っている必要があります。 リソースに対するアクセス許可を確認する方法については、「[クイック スタート:Azure portal を使用してユーザーに割り当てられているロールを表示する](../../role-based-access-control/check-access.md)」を参照してください。 実行アカウントで使用されるサービス プリンシパルのアプリケーション ID を指定する必要があります。 この値は、Azure portal の Automation アカウントに移動して取得できます。 **[アカウント設定]** で **[実行アカウント]** を選択し、適切な実行アカウントを選択します。
-* 起動または割り当て解除に関する問題が VM で発生している場合は、VM 自体に問題がある可能性があります。 たとえば、VM のシャットダウン試行時の更新プログラムの適用や、サービスのハングなどです。 VM リソースに移動し、**アクティビティ ログ**にエラーが記録されているかどうかを確認してください。 また、VM にログインしてイベント ログにエラーが記録されているかどうかを確認することもできます。 ご自分の VM のトラブルシューティングの詳細については、「[Azure Virtual Machines のトラブルシューティング](../../virtual-machines/troubleshooting/index.yml)」を参照してください。
+* 起動または割り当て解除に関する問題が VM で発生している場合は、VM 自体に問題がある可能性があります。 たとえば、VM のシャットダウン試行時の更新プログラムの適用や、サービスのハングなどです。 VM リソースに移動し、**アクティビティ ログ** にエラーが記録されているかどうかを確認してください。 また、VM にログインしてイベント ログにエラーが記録されているかどうかを確認することもできます。 ご自分の VM のトラブルシューティングの詳細については、「[Azure Virtual Machines のトラブルシューティング](../../virtual-machines/troubleshooting/index.yml)」を参照してください。
 * [ジョブ ストリーム](../automation-runbook-execution.md#job-statuses)を確認してエラーを探します。 ポータルで Automation アカウントに移動し、 **[プロセス オートメーション]** の下で **[ジョブ]** を選択します。
 
 ## <a name="scenario-my-custom-runbook-fails-to-start-or-stop-my-vms"></a><a name="custom-runbook"></a>シナリオ:カスタム Runbook を使用して VM を起動または停止できない
@@ -166,7 +162,7 @@ Start/Stop VMs during off-hours を構成したが、構成されている一部
 
 このエラーには多くの原因が考えられます。 Azure portal で Automation アカウントに移動し、 **[プロセス オートメーション]** の下で **[ジョブ]** を選択します。 **[ジョブ]** ページで、Runbook のジョブを検索してジョブのエラーを表示します。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 推奨事項は次のとおりです。
 
@@ -183,7 +179,7 @@ Start/Stop VMs during off-hours を構成したが、構成されている一部
 
 この問題は、VM でのタグ付けが正しく行われていないことが原因で発生します。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 次の手順に従い、機能が正しく有効になっていることを確認してください。
 
@@ -201,11 +197,11 @@ Start/Stop VMs during off-hours Runbook に対してジョブが `403 forbidden`
 
 この問題は、実行アカウントが正しく構成されていないか、有効期限が切れている場合に発生する可能性があります。 また、実行アカウントによる VM リソースへのアクセス許可が不十分であることが原因である場合もあります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 実行アカウントが正しく構成されていることを確認するには、Azure portal で Automation アカウントにアクセスし、 **[アカウント設定]** の下で **[実行アカウント]** を選択します。 実行アカウントが正しく構成されていないか、有効期限が切れている場合、状態にその状況が表示されます。
 
-実行アカウントの構成が誤っている場合、お使いの実行アカウントを削除して再作成します。 詳細については、「[Azure Automation の実行アカウントを管理する](../manage-runas-account.md)」を参照してください。
+実行アカウントの構成が誤っている場合、お使いの実行アカウントを削除して再作成します。 詳細については、[Azure Automation - 実行アカウント](../automation-security-overview.md#run-as-accounts)に関する記事を参照してください。
 
 実行アカウントの証明書の期限が切れている場合は、「[自己署名証明書の書き換え](../manage-runas-account.md#cert-renewal)」の手順に従って証明書を書き換えてください。
 
@@ -224,7 +220,7 @@ Start/Stop VMs during off-hours を使用しているときに、このページ
 > [!NOTE]
 > Start/Stop VMs during off-hours 機能は、この機能を VM にデプロイするときに、お使いの Automation アカウントにインポートされた Azure モジュールを使用してテストされています。 この機能は現在、Azure モジュールの新しいバージョンでは動作しません。 この制約は、Start/Stop VMs during off-hours の実行に使用している Automation アカウントのみに影響します。 「[Azure PowerShell モジュールの更新](../automation-update-azure-modules.md)」で説明されているように、他の Automation アカウントでは引き続き Azure モジュールの新しいバージョンを使用できます。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 何度も発生するエラーを解決するには、[Start/Stop VMs during off-hours を削除して更新](../automation-solution-vm-management.md#update-the-feature)します。 また、[ジョブ ストリーム](../automation-runbook-execution.md#job-statuses)を確認してエラーがないか探します。 
 

@@ -1,18 +1,21 @@
 ---
 title: Azure Migrate Server Assessment でエージェントベースの依存関係の分析を設定する
 description: この記事では、Azure Migrate Server Assessment でエージェントベースの依存関係の分析を設定する方法について説明します。
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: how-to
-ms.date: 6/09/2020
-ms.openlocfilehash: c5c019ec995f59b61fb96917bed50bd8ba3f61d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 11/25/2020
+ms.openlocfilehash: 1a3f2ae4829c7f4ae41d31e2a2fc35d79adf3d4c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022379"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596709"
 ---
 # <a name="set-up-dependency-visualization"></a>依存関係の視覚化を設定する
 
-この記事では、Azure Migrate:Server Assessment でエージェントレスの依存関係の分析を設定する方法について説明します。 [依存関係の分析](concepts-dependency-visualization.md)は、評価や Azure への移行を行うマシン間の依存関係を特定し、理解するために役立ちます。
+この記事では、Azure Migrate:Server Assessment でエージェントベースの依存関係の分析を設定する方法について説明します。 [依存関係の分析](concepts-dependency-visualization.md)は、評価や Azure への移行を行うマシン間の依存関係を特定し、理解するために役立ちます。
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -21,17 +24,17 @@ ms.locfileid: "89022379"
     - [物理サーバー](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
     - [Hyper-V VM](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)。
 - 以下を実行します。
-    - Azure Migrate プロジェクトがあること。 ない場合は、今すぐ[作成](how-to-add-tool-first-time.md)します。
+    - Azure Migrate プロジェクトがあること。 ない場合は、今すぐ[作成](./create-manage-projects.md)します。
     - Azure Migrate:Server Assessment ツールがプロジェクトに[追加](how-to-assess.md)されていることを確認すること。
     - オンプレミスのマシンを検出するための [Azure Migrate アプライアンス](migrate-appliance.md)を設定すること。 アプライアンスは、オンプレミス マシンを検出して、Azure Migrate:Server Assessment にメタデータとパフォーマンス データを送信します。 次に対してアプライアンスを設定します。
         - [VMware](how-to-set-up-appliance-vmware.md) VM。
         - [Hyper-V](how-to-set-up-appliance-hyper-v.md) VM。
         - [物理サーバー](how-to-set-up-appliance-physical.md)。
-- 依存関係の視覚化を利用するには、[Log Analytics ワークスペース](../azure-monitor/platform/manage-access.md)を Azure Migrate プロジェクトに関連付けます。
+- 依存関係の視覚化を利用するには、[Log Analytics ワークスペース](../azure-monitor/logs/manage-access.md)を Azure Migrate プロジェクトに関連付けます。
     - Azure Migrate アプライアンスを設定して Azure Migrate プロジェクトでマシンが検出された後にのみ、ワークスペースをアタッチできます。
     - ワークスペースが、Azure Migrate プロジェクトを含むサブスクリプション内にあることを確認します。
     - ワークスペースは、米国東部リージョン、東南アジア リージョン、または西ヨーロッパ リージョンに存在する必要があります。 他のリージョンにあるワークスペースをプロジェクトに関連付けることはできません。
-    - ワークスペースは、[Service Map がサポートされている](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)リージョンに存在する必要があります。
+    - ワークスペースは、[Service Map がサポートされている](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions)リージョンに存在する必要があります。
     - 新規または既存の Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付けることができます。
     - ワークスペースのアタッチは、マシンの依存関係の視覚化を初めて設定したときに行います。 Azure Migrate プロジェクトのワークスペースは、追加後に変更できません。
     - Log Analytics では、Azure Migrate に関連付けられたワークスペースは、移行プロジェクト キーとプロジェクト名のタグが付けられます。
@@ -57,7 +60,7 @@ ms.locfileid: "89022379"
 分析する各マシンにエージェントをインストールします。
 
 > [!NOTE]
-> System Center Operations Manager 2012 R2 以降によって監視されているマシンの場合、MMA エージェントをインストールする必要はありません。 Service Map は Operations Manager と統合されます。 統合ガイダンスに[従ってください](../azure-monitor/insights/service-map-scom.md#prerequisites)。
+> System Center Operations Manager 2012 R2 以降によって監視されているマシンの場合、MMA エージェントをインストールする必要はありません。 Service Map は Operations Manager と統合されます。 統合ガイダンスに[従ってください](../azure-monitor/vm/service-map-scom.md#prerequisites)。
 
 1. **Azure Migrate:Server Assessment** で、 **[Discovered servers]\(検出済みサーバー\)** をクリックします。
 2. 依存関係の視覚化を利用して分析する各マシンについて、 **[依存関係]** 列の **[エージェントをインストールする必要があります]** をクリックします。
@@ -82,9 +85,9 @@ Windows マシンにエージェントをインストールするには、次の
 5. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
 
 エージェントは、コマンド ラインからインストールするか、Configuration Manager または [Intigua](https://www.intigua.com/intigua-for-azure-migration) などの自動化された方法を使用してインストールすることができます。
-- このような方法を使用して MMA エージェントをインストールする方法については、[詳細](../azure-monitor/platform/log-analytics-agent.md#installation-options)のページを参照してください。
-- この[スクリプト](https://go.microsoft.com/fwlink/?linkid=2104394)を使用して、MMA エージェントをインストールすることもできます。
-- MMA でサポートされる Windows オペレーティング システムの詳細については、[こちら](../azure-monitor/platform/agents-overview.md#supported-operating-systems)をご覧ください。
+- このような方法を使用して MMA エージェントをインストールする方法については、[詳細](../azure-monitor/agents/log-analytics-agent.md#installation-options)のページを参照してください。
+- この[スクリプト](https://github.com/brianbar-MSFT/Install-MMA)を使用して、MMA エージェントをインストールすることもできます。
+- MMA でサポートされる Windows オペレーティング システムの詳細については、[こちら](../azure-monitor/agents/agents-overview.md#supported-operating-systems)をご覧ください。
 
 ### <a name="install-mma-on-a-linux-machine"></a>Linux マシンに MMA をインストールする
 
@@ -95,7 +98,7 @@ Linux マシンに MMA をインストールするには、以下を実行しま
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-MMA でサポートされる Linux オペレーティング システムの一覧は、[ここ](../azure-monitor/platform/agents-overview.md#supported-operating-systems)をご覧ください。 
+MMA でサポートされる Linux オペレーティング システムの一覧は、[ここ](../azure-monitor/agents/agents-overview.md#supported-operating-systems)をご覧ください。 
 
 ## <a name="install-the-dependency-agent"></a>依存関係エージェントをインストールする
 
@@ -104,8 +107,8 @@ MMA でサポートされる Linux オペレーティング システムの一�
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)をご覧ください。
-- 依存関係エージェントでサポートされるオペレーティング システムの詳細については、[こちら](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)をご覧ください。
+- スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent)をご覧ください。
+- 依存関係エージェントでサポートされるオペレーティング システムの詳細については、[こちら](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems)をご覧ください。
 
 
 ## <a name="create-a-group-using-dependency-visualization"></a>依存関係の視覚化を使用してグループを作成する
@@ -146,8 +149,8 @@ MMA でサポートされる Linux オペレーティング システムの一�
 
 Azure Migrate プロジェクトに関連付けられた Log Analytics ワークスペースで、Service Map によってキャプチャされた依存関係データのクエリを実行できます。 Log Analytics は、Azure Monitor ログ クエリの記述と実行に使用されます。
 
-- Log Analytics で Service Map データを検索する[方法の詳細情報](../azure-monitor/insights/service-map.md#log-analytics-records)を確認します。
-- [Log Analytics](../azure-monitor/log-query/get-started-portal.md) でのクエリの記述の[概要を確認](../azure-monitor/log-query/get-started-queries.md)します。
+- Log Analytics で Service Map データを検索する[方法の詳細情報](../azure-monitor/vm/service-map.md#log-analytics-records)を確認します。
+- [Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) でのクエリの記述の[概要を確認](../azure-monitor/logs/get-started-queries.md)します。
 
 次のようにして依存関係データのクエリを実行します。
 
@@ -162,8 +165,8 @@ Azure Migrate プロジェクトに関連付けられた Log Analytics ワーク
 以下に、依存関係データを抽出するために使用できるサンプル クエリをいくつか示します。
 
 - クエリを変更して、目的のデータ ポイントを抽出できます。
-- 依存関係データ レコードの完全な一覧を[確認](../azure-monitor/insights/service-map.md#log-analytics-records)します。
-- 追加のサンプル クエリを[確認](../azure-monitor/insights/service-map.md#sample-log-searches)します。
+- 依存関係データ レコードの完全な一覧を[確認](../azure-monitor/vm/service-map.md#log-analytics-records)します。
+- 追加のサンプル クエリを[確認](../azure-monitor/vm/service-map.md#sample-log-searches)します。
 
 #### <a name="sample-review-inbound-connections"></a>サンプル:受信接続を確認する
 
@@ -171,7 +174,7 @@ Azure Migrate プロジェクトに関連付けられた Log Analytics ワーク
 
 - 接続メトリック用のテーブル (VMConnection) 内にあるレコードは、個々の物理ネットワーク接続を表すものではありません。
 - 複数の物理ネットワーク接続は、論理接続にグループ化されます。
-- 物理ネットワーク接続データが VMConnection 内でどのように集約されるかについての[詳細情報](../azure-monitor/insights/service-map.md#connections)を確認してください。
+- 物理ネットワーク接続データが VMConnection 内でどのように集約されるかについての[詳細情報](../azure-monitor/vm/service-map.md#connections)を確認してください。
 
 ```
 // the machines of interest

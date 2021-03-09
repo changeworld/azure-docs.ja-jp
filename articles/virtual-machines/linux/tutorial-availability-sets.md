@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e04f6120f7d9a5646a3b30553b5083c5259acae2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4b3817bd33c72ce6d1c3426aa8379101c84f5bc5
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499638"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91961512"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して高可用性仮想マシンを作成して展開する
 
@@ -116,5 +116,5 @@ az vm availability-set list-sizes \
 > [仮想マシン スケール セットを作成する](tutorial-create-vmss.md)
 
 * 可用性ゾーンの詳細については、[Availability Zones に関するドキュメント](../../availability-zones/az-overview.md)を参照してください。
-* また、可用性セットと可用性ゾーンの両方について取り上げたドキュメントも、[こちら](./manage-availability.md)でご覧いただけます。
+* また、可用性セットと可用性ゾーンの両方について取り上げたドキュメントも、[こちら](../manage-availability.md)でご覧いただけます。
 * 可用性ゾーンを試してみたい場合は「[Azure CLI を使用して可用性ゾーン内に Linux 仮想マシンを作成する](./create-cli-availability-zone.md)」をご覧ください。

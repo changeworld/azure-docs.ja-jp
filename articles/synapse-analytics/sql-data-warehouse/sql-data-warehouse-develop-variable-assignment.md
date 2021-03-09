@@ -1,30 +1,30 @@
 ---
 title: 変数の代入
-description: この記事では、T-SQL 変数を SQL プールに割り当てる際の重要なヒントについて説明します。
+description: この記事では、Azure Synapse Analytics の専用 SQL プールに T-SQL 変数を割り当てる際の重要なヒントについて説明します。
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 0cbadc10fb817c70bd259397c840aae68abc2d54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 87448ea737c11af13a52632e5bf4f67dc54d9ae3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213331"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459232"
 ---
-# <a name="assign-variables-in-synapse-sql-pool"></a>Synapse SQL プールに変数を割り当てる
+# <a name="assign-variables-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールに変数を割り当てる
 
-この記事では、T-SQL 変数を SQL プールに割り当てる際の重要なヒントについて説明します。
+この記事では、専用 SQL プールに T-SQL 変数を割り当てる際の重要なヒントについて説明します。
 
 ## <a name="set-variables-with-declare"></a>DECLARE を使用して変数を設定する
 
-SQL プールの変数は、`DECLARE` ステートメントまたは `SET` ステートメントを使用して設定します。 DECLARE を使用した変数の初期化は、SQL プールで変数値を設定する最も柔軟性の高い方法の 1 つです。
+専用 SQL プールの変数は、`DECLARE` ステートメントまたは `SET` ステートメントを使用して設定します。 DECLARE を使用した変数の初期化は、SQL プールで変数値を設定する最も柔軟性の高い方法の 1 つです。
 
 ```sql
 DECLARE @v  int = 0
@@ -39,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-同じ DECLARE ステートメントで変数を初期化して使用することはできません。 要点を示すために、次の例では、同じ DECLARE ステートメントで @p1 を初期化し、使用しています。このようなステートメントは使用**できません**。 そのため、次の例ではエラーが発生します。
+同じ DECLARE ステートメントで変数を初期化して使用することはできません。 要点を示すために、次の例では、同じ DECLARE ステートメントで @p1 を初期化し、使用しています。このようなステートメントは使用 **できません**。 そのため、次の例ではエラーが発生します。
 
 ```sql
 DECLARE @p1 int = 0

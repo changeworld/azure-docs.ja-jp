@@ -1,6 +1,6 @@
 ---
 title: Node.js から Azure Table Storage または Azure Cosmos DB Table API を使用する
-description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
+description: Node.js から Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
@@ -8,15 +8,16 @@ ms.topic: sample
 ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
-ms.custom: devx-track-javascript
-ms.openlocfilehash: cfcb5645a6284214e233758705537486f32967c6
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-js
+ms.openlocfilehash: 2d40b70d49b1934c9dd2d911369245b1b2e4f2ff
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079299"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079705"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Node.js から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
@@ -137,7 +138,7 @@ var tableSvc = azure.createTableService().withFilter(retryOperations);
 * **PartitionKey** - エンティティが格納されるパーティションを決定します。
 * **RowKey** - パーティション内のエンティティを一意に識別します。
 
-**PartitionKey** と **RowKey** は両方とも文字列値にする必要があります。 詳細については、「 [Table サービス データ モデルについて](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
+**PartitionKey** と **RowKey** は両方とも文字列値にする必要があります。 詳細については、「 [Table サービス データ モデルについて](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)」を参照してください。
 
 エンティティを定義する例を次に示します。 **dueDate** は、`Edm.DateTime` の型として定義されています。 型の指定は省略可能です。型を指定しなかった場合、型は推測されます。
 
@@ -299,7 +300,7 @@ var query = new azure.TableQuery()
   .where('PartitionKey eq ?', 'hometasks');
 ```
 
-**select** が使用されていないため、すべてのフィールドが返されます。 テーブルでクエリを実行するには、 **queryEntities**を使用します。 次の例では、このクエリを使用して "mytable" からエンティティを返します。
+**select** が使用されていないため、すべてのフィールドが返されます。 テーブルでクエリを実行するには、 **queryEntities** を使用します。 次の例では、このクエリを使用して "mytable" からエンティティを返します。
 
 ```javascript
 tableSvc.queryEntities('mytable',query, null, function(error, result, response) {
@@ -309,7 +310,7 @@ tableSvc.queryEntities('mytable',query, null, function(error, result, response) 
 });
 ```
 
-成功した場合は、`result.entries` にはクエリに一致するエンティティの配列が含まれます。 クエリですべてのエンティティを返すことができなかった場合、`result.continuationToken` は*null* 以外になり、さらに結果を取得するために、これを **queryEntities** の 3 番目のパラメーターとして使用できます。 最初のクエリでは、3 番目のパラメーターに *null* を使用します。
+成功した場合は、`result.entries` にはクエリに一致するエンティティの配列が含まれます。 クエリですべてのエンティティを返すことができなかった場合、`result.continuationToken` は *null* 以外になり、さらに結果を取得するために、これを **queryEntities** の 3 番目のパラメーターとして使用できます。 最初のクエリでは、3 番目のパラメーターに *null* を使用します。
 
 ### <a name="query-a-subset-of-entity-properties"></a>エンティティ プロパティのサブセットを照会する
 
@@ -357,7 +358,7 @@ tableSvc.deleteTable('mytable', function(error, response){
 });
 ```
 
-テーブルが存在するかどうかが不明な場合は、 **deleteTableIfExists**を使用します。
+テーブルが存在するかどうかが不明な場合は、 **deleteTableIfExists** を使用します。
 
 ## <a name="use-continuation-tokens"></a>継続トークンを使用する
 
@@ -483,6 +484,6 @@ tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 * GitHub の [Azure Storage SDK for Node.js](https://github.com/Azure/azure-storage-node) リポジトリ
-* [Node.js 開発者向けの Azure](https://docs.microsoft.com/azure/developer/javascript/)
+* [Node.js 開発者向けの Azure](/azure/developer/javascript/)
 * [Azure で Node.js Web アプリを作成する](../app-service/quickstart-nodejs.md)
 * [Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (Windows PowerShell を使用)

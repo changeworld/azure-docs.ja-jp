@@ -1,46 +1,40 @@
 ---
-title: PowerShell を使用した Azure API Management インスタンスの作成 | Microsoft Docs
-description: 新しい Azure API Management インスタンスを作成するには、このチュートリアルの手順に従います。
+title: クイック スタート - PowerShell を使用した Azure API Management インスタンスの作成 | Microsoft Docs
+description: Azure PowerShell を使用して新しい Azure API Management インスタンスを作成します。
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: cflower
-editor: ''
 ms.service: api-management
-ms.workload: integration
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/15/2017
+ms.date: 09/14/2020
 ms.author: apimpm
-ms.openlocfilehash: f42a68d066898869574cb6ccf5099ccdd451e5fe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: eb2c42d26a85a07518a018ba5b8817f13d3cd17f
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506929"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707067"
 ---
-# <a name="create-a-new-azure-api-management-service-instance-by-using-powershell"></a>PowerShell を使用して新しい Azure API Management サービス インスタンスを作成する
+# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-powershell"></a>クイック スタート」を参照してください。PowerShell を使用して新しい Azure API Management サービス インスタンスを作成する
 
-API Management (APIM) が組織にもたらす利点は、外部、パートナー、社内の開発者に API を公開することによって、社内のデータやサービスの可能性を広げられることです。 API Management は、開発者の取り組み、ビジネス インサイト、分析、セキュリティ、保護を通じて API プログラムの価値を高め、企業にコア コンピテンシーをもたらします。 APIM を使用すると、任意の場所でホストされている既存のバックエンド サービスの最新の API ゲートウェイを作成し、管理できます。 詳細については、[概要](api-management-key-concepts.md)に関するトピックを参照してください。
+API Management (APIM) が組織にもたらす利点は、外部、パートナー、社内の開発者に API を公開することによって、社内のデータやサービスの可能性を広げられることです。 API Management は、開発者の取り組み、ビジネス インサイト、分析、セキュリティ、保護を通じて API プログラムの価値を高め、企業にコア コンピテンシーをもたらします。 APIM を使用すると、任意の場所でホストされている既存のバックエンド サービスの最新の API ゲートウェイを作成し、管理できます。 詳細については、[概要](api-management-key-concepts.md)に関するページを参照してください。
 
-このクイック スタートでは、PowerShell スクリプトを使用して新しい API Management インスタンスを作成する手順を説明します。 ここでは、Azure Portal から実行できる **Azure Cloud Shell** の使用方法を示します。
+このクイック スタートでは、Azure PowerShell コマンドレットを使用して新しい API Management インスタンスを作成する手順を説明します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="log-in-to-azure"></a>Azure にログインする
-
-Azure Portal (https://portal.azure.com ) にログインします。
-
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 PowerShell をローカルにインストールして使う場合、このチュートリアルでは Azure PowerShell モジュールのバージョン 1.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
-
 ## <a name="create-resource-group"></a>リソース グループの作成
 
 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+
+次のコマンドは、*myResourceGroup* という名前のリソース グループを米国西部の場所に作成します。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location WestUS
@@ -48,11 +42,65 @@ New-AzResourceGroup -Name myResourceGroup -Location WestUS
 
 ## <a name="create-an-api-management-service"></a>API Management サービスの作成
 
-これは実行時間の長い操作であり、最大 15 分かかることがあります。
+リソース グループを作成したので、API Management サービス インスタンスを作成できます。 [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) を使用して作成し、サービス名と発行者の詳細を指定します。 サービス名は Azure 内で一意になっている必要があります。
+
+次の例では、*myapim* をサービス名として使用します。 名前を一意の値に更新します。 また、API パブリッシャーの組織名と、通知を受信するための管理者の電子メール アドレスを更新します。
+
+既定では、このコマンドは、Azure API Management を評価するための経済的なオプションである Developer レベルにインスタンスを作成します。 このレベルは運用目的では使用できません。 API Management レベルのスケーリングの詳細については、[アップグレードとスケーリング](upgrade-and-scale.md)に関するをページをご覧ください。
+
+> [!NOTE]
+> この操作の実行には時間がかかります。 このサービス レベルに API Management サービスを作成してアクティブにするには、30 分から 40 分かかります。
 
 ```azurepowershell-interactive
-New-AzApiManagement -ResourceGroupName "myResourceGroup" -Location "West US" -Name "apim-name" -Organization "myOrganization" -AdminEmail "myEmail" -Sku "Developer"
+New-AzApiManagement -Name "myapim" -ResourceGroupName "myResourceGroup" `
+  -Location "West US" -Organization "Contoso" -AdminEmail "admin@contoso.com" 
 ```
+
+コマンドが終了したら、[Get-AzApiManagement](/powershell/module/az.apimanagement/get-azapimanagement) を実行して、Azure API Management サービスのプロパティを表示します。 アクティブ化が完了すると、プロビジョニングの状態が [成功] になり、サービス インスタンスに複数の URL が関連付けられます。 次に例を示します。
+
+```azurepowershell-interactive
+Get-AzApiManagement -Name "myapim" -ResourceGroupName "myResourceGroup" 
+```
+
+出力例:
+
+```console
+PublicIPAddresses                     : {203.0.113.1}
+PrivateIPAddresses                    :
+Id                                    : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.ApiManagement/service/myapim
+Name                                  : myapim
+Location                              : West US
+Sku                                   : Developer
+Capacity                              : 1
+CreatedTimeUtc                        : 9/9/2020 9:07:43 PM
+ProvisioningState                     : Succeeded
+RuntimeUrl                            : https://myapim.azure-api.net
+RuntimeRegionalUrl                    : https://myapi-westus-01.regional.azure-api.net
+PortalUrl                             : https://myapim.portal.azure-api.net
+DeveloperPortalUrl                    : https://myapim.developer.azure-api.net
+ManagementApiUrl                      : https://myapim.management.azure-api.net
+ScmUrl                                : https://myapim.scm.azure-api.net
+PublisherEmail                        : admin@contoso.com
+OrganizationName                      : Contoso
+NotificationSenderEmail               : apimgmt-noreply@mail.windowsazure.com
+VirtualNetwork                        :
+VpnType                               : None
+PortalCustomHostnameConfiguration     :
+ProxyCustomHostnameConfiguration      : {myapim.azure-api.net}
+ManagementCustomHostnameConfiguration :
+ScmCustomHostnameConfiguration        :
+DeveloperPortalHostnameConfiguration  :
+SystemCertificates                    :
+Tags                                  : {}
+AdditionalRegions                     : {}
+SslSetting                            : Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting
+Identity                              :
+EnableClientCertificate               :
+ResourceGroupName                     : myResourceGroup
+
+```
+
+API Management サービス インスタンスがデプロイされると、使用する準備ができています。 [最初の API をインポートして発行する](import-and-publish.md)チュートリアルを開始します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

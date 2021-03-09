@@ -1,17 +1,17 @@
 ---
 title: パブリック ネットワーク アクセスを拒否する - Azure portal - Azure Database for PostgreSQL - 単一サーバー
 description: Azure portal を使用して Azure Database for PostgreSQL 単一サーバーでパブリック ネットワーク アクセスを拒否するように構成する方法について説明します
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 01a256e17b1101782eaee9bebd85f5e7093773d3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bd777fe42dc8fa3ec4643fa9607f5ca8b7aac795
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287781"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240326"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL 単一サーバーでパブリック ネットワーク アクセスを拒否する
 
@@ -33,13 +33,13 @@ ms.locfileid: "87287781"
 
 1. **[Deny Public Network Access]\(パブリック ネットワーク アクセスを拒否する\)** で **[はい]** を選択して、PostgreSQL 単一サーバーのパブリック アクセスの拒否を有効にします。
 
-    ![Azure Database for PostgreSQL 単一サーバーのネットワーク アクセスの拒否](./media/howto-deny-public-network-access/deny-public-network-access.PNG)
+    :::image type="content" source="./media/howto-deny-public-network-access/deny-public-network-access.PNG" alt-text="Azure Database for PostgreSQL 単一サーバーのネットワーク アクセスの拒否":::
 
 1. **[保存]** をクリックして変更を保存します。
 
 1. 接続のセキュリティの設定が正常に有効化されたことを確認する通知が表示されます。
 
-    ![Azure Database for PostgreSQL 単一サーバーのネットワーク アクセスの拒否の成功](./media/howto-deny-public-network-access/deny-public-network-access-success.png)
+    :::image type="content" source="./media/howto-deny-public-network-access/deny-public-network-access-success.png" alt-text="Azure Database for PostgreSQL 単一サーバーのネットワーク アクセスの拒否の成功":::
 
 ## <a name="next-steps"></a>次のステップ
 

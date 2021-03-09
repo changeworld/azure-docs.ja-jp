@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: b02324923e3f004395105b8e04165390cb950fe7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77d7b8a0bf4d7fe9a94a61ea3f2f4279246ffb69
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73044128"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903889"
 ---
 # <a name="create-human-reviews"></a>目視レビューを作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "73044128"
 
     自動モデレーション プロセスによって割り当てられたラベルと共に画像が表示されます。 レビュー ツールを使用して送信した画像は、他のレビュー担当者には表示されません。
 
-1. 必要に応じて、**表示するレビュー**のスライダー (1) を動かして、画面に表示される画像の数を調整します。 **タグ付き**または**タグなし**のボタン (2) をクリックして、画像を適宜並べ替えます。 タグ パネル (3) をクリックして、オンとオフを切り替えます。
+1. 必要に応じて、**表示するレビュー** のスライダー (1) を動かして、画面に表示される画像の数を調整します。 **タグ付き** または **タグなし** のボタン (2) をクリックして、画像を適宜並べ替えます。 タグ パネル (3) をクリックして、オンとオフを切り替えます。
 
     ![レビュー用のタグが付いた画像とレビュー ツールが表示された Chrome ブラウザー](images/review-images-2.png)
 
@@ -56,4 +56,4 @@ ms.locfileid: "73044128"
 
 ## <a name="next-steps"></a>次のステップ
 
-このガイドでは、Content Moderator の[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)からレビューを設定して使用する方法について学習しました。 次は、[REST API ガイド](../try-review-api-review.md)または [.NET SDK のクイックスタート](../dotnet-sdk-quickstart.md)を参照して、プログラムによってレビューを作成する方法について学習してください。
+このガイドでは、Content Moderator の[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)からレビューを設定して使用する方法について学習しました。 次は、[API コンソール ガイド](../try-review-api-review.md)または [.NET SDK のクイックスタート](../client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)を参照して、プログラムによってレビューを作成する方法について学習してください。

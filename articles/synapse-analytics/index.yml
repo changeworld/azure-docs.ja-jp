@@ -1,0 +1,113 @@
+### YamlMime:Landing
+title: Azure Synapse Analytics
+summary: Azure Synapse は、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられた無制限の分析サービスです。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを使用しながら大規模に、各自の条件で自由にデータを照会することができます。
+metadata:
+  title: Azure Synapse Analytics
+  description: Azure Synapse は、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられた無制限の分析サービスです。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを使用しながら大規模に、各自の条件で自由にデータを照会することができます。
+  services: synapse-analytics
+  ms.service: synapse-analytics
+  ms.subservice: overview
+  ms.topic: landing-page
+  ms.collection: collection
+  author: julieMSFT
+  ms.author: jrasnick
+  ms.date: 12/01/2020
+  ms.openlocfilehash: 4fe151be6bf542b387b7b8dea915918fd59f34f8
+  ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 12/04/2020
+  ms.locfileid: "96606888"
+landingContent:
+- title: Azure Synapse Analytics について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Synapse とは
+      url: overview-what-is.md
+    - text: 用語
+      url: overview-terminology.md
+    - text: よく寄せられる質問
+      url: overview-faq.md
+- title: Synapse SQL
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Synapse SQL アーキテクチャ
+      url: ./sql/overview-architecture.md
+  - linkListType: quickstart
+    links:
+    - text: サーバーレス SQL プールを使用する
+      url: quickstart-sql-on-demand.md
+    - text: Synapse Studio を使用して専用 SQL プールを作成する
+      url: quickstart-create-sql-pool-studio.md
+- title: Azure Synapse Analytics の使用を開始する
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 開始するための手順
+      url: get-started.md
+    - text: ステップ 1 - Synapse ワークスペースを作成して設定する
+      url: get-started-create-workspace.md
+    - text: ステップ 2 - 専用 SQL プールを使用して分析する
+      url: get-started-analyze-sql-pool.md
+    - text: ステップ 3 - Apache Spark を使用して分析する
+      url: get-started-analyze-spark.md
+    - text: ステップ 4 - サーバーレス SQL プールを使用して分析する
+      url: get-started-analyze-sql-on-demand.md
+    - text: ステップ 5 - ストレージ アカウント内のデータを分析する
+      url: get-started-analyze-storage.md
+    - text: ステップ 6 - パイプラインを使用してオーケストレーションする
+      url: get-started-pipelines.md
+    - text: ステップ 7 - Power BI を使用してデータを視覚化する
+      url: get-started-visualize-power-bi.md
+    - text: 手順 8 - 活動を監視する
+      url: get-started-monitor.md
+    - text: 手順 9 - Knowledge Center を探索する
+      url: get-started-knowledge-center.md
+- title: Apache Spark
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Synapse Analytics での Apache Spark
+      url: ./spark/apache-spark-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Synapse Studio を使用してサーバーレス Apache Spark プール を作成する
+      url: quickstart-create-apache-spark-pool-studio.md
+- title: Synapse Link
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Synapse Link for Azure Cosmos DB
+      url: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+  - linkListType: quickstart
+    links:
+    - text: Azure Cosmos DB 用の Azure Synapse Link に接続する
+      url: quickstart-connect-synapse-link-cosmos-db.md
+- title: Machine Learning
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Synapse の機械学習
+      url: ./machine-learning/what-is-machine-learning.md
+  - linkListType: quickstart
+    links:
+    - text: Azure Machine Learning のリンクされたサービスの新規作成
+      url: ./machine-learning/quickstart-integrate-azure-machine-learning.md
+  - linkListType: tutorial
+    links:
+    - text: SQL プール向けのモデル スコアリング ウィザード
+      url: ./machine-learning/tutorial-sql-pool-model-scoring-wizard.md
+- title: パイプラインとデータ フロー
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: パイプラインとアクティビティ
+      url: ../data-factory/concepts-pipelines-activities.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+  - linkListType: quickstart
+    links:
+    - text: データを変換する
+      url: quickstart-data-flow.md
+    - text: SQL プールへのデータの読み込み
+      url: quickstart-copy-activity-load-sql-pool.md

@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8eb45397b1941b9a6955066c22d6d9d00eeef4c3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: dda7849b6a5e22eea4891eacb2678b4c500dc1e1
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262092"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693665"
 ---
 # <a name="media-services-development-with-net"></a>.NET を使用した Media Services 開発
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 この記事では、.NET を使用して Media Services アプリケーションを開発する方法について説明します。
 
@@ -68,7 +68,7 @@ ms.locfileid: "89262092"
     3. .NET Framework アセンブリで、System.Configuration アセンブリを探して選択し、 **[OK]** をクリックします。
 6. App.config ファイルを開き、**appSettings** セクションをファイルに追加します。 Media Services API に接続するために必要な値を設定します。 詳細については、「[Azure AD Authentication を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
 
-    **サービス プリンシパル**認証方法を使って接続するために必要な値を設定します。
+    **サービス プリンシパル** 認証方法を使って接続するために必要な値を設定します。
 
     ```xml
     <configuration>

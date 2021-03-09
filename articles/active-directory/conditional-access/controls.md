@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 147c6016c56d45fadca4f4b8e583bce54006ef07
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: e7585c91e42b2d3591532756c1ead9ea60b7035e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922109"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837585"
 ---
 # <a name="custom-controls-preview"></a>カスタム コントロール (プレビュー)
 
 カスタム コントロールは、Azure Active Directory のプレビュー機能です。 カスタム コントロールを使用すると、Azure Active Directory の外部で認証要件を満たすために、ユーザーが互換性のあるサービスにリダイレクトされます。 このコントロールを満たすために、ユーザーのブラウザーは外部サービスにリダイレクトされ、すべての必要な認証を実行してから、元の Azure Active Directory にリダイレクトされます。 Azure Active Directory は応答を検証し、ユーザーが正常に認証または検証された場合、そのユーザーは条件付きアクセス フロー内にとどまります。
 
 > [!NOTE]
-> カスタム コントロール機能に関して計画されている変更の詳細については、2020 年 2 月の[新しい更新プログラム](../fundamentals/whats-new.md#upcoming-changes-to-custom-controls)に関する記事をご覧ください。
+> カスタム コントロール機能に関して計画されている変更の詳細については、2020 年 2 月の[新着情報のアーカイブ](../fundamentals/whats-new-archive.md#upcoming-changes-to-custom-controls)に関する記事をご覧ください。
 
 ## <a name="creating-custom-controls"></a>カスタム コントロールの作成
 
@@ -53,7 +53,7 @@ ms.locfileid: "88922109"
 
 ## <a name="known-limitations"></a>既知の制限事項
 
-カスタム コントロールは、Privileged Identity Manager (PIM) でロールを昇格させる目的で Azure Multi-Factor Authentication、Azure AD のセルフサービス パスワード リセット (SSPR)、多要素認証要求の要件を満たすことを必要とする ID 保護の自動化では使用できず、また、Intune デバイス登録の一環として使用できません。
+カスタム コントロールは、Privileged Identity Manager (PIM) でロールを昇格させる目的で Azure AD Multi-Factor Authentication、Azure AD のセルフサービス パスワード リセット (SSPR)、多要素認証要求の要件を満たすことを必要とする ID 保護の自動化では使用できず、Intune デバイス登録の一環として使用できず、また、Azure AD にデバイスを登録するときに使用できません。
 
 ## <a name="next-steps"></a>次のステップ
 

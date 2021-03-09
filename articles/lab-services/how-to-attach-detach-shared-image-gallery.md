@@ -2,19 +2,19 @@
 title: Azure Lab Services で共有イメージ ギャラリーをアタッチまたはデタッチする | Microsoft Docs
 description: この記事では、Azure Lab Services で共有イメージ ギャラリーをクラスルーム ラボにアタッチする方法について説明します。
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: e0b29bcabe1cfb234b422982c0f8faab49c30796
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/11/2020
+ms.openlocfilehash: 99b944ad85e311cd66b0a1cec4e585de37f83500
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445357"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786403"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services で共有イメージ ギャラリーをアタッチまたはデタッチする
 この記事では、共有イメージ ギャラリーをラボ アカウントにアタッチしたり、ラボ アカウントからデタッチしたりする方法について説明します。 
 
 > [!NOTE]
-> 共有イメージ ギャラリーに、Azure Lab Services 内のラボの[テンプレート イメージを保存](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery)すると、そのイメージは特殊化されたイメージとしてギャラリーにアップロードされます。 [特化されたイメージ](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#generalized-and-specialized-images)には、マシン固有の情報とユーザー プロファイルが保持されます。 一般化されたイメージは引き続き Azure Lab Services の外部のギャラリーに直接アップロードすることができます。 
+> 共有イメージ ギャラリーに、Azure Lab Services 内のラボの[テンプレート イメージを保存](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery)すると、そのイメージは特殊化されたイメージとしてギャラリーにアップロードされます。 [特化されたイメージ](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images)には、マシン固有の情報とユーザー プロファイルが保持されます。 一般化されたイメージは引き続き Azure Lab Services の外部のギャラリーに直接アップロードすることができます。 
 >
 > ラボ作成者は、Azure Lab Services の一般化されたイメージと特殊化されたイメージの両方に基づいて、テンプレート VM を作成できます。 
 
@@ -24,7 +24,10 @@ ms.locfileid: "85445357"
 - ラボ アカウント管理者がラボ アカウントに共有イメージ ギャラリーをアタッチし、ラボのコンテキスト外で共有イメージ ギャラリーにイメージをアップロードします。 そうすると、ラボ作成者が共有イメージ ギャラリーからそのイメージを使用して、ラボを作成できます。 
 - ラボ アカウント管理者が、ラボ アカウントに共有イメージ ギャラリーをアタッチします。 ラボ作成者 (インストラクター) が、カスタマイズ済みの自分のラボのイメージを共有イメージ ギャラリーに保存します。 そうすると、他のラボ作成者が共有イメージ ギャラリーからこのイメージを選択して、各自のラボ用のテンプレートを作成できます。 
 
-    イメージを共有イメージ ギャラリーに保存すると、Azure Lab Services によって、同じ[地域](https://azure.microsoft.com/global-infrastructure/geographies/)内で使用可能な他のリージョンに、保存したイメージがレプリケートされます。 これにより、同じ地域内の他のリージョンで作成されたラボでイメージを使用できるようになります。 共有イメージ ギャラリーにイメージを保存すると、追加コストが発生します。これには、レプリケートされたすべてのイメージのコストが含まれます。 このコストは、Azure Lab Services の使用コストとは別のものです。 共有イメージ ギャラリーの価格について詳しくは、[共有イメージ ギャラリーの課金](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing)に関するページを参照してください。
+    イメージを共有イメージ ギャラリーに保存すると、Azure Lab Services によって、同じ[地域](https://azure.microsoft.com/global-infrastructure/geographies/)内で使用可能な他のリージョンに、保存したイメージがレプリケートされます。 これにより、同じ地域内の他のリージョンで作成されたラボでイメージを使用できるようになります。 共有イメージ ギャラリーにイメージを保存すると、追加コストが発生します。これには、レプリケートされたすべてのイメージのコストが含まれます。 このコストは、Azure Lab Services の使用コストとは別のものです。 共有イメージ ギャラリーの価格について詳しくは、[共有イメージ ギャラリーの課金](../virtual-machines/shared-image-galleries.md#billing)に関するページを参照してください。
+
+> [!IMPORTANT]
+> 共有イメージ ギャラリーの使用中は、Azure Lab Services では、128 GB 未満の OS ディスク領域を持つイメージのみがサポートされます。 128 GB を超えるディスク領域を持つイメージ、または複数のディスクのイメージは、ラボの作成時に仮想マシン イメージの一覧に表示されません。
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>ラボ アカウントの作成時に構成する
 ラボ アカウントを作成する際、共有イメージ ギャラリーをラボ アカウントにアタッチすることができます。 共有イメージ ギャラリーは、ドロップダウン リストから既存のものを選択するか、新たに作成することができます。 共有イメージ ギャラリーを作成してラボ アカウントにアタッチするには、 **[新規作成]** を選択し、ギャラリーの名前を入力して、 **[OK]** をクリックします。 
@@ -47,7 +50,7 @@ ms.locfileid: "85445357"
 4. 左側のメニューで **[共有イメージ ギャラリー]** を選択し、ツールバーで **[+ 作成]** を選択します。  
 
     ![共有イメージ ギャラリーの作成ボタン](./media/how-to-use-shared-image-gallery/new-shared-image-gallery-button.png)
-5. **[共有イメージ ギャラリーの作成]** ウィンドウにギャラリーの**名前**を入力し、 **[OK]** をクリックします。 
+5. **[共有イメージ ギャラリーの作成]** ウィンドウにギャラリーの **名前** を入力し、 **[OK]** をクリックします。 
 
     ![[共有イメージ ギャラリーの作成] ウィンドウ](./media/how-to-use-shared-image-gallery/create-shared-image-gallery-window.png)
 
@@ -86,4 +89,4 @@ ms.locfileid: "85445357"
 ## <a name="next-steps"></a>次のステップ
 共有イメージ ギャラリーにラボ イメージを保存したり、共有イメージ ギャラリーのイメージを使用して VM を作成したりする方法については、[共有イメージ ギャラリーの使用方法](how-to-use-shared-image-gallery.md)に関するページを参照してください。
 
-共有イメージ ギャラリー全般の詳細については、[共有イメージ ギャラリー](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)に関するページを参照してください。
+共有イメージ ギャラリー全般の詳細については、[共有イメージ ギャラリー](../virtual-machines/shared-image-galleries.md)に関するページを参照してください。

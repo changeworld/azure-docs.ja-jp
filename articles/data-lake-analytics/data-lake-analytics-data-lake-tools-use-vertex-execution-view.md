@@ -1,17 +1,15 @@
 ---
 title: Data Lake Tools for Visual Studio での頂点実行ビュー
 description: この記事では、頂点実行ビューを使用して Data Lake Analytics ジョブを試験する方法について説明します。
-services: data-lake-analytics
 ms.service: data-lake-analytics
-ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
 ms.topic: how-to
 ms.date: 10/13/2016
-ms.openlocfilehash: 2fdce38b19cd38439baa5d640707d159cd713657
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3fba7bdaa5db1d812fbcd479e5f1eab50c8d1032
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125618"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215860"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio での頂点実行ビューの使用
 頂点実行ビューを使用して Data Lake Analytics ジョブを試験する方法について説明します。
@@ -20,20 +18,20 @@ ms.locfileid: "87125618"
 ## <a name="open-the-vertex-execution-view"></a>頂点実行ビューを開く
 Data Lake Tools for Visual Studio で U-SQL ジョブを開きます。 左下の **[頂点実行ビュー]** をクリックします。 最初にプロファイルを読み込むよう求められる場合があります。ネットワーク接続によっては、この処理に時間がかかることがあります。
 
-![Data Lake Analytics Tools の頂点実行ビュー](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-open-vertex-execution-view.png)
+![Data Lake Analytics Tools の頂点実行ビューを示すスクリーンショット](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-open-vertex-execution-view.png)
 
 ## <a name="understand-vertex-execution-view"></a>頂点実行ビューについて
 頂点実行ビューは次の 3 つの部分で構成されています。
 
-![Data Lake Analytics Tools の頂点実行ビュー](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view.png)
+![[頂点セレクター] と中央上部および中央下部のウィンドウが強調表示されている頂点実行ビューを示すスクリーンショット。](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view.png)
 
 左側の **[頂点セレクター]** を使用して、特性に基づいて頂点を選択できます (上位 10 のデータ読み取り、ステージ別の選択など)。 最も一般的に使用されるフィルターの 1 つに、 **[クリティカル パスの頂点]** があります。 **[クリティカル パス]** は、U-SQL ジョブの頂点の最も長いチェーンです。 クリティカル パスを理解すると、最も時間のかかっている頂点を確認することでジョブを最適化できるので便利です。
   
-![Data Lake Analytics Tools の頂点実行ビュー](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane2.png)
+!["すべての頂点の実行中の状態" を表示する、頂点実行ビューの上部中央のウィンドウを示すスクリーンショット。](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane2.png)
 
 上部中央のウィンドウには、**すべての頂点の実行中の状態**も表示されます。
   
-![Data Lake Analytics Tools の頂点実行ビュー](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane3.png)
+![各頂点に関する情報を表示する、頂点実行ビューの下部中央のウィンドウを示すスクリーンショット。](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane3.png)
 
 下部中央のウィンドウは、各頂点に関する情報が表示されます。
 * [プロセス名]: 頂点インスタンスの名前。 名前は、StageName|VertexName|VertexRunInstance の各要素で構成されます。 たとえば、SV7_Split[62].v1 という頂点は、ステージ SV7_Split における頂点番号 62 の 2 番目の実行インスタンス (.v1。インデックスは 0 から始まる) を表します。

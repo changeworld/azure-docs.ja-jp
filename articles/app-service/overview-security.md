@@ -5,12 +5,12 @@ keywords: azure app service, web アプリ, モバイル アプリ, api アプ�
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 55ffb2d03a42809a41583e6be25066b0b8e104b1
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 61bffcfa8b98ed666e450c344023258b752e4880
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961501"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736107"
 ---
 # <a name="security-in-azure-app-service"></a>Azure App Service のセキュリティ
 
@@ -85,8 +85,8 @@ App Service の認証および承認は、Azure Active Directory、Microsoft ア
 データベースなどのオンプレミス リソースには、次の 3 つの方法で安全にアクセスできます。 
 
 - [ハイブリッド接続](app-service-hybrid-connections.md) - TCP トンネルを介してリモート リソースへのポイント間接続を確立します。 TCP トンネルは、TLS 1.2 と Shared Access Signature (SAS) キーを使用して確立されます。
-- [サイト間 VPN を使用した Virtual Network 統合](web-sites-integrate-with-vnet.md) - 「[Azure Virtual Network 内のリソース](#resources-inside-an-azure-virtual-network)」で説明されているように、Virtual Network は[サイト間 VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) を介してオンプレミス ネットワークに接続できます。 このネットワーク トポロジでは、アプリは Virtual Network 内の他のリソースなどのオンプレミス リソースに接続できます。
-- [サイト間 VPN を使用した App Service 環境](environment/intro.md) - 「[Azure Virtual Network 内のリソース](#resources-inside-an-azure-virtual-network)」で説明されているように、Virtual Network は[サイト間 VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) を介してオンプレミス ネットワークに接続できます。 このネットワーク トポロジでは、アプリは Virtual Network 内の他のリソースなどのオンプレミス リソースに接続できます。
+- [サイト間 VPN を使用した Virtual Network 統合](web-sites-integrate-with-vnet.md) - 「[Azure Virtual Network 内のリソース](#resources-inside-an-azure-virtual-network)」で説明されているように、Virtual Network は[サイト間 VPN](../vpn-gateway/tutorial-site-to-site-portal.md) を介してオンプレミス ネットワークに接続できます。 このネットワーク トポロジでは、アプリは Virtual Network 内の他のリソースなどのオンプレミス リソースに接続できます。
+- [サイト間 VPN を使用した App Service 環境](environment/intro.md) - 「[Azure Virtual Network 内のリソース](#resources-inside-an-azure-virtual-network)」で説明されているように、Virtual Network は[サイト間 VPN](../vpn-gateway/tutorial-site-to-site-portal.md) を介してオンプレミス ネットワークに接続できます。 このネットワーク トポロジでは、アプリは Virtual Network 内の他のリソースなどのオンプレミス リソースに接続できます。
 
 ## <a name="application-secrets"></a>アプリケーション シークレット
 

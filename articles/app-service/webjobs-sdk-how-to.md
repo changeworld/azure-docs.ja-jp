@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 4a3bff9854e8e316bf368b2222d2244ab9ee6346
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 5666a489cfd0f0d92120c9ec7e3c8d3c2d083b5e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962011"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737271"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -66,7 +66,8 @@ static void Main(string[] args)
 }
 ```
 
-バージョン 3.*x* では、既定の .NET Core 構成 API が使用されるため、接続文字列の名前を変更する API はありません。
+> [!NOTE]
+> バージョン 3.*x* では、既定の .NET Core 構成 API が使用されるため、接続文字列の名前を変更する API はありません。 [Visual Studio を使用した Web ジョブの開発とデプロイ](webjobs-dotnet-deploy-vs.md)に関する記事を参照してください
 
 ### <a name="host-development-settings"></a>ホスト開発設定
 
@@ -693,7 +694,7 @@ Azure Functions のドキュメントでは、各バインドの種類に関す�
 
 [`Disable`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) 属性は、関数がトリガーされるかどうかを制御します。 
 
-次の例では、アプリ設定 `Disable_TestJob` の値が `1` または `True` (大文字小文字の区別なし) の場合、関数は実行されません。 その場合、ランタイムが*関数 'Functions.TestJob' が無効です*というログ メッセージを作成します。
+次の例では、アプリ設定 `Disable_TestJob` の値が `1` または `True` (大文字小文字の区別なし) の場合、関数は実行されません。 その場合、ランタイムが *関数 'Functions.TestJob' が無効です* というログ メッセージを作成します。
 
 ```cs
 [Disable("Disable_TestJob")]
@@ -793,7 +794,7 @@ public static void RemoveItem([QueueTrigger("remove-item")] string message)
 
 ### <a name="viewing-lease-blobs"></a>リース BLOB のビュー
 
-WebJobs SDK は、バックグラウンドで [Azure BLOB リース](../storage/common/storage-concurrency.md#pessimistic-concurrency-for-blobs)を使用して、分散ロックを実装します。 Singleton により使用されるリース BLOB は、パス "locks" にある `AzureWebJobsStorage` ストレージ アカウント内の `azure-webjobs-host` コンテナーにあります。 たとえば、先に示した最初の `ProcessImage` の例のリース BLOB パスは、`locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage` です。 どのパスにも JobHost ID が含まれています。この場合は、061851c758f04938a4426aa9ab3869c0 になります。
+WebJobs SDK は、バックグラウンドで [Azure BLOB リース](../storage/blobs/concurrency-manage.md#pessimistic-concurrency-for-blobs)を使用して、分散ロックを実装します。 Singleton により使用されるリース BLOB は、パス "locks" にある `AzureWebJobsStorage` ストレージ アカウント内の `azure-webjobs-host` コンテナーにあります。 たとえば、先に示した最初の `ProcessImage` の例のリース BLOB パスは、`locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage` です。 どのパスにも JobHost ID が含まれています。この場合は、061851c758f04938a4426aa9ab3869c0 になります。
 
 ## <a name="async-functions"></a>Async 関数
 
@@ -986,7 +987,7 @@ private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
 }
 ```
 
-`SamplingPercentageEstimatorSettings` オブジェクトでは、[アダプティブ サンプリング](https://docs.microsoft.com/azure/application-insights/app-insights-sampling)が構成されます。 つまり、特定の大規模なシナリオでは、Application Insights はテレメトリ データの選択されたサブセットをサーバーに送信します。
+`SamplingPercentageEstimatorSettings` オブジェクトでは、[アダプティブ サンプリング](../azure-monitor/app/sampling.md)が構成されます。 つまり、特定の大規模なシナリオでは、Application Insights はテレメトリ データの選択されたサブセットをサーバーに送信します。
 
 テレメトリ ファクトリを作成した後、Application Insights のログ プロバイダーにそれを渡します。
 

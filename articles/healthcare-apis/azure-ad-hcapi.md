@@ -9,16 +9,16 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: cavoeg
-ms.openlocfilehash: cdb73670996341e9219230bb277e087009266f32
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b362a81fc9b533fe00987a74d7e25dbba61a2589
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846022"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398251"
 ---
 # <a name="azure-active-directory-identity-configuration-for-azure-api-for-fhir"></a>Azure API for FHIR に対する Azure Active Directory の ID 構成
 
-医療データを扱う際に重要なことは、データがセキュリティで保護されており、承認されていないユーザーやアプリケーションがアクセスできないようにすることです。 FHIR サーバーは [OAuth 2.0](https://oauth.net/2/) を使用して、このデータのセキュリティを確保します。 [Azure API for FHIR](https://azure.microsoft.com/services/azure-api-for-fhir/) は、OAuth 2.0 ID プロバイダーの一例である [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) を使用して保護されています。 この記事では、FHIR サーバーの承認の概要と、FHIR サーバーにアクセスするためのトークンを取得するために必要な手順について説明します。 これらの手順はすべての FHIR サーバーと ID プロバイダーに適用されますが、この記事では、Azure API for FHIR を FHIR サーバーとして、Azure AD を ID プロバイダーとして説明します。
+医療データを扱う際に重要なことは、データがセキュリティで保護されており、承認されていないユーザーやアプリケーションがアクセスできないようにすることです。 FHIR サーバーは [OAuth 2.0](https://oauth.net/2/) を使用して、このデータのセキュリティを確保します。 [Azure API for FHIR](https://azure.microsoft.com/services/azure-api-for-fhir/) は、OAuth 2.0 ID プロバイダーの一例である [Azure Active Directory](../active-directory/index.yml) を使用して保護されています。 この記事では、FHIR サーバーの承認の概要と、FHIR サーバーにアクセスするためのトークンを取得するために必要な手順について説明します。 これらの手順はすべての FHIR サーバーと ID プロバイダーに適用されますが、この記事では、Azure API for FHIR を FHIR サーバーとして、Azure AD を ID プロバイダーとして説明します。
 
 ## <a name="access-control-overview"></a>アクセス制御の概要
 
@@ -26,12 +26,12 @@ ms.locfileid: "87846022"
 
 トークンを取得するにはいくつかの方法がありますが、Azure API for FHIR では、正しい要求を含む適切に署名されたトークンである限り、トークンの取得方法は考慮されません。 
 
-[承認コード フロー](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code)を例として使用すると、FHIR サーバーへのアクセスでは、次の 4 つの手順が実行されます。
+[承認コード フロー](../active-directory/azuread-dev/v1-protocols-oauth-code.md)を例として使用すると、FHIR サーバーへのアクセスでは、次の 4 つの手順が実行されます。
 
 ![FHIR の承認](media/azure-ad-hcapi/fhir-authorization.png)
 
-1. クライアントは Azure AD の `/authorize` エンドポイントに要求を送信します。 Azure AD は、クライアントをサインイン ページにリダイレクトします。そこで、ユーザーは適切な資格情報 (ユーザー名とパスワード、または 2 要素認証など) を使用して認証されます。 [承認コードの取得](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code#request-an-authorization-code)に関する詳細を参照してください。 認証が成功すると、"*承認コード*" がクライアントに返されます。 この承認コードの返却先として Azure AD で許可されるのは、クライアント アプリケーションの登録で構成された登録済みの応答 URL のみになります (下記参照)。
-1. クライアント アプリケーションは、Azure AD の `/token` エンドポイントで "*アクセス トークン*" の承認コードを交換します。 クライアント アプリケーションは、トークンを要求するときに、クライアント シークレット (アプリケーション パスワード) を提供する必要がある場合があります。 [アクセス トークンの取得](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code#use-the-authorization-code-to-request-an-access-token)に関する詳細を参照してください。
+1. クライアントは Azure AD の `/authorize` エンドポイントに要求を送信します。 Azure AD は、クライアントをサインイン ページにリダイレクトします。そこで、ユーザーは適切な資格情報 (ユーザー名とパスワード、または 2 要素認証など) を使用して認証されます。 [承認コードの取得](../active-directory/azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)に関する詳細を参照してください。 認証が成功すると、" *承認コード* " がクライアントに返されます。 この承認コードの返却先として Azure AD で許可されるのは、クライアント アプリケーションの登録で構成された登録済みの応答 URL のみになります (下記参照)。
+1. クライアント アプリケーションは、Azure AD の `/token` エンドポイントで " *アクセス トークン* " の承認コードを交換します。 クライアント アプリケーションは、トークンを要求するときに、クライアント シークレット (アプリケーション パスワード) を提供する必要がある場合があります。 [アクセス トークンの取得](../active-directory/azuread-dev/v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)に関する詳細を参照してください。
 1. クライアントは、すべての患者を検索する `GET /Patient` など、Azure API for FHIR に対して要求を行います。 要求を行うときには、HTTP 要求ヘッダーにアクセス トークンが含まれます (`Authorization: Bearer eyJ0e...` など)。この場合、`eyJ0e...` は Base64 でエンコードされたアクセス トークンを表します。
 1. Azure API for FHIR は、トークンに適切な要求 (トークン内のプロパティ) が含まれていることを検証します。 すべてがチェックされると、要求が完了し、結果と共に FHIR バンドルがクライアントに返されます。
 
@@ -89,7 +89,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvaWQiOiIxMjMiLCAiaXNzIjoiaHR0cHM6Ly9pc3N
 
 ## <a name="obtaining-an-access-token"></a>アクセス トークンを取得する
 
-前述のように、Azure AD からトークンを取得するにはいくつかの方法があります。 詳細については、[Azure AD 開発者向けドキュメント](https://docs.microsoft.com/azure/active-directory/develop/)を参照してください。
+前述のように、Azure AD からトークンを取得するにはいくつかの方法があります。 詳細については、[Azure AD 開発者向けドキュメント](../active-directory/develop/index.yml)を参照してください。
 
 Azure AD には、`v1.0` および `v2.0` と呼ばれる、2 つの異なるバージョンの OAuth 2.0 エンドポイントがあります。 これらのバージョンはいずれも OAuth 2.0 エンドポイントであり、`v1.0` と `v2.0` の指定は、Azure AD でのその標準の実装方法における違いを示しています。 
 
@@ -98,11 +98,11 @@ FHIR サーバーを使用する場合は、`v1.0` または `v2.0` エンドポ
 Azure AD ドキュメントの該当するセクションは次のとおりです。
 
 * `v1.0` エンドポイント:
-    * [承認コード フロー](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code)。
-    * [クライアントの資格情報フロー](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)。
+    * [承認コード フロー](../active-directory/azuread-dev/v1-protocols-oauth-code.md)。
+    * [クライアントの資格情報フロー](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)。
 * `v2.0` エンドポイント:
-    * [承認コード フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)。
-    * [クライアントの資格情報フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)。
+    * [承認コード フロー](../active-directory/develop/v2-oauth2-auth-code-flow.md)。
+    * [クライアントの資格情報フロー](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)。
 
 トークンを取得するためのその他のバリエーション (フローの代わりなど) もあります。 詳細については、Azure AD のドキュメントを参照してください。 Azure API for FHIR を使用している場合、[Azure CLI を使用して](get-healthcare-apis-access-token-cli.md) (デバッグ目的で) アクセス トークンを取得するためのいくつかのショートカットもあります。
 

@@ -3,12 +3,12 @@ title: クイック スタート:カスタム イベントを Azure Functions �
 description: クイック スタート:Azure Event Grid と Azure CLI (または Azure portal) を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。 エンドポイントに Azure Functions を使用します。
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 26ddfd1aeb61d3786edcdfca1acf5e293e4145ae
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4fe4753de41443a0537636933364c7b69b25cb27
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115096"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791729"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>クイック スタート:Event Grid を使用して Azure Functions にカスタム イベントをルーティングする
 
@@ -17,14 +17,17 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 Az
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-azure-function"></a>Azure Functions の作成
+カスタム トピックをサブスクライブする前に、イベントを処理する関数を作成します。 
 
-カスタム トピックをサブスクライブする前に、イベントを処理する関数を作成しましょう。 Azure portal で [リソースの作成] をクリックし、「function」と入力して [関数アプリ] を選択し、[作成] をクリックします。 [リソース グループ] の [新規作成] を選択して名前を付けてください。 これは、このチュートリアルの残りの部分で使用します。 この関数アプリに名前を付け、[コード] の [発行] トグルはそのままにして、実行時間とリージョンを選択し、[作成] をクリックします。
+1. 「[関数アプリを作成する](../azure-functions/functions-get-started.md)」の手順に従って関数アプリを作成します。
+2. **Event Grid トリガー** を使用して関数を作成します。 このトリガーを初めて使用する場合は、[インストール] をクリックして拡張機能をインストールする必要があります。
+    1. **[関数アプリ]** ページで、左側のメニューの **[関数]** を選択し、[テンプレート] で **[Event Grid]** を検索して、 **[Azure Event Grid trigger]\(Azure Event Grid トリガー\)** を選択します。 
 
-関数アプリの準備ができたら、それに移動して [+ 新しい関数] をクリックします。 開発環境に [ポータル内] を選択して、[続行] をクリックします。 [関数の作成] で [その他のテンプレート] を選択して他のテンプレートを表示し、[Azure Event Grid Trigger]\(Azure Event Grid トリガー\) を探して選択します。 このトリガーを初めて使用する場合は、[インストール] をクリックして拡張機能をインストールする必要があります。
+        :::image type="content" source="./media/custom-event-to-function/function-event-grid-trigger.png" alt-text="Event Grid トリガーを選択する":::
+3. **[新しい関数]** ページで、関数の名前を入力し、 **[関数の作成]** を選択します。
 
-![関数の Event Grid トリガー](./media/custom-event-to-function/grid-trigger.png)
-
-拡張機能をインストールしたら、[続行] をクリックして関数に名前を付け、[作成] をクリックします。
+    :::image type="content" source="./media/custom-event-to-function/new-function-page.png" alt-text="[新しい関数] ページ":::
+4. **[Code + Test]\(コードとテスト\)** ページを使用して、関数の既存のコードを確認し、更新します。 
 
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
 
@@ -42,10 +45,10 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 
 4. **[トピックの作成]** ページで、次の手順に従います。
 
-    1. カスタム トピックの一意の**名前**を指定します。 トピック名は、DNS エントリによって表されるため、一意である必要があります。 画像に示されている名前は使用しないでください。 代わりに、必ず 3 - 50 文字以内で、a - z、A - Z、0 - 9、および "-" のみを含む独自の名前を作成します。
-    2. Azure **サブスクリプション**を選択します。
+    1. カスタム トピックの一意の **名前** を指定します。 トピック名は、DNS エントリによって表されるため、一意である必要があります。 画像に示されている名前は使用しないでください。 代わりに、必ず 3 - 50 文字以内で、a - z、A - Z、0 - 9、および "-" のみを含む独自の名前を作成します。
+    2. Azure **サブスクリプション** を選択します。
     3. 前の手順と同じリソース グループを選択します。
-    4. イベント グリッド トピックの**場所**を選択します。
+    4. イベント グリッド トピックの **場所** を選択します。
     5. **[イベント スキーマ]** フィールドでは、既定値の **[イベント グリッド スキーマ]** をそのまま使用します。 
 
        ![[トピックの作成] ページ](./media/custom-event-to-function/create-custom-topic.png)
@@ -72,7 +75,7 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
    ![イベント サブスクリプションの追加](./media/custom-event-to-function/new-event-subscription.png)
 
 2. **[イベント サブスクリプションの作成]** ページで、次の手順に従います。
-    1. イベント サブスクリプションの**名前**を入力します。
+    1. イベント サブスクリプションの **名前** を入力します。
     3. **[エンドポイントのタイプ]** に **[Azure Function]** を選択します。 
     4. **[エンドポイントの選択]** を選択します。 
 
@@ -81,8 +84,12 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
     5. 関数エンドポイントに対し、関数アプリが存在する Azure サブスクリプションとリソース グループを選択して、先ほど作成した関数アプリと関数を選択します。 **[選択の確認]** を選択します。
 
        ![エンドポイントの URL の指定](./media/custom-event-to-function/provide-endpoint.png)
-
-    6. 再び **[イベント サブスクリプションの作成]** ページで、 **[作成]** を選択します。
+    6. この手順は省略可能ですが、運用環境のシナリオについては推奨されます。 **[イベント サブスクリプションの作成]** ページで、 **[高度な機能]** タブに切り替え、 **[バッチごとの最大イベント数]** および **[優先バッチ サイズ (KB 単位)]** の値を設定します。 
+    
+        バッチ処理を使用すると、高スループットが得られます。 **[バッチごとの最大イベント数]** には、サブスクリプションでバッチに含めるイベントの最大数を設定します。 優先バッチ サイズでは、バッチ サイズとして優先される上限をキロバイト単位で設定しますが、1 つのイベントがこのしきい値を超えると、その上限を超えてしまう可能性があります。
+    
+        :::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="バッチ処理を有効にする":::
+    6. **[イベント サブスクリプションの作成]** ページで、 **[作成]** を選択します。
 
 ## <a name="send-an-event-to-your-topic"></a>トピックへのイベントの送信
 
@@ -95,12 +102,12 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 1. Azure portal で、 **[Cloud Shell]** を選択します。 Cloud Shell ウィンドウの左上隅の **[Bash]** を選択します。 
 
     ![Cloud Shell - Bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
-1. 次のコマンドを実行して、トピックの**エンドポイント**を取得します。コマンドをコピーして貼り付けた後、コマンドを実行する前に**トピック名**と**リソース グループ名**を更新してください。 
+1. 次のコマンドを実行して、トピックの **エンドポイント** を取得します。コマンドをコピーして貼り付けた後、コマンドを実行する前に **トピック名** と **リソース グループ名** を更新してください。 
 
     ```azurecli
     endpoint=$(az eventgrid topic show --name <topic name> -g <resource group name> --query "endpoint" --output tsv)
     ```
-2. 次のコマンドを実行して、カスタム トピックの**キー**を取得します。コマンドをコピーして貼り付けた後、コマンドを実行する前に**トピック名**と**リソース グループ**名を更新してください。 
+2. 次のコマンドを実行して、カスタム トピックの **キー** を取得します。コマンドをコピーして貼り付けた後、コマンドを実行する前に **トピック名** と **リソース グループ** 名を更新してください。 
 
     ```azurecli
     key=$(az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv)
@@ -120,13 +127,13 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 2 番目の例では、PowerShell を使用して、同様の手順を実行します。
 
 1. Azure portal で **[Cloud Shell]** を選択します (または `https://shell.azure.com/` にアクセスします)。 Cloud Shell ウィンドウの左上隅の **[PowerShell]** を選択します。 「Azure CLI」セクションにあるサンプルの **Cloud Shell** ウィンドウの画像を参照してください。
-2. 次の変数を設定します。 コマンドをコピーして貼り付けた後、**トピック名**と**リソース グループ名**を更新してから、次のコマンドを実行します。
+2. 次の変数を設定します。 コマンドをコピーして貼り付けた後、**トピック名** と **リソース グループ名** を更新してから、次のコマンドを実行します。
 
     ```powershell
     $resourceGroupName = <resource group name>
     $topicName = <topic name>
     ```
-3. 次のコマンドを実行して、トピックの**エンドポイント**と**キー**を取得します。
+3. 次のコマンドを実行して、トピックの **エンドポイント** と **キー** を取得します。
 
     ```powershell
     $endpoint = (Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName).Endpoint

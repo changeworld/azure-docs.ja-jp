@@ -1,17 +1,17 @@
 ---
 title: 高可用性 - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure Database for PostgreSQL - Single Server での高可用性について情報を提供します
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 16ce5b42e35ff3d650ba18aa95ab80b83fdbfdad
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: aa9f38b2cefa60a0c3341c1317cf45fbcb735301
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547683"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485445"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Azure Database for PostgreSQL - Single Server での高可用性
 Azure Database for PostgreSQL – Single Server サービスでは、[99.99 %](https://azure.microsoft.com/support/legal/sla/postgresql) のアップタイムという財務的な裏付けのあるサービス レベル アグリーメント (SLA) で、高レベルの可用性が保証されます。 Azure Database for PostgreSQL は、ユーザーが開始したコンピューティングのスケーリング操作などの計画的なイベント中や、基になるハードウェア、ソフトウェア、ネットワークの障害などの計画外のイベントが発生したときに高可用性を提供します。 Azure Database for PostgreSQL は、ほとんどの重大な状況から迅速に復旧でき、このサービスを使用するとアプリケーションのダウンタイムが事実上なくなります。
@@ -29,7 +29,7 @@ Azure Database for PostgreSQL は、高いアップタイムを必要とする�
 ## <a name="planned-downtime-mitigation"></a>計画的なダウンタイムの軽減
 Azure Database for PostgreSQL は、計画的なダウンタイム操作中に高可用性をもたらすように設計されています。 
 
-![Azure PostgreSQL でのエラスティック スケーリングのビュー](./media/concepts-high-availability/azure-postgresql-elastic-scaling.png)
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-elastic-scaling.png" alt-text="Azure PostgreSQL でのエラスティック スケーリングのビュー":::
 
 1. PostgreSQL データベース サーバーを数秒でスケールアップおよびスケールダウンします
 2. クライアントをルーティングするためのプロキシとして機能するゲートウェイが、適切なデータベース サーバーに接続します
@@ -40,8 +40,8 @@ Azure Database for PostgreSQL は、計画的なダウンタイム操作中に�
 | ------------ | ----------- |
 | <b>コンピューティングのスケールアップ/スケールダウン | ユーザーがコンピューティングのスケールアップ/ダウン操作を実行すると、スケーリングされたコンピューティング構成を使用して新しいデータベース サーバーがプロビジョニングされます。 古いデータベース サーバーでは、アクティブなチェックポイントを完了でき、クライアント接続がドレインされ、コミットされていないトランザクションが取り消され、サーバー自体がシャットダウンされます。 続いてストレージが古いデータベース サーバーからデタッチされ、新しいデータベース サーバーに接続されます。 クライアント アプリケーションが接続を再試行するか、または新しい接続を確立しようとすると、ゲートウェイはその接続要求を新しいデータベース サーバーに転送します。|
 | <b>ストレージのスケール アップ | ストレージのスケール アップはオンライン操作であるため、データベース サーバーは中断されません。|
-| <b>新しいソフトウェアのデプロイ (Azure) | 新機能のロールアウトやバグ修正プログラムは、サービスの計画的なメンテナンスの一環として自動的に行われます。 詳細については、[ドキュメント](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification)を参照し、自身の[ポータル](https://aka.ms/servicehealthpm)を確認してください。|
-| <b>マイナー バージョンのアップグレード | Azure Database for PostgreSQL では、Azure によって決定されたマイナー バージョンへの修正プログラムが自動的にデータベース サーバーに適用されます。 これは、サービスの計画的なメンテナンスの一環として行われます。 これにより、秒単位の短いダウンタイムが発生し、データベース サーバーは新しいマイナー バージョンで自動的に再起動されます。 詳細については、[ドキュメント](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification)を参照し、自身の[ポータル](https://aka.ms/servicehealthpm)を確認してください。|
+| <b>新しいソフトウェアのデプロイ (Azure) | 新機能のロールアウトやバグ修正プログラムは、サービスの計画的なメンテナンスの一環として自動的に行われます。 詳細については、[ドキュメント](./concepts-monitoring.md#planned-maintenance-notification)を参照し、自身の[ポータル](https://aka.ms/servicehealthpm)を確認してください。|
+| <b>マイナー バージョンのアップグレード | Azure Database for PostgreSQL では、Azure によって決定されたマイナー バージョンへの修正プログラムが自動的にデータベース サーバーに適用されます。 これは、サービスの計画的なメンテナンスの一環として行われます。 これにより、秒単位の短いダウンタイムが発生し、データベース サーバーは新しいマイナー バージョンで自動的に再起動されます。 詳細については、[ドキュメント](./concepts-monitoring.md#planned-maintenance-notification)を参照し、自身の[ポータル](https://aka.ms/servicehealthpm)を確認してください。|
 
 
 ##  <a name="unplanned-downtime-mitigation"></a>計画外のダウンタイムの軽減
@@ -49,7 +49,7 @@ Azure Database for PostgreSQL は、計画的なダウンタイム操作中に�
 計画外のダウンタイムは、基になるハードウェアの障害、ネットワークの問題、ソフトウェアのバグなど、予期しない障害の結果として発生する可能性があります。 データベース サーバーが予期せず停止した場合は、新しいデータベース サーバーが数秒で自動的にプロビジョニングされます。 リモート ストレージは、新しいデータベース サーバーに自動的に接続されます。 PostgreSQL エンジンは、WAL およびデータベース ファイルを使用して復旧操作を実行し、データベース サーバーを開いてクライアントが接続できるようにします。 コミットされていないトランザクションは失われ、アプリケーションが再試行する必要があります。 計画外のダウンタイムは回避できませんが、Azure Database for PostgreSQL では、データベース サーバーとストレージ レイヤーの両方で、ユーザーの介入を必要とすることなく自動的に復旧操作を実行することでダウンタイムを軽減します。 
 
 
-![Azure PostgreSQL での高可用性のビュー](./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png)
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Azure PostgreSQL でのエラスティック スケーリングのビュー":::
 
 1. 高速スケーリング機能を備えた Azure PostgreSQL サーバー。
 2. プロキシとして機能し、クライアント接続を適切なデータベース サーバーにルーティングするゲートウェイ
@@ -68,8 +68,8 @@ Azure Database for PostgreSQL は、計画的なダウンタイム操作中に�
 
 | **シナリオ** | **復旧計画** |
 | ---------- | ---------- |
-| <b>リージョンの障害 | リージョンの障害は、まれにしか発生しないイベントです。 ただし、リージョンの障害から保護する必要がある場合は、ディザスター リカバリー (DR) 用に他のリージョンで 1 つ以上の読み取りレプリカを構成できます。 (詳細については、読み取りレプリカの作成と管理に関する[この記事](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal)をご覧ください)。 リージョン レベルの障害が発生した場合は、運用データベースサーバーとして他のリージョンで構成されている読み取りレプリカを手動で昇格できます。 |
-| <b> 論理/ユーザー エラー | 誤って破棄されたテーブルや間違って更新されたデータなどのユーザーエラーからの復旧には、エラーが発生する直前の時間までデータを復元および復旧することによる、[特定の時点への復旧](https://docs.microsoft.com/azure/postgresql/concepts-backup) (PITR) の実行が含まれます。<br> <br>  データベース サーバー内のすべてのデータベースではなく、データベースまたは特定のテーブルのサブセットのみを復元する場合は、新しいインスタンスでデータベース サーバーを復元し、[pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html) を使用してテーブルをエクスポートし、[pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) を使用してそれらのテーブルをデータベースに復元することができます。 |
+| <b>リージョンの障害 | リージョンの障害は、まれにしか発生しないイベントです。 ただし、リージョンの障害から保護する必要がある場合は、ディザスター リカバリー (DR) 用に他のリージョンで 1 つ以上の読み取りレプリカを構成できます。 (詳細については、読み取りレプリカの作成と管理に関する[この記事](./howto-read-replicas-portal.md)をご覧ください)。 リージョン レベルの障害が発生した場合は、運用データベースサーバーとして他のリージョンで構成されている読み取りレプリカを手動で昇格できます。 |
+| <b> 論理/ユーザー エラー | 誤って破棄されたテーブルや間違って更新されたデータなどのユーザーエラーからの復旧には、エラーが発生する直前の時間までデータを復元および復旧することによる、[特定の時点への復旧](./concepts-backup.md) (PITR) の実行が含まれます。<br> <br>  データベース サーバー内のすべてのデータベースではなく、データベースまたは特定のテーブルのサブセットのみを復元する場合は、新しいインスタンスでデータベース サーバーを復元し、[pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html) を使用してテーブルをエクスポートし、[pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) を使用してそれらのテーブルをデータベースに復元することができます。 |
 
 
 
