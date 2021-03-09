@@ -80,4 +80,4 @@ Azure Storage では、Azure Monitor の次のメトリック ディメンショ
 ## <a name="see-also"></a>関連項目
 
 - Azure Storage の監視の詳細については、「[Azure Table Storage の監視](monitor-table-storage.md)」を参照してください。
-- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。
+- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/essentials/monitor-azure-resource.md)」を参照してください。
