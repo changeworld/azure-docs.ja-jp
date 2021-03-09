@@ -5,15 +5,15 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/12/2021
+ms.date: 03/04/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 54c29d76757916a8eea54af16babdae21b809a19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a2f6a3fd8d36bb54773db21e3d36dab0060bae57
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750190"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178368"
 ---
 ## <a name="disk-level-bursting"></a>ディスクレベルでのバースト
 
@@ -63,15 +63,14 @@ ms.locfileid: "101750190"
 
 クレジットベースのバーストは、Azure パブリック クラウド、Azure Government クラウド、および Azure China クラウドのすべてのリージョンで、ディスク サイズ P20 以下で利用できます。 既定では、ディスク バーストは、サポートされているディスク サイズの新しいデプロイと既存のデプロイすべてで有効になっています。 VM レベルのバーストでは、クレジットベースのバーストだけが使用されます。
 
-### <a name="virtual-machine-level-bursting"></a>仮想マシンレベルのバースト
-VM レベルのバーストのサポートは、パブリック クラウド内のすべてのリージョンで、サポートされている以下のサイズを対象に有効になっています。 
-- [Lsv2 シリーズ](../articles/virtual-machines/lsv2-series.md)
+## <a name="virtual-machine-level-bursting"></a>仮想マシンレベルのバースト
 
-米国中西部では、サポートされている以下のサイズでも、VM レベルのバーストを利用できます。
+VM レベルのバーストでは、バーストのクレジットベース モデルのみが使用され、これをサポートするすべての VM で既定で有効になっています。
+
+サポートされている次のサイズでは、Azure パブリック クラウド内のすべてのリージョンで、VM レベルでのバーストが有効になっています。 
+- [Lsv2 シリーズ](../articles/virtual-machines/lsv2-series.md)
 - [Dv3 および Dsv3 シリーズ](../articles/virtual-machines/dv3-dsv3-series.md)
 - [Ev3 および Esv3 シリーズ](../articles/virtual-machines/ev3-esv3-series.md)
-
-バーストをサポートしている仮想マシンでは、バーストが既定で有効になっています。
 
 ## <a name="bursting-flow"></a>バースティングのフロー
 

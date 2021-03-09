@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 302e0dc79d13eedebf810df042dc31f78b173fb6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 324919c1d085302e675e0bc9a370ce35f52a0f1d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747551"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109050"
 ---
 <!-- advanced for windows -->
 
@@ -70,10 +70,14 @@ ms.locfileid: "101747551"
 
 1. デプロイが完了したら、プロンプトで **[Web サイトの参照]** を選択して、新しくデプロイした Web アプリを表示します。
 
-<br>
+<br/>
 <details>
-<summary>トラブルシューティング</summary>
+<summary><strong>トラブルシューティング</strong></summary>
+
+これらの手順を完了できない場合は、次のことを確認してください。
+
 * 必ず、PORT 環境変数 (`process.env.PORT`) に指定されたポートで自分のアプリケーションがリッスンするようにしてください。
+
 * **"このディレクトリまたはページを表示するアクセス許可がありません"** というエラーが表示された場合、おそらくアプリケーションが正常に起動できていません。 ログ出力を確認し、エラーを探して修正してください。 
 
 </details>
@@ -83,5 +87,5 @@ ms.locfileid: "101747551"
 [問題を報告する](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&prepare-your-environment)
 
 
-<br>
+<br/>
 <hr/>

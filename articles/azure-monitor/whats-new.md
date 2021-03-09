@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor のドキュメントの最新情報
 description: 毎月更新される Azure Monitor のドキュメントに対する重要な更新。
-ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2021
-ms.openlocfilehash: b21e5ea8e25844e3e025915b0b9f15162c642f25
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dd6c44587ce3f4e2b5de940ef831a20a4079c4ef
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713441"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051924"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
@@ -721,7 +720,7 @@ VM insights の一般提供に関する全般的な更新
 
 - [Azure Monitor エージェントの概要](agents/agents-overview.md) - 各エージェントの固有の機能をより明確にするために表を再構築しました。
 - [Azure Diagnostics 拡張機能の概要](agents/diagnostics-extension-overview.md) - 完全な書き直し。
-- [Azure Monitor で IIS 用に Blob Storage を使用し、イベント用にテーブル ストレージを使用する](essentials/diagnostics-extension-logs.md) - 更新と明確化のための全体的な書き直し。
+- [Azure Monitor で IIS 用に Blob Storage を使用し、イベント用にテーブル ストレージを使用する](agents/diagnostics-extension-logs.md) - 更新と明確化のための全体的な書き直し。
 - [Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成](agents/diagnostics-extension-windows-install.md) - 新しい記事。 
 - [Windows Diagnostics 拡張機能のスキーマ](agents/diagnostics-extension-schema-windows.md) - 再構成。
 - [Windows Azure Diagnostics 拡張機能から Azure Event Hubs にデータを送信する](agents/diagnostics-extension-stream-event-hubs.md) - 完全な書き直しおよび更新。

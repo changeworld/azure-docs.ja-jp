@@ -7,12 +7,12 @@ ms.date: 11/23/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: e6675dbc4381a3a21e9daa651948af17f1d70d7d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4e2e34d73bc3048c587d7c0505f4978dd638370a
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747530"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180277"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>クイック スタート:Azure に ASP.NET Core Web アプリを作成する
 
@@ -20,7 +20,7 @@ ms.locfileid: "101747530"
 
 このクイックスタートでは、初めての ASP.NET Core Web アプリを作成し、デプロイする方法について説明します。 <abbr title="Web アプリケーション、REST API、およびモバイル バックエンド アプリケーションをホストするための HTTP ベースのサービス。">Azure App Service</abbr>. App Service は .NET 5.0 のアプリをサポートします。
 
-完了すると、デプロイされたサンプル ASP.NET Core アプリケーションを含む App Service アプリと App Service プランで構成される Azure リソース グループが完成します。 <abbr title="1 つの単位として管理できる関連する Azure リソースの論理コンテナー。">resource group</abbr>, consisting of an <abbr title="アプリをホストする Web サーバー ファームの場所、サイズ、機能を指定するプラン。">App Service プラン</abbr>  および  <abbr title="Web アプリの表現。アプリのコード、DNS ホスト名、証明書、関連リソースが含まれています。">App Service アプリ</abbr> with a deployed sample ASP.NET Core application.
+完了すると、デプロイされたサンプル ASP.NET Core アプリケーションを含む App Service アプリと App Service プランで構成される Azure リソース グループが完成します。 <abbr title="1 つの単位として管理できる関連する Azure リソースの論理コンテナー。">resource group</abbr>構成する <abbr title="アプリをホストする Web サーバー ファームの場所、サイズ、機能を指定するプラン。">App Service プラン</abbr>  および  <abbr title="Web アプリの表現。アプリのコード、DNS ホスト名、証明書、関連リソースが含まれています。">App Service アプリ</abbr> デプロイされたサンプル ASP.NET Core アプリケーションを使用します。
 
 <hr/> 
 
@@ -266,7 +266,7 @@ az login
     <ul>
     <li>既定のリソース グループを作成する。</li>
     <li>既定の App Service プランを作成する。</li>
-    <li>指定された名前で <a href="/cli/azure/webapp?view=azure-cli-latest#az-webapp-create">App Service アプリを作成</a>する。</li>
+    <li>指定された名前で <a href="/cli/azure/webapp#az-webapp-create">App Service アプリを作成</a>する。</li>
     <li>現在の作業ディレクトリからアプリにファイルを <a href="/azure/app-service/deploy-zip">zip してデプロイ</a>する。</li>
     <li>実行中、リソースの作成、ログ記録、ZIP デプロイに関するメッセージが表示されます。</li>
     </ul>
