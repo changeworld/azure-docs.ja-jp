@@ -1,6 +1,6 @@
 ---
 title: アクティビティを使用して Databricks Notebook を実行する
-description: Azure Data Factory で Databricks Notebook アクティビティを使用して、Databricks ジョブ クラスターに対して Databricks ノートブックを実行する方法について説明します。
+description: Azure Data Factory で Databricks Notebook アクティビティを使用して、Databricks ジョブ クラスターに対して Databricks Notebook を実行する方法について説明します。
 ms.service: data-factory
 ms.topic: tutorial
 ms.author: abnarain
@@ -14,11 +14,11 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 02/14/2021
 ms.locfileid: "100374084"
 ---
-# <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory で Databricks Notebook アクティビティを使用して Databricks ノートブックを実行する
+# <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory で Databricks Notebook アクティビティを使用して Databricks Notebook を実行する
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、Azure Portal を使用して、Databricks ジョブ クラスターに対して Databricks ノートブックを実行する Azure Data Factory パイプラインを作成します。 また、Databricks ノートブックの実行中に、Azure Data Factory パラメーターを渡します。
+このチュートリアルでは、Azure Portal を使用して、Databricks ジョブ クラスターに対して Databricks Notebook を実行する Azure Data Factory パイプラインを作成します。 また、Databricks Notebook の実行中に、Azure Data Factory パラメーターを渡します。
 
 このチュートリアルでは、以下の手順を実行します。
 
