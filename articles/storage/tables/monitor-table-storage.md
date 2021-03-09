@@ -278,7 +278,7 @@ Azure Table Storage のメトリックは、次の名前空間にあります。
 - Microsoft.Storage/storageAccounts
 - Microsoft.Storage/storageAccounts/tableServices
 
-Azure Monitor でサポートされるすべてのメトリックの一覧 (Azure Table Storage を含む) については、[Azure Monitor でサポートされるメトリック](../../azure-monitor/platform/metrics-supported.md)に関するページを参照してください。
+Azure Monitor でサポートされるすべてのメトリックの一覧 (Azure Table Storage を含む) については、[Azure Monitor でサポートされるメトリック](../../azure-monitor/essentials/metrics-supported.md)に関するページを参照してください。
 
 
 ### <a name="accessing-metrics"></a>メトリックにアクセスする
@@ -597,5 +597,5 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 ## <a name="next-steps"></a>次のステップ
 
 - Azure Table Storage によって作成されるログおよびメトリックのリファレンスについては、「[Azure Table Storage 監視データのリファレンス](monitor-table-storage-reference.md)」を参照してください。
-- Azure リソースの監視の詳細については、「[Azure Monitor で Azure リソースを管理する](../../azure-monitor/insights/monitor-azure-resource.md)」をご覧ください。
+- Azure リソースの監視の詳細については、「[Azure Monitor で Azure リソースを管理する](../../azure-monitor/essentials/monitor-azure-resource.md)」をご覧ください。
 - メトリックの移行の詳細については、「[Azure Storage メトリックの移行](../common/storage-metrics-migration.md)」をご覧ください。
