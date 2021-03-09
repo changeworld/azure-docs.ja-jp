@@ -8,16 +8,16 @@ metadata:
   ms.service: sql-managed-instance
   ms.subservice: operations
   ms.topic: landing-page
-  author: MashaMSFT
-  ms.author: mathoma
-  ms.reviewer: carlrab
+  author: stevestein
+  ms.author: sstein
+  ms.reviewer: 
   ms.date: 05/27/2020
-  ms.openlocfilehash: 6c02f1f12ed32cbced046f9937d4b8a28d74f97a
-  ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+  ms.openlocfilehash: 7d1b6f9f79226cac4e0956d551943e40ac178387
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/19/2020
-  ms.locfileid: "88590423"
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101655872"
 landingContent:
 - title: Azure SQL Managed Instance
   linkLists:
@@ -72,7 +72,7 @@ landingContent:
     - text: 初心者向け Azure SQL
       url: https://aka.ms/azuresql4beginners
     - text: Azure SQL の基礎
-      url: https://docs.microsoft.com/learn/paths/azure-sql-fundamentals/
+      url: /learn/paths/azure-sql-fundamentals/
     - text: Azure SQL のハンズオン ラボ
       url: https://aka.ms/asqlworkshop
     - text: Azure SQL の短期集中講座
@@ -106,11 +106,11 @@ landingContent:
     - text: Transact-SQL (T-SQL)
       url: /sql/t-sql/language-reference
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/sql
+      url: /cli/azure/sql
     - text: PowerShell
-      url: https://docs.microsoft.com/powershell/module/az.sql
+      url: /powershell/module/az.sql
     - text: REST API
-      url: https://docs.microsoft.com/rest/api/sql/
+      url: /rest/api/sql/
 - title: ビジネス継続性
   linkLists:
   - linkListType: how-to-guide
@@ -135,3 +135,19 @@ landingContent:
       url: instance-pools-overview.md
     - text: 構成
       url: instance-pools-configure.md
+- title: Azure の計画メンテナンス
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure メンテナンス イベントの計画
+      url: ../database/planned-maintenance.md
+    - text: メンテナンス期間
+      url: ../database/maintenance-window.md
+    - text: リソース ヘルス
+      url: ../database/resource-health-to-troubleshoot-connectivity.md
+  - linkListType: how-to-guide
+    links:
+    - text: メンテナンス期間
+      url: ../database/maintenance-window-configure.md
+    - text: メンテナンス期間の通知
+      url: ../database/advance-notifications.md

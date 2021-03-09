@@ -2,13 +2,13 @@
 title: コンテナー イメージのインポート
 description: Azure API を使用することで、Docker コマンドを実行することなく、Azure コンテナー レジストリにコンテナー イメージをインポートします。
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 66c3a8b19e2288c1f8720dd4fe79f348a11f052e
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.date: 01/15/2021
+ms.openlocfilehash: e6976f854b449f68faedd51878c2f3a7fe75cb0f
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660497"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988251"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>コンテナー レジストリにコンテナー イメージをインポートする
 
@@ -18,7 +18,7 @@ Azure Container Registry では、複数の一般的なシナリオに対応し�
 
 * パブリック レジストリからインポートする
 
-* (同じまたは別の Azure サブスクリプション内にある) 別の Azure コンテナー レジストリからインポートする
+* (同じまたは別の Azure サブスクリプションまたはテナント内にある) 別の Azure コンテナー レジストリからインポートする
 
 * Azure 以外のプライベート コンテナー レジストリからインポートする
 
@@ -28,13 +28,18 @@ Azure コンテナー レジストリにイメージをインポートするや�
 
 * マルチ アーキテクチャ イメージ (公式の Docker イメージなど) をインポートすると、マニフェストの一覧で指定されたすべてのアーキテクチャとプラットフォームのイメージがコピーされます。
 
-* ソースとターゲットのレジストリにアクセスするとき、レジストリのパブリック エンドポイントを使用する必要はありません。
+* ターゲット レジストリへのアクセスに、レジストリのパブリック エンドポイントを使用する必要はありません。
 
 コンテナー イメージをインポートするには、Azure CLI を Azure Cloud Shell またはローカルで実行する必要があります (バージョン 2.0.55 以降を推奨します)。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
 > [!NOTE]
 > 複数の Azure リージョンに同じコンテナー イメージを配布する必要がある場合、Azure Container Registry では [geo レプリケーション](container-registry-geo-replication.md)もサポートされます。 レジストリの geo レプリケーション (Premium サービス レベルが必要) を行うと、1 つのレジストリに含まれる同一のイメージとタグ名を、複数のリージョンで使用できます。
 >
+
+> [!IMPORTANT]
+> 2 つの Azure コンテナー レジストリ間でのイメージのインポートに対する変更は、2021 年 1 月の時点で導入されました。
+> * ネットワーク制限付きの Azure コンテナー レジストリとの間でインポートを行うには、ネットワークをバイパスできるように、制限付きレジストリで [**信頼されたサービスによるアクセスを許可**](allow-access-trusted-services.md)する必要があります。 既定では、この設定は有効で、インポートが可能になっています。 プライベート エンドポイントまたはレジストリ ファイアウォール規則を使用する新しく作成されたレジストリで設定が有効になっていない場合、インポートは失敗します。 
+> * インポートのソースまたはターゲットとして使用される既存のネットワーク制限付き Azure コンテナー レジストリでは、このネットワーク セキュリティ機能を有効にすることは、任意ですが推奨されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,13 +68,15 @@ az acr repository show-manifests \
   --repository hello-world
 ```
 
-次の例では、Docker Hub の `tensorflow` リポジトリからパブリック イメージをインポートします。
+[Docker Hub アカウント](https://www.docker.com/pricing)がある場合は、Docker Hub からイメージをインポートするときに資格情報を使用することをお勧めします。 Docker Hub のユーザー名とパスワード、または[個人用アクセストークン](https://docs.docker.com/docker-hub/access-tokens/)をパラメーターとして `az acr import` に渡します。 次の例では、Docker Hub 資格情報を使用して、Docker Hub の `tensorflow` リポジトリからパブリック イメージをインポートします。
 
 ```azurecli
 az acr import \
   --name myregistry \
   --source docker.io/tensorflow/tensorflow:latest-gpu \
   --image tensorflow:latest-gpu
+  --username <Docker Hub user name>
+  --password <Docker Hub token>
 ```
 
 ### <a name="import-from-microsoft-container-registry"></a>Microsoft Container Registry からインポートする
@@ -83,15 +90,17 @@ az acr import \
 --image servercore:ltsc2019
 ```
 
-## <a name="import-from-another-azure-container-registry"></a>別の Azure コンテナー レジストリからインポートする
+## <a name="import-from-an-azure-container-registry-in-the-same-ad-tenant"></a>同じ AD テナント内の Azure コンテナー レジストリからインポートする
 
-統合された Azure Active Directory アクセス許可を使用して、別の Azure コンテナー レジストリからイメージをインポートできます。
+統合された Azure Active Directory アクセス許可を使用して、同じ AD テナント内の Azure コンテナー レジストリからイメージをインポートできます。
 
 * 使用する ID には、ソース レジストリからの読み取り (閲覧者ロール) と、ターゲット レジストリへのインポート (共同作成者ロールか、importImage アクションを許可する[カスタム ロール](container-registry-roles.md#custom-roles)) のための Azure Active Directory アクセス許可が付与されている必要があります。
 
 * レジストリの場所は、同じ Active Directory テナント内であれば、同じ Azure サブスクリプション内でも、別の Azure サブスクリプション内でも構いません。
 
 * ソース レジストリへの[パブリック アクセス](container-registry-access-selected-networks.md#disable-public-network-access)は無効になっている場合があります。 パブリック アクセスが無効になっている場合、レジストリ ログイン サーバー名ではなく、リソース ID でソース レジストリを指定します。
+
+* ソース レジストリまたはターゲット レジストリにプライベート エンドポイントがある場合、またはレジストリ ファイアウォール規則が適用される場合は、制限付きレジストリでネットワークにアクセスできるよう[信頼されたサービスが許可されている](allow-access-trusted-services.md)ことを確認します。
 
 ### <a name="import-from-a-registry-in-the-same-subscription"></a>同じサブスクリプション内のレジストリからインポートする
 
@@ -136,7 +145,7 @@ az acr import \
 
 ### <a name="import-from-a-registry-using-service-principal-credentials"></a>サービス プリンシパル資格情報を使用してレジストリからインポートする
 
-Active Directory アクセス許可を使用してアクセスすることができないレジストリからインポートするには、サービス プリンシパル資格情報を使用できます (該当する場合)。 ソース レジストリへの ACRPull アクセス許可を持つ Active Directory [サービス プリンシパル](container-registry-auth-service-principal.md)の appID とパスワードを指定します。 サービス プリンシパルは、イメージをレジストリにインポートする必要のある無人のシステム (ビルド システムなど) で使用できます。
+統合された Active Directory アクセス許可を使用したアクセスができないレジストリからインポートするには、ソース レジストリに対してサービス プリンシパル資格情報を使用できます (該当する場合)。 ソース レジストリへの ACRPull アクセス許可を持つ Active Directory [サービス プリンシパル](container-registry-auth-service-principal.md)の appID とパスワードを指定します。 サービス プリンシパルは、イメージをレジストリにインポートする必要のある無人のシステム (ビルド システムなど) で使用できます。
 
 ```azurecli
 az acr import \
@@ -144,12 +153,25 @@ az acr import \
   --source sourceregistry.azurecr.io/sourcerrepo:tag \
   --image targetimage:tag \
   --username <SP_App_ID> \
-  –-password <SP_Passwd>
+  --password <SP_Passwd>
+```
+
+## <a name="import-from-an-azure-container-registry-in-a-different-ad-tenant"></a>別の AD テナント内の Azure コンテナー レジストリからインポートする
+
+別の Azure Active Directory テナント内の Azure コンテナー レジストリからインポートするには、ログイン サーバー名でソース レジストリを指定し、レジストリへのプル アクセスを有効にするユーザー名とパスワードの資格情報を指定します。 たとえば、[リポジトリ スコープのトークン](container-registry-repository-scoped-permissions.md)とパスワード、またはソース レジストリへの ACRPull アクセス許可を持つ Active Directory [サービス プリンシパル](container-registry-auth-service-principal.md)の appID とパスワードを指定します。 
+
+```azurecli
+az acr import \
+  --name myregistry \
+  --source sourceregistry.azurecr.io/sourcerrepo:tag \
+  --image targetimage:tag \
+  --username <SP_App_ID> \
+  --password <SP_Passwd>
 ```
 
 ## <a name="import-from-a-non-azure-private-container-registry"></a>Azure 以外のプライベート コンテナー レジストリからインポートする
 
-プライベート レジストリからイメージをインポートするには、レジストリへのプル アクセスを有効にする資格情報を指定します。 たとえば、次のようにして、プライベート Docker レジストリからイメージをプルします。 
+Azure 以外のプライベート レジストリからイメージをインポートするには、レジストリへのプル アクセスを有効にする資格情報を指定します。 たとえば、次のようにして、プライベート Docker レジストリからイメージをプルします。 
 
 ```azurecli
 az acr import \

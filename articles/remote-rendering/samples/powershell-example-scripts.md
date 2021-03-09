@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fbac172952c9feea92341dbc028567235b9250bc
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: cb8cc98a020cb382a6941c1e410eab4543594629
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89075275"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009757"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell スクリプトの例
 
@@ -22,18 +22,21 @@ Azure Remote Rendering には、次の 2 つの REST API が用意されてい�
 
 [ARR サンプル リポジトリ](https://github.com/Azure/azure-remote-rendering)には、*Scripts* フォルダーに、サービスの REST API を操作するためのサンプル スクリプトがあります。 この記事では、その使用方法について説明します。
 
+> [!TIP]
+> また、サービスと対話するための [ARRT と呼ばれる UI ベースのツール](azure-remote-rendering-asset-tool.md)もあります。これは、スクリプトの使用に代わる便利な方法です。 ![ARRT](./media/azure-remote-rendering-asset-tool.png "ARRT のスクリーンショット")
+
 > [!CAUTION]
-REST API 関数を頻繁に呼び出すと、サーバーが調整され、最終的にエラーが返されます。 この場合の http エラーコード ID は 429 ("要求が多すぎます") です。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒**の間隔が必要です。
+> REST API 関数を頻繁に呼び出すと、サーバーが調整され、最終的にエラーが返されます。 この場合の http エラーコード ID は 429 ("要求が多すぎます") です。 経験則として、**次の呼び出しとの間に 5 秒から 10 秒** の間隔が必要です。
 
 ## <a name="prerequisites"></a>前提条件
 
-サンプル スクリプトを実行するには、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) の機能設定が必要です。
+サンプル スクリプトを実行するには、[Azure PowerShell](/powershell/azure/) の機能設定が必要です。
 
 1. Azure PowerShell をインストールします。
     1. 管理者権限で PowerShell ウィンドウを開きます。
     1. `Install-Module -Name Az -AllowClobber` を実行します。
 
-1. スクリプトの実行に関するエラーが発生した場合は、[実行ポリシー](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)が適切に設定されていることを確認してください。
+1. スクリプトの実行に関するエラーが発生した場合は、[実行ポリシー](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)が適切に設定されていることを確認してください。
     1. 管理者権限で PowerShell ウィンドウを開きます。
     1. `Set-ExecutionPolicy -ExecutionPolicy Unrestricted` を実行します。
 
@@ -44,9 +47,9 @@ REST API 関数を頻繁に呼び出すと、サーバーが調整され、最�
     1. `Connect-AzAccount` を実行し、画面の指示に従います。
 
     > [!NOTE]
-    > 組織に複数のサブスクリプションがある場合は、SubscriptionId および Tenant 引数の指定が必要になることがあります。 詳細については、[Connect-AzAccount のドキュメント](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)を参照してください。
+    > 組織に複数のサブスクリプションがある場合は、SubscriptionId および Tenant 引数の指定が必要になることがあります。 詳細については、[Connect-AzAccount のドキュメント](/powershell/module/az.accounts/connect-azaccount)を参照してください。
 
-1. [Azure Remote Rendering GithHub リポジトリ](https://github.com/Azure/azure-remote-rendering)から *Scripts* フォルダーをダウンロードします。
+1. [Azure Remote Rendering GitHub リポジトリ](https://github.com/Azure/azure-remote-rendering)から *Scripts* フォルダーをダウンロードします。
 
 ## <a name="configuration-file"></a>構成ファイル
 
@@ -118,19 +121,19 @@ REST API 関数を頻繁に呼び出すと、サーバーが調整され、最�
 
 このスクリプトは、[セッション管理 REST API](../how-tos/session-rest-api.md) を呼び出して、指定された設定でレンダリング VM を起動します。 成功すると、*sessionId* が取得されます。 その後、セッションの準備が完了するか、エラーが発生するまで、セッションのプロパティがポーリングされます。
 
-**代替の構成**ファイルを使用するには、次のようにします。
+**代替の構成** ファイルを使用するには、次のようにします。
 
 ```PowerShell
 .\RenderingSession.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-構成ファイルから**個々の設定をオーバーライドする**ことができます。
+構成ファイルから **個々の設定をオーバーライドする** ことができます。
 
 ```PowerShell
 .\RenderingSession.ps1 -Region <region> -VmSize <vmsize> -MaxLeaseTime <hh:mm:ss>
 ```
 
-**ポーリングせずにセッションの開始のみを行う**には、以下を使用します。
+**ポーリングせずにセッションの開始のみを行う** には、以下を使用します。
 
 ```PowerShell
 .\RenderingSession.ps1 -CreateSession
@@ -216,19 +219,19 @@ Shared Access Signature を生成する必要がないため、変換サービ�
 
 ### <a name="additional-command-line-options"></a>追加のコマンド ライン オプション
 
-**代替の構成**ファイルを使用するには、次のようにします。
+**代替の構成** ファイルを使用するには、次のようにします。
 
 ```PowerShell
 .\Conversion.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-**ポーリングせずにモデルの変換の開始のみを行う**には、以下を使用できます。
+**ポーリングせずにモデルの変換の開始のみを行う** には、以下を使用できます。
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset
 ```
 
-次のコマンド ライン スイッチを使用して、構成ファイルから**個々の設定をオーバーライドする**ことができます。
+次のコマンド ライン スイッチを使用して、構成ファイルから **個々の設定をオーバーライドする** ことができます。
 
 * **Id:** GetConversionStatus で使用される ConversionId
 * **ArrAccountId:** accountSettings の arrAccountId

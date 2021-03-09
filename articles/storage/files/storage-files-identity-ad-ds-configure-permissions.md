@@ -5,24 +5,46 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 5e293bb98405affd824d4bbc50b6f24c5a0e3c11
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 02b8d72ab88f9eca2e1fac4858c14826dae57dbe
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999617"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629174"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>パート 3: SMB 経由でディレクトリとファイル レベルのアクセス許可を構成する 
 
 この記事を開始する前に、前の記事「[ID に共有レベルのアクセス許可を割り当てる](storage-files-identity-ad-ds-assign-permissions.md)」を完了し、共有レベルのアクセス許可が確実に設定されているようにしてください。
 
-RBAC に共有レベルのアクセス許可を割り当てたら、詳細なアクセス制御を活用するために、ルート、ディレクトリ、またはファイル レベルで適切な Windows ACL を構成する必要があります。 RBAC 共有レベルのアクセス許可は、ユーザーが共有にアクセスできるかどうかを決定する高レベルのゲートキーパーと考えてください。 一方、Windows ACL は、さらに細かなレベルで機能し、ディレクトリまたはファイル レベルでユーザーが実行できる操作を決定します。 ユーザーがファイルまたはディレクトリにアクセスしようとしたときに、共有レベルとファイル/ディレクトリ レベルの両方のアクセス許可が適用されます。したがって、両方に違いがある場合は、最も制限の厳しい方だけが適用されます。 たとえば、ユーザーがファイル レベルで読み取り/書き込みアクセス権を持っているが、共有レベルでは読み取りアクセス権しかない場合は、そのファイルは読み取ることしかできません。 同じことはこの逆にも当てはまります。ユーザーが共有レベルで読み取り/書き込みアクセス権を持っていても、ファイル レベルでは読み取りアクセス権しか持っていない場合は、やはりファイルを読み取ることしかできません。
+Azure RBAC によって共有レベルのアクセス許可を割り当てたら、詳細なアクセス制御を活用するために、ルート、ディレクトリ、またはファイル レベルで適切な Windows ACL を構成する必要があります。 Azure RBAC 共有レベルのアクセス許可は、ユーザーが共有にアクセスできるかどうかを決定する高レベルのゲートキーパーと考えてください。 一方、Windows ACL は、さらに細かなレベルで機能し、ディレクトリまたはファイル レベルでユーザーが実行できる操作を決定します。 ユーザーがファイルまたはディレクトリにアクセスしようとしたときに、共有レベルとファイル/ディレクトリ レベルの両方のアクセス許可が適用されます。したがって、両方に違いがある場合は、最も制限の厳しい方だけが適用されます。 たとえば、ユーザーがファイル レベルで読み取り/書き込みアクセス権を持っているが、共有レベルでは読み取りアクセス権しかない場合は、そのファイルは読み取ることしかできません。 同じことはこの逆にも当てはまります。ユーザーが共有レベルで読み取り/書き込みアクセス権を持っていても、ファイル レベルでは読み取りアクセス権しか持っていない場合は、やはりファイルを読み取ることしかできません。
+
+## <a name="azure-rbac-permissions"></a>Azure RBAC アクセス許可
+
+次の表は、この構成に関連する Azure RBAC アクセス許可を示しています。
+
+
+| 組み込みのロール  | NTFS アクセス許可  | 結果のアクセス  |
+|---------|---------|---------|
+|記憶域ファイル データの SMB 共有の閲覧者 | フル コントロール、変更、読み取り、書き込み、実行 | 読み取り & 実行  |
+|     |   Read |     Read  |
+|記憶域ファイル データの SMB 共有の共同作成者  |  フル コントロール    |  変更、読み取り、書き込み、実行 |
+|     |  変更         |  変更    |
+|     |  読み取り & 実行 |  読み取り & 実行 |
+|     |  Read           |  Read    |
+|     |  Write          |  Write   |
+|記憶域ファイル データの SMB 共有の管理者特権共同作成者 | フル コントロール  |  変更、読み取り、書き込み、編集、実行 |
+|     |  変更          |  変更 |
+|     |  読み取り & 実行  |  読み取り & 実行 |
+|     |  Read            |  Read   |
+|     |  Write           |  Write  |
+
+
 
 ## <a name="supported-permissions"></a>サポートされているアクセス許可
 
-Azure Files では、基本的な Windows ACL と詳細な Windows ACL で構成される完全なセットをサポートします。 Azure ファイル共有内のディレクトリとファイルの Windows ACL を表示および構成するには、共有をマウントしてから、Windows エクスプローラーを使用するか、Windows の [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) コマンドを実行するか、または [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl) コマンドを実行します。 
+Azure Files では、基本的な Windows ACL と詳細な Windows ACL で構成される完全なセットをサポートします。 Azure ファイル共有内のディレクトリとファイルの Windows ACL を表示および構成するには、共有をマウントしてから、Windows エクスプローラーを使用するか、Windows の [icacls](/windows-server/administration/windows-commands/icacls) コマンドを実行するか、または [Set-ACL](/powershell/module/microsoft.powershell.security/set-acl) コマンドを実行します。 
 
 スーパーユーザー アクセス許可を持つ ACL を構成するには、ドメインに参加している VM からのストレージ アカウント キーを使って共有をマウントする必要があります。 コマンド プロンプトから Azure ファイル共有をマウントし、Windows ACL を構成するには、次のセクションの説明に従ってください。
 
@@ -63,7 +85,7 @@ else
 
 ```
 
-Azure Files への接続で問題が発生した場合は、[Windows での Azure Files マウント エラーに対して発行したトラブルシューティング ツール](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)に関するページをご覧ください。 また、ポート 445 がブロックされている場合のシナリオを回避するための[ガイダンス](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access)も提供されています。 
+Azure Files への接続で問題が発生した場合は、[Windows での Azure Files マウント エラーに対して発行したトラブルシューティング ツール](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)に関するページをご覧ください。 また、ポート 445 がブロックされている場合のシナリオを回避するための[ガイダンス](./storage-files-faq.md#on-premises-access)も提供されています。 
 
 ## <a name="configure-windows-acls"></a>Windows ACL を構成する
 
@@ -92,7 +114,7 @@ Windows エクスプローラーを使用して、ルート ディレクトリ�
 icacls <mounted-drive-letter>: /grant <user-email>:(f)
 ```
 
-icacls を使用して Windows ACL を設定する方法や、サポートされるさまざまな種類のアクセス許可の詳細については、[コマンド ライン リファレンスの icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) に関するページをご覧ください。
+icacls を使用して Windows ACL を設定する方法や、サポートされるさまざまな種類のアクセス許可の詳細については、[コマンド ライン リファレンスの icacls](/windows-server/administration/windows-commands/icacls) に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

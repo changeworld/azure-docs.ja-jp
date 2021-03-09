@@ -6,11 +6,11 @@ ms.topic: how-to
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 ms.openlocfilehash: 16e7f9a6c36ea42e1d0a4144e680baebee5a6c21
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073086"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009468"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>SQL Server Management Studio で Azure Blockchain Workbench データを使用します
 
@@ -22,8 +22,8 @@ Microsoft SQL Server Management Studio では、Azure Blockchain ワークベン
 
 ## <a name="connecting-sql-server-management-studio-to-data-in-azure-blockchain-workbench"></a>SQL Server Management Studio を Azure Blockchain Workbench データに接続します
 
-1. SQL Server Management Studio を開き、**接続**を選択します。
-2. **データベース エンジン**を選択します。
+1. SQL Server Management Studio を開き、**接続** を選択します。
+2. **データベース エンジン** を選択します。
 
     ![データベース エンジン](./media/data-sql-management-studio/database-engine.png)
 
@@ -41,8 +41,8 @@ Microsoft SQL Server Management Studio では、Azure Blockchain ワークベン
 6. オブジェクト エクスプローラーのデータベースビューのいずれかを右クリックします。
 7. **[スクリプトビュー]** を選択します。
 8. **[SELECT]** を選択します。
-9. **新しいクエリ エディター ウィンドウ**を選択します。
-10. **新しいクエリ**を選択して、新しいクエリを作成することができますです。
+9. **新しいクエリ エディター ウィンドウ** を選択します。
+10. **新しいクエリ** を選択して、新しいクエリを作成することができますです。
 
 ## <a name="next-steps"></a>次のステップ
 

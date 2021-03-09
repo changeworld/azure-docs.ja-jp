@@ -4,18 +4,18 @@ description: Azure のインスタント リストア機能と、VM バックア
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: ddc8e8fa460943c09f80ebb462b1dbd578f9b23b
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 147fadc92429157ed2f9ba3eb68297a3e1d08d24
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892628"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96014450"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 
 > [!NOTE]
-> ユーザーからのフィードバックに基づき、Azure Stack 機能との混同を避けるため、名前を **VM バックアップ スタック V2** から**インスタント リストア**に変更しています。
-> Azure のすべてのバックアップ ユーザーは、**インスタント リストア**にアップグレードされました。
+> ユーザーからのフィードバックに基づき、Azure Stack 機能との混同を避けるため、名前を **VM バックアップ スタック V2** から **インスタント リストア** に変更しています。
+> すべての Azure Backup ユーザーは、**インスタント リストア** にアップグレードされました。
 
 インスタント リストアの新しいモデルでは、次の機能が強化されています。
 
@@ -24,7 +24,7 @@ ms.locfileid: "88892628"
 * 最大 32 TB のディスク サイズがサポートされます。 Azure Backup では、ディスクのサイズ変更は推奨されません。
 * Standard HDD ディスクおよび Premium SSD ディスクと共に Standard SSD ディスクがサポートされます。
 * 復元時に、(ディスクごとの) アンマネージド VM の元のストレージ アカウントを使用できます。 この機能は、ストレージ アカウント間に分散しているディスクが VM にある場合でも使用できます。 さまざまな VM 構成で復元操作が速くなります。
-* ストレージ アカウントで管理されていない premium ディスクを使用している VM のバックアップについては、インスタント リストアを使用して、割り当てられた合計ストレージ領域の *50%* の空き領域 (最初のバックアップに**のみ**必要) を割り当てることをお勧めします。 最初のバックアップが完了した後は、バックアップに 50% の空き領域は不要になります。
+* ストレージ アカウントで管理されていない premium ディスクを使用している VM のバックアップについては、インスタント リストアを使用して、割り当てられた合計ストレージ領域の *50%* の空き領域 (最初のバックアップに **のみ** 必要) を割り当てることをお勧めします。 最初のバックアップが完了した後は、バックアップに 50% の空き領域は不要になります。
 
 ## <a name="whats-new-in-this-feature"></a>この機能の更新点
 
@@ -60,6 +60,8 @@ ms.locfileid: "88892628"
 ## <a name="configure-snapshot-retention"></a>スナップショットのリテンション期間の構成
 
 ### <a name="using-azure-portal"></a>Azure Portal の使用
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 Azure portal の **VM バックアップ ポリシー** ウィンドウ ( **[インスタント リストア]** セクションの下) にフィールドが追加されているのを確認できます。 特定のバックアップ ポリシーに関連付けられているすべての VM の **[VM Backup Policy]\(VM バックアップ ポリシー\)** ウィンドウで、スナップショットの保持期間を変更することができます。
 
@@ -108,10 +110,15 @@ VM の変化によって異なります。 安定状態では、コストの増�
 
 新しいモデルでは、スナップショット (階層 1) を削除しない限り、復元ポイント (階層 2) を削除することはできません。 復元ポイント (階層 2) の保持期間がスナップショットの保持期間より長くなるようスケジュール設定することをお勧めします。
 
-### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>バックアップ ポリシーに設定されている保有期間が過ぎても、スナップショットが存在するのはなぜですか。
+### <a name="why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy"></a>バックアップ ポリシーに設定されている保有期間が過ぎても、スナップショットが存在するのはなぜですか。
 
-復旧ポイントにスナップショットがあり、それが利用可能な最新の RP である場合、次のバックアップが成功するまで保持されます。 これは現在、設計されている "ガベージ コレクション" (GC) ポリシーに従ったものです。このポリシーでは、VM での問題によって、今後のすべてのバックアップが失敗した場合に、1 つ以上の最新の RP が常に存在することが要求されます。 通常のシナリオでは、有効期限後、最大 24 時間で RP がクリーンアップされます。
+復旧ポイントにスナップショットがあり、それが利用可能な最新の復旧ポイントである場合、次のバックアップが成功するまで保持されます。 これは、指定された "ガベージ コレクション" (GC) ポリシーに従います。 VM の問題によって後続のすべてのバックアップが失敗する場合に備えて、最新の復旧ポイントが少なくとも 1 つ常に存在している必要があります。 通常のシナリオでは、復旧ポイントは有効期限が切れてから最大 24 時間後にクリーンアップされます。
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>インスタント リストア機能は必要ありません。 無効にすることはできますか。
 
 インスタント リストア機能はすべてのユーザーに対して有効になっており、無効にすることはできません。 スナップショットのリテンション期間は、最小で 1 日に短縮することができます。
+
+### <a name="is-it-safe-to-restart-the-vm-during-the-transfer-process-which-can-take-many-hours-will-restarting-the-vm-interrupt-or-slow-down-the-transfer"></a>(数時間かかる可能性がある) 転送プロセス中に VM を再起動しても問題ありませんか。 VM を再起動すると、転送が中断されますか。あるいは遅くなりますか。
+
+問題ありません。データ転送の速度にはまったく影響が出ません。
+

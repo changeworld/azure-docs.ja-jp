@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 03/24/2020
-ms.openlocfilehash: 71846b8e26efb3853705fabff78831e746727191
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/10/2020
+ms.openlocfilehash: a5050958f01743ff3c6fdcdecfee3067b1d2073e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926951"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934264"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Azure Cognitive Search サービスを別の Azure リージョンに移動する
 
@@ -23,7 +23,13 @@ ms.locfileid: "88926951"
 > [!NOTE]
 > Azure portal では、すべてのサービスに **Export template** コマンドがあります。 Azure Cognitive Search の場合、このコマンドを実行すると、サービスの基本定義 (名前、場所、レベル、レプリカ、およびパーティション数) が生成されますが、サービスのコンテンツは認識されず、キー、ロール、またはログにも引き継がれません。 コマンドは存在しますが、検索サービスの移動には使用しないことをお勧めします。
 
-## <a name="guidance-for-moving-a-service"></a>サービスを移動するためのガイダンス
+## <a name="prerequisites"></a>前提条件
+
++ お使いのアカウントで使用されるサービスと機能が、ターゲット リージョンでサポートされていることを確認してください。
+
++ プレビュー機能については、お使いのサブスクリプションがターゲット リージョンに対して承認されていることを確認してください。
+
+## <a name="prepare-and-move"></a>準備と移動
 
 1. Azure Cognitive Search 以外にも移動すべきサービスがあることも考えられます。そのような場合に備え、サービスを再配置した場合の影響の全容を把握するために、依存関係や関連するサービスを特定します。
 
@@ -41,9 +47,11 @@ ms.locfileid: "88926951"
 
 1. クライアント アプリケーションとテスト スイートを更新し、新しいサービス名と API キーを使用してから、すべてのアプリケーションをテストします。
 
-1. 新しいサービスが完全にテストされ、運用可能になったら、古いサービスを削除します。
+## <a name="discard-or-clean-up"></a>破棄またはクリーンアップ
 
-## <a name="next-steps"></a>次のステップ
+新しいサービスが完全にテストされ、運用可能になったら、古いサービスを削除します。 サービスを削除すると、そのサービスに関連付けられているすべてのコンテンツが自動的に削除されます。
+
+## <a name="next-steps"></a>次の手順
 
 前述の手順を実施するにあたっては、次のリンクを参考にしてください。より詳しい情報を入手できます。
 
@@ -51,7 +59,7 @@ ms.locfileid: "88926951"
 + [レベルの選択](search-sku-tier.md)
 + [Search Service の作成](search-create-service-portal.md)
 + [検索ドキュメントの読み込み](search-what-is-data-import.md)
-+ [ログ記録を有効化する](search-monitor-logs.md)
++ [ログの有効化](search-monitor-logs.md)
 
 
 <!-- To move your Azure Cognitive Service account from one region to another, you will create an export template to move your subscription(s). After moving your subscription, you will need to move your data and recreate your service.
@@ -69,7 +77,7 @@ In this article, you'll learn how to:
 
 - Ensure that the services and features that your account uses are supported in the target region.
 
-- For preview features, ensure that your subscription is whitelisted for the target region. For more information about preview features, see [knowledge stores](./knowledge-store-concept-intro.md), [incremental enrichment](./cognitive-search-incremental-indexing-conceptual.md), and [private endpoint](./service-create-private-endpoint.md).
+- For preview features, ensure that your subscription is allowlisted for the target region. For more information about preview features, see [knowledge stores](./knowledge-store-concept-intro.md), [incremental enrichment](./cognitive-search-incremental-indexing-conceptual.md), and [private endpoint](./service-create-private-endpoint.md).
 
 ## Assessment and planning
 

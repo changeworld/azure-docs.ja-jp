@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fc18ff248ce7f522539a92ef1b2226a29689be8
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 859a4f199e65dd0c3aee9424029f6060683d5fbd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89275982"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836089"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect:バージョンのリリース履歴アーカイブ
 
@@ -167,7 +167,7 @@ SQL Always On 可用性が ADSync DB に対して構成されている場合に 
 ### <a name="new-features-and-improvements"></a>新機能と機能強化
 
 - Azure AD Connect の Ping Federate 統合が一般提供となりました。 [Azure AD と Ping Federate のフェデレーションについて詳しくは、こちらをご覧ください](./plan-connect-user-signin.md#federation-with-pingfederate)。
-- Azure AD Connect は、Azure AD 信頼のバックアップを更新のたびに AD FS に作成し、さらに、必要に応じて簡単に復元できるよう別個のファイルにそれを格納するようになりました。 [Azure AD Connect における Azure AD の信頼管理と新機能の詳細をご覧ください](https://aka.ms/fedtrustinaadconnect)。
+- Azure AD Connect は、Azure AD 信頼のバックアップを更新のたびに AD FS に作成し、さらに、必要に応じて簡単に復元できるよう別個のファイルにそれを格納するようになりました。 [Azure AD Connect における Azure AD の信頼管理と新機能の詳細をご覧ください](./how-to-connect-azure-ad-trust.md)。
 - 通常の電子メール アドレスを変更したり、グローバル アドレス一覧に対してアカウントを非表示にしたりする際に発生した問題のトラブルシューティングを支援するトラブルシューティング ツールが導入されました。
 - Azure AD Connect が更新されて、最新の SQL Server 2012 Native Client が追加されました。
 - [ユーザー サインインの変更] タスクで、ユーザーのサインインをパスワード ハッシュ同期またはパススルー認証に切り替えたとき、[シームレスなシングル サインオン] チェック ボックスが既定で有効になります。
@@ -229,7 +229,7 @@ SQL Always On 可用性が ADSync DB に対して構成されている場合に 
 - Azure AD Connect ウィザード:AD ドメインと Azure AD の確認済みドメインが食い違う場合に常にAzure AD サインイン ページに検証チェックボックスが表示される
 - 自動アップグレードの試行後、特定の状況で自動アップグレードの状態を正しく設定するように自動アップグレード PowerShell を修正
 - Azure AD Connect ウィザード:前回見逃していた情報を取り込むようにテレメトリを更新
-- Azure AD Connect ウィザード:AD FS からパススルー認証に切り替えるために**ユーザー サインインの変更**タスクを使用するときに、次の変更が加えられています。
+- Azure AD Connect ウィザード:AD FS からパススルー認証に切り替えるために **ユーザー サインインの変更** タスクを使用するときに、次の変更が加えられています。
     - ドメインをフェデレーションから管理対象に変換する前に、Azure AD Connect サーバーにパススルー認証エージェントがインストールされ、パススルー認証機能が有効になります。
     - ユーザーがフェデレーションから管理対象に変換されることはなくなります。 ドメインのみが変換されます。
 - Azure AD Connect ウィザード:ユーザーの UPN に特殊文字がある場合、AD FS マルチドメイン Regex が正確ではない。特殊文字をサポートするように Regex を更新
@@ -425,21 +425,21 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 #### <a name="fixed-issues"></a>修正された問題
 * Azure AD Connect ウィザードの *[ユーザー サインインの変更]* タスクの問題を修正しました。
 
-  * この問題は、Azure AD Connect の既存のデプロイでパスワード同期が**有効**になっており、ユーザーのサインイン方法を*パススルー認証*に設定しようとするときに発生します。 変更が適用される前に、ウィザードに "*パスワード同期を無効にする*" という内容のメッセージが間違って表示されます。 ただし、変更が適用された後もパスワード同期は引き続き有効です。 この修正により、今後はウィザードでこのメッセージが表示されることはありません。
+  * この問題は、Azure AD Connect の既存のデプロイでパスワード同期が **有効** になっており、ユーザーのサインイン方法を *パススルー認証* に設定しようとするときに発生します。 変更が適用される前に、ウィザードに "*パスワード同期を無効にする*" という内容のメッセージが間違って表示されます。 ただし、変更が適用された後もパスワード同期は引き続き有効です。 この修正により、今後はウィザードでこのメッセージが表示されることはありません。
 
   * 仕様上、お客様が *[ユーザー サインインの変更]* タスクを使用してユーザーのサインイン方法を更新するときに、ウィザードによってパスワード同期が無効化されることはありません。 これは、ユーザーの主要なサインイン方法としてパススルー認証またはフェデレーションを有効にする場合でも、パスワード同期を維持する必要があるお客様への中断を避けるためです。
 
   * ユーザーのサインイン方法を更新した後にパスワード同期を無効にする場合は、ウィザードで *[Customize Synchronization Configuration]\(同期構成のカスタマイズ\)* タスクを実行する必要があります。 *[Optional features]\(オプション機能\)* ページに移動して、 *[パスワード同期]* オプションをオフにします。
 
-  * シームレス シングル サインオンを有効または無効にしようとする場合にも、同じ問題が発生することに注意してください。 特に、Azure AD Connect の既存のデプロイでパスワード同期が有効になっており、ユーザーのサインイン方法が既に*パススルー認証*に構成されている場合です。 ユーザーのサインイン方法が "パススルー認証" に構成されたままで、 *[ユーザー サインインの変更]* タスクを使用して、 *[Enable Seamless Single Sign-On]\(シームレス シングル サインオンを有効にする\)* オプションをオンまたはオフにしようとすると、 変更が適用される前に、ウィザードに "*パスワード同期を無効にする*" という内容のメッセージが間違って表示されます。 ただし、変更が適用された後もパスワード同期は引き続き有効です。 この修正により、今後はウィザードでこのメッセージが表示されることはありません。
+  * シームレス シングル サインオンを有効または無効にしようとする場合にも、同じ問題が発生することに注意してください。 特に、Azure AD Connect の既存のデプロイでパスワード同期が有効になっており、ユーザーのサインイン方法が既に *パススルー認証* に構成されている場合です。 ユーザーのサインイン方法が "パススルー認証" に構成されたままで、 *[ユーザー サインインの変更]* タスクを使用して、 *[Enable Seamless Single Sign-On]\(シームレス シングル サインオンを有効にする\)* オプションをオンまたはオフにしようとすると、 変更が適用される前に、ウィザードに "*パスワード同期を無効にする*" という内容のメッセージが間違って表示されます。 ただし、変更が適用された後もパスワード同期は引き続き有効です。 この修正により、今後はウィザードでこのメッセージが表示されることはありません。
 
 * Azure AD Connect ウィザードの *[ユーザー サインインの変更]* タスクの問題を修正しました。
 
-  * この問題は、Azure AD Connect の既存のデプロイでパスワード同期が**無効**になっており、ユーザーのサインイン方法を*パススルー認証*に設定しようとしているときに発生します。 変更が適用されるときに、ウィザードによってパススルー認証とパスワード同期の両方が有効になります。 この修正により、ウィザードでパスワード同期が有効化されなくなりました。
+  * この問題は、Azure AD Connect の既存のデプロイでパスワード同期が **無効** になっており、ユーザーのサインイン方法を *パススルー認証* に設定しようとしているときに発生します。 変更が適用されるときに、ウィザードによってパススルー認証とパスワード同期の両方が有効になります。 この修正により、ウィザードでパスワード同期が有効化されなくなりました。
 
-  * 以前は、パスワード同期は、パススルー認証を有効にするための前提条件でした。 ユーザーのサインイン方法を*パススルー認証*に設定すると、ウィザードによってパススルー認証とパスワード同期の両方が有効化されていました。 最近、パスワード同期が前提条件から削除されました。 Azure AD Connect バージョン 1.1.557.0 の一環として、ユーザーのサインイン方法が*パススルー認証*に設定される場合に、パスワード同期を有効にしない変更が Azure AD Connect に対して行われました。 ただし、この変更は Azure AD Connect のインストールにのみ適用されていました。 この修正により、同じ変更が *[ユーザー サインインの変更]* タスクにも適用されます。
+  * 以前は、パスワード同期は、パススルー認証を有効にするための前提条件でした。 ユーザーのサインイン方法を *パススルー認証* に設定すると、ウィザードによってパススルー認証とパスワード同期の両方が有効化されていました。 最近、パスワード同期が前提条件から削除されました。 Azure AD Connect バージョン 1.1.557.0 の一環として、ユーザーのサインイン方法が *パススルー認証* に設定される場合に、パスワード同期を有効にしない変更が Azure AD Connect に対して行われました。 ただし、この変更は Azure AD Connect のインストールにのみ適用されていました。 この修正により、同じ変更が *[ユーザー サインインの変更]* タスクにも適用されます。
 
-  * シームレス シングル サインオンを有効または無効にしようとする場合にも、同じ問題が発生することに注意してください。 特に、Azure AD Connect の既存のデプロイでパスワード同期が無効になっており、ユーザーのサインイン方法が既に*パススルー認証*に構成されている場合です。 ユーザーのサインイン方法が "パススルー認証" に構成されたままで、 *[ユーザー サインインの変更]* タスクを使用して、 *[Enable Seamless Single Sign-On]\(シームレス シングル サインオンを有効にする\)* オプションをオンまたはオフにしようとすると、 変更が適用されるときに、ウィザードによってパスワード同期が有効になります。 この修正により、ウィザードでパスワード同期が有効化されなくなりました。 
+  * シームレス シングル サインオンを有効または無効にしようとする場合にも、同じ問題が発生することに注意してください。 特に、Azure AD Connect の既存のデプロイでパスワード同期が無効になっており、ユーザーのサインイン方法が既に *パススルー認証* に構成されている場合です。 ユーザーのサインイン方法が "パススルー認証" に構成されたままで、 *[ユーザー サインインの変更]* タスクを使用して、 *[Enable Seamless Single Sign-On]\(シームレス シングル サインオンを有効にする\)* オプションをオンまたはオフにしようとすると、 変更が適用されるときに、ウィザードによってパスワード同期が有効になります。 この修正により、ウィザードでパスワード同期が有効化されなくなりました。 
 
 * Azure AD Connect のアップグレードが失敗して "*Unable to upgrade the Synchronization Service*"(同期サービスをアップグレードできません) というエラーが表示される問題を修正しました。 また、今後は同期サービスの起動時にイベント エラー "*The service was unable to start because the version of the database is newer than the version of the binaries installed*"(データベースのバージョンが、インストールされているバイナリのバージョンよりも新しいため、サービスを開始できませんでした) が表示されることはありません。 この問題は、アップグレードを実行している管理者が、Azure AD Connect で使用されている SQL サーバーに対して sysadmin 権限を持っていない場合に発生します。 この修正により、Azure AD Connect ではアップグレード時に、管理者が ADSync データベースに対する db_owner 権限を持っていることのみが求められます。
 
@@ -470,7 +470,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 ### <a name="ad-fs-management"></a>AD FS の管理
 #### <a name="fixed-issue"></a>修正された問題
-* [ソース アンカーとしての ms-DS-ConsistencyGuid](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) 機能の使用に関連する問題を修正しました。 この問題は、ユーザーのサインイン方法として *AD FS とのフェデレーション*を構成しているお客様に影響します。 ウィザードで *[ソース アンカーの構成]* タスクを実行すると、Azure AD Connect では、immutableId のソース属性として *ms-DS-ConsistencyGuid を使用するように切り替わります。 この変更の一環として、Azure AD Connect は、AD FS で ImmutableId の要求規則を更新しようとします。 ただし、Azure AD Connect には AD FS の構成に必要な管理者の資格情報がないため、このステップは失敗していました。 この修正により、 *[ソース アンカーの構成]* タスクを実行すると、AD FS の管理者の資格情報を入力するように求めるメッセージが Azure AD Connect に表示されるようになります。
+* [ソース アンカーとしての ms-DS-ConsistencyGuid](./plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) 機能の使用に関連する問題を修正しました。 この問題は、ユーザーのサインイン方法として *AD FS とのフェデレーション* を構成しているお客様に影響します。 ウィザードで *[ソース アンカーの構成]* タスクを実行すると、Azure AD Connect では、immutableId のソース属性として *ms-DS-ConsistencyGuid を使用するように切り替わります。 この変更の一環として、Azure AD Connect は、AD FS で ImmutableId の要求規則を更新しようとします。 ただし、Azure AD Connect には AD FS の構成に必要な管理者の資格情報がないため、このステップは失敗していました。 この修正により、 *[ソース アンカーの構成]* タスクを実行すると、AD FS の管理者の資格情報を入力するように求めるメッセージが Azure AD Connect に表示されるようになります。
 
 
 
@@ -495,7 +495,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 * アップグレード後に完全な同期手順が不必要に発生する問題を修正しました。 一般に、アップグレード後の完全な同期手順は、既定の同期ルールが変更されている場合に実行する必要があります。 この問題は、同期ルール式に改行文字が出現したときに変更が間違って検出される変更検出ロジックのエラーが原因でした。 改行文字は、読みやすさを向上させるために同期ルール式に挿入されます。
 * Azure AD Connect サーバーが自動アップグレード後に正常に動作しない可能性がある問題を修正しました。 この問題は、Azure AD Connect サーバーのバージョン 1.1.443.0 (またはそれ以前) に影響を与えます。 この問題の詳細については、「[Azure AD Connect is not working correctly after an automatic upgrade](https://support.microsoft.com/help/4038479/azure-ad-connect-is-not-working-correctly-after-an-automatic-upgrade)」(Azure AD Connect が自動アップグレード後に正常に動作しない) を参照してください。
 * エラーが発生したときに、自動アップグレードが 5 分間隔で再試行される可能性がある問題を修正しました。 修正により、エラー発生時の自動アップグレードの再試行は、指数バックオフで行われます。
-* パスワード同期イベント 611 がWindows アプリケーション イベント ログに**エラー**ではなく**情報**と間違って表示される問題を修正しました。 イベント 611 は、パスワード同期で問題が発生するたびに生成されます。 
+* パスワード同期イベント 611 がWindows アプリケーション イベント ログに **エラー** ではなく **情報** と間違って表示される問題を修正しました。 イベント 611 は、パスワード同期で問題が発生するたびに生成されます。 
 * Azure AD Connect ウィザードで、グループの書き戻し機能が、グループを書き戻すために必要な OU を選択しなくても有効化できる問題を修正しました。
 
 #### <a name="new-features-and-improvements"></a>新機能と機能強化
@@ -547,7 +547,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 * Azure AD Connect ウィザード内の [[ドメインと OU のフィルター処理] 画面](how-to-connect-install-custom.md#domain-and-ou-filtering)で、OU ベースのフィルター処理が有効になっている場合でも、 *[すべてのドメインと OU の同期]* オプションが選択済みとして表示される問題を修正しました。
 
-*   Synchronization Service Manager の[[ディレクトリ パーティションの構成] 画面](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)で *[更新]* ボタンをクリックするとエラーが返される原因となる問題を修正しました。 エラー メッセージは *“An error was encountered while refreshing domains:Unable to cast object of type ‘System.Collections.ArrayList’ to type ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject.”* (ドメインの更新中にエラーが発生しました。型 ‘System.Collections.ArrayList’ のオブジェクトを型 'Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject' にキャストできません。) です。 このエラーは、新しい AD ドメインが既存の AD フォレストに追加されている場合に、[更新] ボタンを使用して Azure AD Connect を更新しようとすると発生します。
+*   Synchronization Service Manager の [[ディレクトリ パーティションの構成] 画面](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)で *[更新]* ボタンをクリックするとエラーが返される原因となる問題を修正しました。 エラー メッセージは *“An error was encountered while refreshing domains:Unable to cast object of type ‘System.Collections.ArrayList’ to type ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject.”* (ドメインの更新中にエラーが発生しました。型 ‘System.Collections.ArrayList’ のオブジェクトを型 'Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject' にキャストできません。) です。 このエラーは、新しい AD ドメインが既存の AD フォレストに追加されている場合に、[更新] ボタンを使用して Azure AD Connect を更新しようとすると発生します。
 
 #### <a name="new-features-and-improvements"></a>新機能と機能強化
 
@@ -574,7 +574,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 * Azure AD Connect ウィザード内の [[ドメインと OU のフィルター処理] 画面](how-to-connect-install-custom.md#domain-and-ou-filtering)で、OU ベースのフィルター処理が有効になっている場合でも、 *[すべてのドメインと OU の同期]* オプションが選択済みとして表示される問題を修正しました。
 
-*   Synchronization Service Manager の[[ディレクトリ パーティションの構成] 画面](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)で *[更新]* ボタンをクリックするとエラーが返される原因となる問題を修正しました。 エラー メッセージは *“An error was encountered while refreshing domains:Unable to cast object of type ‘System.Collections.ArrayList’ to type ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject.”* (ドメインの更新中にエラーが発生しました。型 ‘System.Collections.ArrayList’ のオブジェクトを型 'Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject' にキャストできません。) です。 このエラーは、新しい AD ドメインが既存の AD フォレストに追加されている場合に、[更新] ボタンを使用して Azure AD Connect を更新しようとすると発生します。
+*   Synchronization Service Manager の [[ディレクトリ パーティションの構成] 画面](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)で *[更新]* ボタンをクリックするとエラーが返される原因となる問題を修正しました。 エラー メッセージは *“An error was encountered while refreshing domains:Unable to cast object of type ‘System.Collections.ArrayList’ to type ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject.”* (ドメインの更新中にエラーが発生しました。型 ‘System.Collections.ArrayList’ のオブジェクトを型 'Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject' にキャストできません。) です。 このエラーは、新しい AD ドメインが既存の AD フォレストに追加されている場合に、[更新] ボタンを使用して Azure AD Connect を更新しようとすると発生します。
 
 #### <a name="new-features-and-improvements"></a>新機能と機能強化
 
@@ -627,7 +627,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
   * OU ベースのフィルター処理が有効になっている場合は、 **[選択したドメインと OU の同期]** オプションが選択されます。
   * それ以外の場合は、 **[すべてのドメインと OU の同期]** オプションが選択されます。
 
-問題は、ウィザードを実行したときに、常に **[すべてのドメインと OU の同期]** が選択されることです。  この問題は、OU ベースのフィルター処理が構成されている場合でも発生します。 Azure AD Connect 構成の変更を保存する前に、 **[選択したドメインと OU の同期] オプションを必ず選択**し、同期する必要があるすべての OU が有効になっていることをもう一度確認します。 これを行わないと、OU ベースのフィルター処理は無効になります。
+問題は、ウィザードを実行したときに、常に **[すべてのドメインと OU の同期]** が選択されることです。  この問題は、OU ベースのフィルター処理が構成されている場合でも発生します。 Azure AD Connect 構成の変更を保存する前に、 **[選択したドメインと OU の同期] オプションを必ず選択** し、同期する必要があるすべての OU が有効になっていることをもう一度確認します。 これを行わないと、OU ベースのフィルター処理は無効になります。
 
 #### <a name="fixed-issues"></a>修正された問題
 
@@ -1023,7 +1023,7 @@ AD FS の管理
 **新機能:**
 
 * [Automatic upgrade](how-to-connect-install-automatic-upgrade.md) 機能。
-* インストール ウィザードで Azure Multi-Factor Authentication および Privileged Identity Management を使用して全体管理者をサポート。
+* インストール ウィザードで Azure AD Multi-Factor Authentication および Privileged Identity Management を使用して全体管理者をサポート。
   * Multi-Factor Authentication を使用する場合は、 https://secure.aadcdn.microsoftonline-p.com へのトラフィックも許可するように、プロキシを設定する必要があります。
   * Multi-Factor Authentication を正しく動作させるには、信頼済みサイトの一覧に https://secure.aadcdn.microsoftonline-p.com を追加する必要があります。
 * 初期インストール後のユーザーのサインイン方法の変更を許可。
@@ -1181,7 +1181,7 @@ AD FS の管理
 **新機能:**
 
 * 属性ベースのフィルターでのパスワード同期がサポートされるようになりました。 詳細については、[フィルターによるパスワード同期](how-to-connect-sync-configure-filtering.md)に関するページを参照してください。
-* ms-DS-ExternalDirectoryObjectID 属性が Active Directory に書き戻されます。 この機能により、Office 365 アプリケーションのサポートが追加されます。 OAuth2 を使用して、ハイブリッド Exchange デプロイのオンラインとオンプレミスのメールボックスへのアクセスが行われます。
+* ms-DS-ExternalDirectoryObjectID 属性が Active Directory に書き戻されます。 この機能により、Microsoft 365 アプリケーションのサポートが追加されます。 OAuth2 を使用して、ハイブリッド Exchange デプロイのオンラインとオンプレミスのメールボックスへのアクセスが行われます。
 
 **修正されたアップグレードの問題:**
 

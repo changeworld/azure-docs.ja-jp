@@ -8,15 +8,16 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
 ms.date: 02/26/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 22530e79a2bcf34a88ea857bda56b6f424894461
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 3c78ad6605e927015d35df12cadf0347dd0337cf
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421996"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349046"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用して読み取りをグローバルに配布する方法について説明します
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 この記事では、Azure Cosmos DB の MongoDB 用 API を使用して [MongoDB 読み取り設定](https://docs.mongodb.com/manual/core/read-preference/)で読み取り操作をグローバルに配布する方法について示します。
 
@@ -86,8 +87,8 @@ MongoDB プロトコルには、クライアントが使用できる以下の読
 
 一般的なシナリオに基づいて、次の設定を使用することをお勧めします。
 
-1. **待ち時間の短い読み取り**が必要な場合は、**NEAREST** 読み取り設定モードを使用します。 この設定では、読み取り操作で、最も近い使用可能リージョンが利用されます。 最も近いリージョンが WRITE リージョンである場合、これらの操作はそのリージョンを対象にすることに注意してください。
-2. **高可用性と読み取りの geo ディストリビューション**が必要な (待ち時間が制約でない) 場合は、**PRIMARY PREFERRED** または **SECONDARY PREFERRED** 読み取り設定モードを使用します。 この設定では、読み取り操作がそれぞれ、使用可能な WRITE または READ リージョンに転送されます。 そのリージョンを使用できない場合は、読み取り設定の動作に従って、要求は次の使用可能なリージョンに転送されます。
+1. **待ち時間の短い読み取り** が必要な場合は、**NEAREST** 読み取り設定モードを使用します。 この設定では、読み取り操作で、最も近い使用可能リージョンが利用されます。 最も近いリージョンが WRITE リージョンである場合、これらの操作はそのリージョンを対象にすることに注意してください。
+2. **高可用性と読み取りの geo ディストリビューション** が必要な (待ち時間が制約でない) 場合は、**PRIMARY PREFERRED** または **SECONDARY PREFERRED** 読み取り設定モードを使用します。 この設定では、読み取り操作がそれぞれ、使用可能な WRITE または READ リージョンに転送されます。 そのリージョンを使用できない場合は、読み取り設定の動作に従って、要求は次の使用可能なリージョンに転送されます。
 
 サンプル アプリケーションの次のスニペットは、NodeJS で NEAREST 読み取り設定を構成する方法を示しています。
 
@@ -145,7 +146,7 @@ MongoDB プロトコルでは、読み取り設定モードの他に、タグを
       }
 ```
 
-そのため、MongoClient は `region` タグとリージョン名を使用して、読み取り操作を特定のリージョンに送ることができます。 Cosmos アカウントの場合は、Azure Portal の左側の **[設定] -> [データをグローバルにレプリケート]** にリージョン名が表示されます。 この設定は、**読み取りの分離**を実現する場合に便利です。たとえば、クライアント アプリケーションに読み取り操作を特定のリージョンだけで行うようにさせる場合などです。 この設定は、実稼働ではない、分析的な種類のシナリオに適しています。バックグラウンドで実行され、運用上のクリティカルなサービスは含まれません。
+そのため、MongoClient は `region` タグとリージョン名を使用して、読み取り操作を特定のリージョンに送ることができます。 Cosmos アカウントの場合は、Azure Portal の左側の **[設定] -> [データをグローバルにレプリケート]** にリージョン名が表示されます。 この設定は、**読み取りの分離** を実現する場合に便利です。たとえば、クライアント アプリケーションに読み取り操作を特定のリージョンだけで行うようにさせる場合などです。 この設定は、実稼働ではない、分析的な種類のシナリオに適しています。バックグラウンドで実行され、運用上のクリティカルなサービスは含まれません。
 
 サンプル アプリケーションの次のスニペットは、NodeJS でタグを使用して読み取り設定を構成する方法を示しています。
 
@@ -171,6 +172,6 @@ MongoDB プロトコルでは、読み取り設定モードの他に、タグを
 
 ## <a name="next-steps"></a>次のステップ
 
-* [MongoDB データを Azure Cosmos DB にインポートする](mongodb-migrate.md)
+* [MongoDB データを Azure Cosmos DB にインポートする](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)
 * [Azure Cosmos DB の MongoDB 用 API を使用してグローバル分散型データベースを設定する](tutorial-global-distribution-mongodb.md)
 * [Azure Cosmos DB エミュレーターを使用したローカルでの開発](local-emulator.md)

@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の ATAN
 description: Azure Cosmos DB の Arctangent (ATAN) SQL システム関数で、タンジェントが指定された数値式となる角度をラジアン単位で返す方法について説明します
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 899c94a939be7825dca82522eab235bde9252896
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50c678ad3f382ebdcf23c0ba125a47d7aaa7d7ec
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302680"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332442"
 ---
 # <a name="atan-azure-cosmos-db"></a>ATAN (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  タンジェントが指定された数値式となる角度をラジアン単位で返します。 これはアークタンジェント (逆正接) とも呼ばれます。  
   
 ## <a name="syntax"></a>構文

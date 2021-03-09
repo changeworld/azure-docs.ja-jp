@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 714148815fa4ff543ecbf86ab21e8d51fe775543
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7926d5dd33df5538713f8de152dbbace2bc29864
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77153776"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90890285"
 ---
 # <a name="select-columns-in-dataset-module"></a>データセット内の列の選択モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 このモジュールを使用し、ダウンストリーム演算で使用する列のサブセットを選択します。 このモジュールでは、列がソース データセットから物理的に削除されることはありません。その代わりに、データベースの*ビュー*や*プロジェクション*のように、列のサブセットが作成されます。
 

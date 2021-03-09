@@ -6,19 +6,20 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: b546e6ba6967edcf41e2830a639e69d436827c40
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 86d5028a09a805142f7632f93530f8a54965d82f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426947"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675038"
 ---
 # <a name="dynamic-sql-in-synapse-sql"></a>Synapse SQL の動的 SQL
+
 この記事では、Synapse SQL で動的 SQL を使用したり、ソリューションを開発したりするためのヒントについて説明します。
 
 ## <a name="dynamic-sql-example"></a>動的 SQL の例
@@ -26,7 +27,7 @@ ms.locfileid: "81426947"
 アプリケーション コードの開発時は、柔軟性が高く汎用的なモジュール ソリューションを提供するための動的 SQL を使用する必要が生じる場合があります。
 
 > [!NOTE]
-> 現時点では、SQL プールでは BLOB データ型はサポートされていません。 BLOB データ型には varchar(max) および nvarchar(max) が含まれるため、BLOB データ型がサポートされないと、使用する文字列のサイズが制限される場合があります。 大量の文字列を構築するために、アプリケーション コードでこれらの型を使用した場合、コードをチャンクに分割し、代わりに EXEC ステートメントを使用する必要があります。
+> 現時点では、専用 SQL プールでは BLOB データ型はサポートされていません。 BLOB データ型には varchar(max) および nvarchar(max) が含まれるため、BLOB データ型がサポートされないと、使用する文字列のサイズが制限される場合があります。 大量の文字列を構築するために、アプリケーション コードでこれらの型を使用した場合、コードをチャンクに分割し、代わりに EXEC ステートメントを使用する必要があります。
 
 単純な例を次に示します。
 
@@ -38,7 +39,7 @@ DECLARE @sql_fragment1 VARCHAR(8000)=' SELECT name '
 EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 ```
 
-文字列が短い場合は、通常どおり [sp_executesql](/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) を使用できます。
+文字列が短い場合は、通常どおり [sp_executesql](/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql?view=azure-sqldw-latest&preserve-view=true) を使用できます。
 
 > [!NOTE]
 > 動的 SQL として実行されるステートメントには、すべての T-SQL 検証規則が適用されます。

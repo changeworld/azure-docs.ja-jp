@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight での Apache Hive のゲートウェイの詳細とベスト プラクティス
 description: Azure HDInsight ゲートウェイで Hive クエリを実行する場合のベスト プラクティスを進める方法について説明します
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 924b1132efeb3ee4211593da190f5b7251029ae3
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 63484d882d8ccd387257c6f246c2048a09c77bc8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80587331"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933112"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive のゲートウェイの詳細とベスト プラクティス
 
@@ -56,9 +53,9 @@ Enterprise Security Pack 対応のクラスターでは、十分に複雑な Apa
 
 * 大きな **SELECT** クエリを実行する場合は、**LIMIT** 句を使用します。 **LIMIT** 句によって、クライアント ホストに報告される合計行数が減少します。 **LIMIT** 句は、結果の生成にのみ影響し、クエリ プランを変更しません。 **LIMIT** 句をクエリ プランに適用するには、構成 `hive.limit.optimize.enable` を使用します。 **LIMIT** は、引数形式  **x, y** を使用して、オフセットと組み合わせることができます。
 
-* **SELECT\*** を使用する代わりに **SELECT** クエリを実行する場合、目的の列に名前を付けます。 選択する列が少ないほど、読み取られるデータの量が少なくなります。
+* **SELECT \** _ を使用する代わりに **SELECT** クエリを実行する場合、目的の列に名前を付けます。 選択する列が少ないほど、読み取られるデータの量が少なくなります。
 
-* Apache Beeline を使用して、目的のクエリを実行してみてください。 Apache Beeline による結果の取得に長時間かかる場合、外部ツールによって同じ結果を取得する際に、遅延が予想されます。
+_ Apache Beeline を使用して、目的のクエリを実行してみてください。 Apache Beeline による結果の取得に長時間かかる場合、外部ツールによって同じ結果を取得する際に、遅延が予想されます。
 
 * 基本的な Hive クエリをテストして、HDInsight ゲートウェイへの接続を確立できることを確認します。 複数の外部ツールから基本的なクエリを実行して、個々のツールが問題なく動作することを確認してください。
 
@@ -80,7 +77,7 @@ Enterprise Security Pack 対応のクラスターでは、十分に複雑な Apa
 
 ## <a name="next-steps"></a>次のステップ
 
-* [HDInsight での Apache Beeline](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-beeline)
-* [HDInsight ゲートウェイのタイムアウトのトラブルシューティング手順](https://docs.microsoft.com/azure/hdinsight/interactive-query/troubleshoot-gateway-timeout)
-* [HDInsight の仮想ネットワーク](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)
-* [Express Route を使用した HDInsight](https://docs.microsoft.com/azure/hdinsight/connect-on-premises-network)
+* [HDInsight での Apache Beeline](../hadoop/apache-hadoop-use-hive-beeline.md)
+* [HDInsight ゲートウェイのタイムアウトのトラブルシューティング手順](./troubleshoot-gateway-timeout.md)
+* [HDInsight の仮想ネットワーク](../hdinsight-plan-virtual-network-deployment.md)
+* [Express Route を使用した HDInsight](../connect-on-premises-network.md)

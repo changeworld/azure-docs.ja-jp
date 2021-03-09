@@ -3,18 +3,20 @@ title: Azure Cosmos DB クエリ言語の TimestampToDateTime
 description: Azure Cosmos DB での SQL システム関数 TimestampToDateTime について学習します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 9d4b5179ea08d5d6eca03422db7dfc7c8c4b5c3e
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: af5e0eeb808835fd4f36a0eda79618f831248ad9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608661"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340772"
 ---
 # <a name="timestamptodatetime-azure-cosmos-db"></a>TimestampToDateTime (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 指定したタイムスタンプ値を DateTime に変換します。
   

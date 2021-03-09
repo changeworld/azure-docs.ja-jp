@@ -6,22 +6,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: b2a621a23a81e4fb4f47e7c99d780211973e30a0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7e5ea8dcddce31a414d983d14fba483eb388d5d5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81275080"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91334679"
 ---
 コンテナーには、[REST ベースのエンドポイント API](../rest-text-to-speech.md) が用意されています。 各種のプラットフォーム、フレームワーク、言語向けに、多数の[サンプル ソース コード プロジェクト](https://github.com/Azure-Samples/Cognitive-Speech-TTS)が提供されています。
 
-"*標準のテキスト読み上げ*" コンテナーでは、ダウンロードしたイメージ タグのロケールと音声を使用することになります。 たとえば、`latest` タグをダウンロードした場合、既定のロケールは `en-US` で、音声は `JessaRUS` になります。 そのうえで、`{VOICE_NAME}` 引数は [`en-US-JessaRUS`](../language-support.md#standard-voices) となります。 次のサンプル SSML をご覧ください。
+標準またはニューラルのテキスト読み上げコンテナーでは、ダウンロードしたイメージ タグのロケールと音声を使用することになります。 たとえば、`latest` タグをダウンロードした場合、既定のロケールは `en-US` で、音声は `AriaRUS` になります。 そのうえで、`{VOICE_NAME}` 引数は [`en-US-AriaRUS`](../language-support.md#standard-voices) となります。 次のサンプル SSML をご覧ください。
 
 ```xml
 <speak version="1.0" xml:lang="en-US">
-    <voice name="en-US-JessaRUS">
+    <voice name="en-US-AriaRUS">
         This text will get converted into synthesized speech.
     </voice>
 </speak>
@@ -47,9 +47,10 @@ ms.locfileid: "81275080"
 curl -s -v -X POST http://localhost:5000/speech/synthesize/cognitiveservices/v1 \
  -H 'Accept: audio/*' \
  -H 'Content-Type: application/ssml+xml' \
- -H 'X-Microsoft-OutputFormat: riff-16khz-16bit-mono-pcm' \
- -d '<speak version="1.0" xml:lang="en-US"><voice name="{VOICE_NAME}">This is a test, only a test.</voice></speak>'
+ -H 'X-Microsoft-OutputFormat: riff-24khz-16bit-mono-pcm' \
+ -d '<speak version="1.0" xml:lang="en-US"><voice name="{VOICE_NAME}">This is a test, only a test.</voice></speak>' > output.wav
 ```
+
 
 このコマンドは、次の操作を行います。
 

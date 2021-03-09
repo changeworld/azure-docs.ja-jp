@@ -6,34 +6,36 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.subservice: ''
-ms.date: 04/15/2020
-ms.openlocfilehash: 38678c795b0ce7534de0ca8602c1198bc35f0e05
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.subservice: spark
+ms.date: 10/16/2020
+ms.openlocfilehash: 3f1e3fd360197310a89a67d43053649d904aeb18
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206190"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677612"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>チュートリアル:Synapse Studio で Apache Spark ジョブ定義を作成する
 
-このチュートリアルでは、Azure Synapse Studio を使用して Apache Spark ジョブ定義を作成し、その後 Apache Spark プールに送信する方法を示します。
+このチュートリアルでは、Azure Synapse Studio を使用して Apache Spark ジョブ定義を作成し、サーバーレス Apache Spark プールに送信する方法を示します。
 
 このチュートリアルに含まれるタスクは次のとおりです。
-
-* PySpark (Python) 用の Apache Spark ジョブ定義を作成する
-* Spark (Scala) 用の Apache Spark ジョブ定義を作成する
-* .NET Spark (C# または F#) 用の Apache Spark ジョブ定義を作成する
-* Apache Spark ジョブ定義をバッチ ジョブとして送信する
-* Apache Spark ジョブ定義をパイプラインに追加する
+> [!div class="checklist"]
+>
+> - PySpark (Python) 用の Apache Spark ジョブ定義を作成する
+> - Spark (Scala) 用の Apache Spark ジョブ定義を作成する
+> - .NET Spark (C# または F#) 用の Apache Spark ジョブ定義を作成する
+> - Apache Spark ジョブ定義をバッチ ジョブとして送信する
+> - Apache Spark ジョブ定義をパイプラインに追加する
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを開始する前に、次の要件を満たしてください。
 
-* Azure Synapse Analytics ワークスペース。 手順については、[Azure Synapse Analytics ワークスペースの作成](../../machine-learning/how-to-manage-workspace.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-a-workspace)に関するページを参照してください。
-* Apache Spark プール
-* ADLS Gen2 ストレージ アカウント。 使用する ADLS Gen2 ファイル システムのストレージ BLOB データ所有者である必要があります。 そうでない場合は、手動でアクセス許可を追加する必要があります。
+* Azure Synapse Analytics ワークスペース。 手順については、[Azure Synapse Analytics ワークスペースの作成](../../machine-learning/how-to-manage-workspace.md)に関するページを参照してください。
+* サーバーレス Apache Spark プール。
+* ADLS Gen2 ストレージ アカウント。 使用する ADLS Gen2 ファイル システムの **ストレージ BLOB データ所有者** である必要があります。 そうでない場合は、手動でアクセス許可を追加する必要があります。
+* ワークスペースの既定のストレージを使用したくない場合は、必要な ADLS Gen2 ストレージ アカウントを Synapse Studio でリンクしてください。 
 
 ## <a name="create-an-apache-spark-job-definition-for-pyspark-python"></a>PySpark (Python) 用の Apache Spark ジョブ定義を作成する
 
@@ -41,23 +43,29 @@ ms.locfileid: "88206190"
 
 1. [Azure Synapse Studio](https://web.azuresynapse.net/) を開きます。
 
-2. [Apache Spark ジョブ定義を作成するためのサンプル ファイル](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python)に移動して、**wordcount.py** と **shakespear.txt** をダウンロードできます。 次に、これらのファイルを Azure Storage にアップロードします。 **[データ]** をクリックし、 **[ストレージ アカウント]** を選択して、関連ファイルを ADLS Gen2 ファイル システムにアップロードします。 ファイルが Azure ストレージに既に存在する場合は、この手順をスキップします。 
+2. [Apache Spark ジョブ定義を作成するためのサンプル ファイル](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python)に移動して、**python.zip のサンプル ファイル** をダウンロードし、圧縮パッケージを解凍して、**wordcount.py** ファイルと **shakespeare.txt** ファイルを抽出します。 
+
+     ![サンプル ファイル](./media/apache-spark-job-definitions/sample-files.png)
+
+3. **[データ]**  ->  **[Linked]\(リンク済み\)**  ->  **[Azure Data Lake Storage Gen2]** の順に選択し、**wordcount.py** と **shakespeare.txt** を ADLS Gen2 ファイル システムにアップロードします。 
 
      ![python ファイルのアップロード](./media/apache-spark-job-definitions/upload-python-file.png)
 
-3. **[開発]** ハブをクリックして、左側のペインで **[Spark job definitions]\(Spark ジョブ定義\)** を選択し、 **[Spark job definitions]\(Spark ジョブ定義\)** の横にある [...] アクション ノードをクリックしてから、コンテキスト メニューの **[New Spark job definition]\(新しい Spark ジョブ定義\)** を選択します。
+4. **[開発]** ハブを選択し、[+] アイコンを選択して **[Spark job definition]\(Spark ジョブ定義\)** を選択し、新しい Spark ジョブ定義を作成します。 
 
      ![Python 用の新しい定義の作成](./media/apache-spark-job-definitions/create-new-definition.png)
 
-4. Apache Spark ジョブ定義のメイン ウィンドウの [言語] ドロップ ダウン リストから **[PySpark (Python)]** を選択します。
+5. Apache Spark ジョブ定義のメイン ウィンドウの [言語] ドロップ ダウン リストから **[PySpark (Python)]** を選択します。
 
-5. Apache Spark ジョブ定義の情報を入力します。 サンプル情報をコピーできます。
+     ![Python を選択する](./media/apache-spark-job-definitions/select-python.png)
+
+6. Apache Spark ジョブ定義の情報を入力します。 
 
      |  プロパティ   | 説明   |  
      | ----- | ----- |  
-     |Job definition name (ジョブ定義名)| Apache Spark ジョブ定義の名前を入力します。 この名前は公開されるまでいつでも更新できます。 サンプル: `job definition sample`|
-     |Main definition file (メイン定義ファイル)| ジョブに使用されるメイン ファイルです。 ストレージから PY ファイルを選択します。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。 サンプル: `abfss://…/path/to/wordcount.py`|
-     |コマンド ライン引数| ジョブに対する省略可能な引数。 サンプル: `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
+     |Job definition name (ジョブ定義名)| Apache Spark ジョブ定義の名前を入力します。 この名前は公開されるまでいつでも更新できます。 <br> サンプル: `job definition sample`|
+     |Main definition file (メイン定義ファイル)| ジョブに使用されるメイン ファイルです。 ストレージから PY ファイルを選択します。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。 <br> サンプル: `abfss://…/path/to/wordcount.py`|
+     |コマンド ライン引数| ジョブに対する省略可能な引数。 <br> サンプル: `abfss://…/path/to/shakespeare.txt` `abfss://…/path/to/result` <br> *注意事項: サンプル ジョブ定義の 2 つの引数はスペースで区切ります。*|
      |参照ファイル| メイン定義ファイル内で参照に使用される追加ファイル。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。 |
      |Spark プール| 選択した Apache Spark プールにジョブが送信されます。|
      |Spark のバージョン| Apache Spark プールが実行されている Apache Spark のバージョン。|
@@ -67,7 +75,7 @@ ms.locfileid: "88206190"
 
      ![Python 用の Spark ジョブ定義の値の設定](./media/apache-spark-job-definitions/create-py-definition.png)
 
-6. **[公開]** を選択して、Apache Spark ジョブ定義を保存します。
+7. **[公開]** を選択して、Apache Spark ジョブ定義を保存します。
 
      ![py 定義の公開](./media/apache-spark-job-definitions/publish-py-definition.png)
 
@@ -77,23 +85,28 @@ ms.locfileid: "88206190"
 
  1. [Azure Synapse Studio](https://web.azuresynapse.net/) を開きます。
 
- 2. [Apache Spark ジョブ定義を作成するためのサンプル ファイル](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala)にアクセスして、**wordcount.jar** と **shakespear.txt** をダウンロードできます。 次に、これらのファイルを Azure Storage にアップロードします。 **[データ]** をクリックし、 **[ストレージ アカウント]** を選択して、関連ファイルを ADLS Gen2 ファイル システムにアップロードします。 ファイルが Azure ストレージに既に存在する場合は、この手順をスキップします。 
+ 2. [Apache Spark ジョブ定義を作成するためのサンプル ファイル](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala)に移動して、**scala.zip のサンプル ファイル** をダウンロードし、圧縮パッケージを解凍して、**wordcount.jar** ファイルと **shakespeare.txt** ファイルを抽出します。 
+ 
+     ![サンプル ファイル scala](./media/apache-spark-job-definitions/sample-files-scala.png)
+
+ 3. **[データ]**  ->  **[Linked]\(リンク済み\)**  ->  **[Azure Data Lake Storage Gen2]** の順に選択し、**wordcount.jar** と **shakespeare.txt** を ADLS Gen2 ファイル システムにアップロードします。
  
      ![Scala 構造の準備](./media/apache-spark-job-definitions/prepare-scala-structure.png)
 
- 3. **[開発]** ハブをクリックして、左側のペインで **[Spark job definitions]\(Spark ジョブ定義\)** を選択し、 **[Spark job definitions]\(Spark ジョブ定義\)** の横にある [...] アクション ノードをクリックしてから、コンテキスト メニューの **[New Spark job definition]\(新しい Spark ジョブ定義\)** を選択します。
-     ![Scala 用の新しい定義の作成](./media/apache-spark-job-definitions/create-new-definition.png)
+ 4. **[開発]** ハブを選択し、[+] アイコンを選択して **[Spark job definition]\(Spark ジョブ定義\)** を選択し、新しい Spark ジョブ定義を作成します。 (サンプル画像は、**PySpark (Python) 用の Apache Spark ジョブ定義を作成する** 方法に関するセクションの手順 4. と同じです。)
 
- 4. Apache Spark ジョブ定義のメイン ウィンドウの [言語] ドロップ ダウン リストから **[Spark (Scala)]** を選択します。
+ 5. Apache Spark ジョブ定義のメイン ウィンドウの [言語] ドロップ ダウン リストから **[Spark (Scala)]** を選択します。
 
- 5. Apache Spark ジョブ定義の情報を入力します。 サンプル情報をコピーできます。
+     ![Scala を選択する](./media/apache-spark-job-definitions/select-scala.png)
+
+ 6. Apache Spark ジョブ定義の情報を入力します。 サンプル情報をコピーできます。
 
      |  プロパティ   | 説明   |  
      | ----- | ----- |  
-     |Job definition name (ジョブ定義名)| Apache Spark ジョブ定義の名前を入力します。 この名前は公開されるまでいつでも更新できます。 サンプル: `job definition sample`|
-     |Main definition file (メイン定義ファイル)| ジョブに使用されるメイン ファイルです。 ストレージから JAR ファイルを選択します。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。 サンプル: `abfss://…/path/to/wordcount.jar`|
-     |メイン クラス名| 完全修飾識別子またはメイン定義ファイル内のメイン クラス。 サンプル: `WordCount`|
-     |コマンド ライン引数| ジョブに対する省略可能な引数。 サンプル: `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
+     |Job definition name (ジョブ定義名)| Apache Spark ジョブ定義の名前を入力します。 この名前は公開されるまでいつでも更新できます。 <br> サンプル: `scala`|
+     |Main definition file (メイン定義ファイル)| ジョブに使用されるメイン ファイルです。 ストレージから JAR ファイルを選択します。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。 <br> サンプル: `abfss://…/path/to/wordcount.jar`|
+     |メイン クラス名| 完全修飾識別子またはメイン定義ファイル内のメイン クラス。 <br> サンプル: `WordCount`|
+     |コマンド ライン引数| ジョブに対する省略可能な引数。 <br> サンプル: `abfss://…/path/to/shakespeare.txt` `abfss://…/path/to/result` <br> *注意事項: サンプル ジョブ定義の 2 つの引数はスペースで区切ります。* |
      |参照ファイル| メイン定義ファイル内で参照に使用される追加ファイル。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。|
      |Spark プール| 選択した Apache Spark プールにジョブが送信されます。|
      |Spark のバージョン| Apache Spark プールが実行されている Apache Spark のバージョン。|
@@ -103,34 +116,37 @@ ms.locfileid: "88206190"
 
      ![Scala 用の Spark ジョブ定義の値の設定](./media/apache-spark-job-definitions/create-scala-definition.png)
 
- 6. **[公開]** を選択して、Apache Spark ジョブ定義を保存します。
+ 7. **[公開]** を選択して、Apache Spark ジョブ定義を保存します。
 
-     ![Scala 定義の公開](./media/apache-spark-job-definitions/publish-scala-definition.png)
-
+      ![Scala 定義の公開](./media/apache-spark-job-definitions/publish-scala-definition.png)
 
 ## <a name="create-an-apache-spark-job-definition-for-net-sparkcf"></a>.NET Spark (C# または F#) 用の Apache Spark ジョブ定義を作成する
 
 このセクションでは、.NET Spark (C# または F#) 用の Apache Spark ジョブ定義を作成します。
  1. [Azure Synapse Studio](https://web.azuresynapse.net/) を開きます。
 
- 2. [Apache Spark ジョブ定義を作成するためのサンプル ファイル](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET)にアクセスして、**wordcount.zip** と **shakespear.txt** をダウンロードできます。 次に、これらのファイルを Azure Storage にアップロードします。 **[データ]** をクリックし、 **[ストレージ アカウント]** を選択して、関連ファイルを ADLS Gen2 ファイル システムにアップロードします。 ファイルが Azure ストレージに既に存在する場合は、この手順をスキップします。 
+ 2. [Apache Spark ジョブ定義を作成するためのサンプル ファイル](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET)に移動して、**dotnet.zip のサンプル ファイル** をダウンロードし、圧縮パッケージを解凍して、**wordcount.zip** ファイルと **shakespeare.txt** ファイルを抽出します。 
 
-     ![dotnet 構造の準備](./media/apache-spark-job-definitions/prepare-scala-structure.png)
+     ![サンプル dotnet](./media/apache-spark-job-definitions/sample-dotnet.png)
 
- 3. **[開発]** ハブをクリックして、左側のペインで **[Spark job definitions]\(Spark ジョブ定義\)** を選択し、 **[Spark job definitions]\(Spark ジョブ定義\)** の横にある [...] アクション ノードをクリックしてから、コンテキスト メニューの **[New Spark job definition]\(新しい Spark ジョブ定義\)** を選択します。
+ 3. **[データ]**  ->  **[Linked]\(リンク済み\)**  ->  **[Azure Data Lake Storage Gen2]** の順に選択し、**wordcount.zip** と **shakespeare.txt** を ADLS Gen2 ファイル システムにアップロードします。
+ 
+     ![dotnet 構造の準備](./media/apache-spark-job-definitions/prepare-dotnet-structure.png)
 
-     ![dotnet 用の新しい定義の作成](./media/apache-spark-job-definitions/create-new-definition.png)
+ 4. **[開発]** ハブを選択し、[+] アイコンを選択して **[Spark job definition]\(Spark ジョブ定義\)** を選択し、新しい Spark ジョブ定義を作成します。 (サンプル画像は、**PySpark (Python) 用の Apache Spark ジョブ定義を作成する** 方法に関するセクションの手順 4. と同じです。)
 
- 4. Apache Spark ジョブ定義のメイン ウィンドウの [言語] ドロップ ダウン リストから **[.NET Spark (C#/F#)]** を選択します。
+ 5. Apache Spark ジョブ定義のメイン ウィンドウの [言語] ドロップ ダウン リストから **[.NET Spark (C#/F#)]** を選択します。
 
- 5. Apache Spark ジョブ定義の情報を入力します。 サンプル情報をコピーできます。
+     ![dotnet を選択する](./media/apache-spark-job-definitions/select-dotnet.png)
+
+ 6. Apache Spark ジョブ定義の情報を入力します。 サンプル情報をコピーできます。
     
      |  プロパティ   | 説明   |  
      | ----- | ----- |  
-     |Job definition name (ジョブ定義名)| Apache Spark ジョブ定義の名前を入力します。 この名前は公開されるまでいつでも更新できます。 サンプル: `job definition sample`|
-     |Main definition file (メイン定義ファイル)| ジョブに使用されるメイン ファイルです。 ストレージから .NET for Apache Spark アプリケーション (メインの実行可能ファイル、ユーザー定義関数を含む DLL、およびその他の必要なファイル) を含む ZIP ファイルを選択します。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。 サンプル: `abfss://…/path/to/wordcount.zip`|
-     |Main executable file (メイン実行可能ファイル)| メイン定義 ZIP ファイル内のメインの実行可能ファイル。 サンプル: `WordCount`|
-     |コマンド ライン引数| ジョブに対する省略可能な引数。 サンプル: `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
+     |Job definition name (ジョブ定義名)| Apache Spark ジョブ定義の名前を入力します。 この名前は公開されるまでいつでも更新できます。 <br> サンプル: `dotnet`|
+     |Main definition file (メイン定義ファイル)| ジョブに使用されるメイン ファイルです。 ストレージから .NET for Apache Spark アプリケーション (メインの実行可能ファイル、ユーザー定義関数を含む DLL、およびその他の必要なファイル) を含む ZIP ファイルを選択します。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。 <br> サンプル: `abfss://…/path/to/wordcount.zip`|
+     |Main executable file (メイン実行可能ファイル)| メイン定義 ZIP ファイル内のメインの実行可能ファイル。 <br> サンプル: `WordCount`|
+     |コマンド ライン引数| ジョブに対する省略可能な引数。 <br> サンプル: `abfss://…/path/to/shakespeare.txt` `abfss://…/path/to/result` <br> *注意事項: サンプル ジョブ定義の 2 つの引数はスペースで区切ります。* |
      |参照ファイル| メイン定義 ZIP ファイル (依存 jar、追加のユーザー定義関数 DLL、およびその他の構成ファイル) に含まれていない .NET for Apache Spark アプリケーションを実行するために、ワーカー ノードによって必要とされる追加のファイル。 **[ファイルのアップロード]** を選択して、ファイルをストレージ アカウントにアップロードできます。|
      |Spark プール| 選択した Apache Spark プールにジョブが送信されます。|
      |Spark のバージョン| Apache Spark プールが実行されている Apache Spark のバージョン。|
@@ -138,40 +154,40 @@ ms.locfileid: "88206190"
      |Executor size (エグゼキュータのサイズ)| ジョブ用の指定された Apache Spark プール内で提供される、Executor に使用するコアとメモリの数。|
      |Driver size (ドライバー サイズ)| ジョブ用の指定された Apache Spark プール内で提供される、ドライバーに使用するコアとメモリの数。|
 
-     ![dotnet 用の Spark ジョブ定義の値の設定](./media/apache-spark-job-definitions/create-net-definition.png)
+     ![dotnet 用の Spark ジョブ定義の値の設定](./media/apache-spark-job-definitions/create-dotnet-definition.png)
 
- 6. **[公開]** を選択して、Apache Spark ジョブ定義を保存します。
+ 7. **[公開]** を選択して、Apache Spark ジョブ定義を保存します。
 
-      ![dotnet 定義の公開](./media/apache-spark-job-definitions/publish-net-definition.png)
+      ![dotnet 定義の公開](./media/apache-spark-job-definitions/publish-dotnet-definition.png)
 
 ## <a name="submit-an-apache-spark-job-definition-as-a-batch-job"></a>Apache Spark ジョブ定義をバッチ ジョブとして送信する
 
-Apache Spark ジョブ定義を作成したら、それを Apache Spark プールに送信できます。 使用する ADLS Gen2 ファイル システムのストレージ BLOB データ所有者であることを確認してください。 そうでない場合は、手動でアクセス許可を追加する必要があります。
+Apache Spark ジョブ定義を作成したら、それを Apache Spark プールに送信できます。 使用する ADLS Gen2 ファイル システムの **ストレージ BLOB データ所有者** であることを確認してください。 そうでない場合は、手動でアクセス許可を追加する必要があります。
 
 ### <a name="scenario-1-submit-apache-spark-job-definition"></a>シナリオ 1:Apache Spark ジョブ定義を送信する
- 1. Apache Spark ジョブ定義をクリックしてウィンドウを開きます。
+ 1. Apache Spark ジョブ定義を選択してウィンドウを開きます。
 
       ![送信する Spark ジョブ定義を開く ](./media/apache-spark-job-definitions/open-spark-definition.png)
 
- 2. **[送信]** アイコンをクリックし、選択した Apache Spark プールにプロジェクトを送信します。 **[Spark monitoring URL]\(Spark 監視 URL\)** タブをクリックして、Apache Spark アプリケーションの LogQuery を表示できます。
+ 2. **[送信]** ボタンを選択し、選択した Apache Spark プールにプロジェクトを送信します。 **[Spark monitoring URL]\(Spark 監視 URL\)** タブを選択して、Apache Spark アプリケーションの LogQuery を表示できます。
 
-    ![[送信] ボタンをクリックして、Spark ジョブ定義を送信します](./media/apache-spark-job-definitions/submit-spark-definition.png)
+    ![[送信] ボタンを選択して、Spark ジョブ定義を送信します](./media/apache-spark-job-definitions/submit-spark-definition.png)
 
     ![[Spark Submission]\(Spark 送信\) ダイアログ ボックス](./media/apache-spark-job-definitions/submit-definition-result.png)
 
 ### <a name="scenario-2-view-apache-spark-job-running-progress"></a>シナリオ 2: Apache Spark ジョブの実行の進行状況を表示する
 
- 1. **[モニター]** をクリックし、 **[Spark アプリケーション]** オプションを選択します。 送信した Apache Spark アプリケーションを見つけることができます。
+ 1. **[モニター]** を選択して、 **[Apache Spark アプリケーション]** オプションを選択します。 送信した Apache Spark アプリケーションを見つけることができます。
 
      ![Spark アプリケーションを表示する](./media/apache-spark-job-definitions/view-spark-application.png)
 
- 2. 次に、その Apache Spark アプリケーションをクリックすると、 **[LogQuery]** ウィンドウが表示されます。 **[LogQuery]** ではジョブ実行の進行状況を表示できます。
+ 2. 次に、その Apache Spark アプリケーションを選択すると、 **[SparkJobDefinition]** ジョブ ウィンドウが表示されます。 ここからジョブ実行の進行状況を表示できます。
      
      ![Spark アプリケーションの LogQuery を表示する](./media/apache-spark-job-definitions/view-job-log-query.png)
 
 ### <a name="scenario-3-check-output-file"></a>シナリオ 3: 出力ファイルを確認する
 
- 1. **[データ]** をクリックし、 **[ストレージ アカウント]** を選択します。 正常に実行された後、ADLS Gen2 ストレージにアクセスして、出力が生成されたことを確認できます。
+ 1. **[データ]**  ->  **[Linked]\(リンク済み\)**  ->  **[Azure Data Lake Storage Gen2]** (hozhaobdbj) の順に選択し、先ほど作成した **result** フォルダーを開くと、結果フォルダーに移動して出力が生成されているかどうかを確認できます。
 
      ![出力ファイルを表示する](./media/apache-spark-job-definitions/view-output-file.png)
 
@@ -181,13 +197,13 @@ Apache Spark ジョブ定義を作成したら、それを Apache Spark プー�
 
  1. 既存の Apache Spark ジョブ定義を開きます。
 
- 2. Apache Spark ジョブ定義の右上にあるアイコンをクリックし、 **[Existing pipeline]\(既存のパイプライン\)** または **[新しいパイプライン]** を選択します。 詳細については、パイプラインのページを参照してください。
+ 2. Apache Spark ジョブ定義の右上にあるアイコンを選択し、 **[Existing pipeline]\(既存のパイプライン\)** または **[新しいパイプライン]** を選択します。 詳細については、パイプラインのページを参照してください。
 
-     ![パイプラインへの追加](./media/apache-spark-job-definitions/add-to-pipeline01.png)
+     ![パイプライン 1 に追加する](./media/apache-spark-job-definitions/add-to-pipeline01.png)
 
-     ![パイプラインへの追加](./media/apache-spark-job-definitions/add-to-pipeline02.png)
+     ![パイプライン 2 に追加する](./media/apache-spark-job-definitions/add-to-pipeline02.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure Synapse Studio を使用して Apache Spark ジョブ定義を作成し、その後 Apache Spark プールに送信する方法を示します。 次に、Azure Synapse Studio を使用して Power BI データセットを作成し、Power BI データを管理できます。
+次に、Azure Synapse Studio を使用して Power BI データセットを作成し、Power BI データを管理できます。 詳細については、[Power BI ワークスペースを Synapse ワークスペースにリンクする](../quickstart-power-bi.md)に関する記事を参照してください。 
 

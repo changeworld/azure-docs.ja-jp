@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/05/2018
+ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: 3956a843e67dba82486f350fc4380d4c8f6065f1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399822"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368334"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル:Front Door カスタム ドメインで HTTPS を構成する
 
@@ -59,7 +59,7 @@ Azure Front Door で管理された証明書を使用する場合、HTTPS 機能
 
 カスタム ドメインで HTTPS を有効にするには、次の手順のようにします。
 
-1. [Azure portal](https://portal.azure.com) で、**Front Door** プロファイルを参照します。
+1. [Azure portal](https://portal.azure.com) で、 **Front Door** プロファイルを参照します。
 
 2. フロントエンド ホストのリストで、カスタム ドメインを含めるために HTTPS を有効にするカスタム ドメインを選択します。
 
@@ -84,7 +84,7 @@ Azure Front Door で管理された証明書を使用する場合、HTTPS 機能
 > [!WARNING]
 > Azure Front Door では、現在、Front Door 構成と同じサブスクリプションの Key Vault アカウントのみがサポートされています。 Front Door とは異なるサブスクリプションの Key Vault を選択すると、エラーが発生します。
 
-2. Azure Key Vault 証明書: 証明書が既にある場合は、Azure Key Vault アカウントに直接アップロードできます。または、Azure Key Vault と統合されているパートナー CA の 1 つから、Azure Key Vault を使用して新しい証明書を直接作成できます。 証明書は、**シークレット**ではなく**証明書**オブジェクトとしてアップロードします。
+2. Azure Key Vault 証明書: 証明書が既にある場合は、Azure Key Vault アカウントに直接アップロードできます。または、Azure Key Vault と統合されているパートナー CA の 1 つから、Azure Key Vault を使用して新しい証明書を直接作成できます。 証明書は、 **シークレット** ではなく **証明書** オブジェクトとしてアップロードします。
 
 > [!NOTE]
 > 独自の TLS/SSL 証明書については、Front Door は EC 暗号化アルゴリズムを使用した証明書をサポートしていません。
@@ -94,7 +94,7 @@ Azure Front Door で管理された証明書を使用する場合、HTTPS 機能
 PowerShell を使用して、Azure Active Directory にアプリとして Azure Front Door 用のサービス プリンシパルを登録します。
 
 > [!NOTE]
-> この操作はグローバル管理者のアクセス許可を必要とし、テナントごとに **1 回**だけ実行する必要があります。
+> この操作はグローバル管理者のアクセス許可を必要とし、テナントごとに **1 回** だけ実行する必要があります。
 
 1. 必要があれば、PowerShell でローカル マシンに [Azure PowerShell](/powershell/azure/install-az-ps) をインストールします。
 
@@ -108,7 +108,7 @@ Azure Key Vault アカウント内の証明書にアクセスするには、Azur
 
 1. キー コンテナー アカウントで、[設定] で **[アクセス ポリシー]** 、 **[新規追加]** の順に選択して新しいポリシーを作成します。
 
-2. **[プリンシパルの選択]** で、**ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** を検索し、 **[Microsoft.Azure.Frontdoor]** を選びます。 **[選択]** をクリックします。
+2. **[プリンシパルの選択]** で、 **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** を検索し、 **[Microsoft.Azure.Frontdoor]** を選びます。 **[選択]** をクリックします。
 
 3. **[シークレットのアクセス許可]** で **[取得]** を選択して、Front Door に証明書の取得を許可します。
 
@@ -134,6 +134,11 @@ Azure Key Vault アカウント内の証明書にアクセスするには、Azur
     - サブスクリプション ID に対するキー コンテナー アカウント。 
     - 選択したキー コンテナーの下の証明書 (シークレット)。 
     - 利用可能な証明書バージョン。 
+
+> [!NOTE]
+> 証明書のバージョンを空白のままにすると、次のようになります。
+> - 証明書の最新バージョンが選択される。
+> - キー コンテナーで新しいバージョンの証明書が利用可能になると、自動的にローテーションが行われて証明書が最新バージョンになる。
  
 5. 独自の証明書を使用する場合には、ドメインの検証は必要ありません。 「[伝達を待機する](#wait-for-propagation)」に進んでください。
 
@@ -148,13 +153,13 @@ CNAME レコードでカスタム エンドポイントにマップされた使�
 
 独自の証明書を使用している場合には、ドメインの検証は必要ありません。
 
-CNAME レコードは、次の形式にする必要があります。ここで *Name* はカスタム ドメイン名で、*Value* は Front Door の既定の .azurefd.net ホスト名です。
+CNAME レコードは、次の形式にする必要があります。ここで *Name* はカスタム ドメイン名で、 *Value* は Front Door の既定の .azurefd.net ホスト名です。
 
-| 名前            | Type  | 値                 |
+| 名前            | 種類  | 値                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
-CNAME レコードの詳細については、[CNAME DNS レコードの作成](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain)に関するセクションを参照してください。
+CNAME レコードの詳細については、[CNAME DNS レコードの作成](../cdn/cdn-map-content-to-custom-domain.md)に関するセクションを参照してください。
 
 CNAME レコードが正しい形式である場合、DigiCert は自動的にそのカスタム ドメイン名を検証し、ご利用のドメイン名に使用する専用の証明書を作成します。 DigiCert から検証電子メールが送信されないため、要求を承認する必要はありません。 この証明書は 1 年間有効で、有効期限が切れる前に自動更新されます。 「[伝達を待機する](#wait-for-propagation)」に進んでください。 
 
@@ -219,34 +224,6 @@ postmaster@&lt;your-domain-name.com&gt;
 We encountered an unexpected error while processing your HTTPS request. Please try again and contact support if the issue persists.
 </code>
 
-
-
-## <a name="clean-up-resources---disable-https"></a>リソースのクリーンアップ - HTTPS を無効にする
-
-上記の手順では、カスタム ドメインで HTTPS プロトコルを有効にしました。 カスタム ドメインで HTTPS を使用する必要がなくなった場合、次の手順を実行して HTTPS を無効にできます。
-
-### <a name="disable-the-https-feature"></a>HTTPS 機能を無効にする 
-
-1. [Azure portal](https://portal.azure.com) で、**Azure Front Door** 構成を参照します。
-
-2. フロントエンド ホストのリストで、HTTPS を無効にするカスタム ドメインをクリックします。
-
-3. **[無効]** をクリックして HTTPS を無効にした後、 **[保存]** をクリックします。
-
-### <a name="wait-for-propagation"></a>伝達を待機する
-
-カスタム ドメインの HTTPS 機能を無効にした後、適用されるまでには最大 6 から 8 時間かかります。 プロセスが完了すると、Azure Portal の [カスタム HTTPS] のステータスは **[無効]** に設定され、[カスタム ドメイン] ダイアログの 3つの操作ステップが完了としてマークされます。 カスタム ドメインは HTTPS を使うことができなくなります。
-
-#### <a name="operation-progress"></a>操作の進行
-
-次の表は、HTTPS を無効にするときの操作の進行を示したものです。 HTTPS を無効にした後、[カスタム ドメイン] ダイアログには 3 つの操作ステップが表示されます。 各ステップがアクティブになると、ステップの下に詳細が追加表示されます。 ステップが正常に完了すると、横に緑色のチェック マークが表示されます。 
-
-| 操作の進行 | 操作の詳細 | 
-| --- | --- |
-| 1 要求の送信 | 要求を送信しています |
-| 2 証明書のプロビジョニング解除 | 証明書を削除しています |
-| 3 完了 | 証明書が削除されました |
-
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 1. *証明書プロバイダーはだれですか。どのような種類の証明書が使用されますか。*
@@ -269,8 +246,41 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
     いいえ、Certificate Authority Authorization レコードは、現在必要ではありません。 ただし、所持している場合は、そこには有効な CA として DigiCert が含められている必要があります。
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+上記の手順では、カスタム ドメインで HTTPS プロトコルを有効にしました。 カスタム ドメインで HTTPS を使用する必要がなくなった場合、次の手順を実行して HTTPS を無効にできます。
+
+### <a name="disable-the-https-feature"></a>HTTPS 機能を無効にする 
+
+1. [Azure portal](https://portal.azure.com) で、 **Azure Front Door** 構成を参照します。
+
+2. フロントエンド ホストのリストで、HTTPS を無効にするカスタム ドメインをクリックします。
+
+3. **[無効]** をクリックして HTTPS を無効にした後、 **[保存]** をクリックします。
+
+### <a name="wait-for-propagation"></a>伝達を待機する
+
+カスタム ドメインの HTTPS 機能を無効にした後、適用されるまでには最大 6 から 8 時間かかります。 プロセスが完了すると、Azure Portal の [カスタム HTTPS] のステータスは **[無効]** に設定され、[カスタム ドメイン] ダイアログの 3つの操作ステップが完了としてマークされます。 カスタム ドメインは HTTPS を使うことができなくなります。
+
+#### <a name="operation-progress"></a>操作の進行
+
+次の表は、HTTPS を無効にするときの操作の進行を示したものです。 HTTPS を無効にした後、[カスタム ドメイン] ダイアログには 3 つの操作ステップが表示されます。 各ステップがアクティブになると、ステップの下に詳細が追加表示されます。 ステップが正常に完了すると、横に緑色のチェック マークが表示されます。 
+
+| 操作の進行 | 操作の詳細 | 
+| --- | --- |
+| 1 要求の送信 | 要求を送信しています |
+| 2 証明書のプロビジョニング解除 | 証明書を削除しています |
+| 3 完了 | 証明書が削除されました |
 
 ## <a name="next-steps"></a>次のステップ
 
-- [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
-- [Front Door のしくみ](front-door-routing-architecture.md)について学習します。
+このチュートリアルでは、以下の内容を学習しました。
+
+* Key Vault に証明書をアップロードする。
+* ドメインを検証する。
+* カスタム ドメインの HTTPS を有効にする。
+
+Front Door の geo フィルタリング ポリシーを設定する方法については、次のチュートリアルに進んでください。
+
+> [!div class="nextstepaction"]
+> [geo フィルタリング ポリシーを設定する](front-door-geo-filtering.md)

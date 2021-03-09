@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.openlocfilehash: 5f7035472ae408987a14f06492a762b56fa657b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ROBOTS: NOINDEX
+ms.openlocfilehash: 51d7c1e433e72a393178cf429759b5e9a6479e88
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76697610"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648681"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>委任されたアクセス許可とアプリケーションのアクセス許可の違いを識別する方法
 
@@ -27,4 +28,4 @@ ms.locfileid: "76697610"
 - さらに知識を深めるために、リソース アプリケーションで[スコープ](developer-glossary.md#scopes)と[アプリケーション ロール](developer-glossary.md#roles) (Azure Portal ではそれぞれ委任されたアクセス許可とアプリケーション アクセス許可) をクライアント アプリケーションに公開する方法を確認してください。 
 
 ## <a name="next-steps"></a>次のステップ
-[Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD Microsoft Q&A](/answers/topics/azure-active-directory.html)

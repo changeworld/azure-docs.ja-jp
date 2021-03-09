@@ -5,12 +5,12 @@ author: batrived
 ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
-ms.openlocfilehash: 5eb40d464fb718f0bd6dffe0d00f6420f4ea4995
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fa119784715b8c88ef3c9f2700b2cac1cc467234
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119006"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339747"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>接続に関する問題のトラブルシューティング - Azure Event Grid
 
@@ -22,7 +22,7 @@ ms.locfileid: "86119006"
 
 アプリケーションが Event Grid にまったく接続できない場合は、このセクションの手順に従って問題のトラブルシューティングを行います。
 
-### <a name="check-if-there-is-a-service-outage"></a>サービス停止があるかどうかを確認する
+### <a name="check-if-theres-a-service-outage"></a>サービス停止があるかどうかを確認する
 
 [Azure サービスの状態サイト](https://azure.microsoft.com/status/)で Azure Event Grid のサービス停止を確認します。
 
@@ -50,12 +50,14 @@ telnet {sampletopicname}.{region}-{suffix}.eventgrid.azure.net 443
 
 Azure を使用している場合、使用している、または使用しようとしているすべての Azure サービスにアクセスするために、企業のファイアウォールまたはプロキシで特定の IP アドレス範囲または URL を許可することが必要になる場合があります。 Event Grid によって使用される IP アドレスでトラフィックが許可されていることを確認します。 Azure Event Grid によって使用される IP アドレスについては、「[Azure の IP 範囲とサービス タグ - パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」と[サービス タグ - AzureEventGrid](network-security.md#service-tags) を参照してください。
 
+「[Azure の IP 範囲とサービス タグ - パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」ドキュメントには、**リージョン別** の IP アドレスも記載されています。 企業のファイアウォールまたはプロキシで、**トピックのリージョン** と **ペアになっているリージョン** に対してアドレス範囲を許可することができます。 リージョンのペアになっているリージョンについては、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」をご覧ください。 
+
 > [!NOTE]
 > 新しい IP アドレスを AzureEventGrid サービス タグに追加することはできますが、通常ではありません。 サービス タグを週単位で確認することをお勧めします。
 
 ### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>ネットワーク セキュリティ グループで AzureEventGrid サービス タグが許可されていることを確認する
 
-アプリケーションがサブネット内で実行されていて、関連付けられているネットワーク セキュリティ グループがある場合は、インターネット送信が許可されているか、または AzureEventGrid サービス タグが許可されているかを確認します。 [サービス タグ](../virtual-network/service-tags-overview.md)に関するページを参照してください
+アプリケーションがサブネット内で実行されていて、関連付けられているネットワーク セキュリティ グループがある場合は、インターネット送信が許可されているか、または AzureEventGrid サービス タグが許可されているかを確認します。 [サービス タグ](../virtual-network/service-tags-overview.md)に関するページを参照してください。
 
 ### <a name="check-the-ip-firewall-settings-for-your-topicdomain"></a>トピックまたはドメインの IP ファイアウォール設定を確認する
 
@@ -63,7 +65,7 @@ Azure を使用している場合、使用している、または使用しよ�
 
 既定では、要求に有効な認証と承認がある限り、Event Grid のトピックまたはドメインにはインターネットからアクセスできます。 これは IP ファイアウォールを使用して、さらに [CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみに制限できます。
 
-IP ファイアウォール規則は Event Grid のトピックまたはドメイン レベルで適用されます。 したがって、規則は、サポートされているプロトコルを使用するクライアントからのすべての接続に適用されます。 Event Grid のトピックまたはドメインの許可された IP 規則と一致しない IP アドレスからの接続試行は、禁止されているため拒否されます。 IP 規則に関する記述は応答に含まれません。
+IP ファイアウォール規則は Event Grid のトピックまたはドメイン レベルで適用されます。 したがって、規則は、サポートされているプロトコルを使用するクライアントからのすべての接続に適用されます。 Event Grid のトピックまたはドメインの許可された IP 規則と一致しない IP アドレスからの接続試行は、禁止されているため拒否されます。 その応答に、IP 規則に関する記述は含まれません。
 
 詳細については、「[Azure Event Grid のトピックまたはドメインに対して IP ファイアウォールを構成する](configure-firewall.md)」を参照してください。
 
@@ -85,7 +87,7 @@ Event Grid のトピックまたはドメインの[診断ログを有効にし�
 
 Event Grid のトピックまたはドメインがプライベート エンドポイント経由でのみアクセスできるように構成されている場合は、クライアント アプリケーションがプライベート エンドポイント経由でトピックまたはドメインにアクセスしていることを確認します。 これを確認するには、クライアント アプリケーションがサブネット内で実行されていて、そのサブネットに Event Grid のトピックまたはドメインのプライベート エンドポイントがあるかどうかを確認します。
 
-[Azure Private Link サービス](../private-link/private-link-overview.md)を使用すると、仮想ネットワーク内の**プライベート エンドポイント**経由で Azure Event Grid にアクセスできます。 プライベート エンドポイントとは、Azure Private Link を使用するサービスにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントは、ご自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。 サービスへのすべてのトラフィックをプライベート エンドポイント経由でルーティングできるため、ゲートウェイ、NAT デバイス、ExpressRoute または VPN 接続、パブリック IP アドレスは必要ありません。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由して、パブリック インターネットからの公開を排除します。 最高レベルの細分性でアクセスを制御しながら Azure リソースのインスタンスに接続できます。
+[Azure Private Link サービス](../private-link/private-link-overview.md)を使用すると、仮想ネットワーク内の **プライベート エンドポイント** 経由で Azure Event Grid にアクセスできます。 プライベート エンドポイントとは、Azure Private Link を使用するサービスにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントは、ご自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。 サービスへのすべてのトラフィックをプライベート エンドポイント経由でルーティングできるため、ゲートウェイ、NAT デバイス、ExpressRoute または VPN 接続、パブリック IP アドレスは必要ありません。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由して、パブリック インターネットからの公開を排除します。 最高レベルの細分性でアクセスを制御しながら Azure リソースのインスタンスに接続できます。
 
 詳細については、[プライベート エンドポイントの構成](configure-private-endpoints.md)に関するページを参照してください。
 

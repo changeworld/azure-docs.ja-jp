@@ -4,6 +4,10 @@
   items:
     - name: Lab Services について
       href: lab-services-overview.md
+- name: クイックスタート
+  items:
+    - name: はじめに
+      href: get-started-manage-labs.md
 - name: チュートリアル
   items:
     - name: ラボ アカウントを設定する
@@ -16,11 +20,11 @@
       href: tutorial-track-usage.md
 - name: 概念
   items:
-    - name: クラスルーム ラボの概要
+    - name: ラボの概要
       href: classroom-labs-overview.md
-    - name: クラスルーム ラボの概念
+    - name: ラボの概念
       href: classroom-labs-concepts.md
-    - name: クラスルーム ラボのアーキテクチャの基礎
+    - name: ラボのアーキテクチャの基礎
       href: classroom-labs-fundamentals.md
     - name: 容量制限
       href: capacity-limits.md
@@ -32,7 +36,7 @@
           href: classroom-labs-scenarios.md
         - name: ハッカソンにラボ サービスを使用する
           href: hackathon-labs.md
-        - name: クラスルーム ラボ - クラスの種類
+        - name: ラボのクラスの種類
           items:
             - name: クラスの種類の概要
               href: class-types.md
@@ -42,9 +46,11 @@
               href: class-type-shell-scripting-linux.md
             - name: 倫理的ハッキング
               href: class-type-ethical-hacking.md
+            - name: GNS3 を使用したネットワーク
+              href: class-type-networking-gns3.md
             - name: データベースの管理
               href: class-type-database-management.md
-            - name: Azure SQL Database の管理と開発
+            - name: SQL データベースの管理と開発
               href: class-type-sql-server.md
             - name: Python と Jupyter Notebook
               href: class-type-jupyter-notebook.md
@@ -54,6 +60,15 @@
               href: class-type-matlab.md
             - name: SolidWorks のコンピューター支援設計 (CAD)
               href: class-type-solidworks.md
+            - name: 「ArcGIS」
+              href: class-type-arcgis.md
+            - name: Project Lead the Way
+              href: class-type-pltw.md
+        - name: Teams 内で Azure Lab Services を使用する
+          items:
+            - name: 概要
+              displayName: labs within Teams
+              href: lab-services-within-teams-overview.md
 - name: 操作方法ガイド
   items:
     - name: 管理者ガイド
@@ -88,9 +103,11 @@
           href: specify-marketplace-images.md
         - name: サポート情報を指定する (ラボ アカウント オーナー)
           href: lab-account-owner-support-information.md
-    - name: クラスルーム ラボを作成して構成する (教師)
+        - name: カスタム イメージを Shared Image Gallery にアップロードする
+          href: upload-custom-image-shared-image-gallery.md
+    - name: ラボを作成して構成する (教師)
       items:
-        - name: クラスルーム ラボを作成して管理する
+        - name: ラボを作成して管理する
           href: how-to-manage-classroom-labs.md
         - name: ダッシュボードを使用する
           href: use-dashboard.md
@@ -126,9 +143,9 @@
           href: lab-creator-support-information.md
         - name: 教師 ビューから学生の VM にアクセスする
           href: instructor-access-virtual-machines.md
-    - name: クラスルーム ラボの VM に接続する (学生)
+    - name: ラボの VM に接続する (学生)
       items:
-        - name: クラスルーム ラボへのアクセス
+        - name: ラボにアクセスする
           href: how-to-use-classroom-lab.md
         - name: Linux VM への接続
           href: how-to-use-remote-desktop-linux-student.md
@@ -140,10 +157,24 @@
           href: how-to-set-virtual-machine-passwords-student.md
         - name: サポート情報の表示 (学生)
           href: lab-user-support-information.md
+    - name: Teams 内でのラボの使用
+      items:
+        - name: Teams からラボを作成する
+          href: how-to-get-started-create-lab-within-teams.md
+        - name: ユーザー リストの管理
+          href: how-to-manage-user-lists-within-teams.md
+        - name: VM プールの管理
+          href: how-to-manage-vm-pool-within-teams.md
+        - name: ラボの削除
+          href: how-to-delete-lab-within-teams.md
+        - name: スケジュールと設定
+          href: how-to-create-schedules-within-teams.md
+        - name: VM へのアクセス (学生ビュー)
+          href: how-to-access-vm-for-students-within-teams.md
 - name: リファレンス
   items:
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/labservices/'
+      href: /rest/api/labservices/
     - name: Az.LabServices PowerShell モジュール (プレビュー)
       href: reference-powershell-module.md
 - name: リソース

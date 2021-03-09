@@ -1,23 +1,23 @@
 ---
 title: クラウド間でテンプレートを再利用する
-description: 異なるクラウド環境で一貫して動作する Azure Resource Manager テンプレートを開発します。 Azure Stack 用のテンプレートを新規作成するか、既存のテンプレートを更新します。
+description: 異なるクラウド環境で一貫して動作する Azure Resource Manager テンプレート (ARM テンプレート) を開発します。 Azure Stack 用のテンプレートを新規作成するか、既存のテンプレートを更新します。
 author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
-ms.custom: seodec18
-ms.openlocfilehash: 9355482c26cabb96fc6292bab5d542f36aec6a8c
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 806556a8da97ec84fe8141b95198b4a7da95c062
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509758"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928360"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>クラウドの一貫性を実現する ARM テンプレートを開発する
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Azure の主な利点は一貫性です。 ある場所に対する開発投資を、別の場所で再利用できます。 Azure Resource Manager (ARM) テンプレートを使うと、グローバル Azure、Azure ソブリン クラウド、Azure Stack など、環境が異なっても一貫性があり再現可能なデプロイを作成できます。 ただし、異なるクラウドでテンプレートを再利用するには、このガイドで説明するように、クラウド固有の依存関係を考慮する必要があります。
+Azure の主な利点は一貫性です。 ある場所に対する開発投資を、別の場所で再利用できます。 Azure Resource Manager テンプレート (ARM テンプレート) を使用すると、グローバル Azure、Azure ソブリン クラウド、Azure Stack などの環境にわたってデプロイが一貫性を持ち、再現可能となります。 ただし、異なるクラウドでテンプレートを再利用するには、このガイドで説明するように、クラウド固有の依存関係を考慮する必要があります。
 
 Microsoft は、次のように、インテリジェントでエンタープライズ対応のクラウド サービスをさまざまな場所で提供しています。
 
@@ -443,8 +443,8 @@ API プロファイルは、テンプレートの必須要素ではありませ�
 
 一般に、テンプレートにエンドポイントをハードコーディングすることは避けます。 ベスト プラクティスは、参照テンプレート関数を使ってエンドポイントを動的に取得することです。 たとえば、最もよくハードコーディングされるエンドポイントは、ストレージ アカウントのエンドポイント名前空間です。 各ストレージ アカウントは、ストレージ アカウントの名前とエンドポイントの名前空間を連結して作成される一意の FQDN を持っています。 mystorageaccount1 という名前の BLOB ストレージ アカウントは、クラウドによって異なる FQDN になります。
 
-* **mystorageaccount1.blob.core.windows.net**: グローバル Azure クラウドで作成されたとき。
-* **mystorageaccount1.blob.core.chinacloudapi.cn**: Azure China 21Vianet クラウドで作成されたとき。
+* `mystorageaccount1.blob.core.windows.net`: グローバル Azure クラウドで作成されたとき。
+* `mystorageaccount1.blob.core.chinacloudapi.cn`: Azure China 21Vianet クラウドで作成されたとき。
 
 次の参照テンプレート関数は、ストレージ リソース プロバイダーからエンドポイントの名前空間を取得します。
 
@@ -655,7 +655,7 @@ Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerS
 
 次の図では、統合開発環境 (IDE) を使用するチームの開発プロセスの典型的な例を示します。 タイムラインの異なる段階で、異なる種類のテストが実行されます。 ここでは 2 人の開発者が同じソリューションで作業していますが、このシナリオは単独開発者や大規模なチームにも等しく適用されます。 通常、各開発者は中央リポジトリのローカル コピーを作成し、同じファイルの作業をしている可能性がある他の開発者に影響を与えることなく、ローカルのコピーを使用して作業できます。
 
-![ワークフロー](./media/templates-cloud-consistency/workflow.png)
+![ローカル IDE での並列の 2 つのセットの単体テストと統合テストを示す図。これは、CI/CD 開発フローにマージされ、単体テスト、統合テスト、テスト デプロイ、デプロイの順に遷移します。](./media/templates-cloud-consistency/workflow.png)
 
 テストと自動化については次のヒントを考慮してください。
 

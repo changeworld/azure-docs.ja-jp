@@ -5,15 +5,15 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 949e408544e25cb55622cf2a1b1d2dddb92350a6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080200"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001509"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service におけるオペレーティング システムの機能
-この記事では、 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)上で動作するすべての Windows アプリが利用できる基本的なオペレーティング システムの機能について説明します。 これらの機能には、ファイル アクセス、ネットワーク アクセス、レジストリ アクセス、診断ログ、イベントがあります。 
+この記事では、 [Azure App Service](./overview.md)上で動作するすべての Windows アプリが利用できる基本的なオペレーティング システムの機能について説明します。 これらの機能には、ファイル アクセス、ネットワーク アクセス、レジストリ アクセス、診断ログ、イベントがあります。 
 
 > [!NOTE] 
 > App Service の [Linux アプリ](overview.md#app-service-on-linux)は、独自のコンテナーで実行されます。 ホスト オペレーティング システムへのアクセスは許可されていません。コンテナーにはルート アクセスが可能です。 同様に、[Windows コンテナーで実行されるアプリ](quickstart-custom-container.md?pivots=container-windows)ではコンテナーへの管理アクセスが可能ですが、ホスト オペレーティング システムにはアクセスできません。 
@@ -65,7 +65,7 @@ App Service には、ローカル ドライブやネットワーク ドライブ
 
 App Service 内には、各データ センターに作成された複数の UNC 共有があります。 データ センターごとに、すべての顧客のユーザーコンテンツの割合が各 UNC 共有に反映されます。 さらに、個々の顧客のサブスクリプションのすべてのファイル コンテンツは、必ず同じ UNC 共有に配置されます。 
 
-Azure サービスの性質上、UNC 共有をホストする仮想マシンはその時々で変わります。 通常の Azure 運用で仮想マシンが起動または停止するたびに、必要な仮想マシンに UNC 共有が確実にマウントされます。 したがって、UNC ファイル パスのマシン情報が常に変わらないことを前提としてアプリをハードコーディングしないでください。 代わりに、App Service に用意されている*偽*の絶対パス **D:\home\site** を使用してください。 この "偽" の絶対パスを使用すれば、アプリとユーザーが変わっても常に目的のアプリを表すことができます。 つまり、**D:\home\site** を使用することで、共有ファイルを別のアプリへ移動するたびに新しい絶対パスを構成する必要がなくなります。
+Azure サービスの性質上、UNC 共有をホストする仮想マシンはその時々で変わります。 通常の Azure 運用で仮想マシンが起動または停止するたびに、必要な仮想マシンに UNC 共有が確実にマウントされます。 したがって、UNC ファイル パスのマシン情報が常に変わらないことを前提としてアプリをハードコーディングしないでください。 代わりに、App Service に用意されている *偽* の絶対パス **D:\home\site** を使用してください。 この "偽" の絶対パスを使用すれば、アプリとユーザーが変わっても常に目的のアプリを表すことができます。 つまり、**D:\home\site** を使用することで、共有ファイルを別のアプリへ移動するたびに新しい絶対パスを構成する必要がなくなります。
 
 <a id="TypesOfFileAccess"></a>
 
@@ -126,4 +126,3 @@ App Service では、VM インスタンスへのリモート デスクトップ 
 ## <a name="more-information"></a>詳細情報
 
 [Azure App Service サンドボックス](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) - App Service の実行環境に関する最新の情報。 このページは、App Service の開発チームによって直接管理されます。
-

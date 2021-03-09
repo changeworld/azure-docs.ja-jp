@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 17ec3c6d3b9b19b7bc6edcb82cef438e27189c33
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ecd05a838425d57e0eaff2fa571d72b5a87e92a6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020109"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791780"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure 内で Service Fabric クラスターを監視する
 
@@ -57,7 +57,7 @@ Service Fabric Analytics ソリューションにアクセスするには、[Azu
 
 **[概要]** に、有効になっているソリューションごとのグラフ形式のタイルが表示されます (Service Fabric のタイルも含まれています)。 **[Service Fabric]** グラフをクリックして、Service Fabric Analytics ソリューションを継続します。
 
-![Service Fabric ソリューション](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
+![[Service Fabric] グラフが表示されているスクリーンショット。](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
 
 次の画像には、Service Fabric Analytics ソリューションのホーム ページが示されています。 このホーム ページでは、クラスター内で行われている処理のスナップショット ビューが提供されます。
 
@@ -74,7 +74,7 @@ Service Fabric Analytics ソリューションにアクセスするには、[Azu
 
 ### <a name="view-service-fabric-events-including-actions-on-nodes"></a>ノードに対する操作を含む Service Fabric イベントを表示する
 
-Service Fabric Analytics ページで、**クラスター イベント**のグラフをクリックします。  収集済みのすべてのシステム イベントのログが表示されます。 参考までに、これらは Azure Storage アカウント内の **WADServiceFabricSystemEventsTable** に由来し、次に確認する Reliable Services イベントや Reliable Actors イベントも同様に、それぞれのテーブルに由来します。
+Service Fabric Analytics ページで、**クラスター イベント** のグラフをクリックします。  収集済みのすべてのシステム イベントのログが表示されます。 参考までに、これらは Azure Storage アカウント内の **WADServiceFabricSystemEventsTable** に由来し、次に確認する Reliable Services イベントや Reliable Actors イベントも同様に、それぞれのテーブルに由来します。
     
 ![クエリの操作チャネル](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-events.png)
 
@@ -183,7 +183,7 @@ app('PlunkoServiceFabricCluster').traces
 
 ### <a name="view-service-fabric-application-events"></a>Service Fabric アプリケーション イベントを表示する
 
-クラスター上に展開されている Reliable Services アプリケーションと Reliable Actors アプリケーションのイベントを表示できます。  Service Fabric Analytics ページで、**アプリケーション イベント**のグラフをクリックします。
+クラスター上に展開されている Reliable Services アプリケーションと Reliable Actors アプリケーションのイベントを表示できます。  Service Fabric Analytics ページで、**アプリケーション イベント** のグラフをクリックします。
 
 次のクエリを実行すると、Reliable Services アプリケーションのイベントが表示されます。
 ```kusto
@@ -240,7 +240,7 @@ Reliable Actors に対してより詳細なイベントを構成するには、�
 ## <a name="query-the-eventstore-service"></a>EventStore サービスに対してクエリを実行する
 [EventStore サービス](service-fabric-diagnostics-eventstore.md)では、任意の時点でのクラスターまたはワークロードの状態を理解する手段が提供されます。 EventStore は、クラスターからのイベントを保持するステートフルな Service Fabric サービスです。 イベントは、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)、REST、および API シリーズを介して公開されます。 EventStore では、クラスターに対してクエリが直接実行されて、クラスター内の任意のエンティティに関する診断データが取得されます。EventStore で使用できるイベントの完全な一覧を確認するには、「[Service Fabric イベント](service-fabric-diagnostics-event-generation-operational.md)」を参照してください。
 
-[Service Fabric クライアント ライブラリ](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)を使用して EventStore API シリーズのクエリをプログラムで実行することもできます。
+[Service Fabric クライアント ライブラリ](/dotnet/api/overview/azure/service-fabric#client-library)を使用して EventStore API シリーズのクエリをプログラムで実行することもできます。
 
 GetClusterEventListAsync 関数を使用して、2018-04-03T18:00:00Z と 2018-04-04T18:00:00Z の間のすべてのクラスター イベントを要求する例を示します。
 
@@ -299,10 +299,10 @@ Service Fabric には、正常性エンティティを使用する[正常性モ�
 
 クラスターには、システム コンポーネントから送信された正常性レポートが自動的に設定されます。 詳細については、「 [トラブルシューティングのためのシステム正常性レポートの使用](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)」を参照してください。
 
-Service Fabric では、サポート対象の各 [エンティティ型](service-fabric-health-introduction.md#health-entities-and-hierarchy)について正常性クエリが公開されています。 アクセスには、API ([FabricClient.HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet) 上メソッドを使用)、PowerShell コマンドレット、および REST を使用できます。 これらのクエリは、正常性状態の集計、エンティティの正常性イベント、子の正常性状態 (該当する場合)、異常評価 (エンティティが正常でない場合)、子の正常性統計情報 (該当する場合) といったエンティティの正常性についての完全な情報を返します。
+Service Fabric では、サポート対象の各 [エンティティ型](service-fabric-health-introduction.md#health-entities-and-hierarchy)について正常性クエリが公開されています。 アクセスには、API ([FabricClient.HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager) 上メソッドを使用)、PowerShell コマンドレット、および REST を使用できます。 これらのクエリは、正常性状態の集計、エンティティの正常性イベント、子の正常性状態 (該当する場合)、異常評価 (エンティティが正常でない場合)、子の正常性統計情報 (該当する場合) といったエンティティの正常性についての完全な情報を返します。
 
 ### <a name="get-cluster-health"></a>クラスターの正常性の取得
-[Get-ServiceFabricClusterHealth コマンドレット](/powershell/module/servicefabric/get-servicefabricclusterhealth)は、クラスター エンティティの正常性を返し、アプリケーションとノード (クラスターの子) の正常性状態が含まれます。  まず、[Connect-ServiceFabricCluster コマンドレット](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps)を使用してクラスターに接続します。
+[Get-ServiceFabricClusterHealth コマンドレット](/powershell/module/servicefabric/get-servicefabricclusterhealth)は、クラスター エンティティの正常性を返し、アプリケーションとノード (クラスターの子) の正常性状態が含まれます。  まず、[Connect-ServiceFabricCluster コマンドレット](/powershell/module/servicefabric/connect-servicefabriccluster)を使用してクラスターに接続します。
 
 クラスターの状態 (11 個のノード、システム アプリケーション、fabric:/Voting) は上記のように構成されています。
 
@@ -454,7 +454,7 @@ HealthEvents            : None
 ```
 
 ### <a name="get-node-health"></a>ノードの正常性の取得
-[Get-ServiceFabricNodeHealth コマンドレット](/powershell/module/servicefabric/get-servicefabricnodehealth)は、ノード エンティティの正常性を返し、ノードでレポートされた正常性のイベントが含まれます。 まず、[Connect-ServiceFabricCluster コマンドレット](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps)を使用してクラスターに接続します。 次の例では、既定の正常性ポリシーを使用して特定のノードの正常性を取得します。
+[Get-ServiceFabricNodeHealth コマンドレット](/powershell/module/servicefabric/get-servicefabricnodehealth)は、ノード エンティティの正常性を返し、ノードでレポートされた正常性のイベントが含まれます。 まず、[Connect-ServiceFabricCluster コマンドレット](/powershell/module/servicefabric/connect-servicefabriccluster)を使用してクラスターに接続します。 次の例では、既定の正常性ポリシーを使用して特定のノードの正常性を取得します。
 
 ```powershell
 Get-ServiceFabricNodeHealth _nt1vm_3

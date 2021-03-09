@@ -5,13 +5,13 @@ ms.topic: conceptual
 author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 83f518326b38e9832c46997a0a2791eb9f35705e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-js
+ms.openlocfilehash: 6295a56abbf3466c68b968c935936dbc10e22fb5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371636"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711418"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>JavaScript Web アプリの SDK 読み込みエラーのトラブルシューティング
 
@@ -56,7 +56,7 @@ SDK 読み込みエラーの例外は、SDK スクリプトがダウンロード
 **間欠的なネットワーク接続エラーをユーザーが経験している場合、考えられる解決策は限られており、通常はしばらくすると自然に解決します。** たとえば、ユーザーがサイトを再度読み込むと (ページを最新の情報に更新)、ファイルは (最終的には) ダウンロードされて、更新されたバージョンがリリースされるまでの間、ローカルにキャッシュされます。
 
 > [!NOTE]
-> この例外が解決せず、ユーザーの多くにこの例外が発生しており (この例外が急速かつ持続的に報告されていることにより診断)、通常のクライアント テレメトリが減少している場合、間欠的なネットワーク接続エラーは、この問題の真の原因_ではない可能性が高い_ため、考えられる他の既知の問題かどうか診断を続ける必要があります。
+> この例外が解決せず、ユーザーの多くにこの例外が発生しており (この例外が急速かつ持続的に報告されていることにより診断)、通常のクライアント テレメトリが減少している場合、間欠的なネットワーク接続エラーは、この問題の真の原因 _ではない可能性が高い_ ため、考えられる他の既知の問題かどうか診断を続ける必要があります。
 
 この状況では、SDK を独自の CDN でホストしても、その CDN も同じ問題の影響を受けるため、この例外の発生は増えも減りもしません。
 
@@ -68,7 +68,7 @@ NPM パッケージ ソリューション経由で SDK を使用する場合に�
  
 ## <a name="application-insights-cdn-outage"></a>Application Insights CDN の停止
 
-Application Insights CDN が停止しているかどうかの確認は、エンド ユーザーの場所とは異なる場所、たとえば開発用マシンなどから (組織でこのドメインがブロックされていない場合)、ブラウザーで直接 CDN エンドポイントにアクセスしてみる (たとえば、 https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js) ことで行えます。
+Application Insights CDN が停止しているかどうかの確認は、エンド ユーザーの場所とは異なる場所、たとえば開発用マシンなどから (組織でこのドメインがブロックされていない場合)、ブラウザー (たとえば、 https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js や https://js.monitor.azure.com/scripts/b/ai.2.min.js) ) で直接 CDN エンドポイントにアクセスしてみることで行えます。
 
 停止が確認できたなら、[新しいサポート チケットを作成する](https://azure.microsoft.com/support/create-ticket/)か、SDK をダウンロードするために使用される URL を変更することができます。
 
@@ -87,7 +87,7 @@ Application Insights CDN が停止しているかどうかの確認は、エン�
 
 SDK が初期化に失敗する場合、&lt;script /&gt; は CDN から正常にダウンロードされていますが、初期化中にエラーが発生しています。 これは、存在しない依存関係や無効な依存関係、何らかの形の JavaScript 例外が原因である可能性があります。
 
-最初に、SDK が正常にダウンロードされたかどうかを確認します。スクリプトがダウンロードされていない場合、このシナリオは SDK 読み込みエラーの例外の原因では__ありません__。
+最初に、SDK が正常にダウンロードされたかどうかを確認します。スクリプトがダウンロードされていない場合、このシナリオは SDK 読み込みエラーの例外の原因では __ありません__。
 
 クイック チェック:開発者ツール (F12) をサポートするブラウザーを使用して、```src``` スニペット構成で定義されているスクリプトがダウンロードされており、応答コードが 200 (成功) または 304 (変更なし) になっていることを [ネットワーク] タブで検証します。 fiddler などのツールを使用して、ネットワーク トラフィックを確認することもできます。
 
@@ -106,7 +106,7 @@ SDK スクリプト (ai.2.min.js など) で例外が報告されている場合
 
 構成が間違っていないかどうかを確認するには、スニペットに渡される構成を変更し (まだ行っていない場合)、その構成に文字列値としてインストルメンテーション キーのみが含まれるようにします。
 
-> src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",<br />
+> src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js",<br />
 > cfg:{<br />
 > instrumentationKey:"INSTRUMENTATION_KEY"<br />
 > }});<br />
@@ -134,7 +134,7 @@ SDK スクリプト (ai.2.min.js など) で例外が報告されている場合
 > [!WARNING]
 > これは開発者専用の設定であり、テレメトリが失われるため、完全な運用環境では絶対に有効にしないでください。
 
-> src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.js",<br />
+> src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js",<br />
 > cfg:{<br />
 > instrumentationKey:"INSTRUMENTATION_KEY",<br />
 > enableDebug: true<br />
@@ -157,7 +157,7 @@ CDN エンドポイントが安全ではないと識別されているかどう�
 
 CDN エンドポイントが安全ではないと識別されている場合、問題ができるだけ早く解決されるようにするため、[サポート チケットを作成](https://azure.microsoft.com/support/create-ticket/)してください。
 
-[SDK CDN エンドポイントを変更する](#change-the-cdn-endpoint)ことにより、この問題をより速やかに回避できる*可能性*があります。
+[SDK CDN エンドポイントを変更する](#change-the-cdn-endpoint)ことにより、この問題をより速やかに回避できる *可能性* があります。
 
 ### <a name="application-insights-javascript-cdn-is-blocked-by-end-user---blocked-by-browser-installed-blocker-personal-firewall"></a>Application Insights JavaScript CDN がブロックされている (エンド ユーザーによる - ブラウザー、インストールされているブロック、パーソナル ファイアウォールによるブロック)
 

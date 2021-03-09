@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 835be5b867826d75732c9482743ad6a4ca2900e7
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982856"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231844"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Azure ネットワーク サービスを使用したリモートでの作業
 
@@ -86,15 +86,15 @@ Azure には、豊富なエコ システム パートナーもあります。 �
 | [自宅からの作業のニーズに応えることに苦慮している場合にAzure Virtual WAN を役立てる方法](../virtual-wan/work-remotely-support.md) | Azure Virtual WAN を使用して、組織のリモート接続のニーズに対処します。|
 | [Application Gateway の高トラフィックのサポート](../application-gateway/high-traffic-support.md) | Application Gateway と Web アプリケーション ファイアウォール (WAF) を使用して、Web アプリケーションへのトラフィックをスケーラブルかつ安全な方法で管理できます。 |
 | [リモート作業でのネットワーク仮想アプライアンス (NVA) に関する考慮事項](../vpn-gateway/nva-work-remotely-support.md)|Azure で NVA を活用してリモート アクセス ソリューションを提供するためのガイダンスを確認します。 |
-| [SSTP から OpenVPN プロトコルまたは IKEv2 に移行する](https://go.microsoft.com/fwlink/?linkid=2124112) | OpenVPN プロトコルまたは IKEv2 に移行して、コンカレント接続の上限が 128 という SSTP の制限を取り除きます。|
+| [SSTP から OpenVPN プロトコルまたは IKEv2 に移行する](../vpn-gateway/ikev2-openvpn-from-sstp.md) | OpenVPN プロトコルまたは IKEv2 に移行して、コンカレント接続の上限が 128 という SSTP の制限を取り除きます。|
 | [Azure Bastion を使用したリモート作業](../bastion/work-remotely-support.md) | パブリック IP アドレスを使用しないで Azure portal で直接、Azure 仮想ネットワーク内の仮想マシンに安全かつシームレスに RDP/SSH 接続できます。 |
 | [リモート ユーザーをサポートするためのハイブリッド接続を Azure ExpressRoute を使用して作成する](../expressroute/work-remotely-support.md) | ハイブリッド接続に ExpressRoute を使用して、組織内のユーザーがリモートで作業できるようにします。|
 | [Azure Firewall のリモート作業のサポート](../firewall/remote-work-support.md)|Azure Firewall を使用して Azure 仮想ネットワーク リソースを保護します。 |
 
 <!--Link References-->
-[VNet-peer]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview
-[S2S]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal
-[ExR]: https://docs.microsoft.com/azure/expressroute/expressroute-introduction
-[ExR-eco]: https://docs.microsoft.com/azure/expressroute/expressroute-locations
-[ExR-D]: https://docs.microsoft.com/azure/expressroute/expressroute-erdirect-about
-[Az-OCI]: https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-azure-oci-networking
+[VNet-peer]: ../virtual-network/virtual-network-peering-overview.md
+[S2S]: ../vpn-gateway/tutorial-site-to-site-portal.md
+[ExR]: ../expressroute/expressroute-introduction.md
+[ExR-eco]: ../expressroute/expressroute-locations.md
+[ExR-D]: ../expressroute/expressroute-erdirect-about.md
+[Az-OCI]: ../virtual-machines/workloads/oracle/configure-azure-oci-networking.md

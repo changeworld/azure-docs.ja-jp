@@ -1,22 +1,18 @@
 ---
 title: SAP HANA からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、SAP HANA からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/22/2020
-ms.openlocfilehash: 92cc94170a01aceaa3e6bd058f4ae6628db04f18
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: ce3c1e22dd030c0730bf4d9859591c00860908a7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529587"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382278"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用して SAP HANA からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -41,12 +37,12 @@ SAP HANA データベースから、サポートされている任意のシン�
 具体的には、この SAP HANA コネクタは以下をサポートします。
 
 - SAP HANA データベースの任意のバージョンからのデータのコピー。
-- **HANA 情報モデル** (分析ビューや計算ビューなど) および**行/列のテーブル**からのデータのコピー。
-- **基本**または **Windows** 認証を使用したデータのコピー。
+- **HANA 情報モデル** (分析ビューや計算ビューなど) および **行/列のテーブル** からのデータのコピー。
+- **基本** または **Windows** 認証を使用したデータのコピー。
 - SAP HANA ソースからの並列コピー。 詳細については、「[SAP HANA からの並列コピー](#parallel-copy-from-sap-hana)」セクションを参照してください。
 
 > [!TIP]
-> データを SAP HANA データ ストア**に**コピーするには、汎用 ODBC コネクタを使用します。 詳細については、「[SAP HANA シンク](#sap-hana-sink)」セクションを参照してください。 SAP HANA コネクタと ODBC コネクタ用のリンクされたサービスは種類が異なるため、再利用することはできないことに注意してください。
+> データを SAP HANA データ ストア **に** コピーするには、汎用 ODBC コネクタを使用します。 詳細については、「[SAP HANA シンク](#sap-hana-sink)」セクションを参照してください。 SAP HANA コネクタと ODBC コネクタ用のリンクされたサービスは種類が異なるため、再利用することはできないことに注意してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -68,7 +64,7 @@ SAP HANA のリンクされたサービスでは、次のプロパティがサ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**SapHana** | はい |
-| connectionString | **基本認証**または **Windows 認証**のいずれかを使用して SAP HANA に接続するために必要な情報を指定します。 以下のサンプルを参照してください。<br>接続文字列には、サーバー/ポートが必要です (既定のポートは 30015)。基本認証を使用する場合は、ユーザー名とパスワードが必要です。 詳細設定については、[SAP HANA ODBC の接続プロパティ](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)に関する記事を参照してください。<br/>パスワードを Azure Key Vault に格納し、接続文字列からパスワード構成を引き出すこともできます。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
+| connectionString | **基本認証** または **Windows 認証** のいずれかを使用して SAP HANA に接続するために必要な情報を指定します。 以下のサンプルを参照してください。<br>接続文字列には、サーバー/ポートが必要です (既定のポートは 30015)。基本認証を使用する場合は、ユーザー名とパスワードが必要です。 詳細設定については、[SAP HANA ODBC の接続プロパティ](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)に関する記事を参照してください。<br/>パスワードを Azure Key Vault に格納し、接続文字列からパスワード構成を引き出すこともできます。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
 | userName | Windows 認証を使用する場合は、ユーザー名を指定します。 例: `user@domain.com` | いいえ |
 | password | ユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
@@ -240,7 +236,7 @@ Data Factory の SAP HANA コネクタは、SAP HANA からデータを並列で
 
 | シナリオ                                           | 推奨設定                                           |
 | -------------------------------------------------- | ------------------------------------------------------------ |
-| 大きなテーブル全体を読み込む。                        | **パーティション オプション**: テーブルの物理パーティション。 <br><br/>実行時に、Data Factory によって、指定された SAP HANA テーブルの物理パーティションの種類が自動的に検出され、対応するパーティション戦略が選択されます。<br>- **範囲パーティション分割**:テーブルに対して定義されているパーティション列とパーティション範囲を取得し、そのデータを範囲別にコピーします。 <br>- **ハッシュ パーティション分割**:ハッシュ パーティション キーをパーティション列として使用して、ADF によって計算された範囲に基づいてデータをパーティション分割してコピーします。 <br>- **ラウンドロビン パーティション分割**または**パーティションなし**:主キーをパーティション列として使用して、ADF によって計算された範囲に基づいてデータをパーティション分割してコピーします。 |
+| 大きなテーブル全体を読み込む。                        | **パーティション オプション**: テーブルの物理パーティション。 <br><br/>実行時に、Data Factory によって、指定された SAP HANA テーブルの物理パーティションの種類が自動的に検出され、対応するパーティション戦略が選択されます。<br>- **範囲パーティション分割**:テーブルに対して定義されているパーティション列とパーティション範囲を取得し、そのデータを範囲別にコピーします。 <br>- **ハッシュ パーティション分割**:ハッシュ パーティション キーをパーティション列として使用して、ADF によって計算された範囲に基づいてデータをパーティション分割してコピーします。 <br>- **ラウンドロビン パーティション分割** または **パーティションなし**:主キーをパーティション列として使用して、ADF によって計算された範囲に基づいてデータをパーティション分割してコピーします。 |
 | カスタム クエリを使用して大量のデータを読み込む。 | **パーティション オプション**: 動的範囲パーティション。<br>**クエリ**: `SELECT * FROM <TABLENAME> WHERE ?AdfHanaDynamicRangePartitionCondition AND <your_additional_where_clause>`<br>**パーティション列**: 動的な範囲パーティションを適用するために、使用する列を指定します。 <br><br>実行時に、Data Factory ではまず、指定されたパーティション列の値の範囲を計算します。これにより、個別のパーティション列の値の数と ADF 並列コピー設定に従って、複数のバケットに行が均等に分散されます。次に、`?AdfHanaDynamicRangePartitionCondition` が、パーティションごとのパーティション列値の範囲のフィルター処理に置き換えられて、SAP HANA に送信されます。<br><br>複数の列をパーティション列として使用する場合は、`SELECT * FROM (SELECT *, CONCAT(<KeyColumn1>, <KeyColumn2>) AS PARTITIONCOLUMN FROM <TABLENAME>) WHERE ?AdfHanaDynamicRangePartitionCondition` のように、各列の値をクエリ内で 1 つの列として連結して、ADF でのパーティション列として指定できます。 |
 
 **例: テーブルの物理パーティションを使用してクエリを実行する**

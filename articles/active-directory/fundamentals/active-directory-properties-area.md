@@ -14,11 +14,11 @@ ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f47ae9b087615a77f6bd4d3f14f1b0052037cba6
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321975"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996758"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Azure Active Directory を使用して組織のプライバシー情報を追加する
 この記事では、テナント管理者が Azure portal を使用して、組織の Azure Active Directory (Azure AD) テナントにプライバシー関連の情報を追加する方法について説明します。
@@ -49,7 +49,7 @@ ms.locfileid: "89321975"
     - **プライバシーに関する声明 URL｡** 組織が社内と外部のゲストの両方のデータのプライバシーをどのように処理するかを説明している組織のドキュメントへのリンクを入力します。
 
         >[!Important]
-        >プライバシーに関する独自の声明とプライバシー連絡先のどちらも含めていない場合は、外部のゲストの **[アクセス許可の確認]** ボックスに、 **<_組織名_> は、ユーザーが確認する使用条件へのリンクを提供していません**というテキストが表示されます。 たとえば､このメッセージは､B2B コラボレーションでゲスト ユーザーが組織にアクセスするための招待を受けたときに表示されます｡
+        >プライバシーに関する独自の声明とプライバシー連絡先のどちらも含めていない場合は、外部のゲストの **[アクセス許可の確認]** ボックスに、 **<_組織名_> は、ユーザーが確認する使用条件へのリンクを提供していません** というテキストが表示されます。 たとえば､このメッセージは､B2B コラボレーションでゲスト ユーザーが組織にアクセスするための招待を受けたときに表示されます｡
 
         ![B2B Collaboration Review Permissions ボックスとメッセージ](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 

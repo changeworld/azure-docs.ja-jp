@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/20/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 01/27/2021
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de76a9138f782ab699bcd6ff56dab09a4e694102
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dcfaef2f518028762958477a5b0d326acc237d1f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035521"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938442"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Azure Active Directory での統合されたセキュリティ情報の登録の有効化
 
-統合された登録の前、ユーザーは Azure Multi-Factor Authentication (MFA) とセルフサービス パスワード リセット (SSPR) の認証方法を別々に登録しました。 ユーザーは Azure Multi-Factor Authentication と SSPR に同様の方法が使用されることに混乱していましたが、どちらの機能も登録する必要がありました。 現在では、統合された登録を使用することで、ユーザーは 1 回登録して Azure Multi-Factor Authentication と SSPR の両方の利点を得ることができます。
+統合された登録の前、ユーザーは Azure AD Multi-Factor Authentication (MFA) とセルフサービス パスワード リセット (SSPR) の認証方法を別々に登録しました。 ユーザーは Azure AD Multi-Factor Authentication と SSPR に同様の方法が使用されることに混乱していましたが、どちらの機能も登録する必要がありました。 現在では、統合された登録を使用することで、ユーザーは 1 回登録して Azure AD Multi-Factor Authentication と SSPR の両方の利点を得ることができます。
 
 > [!NOTE]
-> 2020 年 8 月 15 日以降は、新しい Azure AD テナントで統合されたすべての登録が自動的に有効になります。
+> 2020 年 8 月 15 日以降は、新しい Azure AD テナントで統合されたすべての登録が自動的に有効になります。 
 
 この新しいエクスペリエンスを有効にする前にその機能と効果を確実に把握するには、[統合されたセキュリティ情報の登録の概念](concept-registration-mfa-sspr-combined.md)に関する記事をご覧ください。
 
@@ -40,11 +40,11 @@ ms.locfileid: "87035521"
    ![ユーザーに対して統合されたセキュリティ情報のエクスペリエンスを有効にする](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info.png)
 
 > [!NOTE]
-> 統合された登録を有効にすると、新しいエクスペリエンスで電話番号やモバイル アプリを登録または確認したユーザーは、Azure Multi-Factor Authentication と SSPR ポリシーでこれらの方法が有効な場合、これらを Azure Multi-Factor Authentication と SSPR に使用できます。
+> 統合された登録を有効にすると、新しいエクスペリエンスで電話番号やモバイル アプリを登録または確認したユーザーは、Azure AD Multi-Factor Authentication と SSPR ポリシーでこれらの方法が有効な場合、これらを Azure AD Multi-Factor Authentication と SSPR に使用できます。
 >
 > このエクスペリエンスを無効にすると、以前の SSPR 登録ページ (`https://aka.ms/ssprsetup`) にアクセスするユーザーは、ページにアクセスする前に多要素認証を実行する必要があります。
 
-Internet Explorer で*サイトとゾーンの割り当て一覧*を構成した場合、以下のサイトは同じゾーン内に存在する必要があります。
+Internet Explorer で *サイトとゾーンの割り当て一覧* を構成した場合、以下のサイトは同じゾーン内に存在する必要があります。
 
 * *[https://login.microsoftonline.com](https://login.microsoftonline.com)*
 * *[https://mysignins.microsoft.com](https://mysignins.microsoft.com)*
@@ -52,7 +52,7 @@ Internet Explorer で*サイトとゾーンの割り当て一覧*を構成した
 
 ## <a name="conditional-access-policies-for-combined-registration"></a>統合登録の条件付きアクセス ポリシー
 
-ユーザーが Azure Multi-Factor Authentication とセルフサービス パスワード リセットの登録を実行するタイミングと方法をセキュリティで保護するため、条件付きアクセス ポリシーのユーザー アクションを使用できます。 この機能では、HR オンボード中に信頼できるネットワークの場所などの一元化された場所から Azure Multi-Factor Authentication と SSPR の登録をユーザーに行わせたい組織で有効にすることができます。
+ユーザーが Azure AD Multi-Factor Authentication とセルフサービス パスワード リセットの登録を実行するタイミングと方法をセキュリティで保護するため、条件付きアクセス ポリシーのユーザー アクションを使用できます。 この機能では、HR オンボード中に信頼できるネットワークの場所などの一元化された場所から Azure AD Multi-Factor Authentication と SSPR の登録をユーザーに行わせたい組織で有効にすることができます。
 
 > [!NOTE]
 > このポリシーは、ユーザーが統合登録ページにアクセスした場合にのみ適用されます。 このポリシーは、ユーザーが他のアプリケーションにアクセスしたときに MFA 登録を強制しません。
@@ -90,6 +90,6 @@ Internet Explorer で*サイトとゾーンの割り当て一覧*を構成した
 
 ヘルプが必要な場合は、「[統合されたセキュリティ情報の登録のトラブルシューティング](howto-registration-mfa-sspr-combined-troubleshoot.md)」または[Azure AD 条件付きアクセスの場所の条件の概要](../conditional-access/location-condition.md)に関する記事を参照してください。
 
-統合された登録に対してユーザーを有効にした後は、[セルフサービス パスワード リセットを有効に](tutorial-enable-sspr.md)したり、[Azure Multi-Factor Authentication を有効に](tutorial-enable-azure-mfa.md)したりできます。
+統合された登録に対してユーザーを有効にした後は、[セルフサービス パスワード リセットを有効に](tutorial-enable-sspr.md)したり、[Azure AD Multi-Factor Authentication を有効に](tutorial-enable-azure-mfa.md)したりできます。
 
 必要な場合は、[ユーザーに認証方法の再登録を強制する](howto-mfa-userdevicesettings.md#manage-user-authentication-options)方法を学習します。

@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight における Phoenix のパフォーマンス
 description: Azure HDInsight クラスターの Apache Phoenix のパフォーマンスを最適化するためのベスト プラクティス
-author: ashishthaps
-ms.author: ashishth
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
-ms.openlocfilehash: 8d1dff01c9e7b5232cfac0cf5581c077e67f6937
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ffba3b986b35c375d0404d9d2bae5af79f93c54f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079498"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944795"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix のパフォーマンスに関するベスト プラクティス
 

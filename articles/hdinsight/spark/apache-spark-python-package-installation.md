@@ -1,27 +1,20 @@
 ---
 title: Azure HDInsight の Jupyter を使用した Python パッケージに対するスクリプト アクション
-description: スクリプト アクションを使用して HDInsight の Spark clusters で Jupyter notebooks を構成し、外部の Python パッケージを使用する方法に関する詳細な手順。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
+description: スクリプト アクションを使用して HDInsight の Spark clusters で Jupyter Notebook を構成し、外部の Python パッケージを使用する方法に関する詳細な手順。
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 59de3eb2370029ab9edcb609298c7b1fdf5f8ff8
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 8fbbe137ece7aac2dd2196c5ebec435e118297ad
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873757"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929812"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>スクリプト アクションを使用して Azure HDInsight で Python 環境を安全に管理する
 
-> [!div class="op_single_selector"]
-> * [cell magic の使用](apache-spark-jupyter-notebook-use-external-packages.md)
-> * [スクリプト アクションの使用](apache-spark-python-package-installation.md)
-
-HDInsight では、Spark クラスターに 2 つの Python のインストール (Anaconda Python 2.7 と Python 3.5) が組み込まれています。 場合によっては、顧客が Python 環境のカスタマイズを行う必要があります ( 外部の Python パッケージや別の Python バージョンのインストールなど)。 ここでは、HDInsight 上の Apache Spark クラスターで Python 環境を安全に管理するためのベスト プラクティスについて説明します。
+HDInsight では、Spark クラスターに 2 つの Python のインストール (Anaconda Python 2.7 と Python 3.5) が組み込まれています。 外部 Python パッケージのインストールなど、Python 環境のカスタマイズは、お客様が実行する必要があります。 ここでは、HDInsight 上の Apache Spark クラスターで Python 環境を安全に管理するためのベスト プラクティスについて説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,7 +34,7 @@ HDInsight サービスで利用できるオープン ソース コンポーネ�
 > [!IMPORTANT]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、 これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートによって問題が解決する場合もあれば、オープン ソース テクノロジに関する深い専門知識を入手できる場所への参加をお願いする場合もあります。 たとえば、[HDInsight に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-hdinsight.html)や `https://stackoverflow.com` などの多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには `https://apache.org` にプロジェクト サイトもあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートによって問題が解決する場合もあれば、オープン ソース テクノロジに関する深い専門知識を入手できる場所への参加をお願いする場合もあります。 たとえば、[HDInsight に関する Microsoft Q&A 質問ページ](/answers/topics/azure-hdinsight.html)や `https://stackoverflow.com` などの多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには `https://apache.org` にプロジェクト サイトもあります。
 
 ## <a name="understand-default-python-installation"></a>Python の既定のインストールを理解する
 
@@ -50,8 +43,8 @@ HDInsight Spark クラスターは、Anaconda のインストール付きで作�
 |設定 |Python 2.7|Python 3.5|
 |----|----|----|
 |Path|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark のバージョン|既定で 2.7 に設定|該当なし|
-|Livy バージョン|既定で 2.7 に設定|該当なし|
+|Spark のバージョン|既定で 2.7 に設定|構成を 3.5 に変更可能|
+|Livy バージョン|既定で 2.7 に設定|構成を 3.5 に変更可能|
 |Jupyter|PySpark カーネル|PySpark3 カーネル|
 
 ## <a name="safely-install-external-python-packages"></a>外部 Python パッケージを安全にインストールする
@@ -85,7 +78,7 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
 
     - または、PyPi リポジトリを使用し、`seaborn` と `py35new` を適切に変更します。
         ```bash
-        sudo /usr/bin/anaconda/env/py35new/bin/pip install seaborn
+        sudo /usr/bin/anaconda/envs/py35new/bin/pip install seaborn
         ```
 
     特定のバージョンのライブラリをインストールする場合は、次のコマンドを使用します。
@@ -102,7 +95,7 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
     - または、PyPi リポジトリを使用し、`numpy==1.16.1` と `py35new` を適切に変更します。
 
         ```bash
-        sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
+        sudo /usr/bin/anaconda/envs/py35new/bin/pip install numpy==1.16.1
         ```
 
     仮想環境名がわからない場合は、クラスターのヘッド ノードに SSH 接続し、`/usr/bin/anaconda/bin/conda info -e` を実行して、すべての仮想環境を表示できます。
@@ -132,7 +125,25 @@ HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Pyt
 
     4. 変更を保存し、影響を受けるサービスを再起動します。 これらの変更では、Spark2 サービスを再起動する必要があります。 Ambari UI によって、再起動が必要であることを示すリマインダーが表示されます。[再起動] をクリックして、影響を受けるすべてのサービスを再起動します。
 
-        ![Ambari を通して Spark 構成を変更する](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+        ![Restart services](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+
+    5. Spark セッションに 2 つのプロパティを設定して、ジョブが更新された spark 構成 (`spark.yarn.appMasterEnv.PYSPARK_PYTHON` と `spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON`) を指すようにします。 
+
+        ターミナルまたはノートブックを使用して、`spark.conf.set` 関数を使用します。
+
+        ```spark
+        spark.conf.set("spark.yarn.appMasterEnv.PYSPARK_PYTHON", "/usr/bin/anaconda/envs/py35/bin/python")
+        spark.conf.set("spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON", "/usr/bin/anaconda/envs/py35/bin/python")
+        ```
+
+        Livy を使用している場合は、次のプロパティを要求本文に追加します。
+
+        ```
+        “conf” : {
+        “spark.yarn.appMasterEnv.PYSPARK_PYTHON”:”/usr/bin/anaconda/envs/py35/bin/python”,
+        “spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON”:”/usr/bin/anaconda/envs/py35/bin/python”
+        }
+        ```
 
 4. 新しく作成された仮想環境を Jupyter で使用する場合は、 Jupyter の構成を変更し、Jupyter を再起動します。 次のステートメントを使用して、すべてのヘッダー ノードでスクリプト アクションを実行して、新たに作成された仮想環境に対して Jupyter をポイントします。 パスを仮想環境用に指定したプレフィックスに必ず変更してください。 このスクリプト アクションを実行した後、Ambari UI から Jupyter サービスを再起動して、この変更を使用できるようにします。
 

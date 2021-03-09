@@ -1,27 +1,27 @@
 ---
-title: PowerShell を使用したエラスティック ジョブ エージェントの作成
+title: PowerShell を使用してエラスティック ジョブ エージェントを作成する (プレビュー)
 description: PowerShell を使用したエラスティック ジョブ エージェントの作成方法について学習します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurepowershell
+ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
-ms.date: 03/13/2019
-ms.openlocfilehash: 0fe6a3b1d0e5216d923cfe3997826e7a727f1a2b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.date: 10/21/2020
+ms.openlocfilehash: 95e9ef340328bb4c1835e966cc9c3019bca88c09
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077349"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368831"
 ---
-# <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell を使用したエラスティック ジョブ エージェントの作成
+# <a name="create-an-elastic-job-agent-using-powershell-preview"></a>PowerShell を使用してエラスティック ジョブ エージェントを作成する (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[エラスティック ジョブ (プレビュー)](job-automation-overview.md#elastic-database-jobs-preview) を使用すると、多数のデータベースにわたって 1 つまたは複数の Transact-SQL (T-SQL) スクリプトを同時に実行できます。
+[エラスティック ジョブ (プレビュー)](job-automation-overview.md) を使用すると、多数のデータベースにわたって 1 つまたは複数の Transact-SQL (T-SQL) スクリプトを同時に実行できます。
 
 このチュートリアルでは、複数のデータベースにわたってクエリを実行するために必要な手順を学習します。
 
@@ -53,7 +53,7 @@ Find-Package PowerShellGet | Install-Package -Force
 # Restart your powershell session with administrative access
 
 # Install and import the Az.Sql module, then confirm
-Install-Module -Name Az.Sql
+Install-Module -Name Az.Sql
 Import-Module Az.Sql
 
 Get-Module Az.Sql
@@ -63,7 +63,7 @@ Get-Module Az.Sql
 
 ## <a name="create-required-resources"></a>必要なリソースを作成する
 
-エラスティック ジョブ エージェントを作成するには、[ジョブ データベース](job-automation-overview.md#job-database)として使用するデータベース (S0 以上) が必要です。
+エラスティック ジョブ エージェントを作成するには、[ジョブ データベース](job-automation-overview.md#elastic-job-database)として使用するデータベース (S0 以上) が必要です。
 
 次のスクリプトを実行すると、新しいリソース グループ、サーバー、およびジョブ データベースとして使用されるデータベースが作成されます。 2 番目のスクリプトを実行すると、ジョブを実行する対象の、2 つの空のデータベースを含む 2 番目のサーバーが作成されます。
 
@@ -123,14 +123,6 @@ $db2 = New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $targ
 $db2
 ```
 
-## <a name="use-elastic-jobs"></a>エラスティック ジョブを使用する
-
-エラスティック ジョブを使用するには、お使いの Azure サブスクリプションで次のコマンドを実行して、その機能を登録する必要があります。 エラスティック ジョブ エージェントのプロビジョニング先となるサブスクリプションごとに 1 回このコマンドを実行してください。 ジョブのターゲットとなるデータベースしか存在しないサブスクリプションは登録の必要はありません。
-
-```powershell
-Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
-```
-
 ### <a name="create-the-elastic-job-agent"></a>エラスティック ジョブ エージェントを作成する
 
 エラスティック ジョブ エージェントは、ジョブを作成、実行、および管理するための Azure リソースです。 エージェントは、スケジュールに基づいて、または 1 回だけのジョブとして、ジョブを実行します。
@@ -165,12 +157,12 @@ $params = @{
   'username' = $adminLogin
   'password' = $adminPassword
   'outputSqlErrors' = $true
-  'query' = "CREATE LOGIN masteruser WITH PASSWORD='password!123'"
+  'query' = 'CREATE LOGIN masteruser WITH PASSWORD=''password!123'''
 }
 Invoke-SqlCmd @params
 $params.query = "CREATE USER masteruser FROM LOGIN masteruser"
 Invoke-SqlCmd @params
-$params.query = "CREATE LOGIN jobuser WITH PASSWORD='password!123'"
+$params.query = 'CREATE LOGIN jobuser WITH PASSWORD=''password!123'''
 Invoke-SqlCmd @params
 
 # for each target database
@@ -192,7 +184,7 @@ $targetDatabases | % {
 
 # create job credential in Job database for master user
 Write-Output "Creating job credentials..."
-$loginPasswordSecure = (ConvertTo-SecureString -String "password!123" -AsPlainText -Force)
+$loginPasswordSecure = (ConvertTo-SecureString -String 'password!123' -AsPlainText -Force)
 
 $masterCred = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList "masteruser", $loginPasswordSecure
 $masterCred = $jobAgent | New-AzSqlElasticJobCredential -Name "masteruser" -Credential $masterCred

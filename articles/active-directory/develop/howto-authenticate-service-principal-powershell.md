@@ -7,18 +7,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev
+ms.custom: aaddev , devx-track-azurepowershell
 ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: 423ec19d249d183f8888bf9e1eb837e2c860b1ed
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: b07679c6dd5e03131fde1439213783893971a088
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117143"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581824"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>方法:Azure PowerShell を使用して資格情報でのサービス プリンシパルを作成する
 
@@ -43,9 +43,9 @@ ms.locfileid: "88117143"
 自分のアカウントに適切なアクセス許可があるかどうかを確認する最も簡単な方法は、ポータルを使用することです。 [必要なアクセス許可のチェック](howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)に関するページを参照してください。
 
 ## <a name="assign-the-application-to-a-role"></a>アプリケーションをロールに割り当てる
-サブスクリプション内のリソースにアクセスするには、アプリケーションをロールに割り当てる必要があります。 どのロールがそのアプリケーションに適切なアクセス許可を提供するかを判断します。 利用可能なロールについては、「[RBAC: 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
+サブスクリプション内のリソースにアクセスするには、アプリケーションをロールに割り当てる必要があります。 どのロールがそのアプリケーションに適切なアクセス許可を提供するかを判断します。 利用できるロールの詳細については、「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
-スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます。 たとえば、アプリケーションをリソース グループの*閲覧者*ロールに追加すると、そのリソース グループと、その中にあるどのリソースも読み取りができることになります。 アプリケーションがインスタンスの再起動、開始、停止などのアクションを実行できるようにするには、 *[共同作成者]* ロールを選択します。
+スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます。 たとえば、アプリケーションをリソース グループの *閲覧者* ロールに追加すると、そのリソース グループと、その中にあるどのリソースも読み取りができることになります。 アプリケーションがインスタンスの再起動、開始、停止などのアクションを実行できるようにするには、 *[共同作成者]* ロールを選択します。
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>自己署名証明書を使用したサービス プリンシパルの作成
 
@@ -70,9 +70,9 @@ New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $sp.Applic
 
 この例では、新しいサービス プリンシパルが Azure AD 全体に反映されるまでの時間を設けるために、20 秒間スリープします。 スクリプトの待機時間が不足している場合は、次のエラーが表示されます。"プリンシパル {0} がディレクトリ {DIR-ID} にありません。" このエラーを解決するには、しばらく待ってから **New-AzRoleAssignment** コマンドを再実行します。
 
-**ResourceGroupName**パラメーターを使用して、特定のリソース グループにロールの割り当てをスコープできます。 **ResourceType**と**ResourceName**パラメーターを使用して、特定のリソースをスコープすることもできます。 
+**ResourceGroupName** パラメーターを使用して、特定のリソース グループにロールの割り当てをスコープできます。 **ResourceType** と **ResourceName** パラメーターを使用して、特定のリソースをスコープすることもできます。 
 
-**Windows 10 または Windows Server 2016 を持っていない**場合は、Microsoft スクリプト センターから [Self-signed certificate generator](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) をダウンロードします。 ダウンロードしたファイルを展開し、必要なコマンドレットをインポートします。
+**Windows 10 または Windows Server 2016 を持っていない** 場合は、Microsoft スクリプト センターから [Self-signed certificate generator](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) をダウンロードします。 ダウンロードしたファイルを展開し、必要なコマンドレットをインポートします。
 
 ```powershell
 # Only run if you could not use New-SelfSignedCertificate
@@ -91,14 +91,14 @@ $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'C
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>自動化された PowerShell スクリプトから証明書を渡す
 
-サービス プリンシパルとしてサインインするときは常に、AD アプリのディレクトリのテナント ID を指定する必要があります。 テナントは、Azure AD のインスタンスです。
+サービス プリンシパルとしてサインインするときは常に、お使いのAD アプリのディレクトリのテナント ID を指定します。 テナントは、Azure AD のインスタンスです。
 
 ```powershell
 $TenantId = (Get-AzSubscription -SubscriptionName "Contoso Default").TenantId
 $ApplicationId = (Get-AzADApplication -DisplayNameStartWith exampleapp).ApplicationId
 
- $Thumbprint = (Get-ChildItem cert:\CurrentUser\My\ | Where-Object {$_.Subject -eq "CN=exampleappScriptCert" }).Thumbprint
- Connect-AzAccount -ServicePrincipal `
+$Thumbprint = (Get-ChildItem cert:\CurrentUser\My\ | Where-Object {$_.Subject -eq "CN=exampleappScriptCert" }).Thumbprint
+Connect-AzAccount -ServicePrincipal `
   -CertificateThumbprint $Thumbprint `
   -ApplicationId $ApplicationId `
   -TenantId $TenantId
@@ -126,7 +126,7 @@ Param (
  Connect-AzAccount
  Import-Module Az.Resources
  Set-AzContext -Subscription $SubscriptionId
- 
+
  $CertPassword = ConvertTo-SecureString $CertPlainPassword -AsPlainText -Force
 
  $PFXCert = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList @($CertPath, $CertPassword)
@@ -146,22 +146,22 @@ Param (
     $NewRole = Get-AzRoleAssignment -ObjectId $ServicePrincipal.Id -ErrorAction SilentlyContinue
     $Retries++;
  }
- 
+
  $NewRole
 ```
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>自動化された PowerShell スクリプトから証明書を渡す
-サービス プリンシパルとしてサインインするときは常に、AD アプリのディレクトリのテナント ID を指定する必要があります。 テナントは、Azure AD のインスタンスです。
+サービス プリンシパルとしてサインインするときは常に、お使いのAD アプリのディレクトリのテナント ID を指定します。 テナントは、Azure AD のインスタンスです。
 
 ```powershell
 Param (
- 
+
  [Parameter(Mandatory=$true)]
  [String] $CertPath,
 
  [Parameter(Mandatory=$true)]
  [String] $CertPlainPassword,
- 
+
  [Parameter(Mandatory=$true)]
  [String] $ApplicationId,
 
@@ -225,3 +225,4 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 * パスワードを使用するサービス プリンシパルを設定するには、「[Azure PowerShell で Azure サービス プリンシパルを作成する](/powershell/azure/create-azure-service-principal-azureps)」を参照してください。
 * アプリケーションとサービス プリンシパルの詳細については、「[アプリケーションおよびサービス プリンシパル オブジェクト](app-objects-and-service-principals.md)」を参照してください。
 * Azure AD 認証の詳細については、「[Azure AD の認証シナリオ](./authentication-vs-authorization.md)」をご覧ください。
+* **Microsoft Graph** を使用したアプリ登録の操作の詳細については、[アプリケーション](/graph/api/resources/application) API リファレンスを参照してください。

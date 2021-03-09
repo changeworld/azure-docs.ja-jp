@@ -1,14 +1,16 @@
 ---
 title: SharePoint ファイル - QnA Maker
 description: ご自分のサポート情報にセキュリティで保護された SharePoint データ ソースを追加して、Active Directory によりセキュリティで保護されている可能性がある質問と回答でサポート情報を補強できます。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 93f17e79834b412ce0babf220ba13649ae07718c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0832b54e02cabecb0b1f0e7af600b8adc621a8b0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660300"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584772"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>ご自分のサポート情報にセキュリティで保護された SharePoint データ ソースを追加する
 
@@ -25,7 +27,7 @@ QnA Maker サポート情報マネージャーが Active Directory マネージ�
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>サポート情報へのサポート対象ファイルの種類の追加
 
-SharePoint サイトからご自分のサポート情報に、QnA Maker でサポートされているすべての[ファイルの種類](../Concepts/content-types.md)を追加できます。 ファイルのリソースがセキュリティで保護されている場合、[アクセス許可](#permissions)を付与する必要がある場合があります。
+SharePoint サイトからご自分のサポート情報に、QnA Maker でサポートされているすべての[ファイルの種類](../index.yml)を追加できます。 ファイルのリソースがセキュリティで保護されている場合、[アクセス許可](#permissions)を付与する必要がある場合があります。
 
 1. SharePoint サイトのあるライブラリから、ファイルの省略記号メニュー (`...`) を選択します。
 1. ファイルの URL をコピーします。
@@ -59,7 +61,7 @@ SharePoint サーバーからセキュリティで保護されたファイルが
 
 ### <a name="knowledge-base-manager-add-sharepoint-data-source-in-qna-maker-portal"></a>サポート情報マネージャー: SharePoint データ ソースを QnA Maker ポータルに追加する
 
-**QnA Maker マネージャー**がセキュリティで保護された SharePoint ドキュメントをサポート情報に追加すると、サポート情報マネージャーによって Active Directory マネージャーが完了する必要のあるアクセス許可の要求が開始されます。
+**QnA Maker マネージャー** がセキュリティで保護された SharePoint ドキュメントをサポート情報に追加すると、サポート情報マネージャーによって Active Directory マネージャーが完了する必要のあるアクセス許可の要求が開始されます。
 
 この要求は、Active Directory アカウントの認証のポップアップで開始されます。
 
@@ -125,12 +127,16 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 
 
+
+## <a name="add-sharepoint-data-source-with-apis"></a>API を使用して SharePoint データソースを追加する
+
+Azure Blob Storage を使用して API 経由で最新の SharePoint のコンテンツを追加するための回避策は次のとおりです。 
+1.  SharePoint ファイルをローカルにダウンロードします。 API を呼び出すユーザーには、SharePoint へのアクセス許可が付与されている必要があります。 
+1.  それらを Azure Blob Stoarge にアップロードします。 これにより、[SAS トークンによって](../../../storage/common/storage-sas-overview.md#how-a-shared-access-signature-works)セキュリティで保護された共有アクセスが作成されます。 
+1. SAS トークンによって生成された BLOB URL を QnA Maker API に渡します。 ファイルから回答を抽出できるようにするには、QnA Maker API に渡す前に、URL の最後に '&ext=pdf' または '&ext=doc' のようにサフィックスのファイルの種類を追加する必要があります。
+
+
 <!--
-
-## Add SharePoint data source with APIs
-
-You need to get the SharePoint file's URI before adding it to QnA Maker.
-
 ## Get SharePoint File URI
 
 Use the following steps to transform the SharePoint URL into a sharing token.
@@ -154,7 +160,7 @@ Use the following steps to transform the SharePoint URL into a sharing token.
 
 ### Add or update a SharePoint File URI to your knowledge base
 
-Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileuri` in the QnA Maker API for [adding a knowledge base](https://go.microsoft.com/fwlink/?linkid=2092179) or [updating a knowledge base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update). The following fields are mandatory: name, fileuri, filename, source.
+Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileuri` in the QnA Maker API for [adding a knowledge base](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) or [updating a knowledge base](/rest/api/cognitiveservices/qnamaker/knowledgebase/update). The following fields are mandatory: name, fileuri, filename, source.
 
 ```
 {
@@ -186,4 +192,4 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [自分のサポート情報の共同利用](collaborate-knowledge-base.md)
+> [自分のサポート情報の共同利用](../index.yml)

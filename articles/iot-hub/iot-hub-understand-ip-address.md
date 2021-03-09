@@ -1,6 +1,6 @@
 ---
-title: IoT ハブの IP アドレスについて | Microsoft Docs
-description: IoT ハブの IP アドレスとそのプロパティにクエリを実行する方法について説明します。 IoT ハブの IP アドレスは、ディザスター リカバリーやリージョン間フェールオーバーなど、特定のシナリオを通じて変更される可能性があります。
+title: IoT Hub の IP アドレスについて | Microsoft Docs
+description: IoT Hub の IP アドレスとそのプロパティにクエリを実行する方法について説明します。 IoT Hub の IP アドレスは、ディザスター リカバリーやリージョン間フェールオーバーなど、特定のシナリオを通じて変更される可能性があります。
 author: philmea
 ms.author: philmea
 ms.service: iot-hub
@@ -8,15 +8,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.openlocfilehash: 1bfae8c7afbfdc6e73dd8bb17b94e6543361e9ce
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83848230"
 ---
-# <a name="iot-hub-ip-addresses"></a>IoT ハブの IP アドレス
+# <a name="iot-hub-ip-addresses"></a>IoT Hub の IP アドレス
 
-IoT ハブ パブリック エンドポイントの IP アドレス プレフィックスは、_AzureIoTHub_ [サービス タグ](../virtual-network/service-tags-overview.md)で定期的に発行されます。
+IoT Hub  パブリック エンドポイントの IP アドレス プレフィックスは、_AzureIoTHub_ [サービス タグ](../virtual-network/service-tags-overview.md)で定期的に発行されます。
 
 > [!NOTE]
 > オンプレミス ネットワーク内にデプロイされているデバイスの場合、Azure IoT Hub は、プライベート エンドポイントとの VNET 接続の統合をサポートします。 詳細については、[IoT Hub による VNet のサポート](./virtual-network-support.md)に関する記事を参照してください。
@@ -36,7 +36,7 @@ IoT ハブ パブリック エンドポイントの IP アドレス プレフィ
 
 * デバイスのファイアウォール構成で許可規則を追加する場合、[適用されるプロトコルで使用される特定のポート](./iot-hub-devguide-protocols.md#port-numbers)を指定することをお勧めします。
 
-* IoT ハブの IP アドレス プレフィックスは変更されることがあります。 これらの変更は、有効になる前に、サービス タグ経由で定期的に発行されます。 そのため、最新のサービス タグを定期的に取得して使用するためのプロセスを開発することが重要です。 このプロセスは、[Service Tag Discovery API](../virtual-network/service-tags-overview.md#service-tags-on-premises) 経由で自動化できます。 Service Tag Discovery API はまだプレビュー段階であり、場合によってはタグと IP アドレスの完全な一覧が生成されないことがあります。 Discovery API が一般提供されるまでは、[ダウンロード可能な JSON 形式で サービス タグ](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)を使用することを検討してください。 
+* IoT Hub の IP アドレス プレフィックスは変更されることがあります。 これらの変更は、有効になる前に、サービス タグ経由で定期的に発行されます。 そのため、最新のサービス タグを定期的に取得して使用するためのプロセスを開発することが重要です。 このプロセスは、[Service Tag Discovery API](../virtual-network/service-tags-overview.md#service-tags-on-premises) 経由で自動化できます。 Service Tag Discovery API はまだプレビュー段階であり、場合によってはタグと IP アドレスの完全な一覧が生成されないことがあります。 Discovery API が一般提供されるまでは、[ダウンロード可能な JSON 形式で サービス タグ](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)を使用することを検討してください。 
 
 * 特定のリージョン内の IoT Hub エンドポイントによって使用される IP プレフィックスを識別するには、*AzureIoTHub.[リージョン名]* タグを使用します。 データセンターのディザスター リカバリーまたは[リージョン内フェールオーバー](iot-hub-ha-dr.md)に対処するには、IoT Hub の geo ペア リージョンの IP プレフィックスへの接続も有効になっていることを確認してください。
 

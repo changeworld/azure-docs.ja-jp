@@ -1,19 +1,16 @@
 ---
 title: Apache Hadoop コンポーネントおよびバージョン - Azure HDInsight
 description: Azure HDInsight 内の Apache Hadoop コンポーネントおよびバージョンについて説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
-ms.openlocfilehash: 5c3586e9ba405cb5a7338b8f7f22858a238b9271
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: d1f4c57986f356f267448ff43de23973534b8126
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88717253"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006668"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Azure HDInsight で使用可能な Apache コンポーネントおよびバージョン
 
@@ -32,7 +29,7 @@ HDInsight クラスター バージョンに対応するコンポーネントの
 |------------------------|---------------|-----------------------------|
 | Apache Hadoop と YARN | 3.1.1         | 2.7.3                       |
 | Apache Tez             | 0.9.1         | 0.7.0                       |
-| Apache Pig             | 0.16.0        | 0.16.0                      |
+| Apache Pig             | 0.16.1        | 0.16.0                      |
 | Apache Hive            | 3.1.0         | 1.2.1 (ESP Interactive Query では 2.1.0) |
 | Apache Tez Hive2       | -             | 0.8.4                       |
 | Apache Ranger          | 1.1.0         | 0.7.0                       |
@@ -65,9 +62,9 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 
 ### <a name="support-expiration-and-retirement-for-hdinsight-versions"></a>HDInsight バージョンのサポートの有効期限と提供終了
 
-**サポートの有効期限**は、特定の HDInsight バージョンに対して Microsoft によるサポートが提供されなくなることを意味します。 また、クラスターを作成するために Azure portal を介して使用することができなくなります。 これらのバージョンは、Azure CLI またはさまざまな SDK を使用して、引き続き作成することができます。
+**サポートの有効期限** は、特定の HDInsight バージョンに対して Microsoft によるサポートが提供されなくなることを意味します。 また、クラスターを作成するために Azure portal を介して使用することができなくなります。 これらのバージョンは、Azure CLI またはさまざまな SDK を使用して、引き続き作成することができます。
 
-**提供終了**とは、ある HDInsight バージョンの既存のクラスターが引き続きそのまま実行されることを意味します。 このバージョンの新しいクラスターは、CLI や SDK など、どのような方法でも作成することはできません。 手動によるスケーリングや自動スケールなど、その他のコントロール プレーン機能は、バージョンの提供終了後に機能しなくなる場合があります。 提供が終了したバージョンでサポートを利用することはできません。
+**提供終了** とは、ある HDInsight バージョンの既存のクラスターが引き続きそのまま実行されることを意味します。 このバージョンの新しいクラスターは、CLI や SDK など、どのような方法でも作成することはできません。 手動によるスケーリングや自動スケールなど、その他のコントロール プレーン機能は、バージョンの提供終了後に機能しなくなる場合があります。 提供が終了したバージョンでサポートを利用することはできません。
 
 次の表は、HDInsight のバージョンの一覧を示しています。 サポート有効期限と提供終了日については、既知の場合、それらも記載されます。
 
@@ -78,7 +75,7 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 | HDInsight のバージョン | VM の OS | リリース日 | サポート有効期限 | 提供終了日 | 高可用性 |  Azure portal での可用性 |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |はい |はい |
-| HDInsight 3.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日      | \* 2021 年 6 月 31 日 |2021 年 6 月 31 日 |はい |はい |
+| HDInsight 3.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日      | \* 2021 年 6 月 30 日 |2021 年 6 月 30 日 |はい |はい |
 
 \* 特定のクラスターの種類 HDInsight 3.6 のサポート期間を延長しています
 
@@ -96,7 +93,7 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 | HDInsight 3.6  ML Services      | 9.3               | 2020 年 12 月 31 日                      | 2020 年 12 月 31 日                |
 
 > [!NOTE]
-> クラスター バージョンのサポートが期限切れになると、Azure Portal で使用できなくなります。 一部のケースにおいて、クラスター バージョンは、Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) コマンドの **Version** パラメーターと .NET SDK を使用することで、バージョンの提供終了日まで利用できる場合があります。
+> クラスター バージョンのサポートが期限切れになると、Azure Portal で使用できなくなります。 一部のケースにおいて、クラスター バージョンは、Windows PowerShell [New-AzHDInsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) コマンドの **Version** パラメーターと .NET SDK を使用することで、バージョンの提供終了日まで利用できる場合があります。
 
 ### <a name="retired-versions"></a>廃止されたバージョン
 
@@ -133,6 +130,8 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 ## <a name="next-steps"></a>次のステップ
 
 - [HDInsight で Apache Hadoop、Spark、その他のクラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md)
-- [Windows PC から HDInsight の Apache Hadoop で作業する](hdinsight-hadoop-windows-tools.md)
-- [Azure HDInsight バージョンに対応する Hortonworks リリース ノート](./hortonworks-release-notes.md)
 - [Enterprise セキュリティ パッケージ](./enterprise-security-package.md)
+- [Azure HDInsight バージョンに対応する Hortonworks リリース ノート](./hortonworks-release-notes.md)
+- [Windows PC から HDInsight の Apache Hadoop で作業する](hdinsight-hadoop-windows-tools.md)
+
+

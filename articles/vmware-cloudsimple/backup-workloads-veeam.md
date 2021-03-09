@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - Veeam を使用してプライベート クラウド上のワークロード仮想マシンをバックアップする
 description: Azure ベースの CloudSimple プライベート クラウドで実行されている仮想マシンを Veeam B&R 9.5 を使用してバックアップする方法について説明します
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e661485e58c7e00c4eee41d808f727153a7761c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7be606b3e23a594e67acf3f169d88353403d8577
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525043"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899339"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Veeam B&R を使用して CloudSimple プライベート クラウド上のワークロード VM をバックアップする
 
@@ -56,7 +56,7 @@ Azure を利用して、バックアップ リポジトリと、長期のバッ�
 * Azure 内の Linux ベースのプライマリ バックアップ リポジトリをバックアップ ジョブのターゲットとして構成します。
 * `azcopy` を使用して、プライマリ バックアップ リポジトリのデータを Azure BLOB コンテナーにコピーし、このコンテナーを別のリージョンにレプリケートします。
 
-![基本的なデプロイのシナリオ](media/veeam-basicdeployment.png)
+![基本的な Veeam のデプロイのシナリオを示す図。](media/veeam-basicdeployment.png)
 
 **高度なデプロイ**
 

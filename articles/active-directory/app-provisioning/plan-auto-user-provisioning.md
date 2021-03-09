@@ -3,20 +3,20 @@ title: Azure Active Directory の自動ユーザー プロビジョニングの�
 description: 自動ユーザー プロビジョニングの計画と実行に関するガイダンス
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/17/2019
+ms.date: 12/31/2020
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 9f2b5bf1195682b200b5840459194506e29bcdc6
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235705"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645090"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>自動ユーザー プロビジョニングのデプロイを計画する
 
@@ -89,25 +89,25 @@ Azure AD プロビジョニング サービスは、各アプリケーション 
 
 1. ユーザー/グループは、オンプレミスの HR アプリケーション/システム (SAP など) で作成されます。 
 
-1. **Azure AD Connect エージェント**は、ローカル AD から Azure AD に、 ID (ユーザーおよびグループ) のスケジュールされた同期を実行します。
+1. **Azure AD Connect エージェント** は、ローカル AD から Azure AD に、 ID (ユーザーおよびグループ) のスケジュールされた同期を実行します。
 
-1. **Azure AD プロビジョニング サービス**は、ソース システムとターゲット システムに対して[初回サイクル](../app-provisioning/user-provisioning.md)を実行します。 
+1. **Azure AD プロビジョニング サービス** は、ソース システムとターゲット システムに対して [初回サイクル](../app-provisioning/user-provisioning.md)を実行します。 
 
-1. **Azure AD プロビジョニング サービス**は、初回サイクル以降に変更されたすべてのユーザーとグループについてソース システムに対してクエリを実行し、変更を[増分サイクル](../app-provisioning/user-provisioning.md)にプッシュします。
+1. **Azure AD プロビジョニング サービス** は、初回サイクル以降に変更されたすべてのユーザーとグループについてソース システムに対してクエリを実行し、変更を [増分サイクル](../app-provisioning/user-provisioning.md)にプッシュします。
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>クラウド専用エンタープライズの自動ユーザー プロビジョニング
 
 この例では、ユーザーの作成は Azure AD で行われ、Azure AD プロビジョニング サービスは、ターゲット (SaaS) アプリケーションへの自動ユーザー プロビジョニングを管理します。
 
-![画像 2](./media/plan-auto-user-provisioning/cloudprovisioning.png)
+![Azure AD プロビジョニング サービスを使用したオンプレミス HR アプリケーションからターゲット SaaS アプリケーションまでのユーザーおよびグループの作成プロセスを示す図。](./media/plan-auto-user-provisioning/cloudprovisioning.png)
 
 **ワークフローの説明:**
 
 1. ユーザー/グループは Azure AD で作成されます。
 
-1. **Azure AD プロビジョニング サービス**は、ソース システムとターゲット システムに対して[初回サイクル](../app-provisioning/user-provisioning.md)を実行します。 
+1. **Azure AD プロビジョニング サービス** は、ソース システムとターゲット システムに対して [初回サイクル](../app-provisioning/user-provisioning.md)を実行します。 
 
-1. **Azure AD プロビジョニング サービス**は、初回サイクル以降に更新されたすべてのユーザーとグループについてソース システムに対してクエリを実行し、[増分サイクル](../app-provisioning/user-provisioning.md)を実行します。
+1. **Azure AD プロビジョニング サービス** は、初回サイクル以降に更新されたすべてのユーザーとグループについてソース システムに対してクエリを実行し、[増分サイクル](../app-provisioning/user-provisioning.md)を実行します。
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>クラウド HR アプリケーションの自動ユーザー プロビジョニング 
 
@@ -115,13 +115,13 @@ Azure AD プロビジョニング サービスは、各アプリケーション 
 
 ![画像 2](./media/plan-auto-user-provisioning/workdayprovisioning.png)
 
-1.  **人事チーム**は、クラウド人事アプリのテナントでトランザクションを実行します。
-2.  **Azure AD プロビジョニング サービス**は、スケジュールされたサイクルをクラウド人事アプリのテナントから実行し、AD との同期のために処理する必要がある変更を識別します。
-3.  **Azure AD プロビジョニング サービス**は、AD アカウントの作成/更新/有効化/無効化の操作を含む要求ペイロードを使用して、Azure AD プロビジョニング エージェントを呼び出します。
-4.  **Azure AD Connect プロビジョニング エージェント**は、サービス アカウントを使用して AD アカウントのデータを管理します。
+1.  **人事チーム** は、クラウド人事アプリのテナントでトランザクションを実行します。
+2.  **Azure AD プロビジョニング サービス** は、スケジュールされたサイクルをクラウド人事アプリのテナントから実行し、AD との同期のために処理する必要がある変更を識別します。
+3.  **Azure AD プロビジョニング サービス** は、AD アカウントの作成/更新/有効化/無効化の操作を含む要求ペイロードを使用して、Azure AD プロビジョニング エージェントを呼び出します。
+4.  **Azure AD Connect プロビジョニング エージェント** は、サービス アカウントを使用して AD アカウントのデータを管理します。
 5.  **Azure AD Connect** は、デルタ同期を実行して AD 内の更新をプルします。
 6.  **AD** の更新が Azure AD と同期されます。 
-7.  **Azure AD プロビジョニング サービス**は、Azure AD からクラウド人事アプリのテナントにメール属性とユーザー名を書き戻します。
+7.  **Azure AD プロビジョニング サービス** は、Azure AD からクラウド人事アプリのテナントにメール属性とユーザー名を書き戻します。
 
 ## <a name="plan-the-deployment-project"></a>デプロイ プロジェクトを計画する
 
@@ -129,7 +129,7 @@ Azure AD プロビジョニング サービスは、各アプリケーション 
 
 ### <a name="engage-the-right-stakeholders"></a>適切な関係者を関わらせる
 
-テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者を関与させ](https://aka.ms/deploymentplans)、利害関係者およびそのプロジェクトの情報と説明責任を文書化することで、プロジェクトでの利害関係者の役割をよく理解させます。
+テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者を関与させ](../fundamentals/active-directory-deployment-plans.md)、利害関係者およびそのプロジェクトの情報と説明責任を文書化することで、プロジェクトでの利害関係者の役割をよく理解させます。
 
 ### <a name="plan-communications"></a>連絡を計画する
 
@@ -139,13 +139,13 @@ Azure AD プロビジョニング サービスは、各アプリケーション 
 
 自動ユーザー プロビジョニングの初期構成は、運用環境のすべてのユーザーに拡張する前に、小規模なユーザー サブセットを含むテスト環境で行うことをお薦めします。 パイロットの実行については、[ベストプラクティス](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot)に関する記事を参照してください。
 
-#### <a name="best-practices-for-a-pilot"></a>パイロットのベスト プラクティス  
+#### <a name="best-practices-for-a-pilot"></a>パイロットのベスト プラクティス  
 
 パイロットを使用することにより、すべてのユーザーに対して機能をデプロイする前に、小規模なグループでテストすることができます。 テストの一部として、組織内の各ユース ケースが十分にテストされていることを確認します。
 
 最初の段階では、テストを受けてフィードバックを提供できる IT、ユーザビリティ、およびその他の適切なユーザーを対象にします。 このフィードバックを使用して、ユーザーに伝える情報と指示をさらに発展させ、サポート スタッフが直面する可能性がある問題の種類に関する分析情報を提供します。
 
-対象となるグループの範囲を広げて、ロールアウトをより大きなユーザー グループに拡大します。 これは、[動的グループ メンバーシップ](../users-groups-roles/groups-dynamic-membership.md)を使用するか、対象グループにユーザーを手動で追加することで実行できます。
+対象となるグループの範囲を広げて、ロールアウトをより大きなユーザー グループに拡大します。 これは、[動的グループ メンバーシップ](../enterprise-users/groups-dynamic-membership.md)を使用するか、対象グループにユーザーを手動で追加することで実行できます。
 
 ## <a name="plan-application-connections-and-administration"></a>アプリケーションの接続と管理を計画する
 
@@ -157,7 +157,7 @@ Azure AD ポータルを使用して、プロビジョニングをサポート�
 
 そうなっていない場合は、次の手順に従ってください。
 
-1. 事前統合されたユーザー プロビジョニング コネクタの[要求を作成](../azuread-dev/howto-app-gallery-listing.md)します。 Microsoft チームがお客様およびアプリケーション開発者と協力し、SCIM がサポートされている場合、お客様のアプリケーションを Microsoft のプラットフォームにオンボードします。
+1. 事前統合されたユーザー プロビジョニング コネクタの[要求を作成](../develop/v2-howto-app-gallery-listing.md)します。 Microsoft チームがお客様およびアプリケーション開発者と協力し、SCIM がサポートされている場合、お客様のアプリケーションを Microsoft のプラットフォームにオンボードします。
 
 1. アプリに対する [BYOA SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 汎用ユーザー プロビジョニング サポートを使用します。 これは、事前に統合されたプロビジョニング コネクタのないアプリにユーザーをプロビジョニングするための Azure AD の要件です。
 
@@ -264,7 +264,7 @@ Azure AD プロビジョニング サービスを初めて実行すると、ソ�
 
 [Azure portal](https://portal.azure.com/) を使用して、アプリケーションでサポートされている自動ユーザー アカウント プロビジョニングとプロビジョニング解除を管理します。 [アプリケーションへの自動プロビジョニングの設定方法](../app-provisioning/user-provisioning.md)に関する記事の手順に従ってください。
 
-Azure AD ユーザー プロビジョニング サービスは、[Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) を使用して構成および管理することもできます。
+Azure AD ユーザー プロビジョニング サービスは、[Microsoft Graph API](/graph/api/resources/synchronization-overview) を使用して構成および管理することもできます。
 
 ## <a name="manage-automatic-user-provisioning"></a>自動ユーザー プロビジョニングを管理する
 
@@ -274,7 +274,7 @@ Azure AD ユーザー プロビジョニング サービスは、[Microsoft Grap
 
 [初回サイクル](../app-provisioning/user-provisioning.md)が正常に完了すると、Azure AD プロビジョニング サービスは、次のいずれかのイベントが発生するまで、各アプリケーションに固有の間隔で無制限に増分更新を実行します。
 
-* サービスが手動で停止され、[Azure portal](https://portal.azure.com/) を使用するか、適切な [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) コマンドを使用して、新しい初回サイクルがトリガーされる。
+* サービスが手動で停止され、[Azure portal](https://portal.azure.com/) を使用するか、適切な [Microsoft Graph API](/graph/api/resources/synchronization-overview) コマンドを使用して、新しい初回サイクルがトリガーされる。
 
 * 属性マッピングまたはスコープ フィルターの変更によって、新しい初回サイクルがトリガーされる。
 
@@ -300,17 +300,17 @@ Azure AD は、監査ログとレポートによって組織のユーザーの�
 
 * [アプリケーションにプロビジョニングするためにオンプレミスの Active Directory から Azure AD に属性を同期する](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
 
-* [Azure Active Directory ギャラリー アプリケーションへのユーザー プロビジョニングを構成している間の管理者の資格情報の保存に関する問題](../app-provisioning/application-provisioning-config-problem-storage-limit.md)
+* [Azure Active Directory ギャラリー アプリケーションへのユーザー プロビジョニングを構成している間の管理者の資格情報の保存に関する問題](./user-provisioning.md)
 
 * [Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md)
 
-* [Azure AD ギャラリー アプリケーションへプロビジョニングされた間違ったユーザー グループ](../app-provisioning/application-provisioning-config-problem-wrong-users-provisioned.md)
+* [Azure AD ギャラリー アプリケーションへプロビジョニングされた間違ったユーザー グループ](../manage-apps/add-application-portal-assign-users.md)
 
 ### <a name="helpful-documentation"></a>役に立つドキュメント
 
 * [属性マッピングの式の書き方](../app-provisioning/functions-for-customizing-application-data.md)
 
-* [Azure AD 同期 API の概要](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
+* [Azure AD 同期 API の概要](/graph/api/resources/synchronization-overview)
 
 * [スコープ外に出るユーザー アカウントの削除をスキップする](skip-out-of-scope-deletions.md)
 
@@ -322,7 +322,7 @@ Azure AD は、監査ログとレポートによって組織のユーザーの�
 
 * [Azure AD の更新情報](https://azure.microsoft.com/updates/?product=active-directory)
 
-* [Stack overflow の Azure AD フォーラム](https://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Microsoft Q&A Azure AD フォーラム](/answers/topics/azure-active-directory.html)
 
 ## <a name="next-steps"></a>次のステップ
 * [自動ユーザー プロビジョニングの構成](../app-provisioning/configure-automatic-user-provisioning-portal.md)

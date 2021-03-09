@@ -1,24 +1,19 @@
 ---
 title: Azure Virtual Machines に Oracle アプリをデプロイするアーキテクチャ | Microsoft Docs
 description: Azure または Oracle Cloud Infrastructure (OCI) のデータベースを使用して、Microsoft Azure 仮想マシンに E-Business Suite、JD Edwards EnterpriseOne、PeopleSoft などの Oracle アプリをデプロイするアプリケーション アーキテクチャ。
-services: virtual-machines-linux
-documentationcenter: ''
-author: rgardler
-manager: ''
-tags: ''
-ms.service: virtual-machines
+author: dbakevlar
+ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 07/18/2019
-ms.author: rogardle
-ms.custom: ''
-ms.openlocfilehash: 9fe6886f368d053af919b326fabf1ad4c3066717
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.author: kegorman
+ms.reviewer: cynthn
+ms.openlocfilehash: aa481090e3483e58f6a88304e3e9d8c1a16df3c7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224538"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965920"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>Azure に Oracle アプリケーションをデプロイするアーキテクチャ
 

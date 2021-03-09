@@ -1,4 +1,4 @@
-- name: Microsoft Azure Attestation (プレビュー)
+- name: Microsoft Azure Attestation
   href: index.yml
 - name: 概要
   items:
@@ -7,13 +7,22 @@
 - name: クイックスタート
   items:
     - name: ARM テンプレート
+      displayName: Resource Manager
       href: quickstart-template.md
     - name: PowerShell
       href: quickstart-powershell.md
+    - name: ポータル
+      href: quickstart-portal.md
+    - name: CLI
+      href: quickstart-azure-cli.md
 - name: チュートリアル
   items:
-    - name: 構成証明ポリシーの作成と署名
+    - name: 構成証明ポリシーの作成
       href: author-sign-policy.md
+    - name: プライベート エンドポイントの作成 - PowerShell
+      href: private-endpoint-powershell.md
+    - name: Azure 診断モニター
+      href: azure-diagnostic-monitoring.md
     - name: SGX 構成証明コード サンプル
       href: /samples/browse/?expanded=azure&terms=attestation
 - name: 例
@@ -34,15 +43,28 @@
           href: claim-sets.md
     - name: ワークフロー
       href: workflow.md
-- name: 参考資料
+    - name: 監査ログの表示
+      href: audit-logs.md
+- name: 関連項目
   items:
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation'
     - name: よく寄せられる質問
       href: faq.md
     - name: REST
       href: /rest/api/attestation/
     - name: Azure PowerShell
-      href: /powershell/module/az.attestation/?view=azps-4.3.0#attestation
+      href: /powershell/module/az.attestation/?view=azps-5.0.0#attestation
+    - name: Azure CLI
+      href: /cli/azure/ext/attestation/attestation
     - name: Windows 向け Azure DCAP ライブラリ
       href: 'https://www.nuget.org/packages/Microsoft.Azure.DCAP/'
     - name: Linux 向け Azure DCAP ライブラリ
       href: 'https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/a/az-dcap-client/'
+    - name: 問題のトラブルシューティング
+      href: troubleshoot-guide.md
+    - name: TPM および VBS 構成証明プロトコル
+      href: virtualization-based-security-protocol.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md

@@ -1,23 +1,23 @@
 ---
 title: OpenShift 4 を実行する Azure Red Hat OpenShift - Azure portal および OpenShift Web コンソールを使用して Azure Active Directory 認証を構成する
 description: Azure portal および OpenShift Web コンソールを使用して、OpenShift 4 を実行している Azure Red Hat OpenShift クラスターの Azure Active Directory 認証を構成する方法について説明します
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: article
 ms.date: 03/12/2020
 author: sabbour
 ms.author: asabbour
 keywords: aro、openshift、az aro、red hat、cli
-ms.custom: mvc
-ms.openlocfilehash: 10a7dc662993327b71d43c27f44d22166a3f3611
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 7f01404f63a32e3a23413b8eaca64f679f7036d8
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590321"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635164"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>Azure Red Hat OpenShift 4 クラスターの Azure Active Directory 認証を構成する (ポータル)
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -44,13 +44,13 @@ Azure portal にログインし、[[アプリの登録]](https://ms.portal.azure
 
 ![シークレットの作成](media/aro4-ad-clientsecret.png)
 
-**[概要]** に移動し、**アプリケーション (クライアント) ID** と**ディレクトリ (テナント) ID** をメモしておきます。 この値は後の段階で必要となります。
+**[概要]** に移動し、**アプリケーション (クライアント) ID** と **ディレクトリ (テナント) ID** をメモしておきます。 この値は後の段階で必要となります。
 
 ![アプリケーション (クライアント) ID とディレクトリ (テナント) ID を取得する](media/aro4-ad-ids.png)
 
 ## <a name="configure-optional-claims"></a>省略可能な要求の構成
 
-アプリケーション開発者は、Azure AD アプリケーションで[省略可能な要求](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)を使用して、アプリケーションに送信されるトークンに含める要求を指定できます。
+アプリケーション開発者は、Azure AD アプリケーションで[省略可能な要求](../active-directory/develop/active-directory-optional-claims.md)を使用して、アプリケーションに送信されるトークンに含める要求を指定できます。
 
 次の処理に省略可能な要求を使用できます。
 
@@ -62,13 +62,13 @@ Azure Active Directory によって返される ID トークンの一部とし�
 
 **トークン構成 (プレビュー)** に移動し、 **[Add optional claim]\(省略可能な要求を追加\)** をクリックします。 **[ID]** を選択し、 **[電子メール]** と **upn** 要求を確認します。
 
-![シークレットの作成](media/aro4-ad-tokens.png)
+![追加された電子メールと UPN 要求を示すスクリーンショット。](media/aro4-ad-tokens.png)
 
 ## <a name="assign-users-and-groups-to-the-cluster-optional"></a>ユーザーとグループをクラスターに割り当てる (省略可能)
 
 Azure Active Directory (Azure AD) テナントに登録されたアプリケーションは、既定ではテナントの正常に認証されたすべてのユーザーが利用できます。 Azure AD により、テナントの管理者と開発者が、テナントのユーザーまたはセキュリティ グループの特定のセットにアプリを制限できるようになります。
 
-Azure Active Directory のドキュメントに記載されている手順に従って、[ユーザーとグループをアプリに割り当てます](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users#app-registration)。
+Azure Active Directory のドキュメントに記載されている手順に従って、[ユーザーとグループをアプリに割り当てます](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md#app-registration)。
 
 ## <a name="configure-openshift-openid-authentication"></a>OpenShift OpenID 認証の構成
 

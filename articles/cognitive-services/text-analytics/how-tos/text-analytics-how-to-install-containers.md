@@ -1,36 +1,38 @@
 ---
-title: コンテナーをインストールして実行する - Text Analytics
+title: Text Analytics API 向けの Docker コンテナーをインストールし、実行する
 titleSuffix: Azure Cognitive Services
-description: このチュートリアルでの Text Analytics のコンテナーのダウンロード、インストール、および実行方法。
+description: Text Analytics API 用の Docker コンテナーを使用し、感情分析などの自然言語処理をオンプレミスで実行します。
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 03/02/2021
 ms.author: aahi
-ms.openlocfilehash: 61303a52212c4cec88dee2ccd8a1c08fb971a9b8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+keywords: オンプレミス, Docker, コンテナー, 感情分析, 自然言語処理
+ms.openlocfilehash: fb924f955e46058420e645cdf1e76e6c06e91646
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545660"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050139"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics コンテナーをインストールして実行する
 
 > [!NOTE]
-> * 感情分析 v3 用のコンテナーが一般公開されました。 制限なしのパブリック プレビューとして、キー フレーズ抽出コンテナーと言語検出コンテナーを使用できます。
+> * 感情分析と言語検出のためのコンテナーが、一般提供されるようになりました。 キー フレーズ抽出のコンテナーは、制限なしのパブリック プレビューとして使用できます。
 > * 現時点では、エンティティのリンクと NER をコンテナーとして使用することはできません。
-> * 現在、Text Analytics for Health コンテナーの使用には課金されません。
+> * Text Analytics for Health コンテナーには[要求フォーム](https://aka.ms/csgate)が必要です。 現時点では、その使用に対しては課金されません。
+> * コンテナー イメージの場所が最近変更された可能性があります。 このコンテナーの更新された場所については、この記事をご覧ください。
 
 コンテナーを使用すると、独自の環境で Text Analytic API を実行でき、セキュリティとデータ ガバナンスの固有の要件に対応できます。 Text Analytics コンテナーは、未加工のテキストに対して高度な自然言語処理を提供し、主要な機能として、感情分析、キー フレーズ抽出、言語検出の 3 つを備えています。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 > [!IMPORTANT]
-> 無料アカウントは 1 か月あたり 5,000 トランザクションまでに制限されており、**Free** と **Standard** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">価格レベル <span class="docon docon-navigate-external x-hidden-focus"></span></a> のみがコンテナーに対して有効です。 トランザクションの要求レートの詳細については、「[データ制限](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)」を参照してください。
+> 無料アカウントは 1 か月あたり 5,000 トランザクションまでに制限されており、**Free** と **Standard** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">価格レベル <span class="docon docon-navigate-external x-hidden-focus"></span></a> のみがコンテナーに対して有効です。 トランザクションの要求レートの詳細については、「[データ制限](../overview.md#data-limits)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +46,7 @@ Text Analytics コンテナーを使用する前に、次の前提条件を満�
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
-|Text Analytics リソース |コンテナーを使用するためには、以下が必要です。<br><br>関連付けられている API キーとエンドポイント URI を取得するための Azure [Text Analytics](../../cognitive-services-apis-create-account.md) リソース。 どちらの値も、Azure portal の [Text Analytics Overview]\(Text Analytics の概要\) ページと [キー] ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページに提示されているエンドポイント|
+|Text Analytics リソース |コンテナーを使用するためには、以下が必要です。<br><br>Free (F0) または Standard (S) [価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)の Azure [Text Analytics リソース](../../cognitive-services-apis-create-account.md)。 Azure portal でリソースの **[Key and endpoint]\(キーとエンドポイント\)** ページに移動して、関連付けられている API キーとエンドポイント URI を取得する必要があります。 <br><br>**{API_KEY}** : 利用可能な 2 つのリソース キーのどちらか。 <br><br>**{ENDPOINT_URI}** : リソースのエンドポイント。 |
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
@@ -59,7 +61,7 @@ Text Analytics コンテナーを使用する前に、次の前提条件を満�
 |  | 最小ホスト仕様 | 推奨されるホスト仕様 | 最小 TPS | 最大 TPS|
 |---|---------|-------------|--|--|
 | **言語検出、キー フレーズ抽出**   | 1 コア、2 GB メモリ | 1 コア、4 GB メモリ |15 | 30|
-| **感情分析 v3**   | 1 コア、2 GB メモリ | 4 コア、8 GB メモリ |15 | 30|
+| **感情分析**   | 1 コア、2 GB メモリ | 4 コア、8 GB メモリ |15 | 30|
 | **Text Analytics for Health - 1 ドキュメント/要求**   |  4 コア、10 GB メモリ | 6 コア、12 GB メモリ |15 | 30|
 | **Text Analytics for Health - 10 ドキュメント/要求**   |  6 コア、16 GB メモリ | 8 コア、20 GB メモリ |15 | 30|
 
@@ -71,7 +73,7 @@ CPU コアとメモリは、`docker run` コマンドの一部として使用さ
 
 Text Analytics のコンテナー イメージは Microsoft コンテナー レジストリで入手できます。
 
-# <a name="sentiment-analysis-v3"></a>[感情分析 v3](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[感情分析](#tab/sentiment)
 
 [!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
@@ -79,7 +81,7 @@ Text Analytics のコンテナー イメージは Microsoft コンテナー レ�
 
 [!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-# <a name="language-detection-preview"></a>[言語検出 (プレビュー)](#tab/language)
+# <a name="language-detection"></a>[言語検出](#tab/language)
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
@@ -103,9 +105,9 @@ Text Analytics のコンテナー イメージは Microsoft コンテナー レ�
 > [!IMPORTANT]
 > * 以降のセクションの Docker コマンドには、行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 
 > * コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
-> * 感情分析 v3 コンテナーが一般公開されました。これにより、応答で[センチメント ラベル](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)が返されます。 キー フレーズ抽出コンテナーと言語検出コンテナーでは API の v2 が使用されます。それらはプレビュー段階にあります。
+> * 感情分析と言語検出のコンテナーは一般提供されています。 v2 の API が使用されているキー フレーズ抽出のコンテナーは、プレビュー段階です。
 
-# <a name="sentiment-analysis-v3"></a>[感情分析 v3](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[感情分析](#tab/sentiment)
 
 [!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
 
@@ -113,7 +115,7 @@ Text Analytics のコンテナー イメージは Microsoft コンテナー レ�
 
 [!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-# <a name="language-detection-preview"></a>[言語検出 (プレビュー)](#tab/language)
+# <a name="language-detection"></a>[言語検出](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
@@ -153,10 +155,6 @@ Text Analytics コンテナーは、Azure アカウントの _Text Analytics_ �
 
 これらのオプションの詳細については、「[コンテナーの構成](../text-analytics-resource-container-config.md)」を参照してください。
 
-<!--blogs/samples/video course -->
-
-[!INCLUDE [Discoverability of more container information](../../../../includes/cognitive-services-containers-discoverability.md)]
-
 ## <a name="summary"></a>まとめ
 
 この記事では、Text Analytics コンテナーの概念とそのダウンロード、インストール、および実行のワークフローについて説明しました。 要約すると:
@@ -164,7 +162,7 @@ Text Analytics コンテナーは、Azure アカウントの _Text Analytics_ �
 * Text Analytics は、Docker 用に 3 つの Linux コンテナーを提供し、さまざまな機能をカプセル化します。
    * *感情分析*
    * *キー フレーズ抽出 (プレビュー)* 
-   * *言語検出 (プレビュー)*
+   * *言語検出*
    * *Text Analytics for Health (プレビュー)*
 * コンテナー イメージは、Microsoft Container Registry (MCR) またはプレビュー コンテナー リポジトリからダウンロードされます。
 * コンテナー イメージを Docker で実行します。

@@ -1,24 +1,19 @@
 ---
 title: HPC VM で InifinBand を有効にする - Azure Virtual Machines | Microsoft Docs
 description: Azure HPC VM で InfiniBand を有効にする方法について説明します。
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines
-ms.workload: infrastructure-services
+ms.subservice: hpc
 ms.topic: article
-ms.date: 08/01/2020
+ms.date: 11/06/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 0cbfed307cea1bd98bf864046a8c08edb849226a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: cd4d928217ceba80fa5ea0252a6ed20803a812d3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797987"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666963"
 ---
 # <a name="enable-infiniband"></a>InfiniBand の有効化
 
@@ -66,7 +61,7 @@ Windows の場合は、[Windows 用の Mellanox OFED ドライバー](https://ww
 MPI ジョブを実行する予定がある場合は、通常、IPoIB は必要ありません。 MPI ライブラリでは、IB 通信に動詞インターフェイスが使用されます (MPI ライブラリの TCP/IP チャネルを明示的に使用しない場合)。 ただし、通信に TCP/IP を使用するアプリがあり、IB 経由で実行したい場合は、IB インターフェイスで IPoIB を使用できます。 次のコマンド (RHEL/CentOS 用) を実行して、IP over InfiniBand を有効にします。
 
 ```bash
-sudo sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
+sudo sed -i -e 's/# OS.EnableRDMA=n/OS.EnableRDMA=y/g' /etc/waagent.conf
 sudo systemctl restart waagent
 ```
 

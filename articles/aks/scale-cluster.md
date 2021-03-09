@@ -2,16 +2,14 @@
 title: Azure Kubernetes Service (AKS) クラスターのスケーリング
 description: Azure Kubernetes Service (AKS) クラスターでノードの数をスケーリングする方法について説明します。
 services: container-service
-author: iainfoulds
 ms.topic: article
-ms.date: 05/31/2019
-ms.author: iainfou
-ms.openlocfilehash: 55d7a00a0a8c0b655f06810f8bcea7126bb9167f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 09/16/2020
+ms.openlocfilehash: fdb61bf090351894329c24eb1a3c73d627e622e8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368419"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102173768"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターでノードの数をスケーリングする
 
@@ -19,7 +17,7 @@ ms.locfileid: "79368419"
 
 ## <a name="scale-the-cluster-nodes"></a>クラスター ノードのスケーリング
 
-最初に、[az aks show][az-aks-show] コマンドを使用してノード プールの*名前*を取得します。 次の例では、*myResourceGroup* リソース グループ内の *myAKSCluster* という名前のクラスターのノード プール名を取得します。
+最初に、[az aks show][az-aks-show] コマンドを使用してノード プールの *名前* を取得します。 次の例では、*myResourceGroup* リソース グループ内の *myAKSCluster* という名前のクラスターのノード プール名を取得します。
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
@@ -41,7 +39,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPo
 ]
 ```
 
-[az aks scale][az-aks-scale] コマンドを使用してクラスター ノードをスケーリングします。 次の例では、*myAKSCluster* という名前のクラスターを単一のノードにスケーリングします。 前のコマンドの *--nodepool-name* に、*nodepool1* などの独自のノードプール名を指定します。
+[az aks scale][az-aks-scale] コマンドを使用してクラスター ノードをスケーリングします。 次の例では、*myAKSCluster* という名前のクラスターを単一のノードにスケーリングします。 *nodepool1* など、前のコマンドから返された独自の `--nodepool-name` を指定します。
 
 ```azurecli-interactive
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
@@ -69,7 +67,21 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+
+## <a name="scale-user-node-pools-to-0"></a>`User` ノード プールを 0 にスケーリングする
+
+常に実行中のノードを必要とする `System` ノード プールとは異なり、`User` ノード プールでは 0 にスケーリングできます。 システムとユーザー ノード プールの違いについては、「[システムおよびユーザー ノード プール](use-system-pools.md)」を参照してください。
+
+ユーザー プールを 0 にスケーリングするには、上記の `az aks scale` コマンドの代わりに [az aks nodepool scale][az-aks-nodepool-scale] を使用し、ノード数として 0 を設定します。
+
+
+```azurecli-interactive
+az aks nodepool scale --name <your node pool name> --cluster-name myAKSCluster --resource-group myResourceGroup  --node-count 0 
+```
+
+また、[クラスター オートスケーラー](cluster-autoscaler.md)の `--min-count` パラメーターを 0 に設定することによって、`User` ノード プールを 0 ノードに自動スケーリングすることもできます。
+
+## <a name="next-steps"></a>次の手順
 
 この記事では、AKS クラスターを手動でスケールしてノード数を増減しました。 [クラスターの自動スケーラー][cluster-autoscaler]を使用してクラスターを自動的にスケーリングすることもできます。
 
@@ -81,3 +93,4 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [az-aks-scale]: /cli/azure/aks#az-aks-scale
 [cluster-autoscaler]: cluster-autoscaler.md
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool#az-aks-nodepool-scale

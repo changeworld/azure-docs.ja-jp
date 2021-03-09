@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7bf9e7a4c17134a47cbaafbc2bde25d467c6a978
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 10ad06041e8136b5661b1b1ff487cd4d3b0f5153
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548550"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358407"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように Signagelive を構成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "88548550"
 
 ## <a name="assigning-users-to-signagelive"></a>Signagelive へのユーザーの割り当て   
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に " *割り当て* " という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
 
 自動ユーザー プロビジョニングを構成して有効にする前に、Signagelive へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Signagelive に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
@@ -72,7 +72,7 @@ Azure AD での自動ユーザー プロビジョニングのために Signageli
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Signagelive**」と入力し、結果パネルで **[Signagelive]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **Signagelive** 」と入力し、結果パネルで **[Signagelive]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果リストの Signagelive](common/search-new-app.png)
 
@@ -95,13 +95,13 @@ Azure AD での自動ユーザー プロビジョニングのために Signageli
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. [管理者資格情報] セクションの **[テナント URL]** に「` https://samlapi.signagelive.com/scim/v2`」と入力します。 **[シークレット トークン]** フィールドに、エンジニアリング開発チームから提供された**ベアラー トークン**値を入力します。 **[接続テスト]** をクリックして、Azure AD から Signagelive に接続できることを確認します。 接続できない場合は、使用中の Signagelive アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. [管理者資格情報] セクションの **[テナント URL]** に「` https://samlapi.signagelive.com/scim/v2`」と入力します。 **[シークレット トークン]** フィールドに、エンジニアリング開発チームから提供された **ベアラー トークン** 値を入力します。 **[接続テスト]** をクリックして、Azure AD から Signagelive に接続できることを確認します。 接続できない場合は、使用中の Signagelive アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
 6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
@@ -112,19 +112,19 @@ Azure AD での自動ユーザー プロビジョニングのために Signageli
 
 8. **[マッピング]** セクションの **[Azure Active Directory ユーザーを Signagelive に同期する]** を選びます。
 
-    ![Signagelive ユーザー マッピング](media/signagelive-provisioning-tutorial/usermapping.png)
+    ![[マッピング] セクションのスクリーンショット。[Azure Active Directory ユーザーを Signagelive に同期する] オプションが選択されています。](media/signagelive-provisioning-tutorial/usermapping.png)
 
 9. **[属性マッピング]** セクションで、Azure AD から Signagelive に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Signagelive のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Signagelive ユーザー属性](media/signagelive-provisioning-tutorial/userattribute.png)
+    ![7 つのマッピングが表示されている [属性マッピング] セクションのスクリーンショット。](media/signagelive-provisioning-tutorial/userattribute.png)
 
 10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Group to Signagelive]\(Azure Active Directory グループを Signagelive に同期する\)** を選択します。
 
-    ![Signagelive ユーザー マッピング](media/signagelive-provisioning-tutorial/groupmapping.png)
+    ![[マッピング] セクションのスクリーンショット。[Synchronize Azure Active Directory Group to Signagelive]\(Azure Active Directory グループを Signagelive に同期する\) オプションが選択されています。](media/signagelive-provisioning-tutorial/groupmapping.png)
 
 11. **[属性マッピング]** セクションで、Azure AD から Signagelive に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Signagelive のグループ アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Signagelive ユーザー属性](media/signagelive-provisioning-tutorial/groupattribute.png)
+    ![3 つのマッピングが表示されている [属性マッピング] セクションのスクリーンショット。](media/signagelive-provisioning-tutorial/groupattribute.png)
 
 12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 

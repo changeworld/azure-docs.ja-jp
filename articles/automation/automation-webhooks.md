@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4338bc4a11b785b27f6316748f9cbc4eeaaddbea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: df19f32be41b17e13a9da575e828830e29da4e55
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015104"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894764"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>webhook から Runbook を開始する
 
@@ -89,7 +89,7 @@ Webhook のセキュリティは、Webhook の呼び出しを許可するセキ�
 
 * Webhook 要求の受信時に外部条件の検証を Runbook に実行させます。 たとえば、GitHub リポジトリへの新しいコミットが発生するたびに GitHub によって呼び出される Runbook について考えてみましょう。 Runbook は、GitHub に接続して、新しいコミットが発生したことを確認してから続行することができます。
 
-* Azure Automation では、Azure 仮想ネットワーク サービス タグ、特に [GuestAndHybridManagement](../virtual-network/service-tags-overview.md) がサポートされています。 サービス タグを使用して、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md#security-rules)または [Azure Firewall](../firewall/service-tags.md) でのネットワーク アクセス制御を定義し、仮想ネットワーク内から Webhook をトリガーできます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用できます。 規則の適切なソースまたは宛先フィールドにサービス タグ名 **GuestAndHybridManagement** を指定することで、Automation サービスのトラフィックを許可または拒否できます。 このサービス タグでは、IP 範囲を特定のリージョンに制限することによる、より詳細な制御はサポートされていません。
+* Azure Automation では、Azure 仮想ネットワーク サービス タグ、特に [GuestAndHybridManagement](../virtual-network/service-tags-overview.md) がサポートされています。 サービス タグを使用して、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#security-rules)または [Azure Firewall](../firewall/service-tags.md) でのネットワーク アクセス制御を定義し、仮想ネットワーク内から Webhook をトリガーできます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用できます。 規則の適切なソースまたは宛先フィールドにサービス タグ名 **GuestAndHybridManagement** を指定することで、Automation サービスのトラフィックを許可または拒否できます。 このサービス タグでは、IP 範囲を特定のリージョンに制限することによる、より詳細な制御はサポートされていません。
 
 ## <a name="create-a-webhook"></a>webhook を作成する
 
@@ -151,7 +151,7 @@ Webhook が作成されると、有効期間が 10 年に設定され、それ�
 次の例の Runbook では、webhook データを受け入れ、要求本文で指定された仮想マシンを起動します。 この Runbook をテストするには、Automation アカウントの **[Runbook]** で、 **[Runbook の作成]** をクリックします。 Runbook を作成する方法がわからない場合は、[Runbook の作成](automation-quickstart-create-runbook.md)に関する記事をご覧ください。
 
 > [!NOTE]
-> 非グラフィカル PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) のエイリアスです。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。
+> 非グラフィカル PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) のエイリアスです。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。
 
 ```powershell
 param

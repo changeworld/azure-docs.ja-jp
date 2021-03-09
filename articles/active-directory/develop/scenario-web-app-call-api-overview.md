@@ -1,5 +1,6 @@
 ---
-title: Web API を呼び出す Web アプリを構築する - Microsoft ID プラットフォーム | Azure
+title: Web API を呼び出す Web アプリの構築 | Azure
+titleSuffix: Microsoft identity platform
 description: Web API を呼び出す Web アプリ を構築する方法 (概要) について説明します
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0c4bef25a0be12c0335a82345ec998274f1faa67
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1fdbdada54320ef28f6a4b04a7f415c835acc9dd
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058398"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756288"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>シナリオ:Web API を呼び出す Web アプリ
 
@@ -24,12 +25,7 @@ Microsoft ID プラットフォーム上でユーザーがサインインし、�
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
-
-このシナリオでは、次のシナリオを既に実行していることを前提としています。
-
-> [!div class="nextstepaction"]
-> [ユーザーをサインインさせる Web アプリ](scenario-web-app-sign-user-overview.md)
+このシナリオでは、次を既に完了していることを前提としています。「[シナリオ:ユーザーをサインインさせる Web アプリ](scenario-web-app-sign-user-overview.md)」を参照してください。
 
 ## <a name="overview"></a>概要
 
@@ -43,7 +39,7 @@ Web API を呼び出す Web アプリは、機密クライアント アプリケ
 ## <a name="specifics"></a>詳細
 
 > [!NOTE]
-> Web アプリにサインインを追加するということは、Web アプリ自体を保護することです。 この保護は、Microsoft Authentication Library (MSAL) ではなく*ミドルウェア*ライブラリを使用して実現されます。 前述のシナリオでは、[ユーザーをサインインさせる Web アプリ](scenario-web-app-sign-user-overview.md)でこれを説明していました。
+> Web アプリにサインインを追加するということは、Web アプリ自体を保護することです。 この保護は、Microsoft Authentication Library (MSAL) ではなく *ミドルウェア* ライブラリを使用して実現されます。 前述のシナリオでは、[ユーザーをサインインさせる Web アプリ](scenario-web-app-sign-user-overview.md)でこれを説明していました。
 >
 > このシナリオでは、Web アプリから Web API を呼び出す方法について説明します。 これらの Web API のアクセス トークンを取得する必要があります。 MSAL ライブラリを使用してこれらのトークンを取得します。
 
@@ -52,7 +48,10 @@ Web API を呼び出す Web アプリは、機密クライアント アプリケ
 - [アプリケーションの登録](scenario-web-app-call-api-app-registration.md)中に、Azure AD と共有する応答 URI、シークレット、または証明書を指定する必要があります。 複数の場所にアプリをデプロイする場合は、場所ごとに応答 URI を入力します。
 - [アプリケーションの構成](scenario-web-app-call-api-app-configuration.md)で、アプリケーションの登録時に Azure AD と共有されたクライアント資格情報を提供する必要があります。
 
+## <a name="recommended-reading"></a>推奨資料
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [Web API を呼び出す Web アプリ:アプリの登録](scenario-web-app-call-api-app-registration.md)
+このシナリオの次の記事「[アプリの登録](scenario-web-app-call-api-app-registration.md)」に進みます。

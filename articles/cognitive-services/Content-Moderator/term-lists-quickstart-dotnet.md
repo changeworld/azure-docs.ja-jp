@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90993ea2ee66a23b5b629dfaf5bb34298ce15d9b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 93d90232fb530a6c14c40558fc6a9974a1da42de
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936284"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900926"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>C# でカスタム用語リストと照らしてテキストを確認する
 
@@ -41,7 +41,7 @@ REST API や SDK を通じて Content Moderator サービスを使用するに�
 
 ## <a name="create-your-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-1. ソリューションに新しい**コンソール アプリ (.NET Framework)** プロジェクトを追加します。
+1. ソリューションに新しい **コンソール アプリ (.NET Framework)** プロジェクトを追加します。
 
 1. プロジェクトに **TermLists** と名前を付けます。 このプロジェクトをソリューションのシングル スタートアップ プロジェクトとして選択します。
 
@@ -134,10 +134,10 @@ private const double latencyDelay = 0.5;
 
 ## <a name="create-a-term-list"></a>用語リストを作成する
 
-用語リストを作成するには、**ContentModeratorClient.ListManagementTermLists.Create** を使用します。 **Create** の 1 番目のパラメーターは、MIME の種類を含む文字列です。これは "application/json" にする必要があります。 詳細については、[API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)に関するページを参照してください。 2 番目のパラメーターは、新しい用語リストの名前と説明を含む **Body** オブジェクトです。
+用語リストを作成するには、 **ContentModeratorClient.ListManagementTermLists.Create** を使用します。 **Create** の 1 番目のパラメーターは、MIME の種類を含む文字列です。これは "application/json" にする必要があります。 詳細については、[API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)に関するページを参照してください。 2 番目のパラメーターは、新しい用語リストの名前と説明を含む **Body** オブジェクトです。
 
 > [!NOTE]
-> 上限は**用語の一覧が 5 つ**で、各一覧では**用語が 10,000 個を超えてはいけません**。
+> 上限は **用語の一覧が 5 つ** で、各一覧では **用語が 10,000 個を超えてはいけません** 。
 
 名前空間 TermLists、クラス Program に次のメソッドの定義を追加します。
 
@@ -172,7 +172,7 @@ static string CreateTermList (ContentModeratorClient client)
 
 ## <a name="update-term-list-name-and-description"></a>用語リストの名前と説明を更新する
 
-用語リストの情報を更新するには、**ContentModeratorClient.ListManagementTermLists.Update** を使用します。 **Update** の 1 番目のパラメーターは、用語リスト ID です。 2 番目のパラメーターは MIME の種類で、"application/json" にする必要があります。 詳細については、[API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685)に関するページを参照してください。 3 番目のパラメーターは、新しい名前と説明を含む **Body** オブジェクトです。
+用語リストの情報を更新するには、 **ContentModeratorClient.ListManagementTermLists.Update** を使用します。 **Update** の 1 番目のパラメーターは、用語リスト ID です。 2 番目のパラメーターは MIME の種類で、"application/json" にする必要があります。 詳細については、[API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685)に関するページを参照してください。 3 番目のパラメーターは、新しい名前と説明を含む **Body** オブジェクトです。
 
 名前空間 TermLists、クラス Program に次のメソッドの定義を追加します。
 
@@ -239,7 +239,7 @@ static void GetAllTerms(ContentModeratorClient client, string list_id)
 
 用語リストに変更を加えた後は、次に用語リストを使用してテキストをスクリーニングしたときにその変更が含まれるように、用語リストの検索インデックスを最新の情報に更新します。 これは、デスクトップ上の検索エンジン (有効になっている場合) や Web 検索エンジンが、新しいファイルやページが含まれるように絶えずインデックスを最新の情報に更新する方法と似ています。
 
-用語リストの検索インデックスを最新の情報に更新するには、**ContentModeratorClient.ListManagementTermLists.RefreshIndexMethod** を使用します。
+用語リストの検索インデックスを最新の情報に更新するには、 **ContentModeratorClient.ListManagementTermLists.RefreshIndexMethod** を使用します。
 
 名前空間 TermLists、クラス Program に次のメソッドの定義を追加します。
 
@@ -259,7 +259,7 @@ static void RefreshSearchIndex (ContentModeratorClient client, string list_id)
 
 ## <a name="screen-text-using-a-term-list"></a>用語リストを使用してテキストをスクリーニングする
 
-用語リストを使用してテキストをスクリーニングするには、**ContentModeratorClient.TextModeration.ScreenText** を使用します。これは次のパラメーターを受け取ります。
+用語リストを使用してテキストをスクリーニングするには、 **ContentModeratorClient.TextModeration.ScreenText** を使用します。これは次のパラメーターを受け取ります。
 
 - 用語リスト内の用語の言語。
 - MIME の種類 ("text/html"、"text/xml"、"text/markdown"、"text/plain" のいずれか)。
@@ -270,7 +270,7 @@ static void RefreshSearchIndex (ContentModeratorClient client, string list_id)
 
 詳細については、[API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f)に関するページを参照してください。
 
-**ScreenText** は、**Screen** オブジェクトを返します。このオブジェクトには、Content Moderator がスクリーニングで検出した用語を一覧表示する **Terms** プロパティがあります。 Content Moderator がスクリーニング時に用語を検出しなかった場合は、**Terms** プロパティの値が **null** になることに注意してください。
+**ScreenText** は、 **Screen** オブジェクトを返します。このオブジェクトには、Content Moderator がスクリーニングで検出した用語を一覧表示する **Terms** プロパティがあります。 Content Moderator がスクリーニング時に用語を検出しなかった場合は、 **Terms** プロパティの値が **null** になることに注意してください。
 
 名前空間 TermLists、クラス Program に次のメソッドの定義を追加します。
 
@@ -296,7 +296,7 @@ static void ScreenText (ContentModeratorClient client, string list_id, string te
             Console.WriteLine(String.Format("Found term: \"{0}\" from list ID {1} at index {2}.", term.Term, term.ListId, term.Index));
         }
     }
-    read.Sleep(throttleRate);
+    Thread.Sleep(throttleRate);
 }
 ```
 
@@ -304,9 +304,9 @@ static void ScreenText (ContentModeratorClient client, string list_id, string te
 
 用語やリストを削除するのは簡単です。 SDK を使用して、次のタスクを実行できます。
 
-- 用語を削除する。 (**ContentModeratorClient.ListManagementTerm.DeleteTerm**)
-- リストを削除せずに、リスト内のすべての用語を削除する。 (**ContentModeratorClient.ListManagementTerm.DeleteAllTerms**)
-- リストと、そのコンテンツをすべて削除する。 (**ContentModeratorClient.ListManagementTermLists.Delete**)
+- 用語を削除する。 ( **ContentModeratorClient.ListManagementTerm.DeleteTerm** )
+- リストを削除せずに、リスト内のすべての用語を削除する。 ( **ContentModeratorClient.ListManagementTerm.DeleteAllTerms** )
+- リストと、そのコンテンツをすべて削除する。 ( **ContentModeratorClient.ListManagementTermLists.Delete** )
 
 ### <a name="delete-a-term"></a>用語を削除する
 
@@ -365,7 +365,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 
 ## <a name="compose-the-main-method"></a>Main メソッドを作成する
 
-名前空間 **TermLists**、クラス **Program** に **Main** メソッドの定義を追加します。 最後に、**Program** クラスと **TermLists** 名前空間を閉じます。
+名前空間 **TermLists** 、クラス **Program** に **Main** メソッドの定義を追加します。 最後に、 **Program** クラスと **TermLists** 名前空間を閉じます。
 
 ```csharp
 static void Main(string[] args)

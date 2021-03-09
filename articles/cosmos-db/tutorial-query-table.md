@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 06/05/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 481f1353e16fecd0e413152db89a4ae54824a0f8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e184d85e3daee41f530334aa0034fc98f40a8766
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019285"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099224"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>チュートリアル:Table API を使って Azure Cosmos DB に対するクエリを実行する
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 Azure Cosmos DB [Table API](table-introduction.md) では、キー/値 (テーブル) データに対する OData クエリと [LINQ](/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) クエリがサポートされます。  
 
@@ -84,7 +85,7 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 | --- | --- | --- | --- |
 | Smith |Ben | Ben@contoso.com| 425-555-0102 |
 
-datetime プロパティに対するクエリでは、Azure Cosmos DB の Table API で実行された場合、データは返されません。 Azure Table ストレージでは、日付の値がティックの時間粒度で格納されますが、Azure Cosmos DB の Table API では `_ts` プロパティが使用されます。 `_ts` プロパティは、OData フィルターではなく、粒度が 2 番目のレベルにあります。 そのため、timestamp プロパティに対するクエリは Azure Cosmos DB によってブロックされます。 回避策として、カスタムの datetime または long データ型プロパティを定義し、クライアントから日付値を設定できます。
+datetime プロパティに対するクエリでは、Azure Cosmos DB の Table API で実行された場合、データは返されません。 Azure Table Storage では、日付の値がティックの時間粒度で格納されますが、Azure Cosmos DB の Table API では `_ts` プロパティが使用されます。 `_ts` プロパティは、OData フィルターではなく、粒度が 2 番目のレベルにあります。 そのため、timestamp プロパティに対するクエリは Azure Cosmos DB によってブロックされます。 回避策として、カスタムの datetime または long データ型プロパティを定義し、クライアントから日付値を設定できます。
 
 ## <a name="query-by-using-linq"></a>LINQ を使用したクエリ 
 LINQ を使用してクエリを実行することもできます。これは、対応する OData クエリ式に変換されます。 .NET SDK を使用してクエリを作成する方法の例を次に示します。

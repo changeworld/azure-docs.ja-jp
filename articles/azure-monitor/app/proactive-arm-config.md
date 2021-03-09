@@ -4,14 +4,14 @@ description: Azure Resource Manager テンプレートでの Azure Application I
 ms.topic: conceptual
 author: harelbr
 ms.author: harelbr
-ms.date: 06/26/2019
+ms.date: 02/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa8529abf3d7eea7d413c59ce62c93c7eb6c76d1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e3a7b71cd8975957754ba014ecc700484c27a6d7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309343"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726123"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Application Insights スマート検出ルールを管理する
 
@@ -32,7 +32,7 @@ Azure Resource Manager を使用してルールの設定を構成できるよう
 ## <a name="examples"></a>例
 
 Azure Resource Manager テンプレートを使用してスマート検出ルールの設定を構成する方法を示す例を次にいくつか示します。
-すべてのサンプルは、 _"myApplication"_ という名前の Application Insights リソースと、 _"longdependencyduration"_ という内部名の "長い依存関係期間スマート検出ルール" を参照します。
+すべてのサンプルは、_"myApplication"_ という名前の Application Insights リソースと、_"longdependencyduration"_ という内部名の "長い依存関係期間スマート検出ルール" を参照します。
 Application Insights リソース名を置換し、関連するスマート検出ルールの内部名を指定してください。 各スマート検出ルールに対応する Azure Resource Manager 内部名の一覧については、次の表をご確認ください。
 
 ### <a name="disable-a-smart-detection-rule"></a>スマート検出ルールを無効にする
@@ -44,7 +44,7 @@ Application Insights リソース名を置換し、関連するスマート検�
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -75,7 +75,7 @@ Application Insights リソース名を置換し、関連するスマート検�
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -106,7 +106,7 @@ Application Insights リソース名を置換し、関連するスマート検�
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -120,7 +120,7 @@ Application Insights リソース名を置換し、関連するスマート検�
           "properties": {
             "name": "longdependencyduration",
             "sendEmailsToSubscriptionOwners": true,
-            "customEmails": ['alice@contoso.com', 'bob@contoso.com'],
+            "customEmails": ["alice@contoso.com", "bob@contoso.com"],
             "enabled": true
           }
         }
@@ -152,7 +152,7 @@ Azure Resource Manager テンプレートで使用する必要がある、ポー
 
 ### <a name="failure-anomalies-alert-rule"></a>失敗の異常の警告ルール
 
-この Azure Resource Manager テンプレートでは、重大度が 2 の失敗の異常警告ルールの構成について示しています。 この新しいバージョンのエラーの異常のアラート ルールは、新しい Azure のアラート プラットフォームの一部であり、[従来のアラートの回収プロセス](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)の一環として廃止される従来のバージョンに置き換わります。
+この Azure Resource Manager テンプレートでは、重大度が 2 の失敗の異常警告ルールの構成について示しています。
 
 > [!NOTE]
 > 失敗の異常はグローバル サービスであるため、ルールはグローバルな場所に作成されます。

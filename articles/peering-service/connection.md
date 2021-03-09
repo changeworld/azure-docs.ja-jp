@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: df337736a676c40f1345310afb9a2e685ddc1d5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0540fa9c7a29456aaf343adce83509b2d0e390e4
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871322"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398922"
 ---
 # <a name="peering-service-connection"></a>Peering Service 接続
 
@@ -29,7 +29,7 @@ ms.locfileid: "84871322"
 お客様は、要件に従って、1 つまたは複数の接続を確立できます。 接続は、テレメトリ コレクションの 1 つの単位としても使用されます。 たとえば、テレメトリ アラートを選択するには、監視する接続をお客様が定義する必要があります。
 
 > [!Note]
-> Peering Service にサインアップすると、選択したプレフィックスの待ち時間の測定値を提供するために、Windows と Office 365 のテレメトリが分析されます。
+> Peering Service にサインアップすると、選択したプレフィックスの待ち時間の測定値を提供するために、Windows と Microsoft 365 のテレメトリが分析されます。
 >接続テレメトリの詳細については、[Peering Service 接続テレメトリ](connection-telemetry.md)に関するページを参照してください。
 >
 

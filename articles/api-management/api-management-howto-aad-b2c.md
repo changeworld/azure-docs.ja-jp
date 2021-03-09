@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 7b586edd7adce8bcea61419005a3ce8cfc814fb3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254947"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013552"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Azure API Management で Azure Active Directory B2C を使用して開発者アカウントを承認する方法
 
@@ -60,7 +60,7 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 
    ![新しいアプリケーション 3 の登録][api-management-howto-aad-b2c-app-details]
 
-1. (従来の開発者ポータルではなく) 新しい開発者ポータルを使用している場合は、アプリケーションの要求に**名**、**姓**、**ユーザーのオブジェクト ID** を含めます。
+1. (従来の開発者ポータルではなく) 新しい開発者ポータルを使用している場合は、アプリケーションの要求に **名**、**姓**、**ユーザーのオブジェクト ID** を含めます。
 
     ![アプリケーション要求](./media/api-management-howto-aad-b2c/api-management-application-claims.png)
 
@@ -68,13 +68,13 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 
    ![新しいアプリケーション 4 の登録][api-management-howto-aad-b2c-app-created]
 
-1. **[プロパティ]** ブレードの**アプリケーション ID** をクリップボードにコピーします。
+1. **[プロパティ]** ブレードの **アプリケーション ID** をクリップボードにコピーします。
 
    ![アプリケーション ID 1][api-management-howto-aad-b2c-app-id]
 
 1. API Management の **[Add identity provider]** \(ID プロバイダーの追加) ウィンドウに戻り、ID を **[Client Id]** \(クライアント ID) テキスト ボックスに貼り付けます。
     
-1.  B2C アプリ登録に戻り、 **[キー]** をクリックし、 **[キーの生成]** をクリックします。 **[保存]** をクリックして構成を保存し、**アプリ キー**を表示します。 キーをクリップボードにコピーします。
+1.  B2C アプリ登録に戻り、 **[キー]** をクリックし、 **[キーの生成]** をクリックします。 **[保存]** をクリックして構成を保存し、**アプリ キー** を表示します。 キーをクリップボードにコピーします。
 
     ![アプリ キー 1][api-management-howto-aad-b2c-app-key]
 
@@ -82,7 +82,7 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
     
 1.  **[Signin tenant]** (サインインするテナント) ボックスに、Azure Active Directory B2C テナントのドメイン名を指定します。
 
-1.  **[Authority]** (認定機関) フィールドを使用して、使用する Azure AD B2C のログイン URL を制御できます。 値を **< your_b2c_tenant_name >. b2clogin.com**に設定します。
+1.  **[Authority]** (認定機関) フィールドを使用して、使用する Azure AD B2C のログイン URL を制御できます。 値を **< your_b2c_tenant_name >. b2clogin.com** に設定します。
 
 1. B2C テナントのポリシーから、 **[Signup Policy]** \(サインアップ ポリシー) と **[Signin Policy]** \(サインイン ポリシー) を指定します。 必要に応じて、 **[Profile Editing Policy (プロファイル編集ポリシー)]** と **[Password Reset Policy (パスワードのリセット ポリシー)]** も指定します。
 

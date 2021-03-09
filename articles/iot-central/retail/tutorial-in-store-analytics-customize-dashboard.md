@@ -11,17 +11,17 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 47edaec54a2470e9b657b2f214be923439e1e8a2
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 74ce36652b1a00ac6813c62a17d44e2a5486645f
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80999592"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831717"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>チュートリアル:Azure IoT Central でのオペレーター ダッシュボードのカスタマイズと、デバイスの管理
 
 
-このチュートリアルでは、ビルダーとして、Azure IoT Central のストア内分析アプリケーションでオペレーター ダッシュボードをカスタマイズする方法を学習します。 アプリケーションのオペレーターは、カスタマイズされたダッシュボードを使用して、アプリケーションを実行し、接続されているデバイスを管理できます。
+このチュートリアルでは、ビルダーが、Azure IoT Central のストア内分析アプリケーションでオペレーター ダッシュボードをカスタマイズする方法について説明します。 アプリケーションのオペレーターは、カスタマイズされたダッシュボードを使用して、アプリケーションを実行し、接続されているデバイスを管理できます。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -150,7 +150,7 @@ RuuviTag センサーの環境データを表示するためのタイルを追�
 
 1. **[デバイス テンプレート]** 一覧で `RuuviTag` を選択します。 
 
-1. 2 つの RuuviTag センサーのいずれかの**デバイス インスタンス**を選択します。 Contoso ストアの例では、`Zone 1 Ruuvi` を選択してゾーン 1 のテレメトリ タイルを作成します。 
+1. 2 つの RuuviTag センサーのいずれかの **デバイス インスタンス** を選択します。 Contoso ストアの例では、`Zone 1 Ruuvi` を選択してゾーン 1 のテレメトリ タイルを作成します。 
 
 1. **[テレメトリ]** 一覧で `Relative humidity` と `temperature` を選択します。 これらは、ゾーンごとにタイルに表示されるテレメトリ項目です。
 
@@ -166,7 +166,7 @@ RuuviTag センサーの環境データを表示するためのタイルを追�
 
 1. **[構成の更新]** を選択します。
 
-1. 前の手順を繰り返して、2 つ目のセンサー インスタンスのタイルを作成します。 **タイトル**を「*Zone 2 environment (ゾーン 2 環境)* 」に設定し、 **[構成の更新]** を選択します。
+1. 前の手順を繰り返して、2 つ目のセンサー インスタンスのタイルを作成します。 **タイトル** を「*Zone 2 environment (ゾーン 2 環境)* 」に設定し、 **[構成の更新]** を選択します。
 
 1. 「**Zone 2 environment (ゾーン 2 環境)** 」というタイトルのタイルを **[Thermostat firmware]\(サーモスタットのファームウェア\)** タイルの下にドラッグします。 
 
@@ -205,7 +205,7 @@ RuuviTag センサーの環境データを表示するためのタイルを追�
 
 1. **[デバイス テンプレート]** 一覧で `RuuviTag` を選択します。 
 
-1. 2 つの RuuviTag センサーのいずれかの**デバイス インスタンス**を選択します。 Contoso ストアの例では、`Zone 1 Ruuvi` を選択してゾーン 1 のテレメトリ タイルを作成します。 
+1. 2 つの RuuviTag センサーのいずれかの **デバイス インスタンス** を選択します。 Contoso ストアの例では、`Zone 1 Ruuvi` を選択してゾーン 1 のテレメトリ タイルを作成します。 
 
 1. **[プロパティ] > [ソフトウェア バージョン]** を選択します。
 
@@ -213,7 +213,7 @@ RuuviTag センサーの環境データを表示するためのタイルを追�
 
 1. 「**Software version (ソフトウェア バージョン)** 」というタイトルの新しく作成されたタイルで、 **[構成]** を選択します。 
 
-1. **タイトル**を「*Ruuvi 1 software version (Ruuvi 1 ソフトウェア バージョン)* 」に変更します。
+1. **タイトル** を「*Ruuvi 1 software version (Ruuvi 1 ソフトウェア バージョン)* 」に変更します。
 
 1. **[構成の更新]** を選択します。 
 
@@ -246,7 +246,12 @@ RuuviTag センサーの環境データを表示するためのタイルを追�
 
 1. 必要に応じて、 **[Reboot]\(再起動\)** タイルを選択して、ゲートウェイで再起動コマンドを実行します。
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
+
 ## <a name="next-steps"></a>次のステップ
+
 このチュートリアルでは、以下の内容を学習しました。
 
 * ダッシュボード名を変更する

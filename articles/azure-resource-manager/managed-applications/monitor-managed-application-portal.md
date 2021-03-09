@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: afe78dd00ecebdc54b6d73c4c8324729e117d95b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a02062edd1a940bcc6588ab53457e0af91fedd9a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649595"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578277"
 ---
 # <a name="monitor-a-deployed-instance-of-a-managed-application"></a>マネージド アプリケーションのデプロイしたインスタンスの監視
 
@@ -44,7 +44,7 @@ Azure サブスクリプションにマネージ アプリケーションをデ�
 
    ![アラートを作成する](./media/monitor-managed-application-portal/create-new-alert.png)
 
-マネージド アプリケーション インスタンスのアラートまたはマネージド アプリケーションのリソースを作成できます。 アラートの作成の詳細については、「[Microsoft Azure のアラートの概要](../../azure-monitor/platform/alerts-overview.md)」を参照してください。
+マネージド アプリケーション インスタンスのアラートまたはマネージド アプリケーションのリソースを作成できます。 アラートの作成の詳細については、「[Microsoft Azure のアラートの概要](../../azure-monitor/alerts/alerts-overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

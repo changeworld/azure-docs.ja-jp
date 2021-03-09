@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: c439f1a5aaa03774652dc815364c45633096f6de
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 68908b7d62b8211c202262112831d5d2b523f594
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327601"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146956"
 ---
 # <a name="get-started-with-device-twins-java"></a>デバイス ツインの概要 (Java)
 
@@ -31,7 +31,7 @@ ms.locfileid: "87327601"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 JDK 8 のダウンロードを利用するには、「**長期サポート**」の「**Java 8**」を選択します。
+* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable)。 JDK 8 のダウンロードを利用するには、「**長期サポート**」の「**Java 8**」を選択します。
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -380,7 +380,7 @@ ms.locfileid: "87327601"
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![タグの値を更新し、デバイスのクエリを実行する Java IoT Hub サービス アプリ](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
+    ![add-tags-query サービス アプリを実行するコマンドからの出力のスクリーンショット。](./media/iot-hub-java-java-twin-getstarted/service-app-1.png)
 
     デバイス ツインに **plant** タグと **region** タグが追加されていることを確認できます。 最初のクエリはデバイスを返しますが、2 つ目のクエリは返しません。
 
@@ -390,7 +390,7 @@ ms.locfileid: "87327601"
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![デバイス クライアントが報告されるプロパティ **connectivityType** を追加する](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
+    ![デバイス クライアントによって、報告されるプロパティ connectivity Type が追加される](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
 
 3. **add-tags-query** フォルダーのコマンド プロンプトで、次のコマンドを実行して、**add-tags-query** サービス アプリの 2 回目の実行を行います。
 

@@ -3,13 +3,12 @@ title: リソース ログの収集と分析
 description: Azure Container Instances のコンテナー グループからリソース ログとイベント データを Azure Monitor ログに送信する方法について説明します
 ms.topic: article
 ms.date: 07/13/2020
-ms.author: danlep
-ms.openlocfilehash: efd71d181059ab395aeec4da364110a42d2cccd3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cfdcd1cc8e36a118c4e3c4435eaa002e4d3b1b93
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524014"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579318"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録
 
@@ -28,7 +27,7 @@ Log Analytics ワークスペースは、Azure リソースからだけでなく
 
 コンテナー インスタンスでログ記録を有効にするには、次のものが必要です。
 
-* [Log Analytics ワークスペース](../azure-monitor/learn/quick-create-workspace.md)
+* [Log Analytics ワークスペース](../azure-monitor/logs/quick-create-workspace.md)
 * [Azure CLI](/cli/azure/install-azure-cli) (または [Cloud Shell](../cloud-shell/overview.md))
 
 ## <a name="get-log-analytics-credentials"></a>Log Analytics の資格情報を取得する
@@ -110,7 +109,7 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 1. クエリ `ContainerInstanceLog_CL | limit 50` を入力します
 1. **[実行]** を選択します
 
-クエリによっていくつかの結果が表示されます。 最初に結果が何も表示されない場合は、数分待ってから、 **[実行]** ボタンを選択してクエリをもう一度実行します。 既定では、ログ エントリは**テーブル**形式で表示されます。 その後、行を展開して個々のログ エントリの内容を表示できます。
+クエリによっていくつかの結果が表示されます。 最初に結果が何も表示されない場合は、数分待ってから、 **[実行]** ボタンを選択してクエリをもう一度実行します。 既定では、ログ エントリは **テーブル** 形式で表示されます。 その後、行を展開して個々のログ エントリの内容を表示できます。
 
 ![Azure portal のログ検索の結果][log-search-01]
 
@@ -123,7 +122,7 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 1. クエリ `ContainerEvent_CL | limit 50` を入力します
 1. **[実行]** を選択します
 
-クエリによっていくつかの結果が表示されます。 最初に結果が何も表示されない場合は、数分待ってから、 **[実行]** ボタンを選択してクエリをもう一度実行します。 既定では、エントリが**テーブル**形式で表示されます。 その後、行を展開して個々のエントリの内容を表示できます。
+クエリによっていくつかの結果が表示されます。 最初に結果が何も表示されない場合は、数分待ってから、 **[実行]** ボタンを選択してクエリをもう一度実行します。 既定では、エントリが **テーブル** 形式で表示されます。 その後、行を展開して個々のエントリの内容を表示できます。
 
 ![Azure portal でのイベント検索の結果][log-search-02]
 
@@ -154,8 +153,8 @@ ContainerInstanceLog_CL
 
 Azure Monitor ログでのログのクエリとアラートの構成について詳しくは、以下をご覧ください。
 
-* [Azure Monitor ログでのログ検索について](../azure-monitor/log-query/log-query-overview.md)
-* [Azure Monitor での統合アラート](../azure-monitor/platform/alerts-overview.md)
+* [Azure Monitor ログでのログ検索について](../azure-monitor/logs/log-query-overview.md)
+* [Azure Monitor での統合アラート](../azure-monitor/alerts/alerts-overview.md)
 
 
 ### <a name="monitor-container-cpu-and-memory"></a>コンテナーの CPU とメモリを監視する
@@ -170,7 +169,7 @@ Azure Monitor ログでのログのクエリとアラートの構成について
 
 <!-- LINKS - External -->
 [fluentd]: https://hub.docker.com/r/fluent/fluentd/
-[query_lang]: https://aka.ms/LogAnalyticsLanguage
+[query_lang]: /azure/data-explorer/
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

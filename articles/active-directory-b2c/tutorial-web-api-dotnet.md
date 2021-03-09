@@ -11,12 +11,12 @@ ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: bfa8943af16fe62015a4736f561875235e205fc1
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 84bf0ddd194cd59a7e728c0c50dbe3cbad2afa4a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163885"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "100555654"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して ASP.NET Web API へのアクセスを許可する
 
@@ -40,7 +40,7 @@ ms.locfileid: "88163885"
 
 アクセス トークンを提示するクライアント アプリケーションによる保護されたリソース要求を Web API リソースで受け取って処理できるためには、Web API リソースをテナントに登録しておく必要があります。
 
-アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合**アプリの登録**エクスペリエンスかレガシ **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
+アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合 **アプリの登録** エクスペリエンスかレガシ **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
@@ -48,7 +48,7 @@ ms.locfileid: "88163885"
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
-1. アプリケーションの**名前**を入力します。 たとえば、*webapi1* とします。
+1. アプリケーションの **名前** を入力します。 たとえば、*webapi1* とします。
 1. **[リダイレクト URI]** で、 **[Web]** を選択し、お使いのアプリケーションが要求したすべてのトークンを Azure AD B2C が返すエンドポイントを入力します。 このチュートリアルでは、サンプルはローカル環境で実行され、`https://localhost:44332` でリッスンします。
 1. **[登録]** を選択します。
 1. 後の手順で使用するために、**アプリケーション (クライアント) ID** を記録しておきます。
@@ -88,7 +88,7 @@ Web API を登録し、スコープを定義したので、Azure AD B2C テナ�
 
 サンプル ソリューションには 2 つのプロジェクトがあります。
 
-* **TaskWebApp** - タスク一覧を作成および編集します。 このサンプルでは、**サインアップまたはサインイン**のユーザー フローを使用してユーザーのサインアップまたはサインインを実行します。
+* **TaskWebApp** - タスク一覧を作成および編集します。 このサンプルでは、**サインアップまたはサインイン** のユーザー フローを使用してユーザーのサインアップまたはサインインを実行します。
 * **TaskService** - タスク リストの作成、読み取り、更新、削除の機能をサポートします。 この API は Azure AD B2C によって保護されており、TaskWebApp によって呼び出されます。
 
 ### <a name="configure-the-web-application"></a>Web アプリケーションを構成する
@@ -166,4 +166,4 @@ To Do リスト アイテムを作成すると、Web アプリケーションは
 > * アプリケーションを使用するようにサンプルを構成する
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する](tutorial-add-identity-providers.md)
+> [Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する](add-identity-provider.md)

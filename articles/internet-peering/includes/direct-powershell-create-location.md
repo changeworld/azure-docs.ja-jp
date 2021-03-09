@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: dbaa0b5fc87cb5393b323b8a9b7a38b72efe9518
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81680755"
 ---
 PowerShell コマンドレット **Get-AzPeeringLocation** の必須パラメーター `Kind` によって、ピアリングの場所の一覧が返されます。これは後述の手順で使用します。
@@ -28,7 +28,7 @@ Get-AzPeeringLocation -Kind Direct
 * PeeringDBFacilityLink
 * BandwidthOffers
 
-[PeeringDB](https://www.peeringdb.com) を参照して、そこが目的のピアリング ファシリティであることを検証します。
+[PeeringDB](https://wwww.peeringdb.com) を参照して、そこが目的のピアリング ファシリティであることを検証します。
 
 この例では、ピアリングの場所として Seattle を使用し、Direct ピアリングを作成する方法を示します。
 

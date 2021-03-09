@@ -4,12 +4,12 @@ description: Azure Container Instances とコンテナー オーケストレー�
 ms.topic: article
 ms.date: 04/15/2019
 ms.custom: mvc
-ms.openlocfilehash: f3f8693d1a9a12e7c35d126ab3e3ca53448e5e40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7faeecfcc3a1d006cc923b48339a1242a0b9e9b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74533657"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148600"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances とコンテナー オーケストレーター
 
@@ -54,7 +54,7 @@ Azure Container Instances 専用の環境は、すばやく起動し、秒単位
 
 [Azure Kubernetes Service](../aks/intro-kubernetes.md) (AKS) クラスターでアプリケーション ワークロードをすばやくスケーリングするには、Azure Container Instances 内で動的に作成された "*仮想ノード*" を使用できます。 仮想ノードを使用すると、ACI および AKS クラスターで実行されているポッド間でのネットワーク通信が可能になります。 
 
-仮想ノードでは、現在、Linux コンテナー インスタンスがサポートされています。 仮想ノードを使い始めるには、[Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) または [Azure portal](https://go.microsoft.com/fwlink/?linkid=2047545) を使用します。
+仮想ノードでは、現在、Linux コンテナー インスタンスがサポートされています。 仮想ノードを使い始めるには、[Azure CLI](../aks/virtual-nodes-cli.md) または [Azure portal](../aks/virtual-nodes-portal.md) を使用します。
 
 仮想ノードでは、オープン ソースの [Virtual Kubelet][aci-connector-k8s] を使用し、容量無制限のノードとして登録することで、Kubernetes の [kubelet][kubelet-doc] を模倣します。 Virtual Kubelet は、[ポッド][pod-doc]の作成を Azure Container Instances 内のコンテナー グループとしてディスパッチします。
 

@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:REST API と Java を使用してスペルをチェックする - Bing Spell Check
 titleSuffix: Azure Cognitive Services
-description: Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
+description: Bing Spell Check REST API と Java を使用して、スペルと文法のチェックを開始します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,14 +11,19 @@ ms.topic: quickstart
 ms.date: 05/21/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 56a5215daea9289a481e0a51575ef0ee3cbdb3a0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cc6ad88b70a1addbbf7df6a53218810de683e5db
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322076"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352713"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>クイック スタート:Bing Spell Check REST API と Java を使用してスペルをチェックする
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関するページを参照してください。
 
 このクイック スタートを使用して、Bing Spell Check の REST API を呼び出してみましょう。 このシンプルな Java アプリケーションは、API に要求を送信して、一連の修正候補を返します。 
 
@@ -200,4 +205,4 @@ ms.locfileid: "87322076"
 > [単一ページの Web アプリの作成](../tutorials/spellcheck.md)
 
 - [Bing Spell Check API とは](../overview.md)
-- [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Bing Spell Check API v7 リファレンス](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

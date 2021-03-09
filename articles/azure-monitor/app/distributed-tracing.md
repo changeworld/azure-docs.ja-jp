@@ -7,12 +7,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5c1e6f3f6c4ee0abe1a25d5a9182f6e4e1a9d0f4
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a47b41a8b7f4e18be58c32c97cf279b9229f26da
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929229"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579515"
 ---
 # <a name="what-is-distributed-tracing"></a>分散トレースとは
 
@@ -34,10 +34,10 @@ Azure Monitor では、[アプリケーション マップ](./app-map.md) ビュ
 
 .NET、.NET Core、Java、Node.js、JavaScript 用の Application Insights エージェントや SDK はすべて、分散トレースをネイティブにサポートしています。 各 Application Insights SDK をインストールおよび構成する手順については、以下から入手できます。
 
-* [.NET](../learn/quick-monitor-portal.md)
-* [.NET Core](../learn/dotnetcore-quick-start.md)
+* [.NET](asp-net.md)
+* [.NET Core](asp-net-core.md)
 * [Java](./java-in-process-agent.md)
-* [Node.js](../learn/nodejs-quick-start.md)
+* [Node.js](../app/nodejs-quick-start.md)
 * [JavaScript](./javascript.md)
 * [Python](opencensus-python.md)
 
@@ -57,5 +57,5 @@ OpenCensus Web サイトには、[Python](https://opencensus.io/api/python/trace
 
 * [OpenCensus Python の使用ガイド](https://opencensus.io/api/python/trace/usage.html)
 * [アプリケーション マップ](./app-map.md)
-* [エンドツーエンドのパフォーマンスの監視](../learn/tutorial-performance.md)
+* [エンドツーエンドのパフォーマンスの監視](../app/tutorial-performance.md)
 

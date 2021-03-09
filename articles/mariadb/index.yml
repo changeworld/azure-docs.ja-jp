@@ -3,17 +3,17 @@ title: Azure Database for MariaDB のドキュメント
 summary: Azure Database for MariaDB は、オープンソースの MariaDB サーバー エンジンに基づいたリレーショナル データベース サービスです。  フルフル マネージドのサービスとしてのデータベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。 Azure Database for MariaDB では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for MariaDB の使用方法を確認してください。
 metadata:
   description: Azure Database for MariaDB は、オープンソースの MariaDB データベース エンジンに基づいて開発者向けに構築された、Microsoft クラウドのリレーショナル データベース サービスです。
-  author: ajlam
-  ms.author: andrela
+  author: savjani
+  ms.author: pariks
   ms.date: 09/05/2019
   ms.service: mariadb
   ms.topic: landing-page
-  ms.openlocfilehash: bd4bb93a43bd493069ed03f6197595fe782d605a
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: a94e88dc1f7dca73f20cfee3b8cbea8cfad011af
+  ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "70735372"
+  ms.lasthandoff: 12/15/2020
+  ms.locfileid: "97516558"
 landingContent:
 - title: Azure Database for MariaDB について
   linkLists:
@@ -110,12 +110,12 @@ landingContent:
   - linkListType: get-started
     links:
     - text: 一般的なタスクのための Azure CLI スクリプト
-      url: /azure/mariadb/sample-scripts-azure-cli/
+      url: ./sample-scripts-azure-cli.md
   - linkListType: reference
     links:
     - text: Azure CLI の開発者用リファレンス
-      url: /rest/api/mariadb/
+      url: /cli/azure/mariadb/
     - text: REST API の開発者用リファレンス
-      url: /cli/azure/mariadb
+      url: /rest/api/mariadb/
     - text: Azure Resource Manager のテンプレート
       url: /azure/templates/microsoft.dbformariadb/allversions

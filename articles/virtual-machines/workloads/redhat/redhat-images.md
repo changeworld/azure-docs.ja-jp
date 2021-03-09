@@ -1,23 +1,20 @@
 ---
 title: Azure の Red Hat Enterprise Linux イメージの概要
 description: Microsoft Azure の Red Hat Enterprise Linux イメージについて説明します
-services: virtual-machines-linux
-documentationcenter: ''
 author: asinn826
-manager: BorisB2015
-editor: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: redhat
+ms.collection: linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 02/10/2020
-ms.author: alsin
-ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.author: mathapli
+ms.reviewer: cynthn
+ms.openlocfilehash: 42e0788a25efa5124f24a77b48469d6ed8265dfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439469"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694684"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux イメージの概要
 
@@ -26,7 +23,7 @@ ms.locfileid: "87439469"
 すべてのバージョンの RHEL の Red Hat サポート ポリシーの詳細については、「[Red Hat Enterprise Linux life cycle (Red Hat Enterprise Linux のライフ サイクル)](https://access.redhat.com/support/policy/updates/errata)」を参照してください。 料金の詳細については、「[Azure 料金計算ツール](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)」を参照してください。
 
 >[!IMPORTANT]
-> Azure Marketplace で現在入手できる RHEL イメージは、BYOS (Bring-Your-Own-Subscription) または従量課金制ライセンス モデルをサポートしています。 [Azure Hybrid Use Benefit](../../windows/hybrid-use-benefit-licensing.md) と、BYOS と従量課金制ライセンス間の動的切り替えはサポートされていません。 ライセンス モードを切り替えるには、対応するイメージから VM を再デプロイする必要があります。
+> Azure Marketplace で現在入手できる RHEL イメージは、BYOS (Bring-Your-Own-Subscription) または従量課金制ライセンス モデルをサポートしています。 BYOS と従量課金制ライセンスの動的切り替えは、[Azure Hybrid Use Benefit](../../linux/azure-hybrid-benefit-linux.md) を使用して実行できます。
 
 >[!NOTE]
 > Azure Marketplace の RHEL イメージに関連する問題については、サポート チケットを Microsoft に提出してください。
@@ -64,10 +61,13 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 ```
 
 >[!NOTE]
-> 通常、最新のものを判断するためのバージョン比較では、[CompareTo メソッド](/dotnet/api/system.version.compareto?view=netcore-3.1#system_version_compareto_system_version_)の規則に従います。
-このイメージ バージョン比較を行うには、値を文字列ではなく[バージョン](/dotnet/api/system.version.-ctor?view=netframework-4.8) オブジェクトとして比較します。
+> 通常、最新のものを判断するためのバージョン比較では、[CompareTo メソッド](/dotnet/api/system.version.compareto#system_version_compareto_system_version_)の規則に従います。
+このイメージ バージョン比較を行うには、値を文字列ではなく[バージョン](/dotnet/api/system.version.-ctor) オブジェクトとして比較します。
 
 ## <a name="rhel-6-image-types"></a>RHEL 6 イメージの種類
+
+>[!NOTE]
+> 2020 年 12 月 30 日時点で、RHEL 6.10 はサポート終了 (EOL) になりました。 継続的なサポートのためには、延長ライフサイクル サポート フェーズの一環として ELS を有効にしてください。[Red Hat ELS のドキュメント](./redhat-extended-lifecycle-support.md)を参照してください。
 
 RHEL 6.x イメージについて、イメージの種類を次の表に示します。
 
@@ -108,15 +108,25 @@ RHEL 7.x イメージの場合、いくつかの異なる種類のイメージ�
 |Publisher | プラン | SKU 値 | Version | 詳細
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | RHEL マイナー バージョンと発行日の連結された値 (例: 8.0.20191023) | これらのイメージは、標準の Red Hat リポジトリに接続されている、LVM パーティション分割 RHEL 8 イメージです。
-|RedHat | RHEL | 8-gen2 | RHEL マイナー バージョンと発行日の連結された値 (例: 8.0.20191024) | これらのイメージは、標準の Red Hat リポジトリに接続されている、LVM パーティション分割 Hyper-V 第 2 世代 RHEL 8 イメージです。 Azure の第 2 世代 VM の詳細については、「[Azure での第 2 世代 VM のサポート](../../linux/generation-2.md)」を参照してください。
+|RedHat | RHEL | 8-gen2 | RHEL マイナー バージョンと発行日の連結された値 (例: 8.0.20191024) | これらのイメージは、標準の Red Hat リポジトリに接続されている、LVM パーティション分割 Hyper-V 第 2 世代 RHEL 8 イメージです。 Azure の第 2 世代 VM の詳細については、「[Azure での第 2 世代 VM のサポート](../../generation-2.md)」を参照してください。
+|RedHat | RHEL | RHEL-SAP-APPS | RHEL マイナー バージョンと発行日の連結された値 (例: 8.1.2021012201) | これらのイメージは、RHEL for SAP Applications イメージです。 SAP アプリケーション リポジトリとベース RHEL リポジトリにアクセスする権利があります。
+|RedHat | RHEL | RHEL-SAP-HA | RHEL マイナー バージョンと発行日の連結された値 (例: 8.1.2021010602) | これらのイメージは、高可用性および更新サービスを備えた RHEL for SAP イメージです。 RHEL E4S リポジトリに加えて、SAP ソリューションとアプリケーションのリポジトリ、および高可用性リポジトリへのアクセス権を持ちます。 請求には、基本コンピューティング料金に加えて RHEL Premium、SAP Premium、および高可用性 Premium が含まれます。
 
-## <a name="rhel-longer-support-add-ons"></a>RHEL 長期サポート アドオン
+## <a name="rhel-extended-support-add-ons"></a>RHEL Extended Support アドオン
+
+### <a name="extended-life-cycle-support"></a>延長ライフサイクル サポート
+
+延長ライフサイクル サポート (ELS) アドオンは、サポート終了 (EOL) に達したリリースに対して重大かつ重要なセキュリティ修正プログラムを有効にするオプションのサブスクリプションです。 RHEL EUS の詳細については、[Red Hat のドキュメント](https://access.redhat.com/support/policy/updates/errata#Extended_Life_Cycle_Support)を参照してください。
+
+現在、ELS は RHEL 6.10 でのみご利用いただけます。 従量課金制のイメージの場合は、[Red Hat ELS のドキュメント](./redhat-extended-lifecycle-support.md)に記載されている手順に従って、ELS を有効にすることができます。
+
+以前のバージョンで実行している場合は、ELS を有効にする前に、RHEL 6.10 にアップグレードする必要があります。
 
 ### <a name="extended-update-support"></a>Extended Update Support
 
 2019 年 4 月時点では、既定で EUS リポジトリに接続されている RHEL イメージを入手できます。 RHEL EUS の詳細については、[Red Hat のドキュメント](https://access.redhat.com/articles/rhel-eus)を参照してください。
 
-EUS リポジトリへの切り替えは可能であり、サポートされています。 VM を EUS に切り替える方法と、EUS サポートのサポート終了日の詳細については、「[RHEL EUS およびバージョン固定の RHEL VM](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms)」を参照してください。
+EUS リポジトリへの切り替えは可能であり、サポートされています。 VM を EUS に切り替える方法と、EUS サポートのサポート終了日の詳細については、「[RHEL EUS およびバージョン固定の RHEL VM](./redhat-rhui.md#rhel-eus-and-version-locking-rhel-vms)」を参照してください。
 
 >[!NOTE]
 > RHEL Extras では EUS はサポートされていません。 つまり、通常は RHEL Extras チャンネルから入手できるパッケージをインストールした場合、EUS ではインストールできません。 Red Hat Extras 製品のライフ サイクルの詳細については、「[Red Hat Enterprise Linux Extras life cycle (Red Hat Enterprise Linux Extras のライフサイクル)](https://access.redhat.com/support/policy/updates/extras/)」を参照してください。
@@ -183,6 +193,6 @@ Microsoft および Red Hat では、特定の共通脆弱性識別子 (CVE) に
 ## <a name="next-steps"></a>次のステップ
 
 * Azure の RHEL イメージの詳細な一覧については、「[Azure で利用可能な Red Hat Enterprise Linux (RHEL) イメージ](./redhat-imagelist.md)」を参照してください。
-* Azure Red Hat Update Infrastructure の詳細については、「[Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure](https://aka.ms/rhui-update)」を参照してください。
+* Azure Red Hat Update Infrastructure の詳細については、「[Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure](./redhat-rhui.md)」を参照してください。
 * RHEL BYOS オファーの詳細については、「[Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image](./byos.md)」を参照してください。
 * すべてのバージョンの RHEL の Red Hat サポート ポリシーの詳細については、「[Red Hat Enterprise Linux life cycle (Red Hat Enterprise Linux のライフ サイクル)](https://access.redhat.com/support/policy/updates/errata)」を参照してください。

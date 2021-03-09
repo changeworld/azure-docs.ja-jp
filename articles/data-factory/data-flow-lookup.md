@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/28/2020
-ms.openlocfilehash: a4fcdad0efda1ab2a43be65865e3aac59f7ef3e3
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 02/19/2021
+ms.openlocfilehash: b8754742c572a8dbc1f55c64e47bec640d757d65
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84187606"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739370"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>マッピング データ フローでの参照変換
 
@@ -27,7 +27,7 @@ ms.locfileid: "84187606"
 
 ## <a name="configuration"></a>構成
 
-![参照変換](media/data-flow/lookup1.png "参照")
+![スクリーンショットには、次のテキストで説明されているラベルを含む [参照設定] タブが示されています。](media/data-flow/lookup1.png "参照")
 
 **[Primary stream]\(プライマリ ストリーム\):** データの受信ストリーム。 このストリームは、結合の左側に相当します。
 
@@ -38,8 +38,6 @@ ms.locfileid: "84187606"
 **[Match on]\(一致対象\):** [Match multiple rows]\(複数の行の一致\) が選択されていない場合にのみ表示されます。 任意の行、最初の一致、または最後の一致のいずれと一致するかを選択します。 実行が最も速いので、任意の行をお勧めします。 最初の行または最後の行を選択する場合は、並べ替え条件を指定する必要があります。
 
 **[Lookup conditions]\(参照条件\):** 一致対象の列を選択します。 等値条件が満たされた場合、行は一致と見なされます。 [データ フロー式言語](data-flow-expression-functions.md)を使用して値を抽出するには、ポイントして [Computed column]\(計算列\) を選択します。
-
-参照変換では、等値一致のみがサポートされています。 "より大きい" などの他の演算子を含むように参照式をカスタマイズするには、[結合変換のクロス結合](data-flow-join.md#custom-cross-join)を使用することをお勧めします。 クロス結合を使用すると、実行時に発生する可能性のあるデカルト積エラーを回避できます。
 
 両方のストリームのすべての列が、出力データに含まれます。 重複する列または不要な列を削除するには、参照変換の後に[選択変換](data-flow-select.md)を追加します。 シンク変換で列を削除したり、名前を変更したりすることもできます。
 
@@ -65,9 +63,13 @@ ms.locfileid: "84187606"
 
 ![ブロードキャスト結合](media/data-flow/broadcast.png "ブロードキャスト結合")
 
-結合変換、参照変換、および存在変換では、一方または両方のデータ ストリームがワーカー ノードのメモリに収まる場合、**ブロードキャスト**を有効にすることでパフォーマンスを最適化できます。 既定では、ある一方をブロードキャストするかどうかは、Spark エンジンによって自動的に決定されます。 ブロードキャストする側を手動で選択するには **[Fixed]\(固定\)** を選択します。
+結合変換、参照変換、および存在変換では、一方または両方のデータ ストリームがワーカー ノードのメモリに収まる場合、**ブロードキャスト** を有効にすることでパフォーマンスを最適化できます。 既定では、ある一方をブロードキャストするかどうかは、Spark エンジンによって自動的に決定されます。 ブロードキャストする側を手動で選択するには **[Fixed]\(固定\)** を選択します。
 
 **Off** オプションを使用してブロードキャストを無効にすることは、タイムアウト エラーが発生していない限り推薦されません。
+
+## <a name="cached-lookup"></a>キャッシュされた参照
+
+同じソースに対して複数の小さい参照を実行する場合、キャッシュされたシンクと参照は、参照変換よりも適切なユース ケースである可能性があります。 キャッシュ シンクがより適切な一般的な例としては、データ ストアで最大値を検索することや、エラー コードをエラー メッセージ データベースと照合することが挙げられます。 詳細については、[キャッシュ シンク](data-flow-sink.md#cache-sink) と [キャッシュされた参照](concepts-data-flow-expression-builder.md#cached-lookup)に関するページをご覧ください。
 
 ## <a name="data-flow-script"></a>データ フローのスクリプト
 
@@ -85,7 +87,7 @@ ms.locfileid: "84187606"
 ```
 ### <a name="example"></a>例
 
-![参照変換](media/data-flow/lookup-dsl-example.png "参照")
+![スクリーンショットには、次のコードの [参照設定] タブが示されています。](media/data-flow/lookup-dsl-example.png "参照")
 
 次のコード スニペットには、上記の参照構成に対するデータ フロー スクリプトが含まれています。
 

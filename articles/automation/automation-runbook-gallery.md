@@ -3,18 +3,21 @@ title: PowerShell ギャラリーの Azure Automation Runbook とモジュール
 description: この記事では、PowerShell ギャラリーにある Microsoft およびコミュニティからの Runbook とモジュールを使用する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 03/20/2019
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: f2bf058ddce81ab9f04e97787a4dc93e44036b1b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 590220782a7f43e785cc7885e68eefa99afb7d1d
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186114"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049118"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>PowerShell ギャラリーの Runbook とモジュールを使用する
 
-Azure Automation で独自の Runbook およびモジュールを作成するのではなく、マイクロソフトやコミュニティによって既に作成されているシナリオにアクセスできます。 PowerShell Runbook と[モジュール](#modules-in-powershell-gallery) は PowerShell ギャラリーから、[Python Runbook](#use-python-runbooks) はスクリプト センター ギャラリーから取得できます。 [開発したシナリオ](#add-a-powershell-runbook-to-the-gallery)を共有することにより、コミュニティに貢献することもできます。 
+Azure Automation で独自の Runbook およびモジュールを作成するのではなく、マイクロソフトやコミュニティによって既に作成されているシナリオにアクセスできます。 PowerShell Runbook と[モジュール](#modules-in-powershell-gallery) は PowerShell ギャラリーから、[Python Runbook](#use-python-runbooks) は Azure Automation GitHub 組織から取得できます。 [開発したシナリオ](#add-a-powershell-runbook-to-the-gallery)を共有することにより、コミュニティに貢献することもできます。
+
+> [!NOTE]
+> TechNet スクリプト センターは廃止されています。 Runbook ギャラリーのスクリプト センターにあるすべての Runbook が [Automation GitHub 組織](https://github.com/azureautomation)に移動されました。詳細については、[ここ](https://techcommunity.microsoft.com/t5/azure-governance-and-management/azure-automation-runbooks-moving-to-github/ba-p/2039337)を参照してください。
 
 ## <a name="runbooks-in-powershell-gallery"></a>PowerShell ギャラリーの Runbook
 
@@ -39,7 +42,7 @@ PowerShell モジュールには Runbook で使用できるコマンドレット
    * [Update-ModulesInAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/) - すべてのモジュールの最新バージョンを PowerShell ギャラリーから Automation アカウントにインポートします。
    * [Enable-AzureDiagnostics](https://www.powershellgallery.com/packages/Enable-AzureDiagnostics/) - ジョブの状態とジョブ ストリームを含む Azure Automation ログを受信するように Azure Diagnostics と Log Analytics を構成します。
    * [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemFromAzureVM/) - Windows Azure 仮想マシンからリモート ファイルをコピーします。
-   * [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) - ローカル ファイルを Azure 仮想マシンにコピーします。
+   * [Copy-ItemToAzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) - ローカル ファイルを Azure 仮想マシンにコピーします。
 
 ## <a name="import-a-powershell-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Azure portal で Runbook ギャラリーから PowerShell Runbook をインポートする
 
@@ -50,7 +53,7 @@ PowerShell モジュールには Runbook で使用できるコマンドレット
 
    ![[ギャラリーの参照]](media/automation-runbook-gallery/browse-gallery.png)
 
-5. **[ソース プロジェクトの表示]** をクリックして、 [TechNet スクリプト センター](https://gallery.technet.microsoft.com/)の項目を表示します。
+5. **[ソース プロジェクトの表示]** をクリックして、[Azure Automation GitHub 組織](https://github.com/azureautomation)内の項目を表示します。
 6. 項目をインポートするには、それをクリックして詳細を表示し、 **[インポート]** をクリックします。
 
    ![[インポート] ボタン](media/automation-runbook-gallery/gallery-item-detail.png)
@@ -94,10 +97,7 @@ PowerShell モジュールには Runbook で使用できるコマンドレット
 
 ## <a name="use-python-runbooks"></a>Python Runbook を使用する
 
-Python Runbook は、[スクリプト センター ギャラリー](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=)にあります。 Python Runbook をスクリプト センター ギャラリーに投稿するには、 **[Upload a contribution]** \(投稿のアップロード\) をクリックします。 投稿をアップロードするときに、タグ `Python` を必ず追加してください。
-
-> [!NOTE]
-> [スクリプト センター](https://gallery.technet.microsoft.com/scriptcenter)にコンテンツをアップロードするには、最低 100 ポイントが必要です。
+Python Runbook は、[Azure Automation GitHub 組織](https://github.com/azureautomation)で利用できます。 GitHub リポジトリに投稿するときに、タグ **[(GitHub トピック): Python3]** を追加します。
 
 ## <a name="request-a-runbook-or-module"></a>Runbook またはモジュールを要求する
 
@@ -108,4 +108,4 @@ Python Runbook は、[スクリプト センター ギャラリー](https://gall
 * PowerShell Runbook の使用を開始するには、「[チュートリアル:PowerShell Runbook を作成する](learn/automation-tutorial-runbook-textual-powershell.md)」を参照してください。
 * Runbook を操作するには、「[Azure Automation で Runbook を管理する](manage-runbooks.md)」を参照してください。
 * PowerShell の詳細については、[PowerShell のドキュメント](/powershell/scripting/overview)を参照してください。
-* * PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation)」をご覧ください。

@@ -1,5 +1,6 @@
 ---
-title: ユーザーをサインインさせる Web アプリを運用環境に移行する - Microsoft ID プラットフォーム | Azure
+title: ユーザーをサインインさせる Web アプリを運用環境に移行する | Azure
+titleSuffix: Microsoft identity platform
 description: ユーザーをサインインさせる Web アプリをビルドする方法について説明します (運用環境への移行)
 services: active-directory
 author: jmprieur
@@ -11,64 +12,49 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 47a45b52ac10a44b6efd54c41b3fec1e61a47a35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4a47112d2f66edc8af9b7f100d48bc205f2e85e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181632"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584299"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>ユーザーをサインインさせる Web アプリ:運用環境に移行する
 
-Web API を呼び出すトークンの取得方法がわかったので、次にそれを運用環境に移行する方法について説明します。
+Web API を呼び出すためにトークンを取得する方法について説明しました。ここでは、アプリケーションを運用環境に移行する際に考慮すべき点をいくつか示します。
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="troubleshooting"></a>トラブルシューティング
+ユーザーが初めて Web アプリケーションにサインインするときは、同意する必要があります。 しかし、組織によっては、次のようなメッセージがユーザーに表示される場合があります。*AppName では、組織内のリソースにアクセスするために、管理者しか付与できないアクセス許可が必要になります。使用するには、まず、このアプリへのアクセス許可の付与を管理者に依頼してください。*
+これは、テナント管理者によって、ユーザーが同意する機能が **無効化されている** ためです。 その場合は、アプリケーションから要求されるスコープに対して管理者の同意を得るために、テナント管理者に連絡します。
 
-### <a name="troubleshooting"></a>トラブルシューティング
+## <a name="same-site"></a>SameSite
 
-> [!NOTE]
-> ユーザーが初めて Web アプリケーションにサインインするときは、同意する必要があります。 しかし、組織によっては、次のようなメッセージがユーザーに表示される場合があります。
->
-> *AppName では、組織内のリソースにアクセスするために、管理者しか付与できないアクセス許可が必要になります。使用するには、まず、このアプリへのアクセス許可の付与を管理者に依頼してください。*
->
-> これは、テナント管理者によって、ユーザーが同意する機能が**無効化されている**ためです。 その場合は、アプリケーションから要求されるスコープに対して管理者の同意を得るために、テナント管理者に連絡する必要があります。
-
-### <a name="same-site"></a>SameSite
-
-新しいバージョンの Chrome ブラウザーで起きる可能性がある問題について理解していることを確認します。
-
-> [!div class="nextstepaction"]
-> [Chrome ブラウザーにおける SameSite Cookie の変更を処理する方法](howto-handle-samesite-cookie-changes-chrome-browser.md)
+新しいバージョンの Chrome ブラウザーで起きるおそれがある問題について必ず理解してください。[Chrome ブラウザーにおける SameSite Cookie の変更を処理する方法](howto-handle-samesite-cookie-changes-chrome-browser.md)。
 
 Microsoft.Identity.Web NuGet パッケージでは、最も一般的な SameSite 問題が処理されます。
-
-### <a name="scenario-for-calling-web-apis"></a>Web API を呼び出すシナリオ
-
-Web アプリはユーザーをサインインさせると、サインインしているユーザーの代わりに Web API を呼び出すことができます。 Web アプリから Web API を呼び出すことは、次のシナリオの目標です。
-
-> [!div class="nextstepaction"]
-> [Web API を呼び出す Web アプリ](scenario-web-app-call-api-overview.md)
 
 ## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>詳細情報: ASP.NET Core Web アプリのチュートリアル
 
 この ASP.NET Core チュートリアルでは、ユーザーをサインインさせるための他の方法について説明しています。 
 
-> [!div class="nextstepaction"]
-> [開発者向け Microsoft ID プラットフォームを利用することで、Web アプリでユーザーのサインインを処理したり、API を呼び出したりできます。](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
+[開発者向け Microsoft ID プラットフォームを利用することで、Web アプリでユーザーのサインインを処理したり、API を呼び出したりできます。](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)
 
 このプログレッシブ チュートリアルには、以下のアカウントでのサインインを追加する方法など、Web アプリの運用環境対応コードが含まれています。
 
 - 自分の組織
 - 複数の組織
 - 職場または学校アカウント、または個人用 Microsoft アカウント
-- [Azure AD B2C](https://aka.ms/aadb2c)
+- [Azure AD B2C](../../active-directory-b2c/overview.md)
 - 各国のクラウド
 
 ## <a name="sample-code-java-web-app"></a>サンプル コード:Java Web アプリ
 
 GitHub のこのサンプルで Java Web アプリの詳細を学習してください。 
 
-> [!div class="nextstepaction"]
-> [Microsoft ID プラットフォームを使用してユーザーをサインインさせ、Microsoft Graph を呼び出す Java Web アプリケーション](https://github.com/Azure-Samples/ms-identity-java-webapp)
+[Microsoft ID プラットフォームを使用してユーザーをサインインさせ、Microsoft Graph を呼び出す Java Web アプリケーション](https://github.com/Azure-Samples/ms-identity-java-webapp)
+
+## <a name="next-steps"></a>次の手順
+
+Web アプリはユーザーをサインインさせると、サインインしているユーザーの代わりに Web API を呼び出すことができます。 Web アプリから Web API を呼び出すことは、次のシナリオの目標です。[Web API を呼び出す Web アプリ](scenario-web-app-call-api-overview.md)。

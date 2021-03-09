@@ -1,14 +1,14 @@
 ---
 title: SWIFT CSP-CSCF v2020 ブループリント サンプルの概要
 description: SWIFT CSP-CSCF v2020 ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定の SWIFT CSP-CSCF コントロールを評価するのに役立ちます。
-ms.date: 08/18/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 8c6eb7a609f1103f0b20a83e45bef9e18ae4d5c4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 2fc2aa437cc6e69df3c5ae7c3a0acedfba67e636
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612692"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048744"
 ---
 # <a name="overview-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-CSCF v2020 ブループリント サンプルの概要
 

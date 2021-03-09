@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 397197c2ab3ba4f135912eab800f1abd7ab73a0f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f564032873be6e4c70426d48c4576371862ea35d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531080"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673615"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>チュートリアル: Azure Active Directory と BitaBIZ の統合
 
@@ -27,7 +27,7 @@ BitaBIZ と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して BitaBIZ に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -63,7 +63,7 @@ Azure AD への BitaBIZ の統合を構成するには、ギャラリーから�
 
 4. 検索ボックスに「**BitaBIZ**」と入力し、結果パネルで **[BitaBIZ]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果リストの BitaBIZ](common/search-new-app.png)
+    ![結果リストの BitaBIZ](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -112,7 +112,7 @@ BitaBIZ で Azure AD シングル サインオンを構成するには、次の�
 
     **[サインオン URL]** テキスト ボックスに、URL として「`https://www.bitabiz.com/dashboard`」と入力します。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -132,15 +132,15 @@ BitaBIZ で Azure AD シングル サインオンを構成するには、次の�
 
 2. **[SETUP ADMIN]\(管理設定\)** をクリックします。
 
-    ![BitaBIZ 構成](./media/bitabiz-tutorial/settings1.png)
+    ![スクリーンショットは、[Setup Admin]\(管理設定\) が選択されているブラウザー ウィンドウの一部を示します。](./media/bitabiz-tutorial/settings1.png)
 
 3. **[値の追加]** セクションで **[Microsoft integrations]\(Microsoft 統合\)** をクリックします。
 
-    ![BitaBIZ 構成](./media/bitabiz-tutorial/settings2.png)
+    ![スクリーンショットは、[Microsoft integrations]\(Microsoft 統合\) が選択されている [値の追加] を示します。](./media/bitabiz-tutorial/settings2.png)
 
 4. 下にスクロールして、 **[Microsoft Azure AD (シングル サインオンを有効にする)]** セクションに移動し、次の手順を実行します。
 
-    ![BitaBIZ 構成](./media/bitabiz-tutorial/settings3.png)
+    ![スクリーンショットは、この手順で説明されている情報を入力する [Microsoft Azure AD] セクションを示します。](./media/bitabiz-tutorial/settings3.png)
 
     a. **[Entity ID]\(エンティティ ID\) (Azure AD では "識別子")** ボックスの値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子]** ボックスに貼り付けます。 
 
@@ -148,7 +148,7 @@ BitaBIZ で Azure AD シングル サインオンを構成するには、次の�
 
     c. **[Azure AD SAML Entity ID]\(Azure AD SAML エンティティ ID\)** ボックスに、Azure portal からコピーした **[Azure AD 識別子]** を貼り付けます。
 
-    d. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開き、その内容をクリップボードにコピーし、 **[Azure AD Signing Certificate (Base64 encoded)]\(Azure AD 署名証明書 (Base64 でエンコード済み)\)** ボックスに貼り付けます。
+    d. ダウンロードした **証明書 (Base64)** ファイルをメモ帳で開き、その内容をクリップボードにコピーし、 **[Azure AD Signing Certificate (Base64 encoded)]\(Azure AD 署名証明書 (Base64 でエンコード済み)\)** ボックスに貼り付けます。
 
     e. ビジネス メール ドメイン名 (mycompany.com) を **[ドメイン名]** ボックスに追加して、SSO を、このメール ドメインと共に (必須ではありません) 会社のユーザーに割り当てます。
 
@@ -173,7 +173,7 @@ BitaBIZ で Azure AD シングル サインオンを構成するには、次の�
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-  
+
     b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -218,19 +218,19 @@ BitaBIZ の場合、プロビジョニングは手動で行います。
 
 2. **[SETUP ADMIN]\(管理設定\)** をクリックします。
 
-    ![BitaBIZ の [ユーザーの追加]](./media/bitabiz-tutorial/settings1.png)
+    ![スクリーンショットは、[Setup Admin]\(管理設定\) が選択されているブラウザー ウィンドウの一部を示します。](./media/bitabiz-tutorial/settings1.png)
 
 3. **[組織]** セクションの **[ユーザーの追加]** をクリックします。
 
-    ![BitaBIZ の [ユーザーの追加]](./media/bitabiz-tutorial/user1.png)
+    ![スクリーンショットは、[ユーザーの追加] が選択されている [組織] セクションを示します。](./media/bitabiz-tutorial/user1.png)
 
 4. **[Add new employee]\(新しい従業員の追加\)** をクリックします。
 
-    ![BitaBIZ の [ユーザーの追加]](./media/bitabiz-tutorial/user2.png)
+    ![スクリーンショットは、[Add new employee]\(新しい従業員の追加\) が選択されている [ユーザーの追加] を示します。](./media/bitabiz-tutorial/user2.png)
 
 5. **[Add new employee]\(新しい従業員の追加\)** ダイアログ ページで、次の手順に従います。
 
-    ![BitaBIZ の [ユーザーの追加]](./media/bitabiz-tutorial/user3.png)
+    ![スクリーンショットは、この手順で説明されている情報を入力するページを示します。](./media/bitabiz-tutorial/user3.png)
 
     a. **[名]** ボックスに、ユーザーの名を入力します (この例では Britta)。
 
@@ -251,12 +251,12 @@ BitaBIZ の場合、プロビジョニングは手動で行います。
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [BitaBIZ] タイルをクリックすると、SSO を設定した BitaBIZ に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [BitaBIZ] タイルをクリックすると、SSO を設定した BitaBIZ に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

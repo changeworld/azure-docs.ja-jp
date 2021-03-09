@@ -3,19 +3,19 @@ title: Video Indexer Web サイトを使用して人物モデルをカスタマ�
 titleSuffix: Azure Media Services
 description: Video Indexer Web サイトを使用して人物モデルをカスタマイズする方法について説明します。
 services: media-services
-author: anikaz
-manager: johndeu
+author: Juliako
+manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/06/2020
-ms.author: kumud
-ms.openlocfilehash: 6894eb783b990ebe98f9ebe5eb2fe112a59309a4
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.date: 12/16/2020
+ms.author: juliako
+ms.openlocfilehash: 890f8c159c3e8e8d0b4164cf218f320551ea63ec
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904498"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97628937"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>Video Indexer Web サイトを使用して人物モデルをカスタマイズする
 
@@ -26,34 +26,27 @@ Video Indexer Web サイトを使用すると、このトピックで説明さ�
 ## <a name="central-management-of-person-models-in-your-account"></a>アカウントでの人物モデルの集中管理
 
 1. アカウントの人物モデルを表示、編集、削除するには、Video Indexer の Web サイトを参照してサインインします。
+1. ページの左側にあるコンテンツ モデルのカスタマイズ ボタンを選択します。
 
-2. ページの右上隅にあるコンテンツ モデルのカスタマイズ ボタンを選択します。
-
-    ![コンテンツ モデルのカスタマイズ](./media/customize-face-model/content-model-customization.png)
-
-3. [People]\(人\) タブを選択します。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/content-model-customization/content-model-customization.png" alt-text="コンテンツ モデルのカスタマイズ":::
+1. [People]\(人\) タブを選択します。
 
     アカウントの既定の人物モデルが表示されます。 既定の人物モデルには、インデックス作成中にカスタム人物モデルを指定しなかった動画の分析情報で編集または変更した可能性がある顔が保持されています。
 
     他の人物モデルを作成した場合は、それもこのページに一覧表示されます。
 
-    ![コンテンツ モデルのカスタマイズ](./media/customize-face-model/content-model-customization-people-tab.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/customize-face-model/content-model-customization-people-tab.png" alt-text="人物をカスタマイズします":::
 
 ## <a name="create-a-new-person-model"></a>新しい人物モデルを作成する
 
-1. **[+ モデルを追加]** ボタンを選択します。
+1. 右側にある **[+ モデルを追加]** ボタンを選択します。
+1. モデルの名前を入力します。 新しい人物モデルに新しい人物や顔を追加できるようになりました。
+1. リスト メニュー ボタンをクリックし、 **[+ 個人の追加]** を選択します。
 
-    ![新しい人物モデルを追加する](./media/customize-face-model/add-new-person.png)
-
-2. モデルの名前を入力し、名前の横にあるチェック ボタンを選択します。
-
-    ![新しい人物モデルを追加する](./media/customize-face-model/add-new-person2.png)
-
-    新しい人物モデルが作成されました。 新しい人物モデルに顔を追加できるようになります。
-
-3. リスト メニュー ボタンをクリックし、 **[+ 個人の追加]** を選択します。
-
-    ![新しい人物モデルを追加する](./media/customize-face-model/add-new-person3.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/customize-face-model/add-new-person.png" alt-text="人物を追加します":::
 
 ## <a name="add-a-new-person-to-a-person-model"></a>人物モデルに新しい人物を追加する
 
@@ -61,14 +54,9 @@ Video Indexer Web サイトを使用すると、このトピックで説明さ�
 > Video Indexer では、人物モデルに同じ名前で複数の人物を追加することができます。 ただし、使いやすさとわかりやすさのため、モデル内の人物ごとに一意の名前を付けることをお勧めします。
 
 1. 新しい顔を人物モデルに追加するには、顔を追加する人物モデルの横にあるリスト メニュー ボタンを選択します。
-
 1. メニューで **[+ 個人の追加]** を選択します。
 
-    ![人物に新しい顔を追加する](./media/customize-face-model/add-new-face.png)
-
     ポップアップで、人物の詳細を入力するように求められます。 人物の名前を入力し、チェック ボタンを選択します。
-
-    ![人物に新しい顔を追加する](./media/customize-face-model/add-new-face2.png)
 
     その後、エクスプローラーで選択するか、または顔の画像をドラッグ アンド ドロップします。 Video Indexer では、すべての標準的な画像ファイルの種類が受け付けられます (例: JPG、PNG など)。
 
@@ -79,15 +67,9 @@ Video Indexer Web サイトを使用すると、このトピックで説明さ�
 既定の人物モデルも含め、アカウント内の任意の人物モデルの名前を変更できます。 既定の人物モデルの名前を変更した場合でも、それはアカウントの既定の人物モデルとして引き続き機能します。
 
 1. 名前を変更する人物モデルの横にあるリスト メニュー ボタンを選択します。
-2. メニューで **[名前の変更]** を選択します。
-
-    ![人物モデルの名前を変更する](./media/customize-face-model/rename-person.png)
-
-3. モデルの現在の名前を選択し、新しい名前を入力します。
-
-    ![人物モデルの名前を変更する](./media/customize-face-model/rename-person2.png)
-
-4. 名前を変更するモデルのチェック ボタンを選択します。
+1. メニューで **[名前の変更]** を選択します。
+1. モデルの現在の名前を選択し、新しい名前を入力します。
+1. 名前を変更するモデルのチェック ボタンを選択します。
 
 ## <a name="delete-a-person-model"></a>人物モデルを削除する
 
@@ -95,12 +77,7 @@ Video Indexer Web サイトを使用すると、このトピックで説明さ�
 
 1. メニューで **[削除]** を選択します。
 
-    ![人物モデルを削除する](./media/customize-face-model/delete-person.png)
-
     ポップアップが表示され、この操作により、人物モデルとそれに含まれるすべての人物およびファイルが削除されることが通知されます。 この削除操作は元に戻すことができません。
-
-    ![人物モデルを削除する](./media/customize-face-model/delete-person2.png)
-
 1. 確認できたら、[削除] をもう一度選択します。
 
 > [!NOTE]
@@ -110,7 +87,7 @@ Video Indexer Web サイトを使用すると、このトピックで説明さ�
 
 いずれかの人物モデルの内容を見るには、人物モデルの名前の隣にある矢印を選択します。 ドロップダウンには、その特定の人物モデルに含まれるすべての人物が表示されます。 各人物の隣にあるリスト メニュー ボタンを選択すると、管理、名前変更、削除のオプションが表示されます。  
 
-![人物に新しい顔を追加する](./media/customize-face-model/manage-people.png)
+![スクリーンショットに、管理、名前の変更、および削除のオプションを含むコンテキスト メニューが示されています。](./media/customize-face-model/manage-people.png)
 
 ### <a name="rename-a-person"></a>人物の名前を変更する
 
@@ -149,19 +126,10 @@ Video Indexer Web サイトを使用すると、このトピックで説明さ�
 
 新しい動画で人物モデルを使用するには、次の手順に従います。
 
-1. ページ上部の **[アップロード]** ボタンを選択します。
-
-    ![人物モデルをアップロードする](./media/customize-face-model/upload.png)
-
-1. 円の中に動画ファイルをドロップするか、ファイルを参照します。
+1. ページの右側にある **[アップロード]** ボタンを選択します。
+1. ビデオ ファイルをドロップするか、ファイルを参照します。
 1. **[詳細オプション]** の矢印を選択します。
-
-    ![人物モデルをアップロードする](./media/customize-face-model/upload2.png)
-
 1. ドロップダウンを選択し、作成した人物モデルを選択します。
-
-    ![人物モデルをアップロードする](./media/customize-face-model/upload3.png)
-
 1. ページの下部にある **[アップロード]** オプションを選択すると、人物モデルを使用して新しい動画にインデックスが作成されます。
 
 アップロード時に人物モデルを指定しないと、Video Indexer では、アカウントの既定の人物モデルを使用して、動画のインデックスが作成されます。
@@ -174,13 +142,10 @@ Video Indexer Web サイトを使用すると、このトピックで説明さ�
 
 1. ビデオのインデックスを再作成するオプションを選択します。
 
-    ![人物モデルを使用して動画のインデックスを再作成する](./media/customize-face-model/reindex.png)
+    ![スクリーンショットに、アカウントのビデオと、ビデオのインデックスを再作成するオプションが示されています。](./media/customize-face-model/reindex.png)
 
     動画のインデックス再作成に使用する人物モデルを選択できるようになります。
 1. ドロップダウンを選択し、使用する人物モデルを選択します。
-
-    ![人物モデルを使用して動画のインデックスを再作成する](./media/customize-face-model/reindex2.png)
-
 1. **[Reindex]\(インデックスの再作成\)** ボタンを選択すると、指定した人物モデルを使用して動画のインデックスが再作成されます。
 
 インデックスを再作成した動画で検出および認識された顔に対して行ったすべての新しい編集は、動画のインデックス再作成に使用した人物モデルに保存されます。
@@ -204,22 +169,18 @@ Video Indexer Web サイトを使用すると、このトピックで説明さ�
 1. 表示して編集する動画をお使いのアカウント内で検索します。
 1. 動画内の顔を編集するには、[Insights]\(分析情報\) タブに移動し、ウィンドウの右上隅の鉛筆アイコンを選択します。
 
-    ![動画内の顔を編集する](./media/customize-face-model/edit-face.png)
+    ![スクリーンショットに、選択する不明な顔があるビデオが示されています。](./media/customize-face-model/edit-face.png)
 
 1. 検出された顔のいずれかを選択し、名前を [不明 #X] (または前に顔に割り当てられていた名前) から別の名前に変更します。
 1. 新しい名前を入力したら、新しい名前の横にあるチェックマーク アイコンを選択します。 このアクションにより、新しい名前が保存され、その時点で存在する他の動画または今後アップロードされる動画に出現したときにその顔が認識され、名前が付けられます。 他の現在のビデオの顔の認識は、バッチ プロセスであるため、有効になるまで少し時間がかかることがあります。
 
 動画で使用されている人物モデル内の既存の人物の名前で顔に名前を付けると、この動画から検出されたその人物の顔画像と、モデル内に既に存在する画像がマージされます。 顔に新しい名前を付けると、動画で使用されている人物モデルに新しい人物エントリが作成されます。
 
-![動画内の顔を編集する](./media/customize-face-model/edit-face2.png)
-
 ### <a name="delete-a-face"></a>顔を削除する
 
 動画内で検出された顔を削除するには、[Insights]\(分析情報\) ウィンドウに移動し、ウィンドウの右上隅にある鉛筆アイコンを選択します。 顔の名前の下にある **[削除]** オプションを選択します。 このアクションにより、検出された顔がビデオから削除されます。 その人物の顔が出現する他の動画では、顔は引き続き検出されますが、動画のインデックスを作成した後で、同じように動画から顔を削除できます。
 
 人物に名前が付けられている場合は、人物モデルから人物を明示的に削除しない限り、その人物は顔を削除した動画のインデックス作成に使用された人物モデルに存在し続けます。
-
-![動画内の顔を削除する](./media/customize-face-model/delete-face.png)
 
 ## <a name="next-steps"></a>次の手順
 

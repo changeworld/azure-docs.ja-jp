@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 53db148eac0d56e53bb96e0597ad53d3183d86e9
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: f49af1488a0c044639a72fc2ea52ba0a47727a24
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192514"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996153"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>CDN ファイルの圧縮のトラブルシューティング
 この記事では、 [CDN ファイルの圧縮](cdn-improve-performance.md)に関する問題のトラブルシューティングについて説明します。
@@ -99,7 +99,7 @@ ms.locfileid: "88192514"
 ブラウザーの開発者ツールを使用して、応答ヘッダーを確認し、ファイルが要求されているリージョンでキャッシュされていることを確認します。
 
 * **Server** 応答ヘッダーを確認します。  この応答ヘッダーの形式は、次の例に示すとおり **プラットフォーム (POP/サーバー ID)** である必要があります。
-* **X-Cache** 応答ヘッダーを確認します。  ヘッダーによって **HIT**が読み取られる必要があります。  
+* **X-Cache** 応答ヘッダーを確認します。  ヘッダーによって **HIT** が読み取られる必要があります。  
 
 ![CDN 応答ヘッダー](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 
@@ -111,8 +111,8 @@ ms.locfileid: "88192514"
 
 圧縮の対象であるには、ファイルは次のサイズ要件を満たす必要があります。
 
-* 128 バイトより大きい
-* 1 MB 未満
+* 128 バイトを超える (Content-Length: 128)
+* 3 MB 未満
 
 ### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>配信元サーバーで要求の **Via** ヘッダーをチェックする
 **Via** HTTP ヘッダーは、その要求がプロキシ サーバーを介して送信されていることを Web サーバーに伝えます。  既定では、要求に **Via** ヘッダーが含まれている場合、Microsoft IIS Web サーバーは応答を圧縮しません。  この動作をオーバーライドするには、次の作業を実行します。

@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory の Until アクティビティ
 description: Until アクティビティでは、関連付けられている条件が true に評価されるか、アクティビティがタイムアウトになるまで、一連のアクティビティがループ実行されます。
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 63873a4f8301d3cb20488b02b32200f476922276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6431321d788e7311e076d302173ffffb96e07876
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417948"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385372"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure Data Factory の Until アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: iot-p0-scenario, iot-devices-deviceOEM
 ms.reviewer: nberdy
-ms.openlocfilehash: 3854f353e4ea0b78c0162681e0b89d37419105d8
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 788738082cbf9995fb2f7282bc3f574903275528
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529517"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90527209"
 ---
 # <a name="security-practices-for-azure-iot-device-manufacturers"></a>Azure IoT デバイス製造元向けのセキュリティ プラクティス
 IoT デバイスをリリースする製造元が増えており、一般的なプラクティスに関するガイダンスを示しておくと役に立ちます。 この記事では、Azure IoT Device Provisioning Service (DPS) で使用するデバイスを製造するときに考慮すべき推奨されるセキュリティ プラクティスについて説明します。  
@@ -182,7 +182,7 @@ TPM チップ搭載デバイスの製造における重要な手順は、TPM の
 #### <a name="step-5-device-is-installed-into-the-location"></a>手順 5:デバイスが使用場所に設置される
 デバイスが最終的な場所に到着すると、DPS による自動プロビジョニングが行われます。
 
-詳細については、「[自動プロビジョニングの概念](concepts-auto-provisioning.md)」および「[TPM の構成証明](concepts-tpm-attestation.md)」を参照してください。 
+詳細については、「[プロビジョニング](about-iot-dps.md#provisioning-process)」および「[TPM の構成証明](concepts-tpm-attestation.md)」を参照してください。 
 
 ## <a name="resources"></a>リソース
 

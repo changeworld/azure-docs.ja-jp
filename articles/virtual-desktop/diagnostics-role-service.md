@@ -3,15 +3,15 @@ title: Windows Virtual Desktop の診断の問題 - Azure
 description: Windows Virtual Desktop の診断機能を使用して問題を診断する方法。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 09/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 50fe1eb6e5aed551b56bcd1526daa5d441185501
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 70676bd1a07acdfcbba071a906b390ed66d70074
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121410"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279860"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>Windows Virtual Desktop 問題を特定し、診断する
 
@@ -24,10 +24,10 @@ Windows Virtual Desktop では、管理者が単一のインターフェイス�
 
 ## <a name="common-error-scenarios"></a>一般的なエラー シナリオ
 
-エラー シナリオは、サービスの内部と Windows Virtual Desktop の外部に分類されます。
+WVDErrors テーブルでは、あらゆる種類のアクティビティを対象にエラーが追跡記録されます。 "ServiceError" という名前の列には、"True" または "False" という印の付いた追加フラグがあります。 このフラグにより、エラーがサービスに関連しているのかどうかがわかります。
 
-* 内部の問題: 顧客が緩和できず、サポートの問題として解決する必要があるシナリオを指定します。 [Windows Virtual Desktop Tech コミュニティ](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)を通してフィードバックを提供する場合は、関連付け ID と問題が発生したときのおおよその概算時間を含めてください。
-* 外部の問題: 顧客が緩和できるシナリオに関連します。 これらは、Windows Virtual Desktop の外部で発生します。
+* 値が "True" の場合、サービス チームはこの問題を既に調査している可能性があります。 これがユーザー エクスペリエンスに影響を与え、高い頻度で現れる場合、Windows Virtual Desktop のサポート チケットを送信することをお勧めします。
+* 値が "False" の場合、構成に誤りがある可能性があり、自分で修正できます。 エラー メッセージを見れば、どこから始めたら良いかヒントが与えられます。
 
 次の表では、管理者が経験する可能性のある一般的なエラーの一覧を示します。
 
@@ -46,7 +46,7 @@ Windows Virtual Desktop では、管理者が単一のインターフェイス�
 |アプリケーション グループからユーザーの割り当てを解除できませんでした|ユーザーのアプリ グループの公開を取り消すことができませんでした。 ユーザーが Azure AD で利用できるかどうかを確認します。 ユーザーが、アプリ グループが公開されているユーザー グループに属しているかどうかを確認します。 |
 |利用できる場所の取得でエラーが発生しました |ホスト プールの作成ウィザードで使用されている VM の場所を確認します。 その場所でイメージを使用できない場合は、その場所にイメージを追加するか、別の VM の場所を選択します。 |
 
-### <a name="external-connection-error-codes"></a>外部接続のエラー コード
+### <a name="connection-error-codes"></a>接続エラー コード
 
 |数値コード|エラー コード|推奨されている解決方法|
 |---|---|---|

@@ -9,18 +9,21 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a092859517ee6ac41e62e55fe95f72b8bfdf87d5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67080480"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011202"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>接続済みファクトリ ソリューションによる OPC UA サーバー データの表示方法をカスタマイズする
 
+> [!IMPORTANT]
+> この記事は更新を行いますが、最新の内容については、「[Azure Industrial IoT](https://azure.github.io/Industrial-IoT/)」 (Azure 産業用 IoT) を参照してください。
+
 接続済みファクトリ ソリューションは、自身に接続されている OPC UA サーバーのデータを集計して表示します。 このソリューションでは OPC UA サーバーを参照し、コマンドを送信することができます。 OPC UA の詳細については、[接続済みファクトリの FAQ](iot-accelerators-faq-cf.md) を参照してください。
 
-ソリューションの集計データの例には、ダッシュボードで確認できるファクトリ レベル、ライン レベル、およびステーション レベルの総合設備効率 (OEE) と主要業績評価指標 (KPI) が含まれます。 次のスクリーンショットは、**ミュンヘン** ファクトリの**生産ライン 1** にある**アセンブリ** ステーションの OEE 値と KPI 値を示しています。
+ソリューションの集計データの例には、ダッシュボードで確認できるファクトリ レベル、ライン レベル、およびステーション レベルの総合設備効率 (OEE) と主要業績評価指標 (KPI) が含まれます。 次のスクリーンショットは、**ミュンヘン** ファクトリの **生産ライン 1** にある **アセンブリ** ステーションの OEE 値と KPI 値を示しています。
 
 ![ソリューションの OEE 値と KPI 値の例][img-oee-kpi]
 
@@ -43,11 +46,11 @@ ms.locfileid: "67080480"
 
 ダッシュボードでは、接続された OPC UA サーバーからソリューションに送信されるデータ項目を参照できます。
 
-1. **[ブラウザー]** を選択して、 **[Select an OPC UA server (OPC UA サーバーの選択)]** ビューに移動します。
+1. **[ブラウザー]** を選択して、**[Select an OPC UA server (OPC UA サーバーの選択)]** ビューに移動します。
 
     ![[Select an OPC UA server (OPC UA サーバーの選択)] ビュー][img-select-server]
 
-1. サーバーを選択し、 **[接続]** をクリックします。 セキュリティの警告が表示されたら、 **[続行]** をクリックします。
+1. サーバーを選択し、**[接続]** をクリックします。 セキュリティの警告が表示されたら、**[続行]** をクリックします。
 
     > [!NOTE]
     > この警告はサーバーごとに 1 回だけ表示され、ソリューション ダッシュボードとサーバーの間の信頼関係を確立します。

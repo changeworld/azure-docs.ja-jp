@@ -1,21 +1,21 @@
 ---
 title: チュートリアル:Salesforce を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
-description: Azure Active Directory と Salesforce の間でシングル サインオンを構成する方法について説明します。
+description: Azure AD から Salesforce にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで Salesforce と Azure AD で実行する必要がある手順について説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 66bba0d4825300a6cead2453a67518af631234b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2a4d3f3f9465b8813cdf6ee26760d819d73a08c1
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543506"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353106"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>チュートリアル:Salesforce を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -31,13 +31,13 @@ ms.locfileid: "88543506"
 > [!IMPORTANT]
 > Salesforce.com の試用アカウントを使用している場合は、自動化されたユーザー プロビジョニングを構成できません。 試用アカウントの場合、アカウントを購入するまでは、必要な API にアクセスできません。 [無料の開発者アカウント](https://developer.salesforce.com/signup) を使用してこのチュートリアルを完了することで、この制限を回避できます。
 
-Salesforce Sandbox 環境を使用している場合は、 [Salesforce Sandbox の統合に関するチュートリアル](https://go.microsoft.com/fwLink/?LinkID=521879)を参照してください。
+Salesforce Sandbox 環境を使用している場合は、 [Salesforce Sandbox の統合に関するチュートリアル](./salesforce-sandbox-tutorial.md)を参照してください。
 
 ## <a name="assigning-users-to-salesforce"></a>Salesforce へのユーザーの割り当て
 
 Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "割り当て" という概念が使用されます。 自動ユーザー アカウント プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに "割り当て済み" のユーザーとグループのみが同期されます。
 
-プロビジョニング サービスを構成して有効にする前に、Salesforce アプリへのアクセスが必要な Azure AD 内のユーザーやグループを決定しておく必要があります。 これを決定したら、[エンタープライズ アプリへのユーザーまたはグループの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)に関するページの手順に従って、これらのユーザーを Salesforce アプリに割り当てることができます。
+プロビジョニング サービスを構成して有効にする前に、Salesforce アプリへのアクセスが必要な Azure AD 内のユーザーやグループを決定しておく必要があります。 これを決定したら、[エンタープライズ アプリへのユーザーまたはグループの割り当て](../manage-apps/assign-user-or-group-access-portal.md)に関するページの手順に従って、これらのユーザーを Salesforce アプリに割り当てることができます。
 
 ### <a name="important-tips-for-assigning-users-to-salesforce"></a>ユーザーを Salesforce に割り当てる際の重要なヒント
 
@@ -67,25 +67,25 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![プロビジョニング](./media/salesforce-provisioning-tutorial/provisioning.png)
+    ![スクリーンショットは、Salesforce のプロビジョニング ページを示しています。[プロビジョニング モード] は [自動] に設定され、設定可能なその他の値が表示されています。](./media/salesforce-provisioning-tutorial/provisioning.png)
 
 5. **[管理者資格情報]** セクションに次の構成設定を指定します。
 
-    a. **[管理ユーザー名]** ボックスに、Salesforce.com で**システム管理者**プロファイルが割り当てられている Salesforce アカウント名を入力します。
+    a. **[管理ユーザー名]** ボックスに、Salesforce.com で **システム管理者** プロファイルが割り当てられている Salesforce アカウント名を入力します。
 
     b. **[管理パスワード]** テキストボックスに、このアカウントのパスワードを入力します。
 
 6. Salesforce のセキュリティ トークンを取得するには、新しいタブを開き、同じ Salesforce の管理者アカウントにサインインします。 ページの右上にある自分の名前をクリックし、 **[Settings]\(設定\)** をクリックします。
 
-    ![自動ユーザー プロビジョニングの有効化](./media/salesforce-provisioning-tutorial/sf-my-settings.png "自動ユーザー プロビジョニングの有効化")
+    ![[Settings]\(設定\) リンクが選択された状態を示すスクリーンショット。](./media/salesforce-provisioning-tutorial/sf-my-settings.png "自動ユーザー プロビジョニングの有効化")
 
 7. 左側のナビゲーション ウィンドウで **[私の個人情報]** をクリックして関連するセクションを展開し、 **[私のセキュリティ トークンのリセット]** をクリックします。
   
-    ![自動ユーザー プロビジョニングの有効化](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "自動ユーザー プロビジョニングの有効化")
+    ![[My Personal Information]\(私の個人情報\) の [Reset My Security Token]\(私のセキュリティ トークンのリセット\) が選択された状態を示すスクリーンショット。](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "自動ユーザー プロビジョニングの有効化")
 
 8. **[Reset Security Token]\(セキュリティ トークンのリセット\)** ページで、 **[Reset Security Token]\(セキュリティ トークンのリセット\)** ボタンをクリックします。
 
-    ![自動ユーザー プロビジョニングの有効化](./media/salesforce-provisioning-tutorial/sf-reset-token.png "自動ユーザー プロビジョニングの有効化")
+    ![[Reset Security Token]\(セキュリティ トークンのリセット\) ページのスクリーンショット。[Reset Security Token]\(セキュリティ トークンのリセット\) の説明テキストとオプションが表示されています](./media/salesforce-provisioning-tutorial/sf-reset-token.png "自動ユーザー プロビジョニングの有効化")
 
 9. この管理アカウントに関連付けられている電子メールの受信トレイを確認します。 新しいセキュリティ トークンが記載された Salesforce.com からの電子メールを探します。
 
@@ -122,7 +122,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 * Azure AD プロビジョニング サービスでは、ユーザーのプロビジョニング言語、ロケール、およびタイムゾーンがサポートされています。 これらの属性は既定の属性マッピングに含まれていますが、既定のソース属性を保持していません。 既定のソース属性を選択し、そのソース属性が SalesForce で想定されている形式となるようにしてください。 たとえば、英語 (米国) の localeSidKey は、en_US です。 [こちら](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)に記載されているガイダンスを確認して、適切な localeSidKey 形式を把握してください。 languageLocaleKey の形式は、[こちら](https://help.salesforce.com/articleView?id=faq_getstart_what_languages_does.htm&type=5)に記載されています。 この形式が正しいことを確認するだけでなく、[こちら](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)に説明されているように、ユーザーに対して言語が有効になっていることを確認することが必要な場合もあります。 
 * **SalesforceLicenseLimitExceeded:** このユーザーが使用できるライセンスがないため、ターゲット アプリケーションでユーザーを作成できませんでした。 ターゲット アプリケーションの追加ライセンスを購入するか、ユーザーの割り当てと属性マッピングの構成を調べて、正しい属性で正しいユーザーが割り当てられていることを確認します。
 * **SalesforceDuplicateUserName:** 別の Salesforce.com テナント内に重複している Salesforce.com の 'Username' があるため、ユーザーをプロビジョニングできません。  Salesforce.com では、'Username' 属性の値は、すべての Salesforce.com テナントにわたって一意である必要があります。  既定では、Azure Active Directory のユーザーの userPrincipalName は、Salesforce.com でのそのユーザーの 'Username' になります。   この場合、2 つの選択肢があります。  1 つ目のオプションは、他の Salesforce.com テナントも管理する場合に、その他のテナントの重複する 'Username' を持つユーザーを探して、名前を変更することです。  2 つ目のオプションは、Azure Active Directory ユーザーから、ディレクトリが統合されている Salesforce.com テナントへのアクセス権を削除することです。 次回の同期の試行時に、この操作を再試行します。 
-* **SalesforceRequiredFieldMissing:** Salesforce では、ユーザーを正常に作成または更新するために、特定の属性がユーザーに存在する必要があります。 このユーザーには、必須の属性の 1 つがありません。 Salesforce にプロビジョニングするすべてのユーザーに、email や alias などの属性が設定されていることを確認してください。 [属性ベースのスコープ フィルター](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)を使用して、これらの属性を持たないユーザーを対象外にすることができます。 
+* **SalesforceRequiredFieldMissing:** Salesforce では、ユーザーを正常に作成または更新するために、特定の属性がユーザーに存在する必要があります。 このユーザーには、必須の属性の 1 つがありません。 Salesforce にプロビジョニングするすべてのユーザーに、email や alias などの属性が設定されていることを確認してください。 [属性ベースのスコープ フィルター](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)を使用して、これらの属性を持たないユーザーを対象外にすることができます。 
 * Salesforce へのプロビジョニング用の既定の属性マッピングには、Azure AD の appRoleAssignments を Salesforce の ProfileName にマップするための SingleAppRoleAssignments 式が含まれています。 属性マッピングでは 1 つのロールのプロビジョニングのみがサポートされているため、ユーザーが Azure AD で複数のアプリ ロールの割り当てを持たないようにしてください。 
 * Salesforce では、メールを変更する前に、その更新を手動で承認する必要があります。 そのため、メールの変更が承認されるまでは、プロビジョニングのログに、ユーザーのメールを更新するエントリが複数表示されることがあります。
 
@@ -131,4 +131,4 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-* [シングル サインオンの構成](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-tutorial)
+* [シングル サインオンの構成](./salesforce-tutorial.md)

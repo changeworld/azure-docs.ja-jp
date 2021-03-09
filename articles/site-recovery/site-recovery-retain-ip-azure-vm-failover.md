@@ -7,11 +7,11 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710203"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023552"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>フェールオーバー時に IP アドレスを保持する
 
@@ -52,7 +52,7 @@ A 社は、Azure ですべてのアプリを実行しています。
         - SQL Server Always On やドメイン コントローラーなどのレプリカ ノードは、**Subnet 4** 内に配置されています。
     - **Source VNet** と **Azure VNet** は、VPN サイト間接続で接続されています。
     - **Recovery VNet** は他の仮想ネットワークには接続されていません。
-    - **A 社**は、レプリケートされる項目について、ターゲット IP アドレスの割り当てと確認を行っています。 ターゲット IP は、各 VM のソース IP と同じです。
+    - **A 社** は、レプリケートされる項目について、ターゲット IP アドレスの割り当てと確認を行っています。 ターゲット IP は、各 VM のソース IP と同じです。
 
 ![完全フェールオーバー前の Azure 内のリソース](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-before-failover2.png)
 
@@ -98,7 +98,7 @@ A 社は、Azure ですべてのアプリを実行しています。
     - **Source VNet 2** と **Azure VNet**
     - **Source VNet 1** と **Source VNet 2** はサイト間 VPN で接続されています
 - **Recovery VNet 1** と **Recovery VNet 2** は、他のどの VNet にも接続されていません。
-- **A 社**は RTO を短縮するため、**Recovery VNet 1** と **Recovery VNet 2** に VPN ゲートウェイを構成しています。  
+- **A 社** は RTO を短縮するため、**Recovery VNet 1** と **Recovery VNet 2** に VPN ゲートウェイを構成しています。  
 - **Recovery VNet1** と **Recovery VNet2** は他の仮想ネットワークには接続されていません。
 - 目標復旧時間 (RTO) を短縮するために、フェールオーバー前に **Recovery VNet1** と **Recovery VNet2** に VPN Gateway が構成されています。
 
@@ -121,7 +121,7 @@ A 社は、Azure ですべてのアプリを実行しています。
 
 ## <a name="hybrid-resources-full-failover"></a>ハイブリッド リソース: 完全フェールオーバー
 
-このシナリオでは、**B 社**はハイブリッド型の事業を運用しており、アプリケーション インフラストラクチャの一部を Azure で実行し、残りをオンプレミスで実行しています。 
+このシナリオでは、**B 社** はハイブリッド型の事業を運用しており、アプリケーション インフラストラクチャの一部を Azure で実行し、残りをオンプレミスで実行しています。 
 
 ### <a name="before-failover"></a>フェールオーバー前
 

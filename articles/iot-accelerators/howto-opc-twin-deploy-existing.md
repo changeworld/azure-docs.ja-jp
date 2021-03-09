@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b971ec13c71ccfd7d28ae6987593d09201b9b764
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a4866db463dcf4ff17b2f7b25806806a700e8fa
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73824111"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92071644"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>既存のプロジェクトに OPC Twin をデプロイする
+
+> [!IMPORTANT]
+> この記事は更新を行いますが、最新の内容については、「[Azure Industrial IoT](https://azure.github.io/Industrial-IoT/)」 (Azure 産業用 IoT) を参照してください。
 
 OPC Twin モジュールは IoT Edge 上で動作し、OPC Twin およびレジストリ サービスにいくつかのエッジ サービスを提供します。
 
@@ -30,7 +33,7 @@ OPC UA Device Registry マイクロサービスにより、登録済みの OPC U
 
 ## <a name="prerequisites"></a>前提条件
 
-PowerShell および [AzureRM PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) 拡張機能がインストールされていることを確認します。 まだの場合は、この GitHub リポジトリをクローンします。 PowerShell で次のコマンドを実行します。
+PowerShell および [AzureRM PowerShell](/powershell/azure/azurerm/install-azurerm-ps) 拡張機能がインストールされていることを確認します。 まだの場合は、この GitHub リポジトリをクローンします。 PowerShell で次のコマンドを実行します。
 
 ```powershell
 git clone --recursive https://github.com/Azure/azure-iiot-components.git
@@ -137,7 +140,7 @@ Web サイトの名前が既に使用されている可能性があります。 
 -credentials
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ここでは、OPC Twin を既存のプロジェクトにデプロイする方法を学習しました。次に以下の記事を読むことをお勧めします。
 

@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 1fc7e7da62aa92812a124f920f5c59ebf8e50fcc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: e62333f241cf24620773314fb7aa4846af651eaf
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934618"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185871"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>音声テキスト変換の自動言語検出
 
@@ -67,7 +67,8 @@ auto autoDetectSourceLanguageConfig =
 auto recognizer = SpeechRecognizer::FromConfig(
     speechConfig,
     autoDetectSourceLanguageConfig,
-    audioConfig);
+    audioConfig
+    );
 
 speechRecognitionResult = recognizer->RecognizeOnceAsync().get();
 auto autoDetectSourceLanguageResult =
@@ -140,7 +141,7 @@ NSString *detectedLanguage = [languageDetectionResult language];
 
 ```Javascript
 var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromLanguages(["en-US", "de-DE"]);
-var speechRecognizer = SpeechSDK.SpeechRecognizer.FromConfig(speechConfig, audioConfig, autoDetectConfig);
+var speechRecognizer = SpeechSDK.SpeechRecognizer.FromConfig(speechConfig, autoDetectConfig, audioConfig);
 speechRecognizer.recognizeOnceAsync((result: SpeechSDK.SpeechRecognitionResult) => {
         var languageDetectionResult = SpeechSDK.AutoDetectSourceLanguageResult.fromResult(result);
         var detectedLanguage = languageDetectionResult.language;
@@ -253,11 +254,11 @@ var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromSourceLangua
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-* 自動言語検出については、GitHub の[サンプル コード](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_synthesis_sample.py#L434)を参照してください
+* 自動言語検出については、GitHub の[サンプル コード](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py#L458)を参照してください
 ::: zone-end
 
 ::: zone pivot="programming-language-objectivec"
-* 自動言語検出については、GitHub の[サンプル コード](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L494)を参照してください
+* 自動言語検出については、GitHub の[サンプル コード](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L525)を参照してください
 ::: zone-end
 
 * [Speech SDK のリファレンス ドキュメント](speech-sdk.md)

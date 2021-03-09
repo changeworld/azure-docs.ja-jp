@@ -1,5 +1,5 @@
 ---
-title: Synapse SQL プールのコンピューティングをスケーリングする (Azure portal)
+title: クイックスタート:Synapse SQL プールのコンピューティングをスケーリングする (Azure portal)
 description: Azure portal を使用して、Synapse SQL プール (データ ウェアハウス) のコンピューティングをスケーリングできます。
 services: synapse-analytics
 author: Antvgski
@@ -11,12 +11,12 @@ ms.date: 04/28/2020
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d944ff86cdc11c30142792c6fd15d03e3cfd4fa9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26a8a865a787a9c9b17031f94456272c93380704
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212940"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117046"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>クイック スタート:Azure portal を使用して Synapse SQL プールのコンピューティングをスケーリングする
 
@@ -52,4 +52,4 @@ Data Warehouse ユニットを変更するには:
     ![スライダーの移動](./media/quickstart-scale-compute-portal/scale-dwu.png)
 
 ## <a name="next-steps"></a>次のステップ
-SQL プールに関する理解をさらに深めるために、[SQL プールへのデータの読み込み](load-data-from-azure-blob-storage-using-polybase.md)に関するチュートリアルに進んでください。 
+SQL プールに関する理解をさらに深めるために、[SQL プールへのデータの読み込み](./load-data-from-azure-blob-storage-using-copy.md)に関するチュートリアルに進んでください。

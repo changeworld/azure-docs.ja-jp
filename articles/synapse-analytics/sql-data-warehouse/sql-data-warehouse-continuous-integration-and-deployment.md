@@ -1,6 +1,6 @@
 ---
-title: 継続的インテグレーションとデプロイ
-description: エンタープライズ クラス データベースの DevOps エクスペリエンスと、Azure Pipelines を使用した継続的インテグレーションおよび継続的デプロイの組み込みサポートによってデータ ウェアハウジングを実現します。
+title: 専用 SQL プールのための継続的インテグレーションと継続的デプロイ
+description: Azure Pipelines を使用した継続的インテグレーションおよび継続的デプロイの組み込みサポートによって Azure Synapse Analytics の専用 SQL プールでエンタープライズ クラス データベースの DevOps エクスペリエンスを実現します。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 725e8165f8a7bdb654f61d7257867a2d0bf17110
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb80f2d21246a75d41fc5753e72995d409d5c6b4
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213569"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119188"
 ---
-# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>データ ウェアハウジングのための継続的インテグレーションと継続的デプロイ
+# <a name="continuous-integration-and-deployment-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールのための継続的インテグレーションと継続的デプロイ
 
 この簡単なチュートリアルでは、SQL Server Data tools (SSDT) データベース プロジェクトを Azure DevOps と統合し、Azure Pipelines を利用して継続的インテグレーションとデプロイを設定する方法の概要を説明します。 このチュートリアルは、データ ウェアハウジングのための継続的インテグレーションと継続的デプロイのパイプラインを構築するための 2 番目の手順です。
 
@@ -42,15 +42,15 @@ ms.locfileid: "85213569"
 
       ![YAML](./media/sql-data-warehouse-continuous-integration-and-deployment/3-yaml-file.png "YAML")
 
-この時点で、ソース管理リポジトリの master ブランチにチェックインすると、データベース プロジェクトの Visual Studio ビルドが成功したことが自動的にトリガーされる単純な環境ができています。 ローカル データベース プロジェクトに変更を加え、その変更を master ブランチにチェックインして、オートメーション全体が正常に機能していることを検証します。
+この時点で、ソース管理リポジトリのメイン ブランチにチェックインすると、データベース プロジェクトの Visual Studio ビルドが成功したことが自動的にトリガーされるシンプルな環境ができています。 ローカル データベース プロジェクトに変更を加え、その変更をメイン ブランチにチェックインして、オートメーションがエンドツーエンドで正常に機能していることを検証します。
 
-## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Azure SQL Data Warehouse (または Database) デプロイ タスクを使用した継続的なデプロイ
+## <a name="continuous-deployment-with-the-azure-synapse-analytics-or-database-deployment-task"></a>Azure Synapse Analytics (または Database) デプロイ タスクを使用した継続的デプロイ
 
-1. [Azure SQL Database デプロイ タスク](/azure/devops/pipelines/targets/azure-sqldb)を使用して新しいタスクを追加し、ターゲット データ ウェアハウスへの接続に必要なフィールドに入力します。 このタスクを実行すると、前のビルド プロセスから生成された DACPAC がターゲット データ ウェアハウスにデプロイされます。 [Azure SQL Data Warehouse デプロイ タスク](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)を使用することもできます。
+1. [Azure SQL Database デプロイ タスク](/azure/devops/pipelines/targets/azure-sqldb)を使用して新しいタスクを追加し、ターゲット データ ウェアハウスへの接続に必要なフィールドに入力します。 このタスクを実行すると、前のビルド プロセスから生成された DACPAC がターゲット データ ウェアハウスにデプロイされます。 [Azure Synapse Analytics デプロイ タスク](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)を使用することもできます。
 
       ![デプロイ タスク](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "デプロイ タスク")
 
-2. セルフホステッド エージェントを使用する場合は、SQL Data Warehouse 用の正しい SqlPackage.exe を使用するように環境変数を設定してください。 パスは次のようになります。
+2. セルフホステッド エージェントを使用する場合は、Azure Synapse Analytics 用の適切な SqlPackage.exe を使用するように環境変数を設定してください。 パスは次のようになります。
 
       ![環境変数](./media/sql-data-warehouse-continuous-integration-and-deployment/5-environment-variable-preview.png "環境変数")
 
@@ -60,7 +60,7 @@ ms.locfileid: "85213569"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Synapse SQL プール MPP アーキテクチャ](massively-parallel-processing-mpp-architecture.md)について理解を深める
-- [SQL プールの簡易作成](create-data-warehouse-portal.md)
-- [サンプル データを読み込む](load-data-from-azure-blob-storage-using-polybase.md)
+- [専用 SQL プール (旧称 SQL DW) アーキテクチャ](massively-parallel-processing-mpp-architecture.md)を探索する
+- [専用 SQL プール (旧称 SQL DW) をすばやく作成](create-data-warehouse-portal.md)する
+- [サンプル データを読み込む](./load-data-from-azure-blob-storage-using-copy.md)
 - [ビデオ](sql-data-warehouse-videos.md)を確認する

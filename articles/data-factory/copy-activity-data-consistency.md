@@ -1,33 +1,23 @@
 ---
 title: コピー アクティビティでのデータ整合性の検証
 description: Azure Data Factory のコピー アクティビティでデータ整合性の検証を有効にする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: ''
-ms.reviewer: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: d52d172fa4cc435235079cd88999766df93bfdf0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b71657f67c1b9c623d6d48f33b986ac43533cca6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522909"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373018"
 ---
-#  <a name="data-consistency-verification-in-copy-activity-preview"></a>コピー アクティビティでのデータ整合性の検証 (プレビュー)
+#  <a name="data-consistency-verification-in-copy-activity"></a>コピー アクティビティでのデータ整合性の検証
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-ソース ストアからコピー先ストアにデータを移動するとき、Azure Data Factory コピー アクティビティでは、データがソース ストアからコピー先ストアに正常にコピーされただけでなく、ソース ストアとコピー先ストアの間の整合性も確保されていることを確認するための、追加のデータ整合性検証を行うことができます。 データの移動中に整合性のないファイルが検出されたら、コピー アクティビティを中止するか、またはフォールト トレランス設定を有効にして整合性のないファイルをスキップすることで、その他のデータをコピーし続けることができます。 スキップされたファイル名を取得するには、コピー アクティビティでセッション ログ設定を有効にします。 
-
-> [!IMPORTANT]
-> この機能は現在プレビュー段階にあり、次のような制限があります (これらの制限については現在対応中です)。
->- コピー アクティビティのセッション ログ設定で、スキップされた整合性のないファイルのログの記録を有効にした場合、コピー アクティビティが失敗した際のログ ファイルの完全性が 100% 保証されることはありません。
->- 現状では、セッション ログには整合性のないファイルのみが含まれ、正常にコピーされたファイルはログに記録されません。
+ソース ストアからコピー先ストアにデータを移動するとき、Azure Data Factory コピー アクティビティでは、データがソース ストアからコピー先ストアに正常にコピーされただけでなく、ソース ストアとコピー先ストアの間の整合性も確保されていることを確認するための、追加のデータ整合性検証を行うことができます。 データの移動中に整合性のないファイルが検出されたら、コピー アクティビティを中止するか、またはフォールト トレランス設定を有効にして整合性のないファイルをスキップすることで、その他のデータをコピーし続けることができます。 スキップされたファイル名を取得するには、コピー アクティビティでセッション ログ設定を有効にします。 詳細については、「[コピー アクティビティのセッション ログ](copy-activity-log.md)」を参照してください。
 
 ## <a name="supported-data-stores-and-scenarios"></a>サポートされているデータ ストアおよびシナリオ
 
@@ -60,13 +50,20 @@ ms.locfileid: "86522909"
     "skipErrorFile": { 
         "dataInconsistency": true 
     }, 
-    "logStorageSettings": { 
-        "linkedServiceName": { 
-            "referenceName": "ADLSGen2_storage", 
-            "type": "LinkedServiceReference" 
-        }, 
-        "path": "/sessionlog/" 
-} 
+    "logSettings": {
+        "enableCopyActivityLog": true,
+        "copyActivityLogSettings": {
+            "logLevel": "Warning",
+            "enableReliableLogging": false
+        },
+        "logLocationSettings": {
+            "linkedServiceName": {
+               "referenceName": "ADLSGen2",
+               "type": "LinkedServiceReference"
+            },
+            "path": "sessionlog/"
+        }
+    }
 } 
 ```
 
@@ -74,12 +71,12 @@ ms.locfileid: "86522909"
 -------- | ----------- | -------------- | -------- 
 validateDataConsistency | バイナリ ファイルのコピー時にこのプロパティに true を設定した場合、ソース ストアとコピー先ストアの間でのデータ整合性を確保するために、ソース ストアからコピー先ストアにコピーされた各バイナリ ファイルのファイル サイズ、lastModifiedDate、および MD5 チェックサムがコピー アクティビティにより確認されます。 表形式データをコピーする場合、コピー元から読み取られた行の合計数が、コピー先にコピーされた行の数とスキップされた互換性のない行の数の合計と同じになるように、ジョブの完了後にコピー アクティビティにより合計行数が確認されます。 このオプションを有効にすると、コピーのパフォーマンスが影響を受けることに注意してください。  | True<br/>False (既定値) | いいえ
 dataInconsistency | 整合性のないファイルをスキップするかどうかを指定する、skipErrorFile プロパティ バッグ内のキーと値のペアの 1 つです。 <br/> -True: 整合性のないファイルをスキップして、残りの部分をコピーします。<br/> - False: 整合性のないファイルが見つかった場合、コピー アクティビティを中止します。<br/>このプロパティは、バイナリ ファイルをコピーしていて validateDataConsistency を True に設定した場合にのみ有効であることに注意してください。  | True<br/>False (既定値) | いいえ
-logStorageSettings | スキップされたファイルをセッション ログでログに記録できるようにするために指定できるプロパティのグループです。 | | いいえ
+logSettings | スキップされたファイルをセッション ログでログに記録できるようにするために指定できるプロパティのグループです。 | | いいえ
 linkedServiceName | セッション ログ ファイルを格納するための、[Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) のリンクされたサービスです。 | `AzureBlobStorage` または `AzureBlobFS` 型のリンクされたサービスの名前。これは、ログ ファイルを格納するために使用するインスタンスを示します。 | いいえ
 path | ログ ファイルのパス。 | ログ ファイルを格納するパスを指定します。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ
 
 >[!NOTE]
->- Azure Blob または Azure Data Lake Storage Gen2 との間でバイナリ ファイルをコピーするとき、ADF では、[Azure Blob API](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) と [Azure Data Lake Storage Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) を活用し、ブロック レベル MD5 チェックサム検証が行われます。 ファイル上の ContentMD5 がデータ ソースとして Azure Blob または Azure Data Lake Storage Gen2 に存在する場合、ADF では、ファイルも読み取った後に、レベル MD5 チェックサム検証がファイリングされます。 データのコピー先として Azure Blob または Azure Data Lake Storage Gen2 にファイルをコピーした後、ADF では、Azure Blob または Azure Data Lake Storage Gen2 に ContentMD5 が書き込まれ、データの一貫性検証のために下流のアプリケーションでさらに利用できます。
+>- Azure Blob または Azure Data Lake Storage Gen2 との間でバイナリ ファイルをコピーするとき、ADF では、[Azure Blob API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy&preserve-view=true) と [Azure Data Lake Storage Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) を活用し、ブロック レベル MD5 チェックサム検証が行われます。 ファイル上の ContentMD5 がデータ ソースとして Azure Blob または Azure Data Lake Storage Gen2 に存在する場合、ADF では、ファイルも読み取った後に、レベル MD5 チェックサム検証がファイリングされます。 データのコピー先として Azure Blob または Azure Data Lake Storage Gen2 にファイルをコピーした後、ADF では、Azure Blob または Azure Data Lake Storage Gen2 に ContentMD5 が書き込まれ、データの一貫性検証のために下流のアプリケーションでさらに利用できます。
 >- ADF では、ストレージ ストア間でバイナリ ファイルをコピーするとき、ファイル サイズ検証が行われます。
 
 ## <a name="monitoring"></a>監視
@@ -95,7 +92,7 @@ path | ログ ファイルのパス。 | ログ ファイルを格納するパ�
             "filesWritten": 1, 
             "filesSkipped": 2, 
             "throughput": 297,
-            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "logFilePath": "myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
             "dataConsistencyVerification": 
            { 
                 "VerificationResult": "Verified", 
@@ -144,5 +141,3 @@ Timestamp, Level, OperationName, OperationItem, Message
 
 - [コピー アクティビティの概要](copy-activity-overview.md)
 - [コピー アクティビティのフォールト トレランス](copy-activity-fault-tolerance.md)
-
-

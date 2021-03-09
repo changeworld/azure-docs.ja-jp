@@ -4,19 +4,19 @@ ms.author: dapine
 ms.date: 10/02/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: 7ccbc6c06419d22add7c52829069bb858cb35cf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6f399e19cadf3d6ce9edfaecb3d904e62c498aa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73484089"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006877"
 ---
 このコンテナーには、次の構成設定があります。
 
 |必須|設定|目的|
 |--|--|--|
 |はい|[ApiKey](#apikey-configuration-setting)|課金情報を追跡します。|
-|いいえ|[ApplicationInsights](#applicationinsights-setting)|お客様のコンテナーに対する [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) テレメトリ サポートの追加を有効にします。|
+|いいえ|[ApplicationInsights](#applicationinsights-setting)|お客様のコンテナーに対する [Azure Application Insights](/azure/application-insights) テレメトリ サポートの追加を有効にします。|
 |はい|[Billing](#billing-configuration-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
 |はい|[Eula](#eula-setting)| コンテナーのライセンスに同意していることを示します。|
 |いいえ|[Fluentd](#fluentd-settings)|ログと (必要に応じて) メトリック データを Fluentd サーバーに書き込みます。|

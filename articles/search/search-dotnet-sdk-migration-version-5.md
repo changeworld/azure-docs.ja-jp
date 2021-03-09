@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ade326b7dda19478398de4ec3ab2be8996d98535
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 7f0e994cd41fc55824cf347a51ccfed25589a310
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923213"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91539539"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Azure Search .NET SDK バージョン 5 へのアップグレード
 
@@ -35,7 +35,7 @@ Azure Search .NET SDK のバージョン 5 には、以前のバージョンか�
 Azure Search .NET SDK のバージョン 5 は、Azure Search REST API の最新の一般公開バージョン (2017-11-11) を対象としています。 これにより、次のような Azure Search の新機能を .NET アプリケーションから使用することが可能になります。
 
 * [シノニム](search-synonyms.md)。
-* インデクサーの実行履歴内の警告に、プログラムからアクセスできるようになりました (詳細については、[.NET リファレンス](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)で、`IndexerExecutionResult` の `Warning` プロパティをご覧ください)。
+* インデクサーの実行履歴内の警告に、プログラムからアクセスできるようになりました (詳細については、[.NET リファレンス](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult)で、`IndexerExecutionResult` の `Warning` プロパティをご覧ください)。
 * .NET Core 2 のサポート。
 * 新しいパッケージ構造により、SDK の必要な一部のみを使用できるようになっています (詳細については、「[バージョン 5 における重大な変更](#ListOfChanges)」をご覧ください)。
 

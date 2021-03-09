@@ -6,68 +6,79 @@ ms.subservice: core
 ms.topic: include
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 2b4f768b25917e712380ca4a7f8ac58cb6140777
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 95acb028867caf6f497dd99ad3082efcaab09c7b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542796"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325269"
 ---
-エントリ スクリプトは、デプロイされた Web サービスに送信されたデータを受け取り、それをモデルに渡します。 次に、モデルから返された応答を受け取り、それをクライアントに返します。 *このスクリプトはこのモデルに固有のものです*。 そのため、モデルが受け入れ、返すデータを認識する必要があります。
+エントリ スクリプトは、デプロイされた Web サービスに送信されたデータを受け取り、それをモデルに渡します。 次に、モデルから返された応答を受け取り、それをクライアントに返します。 *このスクリプトはこのモデルに固有のものです* 。 そのため、モデルが受け入れ、返すデータを認識する必要があります。
 
-このスクリプトにはモデルの読み込みと実行の 2 つの関数が含まれています。
+エントリ スクリプトでは、次の 2 つの処理を実行する必要があります。
 
-* `init()`:通常は、この関数によってモデルがグローバル オブジェクトに読み込まれます。 この関数は、Web サービスの Docker コンテナーの起動時に 1 回だけ実行されます。
+1. モデルの読み込み (`init()` という関数を使用)
+1. 入力データでのモデルの実行 (`run()` という関数を使用)
 
-* `run(input_data)`:この関数では、モデルを使用して、入力データに基づいて値が予測されます。 実行の入力と出力は、通常、JSON を使用してシリアル化およびシリアル化解除が実行されます。 また、未加工のバイナリ データも使用できます。 モデルに送信する前、またはクライアントに返す前のデータを変換できます。
+それでは、これらの手順を詳しく見ていきましょう。
 
-REST API では、要求の本文が次の構造の JSON ドキュメントであることが予期されます。
+### <a name="writing-init"></a>init() の記述 
+
+#### <a name="loading-a-registered-model"></a>登録済みのモデルの読み込み
+
+登録済みのモデルは、`AZUREML_MODEL_DIR` という環境変数が指すパスに格納されます。 正確なディレクトリ構造の詳細については、「[エントリ スクリプトでモデル ファイルを検索する](../articles/machine-learning/how-to-deploy-advanced-entry-script.md#load-registered-models)」をご覧ください。
+
+#### <a name="loading-a-local-model"></a>ローカル モデルの読み込み
+
+モデルを登録せず、モデルをソース ディレクトリの一部として受け渡すことを選択した場合は、スコアリング スクリプトからモデルへの相対パスを渡すことによって、ローカルで行うのと同様にそのモデルを読み取ることができます。 たとえば、ディレクトリが次のように構成されているとします。
+
+```bash
+
+- source_dir
+    - score.py
+    - models
+        - model1.onnx
+
+```
+
+次の Python コードを使用して、モデルを読み込むことができます。
+
+```python
+import os
+
+model = open(os.path.join('.', 'models', 'model1.onnx'))
+```
+
+### <a name="writing-run"></a>run() の書き込み
+
+モデルがスコアリング要求を受信するたびに `run()` が実行されます。要求の本文は次の構造を持つ JSON ドキュメントであることが想定されます。
 
 ```json
 {
-    "data":
-        [
-            <model-specific-data-structure>
-        ]
+    "data": <model-specific-data-structure>
 }
+
 ```
+
+`run()` への入力は、"data" キーの後に何かが続く Python 文字列です。
 
 次の例は、登録された scikit-learn モデルを読み込み、それを numpy データでスコア付けする方法を示しています。
 
 ```python
-#Example: scikit-learn and Swagger
 import json
 import numpy as np
 import os
 from sklearn.externals import joblib
-from sklearn.linear_model import Ridge
-
-from inference_schema.schema_decorators import input_schema, output_schema
-from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 
 
 def init():
     global model
-    # AZUREML_MODEL_DIR is an environment variable created during deployment. Join this path with the filename of the model file.
-    # It holds the path to the directory that contains the deployed model (./azureml-models/$MODEL_NAME/$VERSION).
-    # If there are multiple models, this value is the path to the directory containing all deployed models (./azureml-models).
     model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
-
-    # If your model were stored in the same directory as your score.py, you could also use the following:
-    # model_path = os.path.abspath(os.path.join(os.path.dirname(__file_), 'sklearn_mnist_model.pkl')
-
-    # Deserialize the model file back into a sklearn model
     model = joblib.load(model_path)
 
-
-input_sample = np.array([[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]])
-output_sample = np.array([3726.995])
-
-
-@input_schema('data', NumpyParameterType(input_sample))
-@output_schema(NumpyParameterType(output_sample))
 def run(data):
     try:
+        data = np.array(json.loads(data))
         result = model.predict(data)
         # You can return any data type, as long as it is JSON serializable.
         return result.tolist()
@@ -76,11 +87,4 @@ def run(data):
         return error
 ```
 
-他の例については、次のスクリプトをご覧ください。
-
-* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch)
-* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
-* [Keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
-* [AutoML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features)
-* [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
-* [Binary Data](../articles/machine-learning/how-to-deploy-advanced-entry-script.md#binary-data)
+Automatic Swagger スキーマ生成とバイナリ (イメージ) データを含む、より高度な例については、「[高度なエントリ スクリプトの作成」の記事](../articles/machine-learning/how-to-deploy-advanced-entry-script.md)をご覧ください。

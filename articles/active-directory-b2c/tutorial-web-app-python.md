@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.custom: devx-track-python
-ms.openlocfilehash: 6a113b3a3df475853f3690a0e932378bc0e2ab02
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 56e92a698446bd417c74820d6da662ad9ee55c77
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844628"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555688"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>チュートリアル:Python Web アプリケーションで Azure AD B2C を使用して認証を行う
 
@@ -37,7 +37,7 @@ ms.locfileid: "87844628"
 このチュートリアルの手順を続ける前に、次の Azure AD B2C リソースを用意しておく必要があります。
 
 * [Azure AD B2C テナント](tutorial-create-tenant.md)
-* テナントに[登録されたアプリケーション](tutorial-register-applications.md)とその*アプリケーション (クライアント) ID* および*クライアント シークレット*
+* テナントに [登録されたアプリケーション](tutorial-register-applications.md)とその *アプリケーション (クライアント) ID* および *クライアント シークレット*
 * ご利用のテナントで[作成したユーザー フロー](tutorial-create-user-flows.md)
 
 さらに、ご利用のローカル開発環境には次のものが必要です。
@@ -49,7 +49,7 @@ ms.locfileid: "87844628"
 
 前提条件の一環として完了した 2 番目のチュートリアルで、Azure AD B2C に Web アプリケーションを登録しました。 このチュートリアルのコード サンプルとの通信を可能にするには、アプリケーションの登録に応答 URL (リダイレクト URI とも呼ばれます) を追加します。
 
-Azure AD B2C テナントでアプリケーションを更新するには、Microsoft の新しい統合**アプリの登録**エクスペリエンスか以前の**アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
+Azure AD B2C テナントでアプリケーションを更新するには、Microsoft の新しい統合 **アプリの登録** エクスペリエンスか以前の **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
@@ -95,8 +95,8 @@ git clone https://github.com/Azure-Samples/ms-identity-python-webapp.git
 1. お使いのエディターで *app_config.py* ファイルを開きます。
 1. `b2c_tenant` の値を自分の Azure AD B2C テナントの名前に更新します (例: *contosob2c*)。
 1. 前提条件のセクションで作成したユーザー フローの名前に合わせて `*_user_flow` の各値を更新します。
-1. `CLIENT_ID` 値を、前提条件のセクションで登録した Web アプリケーションの**アプリケーション (クライアント) ID** に更新します。
-1. `CLIENT_SECRET` の値を、前提条件で作成した**クライアント シークレット**の値に更新します。 実際には、コメントでも推奨されているように、セキュリティ強化の観点から、この値は**環境変数**に格納することを検討してください。
+1. `CLIENT_ID` 値を、前提条件のセクションで登録した Web アプリケーションの **アプリケーション (クライアント) ID** に更新します。
+1. `CLIENT_SECRET` の値を、前提条件で作成した **クライアント シークレット** の値に更新します。 実際には、コメントでも推奨されているように、セキュリティ強化の観点から、この値は **環境変数** に格納することを検討してください。
 
 これで *app_config.py* の最上部は、次のコード スニペットのようになります。
 
@@ -121,7 +121,7 @@ CLIENT_SECRET = "22222222-2222-2222-2222-222222222222" # Placeholder - for use O
 ```
 
 > [!WARNING]
-> コード スニペットのコメントにも注意書きがあるように、アプリケーション コードでは、**シークレットをプレーンテキストに格納することは避けて**ください。 コード サンプルでは変数をハードコーディングしていますが、これは "*あくまで便宜上*" の措置です。 環境変数を使用するか、Azure Key Vault のようなシークレット格納を使用することを検討してください。
+> コード スニペットのコメントにも注意書きがあるように、アプリケーション コードでは、**シークレットをプレーンテキストに格納することは避けて** ください。 コード サンプルでは変数をハードコーディングしていますが、これは "*あくまで便宜上*" の措置です。 環境変数を使用するか、Azure Key Vault のようなシークレット格納を使用することを検討してください。
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 
@@ -185,4 +185,4 @@ CLIENT_SECRET = "22222222-2222-2222-2222-222222222222" # Placeholder - for use O
 この後は、Azure AD B2C によってユーザーに表示されるユーザー フロー ページの UI をカスタマイズする方法について見ていきましょう。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Azure AD B2C でユーザー エクスペリエンスのインターフェイスをカスタマイズする >](tutorial-customize-ui.md)
+> [Azure AD B2C でユーザー エクスペリエンスのインターフェイスをカスタマイズする >](customize-ui.md)

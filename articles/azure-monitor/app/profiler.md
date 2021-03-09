@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4f5328bbe21bb5f4a7947d5a495f4a0c8759c8da
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b1158a614da9ba32f628aba5dd2ed2cc71b4b455
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87315639"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947037"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Application Insights を使用したライブ Azure App Service アプリのプロファイリング
 
@@ -31,7 +31,7 @@ Application Insights Profiler は、App Services ランタイムの一部とし�
 
    ![App Service ポータルで App Insights を有効にする](./media/profiler/AppInsights-AppServices.png)
 
-1. ウィンドウの指示に従って新しいリソースを作成するか、既存の App Insights リソースを選択してアプリを監視します。 また、Profiler が**オン**になっていることを確認します。 Application Insights リソースと App Service のサブスクリプションが異なる場合、このページを使用して Application Insights を構成することはできません。 ただし、必要なアプリの設定を手動で作成することにより、手動で行うことはできます。 [次のセクションには、Profiler を手動で有効にするための手順が含まれています。](#enable-profiler-manually-or-with-azure-resource-manager) 
+1. ウィンドウの指示に従って新しいリソースを作成するか、既存の App Insights リソースを選択してアプリを監視します。 また、Profiler が **オン** になっていることを確認します。 Application Insights リソースと App Service のサブスクリプションが異なる場合、このページを使用して Application Insights を構成することはできません。 ただし、必要なアプリの設定を手動で作成することにより、手動で行うことはできます。 [次のセクションには、Profiler を手動で有効にするための手順が含まれています。](#enable-profiler-manually-or-with-azure-resource-manager) 
 
    ![App Insights のサイト拡張機能を追加する][Enablement UI]
 
@@ -50,7 +50,7 @@ Profiler を有効にするために必要な設定は次のとおりです。
 |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 
-これらの値は、[Azure Resource Manager テンプレート](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、[Azure PowerShell](/powershell/module/az.websites/set-azwebapp) または [Azure CLI](/cli/azure/webapp/config/appsettings?view=azure-cli-latest) を使用して設定できます。
+これらの値は、[Azure Resource Manager テンプレート](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、[Azure PowerShell](/powershell/module/az.websites/set-azwebapp) または [Azure CLI](/cli/azure/webapp/config/appsettings) を使用して設定できます。
 
 ### <a name="enabling-profiler-for-other-clouds-manually"></a>他のクラウドに対して Profiler を手動で有効にする
 
@@ -58,7 +58,7 @@ Profiler を有効にするために必要な設定は次のとおりです。
 
 |アプリ設定    | 米国政府の値| China Cloud |   
 |---------------|---------------------|-------------|
-|ApplicationInsightsProfilerEndpoint         | `https://agent.serviceprofiler.azure.us`    | `https://profiler.applicationinsights.azure.cn` |
+|ApplicationInsightsProfilerEndpoint         | `https://profiler.monitor.azure.us`    | `https://profiler.monitor.azure.cn` |
 |ApplicationInsightsEndpoint | `https://dc.applicationinsights.us` | `https://dc.applicationinsights.azure.cn` |
 
 ## <a name="disable-profiler"></a>Profiler を無効にする

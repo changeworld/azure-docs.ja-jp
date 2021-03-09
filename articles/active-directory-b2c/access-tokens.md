@@ -7,20 +7,20 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 10/26/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: be43b74e7128f9b250d25f8bdb2642c6f7b41d2a
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: e5168d5e5e3935da267fb26f38735a88bdfd7837
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115526"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654478"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのアクセス トークンの要求
 
-*アクセス トークン*には、Azure Active Directory B2C (Azure AD B2C) で API に付与されているアクセス許可を識別するために使用できる要求が含まれています。 リソース サーバーを呼び出すときは、HTTP 要求でアクセス トークンを提示する必要があります。 アクセス トークンは、Azure AD B2C からの応答で、**access_token** として示されます。
+*アクセス トークン* には、Azure Active Directory B2C (Azure AD B2C) で API に付与されているアクセス許可を識別するために使用できる要求が含まれています。 リソース サーバーを呼び出すときは、HTTP 要求でアクセス トークンを提示する必要があります。 アクセス トークンは、Azure AD B2C からの応答で、**access_token** として示されます。
 
 この記事では、Web アプリケーションと Web API に対してアクセス トークンを要求する方法を示します。 Azure AD B2C でのトークンの詳細については、「[Overview of tokens in Azure Active Directory B2C (Azure Active Directory B2C でのトークンの概要)](tokens-overview.md)」を参照してください。
 
@@ -34,7 +34,7 @@ ms.locfileid: "87115526"
 
 ## <a name="scopes"></a>スコープ
 
-スコープを使用すると、保護されたリソースへのアクセス許可を管理できます。 アクセス トークンが要求されると、クライアント アプリケーションでは、必要なアクセス許可を要求の **scope** パラメーターに指定する必要があります。 たとえば、`https://contoso.onmicrosoft.com/api` の **[アプリケーション ID/URI]** を備える API に**スコープ値**`read` を指定する場合、スコープは `https://contoso.onmicrosoft.com/api/read` になります。
+スコープを使用すると、保護されたリソースへのアクセス許可を管理できます。 アクセス トークンが要求されると、クライアント アプリケーションでは、必要なアクセス許可を要求の **scope** パラメーターに指定する必要があります。 たとえば、`https://contoso.onmicrosoft.com/api` の **[アプリケーション ID/URI]** を備える API に **スコープ値**`read` を指定する場合、スコープは `https://contoso.onmicrosoft.com/api/read` になります。
 
 スコープは、スコープベースのアクセス制御を実装するために Web API によって使用されます。 たとえば Web API のユーザーが、読み取りと書き込みの両方のアクセス権限を持つ場合もあれば、読み取りアクセス権限しか持たない場合もあります。 同じ要求で複数のアクセス許可を取得するには、スペースで区切って複数のエントリを要求の 1 つの **scope** パラメーターに追加します。
 
@@ -50,10 +50,15 @@ scope=https://contoso.onmicrosoft.com/api/read openid offline_access
 scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_access
 ```
 
-クライアント アプリケーションに対して許可されているよりも多くのスコープを要求した場合、少なくとも 1 つのアクセス許可が与えられれば、呼び出しは成功します。 返されるアクセス トークンの **scp** 要求には、正常に付与されたアクセス許可だけが設定されます。 OpenID Connect 標準では、いくつかの特別な scope 値が指定されます。 以下のスコープは、ユーザーのプロファイルにアクセスするためのアクセス許可を表します。
+クライアント アプリケーションに対して許可されているよりも多くのスコープを要求した場合、少なくとも 1 つのアクセス許可が与えられれば、呼び出しは成功します。 返されるアクセス トークンの **scp** 要求には、正常に付与されたアクセス許可だけが設定されます。 
+
+### <a name="openid-connect-scopes"></a>OpenID Connect のスコープ
+
+OpenID Connect 標準では、いくつかの特別な scope 値が指定されます。 以下のスコープは、ユーザーのプロファイルにアクセスするためのアクセス許可を表します。
 
 - **openid** - ID トークンを要求します。
 - **offline_access** - [認証コード フロー](authorization-code-flow.md)を使用して更新トークンを要求します。
+- **00000000-0000-0000-0000-000000000000** - クライアント ID をスコープとして使用することは、同じクライアント ID で表される、独自のサービスまたは Web API に対して使用できるアクセス トークンをアプリが必要とすることを示します。
 
 `/authorize` 要求の **response_type** パラメーターに `token` が含まれる場合、**scope** パラメーターには、付与されるリソース スコープを `openid` と `offline_access` 以外に少なくとも 1 つ含める必要があります。 そうしないと、`/authorize` 要求は失敗します。
 
@@ -66,10 +71,10 @@ scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_acce
 - `<tenant-name>` - Azure AD B2C テナントの名前。
 - `<policy-name>` - カスタム ポリシーまたはユーザー フローの名前。
 - `<application-ID>` - ユーザー フローをサポートするために登録した Web アプリケーションのアプリケーション識別子。
-- `<redirect-uri>` - クライアント アプリケーションを登録したときに入力した**リダイレクト URI**。
+- `<redirect-uri>` - クライアント アプリケーションを登録したときに入力した **リダイレクト URI**。
 
 ```http
-GET https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
+GET https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
 client_id=<application-ID>
 &nonce=anyRandomValue
 &redirect_uri=https://jwt.ms
@@ -86,7 +91,7 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 承認コードを正常に受信したら、それを使用してアクセス トークンを要求できます。
 
 ```http
-POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
+POST <tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 

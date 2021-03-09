@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 8998f03fa44529a5f006936a01f711a279178245
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 51e15a8dc5e9f918c630397d6d6593f5bf561755
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84032023"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786906"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>エラスティック データベース ツールに関してよく寄せられる質問 (FAQ)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,11 +39,11 @@ ms.locfileid: "84032023"
 
 ## <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>アプリケーションを起動するたびに、シャード マップ マネージャーを作成してシャードを取り込む必要がありますか
 
-いいえ。シャード マップ マネージャー (たとえば [ShardMapManagerFactory.CreateSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) の作成は 1 回だけの操作です。  アプリケーションは、アプリケーションの起動時に [ShardMapManagerFactory.TryGetSqlShardMapManager()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) 呼び出しを使用する必要があります。  アプリケーション ドメインごとにそのような呼び出しを 1 回行います。
+いいえ。シャード マップ マネージャー (たとえば [ShardMapManagerFactory.CreateSqlShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) の作成は 1 回だけの操作です。  アプリケーションは、アプリケーションの起動時に [ShardMapManagerFactory.TryGetSqlShardMapManager()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) 呼び出しを使用する必要があります。  アプリケーション ドメインごとにそのような呼び出しを 1 回行います。
 
 ## <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>エラスティック データベース ツールの使い方について質問がある場合、どこに問い合わせればよいですか
 
-[SQL Database に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-sql-database.html)から Microsoft にご連絡ください。
+[SQL Database に関する Microsoft Q&A 質問ページ](/answers/topics/azure-sql-database.html)から Microsoft にご連絡ください。
 
 ## <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>シャーディング キーを使用してデータベース接続を取得する場合でも、同じシャードの別のシャーディング キーでデータを照会できますか。  設計によって異なりますか
 

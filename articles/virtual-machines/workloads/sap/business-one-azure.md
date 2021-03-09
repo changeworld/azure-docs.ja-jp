@@ -1,26 +1,17 @@
 ---
 title: Azure Virtual Machines 上の SAP Business One | Microsoft Docs
 description: Azure 上の SAP Business One。
-services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: msjuergent
-manager: patfilot
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c9c2b0c3f55cf5fb6dfd32774baac2a49ec3609f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654652"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677155"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP Business One
 このドキュメントでは、Azure Virtual Machines に SAP Business One をデプロイするためのガイダンスを提供します。 このドキュメントは、SAP の Business One のインストール ドキュメントに代わるものではありません。 このドキュメントでは、Business One アプリケーションを実行する Azure インフラストラクチャの計画とデプロイに関する基本的なガイドラインについて説明します。
@@ -95,7 +86,7 @@ Azure にデプロイする必要があるネットワーク インフラスト�
 示されている簡略化された構成では、ルーティングの制御および制限を可能にするいくつかのセキュリティの例が紹介されています。 以下のものがあります。 
 
 - 顧客のオンプレミス側のルーター/ファイアウォール。
-- 次の例は、お使いの SAP Business One 構成を実行している Azure VNet にルーティングとセキュリティ規則を導入するために使用できる [Azure Network Security Group](../../../virtual-network/security-overview.md) です。
+- 次の例は、お使いの SAP Business One 構成を実行している Azure VNet にルーティングとセキュリティ規則を導入するために使用できる [Azure Network Security Group](../../../virtual-network/network-security-groups-overview.md) です。
 - Business One クライアントのユーザーに Business One サーバーを実行する (データベースを実行している) サーバーを見せないようにするには、Business One クライアントをホストしている VM と、Business One サーバーを、VNet 内の 2 つの異なるサブネットに分離する必要があります。
 - Business One サーバーへのアクセスを制限するには、2 つの異なるサブネットに割り当てられている Azure NSG をもう一度使用します。
 
@@ -111,7 +102,7 @@ Azure にデプロイする必要があるネットワーク インフラスト�
 
 特定のおよび全般的なデータベースのドキュメントで既に強調されていますが、以下に精通している必要があります。
 
-- 「[Azure での Windows 仮想マシンの可用性の管理](../../windows/manage-availability.md)」と「[Linux 仮想マシンの可用性管理](../../linux/manage-availability.md)」
+- 「[Azure での Windows 仮想マシンの可用性の管理](../../manage-availability.md)」と「[Linux 仮想マシンの可用性管理](../../manage-availability.md)」
 - 「[Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)」
 
 これらのドキュメントは、ストレージの種類と高可用性構成の選択範囲を決定する際に役立ちます。
@@ -147,7 +138,7 @@ SAP HANA のバックアップと復元の戦略については、「[Azure Virt
 
  
 ### <a name="business-one-client-server"></a>Business One クライアント サーバー
-これらのコンポーネントについては、ストレージに関する考慮事項は大きな問題ではありません。 しかし、信頼性の高いプラットフォームは必要です。 したがって、ベース VHD の場合でも、この VM に Azure Premium Storage を使用する必要があります。 「[SAP Business One Hardware Requirements Guide](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)」 (SAP Business One のハードウェア要件ガイド) で指定されているデータを使用して、VM をサイズ設定します。 Azure については、このドキュメントのチャプター 2.4 に記載されている要件を使用して、計算する必要があります。 最適な VM を見つけるため、要件を計算するときに、それらを次のドキュメントと比較する必要があります。
+これらのコンポーネントについては、ストレージに関する考慮事項は大きな問題ではありません。 しかし、信頼性の高いプラットフォームは必要です。 したがって、ベース VHD の場合でも、この VM に Azure Premium Storage を使用する必要があります。 「[SAP Business One Hardware Requirements Guide](https://help.sap.com/doc/bfa9770d12284cce8509956dcd4c5fcb/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)」 (SAP Business One のハードウェア要件ガイド) で指定されているデータを使用して、VM をサイズ設定します。 Azure については、このドキュメントのチャプター 2.4 に記載されている要件を使用して、計算する必要があります。 最適な VM を見つけるため、要件を計算するときに、それらを次のドキュメントと比較する必要があります。
 
 - [Azure の Windows 仮想マシンのサイズ](../../sizes.md)
 - [SAP Note #1928533](https://launchpad.support.sap.com/#/notes/1928533)

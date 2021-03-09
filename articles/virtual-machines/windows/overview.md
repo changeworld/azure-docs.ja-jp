@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4e955a51906f160264fc4e81f263fe7677be91de
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 9113abe14af942700a073626c5aad19dc2ebcd06
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589624"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101665976"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン
 
@@ -41,7 +41,7 @@ Azure でアプリケーション インフラストラクチャを構築する�
 * VM で必要な関連リソース
 
 ### <a name="locations"></a>場所
-Azure で作成されるすべてのリソースは、世界各地の複数の[地理的リージョン](https://azure.microsoft.com/regions/)に分散されます。 通常、このリージョンは VM の作成時には**場所**と呼ばれます。 VM の場合、この場所によって仮想ハード ディスクの格納場所を指定します。
+Azure で作成されるすべてのリソースは、世界各地の複数の[地理的リージョン](https://azure.microsoft.com/regions/)に分散されます。 通常、このリージョンは VM の作成時には **場所** と呼ばれます。 VM の場合、この場所によって仮想ハード ディスクの格納場所を指定します。
 
 次の表に、利用可能な場所の一覧を取得する方法の一部を示します。
 
@@ -50,18 +50,14 @@ Azure で作成されるすべてのリソースは、世界各地の複数の[�
 | Azure portal |VM を作成するときに一覧から場所を選択します。 |
 | Azure PowerShell |[Get-AzLocation](/powershell/module/az.resources/get-azlocation) コマンドを使用します。 |
 | REST API |[場所の一覧表示](/rest/api/resources/subscriptions)操作を使用します。 |
-| Azure CLI |[az account list-locations](/cli/azure/account?view=azure-cli-latest) 操作を使用します。 |
-
-### <a name="singapore-data-residency"></a>シンガポールのデータ所在地
-
-Azure では、顧客データを 1 つのリージョンに格納できるようにする機能は現在、アジア太平洋地域の東南アジア リージョン (シンガポール) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは geo 内に格納されます。 詳細については、[セキュリティ センター](https://azuredatacentermap.azurewebsites.net/)に関するページを参照してください。
+| Azure CLI |[az account list-locations](/cli/azure/account) 操作を使用します。 |
 
 ## <a name="availability"></a>可用性
 Azure は、単一インスタンス仮想マシン向けに、業界をリードする 99.9% というサービス レベル アグリーメントを発表しました。ただし、すべてのディスクに Premium Storage を使用した VM をデプロイすることが条件となります。  デプロイが、VM に適用される 99.95% という標準のサービス レベル アグリーメントの要件を満たすためには、可用性セット内でワークロードを実行する複数の VM をデプロイする必要があります。 可用性セットにより、Azure データ センターにある複数の障害ドメインに VM を分散すると共に、メンテナンス期間の異なるホストにデプロイすることができます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) では、全体としての Azure の可用性の確保について説明します。
 
 
 ## <a name="vm-size"></a>VM サイズ
-使用する VM の[サイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)は、実行するワークロードによって決まります。 さらに、選択したサイズによって、処理能力、メモリ、ストレージの容量などの要素が決まります。 Azure では、さまざまな種類の使用をサポートするために、さまざまなサイズを用意しています。
+使用する VM の[サイズ](../sizes.md)は、実行するワークロードによって決まります。 さらに、選択したサイズによって、処理能力、メモリ、ストレージの容量などの要素が決まります。 Azure では、さまざまな種類の使用をサポートするために、さまざまなサイズを用意しています。
 
 Azure では、VM のサイズおよびオペレーティング システムに基づいて[時間単位の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)が請求されます。 時間単位を満たさない場合は、分単位でのみ請求されます。 ストレージは別料金で、別個に請求されます。
 
@@ -69,7 +65,7 @@ Azure では、VM のサイズおよびオペレーティング システムに�
 サブスクリプションにはそれぞれ既定の[クォータ制限](../../azure-resource-manager/management/azure-subscription-service-limits.md)が設けられており、プロジェクトで多数の VM をデプロイする場合に、その点が影響する可能性があります。 現在は、リージョンあたり 20 VM の制限がサブスクリプションごとに設けられています。 制限は、[サポート チケットで引き上げを依頼する](../../azure-portal/supportability/resource-manager-core-quotas-request.md)ことによって引き上げることができます。
 
 ### <a name="operating-system-disks-and-images"></a>オペレーティング システム ディスクおよびイメージ
-仮想マシンは、[仮想ハード ディスク (VHD)](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用して、オペレーティング システム (OS) およびデータを格納します。 VHD は、OS をインストールするために選択できるイメージの保存にも使用できます。 
+仮想マシンは、[仮想ハード ディスク (VHD)](../managed-disks-overview.md) を使用して、オペレーティング システム (OS) およびデータを格納します。 VHD は、OS をインストールするために選択できるイメージの保存にも使用できます。 
 
 Azure には、Windows Server オペレーティング システムのさまざまなバージョンと種類で使用できる [Marketplace イメージ](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images%3Bwindows&page=1)が多数用意されています。 Marketplace イメージは、イメージの発行元、プラン、SKU、およびバージョン (通常は最新バージョンとして指定) によって識別されます。 64 ビットのオペレーティング システムのみがサポートされています。 サポートされているゲストのオペレーティング システム、ロール、機能の詳細については、「[Microsoft Azure 仮想マシンのマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)」を参照してください。
 
@@ -80,7 +76,7 @@ Azure には、Windows Server オペレーティング システムのさまざ�
 | Azure portal |値は、使用するイメージを選択する際に自動的に指定されます。 |
 | Azure PowerShell |[Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) -Location *location*<BR>[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) -Location *location* -Publisher *publisherName*<BR>[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |
 | REST API |[イメージ発行元の一覧表示](/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[イメージ プランの一覧表示](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[イメージ SKU の一覧表示](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Azure CLI |[az vm image list-publishers](/cli/azure/vm/image?view=azure-cli-latest) --location *場所*<BR>[az vm image list-offers](/cli/azure/vm/image?view=azure-cli-latest) --location *場所* --publisher *発行元名*<BR>[az vm image list-skus](/cli/azure/vm?view=azure-cli-latest) --location *場所* --publisher *発行元名* --offer *プラン名*|
+| Azure CLI |[az vm image list-publishers](/cli/azure/vm/image) --location *場所*<BR>[az vm image list-offers](/cli/azure/vm/image) --location *場所* --publisher *発行元名*<BR>[az vm image list-skus](/cli/azure/vm) --location *場所* --publisher *発行元名* --offer *プラン名*|
 
 [独自のイメージをアップロードして使用](upload-generalized-managed.md)することができますが、そのとき、発行元名、プラン、SKU は使用されません。
 
@@ -103,7 +99,13 @@ VM の[拡張機能](../extensions/features-windows.md?toc=/azure/virtual-machin
 | [Virtual Network](../../virtual-network/virtual-networks-overview.md) |はい |VM は、仮想ネットワークのメンバーである必要があります。 |
 | [パブリック IP アドレス](../../virtual-network/public-ip-addresses.md) |いいえ |VM には、リモートでアクセスするためのパブリック IP アドレスを割り当てることができます。 |
 | [ネットワーク インターフェイス](../../virtual-network/virtual-network-network-interface.md) |はい |VM には、ネットワークで通信するためのネットワーク インターフェイスが必要です。 |
-| [データ ディスク](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |いいえ |VM には、ストレージ容量を拡張するためのデータ ディスクを含めることができます。 |
+| [データ ディスク](attach-managed-disk-portal.md) |いいえ |VM には、ストレージ容量を拡張するためのデータ ディスクを含めることができます。 |
+
+
+## <a name="data-residency"></a>データの保存場所
+
+Azure では、顧客データを 1 つのリージョンに格納できるようにする機能は現在、アジア太平洋地域の東南アジア リージョン (シンガポール) と、ブラジル地域のブラジル南部リージョン (サンパウロ州) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは geo 内に格納されます。 詳細については、[セキュリティ センター](https://azure.microsoft.com/global-infrastructure/data-residency/)に関するページを参照してください。
+
 
 ## <a name="next-steps"></a>次のステップ
 

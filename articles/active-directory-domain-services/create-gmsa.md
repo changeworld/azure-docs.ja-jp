@@ -2,7 +2,7 @@
 title: Azure AD Domain Services のグループの管理されたサービス アカウント | Microsoft Docs
 description: Azure Active Directory Domain Services マネージド ドメインで使用する、グループで管理されるサービス アカウント (gMSA) を作成する方法について説明します。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: e6faeddd-ef9e-4e23-84d6-c9b3f7d16567
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 723b8cf7a71e5af672c8665040645d55645fe9f7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.author: justinha
+ms.openlocfilehash: f975d3e0e605b7c24b9fd31dc8fc78f0f37bb6b9
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281856"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619986"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services でグループで管理されるサービス アカウント (gMSA) を作成する
 
@@ -52,7 +52,7 @@ ms.locfileid: "87281856"
 マネージド ドメインは、Microsoft によってロックダウンおよび管理されるため、サービス アカウントを使用する際の考慮事項がいくつかあります。
 
 * マネージド ドメインのカスタム組織単位 (OU) 内にサービス アカウントを作成する。
-    * 組み込みの *AADDC ユーザー* または *AADDC コンピューター*の OU には、サービス アカウントを作成できません。
+    * 組み込みの *AADDC ユーザー* または *AADDC コンピューター* の OU には、サービス アカウントを作成できません。
     * 代わりに、マネージド ドメインに[カスタム OU を作成][create-custom-ou]し、そのカスタム OU 内にサービス アカウントを作成します。
 * キー配布サービス (KDS) ルート キーが事前に作成されている。
     * KDS ルート キーは、gMSA のパスワードの生成と取得に使用されます。 Azure AD DS では、KDS ルートは自動的に作成されます。

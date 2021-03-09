@@ -4,12 +4,12 @@ description: Azure Backup Server のインストールと登録、およびア�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: cc62418ed1dec3cbcc944d9b66c691062ca552f8
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 09e5fe5da7e316257cbbdcb89074fe8a4bc692c0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893019"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91403009"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Server のトラブルシューティング
 
@@ -71,7 +71,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | 操作 | エラーの詳細 | 回避策 |
 | --- | --- | --- |
-| バックアップ | レプリカに整合性がありません | 保護グループ ウィザードで自動の整合性チェック オプションが有効になっていることを確認してください。 レプリケーション オプションと整合性チェックの詳細については、[この記事](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)を参照してください。<br> <ol><li> システム状態または BMR のバックアップの場合は、保護されるサーバーに Windows Server バックアップがインストールされているか確認してください。</li><li> DPM または Microsoft Azure Backup Server 上の DPM 記憶域プールにおいて領域関連の問題が存在するか確認し、必要に応じて記憶域を割り当てます。</li><li> 保護されるサーバーのボリューム シャドウ コピー サービスの状態を確認します。 無効な状態である場合は、手動で開始するように設定します。 サーバーでサービスを開始します。 DPM または Microsoft Azure Backup Server コンソールに戻り、整合性チェック ジョブとの同期を開始します。</li></ol>|
+| バックアップ | レプリカに整合性がありません | 保護グループ ウィザードで自動の整合性チェック オプションが有効になっていることを確認してください。 レプリケーション オプションと整合性チェックの詳細については、[この記事](/system-center/dpm/create-dpm-protection-groups)を参照してください。<br> <ol><li> システム状態または BMR のバックアップの場合は、保護されるサーバーに Windows Server バックアップがインストールされているか確認してください。</li><li> DPM または Microsoft Azure Backup Server 上の DPM 記憶域プールにおいて領域関連の問題が存在するか確認し、必要に応じて記憶域を割り当てます。</li><li> 保護されるサーバーのボリューム シャドウ コピー サービスの状態を確認します。 無効な状態である場合は、手動で開始するように設定します。 サーバーでサービスを開始します。 DPM または Microsoft Azure Backup Server コンソールに戻り、整合性チェック ジョブとの同期を開始します。</li></ol>|
 
 ## <a name="online-recovery-point-creation-failed"></a>オンライン回復ポイントを作成できませんでした
 
@@ -95,7 +95,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | 操作 | エラーの詳細 | 回避策 |
 | --- | --- | --- |
-| 保護されたサーバーへのエージェントのプッシュ | \<ServerName> の DPM エージェント コーディネーター サービスとの通信エラーのため、エージェント操作に失敗しました | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**。 <ul><li> 信頼されていないドメインのコンピューターを接続している場合は、[こちらのステップ](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)に従います。 <br> (または) </li><li> 信頼されているドメインのコンピューターを接続している場合は、[このブログ](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)で説明されているステップを使用してトラブルシューティングを行います。 <br>(または)</li><li> トラブルシューティングの一環としてウイルス対策ソフトウェアを無効にします。 それで問題が解決する場合は、[この記事](/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)で推奨されているとおりにウイルス対策の設定を変更します。</li></ul> |
+| 保護されたサーバーへのエージェントのプッシュ | \<ServerName> の DPM エージェント コーディネーター サービスとの通信エラーのため、エージェント操作に失敗しました | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**。 <ul><li> 信頼されていないドメインのコンピューターを接続している場合は、[こちらのステップ](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains)に従います。 <br> (または) </li><li> 信頼されているドメインのコンピューターを接続している場合は、[このブログ](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)で説明されているステップを使用してトラブルシューティングを行います。 <br>(または)</li><li> トラブルシューティングの一環としてウイルス対策ソフトウェアを無効にします。 それで問題が解決する場合は、[この記事](/system-center/dpm/run-antivirus-server)で推奨されているとおりにウイルス対策の設定を変更します。</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>セットアップでレジストリのメタデータを更新できません
 
@@ -108,7 +108,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | 操作 | エラーの詳細 | 回避策 |
 | --- | --- | --- |
-| 保護されたサーバーへのエージェントのプッシュ | サーバーに対して指定された資格情報が無効です。 | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**: <br> [この記事](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)に示されているように、保護エージェントを運用サーバーに手動でインストールします。|
+| 保護されたサーバーへのエージェントのプッシュ | サーバーに対して指定された資格情報が無効です。 | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**: <br> [この記事](/system-center/dpm/deploy-dpm-protection-agent)に示されているように、保護エージェントを運用サーバーに手動でインストールします。|
 | Azure Backup エージェントは、Azure Backup サービスに接続できませんでした (ID:100050) | Azure Backup エージェントは、Azure Backup サービスに接続できませんでした | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**: <br>1.管理者特権のコマンド プロンプトから、コマンド **psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe** を実行します。 Internet Explorer のウィンドウが開きます。 <br/> 2. **[ツール]**  >  **[インターネット オプション]**  >  **[接続]**  >  **[LAN の設定]** の順に移動します。 <br/> 3.プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。<br/> 4.マシンのインターネットへのアクセスが制限されている場合は、マシンまたはプロキシのファイアウォール設定によって次の [URL](install-mars-agent.md#verify-internet-access) と [IP アドレス](install-mars-agent.md#verify-internet-access)が許可されることを確認します。|
 | Azure Backup エージェントインストールに失敗しました | Microsoft Azure Recovery Services のインストールに失敗しました。 Microsoft Azure Recovery Services のインストールによってシステムに対して実行されたすべての変更はロールバックされました。 (ID: 4024) | Azure エージェントを手動でインストールします。
 
@@ -117,8 +117,8 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 | 操作 | エラーの詳細 | 回避策 |
 | --- | --- | --- |
 | 保護グループの構成 | DPM は、保護されたコンピューター (保護されたコンピューター名) 上のアプリケーション コンポーネントを列挙できませんでした。 | 保護グループの構成 UI 画面で、関連するデータソースまたはコンポーネント レベルで **[更新]** を選択します。 |
-| 保護グループの構成 | 保護を構成できません | 保護されるサーバーが SQL Server の場合は、[この記事](/system-center/dpm/back-up-sql-server?view=sc-dpm-2019)で説明されているように、保護されたコンピューターのシステム アカウント (NTAuthority\System) に sysadmin ロールのアクセス許可が付与されていることを確認してください。
-| 保護グループの構成 | この保護グループの記憶域プールには十分な空き領域がありません。 | 記憶域プールに追加するディスクには、[パーティションを含めることはできません](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)。 ディスク上の既存のボリュームを削除します。 それから記憶域プールに追加します。|
+| 保護グループの構成 | 保護を構成できません | 保護されるサーバーが SQL Server の場合は、[この記事](/system-center/dpm/back-up-sql-server)で説明されているように、保護されたコンピューターのシステム アカウント (NTAuthority\System) に sysadmin ロールのアクセス許可が付与されていることを確認してください。
+| 保護グループの構成 | この保護グループの記憶域プールには十分な空き領域がありません。 | 記憶域プールに追加するディスクには、[パーティションを含めることはできません](/system-center/dpm/create-dpm-protection-groups)。 ディスク上の既存のボリュームを削除します。 それから記憶域プールに追加します。|
 | ポリシーの変更 |バックアップ ポリシーを変更できませんでした。 エラー:サービスの内部エラー [0x29834] が発生したため、現在の操作を実行できませんでした。 しばらくしてから、操作を再試行してください。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。 | **原因:**<br/>このエラーが発生する状況は 3 つあります。セキュリティ設定が有効になっている場合、保持期間を前に指定した最小値より小さくなるように減らす場合、そしてサポートされていないバージョンを使用している場合です。 (サポートされていないバージョンは、Microsoft Azure Backup Server バージョン 2.0.9052 より前のバージョンおよび Azure Backup Server 更新プログラム 1 です。) <br/>**推奨される操作:**<br/> ポリシーに関連する更新プログラムを続行するには、指定した最小リテンション期間を超えるようにリテンション期間を設定します。 (最小リテンション期間は、毎日だと 7 日、毎週だと 4 週間、毎月だと 3 週間、毎年だと 1 年です。) <br><br>他にもお勧めの方法として、バックアップ エージェントおよび Azure Backup Server を更新して、すべてのセキュリティ更新プログラムを適用する方法があります。 |
 
 ## <a name="backup"></a>バックアップ
@@ -129,7 +129,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 | バックアップ | システム状態だけをバックアップする場合は、保護されたコンピューターにシステム状態のバックアップを格納するのに十分な空き領域があることを確認してください。 | <ol><li>保護されたマシンに Windows Server バックアップがインストールされていることを確認します。</li><li>保護されたコンピューターにシステム状態のための十分な領域があることを確認します。 これを確認する最も簡単な方法として、保護されたコンピューターに移動し、Windows Server バックアップを開き、選択項目をクリックして BMR を選択します。 必要な領域量が UI に表示されます。 **WSB** >  **[ローカル バックアップ]**  >  **[バックアップのスケジュール]**  >  **[バックアップの構成の選択]**  >  **[サーバー全体]** (サイズが表示される) と開きます。 このサイズを検証に使用します。</li></ol>
 | バックアップ | BMR のバックアップの失敗 | BMR サイズが大きい場合は、一部のアプリケーション ファイルを OS ドライブに移動して、再試行してください。 |
 | バックアップ | 新しい Microsoft Azure Backup Server 上の VMware VM を再保護するオプションが、追加可能と表示されません。 | VMware のプロパティが、Microsoft Azure Backup Server の提供終了になった古いインスタンスを参照しています。 この問題を解決するには、次の手順を実行します。<br><ol><li>VCenter (SC-VMM に相当) で、 **[概要]** タブ、 **[カスタム属性]** と移動します。</li>  <li>**DPMServer** 値から、古い Microsoft Azure Backup Server 名を削除します。</li>  <li>新しい Microsoft Azure Backup Server に戻り、PG を変更します。  **[更新]** ボタンを選択すると、保護の追加に使用できるチェック ボックスが VM に表示されます。</li></ol> |
-| バックアップ | ファイル/共有フォルダーへのアクセス中のエラー | 「[DPM サーバーでのウイルス対策ソフトウェアの実行](/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)」という記事で提案されているようにウイルス対策の設定を変更してみてください。|
+| バックアップ | ファイル/共有フォルダーへのアクセス中のエラー | 「[DPM サーバーでのウイルス対策ソフトウェアの実行](/system-center/dpm/run-antivirus-server)」という記事で提案されているようにウイルス対策の設定を変更してみてください。|
 
 ## <a name="change-passphrase"></a>パスフレーズの変更
 
@@ -142,7 +142,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | 操作 | エラーの詳細 | 回避策 |
 | --- | --- | --- |
-| Office 365 アカウントを使用した電子メール通知の設定 |エラー ID: 2013| **原因:**<br> Office 365 アカウントを使用しようとしています。 <br>**推奨される操作:**<ol><li> まず、Exchange で DPM サーバーが "受信コネクタで匿名のリレーを許可する" ように設定されていることを確認します。 これを構成する方法の詳細については、「[受信コネクタの匿名の中継を許可する](/exchange/mail-flow/connectors/allow-anonymous-relay?view=exchserver-2019)」を参照してください。</li> <li> 内部 SMTP リレーを使用できず、Office 365 サーバーを使用して設定する必要がある場合は、リレーとして IIS を設定することができます。 DPM サーバーが [IIS を使用して SMTP を O365 にリレーする](/exchange/mail-flow/test-smtp-with-telnet?view=exchserver-2019)ように設定します。<br><br>  ドメイン\ユーザー*ではなく*、必ず user\@domain.com 形式を使用してください。<br><br><li>DPM が、SMTP サーバーとしてローカル サーバー名 (およびポート 587) を使用するようにします。 次に、これを電子メールの送信元となるユーザーの電子メール アドレスに向けます。<li> DPM の SMTP セットアップ ページ上のユーザー名とパスワードは、DPM があるドメイン内のドメイン アカウントのものである必要があります。 </li><br> SMTP サーバーのアドレスを変更するときは、新しい設定を変更し、設定ボックスを閉じてからもう一度開いて、新しい値が反映されていることを確認してください。  変更してテストしただけでは、新しい設定が反映されていない可能性があるため、この方法でテストすることをお勧めします。<br><br>DPM コンソールを閉じて次のレジストリ キーを編集すれば、この操作中にいつでもこれらの設定を削除できます。**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> Delete SMTPPassword and SMTPUserName keys**。 もう一度起動したときに、UI にそれらを追加できます。
+| 職場または学校アカウントを使用した電子メール通知の設定 |エラー ID: 2013| **原因:**<br> 職場または学校アカウントを使用しようとしています <br>**推奨される操作:**<ol><li> まず、Exchange で DPM サーバーが "受信コネクタで匿名のリレーを許可する" ように設定されていることを確認します。 これを構成する方法の詳細については、「[受信コネクタの匿名の中継を許可する](/exchange/mail-flow/connectors/allow-anonymous-relay)」を参照してください。</li> <li> 内部 SMTP リレーを使用できず、Office 365 サーバーを使用して設定する必要がある場合は、リレーとして IIS を設定することができます。 DPM サーバーが [IIS を使用して SMTP を Office 365 にリレーする](/exchange/mail-flow/test-smtp-with-telnet)ように設定します。<br><br>  ドメイン\ユーザー*ではなく*、必ず user\@domain.com 形式を使用してください。<br><br><li>DPM が、SMTP サーバーとしてローカル サーバー名 (およびポート 587) を使用するようにします。 次に、これを電子メールの送信元となるユーザーの電子メール アドレスに向けます。<li> DPM の SMTP セットアップ ページ上のユーザー名とパスワードは、DPM があるドメイン内のドメイン アカウントのものである必要があります。 </li><br> SMTP サーバーのアドレスを変更するときは、新しい設定を変更し、設定ボックスを閉じてからもう一度開いて、新しい値が反映されていることを確認してください。  変更してテストしただけでは、新しい設定が反映されていない可能性があるため、この方法でテストすることをお勧めします。<br><br>DPM コンソールを閉じて次のレジストリ キーを編集すれば、この操作中にいつでもこれらの設定を削除できます。**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> Delete SMTPPassword and SMTPUserName keys**。 もう一度起動したときに、UI にそれらを追加できます。
 
 ## <a name="common-issues"></a>一般的な問題
 

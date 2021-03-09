@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: a5c09ef5ca1e3a4f47c4fd9d7d022c000378a6d3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d2d501206dcb1fc6b9bb545f9dcf4d5c61af994e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84033003"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92777879"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-or-sql-managed-instance-flat-files"></a>CSV から Azure SQL Database または SQL Managed Instance へのデータの読み込み (フラット ファイル)
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -118,8 +118,8 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 SQL Server データベースを移行するには、 [SQL Server データベースの移行](database/migrate-to-database-from-sql-server.md)に関するページを参照してください。
 
 <!--MSDN references-->
-[bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-[CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
+[bcp]: /sql/tools/bcp-utility
+[CREATE TABLE syntax]: /sql/t-sql/statements/create-table-azure-sql-data-warehouse
 
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433

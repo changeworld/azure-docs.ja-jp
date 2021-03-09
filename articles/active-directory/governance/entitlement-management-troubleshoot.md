@@ -3,7 +3,7 @@ title: エンタイトルメント管理のトラブルシューティング - A
 description: Azure Active Directory エンタイトルメント管理をトラブルシューティングする際に確認しておくべき事項について説明します。
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.subservice: compliance
-ms.date: 06/17/2020
-ms.author: barclayn
+ms.date: 12/23/2020
+ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 216cff03ac6ce64dee9aae1e9daa4a86385eeb0e
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 5b01321c2cbb15be5526bbe9ed04f52238390574
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783333"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516891"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理のトラブルシューティング
 
@@ -47,7 +47,6 @@ ms.locfileid: "88783333"
 
 * チームのメンバーを削除すると、Microsoft 365 グループからも削除されます。 チームのチャット機能から削除されるタイミングは遅れる場合があります。 詳細については、「[グループ メンバーシップ](/microsoftteams/office-365-groups#group-membership)」を参照してください。
 
-* ディレクトリが複数地域用に構成されていないことを確認してください。 エンタイトルメント管理では現在、SharePoint Online の複数地域の場所はサポートされません。 SharePoint Online サイトをエンタイトルメント管理で統制するためには、既定の地域の場所にサイトが存在する必要があります。 詳細については、「[OneDrive および SharePoint Online の複数地域機能](/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)」を参照してください。
 
 ## <a name="access-packages"></a>アクセス パッケージ
 
@@ -55,7 +54,7 @@ ms.locfileid: "88783333"
 
 ## <a name="external-users"></a>外部ユーザー
 
-* 外部ユーザーがアクセス パッケージへのアクセスを要求する必要がある場合は、アクセス パッケージの**マイ アクセス ポータル リンク**をユーザーが使用していることを確認します。 詳細については、[アクセス パッケージを要求するためのリンクの共有](entitlement-management-access-package-settings.md)に関する記事を参照してください。 外部ユーザーが単に **myaccess.microsoft.com** にアクセスしているだけで、完全なマイ アクセス ポータル リンクを使用していない場合、表示されるのは、そのユーザーの組織内で使用可能なアクセス パッケージであり、貴社組織内で使用可能なアクセス パッケージは表示されません。
+* 外部ユーザーがアクセス パッケージへのアクセスを要求する必要がある場合は、アクセス パッケージの **マイ アクセス ポータル リンク** をユーザーが使用していることを確認します。 詳細については、[アクセス パッケージを要求するためのリンクの共有](entitlement-management-access-package-settings.md)に関する記事を参照してください。 外部ユーザーが単に **myaccess.microsoft.com** にアクセスしているだけで、完全なマイ アクセス ポータル リンクを使用していない場合、表示されるのは、そのユーザーの組織内で使用可能なアクセス パッケージであり、貴社組織内で使用可能なアクセス パッケージは表示されません。
 
 * 外部ユーザーがアクセス パッケージへのアクセスを要求できない場合や、リソースにアクセスできない場合は、[外部ユーザーの設定](entitlement-management-external-users.md#settings-for-external-users)を確認してください。
 
@@ -63,7 +62,7 @@ ms.locfileid: "88783333"
 
 ## <a name="requests"></a>Requests
 
-* ユーザーがアクセス パッケージへのアクセスを要求する必要がある場合は、アクセス パッケージの**マイ アクセス ポータル リンク**をユーザーが使用していることを確認します。 詳細については、[アクセス パッケージを要求するためのリンクの共有](entitlement-management-access-package-settings.md)に関する記事を参照してください。
+* ユーザーがアクセス パッケージへのアクセスを要求する必要がある場合は、アクセス パッケージの **マイ アクセス ポータル リンク** をユーザーが使用していることを確認します。 詳細については、[アクセス パッケージを要求するためのリンクの共有](entitlement-management-access-package-settings.md)に関する記事を参照してください。
 
 * プライベート モードやシークレット モードに設定されたブラウザーを使用してマイ アクセス ポータルを開くと、サインインの動作に支障が生じる場合があります。 マイ アクセス ポータルにアクセスする際は、ブラウザーのプライベート モードやシークレット モードは使用しないようお勧めします。
 
@@ -75,7 +74,7 @@ ms.locfileid: "88783333"
 
 ### <a name="view-a-requests-delivery-errors"></a>要求の配信エラーを表示する
 
-**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
+**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、アクセス パッケージマ ネージャーまたはアクセス パッケージ割り当てマネージャー
 
 1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 
@@ -95,7 +94,7 @@ ms.locfileid: "88783333"
 
 アクセス パッケージの再処理要求をトリガーした後にエラーが発生した場合は、システムで要求が再処理されるまで待つ必要があります。 システムでは数時間にわたって再処理が複数回試行されるため、この間に再処理を強制することはできません。 
 
-再処理できるのは、状態が **[Delivery failed]\(配信失敗)** または **[Partially delivered]\(一部配信済み)** であり、完了日が 1 週間以内の要求のみです。 それ以外の場合、**再処理**ボタンは淡色表示されます。
+再処理できるのは、状態が **[Delivery failed]\(配信失敗)** または **[Partially delivered]\(一部配信済み)** であり、完了日が 1 週間以内の要求のみです。 それ以外の場合、**再処理** ボタンは淡色表示されます。
 
 ![淡色表示された再処理ボタン](./media/entitlement-management-troubleshoot/cancel-reprocess-grayedout.png)
 
@@ -103,7 +102,7 @@ ms.locfileid: "88783333"
 
 - 試用期間中にエラーが修正されなかった場合、要求の状態は **[Delivery failed]\(配信が失敗しました\)** または **[partially delivered]\(部分的に配信されました\)** である可能性があります。 その場合は **[再処理]** ボタンを使用できます。 要求の再処理には 7 日間かかります。
 
-**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
+**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、アクセス パッケージマ ネージャーまたはアクセス パッケージ割り当てマネージャー
 
 1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 
@@ -121,7 +120,7 @@ ms.locfileid: "88783333"
 
 キャンセルできるのは、まだ配信されていないか、配信に失敗した保留中の要求のみです。それ以外の場合、**キャンセル** ボタンは淡色表示されます。
 
-**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
+**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、アクセス パッケージマ ネージャーまたはアクセス パッケージ割り当てマネージャー
 
 1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 
@@ -146,7 +145,7 @@ ms.locfileid: "88783333"
     | P1 | ディレクトリ内の特定のユーザーとグループ、または接続されている特定の組織 |
     | P2 | ディレクトリ内のすべてのメンバー (ゲストを除く) |
     | P3 | ディレクトリ内のすべてのユーザー (ゲストを含む) または接続されている特定の組織 |
-    | P4 | 接続されているすべての組織またはすべてのユーザー (接続されているすべての組織 + 新しい外部ユーザー) |
+    | P4 | 構成済みで接続されているすべての組織またはすべてのユーザー (接続されているすべての組織 + 新しい外部ユーザー) |
     
     より優先度の高いカテゴリにポリシーが属している場合、それよりも優先度が低いカテゴリは無視されます。 同じ優先度の複数のポリシーが要求元にどのように表示されるかの例については、「[ポリシーの選択](entitlement-management-request-access.md#select-a-policy)」を参照してください。
 

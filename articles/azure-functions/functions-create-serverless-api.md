@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7375a46245fbe523ddf0512bb5a55371adff64e9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083023"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683744"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Azure Functions で HTTP エンドポイントをカスタマイズする
 
@@ -75,7 +75,7 @@ HTTP 関数のカスタマイズの詳細については、[Azure Functions の 
 プロキシは、以下のような任意の HTTP リソースを指定できます。
 - Azure Functions 
 - [Azure App Service](../app-service/overview.md) 内の API アプリ
-- [App Service on Linux](../app-service/containers/app-service-linux-intro.md) 内の Docker コンテナー
+- [App Service on Linux](../app-service/overview.md#app-service-on-linux) 内の Docker コンテナー
 - その他のホストされている API
 
 プロキシについて詳しくは、「[Azure Functions プロキシの操作]」をご覧ください。
@@ -86,7 +86,7 @@ HTTP 関数のカスタマイズの詳細については、[Azure Functions の 
 
 ### <a name="setting-up-the-frontend-environment"></a>フロントエンド環境のセットアップ
 
-「[Function App を作成する](./functions-create-first-azure-function.md#create-a-function-app)」の手順を繰り返し、プロキシを作成する新しい Function App を作成します。 この新しいアプリの URL は、API のフロントエンドとして機能し、以前編集した関数アプリはバックエンドとして機能します。
+「[Function App を作成する](./functions-get-started.md)」の手順を繰り返し、プロキシを作成する新しい Function App を作成します。 この新しいアプリの URL は、API のフロントエンドとして機能し、以前編集した関数アプリはバックエンドとして機能します。
 
 1. ポータルで新しいフロントエンドの Function App に移動します。
 1. **[プラットフォーム機能]** 、 **[アプリケーションの設定]** の順に選択します。
@@ -195,5 +195,5 @@ HTTP 関数のカスタマイズの詳細については、[Azure Functions の 
 - [Azure Functions API (プレビュー) のドキュメント](./functions-openapi-definition.md)
 
 
-[Create your first function]: ./functions-create-first-azure-function.md
+[Create your first function]: ./functions-get-started.md
 [Azure Functions プロキシの操作]: ./functions-proxies.md

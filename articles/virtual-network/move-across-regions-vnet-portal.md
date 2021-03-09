@@ -6,18 +6,18 @@ ms.service: virtual-network
 ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: ed3da649ba65484a79b42ba5bb45431839e123d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a80c731e4245b1a295364e5b8c87f90290f7f74
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711444"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223310"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Azure portal を使用して Azure 仮想ネットワークを別のリージョンに移動する
 
 既存の Azure 仮想ネットワークをリージョン間で移動する場合、さまざまなシナリオがあります。 たとえば、テストや可用性のために、既存の仮想ネットワークと同じ構成で仮想ネットワークを作成することが必要になる場合があります。 または、ディザスター リカバリー計画の一環として、運用仮想ネットワークを別のリージョンに移動する必要がある場合もあります。
 
-Azure Resource Manager テンプレートを使用して、別のリージョンへの仮想ネットワークの移動を実行できます。 これを行うには、仮想ネットワークをテンプレートにエクスポートし、移動先リージョンに合わせてパラメーターを変更した後、新しいリージョンにテンプレートをデプロイします。 Resource Manager テンプレートの詳細については、「[クイック スタート:Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)」を参照してください。
+Azure Resource Manager テンプレートを使用して、別のリージョンへの仮想ネットワークの移動を実行できます。 これを行うには、仮想ネットワークをテンプレートにエクスポートし、移動先リージョンに合わせてパラメーターを変更した後、新しいリージョンにテンプレートをデプロイします。 Resource Manager テンプレートの詳細については、「[クイック スタート:Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)」を参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -32,7 +32,7 @@ Azure Resource Manager テンプレートを使用して、別のリージョン
 
 - お使いの Azure サブスクリプションで、ターゲット リージョンに仮想ネットワークを作成できることを確認します。 必要なクォータを有効にするには、サポートに連絡してください。
 
-- お使いのサブスクリプションに、このプロセス用の仮想ネットワークの追加をサポートするための十分なリソースがあることを確認します。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)」をご覧ください。
+- お使いのサブスクリプションに、このプロセス用の仮想ネットワークの追加をサポートするための十分なリソースがあることを確認します。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)」をご覧ください。
 
 
 ## <a name="prepare-for-the-move"></a>移動を準備する
@@ -209,5 +209,5 @@ Azure portal を使用して仮想ネットワークをエクスポートして�
 このチュートリアルでは、Azure portal を使用して Azure 仮想ネットワークをあるリージョンから別のリージョンに移動してから、不要なソース リソースをクリーンアップしました。 リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、以下を参照してください。
 
 
-- [リソースを新しいリソース グループまたはサブスクリプションに移動する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Azure 仮想マシンを別のリージョンに移動する](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Azure 仮想マシンを別のリージョンに移動する](../site-recovery/azure-to-azure-tutorial-migrate.md)

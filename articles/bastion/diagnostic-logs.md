@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 82f92a6dc33173918102015c8cedea1755d77805
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e76fffd17ee565d4103ca8a7bf1523bbd16209d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744206"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91445390"
 ---
 # <a name="enable-and-work-with-bastion-resource-logs"></a>Bastion リソース ログを有効にして使用する
 
@@ -22,13 +22,13 @@ ms.locfileid: "84744206"
 
 1. [Azure portal](https://portal.azure.com) で、Azure Bastion リソースに移動し、Azure Bastion のページから **[診断設定]** を選択します。
 
-   ![診断設定](./media/diagnostic-logs/1diagnostics-settings.png)
+   ![[診断設定] ページを示すスクリーンショット。](./media/diagnostic-logs/1diagnostics-settings.png)
 2. **[診断設定]** を選択し、 **[+ 診断設定を追加する]** を選択してログの保存先を追加します。
 
-   ![診断設定を追加する](./media/diagnostic-logs/2add-diagnostic-setting.png)
+   ![[診断設定を追加する] ボタンが選択されている [診断設定] ページを示すスクリーンショット。](./media/diagnostic-logs/2add-diagnostic-setting.png)
 3. **[診断設定]** ページで、診断ログの保存に使用するストレージ アカウントの種類を選択します。
 
-   ![ストレージの場所を選択する](./media/diagnostic-logs/3add-storage-account.png)
+   ![ストレージの場所を選択するセクションが強調表示されている [診断設定] ページのスクリーンショット。](./media/diagnostic-logs/3add-storage-account.png)
 4. 設定が済むと、次の例のようになります。
 
    ![設定の例](./media/diagnostic-logs/4example-settings.png)

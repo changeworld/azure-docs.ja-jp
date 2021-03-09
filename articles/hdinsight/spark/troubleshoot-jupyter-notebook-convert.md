@@ -1,26 +1,23 @@
 ---
-title: Azure HDInsight で Jupyter ノートブックを作成できない
+title: Azure HDInsight で Jupyter Notebook を作成できない
 description: Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/11/2020
-ms.openlocfilehash: 61e7cd8d37108b8f4eea88c4f6b6b2a8cdbfd605
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5f6612e22522452efb5eecd14c6c825bf29e6d5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77186796"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938668"
 ---
-# <a name="unable-to-create-jupyter-notebook-in-azure-hdinsight"></a>Azure HDInsight で Jupyter ノートブックを作成できない
+# <a name="unable-to-create-jupyter-notebook-in-azure-hdinsight"></a>Azure HDInsight で Jupyter Notebook を作成できない
 
 この記事では、Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
 
 ## <a name="issue"></a>問題
 
-Jupyter ノートブックを開始するとき、次のようなエラー メッセージが表示されます。
+Jupyter Notebook を開始するとき、次のようなエラー メッセージが表示されます。
 
 ```error
 Cannot convert notebook to v5 because that version doesn't exist
@@ -64,4 +61,4 @@ Cannot convert notebook to v5 because that version doesn't exist
 
 * [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
 
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。

@@ -1,25 +1,23 @@
 ---
 title: ML パイプラインでのデータの移動
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning パイプラインでのデータの入出力について説明します。
+description: Azure Machine Learning パイプラインでのデータの取り込み方法と、データの管理とパイプラインのステップ間移動の方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 08/20/2020
+ms.date: 02/26/2021
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 1b6b5af2e6533c13165ae8253813a52b2c7ad261
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
+ms.openlocfilehash: 8f1cea6e9bc833c6d441c39c401f60d872cd9099
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756964"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174939"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML パイプラインのステップ間でのデータの移動 (Python)
-
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、Azure Machine Learning パイプラインのステップ間でデータをインポート、変換、および移動するためのコードを示します。 Azure Machine Learning でデータがどのように動作するかの概要については、[Azure ストレージ サービスのデータへのアクセス](how-to-access-data.md)に関する記事を参照してください。 Azure Machine Learning パイプラインの利点と構造については、「[Azure Machine Learning パイプラインとは](concept-ml-pipelines.md)」を参照してください。
 
@@ -30,12 +28,7 @@ ms.locfileid: "88756964"
 - トレーニングや検証のサブセットなど、`Dataset` データをサブセットに分割する
 - 次のパイプライン ステップにデータを転送する `OutputFileDatasetConfig` オブジェクトを作成する
 - パイプライン ステップへの入力として `OutputFileDatasetConfig` オブジェクトを使用する
-- 永続化する `OutputFileDatasetConfig` から新しい `Dataset` オブジェクトを作成する
-
-> [!NOTE]
->`OutputFileDatasetConfig` クラスと `OutputTabularDatasetConfig` クラスは試験段階のプレビュー機能であり、いつでも変更される可能性があります。
->
->詳細については、「https://aka.ms/azuremlexperimental」を参照してください。
+- 永続化させる新しい `Dataset` オブジェクトを `OutputFileDatasetConfig` から作成する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,7 +36,7 @@ ms.locfileid: "88756964"
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 
-- [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)、または [Azure Machine Learning Studio](https://ml.azure.com/) へのアクセス。
+- [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)、または [Azure Machine Learning Studio](https://ml.azure.com/) へのアクセス。
 
 - Azure Machine Learning ワークスペース。
   
@@ -56,13 +49,13 @@ ms.locfileid: "88756964"
    ws = Workspace.from_config()
    ```
 
-- 一部の既存のデータ。 この記事では、[Azure Blob コンテナー](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)の使用方法について簡単に説明します。
+- 一部の既存のデータ。 この記事では、[Azure Blob コンテナー](../storage/blobs/storage-blobs-overview.md)の使用方法について簡単に説明します。
 
-- 省略可能:既存の機械学習パイプライン ([Azure Machine Learning SDK を使用した機械学習パイプラインの作成および実行](how-to-create-your-first-pipeline.md)に関する記事に記載されているものなど)。
+- 省略可能:既存の機械学習パイプライン ([Azure Machine Learning SDK を使用した機械学習パイプラインの作成および実行](./how-to-create-machine-learning-pipelines.md)に関する記事に記載されているものなど)。
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>既存のデータに `Dataset` オブジェクトを使用する 
 
-パイプラインにデータを取り込む方法としては、[データセット](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) オブジェクトを使用することをお勧めします。 `Dataset` オブジェクトは、ワークスペース全体で使用できる永続データを表します。
+パイプラインにデータを取り込む方法としては、[データセット](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) オブジェクトを使用することをお勧めします。 `Dataset` オブジェクトは、ワークスペース全体で使用できる永続データを表します。
 
 `Dataset` オブジェクトを作成および登録する方法は多数あります。 表形式データセットは、1つまたは複数のファイルで使用できる区切られたデータ用です。 ファイル データセットは、バイナリ データ (画像など) または解析するデータ用です。 `Dataset` オブジェクトを作成する最も簡単なプログラム的方法は、ワークスペース ストレージまたはパブリック URL で既存の Blob を使用することです。
 
@@ -70,10 +63,12 @@ ms.locfileid: "88756964"
 datastore = Datastore.get(workspace, 'training_data')
 iris_dataset = Dataset.Tabular.from_delimited_files(DataPath(datastore, 'iris.csv'))
 
-cats_dogs_dataset = Dataset.File.from_files(
-    paths='https://download.microsoft.com/download/3/E/1/3E1C3F21-ECDB-4869-8368-6DEBA77B919F/kagglecatsanddogs_3367a.zip',
-    archive_options=ArchiveOptions(archive_type=ArchiveType.ZIP, entry_glob='**/*.jpg')
-)
+datastore_path = [
+    DataPath(datastore, 'animals/dog/1.jpg'),
+    DataPath(datastore, 'animals/dog/2.jpg'),
+    DataPath(datastore, 'animals/cat/*.jpg')
+]
+cats_dogs_dataset = Dataset.File.from_files(path=datastore_path)
 ```
 
 各種のオプションとさまざまなソースからのデータセットの作成、それらの登録と Azure Machine Learning UI での確認、データ サイズがコンピューティング能力とどのように相互作用するかの理解、およびそれらのバージョン管理についての詳細は、「[Azure Machine Learning データセットを作成する](how-to-create-register-datasets.md)」を参照してください。 
@@ -82,11 +77,11 @@ cats_dogs_dataset = Dataset.File.from_files(
 
 データセットのパスをスクリプトに渡すには、`Dataset` オブジェクトの `as_named_input()` メソッドを使用します。 生成された `DatasetConsumptionConfig` オブジェクトを引数としてスクリプトに渡すか、またはパイプライン スクリプトへの `inputs` 引数を使用して、`Run.get_context().input_datasets[]` を使ってデータセットを取得することができます。
 
-名前付き入力を作成したら、アクセス モード (`as_mount()` または `as_download()`) を選択できます。 スクリプトがデータセット内のすべてのファイルを処理し、コンピューティング リソースのディスクがデータセットに対して十分な大きさである場合は、ダウンロード アクセス モードを選択することをお勧めします。 ダウンロード アクセス モードを使用すると、実行時のデータ ストリーミングのオーバーヘッドを回避できます。 スクリプトがデータセットのサブセットにアクセスする場合、またはそれがコンピューティングに対して大きすぎる場合は、マウント アクセス モードを使用します。 詳細については、「[マウントとダウンロード](https://docs.microsoft.com/azure/machine-learning/how-to-train-with-datasets#mount-vs-download)」をご覧ください
+名前付き入力を作成したら、アクセス モード (`as_mount()` または `as_download()`) を選択できます。 スクリプトがデータセット内のすべてのファイルを処理し、コンピューティング リソースのディスクがデータセットに対して十分な大きさである場合は、ダウンロード アクセス モードを選択することをお勧めします。 ダウンロード アクセス モードを使用すると、実行時のデータ ストリーミングのオーバーヘッドを回避できます。 スクリプトがデータセットのサブセットにアクセスする場合、またはそれがコンピューティングに対して大きすぎる場合は、マウント アクセス モードを使用します。 詳細については、「[マウントとダウンロード](./how-to-train-with-datasets.md#mount-vs-download)」をご覧ください
 
 データセットをパイプライン ステップに渡すには、次の手順を実行します。
 
-1. `TabularDataset.as_named_inputs()` または `FileDataset.as_named_input()` (末尾に ’s’ はありません) を使用して `DatasetConsumptionConfig` オブジェクトを作成します
+1. `TabularDataset.as_named_input()` または `FileDataset.as_named_input()` (末尾に ’s’ はありません) を使用して `DatasetConsumptionConfig` オブジェクトを作成します
 1. `as_mount()` または `as_download()` を使用して、アクセス モードを設定します
 1. `arguments` または `inputs` 引数のいずれかを使用して、データセットをパイプライン ステップに渡します
 
@@ -98,9 +93,12 @@ train_step = PythonScriptStep(
     name="train_data",
     script_name="train.py",
     compute_target=cluster,
-    inputs=[iris_dataset.as_named_inputs('iris').as_mount()]
+    inputs=[iris_dataset.as_named_input('iris').as_mount()]
 )
 ```
+
+> [!NOTE]
+> これらのすべての引数の値 (つまり、`"train_data"`、`"train.py"`、`cluster`、および `iris_dataset`) を独自のデータで置き換える必要があります。 上記のスニペットは、呼び出しの形式のみを示しており、Microsoft のサンプルには含まれていません。 
 
 また、`random_split()` や `take_sample()` などのメソッドを使用して、複数の入力を作成したり、パイプライン ステップに渡されるデータの量を減らしたりすることもできます。
 
@@ -113,7 +111,7 @@ train_step = PythonScriptStep(
     name="train_data",
     script_name="train.py",
     compute_target=cluster,
-    inputs=[train.as_named_inputs('train').as_download(), test.as_named_inputs('test').as_download()]
+    inputs=[train.as_named_input('train').as_download(), test.as_named_input('test').as_download()]
 )
 ```
 
@@ -128,8 +126,8 @@ train_step = PythonScriptStep(
     name="train_data",
     script_name="train.py",
     compute_target=cluster,
-    arguments=['--training-folder', train.as_named_inputs('train').as_download()]
-    inputs=[test.as_named_inputs('test').as_download()]
+    arguments=['--training-folder', train.as_named_input('train').as_download()]
+    inputs=[test.as_named_input('test').as_download()]
 )
 
 # In pipeline script
@@ -151,9 +149,12 @@ ws = run.experiment.workspace
 ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 ```
 
+> [!NOTE]
+> 前のスニペットは、呼び出しの形式を示しており、Microsoft のサンプルには含まれていません。 さまざまな引数を、自分のプロジェクトの値に置き換える必要があります。
+
 ## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>中間データに `OutputFileDatasetConfig` を使用する
 
-`Dataset` オブジェクトは永続データを表しますが、[`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py) オブジェクトはパイプライン ステップから出力される一時的なデータ**および**永続出力データに使用できます。 
+`Dataset` オブジェクトは永続データを表しますが、[`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) オブジェクトはパイプライン ステップから出力される一時的なデータ **および** 永続出力データに使用できます。 `OutputFileDatasetConfig` は、BLOB ストレージ、ファイル共有、adlsgen1、または adlsgen2 へのデータの書き込みをサポートしています。 マウント モードとアップロード モードの両方をサポートしています。 マウント モードでは、マウントされたディレクトリに書き込まれたファイルは、ファイルを閉じたときに永続的に保存されます。 アップロード モードでは、出力ディレクトリに書き込まれたファイルがジョブの最後にアップロードされます。 ジョブが失敗した場合、または取り消された場合、出力ディレクトリはアップロードされません。
 
  `OutputFileDatasetConfig` オブジェクトの既定の動作では、ワークスペースの既定のデータストアに書き込みます。 `arguments` パラメーターを使用して `OutputFileDatasetConfig` オブジェクトを `PythonScriptStep` に渡します。
 
@@ -175,8 +176,11 @@ dataprep_step = PythonScriptStep(
 ```python
 #get blob datastore already registered with the workspace
 blob_store= ws.datastores['my_blob_store']
-OutputFileDatasetConfig(name="clean_data", destination=blob_store).as_upload(overwrite=False)
+OutputFileDatasetConfig(name="clean_data", destination=(blob_store, 'outputdataset')).as_upload(overwrite=False)
 ```
+
+> [!NOTE]
+> `OutputFileDatasetConfig` への同時書き込みは失敗します。 1 つの `OutputFileDatasetConfig` を同時に使用しないようにしてください。 分散トレーニングを使用する場合など、マルチプロセッシングの状況では、1 つの `OutputFileDatasetConfig` を共有しないでください。 
 
 ### <a name="use-outputfiledatasetconfig-as-outputs-of-a-training-step"></a>トレーニング ステップの出力として `OutputFileDatasetConfig` を使用する
 
@@ -197,7 +201,7 @@ with open(args.output_path, 'w') as f:
 
 最初のパイプライン ステップで `OutputFileDatasetConfig` パスにデータが書き込まれ、それがその最初のステップの出力になった場合、それを後のステップへの入力として使用できます。 
 
-次のコードで、 
+次のコードの内容は以下のとおりです。 
 
 * `step1_output_data` は、PythonScriptStep の出力である `step1` が、アップロード アクセス モードで、ADLS Gen 2 データストア `my_adlsgen2` に書き込まれることを示します。 ADLS Gen 2 データストアにデータを書き戻すには、[ロールのアクセス許可を設定する](how-to-access-data.md#azure-data-lake-storage-generation-2)方法を参照してください。 
 
@@ -206,7 +210,7 @@ with open(args.output_path, 'w') as f:
 ```python
 # get adls gen 2 datastore already registered with the workspace
 datastore = workspace.datastores['my_adlsgen2']
-step1_output_data = OutputFileDatasetConfig(name="processed_data", destination=datastore).as_upload()
+step1_output_data = OutputFileDatasetConfig(name="processed_data", destination=(datastore, "mypath/{run-id}/{output-name}")).as_upload()
 
 step1 = PythonScriptStep(
     name="generate_data",
@@ -220,7 +224,7 @@ step2 = PythonScriptStep(
     script_name="step2.py",
     compute_target=compute,
     runconfig = aml_run_config,
-    arguments = ["--pd", step1_output_data.as_input]
+    arguments = ["--pd", step1_output_data.as_input()]
 
 )
 
@@ -236,7 +240,17 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
                                                          description = 'files from step1`)
 ```
 
+## <a name="delete-outputfiledatasetconfig-contents-when-no-longer-needed"></a>不要になったときに `OutputFileDatasetConfig` のコンテンツを削除する
+
+`OutputFileDatasetConfig` で書き込まれた中間データは、Azure によって自動的に削除されません。 大量の不要なデータに対するストレージの課金を回避するには、次のいずれかを行う必要があります。
+
+* パイプライン実行の終了時に中間データをプログラムで削除する (不要になった場合)
+* 中間データの短期的な記憶域ポリシーを設定して BLOB ストレージを使用する (「[Azure Blob Storage アクセス層の自動化によるコストの最適化](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)」を参照してください) 
+* 不要になったデータを定期的に確認して削除する
+
+詳細については、「[Azure Machine Learning のコストを計画して管理する](concept-plan-manage-cost.md)」を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Machine Learning データセットを作成する](how-to-create-register-datasets.md)
-* [Azure Machine Learning SDK で機械学習パイプラインを作成して管理する](how-to-create-your-first-pipeline.md)
+* [Azure Machine Learning SDK で機械学習パイプラインを作成して管理する](./how-to-create-machine-learning-pipelines.md)

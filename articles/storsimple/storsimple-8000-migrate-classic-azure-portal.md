@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: a2d4aa8845472812cf1874b380c6cbf1e91e2149
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 523788dc727fc5fa32b2f57250fb738352ff6d31
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514749"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491522"
 ---
 # <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>StorSimple デバイス マネージャー サービスに関連付けられているサブスクリプションとストレージ アカウントを移行する
 
@@ -35,7 +35,7 @@ StorSimple サービスを新しい登録や新しいサブスクリプション
 |Azure サブスクリプションの所有権を別のディレクトリに移すことはできますか。 | はい       | いいえ       | 既存のサブスクリプションを Azure AD ディレクトリに関連付ける | 「[既存のサブスクリプションを Azure AD ディレクトリに関連付けるには](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。 すべてが正しく表示されるまで、最大で 10 分かかる場合があります。|
 | StorSimple デバイスを、ある StorSimple デバイス マネージャー サービスから別のリージョンのサービスへ      | いいえ        | はい            | なし。手動プロセス |上記と同じです。|
 | ストレージ アカウントから新しいサブスクリプションまたはリソース グループへ     | はい        | いいえ             |ストレージ アカウントを別のサブスクリプションまたはリソース グループへ移動する |移動後に、ストレージ アカウント アクセス キーが更新された場合、ユーザーは、StorSimple デバイス マネージャー サービスで移行したストレージ アカウントのアクセス キーを手動で構成する必要があります。|
-| クラシック ストレージ アカウントから Azure Resource Manager ストレージ アカウントへ      | はい        | いいえ             |クラシックから Azure Resource Manager に移行する |<li>ストレージ アカウントをクラシックから Azure Resource Manager に移行する詳しい手順については、[クラシック ストレージ アカウントの移行](../virtual-machines/windows/migration-classic-resource-manager-ps.md#step-52-migrate-a-storage-account)に関するページをご覧ください。</li><li> 移行後にストレージ アカウント アクセス キーが更新された場合、ユーザーは、StorSimple デバイス マネージャー サービスで移行したストレージ アカウントのアクセス キーを同期する必要があります。 これにより、StorSimple デバイスが引き続き正常に機能し、Azure へのプライマリ/バックアップ データを階層化できます。 アクセス キーの同期化の詳しい手順については、[ローテーション ワークフロー](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)に関するページをご覧ください。</li><li> StorSimple Cloud Appliance の場合、クラシック ストレージ アカウントが移行されても、基になる仮想マシンが依然としてクラシックであれば、アプライアンスは正常に機能します。 クラウド アプライアンスの基になる仮想マシンを移行する場合、非アクティブ化と削除の機能は動作しません。</li><li> Azure Portal で新しい StorSimple Cloud Appliance を作成し、その後、以前のクラウド アプライアンスからフェールオーバーする必要があります。 クラシック ストレージ アカウントを使用して新しい Azure Portal で StorSimple Cloud Appliance を作成することはできません。Azure Resource Manager ストレージ アカウントが必要です。 詳細については、「[StorSimple Cloud Appliance のデプロイと管理](storsimple-8000-cloud-appliance-u2.md)」を参照してください。</li>|
+| クラシック ストレージ アカウントから Azure Resource Manager ストレージ アカウントへ      | はい        | いいえ             |クラシックから Azure Resource Manager に移行する |<li>ストレージ アカウントをクラシックから Azure Resource Manager に移行する詳しい手順については、[クラシック ストレージ アカウントの移行](../virtual-machines/migration-classic-resource-manager-ps.md#step-52-migrate-a-storage-account)に関するページをご覧ください。</li><li> 移行後にストレージ アカウント アクセス キーが更新された場合、ユーザーは、StorSimple デバイス マネージャー サービスで移行したストレージ アカウントのアクセス キーを同期する必要があります。 これにより、StorSimple デバイスが引き続き正常に機能し、Azure へのプライマリ/バックアップ データを階層化できます。 アクセス キーの同期化の詳しい手順については、[ローテーション ワークフロー](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)に関するページをご覧ください。</li><li> StorSimple Cloud Appliance の場合、クラシック ストレージ アカウントが移行されても、基になる仮想マシンが依然としてクラシックであれば、アプライアンスは正常に機能します。 クラウド アプライアンスの基になる仮想マシンを移行する場合、非アクティブ化と削除の機能は動作しません。</li><li> Azure Portal で新しい StorSimple Cloud Appliance を作成し、その後、以前のクラウド アプライアンスからフェールオーバーする必要があります。 クラシック ストレージ アカウントを使用して新しい Azure Portal で StorSimple Cloud Appliance を作成することはできません。Azure Resource Manager ストレージ アカウントが必要です。 詳細については、「[StorSimple Cloud Appliance のデプロイと管理](storsimple-8000-cloud-appliance-u2.md)」を参照してください。</li>|
 
 ## <a name="datacenter-changes"></a>データセンターの変更
 

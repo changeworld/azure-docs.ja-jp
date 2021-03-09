@@ -1,6 +1,6 @@
 ---
 title: ユーザー定義の復元ポイント
-description: SQL プールの復元ポイントを作成する方法。
+description: 専用 SQL プール (以前の SQL DW) の復元ポイントを作成する方法。
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 66a2dad9396e8bf7c8ef49db529f7a5486cc8a8f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 097a3132208eee98b3f95291e414263e637bc265
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089209"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545589"
 ---
-# <a name="user-defined-restore-points"></a>ユーザー定義の復元ポイント
+# <a name="user-defined-restore-points-for-a-dedicated-sql-pool-formerly-sql-dw"></a>専用 SQL プール (以前の SQL DW) のユーザー定義の復元ポイント
 
-この記事では、PowerShell と Azure portal を使用して、Azure Synapse Analytics で SQL プールの新しいユーザー定義の復元ポイントを作成する方法について説明します。
+この記事では、PowerShell と Azure portal を使用して、Azure Synapse Analytics で専用 SQL プール (以前の SQL DW) の新しいユーザー定義の復元ポイントを作成する方法について説明します。
 
 ## <a name="create-user-defined-restore-points-through-powershell"></a>PowerShell を使用してユーザー定義の復元ポイントを作成する
 
@@ -53,7 +53,7 @@ New-AzSqlDatabaseRestorePoint -ResourceGroupName $ResourceGroupName -ServerName 
 
 ```Powershell
 # List all restore points
-Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
+Get-AzSqlDatabaseRestorePoint -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName
 ```
 
 ## <a name="create-user-defined-restore-points-through-the-azure-portal"></a>Azure portal を使用してユーザー定義の復元ポイントを作成する
@@ -62,9 +62,9 @@ Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName
 
 1. [Azure portal](https://portal.azure.com/) アカウントにサインインします。
 
-2. 復元ポイントを作成する SQL プールに移動します。
+2. 復元ポイントを作成する専用 SQL プール (以前の SQL DW) に移動します。
 
-3. 左側のウィンドウで **[概要]** を選択し、 **[+ 新しい復元ポイント]** を選択します。 [新しい復元ポイント] ボタンが有効でない場合は、SQL プールが一時停止されていないことを確認します。
+3. 左側のウィンドウで **[概要]** を選択し、 **[+ 新しい復元ポイント]** を選択します。 [新しい復元ポイント] ボタンが有効でない場合は、専用 SQL プール (以前の SQL DW) が一時停止されていないことを確認します。
 
     ![新しい復元ポイント](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
 
@@ -74,7 +74,6 @@ Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName
 
 ## <a name="next-steps"></a>次のステップ
 
-- [既存の SQL プールを復元する](sql-data-warehouse-restore-active-paused-dw.md)
-- [削除された SQL プールを復元する](sql-data-warehouse-restore-deleted-dw.md)
-- [geo バックアップ SQL プールからの復元](sql-data-warehouse-restore-from-geo-backup.md)
-
+- [既存の専用 SQL プール (以前の SQL DW) を復元する](sql-data-warehouse-restore-active-paused-dw.md)
+- [削除された専用 SQL プール (以前の SQL DW) を復元する](sql-data-warehouse-restore-deleted-dw.md)
+- [geo バックアップ専用 SQL プール (以前の SQL DW) から復元する](sql-data-warehouse-restore-from-geo-backup.md)

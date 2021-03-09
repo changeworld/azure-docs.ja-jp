@@ -1,21 +1,22 @@
 ---
 title: Spark からの Azure Cosmos DB Cassandra API での DDL 操作
 description: この記事では、Spark からの Azure Cosmos DB Cassandra API に対するキースペースとテーブルの DDL 操作について詳しく説明します。
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
-ms.date: 09/24/2018
-ms.openlocfilehash: 30cac5894998ca2bb9c37217820e1000ed97ba5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/07/2020
+ms.openlocfilehash: 73d31fff362807937cbd87b8e1313cf601909802
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260563"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092179"
 ---
 # <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>Spark からの Azure Cosmos DB Cassandra API での DDL 操作
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 この記事では、Spark からの Azure Cosmos DB Cassandra API に対するキースペースとテーブルの DDL 操作について詳しく説明します。
 
@@ -92,8 +93,7 @@ DESCRIBE keyspaces;
 ### <a name="create-a-table"></a>テーブルを作成する
 
 ```scala
-val cdbConnector = CassandraConnector(sc)
-cdbConnector.withSessionDo(session => session.execute("CREATE TABLE IF NOT EXISTS books_ks.books(book_id TEXT PRIMARY KEY,book_author TEXT, book_name TEXT,book_pub_year INT,book_price FLOAT) WITH cosmosdb_provisioned_throughput=4000 , WITH default_time_to_live=630720000;"))
+cdbConnector.withSessionDo(session => session.execute("CREATE TABLE IF NOT EXISTS books_ks1.books(book_id TEXT,book_author TEXT, book_name TEXT,book_pub_year INT,book_price FLOAT, PRIMARY KEY(book_id,book_pub_year)) WITH cosmosdb_provisioned_throughput=4000 , WITH default_time_to_live=630720000;"))
 ```
 
 #### <a name="validate-in-cqlsh"></a>cqlsh で検証する

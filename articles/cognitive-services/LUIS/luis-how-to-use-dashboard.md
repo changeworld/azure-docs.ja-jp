@@ -3,20 +3,18 @@ title: ダッシュボード - Language Understanding - LUIS
 titleSuffix: Azure Cognitive Services
 description: トレーニングしたアプリのダッシュボードで意図やエンティティを修正します。 ダッシュボードには、修正する必要がある主な意図と共に、全体的なアプリ情報が表示されます。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/08/2019
-ms.author: diberry
-ms.openlocfilehash: 0ff59819c3bfda6e19d14cbe2deaea43e1694375
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 4867a065a85fab1e4abc7f19401239e5b76e1da4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345242"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541409"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>ダッシュボードを使用してアプリを改善する方法
 
@@ -130,11 +128,11 @@ ms.locfileid: "84345242"
 
 次のグラフは、修正すべき問題が多数ある不均衡なアプリを示しています。
 
-![次のグラフは、修正すべき問題がほとんどない均衡のとれたアプリを示しています。](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
+![意図ごとの予測を示すスクリーンショット。不明瞭または正しくない予測の結果がいくつか表示されています。](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
 
 各意図の棒グラフにカーソルを合わせると、その意図に関する情報が表示されます。
 
-![次のグラフは、修正すべき問題がほとんどない均衡のとれたアプリを示しています。](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
+![意図ごとの予測を示すスクリーンショット。不明瞭または正しくない予測の結果の詳細が表示されています。](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
 
 **[並べ替えの基準]** 機能を使用して問題の種類別に意図を並べ替えて、その問題に関して最も問題が深刻な意図に集中することができます。
 

@@ -1,6 +1,6 @@
 ---
 title: 多層アプリケーション用の仮想ネットワークの作成 - Azure CLI スクリプト サンプル
-description: Azure CLI スクリプト サンプル - 多層アプリケーション用の仮想ネットワークの作成
+description: 多層アプリケーション用の仮想ネットワークの作成 - Azure CLI スクリプト サンプル。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 44b60d7b3a303e833d6915591cc1475751582e97
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 54ad2327af40041c7bde07095e7f5d8ed1375015
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87492566"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91313928"
 ---
 # <a name="create-a-virtual-network-for-multi-tier-applications-using-an-azure-cli-script-sample"></a>Azure CLI スクリプト サンプルを使用して多層アプリケーション用の仮想ネットワークを作成する
 

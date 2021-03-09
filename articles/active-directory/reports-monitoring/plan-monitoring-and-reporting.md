@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b83291dc37c6248761214654f99d3ce214b551
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 683367251c220abe36660d61463bce9e5a0c52f9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229754"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577760"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory のレポートと監視のデプロイを計画する
 
@@ -47,7 +47,7 @@ Azure AD の監視では、次の場所にログをルーティングできま�
 * Splunk、Sumologic、QRadar などの既存の SIEM ツールと統合できる Azure イベント ハブ。
 
 > [!NOTE]
-最近になって、Log Analytics の代わりに Azure Monitor ログという用語が使われるようになりました。 ログ データは引き続き Log Analytics ワークスペースに格納され、同じ Log Analytics サービスによって収集されて分析されます。 [Azure Monitor のログ](../../azure-monitor/platform/data-platform.md)の役割をより適切に反映させるために、用語を更新しています。 詳しくは、[Azure Monitor の用語の変更](../../azure-monitor/terminology.md)に関するページをご覧ください。
+最近になって、Log Analytics の代わりに Azure Monitor ログという用語が使われるようになりました。 ログ データは引き続き Log Analytics ワークスペースに格納され、同じ Log Analytics サービスによって収集されて分析されます。 [Azure Monitor のログ](../../azure-monitor/data-platform.md)の役割をより適切に反映させるために、用語を更新しています。 詳しくは、[Azure Monitor の用語の変更](../../azure-monitor/terminology.md)に関するページをご覧ください。
 
 [レポート保持ポリシーの詳細を確認します](./reference-reports-data-retention.md)。
 
@@ -73,7 +73,7 @@ Azure AD の監視とレポートをデプロイするには、Azure AD テナ�
 
 ### <a name="engage-the-right-stakeholders"></a>適切な関係者を関わらせる
 
-テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者が担当していることを確認](https://aka.ms/deploymentplans)します。 また、利害関係者およびそのプロジェクトでの入力と説明責任を文書化することで、プロジェクトでの利害関係者の役割をよく理解させます。
+テクノロジ プロジェクトが失敗した場合、その原因は通常、影響、結果、および責任に対する想定の不一致です。 これらの落とし穴を回避するには、[適切な利害関係者が担当していることを確認](../fundamentals/active-directory-deployment-plans.md)します。 また、利害関係者およびそのプロジェクトでの入力と説明責任を文書化することで、プロジェクトでの利害関係者の役割をよく理解させます。
 
 ### <a name="plan-communications"></a>連絡を計画する
 
@@ -121,7 +121,7 @@ Azure AD の監視では、Azure AD のアクティビティ ログを、ビジ�
 
 #### <a name="send-logs-to-azure-monitor-logs"></a>Azure Monitor ログへのログの送信
 
-[Azure Monitor ログ](../../azure-monitor/log-query/log-query-overview.md)は、さまざまなソースからの監視データを統合します。 アプリケーションの操作とリソースの使用に関する分析情報が得られるクエリ言語と分析エンジンも提供されます。 Azure AD のアクティビティ ログを Azure Monitor ログに送信することで、収集したデータに対する迅速な取得、監視、およびアラートを行うことができます。 データの直接の送信先となる既存の SIEM ソリューションは存在しないが、クエリや分析が必要な場合は、この方法を使用します。 データが Azure Monitor ログに記録されたら、そのデータをイベント ハブに送信し、必要に応じてそこから SIEM に送信することができます。
+[Azure Monitor ログ](../../azure-monitor/logs/log-query-overview.md)は、さまざまなソースからの監視データを統合します。 アプリケーションの操作とリソースの使用に関する分析情報が得られるクエリ言語と分析エンジンも提供されます。 Azure AD のアクティビティ ログを Azure Monitor ログに送信することで、収集したデータに対する迅速な取得、監視、およびアラートを行うことができます。 データの直接の送信先となる既存の SIEM ソリューションは存在しないが、クエリや分析が必要な場合は、この方法を使用します。 データが Azure Monitor ログに記録されたら、そのデータをイベント ハブに送信し、必要に応じてそこから SIEM に送信することができます。
 
 [Azure Monitor ログにデータを送信する](./howto-integrate-activity-logs-with-log-analytics.md)方法を学習してください。
 
@@ -133,7 +133,7 @@ Azure AD のアクティビティ ログ用の既製のビューをインスト�
 
 Azure イベント ハブにログをルーティングすると、サードパーティ製の SIEM ツールとの統合が可能になります。 この統合によって、Azure AD のアクティビティ ログ データと、SIEM によって管理されている他のデータを組み合わせ、より豊富な環境分析情報を提供することができます。 
 
-ログをイベント ハブにストリーム配信する方法については、[こちら](//azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)を参照してください。
+ログをイベント ハブにストリーム配信する方法については、[こちら](./tutorial-azure-monitor-stream-logs-to-event-hub.md)を参照してください。
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Azure AD のレポートと監視の運用とセキュリティを計画する
 
@@ -151,9 +151,9 @@ Azure AD のロールを使用すると、自分のロールに応じて、Azure
 
 * レポート閲覧者
 
-[Azure AD 管理者ロール](../users-groups-roles/directory-assign-admin-roles.md)の詳細を確認します。
+[Azure AD 管理者ロール](../roles/permissions-reference.md)の詳細を確認します。
 
-*アカウント侵害*のリスクを軽減するために、最小限の特権の概念を常に適用してください。 組織をさらにセキュリティで保護するために、[Privileged Identity Management](../privileged-identity-management/pim-configure.md) の実装を検討します。
+*アカウント侵害* のリスクを軽減するために、最小限の特権の概念を常に適用してください。 組織をさらにセキュリティで保護するために、[Privileged Identity Management](../privileged-identity-management/pim-configure.md) の実装を検討します。
 
 ##  
 

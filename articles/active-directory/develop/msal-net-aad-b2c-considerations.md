@@ -13,18 +13,18 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: ed3e9da628ab779ab47673fa2ce728c5c25539be
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bdb9e12fdf721204ce98d23e5d5aeea535ddf23d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166435"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574796"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>MSAL.NET を使用してソーシャル ID でユーザーをサインインさせる
 
-MSAL.NET を使用して、[Azure Active Directory B2C (Azure AD B2C)](https://aka.ms/aadb2c) でソーシャル ID を持つユーザーをサインインさせることができます。 Azure AD B2C はポリシーの概念を基に構築されています。 MSAL.NET では、ポリシーを指定するということは、機関を提供することです。
+MSAL.NET を使用して、[Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/overview.md) でソーシャル ID を持つユーザーをサインインさせることができます。 Azure AD B2C はポリシーの概念を基に構築されています。 MSAL.NET では、ポリシーを指定するということは、機関を提供することです。
 
-- パブリック クライアント アプリケーションをインスタンス化するときは、機関の一部としてポリシーを指定する必要があります。
+- パブリック クライアント アプリケーションをインスタンス化するときは、機関の一部としてポリシーを指定します。
 - ポリシーを適用するときは、`authority` パラメーターを受け取る `AcquireTokenInteractive` のオーバーライドを呼び出します。
 
 この記事は、MSAL.NET 3.x に適用されます。 MSAL.NET 2.x については、GitHub の MSAL.NET Wiki にある「[MSAL 2.x での Azure AD B2C の詳細](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x)」を参照してください。
@@ -67,31 +67,27 @@ application = PublicClientApplicationBuilder.Create(ClientID)
 パブリック クライアント アプリケーションで Azure AD B2C で保護された API のトークンを取得するには、次のように、そのオーバーライドを機関で使用する必要があります。
 
 ```csharp
-IEnumerable<IAccount> accounts = await application.GetAccountsAsync();
-AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
-                                           .WithAccount(GetAccountByPolicy(accounts, policy))
-                                           .WithParentActivityOrWindow(ParentActivityOrWindow)
-                                           .ExecuteAsync();
+AuthenticationResult authResult = null;
+IEnumerable<IAccount> accounts = await application.GetAccountsAsync(policy);
+IAccount account = accounts.FirstOrDefault();
+try
+{
+    authResult = await application.AcquireTokenSilent(scopes, account)
+                      .ExecuteAsync();
+}
+catch (MsalUiRequiredException ex)
+{
+    authResult = await application.AcquireTokenInteractive(scopes)
+                        .WithAccount(account)
+                        .WithParentActivityOrWindow(ParentActivityOrWindow)
+                        .ExecuteAsync();
+}  
 ```
 
 上記のコード スニペットは、次のようになっています。
 
 - `policy` は、Azure AD B2C ユーザー フローまたはカスタム ポリシーの名前を含む文字列です (例: `PolicySignUpSignIn`)。
 - `ParentActivityOrWindow` は、Android (Activity) では必須となります。親 UI (Microsoft Windows のウィンドウや iOS の UIViewController など) をサポートするその他のプラットフォームでは省略可能です。 UI ダイアログの詳細については、MSAL Wiki の「[WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow)」を参照してください。
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)` は特定のポリシーのアカウントを検索するメソッドです。 次に例を示します。
-
-  ```csharp
-  private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
-  {
-      foreach (var account in accounts)
-      {
-          string userIdentifier = account.HomeAccountId.ObjectId.Split('.')[0];
-          if (userIdentifier.EndsWith(policy.ToLower()))
-              return account;
-      }
-      return null;
-  }
-  ```
 
 現在、ユーザー フローまたはカスタム ポリシーの適用は (たとえば、ユーザーが自分のプロファイルを編集したり、パスワードをリセットしたりできるようにする)、`AcquireTokenInteractive` を呼び出すことによって行われます。 これら 2 つのポリシーでは、返されたトークンや認証結果を使用しません。
 
@@ -104,16 +100,16 @@ AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
 ```csharp
 private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 {
-    IEnumerable<IAccount> accounts = await app.GetAccountsAsync();
+    IEnumerable<IAccount> accounts = await application.GetAccountsAsync(PolicyEditProfile);
+    IAccount account = accounts.FirstOrDefault();
     try
     {
-        var authResult = await app.AcquireToken(scopes:App.ApiScopes)
-                            .WithAccount(GetUserByPolicy(accounts, App.PolicyEditProfile)),
+        var authResult = await application.AcquireTokenInteractive(scopes)
                             .WithPrompt(Prompt.NoPrompt),
-                            .WithB2CAuthority(App.AuthorityEditProfile)
+                            .WithAccount(account)
+                            .WithB2CAuthority(AuthorityEditProfile)
                             .ExecuteAsync();
-        DisplayBasicTokenInfo(authResult);
-    }
+     }
     catch
     {
     }
@@ -124,7 +120,7 @@ private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 
 ROPC フローの詳細については、[リソース所有者のパスワード資格情報の付与を使用したサインイン](v2-oauth-ropc.md)に関する記事を参照してください。
 
-アプリケーションでユーザーにパスワードを求めることは安全でないため、ROPC フローは**推奨されません**。 この問題の詳細については、[深刻化するパスワードの問題の解決策](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)に関する記事を参照してください。
+アプリケーションでユーザーにパスワードを求めることは安全でないため、ROPC フローは **推奨されません**。 この問題の詳細については、[深刻化するパスワードの問題の解決策](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)に関する記事を参照してください。
 
 ROPC フローでユーザー名とパスワードを使用すると、次のようなことが犠牲になります。
 
@@ -134,7 +130,7 @@ ROPC フローでユーザー名とパスワードを使用すると、次のよ
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>Azure AD B2C で ROPC フローを構成する
 
-お使いの Azure AD B2C テナントで、新しいユーザー フローを作成し、 **[ROPC を使用してサインイン]** を選択して、ユーザー フローで ROPC を有効にします。 詳しくは、[リソース所有者のパスワード資格情報フローの構成](../../active-directory-b2c/configure-ropc.md)に関する記事をご覧ください。
+お使いの Azure AD B2C テナントで、新しいユーザー フローを作成し、 **[ROPC を使用してサインイン]** を選択して、ユーザー フローで ROPC を有効にします。 詳しくは、[リソース所有者のパスワード資格情報フローの構成](../../active-directory-b2c/add-ropc-policy.md)に関する記事をご覧ください。
 
 `IPublicClientApplication` には `AcquireTokenByUsernamePassword` メソッドが含まれています。
 
@@ -153,7 +149,7 @@ AcquireTokenByUsernamePassword(
 
 ### <a name="limitations-of-the-ropc-flow"></a>ROPC フローの制限事項
 
-ROPC フローは、ユーザーがメール アドレスまたはユーザー名を使用して Azure AD B2C に登録した**ローカル アカウントでのみ動作します**。 Azure AD B2C によってサポートされる外部 ID プロバイダー (Facebook、Google など) とフェデレーションした場合、このフローは機能しません。
+ROPC フローは、ユーザーがメール アドレスまたはユーザー名を使用して Azure AD B2C に登録した **ローカル アカウントでのみ動作します**。 Azure AD B2C によってサポートされる外部 ID プロバイダー (Facebook、Google など) とフェデレーションした場合、このフローは機能しません。
 
 ## <a name="google-auth-and-embedded-webview"></a>Google 認証と埋め込み Web ビュー
 
@@ -165,7 +161,7 @@ ID プロバイダーとして Google を使用している 場合は、シス�
 
 ### <a name="known-issue-with-azure-ad-b2c"></a>Azure AD B2C での既知の問題
 
-MSAL.NET では[トークン キャッシュ](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet)がサポートされています。 トークン キャッシュ キーは、ID プロバイダー (IdP) によって返される要求に基づきます。
+MSAL.NET では[トークン キャッシュ](/dotnet/api/microsoft.identity.client.tokencache)がサポートされています。 トークン キャッシュ キーは、ID プロバイダー (IdP) によって返される要求に基づきます。
 
 現在、MSAL.NET では、トークン キャッシュ キーを作成するために 2 つの要求が必要です。
 
@@ -186,7 +182,7 @@ Azure AD B2C シナリオでは、これらの両方の要求が欠落する可�
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>"トークンの応答にありません" の軽減策
 
-1 つの方法は、`preferred_username` ではなく `name` 要求を使用することです。 Azure AD B2C によって発行された ID トークンに `name` 要求を含めるには、ユーザー フローを構成するときに**表示名**を選択します。
+1 つの方法は、`preferred_username` ではなく `name` 要求を使用することです。 Azure AD B2C によって発行された ID トークンに `name` 要求を含めるには、ユーザー フローを構成するときに **表示名** を選択します。
 
 ユーザー フローによって返される要求を指定する方法の詳細については、「[チュートリアル:Azure AD B2C 内にユーザーフローを作成する](../../active-directory-b2c/tutorial-create-user-flows.md)」を参照してください。
 

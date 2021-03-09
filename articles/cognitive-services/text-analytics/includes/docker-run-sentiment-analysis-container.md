@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 459ab7a254994929174e4f81ad25f0729f43fa0b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 96b41c27b282bdc05dafa8c69398a11e8dbf3b1b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108972"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91779658"
 ---
 "*感情分析 v3* " コンテナーを実行するには、次の `docker run` コマンドを実行します。 次のプレースホルダーを実際の値に置き換えてください。
 
@@ -25,7 +26,7 @@ ms.locfileid: "86108972"
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/sentiment \
+mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

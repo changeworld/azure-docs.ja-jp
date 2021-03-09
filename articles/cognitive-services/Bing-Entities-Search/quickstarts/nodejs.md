@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:Node.js を使用して REST API に検索要求を送信する - Bing Entity Search
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートを使用すると、C# を使用して Bing Entity Search REST API に要求を送信し、JSON 応答を受信することができます。
+description: このクイックスタートを使用して、Node.js を使って Bing Entity Search REST API に要求を送信し、JSON 応答を受信します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,15 +10,20 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 82bdd8f3890f1685aa442463287fe72bde08d518
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: b9311329ea4115d49f36dd7d39782bbd748a356b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405961"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106106"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>クイック スタート:Node.js を使用して Bing Entity Search REST API に検索要求を送信する
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関するページを参照してください。
 
 このクイック スタートを使用すると、Bing Entity Search API への最初の呼び出しを行い、JSON 応答を表示することができます。 この簡単な JavaScript アプリケーションでは、新しい検索クエリを API に送信して、その応答を表示します。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js) で入手できます。
 
@@ -82,15 +87,15 @@ ms.locfileid: "87405961"
     let json = JSON.stringify(JSON.parse(body), null, '  ');
     console.log (json);
     });
-        ```
+    ```
 
-## Send a request
+## <a name="send-a-request"></a>要求を送信する
 
-1. Create a function called `Search()` to send a search request. In it, perform the following steps:
+1. 検索要求を送信するための `Search()` という関数を作成します。 その中で、次の手順を実行します。
 
-2. Within this function, create a JSON object containing your request parameters. Use `Get` for the method, and add your host and path information. Add your subscription key to the `Ocp-Apim-Subscription-Key` header. 
+2. この関数内で、要求パラメーターを含む JSON オブジェクトを作成します。 メソッドに `Get` を使用し、ホストとパスの情報を追加します。 お使いのサブスクリプション キーを `Ocp-Apim-Subscription-Key` ヘッダーに追加します。 
 
-3. Use `https.request()` to send the request with the response handler created previously, and your search parameters.
+3. `https.request()` を使用して、前に作成した応答ハンドラーと検索パラメーターを含む要求を送信します。
     
    ```javascript
    let Search = function () {
@@ -181,4 +186,4 @@ ms.locfileid: "87405961"
 > [シングルページ Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Bing Entity Search API とは](../overview.md )
-* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。
+* [Bing Entity Search API リファレンス](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。

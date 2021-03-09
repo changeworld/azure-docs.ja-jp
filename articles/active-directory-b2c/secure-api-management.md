@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0e8802d612f2497cc58c90856e9a5a5572a142f1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 60b7bb33dfbf29b7e448887ce992d03009133b2e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87482840"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953493"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure AD B2C を使用して Azure API Management API をセキュリティで保護する
 
@@ -35,7 +35,7 @@ Azure Active Directory B2C (Azure AD B2C) で認証されたクライアント�
 
 Azure API Management において Azure AD B2C を使用して API のセキュリティを保護する場合、APIM で作成する[受信ポリシー](../api-management/api-management-howto-policies.md)には複数の値が必要です。 ご利用の Azure AD B2C テナントで以前に作成したアプリケーションのアプリ ID を記録します。 前提条件で作成したアプリケーションを使用する場合は、"*webbapp1*" のアプリケーション ID を使用します。
 
-アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合**アプリの登録**エクスペリエンスか以前の**アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
+アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合 **アプリの登録** エクスペリエンスか以前の **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](./app-registrations-training-guide.md)。
 
 #### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
@@ -165,7 +165,7 @@ API を呼び出すには、Azure AD B2C によって発行されたアクセス
     | `Authorization` | 先ほど記録したエンコード済みトークン値。先頭に `Bearer ` を付けます ("Bearer" の後にスペースを含めます) |
     | `Ocp-Apim-Subscription-Key` | 先ほど記録した APIM サブスクリプション キー |
 
-    **GET** 要求 URL と**ヘッダー**が次のように表示されるはずです。
+    **GET** 要求 URL と **ヘッダー** が次のように表示されるはずです。
 
     ![GET 要求 URL とヘッダーが表示されている Postman UI](media/secure-apim-with-b2c-token/postman-01-headers.png)
 

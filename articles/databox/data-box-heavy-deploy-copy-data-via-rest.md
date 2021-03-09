@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: f9134b57d8a3e76417283e5d863724651b4f6a6f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e2fc174147b99b7b952c6d10084cfc969dacf5a6
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921165"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91949141"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>チュートリアル:REST API 経由で Azure Data Box BLOB ストレージにデータをコピーする  
 
@@ -122,11 +122,11 @@ HTTPS 経由で Data Box BLOB ストレージにアクセスするには、デ�
 
 3.  **[証明書をすべて次のストアに配置する]** を選択し、 **[参照]** をクリックします。 リモート ホストのルート ストアに移動し、 **[次へ]** をクリックします。
 
-    ![PowerShell を使用した証明書のインポート](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
+    ![PowerShell を使用した証明書のインポート 2](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
 4.  **[完了]** をクリックします。 インポートが成功したことを通知するメッセージが表示されます。
 
-    ![PowerShell を使用した証明書のインポート](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
+    ![PowerShell を使用した証明書のインポート 3](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
 #### <a name="use-a-linux-system"></a>Linux システムを使用する
 

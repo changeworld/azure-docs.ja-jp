@@ -8,15 +8,15 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 34caefba5bae660ca150f6e447b1d59b7174c768
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 9894da7486ec3c0dfb92c94c7c7f4db2247ebeb7
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857714"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210207"
 ---
 # <a name="train-vowpal-wabbit-model"></a>Train Vowpal Wabbit Model (Vowpal Wabbit モデルのトレーニング)
-この記事では、Azure Machine Learning デザイナー (プレビュー) で **Train Vowpal Wabbit Model** モジュールを使用し、Vowpal Wabbit を使用して機械学習モデルを作成する方法について説明します。  
+この記事では、Azure Machine Learning デザイナーで **Train Vowpal Wabbit Model** モジュールを使用し、Vowpal Wabbit を使用して機械学習モデルを作成する方法について説明します。  
 
 機械学習に Vowpal Wabbit を使用するには、Vowpal Wabbit の要件に従って入力の書式を設定し、必要な形式でデータを準備します。 このモジュールを使用して、Vowpal Wabbit のコマンド ライン引数を指定します。 
 
@@ -54,7 +54,7 @@ Vowpal Wabbit を主に使用するのは、分類、回帰、トピック モ�
 
 1. **Train Vowpal Wabbit Model** モジュールを実験に追加します。 
   
-2. トレーニング データセットを追加し、**トレーニング データ**に接続します。 トレーニング データセットが、トレーニング データ ファイルが含まれているディレクトリの場合は、 **[Name of the training data file]\(トレーニング データ ファイルの名前\)** を使用してトレーニング データ ファイル名を指定します。 トレーニング データセットが 1 つのファイルの場合は、 **[Name of the training data file]\(トレーニング データ ファイルの名前\)** を空のままにします。
+2. トレーニング データセットを追加し、**トレーニング データ** に接続します。 トレーニング データセットが、トレーニング データ ファイルが含まれているディレクトリの場合は、 **[Name of the training data file]\(トレーニング データ ファイルの名前\)** を使用してトレーニング データ ファイル名を指定します。 トレーニング データセットが 1 つのファイルの場合は、 **[Name of the training data file]\(トレーニング データ ファイルの名前\)** を空のままにします。
 
 3. **[VW arguments]\(VW 引数\)** テキスト ボックスに、Vowpal Wabbit 実行可能ファイルに対するコマンド ライン引数を入力します。
 
@@ -87,7 +87,7 @@ Vowpal Wabbit では、既存のモデルに新しいデータを追加するこ
 2. 以前にトレーニングしたモデルを、モジュールの **[Pre-trained Vowpal Wabbit Model]\(事前トレーニング済み Vowpal Wabbit モデル\)** 入力ポートに接続します。
 3. 新しいトレーニング データをモジュールの **[Training data]\(トレーニング データ\)** 入力ポートに接続します。
 4. **Train Vowpal Wabbit Model** のパラメーター ペインで、新しいトレーニング データの形式と、入力データセットがディレクトリの場合はトレーニング データ ファイル名も指定します。
-5. 対応するファイルを実行レコードに保存する必要がある場合は、**[Output readable model file]\(読み取り可能なモデル ファイルを出力する\)** オプションと **[Output inverted hash file]\(逆ハッシュ ファイルを出力する\)** オプションを選択します。
+5. 対応するファイルを実行レコードに保存する必要がある場合は、 **[Output readable model file]\(読み取り可能なモデル ファイルを出力する\)** と **[Output inverted hash file]\(逆ハッシュ ファイルを出力する\)** オプションを選択します。
 
 6. パイプラインを送信します。  
 7. モジュールを選択し、右側のペインの **[Outputs+logs]\(出力 + ログ\)** タブで **[Register dataset]\(データ セットの登録\)** を選択して、更新されたモデルを Azure Machine Learning ワークスペースに保持します。  新しい名前を指定しないと、更新されたモデルにより既存の保存されているモデルが上書きされます。

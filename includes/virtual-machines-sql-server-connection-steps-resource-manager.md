@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 4e79fef08af8ff73ce63ab4732c9efd77e3a5d3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51dc04fbef8d09878f33d7fda6f15039d3afba3e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67181130"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027649"
 ---
 ### <a name="configure-a-dns-label-for-the-public-ip-address"></a>パブリック IP アドレスの DNS ラベルの構成
 
@@ -20,7 +20,7 @@ ms.locfileid: "67181130"
 
 DNS ラベルを作成するには、最初にポータルで **[Virtual Machines]** を選びます。 SQL Server VM を選択し、そのプロパティを表示します。
 
-1. 仮想マシンの概要で、目的の**パブリック IP アドレス**を選択します。
+1. 仮想マシンの概要で、目的の **パブリック IP アドレス** を選択します。
 
     ![パブリック IP アドレス](./media/virtual-machines-sql-server-connection-steps/rm-public-ip-address.png)
 
@@ -34,7 +34,7 @@ DNS ラベルを作成するには、最初にポータルで **[Virtual Machine
 
 ### <a name="connect-to-the-database-engine-from-another-computer"></a>別のコンピューターからデータベース エンジンに接続する
 
-1. インターネットに接続されたコンピューターで、SQL Server Management Studio (SSMS) を開きます。 SQL Server Management Studio を保有していない場合は、[ここ](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)からダウンロードできます。
+1. インターネットに接続されたコンピューターで、SQL Server Management Studio (SSMS) を開きます。 SQL Server Management Studio を保有していない場合は、[ここ](/sql/ssms/download-sql-server-management-studio-ssms)からダウンロードできます。
 
 1. **[サーバーへの接続]** または **[データベース エンジンへの接続]** ダイアログ ボックスで、 **[サーバー名]** の値を編集します。 (前のタスクで確認した) 仮想マシンの IP アドレスまたは完全 DNS 名を入力します。 また、コンマを追加し、SQL Server の TCP ポートを指定することもできます。 たとえば、「 `mysqlvmlabel.eastus.cloudapp.azure.com,1433` 」のように入力します。
 

@@ -68,7 +68,7 @@
     - name: Azure Data Catalog 用のキーボード ショートカット
       href: data-catalog-keyboard-shortcuts.md
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-catalog.html'
+      href: /answers/topics/azure-data-catalog.html
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/data-catalog/'
     - name: 料金計算ツール

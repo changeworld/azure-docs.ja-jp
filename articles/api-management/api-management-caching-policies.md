@@ -11,17 +11,20 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: f0aeef7bc67f5c59bb80d5ff24a97be737447a81
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: bd3a63db7dd4946a9836b3978992fb544b9ab0ab
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510183"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688044"
 ---
 # <a name="api-management-caching-policies"></a>API Management のキャッシュ ポリシー
-このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
+このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。
+
+> [!IMPORTANT]
+> 組み込みのキャッシュは揮発性であり、同じ API Management サービスの同じリージョン内のすべてのユニットによって共有されます。
 
 ## <a name="caching-policies"></a><a name="CachingPolicies"></a> キャッシュ ポリシー
 
@@ -245,7 +248,7 @@ ms.locfileid: "88510183"
 `cache-store-value` は、キーごとに記憶域のキャッシュを実行します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。
 
 > [!NOTE]
-> このポリシーには、対応する[キャッシュから値を取得](#GetFromCacheByKey)ポリシーが必要です。
+> このポリシーによって実行される、キャッシュに値を格納する操作は非同期です。 格納された値は、[キャッシュから値を取得](#GetFromCacheByKey)ポリシーを使用して取得できます。 ただし、キャッシュに値を格納する非同期操作がまだ進行中である可能性もあるため、格納されている値をすぐに使用できない場合があります。 
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
@@ -283,7 +286,7 @@ ms.locfileid: "88510183"
 - **ポリシー セクション:** inbound、outbound、backend、on-error
 - **ポリシー スコープ:** すべてのスコープ
 
-### <a name="remove-value-from-cache"></a><a name="RemoveCacheByKey"></a> キャッシュから値を削除
+## <a name="remove-value-from-cache"></a><a name="RemoveCacheByKey"></a> キャッシュから値を削除
 `cache-remove-value` は、キーで指定された、キャッシュされている項目を削除します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。
 
 #### <a name="policy-statement"></a>ポリシー ステートメント
@@ -328,4 +331,4 @@ ms.locfileid: "88510183"
 + [API Management のポリシー](api-management-howto-policies.md)
 + [API を変換する](transform-api.md)
 + ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](./api-management-policies.md)
-+ [ポリシーのサンプル](policy-samples.md)
++ [ポリシーのサンプル](./policy-reference.md)

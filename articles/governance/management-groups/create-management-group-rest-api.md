@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:REST API を使用して管理グループを作成する
 description: このクイックスタートでは、REST API を使用して、リソースを階層で整理する管理グループを作成します。
-ms.date: 08/31/2020
+ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: b19fddf8215a1b133254c2a31bbea568a315f721
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ff1487bf25945c733402ddb74d1e102bea80b4b1
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89237141"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592502"
 ---
 # <a name="quickstart-create-a-management-group-with-rest-api"></a>クイック スタート:REST API を使用して管理グループを作成する
 

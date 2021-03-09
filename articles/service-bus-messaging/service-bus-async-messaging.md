@@ -3,12 +3,12 @@ title: Service Bus の非同期メッセージング |Microsoft Docs
 description: Azure Service Bus が、キュー、トピック、およびサブスクリプションを使用して、ストア アンド フォワード メカニズムを通じて非同期をサポートする方法について説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0ea2a2f51d29f1a65926509581df49b453bde59f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: ea09b809a19cfe7c7f024b059589748ff9e297d4
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067547"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631625"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>非同期メッセージング パターンと高可用性
 
@@ -34,7 +34,7 @@ ms.locfileid: "88067547"
 * Azure データセンター内での Service Bus の障害。 これは、数分または数時間にわたってシステムにアクセスできなくなる "致命的な障害" です。
 
 > [!NOTE]
-> **ストレージ**という用語は、Azure Storage と SQL Azure の両方を意味する場合があります。
+> **ストレージ** という用語は、Azure Storage と SQL Azure の両方を意味する場合があります。
 > 
 > 
 
@@ -57,7 +57,7 @@ Azure 内の他のコンポーネントで、サービスの問題が発生す�
 Service Bus での非同期メッセージングの基本について学習しました。詳細については、「[故障と障害の扱い][handling outages and disasters]」をお読みください。
 
 [ServerBusyException]: /dotnet/api/microsoft.servicebus.messaging.serverbusyexception
-[System.TimeoutException]: /dotnet/api/system.timeoutexception?view=netcore-3.1
+[System.TimeoutException]: /dotnet/api/system.timeoutexception
 [MessagingException]: /dotnet/api/microsoft.servicebus.messaging.messagingexception
 [Best practices for insulating applications against Service Bus outages and disasters]: service-bus-outages-disasters.md
 [Microsoft.ServiceBus.Messaging.MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
@@ -70,8 +70,8 @@ Service Bus での非同期メッセージングの基本について学習し�
 [NamespaceManager]: /dotnet/api/microsoft.servicebus.namespacemanager
 [PairNamespaceAsync]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
 [EnableSyphon]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
-[System.TimeSpan.Zero]: /dotnet/api/system.timespan.zero?view=netcore-3.1
+[System.TimeSpan.Zero]: /dotnet/api/system.timespan.zero
 [IsTransient]: /dotnet/api/microsoft.servicebus.messaging.messagingexception
-[UnauthorizedAccessException]: /dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1
+[UnauthorizedAccessException]: /dotnet/api/system.unauthorizedaccessexception
 [BacklogQueueCount]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions?redirectedfrom=MSDN
 [handling outages and disasters]: service-bus-outages-disasters.md

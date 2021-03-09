@@ -1,18 +1,23 @@
 ---
 title: 既存の .NET アプリを Service Fabric Mesh 用にコンテナー化する
 description: 完全な .NET Framework を使用する ASP.NET および Console プロジェクトに、Service Fabric Mesh コンテナー オーケストレーションのサポートを追加します。
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: d67ea5bb7df5910ec87e69adf3c414c303bf0182
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9c5053a2a49c942cc89bd50c65e13f3a2f8d9d7
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75462036"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625882"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>既存の .NET アプリを Service Fabric Mesh 用にコンテナー化する
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 新しいデプロイは、Service Fabric Mesh API では許可されません。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)に関する記事を参照してください。
 
 この記事では、既存の .NET アプリに Service Fabric Mesh のコンテナー オーケストレーションサポートを追加する方法について説明します。
 
@@ -51,6 +56,12 @@ Visual Studio のソリューション エクスプ ローラーで、プロジ�
 ![Visual Studio の [コンテナー オーケストレーター サポートの追加] ダイアログ](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)
 
 ドロップダウン リストから **[Service Fabric Mesh]** を選択し、 **[OK]** をクリックします。
+
+
+>[!NOTE]
+> 2020 年 11 月 2 日より、Docker の無料プラン アカウントから Docker Hub に対する匿名と認証済みの要求に[ダウンロード レート制限](https://docs.docker.com/docker-hub/download-rate-limit/)が適用されるようになり、IP アドレスによって実施されます。 詳細については、「[Docker Hub での認証](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub)」を参照してください。
+>
+> レートが制限されないようにするには、Dockerfile の既定の `FROM microsoft/aspnet:4.7.2-windowsservercore-1803 AS base` が `FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-1803 AS base` に置き換えられていることを確認します
 
 ツールによって Docker がインストールされ、プロジェクトに Dockerfile が追加されて、プロジェクト用の docker イメージがプルダウンされます。  
 Service Fabric Mesh のアプリケーション プロジェクトがソリューションに追加されます。 これには、Mesh の発行プロファイルと構成ファイルが含まれています。 プロジェクトの名前は、ご使用のプロジェクト名の末尾に "Application" を連結したものになります (例: **eShopLegacyWebFormsApplication**)。 

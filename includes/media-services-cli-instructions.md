@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 5ebbac39c8850737ea6f9ef333e45d305a520655
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1327ac49920af353d6adbbe592ab4189417e60e8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79461216"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996903"
 ---
 ## <a name="use-cli-shell"></a>CLI シェルを使用する
 
-CLI コマンドを実行するには、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) を使用することをお勧めします。 **Cloud Shell** は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 Cloud Shell には一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 Azure Cloud Shell には、業務に最適のシェル操作を選択できる柔軟性があります。 Linux ユーザーは Bash を、Windows ユーザーは PowerShell を選ぶことができます。
+CLI コマンドを実行するには、[Azure Cloud Shell](../articles/cloud-shell/overview.md?view=azure-cli-latest) を使用することをお勧めします。 **Cloud Shell** は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 Cloud Shell には一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 Azure Cloud Shell には、業務に最適のシェル操作を選択できる柔軟性があります。 Linux ユーザーは Bash を、Windows ユーザーは PowerShell を選ぶことができます。
 
-CLI をローカルにインストールすることもできます。 プラットフォームごとの手順については、「[Install the Azure CLI (Azure CLI をインストールする)](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+CLI をローカルにインストールすることもできます。 プラットフォームごとの手順については、「[Install the Azure CLI (Azure CLI をインストールする)](/cli/azure/install-azure-cli)」を参照してください。
 
 ### <a name="sign-in"></a>サインイン
 

@@ -6,24 +6,24 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
-ms.topic: conceptual
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+ms.topic: sample
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: faba9eaf59f5d1c941bacb58ba1faf9f817d39cf
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a646588616b874e40b1ed2a5a0b5e691b075075d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84033883"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487305"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL Database での拡張イベント向けリング バッファー ターゲット コード
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../../includes/sql-database-xevents-selectors-1-include.md)]
 
-テスト中の拡張イベントに関する情報を、最も簡単な方法で取得およびレポートするための完全なコード サンプルが必要です。 拡張イベントのデータの最も簡単なターゲットは、 [リング バッファー ターゲット](https://msdn.microsoft.com/library/ff878182.aspx)です。
+テスト中の拡張イベントに関する情報を、最も簡単な方法で取得およびレポートするための完全なコード サンプルが必要です。 拡張イベントのデータの最も簡単なターゲットは、 [リング バッファー ターゲット](/previous-versions/sql/sql-server-2016/bb630339(v=sql.130))です。
 
 このトピックでは、以下を実行する TRANSACT-SQL コードのサンプルについて説明します。
 
@@ -50,7 +50,7 @@ ms.locfileid: "84033883"
 * SQL Server Management Studio (ssms.exe)。できれば、最新の月次更新バージョン。
   最新の ssms.exe をダウンロードすることができる。
   
-  * 「 [SQL Server Management Studio のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」というタイトルのトピック。
+  * 「 [SQL Server Management Studio のダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)」というタイトルのトピック。
   * [ダウンロードへの直接リンク。](https://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>コード サンプル
@@ -349,6 +349,6 @@ Azure SQL Database での拡張イベントに関する主なトピックは次�
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](/sql/relational-databases/extended-events/determine-which-queries-are-holding-locks)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](/sql/relational-databases/extended-events/find-the-objects-that-have-the-most-locks-taken-on-them)
 -->

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c261ea174f37de51a8fbd5b36aeb40c26d44e6a9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f96365bcdf64d19dc0b894f2f1230233b3137bc7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691396"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842653"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Windows Virtual Desktop (クラシック) 管理ツールをデプロイする
 
@@ -36,7 +36,7 @@ ms.locfileid: "88691396"
 
 管理ツールをデプロイする前に、アプリの登録を作成して管理 UI をデプロイする Azure Active Directory (Azure AD) ユーザーが必要です。 このユーザーには、次の要件があります。
 
-- Azure Multi-Factor Authentication (MFA) が無効になっている
+- Azure AD Multi-Factor Authentication (MFA) が無効になっている
 - ご使用の Azure サブスクリプション内にリソースを作成するためのアクセス許可を持っている
 - Azure AD アプリケーションを作成するためのアクセス許可を持っている 次のステップに従い、あなたのユーザーが[「必要なアクセス許可」](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)の指示に従って必要なアクセス許可を保持しているかどうかを確認します。
 
@@ -98,7 +98,7 @@ GitHub の Azure Resource Manager テンプレートが完成すると、Azure p
 
 これらの手順に従って、ツールを起動します。
 
-1. テンプレート内で指定した名前の Azure App Services リソース (たとえば、Apr3UX) を選択し、それに関連付けられている URL (たとえば、<https://rdmimgmtweb-210520190304.azurewebsites.net>) に移動します。
+1. テンプレート内で指定した名前の Azure App Services リソース (たとえば、Apr3UX) を選択し、それに関連付けられている URL (たとえば、`https://rdmimgmtweb-210520190304.azurewebsites.net`) に移動します。
 2. ご自分の Windows Virtual Desktop 資格情報を使用してサインインします。
 3. テナント グループを選択するよう求められたら、ドロップダウン リストから **[Default Tenant Group]\(既定のテナント グループ\)** を選択します。
 4. **[既定のテナント グループ]** を選択すると、ウィンドウの右側にメニューが表示されます。 このメニューの中から、テナント グループの名前を探して選択します。

@@ -8,17 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.subservice: hadr
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: b81af3e89a3226757c5bf7668a06701c35831072
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 4443ccfe8d570e50352cbb70c83d6094132038cc
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962715"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736897"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server のビジネス継続性と HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -54,7 +55,7 @@ SQL Server の高可用性ソリューションは、Always On 可用性グル�
 
 | テクノロジ | アーキテクチャの例 |
 | --- | --- |
-| **可用性グループ** |同じリージョンの Azure VM で実行している可用性レプリカによって、高い可用性が実現します。 Windows フェールオーバー クラスタリングには Active Directory ドメインが必要であるため、ドメイン コントローラー VM を構成する必要があります。<br/><br/> 冗長性と可用性を高めるために、[可用性グループの概要](availability-group-overview.md)に関するドキュメントに従って、Azure VM を異なる[可用性ゾーン](../../../availability-zones/az-overview.md)にデプロイすることができます。 可用性グループ内の SQL Server VM が可用性ゾーンにデプロイされている場合は、[Azure SQL VM CLI](availability-group-az-cli-configure.md) および [Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)に関する記事に記載されているように、[Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) をリスナーに使用します。<br/> ![可用性グループ](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-ha-always-on.png)<br/>詳細については、「[Azure Virtual Machines での AlwaysOn 可用性グループの自動構成: Resource Manager](availability-group-azure-marketplace-template-configure.md)」を参照してください。 |
+| **可用性グループ** |同じリージョンの Azure VM で実行している可用性レプリカによって、高い可用性が実現します。 Windows フェールオーバー クラスタリングには Active Directory ドメインが必要であるため、ドメイン コントローラー VM を構成する必要があります。<br/><br/> 冗長性と可用性を高めるために、[可用性グループの概要](availability-group-overview.md)に関するドキュメントに従って、Azure VM を異なる[可用性ゾーン](../../../availability-zones/az-overview.md)にデプロイすることができます。 可用性グループ内の SQL Server VM が可用性ゾーンにデプロイされている場合は、[Azure SQL VM CLI](./availability-group-az-commandline-configure.md) および [Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)に関する記事に記載されているように、[Azure Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) をリスナーに使用します。<br/> !["プライマリ レプリカ"、"セカンダリ レプリカ"、および "ファイル共有監視" で作成された "WSFC クラスター" の上の "ドメイン コントローラー" を示す図。](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-ha-always-on.png)<br/>詳細については、「[Azure Virtual Machines での AlwaysOn 可用性グループの自動構成: Resource Manager](./availability-group-quickstart-template-configure.md)」を参照してください。 |
 | **フェールオーバー クラスター インスタンス** |フェールオーバー クラスター インスタンスは SQL Server VM でサポートされています。 FCI 機能には共有ストレージが必要であるため、次の 5 つのソリューションは Azure VM 上の SQL Server で機能します。 <br/><br/> - Windows Server 2019 用の [Azure 共有ディスク](failover-cluster-instance-azure-shared-disks-manually-configure.md)の使用。 共有マネージド ディスクは、マネージド ディスクを複数の仮想マシンに同時に接続できるようにする Azure 製品です。 クラスター内の VM では、SCSI の永続的な予約 (SCSI PR) を使用するクラスター化アプリケーションによって選択された予約に基づいて、接続されたディスクに対して読み取りまたは書き込みを行うことができます。 SCSI PR は、オンプレミスの記憶域ネットワーク (SAN) 上で実行されているアプリケーションによって使用される、業界標準のストレージ ソリューションです。 マネージド ディスクで SCSI PR を有効にすると、これらのアプリケーションを Azure にそのまま移行することができます。 <br/><br/>- Windows Server 2016 以降用のソフトウェアベースの仮想 SAN を提供するための、[記憶域スペース ダイレクト \(S2D\)](failover-cluster-instance-storage-spaces-direct-manually-configure.md) の使用。<br/><br/>- Windows Server 2012 以降用の [Premium ファイル共有](failover-cluster-instance-premium-file-share-manually-configure.md)の使用。 Premium ファイル共有は、SSD によってバックアップされ、待機時間が常に短く、FCI との使用が完全にサポートされています。<br/><br/>- クラスタリングのためにパートナー ソリューションでサポートされているストレージの使用。 SIOS DataKeeper を使用する具体的な例については、[フェールオーバー クラスタリングと SIOS DataKeeper](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/) に関するブログ エントリを参照してください。<br/><br/>- Azure ExpressRoute を介したリモート iSCSI ターゲット用の共有ブロック記憶域の使用。 たとえば、NetApp Private Storage (NPS) は、ExpressRoute と Equinix を使用して iSCSI ターゲットを Azure VM に公開します。<br/><br/>Microsoft パートナーの共有ストレージとデータ レプリケーション ソリューションの場合は、フェールオーバーでのデータ アクセスに関する問題について、ベンダーにお問い合わせください。<br/><br/>||
 
 ## <a name="azure-only-disaster-recovery-solutions"></a>Azure のみ: ディザスター リカバリー ソリューション
@@ -62,10 +63,10 @@ SQL Server の高可用性ソリューションは、Always On 可用性グル�
 
 | テクノロジ | アーキテクチャの例 |
 | --- | --- |
-| **可用性グループ** |可用性レプリカが、障害復旧のために、Azure VM の複数のデータセンターで実行されます。 この複数のリージョンにわたるソリューションは、完全なサイトの機能停止の場合の保護に役立ちます。 <br/> ![可用性グループ](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-dr-alwayson.png)<br/>リージョン内では、すべてのレプリカが同じクラウド サービスおよび同じ仮想ネットワーク内にある必要があります。 各リージョンには個別の仮想ネットワークがあるため、これらのソリューションには仮想ネットワーク間の接続が必要です。 詳細については、[Azure portal を使用したネットワーク間接続の構成](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)に関するページを参照してください。 詳細については、[さまざまな Azure リージョンに存在する SQL Server Always On 可用性グループの構成](availability-group-manually-configure-multiple-regions.md)に関するページを参照してください。|
-| **データベース ミラーリング** |プリンシパルとミラーとサーバーが、ディザスター リカバリーのために、異なるデータセンターで実行されます。 サーバー証明書を使用して、それらをデプロイする必要があります。 SQL Server データベース ミラーリングは、Azure VM 上の SQL Server 2008 や SQL Server 2008 R2 ではサポートされていません。 <br/>![データベース ミラーリング](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-dr-dbmirroring.png) |
-| **Azure Blob Storage を使用したバックアップと復元** |運用データベースが、ディザスター リカバリーのために、別のデータセンターの BLOB ストレージに直接バックアップされます。<br/>![バックアップと復元](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-dr-backup-restore.png)<br/>詳細については、「[Azure VM における SQL Server のバックアップと復元](../../../azure-sql/virtual-machines/windows/backup-restore.md)」を参照してください。 |
-| **Azure Site Recovery を使用する Azure への SQL Server のレプリケートおよびフェールオーバー** |ある Azure データセンターの運用 SQL Server インスタンスが、ディザスター リカバリーのために別の Azure データセンターの Azure Storage に直接レプリケートされます。<br/>![Azure Site Recovery を使用してレプリケートする](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-dr-standalone-sqlserver-asr.png)<br/>詳細については、「[SQL Server ディザスター リカバリーおよび Azure Site Recovery を使用した SQL Server の保護](../../../site-recovery/site-recovery-sql.md)」を参照してください。 |
+| **可用性グループ** |可用性レプリカが、障害復旧のために、Azure VM の複数のデータセンターで実行されます。 この複数のリージョンにわたるソリューションは、完全なサイトの機能停止の場合の保護に役立ちます。 <br/> !["プライマリ レプリカ" と "セカンダリ レプリカ" が "非同期コミット" によって接続されている 2 つのリージョンを示す図。](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-dr-alwayson.png)<br/>リージョン内では、すべてのレプリカが同じクラウド サービスおよび同じ仮想ネットワーク内にある必要があります。 各リージョンには個別の仮想ネットワークがあるため、これらのソリューションには仮想ネットワーク間の接続が必要です。 詳細については、[Azure portal を使用したネットワーク間接続の構成](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)に関するページを参照してください。 詳細については、[さまざまな Azure リージョンに存在する SQL Server Always On 可用性グループの構成](availability-group-manually-configure-multiple-regions.md)に関するページを参照してください。|
+| **データベース ミラーリング** |プリンシパルとミラーとサーバーが、ディザスター リカバリーのために、異なるデータセンターで実行されます。 サーバー証明書を使用して、それらをデプロイする必要があります。 SQL Server データベース ミラーリングは、Azure VM 上の SQL Server 2008 や SQL Server 2008 R2 ではサポートされていません。 <br/>!["ハイ パフォーマンス" の別のリージョンのミラーに接続された 1 つのリージョンの "プリンシパル" を示す図。](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-dr-dbmirroring.png) |
+| **Azure Blob Storage を使用したバックアップと復元** |運用データベースが、ディザスター リカバリーのために、別のデータセンターの BLOB ストレージに直接バックアップされます。<br/>![1 つのリージョンの "データベース" を、別のリージョンの "Blob Storage" にバックアップすることを示す図。](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-dr-backup-restore.png)<br/>詳細については、「[Azure VM における SQL Server のバックアップと復元](../../../azure-sql/virtual-machines/windows/backup-restore.md)」を参照してください。 |
+| **Azure Site Recovery を使用する Azure への SQL Server のレプリケートおよびフェールオーバー** |ある Azure データセンターの運用 SQL Server インスタンスが、ディザスター リカバリーのために別の Azure データセンターの Azure Storage に直接レプリケートされます。<br/>![ディザスター リカバリーのために別のデータセンターの "ASR レプリケーション" を使用する、1 つの Azure データセンターにある "データベース" を表示する図。 ](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-dr-standalone-sqlserver-asr.png)<br/>詳細については、「[SQL Server ディザスター リカバリーおよび Azure Site Recovery を使用した SQL Server の保護](../../../site-recovery/site-recovery-sql.md)」を参照してください。 |
 
 
 ## <a name="hybrid-it-disaster-recovery-solutions"></a>ハイブリッド IT: ディザスター リカバリー ソリューション
@@ -74,7 +75,7 @@ SQL Server の高可用性ソリューションは、Always On 可用性グル�
 | テクノロジ | サンプル アーキテクチャ |
 | --- | --- |
 | **可用性グループ** |クロスサイト障害復旧のために、いくつかの可用性レプリカが Azure VM で実行され、その他のレプリカがオンプレミスで実行されます。 実稼働サイトは、オンプレミスに置くことも、Azure データセンターに置くこともできます。<br/>![可用性グループ](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-dr-alwayson.png)<br/>すべての可用性レプリカは同じフェールオーバー クラスターに存在する必要があるため、クラスターは両方のネットワークにまたがっている必要があります (マルチサブネット フェールオーバー クラスター)。 この構成には、Azure とオンプレミス ネットワークの間の VPN 接続が必要です。<br/><br/>データベースのディザスター リカバリーを成功させるには、ディザスター リカバリー サイトにレプリカ ドメイン コントローラーもインストールする必要があります。|
-| **データベース ミラーリング** |一方のパートナーを Azure VM で実行し、もう一方をオンプレミスで実行して、サーバー証明書を使用したクロスサイトでのディザスター リカバリーを行います。 パートナーは、同じ Active Directory ドメイン内にある必要がなく、VPN 接続も必要ありません。<br/>![データベース ミラーリング](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-dr-dbmirroring.png)<br/>もう 1 つのデータベース ミラーリング シナリオとして、クロスサイト障害復旧のために、1 つのパートナーを Azure VM で実行し、もう 1 つを同じ Active Directory ドメイン内のオンプレミスで実行するという形式があります。 [Azure Virtual Network とオンプレミス ネットワークの間の VPN 接続](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)が必要です。<br/><br/>データベースのディザスター リカバリーを成功させるには、ディザスター リカバリー サイトにレプリカ ドメイン コントローラーもインストールする必要があります。 SQL Server データベース ミラーリングは、Azure VM 上の SQL Server 2008 や SQL Server 2008 R2 ではサポートされていません。 |
+| **データベース ミラーリング** |一方のパートナーを Azure VM で実行し、もう一方をオンプレミスで実行して、サーバー証明書を使用したクロスサイトでのディザスター リカバリーを行います。 パートナーは、同じ Active Directory ドメイン内にある必要がなく、VPN 接続も必要ありません。<br/>![データベース ミラーリング](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-dr-dbmirroring.png)<br/>もう 1 つのデータベース ミラーリング シナリオとして、クロスサイト障害復旧のために、1 つのパートナーを Azure VM で実行し、もう 1 つを同じ Active Directory ドメイン内のオンプレミスで実行するという形式があります。 [Azure Virtual Network とオンプレミス ネットワークの間の VPN 接続](../../../vpn-gateway/tutorial-site-to-site-portal.md)が必要です。<br/><br/>データベースのディザスター リカバリーを成功させるには、ディザスター リカバリー サイトにレプリカ ドメイン コントローラーもインストールする必要があります。 SQL Server データベース ミラーリングは、Azure VM 上の SQL Server 2008 や SQL Server 2008 R2 ではサポートされていません。 |
 | **ログ配布** |クロスサイト障害復旧のために、1 つのサーバーが Azure VM で実行され、もう 1 つがオンプレミスで実行されます。 ログ配布は Windows ファイル共有に依存しているため、Azure Virtual Network とオンプレミス ネットワークの間の VPN 接続が必要です。<br/>![ログ配布](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-dr-log-shipping.png)<br/>データベースのディザスター リカバリーを成功させるには、ディザスター リカバリー サイトにレプリカ ドメイン コントローラーもインストールする必要があります。 |
 | **Azure Blob Storage を使用したバックアップと復元** |オンプレミスの運用データベースが、ディザスター リカバリーのために、Azure Blob Storage に直接バックアップされます。<br/>![バックアップと復元](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-dr-backup-restore.png)<br/>詳細については、[Azure Virtual Machines における SQL Server のバックアップと復元](../../../azure-sql/virtual-machines/windows/backup-restore.md)に関するページを参照してください。 |
 | **Azure Site Recovery を使用する Azure への SQL Server のレプリケートおよびフェールオーバー** |オンプレミスの運用 SQL Server インスタンスが、ディザスター リカバリーのために Azure Storage に直接レプリケートされます。<br/>![Azure Site Recovery を使用してレプリケートする](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-dr-standalone-sqlserver-asr.png)<br/>詳細については、「[SQL Server ディザスター リカバリーおよび Azure Site Recovery を使用した SQL Server の保護](../../../site-recovery/site-recovery-sql.md)」を参照してください。 |
@@ -84,9 +85,13 @@ SQL Server の高可用性ソリューションは、Always On 可用性グル�
 
 [ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)を所有している場合は、パッシブ ディザスター リカバリー インスタンスの追加のライセンス コストを発生させることなく、SQL Server でハイブリッド ディザスター リカバリー (DR) プランを実装できます。
 
-次の図では、12 個のコアを使用するオンプレミスの SQL Server デプロイ用のディザスター リカバリー レプリカとして、12 個のコアを使用する Azure 仮想マシンで実行されている SQL Server が、セットアップで使用されています。 これまでは、オンプレミス デプロイと Azure Virtual Machines デプロイのために、SQL Server の 12 個のコアをライセンスする必要がありました。 新しい特典では、Azure 仮想マシン上で実行するためのパッシブ レプリカの特典が提供されます。 現在は、Azure Virtual Machines 上のパッシブ レプリカのディザスター リカバリーの条件が満たされている限り、オンプレミスで実行されている SQL Server の 12 個のコアのみをライセンスする必要があります。
+たとえば、3 つのレプリカすべてが Azure 内でホストされている場合は、2 つの無料パッシブ セカンダリを使用できます。 
 
-![Azure の無料のディザスター リカバリー レプリカ](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/free-dr-replica-azure.png)
+![すべてが Azure 内の場合、2 つの無料パッシブ](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-primary-in-azure.png)
+
+または、1 つのライセンスされたプライマリ (オンプレミス)、1 つの HA 用無料パッシブと 1 つの DR 用無料パッシブ (オンプレミス)、および 1 つの DR 用無料パッシブ (Azure 内) を使用して、ハイブリッド フェールオーバー環境を構成することもできます。
+
+![環境が、1 つのオンプレミスのプライマリ レプリカを使用したハイブリッドのときの 3 つの無料パッシブ](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-with-primary-on-prem.png)
 
 詳細については、[製品ライセンス条項](https://www.microsoft.com/licensing/product-licensing/products)に関するページを参照してください。 
 
@@ -101,12 +106,12 @@ Azure の VM、ストレージ、およびネットワークには、オンプ�
 ### <a name="high-availability-nodes-in-an-availability-set"></a>可用性セット内の高可用性ノード
 Azure の可用性セットを使用すると、高可用性ノードを別個の障害ドメインと更新ドメインに配置できます。 Azure プラットフォームによって、可用性セット内の各仮想マシンに更新ドメインと障害ドメインが割り当てられます。 データセンター内のこの構成により、計画的または計画外のメンテナンス イベント中に、少なくとも 1 つの仮想マシンが利用可能であり、99.95% の Azure SLA が満たされることが保証されます。 
 
-高可用性の設定を構成するには、参加するすべての SQL Server 仮想マシンを同じ可用性セットに配置して、メンテナンス イベント中のアプリケーションまたはデータの損失を回避します。 同じクラウド サービス上にあるノードのみが同じ可用性セットに属することができます。 詳細については、[仮想マシンの可用性の管理](../../../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+高可用性の設定を構成するには、参加するすべての SQL Server 仮想マシンを同じ可用性セットに配置して、メンテナンス イベント中のアプリケーションまたはデータの損失を回避します。 同じクラウド サービス上にあるノードのみが同じ可用性セットに属することができます。 詳細については、[仮想マシンの可用性の管理](../../../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
 ### <a name="high-availability-nodes-in-an-availability-zone"></a>可用性ゾーン内の高可用性ノード
 可用性ゾーンは、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 リージョン内での可用性ゾーンの物理的な分離は、少なくとも 1 つの仮想マシンが利用可能であり、99.99% の Azure SLA が満たされることを保証することで、データセンターで障害が発生した場合にアプリケーションとデータを保護するのに役立ちます。 
 
-高可用性を構成するには、参加する SQL Server 仮想マシンをリージョン内の可用性ゾーンに分散させて配置します。 可用性ゾーン間のネットワーク間転送については、追加料金が発生します。 詳細については、[可用性ゾーン](/azure/availability-zones/az-overview)に関するページをご覧ください。 
+高可用性を構成するには、参加する SQL Server 仮想マシンをリージョン内の可用性ゾーンに分散させて配置します。 可用性ゾーン間のネットワーク間転送については、追加料金が発生します。 詳細については、[可用性ゾーン](../../../availability-zones/az-overview.md)に関するページをご覧ください。 
 
 
 ### <a name="failover-cluster-behavior-in-azure-networking"></a>Azure ネットワークでのフェールオーバー クラスターの動作
@@ -123,7 +128,7 @@ Azure の RFC に準拠していない DHCP サービスにより、特定のフ
 
 このシナリオは、クラスター ネットワーク名をオンラインにするために、クラスター ネットワーク名に未使用の静的 IP アドレスを割り当てることによって回避できます。 たとえば、169.254.1.1 のようなリンク ローカル IP アドレスを使用できます。 このプロセスを簡略化するには、[可用性グループのための Azure での Windows フェールオーバー クラスターの構成](https://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx)に関するページを参照してください。
 
-詳細については、「[Azure Virtual Machines での AlwaysOn 可用性グループの自動構成: Resource Manager](availability-group-azure-marketplace-template-configure.md)」を参照してください。
+詳細については、「[Azure Virtual Machines での AlwaysOn 可用性グループの自動構成: Resource Manager](./availability-group-quickstart-template-configure.md)」を参照してください。
 
 ### <a name="support-for-availability-group-listeners"></a>可用性グループ リスナーのサポート
 可用性グループ リスナーは、Windows Server 2012 以降を実行している Azure VM でサポートされています。 このサポートは、可用性グループ ノードである Azure VM 上で有効になっている負荷分散エンドポイントを使用して実現されます。 Azure で実行されているクライアント アプリケーションと、オンプレミスで実行されているものの両方に対してリスナーを動作させるには、特別な構成手順に従う必要があります。
@@ -146,11 +151,11 @@ Data Source=ReplicaServer1;Failover Partner=ReplicaServer2;Initial Catalog=Avail
 
 クライアント接続の詳細については、以下を参照してください。
 
-* [SQL Server Native Client での接続文字列キーワードの使用](https://msdn.microsoft.com/library/ms130822.aspx)
-* [データベース ミラーリング セッションへのクライアントの接続 (SQL Server)](https://technet.microsoft.com/library/ms175484.aspx)
-* [ハイブリッド IT での可用性グループ リスナーへの接続](https://blogs.msdn.com/b/sqlalwayson/archive/2013/02/14/connecting-to-availability-group-listener-in-hybrid-it.aspx)
-* [可用性グループ リスナー、クライアント接続、およびアプリケーションのフェールオーバー (SQL Server)](https://technet.microsoft.com/library/hh213417.aspx)
-* [可用性グループでのデータベース ミラーリング接続文字列の使用](https://technet.microsoft.com/library/hh213417.aspx)
+* [SQL Server Native Client での接続文字列キーワードの使用](/sql/relational-databases/native-client/applications/using-connection-string-keywords-with-sql-server-native-client)
+* [データベース ミラーリング セッションへのクライアントの接続 (SQL Server)](/sql/database-engine/database-mirroring/connect-clients-to-a-database-mirroring-session-sql-server)
+* [ハイブリッド IT での可用性グループ リスナーへの接続](/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
+* [可用性グループ リスナー、クライアント接続、およびアプリケーションのフェールオーバー (SQL Server)](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover)
+* [可用性グループでのデータベース ミラーリング接続文字列の使用](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover)
 
 ### <a name="network-latency-in-hybrid-it"></a>ハイブリッド IT でのネットワーク待ち時間
 オンプレミス ネットワークと Azure 間に長いネットワーク待ち時間が生じる期間がある可能性があることを前提として、HADR ソリューションをデプロイします。 レプリカを Azure にデプロイする場合、同期モードでは同期コミットではなく、非同期コミットを使用します。 オンプレミスと Azure の両方にデータベース ミラーリング サーバーをデプロイする場合は、高い安全性モードではなく、高いパフォーマンス モードを使用します。
@@ -162,8 +167,4 @@ Azure ディスク内の geo レプリケーションでは、同じデータベ
 
 ## <a name="next-steps"></a>次のステップ
 
-[可用性グループ](availability-group-overview.md)と[フェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)のどちらが、ビジネスに最適なビジネス継続性ソリューションであるかを判断します。 その後、高可用性とディザスター リカバリー用に環境を構成するための[ベスト プラクティス](hadr-cluster-best-practices.md)を確認します。 
-
-
-
-
+[可用性グループ](availability-group-overview.md)と[フェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)のどちらが、ビジネスに最適なビジネス継続性ソリューションであるかを判断します。 その後、高可用性とディザスター リカバリー用に環境を構成するための[ベスト プラクティス](hadr-cluster-best-practices.md)を確認します。

@@ -2,16 +2,16 @@
 title: ASP.NET Core アプリの構成
 description: Azure App Service のネイティブ Windows インスタンス、または事前に作成した Linux コンテナーで ASP.NET Core アプリを構成する方法について学習します。 この記事では、最も一般的な構成タスクを紹介しています。
 ms.devlang: dotnet
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 3456adc2b143f1f51115183fe4873938d067d267
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1223ff5c56d3c7d58b324d2099980bc0b5408125
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961671"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655970"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>Azure App Service 向けの ASP.NET Core アプリを構成する
 
@@ -128,7 +128,7 @@ namespace SomeNamespace
 たとえば、App Service と *appsettings.json* で同じ名前のアプリ設定を構成した場合は、App Service の値が *appsettings.json* の値よりも優先されます。 ローカルの *appsettings.json* 値ではアプリをローカルでデバッグできますが、App Service の値では実稼働設定の製品内でアプリを実行できます。 接続文字列は同じように機能します。 これにより、コード リポジトリの外部にアプリケーション シークレットを保存し、コードを変更することなく適切な値にアクセスできます。
 
 > [!NOTE]
-> *appsettings. json* の[階層型の構成データ](/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data)は、.NET Core に標準の `:` 区切り記号を使用してアクセスされることに注意してください。 App Service で特定の階層型構成設定をオーバーライドするには、キーにアプリ設定名を同じ区切り形式で設定します。 [Cloud Shell](https://shell.azure.com) で次の例を実行できます。
+> *appsettings. json* の [階層型の構成データ](/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data)は、.NET Core に標準の `:` 区切り記号を使用してアクセスされることに注意してください。 App Service で特定の階層型構成設定をオーバーライドするには、キーにアプリ設定名を同じ区切り形式で設定します。 [Cloud Shell](https://shell.azure.com) で次の例を実行できます。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings My:Hierarchical:Config:Data="some value"
@@ -192,6 +192,7 @@ public void ConfigureServices(IServiceCollection services)
     {
         options.ForwardedHeaders =
             ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+        // These three subnets encapsulate the applicable Azure subnets. At the moment, it's not possible to narrow it down further.
         options.KnownNetworks.Add(new IPNetwork(IPAddress.Parse("::ffff:10.0.0.0"), 104));
         options.KnownNetworks.Add(new IPNetwork(IPAddress.Parse("::ffff:192.168.0.0"), 112));
         options.KnownNetworks.Add(new IPNetwork(IPAddress.Parse("::ffff:172.16.0.0"), 108));

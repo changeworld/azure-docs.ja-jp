@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: 4d0800ff8a35c5c91b067a85dfcc089f2e343d1f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cc6bcef77ca1601b76468586aa6af202836f1438
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86090854"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631994"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>音声コンテナー用のバッチ処理キット
 
@@ -75,6 +75,7 @@ MyContainer3:
 > [!NOTE] 
 > * この例では、構成ファイルと入力、出力、およびログのディレクトリに同じディレクトリ (`/my_nfs`) を使用しています。 これらのフォルダーには、ホストされたディレクトリまたは NFS でマウントされたディレクトリを使用できます。
 > * `–h` を使用してクライアントを実行すると、使用できるコマンドライン パラメーターとその既定値が一覧表示されます。 
+> * バッチ処理コンテナーは、Linux でのみサポートされています。
 
 Docker の `run` コマンドを使用してコンテナーを開始します。 その結果、コンテナー内で対話型シェルが開始されます。
 
@@ -85,14 +86,15 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs --entrypoint /bin/bash /mn
 バッチ クライアントを実行するには:  
 
 ```Docker
-run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
+run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -file_log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
 バッチ クライアントとコンテナーを 1 つのコマンドで実行するには:
 
 ```Docker
-docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
+docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -file_log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
+
 
 クライアントの実行が開始されます。 オーディオ ファイルが以前の実行で既に文字起こしされている場合、クライアントでは自動的にそのファイルがスキップされます。 一時的なエラーが発生した場合、ファイルは自動再試行によって送信されます。また、クライアントで再試行するエラーを区別できます。 文字起こしのエラーが発生した場合、クライアントでは文字起こしが続行され、進行状況を失うことなく再試行されます。  
 
@@ -132,7 +134,7 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batc
 
 `REST` モードは、オーディオ ファイルのバッチ送信、状態チェック、およびロング ポーリング用の HTTP エンドポイントの基本セットを提供する API サーバー モードです。 また、Python モジュール拡張機能を使用したプログラムによる消費、またはサブモジュールとしてのインポートを行うこともできます。
 
-:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="daemon モードでファイルを処理するバッチキット コンテナーを示す図。":::
+:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="REST モードでファイルを処理するバッチキット コンテナーを示す図。":::
 
 1. バッチ クライアントから使用される音声コンテナー エンドポイントを `config.yaml` ファイルに定義します。 
 2. API サーバーのエンドポイントのいずれかに HTTP 要求要求を送信します。 
@@ -154,7 +156,7 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batc
 > [!NOTE]
 > *run.log* ファイルは大きくなりすぎると、バッチ クライアントによって定期的に上書きされる場合があります。
 
-クライアントでは、Docker の `run` コマンドの `-log_folder` 引数で指定されたディレクトリに *run.log* ファイルが作成されます。 ログは既定でデバッグ レベルでキャプチャされます。 同じログが `stdout/stderr` に送信され、`-log_level` 引数に応じてフィルター処理されます。 このログは、デバッグ目的、またはサポートのためにトレースを送信する必要がある場合にのみ必要です。 ログ フォルダーには、各オーディオ ファイルの Speech SDK ログも含まれています。
+クライアントでは、Docker の `run` コマンドの `-log_folder` 引数で指定されたディレクトリに *run.log* ファイルが作成されます。 ログは既定でデバッグ レベルでキャプチャされます。 同じログが `stdout/stderr` に送信され、`-file_log_level` 引数または `console_log_level` 引数に応じてフィルター処理されます。 このログは、デバッグ目的、またはサポートのためにトレースを送信する必要がある場合にのみ必要です。 ログ フォルダーには、各オーディオ ファイルの Speech SDK ログも含まれています。
 
 `-output_folder` で指定された出力ディレクトリには、*run_summary.json*  ファイルが格納されています。このファイルは、30 秒ごとに定期的に、または新しい文字起こしが完了するたびに書き換えられます。 このファイルを使用すると、バッチの進行状況を確認できます。 また、バッチが完了したときのすべてのファイルの最終的な実行の統計情報と最終的な状態も含まれます。 プロセスに clean exit があると、バッチは完了します。 
 

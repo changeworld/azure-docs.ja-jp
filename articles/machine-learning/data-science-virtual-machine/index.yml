@@ -4,19 +4,18 @@ summary: Azure Data Science Virtual Machine (DSVM) は仮想マシン イメー�
 metadata:
   title: Data Science Virtual Machine のドキュメント - Azure
   description: Azure Data Science Virtual Machine (DSVM) は仮想マシン イメージであり、データ サイエンスおよび機械学習のツールを備えています。
-  ms.service: machine-learning
-  ms.subservice: data-science-vm
+  ms.service: data-science-vm
   ms.topic: landing-page
   ms.collection: collection
   author: gvashishtha
   ms.author: gopalv
   ms.date: 09/13/2019
-  ms.openlocfilehash: 816a82095c84c7991d5d68b08d479c629d10f07a
-  ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+  ms.openlocfilehash: f6f844875d69584052625c33aa8d3d42be2fd2dd
+  ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/30/2020
-  ms.locfileid: "87431905"
+  ms.lasthandoff: 02/14/2021
+  ms.locfileid: "100518472"
 landingContent:
 - title: Data Science Virtual Machine を使ってみる
   linkLists:
@@ -53,6 +52,6 @@ landingContent:
   - linkListType: learn
     links:
     - text: Azure Machine Learning コンピューティング インスタンス
-      url: /azure/machine-learning/concept-compute-instance
+      url: ../concept-compute-instance.md
     - text: Microsoft の ML 製品の比較
-      url: https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
+      url: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=%2fazure%2fmachine-learning%2fstudio%2fcontext%2fml-context

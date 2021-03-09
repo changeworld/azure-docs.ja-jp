@@ -1,17 +1,17 @@
 ---
 title: 適切なデプロイの種類の選択 - Azure Database for MariaDB
 description: この記事では、Azure Database for MariaDB をサービスとしてのインフラストラクチャ (IaaS) またはサービスとしてのプラットフォーム (PaaS) としてデプロイする前に考慮すべき要素について説明します。
-author: kummanish
-ms.author: manishku
-ms.service: mariadb
+author: mksuni
+ms.author: sumuth
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: d3b65558a12fb6b20f449f5386c0ce7e598433b6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 921ad8d187f6c2478bdf92aab0ee0ec3c9e75bce
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110302"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664520"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Azure で適切な MariaDB サーバーオプションを選択する
 
@@ -38,11 +38,11 @@ Azure では、MariaDB サーバーのワークロードをホスト型仮想マ
 | MariaDB の修正プログラムの適用     | 自動  | お客様が管理 |
 | 高可用性 | 高可用性 (HA) モデルは、ノード レベルの中断が発生した場合の組み込みのフェールオーバー メカニズムに基づいています。 このような場合、このサービスは自動的に新しいインスタンスを作成し、このインスタンスにストレージを接続します。 | お客様が高可用性の設計、実装、テスト、保守を行います。 機能には、Always On フェールオーバー クラスタリング、Always On グループ レプリケーション、ログ配布、またはトランザクション レプリケーションが含まれることがあります。|
 | ゾーン冗長性 | 以下は現在サポートされていません | Azure VM は、さまざまな可用性ゾーンで実行するように設定できます。 オンプレミス ソリューションの場合、お客様は独自のセカンダリ データ センターを作成、管理、および保守する必要があります。|
-| ハイブリッド シナリオ | [データイン レプリケーション](https://docs.microsoft.com/azure/MariaDB/concepts-data-in-replication)を使用すると、外部の MariaDB サーバーから Azure Database for MariaDB サービスにデータを同期できます。 外部サーバーとして、オンプレミス、仮想マシン、または他のクラウド プロバイダーによってホストされるデータベース サービスを使用できます。<br/><br/> [読み取りレプリカ](https://docs.microsoft.com/azure/mariadb/concepts-read-replicas)機能を使用すると、Azure Database for MariaDB マスター サーバーから、最大 5 台の読み取り専用レプリカ サーバーにデータをレプリケートできます。 レプリカは、同じ Azure リージョン内に存在するか、複数のリージョンにまたがっています。 読み取り専用レプリカは、binlog レプリケーション テクノロジを使用して非同期的に更新されます。<br/><br/>リージョン間読み取りレプリケーションは、現在パブリック プレビュー段階です。| お客様が管理
-| バックアップと復元 | [サーバーのバックアップ](https://docs.microsoft.com/azure/MariaDB/concepts-backup#backups)を自動的に作成し、ローカル冗長または geo 冗長のいずれかであるユーザー構成ストレージに保存します。 このサービスでは、完全バックアップ、差分バックアップ、およびトランザクション ログ バックアップが作成されます。 | お客様が管理 |
-| データベース操作の監視 | お客様は、データベース操作に[アラートを設定](https://docs.microsoft.com/azure/MariaDB/concepts-monitoring)し、しきい値に達したときに対応できます。 | お客様が管理 |
-| 高度な脅威保護 | [Advanced Threat Protection](https://docs.microsoft.com/azure/MariaDB/howto-database-threat-protection-portal) を提供します。 この保護により、データベースにアクセスしたりデータベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティが検出されます。<br/><br/>Advanced Threat Protection は現在パブリック プレビュー段階です。| お客様は自身でこの保護を構築する必要があります。
-| 障害復旧 | ユーザー構成の[ローカル冗長または geo 冗長ストレージ](https://docs.microsoft.com/azure/MariaDB/howto-restore-server-portal)に自動バックアップを保存します。 バックアップを使用して、特定の時点にサーバーを復元することもできます。 保持期間は 7 日から 35 日の範囲です。 復元は、Azure portal を使用して実行できます。 | お客様が全面的に管理します。 責任には、スケジュール設定、テスト、アーカイブ、ストレージ、保持が含まれますが、これに限定されるものではありません。 追加のオプションとして、Azure Recovery Services コンテナーを使用して、Azure VM と VM 上のデータベースをバックアップすることができます。 このオプションはプレビュー段階です。 |
+| ハイブリッド シナリオ | [データイン レプリケーション](concepts-data-in-replication.md)を使用すると、外部の MariaDB サーバーから Azure Database for MariaDB サービスにデータを同期できます。 外部サーバーとして、オンプレミス、仮想マシン、または他のクラウド プロバイダーによってホストされるデータベース サービスを使用できます。<br/><br/> [読み取りレプリカ](concepts-read-replicas.md)機能を使用すると、Azure Database for MariaDB ソース サーバーから、最大 5 台の読み取り専用レプリカ サーバーにデータをレプリケートできます。 レプリカは、同じ Azure リージョン内に存在するか、複数のリージョンにまたがっています。 読み取り専用レプリカは、binlog レプリケーション テクノロジを使用して非同期的に更新されます。<br/><br/>リージョン間読み取りレプリケーションは、現在パブリック プレビュー段階です。| お客様が管理
+| バックアップと復元 | [サーバーのバックアップ](concepts-backup.md#backups)を自動的に作成し、ローカル冗長または geo 冗長のいずれかであるユーザー構成ストレージに保存します。 このサービスでは、完全バックアップ、差分バックアップ、およびトランザクション ログ バックアップが作成されます。 | お客様が管理 |
+| データベース操作の監視 | お客様は、データベース操作に[アラートを設定](concepts-monitoring.md)し、しきい値に達したときに対応できます。 | お客様が管理 |
+| 高度な脅威保護 | [Advanced Threat Protection](howto-database-threat-protection-portal.md) を提供します。 この保護により、データベースにアクセスしたりデータベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティが検出されます。<br/><br/>Advanced Threat Protection は現在パブリック プレビュー段階です。| お客様は自身でこの保護を構築する必要があります。
+| 障害復旧 | ユーザー構成の[ローカル冗長または geo 冗長ストレージ](howto-restore-server-portal.md)に自動バックアップを保存します。 バックアップを使用して、特定の時点にサーバーを復元することもできます。 保持期間は 7 日から 35 日の範囲です。 復元は、Azure portal を使用して実行できます。 | お客様が全面的に管理します。 責任には、スケジュール設定、テスト、アーカイブ、ストレージ、保持が含まれますが、これに限定されるものではありません。 追加のオプションとして、Azure Recovery Services コンテナーを使用して、Azure VM と VM 上のデータベースをバックアップすることができます。 このオプションはプレビュー段階です。 |
 | パフォーマンスに関する推奨事項 | システム生成の使用状況ログ ファイルに基づいて、[パフォーマンスに関する推奨事項](https://techcommunity.microsoft.com/t5/Azure-Database-for-MariaDB/Azure-brings-intelligence-and-high-performance-to-Azure-Database/ba-p/769110)をお客様に提供します。 推奨事項は、ワークロードを最適化するのに役立ちます。<br/><br/>パフォーマンスに関する推奨事項は現在パブリック プレビュー段階です。 | お客様が管理 |
 
 ## <a name="business-motivations-for-choosing-paas-or-iaas"></a>PaaS と IaaS のいずれかを選択するときのビジネスの要因
@@ -55,9 +55,9 @@ MariaDB データベースをホストするために PaaS と IaaS のどちら
 
 #### <a name="billing"></a>課金
 
-Azure Database for MariaDB は、現在、リソースの料金が異なる複数のサービス レベルでサービスとして利用できます。 すべてのリソースは、固定レートで時間単位で課金されます。 現在のサポートされているサービス レベル、コンピューティング サイズ、ストレージ容量の最新情報については、[仮想コアベースの購入モデル](https://docs.microsoft.com/azure/MariaDB/concepts-pricing-tiers)に関する記事を参照してください。 サービス レベルとコンピューティング サイズを動的に調整して、アプリケーションのさまざまなスループット ニーズを満たすことができます。 インターネット トラフィックの送信に対しては、通常の[データ転送料金](https://azure.microsoft.com/pricing/details/data-transfers/)で課金されます。
+Azure Database for MariaDB は、現在、リソースの料金が異なる複数のサービス レベルでサービスとして利用できます。 すべてのリソースは、固定レートで時間単位で課金されます。 現在のサポートされているサービス レベル、コンピューティング サイズ、ストレージ容量の最新情報については、[仮想コアベースの購入モデル](concepts-pricing-tiers.md)に関する記事を参照してください。 サービス レベルとコンピューティング サイズを動的に調整して、アプリケーションのさまざまなスループット ニーズを満たすことができます。 インターネット トラフィックの送信に対しては、通常の[データ転送料金](https://azure.microsoft.com/pricing/details/data-transfers/)で課金されます。
 
-Azure Database for MariaDB では、データベース ソフトウェアの構成、修正プログラムの適用、およびアップグレードは Microsoft によって自動的に行われます。 これらの自動化されたアクションにより、管理コストが削減されます。 また、Azure Database for MariaDB には [組み込みのバックアップ](https://docs.microsoft.com/azure/MariaDB/concepts-backup)機能もあります。 こうした機能は、特に多数のデータベースがある場合の大幅なコスト削減に役立ちます。 これに対し、Azure VM 上の MariaDB では、任意の MariaDB バージョンを選択して実行することができます。 どの MariaDB バージョンを使用する場合でも、プロビジョニングされた VM と使用されている特定の MariaDB ライセンスの種類のコストをお支払いいただきます。
+Azure Database for MariaDB では、データベース ソフトウェアの構成、修正プログラムの適用、およびアップグレードは Microsoft によって自動的に行われます。 これらの自動化されたアクションにより、管理コストが削減されます。 また、Azure Database for MariaDB には [組み込みのバックアップ](concepts-backup.md)機能もあります。 こうした機能は、特に多数のデータベースがある場合の大幅なコスト削減に役立ちます。 これに対し、Azure VM 上の MariaDB では、任意の MariaDB バージョンを選択して実行することができます。 どの MariaDB バージョンを使用する場合でも、プロビジョニングされた VM と使用されている特定の MariaDB ライセンスの種類のコストをお支払いいただきます。
 
 Azure Database for MariaDB は、あらゆる種類のノード レベルの中断に対して組み込みの高可用性を提供しながら、サービスに対する 99.99% の SLA 保証を維持します。 ただし、VM 内のデータベース高可用性を実現するには、MariaDB データベースで利用可能な [MariaDB レプリケーション](https://mariadb.com/kb/en/library/setting-up-replication/)などの高可用性オプションを使用する必要があります。 サポートされている高可用性オプションを使用しても、追加の SLA は提供されません。 ただし、追加コストと管理オーバーヘッドで 99.99% を超えるデータベース可用性を実現できます。
 
@@ -89,7 +89,7 @@ Azure Database for MariaDB は、あらゆる種類のノード レベルの中�
 
   また、別のデータ センターに高可用性を構成するために必要な構成や管理は、最小限で済むか、まったく行わないで済みます。
 
-* Azure VM 上の MariaDB では、オペレーティング システムと MariaDB サーバー インスタンスの構成を全面的に制御できます。 VM では、オペレーティング システムとデータベース ソフトウェアを更新またはアップグレードするタイミングを自分で決定します。 また、ウイルス対策アプリケーションなどの追加ソフトウェアをインストールするタイミングも決定します。 修正プログラムの適用、バックアップ、高可用性の実現を大幅に簡素化するために、自動化された機能がいくつか用意されています。 VM のサイズ、ディスクの数、ストレージの構成を制御できます。 詳細については、[Azure の仮想マシンおよびクラウド サービスのサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)に関する記事を参照してください。
+* Azure VM 上の MariaDB では、オペレーティング システムと MariaDB サーバー インスタンスの構成を全面的に制御できます。 VM では、オペレーティング システムとデータベース ソフトウェアを更新またはアップグレードするタイミングを自分で決定します。 また、ウイルス対策アプリケーションなどの追加ソフトウェアをインストールするタイミングも決定します。 修正プログラムの適用、バックアップ、高可用性の実現を大幅に簡素化するために、自動化された機能がいくつか用意されています。 VM のサイズ、ディスクの数、ストレージの構成を制御できます。 詳細については、[Azure の仮想マシンおよびクラウド サービスのサイズ](../virtual-machines/sizes.md)に関する記事を参照してください。
 
 ### <a name="time-to-move-to-azure"></a>Azure へ移行するタイミング
 
@@ -102,4 +102,4 @@ Azure Database for MariaDB は、あらゆる種類のノード レベルの中�
 ## <a name="next-steps"></a>次のステップ
 
 * 「[Azure Database for MariaDB の価格](https://azure.microsoft.com/pricing/details/MariaDB/)」を参照します。
-* [初めてのサーバーを作成](https://docs.microsoft.com/azure/MariaDB/quickstart-create-MariaDB-server-database-using-azure-portal)してみましょう。
+* [初めてのサーバーを作成](quickstart-create-mariadb-server-database-using-azure-portal.md)してみましょう。

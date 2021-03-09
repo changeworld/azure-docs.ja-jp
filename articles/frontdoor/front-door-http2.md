@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 7cdcef80ef2433d34b32589d2539089fb9801eb1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 20d45f5966aca3df89e17e03aa6120a4ddf5c5b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399431"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91448698"
 ---
 # <a name="http2-support-in-azure-front-door"></a>Azure Front Door の HTTP/2 サポート
 
 現在、HTTP/2 サポートは、すべての Azure Front Door 構成に対してアクティブです。 顧客からのそれ以上のアクションは必要ありません。
 
-HTTP/2 は HTTP/1.1 に対するメジャー リビジョンです。 これにより、Web パフォーマンスの高速化、応答時間の短縮、ユーザー エクスペリエンスの向上が実現される一方で、使い慣れた HTTP メソッド、状態コード、およびセマンティクスは維持されます。 HTTP/2 は HTTP および HTTPS と連携して動作するように設計されていますが、多くのクライアント Web ブラウザーは HTTP/2 over TLS (トランスポート層セキュリティ) のみをサポートしています。
+HTTP/2 は HTTP/1.1 のメジャー リビジョンであり、応答時間を短縮することにより、Web パフォーマンスを向上させることができます。 HTTP/2 は、使い慣れた HTTP メソッド、状態コード、およびセマンティクスを維持することによって、ユーザー エクスペリエンスを向上させます。 HTTP/2 は HTTP および HTTPS と連携して動作するように設計されていますが、多くのクライアント Web ブラウザーは、HTTP/2 over TLS (トランスポート層セキュリティ) のみをサポートしています。
 
 > [!NOTE]
 > HTTP/2 プロトコルのサポートは、クライアントから Front Door への要求に対してのみ使用できます。 バックエンド プールでの Front Door からバックエンドへの通信は、HTTP/1.1 経由で行われます。 

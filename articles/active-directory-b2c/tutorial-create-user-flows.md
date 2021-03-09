@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/30/2020
+ms.date: 12/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 041b1766ae6a64f51d922de128ef316cc0ed8260
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 6b0bdc5a5b58c205d888c8892a4333225a9b316f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922171"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557138"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C 内にユーザー フローを作成する
 
@@ -28,12 +28,12 @@ ms.locfileid: "87922171"
 > * プロファイル編集ユーザー フローを作成する
 > * パスワードのリセット ユーザー フローを作成する
 
-このチュートリアルでは、Azure portal を使用して、いくつかの推奨されるユーザー フローを作成する方法について説明します。 アプリケーションにリソース所有者のパスワード資格情報 (ROPC) フローを設定する方法に関する情報をお探しの場合は、「[Azure AD B2C でリソース所有者のパスワード資格情報フローを構成する](configure-ropc.md)」を参照してください。
+このチュートリアルでは、Azure portal を使用して、いくつかの推奨されるユーザー フローを作成する方法について説明します。 アプリケーションにリソース所有者のパスワード資格情報 (ROPC) フローを設定する方法に関する情報をお探しの場合は、「[Azure AD B2C でリソース所有者のパスワード資格情報フローを構成する](add-ropc-policy.md)」を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 > [!IMPORTANT]
-> ユーザー フローのバージョンを参照する方法が変更されました。 これまでは、V1 (運用対応) バージョンと V1.1 および V2 (プレビュー) バージョンが提供されていました。 現在は、ユーザー フローは**推奨** (次世代プレビュー) バージョンと**標準** (一般提供) バージョンに統合されています。 V1.1 と V2 の従来のプレビュー ユーザー フローはすべて、**2021 年 8 月 1 日**までに非推奨になる予定です。 詳細については、[Azure AD B2C のユーザー フローのバージョン](user-flow-versions.md)に関するページを参照してください。
+> ユーザー フローのバージョンを参照する方法が変更されました。 これまでは、V1 (運用対応) バージョンと V1.1 および V2 (プレビュー) バージョンが提供されていました。 現在は、ユーザー フローは **推奨** (次世代プレビュー) バージョンと **標準** (一般提供) バージョンに統合されています。 V1.1 と V2 の従来のプレビュー ユーザー フローはすべて、**2021 年 8 月 1 日** までに非推奨になる予定です。 詳細については、[Azure AD B2C のユーザー フローのバージョン](user-flow-versions.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -81,6 +81,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. 新しいパスワードを入力し、そのパスワードを確認します。
 1. 国とリージョンを選択し、表示する名前を入力し、郵便番号を入力したら、 **[作成]** をクリックします。 トークンが `https://jwt.ms` に返され、表示されます。
 1. これでユーザー フローをもう一度実行できるようになりました。作成したアカウントでサインインできる必要があります。 返されたトークンには、選択した国/リージョン、名前、および郵便番号の要求が含まれています。
+
+> [!NOTE]
+> [ユーザー フローを実行します] エクスペリエンスは、現在、認可コード フローを使用する、種類が SPA の応答 URL と互換性がありません。 これらの種類のアプリで [ユーザー フローを実行します] エクスペリエンスを使用するには、種類が "Web" の応答 URL を登録し、[こちら](tutorial-register-spa.md)の説明に従って暗黙的なフローを有効にします。
 
 ## <a name="create-a-profile-editing-user-flow"></a>プロファイル編集ユーザー フローを作成する
 
@@ -130,7 +133,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > * プロファイル編集ユーザー フローを作成する
 > * パスワードのリセット ユーザー フローを作成する
 
-次に、ユーザーが Azure AD、Amazon、Facebook、GitHub、LinkedIn、Microsoft、Twitter などのプロバイダーにサインインできるように、お使いのアプリケーションに ID プロバイダーを追加する手順について確認します。
+次に、Azure AD B2C を使用して、アプリケーションでユーザーをサインインおよびサインアップする方法を学習します。 下記のリンクを使用して ASP.NET Web アプリケーションに移動するか、目次の「**ユーザーを認証する**」の下にある別のアプリケーションに移動してください。
 
 > [!div class="nextstepaction"]
-> [お使いのアプリケーションに ID プロバイダーを追加する >](tutorial-add-identity-providers.md)
+> [チュートリアル: Azure AD B2C を使用して Web アプリケーションで認証を有効にする >](tutorial-web-app-dotnet.md)

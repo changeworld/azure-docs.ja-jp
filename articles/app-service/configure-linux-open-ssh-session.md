@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: d46aacc441b412a117d906e0201a9bed6046a338
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 7178b8079bbb2411e0b38c3ef59a9981fb2d55be
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961607"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005241"
 ---
 # <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>Azure App Service で Linux コンテナーへの SSH セッションを開く
 
@@ -39,9 +39,9 @@ SSH と SFTP を使用して、ローカル開発マシンからコンテナー�
 
 TCP トンネリングを使用して、認証済みの WebSocket 接続経由で開発用マシンと Web App for Containers 間にネットワーク接続を作成できます。 これにより、任意のクライアントから App Service で実行されているコンテナーとの SSH セッションを開くことができます。
 
-最初に、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールする必要があります。 Azure CLI をインストールしないとどのように動作するかを確認するには、[Azure Cloud Shell](../cloud-shell/overview.md) を開きます。 
+最初に、[Azure CLI](/cli/azure/install-azure-cli) をインストールする必要があります。 Azure CLI をインストールしないとどのように動作するかを確認するには、[Azure Cloud Shell](../cloud-shell/overview.md) を開きます。 
 
-[az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) コマンドを使用して、アプリへのリモート接続を開きます。 アプリの _\<subscription-id>_ 、 _\<group-name>_ 、および \_\<app-name>_ を指定します。
+[az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection#ext-webapp-az-webapp-remote-connection-create) コマンドを使用して、アプリへのリモート接続を開きます。 アプリの _\<subscription-id>_ 、 _\<group-name>_ 、および \_\<app-name>_ を指定します。
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &

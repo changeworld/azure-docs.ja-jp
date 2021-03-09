@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: 4314a52488473bcacd4aa62a0e8f44d88d2b75f1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8e735d623cc991d2e3720e0ec418eee77aa8c46c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681602"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350859"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Red Hat Linux Enterprise ソフトウェアの予約プラン割引が Azure に適用されるしくみについて説明します
 
@@ -53,8 +53,8 @@ Azure portal マーケットプレース名:
 予約について詳しくは、次の記事を参照してください。
 
 - [Azure の予約とは](save-compute-costs-reservations.md)
-- [Azure の予約による Red Hat ソフトウェア プランの前払い](../../virtual-machines/linux/prepay-rhel-software-charges.md)
-- [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Azure の予約による Red Hat ソフトウェア プランの前払い](../../virtual-machines/linux/prepay-suse-software-charges.md)
+- [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/prepay-reserved-vm-instances.md)
 - [Azure の予約の管理](manage-reserved-vm-instance.md)
 - [従量課金制サブスクリプションの予約使用量について](understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](understand-reserved-instance-usage-ea.md)

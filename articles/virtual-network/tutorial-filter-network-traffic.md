@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: b5a136ae05b3cd410ca252b6d5a1df443aff6f7a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 97690618de5d58fa4022d01fa36a872f9d220083
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75350135"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221682"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してネットワーク セキュリティ グループでネットワーク トラフィックをフィルター処理する
 
@@ -50,7 +50,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | 名前                    | myVirtualNetwork                                   |
     | アドレス空間           | 10.0.0.0/16                                        |
     | サブスクリプション            | サブスクリプションを選択します。                          |
-    | Resource group          | **[新規作成]** を選択し、「*myResourceGroup*と入力します。 |
+    | Resource group          | **[新規作成]** を選択し、「*myResourceGroup* と入力します。 |
     | 場所                | **[米国東部]** を選択します。                                |
     | サブネット名            | mySubnet                                           |
     | サブネット アドレス範囲  | 10.0.0.0/24                                        |
@@ -60,7 +60,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 アプリケーション セキュリティ グループを使用すると、Web サーバーなど、同様の機能を持つサーバーをグループ化できます。
 
 1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。 
-2. **[Marketplace を検索]** ボックスに、「*アプリケーション セキュリティ グループ*」と入力します。 検索結果に**アプリケーション セキュリティ グループ**が表示されたら、それを選択し、 **[すべて]** の下の**アプリケーション セキュリティ グループ** をもう一度選択します。次に、 **[作成]** を選択します。
+2. **[Marketplace を検索]** ボックスに、「*アプリケーション セキュリティ グループ*」と入力します。 検索結果に **アプリケーション セキュリティ グループ** が表示されたら、それを選択し、 **[すべて]** の下の **アプリケーション セキュリティ グループ** をもう一度選択します。次に、 **[作成]** を選択します。
 3. 以下の情報を入力するか選んだ後、 **[作成]** を選びます。
 
     | 設定        | Value                                                         |
@@ -111,7 +111,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     | 設定                 | Value                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | 宛先             | **[アプリケーションのセキュリティ グループ]** を選択し、**アプリケーション セキュリティ グループ**として **[myAsgWebServers]** を選択します。  |
+    | 宛先             | **[アプリケーションのセキュリティ グループ]** を選択し、**アプリケーション セキュリティ グループ** として **[myAsgWebServers]** を選択します。  |
     | 宛先ポート範囲 | 「80,443」と入力                                                                                                    |
     | Protocol                | [TCP] を選択                                                                                                      |
     | 名前                    | Allow-Web-All                                                                                                   |
@@ -120,7 +120,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     | 設定                 | Value                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | 宛先             | **[アプリケーションのセキュリティ グループ]** を選択し、**アプリケーション セキュリティ グループ**として **[myAsgMgmtServers]** を選択します。 |
+    | 宛先             | **[アプリケーションのセキュリティ グループ]** を選択し、**アプリケーション セキュリティ グループ** として **[myAsgMgmtServers]** を選択します。 |
     | 宛先ポート範囲 | 「3389」と入力                                                                                                      |
     | Protocol                | [TCP] を選択                                                                                                      |
     | Priority                | 「110」と入力                                                                                                       |
@@ -205,7 +205,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 8. IIS のインストールが完了したら、*myVmWeb* VM から切断します。*myVmMgmt* VM のリモート デスクトップ接続は保持されます。
 9. *myVmMgmt* VM から切断します。
-10. Azure portal の上部にある *[リソース、サービス、ドキュメントの検索]* ボックスに、お使いのコンピューターから「*myVmWeb*」と入力します。 検索結果に **[myVmWeb]** が表示されたら、それを選択します。 実際の VM の**パブリック IP アドレス**をメモします。 次の図に示すアドレスは 137.135.84.74 になっていますが、実際のアドレスは異なります。
+10. Azure portal の上部にある *[リソース、サービス、ドキュメントの検索]* ボックスに、お使いのコンピューターから「*myVmWeb*」と入力します。 検索結果に **[myVmWeb]** が表示されたら、それを選択します。 実際の VM の **パブリック IP アドレス** をメモします。 次の図に示すアドレスは 137.135.84.74 になっていますが、実際のアドレスは異なります。
 
     ![パブリック IP アドレス](./media/tutorial-filter-network-traffic/public-ip-address.png)
   
@@ -221,7 +221,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、ネットワーク セキュリティ グループを作成し、それを仮想ネットワーク サブネットに関連付けました。 ネットワーク セキュリティ グループについて詳しくは、[ネットワーク セキュリティ グループの概要](security-overview.md)と[ネットワーク セキュリティ グループの管理](manage-network-security-group.md)に関する記事を参照してください。
+このチュートリアルでは、ネットワーク セキュリティ グループを作成し、それを仮想ネットワーク サブネットに関連付けました。 ネットワーク セキュリティ グループについて詳しくは、[ネットワーク セキュリティ グループの概要](./network-security-groups-overview.md)と[ネットワーク セキュリティ グループの管理](manage-network-security-group.md)に関する記事を参照してください。
 
 Azure の既定では、サブネット間でトラフィックがルーティングされます。 代わりに、たとえばファイアウォールとして機能する VM を介してサブネット間でトラフィックをルーティングすることもできます。 ルート テーブルを作成する方法を学習するには、次のチュートリアルに進んでください。
 

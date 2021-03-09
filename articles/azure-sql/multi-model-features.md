@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: 59a709a206eb29b875272674ee19e414023cc37f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d5a067272caf9b072117ba57b7b16f8d78a8b456
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073311"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791649"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance のマルチモデル機能
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -44,7 +44,7 @@ Azure SQL 製品群には、次のマルチモデル機能が用意されてい�
 - [キー/値ペア](#key-value-pairs)は、特殊な機能として明示的にはサポートされていません。これは、キー/値ペアを 2 列のテーブルとしてネイティブにモデル化できるためです。
 
   > [!Note]
-  > 同じ Transact-SQL クエリ内で JSON パス式、XQuery/XPath 式、空間関数、およびグラフ クエリ式を使用して、データベースに格納されている任意のデータにアクセスできます。 また、Transact-SQL クエリを実行できるすべてのツールまたはプログラミング言語は、そのクエリ インターフェイスを使用してマルチモデル データにアクセスすることもできます。 これは、[Azure Cosmos DB](/azure/cosmos-db/) など、さまざまなデータ モデルに対して特殊な API を提供するマルチモデル データベースとの主な違いです。
+  > 同じ Transact-SQL クエリ内で JSON パス式、XQuery/XPath 式、空間関数、およびグラフ クエリ式を使用して、データベースに格納されている任意のデータにアクセスできます。 また、Transact-SQL クエリを実行できるすべてのツールまたはプログラミング言語は、そのクエリ インターフェイスを使用してマルチモデル データにアクセスすることもできます。 これは、[Azure Cosmos DB](../cosmos-db/index.yml) など、さまざまなデータ モデルに対して特殊な API を提供するマルチモデル データベースとの主な違いです。
 
 次のセクションでは、Azure SQL 製品群の最も重要なマルチモデル機能について学習できます。
 
@@ -142,7 +142,7 @@ CREATE TABLE Collection (
 
 このキー/値の構造体は、何の制約も受けることなく、ニーズに合わせてカスタマイズできます。 たとえば、値に `nvarchar(max)` 型ではなく XML ドキュメントを指定できます。値が JSON ドキュメントである場合、JSON コンテンツの有効性を検証する `CHECK` 制約を指定できます。 たとえば、追加の列内に、1 つのキーに関連する任意の数の値を指定したり、計算列とインデックスを追加してデータ アクセスを簡略化および最適化したり、パフォーマンスを向上させるためにテーブルをメモリ/最適化スキーマ専用テーブルとして定義したりすることができます。
 
-リレーショナル モデルを実際にキー/値ペア ソリューションとして効果的に使用する方法の例としては、[BWin でインメモリ OLTP を使用して前例のないパフォーマンスとスケールを実現する方法](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/)に関する記事に書かれている、1 秒あたり 1.200.000 のバッチを実現した ASP.NET キャッシュ ソリューションの説明を参照してください。
+リレーショナル モデルを実際にキー/値ペア ソリューションとして効果的に使用する方法の例としては、[BWin でインメモリ OLTP を使用して前例のないパフォーマンスとスケールを実現する方法](/archive/blogs/sqlcat/how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale)に関する記事に書かれている、1 秒あたり 1.200.000 のバッチを実現した ASP.NET キャッシュ ソリューションの説明を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

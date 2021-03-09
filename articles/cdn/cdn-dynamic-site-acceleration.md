@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: bae131c086e8fbf062015ee27c563bb988731cad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5387fdc224cd77ee5273767df5033a51dc27608c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888539"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008363"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Azure CDN による動的サイトの高速化
 
@@ -27,7 +27,7 @@ ms.locfileid: "84888539"
 
 標準の Content Delivery Network (CDN) 機能には、エンド ユーザーに近い場所にファイルをキャッシュすることで、静的ファイルの配信を高速化する機能が含まれています。 ただし、動的な Web アプリケーションでは、サーバーがユーザーの行動に応答してコンテンツを生成するため、コンテンツを特定の場所にキャッシュすることはできません。 このようなコンテンツの配信速度を向上させることは、従来のエッジ キャッシュよりも複雑であり、その発端から配信までのデータ パス全体で各要素を微調整するエンド ツー エンド ソリューションが必要です。 Azure CDN の DSA (動的サイトの高速化) 最適化を使用すると、動的コンテンツを含む Web ページのパフォーマンスがある程度まで向上します。
 
-**Azure CDN from Akamai** と **Azure CDN from Verizon** では、エンドポイントの作成中に、 **[最適化の対象]** メニューを使用して DSA 最適化を提供します。 Microsoft の動的サイト アクセラレーションは、[Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) により提供されます。
+**Azure CDN from Akamai** と **Azure CDN from Verizon** では、エンドポイントの作成中に、 **[最適化の対象]** メニューを使用して DSA 最適化を提供します。 Microsoft の動的サイト アクセラレーションは、[Azure Front Door Service](../frontdoor/front-door-overview.md) により提供されます。
 
 > [!Important]
 > **Azure CDN from Akamai** プロファイルでは、CDN エンドポイントの作成後にエンドポイントの最適化を変更できます。
@@ -103,15 +103,15 @@ Akamai ネットワークは、リアルタイムでデータを収集し、開�
 
 #### <a name="eliminating-tcp-slow-start"></a>TCP スロー スタートの排除
 
-TCP *スロー スタート*は、ネットワーク経由で送信されるデータの量を制限することでネットワークの輻輳を回避する TCP プロトコルのアルゴリズムです。 スロー スタートでは、送信側と受信側の間で小さな輻輳ウィンドウ サイズから始めて、最大サイズに達するかパケットの消失が検出されるまで送信量を増やしていきます。
+TCP *スロー スタート* は、ネットワーク経由で送信されるデータの量を制限することでネットワークの輻輳を回避する TCP プロトコルのアルゴリズムです。 スロー スタートでは、送信側と受信側の間で小さな輻輳ウィンドウ サイズから始めて、最大サイズに達するかパケットの消失が検出されるまで送信量を増やしていきます。
 
  **Azure CDN from Akamai** プロファイルと **Azure CDN from Verizon** プロファイルでは、次の 3 つの手順で TCP スロー スタートを排除します。
 
 1. 正常性と帯域幅の監視を使用して、エッジ PoP サーバー間の接続の帯域幅を測定します。
     
-2. メトリックはエッジ PoP サーバー間で共有されるので、各サーバーは、周囲にある他の PoP サーバーのネットワークの状態とサーバーの正常性を認識できます。  
+2. メトリックはエッジ PoP サーバー間で共有されるので、各サーバーは、周囲にある他の PoP サーバーのネットワークの状態とサーバーの正常性を認識できます。  
     
-3. CDN エッジ サーバーは、近接する他の CDN エッジ サーバーと通信するときに、最適なウィンドウ サイズなどの一部の伝送パラメーターを推測します。 この手順は、CDN エッジ サーバー間の接続の状態が、高いパケット データ転送に対応できる場合は、最初の輻輳ウィンドウ サイズを大きくできることを意味します。  
+3. CDN エッジ サーバーは、近接する他の CDN エッジ サーバーと通信するときに、最適なウィンドウ サイズなどの一部の伝送パラメーターを推測します。 この手順は、CDN エッジ サーバー間の接続の状態が、高いパケット データ転送に対応できる場合は、最初の輻輳ウィンドウ サイズを大きくできることを意味します。  
 
 #### <a name="leveraging-persistent-connections"></a>永続的な接続の活用
 
@@ -157,7 +157,7 @@ DSA では、配信元の応答に `Cache-Control` ヘッダーまたは `Expire
 
 キャッシュ規則にアクセスするには:
 
-1. **[CDN のプロファイル]** ページの設定で、 **[キャッシュ規則]** を選びます。  
+1. **[CDN のプロファイル]** ページの設定で、 **[キャッシュ規則]** を選びます。  
     
     ![CDN の [キャッシュ規則] ボタン](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
@@ -165,11 +165,11 @@ DSA では、配信元の応答に `Cache-Control` ヘッダーまたは `Expire
 
 2. グローバル キャッシュ規則またはカスタム キャッシュ規則を作成して、DSA エンドポイントのキャッシュを有効にします。 
 
-**Azure CDN Premium from Verizon** プロファイルの場合のみ、[ルール エンジン](cdn-rules-engine.md)を使って、特定の DSA エンドポイントのキャッシュを有効にすることができます。 作成されたルールは、プロファイルの DSA に最適化されているエンドポイントにのみ影響します。 
+**Azure CDN Premium from Verizon** プロファイルの場合のみ、[ルール エンジン](./cdn-verizon-premium-rules-engine.md)を使って、特定の DSA エンドポイントのキャッシュを有効にすることができます。 作成されたルールは、プロファイルの DSA に最適化されているエンドポイントにのみ影響します。 
 
 ルール エンジンにアクセスするには:
     
-1. **[CDN プロファイル]** ページで、 **[管理]** を選択します。  
+1. **[CDN プロファイル]** ページで、 **[管理]** を選択します。  
     
     ![[CDN プロファイル] の [管理] ボタン](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
@@ -183,7 +183,4 @@ DSA では、配信元の応答に `Cache-Control` ヘッダーまたは `Expire
 
 2 つの CDN エンドポイントを使用することもできます。DSA を使用して最適化された一方のエンドポイントでは動的資産を配信し、静的な最適化 (一般的な Web 配信など) を使用して最適化されたもう一方のエンドポイントではキャッシュ可能な資産を配信します。 Web ページの URL を変更して、使用する予定の CDN エンドポイントの資産に直接リンクします。 
 
-例: `mydynamic.azureedge.net/index.html` は動的ページであり、DSA エンドポイントから読み込まれます。  この html ページは、静的な CDN エンドポイント (`mystatic.azureedge.net/banner.jpg` や `mystatic.azureedge.net/scripts.js` など) から読み込まれる JavaScript ライブラリや画像などの複数の静的資産を参照しています。 
-
-
-
+例: `mydynamic.azureedge.net/index.html` は動的ページであり、DSA エンドポイントから読み込まれます。    この html ページは、静的な CDN エンドポイント (`mystatic.azureedge.net/banner.jpg` や `mystatic.azureedge.net/scripts.js` など) から読み込まれる JavaScript ライブラリや画像などの複数の静的資産を参照しています。

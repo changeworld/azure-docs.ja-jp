@@ -8,22 +8,25 @@ ms.author: shresha
 manager: dpalled
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 10/01/2020
 ms.custom: shresha
-ms.openlocfilehash: 784c19844c658af6850c755244314145223c45ef
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 15f1a814b302611029cf6459b8d2df93a32a2d36
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163953"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740557"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>新しい Azure Time Series Insights Gen2 API バージョンへの移行
 
 ## <a name="overview"></a>概要
 
-パブリック プレビュー段階のとき (2020 年 7 月 16 日より前) に Azure Time Series Insights Gen2 環境を作成していた場合は、この記事で説明されている手順に従って、一般公開されている新しいバージョンの API を使用するように TSI 環境を更新してください。
+パブリック プレビュー段階のとき (2020 年 7 月 16 日より前) に Azure Time Series Insights Gen2 環境を作成していた場合は、この記事で説明されている手順に従って、一般公開されている新しいバージョンの API を使用するように TSI 環境を更新してください。 この変更は、Azure Time Series Insights の Gen1 バージョンを使用しているユーザーには影響しません。
 
-新しい API バージョンは `2020-07-31` であり、更新された[タイム シリーズ式の構文](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)を使用します。
+> [!IMPORTANT]
+> この記事に記載されている更新では、お使いの TSI 環境で使用されている API バージョンのみがアップグレードされます。 この変更は、Gen2 環境向けに導入された新しい [JSON のフラット化とエスケープの規則](./concepts-json-flattening-escaping-rules.md) とは関係ありません。
+
+新しい API バージョンは `2020-07-31` であり、更新された[タイム シリーズ式の構文](/rest/api/time-series-insights/reference-time-series-expression-syntax)を使用します。
 
 ユーザーは、それぞれの環境の[タイム シリーズ モデル変数](./concepts-variables.md)、保存されたクエリ、Power BI のクエリ、および API エンドポイントの呼び出しを行うすべてのカスタム ツールを移行する必要があります。 移行プロセスに関してご不明な点や懸念事項がある場合は、Azure portal を通じてサポート チケットを送信し、この情報をお伝えください。
 
@@ -56,7 +59,7 @@ ms.locfileid: "88163953"
 
     [![変数の更新](media/api-migration/ux-migration-tool-downloaded-types.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-1. **[Update saved queries] (保存されたクエリの更新)** をクリックし ます。 変数が更新されると、ツールによって通知されます。
+1. **[Update saved queries] (保存されたクエリの更新)** をクリックし ます。 保存されたクエリが更新されると、ツールによって通知されます。
 
     [![保存されたクエリの更新](media/api-migration/ux-migration-tool-updated-variables.png)](media/v2-update-overview/overview-one.png#lightbox)
 
@@ -73,7 +76,7 @@ Power BI コネクタを使用してクエリを生成していた場合、そ�
 新しい API バージョンと新しいタイム シリーズ式の構文を使用するようにクエリを更新するには、エクスプローラーからクエリを再生成する必要があります。 [Power BI コネクタを使用してクエリを作成する](./how-to-connect-power-bi.md)方法に関する詳細をご覧ください。
 
 > [!NOTE]
-> 2020 年 7 月バージョンの Power BI Desktop を使用する必要があります。 そうでない場合は、[invalid query payload version (クエリのペイロード バージョンが無効です) エラー](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect)が表示されることがあります。
+> 2020 年 7 月バージョン以降の Power BI Desktop を使用する必要があります。 そうでない場合は、"invalid query payload version" (クエリのペイロード バージョンが無効です) エラーが表示されることがあります。
 
 ## <a name="migrate-custom-applications"></a>カスタム アプリケーションを移行する
 
@@ -81,28 +84,28 @@ Power BI コネクタを使用してクエリを生成していた場合、そ�
 
 - タイム シリーズ モデル API
   - モデルの設定 API
-    - [Get](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
-    - [アップデート](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/update)
+    - [Get](/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
+    - [アップデート](/rest/api/time-series-insights/dataaccessgen2/modelsettings/update)
   - インスタンス API:
-    - [すべてのバッチ操作](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
-    - [一覧](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/list)
-    - [Search](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search)
-    - [Suggest](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest)
+    - [すべてのバッチ操作](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
+    - [一覧](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/list)
+    - [Search](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search)
+    - [Suggest](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest)
   - 階層 API
-    - [すべてのバッチ操作](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
-    - [一覧](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list)
+    - [すべてのバッチ操作](/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch)
+    - [一覧](/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list)
   - 型 API
-    - [Delete、Get 操作](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
-    - [一覧](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list)
+    - [Delete、Get 操作](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
+    - [一覧](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list)
 
-次の REST エンドポイントについては、URI で API バージョンを `2020-07-31` に更新し、`tsx` プロパティのすべての出現箇所で、更新された[タイム シリーズ式の構文](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)が使用されていることを確認する必要があります。
+次の REST エンドポイントについては、URI で API バージョンを `2020-07-31` に更新し、`tsx` プロパティのすべての出現箇所で、更新された[タイム シリーズ式の構文](/rest/api/time-series-insights/reference-time-series-expression-syntax)が使用されていることを確認する必要があります。
 
 - 型 API
-  - [Put 操作](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)
+  - [Put 操作](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)
 - クエリ API
-  - [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)
-  - [GetSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)
-  - [GetAggregateSeries](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
+  - [GetEvents](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)
+  - [GetSeries](/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)
+  - [GetAggregateSeries](/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
 
 ### <a name="examples"></a>例
 
@@ -355,7 +358,7 @@ Power BI コネクタを使用してクエリを生成していた場合、そ�
 
 #### <a name="invalidinput"></a>InvalidInput
 
-次のエラーが表示される場合は、新しい API バージョン (`2020-07-31`) を使用していますが、TSX の構文が更新されていません。 [タイム シリーズ式の構文](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)と、上記の移行の例を参照してください。 API 要求を再送信する前に、すべての `tsx` プロパティが正しく更新されていることを確認してください。
+次のエラーが表示される場合は、新しい API バージョン (`2020-07-31`) を使用していますが、TSX の構文が更新されていません。 [タイム シリーズ式の構文](/rest/api/time-series-insights/reference-time-series-expression-syntax)と、上記の移行の例を参照してください。 API 要求を再送信する前に、すべての `tsx` プロパティが正しく更新されていることを確認してください。
 
 ```JSON
 {

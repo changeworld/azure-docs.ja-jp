@@ -1,21 +1,20 @@
 ---
-title: Azure Cache for Redis のスケーリング方法
+title: Azure Cache for Redis インスタンスのスケーリング
 description: Azure portal、Azure PowerShell などのツール、Azure CLI を使用して Azure Cache for Redis インスタンスをスケーリングする方法を説明します。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
-ms.custom: devx-track-csharp
-ms.date: 04/11/2017
-ms.openlocfilehash: e780ef0b82240ac6771059f8bd239b90395135d9
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 02/08/2021
+ms.openlocfilehash: 2913869067ff138922ebb7ea1483a1132e360d29
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213332"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382397"
 ---
-# <a name="how-to-scale-azure-cache-for-redis"></a>Azure Cache for Redis のスケーリング方法
-Azure Cache for Redis には、キャッシュ サイズや機能の選択に柔軟性を持たせるために、さまざまなキャッシュ オファリングが用意されています。 キャッシュを作成した後でご利用のアプリケーションの要件が変わった場合、キャッシュのサイズと価格レベルをスケーリングできます。 この記事では、Azure Portal と、Azure PowerShell や Azure CLI などのツールを使用して、キャッシュをスケーリングする方法を説明します。
+# <a name="scale-an-azure-cache-for-redis-instance"></a>Azure Cache for Redis インスタンスのスケーリング
+Azure Cache for Redis には、キャッシュ サイズや機能の選択に柔軟性を持たせるために、さまざまなキャッシュ オファリングが用意されています。 Basic、Standard、または Premium のキャッシュについては、アプリケーションのニーズに合わせて、作成後にサイズや層を変更できます。 この記事では、Azure Portal と、Azure PowerShell や Azure CLI などのツールを使用して、キャッシュをスケーリングする方法を説明します。
 
 ## <a name="when-to-scale"></a>スケーリングするタイミング
 Azure Cache for Redis の [監視](cache-how-to-monitor.md)機能を使用して、お使いのキャッシュの正常性とパフォーマンスを監視し、キャッシュのスケーリングが必要であるかどうかを判断できます。 
@@ -30,7 +29,7 @@ Azure Cache for Redis の [監視](cache-how-to-monitor.md)機能を使用して
 キャッシュがアプリケーションの要件を満たさなくなったと判断した場合は、ご利用のアプリケーションにとって適切な価格レベルのキャッシュにスケーリングできます。 使用するキャッシュの価格レベルを決定する方法の詳細については、「[最適なサービス レベルを選択する](cache-overview.md#choosing-the-right-tier)」を参照してください。
 
 ## <a name="scale-a-cache"></a>キャッシュのスケーリング
-キャッシュをスケーリングするには、[Azure Portal](https://portal.azure.com) で[キャッシュを参照](cache-configure.md#configure-azure-cache-for-redis-settings)し、**[リソース] メニュー**の **[スケール]** をクリックします。
+キャッシュをスケーリングするには、[Azure Portal](https://portal.azure.com) で [キャッシュを参照](cache-configure.md#configure-azure-cache-for-redis-settings)し、**[リソース] メニュー** の **[スケール]** をクリックします。
 
 ![スケール](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
@@ -65,7 +64,7 @@ Azure Portal でキャッシュ インスタンスをスケーリングするほ
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-PowerShell を使用して Azure Cache for Redis インスタンスをスケーリングするには、`Size`、`Sku`、または `ShardCount` プロパティを変更するときに [Set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) コマンドレットを使用します。 次の例は、 `myCache` という名前のキャッシュを 2.5 GB のキャッシュにスケーリングする方法を示しています。 
+PowerShell を使用して Azure Cache for Redis インスタンスをスケーリングするには、`Size`、`Sku`、または `ShardCount` プロパティを変更するときに [Set-AzRedisCache](/powershell/module/az.rediscache/set-azrediscache) コマンドレットを使用します。 次の例は、 `myCache` という名前のキャッシュを 2.5 GB のキャッシュにスケーリングする方法を示しています。 
 
 ```powershell
    Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB

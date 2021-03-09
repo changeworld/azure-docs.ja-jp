@@ -3,20 +3,18 @@ title: 事前作成済み ordinal V2 エンティティ - LUIS
 titleSuffix: Azure Cognitive Services
 description: この記事には、Language Understanding (LUIS) の事前作成済み ordinal V2 エンティティの情報が含まれています。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: 5e852313db75e598da647ea0f985e2ee18af16de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3fd80389dfa54cb8386c13e0e05a1e71ac4bd956
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78270495"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91541936"
 ---
 # <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの事前作成済み ordinal V2 エンティティ
 ordinal V2 (序数) では、[ordinal](luis-reference-prebuilt-ordinal.md) を拡張して、`next`、`last`、`previous` などの相対参照を提供します。 事前作成済み ordinal エンティティを使用しても、これらは抽出されません。

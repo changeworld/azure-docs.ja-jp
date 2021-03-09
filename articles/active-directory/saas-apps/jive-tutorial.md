@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 432ca72a667caa9c2a78b08396884d957b4c650b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3d15e5e13b2b0defe45fd45450aee7c262052b4f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547105"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459425"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jive"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Jive の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88547105"
 * ユーザーが自分の Azure AD アカウントを使用して Jive に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Jive では、**SP** Initiated SSO がサポートされます
-* Jive では、[**自動化された**ユーザー プロビジョニング](jive-provisioning-tutorial.md)がサポートされます
-* Jive を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* Jive では、 **SP** Initiated SSO がサポートされます
+* Jive では、 [**自動化された** ユーザー プロビジョニング](jive-provisioning-tutorial.md)がサポートされます
+* Jive を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-jive-from-the-gallery"></a>ギャラリーからの Jive の追加
 
@@ -51,7 +51,7 @@ Azure AD への Jive の統合を構成するには、ギャラリーから管�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Jive**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Jive** 」と入力します。
 1. 結果のパネルから **[Jive]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -90,7 +90,7 @@ Jive で Azure AD SSO を構成してテストするには、次の構成要素�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Jive クライアント サポート チーム](https://www.jivesoftware.com/services-support/)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -140,7 +140,7 @@ Jive で Azure AD SSO を構成してテストするには、次の構成要素�
 
 1. 上部のメニューで、 **[SAML]** をクリックします。
 
-    ![アプリ側でのシングル サインオンの構成](./media/jive-tutorial/tutorial_jive_002.png)
+    ![[Enabled]\(有効\) が選択されている [SAML] タブを示すスクリーンショット。](./media/jive-tutorial/tutorial_jive_002.png)
 
     a. **[General]\(全般\)** タブで **[Enabled]\(有効\)** を選択します。
 
@@ -148,7 +148,7 @@ Jive で Azure AD SSO を構成してテストするには、次の構成要素�
 
 1. **[IDP METADATA]\(IDP メタデータ\)** タブに移動します。
 
-    ![アプリ側でのシングル サインオンの構成](./media/jive-tutorial/tutorial_jive_003.png)
+    ![[I D P METADATA]\(I D P メタデータ\) が選択されている [SAML] タブを示すスクリーンショット。](./media/jive-tutorial/tutorial_jive_003.png)
 
     a. ダウンロードしたメタデータ XML ファイルの内容をコピーし、 **[Identity Provider (IDP) Metadata (ID プロバイダー (IDP) のメタデータ)]** ボックスに貼り付けます。
 
@@ -156,13 +156,13 @@ Jive で Azure AD SSO を構成してテストするには、次の構成要素�
 
 1. **[USER ATTRIBUTE MAPPING]\(ユーザー属性のマッピング\)** タブを選択します。
 
-    ![アプリ側でのシングル サインオンの構成](./media/jive-tutorial/tutorial_jive_004.png)
+    ![[USER ATTRIBUTE MAPPING]\(ユーザー属性のマッピング\) が選択されている [SAML] タブを示すスクリーンショット。](./media/jive-tutorial/tutorial_jive_004.png)
 
-    a. **[Email (電子メール)]** ボックスに、**mail** 値の属性名をコピーして貼り付けます。
+    a. **[Email (電子メール)]** ボックスに、 **mail** 値の属性名をコピーして貼り付けます。
 
-    b. **[First Name (名)]** ボックスに、**givenname** 値の属性名をコピーして貼り付けます。
+    b. **[First Name (名)]** ボックスに、 **givenname** 値の属性名をコピーして貼り付けます。
 
-    c. **[Last Name (姓)]** ボックスに、**surname** 値の属性名をコピーして貼り付けます。
+    c. **[Last Name (姓)]** ボックスに、 **surname** 値の属性名をコピーして貼り付けます。
 
 ### <a name="create-jive-test-user"></a>Jive のテスト ユーザーの作成
 
@@ -174,20 +174,20 @@ Jive で Azure AD SSO を構成してテストするには、次の構成要素�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Jive] タイルをクリックすると、SSO を設定した Jive に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Jive] タイルをクリックすると、SSO を設定した Jive に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Jive を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
 - [[ユーザー プロビジョニングの構成]](jive-provisioning-tutorial.md)
 
-- [高度な可視性と制御によって Jive を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって Jive を保護する方法](/cloud-app-security/proxy-intro-aad)

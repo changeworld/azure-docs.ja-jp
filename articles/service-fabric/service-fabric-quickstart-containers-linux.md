@@ -3,14 +3,13 @@ title: Azure で Service Fabric 上に Linux コンテナー アプリを作成�
 description: このクイック スタートでは、アプリケーションの Docker イメージをビルドし、そのイメージをコンテナー レジストリにプッシュした後、Service Fabric クラスターにコンテナーをデプロイします。
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: 652c5b7c2df4e1f8bd379390451886914628505d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: f58b8feda0e88d8a5e7cddaabbc650b0f0ab3973
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854979"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788164"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>クイック スタート:Service Fabric への Linux コンテナーのデプロイ
 
@@ -26,7 +25,7 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 
 1. サブスクリプションを所有していない場合は、始める前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成します。
 
-2. [Azure CLI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) をインストールします。
+2. [Azure CLI](/cli/azure/install-azure-cli-apt) をインストールします。
 
 3. [Service Fabric SDK と CLI](service-fabric-get-started-linux.md#installation-methods) をインストールします。
 
@@ -90,7 +89,7 @@ Service Fabric には、クラスターとそのアプリケーションを管�
 
 このクイック スタートでは、Service Fabric CLI と Service Fabric Explorer (Web ベースのツール) を使用します。 Service Fabric Explorer を使用するには、証明書の PFX ファイルをブラウザーにインポートする必要があります。 既定では、PFX ファイルにパスワードはありません。
 
-Mozilla Firefox は、Ubuntu 16.04 の既定のブラウザーです。 証明書を Firefox にインポートするには、ブラウザーの右上隅にあるメニュー ボタンをクリックし、 **[オプション]** をクリックします。 **環境設定**ページで、検索ボックスを使用して "証明書" を検索します。 **[証明書を表示]** をクリックし、 **[あなたの証明書]** タブを選択します。次に、 **[インポート]** をクリックし、プロンプトに従って証明書をインポートします。
+Mozilla Firefox は、Ubuntu 16.04 の既定のブラウザーです。 証明書を Firefox にインポートするには、ブラウザーの右上隅にあるメニュー ボタンをクリックし、 **[オプション]** をクリックします。 **環境設定** ページで、検索ボックスを使用して "証明書" を検索します。 **[証明書を表示]** をクリックし、 **[あなたの証明書]** タブを選択します。次に、 **[インポート]** をクリックし、プロンプトに従って証明書をインポートします。
 
    ![Firefox での証明書のインストール](./media/service-fabric-quickstart-containers-linux/install-cert-firefox.png)
 
@@ -169,7 +168,7 @@ Web フロントエンド サービスをスケールするには、次の手順
 
 クラスターと、そのクラスターによって使用されるすべてのリソースを削除するための最も簡単な方法は、リソース グループを削除することです。
 
-Azure にサインインして、クラスターを削除するサブスクリプション ID を選択します。 サブスクリプション ID は、Azure portal にログインして確認できます。 リソース グループとクラスター リソースすべてを削除するには、[az group delete コマンド](/cli/azure/group?view=azure-cli-latest)を使用します。
+Azure にサインインして、クラスターを削除するサブスクリプション ID を選択します。 サブスクリプション ID は、Azure portal にログインして確認できます。 リソース グループとクラスター リソースすべてを削除するには、[az group delete コマンド](/cli/azure/group)を使用します。
 
 ```azurecli
 az login

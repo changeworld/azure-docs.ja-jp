@@ -3,22 +3,16 @@ title: Azure Event Grid スキーマへのカスタム フィールドのマッ�
 description: この記事では、イベント データが Event Grid スキーマと一致しない場合にカスタム スキーマを Azure Event Grid スキーマに変換する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 836e7b340c5c89100207e2f9409710b8dfa5e3bf
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 34381782c9337631b0aa04e47eb5897a8071139a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105525"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109200"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Event Grid スキーマへのカスタム フィールドのマップ
 
 イベント データと必要な [Event Grid スキーマ](event-schema.md)が一致しない場合でも、Event Grid を使用して、イベントをサブスクライバーにルーティングできます。 この記事では、カスタム スキーマを Event Grid スキーマにマップする方法について説明します。
-
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
-
-## <a name="install-preview-feature"></a>プレビュー機能のインストール
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="original-event-schema"></a>元のイベント スキーマ
 
@@ -40,7 +34,7 @@ ms.locfileid: "86105525"
 
 カスタム トピックを作成する際に、元のイベントのフィールドを Event Grid スキーマにマップする方法を指定します。 マッピングをカスタマイズする際に使用する値として、次の 3 つがあります。
 
-* **--input-schema** の値では、スキーマのタイプを指定します。 使用可能なオプションは、CloudEvents スキーマ、カスタム イベント スキーマ、または Event Grid スキーマです。 既定値は、Event Grid スキーマです。 カスタム スキーマと Event Grid スキーマの間のカスタム マッピングを作成する場合は、カスタム イベント スキーマを使用します。 イベントが CloudEvents スキーマ内にある場合は、Cloudevents スキーマを使用します。
+* **--input-schema** の値では、スキーマのタイプを指定します。 使用可能なオプションは、CloudEvents スキーマ、カスタム イベント スキーマ、または Event Grid スキーマです。 既定値は、Event Grid スキーマです。 カスタム スキーマと Event Grid スキーマの間のカスタム マッピングを作成する場合は、カスタム イベント スキーマを使用します。 イベントが CloudEvents フォーマット内にある場合は、CloudEvents スキーマを使用します。
 
 * **-mapping-default-values** プロパティでは、Event Grid スキーマ内のフィールドの既定値を指定します。 `subject`、`eventtype`、および `dataversion` の既定値を指定できます。 通常、これらの 3 つのフィールドのいずれかに対応するフィールドがカスタム スキーマに含まれていない場合に、このパラメーターを使用します。 たとえば、dataversion が常に **1.0** に設定されるように指定できます。
 
@@ -49,10 +43,6 @@ ms.locfileid: "86105525"
 Azure CLI でカスタム トピックを作成するには、次を使用します。
 
 ```azurecli-interactive
-# If you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid topic create \
   -n demotopic \
   -l eastus2 \
@@ -65,11 +55,7 @@ az eventgrid topic create \
 PowerShell では、次を使用します。
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
-New-AzureRmEventGridTopic `
+New-AzEventGridTopic `
   -ResourceGroupName myResourceGroup `
   -Name demotopic `
   -Location eastus2 `
@@ -107,9 +93,9 @@ az eventgrid event-subscription create \
 次の例では、Event Grid トピックをサブスクライブし、Event Grid スキーマを使用します。 PowerShell では、次を使用します。
 
 ```azurepowershell-interactive
-$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
+$topicid = (Get-AzEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
 
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId $topicid `
   -EventSubscriptionName eventsub1 `
   -EndpointType webhook `
@@ -120,7 +106,7 @@ New-AzureRmEventGridSubscription `
 次の例では、イベントの入力スキーマを使用します。
 
 ```azurepowershell-interactive
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId $topicid `
   -EventSubscriptionName eventsub2 `
   -EndpointType webhook `
@@ -146,8 +132,8 @@ curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 PowerShell では、次を使用します。
 
 ```azurepowershell-interactive
-$endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demotopic).Endpoint
-$keys = Get-AzureRmEventGridTopicKey -ResourceGroupName myResourceGroup -Name demotopic
+$endpoint = (Get-AzEventGridTopic -ResourceGroupName myResourceGroup -Name demotopic).Endpoint
+$keys = Get-AzEventGridTopicKey -ResourceGroupName myResourceGroup -Name demotopic
 
 $htbody = @{
     myEventTypeField="Created"

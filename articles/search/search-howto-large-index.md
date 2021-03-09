@@ -7,13 +7,13 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: 80307c97464e61d7b7d338703de90d1199adc819
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: b4f54aff78526ba52e56ed9f4cf1feddf40fa69b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927019"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358394"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Azure Cognitive Search で大容量のデータ セットのインデックスを作成する方法
 
@@ -25,34 +25,37 @@ Azure Cognitive Search は、検索インデックスにデータをインポー
 
 以降のセクションでは、Push API とインデクサーの両方を使用して大量のデータのインデックスを作成する方法について説明します。
 
-## <a name="push-api"></a>Push API
+## <a name="use-the-push-api"></a>プッシュ API を使用する
 
-インデックスにデータをプッシュするとき、Push API に対するインデックスの作成速度を左右するいくつかの重要な考慮事項があります。 これらの要因については、以下のセクションで説明します。 
+[ドキュメントの追加 REST API](/rest/api/searchservice/addupdate-or-delete-documents) か [IndexDocuments メソッド](/dotnet/api/azure.search.documents.searchclient.indexdocuments)を使用してデータをインデックスにプッシュするとき、インデックス作成の速度に影響を与える重要な考慮事項がいくつかあります。 そのような要因について、サービス容量の設定からコードの最適化まで、以下のセクションで説明します。
 
-この記事の情報に加えて、[インデックス作成速度を最適化するチュートリアル](tutorial-optimize-indexing-push-api.md)のコード サンプルを利用すると、より深く学習することができます。
+プッシュ モデルのインデックス作成について説明する詳細とコード サンプルが必要であれば、[インデックス作成速度の最適化に関するチュートリアル](tutorial-optimize-indexing-push-api.md)を参照してください。
 
-### <a name="service-tier-and-number-of-partitionsreplicas"></a>サービス レベルとパーティションまたはレプリカの数
+### <a name="capacity-of-your-service"></a>サービスの容量
 
-パーティションを追加したり、検索サービスのサービス レベルを増やしたりすると、インデックス作成速度が向上します。
+最初の手順として、サービスをプロビジョニングしたレベルの特性と[上限](search-limits-quotas-capacity.md)を確認します。 価格レベル間の重要な差別化要因にパーティションのサイズと速度がありますが、それはインデックス作成の速度に直接関連します。 あるレベルでワークロードに不十分な検索サービスをプロビジョニングした場合、新しいレベルにアップグレードすることがインデックス作成のスループットを上げる最も簡単で効果的な解決策となることがあります。
 
-レプリカを追加してもインデックス作成速度が向上する可能性はありますが、これは保証されません。 一方、レプリカを追加すると、検索サービスが処理できるクエリの量が増加します。 レプリカは、[SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/) を取得するための重要なコンポーネントでもあります。
+レベルに問題がなければ、次の一歩としてはパーティションの数を増やすことが考えられます。 パーティション割り当ては、サービス実行の全体的コストを下げる目的で、初回のインデックス作成実行後、下方向に再調整できます。
 
-パーティションまたはレプリカを追加する前、または上位のレベルにアップグレードする前に、金銭的コストと割り当て時間を検討してください。 パーティションを追加すると、インデックス作成速度が大幅に向上しますが、それらを追加または削除するには、15 分から数時間かかることがあります。 詳細については、[容量調整](search-capacity-planning.md)に関するドキュメントを参照してください。
+> [!NOTE]
+> レプリカを追加してもインデックス作成速度が向上する可能性はありますが、これは保証されません。 一方、レプリカを追加すると、検索サービスが処理できるクエリの量が増加します。 レプリカは、[SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/) を取得するための重要なコンポーネントでもあります。
+>
+> パーティションまたはレプリカを追加する前、または上位のレベルにアップグレードする前に、金銭的コストと割り当て時間を検討してください。 パーティションを追加すると、インデックス作成速度が大幅に向上しますが、それらを追加または削除するには、15 分から数時間かかることがあります。 詳細については、[容量調整](search-capacity-planning.md)に関するドキュメントを参照してください。
+>
 
-### <a name="index-schema"></a>インデックス スキーマ
+### <a name="review-index-schema"></a>インデックス スキーマを確認する
 
-インデックスのスキーマは、データのインデックス作成において重要な役割を果たします。 フィールドを追加したり、フィールドに別のプロパティ (*searchable*、*facetable*、*filterable* など) を追加したりすると、インデックスの作成速度が落ちます。
-
-一般に、フィールドにプロパティを追加するのは、それを使用する予定がある場合にのみ行うことをお勧めします。
+インデックスのスキーマは、データのインデックス作成において重要な役割を果たします。 フィールドが増え、設定するプロパティ (*searchable*、*facetable*、*filterable*) が増えると、それだけインデックス作成時間が長くなります。 一般的には、検索インデックスで実際に必要なフィールドのみを作成し、指定してください。
 
 > [!NOTE]
 > ドキュメントのサイズが大きくならないように、クエリできないデータをインデックスに追加しないようにします。 イメージとその他のバイナリ データは直接検索できないため、インデックスには格納しないでください。 クエリ不可能なデータを検索結果に含めるには、リソースへの URL 参照を格納する検索不可能なフィールドを定義してください。
 
-### <a name="batch-size"></a>バッチ サイズ
+### <a name="check-the-batch-size"></a>バッチ サイズを確認する
 
-大容量のデータ セットにインデックスを付けるための最も簡単なメカニズムの 1 つは、複数のドキュメントまたはレコードを 1 つの要求で送信するというものです。 ペイロード全体が 16 MB を超えない限り、1 つの要求によって、一括アップロード操作で最大 1000 のドキュメントを処理できます。 .NET SDK で [Add Documents REST API](/rest/api/searchservice/addupdate-or-delete-documents) と [Index メソッド](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet)のどちらを使用しているかによって、これらの制限が適用されます。 どちらの API でも、各要求の本文に 1,000 個のドキュメントをパッケージ化します。
+大容量のデータ セットにインデックスを付けるための最も簡単なメカニズムの 1 つは、複数のドキュメントまたはレコードを 1 つの要求で送信するというものです。 ペイロード全体が 16 MB を超えない限り、1 つの要求によって、一括アップロード操作で最大 1000 のドキュメントを処理できます。 [ドキュメントの追加 REST API](/rest/api/searchservice/addupdate-or-delete-documents) と .NET SDK の [IndexDocuments メソッド](/dotnet/api/azure.search.documents.searchclient.indexdocuments)のどちらを使用しているかに関係なく、これらの制限が適用されます。 どちらの API でも、各要求の本文に 1,000 個のドキュメントをパッケージ化します。
 
 バッチを使用してドキュメントにインデックスを付けると、インデックス作成のパフォーマンスが大幅に向上します。 実際のデータに最適なバッチ サイズを見極めることが、インデックスの作成速度を最適化するうえで重要な要素となります。 最適なバッチ サイズは主に、次の 2 つの要因によって左右されます。
+
 + インデックスのスキーマ
 + データのサイズ
 
@@ -79,7 +82,7 @@ Azure Cognitive Search のインデックス作成速度を最大限に引き出
 + **503 Service Unavailable** - このエラーは、システムが過負荷の状態にあり、この時点では要求を処理できないことを示します。
 + **207 Multi-Status** - このエラーは、ドキュメントの一部は成功しましたが、少なくとも 1 つが失敗したことを示します。
 
-### <a name="retry-strategy"></a>再試行戦略 
+### <a name="retry-strategy"></a>再試行戦略
 
 失敗した要求は、[エクスポネンシャル バックオフの再試行戦略](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)を使用して再試行する必要があります。
 
@@ -89,7 +92,7 @@ Azure Cognitive Search のインデックス作成速度を最大限に引き出
 
 データのインデックスを作成する場合、ネットワーク データ転送速度が制限要因になる場合があります。 Azure 環境内からのデータのインデックス作成は、インデックス作成を高速化する簡単な方法です。
 
-## <a name="indexers"></a>インデクサー
+## <a name="use-indexers-pull-api"></a>インデクサーを使用する (プル API)
 
 [インデクサー](search-indexer-overview.md)は、検索可能なコンテンツに対してサポートされている Azure データ ソースをクロールするために使用されます。 大規模なインデックス作成を特に目的としていなくても、いくつかのインデクサー機能は、より大きな容量のデータ セットに対応する上で特に便利です。
 
@@ -100,7 +103,7 @@ Azure Cognitive Search のインデックス作成速度を最大限に引き出
 > [!NOTE]
 > インデクサーはデータ ソース固有のものです。そのため、インデクサー アプローチの使用は、Azure 上で選択される次のデータ ソースに対してのみ有効です。[SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Blob Storage](search-howto-indexing-azure-blob-storage.md)、[Table Storage](search-howto-indexing-azure-tables.md)、[Cosmos DB](search-howto-index-cosmosdb.md)。
 
-### <a name="batch-size"></a>バッチ サイズ
+### <a name="check-the-batchsize-argument-on-create-indexer"></a>Create Indexer で batchSize 引数を確認する
 
 Push API と同様に、インデクサーを使用すると、バッチごとに項目の数を構成できます。 [インデクサーの作成 (REST API)](/rest/api/searchservice/Create-Indexer) に基づいたインデクサーの場合は、引数 `batchSize` を設定することで、ご利用のデータの特性に合わせてこの設定をカスタマイズすることができます。 
 
@@ -112,7 +115,7 @@ Push API と同様に、インデクサーを使用すると、バッチごと�
 
 スケジュール機能付きインデックスは、特定の間隔で始動する設計になっており、通常は、ジョブが完了し、次回のスケジュール間隔で再開されます。 ただし、間隔内で処理が完了しない場合、インデクサーは (時間不足のため) 停止します。 処理がどこで停止したかがシステムに記録されており、次の間隔では、前回停止した個所から処理が再開されます。 
 
-実際には、インデックスの読み込みに数日かかる場合、24 時間スケジュールでインデクサーを配置できます。 次の 24 時間サイクルでインデックス作成が再開すると、前回正常だったと認識されたドキュメントから再開されます。 このようにして、インデクサーは、すべての未処理ドキュメントが処理されるまで、ドキュメントのバックログに従って数日にわたり処理を続けます。 この方法の詳細については、[Azure Blob Storage での大容量のデータセットのインデックス作成](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)に関するページを参照してください。 一般的なスケジュール設定の詳細については、[インデクサーの作成 (REST API)](/rest/api/searchservice/Create-Indexer) に関するページ、または [Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
+実際には、インデックスの読み込みに数日かかる場合、24 時間スケジュールでインデクサーを配置できます。 次の 24 時間サイクルでインデックス作成が再開すると、前回正常だったと認識されたドキュメントから再開されます。 このようにして、インデクサーは、すべての未処理ドキュメントが処理されるまで、ドキュメントのバックログに従って数日にわたり処理を続けます。 一般的なスケジュール設定の詳細については、[インデクサーの作成 (REST API)](/rest/api/searchservice/Create-Indexer) に関するページ、または [Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
 
 <a name="parallel-indexing"></a>
 
@@ -139,7 +142,7 @@ Push API と同様に、インデクサーを使用すると、バッチごと�
 
 1. [Azure Portal](https://portal.azure.com) の、検索サービス ダッシュ ボードの **[概要]** ページにある、 **[価格レベル]** で並列インデックスに対応できることを確認してください。 Basic および Standard の両方のレベルで、複数のレプリカが提供されています。
 
-2. サービス内の検索単位数と同じ数のインデクサーを並列で実行できます。 **[設定]**  >  **[スケール]** で、並列処理用の[レプリカを増やす](search-capacity-planning.md)かパーティションを増やします (インデクサー ワークロードごとに 1 つのレプリカまたはパーティションを追加します)。 既存のクエリ量は十分な数に設定します。 インデックス作成のためのクエリ ワークロードを犠牲にすることは、適切なトレードオフではありません。
+2. サービス内の検索単位数と同じ数のインデクサーを並列で実行できます。 **[設定]**  >  **[スケール]** で、並列処理用の [レプリカを増やす](search-capacity-planning.md)かパーティションを増やします (インデクサー ワークロードごとに 1 つのレプリカまたはパーティションを追加します)。 既存のクエリ量は十分な数に設定します。 インデックス作成のためのクエリ ワークロードを犠牲にすることは、適切なトレードオフではありません。
 
 3. Azure Cognitive Search インデクサーが到達可能なレベルの複数のコンテナーにデータを分割します。 これには、Azure SQL Database 内の複数のテーブル、Azure BLOB ストレージ内の複数のコンテナー、または複数のコレクションが考えられます。 テーブルまたはコンテナーごとに 1 つのデータ ソース オブジェクトを定義します。
 

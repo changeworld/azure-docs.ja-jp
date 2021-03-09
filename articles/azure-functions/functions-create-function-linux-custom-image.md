@@ -1,25 +1,32 @@
 ---
 title: カスタム イメージを使用して Linux 上で Azure Functions を作成する
 description: カスタム Linux イメージで実行する Azure Functions を作成する方法について説明します。
-ms.date: 03/30/2020
+ms.date: 12/2/2020
 ms.topic: tutorial
-ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
-zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: f068f91a104c15099809343438cc925fb8856248
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
+zone_pivot_groups: programming-languages-set-functions-full
+ms.openlocfilehash: 1c7a9fd83131ea6282d2ef4860b744fa348153ed
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146863"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070919"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>カスタム コンテナーを使用して Linux で関数を作成する
 
 このチュートリアルでは、コードを作成し、Linux の基本イメージを使用したカスタム Docker コンテナーとして Azure Functions にデプロイします。 カスタム イメージを使用するのは通常、特定の言語バージョン、特定の依存関係、または組み込みイメージで提供されない構成が関数に必要になるときです。
 
-[Linux でホストされる初めての関数の作成](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)に関するページで説明されている既定の Azure App Service コンテナーを使用することもできます。 Azure Functions でサポートされている基本イメージについては、[Azure Functions 基本イメージ リポジトリ](https://hub.docker.com/_/microsoft-azure-functions-base)を参照してください。
+::: zone pivot="programming-language-other"
+Azure Functions では、[カスタム ハンドラー](functions-custom-handlers.md)を使用するすべての言語またはランタイムがサポートされています。 このチュートリアルで使用する R プログラミング言語など、一部の言語では、カスタム コンテナーの使用を必要とする依存関係として、ランタイムまたは追加のライブラリをインストールする必要があります。
+::: zone-end
+
+関数コードをカスタム Linux コンテナーにデプロイするには、[Premium プラン](functions-premium-plan.md)または[専用 (App Service) プラン](dedicated-plan.md)のホスティングが必要です。 このチュートリアルを完了すると、お使いの Azure アカウントで数ドルのコストが発生します。これは、完了時に[リソースをクリーンアップする](#clean-up-resources)ことによって最小限に抑えることができます。
+
+[Linux でホストされる初めての関数の作成](./create-first-function-cli-csharp.md?pivots=programming-language-python)に関するページで説明されている既定の Azure App Service コンテナーを使用することもできます。 Azure Functions でサポートされている基本イメージについては、[Azure Functions 基本イメージ リポジトリ](https://hub.docker.com/_/microsoft-azure-functions-base)を参照してください。
 
 このチュートリアルでは、以下の内容を学習します。
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
 > [!div class="checklist"]
 > * Azure Functions Core Tools を使用して関数アプリと Dockerfile を作成します。
 > * Docker を使用してカスタム イメージをビルドします。
@@ -30,8 +37,20 @@ ms.locfileid: "89146863"
 > * 継続的デプロイを有効にします。
 > * コンテナーへの SSH 接続を有効にします。
 > * Queue storage の出力バインドを追加します。 
+::: zone-end
+::: zone pivot="programming-language-other"
+> [!div class="checklist"]
+> * Azure Functions Core Tools を使用して関数アプリと Dockerfile を作成します。
+> * Docker を使用してカスタム イメージをビルドします。
+> * カスタム イメージをコンテナー レジストリに発行します。
+> * 関数アプリ用の関連リソースを Azure に作成します。
+> * Docker Hub から Function App をデプロイします。
+> * Function App にアプリケーション設定を追加します。
+> * 継続的デプロイを有効にします。
+> * コンテナーへの SSH 接続を有効にします。
+::: zone-end
 
-このチュートリアルは、Windows、macOS、または Linux が動作している任意のコンピューターで実行できます。 このチュートリアルを完了すると、ご利用の Azure アカウントに数ドルのコストが発生します。
+このチュートリアルは、Windows、macOS、または Linux が動作している任意のコンピューターで実行できます。 
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
 
@@ -52,34 +71,34 @@ ms.locfileid: "89146863"
 ターミナルまたはコマンド プロンプトで、自分が選択した言語に合わせて次のコマンドを実行し、`LocalFunctionsProject` という名前のフォルダーに関数アプリ プロジェクトを作成します。  
 ::: zone-end  
 ::: zone pivot="programming-language-csharp"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime dotnet --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-javascript"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime node --language javascript --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime powershell --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime python --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime node --language typescript --docker
 ```
 ::: zone-end
 ::: zone pivot="programming-language-java"  
 空のフォルダーで次のコマンドを実行して、[Maven アーキタイプ](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)から Functions プロジェクトを生成します。
 
-# <a name="bash"></a>[bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 ```bash
 mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -DjavaVersion=8 -Ddocker
 ```
@@ -93,7 +112,10 @@ mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArti
 ```
 ---
 
-`-DjavaVersion` パラメーターは、使用する Java のバージョンを Functions Runtime に指示します。 プレビュー段階にある Java 11 で関数を実行する場合は、`-DjavaVersion=11` を使用します。 `-DjavaVersion` を指定しない場合、Maven の既定値は Java 8 になります。 詳細については、「[Java のバージョン](functions-reference-java.md#java-versions)」を参照してください。
+`-DjavaVersion` パラメーターは、使用する Java のバージョンを Functions Runtime に指示します。 Java 11 で関数を実行する場合は、`-DjavaVersion=11` を使用します。 `-DjavaVersion` を指定しない場合、Maven の既定値は Java 8 になります。 詳細については、「[Java のバージョン](functions-reference-java.md#java-versions)」を参照してください。
+
+> [!IMPORTANT]
+> この記事の作業を行うには、`JAVA_HOME` 環境変数を、適切なバージョンの JDK のインストール場所に設定する必要があります。
 
 Maven により、デプロイ時にプロジェクトの生成を終了するための値の入力が求められます。   
 入力を求められたら、次の値を入力します。
@@ -109,60 +131,184 @@ Maven により、デプロイ時にプロジェクトの生成を終了する�
 
 Maven により、_artifactId_ という名前の新しいフォルダーにプロジェクト ファイルが作成されます (この例では `fabrikam-functions`)。 
 ::: zone-end
+
+::: zone pivot="programming-language-other"  
+```console
+func init LocalFunctionsProject --worker-runtime custom --docker
+```
+::: zone-end
+
 `--docker` オプションによって、プロジェクトの `Dockerfile` が生成されます。これにより、Azure Functions および選択されたランタイムで使用するための適切なカスタム コンテナーが定義されます。
 
 プロジェクト フォルダーに移動します。
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
-```
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-other"  
+```console
 cd LocalFunctionsProject
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
-```
+```console
 cd fabrikam-functions
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
 次のコマンドを使用して、関数を自分のプロジェクトに追加します。ここで、`--name` 引数は関数の一意の名前で、`--template` 引数は関数のトリガーを指定するものです。 `func new` によって、関数と同じ名前のサブフォルダーが作成されます。ここには、プロジェクト用に選択した言語に適したコード ファイルと、*function.json* という名前の構成ファイルが含まれます。
 
-```
+```console
 func new --name HttpExample --template "HTTP trigger"
 ```
-::: zone-end  
+::: zone-end
+
+::: zone pivot="programming-language-other" 
+次のコマンドを使用して、関数を自分のプロジェクトに追加します。ここで、`--name` 引数は関数の一意の名前で、`--template` 引数は関数のトリガーを指定するものです。 `func new` によって、関数と同じ名前のサブフォルダーが作成されます。このサブフォルダーには、*function.json* という名前の構成ファイルが含まれます。
+
+```console
+func new --name HttpExample --template "HTTP trigger"
+```
+
+テキスト エディターで、プロジェクト フォルダー内に *handler.R* という名前のファイルを作成します。 その内容として、以下を追加します。
+
+```r
+library(httpuv)
+
+PORTEnv <- Sys.getenv("FUNCTIONS_CUSTOMHANDLER_PORT")
+PORT <- strtoi(PORTEnv , base = 0L)
+
+http_not_found <- list(
+  status=404,
+  body='404 Not Found'
+)
+
+http_method_not_allowed <- list(
+  status=405,
+  body='405 Method Not Allowed'
+)
+
+hello_handler <- list(
+  GET = function (request) {
+    list(body=paste(
+      "Hello,",
+      if(substr(request$QUERY_STRING,1,6)=="?name=") 
+        substr(request$QUERY_STRING,7,40) else "World",
+      sep=" "))
+  }
+)
+
+routes <- list(
+  '/api/HttpExample' = hello_handler
+)
+
+router <- function (routes, request) {
+  if (!request$PATH_INFO %in% names(routes)) {
+    return(http_not_found)
+  }
+  path_handler <- routes[[request$PATH_INFO]]
+
+  if (!request$REQUEST_METHOD %in% names(path_handler)) {
+    return(http_method_not_allowed)
+  }
+  method_handler <- path_handler[[request$REQUEST_METHOD]]
+
+  return(method_handler(request))
+}
+
+app <- list(
+  call = function (request) {
+    response <- router(routes, request)
+    if (!'status' %in% names(response)) {
+      response$status <- 200
+    }
+    if (!'headers' %in% names(response)) {
+      response$headers <- list()
+    }
+    if (!'Content-Type' %in% names(response$headers)) {
+      response$headers[['Content-Type']] <- 'text/plain'
+    }
+
+    return(response)
+  }
+)
+
+cat(paste0("Server listening on :", PORT, "...\n"))
+runServer("0.0.0.0", PORT, app)
+```
+
+*host.json* の `customHandler` セクションを、カスタム ハンドラーのスタートアップ コマンドを構成するように変更します。
+
+```json
+"customHandler": {
+  "description": {
+      "defaultExecutablePath": "Rscript",
+      "arguments": [
+      "handler.R"
+    ]
+  },
+  "enableForwardingHttpRequest": true
+}
+```
+::: zone-end
+
 関数をローカルでテストするために、プロジェクト フォルダーのルートでローカルの Azure Functions ランタイム ホストを起動します。 
 ::: zone pivot="programming-language-csharp"  
-```
+```console
 func start --build  
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-javascript,programming-language-powershell,programming-language-python"   
-```
+```console
 func start  
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
-```
+```console
 npm install
 npm start
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
-```
+```console
 mvn clean package  
 mvn azure-functions:run
 ```
 ::: zone-end
+::: zone pivot="programming-language-other"
+```console
+R -e "install.packages('httpuv', repos='http://cran.rstudio.com/')"
+func start
+```
+::: zone-end 
+
 出力に `HttpExample` エンドポイントが表示されたら、`http://localhost:7071/api/HttpExample?name=Functions` に移動します。 `name` クエリ パラメーターに指定された値、`Functions` をエコーバックする "hello" メッセージがブラウザーに表示されます。
 
 **Ctrl** - **C** キーを使用してホストを停止します。
 
 ## <a name="build-the-container-image-and-test-locally"></a>コンテナー イメージを作成してローカルでテストする
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-powershell,programming-language-python,programming-language-java,programming-language-typescript"
 (省略可) プロジェクト フォルダーのルートにある *Dockerfile* を確認します。 Dockerfile には、Linux 上で関数アプリを実行するために必要な環境が記述されています。  Azure Functions でサポートされている基本イメージの詳細な一覧については、[Azure Functions 基本イメージ ページ](https://hub.docker.com/_/microsoft-azure-functions-base)を参照してください。
-    
+::: zone-end
+
+::: zone pivot="programming-language-other"
+プロジェクト フォルダーのルートにある *Dockerfile* を確認します。 Dockerfile には、Linux 上で関数アプリを実行するために必要な環境が記述されています。 カスタム ハンドラー アプリケーションでは、そのベースとして `mcr.microsoft.com/azure-functions/dotnet:3.0-appservice` イメージが使用されます。
+
+*Dockerfile* を、R をインストールするように変更します。*Dockerfile* の内容を、次のように置き換えます。
+
+```dockerfile
+FROM mcr.microsoft.com/azure-functions/dotnet:3.0-appservice 
+ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+    AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+
+RUN apt update && \
+    apt install -y r-base && \
+    R -e "install.packages('httpuv', repos='http://cran.rstudio.com/')"
+
+COPY . /home/site/wwwroot
+```
+::: zone-end
+
 ルート プロジェクト フォルダーで、[docker build](https://docs.docker.com/engine/reference/commandline/build/) コマンドを実行し、名前に `azurefunctionsimage`、タグに `v1.0.0` を指定します。 `<DOCKER_ID>` を Docker Hub アカウント ID で置換します。 このコマンドでは、コンテナーの Docker イメージがビルドされます。
 
-```
+```console
 docker build --tag <DOCKER_ID>/azurefunctionsimage:v1.0.0 .
 ```
 
@@ -170,11 +316,11 @@ docker build --tag <DOCKER_ID>/azurefunctionsimage:v1.0.0 .
     
 ビルドをテストするために、ローカル コンテナーで [docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用してイメージを実行します。この場合も、`<DOCKER_ID` は実際の Docker ID に置き換え、ポート引数 `-p 8080:80` を追加してください。
 
-```
+```console
 docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 ```
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-other"  
 ローカル コンテナーでイメージが実行状態になったら、ブラウザーで `http://localhost:8080` を開きます。以下に示したプレースホルダー画像が表示されます。 この時点で画像が表示されるということは、Azure で実行されるときと同じように、ローカル コンテナーで関数が実行されているということです。つまり、*function.json* に `"authLevel": "function"` プロパティで定義されたアクセス キーによって関数は保護されています。 ただし、Azure の関数アプリに対してまだコンテナーが発行されていないため、そのキーはまだ利用できません。 ローカル コンテナーに対してテストしたい場合は、Docker を停止し、承認プロパティを `"authLevel": "anonymous"` に変更して、イメージをリビルドしてから Docker を再起動してください。 その後、*function.json* で `"authLevel": "function"` をリセットします。 詳細については、[承認キー](functions-bindings-http-webhook-trigger.md#authorization-keys)に関するセクションを参照してください。
 
 ![コンテナーがローカルで実行されていることを示すプレースホルダー画像](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
@@ -192,13 +338,13 @@ Docker Hub は、イメージのホストとしてイメージ サービスと�
 
 1. まだ Docker にサインインしていない場合は、[docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドでサインインします。`<docker_id>` は、実際の Docker ID に置き換えてください。 このコマンドでは、ユーザー名とパスワードを入力するよう求められます。 "ログインに成功しました" のメッセージで、サインインしていることを確認します。
 
-    ```
+    ```console
     docker login
     ```
     
 1. サインインしたら、[docker push](https://docs.docker.com/engine/reference/commandline/push/) コマンドを使用して Docker Hub にイメージをプッシュします。ここでも、`<docker_id>` は実際の Docker ID に置き換えてください。
 
-    ```
+    ```console
     docker push <docker_id>/azurefunctionsimage:v1.0.0
     ```
 
@@ -210,7 +356,7 @@ Docker Hub は、イメージのホストとしてイメージ サービスと�
 
 - リソース グループ。関連リソースの論理コンテナーです。
 - Azure ストレージ アカウント。プロジェクトについての状態とその他の情報を保持します。
-- Azure Functions アプリ。関数コードを実行するための環境となります。 関数アプリは、ローカルの関数プロジェクトと対応関係にあります。これを使用すると、リソースの管理、デプロイ、共有を容易にするための論理ユニットとして関数をグループ化できます。
+- 関数アプリ。関数コードを実行するための環境となります。 関数アプリは、ローカルの関数プロジェクトと対応関係にあります。これを使用すると、リソースの管理、デプロイ、共有を容易にするための論理ユニットとして関数をグループ化できます。
 
 Azure CLI コマンドを使用して、これらの項目を作成しましょう。 それぞれのコマンドからは、完了時に JSON 出力が返されます。
 
@@ -243,7 +389,7 @@ Azure CLI コマンドを使用して、これらの項目を作成しましょ�
     az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location westeurope --number-of-workers 1 --sku EP1 --is-linux
     ```   
 
-    カスタム関数コンテナーの Linux ホスティングは、[専用 (App Service) プラン](functions-scale.md#app-service-plan)および [Premium プラン](functions-premium-plan.md#features)でサポートされています。 ここでは、必要に応じてスケーリングできる Premium プランを使用します。 ホスティングについて詳しくは、「[Azure Functions のホスティング プランの比較](functions-scale.md)」をご覧ください。 コストを計算するには、[Functions の価格に関するページ](https://azure.microsoft.com/pricing/details/functions/)を参照してください。
+    ここでは、必要に応じてスケーリングできる Premium プランを使用します。 ホスティングについて詳しくは、「[Azure Functions のホスティング プランの比較](functions-scale.md)」をご覧ください。 コストを計算するには、[Functions の価格に関するページ](https://azure.microsoft.com/pricing/details/functions/)を参照してください。
 
     また、このコマンドを実行すると、関連する Azure Application Insights インスタンスが同じリソース グループにプロビジョニングされます。このインスタンスを使用することで、関数アプリを監視したりログを確認したりすることができます。 詳しくは、「[Azure Functions を監視する](functions-monitoring.md)」をご覧ください。 このインスタンスは、アクティブにするまでコストが発生しません。
 
@@ -253,13 +399,20 @@ Azure 上の関数アプリでは、ホスティング プランで関数の実�
 
 1. [az functionapp create](/cli/azure/functionapp#az-functionapp-create) コマンドを使用して関数アプリを作成します。 次の例の `<storage_name>` は、前のセクションで使用したストレージ アカウントの名前に置き換えてください。 また、`<app_name>` は適宜グローバルに一意の名前に、`<docker_id>` は実際の Docker ID に置き換えます。
 
+    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
     ```azurecli
-    az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
+    az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --runtime <functions runtime stack> --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
     ```
+    ::: zone-end
+    ::: zone pivot="programming-language-other"
+    ```azurecli
+    az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --runtime custom --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
+    ```
+    ::: zone-end
     
     *deployment-container-image-name* パラメーターでは、関数アプリに使用するイメージを指定します。 デプロイに使用されているイメージに関する情報は、[az functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) コマンドを使用して表示できます。 [az functionapp config container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) コマンドを使用して、別のイメージからデプロイすることもできます。
 
-1. 作成したストレージ アカウントの接続文字列を [az storage account show-connection-string](/cli/azure/storage/account) コマンドで取得し、シェル変数 `storageConnectionString` に代入します。
+1. 作成したストレージ アカウントの接続文字列を [az storage account show-connection-string](/cli/azure/storage/account) コマンドで表示します。 `<storage-name>` を、上で作成したストレージ アカウントの名前に置き換えます。
 
     ```azurecli
     az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
@@ -270,8 +423,6 @@ Azure 上の関数アプリでは、ホスティング プランで関数の実�
     ```azurecli
     az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>
     ```
-
-1. 関数でこの接続文字列を使用してストレージ アカウントにアクセスできるようになりました。
 
     > [!TIP]
     > Bash では、クリップボードではなく、シェル変数を使用して接続文字列をキャプチャできます。 まず、次のコマンドを使用して、接続文字列の変数を作成します。
@@ -285,6 +436,8 @@ Azure 上の関数アプリでは、ホスティング プランで関数の実�
     > ```azurecli
     > az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
     > ```
+
+1. 関数でこの接続文字列を使用してストレージ アカウントにアクセスできるようになりました。
 
 > [!NOTE]    
 > カスタム イメージをプライベート コンテナー アカウントに発行する場合は、接続文字列に Dockerfile 内の環境変数を使用する必要があります。 詳細については、[ENV の手順](https://docs.docker.com/engine/reference/builder/#env)を参照してください。 また、変数 `DOCKER_REGISTRY_SERVER_USERNAME` および `DOCKER_REGISTRY_SERVER_PASSWORD` も設定する必要があります。 これらの値を使用するには、イメージをリビルドしてそのイメージをレジストリにプッシュした後、Azure で関数アプリを再起動する必要があります。
@@ -370,7 +523,7 @@ Azure 上の関数アプリにイメージをデプロイしたら、HTTP 要求
 
 1. デプロイの Webhook URL をクリップボードにコピーします。
 
-1. [[Docker Hub]](https://hub.docker.com/) を開いてサインインし、ナビゲーション バーの **[Repositories]\(リポジトリ\)** を選択します。 イメージを検索して選択し、 **[Webhooks]** タブを選択します。次に、**Webhook の名前**を指定して、 **[Webhook URL]** に URL を貼り付け、 **[Create]\(作成\)** を選択します。
+1. [[Docker Hub]](https://hub.docker.com/) を開いてサインインし、ナビゲーション バーの **[Repositories]\(リポジトリ\)** を選択します。 イメージを検索して選択し、 **[Webhooks]** タブを選択します。次に、**Webhook の名前** を指定して、 **[Webhook URL]** に URL を貼り付け、 **[Create]\(作成\)** を選択します。
 
     ![DockerHub リポジトリに Webhook を追加する](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 
@@ -414,13 +567,13 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
     
 1. もう一度 `docker build` コマンドを使用してイメージをリビルドします。`<docker_id>` は、実際の Docker ID に置き換えてください。
 
-    ```
+    ```console
     docker build --tag <docker_id>/azurefunctionsimage:v1.0.0 .
     ```
     
 1. 更新済みのイメージを Docker Hub にプッシュします。アップロードする必要があるのは、イメージの更新済みセグメントのみであるため、初回プッシュ時よりもはるかに短時間で済みます。
 
-    ```
+    ```console
     docker push <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
@@ -434,13 +587,16 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
 
     ![SSH セッションで実行されている Linux top コマンド](media/functions-create-function-linux-custom-image/linux-custom-kudu-ssh-top.png)
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
+
 ## <a name="write-to-an-azure-storage-queue"></a>Azure Storage キューに書き込む
 
-Azure Functions を使用すると、独自の統合コードを記述することなく他の Azure サービスやリソースに関数を接続できます。 これらの*バインド*は、入力と出力の両方を表し、関数定義内で宣言されます。 バインドからのデータは、パラメーターとして関数に提供されます。 "*トリガー*" は、特殊な種類の入力バインドです。 関数はトリガーを 1 つしか持てませんが、複数の入力および出力バインドを持つことができます。 詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」を参照してください。
+Azure Functions を使用すると、独自の統合コードを記述することなく他の Azure サービスやリソースに関数を接続できます。 これらの *バインド* は、入力と出力の両方を表し、関数定義内で宣言されます。 バインドからのデータは、パラメーターとして関数に提供されます。 "*トリガー*" は、特殊な種類の入力バインドです。 関数はトリガーを 1 つしか持てませんが、複数の入力および出力バインドを持つことができます。 詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」を参照してください。
 
 このセクションでは、関数と Azure Storage キューを統合する方法について説明します。 この関数に追加する出力バインドは、HTTP 要求のデータをキュー内のメッセージに書き込みます。
 
 [!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
+::: zone-end
 
 [!INCLUDE [functions-register-storage-binding-extension-csharp](../../includes/functions-register-storage-binding-extension-csharp.md)]
 
@@ -453,9 +609,12 @@ Azure Functions を使用すると、独自の統合コードを記述するこ�
 [!INCLUDE [functions-add-output-binding-java-cli](../../includes/functions-add-output-binding-java-cli.md)]
 ::: zone-end  
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
+
 ## <a name="add-code-to-use-the-output-binding"></a>出力バインディングを使用するコードを追加する
 
 キュー バインディングが定義されたら、`msg` 出力パラメーターを受け取ってメッセージをキューに書き込むように関数を更新することができます。
+::: zone-end
 
 ::: zone pivot="programming-language-python"     
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
@@ -483,17 +642,18 @@ Azure Functions を使用すると、独自の統合コードを記述するこ�
 [!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
 ::: zone-end
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
 ### <a name="update-the-image-in-the-registry"></a>レジストリ内のイメージを更新する
 
 1. ルート フォルダーで `docker build` コマンドを再度実行します。今回は、タグ内のバージョンを `v1.0.1` に更新します。 以前と同様に、`<docker_id>` を Docker Hub アカウント ID に置き換えてください。
 
-    ```
+    ```console
     docker build --tag <docker_id>/azurefunctionsimage:v1.0.1 .
     ```
     
 1. `docker push` を使用して、更新済みのイメージをリポジトリにプッシュして戻します。
 
-    ```
+    ```console
     docker push <docker_id>/azurefunctionsimage:v1.0.1
     ```
 
@@ -505,9 +665,11 @@ Azure Functions を使用すると、独自の統合コードを記述するこ�
 
 [!INCLUDE [functions-add-output-binding-view-queue-cli](../../includes/functions-add-output-binding-view-queue-cli.md)]
 
+::: zone-end
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このチュートリアルで作成したリソースを使用して、引き続き Azure Functions に取り組む場合は、それらのリソースをすべてそのままにしてかまいません。 Azure Functions 用の Premium プランを作成したため、継続するためのコストとして、1 日につき 1 ドルまたは 2 ドルの料金がかかります。
+このチュートリアルで作成したリソースを使用して、引き続き Azure 関数に取り組む場合は、それらのリソースをすべてそのままにしてかまいません。 Azure Functions 用の Premium プランを作成したため、継続するためのコストとして、1 日につき 1 ドルまたは 2 ドルの料金がかかります。
 
 継続コストを避けるためには、`AzureFunctionsContainer-rg` リソース グループを削除して、そのグループのリソースをすべてクリーンアップしてください。 
 
@@ -517,6 +679,6 @@ az group delete --name AzureFunctionsContainer-rg
 
 ## <a name="next-steps"></a>次のステップ
 
-+ [Azure Functions の監視](functions-monitoring.md)
++ [関数の監視](functions-monitoring.md)
 + [スケールとホスティングのオプション](functions-scale.md)
 + [Kubernetes ベースのサーバーレス ホスティング](functions-kubernetes-keda.md)

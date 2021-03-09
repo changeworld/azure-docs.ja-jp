@@ -3,18 +3,20 @@ title: Azure Cosmos DB クエリ言語の GetCurrentTicks
 description: Azure Cosmos DB での SQL システム関数 GetCurrentTicks について説明します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 02/03/2021
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 2ca76d75edba6688dbe93f11a51a0ad67942677a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 16004e6e471094c99229c32a63396ac3b0490905
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606945"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524286"
 ---
 # <a name="getcurrentticks-azure-cosmos-db"></a>GetCurrentTicks (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 1970 年 1 月 1 日木曜日 00 時 00 分 00 秒から経過した 100 ナノ秒ティック数を返します。
   
@@ -32,7 +34,8 @@ Unix エポックから経過した現在の 100 ナノ秒ティック数を示�
 
 GetCurrentTicks() は非決定論的関数です。 返される結果は UTC (協定世界時) です。
 
-このシステム関数では、インデックスは使用されません。
+> [!NOTE]
+> このシステム関数では、インデックスは使用されません。 値を現在の時刻と比較する場合は、現在の時刻をクエリ実行前に取得して、その定数文字列値を `WHERE` 句で使用します。
 
 ## <a name="examples"></a>例
 

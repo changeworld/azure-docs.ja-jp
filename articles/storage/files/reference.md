@@ -1,18 +1,18 @@
 ---
 title: Azure Files のリファレンス
-description: Azure Storage API リファレンス、readme ファイル、クライアント ライブラリ パッケージが見つかります。
+description: Azure Files API リファレンス、readme ファイル、クライアント ライブラリ パッケージが見つかります。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/14/2020
 ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: c5799b7ec9f6ecce1b9203345446b2d3240beb80
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4fe6befbfc3c6f12cf804841052795647cd1f76a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527848"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629837"
 ---
 # <a name="azure-files-reference"></a>Azure Files のリファレンス
 
@@ -25,7 +25,7 @@ Azure Files API リファレンス、ライブラリ パッケージ、readme �
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [.NET 用 Azure Files クライアント ライブラリ v12](/dotnet/api/overview/azure/storage.files.shares-readme) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files/) | &nbsp; |
-| 11.x | [Microsoft.Azure.Storage.File 名前空間](/dotnet/api/microsoft.azure.storage.file) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/) | [.NET での Azure Files 用の開発](/azure/storage/files/storage-dotnet-how-to-use-files) |
+| 11.x | [Microsoft.Azure.Storage.File 名前空間](/dotnet/api/microsoft.azure.storage.file) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/) | [.NET での Azure Files 用の開発](./storage-dotnet-how-to-use-files.md) |
 
 ### <a name="storage-management"></a>記憶域の管理
 
@@ -50,7 +50,7 @@ Azure Files API リファレンス、ライブラリ パッケージ、readme �
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12.x | [Java 用 Azure Files クライアント ライブラリ](/java/api/overview/azure/storage-file-share-readme) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-file-share) | &nbsp; |
-| 8.x | [com.microsoft.azure.storage.file](/java/api/com.microsoft.azure.storage.file) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Java を使用して Azure Files 用に開発する](/azure/storage/files/storage-java-how-to-use-file-storage) |
+| 8.x | [com.microsoft.azure.storage.file](/java/api/com.microsoft.azure.storage.file) | [パッケージ (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Java を使用して Azure Files 用に開発する](./storage-java-how-to-use-file-storage.md) |
 
 ### <a name="storage-management"></a>記憶域の管理
 
@@ -66,8 +66,8 @@ Azure Files API リファレンス、ライブラリ パッケージ、readme �
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [Python 用 Azure Storage クライアント ライブラリ v12](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [パッケージ (PyPI)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [使用例](/python/api/overview/azure/storage-file-share-readme#examples) |
-| 2.x | [Python 用 Azure Storage クライアント ライブラリ v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [パッケージ (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Python を使用して Azure Files 用に開発する](/azure/storage/files/storage-python-how-to-use-file-storage) |
+| 12.x | [Python 用 Azure Storage クライアント ライブラリ v12](/azure/developer/python/sdk/storage/overview) | [パッケージ (PyPI)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [使用例](/python/api/overview/azure/storage-file-share-readme#examples) |
+| 2.x | [Python 用 Azure Storage クライアント ライブラリ v2](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [パッケージ (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Python を使用して Azure Files 用に開発する](./storage-python-how-to-use-file-storage.md) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript クライアント ライブラリ
 
@@ -106,8 +106,9 @@ Azure Files API リファレンス、ライブラリ パッケージ、readme �
 
 | Version | プラットフォーム |
 | ------- | -------- |
-|  3.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-3.8.0) |
-|  2.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-2.8.0) |
+|  4.x  | [PowerShell](/powershell/module/az.storage/?view=azps-4.6.1&preserve-view=true) |
+|  3.x  | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
+|  2.x  | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
 
 ## <a name="azure-cli"></a>Azure CLI
 

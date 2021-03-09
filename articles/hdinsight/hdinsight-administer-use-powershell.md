@@ -1,33 +1,30 @@
 ---
 title: PowerShell を使用して Apache Hadoop クラスターを管理する - Azure HDInsight
 description: Azure PowerShell を使用して HDInsight の Apache Hadoop クラスターに対する管理タスクを実行する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/13/2020
-ms.openlocfilehash: 1839cfe0f7295af583b7bd5397957a223e888d3e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c8581c2288eacb47fb9475a3b0a584434c8604f6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086508"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942803"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Azure PowerShell を使用して HDInsight の Apache Hadoop クラスターを管理する
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Azure PowerShell を使用して、Azure のワークロードのデプロイと管理を制御し自動化することができます。 この記事では、Azure PowerShell Az モジュールを使用して Azure HDInsight の [Apache Hadoop](https://hadoop.apache.org/) クラスターを管理する方法について説明します。 HDInsight PowerShell コマンドレットの一覧については、[Az.HDInsight リファレンス](https://docs.microsoft.com/powershell/module/az.hdinsight)を参照してください。
+Azure PowerShell を使用して、Azure のワークロードのデプロイと管理を制御し自動化することができます。 この記事では、Azure PowerShell Az モジュールを使用して Azure HDInsight の [Apache Hadoop](https://hadoop.apache.org/) クラスターを管理する方法について説明します。 HDInsight PowerShell コマンドレットの一覧については、[Az.HDInsight リファレンス](/powershell/module/az.hdinsight)を参照してください。
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-インストール済みの PowerShell [Az モジュール](https://docs.microsoft.com/powershell/azure/)。
+インストール済みの PowerShell [Az モジュール](/powershell/azure/)。
 
 ## <a name="create-clusters"></a>クラスターの作成
 
@@ -75,7 +72,7 @@ Set-AzHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <New
 
 ## <a name="update-http-user-credentials"></a>HTTP ユーザーの資格情報の更新
 
-[Set-AzHDInsightGatewayCredential](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential) は、Azure HDInsight クラスターのゲートウェイの HTTP 資格情報を設定します。
+[Set-AzHDInsightGatewayCredential](/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential) は、Azure HDInsight クラスターのゲートウェイの HTTP 資格情報を設定します。
 
 ```powershell
 $clusterName = "CLUSTERNAME"
@@ -146,7 +143,7 @@ $resourceGroupName = $cluster.ResourceGroup
 
 ## <a name="see-also"></a>参照
 
-* [Az.HDInsight コマンドレット](https://docs.microsoft.com/powershell/module/az.hdinsight/?view=azps-3.1.0#hdinsight)
+* [Az.HDInsight コマンドレット](/powershell/module/az.hdinsight/#hdinsight)
 * [Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-portal-linux.md)
 * [コマンド ライン インターフェイスを使用した HDInsight の管理](hdinsight-administer-use-command-line.md)
 * [HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/12/2019
 ms.author: jeedes
-ms.openlocfilehash: a04dd8dff95f394c397eb55d8e23fb3fa1f5796e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 83bf6c6a9c8d6f344b881e2603246fe9c0ead7cc
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534477"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518480"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-renraku"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と RENRAKU の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88534477"
 * ユーザーが自分の Azure AD アカウントを使用して RENRAKU に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* RENRAKU では、**SP** Initiated SSO がサポートされます
+* RENRAKU では、 **SP** Initiated SSO がサポートされます
 
 ## <a name="adding-renraku-from-the-gallery"></a>ギャラリーからの RENRAKU の追加
 
@@ -49,7 +49,7 @@ Azure AD への RENRAKU の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**RENRAKU**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **RENRAKU** 」と入力します。
 1. 結果のパネルから **[RENRAKU]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-renraku"></a>RENRAKU の Azure AD シングル サインオンの構成とテスト
@@ -124,25 +124,24 @@ RENRAKU に対する Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-renraku-sso"></a>RENRAKU の SSO の構成
 
-**RENRAKU** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (未加工)** と Azure portal からコピーした適切な URL を [RENRAKU サポート チーム](https://phoneappli.net/product/contact/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**RENRAKU** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (未加工)** と Azure portal からコピーした適切な URL を [RENRAKU サポート チーム](https://phoneappli.net/product/contact/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-renraku-test-user"></a>RENRAKU のテスト ユーザーの作成
 
-このセクションでは、RENRAKU で B.Simon というユーザーを作成します。  [RENRAKU サポート チーム](https://phoneappli.net/product/contact/)と連携し、RENRAKU プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、RENRAKU で B.Simon というユーザーを作成します。 [RENRAKU サポート チーム](https://phoneappli.net/product/contact/)と連携して、RENRAKU プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [RENRAKU] タイルをクリックすると、SSO を設定した RENRAKU に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [RENRAKU] タイルをクリックすると、SSO を設定した RENRAKU に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で RENRAKU を試す](https://aad.portal.azure.com/)
-

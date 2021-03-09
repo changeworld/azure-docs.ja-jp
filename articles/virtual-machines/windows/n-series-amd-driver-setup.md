@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 74827e78017ad3540709fa0e671762a985976cda
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1e08d54b9467231233c62635dafc5135456a3843
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999005"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695415"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Windows を実行している N シリーズ VM に AMD GPU ドライバーをインストールする
 
@@ -31,7 +31,13 @@ NVv4 VM では、Microsoft によって公開された GPU ドライバーのみ
 
 | OS | Driver |
 | -------- |------------- |
-| Windows 10 Enterprise マルチセッション - ビルド 1903 <br/><br/>Windows 10 - ビルド 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (.exe) |
+| Windows 10 Enterprise マルチセッション - ビルド 1909 <br/><br/>Windows 10 - ビルド 1909<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q4](https://download.microsoft.com/download/f/1/6/f16e6275-a718-40cd-a366-9382739ebd39/AMD-Azure-NVv4-Driver-20Q4.exe) (.exe) |
+
+ > [!NOTE]
+   >  ビルド 1903 または 1909 を使用する場合は、最適なパフォーマンスを得るために、次のグループ ポリシーの更新が必要になることがあります。 これらの変更は、他の Windows ビルドには必要ありません。
+   >  
+   >  [コンピューターの構成]->[ポリシー]->[Windows の設定]->[管理用テンプレート]->[Windows コンポーネント]->[リモート デスクトップ サービス]->[リモート デスクトップ セッション ホスト]->[リモート セッション環境] の順に選択し、ポリシー [Use WDDM graphics display driver for Remote Desktop Connections]\(リモート デスクトップ接続に WDDM グラフィックス表示ドライバーを使用する\) を [無効] に設定します。
+   >  
 
 
 ## <a name="driver-installation"></a>ドライバーのインストール
@@ -48,11 +54,12 @@ NVv4 VM では、Microsoft によって公開された GPU ドライバーのみ
 
 ドライバーのインストールはデバイス マネージャーで確認できます。 次の例は、Azure NVv4 VM での Radeon Instinct MI25 カードの正常な構成を示しています。
 <br />
-![GPU ドライバーのプロパティ](./media/n-series-amd-driver-setup/device-manager.png)
+
+![Azure NVv4 VM での Radeon Instinct MI25 カードの正常な構成を示すスクリーンショット。](./media/n-series-amd-driver-setup/device-manager.png)
 
 dxdiag を使用して、ビデオ RAM などの GPU 表示プロパティを確認できます。 次の例は、Azure NVv4 VM での Radeon Instinct MI25 カードの 1/2 パーティションを示しています。
 <br />
-![GPU ドライバーのプロパティ](./media/n-series-amd-driver-setup/dxdiag-output-new.png)
+![Azure NVv4 VM での Radeon Instinct MI25 カードの 1/2 パーティションを示すスクリーンショット。](./media/n-series-amd-driver-setup/dxdiag-output-new.png)
 
 Windows 10 ビルド1903 以降を実行している場合、dxdiag では [表示] タブに情報が表示されません。下部にある [すべての情報を保存する] オプションを使用してください。出力ファイルには、AMD MI25 GPU に関連する情報が表示されます。
 

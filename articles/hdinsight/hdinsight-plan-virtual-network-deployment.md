@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight 用の仮想ネットワークを計画する
 description: Azure Virtual Network のデプロイを計画して HDInsight を他のクラウド リソースまたはデータ センター内のリソースに接続する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 05/04/2020
-ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 01/12/2021
+ms.openlocfilehash: fe974a96b7f349c9d525d0cd0bb01a83ace57a4f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82786616"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939281"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Azure HDInsight 用の仮想ネットワークを計画する
 
@@ -26,7 +23,7 @@ Azure Virtual Network を使用すると、次のシナリオが可能になり�
 * インターネットで公開されていない Apache Hadoop サービスに直接アクセスする。 たとえば、Apache Kafka API や Apache HBase Java API などです。
 
 > [!IMPORTANT]
-> VNET で HDInsight クラスターを作成すると、NIC やロード バランサーなど、いくつかのネットワーク リソースが作成されます。 これらのネットワーク リソースは、クラスターが VNET で正常に機能するために必要なため、削除**しないでください**。
+> VNET で HDInsight クラスターを作成すると、NIC やロード バランサーなど、いくつかのネットワーク リソースが作成されます。 これらのネットワーク リソースは、クラスターが VNET で正常に機能するために必要なため、削除 **しないでください**。
 >
 > 2019 年 2 月 28 日以降、VNET で作成された "新しい" HDInsight クラスターのネットワーク リソース (NIC、LB など) は、同じ HDInsight クラスター リソース グループにプロビジョニングされます。 以前は、これらのリソースは、VNET リソース グループにプロビジョニングされていました。 現在実行中のクラスターや、VNET なしで作成されたクラスターへの変更はありません。
 
@@ -51,7 +48,8 @@ Azure Virtual Network を使用すると、次のシナリオが可能になり�
 このセクションの手順を使用して、新しい HDInsight を既存の Azure Virtual Network に追加する方法をご確認ください。
 
 > [!NOTE]  
-> 仮想ネットワークに既存の HDInsight クラスターを追加することはできません。
+> - 仮想ネットワークに既存の HDInsight クラスターを追加することはできません。
+> - VNET と、作成されるクラスターは、同じサブスクリプション内に存在する必要があります。
 
 1. 使用中の仮想ネットワークは、クラシック デプロイ モデルですか、Resource Manager デプロイ モデルですか。
 
@@ -84,7 +82,7 @@ Azure Virtual Network を使用すると、次のシナリオが可能になり�
         詳細については、「 [ネットワーク セキュリティ グループのトラブルシューティング](../virtual-network/diagnose-network-traffic-filter-problem.md) 」をご覧ください。
 
         > [!IMPORTANT]  
-        > ネットワーク セキュリティ グループ ルールは、ルールの優先順位に基づく順序で適用されます。 トラフィック パターンに一致する最初のルールが適用され、そのトラフィックには他のルールは適用されません。 ルールは、最も制限の緩やかなルールから最も制限の厳しいルールへと順番付けします。 詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/security-overview.md)」をご覧ください。
+        > ネットワーク セキュリティ グループ ルールは、ルールの優先順位に基づく順序で適用されます。 トラフィック パターンに一致する最初のルールが適用され、そのトラフィックには他のルールは適用されません。 ルールは、最も制限の緩やかなルールから最も制限の厳しいルールへと順番付けします。 詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/network-security-groups-overview.md)」をご覧ください。
 
     * ユーザー定義のルート
 
@@ -210,6 +208,6 @@ HDInsight クラスターを作成すると、ロード バランサーも作成
 * コード サンプルおよび Azure Virtual Network の作成例については、[Azure HDInsight クラスター用の仮想ネットワークの作成](hdinsight-create-virtual-network.md)に関するページを参照してください。
 * HDInsight を オンプレミス ネットワークに接続する構成方法の詳しい例については、 [HDInsight のオンプレミス ネットワークへの接続](./connect-on-premises-network.md)に関するページをご覧ください。
 * Azure 仮想ネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページをご覧ください。
-* ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)に関するページをご覧ください。
+* ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)に関するページをご覧ください。
 * ユーザー定義のルートについて詳しくは、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」をご覧ください。
-* トラフィックのコントロールの詳細については、[ネットワーク トラフィックのコントロール](./control-network-traffic.md)に関するページをご覧ください。
+* ファイアウォールの統合を含むトラフィックのコントロールの詳細については、[ネットワーク トラフィックのコントロール](./control-network-traffic.md)に関するページをご覧ください。

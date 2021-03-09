@@ -3,8 +3,7 @@ title: ASP.NET Core アプリで Azure App Configuration の Key Vault 参照を
 description: このチュートリアルでは、ASP.NET Core アプリから Azure App Configuration の Key Vault 参照を使用する方法について説明します。
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,14 +11,14 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/08/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 3e6403f41d8e4b52ca64e9fa452524fa25efe870
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 37bc7fbcd366455668d5316e45ffbf79127a49f3
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213253"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99981225"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで Key Vault 参照を使用する
 
@@ -51,7 +50,7 @@ App Configuration に格納されているその他のキーの場合と同様�
 
 1. Azure Portal の左上隅にある **[リソースの作成]** オプションを選択します。
 
-    ![Key Vault の作成が完了した後の出力](./media/quickstarts/search-services.png)
+    ![Azure portal の [リソースの作成] オプションを示すスクリーンショット。](./media/quickstarts/search-services.png)
 1. 検索ボックスに「**Key Vault**」と入力します。
 1. 結果リストで、左側の **[キー コンテナー]** を選択します。
 1. **[キー コンテナー]** で、 **[追加]** を選択します。
@@ -65,7 +64,7 @@ App Configuration に格納されているその他のキーの場合と同様�
 
 この時点で、お使いの Azure アカウントが、この新しいコンテナーへのアクセスが承認されている唯一のアカウントになります。
 
-![Key Vault の作成が完了した後の出力](./media/quickstarts/vault-properties.png)
+![キー コンテナーを示すスクリーンショット。](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Key Vault にシークレットを追加する
 
@@ -94,7 +93,7 @@ App Configuration に格納されているその他のキーの場合と同様�
 
 ## <a name="connect-to-key-vault"></a>Key Vault に接続する
 
-1. このチュートリアルでは、Key Vault の認証にサービス プリンシパルを使用します。 このサービス プリンシパルを作成するには、Azure CLI の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用します。
+1. このチュートリアルでは、Key Vault の認証にサービス プリンシパルを使用します。 このサービス プリンシパルを作成するには、Azure CLI の [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) コマンドを使用します。
 
     ```azurecli
     az ad sp create-for-rbac -n "http://mySP" --sdk-auth

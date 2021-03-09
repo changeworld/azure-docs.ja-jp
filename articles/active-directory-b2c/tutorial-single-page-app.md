@@ -7,20 +7,22 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 04/04/2020
-ms.custom: mvc, seo-javascript-september2019, devx-track-javascript
+ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: c8aca82567de0b564aadc355b198502450dd7a5c
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 6a9f3b864bd8aba2140c7d32d4b5474ff7b95f88
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169805"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171230"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>チュートリアル:Azure AD B2C を使用してシングルページ アプリケーションで認証を有効にする
 
-このチュートリアルでは、Azure Active Directory B2C (Azure AD B2C) を使用してシングルページ アプリケーション (SPA) でユーザーをサインアップおよびサインインする方法を説明します。
+このチュートリアルでは、Azure Active Directory B2C (Azure AD B2C) を使用してシングルページ アプリケーション (SPA) でユーザーをサインアップおよびサインインする方法を説明します。次のいずれかを使用します。
+* [OAuth 2.0 認証コード フロー](./authorization-code-flow.md) ([MSAL.js 2.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) 使用)
+* [OAuth 2.0 の暗黙的な許可のフロー](./implicit-flow-single-page-application.md) ([MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) 使用)
 
 2 部構成のシリーズの最初の部分であるこのチュートリアルでは、次の作業を行います。
 
@@ -39,7 +41,7 @@ ms.locfileid: "87169805"
 このチュートリアルの手順を続ける前に、次の Azure AD B2C リソースを用意しておく必要があります。
 
 * [Azure AD B2C テナント](tutorial-create-tenant.md)
-* ご利用のテナントで[登録されているアプリケーション](tutorial-register-applications.md)
+* ご利用のテナントで[登録されているアプリケーション](tutorial-register-spa.md)
 * ご利用のテナントで[作成したユーザー フロー](tutorial-create-user-flows.md)
 
 さらに、ご利用のローカル開発環境には次のものが必要です。
@@ -49,27 +51,38 @@ ms.locfileid: "87169805"
 
 ## <a name="update-the-application"></a>アプリケーションの更新
 
-前提条件の一環として完了した 2 番目のチュートリアルで、Azure AD B2C に Web アプリケーションを登録しました。 このチュートリアルのコード サンプルとの通信を可能にするには、アプリケーションの登録に応答 URL (リダイレクト URI とも呼ばれます) を追加します。
+前提条件の一環として完了した [2 番目のチュートリアル](./tutorial-register-spa.md)で、Azure AD B2C にシングルページ アプリケーションを登録しました。 このチュートリアルのコード サンプルとの通信を可能にするには、アプリケーションの登録に応答 URL (リダイレクト URI とも呼ばれます) を追加します。
 
-Azure AD B2C テナントでアプリケーションを更新するには、Microsoft の新しい統合**アプリの登録**エクスペリエンスか以前の**アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregtraining)。
+Azure AD B2C テナントでアプリケーションを更新するには、Microsoft の新しい統合 **アプリの登録** エクスペリエンスか以前の **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](./app-registrations-training-guide.md)。
 
-#### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
+#### <a name="app-registrations-auth-code-flow"></a>[アプリの登録 (認証コード フロー)](#tab/app-reg-auth/)
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-1. **[アプリの登録]** 、 **[所有しているアプリケーション]** タブ、 *[webapp1]* アプリケーションの順に選択します。
-1. **[Web]** で **[URI の追加]** リンクを選択し、「`http://localhost:6420`」と入力します。
-1. **[暗黙の付与]** で、 **[アクセス トークン]** および **[ID トークン]** のチェックボックスをオンにし、 **[保存]** を選択します。
+1. **[アプリの登録]** 、 **[所有しているアプリケーション]** タブ、*spaapp1* アプリケーションの順に選択します。
+1. **[シングルページ アプリケーション]** の下で、 **[URI の追加]** リンクを選択し、「`http://localhost:6420`」と入力します。
+1. **[保存]** を選択します。
 1. **[概要]** を選択します。
-1. 単一ページの Web アプリケーションでコードを更新する場合は、後の手順で使用するために**アプリケーション (クライアント) ID** をメモしておきます。
+1. 単一ページの Web アプリケーションでコードを更新する場合は、後の手順で使用するために **アプリケーション (クライアント) ID** をメモしておきます。
+
+#### <a name="app-registrations-implicit-flow"></a>[アプリの登録 (暗黙的なフロー)](#tab/app-reg-implicit/)
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. **[アプリの登録]** 、 **[所有しているアプリケーション]** タブ、*spaapp1* アプリケーションの順に選択します。
+1. **[シングルページ アプリケーション]** の下で、 **[URI の追加]** リンクを選択し、「`http://localhost:6420`」と入力します。
+1. **[暗黙の付与]** で、 **[アクセス トークン]** および **[ID トークン]** のチェック ボックスをオンにし (まだの場合)、 **[保存]** を選択します。
+1. **[概要]** を選択します。
+1. 単一ページの Web アプリケーションでコードを更新する場合は、後の手順で使用するために **アプリケーション (クライアント) ID** をメモしておきます。
 
 #### <a name="applications-legacy"></a>[アプリケーション (レガシ)](#tab/applications-legacy/)
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-1. **[アプリケーション (レガシ)]** を選択し、*webapp1* アプリケーションを選択します。
+1. **[アプリケーション (レガシ)]** を選択し、*spaapp1* アプリケーションを選択します。
 1. **[応答 URL]** に「`http://localhost:6420`」を追加します。
 1. **[保存]** を選択します。
 1. プロパティ ページで、**アプリケーション ID** をメモします。 このアプリ ID は、後の手順でシングル ページ Web アプリケーションのコードを更新する際に使用します。
@@ -80,50 +93,187 @@ Azure AD B2C テナントでアプリケーションを更新するには、Micr
 
 このチュートリアルでは、GitHub からダウンロードしたコード サンプルを B2C テナントで動作するように構成します。 このサンプルでは、シングルページ アプリケーションでユーザーのサインアップおよびサインイン、保護された Web API の呼び出しに Azure AD B2C を使用する方法が示されています (このシリーズの次のチュートリアルで、Web API を有効にします)。
 
-[ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)するか、GitHub からサンプルを複製します。
+* MSAL.js 2.x 認証コード フローのサンプル:
 
-```
-git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
-```
+    [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/archive/main.zip)するか、GitHub からサンプルを複製します。
+
+    ```
+    git clone https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa.git
+    ```
+* MSAL.js 1.x の暗黙的なフローのサンプル:
+
+    [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)するか、GitHub からサンプルを複製します。
+
+    ```
+    git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
+    ```
 
 ## <a name="update-the-sample"></a>サンプルを更新する
 
 サンプルを入手したので、ご利用の Azure AD B2C テナント名と前の手順でメモしたアプリケーション ID を使用してコードを更新します。
 
+#### <a name="auth-code-flow-sample"></a>[認証コード フローのサンプル](#tab/config-auth/)
+
+1. *App* フォルダー内の *authConfig.js* ファイルを開きます。
+1. `msalConfig` オブジェクトで `clientId` の割り当てを見つけ、前の手順で記録した **アプリケーション (クライアント) ID** に置き換えます。
+1. `policies.js` ファイルを開きます。
+1. `names` の下のエントリを見つけて、それらの割り当てを、前の手順で作成したユーザー フローの名前 (`B2C_1_signupsignin1`など) に置き換えます。
+1. `authorities` の下のエントリを見つけて、それらの割り当てを、前の手順で作成した適切なユーザー フローの名前 (`https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>`など) に置き換えます。
+1. `authorityDomain` の割り当てを見つけ、`<your-tenant-name>.b2clogin.com` に置き換えます。
+1. `apiConfig.js` ファイルを開きます。
+1. `b2cScopes` の割り当てを見つけ、URL を、Web API 用に作成したスコープ URL (たとえば、`b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/helloapi/demo.read"]`) に置き換えます。
+1. `webApi` の割り当てを見つけ、現在の URL を、手順 4. で Web API をデプロイした URL (たとえば、`webApi: http://localhost:5000/hello`) に置き換えます。
+
+#### <a name="implicit-flow-sample"></a>[暗黙的なフローのサンプル](#tab/config-implicit/)
+
 1. *JavaScriptSPA* フォルダー内の *authConfig.js* ファイルを開きます。
-1. `msalConfig` オブジェクト内で、次のように更新します。
-    * 前の手順で記録した **アプリケーション (クライアント) ID** を持つ値で `clientId` を更新
-    * Azure AD B2C テナント名と、前提条件の一部として作成したサインアップ/サインイン ユーザー フローの名前 (*B2C_1_signupsignin1* など) で `authority` URI を更新
+1. `msalConfig` オブジェクトで `clientId` の割り当てを見つけ、前の手順で記録した **アプリケーション (クライアント) ID** に置き換えます。
+1. `policies.js` ファイルを開きます。
+1. `names` の下のエントリを見つけて、それらの割り当てを、前の手順で作成したユーザー フローの名前 (`B2C_1_signupsignin1`など) に置き換えます。
+1. `authorities` の下のエントリを見つけて、それらの割り当てを、前の手順で作成した適切なユーザー フローの名前 (`https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>`など) に置き換えます。
+1. `apiConfig.js` ファイルを開きます。
+1. `b2cScopes` の割り当てを見つけ、URL を、Web API 用に作成したスコープ URL (たとえば、`b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/helloapi/demo.read"]`) に置き換えます。
+1. `webApi` の割り当てを見つけ、現在の URL を、手順 4. で Web API をデプロイした URL (たとえば、`webApi: http://localhost:5000/hello`) に置き換えます。
 
-    ```javascript
-    const msalConfig = {
-        auth: {
-          clientId: "00000000-0000-0000-0000-000000000000", // Replace this value with your Application (client) ID
-          authority: b2cPolicies.authorities.signUpSignIn.authority,
-          validateAuthority: false
+* * *
+
+結果のコードは次のようになります。
+
+#### <a name="auth-code-flow-sample"></a>[認証コード フローのサンプル](#tab/review-auth/)
+
+*authConfig.js*:
+
+```javascript
+const msalConfig = {
+  auth: {
+    clientId: "e760cab2-b9a1-4c0d-86fb-ff7084abd902",
+    authority: b2cPolicies.authorities.signUpSignIn.authority,
+    knownAuthorities: [b2cPolicies.authorityDomain],
+  },
+  cache: {
+    cacheLocation: "localStorage",
+    storeAuthStateInCookie: true
+  }
+};
+
+const loginRequest = {
+  scopes: ["openid", "profile"],
+};
+
+const tokenRequest = {
+  scopes: apiConfig.b2cScopes // i.e. ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"]
+};
+```
+
+*policies.js*:
+
+```javascript
+const b2cPolicies = {
+    names: {
+        signUpSignIn: "b2c_1_susi",
+        forgotPassword: "b2c_1_reset",
+        editProfile: "b2c_1_edit_profile"
+    },
+    authorities: {
+        signUpSignIn: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_susi",
         },
-        cache: {
-          cacheLocation: "localStorage",
-          storeAuthStateInCookie: true
+        forgotPassword: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_reset",
+        },
+        editProfile: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_edit_profile"
         }
-    };
+    },
+    authorityDomain: "fabrikamb2c.b2clogin.com"
+}
+```
 
-    const loginRequest = {
-       scopes: ["openid", "profile"],
-    };
+*apiConfig.js*:
 
-    const tokenRequest = {
-      scopes: apiConfig.b2cScopes // i.e. ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"]
-    };
-    ```
+```javascript
+const apiConfig = {
+  b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"],
+  webApi: "https://fabrikamb2chello.azurewebsites.net/hello"
+};
+```
+
+#### <a name="implicit-flow-sample"></a>[暗黙的なフローのサンプル](#tab/review-implicit/)
+
+*authConfig.js*:
+
+```javascript
+const msalConfig = {
+  auth: {
+    clientId: "e760cab2-b9a1-4c0d-86fb-ff7084abd902",
+    authority: b2cPolicies.authorities.signUpSignIn.authority,
+    validateAuthority: false
+  },
+  cache: {
+    cacheLocation: "localStorage",
+    storeAuthStateInCookie: true
+  }
+};
+
+const loginRequest = {
+  scopes: ["openid", "profile"],
+};
+
+const tokenRequest = {
+  scopes: apiConfig.b2cScopes // i.e. ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"]
+};
+```
+
+*policies.js*:
+
+```javascript
+const b2cPolicies = {
+    names: {
+        signUpSignIn: "b2c_1_susi",
+        forgotPassword: "b2c_1_reset",
+        editProfile: "b2c_1_edit_profile"
+    },
+    authorities: {
+        signUpSignIn: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_susi",
+        },
+        forgotPassword: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_reset",
+        },
+        editProfile: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_edit_profile"
+        }
+    },
+}
+```
+
+*apiConfig.js*:
+
+```javascript
+const apiConfig = {
+  b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"],
+  webApi: "https://fabrikamb2chello.azurewebsites.net/hello"
+};
+```
+
+* * *
+
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 
-1. コンソール ウィンドウを開き、サンプルを含むディレクトリに変更します。 次に例を示します。
+1. コンソール ウィンドウを開き、サンプルを含むディレクトリに移動します。 
 
-    ```console
-    cd active-directory-b2c-javascript-msal-singlepageapp
-    ```
+    - MSAL.js 2.x 認証コード フローのサンプルの場合:
+
+        ```console
+        cd ms-identity-b2c-javascript-spa
+        ```
+    - MSAL.js 1.x の暗黙的なフローのサンプルの場合: 
+
+        ```console
+        cd active-directory-b2c-javascript-msal-singlepageapp
+        ```
+
 1. 次のコマンドを実行します。
 
     ```console

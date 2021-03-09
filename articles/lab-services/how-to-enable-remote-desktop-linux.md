@@ -3,12 +3,12 @@ title: Azure Lab Services の Linux 向けグラフィカル リモート デス
 description: Azure Lab Services のラボで Linux 仮想マシン向けリモート デスクトップを有効にする方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4f50510adf978aeb63b2b5337d21e6f9dec76196
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34c940fec388bb0e79ab5e1db9be6d52fb223873
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445765"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647955"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>Azure Lab Services の Linux 仮想マシンでグラフィカル リモート デスクトップを有効にする
 この記事では、次のタスクの手順について説明します。
@@ -38,15 +38,15 @@ X2Go では、SSH 用に既に有効になっているのと同じポートが�
 > Ubuntu LTS 18.04 など、場合によっては、X2Go の方が高いパフォーマンスが得られます。  RDP を使用する場合で、グラフィカル デスクトップ環境とのやりとりの際に待機時間が発生する場合は、X2Go を試すことを検討してください。パフォーマンスが向上する可能性があります。
 
 > [!IMPORTANT]
->  一部のマーケットプレース イメージには、グラフィカル デスクトップ環境とリモート デスクトップ サーバーが既にインストールされています。  たとえば、[Linux 用 Data Science Virtual Machine (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) には、既に [XFCE と X2Go Server がインストールされており、クライアント接続を受け入れるように構成されています](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro#x2go)。
+>  一部のマーケットプレース イメージには、グラフィカル デスクトップ環境とリモート デスクトップ サーバーが既にインストールされています。  たとえば、[Linux 用 Data Science Virtual Machine (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) には、既に [XFCE と X2Go Server がインストールされており、クライアント接続を受け入れるように構成されています](../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#x2go)。
 
 ## <a name="enable-remote-desktop-connection-for-rdp"></a>RDP のリモート デスクトップ接続を有効にする
 
 この手順は、RDP を使用して接続する場合にのみ必要です。  X2Go を使用する場合は、次のセクションに進んで結構です (X2Go では SSH ポートが使用されるため)。
 
-1.  ラボの作成時に、講師は必要に応じて**リモート デスクトップ接続を有効にする**ことができます。  RDP リモート デスクトップ セッションに必要な Linux VM 上のポートを開くには、講師がこのオプションを**有効**にする必要があります。  このオプションを**無効**のままにすると、SSH 用のポートのみが開かれます。
+1.  ラボの作成時に、講師は必要に応じて **リモート デスクトップ接続を有効にする** ことができます。  RDP リモート デスクトップ セッションに必要な Linux VM 上のポートを開くには、講師がこのオプションを **有効** にする必要があります。  このオプションを **無効** のままにすると、SSH 用のポートのみが開かれます。
   
-    ![Linux イメージのリモート デスクトップ接続を有効にする](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
+    ![[New lab]\(新しいラボ\) ウィンドウと [Enable Remote Desktop Connection]\(リモート デスクトップ接続の有効化\) のスクリーンショット。](./media/how-to-enable-remote-desktop-linux/enable-rdp-option.png)
 
 2. **[Enabling Remote Desktop Connection]\(リモート デスクトップ接続の有効化\)** メッセージ ボックスで、 **[Continue with Remote Desktop]\(リモート デスクトップで続行\)** を選択します。 
 
@@ -73,7 +73,7 @@ X2Go では、SSH 用に既に有効になっているのと同じポートが�
     ![SSH 接続文字列](./media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
 
 4. 任意のグラフィカル デスクトップ環境と共に、RDP または X2Go をインストールします。  以下の記事をご参照ください。
-    - [RDP のインストールと構成](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop)
+    - [RDP のインストールと構成](../virtual-machines/linux/use-remote-desktop.md)
     - [X2Go のインストールと構成](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/X2GoRemoteDesktop)
 
 ## <a name="connect-to-the-template-vm-via-the-gui"></a>GUI を使用してテンプレート VM に接続する
@@ -82,7 +82,7 @@ X2Go では、SSH 用に既に有効になっているのと同じポートが�
 
 ### <a name="microsoft-remote-desktop-rdp-client"></a>Microsoft リモート デスクトップ (RDP) クライアント
 
-RDP (Microsoft リモート デスクトップ) クライアントは、RDP が構成されているテンプレート VM に接続するために使用されます。  リモート デスクトップ クライアントは、Windows、Chromebook、Mac などで使用できます。  詳細については、[リモート デスクトップ クライアントに関する記事](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)を参照してください。
+RDP (Microsoft リモート デスクトップ) クライアントは、RDP が構成されているテンプレート VM に接続するために使用されます。  リモート デスクトップ クライアントは、Windows、Chromebook、Mac などで使用できます。  詳細については、[リモート デスクトップ クライアントに関する記事](/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)を参照してください。
 
 テンプレート VM への接続に使用するコンピューターの種類に応じて、次の手順に従います。
 

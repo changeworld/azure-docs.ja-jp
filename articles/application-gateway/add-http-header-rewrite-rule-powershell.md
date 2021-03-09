@@ -7,23 +7,23 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: absha
-ms.openlocfilehash: f205b3a604aa38854969f6f62cbce44f46fa7d25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29ca3aff7d75c7a14bf7b325719924936762d191
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808252"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711690"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>Azure Application Gateway で HTTP の要求および応答ヘッダーを書き換える - Azure PowerShell
 
-この記事では、Azure PowerShell を使用して、要求と応答の HTTP ヘッダーを書き換えるように [Application Gateway v2 SKU](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) インスタンスを構成する方法を説明します。
+この記事では、Azure PowerShell を使用して、要求と応答の HTTP ヘッダーを書き換えるように [Application Gateway v2 SKU](./application-gateway-autoscaling-zone-redundant.md) インスタンスを構成する方法を説明します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-- この記事の手順を完了するには、ローカル環境で Azure PowerShell を実行する必要があります。 また、Az モジュール バージョン 1.0.0 以降がインストールされている必要があります。 `Import-Module Az` を実行してから `Get-Module Az` を実行し、インストールされているバージョンを確認します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell のバージョンを確認した後、`Login-AzAccount` を実行して Azure との接続を作成します。
-- Application Gateway v2 SKU インスタンスが必要です。 ヘッダーの書き換えは v1 SKU ではサポートされていません。 v2 SKU を持っていない場合は、始める前に [Application Gateway v2 SKU](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) インスタンスを作成してください。
+- この記事の手順を完了するには、ローカル環境で Azure PowerShell を実行する必要があります。 また、Az モジュール バージョン 1.0.0 以降がインストールされている必要があります。 `Import-Module Az` を実行してから `Get-Module Az` を実行し、インストールされているバージョンを確認します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell のバージョンを確認した後、`Login-AzAccount` を実行して Azure との接続を作成します。
+- Application Gateway v2 SKU インスタンスが必要です。 ヘッダーの書き換えは v1 SKU ではサポートされていません。 v2 SKU を持っていない場合は、始める前に [Application Gateway v2 SKU](./tutorial-autoscale-ps.md) インスタンスを作成してください。
 
 ## <a name="create-required-objects"></a>必要なオブジェクトを作成する
 
@@ -31,19 +31,19 @@ HTTP ヘッダーの書き換えを構成するには、次の手順のように
 
 1. HTTP ヘッダーの書き換えに必要なオブジェクトを作成します。
 
-   - **RequestHeaderConfiguration**: 書き換えようとしている要求ヘッダー フィールド、およびヘッダーの新しい値を指定するために使用されます。
+   - **RequestHeaderConfiguration**: 書き換えようとしている要求ヘッダー フィールドとヘッダーの新しい値を指定するために使用されます。
 
-   - **ResponseHeaderConfiguration**: 書き換えようとしている応答ヘッダー フィールド、およびヘッダーの新しい値を指定するために使用されます。
+   - **ResponseHeaderConfiguration**: 書き換えようとしている応答ヘッダー フィールドとヘッダーの新しい値を指定するために使用されます。
 
    - **ActionSet**: 上で指定した要求ヘッダーと応答ヘッダーの構成が格納されます。
 
-   - **条件**: オプションの構成。 書き換え条件では、HTTP(S) の要求と応答の内容が評価されます。 HTTP(S) の要求または応答が書き換え条件に一致する場合、書き換えアクションが発生します。
+   - **Condition**: オプション構成です。 書き換え条件では、HTTP(S) の要求と応答の内容が評価されます。 HTTP(S) の要求または応答が書き換え条件に一致する場合、書き換えアクションが発生します。
 
      複数の条件を 1 つのアクションと関連付けた場合は、すべての条件が満たされた場合にのみアクションが発生します。 つまり、操作は論理 AND 操作です。
 
-   - **RewriteRule**: 複数の書き換えアクション/書き換え条件の組み合わせが含まれます。
+   - **RewriteRule**: 複数の書き換えアクションまたは書き換え条件の組み合わせが含まれます。
 
-   - **RuleSequence**:書き換え規則の実行順序の決定に役立つオプションの構成です。 この構成は、書き換えセットに複数の書き換え規則がある場合に便利です。 規則のシーケンスの値が小さい書き換え規則から先に実行されます。 2 つの書き換え規則に同じ規則のシーケンスの値を割り当てた場合、実行順序は非決定論的となります。
+   - **RuleSequence**: 書き換え規則の実行順序の決定に役立つオプションの構成です。 この構成は、書き換えセットに複数の書き換え規則がある場合に便利です。 規則のシーケンスの値が小さい書き換え規則から先に実行されます。 2 つの書き換え規則に同じ規則のシーケンスの値を割り当てた場合、実行順序は非決定論的となります。
 
      RuleSequence を明示的に指定しない場合、既定値の 100 が設定されます。
 
@@ -62,7 +62,7 @@ Select-AzSubscription -Subscription "<sub name>"
 
 ## <a name="specify-the-http-header-rewrite-rule-configuration"></a>HTTP ヘッダーの書き換え規則の構成を指定する
 
-この例では、場所ヘッダーに azurewebsites.net への参照が含まれている場合は常に、HTTP 応答の場所ヘッダーを書き換えて、リダイレクト URL を変更します。 これを行うには、応答の場所ヘッダーに azurewebsites.net が含まれているかどうかを評価する条件を追加します。 ここでは、パターン `(https?):\/\/.*azurewebsites\.net(.*)$` を使います。 そして、ヘッダー値として `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` を使います。 この値により、場所ヘッダーの *azurewebsites.net* が *contoso.com* に置き換えられます。
+この例では、場所ヘッダーに azurewebsites.net への参照が含まれている場合は常に、HTTP 応答の場所ヘッダーを書き換えて、リダイレクト URL を変更します。 これを行うには、応答の場所ヘッダーに azurewebsites.net が含まれているかどうかを評価する条件を追加します。 ここでは、パターン `(https?)://.*azurewebsites.net(.*)$` を使います。 そして、ヘッダー値として `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` を使います。 この値により、場所ヘッダーの *azurewebsites.net* が *contoso.com* に置き換えられます。
 
 ```azurepowershell
 $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Location" -HeaderValue "{http_resp_Location_1}://contoso.com{http_resp_Location_2}"
@@ -104,4 +104,4 @@ set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="next-steps"></a>次のステップ
 
-一般的なユース ケースの設定方法の詳細については、[共通ヘッダーの書き換えシナリオ](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)に関する記事をご覧ください。
+一般的なユース ケースの設定方法の詳細については、[共通ヘッダーの書き換えシナリオ](./rewrite-http-headers.md)に関する記事をご覧ください。

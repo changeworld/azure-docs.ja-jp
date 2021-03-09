@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
-ms.openlocfilehash: a3a8c065c226d1cc94d79b44d16f288fab205a56
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: fb8bf593568825793a1a205a2955599b16fa78cf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337859"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151765"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>MQTT サーバーにメッセージを送信する
 
@@ -31,7 +31,7 @@ ms.locfileid: "87337859"
 
 ## <a name="what-you-need"></a>必要なもの
 
-[ファースト ステップ ガイド](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)に従って以下のことを行います。
+[ファースト ステップ ガイド](./iot-hub-arduino-iot-devkit-az3166-get-started.md)に従って以下のことを行います。
 
 * DevKit をWi-Fi に接続
 * 開発環境の準備
@@ -55,7 +55,7 @@ ms.locfileid: "87337859"
 
 `Ctrl+P` (macOS: `Cmd+P`) と入力して `task device-upload` を実行します。 アップロードが完了すると、DevKit が再起動し、スケッチを実行します。
 
-![device-upload](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
+![Arduino スケッチをアップロードして実行するコマンド プロンプト ウィンドウを示すスクリーンショット。](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
 
 > [!NOTE]
 > エラー メッセージ "エラー: AZ3166: 不明なパッケージ" が表示される場合があります。 このエラーは、ボード パッケージ インデックスが正しく更新されない場合に発生します。 このエラーを解決するには、[IoT DevKit FAQ の「Development (開発)」セクション](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)を参照してください。
@@ -64,15 +64,15 @@ ms.locfileid: "87337859"
 
 VS Code で、次の手順を実行し、シリアル モニターを開いて設定します。
 
-1. ステータス バーの `COM[X]` の単語をクリックして、右側の COM ポートを `STMicroelectronics` で設定します。![set-com-port](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
+1. ステータス バーの `COM[X]` の単語をクリックして、適切な COM ポートを `STMicroelectronics` に設定します。![COM8 S T Micro electronics が選択されている Visual Studio Code を示すスクリーンショット。](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-com-port.jpg)
 
-2. ステータス バーの電源プラグ アイコンをクリックして、シリアル モニターを開きます。![serial-monitor](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
+2. ステータス バーの電源プラグ アイコンをクリックして、シリアル モニターを開きます。![リリース概要と、ステータス バーの電源プラグ アイコンを示すスクリーンショット。](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-monitor.jpg)
   
-3. ステータス バーで、ボー レートを表す数字をクリックして `115200` に設定します。![set-baud-rate](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
+3. ステータス バーで、ボー レートを表す数字をクリックして `115200` に設定します。![Visual Studio Code でのボー レート設定を示すスクリーンショット。](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/set-baud-rate.jpg)
 
 シリアル モニターに、サンプル スケッチによって送信されたすべてのメッセージが表示されます。 スケッチが DevKit を Wi-Fi に接続します。 Wi-fi 接続が成功すると、スケッチが MQTT ブローカーにメッセージを送信します。 その後、このサンプルは QoS 0 と QoS 1 をそれぞれ使用して、2 つの "iot.eclipse.org" メッセージを繰り返し送信します。
 
-![serial-output](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
+![サンプル スケッチによって送信されたすべてのメッセージが表示されているシリアル モニターを示すスクリーンショット。](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
 
 ## <a name="problems-and-feedback"></a>問題とフィードバック
 
@@ -88,4 +88,4 @@ VS Code で、次の手順を実行し、シリアル モニターを開いて�
 
 ## <a name="next-steps"></a>次のステップ
 
-ここでは、MXChip Iot DevKit を MQTT クライアントとして構成し、MQTT クライアント ライブラリを使用して MQTT ブローカーにメッセージを送信する方法を説明しました。推奨される次のステップは以下のとおりです。[Azure IoT リモート監視ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-suite/)
+ここでは、MXChip Iot DevKit を MQTT クライアントとして構成し、MQTT クライアント ライブラリを使用して MQTT ブローカーにメッセージを送信する方法を説明しました。推奨される次のステップは以下のとおりです。[Azure IoT リモート監視ソリューション アクセラレータの概要](/azure/iot-suite/)

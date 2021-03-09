@@ -1,19 +1,24 @@
 ---
 title: Service Fabric Mesh アプリで Azure Files ベースのボリュームを使用する
 description: Azure CLI を使用して、Azure Files ベースのボリュームをサービス内にマウントして Azure Service Fabric Mesh アプリケーションに状態を保存する方法について説明します。
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 54edc242260479a8f48cc4aae91845041fc2d376
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.author: gwallace
+ms.custom: mvc, devcenter , devx-track-azurecli
+ms.openlocfilehash: 40d10568e13ad455bc5178821da80e89f4132e93
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260109"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625839"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Service Fabric Mesh アプリケーションで Azure Files ベースのボリュームをマウントする 
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 Service Fabric Mesh API を介した新しいデプロイは許可されなくなります。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)に関する記事を参照してください。
 
 この記事では、Service Fabric Mesh アプリケーションのサービスで Azure Files ベースのボリュームをマウントする方法について説明します。  Azure Files ボリューム ドライバーは、サービスの状態を保持するためのコンテナーに Azure Files 共有をマウントするために使用される Docker ボリューム ドライバーです。 ボリュームを利用することで、汎用目的のファイル ストレージが提供され、通常のディスク I/O ファイル API を利用してファイルを読み書きすることができます。  アプリケーション データを保存するためのボリュームとオプションの詳細については、[状態の保存](service-fabric-mesh-storing-state.md)に関するページを参照してください。
 
@@ -195,7 +200,7 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>ボリューム リソースを宣言し、サービス リソース (YAML) を更新する
 
-アプリケーションの*アプリ リソース* ディレクトリに新しい *volume.yaml* ファイルを追加します。  名前とプロバイダーを指定します (Azure Files ベースのボリュームを使用するには "SFAzureFile")。 `<fileShareName>`、`<storageAccountName>`、`<storageAccountKey>` は、前の手順で見つけた値です。
+アプリケーションの *アプリ リソース* ディレクトリに新しい *volume.yaml* ファイルを追加します。  名前とプロバイダーを指定します (Azure Files ベースのボリュームを使用するには "SFAzureFile")。 `<fileShareName>`、`<storageAccountName>`、`<storageAccountKey>` は、前の手順で見つけた値です。
 
 ```yaml
 volume:

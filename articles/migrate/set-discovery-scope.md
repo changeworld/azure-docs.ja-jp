@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate を使用して VMware VM 検出範囲を設定する
 description: Azure Migrate を使って VMware VM の評価と移行の検出範囲を設定する方法について説明します。
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: dfc9c12edd93fc720ef716fd43b04e0c193d5803
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: dc5bd178c837deea7a22fb3be5ba438085c0e748
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919728"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753554"
 ---
 # <a name="set-discovery-scope-for-vmware-vms"></a>VMware VM の検出範囲の設定
 
@@ -21,7 +24,7 @@ ms.locfileid: "88919728"
 
 ## <a name="before-you-start"></a>開始する前に
 
-Azure Migrate で検出に使用される vCenter ユーザー アカウントを設定していない場合は、ここで[評価](tutorial-prepare-vmware.md#set-up-permissions-for-assessment)用または[エージェントレス移行](tutorial-prepare-vmware.md#assign-permissions-to-an-account)用にそれを行います。
+Azure Migrate で検出に使用される vCenter ユーザー アカウントを設定していない場合は、ここで[評価](./tutorial-discover-vmware.md#prepare-vmware)用または[エージェントレス移行](./migrate-support-matrix-vmware-migration.md#agentless-migration)用にそれを行います。
 
 
 ## <a name="assign-permissions-and-roles"></a>アクセス許可とロールを割り当てる
@@ -29,14 +32,14 @@ Azure Migrate で検出に使用される vCenter ユーザー アカウント�
 次の 2 つの方法のいずれかを使用して、VMware インベントリ オブジェクトに対するアクセス許可を割り当てることができます。
 
 - アプライアンスによって使用されるアカウントで、範囲を設定するオブジェクトに対して必要なアクセス許可を持つロールを割り当てます。
-- または、データセンター レベルでアカウントにロールを割り当てて、子オブジェクトに伝達します。 その後、範囲内にしないすべてのオブジェクトについて、**アクセス権のない**ロールをアカウントに割り当てます。 すべての新しい子オブジェクトにも、親から継承されたアクセス権が自動的に付与されるので、この構成は煩雑であると同時に、アクセス制御が行われる場合があるため、この方法は推奨されません。
+- または、データセンター レベルでアカウントにロールを割り当てて、子オブジェクトに伝達します。 その後、範囲内にしないすべてのオブジェクトについて、**アクセス権のない** ロールをアカウントに割り当てます。 すべての新しい子オブジェクトにも、親から継承されたアクセス権が自動的に付与されるので、この構成は煩雑であると同時に、アクセス制御が行われる場合があるため、この方法は推奨されません。
 
 vCenter VM フォルダー レベルでインベントリ検出の範囲を設定することはできません。 VM フォルダー内の VM に検出の範囲を設定する必要がある場合は、ユーザーを作成し、必要な各 VM に対するアクセス権を個別に付与します。 ホストとクラスターのフォルダーはサポートされています。
 
 
 ### <a name="assign-a-role-for-assessment"></a>評価のためのロールを割り当てる
 
-1. 検出に使用しているアプライアンス vCenter アカウントで、検出して評価する VM がホストされているすべての親オブジェクト (ホスト、クラスター、ホスト フォルダー、クラスター フォルダー、データセンターまで) に対して**読み取り専用**ロールを適用します。
+1. 検出に使用しているアプライアンス vCenter アカウントで、検出して評価する VM がホストされているすべての親オブジェクト (ホスト、クラスター、ホスト フォルダー、クラスター フォルダー、データセンターまで) に対して **読み取り専用** ロールを適用します。
 2. 階層内の子オブジェクトにこれらのアクセス許可を反映します。
 
     ![アクセス許可の割り当て](./media/tutorial-assess-vmware/assign-perms.png)

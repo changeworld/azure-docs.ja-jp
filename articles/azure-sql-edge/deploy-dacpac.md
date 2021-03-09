@@ -1,6 +1,6 @@
 ---
-title: SQL Database DAC パッケージの使用 - Azure SQL Edge (プレビュー)
-description: Azure SQL Edge での dacpac の使用について説明します (プレビュー)
+title: SQL Database DACPAC および BACPAC パッケージの使用 - Azure SQL Edge
+description: Azure SQL Edge での dacpac および bacpac の使用について説明します
 keywords: SQL Edge, sqlpackage
 services: sql-edge
 ms.service: sql-edge
@@ -8,42 +8,36 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 0ddd1544c6a51ff1e2f98a28e40d9eb2ee0b47c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 09/03/2020
+ms.openlocfilehash: 40bd0eda16f9f96dd356eef900369ab25854e9f9
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84233273"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392250"
 ---
-# <a name="sql-database-dac-packages-in-sql-edge"></a>SQL Edge での SQL Database DAC パッケージ
+# <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>SQL Edge での SQL Database DACPAC および BACPAC パッケージ
 
-Azure SQL Edge (プレビュー) は、IoT およびエッジのデプロイに対応するよう最適化されたリレーショナル データベース エンジンです。 これは業界最高レベルのパフォーマンス、セキュリティ、およびクエリ処理機能を提供する、Microsoft SQL Server データベース エンジンの最新バージョンに基づいて構築されています。 SQL Server の業界をリードするリレーショナル データベース管理機能と共に、Azure SQL Edge では、リアルタイム分析や複雑なイベント処理のための組み込みのストリーミング機能が提供されます。
+Azure SQL Edge は、IoT およびエッジのデプロイ向けに最適化されたリレーショナル データベース エンジンです。 これは業界最高レベルのパフォーマンス、セキュリティ、およびクエリ処理機能を提供する、Microsoft SQL データベース エンジンの最新バージョンに基づいて構築されています。 SQL Server の業界をリードするリレーショナル データベース管理機能と共に、Azure SQL Edge では、リアルタイム分析や複雑なイベント処理のための組み込みのストリーミング機能が提供されます。
 
-また、Azure SQL Edge には、SqlPackage.exe のネイティブ実装が用意されています。これにより、SQL Edge のデプロイ時に [SQL Database DAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) パッケージをデプロイできます。 SQL Edge モジュールの `module twin's desired properties` オプションによって公開されている SqlPackage パラメーターを使用して、SQL Database dacpac を SQL Edge にデプロイできます。
+Azure SQL Edge には、[SQL Database DACPAC および BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications) パッケージを SQL Edge のデプロイ中またはデプロイ後に配置できるネイティブのメカニズムが用意されています。
 
-```json
-{
-    "properties.desired":
-    {
-        "SqlPackage": "<Optional_DACPAC_ZIP_SAS_URL>",
-        "ASAJobInfo": "<Optional_ASA_Job_ZIP_SAS_URL>"
-    }
-}
-```
-
-|フィールド | 説明 |
-|------|-------------|
-| SqlPackage | SQL Database DAC パッケージを含む *.zip ファイルの Azure Blob ストレージ URI。
-| ASAJobInfo | ASA Edge ジョブの Azure Blob ストレージ URI。
+SQL Database dacpac および bacpac パッケージは、`MSSQL_PACKAGE` 環境変数を使用して SQL Edge にデプロイできます。 環境変数は、次のいずれかを使用して構成できます。  
+- dacpac および bacpac ファイルが格納されている、SQL コンテナー内のローカル フォルダーの場所。 このフォルダーは、マウント ポイントまたはデータ ボリューム コンテナーのいずれかを使用してホスト ボリュームにマップできます。 
+- dacpac または bacpac ファイルにマッピングする SQL コンテナー内のローカル ファイル パス。 このファイル パスは、マウント ポイントまたはデータ ボリューム コンテナーのいずれかを使用してホスト ボリュームにマップできます。 
+- dacpac または bacpac ファイルを含む zip ファイルにマッピングされる、SQL コンテナー内のローカル ファイル パス。 このファイル パスは、マウント ポイントまたはデータ ボリューム コンテナーのいずれかを使用してホスト ボリュームにマップできます。 
+- dacpac および bacpac ファイルを含む zip ファイルへの Azure BLOB SAS URL。
+- dacpac または bacpac ファイルへの Azure BLOB SAS URL。 
 
 ## <a name="use-a-sql-database-dac-package-with-sql-edge"></a>SQL Edge で SQL Database DAC パッケージを使用する
 
-SQL Edge で SQL Database DAC パッケージ (*.dacpac) を使用するには、次の手順のようにします。
+Azure Blob Storage と zip ファイル使用して SQL Database DAC パッケージ `(*.dacpac)` または BACPAC ファイル `(*.bacpac)` をデプロイ (またはインポート) するには、次の手順に従います。 
 
-1. SQL Database DAC パッケージを作成または抽出します。 既存の SQL Server データベースに対して DAC パッケージを生成する方法については、「[データベースからの DAC の抽出](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/)」を参照してください。
+1. 以下に説明するメカニズムを使用して、DAC パッケージを作成または抽出するか、Bacpac ファイルをエクスポートします。 
+    - SQL Database DAC パッケージを作成または抽出します。 既存の SQL Server データベースに対して DAC パッケージを生成する方法については、「[データベースからの DAC の抽出](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/)」を参照してください。
+    - デプロイされた DAC パッケージまたはデータベースのエクスポート。 既存の SQL Server データベースに対して bacpac ファイルを生成する方法については、「[データ層アプリケーションのエクスポート](/sql/relational-databases/data-tier-applications/export-a-data-tier-application/)」を参照してください。
 
-2. *.dacpac を zip 圧縮し、Azure Blob ストレージ アカウントにアップロードします。 Azure Blob ストレージへのファイルのアップロードの詳細については、「[Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する](../storage/blobs/storage-quickstart-blobs-portal.md)」を参照してください。
+2. `*.dacpac` または `*.bacpac` ファイルを zip 圧縮し、Azure BLOB ストレージ アカウントにアップロードします。 Azure Blob ストレージへのファイルのアップロードの詳細については、「[Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する](../storage/blobs/storage-quickstart-blobs-portal.md)」を参照してください。
 
 3. Azure portal を使用して、zip ファイルの共有アクセス署名を生成します。 詳細については、[Shared Access Signature (SAS) を使用したアクセスの委任](../storage/common/storage-sas-overview.md)に関するページを参照してください。
 
@@ -57,34 +51,26 @@ SQL Edge で SQL Database DAC パッケージ (*.dacpac) を使用するには�
 
     4. **[IoT Edge デバイス]** のデバイス ページで、 **[Set Module]\(モジュールの設定\)** を選択します。
 
-    5. **[Set Module]\(モジュールの設定\)** ページで、SQL Edge モジュールに対して **[Configure]\(構成\)** を選択します。
+    5. **[モジュールの設定]** ページで、Azure SQL Edge モジュールをクリックします。
 
-    6. **[IoT Edge Custom Modules]\(IoT Edge カスタム モジュール\)** ウィンドウで、 **[Set module twin's desired properties]\(モジュール ツインの必要なプロパティの設定\)** を選択します。 次の例に示すように、`SQLPackage` オプションの URI が含まれるように、必要なプロパティを更新します。
+    6. **[IoT Edge モジュールの更新]** ペインで、 **[環境変数]** を選択します。 `MSSQL_PACKAGE` 環境変数を追加し、環境変数の値として上記の手順 3 で生成した SAS URL を指定します。 
 
-        > [!NOTE]
-        > 次の JSON の SAS URI は単なる例です。 この URI をデプロイの実際の URI に置き換えます。
+    7. **[Update]\(更新\)** を選択します。
 
-        ```json
-            {
-                "properties.desired":
-                {
-                    "SqlPackage": "<<<SAS URL for the *.zip file containing the dacpac",
-                }
-            }
-        ```
+    8. **[モジュールの設定]** ページで、 **[確認と作成]** を選択します。
 
-    7. **[保存]** を選択します。
+    9. **[モジュールの設定]** ページで、 **[作成]** を選択します。
 
-    8. **[Set modules]\(モジュールの設定\)** ページで、 **[次へ]** を選択します。
+5. モジュールの更新後、パッケージ ファイルがダウンロードおよび解凍され、SQL Edge インスタンスにデプロイされます。
 
-    9. **[Set modules]\(モジュールの設定\)** ページで、 **[次へ]** 、 **[送信]** の順に選択します。
+Azure SQL Edge コンテナーを再起動するたびに、SQL Edge によって、zip 圧縮されたファイル パッケージがダウンロードされて、変更の有無が評価されます。 dacpac ファイルの新しいバージョンが検出された場合、変更が SQL Edge のデータベースにデプロイされます。
 
-5. モジュールの更新後、DAC パッケージ ファイルがダウンロードおよび解凍され、SQL Edge インスタンスにデプロイされます。
+## <a name="known-issue"></a>既知の問題
 
-Azure SQL Edge コンテナーを再起動するたびに、*.dacpac ファイル パッケージがダウンロードされて、変更が評価されます。 dacpac ファイルの新しいバージョンが検出された場合、変更が SQL Edge のデータベースにデプロイされます。
+一部の DACPAC または BACPAC のデプロイ中に、ユーザーにコマンド タイムアウトが発生し、dacpac デプロイ操作が失敗する場合があります。 この問題が発生した場合は、SQLPackage.exe (または SQL クライアント ツール) を使用して DACPAC または BACPAC を手動で適用してください。 
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure portal を使用した SQL Edge のデプロイ](deploy-portal.md)
+- [Azure portal を使用した SQL Edge のデプロイ](deploy-portal.md)。
 - [データをストリーム配信する](stream-data.md)
-- [SQL Edge (プレビュー) での ONNX を使用した機械学習と AI](onnx-overview.md)
+- [SQL Edge での ONNX を使用した機械学習と AI](onnx-overview.md)

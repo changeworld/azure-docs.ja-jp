@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: 4626d40acc9ae84e7fcc5da16add0de7ffe6ffcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a77476086d6100cbaf49d54791972940cca0644f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807893"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101708936"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>Azure Application Gateway で HTTP の要求および応答ヘッダーを書き換える - Azure portal
 
-この記事では、Azure portal を使用して、要求と応答の HTTP ヘッダーを書き換えるように [Application Gateway v2 SKU](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) インスタンスを構成する方法を説明します。
+この記事では、Azure portal を使用して、要求と応答の HTTP ヘッダーを書き換えるように [Application Gateway v2 SKU](./application-gateway-autoscaling-zone-redundant.md) インスタンスを構成する方法を説明します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事の手順を完了するには Application Gateway v2 SKU インスタンスが必要です。 ヘッダーの書き換えは v1 SKU ではサポートされていません。 v2 SKU を持っていない場合は、始める前に [Application Gateway v2 SKU](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) インスタンスを作成してください。
+この記事の手順を完了するには Application Gateway v2 SKU インスタンスが必要です。 ヘッダーの書き換えは v1 SKU ではサポートされていません。 v2 SKU を持っていない場合は、始める前に [Application Gateway v2 SKU](./tutorial-autoscale-ps.md) インスタンスを作成してください。
 
 ## <a name="create-required-objects"></a>必要なオブジェクトを作成する
 
@@ -85,21 +85,21 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
    - **[条件の追加]** を選択し、 **[If]** 命令がを含まれるボックスを選択して展開します。
 
-     ![条件を追加する](media/rewrite-http-headers-portal/add-condition.png)
+     ![条件の追加](media/rewrite-http-headers-portal/add-condition.png)
 
-   - **[チェックする変数の型]** ボックスの一覧で、 **[HTTP ヘッダー]** を選択します。
+   - **[チェックする変数の型]** ボックスの一覧で、**[HTTP ヘッダー]** を選択します。
 
-   - **[ヘッダーの種類]** ボックスの一覧で、 **[応答]** を選択します。
+   - **[ヘッダーの種類]** ボックスの一覧で、**[応答]** を選択します。
 
-   - この例では場所ヘッダーを評価していて、それは共通ヘッダーなので、 **[ヘッダー名]** で **[共通ヘッダー]** を選択します。
+   - この例では場所ヘッダーを評価していて、それは共通ヘッダーなので、**[ヘッダー名]** で **[共通ヘッダー]** を選択します。
 
-   - **[共通ヘッダー]** ボックスの一覧で、 **[場所]** を選択します。
+   - **[共通ヘッダー]** ボックスの一覧で、**[場所]** を選択します。
 
    - **[大文字と小文字を区別する]** で、 **[いいえ]** を選択します。
 
    - **[演算子]** ボックスの一覧で、 **[等しい (=)]** を選択します。
 
-   - 正規表現パターンを入力します。 この例では、パターン `(https?):\/\/.*azurewebsites\.net(.*)$` を使います。
+   - 正規表現パターンを入力します。 この例では、パターン `(https?)://.*azurewebsites.net(.*)$` を使用します。
 
    - **[OK]** を選択します。
 
@@ -109,11 +109,11 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
    - **[アクションの種類]** ボックスの一覧で、 **[設定]** を選択します。
 
-   - **[ヘッダーの種類]** ボックスの一覧で、 **[応答]** を選択します。
+   - **[ヘッダーの種類]** ボックスの一覧で、**[応答]** を選択します。
 
-   - **[ヘッダー名]** で、 **[共通ヘッダー]** を選択します。
+   - **[ヘッダー名]** で、**[共通ヘッダー]** を選択します。
 
-   - **[共通ヘッダー]** ボックスの一覧で、 **[場所]** を選択します。
+   - **[共通ヘッダー]** ボックスの一覧で、**[場所]** を選択します。
 
    - ヘッダー値を入力します。 この例では、ヘッダー値として `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` を使います。 この値により、場所ヘッダーの *azurewebsites.net* が *contoso.com* に置き換えられます。
 
@@ -131,4 +131,4 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 ## <a name="next-steps"></a>次のステップ
 
-一般的なユース ケースの設定方法の詳細については、[共通ヘッダーの書き換えシナリオ](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)に関する記事をご覧ください。
+一般的なユース ケースの設定方法の詳細については、[共通ヘッダーの書き換えシナリオ](./rewrite-http-headers.md)に関する記事をご覧ください。

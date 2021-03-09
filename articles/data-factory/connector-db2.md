@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して DB2 からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、DB2 のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: jingwang
-ms.openlocfilehash: 3c65ed7e5fa6bb1652791eee75d4caa4c9c5f1ca
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 642f12386a7695e026eb0c30016acf6f53fc9e95
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873633"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381122"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory を使用して DB2 からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -49,7 +44,7 @@ DB2 データベースのデータを、サポートされているシンク デ
 * IBM DB2 for LUW 10.1
 
 >[!TIP]
->DB2 コネクタは、Microsoft OLE DB Provider for DB2 の上に構築されています。 DB2 コネクタのエラーのトラブルシューティングを行うには、「[データ プロバイダーのエラー コード](https://docs.microsoft.com/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors)」を参照してください。
+>DB2 コネクタは、Microsoft OLE DB Provider for DB2 の上に構築されています。 DB2 コネクタのエラーのトラブルシューティングを行うには、「[データ プロバイダーのエラー コード](/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -82,7 +77,7 @@ DB2 のリンクされたサービスでは、次のプロパティがサポー�
 | authenticationType |DB2 データベースへの接続に使用される認証の種類です。<br/>使用可能な値:**Basic**。 |はい |
 | username |DB2 データベースに接続するユーザー名を指定します。 |はい |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
-| packageCollection | データベースに対してクエリを実行するときに、必要なパッケージが ADF によって自動的に作成される場所を指定します。 これが設定されていない場合、Data Factory では既定値として {username} が使用されます。 | いいえ |
+| packageCollection    | データベースに対してクエリを実行するときに、必要なパッケージが ADF によって自動的に作成される場所を指定します。 これが設定されていない場合、Data Factory では既定値として {username} が使用されます。 | いいえ |
 | certificateCommonName | Secure Sockets Layer (SSL) またはトランスポート層セキュリティ (TLS) 暗号化を使用する場合は、証明書共通名の値を入力する必要があります。 | いいえ |
 
 > [!TIP]
@@ -114,13 +109,13 @@ DB2 のリンクされたサービスでは、次のプロパティがサポー�
         "type": "Db2",
         "typeProperties": {
             "connectionString": "server=<server:port>;database=<database>;authenticationType=Basic;username=<username>;packageCollection=<packagecollection>;certificateCommonName=<certname>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {

@@ -11,22 +11,27 @@ ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 862a7f6c31df7395fe225cf89ad83425e917394e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d1fcac891db240def2e7bbdcb45b45caf7f49a82
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169986"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341905"
 ---
 # <a name="search-for-gif-images"></a>GIF 画像を検索する 
 
-Bing Image Search API では、最も関連性の高い .gif 画像を探し、Web 全体を検索することもできます。  開発者は、さまざまな会話シナリオで、人を引きつける gif を統合できます。 
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
+
+Bing Image Search API では、最も関連性の高い .gif 画像を探し、Web 全体を検索することもできます。  開発者は、さまざまな会話シナリオで、人を引きつける gif を統合できます。 
 
 次の URL は、アニメーション .gif 画像のクエリです。
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 ```
-[q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) パラメーターによって検索語句が指定されます。  上記のクエリでは、[imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) フィルター パラメーターによって `animatedGif` も指定されます。
+[q](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) パラメーターによって検索語句が指定されます。  上記のクエリでは、[imageType](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) フィルター パラメーターによって `animatedGif` も指定されます。
 
 結果の例を見るには、次の URL で bing.com を検索してください。
 ```
@@ -35,15 +40,15 @@ https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animate
 ```
 ## <a name="query-parameters"></a>クエリ パラメーター
 
-クエリのパラメーターとオプションに関する詳細については、[Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query-parameters) ページをご覧ください。 サンプルは、「[Java を利用したアニメーション gif のサンプル検索](#gifExample)」という見出しの下にあります。
+クエリのパラメーターとオプションに関する詳細については、[Image Search API リファレンス](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query-parameters) ページをご覧ください。 サンプルは、「[Java を利用したアニメーション gif のサンプル検索](#gifExample)」という見出しの下にあります。
 
 ## <a name="tips-and-suggestions"></a>ヒントと検索候補
 
-- [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) パラメーターと [minFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) パラメーターを指定できます。 Microsoft では、インデックスの gif の多くが 2 MB 以下です。maxFileSize を 2000000 に設定することをお勧めします。  また、モバイル通信シナリオなど、帯域幅が問題となる場合でデータ サイズの制御に役立ちます。
+- [maxFileSize](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) パラメーターと [minFileSize](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) パラメーターを指定できます。 Microsoft では、インデックスの gif の多くが 2 MB 以下です。maxFileSize を 2000000 に設定することをお勧めします。  また、モバイル通信シナリオなど、帯域幅が問題となる場合でデータ サイズの制御に役立ちます。
 - ソース URL を読み込む前にサムネイルを読み込むと、パフォーマンスの改善が体感されます。  
 - 最初の実行や待ち受けページでユーザー クエリがまだない場合、Microsoft の注目の gif 検索をお試しください。[注目の画像 API](trending-images.md) がお役に立ちます。
-- [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) パラメーターには 3 つの設定があります。  `strict` オプションで成人向けコンテンツがブロックされます。
-- サポートされている言語と場所の完全一覧が必要な場合、[mkt](supported-countries-markets.md) をご覧ください。
+- [safeSearch](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) パラメーターには 3 つの設定があります。  `strict` オプションで成人向けコンテンツがブロックされます。
+- サポートされている言語と場所の完全一覧が必要な場合、[mkt](./language-support.md) をご覧ください。
 - *AnimatedGifHttps* は、https アドレスを出典とするアニメーション gif 画像のみを返します。 安全のため、アプリケーションの多くは、外部 Web リンクに接続するとき、https 経由を要求します。 たとえば、Apple App Store は Web サービスに接続するとき、転送中のユーザー データを暗号化する HTTPS を要求します。
 
 <a name="gifExample"></a>
@@ -55,7 +60,7 @@ https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animate
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 
 ```
-次の例に示すように、この URL クエリは [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#headers) ヘッダーを要求します。
+次の例に示すように、この URL クエリは [Ocp-Apim-Subscription-Key](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#headers) ヘッダーを要求します。
 
 次の Java サンプルは要求をビルドし、送信します。
 

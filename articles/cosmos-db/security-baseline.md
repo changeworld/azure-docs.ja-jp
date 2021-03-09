@@ -6,25 +6,26 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: 3431ad88a27da9d83b75ed3661d6129f157b9b1f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: b475e9c6b1a186d72a37d38633c500ee62e95ff6
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531508"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805649"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Cosmos DB 用の Azure セキュリティ ベースライン
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Cosmos DB 用の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
 
-このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) に基づいて作成されています。
+このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview.md) に基づいて作成されています。
 
-詳細については、[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)に関するページを参照してください。
+詳細については、[Azure セキュリティ ベースラインの概要](../security/benchmarks/security-baselines-overview.md)に関するページを参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1:Virtual Network でネットワーク セキュリティ グループまたは Azure Firewall を使用してリソースを保護する
 
@@ -137,7 +138,7 @@ Cosmos DB Advanced Threat Protection を構成する方法: https://docs.microso
 
 - Cosmos DB は仮想ネットワーク サービス エンドポイントを使用する必要がある
 
-また、Azure Blueprints を使用して、Azure Resource Manager テンプレート、ロールベースのアクセス制御 (RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することによって大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションと環境に簡単に適用し、バージョン管理によって制御と管理を微調整できます。
+また、Azure Blueprints を使用して、Azure Resource Manager テンプレート、Azure ロールベースのアクセス制御 (Azure RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することによって大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションと環境に簡単に適用し、バージョン管理によって制御と管理を微調整できます。
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -171,7 +172,7 @@ Azure Monitor でアラートを作成する方法: https://docs.microsoft.com/a
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、「[セキュリティ コントロール: ログ記録と監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
@@ -280,27 +281,27 @@ Azure Monitor を使用してログ アラートを作成、表示、管理す�
 
 ## <a name="identity-and-access-control"></a>ID およびアクセス制御
 
-*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
-**ガイダンス**:Azure portal の ID およびアクセス管理 (IAM) ペインを使用して、Azure Cosmos DB リソースでロールベースのアクセス制御 (RBAC) を構成し、インベントリを保持することができます。 ロールは、Active Directory 内のユーザー、グループ、サービス プリンシパル、およびマネージド ID に適用されます。 組み込みのロールまたはカスタム ロールは、個人とグループに使用できます。
+**ガイダンス**:Azure portal の ID およびアクセス管理 (IAM) ペインを使用して、Azure Cosmos DB リソースで Azure ロールベースのアクセス制御 (Azure RBAC) を構成し、インベントリを保持することができます。 ロールは、Active Directory 内のユーザー、グループ、サービス プリンシパル、およびマネージド ID に適用されます。 組み込みのロールまたはカスタム ロールは、個人とグループに使用できます。
 
-Azure Cosmos DB には、Azure Cosmos DB の一般的な管理シナリオに対応する RBAC が組み込まれています。 Azure Active Directory (AD) にプロファイルを持つ個人は、これらの Azure ロールをユーザー、グループ、サービス プリンシパル、またはマネージド ID に割り当てて、Azure Cosmos DB リソース上のリソースと操作へのアクセスを許可または拒否できます。
+Azure Cosmos DB には、Azure Cosmos DB の一般的な管理シナリオに対応する Azure RBAC が組み込まれています。 Azure Active Directory (AD) にプロファイルを持つ個人は、これらの Azure ロールをユーザー、グループ、サービス プリンシパル、またはマネージド ID に割り当てて、Azure Cosmos DB リソース上のリソースと操作へのアクセスを許可または拒否できます。
 
 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出することもできます。 
 
-さらに、Azure Cosmos DB での一部のアクションを、Azure Active Directory およびアカウント固有のマスター キーで制御することもできます。  'disableKeyBasedMetadataWriteAccess' アカウント設定を使用してキー アクセスを制御します。
+さらに、Azure Cosmos DB での一部のアクションを、Azure Active Directory およびアカウント固有の主キーで制御することもできます。  'disableKeyBasedMetadataWriteAccess' アカウント設定を使用してキー アクセスを制御します。
 
-Azure Cosmos DB のロールベースのアクセス制御の概要: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
+Azure Cosmos DB の Azure ロールベースのアクセス制御の概要: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
 Azure Cosmos DB アクション (Microsoft.DocumentDB 名前空間) を使用して独自のカスタム ロールを作成する: https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
 
 Azure Active Directory で新しいロールを作成する: https://docs.microsoft.com/azure/role-based-access-control/custom-roles
 
-PowerShell を使用して Azure Active Directory でディレクトリ ロールを取得する方法: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+PowerShell を使用して Azure Active Directory でディレクトリ ロールを取得する方法: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&preserve-view=true
 
-PowerShell を使用して Azure Active Directory でディレクトリ ロールのメンバーを取得する方法: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+PowerShell を使用して Azure Active Directory でディレクトリ ロールのメンバーを取得する方法: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&preserve-view=true
 
 ユーザー アクセスをデータ操作のみに制限する: https://docs.microsoft.com/azure/cosmos-db/how-to-restrict-user-data
 
@@ -310,7 +311,7 @@ PowerShell を使用して Azure Active Directory でディレクトリ ロー�
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: 既定のパスワードを変更する (該当する場合)
 
-**ガイダンス**:Azure AD または Azure Cosmos DB に関しては、既定または空白のパスワードの概念は存在しません。 代わりに、Azure Cosmos DB では、2 種類のキー (マスター キーとリソース トークン) を使用してユーザーを認証し、そのデータとリソースへのアクセスを提供しています。 キーは、いつでも再生成することができます。
+**ガイダンス**:Azure AD または Azure Cosmos DB に関しては、既定または空白のパスワードの概念は存在しません。 代わりに、Azure Cosmos DB では、2 種類のキー (主キーとリソース トークン) を使用してユーザーを認証し、そのデータとリソースへのアクセスを提供しています。 キーは、いつでも再生成することができます。
 
 Azure Cosmos DB のデータへのアクセスのセキュリティ保護の概要: https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data
 
@@ -360,7 +361,7 @@ Azure Security Center 内で ID とアクセスを監視する方法: https://do
 
 **ガイダンス**: Multi-Factor Authentication が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure リソースを構成します。
 
-特権アクセス ワークステーションについて: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+特権アクセス ワークステーションについて: https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/
 
 Azure で MFA を有効にする方法: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
@@ -444,17 +445,17 @@ Azure Sentinel をオンボードする方法: https://docs.microsoft.com/azure/
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: サポート シナリオで関連する顧客データに Microsoft がアクセスできるようにする
 
-**ガイダンス**: 現在使用できません。カスタマー ロックボックスでは、Azure Database for Cosmos DB はまだサポートされていません。
+**ガイダンス**:カスタマー ロックボックスは、Cosmos DB には適用されません。  Microsoft の従業員は、顧客から許可されていてもデータ リソースにアクセスできません。
 
 カスタマー ロックボックスでサポートされているサービスの一覧: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
-**Azure Security Center の監視**: 現在は使用できません
+**Azure Security Center の監視**: 適用なし
 
 **責任**: 適用なし
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、「[セキュリティ コントロール: データ保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
@@ -528,9 +529,9 @@ Azure での顧客データの保護の概要: https://docs.microsoft.com/azure/
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure Cosmos DB には、Azure Cosmos DB の一般的な管理シナリオに対応するロールベースのアクセス制御 (RBAC) が組み込まれています。 Azure Active Directory にプロファイルを持つ個人は、これらの Azure ロールをユーザー、グループ、サービス プリンシパル、またはマネージド ID に割り当てて、Azure Cosmos DB リソース上のリソースと操作へのアクセスを許可または拒否できます。 ロールの割り当ては、Azure Cosmos アカウント、データベース、コンテナー、およびオファー (スループット) へのアクセスを含む、コントロールプレーン アクセスのみに限定されています。
+**ガイダンス**:Azure Cosmos DB には、Azure Cosmos DB の一般的な管理シナリオに対応する Azure ロールベースのアクセス制御 (Azure RBAC) が組み込まれています。 Azure Active Directory にプロファイルを持つ個人は、これらの Azure ロールをユーザー、グループ、サービス プリンシパル、またはマネージド ID に割り当てて、Azure Cosmos DB リソース上のリソースと操作へのアクセスを許可または拒否できます。 ロールの割り当ては、Azure Cosmos アカウント、データベース、コンテナー、およびオファー (スループット) へのアクセスを含む、コントロールプレーン アクセスのみに限定されています。
 
-Azure Cosmos DB で RBAC を実装する方法: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
+Azure Cosmos DB で Azure RBAC を実装する方法: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
 **Azure Security Center の監視**: 適用なし
 
@@ -578,7 +579,7 @@ Azure アクティビティ ログ イベントのアラートを作成する方
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、「[セキュリティ コントロール: 脆弱性の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
@@ -630,7 +631,7 @@ Azure Security Center でサポートされている使用可能な機能: https
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1:Azure Asset Discovery を使用する
 
@@ -640,7 +641,7 @@ Azure Security Center でサポートされている使用可能な機能: https
 
 Azure Resource Graph を使用してクエリを作成する方法: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Azure サブスクリプションを表示する方法: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Azure サブスクリプションを表示する方法: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0&preserve-view=true
 
 Azure ロールベースのアクセス制御の概要: https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -782,7 +783,7 @@ Azure Policy を使用して特定のリソースの種類を拒否する方法:
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
@@ -792,7 +793,7 @@ Azure Policy を使用して特定のリソースの種類を拒否する方法:
 
 - Cosmos DB は仮想ネットワーク サービス エンドポイントを使用する必要がある
 
-使用可能な Azure Policy エイリアスを表示する方法: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+使用可能な Azure Policy エイリアスを表示する方法: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0&preserve-view=true
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -834,7 +835,7 @@ Azure Policy の効果の概要: https://docs.microsoft.com/azure/governance/pol
 
 **ガイダンス**:Cosmos DB または関連リソースにカスタムの Azure Policy 定義を使用している場合は、Azure Repos を使用してコードを安全に格納して管理します。
 
-Azure Repos のドキュメント: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Azure Repos のドキュメント: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops&preserve-view=true https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true
 
 **Azure Security Center の監視**: 適用なし
 
@@ -890,9 +891,11 @@ Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure
 
 Azure マネージド ID と統合する方法: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-キー コンテナーを作成する方法: https://docs.microsoft.com/azure/key-vault/quick-create-portal
+キー コンテナーを作成する方法: https://docs.microsoft.com/azure/key-vault/general/quick-create-portal
 
-マネージド ID で Key Vault の認証を提供する方法: https://docs.microsoft.com/azure/key-vault/managed-identity
+Key Vault に対して認証を行う方法: https://docs.microsoft.com/azure/key-vault/general/authentication
+
+Key Vault のアクセス ポリシーを割り当てる方法: https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal
 
 **Azure Security Center の監視**: はい
 
@@ -924,7 +927,7 @@ Azure マネージド ID と統合する方法: https://docs.microsoft.com/azure
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、「[セキュリティ コントロール: マルウェアからの防御](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されるマルウェア対策ソフトウェアを使用する
 
@@ -957,7 +960,7 @@ Azure Cosmos DB を含む非コンピューティング Azure リソースにア
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、「[セキュリティ コントロール: データの復旧](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
@@ -1001,7 +1004,7 @@ https://docs.microsoft.com/azure/cosmos-db/how-to-backup-and-restore
 
 Azure Key Vault のシークレットを復元する方法:
 
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0&preserve-view=true
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1023,7 +1026,7 @@ Key Vault で論理的な削除を有効にする方法: https://docs.microsoft.
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、「[セキュリティ コントロール: インシデント対応](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
@@ -1074,7 +1077,7 @@ Azure Security Center のセキュリティ連絡先を設定する方法: https
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用して、アラートの Sentinel のストリーミングを実行できます。
+**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Azure Sentinel にストリーミングできます。
 
 連続エクスポートを構成する方法: https://docs.microsoft.com/azure/security-center/continuous-export
 
@@ -1096,7 +1099,7 @@ Azure Sentinel にアラートをストリーミングする方法: https://docs
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、60 日以内に確実に修復されるようにします
 
@@ -1110,5 +1113,5 @@ Microsoft マネージド クラウド インフラストラクチャ、サー�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

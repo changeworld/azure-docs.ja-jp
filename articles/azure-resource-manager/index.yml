@@ -11,12 +11,12 @@ metadata:
   author: tfitzmac
   ms.author: tomfitz
   ms.date: 03/04/2020
-  ms.openlocfilehash: 6a0c4ecff3f381dc12ba3ce6f385782754857bfe
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: e844a428910a220d77c143baa74124a112135387
+  ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78297733"
+  ms.lasthandoff: 12/01/2020
+  ms.locfileid: "96435214"
 highlightedContent:
   items:
   - title: Azure Resource Manager とは
@@ -55,7 +55,7 @@ conceptualContent:
       text: ベスト プラクティス
     footerLink:
       url: templates/index.yml
-      text: 詳細情報
+      text: さらに詳しく
   - title: リソースの管理
     links:
     - url: management/overview.md
@@ -78,7 +78,7 @@ conceptualContent:
       text: サブスクリプションとサービスの制限
     footerLink:
       url: management/index.yml
-      text: 詳細情報
+      text: さらに詳しく
   - title: Managed Applications
     links:
     - url: managed-applications/overview.md
@@ -90,12 +90,12 @@ conceptualContent:
     - url: managed-applications/create-uidefinition-overview.md
       itemType: how-to-guide
       text: アプリを作成するためのポータル ウィンドウを定義する
-    - url: managed-applications/publish-marketplace-app.md
+    - url: ../marketplace/create-new-azure-apps-offer.md
       itemType: tutorial
       text: アプリを Marketplace に追加する
     footerLink:
       url: managed-applications/index.yml
-      text: 詳細情報
+      text: さらに詳しく
   - title: Azure カスタム プロバイダー
     links:
     - url: custom-providers/overview.md

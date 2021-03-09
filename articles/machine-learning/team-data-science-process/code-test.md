@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: fc837405e03ffac41d216a5ba18384208b07aaf1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce37ee51e549a2bd6f2747f28af8c038c39d8f1f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090299"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656837"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Team Data Science Process と Azure DevOps Services を使用した Azure でのデータ サイエンス コードのテスト
 この記事では、データ サイエンス ワークフローでコードをテストするうえでの予備的ガイドラインについて取り上げます。 このようなテストにより、データ サイエンティストは、秩序立った効率的な方法で、自分のコードの品質と期待される成果をチェックすることができます。 ここでは、[UCI 成人収入データセットを使用した Team Data Science Process (TDSP) プロジェクト](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)を用います。以前、コード テストの実行方法を紹介する際に発行したものです。 
@@ -124,7 +124,7 @@ ms.locfileid: "87090299"
 
     ![テンプレートのリストおよび [空のプロセス] ボタン](./media/code-test/start_empty_process_template.PNG)
 
-    d. ビルドに名前を付けて、エージェントを選択します。 DSVM を使用してビルド プロセスを完了する場合、ここでは既定値を選択できます。 エージェントの設定の詳細については、「[Build and release agents (ビルド エージェントとリリース エージェント)](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts)」を参照してください。
+    d. ビルドに名前を付けて、エージェントを選択します。 DSVM を使用してビルド プロセスを完了する場合、ここでは既定値を選択できます。 エージェントの設定の詳細については、「[Build and release agents (ビルド エージェントとリリース エージェント)](/azure/devops/pipelines/agents/agents?view=vsts)」を参照してください。
     
     ![ビルドとエージェントの選択](./media/code-test/select_agent.PNG)
 
@@ -155,7 +155,7 @@ ms.locfileid: "87090299"
 * ここで説明した概要と UCI 収入予測シナリオの例を、独自のデータ サイエンス プロジェクトで実際に行ってみます。
 
 ## <a name="references"></a>References
-* [Team Data Science Process とは](https://aka.ms/tdsp)
+* [Team Data Science Process とは](./index.yml)
 * [Visual Studio のテスト ツール](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Azure DevOps のテスト リソース](https://www.visualstudio.com/team-services/)
 * [データ サイエンス仮想マシン](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

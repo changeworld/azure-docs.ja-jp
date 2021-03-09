@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-java
-ms.openlocfilehash: 8a95ee631797c4dcca87f3506a6cf29245328159
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f05b78c777fdfa633e07bc03266c862f9e85ee0c
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89263452"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695723"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Azure Media Services 用 Java クライアント SDK の概要
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 このチュートリアルでは、Java クライアント SDK を使用して Azure Media Services で基本的なビデオ コンテンツ配信サービスを実装する手順について説明します。
 
@@ -51,12 +51,12 @@ Java 用 Media Services SDK の使用を開始するには、[Azure Media Servic
 >`azure-media` パッケージ バージョン `0.9.8` 以降では、Azure Active Directory (AAD) 認証のサポートが追加され、Azure Access Control Service (ACS) 認証のサポートが削除されます。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。 詳細については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」をご覧ください。
 
 >[!NOTE]
->Azure Media Services Java SDK のソース コードは [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media)にあります。 master ブランチではなく、必ず 0.9 ブランチに切り替えてください。 
+>Azure Media Services Java SDK のソース コードは [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media)にあります。 メイン ブランチではなく、必ず 0.9 ブランチに切り替えてください。 
 
 ## <a name="how-to-use-azure-media-services-with-java"></a>方法:Java で Azure Media Services を使用する
 
 >[!NOTE]
->Media Services アカウントの作成時に、**既定**のストリーミング エンドポイントが**停止**状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。
+>Media Services アカウントの作成時に、**既定** のストリーミング エンドポイントが **停止** 状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが **実行中** 状態である必要があります。
 
 次のコードは、資産を作成してメディア ファイルを資産にアップロードし、資産の変換タスクを伴うジョブを実行して、ビデオをストリーミングするためのロケーターを作成する方法を示しています。
 

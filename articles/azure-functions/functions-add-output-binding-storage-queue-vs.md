@@ -4,12 +4,12 @@ description: Visual Studio を使用して、出力バインドを追加して C
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: b18401037bf14c99ed198eb3754438ece5718c9b
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 635392212027c73e5aa954eb671be31228796a0d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235367"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185132"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Visual Studio を使用して関数を Azure Storage に接続する
 
@@ -29,9 +29,9 @@ ms.locfileid: "84235367"
 
 ## <a name="download-the-function-app-settings"></a>関数アプリの設定をダウンロードする
 
-[前のクイックスタートの記事](functions-create-first-function-vs-code.md)では、必要なストレージ アカウントと共に Azure で関数アプリを作成しました。 このアカウントの接続文字列は、Azure のアプリ設定に安全に格納されています。 この記事では、同じアカウントのストレージ キューにメッセージを書き込みます。 関数をローカルで実行しているときにストレージ アカウントに接続するには、アプリ設定を *local.settings.json* ファイルにダウンロードする必要があります。 
+[前のクイックスタートの記事](./create-first-function-vs-code-csharp.md)では、必要なストレージ アカウントと共に Azure で関数アプリを作成しました。 このアカウントの接続文字列は、Azure のアプリ設定に安全に格納されています。 この記事では、同じアカウントのストレージ キューにメッセージを書き込みます。 関数をローカルで実行しているときにストレージ アカウントに接続するには、アプリ設定を *local.settings.json* ファイルにダウンロードする必要があります。 
 
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、 **[発行]** を選択します。 
+1. **ソリューション エクスプローラー** で、プロジェクトを右クリックし、 **[発行]** を選択します。 
 
 1. **[アクション]** で **[Azure App Service の設定を編集する]** を選択します。 
 
@@ -75,7 +75,7 @@ Queue storage の出力バインドを使用しているため、このプロジ
 
 1. Visual Studio の **[表示]** メニューで、 **[Cloud Explorer]** を選択します。
 
-1. **Cloud Explorer** で、Azure サブスクリプションと**ストレージ アカウント**を展開してから、関数で使用されているストレージ アカウントを展開します。 ストレージ アカウント名を思い出せない場合は、*local.settings.json* ファイルの `AzureWebJobsStorage` 接続文字列設定を確認してください。  
+1. **Cloud Explorer** で、Azure サブスクリプションと **ストレージ アカウント** を展開してから、関数で使用されているストレージ アカウントを展開します。 ストレージ アカウント名を思い出せない場合は、*local.settings.json* ファイルの `AzureWebJobsStorage` 接続文字列設定を確認してください。  
 
 1. **[キュー]** ノードを展開し、**outqueue** という名前のキューをダブルクリックして、Visual Studio でキューの内容を表示します。 
 
@@ -89,7 +89,7 @@ Queue storage の出力バインドを使用しているため、このプロジ
 
 ## <a name="redeploy-and-verify-the-updated-app"></a>更新したアプリを再デプロイして検証する
 
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[発行]** を選択し、 **[発行]** を選択してプロジェクトを Azure に再発行します。
+1. **ソリューション エクスプローラー** で、プロジェクトを右クリックして **[発行]** を選択し、 **[発行]** を選択してプロジェクトを Azure に再発行します。
 
 1. デプロイが完了したら、もう一度ブラウザーを使用して、再デプロイされた関数をテストすることができます。 前のように、URL にクエリ文字列 `&name=<yourname>` を追加します。
 
@@ -106,7 +106,7 @@ HTTP によってトリガーされる関数を、ストレージ キューに�
 次に、関数アプリに対して Application Insights の監視を有効にする必要があります。
 
 > [!div class="nextstepaction"]
-> [Application Insights との統合を有効にする](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Application Insights との統合を有効にする](configure-monitoring.md#add-to-an-existing-function-app)
 
 [Azure Storage Explorer]: https://storageexplorer.com/
 [前のクイックスタートの記事]: functions-create-your-first-function-visual-studio.md

@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9971eb554825a968f8cfa72d6a0cf78d7c0bcb76
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3f2b059bb6ae63d7f427ce970b2538da922e2dec
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025882"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837265"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>プライマリ更新トークンとは
 
-プライマリ更新トークン (PRT) は、Windows 10、iOS、および Android デバイスでの Azure AD 認証のキー アーティファクトです。 これは、これらのデバイスで使用されるアプリケーション間でシングル サインオン (SSO) を有効にするために、マイクロソフトのファースト パーティ トークン ブローカーに向けて特別に発行される JSON Web トークン (JWT) です。 この記事では、Windows 10 デバイス上で PRT が どのように発行、使用、保護されるかについて詳しく説明します。
+プライマリ更新トークン (PRT) は、Windows 10、Windows Server 2016 以降のバージョン、iOS、および Android デバイスでの Azure AD 認証のキー アーティファクトです。 これは、これらのデバイスで使用されるアプリケーション間でシングル サインオン (SSO) を有効にするために、マイクロソフトのファースト パーティ トークン ブローカーに向けて特別に発行される JSON Web トークン (JWT) です。 この記事では、Windows 10 デバイス上で PRT が どのように発行、使用、保護されるかについて詳しく説明します。
 
 この記事では、Azure AD で利用可能な各種のデバイス状態と、Windows 10 でのシングル サインオンのしくみについて、読者が既に理解していることを想定しています。 Azure AD でのデバイスの詳細については、「[Azure Active Directory のデバイス管理とは](overview.md)」の記事を参照してください
 
@@ -57,7 +57,7 @@ PRT は Azure AD から送信される不透明な BLOB であり、その内容
 
 PRT は Windows 10 デバイス上でのユーザー認証中に発行され、2 つのシナリオがあります。
 
-* **Azure AD 参加済み**または**ハイブリッド Azure AD 参加済み**: PRT は、ユーザーが自分の組織の資格情報を使用してサインインするとき、Windows ログオン中に発行されます。 PRT は、パスワードや Windows Hello for Business など、Windows 10 でサポートされているすべての資格情報と共に発行されます。 このシナリオでは、Azure AD CloudAP プラグインが PRT のプライマリ機関です。
+* **Azure AD 参加済み** または **ハイブリッド Azure AD 参加済み**: PRT は、ユーザーが自分の組織の資格情報を使用してサインインするとき、Windows ログオン中に発行されます。 PRT は、パスワードや Windows Hello for Business など、Windows 10 でサポートされているすべての資格情報と共に発行されます。 このシナリオでは、Azure AD CloudAP プラグインが PRT のプライマリ機関です。
 * **Azure AD 登録済みデバイス**: PRT は、ユーザーが自分の Windows 10 デバイスにセカンダリの職場アカウントを追加するときに発行されます。 ユーザーは 2 つの異なる方法で Windows 10 にアカウントを追加できます。  
    * (Outlook などの) アプリにサインインした後、 **[Use this account everywhere on this device]\(このデバイス上のどこでもこのアカウントを使用する\)** のプロンプトからアカウントを追加する
    * **[設定]**  >  **[アカウント]**  >  **[Access Work or School]\(職場または学校にアクセスする\)**  >  **[接続]** からアカウントを追加する
@@ -65,7 +65,7 @@ PRT は Windows 10 デバイス上でのユーザー認証中に発行され、2
 Azure AD 登録済みデバイスのシナリオでは、この Azure AD アカウントで Windows ログオンは発生しないため、Azure AD WAM プラグインが PRT のプライマリ機関です。
 
 > [!NOTE]
-> サード パーティの ID プロバイダーは、Windows 10 デバイスで PRT 発行を有効にするために、WS-Trust プロトコルをサポートする必要があります。 WS-Trust がない場合、Hybrid Azure AD 参加済みまたは Azure AD 参加済みデバイスでユーザーに PRT を発行することはできません。 ADFS では、usernamemixed エンドポイントのみが必要です。 adfs/services/trust/2005/windowstransport と adfs/services/trust/13/windowstransport はどちらも、イントラネットに接続するエンドポイントとしてのみ有効にする必要があります。Web アプリケーション プロキシを介してエクストラネットに接続するエンドポイントとしては**公開しないでください**。
+> サード パーティの ID プロバイダーは、Windows 10 デバイスで PRT 発行を有効にするために、WS-Trust プロトコルをサポートする必要があります。 WS-Trust がない場合、Hybrid Azure AD 参加済みまたは Azure AD 参加済みデバイスでユーザーに PRT を発行することはできません。 ADFS では、usernamemixed エンドポイントのみが必要です。 adfs/services/trust/2005/windowstransport と adfs/services/trust/13/windowstransport はどちらも、イントラネットに接続するエンドポイントとしてのみ有効にする必要があります。Web アプリケーション プロキシを介してエクストラネットに接続するエンドポイントとしては **公開しないでください**。
 
 ## <a name="what-is-the-lifetime-of-a-prt"></a>PRT の有効期間はどれくらいですか?
 
@@ -85,7 +85,11 @@ PRT は 2 つの異なる方法で更新されます。
 * **Azure AD CloudAP プラグイン (4 時間ごと)** : Windows サインイン中、CloudAP プラグインが 4 時間ごとに PRT を更新します。 その期間中にユーザーがインターネットに接続できない場合、CloudAP プラグインはデバイスがインターネットに接続した後に PRT を更新します。
 * **Azure AD WAM プラグイン (アプリ トークンの要求中)** : WAM プラグインは、アプリケーションに対するサイレント トークン要求を有効にすることによって、Windows 10 デバイス上で SSO を有効にします。 WAM プラグインは、これらのトークン要求中に 2 つの異なる方法で PRT を更新できます。
    * アプリは WAM にアクセス トークンをサイレントに要求しますが、そのアプリに対して利用可能な更新トークンがありません。 この場合、WAM は PRT を使用してアプリのトークンを要求し、応答で新しい PRT を再取得します。
-   * アプリが WAM にアクセス トークンを要求しますが、PRT が無効であるか、または Azure AD が (Azure Multi-Factor Authentication などの) 追加の認可を要求しています。 このシナリオでは、WAM は対話型ログオンを開始し、再認証または追加認証の提供をユーザーに要求し、認証が成功したら新しい PRT が発行されます。
+   * アプリが WAM にアクセス トークンを要求しますが、PRT が無効であるか、または Azure AD が (Azure AD Multi-Factor Authentication などの) 追加の認可を要求しています。 このシナリオでは、WAM は対話型ログオンを開始し、再認証または追加認証の提供をユーザーに要求し、認証が成功したら新しい PRT が発行されます。
+
+ADFS 環境では、PRT を更新するために、ドメイン コントローラーへの直接の通信経路を確保する必要はありません。 PRT の更新には、WS-Trust プロトコルを使用してプロキシで有効になっている /adfs/services/trust/2005/usernamemixed と /adfs/services/trust/13/usernamemixed エンドポイントのみが必要です。
+
+Windows トランスポート エンドポイントは、パスワードが変更された場合にのみパスワード認証に必要であり、PRT の更新には必要ありません。
 
 ### <a name="key-considerations"></a>重要な考慮事項
 
@@ -195,6 +199,9 @@ Windows 10 では、PRT のパーティション分割されたリストを資�
 | D | CloudAP プラグインは PRT Cookie を作成し、TPM にバインドされたセッション キーを使用してそれに署名し、ネイティブ クライアント ホストに返送します。 Cookie はセッション キーによって署名されるため、改ざんできません。 |
 | E | ネイティブ クライアント ホストはこの PRT Cookie をブラウザーに返します。ブラウザーはそれを x-ms-RefreshTokenCredential という要求ヘッダーの一部として含め、Azure AD からトークンを要求します。 |
 | F | Azure AD は PRT Cookie のセッション キー署名を検証し、nonce を検証し、デバイスがテナント内で有効であることを確認し、Web ページの ID トークンと、ブラウザーの暗号化されたセッション Cookie を発行します。 |
+
+> [!NOTE]
+> 上の手順で説明されているブラウザー SSO フローは、Microsoft Edge の InPrivate や Google Chrome の Incognito (Microsoft Accounts 拡張機能の使用時) など、プライベート モードのセッションには該当しません。
 
 ## <a name="next-steps"></a>次のステップ
 

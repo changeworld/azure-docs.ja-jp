@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: f7a61ed039a3d8ed643e3b1b3d79384e35847986
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: bd16f0ef330d1d4a33dd796af0ec3e94dda5acfc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029299"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684595"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを変更する
 
@@ -348,14 +348,14 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 ### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>現在の値に基づいてのみ変更できるプロパティ
 一部のプロパティは、現在の値に基づく例外付きで変更できます。 これには次のようなプロパティがあります。
 
-- **singlePlacementGroup** - singlePlacementGroup が true の場合は、false に変更できます。 ただし、singlePlacementGroup が false の場合は、true に変更**できません**。
+- **singlePlacementGroup** - singlePlacementGroup が true の場合は、false に変更できます。 ただし、singlePlacementGroup が false の場合は、true に変更 **できません**。
 - **サブネット** - 元のサブネットと新しいサブネットが同じ仮想ネットワークにある限り、スケール セットのサブネットは変更できます。
+- **imageReferenceSku** - イメージ参照 SKU は、動作保証済み [Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)、Windows サーバー/クライアント イメージ、[プラン情報](../virtual-machines/linux/cli-ps-findimage.md#view-plan-properties)のないイメージ向けに更新できます。 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>変更するために割り当て解除が必要なプロパティ
 一部のプロパティは、スケール セット内の VM の割り当てが解除されている場合に、特定の値にのみ変更できます。 これには次のようなプロパティがあります。
 
-- **SKU 名** - スケール セットが現在存在するハードウェアで新しい VM SKU がサポートされていない場合は、SKU 名を変更する前にスケール セット内の VM の割り当てを解除する必要があります。 詳細については、[Azure VM のサイズを変更する方法](../virtual-machines/windows/resize-vm.md)に関するページを参照してください。
-
+- **SKU 名** - スケール セットが現在存在するハードウェアで新しい VM SKU がサポートされていない場合は、SKU 名を変更する前にスケール セット内の VM の割り当てを解除する必要があります。 詳細については、[Azure VM のサイズを変更する方法](../virtual-machines/windows/resize-vm.md)に関するページを参照してください。 
 
 ## <a name="vm-specific-updates"></a>VM 固有の更新
 特定の変更は、グローバル スケール セットのプロパティではなく特定の VM に適用できます。 現在サポートされている唯一の VM 固有の更新は、スケール セット内の VM との間でのデータ ディスクのアタッチ/デタッチです。 この機能はプレビュー段階にあります。 詳しくは、[プレビュー ドキュメント](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk)をご覧ください。
@@ -372,7 +372,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 Azure プラットフォーム イメージを使用している場合は、*imageReference* を変更してイメージを更新することができます (詳しくは、[REST API のドキュメント](/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください)。
 
 >[!NOTE]
-> プラットフォーム イメージでは、イメージ参照バージョンに "最新" を指定することが一般的です。 作成、スケール アウト、再イメージ化を行うと、VM が使用可能な最新バージョンで作成されます。 ただし、新しいイメージ バージョンがリリースされたときに OS イメージが自動的に更新されることは意味**しません**。 OS の自動アップグレードを実現する単独の機能が、現在プレビュー段階となっています。 詳しくは、[OS アップグレードのドキュメント](virtual-machine-scale-sets-automatic-upgrade.md)をご覧ください。
+> プラットフォーム イメージでは、イメージ参照バージョンに "最新" を指定することが一般的です。 作成、スケール アウト、再イメージ化を行うと、VM が使用可能な最新バージョンで作成されます。 ただし、新しいイメージ バージョンがリリースされたときに OS イメージが自動的に更新されることは意味 **しません**。 OS の自動アップグレードを実現する単独の機能が、現在プレビュー段階となっています。 詳しくは、[OS アップグレードのドキュメント](virtual-machine-scale-sets-automatic-upgrade.md)をご覧ください。
 
 カスタム イメージを使用している場合は、*imageReference* ID を更新してイメージを更新することができます (詳しくは、[REST API のドキュメント](/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください)。
 

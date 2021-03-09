@@ -1,20 +1,20 @@
 ---
-title: 用語集 - IoT プラグ アンド プレイ プレビュー | Microsoft Docs
-description: 概念 - IoT プラグ アンド プレイ プレビューに関連する一般用語の用語集。
+title: 用語集 - IoT プラグ アンド プレイ | Microsoft Docs
+description: 概念 - IoT プラグ アンド プレイに関連する一般用語の用語集。
 author: dominicbetts
 ms.author: dobett
 ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2320bed07f574c096be1883a9d82da7311e92fa7
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: d44866e2d04ab1bab5d2eca01374350a7d73a0ea
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854211"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91577341"
 ---
-# <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT プラグ アンド プレイ プレビューの用語集
+# <a name="glossary-of-terms-for-iot-plug-and-play"></a>IoT プラグ アンド プレイの用語集
 
 IoT プラグ アンド プレイに関する記事で使用される一般的な用語の定義です。
 
@@ -38,7 +38,7 @@ IoT Hub は、クラウド内でホストされているマネージド サー�
 
 ## <a name="azure-iot-device-sdk"></a>Azure IoT device SDK
 
-IoT プラグ アンド プレイ デバイスのクライアント アプリケーションの構築に使用できる、多言語に対応したデバイス SDK が用意されています。
+IoT プラグ アンド プレイ デバイスのクライアント アプリケーションの構築に使用できる、多言語に対応したデバイス SDK が用意されています。 デバイスには **DeviceClient** を、モジュールと IoT Edge モジュールには **ModuleClient** を使用します。
 
 ## <a name="commands"></a>コマンド
 
@@ -55,13 +55,19 @@ IoT プラグ アンド プレイ デバイスのクライアント アプリケ
 - デバイス接続文字列を使用すると、[IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)は、IoT ハブ上のデバイス向けエンドポイントに接続できます。 デバイス上のクライアント コードでは、この接続文字列を使用して、IoT ハブとのセキュリティで保護された接続を確立します。
 - IoT Hub 接続文字列を使用すると、バックエンドのソリューションやツールは IoT ハブ上のサービス向けエンドポイントに安全に接続できます。 これらのソリューションやツールは、その IoT ハブと、それに接続されているデバイスを管理します。
 
+## <a name="default-component"></a>既定のコンポーネント
+
+すべての[デバイス モデル](#device-model)に、既定のコンポーネントがあります。 単純なデバイス モデルには、既定のコンポーネントのみがあります。このようなモデルは、コンポーネント デバイスなしとも呼ばれます。 より複雑なモデルでは、既定のコンポーネントの下に複数のコンポーネントが入れ子になっています。
+
 ## <a name="device-certification"></a>デバイス認定
 
 IoT プラグ アンド プレイ デバイス認定プログラムは、IoT プラグ アンド プレイの認定要件をデバイスが満たしていることを確認するものです。 認定されたデバイスは、公開されている [Azure IoT 認定デバイス カタログ](https://aka.ms/devicecatalog)に登録できます。
 
 ## <a name="device-model"></a>デバイスのモデル
 
-デバイス モデルでは、[IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)が記述され、デバイスを構成する[コンポーネント](#component)が定義されます。 単純なデバイス モデルには個別のコンポーネントがなく、1 つのルートレベルのインターフェイスの定義が含まれています。 より複雑なデバイス モデルには、複数のコンポーネントが含まれています。 一般的に、デバイス モデルは物理デバイス、製品、または SKU に対応します。 デバイス モデルを定義するには、[Digital Twins 定義言語バージョン 2](#digital-twins-definition-language) を使用します。
+デバイス モデルでは、[IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)が記述され、デバイスを構成する[コンポーネント](#component)が定義されます。 単純なデバイス モデルには個別のコンポーネントがなく、1 つのインターフェイスの定義が含まれています。 Azure IoT エクスプローラー ツールでは、単純なモデルが、1 つの [既定のコンポーネント](#default-component)を持つものとして示されます。
+
+より複雑なデバイス モデルには、複数のコンポーネントが含まれています。 一般的に、デバイス モデルは物理デバイス、製品、または SKU に対応します。 デバイス モデルを定義するには、[Digital Twins 定義言語バージョン 2](#digital-twins-definition-language) を使用します。
 
 ## <a name="device-builder"></a>デバイス ビルダー
 
@@ -69,7 +75,7 @@ IoT プラグ アンド プレイ デバイス認定プログラムは、IoT プ
 
 ## <a name="device-modeling"></a>デバイス モデリング
 
-[デバイス ビルダー](#device-builder)は、[Digital Twins 定義言語](#digital-twins-definition-language)を使用して、[IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)の機能をモデル化します。 [ソリューション ビルダー](#solution-builder)は、このモデルから IoT ソリューションを構成できます。
+[デバイス ビルダー](#device-builder)または[モジュール ビルダー](#module-builder)では、[Digital Twins 定義言語](#digital-twins-definition-language)を使用して、[IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)の機能をモデル化します。 [ソリューション ビルダー](#solution-builder)は、このモデルから IoT ソリューションを構成できます。
 
 ## <a name="digital-twin"></a>デジタル ツイン
 
@@ -89,15 +95,19 @@ IoT プラグ アンド プレイ デバイス認定プログラムは、IoT プ
 
 ## <a name="interface"></a>インターフェイス
 
-インターフェイスは、[IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)または[デジタル ツイン](#digital-twin)によって実装される関連機能を記述します。 インターフェイスは、さまざまな[デバイス モデル](#device-model)で再利用できます。 インターフェイスがデバイス モデルで使用されるときは、デバイスの[コンポーネント](#component)が定義されます。
+インターフェイスは、[IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)または[デジタル ツイン](#digital-twin)によって実装される関連機能を記述します。 インターフェイスは、さまざまな[デバイス モデル](#device-model)で再利用できます。 インターフェイスがデバイス モデルで使用されるときは、デバイスの[コンポーネント](#component)が定義されます。 単純なデバイスには、既定のインターフェイスのみが含まれています。
 
 ## <a name="iot-hub-query-language"></a>IoT Hub クエリ言語
 
 IoT Hub クエリ言語は、複数の目的で使用されます。 たとえば、この言語を使用すると、お使いの IoT ハブに登録されているデバイスを検索したり、[デジタル ツインのルーティング](#digital-twin-route)の動作を調整したりできます。
 
+## <a name="iot-plug-and-play-bridge"></a>IoT プラグ アンド プレイ ブリッジ
+
+IoT プラグ アンド プレイ ブリッジは、Windows または Linux ゲートウェイに接続されている既存のセンサーと周辺機器を [IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)として接続できるようにするオープンソース アプリケーションです。
+
 ## <a name="iot-plug-and-play-device"></a>IoT プラグ アンド プレイ デバイス
 
-IoT プラグ アンド プレイ デバイスは、データの収集や他のデバイスの制御を行い、[デバイス モデル](#device-model)を実装するソフトウェアまたはファームウェアを実行する、一般的には小規模なスタンドアロンのコンピューティング デバイスです。  環境監視デバイス (スマート農業灌漑システムのコントローラー) は、IoT プラグ アンド プレイ デバイスの一例です。 IoT プラグ アンド プレイ デバイスに対する命令と制御を行い、そのデバイスからのデータを受信する、クラウドでホストされる IoT ソリューションを作成できます。
+IoT プラグ アンド プレイ デバイスは、データの収集や他のデバイスの制御を行い、[デバイス モデル](#device-model)を実装するソフトウェアまたはファームウェアを実行する、一般的には小規模なスタンドアロンのコンピューティング デバイスです。  環境監視デバイス (スマート農業灌漑システムのコントローラー) は、IoT プラグ アンド プレイ デバイスの一例です。 IoT プラグ アンド プレイ デバイスは、直接または IoT Edge モジュールとして実装できます。 IoT プラグ アンド プレイ デバイスに対する命令と制御を行い、そのデバイスからのデータを受信する、クラウドでホストされる IoT ソリューションを作成できます。
 
 ## <a name="iot-plug-and-play-conventions"></a>IoT プラグ アンド プレイ規則
 
@@ -114,6 +124,10 @@ IoT プラグ アンド プレイ デバイスが IoT Hub に接続されると�
 ## <a name="model-repository-rest-api"></a>モデル リポジトリの REST API
 
 モデル リポジトリの管理と対話のための API です。 たとえば、API を使用して[デバイス モデル](#device-model)を追加および検索できます。
+
+## <a name="module-builder"></a>モジュール ビルダー
+
+モジュール ビルダーでは、[IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)で実行するコードを実装するときに、[デバイス モデル](#device-model)と[インターフェイス](#interface)を使用します。 モジュール ビルダーにより、コードをモジュールまたは IoT Edge モジュールとして実装して、デバイス上の IoT Edge ランタイムにデプロイします。
 
 ## <a name="properties"></a>Properties
 

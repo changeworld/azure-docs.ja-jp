@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
-ms.date: 04/22/2020
+ms.topic: how-to
+ms.date: 12/03/2020
 ms.author: memildin
-ms.openlocfilehash: 6f11de7f38ff97b1141afa48c26788a171727cb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d2b43ab57ea7a3b1dc1d13bcdea9932ccecb9dc
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559556"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559033"
 ---
 # <a name="using-custom-security-policies"></a>カスタム セキュリティ ポリシーの使用
 
@@ -21,7 +21,7 @@ ms.locfileid: "85559556"
 
 この機能を使用して、独自の "*カスタム*" イニシアティブを追加できます。 作成したポリシーに環境が従っていない場合は、推奨事項が提供されます。 作成したカスタム イニシアチブは、「[規制に対するコンプライアンスの向上](security-center-compliance-dashboard.md)」チュートリアルで説明されている規制コンプライアンス ダッシュボードの組み込みイニシアチブと一緒に表示されます。
 
-[Azure Policy のドキュメント](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location)で説明されているように、カスタム イニシアチブの場所を指定するとき、その場所は管理グループまたはサブスクリプションである必要があります。 
+[Azure Policy のドキュメント](../governance/policy/concepts/definition-structure.md#definition-location)で説明されているように、カスタム イニシアチブの場所を指定するとき、その場所は管理グループまたはサブスクリプションである必要があります。 
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>イニシアティブをサブスクリプションに追加するには 
 
@@ -69,7 +69,7 @@ ms.locfileid: "85559556"
 
     [![カスタム推奨事項](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
-## <a name="enhancing-your-custom-recommendations-with-detailed-information"></a>詳細情報でのカスタム推奨事項の拡張
+## <a name="enhance-your-custom-recommendations-with-detailed-information"></a>詳細情報でのカスタム推奨事項の拡張
 
 Azure Security Center で提供される組み込みの推奨事項には、重大度レベルや修復手順などの詳細が含まれます。 この種の情報をカスタム推奨事項に追加して、Azure portal や、推奨事項にアクセスする場所で表示されるようにする場合は、REST API を使用する必要があります。 
 
@@ -84,7 +84,7 @@ Azure Security Center で提供される組み込みの推奨事項には、重�
  "metadata": {
     "securityCenter": {
         "RemediationDescription": "Custom description goes here",
-        "Severity": "High",
+        "Severity": "High"
     },
 ```
 
@@ -99,8 +99,8 @@ Azure Security Center で提供される組み込みの推奨事項には、重�
     "description": "Audit required resource groups lock",
     "metadata": {
         "securityCenter": {
-            "remediationDescription": "Resource Group locks can be set via Azure Portal -> Resource Group -> Locks",
-            "severity": "High"
+            "RemediationDescription": "Resource Group locks can be set via Azure Portal -> Resource Group -> Locks",
+            "Severity": "High"
         }
     },
     "parameters": {
@@ -136,7 +136,7 @@ Azure Security Center で提供される組み込みの推奨事項には、重�
 }
   ```
 
-securityCenter プロパティを使用する別の例については、[REST API のドキュメントのこちらのセクション](https://docs.microsoft.com/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples)をご覧ください。
+securityCenter プロパティを使用する別の例については、[REST API のドキュメントのこちらのセクション](/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples)をご覧ください。
 
 
 ## <a name="next-steps"></a>次のステップ
@@ -146,4 +146,4 @@ securityCenter プロパティを使用する別の例については、[REST AP
 その他の関連資料については、次の記事を参照してください。 
 
 - [セキュリティ ポリシーの概要](tutorial-security-policy.md)
-- [組み込みのセキュリティ ポリシーの一覧](security-center-policy-definitions.md)
+- [組み込みのセキュリティ ポリシーの一覧](./policy-reference.md)

@@ -1,24 +1,19 @@
 ---
 title: Azure 仮想マシンでの Oracle ソリューション | Microsoft Docs
 description: Microsoft Azure でサポートされている Oracle 仮想マシン イメージの構成と制限事項について説明します。
-services: virtual-machines-linux
-documentationcenter: ''
-author: rgardler
-manager: ''
-tags: azure-resource-management
-ms.assetid: ''
-ms.service: virtual-machines-windows
+author: dbakevlar
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 05/12/2020
-ms.author: rogardle
-ms.openlocfilehash: c22c5fa9c1a1680734a8cf5d8f4079e8c7b5c5f7
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: kegorman
+ms.openlocfilehash: 2f34e0bb3c4abcf4efba807f95decd798bbc1f86
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723418"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669066"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure での Oracle VM イメージとそのデプロイ
 
@@ -116,10 +111,6 @@ Microsoft Azure は、Oracle Database を実行するための承認されたク
 
 Oracle ソフトウェアとワークロードをオンプレミスから Microsoft Azure に移行する場合、Oracle から、「[Oracle on Azure FAQ](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)」 (Azure での Oracle に関する FAQ) に記載されているライセンス モビリティが提供されています
 
-## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application Cluster (Oracle RAC)
-
-Oracle Real Application クラスター (Oracle RAC) では、オンプレミスのマルチノード クラスタ構成の単一ノードで発生する障害を軽減するように設計されています。 このクラスターは、超大規模パブリック クラウド環境にネイティブではない、2 つのオンプレミスのテクノロジに依存しています。それがネットワーク マルチキャストと共有ディスクです。 お使いのデータベース ソリューションの Azure で Oracle RAC が必要な場合は、サード パーティのソフトウェアを使用してこれらのテクノロジを有効にする必要があります。 Oracle RAC の詳細については、[FlashGrid SkyCluster に関するページ](https://www.flashgrid.io/oracle-rac-in-azure/)を参照してください。
-
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>高可用性とディザスター リカバリーに関する考慮
 
 Azure で Oracle データベースを使用する場合、いかなるダウンタイムも回避するために高可用性とディザスター リカバリー ソリューションを実装する責任があります。
@@ -132,11 +123,11 @@ Oracle Data Guard では、1 つの仮想マシンにプライマリ データ�
 
 [Azure での Oracle GoldenGate の実装](configure-oracle-golden-gate.md)に関するチュートリアルでは、Azure での基本的なセットアップ手順を説明しています。
 
-Azure で高可用性と災害復旧ソリューションを設計することに加えて、データベースを復元するためのバックアップ戦略を立てる必要があります。 [Oracle Database のバックアップと復旧](oracle-backup-recovery.md)に関するチュートリアルでは、一貫性のあるバックアップを確立するための基本的な手順を説明しています。
+Azure で高可用性と災害復旧ソリューションを設計することに加えて、データベースを復元するためのバックアップ戦略を立てる必要があります。 [Oracle Database のバックアップと復旧](./oracle-overview.md)に関するチュートリアルでは、一貫性のあるバックアップを確立するための基本的な手順を説明しています。
 
 ## <a name="support-for-jd-edwards"></a>JD Edwards のサポート
 
-JD Edwards EnterpriseOne バージョン 9.2、以降は、Oracle のサポート情報 [Doc ID 2178595.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4) に従って、固有の `Minimum Technical Requirements` (MTR) を満たす**すべてのパブリック クラウド ソリューション**でサポートされています。  OS およびソフトウェア アプリケーションの互換性の MTR 仕様に準拠したカスタム イメージを作成する必要があります。
+JD Edwards EnterpriseOne バージョン 9.2、以降は、Oracle のサポート情報 [Doc ID 2178595.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4) に従って、固有の `Minimum Technical Requirements` (MTR) を満たす **すべてのパブリック クラウド ソリューション** でサポートされています。  OS およびソフトウェア アプリケーションの互換性の MTR 仕様に準拠したカスタム イメージを作成する必要があります。
 
 ## <a name="oracle-weblogic-server-virtual-machine-offers"></a>Oracle WebLogic Server 仮想マシン プラン
 

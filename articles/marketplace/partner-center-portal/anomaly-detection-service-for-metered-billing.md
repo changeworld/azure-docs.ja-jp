@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: cb134c82f231eb8b6329b1acafb181032edd6936
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 909b818c60932f5b1d6071ea1ccf0ee4c76173b4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320087"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280540"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>従量制課金に対する異常検出サービス
 
@@ -74,7 +74,7 @@ ms.locfileid: "87320087"
     - **[コマーシャル マーケットプレース]**  >  **[Metered Billing]\(従量制課金\)**  >  **[Wrong usage sent for SaaS offer]\(送信された SaaS プランの使用量が間違っている\)**
 3. **[次のステップ]** で、 **[Review solutions]\(ソリューションの確認\)** ボタンを選択します。すると、パートナー センターにサインインし、サポート チケットを送信するよう促されます。
 
-発行元サポート オプションについては、「[パートナー センターでのコマーシャル マーケットプレース プログラムのサポート](support.md)」をご覧ください。
+発行元サポート オプションについては、「[パートナー センターでのコマーシャル マーケットプレース プログラムのサポート](../support.md)」をご覧ください。
 
 ## <a name="next-step"></a>次のステップ
 

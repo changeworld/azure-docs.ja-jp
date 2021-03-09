@@ -1,5 +1,5 @@
 ---
-title: StorSimple でロールベースのアクセス制御を使用する | Microsoft Docs
+title: StorSimple で Azure ロールベースのアクセス制御を使用する | Microsoft Docs
 description: StorSimple のコンテキストで Azure ロールベースのアクセス制御 (Azure RBAC) を使用する方法について説明します。
 services: storsimple
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 38500edeca2241bfa9ab093e037af18159994b02
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 49c38e23ddbbfe983ff82ad25363c744292d4d69
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920417"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518978"
 ---
-# <a name="role-based-access-control-for-storsimple"></a>StorSimple でロールベースのアクセス制御を使用する
+# <a name="azure-role-based-access-control-for-storsimple"></a>StorSimple の Azure ロールベースのアクセス制御
 
-この記事では、StorSimple デバイスで Azure ロールベースのアクセス制御 (Azure RBAC) を使用する方法について、簡単に説明します。 RBAC は、Azure の粒度の細かいアクセス管理を提供します。 RBAC を使用して、StorSimple のすべてのユーザーに無制限のアクセス権を与える代わりに、仕事を行うために必要な適切なアクセス権をユーザーに付与します。 Azure でのアクセス管理の基本については、「[Azure ポータルでのロールベースの Access Control の基礎を確認する](../role-based-access-control/overview.md)」を参照してください。
+この記事では、StorSimple デバイスで Azure ロールベースのアクセス制御 (Azure RBAC) を使用する方法について、簡単に説明します。 Azure RBAC は、Azure の粒度の細かいアクセス管理を提供します。 Azure RBAC を使用して、StorSimple のすべてのユーザーに無制限のアクセス権を与える代わりに、仕事を行うために必要な適切なアクセス権をユーザーに付与します。 Azure でのアクセス管理の基本については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../role-based-access-control/overview.md)」を参照してください。
 
 この記事は、Azure ポータルで Update 3.0 以降を実行している StorSimple 8000 シリーズのデバイスに適用されます。
 
@@ -31,7 +31,7 @@ ms.locfileid: "87920417"
 
 ## <a name="azure-roles-for-storsimple"></a>StorSimple 用の Azure ロール
 
-RBAC は、ロールに基づいて割り当てることができます。 ロールは、環境内で利用できるリソースに基づく特定のアクセス許可レベルを保証します。 StorSimple ユーザーが選択できるロールには、組み込みまたはカスタムの 2 種類があります。
+Azure RBAC は、ロールに基づいて割り当てることができます。 ロールは、環境内で利用できるリソースに基づく特定のアクセス許可レベルを保証します。 StorSimple ユーザーが選択できるロールには、組み込みまたはカスタムの 2 種類があります。
 
 * **組み込みのロール** - 組み込みのロールは、所有者、共同作成者、閲覧者、またはユーザー アクセス管理者が可能です。 詳細については、「[Azure ロールベースのアクセス制御の組み込みのロール](../role-based-access-control/built-in-roles.md)」を参照してください。
 
@@ -42,7 +42,7 @@ Azure ポータルの StorSimple デバイス ユーザーのために使用で�
 
 ## <a name="create-a-custom-role-for-storsimple-infrastructure-administrator"></a>StorSimple インフラストラクチャ管理者用のカスタム ロールを作成する
 
-次の例では、組み込みのロールである**閲覧者**から始めています。このロールのユーザーは、すべてのリソース スコープを表示できますが、編集または新規作成は実行できません。 このロールを拡張して、新しいカスタム ロールである StorSimple インフラストラクチャ管理者を作成します。このロールは、StorSimple デバイスのインフラストラクチャを管理できるユーザーに割り当てられます。
+次の例では、組み込みのロールである **閲覧者** から始めています。このロールのユーザーは、すべてのリソース スコープを表示できますが、編集または新規作成は実行できません。 このロールを拡張して、新しいカスタム ロールである StorSimple インフラストラクチャ管理者を作成します。このロールは、StorSimple デバイスのインフラストラクチャを管理できるユーザーに割り当てられます。
 
 1. Windows PowerShell を管理者として実行します。
 
@@ -58,7 +58,7 @@ Azure ポータルの StorSimple デバイス ユーザーのために使用で�
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
-4. Visual Studio で JSON ファイルを開きます。 標準的な Azure ロールは、**Actions**、**NotActions**、**AssignableScopes** という 3 つのメイン セクションで構成されていることがわかります。
+4. Visual Studio で JSON ファイルを開きます。 標準的な Azure ロールは、 **Actions** 、 **NotActions** 、 **AssignableScopes** という 3 つのメイン セクションで構成されていることがわかります。
 
     **Actions** セクションには、このロールに許可されているすべての操作が記述されます。 各アクションはリソース プロバイダーから割り当てられます。 StorSimple インフラストラクチャ管理者では、`Microsoft.StorSimple` リソース プロバイダーを使用します。
 
@@ -177,7 +177,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
     ![Azure ロールにアクセス許可を追加する](./media/storsimple-8000-role-based-access-control/rbac-create-role-infra-admin.png)
 
-**ユーザー追加中**通知によって進行状況が追跡されます。 ユーザーが正常に追加されると、アクセス制御のユーザーの一覧が更新されます。
+**ユーザー追加中** 通知によって進行状況が追跡されます。 ユーザーが正常に追加されると、アクセス制御のユーザーの一覧が更新されます。
 
 ## <a name="view-permissions-for-the-custom-role"></a>カスタム ロールのアクセス許可を表示する
 

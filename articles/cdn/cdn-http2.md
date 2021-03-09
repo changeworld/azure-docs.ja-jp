@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
 ms.author: ril
-ms.openlocfilehash: 698b1c7734882ea7f11114476b5e9a7f36a23a0e
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: d4ed04185da251d9042f6b54a192d0e49ef20ede
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192616"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778548"
 ---
 # <a name="http2-support-in-azure-cdn"></a>Azure CDN での HTTP/2 サポート
 
@@ -67,4 +67,4 @@ HTTP/2 の詳細については、次のリソースを参照してください�
 *   [公式の HTTP/2 FAQ](https://http2.github.io/faq/)
 *   [Akamai HTTP/2 の情報](https://http2.akamai.com/)
 
-Azure CDN の使用可能な機能の詳細については、「[Azure CDN の概要](https://azure.microsoft.com/documentation/articles/cdn-overview/)」を参照してください。
+Azure CDN の使用可能な機能の詳細については、「[Azure CDN の概要](./cdn-overview.md)」を参照してください。

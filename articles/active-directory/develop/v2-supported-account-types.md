@@ -1,5 +1,6 @@
 ---
-title: サポートされているアカウントの種類 - Microsoft ID プラットフォーム | Azure
+title: サポートされているアカウントの種類 | Azure
+titleSuffix: Microsoft identity platform
 description: アプリケーションの対象ユーザーとサポートされているアカウントの種類に関する概念的なドキュメント
 services: active-directory
 author: jmprieur
@@ -12,16 +13,16 @@ ms.date: 07/14/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 50a0859b58e2db0d3f644db01cfcde8c533b6871
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d6c184e2983a072dec4b3021a1b58a61cd206dba
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518132"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755984"
 ---
 # <a name="supported-account-types"></a>サポートされているアカウントの種類
 
-この記事では、Microsoft ID プラットフォーム アプリケーションでサポートされているアカウントの種類 (*対象ユーザー*と呼ばれることもある) について説明します。
+この記事では、Microsoft ID プラットフォーム アプリケーションでサポートされているアカウントの種類 ("*対象ユーザー*" とも呼ばれます) について説明します。
 
 <!-- This section can be in an include for many of the scenarios (SPA, web app signing-in users, protecting a web API, Desktop (depending on the flows), Mobile -->
 
@@ -29,7 +30,7 @@ ms.locfileid: "86518132"
 
 Microsoft Azure パブリック クラウドでは、ほとんどの種類のアプリで、どのようなオーディエンスのユーザーでもサインインさせることができます。
 
-- 基幹業務 (LOB) アプリケーションを記述している場合は、お客様の組織内のユーザーをサインインさせられます。 このようなアプリケーションは、*シングル テナント*と呼ばれることもあります。
+- 基幹業務 (LOB) アプリケーションを記述している場合は、お客様の組織内のユーザーをサインインさせられます。 このようなアプリケーションは、*シングル テナント* と呼ばれることもあります。
 - お客様が ISV である場合は、次の場合にユーザーをサインインさせるアプリケーションを記述できます。
 
   - 任意の組織に。 このようなアプリケーションは、*マルチ テナント* Web アプリケーションと呼ばれます。 職場または学校のアカウンでユーザーをサインインさせると解釈できる場合もあります。

@@ -7,12 +7,12 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 07e5ce5cb6fee11e3f55ce808da51ccad59b9ff2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 257855b4f7b1fae56ed8d6a063acfb0588da9b6a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801361"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123322"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>ワークフローを使用して Azure IoT Central アプリケーションを他のクラウド サービスと統合する
 
@@ -22,8 +22,8 @@ IoT Central では、テレメトリベースの条件 (デバイスの温度が
 
 Power Automate と Azure Logic Apps 用の Azure IoT Central V3 コネクタを使用することで、IoT Central での操作を自動化する高度なルールを作成できます。
 
-- Azure IoT Central アプリでルールが起動された際に、Power Automate または Azure Logic Apps でワークフローがトリガーされるようにすることができます。 これらのワークフローにより、他のクラウドサービス (Office 365 など) や、サードパーティのサービスでアクションを実行できます。
-- 別のクラウド サービス内 (Office 365 など) のイベントにより、Power Automate または Azure Logic Apps でワークフローをトリガーすることができます。 これらのワークフローにより、アクションを実行したり、IoT Central アプリケーションからデータを取得したりできます。
+- Azure IoT Central アプリでルールが起動された際に、Power Automate または Azure Logic Apps でワークフローがトリガーされるようにすることができます。 これらのワークフローにより、他のクラウド サービス (Microsoft 365 など) や、サードパーティのサービスでアクションを実行できます。
+- 別のクラウド サービス内 (Microsoft 365 など) のイベントにより、Power Automate または Azure Logic Apps でワークフローをトリガーすることができます。 これらのワークフローにより、アクションを実行したり、IoT Central アプリケーションからデータを取得したりできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,7 +32,7 @@ Power Automate と Azure Logic Apps 用の Azure IoT Central V3 コネクタを�
 ソリューションを設定するには、バージョン 3 の IoT Central アプリケーションが必要です。 アプリケーションのバージョンを確認する方法については、「[アプリケーションに関する情報](./howto-get-app-info.md)」を参照してください。 IoT Central アプリケーションを作成する方法については、「[Azure IoT Central アプリケーションの作成](./quick-deploy-iot-central.md)」を参照してください。
 
 > [!NOTE]
-> バージョン 2 の IoT Central アプリケーションを使用している場合は、前のバージョンのドキュメント サイトで「[Azure Logic Apps 内で IoT Central コネクタを使用してワークフローを作成する](https://docs.microsoft.com/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps)」を参照し、Azure IoT Central V2 コネクタを使用してください
+> バージョン 2 の IoT Central アプリケーションを使用している場合は、前のバージョンのドキュメント サイトで「[Azure Logic Apps 内で IoT Central コネクタを使用してワークフローを作成する](/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps)」を参照し、Azure IoT Central V2 コネクタを使用してください
 
 ## <a name="trigger-a-workflow-from-a-rule"></a>ルールからワークフローをトリガーする
 
@@ -47,7 +47,7 @@ Power Automate のトリガーとして **Azure IoT Central V3 - preview** コ�
 
 Azure Logic Apps のトリガーとして **Azure IoT Central V3 - preview** コネクタを追加するには:
 
-1. **Logic Apps デザイナー**で、 **[空のロジック アプリ]** テンプレートを選択します。
+1. **Logic Apps デザイナー** で、 **[空のロジック アプリ]** テンプレートを選択します。
 1. デザイナーで、 **[カスタム]** タブを選択します。
 1. *IoT Central* を検索し、**Azure IoT Central V3 - preview** コネクタを選択します。
 1. トリガーの一覧で、 **[ルールが起動されたとき (プレビュー)]** を選択します。
@@ -70,7 +70,7 @@ Power Automate のアクションとして **Azure IoT Central V3 - preview** �
 
 Azure Logic Apps のアクションとして **Azure IoT Central V3 - preview** コネクタを追加するには:
 
-1. **Logic Apps デザイナー**の **[アクションを選択してください]** パネルで、 **[カスタム]** タブを選択します。
+1. **Logic Apps デザイナー** の **[アクションを選択してください]** パネルで、 **[カスタム]** タブを選択します。
 1. *IoT Central* を検索し、**Azure IoT Central V3 - preview** コネクタを選択します。
 1. アクションの一覧で、使用する IoT Central アクションを選択します。
 1. アクション ステップで、選択したアクションの構成を完了します。 次に、 **[保存]** を選択します。

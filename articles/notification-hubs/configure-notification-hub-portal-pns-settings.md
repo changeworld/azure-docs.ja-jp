@@ -12,12 +12,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c8e2372e22c9db3aa5ea8b0bd953f18a2c01fbe2
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 5dd1044895ba55d1fbc6be7f4f4a2d7f615daa16
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761027"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887265"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>クイック スタート:通知ハブのプッシュ通知を設定する
 
@@ -58,7 +58,7 @@ Apple Push Notification Service (APNS) を設定するには、次の手順に�
 Google FCM のプッシュ通知を設定するには、次の手順に従います。
 
 1. Azure portal の **[通知ハブ]** ページで、左側のメニューの **[Google (GCM/FCM)]** を選択します。
-2. 前に保存した Google FCM プロジェクトの **API キー**を貼り付けます。
+2. 前に保存した Google FCM プロジェクトの **API キー** を貼り付けます。
 3. **[保存]** を選択します。
 
    ![Google FCM 用に Notification Hubs を構成する方法を示したスクリーンショット](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
@@ -67,14 +67,11 @@ Google FCM のプッシュ通知を設定するには、次の手順に従いま
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-### <a name="prerequisites"></a>前提条件
+Google Firebase Cloud Messaging (FCM) プロジェクトの **API キー** が必要となります。
 
-開始する前に、次の項目を用意する必要があります。
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
 
-* [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.0.67 以降。
-
-* Azure CLI の [Notification Hubs 用拡張機能](/cli/azure/ext/notification-hub/notification-hub)。
-* Google Firebase Cloud Messaging (FCM) プロジェクトの **API キー**。
+- この記事では、Azure CLI のバージョン 2.0.67 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ### <a name="set-up-push-notifications-for-google-fcm"></a>Google FCM のプッシュ通知を設定する
 
@@ -110,6 +107,8 @@ Google FCM のプッシュ通知を設定するには、次の手順に従いま
 その他のプラットフォーム向けの Azure CLI リファレンスは、[az notification-hub credential](/cli/azure/ext/notification-hub/notification-hub/credential) コマンドで入手してください。
 
 Android アプリケーションへの通知の送信に関する詳細については、「[Firebase を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」を参照してください。
+
+---
 
 ## <a name="windows-push-notification-service"></a>Windows プッシュ通知サービス
 
@@ -148,8 +147,8 @@ Windows Phone 用 Microsoft プッシュ通知サービス (MPNS) を設定す�
 Baidu のプッシュ通知を設定するには、次の手順に従います。
 
 1. Azure portal の **[通知ハブ]** ページで、左側のメニューの **[Baidu (Android China)]** を選択します。
-2. Baidu コンソールから取得した、Baidu クラウド プッシュ プロジェクトの **API キー**を入力します。
-3. Baidu コンソールから取得した、Baidu クラウド プッシュ プロジェクトの**秘密鍵**を入力します。
+2. Baidu コンソールから取得した、Baidu クラウド プッシュ プロジェクトの **API キー** を入力します。
+3. Baidu コンソールから取得した、Baidu クラウド プッシュ プロジェクトの **秘密鍵** を入力します。
 4. **[保存]** を選択します。
 
     ![Baidu (Android China) のプッシュ通知構成を示した Notification Hubs のスクリーンショット](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)

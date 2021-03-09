@@ -1,19 +1,19 @@
 ---
 title: FAQ - Azure VMware Solution by CloudSimple
 description: Azure VMware Solution by CloudSimple についてよく寄せられる質問には、接続性、ネットワーク、セキュリティ、ストレージ、Azure 統合などがあります。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0db8c13a7467ed864c0845319b37f958f60fa4d9
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 3551327f9aa07fe218d3b05f73057e36f92abcad
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88140889"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895565"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>VMware Solution by CloudSimple についてよく寄せられる質問
 
@@ -154,7 +154,7 @@ CloudSimple は、Azure 上のサブスクリプションへの Azure ExpressRou
 
 * CloudSimple vCenter の ID ソースとしての **Azure Active Directory**。
 * プライベート クラウドのバックアップ、イメージ、その他データを保存するための **Azure Storage**。
-* パブリック クラウドとプライベート クラウドにまたがるアプリケーション アーキテクチャを持つ**ハイブリッド アプリケーション**。  たとえば、プライベート クラウド上のアプリケーション サーバーやデータベース サーバーにアクセスする Web サーバーを Azure に作成できます。
+* パブリック クラウドとプライベート クラウドにまたがるアプリケーション アーキテクチャを持つ **ハイブリッド アプリケーション**。  たとえば、プライベート クラウド上のアプリケーション サーバーやデータベース サーバーにアクセスする Web サーバーを Azure に作成できます。
 * VMware 上で実行されているワークロードを対象とする **Azure Monitor** と **Azure Security Center**。ログ記録、パフォーマンス メトリック、セキュリティ管理を支援します。
 
 **VMware テナントを Azure にマップする方法は?**

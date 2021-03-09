@@ -14,24 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 43b6f5d4367cfc641183a17fda89cf1381c22a6c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7d52d49ab5d3a47dd69fdc1708f9e52f4f796a92
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258594"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390642"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
-> 
 > [!IMPORTANT]
-> 2019 年 4 月 30 日の時点で、パッチ オーケストレーション アプリケーション バージョン 1.2.* はサポートされなくなりました。 必ず最新バージョンにアップグレードしてください。
+> 2019 年 4 月 30 日の時点で、パッチ オーケストレーション アプリケーション バージョン 1.2.* はサポートされなくなりました。 必ず最新バージョンにアップグレードしてください。 OS ディスクを交換せずに、"Windows Update" によってオペレーティング システムの修正プログラムを適用する VM のアップグレードは、サポートされません。 
 
 > [!NOTE]
-> [仮想マシン スケール セットでの OS イメージの自動アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)の取得は、Azure でオペレーティング システムに修正プログラムが適用された状態を保つためのベスト プラクティスです。 仮想マシン スケール セット ベースの OS イメージの自動アップグレードでは、スケール セットに Silver 以上の耐久性が必要です。
->
+> [仮想マシン スケール セットでの OS イメージの自動アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)の取得は、Azure でオペレーティング システムに修正プログラムが適用された状態を保つためのベスト プラクティスです。 仮想マシン スケール セット ベースの OS イメージの自動アップグレードでは、スケール セットに Silver 以上の耐久性が必要です。 持続性層がブロンズのノードのタイプでは、これはサポートされていません。この場合は、パッチ オーケストレーション アプリケーションを使用してください。
 
- パッチ オーケストレーション アプリケーション (POA) は、Azure Service Fabric Repair Manager サービスのラッパーであり、Azure 以外でホストされるクラスターに対して構成ベースの OS 修正プログラム スケジュールを有効にします。 POA は、Azure 以外でホストされるクラスターには必要ありませんが、更新ドメインによる修正プログラムのインストールのスケジュール設定は、ダウンタイムを発生させることなく Service Fabric クラスター ホストに修正プログラムを適用するために必要です。
+パッチ オーケストレーション アプリケーション (POA) は、Azure Service Fabric Repair Manager サービスのラッパーであり、Azure 以外でホストされるクラスターに対して構成ベースの OS 修正プログラム スケジュールを有効にします。 POA は、Azure 以外でホストされるクラスターには必要ありませんが、更新ドメインによる修正プログラムのインストールのスケジュール設定は、ダウンタイムを発生させることなく Service Fabric クラスター ホストに修正プログラムを適用するために必要です。
 
 POA は、ダウンタイムを発生させることなく、Service Fabric クラスターでのオペレーティング システムへの修正プログラムの適用を自動化する Service Fabric アプリケーションです。
 
@@ -155,7 +153,7 @@ Windows の自動更新では、複数のクラスター ノードが同時に�
 
 ニーズに合わせて POA の動作を構成することができます。 アプリケーションを作成または更新するときにアプリケーション パラメーターを渡して、既定値をオーバーライドします。 `Start-ServiceFabricApplicationUpgrade` または `New-ServiceFabricApplication` コマンドレットに `ApplicationParameter` を指定することで、アプリケーション パラメーターを指定できます。
 
-| パラメーター        | Type                          | 詳細 |
+| パラメーター        | 種類                          | 詳細 |
 |:-|-|-|
 |MaxResultsToCache    |Long                              | キャッシュする必要がある Windows Update の結果の最大数。 <br><br>既定値は 3000 で、以下が前提となります。 <br> &nbsp;&nbsp;- ノード数が 20 である。 <br> &nbsp;&nbsp;- 月あたりのノードの更新数が 5 である。 <br> &nbsp;&nbsp;- 操作あたりの結果の数を 10 にできる。 <br> &nbsp;&nbsp;- 過去 3 か月の結果を格納する必要がある。 |
 |TaskApprovalPolicy   |列挙型 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy は、コーディネーター サービスが、Service Fabric クラスター ノードに Windows Update をインストールする際に使用するポリシーを示しています。<br><br>使用できる値は、次のとおりです。 <br>*NodeWise*:Windows 更新プログラムは、一度に 1 つのノードにインストールされます。 <br> *UpgradeDomainWise*:Windows 更新プログラムは、一度に 1 つの更新ドメインにインストールされます (最大で、更新ドメインに属するすべてのノードに Windows 更新プログラムを適用できます)。<br><br> [FAQ](#frequently-asked-questions) に関するセクションを参照してください。これは、クラスターに最適なポリシーを決定するのに役立ちます。
@@ -271,38 +269,38 @@ Windows Update の結果を照会するには、クラスターにサインイ�
 > [!NOTE]
 > 以下に示されている自己診断の機能向上の多くを得るには、POA バージョン 1.4.0 以降がインストールされている必要があります。
 
-ノード エージェント NTService では、ノードに更新プログラムをインストールするために[修復タスク](/dotnet/api/system.fabric.repair.repairtask?view=azure-dotnet)を作成します。 その後、各タスクは、タスク承認ポリシーに従って、コーディネーター サービスによって準備されます。 最後に、準備されたタスクは Repair Manager によって承認されますが、クラスターが異常な状態にある場合は、どのタスクも承認されません。 
+ノード エージェント NTService では、ノードに更新プログラムをインストールするために[修復タスク](/dotnet/api/system.fabric.repair.repairtask)を作成します。 その後、各タスクは、タスク承認ポリシーに従って、コーディネーター サービスによって準備されます。 最後に、準備されたタスクは Repair Manager によって承認されますが、クラスターが異常な状態にある場合は、どのタスクも承認されません。 
 
 ノードでの更新プログラムの進行について理解できるように、段階的に見ていきましょう。
 
 1. すべてのノード上で実行されている NodeAgentNTService では、スケジュールされた時刻に使用可能な Windows 更新プログラムを検索します。 更新プログラムが使用可能な場合、それらをノード上にダウンロードします。
 
-1. 更新プログラムがダウンロードされた後、ノード エージェント NTService では *POS___\<unique_id>* の名前で、ノードの対応する修復タスクを作成します。 これらの修復タスクは、[Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) コマンドレットを使用するか、ノードの詳細セクションで SFX を使用して表示できます。 修復タスクが作成された後、すぐに[*要求済み*状態](/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet)に移ります。
+1. 更新プログラムがダウンロードされた後、ノード エージェント NTService では *POS___\<unique_id>* の名前で、ノードの対応する修復タスクを作成します。 これらの修復タスクは、[Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask) コマンドレットを使用するか、ノードの詳細セクションで SFX を使用して表示できます。 修復タスクが作成された後、すぐに [*要求済み* 状態](/dotnet/api/system.fabric.repair.repairtaskstate)に移ります。
 
-1. コーディネーター サービスでは、定期的に*要求済み*状態の修復タスクを検索し、TaskApprovalPolicy に基づいてそれらを*準備中*状態に更新します。 TaskApprovalPolicy が NodeWise になるように構成されている場合、現在、*準備中*、*承認済み*、*実行中*、または*復元中*の状態になっている他の修復タスクがない場合にのみ、ノードに対応した修復タスクが準備されます。 
+1. コーディネーター サービスでは、定期的に *要求済み* 状態の修復タスクを検索し、TaskApprovalPolicy に基づいてそれらを *準備中* 状態に更新します。 TaskApprovalPolicy が NodeWise になるように構成されている場合、現在、*準備中*、*承認済み*、*実行中*、または *復元中* の状態になっている他の修復タスクがない場合にのみ、ノードに対応した修復タスクが準備されます。 
 
-   同様に、UpgradeWise TaskApprovalPolicy の場合は、同じ更新ドメインに属しているノードに対してのみ、上記の状態でタスクが存在します。 修復タスクが*準備中*状態に移された後、対応する Service Fabric ノードが、*再起動*の意図で[無効](/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps)になります。
+   同様に、UpgradeWise TaskApprovalPolicy の場合は、同じ更新ドメインに属しているノードに対してのみ、上記の状態でタスクが存在します。 修復タスクが *準備中* 状態に移された後、対応する Service Fabric ノードが、*再起動* の意図で [無効](/powershell/module/servicefabric/disable-servicefabricnode)になります。
 
    POA バージョン 1.4.0 以降では、CoordinatorService の ClusterPatchingStatus プロパティを使用してイベントをポストし、修正プログラムが適用されているノードを表示します。 次の画像に示すように、更新プログラムは _poanode_0 にインストールされます。
 
     [![修正プログラム適用中状態のクラスターの画像](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png)](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png#lightbox)
 
-1. ノードが無効になった後、修復タスクは*実行中*状態に移されます。 
+1. ノードが無効になった後、修復タスクは *実行中* 状態に移されます。 
    
    > [!NOTE]
-   > *無効*状態でスタックしているノードでは、新しい修復タスクがブロックされる可能性があり、これにより、クラスターでの修正プログラムの適用操作が停止します。
+   > *無効* 状態でスタックしているノードでは、新しい修復タスクがブロックされる可能性があり、これにより、クラスターでの修正プログラムの適用操作が停止します。
 
-1. 修復タスクが*実行中*状態になると、そのノードへの修正プログラムのインストールが開始されます。 修正プログラムがインストールされた後、ノードは、修正プログラムに応じて、再起動される場合とされない場合があります。 次に、修復タスクが*修復中*状態に移され、これにより、ノードが再び有効になります。 その後、修復タスクが完了済みとマークされます。
+1. 修復タスクが *実行中* 状態になると、そのノードへの修正プログラムのインストールが開始されます。 修正プログラムがインストールされた後、ノードは、修正プログラムに応じて、再起動される場合とされない場合があります。 次に、修復タスクが *修復中* 状態に移され、これにより、ノードが再び有効になります。 その後、修復タスクが完了済みとマークされます。
 
    POA バージョン 1.4.0 以降では、WUOperationStatus-\<NodeName> プロパティを使用して NodeAgentService の正常性イベントを表示して、更新プログラムの状態を確認できます。 下の画像で強調表示されたセクションには、ノード *poanode_0* および *poanode_2* での Windows 更新プログラムの状態が示されています。
 
-   [![Windows Update 操作の状態の画像](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
+   [![poanode_0 の Windows Update 操作状態が強調して示されているコンソール ウィンドウのスクリーンショット。](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 
-   [![Windows Update 操作の状態の画像](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
+   [![poanode_1 の Windows Update 操作状態が強調して示されているコンソール ウィンドウのスクリーンショット。](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
-   PowerShell を使用して詳細を取得することもできます。 これを行うには、クラスターに接続し、[Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) を使用して修復タスクの状態を取り込みます。 
+   PowerShell を使用して詳細を取得することもできます。 これを行うには、クラスターに接続し、[Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask) を使用して修復タスクの状態を取り込みます。 
    
-   次の例では、"POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15" タスクは *DownloadComplete* 状態にあります。 これは、更新プログラムが *poanode_2* ノードにダウンロードされており、タスクが*実行中*状態に移ったときにインストールが試みられることを意味します。
+   次の例では、"POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15" タスクは *DownloadComplete* 状態にあります。 これは、更新プログラムが *poanode_2* ノードにダウンロードされており、タスクが *実行中* 状態に移ったときにインストールが試みられることを意味します。
 
    ``` powershell
     D:\service-fabric-poa-bin\service-fabric-poa-bin\Release> $k = Get-ServiceFabricRepairTask -TaskId "POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15"
@@ -328,13 +326,13 @@ Windows Update の結果を照会するには、クラスターにサインイ�
 
 1. POA バージョン 1.4.0 以降では、ノードの更新の試行が完了した場合、Windows 更新プログラムのダウンロードとインストールの次回の試行が開始されるときに通知するために、"WUOperationStatus-[NodeName]" プロパティを使用するイベントが NodeAgentService にポストされます。 これは次の画像のように表示されます。
 
-     [![Windows Update 操作の状態の画像](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
+     [![NodeAgentService の Windows Update 操作状態が示されているコンソール ウィンドウのスクリーンショット。](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
 
 ### <a name="diagnostics-logs"></a>診断ログ
 
 パッチ オーケストレーション アプリケーションのログは、Service Fabric のランタイム ログの一部として収集されます。
 
-ログは、任意の診断ツールまたはパイプラインを使用してキャプチャできます。 POA では次の固定プロバイダー ID を使用して、[イベント ソース](/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1)を介してイベントをログに記録します。
+ログは、任意の診断ツールまたはパイプラインを使用してキャプチャできます。 POA では次の固定プロバイダー ID を使用して、[イベント ソース](/dotnet/api/system.diagnostics.tracing.eventsource)を介してイベントをログに記録します。
 
 - e39b723c-590c-4090-abb0-11e3e6616346
 - fc0028ff-bfdc-499f-80dc-ed922c52c5e9
@@ -359,7 +357,7 @@ Windows Update の結果を照会するには、クラスターにサインイ�
 
 A:インストール プロセス中に、POA ではノードを無効にするか再起動します。これにより、一時的にクラスターが異常な状態になる可能性があります。
 
-アプリケーションのポリシーに応じて、修正プログラムの適用操作中にいずれか 1 つのノードがダウンするか、*または*更新ドメイン全体が同時にダウンすることがあります。
+アプリケーションのポリシーに応じて、修正プログラムの適用操作中にいずれか 1 つのノードがダウンするか、*または* 更新ドメイン全体が同時にダウンすることがあります。
 
 Windows 更新プログラムのインストールが完了するまでに、ノードは再起動後に再び有効になります。
 
@@ -379,9 +377,9 @@ A:クラスターに異常がある間は、POA によって更新プログラ�
 
 **Q:クラスターの "NodeWise" または "UpgradeDomainWise" として TaskApprovalPolicy を設定する必要はありますか?**
 
-A:"UpgradeDomainWise" 設定では、更新ドメインに属するすべてのノードに並列して修正プログラムを適用することで、クラスター全体の修復を高速化します。 このプロセス中は、更新ドメイン全体に属するノードを使用できません ([*無効*状態](/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)になっている)。
+A:"UpgradeDomainWise" 設定では、更新ドメインに属するすべてのノードに並列して修正プログラムを適用することで、クラスター全体の修復を高速化します。 このプロセス中は、更新ドメイン全体に属するノードを使用できません ([*無効* 状態](/dotnet/api/system.fabric.query.nodestatus#System_Fabric_Query_NodeStatus_Disabled)になっている)。
 
-これに対して、"NodeWise" 設定では、一度に 1 つのノードのみに修正プログラムが適用されます。これは、クラスター全体の修正プログラムの適用に時間がかかる可能性があることを意味します。 ただし、修正プログラムの適用プロセス中に利用不可 (*無効*状態) になるのは、最大でも 1 つのノードのみです。
+これに対して、"NodeWise" 設定では、一度に 1 つのノードのみに修正プログラムが適用されます。これは、クラスター全体の修正プログラムの適用に時間がかかる可能性があることを意味します。 ただし、修正プログラムの適用プロセス中に利用不可 (*無効* 状態) になるのは、最大でも 1 つのノードのみです。
 
 修正プログラムの適用サイクル中に、クラスターで N-1 個の更新ドメイン (N はクラスター上の更新ドメインの総数) 上での実行を許容できる場合は、ポリシーを "UpgradeDomainWise" として設定できます。 それ以外の場合は、"NodeWise" に設定します。
 
@@ -405,9 +403,9 @@ A:クラスター全体に修正プログラムを適用するために必要な
     - "NodeWise" の場合: 最大 20 時間。
     - "UpgradeDomainWise" の場合: 最大 5 時間。
 
-- クラスターの負荷。 修正プログラムの適用操作ごとに、クラスター内の他の利用可能なノードに顧客のワークロードを再配置する必要があります。 修正プログラムが適用されているノードは、この間は[*無効化中*状態](/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling)になります。 クラスターがピーク時の負荷に近い状態で実行されている場合、無効化プロセスには時間がかかります。 そのため、このような負荷状態では、修正プログラムの適用プロセス全体が遅く見えることがあります。
+- クラスターの負荷。 修正プログラムの適用操作ごとに、クラスター内の他の利用可能なノードに顧客のワークロードを再配置する必要があります。 修正プログラムが適用されているノードは、この間は [*無効化中* 状態](/dotnet/api/system.fabric.query.nodestatus#System_Fabric_Query_NodeStatus_Disabling)になります。 クラスターがピーク時の負荷に近い状態で実行されている場合、無効化プロセスには時間がかかります。 そのため、このような負荷状態では、修正プログラムの適用プロセス全体が遅く見えることがあります。
 
-- 修正プログラムの適用中に発生したクラスターの正常性エラー。 [クラスターの正常性](./service-fabric-health-introduction.md)が[低下](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error)した場合、修正プログラムの適用プロセスは中断されます。 この問題により、クラスター全体に修正プログラムを適用するために必要な全体的な時間が増えます。
+- 修正プログラムの適用中に発生したクラスターの正常性エラー。 [クラスターの正常性](./service-fabric-health-introduction.md)が[低下](/dotnet/api/system.fabric.health.healthstate#System_Fabric_Health_HealthState_Error)した場合、修正プログラムの適用プロセスは中断されます。 この問題により、クラスター全体に修正プログラムを適用するために必要な全体的な時間が増えます。
 
 **Q:Windows Update の結果で一部の更新プログラムが REST API 経由で取得されたと表示されますが、マシンの Windows Update 履歴に表示されないのはなぜですか?**
 
@@ -427,11 +425,11 @@ A:結果の JSON を照会し、すべてのノードの更新サイクルに入
 
 更新が行われていない大きな時間枠がある場合、クラスターはエラー状態にある可能性があるため、Repair Manager では POA の修復タスクを承認できません。 任意のノードで更新プログラムのインストールに時間がかかる場合、そのノードはしばらくの間、更新されていない可能性があります。 多くの更新プログラムのインストールが保留中である可能性があり、これにより、遅延が発生することがあります。 
 
-また、*無効化中*状態でスタックしているため、ノードへの修正プログラムの適用がブロックされている可能性があります。 これは通常、ノードの無効化により、クォーラムまたはデータ損失の状況が発生する可能性があるためです。
+また、*無効化中* 状態でスタックしているため、ノードへの修正プログラムの適用がブロックされている可能性があります。 これは通常、ノードの無効化により、クォーラムまたはデータ損失の状況が発生する可能性があるためです。
 
 **Q:POA でノードに修正プログラムを適用するときに、そのノードを無効にする必要があるのはなぜですか?**
 
-A:POA では、ノード上で実行されているすべての Service Fabric サービスを停止または再割り当てする、*再起動*の意図でノードを無効にします。 POA ではこれを行って、アプリケーションで新規および古い DLL を組み合わせて使用することにならないようにします。したがって、ノードを無効にせずに修正プログラムを適用することはお勧めできません。
+A:POA では、ノード上で実行されているすべての Service Fabric サービスを停止または再割り当てする、*再起動* の意図でノードを無効にします。 POA ではこれを行って、アプリケーションで新規および古い DLL を組み合わせて使用することにならないようにします。したがって、ノードを無効にせずに修正プログラムを適用することはお勧めできません。
 
 **Q:POA を使用して更新できるノードの最大数はどれだけですか?**
 
@@ -449,11 +447,11 @@ A:POA では、Service Fabric Repair Manager を使用して、更新のため�
 
 ### <a name="a-node-is-not-coming-back-to-up-state"></a>ノードが稼働状態に戻らない
 
-* 以下の理由により、ノードが *無効中*状態でスタックしている可能性があります。
+* 以下の理由により、ノードが *無効中* 状態でスタックしている可能性があります。
 
   - 安全性チェックが保留中になっています。 この状況を改善するには、十分な数のノードが正常な状態で稼働するように対策を講じてください。
 
-* 次の理由により、ノードが*無効*状態でスタックしている可能性があります。
+* 次の理由により、ノードが *無効* 状態でスタックしている可能性があります。
 
   - 手動で無効にされた。
   - 進行中の Azure インフラストラクチャ ジョブによって無効にされた。

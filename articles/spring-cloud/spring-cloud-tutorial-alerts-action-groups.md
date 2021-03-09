@@ -7,14 +7,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 856bace0c67c5afedd6305158326af46037e7f21
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 59791b72272ccd721a61da88d13b973119cef5d6
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299229"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596145"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>チュートリアル:アラートとアクション グループを使用して Spring Cloud のリソースを監視する方法
+
+**この記事の適用対象:** ✔️ Java ✔️ C#
 
 Azure Spring Cloud のアラートは、使用可能なストレージ、要求の速度、データ使用状況などの条件に基づくリソースの監視をサポートします。 速度や条件が定義済みの仕様を満たしたときにアラートから通知が送信されます。
 
@@ -34,7 +36,7 @@ Azure Spring Cloud のアラートは、使用可能なストレージ、要求�
 
 ## <a name="set-up-action-group"></a>アクション グループを設定する
 
-新しい**アクション グループ**を初期化する手順を開始するには、 **[+ アクション グループの追加]** を選択します。
+新しい **アクション グループ** を初期化する手順を開始するには、 **[+ アクション グループの追加]** を選択します。
 
 ![ポータルの [アクション グループの追加] のスクリーンショット](media/alerts-action-groups/action-1.png)
 
@@ -58,13 +60,13 @@ Azure Spring Cloud のアラートは、使用可能なストレージ、要求�
 
 ## <a name="set-up-alert"></a>アラートを設定する 
 
-前の手順では、メールを使用する**アクション グループ**を作成しました。 電話による通知や Webhook、Azure 関数なども使用できます。  
+前の手順では、メールを使用する **アクション グループ** を作成しました。 電話による通知や Webhook、Azure 関数なども使用できます。 以下の手順では、**アラート** を構成します。
 
-**アラート**を構成するには、 **[アラート]** ページに戻って **[アラート ルールの管理]** をクリックします。
+1. **[アラート]** ページに戻って、 **[アラート ルールの管理]** をクリックします。
 
-  ![ポータルのアラート定義のスクリーンショット](media/alerts-action-groups/alerts-2.png)
+   ![ポータルのアラート定義のスクリーンショット](media/alerts-action-groups/alerts-2.png)
 
-1. アラート対象の**リソース**を選択します。
+1. アラート対象の **リソース** を選択します。
 
 1. **[+ 新しいアラート ルール]** をクリックします。
 
@@ -72,21 +74,21 @@ Azure Spring Cloud のアラートは、使用可能なストレージ、要求�
 
 1. **[ルールの作成]** ページで、 **[リソース]** を指定します。
 
-1. **条件**設定には、**Spring Cloud** リソースを監視するための多くのオプションが用意されています。  **[追加]** をクリックして、 **[シグナル ロジックの構成]** ペインを開きます。
+1. **条件** 設定には、**Spring Cloud** リソースを監視するための多くのオプションが用意されています。  **[追加]** をクリックして、 **[シグナル ロジックの構成]** ペインを開きます。
 
-1. 条件を選択します。 この例では、**システムの CPU 使用率**を使用します。
+1. 条件を選択します。 この例では、**システムの CPU 使用率** を使用します。
 
    ![ポータルの [新しいアラート ルール] のスクリーンショット 2](media/alerts-action-groups/alerts-3-1.png)
 
-1. **[シグナル ロジックの構成]** ペインを下にスクロールして、監視する**しきい値**を設定します。
+1. **[シグナル ロジックの構成]** ペインを下にスクロールして、監視する **しきい値** を設定します。
 
    ![ポータルの [新しいアラート ルール] のスクリーンショット 3](media/alerts-action-groups/alerts-3-2.png)
 
 1. **[Done]** をクリックします。
 
-監視に使用できる条件の詳細については、「[ユーザー ポータルのメトリック オプション](spring-cloud-concept-metrics.md#user-metrics-options)」を参照してください。
+   監視に使用できる条件の詳細については、「[ユーザー ポータルのメトリック オプション](spring-cloud-concept-metrics.md#user-metrics-options)」を参照してください。
 
- **[アクション]** で、 **[アクション グループの選択]** をクリックします。 **[アクション]** ペインで、先ほど定義した**アクション グループ**を選択します。
+1. **[アクション]** で、 **[アクション グループの選択]** をクリックします。 **[アクション]** ペインで、先ほど定義した **アクション グループ** を選択します。
 
    ![ポータルの [新しいアラート ルール] のスクリーンショット 4](media/alerts-action-groups/alerts-3-3.png) 
 
@@ -98,20 +100,20 @@ Azure Spring Cloud のアラートは、使用可能なストレージ、要求�
 
    ![ポータルの [新しいアラート ルール] のスクリーンショット 5](media/alerts-action-groups/alerts-3-4.png)
 
-新しいアラート ルールが有効になっていることを確認します。
+1. 新しいアラート ルールが有効になっていることを確認します。
 
    ![ポータルの [新しいアラート ルール] のスクリーンショット 6](media/alerts-action-groups/alerts-4.png)
 
 **[Metrics]\(メトリック\)** ページを使用してルールを作成することもできます。
 
-   ![ポータルの [新しいアラート ルール] のスクリーンショット 7](media/alerts-action-groups/alerts-5.png)
+![ポータルの [新しいアラート ルール] のスクリーンショット 7](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Spring Cloud アプリケーションのアラートとアクション グループを設定する方法について学習しました。 アクション グループの詳細については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure portal でのアクション グループの作成および管理](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+> [Azure portal でのアクション グループの作成および管理](../azure-monitor/alerts/action-groups.md)
 
 > [!div class="nextstepaction"]
-> [アクション グループの SMS アラート動作](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
+> [アクション グループの SMS アラート動作](../azure-monitor/alerts/alerts-sms-behavior.md)

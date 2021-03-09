@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/14/2018
+ms.date: 11/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5f8b87684847089a05341a5a68f6ad3e2ac86b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce2525927b38a2d3300d15b7d34324f5ff59e4e5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355864"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457426"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>Azure AD Connect での SQL 接続に関する問題のトラブルシューティング
 この記事では、Azure AD Connect と SQL Server の間の接続に関する問題のトラブルシューティング方法について説明します。 
@@ -29,10 +29,12 @@ ms.locfileid: "85355864"
 ![SQL エラー](./media/tshoot-connect-tshoot-sql-connectivity/sql1.png)
 
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順
-PowerShell のウィンドウを開き、ADSyncTools PowerShell モジュールをインポートします。
+PowerShell ウィンドウを開き、ADSyncTools PowerShell モジュールをインポートします
 
 ``` powershell
-Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\AdSyncTools.psm1" 
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+Import-module -Name "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\AdSyncTools"
 ```
 
 >[!NOTE]
@@ -40,10 +42,10 @@ Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\A
 または [PackageManagement PowerShell Modules Preview - March 2016 for PowerShell 3.0/4.0](/powershell/module/PackageManagement) をインストールしてください。 
 
 - **すべてのコマンドを表示**: `Get-Command -Module AdSyncTools` 
-- **PowerShell 関数を実行**: 以下のパラメーターとともに `Connect-ADSyncDatabase`
+- **PowerShell 関数を実行**: 以下のパラメーターを指定した `Connect-ADSyncDatabase`
     - サーバー。 SQL Server 名。
     - インスタンス。 (オプション) SQL Server インスタンスの名前と、必要に応じて使用するポート番号。 既定のインスタンスを使用するには、このパラメーターは指定しません。
-    - ユーザー名。 (オプション) 接続するユーザー アカウント。 空白の場合は、現在ログインしているユーザーが使用されます。 リモートの SQL Server に接続している場合、これが Azure AD Connect SQL 接続用に作成したカスタム サービス アカウントであるべきです。 Azure AD Connect は、Azure AD Connect 同期サービス アカウントを使用してリモート SQL Server の認証をします。
+    - ユーザー名。 (オプション) 接続するユーザー アカウント。 空白の場合は、現在ログインしているユーザーが使用されます。 リモートの SQL Server に接続している場合、これは Azure AD Connect SQL 接続用に作成したカスタム サービス アカウントである必要があります。 Azure AD Connect は、Azure AD Connect 同期サービス アカウントを使用してリモート SQL Server の認証をします。
     - パスワード。 (オプション) 指定されたユーザー名のパスワードです。
 
 この PowerShell 関数は、渡された資格情報を使用して、指定された SQL Server やインスタンスにバインドを試みます。または、現在のユーザーの資格情報を使用します。 SQL Server が見つからない場合、有効なプロトコルとポートを判断するため、スクリプトは SQL Browser サービスに接続を試みます。

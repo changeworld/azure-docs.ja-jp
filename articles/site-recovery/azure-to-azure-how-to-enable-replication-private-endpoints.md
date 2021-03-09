@@ -1,25 +1,22 @@
 ---
 title: Azure Site Recovery でプライベート エンドポイントのレプリケーションを有効にする
 description: この記事では、Site Recovery を使用して、1 つの Azure リージョンから別のリージョンへの、プライベート エンドポイントを使用する VM のレプリケーションを構成する方法について説明します。
-author: mayurigupta13
-ms.author: mayg
+author: Harsha-CS
+ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 16cde1cf43c6463cbbe640d9e0a80a9ea88f1f1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 86f18be73966cb07489630191420b846622e45b8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094641"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629829"
 ---
 # <a name="replicate-machines-with-private-endpoints"></a>プライベート エンドポイントを使用してマシンをレプリケートする
 
-Azure Site Recovery では、分離された仮想ネットワーク内部からマシンをレプリケートするために [Azure Private Link](../private-link/private-endpoint-overview.md) プライベート エンドポイントを使用できます。 次のリージョンでは、回復コンテナーへのプライベート エンドポイントのアクセスをサポートしています。
-
-- Azure 商用:米国中南部、米国西部 2、米国東部
-- Azure Government:US Gov バージニア、US Gov アリゾナ、US Gov テキサス、US DoD 東部、US DoD 中部
+Azure Site Recovery では、分離された仮想ネットワーク内部からマシンをレプリケートするために [Azure Private Link](../private-link/private-endpoint-overview.md) プライベート エンドポイントを使用できます。 Azure Commercial リージョンおよび Azure Government リージョンでは、回復コンテナーへのプライベート エンドポイントのアクセスがサポートされています。
 
 この記事では、次のステップを実行する手順について説明します。
 
@@ -122,15 +119,18 @@ Azure 仮想マシンでフェールオーバーとフェールバックの両�
 
 ## <a name="optional-create-private-endpoints-for-the-cache-storage-account"></a><a name="create-private-endpoints-for-the-cache-storage-account"></a>(省略可能) キャッシュ ストレージ アカウントのプライベート エンドポイントを作成する
 
-Azure Storage へのプライベート エンドポイントが使用できます。 ストレージ アクセス用のプライベート エンドポイントの作成は、Azure Site Recovery レプリケーションでは_省略可能_です。 ストレージのプライベート エンドポイントを作成すると、次の要件が適用されます。
+Azure Storage へのプライベート エンドポイントが使用できます。 ストレージ アクセス用のプライベート エンドポイントの作成は、Azure Site Recovery レプリケーションでは _省略可能_ です。 ストレージのプライベート エンドポイントを作成すると、次の要件が適用されます。
 
 - ソース仮想ネットワーク内にキャッシュ/ログ ストレージ アカウントのプライベート エンドポイントが必要です。
 - 回復ネットワーク内でフェールオーバーされたコンピューターを再保護するときに、2 番目のプライベート エンドポイントが必要です。 このプライベート エンドポイントは、ターゲット リージョンで作成された新しいストレージ アカウント用です。
 
 > [!NOTE]
+> ストレージ アカウントでプライベート エンドポイントが有効になっていない場合でも、保護は正常に実行されます。 ただし、レプリケーション トラフィックは Azure Site Recovery のパブリック エンドポイントに転送されます。 レプリケーション トラフィックが確実にプライベート リンクを経由するようにするには、ストレージ アカウントでプライベート エンドポイントを有効にする必要があります。
+
+> [!NOTE]
 > ストレージのプライベート エンドポイントは、**General Purpose v2** ストレージ アカウントでのみ作成できます。 価格情報については、[Standard ページ BLOB の価格](https://azure.microsoft.com/pricing/details/storage/page-blobs/)に関するページを参照してください。
 
-[プライベート ストレージを作成するためのガイダンス](../private-link/create-private-endpoint-storage-portal.md#create-your-private-endpoint)に従って、プライベート エンドポイントとともにストレージ アカウントを作成します。 プライベート DNS ゾーンとの統合で **[はい]** を選択するようにしてください。 既に作成されている DNS ゾーンを選択するか、新しいゾーンを作成します。
+[プライベート ストレージを作成するためのガイダンス](../private-link/tutorial-private-endpoint-storage-portal.md#create-storage-account-with-a-private-endpoint)に従って、プライベート エンドポイントとともにストレージ アカウントを作成します。 プライベート DNS ゾーンとの統合で **[はい]** を選択するようにしてください。 既に作成されている DNS ゾーンを選択するか、新しいゾーンを作成します。
 
 ## <a name="grant-required-permissions-to-the-vault"></a>コンテナーに必要なアクセス許可を付与する
 
@@ -156,7 +156,7 @@ Azure Storage へのプライベート エンドポイントが使用できま�
 
    :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment.png" alt-text="Azure portal でのストレージ アカウントの [アクセス制御 (IAM)] ページと、[ロールの割り当てを追加する] ボタンが表示されています。":::
 
-1. [ロールの割り当てを追加する] サイド ページで、 **[ロール]** ドロップダウンの一覧からロールを選択します。 コンテナーの**名前**を入力し、 **[保存]** を選択します。
+1. [ロールの割り当てを追加する] サイド ページで、 **[ロール]** ドロップダウンの一覧からロールを選択します。 コンテナーの **名前** を入力し、 **[保存]** を選択します。
 
    :::image type="content" source="./media/azure-to-azure-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="Azure portal でのストレージ アカウントの [アクセス制御 (IAM)] ページと、ロールを選択するオプションと、そのロールを付与するプリンシパルが表示されています。":::
 

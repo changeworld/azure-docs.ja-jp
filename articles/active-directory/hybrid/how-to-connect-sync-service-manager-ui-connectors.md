@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a013af680ecc84a2a981341ba4bb95148adc799f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d215c2e200308664f24daa28a0054c8f1bcfc09c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357258"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319879"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Azure AD Connect の Sync Service Manager でコネクタを使用する
 
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
+![Sync Service Manager を示すスクリーンショット。](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
 
 [コネクタ] タブを利用し、同期エンジンが接続されているすべてのシステムを管理します。
 
@@ -47,7 +47,7 @@ ms.locfileid: "85357258"
 
 ### <a name="delete"></a>削除
 削除アクションには次の 2 つがあります。  
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
+![[Delete connector space only]\(コネクタ スペースのみを削除する\) が選択された [コネクタの削除] ウィンドウを示すスクリーンショット。](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
 
 **[Delete connector space only (コネクタ スペースのみを削除する)]** オプションを選択すると、すべてのデータが削除されますが、構成は維持されます。
 
@@ -58,17 +58,17 @@ ms.locfileid: "85357258"
 ### <a name="configure-run-profiles"></a>実行プロファイルの構成
 このオプションを使用すると、コネクタ用に構成された実行プロファイルを表示できます。
 
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
+![[Delta Import]\(差分インポート\) が選択された [Configure Run Profiles]\(実行プロファイルの構成\) ウィンドウを示すスクリーンショット。](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
 
 ### <a name="search-connector-space"></a>コネクタ スペースの検索
 コネクタ スペースの検索アクションは、オブジェクトを検索し、データ問題を解決するのに役立ちます。
 
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
+![[Search Connector Space]\(コネクタ スペースの検索\) ウィンドウを示すスクリーンショット。](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
 
 まず、 **[scope]** (範囲) を選択します。 データ (RDN、DN、アンカー、サブツリー) またはオブジェクトの状態 (その他すべてのオプション) に基づいて検索できます。  
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
+![[Scope]\(スコープ\) ドロップダウン メニューを示すスクリーンショット。](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
 たとえば、サブツリー検索を行うと、1 つの OU のすべてのオブジェクトが取得されます。  
-![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
+![[Sub-Tree]\(サブツリー\) 検索の例を示すスクリーンショット。](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
 このグリッドからオブジェクトを選択し、 **[プロパティ]** を選択して、ソース コネクタ スペースからメタバースを経てターゲット コネクタ スペースまで[フォロー](tshoot-connect-object-not-syncing.md)できます。
 
 ### <a name="changing-the-ad-ds-account-password"></a>AD DS アカウント パスワードの変更

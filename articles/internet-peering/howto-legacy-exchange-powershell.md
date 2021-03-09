@@ -6,15 +6,15 @@ services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: how-to
-ms.date: 11/27/2019
+ms.date: 12/15/2020
 ms.author: prmitiki
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 769522238939fe8ee786ae51a1b3b6051604451e
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: acc32f4916f5f7f8fe22eebdd1e72db297cac94c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89071671"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590207"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-powershell"></a>PowerShell を使用してレガシの Exchange ピアリングを Azure リソースに変換する
 

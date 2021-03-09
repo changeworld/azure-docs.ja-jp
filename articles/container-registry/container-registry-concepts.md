@@ -3,12 +3,12 @@ title: リポジトリとイメージについて
 description: Azure のコンテナー レジストリ、リポジトリ、およびコンテナー イメージの主要な概念について紹介します。
 ms.topic: article
 ms.date: 06/16/2020
-ms.openlocfilehash: f3a3e2a00b4fb35f9e9dd1415d5c197aef0d39b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0cc7df22236c60bd473385d92c8db563be68f688
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390450"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100008521"
 ---
 # <a name="about-registries-repositories-and-images"></a>レジストリ、リポジトリ、イメージについて
 
@@ -27,7 +27,7 @@ Azure Container Registry 内の成果物のアドレスには、次の要素が�
 `[loginUrl]/[repository:][tag]`
 
 * **loginUrl** - レジストリ ホストの完全修飾名。 Azure Container Registry のレジストリ ホストは、*myregistry*.azurecr.io (すべて小文字) の形式です。 Docker またはその他のクライアント ツールを使用して Azure Container Registry との間で成果物をプルまたはプッシュするには、loginUrl を指定する必要があります。 
-* **repository** - 1 つまたは複数の関連するイメージまたは成果物の論理グループの名前。たとえば、アプリケーションまたはベース オペレーティング システムのイメージです。 *名前空間*パスを含めることができます。 
+* **repository** - 1 つまたは複数の関連するイメージまたは成果物の論理グループの名前。たとえば、アプリケーションまたはベース オペレーティング システムのイメージです。 *名前空間* パスを含めることができます。 
 * **tag** - リポジトリに格納されているイメージまたは成果物の特定バージョンの識別子。
 
 たとえば、Azure Container Registry のイメージの完全名は次ようになります。
@@ -81,7 +81,30 @@ Azure Container Registry 内の成果物のアドレスには、次の要素が�
 
 ### <a name="manifest"></a>Manifest
 
-コンテナー レジストリにプッシュされる各コンテナー イメージまたは成果物は、"*マニフェスト*" と関連付けられます。 イメージがプッシュされるときにレジストリによって生成されるマニフェストは、イメージを一意に示し、そのレイヤーを指定します。 Azure CLI コマンド [az acr repository show-manifests][az-acr-repository-show-manifests] を使用して、リポジトリのマニフェストを一覧表示できます。
+コンテナー レジストリにプッシュされる各コンテナー イメージまたは成果物は、"*マニフェスト*" と関連付けられます。 イメージがプッシュされるときにレジストリによって生成されるマニフェストは、イメージを一意に示し、そのレイヤーを指定します。 
+
+Linux `hello-world` イメージの基本的なマニフェストは、次のようになります。
+
+  ```json
+  {
+    "schemaVersion": 2,
+    "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+    "config": {
+        "mediaType": "application/vnd.docker.container.image.v1+json",
+        "size": 1510,
+        "digest": "sha256:fbf289e99eb9bca977dae136fbe2a82b6b7d4c372474c9235adc1741675f587e"
+      },
+    "layers": [
+        {
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+          "size": 977,
+          "digest": "sha256:2c930d010525941c1d56ec53b97bd057a67ae1865eebf042686d2a2d18271ced"
+        }
+      ]
+  }
+  ```
+
+Azure CLI コマンド [az acr repository show-manifests][az-acr-repository-show-manifests] を使用して、リポジトリのマニフェストを一覧表示できます。
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName>

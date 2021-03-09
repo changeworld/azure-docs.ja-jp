@@ -1,17 +1,17 @@
 ---
 title: クエリ パフォーマンスの分析情報 - Azure Database for MariaDB
 description: この記事では、Azure Database for MariaDB の Query Performance Insight 機能について説明します
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 88777ee44551ed6abdb7a6c7c909d6bf55db48c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e8e4527ba1717b4d152f501a38c3c8f65faf70e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79527846"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664233"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の Query Performance Insight
 
@@ -33,7 +33,7 @@ Query Performance Insight では、実行時間が最長のクエリ、クエリ
 
 ## <a name="permissions"></a>アクセス許可
 
-Query Performance Insight で、クエリのテキストを表示するために必要な**所有者**または**共同作成者**のアクセス許可。 **リーダー**はグラフとテーブルを表示できますが、クエリ テキストは表示できません。
+Query Performance Insight で、クエリのテキストを表示するために必要な **所有者** または **共同作成者** のアクセス許可。 **リーダー** はグラフとテーブルを表示できますが、クエリ テキストは表示できません。
 
 ## <a name="prerequisites"></a>前提条件
 

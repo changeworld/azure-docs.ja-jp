@@ -3,12 +3,12 @@ title: Azure VM で SQL Server DB を管理および監視する
 description: この記事では、Azure VM 上で実行されている SQL Server データベースを管理し、監視する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 26a1a6cf7bc011edce61a8bb60926dad2cb29a16
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e37e6fc211b34b7e427b66db374a705faafd25f9
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826635"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858740"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>バックアップされる SQL Server データベースを管理および監視する
 
@@ -20,7 +20,7 @@ SQL Server データベースにバックアップをまだ構成していない
 
 Azure Backup では、頻繁に実行される可能性があるスケジュールされたログのバックアップを除き、ポータルの **[バックアップ ジョブ]** にすべてのスケジュールされた操作とオンデマンドの操作が表示されます。 このポータルに表示されるジョブには、データベースの検出と登録、バックアップの構成、およびバックアップと復元の操作などがあります。
 
-![[バックアップ ジョブ] ポータル](./media/backup-azure-sql-database/jobs-list.png)
+![[バックアップ ジョブ] ポータル](./media/backup-azure-sql-database/sql-backup-jobs-list.png)
 
 監視シナリオの詳細については、[Arure portal における監視](backup-azure-monitoring-built-in-monitor.md)に関するページと [Azure Monitor を利用した監視](backup-azure-monitoring-use-azuremonitor.md)に関するページにお進みください。  
 
@@ -36,13 +36,9 @@ Azure Backup では、頻繁に実行される可能性があるスケジュー�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-2. コンテナー ダッシュボードで、 **[アラートとイベント]** を選択します。
+2. コンテナー ダッシュボードで、 **[バックアップ アラート]** を選択します。
 
-   ![[アラートとイベント] を選択する](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
-
-3. **[アラートとイベント]** で、 **[バックアップ アラート]** を選択します。
-
-   ![[バックアップ アラート] を選択する](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
+   ![[バックアップ アラート] を選択する](./media/backup-azure-sql-database/sql-backup-alerts-list.png)
 
 ## <a name="stop-protection-for-a-sql-server-database"></a>SQL Server データベースの保護を停止する
 
@@ -55,7 +51,7 @@ Azure Backup では、頻繁に実行される可能性があるスケジュー�
 
 - 復旧ポイントはすべて永久に変更されず、削除はすべて保護の停止で停止し、データを保持します
 - 保護されたインスタンスと使用されたストレージに対して課金されます。 詳細については、「[Azure Backup の価格](https://azure.microsoft.com/pricing/details/backup/)」をご覧ください。
-- バックアップを停止しないでデータ ソースを削除すると、新しいバックアップは失敗します。 古い復旧ポイントはポリシーに従って期限切れになりますが、最後の 1 つの復旧ポイントを、ユーザーがバックアップを停止してデータを削除するまで、常に保持されます。
+- バックアップを停止しないでデータ ソースを削除すると、新しいバックアップは失敗します。 古い復旧ポイントはポリシーに従って期限切れになりますが、最新の復旧ポイントは常に、ユーザーがバックアップを停止してデータを削除するまで保持されます。
 
 データベースの保護を停止するには、次の手順を実行します。
 
@@ -126,11 +122,11 @@ SQL Database の保護を再開するには:
 
   ![バックアップ ポリシーの変更](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
 
-ポリシーの変更は、関連付けられているすべてのバックアップ項目に影響し、対応する**保護の構成**ジョブをトリガーします。
+ポリシーの変更は、関連付けられているすべてのバックアップ項目に影響し、対応する **保護の構成** ジョブをトリガーします。
 
 ### <a name="inconsistent-policy"></a>不整合なポリシー
 
-場合によっては、ポリシーの変更操作によって、一部のバックアップ項目に**不整合な**ポリシーのバージョンができてしまうことがあります。 これは、ポリシーの変更操作がトリガーされた後に、対応する**保護の構成**ジョブがバックアップ項目に対して失敗した場合に発生します。 バックアップ項目のビューには、次のように表示されます。
+場合によっては、ポリシーの変更操作によって、一部のバックアップ項目に **不整合な** ポリシーのバージョンができてしまうことがあります。 これは、ポリシーの変更操作がトリガーされた後に、対応する **保護の構成** ジョブがバックアップ項目に対して失敗した場合に発生します。 バックアップ項目のビューには、次のように表示されます。
 
   ![不整合なポリシー](./media/backup-azure-sql-database/inconsistent-policy.png)
 
@@ -158,7 +154,7 @@ SQL Database の保護を再開するには:
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>SQL Server VM で拡張を再登録する
 
-VM のワークロード拡張機能が何らかの理由で影響を受けることがあります。 そのような場合、VM 上でトリガーされるすべての操作が失敗するようになります。 そこで、場合によっては、VM で拡張を再登録する必要があります。 **再登録**操作によって、操作を続行させるために、VM にワークロード バックアップ拡張機能が再インストールされます。 このオプションは、Recovery Services コンテナーの **[バックアップ インフラストラクチャ]** にあります。
+VM のワークロード拡張機能が何らかの理由で影響を受けることがあります。 そのような場合、VM 上でトリガーされるすべての操作が失敗するようになります。 そこで、場合によっては、VM で拡張を再登録する必要があります。 **再登録** 操作によって、操作を続行させるために、VM にワークロード バックアップ拡張機能が再インストールされます。 このオプションは、Recovery Services コンテナーの **[バックアップ インフラストラクチャ]** にあります。
 
 ![バックアップ インフラストラクチャで保護されたサーバー](./media/backup-azure-sql-database/protected-servers-backup-infrastructure.png)
 

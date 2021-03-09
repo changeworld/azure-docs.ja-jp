@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: e639762cd1adb7bbbc3fb2ec31f4ce52710e46f9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133703"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711945"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>多層 SAP NetWeaver アプリ デプロイのディザスター リカバリーを設定する
 
@@ -39,11 +39,11 @@ Site Recovery を使用すると、次のことができます。
 
 Site Recovery を使用して、次のシナリオのディザスター リカバリー ソリューションを実装できます。
 * ある Azure データセンターで実行されている SAP システムを、別の Azure データセンターにレプリケートしています (Azure 間のディザスター リカバリー)。 
-   詳細については、「[Azure から Azure へのレプリケーション アーキテクチャ](https://aka.ms/asr-a2a-architecture)」をご覧ください。
+   詳細については、「[Azure から Azure へのレプリケーション アーキテクチャ](./azure-to-azure-architecture.md)」をご覧ください。
 * オンプレミスの VMware (または物理) サーバーで実行されている SAP システムがあります。 また、SAP システムを Azure データセンターのディザスター リカバリー サイトにレプリケートしています (VMware から Azure へのディザスター リカバリー)。 
-   このシナリオでは、いくつかの追加コンポーネントが必要です。 詳細については、「[VMware から Azure へのレプリケーション アーキテクチャ](https://aka.ms/asr-v2a-architecture)」をご覧ください。
+   このシナリオでは、いくつかの追加コンポーネントが必要です。 詳細については、「[VMware から Azure へのレプリケーション アーキテクチャ](./vmware-azure-architecture.md)」をご覧ください。
 * SAP システムをオンプレミスの Hyper-V で実行しています。 また、SAP システムを Azure データセンターのディザスター リカバリー サイトにレプリケートしています (Hyper-V から Azure へのディザスター リカバリー)。
-   このシナリオでは、いくつかの追加コンポーネントが必要です。 詳細については、「[Hyper-V から Azure へのレプリケーション アーキテクチャ](https://aka.ms/asr-h2a-architecture)」をご覧ください。
+   このシナリオでは、いくつかの追加コンポーネントが必要です。 詳細については、「[Hyper-V から Azure へのレプリケーション アーキテクチャ](./hyper-v-azure-architecture.md)」をご覧ください。
 
 この記事では、**Azure から Azure** へのディザスター リカバリー シナリオを使用します。 このシナリオでは、Site Recovery の SAP ディザスター リカバリー機能について説明します。 Site Recovery レプリケーションはアプリケーション固有ではないため、説明されているプロセスの他のシナリオへの適用も期待できます。
 
@@ -167,5 +167,5 @@ Azure ディザスター リカバリー データ センターへのすべて�
 詳しくは、「[Site Recovery でのフェールオーバー](site-recovery-failover.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-* Site Recovery を使用して、SAP NetWeaver デプロイ用のディザスター リカバリー ソリューションを構築する方法を確認してください。 [SAP NetWeaver: Site Recovery を使用したディザスター リカバリー ソリューションの構築](https://aka.ms/asr_sap)」に関するダウンロード可能なホワイト ペーパーをご覧ください。 このホワイトペーパーでは、さまざまな SAP アーキテクチャに関する推奨事項について説明しています。 SAP on Azure でサポートされているアプリケーションと VM の種類を確認できます。 ディザスター リカバリー ソリューションをテストするためのプラン オプションもあります。
+* Site Recovery を使用して、SAP NetWeaver デプロイ用のディザスター リカバリー ソリューションを構築する方法を確認してください。 [SAP NetWeaver: Site Recovery を使用したディザスター リカバリー ソリューションの構築](/samples/browse/?redirectedfrom=TechNet-Gallery)」に関するダウンロード可能なホワイト ペーパーをご覧ください。 このホワイトペーパーでは、さまざまな SAP アーキテクチャに関する推奨事項について説明しています。 SAP on Azure でサポートされているアプリケーションと VM の種類を確認できます。 ディザスター リカバリー ソリューションをテストするためのプラン オプションもあります。
 * Site Recovery を使用した[他のワークロードのレプリケート](site-recovery-workload.md)に関する記事をご覧ください。

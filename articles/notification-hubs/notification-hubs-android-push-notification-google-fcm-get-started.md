@@ -1,6 +1,6 @@
 ---
 title: Azure Notification Hubs と Firebase SDK バージョン 0.6 を使用して Android にプッシュ通知を送信する | Microsoft Docs
-description: このチュートリアルでは、Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する方法について学習します。
+description: このチュートリアルでは、Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイス (バージョン 0.6) にプッシュ通知を送信する方法について学習します。
 services: notification-hubs
 documentationcenter: android
 keywords: プッシュ通知,プッシュ通知,android プッシュ通知,fcm,firebase cloud messaging
@@ -16,12 +16,12 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 3b32a61dcf8dfe403a44af236afad830472d1b8d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c5485dacc4d9e3210ad69819caf4e36f96c626da
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321464"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428380"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>チュートリアル:Firebase SDK バージョン 0.6 を使用して Android デバイスにプッシュ通知を送信する
 
@@ -76,7 +76,7 @@ ms.locfileid: "87321464"
 ### <a name="configure-firebase-cloud-messaging-settings-for-the-hub"></a>Firebase Cloud Messaging の設定をハブ用に構成する
 
 1. 左側のウィンドウの **[Settings]\(設定\)** で、 **[Google (GCM/FCM)]** を選択します。 
-2. 前に保存した FCM プロジェクトの**サーバー キー**を入力します。 
+2. 前に保存した FCM プロジェクトの **サーバー キー** を入力します。 
 3. ツールバーで、 **[Save]\(保存\)** をクリックします。 
 
     ![Azure Notification Hubs - Google (FCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
@@ -128,7 +128,7 @@ ms.locfileid: "87321464"
 
 ### <a name="add-google-firebase-support"></a>Google Firebase のサポートを追加する
 
-1. アプリの Build.Gradle ファイルで、**dependencies** セクションに次の行を追加します (まだ存在しない場合)。 
+1. アプリの Build.Gradle ファイルで、 **dependencies** セクションに次の行を追加します (まだ存在しない場合)。 
 
     ```gradle
     implementation 'com.google.firebase:firebase-core:16.0.8'
@@ -171,12 +171,12 @@ ms.locfileid: "87321464"
 
 ### <a name="add-code"></a>コードの追加
 
-1. [Project (プロジェクト)] ビューで、 **[app]**  >  **[src]**  >  **[main]**  >  **[java]** の順に展開します。 **[java]** のパッケージ フォルダーを右クリックして、 **[New]\(新規\)** 、 **[Java Class]\(Java クラス\)** の順に選択します。 名前に「**NotificationSettings**」と入力して、 **[OK]** を選択します。
+1. [Project (プロジェクト)] ビューで、 **[app]**  >  **[src]**  >  **[main]**  >  **[java]** の順に展開します。 **[java]** のパッケージ フォルダーを右クリックして、 **[New]\(新規\)** 、 **[Java Class]\(Java クラス\)** の順に選択します。 名前に「 **NotificationSettings** 」と入力して、 **[OK]** を選択します。
 
     以下の `NotificationSettings` クラスのコード内にある次の 3 つのプレースホルダーを忘れずに更新してください。
 
-   * **HubListenConnectionString**: ハブの **DefaultListenAccessSignature** 接続文字列。 接続文字列をコピーするには、[Azure portal] のハブにある **[アクセス ポリシー]** をクリックします。
-   * **HubName**: [Azure portal] のハブ ページに表示されるハブの名前を使用します。
+   * **HubListenConnectionString** : ハブの **DefaultListenAccessSignature** 接続文字列。 接続文字列をコピーするには、 [Azure portal] のハブにある **[アクセス ポリシー]** をクリックします。
+   * **HubName** : [Azure portal] のハブ ページに表示されるハブの名前を使用します。
 
      `NotificationSettings` のコードは次のとおりです。
 
@@ -188,7 +188,7 @@ ms.locfileid: "87321464"
         ```
 
      > [!IMPORTANT]
-     > 先に進む前に、ハブの**名前**と **DefaultListenSharedAccessSignature** を入力します。 
+     > 先に進む前に、ハブの **名前** と **DefaultListenSharedAccessSignature** を入力します。 
 
 2. `RegistrationIntentService`という名前の別の新しいクラスをプロジェクトに追加します。 このクラスによって、`IntentService` インターフェイスが実装されます。 また、[FCM トークンの更新](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)と[通知ハブへの登録](notification-hubs-push-notification-registration-management.md)も処理されます。
 
@@ -405,13 +405,13 @@ ms.locfileid: "87321464"
     }
     ```
 
-9. `ToastNotify` メソッドでは "*Hello World*" `TextView` コントロールを使用し、アプリで状態と通知を継続的にレポートします。 **res** > **layout** > **activity_main.xml** レイアウトで、そのコントロールに次の ID を追加します。
+9. `ToastNotify` メソッドでは " *Hello World* " `TextView` コントロールを使用し、アプリで状態と通知を継続的にレポートします。 **res** > **layout** > **activity_main.xml** レイアウトで、そのコントロールに次の ID を追加します。
 
     ```java
     android:id="@+id/text_hello"
     ```
 
-    ![Azure Notification Hubs - Test Send](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
+    ![TextView コントロールに適用された android:id="@+id/text_hello" ID を示すスクリーンショット。](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
 
 10. 次に、AndroidManifest.xml で定義したレシーバーのサブクラスを追加します。 `FirebaseService`という名前の別の新しいクラスをプロジェクトに追加します。
 
@@ -555,9 +555,9 @@ ms.locfileid: "87321464"
 
 ### <a name="run-the-mobile-app-on-emulator"></a>エミュレーターでモバイル アプリを実行する
 
-エミュレーターの内部でプッシュ通知をテストする前に、エミュレーター イメージがアプリ用に選択した Google API レベルをサポートしていることを確認してください。 イメージでネイティブの Google API がサポートされていない場合、**SERVICE\_NOT\_AVAILABLE** 例外を受け取ることがあります。
+エミュレーターの内部でプッシュ通知をテストする前に、エミュレーター イメージがアプリ用に選択した Google API レベルをサポートしていることを確認してください。 イメージでネイティブの Google API がサポートされていない場合、 **SERVICE\_NOT\_AVAILABLE** 例外を受け取ることがあります。
 
-また、 **[設定]**  >  **[アカウント]** で、実行中のエミュレーターに Google アカウントを追加したことを確認してください。 そうでない場合、FCM で登録しようとすると、**AUTHENTICATION\_FAILED** 例外が発生する可能性があります。
+また、 **[設定]**  >  **[アカウント]** で、実行中のエミュレーターに Google アカウントを追加したことを確認してください。 そうでない場合、FCM で登録しようとすると、 **AUTHENTICATION\_FAILED** 例外が発生する可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,18 +6,19 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: deployment
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb10e85b07037805d59dcba91ff20a4bc2a6574e
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 335a63faa440e057c282f992b67b301289a7a4bb
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667643"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356959"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure portal で Windows 仮想マシン上に SQL Server 2017 を作成する
 
@@ -47,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 **[SQL 仮想マシン]** タイル上の **[詳細の表示]** を選択することで、追加情報を表示できます。
 1. **Free SQL Server License: ドロップダウンから SQL Server 2017 Developer on Windows Server 2016** イメージを選択します。
 
-   ![新規検索ウィンドウ](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
+   ![Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016 イメージを選択する画面のスクリーンショット。](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
 
 1. **［作成］** を選択します
 
@@ -64,7 +65,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[インスタンスの詳細]** で、以下の操作を行います。
     1. **[仮想マシン名]** に「_SQLVM_」と入力します。 
     1. **[リージョン]** で場所を選択します。 
-    1. このクイック スタートでは、 **[可用性オプション]** の設定を _[インフラストラクチャ冗長は必要ありません]_ のままにしておきます。 可用性オプションの詳細については、[可用性](../../../virtual-machines/windows/availability.md)に関するページを参照してください。 
+    1. このクイック スタートでは、 **[可用性オプション]** の設定を _[インフラストラクチャ冗長は必要ありません]_ のままにしておきます。 可用性オプションの詳細については、[可用性](../../../virtual-machines/availability.md)に関するページを参照してください。 
     1. **[イメージ]** の一覧で、_Free SQL Server License:SQL Server 2017 Developer on Windows Server 2016_ という名前のイメージを選択します。 
     1. 仮想マシンの **[サイズ]** で **[サイズの変更]** を選択し、 **[A2 Basic]** プランを選択します。 予期しない課金を防ぐために、利用を終了したリソースは必ずクリーンアップしてください。 
 
@@ -83,7 +84,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 **[SQL Server の設定]** タブで、以下のオプションを構成します。
 
 1. **[セキュリティとネットワーク]** で、 **[SQL の接続]** に _[パブリック (インターネット)]_ を選択します。また、パブリック シナリオでよく知られているポート番号が使用されることを避けるために、ポートを `1401` に変更します。 
-1. **[SQL 認証]** で **[有効]** を選択します。 VM 用に構成したのと同じユーザー名とパスワードが SQL ログイン資格情報に設定されます。 [**Azure Key Vault の統合**](azure-key-vault-integration-configure.md)の既定の設定を使用します。 **ストレージ構成**は基本的な SQL Server VM イメージでは使用できません。ただし、他のイメージに使用可能なオプションに関する詳細情報を[ストレージ構成](storage-configuration.md#new-vms)に関するページで見つけることができます。  
+1. **[SQL 認証]** で **[有効]** を選択します。 VM 用に構成したのと同じユーザー名とパスワードが SQL ログイン資格情報に設定されます。 [**Azure Key Vault の統合**](azure-key-vault-integration-configure.md)の既定の設定を使用します。 **ストレージ構成** は基本的な SQL Server VM イメージでは使用できません。ただし、他のイメージに使用可能なオプションに関する詳細情報を [ストレージ構成](storage-configuration.md#new-vms)に関するページで見つけることができます。  
 
    ![SQL サーバーのセキュリティの設定](./media/sql-vm-create-portal-quickstart/sql-server-settings.png)
 

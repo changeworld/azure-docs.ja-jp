@@ -9,12 +9,12 @@ metadata:
   author: anastasia-ms
   ms.author: v-stharr
   ms.date: 1/15/2020
-  ms.openlocfilehash: 01fb176ad6dc2ce097beddf03b724628ba3e1032
-  ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+  ms.openlocfilehash: 17113e3a2564ed56ecbcf8e34de27c4fe398ce03
+  ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/18/2020
-  ms.locfileid: "88509928"
+  ms.lasthandoff: 12/18/2020
+  ms.locfileid: "97680673"
 landingContent:
 - title: Azure Maps について
   linkLists:
@@ -25,7 +25,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Azure Maps のカバレッジ
-      url: render-coverage.md
+      url: geographic-coverage.md
     - text: ローカライズ サポート
       url: supported-languages.md
     - text: サポートされているマップ スタイル
@@ -40,6 +40,8 @@ landingContent:
     links:
     - text: Azure Maps を使用して Web アプリケーションを作成する
       url: quick-demo-map-app.md
+    - text: Azure Maps を使用して Android アプリを作成する
+      url: quick-android-map.md
   - linkListType: concept
     links:
     - text: Maps アカウントの適切な価格レベルを選択する
@@ -77,17 +79,17 @@ landingContent:
     - text: 屋内マップ モジュールを使用する
       url: how-to-use-indoor-module.md
     - text: Azure Digital Twins を使用してフロア ガイドを更新する
-      url: https://docs.microsoft.com/azure/digital-twins/how-to-integrate-maps
+      url: ../digital-twins/how-to-integrate-maps.md
   - linkListType: reference
     links:
     - text: 変換サービス
-      url: https://docs.microsoft.com/rest/api/maps/conversion
+      url: /rest/api/maps/conversion
     - text: データセット サービス
-      url: https://docs.microsoft.com/rest/api/maps/dataset
+      url: /rest/api/maps/dataset
     - text: タイルセット サービス
-      url: https://docs.microsoft.com/rest/api/maps/tileset
+      url: /rest/api/maps/tileset
     - text: 機能の状態セット サービス
-      url: https://docs.microsoft.com/rest/api/maps/featurestate
+      url: /rest/api/maps/featurestate
 - title: Web SDK を使用した開発
   linkLists:
   - linkListType: concept
@@ -121,21 +123,35 @@ landingContent:
   - linkListType: reference
     links:
     - text: マップ コントロール
-      url: https://docs.microsoft.com/javascript/api/azure-maps-control/?view=azure-maps-typescript-latest
+      url: /javascript/api/azure-maps-control/
     - text: 描画ツール モジュール
-      url: https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/?view=azure-maps-typescript-latest
+      url: /javascript/api/azure-maps-drawing-tools/
     - text: サービス モジュール
-      url: https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest
+      url: /javascript/api/azure-maps-rest/
     - text: 空間 IO モジュール
-      url: https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/?view=azure-maps-typescript-latest
+      url: /javascript/api/azure-maps-spatial-io/
 - title: Android SDK を使用した開発
   linkLists:
+  - linkListType: tutorial
+    links:
+    - text: GeoJSON データをマップに読み込む
+      url: tutorial-load-geojson-file-android.md
   - linkListType: how-to-guide
     links:
     - text: Android マップ コントロールの概要
       url: how-to-use-android-map-control-library.md
-    - text: 機能のメタデータ情報を表示する
-      url: display-feature-information-android.md
+    - text: データ ソースを作成する
+      url: create-data-source-android-sdk.md
+    - text: バブル レイヤーを追加する
+      url: map-add-bubble-layer-android.md
+    - text: シンボル レイヤーを追加する
+      url: how-to-add-symbol-to-android-map.md
+    - text: 線レイヤーを追加する
+      url: android-map-add-line-layer.md
+    - text: 多角形レイヤーを追加する
+      url: how-to-add-shapes-to-android-map.md
+    - text: データドリブンのスタイルの式を使用する
+      url: data-driven-style-expressions-android-sdk.md
     - text: マップにタイル レイヤーを追加する
       url: how-to-add-tile-layer-android-map.md
     - text: マップに図形を追加する
@@ -165,13 +181,23 @@ landingContent:
   - linkListType: reference
     links:
     - text: Search サービス
-      url: https://docs.microsoft.com/rest/api/maps/search
+      url: /rest/api/maps/search
     - text: Route サービス
-      url: https://docs.microsoft.com/rest/api/maps/route
+      url: /rest/api/maps/route
     - text: Traffic サービス
-      url: https://docs.microsoft.com/rest/api/maps/traffic
+      url: /rest/api/maps/traffic
     - text: Time Zones サービス
-      url: https://docs.microsoft.com/rest/api/maps/timezone
+      url: /rest/api/maps/timezone
+- title: Elevation Service を使用して開発する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 標高データを取得して使用する方法
+      url: how-to-request-elevation-data.md
+  - linkListType: reference
+    links:
+    - text: Elevation Service
+      url: /rest/api/maps/elevation/
 - title: 空間分析
   linkLists:
   - linkListType: concept
@@ -187,9 +213,9 @@ landingContent:
   - linkListType: reference
     links:
     - text: Data Service
-      url: https://docs.microsoft.com/rest/api/maps/data
+      url: /rest/api/maps/data
     - text: 空間サービス
-      url: https://docs.microsoft.com/rest/api/maps/spatial
+      url: /rest/api/maps/spatial
 - title: Power BI を使用した空間分析
   linkLists:
   - linkListType: how-to-guide
@@ -204,7 +230,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: モビリティ サービスのデータ構造
+    - text: モビリティ サービス
       url: mobility-service-data-structure.md
   - linkListType: how-to-guide
     links:
@@ -215,18 +241,24 @@ landingContent:
   - linkListType: reference
     links:
     - text: モビリティ サービス
-      url: https://docs.microsoft.com/rest/api/maps/mobility
-- title: 天気サービスを使用した開発
+      url: /rest/api/maps/mobility
+- title: Weather Service を使用した開発
   linkLists:
   - linkListType: concept
     links:
-    - text: 天気サービスの概念
+    - text: Weather Service の概念
       url: weather-services-concepts.md
+    - text: Weather Service の FAQ
+      url: weather-services-faq.md
   - linkListType: tutorial
     links:
     - text: Azure Notebooks (Python) を使用した気象データの分析
       url: weather-service-tutorial.md
+  - linkListType: how-to-guide
+    links:
+    - text: リアルタイムの天気予報データを要求する
+      url: how-to-request-weather-data.md
   - linkListType: reference
     links:
-    - text: 天気サービス
-      url: https://docs.microsoft.com/rest/api/maps/weather
+    - text: Weather Service
+      url: /rest/api/maps/weather

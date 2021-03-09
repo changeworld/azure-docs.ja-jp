@@ -1,28 +1,28 @@
 ---
-title: API Management で リビジョンを使用して互換性に影響しない変更を安全に行う
+title: チュートリアル - API Management でリビジョンを使用して互換性に影響しない API の変更を安全に行う
 titleSuffix: Azure API Management
 description: このチュートリアルの手順に従って、API Management でリビジョンを使用して互換性に影響しない変更を行う方法について説明します。
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 7a4655b20fabcc72e02037de05dd0ef7c4671e52
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: acb121bb00df481c926ebed9594bf0fe1b9b17ed
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254913"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546637"
 ---
-# <a name="use-revisions-to-make-non-breaking-changes-safely"></a>リビジョンを使用して互換性に影響しない変更を安全に行う
-API の準備が整って開発者に使用され始めると、その API の変更が必要になることがありますが、API の呼び出し元を混乱させないように注意する必要もあります。 また、行った変更内容を開発者に知らせると有効です。 Azure API Management で**リビジョン**を使用することで、これを実現できます。 詳細については、「[Versions & revisions (バージョンとリビジョン)](https://azure.microsoft.com/blog/versions-revisions/)」と「[API Versioning with Azure API Management (Azure API Management での API のバージョン管理)](https://azure.microsoft.com/blog/api-versioning-with-azure-api-management/)」を参照してください。
+# <a name="tutorial-use-revisions-to-make-non-breaking-api-changes-safely"></a>チュートリアル:リビジョンを使用して互換性に影響しない API の変更を安全に行う
+API の準備が整って開発者に使用され始めると、その API の変更が必要になることがありますが、API の呼び出し元を混乱させないように注意する必要もあります。 また、行った変更内容を開発者に知らせると有効です。 
+
+変更を安全にモデル化してテストできるように、Azure API Management で "*リビジョン*" を使用して、互換性に影響しない API の変更を行います。 準備ができたら、リビジョンを最新とし、現在の API を置き換えることができます。 
+
+背景については、「[バージョンとリビジョン](https://azure.microsoft.com/blog/versions-revisions/)」および「[Azure API Management を使用した API のバージョン管理](https://azure.microsoft.com/blog/api-versioning-with-azure-api-management/)」をご覧ください。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -32,7 +32,7 @@ API の準備が整って開発者に使用され始めると、その API の�
 > * リビジョンを最新にして変更ログ エントリを追加する
 > * 開発者ポータルを参照して、変更内容と変更ログを確認します。
 
-![開発者ポータルでの変更ログ](media/api-management-getstarted-revise-api/azure_portal.PNG)
+:::image type="content" source="media/api-management-getstarted-revise-api/azure-portal.png" alt-text="Azure portal の API リビジョン":::
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,61 +42,120 @@ API の準備が整って開発者に使用され始めると、その API の�
 
 ## <a name="add-a-new-revision"></a>新しいリビジョンの追加
 
-![API リビジョンを追加する](media/api-management-getstarted-revise-api/07-AddRevisions-01-AddNewRevision.png)
+1. [Azure portal](https://portal.azure.com) にサインインし、API Management インスタンスに移動します。
+1. **[API]** を選択します。
+2. API の一覧で **[Demo Conference API]** (または、リビジョンを追加する別の API) を選択します。
+3. **[リビジョン]** タブを選択します。
+4. **[+ リビジョンの追加]** を選択します。
 
-1. **[API]** ページを選択します。
-2. API の一覧で **[Demo Conference API]\(デモ会議 API\)** (または、リビジョンを追加する他の API) を選択します。
-3. ページの上部付近にあるメニューで **[リビジョン]** タブをクリックします。
-4. **[+ Add Revision] \(+ リビジョンの追加\)** を選択します。
+   :::image type="content" source="media/api-management-getstarted-revise-api/07-add-revisions-01-add-new-revision.png" alt-text="API リビジョンを追加する":::
 
     > [!TIP]
-    > また、API のコンテキスト メニュー ( **[...]** ) で **[リビジョンの追加]** を選択することもできます。
+    > API のコンテキスト メニュー ( **[...]** ) で **[リビジョンの追加]** を選択することもできます。
 
 5. 新しいリビジョンの使用目的を示す説明を入力します。
-6. **[作成]**
+6. **[作成]** を選択します。
 7. これで、新しいリビジョンが作成されました。
 
     > [!NOTE]
-    > 元の API は**リビジョン 1** のままとなります。 別のリビジョンが最新にされない限り、ユーザーはこのリビジョンを呼び出し続けます。
+    > 元の API は **リビジョン 1** のままとなります。 別のリビジョンが最新にされない限り、ユーザーはこのリビジョンを呼び出し続けます。
 
 ## <a name="make-non-breaking-changes-to-your-revision"></a>リビジョンに互換性に影響しない変更を加える
 
-![リビジョンを変更する](media/api-management-getstarted-revise-api/07-AddRevisions-02-MakeChanges.png)
-
 1. API の一覧で **[Demo Conference API]\(デモ会議 API\)** を選択します。
-2. 画面の上部付近の **[Design] \(デザイン\)** タブを選択します。
-3. **リビジョン セレクター** (デザイン タブのすぐ上) に、現在の選択対象として**リビジョン 2** が表示されます。
+1. 画面の上部付近の **[Design] \(デザイン\)** タブを選択します。
+1. **リビジョン セレクター** (デザイン タブのすぐ上) に、現在の選択対象として **リビジョン 2** が表示されます。
 
     > [!TIP]
     > リビジョン セレクターを使用して、作業対象のリビジョンに切り替えます。
+1. **[+ Add Operation] \(+ 操作の追加\)** を選択します。
+1. 新しい操作を **POST** に設定し、操作の名前、表示名、および URL を **test** に設定します。
+1. 新しい操作を **保存** します。
 
-4. **[+ Add Operation] \(+ 操作の追加\)** を選択します。
-5. 新しい操作を **POST** に設定し、操作の名前、表示名、および URL を **test** に設定します。
-6. 新しい操作を**保存**します。
-7. これで、**リビジョン 2** への変更が完了しました。 ページの上部付近にある**リビジョン セレクター**を使用して、**リビジョン 1** に切り替えます。
-8. 新しい操作は**リビジョン 1** には表示さません。 
+   :::image type="content" source="media/api-management-getstarted-revise-api/07-add-revisions-02-make-changes.png" alt-text="リビジョンを変更する":::
+1. これで、**リビジョン 2** への変更が完了しました。 ページの上部付近にある **リビジョン セレクター** を使用して、**リビジョン 1** に切り替えます。
+1. 新しい操作は **リビジョン 1** には表示さません。 
 
 ## <a name="make-your-revision-current-and-add-a-change-log-entry"></a>リビジョンを最新にして変更ログ エントリを追加する
 
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
 1. ページの上部付近にあるメニューから **[リビジョン]** タブを選択します。
+1. **リビジョン 2** のコンテキスト メニュー (**...**) を開きます。
+1. **[これを最新とする]** を選択します。
+1. この変更に関するメモを投稿する場合は、 **[Post to Public Change log for this API]\(この API のパブリック変更ログを投稿する\)** チェック ボックスをオンにします。 開発者が参照できるように、変更内容の説明を入力します。たとえば、「**テスト用リビジョン。新しい "test" 操作を追加しました。** 」と入力します。
+1. これで **リビジョン 2** が最新となりました。
 
-    ![リビジョン画面の [リビジョン] メニュー。](media/api-management-getstarted-revise-api/RevisionsMenu.PNG)
+    :::image type="content" source="media/api-management-getstarted-revise-api/revisions-menu.png" alt-text="[リビジョン] ウィンドウのリビジョン メニュー":::
 
-2. **リビジョン 2** のコンテキスト メニュー ( **...** ) を開きます。
-3. **[Make Current] \(最新にする\)** を選択します。
-4. この変更に関するメモを投稿する場合は、 **[Post to Public Change log for this API]\(この API のパブリック変更ログを投稿する\)** をオンにします。 開発者が参照できるように、変更内容の説明を入力します。たとえば、「**テスト用リビジョン。新しい "test" 操作を追加しました。** 」と入力します。
-5. これで**リビジョン 2** が最新となりました。
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI の使用を開始するには:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+リリースを作成および更新するには、次の手順に従います。
+
+1. [az apim api list](/cli/azure/apim/api#az_apim_api_list) コマンドを実行して、API ID を表示します。
+
+   ```azurecli
+   az apim api list --resource-group apim-hello-word-resource-group \
+       --service-name apim-hello-world --output table
+   ```
+
+   次のコマンドで使用する API ID は `Name` 値です。 API リビジョンは `ApiRevision` 列にあります。
+
+1. リリース ノートと共にリリースを作成するには、[az apim api release create](/cli/azure/apim/api/release#az_apim_api_release_create) コマンドを実行します。
+
+   ```azurecli
+   az apim api release create --resource-group apim-hello-word-resource-group \
+       --api-id demo-conference-api --api-revision 2 --service-name apim-hello-world \
+       --notes 'Testing revisions. Added new "test" operation.'
+   ```
+
+   リリースしたリビジョンが最新のリビジョンになります。
+
+1. リリースを表示するには、[az apim api release list](/cli/azure/apim/api/release#az_apim_api_release_list) コマンドを使用します。
+
+   ```azurecli
+   az apim api release list --resource-group apim-hello-word-resource-group \
+       --api-id echo-api --service-name apim-hello-world --output table
+   ```
+
+   指定したメモは変更ログに表示されます。 これらは前のコマンドの出力で確認できます。
+
+1. リリースを作成するときに、`--notes` パラメーターは省略可能です。 メモは、[az apim api release update](/cli/azure/apim/api/release#az_apim_api_release_update) コマンドを使用して後で追加または変更できます。
+
+   ```azurecli
+   az apim api release update --resource-group apim-hello-word-resource-group \
+       --api-id demo-conference-api --release-id 00000000000000000000000000000000 \
+       --service-name apim-hello-world --notes "Revised notes."
+   ```
+
+   リリース ID の `Name` 列の値を使用します。
+
+リリースを削除するには、[az apim api release delete](/cli/azure/apim/api/release#az_apim_api_release_delete) コマンドを実行します。
+
+```azurecli
+az apim api release delete --resource-group apim-hello-word-resource-group \
+    --api-id demo-conference-api --release-id 00000000000000000000000000000000 
+    --service-name apim-hello-world
+```
+
+---
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>開発者ポータルを参照して、変更内容と変更ログを確認します。
 
-1. Azure portal で **[API]** を選択します。
-2. 上部のメニューから **[開発者ポータル]** を選択します。
-3. **[API]** を選択してから、 **[Demo Conference API]\(デモ会議 API\)** を選択します。
-4. 新しい **test** 操作が使用可能となっています。
-5. API 名の近くにある **[変更ログ]** をクリックします。
-6. この一覧に、変更ログ エントリが表示されます。
+[開発者ポータル](api-management-howto-developer-portal-customize.md)を試したことがあれば、そこで API の変更と変更ログを確認できます。
 
-## <a name="next-steps"></a>次のステップ
+1. Azure portal で **[API]** を選択します。
+1. 上部のメニューから **[開発者ポータル]** を選択します。
+1. 開発者ポータルで、 **[API]** を選択し、 **[Demo Conference API]** を選択します。
+1. 新しい **test** 操作が使用可能となっています。
+1. API 名の近くにある **[変更ログ]** を選択します。
+1. この一覧に、変更ログ エントリが表示されます。
+
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、以下の内容を学習しました。
 

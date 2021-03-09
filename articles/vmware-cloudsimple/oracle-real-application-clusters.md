@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - CloudSimple プライベート クラウドを Oracle RAC 用に最適化する
 description: 新しいクラスターをデプロイし、Oracle Real Application Clusters (RAC) のインストールと構成用に VM を最適化する方法について説明します
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2cc2f954f4255c00b7c3549ab5d33d71b240fb70
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3959aae5f490af10c6747cfa67d9960e0c4a203f
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507673"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899271"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Oracle RAC をインストールするために CloudSimple プライベート クラウドを最適化する
 
@@ -74,12 +74,12 @@ Oracle RAC 仮想マシンには、特定の機能に使用される複数のデ
     * OS ディスク
     * Oracle Grid のインストール ファイルを格納するためのディスク
     * Oracle データベースのインストール ファイルを格納するためのディスク
-* ディスクは、**仮想プロビジョニング対応**として構成できます。
+* ディスクは、**仮想プロビジョニング対応** として構成できます。
 * 各ディスクは、最初の SCSI コントローラー (SCSI0) にマウントされます。  
-* 共有は、**共有しない**に設定されます。
+* 共有は、**共有しない** に設定されます。
 * ストレージでは、vSAN ポリシーを使用して冗長性が定義されます。  
 
-![Oracle RAC データ ディスク グループの構成](media/oracle-vm-os-disks.png)
+![Oracle RAC OS ディスクの物理構成を示す図。](media/oracle-vm-os-disks.png)
 
 ### <a name="data-disk-configuration"></a>データ ディスクの構成
 
@@ -88,10 +88,10 @@ Oracle RAC 仮想マシンには、特定の機能に使用される複数のデ
 * 4 つのディスクが仮想ディスクとして構成され、すべての Oracle RAC 仮想マシンにマウントされます。
 * 各ディスクは、別々の SCSI コントローラーにマウントされます。
 * 各仮想ディスクは、**シック プロビジョニング (Eager Zeroed)** として構成されます。  
-* 共有は、**マルチ ライター**に設定されます。  
+* 共有は、**マルチ ライター** に設定されます。  
 * ディスクは、自動ストレージ管理 (ASM) ディスク グループとして構成されている必要があります。  
 * ストレージでは、vSAN ポリシーを使用して冗長性が定義されます。  
-* ASM の冗長性は、**外部**冗長性に設定されます。
+* ASM の冗長性は、**外部** 冗長性に設定されます。
 
 ![Oracle RAC データ ディスク グループの構成](media/oracle-vm-data-disks.png)
 
@@ -103,10 +103,10 @@ REDO ログ ファイルは、データベースに加えられた変更のコ�
 * 6 つのディスクが作成され、すべての Oracle RAC 仮想マシンにマウントされます。
 * ディスクは別々の SCSI コントローラーにマウントされます。
 * 各仮想ディスクは、**シック プロビジョニング (Eager Zeroed)** として構成されます。
-* 共有は、**マルチ ライター**に設定されます。  
+* 共有は、**マルチ ライター** に設定されます。  
 * ディスクは、2 つの ASM ディスク グループとして構成する必要があります。
 * 各 ASM ディスク グループには、それぞれ異なる SCSI コントローラー上にある 3 つのディスクが含まれています。  
-* ASM の冗長性は、**標準**冗長性に設定されます。
+* ASM の冗長性は、**標準** 冗長性に設定されます。
 * 5 つの REDO ログ ファイルが、両方の ASM REDO ログ グループに作成されます。
 
 ```
@@ -131,9 +131,9 @@ SQL > alter database add logfile thread 2 ('+ORCLRAC_REDO1','+ORCLRAC_REDO2') si
 * 5 つのディスクが作成され、すべての Oracle RAC 仮想マシンにマウントされます。
 * ディスクは 1 つの SCSI コントローラーにマウントされます。
 * 各仮想ディスクは、**シック プロビジョニング (Eager Zeroed)** として構成されます。
-* 共有は、**マルチ ライター**に設定されます。  
+* 共有は、**マルチ ライター** に設定されます。  
 * ディスクは、ASM ディスク グループとして構成する必要があります。  
-* ASM の冗長性は、**高**冗長性に設定されます。
+* ASM の冗長性は、**高** 冗長性に設定されます。
 
 ![Oracle RAC 投票ディスク グループの構成](media/oracle-vm-voting-disks.png)
 
@@ -144,11 +144,11 @@ SQL > alter database add logfile thread 2 ('+ORCLRAC_REDO1','+ORCLRAC_REDO2') si
 * 2 つのディスクが作成され、すべての Oracle RAC 仮想マシンにマウントされます。
 * ディスクは別々の SCSI コントローラーにマウントされます。
 * 各仮想ディスクは、**シック プロビジョニング (Eager Zeroed)** として構成されます。
-* 共有は、**マルチ ライター**に設定されます。  
+* 共有は、**マルチ ライター** に設定されます。  
 * ディスクは、ASM ディスク グループとして構成する必要があります。  
-* ASM の冗長性は、**外部**冗長性に設定されます。
+* ASM の冗長性は、**外部** 冗長性に設定されます。
 
-![Oracle RAC 投票ディスク グループの構成](media/oracle-vm-fra-disks.png)
+![Oracle RAC 投票ディスクのグループ構成を示す図。](media/oracle-vm-fra-disks.png)
 
 ## <a name="deploy-cloudsimple-private-cloud-vsphere-cluster"></a>CloudSimple プライベート クラウド vSphere クラスターをデプロイする
 
@@ -220,7 +220,7 @@ Oracle では、共有ディスクを使用して、データ、ログ、およ�
 9. 共有については、 **[Multi-writer]\(マルチ ライター\)** を指定します。
 10. 仮想デバイス ノードについては、手順 2 で作成した新しい SCSI コントローラーを選択します。
 
-    ![最初の VM にディスクを作成する](media/oracle-rac-new-hard-disk.png)
+    ![最初の VM でディスクを作成するために必要なフィールドが強調表示されているスクリーンショット。](media/oracle-rac-new-hard-disk.png)
 
 Oracle のデータ、ログ、および REDO ログ ファイルに必要なすべての新しいディスクについて、手順 2 から 10 を繰り返します。
 

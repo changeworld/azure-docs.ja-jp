@@ -4,23 +4,25 @@ description: チュートリアル:組み込みの Jupyter ノートブックを
 author: deborahc
 ms.topic: tutorial
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: beb58922172a045242f4f9bcaf647b3cfc8b5551
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961100"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380799"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>チュートリアル:Azure Cosmos DB でデータを分析して視覚化するノートブックを作成する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、組み込みの Jupyter ノートブックを使用して、サンプルの小売データを Azure Cosmos DB にインポートする方法について説明します。 SQL と Azure Cosmos DB のマジック コマンドを使用してクエリを実行し、データを分析して、結果を視覚化する方法をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure Cosmos アカウントの作成時にノートブックのサポートを有効にする](enable-notebooks.md)
+* [Azure Cosmos アカウントでノートブックを有効にする](enable-notebooks.md)
 
 ## <a name="create-the-resources-and-import-data"></a>リソースを作成してデータをインポートする
  
@@ -28,7 +30,7 @@ ms.locfileid: "85961100"
 
 1. Azure Cosmos アカウントに移動して、**Data Explorer** を開きます。
 
-1. **[Notebooks]** タブに移動し、 **[マイ ノートブック]** の横の [`…`] を選択して**新しいノートブック**を作成します。 既定のカーネルとして **[Python 3]** を選択します。
+1. **[Notebooks]** タブに移動し、 **[マイ ノートブック]** の横の [`…`] を選択して **新しいノートブック** を作成します。 既定のカーネルとして **[Python 3]** を選択します。
 
    :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="新しいノートブックを作成する":::
 

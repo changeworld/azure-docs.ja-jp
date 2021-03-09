@@ -1,0 +1,37 @@
+### YamlMime:Landing
+title: BareMetal インフラストラクチャのドキュメント
+summary: BareMetal インフラストラクチャを使用して、Microsoft Azure で仮想マシンを作成、デプロイ、管理する方法について説明します。
+metadata:
+  title: BareMetal インフラストラクチャのドキュメント
+  description: BareMetal インフラストラクチャを使用して、Microsoft Azure で仮想マシンを作成、デプロイ、管理する方法について説明します。
+  services: virtual-machines
+  ms.service: baremetal-infrastructure
+  ms.topic: landing-page
+  author: shortpatti
+  ms.author: v-patsho
+  ms.date: 12/31/2020
+  ms.openlocfilehash: 285421d12b656290ef5ddbe21136345b718e0ca1
+  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98730274"
+landingContent:
+- title: BareMetal インフラストラクチャについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure の BareMetal インフラストラクチャとは
+      url: workloads/sap/baremetal-overview-architecture.md
+    - text: 用語の確認
+      url: know-baremetal-terms.md
+  - linkListType: reference
+    links:
+    - text: BareMetal ワークロードの種類
+      url: ../virtual-machines/workloads/sap/get-started.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+- title: BareMetal インスタンス ユニット
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure での BareMetal インスタンス ユニットの管理
+      url: workloads/sap/baremetal-infrastructure-portal.md

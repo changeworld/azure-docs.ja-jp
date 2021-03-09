@@ -1,18 +1,17 @@
 ---
 title: Azure Migrate での評価と依存関係の視覚化のトラブルシューティング
-description: Azure Migrate での評価と依存関係の視覚化をトラブルシューティングするためのヘルプを提供します。
-ms.service: azure-migrate
-ms.topic: troubleshooting
-author: musa-57
+description: Azure Migrate での評価と依存関係の視覚化に関するヘルプを提供します。
+author: rashi-ms
+ms.author: rajosh
 ms.manager: abhemraj
-ms.author: hamusa
+ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: a6a185c61c32636dd0189bc5835f850348b196cd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4eeda2e4e418920522f7a65bef68928963c43ad4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020356"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581792"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評価と依存関係の視覚化のトラブルシューティング
 
@@ -26,11 +25,11 @@ ms.locfileid: "89020356"
 **問題点** | **解決策**
 --- | ---
 サポートされていないブートの種類 | Azure では、ブートの種類が EFI の VM はサポートされません。 移行を実行する前に、ブートの種類を BIOS に変換することをお勧めします。 <br/><br/>Azure Migrate Server Migration を使用して、そのような VM の移行を処理することができます。 それにより、移行中に VM のブートの種類が BIOS に変換されます。
-条件付きでサポートされる Windows オペレーティング システム | オペレーティング システムはサポート期間が終了しており、[Azure でのサポート](https://aka.ms/WSosstatement)のためにはカスタム サポート契約 (CSA) が必要です。 Azure に移行する前にアップグレードを検討してください。
-サポートされていない Windows オペレーティング システム | Azure では、[特定の Windows OS バージョン](https://aka.ms/WSosstatement)のみがサポートされています。 Azure に移行する前に、コンピューターのアップグレードを検討してください。
-条件付きで動作が保証されている Linux OS | Azure では、[特定の Linux OS バージョン](../virtual-machines/linux/endorsed-distros.md)のみがサポートされます。 Azure に移行する前に、コンピューターのアップグレードを検討してください。 詳細については、[こちらも](https://docs.microsoft.com/azure/migrate/troubleshoot-assessment#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment)参照してください。
+条件付きでサポートされる Windows オペレーティング システム | オペレーティング システムはサポート期間が終了しており、[Azure でのサポート](/troubleshoot/azure/virtual-machines/server-software-support)のためにはカスタム サポート契約 (CSA) が必要です。 Azure に移行する前にアップグレードを検討してください。 Azure への移行に向けた [Windows Server 2003 が実行されるマシンの準備](prepare-windows-server-2003-migration.md)に関する情報について[確認]()します。
+サポートされていない Windows オペレーティング システム | Azure では、[特定の Windows OS バージョン](/troubleshoot/azure/virtual-machines/server-software-support)のみがサポートされています。 Azure に移行する前に、コンピューターのアップグレードを検討してください。
+条件付きで動作が保証されている Linux OS | Azure では、[特定の Linux OS バージョン](../virtual-machines/linux/endorsed-distros.md)のみがサポートされます。 Azure に移行する前に、コンピューターのアップグレードを検討してください。 詳細については、[こちらも](#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment)参照してください。
 動作が保証されていない Linux OS | マシンは Azure で起動する可能性がありますが、オペレーティング システムは Azure ではサポートされていません。 Azure に移行する前に、[サポートされている Linux バージョン](../virtual-machines/linux/endorsed-distros.md)へのアップグレードを検討してください。
-オペレーティング システムが不明です | VM のオペレーティング システムが、vCenter Server で "その他" として指定されました。 この動作により、Azure Migrate による VM の Azure 対応性の検証はブロックされます。 コンピューターを移行する前に、オペレーティング システムが Azure によって[サポートされている](https://aka.ms/azureoslist)ことを確認してください。
+オペレーティング システムが不明です | VM のオペレーティング システムが、vCenter Server で "その他" として指定されました。 この動作により、Azure Migrate による VM の Azure 対応性の検証はブロックされます。 コンピューターを移行する前に、オペレーティング システムが Azure によって[サポートされている](./migrate-support-matrix-vmware-migration.md#azure-vm-requirements)ことを確認してください。
 サポートされていないビット バージョン | 32 ビット オペレーティング システムの VM は Azure で起動する可能性がありますが、Azure に移行する前に、64 ビットにアップグレードすることをお勧めします。
 Microsoft Visual Studio のサブスクリプションが必要です | コンピューターで実行されている Windows クライアント オペレーティング システムは、Visual Studio のサブスクリプションによってのみサポートされます。
 必要なストレージ パフォーマンスの VM が見つかりません | そのマシンに必要なストレージ パフォーマンス (1 秒あたりの入力/出力操作数 (IOPS) とスループット) が Azure VM のサポート範囲を超えています。 移行前に、そのマシンのストレージ要件を緩和します。
@@ -48,11 +47,11 @@ Microsoft Visual Studio のサブスクリプションが必要です | コン�
 内部エラーが原因で 1 つ以上のディスクの適合性を決定できませんでした | そのグループの評価を新しく作成してみます。
 内部エラーが原因で 1 つ以上のネットワーク アダプターの適合性を決定できませんでした | そのグループの評価を新しく作成してみます。
 オファー、通貨、予約インスタンスに対する VM サイズが見つかりませんでした | 選択された RI、オファー、通貨の組み合わせに対して VM サイズが見つからなかったため、マシンは不適切とマークされました。 評価のプロパティを編集して有効な組み合わせを選択し、評価を再計算します。 
-条件付きで対応しているインターネット プロトコル | Azure VMware Solution (AVS) の評価にのみ適用されます。 AVS では、IPv6 インターネット アドレスのファクターはサポートされていません。 マシンが IPv6 を使用して検出される場合の修復については、AVS チームにお問い合わせください。
+条件付きで対応しているインターネット プロトコル | Azure VMware Solution (AVS) の評価にのみ適用されます。 AVS では、IPv6 インターネット アドレスのファクターはサポートされていません。  マシンが IPv6 を使用して検出される場合の修復については、AVS チームにお問い合わせください。
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>不明とマークされるインポート ベースの AVS 評価で推奨される移行ツール
 
-CSV ファイルを介してインポートされたマシンの場合、AVS 評価での既定の移行ツールは不明です。 ただし VMware マシンの場合は、VMware Hybrid Cloud Extension (HCX) ソリューションを使用することをお勧めします。 [詳細については、こちらを参照してください](../azure-vmware/hybrid-cloud-extension-installation.md)。
+CSV ファイルを介してインポートされたマシンの場合、AVS 評価での既定の移行ツールは不明です。 ただし VMware マシンの場合は、VMware Hybrid Cloud Extension (HCX) ソリューションを使用することをお勧めします。 [詳細については、こちらを参照してください](../azure-vmware/tutorial-deploy-vmware-hcx.md)。
 
 ## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>Linux VM が Azure VM 評価で "条件付きで対応" になる
 
@@ -61,7 +60,7 @@ VMware VM および Hyper-V VM の場合、Server Assessment では、Server Ass
 - ギャップのため、オンプレミスの VM にインストールされている Linux OS のマイナー バージョンを検出できません。
 - たとえば、RHEL 6.10 の場合、現在の Server Assessment では、RHEL 6 のみが OS バージョンとして検出されます。 これは、Hyper-V ホストの vCenter Server では、Linux VM オペレーティング システム用のカーネル バージョンが提供されていないためです。
 -  特定のバージョンの Linux のみが Azure によって動作保証されるため、Linux VM は現在 Server Assessment において条件付き対応とマークされます。
-- オンプレミスの VM で実行されている Linux OS が Azure で動作保証済みかどうかは、[Azure Linux サポート](https://aka.ms/migrate/selfhost/azureendorseddistros)のページを参照して特定できます。
+- オンプレミスの VM で実行されている Linux OS が Azure で動作保証済みかどうかは、[Azure Linux サポート](../virtual-machines/linux/endorsed-distros.md)のページを参照して特定できます。
 -  ディストリビューションの動作保証を確認した後は、この警告を無視してかまいません。
 
 このギャップは、VMware VM で[アプリケーション検出](./how-to-discover-applications.md)を有効にすることで対処できます。 Server Assessment では、指定されたゲスト資格情報を使用して VM から検出されたオペレーティング システムが使用されます。 このオペレーティング システムのデータでは、Windows VM と Linux VM の両方の場合に適切な OS 情報が示されます。
@@ -83,7 +82,7 @@ Azure Migrate Server Assessment では、評価の種類に基づいて、現在
 
 オンプレミスの VM は、4 つのコアと 8 GB のメモリを備え、CPU 使用率は 50%、メモリ使用率は 50%、指定された快適性係数は 1.3 です。
 
--  評価が**オンプレミス**の場合は、4 コアと 8 GB のメモリを備えた Azure VM SKU が推奨されます。
+-  評価が **オンプレミス** の場合は、4 コアと 8 GB のメモリを備えた Azure VM SKU が推奨されます。
 - 評価がパフォーマンスベースの場合は、CPU およびメモリの有効な使用率 (4 コアの 50% * 1.3 = 2.6 コア、8 GB メモリの 50% * 1.3 = 5.3 GB メモリ) に基づき、4 コア (最も近いサポートされるコア数) と 8 GB メモリ (最も近いサポートされるメモリ サイズ) の最も安価な VM SKU が推奨されます。
 - 評価のサイズ決定に関する[詳細を参照](concepts-assessment-calculation.md#types-of-assessments)してください。
 
@@ -91,8 +90,8 @@ Azure Migrate Server Assessment では、評価の種類に基づいて、現在
 
 Azure Migrate Server Assessment では、評価の種類に基づいて、より大きいディスクが推奨される場合があります。
 - Server Assessment でのディスクのサイズ設定は、サイズ設定基準とストレージの種類という 2 つの評価プロパティに依存します。
-- サイズ設定基準が**パフォーマンスベース**で、ストレージの種類が**自動**である場合、ディスクの IOPS とスループットの値を考慮して、ターゲット ディスクの種類 (Standard HDD、Standard SSD、または Premium) が特定されます。 その後、そのディスクの種類からディスク SKU が推奨され、この推奨ではオンプレミスのディスクのサイズ要件が考慮されます。
-- サイズ設定基準が**パフォーマンスベース**で、ストレージの種類が **Premium** である場合、オンプレミスのディスクの IOPS、スループット、サイズの要件に基づいて、Azure の Premium ディスク SKU が推奨されます。 サイズ設定基準が**オンプレミス**で、ストレージの種類が **Standard HDD**、**Standard SSD**、または **Premium** である場合は、同じロジックを使ってディスクのサイズ設定が行われます。
+- サイズ設定基準が **パフォーマンスベース** で、ストレージの種類が **自動** である場合、ディスクの IOPS とスループットの値を考慮して、ターゲット ディスクの種類 (Standard HDD、Standard SSD、または Premium) が特定されます。 その後、そのディスクの種類からディスク SKU が推奨され、この推奨ではオンプレミスのディスクのサイズ要件が考慮されます。
+- サイズ設定基準が **パフォーマンスベース** で、ストレージの種類が **Premium** である場合、オンプレミスのディスクの IOPS、スループット、サイズの要件に基づいて、Azure の Premium ディスク SKU が推奨されます。 サイズ設定基準が **オンプレミス** で、ストレージの種類が **Standard HDD**、**Standard SSD**、または **Premium** である場合は、同じロジックを使ってディスクのサイズ設定が行われます。
 
 たとえば、オンプレミスのディスクと 32 GB のメモリを使っていても、ディスクの読み取りと書き込みの集計 IOPS が 800 IOPS である場合、Server Assessment では Premium ディスク (高い IOPS 要件であるため) が推奨された後、必要な IOPS とサイズに対応できるディスク SKU が推奨されます。 この例では、適合する最も近いものは P15 (256 GB、1100 IOPS) になります。 オンプレミスのディスクで必要なサイズは 32 GB でしたが、オンプレミスのディスクの高い IOPS 要件により、Server Assessment ではさらに大きいディスクが推奨されます。
 
@@ -107,7 +106,7 @@ Azure Migrate Server Assessment では、評価の種類に基づいて、より
 
 ## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>評価の信頼度レーティングが低いのはなぜですか?
 
-信頼度評価は、評価を計算するために必要な[使用可能データ ポイント](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings)の割合に基づいて、"パフォーマンス ベース" の評価に対して計算されます。 評価の信頼度レーティングが低い理由は以下のとおりです。
+信頼度評価は、評価を計算するために必要な[使用可能データ ポイント](./concepts-assessment-calculation.md#ratings)の割合に基づいて、"パフォーマンス ベース" の評価に対して計算されます。 評価の信頼度レーティングが低い理由は以下のとおりです。
 
 - 評価を作成するための期間用の環境をプロファイルしませんでした。 たとえば、パフォーマンス期間を 1 週間に設定した評価を作成する場合は、すべてのデータポイントが収集されるまで、検出を始めてから少なくとも 1 週間待つ必要があります。 その期間待つことができない場合は、パフォーマンス期間を短くし、評価を "再計算" してください。
  
@@ -115,7 +114,7 @@ Azure Migrate Server Assessment では、評価の種類に基づいて、より
 
 - Server Assessment で検出が開始された後で、いくつかの VM が作成されました。 たとえば、過去 1 か月間のパフォーマンス履歴の評価を作成しているのに、ほんの 1 週間前にいくつかの VM が環境内に作成されたとします。 この場合、新しい VM のパフォーマンス データは期間全体を通しては利用できず、信頼度レーティングが低くなります。
 
-信頼度レーティングに関する[詳細についてはこちら](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based)をご覧ください。
+信頼度レーティングに関する[詳細についてはこちら](./concepts-assessment-calculation.md#confidence-ratings-performance-based)をご覧ください。
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>オペレーティング システムのライセンスは Azure VM 評価に含まれていますか?
 
@@ -126,7 +125,7 @@ Azure Migrate Server Assessment では、評価の種類に基づいて、より
 Server Assessment では、オンプレミスのマシンのパフォーマンス データを継続的に収集し、それを使って Azure で VM の SKU とディスクの SKU を推奨します。 パフォーマンスベースのデータの収集方法を[確認](concepts-assessment-calculation.md#calculate-sizing-performance-based)してください。
 
 ## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>予約インスタンス、VM アップタイム、割引 (%) の無効な組み合わせで作成されたことを示す警告が評価で表示されるのはなぜですか?
-[予約済みインスタンス] を選択すると、[割引 (%)] および [VM のアップタイム] プロパティは適用されません。 これらのプロパティの無効な組み合わせで評価が作成されたため、編集ボタンと再計算ボタンは無効になっています。 新しい評価を作成してください。 [詳細については、こちらを参照してください](https://go.microsoft.com/fwlink/?linkid=2131554)。
+[予約済みインスタンス] を選択すると、[割引 (%)] および [VM のアップタイム] プロパティは適用されません。 これらのプロパティの無効な組み合わせで評価が作成されたため、編集ボタンと再計算ボタンは無効になっています。 新しい評価を作成してください。 [詳細については、こちらを参照してください](./concepts-assessment-calculation.md#whats-an-assessment)。
 
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>物理サーバー上の一部のネットワーク アダプターのパフォーマンス データが表示されません
 
@@ -147,7 +146,8 @@ Hyper-V の仮想化が有効になっている物理サーバーの場合、準
 
 ## <a name="dependency-visualization-in-azure-government"></a>Azure Government での依存関係の視覚化
 
-Azure Migrate の依存関係視覚化機能は Service Map に依存しています。 現在、Azure Government では Service Map を使用できないため、Azure Government ではこの機能を使用できません。
+エージェントベースの依存関係の分析は、Azure Government ではサポートされません。 エージェントレスの依存関係の分析を使用してください。
+
 
 ## <a name="dependencies-dont-show-after-agent-install"></a>エージェントのインストール後に依存関係が表示されない
 
@@ -160,12 +160,12 @@ Windows VM の場合:
 
     ![MMA のステータス](./media/troubleshoot-assessment/mma-properties.png)
 
-Linux VM の場合、MMA と依存関係エージェントのインストールに関するすべてのコマンドが正常に実行されたことを確認します。
+Linux VM の場合、MMA と依存関係エージェントのインストールに関するすべてのコマンドが正常に実行されたことを確認します。 詳細については、[こちら](../azure-monitor/vm/service-map.md#post-installation-issues)のトラブルシューティング ガイドを参照してください。
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
-- **MMS エージェント**:サポートされている [Windows](../azure-monitor/platform/agents-overview.md#supported-operating-systems) オペレーティング システムと [Linux](../azure-monitor/platform/agents-overview.md#supported-operating-systems) オペレーティング システムを確認します。
-- **依存関係エージェント**: サポートされている [Windows および Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) オペレーティング システムを確認します。
+- **MMS エージェント**:サポートされている [Windows](../azure-monitor/agents/agents-overview.md#supported-operating-systems) オペレーティング システムと [Linux](../azure-monitor/agents/agents-overview.md#supported-operating-systems) オペレーティング システムを確認します。
+- **依存関係エージェント**: サポートされている [Windows および Linux](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) オペレーティング システムを確認します。
 
 ## <a name="visualize-dependencies-for--hour"></a>最大 1 時間分の依存関係を視覚化する
 
@@ -181,7 +181,6 @@ Azure Migrate Server Assessment では、エージェント ベースの依存�
 ## <a name="machines-show-install-agent"></a>マシンに "エージェントのインストール" が表示される
 
 依存関係の視覚化が有効になっているマシンを Azure に移行した後、マシンでは、次の動作により、"依存関係の表示" ではなく "エージェントのインストール" アクションが表示される場合があります。
-
 
 - Azure に移行した後、オンプレミスのマシンはオフになり、同等の VM が Azure で起動されます。 これらのマシンは、別々の MAC アドレスを取得します。
 - ユーザーがオンプレミスの IP アドレスを保持するかどうかにより、マシンは異なる IP アドレスも取得する場合があります。

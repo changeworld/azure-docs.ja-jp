@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: damendo
-ms.openlocfilehash: 4d07feb54a689c32e119d997275416a5dd8f0aad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d522d305c70214009b8aa2886d07d2d5403dd2b1
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725088"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656310"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Network Watcher と Grafana を使用してネットワーク セキュリティ グループのフロー ログを管理および分析する
 
@@ -104,11 +104,11 @@ Logstash を使用して、JSON 形式のフロー ログをフロー タプル 
           "protocol" => "%{[records][properties][flows][flows][flowTuples][5]}"
           "trafficflow" => "%{[records][properties][flows][flows][flowTuples][6]}"
           "traffic" => "%{[records][properties][flows][flows][flowTuples][7]}"
-      "flowstate" => "%{[records][properties][flows][flows][flowTuples][8]}"
-      "packetsSourceToDest" => "%{[records][properties][flows][flows][flowTuples][9]}"
-      "bytesSentSourceToDest" => "%{[records][properties][flows][flows][flowTuples][10]}"
-      "packetsDestToSource" => "%{[records][properties][flows][flows][flowTuples][11]}"
-      "bytesSentDestToSource" => "%{[records][properties][flows][flows][flowTuples][12]}"
+    "flowstate" => "%{[records][properties][flows][flows][flowTuples][8]}"
+    "packetsSourceToDest" => "%{[records][properties][flows][flows][flowTuples][9]}"
+    "bytesSentSourceToDest" => "%{[records][properties][flows][flows][flowTuples][10]}"
+    "packetsDestToSource" => "%{[records][properties][flows][flows][flowTuples][11]}"
+    "bytesSentDestToSource" => "%{[records][properties][flows][flows][flowTuples][12]}"
         }
         add_field => {
           "time" => "%{[records][time]}"
@@ -199,7 +199,7 @@ NSG フロー ログを含む ElasticSearch インデックスから読み取る
 
 次のスクリーンショットは、最上位のフローとその頻度を示すグラフとチャートを示しています。 フローは、NSG ルールごと、および決定別のフローごとにも表示されます。 Grafana はカスタマイズの自由度が高いため、特定の監視ニーズに合わせてダッシュボードを作成することをお勧めします。 次の例は、一般的なダッシュボードを示しています。
 
-![ダッシュボード グラフ](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
+![NSG ルールによってセグメント化されたフローを含むサンプル グラフ構成を示すスクリーンショット。](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
 
 ## <a name="conclusion"></a>まとめ
 

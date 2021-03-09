@@ -12,14 +12,19 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 2936b94d7ba791b1a4e5a9b95aca3ca3ecdb5904
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf7d1baf895d44730eb913b658ee4c7fe7eb7b11
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "66383427"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341616"
 ---
 # <a name="get-trending-images-from-the-web"></a>Web から注目の画像を取得する
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 今日の注目の画像を取得するには、次の GET 要求を送信します。  
 
@@ -39,7 +44,7 @@ Trending Images API では、現在、次の市場のみがサポートされて
 - en-AU (英語、オーストラリア)  
 - zh-CN (中国語、中国)
 
-応答には、画像をカテゴリ別に一覧表示する [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) オブジェクトが含まれています。 カテゴリの `title` を使用して、ユーザー エクスペリエンスの画像をグループ化します。 カテゴリは、毎日変わる可能性があります。  
+応答には、画像をカテゴリ別に一覧表示する [TrendingImages](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) オブジェクトが含まれています。 カテゴリの `title` を使用して、ユーザー エクスペリエンスの画像をグループ化します。 カテゴリは、毎日変わる可能性があります。  
 
 ```json
 {
@@ -88,9 +93,9 @@ Trending Images API では、現在、次の市場のみがサポートされて
 }  
 ```  
 
-各タイルには、画像と、関連画像を取得するオプションが含まれています。 関連画像を取得するには、クエリ `text` を使用して [Image Search API](./search-the-web.md) を呼び出し、関連画像を自分で表示します。 または、`webSearchUrl` 内の URL を使用して、関連画像を含む Bing の画像検索結果ページに移動することもできます。
+各タイルには、画像と、関連画像を取得するオプションが含まれています。 関連画像を取得するには、クエリ `text` を使用して [Image Search API](./overview.md) を呼び出し、関連画像を自分で表示します。 または、`webSearchUrl` 内の URL を使用して、関連画像を含む Bing の画像検索結果ページに移動することもできます。
 
-Image Search API を呼び出して関連画像を取得する場合は、[id](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) クエリ パラメーターを `id` フィールド内の ID に設定します。 ID を指定すると、応答に画像 (応答内の最初の画像) とその関連画像が含まれます。 また、[q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) クエリ パラメーターを `query` オブジェクトの `text` フィールドのテキストに設定します。
+Image Search API を呼び出して関連画像を取得する場合は、[id](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) クエリ パラメーターを `id` フィールド内の ID に設定します。 ID を指定すると、応答に画像 (応答内の最初の画像) とその関連画像が含まれます。 また、[q](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) クエリ パラメーターを `query` オブジェクトの `text` フィールドのテキストに設定します。
 
 次の例は、画像 ID を使用して、前の Trending Images API の応答の Mr. Smith の関連画像を取得する方法を示します。
 
@@ -101,4 +106,4 @@ X-MSEdge-ClientIP: 999.999.999.999
 X-Search-Location: lat:47.60357;long:-122.3295;re:100  
 X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
 Host: api.cognitive.microsoft.com  
-```  
+```

@@ -1,17 +1,17 @@
 ---
 title: パフォーマンスに関する推奨事項 - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure Database for PostgreSQL (単一サーバー) のパフォーマンスに関する推奨機能について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: a30af0c8bef47a37fe3439e885d3895a2c826225
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d547844671e6485e71be7dd8c355de08f3dec5e6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74768471"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91710568"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) のパフォーマンスに関する推奨事項
 
@@ -27,13 +27,13 @@ ms.locfileid: "74768471"
 
 Azure portal の PostgreSQL サーバーに関するページで、メニュー バーの **[インテリジェント パフォーマンス]** セクションから、 **[パフォーマンスの推奨事項]** を開きます。
 
-![パフォーマンスに関する推奨事項ランディング ページ](./media/concepts-performance-recommendations/performance-recommendations-page.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="パフォーマンスに関する推奨事項ランディング ページ":::
 
 **[解析]** を選択してデータベースを選択すると、分析が開始されます。 ワークロードによっては、分析が完了するまでに数分かかる場合があります。 分析が完了すると、ポータルで通知があります。 分析では、データベースの詳細な検査が行われます。 分析はピーク時を避けて実行することをお勧めします。 
 
 **[推奨事項]** ウィンドウでは、推奨事項が見つかった場合に、その一覧が表示されます。
 
-![パフォーマンスに関する推奨事項の新しいページ](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="パフォーマンスに関する推奨事項ランディング ページ":::
 
 推奨事項は自動的には適用されません。 推奨事項を適用するには、クエリ テキストをコピーし、任意のクライアントから実行します。 推奨事項を評価するため、監視とテストを忘れずに行ってください。 
 

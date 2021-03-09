@@ -1,7 +1,7 @@
 ---
 title: Visual Studio Code を使って接続し、クエリを実行する
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Visual Studio Code を使用して Azure SQL データベースまたは Azure 上の SQL マネージド インスタンスに接続する方法について説明します。 また、Transact-SQL (T-SQL) ステートメントを実行して、データの照会と編集を行います。
+description: Visual Studio Code を使用して Azure SQL Database または Azure 上の SQL マネージド インスタンスに接続する方法について説明します。 また、Transact-SQL (T-SQL) ステートメントを実行して、データの照会と編集を行います。
 keywords: SQL Database への接続
 services: sql-database
 ms.service: sql-database
@@ -13,23 +13,23 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 7a096e355e140b18bd7df010c379e31d21f90634
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f823b6d04a217328fe2e825e64906460cd9cbae9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515055"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672490"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>クイック スタート:Visual Studio Code を使って接続し、クエリを実行する 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-[Visual Studio Code](https://code.visualstudio.com/docs) は、Linux、macOS、Windows に対応するグラフィカル コード エディターです。 また、SQL Server インスタンス、Azure SQL データベース、Azure SQL マネージド インスタンス、Azure Synapse Analytics のデータベースに対してクエリを実行するための [mssql 拡張機能](https://aka.ms/mssql-marketplace)などの拡張機能をサポートしています。 このクイックスタートでは、Visual Studio Code を使って Azure SQL データベースまたは Azure SQL マネージド インスタンスに接続し、Transact-SQL ステートメントを実行してデータのクエリ、挿入、更新、および削除を実行する方法について説明します。
+[Visual Studio Code](https://code.visualstudio.com/docs) は、Linux、macOS、Windows に対応するグラフィカル コード エディターです。 また、SQL Server インスタンス、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics のデータベースに対してクエリを実行するための [mssql 拡張機能](https://aka.ms/mssql-marketplace)などの拡張機能をサポートしています。 このクイックスタートでは、Visual Studio Code を使って Azure SQL Database または Azure SQL Managed Instance に接続し、Transact-SQL ステートメントを実行してデータのクエリ、挿入、更新、および削除を実行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure SQL Database または Azure SQL Managed Instance のデータベース。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
 
-  | アクション | Azure SQL データベース | Azure SQL Managed Instance |
+  | アクション | Azure SQL Database | Azure SQL Managed Instance |
   |:--- |:--- |:---|
   | 作成| [ポータル](single-database-create-quickstart.md) | [ポータル](../managed-instance/instance-create-quickstart.md) |
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -45,7 +45,7 @@ ms.locfileid: "86515055"
 
 ## <a name="install-visual-studio-code"></a>Visual Studio Code のインストール
 
-必ず最新の [Visual Studio Code](https://code.visualstudio.com/Download) をインストールして [mssql 拡張機能](https://aka.ms/mssql-marketplace)を読み込んでおきます。 mssql 拡張機能のインストールのガイダンスについては、[Visual Studio Code のインストール](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code)に関するページおよび「[Visual Studio Code 用 mssql](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)」を参照してください。
+必ず最新の [Visual Studio Code](https://code.visualstudio.com/Download) をインストールして [mssql 拡張機能](https://aka.ms/mssql-marketplace)を読み込んでおきます。 mssql 拡張機能のインストールのガイダンスについては、[Visual Studio Code のインストール](/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code)に関するページおよび「[Visual Studio Code 用 mssql](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)」を参照してください。
 
 ## <a name="configure-visual-studio-code"></a>Visual Studio Code を構成する
 
@@ -72,7 +72,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="get-server-connection-information"></a>サーバーの接続情報を取得する
 
-Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
+Azure SQL Database に接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
@@ -121,7 +121,7 @@ Visual Studio Code を使用して、サーバーへの接続を確立します�
 
 ## <a name="query-data"></a>クエリ データ
 
-次の [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL ステートメントによるクエリを実行して、カテゴリごとに上位 20 個の製品を照会します。
+次の [SELECT](/sql/t-sql/queries/select-transact-sql) Transact-SQL ステートメントによるクエリを実行して、カテゴリごとに上位 20 個の製品を照会します。
 
 1. エディター ウィンドウで、次の SQL クエリを貼り付けます。
 
@@ -138,7 +138,7 @@ Visual Studio Code を使用して、サーバーへの接続を確立します�
 
 ## <a name="insert-data"></a>データの挿入
 
-次の [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを実行して、`SalesLT.Product` テーブルに新しい製品を追加します。
+次の [INSERT](/sql/t-sql/statements/insert-transact-sql) Transact-SQL ステートメントを実行して、`SalesLT.Product` テーブルに新しい製品を追加します。
 
 1. 前のクエリを次のクエリに置き換えます。
 
@@ -166,7 +166,7 @@ Visual Studio Code を使用して、サーバーへの接続を確立します�
 
 ## <a name="update-data"></a>データの更新
 
-次の [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントを実行して、追加された製品を更新します。
+次の [UPDATE](/sql/t-sql/queries/update-transact-sql) Transact-SQL ステートメントを実行して、追加された製品を更新します。
 
 1. 前のクエリを次のクエリに置き換えます。
 
@@ -180,7 +180,7 @@ Visual Studio Code を使用して、サーバーへの接続を確立します�
 
 ## <a name="delete-data"></a>データの削除
 
-次の [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL ステートメントを実行して、新しい製品を削除します。
+次の [DELETE](/sql/t-sql/statements/delete-transact-sql) Transact-SQL ステートメントを実行して、新しい製品を削除します。
 
 1. 前のクエリを次のクエリに置き換えます。
 
@@ -193,6 +193,6 @@ Visual Studio Code を使用して、サーバーへの接続を確立します�
 
 ## <a name="next-steps"></a>次のステップ
 
-- SQL Server Management Studio を使用して接続と照会を行うには、「[クイック スタート: SSMS を使用して Azure SQL データベースまたは Azure SQL マネージド インスタンスに接続してクエリを実行する](connect-query-ssms.md)」を参照してください。
+- SQL Server Management Studio を使用して接続と照会を行うには、「[クイック スタート: SSMS を使用して Azure SQL Database または Azure SQL Managed Instance に接続してクエリを実行する](connect-query-ssms.md)」を参照してください。
 - Azure portal を使用して接続と照会を行うには、「[クイック スタート: Azure portal の SQL クエリ エディターを使って接続とデータの照会を行う](connect-query-portal.md)」を参照してください。
-- Visual Studio Code の使用に関するMSDN マガジンの記事については、[MSSQL 拡張機能によるデータベース IDE の作成に関するブログの投稿](https://msdn.microsoft.com/magazine/mt809115)を参照してください。
+- Visual Studio Code の使用に関するMSDN マガジンの記事については、[MSSQL 拡張機能によるデータベース IDE の作成に関するブログの投稿](/archive/msdn-magazine/2017/june/data-points-visual-studio-code-create-a-database-ide-with-mssql-extension)を参照してください。

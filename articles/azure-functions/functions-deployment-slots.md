@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: f84dc17c6c074fc4dbda8a13fad3586a397fdf10
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2dbf7c31e6b0b40fa9dc2d59e86c0ecc731657e1
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055417"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102172411"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions デプロイ スロット
 
@@ -53,11 +53,42 @@ Azure Functions デプロイ スロットを使用すると、関数アプリで
 
 - ステージング スロットを運用スロットとスワップする場合は、運用スロットが "*常に*" ターゲット スロットであるようにします。 こうすることで、スワップ操作が運用アプリに影響を及ぼしません。
 
-- "*スワップを開始する前*" に、イベント ソースおよびバインドに関連する設定を[デプロイ スロット設定](#manage-settings)として構成する必要があります。 事前に "固定" としてマークすることで、確実にイベントと出力が適切なインスタンスに送信されるようになります。
+- "*スワップを開始する前*" に、イベント ソースおよびバインドに関連する設定を [デプロイ スロット設定](#manage-settings)として構成する必要があります。 事前に "固定" としてマークすることで、確実にイベントと出力が適切なインスタンスに送信されるようになります。
 
 ## <a name="manage-settings"></a>設定の管理
 
-[!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
+構成設定には、スロット固有のものがあります。 スロットをスワップしたときに変更される設定と変更されない設定を次の一覧に示します。
+
+**スロット固有の設定**:
+
+* 発行エンドポイント
+* カスタム ドメイン名
+* パブリックでない証明書と TLS/SSL 設定
+* スケールの設定
+* Web ジョブ スケジューラ
+* IP 制限
+* 常時接続
+* 診断設定
+* クロスオリジン リソース共有 (CORS)
+
+**スロット固有ではない設定**:
+
+* 一般設定 (フレームワーク バージョン、32/64 ビット、Web ソケットなど)
+* アプリ設定 (スロット固有として構成可能)
+* 接続文字列 (スロット固有として構成可能)
+* ハンドラー マッピング
+* パブリック証明書
+* Web ジョブ コンテンツ
+* ハイブリッド接続 *
+* Virtual Network 統合 *
+* サービス エンドポイント *
+* Azure Content Delivery Network *
+
+アスタリスク (*) 記号付きの機能は、スワップされない予定です。 
+
+> [!NOTE]
+> スワップされていない設定に適用されている特定のアプリ設定もスワップされません。 たとえば、診断の設定はスワップされないため、`WEBSITE_HTTPLOGGING_RETENTION_DAYS` や `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` などの関連するアプリ設定もスワップされません。これは、スロット設定として表示されない場合でも同様です。
+>
 
 ### <a name="create-a-deployment-setting"></a>デプロイ設定を作成する
 
@@ -67,7 +98,7 @@ Azure Functions デプロイ スロットを使用すると、関数アプリで
 
 デプロイ設定を作成するには、次の手順を使用します。
 
-1. 関数アプリで**デプロイ スロット**に移動し、スロット名を選択します。
+1. 関数アプリで **デプロイ スロット** に移動し、スロット名を選択します。
 
     :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="Azure portal でスロットを検索します。" border="true":::
 
@@ -96,7 +127,7 @@ Azure Functions デプロイ スロットを使用すると、関数アプリで
 
 ## <a name="add-a-slot"></a>スロットを追加する
 
-スロットは、[CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) を介して、またはポータルを使用して追加できます。 次の手順では、ポータルで新しいスロットを作成する方法を示します。
+スロットは、[CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create) を介して、またはポータルを使用して追加できます。 次の手順では、ポータルで新しいスロットを作成する方法を示します。
 
 1. 関数アプリに移動します。
 
@@ -110,12 +141,12 @@ Azure Functions デプロイ スロットを使用すると、関数アプリで
 
 ## <a name="swap-slots"></a>スロットをスワップする
 
-スロットは、[CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) を介して、またはポータルを使用してスワップできます。 次の手順では、ポータルでスロットをスワップする方法を示します。
+スロットは、[CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap) を介して、またはポータルを使用してスワップできます。 次の手順では、ポータルでスロットをスワップする方法を示します。
 
 1. 関数アプリに移動します。
 1. **[デプロイ スロット]** を選択し、 **[スワップ]** を選択します。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="デプロイ スロットをスワップします。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="[スロットの追加] アクションが選択されている [デプロイ スロット] ページを示すスクリーンショット。" border="true":::
 
 1. スワップの構成設定を確認して、 **[スワップ]** を選択します。
     
@@ -129,15 +160,15 @@ Azure Functions デプロイ スロットを使用すると、関数アプリで
 
 ## <a name="remove-a-slot"></a>スロットを削除する
 
-スロットは、[CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) を介して、またはポータルを使用して削除できます。 次の手順では、ポータルでスロットを削除する方法を示します。
+スロットは、[CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete) を介して、またはポータルを使用して削除できます。 次の手順では、ポータルでスロットを削除する方法を示します。
 
-1. 関数アプリで**デプロイ スロット**に移動し、スロット名を選択します。
+1. 関数アプリで **デプロイ スロット** に移動し、スロット名を選択します。
 
     :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="Azure portal でスロットを検索します。" border="true":::
 
 1. **[削除]** を選択します。
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="Azure portal でデプロイ スロットを削除します。" border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="[削除] アクションが選択されている [概要] ページを示すスクリーンショット。" border="true":::
 
 1. 削除するデプロイ スロットの名前を入力し、 **[削除]** を選択します。
 
@@ -149,13 +180,13 @@ Azure Functions デプロイ スロットを使用すると、関数アプリで
 
 ## <a name="automate-slot-management"></a>スロット管理を自動化する
 
-[Azure CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest) を使用すると、スロットに対する次の操作を自動化できます。
+[Azure CLI](/cli/azure/functionapp/deployment/slot) を使用すると、スロットに対する次の操作を自動化できます。
 
-- [create](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
-- [delete](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
-- [list](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
-- [スワップ](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
-- [自動スワップ](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
+- [create](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create)
+- [delete](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete)
+- [list](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-list)
+- [スワップ](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap)
+- [自動スワップ](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-auto-swap)
 
 ## <a name="change-app-service-plan"></a>App Service プランを変更する
 
@@ -166,7 +197,7 @@ App Service プランで実行されている関数アプリでは、スロッ�
 
 スロットの App Service プランを変更するには、次の手順を使用します。
 
-1. 関数アプリで**デプロイ スロット**に移動し、スロット名を選択します。
+1. 関数アプリで **デプロイ スロット** に移動し、スロット名を選択します。
 
     :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="Azure portal でスロットを検索します。" border="true":::
 

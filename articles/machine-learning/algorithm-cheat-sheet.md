@@ -9,18 +9,19 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: b824604ce9d0171b5612ab559eace4b35fd01eb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+adobe-target: true
+ms.openlocfilehash: 730fcf3fb552b92a02b255ad654f64d5ff7a92fa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82890973"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100367058"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーの機械学習アルゴリズム チート シート
 
-**Azure Machine Learning アルゴリズム チート シート**を使用すると、デザイナーから予測分析モデルに最適なアルゴリズムを選択できます。
+**Azure Machine Learning アルゴリズム チート シート** を使用すると、デザイナーから予測分析モデルに最適なアルゴリズムを選択できます。
 
-Azure Machine Learning には、***分類***、***レコメンダー システム***、***クラスタリング***、***異常検出***、***回帰***、***テキスト分析***の各ファミリのアルゴリズムの大きなライブラリが用意されています。 各アルゴリズムは、異なる種類の機械学習の問題に対処するために設計されています。
+Azure Machine Learning には、***分類** _、_*_レコメンダー システム_*_、_*_クラスタリング_*_、_*_異常検出_*_、_*_回帰_*_ 、_ *_テキスト分析_* * の各ファミリのアルゴリズムの大きなライブラリが用意されています。 各アルゴリズムは、異なる種類の機械学習の問題に対処するために設計されています。
 
 その他のガイダンスについては、[アルゴリズムの選択方法](how-to-select-algorithms.md)に関する記事を参照してください。
 

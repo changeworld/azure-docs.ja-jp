@@ -1,20 +1,17 @@
 ---
 title: Azure Data Factory コネクタの概要
 description: Data Factory でサポートされるコネクタについて説明します。
-services: data-factory
 author: linda33wj
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 09/28/2020
 ms.author: jingwang
-ms.reviewer: craigg
-ms.openlocfilehash: 334d5b5113dba17c5abc2b4f2520bde0d16e4c06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9dff36704fc0e3163da0439d55452fa82cb40e55
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007447"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381309"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Azure Data Factory コネクタの概要
 
@@ -25,6 +22,17 @@ Azure Data Factory では、コピー、データ フロー、ルックアップ
 ## <a name="supported-data-stores"></a>サポートされているデータ ストア
 
 [!INCLUDE [Connector overview](../../includes/data-factory-v2-connector-overview.md)]
+
+## <a name="integrate-with-more-data-stores"></a>より多くのデータ ストアとの統合
+
+Azure Data Factory は、前述のリストよりも広範なデータ ストアに対して使用できます。 Azure Data Factory の組み込みコネクタの一覧に含まれていないデータ ストアとの間でデータを移動する必要がある場合は、次の拡張可能なオプションがあります。
+- データベースとデータ ウェアハウスについては、通常、対応する ODBC ドライバを見つけることができ、これと共に[汎用 ODBC コネクタ](connector-odbc.md)を使用することができます。
+- SaaS アプリケーションの場合:
+    - RESTful API が提供されている場合は、[汎用 REST コネクタ](connector-rest.md)を使用できます。
+    - OData フィードがある場合は、[汎用 OData コネクタ](connector-odata.md)を使用できます。
+    - SOAP API が提供されている場合は、[汎用 HTTP コネクタ](connector-http.md)を使用できます。
+    - ODBC ドライバーがある場合は、[汎用 ODBC コネクタ](connector-odbc.md)を使用できます。
+- その他の場合は、ADF でサポートされているデータ ストア (Azure Blob/File/FTP/SFTP など) へのデータの読み込み、またはこれらのデータ ストアとしてのデータの公開を行うことができるかどうかを確認し、ADF でそこから取得できるようにします。 [Azure Function](control-flow-azure-function-activity.md)、[カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)、[Databricks](transform-data-databricks-notebook.md)/[HDInsight](transform-data-using-hadoop-hive.md)、[Web アクティビティ](control-flow-web-activity.md)などを使用して、カスタム データ読み込みメカニズムを呼び出すことができます。
 
 ## <a name="supported-file-formats"></a>サポートされるファイル形式
 

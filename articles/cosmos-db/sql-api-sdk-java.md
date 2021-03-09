@@ -6,17 +6,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/12/2020
+ms.date: 12/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 406690eb1303a25002d3d787e746bd091dd83fc6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 59acbc545e6bb37ebd090ec458d98586de882133
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586130"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696289"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
@@ -32,14 +33,14 @@ ms.locfileid: "88586130"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [SQL](./sql-query-getting-started.md)
 > * [Bulk Executor - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
 これは、同期操作がサポートされる最初の Azure Cosmos DB Sync Java SDK v2 for SQL API です。
 
 > [!IMPORTANT]  
-> これは Azure Cosmos DB 用の最新の Java SDK では "*ありません*"。 プロジェクトには [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) を使用することを検討してください。 アップグレードするには、[Azure Cosmos DB Java SDK v4 への移行](migrate-java-v4-sdk.md)に関するガイド、および[ Reactor と RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) に関するガイドの手順に従ってください。 
+> これは Azure Cosmos DB 用の最新の Java SDK では "*ありません*"。 プロジェクトには [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) を使用することを検討してください。 アップグレードするには、[Azure Cosmos DB Java SDK v4 への移行](migrate-java-v4-sdk.md)に関するガイド、および[ Reactor と RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) に関するガイドの手順に従ってください。 
 >
 
 | |  |
@@ -47,14 +48,20 @@ ms.locfileid: "88586130"
 |**SDK のダウンロード**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**API ドキュメント**|[Java API リファレンス ドキュメント](/java/api/com.microsoft.azure.documentdb)|
 |**SDK への協力**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
-|**開始するには**|[Java SDK の開始](sql-api-java-get-started.md)|
+|**開始するには**|[Java SDK の開始](./create-sql-api-java.md)|
 |**Web アプリ チュートリアル**|[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-java-application.md)|
-|**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)|
+|**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
 
 ## <a name="release-notes"></a>リリース ノート
 
+### <a name="261"></a><a name="2.6.1"></a>2.6.1
+* サービスの相互運用を通じてクエリを処理する際のバグを修正しました。
+
+### <a name="260"></a><a name="2.6.0"></a>2.6.0
+* 特定の時点から変更フィードのクエリを実行するためのサポートを追加しました。
+
 ### <a name="251"></a><a name="2.5.1"></a>2.5.1
-* documentCollection クエリのマスター パーティション キャッシュの問題を修正します。
+* documentCollection クエリのプライマリ パーティション キャッシュの問題を修正します。
 
 ### <a name="250"></a><a name="2.5.0"></a>2.5.0
 * 449 再試行カスタム構成のサポートが追加されました。
@@ -174,7 +181,7 @@ ms.locfileid: "88586130"
 * コレクションの作成直後の要求に対して "所有者リソースが見つかりません" という例外を引き起こす可能性のある、セッション コンテナー内のいくつかのバグを修正しました。
 
 ### <a name="195"></a><a name="1.9.5"></a>1.9.5
-* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](sql-query-aggregates.md)に関するトピックを参照してください。
+* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](sql-query-aggregate-functions.md)に関するトピックを参照してください。
 * Change Feed のサポートを追加しました。
 * RequestOptions.setPopulateQuotaInfo を介したコレクション クォータ情報のサポートを追加しました。
 * RequestOptions.setScriptLoggingEnabled を介したストアド プロシージャ スクリプトのログ記録のサポートを追加しました。
@@ -232,7 +239,7 @@ ms.locfileid: "88586130"
 * ドキュメントの有効期限 (TTL) サポートを追加しました。
 
 ### <a name="160"></a><a name="1.6.0"></a>1.6.0
-* [パーティション分割コレクション](partition-data.md)と[ユーザー定義のパフォーマンス レベル](performance-levels.md)を実装しました。
+* [パーティション分割コレクション](partitioning-overview.md)と[ユーザー定義のパフォーマンス レベル](performance-levels.md)を実装しました。
 
 ### <a name="151"></a><a name="1.5.1"></a>1.5.1
 * 他の SDK と一貫性を維持するため、リトル エンディアンのハッシュ値を生成する HashPartitionResolver のバグを修正しました。
@@ -270,6 +277,8 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.6.1](#2.6.1) |2020 年 12 月 17 日 |--- |
+| [2.6.0](#2.6.0) |2020 年 7 月 16 日 |--- |
 | [2.5.1](#2.5.1) |2020 年 6 月 3 日 |--- |
 | [2.5.0](#2.5.0) |2020 年 5 月 12 日 |--- |
 | [2.4.7](#2.4.7) |2020 年 2 月 20 日 |--- |
@@ -331,4 +340,3 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 ## <a name="see-also"></a>関連項目
 Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページを参照してください。
-

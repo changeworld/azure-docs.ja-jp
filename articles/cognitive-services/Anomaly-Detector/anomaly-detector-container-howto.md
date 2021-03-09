@@ -1,29 +1,36 @@
 ---
-title: Anomaly Detector API を使用するためのコンテナーをインストールして実行する方法
+title: Anomaly Detector API 向けの Docker コンテナーをインストールし、実行する
 titleSuffix: Azure Cognitive Services
-description: Anomaly Detector API の高度なアルゴリズムを利用し、時系列データ内の異常を特定します。
+description: Anomaly Detector API のアルゴリズムを使用し、Docker コンテナーを使用してオンプレミスのデータの異常を検出します。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 05/07/2020
-ms.author: aahi
-ms.openlocfilehash: ee742f09f3fcc1bd283efbc346fea6a040e53f48
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.date: 09/28/2020
+ms.author: mbullwin
+ms.custom: cog-serv-seo-aug-2020
+keywords: オンプレミス, Docker, コンテナー, ストリーミング, アルゴリズム
+ms.openlocfilehash: 70e5950f6577ce2cca2f28be070f3ba372d46a7e
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548533"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862311"
 ---
-# <a name="install-and-run-anomaly-detector-containers-preview"></a>Anomaly Detector コンテナー (プレビュー) のインストールと実行
+# <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>Anomaly Detector API 向けの Docker コンテナーをインストールし、実行する 
 
-Anomaly Detector には次のコンテナー機能があります。
+[!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
-| 機能 | 特徴 |
-|--|--|
-| Anomaly Detector | <li> リアルタイムで発生した異常を検出します。 <li> バッチとして設定されたデータ全体で異常を検出します。 <li> データの予想される通常の範囲を推論します。 <li> 実際のデータに合わせた異常検出の機密性調整をサポートします。 |
+コンテナーを使用すると、独自の環境で Anomaly Detector API を使用できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、Anomaly Detector コンテナーをダウンロード、インストール、実行する方法について説明します。
+
+Anomaly Detector には、API をオンプレミスで使用するための 1 つの Docker コンテナーが用意されています。 このコンテナーを以下のために使用します。
+* データに対して Anomaly Detector アルゴリズムを使用する。
+* ストリーミング データを監視し、リアルタイムで発生した異常を検出する。
+* バッチとして設定されたデータ全体で異常を検出します。 
+* データセット内の傾向変化点をバッチとして検出する。
+* 実際のデータに合うように異常検出アルゴリズムの感度を調整する。
 
 API の詳細情報については、以下を参照してください。
 * [Anomaly Detector API サービスの詳細情報](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
@@ -46,7 +53,7 @@ Anomaly Detector コンテナーを使用する前に、次の前提条件を満
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-<!--* [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/). For instructions of deploying Anomaly Detector module in IoT Edge, see [How to deploy Anomaly Detector module in IoT Edge](how-to-deploy-anomaly-detector-module-in-iot-edge.md).-->
+<!--* [Azure IoT Edge](../../iot-edge/index.yml). For instructions of deploying Anomaly Detector module in IoT Edge, see [How to deploy Anomaly Detector module in IoT Edge](how-to-deploy-anomaly-detector-module-in-iot-edge.md).-->
 
 ### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
 
@@ -67,7 +74,7 @@ Anomaly Detector コンテナーを使用する前に、次の前提条件を満
 
 | コンテナー | リポジトリ |
 |-----------|------------|
-| cognitive-services-anomaly-detector | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest` |
+| cognitive-services-anomaly-detector | `mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest` |
 
 <!--
 For a full description of available tags, such as `latest` used in the preceding command, see [anomaly-detector](https://go.microsoft.com/fwlink/?linkid=2083827&clcid=0x409) on Docker Hub.
@@ -95,7 +102,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest \
+mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -168,16 +175,12 @@ Anomaly Detector コンテナーは、Azure アカウントの _Anomaly Detector
 
 これらのオプションの詳細については、「[コンテナーの構成](anomaly-detector-container-configuration.md)」を参照してください。
 
-<!--blogs/samples/video coures -->
-
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
-
 ## <a name="summary"></a>まとめ
 
 この記事では、Anomaly Detector コンテナーの概念とそのダウンロード、インストール、実行のワークフローについて説明しました。 要約すると:
 
 * Anomaly Detector には、Docker 用に 1 つの Linux コンテナーがあり、バッチ対ストリーミング、予想範囲推論、および感度調整を使用して異常検出をカプセル化します。
-* コンテナー イメージは、コンテナー プレビュー専用のプライベート Azure Container Registry からダウンロードされます。
+* コンテナー イメージは、コンテナー専用のプライベート Azure Container Registry からダウンロードされます。
 * コンテナー イメージを Docker で実行します。
 * REST API または SDK のいずれかを使用して、コンテナーのホスト URI を指定することによって、Anomaly Detector コンテナーの操作を呼び出すことができます。
 * コンテナーをインスタンス化するときは、課金情報を指定する必要があります。

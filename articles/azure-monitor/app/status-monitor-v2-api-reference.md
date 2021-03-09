@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2f814c54aeca8a337f786beb8da1b98accbeef7e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2278b9d70e888fa546dc64da4743b2bf5b6c45e8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318999"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587521"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitor Application Insights エージェント API リファレンス
 
@@ -637,9 +637,9 @@ Timeout Reached. Stopping...
 ## <a name="next-steps"></a>次のステップ
 
   テレメトリの表示:
- - パフォーマンスと使用状況を監視するための[メトリックを探索](../platform/metrics-charts.md)します。
+ - パフォーマンスと使用状況を監視するための[メトリックを探索](../essentials/metrics-charts.md)します。
 - 問題を診断するために[イベントとログを検索](./diagnostic-search.md)します。
-- より高度なクエリのために[分析](../log-query/log-query-overview.md)を使用します。
+- より高度なクエリのために[分析](../logs/log-query-overview.md)を使用します。
 - [ダッシュボードを作成](./overview-dashboard.md)します。
  
  テレメトリの追加:

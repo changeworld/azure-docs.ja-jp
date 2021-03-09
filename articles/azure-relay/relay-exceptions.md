@@ -3,12 +3,12 @@ title: Azure Relay の例外とその解決方法 | Microsoft Docs
 description: Azure Relay の例外と、それを解決するための推奨されるアクションの一覧。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a644dfe80255c64980400866a5e3d197f75375bd
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 44eeba6eb7b8cfd4e81a923c2d9a3155f1709f2c
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532970"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625150"
 ---
 # <a name="azure-relay-exceptions"></a>Azure Relay の例外
 
@@ -18,16 +18,16 @@ ms.locfileid: "87532970"
 
 Relay API からは、次のカテゴリに分類できる例外が生成されます。 また、これらの例外を解決するための推奨されるアクションも一覧として示します。
 
-*   **ユーザー コードのエラー**: [System.ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1)、[System.InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1)、[System.OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1)、[System.Runtime.Serialization.SerializationException](/dotnet/api/system.runtime.serialization.serializationexception?view=netcore-3.1)。 
+*   **ユーザー コードのエラー**: [System.ArgumentException](/dotnet/api/system.argumentexception)、[System.InvalidOperationException](/dotnet/api/system.invalidoperationexception)、[System.OperationCanceledException](/dotnet/api/system.operationcanceledexception)、[System.Runtime.Serialization.SerializationException](/dotnet/api/system.runtime.serialization.serializationexception)。 
 
     **一般的なアクション**: 処理を実行する前にコードの修正を試みてください。
-*   **セットアップ/構成エラー**: [System.UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1)。 
+*   **セットアップ/構成エラー**: [System.UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception)。 
 
     **一般的なアクション**: 構成を確認してください。 必要に応じて、構成を変更します。
 *   **一時的な例外**: [Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception)、[Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)、[Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)。 
 
     **一般的なアクション**: 操作を再試行するか、ユーザーに通知してください。
-*   **その他の例外**: [System.Transactions.TransactionException](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1)、[System.TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1)。 
+*   **その他の例外**: [System.Transactions.TransactionException](/dotnet/api/system.transactions.transactionexception)、[System.TimeoutException](/dotnet/api/system.timeoutexception)。 
 
     **一般的なアクション**: 例外の種類によって異なります。 次のセクションの表を参照してください。 
 
@@ -37,11 +37,11 @@ Relay API からは、次のカテゴリに分類できる例外が生成され�
 
 | **例外の種類** | **説明** | **推奨されるアクション** | **自動または即時再試行に関する注意** |
 | --- | --- | --- | --- |
-| [タイムアウト](/dotnet/api/system.timeoutexception?view=netcore-3.1) |サーバーは、 [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout)によって制御される指定された時間内に、要求された操作に対して応答しませんでした。 サーバーで、要求された操作が完了した可能性があります。 これは、ネットワークや他のインフラストラクチャの遅延が原因で発生することがあります。 |システム状態の整合性をチェックして、必要な場合は再試行します。 「[TimeoutException](#timeoutexception)」を参照してください。 |再試行によって解決する場合があります。再試行ロジックをコードに追加してください。 |
-| [無効な操作](/dotnet/api/system.invalidoperationexception?view=netcore-3.1) |要求されたユーザー操作はサーバーまたはサービス内で許可されていません。 詳細については、例外メッセージを参照してください。 |コードとドキュメントを確認します。 有効な操作を要求してください。 |再試行によって解決することはありません。 |
-| [操作は取り消されました](/dotnet/api/system.operationcanceledexception?view=netcore-3.1) |既に終了、中止、または破棄されたオブジェクトに対して操作を呼び出そうとしました。 まれに、アンビエント トランザクションが既に破棄されている場合があります。 |コードを確認し、破棄されたオブジェクトに対して操作を呼び出していないことを確かめます。 |再試行によって解決することはありません。 |
-| [未承認のアクセス](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1) |[TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) オブジェクトはトークンを取得できませんでした。トークンが無効です。または、操作の実行に必要な要求がトークンに含まれていません。 |正しい値を使用してトークン プロバイダーを作成します。 Access Control Service の構成を確認します。 |再試行によって解決する場合があります。再試行ロジックをコードに追加してください。 |
-| [引数の例外](/dotnet/api/system.argumentexception?view=netcore-3.1)、<br /> [引数が null](/dotnet/api/system.argumentnullexception?view=netcore-3.1)、<br />[範囲外の引数](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1) |以下のいずれかまたは複数が発生しています。<br />メソッドに指定された 1 つまたは複数の引数が無効です。<br /> [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) または [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) に指定された URI に 1 つまたは複数のパス セグメントが含まれています。<br />[NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) または [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) に指定された URI スキームが無効です。 <br />プロパティ値が 32 KB を超えています。 |呼び出し元のコードを確認し、引数が正しいことを確かめます。 |再試行によって解決することはありません。 |
+| [タイムアウト](/dotnet/api/system.timeoutexception) |サーバーは、 [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout)によって制御される指定された時間内に、要求された操作に対して応答しませんでした。 サーバーで、要求された操作が完了した可能性があります。 これは、ネットワークや他のインフラストラクチャの遅延が原因で発生することがあります。 |システム状態の整合性をチェックして、必要な場合は再試行します。 「[TimeoutException](#timeoutexception)」を参照してください。 |再試行によって解決する場合があります。再試行ロジックをコードに追加してください。 |
+| [無効な操作](/dotnet/api/system.invalidoperationexception) |要求されたユーザー操作はサーバーまたはサービス内で許可されていません。 詳細については、例外メッセージを参照してください。 |コードとドキュメントを確認します。 有効な操作を要求してください。 |再試行によって解決することはありません。 |
+| [操作は取り消されました](/dotnet/api/system.operationcanceledexception) |既に終了、中止、または破棄されたオブジェクトに対して操作を呼び出そうとしました。 まれに、アンビエント トランザクションが既に破棄されている場合があります。 |コードを確認し、破棄されたオブジェクトに対して操作を呼び出していないことを確かめます。 |再試行によって解決することはありません。 |
+| [未承認のアクセス](/dotnet/api/system.unauthorizedaccessexception) |[TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) オブジェクトはトークンを取得できませんでした。トークンが無効です。または、操作の実行に必要な要求がトークンに含まれていません。 |正しい値を使用してトークン プロバイダーを作成します。 Access Control Service の構成を確認します。 |再試行によって解決する場合があります。再試行ロジックをコードに追加してください。 |
+| [引数の例外](/dotnet/api/system.argumentexception)、<br /> [引数が null](/dotnet/api/system.argumentnullexception)、<br />[範囲外の引数](/dotnet/api/system.argumentoutofrangeexception) |以下のいずれかまたは複数が発生しています。<br />メソッドに指定された 1 つまたは複数の引数が無効です。<br /> [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) または [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) に指定された URI に 1 つまたは複数のパス セグメントが含まれています。<br />[NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) または [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) に指定された URI スキームが無効です。 <br />プロパティ値が 32 KB を超えています。 |呼び出し元のコードを確認し、引数が正しいことを確かめます。 |再試行によって解決することはありません。 |
 | [サーバー ビジー](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) |この時点では、このサービスで要求を処理できません。 |クライアントは、しばらく待ってから操作をやり直すことができます。 |クライアントは、特定の間隔の後に再試行することができます。 再試行の結果として別の例外が発生した場合は、その例外の再試行動作を確認します。 |
 | [クォータを超過した](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) |メッセージング エンティティが最大許容サイズに達しています。 |エンティティまたはそのサブキューからメッセージを受信して、エンティティ内に領域を作成します。 「 [QuotaExceededException](#quotaexceededexception)」を参照してください。 |メッセージがそれまでに削除されている場合は、再試行によって解決することがあります。 |
 | [メッセージ サイズの超過](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |メッセージ ペイロードが 256 KB の制限を超えています。 256 KB までに制限されているのはメッセージの合計サイズであることに注意してください。 メッセージの合計サイズには、システム プロパティや Microsoft .NET のオーバーヘッドも含まれる場合があります。 |メッセージ ペイロードのサイズを小さくし、操作を再試行します。 |再試行によって解決することはありません。 |
@@ -50,12 +50,12 @@ Relay API からは、次のカテゴリに分類できる例外が生成され�
 
 [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) は、特定のエンティティのクォータが超過していることを示します。
 
-Relay の場合、この例外は [System.ServiceModel.QuotaExceededException](/dotnet/api/system.servicemodel.quotaexceededexception?view=dotnet-plat-ext-3.1) をラップします。これは、このエンドポイントについてリスナーが最大数を超過したことを示します。 これは、例外メッセージの **MaximumListenersPerEndpoint** 値に示されます。
+Relay の場合、この例外は [System.ServiceModel.QuotaExceededException](/dotnet/api/system.servicemodel.quotaexceededexception) をラップします。これは、このエンドポイントについてリスナーが最大数を超過したことを示します。 これは、例外メッセージの **MaximumListenersPerEndpoint** 値に示されます。
 
 ## <a name="timeoutexception"></a>TimeoutException
-[TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1) は、ユーザーが開始した操作が操作タイムアウトより時間がかかっていることを示します。 
+[TimeoutException](/dotnet/api/system.timeoutexception) は、ユーザーが開始した操作が操作タイムアウトより時間がかかっていることを示します。 
 
-[ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit?view=netcore-3.1#System_Net_ServicePointManager_DefaultConnectionLimit) プロパティの値を確認します。 この制限に達した場合も、[TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1) が発生する場合があります。
+[ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) プロパティの値を確認します。 この制限に達した場合も、[TimeoutException](/dotnet/api/system.timeoutexception) が発生する場合があります。
 
 Relay では、リレー送信者接続を最初に開いたときにタイムアウトの例外を受け取る可能性があります。 この例外の一般的な原因には、次の 2 つがあります。
 

@@ -10,13 +10,13 @@ ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
-ms.custom: devops, devx-track-javascript
-ms.openlocfilehash: c83a67f7d524a062485f2c68e0adb7fdd2855a84
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.custom: devops, devx-track-js
+ms.openlocfilehash: 4ca431290fe168f8fc073908bb3735ecb5992562
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462175"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731253"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>チュートリアル:Azure DevOps Services と Azure Pipelines を使用して Azure の Linux 仮想マシンにアプリをデプロイする
 
@@ -24,7 +24,7 @@ ms.locfileid: "89462175"
 
 Azure Pipelines では、オンプレミスまたは任意のクラウド上の仮想マシンにデプロイするための機能が完備された CI/CD 自動化ツールのセットが提供されます。
 
-このチュートリアルで設定する YAML ベースの CI/CD パイプラインでは、それぞれがアプリを実行する Web サーバーとして機能する Linux 仮想マシンがリソースとして含まれる Azure Pipelines [環境](/azure/devops/pipelines/process/environments?view=azure-devops)に、アプリをデプロイします。
+このチュートリアルで設定する YAML ベースの CI/CD パイプラインでは、それぞれがアプリを実行する Web サーバーとして機能する Linux 仮想マシンがリソースとして含まれる Azure Pipelines [環境](/azure/devops/pipelines/process/environments)に、アプリをデプロイします。
 
 学習内容は次のとおりです。
 
@@ -41,7 +41,7 @@ Azure Pipelines では、オンプレミスまたは任意のクラウド上の�
   [無料の Azure DevOps Services 組織](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308)を取得できます。
 
   > [!NOTE]
-  > 詳細については、[Azure DevOps Services への接続](/azure/devops/organizations/projects/connect-to-projects?view=vsts)に関する記事をご覧ください。
+  > 詳細については、[Azure DevOps Services への接続](/azure/devops/organizations/projects/connect-to-projects)に関する記事をご覧ください。
 
 *  デプロイ ターゲットの Linux 仮想マシンが必要です。  詳細については、「[Azure CLI を使用した Linux VM の作成と管理](./tutorial-manage-vm.md)」をご覧ください。
 
@@ -104,7 +104,7 @@ Nginx を含む Linux VM がまだない場合は、[こちらの例](./quick-cr
 1.  Azure DevOps 組織にサインインし、プロジェクトに移動します。
 2.  プロジェクト内で、 **[パイプライン]** ページに移動します。 次に **[環境]** を選択し、 **[環境の作成]** をクリックします。 環境の **[名前]** (必須) と、 **[説明]** を指定します。
 3.  環境に追加する **[リソース]** として **[仮想マシン]** を選択し、 **[次へ]** をクリックします。
-4.  オペレーティング システム (Windows/Linux) を選択し、**PS 登録スクリプトをコピー**します。 
+4.  オペレーティング システム (Windows/Linux) を選択し、**PS 登録スクリプトをコピー** します。 
 5.  次に、この環境に登録する各ターゲット VM で、管理者の PowerShell コマンド プロンプトから、コピーしたスクリプトを実行します。
     > [!NOTE]
     > - ログインしているユーザーの個人用アクセス トークンが、スクリプトに事前に挿入されています。このトークンは、その日に有効期限が切れ、コピーしたスクリプトを使用できなくなります。
@@ -118,7 +118,7 @@ Nginx を含む Linux VM がまだない場合は、[こちらの例](./quick-cr
 
     ![VMresource_view](media/tutorial-deploy-vms-azure-pipelines/vm-resourceview.png)
 
-9. 対話型の PS 登録スクリプトの一部として、VM にタグを追加できます。または、リソース ビューの各 VM リソースの最後にある 3 つのドットをクリックして、リソース ビューからタグを追加または削除することもできます。
+9. 対話型の PowerShell 登録スクリプトの一部として、VM にタグを追加できます。または、リソース ビューの各 VM リソースの最後にある 3 つのドットをクリックして、リソース ビューからタグを追加または削除することもできます。
 
    割り当てたタグを使用すると、環境がデプロイ ジョブで使用されるときに、特定の仮想マシンにデプロイを制限できます。 各タグは 256 文字以下に制限されていますが、使用できるタグの数に制限はありません。
 
@@ -147,6 +147,7 @@ Web アプリケーションを発行する継続的インテグレーション 
 **starter** テンプレートを選択し、Java プロジェクトをビルドして Apache Maven でテストを実行する次の YAML スニペットをコピーします。
 
 ```YAML
+jobs:
 - job: Build
   displayName: Build Maven Project
   steps:
@@ -201,7 +202,7 @@ Web アプリケーションを発行する継続的インテグレーション 
 
 - パイプラインを調べて、何が行われているかを確認します。 すべての既定の入力が自分のコードに適していることを確認します。
 
-- **[保存して実行]** を選択し、 **[master ブランチに直接コミット]** を選択した後、 **[保存して実行]** を再度選択します。
+- **[保存および実行]** を選択し、 **[Commit directly to the main branch]\(メイン ブランチに直接コミットする\)** を選択した後、 **[保存および実行]** を再度選択します。
 
 - 新しい実行が開始されます。 実行が終了するまで待ちます。
 
@@ -209,7 +210,7 @@ Web アプリケーションを発行する継続的インテグレーション 
 
 ## <a name="define-cd-steps-to-deploy-to-the-linux-vm"></a>Linux VM にデプロイするための CD 手順を定義する
 
-1. 上記のパイプラインを編集し、次の YAML 構文を使用して、前の環境と VM リソースを参照することにより、[デプロイ ジョブ](/azure/devops/pipelines/process/deployment-jobs)を組み込みます。
+1. 上記のパイプラインの YAML ファイルを編集し、次の YAML 構文を使用して、前の環境と VM リソースを参照することにより、[デプロイ ジョブ](/azure/devops/pipelines/process/deployment-jobs)を組み込みます。
 
    ```YAML
    jobs:  
@@ -218,11 +219,10 @@ Web アプリケーションを発行する継続的インテグレーション 
      environment:
        name:  <environment name>
        resourceType: VirtualMachine
-       tags: web1
-     strategy:
+       tags: web
    ```
-2. 環境内の各仮想マシンに対して定義した**タグ**を指定することにより、デプロイを受け取る特定の仮想マシンのセットを環境から選択できます。
-デプロイ ジョブの完全な YAML スキーマについては、[こちら](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job)をご覧ください。
+2. 環境内の各仮想マシンに対して定義した **タグ** を指定することにより、デプロイを受け取る特定の仮想マシンのセットを環境から選択できます。
+デプロイ ジョブの完全な YAML スキーマについては、[こちら](/azure/devops/pipelines/yaml-schema?tabs=schema#deployment-job)をご覧ください。
 
 3. デプロイ方法として、`runOnce` または `rolling` を指定できます。 
 

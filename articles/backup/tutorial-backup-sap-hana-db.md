@@ -3,12 +3,12 @@ title: チュートリアル - Azure VM での SAP HANA データベースのバ
 description: このチュートリアルでは、Azure VM 上で稼働している SAP HANA データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について学習します。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: b43fd5c432b06902de0a898fc4bb0f114143b3ba
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 5548717b25ea3ec027ba5f588e5e28faafbb5d6f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375280"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703683"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>チュートリアル:Azure VM での SAP HANA データベースのバックアップ
 
@@ -65,7 +65,7 @@ ms.locfileid: "89375280"
 
 ### <a name="nsg-tags"></a>NSG タグ
 
-ネットワーク セキュリティ グループ (NSG) を使用する場合は、*AzureBackup* サービス タグを使用して、Azure Backup への発信アクセスを許可します。 Azure Backup タグに加えて、*Azure AD* および *Azure Storage* に対して同様の [NSG 規則](../virtual-network/security-overview.md#service-tags)を作成することによって、認証とデータ転送のための接続を許可する必要もあります。  次の手順では、Azure Backup タグの規則を作成するプロセスについて説明します。
+ネットワーク セキュリティ グループ (NSG) を使用する場合は、*AzureBackup* サービス タグを使用して、Azure Backup への発信アクセスを許可します。 Azure Backup タグに加えて、Azure AD (*AzureActiveDirectory*) および Azure Storage (*Storage*) に対して同様の [NSG 規則](../virtual-network/network-security-groups-overview.md#service-tags)を作成することによって、認証とデータ転送のための接続を許可する必要もあります。 次の手順では、Azure Backup タグの規則を作成するプロセスについて説明します。
 
 1. **[すべてのサービス]** で、 **[ネットワーク セキュリティ グループ]** に移動して、ネットワーク セキュリティ グループを選択します。
 
@@ -75,7 +75,7 @@ ms.locfileid: "89375280"
 
 1. **[追加]** を選択して、新しく作成した送信セキュリティ規則を保存します。
 
-Azure Storage と Azure AD に対する NSG 送信セキュリティ規則も、同様に作成できます。 サービス タグの詳細については、[こちらの記事](../virtual-network/service-tags-overview.md)を参照してください。
+Azure Storage と Azure AD に対する [NSG 送信セキュリティ規則](../virtual-network/network-security-groups-overview.md#service-tags)も、同様に作成できます。 サービス タグの詳細については、[こちらの記事](../virtual-network/service-tags-overview.md)を参照してください。
 
 ### <a name="azure-firewall-tags"></a>Azure Firewall タグ
 
@@ -99,6 +99,46 @@ Azure Firewall を使用している場合は、*AzureBackup* [Azure Firewall FQ
 
 Azure VM で実行されている SAP HANA データベースをバックアップする場合、VM 上のバックアップ拡張機能によって HTTPS API が使用され、管理コマンドが Azure Backup に送信されてデータが Azure Storage に送信されます。 また、バックアップ拡張機能では、認証に Azure AD を使用します。 HTTP プロキシ経由でこれらの 3 つのサービスのバックアップ拡張機能のトラフィックをルーティングします。 必要なサービスへのアクセスを許可するには、上記で説明した IP と FQDN の一覧を使用します。 認証済みプロキシ サーバーはサポートされません。
 
+## <a name="understanding-backup-and-restore-throughput-performance"></a>バックアップと復元のスループット パフォーマンスについて
+
+SAP HANA Azure VM では、Backint によってバックアップ (ログとそれ以外) が実現されますが、このバックアップは Azure Recovery Services コンテナーへのストリームであるため、このストリーミング手法について理解することが重要となります。
+
+HANA の Backint コンポーネントは、ディスクに接続された "パイプ" (情報を読み取るためのパイプと書き込むためのパイプ) の役割を果たします。基になるディスクには、データベース ファイルが存在します。それらが Azure Backup サービスによって読み取られて、Azure Recovery Services コンテナーに転送されます。 Azure Backup サービスは、backint のネイティブ検証チェックとは別に、チェックサムによってストリームを検証します。 これらの検証によって、Azure Recovery Services コンテナーにあるデータが確かに信頼できるものであり、回復可能であることが確認されます。
+
+ストリームの処理対象になるのは主にディスクであるため、バックアップと復元のパフォーマンスを正確に測定するためには、ディスクのパフォーマンスを把握する必要があります。 Azure VM におけるディスクのスループットとパフォーマンスを深く理解するために、[こちらの記事](../virtual-machines/disks-performance.md)を参照してください。 これらはバックアップと復元のパフォーマンスにも当てはまります。
+
+**Azure Backup サービスは、ログ バックアップ以外 (完全、差分、増分など) で最大約 420 MBps を、HANA のログ バックアップで最大 100 MBps を達成しようと試みます**。 前述のように、これらの速度は保証されているわけではなく、次の要因に左右されます。
+
+* キャッシュ不使用時の VM の最大ディスク スループット
+* 基になるディスクの種類とそのスループット
+* 同じディスクに対して同時に読み取りと書き込みを試行するプロセスの数。
+
+> [!IMPORTANT]
+> キャッシュ不使用時のディスク スループットが 400 MBps を超えないまでも、それに限りなく近いような小さな VM では、ディスク全体の IOPS がバックアップ サービスによって消費されるおそれがあり、ディスクに対する読み取り/書き込みに関連した SAP HANA の動作に影響を及ぼす可能性があります。 そのようなケースで、バックアップ サービスの消費をスロットル (制限) して上限を超えないようにしたい場合は、次のセクションを参照してください。
+
+### <a name="limiting-backup-throughput-performance"></a>バックアップのスループット パフォーマンスを制限する
+
+バックアップ サービスのディスク IOPS 消費をスロットルして上限値を超えないようにしたい場合は、次の手順を実行してください。
+
+1. "opt/msawb/bin" フォルダーに移動します
+2. "ExtensionSettingOverrides.JSON" という名前の新しい JSON ファイルを作成します
+3. JSON ファイルに、次のキーと値のペアを追加します。
+
+    ```json
+    {
+    "MaxUsableVMThroughputInMBPS": 200
+    }
+    ```
+
+4. ファイルのアクセス許可と所有権を次のように変更します。
+    
+    ```bash
+    chmod 750 ExtensionSettingsOverrides.json
+    chown root:msawb ExtensionSettingsOverrides.json
+    ```
+
+5. サービスを再起動する必要はありません。 Azure Backup サービスは、このファイルの記述に従ってスループット パフォーマンスの制限を試みます。
+
 ## <a name="what-the-pre-registration-script-does"></a>事前登録スクリプトで実行される処理
 
 事前登録スクリプトでは、次の機能が実行されます。
@@ -107,9 +147,10 @@ Azure VM で実行されている SAP HANA データベースをバックアッ�
 * Azure Backup サーバーと依存サービス (Azure Active Directory、Azure Storage など) に対するアウトバウンド ネットワーク接続チェックを実行します。
 * [前提条件](#prerequisites)の 1 つでもあるユーザー キーを使用して HANA システムにログインします。 このユーザー キーは、バックアップ ユーザー (AZUREWLBACKUPHANAUSER) を HANA システムに作成するために使用されます。また、**このユーザー キーは、事前登録スクリプトが正常に実行された後に削除できます**。
 * AZUREWLBACKUPHANAUSER には、次の必要なロールとアクセス許可が割り当てられます。
-  * DATABASE ADMIN (MDC の場合) および BACKUP ADMIN (SDC の場合): 復元中に新しいデータベースを作成します。
+  * MDC の場合: DATABASE ADMIN および BACKUP ADMIN (HANA 2.0 SPS05 以降): 復元中に新しいデータベースを作成します。
+  * SDC の場合: BACKUP ADMIN: 復元中に新しいデータベースを作成します。
   * CATALOG READ: バックアップ カタログを読み取ります。
-  * SAP_INTERNAL_HANA_SUPPORT いくつかのプライベート テーブルにアクセスします。
+  * SAP_INTERNAL_HANA_SUPPORT いくつかのプライベート テーブルにアクセスします。 HANA 2.0 SPS04 Rev 46 未満の SDC および MDC バージョンでのみ必要となります。 HANA 2.0 SPS04 Rev 46 以上では必要ありません。必要な情報は、HANA チームからの修正プログラムと共に、パブリック テーブルから入手することになります。
 * このスクリプトにより、HANA バックアップ プラグインですべての操作 (データベース クエリ、復元操作、バックアップの構成と実行) を処理するために AZUREWLBACKUPHANAUSER の **hdbuserstore** にキーが追加されます。
 
 >[!NOTE]
@@ -190,7 +231,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
    ![バックアップ ポリシーを選択する](./media/tutorial-backup-sap-hana-db/backup-policy.png)
 
-4. ポリシーを作成した後、 **[バックアップ] メニュー**の **[バックアップの有効化]** を選択します。
+4. ポリシーを作成した後、 **[バックアップ] メニュー** の **[バックアップの有効化]** を選択します。
 
    ![[バックアップの有効化] の選択](./media/tutorial-backup-sap-hana-db/enable-backup.png)
 
@@ -221,18 +262,23 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
    * 月次および年次のリテンション期間の範囲でも、同様の動作になります。
 4. **完全バックアップのポリシー** メニューで、 **[OK]** を選択して設定を確定します。
 5. 次に、 **[差分バックアップ]** を選択して、差分ポリシーを追加します。
-6. **差分バックアップのポリシー**で、 **[有効]** を選択して頻度とリテンション期間の制御を開きます。 ここでは、毎週**日曜日**の**午前 2:00** に実行され、**30 日間**保持される差分バックアップを有効にしました。
+6. **差分バックアップのポリシー** で、 **[有効]** を選択して頻度とリテンション期間の制御を開きます。 ここでは、毎週 **日曜日** の **午前 2:00** に実行され、**30 日間** 保持される差分バックアップを有効にしました。
 
    ![差分バックアップ ポリシー](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
    >[!NOTE]
-   >増分バックアップは現在、サポートされていません。
-   >
+   >毎日のバックアップとしては、差分バックアップまたは増分バックアップのどちらかを選択できます。両方を選択することはできません。
 
-7. **[OK]** を選択してポリシーを保存し、 **[バックアップ ポリシー]** のメイン メニューに戻ります。
-8. **[ログ バックアップ]** を選択し、トランザクション ログ バックアップ ポリシーを追加します。
+7. **[増分バックアップ ポリシー]** で、 **[有効]** を選択して頻度と保有期間の制御を開きます。
+    * 最多で、1 日に 1 回の増分バックアップをトリガーできます。
+    * 増分バックアップは、最大 180 日間保持できます。 より長いリテンション期間が必要な場合は、完全バックアップを使用する必要があります。
+
+    ![増分バックアップ ポリシー](./media/backup-azure-sap-hana-database/incremental-backup-policy.png)
+
+8. **[OK]** を選択してポリシーを保存し、 **[バックアップ ポリシー]** のメイン メニューに戻ります。
+9. **[ログ バックアップ]** を選択し、トランザクション ログ バックアップ ポリシーを追加します。
    * **[ログ バックアップ]** は既定で **[有効]** に設定されています。 SAP HANA ではすべてのログ バックアップが管理されるため、これを無効にすることはできません。
-   * ここでは、バックアップのスケジュールとして **2 時間**を設定し、保持期間として **15 日間**を設定しています。
+   * ここでは、バックアップのスケジュールとして **2 時間** を設定し、保持期間として **15 日間** を設定しています。
 
     ![ログ バックアップのポリシー](./media/tutorial-backup-sap-hana-db/log-backup-policy.png)
 
@@ -240,8 +286,8 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
    > ログ バックアップでは、1 回の完全バックアップが正常に完了した後にのみ、フローが開始されます。
    >
 
-9. **[OK]** を選択してポリシーを保存し、 **[バックアップ ポリシー]** のメイン メニューに戻ります。
-10. バックアップ ポリシーの定義が完了した後、 **[OK]** を選択します。
+10. **[OK]** を選択してポリシーを保存し、 **[バックアップ ポリシー]** のメイン メニューに戻ります。
+11. バックアップ ポリシーの定義が完了した後、 **[OK]** を選択します。
 
 これで、SAP HANA データベースのバックアップが正常に構成されました。
 

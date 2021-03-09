@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2f26716a4d04b574bf393f502758a725948419da
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 85bc6f4468e0365d247b0adc204bd53ce9fa3006
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299951"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676718"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>PowerShell を使用して別のギャラリーからイメージをコピーする
 
@@ -127,7 +127,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 
 イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion*.*MinorVersion*.*Patch*。
 
-この例では、*米国西部*の場所にある *myDestinationRG* リソース グループに属する対象のギャラリーに *myDestinationGallery* という名前が付けられています。 このイメージのバージョンは *1.0.0* です。これから、*米国中南部*リージョンに 1 つのレプリカ、*米国西部*リージョンに 2 つのレプリカを作成します。 
+この例では、*米国西部* の場所にある *myDestinationRG* リソース グループに属する対象のギャラリーに *myDestinationGallery* という名前が付けられています。 このイメージのバージョンは *1.0.0* です。これから、*米国中南部* リージョンに 1 つのレプリカ、*米国西部* リージョンに 2 つのレプリカを作成します。 
 
 
 ```azurepowershell-interactive
@@ -164,6 +164,6 @@ $job.State
 
 [一般化された](vm-generalized-image-version-powershell.md)イメージ バージョンまたは[特殊化された](vm-specialized-image-version-powershell.md)イメージ バージョンから VM を作成します。
 
-[Azure Image Builder (プレビュー)](./linux/image-builder-overview.md) は、イメージ バージョンの作成の自動化に役立ちます。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](./linux/image-builder-gallery-update-image-version.md)に使用することさえできます。 
+[Azure Image Builder (プレビュー)](./image-builder-overview.md) は、イメージ バージョンの作成の自動化に役立ちます。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](./linux/image-builder-gallery-update-image-version.md)に使用することさえできます。 
 
 購入プラン情報を提供する方法については、「[イメージ作成時の Azure Marketplace 購入プラン情報の提供](marketplace-images.md)」を参照してください。

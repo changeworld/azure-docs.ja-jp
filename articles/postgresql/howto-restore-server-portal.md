@@ -1,17 +1,17 @@
 ---
 title: バックアップと復元 - Azure portal - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure portal を使用して Azure Database for PostgreSQL - Single Server のサーバーを復元する方法について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 7683d3472d382707de538874035c8448f589bf82
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 82cec4cc448f0ec30aecf6f8a69f399e0abbdde0
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110812"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706951"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL - Single Server のサーバーをバックアップおよび復元する方法
 
@@ -28,16 +28,16 @@ Azure Database for PostgreSQL サーバーは、復元機能が有効になる�
 
 Azure Portal でサーバーを作成するときに、 **[価格レベル]** ウィンドウで、使用しているサーバーのバックアップとして **[ローカル冗長]** または **[地理冗長]** のいずれかを選択します。 また、このウィンドウの **[バックアップの保有期間]** で、サーバーのバックアップを保存する期間 (日数) を選択します。
 
-   ![価格レベル - バックアップ冗長の選択](./media/howto-restore-server-portal/pricing-tier.png)
+   :::image type="content" source="./media/howto-restore-server-portal/pricing-tier.png" alt-text="価格レベル - バックアップ冗長の選択":::
 
 作成中のこれらの値の設定について詳しくは、[Azure Database for PostgreSQL サーバーのクイック スタート](quickstart-create-server-database-portal.md)に関するページをご覧ください。
 
 サーバーのバックアップのリテンション期間は、以下の手順で変更できます。
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. Azure Database for PostgreSQL サーバーを選択します。 この操作で、 **[概要]** ページが開きます。
-3. **[設定]** で、メニューから **[価格レベル]** を選択します。 スライダーを使用して、**バックアップの保有期間**を 7 ～ 35 日の間で希望の値に変更します。
+3. **[設定]** で、メニューから **[価格レベル]** を選択します。 スライダーを使用して、**バックアップの保有期間** を 7 ～ 35 日の間で希望の値に変更します。
 次のスクリーンショットでは 34 日に変更されています。
-![長くしたバックアップのリテンション期間](./media/howto-restore-server-portal/3-increase-backup-days.png)
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="長くしたバックアップのリテンション期間":::
 
 4. **[OK]** をクリックして変更を確定します。
 
@@ -53,11 +53,11 @@ Azure Database for PostgreSQL では、サーバーの過去の特定時点ま�
 
 2. サーバーの **[概要]** ページのツール バーで **[復元]** を選択します。
 
-   ![Azure Database for PostgreSQL - 概要 - 復元ボタン](./media/howto-restore-server-portal/2-server.png)
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for PostgreSQL - 概要 - 復元ボタン":::
 
 3. [復元] フォームに必要な情報を入力します。
 
-   ![Azure Database for PostgreSQL - 情報の復元](./media/howto-restore-server-portal/3-restore.png)
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Azure Database for PostgreSQL - 情報の復元":::
    - **復元ポイント**:復元先の特定の時点を選択します。
    - **対象サーバー**:新しいサーバーの名前を指定します。
    - **[場所]** :リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
@@ -70,6 +70,8 @@ Azure Database for PostgreSQL では、サーバーの過去の特定時点ま�
 ポイントインタイム リストアによって作成された新しいサーバーには、選択した特定の時点の既存のサーバーに対して有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 
 復元中に作成される新しいサーバーには、元のサーバーに存在するファイアウォール規則または VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。
+
+ソース PostgreSQL サーバーがカスタマー マネージド キーで暗号化されている場合、追加の考慮事項については[こちらのドキュメント](concepts-data-encryption-postgresql.md)を参照してください。
 
 ## <a name="geo-restore"></a>geo リストア
 
@@ -101,13 +103,13 @@ Azure Database for PostgreSQL では、サーバーの過去の特定時点ま�
    
    :::image type="content" source="./media/howto-restore-server-portal/6-select-backup.png" alt-text="バックアップを選択する。":::
 
-7. サーバーでは、**仮想コア**の数、**バックアップ保有期間**、**バックアップ冗長オプション**、**エンジン バージョン**、および**管理者資格情報**が規定値に設定されます。 **[続行]** をクリックします。 
+7. サーバーでは、**仮想コア** の数、**バックアップ保有期間**、**バックアップ冗長オプション**、**エンジン バージョン**、および **管理者資格情報** が規定値に設定されます。 **[続行]** をクリックします。 
    
    :::image type="content" source="./media/howto-restore-server-portal/7-accept-backup.png" alt-text="バックアップを続行する。":::
 
-8. 必要に応じて、フォームの残りの部分を入力します。 任意の**場所**を選択できます。
+8. 必要に応じて、フォームの残りの部分を入力します。 任意の **場所** を選択できます。
 
-    場所を選択したら、 **[サーバーの構成]** を選択して、**コンピューティング世代** (選択したリージョンで利用可能な場合)、**仮想コア**の数、**バックアップ保有期間**、および**バックアップ冗長オプション**を更新できます。 復元中に、**価格レベル** (Basic、汎用、またはメモリ最適化) と**ストレージ**のサイズはいずれも変更できません。
+    場所を選択したら、 **[サーバーの構成]** を選択して、**コンピューティング世代** (選択したリージョンで利用可能な場合)、**仮想コア** の数、**バックアップ保有期間**、および **バックアップ冗長オプション** を更新できます。 復元中に、**価格レベル** (Basic、汎用、またはメモリ最適化) と **ストレージ** のサイズはいずれも変更できません。
 
    :::image type="content" source="./media/howto-restore-server-portal/8-create.png" alt-text="フォームに入力する。"::: 
 
@@ -118,6 +120,8 @@ Azure Database for PostgreSQL では、サーバーの過去の特定時点ま�
 geo リストアによって作成された新しいサーバーには、復元が開始された時点の既存のサーバーで有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 
 復元中に作成される新しいサーバーには、元のサーバーに存在するファイアウォール規則または VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。
+
+ソース PostgreSQL サーバーがカスタマー マネージド キーで暗号化されている場合、追加の考慮事項については[こちらのドキュメント](concepts-data-encryption-postgresql.md)を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

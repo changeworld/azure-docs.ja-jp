@@ -9,14 +9,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: fa25d07ff034cec50da515341bd9ca604ee28577
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fe452f61d17f0b2014957e3b458ef1ad1b3c539d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319186"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357632"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>チュートリアル:Java アプリケーションを使用して Azure Cosmos DB に Cassandra API アカウントを作成し、キーと値のデータを格納する
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 開発者は、キー/値ペアを使用するアプリケーションを持っていることがあります。 Azure Cosmos DB の Cassandra API アカウントを使用して、キーと値のデータを格納できます。 このチュートリアルでは、Java アプリケーションを使用して、Azure Cosmos DB に Cassandra API アカウントを作成し、データベース (キースペースとも呼ばれます) を追加してテーブルを追加する方法について説明します。 Java アプリケーションでは、[Java ドライバー](https://github.com/datastax/java-driver)を使用して、ユーザー ID、ユーザー名、ユーザーの住所などの詳細情報を格納するユーザー データベースを作成します。  
 
@@ -33,7 +34,7 @@ ms.locfileid: "87319186"
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。 
 
-* 最新バージョンの [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) を入手します。 
+* 最新バージョンの [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable&preserve-view=true) を入手します。 
 
 * [Maven](https://maven.apache.org/) バイナリ アーカイブを[ダウンロード](https://maven.apache.org/download.cgi)して[インストール](https://maven.apache.org/install.html)します。 
   - Ubuntu で `apt-get install maven` を実行して Maven をインストールします。 
@@ -91,21 +92,21 @@ cassandra_password=<FILLME_with_PRIMARY PASSWORD>
  
 2. `cassandra-demo` フォルダーを検索します。 テキスト エディターを使用して、生成された `pom.xml` ファイルを開きます。 
 
-   Cassandra 依存関係を追加し、[pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/pom.xml) ファイルで示されているように、お客様のプロジェクトに必要なプラグインをビルドします。  
+   Cassandra 依存関係を追加し、[pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/pom.xml) ファイルで示されているように、お客様のプロジェクトに必要なプラグインをビルドします。  
 
 3. `cassandra-demo\src\main` フォルダーの下に、`resources` という名前の新しいフォルダーを作成します。  resources フォルダーの下に、config.properties ファイルと log4j.properties ファイルを追加します。
 
-   - [config.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/resources/config.properties) ファイルには、Cassandra API アカウントの接続エンドポイントとキーの値が格納されます。 
+   - [config.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/resources/config.properties) ファイルには、Cassandra API アカウントの接続エンドポイントとキーの値が格納されます。 
    
-   - [log4j.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/resources/log4j.properties) ファイルでは、Cassandra API との対話に必要なログ記録のレベルを定義します。  
+   - [log4j.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/resources/log4j.properties) ファイルでは、Cassandra API との対話に必要なログ記録のレベルを定義します。  
 
 4. `src/main/java/com/azure/cosmosdb/cassandra/` フォルダーを参照します。 cassandra フォルダー内に、`utils` という名前の別のフォルダーを作成します。 新しいフォルダーには、Cassandra API アカウントに接続するために必要なユーティリティ クラスが格納されます。 
 
-   クラスターを作成し、Cassandra セッションを開いたり閉じたりするには、[CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) クラスを追加します。 クラスターは Azure Cosmos DB の Cassandra API アカウントに接続し、アクセスするセッションを返します。 config.properties ファイルから接続文字列の情報を読み取るには、[Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) クラスを使用します。 
+   クラスターを作成し、Cassandra セッションを開いたり閉じたりするには、[CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) クラスを追加します。 クラスターは Azure Cosmos DB の Cassandra API アカウントに接続し、アクセスするセッションを返します。 config.properties ファイルから接続文字列の情報を読み取るには、[Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) クラスを使用します。 
 
 5. Java のサンプルでは、ユーザー名、ユーザー ID、ユーザーの住所などのユーザー情報が含まれるデータベースを作成します。 main 関数でユーザーの詳細にアクセスするには、get メソッドと set メソッドを定義する必要があります。
  
-   get メソッドと set メソッドを含む [User.java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java) クラスを `src/main/java/com/azure/cosmosdb/cassandra/` フォルダーに作成します。 
+   get メソッドと set メソッドを含む [User.java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java) クラスを `src/main/java/com/azure/cosmosdb/cassandra/` フォルダーに作成します。 
 
 ## <a name="add-a-database-and-a-table"></a>データベースとテーブルを追加する  
 
@@ -219,7 +220,7 @@ cassandra_password=<FILLME_with_PRIMARY PASSWORD>
 
    ターミナル ウィンドウに、キースペースとテーブルが作成されたという通知が表示されます。 
    
-2. Azure portal で**データ エクスプローラー**を開き、キースペースとテーブルが作成されたことを確認します。
+2. Azure portal で **データ エクスプローラー** を開き、キースペースとテーブルが作成されたことを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

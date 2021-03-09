@@ -1,17 +1,17 @@
 ---
 title: Azure Stream Analytics のエラー コードについてのトラブルシューティング
 description: 内部エラー コードに関する Azure Stream Analytics の問題のトラブルシューティングを行います。
-ms.author: mamccrea
-author: mamccrea
+ms.author: sidram
+author: sidramadoss
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 9dc3d873ddfef9a729f583cd914ca4700d562ff3
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: ddea74997850ff080f6c82d55d1be3cfb851deda
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045231"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019382"
 ---
 # <a name="azure-stream-analytics-internal-error-codes"></a>Azure Stream Analytics の内部エラー コード
 

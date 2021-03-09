@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 16c8058da30821a53a20cf3ea6afdb0e4dbfcb77
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: af88f0b3403fb80acbb7dacebe293ac583e35799
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535095"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716032"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>パート 2: ID に共有レベルのアクセス許可を割り当てる
 
@@ -47,12 +47,12 @@ Azure portal、Azure PowerShell、または Azure CLI を使用して、共有�
 1. Azure portal でファイル共有に移動するか、[ファイル共有を作成](storage-how-to-create-file-share.md)します。
 1. **[アクセス制御 (IAM)]** を選択します。
 1. **[ロールの割り当てを追加する]** を選択します。
-1. **[ロールの割り当ての追加]** ブレードで、 **[ロール]** リストから適切な組み込みロール (ストレージ ファイル データ SMB 共有閲覧者、ストレージ ファイル データ SMB 共有共同作成者) を選択します。 **[アクセスの割り当て先]** は既定の設定のままにしておきます。**Azure AD のユーザー、グループ、サービス プリンシパル**。 名前またはメール アドレスで、ターゲット Azure AD ID を選択します。 選択した Azure AD ID は、ハイブリッド ID である必要があり、クラウドのみの ID にすることはできません。 これは、同じ ID が AD DS でも表示されることを意味します。
+1. **[ロールの割り当ての追加]** ブレードで、 **[ロール]** リストから適切な組み込みロール (ストレージ ファイル データ SMB 共有閲覧者、ストレージ ファイル データ SMB 共有共同作成者) を選択します。 **[アクセスの割り当て先]** は既定の設定のままにしておきます。**Azure AD のユーザー、グループ、サービス プリンシパル**。 名前またはメール アドレスで、ターゲット Azure AD ID を選択します。 **選択した Azure AD ID は、ハイブリッド ID である必要があり、クラウドのみの ID にすることはできません。** これは、同じ ID が AD DS でも表示されることを意味します。
 1. **[保存]** を選択して、ロールの割り当て操作を完了します。
 
 ### <a name="powershell"></a>PowerShell
 
-次の PowerShell サンプルは、Azure ロールをサインイン名に基づいて Azure AD ID に割り当てる方法を示しています。 PowerShell を使用した Azure ロールの割り当ての詳細については、「[RBAC と Azure PowerShell を使用してアクセスを管理する](../../role-based-access-control/role-assignments-powershell.md)」を参照してください。
+次の PowerShell サンプルは、Azure ロールをサインイン名に基づいて Azure AD ID に割り当てる方法を示しています。 PowerShell で Azure ロールを割り当てる方法の詳細については、[Azure PowerShell モジュールを使用した Azure ロールの割り当ての追加または削除](../../role-based-access-control/role-assignments-powershell.md)に関するページをご覧ください。
 
 次のサンプル スクリプトを実行する前に、プレースホルダー値 (かっこを含む) を独自の値に置き換えます。
 
@@ -67,7 +67,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 ### <a name="cli"></a>CLI
   
-次の CLI 2.0 コマンドでは、Azure ロールをサインイン名に基づいて Azure AD ID に割り当てています。 Azure CLI を使用した Azure ロールの割り当ての詳細については、「[RBAC と Azure CLI を使用してアクセスを管理する](../../role-based-access-control/role-assignments-cli.md)」を参照してください。 
+次の CLI 2.0 コマンドでは、Azure ロールをサインイン名に基づいて Azure AD ID に割り当てています。 Azure CLI で Azure ロールを割り当てる方法の詳細については、「[Azure CLI を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-cli.md)」をご覧ください。 
 
 次のサンプル スクリプトを実行する前に、プレースホルダー値 (かっこを含む) を独自の値に置き換えることを忘れないでください。
 

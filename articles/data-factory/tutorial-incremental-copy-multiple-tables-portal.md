@@ -1,26 +1,22 @@
 ---
 title: Azure portal を使用して複数のテーブルを増分コピーする
-description: このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database のデータベースに差分データを増分コピーする Azure Data Factory パイプラインを作成します。
-services: data-factory
+description: このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database のデータベースに差分データを読み込むパイプラインを使用して Azure データ ファクトリを作成します。
 ms.author: yexu
 author: dearandyxu
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/10/2020
-ms.openlocfilehash: c215c2cb256ab37bcb096c018aefb3a410ab1e4f
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.date: 02/18/2021
+ms.openlocfilehash: 3b97887e7bbd31fc1bb6ec0a074267aa081184c8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85251150"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724899"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Azure portal を使用して、SQL Server にある複数のテーブルから Azure SQL Database のデータベースにデータを増分読み込みする
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 このチュートリアルでは、SQL Server データベースにある複数のテーブルから Azure SQL Database のデータベースに差分データを読み込むパイプラインを使用して Azure データ ファクトリを作成します。    
 
@@ -75,7 +71,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. SQL Server Management Studio を開き、SQL Server データベースに接続します。
 
-1. **サーバー エクスプローラー**で目的のデータベースを右クリックし、 **[新しいクエリ]** を選択します。
+1. **サーバー エクスプローラー** で目的のデータベースを右クリックし、 **[新しいクエリ]** を選択します。
 
 1. データベースに対して次の SQL コマンドを実行し、`customer_table` および `project_table` という名前のテーブルを作成します。
 
@@ -115,7 +111,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. SQL Server Management Studio を開き、Azure SQL Database のデータベースに接続します。
 
-1. **サーバー エクスプローラー**で目的のデータベースを右クリックし、 **[新しいクエリ]** を選択します。
+1. **サーバー エクスプローラー** で目的のデータベースを右クリックし、 **[新しいクエリ]** を選択します。
 
 1. データベースに対して次の SQL コマンドを実行し、`customer_table` および `project_table` という名前のテーブルを作成します。  
     
@@ -168,8 +164,8 @@ AS
 
 BEGIN
 
-    UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime 
+UPDATE watermarktable
+SET [WatermarkValue] = @LastModifiedtime 
 WHERE [TableName] = @TableName
 
 END
@@ -236,23 +232,23 @@ END
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-2. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。 
+2. 左側のメニューで、 **[リソースの作成]**  >  **[統合]**  >  **[Data Factory]** を選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 3. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFMultiIncCopyTutorialDF**」と入力します。 
  
-   Azure データ ファクトリの名前は **グローバルに一意**にする必要があります。 赤い感嘆符と次のエラーが表示される場合は、データ ファクトリの名前を変更して (yournameADFIncCopyTutorialDF など)、作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
+   Azure データ ファクトリの名前は **グローバルに一意** にする必要があります。 赤い感嘆符と次のエラーが表示される場合は、データ ファクトリの名前を変更して (yournameADFIncCopyTutorialDF など)、作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
   
    `Data factory name "ADFIncCopyTutorialDF" is not available`
 
-4. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
+4. データ ファクトリを作成する Azure **サブスクリプション** を選択します。 
 5. **[リソース グループ]** について、次の手順のいずれかを行います。
      
     - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
     - **[新規作成]** を選択し、リソース グループの名前を入力します。   
     リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
-6. **バージョン**として **[V2]** を選択します。
+6. **バージョン** として **[V2]** を選択します。
 7. データ ファクトリの **場所** を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 8. **Create** をクリックしてください。      
 9. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
@@ -263,7 +259,7 @@ END
 ## <a name="create-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成する
 プライベート ネットワーク (オンプレミス) のデータ ストアから Azure データ ストアにデータを移動するときに、セルフホステッド統合ランタイム (IR) をオンプレミス環境にインストールします。 セルフホステッド IR を使用すると、プライベート ネットワークと Azure との間でデータを移動できます。 
 
-1. Azure Data Factory の UI の **[Let's get started]\(始めましょう\)** ページで、左端のペインの [[管理] タブ](https://docs.microsoft.com/azure/data-factory/author-management-hub)を選択します。
+1. Azure Data Factory の UI の **[Let's get started]\(始めましょう\)** ページで、左端のペインの [[管理] タブ](./author-management-hub.md)を選択します。
 
    ![ホーム ページの [管理] ボタン](media/doc-common-process/get-started-page-manage-button.png)
 
@@ -301,12 +297,12 @@ END
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。
 
     1. **[名前]** に「**SqlServerLinkedService**」と入力します。 
-    1. **[Connect via integration runtime]\(統合ランタイム経由で接続\)** で **[MySelfHostedIR]** を選択します。 これは**重要な**手順です。 既定の統合ランタイムでは、オンプレミスのデータ ストアに接続できません。 そこで、前に作成したセルフホステッド統合ランタイムを使用します。 
+    1. **[Connect via integration runtime]\(統合ランタイム経由で接続\)** で **[MySelfHostedIR]** を選択します。 これは **重要な** 手順です。 既定の統合ランタイムでは、オンプレミスのデータ ストアに接続できません。 そこで、前に作成したセルフホステッド統合ランタイムを使用します。 
     1. **[サーバー名]** に、SQL Server データベースを保持するサーバーの名前を入力します。
     1. **[データベース名]** に、SQL Server にソース データを含むデータベースの名前を入力します。 テーブルを作成してこのデータベースにデータを挿入する作業は、既に前提条件の一部として行っています。 
-    1. **[認証の種類]** で、データベースへの接続に使用する**認証の種類**を選択します。 
+    1. **[認証の種類]** で、データベースへの接続に使用する **認証の種類** を選択します。 
     1. **[ユーザー名]** に、SQL Server データベースにアクセスできるユーザーの名前を入力します。 ユーザー アカウントまたはサーバー名にスラッシュ文字 (`\`) を使用する必要がある場合は、エスケープ文字 (`\`) を使用します。 たとえば `mydomain\\myuser` です。
-    1. **[パスワード]** に、ユーザーの**パスワード**を入力します。 
+    1. **[パスワード]** に、ユーザーの **パスワード** を入力します。 
     1. Data Factory が SQL Server データベースに接続できるかどうかをテストするために、 **[Test connection]\(テスト接続\)** をクリックします。 エラーがあれば修正して、正常に接続できるようにします。 
     1. リンクされたサービスを保存するために、 **[完了]** をクリックします。
 
@@ -321,7 +317,7 @@ END
     1. **[サーバー名]** で、ドロップダウン リストからサーバーの名前を選択します。 
     1. **[データベース名]** で、前提条件の一部として customer_table と project_table を作成したデータベースを選択します。 
     1. **[ユーザー名]** に、データベースにアクセスするユーザーの名前を入力します。 
-    1. **[パスワード]** に、ユーザーの**パスワード**を入力します。 
+    1. **[パスワード]** に、ユーザーの **パスワード** を入力します。 
     1. Data Factory が SQL Server データベースに接続できるかどうかをテストするために、 **[Test connection]\(テスト接続\)** をクリックします。 エラーがあれば修正して、正常に接続できるようにします。 
     1. リンクされたサービスを保存するために、 **[完了]** をクリックします。
 
@@ -425,7 +421,7 @@ END
         ```
 
         ![最初の検索アクティビティ - 設定](./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-settings.png)
-1. **[アクティビティ]** ツールボックスから**検索**アクティビティをドラッグアンドドロップし、 **[名前]** に「**LookupNewWaterMarkActivity**」と入力します。
+1. **[アクティビティ]** ツールボックスから **検索** アクティビティをドラッグアンドドロップし、 **[名前]** に「**LookupNewWaterMarkActivity**」と入力します。
         
 1. **[設定]** タブに切り替えます。
 
@@ -438,12 +434,12 @@ END
         ```
     
         ![2 つ目の検索アクティビティ - 設定](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
-1. **[アクティビティ]** ツールボックスから**コピー** アクティビティをドラッグアンドドロップし、 **[名前]** に「**IncrementalCopyActivity**」と入力します。 
+1. **[アクティビティ]** ツールボックスから **コピー** アクティビティをドラッグアンドドロップし、 **[名前]** に「**IncrementalCopyActivity**」と入力します。 
 
-1. 1 つずつ、**検索**アクティビティを**コピー** アクティビティに接続します。 接続するには、**検索**アクティビティの横の**緑**のボックスをドラッグして**コピー** アクティビティにドロップします。 コピー アクティビティの境界線の色が**青**に変わったら、マウス ボタンを離します。
+1. 1 つずつ、**検索** アクティビティを **コピー** アクティビティに接続します。 接続するには、**検索** アクティビティの横の **緑** のボックスをドラッグして **コピー** アクティビティにドロップします。 コピー アクティビティの境界線の色が **青** に変わったら、マウス ボタンを離します。
 
     ![検索アクティビティをコピー アクティビティに接続する](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
-1. パイプラインの**コピー** アクティビティを選択します。 **プロパティ** ウィンドウで **[ソース]** タブに切り替えます。 
+1. パイプラインの **コピー** アクティビティを選択します。 **プロパティ** ウィンドウで **[ソース]** タブに切り替えます。 
 
     1. **[Source Dataset]\(ソース データセット\)** で **[SourceDataset]** を選択します。 
     1. **[クエリの使用]** で **[クエリ]** を選択します。 
@@ -464,7 +460,7 @@ END
     1. **[Table type parameter name]\(テーブルの種類のパラメーター名\)** に「`@{item().TABLE_NAME}`」と入力します。
 
         ![コピー アクティビティ - パラメーター](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
-1. **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 **コピー** アクティビティを**ストアド プロシージャ** アクティビティに接続します。 
+1. **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 **コピー** アクティビティを **ストアド プロシージャ** アクティビティに接続します。 
 
 1. パイプラインの **ストアド プロシージャ** アクティビティを選択します。**プロパティ** ウィンドウの **[全般]** タブで、 **[名前]** に「**StoredProceduretoWriteWatermarkActivity**」と入力します。 
 
@@ -515,7 +511,7 @@ END
 
 ## <a name="monitor-the-pipeline"></a>パイプラインの監視
 
-1. 左側で **[監視]** タブに切り替えます。 **手動トリガー**によってトリガーされたパイプラインの実行を確認できます。 **[パイプライン名]** 列のリンクを使用して、アクティビティの詳細を表示したりパイプラインを再実行したりできます。
+1. 左側で **[監視]** タブに切り替えます。 **手動トリガー** によってトリガーされたパイプラインの実行を確認できます。 **[パイプライン名]** 列のリンクを使用して、アクティビティの詳細を表示したりパイプラインを再実行したりできます。
 
 1. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[パイプライン名]** 列のリンクを選択します。 アクティビティの実行の詳細を確認するには、 **[ACTIVITY NAME]\(アクティビティ名\)** 列の **[詳細]** リンク (眼鏡アイコン) を選択します。 
 
@@ -615,7 +611,7 @@ VALUES
 
 ## <a name="monitor-the-pipeline-again"></a>パイプラインを再度監視する
 
-1. 左側で **[監視]** タブに切り替えます。 **手動トリガー**によってトリガーされたパイプラインの実行を確認できます。 **[パイプライン名]** 列のリンクを使用して、アクティビティの詳細を表示したりパイプラインを再実行したりできます。
+1. 左側で **[監視]** タブに切り替えます。 **手動トリガー** によってトリガーされたパイプラインの実行を確認できます。 **[パイプライン名]** 列のリンクを使用して、アクティビティの詳細を表示したりパイプラインを再実行したりできます。
 
 1. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[パイプライン名]** 列のリンクを選択します。 アクティビティの実行の詳細を確認するには、 **[ACTIVITY NAME]\(アクティビティ名\)** 列の **[詳細]** リンク (眼鏡アイコン) を選択します。 
 
@@ -701,5 +697,3 @@ project_table   2017-10-01 00:00:00.000
 
 > [!div class="nextstepaction"]
 >[Change Tracking テクノロジを使用して Azure SQL Database から Azure BLOB ストレージにデータを増分読み込みする](tutorial-incremental-copy-change-tracking-feature-portal.md)
-
-

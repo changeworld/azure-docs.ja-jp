@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: e58cbe85f30ea09adde45d55bb7b80c710c45495
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e3805fae5bf6cc5ad8cf759d3ba75220c6ddbd8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74792432"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91565073"
 ---
 # <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Azure Logic Apps の統合アカウントに取引先を追加する
 
@@ -47,7 +47,7 @@ ms.locfileid: "74792432"
 
 1. **[パートナー]** タイルを選びます。
 
-   ![[パートナー] タイルを選ぶ](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
+   ![[パートナー] タイルを示すスクリーンショット。](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
 
 1. **[パートナー]** で **[追加]** を選びます。 **[パートナーの追加]** で、次の表の説明に従ってパートナーの詳細を入力します。
 
@@ -100,7 +100,7 @@ ms.locfileid: "74792432"
 
 1. [Azure ポータル](https://portal.azure.com)で、統合アカウントを検索して選択します。 **[パートナー]** タイルを選びます。
 
-   ![[パートナー] タイルを選ぶ](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
+   ![パートナーを削除するときに選択した [パートナー] タイルを示すスクリーンショット。](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
 
 1. **[パートナー]** で、削除するパートナーを選びます。 **[削除]** を選択します。
 

@@ -4,14 +4,14 @@ description: Application Insights Agent のクイックスタート ガイド。
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
-ms.date: 04/23/2019
+ms.date: 01/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 690304ecef80d988f9a554cd10ce4689f5c72133
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 21184e1623fd47e8367d4c5dfbc2c85debe93124
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070141"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587397"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>オンプレミス サーバー向け Azure Monitor Application Insights Agent の概要
 
@@ -26,6 +26,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="download-and-install-via-powershell-gallery"></a>PowerShell ギャラリーからダウンロードしてインストールする
 
 ### <a name="install-prerequisites"></a>必須コンポーネントのインストール
+
+> [!NOTE]
+> 2020 年 4 月の時点で、PowerShell ギャラリーでは TLS 1.1 および 1.0 が非推奨とされています。
+>
+> 必要と思われる追加の前提条件については、[PowerShell ギャラリー の TLS サポート](https://devblogs.microsoft.com/powershell/powershell-gallery-tls-support)に関するページを参照してください。
+>
+
 PowerShell を管理者として実行します。
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
@@ -45,7 +52,7 @@ Install-Module -Name Az.ApplicationMonitor -AllowPrerelease -AcceptLicense
 ### <a name="enable-monitoring"></a>監視を有効にする
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
-Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Enable-ApplicationInsightsMonitoring -ConnectionString xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
     
         
@@ -63,7 +70,7 @@ Expand-Archive -LiteralPath $pathToZip -DestinationPath $pathInstalledModule
 ```
 ### <a name="enable-monitoring"></a>監視を有効にする
 ```powershell
-Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Enable-ApplicationInsightsMonitoring -ConnectionString xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
 
@@ -72,9 +79,9 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 
  テレメトリの表示:
 
-- パフォーマンスと使用状況を監視するための[メトリックを探索](../platform/metrics-charts.md)します。
+- パフォーマンスと使用状況を監視するための[メトリックを探索](../essentials/metrics-charts.md)します。
 - 問題を診断するために[イベントとログを検索](./diagnostic-search.md)します。
-- より高度なクエリのために[分析を使用](../log-query/log-query-overview.md)します。
+- より高度なクエリのために[分析を使用](../logs/log-query-overview.md)します。
 - [ダッシュボードを作成](./overview-dashboard.md)します。
 
  テレメトリの追加:

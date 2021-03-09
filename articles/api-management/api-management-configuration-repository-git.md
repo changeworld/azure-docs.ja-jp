@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: fb252ac0b4863138fb2a9c3008dc6475bc988e5f
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 18cc42c3447de733447c27db52a9a6d664539464
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723947"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89400359"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
 
@@ -47,7 +47,7 @@ Git を使用して API Management サービス インスタンスを管理す�
 
 ## <a name="access-git-configuration-in-your-service"></a>サービスの Git 構成にアクセスする
 
-Git 構成設定を表示して構成するには、 **[セキュリティ]** メニューをクリックし、 **[構成リポジトリ]** タブに移動します。
+Git 構成設定を表示および構成するには、 **[デプロイとインフラストラクチャ]** メニューをクリックし、 **[リポジトリ]** タブに移動できます。
 
 ![Enable GIT][api-management-enable-git]
 
@@ -62,7 +62,7 @@ REST API を使用して Git アクセスを有効または無効にする方法
 
 まず、リポジトリを複製する前に、サービス構成の現在の状態をリポジトリに保存します。 **[リポジトリに保存する]** をクリックします。
 
-必要に応じて確認画面で変更を行い、 **[OK]** をクリックして保存します。
+確認画面で必要な変更を行い、 **[保存]** をクリックして保存します。
 
 しばらくすると構成が保存されます。また、最後に構成を変更した日時、サービス構成とリポジトリの間で最後に行われた同期の日時など、リポジトリの構成状態が表示されます。
 
@@ -112,7 +112,7 @@ git clone https://username:url encoded password@{name}.scm.azure-api.net/
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>最新のサービス インスタンス構成を使用してローカル リポジトリを更新するには
 
-Azure Portal または REST API で API Management サービス インスタンスに変更を加える場合、これらの変更をリポジトリに保存しておく必要があります。その後、最新の変更を使用してローカル リポジトリを更新できます。 これを行うには、Azure Portal の **[構成リポジトリ]** タブで **[構成をリポジトリに保存する]** をクリックし、ローカル リポジトリで次のコマンドを発行します。
+Azure Portal または REST API で API Management サービス インスタンスに変更を加える場合、これらの変更をリポジトリに保存しておく必要があります。その後、最新の変更を使用してローカル リポジトリを更新できます。 これを行うには、Azure portal の **[リポジトリ]** タブで **[リポジトリに保存する]** をクリックし、ローカル リポジトリで次のコマンドを発行します。
 
 ```
 git pull
@@ -198,7 +198,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 }
 ```
 
-最初の 4 つの設定 (`RegistrationEnabled`、`UserRegistrationTerms`、`UserRegistrationTermsEnabled`、`UserRegistrationTermsConsentRequired`) は、 **[セキュリティ]** セクションの **[ID]** タブにある次の設定に対応します。
+最初の 4 つの設定 (`RegistrationEnabled`、`UserRegistrationTerms`、`UserRegistrationTermsEnabled`、`UserRegistrationTermsConsentRequired`) は、 **[開発者ポータル]** セクションの **[ID]** タブにある次の設定に対応します。
 
 | ID の設定 | 対応する設定 |
 | --- | --- |
@@ -208,7 +208,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 | UserRegistrationTermsConsentRequired |**[同意を要求する]** チェック ボックス |
 | RequireUserSigninEnabled |**[匿名ユーザーをサインイン ページにリダイレクトする]** チェック ボックス |
 
-その次の 4 つの設定 (`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled`、`DelegationValidationKey`) は、 **[セキュリティ]** セクションの **[委任]** タブにある次の設定に対応します。
+次の 4 つの設定 (`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled`、`DelegationValidationKey`) は、 **[開発者ポータル]** セクションの **[委任]** タブにある次の設定に対応します。
 
 | 委任の設定 | 対応する設定 |
 | --- | --- |

@@ -1,19 +1,16 @@
 ---
 title: Apache Hadoop 用の Java MapReduce を作成する - Azure HDInsight
 description: Apache Maven を使用して Java ベースの MapReduce アプリケーションを作成し、Azure HDInsight 上で Hadoop を使用して実行する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 01/16/2020
-ms.openlocfilehash: 84d9253b865ddac6d97395af3d8632e29cc2ea24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7c1a6623883cbee46ba98982808f3c392dc50ffa
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323810"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946648"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>HDInsight 上の Apache Hadoop 用の Java MapReduce プログラムを開発する
 
@@ -21,7 +18,7 @@ Apache Maven を使用して Java ベースの MapReduce アプリケーショ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java Developer キット](https://aka.ms/azure-jdks) (JDK) バージョン 8
+* [Java Developer キット](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK) バージョン 8
 
 * Apache に従って適切に[インストール](https://maven.apache.org/install.html)された [Apache Maven](https://maven.apache.org/download.cgi)。  Maven は Java プロジェクトのプロジェクト ビルド システムです。
 

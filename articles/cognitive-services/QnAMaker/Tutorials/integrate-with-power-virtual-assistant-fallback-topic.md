@@ -1,14 +1,16 @@
 ---
 title: チュートリアル:Power Virtual Agents との統合 - QnA Maker
 description: このチュートリアルでは、アクティブ ラーニングを使用してナレッジ ベースの質を向上させます。 既存の質問を削除したり変更したりせずに、レビュー、承諾または却下、あるいは追加を行います。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 06/08/2020
-ms.openlocfilehash: f1d51f6ad8892252161238eb71fbb02f463463fd
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.date: 11/09/2020
+ms.openlocfilehash: 3801bb44fed6bf24788957c41de77c89b3025ae8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84635389"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351114"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>チュートリアル:Power Virtual Agents にナレッジ ベースを追加する
 ナレッジ ベースから回答を提供するように [Power Virtual Agents](https://powervirtualagents.microsoft.com/) ボットを作成して拡張します。
@@ -51,7 +53,7 @@ Power Virtual Agents のエージェントを QnA Maker のナレッジ ベー�
     * (Power Automate フローに対して) アクションを呼び出します。
 * [Power Automate](https://us.flow.microsoft.com/) ポータルで、次のようにします。
     * _[Generate answer using QnA Maker]\(QnA Maker を使用して回答を生成\)_ テンプレートを検索します
-    * テンプレートを使用して、[QnA Maker の GenerateAnswer](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/) を使用するようにフローを構成します。
+    * テンプレートを使用して、[QnA Maker の GenerateAnswer](/connectors/cognitiveservicesqnamaker/) を使用するようにフローを構成します。
         * QnA Maker によって公開されたナレッジ ベース情報:
             * ナレッジ ベース ID
             * QnA Maker リソース エンドポイント ホスト
@@ -137,6 +139,9 @@ Power Virtual Agents の作成キャンバスを使用して、フォールバ�
 
 ## <a name="create-a-power-automate-flow-to-connect-to-your-knowledge-base"></a>ナレッジ ベースに接続するための Power Automate フローを作成する
 
+> [!NOTE]
+> 現在、Power Automate テンプレートでは、QnA Maker マネージド (プレビュー) エンドポイントはサポートされていません。 QnA Maker マネージド (プレビュー) ナレッジ ベースを Power Automate に追加するには、この手順をスキップし、手動でエンドポイントを追加します。 
+
 次の手順では、以下を行う Power Automate フローを作成します。
 * 入力されたユーザー テキストを受け取り、QnA Maker に送信します。
 * 上位の応答をエージェントに返します。
@@ -152,7 +157,7 @@ Power Virtual Agents の作成キャンバスを使用して、フォールバ�
 1. **[Generate Answer]\(回答の生成\)** アクション ボックスを選択し、「[ナレッジ ベースの作成と公開](#create-and-publish-a-knowledge-base)」というタイトルの付いた前のセクションからの QnA Maker 設定を入力します。 次の図の **[サービス ホスト]** は、ナレッジ ベースのホスト **Host** を参照し、`https://YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker` の形式になっています。
 
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="[続行] ボタンが強調表示されている QnA Maker テンプレート フローの部分的なスクリーンショット。":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="QnA Maker テンプレート フローの部分的なスクリーンショット。[Generate Answer]\(回答の生成\) (プレビュー) が強調表示されています。":::
 
 1. **[保存]** を選択してフローを保存します。
 
@@ -199,10 +204,10 @@ Power Virtual Agents の作成キャンバスを使用して、フォールバ�
 
 1. コンテキスト ツール バーから、 **[Save]\(保存\)** を選択して、このトピックに対する作成キャンバスの詳細を保存します。
 
-最終的なエージェント キャンバスを次に示します。
+最終的なエージェント キャンバスは次のようになります。
 
 > [!div class="mx-imgBorder"]
-> ![最終的なエージェント キャンバスのスクリーンショット](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
+> ![最終的なエージェント キャンバスのスクリーンショット。トリガー フレーズ、アクション、メッセージの各セクションを確認できます。](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
 
 ## <a name="test-the-agent"></a>エージェントをテストする
 
@@ -253,6 +258,6 @@ Power Virtual Agents の作成キャンバスを使用して、フォールバ�
 [ナレッジ ベースに関する分析結果の取得](../How-To/get-analytics-knowledge-base.md)
 
 各項目の詳細情報
-* [Power Virtual Agents](https://docs.microsoft.com/power-virtual-agents/)
-* [Power Automate](https://docs.microsoft.com/power-automate/)
-* [QnA Maker コネクタ](https://us.flow.microsoft.com/connectors/shared_cognitiveservicesqnamaker/qna-maker/)と[コネクタの設定](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/)
+* [Power Virtual Agents](/power-virtual-agents/)
+* [Power Automate](/power-automate/)
+* [QnA Maker コネクタ](https://us.flow.microsoft.com/connectors/shared_cognitiveservicesqnamaker/qna-maker/)と[コネクタの設定](/connectors/cognitiveservicesqnamaker/)

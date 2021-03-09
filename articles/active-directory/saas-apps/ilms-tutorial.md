@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 219dd6e4a8f04da8b28a28e5473394f0721e4013
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7289fe2ec1f39679dcec95f1f48a6efa9ed0cdfc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545210"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460344"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>チュートリアル:iLMS と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88545210"
 * ユーザーが自分の Azure AD アカウントを使用して iLMS に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 iLMS では、**SP と IDP** によって開始される SSO がサポートされます
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 iLMS では、 **SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-ilms-from-the-gallery"></a>ギャラリーからの iLMS の追加
 
@@ -47,7 +47,7 @@ Azure AD への iLMS の統合を構成するには、ギャラリーから管�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**iLMS**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **iLMS** 」と入力します。
 1. 結果のパネルから **[iLMS]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -110,7 +110,7 @@ iLMS で Azure AD SSO を構成してテストするには、次の構成要素�
 
     g. **[保存]** をクリックします。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -126,33 +126,33 @@ iLMS で Azure AD SSO を構成してテストするには、次の構成要素�
 
 ### <a name="configure-ilms-sso"></a>iLMS の SSO の構成
 
-1. 別の Web ブラウザー ウィンドウで、**iLMS 管理者ポータル**に管理者としてサインインします。
+1. 別の Web ブラウザー ウィンドウで、 **iLMS 管理者ポータル** に管理者としてサインインします。
 
 2. **[Settings (設定)]** タブの **[SSO:SAML]** をクリックして SAML 設定を開き、次の手順を実行します。
 
-    ![Configure single sign-on](./media/ilms-tutorial/1.png)
+    ![i L M S 設定タブを示すスクリーンショット (S S O SAML を選択可能)。](./media/ilms-tutorial/1.png)
 
 3. **[Service Provider (サービス プロバイダー)]** セクションを展開し、 **[Identifier (識別子)]** と **[Endpoint (URL) (エンドポイント (URL))]** の値をコピーします。
 
-    ![Configure single sign-on](./media/ilms-tutorial/2.png) 
+    ![値を取得できる [SAML Settings]\(SAML 設定\) を示すスクリーンショット。](./media/ilms-tutorial/2.png) 
 
 4. **[Identity Provider (ID プロバイダー)]** セクションで、 **[Import Metadata (メタデータのインポート)]** をクリックします。
 
-5. Azure portal で **[SAML 署名証明書]** セクションからダウンロードした**フェデレーション メタデータ** ファイルを選択します。
+5. Azure portal で **[SAML 署名証明書]** セクションからダウンロードした **フェデレーション メタデータ** ファイルを選択します。
 
-    ![Configure single sign-on](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
+    ![メタデータ ファイルを選択できる [SAML Settings]\(SAML 設定\) を示すスクリーンショット。](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
 
 6. JIT プロビジョニングを有効にして未認識のユーザーの iLMS アカウントを作成する場合は、次の手順に従います。
 
     a. **[Create Un-recognized User Account (未認識のユーザー アカウントの作成)]** をクリックします。
 
-    ![Configure single sign-on](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
+    ![[Create Un-recognized User Account]\(未認識のユーザー アカウントの作成\) オプションを示すスクリーンショット。](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
 
     b. Azure AD の属性を ILMS の属性にマップします。 属性欄に、属性名または既定値を指定します。
 
     c. **[Business Rules (ビジネス ルール)]** タブに移動し、次の手順を実行します。
 
-    ![Configure single sign-on](./media/ilms-tutorial/5.png)
+    ![この手順での情報を入力できる [Business Rules]\(ビジネス ルール\) 設定を示すスクリーンショット。](./media/ilms-tutorial/5.png)
 
     d. シングル サインオンの時点で存在していないリージョン、事業部、および部署を作成するには、 **[Create Un-recognized Regions, Divisions and Departments (未認識のリージョン、事業部、および部署)]** をオンにします。
 
@@ -164,7 +164,7 @@ iLMS で Azure AD SSO を構成してテストするには、次の構成要素�
 
 7. **[Save (保存)]** ボタンをクリックして、設定を保存します。
 
-    ![Configure single sign-on](./media/ilms-tutorial/save.png)
+    ![[Save]\(保存\) ボタンを示すスクリーンショット。](./media/ilms-tutorial/save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -206,11 +206,11 @@ iLMS で Azure AD SSO を構成してテストするには、次の構成要素�
 
 2. **[Users]\(ユーザー\)** タブの **[Register User]\(ユーザーの登録\)** をクリックして **[Register User]\(ユーザーの登録\)** ページを開きます。
 
-   ![従業員の追加](./media/ilms-tutorial/3.png)
+   ![[Register User]\(ユーザーの登録\) を選択できる i L M S 設定タブを示すスクリーンショット。](./media/ilms-tutorial/3.png)
 
 3. **[Register User]\(ユーザーの登録\)** ページで次の手順を実行します。
 
-    ![従業員の追加](./media/ilms-tutorial/create_testuser_add.png)
+    ![指定された情報を入力できる [Register User]\(ユーザーの登録\) ページを示すスクリーンショット。](./media/ilms-tutorial/create_testuser_add.png)
 
     a. **[First Name]** ボックスに、ユーザーの名を入力します (この例では Britta)。
 
@@ -231,12 +231,12 @@ iLMS で Azure AD SSO を構成してテストするには、次の構成要素�
 
 ### <a name="test-sso"></a>SSO のテスト
 
-アクセス パネルで iLMS タイルを選択すると、SSO を設定した iLMS に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで iLMS タイルを選択すると、SSO を設定した iLMS に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

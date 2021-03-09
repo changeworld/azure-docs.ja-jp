@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 6258baf37d00d35da3b7c95519caabdfcaa34b2a
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: ed5768e89482d32bb140e9ba7064de2d20809892
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192637"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020723"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Azure CDN を使用した大きなファイルのダウンロードの最適化
 
@@ -44,10 +44,10 @@ CDN エッジに届いたチャンクはキャッシュされ、即座にユー�
 
 バイト範囲の要求の詳細については、[RFC 7233](https://tools.ietf.org/html/rfc7233) をご覧ください。
 
-CDN は受信したチャンクをすべてキャッシュします。 ファイル全体を CDN のキャッシュに保存する必要はありません。 ファイルまたはバイト範囲に対する後続の要求は CDN キャッシュから処理されます。 すべてのチャンクが CDN にキャッシュされていない場合、プリフェッチを使用して配信元にチャンクが要求されます。 この最適化は、配信元サーバーのバイト範囲要求をサポートする機能に依存します。配信元サーバーがバイト範囲要求をサポートしていない場合、この最適化の効果はありません。 
+CDN は受信したチャンクをすべてキャッシュします。 ファイル全体を CDN のキャッシュに保存する必要はありません。 ファイルまたはバイト範囲に対する後続の要求は CDN キャッシュから処理されます。 すべてのチャンクが CDN にキャッシュされていない場合、プリフェッチを使用して配信元にチャンクが要求されます。 この最適化は、配信元サーバーのバイト範囲要求をサポートする機能に依存します。配信元サーバーがバイト範囲要求をサポートしていない場合、8 MB を超えるサイズのデータのダウンロードを要求すると失敗します。 
 
 ### <a name="conditions-for-large-file-optimization"></a>大きなファイルの最適化の条件
-一般的な Web 配信の最適化を使用すると、**Azure CDN Standard from Microsoft** の大きなファイルの最適化機能が既定で有効になります。 最大ファイル サイズの上限はありません。
+最大ファイル サイズの上限はありません。
 
 
 ## <a name="optimize-for-delivery-of-large-files-with-azure-cdn-from-verizon"></a>Azure CDN from Verizon を使った大きなファイルの配信の最適化

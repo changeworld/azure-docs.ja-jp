@@ -1,19 +1,16 @@
 ---
 title: クイック スタート:Azure CLI を使用した Apache Spark クラスター - Azure HDInsight
 description: このクイック スタートでは、Azure CLI を使って、Azure HDInsight に Apache Spark クラスターを作成する方法を示します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9827c50d034b1c49700869c3274800c194c631a8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: db7e6b8fb6e70d6a64e84da29bbb0a299ed8da2a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499451"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940553"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure HDInsight 内に Apache Spark クラスターを作成する
 
@@ -21,16 +18,13 @@ ms.locfileid: "87499451"
 
 複数のクラスターを一緒に使用している場合は、仮想ネットワークを作成する必要があります。また、Spark クラスターを使用している場合は、Hive Warehouse Connector を使用することもできます。 詳細については、「[Azure HDInsight 用の仮想ネットワークを計画する](../hdinsight-plan-virtual-network-deployment.md)」と「[Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する](../interactive-query/apache-hive-warehouse-connector.md)」を参照してください。
 
-## <a name="prerequisites"></a>前提条件
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (Azure Cloud Shell を使用したくない場合)。
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="create-an-apache-spark-cluster"></a>Apache Spark クラスターの作成
 
-1. Azure サブスクリプションにサインインします。 Azure Cloud Shell を使用する予定の場合は、次のコード ブロックの右上隅で **[使ってみる]** を選択します。 それ以外の場合、次のコマンドを入力します。
+1. Azure サブスクリプションにサインインします。 Azure Cloud Shell を使用する予定の場合は、次のコード ブロックの右上隅で **[試してみる]** を選択します。 それ以外の場合、次のコマンドを入力します。
 
     ```azurecli-interactive
     az login

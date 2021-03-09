@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: b2ebe07f5ae2846f48bc5762a49ad018610af73a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 211fc85f97069fcf3251048a074d625e777f8e7d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260612"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100475"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB Bulk Executor ライブラリの概要
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
  
 Azure Cosmos DB は高速で柔軟なグローバル分散データベース サービスであり、弾力的にスケールアウトして以下をサポートするように設計されています。 
 
@@ -25,6 +26,9 @@ Bulk Executor ライブラリは、このような大きなスループットと
 
 > [!NOTE] 
 > 現時点では、Bulk Executor ライブラリはインポート操作と更新操作をサポートし、Azure Cosmos DB SQL API アカウントと Gremlin API アカウントによってのみサポートされます。
+
+> [!IMPORTANT]
+> バルク エグゼキューター ライブラリは現在、[サーバーレス](serverless.md) アカウントではサポートされていません。 .NET では、SDK の V3 バージョンで使用できる[一括サポート](https://devblogs.microsoft.com/cosmosdb/introducing-bulk-support-in-the-net-sdk/)を使用することをお勧めします。
  
 ## <a name="key-features-of-the-bulk-executor-library"></a>Bulk Executor ライブラリの主な機能  
  

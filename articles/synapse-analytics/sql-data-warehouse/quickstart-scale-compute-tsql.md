@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics のコンピューティングをスケーリングする - T-SQL
-description: T-SQL と SQL Server Management Studio (SSMS) を使用して、Azure Synapse Analytics のコンピューティングをスケーリングします。 コンピューティングをスケールアウトしてパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。
+title: 'クイックスタート: 専用 SQL プール (以前の SQL DW) のコンピューティングをスケーリングする - T-SQL'
+description: T-SQL と SQL Server Management Studio (SSMS) を使用して、専用 SQL プール (以前の SQL DW) のコンピューティングをスケーリングします。 コンピューティングをスケールアウトしてパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。
 services: synapse-analytics
 author: Antvgski
 manager: craigg
@@ -11,30 +11,30 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: cb813c9a30b644459f3e586ed4313ca070b5a746
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: ffffeb38aeb9d1f01f376d58a52323bb7b84b306
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212923"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676325"
 ---
-# <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>クイック スタート:T-SQL を使用して Azure Synapse Analytics のコンピューティングをスケーリングする
+# <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-t-sql"></a>クイックスタート: Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) に使用されるコンピューティングを T-SQL を使用してスケーリングする
 
-T-SQL と SQL Server Management Studio (SSMS) を使用して、Azure Synapse Analytics (旧称 SQL DW) のコンピューティングをスケーリングします。 [コンピューティングをスケールアウト](sql-data-warehouse-manage-compute-overview.md)してパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。
+T-SQL と SQL Server Management Studio (SSMS) を使用して、専用 SQL プール (以前の SQL DW) のコンピューティングをスケーリングします。 [コンピューティングをスケールアウト](sql-data-warehouse-manage-compute-overview.md)してパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) をダウンロードしてインストールします。
+最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) をダウンロードしてインストールします。
 
-## <a name="create-a-data-warehouse"></a>データ ウェアハウスの作成
+## <a name="create-a-dedicated-sql-pool-formerly-sql-dw"></a>専用 SQL プール (以前の SQL DW) を作成する
 
-[ポータルでの作成と接続に関するクイックスタート](create-data-warehouse-portal.md)を使用して、**mySampleDataWarehouse** という名前のデータ ウェアハウスを作成します。 クイックスタートを完了して、ファイアウォール規則があり、SQL Server Management Studio 内からデータ ウェアハウスに接続できることを確認します。
+[ポータルでの作成と接続に関するクイックスタート](create-data-warehouse-portal.md)を使用して、**mySampleDataWarehouse** という名前の専用 SQL プール (以前の SQL DW) を作成します。 クイックスタートを完了して、ファイアウォール規則があり、SQL Server Management Studio 内から専用 SQL プール (以前の SQL DW) に接続できることを確認します。
 
 ## <a name="connect-to-the-server-as-server-admin"></a>サーバー管理者としてサーバーに接続する
 
-このセクションでは、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) を使って、Azure SQL Server に対する接続を確立します。
+このセクションでは、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) を使って、Azure SQL Server に対する接続を確立します。
 
 1. SQL Server Management Studio を開きます。
 
@@ -58,9 +58,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="view-service-objective"></a>サービス目標の表示
 
-サービス目標設定には、データ ウェアハウスの Data Warehouse ユニットの数が含まれています。
+サービス目標設定には、専用 SQL プール (以前の SQL DW) の Data Warehouse ユニットの数が含まれています。
 
-データ ウェアハウスの現在の Data Warehouse ユニットを表示するには:
+専用 SQL プール (以前の SQL DW) に使用されている現在の Data Warehouse ユニットを確認するには、次の手順に従います。
 
 1. **mySampleDataWarehouseservername.database.windows.net** への接続で、**System Databases** を展開します。
 2. **master** を右クリックし、 **[新しいクエリ]** を選択します。 新しいクエリ ウィンドウが開きます。
@@ -85,12 +85,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="scale-compute"></a>コンピューティングのスケーリング
 
-Azure Synapse では、Data Warehouse ユニットを調整してコンピューティング リソースを増減させることができます。 [ポータルでの作成と接続](create-data-warehouse-portal.md)では、**mySampleDataWarehouse** を作成し、それを 400 DWU で初期化しました。 次の手順では、**mySampleDataWarehouse** の DWU を調整します。
+専用 SQL プール (以前の SQL DW) では、Data Warehouse ユニットを調整してコンピューティング リソースを増減させることができます。 [ポータルでの作成と接続](create-data-warehouse-portal.md)では、**mySampleDataWarehouse** を作成し、それを 400 DWU で初期化しました。 次の手順では、**mySampleDataWarehouse** の DWU を調整します。
 
 Data Warehouse ユニットを変更するには:
 
 1. **master** を右クリックし、 **[新しいクエリ]** を選択します。
-2. [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL ステートメントを使用して、サービス目標を変更します。 次のクエリを実行して、サービス目標を DW300 に変更します。
+2. [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL ステートメントを使用して、サービス目標を変更します。 次のクエリを実行して、サービス目標を DW300 に変更します。
 
     ```Sql
     ALTER DATABASE mySampleDataWarehouse
@@ -130,13 +130,13 @@ Data Warehouse ユニットを変更するには:
 
     ![操作の状態](./media/quickstart-scale-compute-tsql/polling-output.png)
 
-## <a name="check-data-warehouse-state"></a>データ ウェアハウスの状態の確認
+## <a name="check-dedicated-sql-pool-formerly-sql-dw-state"></a>専用 SQL プール (以前の SQL DW) の状態の確認
 
-データ ウェアハウスが一時停止すると、T-SQL で接続することはできません。 データ ウェアハウスの現在の状態を確認する場合は、PowerShell コマンドレットを使用できます。 例については、[データ ウェアハウスの状態の確認 - Powershell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) に関するページを参照してください。
+専用 SQL プール (以前の SQL DW) が一時停止すると、T-SQL で接続することはできません。 専用 SQL プール (以前の SQL DW) の現在の状態を確認する場合は、PowerShell コマンドレットを使用できます。 例については、[PowerShell を使用して専用 SQL プール (以前の SQL DW) の状態を確認する](quickstart-scale-compute-powershell.md#check-data-warehouse-state)方法に関するセクションを参照してください。
 
 ## <a name="check-operation-status"></a>操作の状態の確認
 
-Azure Synapse に対するさまざまな管理操作に関する情報を返すには、[sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV で次のクエリを実行します。 たとえば、操作と操作の状態 (IN_PROGRESS または COMPLETED) が返されます。
+専用 SQL プール (以前の SQL DW) に対するさまざまな管理操作に関する情報を返すには、[sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) DMV で次のクエリを実行します。 たとえば、操作と操作の状態 (IN_PROGRESS または COMPLETED) が返されます。
 
 ```sql
 SELECT *
@@ -150,7 +150,7 @@ AND
 
 ## <a name="next-steps"></a>次のステップ
 
-ここでは、データ ウェアハウスの計算をスケーリングする方法について学習しました。 Azure Synapse に関する理解をさらに深めるために、データの読み込みに関するチュートリアルに進んでください。
+ここでは、専用 SQL プール (以前の SQL DW) の計算をスケーリングする方法について学習しました。 Azure Synapse Analytics に関する理解をさらに深めるために、データの読み込みに関するチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
->[Azure Synapse Analytics にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)
+>[専用 SQL プールにデータを読み込む](./load-data-from-azure-blob-storage-using-copy.md)

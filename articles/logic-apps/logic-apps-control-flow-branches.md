@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 9dafb702117a7e171ff88b3c77d7b8b79503636f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3514ce966e1de9af1741de6b966964aca2599610
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066461"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269235"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー アクションに対して並列分岐を作成または結合する
 
@@ -47,7 +47,7 @@ ms.locfileid: "87066461"
 
 1. 検索ボックスで目的のアクションを探して選択します。
 
-   ![目的のアクションを探して選択する](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
+   ![Logic App Designer の [アクションを選択する] ウィンドウのスクリーンショット。](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
 
    これで、次の例のように、選択したアクションが並列分岐に表示されます。
 
@@ -59,7 +59,7 @@ ms.locfileid: "87066461"
 
 1. 検索ボックスで目的のアクションを探して選択します。
 
-   ![順次アクションを探して選択する](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
+   ![Logic App Designer の [アクションを選択する] ウィンドウと検索ボックスのスクリーンショット。](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
 
    これで、次の例のように、選択したアクションが現在の分岐に表示されます。
 

@@ -1,21 +1,17 @@
 ---
 title: Azure-SSIS Integration Runtime のパフォーマンスを構成する
 description: Azure-SSIS 統合ランタイムのプロパティを高パフォーマンス用に構成する方法について説明します。
-services: data-factory
 ms.date: 01/10/2018
 ms.topic: conceptual
 ms.service: data-factory
-ms.workload: data-services
 author: swinarko
 ms.author: sawinark
-ms.reviewer: ''
-manager: anandsub
-ms.openlocfilehash: 6aaa02c2e14cfc31a11da260da38705ba064ba79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5d275100124660b901504b7e7f71cf93518fd077
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523317"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364394"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Azure-SSIS 統合ランタイムを高パフォーマンス用に構成する
 
@@ -122,8 +118,7 @@ Y 軸は、1 時間に実行が完了したパッケージの数です。 これ
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-既に強力な worker ノードを使ってパッケージを実行している場合、**AzureSSISMaxParallelExecutionsPerNode** の値を大きくすると、統合ランタイムの全体的なスループットが上がる可能性があります。 Standard_D1_v2 ノードでは、ノードあたり 1 ～ 4 の並列実行がサポートされています。 その他のすべての種類のノードでは、ノードあたり 1 から max(2 x コア数, 8) の並列実行がサポートされています。 サポートされている最大値を超える **AzureSSISMaxParallelExecutionsPerNode** を希望する場合は、サポート チケットを開いてください。Microsoft によって最大値が引き上げられた後、Azure PowerShell を使用して **AzureSSISMaxParallelExecutionsPerNode** を更新する必要があります。
-パッケージのコストと、worker ノードの次の構成に基づいて、適切な値を予測できます。 詳しくは、「[汎用仮想マシンのサイズ](../virtual-machines/windows/sizes-general.md)」をご覧ください。
+既に強力な worker ノードを使ってパッケージを実行している場合、**AzureSSISMaxParallelExecutionsPerNode** の値を大きくすると、統合ランタイムの全体的なスループットが上がる可能性があります。 最大値を増やす場合は、Azure PowerShell を使用して **AzureSSISMaxParallelExecutionsPerNode** を更新する必要があります。 パッケージのコストと、worker ノードの次の構成に基づいて、適切な値を予測できます。 詳しくは、「[汎用仮想マシンのサイズ](../virtual-machines/sizes-general.md)」をご覧ください。
 
 | サイズ             | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク パフォーマンス (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
@@ -162,7 +157,7 @@ Y 軸は、1 時間に実行が完了したパッケージの数です。 これ
 
 -   ログ レベルが "詳細" に設定されている場合は、s3 などのより強力なデータベースを選択してください。 非公式の社内テストによると、s3 価格レベルは、2 ノード、並列実行数 128、"詳細" ログ レベルでの SSIS パッケージの実行をサポートできます。
 
-データベースの価格レベルは、Azure Portal でわかる[データベース トランザクション単位](../sql-database/sql-database-what-is-a-dtu.md) (DTU) の使用状況情報に基づいて調整することもできます。
+データベースの価格レベルは、Azure Portal でわかる[データベース トランザクション単位](../azure-sql/database/service-tiers-dtu.md) (DTU) の使用状況情報に基づいて調整することもできます。
 
 ## <a name="design-for-high-performance"></a>高パフォーマンス用の設計
 Azure で実行するための SSIS パッケージの設計は、オンプレミスで実行するためのパッケージの設計とは異なります。 複数の独立したタスクを同じパッケージにまとめるのではなく、Azure SSIS IR での実行効率を上げるために複数のパッケージに分割します。 相互の完了を待機する必要がないように、パッケージごとにパッケージ実行を作成します。 このアプローチでは、Azure-SSIS 統合ランタイムのスケーラビリティのメリットがあり、全体的なスループットが向上します。

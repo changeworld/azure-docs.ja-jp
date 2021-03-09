@@ -1,25 +1,25 @@
 ---
 title: デプロイのトラブルシューティング
-description: Azure Resource Manager テンプレートのデプロイを監視およびトラブルシューティングする方法について学習します。 アクティビティ ログとデプロイ履歴を紹介します。
+description: Azure Resource Manager テンプレート (ARM テンプレート) のデプロイを監視およびトラブルシューティングする方法について学習します。 アクティビティ ログとデプロイ履歴を紹介します。
 author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 68ddb5c07ffac2aad4e2dafd16301fa29f391797
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 31c4e6383b5eaea2bb66dc1baafa0fbff4918a7c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119346"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589119"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>チュートリアル:ARM テンプレート デプロイのトラブルシューティング
 
-Azure Resource Manager (ARM) テンプレート デプロイ エラーのトラブルシューティング方法について説明します。 このチュートリアルでは、テンプレートに 2 つのエラーを設定し、アクティビティ ログとデプロイ履歴を使用して問題を解決する方法について学習します。
+Azure Resource Manager テンプレート (ARM テンプレート) デプロイ エラーのトラブルシューティング方法について説明します。 このチュートリアルでは、テンプレートに 2 つのエラーを設定し、アクティビティ ログとデプロイ履歴を使用して問題を解決する方法について学習します。
 
 テンプレート デプロイに関連するエラーには、次の 2 種類があります。
 
-- **検証エラー**は、デプロイ前に判断できるシナリオで発生します。 これには、テンプレートに構文エラーがある場合や、サブスクリプション クォータを超えるリソースをデプロイしようとしている場合などがあります。
-- **デプロイ エラー**は、デプロイ プロセスで発生する状況に起因します。 これには、並列でデプロイされているリソースにアクセスしようとしている場合などがあります。
+- **検証エラー** は、デプロイ前に判断できるシナリオで発生します。 これには、テンプレートに構文エラーがある場合や、サブスクリプション クォータを超えるリソースをデプロイしようとしている場合などがあります。
+- **デプロイ エラー** は、デプロイ プロセスで発生する状況に起因します。 これには、並列でデプロイされているリソースにアクセスしようとしている場合などがあります。
 
 この 2 種類のエラーでは、デプロイのトラブルシューティングに使用するエラー コードが返されます。 どちらの種類のエラーもアクティビティ ログに表示されます。 ただし、検証エラーは、デプロイが開始されていないため、デプロイ履歴には表示されません。
 
@@ -37,13 +37,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-- Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
+- Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使用して ARM テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
 
 ## <a name="create-a-problematic-template"></a>問題のあるテンプレートの作成
 
 「[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)」から [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) テンプレートを開き、2 つのテンプレートの問題を設定します。
 
-1. Visual Studio Code から、 **[ファイル]** > **[ファイルを開く]** を選択します。
+1. Visual Studio Code から、 **[ファイル]**  >  **[ファイルを開く]** を選択します。
 2. **[ファイル名]** に以下の URL を貼り付けます。
 
     ```url
@@ -51,16 +51,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```
 
 3. **[開く]** を選択して、ファイルを開きます。
-4. **apiVersion** 行を次の行に変更します。
+4. `apiVersion` 行を次の行に変更します。
 
     ```json
     "apiVersion1": "2018-07-02",
     ```
 
-    - **apiVersion1** は無効な要素名です。 これは検証エラーになります。
-    - API バージョンは "2018-07-01" である必要があります。  これはデプロイ エラーになります。
+    - `apiVersion1` は、無効な要素名です。 これは検証エラーになります。
+    - API バージョンは `"2018-07-01"` である必要があります。  これはデプロイ エラーになります。
 
-5. **[ファイル]** > **[名前を付けて保存]** を選択し、ファイルを **azuredeploy.json** としてご自身のローカル コンピューターに保存します。
+5. **[ファイル]**  >  **[名前を付けて保存]** を選択し、ファイルを _azuredeploy.json_ としてご自身のローカル コンピューターに保存します。
 
 ## <a name="troubleshoot-the-validation-error"></a>検証エラーのトラブルシューティング
 
@@ -68,13 +68,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 シェルから次のようなエラーが返されます。
 
-```
+```azurepowershell
 New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; Message=The request content was invalid and could not be deserialized: 'Could not find member 'apiVersion1' on object of type 'TemplateResource'. Path 'properties.template.resources[0].apiVersion1', line 36, position 24.'.
 ```
 
-このエラー メッセージは、**apiVersion1** に問題があることを示しています。
+このエラー メッセージは、`apiVersion1` に問題があることを示しています。
 
-Visual Studio Code を使用して **apiVersion1** を **apiVersion** に変更して問題を解決し、テンプレートを保存します。
+Visual Studio Code を使用して `apiVersion1` を `apiVersion` に変更して問題を解決し、テンプレートを保存します。
 
 ## <a name="troubleshoot-the-deployment-error"></a>デプロイ エラーのトラブルシューティング
 
@@ -82,7 +82,7 @@ Visual Studio Code を使用して **apiVersion1** を **apiVersion** に変更�
 
 シェルから次のようなエラーが返されます。
 
-```
+```azurepowershell
 New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageAccounts 'storeqii7x2rce77dc' failed with message '{
   "error": {
     "code": "NoRegisteredProviderFound",
@@ -96,14 +96,14 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[リソース グループ]** を選択し、目的のリソース グループ名を選択して、リソース グループを開きます。 **[デプロイ]** の下に **[1 件失敗]** が表示されます。
 
-    ![Resource Manager チュートリアルのトラブルシューティング](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
+    ![失敗したデプロイが強調表示されているスクリーンショット。](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
 3. **[エラーの詳細]** を選択します。
 
-    ![Resource Manager チュートリアルのトラブルシューティング](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
+    ![[エラーの詳細] リンクが強調表示されているスクリーンショット。](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
 
     エラー メッセージは、前に示したものと同じです。
 
-    ![Resource Manager チュートリアルのトラブルシューティング](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
+    ![エラーの詳細を示すスクリーンショット。](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
 
 アクティビティ ログからエラーを見つけることもできます。
 

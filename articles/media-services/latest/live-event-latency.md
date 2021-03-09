@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services の LiveEvent の低待機時間設定 | Microsoft Docs
+title: Azure Media Services での LiveEvent の低待機時間設定
 description: このトピックでは、LiveEvent の低待機時間設定の概要について説明し、低待機時間の設定方法を示します。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 114efe668fba47e9d83741b8fa45e1f396725198
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f9f4476e932df9a5f4c093968b2e7c4840e7ff39
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291519"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122903"
 ---
 # <a name="live-event-low-latency-settings"></a>ライブ イベントの低待機時間設定
 
@@ -34,28 +34,9 @@ ms.locfileid: "89291519"
 
 次の .NET の例では、**LiveEvent** に対して **LowLatency** を設定する方法を示しています。
 
-```csharp
-LiveEvent liveEvent = new LiveEvent(
-            location: mediaService.Location, 
-            description: "Sample LiveEvent for testing",
-            vanityUrl: false,
-            encoding: new LiveEventEncoding(
-                        // Set this to Standard to enable a transcoding LiveEvent, and None to enable a pass-through LiveEvent
-                        encodingType:LiveEventEncodingType.None, 
-                        presetName:null
-                    ),
-            input: new LiveEventInput(LiveEventInputProtocol.RTMP,liveEventInputAccess), 
-            preview: liveEventPreview,
-            streamOptions: new List<StreamOptionsFlag?>()
-            {
-                // Set this to Default or Low Latency
-                // To use low latency optimally, you should tune your encoder settings down to 1 second "Group Of Pictures" (GOP) length instead of 2 seconds.
-                StreamOptionsFlag.LowLatency
-            }
-        );
-```                
+[!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#NewLiveEvent)]
 
-完全な例については次を参照してください:[MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126)。
+完全な例はこちら: [Live Event with DVR](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) (DVR を使用したライブ イベント)
 
 ## <a name="live-events-latency"></a>ライブ イベントの待機時間
 

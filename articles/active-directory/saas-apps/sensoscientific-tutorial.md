@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 61807f90caad9e6be2a25e54dcaa837595afc729
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 27512ac694f20544f1fdd5b79b27d7bf2cabdd66
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543174"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675498"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sensoscientific-wireless-temperature-monitoring-system"></a>チュートリアル: Azure Active Directory と SensoScientific Wireless Temperature Monitoring System の統合
 
@@ -27,7 +27,7 @@ SensoScientific Wireless Temperature Monitoring System と Azure AD の統合に
 * ユーザーが自分の Azure AD アカウントを使用して SensoScientific Wireless Temperature Monitoring System に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ SensoScientific Wireless Temperature Monitoring System と Azure AD の統合を
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* SensoScientific Wireless Temperature Monitoring System では、**IDP** によって開始される SSO がサポートされます
+* SensoScientific Wireless Temperature Monitoring System では、 **IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-sensoscientific-wireless-temperature-monitoring-system-from-the-gallery"></a>ギャラリーからの SensoScientific Wireless Temperature Monitoring System の追加
 
@@ -61,13 +61,13 @@ Azure AD への SensoScientific Wireless Temperature Monitoring System の統合
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**SensoScientific Wireless Temperature Monitoring System**」と入力し、結果パネルで **[SensoScientific Wireless Temperature Monitoring System]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **SensoScientific Wireless Temperature Monitoring System** 」と入力し、結果パネルで **[SensoScientific Wireless Temperature Monitoring System]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果一覧の SensoScientific Wireless Temperature Monitoring System](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーを基に、SensoScientific Wireless Temperature Monitoring System で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーを基に、SensoScientific Wireless Temperature Monitoring System で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと SensoScientific Wireless Temperature Monitoring System 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 SensoScientific Wireless Temperature Monitoring System で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -101,7 +101,7 @@ SensoScientific Wireless Temperature Monitoring System で Azure AD シングル
 
     ![[SensoScientific Wireless Temperature Monitoring System のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -125,11 +125,11 @@ SensoScientific Wireless Temperature Monitoring System で Azure AD シングル
 
     a. **[Issuer Name (発行者名)]** として [Azure AD] を選択します。
 
-    b. **[発行者の URL]** ボックスに、Azure portal からコピーした **Azure AD 識別子**を貼り付けます。
+    b. **[発行者の URL]** ボックスに、Azure portal からコピーした **Azure AD 識別子** を貼り付けます。
 
-    c. **[シングル サインオン サービス URL]** ボックスに、Azure portal からコピーした**ログイン URL** を貼り付けます。
+    c. **[シングル サインオン サービス URL]** ボックスに、Azure portal からコピーした **ログイン URL** を貼り付けます。
 
-    d. **[シングル サインアウト サービス URL]** ボックスに、Azure portal からコピーした**ログアウト URL** を貼り付けます。
+    d. **[シングル サインアウト サービス URL]** ボックスに、Azure portal からコピーした **ログアウト URL** を貼り付けます。
 
     e. Azure ポータルからダウンロードした証明書を参照してアップロードします。
 
@@ -151,7 +151,7 @@ SensoScientific Wireless Temperature Monitoring System で Azure AD シングル
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -167,7 +167,7 @@ SensoScientific Wireless Temperature Monitoring System で Azure AD シングル
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーション リストから「**SensoScientific Wireless Temperature Monitoring SystemScaleX Enterprise**」を選択します。
+2. アプリケーション リストから「 **SensoScientific Wireless Temperature Monitoring SystemScaleX Enterprise** 」を選択します。
 
     ![アプリケーションの一覧の SensoScientific Wireless Temperature Monitoring System のリンク](common/all-applications.png)
 
@@ -187,19 +187,18 @@ SensoScientific Wireless Temperature Monitoring System で Azure AD シングル
 
 ### <a name="create-sensoscientific-wireless-temperature-monitoring-system-test-user"></a>SensoScientific Wireless Temperature Monitoring System のテスト ユーザーの作成
 
-Azure AD ユーザーが SensoScientific Wireless Temperature Monitoring System にサインインできるようにするには、ユーザーを SensoScientific Wireless Temperature Monitoring System にプロビジョニングする必要があります。  [SensoScientific Wireless Temperature Monitoring System サポート チーム](https://www.sensoscientific.com/contact-us/) と連携して、SensoScientific Wireless Temperature Monitoring System プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+Azure AD ユーザーが SensoScientific Wireless Temperature Monitoring System にサインインできるようにするには、ユーザーを SensoScientific Wireless Temperature Monitoring System にプロビジョニングする必要があります。 [SensoScientific Wireless Temperature Monitoring System サポート チーム](https://www.sensoscientific.com/contact-us/)と連携して、SensoScientific Wireless Temperature Monitoring System プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [SensoScientific Wireless Temperature Monitoring System] タイルをクリックすると、SSO を設定した SensoScientific Wireless Temperature Monitoring System に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [SensoScientific Wireless Temperature Monitoring System] タイルをクリックすると、SSO を設定した SensoScientific Wireless Temperature Monitoring System に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

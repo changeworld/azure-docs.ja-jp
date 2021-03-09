@@ -1,37 +1,37 @@
 ---
-title: Azure Multi-Factor Authentication の有効化
-description: このチュートリアルでは、ユーザーのグループに対して Azure Multi-Factor Authentication を有効にし、サインイン イベント時に第 2 要素のプロンプトをテストする方法について説明します。
+title: Azure AD の Multi-Factor Authentication を有効にする
+description: このチュートリアルでは、ユーザーのグループに対して Azure AD Multi-Factor Authentication を有効にし、サインイン イベント時に第 2 要素のプロンプトをテストする方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9072c5611f5bd5a4b8cca082cb2bfd7a1e3f1b2
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: f2e8bf2ccbf7a53563013c7ba653a6f6e8905337
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718902"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881312"
 ---
-# <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>チュートリアル:Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する
+# <a name="tutorial-secure-user-sign-in-events-with-azure-ad-multi-factor-authentication"></a>チュートリアル:Azure AD Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する
 
 Multi-Factor Authentication (MFA) は、サインイン イベント中に追加で本人確認できるものをユーザーに求めるプロセスです。 その確認として、各自の携帯電話にコードを入力したり、指紋スキャンを行ったりする方法が考えられます。 2 つ目の認証形式を義務付ければ、その二次的な要素は攻撃者が容易に取得したり複製したりできるようなものではないため、セキュリティが向上します。
 
-Azure Multi-Factor Authentication と条件付きアクセス ポリシーを使用すると、特定のサインイン イベント時にユーザーの MFA を有効にするための柔軟性が得られます。
+Azure AD Multi-Factor Authentication と条件付きアクセス ポリシーを使用すると、特定のサインイン イベント時にユーザーの MFA を有効にするための柔軟性が得られます。 [多要素認証を構成してテナントに適用する方法](https://www.youtube.com/watch?v=qNndxl7gqVM)に関するビデオをご覧ください (**推奨**)。
 
 > [!IMPORTANT]
-> このチュートリアルでは、Azure Multi-Factor Authentication を有効にする方法を管理者に示します。
+> このチュートリアルでは、Azure AD Multi-Factor Authentication を有効にする方法を管理者に示します。
 >
-> IT チームが Azure Multi-Factor Authentication を使用する機能を有効にしていない場合、またはサインイン時に問題が発生した場合は、ヘルプデスクに連絡して追加のサポートを依頼してください。
+> IT チームが Azure AD Multi-Factor Authentication を使用する機能を有効にしていない場合、またはサインイン時に問題が発生した場合は、ヘルプデスクに連絡して追加のサポートを依頼してください。
 
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * ユーザーのグループに対して Azure Multi-Factor Authentication を有効にする条件付きアクセス ポリシーを作成する
+> * ユーザーのグループに対して Azure AD Multi-Factor Authentication を有効にする条件付きアクセス ポリシーを作成する
 > * MFA を求めるポリシーの条件を構成する
 > * ユーザーとして MFA プロセスをテストする
 
@@ -42,18 +42,18 @@ Azure Multi-Factor Authentication と条件付きアクセス ポリシーを使
 * 少なくとも Azure AD Premium P1 または試用版ライセンスが有効になっている、動作している Azure AD テナント。
     * 必要に応じて、[無料で作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * "*グローバル管理者*" 特権を持つアカウント。
-* パスワードがわかっている管理者以外のユーザー (*testuser* など)。 このチュートリアルでは、このアカウントを使用してエンドユーザーの Azure Multi-Factor Authentication エクスペリエンスをテストします。
+* パスワードがわかっている管理者以外のユーザー (*testuser* など)。 このチュートリアルでは、このアカウントを使用してエンドユーザーの Azure AD Multi-Factor Authentication エクスペリエンスをテストします。
     * ユーザーを作成する必要がある場合は、「[クイックスタート: Azure Active Directory に新しいユーザーを追加する](../fundamentals/add-users-azure-active-directory.md)」を参照してください。
-* 管理者以外のユーザーが所属するグループ (*MFA-Test-Group* など)。 このチュートリアルでは、このグループに対して Azure Multi-Factor Authentication を有効にします。
+* 管理者以外のユーザーが所属するグループ (*MFA-Test-Group* など)。 このチュートリアルでは、このグループに対して Azure AD Multi-Factor Authentication を有効にします。
     * グループを作成する必要がある場合は、[Azure Active Directory でグループを作成し、メンバーを追加する](../fundamentals/active-directory-groups-create-azure-portal.md)方法を参照してください。
 
 ## <a name="create-a-conditional-access-policy"></a>条件付きアクセス ポリシーを作成する
 
-Azure Multi-Factor Authentication を有効にして使用する手段として、条件付きアクセス ポリシーを使った方法が推奨されます。 条件付きアクセスを使用すると、サインイン イベントに反応して二次的なアクションを要求したうえで、アプリケーションまたはサービスへのアクセスをユーザーに許可するポリシーを作成、定義することができます。
+Azure AD Multi-Factor Authentication を有効にして使用する手段として、条件付きアクセス ポリシーを使った方法が推奨されます。 条件付きアクセスを使用すると、サインイン イベントに反応して二次的なアクションを要求したうえで、アプリケーションまたはサービスへのアクセスをユーザーに許可するポリシーを作成、定義することができます。
 
 ![条件付きアクセスによってサインイン プロセスにセキュリティを確保するしくみを示す概要図](media/tutorial-enable-azure-mfa/conditional-access-overview.png)
 
-条件付きアクセス ポリシーは、自分の組織を保護しながらも、時間や場所を問わず常にユーザーの生産性を高めることを目指し、粒度の細かい具体的な内容にすることができます。 このチュートリアルでは、ユーザーが Azure portal にサインインしたときに MFA を求める基本的な条件付きアクセス ポリシーを作成してみましょう。 このシリーズの後続のチュートリアルでは、リスクベースの条件付きアクセス ポリシーを使用して Azure Multi-Factor Authentication を構成します。
+条件付きアクセス ポリシーは、自分の組織を保護しながらも、時間や場所を問わず常にユーザーの生産性を高めることを目指し、粒度の細かい具体的な内容にすることができます。 このチュートリアルでは、ユーザーが Azure portal にサインインしたときに MFA を求める基本的な条件付きアクセス ポリシーを作成してみましょう。 このシリーズの後続のチュートリアルでは、リスクベースの条件付きアクセス ポリシーを使用して Azure AD Multi-Factor Authentication を構成します。
 
 まず、次のとおり条件付きアクセス ポリシーを作成し、ユーザーのテスト グループを割り当てます。
 
@@ -92,23 +92,23 @@ Azure Multi-Factor Authentication を有効にして使用する手段として�
 1. *[アクセス制御]* の **[許可]** を選択し、 **[アクセス権の付与]** が選択されていることを確認します。
 1. **[多要素認証を要求する]** チェック ボックスをオンにし、 **[選択]** を選択します。
 
-構成がユーザーに及ぼす影響を確認したい場合、条件付きアクセス ポリシーを "*レポート専用*" に設定することができます。ポリシーをすぐには使用しない場合は、"*オフ*" に設定することもできます。 このチュートリアルでは、ユーザーのテスト グループが対象になっているので、ポリシーを有効にしたうえで、Azure Multi-Factor Authentication をテストしましょう。
+構成がユーザーに及ぼす影響を確認したい場合、条件付きアクセス ポリシーを "*レポート専用*" に設定することができます。ポリシーをすぐには使用しない場合は、"*オフ*" に設定することもできます。 このチュートリアルでは、ユーザーのテスト グループが対象になっているので、ポリシーを有効にしたうえで、Azure AD Multi-Factor Authentication をテストしましょう。
 
 1. *[ポリシーを有効にする]* トグルを **[オン]** に設定します。
 1. 条件付きアクセス ポリシーを適用するには、 **[作成]** を選択します。
 
-## <a name="test-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication をテストする
+## <a name="test-azure-ad-multi-factor-authentication"></a>Azure AD の Multi-Factor Authentication をテストする
 
-条件付きアクセス ポリシーと Azure Multi-Factor Authentication が機能していることを確認しましょう。 まず、次のとおり MFA が求められないリソースにサインインします。
+条件付きアクセス ポリシーと Azure AD Multi-Factor Authentication が機能していることを確認しましょう。 まず、次のとおり MFA が求められないリソースにサインインします。
 
 1. InPrivate またはシークレット モードで新しいブラウザー ウィンドウを開き、[https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com) に移動します。
 1. 管理者ではないテスト ユーザー (*testuser* など) でサインインします。 MFA を求めるプロンプトは表示されません。
 1. ブラウザー ウィンドウを閉じます。
 
-今度は、Azure portal にサインインします。 Azure portal は、追加認証を要求するよう条件付きアクセス ポリシーで構成されているため、Azure Multi-Factor Authentication のプロンプトが表示されます。
+今度は、Azure portal にサインインします。 Azure portal は、追加認証を要求するよう条件付きアクセス ポリシーで構成されているため、Azure AD Multi-Factor Authentication のプロンプトが表示されます。
 
 1. InPrivate または incognito モードで新しいブラウザー ウィンドウを開き、[https://portal.azure.com](https://portal.azure.com) に移動します。
-1. 管理者ではないテスト ユーザー (*testuser* など) でサインインします。 Azure Multi-Factor Authentication への登録とその使用を求められます。 プロンプトに従って手順を完了し、Azure portal にサインインできることを確認します。
+1. 管理者ではないテスト ユーザー (*testuser* など) でサインインします。 Azure AD Multi-Factor Authentication への登録とその使用を求められます。 プロンプトに従って手順を完了し、Azure portal にサインインできることを確認します。
 
     ![ブラウザーのプロンプトに従ったうえで、登録済みの多要素認証プロンプトでサインインする](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
@@ -116,7 +116,7 @@ Azure Multi-Factor Authentication を有効にして使用する手段として�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このチュートリアルの中で構成した、Azure Multi-Factor Authentication を有効にする条件付きアクセス ポリシーを今後使用したくない場合は、次の手順に従ってポリシーを削除してください。
+このチュートリアルの中で構成した、Azure AD Multi-Factor Authentication を有効にする条件付きアクセス ポリシーを今後使用したくない場合は、次の手順に従ってポリシーを削除してください。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **Azure Active Directory** を検索して選択し、左側のメニューから **[セキュリティ]** を選択します。
@@ -125,10 +125,10 @@ Azure Multi-Factor Authentication を有効にして使用する手段として�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、選択したユーザーのグループを対象に、条件付きアクセス ポリシーを使用して Azure Multi-Factor Authentication を有効にしました。 以下の方法を学習しました。
+このチュートリアルでは、選択したユーザーのグループを対象に、条件付きアクセス ポリシーを使用して Azure AD Multi-Factor Authentication を有効にしました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
-> * Azure AD ユーザーのグループに対して Azure Multi-Factor Authentication を有効にする条件付きアクセス ポリシーを作成する
+> * Azure AD ユーザーのグループに対して Azure AD Multi-Factor Authentication を有効にする条件付きアクセス ポリシーを作成する
 > * MFA を求めるポリシーの条件を構成する
 > * ユーザーとして MFA プロセスをテストする
 

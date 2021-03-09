@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の RIGHT
 description: Azure Cosmos DB の SQL システム関数 RIGHT について説明します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 247616d2ac4f2a5799a5896d679f6e6d5917d5a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be950fed563d8e80339dc80181e7fe5a78092734
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302153"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341580"
 ---
 # <a name="right-azure-cosmos-db"></a>RIGHT (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  指定された文字数分、文字列の右側の部分を返します。  
   
 ## <a name="syntax"></a>構文

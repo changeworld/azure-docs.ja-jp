@@ -3,12 +3,12 @@ title: Azure Functions のセキュリティ保護
 description: 一般的な攻撃に対して、Azure で実行される関数コードのセキュリティを強化する方法について説明します。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9bec32c4c3d8005ef0d3c9fc5732785a5fa19a0c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 351bdca7ff94b6c058b5ab62fd9c16d707e7dc78
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850714"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368491"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions のセキュリティ保護
 
@@ -24,7 +24,7 @@ ms.locfileid: "87850714"
 
 ### <a name="security-center"></a>Security Center
 
-ポータルでは、Security Center が関数アプリと統合されています。 これにより、構成に関連する潜在的なセキュリティ脆弱性を、無料ですばやく評価することができます。 専用プランで実行される関数アプリでは、追加コストを払えば Security Center のリアルタイム セキュリティ機能も利用できます。 詳細については、「[Azure App Service Web アプリと API を保護する](../security-center/security-center-app-services.md)」を参照してください。 
+ポータルでは、Security Center が関数アプリと統合されています。 これにより、構成に関連する潜在的なセキュリティ脆弱性を、無料ですばやく評価することができます。 専用プランで実行される関数アプリでは、追加コストを払えば Security Center のリアルタイム セキュリティ機能も利用できます。 詳細については、「[Azure App Service Web アプリと API を保護する](../security-center/defender-for-app-service-introduction.md)」を参照してください。 
 
 ### <a name="log-and-monitor"></a>ログ記録と監視を行う
 
@@ -60,7 +60,7 @@ HTTPS を必須にする場合は、最新の TLS バージョンも必須にす
 
 | アクション                                        | Scope                    | 有効なキー         |
 |-----------------------------------------------|--------------------------|--------------------|
-| 関数の実行                            | 当該の関数        | 機能           |
+| 関数の実行                            | 当該の関数        | 関数           |
 | 関数の実行                            | すべての関数             | 関数またはホスト   |
 | 管理エンドポイントの呼び出し                        | 関数アプリ             | ホスト (マスターのみ) |
 | Durable Task 拡張機能 API の呼び出し              | 関数アプリ<sup>1</sup> | システム<sup>2</sup> |
@@ -107,6 +107,8 @@ HTTPS を必須にする場合は、最新の TLS バージョンも必須にす
 
 [!INCLUDE [app-service-managed-identities](../../includes/app-service-managed-identities.md)]
 
+マネージド ID は、一部のトリガーとバインドから接続するために、シークレットの代わりに使用できます。 「[ID ベースの接続](#identity-based-connections)」を参照してください。
+
 詳細については、「[App Service と Azure Functions でマネージド ID を使用する方法](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json)」を参照してください。
 
 #### <a name="restrict-cors-access"></a>CORS アクセスを制限する
@@ -129,11 +131,21 @@ HTTPS を必須にする場合は、最新の TLS バージョンも必須にす
 
 アプリ設定と接続文字列は、Azure で暗号化されて格納されます。 これらの暗号化は、アプリの起動時にアプリのプロセス メモリに挿入される前にのみ解除されます。 暗号化キーは定期的に回転されます。 セキュリティで保護されたシークレットのストレージを自分で管理したい場合は、アプリ設定で Azure Key Vault を参照する必要があります。 
 
+ローカル コンピューターで関数を開発するとき、local.settings.json ファイルで既定で設定を暗号化することもできます。 詳細については、[ローカル設定ファイル](functions-run-local.md#local-settings-file)の `IsEncrypted` プロパティを参照してください。  
+
 #### <a name="key-vault-references"></a>Key Vault の参照
 
 ほとんどの関数ではアプリケーション設定で十分ですが、複数サービスにわたって同一のシークレットを共有する必要がある場合もあります。 この場合、シークレットのストレージが余分にあると、潜在的な脆弱性が高まります。 より安全な方法としては、一元的なシークレット ストレージ サービスを利用し、シークレット自体ではなくこのサービスを参照します。      
 
 [Azure Key Vault](../key-vault/general/overview.md) は、アクセス ポリシーと監査履歴を完全制御する、一元化されたシークレット管理を提供するサービスです。 アプリケーション設定の接続文字列またはキーの代わりに、Key Vault 参照を使用できます。 詳細については、「[App Service と Azure Functions の Key Vault 参照を使用する](../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json)」を参照してください。
+
+### <a name="identity-based-connections"></a>ID ベースの接続
+
+一部のリソースに接続するために、シークレットの代わりに ID を使用できます。 これには、シークレットの管理を必要としないという利点があり、よりきめ細かなアクセスの制御と監査が提供されます。 
+
+[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)への接続を作成するコードを記述する場合は、シークレットや接続文字列の代わりに ID を使用することを選択できます。 両方の接続方法の詳細については、各サービスのドキュメントを参照してください。
+
+一部の Azure Functions トリガーおよびバインド拡張機能は、ID ベースの接続を使用して構成できます。 現時点では、これには [Azure BLOB](./functions-bindings-storage-blob.md) と [Azure Queue](./functions-bindings-storage-queue.md) の拡張機能が含まれます。 ID を使用するようにこれらの拡張機能を構成する方法については、[Azure Functions で ID ベースの接続を使用する方法](./functions-reference.md#configure-an-identity-based-connection)に関する記事を参照してください。
 
 ### <a name="set-usage-quotas"></a>使用量クォータを設定する
 

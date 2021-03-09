@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6ac638d9062f31b68d3e1954688dde7ed40c4d2c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f3cc775cd65293a39de28dfbdc8b1d06aeada3b7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258301"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90987308"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services コミュニティ
 
@@ -50,11 +50,11 @@ Twitter ハンドル [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) を�
 
 現在、Media Services チームの主要なコミュニティ フォーラムは MSDN です。
 
-[![MSDN](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
+[:::image type="icon" source="./media/media-services-community/msdn.png" border="false":::](/answers/topics/azure-media-services.html) 
 
 また同チームでは、Stack Overflow に "azure-media-services" タグで投稿された質問をモニタリングしています。
 
-[![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
+[:::image type="icon" source="./media/media-services-community/stack-overflow.png" border="false":::](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="need-help"></a>お困りの際は、
 

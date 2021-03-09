@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 5c1a4ecea6acfa260cc576ffc25a67bb6c6503f0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7025b948615efcf6ace3ca0fb6a2daecdd75c702
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551260"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456039"
 ---
 # <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>チュートリアル:The Cloud Security Fabric と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88551260"
 * ユーザーが自分の Azure AD アカウントを使用して自動的に The Cloud Security Fabric にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* The Cloud Security Fabric では、**SP** Initiated SSO がサポートされます
+* The Cloud Security Fabric では、 **SP** Initiated SSO がサポートされます
 
 ## <a name="adding-the-cloud-security-fabric-from-the-gallery"></a>ギャラリーからの The Cloud Security Fabric の追加
 
@@ -49,7 +49,7 @@ The Cloud Security Fabric の Azure AD への統合を構成するには、ギ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**The Cloud Security Fabric**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **The Cloud Security Fabric** 」と入力します。
 1. 結果のパネルから **[The Cloud Security Fabric]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -115,7 +115,7 @@ The Cloud Security Fabric に対する Azure AD SSO を構成してテストす�
 
 ### <a name="configure-the-cloud-security-fabric-sso"></a>The Cloud Security Fabric SSO の構成
 
-**The Cloud Security Fabric** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [The Cloud Security Fabric サポート チーム](mailto:support@cloudlock.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**The Cloud Security Fabric** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [The Cloud Security Fabric サポート チーム](mailto:support@cloudlock.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -154,12 +154,12 @@ The Cloud Security Fabric に対する Azure AD SSO を構成してテストす�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [The Cloud Security Fabric] タイルをクリックすると、SSO を設定した The Cloud Security Fabric に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [The Cloud Security Fabric] タイルをクリックすると、SSO を設定した The Cloud Security Fabric に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

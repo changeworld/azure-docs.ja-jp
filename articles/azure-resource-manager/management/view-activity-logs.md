@@ -3,12 +3,12 @@ title: リソースを監視する Azure アクティビティ ログの表示
 description: アクティビティ ログを使用してユーザーの操作やエラーを確認します。 Azure portal、PowerShell、Azure CLI、REST を表示します。
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: b02865e4487a187d1296b2971918aa101d711b5b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 14015e9b2792515e6818af551b8bd9f54c686bee
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827063"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91371594"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>リソースのアクションを監視するアクティビティ ログの表示
 
@@ -20,7 +20,7 @@ ms.locfileid: "87827063"
 * 操作の状態
 * 操作を調査するために役立つ可能性のあるその他のプロパティの値
 
-アクティビティ ログには、リソースのすべての書き込み操作 (PUT、POST、DELETE) が含まれます。 読み取り操作 (GET) は含まれません。 リソース アクションの一覧については、「[Azure Resource Manager のリソース プロバイダー操作](../../role-based-access-control/resource-provider-operations.md)」を参照してください。 アクティビティ ログを使用して、トラブルシューティングを行うときにエラーを探したり、組織のユーザーがどのようにリソースを変更したかを監視したりできます。
+アクティビティ ログには、リソースのすべての書き込み操作 (PUT、POST、DELETE) が含まれます。 読み取り操作 (GET) は含まれません。 リソース アクションの一覧については、「[Azure リソース プロバイダーの操作](../../role-based-access-control/resource-provider-operations.md)」を参照してください。 アクティビティ ログを使用して、トラブルシューティングを行うときにエラーを探したり、組織のユーザーがどのようにリソースを変更したかを監視したりできます。
 
 アクティビティ ログは 90 日間保持されます。 開始日が過去 90 日以内である限り、任意の日付の範囲に対するクエリを実行できます。
 
@@ -195,4 +195,4 @@ Resource Graph を使用すると、リソースの変更履歴を確認でき�
 * インフラストラクチャ レイヤーからアプリケーションのデプロイまで、アプリケーションに対する変更の詳細については、[Azure Monitor でのアプリケーション変更分析の使用](../../azure-monitor/app/change-analysis.md)に関するページをご覧ください。
 * デプロイ操作を表示するコマンドについては、[デプロイ操作の表示](../templates/deployment-history.md)に関するページをご覧ください。
 * すべてのユーザーのリソースに対する削除を回避する方法については、「 [Azure Resource Manager によるリソースのロック](lock-resources.md)」をご覧ください。
-* 各 Microsoft Azure Resource Manager プロバイダーで使用できる操作の一覧については、「[Azure Resource Manager のリソース プロバイダー操作](../../role-based-access-control/resource-provider-operations.md)」をご覧ください。
+* 各 Microsoft Azure Resource Manager プロバイダーで使用できる操作の一覧については、「[Azure リソース プロバイダーの操作](../../role-based-access-control/resource-provider-operations.md)」をご覧ください

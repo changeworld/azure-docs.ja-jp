@@ -1,19 +1,17 @@
 ---
 title: Azure Data Factory を使用して Azure SQL Database テーブルを Azure CosmosDB に移行する
 description: Azure SQL Database から既存の正規化されたデータベース スキーマを取得し、Azure Data Factory を使用して Azure CosmosDB 非正規化コンテナーに移行します。
-services: data-factory
 author: kromerm
+ms.author: makromer
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.author: makromer
-ms.openlocfilehash: 3d2ef6fb0cd7af444b9bff755eee4eee70d03d15
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 3d67ac9474704fac39dbe7eb91aead5c4babc4ce
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691896"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383944"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>正規化されたデータベース スキーマを Azure SQL Database から Azure CosmosDB 非正規コンテナーに移行する
 
@@ -96,11 +94,11 @@ FROM SalesLT.SalesOrderHeader o;
 
 19. [シンクの設定] で、[パーティション キー] を ```\SalesOrderID``` とし、コレクション アクションを "再作成" とします。 ご利用のマッピング タブが次のようになっていることを確認します。
 
-![シンクの設定](media/data-flow/cosmosb7.png)
+![[マッピング] タブを示すスクリーンショット。](media/data-flow/cosmosb7.png)
 
 20. [データのプレビュー] をクリックして、これらの 32 行が新しいドキュメントとして新しいコンテナーに挿入されるように設定されていることを確認します。
 
-![シンクの設定](media/data-flow/cosmosb8.png)
+![[データのプレビュー] タブを示すスクリーンショット。](media/data-flow/cosmosb8.png)
 
 すべて問題がないようであれば、新しいパイプラインを作成し、このデータ フロー アクティビティをそのパイプラインに追加して実行する準備ができたことになります。 デバッグまたはトリガーされた実行から実行できます。 数分後に、ご利用の CosmosDB データベースには、"orders" という名前で注文に関する非正規化コンテナーが新規に作成されます。
 

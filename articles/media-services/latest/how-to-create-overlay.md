@@ -6,18 +6,19 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 08/31/2020
-ms.openlocfilehash: 6c93408bce8da9f8cd0e4a0d0bab615e2bd362dc
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 69930e06e2ce7f2679feec74ca8ccbc93bdb8d30
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267328"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101721125"
 ---
 # <a name="how-to-create-an-overlay-with-media-encoder-standard"></a>Media Encoder Standard を使用してオーバーレイを作成する方法
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Media Encoder Standard では、画像を既存の動画に重ね合わせることができます。 現在サポートされている形式は png、jpg、gif、bmp です。
+Media Encoder Standard を使用すると、イメージ、オーディオ ファイル、その他のビデオを別のビデオにオーバーレイできます。 入力では、ファイルを 1 つだけ指定する必要があります。 JPG、PNG、GIF、または BMP 形式のイメージ ファイル、オーディオファイル (WAV、MP3、WMA、M4A ファイルなど)、またはビデオ ファイルを指定できます。
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,7 +33,7 @@ Media Encoder Standard では、画像を既存の動画に重ね合わせるこ
     "AccountName": "",
     "ArmAadAudience": "https://management.core.windows.net/",
     "ArmEndpoint": "https://management.azure.com/",
-    "Region": "",
+    "Location": "",
     "ResourceGroup": "",
     "SubscriptionId": ""
     }
@@ -52,4 +53,4 @@ Transforms について理解したら、オーバーレイのサンプルをダ
 
 ## <a name="next-steps"></a>次の手順
 
-* [Media Services を使用してエンコードを実行する際にビデオをサブクリップする - .NET](subclip-video-dotnet-howto.md)
+[!INCLUDE [transforms next steps](./includes/transforms-next-steps.md)]

@@ -3,12 +3,12 @@ title: モーションの検出、Azure Media Services へのビデオの記録
 description: このクイックスタートでは、Live Video Analytics on IoT Edge を使用して、ライブ ビデオ ストリーム内のモーションを検出し、ビデオ クリップを Azure Media Services に記録する方法を示します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 972b85c00aa29cc39dafd03b9945e489680dd9a5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 135e68e2630d74dace6c3a6b70bb3666f77aad89
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067668"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575536"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>クイック スタート:モーションの検出、Media Services へのビデオの記録
 
@@ -19,25 +19,40 @@ ms.locfileid: "88067668"
 ## <a name="prerequisites"></a>前提条件
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+  > [!NOTE]
+  > サービス プリンシパルを作成するためのアクセス許可を与えられた Azure サブスクリプションが必要です (**owner role** には、そのアクセス許可があります)。 適切なアクセス許可がない場合は、適切なアクセス許可をアカウント管理者に申請してください。 
 * [Visual Studio Code](https://code.visualstudio.com/)。[Azure IoT Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)と共にマシンにインストールされている必要があります。
 * [「はじめに」のクイックスタート](get-started-detect-motion-emit-events-quickstart.md)をまだ完了していない場合は、次の手順に従ってください。
     * [Azure リソースの設定](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [モジュールをデプロイする](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
     * [Visual Studio Code を構成する](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
-
+    > [!TIP]
+    > 作成された Azure リソースで問題が発生した場合は、 **[トラブルシューティング ガイド](troubleshoot-how-to.md#common-error-resolutions)** を参照して、よく発生する問題を解決してください。
 ## <a name="review-the-sample-video"></a>サンプル ビデオを確認する
 
 Azure リソースを設定する上記の手順の一部として、駐車場の (短い) ビデオが、IoT Edge デバイスとして使用されている Azure の Linux VM にコピーされます。 このビデオ ファイルは、このチュートリアルのライブ ストリームをシミュレートするために使用されます。
 
 [VLC プレーヤー](https://www.videolan.org/vlc/)などのアプリケーションを使用してこれを起動し、`Ctrl+N` を押して[駐車場のビデオ サンプル](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) リンクを貼り付けると再生を開始できます。 だいたい 5 秒の地点で、白の車が駐車場を通って移動します。
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LUbN]
 
 次の手順を完了すると、Live Video Analytics on IoT Edge を使用してその車の動きを検出し、その 5 秒の地点前後で始まるビデオ クリップが録画されます。 次の図は、フロー全体を視覚的に表したものです。
 
-![モーション イベントに基づいた資産へのイベントベースのビデオ記録](./media/quickstarts/topology.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/quickstarts/topology.svg" alt-text="モーション イベントに基づいた資産へのイベントベースのビデオ記録":::
 
 ## <a name="use-direct-method-calls"></a>ダイレクト メソッドの呼び出しを使用する
 
 ライブ ビデオ ストリームの分析は、モジュールを使用し、ダイレクト メソッドを呼び出すことによって行うことができます。 モジュールに用意されているすべてのダイレクト メソッドについては、[Live Video Analytics on IoT Edge のダイレクト メソッド](direct-methods.md)に関するページをご覧ください。 
+
+1. Visual Studio Code で **[拡張機能]** タブを開き (または Ctrl + Shift + X キーを押し)、Azure IoT Hub を検索します。
+1. マウスの右ボタンをクリックし、 **[拡張機能の設定]** を選択します。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="拡張機能の設定":::
+1. [Show Verbose Message]\(詳細メッセージの表示\) を検索して有効にします。
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="詳細メッセージの表示":::
 
 ### <a name="invoke-graphtopologylist"></a>GraphTopologyList を呼び出す
 このステップにより、モジュール内のすべての[グラフ トポロジ](media-graph-concept.md#media-graph-topologies-and-instances)が列挙されます。
@@ -48,7 +63,7 @@ Azure リソースを設定する上記の手順の一部として、駐車場�
     
 ```
 {
-    "@apiVersion" : "1.0"
+    "@apiVersion" : "2.0"
 }
 ```
 
@@ -73,7 +88,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 
 ```
 {
-    "@apiVersion": "1.0",
+    "@apiVersion": "2.0",
     "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to Assets based on motion events",
@@ -183,7 +198,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 
 上記の JSON ペイロードを使用した場合、5 つのパラメーター (うち 4 つは既定値) を定義するグラフ トポロジが作成されます。 トポロジには、1 つのソース ノード ([RTSP ソース](media-graph-concept.md#rtsp-source))、2 つのプロセッサ ノード ([モーション検出プロセッサ](media-graph-concept.md#motion-detection-processor)と[シグナル ゲート プロセッサ](media-graph-concept.md#signal-gate-processor)、2 つのシンク ノード (IoT Hub シンクと[資産シンク](media-graph-concept.md#asset-sink)) があります。 トポロジの視覚的な表現を上に示します。
 
-数秒すると、次の応答が出力ウィンドウに表示されます。
+数秒すると、**出力** ウィンドウに次の応答が表示されます。
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologySet] to [lva-sample-device/lvaEdge] ...
@@ -320,7 +335,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 ```
 
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
@@ -463,7 +478,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2",
     "properties" : {
         "topologyName" : "EVRtoAssetsOnMotionDetection",
@@ -525,10 +540,15 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 
 1. Visual Studio Code の [エクスプローラー] ペインを開いて、左下隅の Azure IoT Hub を探します。
 1. [Devices] ノードを展開します。
-1. [lva-sample-device] を右クリックし、[Start Monitoring Built-in Event Monitoring]\(組み込みイベント モニタリングの監視を開始する\) オプションを選択します。
+1. [lva-sample-device] を右クリックし、[Start Monitoring Built-in Event Monitoring]\(組み込みイベント モニタリングの監視を開始する\) オプションを選択します
 
     ![組み込みイベント モニタリングの監視を開始する](./media/quickstarts/start-monitoring-iothub-events.png)
     
+    > [!NOTE]
+    > IoT ハブに使用する組み込みのエンドポイント情報を入力するよう求められる場合があります。 この情報を入手するには、Azure portal で IoT ハブに移動し、左側のナビゲーション ペインで **[組み込みのエンドポイント]** オプションを探します。 それをクリックし、 **[イベント ハブ互換エンドポイント]** セクションの **[イベント ハブ互換エンドポイント]** を探します。 ボックス内のテキストをコピーして使用します。 エンドポイントは次のようになります。  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
     数秒すると、出力ウィンドウに次のメッセージが表示されます。
 
 ```
@@ -545,7 +565,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -569,7 +589,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -748,7 +768,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -776,7 +796,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -800,7 +820,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```

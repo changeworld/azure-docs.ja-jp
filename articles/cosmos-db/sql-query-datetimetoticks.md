@@ -3,18 +3,20 @@ title: Azure Cosmos DB クエリ言語の DateTimeToTicks
 description: Azure Cosmos DB の SQL システム関数 DateTimeToTicks について説明します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 2e2c9e8f2bf0d4760bf030fb19a90737cdb54525
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: ab81e2b6ef19e7a5dacb80186c5364a5848077f6
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605133"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336335"
 ---
 # <a name="datetimetoticks-azure-cosmos-db"></a>DateTimeToTicks (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 指定した DateTime をティックに変換します。 1 ティックは、100 ナノ秒または 1,000 万分の 1 秒を表します。 
 

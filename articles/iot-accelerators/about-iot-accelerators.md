@@ -9,18 +9,18 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 1a27d748e16f892a748cf18569c13ca3f9ead1dd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5012383e64a85ee025273f5339b828f5338e1d4f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "71309513"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629070"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT ソリューション アクセラレータとは
 
 クラウドベースの IoT ソリューションは通常、カスタム コードとクラウド サービスを使用してデバイスの接続性、データ処理と分析、プレゼンテーションを管理します。
 
-IoT ソリューション アクセラレータは、一般的な IoT シナリオが実装され、必要な要素がすべて揃った、すぐにデプロイできる IoT ソリューションです。 これらのシナリオは、リモート監視、接続済みファクトリ、予測メンテナンス、デバイス シミュレーションをカバーしています。 ソリューション アクセラレータをデプロイすると、そのデプロイには、必要なクラウド ベースのサービスと、必要なアプリケーション コードがすべて含まれています。
+IoT ソリューション アクセラレータは、一般的な IoT シナリオが実装され、必要な要素がすべて揃った、すぐにデプロイできる IoT ソリューションです。 このシナリオには、接続済みファクトリとデバイスのシミュレーションが含まれます。 ソリューション アクセラレータをデプロイすると、そのデプロイには、必要なクラウド ベースのサービスと、必要なアプリケーション コードがすべて含まれています。
 
 ソリューション アクセラレータは、IoT ソリューションの出発点です。 すべてのソリューション アクセラレータのソース コードはオープン ソースで、GitHub で入手できます。 ソリューション アクセラレータをダウンロードし、要件に合わせてカスタマイズすることをお勧めします。
 
@@ -28,17 +28,12 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 
 各ソリューション アクセラレータのアプリケーション コードには、ソリューション アクセラレータを管理するための Web アプリが含まれています。
 
+> [!NOTE]
+> リモート監視および予測メンテナンス ソリューションは [Azure IoT Solution Accelerators](https://www.azureiotsolutions.com/Accelerators) サイトから削除されました。 詳しくは、[Azure IoT Solution Accelerators の概要 (以前のバージョン)](/previous-versions/azure/iot-accelerators/about-iot-accelerators) に関するページを参照してください。
+
 ## <a name="supported-iot-scenarios"></a>サポートされる IoT のシナリオ
 
-現時点では、次の 4 つのソリューション アクセラレータをデプロイできます。
-
-### <a name="remote-monitoring"></a>リモート監視
-
-[リモート監視ソリューション アクセラレータ](iot-accelerators-remote-monitoring-sample-walkthrough.md)は、リモート デバイスからテレメトリを収集し、それらを制御するために使用します。 デバイスの例としては、オンプレミスに設置されている冷却装置や、リモートのポンプ設備に設置されているバルブなどが挙げられます。
-
-リモート監視ダッシュボードを使用して、接続されたデバイスからのテレメトリの表示、新しいデバイスのプロビジョニング、接続されたデバイスのファームウェアのアップグレードなどを行うことができます。
-
-[![リモート監視ソリューションのダッシュボード](./media/about-iot-accelerators/rm-dashboard-inline.png)](./media/about-iot-accelerators/rm-dashboard-expanded.png#lightbox)
+現時点では、次の 2 つのソリューション アクセラレータをデプロイできます。
 
 ### <a name="connected-factory"></a>接続済みファクトリ
 
@@ -46,15 +41,7 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 
 接続済みファクトリのダッシュボードを使用して、産業用デバイスを監視および管理することができます。
 
-[![接続済みファクトリ ソリューションのダッシュボード](./media/about-iot-accelerators/cf-dashboard-inline.png)](./media/about-iot-accelerators/cf-dashboard-expanded.png#lightbox)
-
-### <a name="predictive-maintenance"></a>予測メンテナンス
-
-[予測メンテナンス ソリューション アクセラレータ](iot-accelerators-predictive-walkthrough.md)は、リモート デバイスが故障する前にメンテナンスを行えるよう、その故障時期を予測するために使用します。 このソリューション アクセラレータは機械学習アルゴリズムを使用して、デバイスのテレメトリからエラーを予測します。 デバイスの例として、航空機のエンジンやエレベーターが挙げられる場合があります。
-
-予測メンテナンス ダッシュボードを使用して、予測メンテナンス分析を表示できます。
-
-[![接続済みファクトリ ソリューションのダッシュボード](./media/about-iot-accelerators/pm-dashboard-inline.png)](./media/about-iot-accelerators/pm-dashboard-expanded.png#lightbox)
+:::image type="content" source="./media/about-iot-accelerators/cf-dashboard-inline.png" alt-text="接続済みファクトリ ソリューションのダッシュボードを示すスクリーンショット。" lightbox="./media/about-iot-accelerators/cf-dashboard-expanded.png":::
 
 ### <a name="device-simulation"></a>デバイスのシミュレーション
 
@@ -62,7 +49,7 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 
 デバイス シミュレーション Web アプリを使用して、シミュレーションを構成および実行できます。
 
-[![接続済みファクトリ ソリューションのダッシュボード](./media/about-iot-accelerators/ds-dashboard-inline.png)](./media/about-iot-accelerators/ds-dashboard-expanded.png#lightbox)
+:::image type="content" source="./media/about-iot-accelerators/ds-dashboard-inline.png" alt-text="デバイス シミュレーション ソリューションのダッシュボードを示すスクリーンショット。" lightbox="./media/about-iot-accelerators/ds-dashboard-expanded.png":::
 
 ## <a name="design-principles"></a>設計原則
 
@@ -80,30 +67,17 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 
 | ソリューション アクセラレータ   | Architecture  | Languages     |
 | ---------------------- | ------------- | ------------- |
-| リモート監視      | マイクロサービス | [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) と [.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) |
-| 予測メンテナンス | MVC           | [.NET](https://github.com/Azure/azure-iot-predictive-maintenance)          |
 | 接続済みファクトリ      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | デバイスのシミュレーション      | マイクロサービス | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
 
-マイクロサービス アーキテクチャの詳細については、「[Introduction to the Azure IoT reference architecture (Azure IoT リファレンス アーキテクチャの概要)](https://docs.microsoft.com/azure/architecture/reference-architectures/iot/)」を参照してください。
+マイクロサービス アーキテクチャの詳細については、「[Introduction to the Azure IoT reference architecture (Azure IoT リファレンス アーキテクチャの概要)](/azure/architecture/reference-architectures/iot/)」を参照してください。
 
 ## <a name="deployment-options"></a>デプロイ オプション
 
 ソリューション アクセラレータは、[Microsoft Azure IoT ソリューション アクセラレータ](https://www.azureiotsolutions.com/Accelerators#)のサイトからデプロイすることも、コマンド ラインを使用してデプロイすることもできます。
 
-リモート監視ソリューション アクセラレータは、次の構成でデプロイできます。
-
-* **Standard:** 運用環境のデプロイを開発するための拡張インフラストラクチャ デプロイ。 Azure Container Service により、マイクロサービスが複数の Azure 仮想マシンにデプロイされます。 個々のマイクロサービスをホストする Docker コンテナーは、Kubernetes によって調整されます。
-* **Basic:** デモまたはデプロイ テストのための低コスト バージョン。 すべてのマイクロサービスが 1 つの Azure 仮想マシンにデプロイされます。
-* **Local:** テストおよび開発用のローカル コンピューターのデプロイ。 このアプローチでは、マイクロサービスをローカル Docker コンテナーにデプロイし、クラウド内で IoT Hub、Azure Cosmos DB、および Azure Storage サービスに接続します。
-
 ソリューション アクセラレータを実行するコストは、[基礎となる Azure サービスの実行コスト](https://azure.microsoft.com/pricing)の総計です。 デプロイのオプションを選択するときに、使用する Azure サービスの詳細が表示されます。
 
 ## <a name="next-steps"></a>次のステップ
 
-IoT ソリューション アクセラレータの 1 つを試してみるには、クイック スタートを参照してください。
-
-* [リモート監視ソリューションを試す](quickstart-remote-monitoring-deploy.md)
-* [接続済みファクトリ ソリューションを試す](quickstart-connected-factory-deploy.md)
-* [予測メンテナンス ソリューションを試す](quickstart-predictive-maintenance-deploy.md)
-* [デバイス シミュレーション ソリューションを試す](quickstart-device-simulation-deploy.md)
+IoT ソリューション アクセラレータの 1 つを試してみるには、[コネクテッド ファクトリ ソリューションを試す](quickstart-connected-factory-deploy.md)クイックスタートをご覧ください。

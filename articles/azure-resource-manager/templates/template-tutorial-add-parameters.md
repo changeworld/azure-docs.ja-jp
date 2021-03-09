@@ -1,21 +1,21 @@
 ---
 title: チュートリアル - テンプレートにパラメーターを追加する
-description: Azure Resource Manager テンプレートにパラメーターを追加して、そのテンプレートを再利用できるようにします。
+description: Azure Resource Manager テンプレート (ARM テンプレート) にパラメーターを追加して、そのテンプレートを再利用できるようにします。
 author: mumian
 ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b1454106c4498f4519972633df8a871585d254f1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e983f8499cbeaf400a8da6f48d7f6c8b75c4795a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497547"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107064"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>チュートリアル:ARM テンプレートにパラメーターを追加する
 
-[前のチュートリアル](template-tutorial-add-resource.md)では、ストレージ アカウントをテンプレートに追加し、そのテンプレートをデプロイする方法について説明しました。 このチュートリアルでは、パラメーターを追加することによって Azure Resource Manager (ARM) テンプレートを改良する方法について説明します。 このチュートリアルの所要時間は約 **14 分**です。
+[前のチュートリアル](template-tutorial-add-resource.md)では、ストレージ アカウントをテンプレートに追加し、そのテンプレートをデプロイする方法について説明しました。 このチュートリアルでは、パラメーターを追加することによって Azure Resource Manager テンプレート (ARM テンプレート) を改良する方法について説明します。 このチュートリアルの所要時間は約 **14 分** です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +33,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 ## <a name="make-template-reusable"></a>テンプレートを再利用可能にする
 
-テンプレートを再利用可能にするために、ストレージ アカウント名を渡すために使用できるパラメーターを追加しましょう。 次の例で強調表示されている JSON は、テンプレートの変更箇所を示しています。 **storageName** パラメーターは、文字列として指定されています。 長すぎる名前を防止するために最大長は 24 文字に設定されています。
+テンプレートを再利用可能にするために、ストレージ アカウント名を渡すために使用できるパラメーターを追加しましょう。 次の例で強調表示されている JSON は、テンプレートの変更箇所を示しています。 `storageName` パラメーターは、文字列として指定されています。 長すぎる名前を防ぐために、最大長は 24 文字に設定されています。
 
 ファイル全体をコピーして、既存のテンプレートの内容を置き換えてください。
 
@@ -43,7 +43,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 では、テンプレートをデプロイしましょう。 次の例では、Azure CLI または PowerShell を使用してテンプレートをデプロイします。 デプロイ コマンドの値の 1 つとしてストレージ アカウント名を指定していることがわかります。 ストレージ アカウント名には、前のチュートリアルで使用したものと同じ名前を指定してください。
 
-まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、**templateFile** 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
+まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、`templateFile` 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -81,11 +81,11 @@ az deployment group create \
 
 特定の環境に合った値をパラメーターに渡すことで、デプロイをカスタマイズすることができます。 たとえば、デプロイ先が開発環境であるか、テスト環境であるか、運用環境であるかに応じて異なる値を渡すことができます。
 
-前のテンプレートでは常に Standard_LRS ストレージ アカウントがデプロイされていました。 環境に応じて異なる SKU をデプロイする柔軟性が必要になることもあるでしょう。 次の例は、SKU のパラメーターを追加するための変更点を示しています。 ファイル全体をコピーして、既存のテンプレートに貼り付けてください。
+前のテンプレートでは、常に **Standard_LRS** ストレージ アカウントがデプロイされていました。 環境に応じて異なる SKU をデプロイする柔軟性が必要になることもあるでしょう。 次の例は、SKU のパラメーターを追加するための変更点を示しています。 ファイル全体をコピーして、既存のテンプレートに貼り付けてください。
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json" range="1-40" highlight="10-23,32":::
 
-**storageSKU** パラメーターには既定値があります。 デプロイ中に値が指定されなければ、この値が使用されます。 また、指定できる一連の値も存在します。 これらの値は、ストレージ アカウントの作成に必要な値と一致します。 機能しない SKU がテンプレートのユーザーによって渡されるのを防ぐ必要があります。
+`storageSKU` パラメーターには既定値があります。 デプロイ中に値が指定されなければ、この値が使用されます。 また、指定できる一連の値も存在します。 これらの値は、ストレージ アカウントの作成に必要な値と一致します。 機能しない SKU がテンプレートのユーザーによって渡されるのを防ぐ必要があります。
 
 ## <a name="redeploy-template"></a>テンプレートの再デプロイ
 
@@ -114,7 +114,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> デプロイに失敗した場合は、デプロイ コマンドで **debug** スイッチを使用してデバッグ ログを表示します。  **verbose** スイッチを使用して、詳細なデバッグ ログを表示することもできます。
+> デプロイに失敗した場合は、`verbose` スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、`debug` スイッチを使用してください。
 
 テンプレートの柔軟性を確認するために、再度デプロイしてみましょう。 今回は、SKU パラメーターを **Standard_GRS** に設定します。 新しい名前を渡して異なるストレージ アカウントを作成することも、同じ名前を使用して既存のストレージ アカウントを更新することもできます。 どちらの方法でもうまくいきます。
 

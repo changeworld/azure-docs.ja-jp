@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 1b7b4d3c25794a62bc19925ade278159ebb37615
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 54ef051b7d8778e2eecd85bef2e57b62239ba114
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80066538"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435316"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Elastic Stack を Azure VM にインストールする
 
@@ -35,9 +35,9 @@ ms.locfileid: "80066538"
 
  このデプロイは、Elastic Stack での基本的な開発に適しています。 運用環境の推奨事項を含め、Elastic Stack の詳細については、[Elastic のドキュメント](https://www.elastic.co/guide/index.html)と [Azure アーキテクチャ センター](/azure/architecture/elasticsearch/)を参照してください。
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
+- この記事では、Azure CLI のバージョン 2.0.4 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -211,7 +211,7 @@ sudo /usr/share/logstash/bin/logstash -f vm-syslog-logstash.conf
 `/etc/kibana/kibana.yml` を編集し、Web ブラウザーからアクセスできるように、リッスン中の Kibana の IP アドレスを変更します。
 
 ```bash
-server.host:"0.0.0.0"
+server.host: "0.0.0.0"
 ```
 
 次のコマンドを使用して、Kibana を起動します。
@@ -228,7 +228,7 @@ az vm open-port --port 5601 --resource-group myResourceGroup --name myVM
 
 Kibana コンソールを開いて、 **[作成]** を選択し、前に Elasticsearch に送信した syslog データに基づいて、既定のインデックスを生成します。 
 
-![Kibana で Syslog イベントを参照](media/elasticsearch-install/kibana-index.png)
+![Kibana コンソールを示すスクリーンショット。[作成] ボタンが強調表示されています。](media/elasticsearch-install/kibana-index.png)
 
 Kibana コンソールで **[検出]** を選択して、syslog イベントを検索、参照、およびフィルター処理します。
 

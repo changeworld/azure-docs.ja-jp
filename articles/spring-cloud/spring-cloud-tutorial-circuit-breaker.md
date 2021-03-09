@@ -6,15 +6,18 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 8cc8f347330904bfab980b79cf5c5f351ce16629
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 13b57a8ef57e1d5f2fe066a9fc8b0b74382f066f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089483"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102042846"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Azure Spring Cloud でサーキット ブレーカー ダッシュボードを使用する
+
+**この記事の適用対象:** ✔️ Java
+
 Spring [Cloud Netflix Turbine](https://github.com/Netflix/Turbine) とは、Hystrix ダッシュボードを使用して単一のビューでストリームを監視できるように複数の [Hystrix](https://github.com/Netflix/Hystrix) メトリック ストリームを集約するためのものであり、広く使用されています。 このチュートリアルでは、Azure Spring Cloud 上でそれらを使用する方法について説明します。
 > [!NOTE]
 > Netflix Hystrix は、既存の多くの Spring Cloud アプリで広く使用されていますが、現在活発な開発は行われていません。 プロジェクトを新規に開発する場合は、[resilience4j](https://github.com/resilience4j/resilience4j) のような Spring Cloud Circuit Breaker の実装を代わりに使用してください。 このチュートリアルで示した Turbine とは異なり、新しい Spring Cloud Circuit Breaker フレームワークでは、そのメトリック データ パイプラインのすべての実装が Micrometer に統合されます。 Azure Spring Cloud での Micrometer のサポートについてはまだ作業中であるため、このチュートリアルでは扱いません。
@@ -38,14 +41,14 @@ mvn clean package -D skipTests -f recommendation-service/pom.xml
 mvn clean package -D skipTests -f hystrix-turbine/pom.xml
 ```
 ## <a name="provision-your-azure-spring-cloud-instance"></a>Azure Spring Cloud インスタンスをプロビジョニングする
-手順「[Azure CLI でサービス インスタンスをプロビジョニングする](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#provision-a-service-instance-on-the-azure-cli)」に従ってください。
+手順「[Azure CLI でサービス インスタンスをプロビジョニングする](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)」に従ってください。
 
 ## <a name="deploy-your-applications-to-azure-spring-cloud"></a>Azure Spring Cloud にアプリケーションをデプロイする
 これらのアプリでは **Config Server** は使用されません。そのため、Azure Spring Cloud 用に **Config Server** を設定する必要はありません。  次のように作成してデプロイします。
 ```azurecli
-az spring-cloud app create -n user-service --is-public
+az spring-cloud app create -n user-service --assign-endpoint
 az spring-cloud app create -n recommendation-service
-az spring-cloud app create -n hystrix-turbine --is-public
+az spring-cloud app create -n hystrix-turbine --assign-endpoint
 
 az spring-cloud app deploy -n user-service --jar-path user-service/target/user-service.jar
 az spring-cloud app deploy -n recommendation-service --jar-path recommendation-service/target/recommendation-service.jar
@@ -78,5 +81,6 @@ Hystrix メトリック ストリームには、`test-endpoint` からアクセ�
 Web アプリとして、Hystrix ダッシュボードが `test-endpoint` 上で機能している必要があります。 正常に機能していない場合は、次の 2 つの理由が考えられます。1 つは、`test-endpoint` を使用したことで、ベース URL が `/ to /<APP-NAME>/<DEPLOYMENT-NAME>` から変更されたため。もう 1 つは Web アプリで静的リソースに絶対パスが使用されているため。 `test-endpoint` で動作させるには、フロントエンド ファイル内の <base> を手動で編集することが必要になる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure CLI でサービス インスタンスをプロビジョニングする](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#provision-a-service-instance-on-the-azure-cli)
-* [Azure Spring Cloud で Java Spring アプリケーションをデプロイ用に準備する](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
+* [Azure CLI でサービス インスタンスをプロビジョニングする](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)
+* [Azure Spring Cloud で Java Spring アプリケーションをデプロイ用に準備する](./spring-cloud-tutorial-prepare-app-deployment.md)
+

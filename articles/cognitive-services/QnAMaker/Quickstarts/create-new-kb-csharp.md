@@ -1,26 +1,28 @@
 ---
 title: クイック スタート:ナレッジ ベースを作成する - REST、C# - QnA Maker
 description: この C# REST ベースのクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: how-to
-ms.openlocfilehash: 343dc5f0b8475a9fad3d9834f97cff0d0f4c75f6
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e31345c3b83e1ff5e01952d69dde9353b8234757
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89260086"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338114"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>クイック スタート:C# と REST を使用して QnA Maker のナレッジ ベースを作成する
 
-このクイック スタートでは、QnA Maker ナレッジ ベースのサンプルをプログラムから作成して発行する手順を紹介しています。 QnA Maker は、[データ ソース](../Concepts/knowledge-base.md)の FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。 ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。
+このクイック スタートでは、QnA Maker ナレッジ ベースのサンプルをプログラムから作成して発行する手順を紹介しています。 QnA Maker は、[データ ソース](../index.yml)の FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。 ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。
 
 このクイック スタートで呼び出す QnA Maker API は次のとおりです。
-* [KB の作成](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
-* [取得操作の詳細](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+* [KB の作成](/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+* [取得操作の詳細](/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[リファレンス ドキュメント](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [C# サンプル](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs)
+[リファレンス ドキュメント](/rest/api/cognitiveservices/qnamaker/knowledgebase) | [C# サンプル](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -67,8 +69,8 @@ Program クラスの上部に、QnA Maker にアクセスするために必要�
 
 次の値を環境変数に設定します。
 
-* `QNA_MAKER_SUBSCRIPTION_KEY` - この**キー**は 32 文字の文字列で、Azure portal の [クイックスタート] ページの QnA Maker リソースで入手できます。 これは、予測エンドポイント キーと同じではありません。
-* `QNA_MAKER_ENDPOINT` - **エンドポイント**は、`https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 形式の作成の URL です。 これは、予測エンドポイントを照会するときに使用した URL と同じではありません。
+* `QNA_MAKER_SUBSCRIPTION_KEY` - この **キー** は 32 文字の文字列で、Azure portal の [クイックスタート] ページの QnA Maker リソースで入手できます。 これは、予測エンドポイント キーと同じではありません。
+* `QNA_MAKER_ENDPOINT` - **エンドポイント** は、`https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 形式の作成の URL です。 これは、予測エンドポイントを照会するときに使用した URL と同じではありません。
 
 :::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/QnAMaker/rest/create-kb.cs" id="constants":::
 
@@ -138,7 +140,7 @@ Program クラス内に次のコード ブロックを追加します。
 
 ## <a name="add-createkb-method"></a>CreateKB メソッドを追加する
 
-次のメソッドは、KB を作成して、状態のチェックを繰り返し実行するものです。  _create_ という**操作 ID** は、POST 応答のヘッダー フィールド **Location** で返された後、GET 要求でルートの一部として使用されます。 KB の作成には多少時間がかかる場合があるため、成功と失敗のどちらかの状態になるまで、呼び出しを繰り返して状態をチェックする必要があります。 操作が成功すると、KB ID が **resourceLocation** で返されます。
+次のメソッドは、KB を作成して、状態のチェックを繰り返し実行するものです。  _create_ という **操作 ID** は、POST 応答のヘッダー フィールド **Location** で返された後、GET 要求でルートの一部として使用されます。 KB の作成には多少時間がかかる場合があるため、成功と失敗のどちらかの状態になるまで、呼び出しを繰り返して状態をチェックする必要があります。 操作が成功すると、KB ID が **resourceLocation** で返されます。
 
 :::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/QnAMaker/rest/create-kb.cs" id="create_kb":::
 
@@ -160,4 +162,4 @@ CreateKB メソッドを呼び出すように Main メソッドに変更を加�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [QnA Maker (V4) REST API リファレンス](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)

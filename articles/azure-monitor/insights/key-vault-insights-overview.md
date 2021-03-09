@@ -1,23 +1,23 @@
 ---
-title: Azure Monitor for Key Vault (プレビュー) でキー コンテナーを監視する | Microsoft Docs
+title: Azure Monitor for Key Vault でキー コンテナーを監視する | Microsoft Docs
 description: この記事では、Azure Monitor for Key Vault について説明します。
 services: azure-monitor
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
-ms.date: 04/13/2019
-ms.openlocfilehash: c669946ab76fcaeaaa6fd681f521408643c5a63c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+author: lgayhardt
+ms.author: lagayhar
+ms.date: 09/10/2020
+ms.openlocfilehash: 91aed191e3bb165d6690759426a596df39f8c10f
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531261"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582296"
 ---
-# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Azure Monitor for Key Vault (プレビュー) によるキー コンテナーの監視
-Azure Monitor Key Vault (プレビュー) では、Key Vault の要求、パフォーマンス、エラー、待機時間の統合ビューが用意され、キー コンテナーを包括的に監視できます。
-この記事では、Azure Monitor for Key Vault (プレビュー) のエクスペリエンスをオンボードおよびカスタマイズする方法について説明します。
+# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Azure Monitor for Key Vault によるキー コンテナー サービスの監視
+Azure Monitor for Key Vault では、Key Vault の要求、パフォーマンス、エラー、および待ち時間の統合ビューが用意され、キー コンテナーを包括的に監視できます。
+この記事では、Azure Monitor for Key Vault のエクスペリエンスをオンボードおよびカスタマイズする方法について説明します。
 
-## <a name="introduction-to-azure-monitor-for-key-vault-preview"></a>Azure Monitor for Key Vault (プレビュー) の概要
+## <a name="introduction-to-azure-monitor-for-key-vault"></a>Azure Monitor for Key Vault の概要
 
 エクスペリエンスについて見ていく前に、情報が提供および視覚化される方法を理解する必要があります。
 -    **大規模な分析観点**: 要求、エラーの内訳、および操作と待機時間の概要に基づいて、パフォーマンスのスナップショット ビューを表示します。
@@ -25,21 +25,6 @@ Azure Monitor Key Vault (プレビュー) では、Key Vault の要求、パフ�
 -    **カスタマイズ可能**: 表示するメトリックの変更したり、制限に合わせたしきい値の変更または設定、独自のブックとして保存することができます。 ブック内のグラフは、Azure ダッシュボードにピン留めできます。
 
 Azure Monitor for Key Vault では、ログとメトリックの組み合わせによる、グローバルな監視ソリューションが用意されています。 すべてのユーザーがメトリックベースの監視データにアクセスできますが、ログベースの視覚化を含めた場合、ユーザーは [Azure Key Vault のログ記録を有効](../../key-vault/general/logging.md)にする必要があります。
-
-## <a name="configuring-your-key-vaults-for-monitoring"></a>監視用のキー コンテナーの構成
-
-> [!NOTE]
-> ログの有効化は、追加監視機能を提供する有料サービスです。
-
-1. [操作と待機時間] タブでは、有効になっているキーコンテナーとその数を確認できます。 収集を開始するには、 **[有効にする]** ボタンを選択します。これにより、診断ログを有効にする必要があるキー コンテナーを一覧表示した別のブックが表示されます。
-
-    ![青色の [有効にする] ボタンが表示された [操作と待機時間] タブのスクリーンショット](./media/key-vaults-insights-overview/enable-logging.png)
-
-2. 診断ログを有効にするには、[アクション] 列の下にある **[有効にする]** リンクをクリックし、Log Analytics ワークスペースにログを送信する新しい診断設定を作成します。 すべてのログを同じワークスペースに送信することをお勧めします。
-
-3. 診断設定が保存されると、Key Vault 分析情報の下ですべてのログベースのグラフと視覚化を表示できるようになります。 ログの作成が開始されるまでに数分から数時間かかる場合があることに注意してください。
-
-4. Key Vault サービスの診断ログを有効にする方法の詳細については、[完全なガイド](../../key-vault/general/logging.md)をご覧ください。
 
 ## <a name="view-from-azure-monitor"></a>Azure Monitor から表示する
 
@@ -49,7 +34,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のキ
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-2. Azure portal の左側のウィンドウで **[モニター]** を選択し、[分析情報] セクションの **[キー コンテナー (プレビュー)]** を選択します。
+2. Azure portal の左側のペインで **[モニター]** を選択し、[分析情報] セクションの **[キー コンテナー]** を選択します。
 
 ![複数のグラフを伴う概要エクスペリエンスのスクリーンショット](./media/key-vaults-insights-overview/overview.png)
 
@@ -77,23 +62,13 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のキ
 
 各ステータス コードが表す意味について理解を深めるには、[Azure Key Vault の状態と応答コード](../../key-vault/general/authentication-requests-and-responses.md)に関するドキュメントを参照することをお勧めします。
 
-## <a name="operations--latency-workbook"></a>[操作と待機時間] ブック
-
-ページの上部にある **[操作と待機時間]** を選択すると、 **[操作と待機時間]** タブが開きます。 このタブでは、監視対象のキー コンテナーをオンボードすることができます。 詳細な手順については、「[監視対象のキー コンテナーの構成](#configuring-your-key-vaults-for-monitoring)」のセクションをご覧ください。
-
-ログ記録の対象として有効になっているキー コンテナーの数を確認できます。 少なくとも 1 つのコンテナーが適切に構成されていれば、各キー コンテナーの操作と状態コードを示したテーブルが表示されます。 行の詳細セクションをクリックすると、個々の操作に関する追加情報が得られます。
-
-![操作と待機時間のグラフのスクリーンショット](./media/key-vaults-insights-overview/logs.png)
-
-このセクションのデータが一切表示されていない場合は、Azure Key Vault のログを有効にする方法に関する上のセクションを参照するか、以下のトラブルシューティングのセクションを確認してください。
-
 ## <a name="view-from-a-key-vault-resource"></a>Key Vault リソースからのビュー
 
 キー コンテナーから直接 Azure Monitor for Key Vault にアクセスするには、次の操作を実行します。
 
 1. Azure portal で [キー コンテナー] を選択します。
 
-2. 一覧からキー コンテナーを選択します。 [監視] セクションで [インサイト (プレビュー)] を選択します。
+2. 一覧からキー コンテナーを選択します。 [監視] セクションで、[分析情報] を選択します。
 
 これらのビューには、Azure Monitor レベルのブックからキー コンテナーのリソース名を選択してアクセスすることもできます。
 
@@ -115,7 +90,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のキ
 
 [操作] ブックでは、ユーザーは、すべてのトランザクションの詳細を詳しく調べることができ、最上位レベルのタイルを使用して結果の状態でフィルター処理できます。
 
-![[操作] ビューのスクリーンショット](./media/key-vaults-insights-overview/info.png)
+![すべてのトランザクションの完全な詳細を含む操作ブックを示すスクリーンショット。](./media/key-vaults-insights-overview/info.png)
 
 ユーザーはまた、上部のテーブルで特定のトランザクションの種類に基づいてビューを詳しく調べることもできます。この上部のテーブルに従って下部のテーブルは動的に更新され、ユーザーはこのテーブルのポップアップ コンテキスト ウィンドウで操作の完全な詳細を確認できます。
 
@@ -150,7 +125,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のキ
 
 複数サブスクリプションおよびキー コンテナーの [概要] または [エラー] ブックを、実行のたびに特定のサブスクリプションまたはキー コンテナーを対象とするように構成できます。次の手順を行います。
 
-1. ポータルで **[モニター]** を選択し、左側のウィンドウで **[キー コンテナー (プレビュー)]** を選択します。
+1. ポータルで **[モニター]** を選択し、左側のペインで **[キー コンテナー]** を選択します。
 2. **[概要]** ブックで、コマンド バーから **[編集]** を選択します。
 3. **[サブスクリプション]** ドロップダウン リストから、既定として使用するサブスクリプションを 1 つ以上選択します。 1 つのブックで、最大 10 個のサブスクリプションを選択できます。
 4. **[キー コンテナー]** ドロップダウン リストから、既定として使用するアカウントを 1 つ以上選択します。 1 つのブックで、最大 200 個のストレージ アカウントを選択できます。
@@ -158,13 +133,13 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のキ
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-一般的なトラブルシューティングのガイダンスについては、専用に準備されたブックベースの分析情報の[トラブルシューティングに関する記事](troubleshoot-workbooks.md)を参照してください。
+一般的なトラブルシューティングのガイダンスについては、専用のブックベースの分析情報の[トラブルシューティングに関する記事](troubleshoot-workbooks.md)を参照してください。
 
-このセクションは、Azure Monitor for Key Vault (プレビュー) を使用するときに発生する可能性があるいくつかの一般的な問題を診断し、トラブルシューティングするのに役立ちます。 以下のリストを使用して、特定の問題に関連する情報を見つけてください。
+このセクションは、Azure Monitor for Key Vault を使用するときに発生する可能性があるいくつかの一般的な問題の診断とトラブルシューティングに役立ちます。 以下のリストを使用して、特定の問題に関連する情報を見つけてください。
 
 ### <a name="resolving-performance-issues-or-failures"></a>パフォーマンスの問題またはエラーの解決
 
-Azure Monitor for Key Vault (プレビュー) で発生するキー コンテナー関連の問題のトラブルシューティングについては、[Azure Key Vault のドキュメント](../../key-vault/index.yml)をご覧ください。
+Azure Monitor for Key Vault で特定されたキー コンテナー関連の問題のトラブルシューティングについては、[Azure Key Vault のドキュメント](../../key-vault/index.yml)を参照してください。
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>200 個のキー コンテナーしか表示できないのはなぜですか
 
@@ -175,10 +150,6 @@ Azure Monitor for Key Vault (プレビュー) で発生するキー コンテナ
 選択したサブスクリプション フィルターから選択されたキー コンテナーを含むサブスクリプションのみが表示されます。このフィルターは、Azure portal ヘッダーの [ディレクトリ + サブスクリプション] で選択されています。
 
 ![サブスクリプション フィルターのスクリーンショット](./media/key-vaults-insights-overview/Subscriptions.png)
-
-### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>"query exceeds the maximum number of workspaces/regions allowed"\(クエリは、許可されているワークスペース/リージョンの最大数を超えています\) というエラー メッセージが表示されます。どうしたらいいですか
-
-現時点では、25 のリージョンと 200 のワークスペースに制限されており、データを表示するには、サブスクリプションやリソース グループの数を減らす必要があります。
 
 ### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>Key Vault 分析情報に変更を加えたり、視覚化を追加したりするには、どうすればよいですか
 
@@ -192,20 +163,10 @@ Azure Monitor for Key Vault (プレビュー) で発生するキー コンテナ
 
 時間範囲は、ダッシュボードの設定によって異なります。
 
-### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>[操作と待機時間] セクションの下に自分の Key Vault のデータが表示されないのはなぜですか
-
-ログベースのデータを表示するには、監視するキー コンテナーごとにログを有効にする必要があります。 これは、各キー コンテナーの診断設定で行うことができます。 指定された Log Analytics ワークスペースにデータを送信する必要があります。
-
-### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>Key Vault のログを既に有効にしていますが、[操作と待機時間] の下にデータが表示されないのはなぜですか
-
-現時点では、診断ログは以前にさかのぼって機能しないので、キー コンテナーに対してアクションが実行された後にのみ、データが表示されるようになります。 そのため、キー コンテナーがどの程度アクティブかに応じて、これには数時間から 1 日かかることがあります。
-
-さらに、多数のキー コンテナーとサブスクリプションを選択している場合は、クエリの制限のためにデータを表示できないことがあります。 データを表示するために、選択したサブスクリプションまたはキー コンテナーの数を減らすことが必要になる場合があります。 
-
 ### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-key-vault-insights"></a>他のデータを表示したり、独自の視覚化を作成したりするにはどうすればよいですか。 Key Vault 分析情報に変更を加えるにはどうすればよいですか
 
 編集モードを使用して既存のブックを編集し、新しい変更をすべて反映した新しいブックとして作業内容を保存できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../platform/workbooks-overview.md)」で学習してください。
+ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../visualize/workbooks-overview.md)」で学習してください。

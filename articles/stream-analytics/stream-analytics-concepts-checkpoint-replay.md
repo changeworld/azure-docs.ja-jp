@@ -1,25 +1,24 @@
 ---
 title: Azure Stream Analytics でのチェックポイントおよび再生の回復の概念
 description: この記事では、Azure Stream Analytics でのチェックポイントおよび再生のジョブの回復の概念について説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 10d9053e082a995085fa255cc0d9f63a2b4e2b17
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: df31f8538bb9eabeca37fe4c52c4443fd447e415
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020610"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015320"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブでのチェックポイントと再生の概念
 この記事では、Azure Stream Analytics の内部チェックポイントおよび再生の概念と、これらがジョブの回復に与える影響について説明します。 Stream Analytics ジョブが実行されるたびに、状態情報が内部的に維持されます。 状態情報は、チェックポイントに定期的に保存されます。 一部のシナリオでは、ジョブ エラーまたはアップグレードが発生した場合にチェックポイント情報がジョブの回復に使用されます。 その他の状況では、チェックポイントを回復に使用できず、再生が必要です。
 
-## <a name="stateful-query-logicin-temporal-elements"></a>一時的な要素のステートフルなクエリ ロジック
-Azure Stream Analytics ジョブの固有の機能の 1 つに、ウィンドウ集計、一時的な結合、一時的な分析関数などのステートフル処理の実行があります。 ジョブの実行時には、これらの各演算子によって状態情報が保持されます。 これらのクエリ要素の最大ウィンドウ サイズは 7 日間です。 
+## <a name="stateful-query-logic-in-temporal-elements"></a>一時的な要素のステートフルなクエリ ロジック
+Azure Stream Analytics ジョブの固有の機能の 1 つに、ウィンドウ集計、一時的な結合、一時的な分析関数などのステートフル処理の実行があります。 ジョブの実行時には、これらの各演算子によって状態情報が保持されます。  これらのクエリ要素の最大ウィンドウ サイズは 7 日間です。 
 
 テンポラル ウィンドウの概念は、いくつかの Stream Analytics クエリ要素に現れます。
 1. ウィンドウ集計 (タンブリング ウィンドウ、ホッピング ウィンドウ、スライディング ウィンドウの GROUP BY)

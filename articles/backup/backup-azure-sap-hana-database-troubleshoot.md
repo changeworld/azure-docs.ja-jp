@@ -3,12 +3,12 @@ title: SAP HANA データベースのバックアップ エラーのトラブル
 description: Azure Backup を使用して SAP HANA データベースをバックアップするときに発生する可能性のある一般的なエラーをトラブルシューティングする方法について説明します。
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 6216c39231ad17a55f0d428fe5e1f85e64cef403
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 22800adc323bda8a60278160f24bc559103fb57e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826992"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101713339"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure での SAP HANA データベースのバックアップをトラブルシューティングする
 
@@ -46,13 +46,6 @@ ms.locfileid: "88826992"
 | エラー メッセージ      | <span style="font-weight:normal">指定された SAP HANA 操作はサポートされていません</span>              |
 | ------------------ | ------------------------------------------------------------ |
 | **考えられる原因**    | SAP HANA 用 Azure Backup は、SAP HANA ネイティブ クライアント (Studio/ Cockpit/ DBA Cockpit) で実行される増分バックアップやアクションをサポートしていません |
-| **推奨される操作** | 詳しくは、[こちら](./sap-hana-backup-support-matrix.md#scenario-support)を参照してください。 |
-
-### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
-
-| エラー メッセージ      | <span style="font-weight:normal">この SAP HANA データベースは、要求されたバックアップの種類をサポートしていません</span>  |
-| ------------------ | ------------------------------------------------------------ |
-| **考えられる原因**    | Azure Backup は、増分バックアップやスナップショットを使用したバックアップをサポートしていません |
 | **推奨される操作** | 詳しくは、[こちら](./sap-hana-backup-support-matrix.md#scenario-support)を参照してください。 |
 
 ### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure
@@ -153,7 +146,7 @@ SID が変更されない OS のアップグレード、SDC バージョンの�
 - 新しい OS バージョン、SDC、または MDC バージョンが現在 [Azure Backup でサポートされている](sap-hana-backup-support-matrix.md#scenario-support)ことを確認してください
 - そのデータベースの[データを保持して保護を停止](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)します
 - アップグレードまたは更新を実行します
-- 事前登録スクリプトを再実行します。 通常、アップグレード プロセスで必要なロールが削除されます。 事前登録スクリプトを実行すると、必要なすべてのロールを確認できます
+- 事前登録スクリプトを再実行します。 多くの場合、アップグレード プロセスで[必要なロール](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)が削除されます。 事前登録スクリプトを実行すると、必要なすべてのロールを確認できます。
 - データベースの保護を再開します
 
 ## <a name="sdc-to-mdc-upgrade-with-no-change-in-sid"></a>SID の変更がない SDC から MDC へのアップグレード
@@ -165,7 +158,7 @@ SID が変更されない SDC から MDC へのアップグレードは、次の
 - アップグレードを実行します。 完了後、HANA システムはシステム DB とテナント DB を備えた MDC になります
 - [事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を再実行します
 - Azure portal で同じコンピューターに対して拡張機能を再登録します ( **[バックアップ]**  ->  **[詳細の表示]** -> [関連する Azure VM の選択] -> [再登録])
-- 同じ VM に対して **[DB の再検出]** をクリックします。 このアクションにより、手順 3 の新しい DB が表示されます (SDC ではなく SYSTEMDB とテナント DB)
+- 同じ VM に対して **[DB の再検出]** を選択します。 このアクションにより、手順 3 の新しい DB が表示されます (SDC ではなく SYSTEMDB とテナント DB)
 - 古い SDC データベースは引き続きコンテナーに存在し、ポリシーに従って古いバックアップ データが保持されます
 - これらのデータベースのバックアップを構成します
 
@@ -174,11 +167,11 @@ SID が変更されない SDC から MDC へのアップグレードは、次の
 SID が変更される SDC から MDC へのアップグレードは、次のように処理できます。
 
 - 新しい MDC バージョンが現在 [Azure Backup でサポートされている](sap-hana-backup-support-matrix.md#scenario-support)ことを確認してください
-- 古い SDC データベースの**データを保持して保護を停止**します
+- 古い SDC データベースの **データを保持して保護を停止** します
 - アップグレードを実行します。 完了後、HANA システムはシステム DB とテナント DB を備えた MDC になります
 - 適切な詳細 (新しい SID と MDC) を指定して、[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を再実行します。 SID の変更により、スクリプトを正常に実行する際に問題が発生する可能性があります。 問題が発生した場合は、Azure Backup サポートにお問い合わせください。
 - Azure portal で同じコンピューターに対して拡張機能を再登録します ( **[バックアップ]**  ->  **[詳細の表示]** -> [関連する Azure VM の選択] -> [再登録])
-- 同じ VM に対して **[DB の再検出]** をクリックします。 このアクションにより、手順 3 の新しい DB が表示されます (SDC ではなく SYSTEMDB とテナント DB)
+- 同じ VM に対して **[DB の再検出]** を選択します。 このアクションにより、手順 3 の新しい DB が表示されます (SDC ではなく SYSTEMDB とテナント DB)
 - 古い SDC データベースは引き続きコンテナーに存在し、ポリシーに従って古いバックアップ データが保持されます
 - これらのデータベースのバックアップを構成します
 

@@ -1,6 +1,6 @@
 ---
-title: CREATE EXTERNAL STREAM (Transact-SQL) - Azure SQL Edge (プレビュー)
-description: Azure SQL Edge での CREATE EXTERNAL STREAM ステートメントについて学習します (プレビュー)
+title: CREATE EXTERNAL STREAM (Transact-SQL) - Azure SQL Edge
+description: Azure SQL Edge での CREATE EXTERNAL STREAM ステートメントについて学習します
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: d4ad11d156fd3a672e93b5e039c82d16b2aebdc3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 203abe2b6def478dc1747dd4ce638b5b62707612
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321736"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659224"
 ---
 # <a name="create-external-stream-transact-sql"></a>CREATE EXTERNAL STREAM (Transact-SQL)
 
@@ -26,7 +26,7 @@ EXTERNAL STREAM は、Event Hubs や Blob Storage などのサービスの出力
 
 | [データ ソースの種類] | 入力 | 出力 | 説明 |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge ハブ | Y | Y | Azure IoT Edge ハブに対するストリーミング データの読み書きを行うためのデータ ソース。 詳細については、[IoT Edge ハブ](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)に関するページを参照してください。|
+| Azure IoT Edge ハブ | Y | Y | Azure IoT Edge ハブに対するストリーミング データの読み書きを行うためのデータ ソース。 詳細については、[IoT Edge ハブ](../iot-edge/iot-edge-runtime.md#iot-edge-hub)に関するページを参照してください。|
 | SQL Database | N | Y | SQL Database にストリーミング データを書き込むためのデータ ソース接続。 データベースは、Azure SQL Edge のローカル データベースでも、SQL Server または Azure SQL Database のリモート データベースでもかまいません。|
 | Kafka | Y | N | Kafka トピックからストリーミング データを読み取るためのデータ ソース。 Kafka サポートは、ARM64 バージョンの Azure SQL Edge では使用できません。|
 
@@ -100,7 +100,7 @@ WITH  ( <with_options> )
    - Azure Blob Storage の場合、ストリーム オブジェクトの場所とは、BLOB コンテナー内で使用するパス パターンを表します。 この機能の詳細については、(/articles/stream-analytics/stream-analytics-define-outputs.md#blob-storage-and-azure-data-lake-gen2) を参照してください。
 
 - **INPUT_OPTIONS**: ストリーミング クエリに対する入力である Kafka や IoT Edge ハブなどのサービスへのオプションを、キーと値のペアとして指定します
-    - PARTITIONS:トピックに対して定義されているパーティションの数
+    - PARTITIONS:トピックに対して定義されているパーティションの数。 使用できるパーティションの最大数は、32 に制限されています。
       - Kafka 入力ストリームに適用されます
     - CONSUMER_GROUP: Event Hubs や IOT Hub では、1 つのコンシューマー グループ内のリーダーの数が (5 個に) 制限されています。 このフィールドを空白のままにすると、"$Default" コンシューマー グループが使用されます。
       - 将来利用するために予約されています。 Azure SQL Edge には適用されません。  
@@ -141,7 +141,7 @@ WITH  ( <with_options> )
   - MAXIMUM_BATCH_COUNT:  
     Azure 関数の場合は、呼び出しごとに関数に送信されるイベントの最大数。既定値は 100 です。 SQL Database の場合は、これは一括挿入の各トランザクションで送信されたレコードの最大数を表します。既定値は 10,000 です。 
     - すべての SQL ベースの出力に適用されます 
-  - STAGING_AREA: Blob Storage への EXTERNAL DATA SOURCE オブジェクト。SQL Data Warehouse への高スループット データ インジェストに対するステージング領域 
+  - STAGING_AREA: Blob Storage への EXTERNAL DATA SOURCE オブジェクト。Azure Synapse Analytics への高スループット データ インジェストに対するステージング領域 
     - 将来利用するために予約されています。 Azure SQL Edge には適用されません。
 
 
@@ -162,7 +162,7 @@ WITH
  
 CREATE EXTERNAL FILE FORMAT myFileFormat  
 WITH (  
-   FORMAT_TYPE = 'JSON', 
+   FORMAT_TYPE = JSON, 
 ); 
  
 CREATE EXTERNAL STREAM Stream_A  
@@ -247,6 +247,4 @@ WITH
 
 ## <a name="see-also"></a>関連項目
 
-- [ALTER EXTERNAL STREAM (Transact-SQL)](alter-external-stream-transact-sql.md) 
-- [DROP EXTERNAL STREAM (Transact-SQL)](drop-external-stream-transact-sql.md) 
-
+- [DROP EXTERNAL STREAM (Transact-SQL)](drop-external-stream-transact-sql.md)

@@ -1,7 +1,7 @@
 ---
 title: 各国のクラウドアプリで MSAL を使用する | Azure
 titleSuffix: Microsoft identity platform
-description: Microsoft Authentication Library (MSAL) を使用すると、アプリケーション開発者はセキュリティで保護された Web API を呼び出すためにトークンを取得することができます。 これらの Web API には、Microsoft Graph、その他の Microsoft API、パートナーの Web API、または自分の Web API が可能です。 MSAL は、複数のアプリケーション アーキテクチャとプラットフォームをサポートします。
+description: Microsoft Authentication Library (MSAL) を使用すると、アプリケーション開発者はセキュリティで保護された Web API を呼び出すためにトークンを取得できます。 これらの Web API には、Microsoft Graph、その他の Microsoft API、パートナーの Web API、または自分の Web API が可能です。 MSAL は、複数のアプリケーション アーキテクチャとプラットフォームをサポートします。
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: negoe
-ms.reviewer: nacanuma
+ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 479e74f9c36864e041685393d35972e7365260da
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 09c4dadd7a6560bd5163d623dd8a7f247b57860e
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119440"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102497"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>国内クラウド環境で MSAL を使用する
 
@@ -40,22 +40,22 @@ Azure Active Directory (Azure AD) は、グローバル クラウドの他に�
 
 ### <a name="choose-the-appropriate-identities"></a>適切な ID を選択する
 
-[Azure Government](../../azure-government/index.yml) アプリケーションでは、ユーザーの認証に Azure AD Government ID と Azure AD Public ID を使用できます。 これらの ID のどちらも使用できるため、自分のシナリオにどの機関のエンドポイントを選択すべきかを決定する必要があります。
+[Azure Government](../../azure-government/index.yml) アプリケーションでは、ユーザーの認証に Azure AD Government ID と Azure AD Public ID を使用できます。 これらの ID のどちらも使用できるため、自分のシナリオにどの機関のエンドポイントを選択すべきかを決定します。
 
-- Azure AD Public:組織が Office 365 (Public または GCC) または別のアプリケーションをサポートする Azure AD Public テナントを既に持っている場合によく使用されます。
+- Azure AD Public:組織が Microsoft 365 (Public または GCC) または別のアプリケーションをサポートする Azure AD Public テナントを既に持っている場合によく使用されます。
 - Azure AD Government:組織が Office 365 (GCC High または DoD) をサポートする Azure AD Government テナントを既に持っている場合、または Azure AD Government で新しいテナントを作成する場合によく使用されます。
 
 決定したら、特別な考慮事項は、アプリの登録をどこで実行するかです。 Azure Government アプリケーションに Azure AD Public ID を選択した場合は、Azure AD Public テナントでアプリケーションを登録する必要があります。
 
 ### <a name="get-an-azure-government-subscription"></a>Azure Government サブスクリプションを取得する
 
-Azure Government サブスクリプションを取得するには、「[Managing and connecting to your subscription in Azure Government (Azure Government でのサブスクリプションの管理と接続)](../../azure-government/documentation-government-manage-subscriptions.md)」を参照してください。
+Azure Government サブスクリプションを取得するには、「[Managing and connecting to your subscription in Azure Government (Azure Government でのサブスクリプションの管理と接続)](../../azure-government/compare-azure-government-global-azure.md)」を参照してください。
 
 Azure Government サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/global-infrastructure/government/request/)を作成してください。
 
 特定のプログラミング言語で国内クラウドを使用する方法の詳細については、お使いの言語に一致するタブを選択してください。
 
-## <a name="net"></a>[.NET](#tab/donet)
+## <a name="net"></a>[.NET](#tab/dotnet)
 
 MSAL.NET を使用して、国内クラウドへのユーザーのサインインを実行し、トークンを取得し、Microsoft Graph API を呼び出すことができます。
 
@@ -70,19 +70,21 @@ MSAL.NET を使用して、国内クラウドへのユーザーのサインイ�
 
 ### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 
-1. [Azure portal](https://portal.azure.us/) にサインインします。
+1. <a href="https://portal.azure.us/" target="_blank">Azure portal</a> にサインインします。
 
    他の国内クラウドの Azure portal エンドポイントを見つけるには、「[アプリ登録エンドポイント](authentication-national-cloud.md#app-registration-endpoints)」を参照してください。
 
-1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
-1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://aka.ms/ra/ff) ページに移動します。
-1. **[アプリケーションの登録]** ページが表示されたら、アプリケーションの名前を入力します。
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+1. **Azure Active Directory** を検索して選択します。
+1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
+1. アプリケーションの **[名前]** を入力します。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
 1. **[サポートされているアカウントの種類]** で、 **[任意の組織のディレクトリ内のアカウント]** を選択します。
 1. **[リダイレクト URI]** セクションで、**Web** プラットフォームを選択し、ご使用の Web サーバーに基づいてアプリケーションの URL に値を設定します。 Visual Studio と Node でリダイレクト URL を設定および取得する方法の手順については、次のセクションを参照してください。
 1. **[登録]** を選択します。
-1. アプリの **[概要]** ページで、 **[Application (client) ID]\(アプリケーション (クライアント) ID\)** の値を書き留めます。
-1. このチュートリアルでは、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。 登録済みのアプリケーションの左側のウィンドウで、 **[認証]** を選択します。
-1. **[詳細設定]** の **[暗黙的な許可]** で、 **[ID トークン]** チェック ボックスと **[アクセス トークン]** チェック ボックスをオンにします。 このアプリでは、ユーザーのサインインを実行して API を呼び出す必要があるため、ID トークンとアクセス トークンが必要です。
+1. **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を、後で使用するために書き留めます。
+    このチュートリアルでは、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。 
+1. **[管理]** で、 **[認証]** を選択します。
+1. **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** で、 **[ID トークン]** と **[アクセス トークン]** を選択します。 このアプリでは、ユーザーのサインインを実行して API を呼び出す必要があるため、ID トークンとアクセス トークンが必要です。
 1. **[保存]** を選択します。
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>手順 2:Web サーバーまたはプロジェクトの設定
@@ -122,10 +124,10 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 
 このコードでは:
 
-- `Enter_the_Application_Id_here` は、登録したアプリケーションの**アプリケーション (クライアント) ID** の値です。
+- `Enter_the_Application_Id_here` は、登録したアプリケーションの **アプリケーション (クライアント) ID** の値です。
 - `Enter_the_Tenant_Info_Here` には、次のオプションのいずれかが設定されます。
-    - アプリケーションで**この組織のディレクトリ内のアカウント**がサポートされる場合は、この値をテナント ID またはテナント名 (例: contoso.microsoft.com) に置き換えます。
-    - アプリケーションで**任意の組織のディレクトリ内のアカウント**がサポートされる場合は、この値を `organizations` に置き換えます。
+    - アプリケーションで **この組織のディレクトリ内のアカウント** がサポートされる場合は、この値をテナント ID またはテナント名 (例: contoso.microsoft.com) に置き換えます。
+    - アプリケーションで **任意の組織のディレクトリ内のアカウント** がサポートされる場合は、この値を `organizations` に置き換えます。
 
     すべての国内クラウドの認証エンドポイントを見つけるには、「[Azure AD 認証エンドポイント](./authentication-national-cloud.md#azure-ad-authentication-endpoints)」を参照してください。
 
@@ -150,9 +152,9 @@ const myMSALObj = new UserAgentApplication(msalConfig);
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
 
-- Microsoft Graph を呼び出すには、使用しているクラウドに応じた特定の Graph エンドポイント URL が必要です。 すべての国内クラウド用の Microsoft Graph エンドポイントを見つけるには、「[Microsoft Graph および Graph エクスプローラー サービスのルート エンドポイント](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)」を参照してください。
+- Microsoft Graph API を呼び出すには、使用しているクラウドに固有のエンドポイント URL が必要です。 すべての国内クラウド用の Microsoft Graph エンドポイントを見つけるには、「[Microsoft Graph および Graph エクスプローラー サービスのルート エンドポイント](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)」を参照してください。
 
-    次に示すのは、Graph エンドポイントとスコープの例です。
+    次に示すのは、Microsoft Graph エンドポイントとスコープの例です。
 
     ```json
     "endpoint" : "https://graph.microsoft.us/v1.0/me"
@@ -173,7 +175,7 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
 ```
 
-- Microsoft Graph を呼び出すには、使用しているクラウドに応じた特定の Graph エンドポイント URL が必要です。 すべての国内クラウド用の Microsoft Graph エンドポイントを見つけるには、「[Microsoft Graph および Graph エクスプローラー サービスのルート エンドポイント](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)」を参照してください。
+- Microsoft Graph API を呼び出すには、使用しているクラウドに固有のエンドポイント URL が必要です。 すべての国内クラウド用の Microsoft Graph エンドポイントを見つけるには、「[Microsoft Graph および Graph エクスプローラー サービスのルート エンドポイント](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)」を参照してください。
 
 次に示すのは、Graph エンドポイントとスコープの例です。
 
@@ -222,9 +224,10 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 ## <a name="next-steps"></a>次のステップ
 
-各項目の詳細情報
+各クラウドの Azure portal の URL とトークン エンドポイントの一覧については、[国内クラウドの認証エンドポイント](authentication-national-cloud.md)に関する記事を参照してください。
 
-- [各国のクラウドでの認証](authentication-national-cloud.md)
+国内クラウドのドキュメント:
+
 - [Azure Government](../../azure-government/index.yml)
 - [Azure China 21Vianet](/azure/china/)
 - [Azure Germany](../../germany/index.yml)

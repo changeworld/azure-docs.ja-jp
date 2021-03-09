@@ -4,10 +4,10 @@ description: Azure Container Registry に Docker コンテナー イメージが
 ms.topic: article
 ms.date: 06/18/2020
 ms.openlocfilehash: d51014e9e0769091aba42682cce3a6a01cfa19de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85214062"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure Container Registry へのコンテナー イメージの保存

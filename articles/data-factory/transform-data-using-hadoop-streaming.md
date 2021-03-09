@@ -3,19 +3,16 @@ title: Hadoop ストリーミング アクティビティを使用したデー�
 description: Azure Data Factory で Hadoop Streaming アクティビティを使用して、Hadoop クラスターで Hadoop Streaming プログラムを実行することによってデータを変換する方法について説明します。
 author: nabhishek
 ms.author: abnarain
-manager: shwang
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: 5acfef94a98f105a7cc09c5b72b65e8c228ed87d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: e2a9bc9d664ba15da3cdefa5cf28519ab703d6ce
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844629"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361436"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory での Hadoop Streaming アクティビティを使用したデータの変換
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -78,7 +75,7 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 | mapper            | mapper 実行可能ファイルの名前を指定します。 | はい      |
 | reducer           | reducer 実行可能ファイルの名前を指定します。 | はい      |
 | combiner          | combiner 実行可能ファイルの名前を指定します。 | いいえ       |
-| fileLinkedService | 実行されるマッパー、コンバイナー、レジューサの各プログラムを格納するために使用される Azure Storage のリンクされたサービスへの参照。 ここでは **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** および **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** にリンクされたサービスのみがサポートされています。 このリンクされたサービスを指定していない場合は、HDInsight のリンクされたサービスで定義されている Azure Storage のリンクされたサービスが使用されます。 | いいえ       |
+| fileLinkedService | 実行されるマッパー、コンバイナー、レジューサの各プログラムを格納するために使用される Azure Storage のリンクされたサービスへの参照。 ここでは **[Azure Blob Storage](./connector-azure-blob-storage.md)** および **[ADLS Gen2](./connector-azure-data-lake-storage.md)** にリンクされたサービスのみがサポートされています。 このリンクされたサービスを指定していない場合は、HDInsight のリンクされたサービスで定義されている Azure Storage のリンクされたサービスが使用されます。 | いいえ       |
 | filePath          | fileLinkedService によって参照される、Azure Storage に格納された マッパー、コンバイナー、レジューサ の各プログラムのパスの配列を指定します。 パスの大文字と小文字は区別されます。 | はい      |
 | input             | マッパーの入力ファイルの WASB パスを指定します。 | はい      |
 | output            | レジューサの出力ファイルの WASB パスを指定します。 | はい      |
@@ -95,5 +92,5 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 * [MapReduce アクティビティ](transform-data-using-hadoop-map-reduce.md)
 * [Spark アクティビティ](transform-data-using-spark.md)
 * [.NET カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)
-* [Machine Learning バッチ実行アクティビティ](transform-data-using-machine-learning.md)
+* [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](transform-data-using-machine-learning.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)

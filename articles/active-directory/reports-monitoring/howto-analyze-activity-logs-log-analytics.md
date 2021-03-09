@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ab60cb83e68a0c325ec1e2ac102870493016b57
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 905261058c2de0afae18cbc5572c64962bef8834
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231233"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580015"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure Monitor ログを使用して Azure AD アクティビティ ログを分析する
 
@@ -36,9 +36,9 @@ ms.locfileid: "89231233"
 
 理解するには、次の内容が必要です。
 
-* Azure サブスクリプションの Log Analytics ワークスペース。 [Log Analytics ワークスペースの作成方法](../../azure-monitor/learn/quick-create-workspace.md)を確認してください。
+* Azure サブスクリプションの Log Analytics ワークスペース。 [Log Analytics ワークスペースの作成方法](../../azure-monitor/logs/quick-create-workspace.md)を確認してください。
 * 最初に、[Azure AD アクティビティ ログを Log Analytics ワークスペースにルーティングする](howto-integrate-activity-logs-with-log-analytics.md)手順を完了する。
-*  Log Analytics ワークスペースへの[アクセス](../../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions)
+*  Log Analytics ワークスペースへの[アクセス](../../azure-monitor/logs/manage-access.md#manage-access-using-workspace-permissions)
 * Azure Active Directory の次のロール (Azure Active Directory ポータルで Log Analytics にアクセスする場合)
     - セキュリティ管理者
     - セキュリティ閲覧者
@@ -90,29 +90,26 @@ AuditLogs
 
     ![警告の設定](./media/howto-analyze-activity-logs-log-analytics/setalert.png)
 
-2. アラートに作成された既定の**アラートの条件**を選択し、既定のメトリックの **[しきい値]** を 10 に更新します。
+2. アラートに作成された既定の **アラートの条件** を選択し、既定のメトリックの **[しきい値]** を 10 に更新します。
 
     ![アラートの条件](./media/howto-analyze-activity-logs-log-analytics/alertcriteria.png)
 
 3. アラートの名前と説明を入力して、重大度を選択します。 この例では、これを **[情報]** に設定できます。
 
-4. 信号が発生したときにアラートする **[アクション グループ]** を選択します。 電子メールまたはテキスト メッセージを使用してチームに通知することも、Webhook、Azure Functions、または Logic Apps を使用してアクションを自動化することもできます。 [Azure portal でのアラート グループの作成および管理](../../azure-monitor/platform/action-groups.md)の詳細を理解します。
+4. 信号が発生したときにアラートする **[アクション グループ]** を選択します。 電子メールまたはテキスト メッセージを使用してチームに通知することも、Webhook、Azure Functions、または Logic Apps を使用してアクションを自動化することもできます。 [Azure portal でのアラート グループの作成および管理](../../azure-monitor/alerts/action-groups.md)の詳細を理解します。
 
 5. アラートを構成し終えたら、 **[アラートの作成]** を選択して有効にします。 
 
-## <a name="install-and-use-pre-built-views-for-azure-ad-activity-logs"></a>Azure AD アクティビティ ログの事前構築済みビューをインストールし使用する
+## <a name="use-pre-built-workbooks-for-azure-ad-activity-logs"></a>Azure AD アクティビティ ログの事前構築済みブックを使用する
 
-Azure AD アクティビティ ログの事前構築済みログ分析ビューをダウンロードすることもできます。 ビューには、監査およびサインイン イベントに関する一般的なシナリオに関連した複数のレポートが表示されます。 前のセクションで説明されている手順を使用して、レポートに表示されるデータのいずれかについてアラートすることもできます。
+ブックには、監査、サインイン、プロビジョニングの各イベントに関する一般的なシナリオに関連した複数のレポートが表示されます。 前のセクションで説明されている手順を使用して、レポートに表示されるデータのいずれかについてアラートすることもできます。
 
-* **Azure AD Account Provisioning Events\(Azure AD アカウントのプロビジョニング イベント\)** :プロビジョニングされた新しいユーザーとプロビジョニング エラーの数、更新されたユーザーと更新エラーの数、プロビジョニング解除されたユーザーと該当するエラーの数など、プロビジョニング アクティビティの監査に関連するレポートを表示します。    
-* **Sign-ins Events\(サインイン イベント\)** :このビューは、経時的にサインイン数を追跡する概要ビューだけでなく、アプリケーション、ユーザー、デバイスごとのサインインなど、サインイン アクティビティの監視に関連する最も重要なレポートを表示します。
-* **Users Performing Consent\(ユーザ―実行の同意\)** :このビューは、すべての同意ベースのアプリケーションに対して、アプリケーションごとのサインインだけでなく、ユーザーによる同意、同意したユーザーによるサインインなど、ユーザーの同意に関連するレポートを表示します。 
-
-[Azure AD のアクティビティ ログ用の Log Analytics ビューをインストールして使用する](howto-install-use-log-analytics-views.md)方法を学習してください。 
-
+* **プロビジョニング分析**:この [ブック](../app-provisioning/application-provisioning-log-analytics.md)には、プロビジョニングされた新しいユーザーとプロビジョニング エラーの数、更新されたユーザーと更新エラーの数、プロビジョニング解除されたユーザーと該当するエラーの数など、プロビジョニング アクティビティの監査に関連するレポートが表示されます。    
+* **Sign-ins Events\(サインイン イベント\)** :このブックには、経時的にサインイン数を追跡する概要ビューだけでなく、アプリケーション、ユーザー、デバイスごとのサインインなど、サインイン アクティビティの監視に関連する最も重要なレポートが表示されます。
+* **分析情報への条件付きアクセス**:条件付きアクセスに関する分析情報とレポートの [ブック](../conditional-access/howto-conditional-access-insights-reporting.md)を使用すると、自分の組織内での一定期間にわたる条件付きアクセス ポリシーの影響を把握できます。 
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Monitor ログでクエリの使用を開始する](../../azure-monitor/log-query/get-started-queries.md)
-* [Create and manage alert groups in the Azure portal](../../azure-monitor/platform/action-groups.md)
+* [Azure Monitor ログでクエリの使用を開始する](../../azure-monitor/logs/get-started-queries.md)
+* [Create and manage alert groups in the Azure portal](../../azure-monitor/alerts/action-groups.md)
 * [Azure Active Directory ログ分析用のビューのインストールと使用](howto-install-use-log-analytics-views.md)

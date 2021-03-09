@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: b63d487d09679e64b5a2029284471c1aa3c3b769
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 2c4fbefc1bb801ab4a9387054ac91e5fca14ec18
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958306"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185599"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>チュートリアル:Azure App Service on Linux と Azure Cosmos DB を使用して Java Spring Boot Web アプリを構築する
 
@@ -35,7 +35,7 @@ ms.locfileid: "88958306"
 
 * 開発コンピューターに [Azure CLI](/cli/azure/overview) がインストールされている。 
 * [Git](https://git-scm.com/)
-* [Java JDK](https://aka.ms/azure-jdks)
+* [Java JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * [Maven](https://maven.apache.org)
 
 ## <a name="clone-the-sample-todo-app-and-prepare-the-repo"></a>サンプルの TODO アプリを複製してリポジトリを準備する
@@ -57,21 +57,21 @@ yes | cp -rf .prep/* .
 
 1. Azure CLI にログインして、ログイン資格情報に接続されるサブスクリプションが複数ある場合は、必要に応じてサブスクリプションを設定します。
 
-    ```bash
+    ```azurecli
     az login
     az account set -s <your-subscription-id>
     ```   
 
 2. Azure リソース グループを作成して、そのリソース グループの名前をメモします。
 
-    ```bash
+    ```azurecli
     az group create -n <your-azure-group-name> \
         -l <your-resource-group-region>
     ```
 
 3. 種類が `GlobalDocumentDB` の Azure Cosmos DB を作成します。 Cosmos DB の名前には小文字のみを使用する必要があります。 コマンドからの応答内の `documentEndpoint` フィールドをメモします。
 
-    ```bash
+    ```azurecli
     az cosmosdb create --kind GlobalDocumentDB \
         -g <your-azure-group-name> \
         -n <your-azure-COSMOS-DB-name-in-lower-case-letters>
@@ -79,7 +79,7 @@ yes | cp -rf .prep/* .
 
 4. アプリに接続するための Azure Cosmos DB キーを取得します。 `primaryMasterKey` と `documentEndpoint` は、次の手順で必要になるため、近くに保管しておきます。
 
-    ```bash
+    ```azurecli
     az cosmosdb list-keys -g <your-azure-group-name> -n <your-azure-COSMOSDB-name>
     ```
 
@@ -146,7 +146,7 @@ mvn package spring-boot:run
 
 出力は次のようになります。
 
-```bash
+```output
 bash-3.2$ mvn package spring-boot:run
 [INFO] Scanning for projects...
 [INFO] 
@@ -185,7 +185,7 @@ TODO アプリケーションを開始したというメッセージではなく
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.9.1</version>
+        <version>1.11.0</version>
         <configuration>
             <schemaVersion>v2</schemaVersion>
 
@@ -238,7 +238,7 @@ TODO アプリケーションを開始したというメッセージではなく
 
 ## <a name="deploy-to-app-service-on-linux"></a>App Service on Linux にデプロイする
 
-`azure-webapp:deploy` の Maven 目標を使用して、TODO アプリを Azure App Service on Linux にデプロイします。
+`mvn azure-webapp:deploy` の Maven 目標を使用して、TODO アプリを Azure App Service on Linux にデプロイします。
 
 ```bash
 
@@ -250,7 +250,7 @@ bash-3.2$ mvn azure-webapp:deploy
 [INFO] Building spring-todo-app 2.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO] 
-[INFO] --- azure-webapp-maven-plugin:1.9.1:deploy (default-cli) @ spring-todo-app ---
+[INFO] --- azure-webapp-maven-plugin:1.11.0:deploy (default-cli) @ spring-todo-app ---
 [INFO] Auth Type : AZURE_CLI, Auth Files : [C:\Users\testuser\.azure\azureProfile.json, C:\Users\testuser\.azure\accessTokens.json]
 [INFO] Subscription : xxxxxxxxx
 [INFO] Target Web App doesn't exist. Creating a new one...
@@ -275,7 +275,7 @@ bash-3.2$ mvn azure-webapp:deploy
 出力には、デプロイされたアプリケーションへの URL が含まれています (この例では `https://spring-todo-app.azurewebsites.net`)。 この URL を Web ブラウザーにコピーするか、ターミナル ウィンドウで次のコマンドを実行すると、アプリを読み込むことができます。
 
 ```bash
-open https://spring-todo-app.azurewebsites.net
+curl https://spring-todo-app.azurewebsites.net
 ```
 
 アドレス バーにリモート URL が表示されて、実行されているアプリが表示されるはずです。
@@ -291,7 +291,7 @@ open https://spring-todo-app.azurewebsites.net
 
 別のワーカーを追加することで、アプリケーションをスケールアウトします。
 
-```bash
+```azurecli
 az appservice plan update --number-of-workers 2 \
    --name ${WEBAPP_PLAN_NAME} \
    --resource-group <your-azure-group-name>
@@ -299,9 +299,9 @@ az appservice plan update --number-of-workers 2 \
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-これらのリソースが別のチュートリアルで不要である場合 (「[次のステップ](#next)」を参照)、Cloud Shell で次のコマンドを実行して削除することができます。 
-  
-```bash
+これらのリソースが別のチュートリアルで不要である場合 (「[次のステップ](#next)」を参照)、Cloud Shell で次のコマンドを実行して削除することができます。 
+  
+```azurecli
 az group delete --name <your-azure-group-name>
 ```
 

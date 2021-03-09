@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 7098744fe012c994e311696a376cd7ed0dc9ac53
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 1155b4274b97f540fd97bf39e51fd41c37bc9627
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076618"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730623"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM へのディスクの追加
 
@@ -21,7 +21,7 @@ ms.locfileid: "89076618"
 
 ## <a name="attach-a-new-disk-to-a-vm"></a>新しいディスクの VM への接続
 
-VM に新しい空のデータ ディスクを追加する場合は、`--new` パラメーターを指定して [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) コマンドを使用します。 VM が可用性ゾーン内にある場合は、VM と同じゾーンで、ディスクが自動的に作成されます。 詳細については、[可用性ゾーンの概要](../../availability-zones/az-overview.md)に関するページをご覧ください。 次の例では、*myDataDisk* という名前で、サイズが 50 GB のディスクを作成します。
+VM に新しい空のデータ ディスクを追加する場合は、`--new` パラメーターを指定して [az vm disk attach](/cli/azure/vm/disk) コマンドを使用します。 VM が可用性ゾーン内にある場合は、VM と同じゾーンで、ディスクが自動的に作成されます。 詳細については、[可用性ゾーンの概要](../../availability-zones/az-overview.md)に関するページをご覧ください。 次の例では、*myDataDisk* という名前で、サイズが 50 GB のディスクを作成します。
 
 ```azurecli
 az vm disk attach \
@@ -34,7 +34,7 @@ az vm disk attach \
 
 ## <a name="attach-an-existing-disk"></a>既存のディスクの接続
 
-既存のディスクを接続するには、ディスク ID を探し、[az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) コマンドに渡します。 次の例では、*myResourceGroup* 内の *myDataDisk* という名前のディスクにクエリを実行し、それを *myVM* という名前の VM に接続します。
+既存のディスクを接続するには、ディスク ID を探し、[az vm disk attach](/cli/azure/vm/disk) コマンドに渡します。 次の例では、*myResourceGroup* 内の *myDataDisk* という名前のディスクにクエリを実行し、それを *myVM* という名前の VM に接続します。
 
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
@@ -181,5 +181,5 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Linux マシンのパフォーマンスの最適化](optimization.md) に関する推奨事項を読んで、Linux VM が正しく構成されていることを確認します。
-* ディスクを追加してストレージ容量を拡張し、 [RAID を構成](configure-raid.md) してパフォーマンスを強化します。
+* [Linux マシンのパフォーマンスの最適化](/previous-versions/azure/virtual-machines/linux/optimization) に関する推奨事項を読んで、Linux VM が正しく構成されていることを確認します。
+* ディスクを追加してストレージ容量を拡張し、 [RAID を構成](/previous-versions/azure/virtual-machines/linux/configure-raid) してパフォーマンスを強化します。

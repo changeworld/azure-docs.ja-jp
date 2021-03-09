@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.author: mimart
 ms.date: 04/04/2020
-ms.custom: mvc, devx-track-javascript
+ms.custom: mvc, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: f01ef1a4cf5bc5b805da3dd4d825ef17f81ce53e
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 737810a7d07d0d97b2e42acffa17fdd32986c48b
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170201"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421092"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>チュートリアル:Azure AD B2C を使用して、シングルページ アプリケーションから Node.js Web API へのアクセスを保護および許可する
 
@@ -56,11 +56,11 @@ ms.locfileid: "87170201"
 
 保護された Web API を別のアプリケーションから呼び出すには、その Web API へのアクセス許可をそのアプリケーションに付与する必要があります。
 
-前提条件のチュートリアルでは、*webapp1* という名前の Web アプリケーションを作成しました。 このチュートリアルでは、前のセクションで作成した Web API である *webapi1* を呼び出すようにそのアプリケーションを構成します。
+前提条件のチュートリアルでは、*spaapp1* という名前のシングルページ アプリケーションを作成しました。 このチュートリアルでは、前のセクションで作成した Web API である *spaapp1* を呼び出すようにそのアプリケーションを構成します。
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
-これで、シングルページ Web アプリケーションに、指定されたスコープの、保護された Web API へのアクセス許可が付与されました。 ユーザーは、シングルページ アプリケーションを使用するために Azure AD B2C で認証を行います。 シングルページ アプリは、承認許可フローを使用して、Azure AD B2C から返されたアクセス トークンを使って、保護された Web API に アクセスします。
+これで、シングルページ Web アプリケーションに、指定されたスコープの、保護された Web API へのアクセス許可が付与されました。 ユーザーは、シングルページ アプリケーションを使用するために Azure AD B2C で認証を行います。 シングルページ アプリは、保護された Web API にアクセスするために、Azure AD B2C からアクセス トークンを取得します。
 
 ## <a name="configure-the-sample"></a>サンプルの構成
 
@@ -74,14 +74,20 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="configure-the-web-api"></a>Web API を構成する
 
-1. コード エディターで *config.js* ファイルを開きます。
+1. コード エディターで *config.json* ファイルを開きます。
 1. 変数の値を変更して、前に作成したアプリケーション登録のものを反映させます。 また、前提条件の一部として作成したユーザー フローを使用して、`policyName` を更新します。 たとえば、*B2C_1_signupsignin1* などです。
-
-    ```javascript
-    const clientID = "<your-webapi-application-ID>"; // Application (client) ID
-    const b2cDomainHost = "<your-tenant-name>.b2clogin.com";
-    const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (a GUID)
-    const policyName = "B2C_1_signupsignin1";
+    
+    ```json
+    "credentials": {
+        "tenantName": "<your-tenant-name>",
+        "clientID": "<your-webapi-application-ID>"
+    },
+    "policies": {
+        "policyName": "B2C_1_signupsignin1"
+    },
+    "resource": {
+        "scope": ["demo.read"] 
+    },
     ```
 
 #### <a name="enable-cors"></a>CORS を有効にする
@@ -100,7 +106,7 @@ app.use((req, res, next) => {
 
 ### <a name="configure-the-single-page-application"></a>シングルページ アプリケーションを構成する
 
-このシリーズの[前のチュートリアル](tutorial-single-page-app.md)のシングルページ アプリケーション (SPA) は、ユーザーのサインアップとサインインに Azure AD B2C を使用し、既定で、*frabrikamb2c* デモ テナントによって保護されている Node.js Web API を呼び出します。
+このシリーズの [前のチュートリアル](tutorial-single-page-app.md)のシングルページ アプリケーション (SPA) は、ユーザーのサインアップとサインインに Azure AD B2C を使用し、既定で、*frabrikamb2c* デモ テナントによって保護されている Node.js Web API を呼び出します。
 
 このセクションでは、"*自分の*" Azure AD B2C テナントによって保護されている (そして、自分のローカル マシンで実行する) Node.js Web API を呼び出すようにシングルページ Web アプリケーションを更新します。
 
@@ -108,7 +114,7 @@ SPA 内の設定を変更するには:
 
 1. 前のチュートリアルでダウンロードまたは複製した [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa] プロジェクトで、*JavaScriptSPA* フォルダー内の *apiConfig.js* ファイルを開きます。
 1. 先ほど作成した *demo.read* スコープの URI と Web API の URL を使用してサンプルを構成します。
-    1. `apiConfig` 定義で、`b2cScopes` 値を、*demo.read* スコープの完全な URI (前に記録した**スコープ**値) に置き換えます。
+    1. `apiConfig` 定義で、`b2cScopes` 値を、*demo.read* スコープの完全な URI (前に記録した **スコープ** 値) に置き換えます。
     1. `webApi` 値のドメインを、前の手順で Web API アプリケーションを登録したときに追加したリダイレクト URI に変更します。
 
     API には `/hello` エンドポイントでアクセス可能なため、URI の */hello* はそのままにします。
@@ -155,7 +161,7 @@ SPA 内の設定を変更するには:
 1. 別のコンソール ウィンドウを開き、JavaScript SPA サンプルを含むディレクトリに移動します。 次に例を示します。
 
     ```console
-    cd active-directory-b2c-javascript-msal-singlepageapp
+    cd ms-identity-b2c-javascript-spa
     ```
 
 1. 次のコマンドを実行します。

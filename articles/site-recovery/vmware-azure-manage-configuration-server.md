@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 83535fde7f577c4cd5d0b3866afcc0a916c16337
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 2f1edc14efdeaf70bf4c2acc0e31e1517753ed3e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134820"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546349"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理サーバー ディザスター リカバリー用の構成サーバーを管理する
 
@@ -28,17 +28,17 @@ OVF テンプレートに付属するライセンスは、180 日間有効な評
 
 次のように構成サーバーにアクセスすることができます。
 
-* デプロイ先の VM にサインインし、デスクトップのショートカットから **Azure Site Recovery 構成マネージャー**を起動します。
-* または、 https://*ConfigurationServerName*/:44315/ から構成サーバーにリモートでアクセスできます。 管理者の資格情報でサインインします。
+* デプロイ先の VM にサインインし、デスクトップのショートカットから **Azure Site Recovery 構成マネージャー** を起動します。
+* または、 https:// *ConfigurationServerName* /:44315/ から構成サーバーにリモートでアクセスできます。 管理者の資格情報でサインインします。
 
 ## <a name="modify-vmware-server-settings"></a>VMware サーバーの設定を変更する
 
-1. 別の VMware サーバーを構成サーバーと関連付けるには、[サインイン](#access-configuration-server)後に **[vCenter Server/vSphere ESXi サーバーの追加]** を選択します。
+1. 別の VMware サーバーを構成サーバーと関連付けるには、 [サインイン](#access-configuration-server)後に **[vCenter Server/vSphere ESXi サーバーの追加]** を選択します。
 2. 詳細を入力し、 **[OK]** を選択します。
 
 ## <a name="modify-credentials-for-automatic-discovery"></a>自動検出用の資格情報を変更する
 
-1. VMware VM の自動検出のための VMware サーバーへの接続に使う資格情報を更新するには、[サインイン](#access-configuration-server)後にアカウントを選択し、 **[編集]** をクリックします。
+1. VMware VM の自動検出のための VMware サーバーへの接続に使う資格情報を更新するには、 [サインイン](#access-configuration-server)後にアカウントを選択し、 **[編集]** をクリックします。
 2. 新しい資格情報を入力して、 **[OK]** を選択します。
 
     ![VMware の変更](./media/vmware-azure-manage-configuration-server/modify-vmware-server.png)
@@ -71,7 +71,7 @@ CSPSConfigtool.exe を使用して資格情報を変更することもできま�
 
 1. [サインイン](#access-configuration-server)後に、 **[仮想マシンの資格情報の管理]** を選択します。
 2. **[仮想マシンの資格情報の追加]** をクリックします。
-    ![add-mobility-credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![[仮想マシンの資格情報の追加] リンクがある [仮想マシンの資格情報の管理] ウィンドウを示すスクリーンショット。](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. 新しい資格情報を入力して、 **[追加]** をクリックします。
 
 CSPSConfigtool.exe を使用して資格情報を追加することもできます。
@@ -83,7 +83,7 @@ CSPSConfigtool.exe を使用して資格情報を追加することもできま�
 
 Azure へのインターネット アクセスのために構成サーバー マシンが使うプロキシの設定を変更します。 構成サーバー マシンで実行されている既定のプロセス サーバーだけでなく、プロセス サーバー マシンがある場合は、両方のマシンで設定を変更します。
 
-1. 構成サーバーに[サインイン](#access-configuration-server)した後で、 **[接続の管理]** を選択します。
+1. 構成サーバーに [サインイン](#access-configuration-server)した後で、 **[接続の管理]** を選択します。
 2. プロキシの値を更新します。 次に、 **[保存]** を選択して、設定を更新します。
 
 ## <a name="add-a-network-adapter"></a>ネットワーク アダプターを追加する
@@ -114,7 +114,7 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
 
 ### <a name="if-certificates-have-already-expired"></a>証明書の有効期限が既に切れている場合
 
-1. 有効期限が切れると、証明書を **Azure portal から更新することはできません**。 先に進む前に、スケールアウト プロセス サーバー、マスター ターゲット サーバーのすべてのコンポーネント、すべての保護されたマシン上のモビリティ エージェントが最新バージョンであり、かつ接続状態にあることを確認します。
+1. 有効期限が切れると、証明書を **Azure portal から更新することはできません** 。 先に進む前に、スケールアウト プロセス サーバー、マスター ターゲット サーバーのすべてのコンポーネント、すべての保護されたマシン上のモビリティ エージェントが最新バージョンであり、かつ接続状態にあることを確認します。
 2. **証明書の有効期限が既に切れている場合にのみ、この手順に従ってください。** 構成サーバーにログインし、C ドライブ > [Program Data] > [Site Recovery] > [home] > [svsystems] > [bin] に移動して、管理者として "RenewCerts" 実行ツールを実行します。
 3. PowerShell の実行ウィンドウがポップアップ表示され、証明書の更新がトリガーされます。 この処理には最大 15 分かかることがあります。 更新の完了までウィンドウを閉じないでください。
 
@@ -128,7 +128,7 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
 1. コンテナーで、 **[管理]**  >  **[Site Recovery インフラストラクチャ]**  >  **[構成サーバー]** を開きます。
 2. **[サーバー]** で **[登録キーのダウンロード]** を選択して、コンテナーの資格情報ファイルをダウンロードします。
 3. 構成サーバー マシンにサインインします。
-4. **%ProgramData%\ASR\home\svsystems\bin** で、**cspsconfigtool.exe** を開きます。
+4. **%ProgramData%\ASR\home\svsystems\bin** で、 **cspsconfigtool.exe** を開きます。
 5. **[Vault Registration]\(コンテナーの登録\)** タブで **[参照]** を選択して、ダウンロードしたコンテナー資格情報ファイルを探します。
 6. 必要な場合は、プロキシ サーバーの詳細を指定します。 次に、 **[登録]** を選択します。
 7. 管理者の PowerShell コマンド ウィンドウを開き、次のコマンドを実行します。
@@ -138,7 +138,7 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
    ```
 
     >[!NOTE]
-    >構成サーバーからスケールアウト プロセス サーバーに**最新の証明書を取得する**には、コマンド *"\<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>"--registermt* を実行します
+    >構成サーバーからスケールアウト プロセス サーバーに **最新の証明書を取得する** には、コマンド *"\<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>"--registermt* を実行します
 
 8. 最後に、次のコマンドを実行して obengine を再起動します。
    ```
@@ -169,12 +169,12 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
 - 9\.7、9.8、9.9、または 9.10 を実行している場合は、9.11 に直接アップグレードできます。
 - 9\.6 以前を実行している場合に、9.11 にアップグレードするには、まずバージョン 9.7 にアップグレードしてから、 9\.11 にアップグレードする必要があります。
 
-Azure Site Recovery コンポーネントのサポート ステートメントに関する詳細なガイダンスについては、[こちら](https://aka.ms/asr_support_statement)を参照してください。
-すべてのバージョンの構成サーバーにアップグレードするための更新プログラムのロールアップへのリンクは、[こちら](https://aka.ms/asr_update_rollups)にあります。
+Azure Site Recovery コンポーネントのサポート ステートメントに関する詳細なガイダンスについては、[こちら](./service-updates-how-to.md#support-statement-for-azure-site-recovery)を参照してください。
+すべてのバージョンの構成サーバーにアップグレードするための更新プログラムのロールアップへのリンクは、[こちら](./service-updates-how-to.md#links-to-currently-supported-update-rollups)にあります。
 
 > [!IMPORTANT]
 > Azure Site Recovery コンポーネントの新バージョン "N" がリリースされるたびに、"N - 4" よりも前のすべてのバージョンはサポート対象外と見なされます。 常に使用可能な最新バージョンにアップグレードすることをお勧めします。</br>
-> Azure Site Recovery コンポーネントのサポート ステートメントに関する詳細なガイダンスについては、[こちら](https://aka.ms/asr_support_statement)を参照してください。
+> Azure Site Recovery コンポーネントのサポート ステートメントに関する詳細なガイダンスについては、[こちら](./service-updates-how-to.md#support-statement-for-azure-site-recovery)を参照してください。
 
 次のようにサーバーをアップグレードします。
 
@@ -183,16 +183,16 @@ Azure Site Recovery コンポーネントのサポート ステートメント�
     ![アップデート](./media/vmware-azure-manage-configuration-server/update2.png)
 3. 更新プログラムのインストーラー ファイルを構成サーバーにダウンロードします。
 
-    ![更新](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![クリックして更新プログラムのインストーラー ファイルをダウンロードする場所を示すスクリーンショット。](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. インストーラーをダブルクリックして実行します。
 5. インストーラーがマシン上で実行中の現在のバージョンを検出します。 **[はい]** をクリックしてアップグレードを開始します。
 6. アップグレードの完了時に、サーバー構成が検証されます。
 
-    ![更新](./media/vmware-azure-manage-configuration-server/update3.png)
+    ![完成したサーバー検証構成を示すスクリーンショット。](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. **[完了]** をクリックしてインストーラーを閉じます。
-8. その他の Site Recovery コンポーネントをアップグレードするには、[アップグレードのガイダンス](https://aka.ms/asr_vmware_upgrades)に関する記事を参照してください。
+8. その他の Site Recovery コンポーネントをアップグレードするには、[アップグレードのガイダンス](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure)に関する記事を参照してください。
 
 ## <a name="upgrade-configuration-serverprocess-server-from-the-command-line"></a>コマンド ラインから構成サーバー/プロセス サーバーをアップグレードする
 
@@ -293,7 +293,7 @@ ProxyPassword="Password"
 
 1. 構成サーバーにサインインし、コマンド プロンプト ウィンドウを管理者として開きます。
 2. bin フォルダーにディレクトリを変更するには、コマンド **cd %ProgramData%\ASR\home\svsystems\bin** を実行します。
-3. パスフレーズ ファイルを生成するには、**genpassphrase.exe -v > MobSvc.passphrase** を実行します。
+3. パスフレーズ ファイルを生成するには、 **genpassphrase.exe -v > MobSvc.passphrase** を実行します。
 4. **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase** にあるファイルにパスフレーズが格納されます。
 
 ## <a name="refresh-configuration-server"></a>構成サーバーを最新の情報に更新する

@@ -4,10 +4,10 @@ description: この記事では、Shared Access Signature (SAS) を使用する 
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 6a2d7385f82864e8d378055333377fb9c3f73c19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85323127"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>Shared Access Signature を使用する Event Hubs リソースへのアクセスの承認

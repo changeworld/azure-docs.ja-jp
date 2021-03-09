@@ -7,8 +7,15 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: Front Door を作成する
+    - name: Front Door を作成する - ポータル
       href: quickstart-create-front-door.md
+    - name: Front Door を作成する - PowerShell
+      href: quickstart-create-front-door-powershell.md
+    - name: Front Door を作成する - CLI
+      href: quickstart-create-front-door-cli.md
+    - name: Front Door を作成する - ARM テンプレート
+      displayName: Resource Manager
+      href: quickstart-create-front-door-template.md
 - name: チュートリアル
   items:
     - name: Front Door にカスタム ドメインを追加する
@@ -29,10 +36,18 @@
       href: front-door-quickstart-template-samples.md
 - name: 概念
   items:
+    - name: Standard/Premium SKU
+      href: standard-premium/overview.md
+    - name: Security
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: バック エンドとバックエンド プール
       href: front-door-backend-pool.md
     - name: Front Door でのキャッシュ
       href: front-door-caching.md
+    - name: DDoS 保護
+      href: front-door-ddos.md
     - name: Front Door に関する FAQ
       href: front-door-faq.md
     - name: geo フィルタリング

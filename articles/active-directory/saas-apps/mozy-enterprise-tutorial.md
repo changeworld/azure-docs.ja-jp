@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: c9c4cef07bf1de64bcb14bc4487e0f56d2a40dfc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 97294bdd088f50a46786c3568f4230706f750c4c
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518636"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520950"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>チュートリアル: Azure Active Directory と Mozy Enterprise の統合
 
@@ -27,7 +27,7 @@ Mozy Enterprise と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Mozy Enterprise に自動的にサインイン (シングル サインオン) できるようにすることが可能です。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -106,7 +106,7 @@ Mozy Enterprise で Azure AD シングル サインオンを構成するには�
     > [!NOTE]
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Mozy Enterprise クライアント サポート チーム](https://support.mozy.com/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -126,11 +126,11 @@ Mozy Enterprise で Azure AD シングル サインオンを構成するには�
 
 2. **[構成]** セクションで、 **[認証ポリシー]** をクリックします。
    
-    ![認証ポリシー](./media/mozy-enterprise-tutorial/ic777314.png "[認証ポリシー]")
+    ![[構成] で [認証ポリシー] が選択されていることを示すスクリーンショット。](./media/mozy-enterprise-tutorial/ic777314.png "[認証ポリシー]")
 
 3. **[認証ポリシー]** セクションで、次の手順に従います。
    
-    ![認証ポリシー](./media/mozy-enterprise-tutorial/ic777315.png "[認証ポリシー]")
+    ![[認証ポリシー] セクションを示すスクリーンショット。ここでは、説明されている値を入力することができます。](./media/mozy-enterprise-tutorial/ic777315.png "[認証ポリシー]")
    
     a. **[プロバイダー]** に **[ディレクトリ サービス]** を選択します。
    
@@ -240,13 +240,12 @@ Azure AD ユーザーが Mozy Enterprise にログインできるようにする
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Mozy Enterprise] タイルをクリックすると、SSO を設定した Mozy Enterprise に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Mozy Enterprise] タイルをクリックすると、SSO を設定した Mozy Enterprise に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

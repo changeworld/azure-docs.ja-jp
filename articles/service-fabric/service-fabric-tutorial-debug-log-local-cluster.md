@@ -1,17 +1,15 @@
 ---
 title: ローカルの Service Fabric クラスター上で Java アプリをデバッグする
 description: このチュートリアルでは、ローカル クラスターで実行されている Service Fabric Java アプリケーションをデバッグする方法と、そのアプリケーションのログを取得する方法について説明します。
-author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 040eaeb3ef77dfd68feb2aebac71d945ef669d6d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 801702d43bae6d925fa4f7fbc37cf44bf585fa6d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372435"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91531992"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>チュートリアル:ローカルの Service Fabric クラスター上にデプロイされた Java アプリケーションをデバッグする
 

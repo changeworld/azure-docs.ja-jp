@@ -1,29 +1,33 @@
 ---
-title: Azure Maps の Indoor Maps モジュールを使用する
+title: Microsoft Creator サービス (プレビュー) で Azure Maps の Indoor Maps モジュールを使用する
 description: Microsoft Azure Maps の Indoor Maps モジュールを使用し、モジュールの JavaScript ライブラリを埋め込むことによってマップをレンダリングする方法について説明します。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/20/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 4bfb017bb085d22c187e8074ba4f2b026d17f442
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.custom: devx-track-js
+ms.openlocfilehash: bc80b7dfd433911ef13906db38f59a76827db258
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815948"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905283"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Azure Maps の Indoor Maps モジュールを使用する
 
-Azure Maps Web SDK には、*Azure Maps Indoor* モジュールが含まれています。 *Azure Maps Indoor* モジュールを使用すると、Azure Maps Creator で作成された屋内マップをレンダリングできます。
+> [!IMPORTANT]
+> Azure Maps Creator サービスは、現在パブリック プレビューの段階にあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+Azure Maps Web SDK には、*Azure Maps Indoor* モジュールが含まれています。 *Azure Maps Indoor* モジュールを使用すると、Azure Maps Creator サービス (プレビュー) で作成されたフロア ガイドをレンダリングできます。 
 
 ## <a name="prerequisites"></a>前提条件
 
 1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [Creator リソースを作成します](how-to-manage-creator.md)
+2. [Creator (プレビュー) リソースを作成します](how-to-manage-creator.md)
 3. [プライマリ サブスクリプション キーを取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account) (主キーまたはサブスクリプション キーとも呼ばれます)。
 4. [屋内マップを作成するためのチュートリアル](tutorial-creator-indoor-maps.md)を完了して、`tilesetId` および `statesetId` を取得します。
  Azure Maps の Indoor Maps モジュールを使用して屋内マップをレンダリングするには、これらの識別子を使用する必要があります。
@@ -147,7 +151,7 @@ map.events.add("facilitychanged", indoorManager, (eventData) => {
 4. "*Map オブジェクト*" を初期化します。 "*Map オブジェクト*" では、次のオプションがサポートされています。
     - `Subscription key` はご自分の Azure Maps プライマリ サブスクリプション キーです。
     - `center` を使用して屋内マップの中心位置の緯度と経度を定義します。 `bounds` に値を指定しない場合は、`center` に値を指定してください。 形式は `center`: [-122.13315, 47.63637] のようになります。
-    - `bounds` は、タイルセット マップ データを囲む最小の四角形です。 `center` に値を設定しない場合は、`bounds` に値を設定してください。 マップの境界を知るには、[タイルセットの一覧 API](https://docs.microsoft.com/rest/api/maps/tileset/listpreview) を呼び出します。 タイルセットの一覧 API から `bbox` が返されます。これを解析して `bounds` に割り当てることができます。 形式は `bounds`: [# west, # south, # east, # north] のように表示されるはずです。
+    - `bounds` は、タイルセット マップ データを囲む最小の四角形です。 `center` に値を設定しない場合は、`bounds` に値を設定してください。 マップの境界を知るには、[タイルセットの一覧 API](/rest/api/maps/tileset/listpreview) を呼び出します。 タイルセットの一覧 API から `bbox` が返されます。これを解析して `bounds` に割り当てることができます。 形式は `bounds`: [# west, # south, # east, # north] のように表示されるはずです。
     - `style` を使用すると背景色を設定できます。 白い背景を表示するには、`style` を "blank" として定義します。
     - `zoom` を使用すると、マップのズーム レベルの最小値と最大値を指定できます。
 
@@ -249,7 +253,7 @@ map.events.add("facilitychanged", indoorManager, (eventData) => {
 > [Drawing パッケージの要件](drawing-requirements.md)
 
 >[!div class="nextstepaction"]
-> [屋内マップ用の Creator](creator-indoor-maps.md)
+> [フロア ガイド用の Creator (プレビュー)](creator-indoor-maps.md)
 
 マップにさらにデータを追加する方法の詳細については、次を参照してください。
 
@@ -257,4 +261,4 @@ map.events.add("facilitychanged", indoorManager, (eventData) => {
 > [屋内マップの動的スタイル設定](indoor-map-dynamic-styling.md)
 
 > [!div class="nextstepaction"]
-> [コード サンプル](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [コード サンプル](/samples/browse/?products=azure-maps)

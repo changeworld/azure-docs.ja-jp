@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 4321278ac951eeef5c4d402ac25c7a55d2f7e858
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 299d75f6d039ae36cdc99f5e77ec0dc8ca456a04
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543586"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676764"
 ---
 # <a name="tutorial-integrate-safeconnect-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と SafeConnect の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543586"
 * ユーザーが自分の Azure AD アカウントを使用して SafeConnect に自動的にサインインできるようにします。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SafeConnect では、**SP** Initiated SSO がサポートされます
+* SafeConnect では、 **SP** Initiated SSO がサポートされます
 
 ## <a name="adding-safeconnect-from-the-gallery"></a>ギャラリーからの SafeConnect の追加
 
@@ -49,7 +49,7 @@ Azure AD への SafeConnect の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**SafeConnect**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **SafeConnect** 」と入力します。
 1. 結果ウィンドウで **[SafeConnect]** を選択し、アプリケーションを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -89,7 +89,7 @@ SafeConnect で Azure AD SSO を構成してテストするには、次の構成
 
 ### <a name="configure-safeconnect-sso"></a>SafeConnect SSO の構成
 
-**SafeConnect** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** と Azure portal からコピーした適切な URL を [SafeConnect サポート チーム](mailto:support@impulse.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**SafeConnect** 側でシングル サインオンを構成するには、ダウンロードした **メタデータ XML** と Azure portal からコピーした適切な URL を [SafeConnect サポート チーム](mailto:support@impulse.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -123,18 +123,18 @@ SafeConnect で Azure AD SSO を構成してテストするには、次の構成
 
 ### <a name="create-safeconnect-test-user"></a>SafeConnect テスト ユーザーの作成
 
-このセクションでは、SafeConnect で Britta Simon というユーザーを作成します。  [SafeConnect サポート チーム](mailto:support@impulse.com)と協力して、SafeConnect プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、SafeConnect で Britta Simon というユーザーを作成します。 [SafeConnect サポート チーム](mailto:support@impulse.com)と協力して、SafeConnect プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [SafeConnect] タイルをクリックすると、SSO を設定した SafeConnect に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [SafeConnect] タイルをクリックすると、SSO を設定した SafeConnect に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -1,19 +1,19 @@
 ---
 title: 低速クエリ ログにアクセスする - Azure CLI - Azure Database for MariaDB
 description: この記事では、Azure CLI コマンド ライン ユーティリティを使用して Azure Database for MariaDB の低速ログにアクセスする方法について説明します。
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 4/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cd74feaebe5a89667668c05e332ed9d3c7cdad5d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9c8f69f00ed4314fbe8b3fd1958b52c82ce55d99
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87490253"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662391"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-by-using-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB の低速クエリ ログを構成してアクセスする
 

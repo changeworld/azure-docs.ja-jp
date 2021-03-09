@@ -2,14 +2,14 @@
 title: テンプレートを使用してジョブをエンドツーエンドで実行する
 description: CLI コマンドのみで、プールの作成、入力データのアップロード、ジョブと関連するタスクの作成、結果の出力データのダウンロードを行うことができます。
 ms.topic: how-to
-ms.date: 12/07/2018
+ms.date: 10/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e9b4930dee1b28bb4ec71690cbfcef88e0365b9e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 845a32c2feda5a5a3b8d44d237c62db94cae1779
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494929"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91848723"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLI テンプレートとファイル転送を使用する
 
@@ -65,7 +65,7 @@ Azure Batch テンプレートは、機能と構文が Azure Resource Manager �
 -   **パラメーター**
 
     -   本文セクションでプロパティ値を指定し、テンプレートを使用するときに指定する必要があるパラメーター値だけを含めることができます。 たとえば、プールの完全な定義を本文に配置し、`poolId` の 1 つのパラメーターだけを定義します。これにより、プールを作成するために指定する必要があるのはプール ID 文字列だけになります。
-        
+
     -   テンプレートの本文は、Batch と Batch によって実行されるアプリケーションの知識があるユーザーが作成できます。テンプレートを使用するときは、作成者が定義したパラメーターの値だけを指定する必要があります。 そのため、Batch やアプリケーションの深い知識のないユーザーがテンプレートを使用できます。
 
 -   **変数**
@@ -121,7 +121,7 @@ ffmpeg がインストールされた Linux VM のプールを作成するテン
             "vmSize": "STANDARD_D3_V2",
             "targetDedicatedNodes": "[parameters('nodeCount')]",
             "enableAutoScale": false,
-            "maxTasksPerNode": 1,
+            "taskSlotsPerNode": 1,
             "packageReferences": [
                 {
                     "type": "aptPackage",
@@ -209,7 +209,7 @@ ffmpeg を使用して MP4 ビデオ ファイルを 2 つの低解像度のい�
             },
             "taskFactory": {
                 "type": "taskPerFile",
-                "source": { 
+                "source": {
                     "fileGroup": "ffmpeg-input"
                 },
                 "repeatTask": {
@@ -271,7 +271,7 @@ Batch CLI テンプレートを [Batch Explorer](https://github.com/Azure/BatchE
 Batch CLI 拡張機能には、クライアントから指定したファイル グループにファイルをアップロードするコマンドと、指定したファイル グループからクライアントにファイルをダウンロードするコマンドが用意されています。
 
 ```azurecli
-az batch file upload --local-path c:\source_videos\*.mp4 
+az batch file upload --local-path c:\source_videos\*.mp4
     --file-group ffmpeg-input
 
 az batch file download --file-group ffmpeg-output --local-path

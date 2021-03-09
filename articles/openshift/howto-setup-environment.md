@@ -6,16 +6,22 @@ author: jimzim
 ms.author: jzim
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 64b71c135126ebb540d5ccf72f829f83c74ed0b3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9654711a1399c2708ce8c9150b79eefa73387c03
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495320"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635028"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Azure Red Hat OpenShift 開発環境の設定
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 は、2022 年 6 月 30 日に廃止されます。 新しい Azure Red Hat OpenShift 3.11 クラスターの作成のサポートは、2020 年 11 月 30 日まで継続されます。 廃止された後、残っている Azure Red Hat OpenShift 3.11 クラスターは、セキュリティの脆弱性を防ぐためにシャットダウンされます。
+> 
+> このガイドに従って、[Azure Red Hat OpenShift 4 クラスターを作成](tutorial-create-cluster.md)します。
+> ご質問がある場合は、[お問い合わせください](mailto:arofeedback@microsoft.com)。
 
 Microsoft Azure Red Hat OpenShift アプリケーションをビルドして実行するには、次のことを行う必要があります。
 
@@ -37,9 +43,9 @@ az --version
 
 出力の最初の行に CLI バージョン (たとえば `azure-cli (2.0.65)`) が表示されます。
 
-新しいインストールまたはアップグレードが必要な場合、[Azure CLI をインストールする手順はこちらにあります](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+新しいインストールまたはアップグレードが必要な場合、[Azure CLI をインストールする手順はこちらにあります](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-別の方法として、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用することもできます。 Azure Cloud Shell の使用時、[Azure Red Hat OpenShift クラスターの作成と管理](tutorial-create-cluster.md)のチュートリアル シリーズに従って進める予定の場合は、必ず **Bash** 環境を選択してください。
+別の方法として、[Azure Cloud Shell](../cloud-shell/overview.md) を使用することもできます。 Azure Cloud Shell の使用時、[Azure Red Hat OpenShift クラスターの作成と管理](tutorial-create-cluster.md)のチュートリアル シリーズに従って進める予定の場合は、必ず **Bash** 環境を選択してください。
 
 ## <a name="register-providers-and-features"></a>プロバイダーと機能の登録
 
@@ -103,11 +109,11 @@ Azure Red Hat OpenShift サービスには、ご自身の組織およびその�
 
 ## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>Azure AD ユーザー、セキュリティ グループ、アプリケーション オブジェクトを作成する
 
-Azure Red Hat OpenShift には、ストレージの構成など、クラスター上でタスクを実行するためのアクセス許可が必要です。 これらのアクセス許可は、[サービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)を介して表されます。 また、Azure Red Hat OpenShift クラスター上で実行されているアプリをテストするための新しい Active Directory ユーザーを作成できます。
+Azure Red Hat OpenShift には、ストレージの構成など、クラスター上でタスクを実行するためのアクセス許可が必要です。 これらのアクセス許可は、[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を介して表されます。 また、Azure Red Hat OpenShift クラスター上で実行されているアプリをテストするための新しい Active Directory ユーザーを作成できます。
 
 「[Azure AD アプリ オブジェクトとユーザーの作成](howto-aad-app-configuration.md)」の手順に従って、サービス プリンシパルを作成し、アプリのクライアント シークレットと認証コールバック URL を生成し、クラスターにアクセスするための新しい Azure AD セキュリティ グループとユーザーを作成します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 以上で Azure Red Hat OpenShift を使用する準備ができました。
 
@@ -115,4 +121,4 @@ Azure Red Hat OpenShift には、ストレージの構成など、クラスタ�
 > [!div class="nextstepaction"]
 > [Azure Red Hat OpenShift クラスターを作成する](tutorial-create-cluster.md)
 
-[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
+[azure-cli-install]: /cli/azure/install-azure-cli

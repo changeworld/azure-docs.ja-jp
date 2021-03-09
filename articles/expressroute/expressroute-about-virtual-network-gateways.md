@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: duau
-ms.openlocfilehash: 65e44acd1fe6ecb389f81cbd0ed88d1c161dfcdb
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 45b059784cc0b442b615a2a1cb50386da6ee990f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89397867"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740921"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>ExpressRoute の仮想ネットワーク ゲートウェイについて
 
@@ -53,7 +53,7 @@ ExpressRoute ゲートウェイを作成する前に、ゲートウェイ サブ
 
 ゲートウェイ サブネットを作成するときに、サブネットに含まれる IP アドレスの数を指定します。 ゲートウェイ サブネット内の IP アドレスは、ゲートウェイ VM とゲートウェイ サービスに割り当てられます。 一部の構成では、他の構成よりも多くの IP アドレスを割り当てる必要があります。 
 
-ゲートウェイ サブネットのサイズを計画する際は、作成する構成に関するドキュメントを参照してください。 たとえば、ExpressRoute/VPN Gateway が共存する構成には、他のほとんどの構成より大規模なゲートウェイ サブネットが必要です。 また、ゲートウェイ サブネットには、将来の構成の追加に対応できる十分な数の IP アドレスが含まれるようにしてください。 /29 のような小さいゲートウェイ サブネットを作成できますが、使用できるアドレス空間がある場合は、/27 以上 (/27、/26 など) のゲートウェイ サブネットを作成することをお勧めします。 このゲートウェイ サブネットは、ほとんどの構成に対応します。
+ゲートウェイ サブネットのサイズを計画する際は、作成する構成に関するドキュメントを参照してください。 たとえば、ExpressRoute/VPN Gateway が共存する構成には、他のほとんどの構成より大規模なゲートウェイ サブネットが必要です。 また、ゲートウェイ サブネットには、将来の構成の追加に対応できる十分な数の IP アドレスが含まれるようにしてください。 /29 のような小さいゲートウェイ サブネットを作成できますが、使用できるアドレス空間がある場合は、/27 以上 (/27、/26 など) のゲートウェイ サブネットを作成することをお勧めします。 デュアル スタックのゲートウェイ サブネットを作成する場合は、/64 以上の IPv6 範囲も使用することをお勧めします。 このゲートウェイ サブネットは、ほとんどの構成に対応します。
 
 次の Resource Manager PowerShell の例では、GatewaySubnet という名前のゲートウェイ サブネットを示しています。 CIDR 表記で /27 を指定しています。これで既存のほとんどの構成で IP アドレスに十分対応できます。
 
@@ -77,6 +77,11 @@ Azure Availability Zones に、ExpressRoute ゲートウェイをデプロイす
 
 新しいゲートウェイ SKU では、ニーズに最も適したその他のデプロイ オプションもサポートされます。 新しいゲートウェイ SKU を使用して仮想ネットワーク ゲートウェイを作成する場合、特定のゾーン内にゲートウェイをデプロイするオプションもあります。 これは、ゾーン ゲートウェイと呼ばれます。 ゾーン ゲートウェイをデプロイすると、すべてのゲートウェイ インスタンスが同じ可用性ゾーンにデプロイされます。
 
+> [!IMPORTANT]
+> ExpressRoute 経由で IPv6 ベースのプライベート ピアリングを使用する予定の場合は、デュアル スタックのゲートウェイ サブネットにデプロイするゲートウェイに対して AZ SKU を選択してください。
+> 
+>
+
 ## <a name="fastpath"></a><a name="fastpath"></a>FastPath
 
 ExpressRoute 仮想ネットワーク ゲートウェイの目的は、ネットワーク ルートを交換し、ネットワーク トラフィックをルーティングすることです。 FastPath の目的は、お使いのオンプレミス ネットワークと仮想ネットワークの間のデータ パスのパフォーマンスを向上させることです。 FastPath が有効になっていると、ゲートウェイはバイパスされ、ネットワーク トラフィックが仮想ネットワーク内の仮想マシンに直接送信されます。
@@ -88,8 +93,8 @@ ExpressRoute 仮想ネットワーク ゲートウェイの目的は、ネット
 
 | **クラシック** | **Resource Manager** |
 | --- | --- |
-| [PowerShell](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0#azure) |[PowerShell](https://docs.microsoft.com/powershell/module/az.network#networking) |
-| [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |
+| [PowerShell](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0#azure) |[PowerShell](/powershell/module/az.network#networking) |
+| [REST API](/previous-versions/azure/reference/jj154113(v=azure.100)) |[REST API](/rest/api/virtual-network/) |
 
 ## <a name="next-steps"></a>次のステップ
 

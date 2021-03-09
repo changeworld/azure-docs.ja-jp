@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 90ffd1c01411982f56aed3332c499aa0c10b8a94
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b7af0a4c26a47644973e936eb37e221853d74c03
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257590"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784665"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric のセキュリティ 
 
@@ -56,7 +56,7 @@ Azure Key Vault 証明書は、作成するか、またはキー コンテナー
 
 ## <a name="apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster"></a>Service Fabric クラスター用の証明書にアクセス制御リスト (ACL) を適用する
 
-ノードのセキュリティを構成するには、[仮想マシン スケール セット拡張機能](/cli/azure/vmss/extension?view=azure-cli-latest)のパブリッシャー Microsoft.Azure.ServiceFabric を使用します。
+ノードのセキュリティを構成するには、[仮想マシン スケール セット拡張機能](/cli/azure/vmss/extension)のパブリッシャー Microsoft.Azure.ServiceFabric を使用します。
 Service Fabric クラスター プロセスに対する証明書に ACL を適用するには、次の Resource Manager テンプレートのプロパティを使用します。
 
 ```json

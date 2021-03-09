@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 3fe2fa8b094830e2d15c1cebce782381b4ca7bc7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 876fd8260b64fba4d3d34a766b4259323c660b76
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74975042"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968079"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>チュートリアル:Azure IoT Hub Device Provisioning Service を使用した IoT ハブへのデバイスのプロビジョニング
 
@@ -28,27 +28,27 @@ ms.locfileid: "74975042"
 
 以降の手順に進む前に、チュートリアル「[Azure IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスの設定](./tutorial-set-up-device.md)」の説明に従って、デバイスを構成してください。
 
-自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](concepts-auto-provisioning.md)」を読んでから先に進んでください。
+自動プロビジョニングの処理に慣れていない場合は、[プロビジョニング](about-iot-dps.md#provisioning-process)の概要を読んでから先に進んでください。
 
 <a id="enrolldevice"></a>
 ## <a name="enroll-the-device"></a>デバイスを登録する
 
-この手順では、Device Provisioning Service にデバイスの一意のセキュリティ アーティファクトを追加する必要があります。 これらのセキュリティ アーティファクトは、デバイスの[構成証明メカニズム](concepts-device.md#attestation-mechanism)をベースとしています。
+この手順では、Device Provisioning Service にデバイスの一意のセキュリティ アーティファクトを追加する必要があります。 これらのセキュリティ アーティファクトは、デバイスの[構成証明メカニズム](concepts-service.md#attestation-mechanism)をベースとしています。
 
 - TPM ベースのデバイスの場合、次のものが必要となります。
-    - 各 TPM チップまたはシミュレーションに固有の "*保証キー*"。保証キーは TPM チップの製造元から取得します。  詳細については、「[TPM 保証キーとは](https://technet.microsoft.com/library/cc770443.aspx)」をご覧ください。
+    - 各 TPM チップまたはシミュレーションに固有の "*保証キー*"。保証キーは TPM チップの製造元から取得します。  詳細については、「[TPM 保証キーとは](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770443(v=ws.11))」をご覧ください。
     - 名前空間/スコープ内でデバイスを一意に識別するために使用する "*登録 ID*"。 この ID は、デバイス ID と同じである場合もあれば、異なる場合もあります。 この ID はすべてのデバイスで必須です。 TPM ベースのデバイスでは、登録 ID が TPM 自体から派生している場合があります (TPM 保証キーの SHA-256 ハッシュなど)。
 
       [![ポータルに表示された TPM の登録情報](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - X.509 ベースのデバイスの場合、次のものが必要となります。
-    - *.pem* ファイルまたは *.cer* ファイルの形式で、[X.509 チップまたはシミュレーションに発行された証明書](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)。 個別登録では、X.509 システムのデバイスごとの "*署名証明書*" を使用する必要があります。登録グループでは、"*ルート証明書*" を使用する必要があります。 
+    - *.pem* ファイルまたは *.cer* ファイルの形式で、[X.509 チップまたはシミュレーションに発行された証明書](/windows/win32/seccertenroll/about-x-509-public-key-certificates)。 個別登録では、X.509 システムのデバイスごとの "*署名証明書*" を使用する必要があります。登録グループでは、"*ルート証明書*" を使用する必要があります。 
 
       [![X.509 構成証明の個々の登録をポータルで追加](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
 デバイスを Device Provisioning Service に登録するには、次の 2 つの方法があります。
 
-- **Enrollment Groups\(登録グループ\)** : これは、特定の構成証明メカニズムを共有するデバイスのグループを表します。 必要な初期構成を共有する多数のデバイスがある場合や、すべてのデバイスが同じテナントに配置される場合は、登録グループを使用することをお勧めします。 登録グループの ID 構成証明の詳細については、[セキュリティ](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)に関するページを参照してください。
+- **Enrollment Groups\(登録グループ\)** : これは、特定の構成証明メカニズムを共有するデバイスのグループを表します。 必要な初期構成を共有する多数のデバイスがある場合や、すべてのデバイスが同じテナントに配置される場合は、登録グループを使用することをお勧めします。 登録グループの ID 構成証明の詳細については、[セキュリティ](concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)に関するページを参照してください。
 
     [![X.509 構成証明のグループ登録をポータルで追加](./media/tutorial-provision-device-to-hub/group-enrollment.png)](./media/tutorial-provision-device-to-hub/group-enrollment.png#lightbox)
 
@@ -58,7 +58,7 @@ ms.locfileid: "74975042"
 
 1. Azure Portal にサインインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。
 
-2. Device Provisioning Service の概要ブレードで、 **[Manage enrollments]\(登録の管理\)** を選択します。 デバイスの設定に従って、 **[Individual Enrollments]\(個別登録\)** タブまたは **[Enrollment Groups]\(登録グループ\)** タブを選択します。 上部にある **[追加]** をクリックします。 ID 構成証明 "*メカニズム*" として **[TPM]** または **[X.509]** を選択し、前述の適切なセキュリティ アーティファクトを入力します。 新しい **IoT ハブ デバイス ID** を入力できます。 作業が完了したら、 **[保存]** をクリックします。 
+2. Device Provisioning Service の概要ブレードで、 **[Manage enrollments]\(登録の管理\)** を選択します。 デバイスの設定に従って、 **[Individual Enrollments]/(個別登録\)** タブまたは **[Enrollment Groups]\(登録グループ\)** タブを選択します。 上部にある **[追加]** をクリックします。 ID 構成証明 "*メカニズム*" として **[TPM]** または **[X.509]** を選択し、前述の適切なセキュリティ アーティファクトを入力します。 新しい **IoT ハブ デバイス ID** を入力できます。 作業が完了したら、 **[保存]** をクリックします。 
 
 3. デバイスが正常に登録されると、ポータルに次のように表示されます。
 
@@ -88,7 +88,7 @@ TPM と X.509 の両方の構成証明を使用する、シミュレートされ
 
     ![ポータルに表示されたハブへの成功した接続](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
 
-詳細については、プロビジョニング デバイス クライアントのサンプル [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c) を参照してください。 このサンプルは、TPM、X.509 証明書、対称キーを使用してシミュレートされたデバイスをプロビジョニングする方法を示しています。 サンプルの使用に関する詳細な手順については、[TPM](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device)、[X.509](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509)、および[対称キー](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-symm-key)の構成証明のクイック スタートに戻って参照してください。
+詳細については、プロビジョニング デバイス クライアントのサンプル [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c) を参照してください。 このサンプルは、TPM、X.509 証明書、対称キーを使用してシミュレートされたデバイスをプロビジョニングする方法を示しています。 サンプルの使用に関する詳細な手順については、[TPM](./quick-create-simulated-device.md)、[X.509](./quick-create-simulated-device-x509.md)、および[対称キー](./quick-create-simulated-device-symm-key.md)の構成証明のクイック スタートに戻って参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、以下の内容を学習しました。

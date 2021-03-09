@@ -6,27 +6,27 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
-ms.custom: security-benchmark
-ms.openlocfilehash: daff4d1e43f5cc27e52e8bf26f48f30147800ae8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: subject-security-benchmark
+ms.openlocfilehash: 21ae8986761483658f5ac4254e4bb378e0bc4ba9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87839836"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575054"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure DDoS Protection Standard 用の Azure セキュリティ ベースライン
 
-このセキュリティ ベースラインは、[Azure セキュリティ ベンチマーク](../benchmarks/overview.md)のガイダンスを Azure DDoS Protection 標準に適用します。 Azure セキュリティ ベンチマークには、Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項がまとめてあります。 内容は、**セキュリティ制御**によってグループ化されています。これは、Azure セキュリティ ベンチマークと、DDoS Protection に適用できる関連ガイダンスによって定義されています。 DDoS Protection に適用できない**制御**は、除外されています。 Azure DDoS Protection を完全に Azure セキュリティ ベンチマークにマップする方法については、[完全な Azure DDoS Protection セキュリティ ベースライン マッピング ファイル](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)を参照してください。
+このセキュリティ ベースラインは、[Azure セキュリティ ベンチマーク](../benchmarks/overview.md)のガイダンスを Azure DDoS Protection 標準に適用します。 Azure セキュリティ ベンチマークには、Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項がまとめてあります。 内容は、**セキュリティ制御** によってグループ化されています。これは、Azure セキュリティ ベンチマークと、DDoS Protection に適用できる関連ガイダンスによって定義されています。 DDoS Protection に適用できない **制御** は、除外されています。 Azure DDoS Protection を完全に Azure セキュリティ ベンチマークにマップする方法については、[完全な Azure DDoS Protection セキュリティ ベースライン マッピング ファイル](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)を参照してください。
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、「[セキュリティ コントロール: ログ記録と監視](/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ログ記録と監視](../benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="22-configure-central-security-log-management"></a>2.2:セキュリティ ログの一元管理を構成する
 
 **ガイダンス**: Azure アクティビティ ログの診断設定を有効にして、Log Analytics ワークスペース、Azure イベント ハブ、または Azure ストレージア カウントにログを送信してアーカイブします。 アクティビティ ログは、コントロール プレーン レベルで Azure DDoS Protection 計画で実行された操作に関する分析情報を提供します。 Azure アクティビティ ログのデータを使用すると、Azure DDoS Protection インスタンスのコントロール プレーン レベルで実行された書き込み操作 (PUT、POST、DELETE) について、"いつだれが何を" 行ったのかを確認できます。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -38,9 +38,9 @@ ms.locfileid: "87839836"
 
 Azure アクティビティ ログの診断設定を有効にして、Log Analytics ワークスペース、Azure イベント ハブ、または Azure ストレージア カウントにログを送信してアーカイブします。 アクティビティ ログは、コントロール プレーン レベルで Azure Cache for Redis インスタンスで実行された操作に関する分析情報を提供します。 Azure アクティビティ ログのデータを使用すると、Azure DDoS Protection インスタンスのコントロール プレーン レベルで実行された書き込み操作 (PUT、POST、DELETE) について、"いつだれが何を" 行ったのかを確認できます。
 
-- [DDoS Protection メトリックのアラートを構成する方法](../../virtual-network/manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics)
+- [DDoS 診断ログの表示と構成](../../ddos-protection/diagnostic-logging.md)
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -50,7 +50,7 @@ Azure アクティビティ ログの診断設定を有効にして、Log Analyt
 
 **ガイダンス**: Azure Monitor で、組織のコンプライアンス規則に従って、Azure DDoS Protection 計画に関連付けられている Log Analytics ワークスペースのログの保持期間を設定します。
 
-- [ログ保持期間のパラメーターを設定する方法](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [ログ保持期間のパラメーターを設定する方法](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -60,11 +60,11 @@ Azure アクティビティ ログの診断設定を有効にして、Log Analyt
 
 **ガイダンス**: Azure アクティビティ ログの診断設定を有効にし、Log Analytics ワークスペースにログを送信します。 Log Analytics でクエリを実行して、用語の検索、傾向の特定、パターンの分析を行います。また、Recovery Services コンテナー用に収集された可能性があるアクティビティ ログ データに基づいて、多くの他の分析情報も提供されます。
 
-- [DDoS Protection 標準サービスのテレメトリ、ログ、および攻撃分析にアクセスする方法に関する情報](../../virtual-network/manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics)
+- [DDoS Protection 標準サービスのテレメトリ、ログ、および攻撃分析にアクセスする方法に関する情報](../../ddos-protection/telemetry.md)
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../../azure-monitor/essentials/activity-log.md)
 
-- [Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する方法](/azure/azure-monitor/platform/activity-log-collect)
+- [Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する方法](../../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -76,11 +76,11 @@ Azure アクティビティ ログの診断設定を有効にして、Log Analyt
 
 Log Analytics ワークスペースを Azure Sentinel にオンボードします。これは、セキュリティ オーケストレーション自動応答 (SOAR) ソリューションが提供されるためです。 これにより、プレイブック (自動化されたソリューション) を作成して、セキュリティの問題を修復するために使用できます。 また、Azure Monitor を使用して、Log Analytics ワークスペースでカスタムのログ アラートを作成することもできます。
 
-- [DDoS メトリックのアラートを構成する方法](https://azure.microsoft.com/blog/holiday-season-is-ddos-season/)
+- [DDoS メトリックのアラートを構成する方法](../../ddos-protection/alerts.md)
 
 - [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md)
 
-- [Azure Monitor を使用してログ アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-log.md)
+- [Azure Monitor を使用してログ アラートを作成、表示、管理する](../../azure-monitor/alerts/alerts-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -88,7 +88,7 @@ Log Analytics ワークスペースを Azure Sentinel にオンボードしま�
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](../benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
@@ -96,11 +96,11 @@ Log Analytics ワークスペースを Azure Sentinel にオンボードしま�
 
 また、Azure Active Directory (AD) には、明示的に割り当てる必要があり、クエリ可能な組み込みロールがあります。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。
 
-- [Azure DDoS Protection のアクセス許可を理解する](../../virtual-network/manage-ddos-protection.md#permissions)
+- [Azure DDoS Protection のアクセス許可を理解する](../../ddos-protection/manage-permissions.md)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center の監視**: はい
 
@@ -162,11 +162,11 @@ Log Analytics ワークスペースを Azure Sentinel にオンボードしま�
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する 
 
-**ガイダンス**: Azure Multi-Factor Authentication (MFA) 対応のセキュリティで保護された Azure マネージド ワークステーションを使用して、ログインし、Azure カスタマー ロックボックス要求を構成します。
+**ガイダンス**:Azure AD Multi-Factor Authentication (MFA) 対応の、セキュリティで保護された Azure マネージド ワークステーションを使用して、ログインし、Azure カスタマー ロックボックス要求を構成します。
 
-- [セキュリティで保護された Azure マネージド ワークステーションのデプロイ](../../active-directory/devices/howto-azure-managed-workstation.md)
+- [セキュリティで保護された Azure マネージド ワークステーションのデプロイ](/security/compass/privileged-access-deployment)
 
-- [クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [クラウドベースの Azure AD Multi-Factor Authentication のデプロイの計画](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -180,7 +180,7 @@ Log Analytics ワークスペースを Azure Sentinel にオンボードしま�
 
 - [Privileged Identity Management をデプロイする方法](../../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Azure AD のリスク検出の概要](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Azure AD のリスク検出の概要](../../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center の監視**: はい
 
@@ -210,7 +210,7 @@ Log Analytics ワークスペースを Azure Sentinel にオンボードしま�
 
 **ガイダンス**: Azure Active Directory (Azure AD) では、古いアカウントの検出に役立つログが提供されます。 また、Azure AD アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 適切なユーザーのみが継続的なアクセス権を持っていることを確認するために、ユーザー アクセスを定期的に確認する必要があります。
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/)
+- [Azure AD のレポートの概要](../../active-directory/reports-monitoring/index.yml)
 
 - [Azure AD アクセス レビューを使用する方法](../../active-directory/governance/access-reviews-overview.md)
 
@@ -226,7 +226,7 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics 内で必要なログ アラートを構成できます。
 
-- [Azure アクティビティ ログを Azure Monitor に統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor に統合する方法](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md)
 
@@ -238,7 +238,7 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 **ガイダンス**: コントロール プレーン (Azure portal など) でのアカウント サインイン動作の逸脱については、Azure AD Identity Protection とリスク検出機能を使用して、ユーザー ID に関連して検出された疑わしいアクションへの自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
 
-- [Azure AD のリスクの高いサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD のリスクの高いサインインを表示する方法](../../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Identity Protection のリスク ポリシーを構成して有効にする方法](../../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -250,23 +250,23 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、「[セキュリティ コントロール: データ保護](/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データ保護](../benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
 **ガイダンス**: 機密情報を格納または処理する Azure リソースを追跡しやすくするには、タグを使用します。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
 **責任**: Customer
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
 **ガイダンス**: Azure DDoS Protection プランに関する作業を行うには、使用するアカウントがネットワークの共同作業者ロール、または特定のアクションが割り当てられたカスタム ロールに、割り当てられている必要があります。
 
-- [Azure DDoS Protection でロールベースのアクセス制御を管理する](../../virtual-network/manage-ddos-protection.md)
+- [Azure DDoS Protection で Azure ロールベースのアクセス制御 (Azure RBAC) を管理する](../../ddos-protection/manage-ddos-protection.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -276,7 +276,7 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 **ガイダンス**: Azure DDoS Protection 計画およびその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -284,7 +284,7 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](../benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された資産検出ソリューションを使用する
 
@@ -294,7 +294,7 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 - [Azure Resource Graph を使用してクエリを作成する方法](../../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -304,7 +304,7 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 **ガイダンス**: メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に応じて論理的に整理されます。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -320,11 +320,11 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 - 許可されるリソースの種類
 
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](../../governance/management-groups/create.md)
+- [管理グループを作成する方法](../../governance/management-groups/create-management-group-portal.md)
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -362,7 +362,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -380,13 +380,13 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](../benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
-**ガイダンス**:Azure Policy を使用して、Azure DDos Protection の標準的なセキュリティ構成を定義して実装します。 Recovery Services コンテナーの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Network" 名前空間で Azure Policy エイリアスを使用します。
+**ガイダンス**:Azure Policy を使用して、Azure DDoS Protection の標準的なセキュリティ構成を定義して実装します。 Recovery Services コンテナーの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Network" 名前空間で Azure Policy エイリアスを使用します。
 
-- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -410,9 +410,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: カスタムの Azure Policy 定義を使用する場合は、Azure DevOps または Azure Repos を使用して、コードを安全に格納して管理します。
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos のドキュメント](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -450,7 +450,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、「[セキュリティ コントロール: マルウェアからの防御](/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: マルウェアからの防御](../benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2:非コンピューティング Azure リソースにアップロードするファイルを事前にスキャンする
 
@@ -464,7 +464,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、「[セキュリティ コントロール: インシデント対応](/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インシデント対応](../benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
@@ -488,7 +488,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [Security alerts in Azure Security Center](../../security-center/security-center-alerts-overview.md)
 
-- [タグを使用した Azure リソースの整理](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを使用した Azure リソースの整理](../../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: はい
 
@@ -524,7 +524,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 Azure Monitor のアラート構成を使用すると、利用可能な DDoS Protection メトリックをどれでも選び、攻撃中に有効な軽減策がある場合にそのメトリックのアラートを受けることができます。 条件が満たされると、指定したアドレスにアラート メールが届きます
 
-- [DDoS Protection メトリックのアラートを構成する](../../virtual-network/manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics)
+- [DDoS Protection メトリックのアラートを構成する](../../ddos-protection/alerts.md)
 
 - [連続エクスポートを構成する方法](../../security-center/continuous-export.md)
 
@@ -546,7 +546,7 @@ Azure Monitor のアラート構成を使用すると、利用可能な DDoS Pro
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](../benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
@@ -562,5 +562,5 @@ Azure Monitor のアラート構成を使用すると、利用可能な DDoS Pro
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../benchmarks/security-baselines-overview.md)の詳細について学習する

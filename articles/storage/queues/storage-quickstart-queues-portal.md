@@ -3,17 +3,17 @@ title: クイック スタート:ポータルで Azure Storage キューを作�
 description: Azure portal を使用してキューを作成します。 その後、Azure portal を使用して、メッセージを追加し、メッセージのプロパティを表示し、メッセージをデキューします。
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 08/13/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
-ms.reviewer: dineshm
-ms.openlocfilehash: 11c6cdff852a0695d4b2071f1d0a60c05dba2410
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 24b1d16ab5f13a9aef1faa5bc7a3579ad1a5aa5e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213481"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585549"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>クイック スタート:Azure portal でキューを作成してメッセージを追加する
 
@@ -28,7 +28,7 @@ ms.locfileid: "88213481"
 Azure portal でキューを作成するには、次の手順のようにします。
 
 1. Azure Portal で新しいストレージ アカウントに移動します。
-2. ストレージ アカウントの左側のメニューで、 **[Queue サービス]** セクションまでスクロールし、 **[キュー]** を選択します。
+2. ストレージ アカウントの左側のメニューで、 **[Queue Storage]** セクションまでスクロールし、 **[キュー]** を選択します。
 3. **[+ キュー]** ボタンを選択します。
 4. 新しいキューの名前を入力します。 キューの名前は小文字である必要があり、英文字または数字で始まる必要があり、英文字、数字、ダッシュ (-) 文字のみを含めることができます。
 6. **[OK]** を選択してキューを作成します。
@@ -55,9 +55,9 @@ Azure portal でキューを作成するには、次の手順のようにしま�
 
 ## <a name="dequeue-a-message"></a>メッセージをデキューする
 
-Azure portal では、キューの先頭からメッセージをデキューすることができます。 メッセージをデキューすると、メッセージは削除されます。 
+Azure portal では、キューの先頭からメッセージをデキューすることができます。 メッセージをデキューすると、メッセージは削除されます。
 
-デキューでは常に、キュー内の最も古いメッセージが削除されます。 
+デキューでは常に、キュー内の最も古いメッセージが削除されます。
 
 ![ポータルからのメッセージのデキュー方法を示すスクリーンショット](media/storage-quickstart-queues-portal/dequeue-message.png)
 
@@ -66,4 +66,4 @@ Azure portal では、キューの先頭からメッセージをデキューす�
 このクイック スタートでは、Azure portal でキューを作成し、メッセージを追加し、メッセージのプロパティを表示して、メッセージをデキューする方法について説明しました。
 
 > [!div class="nextstepaction"]
-> [Azure キューとは](storage-queues-introduction.md)
+> [Azure Queue Storage とは](storage-queues-introduction.md)

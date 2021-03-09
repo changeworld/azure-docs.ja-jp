@@ -5,18 +5,18 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 01/31/2020
+ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: 3204de6ea497666108ce63b1a3cfa77c6faa6b59
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2cc935e81e867609159b5c150b6ee7c346bb9f8e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028653"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026150"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>メンテナンス コントロールと Azure PowerShell による更新をコントロールする
 
-メンテナンス コントロールを使用すると、分離された VM や Azure 専用ホストに更新プログラムを適用するタイミングを決定できます。 このトピックでは、メンテナンス コントロール用の Azure PowerShell オプションについて説明します。 メンテナンス コントロールを使用する利点、その制限、およびその他の管理オプションの詳細については、「[メンテナンス コントロールを使用したプラットフォーム更新プログラムの管理](maintenance-control.md)」を参照してください。
+メンテナンス コントロールを使用すると、分離された VM や Azure 専用ホストのホスト インフラストラクチャにプラットフォームの更新プログラムを適用するタイミングを決定できます。 このトピックでは、メンテナンス コントロール用の Azure PowerShell オプションについて説明します。 メンテナンス コントロールを使用する利点、その制限、およびその他の管理オプションの詳細については、「[メンテナンス コントロールを使用したプラットフォーム更新プログラムの管理](maintenance-control.md)」を参照してください。
  
 ## <a name="enable-the-powershell-module"></a>PowerShell モジュールを有効にする
 
@@ -34,12 +34,12 @@ Install-Module -Name Az.Maintenance
 
 ローカルにインストールする場合は、管理者として、PowerShell プロンプトを開いてください。
 
-*信頼されていないリポジトリ*からインストールするかどうかを確認するメッセージが表示される場合もあります。 モジュールをインストールするには、`Y` を入力するか、 **[すべてはい]** を選択します。
+*信頼されていないリポジトリ* からインストールするかどうかを確認するメッセージが表示される場合もあります。 モジュールをインストールするには、`Y` を入力するか、 **[すべてはい]** を選択します。
 
 
 ## <a name="create-a-maintenance-configuration"></a>メンテナンス構成を作成する
 
-構成のコンテナーとして、リソースグループを作成します。 この例では、*myMaintenanceRG*という名前のリソース グループが、*eastus* に作成されます。 使用するリソース グループが既にある場合は、この部分をスキップし、残りの例のリソース グループ名を自分の所有者に置き換えることができます。
+構成のコンテナーとして、リソースグループを作成します。 この例では、*myMaintenanceRG* という名前のリソース グループが、*eastus* に作成されます。 使用するリソース グループが既にある場合は、この部分をスキップし、残りの例のリソース グループ名を自分の所有者に置き換えることができます。
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -59,13 +59,37 @@ $config = New-AzMaintenanceConfiguration `
 
 `-MaintenanceScope host` を使用して、そのメンテナンス構成が、ホストに対する更新をコントロールするために確実に使用されているか確認します。
 
-同じ名前の構成を別の場所に作成しようとすると、エラーが発生します。 構成名は、サブスクリプションに対して一意である必要があります。
+同じ名前の構成を別の場所に作成しようとすると、エラーが発生します。 構成名は、リソース グループに対して一意である必要があります。
 
 [Get-AzMaintenanceConfiguration](/powershell/module/az.maintenance/get-azmaintenanceconfiguration) を使用して、使用可能なメンテナンス構成に対してクエリを実行できます。
 
 ```azurepowershell-interactive
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 ```
+
+### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>日程計画された期間でメンテナンス構成を作成する
+
+Azure でリソースに更新プログラムを適用する日程計画された期間を宣言することもできます。 この例では、毎月第 4 月曜日に 5 時間という日程計画で myConfig という名前のメンテナンス構成が作成されます。 日程計画された期間を作成すると、更新プログラムを手動で適用する必要がなくなります。
+
+```azurepowershell-interactive
+$config = New-AzMaintenanceConfiguration `
+   -ResourceGroup $RGName `
+   -Name $MaintenanceConfig `
+   -MaintenanceScope Host `
+   -Location $location `
+   -StartDateTime "2020-10-01 00:00" `
+   -TimeZone "Pacific Standard Time" `
+   -Duration "05:00" `
+   -RecurEvery "Month Fourth Monday"
+```
+> [!IMPORTANT]
+> メンテナンスの **期間** は、"*2 時間*" 以上である必要があります。 メンテナンスの **繰り返し** は少なくとも 35 日間に 1 回に行われるように設定する必要があります。
+
+メンテナンスの **繰り返し** は、日、週、月単位で表すことができます。 いくつかの例を次に示します。
+ - **毎日** - RecurEvery "Day" **または** "3Days" 
+ - **毎週** - RecurEvery "3Weeks" **または** "Week Saturday,Sunday" 
+ - **毎月** - - RecurEvery "Month day23,day24" **または** "Month Last Sunday" **または** "Month Fourth Monday"  
+      
 
 ## <a name="assign-the-configuration"></a>構成を割り当てる
 

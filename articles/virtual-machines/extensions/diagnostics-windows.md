@@ -8,17 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 2e6d88f2-1980-4a24-827e-a81616a0d247
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: mimckitt
-ms.openlocfilehash: 3b46ae07d4bbbcd02b9880a394b72c790553f95c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 990bd7c21bec0f42034a0044b58d1589665700ec
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837025"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580162"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>PowerShell を使用して Windows を実行している仮想マシンで Azure Diagnostics を有効にする
 
@@ -40,7 +41,7 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_na
 ```
 
 
-*$diagnosticsconfig_path* は、後の[サンプル](#sample-diagnostics-configuration)で説明するように、XML での診断構成が含まれているファイルへのパスです。  
+*$diagnosticsconfig_path* は、後の [サンプル](#sample-diagnostics-configuration)で説明するように、XML での診断構成が含まれているファイルへのパスです。  
 
 診断構成ファイルでストレージ アカウント名を含む **StorageAccount** 要素が指定されている場合は、*Set-AzVMDiagnosticsExtension* スクリプトによって、そのストレージ アカウントに診断データを送信するように診断拡張機能が自動的に設定されます。 これを機能させるには、ストレージ アカウントが VM と同じサブスクリプションに属している必要があります。
 
@@ -212,4 +213,4 @@ Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Diagnostics 機能と他の手法を使用した問題のトラブルシューティングに関するその他のガイダンスについては、「 [Azure Cloud Services および Virtual Machines での診断の有効化](../../cloud-services/cloud-services-dotnet-diagnostics.md)」をご覧ください。
-* [Azure 診断構成スキーマ](../../azure-monitor/platform/diagnostics-extension-versions.md) 」では、診断拡張機能の各種 XML 構成オプションについて説明しています。
+* [Azure 診断構成スキーマ](../../azure-monitor/agents/diagnostics-extension-versions.md) 」では、診断拡張機能の各種 XML 構成オプションについて説明しています。

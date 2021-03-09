@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Spring Cloud のドキュメント
-summary: Azure Spring Cloud は、Java 開発者がコードを変更せずに、Azure で Spring Boot ベースのマイクロサービスを容易に構築して実行できるようにするマネージド サービスを提供します。
+summary: Azure Spring Cloud によって提供されるマネージド サービスを使用すると、Spring Boot または Steeltoe (プレビュー) を使って Azure 上でマイクロサービスを動作させることができます。その際、コードを変更する必要はありません。
 metadata:
   title: Azure Spring Cloud
-  description: Azure Spring Cloud は、Java 開発者がコードを変更せずに、Azure で Spring Boot ベースのマイクロサービスを容易に構築して実行できるようにするマネージド サービスを提供します。
+  description: Azure Spring Cloud によって提供されるマネージド サービスを使用すると、Spring Boot または Steeltoe (プレビュー) を使って Azure 上でマイクロサービスを動作させることができます。その際、コードを変更する必要はありません。
   services: spring-cloud
   ms.service: spring-cloud
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   author: bmitchell287
   ms.author: brendm
   ms.date: 09/26/2019
-  ms.openlocfilehash: 277d058427cc9527e6ed71ed252a4930489353fd
-  ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+  ms.openlocfilehash: 7598345ca1d687b8148b41454077ab5fca91e8f1
+  ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/28/2020
-  ms.locfileid: "89049895"
+  ms.lasthandoff: 12/09/2020
+  ms.locfileid: "96903949"
 landingContent:
 - title: Azure Spring Cloud について
   linkLists:
@@ -32,11 +32,11 @@ landingContent:
     links:
     - text: クイックスタート - 初めての Azure Spring Cloud アプリケーションをデプロイする
       url: spring-cloud-quickstart.md
-    - text: Piggy Metrics サンプル アプリの概要
+    - text: PiggyMetrics サンプル アプリの概要
       url: spring-cloud-quickstart-sample-app-introduction.md
   - linkListType: tutorial
     links:
-    - text: Java Spring アプリをデプロイ用に準備する
+    - text: Spring または Steeltoe アプリをデプロイするための準備を行う
       url: spring-cloud-tutorial-prepare-app-deployment.md
 - title: サービスを構成する
   linkLists:
@@ -81,4 +81,4 @@ landingContent:
   - linkListType: reference
     links:
     - text: REST API リファレンス
-      url: https://docs.microsoft.com/rest/api/azurespringclould/
+      url: https://docs.microsoft.com/rest/api/azurespringcloud/

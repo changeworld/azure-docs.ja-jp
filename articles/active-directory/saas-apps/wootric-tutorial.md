@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/23/2020
 ms.author: jeedes
-ms.openlocfilehash: e96cdaf6b8d1d3127753c1f186fa8c0c227f6bde
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a959dd3615c9498411b141356420939ad7026189
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88541378"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638365"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wootric"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Wootric の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88541378"
 * ユーザーが自分の Azure AD アカウントを使用して Wootric に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,9 +39,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Wootric では、**IDP** Initiated SSO がサポートされています
-* Wootric では、**Just-In-Time** ユーザー プロビジョニングがサポートされています
-* Wootric を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Wootric では、 **IDP** Initiated SSO がサポートされています
+* Wootric では、 **Just-In-Time** ユーザー プロビジョニングがサポートされています
+* Wootric を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-wootric-from-the-gallery"></a>ギャラリーからの Wootric の追加
 
@@ -51,7 +51,7 @@ Azure AD への Wootric の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Wootric**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Wootric** 」と入力します。
 1. 結果のパネルから **[Wootric]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -133,24 +133,23 @@ Wootric で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. 別のブラウザー ウィンドウで、管理者として Wootric にログインします。
 
-1. 上部のメニューで **[Settings]\(設定\) アイコン**をクリックします。
+1. 上部のメニューで **[Settings]\(設定\) アイコン** をクリックします。
 
-    ![構成 ](./media/wootric-tutorial/configure-1.PNG)
+    ![Wootric サイトから [Settings]\(設定\) アイコンが選択されていることを示すスクリーンショット。](./media/wootric-tutorial/configure-1.PNG)
 
 1. **[INTEGRATIONS]\(統合\)** で、左側のメニューの **[Authentication]\(認証\)** を選択し、 **[Enable Single Sign On with Azure Active Directory]\(Azure Active Directory でのシングル サインオンを有効にする\)** をクリックします。
 
-    ![構成 ](./media/wootric-tutorial/configure-2.PNG)
+    ![[Authentication]\(認証\) 項目で [Enable Single Sign On with Azure Active Directory]\(Azure Active Directory でのシングル サインオンを有効にする\) が [connected]\(接続済み\) になっていることを示すスクリーンショット。](./media/wootric-tutorial/configure-2.PNG)
 
 1. 次のページで、以下の手順を実行します。
 
-    ![構成 ](./media/wootric-tutorial/configure-3.PNG)
-
+    ![[Settings]\(設定\) ページを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/wootric-tutorial/configure-3.PNG)
 
     a. **[ID プロバイダー のシングル サインオン URL]** テキストボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
-    b. **[Identity Provider Issuer]\(ID プロバイダー発行者\)** ボックスに、Azure portal からコピーした**エンティティ ID** の値を貼り付けます。
+    b. **[Identity Provider Issuer]\(ID プロバイダー発行者\)** ボックスに、Azure portal からコピーした **エンティティ ID** の値を貼り付けます。
 
-    c. Azure portal からダウンロードした**証明書 (Base64)** をメモ帳で開き、その内容を **[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
+    c. Azure portal からダウンロードした **証明書 (Base64)** をメモ帳で開き、その内容を **[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
 
     d. **[Automatically grant access to new users]\(新しいユーザーへのアクセスを自動的に許可する\)** チェック ボックスをオンにします。
     
@@ -164,18 +163,18 @@ Wootric で Azure AD SSO を構成してテストするには、次の構成要�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Wootric] タイルをクリックすると、SSO を設定した Wootric に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Wootric] タイルをクリックすると、SSO を設定した Wootric に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Wootric を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって Wootric を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [高度な可視性と制御によって Wootric を保護する方法](/cloud-app-security/proxy-intro-aad)

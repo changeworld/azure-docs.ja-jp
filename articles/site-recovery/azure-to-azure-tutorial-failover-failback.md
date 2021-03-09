@@ -1,78 +1,116 @@
 ---
-title: Azure Site Recovery サービスを使用してディザスター リカバリー用のセカンダリ Azure リージョンにレプリケート済みの Azure VM をフェールオーバーして再保護する
-description: Azure Site Recovery サービスを使用して、ディザスター リカバリー用のセカンダリ Azure リージョンにレプリケート済みの Azure VM をフェールオーバーする方法とそれを再保護する方法について説明します。
-services: site-recovery
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
+title: Azure Site Recovery を使用して Azure VM をセカンダリ リージョンにフェールオーバーしてディザスター リカバリーを行うチュートリアル。
+description: このチュートリアルでは、Azure Site Recovery サービスを使用して Azure VM をフェールオーバーする方法と、ディザスター リカバリー用のセカンダリ Azure リージョンにレプリケートされた Azure VM を再保護する方法について説明します。
 ms.topic: tutorial
-ms.date: 08/05/2019
-ms.author: raynew
+ms.date: 11/05/2020
 ms.custom: mvc
-ms.openlocfilehash: 8d38aa513b0829c2626fcd4a92c40faabff1f83e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 99263c83d25542073d63c1cba394a147bd5b2170
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502394"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392780"
 ---
-# <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>リージョン間での Azure VM のフェールオーバーと再保護
+# <a name="tutorial-fail-over-azure-vms-to-a-secondary-region"></a>チュートリアル:Azure VM をセカンダリ リージョンにフェールオーバーする
 
-このチュートリアルでは、[Azure Site Recovery](site-recovery-overview.md) サービスを使用して、Azure 仮想マシン (VM) をセカンダリ Azure リージョンにフェールオーバーする方法について説明します。 フェールオーバーした後で、VM を再保護します。 このチュートリアルでは、以下の内容を学習します。
+[Azure Site Recovery](site-recovery-overview.md) によるディザスター リカバリーが有効になった Azure VM をセカンダリ Azure リージョンにフェールオーバーする方法について説明します。 フェールオーバー後、今度はターゲット リージョンからプライマリ リージョンに VM をレプリケートするように、ターゲット リージョンの VM を再保護します。 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
-> * Azure VM をフェールオーバーする
-> * プライマリ リージョンにレプリケートされるように、セカンダリ Azure VM を再保護する
+> * 前提条件を確認する
+> * VM 設定を確認する
+> * セカンダリ リージョンへのフェールオーバーを実行する
+> * プライマリ リージョンへの VM のレプリケート バックを開始する。
+
 
 > [!NOTE]
-> このチュートリアルでは、既定の設定と最小限のカスタマイズによる最も簡単な手順を紹介しています。 さらに複雑なシナリオについては、Azure VM の攻略ガイドの記事を参照してください。
+> このチュートリアルでは、最小限の手順で VM をフェールオーバーする方法を紹介しています。 すべての設定を使ってフェールオーバーを実行したい場合は、Azure VM の[ネットワーク](azure-to-azure-about-networking.md)、[自動化](azure-to-azure-powershell.md)、[トラブルシューティング](azure-to-azure-troubleshoot-errors.md)についての理解を深めてください。
+
 
 
 ## <a name="prerequisites"></a>前提条件
 
-- 始める前に、フェールオーバーに関して[よく寄せられる質問](site-recovery-faq.md#failover)を確認します。
-- [ディザスター リカバリー訓練](azure-to-azure-tutorial-dr-drill.md)を実施して、すべてが正しく動作していることを確認します。
-- テスト フェールオーバーを実行する前に、VM のプロパティを確認します。 VM は [Azure の要件](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)に準拠している必要があります。
+このチュートリアルの前に、次の作業を済ませておく必要があります。
 
-## <a name="run-a-failover-to-the-secondary-region"></a>セカンダリ リージョンへのフェールオーバーを実行する
+1. 少なくとも 1 つの Azure VM に対してレプリケーションを設定します。 まだ済んでいない場合には、このシリーズの[最初のチュートリアルを完了](azure-to-azure-tutorial-enable-replication.md)してください。
+2. レプリケートされた VM について、[ディザスター リカバリーの訓練を実施](azure-to-azure-tutorial-dr-drill.md)することをお勧めします。 完全なフェールオーバーの前に訓練を実施しておくことで、すべての処理が想定どおりに行われることを、運用環境に影響を与えることなく確認できます。 
 
-1. **[レプリケートされたアイテム]** で、フェールオーバーする VM を選択し、 **[フェールオーバー]** を選択します
 
-   ![VM のフェールオーバー オプションを示すスクリーンショット。](./media/azure-to-azure-tutorial-failover-failback/failover.png)
+## <a name="verify-the-vm-settings"></a>VM 設定を確認する
 
-2. **[フェールオーバー]** で、フェールオーバー先の**復旧ポイント**を選択します。 次のいずれかのオプションを使うことができます。
+1. コンテナー > **[レプリケートされたアイテム]** で、VM を選択します。
 
-   * **最新** (既定値): Site Recovery サービスのすべてのデータを処理し、最短の RPO (回復ポイントの目標) を提供します
-   * **最後に処理があった時点**:仮想マシンを、Site Recovery サービスによって処理された最新の復旧ポイントに戻します
-   * **Custom**:特定の復旧ポイントにフェールオーバーします。 このオプションは、テスト フェールオーバーを実行するときに役立ちます。
+    ![概要ページで VM のプロパティを開くためのオプション](./media/azure-to-azure-tutorial-failover-failback/vm-settings.png)
 
-3. Site Recovery でフェールオーバーをトリガーする前にそのソース VM をシャットダウンする場合は、 **[フェールオーバーを開始する前にマシンをシャットダウンします]** を選択します。 シャットダウンはデータ損失を防止するのに役立ちます。 仮にシャットダウンが失敗したとしても、フェールオーバーは続行されます。 Site Recovery では、フェールオーバー後にソースがクリーンアップされません。
+2. フェールオーバーを実行する前に、VM が保護されていること、また正常な状態であることを、VM の **[概要]** ページで確認します。
+    ![VM のプロパティと状態を確認するためのページ](./media/azure-to-azure-tutorial-failover-failback/vm-state.png)
 
-4. **[ジョブ]** ページで、フェールオーバーの進行状況を確認します。
+3. フェールオーバーを実行する前に、次の点をチェックします。
+    - サポート対象の [Windows](azure-to-azure-support-matrix.md#windows) または [Linux](azure-to-azure-support-matrix.md#replicated-machines---linux-file-systemguest-storage) オペレーティング システムが VM で実行されていること。
+    - VM が[コンピューティング](azure-to-azure-support-matrix.md#replicated-machines---compute-settings)、[ストレージ](azure-to-azure-support-matrix.md#replicated-machines---storage)、[ネットワーク](azure-to-azure-support-matrix.md#replicated-machines---networking)の要件に適合していること。
 
-5. フェールオーバーの実行後、仮想マシンにログインして検証します。 仮想マシンの復旧ポイントを変更する場合は、 **[復旧ポイントの変更]** を選択してください。
+## <a name="run-a-failover"></a>フェールオーバーの実行
 
-6. 正常な状態に仮想マシンがフェールオーバーされたら、フェールオーバーを**コミット**することができます。
-   コミットすると、サービスで使用可能なすべての復旧ポイントが削除されます。 以降、復旧ポイントを変更することはできません。
 
-> [!NOTE]
-> VM のレプリケーションを有効にした後にディスクを追加した VM をフェールオーバーするとき、レプリケーション ポイントで復旧に使用できるディスクが表示されます。 たとえば、VM に単一のディスクがあり、新しいディスクを追加した場合、ディスクを追加する前に作成されたレプリケーション ポイントでは、そのレプリケーション ポイントが "2 台中の 1 台のディスク" で構成されていることが示されます。
+1. VM の **[概要]** ページで **[フェールオーバー]** を選択します。
 
-![追加されたディスクでのフェールオーバーを示すスクリーンショット。](./media/azure-to-azure-tutorial-failover-failback/failover-added.png)
+    ![レプリケートされたアイテムの [フェールオーバー] ボタン](./media/azure-to-azure-tutorial-failover-failback/failover-button.png)
 
-## <a name="reprotect-the-secondary-vm"></a>セカンダリ VM を再保護する
+3. **[フェールオーバー]** で、復旧ポイントを選択します。 その復旧ポイントのデータを使用して、ターゲット リージョンに Azure VM が作成されます。
+  
+   - **最後に処理があった時点**:Site Recovery によって処理された最新の復旧ポイントが使用されます。 タイム スタンプが表示されます。 データの処理に時間がかからないため、目標復旧時間 (RTO) は短くなります。
+   -  **Latest**:Site Recovery に送信されたすべてのデータを処理して、各 VM の復旧ポイントを作成してから、それにフェールオーバーします。 フェールオーバーがトリガーされた時点で、Site Recovery にすべてのデータがレプリケートされるため、回復ポイントの目標 (RPO) は最も短くなります。
+   - **最新のアプリ整合性**:このオプションでは、最新のアプリ整合性の復旧ポイントに VM がフェールオーバーされます。 タイム スタンプが表示されます。
+   - **Custom**:特定の復旧ポイントにフェールオーバーします。 カスタムは、フェールオーバーする VM が 1 つだけであって、復旧計画を使用しない場合にのみ使用できます。
 
-VM のフェールオーバー後、プライマリ リージョンにレプリケートされるように、VM を再保護する必要があります。
+    > [!NOTE]
+    > レプリケーションを有効にした後で VM にディスクを追加した場合、リカバリーに使用できるディスクがレプリケーション ポイントに表示されます。 たとえば、2 つ目のディスクを追加する前に作成されたレプリケーション ポイントには、"1/2 台のディスク" として表示されます。
 
-1. VM が**フェールオーバー コミット済み**状態であること、プライマリ リージョンが使用でき、そこに新しいリソースを作成したり、アクセスしたりできることを確認します。
-2. **[コンテナー]**  >  **[レプリケートされたアイテム]** で、フェールオーバーされた VM を右クリックし、 **[再保護]** を選択します。
+4. Site Recovery でフェールオーバーを開始する前にソース VM のシャットダウンを試みる場合は、 **[フェールオーバーを開始する前にマシンをシャットダウンします]** を選択します。 シャットダウンはデータ損失を防止するのに役立ちます。 仮にシャットダウンが失敗したとしても、フェールオーバーは続行されます。 
 
-   ![VM の再保護オプションのスクリーンショット。](./media/azure-to-azure-tutorial-failover-failback/reprotect.png)
+    ![[フェールオーバーの設定] ページ](./media/azure-to-azure-tutorial-failover-failback/failover-settings.png)    
 
-2. 保護の方向として "セカンダリ リージョンからプライマリ リージョン" が既に選択されていることを確認します。
-3. **リソース グループ、ネットワーク、ストレージ、および可用性セット**の情報を確認します。 新規としてマークされているリソースが、再保護操作の一環として作成されます。
-4. **[OK]** をクリックすると、再保護ジョブがトリガーされます。 このジョブにより、最新のデータでターゲット サイトがシード処理されます。 その後、差分がプライマリ リージョンにレプリケートされます。 これで、VM は保護された状態になります。
+3. フェールオーバーを開始するには、**[OK]** を選択します。
+4. [通知] でフェールオーバーを監視します。
 
-## <a name="next-steps"></a>次のステップ
-- 再保護の後、利用できるようになった時点でプライマリ リージョンにフェールバックする[方法を確認](azure-to-azure-tutorial-failback.md)します。
-- 再保護フローの[詳細](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection)について学習します。
+    ![進行状況の通知](./media/azure-to-azure-tutorial-failover-failback/notification-failover-start.png) ![成功の通知](./media/azure-to-azure-tutorial-failover-failback/notification-failover-finish.png)     
+
+5. フェールオーバー後、ターゲット リージョンに作成された Azure VM が **[仮想マシン]** に表示されます。 VM が実行中であること、また適切なサイズに設定されていることを確認します。 VM に対して異なる復旧ポイントを使用したい場合は、 **[要点]** ページの **[復旧ポイントの変更]** を選択します。
+6. フェールオーバーされた VM に問題がなければ、概要ページの **[コミット]** を選択してフェールオーバーを完了します。
+
+    ![[コミット] ボタン](./media/azure-to-azure-tutorial-failover-failback/commit-button.png) 
+
+7. **[コミット]** の **[OK]** を選択して確定します。 その VM に関して利用可能な復旧ポイントがすべて Site Recovery から削除され、以後、復旧ポイントを変更することはできなくなります。
+
+8. コミットの進行状況は [通知] で監視します。
+
+    ![コミットの進行状況の通知](./media/azure-to-azure-tutorial-failover-failback/notification-commit-start.png) ![コミットの成功の通知](./media/azure-to-azure-tutorial-failover-failback/notification-commit-finish.png)    
+
+9. Site Recovery では、フェールオーバー後にソース VM がクリーンアップされません。 その操作は手動で行う必要があります。
+
+
+## <a name="reprotect-the-vm"></a>VM を再保護する
+
+フェールオーバー後は、セカンダリ リージョン内の VM を再保護することで、その VM がプライマリ リージョンにレプリケート バックされます。 
+
+1. VM の **[状態]** が *[フェールオーバーがコミットされました]* になっていることを確認したうえで開始します。
+2. プライマリ リージョンが利用可能であること、また、そのリージョンに VM を作成するためのアクセス許可が自分にあることを確認します。
+3. VM の **[概要]** ページで **[再保護]** を選択します。
+
+   ![VM の再保護を有効にするためのボタン。](./media/azure-to-azure-tutorial-failover-failback/reprotect-button.png)
+
+4. **[再保護]** で、レプリケーション方向 (セカンダリ リージョンからプライマリ リージョン) を確認し、プライマリ リージョンのターゲット設定を確認します。 新規としてマークされているリソースが、Site Recovery により再保護操作の一環として作成されます。
+
+     ![再保護の設定ページ](./media/azure-to-azure-tutorial-failover-failback/reprotect.png)
+
+6. **[OK]** を選択して再保護プロセスを開始します。 このプロセスでは、ターゲットの場所に初期データが送信され、その後、VM の差分情報がターゲットにレプリケートされます。
+7. [通知] で再保護の進行状況を監視します。 
+
+    ![再保護の進行状況の通知](./media/azure-to-azure-tutorial-failover-failback/notification-reprotect-start.png) ![再保護の成功の通知](./media/azure-to-azure-tutorial-failover-failback/notification-reprotect-finish.png)
+    
+
+## <a name="next-steps"></a>次の手順
+
+このチュートリアルでは、プライマリ リージョンからセカンダリ リージョンに VM をフェールオーバーした後、プライマリ リージョンへの VM のレプリケート バックを開始しました。 これで、セカンダリ リージョンからプライマリ リージョンへのフェールバックができるようになりました。
+
+> [!div class="nextstepaction"]
+> [プライマリ リージョンにフェールバックする](azure-to-azure-tutorial-failback.md)

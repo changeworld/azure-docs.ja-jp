@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 3/11/2019
+ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: 7a250eaeb8ac4d0c8cacfb1748855700c9986bf5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 369c7dab174f0269797b10635882a6821ade8311
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079452"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952915"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>チュートリアル: カスタム ドメインにおける Web アプリの DNS レコードの作成 
 
@@ -35,15 +35,12 @@ Azure の Web アプリ用に A レコードを作成する場合、Web アプ�
 > * カスタム ドメインの A および TXT レコードの作成
 > * カスタム ドメインの CNAME レコードの作成
 > * 新しいレコードのテスト
-> * Web アプリのカスタム ホスト名の追加
+> * カスタム ホスト名の Web アプリへの追加
 > * カスタム ホスト名のテスト
 
+## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -52,10 +49,12 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * Azure DNS に DNS ゾーンを作成し、レジストラーのゾーンを Azure DNS に委任します。
 
-   1. DNS ゾーンを作成するには、「 [DNS ゾーンの作成](dns-getstarted-create-dnszone.md)」の手順に従います。
+   1. DNS ゾーンを作成するには、「 [DNS ゾーンの作成](./dns-getstarted-powershell.md)」の手順に従います。
    2. ゾーンを Azure DNS に委任するには、[DNS ドメインの委任](dns-delegate-domain-azure-dns.md)に関する記事の手順に従います。
 
 ゾーンを作成し、それを Azure DNS に委任したら、カスタム ドメインのレコードを作成できます。
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-an-a-record-and-txt-record"></a>A レコードと TXT レコードの作成
 

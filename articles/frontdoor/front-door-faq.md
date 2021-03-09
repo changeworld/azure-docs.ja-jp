@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/13/2020
+ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 995b8ab77779f0d3b9e2260ea18aa13aa242db36
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 77cc509a9fac2a24b3cd70675c1ee4160ecdb24d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399737"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741856"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front Door についてよく寄せられる質問
 
@@ -71,7 +71,7 @@ Azure Front Door はグローバル サービスであり、特定の Azure リ�
 
 ### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Azure Front Door 用の POP の場所とは何ですか?
 
-Azure Front Door には、Microsoft からの Azure CDN と同じ POP (ポイント オブ プレゼンス) の場所のリストがあります。 POP の完全な一覧については、「[Azure CDN POP locations from Microsoft](https://docs.microsoft.com/azure/cdn/cdn-pop-locations)」(Microsoft 提供の Azure CDN の POP の場所) を参照してください。
+Azure Front Door には、Microsoft からの Azure CDN と同じ POP (ポイント オブ プレゼンス) の場所のリストがあります。 POP の完全な一覧については、「[Azure CDN POP locations from Microsoft](../cdn/cdn-pop-locations.md)」(Microsoft 提供の Azure CDN の POP の場所) を参照してください。
 
 ### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Azure Front Door はアプリケーション専用のデプロイですか、それとも複数の顧客と共有されますか?
 
@@ -91,18 +91,42 @@ Front Door のルートには順序はなく、特定のルートは最適な一
 
 - 使用するバックエンドが、Azure Front Door のバックエンド IP アドレス空間と Azure のインフラストラクチャ サービスからのトラフィックのみを受け入れるように IP ACL 処理を構成します。 バックエンドに対する ACL については、以下の IP の詳細を参照してください。
  
-    - Front Door の IPv4 バックエンド IP アドレスの範囲については、「[Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)」の「*AzureFrontDoor.Backend*」セクションを参照してください。または、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)でサービス タグ *AzureFrontDoor.Backend* を使用することもできます。
-    - サービス タグでカバーされている Front Door の **IPv6** バックエンド IP 空間は、Azure IP 範囲の JSON ファイルには記載されていません。 明示的な IPv6 アドレス範囲を探している場合、現在は `2a01:111:2050::/44` に制限されています
-    - 仮想化されたホスト IP アドレスを通した Azure の[基本的なインフラストラクチャ サービス](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations): `168.63.129.16` および `169.254.169.254`
+    - Front Door の IPv4 バックエンド IP アドレスの範囲については、「[Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)」の「*AzureFrontDoor.Backend*」セクションを参照してください。または、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#security-rules)でサービス タグ *AzureFrontDoor.Backend* を使用することもできます。
+    - 仮想化されたホスト IP アドレスを通した Azure の[基本的なインフラストラクチャ サービス](../virtual-network/network-security-groups-overview.md#azure-platform-considerations): `168.63.129.16` および `169.254.169.254`
 
     > [!WARNING]
     > Front Door のバックエンド IP 空間は後で変更される可能性があります。ただし Microsoft はその前に、[Azure IP 範囲およびサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)との統合が確実に行われるようにします。 変更または更新について知るために、[Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=56519)をサブスクライブすることをお勧めします。
 
--    API バージョン `2020-01-01` 以降を使用して、Front Door で GET 操作を実行します。 API 呼び出しで、`frontdoorID` フィールドを探します。 Front Door からバックエンドに送信された受信ヘッダー "**X-Azure-FDID**" を、フィールド `frontdoorID` の値でフィルター処理します。 `Front Door ID` の値は、Front Door ポータル ページの [概要] セクションでも確認できます。 
+- Front Door ポータル ページの [概要] セクションで、`Front Door ID` の値を探します。 その後、その値を使って、Front Door からバックエンドに送信された受信ヘッダー "**X-Azure FDID**" をフィルター処理することで、独自の Front Door インスタンスのみが許可されていることを確認できます (上記の IP 範囲は、他のお客様の他の Front Door インスタンスと共有されているため)。
+
+- バックエンド Web サーバーでルール フィルターを適用して、結果の "X-Azure-FDID" ヘッダー値に基づいてトラフィックを制限します。 Azure App Service のような一部のサービスでは、アプリケーションやホストを変更することなく、この[ヘッダーベースのフィルター処理](../app-service/app-service-ip-restrictions#restrict-access-to-a-specific-azure-front-door-instance-preview)機能が提供されることに注意してください。
+
+  [Microsoft インターネット インフォメーション サービス (IIS)](https://www.iis.net/) の例を次に示します。
+
+    ``` xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <configuration>
+        <system.webServer>
+            <rewrite>
+                <rules>
+                    <rule name="Filter_X-Azure-FDID" patternSyntax="Wildcard" stopProcessing="true">
+                        <match url="*" />
+                        <conditions>
+                            <add input="{HTTP_X_AZURE_FDID}" pattern="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" negate="true" />
+                        </conditions>
+                        <action type="AbortRequest" />
+                    </rule>
+                </rules>
+            </rewrite>
+        </system.webServer>
+    </configuration>
+    ```
+
+
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>エニーキャスト IP は、Front Door の有効期間を通じて変更できますか?
 
-Front Door のフロントエンド エニーキャスト IP は、通常は変更すべきでなく、Front Door の有効期間を通じて静的のままにしておくことができます。 ただし、同じであることの**保証はありません**。 IP アドレスへの直接的な依存関係は存在しないようにしてください。
+Front Door のフロントエンド エニーキャスト IP は、通常は変更すべきでなく、Front Door の有効期間を通じて静的のままにしておくことができます。 ただし、同じであることの **保証はありません**。 IP アドレスへの直接的な依存関係は存在しないようにしてください。
 
 ### <a name="does-azure-front-door-support-static-or-dedicated-ips"></a>Azure Front Door では静的または専用 IP アドレスがサポートされていますか?
 
@@ -131,7 +155,15 @@ Azure Front Door (AFD) には、トラフィックをルーティングするた
 
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Azure Front Door でのさまざまなタイムアウトおよび制限とは何ですか?
 
-[Azure Front Door のさまざまなタイムアウトおよび制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits)についてのすべてのドキュメントを参照してください。
+[Azure Front Door のさまざまなタイムアウトおよび制限](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-front-door-service-limits)についてのすべてのドキュメントを参照してください。
+
+### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>Front Door ルール エンジンに追加された後、ルールが有効になるまでにどれくらいの時間がかかりますか?
+
+ルール エンジンの構成は、更新が完了するまでに約 10 分から 15 分かかります。 更新が完了するとすぐにルールが有効になります。 
+
+### <a name="can-i-configure-azure-cdn-behind-my-front-door-profile-or-vice-versa"></a>Azure CDN を Front Door プロファイルの背後に構成したり、その逆を行ったりすることができますか?
+
+Azure Front Door と Azure CDN を同時に構成することはできません。これは、どちらのサービスも、要求に応答するときに同じ Azure エッジ サイトを利用するためです。 
 
 ## <a name="performance"></a>パフォーマンス
 
@@ -150,7 +182,7 @@ Front Door では、TLS バージョン 1.0、1.1、1.2 がサポートされま
 ### <a name="what-certificates-are-supported-on-azure-front-door"></a>Azure Front Door ではどの証明書がサポートされますか?
 
 Front Door のカスタム ドメインでコンテンツを安全に配信するために HTTPS プロトコルを有効にするには、Azure Front Door によって管理されている証明書を使用するか、または独自の証明書を使用することを選択できます。
-Front Door のマネージド オプションは、Digicert 経由で、かつ Front Door の Key Vault に格納されている標準の TLS/SSL 証明書をプロビジョニングします。 独自の証明書を使用することを選択した場合は、サポートされている CA から証明書をオンボードできます。これは標準の TLS 証明書、Extended Validation 証明書、ワイルドカード証明書のいずれであってもかまいません。 自己署名証明書はサポートされていません。 [カスタム ドメインに対する HTTPS の有効化の方法](https://aka.ms/FrontDoorCustomDomainHTTPS)を説明します。
+Front Door のマネージド オプションは、Digicert 経由で、かつ Front Door の Key Vault に格納されている標準の TLS/SSL 証明書をプロビジョニングします。 独自の証明書を使用することを選択した場合は、サポートされている CA から証明書をオンボードできます。これは標準の TLS 証明書、Extended Validation 証明書、ワイルドカード証明書のいずれであってもかまいません。 自己署名証明書はサポートされていません。 [カスタム ドメインに対する HTTPS の有効化の方法](./front-door-custom-domain-https.md)を説明します。
 
 ### <a name="does-front-door-support-autorotation-of-certificates"></a>Front Door は証明書のオートローテーションをサポートしていますか?
 
@@ -191,7 +223,7 @@ TLS1.0 または TLS1.1 が有効になっているカスタム ドメインを�
 
 ### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>TLS プロトコルのバージョンを制御するように TLS ポリシーを構成できますか?
 
-Azure portal または [Azure REST API](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion) を使用して、カスタム ドメインの HTTPS の設定で、Azure Front Door での最低の TLS バージョンを構成できます。 現時点では、1.0 と 1.2 のどちらかを選択できます。
+Azure portal または [Azure REST API](/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion) を使用して、カスタム ドメインの HTTPS の設定で、Azure Front Door での最低の TLS バージョンを構成できます。 現時点では、1.0 と 1.2 のどちらかを選択できます。
 
 ### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Front Door は特定の暗号スイートのみをサポートするように構成できますか?
 
@@ -218,7 +250,11 @@ Azure portal または [Azure REST API](https://docs.microsoft.com/rest/api/fron
 
 1. **証明書のサブジェクト名の不一致**: HTTPS 接続の場合、Front Door では、バックエンドからバックエンドのホスト名と一致するサブジェクト名を持つ有効な CA からの証明書が提示されることを前提としています。 例として、バックエンドのホスト名が `myapp-centralus.contosonews.net` に設定されており、TLS ハンドシェイク中にバックエンドが提供する証明書のサブジェクト名に `myapp-centralus.contosonews.net` も `*myapp-centralus*.contosonews.net` も含まれていない場合、Front Door はその接続を拒否してエラーを生成します。 
     1. **解決策**:コンプライアンスの観点からは推奨されませんが、Front Door で証明書のサブジェクト名のチェックを無効にすることで、このエラーを回避できます。 これは、Azure portal の [設定]、および API の BackendPoolsSettings で設定できます。
-2. **無効な CA からのバックエンド ホスティング証明書**: Front Door のバックエンドでは、[有効な CA](/azure/frontdoor/front-door-troubleshoot-allowed-ca) からの証明書のみを使用できます。 内部 CA からの証明書または自己署名証明書は許可されません。
+2. **無効な CA からのバックエンド ホスティング証明書**: Front Door のバックエンドでは、[有効な CA](./front-door-troubleshoot-allowed-ca.md) からの証明書のみを使用できます。 内部 CA からの証明書または自己署名証明書は許可されません。
+
+### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>Azyre Front Door でクライアント/相互認証を使用できますか?
+
+いいえ。 TLS 1.2 をサポートしている Azure Front Door は [RFC 5246](https://tools.ietf.org/html/rfc5246) でクライアント/相互認証を導入していますが、現時点で Azure Front Door はクライアント/相互認証をサポートしていません。
 
 ## <a name="diagnostics-and-logging"></a>診断とログ記録
 

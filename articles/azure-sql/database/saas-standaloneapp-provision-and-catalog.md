@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: b3d886186d26c398a83643c93b98192fca16df6d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2343800f8801105ca75f285972b441ecb027d1a0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84027003"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793247"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>テナントごとのアプリケーション SaaS パターンを使用して、新しいテナントのプロビジョニングとカタログ化を行います
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "84027003"
 
 ## <a name="standalone-application-per-tenant-pattern"></a>テナントごとのスタンドアロン アプリケーション パターン
 
-テナントごとのスタンドアロン アプリ パターンは、マルチテナント SaaS アプリケーションのさまざまなパターンのうちの 1 つです。  このパターンでは、各テナントに対してスタンドアロン アプリがプロビジョニングされます。 アプリケーションは、アプリケーション レベルのコンポーネントと Azure SQL Database で構成されます。  各テナントのアプリは、ベンダーのサブスクリプション内にデプロイできます。  または、アプリをテナントのサブスクリプション内にデプロイし、テナントに代わってベンダーが管理できる[マネージド アプリケーション プログラム](https://docs.microsoft.com/azure/managed-applications/overview)が Azure によって提供されます。
+テナントごとのスタンドアロン アプリ パターンは、マルチテナント SaaS アプリケーションのさまざまなパターンのうちの 1 つです。  このパターンでは、各テナントに対してスタンドアロン アプリがプロビジョニングされます。 アプリケーションは、アプリケーション レベルのコンポーネントと Azure SQL Database で構成されます。  各テナントのアプリは、ベンダーのサブスクリプション内にデプロイできます。  または、アプリをテナントのサブスクリプション内にデプロイし、テナントに代わってベンダーが管理できる[マネージド アプリケーション プログラム](../../azure-resource-manager/managed-applications/overview.md)が Azure によって提供されます。
 
    ![テナントごとのアプリケーション パターン](./media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern.png)
 
@@ -39,13 +39,13 @@ ms.locfileid: "84027003"
 
 各テナントのアプリとデータベースは完全に分離されますが、テナント間でさまざまな管理と分析のシナリオが適用される可能性があります。  たとえば、アプリケーションの新しいリリースに対してスキーマの変更を適用するには、各テナント データベースのスキーマを変更する必要があります。 レポートと分析のシナリオでは、デプロイ場所に関係なく、すべてのテナント データベースへのアクセスが必要な場合もあります。
 
-   ![テナントごとのアプリケーション パターン](./media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern-with-catalog.png)
+   ![テナントごとのアプリケーション パターンでテナント カタログを使用する方法を示す図。](./media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern-with-catalog.png)
 
 テナント カタログは、テナント ID とテナント データベース間のマッピングを保持することで、ID をサーバーとデータベース名に解決できます。  Wingtip SaaS アプリでは、テナント ID はテナント名のハッシュとして計算されますが、他のスキームも使用できます。  スタンドアロン アプリケーションは接続を管理するためにカタログを必要としません。カタログは、他の操作の範囲をテナント データベースのセットに設定するために使用できます。 たとえば、エラスティック クエリでは、カタログを使用して、テナント間レポートのためにクエリが分散されるデータベースのセットを決定できます。
 
 ## <a name="elastic-database-client-library"></a>Elastic Database クライアント ライブラリ
 
-Wingtip サンプル アプリケーションでは、カタログは、[Elastic Database クライアント ライブラリ](elastic-database-client-library.md) (EDCL) のシャード管理機能によって実装されます。  このライブラリによって、アプリケーションは、データベースに格納されるシャード マップを作成、管理、および使用できます。 Wingtip Tickets サンプルでは、カタログは、"*テナント カタログ*" データベースに格納されます。  シャードは、テナントのデータが格納される シャード (データベース) にテナント キーをマップします。  EDCL 関数は、"*テナント カタログ*" データベース内のテーブルに格納される "*グローバル シャード マップ*" と、各シャードに格納される "*ローカル シャード マップ*" を管理します。
+Wingtip サンプル アプリケーションでは、カタログは、[Elastic Database クライアント ライブラリ](elastic-database-client-library.md) (EDCL) のシャード管理機能によって実装されます。  このライブラリによって、アプリケーションは、データベースに格納されるシャード マップを作成、管理、および使用できます。 Wingtip Tickets サンプルでは、カタログは、" *テナント カタログ* " データベースに格納されます。  シャードは、テナントのデータが格納される シャード (データベース) にテナント キーをマップします。  EDCL 関数は、" *テナント カタログ* " データベース内のテーブルに格納される " *グローバル シャード マップ* " と、各シャードに格納される " *ローカル シャード マップ* " を管理します。
 
 アプリケーションまたは PowerShell スクリプトから EDCL 関数を呼び出して、シャード マップのエントリを作成して管理できます。 その他の EDCL 関数を使用して、シャード セットを取得したり、特定のテナント キーの適切なデータベースに接続したりできます。
 
@@ -72,34 +72,34 @@ Azure Resource Manager テンプレートを使用して、アプリケーショ
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-* Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
-* 3 つのサンプル テナント アプリがデプロイされている。 これらのアプリを 5 分未満でデプロイするには、「[Wingtip Tickets SaaS スタンドアロン アプリケーションをデプロイする](../../sql-database/saas-standaloneapp-get-started-deploy.md)」を参照してください。
+* Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](/powershell/azure/get-started-azureps)」をご覧ください。
+* 3 つのサンプル テナント アプリがデプロイされている。 これらのアプリを 5 分未満でデプロイするには、「[Wingtip Tickets SaaS スタンドアロン アプリケーションをデプロイする](./saas-standaloneapp-get-started-deploy.md)」を参照してください。
 
 ## <a name="provision-the-catalog"></a>カタログをプロビジョニングする
 
 このタスクでは、すべてのテナント データベースを登録するために使用するカタログをプロビジョニングする方法を学習します。 このチュートリアルの内容は次のとおりです。
 
-* Azure Resource Management テンプレートを使用して**カタログ データベースをプロビジョニングする。** データベースは、bacpac ファイルをインポートすることで初期化されます。
-* デプロイ済みの**サンプル テナント データベースを登録する。**  各テナントは、テナント名のハッシュから構築されたキーを使用して登録されます。  テナント名も、カタログ内の拡張テーブルに格納されます。
+* Azure Resource Management テンプレートを使用して **カタログ データベースをプロビジョニングする。** データベースは、bacpac ファイルをインポートすることで初期化されます。
+* デプロイ済みの **サンプル テナント データベースを登録する。**  各テナントは、テナント名のハッシュから構築されたキーを使用して登録されます。  テナント名も、カタログ内の拡張テーブルに格納されます。
 
-1. PowerShell ISE で、 *...\Learning Modules\UserConfig.psm* を開き、 **\<user\>** 値を、3 つのサンプル アプリケーションのデプロイ時に使用した値に更新します。  **ファイルを保存します**。
+1. PowerShell ISE で、 *...\Learning Modules\UserConfig.psm* を開き、 **\<user\>** 値を、3 つのサンプル アプリケーションのデプロイ時に使用した値に更新します。  **ファイルを保存します** 。
 1. PowerShell ISE で、 *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* を開き、 **$Scenario = 1** を設定します。 テナント カタログをデプロイし、定義済みのテナントを登録します。
 
-1. ブレークポイントを追加します。追加するには、`& $PSScriptRoot\New-Catalog.ps1` と記述されている行のどこかにカーソルを置いて、**F9** キーを押します。
+1. ブレークポイントを追加します。追加するには、`& $PSScriptRoot\New-Catalog.ps1` と記述されている行のどこかにカーソルを置いて、 **F9** キーを押します。
 
     ![トレース用のブレークポイントの設定](./media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
 
 1. **F5** キーを押してスクリプトを実行します。
-1.  ブレークポイントでスクリプトの実行が停止したら、**F11** キーを押して New-Catalog.ps1 スクリプトにステップ インします。
+1.  ブレークポイントでスクリプトの実行が停止したら、 **F11** キーを押して New-Catalog.ps1 スクリプトにステップ インします。
 1.  デバッグのメニュー オプション (F10 キーと F11 キー) を使用して、呼び出された関数へのステップ オーバーまたはステップ インを行って、スクリプトの実行をトレースします。
-    *   PowerShell スクリプトのデバッグの詳細については、「[PowerShell スクリプトの使用とデバッグに関するヒント](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)」を参照してください。
+    *   PowerShell スクリプトのデバッグの詳細については、「[PowerShell スクリプトの使用とデバッグに関するヒント](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)」を参照してください。
 
 スクリプトが完了すると、カタログが作成され、サンプルのすべてのテナントが登録されます。
 
 ここで、作成したリソースを見てみましょう。
 
 1. [Azure Portal](https://portal.azure.com/) を開き、リソース グループを参照します。  **wingtip-sa-catalog-\<user\>** リソース グループを開き、カタログ サーバーとデータベースに注目します。
-1. ポータルでデータベースを開き、左側のメニューから*データ エクスプローラー*を選択します。  ログイン コマンドをクリックし、パスワードに「**P\@ssword1**」を入力します。
+1. ポータルでデータベースを開き、左側のメニューから *データ エクスプローラー* を選択します。  ログイン コマンドをクリックし、パスワードに「 **P\@ssword1** 」を入力します。
 
 
 1. *tenantcatalog* データベースのスキーマを調べます。
@@ -118,16 +118,16 @@ Azure Resource Manager テンプレートを使用して、アプリケーショ
 
 このタスクでは、1 つのテナント アプリケーションをプロビジョニングする方法を学習します。 このチュートリアルの内容は次のとおりです。
 
-* テナント用の**新しいリソース グループを作成します**。
-* Azure Resource Management テンプレートを使用して、新しいリソース グループ内に**アプリケーションとデータベースをプロビジョニングします**。  この操作には、bacpac ファイルをインポートして、共通のスキーマと参照データでデータベースを初期化することが含まれます。
-* **データベースを基本的なテナント情報で初期化します**。 この操作には、会場の種類の指定が含まれます。それにより、イベント Web サイトの背景として使用される写真が決まります。
-* **データベースをカタログ データベースに登録します**。
+* テナント用の **新しいリソース グループを作成します** 。
+* Azure Resource Management テンプレートを使用して、新しいリソース グループ内に **アプリケーションとデータベースをプロビジョニングします** 。  この操作には、bacpac ファイルをインポートして、共通のスキーマと参照データでデータベースを初期化することが含まれます。
+* **データベースを基本的なテナント情報で初期化します** 。 この操作には、会場の種類の指定が含まれます。それにより、イベント Web サイトの背景として使用される写真が決まります。
+* **データベースをカタログ データベースに登録します** 。
 
 1. PowerShell ISE で、 *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* を開き、 **$Scenario = 2** を設定します。 テナント カタログをデプロイし、定義済みのテナントを登録します。
 
-1. スクリプトにブレークポイントを追加します。追加するには、`& $PSScriptRoot\New-TenantApp.ps1` と記述されている行 49 のどこかにカーソルを置いて、**F9** キーを押します。
+1. スクリプトにブレークポイントを追加します。追加するには、`& $PSScriptRoot\New-TenantApp.ps1` と記述されている行 49 のどこかにカーソルを置いて、 **F9** キーを押します。
 1. **F5** キーを押してスクリプトを実行します。
-1.  ブレークポイントでスクリプトの実行が停止したら、**F11** キーを押して New-Catalog.ps1 スクリプトにステップ インします。
+1.  ブレークポイントでスクリプトの実行が停止したら、 **F11** キーを押して New-Catalog.ps1 スクリプトにステップ インします。
 1.  デバッグのメニュー オプション (F10 キーと F11 キー) を使用して、呼び出された関数へのステップ オーバーまたはステップ インを行って、スクリプトの実行をトレースします。
 
 テナントがプロビジョニングされると、新しいテナントのイベント Web サイトが開きます。
@@ -156,4 +156,4 @@ Azure Portal で作成された新しいリソースを検査できます。
 > * アプリを構成するサーバーおよびデータベースについて。
 > * サンプル リソースを削除して、関連する課金を停止する方法。
 
-[Wingtip Tickets SaaS アプリケーション](../../sql-database/saas-dbpertenant-wingtip-app-overview.md)のテナントごとのデータベース バージョンを使用して、さまざまなテナント間シナリオをサポートするためにカタログを使用する方法を調べることができます。
+[Wingtip Tickets SaaS アプリケーション](./saas-dbpertenant-wingtip-app-overview.md)のテナントごとのデータベース バージョンを使用して、さまざまなテナント間シナリオをサポートするためにカタログを使用する方法を調べることができます。

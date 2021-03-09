@@ -1,19 +1,16 @@
 ---
 title: Apache Spark クラスター構成の最適化 - Azure HDInsight
 description: Azure HDInsight でスループットを最大化するように Apache Spark クラスターを構成する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 456b955d40e417c9851734b0acaa86a14c9c83f0
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: f70e9f242b0f12abf58e72554e7cb6819ce8f7a9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757848"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944729"
 ---
 # <a name="cluster-configuration-optimization-for-apache-spark"></a>Apache Spark のクラスター構成の最適化
 

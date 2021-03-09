@@ -3,14 +3,14 @@ title: デプロイ データの暗号化
 description: コンテナー インスタンス リソースに永続化されたデータの暗号化と、カスタマー マネージド キーでデータを暗号化する方法について説明します
 ms.topic: article
 ms.date: 01/17/2020
-author: dkkapur
-ms.author: dekapur
-ms.openlocfilehash: 3c7a84dad1f107d8709e3bcdeac696414cdf883d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+author: macolso
+ms.author: macolso
+ms.openlocfilehash: 1b73ce5c994231a1c7b2f26ad702f2ad5880ba44
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259707"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686278"
 ---
 # <a name="encrypt-deployment-data"></a>デプロイ データの暗号化
 
@@ -33,7 +33,7 @@ Microsoft のマネージド キーを利用してコンテナー データを�
 
 このドキュメントの残りの部分では、キー (カスタマー マネージド キー) を使用して ACI のデプロイ データを暗号化するために必要な手順について説明します。 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="encrypt-data-with-a-customer-managed-key"></a>カスタマー マネージド キーを使用してデータを暗号化する
 
@@ -59,7 +59,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 
 ### <a name="create-a-key-vault-resource"></a>Key Vault リソースを作成する
 
-[Azure portal](../key-vault/secrets/quick-create-portal.md#create-a-vault)、[CLI](../key-vault/secrets/quick-create-cli.md)、または [PowerShell](../key-vault/secrets/quick-create-powershell.md) を使用して、Azure Key Vault を作成します。 
+[Azure portal](../key-vault/general/quick-create-portal.md)、[Azure CLI](../key-vault/general/quick-create-cli.md)、または [Azure PowerShell](../key-vault/general/quick-create-powershell.md) を使用して、Azure Key Vault を作成します。
 
 キー コンテナーのプロパティについては、次のガイドラインを使用します。 
 * 名前:一意の名前が必要です。 

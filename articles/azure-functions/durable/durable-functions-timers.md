@@ -4,12 +4,12 @@ description: Azure Functions の Durable Functions 拡張機能で持続的タ�
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 0226e5141b100aa3fcf89dd1a5cade8f3cd6cf1c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bb91f205a9b83b0b4b410644ef6c0fcbbf60876a
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056227"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91876449"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions のタイマー (Azure Functions)
 
@@ -22,7 +22,7 @@ ms.locfileid: "87056227"
 午後 4 時 30 分に期限切れになるタイマーを作成すると、基になる Durable Task Framework は、午後 4 時 30 分にのみ表示されるメッセージをエンキューします。 Azure Functions 従量課金プランで実行されている場合、新しく表示されるタイマー メッセージにより、適切な VM で関数アプリが確実にアクティブになります。
 
 > [!NOTE]
-> * 現在、持続的タイマーは 7 日間に制限されています。 これよりも長い遅延が必要な場合、`while` ループでタイマー API を使用してシミュレートできます。
+> * Durable 拡張機能の[バージョン 2.3.0](https://github.com/Azure/azure-functions-durable-extension/releases/tag/v2.3.0) 以降、持続的タイマーは無制限です。 それ以前のバージョンの拡張機能では、持続的タイマーは 7 日間に制限されています。 以前のバージョンを使用していて、7 日より長い遅延が必要な場合は、`while` ループ内でタイマー API を使用して、この遅延をシミュレートできます。
 > * 持続的タイマーの起動時間を計算するときは、.NET では `DateTime.UtcNow` ではなく `CurrentUtcDateTime` を、JavaScript では `Date.now` または `Date.UTC` ではなく `currentUtcDateTime` を常に使用します。 詳細については、「[オーケストレーター関数コードの制約](durable-functions-code-constraints.md)」の記事を参照してください。
 
 ## <a name="usage-for-delay"></a>遅延の使用

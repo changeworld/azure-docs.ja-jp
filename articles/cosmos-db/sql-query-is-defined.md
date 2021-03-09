@@ -3,18 +3,21 @@ title: Azure Cosmos DB クエリ言語の IS_DEFINED
 description: Azure Cosmos DB での SQL システム関数 IS_DEFINED について学習します。
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a5fcaf52d8e9e6b942a95f0b0c43f3f654c5d5d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b45e09fe7cd9165487f1c9f142a1338a1e6db44
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78303853"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93338698"
 ---
 # <a name="is_defined-azure-cosmos-db"></a>IS_DEFINED (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  プロパティに値が代入されているかどうかを示すブール値を返します。  
   
 ## <a name="syntax"></a>構文

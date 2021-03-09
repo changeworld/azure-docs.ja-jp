@@ -1,22 +1,18 @@
 ---
 title: SAP ECC からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、SAP ECC からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/03/2020
-ms.openlocfilehash: 9088b36acead9f47e94949ee102d66a8aff2d226
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 10/28/2020
+ms.openlocfilehash: a3e701f3d433b5b52d8992035ac4ad75b78cb795
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529604"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386698"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP ECC からデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -46,6 +42,13 @@ SAP ECC から、サポートされている任意のシンク データ スト�
   - 相対アダプター経由で OData として受信できる、SAP Process Integration (PI) に送信されたデータまたは中間ドキュメント (IDOC)。
 
 - 基本認証を使用したデータのコピー。
+
+バージョン 7.0 以降は、SAP ECC のバージョンではなく SAP NetWeaver のバージョンを指します。 たとえば、一般に SAP ECC 6.0 EHP 7 の NetWeaver バージョンは 7.4 以降です。 お使いの環境が不明な場合に、SAP システムからバージョンを確認する手順を次に示します。
+
+1. SAP GUI を使用して SAP システムに接続します。 
+2. **[システム]**  ->  **[ステータス]** に移動します。 
+3. SAP_BASIS のリリースを調べ、701 以上であることを確認します。  
+      ![SAP_BASIS の確認](./media/connector-sap-table/sap-basis.png)
 
 >[!TIP]
 >SAP テーブルまたはビューを介して SAP ECC からデータをコピーするには、より高速でスケーラブルな [SAP テーブル](connector-sap-table.md) コネクタを使用します。

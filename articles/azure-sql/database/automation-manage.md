@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: b90acafb9146ec6cd796a0916ad46bf880398b22
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: faf5b1108e28b352a0b8622feed8bdd99264ff16
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013982"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91327580"
 ---
 # <a name="manage-databases-in-azure-sql-database-by-using-azure-automation"></a>Azure Automation を使用して Azure SQL Database のデータベースを管理する
 

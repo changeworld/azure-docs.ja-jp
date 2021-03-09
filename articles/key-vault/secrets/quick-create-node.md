@@ -1,81 +1,145 @@
 ---
-title: クイックスタート - Node.js 用 Azure Key Vault クライアント ライブラリ (v4)
-description: Node.js クライアント ライブラリを使用して Azure キー コンテナーからシークレットを作成、取得、削除する方法について説明します
+title: クイックスタート - JavaScript 用 Azure Key Vault シークレット クライアント ライブラリ (バージョン 4)
+description: JavaScript クライアント ライブラリを使用して Azure キー コンテナーからシークレットを作成、取得、および削除する方法について説明します
 author: msmbaldwin
 ms.author: mbaldwin
-ms.date: 10/20/2019
+ms.date: 12/6/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 99424e5a7b39d3f60f3337ff10bf7d9265e2ab4c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 70416daced2cbdebb70fb8e1defbcbcb599710f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422880"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705485"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>クイック スタート:Node.js 用 Azure Key Vault クライアント ライブラリ (v4)
+# <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>クイックスタート: JavaScript 用 Azure Key Vault シークレット クライアント ライブラリ (バージョン 4)
 
-Node.js 用 Azure Key Vault クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。
+JavaScript 用 Azure Key Vault シークレットクライアント ライブラリを使ってみます。 [Azure Key Vault](../general/overview.md) は、シークレットのセキュリティで保護されたストアを提供するクラウド サービスです。 キー、パスワード、証明書、およびその他のシークレットを安全に保管することができます。 Azure Key Vault は、Azure Portal を使用して作成および管理できます。 このクイックスタートでは、JavaScript クライアント ライブラリを使用して Azure キー コンテナーにシークレットを作成し、それを取得および削除する方法について説明します
 
-Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Node.js 用 Key Vault クライアント ライブラリは、次の目的で使用します。
+Key Vault クライアント ライブラリのリソースは、次のとおりです。
 
-- キーとパスワードのセキュリティと制御を強化する。
-- 暗号化キーの作成とインポートを数分で実行する。
-- クラウド スケールおよびグローバルな冗長性により待ち時間を短縮する。
-- TLS または SSL 証明書のタスクを簡略化および自動化する。
-- FIPS 140-2 レベル 2 への準拠が検証済みの HSM を使用する。
+[API リファレンスのドキュメント](/javascript/api/overview/azure/key-vault-index) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
-[API リファレンスのドキュメント](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
+Key Vault とシークレットの詳細については、以下を参照してください。
+- [Key Vault の概要](../general/overview.md)
+- [シークレットの概要](about-secrets.md)
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 使用するオペレーティング システム用の最新の [Node.js](https://nodejs.org)。
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Azure PowerShell](/powershell/azure/)。
+- [Azure CLI](/cli/azure/install-azure-cli)
+- キー コンテナー - [Azure portal](../general/quick-create-portal.md)、[Azure CLI](../general/quick-create-cli.md)、または [Azure PowerShell](../general/quick-create-powershell.md) を使用して作成できます
 
-このクイックスタートは、Linux ターミナル ウィンドウで [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) を実行していることを前提としています。
+このクイックスタートでは、[Azure CLI](/cli/azure/install-azure-cli) を実行していることを前提としています。
 
-## <a name="setting-up"></a>設定
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-### <a name="install-the-package"></a>パッケージをインストールする
+1. `login` コマンドを実行します。
 
-コンソール ウィンドウから、Node.js 用 Azure Key Vault シークレット ライブラリをインストールします。
+    ```azurecli-interactive
+    az login
+    ```
 
-```console
+    CLI で既定のブラウザーを開くことができる場合、開いたブラウザに Azure サインイン ページが読み込まれます。
+
+    それ以外の場合は、[https://aka.ms/devicelogin](https://aka.ms/devicelogin) でブラウザー ページを開き、ターミナルに表示されている認証コードを入力します。
+
+2. ブラウザーでアカウントの資格情報を使用してサインインします。
+
+## <a name="create-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
+
+次に、クラウドにデプロイできる Node.js アプリケーションを作成します。 
+
+1. コマンド シェルで、`key-vault-node-app` という名前のフォルダーを作成します。
+
+```terminal
+mkdir key-vault-node-app
+```
+
+1. 新しく作成した *key-vault-node-app* ディレクトリに移動し、"init" コマンドを実行してノード プロジェクトを初期化します。
+
+```terminal
+cd key-vault-node-app
+npm init -y
+```
+
+## <a name="install-key-vault-packages"></a>Key Vault パッケージをインストールする
+
+コンソール ウィンドウから、Node.js 用 Azure Key Vault [シークレット ライブラリ](https://www.npmjs.com/package/@azure/keyvault-secrets)をインストールします。
+
+```terminal
 npm install @azure/keyvault-secrets
 ```
 
-このクイックスタートでは、azure.identity パッケージもインストールする必要があります。
+キー コンテナーに対する認証を行うために、[azure.identity](https://www.npmjs.com/package/@azure/identity) パッケージをインストールします
 
-```console
+```terminal
 npm install @azure/identity
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>リソース グループとキー コンテナーを作成する
+## <a name="set-environment-variables"></a>環境変数の設定
 
-[!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
+このアプリケーションでは、`KEY_VAULT_NAME` という環境変数にキー コンテナーの名前を使用します。
 
-### <a name="create-a-service-principal"></a>サービス プリンシパルの作成
+Windows
+```cmd
+set KEY_VAULT_NAME=<your-key-vault-name>
+````
+Windows PowerShell
+```powershell
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
+```
 
-[!INCLUDE [Create a service principal](../../../includes/key-vault-sp-creation.md)]
+macOS または Linux
+```cmd
+export KEY_VAULT_NAME=<your-key-vault-name>
+```
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>サービス プリンシパルにキー コンテナーへのアクセス権を付与する
+## <a name="grant-access-to-your-key-vault"></a>キー コンテナーへのアクセス許可を付与する
 
-[!INCLUDE [Give the service principal access to your key vault](../../../includes/key-vault-sp-kv-access.md)]
+自分のユーザー アカウントにシークレットのアクセス許可を付与するアクセス ポリシーをキー コンテナーに対して作成します
 
-#### <a name="set-environmental-variables"></a>環境変数の設定
-
-[!INCLUDE [Set environmental variables](../../../includes/key-vault-set-environmental-variables.md)]
-
-## <a name="object-model"></a>オブジェクト モデル
-
-Node.js 用 Azure Key Vault クライアント ライブラリを使用すると、キーおよび関連するアセット (証明書、シークレットなど) を管理できます。 以下のコード サンプルでは、クライアントの作成、シークレットの設定、シークレットの取得、シークレットの削除を行う方法を示します。
-
-コンソール アプリ全体は https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app から入手できます。
+```azurecli
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set purge
+```
 
 ## <a name="code-examples"></a>コード例
+
+以下のコード サンプルでは、クライアントの作成、シークレットの設定、シークレットの取得、シークレットの削除を行う方法を示します。 
+
+### <a name="set-up-the-app-framework"></a>アプリのフレームワークを設定する
+
+1. 新しいテキスト ファイルを作成し、"index.js" として保存します
+
+1. Azure および Node.js モジュールを読み込むための require 呼び出しを追加します
+
+1. 基本的な例外処理を含め、プログラムの構造を作成します
+
+```javascript
+const readline = require('readline');
+
+function askQuestion(query) {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+    });
+
+    return new Promise(resolve => rl.question(query, ans => {
+        rl.close();
+        resolve(ans);
+    }))
+}
+
+async function main() {
+    
+}
+
+main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
+```
 
 ### <a name="add-directives"></a>ディレクティブの追加
 
@@ -88,9 +152,11 @@ const { SecretClient } = require("@azure/keyvault-secrets");
 
 ### <a name="authenticate-and-create-a-client"></a>クライアントの認証と作成
 
-キー コンテナーに対する認証とキー コンテナー クライアントの作成には、上記の「[環境変数の設定](#set-environmental-variables)」の手順にある環境変数と、[SecretClient コンストラクター](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#secretclient-string--tokencredential--pipelineoptions-)が必要です。 
+このクイックスタートでは、ログイン ユーザーを使用してキー コンテナーに対する認証を行います。ローカル開発では、これが推奨される方法となります。 Azure にデプロイされるアプリケーションの場合は、App Service または仮想マシンにマネージド ID を割り当てる必要があります。詳細については、[マネージド ID の概要](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
 
-キー コンテナーの名前は、`https://<your-key-vault-name>.vault.azure.net` という形式で、キー コンテナーの URI に展開されます。 
+以下の例では、キー コンテナーの名前は、"https://\<your-key-vault-name\>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。 この例では、[Azure ID ライブラリ](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)の ["DefaultAzureCredential()"](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential) クラスを使用しています。環境や使用するオプションが変わっても、同じコードを使用して ID を提供することができます。 キー コンテナーに対する認証の詳細については、[開発者ガイド](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)を参照してください。
+
+次のコードを "main()" 関数に追加します
 
 ```javascript
 const keyVaultName = process.env["KEY_VAULT_NAME"];
@@ -102,21 +168,15 @@ const client = new SecretClient(KVUri, credential);
 
 ### <a name="save-a-secret"></a>シークレットを保存する
 
-アプリケーションが認証されたら、[client.setSecret メソッド](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#setsecret-string--string--setsecretoptions-)を使用して、キー コンテナーにシークレットを設定できます。これには、シークレットの名前が必要です (この例では、"mySecret" を使用します)。  
+アプリケーションが認証されたら、[setSecret メソッド](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#setSecret_string__string__SetSecretOptions_)を使用して、キー コンテナーにシークレットを設定できます。これには、シークレットの名前が必要です (この例では、"mySecret" を使用します)。  
 
 ```javascript
 await client.setSecret(secretName, secretValue);
 ```
 
-シークレットが設定されたことは、[az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) コマンドを使用して確認できます。
-
-```azurecli
-az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
-```
-
 ### <a name="retrieve-a-secret"></a>シークレットを取得する
 
-先ほど設定した値は、[client.getSecret メソッド](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#getsecret-string--getsecretoptions-)を使用して取得できます。
+先ほど設定した値は、[getSecret メソッド](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#getSecret_string__GetSecretOptions_)を使用して取得できます。
 
 ```javascript
 const retrievedSecret = await client.getSecret(secretName);
@@ -126,28 +186,12 @@ const retrievedSecret = await client.getSecret(secretName);
 
 ### <a name="delete-a-secret"></a>シークレットを削除します
 
-最後に、[client.beginDeleteSecret メソッド](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#begindeletesecret-string--begindeletesecretoptions-)を使用して、キー コンテナーからシークレットを削除してみましょう。
+最後に、[beginDeleteSecret](https://docs.microsoft.com/javascript/api/@azure/keyvault-secrets/secretclient?#beginDeleteSecret_string__BeginDeleteSecretOptions_) メソッドと [purgeDeletedSecret](https://docs.microsoft.com/javascript/api/@azure/keyvault-secrets/secretclient?#purgeDeletedSecret_string__PurgeDeletedSecretOptions_) メソッドを使用して、キー コンテナーからシークレットを削除および消去してみましょう。
 
 ```javascript
-await client.beginDeleteSecret(secretName)
-```
-
-[az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) コマンドを使用して、シークレットがなくなったことを確認できます。
-
-```azurecli
-az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
-```
-
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
-
-不要になったら、Azure CLI または Azure PowerShell を使用して、キー コンテナーとそれに対応するリソース グループを削除できます。
-
-```azurecli
-az group delete -g "myResourceGroup"
-```
-
-```azurepowershell
-Remove-AzResourceGroup -Name "myResourceGroup"
+const deletePoller = await client.beginDeleteSecret(secretName);
+await deletePoller.pollUntilDone();
+await client.purgeDeletedSecret(secretName);
 ```
 
 ## <a name="sample-code"></a>サンプル コード
@@ -195,22 +239,52 @@ async function main() {
   const retrievedSecret = await client.getSecret(secretName);
 
   console.log("Your secret is '" + retrievedSecret.value + "'.");
+
   console.log("Deleting your secret from " + keyVaultName + " ...");
-
-  await client.beginDeleteSecret(secretName);
-
+  const deletePoller = await client.beginDeleteSecret(secretName);
+  await deletePoller.pollUntilDone();
   console.log("Done.");
-
+  
+  console.log("Purging your secret from {keyVaultName} ...");
+  await client.purgeDeletedSecret(secretName);
+  
 }
 
-main()
+main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 
 ```
+
+## <a name="test-and-verify"></a>テストして検証する
+
+1. 次のコマンドを実行して、アプリを実行します。
+
+    ```terminal
+    npm install
+    node index.js
+    ```
+
+1. メッセージが表示されたら、シークレットの値を入力します (例: mySecretPassword)。
+
+    次のような出力が表示されます。
+
+    ```azurecli
+    Input the value of your secret > mySecretPassword
+    Creating a secret in <your-unique-keyvault-name> called 'mySecret' with the value 'mySecretPassword' ... done.
+    Forgetting your secret.
+    Your secret is ''.
+    Retrieving your secret from <your-unique-keyvault-name>.
+    Your secret is 'mySecretPassword'.
+    Deleting your secret from <your-unique-keyvault-name> ... done.  
+    Purging your secret from <your-unique-keyvault-name> ... done.   
+    ```
+
 
 ## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、キー コンテナーを作成し、シークレットを格納して、そのシークレットを取得しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
+- [Azure Key Vault シークレットの概要](about-secrets.md)を確認する
+- [キー コンテナーへのアクセスをセキュリティで保護する](../general/secure-your-key-vault.md)方法
 - 「[Azure Key Vault 開発者ガイド](../general/developers-guide.md)」を参照する
-- [Azure Key Vault のベスト プラクティス](../general/best-practices.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する

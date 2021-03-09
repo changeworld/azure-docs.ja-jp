@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 06/30/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 58c5fdcfef5e866d0c69d65412582c0ed649f7c6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 2396aac67a17352987d9d6e3b49535c19ffe8917
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230827"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792380"
 ---
 # <a name="key-vault-versions"></a>Key Vault のバージョン
 
@@ -33,7 +33,7 @@ Key Vault の "Bring Your Own Key" (BYOK) が一般提供されるようにな�
 ## <a name="2019"></a>2019
 
 - 次世代 Azure Key Vault SDK のリリース。 使用例については、[Python](../secrets/quick-create-python.md)、[.NET](../secrets/quick-create-net.md)、[Java](../secrets/quick-create-java.md)、[Node.js](../secrets/quick-create-node.md) の Azure Key Vault シークレット クイックスタートを参照してください
-- Key Vault 証明書を管理するための新しい Azure ポリシー。 「[Key Vault 用の Azure Policy 組み込み定義](../policy-samples.md)」を参照してください。
+- Key Vault 証明書を管理するための新しい Azure ポリシー。 「[Key Vault 用の Azure Policy 組み込み定義](../policy-reference.md)」を参照してください。
 - Azure Key Vault 仮想マシン拡張機能が一般提供されるようになりました。  「[Linux 用の Key Vault 仮想マシン拡張機能](../../virtual-machines/extensions/key-vault-linux.md)」および「[Windows 用の Key Vault 仮想マシン拡張機能](../../virtual-machines/extensions/key-vault-windows.md)」を参照してください。
 - Azure Key Vault のイベントドリブン シークレット管理が Azure Event Grid で使用できるようになりました。 詳細については、[Azure Key Vault でのイベントの Event Grid スキーマ](../../event-grid/event-schema-key-vault.md)に関するページを参照し、[Azure Event Grid でキー コンテナー通知を受信して応答する](event-grid-tutorial.md)方法を学習してください。
 
@@ -49,8 +49,8 @@ Key Vault の "Bring Your Own Key" (BYOK) が一般提供されるようにな�
 
 今年リリースされた新機能:
 
-- マネージド ストレージ アカウント キー。 Azure Storage と簡単に統合できるように、ストレージ アカウント キーの機能が追加されました。 詳しくは、[マネージド ストレージ アカウント キーの概要](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-storage-keys)に関するトピックをご覧ください。
-- 論理的な削除。 論理削除機能により、キー コンテナーおよびキー コンテナー オブジェクトのデータ保護が強化されます。 詳しくは、[論理的な削除の概要](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)に関するトピックをご覧ください。
+- マネージド ストレージ アカウント キー。 Azure Storage と簡単に統合できるように、ストレージ アカウント キーの機能が追加されました。 詳しくは、[マネージド ストレージ アカウント キーの概要](../secrets/overview-storage-keys.md)に関するトピックをご覧ください。
+- 論理的な削除。 論理削除機能により、キー コンテナーおよびキー コンテナー オブジェクトのデータ保護が強化されます。 詳しくは、[論理的な削除の概要](./soft-delete-overview.md)に関するトピックをご覧ください。
 
 ## <a name="2015"></a>2015
 
@@ -64,7 +64,7 @@ Key Vault の "Bring Your Own Key" (BYOK) が一般提供されるようにな�
 - キーの復元 - "use" フィールドが削除されました。     
 - RSA アルゴリズムの "RSA_OAEP" が "RSA-OAEP" に変更されました。 「[About keys, secrets, and certificates](about-keys-secrets-certificates.md)」(キー、シークレット、証明書について) をご覧ください。    
  
-2 番目のプレビュー バージョン (バージョン 2015-02-01-preview) が、2015 年 4 月 20 日に発表されました。 詳しくは、[REST API の更新](https://docs.microsoft.com/archive/blogs/kv/rest-api-update)に関するブログ記事をご覧ください。 次のタスクが更新されました。
+2 番目のプレビュー バージョン (バージョン 2015-02-01-preview) が、2015 年 4 月 20 日に発表されました。 詳しくは、[REST API の更新](/archive/blogs/kv/rest-api-update)に関するブログ記事をご覧ください。 次のタスクが更新されました。
  
 - コンテナー内のキーの一覧表示 - 改ページ位置の自動修正のサポートが操作に追加されました。
 - キーのバージョンの一覧表示 - キーのバージョンを一覧表示する操作が追加されました。  

@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 85804e0f9293ec2e63aa319854e9559da11c8be1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c7027dd86945e53149b3c4daeb9d6faee3593e95
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286276"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702244"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>FreeBSD のパケット フィルターを使用してAzure 内にセキュア ファイアウォールを作成する方法
 この記事では、一般的な Web サーバー シナリオで、Azure Resource Manager テンプレートを通して FreeBSD の パケット フィルターを使用することで、NAT ファイアウォールをデプロイする方法について説明します。
@@ -25,7 +25,7 @@ PF (パケット フィルター、pf とも表記します) は、BSD ライセ
 Web サーバー用のクラウドにセキュア ファイアウォールを設定することに関心があるのであれば、今すぐ始めましょう。 Azure Resource Manager テンプレートで使用されているスクリプトを適用して、ネットワーク トポロジを設定することもできます。
 Azure Resource Manager テンプレートは、PF を使用して NAT/リダイレクトを実行する 1 台の FreeBSD 仮想マシンと、Nginx Web サーバーがインストールされ構成されている 2 台の FreeBSD 仮想マシンをセットアップします。 NAT/リダイレクト仮想マシンは、2 台の Web サーバーのエグレス トラフィックに対する NAT の実行に加え、HTTP 要求をインターセプトして、ラウンド ロビン方式で 2 つの Web サーバーにリダイレクトします。 VNet はプライベートなルーティング不能 IP アドレス空間 10.0.0.2/24 を使用します。テンプレートのパラメーターは変更することができます。 Azure Resource Manager テンプレートは、VNet 全体のルート テーブルを定義することもできます。これは、宛先 IP アドレスに基づいて Azure の既定のルートをオーバーライドするために使用される個別のルートのコレクションです。 
 
-![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
+![NAT インスタンス上のパブリック IP アドレスを示す図。これは、ラウンドロビン方式によって、Nginx Web サーバーをホストする 2 つのバックエンド仮想マシンにリダイレクトされます。](./media/freebsd-pf-nat/pf_topology.jpg)
     
 ### <a name="deploy-through-azure-cli"></a>Azure CLI を使用してデプロイする
 最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index) を使用して Azure アカウントにログインしている必要があります。 [az group create](/cli/azure/group) を使用して、リソース グループを作成します。 次の例では、`myResourceGroup` という名前のリソース グループを `West US` の場所に作成します。
@@ -34,10 +34,10 @@ Azure Resource Manager テンプレートは、PF を使用して NAT/リダイ�
 az group create --name myResourceGroup --location westus
 ```
 
-次に、 [az group deployment create](/cli/azure/group/deployment) を使用して pf-freebsd-setup テンプレートをデプロイします。 azuredeploy.parameters.json を同じパスにダウンロードし、独自のリソース値 (`adminPassword`、`networkPrefix`、`domainNamePrefix` など) を定義します。 
+次に、[az deployment group create](/cli/azure/deployment/group) を使用して pf-freebsd-setup テンプレートをデプロイします。 azuredeploy.parameters.json を同じパスにダウンロードし、独自のリソース値 (`adminPassword`、`networkPrefix`、`domainNamePrefix` など) を定義します。 
 
 ```azurecli
-az group deployment create --resource-group myResourceGroup --name myDeploymentName \
+az deployment group create --resource-group myResourceGroup --name myDeploymentName \
     --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/pf-freebsd-setup/azuredeploy.json \
     --parameters '@azuredeploy.parameters.json' --verbose
 ```

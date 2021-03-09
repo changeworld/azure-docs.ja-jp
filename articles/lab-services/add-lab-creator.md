@@ -3,20 +3,20 @@ title: Azure Lab Services でラボ作成者としてユーザーを追加する
 description: この記事では、Azure Lab Services でラボ アカウントのラボ作成者ロールにユーザーを追加する方法を紹介します。 ラボ作成者はこのラボ アカウントでラボを作成できます。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 34fbf9085f36d008607b648825585d3435cc2895
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6c89483744f943926f126701d28988358627a27
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444286"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435962"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>Azure Lab Services でラボ アカウントにラボ作成者を追加する
-この記事では、Azure Lab Services でラボ アカウントにラボ作成者としてユーザーを追加する方法を紹介します。 追加されたユーザーは、そのラボ アカウントでクラスルーム ラボを作成できます。 
+この記事では、Azure Lab Services でラボ アカウントにラボ作成者としてユーザーを追加する方法を紹介します。 追加されたユーザーは、そのラボ アカウントでラボを作成できます。 
 
 ## <a name="add-microsoft-user-account-to-lab-creator-role"></a>Microsoft ユーザー アカウントをラボ作成者ロールに追加する
-ラボ アカウントでクラスルーム ラボを設定するには、ユーザーがラボ アカウントにおける**ラボの作成者**ロールのメンバーであることが必要です。 ラボ アカウントを作成するために使用したアカウントは、このロールに自動的に追加されます。 クラスルーム ラボの作成に、同じユーザー アカウントを使用する場合は、この手順をスキップすることができます。 クラスルーム ラボの作成に、別のユーザー アカウントを使用する場合は、次の手順に従います。 
+ラボ アカウントでクラスルーム ラボを設定するには、ユーザーがラボ アカウントにおける **ラボの作成者** ロールのメンバーであることが必要です。 ラボ アカウントを作成するために使用したアカウントは、このロールに自動的に追加されます。 クラスルーム ラボの作成に、同じユーザー アカウントを使用する場合は、この手順をスキップすることができます。 クラスルーム ラボの作成に、別のユーザー アカウントを使用する場合は、次の手順に従います。 
 
-クラスのラボを作成するアクセス許可を教師に与えるには、教師を**ラボの作成者**ロールに追加します。
+クラスのラボを作成するアクセス許可を教師に与えるには、教師を **ラボの作成者** ロールに追加します。
 
 1. **[ラボ アカウント]** ページで、 **[アクセス制御 (IAM)]** を選択し、ツールバーの **[+ ロール割り当ての追加]** をクリックします。 
 
@@ -31,7 +31,7 @@ ms.locfileid: "85444286"
 ## <a name="add-a-non-microsoft-account-user-as-a-lab-creator"></a>Microsoft 以外のアカウント ユーザーをラボ作成者として追加する
 ユーザーをラボ作成者として追加するには、そのユーザーのメール アカウントを使用します。 次の種類のメール アカウントを使用できます。
 
-- 大学の Office 365 Azure Active Directory (AAD) によって提供されるメール アカウント。 
+- 大学の Azure Active Directory (AAD) によって提供されるメール アカウント。
 - Microsoft のメール アカウント (`@outlook.com`、`@hotmail.com`、`@msn.com`、`@live.com` など)。
 - Microsoft 以外のメール アカウント (Yahoo または Google によって提供されるものなど)。 ただし、これらの種類のアカウントは、Microsoft アカウントとリンクされている必要があります。
 - GitHub アカウント。 このアカウントは、Microsoft アカウントとリンクされている必要があります。
@@ -66,4 +66,4 @@ Microsoft アカウントにサインアップするには、講師は [http://s
 - [ラボ所有者としてラボを作成および管理する](how-to-manage-classroom-labs.md)
 - [ラボ所有者としてテンプレートを設定および発行する](how-to-create-manage-template.md)
 - [ラボ所有者としてラボの使用を構成および制御する](how-to-configure-student-usage.md)
-- [ラボ ユーザーとしてクラスルーム ラボにアクセスする](how-to-use-classroom-lab.md)
+- [ラボ ユーザーとしてラボにアクセスする](how-to-use-classroom-lab.md)

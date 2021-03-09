@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 769aa6c0d546b7a9bcbe355136bad811fb4f47b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6290d89ed0ee539b4df4c2c8bc9070097da98c81
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753304"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91447348"
 ---
 # <a name="upgrade-a-virtual-wan-from-basic-to-standard"></a>Virtual WAN を Basic から Standard にアップグレードする
 
@@ -26,13 +26,13 @@ ms.locfileid: "84753304"
 
 1. Virtual WAN のページで **[構成]** を選択し、[構成] ページを開きます。
 
-   ![Virtual WAN のダイアグラム](./media/upgrade-virtual-wan/1.png)
-2. Virtual WAN の種類として、ドロップダウンから **Standard** を選択します。
+   ![下部に Standard の種類の Virtual WAN へのアップグレードに関する情報テキスト ボックスが強調表示されている [構成] ページを示すスクリーンショット。](./media/upgrade-virtual-wan/1.png)
+2. Virtual WAN の種類として、ドロップダウンから **[Standard]** を選択します。
 
-   ![Virtual WAN のダイアグラム](./media/upgrade-virtual-wan/2.png)
+   ![[Virtual WAN の種類] ドロップダウン メニューを示すスクリーンショット。](./media/upgrade-virtual-wan/2.png)
 3. Standard Virtual WAN にアップグレードすると、Basic Virtual WAN に戻すことができなくなることに注意してください。 アップグレードする場合は、 **[確認]** を選択します。
 
-   ![Virtual WAN のダイアグラム](./media/upgrade-virtual-wan/4.png)
+   ![[アップグレードの確認] ダイアログを示すスクリーンショット。](./media/upgrade-virtual-wan/4.png)
 4. 変更が保存されると、Virtual WAN ページは次の例のようになります。
 
    ![Virtual WAN のダイアグラム](./media/upgrade-virtual-wan/5.png)

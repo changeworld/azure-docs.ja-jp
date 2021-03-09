@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 7f37a598c31f340e66437a6478512fad1f79121f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 39bdf9cb0c97e19a67b23046c6f06b60daa30147
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285953"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584942"
 ---
 # <a name="evaluate-model-module"></a>Evaluate Model (モデルの評価) モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
+この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
 
 このモジュールを使用して、トレーニング済みモデルの正確性を測定します。 モデルから生成されたスコアを含むデータセットを指定すると、**Evaluate Model (モデルの評価)** モジュールが業界標準の一連の評価メトリックを計算します。
   
@@ -30,17 +30,25 @@ ms.locfileid: "87285953"
 
 
 > [!TIP]
-> モデルの評価に慣れていない場合は、EdX の[機械学習コース](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/)の一部である、Stephen Elston 博士によるビデオ シリーズをお勧めします。 
+> モデルの評価に慣れていない場合は、EdX の[機械学習コース](/archive/blogs/machinelearning/new-edx-course-data-science-machine-learning-essentials)の一部である、Stephen Elston 博士によるビデオ シリーズをお勧めします。 
 
 
 ## <a name="how-to-use-evaluate-model"></a>モデルの評価の使用方法
-1. [Score Model (モデルのスコア付け)](./score-model.md) の**スコア付けされたデータセット**の出力、または [Assign Data to Clusters (クラスターへのデータの割り当て)](./assign-data-to-clusters.md) の結果データセットの出力を **Evaluate Model (モデルの評価)** の左の入力ポートに接続します。 
+1. [Score Model (モデルのスコア付け)](./score-model.md) の **スコア付けされたデータセット** の出力、または [Assign Data to Clusters (クラスターへのデータの割り当て)](./assign-data-to-clusters.md) の結果データセットの出力を **Evaluate Model (モデルの評価)** の左の入力ポートに接続します。 
     > [!NOTE] 
     > "Select Columns in Dataset (データセット内の列の選択)" などのモジュールを使用して入力データセットの一部を選択する場合、AUC、二項分類/異常検出の精度などのメトリックを計算するために、(トレーニングで使用される) 実際のラベル列である "Scored Probabilities (スコア付け確率)" 列と "Scored Labels (スコア付けラベル)" 列が存在することを確認してください。
     > 実際のラベル列である "Scored Labels (スコア付けラベル)" 列は、多クラス分類/回帰のメトリックを計算するために存在します。
     > "Assignments (割り当て)" 列、"DistancesToClusterCenter no.X" 列 (X は、0 から重心数 - 1 までの範囲の重心インデックス) は、クラスターのメトリックを計算するために存在します。
 
-2. [省略可能] [Score Model (モデルのスコア付け)](./score-model.md) の**スコア付けされたデータセット**の出力、または 2 番目のモデルの Assign Data to Clusters (クラスターへのデータの割り当て) の結果データセットの出力を **Evaluate Model (モデルの評価)** の**右**の入力ポートに接続します。 同じデータで 2 つの異なるモデルの結果を簡単に比較できます。 2 つの入力アルゴリズムは、同じアルゴリズムの種類である必要があります。 または、異なるパラメーターを使って同じデータに対する 2 つの異なる実行からのスコアを比較することもできます。
+    > [!IMPORTANT]
+    > + 結果を評価するには、出力データセットに、モデルの評価モジュールの要件を満たす特定のスコア列の名前が含まれている必要があります。
+    > + `Labels` 列は、実際のラベルと見なされます。
+    > + 回帰タスクの場合は、評価するデータセットに、スコア付けされたラベルを表す `Regression Scored Labels` という名前の 1 つの列が含まれている必要があります。
+    > + 二項分類タスクの場合は、評価するデータセットに `Binary Class Scored Labels`、`Binary Class Scored Probabilities` という名前の 2 つの列があります。これらはそれぞれ、スコア付けラベルと確率を表します。
+    > + マルチ分類タスクの場合は、評価するデータセットに、スコア付けされたラベルを表す `Multi Class Scored Labels` という名前の 1 つの列が含まれている必要があります。
+    > アップストリーム モジュールの出力にこれらの列が含まれていない場合は、上記の要件に従って変更する必要があります。
+
+2. [省略可能] [Score Model (モデルのスコア付け)](./score-model.md) の **スコア付けされたデータセット** の出力、または 2 番目のモデルの Assign Data to Clusters (クラスターへのデータの割り当て) の結果データセットの出力を **Evaluate Model (モデルの評価)** の **右** の入力ポートに接続します。 同じデータで 2 つの異なるモデルの結果を簡単に比較できます。 2 つの入力アルゴリズムは、同じアルゴリズムの種類である必要があります。 または、異なるパラメーターを使って同じデータに対する 2 つの異なる実行からのスコアを比較することもできます。
 
     > [!NOTE]
     > アルゴリズムの種類は、"2 クラス分類"、"多クラス分類"、"回帰"、"機械学習アルゴリズム" の "クラスタリング" を指します。 
@@ -82,11 +90,11 @@ ms.locfileid: "87285953"
   
 -   **Precision (精度)** は、すべての肯定的な結果に対する真の結果の割合です。 精度 = TP/(TP + FP)  
   
--   **再現率**は、実際に取得された関連するインスタンスの合計量の割合です。 再現率 = TP/(TP + FN)  
+-   **再現率** は、実際に取得された関連するインスタンスの合計量の割合です。 再現率 = TP/(TP + FN)  
   
 -   **F1 score (F1 スコア)** は、精度と再現率の加重平均として、0 から 1 の範囲で計算されます。理想的な F1 スコアの値は 1 です。  
   
--   **AUC** は、真陽性 を x 軸に、偽陽性を y 軸にプロットした曲線の下の領域を測定します。 このメトリックは、さまざまな種類のモデルを比較できる単一の数値を提供するのに役立ちます。  
+-   **AUC** は、真陽性 を x 軸に、偽陽性を y 軸にプロットした曲線の下の領域を測定します。 このメトリックは、さまざまな種類のモデルを比較できる単一の数値を提供するのに役立ちます。 AUC は、分類しきい値のインバリアントです。 選択された分類しきい値に関係なく、これによってモデルの予測の品質が測定されます。
 
 
 ### <a name="metrics-for-regression-models"></a>回帰モデルのメトリック
@@ -105,7 +113,7 @@ ms.locfileid: "87285953"
   
 
   
-- **Coefficient of determination (決定係数)** (大抵は R<sup>2</sup> と呼ばれます) は、モデルの予測能力を 0 から 1 の値で表します。 ゼロはモデルがランダム (何も説明しない) であることを意味し、1 は完全一致があることを意味します。 ただし、R<sup>2</sup> 値の解釈には注意が必要です。低い値はまったく正常で、高い値は疑わしい場合があります。
+- **Coefficient of determination (決定係数)** (大抵は R <sup>2</sup> と呼ばれます) は、モデルの予測能力を 0 から 1 の値で表します。 ゼロはモデルがランダム (何も説明しない) であることを意味し、1 は完全一致があることを意味します。 ただし、R<sup>2</sup> 値の解釈には注意が必要です。低い値はまったく正常で、高い値は疑わしい場合があります。
 
 ###  <a name="metrics-for-clustering-models"></a>クラスター モデルのメトリック
 
@@ -134,4 +142,4 @@ ms.locfileid: "87285953"
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。

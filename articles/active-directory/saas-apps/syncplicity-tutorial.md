@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.openlocfilehash: da532adfa2d4ab97edb44de9ae49c646ccdff381
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 792a5849c6afcdcbc32dc7de4d0d0dea23180a76
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544895"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517108"
 ---
 # <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と Syncplicity の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88544895"
 * ユーザーが自分の Azure AD アカウントを使用して Syncplicity に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Syncplicity では、**SP** によって開始される SSO がサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Syncplicity では、 **SP** によって開始される SSO がサポートされます。
 
 ## <a name="adding-syncplicity-from-the-gallery"></a>ギャラリーからの Syncplicity の追加
 
@@ -47,7 +47,7 @@ Azure AD への Syncplicity の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Syncplicity**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Syncplicity** 」と入力します。
 1. 結果ウィンドウで **[Syncplicity]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
@@ -158,7 +158,7 @@ Azure AD ユーザーがサインインできるようにするには、ユー�
 
     ![ユーザーの管理](./media/syncplicity-tutorial/ic769764.png "[Manage Users]")
 
-1. プロビジョニングする Azure AD アカウントの**メール アドレス**を入力し、 **[Role]\(ロール\)** として **[User]\(ユーザー\)** を選択して、 **[NEXT]\(次へ\)** をクリックします。
+1. プロビジョニングする Azure AD アカウントの **メール アドレス** を入力し、 **[Role]\(ロール\)** として **[User]\(ユーザー\)** を選択して、 **[NEXT]\(次へ\)** をクリックします。
 
     ![アカウント情報](./media/syncplicity-tutorial/ic769765.png "アカウント情報")
 
@@ -181,12 +181,12 @@ Azure AD ユーザーがサインインできるようにするには、ユー�
 
 ### <a name="test-sso"></a>SSO のテスト
 
-アクセス パネルで [Syncplicity] タイルを選択すると、SSO を設定した Syncplicity に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Syncplicity] タイルを選択すると、SSO を設定した Syncplicity に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

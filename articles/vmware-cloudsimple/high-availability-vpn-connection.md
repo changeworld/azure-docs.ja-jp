@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - オンプレミスから CloudSimple VPN ゲートウェイへの高可用性の構成
 description: 高可用性のために、オンプレミス環境から CloudSimple VPN ゲートウェイへの高可用接続を構成する方法について説明します。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80805aaa172518c40c7ad123ca24361ee0f15e69
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025267"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895701"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>オンプレミスから CloudSimple VPN ゲートウェイへの高可用接続を構成する
 

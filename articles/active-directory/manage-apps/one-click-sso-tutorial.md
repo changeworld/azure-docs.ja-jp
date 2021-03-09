@@ -4,7 +4,7 @@ description: Azure Marketplace のアプリケーションの SSO をワンク�
 services: active-directory
 documentationCenter: na
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.reviewer: kenwith
 ms.assetid: e0416991-4b5d-4b18-89bb-91b6070ed3ba
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c7e72718e13106b9d895921a2335f1525a7b88c
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 50f705e587010d956c29a71127e97dd85cb517ea
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763127"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258254"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>アプリの One Click シングル サインオンの構成
 
@@ -40,7 +40,7 @@ One Click SSO 機能は、SAML プロトコルをサポートする Azure Market
 ## <a name="prerequisites"></a>前提条件
 
 - SSO を構成するアプリケーションのアクティブなサブスクリプション。 また、管理者の資格情報も必要です。
-- ブラウザーにインストールされた、Microsoft の **My Apps Secure Sign-in 拡張機能**。 詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)」を参照してください。
+- ブラウザーにインストールされた、Microsoft の **My Apps Secure Sign-in 拡張機能**。 詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
 
 ## <a name="one-click-sso-configuration-steps"></a>One Click SSO の構成手順
 
@@ -55,7 +55,7 @@ One Click SSO 機能は、SAML プロトコルをサポートする Azure Market
     > [!NOTE]
     > アプリケーションに構成する必要があるカスタム要求がある場合は、One Click SSO を実行する前にそれらを処理します。
 
-5. Azure Marketplace アプリケーションで One Click SSO 機能を利用できる場合は、次の画面が表示されます。 場合によっては、 **[拡張機能のインストール]** を選択して、**My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+5. Azure Marketplace アプリケーションで One Click SSO 機能を利用できる場合は、次の画面が表示されます。 場合によっては、 **[拡張機能のインストール]** を選択して、**My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
    ![My Apps Secure Sign-in ブラウザー拡張機能をインストールする](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
 
@@ -84,6 +84,5 @@ One Click SSO 機能は、SAML プロトコルをサポートする Azure Market
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
-* [My Apps Secure Sign-in ブラウザー拡張機能の概要](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)
- 
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)
+* [My Apps Secure Sign-in ブラウザー拡張機能の概要](../user-help/my-apps-portal-end-user-access.md)

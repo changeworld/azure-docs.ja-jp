@@ -14,12 +14,12 @@ ms.date: 01/02/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95b0b026b75b9b77c94451245ac4f18d487fc2e4
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: bb102c23d80095b8eb79fc25d1c1fd9d7f374fce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783520"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91529696"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Privileged Identity Management 向けの Microsoft Graph API (プレビュー)
 
@@ -51,7 +51,7 @@ Privileged Identity Management 向けの Microsoft Graph API シリーズを呼�
 
 1. **[アクセス許可の変更]** をクリックします。
 
-    ![Graph エクスプローラー - アクセス許可の変更](./media/pim-apis/graph-explorer.png)
+    ![[アクセス許可の変更] 操作が選択されている [Graph エクスプローラー] ページを示すスクリーンショット。](./media/pim-apis/graph-explorer.png)
 
 1. 含めたいアクセス許可の横にあるチェック ボックスをオンにします。 `PrivilegedAccess.ReadWrite.AzureAD` は、Graph エクスプローラーではまだ使用できません。
 

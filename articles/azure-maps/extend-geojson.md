@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: e6cfbef3751a7b4256f689af0e5b3524ae6fa878
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 87a5dec2582796c6703bfb37b76e26e53a1192c0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037458"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895785"
 ---
 # <a name="extended-geojson-geometries"></a>拡張された GeoJSON ジオメトリ
 
@@ -29,7 +29,7 @@ Azure Maps は、地理機能内で、または地理機能を併用して検索
 * ポイント
 * 多角形
 
-一部の Azure Maps API は、[GeoJSON spec][1]の一部ではないジオメトリを受け入れます。たとえば、[Geometry API 内の検索](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)では、円と多角形が受け入れられます。
+一部の Azure Maps API は、[GeoJSON spec][1]の一部ではないジオメトリを受け入れます。たとえば、[Geometry API 内の検索](/rest/api/maps/search/postsearchinsidegeometry)では、円と多角形が受け入れられます。
 
 この記事では、特定のジオメトリを表すために、Azure Maps が [GeoJSON 仕様][1]をどのように拡張するかについて詳細に説明します。
 
@@ -37,7 +37,7 @@ Azure Maps は、地理機能内で、または地理機能を併用して検索
 
 `Circle` ジオメトリは、[GeoJSON 仕様][1]ではサポートされていません。円を表すには、`GeoJSON Point Feature` オブジェクトが使用されます。
 
-`GeoJSON Feature`オブジェクトを使用して表される`Circle`ジオメトリには、次の座標とプロパティが含まれている__必要があります__。
+`GeoJSON Feature`オブジェクトを使用して表される`Circle`ジオメトリには、次の座標とプロパティが含まれている __必要があります__ 。
 
 - Center
 
@@ -45,7 +45,7 @@ Azure Maps は、地理機能内で、または地理機能を併用して検索
 
 - Radius
 
-    円の `radius` は `GeoJSON Feature` のプロパティを使用して表します。 半径値は、_メートル_ 単位で、`double` 型である必要があります。
+    円の `radius` は `GeoJSON Feature` のプロパティを使用して表します。 半径値は、 _メートル_ 単位で、`double` 型である必要があります。
 
 - SubType
 
@@ -73,7 +73,7 @@ Azure Maps は、地理機能内で、または地理機能を併用して検索
 
 `Rectangle` ジオメトリは、[GeoJSON 仕様][1]ではサポートされていません。四角形を表すには、`GeoJSON Polygon Feature` オブジェクトが使用されます。 四角形の拡張機能は、主に Web SDK の描画ツール モジュールによって使用されます。
 
-`GeoJSON Polygon Feature`オブジェクトを使用して表される`Rectangle`ジオメトリには、次の座標とプロパティが含まれている__必要があります__。
+`GeoJSON Polygon Feature`オブジェクトを使用して表される`Rectangle`ジオメトリには、次の座標とプロパティが含まれている __必要があります__ 。
 
 - Corners
 
@@ -81,7 +81,7 @@ Azure Maps は、地理機能内で、または地理機能を併用して検索
 
 - SubType
 
-    四角形ジオメトリには、`subType` プロパティも含める必要があります。 このプロパティは`GeoJSON Feature`のプロパティの一部である必要があり、その値は_四角形_である必要があります。
+    四角形ジオメトリには、`subType` プロパティも含める必要があります。 このプロパティは`GeoJSON Feature`のプロパティの一部である必要があり、その値は _四角形_ である必要があります。
 
 ### <a name="example"></a>例
 

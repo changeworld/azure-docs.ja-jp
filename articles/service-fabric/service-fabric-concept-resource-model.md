@@ -3,13 +3,12 @@ title: Azure Service Fabric アプリケーション リソース モデル
 description: この記事では、Azure Resource Manager を使用した Azure Service Fabric アプリケーションの管理の概要を説明します。
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.custom: sfrev
-ms.openlocfilehash: 7ad0d4f6d92ba8d85383df281bd14681f43bb6d4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0019f154f301d2b688d4c16c9adb36ec386adef2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258739"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790725"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric アプリケーション リソース モデル
 
@@ -55,7 +54,7 @@ Resource Manager テンプレートからアプリケーションをデプロイ
 クラスター内のリソースは、パブリック アクセス レベルを **[プライベート]** に設定することで、セキュリティで保護することができます。 アクセス権は、次の複数の方法で付与できます。
 
 * [Azure Active Directory](../storage/common/storage-auth-aad-app.md) を使用して BLOB とキューへのアクセスを承認する。
-* [Azure portal で RBAC](../storage/common/storage-auth-aad-rbac-portal.md) を使用して Azure BLOB とキューのデータへのアクセスを付与する。
+* [Azure portal で Azure RBAC](../storage/common/storage-auth-aad-rbac-portal.md) を使用して Azure BLOB とキューのデータへのアクセスを付与する。
 * [Shared Access Signature](/rest/api/storageservices/delegate-access-with-shared-access-signature) を使用してアクセスを委任する。
 
 次のスクリーンショットの例では、BLOB の匿名読み取りアクセスを使用しています。
@@ -90,6 +89,7 @@ Resource Manager テンプレートからアプリケーションをデプロイ
 > *UserApp.Parameters.json* ファイルを、クラスターの名前で更新する必要があります。
 >
 >
+
 
 | パラメーター              | 説明                                 | 例                                                      | 説明                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -138,6 +138,11 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 ## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>Resource Manager を使用した Service Fabric アプリケーションのアップグレード
 
+
+> [!IMPORTANT]
+> ARM JSON 定義を使用してデプロイされているサービスはすべて、対応する ApplicationManifest.xml ファイルの DefaultServices セクションから削除する必要があります。
+
+
 次のいずれかの理由により、Service Fabric クラスターに既にデプロイされているアプリケーションをアップグレードする場合があります。
 
 * 新しいサービスがアプリケーションに追加されます。 サービス定義は、サービスがアプリケーションに追加されるときに *service-manifest.xml* と *application-manifest.xml* ファイルに追加する必要があります。 アプリケーションの新しいバージョンを反映するために、[UserApp.parameters.json](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json) でアプリケーションの種類のバージョンを 1.0.0 から 1.0.1 に変更する必要もあります。
@@ -166,13 +171,13 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 Resource Manager でアプリケーション リソース モデルを使用してデプロイされたアプリケーションを削除するには、次のようにします。
 
-1. [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-2.5.0) コマンドレットを使用して、アプリケーションのリソース ID を取得します。
+1. [Get-AzResource](/powershell/module/az.resources/get-azresource) コマンドレットを使用して、アプリケーションのリソース ID を取得します。
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-1. [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) コマンドレットを使用して、アプリケーション リソースを削除します。
+1. [Remove-AzResource](/powershell/module/az.resources/remove-azresource) コマンドレットを使用して、アプリケーション リソースを削除します。
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]

@@ -1,29 +1,26 @@
 ---
-title: オンプレミスのリソースへのパスワードなしのセキュリティ キー サインイン (プレビュー) - Azure Active Directory
-description: Azure Active Directory を使用してオンプレミスのリソースへのパスワードなしのセキュリティ キー サインイン (プレビュー) を有効にする方法について説明します
+title: オンプレミスのリソースへのパスワードなしのセキュリティ キー サインイン - Azure Active Directory
+description: Azure Active Directory を使用してオンプレミスのリソースへのパスワードなしのセキュリティ キー サインインを有効にする方法について説明します
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/09/2020
-ms.author: iainfou
-author: iainfoulds
+ms.date: 02/22/2021
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f20da2d2ecb4426c0deb1c01591ead5933090f6
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: db1b559bb4f6a1f8866116c287df5b814500210b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716998"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647474"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Azure Active Directory を使用してオンプレミスのリソースへのパスワードなしのセキュリティ キー サインイン (プレビュー) を有効にする
+# <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Azure Active Directory を使用してオンプレミスのリソースへのパスワードなしのセキュリティ キー サインインを有効にする 
 
-このドキュメントでは、**Azure AD 参加済み**と**ハイブリッド Azure AD 参加済み**の両方の Windows 10 デバイスがある環境での、オンプレミスのリソースに対するパスワードレス認証の有効化に注目します。 この機能により、Microsoft と互換性のあるセキュリティ キーを使用した、オンプレミスのリソースへのシームレスなシングル サインオン (SSO) が可能になります。
-
-> [!NOTE]
-> FIDO2 セキュリティ キーは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+このドキュメントでは、**Azure AD 参加済み** と **ハイブリッド Azure AD 参加済み** の両方の Windows 10 デバイスがある環境での、オンプレミスのリソースに対するパスワードレス認証の有効化に注目します。 この機能により、Microsoft と互換性のあるセキュリティ キーを使用した、オンプレミスのリソースへのシームレスなシングル サインオン (SSO) が可能になります。
 
 ## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>FIDO2 キーを使用したオンプレミスのリソースへの SSO
 
@@ -42,11 +39,11 @@ Azure AD Kerberos サーバー オブジェクトがオンプレミスの Active
 
 ## <a name="requirements"></a>必要条件
 
-組織では、この記事の手順を実行する前に、[Windows 10 デバイスへのパスワードなしのセキュリティ キー サインインを有効にする (プレビュー)](howto-authentication-passwordless-security-key.md)に関する記事の手順を完了する必要があります。
+組織では、この記事の手順を実行する前に、[Windows 10 デバイスへのパスワードなしのセキュリティ キー サインインを有効にする](howto-authentication-passwordless-security-key.md)に関する記事の手順を完了する必要があります。
 
 また、組織では、以下のソフトウェア要件を満たしている必要があります。
 
-- デバイスで Windows 10 Insider Build 18945 以降を実行している必要があります。
+- デバイスでは Windows 10 バージョン 2004 以降を実行している必要があります。
 - [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) のバージョンは 1.4.32.0 以降である必要があります。
   - 使用可能な Azure AD ハイブリッド認証オプションの詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](../hybrid/choose-ad-authn.md)」および「[Azure AD Connect で使用するインストールの種類の選択](../hybrid/how-to-connect-install-select-installation.md)」を参照します。
 - Windows Server ドメイン コントローラーには、次の修正プログラムがインストールされている必要があります。
@@ -57,7 +54,7 @@ Azure AD Kerberos サーバー オブジェクトがオンプレミスの Active
 
 次の両方のシナリオで、シングル サインオン (SSO) がサポートされています。
 
-- Office 365 などのクラウド リソースとその他の SAML 対応アプリケーション。
+- Microsoft 365 およびその他の SAML 対応アプリケーションなどのクラウド リソース。
 - オンプレミスのリソースと、Web サイトに対する Windows 統合認証。 リソースには、IIS 認証を必要とする Web サイトおよび SharePoint サイトや、NTLM 認証を使用するリソースを含めることができます。
 
 ### <a name="unsupported-scenarios"></a>サポートされていないシナリオ
@@ -156,13 +153,13 @@ Azure AD ユーザーを含む組織内の各ドメインおよびフォレス�
 
 ## <a name="troubleshooting-and-feedback"></a>トラブルシューティングとフィードバック
 
-この機能のプレビュー中に、フィードバックを共有したい場合、または問題が発生した場合は、次の手順を使用して Windows フィードバック ハブ アプリ経由で共有してください。
+この機能についてフィードバックを共有したい場合、または問題が発生した場合は、次の手順を使用して Windows フィードバック Hub アプリ経由で共有してください。
 
-1. **フィードバック ハブ**を起動し、サインインしていることを確認します。
+1. **フィードバック ハブ** を起動し、サインインしていることを確認します。
 1. 次の分類でフィードバックを送信します。
    - カテゴリ:セキュリティとプライバシー
    - サブカテゴリ: FIDO
-1. ログをキャプチャするには、**問題を再現する**ためのオプションを使用します
+1. ログをキャプチャするには、 **[Recreate my Problem]\(問題の再現\)** オプションを使用します
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

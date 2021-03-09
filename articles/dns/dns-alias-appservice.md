@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 08/10/2019
 ms.author: rohink
-ms.openlocfilehash: e7c4db7a2fc3ba931415e3b167f7fe72ee2b3980
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72adb2732eb0832589cbc25fb7e4288eb1899214
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710543"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954513"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>ゾーンの頂点で負荷分散された Azure Web アプリをホストする
 
@@ -54,7 +54,7 @@ App Service プランごとに 1 つずつ、2 つの Web アプリを作成し�
 
 1. Azure portal ページの左上隅にある **[リソースの作成]** を選択します。
 2. 検索バーに「**Web app**」と入力し、Enter キーを押します。
-3. **Web アプリ**を選択します。
+3. **Web アプリ** を選択します。
 4. **［作成］** を選択します
 5. 既定値のままにし、次の表を使用して 2 つの Web アプリを構成します。
 
@@ -158,6 +158,6 @@ Web アプリにカスタム ホスト名を追加すると、ドメインを検
 
 - [チュートリアル:Azure パブリック IP アドレスを参照するエイリアス レコードを構成する](tutorial-alias-pip.md)
 - [チュートリアル:Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードを構成する](tutorial-alias-tm.md)
-- [DNS に関する FAQ](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
+- [DNS に関する FAQ](./dns-faq.md#alias-records)
 
 アクティブな DNS 名を移行する方法については、「[Azure App Service へのアクティブな DNS 名の移行](../app-service/manage-custom-dns-migrate-domain.md)」を参照してください。

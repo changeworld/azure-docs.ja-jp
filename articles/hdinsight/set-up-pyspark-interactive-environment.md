@@ -2,19 +2,16 @@
 title: Azure HDInsight Tools を利用した PySpark 対話型環境
 description: Azure HDInsight Tools for Visual Studio Code を使用して、クエリとスクリプトを作成および送信する方法について説明します。
 keywords: VScode,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,インタラクティブ Hive,インタラクティブ クエリ
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: 14f0c7177953e43b0c58b4f5432d0c08c5f03f45
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 337a9f3f2ea25e5a4d4fa4204a0f3fa4dcc9369b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876616"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940637"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code 用の PySpark 対話型環境を設定する
 
@@ -26,9 +23,7 @@ ms.locfileid: "87876616"
 
    * [https://www.python.org/downloads/](https://www.python.org/downloads/) から Python をインストールします。 
    * pip を [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) からインストールします (Python インストールからインストールされてない場合)。
-   * 次のコマンドを使用して、Python と pip が正常にインストールされていることを確認します。 (省略可能)
-
-        ![Python pip バージョンの確認コマンド](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
+   * 必要に応じてコマンド `python --version` および `pip --version` をそれぞれ使用して、Python と pip が正常にインストールされていることを確認します。 
 
      > [!NOTE]
      > Python は、macOS の既定のバージョンを使用する代わりに、手動でインストールすることをお勧めします。

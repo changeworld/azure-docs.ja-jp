@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 06/05/2020
 ms.author: alkohli
 ms.openlocfilehash: 5aaf0ce747b14b2fa9f2fcd9a65b774aa7d2db3b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87102801"
 ---
 選択したストレージ アカウントに基づいて、Data Box では最大で次のものが作成されます。

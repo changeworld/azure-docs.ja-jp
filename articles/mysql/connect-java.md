@@ -1,31 +1,31 @@
 ---
-title: Azure Database for MySQL で Java と JDBC を使用する
+title: 'クイックスタート: Azure Database for MySQL で Java と JDBC を使用する'
 description: Azure Database for MySQL データベースで Java と JDBC を使用する方法について説明します。
 author: jdubois
 ms.author: judubois
 ms.service: mysql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: a54e950286a37c207d902090f015b3732e0ff10b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 457f7e07391c647d2ab0e7d78197086f6f5e2cf7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88517584"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187784"
 ---
-# <a name="use-java-and-jdbc-with-azure-database-for-mysql"></a>Azure Database for MySQL で Java と JDBC を使用する
+# <a name="quickstart-use-java-and-jdbc-with-azure-database-for-mysql"></a>クイックスタート: Azure Database for MySQL で Java と JDBC を使用する
 
-このトピックでは、Java と [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) を使って [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) に情報を格納および取得するサンプル アプリケーションを作成する方法を説明します。
+このトピックでは、Java と [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) を使って [Azure Database for MySQL](./index.yml) に情報を格納および取得するサンプル アプリケーションを作成する方法を説明します。
 
 JDBC は、従来のリレーショナル データベースに接続するための標準の Java API です。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure アカウント。 所有していない場合は、[無料試用版を入手](https://azure.microsoft.com/free/)してください。
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) または [Azure CLI](/cli/azure/install-azure-cli)。 Azure Cloud Shell をお勧めします。これにより、自動的にログインし、必要なすべてのツールにアクセスできるようになります。
-- サポートされている [Java 開発キット](https://aka.ms/azure-jdks)、バージョン 8 (Azure Cloud Shell に含まれます)。
+- [Azure Cloud Shell](../cloud-shell/quickstart.md) または [Azure CLI](/cli/azure/install-azure-cli)。 Azure Cloud Shell をお勧めします。これにより、自動的にログインし、必要なすべてのツールにアクセスできるようになります。
+- サポートされている [Java 開発キット](/azure/developer/java/fundamentals/java-jdk-long-term-support)、バージョン 8 (Azure Cloud Shell に含まれます)。
 - [Apache Maven](https://maven.apache.org/) ビルド ツール。
 
 ## <a name="prepare-the-working-environment"></a>作業環境を準備する
@@ -68,7 +68,7 @@ az group create \
 最初に作成するのは、マネージド MySQL サーバーです。
 
 > [!NOTE]
-> MySQL サーバーの作成に関する詳細については、「[Azure portal を使用した Azure Database for MySQL サーバーの作成](/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal)」を参照してください。
+> MySQL サーバーの作成に関する詳細については、「[Azure portal を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-portal.md)」を参照してください。
 
 [Azure Cloud Shell](https://shell.azure.com/) で次のスクリプトを実行します。
 
@@ -493,7 +493,7 @@ deleteData(todo, connection);
 [INFO   ] Closing database connection 
 ```
 
-## <a name="conclusion-and-resources-clean-up"></a>結論とリソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 お疲れさまでした。 JDBC を使用して Azure Database for MySQL にデータを格納および取得する Java アプリケーションを作成しました。
 

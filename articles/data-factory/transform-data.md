@@ -1,21 +1,18 @@
 ---
 title: データを変換する
-description: Azure Data Factory で Hadoop、Machine Learning、または Azure Data Lake Analytics を使用してデータを変換または処理する方法について説明します。
-services: data-factory
+description: Azure Data Factory でのデータの変換またはデータの処理には、Azure Data Factory で Hadoop、Azure Machine Learning Studio (クラシック)、または Azure Data Lake Analytics を使用します。
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: fdb10894ab9d1c6b805b8b43c90e54126d67b8dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a1eb593e9f9f15f88aefb2fe06706153a4b74a4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606625"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361402"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory でデータを変換する
 
@@ -26,7 +23,7 @@ ms.locfileid: "81606625"
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
 > * [HDInsight Streaming](transform-data-using-hadoop-streaming.md)
 > * [HDInsight Spark](transform-data-using-spark.md)
-> * [Machine Learning](transform-data-using-machine-learning.md) 
+> * [Azure Machine Learning Studio (クラシック)](transform-data-using-machine-learning.md) 
 > * [ストアド プロシージャ](transform-data-using-stored-procedure.md)
 > * [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md)
 > * [Databricks Notebook](transform-data-databricks-notebook.md)
@@ -47,9 +44,9 @@ Data Factory は、次のデータ変換アクティビティをサポートし�
 
 マッピング データ フローは、Azure Data Factory における視覚的に設計されたデータ変換です。 データ フローを使用すると、データ エンジニアは、コードを記述することなくグラフィカルなデータ変換ロジックを開発できます。 生成されたデータ フローは、スケールアウトされた Spark クラスターを使用する Azure Data Factory パイプライン内のアクティビティとして実行されます。 データ フロー アクティビティは、既存の Data Factory のスケジュール設定、制御、フロー、および監視機能を通して運用可能にすることができます。 詳細については、[マッピング データ フロー](concepts-data-flow-overview.md)に関するページを参照してください。
 
-### <a name="wrangling-data-flows"></a>ラングリング データ フロー
+### <a name="data-wrangling"></a>データ ラングリング
 
-Azure Data Factory のラングリング データ フローを使用すると、コードなしのデータ準備をクラウド規模で繰り返し実行できます。 ラングリング データ フローは [Power Query Online](https://docs.microsoft.com/power-query/) と統合されており、Spark 実行を通して Power Query M 関数をデータ ラングリングに対してクラウド規模で使用可能にします。 詳細については、[ラングリング データ フロー](wrangling-data-flow-overview.md)に関するページを参照してください。
+Azure Data Factory の Power Query を使用すると、クラウド規模のデータ ラングリングを実行できます。これにより、コード不要のデータ準備をクラウド規模で反復的に実行できます。 データ ラングリングは [Power Query Online](/power-query/) と統合されており、Spark の実行によりクラウド規模で Power Query M 関数をデータ ラングリングに使用できるようにします。 詳細については、[ADF でのデータ ラングリング](wrangling-overview.md)に関するページを参照してください。
 
 ## <a name="external-transformations"></a>外部での変換
 
@@ -70,15 +67,15 @@ Data Factory パイプラインの HDInsight Streaming アクティビティは�
 ### <a name="hdinsight-spark-activity"></a>HDInsight Spark アクティビティ
 Data Factory パイプラインの HDInsight Spark アクティビティでは、独自の HDInsight クラスターで Spark プログラムを実行します。 詳細については、「[Data Factory から Spark プログラムを起動する](transform-data-using-spark.md)」を参照してください。 
 
-### <a name="machine-learning-activities"></a>Machine Learning アクティビティ
-Azure Data Factory を使用すると、公開された Azure Machine Learning Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプラインで[バッチ実行アクティビティ](transform-data-using-machine-learning.md)を使用すると、Machine Learning Web サービスを呼び出して、データの予測をバッチで行うことができます。
+### <a name="azure-machine-learning-studio-classic-activities"></a>Azure Machine Learning スタジオ (クラシック) のアクティビティ
+Azure Data Factory を使用すると、公開された Azure Machine Learning Studio (classic) Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプライン内で[バッチ実行アクティビティ](transform-data-using-machine-learning.md)を使用すると、スタジオ (クラシック) Web サービスを呼び出して、データの予測を一括で行うことができます。
 
-時間の経過と共に、Machine Learning スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 再トレーニングが完了したら、再トレーニング済みの Machine Learning モデルでスコア付け Web サービスを更新する必要があります。 [更新リソース アクティビティ](update-machine-learning-models.md)を使用して、新しくトレーニングを行ったモデルで Web サービスを更新します。  
+時間の経過と共に、スタジオ (クラシック) スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 再トレーニングが完了したら、再トレーニング済みの機械学習モデルでスコア付け Web サービスを更新する必要があります。 [更新リソース アクティビティ](update-machine-learning-models.md)を使用して、新しくトレーニングを行ったモデルで Web サービスを更新します。  
 
-これらの Machine Learning アクティビティの詳細については、 [Azure Machine Learning アクティビティの使用](transform-data-using-machine-learning.md) に関する記事を参照してください。 
+これらのスタジオ (クラシック) アクティビティの詳細については、[Azure Machine Learning Studio (クラシック) アクティビティの使用](transform-data-using-machine-learning.md)に関するページを参照してください。 
 
 ### <a name="stored-procedure-activity"></a>ストアド プロシージャ アクティビティ
-SQL Server ストアド プロシージャ アクティビティを Data Factory のパイプラインで使用して、次のデータ ストアのいずれかでストアド プロシージャを呼び出すことができます: 社内または Azure VM 内のAzure SQL Database、Azure SQL Data Warehouse、SQL Server Database。 詳細については、[ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)に関する記事をご覧ください。  
+SQL Server ストアド プロシージャ アクティビティを Data Factory のパイプライン内で使用して、次のいずれかのデータ ストア内のストアド プロシージャを呼び出すことができます。企業または Azure VM 内の Azure SQL Database、Azure Synapse Analytics、SQL Server データベース。 詳細については、[ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)に関する記事をご覧ください。  
 
 ### <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL アクティビティ
 Data Lake Analytics U-SQL アクティビティは、Azure Data Lake Analytics クラスターで U-SQL スクリプトを実行します。 詳細については、[Data Analytics U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)に関する記事をご覧ください。 

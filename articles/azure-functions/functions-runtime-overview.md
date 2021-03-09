@@ -5,12 +5,12 @@ author: apwestgarth
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: ab04aa4ca7f54e8de120d078a313c3096a350aa5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61e3b82e497afcdc8239a9f4fda3e4f739166a1f
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74226625"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108441"
 ---
 # <a name="azure-functions-runtime-overview-preview"></a>Azure Functions Runtime の概要 (プレビュー)
 
@@ -45,7 +45,7 @@ Azure Functions ランタイムを使用するには、Windows Server 2016 ま�
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure Functions ランタイム プレビュー](https://aka.ms/azafrdoc)をインストールする
+[Azure Functions ランタイム プレビュー](./functions-runtime-install.md)をインストールする
 
 <!--Image references-->
 [1]: ./media/functions-runtime-overview/AzureFunctionsRuntime_Portal.png

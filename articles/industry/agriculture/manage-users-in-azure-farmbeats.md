@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
-ms.openlocfilehash: 6ccc29422c6abf1120d13c05d10125efd0871ca6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2769e97dde7f0b99bd29da9c6eb65954bc84dd2
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502070"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677558"
 ---
 # <a name="manage-users"></a>ユーザーの管理
 
@@ -30,8 +30,8 @@ Azure FarmBeats では、認証、アクセス制御、およびロールのた�
 
 Azure FarmBeats では、2 種類のユーザー ロールがサポートされています。
 
- - **管理者**: Azure FarmBeats データ ハブ API への完全なアクセス権。 このロールのユーザーは、すべての Azure FarmBeats データ ハブ オブジェクトにクエリを実行したり、すべての操作を FarmBeats Accelerator から実行したりできます。
- - **読み取り専用**: FarmBeats データ ハブ API への読み取り専用アクセス。 ユーザーは、データ ハブ API、Accelerator ダッシュボード、およびマップを表示できます。 読み取り専用アクセス権を持つユーザーは、マップの生成、デバイスの関連付け、ファームの作成などの操作を実行できません。
+ - **管理者** : Azure FarmBeats データ ハブ API への完全なアクセス権。 このロールのユーザーは、すべての Azure FarmBeats データ ハブ オブジェクトにクエリを実行したり、すべての操作を FarmBeats Accelerator から実行したりできます。
+ - **読み取り専用** : FarmBeats データ ハブ API への読み取り専用アクセス。 ユーザーは、データ ハブ API、Accelerator ダッシュボード、およびマップを表示できます。 読み取り専用アクセス権を持つユーザーは、マップの生成、デバイスの関連付け、ファームの作成などの操作を実行できません。
 
 ## <a name="add-users-to-azure-farmbeats"></a>Azure FarmBeats にユーザーを追加する
 
@@ -80,7 +80,7 @@ Azure AD にユーザーを追加するには、次の手順に従います。
 5. 新しいユーザーの名前を選択し、そのユーザーの必須フィールドに入力します。
 6. **［作成］** を選択します
 
-Azure AD ユーザーの管理の詳細については、[Azure AD でのユーザーの追加または削除](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory/)に関するページを参照してください。
+Azure AD ユーザーの管理の詳細については、[Azure AD でのユーザーの追加または削除](../../active-directory/fundamentals/add-users-azure-active-directory.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

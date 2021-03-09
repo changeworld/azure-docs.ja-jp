@@ -2,13 +2,13 @@
 title: Advisor によるアプリケーションの信頼性の向上
 description: Azure Advisor を使用すると、Bus Critical な Azure デプロイの信頼性を確認し、向上させることができます。
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 0d96974e53f24d5a01eeee8b08eee578177a9ad2
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.date: 09/27/2020
+ms.openlocfilehash: c96b47f1ee145129f4c14c6646f93abeb8a5aac9
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258496"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579971"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Azure Advisor を使用してアプリケーションの信頼性を向上させる
 
@@ -44,7 +44,7 @@ Traffic Manager プロファイルが地理的なルーティング用に構成�
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Azure ストレージ アカウントでデータの論理的な削除を使用し、データを誤って上書きまたは削除した後にデータを保存して復旧する
 
-ストレージ アカウントで[論理的な削除](../storage/blobs/soft-delete-overview.md)を有効にすると、削除された BLOB は完全には削除されずに、論理的に削除された状態に切り替わります。 データを上書きした場合、上書きされたデータの状態を保存するために、論理的に削除されたスナップショットが生成されます。 論理的な削除を使用すると、不注意な削除や上書きから回復できます。 Advisor によって、論理的な削除が有効になっていない Azure ストレージ アカウントが特定され、有効にするように提案が行われます。
+ストレージ アカウントで[論理的な削除](../storage/blobs/soft-delete-blob-overview.md)を有効にすると、削除された BLOB は完全には削除されずに、論理的に削除された状態に切り替わります。 データを上書きした場合、上書きされたデータの状態を保存するために、論理的に削除されたスナップショットが生成されます。 論理的な削除を使用すると、不注意な削除や上書きから回復できます。 Advisor によって、論理的な削除が有効になっていない Azure ストレージ アカウントが特定され、有効にするように提案が行われます。
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>接続の回復性を高めるために VPN ゲートウェイをアクティブ/アクティブに構成する
 
@@ -68,7 +68,7 @@ Azure Advisor では、Basic SKU を使用するすべての VPN ゲートウェ
 
 ## <a name="ensure-availability-set-fault-tolerance-temporarily-disabled"></a>可用性セットのフォールト トレランスを確保する (一時的に無効)
 
-アプリケーションに冗長性を持たすために、1 つの可用性セット内に 2 つ以上の仮想マシンをグループ化することをお勧めします。 Advisor は、1 台の仮想マシンのみを含む可用性セットを識別し、そのセットにさらに仮想マシンを追加することを推奨します。 このような構成により、計画済みまたは計画外のメンテナンスにおいて、少なくとも 1 台の仮想マシンが利用可能となり、Azure 仮想マシンの SLA が満たされます。 仮想マシンを作成するか、既存の仮想マシンを可用性セットに追加するかを選択できます。  
+アプリケーションに冗長性を持たすために、1 つの可用性セット内に 2 つ以上の仮想マシンをグループ化することをお勧めします。 Advisor は、1 台の仮想マシンのみを含む可用性セットを識別し、そのセットにさらに仮想マシンを追加することを推奨します。  このような構成により、計画済みまたは計画外のメンテナンスにおいて、少なくとも 1 台の仮想マシンが利用可能となり、Azure 仮想マシンの SLA が満たされます。  仮想マシンを作成するか、既存の仮想マシンを可用性セットに追加するかを選択できます。  
 
 ## <a name="use-managed-disks-to-improve-data-reliability-temporarily-disabled"></a>データの信頼性の向上にマネージド ディスクを使用する (一時的に無効)
 
@@ -76,27 +76,27 @@ Azure Advisor では、Basic SKU を使用するすべての VPN ゲートウェ
 
 ## <a name="repair-invalid-log-alert-rules"></a>無効なログ アラート ルールを修復する
 
-Azure Advisor は、条件セクションに無効なクエリが指定された警告ルールを検出します。 Azure Monitor でログ警告ルールを作成し、それらを使用して、指定された間隔で分析クエリを実行できます。 クエリの結果によって、アラートをトリガーする必要があるかどうかが決定します。 分析クエリは、参照されるリソース、テーブル、またはコマンドの変更のために、時間の経過と共に無効になることがあります。 Advisor は、警告ルールが自動的に無効になることを防止し、Azure でのリソースの監視範囲を保証するために、警告ルール内のクエリを修正することを推奨します。 [警告ルールのトラブルシューティングの詳細を確認してください。](https://aka.ms/aa_logalerts_queryrepair)
+Azure Advisor は、条件セクションに無効なクエリが指定されたログ アラート ルールを検出します。 Azure Monitor のログ アラート ルールでは、指定された頻度でクエリが実行され、その結果に基づいてアラートが発信されます。 クエリは、参照されるリソース、テーブル、またはコマンドの変更のために、時間の経過と共に無効になることがあります。 Advisor では、ルールが自動的に無効にならないようにすると共に、監視対象が確実にカバーされるよう、アラート クエリに対する修正が推奨されます。 詳細については、[アラート ルールのトラブルシューティング](../azure-monitor/alerts/alerts-troubleshoot-log.md#query-used-in-a-log-alert-isnt-valid)に関する記事をご覧ください
 
 ## <a name="configure-consistent-indexing-mode-on-your-azure-cosmos-db-collection"></a>Azure Cosmos DB コレクションで同期 (Consistent) インデックス モードを構成する
 
-Azure Cosmos DB コンテナーを非同期 (Lazy) インデックス作成モードで構成すると、クエリの結果の鮮度に影響を与える場合があります。 Advisor は、この方法で構成されたコンテナーを検出し、同期 (Consistent) モードに切り替えることを推奨します。 [Azure Cosmos DB でのインデックス作成ポリシー](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)の詳細を確認してください。
+Azure Cosmos DB コンテナーを非同期 (Lazy) インデックス作成モードで構成すると、クエリの結果の鮮度に影響を与える場合があります。 Advisor は、この方法で構成されたコンテナーを検出し、同期 (Consistent) モードに切り替えることを推奨します。 [Azure Cosmos DB でのインデックス作成ポリシー](../cosmos-db/how-to-manage-indexing-policy.md)の詳細を確認してください。
 
 ## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>パーティション キーを使用して Azure Cosmos DB コンテナーを構成する
 
-Azure Advisor は、プロビジョニングされたストレージ クォータに近づいている Azure Cosmos DB のパーティション分割されていないコレクションを識別します。 サービスによって自動的にスケール アウトできるように、これらのコレクションをパーティション キーが定義された新しいコレクションに移行するように推奨されます。 [パーティション キーの選択](https://aka.ms/cosmosdb/choose-partitionkey)の詳細を確認してください。
+Azure Advisor は、プロビジョニングされたストレージ クォータに近づいている Azure Cosmos DB のパーティション分割されていないコレクションを識別します。 サービスによって自動的にスケール アウトできるように、これらのコレクションをパーティション キーが定義された新しいコレクションに移行するように推奨されます。 [パーティション キーの選択](../cosmos-db/partitioning-overview.md)の詳細を確認してください。
 
 ## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>Azure Cosmos DB .NET SDK を NuGet からの最新バージョンにアップグレードする
 
-Azure Advisor は、古いバージョンの .NET SDK を使用している Azure Cosmos DB アカウントを識別します。 最新の修正、パフォーマンスの向上、機能を入手するため、NuGet から最新バージョンにアップグレードすることが推奨されます。 [Azure Cosmos DB の .NET SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet) の詳細を確認してください。
+Azure Advisor は、古いバージョンの .NET SDK を使用している Azure Cosmos DB アカウントを識別します。 最新の修正、パフォーマンスの向上、機能を入手するため、NuGet から最新バージョンにアップグレードすることが推奨されます。 [Azure Cosmos DB の .NET SDK](../cosmos-db/sql-api-sdk-dotnet-standard.md) の詳細を確認してください。
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Azure Cosmos DB Java SDK を Maven からの最新バージョンにアップグレードする
 
-Azure Advisor は、古いバージョンの Java SDK を使用している Azure Cosmos DB アカウントを識別します。 最新の修正、パフォーマンスの向上、機能を入手するため、Maven から最新バージョンにアップグレードすることが推奨されます。 [Azure Cosmos DB の Java SDK](https://aka.ms/cosmosdb/sql-api-sdk-async-java) の詳細を確認してください。
+Azure Advisor は、古いバージョンの Java SDK を使用している Azure Cosmos DB アカウントを識別します。 最新の修正、パフォーマンスの向上、機能を入手するため、Maven から最新バージョンにアップグレードすることが推奨されます。 [Azure Cosmos DB の Java SDK](../cosmos-db/sql-api-sdk-java-v4.md) の詳細を確認してください。
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Azure Cosmos DB Spark コネクタを Maven からの最新バージョンにアップグレードする
 
-Azure Advisor は、古いバージョンの Azure Cosmos DB Spark コネクタを使用している Azure Cosmos DB アカウントを識別します。 最新の修正、パフォーマンスの向上、機能を入手するため、Maven から最新バージョンにアップグレードすることが推奨されます。 [Azure Cosmos DB Spark コネクタ](https://aka.ms/cosmosdb/spark-connector)の詳細を確認してください。
+Azure Advisor は、古いバージョンの Azure Cosmos DB Spark コネクタを使用している Azure Cosmos DB アカウントを識別します。 最新の修正、パフォーマンスの向上、機能を入手するため、Maven から最新バージョンにアップグレードすることが推奨されます。 [Azure Cosmos DB Spark コネクタ](../cosmos-db/spark-connector.md)の詳細を確認してください。
 
 ## <a name="consider-moving-to-kafka-21-on-hdinsight-40"></a>HDInsight 4.0 で Kafka 2.1 への移行を検討する
 
@@ -109,6 +109,12 @@ Azure Advisor は、古いバージョンの Azure Cosmos DB Spark コネクタ�
 ## <a name="enable-virtual-machine-replication"></a>仮想マシンのレプリケーションを有効にする
 他のリージョンへのレプリケーションが有効になっていない仮想マシンは、リージョンの障害に対する回復性がありません。 仮想マシンをレプリケートすることによって、Azure リージョンの障害時にビジネスへの悪影響が低減されます。 Advisor は、レプリケーションが有効になっていない VM を検出し、有効にすることを推奨します。 レプリケーションを有効にすると、障害が発生した場合に、リモートの Azure リージョンで仮想マシンをすばやく起動できます。 [仮想マシンのレプリケーション](../site-recovery/azure-to-azure-quickstart.md)の詳細を確認してください。
 
+## <a name="upgrade-to-the-latest-version-of-the-azure-connected-machine-agent"></a>最新バージョンの Azure Connected Machine エージェントにアップグレードする
+[Azure Connected Machine エージェント](../azure-arc/servers/manage-agent.md)は、バグの修正、安定性の向上、および新機能を伴って定期的に更新されます。 最新バージョンのマシン エージェントで動作していないリソースを特定しました。この Advisor の推奨事項では、最適な Azure Arc エクスペリエンスを実現するために、エージェントを最新バージョンにアップグレードすることが推奨されています。
+
+## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>Web サイトの整合性を確保するためにホスト名を上書きしないでください
+Advisor では、Application Gateway を構成する際、ホスト名を上書きしないようにすることが推奨されています。 Application Gateway のフロントエンドのドメインが、バックエンドへのアクセスに使用されるものと異なっていると、Cookie やリダイレクト URL が破損する可能性があります。 これはすべての状況に当てはまることではなく、一般にバックエンドの特定のカテゴリ (REST API など) はそれほど大きな影響を受けません。 バックエンドがこれに対応できることを確認するか、バックエンドに対してホスト名を上書きする必要がないように Application Gateway の構成を更新してください。 App Service と共に使用するときは、カスタム ドメイン名を Web アプリにアタッチし、*バックエンドに対して .azurewebsites.net ホスト名* を使用しないようにします。 [カスタム ドメインの詳細を確認](../application-gateway/troubleshoot-app-service-redirection-app-service-url.md)してください。
+
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Advisor の高可用性に関する推奨事項にアクセスする方法
 
 1. [Azure Portal](https://portal.azure.com) にサインインし、[Advisor](https://aka.ms/azureadvisordashboard) を開きます。
@@ -120,6 +126,7 @@ Azure Advisor は、古いバージョンの Azure Cosmos DB Spark コネクタ�
 Advisor の推奨事項について詳しくは、以下を参照してください。
 * [Advisor 入門](advisor-overview.md)
 * [Advisor の使用を開始する](advisor-get-started.md)
+* [Advisor スコア](azure-advisor-score.md)
 * [Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)

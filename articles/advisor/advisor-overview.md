@@ -2,13 +2,13 @@
 title: Azure Advisor の概要
 description: Azure Advisor を使用して、Azure のデプロイを最適化します。
 ms.topic: article
-ms.date: 02/01/2019
-ms.openlocfilehash: 27e49fa28e7b02b873ca145d514920784689b407
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 09/27/2020
+ms.openlocfilehash: 12e56bf44a29a32b2149bca14f7c99f319c9c4ea
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654023"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405209"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure Advisor の概要
 
@@ -68,7 +68,9 @@ Azure Advisor には、[Azure Security Center](../security-center/security-cente
 Advisor の推奨事項の詳細については、以下を参照してください。
 
 * [Advisor の使用を開始する](advisor-get-started.md)
+* [Advisor スコア](azure-advisor-score.md)
 * [Advisor の信頼性に関する推奨事項](advisor-high-availability-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)
+* [Advisor のオペレーショナル エクセレンスに関する推奨事項](advisor-operational-excellence-recommendations.md)

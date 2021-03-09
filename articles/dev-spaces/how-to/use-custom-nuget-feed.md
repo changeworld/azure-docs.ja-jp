@@ -8,14 +8,16 @@ ms.topic: conceptual
 description: カスタム NuGet フィードを使用して、Azure Dev Space 内の NuGet パッケージにアクセスし、使用します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
 manager: gwallace
-ms.openlocfilehash: 77c7b733b12d9b352f9a806cadc0f900b9283ef3
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: d60d7142d9b9979be76eebb3d324a448bd76638f
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229279"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91960220"
 ---
 # <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>Azure Dev Spaces にカスタム NuGet フィードを使用する
+
+[!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
 NuGet フィードは、パッケージ ソースをプロジェクトに取り込むための便利な方法を提供します。 Docker コンテナーで依存関係を正しくインストールするためには、Azure Dev Spaces がこのフィードにアクセスする必要があります。
 

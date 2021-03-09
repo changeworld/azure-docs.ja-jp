@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 3d6f3a7a5fafc643b346d3df1306820114827049
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 0bd895b0c19293a199b2a9b135915b7dc45b9e5e
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193668"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702499"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Data Lake Storage Gen1 を使用してビッグ データの要件に対応する
 
@@ -48,9 +48,9 @@ ms.locfileid: "84193668"
 
 使用できるツールは次のとおりです。
 
-* [Azure Stream Analytics](../stream-analytics/stream-analytics-data-lake-output.md)。Event Hubs に取り込まれたイベントは、Azure Data Lake Storage Gen1 出力を使用して Azure Data Lake Storage Gen1 に書き込むことができます。
+* [Azure Stream Analytics](../stream-analytics/stream-analytics-define-outputs.md)。Event Hubs に取り込まれたイベントは、Azure Data Lake Storage Gen1 出力を使用して Azure Data Lake Storage Gen1 に書き込むことができます。
 * [Azure HDInsight Storm](../hdinsight/storm/apache-storm-write-data-lake-store.md)。Storm クラスターから Data Lake Storage Gen1 に直接データを書き込むことができます。
-* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。Event Hubs からイベントを受け取り、[Data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md) を使用して Data Lake Storage Gen1 に書き込むことができます。
+* [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)。Event Hubs からイベントを受け取り、[Data Lake Storage Gen1 .NET SDK](data-lake-store-get-started-net-sdk.md) を使用して Data Lake Storage Gen1 に書き込むことができます。
 
 ### <a name="relational-data"></a>リレーショナル データ
 リレーショナル データベースのデータもソースとして扱うことができます。 一定の期間を経て、リレーショナル データベースには大量のデータが収集されます。ビッグ データのパイプラインを介して処理すると、これらのデータから重要な知見が得られます。 このようなデータを Data Lake Storage Gen1 に移動する場合は、次のツールを使用できます。
@@ -88,7 +88,7 @@ Web サーバー ログ データをアップロードする場合、または�
 数 TB に及ぶデータセットをアップロードする場合、上記の方法では速度が遅く、コストがかかることがあります。 このような場合は、次のオプションを使用できます。
 
 * **Azure ExpressRoute の使用**。 Azure ExpressRoute を使用すると、Azure データ センターとお客様のオンプレミスのインフラストラクチャとの間でプライベート接続を作成できます。 これにより、大量のデータを転送するための信頼性の高いオプションが提供されます。 詳細については、 [Azure ExpressRoute のドキュメント](../expressroute/expressroute-introduction.md)をご覧ください。
-* **データの "オフライン" アップロード**。 何らかの理由で Azure ExpressRoute が使用できない場合は、 [Azure Import/Export サービス](../storage/common/storage-import-export-service.md) を利用して、データが格納されたハード ディスク ドライブを Azure データ センターに発送してください。 データはまず Azure Storage BLOB にアップロードされます。 その後、[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) または [AdlCopy ツール](data-lake-store-copy-data-azure-storage-blob.md)を使って、Azure Storage Blob から Data Lake Storage Gen1 にデータをコピーできます。
+* **データの "オフライン" アップロード**。 何らかの理由で Azure ExpressRoute が使用できない場合は、 [Azure Import/Export サービス](../import-export/storage-import-export-service.md) を利用して、データが格納されたハード ディスク ドライブを Azure データ センターに発送してください。 データはまず Azure Storage BLOB にアップロードされます。 その後、[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) または [AdlCopy ツール](data-lake-store-copy-data-azure-storage-blob.md)を使って、Azure Storage Blob から Data Lake Storage Gen1 にデータをコピーできます。
 
   > [!NOTE]
   > Import/Export サービスを利用する場合、Azure データ センターに送るディスク上のファイル サイズは 195 GB 以下である必要があります。
@@ -130,5 +130,5 @@ Data Lake Storage Gen1 でデータが利用できるようになったら、サ
 
 ![Data Lake Storage Gen1 のデータを視覚化する](./media/data-lake-store-data-scenarios/visualize-data.png "Data Lake Storage Gen1 のデータを視覚化する")
 
-* まず、[Azure Data Factory を使って、Data Lake Storage Gen1 から Azure SQL Data Warehouse にデータを移動](../data-factory/copy-activity-overview.md)することができます。
-* その後、 [Power BI を Azure SQL Data Warehouse と統合](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) して、データを視覚的に表現することができます。
+* まず、[Azure Data Factory を使用して、Data Lake Storage Gen1 から Azure Synapse Analytics にデータを移動](../data-factory/copy-activity-overview.md)することができます。
+* その後、[Power BI を Azure Synapse Analytics と統合](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)して、データを視覚的に表現できます。

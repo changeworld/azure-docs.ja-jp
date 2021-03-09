@@ -1,5 +1,5 @@
 ---
-title: Azure CLI を使用して Azure Media Services 資産にコンテンツをアップロードする
+title: アセットにコンテンツをアップロードする - CLI
 description: このトピックの Azure CLI スクリプトは、コンテンツのアップロード先の Media Services 資産を作成する方法を示しています。
 services: media-services
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/31/2020
+ms.date: 02/16/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: aa5c9178bc84983b7e577cd63cf5b8d9fb9a8436
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 3923394e76d5ce4001d3652ae9cbc263df08e4e2
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89254663"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545617"
 ---
 # <a name="create-an-asset"></a>アセットを作成する
 
@@ -51,10 +51,6 @@ ms.locfileid: "89254663"
 ### <a name="using-curl"></a>cURL の使用
 
 [!INCLUDE [media-services-cli-instructions.md](./includes/task-create-asset-curl.md)]
-
-## <a name="using-postman"></a>Postman の使用
-
-[!INCLUDE[Create an asset with Postman](./includes/task-create-asset-postman.md)]
 
 ## <a name="net"></a>[.NET](#tab/net/)
 

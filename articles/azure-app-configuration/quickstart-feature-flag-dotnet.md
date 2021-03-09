@@ -3,8 +3,7 @@ title: .NET Framework アプリに機能フラグを追加するためのクイ�
 description: .NET Framework アプリに機能フラグを追加し、Azure App Configuration で管理するためのクイック スタートです。
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -13,24 +12,24 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: .NET
 ms.workload: tbd
-ms.date: 10/21/2019
-ms.author: lcozzens
-ms.openlocfilehash: 998527a8557db0b0cf271dc8b05d5771660a175c
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 10/19/2020
+ms.author: alkemper
+ms.openlocfilehash: 513c826e11ff9dfe6ea94349c67620da9d1bba48
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209443"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932049"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>クイック スタート:.NET Framework アプリに機能フラグを追加する
 
 このクイックスタートでは、Azure App Configuration を .NET Framework アプリに組み込み、機能管理のエンドツーエンド実装を作成します。 App Configuration サービスを使用し、すべての機能フラグを一箇所に格納し、その状態を制御できます。 
 
-.NET 機能管理ライブラリは、包括的な機能フラグのサポートにより、フレームワークを拡張します。 これらのライブラリは、.NET 構成システム上に構築されます。 また、.NET 構成プロバイダーを介して、App Configuration とシームレスに統合されます。
+.NET 機能管理ライブラリは、機能フラグのサポートにより、フレームワークを拡張します。 これらのライブラリは、.NET 構成システム上に構築されます。 .NET 構成プロバイダーを介して、App Configuration と統合されます。
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/dotnet)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.8](https://dotnet.microsoft.com/download)
 
@@ -38,7 +37,7 @@ ms.locfileid: "88209443"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[機能マネージャー]**  >  **[+追加]** を選択して、`Beta` という機能フラグを追加します。
+7. **[機能マネージャー]**  >  **[+追加]** を選択して、`Beta` という機能フラグを追加します。
 
     > [!div class="mx-imgBorder"]
     > ![Beta という名前の機能フラグを有効にする](media/add-beta-feature-flag.png)
@@ -70,6 +69,7 @@ ms.locfileid: "88209443"
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     using Microsoft.FeatureManagement;
+    using System.Threading.Tasks;
     ```
 
 1. `Main` メソッドを更新してアプリ構成に接続し、`UseFeatureFlags` オプションを指定して機能フラグが取得されるようにします。 `Beta` 機能フラグが有効になっている場合は、メッセージを表示します。
@@ -99,6 +99,8 @@ ms.locfileid: "88209443"
             }
 
             Console.WriteLine("Hello World!");
+            Console.WriteLine("Press any key to continue ...");
+            Console.Read();
         }
     ```
 

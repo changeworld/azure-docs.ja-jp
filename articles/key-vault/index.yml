@@ -13,20 +13,20 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: 549309a01602206b85a54b47df297735dfc5e709
-  ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+  ms.openlocfilehash: cf53b3165863c6f22ce4c9a74d002eafd2dcc329
+  ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2020
-  ms.locfileid: "88262604"
+  ms.lasthandoff: 10/28/2020
+  ms.locfileid: "92792346"
 highlightedContent:
   items:
   - title: Azure Key Vault の概要
     itemType: overview
     url: ./general/overview.md
-  - title: 論理的な削除の重要な変更
+  - title: サービスに対する重要な更新
     itemType: whats-new
-    url: ./general/soft-delete-change.md
+    url: ./general/whats-new.md
   - title: 認証
     itemType: overview
     url: ./general/authentication.md
@@ -89,6 +89,20 @@ conceptualContent:
     footerLink:
       url: ./secrets/index.yml
       text: 詳細情報
+  - title: Managed HSM (プレビュー)
+    links:
+    - url: ./managed-hsm/overview.md
+      itemType: overview
+      text: Managed HSM とは
+    - url: ./managed-hsm/best-practices.md
+      itemType: overview
+      text: ベスト プラクティス
+    - url: ./managed-hsm/quick-create-cli.md
+      itemType: quickstart
+      text: マネージド HSM のプロビジョニングとアクティブ化
+    footerLink:
+      text: 詳細情報
+      url: ./managed-hsm/index.yml
   - title: クライアント ライブラリ
     links:
     - url: ./general/client-libraries.md
@@ -139,7 +153,7 @@ conceptualContent:
       text: Virtual Machine Scale Sets を使用した Key Vault
   - title: Key Vault の統合
     links:
-    - url: https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups?view=azure-devops&tabs=yaml#link-secrets-from-an-azure-key-vault
+    - url: /azure/devops/pipelines/library/variable-groups?tabs=yaml&view=azure-devops#link-secrets-from-an-azure-key-vault
       itemType: overview
       text: Azure Dev Ops - Azure Pipelines で Key Vault シークレットを参照する
     - url: ../app-service/app-service-key-vault-references.md
@@ -151,6 +165,6 @@ conceptualContent:
     - url: ../aks/developer-best-practices-pod-security.md#use-azure-key-vault-with-secrets-store-csi-driver
       itemType: overview
       text: Azure Kubernetes Service - AKS で Key Vault シークレット、証明書、キーを使用する
-    - url: https://docs.microsoft.com/azure/databricks/security/secrets/secret-scopes
+    - url: /azure/databricks/security/secrets/secret-scopes
       itemType: overview
       text: Azure Databricks - Key Vault によるシークレットの管理

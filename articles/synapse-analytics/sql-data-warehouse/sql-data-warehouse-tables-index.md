@@ -1,6 +1,6 @@
 ---
 title: テーブルのインデックス作成
-description: Synapse SQL プールでのテーブルのインデックス作成に関するレコメンデーションと例。
+description: 専用 SQL プールでのテーブルのインデックス作成に関する推奨事項と例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 5ac32c41bd6b30c3edce68d67adc376e066d0bf5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: fabbdf330d43737ffa85379f9cc4d5ac59c4a734
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797600"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673520"
 ---
-# <a name="indexing-tables-in-synapse-sql-pool"></a>Synapse SQL プールでのテーブルのインデックス作成
+# <a name="indexing-dedicated-sql-pool-tables-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プール テーブルのインデックス作成
 
-Synapse SQL プールでのテーブルのインデックス作成に関するレコメンデーションと例。
+専用 SQL プールでのテーブルのインデックス作成に関する推奨事項と例。
 
 ## <a name="index-types"></a>インデックスの種類
 
-Synapse SQL プールには、[クラスター化列ストア インデックス](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[クラスター化インデックスと非クラスター化インデックス](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[ヒープ](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)とも呼ばれる非インデックス オプションなど、いくつかのインデックス作成オプションが用意されています。  
+専用 SQL プールには、[クラスター化列ストア インデックス](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[クラスター化インデックスと非クラスター化インデックス](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[ヒープ](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)とも呼ばれる非インデックス オプションなど、いくつかのインデックス作成オプションが用意されています。  
 
-インデックスを持つテーブルを作成する方法については、[CREATE TABLE (Synapse SQL プール)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) のドキュメントを参照してください。
+インデックス付きのテーブルを作成する場合は、[CREATE TABLE (専用 SQL プール)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) のドキュメントを参照してください。
 
 ## <a name="clustered-columnstore-indexes"></a>クラスター化列ストア インデックス
 
-既定で、Synapse SQL プールでは、テーブルにインデックス オプションが指定されていない場合、クラスター化列ストア インデックスが作成されます。 クラスター化列ストア テーブルは、クエリの全体的なパフォーマンスを最適化するだけでなく、最上位のレベルのデータ圧縮が可能になります。  クラスター化列ストア テーブルは、一般的にクラスター化インデックスまたはヒープ テーブルより優れており、大きなテーブルの選択肢として通常最適です。  こうした理由から、テーブルのインデックスを作成する方法に確信がない場合は、クラスター化列ストアを使用することをお勧めします。  
+既定で、専用 SQL プールでは、テーブルにインデックス オプションが指定されていない場合、クラスター化列ストア インデックスが作成されます。 クラスター化列ストア テーブルは、クエリの全体的なパフォーマンスを最適化するだけでなく、最上位のレベルのデータ圧縮が可能になります。  クラスター化列ストア テーブルは、一般的にクラスター化インデックスまたはヒープ テーブルより優れており、大きなテーブルの選択肢として通常最適です。  こうした理由から、テーブルのインデックスを作成する方法に確信がない場合は、クラスター化列ストアを使用することをお勧めします。  
 
 クラスター化列ストア テーブルを作成するには、単純に WITH 句で CLUSTERED COLUMNSTORE INDEX を指定するか、WITH 句を省略します。
 
@@ -52,7 +52,7 @@ WITH ( CLUSTERED COLUMNSTORE INDEX );
 
 ## <a name="heap-tables"></a>ヒープ テーブル
 
-データを一時的に Synapse SQL プールに読み込む際は、ヒープ テーブルを使用すると、プロセス全体が高速になる場合があります。 これは、ヒープの読み込みがインデックス テーブルの読み込みより高速になり、場合によってはキャッシュから後続の読み取りを実行できる場合があるためです。  さまざまな変換を実行する前にデータをステージングするためにのみ読み込む場合は、ヒープ テーブルにテーブルを読み込むと、データをクラスター化列ストア テーブルに読み込む場合よりもはるかに高速に読み込まれます。 さらに、テーブルを永続記憶域に読み込むよりも、データを[一時テーブル](sql-data-warehouse-tables-temporary.md)に読み込んだ方が読み込みが速くなります。  データの読み込み後、テーブルでインデックスを作成し、クエリ パフォーマンスを速くすることができます。  
+データを一時的に専用 SQL プールに置いている場合、ヒープ テーブルを使用すると、プロセス全体が高速になる場合があります。 これは、ヒープの読み込みがインデックス テーブルの読み込みより高速になり、場合によってはキャッシュから後続の読み取りを実行できる場合があるためです。  さまざまな変換を実行する前にデータをステージングするためにのみ読み込む場合は、ヒープ テーブルにテーブルを読み込むと、データをクラスター化列ストア テーブルに読み込む場合よりもはるかに高速に読み込まれます。 さらに、テーブルを永続記憶域に読み込むよりも、データを[一時テーブル](sql-data-warehouse-tables-temporary.md)に読み込んだ方が読み込みが速くなります。  データの読み込み後、テーブルでインデックスを作成し、クエリ パフォーマンスを速くすることができます。  
 
 クラスター列ストア テーブルは、6,000 万行を超えて初めて最適な圧縮が実現されます。  6 千万行に満たない小規模の参照テーブルの場合、HEAP かクラスター化されたインデックスの使用を検討してください。クエリのパフォーマンスが速くなります。 
 
@@ -143,9 +143,6 @@ GROUP BY
 ;
 ```
 
->[!TIP]
-> Synapse SQL のパフォーマンスを向上させるには、永続的なユーザー テーブルで、**sys.pdw_table_mappings** ではなく **sys.pdw_permanent_table_mappings** を使用することを検討してください。 詳細については、「 **[sys.pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 」を参照してください。
-
 ビューが作成できたので、このクエリを実行して、10 万行未満の行グループを持つテーブルを特定します。 もちろん、セグメントの品質をさらに高める必要がある場合は、10 万行のしきい値を高くすることもできます。
 
 ```sql
@@ -207,13 +204,13 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 ### <a name="small-or-trickle-load-operations"></a>小規模または少量の読み込み操作
 
-Synapse SQL プールにフローする小規模な読み込みは、少量の読み込みとも呼ばれます。 通常、これらの読み込みは、システムによってインジェストされるほぼ一定のデータ ストリームを表します。 ただし、このストリームはほぼ連続的であるため、行の量はあまり多くありません。 多くの場合、データは、列ストア形式への直接読み込みに必要なしきい値を大幅に下回ります。
+専用 SQL プールに流入する小規模な読み込みは、少量の読み込みとも呼ばれます。 通常、これらの読み込みは、システムによってインジェストされるほぼ一定のデータ ストリームを表します。 ただし、このストリームはほぼ連続的であるため、行の量はあまり多くありません。 多くの場合、データは、列ストア形式への直接読み込みに必要なしきい値を大幅に下回ります。
 
 こうした状況では、多くの場合、データを最初に Azure BLOB ストレージに配置し、読み込む前に蓄積する方が適切です。 この手法は、多くの場合に *"マイクロ バッチ処理"* と呼ばれます。
 
 ### <a name="too-many-partitions"></a>多すぎるパーティション
 
-考慮する必要があるもう 1 つの点は、クラスター化列ストア テーブルへのパーティション分割の影響です。  パーティション分割する前に、Synapse SQL プールでは既に、データが 60 個のデータベースに分割されます。  パーティション分割で、データはさらに分割されます。  データをパーティション分割する場合、クラスター化列ストア インデックスの恩恵を得るには、**個々の**パーティションに少なくとも 100 万行が必要なことを考慮に入れる必要があります。  テーブルを 100 個のパーティションにパーティション分割する場合、クラスター化列ストア インデックスの恩恵を受けるには、テーブルに少なくとも 60 億行必要です (60 個のディストリビューション *100 個のパーティション* 100 万行)。 100 個のパーティション テーブルに 60 億行もない場合は、パーティションの数を減らすか、代わりにヒープ テーブルを使用することを検討してください。
+考慮する必要があるもう 1 つの点は、クラスター化列ストア テーブルへのパーティション分割の影響です。  パーティション分割する前に、専用 SQL プールでは既にデータが 60 個のデータベースに分割されています。  パーティション分割で、データはさらに分割されます。  データをパーティション分割する場合、クラスター化列ストア インデックスの恩恵を得るには、**個々の** パーティションに少なくとも 100 万行が必要なことを考慮に入れる必要があります。  テーブルを 100 個のパーティションにパーティション分割する場合、クラスター化列ストア インデックスの恩恵を受けるには、テーブルに少なくとも 60 億行必要です (60 個のディストリビューション *100 個のパーティション* 100 万行)。 100 個のパーティション テーブルに 60 億行もない場合は、パーティションの数を減らすか、代わりにヒープ テーブルを使用することを検討してください。
 
 テーブルが一部のデータと共に読み込まれたら、以下の手順に従って、最適化されていないクラスター化列ストア インデックスを持つテーブルを特定して再構築します。
 
@@ -233,7 +230,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 
 手順 1 でリソース クラスを上位に変更したユーザー (たとえば LoadUser) としてサインインし、ALTER INDEX ステートメントを実行します。 このユーザーは、インデックスが再構築されるテーブルに対して ALTER 権限を持っている必要があるのでご注意ください。 これらの例では、列ストア インデックス全体を再構築する方法や単一のパーティションを再構築する方法を示します。 大規模なテーブルでは、単一のパーティションとインデックスを同時に再構築すると、より実用的です。
 
-または、インデックスを再構築せずに、[CTAS を使用して](sql-data-warehouse-develop-ctas.md)テーブルを新しいテーブルにコピーできます。 最良の方法はどちらでしょうか。 大量のデータの場合は、通常、CTAS の方が [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) より高速です。 少量のデータの場合は、ALTER INDEX を簡単に使用できるため、テーブルを入れ替える必要はありません。
+または、インデックスを再構築せずに、[CTAS を使用して](sql-data-warehouse-develop-ctas.md)テーブルを新しいテーブルにコピーできます。 最良の方法はどちらでしょうか。 大量のデータの場合は、通常、CTAS の方が [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) より高速です。 少量のデータの場合は、ALTER INDEX を簡単に使用できるため、テーブルを入れ替える必要はありません。
 
 ```sql
 -- Rebuild the entire clustered index
@@ -255,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Synapse SQL プールでのインデックスの再構築は、オフライン操作です。  インデックスの再構築の詳細については、「[列ストア インデックス - 最適化](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」の ALTER INDEX REBUILD に関するセクションと、「[ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
+専用 SQL プールでのインデックスの再構築は、オフライン操作です。  インデックスの再構築の詳細については、「[列ストア インデックス - 最適化](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」の ALTER INDEX REBUILD に関するセクションと、「[ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>手順 3:クラスター化列ストア セグメントの品質改善を確認する
 
@@ -263,7 +260,7 @@ Synapse SQL プールでのインデックスの再構築は、オフライン�
 
 ## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>CTAS とパーティションの切り替えを使用したインデックスの再構築
 
-この例では、[CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントとパーティション切り替えを使用してテーブル パーティションを再構築します。
+この例では、[CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントとパーティション切り替えを使用してテーブル パーティションを再構築します。
 
 ```sql
 -- Step 1: Select the partition of data and write it out to a new table using CTAS
@@ -286,7 +283,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-CTAS を使用してパーティションを再作成する方法の詳細については、[Synapse SQL プールでのパーティションの使用](sql-data-warehouse-tables-partition.md)に関するページを参照してください。
+CTAS を使用してパーティションを再作成する方法の詳細については、[専用 SQL プールでのパーティションの使用](sql-data-warehouse-tables-partition.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

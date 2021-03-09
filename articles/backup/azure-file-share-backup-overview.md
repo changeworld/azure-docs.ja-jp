@@ -3,12 +3,12 @@ title: Azure ファイル共有のバックアップについて
 description: Recovery Services コンテナーに Azure ファイル共有をバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 7960040df4208ad021bca3406f6472d8c3206d81
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: e955df7662bd18ed1d1d4ec1f0aa6c9474c5386f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892254"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89378085"
 ---
 # <a name="about-azure-file-share-backup"></a>Azure ファイル共有のバックアップについて
 
@@ -50,7 +50,13 @@ Azure ファイル共有のバックアップは、クラウド内のデータ�
 
 ## <a name="backup-costs"></a>バックアップのコスト
 
-Azure ファイル共有のバックアップはスナップショットベースのソリューションであるため、現在はスナップショットに対してのみ料金が発生します。 スナップショットに対して発生するストレージ料金は、Azure Files 使用量に応じて請求されます。価格の詳細は、[こちら](https://azure.microsoft.com/pricing/details/storage/files/)に記載されています。
+Azure ファイル共有のバックアップ ソリューションには 2 つのコストが関連付けられています。
+
+1. **スナップショット ストレージ コスト**:スナップショットに対して発生するストレージ料金は、Azure Files 使用量に応じて請求されます。価格の詳細は、[こちら](https://azure.microsoft.com/pricing/details/storage/files/)に記載されています。
+
+2. **保護されたインスタンスの料金**:2020 年 9 月 1 日以降、お客様には、[こちら](https://azure.microsoft.com/pricing/details/backup/)に記載されている料金詳細に従って、保護されたインスタンスの料金が請求されます。保護されたインスタンスの料金は、ストレージ アカウント内の保護されたファイル共有の合計サイズによって決まります。
+
+Azure ファイル共有のバックアップに関する詳細な見積もりを取得するには、詳細な [Azure Backup 価格見積もりツール](https://aka.ms/AzureBackupCostEstimates)をダウンロードできます。  
 
 ## <a name="next-steps"></a>次のステップ
 

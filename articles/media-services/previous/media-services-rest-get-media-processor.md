@@ -3,7 +3,7 @@ title: REST を使用してメディア プロセッサ インスタンスを取
 description: メディア プロセッサ コンポーネントを作成し、Azure Media Services 用にメディア コンテンツのエンコード、形式の変換、暗号化、または復号化を行う方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: f9ff1997-0da6-4528-aaed-792837e5be41
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: ba625aa048360a4c201b91b4a5a4a7ca4dd6277b
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.date: 11/03/2020
+ms.author: inhenkel
+ms.openlocfilehash: e1ac2a2408e16c3f8057c49c69c354ebb1e377c7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269507"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348493"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>方法: メディア プロセッサ インスタンスを取得する
 
@@ -28,18 +28,18 @@ ms.locfileid: "89269507"
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
 > * [REST](media-services-rest-get-media-processor.md)
-> 
-> 
+
 
 ## <a name="overview"></a>概要
-メディア プロセッサは、メディア コンテンツのエンコード、形式変換、暗号化、または復号化などの特定のビデオまたはオーディオ処理タスクを扱うコンポーネントです。 Media Services に送信されるすべてのタスクは、メディア プロセッサでビデオまたはオーディオ コンテンツのエンコード、暗号化、または変換を行う必要があります。 
 
-## <a name="azure-media-processors"></a>Azure メディア プロセッサ 
+メディア プロセッサは、メディア コンテンツのエンコード、形式変換、暗号化、または復号化などの特定のビデオまたはオーディオ処理タスクを扱うコンポーネントです。 Media Services に送信されるすべてのタスクは、メディア プロセッサでビデオまたはオーディオ コンテンツのエンコード、暗号化、または変換を行う必要があります。
+
+## <a name="azure-media-processors"></a>Azure メディア プロセッサ
 
 次のトピックは、メディア プロセッサの一覧です。
 
-* [Encoding メディア プロセッサ](scenarios-and-availability.md#encoding-media-processors)
-* [Analytics メディア プロセッサ](scenarios-and-availability.md#analytics-media-processors)
+* [Encoding メディア プロセッサ](scenarios-and-availability.md)
+* [Analytics メディア プロセッサ](scenarios-and-availability.md)
 
 >[!NOTE]
 >Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
@@ -51,7 +51,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
 
 ## <a name="get-a-media-processor"></a>メディア プロセッサを取得する
 
-次の REST 呼び出しは、メディア プロセッサ インスタンスを名前 (ここでは **Media Encoder Standard**) で取得する方法を示しています。 
+次の REST 呼び出しは、メディア プロセッサ インスタンスを名前 (ここでは **Media Encoder Standard** ) で取得する方法を示しています。 
 
 要求:
 

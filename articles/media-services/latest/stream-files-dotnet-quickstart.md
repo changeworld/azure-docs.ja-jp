@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services で動画ファイルをストリーム配信する - .NET | Microsoft Docs
-description: このチュートリアルの手順に従って、新しい Azure Media Services アカウントを作成し、ファイルをエンコードして、Azure Media Player にストリーム配信します。
+title: Azure Media Services で動画ファイルをストリーム配信する - .NET
+description: このチュートリアルの手順に従って .NET を使用し、新しい Azure Media Services アカウントを作成し、ファイルをエンコードして、Azure Media Player にストリーム配信します。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: ec60f775fbeb176f9442aff11117c85c5028a81f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: dc6b240a2d97e0b4aa313f858b3965f241dd0b08
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267090"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898191"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - .NET
 
@@ -53,12 +53,12 @@ ms.locfileid: "89267090"
 
 サンプルは、次のアクションを実行します。
 
-1. **変換**を作成します (最初に、指定された変換が存在するかどうかを確認します)。 
-2. エンコード **ジョブ**の出力として使用される**出力**アセットを作成します。
-3. HTTPS の URL に基づいて**ジョブ**の入力を作成します。
-4. 前に作成された入力と出力を使用してエンコード **ジョブ**を送信します。
+1. **変換** を作成します (最初に、指定された変換が存在するかどうかを確認します)。 
+2. エンコード **ジョブ** の出力として使用される **出力** アセットを作成します。
+3. HTTPS の URL に基づいて **ジョブ** の入力を作成します。
+4. 前に作成された入力と出力を使用してエンコード **ジョブ** を送信します。
 5. ジョブの状態を確認します。
-6. **ストリーミング ロケーター**を作成します。
+6. **ストリーミング ロケーター** を作成します。
 7. ストリーミング URL を作成します。
 
 サンプル内の各関数の機能について詳しくは、[このソース ファイル](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)のコードを調べて、コメントを参照してください。
@@ -70,7 +70,7 @@ ms.locfileid: "89267090"
 1. Ctrl + F5 キーを押して、*EncodeAndStreamFiles* アプリケーションを実行します。
 2. Apple の **HLS** プロトコル (末尾が *manifest(format=m3u8-aapl)* ) を選び、コンソールからストリーム配信 URL をコピーします。
 
-![出力](./media/stream-files-tutorial-with-api/output.png)
+![Visual Studio の EncodeAndStreamFiles アプリからの出力のスクリーンショット。Azure Media Player で使用するための 3 つのストリーミング URL が表示されています。](./media/stream-files-tutorial-with-api/output.png)
 
 サンプルの[ソース コード](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)では、URL の作成方法を確認できます。 URL を作成するには、ストリーミング エンドポイントのホスト名とストリーミング ロケーター パスを連結する必要があります。  
 

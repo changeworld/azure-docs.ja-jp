@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 1cdb49f6865afa4101468dc35b4e416d999b63f5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d28a20a6afc78939491e56f46a32782b4c0844cc
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285222"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879005"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
@@ -28,7 +28,7 @@ azcopy remove [resourceURL] [flags]
 ## <a name="related-conceptual-articles"></a>関連する概念に関する記事
 
 - [AzCopy を使ってみる](storage-use-azcopy-v10.md)
-- [AzCopy と Blob Storage でデータを転送する](storage-use-azcopy-blobs.md)
+- [AzCopy と Blob Storage でデータを転送する](./storage-use-azcopy-v10.md#transfer-data)
 - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
 - [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
 
@@ -73,7 +73,6 @@ azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/parent/d
     blob1
     blob2
 ```
-
 階層型名前空間がある BLOB ストレージ アカウントから 1 つのファイルを削除します (include/exclude はサポートされていません)。
 
 ```azcopy
@@ -102,7 +101,9 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **--include-pattern** string  名前がパターンの一覧と一致するファイルをのみを含めます。 例: *`.jpg`、* `.pdf`、`exactName`
 
-**--list-of-files** string  削除するファイルとディレクトリの一覧を含むファイルの場所を定義します。 相対パスは改行で区切る必要があり、パスを URL エンコードすることはできません。
+**--list-of-files** string  削除するファイルとディレクトリの一覧を含むファイルの場所を定義します。 相対パスは改行で区切る必要があり、パスを URL エンコードすることはできません。 
+
+**--list-of-versions** string   各バージョン ID が個別の行に一覧表示されているファイルを指定します。 ソースが 1 つの BLOB をポイントしている必要があり、このフラグを使用してファイルで指定されたすべてのバージョン ID がソース BLOB のみに属している必要があることを確認します。 その特定の BLOB の指定されたバージョン ID は、Azure Storage から削除されます。 
 
 **--log-level** string   ログ ファイルのログ詳細度を定義します。 指定できるレベルには、`INFO` (すべての要求/応答)、`WARNING` (低速な応答)、`ERROR` (失敗した要求のみ)、`NONE` (出力ログなし) が含まれます。 (既定値は `INFO`) (既定値は `INFO`)
 

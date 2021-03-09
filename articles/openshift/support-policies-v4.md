@@ -1,17 +1,17 @@
 ---
 title: Azure Red Hat OpenShift 4 クラスターのサポート ポリシー
-description: Red Hat OpenShift 4 のサポート ポリシー要件について説明します。
+description: Red Hat OpenShift 4 のサポート ポリシー要件について説明します
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 04/24/2020
-ms.openlocfilehash: f496d0f38452fa7cf64bc9eef370bd0b2116cfa5
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.date: 11/23/2020
+ms.openlocfilehash: c58b267874f013a4660428e23abd41810a0fbf34
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049963"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093167"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift のサポート ポリシー
 
@@ -23,13 +23,16 @@ Azure Red Hat OpenShift 4 クラスターの一部の構成は、クラスター
 ## <a name="cluster-configuration-requirements"></a>クラスター構成の要件
 
 * すべての OpenShift Cluster オペレーターは、管理された状態のままである必要があります。 `oc get clusteroperators` を実行して、クラスター オペレーターの一覧を返すことができます。
+* クラスターには、少なくとも 2 つのワーカー ノードが必要です。 クラスター ワーカーをゼロに変更しないでください。また、クラスターをグレースフル シャットダウンしないでください。
 * クラスターの Prometheus および Alertmanager サービスを削除または変更しないでください。
 * Service Alertmanager ルールを削除しないでください。
+* ネットワーク セキュリティ グループを削除したり変更したりしないでください。
 * Azure Red Hat OpenShift サービス ログ (mdsd ポッド) を削除または変更しないでください。
 * 'arosvc.azurecr.io' クラスターのプル シークレットを削除または変更しないでください。
 * すべてのクラスター仮想マシンには、少なくとも Azure Resource Manager (ARM) とサービス ログ (Geneva) エンドポイントへの直接送信インターネット アクセスが必要です。  HTTPS プロキシの形式はサポートされていません。
 * クラスターの仮想ネットワークの DNS 構成は変更しないでください。 既定の Azure DNS リゾルバーを使用する必要があります。
 * クラスターの MachineConfig オブジェクト (kubelet 構成など) は、どのような方法でもオーバーライドしないでください。
+* unsupportedConfigOverrides オプションを設定しないでください。 これらのオプションを設定すると、マイナー バージョンのアップグレードができなくなります。
 * Azure Red Hat OpenShift サービスからはプライベート リンク サービスを介してクラスターにアクセスします。  サービス アクセスを削除または変更しないでください。
 * 非 RHCOS コンピューティング ノードはサポートされていません。 たとえば、RHEL コンピューティング ノードを使用することはできません。
 

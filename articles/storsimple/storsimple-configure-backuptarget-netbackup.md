@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: b186fadcc99c6cc538b61eaa94d5d84d649c233f
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 4f71cf82b675222836a73eec12d68bd8f62a5538
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184008"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967280"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>NetBackup を使用したバックアップ ターゲットとしての StorSimple
 
@@ -79,7 +79,7 @@ StorSimple には次の利点があります。
 
 StorSimple には 2 つの主要なデプロイメント シナリオ (プライマリ バックアップ ターゲットとセカンダリ バックアップ ターゲット) が用意されていますが、基本的にはシンプルなブロック ストレージ デバイスです。 StorSimple では、すべての圧縮と重複除去が行われます。 クラウドとアプリケーションおよびファイル システムの間で、データはシームレスに送受信されます。
 
-StorSimple の詳細については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」をご覧ください。 また、[StorSimple 8000 シリーズの技術仕様](storsimple-technical-specifications-and-compliance.md)に関するページも参照してください。
+StorSimple の詳細については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」をご覧ください。 また、[StorSimple 8000 シリーズの技術仕様](./storsimple-8000-technical-specifications-and-compliance.md)に関するページも参照してください。
 
 > [!IMPORTANT]
 > バックアップ ターゲットとして StorSimple デバイスを使用できるのは、StorSimple 8000 の Update 3 以降のバージョンのみです。
@@ -132,7 +132,7 @@ StorSimple の詳細については、「[StorSimple 8000 シリーズ: ハイ�
 
 高性能ボリュームのサイズは、保持ポリシーの容量とパフォーマンスの要件に対応できるものにする必要があります。
 
-![セカンダリ バックアップ ターゲットとしての StorSimple の論理図](./media/storsimple-configure-backup-target-using-netbackup/secondarybackuptargetlogicaldiagram.png)
+![初回のバックアップと復元のターゲットで高性能ボリュームにしているアーキテクチャの図。](./media/storsimple-configure-backup-target-using-netbackup/secondarybackuptargetlogicaldiagram.png)
 
 ### <a name="secondary-target-backup-logical-steps"></a>セカンダリ ターゲット バックアップの論理的ステップ
 
@@ -170,7 +170,7 @@ StorSimple は Azure クラウドと統合されたソリューションであ�
 
 ### <a name="deploy-storsimple"></a>StorSimple のデプロイ方法
 
-StorSimple のデプロイの詳細なガイダンスについては、[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough-u2.md)に関するページを参照してください。
+StorSimple のデプロイの詳細なガイダンスについては、[オンプレミスの StorSimple デバイスのデプロイ](./storsimple-8000-deployment-walkthrough-u2.md)に関するページを参照してください。
 
 ### <a name="deploy-netbackup"></a>NetBackup のデプロイ方法
 
@@ -185,7 +185,7 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 | StorSimple のデプロイメント タスク  | その他のコメント |
 |---|---|
 | オンプレミスの StorSimple デバイスのデプロイ。 | サポートされているバージョンは Update 3 以降です。 |
-| バックアップ ターゲットを有効にする。 | バックアップ ターゲット モードの有効化または無効化、および状態の取得には次のコマンドを使用します。 詳細については、[StorSimple デバイスへのリモート接続](storsimple-remote-connect.md)に関するページをご覧ください。</br> バックアップ モードを有効にする: `Set-HCSBackupApplianceMode -enable` </br> バックアップ モードを無効にする: `Set-HCSBackupApplianceMode -disable` </br> バックアップ モード設定の現在の状態を取得する: `Get-HCSBackupApplianceMode` |
+| バックアップ ターゲットを有効にする。 | バックアップ ターゲット モードの有効化または無効化、および状態の取得には次のコマンドを使用します。 詳細については、[StorSimple デバイスへのリモート接続](./storsimple-8000-remote-connect.md)に関するページをご覧ください。</br> バックアップ モードを有効にする: `Set-HCSBackupApplianceMode -enable` </br> バックアップ モードを無効にする: `Set-HCSBackupApplianceMode -disable` </br> バックアップ モード設定の現在の状態を取得する: `Get-HCSBackupApplianceMode` |
 | バックアップ データを格納するボリュームの共通ボリューム コンテナーを作成する。 ボリューム コンテナー内のすべてのデータが重複除去されます。 | StorSimple のボリューム コンテナーでは、重複除去のドメインを定義します。  |
 | StorSimple ボリュームを作成する。 | ボリューム サイズはクラウド スナップショットの実行時間に影響するため、予想される使用量に可能な限り近いサイズのボリュームを作成します。 ボリューム サイズの決定方法については、「[保持ポリシー](#retention-policies)」を参照してください。</br> </br> StorSimple 階層化ボリュームを使用し、 **[アクセス頻度の低いアーカイブ データにこのボリュームを使用します]** チェック ボックスをオンにします。 </br> ローカル固定ボリュームのみの使用はサポートされていません。 |
 | すべてのバックアップ ターゲット ボリュームに対し、一意の StorSimple バックアップ ポリシーを作成する。 | ボリュームの整合性グループは、StorSimple のバックアップ ポリシーで定義されます。 |
@@ -212,16 +212,16 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 - StorSimple ボリュームでの Windows Server の最適化を無効にします。
 - StorSimple ボリュームでの Windows Server のインデックス作成を無効にします。
 - (StorSimple ボリュームに対してではなく) ソース ホストでウィルス対策スキャンを実行します。
-- タスク マネージャーで、既定の [ Windows Server のメンテナンス](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx)を無効にします。 これは、次の方法のいずれかで実行します。
+- タスク マネージャーで、既定の [ Windows Server のメンテナンス](/windows/win32/w8cookbook/automatic-maintenance)を無効にします。 これは、次の方法のいずれかで実行します。
   - Windows タスク スケジューラでメンテナンス コンフィギュレータを無効にする。
-  - Windows Sysinternals から [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) をダウンロードする。 PsExec のダウンロード後、Windows PowerShell を管理者として実行し、次のように入力します。
+  - Windows Sysinternals から [PsExec](/sysinternals/downloads/psexec) をダウンロードする。 PsExec のダウンロード後、Windows PowerShell を管理者として実行し、次のように入力します。
     ```powershell
     psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
     ```
 
 ### <a name="storsimple-best-practices"></a>StorSimple のベスト プラクティス
 
--   StorSimple デバイスが [Update 3 以降](storsimple-install-update-3.md)に更新されていることを確認します。
+-   StorSimple デバイスが [Update 3 以降](./index.yml)に更新されていることを確認します。
 -   iSCSI とクラウド トラフィックを分離します。 StorSimple とバックアップ サーバーの間のトラフィックには専用の iSCSI 接続を使用します。
 -   StorSimple デバイスが専用のバックアップ ターゲットであることを確認します。 混合ワークロードは、RTO と RPO に影響を与えるため、サポートされていません。
 
@@ -531,7 +531,7 @@ StorSimple デバイスからの復元は、他のブロック ストレージ �
 
 | シナリオ | 影響 | 復旧方法 | メモ |
 |---|---|---|---|
-| StorSimple デバイスの不具合 | バックアップと復元のオペレーションが中断されます。 | 不具合のあるデバイスを交換し、[StorSimple フェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)を実行します。 | デバイスの復旧後に復元を実行する必要がある場合、完全なデータのワーキング セットがクラウドから新しいデバイスに送られます。 すべてのオペレーションはクラウドのスピードで実行されます。 インデックスとカタログの再スキャン プロセスでは、すべてのバックアップ セットがスキャンされ、クラウドの階層からローカル デバイスの階層に戻される場合があり、時間のかかる可能性があります。 |
+| StorSimple デバイスの不具合 | バックアップと復元のオペレーションが中断されます。 | 不具合のあるデバイスを交換し、[StorSimple フェールオーバーと障害復旧](./storsimple-8000-device-failover-disaster-recovery.md)を実行します。 | デバイスの復旧後に復元を実行する必要がある場合、完全なデータのワーキング セットがクラウドから新しいデバイスに送られます。 すべてのオペレーションはクラウドのスピードで実行されます。 インデックスとカタログの再スキャン プロセスでは、すべてのバックアップ セットがスキャンされ、クラウドの階層からローカル デバイスの階層に戻される場合があり、時間のかかる可能性があります。 |
 | NetBackup サーバーの障害 | バックアップと復元のオペレーションが中断されます。 | バックアップ サーバーを再構築し、データベースの復元を実行します。 | ディザスター リカバリー サイトの NetBackup サーバーを再構築または復元する必要があります。 データベースを最新の時点に復元します。 復元された NetBackup データベースが最新のバックアップ ジョブと同期しない場合、インデックスとカタログの作成が必要です。 このインデックスとカタログの再スキャン プロセスでは、すべてのバックアップ セットがスキャンされ、クラウドの階層からローカル デバイスの階層に戻される場合があります。 これにはさらに時間がかかります。 |
 | バックアップ サーバーと StorSimple 両方の損失を招くサイトの不具合 | バックアップと復元のオペレーションが中断されます。 | まず StorSimple を復元し、次に NetBackup を復元します。 | まず StorSimple を復元し、次に NetBackup を復元します。 デバイスの復旧後に復元を実行する必要がある場合、完全なデータのワーキング セットがクラウドから新しいデバイスに送られます。 すべてのオペレーションはクラウドのスピードで実行されます。 |
 
@@ -539,12 +539,12 @@ StorSimple デバイスからの復元は、他のブロック ストレージ �
 
 この記事では次のドキュメントを参考にしています。
 
-- [StorSimple のマルチパス I/O のセットアップ](storsimple-configure-mpio-windows-server.md)
-- [ストレージ シナリオ: 仮想プロビジョニング (Storage scenarios: Thin provisioning)](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
-- [GPT ドライブを使用する (Using GPT drives)](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
-- [共有フォルダーのシャドウ コピーのセットアップ](https://technet.microsoft.com/library/cc771893.aspx)
+- [StorSimple のマルチパス I/O のセットアップ](./storsimple-8000-configure-mpio-windows-server.md)
+- [ストレージ シナリオ: 仮想プロビジョニング (Storage scenarios: Thin provisioning)](/windows-hardware/drivers/storage/thin-provisioning)
+- [GPT ドライブを使用する (Using GPT drives)](/previous-versions/windows/hardware/design/dn653580(v=vs.85)#EHD)
+- [共有フォルダーのシャドウ コピーのセットアップ](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771893(v=ws.11))
 
 ## <a name="next-steps"></a>次のステップ
 
-- [バックアップ セットからの復元方法](storsimple-restore-from-backup-set-u2.md)について確認します。
-- [デバイスのフェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)の実行方法について確認します。
+- [バックアップ セットからの復元方法](./storsimple-8000-restore-from-backup-set-u2.md)について確認します。
+- [デバイスのフェールオーバーと障害復旧](./storsimple-8000-device-failover-disaster-recovery.md)の実行方法について確認します。

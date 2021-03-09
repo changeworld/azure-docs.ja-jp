@@ -1,21 +1,21 @@
 ---
 title: Azure Stream Analytics の機能の比較
 description: この記事では、Azure portal、Visual Studio、Visual Studio Code でサポートされている、Azure Stream Analytics のクラウド ジョブと IoT Edge ジョブの機能を比較します。
-author: mamccrea
-ms.author: mamccrea
+author: an-emma
+ms.author: raan
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: b169a067f05de422b714e18a4d7ebb9c9e7f0428
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 037bd8bc823cd8c77241d0ca25174e29d25149b9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133495"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020538"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure Stream Analytics の機能の比較
 
-Azure Stream Analytics では、[Azure portal](stream-analytics-quick-create-portal.md)、[Visual Studio](stream-analytics-quick-create-vs.md)、[Visual Studio Code](quick-create-vs-code.md) を使用して、クラウドおよび IoT Edge でストリーミング ソリューションを作成できます。 この記事の表は、両方のジョブの種類について、各プラットフォームでサポートされている機能を示しています。
+Azure Stream Analytics では、[Azure portal](stream-analytics-quick-create-portal.md)、[Visual Studio](stream-analytics-quick-create-vs.md)、[Visual Studio Code](quick-create-visual-studio-code.md) を使用して、クラウドおよび IoT Edge でストリーミング ソリューションを作成できます。 この記事の表は、両方のジョブの種類について、各プラットフォームでサポートされている機能を示しています。
 
 > [!NOTE]
 > Visual Studio と Visual Studio Code のツールでは、中国東部、中国北部、ドイツ中部、ドイツ北東部のリージョンでのジョブはサポートされていません。
@@ -44,7 +44,7 @@ Azure Stream Analytics では、[Azure portal](stream-analytics-quick-create-por
 |C# カスタム コード関数とデシリアライザー|読み取り専用モード|はい|いいえ|
 |JavaScript UDF および UDA     |はい         |はい         |Windows のみ         |
 |Machine Learning Service     |はい        |はい         |いいえ         |
-|Machine Learning Studio     |はい。ただし、クエリはテストできません        |はい |いいえ         |
+|Azure Machine Learning Studio (クラシック)|はい。ただし、クエリはテストできません        |はい |いいえ         |
 |互換性レベル     |1.0</br>1.1</br>1.2 (既定値)         |1.0</br>1.1</br>1.2 (既定値)           |1.0</br>1.1</br>1.2 (既定値)           |
 |組み込みの ML ベースの異常検出関数     |はい         |はい         |はい         |
 |組み込みの地理空間関数     |はい         |はい         |はい         |

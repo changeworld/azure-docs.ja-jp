@@ -4,12 +4,12 @@ description: この記事では、REST API を使用して Azure VM Backup の�
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: db5e6cc460d320971a4005889dc2c9aa9925a18d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 9ba22c51c7a6c26a232ed20aec21fc83d2c54b37
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890333"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171458"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API を通して Azure Backup を使用して Azure VM をバックアップする
 
@@ -274,6 +274,35 @@ GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 
 これにより、VM の保護が有効になっており、ポリシー スケジュールに従って最初のバックアップがトリガーされることが確認されます。
 
+### <a name="excluding-disks-in-azure-vm-backup"></a>Azure VM のバックアップでのディスクの除外
+
+Azure Backup には、Azure VM 内のディスクのサブセットを選択的にバックアップする方法も用意されています。 詳細については、[こちら](selective-disk-backup-restore.md)をご覧ください。 保護の有効化時に、いくつかのディスクを選択的にバックアップする場合は、次のコード スニペットを、[保護の有効化時の要求本文](#example-request-body)としてください。
+
+```json
+{
+"properties": {
+    "protectedItemType": "Microsoft.Compute/virtualMachines",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "policyId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupPolicies/DefaultPolicy",
+    "extendedProperties":  {
+      "diskExclusionProperties":{
+          "diskLunList":[0,1],
+          "isInclusionList":true
+        }
+    }
+}
+}
+```
+
+上記の要求本文では、バックアップするディスクの一覧は、extended properties セクションに指定されています。
+
+|プロパティ  |値  |
+|---------|---------|
+|diskLunList     | ディスク LUN 一覧は、"*データ ディスクの LUN*" の一覧です。 **OS ディスクは常にバックアップされているため、監視する必要はありません**。        |
+|IsInclusionList     | バックアップ中に LUN を含めるには、**true** にする必要があります。 **false** の場合、前述の LUN は除外されます。         |
+
+したがって、OS ディスクのみをバックアップする必要がある場合は、"_すべての_" データ ディスクを除外する必要があります。 もっと簡単に言うと、どのデータ ディスクも含める必要がないということです。 この結果、ディスク LUN 一覧は空になり、**IsInclusionList** は **true** になります。 同様に、サブセットを選択するための簡単な方法を考えてみましょう。一部のディスクを常に除外する必要がある、またな常に含める必要があるとします。 それに応じて、LUN 一覧とブール型変数値を選択してください。
+
 ## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>保護された Azure VM のオンデマンド バックアップをトリガーする
 
 Azure VM のバックアップの構成が済むと、ポリシーのスケジュールに従ってバックアップが行われます。 スケジュールされた最初のバックアップを待機できます。または、いつでもオンデマンド バックアップをトリガーできます。 オンデマンド バックアップの保持期間は、バックアップ ポリシーの保持期間から独立していて、特定の日付と時刻を指定できます。 指定されていない場合、オンデマンド バックアップをトリガーした日から 30 日と見なされます。
@@ -294,7 +323,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 オンデマンド バックアップをトリガーする場合、要求本文のコンポーネントは次のようになります。
 
-|名前  |Type  |説明  |
+|名前  |種類  |説明  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource プロパティ         |
 
@@ -319,7 +348,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|名前  |Type  |説明  |
+|名前  |種類  |説明  |
 |---------|---------|---------|
 |202 Accepted     |         |     承認済み    |
 
@@ -389,7 +418,7 @@ X-Powered-By: ASP.NET
 
 VM の保護に使用されているポリシーを変更するために、[保護を有効にする](#enabling-protection-for-the-azure-vm)のと同じ形式を使用できます。 [要求本文](#example-request-body)で新しいポリシー ID を指定し、要求を送信するだけです。 次に例を示します。testVM のポリシーを 'DefaultPolicy' から 'ProdPolicy' に変更するには、要求本文で ID 'ProdPolicy' を指定します。
 
-```http
+```json
 {
   "properties": {
     "protectedItemType": "Microsoft.Compute/virtualMachines",
@@ -400,6 +429,15 @@ VM の保護に使用されているポリシーを変更するために、[保�
 ```
 
 応答は、[保護を有効にする場合](#responses-to-create-protected-item-operation)に説明したのと同じ書式に従ったものになります
+
+#### <a name="excluding-disks-during-azure-vm-protection"></a>Azure VM 保護中のディスクの除外
+
+Azure VM が既にバックアップされている場合は、保護のポリシーを変更することによって、バックアップまたは除外するディスクの一覧を指定できます。 要求は、[保護の有効時のディスクの除外](#excluding-disks-in-azure-vm-backup)と同じ形式で作成してください。
+
+> [!IMPORTANT]
+> 上記の要求本文は常に、除外するまたは含めるデータ ディスクの最終的なコピーです。 前の構成に "*追加*" されるわけではありません。 次に例を示します。最初に "データ ディスク 1 を除外する" として保護を更新し、その後に、"データ ディスク 2 を除外する" で保護を更新した場合、その後のバックアップでは "*データ ディスク 2 のみが除外*" され、データ ディスク 1 は含まれます。 これは、常に、その後のバックアップで含まれる、または除外される最終的な一覧です。
+
+除外される、または含まれるディスクの最新の一覧を取得するには、[こちら](/rest/api/backup/protecteditems/get)に記載されている保護された項目の情報を取得してください。 応答には、データ ディスク LUN の一覧が示され、それらが含まれるかのか除外されるのかが示されます。
 
 ### <a name="stop-protection-but-retain-existing-data"></a>保護を停止するが既存のデータを保持する
 
@@ -439,7 +477,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、次にその操作が完了したときは 204 (NoContent)。
 
-|名前  |Type  |説明  |
+|名前  |種類  |説明  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
 |202 Accepted     |         |     承認済み    |

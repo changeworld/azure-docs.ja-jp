@@ -6,18 +6,18 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 522d29505d7d10f5f6d97136f270f07a63053d19
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 8159d83624cdd474d91030d5376a3db447beffe1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271109"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008431"
 ---
 # <a name="get-help-with-your-system"></a>お使いのシステムでサポートを受ける
 
 Avere vFXT for Azure システム関連の問題がある場合にサポートを受ける方法を次に示します。
 
-* **Avere vFXT の問題** - Azure portal を使用し、Avere vFXT のサポート チケットを登録します。詳細は[こちらに](#open-a-support-ticket-for-your-avere-vfxt)あります。
+* **Avere vFXT の問題** - Azure portal を使用し、Avere vFXT のサポート チケットを登録します。詳細は [こちらに](#open-a-support-ticket-for-your-avere-vfxt)あります。
 * **クォータ** - クォータ関連の問題があるとき、[クォータ増加を要求](#request-a-quota-increase)します。
 * **ドキュメントとサンプル** - このドキュメントまたはサンプルに問題が見つかった場合、問題があるページの一番下までスクロールし、 **[フィードバック]** セクションを利用して既存の問題を検索し、必要であれば、新しい問題を登録します。
 
@@ -57,4 +57,4 @@ Avere vFXT のデプロイ中または使用中に問題が発生した場合、
 
 ## <a name="request-a-quota-increase"></a>クォータの増加を要求する
 
-Avere vFXT for Azure をデプロイするために必要な構成要素については、「[vFXT クラスターのクォータ](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)」を参照してください。 Azure portal から[クォータ増加を要求](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)できます。
+Avere vFXT for Azure をデプロイするために必要な構成要素については、「[vFXT クラスターのクォータ](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)」を参照してください。 Azure portal から[クォータ増加を要求](../azure-portal/supportability/resource-manager-core-quotas-request.md)できます。

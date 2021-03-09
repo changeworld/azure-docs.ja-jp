@@ -1,19 +1,16 @@
 ---
 title: Apache Phoenix を使用して Azure HDInsight で Apache Base クエリを実行する
 description: Apache Zeppelin を使用して Phoenix で Apache Base クエリを実行する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 10/14/2019
-ms.openlocfilehash: 2a6b324c4caf9619566ba335ab2e5a318ab68bb6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 50a72d0400b23162e05b17b37bdad48783261072
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079430"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944768"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Apache Zeppelin を使用して Azure HDInsight で Apache HBase に対して Apache Phoenix クエリを実行する
 
@@ -98,5 +95,5 @@ HDInsight 内の Apache HBase クラスター 「[Apache HBase の使用](./apac
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Apache Phoenix now supports Zeppelin in Azure HDInsight](https://blogs.msdn.microsoft.com/ashish/2018/08/17/apache-phoenix-now-supports-zeppelin-in-azure-hdinsight/) (Azure HDInsight で Apache Phoenix が Zeppelin を新しくサポート)
+- [Apache Phoenix now supports Zeppelin in Azure HDInsight](/archive/blogs/ashish/apache-phoenix-now-supports-zeppelin-in-azure-hdinsight) (Azure HDInsight で Apache Phoenix が Zeppelin を新しくサポート)
 - [Apache Phoenix grammar](https://phoenix.apache.org/language/index.html) (Apache Phoenix の文法)

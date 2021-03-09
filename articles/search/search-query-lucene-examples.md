@@ -1,295 +1,370 @@
 ---
 title: 完全な Lucene クエリ構文の使用
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search サービスでのあいまい検索、近接検索、用語ブースト、正規表現検索、ワイルドカード検索用の Lucene クエリ構文。
+description: Azure Cognitive Search インデックスでのあいまい検索、近接検索、用語ブースト、正規表現検索、ワイルドカード検索用の Lucene クエリ構文を示すクエリの例。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
-tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 9d3f8208af9d5997f5a9e025a54b54b5b035fb85
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 03/03/2021
+ms.openlocfilehash: 6213efb6ba14052c6f957a6d999f48f55f65186c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934975"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693562"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>"完全な" Lucene 検索構文の使用 (Azure Cognitive Search での高度なクエリ)
 
-Azure Cognitive Search のクエリを構築するときは、既定の[シンプルなクエリ パーサー](query-simple-syntax.md)をより拡張性の高い [Azure Cognitive Search の Lucene クエリ パーサー](query-lucene-syntax.md)に置き換えることにより、特殊化された高度なクエリ定義を作成することができます。 
+Azure Cognitive Search のクエリを構築するときは、既定の[シンプルなクエリ パーサー](query-simple-syntax.md)をより強力な [Lucene クエリ パーサー](query-lucene-syntax.md)に置き換えることにより、特殊化された高度なクエリ式を作成することができます。
 
-Lucene パーサーは、フィールド スコープ クエリ、あいまい検索、インフィックスおよびサフィックスのワイルドカード検索、近接検索、用語ブースト、正規表現検索など、より複雑なクエリ構文に対応しています。 機能が強力になるほど処理要件が増えるため、実行時間がやや長くなることを見込んでください。 この記事では、完全な構文を使用するときに、利用できるクエリ操作をデモンストレーションする例について詳しく説明します。
+Lucene パーサーは、フィールド スコープ クエリ、あいまい検索、インフィックスおよびサフィックスのワイルドカード検索、近接検索、用語ブースト、正規表現検索など、より複雑なクエリ形式に対応しています。 機能が強力になるほど処理要件が増えるため、実行時間がやや長くなることを見込んでください。 この記事では、完全な構文に基づいてクエリ操作をデモンストレーションする例について詳しく説明します。
 
 > [!Note]
 > 語幹検索や見出し語認定を想定していると意外なことですが、完全な Lucene クエリ構文で有効になる特殊化されたクエリ構造の多くは[テキスト解析](search-lucene-query-architecture.md#stage-2-lexical-analysis)されません。 語彙の分析は、完全な用語でのみ実行されます (用語クエリまたは語句クエリ)。 不完全な語句 (プレフィックス クエリ、ワイルドカードのクエリ、正規表現のクエリ、あいまいクエリ) でのクエリの種類は、解析ステージをバイパスして、クエリ ツリーに直接追加されます。 部分的なクエリ用語に対して適用される変換は、大文字から小文字への変換だけです。 
 >
 
-## <a name="formulate-requests-in-postman"></a>Postman で要求を作成する
+## <a name="hotels-sample-index"></a>ホテルのサンプル インデックス
 
-次の例では、[City of New York OpenData](https://opendata.cityofnewyork.us/) イニシアティブが提供するデータセットに基づいて利用可能なジョブで構成される NYC ジョブ検索インデックスを活用します。 このデータが最新のものであるとか、完全であるとはお考えにならないでください。 インデックスは、Microsoft が提供するサンドボックス サービス上にあります。つまり、これらのクエリを試すのに Azure サブスクリプションまたは Azure Cognitive Search は必要ありません。
+以下のクエリは、この[クイックスタート](search-get-started-portal.md)の手順に従って作成できる hotels-sample-index に基づいています。
 
-必要になるのは、GET で HTTP 要求を発行するための Postman または同等のツールです。 詳細については、[REST クライアントを使用した探索](search-get-started-postman.md)に関するページを参照してください。
+クエリの例は、REST API および POST 要求を使用して表されています。 [Postman](search-get-started-rest.md) または [Cognitive Search 拡張機能を備えた Visual Studio Code](search-get-started-vs-code.md) に貼り付けて実行できます。
 
-### <a name="set-the-request-header"></a>要求ヘッダーを設定する
+要求ヘッダーには次の値が必要です。
 
-1. 要求ヘッダーで、**Content-Type** を `application/json` に設定します。
+| Key | 値 |
+|-----|-------|
+| Content-Type | application/json|
+| api-key  | `<your-search-service-api-key>`、クエリまたは管理者キーのいずれか |
 
-2. **api-key** を追加して文字列 `252044BE3886FE4A8E3BAA4F595114BB` に設定します。 これは、NYC ジョブ インデックスをホストするサンドボックス検索サービスのクエリ キーです。
-
-要求ヘッダーを指定した後は、**search=** 文字列のみを入れ替えることで、この記事のすべてのクエリに対して要求ヘッダーを再利用できます。 
-
-  ![Postman の要求ヘッダー](media/search-query-lucene-examples/postman-header.png)
-
-### <a name="set-the-request-url"></a>要求 URL を設定する
-
-要求は、Azure Cognitive Search のエンドポイントと検索文字列を含む URL と GET コマンドを組み合わせたものです。
-
-  ![Postman の要求ヘッダー](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
-
-URL は、次の要素から構成されます。
-
-+ **`https://azs-playground.search.windows.net/`** は、Azure Cognitive Search の開発チームによって管理されているサンドボックス検索サービスです。 
-+ **`indexes/nycjobs/`** は、そのサービスのインデックス コレクション内の NYC ジョブ インデックスです。 要求にはサービス名とインデックスの両方が必要です。
-+ **`docs`** は、検索可能なすべてのコンテンツを含むドキュメント コレクションです。 要求ヘッダーに指定されたクエリ api-key は、ドキュメント コレクションを対象とする読み取り操作に対してのみ機能します。
-+ **`api-version=2020-06-30`** は、すべての要求に必須のパラメーターである api-version を設定します。
-+ **`search=*`** はクエリ文字列です。最初のクエリでは null で、最初の 50 件の結果が返されます (既定値)。
-
-## <a name="send-your-first-query"></a>初めてクエリを送信する
-
-確認手順として、次の要求を GET に貼り付け、 **[送信]** をクリックします。 結果は冗長な JSON ドキュメントとして返されます。 ドキュメント全体が返され、すべてのフィールドとすべての値を確認することができます。
-
-次の URL を検証手順として REST クライアントに貼り付けて、ドキュメントの構造を表示します。
-
-  ```http
-  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&search=*
-  ```
-
-クエリ文字列 **`search=*`** は、null または空の検索に相当する未指定の検索です。 これは実行できる最も簡単な検索です。
-
-オプションで、URL に **`$count=true`** を追加して、検索基準に一致するドキュメントの数を返すことができます。 空の検索文字列では、これはインデックス内のすべてのドキュメントです (NYC ジョブの場合は約 2800)。
-
-## <a name="how-to-invoke-full-lucene-parsing"></a>完全な Lucene の解析を呼び出す方法
-
-完全なクエリ構文を呼び出して既定の単純なクエリ構文をオーバーライドするには、**queryType=full** を追加します。 
-
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&search=*
-```
-
-この記事のすべての例で、**queryType=full** 検索パラメーターを指定します。そうすることで、Lucene Query Parser によって完全な構文が処理されるように指示します。 
-
-## <a name="example-1-query-scoped-to-a-list-of-fields"></a>例 1:フィールドの一覧を対象とするクエリ
-
-この最初の例は Lucene 固有ではありませんが、最初の基本的なクエリの概念であるフィールド スコープを紹介するために利用します。 この例では、クエリ全体とその応答の範囲をいくつかの特定のフィールドに制限しています。 ツールが Postman または Search エクスプローラーの場合、読みやすい JSON 応答を構成する方法を理解することが重要です。 
-
-簡潔にするため、このクエリでは *business_title* フィールドのみを対象として、肩書きのみが返されるよう指定しています。 **searchFields** パラメーターでクエリの実行を business_title フィールドのみに制限し、**select** で応答に含まれるフィールドを指定します。
-
-### <a name="search-expression"></a>検索式
+次の例のように、URI パラメーターには、検索サービスのエンドポイントと、インデックス名、docs コレクション、search コマンド、および API バージョンを含める必要があります。
 
 ```http
-&search=*&searchFields=business_title&$select=business_title
+https://{{service-name}}.search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 ```
 
-次のクエリは、コンマ区切りのリストに複数のフィールドを持つ同じクエリです。
+要求本文は有効な JSON の形式である必要があります。
+
+```json
+{
+    "search": "*",
+    "queryType": "full",
+    "select": "HotelId, HotelName, Category, Tags, Description",
+    "count": true
+}
+```
+
++ `*` に設定された "search" は null または空の検索に相当する未指定のクエリです。 これは特に便利なわけではありませんが、最も簡単な検索方法であり、インデックス内の取得可能なすべてのフィールドに値がすべて入った状態で表示されます。
+
++ "queryType" を "full" に設定すると、完全な Lucene クエリ パーサーが呼び出され、この構文ではこれが必要です。
+
++ フィールドのコンマ区切りリストに設定した "select" は、検索結果のコンテキストで有用なフィールドのみが含まれるように検索結果を構成するために使用されます。
+
++ "count"は、検索条件に一致するドキュメントの数を返します。 空の検索文字列では、この数はインデックス内のすべてのドキュメントになります (hotels-sample-index の場合は 50)。
+
+## <a name="example-1-fielded-search"></a>例 1: フィールド検索
+
+フィールド検索では、特定のフィールドが、埋め込まれた個別の検索式のスコープになります。 この例では、用語 "hotel" を含むホテル名を検索しますが、"motel" は検索しません。 AND を使用して複数のフィールドを指定できます。 
+
+このクエリ構文を使用する場合、クエリするフィールドが検索式自体に含まれるときは "searchFields" パラメーターを省略できます。 "searchFields" をフィールド検索に含める場合、`fieldName:searchExpression` は "searchFields" よりも常に優先されます。
 
 ```http
-search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
+POST /indexes/hotel-samples-index/docs/search?api-version=2020-06-30
+{
+    "search": "HotelName:(hotel NOT motel) AND Category:'Resort and Spa'",
+    "queryType": "full",
+    "select": "HotelName, Category",
+    "count": true
+}
 ```
 
-コンマの後ろのスペースは省略可能です。
+このクエリの応答は次の例のようになります。"Resort and Spa" でフィルター処理され、"hotel" または "motel" が名前に含まれるホテルが返されます。
 
-> [!Tip]
-> ご自身のアプリケーション コードから REST API を使用している場合は、`$select` や `searchFields` などのパラメーターを URL エンコードすることを忘れないでください。
+```json
+"@odata.count": 4,
+"value": [
+    {
+        "@search.score": 4.481559,
+        "HotelName": "Nova Hotel & Spa",
+        "Category": "Resort and Spa"
+    },
+    {
+        "@search.score": 2.4524608,
+        "HotelName": "King's Palace Hotel",
+        "Category": "Resort and Spa"
+    },
+    {
+        "@search.score": 2.3970203,
+        "HotelName": "Triple Landscape Hotel",
+        "Category": "Resort and Spa"
+    },
+    {
+        "@search.score": 2.2953436,
+        "HotelName": "Peaceful Market Hotel & Spa",
+        "Category": "Resort and Spa"
+    }
+]
+```
 
-### <a name="full-url"></a>完全な URL
+検索式は、単一の用語、単一の語句、またはかっこで囲まれた複雑な式が可能であり、必要に応じてブール演算子も使用できます。 例として、次のようなものがあります。
+
++ `HotelName:(hotel NOT motel)`
++ `Address/StateProvince:("WA" OR "CA")`
++ `Tags:("free wifi" NOT "free parking") AND "coffee in lobby"`
+
+語句を 1 つのエンティティとして評価するのであれば、複数の文字列を引用符で囲ってください。この例では、Address/StateProvince フィールドで 2 つの異なる場所を検索しています。 クライアントによっては、引用符のエスケープ (`\`) が必要になる場合があります。
+
+`fieldName:searchExpression` に指定されたフィールドは検索可能フィールドである必要があります。 フィールド定義の属性が決まるしくみの詳細については、[Create Index (REST API)](/rest/api/searchservice/create-index) に関するページを参照してください。
+
+## <a name="example-2-fuzzy-search"></a>例 2: あいまい検索
+
+あいまい検索は、スペルミスの単語を含め、類似した用語に一致します。 あいまい検索を実行するには、1 つの言葉の終わりにチルダ記号 `~` を付けます。任意で編集距離を指定するパラメーターとして 0 ～ 2 の値を指定します。 たとえば、`blue~` または `blue~1` は blue、blues、glue を返します。
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&search=*&searchFields=business_title&$select=business_title
+POST /indexes/hotel-samples-index/docs/search?api-version=2020-06-30
+{
+    "search": "Tags:conserge~",
+    "queryType": "full",
+    "select": "HotelName, Category, Tags",
+    "searchFields": "HotelName, Category, Tags",
+    "count": true
+}
 ```
 
-このクエリの応答は、次のスクリーンショットのようになります。
+このクエリの応答は、一致するドキュメント内の "concierge" に解決します (簡潔にするために省略しています)。
 
-  ![Postman の応答のサンプル](media/search-query-lucene-examples/postman-sample-results.png)
-
-応答の検索スコアに気付いたかもしれません。 検索がフルテキスト検索でなかった、または適用された基準がないという理由でランクがない場合は、1 の均一のスコアが発生します。 条件なしの null 検索では、任意の順序で行が返されます。 実際の検索基準を含めると、検索スコアは意味のある値に変化します。
-
-## <a name="example-2-fielded-search"></a>例 2:フィールド検索
-
-完全な Lucene 構文では、個々の検索式の範囲を特定のフィールドに制限することができます。 この例は、junior ではなく、senior という表現を含む肩書きを検索します。
-
-### <a name="search-expression"></a>検索式
-
-```http
-$select=business_title&search=business_title:(senior NOT junior)
+```json
+"@odata.count": 12,
+"value": [
+    {
+        "@search.score": 1.1832147,
+        "HotelName": "Secret Point Motel",
+        "Category": "Boutique",
+        "Tags": [
+            "pool",
+            "air conditioning",
+            "concierge"
+        ]
+    },
+    {
+        "@search.score": 1.1819803,
+        "HotelName": "Twin Dome Motel",
+        "Category": "Boutique",
+        "Tags": [
+            "pool",
+            "free wifi",
+            "concierge"
+        ]
+    },
+    {
+        "@search.score": 1.1773309,
+        "HotelName": "Smile Hotel",
+        "Category": "Suite",
+        "Tags": [
+            "view",
+            "concierge",
+            "laundry service"
+        ]
+    },
 ```
 
-次のクエリは、複数のフィールドを持つ同じクエリです。
-
-```http
-$select=business_title, posting_type&search=business_title:(senior NOT junior) AND posting_type:external
-```
-
-### <a name="full-url"></a>完全な URL
-
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
-```
-
-  ![Postman の応答のサンプル](media/search-query-lucene-examples/intrafieldfilter.png)
-
-**fieldName:searchExpression** 構文を使用して、フィールド検索操作を定義できます。検索式は、単一の単語、単一の語句、またはかっこで囲まれた複雑な式が可能であり、必要に応じてブール演算子も使用できます。 例として、次のようなものがあります。
-
-- `business_title:(senior NOT junior)`
-- `state:("New York" OR "New Jersey")`
-- `business_title:(senior NOT junior) AND posting_type:external`
-
-複数の文字列を 1 つのエンティティとして評価するのであれば、複数の文字列を引用符で囲ってください。この例では、`state` フィールドで 2 つの異なる場所を検索しています。 また、NOT や AND のように、演算子は大文字表記になります。
-
-**fieldName:searchExpression** に指定されたフィールドは検索可能フィールドである必要があります。 フィールド定義におけるインデックス属性の使用方法に関する詳細については、「[インデックスの作成 (Azure Cognitive Search REST API)](/rest/api/searchservice/create-index)」を参照してください。
-
-> [!NOTE]
-> 上記の例では、クエリの各部分に明示的に指定されたフィールド名があるため、`searchFields` パラメーターを使用する必要がありませんでした。 ただし、いくつかの部分で特定のフィールドをスコープにし、他の部分は複数のフィールドに適用できるクエリを実行する場合は、`searchFields` パラメーターを引き続き使用できます。 たとえば、クエリ `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` は、`business_title` フィールドの `senior NOT junior` のみと一致し、`posting_type` フィールドの "external" と一致します。 **fieldName:searchExpression** に指定されたフィールド名は常に `searchFields` パラメーターに優先するため、この例では `searchFields` パラメーターに `business_title` を含める必要はありません。
-
-## <a name="example-3-fuzzy-search"></a>例 3: あいまい検索
-
-完全な Lucene 構文では、構造が似ている用語に一致するあいまい検索もサポートしています。 あいまい検索を実行するには、1 つの言葉の終わりにチルダ記号 `~` を付けます。任意で編集距離を指定するパラメーターとして 0 ～ 2 の値を指定します。 たとえば、`blue~` または `blue~1` は blue、blues、glue を返します。
-
-### <a name="search-expression"></a>検索式
-
-```http
-searchFields=business_title&$select=business_title&search=business_title:asosiate~
-```
-
-フレーズは直接サポートされていませんが、フレーズのコンポーネント部分のあいまい一致を指定できます。
-
-```http
-searchFields=business_title&$select=business_title&search=business_title:asosiate~ AND comm~ 
-```
-
-
-### <a name="full-url"></a>完全な URL
-
-このクエリは、"associate" という用語を含む仕事を検索します (意図的にスペルを間違えています)。
-
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:asosiate~
-```
-  ![あいまい検索の応答](media/search-query-lucene-examples/fuzzysearch.png)
-
+語句は直接サポートされていませんが、`search=Tags:landy~ AND sevic~` のように、複数部分から成る語句の各用語に対してあいまい一致を指定できます。  このクエリ式では、"laundry service" で 15 件の一致が見つかります。
 
 > [!Note]
-> あいまいクエリは[分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)されません。 不完全な語句 (プレフィックス クエリ、ワイルドカードのクエリ、正規表現のクエリ、あいまいクエリ) でのクエリの種類は、解析ステージをバイパスして、クエリ ツリーに直接追加されます。 不完全なクエリ用語に対して適用される変換は、大文字から小文字への変換だけです。
+> あいまいクエリは[分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)されません。 不完全な語句 (プレフィックス クエリ、ワイルドカードのクエリ、正規表現のクエリ、あいまいクエリ) でのクエリの種類は、解析ステージをバイパスして、クエリ ツリーに直接追加されます。 部分的なクエリ用語に対して適用される変換は、大文字から小文字への変換だけです。
 >
 
-## <a name="example-4-proximity-search"></a>例 4: 近接検索
-近接検索は、ある文書で互いに近くにある言葉を検索します。 言葉の終わりにチルダ記号 "~" を挿入し、近接境界となる語数を続けます。 たとえば、"hotel airport"~5 と指定すると、ある文書で hotel という言葉と airport という言葉が互いに 5 語以内にある箇所が検索されます。
+## <a name="example-3-proximity-search"></a>例 3: 近接検索
 
-### <a name="search-expression"></a>検索式
+近接検索では、ドキュメント内で近くにある語句を検索します。 言葉の終わりにチルダ記号 "~" を挿入し、近接境界となる語数を続けます。
+
+このクエリでは、ドキュメント内で互いに 5 語以内にある "hotel" と "airport" という用語を検索します。 語句を保持するために引用符をエスケープ (`\"`) しています。
 
 ```http
-searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
+POST /indexes/hotel-samples-index/docs/search?api-version=2020-06-30
+{
+    "search": "Description: \"hotel airport\"~5",
+    "queryType": "full",
+    "select": "HotelName, Description",
+    "searchFields": "HotelName, Description",
+    "count": true
+}
 ```
 
-### <a name="full-url"></a>完全な URL
+このクエリの応答は、次の例のようになります。
 
-このクエリでは、"senior analyst" という用語を含む仕事を検索します。間に 1 語だけ含まれます。
-
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
+```json
+"@odata.count": 2,
+"value": [
+    {
+        "@search.score": 0.6331726,
+        "HotelName": "Trails End Motel",
+        "Description": "Only 8 miles from Downtown.  On-site bar/restaurant, Free hot breakfast buffet, Free wireless internet, All non-smoking hotel. Only 15 miles from airport."
+    },
+    {
+        "@search.score": 0.43032226,
+        "HotelName": "Catfish Creek Fishing Cabins",
+        "Description": "Brand new mattresses and pillows.  Free airport shuttle. Great hotel for your business needs. Comp WIFI, atrium lounge & restaurant, 1 mile from light rail."
+    }
+]
 ```
-  ![近接クエリ](media/search-query-lucene-examples/proximity-before.png)
 
-"senior analyst" の間の言葉を削除してもう一度試します。 前のクエリの 10 個に対し、このクエリでは 8 個のドキュメントが返される点に注意してください。
+## <a name="example-4-term-boosting"></a>例 4: 用語ブースト
 
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~0
+用語ブーストでは、指定用語を含む文書に含まない文書より高い順位が設定されます (ブーストされます)。 用語をブーストするには、キャレット記号 `^` とブースト係数 (数字) を、検索する用語の終わりに使用します。 ブースト係数の既定値は 1 で、正の値でなければなりませんが、1 未満 (例: 0.2) でも構いません。 用語ブーストはスコアリング プロファイルとは違います。スコアリング プロファイルは、特定の用語ではなく、特定のフィールドをブーストします。
+
+この "ブースト前" クエリでは "beach access" を検索しており、一方または両方の用語に一致する 7 つのドキュメントがあることがわかります。
+
+```http
+POST /indexes/hotel-samples-index/docs/search?api-version=2020-06-30
+{
+    "search": "beach access",
+    "queryType": "full",
+    "select": "HotelName, Description, Tags",
+    "searchFields": "HotelName, Description, Tags",
+    "count": true
+}
 ```
 
-## <a name="example-5-term-boosting"></a>例 5:用語ブースト
-用語ブーストでは、指定用語を含む文書に含まない文書より高い順位が設定されます (ブーストされます)。 用語をブーストするには、キャレット記号 "^" とブースト係数 (数字) を検索語句の終わりに付けます。 
+実際には、"access" に一致するドキュメントは 1 つだけですが、唯一の一致であるため、用語 "beach" がドキュメントに含まれていないにもかかわらず配置が高く (2 番目の位置に) なっています。
 
-### <a name="full-urls"></a>完全な URL
-
-この "ブースト前" のクエリでは、*computer analyst* という用語を含む仕事を検索します。*computer* と *analyst* の両方を含む結果はありませんが、*computer* の仕事が結果の上位に表示されることに注目してください。
-
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
+```json
+"@odata.count": 7,
+"value": [
+    {
+        "@search.score": 2.2723424,
+        "HotelName": "Nova Hotel & Spa",
+        "Description": "1 Mile from the airport.  Free WiFi, Outdoor Pool, Complimentary Airport Shuttle, 6 miles from the beach & 10 miles from downtown."
+    },
+    {
+        "@search.score": 1.5507699,
+        "HotelName": "Old Carrabelle Hotel",
+        "Description": "Spacious rooms, glamorous suites and residences, rooftop pool, walking access to shopping, dining, entertainment and the city center."
+    },
+    {
+        "@search.score": 1.5358944,
+        "HotelName": "Whitefish Lodge & Suites",
+        "Description": "Located on in the heart of the forest. Enjoy Warm Weather, Beach Club Services, Natural Hot Springs, Airport Shuttle."
+    },
+    {
+        "@search.score": 1.3433652,
+        "HotelName": "Ocean Air Motel",
+        "Description": "Oceanfront hotel overlooking the beach features rooms with a private balcony and 2 indoor and outdoor pools. Various shops and art entertainment are on the boardwalk, just steps away."
+    },
 ```
-  ![用語ブースト前](media/search-query-lucene-examples/termboostingbefore.png)
 
-この "ブースト後" のクエリでは、検索を繰り返します。今度は、両方の用語が存在しない場合、*analyst* という用語に *computer* という用語より高い優先順位を与えます。 
+この "ブースト後" のクエリでは、検索を繰り返しますが、今回は、用語 "beach" に用語 "access" よりも高い優先順位を与えて結果をブーストします。 人が判読できるバージョンのクエリは `search=Description:beach^2 access` です。 クライアントによっては、`^2` は `%5E2` のように表現することが必要な場合があります。
 
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst%5e2
-```
-上記のクエリをより読みやすい形式にすると、`search=business_title:computer analyst^2` になります。 実行可能なクエリの場合、`^2` は `%5E2` としてエンコードされ、見づらくなります。
+用語 "beach" をブーストした後は、Old Carrabelle Hotel の一致は 6 番目にまで下がります。
 
-  ![用語ブースト後](media/search-query-lucene-examples/termboostingafter.png)
+<!-- Consider a scoring profile that boosts matches in a certain field, such as "genre" in a music app. Term boosting could be used to further boost certain search terms higher than others. For example, "rock^2 electronic" will boost documents that contain the search terms in the "genre" field higher than other searchable fields in the index. Furthermore, documents that contain the search term "rock" will be ranked higher than the other search term "electronic" as a result of the term boost value (2). -->
 
-用語ブーストはスコアリング プロファイルとは違います。スコアリング プロファイルは、特定の用語ではなく、特定のフィールドをブーストします。 次の例はその違いを示しています。
-
-musicstoreindex の例の **genre** など、特定のフィールドの一致がブーストされるスコアリング プロファイルについて考えてみましょう。 用語ブーストでは、特定の用語に他の用語より高い順位を与えます。 たとえば、"rock^2 electronic" と指定した場合、 **genre** フィールドに検索語句を含む文書に、インデックスの他の検索可能フィールドより高い順位が与えられます。 さらに、用語のブースト値 (2) により、"rock" という検索用語を含む文書に、"electronic" というもう 1 つの用語よりも高い順位が与えられます。
-
-係数レベルを設定するときにブースト係数を大きくするほど、その用語の関連性が他の検索用語に比べて大きくなります。 既定のブースト係数は 1 です。 ブースト係数は整数にする必要がありますが、1 に満たない (0.2 など) 数字にすることができます。
-
-
-## <a name="example-6-regex"></a>例 6:Regex
+## <a name="example-5-regex"></a>例 5: 正規表現
 
 正規表現検索では、スラッシュ "/" の間のコンテンツに基づいて一致が検索されます。[RegExp](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html) クラスに詳細があります。
 
-### <a name="search-expression"></a>検索式
-
 ```http
-searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
+POST /indexes/hotel-samples-index/docs/search?api-version=2020-06-30
+{
+    "search": "HotelName:/(Mo|Ho)tel/",
+    "queryType": "full",
+    "select": "HotelName",
+    "count": true
+}
 ```
 
-### <a name="full-url"></a>完全な URL
+このクエリの応答は、次の例のようになります。
 
-このクエリでは、Senior または Junior という言葉を含む仕事を検索します (`search=business_title:/(Sen|Jun)ior/`)。
-
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
+```json
+    "@odata.count": 22,
+    "value": [
+        {
+            "@search.score": 1.0,
+            "HotelName": "Days Hotel"
+        },
+        {
+            "@search.score": 1.0,
+            "HotelName": "Triple Landscape Hotel"
+        },
+        {
+            "@search.score": 1.0,
+            "HotelName": "Smile Hotel"
+        },
+        {
+            "@search.score": 1.0,
+            "HotelName": "Pelham Hotel"
+        },
+        {
+            "@search.score": 1.0,
+            "HotelName": "Sublime Cliff Hotel"
+        },
+        {
+            "@search.score": 1.0,
+            "HotelName": "Twin Dome Motel"
+        },
+        {
+            "@search.score": 1.0,
+            "HotelName": "Nova Hotel & Spa"
+        },
+        {
+            "@search.score": 1.0,
+            "HotelName": "Scarlet Harbor Hotel"
+        },
 ```
-
-  ![正規表現クエリ](media/search-query-lucene-examples/regex.png)
 
 > [!Note]
-> 正規表現クエリは[分析](./search-lucene-query-architecture.md#stage-2-lexical-analysis)されません。 不完全なクエリ用語に対して適用される変換は、大文字から小文字への変換だけです。
+> 正規表現クエリは[分析](./search-lucene-query-architecture.md#stage-2-lexical-analysis)されません。 部分的なクエリ用語に対して適用される変換は、大文字から小文字への変換だけです。
 >
 
-## <a name="example-7-wildcard-search"></a>例 7:ワイルドカード検索
-一般的に認められている構文を利用できます。複数の場合は (\*) を、単数の場合は (?) をワイルドカード文字として検索できます。 Lucene Query Parser では、これらの文字を語句ではなく 1 つの用語に利用することにご注意ください。
+## <a name="example-6-wildcard-search"></a>例 6: ワイルドカード検索
 
-### <a name="search-expression"></a>検索式
+複数 (`*`) または単数 (`?`) の文字のワイルドカード検索で、一般に認識されている構文を使用できます。 Lucene Query Parser では、これらの文字を語句ではなく 1 つの用語に利用することにご注意ください。
+
+このクエリでは、プレフィックス "sc" を含むホテル名を検索します。 検索の最初の文字に `*` や `?` の記号は使用できません。
 
 ```http
-searchFields=business_title&$select=business_title&search=business_title:prog*
+POST /indexes/hotel-samples-index/docs/search?api-version=2020-06-30
+{
+    "search": "HotelName:sc*",
+    "queryType": "full",
+    "select": "HotelName",
+    "count": true
+}
 ```
 
-### <a name="full-url"></a>完全な URL
+このクエリの応答は、次の例のようになります。
 
-このクエリでは、"prog" という接頭辞を含む仕事を検索します。プログラミングやプログラマーなどの用語が肩書きに含まれる仕事が検索されます。 検索の最初の文字として * または ? を使用することはできません。
-
-```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
+```json
+    "@odata.count": 2,
+    "value": [
+        {
+            "@search.score": 1.0,
+            "HotelName": "Scarlet Harbor Hotel"
+        },
+        {
+            "@search.score": 1.0,
+            "HotelName": "Scottish Inn"
+        }
+    ]
 ```
-  ![ワイルドカード クエリ](media/search-query-lucene-examples/wildcard.png)
 
 > [!Note]
-> ワイルドカード クエリは[分析](./search-lucene-query-architecture.md#stage-2-lexical-analysis)されません。 不完全なクエリ用語に対して適用される変換は、大文字から小文字への変換だけです。
+> ワイルドカード クエリは[分析](./search-lucene-query-architecture.md#stage-2-lexical-analysis)されません。 部分的なクエリ用語に対して適用される変換は、大文字から小文字への変換だけです。
 >
 
 ## <a name="next-steps"></a>次のステップ
-自分のコードに Lucene Query Parser を指定してみてください。 次のリンクでは、.NET と REST API の両方の検索クエリを設定する方法について説明しています。 これらのリンクでは、既定の単純な構文を使用しています。**queryType** を指定するには、この記事で学習したことを応用する必要があります。
 
-* [.NET SDK を使用したインデックスのクエリ実行](./search-get-started-dotnet.md)
-* [REST API を使用したインデックスのクエリ実行](./search-get-started-powershell.md)
+コードでクエリを指定してみてください。 次のリンクは、Azure SDK を使用して検索クエリを設定する方法について説明しています。
+
++ [.NET SDK を使用したインデックスのクエリ実行](search-get-started-dotnet.md)
++ [Python SDK を使用したインデックスのクエリ実行](search-get-started-python.md)
++ [JavaScript SDK を使用したインデックスのクエリ実行](search-get-started-javascript.md)
 
 追加の構文リファレンス、クエリ アーキテクチャ、およびサンプルについては、次のリンク先を参照してください。
 
-+ [単純構文クエリの例](search-query-simple-examples.md)
++ [高度なクエリを作成するための Lucene 構文のクエリの例](search-query-lucene-examples.md)
 + [Azure Cognitive Search でのフルテキスト検索のしくみ](search-lucene-query-architecture.md)
-+ [単純なクエリ構文](/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Full Lucene クエリ構文](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [単純なクエリ構文](query-simple-syntax.md)
++ [Full Lucene クエリ構文](query-lucene-syntax.md)
++ [フィルターの構文](search-query-odata-filter.md)

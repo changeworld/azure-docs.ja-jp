@@ -8,16 +8,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 46db5f7d3e5d3844fb297e512d8d701e6da79de9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 99fa8d4cf8f48d0fe72da36baef20c83add438c0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654312"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330259"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute と Azure Site Recovery
 
-Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提供するプライベート接続で、オンプレミスのネットワークを Microsoft Cloud に拡張できます。 ExpressRoute では、Microsoft Azure、Office 365、Dynamics 365 などの Microsoft クラウド サービスへの接続を確立できます。
+Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提供するプライベート接続で、オンプレミスのネットワークを Microsoft Cloud に拡張できます。 ExpressRoute では、Microsoft Azure、Microsoft 365、Dynamics 365 などの Microsoft クラウド サービスへの接続を確立できます。
 
 この記事では、ディザスター リカバリーと移行のために、どのように Azure ExpressRoute と Azure Site Recovery を使用できるかを説明します。
 
@@ -31,13 +31,13 @@ ExpressRoute 回線には、複数のルーティング ドメインが関連付
 
 Azure Site Recovery により、オンプレミスの [HYPER-V 仮想マシン](hyper-v-azure-architecture.md)、[VMware 仮想マシン](vmware-azure-architecture.md)、および[物理サーバー](physical-azure-architecture.md)のディザスター リカバリーと Azure への移行が可能になります。 オンプレミスから Azure へのすべてのシナリオで、レプリケーション データは Azure Storage アカウントに送信され、格納されます。 レプリケーション中に仮想マシンの料金は発生しません。 Azure へのフェールオーバーを実行すると、Site Recovery は Azure IaaS 仮想マシンを自動的に作成します。
 
-Site Recovery は、パブリック エンドポイント経由で、ターゲット Azure リージョンの Azure ストレージ アカウントまたはレプリカ マネージド ディスクにデータをレプリケートします。 Site Recovery のレプリケーション トラフィックに ExpressRoute を使用するために、[Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)または既存の[パブリック ピアリング](../expressroute/about-public-peering.md) (新規作成では非推奨) を利用できます。 Microsoft ピアリングは、レプリケーション用に推奨されるルーティング ドメインです。 プライベート ピアリングを介したレプリケーションはサポートされていません。
+Site Recovery は、パブリック エンドポイント経由で、ターゲット Azure リージョンの Azure ストレージ アカウントまたはレプリカ マネージド ディスクにデータをレプリケートします。 Site Recovery のレプリケーション トラフィックに ExpressRoute を使用するために、[Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)または既存の[パブリック ピアリング](../expressroute/about-public-peering.md) (新規作成では非推奨) を利用できます。 Microsoft ピアリングは、レプリケーション用に推奨されるルーティング ドメインです。 レプリケーションは、[コンテナーでプライベート エンド ポイントが有効になっている](hybrid-how-to-enable-replication-private-endpoints.md)場合にのみ、プライベート ピアリング経由でサポートされることに注意してください。
 
 構成サーバーの[ネットワークの要件](vmware-azure-configuration-server-requirements.md#network-requirements)も確実に満たされるようにします。 Site Recovery レプリケーションを調整する場合、構成サーバーが特定の URL に接続する必要があります。 この接続には ExpressRoute は使用できません。 
 
 オンプレミスでプロキシを使用しているときに、レプリケーションのトラフィックで ExpressRoute を使用したい場合は、構成サーバーとプロセス サーバーにプロキシ バイパスの一覧を構成する必要があります。 次の手順に従ってください。
 
-- システム ユーザーのコンテンツにアクセスするための PsExec ツールを[こちら](https://aka.ms/PsExec)からダウンロードします。
+- システム ユーザーのコンテンツにアクセスするための PsExec ツールを[こちら](/sysinternals/downloads/psexec)からダウンロードします。
 - psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe" をコマンド ラインで実行して、インターネット エクスプローラーでシステム ユーザーのコンテンツを開きます。
 - IE にプロキシ設定を追加する
 - バイパスの一覧に、Azure ストレージの URL (*.blob.core.windows.net) を追加します。

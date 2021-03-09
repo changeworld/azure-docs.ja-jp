@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 01/28/2020
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: 2eb82eb8b4a64cbbfef91539f46ba084aa73f207
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcc55156ca1d03614a4ff9767d6cf3f2603c06ca
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77205702"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027533"
 ---
 次の方法を使用して、推奨される開発環境にサポートを追加します。
 
@@ -23,4 +23,4 @@ ms.locfileid: "77205702"
 | Visual Studio            | C# クラス ライブラリ      | [NuGet パッケージをインストールする](../articles/azure-functions/functions-bindings-register.md#vs) |
 | Visual Studio Code       | [コアツール](../articles/azure-functions/functions-run-local.md)に基づく | [拡張機能バンドルを登録する](../articles/azure-functions/functions-bindings-register.md#extension-bundles)<br><br>[Azure Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) をインストールすることをお勧めします。 |
 | その他のエディター/IDE     | [コアツール](../articles/azure-functions/functions-run-local.md)に基づく | [拡張機能バンドルを登録する](../articles/azure-functions/functions-bindings-register.md#extension-bundles) |
-| Azure portal             | ポータルでのみオンライン | バインドを追加するときにインストールする<br /><br /> 関数アプリを再発行せずに、既存のバインディング拡張機能を更新するには、[拡張機能の更新](../articles/azure-functions/install-update-binding-extensions-manual.md)に関するページを参照してください。 |
+| Azure portal             | ポータルでのみオンライン | バインドを追加するときにインストールする<br /><br /> 関数アプリを再発行せずに、既存のバインディング拡張機能を更新するには、[拡張機能の更新](../articles/azure-functions/functions-bindings-register.md)に関するページを参照してください。 |

@@ -11,12 +11,12 @@ ms.date: 08/04/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 981e23a2b021cc0eb8085aa943830f87352aee69
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 141812e83653b458a2562bf73b70117c39bf7be0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828525"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426562"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-in-the-azure-portal"></a>クイック スタート:Azure portal 内で Azure 通知ハブを作成する
 
@@ -35,7 +35,7 @@ Azure Notification Hubs は、任意のバックエンド (クラウドまたは
 このセクションでは、既存の名前空間の中に通知ハブを作成します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. 左側のメニューで **[すべてのサービス]** を選択し、「**通知ハブ**」を検索します。 **[Notification Hub の名前空間]** の横にある**星印** (`*`) を選択して、左側のメニューの **[お気に入り]** セクションに追加します。 **[Notification Hub の名前空間]** を選択します。
+2. 左側のメニューで **[すべてのサービス]** を選択し、「 **通知ハブ** 」を検索します。 **[Notification Hub の名前空間]** の横にある **星印** (`*`) を選択して、左側のメニューの **[お気に入り]** セクションに追加します。 **[Notification Hub の名前空間]** を選択します。
 
       ![Azure portal - [Notification Hub の名前空間] を選択する](./media/create-notification-hub-portal/select-notification-hub-namespaces-all-services.png)
 3. **[Notification Hub の名前空間]** ページで、一覧から目的の名前空間を選択します。
@@ -52,10 +52,10 @@ Azure Notification Hubs は、任意のバックエンド (クラウドまたは
       ![デプロイの通知](./media/create-notification-hub-portal/deployment-notification.png)
 7. **[Notification Hub の名前空間]** Web ページを最新の情報に更新して、一覧にある新しいハブを確認します。
 
-      ![Azure Portal > [通知] > [リソースに移動]](./media/create-notification-hub-portal/new-hub-in-list.png)
-8. 自分の**通知ハブ**を選択して、通知ハブのホーム ページを確認します。
+      ![新しいハブが一覧に表示された [Notification Hub の名前空間] Web ページのスクリーンショット。](./media/create-notification-hub-portal/new-hub-in-list.png)
+8. 自分の **通知ハブ** を選択して、通知ハブのホーム ページを確認します。
 
-      ![Azure Portal > [通知] > [リソースに移動]](./media/create-notification-hub-portal/hub-home-page.png)
+      ![通知ハブのホーム ページのスクリーンショット。](./media/create-notification-hub-portal/hub-home-page.png)
 
 ## <a name="next-steps"></a>次のステップ
 

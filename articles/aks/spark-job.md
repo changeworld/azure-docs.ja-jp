@@ -5,13 +5,13 @@ author: lenadroid
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
-ms.custom: mvc
-ms.openlocfilehash: 074e3db3234794aa891d5452b0c19060193c6d0c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 74a3fe79291f3a5c7f5bbd664bf6d55a5fb77eae
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243972"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181195"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>AKS での Apache Spark ジョブの実行
 
@@ -340,7 +340,7 @@ Spark スクリプトが含まれるイメージをビルドしてプッシュ�
 <!-- LINKS - external -->
 [apache-spark]: https://spark.apache.org/
 [docker-hub]: https://docs.docker.com/docker-hub/
-[java-install]: https://aka.ms/azure-jdks
+[java-install]: /azure/developer/java/fundamentals/java-jdk-long-term-support
 [maven-install]: https://maven.apache.org/install.html
 [sbt-install]: https://www.scala-sbt.org/1.0/docs/Setup.html
 [spark-docs]: https://spark.apache.org/docs/latest/running-on-kubernetes.html
@@ -352,5 +352,5 @@ Spark スクリプトが含まれるイメージをビルドしてプッシュ�
 [acr-aks]: cluster-container-registry-integration.md
 [acr-create]: ../container-registry/container-registry-get-started-azure-cli.md
 [aks-quickstart]: ./index.yml
-[azure-cli]: /cli/azure/?view=azure-cli-latest
+[azure-cli]: /cli/azure/
 [storage-account]: ../storage/blobs/storage-quickstart-blobs-cli.md

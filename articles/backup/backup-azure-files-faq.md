@@ -3,12 +3,12 @@ title: Azure Files のバックアップに関する FAQ
 description: この記事では、Azure Backup サービスを使用して Azure ファイル共有を保護する方法に関してよく寄せられる質問への回答を示します。
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0db30de655bfc0b98baa81a4ef20532e697fc1f8
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: e2b6afb25e189ee2848f25c0ba59d843baf37090
+ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824731"
+ms.lasthandoff: 10/11/2020
+ms.locfileid: "91940837"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Files のバックアップに関する質問
 
@@ -30,7 +30,7 @@ ms.locfileid: "88824731"
 
 はい。 同期グループに接続されている Azure ファイル共有の保護は有効になっています。
 
-### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>ファイル共有をバックアップしようと、ストレージ アカウント内のファイル共有を検出するために、そのストレージ アカウントをクリックしました。 しかし、それらを保護することはしませんでした。 これらのファイル共有を他のコンテナーで保護するにはどうすればよいのですか?
+### <a name="when-trying-to-back-up-file-shares-i-selected-a-storage-account-to-discover-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>ファイル共有をバックアップしようとして、ストレージ アカウント内のファイル共有を検出するために、そのストレージ アカウントを選択しました。 しかし、それらを保護することはしませんでした。 これらのファイル共有を他のコンテナーで保護するにはどうすればよいのですか?
 
 バックアップを試みる際、ストレージ アカウントを選択して、その中からファイル共有を検出すると、これを行ったストレージ アカウントがコンテナーに登録されます。 別のコンテナーでファイル共有を保護する場合は、このコンテナーから選択したストレージ アカウントを[登録解除](manage-afs-backup.md#unregister-a-storage-account)してください。
 
@@ -75,6 +75,23 @@ ms.locfileid: "88824731"
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-them"></a>Azure Backup によって作成されたスナップショットにアクセスしてマウントできますか?
 
 Azure Backup によって作成されたスナップショットはすべて、ポータル、PowerShell、または CLI でスナップショットを表示することでアクセスできます。 Azure Files 共有スナップショットの詳細については、「[Azure Files の共有スナップショットの概要](../storage/files/storage-snapshots-files.md)」を参照してください。
+
+### <a name="what-happens-after-i-move-a-backed-up-file-share-to-a-different-subscription"></a>バックアップされたファイル共有を別のサブスクリプションに移動した後はどうなりますか?
+
+ファイル共有を別のサブスクリプションに移動すると、Azure Backup によって新しいファイル共有と見なされます。 推奨される手順を以下に示します。
+ 
+シナリオ:ファイル共有 *FS1* がサブスクリプション *S1* にあり、*V1* コンテナーを使用して保護されているとします。 現在、そのファイル共有をサブスクリプション *S2* に移動したいと考えています。
+ 
+1.  目的のストレージ アカウントとファイル共有 (FS1) を別のサブスクリプション (S2) に移動します。
+2.  V1 コンテナーで、FS1 に対して "データを削除して保護を停止" 操作をトリガーします。
+3.  FS1 をホストしているストレージ アカウントを V1 コンテナーから登録解除します。
+4.  S2 サブスクリプションでコンテナー (V2) を使用して、先ほど S2 に移動した FS1 のバックアップを再構成します。 
+ 
+V2 を使用してバックアップを再構成した後、V1 で作成されたスナップショットは Azure Backup によって管理されなくなることに注意してください。 そのため、必要に応じて、これらのスナップショットを手動で削除する必要があります。
+
+### <a name="can-i-move-my-backed-up-file-share-to-a-different-resource-group"></a>バックアップしたファイル共有を別のリソース グループに移動できますか?
+ 
+はい、バックアップしたファイル共有を別のリソース グループに移動できます。 ただし、Azure Backup によって新しいリソースと見なされるため、そのファイル共有のバックアップを再構成する必要があります。 また、リソース グループの移動前に作成されたスナップショットは、Azure backup によって管理されなくなります。 そのため、必要に応じて、これらのスナップショットを手動で削除する必要があります。
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>バックアップについて構成できる保持期間の上限はどの位ですか?
 

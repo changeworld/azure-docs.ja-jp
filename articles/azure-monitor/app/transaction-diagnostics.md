@@ -4,12 +4,12 @@ description: Application Insights のエンド ツー エンドのトランザ�
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 552e80d6c90a18180ab41dce72e995b6804a91bc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7623b7131e6344a67c468d0436884ebfef9b0058
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318914"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746099"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>統合されたコンポーネント間のトランザクションの診断
 
@@ -80,9 +80,7 @@ Profiler が機能しない場合は、**serviceprofilerhelp\@microsoft.com** �
 
 * その他のコンポーネントは Application Insights を使用してインストルメント化されましたか。
 * それらには Application Insights SDK の最新の安定バージョンが使用されていますか。
-* これらのコンポーネントが個別の Application Insights リソースである場合、これらのテレメトリへのアクセスを要求しましたか。
-
-アクセス権を持っていて、コンポーネントが最新の Application Insights SDK でインストルメント化されている場合は、右上のフィードバック チャネルからお知らせください。
+* これらのコンポーネントが個別の Application Insights リソースである場合、必要な[アクセス権](resources-roles-access-control.md)を持っていますか。アクセス権を持っていて、コンポーネントが最新の Application Insights SDK でインストルメント化されている場合は、右上のフィードバック チャネルからお知らせください。
 
 *依存関係の行が重複しています。これは期待される動作ですか?*
 

@@ -1,18 +1,18 @@
 ---
 title: 読み取りレプリカの管理 - Azure PowerShell - Azure Database for MySQL
 description: PowerShell を使用して Azure Database for MySQL の読み取りレプリカを設定し、管理する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 8/24/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c85af0f4078010fa5b6a1d116b3bfda942c0490c
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: fe33730fc11bfc18b7d67471e1077fb9490385d4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816934"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541931"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>PowerShell を使用して Azure Database for MySQL の読み取りレプリカを作成し、管理する方法
 
@@ -38,12 +38,12 @@ PowerShell をローカルで使用する場合は、[Connect-AzAccount](/powers
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> 読み取りレプリカ機能は、汎用とメモリ最適化のどちらかの価格レベルにおける Azure Database for MySQL サーバーにのみ使用可能です。 マスター サーバーがこれらの価格レベルのいずれかを確認します。
+> 読み取りレプリカ機能は、汎用とメモリ最適化のどちらかの価格レベルにおける Azure Database for MySQL サーバーにのみ使用可能です。 ソース サーバーがこれらの価格レベルのいずれであるかを確認します。
 
 ### <a name="create-a-read-replica"></a>読み取りレプリカを作成します
 
 > [!IMPORTANT]
-> 既存のレプリカがないマスターのレプリカを作成すると、マスターは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
+> 既存のレプリカがないソースのレプリカを作成すると、ソースは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
 
 読み取りレプリカ サーバーは、次のコマンドを使用して作成できます。
 
@@ -54,12 +54,12 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `New-AzMySqlReplica` コマンドには、次のパラメーターが必要です。
 
-| 設定 | 値の例 | 説明  |
+| 設定 | 値の例 | 説明  |
 | --- | --- | --- |
-| ResourceGroupName |  myresourcegroup |  レプリカ サーバーが作成されるリソース グループ。  |
+| ResourceGroupName |  myresourcegroup |  レプリカ サーバーが作成されるリソース グループ。  |
 | 名前 | mydemoreplicaserver | 作成する新しいレプリカ サーバーの名前。 |
 
-リージョンをまたがる読み取りレプリカを作成するには、**Location** パラメーターを使用します。 次の例では、**米国西部**リージョンにレプリカを作成します。
+リージョンをまたがる読み取りレプリカを作成するには、**Location** パラメーターを使用します。 次の例では、**米国西部** リージョンにレプリカを作成します。
 
 ```azurepowershell-interactive
 Get-AzMySqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
@@ -68,14 +68,14 @@ Get-AzMySqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 
 レプリカを作成できるリージョンの詳細については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。
 
-既定では、**Sku** パラメーターが指定されていない限り、読み取りレプリカはマスターと同じサーバー構成で作成されます。
+既定では、**Sku** パラメーターが指定されていない限り、読み取りレプリカはソースと同じサーバー構成で作成されます。
 
 > [!NOTE]
-> レプリカをマスターと維持できるようにするために、レプリカ サーバーの構成をマスターと同じかそれ以上の値にしておくようお勧めします。
+> レプリカをマスターと維持できるようにするために、レプリカ サーバーの構成をソースと同じかそれ以上の値にしておくことをお勧めします。
 
-### <a name="list-replicas-for-a-master-server"></a>マスター サーバーのレプリカを一覧表示する
+### <a name="list-replicas-for-a-source-server"></a>ソース サーバーのレプリカを一覧表示する
 
-特定のマスター サーバーのすべてのレプリカを表示するには、次のコマンドを実行します。
+特定のソース サーバーのレプリカをすべて表示するには、次のコマンドを実行します。
 
 ```azurepowershell-interactive
 Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -83,10 +83,10 @@ Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 `Get-AzMySqlReplica` コマンドには、次のパラメーターが必要です。
 
-| 設定 | 値の例 | 説明  |
+| 設定 | 値の例 | 説明  |
 | --- | --- | --- |
-| ResourceGroupName |  myresourcegroup |  レプリカ サーバーを作成するリソース グループ。  |
-| ServerName | mydemoserver | マスター サーバーの名前または ID。 |
+| ResourceGroupName |  myresourcegroup |  レプリカ サーバーを作成するリソース グループ。  |
+| ServerName | mydemoserver | ソース サーバーの名前または ID。 |
 
 ### <a name="delete-a-replica-server"></a>レプリカ サーバーを削除します
 
@@ -96,12 +96,12 @@ Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 Remove-AzMySqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
 ```
 
-### <a name="delete-a-master-server"></a>マスター サーバーを削除します
+### <a name="delete-a-source-server"></a>ソース サーバーを削除する
 
 > [!IMPORTANT]
-> マスター サーバーを削除すると、すべてのレプリカ サーバーへのレプリケーションを停止し、マスター サーバー自体を削除します。 これでレプリカ サーバーは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。
+> ソース サーバーを削除すると、すべてのレプリカ サーバーへのレプリケーションを停止し、ソース サーバー自体を削除します。 これでレプリカ サーバーは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。
 
-マスター サーバーを削除するには、`Remove-AzMySqlServer` コマンドレットを実行します。
+ソース サーバーを削除するには、`Remove-AzMySqlServer` コマンドレットを実行します。
 
 ```azurepowershell-interactive
 Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup

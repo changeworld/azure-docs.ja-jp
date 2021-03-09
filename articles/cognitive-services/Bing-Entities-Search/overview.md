@@ -1,7 +1,7 @@
 ---
 title: Bing Entity Search API とは
 titleSuffix: Azure Cognitive Services
-description: Bing Entity Search API を使用して、検索クエリからエンティティと場所を抽出して検索します。
+description: Bing Entity Search API の詳細と、検索クエリからエンティティと場所を抽出して検索する方法について説明します。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,14 +10,19 @@ ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 4afb20699d52ea80d7ba6cf9760a465b61cc6d6b
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 2a3d971ce9a4f89555eb3ffa489f8b19172a4b83
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85604813"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351471"
 ---
 # <a name="what-is-bing-entity-search-api"></a>Bing Entity Search API とは
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 Bing Entity Search API は、Bing に検索クエリを送信して、エンティティと場所を含む検索結果を取得します。 場所の結果には、レストラン、ホテルやその他の地元企業が含まれます。 クエリで地元企業の名前を指定、またはビジネスの種類 (近くのレストランなど) を要求すると、Bing は場所を返します。 クエリで有名な人や場所 (観光名所、州、国/地域など)、またはものを指定すると、Bing はエンティティを返します。
 
@@ -31,7 +36,7 @@ Bing Entity Search API は、Bing に検索クエリを送信して、エンテ�
 
 Bing Entity Search API は RESTful Web サービスです。HTTP 要求を作成して JSON を解析できる任意のプログラミング言語から簡単に呼び出すことができます。 REST API または SDK のいずれかを使用してサービスを使用できます。
 
-1. Bing Search API が利用できる [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)できます。
+1. Bing Search API が利用できる [Cognitive Services API アカウント](../cognitive-services-apis-create-account.md)を作成します。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)できます。
 2. 有効な検索クエリを使用して API に要求を送信します。
 3. 返された JSON メッセージを解析して API 応答を処理します。
 
@@ -39,6 +44,6 @@ Bing Entity Search API は RESTful Web サービスです。HTTP 要求を作成
 
 * Bing Entity Search API の[対話型デモ](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/)を試してください。 
 * 実際に要求を送信してみるには、[クイック スタート](quickstarts/csharp.md)を試してください。
-* [Bing Entity Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) リファレンス セクション。
-* [Bing の利用と表示の要件](./use-display-requirements.md)に関するトピックでは、Bing Search API を使用して得られるコンテンツと情報の許可される使用方法が指定されています。
-* その他の提供されている API については、[Bing Search API ハブ ページ](../bing-web-search/search-the-web.md)をご覧ください。
+* [Bing Entity Search API v7](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) リファレンス セクション。
+* [Bing の利用と表示の要件](../bing-web-search/use-display-requirements.md)に関するトピックでは、Bing Search API を使用して得られるコンテンツと情報の許可される使用方法が指定されています。
+* その他の提供されている API については、[Bing Search API ハブ ページ](../bing-web-search/overview.md)をご覧ください。

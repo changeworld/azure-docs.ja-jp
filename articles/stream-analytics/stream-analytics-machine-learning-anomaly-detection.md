@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics での異常検出
 description: この記事では、Azure Stream Analytics と Azure Machine Learning を併用して異常を検出する方法を説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
 ms.service: stream-analytics
+author: jasonwhowell
+ms.author: jasonh
 ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: 69824df1b84f6cdfafa08a662816281442ad44fd
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 78730b011e508f98779b9e00624882466d6a03a0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044381"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178500"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure Stream Analytics での異常検出
 
@@ -42,7 +41,7 @@ ms.locfileid: "86044381"
 
 ## <a name="spike-and-dip"></a>スパイクとディップ
 
-タイム シリーズ イベント ストリーム内の一時的な異常は、スパイクとディップと呼ばれます。 スパイクとディップは、機械学習をベースにした演算子 [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+タイム シリーズ イベント ストリーム内の一時的な異常は、スパイクとディップと呼ばれます。 スパイクとディップは、機械学習をベースにした演算子 [AnomalyDetection_SpikeAndDip](/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
 ) を使って監視できます。
 
 ![スパイクとディップの異常の例](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
@@ -74,7 +73,7 @@ FROM AnomalyDetectionStep
 
 ## <a name="change-point"></a>変化点
 
-タイム シリーズ イベント ストリーム内の永続的な異常は、レベルの変化や傾向の変化などのような、イベント ストリーム内の値の分布内で起きる変化です。 Stream Analytics では、このような異常を機械学習をベースにした [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) 演算子を使って検出します。
+タイム シリーズ イベント ストリーム内の永続的な異常は、レベルの変化や傾向の変化などのような、イベント ストリーム内の値の分布内で起きる変化です。 Stream Analytics では、このような異常を機械学習をベースにした [AnomalyDetection_ChangePoint](/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) 演算子を使って検出します。
 
 永続的な変化は、スパイクやディップよりもはるかに長期間継続するため、致命的なイベントを示している可能性があります。 永続的な変化は、肉眼では確認できないことがほとんどですが、**AnomalyDetection_ChangePoint** 演算子を使えば検出できます。
 
@@ -114,10 +113,10 @@ FROM AnomalyDetectionStep
 
 これらのモデルのパフォーマンスは、履歴のサイズ、ウィンドウ期間、イベントの負荷、関数レベルのパーティション分割を使用しているかどうかによります。 このセクションでは、これらの構成について説明し、1 秒あたり 1,000 件、5,000 件、1 万件のイベントの取り込み速度を維持する方法のサンプルを提供します。
 
-* **履歴のサイズ** - これらのモデルは、**履歴のサイズ**に対して直線性を有します。 履歴のサイズが大きくなるほど、モデルが新しいイベントをスコア付けするためにかかる時間が長くなります。 これは、モデルが新しいイベントと履歴バッファー内にある過去の各イベントを比較するためです。
-* **ウィンドウ期間** - **ウィンドウ期間**は、履歴のサイズで指定された数のイベントの受信にかかる時間を反映する必要があります。 ウィンドウ内に多くのイベントがない場合、Azure Stream Analytics は欠損値を補完します。 そのため、CPU 使用量は履歴のサイズの関数となります。
-* **イベント負荷** - **イベント負荷**が大きいほどモデルの作業量が増え、CPU 使用量に影響を与えます。 ビジネス ロジックで入力パーティションを増やせると仮定すれば、ジョブを驚異的並列にすることでスケール アウトできます。
-* **関数レベルのパーティション分割** - **関数レベルのパーティション分割**は、異常検出関数呼び出し内で ```PARTITION BY``` を使用して行われます。 この種類のパーティション分割は、同時に複数のモデルで状態を維持する必要があるため、オーバーヘッドが増加します。 関数レベルのパーティション分割は、デバイス レベルのパーティション分割などのシナリオで使用されます。
+* **履歴のサイズ** - これらのモデルは、**履歴のサイズ** に対して直線性を有します。 履歴のサイズが大きくなるほど、モデルが新しいイベントをスコア付けするためにかかる時間が長くなります。 これは、モデルが新しいイベントと履歴バッファー内にある過去の各イベントを比較するためです。
+* **ウィンドウ期間** - **ウィンドウ期間** は、履歴のサイズで指定された数のイベントの受信にかかる時間を反映する必要があります。 ウィンドウ内に多くのイベントがない場合、Azure Stream Analytics は欠損値を補完します。 そのため、CPU 使用量は履歴のサイズの関数となります。
+* **イベント負荷** - **イベント負荷** が大きいほどモデルの作業量が増え、CPU 使用量に影響を与えます。 ビジネス ロジックで入力パーティションを増やせると仮定すれば、ジョブを驚異的並列にすることでスケール アウトできます。
+* **関数レベルのパーティション分割** - **関数レベルのパーティション分割** は、異常検出関数呼び出し内で ```PARTITION BY``` を使用して行われます。 この種類のパーティション分割は、同時に複数のモデルで状態を維持する必要があるため、オーバーヘッドが増加します。 関数レベルのパーティション分割は、デバイス レベルのパーティション分割などのシナリオで使用されます。
 
 ### <a name="relationship"></a>リレーションシップ
 履歴のサイズ、ウィンドウ期間、およびイベント負荷の合計は、次のように関連します。
@@ -159,6 +158,5 @@ Azure Stream Analytics ジョブの [メトリックス] ウィンドウを使�
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](/rest/api/streamanalytics/)

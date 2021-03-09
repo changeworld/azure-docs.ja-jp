@@ -6,18 +6,18 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: ab25ec5406c75316aaa1ee8efd0192dc0207ad79
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 055afe24cb72b331e64e1a2b3d786503ef31a105
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612420"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176401"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Azure CLI を使用して Azure Active Directory と Azure Kubernetes Service を統合する (レガシ)
 
-Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Directory (AD) を使うように構成することができます。 この構成では、Azure AD 認証トークンを使って AKS クラスターにログインできます。 また、クラスター オペレーターが、ユーザーの ID またはディレクトリ グループ メンバーシップに基づいて、Kubernetes のロールベースのアクセス制御 (RBAC) を構成することもできます。
+Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Directory (AD) を使うように構成することができます。 この構成では、Azure AD 認証トークンを使って AKS クラスターにログインできます。 また、クラスター オペレーターが、ユーザーの ID またはディレクトリ グループ メンバーシップに基づいて、Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC) を構成することもできます。
 
-この記事では、必要な Azure AD コンポーネントを作成してから、Azure AD 対応クラスターをデプロイして AKS クラスターで基本的な RBAC ロールを作成する方法について説明します。
+この記事では、必要な Azure AD コンポーネントを作成してから、Azure AD 対応クラスターをデプロイして、AKS クラスターで基本的な Kubernetes ロールを作成する方法について説明します。
 
 この記事で使用されているサンプル スクリプトの完成版については、[Azure CLI のサンプルの AKS と Azure AD の統合][complete-script]に関するページを参照してください。
 
@@ -26,7 +26,7 @@ Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Director
 
 ## <a name="the-following-limitations-apply"></a>次の制限事項が適用されます。
 
-- Azure AD は、RBAC が有効なクラスターでのみ有効にすることができます。
+- Azure AD は、Kubernetes RBAC が有効なクラスターでのみ有効にすることができます。
 - Azure AD のレガシ統合は、クラスター作成時にのみ有効にすることができます。
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -134,7 +134,7 @@ az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 
 ## <a name="deploy-the-cluster"></a>クラスターをデプロイする
 
-2 つの Azure AD アプリケーションが作成されたので、今度は AKS クラスターそのものを作成します。 最初に、[az group create][az-group-create] コマンドを使用して、リソース グループを作成します。 次の例では、*米国東部*リージョンにリソース グループを作成します。
+2 つの Azure AD アプリケーションが作成されたので、今度は AKS クラスターそのものを作成します。 最初に、[az group create][az-group-create] コマンドを使用して、リソース グループを作成します。 次の例では、*米国東部* リージョンにリソース グループを作成します。
 
 クラスター用にリソース グループを作成します。
 
@@ -164,9 +164,9 @@ az aks create \
 az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
 ```
 
-## <a name="create-rbac-binding"></a>RBAC のバインドを作成する
+## <a name="create-kubernetes-rbac-binding"></a>Kubernetes RBAC バインドの作成
 
-Azure Active Directory アカウントを AKS クラスターで使用できるようにするには、その前にまず、ロールのバインドまたはクラスター ロールのバインドを作成する必要があります。 付与するアクセス許可を "*ロール*" によって定義し、それらを "*バインド*" によって目的のユーザーに適用します。 これらの割り当ては、特定の名前空間に適用することも、クラスター全体に適用することもできます。 詳細については、[RBAC 承認の使用][rbac-authorization]に関するページを参照してください。
+Azure Active Directory アカウントを AKS クラスターで使用できるようにするには、その前にまず、ロールのバインドまたはクラスター ロールのバインドを作成する必要があります。 付与するアクセス許可を "*ロール*" によって定義し、それらを "*バインド*" によって目的のユーザーに適用します。 これらの割り当ては、特定の名前空間に適用することも、クラスター全体に適用することもできます。 詳細については、[Kubernetes RBAC 認可の使用][rbac-authorization]に関するページを参照してください。
 
 [az ad signed-in-user show][az-ad-signed-in-user-show] コマンドを使用して、現在ログインしているユーザーのユーザー プリンシパル名 (UPN) を取得します。 このユーザー アカウントは、次のステップで Azure AD の統合に対して有効化されます。
 
@@ -175,7 +175,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 ```
 
 > [!IMPORTANT]
-> RBAC のバインドを付与するユーザーが同じ Azure AD テナント内にいる場合、*userPrincipalName* に基づいてアクセス許可を割り当てます。 ユーザーが別の Azure AD テナント内にいる場合、代わりに *objectId* プロパティをクエリして使用します。
+> Kubernetes RBAC のバインドの付与先となるユーザーが同じ Azure AD テナントに存在する場合は、*userPrincipalName* に基づいてアクセス許可を割り当てます。 ユーザーが別の Azure AD テナント内にいる場合、代わりに *objectId* プロパティをクエリして使用します。
 
 `basic-azure-ad-binding.yaml` という名前の YAML マニフェストを作成し、次の内容を貼り付けます。 最後の行で、*userPrincipalName_or_objectId* を前のコマンドで出力された UPN またはオブジェクト ID に置き換えます。
 
@@ -251,7 +251,7 @@ error: You must be logged in to the server (Unauthorized)
 
 この記事で示されているコマンドを含む完全なスクリプトについては、[AKS サンプル リポジトリの Azure AD 統合スクリプト][complete-script]に関するページを参照してください。
 
-Azure AD ユーザーとグループを使用してクラスター リソースへのアクセスを制御するには、[AKS でロールベースのアクセス制御と Azure AD の ID を使用してクラスター リソースへのアクセスを制限する][azure-ad-rbac]方法に関するページを参照してください。
+Azure AD ユーザーとグループを使用してクラスター リソースへのアクセスを制御するには、[AKS で Kubernetes のロールベースのアクセス制御と Azure AD の ID を使用してクラスター リソースへのアクセスを制限する][azure-ad-rbac]方法に関するページを参照してください。
 
 Kubernetes クラスターをセキュリティで保護する方法の詳細については、[AKS でのアクセスと ID オプション][rbac-authorization]に関するページを参照してください。
 
@@ -264,8 +264,8 @@ ID とリソース管理に関するベスト プラクティスについては�
 [complete-script]: https://github.com/Azure-Samples/azure-cli-samples/tree/master/aks/azure-ad-integration/azure-ad-integration.sh
 
 <!-- LINKS - internal -->
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
 [open-id-connect]: ../active-directory/develop/v2-protocols-oidc.md
 [az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
@@ -281,7 +281,7 @@ ID とリソース管理に関するベスト プラクティスについては�
 [az-ad-signed-in-user-show]: /cli/azure/ad/signed-in-user#az-ad-signed-in-user-show
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
-[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [managed-aad]: managed-aad.md

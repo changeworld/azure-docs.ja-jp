@@ -1,19 +1,16 @@
 ---
 title: オンプレミス ネットワークへの Azure HDInsight の接続
 description: Azure Virtual Network で HDInsight クラスターを作成して、ご使用のオンプレミス ネットワークに接続する方法について説明します。 カスタム DNS サーバーを使用して、HDInsight とオンプレミス ネットワークとの間で名前解決を構成する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 3ab706b9cdf3c071fd5d3ceca732cff6b660db6b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cd787e1c846bfe4728577cbbce069385ce064a10
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086559"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943410"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>オンプレミス ネットワークへの HDInsight の接続
 
@@ -45,14 +42,14 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 ## <a name="prerequisites"></a>前提条件
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](./hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/)が必要になります。
-* Azure CLI を使用したいが、まだインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+* PowerShell を使用している場合は、[AZ モジュール](/powershell/azure/)が必要になります。
+* Azure CLI を使用したいが、まだインストールしていない場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="create-virtual-network-configuration"></a>仮想ネットワーク構成を作成する
 
 次のドキュメントを使用して、オンプレミス ネットワークに接続されている Azure Virtual Network を作成する方法を学習してください。
 
-* [Azure Portal の使用](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Azure Portal の使用](../vpn-gateway/tutorial-site-to-site-portal.md)
 * [Azure PowerShell の使用](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * [Azure CLI の使用](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 
@@ -244,7 +241,7 @@ Azure 再帰リゾルバーではなく、カスタム DNS サーバーを使用
 
 3. 既定のビューの **[設定]** で、 **[DNS サーバー]** を選択します。  
 
-4. __[カスタム]__ を選択し、カスタム DNS サーバーの**プライベート IP アドレス** を入力します。
+4. __[カスタム]__ を選択し、カスタム DNS サーバーの **プライベート IP アドレス** を入力します。
 
 5. __[保存]__ を選択します。  <br />  
 
@@ -267,7 +264,7 @@ zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
 };
 ```
 
-**Windows Server 2016** での DNS の使用については、[Add-DnsServerConditionalForwarderZone](https://technet.microsoft.com/itpro/powershell/windows/dnsserver/add-dnsserverconditionalforwarderzone) のドキュメントを参照してください。
+**Windows Server 2016** での DNS の使用については、[Add-DnsServerConditionalForwarderZone](/powershell/module/dnsserver/add-dnsserverconditionalforwarderzone) のドキュメントを参照してください。
 
 オンプレミス DNS サーバーを構成したら、オンプレミス ネットワークから `nslookup` を使用して、仮想ネットワークで名前を解決できることを確認できます。 次の例をご覧ください。 
 
@@ -347,6 +344,6 @@ HDInsight のほとんどのドキュメントでは、インターネット経�
 
 * Azure 仮想ネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページをご覧ください。
 
-* ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)に関するページをご覧ください。
+* ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)に関するページをご覧ください。
 
 * ユーザー定義のルートについて詳しくは、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」をご覧ください。

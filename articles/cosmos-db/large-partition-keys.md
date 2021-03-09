@@ -3,18 +3,20 @@ title: 大きいパーティション キーを使用して Azure Cosmos コン�
 description: Azure portal と各種の SDK を使って大きいパーティション キーを持つコンテナーを Azure Cosmos DB で作成する方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 59781f9b86764d0982e1612f9671e8f0919ed490
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 4ad26d63ca06f5a46a4a1f77d329d04896e96c52
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009510"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339299"
 ---
 # <a name="create-containers-with-large-partition-key"></a>大きいパーティション キーを持つコンテナーを作成する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB では、データの水平方向のスケーリングを実現するために、ハッシュ ベースのパーティション構成が使われます。 2019 年 5 月 3 日より前に作成されたすべての Azure Cosmos コンテナーでは、パーティション キーの最初の 100 バイトに基づいてハッシュを計算するハッシュ関数が使われています。 複数のパーティション キーで最初の 100 バイトが同じ場合、それらの論理パーティションはサービスによって同じ論理パーティションと見なされます。 これにより、パーティション サイズ クォータが正しくなくなったり、一意のインデックスが複数のパーティション キーに適用されるといった問題が発生する可能性があります。 この問題を解決するため、大きいパーティション キーが導入されました。 Azure Cosmos DB では、値が最大 2 KB の大きいパーティション キーがサポートされるようになっています。
 
@@ -83,4 +85,4 @@ database,
 * [Azure Cosmos DB でのパーティション分割](partitioning-overview.md)
 * [Azure Cosmos DB の要求ユニット](request-units.md)
 * [コンテナーとデータベースのスループットのプロビジョニング](set-throughput.md)
-* [Azure Cosmos アカウントの使用](account-overview.md)
+* [Azure Cosmos アカウントの使用](./account-databases-containers-items.md)

@@ -1,19 +1,16 @@
 ---
 title: HDInsight で ML Services クラスターを管理する - Azure
 description: Azure HDInsight で ML Services クラスターに対するさまざまなタスクを管理する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: 1e04662cb0f67863e23f1fc1ce7e1f21ca4e9197
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e4c9124ebd0b61b8db1b1da964355a3c36b5bba5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087641"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930587"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight で ML Services クラスターを管理する
 
@@ -106,7 +103,7 @@ mySparkCluster <- RxSpark(
 )
 ```
 
-詳細については、[Apache Spark コンピューティング コンテキストで RevoScaleR を使用する方法](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)に関するページにある Apache Hadoop クライアントとしての Microsoft Machine Learning Server の使用に関するセクションを参照してください
+詳細については、[Apache Spark コンピューティング コンテキストで RevoScaleR を使用する方法](/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)に関するページにある Apache Hadoop クライアントとしての Microsoft Machine Learning Server の使用に関するセクションを参照してください
 
 ## <a name="use-a-compute-context"></a>コンピューティング コンテキストを使用する
 
@@ -207,7 +204,7 @@ rxSparkDisconnect(myHadoopCluster)
 
    * **パラメーター**: インストールされる R パッケージ。 たとえば、`bitops stringr arules` のように指定します。
 
-   * **このスクリプト操作を保持する**ためのチェック ボックスをオンにします。  
+   * **このスクリプト操作を保持する** ためのチェック ボックスをオンにします。  
 
    > [!NOTE]
    > 1. 既定では、R パッケージはすべて、インストールされている ML Server のバージョンと一貫性のある Microsoft MRAN リポジトリのスナップショットからインストールされます。 より新しいバージョンのパッケージをインストールする場合は、非互換性の問題が発生するリスクが多少あります。 ただし、この種類のインストールは、パッケージ リスト (たとえば `useCRAN bitops, stringr, arules`) の最初の要素として `useCRAN` を指定することにより可能になります。  

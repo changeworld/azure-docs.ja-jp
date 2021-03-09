@@ -3,12 +3,12 @@ title: カスタム Azure Resource Manager ロールを作成し、サービス 
 description: この記事では、Azure CLI を使用して、カスタム Azure Resource Manager ロールを作成し、Live Video Analytics on IoT Edge のサービス プリンシパルに割り当てる方法に関するガイダンスを提供します。
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: eb4c9a1f90ab50f7070184fc9a394d9e6edb833a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 40bf0f60a718d512e02481d977b8208112ed1a55
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043180"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425735"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>カスタム Azure Resource Manager ロールを作成し、サービス プリンシパルに割り当てる
 
@@ -43,7 +43,7 @@ Media Service アカウントをお持ちでない場合は、次の手順を使
 1. [Cloud Shell](https://shell.azure.com/) を参照します。
 1. シェル ウィンドウの左側にあるドロップダウンから "Bash" をご利用の環境として選択します。
 
-    ![Bash](./media/create-custom-azure-resource-manager-role-how-to/bash.png)
+    ![シェル ウィンドウで Bash が選択されていることを示す画面キャプチャ。](./media/create-custom-azure-resource-manager-role-how-to/bash.png)
 1. 次のコマンド テンプレートを使用して、ご自分の Azure サブスクリプションを既定のアカウントとして設定します。
     
     ```
@@ -230,7 +230,7 @@ az role assignment list  --assignee < objectId>
 
 これにより、カスタム ユーザー ロールと、アプリケーションで使用されるサービス プリンシパルがリンクされていることが確認されます。
 
-### <a name="test-the-service-principal-rbac"></a>サービス プリンシパル RBAC をテストする  
+### <a name="test-the-service-principal-access-control"></a>サービス プリンシパルへのアクセス制御のテスト
 
 1. サービス プリンシパルを使用してログインします。 これには、[サービス プリンシパルの作成](#create-service-principal)手順の出力から取得できる適切なアクセス トークンが付与されるためには、Azure Active Directory の次の 3 つの情報が必要になります。
     1. AadClientID 

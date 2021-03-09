@@ -12,20 +12,24 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: 9338ad86595771c1c70d243250c2d57af5eb7858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf7746cc55e81593a1788608cced1253f295a5c4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83683795"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738380"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>TLS 1.2 をサポートしていないアプリケーションのトラブルシューティング
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 この記事では、古い TLS プロトコル (TLS 1.0 および 1.1) を有効にする方法と、Windows Server 2019 クラウド サービスの Web ロールと worker ロールで追加のプロトコルをサポートするためのレガシの暗号スイートの適用方法について説明します。 
 
 TLS 1.0 と TLS 1.1 を非推奨にするステップを実行しますが、お客様が廃止を計画するまで、古いプロトコルと暗号スイートをサポートする必要があることを理解しています。  これらのレガシの値を再度有効にすることはお勧めしませんが、Microsoft はお客様を支援するためのガイダンスを提供しています。 この記事に記載されている変更を実装する前に、回帰のリスクを評価することをお勧めします。 
 
 > [!NOTE]
-> ゲスト OS ファミリ 6 リリースでは、TLS 1.0 と1.1 を明示的に無効にし、暗号スイートの特定のセットを定義することで、TLS 1.2 が適用されます。ゲスト OS ファミリの詳細については、「[ゲスト OS のリリース ニュース](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases)」を参照してください
+> ゲスト OS ファミリ 6 リリースでは、TLS 1.0 と1.1 を明示的に無効にし、暗号スイートの特定のセットを定義することで、TLS 1.2 が適用されます。ゲスト OS ファミリの詳細については、「[ゲスト OS のリリース ニュース](./cloud-services-guestos-update-matrix.md#family-6-releases)」を参照してください
 
 
 ## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>TLS 1.0、TLS 1.1、および古い暗号スイートのサポートの終了 
@@ -49,7 +53,7 @@ Windows Server 2019 クラウド サーバー イメージは、TLS 1.0 と TLS 
     TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 
 ```
 
-## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>手順 1:TLS 1.0 および TLS 1.1 を有効にする PowerShell スクリプトを作成する 
+## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>手順 1: TLS 1.0 および TLS 1.1 を有効にする PowerShell スクリプトを作成する 
 
 次のコードを例として使用し、古いプロトコルと暗号スイートを有効にするスクリプトを作成します。 このドキュメントでは、このスクリプトの名前は次のようになります: **TLSsettings.ps1**。 このスクリプトは、後の手順で簡単にアクセスできるように、ローカル デスクトップに保存します。 
 
@@ -298,7 +302,7 @@ EXIT /B %ERRORLEVEL%
 
 ```
 
-## <a name="step-3-add-the-startup-task-to-the-roles-service-definition-csdef"></a>手順 3:ロールのサービス定義 (csdef) にスタートアップ タスクを追加する 
+## <a name="step-3-add-the-startup-task-to-the-roles-service-definition-csdef"></a>手順 3: ロールのサービス定義 (csdef) にスタートアップ タスクを追加する 
 
 次のスニペットを既存のサービス定義ファイルに追加します。 
 
@@ -312,13 +316,13 @@ EXIT /B %ERRORLEVEL%
 worker ロールと Web ロールの両方を示す例を次に示します。 
 
 ```
-<?xmlversion="1.0"encoding="utf-8"?> 
-<ServiceDefinitionname="CloudServiceName"xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition"schemaVersion="2015-04.2.6"> 
-    <WebRolename="WebRole1"vmsize="Standard_D1_v2"> 
+<?xmlversion="1.0" encoding="utf-8"?> 
+<ServiceDefinitionname="CloudServiceName" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6"> 
+    <WebRolename="WebRole1" vmsize="Standard_D1_v2"> 
         <Sites> 
             <Sitename="Web"> 
                 <Bindings> 
-                    <Bindingname="Endpoint1"endpointName="Endpoint1"/> 
+                    <Bindingname="Endpoint1" endpointName="Endpoint1"/> 
                 </Bindings> 
             </Site> 
         </Sites> 
@@ -327,10 +331,10 @@ worker ロールと Web ロールの両方を示す例を次に示します。
             </Task> 
         </Startup> 
         <Endpoints> 
-            <InputEndpointname="Endpoint1"protocol="http"port="80"/> 
+            <InputEndpointname="Endpoint1" protocol="http" port="80"/> 
         </Endpoints> 
     </WebRole> 
-<WorkerRolename="WorkerRole1"vmsize="Standard_D1_v2"> 
+<WorkerRolename="WorkerRole1" vmsize="Standard_D1_v2"> 
     <Startup> 
         <Task executionContext="elevated" taskType="simple" commandLine="RunTLSSettings.cmd"> 
         </Task> 
@@ -362,4 +366,3 @@ Visual Studio からプッシュされた更新プログラムと共にスクリ
 
 [SSLLabs](https://www.ssllabs.com/) を使用して、エンドポイントの TLS の状態を検証することができます 
 
- 

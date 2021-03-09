@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 41389bc5ed8580cd80dbc40e771c7f15241f5ae7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59e4111b6dda386777e820c9be16ace9ff01135c
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479404"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064917"
 ---
 # <a name="microsoft-authentication-library-for-ios-and-macos-differences"></a>iOS 用と macOS 用の Microsoft Authentication Library の違い
 

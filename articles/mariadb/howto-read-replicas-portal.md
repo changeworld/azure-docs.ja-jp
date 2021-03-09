@@ -1,17 +1,17 @@
 ---
 title: 読み取りレプリカを管理する - Azure portal - Azure Database for MariaDB
 description: この記事では、ポータルを使用して Azure Database for MariaDB の読み取りレプリカを設定し、管理する方法について説明します。
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: fc435194975c0b043e74a47632d6e38f12d04c2a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fa2afdccf9c8bd6ec7f5808674e6eec968838d10
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121199"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665006"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB の読み取りレプリカを作成および管理する方法
 
@@ -19,15 +19,15 @@ ms.locfileid: "86121199"
 
 ## <a name="prerequisites"></a>前提条件
 
-- マスター サーバーとして使用される [Azure Database for MariaDB サーバー ](quickstart-create-mariadb-server-database-using-azure-portal.md)。
+- ソース サーバーとして使用される [Azure Database for MariaDB サーバー ](quickstart-create-mariadb-server-database-using-azure-portal.md)。
 
 > [!IMPORTANT]
-> 読み取りレプリカ機能は、汎用またはメモリ最適化の価格レベルの Azure Database for MariaDB サーバーにのみ使用可能です。 マスター サーバーがこれらの価格レベルのいずれかを確認します。
+> 読み取りレプリカ機能は、汎用またはメモリ最適化の価格レベルの Azure Database for MariaDB サーバーにのみ使用可能です。 ソース サーバーがこれらの価格レベルのいずれであるかを確認します。
 
 ## <a name="create-a-read-replica"></a>読み取りレプリカを作成します
 
 > [!IMPORTANT]
-> 既存のレプリカがないマスターのレプリカを作成すると、マスターは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
+> 既存のレプリカがないソースのレプリカを作成すると、ソースは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
 
 読み取りレプリカ サーバーは、次の手順を使用して作成できます。
 
@@ -45,14 +45,14 @@ ms.locfileid: "86121199"
 
     ![Azure Database for MariaDB - レプリカ名](./media/howto-read-replica-portal/replica-name.png)
 
-6. レプリカ サーバーの場所を選択します。 既定の場所は、マスター サーバーの場所と同じです。
+6. レプリカ サーバーの場所を選択します。 既定の場所は、ソース サーバーの場所と同じです。
 
     ![Azure Database for MariaDB - レプリカの場所](./media/howto-read-replica-portal/replica-location.png)
 
 7. **[OK]** を選択して、レプリカの作成を確認します。
 
 > [!NOTE]
-> マスターと同じサーバー構成で、読み取りレプリカが作成されます。 作成された後、レプリカ サーバーの構成を変更できます。 レプリカをマスターと維持できるようにするために、レプリカ サーバーの構成をマスターと同じかそれ以上の値にしておくようお勧めします。
+> マスターと同じサーバー構成で、読み取りレプリカが作成されます。 作成された後、レプリカ サーバーの構成を変更できます。 レプリカをマスターと確実に維持できるようにするために、レプリカ サーバーの構成をソースと同じかそれ以上の値にしておくことをお勧めします。
 
 レプリカ サーバーを作成すると、**レプリケーション** ブレードから表示できます。
 
@@ -61,11 +61,11 @@ ms.locfileid: "86121199"
 ## <a name="stop-replication-to-a-replica-server"></a>レプリカ サーバーへのレプリケーションを停止します。
 
 > [!IMPORTANT]
-> サーバーへのレプリケーションの停止は、元に戻すことができません。 マスターとレプリカの間のレプリケーションを停止すると、取り消すことができません。 レプリカ サーバーはスタンドアロン サーバーになり、読み取りと書き込みをサポートするようになります。 このサーバーをもう一度レプリカにすることはできません。
+> サーバーへのレプリケーションの停止は、元に戻すことができません。 ソースとレプリカの間のレプリケーションを停止すると、元に戻すことはできません。 レプリカ サーバーはスタンドアロン サーバーになり、読み取りと書き込みをサポートするようになります。 このサーバーをもう一度レプリカにすることはできません。
 
-Azure Portal からマスターとレプリカ サーバー間のレプリケーションを停止するには、次の手順を使用します。
+Azure Portal からソースとレプリカ サーバー間のレプリケーションを停止するには、次の手順を使用します。
 
-1. Azure portal で、マスターの Azure Database for MariaDB サーバーを選択します。 
+1. Azure portal で、ソースの Azure Database for MariaDB サーバーを選択します。 
 
 2. **[設定]** で、メニューから **[レプリケーション]** を選択します。
 
@@ -85,7 +85,7 @@ Azure Portal からマスターとレプリカ サーバー間のレプリケー
 
 読み取りレプリカ サーバーを Azure Portal から削除するには、次の手順を使用します。
 
-1. Azure portal で、マスターの Azure Database for MariaDB サーバーを選択します。
+1. Azure portal で、ソースの Azure Database for MariaDB サーバーを選択します。
 
 2. **[設定]** で、メニューから **[レプリケーション]** を選択します。
 
@@ -101,22 +101,22 @@ Azure Portal からマスターとレプリカ サーバー間のレプリケー
 
    ![Azure Database for MariaDB - レプリカ削除の確定](./media/howto-read-replica-portal/delete-replica-confirm.png)
 
-## <a name="delete-a-master-server"></a>マスター サーバーを削除します
+## <a name="delete-a-source-server"></a>ソース サーバーの削除
 
 > [!IMPORTANT]
-> マスター サーバーを削除すると、すべてのレプリカ サーバーへのレプリケーションを停止し、マスター サーバー自体を削除します。 これでレプリカ サーバーは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。
+> ソース サーバーを削除すると、すべてのレプリカ サーバーへのレプリケーションを停止し、ソース サーバー自体を削除します。 これでレプリカ サーバーは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。
 
-マスター サーバーを Azure Portal から削除するには、次の手順を使用します。
+ソース サーバーを Azure Portal から削除するには、次の手順を使用します。
 
-1. Azure portal で、マスターの Azure Database for MariaDB サーバーを選択します。
+1. Azure portal で、ソースの Azure Database for MariaDB サーバーを選択します。
 
 2. **[概要]** ページから **[削除]** を選択します。
 
    ![Azure Database for MariaDB - マスターの削除](./media/howto-read-replica-portal/delete-master-overview.png)
 
-3. マスター サーバーの名前を入力して、 **[削除]** をクリックし、マスターの削除を確定します。  
+3. ソース サーバーの名前を入力して、 **[削除]** をクリックし、ソース サーバーの削除を確定します。  
 
-   ![Azure Database for MariaDB - マスターの削除](./media/howto-read-replica-portal/delete-master-confirm.png)
+   ![Azure Database for MariaDB - マスターの削除の確認](./media/howto-read-replica-portal/delete-master-confirm.png)
 
 ## <a name="monitor-replication"></a>レプリケーションを監視します
 
@@ -134,7 +134,7 @@ Azure Portal からマスターとレプリカ サーバー間のレプリケー
 
 5. 選択した時間範囲のレプリケーションのラグを表示します。 次の図では、大規模なワークロードの過去 30 分間が表示されます。
 
-   ![時間範囲を選択します](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
+   ![30 分の時間範囲を選択します](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
 
 ## <a name="next-steps"></a>次のステップ
 

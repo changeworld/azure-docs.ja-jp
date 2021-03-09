@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: 設置する - Azure Stack Edge 物理デバイスの開梱、ラックへの取り付け、ケーブル接続 | Microsoft Docs'
-description: Azure Stack Edge を設置するための 2 番目のチュートリアルでは、物理デバイスの開梱、ラックへの取り付け、ケーブル接続を行います。
+title: 'チュートリアル: 設置する - Azure Stack Edge Pro 物理デバイスの開梱、ラックへの取り付け、ケーブル接続 | Microsoft Docs'
+description: Azure Stack Edge Pro の設置に関する 2 番目のチュートリアルでは、物理デバイスの開梱、ラックへの取り付け、ケーブル接続を行います。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,17 +8,17 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 01/17/2020
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 429fe0c4db4a7825a6a98aa5d2cd6af609a34a61
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
+ms.openlocfilehash: 9aa02521d91d41380b1bdac3efe50ab3d196a856
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82564990"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90894209"
 ---
-# <a name="tutorial-install-azure-stack-edge"></a>チュートリアル:Azure Stack Edge を設置する
+# <a name="tutorial-install-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro を設置する
 
-このチュートリアルでは、Azure Stack Edge 物理デバイスを設置する方法を説明します。 インストール手順には、デバイスの開梱、ラックへの取り付け、ケーブル接続が含まれます。 
+このチュートリアルでは、Azure Stack Edge Pro 物理デバイスを設置する方法を説明します。 インストール手順には、デバイスの開梱、ラックへの取り付け、ケーブル接続が含まれます。 
 
 インストールが完了するまでに、約 2 時間かかる場合があります。
 
@@ -37,12 +37,12 @@ ms.locfileid: "82564990"
 
 開始する前に次の点を確認します。
 
-* [Azure Stack Edge の配置の準備](azure-stack-edge-deploy-prep.md)に関するページの手順をすべて完了していること。
+* [Azure Stack Edge Pro の配置の準備](azure-stack-edge-deploy-prep.md)に関するページの手順をすべて完了していること。
     * デバイスを配置する Azure Stack Edge リソースを作成済みであること。
     * Azure Stack Edge リソースを使用して、デバイスをアクティブ化するためのアクティブ化キーを生成済みであること。
 
  
-### <a name="for-the-azure-stack-edge-physical-device"></a>Azure Stack Edge 物理デバイスの前提条件
+### <a name="for-the-azure-stack-edge-pro-physical-device"></a>Azure Stack Edge Pro 物理デバイスの前提条件
 
 デバイスを配置する前に次の点を確認します。
 
@@ -58,7 +58,7 @@ ms.locfileid: "82564990"
 
 作業を開始する前に、次のことを行います。
 
-- Azure Stack Edge を配置するためのネットワーク要件を確認し、その要件に従ってデータセンター ネットワークを構成します。 詳細については、[Azure Stack Edge のネットワーク要件](azure-stack-edge-system-requirements.md#networking-port-requirements)に関する記事を参照してください。
+- Azure Stack Edge Pro を配置するためのネットワーク要件を確認し、その要件に従ってデータセンター ネットワークを構成します。 詳細については、[Azure Stack Edge Pro のネットワーク要件](azure-stack-edge-system-requirements.md#networking-port-requirements)に関する記事を参照してください。
 
 - デバイスが最適に動作するように、インターネットの最小帯域幅が 20 Mbps であることを確認します。
 
@@ -70,12 +70,12 @@ ms.locfileid: "82564990"
 1. 平坦で水平な場所に箱を置きます。
 2. 箱と梱包材を調べて、つぶれ、切断、水害などの明らかな損傷がないか確認します。 箱または梱包材がひどく破損している場合は、箱を開けないでください。 Microsoft サポートに問い合わせて、デバイスが正常に使用できる状態にあるかどうかを評価してください。
 3. 箱を開梱します。 開梱後、次の内容物を確認してください。
-    - 単一エンクロージャの Azure Stack Edge デバイス 1 台
+    - Azure Stack Edge Pro デバイス筐体 1 台
     - 電源コード 2 本
     - レール キット アセンブリ 1 組
     - 安全、環境、規制に関する情報を記載した小冊子 1 冊
 
-上記の項目の中で足りないものがある場合は、Azure Stack Edge サポートに連絡してください。 次のステップでは、デバイスをラックに取り付けます。
+上記の項目の中で足りないものがある場合は、Azure Stack Edge Pro サポートに連絡してください。 次のステップでは、デバイスをラックに取り付けます。
 
 
 ## <a name="rack-the-device"></a>デバイスをラックに取り付ける
@@ -83,7 +83,7 @@ ms.locfileid: "82564990"
 デバイスは、標準の 19 インチ ラックに設置する必要があります。 以下の手順に従って、標準 19 インチ ラックにデバイスを取り付けてください。
 
 > [!IMPORTANT]
-> Azure Stack Edge デバイスが正しく動作するようにラックに取り付ける必要があります。
+> Azure Stack Edge Pro デバイスが正しく動作するようにラックに取り付ける必要があります。
 
 
 ### <a name="prerequisites"></a>前提条件
@@ -157,11 +157,11 @@ ms.locfileid: "82564990"
 
 ## <a name="cable-the-device"></a>デバイスをケーブル接続する
 
-ケーブルを配備し、デバイスを接続します。 以降の手順では、Azure Stack Edge デバイスの電源およびネットワーク用ケーブルを接続する方法を説明します。
+ケーブルを配備し、デバイスを接続します。 以降の手順では、Azure Stack Edge Pro デバイスの電源およびネットワーク用ケーブルを接続する方法を説明します。
 
 デバイスのケーブル接続を開始する前に、次の前提条件を満たす必要があります。
 
-- 開梱してラックに取り付けた状態の Azure Stack Edge 物理デバイス。
+- 開梱してラックに取り付けた状態の Azure Stack Edge Pro 物理デバイス。
 - 電源コード 2 本。
 - 管理インターフェイスに接続するための 1-GbE RJ-45 ネットワーク ケーブルを 1 本以上。 デバイスには、管理用とデータ用に 1 つずつ、2 つの 1-GbE ネットワーク インターフェイスがあります。
 - 構成するデータ ネットワーク インターフェイスのそれぞれに対して、25-GbE SFP+ 銅線ケーブル 1 本。 少なくとも 1 つのデータ ネットワーク インターフェイス (ポート 2、ポート 3、ポート 4、ポート 5、またはポート 6) がインターネットに接続されている必要があります (Azure への接続が可能なもの)。  
@@ -170,9 +170,9 @@ ms.locfileid: "82564990"
 > [!NOTE]
 > - データ ネットワーク インターフェイスを 1 つだけ接続する場合は、Azure へのデータ送信には、ポート 3、ポート 4、ポート 5、ポート 6 などの 25/10 GbE ネットワーク インターフェイスを使用することをお勧めします。 
 > - 最善のパフォーマンスを実現し、大量のデータを処理するには、すべてのデータ ポートを接続することを検討してください。
-> - Azure Stack Edge デバイスは、データ ソース サーバーからデータを取り込むことができるように、データセンター ネットワークに接続する必要があります。
+> - Azure Stack Edge Pro デバイスは、データ ソース サーバーからデータを取り込むことができるように、データセンター ネットワークに接続する必要があります。
 
-Azure Stack Edge デバイスの仕様は以下のとおりです。
+Azure Stack Edge Pro デバイスの仕様は次のとおりです。
 
 - フロント パネルには、ディスク ドライブと電源ボタンがあります。
 
@@ -213,7 +213,7 @@ Azure Stack Edge デバイスの仕様は以下のとおりです。
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Stack Edge で次のことを行う方法に関するトピックについて説明しました。
+このチュートリアルでは、Azure Stack Edge Pro で次のことを行う方法に関するトピックについて説明しました。
 
 > [!div class="checklist"]
 > * デバイスを開梱する
@@ -223,4 +223,4 @@ Azure Stack Edge デバイスの仕様は以下のとおりです。
 次のチュートリアルに進み、デバイスの接続、設定、およびアクティブ化を行う方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [Azure Stack Edge を接続して設定する](./azure-stack-edge-deploy-connect-setup-activate.md)
+> [Azure Stack Edge Pro を接続して設定する](./azure-stack-edge-deploy-connect-setup-activate.md)

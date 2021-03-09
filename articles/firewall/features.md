@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 02/25/2021
 ms.author: victorh
-ms.openlocfilehash: eb7cf1899b24ed225941f0a02040206504e6486b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b01a856c71375af507e2bf29297e64a6ce9412e5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85095553"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741431"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall の機能
 
@@ -22,20 +22,21 @@ ms.locfileid: "85095553"
 
 Azure Firewall には次の機能が含まれています。
 
-- [組み込みの高可用性](#built-in-high-availability)
-- [可用性ゾーン](#availability-zones)
-- [クラウドによる無制限のスケーラビリティ](#unrestricted-cloud-scalability)
-- [アプリケーションの FQDN のフィルタリング規則](#application-fqdn-filtering-rules)
-- [ネットワーク トラフィックのフィルタリング規則](#network-traffic-filtering-rules)
-- [FQDN タグ](#fqdn-tags)
-- [サービス タグ](#service-tags)
-- [脅威インテリジェンス](#threat-intelligence)
-- [送信 SNAT サポート](#outbound-snat-support)
-- [受信 DNAT サポート](#inbound-dnat-support)
-- [複数のパブリック IP アドレス](#multiple-public-ip-addresses)
-- [Azure Monitor ログ記録](#azure-monitor-logging)
-- [強制トンネル処理](#forced-tunneling)
-- [認定](#certifications)
+- 組み込みの高可用性
+- 可用性ゾーン
+- クラウドによる無制限のスケーラビリティ
+- アプリケーションの FQDN のフィルタリング規則
+- ネットワーク トラフィックのフィルタリング規則
+- FQDN のタグ
+- サービス タグ
+- 脅威インテリジェンス
+- 送信 SNAT サポート
+- 受信 DNAT のサポート
+- 複数のパブリック IP アドレス
+- Azure Monitor ログ記録
+- 強制トンネリング
+- Web カテゴリ (プレビュー)
+- 認定資格
 
 ## <a name="built-in-high-availability"></a>組み込みの高可用性
 
@@ -62,7 +63,7 @@ Azure Firewall では、必要に応じてスケールアップしてネット�
 
 ## <a name="application-fqdn-filtering-rules"></a>アプリケーションの FQDN のフィルタリング規則
 
-ワイルド カードも含まれる完全修飾ドメイン名 (FQDN) の指定された一覧に、送信 HTTP/S トラフィックまたは Azure SQL トラフィック (プレビュー) を制限できます。 この機能に TLS 終了は必要ありません。
+ワイルド カードも含まれる完全修飾ドメイン名 (FQDN) の指定された一覧に、送信 HTTP/S トラフィックまたは Azure SQL トラフィックを制限できます。 この機能に TLS 終了は必要ありません。
 
 ## <a name="network-traffic-filtering-rules"></a>ネットワーク トラフィックのフィルタリング規則
 
@@ -84,7 +85,7 @@ Azure Firewall では、必要に応じてスケールアップしてネット�
 
 仮想ネットワーク トラフィックの送信 IP アドレスはすべて Azure Firewall パブリック IP に変換されます (送信元ネットワーク アドレス変換)。 仮想ネットワークからインターネット上のリモートの送信先に向かうトラフィックを特定して許可できます。 宛先 IP が [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) のプライベート IP 範囲である場合、Azure Firewall は SNAT を行いません。 
 
-組織でプライベート ネットワークに対してパブリック IP アドレス範囲を使用している場合、Azure Firewall は、SNAT を使用して、トラフィックのアドレスを AzureFirewallSubnet のいずれかのファイアウォール プライベート IP アドレスに変換します。 パブリック IP アドレス範囲の SNAT が**行われない**ように、Azure Firewall を構成することができます。 詳細については、「[Azure Firewall の SNAT プライベート IP アドレス範囲](snat-private-range.md)」を参照してください。
+組織でプライベート ネットワークに対してパブリック IP アドレス範囲を使用している場合、Azure Firewall は、SNAT を使用して、トラフィックのアドレスを AzureFirewallSubnet のいずれかのファイアウォール プライベート IP アドレスに変換します。 パブリック IP アドレス範囲の SNAT が **行われない** ように、Azure Firewall を構成することができます。 詳細については、「[Azure Firewall の SNAT プライベート IP アドレス範囲](snat-private-range.md)」を参照してください。
 
 ## <a name="inbound-dnat-support"></a>受信 DNAT のサポート
 
@@ -97,15 +98,49 @@ Azure Firewall では、必要に応じてスケールアップしてネット�
 これにより、次のシナリオが実現します。
 
 - **DNAT** - 複数の標準ポート インスタンスをバックエンド サーバーに変換できます。 たとえば、2 つのパブリック IP アドレスがある場合、両方の IP アドレス用の TCP ポート 3389 (RDP) を変換できます。
-- **SNAT** -送信 SNAT 接続に追加のポートを使用できるので、SNAT ポートが不足する可能性が低減されます。 現時点では、Azure Firewall は、接続に使用する送信元パブリック IP アドレスをランダムに選択します。 ネットワークにダウンストリーム フィルターがある場合、ファイアウォールに関連付けられているすべてのパブリック IP アドレスを許可する必要があります。 この構成を簡略化するには、[パブリック IP アドレス プレフィックス](../virtual-network/public-ip-address-prefix.md)を使用することを検討してください。
+- **SNAT** - 送信 SNAT 接続にさらにポートを使用できるので、SNAT ポートが不足する可能性が低減されます。 現時点では、Azure Firewall は、接続に使用する送信元パブリック IP アドレスをランダムに選択します。 ネットワークにダウンストリーム フィルターがある場合、ファイアウォールに関連付けられているすべてのパブリック IP アドレスを許可する必要があります。 この構成を簡略化するには、[パブリック IP アドレス プレフィックス](../virtual-network/public-ip-address-prefix.md)を使用することを検討してください。
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor ログ記録
 
-すべてのイベントは Azure Monitor と統合されます。そのため、ログをストレージ アカウントにアーカイブしたり、イベントをイベント ハブにストリーム配信したり、それらを Azure Monitor ログに送信したりできます。 詳細については、[「Azure Firewall のログとメトリックを監視する](tutorial-diagnostics.md)」を参照してください。
+すべてのイベントは Azure Monitor と統合されます。そのため、ログをストレージ アカウントにアーカイブしたり、イベントをイベント ハブにストリーム配信したり、それらを Azure Monitor ログに送信したりできます。 Azure Monitor ログのサンプルについては、「[Azure Firewall の Azure Monitor ログ](./firewall-workbook.md)」をご覧ください。
+
+詳細については、[「Azure Firewall のログとメトリックを監視する](./firewall-diagnostics.md)」を参照してください。 
+
+Azure Firewall ブックにより、Azure Firewall のデータ分析のための柔軟なキャンバスが提供されます。 これを使用して、Azure portal 内で高度な視覚的レポートを作成できます。 詳細については、「[Azure Firewall ブックを使用してログを監視する](firewall-workbook.md)」をご覧ください。
 
 ## <a name="forced-tunneling"></a>強制トンネリング
 
 インターネットへのすべてのトラフィックを、インターネットに直接送信するのではなく、指定された次ホップにルーティングするように、Azure Firewall を構成することができます。 たとえば、インターネットに渡す前にネットワーク トラフィックを処理するために、オンプレミスのエッジ ファイアウォールや他のネットワーク仮想アプライアンス (NVA) があるような場合です。 詳細については、「[Azure Firewall 強制トンネリング](forced-tunneling.md)」を参照してください。
+
+## <a name="web-categories-preview"></a>Web カテゴリ (プレビュー)
+
+Web カテゴリでは、管理者は、ギャンブルの Web サイトやソーシャル メディアの Web サイトなどの Web サイト カテゴリへのユーザーのアクセスを許可または拒否できます。 Web カテゴリは Azure Firewall Standard に含まれていますが、Azure Firewall Premium プレビューではさらに細かく調整されています。 Standard SKU の FQDN に基づくカテゴリと一致する Web カテゴリの機能とは異なり、Premium SKU では HTTP と HTTPS の両方のトラフィックの URL 全体に従ってカテゴリと一致します。 Azure Firewall Premium プレビューの詳細については、[Azure Firewall Premium プレビューの機能](premium-features.md)に関するページを参照してください。
+
+たとえば、Azure Firewall が `www.google.com/news` の HTTPS 要求をインターセプトする場合、次のような分類が必要です。 
+
+- Firewall Standard - FQDN 部分のみが検証されるため、`www.google.com` は "*検索エンジン*" として分類されます。 
+
+- Firewall Premium - URL 全体が検証されるため、`www.google.com/news` は "*ニュース*" として分類されます。
+
+カテゴリは、 **[責任]** 、 **[高帯域幅]** 、 **[ビジネス利用]** 、 **[生産性の低下]** 、 **[一般的なネット サーフィン]** 、 **[未分類]** の下で重要度に基づいて整理されています。
+
+### <a name="categorization-change"></a>分類の変更
+
+次の場合に、分類の変更を要求できます。
+
+ - FQDN または URL が別のカテゴリの下にある必要があると思われる 
+ 
+or 
+
+- 分類されていない FQDN または URL に対して推奨されるカテゴリがある
+
+[https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) で要求を送信してください。
+
+### <a name="category-exceptions"></a>カテゴリの例外
+
+Web カテゴリの規則の例外を作成できます。 規則コレクション グループ内で、より優先度の高い個別の許可または拒否の規則コレクションを作成します。 たとえば、優先度が 100 で `www.linkedin.com` を許可する規則コレクションと、優先順位が 200 で **ソーシャル ネットワーキング** を拒否する規則コレクションを構成できます。 これにより、定義済みの **ソーシャル ネットワーキング** Web カテゴリに例外が作成されます。
+
+
 
 ## <a name="certifications"></a>認定
 

@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 5b7fe9cf6c751bfb96dff8aa911172ae91a17653
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11ddb2f40ee56b51c5ecbae11465093abb8e4feb
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886627"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027484"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>マッピング データ フローのスキーマの誤差
 
@@ -43,7 +43,7 @@ Azure Data Factory は、実行ごとに変わる柔軟なスキーマをネイ�
 
 ![スキーマの誤差のソース](media/data-flow/schemadrift001.png "スキーマの誤差のソース")
 
-スキーマの誤差が有効な場合、すべての受信フィールドは実行中にソースから読み取られ、フロー全体を通じてシンクに渡されます。 既定では、"*誤差の列*" と呼ばれる新しく検出されたすべての列は文字列データ型として受信されます。 データ フローで誤差の列のデータ型を自動的に推定する場合は、ソース設定で **[Infer drifted column types]\(誤差の列の種類を推定する\)** をオンにします。
+スキーマの誤差が有効な場合、すべての受信フィールドは実行中にソースから読み取られ、フロー全体を通じてシンクに渡されます。 既定では、" *誤差の列* " と呼ばれる新しく検出されたすべての列は文字列データ型として受信されます。 データ フローで誤差の列のデータ型を自動的に推定する場合は、ソース設定で **[Infer drifted column types]\(誤差の列の種類を推定する\)** をオンにします。
 
 ## <a name="schema-drift-in-sink"></a>シンクのスキーマの誤差
 
@@ -60,7 +60,7 @@ Azure Data Factory は、実行ごとに変わる柔軟なスキーマをネイ�
 データ フローに誤差の列がある場合は、次の方法を使用して変換でそれらにアクセスできます。
 
 * 名前または位置番号で列を明示的に参照するには、`byPosition` 式と `byName` 式を使用します。
-* 名前、ストリーム、位置、または型の任意の組み合わせで一致するように、派生列または集計変換に列パターンを追加します
+* 名前、ストリーム、位置、原点、または型の任意の組み合わせで一致するように、派生列または集計変換に列パターンを追加します
 * パターンを使用して誤差の列と列の別名と一致するように、選択またはシンク変換にルールベースのマッピングを追加します
 
 列パターンを実装する方法の詳細については、「[マッピング データ フローの列パターン](concepts-data-flow-column-pattern.md)」を参照してください。
@@ -69,11 +69,11 @@ Azure Data Factory は、実行ごとに変わる柔軟なスキーマをネイ�
 
 誤差の列を明示的に参照するには、データ プレビューのクイック アクションを使用して、これらの列のマッピングをすばやく生成できます。 [デバッグ モード](concepts-data-flow-debug-mode.md)がオンになったら、[データ プレビュー] タブに移動し、 **[更新]** をクリックしてデータ プレビューをフェッチします。 データ ファクトリによって誤差の列が存在することが検出された場合は、 **[Map Drifted]\(誤差のマップ\)** をクリックし、スキーマ ビューのダウンストリームにあるすべての誤差の列を参照できる派生列を生成できます。
 
-![誤差のマップ](media/data-flow/mapdrifted1.png "誤差のマップ")
+![スクリーンショットには、[Map Drifted]\(誤差のマップ\) が強調表示された [データ プレビュー] タブが示されています。](media/data-flow/mapdrifted1.png "誤差のマップ")
 
 生成された派生列変換では、各誤差の列は検出された名前とデータ型にマップされます。 上のデータ プレビューでは、列 'movieId' が整数として検出されています。 **[Map Drifted]\(誤差のマップ\)** をクリックすると、movieId は派生列で `toInteger(byName('movieId'))` と定義され、ダウンストリームの変換のスキーマ ビューに含まれます。
 
-![誤差のマップ](media/data-flow/mapdrifted2.png "誤差のマップ")
+![スクリーンショットには、[Derived column's settings]\(派生列の設定\) タブが示されています。](media/data-flow/mapdrifted2.png "誤差のマップ")
 
 ## <a name="next-steps"></a>次のステップ
 [データ フロー式言語](data-flow-expression-functions.md)には、"byName" や "byPosition" など、列パターンとスキーマ誤差用の追加機能があります。

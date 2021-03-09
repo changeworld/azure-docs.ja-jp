@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: c49e92cda89cfc1d72a0550c2a53430f3e6f2844
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eea3c8525d31a3ca551e9cbc7d21d7dde163b5cc
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050335"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697987"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
@@ -53,7 +53,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 
 * HTTP 基本認証を使用します。 詳細については、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」を参照してください。
 * 「[Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法](api-management-howto-mutual-certificates.md)」の説明に従って、TLS 相互認証を使用します。
-* バックエンド サービスで IP ホワイトリストを使用します。 従量課金レベルを除く API Management のすべてのレベルで、ゲートウェイの IP アドレスは一定のままであり、[IP ドキュメントに関する記事](api-management-howto-ip-addresses.md)に説明されているいくつかの注意事項があります。
+* バックエンド サービスで IP フィルタリングを使用します。 従量課金レベルを除く API Management のすべてのレベルで、ゲートウェイの IP アドレスは一定のままであり、[IP ドキュメントに関する記事](api-management-howto-ip-addresses.md)に説明されているいくつかの注意事項があります。
 * API Management インスタンスを Azure Virtual Network に接続します。
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>新しいインスタンスに API Management サービス インスタンスをコピーするにはどうすればよいですか。
@@ -71,18 +71,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 * [サービスのデプロイ](/powershell/module/wds)および[サービスの管理](/powershell/azure/servicemanagement/overview)用の PowerShell コマンドレット
 
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>ユーザーを Administrators グループに追加するにはどうすればよいですか。
-次の手順に従って、ユーザーを Administrators グループに追加できます。
-
-1. [Azure portal](https://portal.azure.com) にサインインする
-2. 更新する API Management インスタンスが含まれているリソース グループに移動します。
-3. API Management で、目的のユーザーに **API Management サービス共同作成者**ロールを割り当てます。
-
-新しく追加した共同作成者は Azure PowerShell [コマンドレット](/powershell/azure/)を使用できます。 次の手順に従って、管理者としてサインインできます。
-
-1. `Connect-AzAccount` コマンドレットを使用してサインインします。
-2. `Set-AzContext -SubscriptionID <subscriptionGUID>` を使用して、このサービスが含まれているサブスクリプションのコンテキストを設定します。
-3. `Get-AzApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` を使用して、シングル サインオン URL を取得します。
-4. この URL を使って管理ポータルにアクセスできます。
+Administrators グループは、変更できないシステム グループです。 Azure サブスクリプション管理者は、このグループのメンバーになります。 このグループにユーザーを追加することはできません。 詳細については、「[Azure API Management でグループを作成および使用して開発者アカウントを管理する方法](./api-management-howto-create-groups.md)」をご覧ください。
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>追加するポリシーがポリシー エディターで利用できないのはなぜですか。
 追加するポリシーがポリシー エディターで薄く表示されたり網掛けになったりしている場合は、そのポリシー用の正しいスコープが選択されていることを確認してください。 各ポリシー ステートメントは、特定のスコープおよびポリシー セクションで使用するように設計されています。 ポリシーのポリシー セクションとスコープを確認するには、「[API Management policies (API Management ポリシー)](./api-management-policies.md)」で、目的のポリシーの「Usage (使用方法)」セクションを参照してください。

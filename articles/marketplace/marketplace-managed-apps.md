@@ -6,17 +6,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: msjogarrig
 ms.author: jogarrig
-ms.date: 04/22/2020
-ms.openlocfilehash: 70922b80139015226445ca62026ec6f5a59b751c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/04/2020
+ms.openlocfilehash: d4fb3354b7035149b80191528b2f5335b593b764
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119822"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433555"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Azure マネージド アプリケーションの発行ガイド
 
-Azure "*マネージド アプリケーション*" プランは、Azure Marketplace で Azure アプリケーションを発行する 1 つの方法です。 マネージド アプリケーションは、Azure Marketplace を通じてデプロイおよび課金されるトランザクション プランです。 ユーザーに表示される行動喚起は、"*今すぐ入手する*" です。
+Azure "*マネージド アプリケーション*" プランは、Azure Marketplace で Azure アプリケーションを発行する 1 つの方法です。 マネージド アプリケーションは、Azure Marketplace を通じてデプロイおよび課金されるトランザクション プランです。 ユーザーに表示される掲載オプションは、 *[今すぐ入手する]* です。
 
 この記事では、マネージド アプリケーション プラン タイプの要件について説明します。
 
@@ -34,7 +34,7 @@ Azure "*マネージド アプリケーション*" プランは、Azure Marketpl
 |---------|---------|
 |Azure サブスクリプション | マネージド アプリケーションを顧客のサブスクリプションにデプロイする必要があるが、アプリケーションはサード パーティが管理できます。 |
 |請求/メータリング    |  リソースは、顧客の Azure サブスクリプションで提供されます。 従量課金制の支払モデルを使用する VM は Microsoft 経由で顧客が処理し、顧客の Azure サブスクリプション経由で請求されます。 <br><br> ライセンス持ち込み VM の場合、顧客サブスクリプションで発生するインフラストラクチャ コストを Microsoft が請求しますが、ユーザーが顧客に対して直接ソフトウェア ライセンス料金を処理します。        |
-|Azure と互換性がある仮想ハード ディスク (VHD)    |   VM は、Windows または Linux 上に構築されている必要があります。<br><br>Linux VHD の作成の詳細については、「[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)」を参照してください。<br><br>Windows VHD の作成の詳細については、「[Azure アプリケーション プランを作成する](./partner-center-portal/create-new-azure-apps-offer.md)」を参照してください。 |
+|Azure と互換性がある仮想ハード ディスク (VHD)    |   VM は、Windows または Linux 上に構築されている必要があります。<br><br>Linux VHD の作成の詳細については、「[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)」を参照してください。<br><br>Windows VHD の作成の詳細については、「[Azure アプリケーション プランを作成する](./create-new-azure-apps-offer.md)」を参照してください。 |
 
 ---
 
@@ -51,4 +51,4 @@ Azure "*マネージド アプリケーション*" プランは、Azure Marketpl
 パートナー センターで登録して作業を開始するには、次のようにします。
 
 - [パートナー センターにサインイン](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)し、オファーを作成するか完成させます。
-- 詳細については、「[Azure アプリケーション オファーを作成する](./partner-center-portal/create-new-azure-apps-offer.md)」を参照してください。
+- 詳細については、「[Azure アプリケーション オファーを作成する](./create-new-azure-apps-offer.md)」を参照してください。

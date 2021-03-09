@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4e6c2db5333962d7ae43534998ffc1c48b0dba45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d2ed00f3fc6f5b52a9a13a96f1e1659e30f02d5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80244564"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532603"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>Computer Vision での画像の種類の検出
 
-Computer Vision は、[画像分析](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API を使用して、画像のコンテンツの種類を分析し、画像がクリップ アートか線画かを示すことができます。
+Computer Vision は、[画像分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API を使用して、画像のコンテンツの種類を分析し、画像がクリップ アートか線画かを示すことができます。
 
 ## <a name="detecting-clip-art"></a>クリップ アートの検出
 
@@ -115,7 +115,6 @@ Computer Vision は画像を分析し、画像が線画かどうかを示すブ�
 
 ## <a name="use-the-api"></a>API の使用
 
-画像種類検出機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API に含まれています。 ネイティブ SDK または REST を呼び出すことでこの API を呼び出すことができます。 `ImageType` を **visualFeatures** クエリ パラメーターに追加します。 その後、完全な JSON 応答が得られたら、`"imageType"` セクションのコンテンツを対象に文字列を解析します。
+画像種類検出機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API に含まれています。 ネイティブ SDK または REST を呼び出すことでこの API を呼び出すことができます。 `ImageType` を **visualFeatures** クエリ パラメーターに追加します。 その後、完全な JSON 応答が得られたら、`"imageType"` セクションのコンテンツを対象に文字列を解析します。
 
-* [クイック スタート: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-* [クイック スタート: 画像の分析 (REST API)](./quickstarts/csharp-analyze.md)
+* [クイック スタート: Computer Vision REST API またはクライアント ライブラリ](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)

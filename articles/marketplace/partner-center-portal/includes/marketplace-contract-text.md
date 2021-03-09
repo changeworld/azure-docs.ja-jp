@@ -9,12 +9,12 @@ ms.date: 01/22/2020
 ms.custom: include file
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d899db8b5f6f3b7c0ccef4e44c814f1e126c626a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e1119cf5c40cdcb1fd598b85410ea9149a7cc146
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326675"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91400961"
 ---
 Microsoft では、商業マーケットプレース向けに標準契約テンプレートを提供しています。
 
@@ -46,7 +46,7 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 **[Custom amendment terms to the Standard Contract for Microsoft's commercial marketplace]\(Microsoft の商業マーケットプレース向け標準契約のカスタム修正条項\)** : まず、 **[Add custom amendment terms]\(カスタム修正条項の追加\)** を選択します。 オファーごとに 10 件までのカスタム修正条項を提供できます。
 
 - **[Custom amendment terms]\(カスタム修正条項\)** : カスタム修正条項をカスタム修正条項ボックスに入力します。 このボックスに入力できる文字数は無制限です。 Azure portal では、これらのカスタム修正条項に対して指定したテナント ID の顧客にのみ、オファーの購入フローでカスタム修正条項が提示されます。  
-- **[テナント ID]** (必須): それぞれのカスタム修正で対象にできるテナント ID は 20 個までです。 カスタム修正を追加する場合、少なくとも 1 つのテナント ID を指定する必要があります。 テナント ID は Azure で顧客を識別します。 この ID は顧客に問い合わせることができ、顧客は portal.azure.com > [Azure Active Directory] > [プロパティ] にアクセスして ID を確認できます。 ディレクトリ ID の値はテナント ID です (例: 50c464d3-4930-494c-963c-1e951d15360e)。 [[What is my Microsoft Azure and Office 365 tenant ID?]\(Microsoft Azure および Office 365 テナント ID の確認\)](https://www.whatismytenantid.com) で、顧客のドメイン名 URL を使用して顧客の組織のテナント ID を検索することもできます。
+- **[テナント ID]** (必須): それぞれのカスタム修正で対象にできるテナント ID は 20 個までです。 カスタム修正を追加する場合、少なくとも 1 つのテナント ID を指定する必要があります。 テナント ID は Azure で顧客を識別します。 この ID は顧客に問い合わせることができ、顧客は portal.azure.com > [Azure Active Directory] > [プロパティ] にアクセスして ID を確認できます。 ディレクトリ ID の値はテナント ID です (例: 50c464d3-4930-494c-963c-1e951d15360e)。 「[Microsoft Azure と Microsoft 365 のテナント ID の確認](https://www.whatismytenantid.com)」で、顧客のドメイン名 URL を使用して顧客の組織のテナント ID を検索することもできます。
 - **[説明]** (省略可能): 必要に応じて、修正の対象となる顧客を特定しやすくするために、テナント ID のわかりやすい説明を入力します。
 
 **使用条件**

@@ -4,11 +4,11 @@ description: Azure Site Recovery サービスを使用してディザスター �
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485335"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009723"
 ---
 # <a name="create-and-customize-recovery-plans"></a>復旧計画を作成してカスタマイズする
 
@@ -18,7 +18,7 @@ ms.locfileid: "84485335"
 
 1. Recovery Services コンテナーで、 **[復旧計画 (Site Recovery)]**  >  **[+ 復旧計画]** と選択します。
 2. **[復旧計画の作成]** で、計画の名前を指定します。
-3. 計画内のマシンに基づいてソースとターゲットを選択し、デプロイメント モデル用に**リソース マネージャー**を選択します。 ソースの場所には、フェールオーバーと復旧が有効になったマシンが必要になります。 
+3. 計画内のマシンに基づいてソースとターゲットを選択し、デプロイメント モデル用に **リソース マネージャー** を選択します。 ソースの場所には、フェールオーバーと復旧が有効になったマシンが必要になります。 
 
     **[フェールオーバー]** | **ソース** | **移行先** 
    --- | --- | ---
@@ -77,7 +77,7 @@ ms.locfileid: "84485335"
     1. すべての種類のフェールオーバー (テスト、フェールオーバー、計画されたフェールオーバー (該当する場合)) にその手動アクションを追加するかどうかを指定します。 次に、 **[OK]** をクリックします
 4. スクリプトを追加する場合は、次の操作を行います。
     1. VMM スクリプトを追加する場合、 **[Failover to VMM script]\(VMM へのフェールオーバー スクリプト\)** を選択して、 **[スクリプト パス]** に共有の相対パスを入力します。 たとえば、共有が \\\<VMMServerName>\MSSCVMMLibrary\RPScripts に配置されている場合は、パスとして「\RPScripts\RPScript.PS1」と入力します。
-    1. Azure Automation Runbook を追加する場合、Runbook が配置されている **Azure Automation アカウント**を指定し、適切な **Azure Runbook スクリプト**を選択します。
+    1. Azure Automation Runbook を追加する場合、Runbook が配置されている **Azure Automation アカウント** を指定し、適切な **Azure Runbook スクリプト** を選択します。
 5. 復旧計画のテスト フェールオーバーを実行して、スクリプトが期待どおりに動作することを確認します。
 
 ## <a name="watch-a-video"></a>ビデオを視聴する

@@ -1,21 +1,21 @@
 ---
-title: デザイナーで Python スクリプトを実行する (プレビュー)
+title: デザイナーで Python スクリプトを実行する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning デザイナー (プレビュー) で Python を使用してデータを変換する方法について説明します。
+description: Azure Machine Learning デザイナーの Execute Python Script モデルを使用して、Python で記述されたカスタム操作を実行する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: peterclu
-ms.author: peterlu
-ms.date: 02/28/2020
+author: likebupt
+ms.author: keli19
+ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer, devx-track-python
-ms.openlocfilehash: 7cb6fc0f4f2c2d3f57588d8ef0412177f612ee02
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: dcc28d98efbc82079586de8cfbecd35effc93d6e
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853128"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556235"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーでの Python コードの実行
 
